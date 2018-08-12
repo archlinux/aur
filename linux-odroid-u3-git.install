@@ -2,7 +2,7 @@
 # arg 2:  the old package versio
 
 # Set by PKGBUILD
-KERNEL_VERSION=
+KERNEL_VERSION=4.17.14-1
 BOOT_DIR=/boot
 
 # Image file name must match with the name in the .preset file for mkinitcpio

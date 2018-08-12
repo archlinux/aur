@@ -6,7 +6,7 @@ pkgbase=linux-odroid-u3-git
 pkgmain=linux-odroid
 pkgname=('linux-odroid-u3-git' 'linux-headers-odroid-u3-git')
 _kernelname=${pkgname#linux}
-_basekernel=4.15.2
+_basekernel=4.17.14
 pkgver=${_basekernel}
 pkgrel=1
 arch=('armv7h')
@@ -19,12 +19,6 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-${pkgver}.tar.xz"
         'linux-odroid.preset'
         'arch-logo.ppm'
 	'uEnv-mainline.txt')
-
-md5sums=('a9b1ca74ab5bc308dd2f1a57408122fd'
-         '9e293c7c511474aa74711afe289946f6'
-         '8b51e60c925e54b36747f36d9ae7dd37'
-         'de302b1a6bc612f6eb95714341003ac0'
-         '44f2b32fbb2d064a365af698e8f78739')
 
 _repodir=linux-${pkgver}
 
@@ -199,44 +193,44 @@ package_linux-headers-odroid-u3-git() {
   # add dvb headers for external modules
   # in reference to:
   # http://bugs.archlinux.org/task/9912
-  if [ -d drivers/media/dvb-core ]
-  then
-    mkdir -p "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/dvb-core"
-    cp drivers/media/dvb-core/*.h "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/dvb-core/"
-  fi
-  # and...
-  # http://bugs.archlinux.org/task/11194
-  if [ -d include/config/dvb ]
-  then
-    mkdir -p "${pkgdir}/usr/src/linux-${_kernver}/include/config/dvb/"
-    cp include/config/dvb/*.h "${pkgdir}/usr/src/linux-${_kernver}/include/config/dvb/"
-  fi
+  #if [ -d drivers/media/dvb-core ]
+  #then
+  #  mkdir -p "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/dvb-core"
+  #  cp drivers/media/dvb-core/*.h "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/dvb-core/"
+  #fi
+  ## and...
+  ## http://bugs.archlinux.org/task/11194
+  #if [ -d include/config/dvb ]
+  #then
+  #  mkdir -p "${pkgdir}/usr/src/linux-${_kernver}/include/config/dvb/"
+  #  cp include/config/dvb/*.h "${pkgdir}/usr/src/linux-${_kernver}/include/config/dvb/"
+  #fi
 
   # add dvb headers for http://mcentral.de/hg/~mrec/em28xx-new
   # in reference to:
   # http://bugs.archlinux.org/task/13146
-  if [ -e drivers/media/dvb-frontends/lgdt330x.h ]
-  then
-    mkdir -p "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/dvb-frontends/"
-    cp drivers/media/dvb-frontends/lgdt330x.h "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/dvb-frontends/"
-  fi
-  if [ -e drivers/media/i2c/msp3400-driver.h ]
-  then
-    mkdir -p "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/i2c/"
-    cp drivers/media/i2c/msp3400-driver.h "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/i2c/"
-  fi
+  #if [ -e drivers/media/dvb-frontends/lgdt330x.h ]
+  #then
+  #  mkdir -p "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/dvb-frontends/"
+  #  cp drivers/media/dvb-frontends/lgdt330x.h "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/dvb-frontends/"
+  #fi
+  #if [ -e drivers/media/i2c/msp3400-driver.h ]
+  #then
+  #  mkdir -p "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/i2c/"
+  #  cp drivers/media/i2c/msp3400-driver.h "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/i2c/"
+  #fi
 
   # add dvb headers
   # in reference to:
   # http://bugs.archlinux.org/task/20402
-  for folder in usb/dvb-usb dvb-frontends tuners
-  do
-    if [ -d drivers/media/$folder ]
-    then
-      mkdir -p "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/$folder"
-      cp drivers/media/$folder/*.h "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/$folder/"
-    fi
-  done
+  #for folder in usb/dvb-usb dvb-frontends tuners
+  #do
+  #  if [ -d drivers/media/$folder ]
+  #  then
+  #    mkdir -p "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/$folder"
+  #    cp drivers/media/$folder/*.h "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/$folder/"
+  #  fi
+  #done
 
   # add xfs and shmem for aufs building
   if [ -e fs/xfs/xfs_sb.h ]
@@ -270,3 +264,9 @@ package_linux-headers-odroid-u3-git() {
   # remove unneeded architectures
   rm -rf "${pkgdir}"/usr/src/linux-${_kernver}/arch/{alpha,arm26,avr32,blackfin,cris,frv,h8300,ia64,m32r,m68k,m68knommu,mips,microblaze,mn10300,parisc,powerpc,ppc,s390,sh,sh64,sparc,sparc64,um,v850,x86,xtensa}
 }
+
+sha256sums=('c846038df44ee74dd910d19b346044a100f62a5b933eec2264d17008758cbaaf'
+            '4bd24a542259d06459bb7764c420cd1e7fa6608a914f8ba3c9d99efcc3ab72fa'
+            '8fa78f0372deb78ad2d24b895c734da95b5bece05729312762b8310e886df7ca'
+            '781ec4b25b1e8fc52fa283225fee9240e7c9b37eb68aa3bbb6f6f57e30beaafe'
+            'a0deabebc9e00693b514fdaeb70b6888c7c5610e79b41d324026c616c3ec10f7')
