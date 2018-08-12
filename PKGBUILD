@@ -1,9 +1,9 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 # Contributor: speps <speps dot aur dot archlinux dot org>
 
-_rtkver=0.5.5
+_rtkver=0.5.6
 pkgname=meters-lv2
-pkgver=0.9.6
+pkgver=0.9.7
 pkgrel=1
 pkgdesc="Collection of LV2 plug-ins for audio-level metering from x42"
 arch=('i686' 'x86_64')
@@ -18,8 +18,8 @@ provides=('lv2-meters' 'meters.lv2')
 conflicts=('lv2-meters' 'meters.lv2' 'x42-plugins')
 source=("meters-lv2-$pkgver.tar.gz::https://github.com/x42/meters.lv2/archive/v$pkgver.tar.gz"
         "robtk-$_rtkver.tar.gz::https://github.com/x42/robtk/archive/v$_rtkver.tar.gz")
-md5sums=('185c8135b596574ed70d584f6287e28d'
-         '7e936faa5477e013e012978cc7ddd901')
+md5sums=('8b4a56f25a7418bbebda3ef0990e180c'
+         '89639d4249dc8bb1b79e0f84860633ce')
 
 
 build() {
