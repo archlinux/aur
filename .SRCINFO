@@ -1,0 +1,13 @@
+pkgbase = erlang-ranch
+	pkgdesc = Socket acceptor pool for TCP protocols.
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://hex.pm/packages/ranch
+	arch = x86_64
+	license = ISC
+	depends = erlang-nox
+	source = https://repo.hex.pm/tarballs/ranch-1.6.0.tar
+	sha256sums = eb6170a697659046f517ceef15e568993d314591f05e73611e05605d4ac937f7
+
+pkgname = erlang-ranch
+
