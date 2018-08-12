@@ -14,7 +14,7 @@ _pkgname=mpv
 epoch=1
 pkgver=0.29.0
 pkgrel=1
-_waf_version=1.9.8
+_waf_version=2.0.9
 pkgdesc='mpv with Raspberry Pi support'
 arch=('armv6h' 'armv7h' 'aarch64')
 # We link against libraries that are licensed GPLv3 explicitly, libsmbclient
@@ -33,7 +33,7 @@ options=('!emptydirs')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/mpv-player/$_pkgname/archive/v$pkgver.tar.gz"
   "https://waf.io/waf-${_waf_version}")
 sha256sums=('772af878cee5495dcd342788a6d120b90c5b1e677e225c7198f1e76506427319'
-  '167dc42bab6d5bd823b798af195420319cb5c9b571e00db7d83df2a0fe1f4dbf')
+  '2a8e0816f023995e557f79ea8940d322bec18f286917c8f9a6fa2dc3875dfa48')
 provides=('mpv')
 conflicts=('mpv')
 
