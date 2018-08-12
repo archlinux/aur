@@ -1,15 +1,15 @@
 # Maintainer: levinit <levinit at outlook>
 
 pkgname=iceworks
-pkgver=1.4.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="icework make front-end engineering becomes easy and convenient.飞冰，让前端工程变得轻松便捷。"
 arch=('x86_64')
-url="https://mockingbot.com/downloads"
+url="https://alibaba.github.io/ice/iceworks"
 license=('MIT')
 depends=()
 
-source=("https://iceworks-beta.oss-cn-hangzhou.aliyuncs.com/linux/Iceworks-amd64-1.4.0-beta.deb")
+source=("https://iceworks-beta.oss-cn-hangzhou.aliyuncs.com/linux/Iceworks-amd64-$pkgver-beta.deb")
 md5sums=('SKIP')
 
 package() {
