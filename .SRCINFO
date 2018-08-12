@@ -1,0 +1,14 @@
+pkgbase = erlang-goldrush
+	pkgdesc = Erlang event stream processor
+	pkgver = 0.1.9
+	pkgrel = 1
+	url = https://hex.pm/packages/goldrush
+	arch = x86_64
+	license = ISC
+	makedepends = rebar
+	depends = erlang-nox
+	source = https://repo.hex.pm/tarballs/goldrush-0.1.9.tar
+	sha256sums = 99cb4128cffcb3227581e5d4d803d5413fa643f4eb96523f77d9e6937d994ceb
+
+pkgname = erlang-goldrush
+
