@@ -1,0 +1,14 @@
+pkgbase = erlang-lager
+	pkgdesc = Erlang logging framework
+	pkgver = 3.6.4
+	pkgrel = 1
+	url = https://hex.pm/packages/lager
+	arch = x86_64
+	license = Apache 2
+	makedepends = rebar
+	depends = erlang-nox
+	source = https://repo.hex.pm/tarballs/lager-3.6.4.tar
+	sha256sums = 6cbef7e038d772a6bf834ba7aaf55a1484a97adfe8075b4a23b0086a8fe697a8
+
+pkgname = erlang-lager
+
