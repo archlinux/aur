@@ -9,6 +9,7 @@ pkgbase = photoflare-git
 	makedepends = qt5-tools
 	depends = desktop-file-utils
 	depends = graphicsmagick
+	depends = hicolor-icon-theme
 	depends = qt5-base
 	provides = photoflare
 	conflicts = photoflare
