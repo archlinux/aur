@@ -2,13 +2,13 @@
 
 pkgname=polo-git
 pkgrel=1
-pkgver=18.6.beta.r0.g1b7faa1
+pkgver=18.8.beta.r0.g302c071
 pkgdesc="A modern, light-weight GTK file manager for Linux,  currently in beta"
 arch=('i686' 'x86_64')
 url="https://teejee2008.github.io/polo/"
 license=('GPL2')
 depends=('gtk3' 'libgee' 'libsoup' 'vte3' 'rsync' 'gvfs' 'p7zip')
-makedepends=('vala' 'chrpath' 'git')
+makedepends=(vala git)
 optdepends=('mediainfo: read media properties from audio and video files'
             'fish: terminal shell'
             'perl-image-exiftool: read EXIF properties from JPG/TIFF/PNG/PDF files'
@@ -21,9 +21,9 @@ optdepends=('mediainfo: read media properties from audio and video files'
 provides=('polo')
 conflicts=('polo' 'polo-bin')
 source=("${pkgname}::git+https://github.com/teejee2008/polo.git"
-        '0001-Fixed-build-with-recent-vala-version.patch')
+        '0001-Re-add-support-for-vte291-0.52.patch')
 sha256sums=('SKIP'
-            '97d78f7879eb913dc4b9574e6854553e956f5a883beef2335887d1d12061d0b2')
+            '4ae33547220a7bfb7cd9806bd121acbc54c35a06958d40aa3cb1621688b5f69f')
 
 pkgver() {
   cd "${pkgname}"
@@ -32,7 +32,7 @@ pkgver() {
 
 prepare() {
   cd "${pkgname}"
-  patch -Np1 -i ../0001-Fixed-build-with-recent-vala-version.patch
+  patch -Np1 -i ../0001-Re-add-support-for-vte291-0.52.patch
 }
 
 build() {
@@ -44,7 +44,6 @@ package() {
   cd "${pkgname}"
   make DESTDIR="${pkgdir}" install
 
-  chrpath --delete "${pkgdir}"/usr/bin/polo-gtk
   ln -s /usr/bin/polo-gtk "${pkgdir}"/usr/bin/polo
   rm "${pkgdir}"/usr/bin/polo-uninstall
 }
