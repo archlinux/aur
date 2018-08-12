@@ -4,8 +4,8 @@
 pkgname=perl-test-object
 _perl_namespace=Test
 _perl_module=Object
-pkgver=0.07
-pkgrel=2
+pkgver=0.08
+pkgrel=1
 pkgdesc="Thoroughly testing objects via registered handlers"
 arch=('any')
 url="https://metacpan.org/release/${_perl_namespace}-${_perl_module}"
@@ -13,7 +13,7 @@ license=('GPL' 'PerlArtistic')
 depends=('perl')
 makedepends=('perl-module-install')
 source=("https://www.cpan.org/modules/by-module/${_perl_namespace}/${_perl_namespace}-${_perl_module}-${pkgver}.tar.gz")
-sha256sums=('d142a91b039928dc5d616c7bd9bb62ffb06e58991f00c54e26ef7e62ed61032a')
+sha256sums=('65278964147837313f4108e55b59676e8a364d6edf01b3dc198aee894ab1d0bb')
 options=('!emptydirs')
 
 build() {
