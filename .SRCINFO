@@ -1,0 +1,13 @@
+pkgbase = discorde
+	pkgdesc = C and C++ wrapper around Concorde API
+	pkgver = r11.349c753
+	pkgrel = 1
+	url = https://github.com/andremaravilha/discorde-tsp
+	arch = x86_64
+	license = MIT
+	depends = concorde
+	source = git+https://github.com/andremaravilha/discorde-tsp.git
+	sha256sums = SKIP
+
+pkgname = discorde
+
