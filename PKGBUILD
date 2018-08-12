@@ -1,4 +1,6 @@
 # Maintainer: Conor Anderson <conor@conr.ca>
+# Maintainer: Maxim Baz <$pkgname at maximbaz dot com>
+
 pkgname=wire-desktop
 pkgver=3.2.2840
 pkgrel=2
@@ -28,11 +30,11 @@ package() {
   # Place files
   install -d "${pkgdir}/usr/lib/${pkgname}"
   cp -a "${srcdir}/${pkgname}-release-${pkgver}"/wrap/dist/linux*unpacked/* "${pkgdir}/usr/lib/${pkgname}"
-  
+
   # Symlink main binary
   install -d "${pkgdir}/usr/bin"
   ln -s "/usr/lib/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  
+
   # Place desktop entry and icon
   desktop-file-install -m 644 --dir "${pkgdir}/usr/share/applications/" "${srcdir}/${pkgname}.desktop"
   for res in 32x32 256x256; do
