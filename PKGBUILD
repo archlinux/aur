@@ -2,14 +2,15 @@
 
 _gitname=Pokemon-Terminal
 pkgname=pokemon-terminal-git
-pkgver=r327.c1c444e
-pkgrel=2
+pkgver=r413.09d3429
+pkgrel=1
 pkgdesc="Pokemon terminal themes"
 arch=('any')
 url="https://github.com/LazoCoder/$_gitname"
 license=('GPL3')
-depends=('python>=3.6' 'python-setuptools')
+depends=('python>=3.6' 'python-psutil')
 optdepends=('gnome-shell: support changing GNOME wallpaper'
+            'feh: support changing Openbox and i3 wallpaper'
             'terminology: support changing Terminology background'
             'tilix: support changing Tilix background')
 makedepends=('git' 'jq' 'curl' 'python-setuptools' 'python')
