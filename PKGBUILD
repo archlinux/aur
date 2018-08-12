@@ -2,17 +2,25 @@
 
 _pkgname=p4a-build
 pkgname=(python-$_pkgname python2-$_pkgname)
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 url="http://android.kivy.org/"
 license=('LGPL3')
 arch=('any')
-source=("https://pypi.python.org/packages/source/p/p4a-build/p4a-build-$pkgver.tar.gz")
-md5sums=('dcc80488b70bf27544e3ccafca95ef61')
+depends=('python-requests')
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/p/${_pkgname}/${_pkgname}-$pkgver.tar.gz")
+md5sums=('29a617986107c7d3d5d26ea4790ea6ad')
 
 
 prepare() {
    cp -r $_pkgname-${pkgver} python2-$_pkgname-${pkgver}
+
+   cd $srcdir/$_pkgname-${pkgver}
+   sed -i -e 's/distutils\.core/setuptools/' setup.py
+
+   cd $srcdir/python2-$_pkgname-${pkgver}
+   sed -i -e 's/distutils\.core/setuptools/' setup.py
 }
 
 build() {
