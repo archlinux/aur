@@ -4,8 +4,8 @@
 pkgname=perl-test-subcalls
 _perl_namespace=Test
 _perl_module=SubCalls
-pkgver=1.09
-pkgrel=2
+pkgver=1.10
+pkgrel=1
 pkgdesc="Track the number of times subs are called"
 arch=('any')
 url="https://metacpan.org/release/${_perl_namespace}-${_perl_module}"
@@ -13,7 +13,7 @@ license=('GPL' 'PerlArtistic')
 depends=('perl-hook-lexwrap')
 makedepends=('perl-module-install')
 source=("https://www.cpan.org/modules/by-module/${_perl_namespace}/${_perl_namespace}-${_perl_module}-${pkgver}.tar.gz")
-sha256sums=('a334b0457da338d79be2dbb62d403701fc90f7607df840115ff45ee1e2bd6e70')
+sha256sums=('cbc1e9b35a05e71febc13e5ef547a31c8249899bb6011dbdc9d9ff366ddab6c2')
 options=('!emptydirs')
 
 build() {
