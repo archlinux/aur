@@ -1,0 +1,11 @@
+--- INCLUDE/machdefs.h.orig	2018-08-12 15:22:12.796641255 +0200
++++ INCLUDE/machdefs.h	2018-08-12 15:22:56.589974125 +0200
+@@ -181,4 +181,8 @@
+ 
+ #endif
+ 
++#ifndef CPX_PARAM_FASTMIP
++#define CPX_PARAM_FASTMIP 1017
++#endif
++
+ #endif  /* __MACHDEFS_H */
