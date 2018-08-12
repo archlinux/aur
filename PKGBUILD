@@ -3,7 +3,7 @@
 
 pkgname='lazygit-git'
 pkgdesc='A simple terminal UI for git commands'
-pkgver=r380.7323e08
+pkgver=r393.84b27d4
 pkgrel=1
 _repo_prefix='github.com/jesseduffield'
 _repo_name="${pkgname/-git}"
@@ -24,8 +24,6 @@ pkgver() {
 }
 
 prepare () {
-  export GOPATH="${srcdir}"
-  export PATH="$PATH:$GOPATH/bin"
   mkdir -p "src/${_repo_prefix}"
   ln -snf "$(pwd)/${_repo_name}" "src/${_repo_prefix}/${_repo_name}"
 }
@@ -38,6 +36,8 @@ clean() {
 
 build () {
   cd "src/${_repo_prefix}/${_repo_name}"
+  export GOPATH="${srcdir}"
+  export PATH="$PATH:$GOPATH/bin"
   go build -x -i -v -ldflags "-X main.commit=${pkgver##*.} -X main.date=$(date -u +%Y%m%d.%H%M%S) -X main.version=$(cat VERSION).${pkgver##*.}" -o ${_repo_name}.bin
 }
 
