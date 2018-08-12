@@ -1,3 +1,4 @@
+# Maintainer: asm0dey <pavel.finkelshtein+AUR@gmail.com>
 pkgname=3proxy
 pkgver=0.8.12
 pkgrel=1
@@ -5,7 +6,8 @@ pkgdesc="A tiny crossplatform proxy server"
 arch=('i686' 'x86_64')
 url="http://www.3proxy.ru/"
 license=('BSD')
-depends=()
+depends=('glibc')
+makedepends=('gcc' 'make')
 source=("https://github.com/z3APA3A/3proxy/archive/$pkgver.tar.gz"
 )
 md5sums=('f8ccbe689ff8da8ff67942fc440187ae'
