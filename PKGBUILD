@@ -1,11 +1,10 @@
-# $Id$
 # Maintainer: Giovanni 'ItachiSan' Santini <giovannisantini93@yahoo.it>
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=webkit2gtk-mse
 _pkgname=webkit2gtk
 pkgver=2.20.4
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK+ Web content engine library - MSE enabled"
 arch=(i686 x86_64)
 url="https://webkitgtk.org/"
@@ -44,10 +43,8 @@ build() {
     -DPYTHON_EXECUTABLE=/usr/bin/python2 \
     -DENABLE_MEDIA_SOURCE=ON \
     ../webkitgtk-$pkgver
-  # Small issue happening when building, see: https://github.com/NixOS/nixpkgs/issues/37878
-  # Thanks for the workaround!
-  make JavaScriptCoreForwardingHeaders WTFForwardingHeaders
-  # Now build as usual
+
+  # Build everything
   make
 }
 
@@ -55,10 +52,11 @@ package() {
   DESTDIR="$pkgdir" make -C build install
 
   cd webkitgtk-$pkgver
-  find Source -name 'COPYING*' -or -name 'LICENSE*' -print0 | while IFS= read -d $'\0' -r _f
-  do
-    echo "### $_f ###"
-    cat "$_f"
-    echo
-  done | install -Dm644 /dev/stdin "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  find Source -name 'COPYING*' -or -name 'LICENSE*' -print0 | sort -z |
+    while IFS= read -d $'\0' -r _f; do
+      echo "### $_f ###"
+      cat "$_f"
+      echo
+    done |
+    install -Dm644 /dev/stdin "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
