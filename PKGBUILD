@@ -19,10 +19,10 @@ build() {
     
 package() {
     cd "$srcdir"
-    mkdir -p "$pkgdir/usr/lib/erlang/lib/"
+    mkdir -p "$pkgdir/usr/lib/erlang/lib/$_pkgname-$pkgver"
 
     for i in ebin include src; do
-        cp -R $i "$pkgdir/usr/lib/erlang/lib/"
+        cp -R $i "$pkgdir/usr/lib/erlang/lib/$_pkgname-$pkgver"
     done
 
     install -Dm644 ./LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
