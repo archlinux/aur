@@ -2,7 +2,7 @@
 
 _name=applicationinsights
 pkgname=python-$_name
-pkgver=0.11.1
+pkgver=0.11.6
 pkgrel=1
 pkgdesc="Application Insights SDK for Python"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/Microsoft/ApplicationInsights-Python"
 license=('MIT')
 makedepends=('python-setuptools')
 source=("https://github.com/Microsoft/ApplicationInsights-Python/archive/v${pkgver}.tar.gz")
-md5sums=('3964d81cf316b4193e8aa855fc65b7b1')
+sha256sums=('68fa0e65df3b1376d1efac3d035f62fe7137a3109caba548c1c4a46f6960b483')
 
 build() {
   cd "ApplicationInsights-Python-$pkgver"
