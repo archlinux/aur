@@ -2,9 +2,9 @@
 # Contributor: ssv1982 <ssv1982@gmail.com>
 
 pkgname=kerio-control-vpnclient
-pkgver=9.2.5.2587
+pkgver=9.2.5.2594
 pkgrel=1
-_pkgver_patch_level='-p2'
+_pkgver_patch_level='-p3'
 pkgdesc="Kerio Control VPN client for corporate networks."
 arch=('x86_64')
 url="http://www.kerio.com/control"
@@ -16,7 +16,7 @@ source=("http://download.kerio.com/dwn/control/control-${pkgver%.*}-${pkgver##*.
         "kvpnc"
         "kvpnc.conf"
         "kvpnc.service")
-sha256sums=('74f171e6faa3d1ea33e96e57c797a974043b8c49cd19dd9e6053bfcf5c80142e'
+sha256sums=('20a081853ec435bca41899a3d73198045193b9a6d56db1e64fe1e0161203f48a'
             '984ac81f6fe291ca11a4dc6822bcb1e7efaf82d14259f5395247fdbdef4c1759'
             '2f15a0d88c9fa915cd9150796638811daec911e6824b8ff5f96f131352d1e74a'
             'bd8b1aabc31b9b24c4b63ce8099bef111dc84bd4923c77d42e05d3f1704d5c17')
