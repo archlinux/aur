@@ -1,0 +1,14 @@
+pkgbase = erlang-recon
+	pkgdesc = Diagnostic tools for production use
+	pkgver = 2.3.6
+	pkgrel = 1
+	url = https://hex.pm/packages/recon
+	arch = x86_64
+	license = Apache 2.0
+	makedepends = rebar
+	depends = erlang-nox
+	source = https://repo.hex.pm/tarballs/recon-2.3.6.tar
+	sha256sums = f55198650a8ec01d3efc04797abe550c7d023e7ff8b509f373cf933032049bd8
+
+pkgname = erlang-recon
+
