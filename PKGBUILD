@@ -7,8 +7,7 @@ pkgdesc="Official desktop version of Telegram messaging app (dev branch)"
 arch=('i686' 'x86_64')
 url="https://desktop.telegram.org/"
 license=('GPL3')
-depends=('desktop-file-utils' 'ffmpeg' 'hicolor-icon-theme' 'minizip' 'openal'
-         'openssl' 'qt5-base' 'qt5-imageformats')
+depends=('desktop-file-utils' 'ffmpeg' 'minizip' 'openal' 'qt5-base' 'qt5-imageformats')
 makedepends=('cmake' 'git' 'gyp' 'libappindicator-gtk3' 'python' 'range-v3')
 optdepends=('libnotify: desktop notifications')
 provides=("${pkgname%-git}")
