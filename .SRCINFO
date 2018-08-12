@@ -1,6 +1,6 @@
 pkgbase = mkgmap
 	pkgdesc = Create maps for Garmin GPS devices from OpenStreetMap (OSM) data.
-	pkgver = r4216
+	pkgver = r4222
 	pkgrel = 1
 	url = http://www.mkgmap.org.uk
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = mkgmap
 	depends = java-runtime=8
 	conflicts = mkgmap-svn
 	source = mkgmap
-	source = http://www.mkgmap.org.uk/download/mkgmap-r4216.zip
+	source = http://www.mkgmap.org.uk/download/mkgmap-r4222.zip
 	sha256sums = 135dfbca5146cea34ef48ed6908a817efdfbbcccbb8adfbbb6a100f58c2c7bb6
-	sha256sums = 646ac83a3ad5060e5e9d4d32bd510e5e0f8c228bb8986e0d478aaaa21d82a7bd
+	sha256sums = a0d49b8131f74d93181d07152eeb2daa757dc321dcdaf4cd992466de434d200e
 
 pkgname = mkgmap
 
