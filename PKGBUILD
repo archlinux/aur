@@ -6,11 +6,11 @@
 #
 # This'll be improved at some point to be an automated process.
 
-_pkgrev=3eb12a361fef480426a5afb37ff772bbfd87d408
+_pkgrev=0d7156b5b10efc88a32d7bf87ea3d10cbd1e207a
 
 pkgname=i3pystatus
 pkgdesc="i3status replacement written in python for the i3 window manager"
-pkgver=r1712.3eb12a3
+pkgver=r1721.0d7156b
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('mit')
