@@ -1,26 +1,26 @@
-# Maintainer: Arpan Kapoor <k dot arpan26 at gmail dot com>
+# Maintainer: Arpan Kapoor <a at arpankapoor dot com>
 
-pkgname='8188eu-dkms'
-_pkgname="${pkgname%-*}"
-pkgver='v4.3.0.8_13968'
-pkgrel='6'
+_pkgname=8188eu
+pkgname="${_pkgname}-dkms"
+pkgver=v4.3.0.8_13968
+pkgrel=7
 pkgdesc='Driver for Realtek RTL8188EUS (RTL8188EUS, RTL8188ETV) WLAN'
 arch=('any')
 url='http://www.realtek.com.tw/'
 license=('GPL')
 depends=('dkms')
 install="${pkgname}.install"
-source=("https://www.dropbox.com/s/afs5d2yfgwurqm2/${_pkgname}-${pkgver}.tar.xz"
-        'blacklist-r8188eu.conf'
-        'date_time_macro.patch'
-        'dkms.conf'
-        'led.patch'
-        'linux-4.0.patch'
-        'linux-4.2.patch'
-        'linux-4.3.patch'
-        'linux-4.6.patch'
-        'linux-4.11.patch'
-        'no_debug.patch')
+source=("https://www.dropbox.com/s/afs5d2yfgwurqm2/${_pkgname}-${pkgver}.tar.xz?dl=1"
+        blacklist-r8188eu.conf
+        date_time_macro.patch
+        dkms.conf
+        led.patch
+        linux-4.0.patch
+        linux-4.2.patch
+        linux-4.3.patch
+        linux-4.6.patch
+        linux-4.11.patch
+        no_debug.patch)
 sha256sums=('c5604632f88ab6c68074635c73403a3f612f9f69b52af8fe9b96cf851db7a832'
             'edaeafe28410017fabb742d6ccdf060a945150fb56e41084adb7b9dd66739e2b'
             '6f9dcb930203d3e34e75cd52bc3779ace4c601d6fde6cb879288d7cb64ded2c0'
@@ -35,14 +35,13 @@ sha256sums=('c5604632f88ab6c68074635c73403a3f612f9f69b52af8fe9b96cf851db7a832'
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
-  patch -p1 -i "${srcdir}/date_time_macro.patch"
-  patch -p1 -i "${srcdir}/led.patch"
-  patch -p1 -i "${srcdir}/linux-4.0.patch"
-  patch -p1 -i "${srcdir}/linux-4.2.patch"
-  patch -p1 -i "${srcdir}/linux-4.3.patch"
-  patch -p1 -i "${srcdir}/linux-4.6.patch"
-  patch -p1 -i "${srcdir}/linux-4.11.patch"
-  patch -p1 -i "${srcdir}/no_debug.patch"
+  local i; for i in "${source[@]}"; do
+    case $i in
+      *.patch)
+        msg2 "Applying patch ${i}"
+        patch -p1 -i "${srcdir}/${i}"
+    esac
+  done
 
   # Disable power saving
   sed -i 's/^CONFIG_POWER_SAVING \= y/CONFIG_POWER_SAVING = n/' Makefile
@@ -60,20 +59,16 @@ package() {
   install -Dm644 blacklist-r8188eu.conf "${pkgdir}/etc/modprobe.d/r8188eu.conf"
 
   # Set name and version
-  sed -e "s/@_PKGNAME@/${_pkgname}/" \
-      -e "s/@PKGVER@/${pkgver}/" \
-      -i "${install_dir}/dkms.conf"
+  sed -e "s/@_PKGNAME@/${_pkgname}/" -e "s/@PKGVER@/${pkgver}/" -i "${install_dir}/dkms.conf"
 
   # Copy sources
   cd "${_pkgname}-${pkgver}"
 
-  for d in $(find . -type d)
-  do
+  for d in $(find . -type d); do
     install -dm755 "${install_dir}/$d"
   done
 
-  for f in $(find . -type f)
-  do
+  for f in $(find . -type f); do
     install -m644 "$f" "${install_dir}/$f"
   done
 }
