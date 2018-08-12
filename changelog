@@ -1,3 +1,22 @@
+2018-08-12 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 3.3.0.3-1:
+  [!] Added support for new Steam chat.
+        ASF will now listen to group chat commands only on chat of the SteamMasterClanID chat (and not any chat it was invited to like how it worked before).
+        Added MarkReceivedMessagesAsRead to BotBehaviour bot config property.
+        Added SteamMessagePrefix global config property.
+        Added ChatGroupID to SteamTarget logging target.
+        Removed HandleOfflineMessages bot config property and entire offline messages logic (use new invisible OnlineStatus for that).
+        Rewritten old chat logging functionality into new LogEventInfo-based chat logging module.
+        A lot of other compatibility changes/improvements regarding support of new Steam chat, such as making use of new internal API endpoints, also in private chat.
+    Regex pattern r! in ASF commands is now case-sensitive (due to bot names being case sensitive too).
+    Added BuildVariant to GET /Api/ASF IPC API call (ref: #860).
+    Added GET/DELETE /Api/GamesToRedeemInBackground IPC API call (ref: #856).
+    Fixed SteamTradeMatcher logic that could lead to accepting bad trades in specific circumstances (ref: SC).
+    Fixed HistoryTarget not exposing logs when being used with custom NLog configuration (especially regarding GET /Api/Log IPC API call).
+    IPC API fixes and improvements (ref: #868).
+    IPC GUI improvements, new functionalities and bugfixes.
+    [Deprecation] Features deprecated in previous release have entered stage 2 and got removed.
+    Usual amount of other code improvements, optimizations and bugfixes.
 2018-07-15 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 3.2.0.5-1:
     [!] Implemented temporary workaround for linux-arm users regarding CoreCLR #18486 segfault. Until it's fixed, linux-arm variant will target .NET Core 2.0.
