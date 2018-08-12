@@ -2,7 +2,7 @@
 
 pkgname=nuclear-player
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, multiplatform music player app that streams from multiple sources."
 arch=('x86_64')
 url="http://nuclear.gumblert.tech/"
@@ -14,7 +14,7 @@ source=(
     nuclear.desktop
 )
 md5sums=(
-    '96806f286f8613042e2b860d7e8e22d9'
+    '0499640e2bfab3abcdb1dd898b97d77e'
     '02328fb5995b2e92b3ee11dca5c6b262'    
 )
 
