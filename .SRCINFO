@@ -1,6 +1,6 @@
 pkgbase = bpfps-git
 	pkgdesc = Tool to list and diagnose bpf programs. (Who watches the watchers..? :)
-	pkgver = 0.1.1+0.gee3f846
+	pkgver = 0.1.4+0.gef2f64f
 	pkgrel = 1
 	url = https://github.com/genuinetools/bpfps
 	arch = i686

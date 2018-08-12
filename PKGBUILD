@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=bpfps-git
-pkgver=0.1.1+0.gee3f846
+pkgver=0.1.4+0.gef2f64f
 pkgrel=1
 pkgdesc="Tool to list and diagnose bpf programs.  (Who watches the watchers..? :)"
 arch=('i686' 'x86_64')
