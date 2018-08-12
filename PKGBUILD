@@ -8,7 +8,9 @@ pkgdesc='Kleber command line client for file uploads'
 url='https://kleber.io'
 arch=('any')
 license=('BSD-3-Clause')
-depends=('python' 'python-setuptools')
+depends=('python' 'python-setuptools' 'python-progressbar'
+         'python-pyperclip' 'python-requests-toolbelt'
+         'python-requests')
 optdepends=('perl-image-exiftool')
 makedepends=('git')
 provides=('kleber')
