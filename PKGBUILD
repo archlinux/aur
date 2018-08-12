@@ -7,7 +7,7 @@ _pkgbase=quassel
 pkgbase=${_pkgbase}-light
 pkgname=('quassel-client-light' 'quassel-core-light' 'quassel-monolithic-light')
 pkgver=0.12.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Next-generation distributed IRC client (minimal dependencies)"
 arch=('i686' 'x86_64')
 url="http://quassel-irc.org/"
@@ -94,7 +94,7 @@ package_quassel-client-light() {
 pkgdesc="Next-generation distributed IRC client - client only (minimal dependencies)"
 depends=('qt5-base')
 provides=('quassel-client')
-conflicts=('quassel-monolithic' 'quasslel-client' 'quassel-client-small')
+conflicts=('quassel-monolithic' 'quassel-client' 'quassel-client-small')
   _install client
 }
 
