@@ -4,9 +4,9 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 # Additional patching: Nikita Tarasov <nikatar@disroot.org>
 
-_pkgname=firefox
 pkgname=firefox-appmenu
-pkgver=61.0.1
+_pkgname=firefox
+pkgver=61.0.2
 pkgrel=1
 pkgdesc="Firefox from extra with appmenu patch"
 arch=(x86_64)
@@ -21,7 +21,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'pulseaudio: Audio support'
             'speech-dispatcher: Text-to-Speech')
 provides=("firefox=$pkgver")          
-conflicts=("firefox")
+conflicts=("firefox")           
 options=(!emptydirs !makeflags !strip)
 _repo=https://hg.mozilla.org/mozilla-unified
 source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
@@ -30,7 +30,7 @@ source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
 sha256sums=('SKIP'
             '2adca824b52ab5bc6e7e4fa486c1ecb47d283832bd4b75d10494b033f1cab911'
             '9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797'
-            '4465aa66734452597d4d797847de0c34c15bc08f21e9e8b6bf9f6ff270908f6f')
+			'4465aa66734452597d4d797847de0c34c15bc08f21e9e8b6bf9f6ff270908f6f')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -46,7 +46,7 @@ _mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
 
 prepare() {
   cd mozilla-unified
-  
+
   # actual appmenu patch from ubuntu repos
   patch -Np1 -i ../unity-menubar.patch
 
