@@ -23,7 +23,7 @@ source=(https://repo.itmettke.de/aur-archive/packages/f/firefox-kde-opensuse/fir
 noextract=(firefox-kde-opensuse-${pkgver}-${pkgrel}-x86_64.pkg.tar.xz)
 validpgpkeys=(81E604C18BFD3FA9986E32D91E74416BECD445A4)
 sha256sums=(
-        'e4e82eff86c6c9aba5a543ed04a3950817d96c56b504d9bab24b22eab7df2886'
+	'0edf82ff34d317a0d2385112fd137770158fb06b59547485116cd6f2477a86b7'
 	'SKIP'
 )
 
