@@ -1,8 +1,8 @@
 pkgbase = archnord
 	pkgdesc = Minimal command line script for NordVPN
 	pkgver = 0.1.0
-	pkgrel = 1
-	url = https://github.com/editicalu/archnord
+	pkgrel = 2
+	url = https://gitlab.com/editicalu/archnord
 	arch = any
 	license = MIT
 	depends = nordvpn
