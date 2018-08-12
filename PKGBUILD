@@ -3,8 +3,8 @@
 # Contributor: Chris Salzberg <chris@dejimata.com>
 _pkgname=neomutt
 pkgname=neomutt-git
-pkgver=20171215.r144.gb7da81ad
-pkgrel=2
+pkgver=20180716.r180.gb6a602e8a
+pkgrel=1
 pkgdesc='A version of mutt with added features - development branch'
 url='http://www.neomutt.org/'
 license=('GPL')
@@ -28,7 +28,6 @@ build() {
     ./configure \
         --prefix=/usr \
         --sysconfdir=/etc \
-        --libexecdir=/usr/lib \
         --gpgme \
         --enable-lua \
         --notmuch \
