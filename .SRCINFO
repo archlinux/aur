@@ -1,0 +1,23 @@
+pkgbase = python-tomlkit
+	pkgdesc = Style-preserving TOML library for Python
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/sdispater/tomlkit
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-setuptools
+	optdepends = python2-typing
+	options = !emptydirs
+	source = python-tomlkit-0.4.2.tar.gz::https://pypi.io/packages/source/t/tomlkit/tomlkit-0.4.2.tar.gz
+	sha256sums = 4f112445d6e52a038adf23b027ccb11905fdf88976990116e8f7b171b768cedb
+
+pkgname = python-tomlkit
+	depends = python
+
+pkgname = python2-tomlkit
+	depends = python2
+	depends = python2-enum34
+
