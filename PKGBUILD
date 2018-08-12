@@ -2,7 +2,7 @@
 
 pkgname=guile-git
 pkgver=3.0.0.506.ge6461cf1b
-pkgrel=1
+pkgrel=2
 pkgdesc="A portable, embeddable Scheme implementation (Git snapshot)"
 arch=('i686' 'x86_64' 'aarch64')
 license=('GPL')
@@ -12,7 +12,7 @@ depends=('gc' 'libtool' 'libffi' 'libunistring' 'gmp' 'readline')
 provides=('guile')
 conflicts=('guile4emacs')
 options=('!strip' '!makeflags' 'libtool')
-source=("git://git.sv.gnu.org/${pkgname%-git}.git" version.patch rename_scm.h.patch)
+source=("git://git.sv.gnu.org/${pkgname%-git}.git#commit=e6461cf1b" version.patch rename_scm.h.patch)
 url="http://www.gnu.org/software/guile/"
 sha256sums=('SKIP'
             '7f902891a717cd6606a6a768e6e59b40c96757cbfa9a2262722567bea31b3774'
@@ -38,12 +38,12 @@ build() {
 package() {
   cd ${pkgname%-git}
   make DESTDIR="$pkgdir/" install
-  cd $pkgdir/usr/share/info
+  cd "$pkgdir"/usr/share/info
   for i in guile*
   do
     mv $i guile-3.0${i#guile}
   done
   mv r5rs.info r5rs-3.0.info
-  mv $pkgdir/usr/share/aclocal/guile.m4 $pkgdir/usr/share/aclocal/guile-3.0.m4
-  rm $pkgdir/usr/lib/libguile-3.0.so.0.0.0-gdb.scm
+  mv "$pkgdir"/usr/share/aclocal/guile.m4 "$pkgdir"/usr/share/aclocal/guile-3.0.m4
+  rm "$pkgdir"/usr/lib/libguile-3.0.so.0.0.0-gdb.scm
 }
