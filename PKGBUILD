@@ -1,14 +1,14 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=oxy
-pkgver=3.0.0+dev1+91+ga5704df
-_commit=a5704df93e652b7ca461b5ec33b442c23d929eaa
-pkgrel=2
+pkgver=3.0.0+dev1+102+g2f2abc9
+_commit=2f2abc9e351b52656e08b343976fd8cefc318657
+pkgrel=1
 pkgdesc='SSH-alike that uses the Noise protocol'
 arch=(i686 x86_64)
 url=https://github.com/oxy-secure/oxy
 license=(BSD)
-makedepends=(git rust-nightly)
+makedepends=(git rust)
 conflicts=(oxy-git)
 source=(git+$url#commit=$_commit)
 sha512sums=(SKIP)
@@ -20,12 +20,12 @@ pkgver() {
 
 build() {
   cd oxy
-  cargo +nightly build --release --locked
+  cargo build --release --locked
 }
 
 check() {
   cd oxy
-  cargo +nightly test --release --locked || true
+  cargo test --release --locked || true
 }
 
 package() {
