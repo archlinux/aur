@@ -1,14 +1,14 @@
 pkgbase = cdhist
 	pkgdesc = Bash cd history
-	pkgver = 1.5.2
+	pkgver = 1.5.3
 	pkgrel = 1
 	url = https://github.com/bulletmark/cdhist
 	install = install.sh
 	arch = any
 	license = GPL3
 	depends = python
-	source = cdhist-1.5.2.tar.gz::https://github.com/bulletmark/cdhist/archive/1.5.2.tar.gz
-	md5sums = 21890bdc7a9d43e3513e15717622fd9d
+	source = cdhist-1.5.3.tar.gz::https://github.com/bulletmark/cdhist/archive/1.5.3.tar.gz
+	md5sums = ac95142f7493e07b05188d33978e2048
 
 pkgname = cdhist
 
