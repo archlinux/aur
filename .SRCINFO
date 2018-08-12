@@ -1,19 +1,19 @@
 pkgbase = libpki
 	pkgdesc = Provides an easy-to-use PKI library for PKI enabled application development
-	pkgver = 0.8.8
-	pkgrel = 2
+	pkgver = 0.8.9
+	pkgrel = 1
 	url = https://pki.openca.org
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	depends = openssl
+	depends = openssl-1.0
 	depends = libldap
 	depends = libmysqlclient
 	depends = postgresql-libs
 	depends = libxml2
 	options = !libtool
-	source = http://prdownloads.sourceforge.net/project/openca/libpki/releases/v0.8.8/sources/libpki-0.8.8.tar.gz
-	md5sums = 055638d609fbbaa0f7d4242ceaf2b1b7
+	source = http://prdownloads.sourceforge.net/project/openca/libpki/releases/v0.8.9/sources/libpki-0.8.9.tar.gz
+	md5sums = b7ef3253b87ab3dac612d7afa0b445b6
 
 pkgname = libpki
 
