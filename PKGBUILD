@@ -2,12 +2,12 @@
 
 pkgname=minecraft-pi
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft Pi Edition (for Raspberry Pi devices)"
 arch=('armv6h' 'armv7h')
 url="http://pi.minecraft.net/"
 license=('custom')
-depends=('libx11' 'libpng12' 'desktop-file-utils')
+depends=('libx11' 'sdl' 'libpng12' 'desktop-file-utils')
 #optdepends=('python-minecraft-pi: Python bindings for Minecraft Pi')
 makedepends=('pacman>=4.2.0')
 options=('!emptydirs' '!strip')
