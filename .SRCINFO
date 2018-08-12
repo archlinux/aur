@@ -1,7 +1,7 @@
 pkgbase = idos-timetable-maps-chaps-trains-europe-latest
 	pkgdesc = Map data for the timetable search engines by CHAPS: European railway.
-	pkgver = 2017_10_17
-	pkgrel = 2
+	pkgver = 2018_7_25
+	pkgrel = 1
 	epoch = 0
 	url = http://chaps.cz/eng/download/idos/zip#kotvamap
 	arch = any
@@ -9,12 +9,12 @@ pkgbase = idos-timetable-maps-chaps-trains-europe-latest
 	license = custom
 	makedepends = wget
 	depends = idos-timetable-data-trains
-	provides = idos-timetable-maps-chaps-trains-europe=2017_10_17
-	provides = idos-timetable-maps=2017_10_17
-	provides = idos-timetable-maps-trains=2017_10_17
-	provides = idos-timetable-maps-trains-cz=2017_10_17
-	provides = idos-timetable-maps-trains-sk=2017_10_17
-	provides = idos-timetable-maps-trains-europe=2017_10_17
+	provides = idos-timetable-maps-chaps-trains-europe=2018_7_25
+	provides = idos-timetable-maps=2018_7_25
+	provides = idos-timetable-maps-trains=2018_7_25
+	provides = idos-timetable-maps-trains-cz=2018_7_25
+	provides = idos-timetable-maps-trains-sk=2018_7_25
+	provides = idos-timetable-maps-trains-europe=2018_7_25
 	conflicts = idos-timetable-maps-chaps-trains-europe
 	conflicts = idos-timetable-maps-chaps-all
 	source = vlak_m.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/VLAK_M.ZIP

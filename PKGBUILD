@@ -5,8 +5,8 @@
 _pkgname=idos-timetable-maps-chaps-trains-europe
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2017_10_17
-pkgrel=2
+pkgver=2018_7_25
+pkgrel=1
 pkgdesc="Map data for the timetable search engines by CHAPS: European railway."
 arch=(any)
 url="http://chaps.cz/eng/download/idos/zip#kotvamap"
