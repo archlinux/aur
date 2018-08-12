@@ -1,7 +1,7 @@
 # Maintainer: Jonas Hahnfeld <hahnjo@hahnjo.de>
 
 pkgname=dynconf
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A small program to apply recipes to configuration files"
 arch=('x86_64')
