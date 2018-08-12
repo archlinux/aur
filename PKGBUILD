@@ -50,6 +50,11 @@ prepare() {
        git pull --no-edit origin refs/pull/3/head # fixes conflict with system miniupnp upon installation
 }
 
+CMAKE_FLAGS+=" -DCMAKE_BUILD_TYPE=$_buildtype "
+CMAKE_FLAGS+=" -DCMAKE_INSTALL_PREFIX=/usr "
+CMAKE_FLAGS+=" -DBUILD_GUI_DEPS=ON "
+CMAKE_FLAGS+=" -Wno-dev " # silence warnings for devs
+
 build() {
 	cd "$srcdir/$_gitname"
 
@@ -60,18 +65,11 @@ build() {
 		_buildtype+="Release"
 	fi
 
-	CMAKE_FLAGS+=" -DCMAKE_BUILD_TYPE=$_buildtype "
-	CMAKE_FLAGS+=" -DCMAKE_INSTALL_PREFIX=/usr "
-	CMAKE_FLAGS+=" -DBUILD_TESTS=OFF "
-	CMAKE_FLAGS+=" -DBUILD_GUI_DEPS=ON "
-
 	# For OpenSSL v1.0
 	#CMAKE_FLAGS+=" -DOPENSSL_ROOT_DIR='/usr/include/openssl-1.0;/usr/lib/openssl-1.0 "
 
-	CMAKE_FLAGS+=" -Wno-dev " # silence warnings for devs
-
 	mkdir -p $_builddir && cd $_builddir
-	cmake $CMAKE_FLAGS ..
+	cmake $CMAKE_FLAGS -DBUILD_TESTS=OFF ..
 	make
 }
 
@@ -79,7 +77,7 @@ check() {
 	cd "$srcdir/$_gitname"
 	cd $_builddir
 
-	cmake -DBUILD_TESTS=ON ..
+	cmake $CMAKE_FLAGS -DBUILD_TESTS=ON ..
 	make
 
 	# Run unit_tests test separately to exclude DNS tests which often fail with
