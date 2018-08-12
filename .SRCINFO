@@ -10,7 +10,7 @@ pkgbase = hyperion.ng-git
 	arch = armv7h
 	arch = aarch64
 	license = MIT
-	makedepends = cmake
+	makedepends = cmake=3.10.3
 	depends = libusb
 	depends = protobuf
 	depends = python

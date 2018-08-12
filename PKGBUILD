@@ -9,7 +9,7 @@ url="https://github.com/hyperion-project/hyperion.ng"
 license=('MIT')
 depends=('libusb' 'protobuf' 'python' 'qt5-serialport' 'avahi')
 optdepends=('xorg-server: X11 grabbing')
-makedepends=('cmake')
+makedepends=('cmake=3.10.3')
 provides=("hyperion")
 conflicts=('hyperion' 'hyperion-git')
 backup=('etc/hyperion/config/hyperion.config.json')
