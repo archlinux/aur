@@ -4,14 +4,14 @@
 
 pkgname=jdk-dcevm
 _major=8
-_minor=144
-_build=b01
-_dcevmbuild=2
-_hash=090f390dda5b47b9b721c7dfaa008135
+_minor=181
+_build=b13
+_dcevmbuild=
+_hash=96a7b8442fe848ef90c96a2fad6ed6d1
 pkgver=${_major}u${_minor}
 pkgrel=1
 pkgdesc="Oracle Java Development Kit with DCEVM patches"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url=https://dcevm.github.io/
 license=('custom')
 depends=('ca-certificates-java' 'desktop-file-utils' 'hicolor-icon-theme' 'java-environment-common'
@@ -28,6 +28,7 @@ provides=("java-runtime=$_major" "java-runtime-headless=$_major" "java-environme
 DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
 _jname=${pkgname}${_major}
 _jvmdir=/usr/lib/jvm/java-$_major-$pkgname
+_dcevmbuild_a="$(test "x$_dcevmbuild" = "x" || echo "%2B$_dcevmbuild")"
 
 backup=("etc/java-$_jname/amd64/jvm.cfg"
         "etc/java-$_jname/images/cursors/cursors.properties"
@@ -47,24 +48,22 @@ backup=("etc/java-$_jname/amd64/jvm.cfg"
 [[ $CARCH = i686 ]] && backup[0]="etc/java-$_jname/i386/jvm.cfg"
 options=('!strip') # JDK debug-symbols
 install=$pkgname.install
-source=("http://download.oracle.com/otn-pub/java/jce/$_major/jce_policy-$_major.zip"
-        "http://github.com/dcevm/dcevm/releases/download/light-jdk$pkgver%2B$_dcevmbuild/DCEVM-$pkgver-installer.jar"
+source=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_hash/jdk-$pkgver-linux-x64.tar.gz"
+        "http://download.oracle.com/otn-pub/java/jce/$_major/jce_policy-$_major.zip"
+        "http://github.com/dcevm/dcevm/releases/download/light-jdk$pkgver$_dcevmbuild_a/DCEVM-$pkgver-installer.jar"
         "jconsole-$_jname.desktop"
         "jmc-$_jname.desktop"
         "jvisualvm-$_jname.desktop"
         "policytool-$_jname.desktop")
-source_i686=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_hash/jdk-$pkgver-linux-i586.tar.gz")
-source_x86_64=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_hash/jdk-$pkgver-linux-x64.tar.gz")
-md5sums=('b3c7031bc65c28c2340302065e7d00d3'
-         'edda2df7054c969b4d15cd10343c98c0'
-         'b4f0da18e03f7a9623cb073b65dde6c1'
-         '8f0ebcead2aecad67fbd12ef8ced1503'
-         'a4a21b064ff9f3c3f3fdb95edf5ac6f3'
-         '98245ddb13914a74f0cc5a028fffddca')
-md5sums_i686=('13d771707f326b02e2497c99e0a2ca37')
-md5sums_x86_64=('2d59a3add1f213cd249a67684d4aeb83')
+md5sums=('ef599e322eee42f6769991dd3e3b1a31'
+         'b3c7031bc65c28c2340302065e7d00d3'
+         'fe5d0074ba0478897b04a95056a7f624'
+         '307b5ce85882e6c6649486df51dab00c'
+         '4c428dc81d51e9d294ec9c26827f1adc'
+         '973181e4a4cfdc79c43b297a6b821354'
+         '3519db1ad1455746126f092ad6d850e4')
 ## Alternative mirror, if your local one is throttled:
-#source_x86_64=("http://ftp.wsisiz.edu.pl/pub/pc/pozyteczne%20oprogramowanie/java/$pkgname-$pkgver-linux-x64.gz")
+#source[0]=("http://ftp.wsisiz.edu.pl/pub/pc/pozyteczne%20oprogramowanie/java/$pkgname-$pkgver-linux-x64.gz")
 
 package() {
     cd jdk1.${_major}.0_${_minor}
@@ -76,9 +75,6 @@ package() {
     install -d "$pkgdir"/usr/share/licenses/java$_major-$pkgname
 
     msg2 "Removing redundancies..."
-    rm    db/bin/*.bat
-    rm    db/3RDPARTY
-    rm    db/LICENSE
     rm -r jre/lib/desktop/icons/HighContrast/
     rm -r jre/lib/desktop/icons/HighContrastInverse/
     rm -r jre/lib/desktop/icons/LowContrast/
@@ -155,7 +151,7 @@ package() {
     mv man/ "$pkgdir"/usr/share
 
     # Move/link licenses
-    mv db/NOTICE COPYRIGHT LICENSE *.txt "$pkgdir"/usr/share/licenses/java$_major-$pkgname/
+    mv COPYRIGHT LICENSE *.txt "$pkgdir"/usr/share/licenses/java$_major-$pkgname/
     ln -sf /usr/share/licenses/java$_major-$pkgname/ "$pkgdir"/usr/share/licenses/$pkgname
 
     msg2 "Installing Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files..."

@@ -1,7 +1,7 @@
 [Desktop Entry]
-Exec=/usr/lib/jvm/java-8-jdk/jre/bin/policytool
+Exec=/usr/lib/jvm/java-8-jdk-dcevm/jre/bin/policytool
 Icon=sun-java-jdk8
-Name=Java Policy Settings
+Name=Java 8 Policy Settings
 StartupNotify=true
 Terminal=false
 Type=Application

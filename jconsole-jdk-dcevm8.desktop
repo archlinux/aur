@@ -1,7 +1,7 @@
 [Desktop Entry]
-Exec=/usr/lib/jvm/java-8-jdk/bin/jconsole
+Exec=/usr/lib/jvm/java-8-jdk-dcevm/bin/jconsole
 Icon=sun-java-jdk8
-Name=Java Monitoring and Management Console
+Name=Java 8 Monitoring and Management Console
 StartupNotify=true
 Terminal=false
 Type=Application
