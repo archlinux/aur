@@ -1,4 +1,4 @@
-# Mantainer: Giovanni 'ItachiSan' Santini <giovannisantini93@yahoo.it>
+# Maintainer: Giovanni 'ItachiSan' Santini <giovannisantini93@yahoo.it>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=epiphany-mse
