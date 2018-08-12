@@ -96,7 +96,7 @@ build_kernel_package() {
 }
 
 package_linux-odroid-u3-git() {
-  pkgdesc="The (mostly) mainline Linux Kernel and modules for ODROID U3"
+  pkgdesc="Mainline Linux Kernel and modules for ODROID U3"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
   provides=('kernel26' "linux=${pkgver}")
