@@ -2,8 +2,9 @@
 # Contributor: ssv1982 <ssv1982@gmail.com>
 
 pkgname=kerio-control-vpnclient
-pkgver=9.2.5.2532
+pkgver=9.2.5.2570
 pkgrel=1
+_pkgver_patch_level='-p1'
 pkgdesc="Kerio Control VPN client for corporate networks."
 arch=('x86_64')
 url="http://www.kerio.com/control"
@@ -11,11 +12,11 @@ license=('custom:EULA')
 options=(!strip)
 install="${pkgname}.install"
 depends=('procps' 'dialog' 'util-linux')
-source=("http://download.kerio.com/dwn/control/control-${pkgver%.*}-${pkgver##*.}/kerio-control-vpnclient-${pkgver%.*}-${pkgver##*.}-linux-amd64.deb"
+source=("http://download.kerio.com/dwn/control/control-${pkgver%.*}-${pkgver##*.}/kerio-control-vpnclient-${pkgver%.*}-${pkgver##*.}${_pkgver_patch_level}-linux-amd64.deb"
         "kvpnc"
         "kvpnc.conf"
         "kvpnc.service")
-sha256sums=('1584b87f8fc8a9e029d55338e5dcb6307b651495f7c540c933d2b87baa89627c'
+sha256sums=('c5c01d9152912f9ea2a1400299e6c04a7c2e6f8ad26c65987feb659a3da0a185'
             '984ac81f6fe291ca11a4dc6822bcb1e7efaf82d14259f5395247fdbdef4c1759'
             '2f15a0d88c9fa915cd9150796638811daec911e6824b8ff5f96f131352d1e74a'
             'bd8b1aabc31b9b24c4b63ce8099bef111dc84bd4923c77d42e05d3f1704d5c17')
