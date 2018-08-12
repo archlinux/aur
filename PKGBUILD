@@ -3,7 +3,7 @@
 
 _pkgname=TriFusion
 pkgname=trifusion-git
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Streamlining phylogenomic data gathering, processing and visualization"
 arch=("any")
