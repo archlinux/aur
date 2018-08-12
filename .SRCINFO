@@ -8,6 +8,7 @@ pkgbase = gputop-git
 	license = MIT
 	makedepends = meson
 	makedepends = ninja
+	makedepends = python-mako
 	depends = openssl
 	optdepends = mesa: for the UI
 	optdepends = libepoxy: for the UI
