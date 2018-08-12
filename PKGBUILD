@@ -2,7 +2,7 @@
 
 _name=qzdoom
 pkgname=${_name}-git
-pkgver=2.2pre
+pkgver=q2.2pre+282+g9670833f5
 pkgrel=1
 pkgdesc='Advanced Doom source port with true color renderer (git version)'
 arch=('i686' 'x86_64')
@@ -47,12 +47,12 @@ source=("${_name}::git://github.com/raa-eruanna/${_name}.git"
         '0001-Fix-soundfont-search-path.patch')
 sha256sums=('SKIP'
             '0b3bcbe2cdebda2fed887b796f4ff0fa51f3d544e80cab16b3b1cbd7813b7e04'
-            '26cd2fa2285bcf4c9147a7f1763c217c3e7056bd4a729824f9af0104f6f410c9')
+            'b0e621a39e0a050ce119fb4bea888afc7a02039ee9f37a2a5b518e4fe924b3f1')
 
 pkgver() {
     cd $_name
 
-    git describe --tags --match 'q*' | sed -r 's/^q//;s/-/+/g'
+    git describe --tags --match 'q*' | tr - +
 }
 
 prepare() {
