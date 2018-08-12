@@ -1,0 +1,14 @@
+pkgbase = icu61
+	pkgdesc = International Components for Unicode library
+	pkgver = 61.1
+	pkgrel = 1
+	url = http://www.icu-project.org/
+	arch = i686
+	arch = x86_64
+	license = custom:"icu"
+	depends = gcc-libs>=4.7.1-5
+	source = https://vorboss.dl.sourceforge.net/project/icu/ICU4C/61.1/icu4c-61_1-src.tgz
+	sha1sums = 06ca7b1e64c28e07d5633a2e0257380884ea486b
+
+pkgname = icu61
+
