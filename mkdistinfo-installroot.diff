@@ -1,0 +1,27 @@
+--- mk_distinfo.py.orig	2018-08-12 17:06:29.710063137 +0200
++++ mk_distinfo.py	2018-08-12 17:12:55.903399331 +0200
+@@ -75,9 +75,14 @@
+ # Create the RECORD file.
+ record_fn = os.path.join(distinfo_dir, 'RECORD')
+ record_f = open(record_fn, 'w')
++INSTALL_ROOT = os.getenv('INSTALL_ROOT', '').rstrip('/')
+ 
+ for name in installed:
++    if INSTALL_ROOT and not name.startswith(INSTALL_ROOT):
++        name = os.path.join(INSTALL_ROOT, name.lstrip('/'))
++
+     native_name = name.replace('/', os.sep)
++
+     if os.path.isdir(native_name):
+         all_fns = []
+ 
+@@ -102,6 +107,9 @@
+         data = fn_f.read()
+         fn_f.close()
+ 
++        if INSTALL_ROOT and fn_name.startswith(INSTALL_ROOT):
++            fn_name = fn_name[len(INSTALL_ROOT):]
++
+         digest = base64.urlsafe_b64encode(
+                 hashlib.sha256(data).digest()).rstrip(b'=').decode('ascii')
+ 
