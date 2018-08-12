@@ -1,5 +1,5 @@
 pkgbase = kicad-packages3d
-	pkgdesc = Official KiCad 3D model libraries -- stable release
+	pkgdesc = Official KiCad 3D model libraries -- stable and rc releases
 	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://kicad.github.io/packages3d
