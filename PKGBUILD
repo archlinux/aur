@@ -3,7 +3,7 @@
 
 _name=gzdoom
 pkgname=${_name}
-pkgver=3.4.1
+pkgver=3.5.0
 pkgrel=1
 pkgdesc='Advanced Doom source port with OpenGL support'
 arch=('i686' 'x86_64')
@@ -47,7 +47,7 @@ source=("${_name}::git://github.com/coelckers/${_name}.git#tag=g${pkgver}"
         '0001-Fix-soundfont-search-path.patch')
 sha256sums=('SKIP'
             '59122e670f72aa2531aff370e7aaab2d886a7642e79e91f27a533d3b4cad4f6d'
-            'aece1a10e7da53acf8f51387b922f6a0f5b2bb693255ad95a84a169460bacf43')
+            'b0e621a39e0a050ce119fb4bea888afc7a02039ee9f37a2a5b518e4fe924b3f1')
 
 prepare() {
     cd $_name
