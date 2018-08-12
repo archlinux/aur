@@ -1,50 +1,41 @@
+# Maintainer: Muflone http://www.muflone.com/contacts/english/
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
 
-pkgname='perl-test-object'
-pkgver='0.07'
-pkgrel='1'
+pkgname=perl-test-object
+_perl_namespace=Test
+_perl_module=Object
+pkgver=0.07
+pkgrel=2
 pkgdesc="Thoroughly testing objects via registered handlers"
 arch=('any')
-license=('PerlArtistic' 'GPL')
-options=('!emptydirs')
+url="https://metacpan.org/release/${_perl_namespace}-${_perl_module}"
+license=('GPL' 'PerlArtistic')
 depends=('perl')
-makedepends=()
-url='http://search.cpan.org/dist/Test-Object'
-source=('http://search.cpan.org/CPAN/authors/id/A/AD/ADAMK/Test-Object-0.07.tar.gz')
-md5sums=('ab71791756faaabc3b4fad5bcc1df50f')
-sha512sums=('51a77e882ce427ffae5bf1fb1550d96f96b25faf764018056e22ae040c11be189ffe91cf9338b4deb3f62cc0657a7f321138208556910a5d43355953d02399e5')
-_distdir="Test-Object-0.07"
+makedepends=('perl-module-install')
+source=("https://www.cpan.org/modules/by-module/${_perl_namespace}/${_perl_namespace}-${_perl_module}-${pkgver}.tar.gz")
+sha256sums=('d142a91b039928dc5d616c7bd9bb62ffb06e58991f00c54e26ef7e62ed61032a')
+options=('!emptydirs')
 
 build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
-
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
-    make
-  )
+  cd "${_perl_namespace}-${_perl_module}-${pkgver}"
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
+  perl Makefile.PL
+  make
 }
 
 check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
-  )
+  cd "${_perl_namespace}-${_perl_module}-${pkgver}"
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1
+  make test
 }
 
 package() {
-  cd "$srcdir/$_distdir"
-  make install
-
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  cd "${_perl_namespace}-${_perl_module}-${pkgver}"
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  make pure_install INSTALLDIRS=vendor DESTDIR="${pkgdir}"
+  # Delete unuseful files
+  find "${pkgdir}" -name '.packlist' -delete
 }
 
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
