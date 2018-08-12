@@ -7,7 +7,7 @@
 
 _pkgname=sooperlooper
 pkgname=${_pkgname}-git
-pkgver=r6.206e74f
+pkgver=r499.3bdfe18
 pkgrel=1
 pkgdesc="Live looping sampler capable of immediate loop recording. Build from git with open merge requests."
 arch=('i686' 'x86_64')
@@ -30,18 +30,19 @@ sha256sums=('SKIP'
             'add385c13329e0d28b4d89d1a08953d09013a896c80bbda7fe450de4bd279507'
             '465dfb14154899eae5435afa7b2e04b2cbb8463fc3b60c465246628e496b3d85')
 pkgver() {
+  cd "${srcdir}/${_pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "${_pkgname}"
+  cd "${srcdir}/${_pkgname}"
   patch -p1 < ../0001-fix_wxwidgets_3.0.2.patch
   patch -p1 < ../0002-fix-build-with-ncurses-6.patch
   patch -p1 < ../0003-fix-pos-font-size.patch
 }
 
 build() {
-  cd "${_pkgname}"
+  cd "${srcdir}/${_pkgname}"
   ./autogen.sh
   CPPFLAGS=-std=c++11 ./configure \
           --prefix=/usr \
@@ -50,7 +51,7 @@ build() {
 }
 
 package() {
-  cd "${_pkgname}"
+  cd "${srcdir}/${_pkgname}"
   make DESTDIR="${pkgdir}" install
   install -Dm644 ../${_pkgname}.desktop "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
   install -Dm644 ../slgui.png "${pkgdir}/usr/share/pixmaps/slgui.png"
