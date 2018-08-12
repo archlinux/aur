@@ -1,16 +1,16 @@
 pkgbase = ruby-cri
 	pkgdesc = A library for building easy-to-use commandline tools.
-	pkgver = 2.11.0
+	pkgver = 2.12.0
 	pkgrel = 1
 	url = https://rubygems.org/gems/cri
 	arch = any
 	license = MIT
 	makedepends = ruby-rdoc
 	depends = ruby-colored>=1.2
-	noextract = cri-2.11.0.gem
+	noextract = cri-2.12.0.gem
 	options = !emptydirs
-	source = http://rubygems.org/downloads/cri-2.11.0.gem
-	sha256sums = 50304e9c84bc85e2ead25c2ee761ad1e0dab34f034d61addd22194db468e4e6a
+	source = http://rubygems.org/downloads/cri-2.12.0.gem
+	sha256sums = 4218c80c85a043c4396a566303744a03f03ffe7667496f5dcd51bb7c87bb7116
 
 pkgname = ruby-cri
 
