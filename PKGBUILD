@@ -18,7 +18,7 @@ source=(
     "https://gitlab.com/Scrumplex/ScreenshotBASH/-/archive/${pkgver}/ScreenshotBASH-${pkgver}.tar.gz"
 )
 sha512sums=(
-    "f9077e36cd1db6751790a9fbe91201fef5d55a7fce56eb49e1582a201fed809028e5c783462f116ffb365e306318742631052f8396d8f190e4f8c10a9916021a"
+    "c289879a93602429aca4c8bfa84883d4347a8c0c6d1d8b68743d38496af3c78c2ed1d267579642c7cd631676b86eff525dced2eb42491636f2f5ebdd42efa710"
 )
 
 package() {
