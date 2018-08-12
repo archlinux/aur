@@ -1,0 +1,13 @@
+pkgbase = anidb-mv
+	pkgdesc = Command line client for AniDB
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/ljb/anidb-mv
+	arch = any
+	license = GPL3
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/a/anidb-mv/anidb-mv-0.1.tar.gz
+	sha256sums = d08db0fe1fb7969c3dba27c32b37e0fae6a12073c422f74fecc3205bc6b61eb7
+
+pkgname = anidb-mv
+
