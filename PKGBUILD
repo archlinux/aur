@@ -1,7 +1,7 @@
 # Maintainer: Jan Bader <c.arch@jan.javil.eu>
 pkgname="ynab4"
 pkgver="4.3.857"
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="You Need A Budget, installs with wine"
 arch=("x86_64")
