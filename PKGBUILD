@@ -1,16 +1,16 @@
 # Maintainer: Zhustec <zhustec@foxmail.com>
 
-pkgname=erlang-ranch
+pkgname=erlang-cowlib
 _pkgname="${pkgname/erlang-/}"
-pkgver=1.6.0
+pkgver=2.5.0
 pkgrel=1
-pkgdesc="Socket acceptor pool for TCP protocols."
+pkgdesc="Support library for manipulating Web protocols"
 arch=("x86_64")
-url=https://hex.pm/packages/ranch
+url=https://hex.pm/packages/cowlib
 license=("ISC")
 depends=("erlang-nox")
 source=("https://repo.hex.pm/tarballs/$_pkgname-$pkgver.tar")
-sha256sums=("eb6170a697659046f517ceef15e568993d314591f05e73611e05605d4ac937f7")
+sha256sums=("da4976730819605a13f36a8feab74e50e31510eda022a10abb8ae298114ea5d2")
 
 build() {
     cd "$srcdir" && tar xvaf contents.tar.gz
@@ -21,7 +21,7 @@ package() {
     cd "$srcdir"
     mkdir -p "$pkgdir/usr/lib/erlang/lib/"
 
-    for i in ebin src; do
+    for i in ebin include src; do
         cp -R $i "$pkgdir/usr/lib/erlang/lib/"
     done
 
