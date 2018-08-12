@@ -1,0 +1,14 @@
+pkgbase = erlang-meck
+	pkgdesc = A mocking framework for Erlang
+	pkgver = 0.8.12
+	pkgrel = 1
+	url = https://hex.pm/packages/meck
+	arch = x86_64
+	license = Apache 2.0
+	makedepends = rebar
+	depends = erlang-nox
+	source = https://repo.hex.pm/tarballs/meck-0.8.12.tar
+	sha256sums = 7a6ab35a42e6c846636e8ecd6fdf2cc2e3f09dbee1abb15c1a7c705c10775787
+
+pkgname = erlang-meck
+
