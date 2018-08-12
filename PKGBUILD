@@ -3,11 +3,11 @@
 pkgname=xperia-flashtool
 _realname=flashtool
 pkgver=0.9.25.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A S1 protocol flashing software for Sony Xperia phones"
 arch=('x86_64')
 url="http://www.flashtool.net/"
-license=('unknown')
+license=('GPL3')
 depends=('libselinux' 'libsystemd' 'glib2' 'mono')
 makedepends=('p7zip')
 source=("http://url.muflone.com/${pkgname}-${pkgver}-linux.tar.7z"
