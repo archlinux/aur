@@ -9,7 +9,7 @@
 
 pkgname=rednotebook
 pkgver=2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple desktop diary."
 arch=('any')
 url="http://rednotebook.sourceforge.net"
