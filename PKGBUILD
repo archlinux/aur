@@ -75,7 +75,7 @@ prepare() {
 
 build() {
   cd $_srcname
-  make bzImage modules
+  make ${MAKEFLAGS} bzImage modules
 }
 
 _package() {
