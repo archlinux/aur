@@ -1,13 +1,13 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=oxy-git
-pkgver=3.0.0+dev1+91+ga5704df
+pkgver=3.0.0+dev1+102+g2f2abc9
 pkgrel=1
 pkgdesc='SSH-alike that uses the Noise protocol (git)'
 arch=(i686 x86_64)
 url=https://github.com/oxy-secure/oxy
 license=(BSD)
-makedepends=(git rust-nightly)
+makedepends=(git rust)
 provides=(oxy)
 conflicts=(oxy)
 source=(git+$url)
@@ -20,16 +20,16 @@ pkgver() {
 
 build() {
   cd oxy
-  cargo +nightly build --locked --release
+  cargo build --locked --release
 }
 
 check() {
   cd oxy
-  cargo +nightly test --locked --release || true
+  cargo test --locked --release || true
 }
 
 package() {
   cd oxy
-  install -D target/release/oxy "$pkgdir"/usr/bin/oxy
-  install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/oxy/LICENSE
+  install -D target/release/oxy -t "$pkgdir"/usr/bin
+  install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/oxy
 }
