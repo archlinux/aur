@@ -2,9 +2,9 @@
 
 _pkgname=kwin-effect-osdclock
 pkgname="$_pkgname-git"
-pkgver=20180812.594e4de
+pkgver=20180812.c480336
 pkgrel=1
-pkgdesc='KWin effect that displays clock at the corner the screen'
+pkgdesc='KWin effect that displays clock at the corner of the screen'
 arch=('x86_64')
 url="https://github.com/laloch/${_pkgname}"
 license=('GPL')
