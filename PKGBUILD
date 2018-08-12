@@ -5,13 +5,13 @@
 
 pkgname=lib32-yaml-cpp
 pkgver=0.6.2
-pkgrel=1
-pkgdesc="YAML parser and emitter in C++, written around the YAML 1.2 spec"
+pkgrel=2
+pkgdesc="YAML parser and emitter in C++, written around the YAML 1.2 spec (32-bits)"
 url="https://github.com/jbeder/yaml-cpp"
 arch=('x86_64')
 license=('MIT')
 depends=('lib32-gcc-libs')
-makedepends=('cmake')
+makedepends=('cmake' 'gcc-multilib')
 source=(https://github.com/jbeder/yaml-cpp/archive/yaml-cpp-${pkgver}.tar.gz)
 sha512sums=('fea8ce0a20a00cbc75023d1db442edfcd32d0ac57a3c41b32ec8d56f87cc1d85d7dd7a923ce662f5d3a315f91a736d6be0d649997acd190915c1d68cc93795e4')
 
@@ -22,8 +22,9 @@ prepare() {
 build() {
     cd yaml-cpp-yaml-cpp-$pkgver/build
 
-    export CC='gcc -m32'
-    export CXX='g++ -m32'
+    export CFLAGS="-m32 ${CFLAGS}"
+    export CXXFLAGS="-m32 ${CXXFLAGS}"
+    export LDFLAGS="-m32 ${LDFLAGS}"
     export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
     cmake .. \
