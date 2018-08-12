@@ -11,7 +11,7 @@ pkgrel=2
 url="https://github.com/ZerBea/$pkgname"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ZerBea/$pkgname/archive/$pkgver.tar.gz")
 
-md5sums=('6a6ebc3512c849eaba590df481306538')
+sha384sums=('722db9ab11df74f33144a68e258175ca7f80bfa0cd42aa8f8bb6ca36bafd670ec677482d412a4b71fc07499473fff7f2')
 
 makedepends=('make' 'gcc')
 
