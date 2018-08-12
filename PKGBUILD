@@ -2,7 +2,7 @@
 # Contributor: Alain Kalker <a.c.kalker@gmail.com>
 pkgname=shen-sbcl
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A portable functional programming language (SBCL port)"
 arch=('x86_64')
@@ -31,6 +31,10 @@ package() {
 
     # binary
     install -Dm755 "bin/sbcl/shen" "$pkgdir/usr/bin/shen"
+
+    # documentation
+    install -d -m755 "$pkgdir/usr/share/doc/$pkgname"
+    cp -a kernel/doc/*.md "$pkgdir/usr/share/doc/$pkgname"
 
     # license
     install -Dm644 "LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
