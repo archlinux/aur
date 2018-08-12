@@ -1,0 +1,14 @@
+pkgbase = erlang-yamerl
+	pkgdesc = YAML 1.2 and JSON parser in pure Erlang
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://hex.pm/packages/yamerl
+	arch = x86_64
+	license = BSD 2-clause
+	makedepends = rebar
+	depends = erlang-nox
+	source = https://repo.hex.pm/tarballs/yamerl-0.7.0.tar
+	sha256sums = cb5a4481e2e2ad36db83bd9962153e1a9208e2b2484185e33fc2caac6a50b108
+
+pkgname = erlang-yamerl
+
