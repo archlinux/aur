@@ -1,7 +1,7 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 
 pkgname=screenshot-bash
-pkgver=1.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Screenshot script, that uploads screenshot to a predefined server.'
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=(
     "https://gitlab.com/Scrumplex/ScreenshotBASH/-/archive/${pkgver}/ScreenshotBASH-${pkgver}.tar.gz"
 )
 sha512sums=(
-    "c289879a93602429aca4c8bfa84883d4347a8c0c6d1d8b68743d38496af3c78c2ed1d267579642c7cd631676b86eff525dced2eb42491636f2f5ebdd42efa710"
+    "09489b886686906ee2f62e13c5a3022000dbd3701bb31472797bc48743e2879cdac70ad9241429c3261e3d43fb74da9971757a0f2f0a0d3ef51c11dfbde43d62"
 )
 
 package() {
