@@ -15,7 +15,7 @@ license=('GPL')
 provides=("${_appname}")
 conflicts=("${_appname}")
 depends=('gmp' 'libgcrypt' 'libextractor' 'sqlite' 'gnurl'
-	 'libmicrohttpd' 'libunistring' 'libidn')
+	 'libmicrohttpd' 'libunistring' 'libidn' 'jansson')
 makedepends=('gettext' 'pkgconfig' 'autoconf' 'fakeuser-git'
 	     'bluez-libs' 'python' 'glpk' 'libpulse' 'opus')
 optdepends=('bluez-libs'
