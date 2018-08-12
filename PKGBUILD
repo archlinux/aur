@@ -2,8 +2,8 @@
 # Contributor: Ethan Schoonover
 
 pkgname=gam
-pkgver=4.40
-pkgrel=3
+pkgver=4.60
+pkgrel=1
 pkgdesc="Command line tool for Google G Suite Administrators to manage domain and user settings quickly and easily."
 arch=('any')
 url="https://github.com/jay0lee/GAM"
@@ -20,15 +20,16 @@ depends=(
 )
 source=(
     "https://github.com/jay0lee/GAM/archive/v${pkgver}.tar.gz"
-    "python2.patch"
+    "xdg_config_dirs.patch"
     "gam.sh"
 )
-sha256sums=('01ce48e0ac79f35ba6c891e54156c67af232f210e98dea2b3178186659064ee0'
-            '417f05ee7da33763f56b7b148f46564859133ececbd5a847cd3396a9802d5944'
+sha256sums=('f8274b2aff987a41344bb3ddcd6f43cbda27d5fc8de830a5f961764662cee959'
+            'e85568f0f0e038e01c88a5b2b4e30f057faf737f6e8dac1c41463ec20825118a'
             'd93809852ef9eefeb99f3fc1b955305264f93f2552db14b4d9d6fe7c2b08345b')
 
-prepare(){
-    patch -i "$srcdir/python2.patch" -d "$srcdir/GAM-$pkgver/src/"
+prepare() {
+    cd "$srcdir/GAM-$pkgver"
+    patch -p0 < ../xdg_config_dirs.patch
 }
 
 package() {

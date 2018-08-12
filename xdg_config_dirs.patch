@@ -1,0 +1,35 @@
+--- src/var.py	2018-08-10 23:05:08.294626452 -0600
++++ src/var.py	2018-08-11 12:02:27.184546770 -0600
+@@ -23,11 +23,11 @@
+ try:
+     XDG_CONFIG_DIR = os.environ['XDG_CONFIG_HOME']
+ except KeyError:
+-    XDG_CONFIG_DIR = unicode(os.path.expanduser("~") + '/.config/')
+-CONFIG_DIR = XDG_CONFIG_DIR + 'gam/'
++    XDG_CONFIG_DIR = os.path.expanduser("~") + '/.config/'
++CONFIG_DIR = unicode(XDG_CONFIG_DIR) + u'gam/'
+ 
+ try:
+-    os.makedirs(CONFIG_DIR)
++    os.makedirs(CONFIG_DIR, mode=0700)
+ except OSError:
+     if not os.path.isdir(CONFIG_DIR):
+         raise
+@@ -665,7 +665,7 @@
+ # Path to client_secrets.json
+ GC_CLIENT_SECRETS_JSON = u'client_secrets_json'
+ # GAM config directory containing client_secrets.json, oauth2.txt, oauth2service.json, extra_args.txt
+-GC_CONFIG_DIR = u'config_dir'
++GC_CONFIG_DIR = CONFIG_DIR
+ # custmerId from gam.cfg or retrieved from Google
+ GC_CUSTOMER_ID = u'customer_id'
+ # If debug_level > 0: extra_args[u'prettyPrint'] = True, httplib2.debuglevel = gam_debug_level, appsObj.debug = True
+@@ -724,7 +724,7 @@
+   GC_MEMBER_MAX_RESULTS: 200,
+   GC_NO_BROWSER: False,
+   GC_NO_CACHE: False,
+-  GC_NO_UPDATE_CHECK: False,
++  GC_NO_UPDATE_CHECK: True,
+   GC_NO_VERIFY_SSL: False,
+   GC_NUM_THREADS: 25,
+   GC_OAUTH2_TXT: FN_OAUTH2_TXT,
