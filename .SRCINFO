@@ -1,14 +1,14 @@
 pkgbase = trifusion-bin
 	pkgdesc = Streamlining phylogenomic data gathering, processing and visualization
-	pkgver = 1.0.0rc1
+	pkgver = 1.0.1
 	pkgrel = 2
 	url = https://github.com/ODiogoSilva/TriFusion
 	arch = any
 	license = GPL3
 	conflicts = trifusion-git
 	conflicts = trifusion
-	source = https://github.com/ODiogoSilva/TriFusion/releases/download/1.0.0rc1/TriFusion-1.0.0rc1-linux.tar.xz
-	md5sums = 5ec8765726c378785f671b2693d687f6
+	source = https://github.com/ODiogoSilva/TriFusion/releases/download/1.0.1/TriFusion-1.0.1-linux.tar.xz
+	md5sums = 7256edbb2c3f4dcf87f1ebdf142417e9
 
 pkgname = trifusion-bin
 
