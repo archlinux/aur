@@ -3,7 +3,7 @@
 
 pkgname=oomox-git
 pkgver=1.7.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical application for generating different color variations
 of Oomox(Numix-based), Materia (ex-Flat-Plat) and Arc themes
 (GTK2, GTK3, Cinnamon, GNOME, Openbox, Xfwm),
