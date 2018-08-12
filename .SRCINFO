@@ -1,13 +1,12 @@
 pkgbase = polo
 	pkgdesc = A modern, light-weight GTK file manager for Linux, currently in beta
-	pkgver = 18.6
+	pkgver = 18.8
 	pkgrel = 1
 	url = https://teejee2008.github.io/polo/
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = vala
-	makedepends = chrpath
 	depends = gtk3
 	depends = libgee
 	depends = libsoup
@@ -27,10 +26,10 @@ pkgbase = polo
 	provides = polo
 	conflicts = polo
 	conflicts = polo-bin
-	source = https://github.com/teejee2008/polo/archive/v18.6-beta.tar.gz
-	source = 0001-Fixed-build-with-recent-vala-version.patch
-	sha256sums = 38ce401f607af3e77b3cd099efc6aea73410361d35771be3563b0f99f147a352
-	sha256sums = 97d78f7879eb913dc4b9574e6854553e956f5a883beef2335887d1d12061d0b2
+	source = polo-18.8-beta.tar.gz::https://github.com/teejee2008/polo/archive/v18.8-beta.tar.gz
+	source = 0001-Re-add-support-for-vte291-0.52.patch
+	sha256sums = 1112469c2107ac1ed08d1f2f966d7ee21baff773ff56dc56c137eaef2468515f
+	sha256sums = 4ae33547220a7bfb7cd9806bd121acbc54c35a06958d40aa3cb1621688b5f69f
 
 pkgname = polo
 
