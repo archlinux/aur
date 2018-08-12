@@ -21,11 +21,6 @@ source=("${pkgname}::git+https://github.com/GothenburgBitFactory/taskserver.git"
         'taskd.notes'
         'taskd.service')
 
-sha256sums=('SKIP'
-            '5e518f8dda08c8b8d564f2a52452227924ebb15ec8182e7af83cc1f82cfa4cf1'
-            '784116a5f749d113f05f46c3e1f362c0237d3e8748abd1f5856b9baaa26bd935'
-            '8881a2272471762309748b4fcfe6e442ddca618757c08160f9e388fb43a2a208')
-
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 backup=('etc/conf.d/taskd')
 depends=('libutil-linux' 'gnutls')
@@ -95,3 +90,8 @@ package() {
     install -Dm644 ${srcdir}/taskd.service \
             "${pkgdir}/usr/lib/systemd/system/taskd.service"
 }
+
+sha256sums=('SKIP'
+            '5e518f8dda08c8b8d564f2a52452227924ebb15ec8182e7af83cc1f82cfa4cf1'
+            '784116a5f749d113f05f46c3e1f362c0237d3e8748abd1f5856b9baaa26bd935'
+            '33a5c7b034790e5244778f6a2b2c97f9263011fa288eeb49ce90fe984e5b97c8')
