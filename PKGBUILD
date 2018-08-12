@@ -8,13 +8,13 @@ _srcver=4.17.14-arch1
 pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
-url="https://github.com/archlinux/linux/commits/v$_srcver"
+url="https://git.archlinux.org/linux.git/log/?h=v$_srcver"
 license=(GPL2)
 makedepends=(xmlto kmod inetutils bc libelf git)
 options=('!strip')
 _srcname=archlinux-linux
 source=(
-  "$_srcname::git+https://github.com/archlinux/linux?signed#tag=v$_srcver"
+  "$_srcname::git+https://git.archlinux.org/linux.git?signed#tag=v$_srcver"
   config         # the main kernel config file
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
