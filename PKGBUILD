@@ -1,15 +1,15 @@
-# Maintainer: banbanchs <memory.silentvoyage@gmail.com>
+# Maintainer: sdvcrx <memory.silentvoyage@gmail.com>
 # Contributor: E478 <wyy1326[at]gmail[dot]com>
 
 pkgname=gbkunzip
 pkgver=0.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Extract zip files with encoding GBK instead of UTF-8"
 arch=('any')
 url='http://lilydjwg.is-programmer.com/posts/16293.html'
 license=('unknown')
 depends=('python3')
-source=('http://lilydjwg.is-programmer.com/user_files/lilydjwg/File/gbkunzip.tar.bz2')
+source=('https://blog.lilydjwg.me/user_files/lilydjwg/File/gbkunzip.tar.bz2')
 md5sums=('492e2794338da165a2b950829fd9548e')
 
 package() {
