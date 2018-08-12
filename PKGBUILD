@@ -1,8 +1,8 @@
 # Maintainer: Mikel Pintado <mikelaitornube2010@gmail.com>
 
 pkgname=nuclear-player
-pkgver=0.4.2
-pkgrel=2
+pkgver=0.4.3
+pkgrel=1
 pkgdesc="A free, multiplatform music player app that streams from multiple sources."
 arch=('x86_64')
 url="http://nuclear.gumblert.tech/"
@@ -14,7 +14,7 @@ source=(
     nuclear.desktop
 )
 md5sums=(
-    '4e2362cb519f3acf1decccc9d7c9bc04'
+    '96806f286f8613042e2b860d7e8e22d9'
     '02328fb5995b2e92b3ee11dca5c6b262'    
 )
 

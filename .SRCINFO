@@ -1,7 +1,7 @@
 pkgbase = nuclear-player
 	pkgdesc = A free, multiplatform music player app that streams from multiple sources.
-	pkgver = 0.4.2
-	pkgrel = 2
+	pkgver = 0.4.3
+	pkgrel = 1
 	url = http://nuclear.gumblert.tech/
 	install = nuclear-player.install
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = nuclear-player
 	depends = libappindicator-gtk3
 	depends = libxtst
 	depends = nss
-	source = https://github.com/nukeop/nuclear/releases/download/v0.4.2/nuclear_0.4.2_amd64.deb
+	source = https://github.com/nukeop/nuclear/releases/download/v0.4.3/nuclear_0.4.3_amd64.deb
 	source = nuclear.desktop
-	md5sums = 4e2362cb519f3acf1decccc9d7c9bc04
+	md5sums = 96806f286f8613042e2b860d7e8e22d9
 	md5sums = 02328fb5995b2e92b3ee11dca5c6b262
 
 pkgname = nuclear-player
