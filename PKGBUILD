@@ -12,10 +12,10 @@
 pkgbase=lib32-mesa-git
 pkgname=('lib32-mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=18.3.0_devel.104034.3dc22381fa
+pkgver=18.3.0_devel.104104.de57926dc9
 pkgrel=1
 arch=('x86_64')
-makedepends=('python2-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
+makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
              'lib32-gcc-libs' 'lib32-libvdpau' 'lib32-libelf' 'lib32-llvm-svn' 'git' 'lib32-libgcrypt' 'lib32-systemd'
              'mesa-git' 'lib32-llvm-libs-svn' 'lib32-libglvnd' 'wayland-protocols' 'lib32-wayland' 'meson')
 depends=('mesa-git' 'lib32-gcc-libs' 'lib32-libdrm' 'lib32-wayland' 'lib32-libxxf86vm' 'lib32-libxdamage' 'lib32-libxshmfence' 'lib32-elfutils'
