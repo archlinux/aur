@@ -2,7 +2,7 @@
 
 pkgname=sccache
 pkgver=0.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc='ccache-like tool with experimental Rust support'
 arch=(i686 x86_64)
 url=https://github.com/mozilla/sccache
@@ -26,4 +26,6 @@ package() {
   cd sccache-$pkgver
   cargo install --root "$pkgdir"/usr
   rm "$pkgdir"/usr/.crates.toml
+  install -Dm 644 README.md -t "$pkgdir"/usr/share/doc/sccache
+  install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/sccache
 }
