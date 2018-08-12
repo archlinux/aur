@@ -1,0 +1,14 @@
+pkgbase = erlang-lhttpc
+	pkgdesc = Lightweight HTTP Client
+	pkgver = 1.5.5
+	pkgrel = 1
+	url = https://hex.pm/packages/lhttpc
+	arch = x86_64
+	license = BSD
+	makedepends = rebar
+	depends = erlang-nox
+	source = https://repo.hex.pm/tarballs/lhttpc-1.5.5.tar
+	sha256sums = 0dda026c9c3860ef9015196add32c85c74fdfc8547df5e3dcdf827af555fcda6
+
+pkgname = erlang-lhttpc
+
