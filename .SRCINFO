@@ -5,6 +5,7 @@ pkgbase = dqlite-git
 	url = https://github.com/CanonicalLtd/dqlite
 	arch = x86_64
 	license = Apache
+	makedepends = git
 	depends = libuv>=1.8.0
 	depends = sqlite-replication>=3.22.0
 	provides = dqlite
