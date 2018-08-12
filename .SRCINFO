@@ -7,6 +7,7 @@ pkgbase = erlang-lager
 	license = Apache 2
 	makedepends = rebar
 	depends = erlang-nox
+	depends = erlang-goldrush
 	source = https://repo.hex.pm/tarballs/lager-3.6.4.tar
 	sha256sums = 6cbef7e038d772a6bf834ba7aaf55a1484a97adfe8075b4a23b0086a8fe697a8
 
