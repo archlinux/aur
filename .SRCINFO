@@ -1,6 +1,6 @@
 pkgbase = praat
 	pkgdesc = A tool for 'Doing Phonetics by computer'
-	pkgver = 6.0.40
+	pkgver = 6.0.41
 	pkgrel = 1
 	url = http://www.fon.hum.uva.nl/praat/
 	arch = x86_64
@@ -11,8 +11,10 @@ pkgbase = praat
 	depends = alsa-lib
 	depends = gtk2
 	optdepends = ttf-sil-fonts
-	source = https://github.com/praat/praat/archive/v6.0.40.tar.gz
-	md5sums = d1cf1590b95a254b83148035a263ca74
+	source = https://github.com/praat/praat/archive/v6.0.41.tar.gz
+	source = exception.patch
+	md5sums = 7c360a7748f87824ec1faf380f7d8313
+	md5sums = 29b515b7c6ef133c8fd26fc3c049bbb8
 
 pkgname = praat
 
