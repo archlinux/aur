@@ -1,7 +1,7 @@
 pkgbase = tpm2-tss
 	pkgdesc = TPM (Trusted Platform Module) 2.0 Software Stack (TSS)
-	pkgver = 2.0.0
-	pkgrel = 4
+	pkgver = 2.0.1
+	pkgrel = 1
 	url = https://github.com/tpm2-software/tpm2-tss
 	arch = x86_64
 	license = BSD
@@ -11,10 +11,11 @@ pkgbase = tpm2-tss
 	checkdepends = procps-ng
 	checkdepends = uthash
 	depends = libgcrypt
-	source = https://github.com/tpm2-software/tpm2-tss/releases/download/2.0.0/tpm2-tss-2.0.0.tar.gz
-	source = https://github.com/tpm2-software/tpm2-tss/releases/download/2.0.0/tpm2-tss-2.0.0.tar.gz.asc
+	source = https://github.com/tpm2-software/tpm2-tss/releases/download/2.0.1/tpm2-tss-2.0.1.tar.gz
+	source = https://github.com/tpm2-software/tpm2-tss/releases/download/2.0.1/tpm2-tss-2.0.1.tar.gz.asc
 	validpgpkeys = 42007E876F248E04A3F2FE25AE4548D043DEC7C3
-	sha256sums = 7dfd05f7d2c4d5339d1c9ecbdba25f4ea6df70e96b09928e15e0560cce02d525
+	validpgpkeys = D760B790CCF0A41CBE7B047C316CC1FB24ABDC72
+	sha256sums = a53b25214375a10d87d0c0b0a702a3402c1f19e218196d4a2a44810516b260e5
 	sha256sums = SKIP
 
 pkgname = tpm2-tss
