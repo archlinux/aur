@@ -20,13 +20,13 @@ depends=('curl' 'libpcap' 'zlib' 'openssl')
 build () {
   cd "$srcdir/$pkgname-$pkgver"
   rm -f build
-  make DESTDIR=$pkgdir PREFIX=/usr INSTALLDIR=$pkgdir/usr/bin
+  make DESTDIR=$pkgdir PREFIX=/usr
   touch build
 }
 
 package () {
   cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR=$pkgdir PREFIX=/usr INSTALLDIR=$pkgdir/usr/bin install
+  make DESTDIR=$pkgdir PREFIX=/usr install
 
   for _docfile in README.md changelog; do
     install -D -v -m644 "${_docfile}" "${pkgdir}/usr/share/doc/${pkgname}/${_docfile}"
