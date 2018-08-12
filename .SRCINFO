@@ -1,0 +1,14 @@
+pkgbase = erlang-parse_trans
+	pkgdesc = Support library for manipulating Web protocols
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = https://hex.pm/packages/parse_trans
+	arch = x86_64
+	license = Apache 2.0
+	makedepends = rebar
+	depends = erlang-nox
+	source = https://repo.hex.pm/tarballs/parse_trans-3.3.0.tar
+	sha256sums = 17ef63abde837ad30680ea7f857dd9e7ced9476cdd7b0394432af4bfc241b960
+
+pkgname = erlang-parse_trans
+
