@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Mindmapp
+Comment=Desktop application to draw mind maps.
+Exec="/opt/Mindmapp/mindmapp" %U
+Terminal=false
+Type=Application
+Icon=mindmapp
+StartupWMClass=Mindmapp
+Categories=Graphics;
