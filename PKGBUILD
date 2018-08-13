@@ -2,7 +2,8 @@
 
 _pkgname=audacious-plugins
 pkgname=${_pkgname}-qt5
-pkgver=3.10+beta1
+epoch=1
+pkgver=3.10
 pkgrel=1
 pkgdesc="Plugins for Audacious (qt5 interface)"
 arch=('i686' 'x86_64')
@@ -43,7 +44,7 @@ optdepends=('alsa-lib: Advanced Linux Sound Arch. output'
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=(https://distfiles.audacious-media-player.org/$_pkgname-${pkgver/+/-}.tar.bz2)
-sha256sums=('1d4368ef2b464c9be054050351d99829b59be765a4fa98d1d1f95464c5fbbaaf')
+sha256sums=('5061ebb20169eb4d3f15aafbe83b43363762dc8d19ca0cd83f5556dc577e618f')
 
 build() {
   cd "$srcdir/$_pkgname-${pkgver/+/-}"
