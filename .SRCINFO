@@ -1,6 +1,6 @@
 pkgbase = sdaps-git
 	pkgdesc = Scripts for data acquisition with paper based surveys
-	pkgver = r982.bea1fab
+	pkgver = r986.90b1a26
 	pkgrel = 1
 	url = https://github.com/sdaps/sdaps
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = sdaps-git
 	optdepends = python-numpy: Import of other image formats (convert, add --convert)
 	optdepends = python-gobject: Import of other image formats (convert, add --convert)
 	source = git+https://github.com/sdaps/sdaps.git
-	source = git+https://github.com/davidmehren/sdaps-class.git
+	source = git+https://github.com/sdaps/sdaps-class.git
 	md5sums = SKIP
 	md5sums = SKIP
 
