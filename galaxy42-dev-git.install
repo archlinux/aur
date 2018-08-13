@@ -1,0 +1,17 @@
+post_install() {
+	useradd -b /var/lib -m -s /sbin/nologin -r galaxy42
+	chown galaxy42:galaxy42 usr/bin/tunserver.elf
+	setcap cap_net_admin+eip usr/bin/tunserver.elf  2>/dev/null || chmod g-wx,o-wx usr/bin/tunserver.elf
+
+	echo 'Config will be at /var/lib/galaxy42'
+}
+post_upgrade() {
+	chown galaxy42:galaxy42 usr/bin/tunserver.elf
+	setcap cap_net_admin+eip usr/bin/tunserver.elf  2>/dev/null || chmod g-wx,o-wx usr/bin/tunserver.elf
+
+}
+post_remove() {
+	userdel galaxy42
+        echo 'If you want to remove old config and keys run:'
+	echo 'sudo rm -Rf /var/lib/galaxy42'
+}

@@ -1,0 +1,29 @@
+pkgbase = galaxy42-dev-git
+	pkgdesc = An encrypted Meshnet and VPN software. (dev branch)
+	pkgver = 0.3.3a.r138.g91004e72
+	pkgrel = 1
+	url = https://github.com/yedino/galaxy42
+	install = galaxy42-dev-git.install
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL3
+	makedepends = git
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = bash
+	depends = libtool
+	depends = boost
+	depends = libsodium
+	depends = fftw
+	provides = galaxy42
+	conflicts = galaxy42
+	backup = etc/galaxy42-testnet.conf
+	backup = etc/galaxy42.conf
+	source = git+https://github.com/yedino/galaxy42#branch=dev
+	sha512sums = SKIP
+
+pkgname = galaxy42-dev-git
+
