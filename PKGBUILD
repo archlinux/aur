@@ -4,30 +4,29 @@
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
 
 pkgname=libvirt
-pkgver=4.5.0
+pkgver=4.6.0
 pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('x86_64')
 url="http://libvirt.org/"
 license=('LGPL')
-makedepends=('pkgconfig' 'lvm2' 'linux-api-headers' 'dnsmasq' 'lxc'
-	     'libiscsi' 'open-iscsi' 'perl-xml-xpath' 'libxslt' 'qemu'
-       'ceph-libs' 'glusterfs' 'netcf' 'yajl' 'parted' 'python')
-depends=('e2fsprogs' 'gnutls' 'iptables' 'libxml2' 'parted' 'polkit'
-   'avahi' 'yajl' 'libpciaccess' 'udev' 'dbus' 'libxau' 'libxdmcp' 'libpcap' 'libcap-ng'
-   'curl' 'libsasl' 'libgcrypt' 'libgpg-error' 'openssl' 'libxcb' 'gcc-libs'
-   'iproute2' 'libnl' 'libx11' 'numactl' 'gettext' 'libssh2'
-   'netcf' 'fuse2' 'glusterfs' 'ceph-libs')
+makedepends=('lvm2' 'linux-api-headers' 'dnsmasq' 'lxc' 'libiscsi' 'open-iscsi'
+             'perl-xml-xpath' 'libxslt' 'qemu' 'parted' 'python')
+depends=('e2fsprogs' 'gnutls' 'iptables' 'libxml2' 'parted' 'polkit' 'avahi'
+         'jansson' 'libpciaccess' 'udev' 'dbus' 'libxau' 'libxdmcp' 'libpcap'
+         'libcap-ng' 'curl' 'libsasl' 'libgcrypt' 'libgpg-error' 'openssl'
+         'libxcb' 'gcc-libs' 'iproute2' 'libnl' 'libx11' 'numactl' 'gettext'
+         'libssh2' 'netcf' 'fuse2' 'glusterfs' 'ceph-libs')
 optdepends=('ebtables: required for default NAT networking'
-      'dnsmasq: required for default NAT/DHCP for guests'
-      'bridge-utils: for bridged networking'
-      'netcat: for remote management over ssh'
-      'qemu'
-      'radvd'
-      'dmidecode'
-      'parted'
-      'ceph: for ceph support'
-      'qemu-block-gluster: for qemu glusterfs support')
+            'dnsmasq: required for default NAT/DHCP for guests'
+            'bridge-utils: for bridged networking'
+            'netcat: for remote management over ssh'
+            'qemu'
+            'radvd'
+            'dmidecode'
+            'parted'
+            'ceph: for ceph support'
+            'qemu-block-gluster: for qemu glusterfs support')
 backup=('etc/conf.d/libvirt-guests'
   'etc/conf.d/libvirtd'
   'etc/libvirt/libvirt.conf'
@@ -66,11 +65,10 @@ install="libvirt.install"
 options=('emptydirs')
 validpgpkeys=('C74415BA7C9C7F78F02E1DC34606B8A5DE95BC1F')
 source=("https://libvirt.org/sources/${pkgname}-${pkgver}.tar.xz"{,.asc}
-	'libvirtd.conf.d'
-	'libvirtd-guests.conf.d'
-	'libvirt.sysusers.d')
-#	"ae102b5d7bccd29bc6015a3e0acefeaa90d097ac.patch::https://libvirt.org/git/?p=libvirt.git;a=patch;h=ae102b5d7bccd29bc6015a3e0acefeaa90d097ac")
-sha512sums=('26710c7e5219f007524e9f93a642e55e4e8ea197afa6b2ca6a4b67b7028313f4b0d82924ee9a1e91ff688a4d2b53f89f3655fbeef0fa99a34f8418f37d787984'
+        'libvirtd.conf.d'
+        'libvirtd-guests.conf.d'
+        'libvirt.sysusers.d')
+sha512sums=('beae0f1cafa73b9495d877979547bbc9b7ca2a7c3b213c5da92e6302b570d42df9d639f50380dbc0cebd6af983924dc27b1c81139c81dee0897f39a6a5158968'
             'SKIP'
             'fc0e16e045a2c84d168d42c97d9e14ca32ba0d86025135967f4367cf3fa663882eefb6923ebf04676ae763f4f459e5156d7221b36b47c835f9e531c6b6e0cd9d'
             'ef221bae994ad0a15ab5186b7469132896156d82bfdc3ef3456447d5cf1af347401ef33e8665d5b2f76451f5457aee7ea01064d7b9223d6691c90c4456763258'
@@ -78,11 +76,6 @@ sha512sums=('26710c7e5219f007524e9f93a642e55e4e8ea197afa6b2ca6a4b67b7028313f4b0d
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-
-  # for file in $(find . -name '*.py' -print); do
-  #   sed -i 's_#!.*/usr/bin/python_#!/usr/bin/python2_' "${file}"
-  #   sed -i 's_#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' "${file}"
-  # done
 
   sed -i 's|/sysconfig/|/conf.d/|g' \
     src/remote/libvirtd.service.in \
@@ -95,22 +88,35 @@ prepare() {
 
   sed -i 's|libsystemd-daemon|libsystemd|g' configure
   sed -i 's/notify/simple/' src/remote/libvirtd.service.in
-
-#  patch -p1 -i "${srcdir}"/ae102b5d7bccd29bc6015a3e0acefeaa90d097ac.patch
 }
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  export PYTHON=`which python`
+  export PYTHON=$(command -v python)
   export LDFLAGS=-lX11
   export RADVD=/usr/bin/radvd
-  [ -f Makefile ] || ./configure --prefix=/usr --libexec=/usr/lib/"${pkgname}" --sbindir=/usr/bin \
-	--with-storage-lvm --without-xen --with-udev --without-hal --disable-static \
-	--with-init-script=systemd --with-storage-gluster \
-	--with-qemu-user=nobody --with-qemu-group=kvm \
-	--with-netcf --with-interface --with-lxc --with-storage-iscsi --with-storage-disk
-	# --with-audit
+  [ -f Makefile ] || ZFS=/usr/bin/zfs ZPOOL=/usr/bin/zpool ./configure \
+    --prefix=/usr \
+    --libexec=/usr/lib/"${pkgname}" \
+    --sbindir=/usr/bin \
+    --disable-static \
+    --with-init-script=systemd \
+    --with-qemu \
+    --with-qemu-user=nobody \
+    --with-qemu-group=kvm \
+    --without-hal \
+    --with-interface \
+    --with-lxc \
+    --with-netcf \
+    --with-udev \
+    --with-jansson \
+    --with-storage-disk \
+    --with-storage-gluster \
+    --with-storage-iscsi \
+    --with-storage-lvm \
+    --with-storage-zfs
+    # --with-audit
   make
 }
 
@@ -127,10 +133,10 @@ package() {
   chmod 0750 "${pkgdir}"/usr/share/polkit-1/rules.d
 
   rm -rf \
-	"${pkgdir}"/var/run \
-	"${pkgdir}"/var/lib/libvirt/qemu \
-	"${pkgdir}"/var/cache/libvirt/qemu \
-	"${pkgdir}"/etc/sysconfig
+    "${pkgdir}"/var/run \
+    "${pkgdir}"/var/lib/libvirt/qemu \
+    "${pkgdir}"/var/cache/libvirt/qemu \
+    "${pkgdir}"/etc/sysconfig
 
   rm -f "${pkgdir}"/etc/libvirt/qemu/networks/autostart/default.xml
 }
