@@ -1,7 +1,7 @@
 pkgbase = python-gitlab
 	pkgdesc = Python wrapper for the GitLab API
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/python-gitlab/python-gitlab
 	arch = any
 	license = LGPLv3

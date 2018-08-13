@@ -2,7 +2,7 @@
 
 pkgname=python-gitlab
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python wrapper for the GitLab API"
 arch=(any)
 url="https://github.com/python-gitlab/python-gitlab"
