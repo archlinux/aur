@@ -1,16 +1,19 @@
 # Maintainer: Trent Palmer trenttdually at gmail
+
 ###########################################################################################################
 #                                          Build Options
 ###########################################################################################################
-# _vim="y" would require deoplete in addition to nvim-yarp and vim-hug-neovim-rpc
-_vim="n"
-#
-_neovim="y"
+_vim="y"
+
+# neovim in Arch Linux seems to load vim extensions from /usr/share/vim/vimfiles by
+# default now, (or you can add 'set rtp^=/usr/share/vim/vimfiles/' to .vimrc)
+# but in any event, you may not need or want to set _neovim="y"
+_neovim="n"
 ###########################################################################################################
 
 _name='deoplete-jedi'
 pkgname="${_name}-git"
-pkgver=r275.5540e76
+pkgver=r281.12e6d8f
 pkgrel=1
 pkgdesc="jedi add-on for deoplete completion plugin for neovim"
 arch=('any')
@@ -64,6 +67,7 @@ gitprepare() {
     git submodule update
     unset -v FEED
 }
+
 
 package() {
   if [ "$_neovim" = "y" ]; then
