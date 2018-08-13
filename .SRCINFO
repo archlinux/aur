@@ -1,7 +1,7 @@
 pkgbase = slurp-git
 	pkgdesc = Select a region in a Wayland compositor
 	pkgver = 1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/emersion/slurp
 	arch = x86_64
 	license = MIT
@@ -13,7 +13,7 @@ pkgbase = slurp-git
 	depends = wayland
 	provides = slurp
 	conflicts = slurp
-	source = https://github.com/emersion/slurp
+	source = git+https://github.com/emersion/slurp
 	sha256sums = SKIP
 
 pkgname = slurp-git
