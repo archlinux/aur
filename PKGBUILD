@@ -1,58 +1,26 @@
-# Contributor: hauzer <alokinpwn@gmail.com>
-# Previous Maintainer: Mineko
-# Previous Maintainer: Ben R <thebenj88 *AT* gmail *DOT* com>
-# Maintainer: maraku <maraku@gmx.com>
+# Maintainer: liberodark
 
 pkgname=spiral-knights
-pkgver=20140522
+pkgver=1
 pkgrel=1
-pkgdesc="The Spiral Knights have awoken on an alien world. Their equipment stores have been raided and their starship, The Skylark, will not recover from the crash. They must work together to survive on a journey that will take them to the very core of the world."
-arch=('any')
-url="http://spiralknights.com/"
-license=('custom:Three Rings License')
-depends=('java-runtime')
-install="${pkgname}.install"
-source=("http://download.threerings.net/spiral/client/spiral-install.bin")
-sha256sums=('SKIP')
-
-build() {
-   chmod +x "${srcdir}/spiral-install.bin"
-   "${srcdir}/spiral-install.bin" --noexec --keep --nochown --target "${srcdir}/${pkgname}-${pkgver}"
-}
-
+pkgdesc="Join the ranks of the Spiral Knights. Stranded on an alien world, you must explore the ever-changing Clockworks beneath its surface."
+arch=('x86_64')
+url="http://www.spiralknights.com/"
+license=('custom')
+depends=('xdg-utils' 'jre8-openjdk')
+source_x86_64=("https://github.com/liberodark/Spiral-Knights/releases/download/1.0.0/spiral.tar.gz")
+source=($pkgname.desktop
+        $pkgname.png)
+sha512sums=('e23edfb55843dd5e6e507042e49f36878db5c913a662dcb3bc2e964a399c1a7b2d10620306fca33dfee526d832075dee57b7ab77b5ccbe042621556056873c5b'
+         '08d5165d510755ea84ebe189803dbf66e50efd0c5b35d92b48a164f593544bce85b2852e24a41d218c733116e93994e315cafa677b8dc62d2d163a35687c52d8')
+sha512sums_x86_64=('818b8f4ff61b2cbd98ffcd9962771fd383860285d31f54e6b057c3244e056ac986e930324c0e0afe924017658badfdde423062e291161b79803811ef226e832e')
+        
 package() {
-   cat > ${pkgname} << EOF
-      #!/bin/bash
-      /opt/${pkgname}/spiral
-EOF
-
-   cat > ${pkgname}.desktop << EOF
-      [Desktop Entry]
-      Type=Application
-      Version=1.0
-      Name=Spiral Knights
-      Icon=/opt/${pkgname}/icon_32.png
-      Exec=${pkgname}
-      Terminal=false
-      Categories=Game;Java;
-EOF
-
-  install -D -m 644 "${srcdir}/${pkgname}-${pkgver}/background.png" "${pkgdir}/opt/${pkgname}/background.png"
-  install -D -m 644 "${srcdir}/${pkgname}-${pkgver}/desktop.png" "${pkgdir}/opt/${pkgname}/desktop.png"
-  install -D -m 644 "${srcdir}/${pkgname}-${pkgver}/getdown-pro.jar" "${pkgdir}/opt/${pkgname}/getdown-pro.jar"
-  install -D -m 644 "${srcdir}/${pkgname}-${pkgver}/getdown.txt" "${pkgdir}/opt/${pkgname}/getdown.txt"
-  install -D -m 644 "${srcdir}/${pkgname}-${pkgver}/icon_128.png" "${pkgdir}/opt/${pkgname}/icon_128.png"
-  install -D -m 644 "${srcdir}/${pkgname}-${pkgver}/icon_16.png" "${pkgdir}/opt/${pkgname}/icon_16.png"
-  install -D -m 644 "${srcdir}/${pkgname}-${pkgver}/icon_32.png" "${pkgdir}/opt/${pkgname}/icon_32.png"
-  install -D -m 644 "${srcdir}/${pkgname}-${pkgver}/license.txt" "${pkgdir}/opt/${pkgname}/license.txt"
-  install -D -m 644 "${srcdir}/${pkgname}-${pkgver}/progress.png" "${pkgdir}/opt/${pkgname}/progress.png"
-  install -D -m 755 "${srcdir}/${pkgname}-${pkgver}/spiral" "${pkgdir}/opt/${pkgname}/spiral"
-
-  install -D -m 755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -D -m 644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  install -D -m 664 "${srcdir}/${pkgname}-${pkgver}/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-  ln -s "${JAVA_HOME}/bin/java" "${pkgdir}/opt/${pkgname}/java"
-  chgrp games "${pkgdir}/opt/${pkgname}" && chmod 775 "${pkgdir}/opt/${pkgname}"
+  cd $srcdir
+  tar xvf spiral.tar.gz
+  mkdir -p "$pkgdir/opt/spiral/"
+  cp -r "spiral/." "$pkgdir/opt/spiral/"
+  chmod 667 -R "$pkgdir/opt/spiral"
+  install -vDm644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
+  install -vDm644 $srcdir/$pkgname.png $pkgdir/usr/share/pixmaps/$pkgname.png
 }
-
