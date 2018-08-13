@@ -11,7 +11,7 @@ depends=('notmuch' 'python')
 makedepends=('git')
 provides=('notmuch-extract-patch')
 conflicts=('notmuch-extract-patch')
-source=('https://github.com/aaptel/notmuch-extract-patch')
+source=('git+https://github.com/aaptel/notmuch-extract-patch')
 md5sums=('SKIP')
 
 pkgver() {
