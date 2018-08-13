@@ -1,6 +1,6 @@
 pkgbase = r-scales
 	pkgdesc = Tools for Splitting, Applying and Combining Data
-	pkgver = 0.5.0
+	pkgver = 1.0.0
 	pkgrel = 2
 	url = http://cran.r-project.org/web/packages/scales/index.html
 	arch = i686
@@ -18,8 +18,8 @@ pkgbase = r-scales
 	provides = r-cran-scales
 	conflicts = r-cran-scales
 	replaces = r-cran-scales
-	source = http://cran.r-project.org/src/contrib/scales_0.5.0.tar.gz
-	md5sums = 435f6bd826c5cf8df703ffb8a6750fd1
+	source = http://cran.r-project.org/src/contrib/scales_1.0.0.tar.gz
+	sha256sums = 0c1f4a14edd336a404da34a3cc71a6a9d0ca2040ba19360c41a79f36e06ca30c
 
 pkgname = r-scales
 

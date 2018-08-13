@@ -1,6 +1,6 @@
 # Maintainer: wagnerflo <florian@wagner-flo.net>
 _cranname=scales
-_cranver=0.5.0
+_cranver=1.0.0
 pkgname=r-$_cranname
 pkgver=${_cranver}
 pkgrel=2
@@ -14,7 +14,7 @@ provides=("r-cran-${_cranname}")
 conflicts=("r-cran-${_cranname}")
 replaces=("r-cran-${_cranname}")
 source=("http://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('435f6bd826c5cf8df703ffb8a6750fd1')
+sha256sums=('0c1f4a14edd336a404da34a3cc71a6a9d0ca2040ba19360c41a79f36e06ca30c')
 
 package() {
     mkdir -p ${pkgdir}/usr/lib/R/library
