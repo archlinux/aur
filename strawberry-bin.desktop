@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Strawberry
+GenericName=Strawberry Music Player
+Comment=Plays music
+Exec=strawberry %U
+TryExec=strawberry
+Icon=strawberry-bin
+Terminal=false
+Categories=AudioVideo;Player;Qt;Audio;
+StartupNotify=false
+MimeType=x-content/audio-player;application/ogg;application/x-ogg;application/x-ogm-audio;audio/flac;audio/aac;audio/mp4;audio/mpeg;audio/mpegurl;audio/ogg;audio/vorbis;audio/vnd.rn-realaudio;audio/x-wav;audio/x-flac;audio/x-oggflac;audio/x-vorbis;audio/x-vorbis+ogg;audio/x-mp3;audio/x-mpeg;audio/x-mpegurl;audio/x-ms-wma;audio/x-musepack;audio/x-pn-realaudio;audio/x-scpls;audio/x-speex;video/x-ms-asf;
