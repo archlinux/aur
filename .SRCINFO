@@ -1,0 +1,18 @@
+pkgbase = img-matrix-git
+	pkgdesc = Script that generates tiles from images and combines them in a html file.
+	pkgver = r4.bf02421
+	pkgrel = 1
+	url = https://gitlab.com/Scrumplex/img-matrix
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = bash
+	depends = imagemagick
+	provides = img-matrix
+	conflicts = img-matrix
+	source = git+https://gitlab.com/Scrumplex/img-matrix.git
+	sha512sums = SKIP
+
+pkgname = img-matrix-git
+
