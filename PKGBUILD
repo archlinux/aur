@@ -2,13 +2,13 @@
 
 pkgname=cemu
 pkgver=1.13.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Wii U emulator (via wine). Includes the Cemuhook plugin and graphic packs"
 arch=(x86_64)
 url="http://cemu.info/"
 license=('custom')
 depends=('wine' 'winetricks')
-_graphicpackver=896
+_graphicpackver=82
 _cemuhookver=1121_0565
 source=(
   cemu.sh
@@ -16,10 +16,10 @@ source=(
   cemu.desktop
   http://cemu.info/releases/cemu_${pkgver}.zip
   https://files.sshnuke.net/cemuhook_${_cemuhookver}.zip
-  https://github.com/slashiee/cemu_graphic_packs/releases/download/appveyor${_graphicpackver}/graphicPacks_2-${_graphicpackver}.zip
+  https://github.com/slashiee/cemu_graphic_packs/releases/download/Travis${_graphicpackver}/graphicPacks${_graphicpackver}_Uncommon.zip
 )
 noextract=("cemuhook_${_cemuhookver}.zip"
-           "graphicPacks_2-${_graphicpackver}.zip")
+           "graphicPacks${_graphicpackver}_Uncommon.zip")
 install=${pkgname}.install
 
 # If the cemuhook md5 is wrong, is because the cemuhook team every once in a while
@@ -30,7 +30,7 @@ md5sums=('bf4a05c4f1d6063ed6bb90b66b2eca7d'
          'de3ef1f4b56458e56ae545cc3183870d'
          'ef167e1f75f7a6626f3e856d2b583eb1'
          '875be2fad3e8352385a12ef7964f7406'
-         '59db00b517105e8440b03ea82047cff7')
+         'db46d0ce3be5f8bc192c17ef1bc1208b')
 
 options=(!strip)
 
@@ -39,7 +39,7 @@ build() {
   cd cemu_$pkgver
   bsdtar -x -f ../../cemuhook_${_cemuhookver}.zip
   cd graphicPacks
-  bsdtar -x -f ../../../graphicPacks_2-${_graphicpackver}.zip
+  bsdtar -x -f ../../../graphicPacks${_graphicpackver}_Uncommon.zip
 }
 package() {
   cd $srcdir
