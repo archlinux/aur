@@ -5,7 +5,7 @@
 
 pkgname=binwalk-git
 _gitname=binwalk
-pkgver=2.1.2b.795.441e2d1
+pkgver=2.1.2.1054.a4945a9
 pkgrel=1
 pkgdesc="A tool for searching a given binary image for embedded files"
 url="http://binwalk.org"
@@ -39,7 +39,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd ${pkgname}
-  printf "%s.%s.%s" "$(python setup.py --version)" \
+  printf "%s.%s.%s" "$(grep 'MODULE_VERSION' -m1 setup.py|cut -d\" -f2)" \
     "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
