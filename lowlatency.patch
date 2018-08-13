@@ -1,6 +1,6 @@
 --- a/sound/usb/card.h
 +++ b/sound/usb/card.h
-@@ -3,11 +3,11 @@
+@@ -3,10 +3,10 @@
  #define __USBAUDIO_CARD_H
  
  #define MAX_NR_RATES	1024
@@ -8,12 +8,10 @@
 -#define MAX_PACKS_HS	(MAX_PACKS * 8)	/* in high speed mode */
 -#define MAX_URBS	12
 -#define SYNC_URBS	4	/* always four urbs for sync */
--#define MAX_QUEUE	18	/* try not to exceed this queue length, in ms */
 +#define MAX_PACKS	1		/* per URB */
-+#define MAX_PACKS_HS	(MAX_PACKS * 1)	/* in high speed mode */
-+#define MAX_URBS	1
-+#define SYNC_URBS	1	/* always four urbs for sync */
-+#define MAX_QUEUE	1	/* try not to exceed this queue length, in ms */
++#define MAX_PACKS_HS	MAX_PACKS	/* in high speed mode */
++#define MAX_URBS	2
++#define SYNC_URBS	MAX_URBS
+ #define MAX_QUEUE	18	/* try not to exceed this queue length, in ms */
  
  struct audioformat {
- 	struct list_head list;
