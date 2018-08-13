@@ -64,11 +64,11 @@ _rev_override="n"
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-clear
-__basekernel=4.17
-_minor=14
+__basekernel=4.18
+_minor=0
 pkgver=${__basekernel}.${_minor}
-_clearver=${pkgver}-616
-pkgrel=2
+_clearver=${pkgver}-618
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
@@ -78,11 +78,10 @@ _gcc_more_v='20180509'
 source=(
   "https://www.kernel.org/pub/linux/kernel/v4.x/linux-${__basekernel}.tar.xz"
   "https://www.kernel.org/pub/linux/kernel/v4.x/linux-${__basekernel}.tar.sign"
-  "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+  #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
   "clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=${_clearver}"
   'https://downloadmirror.intel.com/27945/eng/microcode-20180703.tgz'
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz" # enable_additional_cpu_optimizations_for_gcc
-  "rtc_nvmem_dont_return_an_error_when_not_enabled.patch::https://git.kernel.org/pub/scm/linux/kernel/git/abelloni/linux.git/patch/?id=c59b3715ac16544f8f68ab7af03f108e339b36aa"
   '60-linux.hook'  # pacman hook for depmod
   '90-linux.hook'  # pacman hook for initramfs regeneration
   '99-linux.hook'  # pacman hook for remove initramfs
@@ -92,13 +91,12 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13'
+sha256sums=('19d8bcf49ef530cd4e364a45b4a22fa70714b70349c8100e7308488e26f1eaf1'
             'SKIP'
-            'bf4d95df98dc6197024bc2a7c8a8ef5fd3b21495298c7a7a5dbd63c159ea9f17'
+            #'bf4d95df98dc6197024bc2a7c8a8ef5fd3b21495298c7a7a5dbd63c159ea9f17'
             'SKIP'
             '4a1a346fdf48e1626d4c9d0d47bbbc6a4052f56e359c85a3dd2d10fd555e5938'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
-            '05b7c1ac15786c14a9cbacfec16ba7c654d45b75bcaaf724269a52991ad09625'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             '5f6ba52aaa528c4fa4b1dc097e8930fad0470d7ac489afcb13313f289ca32184'
@@ -110,17 +108,13 @@ prepare() {
   cd linux-${__basekernel}
 
   # add upstream patch
-  patch -p1 -i ../patch-${pkgver}
+  #patch -p1 -i ../patch-${pkgver}
 
   # Apply clearlinux patches
-  for i in $(grep '^Patch' ${srcdir}/clearlinux/linux.spec | grep -Ev '^Patch0121|^Patch200|^Patch300|^Patch0500' | sed -n 's/.*: //p'); do
+  for i in $(grep '^Patch' ${srcdir}/clearlinux/linux.spec | grep -Ev '^Patch0500' | sed -n 's/.*: //p'); do
     msg "Applying ${i}"
     patch -p1 -i "$srcdir/clearlinux/${i}"
   done
-
-  # Avoid reporting an error when RTC_NVMEM is not selected.
-  # https://git.kernel.org/pub/scm/linux/kernel/git/abelloni/linux.git/commit/?h=rtc-next&id=c59b3715ac16544f8f68ab7af03f108e339b36aa
-  patch -p1 -i ../rtc_nvmem_dont_return_an_error_when_not_enabled.patch
 
   # Clean tree and copy CLEAR config over
   make mrproper
