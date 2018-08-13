@@ -4,7 +4,7 @@
 # Contributor : Jingbei Li <i@jingbei.li>
 pkgname=miniconda3
 pkgver=4.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Mini version of Anaconda Python distribution."
 arch=('x86_64')
 url="https://conda.io/miniconda"
@@ -13,7 +13,7 @@ source=("http://repo.continuum.io/miniconda/Miniconda3-${pkgver}-Linux-x86_64.sh
         "$pkgname.install")
 options=(!strip libtool staticlibs)
 sha256sums=('80ecc86f8c2f131c5170e43df489514f80e3971dd105c075935470bbf2476dea'
-            '9e0d1b0226a08e8cd220e4dbe42ecfa7636893e023e61123f70fd2bed3c3f066')
+            '6d6d8b5f4d2e9ca3c69464e903e292fa020c10ea6920aff5c32ebb021b84d865')
 install="$pkgname.install"
 
 prepare() {
