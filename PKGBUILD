@@ -6,6 +6,7 @@ pkgrel=1
 pkgdesc="a swiss chess algorithm implementation, using an SQLITE database"
 arch=('x86_64' 'i686')
 license=('MIT')
+url="https://gitlab.com/Emersont1/chesspp"
 depends=('ncurses')
 makedepends=('git' 'cmake' 'ninja')
 source=('chesspp::git+https://gitlab.com/Emersont1/chesspp.git#branch=master')
