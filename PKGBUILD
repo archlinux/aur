@@ -2,7 +2,7 @@
 
 _pkgname=screencloud
 pkgname=${_pkgname}-git
-pkgver=1.3.1.5.gc9482a7
+pkgver=1.4.0.0.ged3c4d5
 pkgrel=2
 pkgdesc='An easy to use screenshot sharing tool. Development version.'
 arch=('i686' 'x86_64')
@@ -11,10 +11,10 @@ license=('GPL2')
 
 depends=(
 	'qt5-x11extras' 'qt5-svg' 'qt5-multimedia' 'pythonqt'
-	'quazip' 'xdg-utils' 'hicolor-icon-theme'
+	'quazip' 'xdg-utils' 'hicolor-icon-theme' 'python2'
 )
 optdepends=(
-	'python-crypto: for SFTP support'
+	'python2-crypto: for SFTP support'
 )
 makedepends=('cmake' 'git' 'qt5-tools')
 provides=("${_pkgname}=${pkgver}")
@@ -35,18 +35,13 @@ prepare() {
 }
 
 build() {
-	# Needed for the self-compiled version
-	local _consumer_key='ef5d77317892721a0acebbbc8157272b055da8074'
-	local _consumer_secret='2d745141473f640b566aba29147fd672'
-
 	# Building package
+	# https://github.com/olav-st/screencloud/issues/322
 	cd "${srcdir}"/build
 	cmake ../${_pkgname} \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCONSUMER_KEY_SCREENCLOUD="${_consumer_key}" \
-		-DCONSUMER_SECRET_SCREENCLOUD="${_consumer_secret}" \
 		-DQT_USE_QT5=ON \
-		-DPYTHON_USE_PYTHON3=ON
+		-DPYTHON_USE_PYTHON3=OFF
 }
 
 package() {
