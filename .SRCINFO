@@ -1,7 +1,7 @@
 pkgbase = python-datashape
 	pkgdesc = Data description protocol for dynd similar to Numpy DTypes.
 	pkgver = 0.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/blaze/datashape
 	arch = any
 	groups = blaze-ecosystem

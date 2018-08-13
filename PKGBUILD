@@ -4,7 +4,7 @@
 pkgbase='python-datashape'
 pkgname=('python-datashape')
 pkgver=0.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Data description protocol for dynd similar to Numpy DTypes.'
 arch=('any')
 url='https://github.com/blaze/datashape'
