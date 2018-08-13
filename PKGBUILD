@@ -26,9 +26,8 @@ sha256sums=('e82f0d6165a8250a92e6aa62fb53201044d8d853add2fdad6d3719b28f7e8e9d'
             'f1796729b0403026382bca43329692f5356c8ec46fc2c09f799a8b3d12d49a6f'
             '4eb15725cfb5e287fdd9520cb4211b88ebc38a690b7522690ba0664d50bc8669')
 options=('!emptydirs')
-_srcpath="${srcdir}/${_pkgid}"
 get_pyver () {
-    echo $( python -c 'import sys; print(str(sys.version_info[0]) + "." + str(sys.version_info[1]))' )
+    python -c 'import sys; print(str(sys.version_info[0]) + "." + str(sys.version_info[1]))'
 }
 
 prepare() {
@@ -74,8 +73,8 @@ prepare() {
                 --with-promc-include=${_inc} \
                 --with-promc-lib=${_lib} \
                 --with-python \
-                --with-python-include=/usr/include/python$(get_pyver)m/ \
-                --with-python-lib=/usr/lib/python$(get_pyver)/ \
+                --with-python-include="/usr/include/python$(get_pyver)m/" \
+                --with-python-lib="/usr/lib/python$(get_pyver)/" \
                 --with-root \
                 --with-root-include=/usr/include/root/ \
                 --with-root-lib=/usr/lib/root/
@@ -83,7 +82,7 @@ prepare() {
 
 build() {
     cd "${srcdir}/${_pkgid}"
-    make ${MAKEFLAGS}
+    make "${MAKEFLAGS}"
 }
 
 package() {
