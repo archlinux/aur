@@ -2,7 +2,7 @@
 pkgname=atcore-git
 conflicts=('atcore')
 provides=('atcore')
-pkgver=1.0.70.r695.cac820e
+pkgver=1.0.70.r698.f9f8a33
 pkgrel=1
 pkgdesc="KDE 3D Printing libary"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
