@@ -1,6 +1,6 @@
 pkgbase = atcore-git
 	pkgdesc = KDE 3D Printing libary
-	pkgver = eef3b5d
+	pkgver = 1.0.70.r698.f9f8a33
 	pkgrel = 1
 	url = https://www.kde.org/
 	arch = i686
