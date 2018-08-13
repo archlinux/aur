@@ -2,18 +2,18 @@
 # Contributor : Shawn Dellysse sdellysse@gmail.com
 
 pkgname=parsec-bin
-pkgver=147_6
-pkgrel=8
+pkgver=147_9
+pkgrel=1
 pkgdesc="Remotely connect to a gaming pc for a low latency remote computing experience"
 url=http://parsec.tv
 arch=('x86_64')
-epoch=1
 provides=('parsec')
 conflicts=('parsec')
+epoch=1
 depends=('gcc-libs' 'libglvnd' 'libxext' 'libxcb')
 optdepends=('libva: For hardware accelerated decoding')
 source=("https://s3.amazonaws.com/parsec-build/package/parsec-linux.deb")
-md5sums=('9f9e2eda656f49ce354e5c9407b8467a')
+md5sums=('e4baa31eb9a2f5aaad28148014165626')
 package() {
 	mkdir -p $pkgdir/usr/bin
 	mkdir -p $pkgdir/usr/share/icons/hicolor/256x256/apps
@@ -25,6 +25,6 @@ package() {
 	install -Dm644 $srcdir/usr/share/icons/hicolor/256x256/apps/parsec.png $pkgdir/usr/share/icons/hicolor/256x256/apps/
 	ln -s /usr/bin/parsecd $pkgdir/usr/bin/parsec
 	cp $srcdir/usr/share/parsec/skel/appdata.json $pkgdir/usr/share/parsec/skel/appdata.json
-	cp $srcdir/usr/share/parsec/skel/parsecd-147-6.so $pkgdir/usr/share/parsec/skel/parsecd-147-6.so
+	cp $srcdir/usr/share/parsec/skel/parsecd-${pkgver//_/-}.so $pkgdir/usr/share/parsec/skel/parsecd-${pkgver//_/-}.so
 }
 
