@@ -1,13 +1,13 @@
 pkgbase = skypat
 	pkgdesc = A C++ unit and performance testing framework
-	pkgver = 2.8
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://skypat.skymizer.com/
 	arch = i686
 	arch = x86_64
 	license = custom:BSD
-	source = skypat-2.8.tar.gz::https://github.com/skymizer/SkyPat/archive/v2.8.tar.gz
-	md5sums = 0dbdc711eb247e53d5215b6659860de4
+	source = skypat-3.1.1.tar.gz::https://github.com/skymizer/SkyPat/archive/v3.1.1.tar.gz
+	sha256sums = 882342ada942057f6296162d137015e2ce0595d3fb3198a506b5b51bfa6e7420
 
 pkgname = skypat
 
