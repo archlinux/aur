@@ -2,18 +2,24 @@
 # Contributor: JP-Ellis <josh@jpellis.me>
 pkgname=lhapdf
 pkgver=6.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A particle physics tool for evaluating PDFs from discretised data files."
 arch=('x86_64' 'i686')
 url="http://lhapdf.hepforge.org/"
 license=('GPL3')
 depends=('python')
 optdepends=('python2')
-makedepends=()
+makedepends=(cython)
 install=lhapdf.install
 source=("http://www.hepforge.org/archive/lhapdf/LHAPDF-$pkgver.tar.gz")
 noextract=()
 md5sums=('9e05567d538fdb4862d4781cd076d7db')
+
+prepare() {
+        cd "$srcdir/LHAPDF-$pkgver"
+        sed -e 's/print Cython.Compiler.Version.version/print (Cython.Compiler.Version.version)/g' -i m4/cython.m4
+        touch wrappers/python/lhapdf.pyx
+}
 
 build() {
 	cd "$srcdir/LHAPDF-$pkgver"
