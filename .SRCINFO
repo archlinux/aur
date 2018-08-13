@@ -1,16 +1,15 @@
 pkgbase = ruby-archive-tar-minitar
 	pkgdesc = A pure-Ruby library and command-line utility that provides the ability to deal with POSIX tar(1) archive files.
-	pkgver = 0.5.2
-	pkgrel = 2
+	pkgver = 0.6.1
+	pkgrel = 1
 	url = https://rubygems.org/gems/archive-tar-minitar
 	arch = any
 	license = GPL2
 	license = RUBY
 	depends = ruby
 	depends = rubygems
-	noextract = archive-tar-minitar-0.5.2.gem
-	source = http://rubygems.org/downloads/archive-tar-minitar-0.5.2.gem
-	md5sums = c8bf480d64cd6be11c0670870dbd760c
+	noextract = archive-tar-minitar-0.6.1.gem
+	source = http://rubygems.org/downloads/archive-tar-minitar-0.6.1.gem
 
 pkgname = ruby-archive-tar-minitar
 
