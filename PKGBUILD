@@ -2,7 +2,7 @@
 # Maintainer: Darcy Hu <hot123tea123@gmail.com>
 
 ## This PKGBUILD creates an Arch Linux package for the proprietary MATLAB application.
-## In order to build the package the user must supply a plain text file installation key as file `matlab.fik`, the license file as `matlab.lic`, the software tarball as `matlab.tar`.
+## In order to build the package the user must supply a plain text file installation key as file `matlab.fik`, the license file as `matlab.lic`, the software tarball as `matlab.tar` from MATLAB ISO image.
 ## To perform a network install set $_networkinstall to true.
 
 _networkinstall=false
@@ -14,7 +14,7 @@ pkgname=matlab
 # install dir
 _instdir="/opt/${pkgname}"
 pkgver=9.4.0.813654
-pkgrel=1
+pkgrel=2
 pkgdesc='A high-level language for numerical computation and visualization'
 arch=('x86_64')
 url='http://www.mathworks.com'
@@ -28,7 +28,6 @@ depends=('gconf'
          'libxp'
          'libxpm'
          'libxtst'
-         'ncurses5-compat-libs'
          'nss'
          'portaudio'
          'python2'
