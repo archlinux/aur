@@ -2,7 +2,7 @@
 
 pkgname=alun
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A CLI tool that notify the user when there is an update, excluding AUR"
 arch=('any')
 url="https://github.com/HOuadhour/alun"
@@ -22,6 +22,6 @@ sha256sums=(
 validpgpkeys=('6481A7A3E66A3AA39D0DD7302A60AB408C14BF70')
 
 package() {
-    cd $pkgdir
-    tar -xf $srcdir/$pkgname-$pkgver.tar.gz
+    cd $srcdir
+    cp -a --no-preserve=ownership usr etc $pkgdir
 }

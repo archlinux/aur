@@ -1,7 +1,7 @@
 pkgbase = alun
 	pkgdesc = A CLI tool that notify the user when there is an update, excluding AUR
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/HOuadhour/alun
 	install = alun.install
 	arch = any
