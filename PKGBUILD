@@ -7,13 +7,13 @@ _verbeta=beta5
 _vermin=4.0
 _ver=${_vermin}.0
 pkgver=${_ver}_${_verbeta}
-pkgrel=1
+pkgrel=2
 pkgdesc='Thunderbird Addon/Extension and Provider for Microsoft Exchange 2007/2010/2013 Calendar, Tasks, Contacts and Global Address List (GAL)'
 url='https://github.com/ExchangeCalendar/exchangecalendar'
 arch=('any')
 groups=('office')
 license=('GPL3')
-depends=('thunderbird>=52')
+depends=('thunderbird<=52.9.1')
 makedepends=('zip')
 options=('!strip' '!libtool' '!staticlibs' '!docs')
 conflicts=('thunderbird-exchangecalendar-git' 'thunderbird-exchangecalendar')
