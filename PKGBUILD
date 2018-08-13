@@ -6,13 +6,13 @@
 pkgbase='python-toolz'
 pkgname=('python-toolz' 'python-cytoolz')
 pkgver=0.9.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A set of utility functions for iterators, functions, and dictionaries."
 arch=('any')
 url="https://github.com/pytoolz"
 license=('BSD')
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'cython' 'gcc')
 conflict=('python-cytoolz')
 source=("https://pypi.org/packages/source/t/toolz/toolz-${pkgver}.tar.gz"
         "https://github.com/pytoolz/cytoolz/archive/${pkgver}.tar.gz")
