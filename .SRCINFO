@@ -1,6 +1,6 @@
 pkgbase = nomad-plasma-look-and-feel-git
 	pkgdesc = Nomad Look and Feel package.
-	pkgver = r144.b76ae5f
+	pkgver = r148.f138e8e
 	pkgrel = 1
 	url = https://github.com/nomad-desktop
 	arch = any
