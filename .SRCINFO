@@ -1,0 +1,13 @@
+pkgbase = fluent-bit
+	pkgdesc = Collect data/logs from different sources, unify and send them to multiple destinations.
+	pkgver = 0.13.7
+	pkgrel = 1
+	url = https://fluentbit.io/
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	source = https://fluentbit.io/releases/0.13/fluent-bit-0.13.7.tar.gz
+	md5sums = 9c592bda1ba6fcee2d62f0e2737ab71d
+
+pkgname = fluent-bit
+
