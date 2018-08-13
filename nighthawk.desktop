@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Nighthawk
+Comment=A Stealthy,Cross-Platform, Simple Music Player that stays out of your way
+Exec="/opt/Nighthawk/nighthawk" %U
+Terminal=false
+Type=Application
+Icon=nighthawk
+Categories=AudioVideo;
