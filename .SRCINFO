@@ -1,7 +1,7 @@
 pkgbase = pythia
 	pkgdesc = High-energy physics events generator.
 	pkgver = 8.2.35
-	pkgrel = 4
+	pkgrel = 5
 	url = http://home.thep.lu.se/Pythia/
 	install = pythia.install
 	arch = i686
