@@ -2,7 +2,7 @@
 
 pkgname=strawberry-bin
 pkgver=0.2.1
-pkgrel=1
+pkgrel=41
 pkgdesc="Strawberry Music Player"
 arch=('x86_64')
 url="http://www.strawbs.org/"
