@@ -1,13 +1,13 @@
 pkgbase = perl-netcdf
 	pkgdesc = A perl extension module for scientific data access via the netCDF API
 	pkgver = 1.2.4
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.unidata.ucar.edu/software/netcdf-perl/
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = netcdf
-	depends = perl
+	depends = perl>=0
 	provides = netcdf-perl-1.2.4
 	conflicts = netcdf-perl
 	replaces = netcdf-perl
