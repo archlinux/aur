@@ -5,7 +5,7 @@
 pkgname=ruby-archive-tar-minitar
 _gemname=${pkgname#ruby-}
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A pure-Ruby library and command-line utility that provides the ability to deal with POSIX tar(1) archive files."
 arch=('any')
 url="https://rubygems.org/gems/archive-tar-minitar"
@@ -20,4 +20,6 @@ package() {
   gem install --no-user-install --ignore-dependencies -i \
     "${pkgdir}${_gemdir}" -n "${pkgdir}/usr/bin" ${_gemname}-${pkgver}.gem
 }
+sha512sums=('286ffeb8dadf3714c7bde838b2417d3a781a99b176046ddc7890e6dfc01e96b2d015fb15443180dd8d2458489c386e397578c079cd5735d331caf0840257fc47')
+sha512sums=('286ffeb8dadf3714c7bde838b2417d3a781a99b176046ddc7890e6dfc01e96b2d015fb15443180dd8d2458489c386e397578c079cd5735d331caf0840257fc47')
 sha512sums=('286ffeb8dadf3714c7bde838b2417d3a781a99b176046ddc7890e6dfc01e96b2d015fb15443180dd8d2458489c386e397578c079cd5735d331caf0840257fc47')
