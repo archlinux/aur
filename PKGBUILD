@@ -1,7 +1,7 @@
 # Maintainer: Dmitry Lavnikevich <haff@midgard.by>
 
 pkgname=themerrr
-pkgver=1.1
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Dynamic system theme rereader"
 arch=('i686' 'x86_64')
