@@ -7,12 +7,11 @@
 
 _pkgname=audacious-plugins
 pkgname=$_pkgname-gtk3
-pkgver=3.9
-_pkgver=$pkgver-gtk3
+pkgver=3.10
 pkgrel=1
 pkgdesc="Plugins for Audacious"
 arch=('i686' 'x86_64')
-url="http://audacious-media-player.org/"
+url="https://audacious-media-player.org/"
 license=('BSD' 'GPL')
 provides=('audacious-plugins')
 conflicts=('audacious-plugins')
@@ -22,7 +21,7 @@ makedepends=("audacious-gtk3>=$pkgver"
              'alsa-lib' 'pulseaudio' 'jack2' 'lame' 'libvorbis' 'flac' 'mpg123'
              'faad2' 'ffmpeg' 'libmodplug' 'fluidsynth' 'libcdio-paranoia'
              'libsidplayfp' 'wavpack' 'dbus-glib' 'libsamplerate' 'libnotify'
-             'lirc' 'curl' 'libmtp' 'neon' 'libmms' 'libcue')
+             'lirc' 'curl' 'libmtp' 'neon' 'libmms' 'libcue' 'git')
 
 optdepends=('alsa-lib: Advanced Linux Sound Arch. output'
             'pulseaudio: PulseAudio output'
@@ -51,23 +50,24 @@ optdepends=('alsa-lib: Advanced Linux Sound Arch. output'
             'libmms: libmms-based mms transport'
             'libcue: CUE playlist format')
 
-source=("https://github.com/audacious-media-player/$_pkgname/archive/$_pkgname-$_pkgver.tar.gz")
-sha256sums=('d4bbc8d114cd89148d8d37953a29e329034a856805870ef2a90d198a659f7e8f')
+_tag=$_pkgname-$pkgver-gtk3
+source=("git+https://github.com/audacious-media-player/$_pkgname.git#tag=$_tag")
+sha256sums=('SKIP')
 
 prepare() {
-  cd "$srcdir/$_pkgname-$_pkgname-$_pkgver"
+  cd "$srcdir/audacious-plugins"
   autoreconf -I m4
 }
 
 build() {
-  cd "$srcdir/$_pkgname-$_pkgname-$_pkgver"
+  cd "$srcdir/audacious-plugins"
   ./configure \
     --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$_pkgname-$_pkgver"
+  cd "$srcdir/audacious-plugins"
   make DESTDIR="$pkgdir" install
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
