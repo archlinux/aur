@@ -4,7 +4,7 @@ pkgname=plasma5-applets-bandwidth-monitor
 pkgver=2.0
 pkgrel=1
 pkgdesc='Plasma 5 applet that displays the currently used network bandwidth.'
-arch=('i686' 'x86_64')
+arch=('any')
 
 url='https://gitlab.com/Scrumplex/plasma-applet-bandwidth-monitor'
 license=('GPL2')
