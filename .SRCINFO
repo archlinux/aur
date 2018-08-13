@@ -1,6 +1,6 @@
 pkgbase = sprycloud-client-git
 	pkgdesc = spryCloud client for Linux
-	pkgver = 2.5.0.spry.r7.r0.g2811d4d9b
+	pkgver = 2.5.0.spry.r8.r0.g774cecd22
 	pkgrel = 1
 	url = https://www.spryservers.net/
 	install = sprycloud-client.install
@@ -9,11 +9,18 @@ pkgbase = sprycloud-client-git
 	license = GPL2
 	makedepends = cmake
 	makedepends = qt5-tools
+	makedepends = extra-cmake-modules
+	makedepends = doxygen
+	makedepends = qtkeychain
+	makedepends = python-sphinx
 	depends = qtkeychain
 	depends = qt5-webkit
 	depends = hicolor-icon-theme
 	depends = xdg-utils
+	optdepends = nemo-python
+	optdepends = python2-nautilus
 	provides = sprycloud-client
+	provides = sprycloud-client-git
 	conflicts = sprycloud-client
 	options = !strip
 	backup = etc/spryCloud/sync-exclude.lst
@@ -23,3 +30,4 @@ pkgbase = sprycloud-client-git
 	md5sums = SKIP
 
 pkgname = sprycloud-client-git
+

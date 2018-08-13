@@ -3,19 +3,19 @@
 
 # Uncomment, if you want tha last release
 #_version=spry_v2.5.0
-_spryrel=2.5.0.spry.r7
+_spryrel=2.5.0.spry.r8
 pkgname=sprycloud-client-git
 _name=${pkgname/\-git/}
-pkgver=2.5.0.spry.r7.r0.g2811d4d9b
+pkgver=2.5.0.spry.r8.r0.g774cecd22
 pkgrel=1
 pkgdesc="spryCloud client for Linux"
 arch=('i686' 'x86_64')
 url="https://www.spryservers.net/"
 license=('GPL2')
 depends=('qtkeychain' 'qt5-webkit' 'hicolor-icon-theme' 'xdg-utils')
-optdepends=()
-makedepends=('cmake' 'qt5-tools')
-provides=('sprycloud-client')
+optdepends=('nemo-python' 'python2-nautilus')
+makedepends=('cmake' 'qt5-tools' 'extra-cmake-modules' 'doxygen' 'qtkeychain' 'python-sphinx')
+provides=('sprycloud-client' 'sprycloud-client-git')
 conflicts=('sprycloud-client')
 install=${_name}.install
 options=(!strip)
@@ -51,6 +51,7 @@ build() {
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_BUILD_TYPE="Release" \
+        -DNO_SHIBBOLETH=1 \
         -DCMAKE_INSTALL_SYSCONFDIR=/etc/spryCloud \
         -DWITH_DOC=FALSE \
         -DQTKEYCHAIN_LIBRARY=/usr/lib/libqt5keychain.so \
