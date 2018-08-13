@@ -2,13 +2,13 @@
 
 _gitname=i3lock-color
 pkgname="$_gitname-git"
-pkgver=r483.e07c3f0
+pkgver=r506.5bbdd02
 pkgrel=1
 pkgdesc="An improved screenlocker based upon XCB and PAM with color configuration support"
 arch=('i686' 'x86_64')
 url="https://github.com/PandorasFox/i3lock-color"
 license=('MIT')
-depends=('xcb-util-image' 'pam' 'libev' 'cairo' 'libxkbcommon-x11' 'libjpeg-turbo')
+depends=('xcb-util-image' 'xcb-util-xrm' 'pam' 'libev' 'cairo' 'libxkbcommon-x11' 'libjpeg-turbo')
 provides=('i3lock' 'i3lock-color')
 conflicts=('i3lock')
 makedepends=('git')
@@ -32,7 +32,7 @@ build() {
     git tag -f "aur-$(git rev-parse --short HEAD)"
     autoreconf -fi
     ./configure --prefix="/usr" --sysconfdir="/etc"
-    make -j8
+    make
 }
 
 package() {
