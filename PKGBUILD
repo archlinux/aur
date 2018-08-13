@@ -2,7 +2,8 @@
 
 _pkgname=audacious
 pkgname=${_pkgname}-qt5
-pkgver=3.10+beta1
+epoch=1
+pkgver=3.10
 pkgrel=1
 pkgdesc="Lightweight, advanced audio player (with qt5 interface)"
 arch=('i686' 'x86_64')
@@ -16,7 +17,7 @@ provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 replaces=('audacious-player')
 source=(https://distfiles.audacious-media-player.org/$_pkgname-${pkgver/+/-}.tar.bz2)
-sha256sums=('3a3ea429cbfcdd008bec3edd9747beba0afa9510ab2f6430a251f33d9b8c466f')
+sha256sums=('6e4d49ac48a373c4c47d605fe18fbd5854bc30af6fece11331069af40eaa3fb5')
 
 build() {
   cd "$srcdir/$_pkgname-${pkgver/+/-}"
