@@ -1,6 +1,6 @@
 pkgbase = btrfsmaintenance
 	pkgdesc = btrfs maintenance scripts
-	pkgver = 0.2
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/kdave/btrfsmaintenance
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = btrfsmaintenance
 	depends = bash
 	conflicts = btrfsmaintenance-git
 	source = https://github.com/kdave/btrfsmaintenance/archive/v0.2.tar.gz
-	sha256sums = fc9a7f380bafa78981e7d524adb89d3f054dde2d1b133eb1a3212b2c3032be28
+	sha256sums = 32f70c3667231ace8c4218f2dbf7e76b5451907adfb0798323d14ad1455b1fac
 
 pkgname = btrfsmaintenance
 
