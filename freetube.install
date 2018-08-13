@@ -1,0 +1,11 @@
+post_install() {
+    patchelf --set-interpreter "/opt/freetube/glibc/usr/lib/ld-linux-x86-64.so.2" "/opt/freetube/FreeTube"
+    patchelf --set-rpath "/opt/freetube:/opt/freetube/glibc/usr/lib" "/opt/freetube/FreeTube"
+    patchelf --shrink-rpath "/opt/freetube/FreeTube"
+}
+
+post_update() {
+    patchelf --set-interpreter "/opt/freetube/glibc/usr/lib/ld-linux-x86-64.so.2" "/opt/freetube/FreeTube"
+    patchelf --set-rpath "/opt/freetube:/opt/freetube/glibc/usr/lib" "/opt/freetube/FreeTube"
+    patchelf --shrink-rpath "/opt/freetube/FreeTube"
+}
