@@ -110,7 +110,7 @@ prepare() {
 package() {
     msg2 "Running Mathematica installer"
     # https://reference.wolfram.com/language/tutorial/InstallingMathematica.html#650929293
-    ${srcdir}/Mathematica_${pkgver}_LINUX.sh -- \
+    sh ${srcdir}/Mathematica_${pkgver}_LINUX.sh -- \
              -execdir=${pkgdir}/usr/bin \
              -targetdir=${pkgdir}/opt/Mathematica \
              -auto
