@@ -2,7 +2,7 @@
 
 pkgname=notmuch-extract-patch-git
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc='Extract git patchset from notmuch emails'
 arch=('i686' 'x86_64')
 url='https://github.com/aaptel/notmuch-extract-patch'
