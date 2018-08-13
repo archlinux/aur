@@ -1,6 +1,4 @@
 post_install() {
-  systemd-sysusers mock.conf
-  systemd-tmpfiles --create mock.conf
   echo 'You must add yourself to the mock group in order to run mock.'
 }
 

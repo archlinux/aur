@@ -6,11 +6,10 @@
 #_with_usermode=1
 
 pkgname=mock
-_pkgver=1.4.11
+pkgver=1.4.12
 _rpmrel=1
-_pkgtag=$pkgname-$_pkgver-$_rpmrel
-pkgver=$_pkgver.$_rpmrel
-pkgrel=1
+_pkgtag=$pkgname-$pkgver-$_rpmrel
+pkgrel=$_rpmrel.1
 pkgdesc="A simple chroot build environment manager for building RPMs"
 url="https://github.com/rpm-software-management/$pkgname"
 arch=('any')
@@ -29,7 +28,7 @@ backup=("etc/$pkgname/site-defaults.cfg")
 source=("$url/archive/$_pkgtag.tar.gz"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-md5sums=('9e5f3b6a2a94c8118aabd3b4ab47ea91'
+md5sums=('62eaa87182e3de474eb762a8d9223359'
          'd277502b9a95484594f86231d073dae0'
          '1052fa4db74b59b0c195f4756bd865e8')
 
@@ -41,16 +40,26 @@ _sysconfdir=/etc
 
 prepare() {
 	mv "$pkgname-$_pkgtag" "$pkgname-$pkgver"
+
+	cd "$pkgname-$pkgver"
+
+	pushd $pkgname >/dev/null
+
+	# ArchLinux does not provides gtar symlink
+	sed -e "/config_opts['tar']/ s|.*|config_opts['tar'] = \"bsdtar\"|" \
+		-i etc/$pkgname/site-defaults.cfg
+
+	popd >/dev/null
 }
 
 build() {
 	cd "$pkgname-$pkgver"
 
-	pushd mock >/dev/null
+	pushd $pkgname >/dev/null
 
 	python_sitelib=$(python -c 'from distutils.sysconfig import get_python_lib; import sys; sys.stdout.write(get_python_lib())')
 	sed -r -i py/${pkgname}{,chain}.py \
-	    -e 's|^__VERSION__\s*=.*|__VERSION__="'$_pkgver'"|' \
+	    -e 's|^__VERSION__\s*=.*|__VERSION__="'$pkgver'"|' \
 	    -e 's|^SYSCONFDIR\s*=.*|SYSCONFDIR="'$_sysconfdir'"|' \
 	    -e 's|^PYTHONDIR\s*=.*|PYTHONDIR="'$python_sitelib'"|' \
 	    -e 's|^PKGPYTHONDIR\s*=.*|PKGPYTHONDIR="'$python_sitelib'/mockbuild"|'
@@ -59,7 +68,7 @@ build() {
 	sed -r -i py/$pkgname.py \
 	    -e 's|/usr/libexec/mock/mock|/usr/bin/mock.py|'
 
-	sed -e "s|@VERSION@|$_pkgver|" -i docs/${pkgname}{,chain}.1
+	sed -e "s|@VERSION@|$pkgver|" -i docs/${pkgname}{,chain}.1
 
 	python    -m compileall py/ -q
 	python -O -m compileall py/ -q
@@ -70,7 +79,7 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
 
-	pushd mock >/dev/null
+	pushd $pkgname >/dev/null
 
 	mkdir -p "$pkgdir/$_bindir/"
 	install -Dp -m755 py/mock.py      "$pkgdir/$_bindir/"mock
