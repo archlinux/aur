@@ -110,7 +110,7 @@ package() {
 #      "$pkgdir/usr/bin/$pkgname"
 #  fi
 if ! tempest > /dev/null 2>&1; then                                            
-   sudo n -s $GOBIN/tempest /usr/bin/tempest                                        
+   sudo ln -s $GOBIN/tempest /usr/bin/tempest                                        
 fi 
 
 }
