@@ -8,15 +8,13 @@ pkgbase = litex-git
 	depends = python
 	depends = migen
 	optdepends = lm32-elf-binutils: lm32 soft core
-	optdepends = lm32-eld-gcc: lm32 soft core
+	optdepends = lm32-elf-gcc: lm32 soft core
 	optdepends = riscv64-unknown-elf-binutils: picorv32 and vexriscv soft cores
 	optdepends = riscv64-unknown-elf-gcc: picorv32 and vexriscv soft cores
 	provides = litex
 	options = !emptydirs
 	source = git+https://github.com/enjoy-digital/litex
-	source = removed_sections.patch
 	sha256sums = SKIP
-	sha256sums = 13509ea8953b0e696539e604979e5411dafeaceb8da46acc52d701095e4f5534
 
 pkgname = litex-git
 
