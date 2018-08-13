@@ -4,11 +4,11 @@ from setuptools import setup, find_packages
 
 setup(
     name = "sfs_select",
-    version = "0.3.1",
+    version = "0.4.0",
     packages = ["sfs_select"],
     package_data = { "": ["gui.ui"] },
     entry_points = { "console_scripts": ["sfs-select = sfs_select:main"] },
-    install_requires = ["pyside", "psutil"],
+    install_requires = ["PyQt5", "psutil"],
     author = """PsyBlade""",
     description = "A small tool to manage Steam Family Sharing",
     keywords = "steam games",
