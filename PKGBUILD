@@ -2,7 +2,7 @@
 
 pkgname=libmpsse-python3-git
 pkgver=r19.688cf0d
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source library for SPI/I2C control via FTDI chips - Fixed for Python 3"
 arch=('x86_64')
 url="https://github.com/Streetwalrus/libmpsse"
