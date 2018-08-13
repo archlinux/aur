@@ -1,4 +1,4 @@
-From 02e73aefa8cbca851ffe2f8c0d5fb6829ab1afdf Mon Sep 17 00:00:00 2001
+From 07fde1b2f53a16306401a85264e5728ec510036d Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
 Date: Tue, 20 Oct 2009 18:32:35 +0100
 Subject: [PATCH 4/4] Don't build the main poppler library.
@@ -8,10 +8,10 @@ Subject: [PATCH 4/4] Don't build the main poppler library.
  1 file changed, 18 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index ac186d53..a3d94e82 100644
+index cdfe7795..001425ce 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -484,24 +484,6 @@ if(TIFF_FOUND)
+@@ -483,24 +483,6 @@ if(TIFF_FOUND)
    set(poppler_LIBS ${poppler_LIBS} ${TIFF_LIBRARIES})
  endif()
  
@@ -22,7 +22,7 @@ index ac186d53..a3d94e82 100644
 -else()
 -add_library(poppler ${poppler_SRCS})
 -endif()
--set_target_properties(poppler PROPERTIES VERSION 75.0.0 SOVERSION 75)
+-set_target_properties(poppler PROPERTIES VERSION 78.0.0 SOVERSION 78)
 -if(MINGW)
 -    get_target_property(POPPLER_SOVERSION poppler SOVERSION)
 -    set_target_properties(poppler PROPERTIES SUFFIX "-${POPPLER_SOVERSION}${CMAKE_SHARED_LIBRARY_SUFFIX}")
@@ -37,5 +37,5 @@ index ac186d53..a3d94e82 100644
    install(FILES
      poppler/Annot.h
 -- 
-2.17.0
+2.18.0
 
