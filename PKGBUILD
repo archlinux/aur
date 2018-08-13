@@ -6,9 +6,6 @@
 ### BUILD OPTIONS
 # Set these variables to ANYTHING that is not null to enable them
 
-### Use tentative patches from https://groups.google.com/forum/#!forum/bfq-iosched
-_use_tentative_patches=
-
 ### Enable fancontrol for DELL
 _dell_fancontrol=
 
@@ -66,18 +63,16 @@ _major=4.17
 pkgver=4.17.14
 _srcpatch="${pkgver}"
 _srcname="linux-${pkgver}"
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
-makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
+makedepends=('kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 _bfqpath="https://gitlab.com/tom81094/custom-patches/raw/master/bfq-mq"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.17"
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/4.17"
-_gcc_name="kernel_gcc_patch"
-_gcc_rel='20180509'
-_gcc_path="https://github.com/graysky2/${_gcc_name}/archive"
+_gcc_path="https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+.patch"
 _bfq_sq_mq_path="bfq-sq-mq"
 _bfq_sq_mq_ver='v8r12'
@@ -88,7 +83,7 @@ source=(# mainline kernel patches
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
         # gcc cpu optimizatons from graysky and ck
-        "${_gcc_name}-${_gcc_rel}.tar.gz::${_gcc_path}/${_gcc_rel}.tar.gz"
+        "${_gcc_path}/${_gcc_patch}"
         # bfq-mq patch
         "${_lucjanpath}/${_bfq_sq_mq_path}/${_bfq_sq_mq_patch}"
         "${_lucjanpath}/0100-Check-presence-on-tree-of-every-entity-after-every-a.patch"
@@ -109,10 +104,10 @@ source=(# mainline kernel patches
 
 sha256sums=('c846038df44ee74dd910d19b346044a100f62a5b933eec2264d17008758cbaaf'
             'SKIP'
-            '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
+            '9f7177679c8d3f8d699ef0566a51349d828436dba04603bc2223f98c60d2d178'
             '7fa085ae8c7839fe22257bdebfcd1dfb1e60c40e61157972c349634c122ed086'
             'eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531'
-            '39cbe2decde7c5939647388102a1811938df8276056e7f6c3594d8bf5ac1a9a5'
+            '2bcc7d7713ad223bbd347d669b824192d469cfbc7ca0bd2306f87947ae1c6cb6'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             '5f6ba52aaa528c4fa4b1dc097e8930fad0470d7ac489afcb13313f289ca32184'
@@ -131,75 +126,57 @@ _kernelname=${pkgbase#linux}
 prepare() {
   cd ${_srcname}
   
-  ### Disable USER_NS for non-root users by default
-        msg "Disable USER_NS for non-root users by default"
-        patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-    
-    ### Fix https://bugs.archlinux.org/task/56711
-        msg "Fix #56711"
-        patch -Np1 -i ../0002-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
-   
-   ### Fix https://bugs.archlinux.org/task/56780
-        msg "Fix #56780"
-        patch -Np1 -i ../0003-ACPI-watchdog-Prefer-iTCO_wdt-always-when-WDAT-table.patch
-   
-    ### Fix iwd provoking a BUG
-        msg "Fix iwd provoking a BUG"
-        patch -Np1 -i ../0004-mac80211-disable-BHs-preemption-in-ieee80211_tx_cont.patch
-    
-    ### Patch source with BFQ-SQ-MQ
-        msg "Patching source with BFQ-SQ-MQ patches"
-        patch -Np1 -i ../${_bfq_sq_mq_patch}
+  ### Setting version
+        msg2 "Setting version..."
+        scripts/setlocalversion --save-scmversion
+        echo "-$pkgrel" > localversion.10-pkgrel
+        echo "$_kernelname" > localversion.20-pkgname
 
-   ### Patches related to BUG_ON(entity->tree && entity->tree != &st->active) in __bfq_requeue_entity();
-        if [ -n "$_use_tentative_patches" ]; then
-        msg "Apply tentative patches"
-        for p in "${srcdir}"/0100*.patch*; do 
-        msg " $p"
-        patch -Np1 -i "$p"; done
+    ### Patching sources
+        local src
+        for src in "${source[@]}"; do
+            src="${src%%::*}"
+            src="${src##*/}"
+            [[ $src = *.patch ]] || continue
+        msg2 "Applying patch $src..."
+        patch -Np1 < "../$src"
+        done
+
+    ### Setting config
+        msg2 "Setting config..."
+        cp ../config .config
+        make olddefconfig
+
+    ### Prepared version
+        make -s kernelrelease > ../version
+        msg2 "Prepared %s version %s" "$pkgbase" "$(<../version)"
+
+    ### Optionally set tickrate to 1000 
+        if [ -n "$_1k_HZ_ticks" ]; then
+        msg "Setting tick rate to 1k..."
+        sed -i -e 's/^CONFIG_HZ_300=y/# CONFIG_HZ_300 is not set/' \
+            -i -e 's/^# CONFIG_HZ_1000 is not set/CONFIG_HZ_1000=y/' \
+            -i -e 's/^CONFIG_HZ=300/CONFIG_HZ=1000/' ./.config
+        fi
+  
+    ### Enable fancontrol
+        if [ -n "$_dell_fancontrol" ]; then
+        msg "Enabling I8K for Dell..."
+        sed -i -e s'/^CONFIG_I8K=m/CONFIG_I8K=y/' \
+            -i -e s'/^CONFIG_SENSORS_DELL_SMM=m/CONFIG_SENSORS_DELL_SMM=y/' ./.config    
         fi
 
-  # add latest fixes from stable queue, if needed
-  # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
-
-  ### Patch source to enable more gcc CPU optimizatons via the make nconfig
-  msg "Patch source with gcc patch to enable more cpus types"
-  patch -Np1 -i ../${_gcc_name}-${_gcc_rel}/${_gcc_patch}
-  
-  # Clean tree and copy ARCH config over
-  make mrproper
-  
-  cat ../config - >.config <<END
-CONFIG_LOCALVERSION="${_kernelname}"
-CONFIG_LOCALVERSION_AUTO=n
-END
-
-  ### Optionally set tickrate to 1000 
-  if [ -n "$_1k_HZ_ticks" ]; then
-    msg "Setting tick rate to 1k..."
-    sed -i -e 's/^CONFIG_HZ_300=y/# CONFIG_HZ_300 is not set/' \
-        -i -e 's/^# CONFIG_HZ_1000 is not set/CONFIG_HZ_1000=y/' \
-        -i -e 's/^CONFIG_HZ=300/CONFIG_HZ=1000/' ./.config
-  fi
-  
-  ### Enable fancontrol
-  if [ -n "$_dell_fancontrol" ]; then
-    msg "Enabling I8K for Dell..."
-    sed -i -e s'/^CONFIG_I8K=m/CONFIG_I8K=y/' \
-        -i -e s'/^CONFIG_SENSORS_DELL_SMM=m/CONFIG_SENSORS_DELL_SMM=y/' ./.config    
-  fi
-
-  ### Set performance governor
-  if [ -n "$_per_gov" ]; then
-    msg "Setting performance governor.."
-    sed -i -e s'/^CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL=y/# CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL is not set/' \
-        -i -e s'/^# CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE is not set/CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE=y/' ./.config
-    msg "Disabling uneeded governors..."
-    sed -i -e s'/^CONFIG_CPU_FREQ_GOV_ONDEMAND=m/# CONFIG_CPU_FREQ_GOV_ONDEMAND is not set/' \
-        -i -e s'/^CONFIG_CPU_FREQ_GOV_CONSERVATIVE=m/# CONFIG_CPU_FREQ_GOV_CONSERVATIVE is not set/' \
-        -i -e s'/^CONFIG_CPU_FREQ_GOV_USERSPACE=m/# CONFIG_CPU_FREQ_GOV_USERSPACE is not set/' \
-        -i -e s'/^CONFIG_CPU_FREQ_GOV_SCHEDUTIL=y/# CONFIG_CPU_FREQ_GOV_SCHEDUTIL is not set/' ./.config
-   fi
+    ### Set performance governor
+        if [ -n "$_per_gov" ]; then
+        msg "Setting performance governor.."
+        sed -i -e s'/^CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL=y/# CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL is not set/' \
+            -i -e s'/^# CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE is not set/CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE=y/' ./.config
+        msg "Disabling uneeded governors..."
+        sed -i -e s'/^CONFIG_CPU_FREQ_GOV_ONDEMAND=m/# CONFIG_CPU_FREQ_GOV_ONDEMAND is not set/' \
+            -i -e s'/^CONFIG_CPU_FREQ_GOV_CONSERVATIVE=m/# CONFIG_CPU_FREQ_GOV_CONSERVATIVE is not set/' \
+            -i -e s'/^CONFIG_CPU_FREQ_GOV_USERSPACE=m/# CONFIG_CPU_FREQ_GOV_USERSPACE is not set/' \
+            -i -e s'/^CONFIG_CPU_FREQ_GOV_SCHEDUTIL=y/# CONFIG_CPU_FREQ_GOV_SCHEDUTIL is not set/' ./.config
+        fi
 
   ### Optionally disable NUMA for 64-bit kernels only
         # (x86 kernels do not support NUMA)
@@ -217,86 +194,66 @@ END
                 -i -e '/CONFIG_ACPI_NUMA=y/d' ./.config
         fi
 
-  ### Optionally use running kernel's config
-  # code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
-  if [ -n "$_use_current" ]; then
-    if [[ -s /proc/config.gz ]]; then
-      msg "Extracting config from /proc/config.gz..."
-      # modprobe configs
-      zcat /proc/config.gz > ./.config
-    else
-      warning "Your kernel was not compiled with IKCONFIG_PROC!"
-      warning "You cannot read the current config!"
-      warning "Aborting!"
-      exit
-    fi
-  fi
+    ### Optionally use running kernel's config
+        # code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
+        if [ -n "$_use_current" ]; then
+            if [[ -s /proc/config.gz ]]; then
+            msg "Extracting config from /proc/config.gz..."
+            # modprobe configs
+            zcat /proc/config.gz > ./.config
+        else
+            warning "Your kernel was not compiled with IKCONFIG_PROC!"
+            warning "You cannot read the current config!"
+            warning "Aborting!"
+            exit
+            fi
+        fi
 
-  ### Disable Deadline I/O scheduler
-  if [ -n "$_deadline_disable" ]; then
-     msg "Disabling Deadline I/O scheduler..."
-     sed -i -e s'/CONFIG_IOSCHED_DEADLINE=y/# CONFIG_IOSCHED_DEADLINE is not set/' ./.config
-     sed -i -e s'/CONFIG_MQ_IOSCHED_DEADLINE=y/# CONFIG_MQ_IOSCHED_DEADLINE is not set/' ./.config
-  fi
+    ### Disable Deadline I/O scheduler
+        if [ -n "$_deadline_disable" ]; then
+        msg "Disabling Deadline I/O scheduler..."
+        sed -i -e s'/CONFIG_IOSCHED_DEADLINE=y/# CONFIG_IOSCHED_DEADLINE is not set/' ./.config
+        sed -i -e s'/CONFIG_MQ_IOSCHED_DEADLINE=y/# CONFIG_MQ_IOSCHED_DEADLINE is not set/' ./.config
+        fi
 
-  ### Disable CFQ I/O scheduler
-  if [ -n "$_CFQ_disable" ]; then
-    msg "Disabling CFQ I/O scheduler..."
-    sed -i -e s'/^CONFIG_IOSCHED_CFQ=y/# CONFIG_IOSCHED_CFQ is not set/' \
+    ### Disable CFQ I/O scheduler
+        if [ -n "$_CFQ_disable" ]; then
+        msg "Disabling CFQ I/O scheduler..."
+        sed -i -e s'/^CONFIG_IOSCHED_CFQ=y/# CONFIG_IOSCHED_CFQ is not set/' \
         -i -e s'/^CONFIG_CFQ_GROUP_IOSCHED=y/# CONFIG_CFQ_GROUP_IOSCHED is not set/' ./.config	
-  fi
+        fi
 
-  ### Disable Kyber I/O scheduler
-  if [ -n "$_kyber_disable" ]; then
-     msg "Disabling Kyber I/O scheduler..."
-     sed -i -e s'/CONFIG_MQ_IOSCHED_KYBER=y/# CONFIG_MQ_IOSCHED_KYBER is not set/' ./.config
-  fi
+    ### Disable Kyber I/O scheduler
+        if [ -n "$_kyber_disable" ]; then
+        msg "Disabling Kyber I/O scheduler..."
+        sed -i -e s'/CONFIG_MQ_IOSCHED_KYBER=y/# CONFIG_MQ_IOSCHED_KYBER is not set/' ./.config
+        fi
   
-  ### Enable MQ scheduling
-  if [ -n "$_mq_enable" ]; then
-    msg "Enable MQ scheduling..."
-    sed -i -e s'/^# CONFIG_SCSI_MQ_DEFAULT is not set/CONFIG_SCSI_MQ_DEFAULT=y/' \
-        -i -e s'/^# CONFIG_DM_MQ_DEFAULT is not set/CONFIG_DM_MQ_DEFAULT=y/' ./.config
-  fi
+    ### Enable MQ scheduling
+        if [ -n "$_mq_enable" ]; then
+        msg "Enable MQ scheduling..."
+        sed -i -e s'/^# CONFIG_SCSI_MQ_DEFAULT is not set/CONFIG_SCSI_MQ_DEFAULT=y/' \
+            -i -e s'/^# CONFIG_DM_MQ_DEFAULT is not set/CONFIG_DM_MQ_DEFAULT=y/' ./.config
+        fi
 
-  # sett extraversion to pkgrel and empty localversion
-    sed -e "/^EXTRAVERSION =/s/=.*/= -${pkgrel}/" \
-        -e "/^EXTRAVERSION =/aLOCALVERSION =" \
-        -i Makefile
 
-  # don't run depmod on 'make install'. We'll do this ourselves in packaging
-  sed -i '2iexit 0' scripts/depmod.sh
 
-  # get kernel version
-  make prepare
+    ### Optionally load needed modules for the make localmodconfig
+        # See https://aur.archlinux.org/packages/modprobed-db
+        if [ -n "$_localmodcfg" ]; then
+        msg "If you have modprobed-db installed, running it in recall mode now"
+            if [ -e /usr/bin/modprobed-db ]; then
+            [[ -x /usr/bin/sudo ]] || {
+            echo "Cannot call modprobe with sudo. Install sudo and configure it to work with this user."
+            exit 1; }
+            sudo /usr/bin/modprobed-db recall
+        fi
+            msg "Running Steven Rostedt's make localmodconfig now"
+            make localmodconfig
+        fi
 
-  ### Optionally load needed modules for the make localmodconfig
-  # See https://aur.archlinux.org/packages/modprobed-db
-  if [ -n "$_localmodcfg" ]; then
-    msg "If you have modprobed-db installed, running it in recall mode now"
-    if [ -e /usr/bin/modprobed-db ]; then
-      [[ -x /usr/bin/sudo ]] || {
-      echo "Cannot call modprobe with sudo. Install sudo and configure it to work with this user."
-      exit 1; }
-      sudo /usr/bin/modprobed-db recall
-    fi
-    msg "Running Steven Rostedt's make localmodconfig now"
-    make localmodconfig
-  fi
-
-  # load configuration
-  # Configure the kernel. Replace the line below with one of your choice.
-  #make menuconfig # CLI menu for configuration
-  #make nconfig # new CLI menu for configuration
-  #make xconfig # X-based configuration
-  #make oldconfig # using old config from previous kernel version
-  # ... or manually edit .config
-
-  # rewrite configuration
-  yes "" | make config >/dev/null
-
-  # save configuration for later reuse
-  cat .config > "${startdir}/config.last"
+    # save configuration for later reuse
+    cat .config > "${startdir}/config.last"
 }
 
 build() {
@@ -313,56 +270,56 @@ _package() {
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux.install
 
-  cd ${_srcname}
+  local kernver="$(<version)"
 
-    # get kernel version
-    _kernver="$(make kernelrelease)"
-    _basekernel=${_kernver%%-*}
-    _basekernel=${_basekernel%.*}
+  cd $_srcname
 
-    mkdir -p "${pkgdir}"/{boot,usr/lib/modules}
-    make INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
-    cp arch/x86/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
+  msg2 "Installing boot image..."
+  install -Dm644 "$(make -s image_name)" "$pkgdir/boot/vmlinuz-$pkgbase"
 
-    # make room for external modules
-    local _extramodules="extramodules-${_basekernel}${_kernelname}"
-    ln -s "../${_extramodules}" "${pkgdir}/usr/lib/modules/${_kernver}/extramodules"
+  msg2 "Installing modules..."
+  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
+  mkdir -p "$modulesdir"
+  make INSTALL_MOD_PATH="$pkgdir/usr" DEPMOD=/doesnt/exist modules_install
 
-    # add real version for building modules and running depmod from hook
-    echo "${_kernver}" |
-        install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modules/${_extramodules}/version"
+  # a place for external modules,
+  # with version file for building modules and running depmod from hook
+  local extramodules="extramodules$_kernelname"
+  local extradir="$pkgdir/usr/lib/modules/$extramodules"
+  install -Dt "$extradir" -m644 ../version
+  ln -sr "$extradir" "$modulesdir/extramodules"
 
-    # remove build and source links
-    rm "${pkgdir}"/usr/lib/modules/${_kernver}/{source,build}
+  # remove build and source links
+  rm "$modulesdir"/{source,build}
 
-    # now we call depmod...
-    depmod -b "${pkgdir}/usr" -F System.map "${_kernver}"
+  msg2 "Running depmod..."
+  depmod -b "$pkgdir/usr" -E Module.symvers -e "$kernver"
 
-    # add vmlinux
-    install -Dt "${pkgdir}/usr/lib/modules/${_kernver}/build" -m644 vmlinux
+  msg2 "Installing hooks..."
 
-    # sed expression for following substitutions
-    local _subst="
-        s|%PKGBASE%|${pkgbase}|g
-        s|%KERNVER%|${_kernver}|g
-        s|%EXTRAMODULES%|${_extramodules}|g
-    "
+  # sed expression for following substitutions
+  local subst="
+    s|%PKGBASE%|$pkgbase|g
+    s|%KERNVER%|$kernver|g
+    s|%EXTRAMODULES%|$extramodules|g
+  "
 
-    # hack to allow specifying an initially nonexisting install file
-    sed "${_subst}" "${startdir}/${install}" > "${startdir}/${install}.pkg"
-    true && install=${install}.pkg
+  # hack to allow specifying an initially nonexisting install file
+  sed "$subst" "$startdir/$install" > "$startdir/$install.pkg"
+  true && install=$install.pkg
 
-    # install mkinitcpio preset file
-    sed "${_subst}" ../linux.preset |
-        install -Dm644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+  # fill in mkinitcpio preset and pacman hooks
+  sed "$subst" ../linux.preset | install -Dm644 /dev/stdin \
+    "$pkgdir/etc/mkinitcpio.d/$pkgbase.preset"
+  sed "$subst" ../60-linux.hook | install -Dm644 /dev/stdin \
+    "$pkgdir/usr/share/libalpm/hooks/60-${pkgbase}.hook"
+  sed "$subst" ../90-linux.hook | install -Dm644 /dev/stdin \
+    "$pkgdir/usr/share/libalpm/hooks/90-${pkgbase}.hook"
+  sed "$subst" ../99-linux.hook | install -Dm644 /dev/stdin \
+    "$pkgdir/usr/share/libalpm/hooks/99-${pkgbase}.hook"  
 
-    # install pacman hooks
-    sed "${_subst}" ../60-linux.hook |
-        install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/60-${pkgbase}.hook"
-    sed "${_subst}" ../90-linux.hook |
-        install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
-    sed "${_subst}" ../99-linux.hook |
-        install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/99-${pkgbase}.hook"     
+  msg2 "Fixing permissions..."
+  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-headers() {
@@ -370,68 +327,78 @@ _package-headers() {
   provides=("${pkgbase}-headers=${pkgver}" "linux-headers=${pkgver}")
   depends=("${pkgbase}=${pkgver}")
 
-    cd ${_srcname}
-    local _builddir="${pkgdir}/usr/lib/modules/${_kernver}/build"
+    local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
-    install -Dt "${_builddir}" -m644 Makefile .config Module.symvers
-    install -Dt "${_builddir}/kernel" -m644 kernel/Makefile
+  cd $_srcname
 
-    mkdir "${_builddir}/.tmp_versions"
+  msg2 "Installing build files..."
+  install -Dt "$builddir" -m644 Makefile .config Module.symvers System.map vmlinux
+  install -Dt "$builddir/kernel" -m644 kernel/Makefile
+  install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
+  cp -t "$builddir" -a scripts
 
-    cp -t "${_builddir}" -a include scripts
+  # add objtool for external module building and enabled VALIDATION_STACK option
+  install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
-    install -Dt "${_builddir}/arch/x86" -m644 arch/x86/Makefile
-    install -Dt "${_builddir}/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
+  # add xfs and shmem for aufs building
+  mkdir -p "$builddir"/{fs/xfs,mm}
 
-    cp -t "${_builddir}/arch/x86" -a arch/x86/include
+  # ???
+  mkdir "$builddir/.tmp_versions"
 
-    install -Dt "${_builddir}/drivers/md" -m644 drivers/md/*.h
-    install -Dt "${_builddir}/net/mac80211" -m644 net/mac80211/*.h
+  msg2 "Installing headers..."
+  cp -t "$builddir" -a include
+  cp -t "$builddir/arch/x86" -a arch/x86/include
+  install -Dt "$builddir/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
 
-    # http://bugs.archlinux.org/task/13146
-    install -Dt "${_builddir}/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
+  install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
+  install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
 
-    # http://bugs.archlinux.org/task/20402
-    install -Dt "${_builddir}/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
-    install -Dt "${_builddir}/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
-    install -Dt "${_builddir}/drivers/media/tuners" -m644 drivers/media/tuners/*.h
+  # http://bugs.archlinux.org/task/13146
+  install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
-    # add xfs and shmem for aufs building
-    mkdir -p "${_builddir}"/{fs/xfs,mm}
+  # http://bugs.archlinux.org/task/20402
+  install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
+  install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
+  install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
 
-    # copy in Kconfig files
-    find . -name Kconfig\* -exec install -Dm644 {} "${_builddir}/{}" \;
+  msg2 "Installing KConfig files..."
+  find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
 
-    # add objtool for external module building and enabled VALIDATION_STACK option
-    install -Dt "${_builddir}/tools/objtool" tools/objtool/objtool
+  msg2 "Removing unneeded architectures..."
+  local arch
+  for arch in "$builddir"/arch/*/; do
+    [[ $arch = */x86/ ]] && continue
+    echo "Removing $(basename "$arch")"
+    rm -r "$arch"
+  done
 
-    # remove unneeded architectures
-    local _arch
-    for _arch in "${_builddir}"/arch/*/; do
-        [[ ${_arch} == */x86/ ]] && continue
-        rm -r "${_arch}"
-    done
+  msg2 "Removing documentation..."
+  rm -r "$builddir/Documentation"
 
-    # remove files already in linux-bfq-sq-mq-haswell-docs package
-    rm -r "${_builddir}/Documentation"
-    
-    # remove now broken symlinks
-    find -L "${_builddir}" -type l -printf 'Removing %P\n' -delete
+  msg2 "Removing broken symlinks..."
+  find -L "$builddir" -type l -printf 'Removing %P\n' -delete
 
-    # Fix permissions
-    chmod -R u=rwX,go=rX "${_builddir}"
+  msg2 "Removing loose objects..."
+  find "$builddir" -type f -name '*.o' -printf 'Removing %P\n' -delete
 
-    # strip scripts directory
-    local _binary _strip
-    while read -rd '' _binary; do
-        case "$(file -bi "${_binary}")" in
-        *application/x-sharedlib*)  _strip="${STRIP_SHARED}"   ;; # Libraries (.so)
-        *application/x-archive*)    _strip="${STRIP_STATIC}"   ;; # Libraries (.a)
-        *application/x-executable*) _strip="${STRIP_BINARIES}" ;; # Binaries
-        *) continue ;;
-        esac
-        /usr/bin/strip ${_strip} "${_binary}"
-    done < <(find "${_builddir}/scripts" -type f -perm -u+w -print0 2>/dev/null)
+  msg2 "Stripping build tools..."
+  local file
+  while read -rd '' file; do
+    case "$(file -bi "$file")" in
+      application/x-sharedlib\;*)      # Libraries (.so)
+        strip -v $STRIP_SHARED "$file" ;;
+      application/x-archive\;*)        # Libraries (.a)
+        strip -v $STRIP_STATIC "$file" ;;
+      application/x-executable\;*)     # Binaries
+        strip -v $STRIP_BINARIES "$file" ;;
+      application/x-pie-executable\;*) # Relocatable binaries
+        strip -v $STRIP_SHARED "$file" ;;
+    esac
+  done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
+
+  msg2 "Fixing permissions..."
+  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-docs() {
@@ -439,21 +406,23 @@ _package-docs() {
   provides=("${pkgbase}-docs=${pkgver}" "linux-docs=${pkgver}")
   depends=("${pkgbase}=${pkgver}")
 
-  cd ${_srcname}
-  local _builddir="${pkgdir}/usr/lib/modules/${_kernver}/build"
+  local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
-  mkdir -p "${_builddir}"
-  cp -t "${_builddir}" -a Documentation
+  cd $_srcname
 
-  # Fix permissions
-  chmod -R u=rwX,go=rX "${_builddir}"
+  msg2 "Installing documentation..."
+  mkdir -p "$builddir"
+  cp -t "$builddir" -a Documentation
+
+  msg2 "Fixing permissions..."
+  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
-pkgname=("${pkgbase}" "${pkgbase}-headers" "${pkgbase}-docs")
-for _p in ${pkgname[@]}; do
-  eval "package_${_p}() {
-    $(declare -f "_package${_p#${pkgbase}}")
-    _package${_p#${pkgbase}}
+pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
+for _p in "${pkgname[@]}"; do
+  eval "package_$_p() {
+    $(declare -f "_package${_p#$pkgbase}")
+    _package${_p#$pkgbase}
   }"
 done
 
