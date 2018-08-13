@@ -1,0 +1,15 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Recovey Explorer Standard
+Comment=Start data recovery with Recovey Explorer Standard
+Exec=gksu "/usr/lib/recovery-explorer/r-explorer"
+Icon=/usr/share/pixmaps/r-explorer.png
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Categories=Application;System;
+StartupNotify=false
+MimeType=application/x-r-explorer
+Path=
+Name[fr_FR.utf8]=r-explorer
