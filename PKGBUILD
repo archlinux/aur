@@ -33,10 +33,6 @@ md5sums=(9c592bda1ba6fcee2d62f0e2737ab71d)
 validpgpkeys=()
 
 build() {
-    #cd "$pkgname-$pkgver"
-    #./configure --prefix=/usr
-    #make
-
     cd $pkgname-$pkgver/build
     cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_SYSCONFDIR=/etc ..
     make -j8
