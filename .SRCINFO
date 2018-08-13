@@ -1,7 +1,7 @@
 pkgbase = jupyter-nbextension-rise
 	pkgdesc = Live Reveal.js Jupyter/IPython Slideshow Extension
 	pkgver = 5.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/damianavila/RISE
 	arch = any
 	license = BSD
