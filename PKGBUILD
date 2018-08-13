@@ -1,7 +1,7 @@
 # Maintainer: Tim Dorohin <tim.dorohin@gmail.com>
 pkgname=quollwriter
 pkgver=2.6.14
-pkgrel=2
+pkgrel=3
 pkgdesc="A writing application that lets you focus on your words"
 arch=('any')
 url="http://quollwriter.com/"
@@ -16,7 +16,7 @@ source=(${pkgname}-${pkgver}.tar.gz::https://github.com/garybentley/quollwriter/
 noextract=()
 md5sums=('bc02ff27304c20ecaaf81f9fef3f7718'
          '62dde2a6d4a8598d68be19ddddc5f1f1'
-         '7afe97650793f17a2c997d1265760411')
+         'a38ece6df108ea2c01d2bbead42ec69d')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -27,13 +27,13 @@ build() {
 package() {
   cd "$srcdir/${pkgname}-${pkgver}"
 
-  install -dm644 "${pkgdir}/usr/share/java/${pkgname}/docx4j"
+  install -dm755 "${pkgdir}/usr/share/java/${pkgname}/libs/docx4j"
 
-  install -Dm644 bin/*.jar "${pkgdir}/usr/share/java/${pkgname}/"
+  install -Dm755 bin/*.jar "${pkgdir}/usr/share/java/${pkgname}/"
 
-  install -Dm644 3rd-party-jars/*.jar "${pkgdir}/usr/share/java/${pkgname}/"
+  install -Dm755 3rd-party-jars/*.jar "${pkgdir}/usr/share/java/${pkgname}/libs/"
 
-  install -Dm644 3rd-party-jars/docx4j/*.jar "${pkgdir}/usr/share/java/${pkgname}/docx4j/"
+  install -Dm755 3rd-party-jars/docx4j/*.jar "${pkgdir}/usr/share/java/${pkgname}/libs/docx4j/"
 
   install -Dm644 imgs/window-icon-v3.png "${pkgdir}/usr/share/icons/hicolor/48x48/apps/quollwriter.png"
 

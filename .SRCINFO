@@ -1,7 +1,7 @@
 pkgbase = quollwriter
 	pkgdesc = A writing application that lets you focus on your words
 	pkgver = 2.6.14
-	pkgrel = 2
+	pkgrel = 3
 	url = http://quollwriter.com/
 	arch = any
 	license = Apache
@@ -14,7 +14,7 @@ pkgbase = quollwriter
 	source = quollwriter.sh
 	md5sums = bc02ff27304c20ecaaf81f9fef3f7718
 	md5sums = 62dde2a6d4a8598d68be19ddddc5f1f1
-	md5sums = 7afe97650793f17a2c997d1265760411
+	md5sums = a38ece6df108ea2c01d2bbead42ec69d
 
 pkgname = quollwriter
 
