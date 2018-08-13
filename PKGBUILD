@@ -3,11 +3,6 @@
 
 # This PKGBUILD creates conky for tolua++_5.3 lua + cairo + imlib2 + nvidia
 
-# to create NON NVIDIA package - remove following
-# in makedepends 'libxnvctrl'
-# in build  section remove line containing -D BUILD_NVIDIA=ON \
-# For non-cairo conky - install stock version from Arch repos
-
 # the covert.lua utility is also put in the /usr/bin folder
 # as an executable conky-convert.lua - so can be called anywhere.
 # I prefer to give the new files a .lua extension - easier to edit.
@@ -24,7 +19,7 @@
 pkgname=conky-cairo
 pkgver=1.10.8
 pkgrel=1
-pkgdesc='conky - built for nvidia n (tolua++_5.3 in AUR) - See this PKGBUILD source - Just change one variable to build the git version - defaults to release version.'
+pkgdesc='conky - built for tolua++_5.3 in AUR - See this PKGBUILD source - Just change one variable to build the git version - defaults to release version.'
 url='https://github.com/brndnmtthws/conky'
 license=('GPL3' 'BSD')
 arch=('i686' 'x86_64')
@@ -33,7 +28,7 @@ replaces=('torsmo' 'conky')
 conflicts=('conky')
 provides=('conky')
 
-depends=( 'alsa-lib' 'libxml2' 'curl' 'cairo' 'wireless_tools' 'libxft' 'librsvg' 'glib2' 'libxdamage' 'imlib2' 'lua' 'libxnvctrl' 'libxinerama' 'tolua++_5.3' )
+depends=( 'alsa-lib' 'libxml2' 'curl' 'cairo' 'wireless_tools' 'libxft' 'librsvg' 'glib2' 'libxdamage' 'imlib2' 'lua' 'libxinerama' 'tolua++_5.3' )
 
 makedepends=( 'cmake' 'git' )
 
@@ -76,9 +71,6 @@ build() {
 	       -e 's|\(NOT LUA_VERSION VERSION_LESS\) 5.2.0|\1 5.4.0|' \
 	    cmake/ConkyPlatformChecks.cmake
 
-	sed -i \
-	       -e 's|#include <string>|#include <string>\n#include <functional>|' \
-	    src/luamm.hh
 ################################################################
 
 	cmake \
@@ -91,12 +83,11 @@ build() {
 		-D BUILD_XSHAPE=ON \
 		-D BUILD_IMLIB2=ON \
 		-D BUILD_ICONV=ON \
-		-D BUILD_WEATHER_METAR=ON \
-		-D BUILD_WEATHER_XOAP=ON \
+		-D BUILD_WEATHER_METAR=OFF \
+		-D BUILD_WEATHER_XOAP=OFF \
 		-D BUILD_LUA_CAIRO=ON \
 		-D BUILD_LUA_IMLIB2=ON \
 		-D BUILD_LUA_RSVG=ON \
-		-D BUILD_NVIDIA=ON \
 		.
 
 	make
