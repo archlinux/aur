@@ -2,7 +2,7 @@
 
 pkgname=plasma5-applets-bandwidth-monitor
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Plasma 5 applet that displays the currently used network bandwidth.'
 arch=('any')
 

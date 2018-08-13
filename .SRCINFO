@@ -1,7 +1,7 @@
 pkgbase = plasma5-applets-bandwidth-monitor
 	pkgdesc = Plasma 5 applet that displays the currently used network bandwidth.
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/Scrumplex/plasma-applet-bandwidth-monitor
 	arch = any
 	license = GPL2
