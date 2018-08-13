@@ -2,9 +2,9 @@
 
 pkgbase=dxvk-wine-git
 pkgname=('dxvk-wine64-git')
-pkgver=0.63_6_g0aa7ab8
+pkgver=0.65_42_g861165f
 pkgrel=1
-pkgdesc="A Vulkan-based compatibility layer for Direct3D 11 which allows running 3D applications on Linux using Wine. Winelib version"
+pkgdesc="A Vulkan-based compatibility layer for Direct3D 11 and 10 which allows running 3D applications on Linux using Wine. Winelib version"
 arch=('x86_64')
 url="https://github.com/doitsujin/dxvk"
 license=('zlib/libpng')
@@ -42,13 +42,13 @@ package_dxvk-wine64-git() {
         _destdir="/usr/lib/dxvk/"
         mkdir -p "$pkgdir/$_destdir"
 	cp -v build/*/* "$pkgdir/$_destdir"
-	if [ ! -f "$pkgdir"/$_destdir/d3d11.dll.so ] ||\
-	 [ ! -f "$pkgdir"/$_destdir/dxgi.dll.so ]; then
-		echo "Missing files, build was unsuccessful"
-		echo "$pkgdir"/$_destdir/d3d11.dll.so
-		echo "$pkgdir"/$_destdir/d3d11.dll.so
-		return 1
-	fi
+	extension=".dll.so"
+	for libname in "d3d11" "dxgi" "d3d10" "d3d10_1" "d3d10core"; do
+            if [ ! -f "$pkgdir"/$_destdir/$libname$extension ] ; then
+                    echo "Missing file: $libname$extension, build was unsuccessful"
+                    return 1
+            fi
+        done
         mkdir -p "$pkgdir/usr/bin"
         ln -s "$_destdir/setup_dxvk.sh" "$pkgdir/usr/bin/setup_dxvk64"
 }
