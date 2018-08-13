@@ -5,8 +5,7 @@
 
 pkgname=aseprite
 pkgver=1.2.9
-_realver=.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64' 'i686')
 url="http://www.aseprite.org/"
@@ -31,6 +30,9 @@ build() {
     [ "$reply" == "yes" ] || exit 1
   fi
 
+  # Disable Allegro4 alias fix which creates a function declaration conflict:
+  sed -e 's/DUSE_ALLEG4_BACKEND/DUSE_ALLEG4_BACKEND -DALLEGRO_NO_FIX_ALIASES/g' -i CMakeLists.txt
+
   mkdir -p build && cd build
 
   # CMake config notes:
@@ -40,10 +42,8 @@ build() {
   # disabled since there's no guarantee Arch users might have allegro4
   # installed.
 
-
   cmake -DUSE_SHARED_PIXMAN=ON \
     -DWITH_WEBP_SUPPORT=ON \
-    -DUSE_SHARED_LIBWEBP=ON \
     -DUSE_SHARED_CURL=ON \
     -DUSE_SHARED_GIFLIB=ON \
     -DUSE_SHARED_JPEGLIB=ON \
