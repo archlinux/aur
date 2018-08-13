@@ -1,12 +1,15 @@
 pkgbase = bcnc-git
 	pkgdesc = GRBL CNC command sender, autoleveler and g-code editor
-	pkgver = r1094.3b38bed
+	pkgver = r1307.8137b50
 	pkgrel = 1
 	url = https://github.com/vlachoudis/bCNC
 	arch = any
 	license = GNU2
 	makedepends = git
 	depends = python2-pyserial
+	depends = python2-pillow
+	depends = python2-numpy
+	depends = python2-scipy
 	provides = bcnc-git
 	source = git+https://github.com/vlachoudis/bCNC.git
 	source = bcnc-git
