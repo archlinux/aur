@@ -1,7 +1,7 @@
 pkgbase = litex-git
 	pkgdesc = Migen based SoC
 	pkgver = 3724
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/enjoy-digital/litex
 	arch = any
 	license = MIT

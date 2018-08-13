@@ -1,7 +1,7 @@
 # Maintainer: Caleb Jamison <cbjamo@gmail.com> 
 pkgname=litex-git
 pkgver=3724
-pkgrel=2
+pkgrel=3
 pkgdesc="Migen based SoC"
 arch=(any)
 url="https://github.com/enjoy-digital/litex"
