@@ -1,0 +1,21 @@
+pkgbase = python-sregistry
+	pkgdesc = Singularity Container's registry command-line tool (sregistry) to interact with a Singularity Registry
+	pkgver = 0.0.89
+	pkgrel = 1
+	url = https://singularityhub.github.io/sregistry-cli/
+	arch = any
+	license = AGPL3
+	depends = python-spython
+	depends = python-requests
+	depends = python-pygments
+	depends = python-chardet
+	depends = python-idna
+	depends = python-urllib3
+	depends = python-certifi
+	optdepends = singularity-container: to use and manipulate Singularity Containers
+	provides = singularity-registry-cli
+	source = https://files.pythonhosted.org/packages/source/s/sregistry/sregistry-0.0.89.tar.gz
+	sha256sums = c836ed5fe68de318593c0ef5da6847f7033c2778d352aac9ee11eb9d6cb4b2f6
+
+pkgname = python-sregistry
+
