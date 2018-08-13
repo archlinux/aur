@@ -2,7 +2,7 @@
 pkgname='libdazzle-git'
 pkgdesc='Companion library to GObject and GTK+'
 license=('GPL3')
-pkgver=3.29.1.r9.g221604b
+pkgver=3.29.4.r65.g5d6fd6c
 pkgrel=1
 provides=('libdazzle')
 conflicts=('libdazzle')
@@ -10,7 +10,7 @@ makedepends=('meson' 'gobject-introspection' 'vala')
 depends=('gtk3')
 arch=('x86_64' 'i686')
 url='https://gitlab.gnome.org/GNOME/libdazzle'
-source=("${pkgname}::git+${url}")
+source=("${pkgname}::git+${url}.git/")
 sha512sums=('SKIP')
 
 
