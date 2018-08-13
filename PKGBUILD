@@ -1,7 +1,7 @@
 # Contributor: Jonathan Liu <net147@gmail.com>
 pkgname=inform7
 pkgver=6M62
-pkgrel=2
+pkgrel=3
 pkgdesc="A design system for interactive fiction based on natural language"
 arch=('i686' 'x86_64')
 url="http://inform7.com/"
@@ -10,7 +10,7 @@ depends=('perl')
 source=("http://inform7.com/download/content/${pkgver}/I7_${pkgver}_Linux_all.tar.gz"
         "install-inform7.sh.patch"
         "LICENSE")
-md5sums=('33088472eea68c35c2985e4ee1b52dcf'
+md5sums=('cf8a251a3531eadf29d9490c2bb53802'
          '647052976b3870e975e069f71f770d20'
          'a18958ae17bcc3733119cad77376eec5')
 
