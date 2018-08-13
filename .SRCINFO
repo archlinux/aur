@@ -1,14 +1,13 @@
 pkgbase = ruby-net-ssh
 	pkgdesc = A pure-Ruby implementation of the SSH2 client protocol.
-	pkgver = 4.1.0
+	pkgver = 5.0.2
 	pkgrel = 1
 	url = https://rubygems.org/gems/net-ssh
 	arch = any
 	license = GPL
 	depends = ruby
-	noextract = net-ssh-4.1.0.gem
-	source = https://rubygems.org/downloads/net-ssh-4.1.0.gem
-	md5sums = 6af1ff8c42a07b11203058c9b74cbaef
+	noextract = net-ssh-5.0.2.gem
+	source = https://rubygems.org/downloads/net-ssh-5.0.2.gem
 
 pkgname = ruby-net-ssh
 
