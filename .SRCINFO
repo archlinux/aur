@@ -1,0 +1,18 @@
+pkgbase = vim-hug-neovim-rpc-git
+	pkgdesc = trying to build a compatibility layer for neovim rpc client working on vim8
+	pkgver = r95.4ee5d81
+	pkgrel = 1
+	url = https://github.com/roxma/vim-hug-neovim-rpc
+	install = vim-hug-neovim-rpc.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = vim
+	depends = python-neovim
+	optdepends = nvim-yarp
+	provides = vim-hug-neovim-rpc
+	source = vim-hug-neovim-rpc::git://github.com/roxma/vim-hug-neovim-rpc
+	md5sums = SKIP
+
+pkgname = vim-hug-neovim-rpc-git
+
