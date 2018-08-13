@@ -1,0 +1,14 @@
+pkgbase = python-spython
+	pkgdesc = Singularity Python is a Python API to work with the Singularity open source software
+	pkgver = 0.0.38
+	pkgrel = 1
+	url = https://singularityhub.github.io/singularity-cli/
+	arch = any
+	license = AGPL3
+	depends = python
+	optdepends = singularity-container: to use and manipulate Singularity Containers
+	source = https://files.pythonhosted.org/packages/source/s/spython/spython-0.0.38.tar.gz
+	sha256sums = 31f1f82b968195edfe43d5fa380034f88d66b29550a08ccc809df26190457346
+
+pkgname = python-spython
+
