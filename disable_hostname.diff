@@ -1,0 +1,34 @@
+92c92,94
+< 	const char *iface, *dhcpcd_path, *hostname;
+---
+> 
+> 	const char *iface, *dhcpcd_path;
+> 	/*const char *iface, *dhcpcd_path, *hostname;*/
+139c141
+< 	hostname = nm_dhcp_client_get_hostname (client);
+---
+> 	/*hostname = nm_dhcp_client_get_hostname (client);*/
+141,151c143,153
+< 	if (hostname) {
+< 		if (nm_dhcp_client_get_use_fqdn (client)) {
+< 			g_ptr_array_add (argv, (gpointer) "-h");
+< 			g_ptr_array_add (argv, (gpointer) hostname);
+< 			g_ptr_array_add (argv, (gpointer) "-F");
+< 			g_ptr_array_add (argv, (gpointer) "both");
+< 		} else {
+< 			g_ptr_array_add (argv, (gpointer) "-h");
+< 			g_ptr_array_add (argv, (gpointer) hostname);
+< 		}
+< 	}
+---
+> 	/*if (hostname) {*/
+> 		/*if (nm_dhcp_client_get_use_fqdn (client)) {*/
+> 			/*g_ptr_array_add (argv, (gpointer) "-h");*/
+> 			/*g_ptr_array_add (argv, (gpointer) hostname);*/
+> 			/*g_ptr_array_add (argv, (gpointer) "-F");*/
+> 			/*g_ptr_array_add (argv, (gpointer) "both");*/
+> 		/*} else {*/
+> 			/*g_ptr_array_add (argv, (gpointer) "-h");*/
+> 			/*g_ptr_array_add (argv, (gpointer) hostname);*/
+> 		/*}*/
+> 	/*}*/

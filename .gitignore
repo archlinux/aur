@@ -1,0 +1,11 @@
+# makepkg temporary files
+
+/NetworkManager
+/src
+/pkg
+
+# Ignore packages
+
+/libnm*
+/networkmanager*
+
