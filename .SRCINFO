@@ -1,6 +1,6 @@
 pkgbase = libsigrokdecode4dsl
 	pkgdesc = A library which provides the basic sigrok protocol decoders for DreamSourceLab hardware
-	pkgver = 0.98
+	pkgver = 0.99
 	pkgrel = 1
 	url = https://github.com/DreamSourceLab/DSView
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = libsigrokdecode4dsl
 	makedepends = git
 	depends = python
 	depends = glib2
-	source = git://github.com/DreamSourceLab/DSView.git#tag=0.98
-	sha1sums = SKIP
+	source = DSView-0.99.tar.gz::https://github.com/DreamSourceLab/DSView/archive/0.99.tar.gz
+	sha384sums = 9f92432c1721d5e39b343029955c95203bf9cf051095956175e7315e0471bbc01c8ba85708ed3eb085a7cf75932adb6c
 
 pkgname = libsigrokdecode4dsl
 
