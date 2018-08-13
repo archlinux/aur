@@ -1,11 +1,10 @@
 # Maintainer: pingplug <pingplug@foxmail.com>
 # Contributor: xantares <xantares09@hotmail.com>
 
-_commit=3dd5810143e51dabdc58069e55b09a950349fa08  # tags/0.23.12^0
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-p11-kit
-pkgver=0.23.12
+pkgver=0.23.13
 pkgrel=1
 pkgdesc="Provides a way to load and enumerate PKCS#11 modules (mingw-w64)"
 arch=('any')
@@ -17,15 +16,12 @@ depends=('mingw-w64-crt'
 makedepends=('mingw-w64-configure'
              'git')
 options=('!strip' 'staticlibs' '!buildflags')
-source=("git+https://github.com/p11-glue/p11-kit#commit=${_commit}"
+source=("git+https://github.com/p11-glue/p11-kit?signed#tag=${pkgver}"
         "0001-Build-and-install-libnssckbi-p11-kit.so.patch")
 sha256sums=('SKIP'
             '0736f74cec5ca49d91afa47cd84f9ac0404947bf0064358e22c3e53b69e82798')
-
-pkgver() {
-  cd "${srcdir}"/p11-kit
-  git describe --tags | sed 's/-/+/g'
-}
+validpgpkeys=('C0F67099B808FB063E2C81117BFB1108D92765AF'  # Stef Walter
+              '462225C3B46F34879FC8496CD605848ED7E69871') # Daiki Ueno
 
 prepare() {
   cd "${srcdir}"/p11-kit
