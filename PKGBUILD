@@ -3,14 +3,17 @@
 ###########################################################################################################
 #                                          Build Options
 ###########################################################################################################
-_vim="n"
+_vim="y"
 
-_neovim="y"
+# neovim in Arch Linux seems to load vim extensions from /usr/share/vim/vimfiles by
+# default now, (or you can add 'set rtp^=/usr/share/vim/vimfiles/' to .vimrc)
+# but in any event, you may not need or want to set _neovim="y"
+_neovim="n"
 ###########################################################################################################
 
 _name='deoplete'
 pkgname="${_name}-git"
-pkgver=4.0.serial.r304.g6b37749
+pkgver=4.0.r3.gdc86f96
 pkgrel=1
 pkgdesc="deoplete completion plugin for neovim"
 arch=('any')

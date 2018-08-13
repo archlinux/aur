@@ -1,4 +1,3 @@
-### not working
-for now this only works with neovim  
-deoplete works with vim, but not yet with this particular package,
-would require nvim-yarp-git and vim-hug-neovim-rpc-git
+### no longer not working
+this is now packaged so that it works with vim and/or
+neovim
