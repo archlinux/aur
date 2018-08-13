@@ -1,6 +1,6 @@
 pkgbase = libsigrok4dsl
 	pkgdesc = Client software that supports the DSLogic DreamSourceLab logic analyzer
-	pkgver = 0.98
+	pkgver = 0.99
 	pkgrel = 1
 	url = http://www.dreamsourcelab.com/
 	arch = i686
@@ -13,8 +13,9 @@ pkgbase = libsigrok4dsl
 	depends = glib2
 	conflicts = libsigrok4dslogic
 	replaces = libsigrok4dslogic
-	source = git+https://github.com/DreamSourceLab/DSView.git#tag=0.98
-	md5sums = SKIP
+	source = DSView-0.99.tar.gz::https://github.com/DreamSourceLab/DSView/archive/0.99.tar.gz
+	md5sums = 2d8f4e4a7789da60e70b2bd5086963fe
+	sha384sums = 9f92432c1721d5e39b343029955c95203bf9cf051095956175e7315e0471bbc01c8ba85708ed3eb085a7cf75932adb6c
 
 pkgname = libsigrok4dsl
 
