@@ -79,9 +79,8 @@ prepare() {
 package() {
     _oomox_dir="/opt/${pkgname}"
     _oomox_gui_dir="${_oomox_dir}/oomox_gui"
-    install -d "${pkgdir}/opt/${pkgname}"
+
     cd "${srcdir}/${pkgname}-${_oomox_ver}"
-    sed -i 's/rm -r/rm -rf/g' packaging/install.sh
     make DESTDIR="${pkgdir}" APPDIR="${_oomox_dir}" PREFIX="/usr" install
     python -O -m compileall "${pkgdir}/${_oomox_gui_dir}" -d "${_oomox_gui_dir}"
 }
