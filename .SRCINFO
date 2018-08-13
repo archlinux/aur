@@ -1,0 +1,16 @@
+pkgbase = chesspp-git
+	pkgdesc = a swiss chess algorithm implementation, using an SQLITE database
+	pkgver = 0.0.0
+	pkgrel = 1
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	depends = ncurses
+	source = chesspp::git+https://gitlab.com/Emersont1/chesspp.git#branch=master
+	md5sums = SKIP
+
+pkgname = chesspp-git
+
