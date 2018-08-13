@@ -1,0 +1,21 @@
+pkgbase = as-git
+	pkgdesc = Header-only C++ library with utilities for Operational Research projects.
+	pkgver = r53.1ebb0e3
+	pkgrel = 1
+	url = https://github.com/alberto-santini/as
+	arch = x86_64
+	license = GPL3
+	depends = cplex
+	depends = boost
+	depends = boost-libs
+	depends = discorde-git
+	depends = exactcolors-git
+	depends = cimg
+	depends = pmc-git
+	optdepends = doxygen: To build the documentation
+	optdepends = graphviz: To build the documentation
+	source = git+https://github.com/alberto-santini/as.git
+	sha256sums = SKIP
+
+pkgname = as-git
+
