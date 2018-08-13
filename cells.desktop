@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Cells
+Comment=A Conway's Game of Life implementation
+Exec="/opt/Cells/cells" %U
+Terminal=false
+Type=Application
+Icon=cells
+Category=Game
+Categories=Game;
