@@ -1,7 +1,7 @@
 # Maintainer: Chris Rizzitello <sithlord48@gmail.com>
 pkgname=atelier-git
 conflicts=('atelier')
-pkgver=b53cb3c
+pkgver=0.0.80.r455.079f36a
 pkgrel=1
 pkgdesc="KDE 3D Printer Host"
 arch=('i686' 'x86_64')
@@ -14,7 +14,8 @@ md5sums=(SKIP)
 
 pkgver() {
   cd "atelier"
-  git log --pretty=format:'%h' -n 1
+   version="0.0.80"
+   printf "%s.r%s.%s" "$version" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
