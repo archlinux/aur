@@ -1,0 +1,17 @@
+pkgbase = pubip
+	pkgdesc = View your public IP through a number of means
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/alxpettit/pubip
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = bind-tools
+	depends = curl
+	provides = pubip
+	conflicts = pubip
+	source = pubip::git+https://github.com/alxpettit/pubip.git
+	sha256sums = SKIP
+
+pkgname = pubip
+
