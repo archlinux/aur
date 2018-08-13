@@ -2,5 +2,5 @@
 /src/
 /*.pkg.tar.xz
 gcviewer-*.jar
-README
+README.md
 gcviewericon.gif
