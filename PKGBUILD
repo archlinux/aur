@@ -1,12 +1,13 @@
 # Maintainer: Michael Yang <ohmyarchlinux@pm.me>
 
 pkgname=mingw-w64-fmt-git
-pkgver=5.1.0.r38.g4061a0d
+pkgver=5.1.0.r45.g5c0101a
 pkgrel=1
 pkgdesc='An open-source formatting library for C++ (mingw-w64)'
 url='http://fmtlib.net'
 arch=('any')
 license=('BSD')
+depends=('mingw-w64-crt')
 makedepends=('git' 'mingw-w64-cmake')
 options=('!strip' '!buildflags' 'staticlibs')
 conflicts=('mingw-w64-fmt')
@@ -22,7 +23,6 @@ pkgver() {
 }
 
 build() {
-  unset LDFLAGS
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake \

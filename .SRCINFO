@@ -1,12 +1,13 @@
 pkgbase = mingw-w64-fmt-git
 	pkgdesc = An open-source formatting library for C++ (mingw-w64)
-	pkgver = 5.1.0.r38.g4061a0d
+	pkgver = 5.1.0.r45.g5c0101a
 	pkgrel = 1
 	url = http://fmtlib.net
 	arch = any
 	license = BSD
 	makedepends = git
 	makedepends = mingw-w64-cmake
+	depends = mingw-w64-crt
 	provides = mingw-w64-fmt
 	conflicts = mingw-w64-fmt
 	options = !strip
