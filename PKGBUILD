@@ -2,9 +2,9 @@
 
 pkgname=screenshot-bash
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Screenshot script, that uploads screenshot to a predefined server.'
-arch=('i686' 'x86_64')
+arch=('any')
 
 url='https://gitlab.com/Scrumplex/ScreenshotBASH'
 license=('GPL3')
