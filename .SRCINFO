@@ -1,12 +1,13 @@
 pkgbase = kwin-effect-osdclock-git
 	pkgdesc = KWin effect that displays clock at the corner of the screen
-	pkgver = 20180812.c480336
+	pkgver = 20180812.991372d
 	pkgrel = 1
 	url = https://github.com/laloch/kwin-effect-osdclock
 	arch = x86_64
 	license = GPL
 	makedepends = extra-cmake-modules
 	makedepends = git
+	makedepends = pkgconf
 	depends = kwin
 	source = kwin-effect-osdclock::git+http://github.com/laloch/kwin-effect-osdclock.git
 	md5sums = SKIP

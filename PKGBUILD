@@ -2,14 +2,14 @@
 
 _pkgname=kwin-effect-osdclock
 pkgname="$_pkgname-git"
-pkgver=20180812.c480336
+pkgver=20180812.991372d
 pkgrel=1
 pkgdesc='KWin effect that displays clock at the corner of the screen'
 arch=('x86_64')
 url="https://github.com/laloch/${_pkgname}"
 license=('GPL')
 depends=('kwin')
-makedepends=('extra-cmake-modules' 'git')
+makedepends=('extra-cmake-modules' 'git' 'pkgconf')
 source=("$_pkgname"::"git+http://github.com/laloch/${_pkgname}.git")
 md5sums=('SKIP')
 
