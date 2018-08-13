@@ -1,13 +1,13 @@
 # Maintainer: Jure Varlec <jure.varlec@ad-vega.si>
 _pkgname=lycklig
 pkgname=lycklig-git
-pkgver=20150207
+pkgver=20180813
 pkgrel=1
 pkgdesc="Image processing for lucky imaging."
 arch=( i686 x86_64 )
-url="https://gitorious.org/adv/${_pkgname}"
+url="https://github.com/AD-Vega/${_pkgname}.git"
 license=('GPL3')
-depends=( opencv python3-wand python-pyqt4 python-scipy )
+depends=( opencv python-pyqt5 python-scipy )
 makedepends=( git cmake boost tclap )
 checkdepends=()
 optdepends=()
@@ -22,7 +22,7 @@ source=()
 noextract=()
 md5sums=() #generate with 'makepkg -g'
 
-_gitroot="git://gitorious.org/adv/${_pkgname}.git"
+_gitroot="${url}"
 _gitname="master"
 
 build() {
@@ -33,7 +33,7 @@ build() {
     cd $_gitname && git pull --rebase origin
     msg "The local files are updated."
   else
-    git clone $_gitroot $_gitname
+    git clone --depth=1 $_gitroot $_gitname
     cd $_gitname
     git checkout $_gitname
     cd -
