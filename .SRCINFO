@@ -1,15 +1,15 @@
 pkgbase = chaskis
 	pkgdesc = A generic framework written in C# for making IRC Bots.
-	pkgver = 0.6.1
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/xforever1313/Chaskis/
 	arch = any
 	license = BSL
-	makedepends = nuget
-	makedepends = git
-	depends = mono>=4.2.2
-	source = https://github.com/xforever1313/Chaskis/archive/0.6.1.tar.gz
-	sha256sums = c72f0ab6770594adfe79f2c0d5f40965a4c06a4fc99e39c7c6231626ef2b7889
+	depends = mono>=5.4.0
+	provides = chaskis
+	conflicts = chaskis
+	source = https://files.shendrick.net/projects/chaskis/releases/0.7.0/linux/debian/chaskis.deb
+	sha256sums = d1f4f939395050089a3d976a4c9b4f5b220ba1a2a3cbc30d3fcc44643bcda265
 
 pkgname = chaskis
 

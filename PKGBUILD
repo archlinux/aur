@@ -1,67 +1,31 @@
 # Maintainer: Seth Hendrick <seth@shendrick.net>
+
+# This format is taken from msbuild, which also grabs a compiled .deb and installs it from that.
+# https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=msbuild-stable
+# We do this because of https://github.com/mono/mono/issues/9280.  Arch linux's msbuild package
+# doesn't include MSBuildSdkResolver and libhostfxr.so.  So, this is the best we can do without
+# user having to install all kinds of weird things that are not in the AUR or in pacman.
+
 pkgname=chaskis
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
-epoch=
 pkgdesc="A generic framework written in C# for making IRC Bots."
 arch=('any')
 url="https://github.com/xforever1313/Chaskis/"
 license=('BSL')
-groups=()
-depends=('mono>=4.2.2')
-makedepends=('nuget' 'git')
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=()
-source=("https://github.com/xforever1313/Chaskis/archive/$pkgver.tar.gz")
-noextract=()
-sha256sums=('c72f0ab6770594adfe79f2c0d5f40965a4c06a4fc99e39c7c6231626ef2b7889')
+depends=('mono>=5.4.0') # https://docs.microsoft.com/en-us/dotnet/standard/net-standard - .netstandard is implemented in mono 5.4, which is required.
+provides=('chaskis')
+conflicts=('chaskis')
+source=("https://files.shendrick.net/projects/chaskis/releases/$pkgver/linux/debian/chaskis.deb")
+sha256sums=('d1f4f939395050089a3d976a4c9b4f5b220ba1a2a3cbc30d3fcc44643bcda265')
 validpgpkeys=()
 
-prepare() {
-    echo "Nothing to prepare"
-}
-
-build() {
-        cd "$srcdir/Chaskis-$pkgver"
-        git clone https://github.com/xforever1313/sethcs SethCS
-        nuget restore ./Chaskis/Chaskis.sln
-        xbuild /p:Configuration=Release ./Chaskis/Chaskis.sln
-}
-
-check() {
-        cd "$srcdir/Chaskis-$pkgver/Chaskis"
-        mono ./packages/NUnit.ConsoleRunner.3.5.0/tools/nunit3-console.exe ./Tests/bin/Release/Tests.dll
-}
-
 package() {
+    cd "${srcdir}"
 
-        cd "$srcdir/Chaskis-$pkgver"
+    bsdtar xf data.tar.xz
 
-        mkdir -p $pkgdir/usr/lib
-
-        mono ./Chaskis/Install/ChaskisCliInstaller/bin/Release/ChaskisCliInstaller.exe ./Chaskis $pkgdir/usr/lib ./Chaskis/Install/windows/Product.wxs Release
-
-        # Systemd service
-        mkdir -p $pkgdir/usr/lib/systemd/user
-        cp ./Chaskis/Install/linux/systemd/chaskis.service $pkgdir/usr/lib/systemd/user/chaskis.service
-
-        # Binary
-        mkdir -p $pkgdir/usr/bin/
-        cp ./Chaskis/Install/linux/bin/chaskis $pkgdir/usr/bin/chaskis
-}
-
-pre_install() {
-    return
-}
-
-post_remove() {
-    return
+    chmod -R g-w usr
+    mv usr "${pkgdir}"
 }
 
