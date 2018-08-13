@@ -6,12 +6,12 @@ _cpan_author=chansen
 _cpan_version=0.1
 _cpan_md5=e5a5bc72f2b8f8fe0e5a9eff085e23b2
 
-pkgrel=1
+pkgrel=2
 pkgname=perl-${_cpan_name,,}
 pkgdesc=$_cpan_desc
 pkgver=$_cpan_version
 md5sums=($_cpan_md5)
-depends=('perl-authen-simple' 'perl-authen-radius')
+depends=('perl-authen-simple' 'perl-authen-radius' 'perl-net-ip')
 makedepends=('perl-test-pod' 'perl-test-pod-coverage')
 checkdepends=()
 

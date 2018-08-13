@@ -1,10 +1,14 @@
 pkgbase = perl-authen-simple-radius
 	pkgdesc = Simple RADIUS authentication
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/~chansen/Authen-Simple-RADIUS-0.1
 	arch = any
+	makedepends = perl-test-pod
+	makedepends = perl-test-pod-coverage
+	depends = perl-authen-simple
 	depends = perl-authen-radius
+	depends = perl-net-ip
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/C/CH/CHANSEN/Authen-Simple-RADIUS-0.1.tar.gz
 	md5sums = e5a5bc72f2b8f8fe0e5a9eff085e23b2
