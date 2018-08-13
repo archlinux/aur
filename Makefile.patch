@@ -1,0 +1,11 @@
+--- src/src/Makefile	2009-10-05 19:12:32.000000000 -0700
++++ "src/src/Makefile (copy)"	2018-08-13 15:11:38.616390511 -0700
+@@ -8,7 +8,7 @@
+ #   this is the setting for OS X to create a universal PPC/Intel binary
+ #   comment it out if you aren't running OS X for Intel
+ #TARGET_ARCH = -arch ppc
+-TARGET_ARCH = -arch ppc -arch i686
++#TARGET_ARCH = -arch ppc -arch i686
+ 
+ # C compiler flags
+ CFLAGS = -Wall -O2 -DVERSION=\"$(VERSION)\"
