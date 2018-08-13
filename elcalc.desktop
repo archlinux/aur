@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=elcalc
+Comment=Simple, Cross-Platform calculator built with Electron.
+Exec="/opt/elcalc/elcalc" %U
+Terminal=false
+Type=Application
+Icon=elcalc
+StartupWMClass=elcalc
+Categories=Utility;Calculator;
