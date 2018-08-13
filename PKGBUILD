@@ -1,7 +1,7 @@
 # Maintainer: Joseph Brains <jnbrains@gmail.com>
 _pkgname=gns3-server
 pkgname=${_pkgname}-git
-pkgver=v2.1.8.r4.g12e71a29
+pkgver=v2.1.9.r0.g689a82a1
 pkgrel=1
 pkgdesc='GNS3 network simulator. Server package.'
 arch=('any')
