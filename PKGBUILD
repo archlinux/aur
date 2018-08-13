@@ -5,7 +5,7 @@
 pkgname=pythia
 pkgver=8.2.35
 _pkgid="${pkgname}${pkgver//./}"
-pkgrel=2
+pkgrel=3
 pkgdesc="High-energy physics events generator."
 arch=('i686' 'x86_64')
 url="http://home.thep.lu.se/Pythia/"
@@ -27,11 +27,13 @@ sha256sums=('e82f0d6165a8250a92e6aa62fb53201044d8d853add2fdad6d3719b28f7e8e9d'
             '4eb15725cfb5e287fdd9520cb4211b88ebc38a690b7522690ba0664d50bc8669')
 options=('!emptydirs')
 _srcpath="${srcdir}/${_pkgid}"
-_python_ver=$( python -c 'import sys; print(str(sys.version_info[0]) + "." + str(sys.version_info[1]))' )
+get_pyver () {
+    _python_ver=$( python -c 'import sys; print(str(sys.version_info[0]) + "." + str(sys.version_info[1]))' )
+    echo ${_python_ver}
+}
 
 prepare() {
     cd "${srcdir}/${_pkgid}"
-    msg2 'Applying patches...'
     patch -p1 -i "${srcdir}/respect_lib_suffix.patch"
 
     _inc=/usr/include/
@@ -73,8 +75,8 @@ prepare() {
                 --with-promc-include=${_inc} \
                 --with-promc-lib=${_lib} \
                 --with-python \
-                --with-python-include=/usr/include/python${_python_ver}m/ \
-                --with-python-lib=/usr/lib/python${_python_ver}/ \
+                --with-python-include=/usr/include/python$(get_pyver)m/ \
+                --with-python-lib=/usr/lib/python$(get_pyver)/ \
                 --with-root \
                 --with-root-include=/usr/include/root/ \
                 --with-root-lib=/usr/lib/root/
@@ -95,6 +97,6 @@ package() {
     cp -r "${srcdir}/${_pkgid}/examples" "${pkgdir}/usr/share/Pythia8/"
 
     install -Dm755 "${srcdir}/${_pkgid}/lib/libpythia8.so" "${pkgdir}/usr/lib/libpythia8.so"
-    install -Dm755 "${srcdir}/${_pkgid}/lib/_pythia8.so" "${pkgdir}/usr/lib/python${_python_ver}/site-packages/_pythia8.so"
-    install -Dm755 "${srcdir}/${_pkgid}/lib/pythia8.py" "${pkgdir}/usr/lib/python${_python_ver}/site-packages/pythia8.py"
+    install -Dm755 "${srcdir}/${_pkgid}/lib/_pythia8.so" "${pkgdir}/usr/lib/python$(get_pyver)/site-packages/_pythia8.so"
+    install -Dm755 "${srcdir}/${_pkgid}/lib/pythia8.py" "${pkgdir}/usr/lib/python$(get_pyver)/site-packages/pythia8.py"
 }
