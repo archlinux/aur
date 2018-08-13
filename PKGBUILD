@@ -5,7 +5,7 @@
 pkgname=pythia
 pkgver=8.2.35
 _pkgid="${pkgname}${pkgver//./}"
-pkgrel=3
+pkgrel=4
 pkgdesc="High-energy physics events generator."
 arch=('i686' 'x86_64')
 url="http://home.thep.lu.se/Pythia/"
@@ -28,8 +28,7 @@ sha256sums=('e82f0d6165a8250a92e6aa62fb53201044d8d853add2fdad6d3719b28f7e8e9d'
 options=('!emptydirs')
 _srcpath="${srcdir}/${_pkgid}"
 get_pyver () {
-    _python_ver=$( python -c 'import sys; print(str(sys.version_info[0]) + "." + str(sys.version_info[1]))' )
-    echo ${_python_ver}
+    echo $( python -c 'import sys; print(str(sys.version_info[0]) + "." + str(sys.version_info[1]))' )
 }
 
 prepare() {
