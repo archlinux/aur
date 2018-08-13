@@ -29,7 +29,7 @@ build() {
 package() {
   install -Dm644 actinium-qt.desktop "$pkgdir"/usr/share/applications/actinium.desktop
   cd "$srcdir/$pkgname"
-  install -Dm755 src/qt/Actinium-qt "$pkgdir"/usr/bin/actiniumn-qt
+  install -Dm755 src/qt/Actinium-qt "$pkgdir"/usr/bin/actinium-qt
   install -Dm644 share/pixmaps/bitcoin128.png "$pkgdir"/usr/share/pixmaps/actinium128.png
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
