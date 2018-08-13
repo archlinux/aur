@@ -1,16 +1,15 @@
 pkgname=mock-core-configs
-_pkgver=28.4
+pkgver=29.1
 _rpmrel=1
-_pkgtag=$pkgname-$_pkgver-$_rpmrel
-pkgver=$_pkgver.$_rpmrel
-pkgrel=1
+_pkgtag=$pkgname-$pkgver-$_rpmrel
+pkgrel=$_rpmrel.1
 pkgdesc="Mock core config files basic chroots"
 url="https://github.com/rpm-software-management/mock"
 arch=('any')
 license=('GPL2')
 depends=('distribution-gpg-keys')
 source=("$url/archive/$_pkgtag.tar.gz")
-md5sums=('fadacc66c3df0d6c7e83b997d8b60bf7')
+md5sums=('75830b23804acd532fec0a71e1f83bd1')
 
 prepare() {
 	mv "mock-$_pkgtag" "$pkgname-$pkgver"
@@ -19,7 +18,7 @@ prepare() {
 package() {
 	cd "$pkgname-$pkgver"
 
-	pushd mock-core-configs >/dev/null
+	pushd "$pkgname" >/dev/null
 
 	mkdir -p "$pkgdir/"etc/mock
 	install -Dp -m644 etc/mock/*.cfg "$pkgdir/"etc/mock/
