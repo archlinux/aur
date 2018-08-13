@@ -1,13 +1,13 @@
 pkgbase = perl-snmp
 	pkgdesc = Perl/CPAN Module SNMP
 	pkgver = 5.0401
-	pkgrel = 3
+	pkgrel = 4
 	url = https://metacpan.org/release/SNMP
 	arch = i686
 	arch = x86_64
 	license = GPL
 	license = PerlArtistic
-	depends = perl
+	depends = perl>=0
 	depends = net-snmp
 	options = !emptydirs
 	source = http://cpan.metacpan.org/authors/id/H/HA/HARDAKER/SNMP-5.0401.tar.gz
