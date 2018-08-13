@@ -6,12 +6,14 @@
 
 # GTK_VERSION 2/3
 GTK_VERSION=3
-# JAVA_VERSION 8/9
-JAVA_VERSION=8
+# JAVA_VERSION 8/10
+JAVA_VERSION=10
+# JAVA_PATH
+#JAVA_PATH='/usr/lib/jvm/default-runtime/bin/java'
 
 pkgname=xmind
-pkgver=3.7.7
-_filename=$pkgname-8-update7-linux
+pkgver=3.7.8+8update8
+_filename=$pkgname-8-update8-linux
 pkgrel=1
 pkgdesc="Brainstorming and Mind Mapping Software"
 arch=('i686' 'x86_64')
@@ -21,16 +23,14 @@ depends=('java-runtime>=8')
 optdepends=('gtk2: gtk2 or gtk3 must install one'
             'gtk3: gtk2 or gtk3 must install one'
             'lame: needed for the feature audio notes')
-install='xmind.install'
+install=xmind.install
 source=("http://www.xmind.net/xmind/downloads/${_filename}.zip"
 'XMind'
-'XMind.ini'
 'xmind.desktop'
 'xmind.xml'
 'xmind.png'
 'xmind_file.png')
-sha512sums=('0f59201f44b23436c7e6e3fd4dd1427337e5a262e5d4f25dbc836c2f4fd42b99232c1988138ba7015523ede50e0ae829ada6359698d5af0eee529ed19cd347e3'
-'SKIP'
+sha512sums=('77c5c05801f3ad3c0bf5550fa20c406f64f3f5fa31321a53786ac1939053f5c4f0d0fb8ab1af0a9b574e3950342325b9c32cf2e9a11bf00a1d74d2be1df75768'
 'SKIP'
 'SKIP'
 'SKIP'
@@ -42,9 +42,10 @@ package() {
     cp -r ${srcdir}/configuration   ${pkgdir}/usr/share/${pkgname}/
     cp -r ${srcdir}/features        ${pkgdir}/usr/share/${pkgname}/
     cp -r ${srcdir}/plugins         ${pkgdir}/usr/share/${pkgname}/
-    cp ${srcdir}/*.html             ${pkgdir}/usr/share/${pkgname}/
     cp ${srcdir}/*.xml              ${pkgdir}/usr/share/${pkgname}/
-    cp ${srcdir}/*.txt              ${pkgdir}/usr/share/${pkgname}/
+    mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}
+    cp ${srcdir}/{epl-v10,lgpl-3.0}.html    ${pkgdir}/usr/share/licenses/${pkgname}/
+    cp ${srcdir}/xpla.txt                   ${pkgdir}/usr/share/licenses/${pkgname}/
     if [[ "$CARCH" == "i686" ]]; then
         cp -r ${srcdir}/XMind_i386  ${pkgdir}/usr/share/${pkgname}/XMind
     else
@@ -59,22 +60,17 @@ package() {
     mkdir -p ${pkgdir}/usr/share/pixmaps
     cp ${srcdir}/*.png              ${pkgdir}/usr/share/pixmaps/
     # fix configuration
-    cp ${srcdir}/XMind.ini ${pkgdir}/usr/share/${pkgname}/XMind/
-    if [[ "$CARCH" == "i686" ]]; then
-        sed -i "s/CARCH/x86/g" ${pkgdir}/usr/share/${pkgname}/XMind/XMind.ini
-    else
-        sed -i "s/CARCH/x86_64/g" ${pkgdir}/usr/share/${pkgname}/XMind/XMind.ini
+    sed -i "s|^./configuration$|@user.home/.xmind/configuration|" ${pkgdir}/usr/share/${pkgname}/XMind/XMind.ini
+    sed -i "s|^../workspace$|@user.home/.xmind/workspace|" ${pkgdir}/usr/share/${pkgname}/XMind/XMind.ini
+    if [[ "$GTK_VERSION" != "2" ]]; then
+        sed -i "s|^2$|3|" ${pkgdir}/usr/share/${pkgname}/XMind/XMind.ini
     fi
-    if [[ "$GTK_VERSION" == "2" ]]; then
-        sed -i "s/GTK_VERSION/2/g" ${pkgdir}/usr/share/${pkgname}/XMind/XMind.ini
-    else
-        sed -i "s/GTK_VERSION/3/g" ${pkgdir}/usr/share/${pkgname}/XMind/XMind.ini
+    if [[ "$JAVA_VERSION" != "8" ]]; then
+        echo "--add-modules=java.se.ee" >> ${pkgdir}/usr/share/${pkgname}/XMind/XMind.ini
     fi
-    if [[ "$JAVA_VERSION" == "8" ]]; then
-        sed -i "s/JAVA_VERSION//g" ${pkgdir}/usr/share/${pkgname}/XMind/XMind.ini
-    else
-        sed -i "s/JAVA_VERSION/--add-modules=java.se.ee/g" ${pkgdir}/usr/share/${pkgname}/XMind/XMind.ini
+    if [[ "$JAVA_PATH" != "" ]]; then
+        sed -i "s|^-vmargs$|-vm\n${JAVA_PATH}\n-vmargs|" ${pkgdir}/usr/share/${pkgname}/XMind/XMind.ini
     fi
     mkdir -p ${pkgdir}/usr/bin
-    cp ${srcdir}/XMind ${pkgdir}/usr/bin/
+    cp ${srcdir}/XMind              ${pkgdir}/usr/bin/
 }
