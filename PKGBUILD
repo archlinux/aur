@@ -2,7 +2,7 @@
 # Contributer: Josh VanderLinden <arch@cloudlery.com>
 pkgname=adduser
 pkgver=1.15
-pkgrel=6
+pkgrel=7
 pkgdesc="Interactive front end to /usr/bin/useradd from Slackware Linux"
 arch=('any')
 url="http://www.slackware.com/"
@@ -10,7 +10,7 @@ license=('BSD')
 provides=('adduser')
 depends=('gawk' 'shadow>=4.1.5.1-3')
 source=("http://mirrors.slackware.com/slackware/slackware64-current/source/a/shadow/adduser")
-md5sums=('84514d199d0fce7ad2c2f439ec7a7bea')
+md5sums=('51e1dfa0904c12cee976edaee7992558')
 
 package() {
   install -D -m755 adduser "${pkgdir}/usr/bin/adduser"
