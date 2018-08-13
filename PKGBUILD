@@ -2,7 +2,7 @@
 # Many options will remain here as leftovers in case the packaging in Github resumes once again
 
 pkgname=pia-manager
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="Easily configure your Private Internet Access VPN"
 arch=('any')
@@ -17,7 +17,7 @@ depends=('networkmanager-openvpn'
 optdepends=('easy-rsa: easy CA and certificate handling')
 #source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 source=("${pkgname}-${pkgver}.tar.xz::${url}/${pkgname}_${pkgver}.tar.xz")
-sha256sums=('d448e980b384cd603a5c687cd3cd43421f0df09274493329030eaa9370074480')
+sha256sums=('7cb7fcb049434bf567c91176e0eba99b38705c258efd9e1bbe04a877185a53d8')
 
 ## Packaging via Linuxmint repository
 build() {

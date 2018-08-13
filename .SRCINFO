@@ -1,6 +1,6 @@
 pkgbase = pia-manager
 	pkgdesc = Easily configure your Private Internet Access VPN
-	pkgver = 1.0.6
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = http://packages.linuxmint.com/pool/main/p/pia-manager
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = pia-manager
 	depends = python
 	depends = python-setproctitle
 	optdepends = easy-rsa: easy CA and certificate handling
-	source = pia-manager-1.0.6.tar.xz::http://packages.linuxmint.com/pool/main/p/pia-manager/pia-manager_1.0.6.tar.xz
-	sha256sums = d448e980b384cd603a5c687cd3cd43421f0df09274493329030eaa9370074480
+	source = pia-manager-1.0.7.tar.xz::http://packages.linuxmint.com/pool/main/p/pia-manager/pia-manager_1.0.7.tar.xz
+	sha256sums = 7cb7fcb049434bf567c91176e0eba99b38705c258efd9e1bbe04a877185a53d8
 
 pkgname = pia-manager
 
