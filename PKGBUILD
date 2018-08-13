@@ -5,7 +5,7 @@
 
 pkgname=btrfsmaintenance
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='btrfs maintenance scripts'
 arch=('any')
 url='https://github.com/kdave/btrfsmaintenance'
@@ -31,8 +31,8 @@ package() {
 
   # For systemd
   install -m 0644 btrfsmaintenance-refresh.service  "${pkgdir}/usr/lib/systemd/system/btrfsmaintenance-refresh.service"
-  install -m 0755 btrfs-*.service                   "${pkgdir}/usr/lib/systemd/system/"
-  install -m 0755 btrfs-*.timer                     "${pkgdir}/usr/lib/systemd/system/"
+  install -m 0755 btrfs-[^scrub]*.service           "${pkgdir}/usr/lib/systemd/system/"
+  install -m 0755 btrfs-[^scrub]*.timer             "${pkgdir}/usr/lib/systemd/system/"
 
   install -m 0644 README.md                         "${pkgdir}/usr/share/btrfsmaintenance/README.md"
 }
