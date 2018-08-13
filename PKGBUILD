@@ -22,7 +22,8 @@ provides=()
 conflicts=()
 replaces=()
 
-backup=()
+backup=('etc/fluent-bit/fluent-bit.conf'
+        'etc/fluent-bit/parsers.conf')
 options=()
 install=
 changelog=
