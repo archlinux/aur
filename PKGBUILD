@@ -9,7 +9,7 @@ url="https://github.com/michael-lazar/rtv"
 license=('MIT')
 conflicts=('rtv-git')
 makedepends=('python-setuptools')
-depends=('python-beautifulsoup4' 'python-decorator' 'python-kitchen' 'ncurses' 'python' 'python-six' 'python-requests')
+depends=('python-beautifulsoup4' 'python-decorator' 'python-kitchen' 'python-six' 'python-requests')
 source=(https://github.com/michael-lazar/rtv/archive/v$pkgver.tar.gz)
 md5sums=('59bad003b7734192a49de0d9a39eeeb9')
 
