@@ -3,7 +3,7 @@
 
 pkgname=gam
 pkgver=4.60
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line tool for Google G Suite Administrators to manage domain and user settings quickly and easily."
 arch=('any')
 url="https://github.com/jay0lee/GAM"
@@ -24,7 +24,7 @@ source=(
     "gam.sh"
 )
 sha256sums=('f8274b2aff987a41344bb3ddcd6f43cbda27d5fc8de830a5f961764662cee959'
-            'e85568f0f0e038e01c88a5b2b4e30f057faf737f6e8dac1c41463ec20825118a'
+            '2879cbdcde779fa9cc6bafeadf657369377e5c317e9564c5e144c29ba9daa383'
             'd93809852ef9eefeb99f3fc1b955305264f93f2552db14b4d9d6fe7c2b08345b')
 
 prepare() {
