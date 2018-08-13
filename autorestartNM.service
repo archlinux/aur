@@ -1,0 +1,6 @@
+[Unit]
+Description=Auto Restart NetworkManager when network is not working
+
+[Service]
+EnvironmentFile=/etc/conf.d/autorestartNM.conf
+ExecStart=/usr/bin/autorestartNM $ADDRESS $SLEEPTIMES $RETRIES

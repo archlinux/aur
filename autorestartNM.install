@@ -1,0 +1,23 @@
+post_install() {
+        cp /etc/conf.d/autorestartNM.sample.conf /etc/conf.d/autorestartNM.conf
+
+	systemctl daemon-reload
+	systemctl enable timer-variable.timer
+	systemctl start timer-variable.timer
+	
+	echo '------------------------------------------------------------------------'
+	echo 'Please edit /etc/conf.d/autorestartNM.conf to your needs.'
+	echo 'The autorestartNM service will fail till you do so.'
+	echo '------------------------------------------------------------------------'	
+}
+
+post_upgrade() {
+	systemctl daemon-reload
+	systemctl restart timer-variable.timer
+}
+
+post_remove() {
+	systemctl disable timer-variable.timer
+	systemctl stop timer-variable.timer
+	systemctl daemon-reload
+}
