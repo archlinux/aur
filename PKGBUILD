@@ -3,7 +3,7 @@
 
 pkgname=gnome-shell-extension-arch-update
 pkgver=27
-pkgrel=2
+pkgrel=3
 pkgdesc="Convenient indicator for Arch Linux updates in GNOME Shell."
 arch=('any')
 url="https://github.com/RaphaelRochet/arch-update"
@@ -22,7 +22,8 @@ package() {
   # Copy extension files into place.
   find -maxdepth 1 \( -iname '*.js*' -or -iname '*.css' -or -iname '*.ui' \) -exec install -Dm644 -t "${_destdir}" '{}' +
   find -maxdepth 2 \( -iname '*.svg*' \) -exec install -Dm644 -t "${_destdir}/icons" '{}' +
-  find -name '*.xml' -exec install -Dm644 -t "${pkgdir}/usr/share/glib-2.0/schemas/" '{}' +
+  install -Dm644 prefs.xml "${_destdir}"
+  find -name '*.gschema.xml' -exec install -Dm644 -t "${pkgdir}/usr/share/glib-2.0/schemas/" '{}' +
   cd locale
   for locale in */
     do
