@@ -1,9 +1,9 @@
 # Maintainer: Henri Derycke <nheir.kim@gmail.com>
 pkgname=bluez-alsa-git
-pkgver=v1.2.0.r64.g9045edb
+pkgver=v1.3.0.r9.g1427cbd
 pkgrel=1
 pkgdesc="Bluetooth Audio ALSA Backend"
-arch=('x86_64' 'armv7h')
+arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/Arkq/bluez-alsa"
 license=('MIT')
 depends=('bluez-libs' 'glib2' 'libfdk-aac' 'sbc' 'alsa-lib')
@@ -26,8 +26,7 @@ build() {
 	cd "$pkgname"
 	autoreconf --install
 	./configure --prefix=/usr \
-	            --enable-aac \
-	            --enable-debug
+	            --enable-aac
 	make
 }
 
