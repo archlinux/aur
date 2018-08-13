@@ -1,16 +1,16 @@
 # Maintainer: Joël Porquet <joel@porquet.org>
 
 pkgname=jpass-git
-pkgver=r16.4d491bc
+pkgver=r39.494b3c9
 pkgrel=1
 pkgdesc="JPass password manager"
-url="https://joel.porquet.org/wiki/hacking/jpass/"
+url="https://github.com/joel-porquet/jpass/"
 arch=('any')
 license=('GPL3')
 depends=('python' 'python-configobj')
 makedepends=('git')
 
-source=("${pkgname}::git+https://joel.porquet.org/cgit/cgit.cgi/jpass.git/")
+source=("${pkgname}::git+https://github.com/joel-porquet/jpass/")
 md5sums=('SKIP')
 
 pkgver() {
