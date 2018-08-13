@@ -3,7 +3,7 @@
 
 pkgbase='python-flask-cors'
 pkgname=('python-flask-cors')
-pkgver=3.0.2
+pkgver=3.0.6
 pkgrel=1
 pkgdesc='cross origin resource sharing (CORS) support for Flask'
 arch=('any')
@@ -14,8 +14,8 @@ depends=('python-flask>=0.9'
          'python-six'
          'python>=3.4')
 source=("https://github.com/corydolphin/flask-cors/archive/${pkgver}.tar.gz")
-sha1sums=('8cc34fe29cfba4d9cc82be608c224e1206898ab9')
-md5sums=('4128bfd92929beca457fd1fb5a2c7812')
+sha1sums=('2937bdd3c9f26024d3a067b41763cb911ccb841e')
+md5sums=('aa4ba777fd8cfce737a65944eae0d427')
 
 build() {
   cd "${srcdir}"/flask-cors-$pkgver
