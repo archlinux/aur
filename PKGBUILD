@@ -2,7 +2,7 @@
 
 pkgname=jeveassets
 pkgver=5.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Out-of-game asset manager for Eve-Online, written in Java"
 arch=('any')
 url="http://eve.nikr.net/jeveasset"
@@ -13,6 +13,7 @@ source=("http://eve.nikr.net/${pkgname}/${pkgname}-${pkgver}.zip"
         "http://eve.nikr.net/${pkgname}/data.zip"
         "$pkgname.desktop" "$pkgname.png" "$pkgname.sh")
 md5sums=('8a07bff31fd670f387b4ba8f7e006457'
+         'b043acf2f5ca3f2c5d3b91ed42baf66c'
          'fe76109bee617582dc94e35a572070d6'
          '706a6b2856a3aa9e26952078534faa8d'
          '349f0b0edae2c5df570142d43071a7f1')
@@ -33,8 +34,3 @@ package() {
 
 	install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
-md5sums=('8a07bff31fd670f387b4ba8f7e006457'
-         'b043acf2f5ca3f2c5d3b91ed42baf66c'
-         'fe76109bee617582dc94e35a572070d6'
-         '706a6b2856a3aa9e26952078534faa8d'
-         '349f0b0edae2c5df570142d43071a7f1')
