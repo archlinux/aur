@@ -1,0 +1,15 @@
+pkgbase = owl
+	pkgdesc = Parser generator for visibly pushdown languages.
+	pkgver = 2
+	pkgrel = 1
+	url = https://github.com/ianh/owl
+	arch = x86_64
+	license = custom
+	makedepends = make
+	makedepends = lowdown
+	depends = glibc
+	source = https://github.com/ianh/owl/archive/owl.v2.tar.gz
+	sha512sums = 396dfbba4d44e95422349b96d51943af7af2b31619511e4a34a831c50cc17364072fedffa23e9ba8539230445ca9bcbff4892ac573ae3cd9aba009f95e9f48ca
+
+pkgname = owl
+
