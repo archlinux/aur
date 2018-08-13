@@ -5,7 +5,7 @@
 # Contributor: Andres Perera <aepd87@gmail.com>
 
 pkgname=pacman-git
-pkgver=5.1.1.r0.g7e081d2a
+pkgver=5.1.1.r13.g7d05ffce
 pkgrel=1
 pkgdesc="A library-based package manager with dependency support"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -20,7 +20,7 @@ provides=("pacman=${pkgver%.*.*}")
 conflicts=('pacman')
 backup=("etc/pacman.conf"
         "etc/makepkg.conf")
-options=('strip' 'debug')
+options=('emptydirs' 'strip' 'debug')
 source=("git+https://git.archlinux.org/pacman.git"
         "pacman.conf.i686"
         "pacman.conf.x86_64"
@@ -112,16 +112,6 @@ package() {
     -e "s|@CARCH[@]|$CARCH|g" \
     -e "s|@CHOST[@]|$mychost|g" \
     -e "s|@CARCHFLAGS[@]|$myflags|g"
-
-
-  # install completion files
-  rm -r "$pkgdir/etc/bash_completion.d"
-  install -Dm644 scripts/completion/bash_completion "$pkgdir/usr/share/bash-completion/completions/pacman"
-  for f in makepkg pacman-key; do
-    ln -s pacman "$pkgdir/usr/share/bash-completion/completions/$f"
-  done
-
-  install -Dm644 scripts/completion/zsh_completion "$pkgdir/usr/share/zsh/site-functions/_pacman"
 }
 
 # vim: set ts=2 sw=2 et:
