@@ -9,10 +9,6 @@ pkgbase = tempest
 	makedepends = dep
 	depends = git
 	depends = go
-	options = !strip
-	options = !emptydirs
-	source = https://github.com/ChacaS0/tempest/archive/v0.1.1.tar.gz
-	sha256sums = b08305a9b82f39e71d5f00884aeb4086ff8c8bf29c085fd320572092e55444f1
 
 pkgname = tempest
 

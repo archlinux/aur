@@ -9,9 +9,9 @@ url="https://chacas0.github.io/tempest/"
 license=('MIT')
 depends=('git' 'go')
 makedepends=('dep')
-options=('!strip' '!emptydirs')
-source=("https://github.com/ChacaS0/tempest/archive/v$pkgver.tar.gz")
-sha256sums=('b08305a9b82f39e71d5f00884aeb4086ff8c8bf29c085fd320572092e55444f1')
+#options=('!strip' '!emptydirs')
+#source=("https://github.com/ChacaS0/tempest/archive/v$pkgver.tar.gz")
+#sha256sums=('b08305a9b82f39e71d5f00884aeb4086ff8c8bf29c085fd320572092e55444f1')
 _gourl=github.com/ChacaS0/tempest
 
 build() {
