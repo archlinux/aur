@@ -1,7 +1,7 @@
 # Maintainer: Joseph Brains <jnbrains@gmail.com>
 _pkgname=gns3-gui
 pkgname=${_pkgname}-git
-pkgver=v2.1.8.r4.gec0be9e2
+pkgver=v2.1.9.r0.g45e00807
 pkgrel=1
 pkgdesc='GNS3 network simulator. Graphical user interface package.'
 arch=('any')
