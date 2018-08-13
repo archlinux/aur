@@ -3,7 +3,7 @@
 
 pkgbase='python-multipledispatch'
 pkgname=('python-multipledispatch')
-pkgver=0.4.8
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Multiple dispatch implementation in Python'
 arch=('any')
@@ -12,8 +12,8 @@ license=('BSD')
 makedepends=('python-setuptools')
 depends=('python>=3.4')
 source=("https://github.com/mrocklin/multipledispatch/archive/$pkgver.tar.gz")
-sha1sums=('75f71b3361c5efd5b0855ec6a1cba5fc0cd51726')
-md5sums=('e46a251440ad31b6df6819e1e78bd2f2')
+sha1sums=('c09f2e533dc7e3954e9587d1ea62967d980b1a33')
+md5sums=('f91173ac478c03d46d4e4731b4f13e93')
 
 build() {
   cd "${srcdir}"/multipledispatch-$pkgver
