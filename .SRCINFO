@@ -1,7 +1,7 @@
 pkgbase = adduser
 	pkgdesc = Interactive front end to /usr/bin/useradd from Slackware Linux
-	pkgver = 1.15
-	pkgrel = 7
+	pkgver = 1.16
+	pkgrel = 1
 	url = http://www.slackware.com/
 	arch = any
 	license = BSD
