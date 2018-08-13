@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://www.sysdevlabs.com/order.php?prod=rxs6"
 license=('Custom')
 depends=('xdg-utils' 'libx11' 'libstdc++5')
-optdepends=('zensu')
+optdepends=('zensu' 'gksu')
 source_x86_64=("https://github.com/liberodark/Recovery-Explorer-Standard-6/releases/download/6.17.1/r-explorer.tar.gz")
 source=(r-explorer.desktop
         r-explorer.png)
