@@ -1,6 +1,6 @@
 # Maintainer: James Choa <triggerhappyelite at gmail dot com>
 pkgname=openca-ocspd
-pkgver=3.1.1
+pkgver=3.1.2
 pkgrel=1
 pkgdesc='OpenCA OCSP Responder'
 url='https://pki.openca.org/projects/ocspd/'
@@ -9,7 +9,7 @@ license=('Apache')
 depends=('bash' 'openssl')
 makedepends=('libpki' 'chrpath')
 source=("http://prdownloads.sourceforge.net/project/openca/$pkgname/releases/v$pkgver/sources/$pkgname-$pkgver.tar.gz")
-sha256sums=('10d56cecb862d94ed8742bdf52958cebe1b3f8d87625ba014b0ae2b7c4820de5')
+sha256sums=('fdba65ee232b03668563acbcb09a57aaadb2b4d140ceec7b58ec8b274f61a62d')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
