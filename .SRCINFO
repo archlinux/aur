@@ -1,7 +1,7 @@
 pkgbase = perl-tk-git
 	pkgdesc = A graphical user interface toolkit for Perl
 	pkgver = 804.034.r0.g806e6b3f
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/dist/Tk
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = perl-tk-git
 	depends = libpng
 	depends = libjpeg
 	depends = tk
-	depends = perl
+	depends = perl>=0
 	provides = perl-tk
 	conflicts = perl-tk
 	options = !emptydirs

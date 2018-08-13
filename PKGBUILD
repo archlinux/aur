@@ -8,12 +8,12 @@
 pkgname=perl-tk-git
 _pkgname=perl-tk
 pkgver=804.034.r0.g806e6b3f
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical user interface toolkit for Perl"
 arch=('i686' 'x86_64')
 url="http://search.cpan.org/dist/Tk"
 license=('PerlArtistic' 'GPL' 'custom')
-depends=('libpng' 'libjpeg' 'tk' 'perl')
+depends=('libpng' 'libjpeg' 'tk' 'perl>=0')
 checkdepends=('xorg-server-xvfb' 'perl-devel-leak' 'perl-test-pod')
 makedepends=('git')
 options=('!emptydirs' '!strip')
