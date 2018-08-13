@@ -1,10 +1,10 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 
 pkgname=img-matrix-git
-pkgver=r4.bf02421
+pkgver=r5.e70734d
 pkgrel=1
 pkgdesc='Script that generates tiles from images and combines them in a html file.'
-arch=('i686' 'x86_64')
+arch=('any')
 
 url='https://gitlab.com/Scrumplex/img-matrix'
 license=('GPL3')
