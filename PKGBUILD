@@ -1,7 +1,7 @@
 # Maintainer: Adam S Levy <adam@aslevy.com>
 
 pkgname='factomd'
-pkgver='5.1.0'
+pkgver='5.4.1'
 pkgrel='1'
 pkgdesc='Factom Daemon'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -49,6 +49,9 @@ package()
   install -Dm644 LICENSE       "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   install -dm755 "$pkgdir/etc"
+  # Create the hidden folder that factomd looks for as a symlink to the factomd
+  # home folder
   ln -s          ./                                "$pkgdir/var/lib/$pkgname/.factom"
+  # Create a link to the configuration in /etc/ for convenience
   ln -s          /var/lib/$pkgname/m2/factomd.conf "$pkgdir/etc/$pkgname.conf"
 }
