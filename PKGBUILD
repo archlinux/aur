@@ -6,7 +6,7 @@
 pkgbase='python-toolz'
 pkgname=('python-toolz' 'python-cytoolz')
 pkgver=0.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A set of utility functions for iterators, functions, and dictionaries."
 arch=('any')
 url="https://github.com/pytoolz"

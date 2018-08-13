@@ -1,7 +1,7 @@
 pkgbase = python-toolz
 	pkgdesc = A set of utility functions for iterators, functions, and dictionaries.
 	pkgver = 0.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pytoolz
 	arch = any
 	license = BSD
