@@ -4,12 +4,12 @@
 pkgname='perl-class-trigger'
 _cpanname='Class-Trigger'
 pkgver='0.14'
-pkgrel='5'
+pkgrel='6'
 pkgdesc="Mixin to add / call inheritable triggers"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl' 'perl-io-stringy')
+depends=('perl>=0' 'perl-io-stringy')
 makedepends=('perl-module-install')
 url="http://search.cpan.org/dist/Class-Trigger"
 source=("http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/${_cpanname}-${pkgver}.tar.gz")
