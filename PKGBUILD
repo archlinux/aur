@@ -3,7 +3,7 @@
 pkgname=jupyter-nbextension-rise
 _name=rise
 pkgver=5.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Live Reveal.js Jupyter/IPython Slideshow Extension"
 arch=(any)
 url="https://github.com/damianavila/RISE"
@@ -27,7 +27,7 @@ package() {
   
   env PYTHONPATH="$_site_packages:$PYTHONPATH" \
       JUPYTER_PATH="$pkgdir/usr/"\
-      JUPYTER_CONFIG_DIR="/etc/jupyter" \
+      JUPYTER_CONFIG_DIR="$pkgdir/etc/jupyter" \
       jupyter-nbextension install rise --py --prefix="$pkgdir/usr/"
 
   # No need to call `jupyter nbextension install rise`, it is handled in setup.py
