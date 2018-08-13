@@ -1,5 +1,5 @@
 pkgname=librepo
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="Repodata downloading library"
 arch=('i686' 'x86_64')
@@ -7,10 +7,10 @@ url="https://github.com/rpm-software-management/$pkgname"
 license=('LGPL2.1')
 depends=('curl' 'glib2' 'gpgme' 'libxml2')
 makedepends=('cmake' 'python')
-checkdepends=('check' 'python-flask' 'python-nose' 'python-pygpgme' 'python-pyxattr')
+checkdepends=('check' 'python-flask' 'python-nose' 'python-gpgme' 'python-pyxattr')
 optdepends=('python: for python bindings')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('156ae4fce1791b5054f757e3bd5bf6f2')
+md5sums=('8aa7bb874143bf36b852f75d78f5bdb9')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -20,11 +20,14 @@ prepare() {
 
 build() {
 	cd "$pkgname-$pkgver"/build
-	cmake -DCMAKE_BUILD_TYPE=Release  \
+
+	cmake -DCMAKE_BUILD_TYPE=Release \
+	      -DCMAKE_C_FLAGS="$CFLAGS $CPPFLAGS" \
 	      -DCMAKE_INSTALL_PREFIX=/usr \
-	      -DPYTHON_DESIRED=3          \
-	      -DENABLE_DOCS=OFF           \
+	      -DPYTHON_DESIRED=3 \
+	      -DENABLE_DOCS=OFF \
 	      ..
+
 	make
 }
 

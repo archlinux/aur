@@ -1,6 +1,6 @@
 pkgbase = librepo
 	pkgdesc = Repodata downloading library
-	pkgver = 1.9.0
+	pkgver = 1.9.1
 	pkgrel = 1
 	url = https://github.com/rpm-software-management/librepo
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = librepo
 	checkdepends = check
 	checkdepends = python-flask
 	checkdepends = python-nose
-	checkdepends = python-pygpgme
+	checkdepends = python-gpgme
 	checkdepends = python-pyxattr
 	makedepends = cmake
 	makedepends = python
@@ -18,8 +18,8 @@ pkgbase = librepo
 	depends = gpgme
 	depends = libxml2
 	optdepends = python: for python bindings
-	source = https://github.com/rpm-software-management/librepo/archive/1.9.0/librepo-1.9.0.tar.gz
-	md5sums = 156ae4fce1791b5054f757e3bd5bf6f2
+	source = https://github.com/rpm-software-management/librepo/archive/1.9.1/librepo-1.9.1.tar.gz
+	md5sums = 8aa7bb874143bf36b852f75d78f5bdb9
 
 pkgname = librepo
 
