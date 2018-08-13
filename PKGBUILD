@@ -6,7 +6,7 @@
 #_with_usermode=1
 
 pkgname=mock
-pkgver=1.4.13
+pkgver=1.4.14
 _rpmrel=1
 _pkgtag=$pkgname-$pkgver-$_rpmrel
 pkgrel=$_rpmrel.1
@@ -14,7 +14,7 @@ pkgdesc="A simple chroot build environment manager for building RPMs"
 url="https://github.com/rpm-software-management/$pkgname"
 arch=('any')
 license=('GPL2')
-depends=('mock-core-configs' 'python' 'python-distro' 'python-pyroute2')
+depends=('mock-core-configs' 'python' 'python-distro' 'python-jinja' 'python-pyroute2')
 ((_with_usermode)) && depends+=('usermode')
 optdepends=('createrepo_c: for mockchain command'
             'dnf-plugins-core: to create RPMs for Fedora >= 24 and for Mageia'
@@ -28,7 +28,7 @@ backup=("etc/$pkgname/site-defaults.cfg")
 source=("$url/archive/$_pkgtag.tar.gz"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-md5sums=('41b53bb559919b691cdadec43108fa4f'
+md5sums=('9d3409eebbea41dad0a63d144fb5f517'
          'd277502b9a95484594f86231d073dae0'
          '1052fa4db74b59b0c195f4756bd865e8')
 
@@ -43,11 +43,12 @@ prepare() {
 
 	cd "$pkgname-$pkgver"
 
-	pushd $pkgname >/dev/null
+	pushd "$pkgname" >/dev/null
 
 	# ArchLinux does not provides gtar symlink
-	sed -e "/config_opts['tar']/ s|.*|config_opts['tar'] = \"bsdtar\"|" \
-		-i etc/$pkgname/site-defaults.cfg
+	sed -e "/config_opts\['tar'\]/ s|.*|config_opts['tar'] = \"bsdtar\"|" \
+	    -e "/config_opts\['plugin_conf'\]\['root_cache_opts'\]\['decompress_program'\]/ s|.*|config_opts['plugin_conf']['root_cache_opts']['decompress_program'] = \"gunzip\"|" \
+	    -i "etc/$pkgname/site-defaults.cfg"
 
 	popd >/dev/null
 }
@@ -55,20 +56,20 @@ prepare() {
 build() {
 	cd "$pkgname-$pkgver"
 
-	pushd $pkgname >/dev/null
+	pushd "$pkgname" >/dev/null
 
 	python_sitelib=$(python -c 'from distutils.sysconfig import get_python_lib; import sys; sys.stdout.write(get_python_lib())')
-	sed -r -i py/${pkgname}{,chain}.py \
+	sed -r -i "py/$pkgname"{,chain}.py \
 	    -e 's|^__VERSION__\s*=.*|__VERSION__="'$pkgver'"|' \
 	    -e 's|^SYSCONFDIR\s*=.*|SYSCONFDIR="'$_sysconfdir'"|' \
 	    -e 's|^PYTHONDIR\s*=.*|PYTHONDIR="'$python_sitelib'"|' \
 	    -e 's|^PKGPYTHONDIR\s*=.*|PKGPYTHONDIR="'$python_sitelib'/mockbuild"|'
 
 	# Replace /usr/libexec path in help message
-	sed -r -i py/$pkgname.py \
+	sed -r -i "py/$pkgname.py" \
 	    -e 's|/usr/libexec/mock/mock|/usr/bin/mock.py|'
 
-	sed -e "s|@VERSION@|$pkgver|" -i docs/${pkgname}{,chain}.1
+	sed -e "s|@VERSION@|$pkgver|" -i "docs/$pkgname"{,chain}.1
 
 	python    -m compileall py/ -q
 	python -O -m compileall py/ -q
@@ -79,7 +80,7 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
 
-	pushd $pkgname >/dev/null
+	pushd "$pkgname" >/dev/null
 
 	mkdir -p "$pkgdir/$_bindir/"
 	install -Dp -m755 py/mock.py      "$pkgdir/$_bindir/"mock
@@ -103,7 +104,7 @@ package() {
 	cp -Rp py/mockbuild "$pkgdir/$python_sitelib/"
 
 	mkdir -p "$pkgdir/$_mandir/"man1
-	cp -Rp docs/${pkgname}{,chain}.1 "$pkgdir/$_mandir/"man1/
+	cp -Rp "docs/$pkgname"{,chain}.1 "$pkgdir/$_mandir/"man1/
 
 	if ((_with_usermode)); then
 		mkdir -p "$pkgdir/$_sysconfdir/"security/console.apps/
