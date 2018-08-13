@@ -59,7 +59,7 @@ source=(
     "oomoxify-${_oomoxify_ver}.tar.gz::https://github.com/themix-project/oomoxify/archive/${_oomoxify_ver}.tar.gz"
 )
 md5sums=('d98a9d2d2db29e8496f8684a965b8033'
-         '0769a6c072d8ad7661a16b67a6bcdd48'
+         '84d1c8416cff7736c4584e3329122174'
          '47bb49b8560bea49726b02d6af1fee6a'
          '23460fc1c478f6595a56c9a6a98bdac8'
          'cb669130685dcbf03a8f7f5738c71dc6'
