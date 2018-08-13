@@ -1,0 +1,16 @@
+pkgbase = qqbot
+	pkgdesc = A conversation robot base on Tencent's SmartQQ
+	pkgver = 2.3.10
+	pkgrel = 1
+	url = https://github.com/pandolia/qqbot
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-apscheduler
+	depends = python-certifi
+	depends = python-requests
+	source = https://github.com/pandolia/qqbot/archive/v2.3.10.tar.gz
+	sha512sums = c72f8a1c153c97a50adfaeb7704cbdacebcdd01b4a603e1a34ab571447cf3a2747c4da6480f7ce070eccd2b7fe5e3306924a111be1f680947fab245ee266a813
+
+pkgname = qqbot
+
