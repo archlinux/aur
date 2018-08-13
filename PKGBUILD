@@ -2,7 +2,7 @@
 
 pkgname=aegisub-dependency-control
 pkgver=0.6.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Package manager for scripts for the Aegisub subtitle editor"
 arch=('i686' 'x86_64')
 url="https://github.com/TypesettingTools/DependencyControl"
@@ -17,7 +17,7 @@ source=("DependencyControl-${_depctrlver}.tar.gz::https://github.com/Typesetting
         "ffi-experiments-${_ffiexpver}.tar.gz::https://github.com/torque/ffi-experiments/archive/${_ffiexpver}.tar.gz"
         "luajson-${_luajsonver}.tar.gz::https://github.com/harningt/luajson/archive/${_luajsonver}.tar.gz")
 sha256sums=('ac845ee6152db94c42ae80e2ccbede6571c27342c22819efa68c648327cdfdc2'
-            '90c13fcb50ecfc0a60ca659d25d2c99d98becfdcd6ec11976793b78d37607c55'
+            'b2491554eac19fa2ec2d9c83c8fc71c21ddc32c75c5bb0d700246743c6fc6c67'
             '6a986efa210a912a04c8e6cae8f3b5e72172c02f974152e14818af6598a5e2db')
 
 build() {
