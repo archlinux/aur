@@ -1,27 +1,21 @@
-# Maintainer: Zachary Koesters <zkoesters@utdallas.edu>
+# Maintainer: Caleb Jamison (cbjamo@gmail.com)
 
 pkgname="collada-dom"
 provides=("colladadom")
-pkgver=2.4.4
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="An API that provides a C++ object representation of a COLLADA XML instance document."
-url="https://github.com/rdiankov/collada-dom/tree/v2.4.4"
+url="https://github.com/rdiankov/collada-dom/"
 license=("custom")
-arch=("any")
+arch=("x86_64")
 depends=("libxml2"
          "boost-libs"
-         "pcre")
+         "pcre"
+		 "minizip")
 makedepends=("cmake"
              "boost")
-source=("https://github.com/rdiankov/${pkgname}/archive/v${pkgver}.tar.gz"
-        "0001-fix-return-type-thanks-to-22.patch")
-sha256sums=("0dfa494827faa971310c871535b319cadbd0c2d6958ee11b303c61a55a5a437a"
-            "921742c7ad1094e1f25281869860b16cbab9d1fb0cb718fb32e0775861bdb13c")
-
-prepare() {
-    cd "${pkgname}-${pkgver}"
-    patch -Np1 < ../0001-fix-return-type-thanks-to-22.patch
-}
+source=("https://github.com/rdiankov/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=("3be672407a7aef60b64ce4b39704b32816b0b28f61ebffd4fbd02c8012901e0d")
 
 build() {
     cd "${pkgname}-${pkgver}"
