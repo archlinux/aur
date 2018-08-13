@@ -2,7 +2,7 @@
 
 pkgname=mxt-app-git
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc='Command line utility for Atmel maXTouch devices'
 arch=('i686' 'x86_64')
 url='https://github.com/atmel-maxtouch/mxt-app'
@@ -11,7 +11,7 @@ depends=('libusb')
 makedepends=('git' 'pandoc')
 provides=('mxt-app')
 conflicts=('mxt-app')
-source=('https://github.com/atmel-maxtouch/mxt-app')
+source=('git+https://github.com/atmel-maxtouch/mxt-app')
 md5sums=('SKIP')
 
 pkgver() {
