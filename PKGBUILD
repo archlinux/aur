@@ -3,7 +3,7 @@
 
 pkgname=parsec-bin
 pkgver=147_9
-pkgrel=1
+pkgrel=2
 pkgdesc="Remotely connect to a gaming pc for a low latency remote computing experience"
 url=http://parsec.tv
 arch=('x86_64')
