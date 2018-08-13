@@ -38,7 +38,10 @@ prepare() {
 	msg2 "Getting the client_side_request patch..."
 	wget https://raw.githubusercontent.com/bar0metr/squid/master/client_side_request.patch
 	msg2 "Patching Squid..."
-	patch -p0 -i client_side_request.patch
+        msg2 "Getting the sm_pagesize patch..."
+        wget https://raw.githubusercontent.com/bar0metr/squid/master/sm_pagesize.patch
+        msg2 "Patching Squid..."
+	patch -p0 -i sm_pagesize.patch
 	msg2 "Done!"
 }
 
