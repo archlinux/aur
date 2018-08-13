@@ -1,7 +1,7 @@
 # Maintainer: Martin Müllenhaupt <mm+aur.archlinux.org@netlair.de>
 pkgname=python-fafclient
 pkgver=0.18.0
-pkgrel=1
+pkgrel=2
 epoch=0
 pkgdesc="Forged Alliance Forever - Lobby Client. Community-driven client system for Supreme Commander: Forged Alliance."
 url="http://www.faforever.com/"
@@ -19,9 +19,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("git+https://github.com/FAForever/client.git" 'FAForeverPy36.desktop')
+source=("git+https://github.com/FAForever/client.git" 'FAForeverPy37.desktop')
 sha256sums=('SKIP'
-            'cf43a921938364ff0c07f7e79c259016cdd09523e277ce50d7983d38d625cf1c')
+            '87177026bbb6dd8ed41718abde2d56811e5dd00ab8e4a77d1b97e94c2ef132e7')
 noextract=()
 validpgpkeys=()
 
@@ -45,7 +45,7 @@ build() {
 package() {
   cd "client"
   FAFCLIENT_VERSION=$pkgver python setup.py install --root="$pkgdir" --optimize=1 
-  install -D "$srcdir/FAForeverPy36.desktop" "$pkgdir/usr/share/applications/FAForeverPy36.desktop"
-  cp -r "res" "$pkgdir/usr/lib/python3.6/site-packages/fafclient/res"
-  echo `git describe --tags --abbrev=0` > "$pkgdir/usr/lib/python3.6/site-packages/fafclient/res/RELEASE-VERSION"
+  install -D "$srcdir/FAForeverPy37.desktop" "$pkgdir/usr/share/applications/FAForeverPy37.desktop"
+  cp -r "res" "$pkgdir/usr/lib/python3.7/site-packages/fafclient/res"
+  echo `git describe --tags --abbrev=0` > "$pkgdir/usr/lib/python3.7/site-packages/fafclient/res/RELEASE-VERSION"
 }
