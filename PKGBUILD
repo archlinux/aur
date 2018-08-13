@@ -36,9 +36,9 @@ prepare() {
 	cd "$srcdir/squid-$_pkgver"
 	msg "Preparing Squid..."
 	msg2 "Getting the client_side_request patch..."
-	wget https://raw.githubusercontent.com/bar0metr/squid/master/client_side_request.patch
+	wget https://raw.githubusercontent.com/bar0metr/squid/master/client_side_requestv5.patch
 	msg2 "Patching Squid..."
-	patch -p0 -i client_side_request.patch
+	patch -p0 -i client_side_requestv5.patch
 	msg2 "Done!"
 }
 
