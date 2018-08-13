@@ -23,12 +23,12 @@ build() {
 
 package() {
   cd "$srcdir/encryptpad$(echo -n $pkgver | sed -r 's/\./_/g')_src"
-  mkdir -p ${pkgdir}/usr/bin
-  install -Dm755 bin/release/encryptcli bin/release/encryptpad ${pkgdir}/usr/bin/
-  install -Dm644 ${_pkgname}.desktop ${pkgdir}/usr/share/applications/${_pkgname}.desktop
-  install -Dm644 images/icns.iconset/icon_16x16.png $pkgdir/usr/share/icons/hicolor/16x16/apps/${_pkgname}.png
-  install -Dm644 images/icns.iconset/icon_32x32.png $pkgdir/usr/share/icons/hicolor/32x32/apps/${_pkgname}.png
-  install -Dm644 images/icns.iconset/icon_128x128.png $pkgdir/usr/share/icons/hicolor/128x128/apps/${_pkgname}.png
+  mkdir -p "${pkgdir}"/usr/bin
+  install -Dm755 bin/release/encryptcli bin/release/encryptpad "${pkgdir}"/usr/bin/
+  install -Dm644 ${_pkgname}.desktop "${pkgdir}"/usr/share/applications/${_pkgname}.desktop
+  install -Dm644 images/icns.iconset/icon_16x16.png "${pkgdir}"/usr/share/icons/hicolor/16x16/apps/${_pkgname}.png
+  install -Dm644 images/icns.iconset/icon_32x32.png "${pkgdir}"/usr/share/icons/hicolor/32x32/apps/${_pkgname}.png
+  install -Dm644 images/icns.iconset/icon_128x128.png "${pkgdir}"/usr/share/icons/hicolor/128x128/apps/${_pkgname}.png
 }
 
 # vim:set ts=2 sts=2 sw=2 et:
