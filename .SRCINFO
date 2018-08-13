@@ -1,11 +1,9 @@
 pkgbase = linux-bfq-mq-git
-	pkgver = 4.16.0.gae5d5407f10c
-	pkgrel = 2
+	pkgver = 4.16.0.gc8bc611b2a01
+	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = x86_64
 	license = GPL2
-	makedepends = xmlto
-	makedepends = docbook-xsl
 	makedepends = kmod
 	makedepends = inetutils
 	makedepends = bc
@@ -13,17 +11,17 @@ pkgbase = linux-bfq-mq-git
 	makedepends = libelf
 	options = !strip
 	source = git+https://github.com/Algodev-github/bfq-mq
-	source = kernel_gcc_patch-20180509.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20180509.tar.gz
-	source = https://gitlab.com/tom81094/custom-patches/raw/master/bfq-mq/tentative/T0001-Check-presence-on-tree-of-every-entity-after-every-a.patch
+	source = https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master/enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+.patch
+	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.17/0100-Check-presence-on-tree-of-every-entity-after-every-a.patch
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
 	source = 99-linux.hook
 	source = linux.preset
 	sha256sums = SKIP
-	sha256sums = 226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d
+	sha256sums = 9f7177679c8d3f8d699ef0566a51349d828436dba04603bc2223f98c60d2d178
 	sha256sums = eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531
-	sha256sums = b77ffe5194f8e1c1fa4e5a9ef931e8094a54a9ef291c67ddbbe3495d98fa9c91
+	sha256sums = bf58571da6595287f0e4b6890f590f8640195f05b7f2b63ab8f498b68fe51f26
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = 75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919
 	sha256sums = 5f6ba52aaa528c4fa4b1dc097e8930fad0470d7ac489afcb13313f289ca32184
@@ -38,19 +36,19 @@ pkgname = linux-bfq-mq-git
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
-	provides = linux-bfq-mq-git=4.16.0.gae5d5407f10c
-	provides = linux=4.16.0.gae5d5407f10c
+	provides = linux-bfq-mq-git=4.16.0.gc8bc611b2a01
+	provides = linux=4.16.0.gc8bc611b2a01
 	backup = etc/mkinitcpio.d/linux-bfq-mq-git.preset
 
 pkgname = linux-bfq-mq-git-headers
 	pkgdesc = Header files and scripts for building modules for Linux-bfq-mq-git kernel
-	depends = linux-bfq-mq-git=4.16.0.gae5d5407f10c
-	provides = linux-bfq-mq-git-headers=4.16.0.gae5d5407f10c
-	provides = linux-headers=4.16.0.gae5d5407f10c
+	depends = linux-bfq-mq-git=4.16.0.gc8bc611b2a01
+	provides = linux-bfq-mq-git-headers=4.16.0.gc8bc611b2a01
+	provides = linux-headers=4.16.0.gc8bc611b2a01
 
 pkgname = linux-bfq-mq-git-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-bfq-mq-git kernel
-	depends = linux-bfq-mq-git=4.16.0.gae5d5407f10c
-	provides = linux-bfq-mq-git-docs=4.16.0.gae5d5407f10c
-	provides = linux-docs=4.16.0.gae5d5407f10c
+	depends = linux-bfq-mq-git=4.16.0.gc8bc611b2a01
+	provides = linux-bfq-mq-git-docs=4.16.0.gc8bc611b2a01
+	provides = linux-docs=4.16.0.gc8bc611b2a01
 
