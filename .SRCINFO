@@ -1,6 +1,6 @@
 pkgbase = linux-clear
 	pkgver = 4.18.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/clearlinux-pkgs/linux
 	arch = x86_64
 	license = GPL2
@@ -14,7 +14,7 @@ pkgbase = linux-clear
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.18.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.18.tar.sign
-	source = clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=4.18.0-618
+	source = clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=4.18.0-619
 	source = https://downloadmirror.intel.com/27945/eng/microcode-20180703.tgz
 	source = enable_additional_cpu_optimizations-20180509.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20180509.tar.gz
 	source = 60-linux.hook
