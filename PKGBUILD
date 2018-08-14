@@ -8,7 +8,7 @@ pkgname=inox-dev
 pk=dnox
 name=chromium
 pkgver=70.0.3520.0
-pkgrel=1
+pkgrel=2
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
@@ -343,7 +343,7 @@ patch -Np1 -i ../narnia1.patch
 
 
 
-patch -Np1 -Ri ../9k.patch
+#patch -Np1 -Ri ../9k.patch
 patch -Np1 -i ../048.patch
 
 patch -Np1 -i ../12.patch
