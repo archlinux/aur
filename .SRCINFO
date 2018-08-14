@@ -1,12 +1,13 @@
 pkgbase = playmyvideos
 	pkgdesc = Cinema is a video player for Pantheon, developed by Artem Anufrij
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://anufrij.org/cinema
 	arch = x86_64
 	license = GPL3
-	makedepends = cmake
 	makedepends = vala
+	makedepends = meson
+	makedepends = ninja
 	depends = libgranite.so
 	depends = gtk3
 	depends = clutter-gtk
@@ -14,7 +15,7 @@ pkgbase = playmyvideos
 	depends = gst-plugins-base
 	depends = sqlite
 	source = playmyvideos-1.1.0.tar.gz::https://github.com/artemanufrij/playmyvideos/archive/1.1.0.tar.gz
-	sha256sums = 96e2733e1ee1b361e80602e1caa28f89507041e6f7fd267bd90e207680867e8d
+	sha256sums = b3f24c7c1dd2d561ee3e486476385a7e5c8e6a516cb570c444011a8ee2eada91
 
 pkgname = playmyvideos
 
