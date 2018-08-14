@@ -3,14 +3,14 @@
 _pkgname=icu
 pkgname=${_pkgname}61
 pkgver=61.1
-pkgrel=1
+pkgrel=2
 pkgdesc="International Components for Unicode library"
 arch=('i686' 'x86_64')
 url="http://www.icu-project.org/"
 license=('custom:"icu"')
 depends=('gcc-libs>=4.7.1-5')
-source=(https://vorboss.dl.sourceforge.net/project/${_pkgname}/ICU4C/${pkgver}/${_pkgname}4c-${pkgver//./_}-src.tgz)
-sha1sums=('06ca7b1e64c28e07d5633a2e0257380884ea486b')
+source=(http://download.icu-project.org/files/${_pkgname}4c/${pkgver}/${_pkgname}4c-${pkgver//./_}-src.tgz)
+md5sums=('68fe38999fef94d622bd6843d43c0615')
 
 prepare() {
     # fix xlocale.h problems (FS#55246)
