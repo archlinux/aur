@@ -1,7 +1,7 @@
 # Maintainer: Yuval Adam <yuval at y3xz dot com> PGP-Key: 271386AA2EB7672F
 
 pkgname=libosmo-abis
-pkgver=0.3.2
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Osmocom library for A-bis interface"
 arch=('any')
@@ -9,7 +9,7 @@ url="http://openbsc.osmocom.org/trac/wiki/libosmo-abis"
 license=(GPL)
 depends=('libosmocore' 'ortp')
 makedepends=('git')
-source=("git://git.osmocom.org/${pkgname}.git#tag=v${pkgver}")
+source=("git://git.osmocom.org/${pkgname}.git#tag=${pkgver}")
 sha256sums=("SKIP")
 
 build() {
