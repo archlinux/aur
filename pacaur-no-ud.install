@@ -1,0 +1,3 @@
+post_install() {
+	echo ">>>To fix the makepkg bug that prevents pacaur from working run 'sudo sed -i 's%"--color never"%"--color" "never"%' /usr/bin/makepkg'"
+}

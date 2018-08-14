@@ -1,8 +1,9 @@
 pkgbase = pacaur-no-ud
 	pkgdesc = An AUR helper that minimizes user interaction, edited to run -U instead of -Ud
 	pkgver = 4.7.90
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rmarquis/pacaur
+	install = pacaur-no-ud.install
 	arch = any
 	license = ISC
 	makedepends = perl
@@ -14,7 +15,9 @@ pkgbase = pacaur-no-ud
 	conflicts = pacaur
 	backup = etc/xdg/pacaur/config
 	source = pacaur-4.7.90.tar.gz::https://github.com/rmarquis/pacaur/archive/4.7.90.tar.gz
+	source = pacaur-no-ud.install
 	md5sums = 237a716ddfe3eab43a0f7958be646d09
+	md5sums = 0afc4269aeb74fdd6a480e3835a8566b
 
 pkgname = pacaur-no-ud
 
