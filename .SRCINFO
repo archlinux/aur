@@ -1,13 +1,13 @@
 pkgbase = ttl2c-git
 	pkgdesc = Turtle to header conversion utility for LV2 Plugin developers
 	pkgver = 1.0.1.r5.b64e425
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/lvtk/ttl2c
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = python
+	makedepends = python2
 	depends = boost-libs
 	provides = ttl2c
 	conflicts = ttl2c
