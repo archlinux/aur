@@ -16,11 +16,11 @@ md5sums=('SKIP')
 conflicts=('hh');
 
 build() {
-    cd "hstr/dist"
-    ./1-dist.sh
-    cd ..
+    cd "hstr/build/tarball"
+    ./tarball-automake.sh
+    cd ../..
     sed -i -e "s#<ncursesw/curses.h>#<curses.h>#g" src/include/hstr_curses.h
-    sed -i -e "s#<ncursesw/curses.h>#<curses.h>#g" src/hstr.c
+    sed -i -e "s#<ncursesw/curses.h>#<curses.h>#g" src/include/hstr.h
     ./configure --prefix=/usr
     make
 }
