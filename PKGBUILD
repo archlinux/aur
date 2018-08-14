@@ -3,9 +3,9 @@
 #		Maintainer: Jan Pacner
 #		Contributor: dumblob <dumblob@gmail.com>
 
-pkgname=packer-combined
+pkgname=packer-aur-combined
 pkgver=20160731_1521
-pkgrel=1
+pkgrel=2
 pkgdesc='Extended bash wrapper for pacman and aur see packer --help for extra features'
 url="https://bitbucket.org/replabrobin/packer"
 license=('GPL3')
@@ -31,6 +31,6 @@ pkgver() {
 
 package(){
 	cd "$pkgname"
-	install -D -m 755 packer "$pkgdir/usr/bin/packer"
-	install -D -m 644 packer.8 "$pkgdir/usr/share/man/man8/packer.8"
+	install -D -m 755 packer "$pkgdir/usr/bin/packer-aur"
+	install -D -m 644 packer.8 "$pkgdir/usr/share/man/man8/packer-aur.8"
 	}
