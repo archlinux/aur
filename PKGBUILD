@@ -1,5 +1,5 @@
-# Maintainer: Alexander 'z33ky' Hirsch <1zeeky@gmail.com>
-# Contributor: Yen Chi Hsuan <yan12125@gmail.com>
+# Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
+# Contributor: Alexander 'z33ky' Hirsch <1zeeky@gmail.com>
 # The following contributors are from the vim-youcompleteme-git AUR package
 # Contributor: Babken Vardanyan <483ken 4tgma1l
 # Contributor: stykr
@@ -12,13 +12,16 @@
 _clang_completer=y
 
 pkgname=neovim-youcompleteme-core-git
-pkgver=r2359.e49f817b
-pkgrel=1
+pkgver=r2365.459b3e62
+pkgrel=2
 pkgdesc='A code-completion engine for Vim'
 arch=(i686 x86_64)
 url='https://valloric.github.io/YouCompleteMe/'
 license=('GPL3')
-depends=('neovim' 'boost-libs' 'python>=3.2' 'python-bottle' 'python-waitress' 'python-frozendict' 'python-requests-futures' 'python-future' 'python-neovim')
+depends=('neovim' 'boost-libs' 'python>=3.2'
+         'python-bottle' 'python-waitress' 'python-frozendict'
+         'python-requests-futures' 'python-future' 'python-neovim'
+         'python-regex')
 makedepends=('git' 'cmake' 'boost')
 optdepends=(
 	'gocode-git: Go semantic completion'
@@ -46,9 +49,9 @@ fi
 
 prepare() {
 	cd "${srcdir}/YouCompleteMe"
+	git submodule init
 	git config submodule.third_party/ycmd.url "${srcdir}/ycmd"
-	git submodule update --init 'third_party/ycmd'
-	git -C third_party/ycmd checkout master
+	git submodule update
 }
 
 build() {
