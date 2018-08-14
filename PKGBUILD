@@ -5,7 +5,7 @@ pkgname=magics++
 Pkgname=Magics
 pkgver=3.1.0
 _attnum=3473464
-pkgrel=1
+pkgrel=2
 pkgdesc="Magics is the latest generation of the ECMWF's Meteorological plotting software MAGICS."
 arch=('i686' 'x86_64')
 url="https://software.ecmwf.int/wiki/display/MAGP"
@@ -23,12 +23,13 @@ build() {
   patch -p0 -i ../patch
   patch -p2 -i ../g++7.patch
   rm -fr src/boost/range && ln -sf /usr/include/boost/range src/boost
+  [ -x /usr/bin/odb ] && has_odb=ON || has_odb=OFF
   mkdir -p build
   cd build
   CC=gcc CXX='g++' \
   cmake -DCMAKE_LINKER_FLAGS="-pthread" \
     -DCMAKE_SHARED_LINKER_FLAGS="-pthread" \
-    -DCMAKE_EXE_LINKER_FLAGS="-pthread" \
+    -DCMAKE_EXE_LINKER_FLAGS="-pthread" -DENABLE_ODB=${has_odb} \
     -Dodb_api_DIR=/usr/share/odb_api/cmake \
     -DCMAKE_CXX_COMPILER=g++ -DCMAKE_CC_COMPILER=gcc \
     -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=production \
