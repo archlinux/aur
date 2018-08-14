@@ -2,8 +2,8 @@
 # Contributor: Lev Lybin <lev.lybin@gmail.com>
 
 pkgname=screencloud
-pkgver=1.3.1
-pkgrel=2
+pkgver=1.4.0
+pkgrel=1
 pkgdesc='An easy to use screenshot sharing application'
 arch=('i686' 'x86_64')
 url='https://github.com/olav-st/screencloud/'
@@ -18,21 +18,14 @@ depends=(
 )
 optdepends=('python2-crypto: for SFTP support')
 conflicts=('screencloud-git')
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/olav-st/${pkgname}/archive/v${pkgver}.tar.gz"
-        'screencloud-1.3.1-fix-pythonqt-detection.patch')
-sha256sums=('c23d8efb955ea861920c548f7fd3255726e86409d7a2022952225c765cc3da52'
-            '9ec7c818fe5db23e72199946c25bd528b302e7b12ee29f9791c50ffc6dba2c1e')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/olav-st/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('2cc4b33227efdf74ea3803d7f4f29c75de37de376995346f35eb9ae0a9eaf212')
 
-prepare() {
+build() {
     cd "${pkgname}-${pkgver}"
     
     mkdir -p build
-    
-    patch -Np1 -i "${srcdir}/screencloud-1.3.1-fix-pythonqt-detection.patch"
-}
-
-build() {
-    cd "${pkgname}-${pkgver}/build"
+    cd build
 
     cmake \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \

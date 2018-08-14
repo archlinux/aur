@@ -1,7 +1,7 @@
 pkgbase = screencloud
 	pkgdesc = An easy to use screenshot sharing application
-	pkgver = 1.3.1
-	pkgrel = 2
+	pkgver = 1.4.0
+	pkgrel = 1
 	url = https://github.com/olav-st/screencloud/
 	arch = i686
 	arch = x86_64
@@ -21,10 +21,8 @@ pkgbase = screencloud
 	depends = pythonqt
 	optdepends = python2-crypto: for SFTP support
 	conflicts = screencloud-git
-	source = screencloud-1.3.1.tar.gz::https://github.com/olav-st/screencloud/archive/v1.3.1.tar.gz
-	source = screencloud-1.3.1-fix-pythonqt-detection.patch
-	sha256sums = c23d8efb955ea861920c548f7fd3255726e86409d7a2022952225c765cc3da52
-	sha256sums = 9ec7c818fe5db23e72199946c25bd528b302e7b12ee29f9791c50ffc6dba2c1e
+	source = screencloud-1.4.0.tar.gz::https://github.com/olav-st/screencloud/archive/v1.4.0.tar.gz
+	sha256sums = 2cc4b33227efdf74ea3803d7f4f29c75de37de376995346f35eb9ae0a9eaf212
 
 pkgname = screencloud
 
