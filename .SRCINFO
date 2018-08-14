@@ -1,4 +1,4 @@
-pkgbase = mullvad
+pkgbase = mullvad-old
 	pkgdesc = Old VPN Client for Mullvad.net, a bitcoin-friendly VPN for anonymity and privacy
 	pkgver = 67
 	pkgrel = 1
@@ -17,6 +17,7 @@ pkgbase = mullvad
 	depends = python2-psutil
 	depends = net-tools
 	conflicts = mullvad-new
+	conflicts = mullvad
 	source = https://mullvad.net/media/client/mullvad-67.tar.gz
 	source = update-resolv-conf
 	source = mullvad.patch
@@ -24,5 +25,5 @@ pkgbase = mullvad
 	sha256sums = 7227dfd75d03ba90c1e45cda41e5ba5a938729b622ced4a708932b22c189efa1
 	sha256sums = e797b20d69d20d353bbfca126c5c6c7766a2eda2b4f7266ad888d556214ea973
 
-pkgname = mullvad
+pkgname = mullvad-old
 
