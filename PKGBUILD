@@ -4,7 +4,7 @@
 _pkgname=beatslash-lv2
 pkgname="${_pkgname}-git"
 pkgver=1.0.5.r30.45044ce
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of LV2 plugins to mangle, slash, repeat and do much more with your beats."
 arch=('i686' 'x86_64')
 url="http://objectivewave.wordpress.com/beatslash-lv2/"

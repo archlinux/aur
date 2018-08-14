@@ -1,7 +1,7 @@
 pkgbase = beatslash-lv2-git
 	pkgdesc = A set of LV2 plugins to mangle, slash, repeat and do much more with your beats.
 	pkgver = 1.0.5.r30.45044ce
-	pkgrel = 1
+	pkgrel = 2
 	url = http://objectivewave.wordpress.com/beatslash-lv2/
 	arch = i686
 	arch = x86_64
