@@ -1,7 +1,7 @@
 pkgbase = intel-media-sdk
 	pkgdesc = API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics
-	pkgver = 2018.Q2.1
-	pkgrel = 6
+	pkgver = 2018.Q2.2
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Intel-Media-SDK/MediaSDK/
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = intel-media-sdk
 	makedepends = libpciaccess
 	makedepends = libx11
 	makedepends = libxcb
+	makedepends = gtest
 	depends = gcc-libs
 	depends = libdrm
 	depends = libva
@@ -20,14 +21,12 @@ pkgbase = intel-media-sdk
 	conflicts = intel-media-stack-bin
 	conflicts = intel-media-server-studio
 	options = !emptydirs
-	source = intel-media-sdk-2018.Q2.1.tar.gz::https://github.com/Intel-Media-SDK/MediaSDK/archive/MediaSDK-2018-Q2.1.tar.gz
+	source = intel-media-sdk-2018.Q2.2.tar.gz::https://github.com/Intel-Media-SDK/MediaSDK/archive/MediaSDK-2018-Q2.2.tar.gz
 	source = intel-media-sdk.conf
 	source = intel-media-sdk.sh
-	source = intel-media-sdk-fix-metrics-monitor.patch
-	sha256sums = cad29f3b034ca40f1a85748a9514bf53e035b432d434ea3e348e05bcb305e932
+	sha256sums = f16701614b6733cc15106d4da1f0afe97aa8e38afc9f481cf8b3210f077a34bc
 	sha256sums = 0262233655f54fc1753ea71e36a569f9478c0905e67395246c85ad4a6d9e27c1
 	sha256sums = de8c6dd5ac4db49a6d40d94b821bfca4b3480159863b4c1dfa0f21fdd6baeeb0
-	sha256sums = 5fa37a6919513ddfb8ab7b28b8ac83853c76cb66c40e12b082997fef7284ff4f
 
 pkgname = intel-media-sdk
 
