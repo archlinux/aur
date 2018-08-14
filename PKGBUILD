@@ -1,6 +1,6 @@
 # Contributor: Graziano Giuliani <graziano.giuliani@poste.it>
 pkgname=eccodes
-pkgver=2.8.0
+pkgver=2.8.2
 _attnum=45757960
 pkgrel=1
 pkgdesc="ECMWF decoding library for GRIB, BUFR and GTS"
@@ -12,7 +12,7 @@ optdepends=('libaec: for compression' 'jasper: as an alternative to openjpeg')
 makedepends=('gcc-fortran' 'python2' 'python2-numpy' 'cmake')
 conflicts=('grib_api' 'libbufr-ecmwf')
 source=(http://software.ecmwf.int/wiki/download/attachments/${_attnum}/${pkgname}-${pkgver}-Source.tar.gz)
-md5sums=('880c3db68a03398756aa5b54d6d76d84')
+md5sums=('53f702e619e66f757bbbd0f851fd90c7')
 
 build() {
   cd "$srcdir"/${pkgname}-${pkgver}-Source
@@ -23,7 +23,7 @@ build() {
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=production \
     -DCMAKE_INSTALL_DATAROOTDIR=/usr/share/$pkgname/definitions \
     -DCMAKE_INSTALL_DATADIR=/usr/share -DENABLE_AEC=$has_aec \
-    -DENABLE_PNG=1 -DENABLE_GRIB_THREADS=1 \
+    -DENABLE_PNG=1 -DENABLE_ECCODES_THREADS=1 \
     -DOPENJPEG_INCLUDE_DIR=`pkg-config --variable=includedir libopenjpeg` \
     -DPYTHON_EXECUTABLE=/usr/bin/python2 ..
   make || return 1
