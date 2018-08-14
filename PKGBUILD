@@ -2,7 +2,7 @@
 
 pkgname=python-spake2
 pkgver=0.8
-pkgrel=3
+pkgrel=4
 pkgdesc="This library implements the SPAKE2 password-authenticated key exchange"
 arch=('any')
 url="https://pypi.python.org/packages/10/7d/${pkgname#python-}-${pkgver}"
