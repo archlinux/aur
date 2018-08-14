@@ -1,4 +1,5 @@
-# Maintainer: Michel Wohlert <michel.wohlert@gmail.com>
+# Maintainer: Silvio Fricke <silvio fricke@gmail.com>
+# Contributor: Michel Wohlert <michel.wohlert@gmail.com>
 
 pkgname=networkmanager-fortisslvpn-git
 pkgver=1.2.9.dev.r5.g8bffb04
