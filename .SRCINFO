@@ -1,13 +1,12 @@
 pkgbase = sensu
 	pkgdesc = A monitoring framework that aims to be simple, malleable, and scalable.
 	pkgver = 2.0.0beta3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sensu.io
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	makedepends = nodejs
-	makedepends = npm
 	makedepends = yarn
 	makedepends = git
 	options = !strip
