@@ -2,18 +2,18 @@
 
 _pkgname=libqtxdg
 pkgname=$_pkgname-git
-pkgver=3.0.0.8.g76093e8
-pkgrel=1
+pkgver=3.2.0.1.g6ff2412
+pkgrel=2
 pkgdesc="Library providing freedesktop.org specs implementations for Qt."
 arch=("i686" "x86_64")
-url="http://lxqt.org"
+url="https://lxqt.org"
 license=("GPL2")
 depends=("qt5-base" "qt5-svg")
 makedepends=("git" "cmake" "qt5-tools")
 provides=("$_pkgname")
 conflicts=("$_pkgname-qt5-git" "$_pkgname")
 replaces=("$_pkgname-qt5-git")
-source=("git+https://github.com/lxde/$_pkgname.git")
+source=("git+https://github.com/lxqt/$_pkgname.git")
 sha256sums=('SKIP')
 
 
