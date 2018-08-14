@@ -3,14 +3,14 @@
 
 _pkgname=ingen
 pkgname="${_pkgname}-git"
-pkgver=0.5.1.r2733.d35f222a
+pkgver=0.5.1.r2735.cb0ecc89
 pkgrel=1
 pkgdesc="A modular plugin host for JACK and LV2."
 arch=('i686' 'x86_64')
 url="http://drobilla.net/software/${_pkgname}/"
 license=('GPL')
-depends=('alsa-lib' 'ganv' 'jack' 'lilv' 'portaudio' 'suil')
-makedepends=('python')
+depends=('alsa-lib' 'ganv' 'jack' 'lilv' 'portaudio' 'suil' 'serd>=0.30')
+makedepends=('python2')
 optdepends=(
     'lv2-plugins: various useful LV2 plug-in packages'
 )
@@ -32,14 +32,14 @@ pkgver() {
 build() {
   cd "$srcdir/${_pkgname}"
 
-  ./waf configure --prefix=/usr
-  ./waf build
+  python2 waf configure --prefix=/usr
+  python2 waf build
 }
 
 package() {
   cd "$srcdir/${_pkgname}"
 
-  ./waf install --destdir="$pkgdir/"
+  python2 waf install --destdir="$pkgdir/"
 }
 
 # vim:set ts=2 sw=2 et:
