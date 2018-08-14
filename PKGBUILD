@@ -60,7 +60,7 @@ prepare() {
 package_linux-aarch64-rock64-bin() {
   pkgdesc="The Linux Kernel and modules - ${_desc}"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
-  optdepends=('crda: to set the correct wireless channels of your country')
+  optdepends=('crda: to set the correct wireless channels of your country' 'linux-aarch64-rock64-bin-headers')
   provides=("linux=${pkgver}" "linux-aarch64=${pkgver}")
   conflicts=('linux' 'linux-aarch64' 'linux-arch64-rc')  provides=('kernel26' "linux=${pkgver}")
   replaces=('linux-armv8')

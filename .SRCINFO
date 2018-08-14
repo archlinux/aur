@@ -35,6 +35,7 @@ pkgname = linux-aarch64-rock64-bin
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = linux-aarch64-rock64-bin-headers
 	provides = linux=4.4.138_1094
 	provides = linux-aarch64=4.4.138_1094
 	conflicts = linux
