@@ -1,0 +1,28 @@
+pkgbase = mullvad-vpn
+	pkgdesc = VPN Client for Mullvad.net, a bitcoin-friendly VPN for anonymity and privacy
+	pkgver = 2018.2
+	pkgrel = 1
+	url = https://www.mullvad.net
+	arch = any
+	license = GPLv3
+	depends = rpmextract
+	depends = gcc
+	depends = openssl
+	depends = libappindicator-gtk2
+	depends = libappindicator-gtk3
+	depends = rust
+	depends = yarn
+	depends = nodejs
+	conflicts = mullvad-vpn-new
+	replaces = mullvad
+	source = LICENSE.md
+	source = mullvad-daemon.service
+	source = mullvad-vpn.desktop
+	source = https://github.com/mullvad/mullvadvpn-app/releases/download/2018.2/MullvadVPN-2018.2_x86_64.rpm
+	sha256sums = 8951bda6e616df7418ff3f80d9699f96da704df64f3bc9f0d5bb75a103680456
+	sha256sums = 77b71d613ef09c6ffbcfa66a59f787246f64d4463843e648edc6fbbea18dd55e
+	sha256sums = 8090fcecc2e07cb3e384387f14a181c4acf7ee01db53dad322b51649a1f5dc24
+	sha256sums = 8f687d304e6d4ef25a33c570cbf5e4016f25e172854a0b45aad2f25339c748ac
+
+pkgname = mullvad-vpn
+
