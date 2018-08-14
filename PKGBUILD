@@ -3,7 +3,7 @@
 USE_DEV=1
 
 pkgname=ns3-hg
-pkgver=r13716
+pkgver=r13735
 pkgrel=1
 pkgdesc='Discrete-event network simulator for Internet systems'
 arch=( 'i686' 'x86_64' 'armv6' 'armv6h' 'arm7h' )
@@ -79,14 +79,22 @@ prepare()
         cd "${srcdir}/${pkgname}"
 
         sed '1s|^|#!/usr/bin/env python2\n|' -i ${srcdir}/ns3-dev-hg/bindings/python/wscript
+        sed -e 's|#!/usr/bin/env python$|#!/usr/bin/env python2|g' -i ${srcdir}/ns3-dev-hg/waf
     else
         # already include source for netanim, pybindgen, and ns3-xxx
         cd $srcdir/ns-allinone-$pkgver
 
         sed '1s|^|#!/usr/bin/env python2\n|' -i ns3-$pkgver/bindings/python/wscript
+        sed -e 's|#!/usr/bin/env python$|#!/usr/bin/env python2|g' -i ns3-$pkgver/waf
+
     fi
 
-    #cd ${srcdir}/ns3-dev-hg/ && patch -p1 -i ${srcdir}/ns3-dev-arch-python2.patch && cd -
+    if [ 0 = 1 ]; then
+        cd ${srcdir}/ns3-dev-hg/ && patch -p1 -i ${srcdir}/ns3-dev-arch-pygccxml-detect.patch && echo ""
+        cd -
+        cd ${srcdir}/ns3-dev-hg/ && patch -p1 -i ${srcdir}/ns3-dev-arch-pybindgen-detect.patch && echo ""
+        cd -
+    fi
 
     echo "Fix python(3) for ns3"
     grep -rl '/usr/bin/env python' . \
@@ -102,12 +110,9 @@ prepare()
         ln -sf ../ns3-netanim-hg/ netanim
         ln -sf ../ns3-bake-hg/    bake
         ln -sf ../pybindgen-git/  pybindgen
-        echo "Update the .config file ..."
+        echo "Update the .config file ... pwd=`pwd`"
         PYTHON=`which python2` ./download.py
     fi
-
-
-    if [ 1 = 1 ]; then
 
     echo "compile openflow lib support ..."
     cd $srcdir/ns3-openflow-hg
@@ -119,7 +124,16 @@ prepare()
     PYTHON=`which python2` ./waf build
 
 
-    NUM_CORE=$(cat /proc/cpuinfo | grep processor | wc -l | awk '{print $0 + 1;}')
+    echo "compile pybindgen lib support ..."
+    #cd $srcdir/pybindgen-git
+    sed -e 's|#!/usr/bin/env python$|#!/usr/bin/env python2|g' -i ${srcdir}/pybindgen-git/waf
+    cd $srcdir/ns3-hg/pybindgen
+    grep -rl '/usr/bin/env python' . \
+        | xargs sed -e 's|/usr/bin/env python$|/usr/bin/env python2|g' -i
+    echo "  waf configure ..."
+    PYTHON=`which python2` ./waf configure
+    echo "  waf build ..."
+    PYTHON=`which python2` ./waf build
 
 
     echo "compile click support ..."
@@ -127,12 +141,14 @@ prepare()
     #autoreconf -if
     ./configure --disable-linuxmodule --enable-nsclick --enable-wifi
     rm -rf bin
-    make -j $NUM_CORE
+    make -j $(nproc)
 
     echo "compile BRITE ..."
     cd $srcdir/ns3-brite-hg
-    make -j $NUM_CORE
+    make -j $(nproc)
 
+
+    if [ 1 = 1 ]; then
 
     echo "compile Network Simulation Cradle (NSC) ..."
     cd $srcdir/ns3-nsc-hg
@@ -163,7 +179,7 @@ prepare()
     fi
 }
 
-build0()
+build()
 {
     if [ ! "${USE_DEV}" = "0" ]; then
         cd "${srcdir}/${pkgname}"
@@ -179,21 +195,21 @@ build0()
         -d release -o build-shared \
         --prefix=/usr \
         --libdir=/usr/lib \
-        --with-python=/usr/bin/python2 \
+        --with-python=`which python2` \
         --progress \
         --enable-mpi \
         --enable-sudo \
         --with-nsclick=$srcdir/ns3-click-git \
         --with-openflow=$srcdir/ns3-openflow-hg \
         --with-brite=$srcdir/ns3-brite-hg \
-        --with-nsc=$srcdir/ns3-nsc-hg \
         --with-pybindgen=$srcdir/pybindgen-git \
+        --with-nsc=$srcdir/ns3-nsc-hg \
         #--enable-examples \
         #--enable-tests \
         #$(NULL)
 }
 
-build()
+build1()
 {
     if [ ! "${USE_DEV}" = "0" ]; then
         cd "${srcdir}/${pkgname}/ns-3-dev"
@@ -205,15 +221,15 @@ build()
         -d release -o build-shared \
         --prefix=/usr \
         --libdir=/usr/lib \
-        --with-python=/usr/bin/python2 \
+        --with-python=`which python2` \
         --progress \
         --enable-mpi \
         --enable-sudo \
         --with-nsclick=$srcdir/ns3-click-git \
         --with-openflow=$srcdir/ns3-openflow-hg \
         --with-brite=$srcdir/ns3-brite-hg \
-        --with-nsc=$srcdir/ns3-nsc-hg \
         --with-pybindgen=$srcdir/pybindgen-git \
+        --with-nsc=$srcdir/ns3-nsc-hg \
         #--enable-examples \
         #--enable-tests \
         #$(NULL)
@@ -253,7 +269,9 @@ package()
     else
         cd $srcdir/ns-allinone-$pkgver/ns-$pkgver
     fi
-    PYTHON=`which python2` ./waf install --destdir=$pkgdir/
+    PYTHON=`which python2` ./waf install \
+        --with-python=`which python2` \
+        --destdir=$pkgdir/
 }
 
 #sha1sums=('59a9a3cfd738c48e17253eb7ed2aaccfc1cc498d' 'SKIP' 'SKIP' 'SKIP')

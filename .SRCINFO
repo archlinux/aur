@@ -1,6 +1,6 @@
 pkgbase = ns3-hg
 	pkgdesc = Discrete-event network simulator for Internet systems
-	pkgver = r13716
+	pkgver = r13735
 	pkgrel = 1
 	url = http://www.nsnam.org/
 	arch = i686
