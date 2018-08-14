@@ -1,8 +1,8 @@
 pkgbase = lxqt-about-git
 	pkgdesc = LXQt about dialog.
-	pkgver = 0.12.0
+	pkgver = 0.12.0.6.gffdbf81
 	pkgrel = 1
-	url = http://lxqt.org
+	url = https://lxqt.org
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -13,7 +13,7 @@ pkgbase = lxqt-about-git
 	depends = liblxqt-git
 	provides = lxqt-about
 	conflicts = lxqt-about
-	source = git+https://github.com/lxde/lxqt-about.git
+	source = git+https://github.com/lxqt/lxqt-about.git
 	sha256sums = SKIP
 
 pkgname = lxqt-about-git
