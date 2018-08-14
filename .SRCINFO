@@ -1,6 +1,6 @@
 pkgbase = aurman
 	pkgdesc = AUR helper with almost pacman syntax
-	pkgver = 2.17.4
+	pkgver = 2.17.5
 	pkgrel = 1
 	url = https://github.com/polygamma/aurman
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = aurman
 	depends = python-dateutil
 	depends = pyalpm
 	depends = python-feedparser
-	source = aurman_sources::git+https://github.com/polygamma/aurman.git?signed#tag=2.17.4
+	source = aurman_sources::git+https://github.com/polygamma/aurman.git?signed#tag=2.17.5
 	validpgpkeys = 4C3CE98F9579981C21CA1EC3465022E743D71E39
 	md5sums = SKIP
 
