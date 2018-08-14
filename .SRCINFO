@@ -1,0 +1,23 @@
+pkgbase = heroes
+	pkgdesc = Heroes is similar to the Tron and Nibbles games of yore, but includes many graphical improvements and new game features.
+	pkgver = 0.21
+	pkgrel = 1
+	url = http://heroes.sourceforge.net
+	arch = x86_64
+	license = GPL
+	makedepends = autogen
+	source = http://prdownloads.sourceforge.net/heroes/heroes-0.21.tar.gz
+	source = http://prdownloads.sourceforge.net/heroes/heroes-data-1.5.tar.gz
+	source = http://prdownloads.sourceforge.net/heroes/heroes-sound-tracks-1.0.tar.gz
+	source = http://prdownloads.sourceforge.net/heroes/heroes-sound-effects-1.0.tar.gz
+	source = http://prdownloads.sourceforge.net/heroes/heroes-hq-sound-tracks-1.0.tar.gz
+	source = heroes-0.21.patch
+	md5sums = 3238290f219bc978894ba472fac95298
+	md5sums = 1a53e23b007f526a76df8bef97a41550
+	md5sums = bcde6137a4b21b7395fd3d84b42b7888
+	md5sums = f4defb80baf765fceac034a408f7ad2e
+	md5sums = dafb2ccfb08c132265262231d5655102
+	md5sums = 1181f3340ae8275aca8c92698fd7c13e
+
+pkgname = heroes
+

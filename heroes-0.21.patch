@@ -1,0 +1,12 @@
+diff '--color=auto' -ruN ../heroes-0.21/src/hedlite.c ./src/hedlite.c
+--- ../heroes-0.21/src/hedlite.c	2002-02-06 21:49:44.000000000 +0000
++++ ./src/hedlite.c	2018-08-14 12:07:59.679814654 +0100
+@@ -45,7 +45,7 @@
+ #include "dirname.h"
+ 
+ static a_pcx_image heditrsc;
+-static a_pcx_image tile_set_img;
++//static a_pcx_image tile_set_img;
+ 
+ unsigned short int xdalles = 0;
+ unsigned short int ydalles = 0;
