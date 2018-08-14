@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=mujs
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='An embeddable Javascript interpreter in C'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('ISC')
 depends=('glibc')
 conflicts=('mujs-git')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ccxvii/mujs/archive/${pkgver}.tar.gz")
-sha256sums=('5aabafe512d7a7c6d2c8d67483a5331e55440eeca2db2dc4602ca643c62b5ef6')
+sha256sums=('4fe47d9acfa7801e38fe7d9dab25060bff691c505bab3b92ce4605eb2988aebd')
 
 build() {
     cd "${pkgname}-${pkgver}"
