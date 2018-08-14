@@ -1,0 +1,18 @@
+pkgbase = libretro-beetle-pcfx-git
+	pkgdesc = Mednafen PCFX libretro core (NEC PC-FX).
+	pkgver = r767.84b7ca6
+	pkgrel = 1
+	url = https://github.com/libretro/beetle-pcfx-libretro
+	arch = i686
+	arch = x86_64
+	groups = libretro
+	license = GPLv2
+	makedepends = git
+	depends = libretro-core-info
+	provides = libretro-beetle-pcfx
+	conflicts = libretro-beetle-pcfx
+	source = git+https://github.com/libretro/beetle-pcfx-libretro.git
+	md5sums = SKIP
+
+pkgname = libretro-beetle-pcfx-git
+
