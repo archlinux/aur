@@ -1,25 +1,26 @@
 # Maintainer: Alex J. Malozemoff <amaloz@galois.com>
 pkgname=matterhorn
 pkgver=40901.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A terminal-based chat client for MatterMost"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/matterhorn-chat/matterhorn"
 license=('BSD')
 provides=('matterhorn')
-conflicts=('matterhorn-git')
+conflicts=('matterhorn-git' 'matterhorn-bin')
 depends=('ncurses5-compat-libs')
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("https://github.com/matterhorn-chat/matterhorn/releases/download/${pkgver}/matterhorn-${pkgver}-ubuntu-x86_64.tar.bz2")
-sha1sums=('558245deb32851cb39df761cfc40fed887e75990')
-noextract=()
+makedepends=('git' 'cabal-install')
+source=("https://github.com/matterhorn-chat/matterhorn/archive/${pkgver}.tar.gz")
+sha1sums=('183fc10600066a1ad47d235fc29597300eb14ca3')
+
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  ./install.sh
+}
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver-Ubuntu-x86_64"
-  mkdir -p "$pkgdir/usr/bin"
-  cp matterhorn "$pkgdir/usr/bin"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  install -m755 -D $(find . -name "matterhorn" -type f) "${pkgdir}"/usr/bin/matterhorn
+  install -m644 -D LICENSE "${pkgdir}"/usr/share/licenses/matterhorn/LICENSE
 }
