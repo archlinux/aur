@@ -2,7 +2,7 @@
 
 pkgname=python-pyttsx
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="cross platform text-to-speech interface"
 arch=('any')
 url="https://pypi.python.org/pypi/pyttsx"
