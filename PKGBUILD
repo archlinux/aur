@@ -6,13 +6,13 @@ pkgver=1.97.1.g0a779c4
 pkgrel=1
 pkgdesc="Crossplatform tool for grabbing screenshots of your desktop."
 arch=("i686" "x86_64")
-url="http://screengrab.doomer.org/"
+url="https://github.com/lxqt/screengrab"
 license=("GPL2")
 depends=("qt5-base" "qt5-x11extras" "kwindowsystem" "libqtxdg" "libx11" "libxcb")
 makedepends=("git" "cmake" "qt5-tools")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+https://github.com/QtDesktop/$_pkgname")
+source=("git+https://github.com/lxqt/$_pkgname")
 sha256sums=('SKIP')
 
 

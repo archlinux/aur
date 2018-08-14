@@ -2,7 +2,7 @@ pkgbase = screengrab-git
 	pkgdesc = Crossplatform tool for grabbing screenshots of your desktop.
 	pkgver = 1.97.1.g0a779c4
 	pkgrel = 1
-	url = http://screengrab.doomer.org/
+	url = https://github.com/lxqt/screengrab
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -17,7 +17,7 @@ pkgbase = screengrab-git
 	depends = libxcb
 	provides = screengrab
 	conflicts = screengrab
-	source = git+https://github.com/QtDesktop/screengrab
+	source = git+https://github.com/lxqt/screengrab
 	sha256sums = SKIP
 
 pkgname = screengrab-git
