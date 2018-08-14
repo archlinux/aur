@@ -5,18 +5,18 @@
 # Contributer: Colin Woodbury <colingw@gmail.com>
 
 pkgname=xmobar-git
-pkgver=0.25+18+g14122cd
+pkgver=0.27+2+gcbde794
 pkgrel=1
 pkgdesc='Minimalistic Text Based Status Bar'
 url='https://hackage.haskell.org/package/xmobar'
-arch=('x86_64')
 license=('custom:BSD3')
+arch=('x86_64')
 depends=('libxft' 'libxinerama' 'libxrandr' 'libxpm' 'ghc-libs' 'haskell-x11'
          'haskell-x11-xft' 'haskell-utf8-string' 'haskell-network-uri'
-         'haskell-hinotify' 'haskell-stm' 'haskell-parsec' 'haskell-mtl'
-         'haskell-regex-base' 'haskell-regex-compat' 'haskell-http'
-         'haskell-dbus' 'haskell-libmpd' 'haskell-iwlib' 'wireless_tools'
-         'haskell-text')
+         'haskell-hinotify' 'haskell-stm' 'haskell-parsec' 'haskell-parsec-numbers'
+         'haskell-mtl' 'haskell-regex-base' 'haskell-regex-compat'
+         'haskell-http' 'haskell-dbus' 'haskell-libmpd' 'haskell-iwlib'
+         'wireless_tools' 'haskell-text')
 makedepends=('git' 'ghc')
 conflicts=('xmobar')
 provides=('xmobar')
@@ -42,7 +42,7 @@ build() {
 package() {
   cd ${pkgname}
   runhaskell setup copy --destdir="${pkgdir}"
-  install -Dm 644 license "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm 644 license "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim: ts=2 sw=2 et:
