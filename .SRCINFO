@@ -1,7 +1,7 @@
 pkgbase = sensu
 	pkgdesc = A monitoring framework that aims to be simple, malleable and scalable.
 	pkgver = 2.0.0beta3.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://sensu.io
 	arch = x86_64
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = sensu
 	source = sensu.tmpfiles
 	md5sums = SKIP
 	md5sums = 9181bba06fbc17b8596e3345abd0d97c
-	md5sums = 08d250d9b908dc638f0491acac001fff
+	md5sums = dddfcec286ee7b0f6241673c4136a12c
 
 pkgname = sensu
 

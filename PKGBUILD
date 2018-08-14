@@ -4,7 +4,7 @@ pkgname=sensu
 _pkgname=sensu-go
 pkgver=2.0.0beta3.1
 _pkgver=2.0.0-beta.3-1
-pkgrel=3
+pkgrel=4
 pkgdesc="A monitoring framework that aims to be simple, malleable and scalable."
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 url='https://sensu.io'
@@ -15,7 +15,7 @@ source=("git+https://github.com/${pkgname}/${_pkgname}#tag=${_pkgver}"
         "sensu.tmpfiles")
 md5sums=('SKIP'
          '9181bba06fbc17b8596e3345abd0d97c'
-         '08d250d9b908dc638f0491acac001fff')
+         'dddfcec286ee7b0f6241673c4136a12c')
 _gourl=github.com/sensu/sensu-go
 
 
