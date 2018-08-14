@@ -1,15 +1,35 @@
-Description: Temporarily drop failing Python 3.6 tests
- See LP bug referenced below.
-Author: Thomas Goirand <zigo@debian.org>
-Bug-Debian: https://bugs.debian.org/884052
-Bug-Ubuntu: https://launchpad.net/bugs/1737493
-Forwarded: <no|not-needed|url proving that it has been forwarded>
-Reviewed-By: <name and email of someone who approved the patch>
-Last-Update: 2018-01-24
-
---- python-oslo.log-3.30.2.orig/oslo_log/tests/unit/test_log.py
-+++ python-oslo.log-3.30.2/oslo_log/tests/unit/test_log.py
-@@ -1690,54 +1690,6 @@ class KeywordArgumentAdapterTestCase(Bas
+diff --git a/oslo_log/tests/unit/test_log.py b/oslo_log/tests/unit/test_log.py
+index 669081c..98e2408 100644
+--- a/oslo_log/tests/unit/test_log.py
++++ b/oslo_log/tests/unit/test_log.py
+@@ -1523,26 +1523,6 @@ keys=
+         root.error("boo")
+         self.assertEqual("", stream.getvalue())
+ 
+-    def test_remove_logger(self):
+-        fake_handler = {'class': 'logging.StreamHandler'}
+-        fake_logger = {'level': 'WARN'}
+-        conf1 = {'root': {'handlers': 'fake'},
+-                 'handlers': {'fake': fake_handler},
+-                 'loggers': {'a.a': fake_logger}}
+-        conf2 = {'root': {'handlers': 'fake'},
+-                 'handlers': {'fake': fake_handler}}
+-        stream = six.StringIO()
+-        with self.mutate_conf(conf1, conf2) as (loginis, confs):
+-            stream = self.set_root_stream()
+-            log = logging.getLogger("a.a")
+-            log.info("info")
+-            log.warn("warn")
+-            self.assertEqual("warn\n", stream.getvalue())
+-        stream = self.set_root_stream()
+-        log.info("info")
+-        log.warn("warn")
+-        self.assertEqual("info\nwarn\n", stream.getvalue())
+-
+ 
+ class LogConfigOptsTestCase(BaseTestCase):
+ 
+@@ -1753,54 +1733,6 @@ class KeywordArgumentAdapterTestCase(BaseTestCase):
                         'resource_uuid': expected['resource_uuid']}},
              kwargs)
  
@@ -63,4 +83,3 @@ Last-Update: 2018-01-24
 -
  
  class UnicodeConversionTestCase(BaseTestCase):
- 

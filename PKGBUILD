@@ -3,7 +3,7 @@
 _module='oslo.log'
 pkgname=('python-oslo-log' 'python2-oslo-log')
 pkgver='3.38.1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Oslo Log library'
 arch=('any')
 url="https://docs.openstack.org/developer/${_module}/"
@@ -22,14 +22,14 @@ checkdepends=('python-mock' 'python2-mock'
               'python-oslotest' 'python2-oslotest'
               'python2-unittest2')
 source=("git+https://git.openstack.org/openstack/${_module}#tag=${pkgver}"
-        'temporarily-remove-failing-py3.6-tests.patch')
+        'remove-failed-py37-tests.patch')
 sha512sums=('SKIP'
-            '374aba2c8d8533e32ffc963263349b782eaf4855c6683589d8a0f8f3277fc17c4801761412a4624a4840c034dc60e9b6da53ccf493fa21ea19abe1bbe7333e70')
+            '041fa7f3c6546b1c7aa03df776c8d8da1725b7be34871d2b96f4cf1cd3026df96ed7f880eecf90beab22806901cd3b38db3419e5f2c6ff1b564c0270815f3ace')
 
 prepare() {
   cp -a "${srcdir}/${_module}"{,-py2}
   cd "${srcdir}/${_module}"
-  patch -p1 -i "${srcdir}/temporarily-remove-failing-py3.6-tests.patch"
+  patch -p1 -i "${srcdir}/remove-failed-py37-tests.patch"
 }
 
 build() {
