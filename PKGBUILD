@@ -11,7 +11,7 @@ url="http://objectivewave.wordpress.com/beatslash-lv2/"
 license=('GPL')
 groups=('lv2-plugins')
 depends=('lv2' 'gtkmm')
-makedepends=('python' 'lvtk')
+makedepends=('python2' 'lvtk')
 provides=('lv2.beatslash' "${_pkgname}")
 conflicts=('lv2.beatslash' "${_pkgname}")
 source=("${_pkgname}::git+https://github.com/blablack/beatslash-lv2.git")
@@ -40,12 +40,12 @@ prepare() {
 build() {
   cd "${srcdir}/${_pkgname}"
 
-  python waf configure --prefix=/usr
-  python waf
+  python2 waf configure --prefix=/usr
+  python2 waf
 }
 
 package() {
   cd "${srcdir}/${_pkgname}"
 
-  python waf --destdir="${pkgdir}/" install
+  python2 waf --destdir="${pkgdir}/" install
 }
