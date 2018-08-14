@@ -2,7 +2,7 @@
 # Co-Maintainer: Emanuele 'Lele aka eldios' Calo' <xeldiosx@gmail.com>
 
 pkgname=teleport
-pkgver=2.6.2
+pkgver=2.7.3
 pkgrel=1
 pkgdesc="Modern SSH server for teams managing distributed infrastructure"
 arch=('x86_64' 'arm')
@@ -15,7 +15,7 @@ source_x86_64=(
     "teleport.service"
     )
 sha256sums_x86_64=(
-    'd2918db9fccc0346dde66f57e6c82035759095fabafade8c1c3d93b003733ac0'
+    'd8d80e8d6a5a7dac528d1cfa04047ab16f4e1186176e923bd26cf3cabc21d5e4'
     '3e332207cfa984a531044d47fde379a9c242aa92e0fef7804a031dff865396dc'
     )
 source_arm=(
@@ -23,7 +23,7 @@ source_arm=(
     "teleport.service"
     )
 sha256sums_arm=(
-    'caef6827cbc31af4a8a49997c54272e1661f7a112d47b06153d4afd88d23b5fb'
+    'aaefd32e26377cac9bb5216189fad42c1ddd05b78023968963980bea3ff350f8'
     '3e332207cfa984a531044d47fde379a9c242aa92e0fef7804a031dff865396dc'
     )
 options=(!strip)
