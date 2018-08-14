@@ -1,4 +1,4 @@
-# Maintainer : Yen Chi Hsuan <yan12125 at gmail dot com>
+# Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
 
 _pkgname=NbuExplorer
 _pkgname2=${_pkgname,,}  # lowercase
@@ -7,18 +7,16 @@ pkgver=3.3
 pkgrel=1
 pkgdesc='Nokia NBU, NBF, NFB, NFC and ARC backup file parser, extractor and viewer.'
 arch=('any')
-url='http://sourceforge.net/projects/nbuexplorer/'
+url='https://sourceforge.net/projects/nbuexplorer/'
 license=('GPL2')
 depends=('mono')
 source=(
-    "http://sourceforge.net/projects/$_pkgname2/files/Releases/v${pkgver/./}/${_pkgname}_v${pkgver}.zip"
+    "https://sourceforge.net/projects/$_pkgname2/files/Releases/v${pkgver/./}/${_pkgname}_v${pkgver}.zip"
     "${_pkgname2}.sh"
 )
 makedepends=('bash>=4.0')
-sha256sums=(
-    'f91d009c0d24129e204e829a33479fcac51434d1c079ac0127661c8b22868a02'
-    '1edb0c0323ce3cfab9e7e4f1d7698592e712d267d953c7a3964bb5d6b28c1c0d'
-)
+sha256sums=('f91d009c0d24129e204e829a33479fcac51434d1c079ac0127661c8b22868a02'
+            '1edb0c0323ce3cfab9e7e4f1d7698592e712d267d953c7a3964bb5d6b28c1c0d')
 provides=("$_pkgname2=$pkgver")
 conflicts=("$_pkgname2")
 
