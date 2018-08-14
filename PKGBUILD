@@ -1,13 +1,11 @@
 # Maintainer: Christian Bundy <christianbundy@fraction.io> 
 pkgname=patchbay
 pkgver=7.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An alternative Secure Scuttlebutt client interface that is fully compatible with Patchwork "
 arch=('i686' 'x86_64')
 url="https://github.com/ssbc/patchbay"
 license=('MIT')
-provides=('patchbay')
-conflicts=('patchbay')
 depends=('libsodium' 'gtk2' 'gconf' 'python' 'electron')
 makedepends=('nodejs' 'npm' 'git')
 options=(!strip)
