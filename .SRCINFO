@@ -1,7 +1,7 @@
-pkgbase = packer
+pkgbase = packer-aur
 	pkgdesc = Bash wrapper for pacman and aur
 	pkgver = 20150808
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/keenerd/packer
 	arch = any
 	license = GPL3
@@ -18,5 +18,5 @@ pkgbase = packer
 	source = git+https://github.com/keenerd/packer.git
 	md5sums = SKIP
 
-pkgname = packer
+pkgname = packer-aur
 

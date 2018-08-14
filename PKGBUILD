@@ -1,9 +1,9 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com>
 # Contributor: Gilrain <pierre.buard+aur gmail com>
 # Contributor: bruenig
-pkgname=packer
+pkgname=packer-aur
 pkgver=20150808
-pkgrel=1
+pkgrel=2
 pkgdesc="Bash wrapper for pacman and aur"
 url="http://github.com/keenerd/packer"
 license=("GPL3")
@@ -21,7 +21,7 @@ pkgver() {
 }
 
 package() {
-  install -Dm755 "$srcdir/$pkgname/packer" "$pkgdir/usr/bin/packer"
-  install -Dm644 "$srcdir/$pkgname/packer.8" "$pkgdir/usr/share/man/man8/packer.8"
+  install -Dm755 "$srcdir/$pkgname/packer" "$pkgdir/usr/bin/packer-aur"
+  install -Dm644 "$srcdir/$pkgname/packer.8" "$pkgdir/usr/share/man/man8/packer-aur.8"
 }
 
