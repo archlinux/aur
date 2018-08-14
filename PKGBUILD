@@ -3,7 +3,7 @@
 
 pkgname=gam
 pkgver=4.60
-pkgrel=2
+pkgrel=3
 pkgdesc="Command line tool for Google G Suite Administrators to manage domain and user settings quickly and easily."
 arch=('any')
 url="https://github.com/jay0lee/GAM"
@@ -16,6 +16,7 @@ depends=(
     'python2-simplejson'
     'python2-gdata'
     'python2-google-auth'
+    'python2-passlib'
     'perl-mozilla-ca'
 )
 source=(
