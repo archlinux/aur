@@ -1,17 +1,18 @@
 pkgbase = fcode-utils-git
-	pkgdesc = A set of utilities to process FCODE, OpenFirmware's byte code
+	pkgdesc = Utilities to process FCODE, OpenFirmware's byte code
 	pkgver = v1.0.2.r20.gd89219a
 	pkgrel = 1
 	url = https://www.openfirmware.info/FCODE_suite
-	arch = x86_64
 	arch = i686
+	arch = x86_64
 	license = GPL2
 	license = CPL
 	makedepends = git
 	depends = glibc
+	provides = fcode-utils
 	provides = romheaders
 	source = git+https://github.com/openbios/fcode-utils.git
-	source = nicer_flags.patch
+	source = fix-flags.patch
 	sha256sums = SKIP
 	sha256sums = eba18cb2f7ecc20a4018a9e79f79d0845b42adba3320240933bd881f3901034e
 

@@ -3,18 +3,18 @@
 _pkgname=fcode-utils
 pkgname="${_pkgname}-git"
 pkgver=v1.0.2.r20.gd89219a
-pkgrel=1
-pkgdesc="A set of utilities to process FCODE, OpenFirmware's byte code"
-arch=(x86_64 i686)
+pkgrel=2
+pkgdesc="Utilities to process FCODE, OpenFirmware's byte code"
+arch=(i686 x86_64)
 url='https://www.openfirmware.info/FCODE_suite'
 license=(GPL2 CPL)
 depends=('glibc')
 makedepends=('git')
+provides=("$_pkgname" 'romheaders')
 source=("git+https://github.com/openbios/${_pkgname}.git"
-        'nicer_flags.patch')
+        'fix-flags.patch')
 sha256sums=('SKIP'
             'eba18cb2f7ecc20a4018a9e79f79d0845b42adba3320240933bd881f3901034e')
-provides=('romheaders')
 
 pkgver() {
   cd "$_pkgname"
@@ -23,9 +23,7 @@ pkgver() {
 
 prepare() {
   cd "$_pkgname"
-
-  # Fix the not-so-nice flag replacement and ignoring
-  patch -p1 -i ../nicer_flags.patch
+  patch -Np1 <../fix-flags.patch
 }
 
 build() {
@@ -35,5 +33,7 @@ build() {
 
 package() {
   cd "$_pkgname"
-  make install DESTDIR="$pkgdir/usr"
+  install -D detok/detok romheaders/romheaders toke/toke -t "$pkgdir"/usr/bin
+  install -Dm 644 README -t "$pkgdir"/usr/share/doc/fcode-utils
+  install -Dm 644 COPYING "$pkgdir"/usr/share/licenses/fcode-utils/LICENSE
 }
