@@ -4,13 +4,12 @@ pkgname=sensu
 _pkgname=sensu-go
 pkgver=2.0.0beta3.1
 _pkgver=2.0.0-beta.3-1
-pkgrel=2
-pkgdesc="A monitoring framework that aims to be simple, malleable, and scalable."
-arch=('x86_64')
+pkgrel=3
+pkgdesc="A monitoring framework that aims to be simple, malleable and scalable."
+arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 url='https://sensu.io'
 license=('MIT')
 makedepends=('go' 'nodejs' 'yarn' 'git')
-options=('!strip' '!emptydirs')
 source=("git+https://github.com/${pkgname}/${_pkgname}#tag=${_pkgver}"
         "sensu.sysusers"
         "sensu.tmpfiles")
@@ -19,9 +18,13 @@ md5sums=('SKIP'
          '08d250d9b908dc638f0491acac001fff')
 _gourl=github.com/sensu/sensu-go
 
+
 prepare(){
-  # apply fix for yarn.lock
   cd "${srcdir}/sensu-go"
+  # git needs to be setup for the repo or it will fail
+  git config user.email "$(whoami)@$(hostname)"
+  git config user.name "$(whoami)"
+  # apply fix for yarn.lock
   git cherry-pick bc7cc911e37190512c4ff01f541da301e967003a
 
   mkdir -p "$srcdir/gopath/src/${_gourl}"
@@ -51,6 +54,6 @@ package() {
   install -Dm644 "${srcdir}/gopath/src/${_gourl}/packaging/services/sensu-backend/systemd/etc/systemd/system/sensu-backend.service" "$pkgdir/usr/lib/systemd/system/sensu-backend.service"
   install -Dm644 "${srcdir}/gopath/src/${_gourl}/packaging/services/sensu-agent/systemd/etc/systemd/system/sensu-agent.service" "$pkgdir/usr/lib/systemd/system/sensu-agent.service"
 
-  install -Dm644 "${srcdir}/sensu.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
   install -Dm644 "${srcdir}/sensu.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+  install -Dm644 "${srcdir}/sensu.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 }
