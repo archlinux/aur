@@ -3,7 +3,7 @@
 # Contributor:: Daniel Egeberg <daniel.egeberg@gmail.com>
 
 pkgname="sonarr-develop"
-pkgver=2.0.0.5241
+pkgver=2.0.0.5243
 pkgrel=1
 pkgdesc="TV download automation for usenet and torrents."
 arch=(any)
@@ -28,7 +28,7 @@ source=("https://download.sonarr.tv/v2/develop/mono/NzbDrone.develop.${pkgver}.m
         "sonarr.tmpfiles")
 
 noextract=()
-sha256sums=('9936d4fce4ca9409e4fc0bea53766faf649c1f89aadd11f4fe620c13990219be'
+sha256sums=('ab5ee788a3563c84799b8e54848601e5c3375f4f3aed8b70e683b77f238e3889'
             'c177024bdf5c8c0e42a866cb0509e6130e2bb79a14c7e91556e42f8b18e37bd5'
             'cc3c69f719fa64335f4c5b41b2588f1ec56865fb2202f5919d3668b50b8f398e'
             'a436a979ca3a9e78bdc410bd0027d97956bfa8d2d4f2b7bdf3f7d2ed199dd6a8')
