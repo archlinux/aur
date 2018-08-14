@@ -1,3 +1,8 @@
+4.3.28 (2018-08-13 17:42:43)
+
+    Fixes an issue with x86 segment registers not displayed in some cases,
+    Fixes a formatting issue on ARM LDRB/STRB instructions where offsets were truncated.
+
 4.3.27 (2018-08-08 17:15:41)
 
     Implements most ARM and AArch64 relocation for ELF files,
