@@ -9,7 +9,7 @@ arch=('any')
 license=('GPL3')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("$_name-$pkgver.tar.gz::https://github.com/j4321/$_name/archive/v$pkgver.tar.gz")
-sha512sums=('0d54a1510cfc57b4b713fb73f06c7f7e8b50d24695b3eb466ea4c3154ee66d85d30feb0af07ff54ca645b99c7597376624f60e9dc90df6af1b9c445987a654d7')
+sha512sums=('180f80c362f45487e4924e34bce899075ef0b8330fe09220384f48908bdd2651985bfc0bce6f640ba40a699f288e82808cf4691c9268a284a00b679ad695c8a2')
 
 build() {
     cd "${srcdir}/$_name-${pkgver}"
