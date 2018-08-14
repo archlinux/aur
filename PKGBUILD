@@ -2,14 +2,14 @@
 
 pkgname="dexed"
 pkgver=0.9.4
-pkgrel=3
+pkgrel=4
 pkgdesc="A software synth closely modelled on the Yamaha DX7"
 arch=('i686' 'x86_64')
 url="http://asb2m10.github.io/dexed/"
 license=("GPL3")
 groups=('vst-plugins')
 depends=('alsa-lib' 'curl' 'hicolor-icon-theme' 'freetype2' 'libxinerama')
-makedepends=('juce' 'steinberg-vst36')
+makedepends=('steinberg-vst36')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/asb2m10/dexed/archive/v${pkgver}.tar.gz"
         'dexed.desktop')
 md5sums=('0e69fdcc3c18a8ac083657213a7921a2'
