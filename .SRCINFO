@@ -1,7 +1,7 @@
 pkgbase = macports-base-git
 	pkgdesc = The MacPorts command-line client
-	pkgver = 2.4.0.beta1.r195.gb22cb0f0
-	pkgrel = 3
+	pkgver = 2.4.0.beta1.r200.g9606edb0
+	pkgrel = 1
 	url = https://www.macports.org/
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = macports-base-git
 	depends = openssl
 	depends = sqlite
 	optdepends = rsync: for syncing sources via rsync
-	provides = macports-base=2.4.0.beta1.r195.gb22cb0f0
+	provides = macports-base=2.4.0.beta1.r200.g9606edb0
 	conflicts = macports-base
 	backup = opt/local/etc/macports/archive_sites.conf
 	backup = opt/local/etc/macports/macports.conf

@@ -1,9 +1,9 @@
-# Maintainer: Yen Chi Hsuan <yan12125 at gmail.com>
+# Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
 
 _pkgname=macports-base
 pkgname=$_pkgname-git
-pkgver=2.4.0.beta1.r195.gb22cb0f0
-pkgrel=3
+pkgver=2.4.0.beta1.r200.g9606edb0
+pkgrel=1
 pkgdesc='The MacPorts command-line client'
 url='https://www.macports.org/'
 arch=('i686' 'x86_64')
