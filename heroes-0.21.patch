@@ -1,12 +1,92 @@
+diff '--color=auto' -ruN ../heroes-0.21/src/argv.c ./src/argv.c
+--- ../heroes-0.21/src/argv.c	2018-08-14 13:29:49.718698807 +0100
++++ ./src/argv.c	2018-08-14 13:30:09.000000000 +0100
+@@ -176,7 +176,7 @@
+   puts (_("\
+ Display options:\n\
+   -G, --gfx-options=OPTIONS   pass OPTIONS to the display driver\n\
+-  -F, --full-screen           full screen mode\n\
++  -W, --windowed              windowed mode\n\
+   -2, --double                stretch the display twofold\n\
+   -3, --triple                stretch the display threefold\n\
+   -4, --quadruple             stretch the display fourfold\n\
+@@ -219,7 +219,7 @@
+   {"driver",		required_argument, NULL,	'd'},
+   {"drivers-info",	no_argument,       NULL,	'n'},
+   {"even-lines",	no_argument,       NULL,	'e'},
+-  {"full-screen",	no_argument,	   NULL,	'F'},
++  {"windowed",	no_argument,	   NULL,	'W'},
+   {"gfx-options",	required_argument, NULL,	'G'},
+   {"go",		no_argument,       NULL,	'g'},
+   {"help",		no_argument,       NULL,	'h'},
+@@ -263,7 +263,7 @@
+   for (;;) {
+     int option_index = 0;
+ 
+-    c = getopt_long (argc, argv, "2348d:eFgG:hiJl::L:mnqQsSv::X",
++    c = getopt_long (argc, argv, "2348d:eWgG:hiJl::L:mnqQsSv::X",
+ 		     long_options, &option_index);
+ 
+     /* Detect the end of the options. */
+@@ -319,7 +319,7 @@
+     case 'G':
+       set_display_params (optarg);
+       break;
+-    case 'F':
++    case 'W':
+       set_full_screen_mode ();
+       break;
+     case 'J':
 diff '--color=auto' -ruN ../heroes-0.21/src/hedlite.c ./src/hedlite.c
---- ../heroes-0.21/src/hedlite.c	2002-02-06 21:49:44.000000000 +0000
-+++ ./src/hedlite.c	2018-08-14 12:07:59.679814654 +0100
-@@ -45,7 +45,7 @@
+--- ../heroes-0.21/src/hedlite.c	2018-08-14 13:29:49.915366091 +0100
++++ ./src/hedlite.c	2018-08-14 13:30:09.000000000 +0100
+@@ -45,7 +45,6 @@
  #include "dirname.h"
  
  static a_pcx_image heditrsc;
 -static a_pcx_image tile_set_img;
-+//static a_pcx_image tile_set_img;
  
  unsigned short int xdalles = 0;
  unsigned short int ydalles = 0;
+diff '--color=auto' -ruN ../heroes-0.21/src/media/ggi/video.c ./src/media/ggi/video.c
+--- ../heroes-0.21/src/media/ggi/video.c	2018-08-14 13:29:49.512031490 +0100
++++ ./src/media/ggi/video.c	2018-08-14 13:30:09.000000000 +0100
+@@ -54,7 +54,7 @@
+ 
+ static ggi_mode vid_mode;
+ static char *display_params = NULL;
+-static int full_screen = 0;
++static int full_screen = 1;
+ /* Direct buffer for each frame.
+    We might have db[0] == db[1] if double buffering is not available.*/
+ static const ggi_directbuffer *db[2] = { NULL, NULL };
+@@ -88,7 +88,7 @@
+ void
+ set_full_screen_mode (void)
+ {
+-  full_screen = 1;
++  full_screen = 0;
+ }
+ 
+ static bool
+diff '--color=auto' -ruN ../heroes-0.21/src/media/sdl/video.c ./src/media/sdl/video.c
+--- ../heroes-0.21/src/media/sdl/video.c	2018-08-14 13:29:49.618698493 +0100
++++ ./src/media/sdl/video.c	2018-08-14 13:32:00.769111365 +0100
+@@ -40,7 +40,7 @@
+    it might requires locking. */
+ 
+ static SDL_Surface *visu = 0;
+-static int visu_options = SDL_HWPALETTE | SDL_DOUBLEBUF;
++static int visu_options = SDL_HWPALETTE | SDL_DOUBLEBUF | SDL_FULLSCREEN;
+ static bool SDL_initialized = false;
+ #define SDL_VIDEODRIVER "SDL_VIDEODRIVER"
+ static char *sdl_videodriver = 0;
+@@ -56,7 +56,7 @@
+ void
+ set_full_screen_mode (void)
+ {
+-  visu_options |= SDL_FULLSCREEN;
++  visu_options &= ~SDL_FULLSCREEN;
+ }
+ 
+ /* Fullscreen mode is toggeled by pressing Alt+Enter.

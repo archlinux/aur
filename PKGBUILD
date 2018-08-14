@@ -7,8 +7,7 @@ url="http://heroes.sourceforge.net"
 arch=(x86_64)
 license=('GPL')
 depends=()
-makedepends=(
-        autogen)
+makedepends=()
 source=("http://prdownloads.sourceforge.net/heroes/$pkgname-$pkgver.tar.gz"
         "http://prdownloads.sourceforge.net/heroes/$pkgname-data-1.5.tar.gz"
         "http://prdownloads.sourceforge.net/heroes/$pkgname-sound-tracks-1.0.tar.gz"
@@ -20,7 +19,7 @@ md5sums=('3238290f219bc978894ba472fac95298'
          'bcde6137a4b21b7395fd3d84b42b7888'
          'f4defb80baf765fceac034a408f7ad2e'
          'dafb2ccfb08c132265262231d5655102'
-         '1181f3340ae8275aca8c92698fd7c13e')
+         '7e51b9e98318aaa32a7604955a541b38')
 
 build() {
 	cd "$pkgname-$pkgver"
