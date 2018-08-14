@@ -5,8 +5,8 @@
 
 pkgname=godot2
 _pkgname=godot
-pkgver=2.1.4
-pkgrel=2
+pkgver=2.1.5
+pkgrel=1
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine. Legacy version."
 url="http://www.godotengine.org"
 license=('MIT')
@@ -25,7 +25,7 @@ source=(
   godot.desktop
   icon.png
 )
-sha256sums=('07cf3b01367d5ea53805f144bc60711bd79efb53f1f88d57d6a706e6944de8d7'
+sha256sums=('74179c08bcc20cc89b4ac2785a31f201d81eb4aa875c80ffcb82d9fb80e8e187'
             '371c766b4b3796dd57eb4a605dcbc99464cacbd2a38b01fa8630e62f05001678'
             'b6bb8e42625414303cf7608f08fe63bd3267486bf7a96586ebab05ade5189785')
 
