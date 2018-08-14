@@ -3,15 +3,14 @@
 USE_DEV=0
 VER_RELEASE=3.28
 
-pkgbase=ns3-hg
+pkgname=ns3-hg
 pkgver=r13737
 pkgrel=1
 
 if [ "${USE_DEV}" = "0" ]; then
-pkgbase=ns3
+pkgname=ns3
 pkgver=${VER_RELEASE}
 fi
-pkgname=(${pkgbase}{,-netanim})
 
 pkgdesc='Full package for the ns3 -- a Discrete-event network simulator for Internet systems'
 arch=( 'i686' 'x86_64' 'armv6' 'armv6h' 'arm7h' )
@@ -111,13 +110,6 @@ prepare()
         sed -e 's|#!/usr/bin/env python$|#!/usr/bin/env python2|g' -i ${srcdir}/ns3-dev-hg/waf
     fi
 
-    if [ 0 = 1 ]; then
-        cd ${srcdir}/ns3-dev-hg/ && patch -p1 -i ${srcdir}/ns3-dev-arch-pygccxml-detect.patch && echo ""
-        cd -
-        cd ${srcdir}/ns3-dev-hg/ && patch -p1 -i ${srcdir}/ns3-dev-arch-pybindgen-detect.patch && echo ""
-        cd -
-    fi
-
     echo "Fix python(3) for ns3"
     grep -rl '/usr/bin/env python' . \
         | xargs sed -e 's|/usr/bin/env python$|/usr/bin/env python2|g' -i
@@ -198,7 +190,7 @@ prepare()
     fi
 }
 
-build()
+build0()
 {
     local DN_PYBINDGEN="$srcdir/pybindgen-git"
     if [ "${USE_DEV}" = "0" ]; then
@@ -237,7 +229,7 @@ build()
         $(NULL)
 
     # replace directory path
-    find . -name "*.pc" | xargs -n 1 sed -e "s|[^[:blank:]\r\n]\+$srcdir[^[:blank:]\r\n]\+||g" -i
+    find -L . -name "*.pc" | xargs -n 1 sed -e "s|[^[:blank:]\r\n]\+$srcdir[^[:blank:]\r\n]\+||g" -i
 }
 
 build1()
@@ -275,7 +267,22 @@ build1()
         $(NULL)
     PYTHON=`which python2` ./waf build --progress -j $(nproc)
     # replace directory path
-    find . -name "*.pc" | xargs -n 1 sed -e "s|[^[:blank:]\r\n]\+$srcdir[^[:blank:]\r\n]\+||g" -i
+    find -L . -name "*.pc" | xargs -n 1 sed -e "s|[^[:blank:]\r\n]\+$srcdir[^[:blank:]\r\n]\+||g" -i
+
+
+    local DN_NETANIM="$srcdir/ns3-netanim-hg"
+    if [ "${USE_DEV}" = "0" ]; then
+        cd "$srcdir/ns-allinone-$pkgver/"
+        FN=`ls | grep netanim`
+        DN_NETANIM="$srcdir/ns-allinone-$pkgver/$FN"
+    fi
+    cd "${DN_NETANIM}"
+    qmake-qt4 NetAnim.pro
+    make -j 8
+}
+
+build() {
+  build1 # replace this
 }
 
 verify_build()
@@ -315,7 +322,7 @@ verify_build()
       -o ns3-first examples/tutorial/first.cc
 }
 
-package_ns3-hg()
+package()
 {
     if [ "${USE_DEV}" = "0" ]; then
         cd $srcdir/ns-allinone-$pkgver/ns-$pkgver
@@ -325,24 +332,6 @@ package_ns3-hg()
     PYTHON=`which python2` ./waf install \
         --with-python=`which python2` \
         --destdir=$pkgdir/
-}
-
-package_ns3()
-{
-    if [ "${USE_DEV}" = "0" ]; then
-        cd $srcdir/ns-allinone-$pkgver/ns-$pkgver
-    else
-        cd "${srcdir}/${pkgname}/ns-3-dev"
-    fi
-    PYTHON=`which python2` ./waf install \
-        --with-python=`which python2` \
-        --destdir=$pkgdir/
-}
-
-package_ns3-hg-netanim()
-{
-    pkgdesc='NS 3 NetAnim.'
-    depends=("qt4")
 
     local LIBVER="3-dev"
     if [ "${USE_DEV}" = "0" ]; then
@@ -355,29 +344,7 @@ package_ns3-hg-netanim()
         DN_NETANIM="$srcdir/ns-allinone-$pkgver/$FN"
     fi
 
-    cd "${DN_NETANIM}"
-    echo "ns3-hg-netanim: pwd=`pwd`"
-    echo "ns3-hg-netanim: ${DN_NETANIM}"
-    install -Dm755 NetAnim ${pkgdir}/usr/bin/ns${LIBVER}-netanim
-}
-
-package_ns3-netanim()
-{
-    local LIBVER="3-dev"
-    if [ "${USE_DEV}" = "0" ]; then
-        LIBVER="${pkgver}"
-    fi
-    local DN_NETANIM="$srcdir/ns3-netanim-hg"
-    if [ "${USE_DEV}" = "0" ]; then
-        cd "$srcdir/ns-allinone-$pkgver/"
-        FN=`ls | grep netanim`
-        DN_NETANIM="$srcdir/ns-allinone-$pkgver/$FN"
-    fi
-
-    cd "${DN_NETANIM}"
-    echo "ns3-netanim: pwd=`pwd`"
-    echo "ns3-netanim: ${DN_NETANIM}"
-    install -Dm755 NetAnim ${pkgdir}/usr/bin/ns${LIBVER}-netanim
+    install -Dm755 "${DN_NETANIM}/NetAnim" ${pkgdir}/usr/bin/ns${LIBVER}-netanim
 }
 
 #sha1sums=('59a9a3cfd738c48e17253eb7ed2aaccfc1cc498d' 'SKIP' 'SKIP' 'SKIP')
