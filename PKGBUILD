@@ -11,6 +11,7 @@ license=(GPL2 CPL)
 depends=('glibc')
 makedepends=('git')
 provides=("$_pkgname" 'romheaders')
+conflicts=("$_pkgname")
 source=("git+https://github.com/openbios/${_pkgname}.git"
         'fix-flags.patch')
 sha256sums=('SKIP'

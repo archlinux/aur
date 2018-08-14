@@ -11,6 +11,7 @@ pkgbase = fcode-utils-git
 	depends = glibc
 	provides = fcode-utils
 	provides = romheaders
+	conflicts = fcode-utils
 	source = git+https://github.com/openbios/fcode-utils.git
 	source = fix-flags.patch
 	sha256sums = SKIP
