@@ -1,4 +1,4 @@
-# Maintainer: Yen Chi Hsuan <yan12125@gmail.com>
+# Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
 
 pkgname=nextcloud-app-markdown
 _releasename=files_markdown
