@@ -1,22 +1,22 @@
---- configure.ac.new	2017-09-10 16:59:35.652502185 +0200
-+++ configure.ac	2017-09-10 17:00:19.119337813 +0200
-@@ -498,7 +498,7 @@
-   echo hdf4
-   echo ----
+--- configure.ac	2018-08-14 10:41:46.649621626 +0200
++++ configure.ac	2018-08-14 10:43:19.946743356 +0200
+@@ -673,7 +673,7 @@
+ if test "Z$ga_supplib_dir" != "Z" ; then 
    if test "$have_zlib" = "yes" -a "$have_jpeg" = "yes" -a "$have_udunits" = "yes" ; then
--    GA_SET_FLAGS([],[],[],[-ldf])
-+    GA_SET_FLAGS([])
+     echo looking in $ga_supplib_dir 
+-    GA_SET_FLAGS([])
++    GA_SET_FLAGS([],[],[],[-ldf])
      AC_CHECK_HEADER([mfhdf.h],
      [ AC_CHECK_LIB([df], [main], 
        [ AC_CHECK_LIB([mfhdf], [main],
---- src/Makefile.am.new	2017-09-10 17:43:26.972602155 +0200
-+++ src/Makefile.am	2017-09-10 17:43:42.569366576 +0200
-@@ -39,7 +39,7 @@
+--- src/Makefile.am	2018-08-14 10:41:46.649621626 +0200
++++ src/Makefile.am	2018-08-14 10:45:50.747478888 +0200
+@@ -37,7 +37,7 @@
+ endif
  
- libgxpGD_la_SOURCES    = gxprintGD.c gxGD.c
- libgxdX11_la_SOURCES   = gxX11.c gxdxwd.c
--libgxpCairo_la_SOURCES = gxprint.c gxC.c aflush.c
-+libgxpCairo_la_SOURCES = gxprint.c gxC.c
+ if USECAIRO
+-libgxpCairo_la_SOURCES = gxprint.c gxC.c
++libgxpCairo_la_SOURCES = gxprint.c gxC.c aflush.c
  libgxdCairo_la_SOURCES = gxX.c gxC.c
- libgxdummy_la_SOURCES  = gxdummy.c
+ endif
  

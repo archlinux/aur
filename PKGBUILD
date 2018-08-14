@@ -1,5 +1,5 @@
 pkgname=grads
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="The Grid Analysis and Display System (GrADS) is an interactive \
 desktop tool that is used for easy access, manipulation, and visualization \
@@ -12,16 +12,20 @@ makedepends=(g2clib gadap)
 arch=(i686 x86_64)
 provides=(grads)
 conflicts=(grads)
-source=(ftp://cola.gmu.edu/grads/2.2/${pkgname}-${pkgver}-src.tar.gz time_unit.patch configure.ac.patch udpt)
-md5sums=('9abad72ff5ea7204797696e582d88966'
+source=(ftp://cola.gmu.edu/grads/2.2/${pkgname}-${pkgver}-src.tar.gz time_unit.patch configure.ac.patch udpt cairo.m4 libshp.m4 libgadap.m4)
+md5sums=('2c893cacef9d9b0fd869cb802fbf4b63'
          '8b6559bdff9605a1bfce506cd0315b57'
-         '789224e91bda2e2b36fc5022854841d8'
-         'efea7122a20000669392d55109839ddd')
+         '4ba162aefeb175eab82f5c0d64b58a40'
+         'efea7122a20000669392d55109839ddd'
+         'a2ef71af8cfbe2825edb681648d3f03e'
+         'a551057b73cd63db89fb11bf5b5c96ab'
+         '32423b1d5dd86526abf2913dd6a21ee9')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
   patch -p0 -i ${srcdir}/time_unit.patch
-  patch -Rp0 -i ${srcdir}/configure.ac.patch
+  patch -p0 -i ${srcdir}/configure.ac.patch
+  cp ${srcdir}/*.m4 m4
   echo "void gxdXflush(void) { }" > src/aflush.c
   sed -i configure.ac -e 's/png15/png16/g' -e 's/grib2c/g2c/g'
   sed -i acinclude.m4 \
