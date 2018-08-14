@@ -2,15 +2,15 @@
 # Contributor: Aaron DeVore <aaron.devore@gmail.com>
 
 pkgname=python-roman
-pkgver=2.0.0
+pkgver=3.0
 pkgrel=1
 pkgdesc="Integer to Roman numerals converter"
 url="https://pypi.python.org/pypi/roman"
 makedepends=('python-setuptools')
 license=('PSF')
 arch=('any')
-source=("https://pypi.python.org/packages/source/r/roman/roman-${pkgver}.zip")
-sha256sums=('90e83b512b44dd7fc83d67eb45aa5eb707df623e6fc6e66e7f273abd4b2613ae')
+source=("https://pypi.python.org/packages/source/r/roman/roman-${pkgver}.tar.gz")
+sha256sums=('1cb1cfc9386ec39bd5dd3190c2c89c1b253140bccda16807aab3627cbb3f275d')
 
 build() {
   cd "${srcdir}/roman-${pkgver}"

@@ -1,13 +1,13 @@
 pkgbase = python-roman
 	pkgdesc = Integer to Roman numerals converter
-	pkgver = 2.0.0
+	pkgver = 3.0
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/roman
 	arch = any
 	license = PSF
 	makedepends = python-setuptools
-	source = https://pypi.python.org/packages/source/r/roman/roman-2.0.0.zip
-	sha256sums = 90e83b512b44dd7fc83d67eb45aa5eb707df623e6fc6e66e7f273abd4b2613ae
+	source = https://pypi.python.org/packages/source/r/roman/roman-3.0.tar.gz
+	sha256sums = 1cb1cfc9386ec39bd5dd3190c2c89c1b253140bccda16807aab3627cbb3f275d
 
 pkgname = python-roman
 
