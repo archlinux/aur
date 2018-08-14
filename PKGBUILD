@@ -22,5 +22,8 @@ package() {
   cd cri-tools
   install -Dm755 _output/bin/crictl "$pkgdir/usr/bin/crictl"
   install -Dm644 "$srcdir/crictl.yaml" "$pkgdir/etc/crictl.yaml"
+
+  "$pkgdir/usr/bin/crictl" completion bash | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/crictl"
+  "$pkgdir/usr/bin/crictl" completion zsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_crictl"
 }
 
