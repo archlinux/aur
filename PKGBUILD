@@ -2,14 +2,15 @@
 
 pkgname=virtlyst
 _projectname=Virtlyst
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=2
 pkgdesc="Web interface to manage virtual machines with libvirt"
 arch=('x86_64')
 url="https://github.com/cutelyst/Virtlyst"
 license=('AGPL3')
-depends=('cutelyst>=2.2.1' 'libvirt')
+depends=('cutelyst>=2.5.1' 'libvirt')
 makedepends=()
+optdepends=('nginx')
 source=("https://github.com/cutelyst/${_projectname}/archive/v${pkgver}.tar.gz"
     "nginx-example.conf"
     "virtlyst.ini"
@@ -47,7 +48,7 @@ package() {
   install -D -m644 "${srcdir}/nginx-example.conf" -t "${pkgdir}/usr/share/${pkgname}/"
 }
 
-sha256sums=('64044e537672935de62ba9305c28bf3a51ee3591c3c8da6831cd03383a42ccb6'
+sha256sums=('78c75877946bd3c6fd3b9f22d87fa5a1fd471573983bba2edbcedc192704ee1a'
             'c90df514f70a853d482ea2bf225eb684dd42a845fef39eb929f480187146afd5'
             '50e50b69331b9855a2277b716a885878eefdf60364d238dfcce2f033e7374886'
             'e2c573630bc79d92d77202c54fbcb73720f97fce5606ca7d83640f455bb7f80b'
