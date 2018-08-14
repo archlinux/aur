@@ -1,16 +1,24 @@
 diff '--color=auto' -ruN ../heroes-0.21/src/argv.c ./src/argv.c
 --- ../heroes-0.21/src/argv.c	2018-08-14 13:38:06.000000000 +0100
-+++ ./src/argv.c	2018-08-14 13:47:26.001931402 +0100
-@@ -46,7 +46,7 @@
++++ ./src/argv.c	2018-08-14 13:56:59.340278312 +0100
+@@ -45,8 +45,8 @@
+ char* level_name;
  bool mono = false;
  bool bits8 = false;
- bool hqmix = false;
+-bool hqmix = false;
 -int stretch = 1;
++bool hqmix = true;
 +int stretch = 4;
  bool nosound = false;
  bool even_lines = false;
  bool showprefs = false;
-@@ -176,10 +176,7 @@
+@@ -171,15 +171,11 @@
+   -S, --no-sound              disable sound\n\
+   -X, --no-sfx                disable sound-effects\n\
+   -m, --mono                  non-stereo output\n\
+-  -8, --8bits                 8bits sound output\n\
+-  -i, --high-quality          high quality mixer\n"));
++  -8, --8bits                 8bits sound output\n"));
    puts (_("\
  Display options:\n\
    -G, --gfx-options=OPTIONS   pass OPTIONS to the display driver\n\
@@ -22,7 +30,7 @@ diff '--color=auto' -ruN ../heroes-0.21/src/argv.c ./src/argv.c
    -e, --even-lines            display only even-lines\n"));
    /* TRANS: rotozoom is a graphical effect used in the demo of yore
       where the screen rotate and zoom (actually it doesn't zoom in Heroes);
-@@ -215,11 +212,10 @@
+@@ -215,15 +211,13 @@
    {"default-saves",	no_argument,       &reinitsav,	1},
    {"default-scores",	no_argument,       &reinitsco,	1},
    {"devparm",		no_argument,       &devparm,	1},
@@ -35,7 +43,11 @@ diff '--color=auto' -ruN ../heroes-0.21/src/argv.c ./src/argv.c
    {"gfx-options",	required_argument, NULL,	'G'},
    {"go",		no_argument,       NULL,	'g'},
    {"help",		no_argument,       NULL,	'h'},
-@@ -231,11 +227,9 @@
+-  {"high-quality",	no_argument,       NULL,	'i'},
+   {"list",		optional_argument, NULL,	'l'},
+   {"load",		required_argument, NULL,	'L'},
+   {"mono",		no_argument,       NULL,	'm'},
+@@ -231,11 +225,9 @@
    {"no-joystick",	no_argument,       NULL,	'J'},
    {"no-sfx",		no_argument,       NULL,	'X'},
    {"no-sound",		no_argument,       NULL,	'S'},
@@ -47,7 +59,7 @@ diff '--color=auto' -ruN ../heroes-0.21/src/argv.c ./src/argv.c
    {"verbose",		required_argument, NULL,	'v'},
    {"version",		no_argument,       NULL,	'v'},
    {"x10-saves",		no_argument,       &x10sav,	1},
-@@ -263,7 +257,7 @@
+@@ -263,7 +255,7 @@
    for (;;) {
      int option_index = 0;
  
@@ -56,7 +68,17 @@ diff '--color=auto' -ruN ../heroes-0.21/src/argv.c ./src/argv.c
  		     long_options, &option_index);
  
      /* Detect the end of the options. */
-@@ -319,21 +313,12 @@
+@@ -290,9 +282,6 @@
+     case '8':
+       bits8 = true;
+       break;
+-    case 'a':
+-      hqmix = true;
+-      break;
+     case 'X':
+       nosfx = true;
+       break;
+@@ -319,27 +308,15 @@
      case 'G':
        set_display_params (optarg);
        break;
@@ -78,6 +100,12 @@ diff '--color=auto' -ruN ../heroes-0.21/src/argv.c ./src/argv.c
 -      break;
      case 'e':
        even_lines = true;
+       break;
+-    case 'i':
+-      hqmix = true;
+-      break;
+     case 'S':
+       nosound = true;
        break;
 diff '--color=auto' -ruN ../heroes-0.21/src/hedlite.c ./src/hedlite.c
 --- ../heroes-0.21/src/hedlite.c	2018-08-14 13:38:07.000000000 +0100
