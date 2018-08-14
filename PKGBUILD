@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=intel-media-stack-bin
-pkgver=2018.Q2.1
-pkgrel=4
+pkgver=2018.Q2.2
+pkgrel=1
 pkgdesc='Tools and libraries for developing media solutions on Intel products. Includes MediaSDK, Media Driver, libva and libdrm.'
 arch=('x86_64')
 url='https://github.com/Intel-Media-SDK/MediaSDK/'
@@ -19,7 +19,7 @@ install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/Intel-Media-SDK/MediaSDK/releases/download/MediaSDK-${pkgver/.Q/-Q}/MediaStack.tar.gz"
         'LICENSE'::"https://raw.githubusercontent.com/Intel-Media-SDK/MediaSDK/MediaSDK-${pkgver/.Q/-Q}/LICENSE")
 noextract=("${pkgname}-${pkgver}.tar.gz")
-sha256sums=('c3b277656b4ccdb16705431f75af671bd6c757e958498080c5c282cf4fa163f0'
+sha256sums=('7bc9fe977882fd2285f9d3e12d53424a6513bf3b1dba146b05802bf9bb9afff9'
             'dfd67773578903698f9ff4a61eb8f2d84810cbecd56f3f3cee8c649f813b6ea6')
 
 prepare() {
@@ -43,6 +43,16 @@ package() {
     
     ./install_media.sh
     
+    # headers (add 'mfx' folder for ffmpeg compatibility)
+    mkdir -p "${pkgdir}/opt/intel/mediasdk/include/mfx"
+    cd "${pkgdir}/opt/intel/mediasdk/include"
+    for _header in *.h
+    do
+        cd mfx
+        ln -sf ../"$_header" "$_header"
+        cd ..
+    done
+    
     # do not force the use of 'iHD' libva driver by default (let user choose)
     local _info='# uncomment the LIBVA_DRIVER_NAME line to use the Intel Media Driver (iHD) for VAAPI'
     sed -i "2i${_info}" "$pkgdir"/etc/profile.d/intel-mediasdk.*sh
@@ -50,6 +60,6 @@ package() {
     sed -i '/^setenv[[:space:]]LIBVA_DRIVER_NAME/s/^/#/' "${pkgdir}/etc/profile.d/intel-mediasdk.csh"
     
     # license
-    cd "${srcdir}"
-    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cd "$srcdir"
+    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
