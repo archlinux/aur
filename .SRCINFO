@@ -15,7 +15,7 @@ pkgbase = scavenger-git
 	source = git+https://github.com/PoC-Consortium/scavenger.git
 	source = scavenger.service
 	sha256sums = SKIP
-	sha256sums = 7c48cb91f6b9e9e65fd52ef32fc27d234b82457d9452ff611b23074c19a16595
+	sha256sums = 0fa34d211f5dead13c9f5e2a1efd39d3bd14d805497e70b9c18981d76b31dd56
 
 pkgname = scavenger-git
 

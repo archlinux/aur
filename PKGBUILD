@@ -17,7 +17,7 @@ conflicts=('scavenger')
 source=("git+https://github.com/PoC-Consortium/${_realname}.git"
         "${_realname}.service")
 sha256sums=('SKIP'
-            '7c48cb91f6b9e9e65fd52ef32fc27d234b82457d9452ff611b23074c19a16595')
+            '0fa34d211f5dead13c9f5e2a1efd39d3bd14d805497e70b9c18981d76b31dd56')
 
 pkgver() {
     cd "${srcdir}/${_realname}"
