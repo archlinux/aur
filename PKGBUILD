@@ -9,7 +9,7 @@
 pkgbase=libappindicator-activate
 pkgname=('libappindicator-activate-gtk2' 'libappindicator-activate-gtk3' 'libappindicator-activate-sharp')
 pkgver=12.10.0
-pkgrel=7
+pkgrel=8
 pkgdesc='libappindicator patched to improve user experience under Plasma 5 (single click activation via Activate dbus method)'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/libappindicator'
@@ -18,8 +18,8 @@ makedepends=('dbus-glib' 'gobject-introspection' 'gtk-sharp-2'
              'libdbusmenu-gtk2' 'libdbusmenu-gtk3' 'libindicator-gtk2'
              'libindicator-gtk3' 'mono' 'perl-xml-libxml' 'pygtk' 'vala')
 options=('!emptydirs')
-source=("http://launchpad.net/libappindicator/${pkgver%.*}/${pkgver}/+download/libappindicator-${pkgver}.tar.gz" "0001-Add-support-for-Activate-method-for-improved-Plasma-.patch")
-sha256sums=('d5907c1f98084acf28fd19593cb70672caa0ca1cf82d747ba6f4830d4cc3b49f' 'b5ee550484aebc13eccbee181f355416efa1de917317c00b044266104418526a')
+source=("http://launchpad.net/libappindicator/${pkgver%.*}/${pkgver}/+download/libappindicator-${pkgver}.tar.gz")
+sha256sums=('d5907c1f98084acf28fd19593cb70672caa0ca1cf82d747ba6f4830d4cc3b49f')
 
 prepare() {
     # Check for debris from previous builds and sweep it up if found.
