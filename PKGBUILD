@@ -2,7 +2,7 @@
 
 _gitname="webvirtcloud"
 pkgname=("${_gitname}-git")
-pkgver=20180720.362.8e43523
+pkgver=20180814.408.3748a46
 pkgrel=1
 pkgdesc="WebVirtCloud is virtualization web interface for admins and users"
 arch=("x86_64")
