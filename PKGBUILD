@@ -2,7 +2,7 @@
 
 pkgname="dexed"
 pkgver=0.9.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A software synth closely modelled on the Yamaha DX7"
 arch=('i686' 'x86_64')
 url="http://asb2m10.github.io/dexed/"
@@ -19,30 +19,14 @@ changelog=ChangeLog
 
 build() {
   msg2 "Building Dexed stand-alone..."
-  cd "$srcdir/${pkgname}-${pkgver}"
-  sed -i \
-    -e 's|JUCE_JACK="0"|JUCE_JACK="1"|' \
-    -e 's|buildVST="1"|buildVST="0"|' \
-    Dexed.jucer
-  Projucer --resave Dexed.jucer
-
   cd "${srcdir}/${pkgname}-${pkgver}/Builds/Linux"
-  make CONFIG=Release
+  make CONFIG=Release CXXFLAGS="-D JUCE_JACK=1 -D JUCE_ALSA=1 -D buildVST=0 -D buildStandalone=1"
   cp -f build/Dexed "${srcdir}/${pkgname}-${pkgver}"
 
   msg2 "Building Dexed VST plug-in..."
-  cd "$srcdir/${pkgname}-${pkgver}"
-  sed -i \
-    -e 's|JUCE_ALSA="1"|JUCE_ALSA="0"|' \
-    -e 's|JUCE_JACK="1"|JUCE_JACK="0"|' \
-    -e 's|buildVST="0"|buildVST="1"|' \
-    -e 's|buildStandalone="1"|buildStandalone="0"|' \
-    Dexed.jucer
-  Projucer --resave Dexed.jucer
-
   cd "${srcdir}/${pkgname}-${pkgver}/Builds/Linux"
   make clean
-  make CONFIG=Release
+  make CONFIG=Release CXXFLAGS="-D JUCE_JACK=0 -D JUCE_ALSA=0 -D buildVST=1 -D buildStandalone=0"
   cp -f build/Dexed.so "${srcdir}/${pkgname}-${pkgver}"
 }
 
