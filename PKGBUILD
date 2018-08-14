@@ -2,7 +2,7 @@
 
 pkgname=rtrlib
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="RPKI-RTR client library"
 arch=(x86_64 i686)
 url="https://github.com/rtrlib/rtrlib"
