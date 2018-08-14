@@ -1,18 +1,13 @@
 pkgbase = minivmac
 	pkgdesc = a miniature early Macintosh emulator
-	pkgver = 3.4.1
+	pkgver = 3.5.8
 	pkgrel = 1
 	url = http://www.gryphel.com/c/minivmac/
-	arch = i686
 	arch = x86_64
-	arch = arm
 	license = GPL
 	makedepends = tar
-	conflicts = minivmac
-	source_i686 = http://www.gryphel.com/d/minivmac/minivmac-3.4.1/minivmac-3.4.1-lx86.bin.tgz
-	source_x86_64 = http://www.gryphel.com/d/minivmac/minivmac-3.4.1/minivmac-3.4.1-lx64.bin.tgz
-	sha256sums_x86_64 = 19c800b462b5e98cdd35c2872e724a34840e4001e3f2c4b8f453fc19754bef09
-	source_arm = http://www.gryphel.com/d/minivmac/minivmac-3.4.1/minivmac-3.4.1-larm.bin.tgz
+	source = https://www.gryphel.com/d/minivmac/minivmac-3.5.8/minivmac-3.5.8-lx64.bin.tgz
+	md5sums = 68168f06472b8d49c98f561ff72eb250
 
 pkgname = minivmac
 
