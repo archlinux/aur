@@ -1,0 +1,13 @@
+--- mu/logic.py.orig	2018-08-14 22:14:04.663531208 +0200
++++ mu/logic.py	2018-08-14 22:14:25.616864697 +0200
+@@ -988,6 +988,10 @@
+         major_version = '.'.join(__version__.split('.')[:2])
+         url = 'https://codewith.mu/{}/help/{}'.format(language_code,
+                                                       major_version)
++        # XXX: hacky workaround for https://bugs.python.org/issue31014
++        if 'BROWSER' in os.environ:
++            del os.environ['BROWSER']
++
+         webbrowser.open_new(url)
+ 
+     def quit(self, *args, **kwargs):

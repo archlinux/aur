@@ -1,0 +1,6 @@
+src/
+pkg/
+mu-editor-*.tar.gz
+mu-editor-*.pkg.tar.xz
+.AURINFO
+
