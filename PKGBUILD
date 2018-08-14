@@ -89,7 +89,8 @@ package() {
 	install -Dm644 $_pkgname.service $pkgdir/usr/lib/systemd/system/$_pkgname.service
 	install -Dm644 $_pkgname.tmpfiles $pkgdir/usr/lib/tmpfiles.d/$_pkgname.conf
 
-	mv $pkgdir/usr/lib/$_pkgname/lib/python3.6/site-packages/LXDUI-$(srcver)-py3.6.egg/conf/* $pkgdir/etc/$_pkgname
+	PYVER=$($pkgdir/usr/lib/$_pkgname/bin/python --version|cut -d\  -f2|cut -d. -f1,2)
+	mv $pkgdir/usr/lib/$_pkgname/lib/python$PYVER/site-packages/LXDUI-$(srcver)-py$PYVER.egg/conf/* $pkgdir/etc/$_pkgname
 	chmod 600 $pkgdir/etc/$_pkgname/auth.conf
 }
 

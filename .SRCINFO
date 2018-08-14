@@ -1,6 +1,6 @@
 pkgbase = lxdui-git
 	pkgdesc = Web UI for the native Linux container technology LXD/LXC
-	pkgver = 2.1.1.0.636.c477657
+	pkgver = 2.1.2.0.674.270eda9
 	pkgrel = 1
 	url = https://github.com/AdaptiveScale/lxdui
 	install = lxdui.install
