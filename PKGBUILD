@@ -5,7 +5,7 @@
 
 _pkgname=entrance
 pkgname=$_pkgname-git
-pkgver=3.0.0_alpha3.r21.g2fd7f2b
+pkgver=3.0.0_alpha5.r4.g8a92676
 pkgrel=1
 pkgdesc="Enlightenment Display Manager"
 url="http://www.enlightenment.org/"
