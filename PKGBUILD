@@ -3,7 +3,7 @@
 pkgname=magic-wormhole-git
 _pkgname=${pkgname%-*}
 pkgver=0.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Securely transfer data between computers"
 arch=('any')
 url="https://github.com/warner/${_pkgname}"
