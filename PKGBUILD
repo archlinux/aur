@@ -2,7 +2,7 @@
 
 pkgname=addresses.app
 _pkgname=Addresses
-pkgrel=2
+pkgrel=1
 pkgver=0.4.8
 pkgdesc="A versatile Address Book application and framework."
 arch=('i686' 'x86_64')
