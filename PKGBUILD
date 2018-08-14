@@ -2,7 +2,7 @@
 
 _pkgname=termdown
 pkgname=$_pkgname-git
-pkgver=1.11.0.r0.g28ddded
+pkgver=1.14.1.r0.gaa0c4e3
 pkgrel=1
 arch=('any')
 pkgdesc='Countdown timer and stopwatch in your terminal'
