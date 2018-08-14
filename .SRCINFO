@@ -1,6 +1,6 @@
 pkgbase = ivre
 	pkgdesc = Network recon framework
-	pkgver = 0.9.10
+	pkgver = 0.9.11
 	pkgrel = 1
 	url = https://ivre.rocks/
 	arch = any
@@ -32,9 +32,9 @@ pkgbase = ivre
 	optdepends = ffmpeg: Screenshots (rtsp)
 	optdepends = tesseract: Screenshots analysis
 	backup = etc/httpd/conf/extra/ivre.conf
-	source = https://files.pythonhosted.org/packages/source/i/ivre/ivre-0.9.10.tar.gz
-	source = https://raw.githubusercontent.com/cea-sec/ivre/v0.9.10/pkg/apache/ivre.conf
-	sha256sums = 1e820dc1fddbf319e9a86c941eea4db8158afc08619198f05e062d1c59631319
+	source = https://files.pythonhosted.org/packages/source/i/ivre/ivre-0.9.11.tar.gz
+	source = https://raw.githubusercontent.com/cea-sec/ivre/v0.9.11/pkg/apache/ivre.conf
+	sha256sums = 95f456024b101d8a834a5f1a6925cb8b8e4f5067d57fbe02e54f7183555cccef
 	sha256sums = 9c7267b7b2bde354e03a0cf683b56c0ca2410296bdd7424a964fb2b4f14c7ee3
 
 pkgname = ivre
