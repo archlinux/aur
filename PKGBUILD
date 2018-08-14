@@ -1,15 +1,15 @@
-# Maintainer: Fabio Loli <loli_fabio@protonmail.com>
+# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 # Contributor: fzerorubigd <fzero@rubi.gd>
 # Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 pkgname=openage-git
-pkgver=0.3.0.r1187.g78c6d7ed
+pkgver=0.3.0.r1312.g69223d81
 pkgrel=1
 pkgdesc='A free (as in freedom) clone of the Age of Empires II engine'
 arch=('i686' 'x86_64')
 url='http://openage.sft.mx/'
 license=('GPL3')
-depends=('python' 'libepoxy' 'ftgl' 'sdl2_image' 'opusfile'
+depends=('python' 'libepoxy' 'ftgl' 'sdl2_image' 'opusfile' eigen
          'qt5-declarative' 'xdg-utils' 'sdl2' 'qt5-quickcontrols'
          'libpng'
          'libogg'
