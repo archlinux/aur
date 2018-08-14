@@ -7,7 +7,7 @@
 #
 
 pkgname=platformio
-pkgver=3.5.4
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="A cross-platform code builder and library manager"
 arch=('any')
@@ -26,7 +26,7 @@ depends=('python2'
          'python2-setuptools')
 conflicts=('platformio-git')
 source=("https://github.com/platformio/platformio-core/archive/v${pkgver}.tar.gz")
-sha256sums=('78693881e340b09a114ffbf1f2670b1c97c116115f13be7b31d80cfa72972d11')
+sha256sums=('600fba225eddd73f76426a05c23f257bea94e76ec75cf8b67a8ccd5a5dbb645d')
 
 package() {
     cd "$srcdir/platformio-core-$pkgver"
