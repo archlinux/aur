@@ -1,6 +1,6 @@
 pkgbase = pdf-redact-tools
 	pkgdesc = Securely redact and strip metadata from docs before publishing
-	pkgver = 0.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/firstlook/pdf-redact-tools
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = pdf-redact-tools
 	depends = python2
 	depends = imagemagick
 	depends = perl-image-exiftool
-	source = https://github.com/firstlook/pdf-redact-tools/archive/v0.1.tar.gz
-	sha256sums = 9d5f095e5d056eb527c08c4736b45c99aa6399424dd6ed7155e3d7cd1600c55e
+	source = https://github.com/firstlook/pdf-redact-tools/archive/v0.1.2.tar.gz
+	sha256sums = 5874a7b76be15ccaa4c20874299ef51fbaf520a858229a58678bc72a305305fc
 
 pkgname = pdf-redact-tools
 
