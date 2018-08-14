@@ -1,6 +1,6 @@
 pkgbase = libosmo-abis
 	pkgdesc = Osmocom library for A-bis interface
-	pkgver = 0.3.2
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = http://openbsc.osmocom.org/trac/wiki/libosmo-abis
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = libosmo-abis
 	makedepends = git
 	depends = libosmocore
 	depends = ortp
-	source = git://git.osmocom.org/libosmo-abis.git#tag=v0.3.2
+	source = git://git.osmocom.org/libosmo-abis.git#tag=0.5.1
 	sha256sums = SKIP
 
 pkgname = libosmo-abis
