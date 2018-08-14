@@ -4,7 +4,7 @@
 pkgname=python-glyr-git
 _gitname=python-glyr
 pkgver=2014.06.22.g890e877
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings to libglyr"
 url="https://github.com/sahib/python-glyr"
 license=('GPL3')
