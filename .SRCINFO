@@ -1,0 +1,14 @@
+pkgbase = kubectl
+	pkgdesc = Kubernetes.io client binary
+	pkgver = 1.11.2
+	pkgrel = 1
+	url = http://kubernetes.io
+	arch = i686
+	arch = x86_64
+	license = Apache
+	conflicts = kubernetes>=1.4.6
+	source = kubernetes-1.11.2.tar.gz::https://dl.k8s.io/v1.11.2/kubernetes-src.tar.gz
+	sha256sums = 7d98defe2eb909bc5ebcbddd8d55ffaa902d5d3c76d9e42fe0a092c341016a6e
+
+pkgname = kubectl
+
