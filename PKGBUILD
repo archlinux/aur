@@ -2,9 +2,9 @@
 # Contributor: Jan Pacner
 # Contributor: dumblob <dumblob@gmail.com>
 
-pkgname=packer-git
+pkgname=packer-aur-git
 pkgver=325.400c655
-pkgrel=1
+pkgrel=2
 pkgdesc='Bash wrapper for pacman and aur'
 arch=('any')
 url="https://github.com/gavinhungry/packer"
@@ -23,6 +23,6 @@ pkgver() {
 package() {
   cd "${pkgname}"
 
-  install -Dm755 packer "${pkgdir}"/usr/bin/packer
-  install -Dm644 packer.8 "${pkgdir}"/usr/share/man/man8/packer.8
+  install -Dm755 packer "${pkgdir}"/usr/bin/packer-aur
+  install -Dm644 packer.8 "${pkgdir}"/usr/share/man/man8/packer-aur.8
 }
