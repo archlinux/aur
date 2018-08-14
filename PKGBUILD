@@ -1,6 +1,6 @@
 # Maintainer: Yunhui Fu <yhfudev@gmail.com>
 
-USE_DEV=0
+USE_DEV=1
 VER_RELEASE=3.28
 
 pkgname=ns3-hg

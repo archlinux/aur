@@ -1,6 +1,6 @@
-pkgbase = ns3
+pkgbase = ns3-hg
 	pkgdesc = Full package for the ns3 -- a Discrete-event network simulator for Internet systems
-	pkgver = 3.28
+	pkgver = r13737
 	pkgrel = 1
 	url = http://www.nsnam.org/
 	arch = i686
@@ -69,5 +69,5 @@ pkgbase = ns3
 	md5sums = SKIP
 	md5sums = SKIP
 
-pkgname = ns3
+pkgname = ns3-hg
 
