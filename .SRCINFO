@@ -1,6 +1,6 @@
 pkgbase = python-esipy
 	pkgdesc = Python client for the EVE Online ESI API
-	pkgver = 0.3.4
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/Kyria/EsiPy
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = python-esipy
 	depends = python-redis
 	depends = python-pylint
 	depends = python-pytz
-	source = https://github.com/Kyria/EsiPy/archive/0.3.4.tar.gz
-	sha256sums = ce700f64da8e5b22344bafb250bcdf79f8059b619f37147c4d5d12514fbef5c0
+	source = https://github.com/Kyria/EsiPy/archive/0.5.0.tar.gz
+	sha256sums = 711b6cdf1acf633d17c80682ecc5322bf04acd50c5f1fc97692a45ac732b31ad
 
 pkgname = python-esipy
 
