@@ -1,0 +1,11 @@
+--- src/libMvQtGui/MvQTreeViewSearchLine.cc	2018-08-14 12:16:26.877605383 +0200
++++ src/libMvQtGui/MvQTreeViewSearchLine.cc	2018-08-14 12:14:45.433777266 +0200
+@@ -9,6 +9,8 @@
+ 
+ #include <assert.h>
+ 
++#include <QObject>
++#include <QtWidgets/QHeaderView>
+ #include <QDebug>
+ #include <QLineEdit>
+ #include <QPushButton>
