@@ -17,7 +17,7 @@ pkgbase = networkmanager-fortisslvpn-git
 	depends = libsecret
 	provides = networkmanager-fortisslvpn
 	conflicts = networkmanager-fortisslvpn
-	source = git://github.com/GNOME/network-manager-fortisslvpn
+	source = network-manager-fortisslvpn::git+https://gitlab.gnome.org/GNOME/NetworkManager-fortisslvpn.git
 	sha256sums = SKIP
 
 pkgname = networkmanager-fortisslvpn-git
