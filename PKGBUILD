@@ -4,7 +4,7 @@ pkgname=sensu
 _pkgname=sensu-go
 pkgver=2.0.0beta3.1
 _pkgver=2.0.0-beta.3-1
-pkgrel=7
+pkgrel=8
 pkgdesc="A monitoring framework that aims to be simple, malleable and scalable."
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 url='https://sensu.io'
@@ -37,6 +37,8 @@ prepare(){
 }
 
 build() {
+  export GOPATH="${srcdir}/gopath"
+
   cd ${GOPATH}/src/${_gourl}
   ./build.sh build_cli
   ./build.sh build_agent
