@@ -1,13 +1,13 @@
 pkgbase = r-kernlab
 	pkgdesc = Kernel-Based Machine Learning Lab
-	pkgver = 0.9.26
+	pkgver = 0.9.27
 	pkgrel = 1
 	url = https://cran.r-project.org/package=kernlab
 	arch = x86_64
 	license = GPL2
 	depends = r
-	source = https://cran.r-project.org/src/contrib/kernlab_0.9-26.tar.gz
-	md5sums = c301c85f47c6673fddf6e211e8bcaeb1
+	source = https://cran.r-project.org/src/contrib/kernlab_0.9-27.tar.gz
+	md5sums = 2a45749a0ae27126682bd1baa18b85f1
 
 pkgname = r-kernlab
 
