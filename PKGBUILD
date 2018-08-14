@@ -3,13 +3,13 @@
 
 _pkgname=lv2
 pkgname="${_pkgname}-git"
-pkgver=1.15.3.r1077.728196c
+pkgver=1.15.3.r1087.4e8d3dc
 pkgrel=1
 pkgdesc="A standard for plugins and matching host applications, mainly targeted at audio processing and generation."
 arch=('i686' 'x86_64')
 url="http://lv2plug.in/"
 license=('custom:ISC')
-makedepends=('git' 'python' 'libsndfile' 'gtk2')
+makedepends=('git' 'python2' 'libsndfile' 'gtk2')
 optdepends=('libsndfile: example sampler plugin'
             'gtk2: example scope plugin'
             'python: lv2specgen script')
@@ -28,13 +28,13 @@ pkgver() {
 build() {
   cd "${srcdir}/${_pkgname}"
 
-  python waf configure --prefix=/usr
-  python waf build $MAKEFLAGS
+  python2 waf configure --prefix=/usr
+  python2 waf build $MAKEFLAGS
 }
 
 package() {
   cd "${srcdir}/${_pkgname}"
 
-  python waf install --destdir="$pkgdir"
+  python2 waf install --destdir="$pkgdir"
   install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

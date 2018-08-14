@@ -1,13 +1,13 @@
 pkgbase = lv2-git
 	pkgdesc = A standard for plugins and matching host applications, mainly targeted at audio processing and generation.
-	pkgver = 1.15.3.r1077.728196c
+	pkgver = 1.15.3.r1087.4e8d3dc
 	pkgrel = 1
 	url = http://lv2plug.in/
 	arch = i686
 	arch = x86_64
 	license = custom:ISC
 	makedepends = git
-	makedepends = python
+	makedepends = python2
 	makedepends = libsndfile
 	makedepends = gtk2
 	optdepends = libsndfile: example sampler plugin
