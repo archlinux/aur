@@ -2,7 +2,7 @@
 pkgbase=qt5-mvvm
 pkgname=(qt5-mvvmcore qt5-mvvmwidgets qt5-mvvmquick qt5-mvvmdatasynccore qt5-mvvmdatasyncwidgets qt5-mvvmdatasyncquick qt5-mvvm-doc)
 group=qt5-mvvm
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="A mvvm oriented library for Qt, to create Projects for Widgets and Quick in parallel"
 arch=('i686' 'x86_64')
