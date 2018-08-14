@@ -1,0 +1,33 @@
+pkgbase = linux-aarch64-rock64-bin
+	pkgver = 4.4.138_1094
+	pkgrel = 1
+	url = https://github.com/ayufan-rock64/linux-kernel
+	arch = aarch64
+	license = GPL2
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	provides = linux=4.4.138_1094
+	provides = linux-aarch64=4.4.138_1094
+	conflicts = linux
+	conflicts = linux-aarch64
+	conflicts = linux-arch64-rc
+	noextract = linux-image-4.4.138-1094-rockchip-ayufan-gf13a8a9a4eee_4.4.138-1094-rockchip-ayufan_arm64.deb
+	noextract = linux-headers-4.4.138-1094-rockchip-ayufan-gf13a8a9a4eee_4.4.138-1094-rockchip-ayufan_arm64.deb
+	options = !strip
+	source = https://github.com/ayufan-rock64/linux-kernel/releases/download/4.4.138-1094-rockchip-ayufan/linux-image-4.4.138-1094-rockchip-ayufan-gf13a8a9a4eee_4.4.138-1094-rockchip-ayufan_arm64.deb
+	source = https://github.com/ayufan-rock64/linux-kernel/releases/download/4.4.138-1094-rockchip-ayufan/linux-headers-4.4.138-1094-rockchip-ayufan-gf13a8a9a4eee_4.4.138-1094-rockchip-ayufan_arm64.deb
+	source = linux.preset
+	source = 99-linux.hook
+	source = linux-aarch64-rock64-bin.install
+	sha256sums = f61a9c611043e1f914ddd9df2c0d71cfab6eebe647e153b8ee24f9734ad576bc
+	sha256sums = e7a28757bf5242ed3e0f7d46542e9b1c1b65604ae6cc7fef8c1f21bbb339d2e7
+	sha256sums = 9757ea513c67c9fb14e9ba9b681069f091e60bc5f892c9a2c4fe3cd57ca3fbe4
+	sha256sums = be679ded489c484ec6a9eeed78c6383f9c5a7fab20d2b1f00be67ac6c7185fe6
+	sha256sums = c87f3c6d4fa19319d5f81b65a45d62ab71e570bdf549c7e6c0f89292dcb5174f
+
+pkgname = linux-aarch64-rock64-bin
+
+pkgname = linux-aarch64-rock64-bin-headers
+
