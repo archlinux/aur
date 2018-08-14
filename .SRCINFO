@@ -1,9 +1,9 @@
 pkgbase = flynn-cli
 	pkgdesc = Flynn PaaS command-line interface
-	pkgver = 20150430.0
+	pkgver = 20180814.0
 	pkgrel = 1
 	url = https://flynn.io
-	arch = all
+	arch = x86_64
 	license = BSD
 	noextract = cli
 	source = https://dl.flynn.io/cli

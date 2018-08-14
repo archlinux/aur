@@ -1,11 +1,11 @@
 # Maintainer: Yuval Adam <yuval at y3xz dot com> PGP-Key: 271386AA2EB7672F
 
 pkgname=flynn-cli
-pkgver=20150430.0
+pkgver=20180814.0
 pkgrel=1
 pkgdesc="Flynn PaaS command-line interface"
 url="https://flynn.io"
-arch=('all')
+arch=('x86_64')
 license=(BSD)
 source=("https://dl.flynn.io/cli")
 noextract=('cli')
