@@ -1,11 +1,11 @@
 # Maintainer: Adrian Perez <aperez@igalia.com>
+# Co-Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
 # Contributor: rway <rway07@gmail.com>
 # Contributor: wabi <aschrafl@jetnet.ch>
 # Contributor: Alexander RÃ¸dseth <rodseth@gmail.com>
 # Contributor: Andreas Schrafl <aschrafl@gmail.com>
 # Contributor: piojo <aur@zwell.net>
 # Contributor: hack.augusto <hack.augusto@gmail.com>
-# Contributor: Yen Chi Hsuan <yan12125@gmail.com>
 
 pkgname=depot-tools-git
 pkgver=r5113.4d2e8bff
