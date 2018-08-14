@@ -7,6 +7,10 @@ arch=('any')
 url="https://github.com/pandolia/qqbot"
 license=('MIT')
 depends=("python" "python-apscheduler" "python-certifi" "python-requests")
+optdepends=("gvfs: Automatically pop up QR code image"
+            "python-pillow: For cmdQrcode"
+            "python-wcwidth: For cmdQrcode"
+            "shotwell: Automatically pop up QR code image")
 source=("https://github.com/pandolia/qqbot/archive/v$pkgver.tar.gz")
 sha512sums=('c72f8a1c153c97a50adfaeb7704cbdacebcdd01b4a603e1a34ab571447cf3a2747c4da6480f7ce070eccd2b7fe5e3306924a111be1f680947fab245ee266a813')
 

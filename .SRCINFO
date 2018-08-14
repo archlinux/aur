@@ -9,6 +9,10 @@ pkgbase = qqbot
 	depends = python-apscheduler
 	depends = python-certifi
 	depends = python-requests
+	optdepends = gvfs: Automatically pop up QR code image
+	optdepends = python-pillow: For cmdQrcode
+	optdepends = python-wcwidth: For cmdQrcode
+	optdepends = shotwell: Automatically pop up QR code image
 	source = https://github.com/pandolia/qqbot/archive/v2.3.10.tar.gz
 	sha512sums = c72f8a1c153c97a50adfaeb7704cbdacebcdd01b4a603e1a34ab571447cf3a2747c4da6480f7ce070eccd2b7fe5e3306924a111be1f680947fab245ee266a813
 
