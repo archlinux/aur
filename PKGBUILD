@@ -2,7 +2,7 @@
 # Contributer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=electrumx
-pkgver=1.8.3
+pkgver=1.8.4
 pkgrel=1
 pkgdesc="Server implementation for the Electrum wallet"
 arch=('any')
@@ -21,7 +21,7 @@ options=(!emptydirs)
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/kyuupichan/$pkgname/tar.gz/$pkgver
         'electrumx.conf'
         'electrumx.service')
-sha256sums=('8692f25a5e7a6f8f1e479d58762d83f9714c58922c48c00a0d0a5c8b49fd7c4f'
+sha256sums=('e664eb43e8aae12239bcd47b663f8962c078c3fc9482f8dd5d52a103871001c4'
             'f13119ac93e6e05203f9d5dae5e737ec718ca5c829b0b6b73b0761587ae651b7'
             'b4e1a9d4341edf1f2022f8c8591d28ef6bd6db38c6f332445ac294b5fc6dae93')
 backup=('etc/electrumx/electrumx.conf'
