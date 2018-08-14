@@ -14,7 +14,7 @@ pkgrel=1
 arch=('any')
 url="https://buildbot.net"
 license=("GPL")
-makedepends=('git' "buildbot-git=$pkgver" "buildbot-pkg-git=$pkgver" 'python-mock' 'npm' 'yarn')
+makedepends=('git' "buildbot-git=$pkgver" "buildbot-pkg-git=$pkgver" 'python-mock' 'npm' 'yarn' 'python2')
 source=(git+https://github.com/buildbot/buildbot.git
         cairosvg2.patch)
 sha256sums=('SKIP'

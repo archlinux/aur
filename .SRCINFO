@@ -10,6 +10,7 @@ pkgbase = buildbot-www-git
 	makedepends = python-mock
 	makedepends = npm
 	makedepends = yarn
+	makedepends = python2
 	source = git+https://github.com/buildbot/buildbot.git
 	source = cairosvg2.patch
 	sha256sums = SKIP
