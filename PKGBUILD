@@ -1,19 +1,20 @@
-# Maintainer: Fabio Loli <loli_fabio@protonmail.com>
-# https://github.com/FabioLolix
+# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=quickhash-gui-bin
 _pkgname=quickhash
-pkgver=2.8.4
+_pkgver=3-0-2
+pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="QuickHash is an open-source Linux GUI that enables hashing of files, text, entire folder trees of files, and physical disks"
-arch=('i686' 'x86_64')
-url="http://quickhash-gui.org/"
-license=('GPL2')
-depends=('gtk2')
-provides=('quickhash-gui')
-conflicts=('quickhash-gui' 'quickhash-gui-bin')
-source=("https://sourceforge.net/projects/lolix-remix-of-manjaro/files/AUR_pkg/mirror/${_pkgname}-$pkgver-debian.zip")
-md5sums=('bd01e2e70218cf25bcf2536e84ae65f5')
+arch=(i686 x86_64)
+url="https://quickhash-gui.org/"
+license=(GPL2)
+depends=(gtk2)
+provides=(quickhash-gui)
+conflicts=(quickhash-gui quickhash-gui-bin)
+source=("quickhash-gui-${pkgver}.zip::https://quickhash-gui.org/download/quickhash-v3-0-2-debian-packages-for-linux/?wpdmdl=1658")
+md5sums=('96fb68e77aaac9c91e5943a1463c52c8')
+
 package() {
 if [[ "${CARCH}" = 'i686' ]]; then
         bsdtar -xf ${_pkgname}_${pkgver}-1_i386.deb
@@ -21,5 +22,6 @@ if [[ "${CARCH}" = 'i686' ]]; then
 if [[ "${CARCH}" = 'x86_64' ]]; then
         bsdtar -xf ${_pkgname}_${pkgver}-1_amd64.deb
     fi
-bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}/"
+
+  bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}/"
 }
