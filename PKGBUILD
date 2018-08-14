@@ -1,26 +1,22 @@
 # Maintainer: Alex Branham <branham@utexas.edu>
-_cranname=ModelMetrics
-_cranver=1.1.0
-_pkgtar=${_cranname}_${_cranver}.tar.gz
+_cranver=1.2.0
 pkgname=r-modelmetrics
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc="Rapid Calculation of Model Metrics"
+pkgdesc='Rapid Calculation of Model Metrics'
 arch=('x86_64')
-url="https://cran.r-project.org/package=${_cranname}"
+url='https://cran.r-project.org/package=ModelMetrics'
 license=('GPL')
-depends=('r' 'r-rcpp')
-
+depends=('r' 'r-rcpp' 'r-data.table')
 optdepends=('r-testthat')
-
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('d43175001f0531b8810d2802d76b7b44')
+source=("https://cran.r-project.org/src/contrib/ModelMetrics_"$_cranver".tar.gz")
+md5sums=('5d75d0f6aa6339c67549d5c1bc0c1727')
 
 build(){
-    R CMD INSTALL ${_pkgtar} -l $srcdir
+    R CMD INSTALL ModelMetrics_"$_cranver".tar.gz -l "$srcdir"
 }
 package() {
-    install -d "$pkgdir/usr/lib/R/library"
-    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
+    install -dm0755 "$pkgdir"/usr/lib/R/library
+    cp -a --no-preserve=ownership ModelMetrics "$pkgdir"/usr/lib/R/library
 }
 

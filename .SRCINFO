@@ -1,15 +1,16 @@
 pkgbase = r-modelmetrics
 	pkgdesc = Rapid Calculation of Model Metrics
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=ModelMetrics
 	arch = x86_64
 	license = GPL
 	depends = r
 	depends = r-rcpp
+	depends = r-data.table
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/ModelMetrics_1.1.0.tar.gz
-	md5sums = d43175001f0531b8810d2802d76b7b44
+	source = https://cran.r-project.org/src/contrib/ModelMetrics_1.2.0.tar.gz
+	md5sums = 5d75d0f6aa6339c67549d5c1bc0c1727
 
 pkgname = r-modelmetrics
 
