@@ -1,7 +1,7 @@
 # Maintainer: alicewww <aliceweigt@gmail.com>
 # Co-Maintainer: None
 # This package is maintained using the assistance of PKGBUILD-Updater (available on github)
-pkgname=mullvad
+pkgname=mullvad-old
 pkgver=67
 pkgrel=1
 pkgdesc="Old VPN Client for Mullvad.net, a bitcoin-friendly VPN for anonymity and privacy"
