@@ -1,6 +1,6 @@
 pkgbase = perl-string-format
 	pkgdesc = sprintf-like string formatting capabilities with
-	pkgver = 1.17
+	pkgver = 1.18
 	pkgrel = 1
 	url = http://search.cpan.org/dist/String-Format
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = perl-string-format
 	license = GPL
 	depends = perl
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/D/DA/DARREN/String-Format-1.17.tar.gz
-	md5sums = 5635b975740122bab326ff2186cc97fb
-	sha512sums = 9d003483858d1681d6955b8620cbba649fe8b92c318b29c5dd684857d81320cb35fbb50e537545d1dfd1e3abc9f94acf9263b82442759e55fd686bd6e907a9f6
+	source = https://cpan.metacpan.org/authors/id/S/SR/SREZIC/String-Format-1.18.tar.gz
+	md5sums = 64174b4fac230228cadfa2be4410ef1a
+	sha512sums = 34eb3991a9bea931f59ca1683ba72d8b07244ed4c2a9409be0626346526b4eb2ab07acdd5c4eabf44a767867a4991e97d89835eb0e4c3c43b413de75eb3c0d5d
 
 pkgname = perl-string-format
 

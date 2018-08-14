@@ -1,9 +1,10 @@
+# Maintainer: Simon Legner <Simon.Legner@gmail.com>
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
 # Generator  : CPANPLUS::Dist::Arch 1.25
 
-pkgname='perl-string-format'
-pkgver='1.17'
-pkgrel='1'
+pkgname=perl-string-format
+pkgver=1.18
+pkgrel=1
 pkgdesc="sprintf-like string formatting capabilities with"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -11,10 +12,10 @@ options=('!emptydirs')
 depends=('perl')
 makedepends=()
 url='http://search.cpan.org/dist/String-Format'
-source=('http://search.cpan.org/CPAN/authors/id/D/DA/DARREN/String-Format-1.17.tar.gz')
-md5sums=('5635b975740122bab326ff2186cc97fb')
-sha512sums=('9d003483858d1681d6955b8620cbba649fe8b92c318b29c5dd684857d81320cb35fbb50e537545d1dfd1e3abc9f94acf9263b82442759e55fd686bd6e907a9f6')
-_distdir="String-Format-1.17"
+source=('https://cpan.metacpan.org/authors/id/S/SR/SREZIC/String-Format-1.18.tar.gz')
+md5sums=('64174b4fac230228cadfa2be4410ef1a')
+sha512sums=('34eb3991a9bea931f59ca1683ba72d8b07244ed4c2a9409be0626346526b4eb2ab07acdd5c4eabf44a767867a4991e97d89835eb0e4c3c43b413de75eb3c0d5d')
+_distdir="String-Format-1.18"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
