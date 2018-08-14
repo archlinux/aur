@@ -1,19 +1,19 @@
-# Maintainer: Yen Chi Hsuan <yan12125 at gmail>
+# Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
 # Contributor: Jerome Leclanche <jerome@leclan.ch>
 
 _pkgname=lxqt-notificationd
 pkgname=$_pkgname-git
-pkgver=0.12.0.1.g3ed7511
+pkgver=0.12.0.5.g549013c
 pkgrel=1
 pkgdesc="LXQt notification daemon and library."
 arch=("i686" "x86_64")
-url="http://lxqt.org"
+url="https://lxqt.org"
 license=("LGPL2.1")
 depends=("qt5-base" "liblxqt-git" "kwindowsystem")
 makedepends=("git" "cmake" "qt5-tools" "lxqt-build-tools-git")
 provides=("$_pkgname" "notification-daemon")
 conflicts=("$_pkgname")
-source=("git+https://github.com/lxde/$_pkgname.git")
+source=("git+https://github.com/lxqt/$_pkgname.git")
 sha256sums=('SKIP')
 
 

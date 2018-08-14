@@ -1,8 +1,8 @@
 pkgbase = lxqt-notificationd-git
 	pkgdesc = LXQt notification daemon and library.
-	pkgver = 0.12.0.1.g3ed7511
+	pkgver = 0.12.0.5.g549013c
 	pkgrel = 1
-	url = http://lxqt.org
+	url = https://lxqt.org
 	arch = i686
 	arch = x86_64
 	license = LGPL2.1
@@ -16,7 +16,7 @@ pkgbase = lxqt-notificationd-git
 	provides = lxqt-notificationd
 	provides = notification-daemon
 	conflicts = lxqt-notificationd
-	source = git+https://github.com/lxde/lxqt-notificationd.git
+	source = git+https://github.com/lxqt/lxqt-notificationd.git
 	sha256sums = SKIP
 
 pkgname = lxqt-notificationd-git
