@@ -1,14 +1,14 @@
 pkgbase = logcat-color
 	pkgdesc = A colorful alternative to "adb logcat"
 	pkgver = 0.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/marshall/logcat-color
 	arch = any
 	license = Apache
 	makedepends = python2-setuptools
 	depends = python2-colorama
-	source = https://pypi.python.org/packages/source/l/logcat-color/logcat-color-0.6.0.tar.gz
-	sha256sums = ca66de3271f5b08fa267b25ad89b5d295ccc5d658f51e764d4f5753fc0d980cb
+	source = https://github.com/marshall/logcat-color/archive/v0.6.0.tar.gz
+	sha256sums = 029e23bcea63b91d099b46c552a379dd5a8eb22cefc1fadf38b7b077f8a74c51
 
 pkgname = logcat-color
 
