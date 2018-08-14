@@ -1,8 +1,8 @@
 pkgbase = lxqt-globalkeys-git
 	pkgdesc = LXQt daemon and library for global keyboard shortcuts registration.
-	pkgver = 0.12.0
+	pkgver = 0.12.0.10.g658ac82
 	pkgrel = 1
-	url = http://lxqt.org
+	url = https://lxqt.org
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -13,7 +13,7 @@ pkgbase = lxqt-globalkeys-git
 	depends = liblxqt-git
 	provides = lxqt-globalkeys
 	conflicts = lxqt-globalkeys
-	source = git+https://github.com/lxde/lxqt-globalkeys.git
+	source = git+https://github.com/lxqt/lxqt-globalkeys.git
 	sha256sums = SKIP
 
 pkgname = lxqt-globalkeys-git
