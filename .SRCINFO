@@ -32,10 +32,8 @@ pkgbase = buildbot-git
 	depends = python-pyjwt
 	source = git+https://github.com/buildbot/buildbot.git
 	source = skip-linux-distro-test.patch
-	source = buildbot-py37.patch::https://github.com/buildbot/buildbot/pull/4254.patch
 	sha256sums = SKIP
 	sha256sums = 42fc2a771034c4134006ed18b52916e668aba3e2046b2fe188c7abcb3cffc0a5
-	sha256sums = 78628cff9f91d161f7951f61924ca1e69f5f0ba559c1b397b542de3ca915ed0a
 
 pkgname = buildbot-git
 

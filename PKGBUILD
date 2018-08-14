@@ -22,11 +22,9 @@ checkdepends=('python-treq' 'python-boto3' 'python-mock' 'python-moto'
               "buildbot-pkg-git=$pkgver" "buildbot-worker-git=$pkgver"
               'openssh')
 source=(git+https://github.com/buildbot/buildbot.git
-        skip-linux-distro-test.patch
-        buildbot-py37.patch::https://github.com/buildbot/buildbot/pull/4254.patch)
+        skip-linux-distro-test.patch)
 sha256sums=('SKIP'
-            '42fc2a771034c4134006ed18b52916e668aba3e2046b2fe188c7abcb3cffc0a5'
-            '78628cff9f91d161f7951f61924ca1e69f5f0ba559c1b397b542de3ca915ed0a')
+            '42fc2a771034c4134006ed18b52916e668aba3e2046b2fe188c7abcb3cffc0a5')
 
 pkgver() {
   cd buildbot
@@ -39,7 +37,6 @@ pkgver() {
 prepare() {
   cd buildbot
 
-  patch -Np1 -i ../buildbot-py37.patch
   # This test relies on VERSION_ID field in /etc/os-release. On Arch Linux this
   # field is missing.
   patch -Np1 -i ../skip-linux-distro-test.patch
