@@ -13,6 +13,7 @@ _pkgver=4.4.138_1094
 
 _desc="AArch64 for Rock64. This package will fetch a Debian built kernel as a temporary workaround for USB 3.0 fixes."
 pkgbase=linux-aarch64-rock64-bin
+pkgname=('linux-aarch64-rock64-bin' 'linux-aarch64-rock64-bin-headers')
 pkgver="${_pkgver}"
 pkgrel=1
 arch=('aarch64')
@@ -56,7 +57,7 @@ prepare() {
   tar -xf data.tar.xz 
 }
 
-_package() {
+package_linux-aarch64-rock64-bin() {
   pkgdesc="The Linux Kernel and modules - ${_desc}"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
@@ -107,11 +108,12 @@ _package() {
 
 }
 
-_package-headers() {
+package_linux-aarch64-rock64-bin-headers() {
   pkgdesc="Header files and scripts for building modules for linux kernel - ${_desc}"
   provides=("linux-headers=${pkgver}")
   replaces=('linux-armv8-headers')
   conflicts=('linux-headers')
+  optdepends=('linux-aarch64-rock64-bin')
 
   KARCH=arm64
   
@@ -152,10 +154,3 @@ _package-headers() {
   # remove unneeded architectures
   rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arc,arm,arm26,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,x86,xtensa}
 }
-
-pkgname=("${pkgbase}" "${pkgbase}-headers")
-for _p in ${pkgname[@]}; do
-  eval "package_${_p}() {
-    _package${_p#${pkgbase}}
-  }"
-done

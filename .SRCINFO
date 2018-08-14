@@ -8,8 +8,8 @@ pkgbase = linux-aarch64-rock64-bin
 	depends = linux-firmware
 	depends = kmod
 	depends = mkinitcpio>=0.7
+	provides = kernel26
 	provides = linux=4.4.138_1094
-	provides = linux-aarch64=4.4.138_1094
 	conflicts = linux
 	conflicts = linux-aarch64
 	conflicts = linux-arch64-rc
@@ -28,6 +28,25 @@ pkgbase = linux-aarch64-rock64-bin
 	sha256sums = c87f3c6d4fa19319d5f81b65a45d62ab71e570bdf549c7e6c0f89292dcb5174f
 
 pkgname = linux-aarch64-rock64-bin
+	pkgdesc = The Linux Kernel and modules - AArch64 for Rock64. This package will fetch a Debian built kernel as a temporary workaround for USB 3.0 fixes.
+	install = linux-aarch64-rock64-bin.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	provides = linux=4.4.138_1094
+	provides = linux-aarch64=4.4.138_1094
+	conflicts = linux
+	conflicts = linux-aarch64
+	conflicts = linux-arch64-rc
+	replaces = linux-armv8
+	backup = etc/mkinitcpio.d/linux-aarch64-rock64-bin.preset
 
 pkgname = linux-aarch64-rock64-bin-headers
+	pkgdesc = Header files and scripts for building modules for linux kernel - AArch64 for Rock64. This package will fetch a Debian built kernel as a temporary workaround for USB 3.0 fixes.
+	optdepends = linux-aarch64-rock64-bin
+	provides = linux-headers=4.4.138_1094
+	conflicts = linux-headers
+	replaces = linux-armv8-headers
 
