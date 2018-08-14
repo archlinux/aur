@@ -2,7 +2,7 @@
 
 _pkgname=TextEdit
 pkgname=textedit.app
-pkgrel=1
+pkgrel=2
 pkgver=264
 pkgdesc='GNUstep port of OS X 10.6 TextEdit'
 arch=('i686' 'x86_64' 'armv7h')
