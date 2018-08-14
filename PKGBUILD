@@ -2,7 +2,7 @@
 
 pkgname=magic-wormhole
 pkgver=0.10.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Securely transfer data between computers"
 arch=('any')
 url="https://pypi.python.org/pypi/${pkgname}/${pkgver}"
