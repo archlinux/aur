@@ -3,9 +3,8 @@
 # Previous Maintainer: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=gtkhtml4-git
-_pkgbasename=gtkhtml
 pkgver=latest
-pkgrel=2
+pkgrel=3
 pkgdesc="A lightweight HTML renderer/editor widget for GTK3"
 arch=(i686 x86_64)
 license=('GPL')
@@ -19,10 +18,16 @@ depends=('cairo>=1.10.0'
          'iso-codes>=0.49')
 makedepends=('intltool')
 url='https://github.com/GNOME/gtkhtml'
-source=("${pkgname/-git/}::git+https://github.com/GNOME/${_pkgbasename}.git"
+source=("${pkgname/-git/}::git+https://github.com/GNOME/${pkgname/4-git/}.git"
         'enchant-2.patch')
 sha256sums=('SKIP'
             '2b78f071f7893e19618959443f3775bd435941a37ea9198b2fe72b596c205891')
+
+pkgver() {
+	cd "${pkgname/-git/}"
+	# https://wiki.archlinux.org/index.php/VCS_package_guidelines#The_pkgver.28.29_function
+	git describe --long 2>/dev/null | sed 's/GTKHTML_//; s/\([^-]*-g\)/r\1/; s/[-_]/./g'
+}
 
 prepare() {
 	cd "${pkgname/-git/}"

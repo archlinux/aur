@@ -1,7 +1,7 @@
 pkgbase = gtkhtml4-git
 	pkgdesc = A lightweight HTML renderer/editor widget for GTK3
 	pkgver = latest
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/GNOME/gtkhtml
 	arch = i686
 	arch = x86_64
