@@ -1,103 +1,3 @@
-From 66a37293bf1ec5bf9d22ede72818099f2c72fbc1 Mon Sep 17 00:00:00 2001
-From: Serge Hallyn <serge.hallyn@canonical.com>
-Date: Fri, 31 May 2013 19:12:12 +0100
-Subject: [PATCH 1/5] add sysctl to disallow unprivileged CLONE_NEWUSER by
- default
-
-Signed-off-by: Serge Hallyn <serge.hallyn@ubuntu.com>
-[bwh: Remove unneeded binary sysctl bits]
-Signed-off-by: Daniel Micay <danielmicay@gmail.com>
----
- kernel/fork.c           | 15 +++++++++++++++
- kernel/sysctl.c         | 12 ++++++++++++
- kernel/user_namespace.c |  3 +++
- 3 files changed, 30 insertions(+)
-
-diff --git a/kernel/fork.c b/kernel/fork.c
-index 5ad558e6f8fe9..767485c6f7cc4 100644
---- a/kernel/fork.c
-+++ b/kernel/fork.c
-@@ -103,6 +103,11 @@
- 
- #define CREATE_TRACE_POINTS
- #include <trace/events/task.h>
-+#ifdef CONFIG_USER_NS
-+extern int unprivileged_userns_clone;
-+#else
-+#define unprivileged_userns_clone 0
-+#endif
- 
- /*
-  * Minimum number of threads to boot the kernel
-@@ -1600,6 +1605,10 @@ static __latent_entropy struct task_struct *copy_process(
- 	if ((clone_flags & (CLONE_NEWUSER|CLONE_FS)) == (CLONE_NEWUSER|CLONE_FS))
- 		return ERR_PTR(-EINVAL);
- 
-+	if ((clone_flags & CLONE_NEWUSER) && !unprivileged_userns_clone)
-+		if (!capable(CAP_SYS_ADMIN))
-+			return ERR_PTR(-EPERM);
-+
- 	/*
- 	 * Thread groups must share signals as well, and detached threads
- 	 * can only be started up within the thread group.
-@@ -2394,6 +2403,12 @@ int ksys_unshare(unsigned long unshare_flags)
- 	if (unshare_flags & CLONE_NEWNS)
- 		unshare_flags |= CLONE_FS;
- 
-+	if ((unshare_flags & CLONE_NEWUSER) && !unprivileged_userns_clone) {
-+		err = -EPERM;
-+		if (!capable(CAP_SYS_ADMIN))
-+			goto bad_unshare_out;
-+	}
-+
- 	err = check_unshare_flags(unshare_flags);
- 	if (err)
- 		goto bad_unshare_out;
-diff --git a/kernel/sysctl.c b/kernel/sysctl.c
-index 6a78cf70761db..35a1d24282f4b 100644
---- a/kernel/sysctl.c
-+++ b/kernel/sysctl.c
-@@ -105,6 +105,9 @@ extern int core_uses_pid;
- extern char core_pattern[];
- extern unsigned int core_pipe_limit;
- #endif
-+#ifdef CONFIG_USER_NS
-+extern int unprivileged_userns_clone;
-+#endif
- extern int pid_max;
- extern int pid_max_min, pid_max_max;
- extern int percpu_pagelist_fraction;
-@@ -519,6 +522,15 @@ static struct ctl_table kern_table[] = {
- 		.proc_handler	= proc_dointvec,
- 	},
- #endif
-+#ifdef CONFIG_USER_NS
-+	{
-+		.procname	= "unprivileged_userns_clone",
-+		.data		= &unprivileged_userns_clone,
-+		.maxlen		= sizeof(int),
-+		.mode		= 0644,
-+		.proc_handler	= proc_dointvec,
-+	},
-+#endif
- #ifdef CONFIG_PROC_SYSCTL
- 	{
- 		.procname	= "tainted",
-diff --git a/kernel/user_namespace.c b/kernel/user_namespace.c
-index 246d4d4ce5c70..f64432b45cec2 100644
---- a/kernel/user_namespace.c
-+++ b/kernel/user_namespace.c
-@@ -26,6 +26,9 @@
- #include <linux/bsearch.h>
- #include <linux/sort.h>
- 
-+/* sysctl */
-+int unprivileged_userns_clone;
-+
- static struct kmem_cache *user_ns_cachep __read_mostly;
- static DEFINE_MUTEX(userns_state_mutex);
- 
-
 From 43b90cfd95ec0ffd122eff4cce103a49d132c298 Mon Sep 17 00:00:00 2001
 From: Jani Nikula <jani.nikula@intel.com>
 Date: Wed, 16 May 2018 11:01:10 +0300
@@ -158,7 +58,7 @@ Link: https://patchwork.freedesktop.org/patch/msgid/20180516080110.22770-1-jani.
  6 files changed, 8 insertions(+), 45 deletions(-)
 
 diff --git a/drivers/gpu/drm/i915/intel_dp.c b/drivers/gpu/drm/i915/intel_dp.c
-index cd6e87756509a..492b0cb9bb2b2 100644
+index cd6e87756509..492b0cb9bb2b 100644
 --- a/drivers/gpu/drm/i915/intel_dp.c
 +++ b/drivers/gpu/drm/i915/intel_dp.c
 @@ -1674,23 +1674,6 @@ static int intel_dp_compute_bpp(struct intel_dp *intel_dp,
@@ -240,7 +140,7 @@ index cd6e87756509a..492b0cb9bb2b2 100644
  	intel_panel_setup_backlight(connector, pipe);
  
 diff --git a/drivers/gpu/drm/i915/intel_drv.h b/drivers/gpu/drm/i915/intel_drv.h
-index 04d2774fe0ac5..bc0ee1015ea99 100644
+index 04d2774fe0ac..bc0ee1015ea9 100644
 --- a/drivers/gpu/drm/i915/intel_drv.h
 +++ b/drivers/gpu/drm/i915/intel_drv.h
 @@ -269,7 +269,6 @@ struct intel_encoder {
@@ -260,7 +160,7 @@ index 04d2774fe0ac5..bc0ee1015ea99 100644
  void intel_panel_fini(struct intel_panel *panel);
  void intel_fixed_panel_mode(const struct drm_display_mode *fixed_mode,
 diff --git a/drivers/gpu/drm/i915/intel_dsi.c b/drivers/gpu/drm/i915/intel_dsi.c
-index 384b37e2da70e..f349b39201993 100644
+index 384b37e2da70..f349b3920199 100644
 --- a/drivers/gpu/drm/i915/intel_dsi.c
 +++ b/drivers/gpu/drm/i915/intel_dsi.c
 @@ -1852,7 +1852,7 @@ void intel_dsi_init(struct drm_i915_private *dev_priv)
@@ -273,7 +173,7 @@ index 384b37e2da70e..f349b39201993 100644
  
  	intel_dsi_add_properties(intel_connector);
 diff --git a/drivers/gpu/drm/i915/intel_dvo.c b/drivers/gpu/drm/i915/intel_dvo.c
-index 6604806f89d5a..61d908e0df0e2 100644
+index 6604806f89d5..61d908e0df0e 100644
 --- a/drivers/gpu/drm/i915/intel_dvo.c
 +++ b/drivers/gpu/drm/i915/intel_dvo.c
 @@ -542,7 +542,7 @@ void intel_dvo_init(struct drm_i915_private *dev_priv)
@@ -286,7 +186,7 @@ index 6604806f89d5a..61d908e0df0e2 100644
  		}
  
 diff --git a/drivers/gpu/drm/i915/intel_lvds.c b/drivers/gpu/drm/i915/intel_lvds.c
-index 34dd1e5233ace..48f618dc9abbb 100644
+index 34dd1e5233ac..48f618dc9abb 100644
 --- a/drivers/gpu/drm/i915/intel_lvds.c
 +++ b/drivers/gpu/drm/i915/intel_lvds.c
 @@ -1180,8 +1180,7 @@ void intel_lvds_init(struct drm_i915_private *dev_priv)
@@ -300,7 +200,7 @@ index 34dd1e5233ace..48f618dc9abbb 100644
  
  	lvds_encoder->is_dual_link = compute_is_dual_link_lvds(lvds_encoder);
 diff --git a/drivers/gpu/drm/i915/intel_panel.c b/drivers/gpu/drm/i915/intel_panel.c
-index 41d00b1603e30..b443278e569ce 100644
+index 41d00b1603e3..b443278e569c 100644
 --- a/drivers/gpu/drm/i915/intel_panel.c
 +++ b/drivers/gpu/drm/i915/intel_panel.c
 @@ -1928,13 +1928,11 @@ intel_panel_init_backlight_funcs(struct intel_panel *panel)
@@ -328,192 +228,6 @@ index 41d00b1603e30..b443278e569ce 100644
  	if (panel->downclock_mode)
  		drm_mode_destroy(intel_connector->base.dev,
  				panel->downclock_mode);
+-- 
+2.18.0
 
-From 7bb20c91fc051b79bcd774030b6c900c29e325d4 Mon Sep 17 00:00:00 2001
-From: Mika Westerberg <mika.westerberg@linux.intel.com>
-Date: Tue, 22 May 2018 14:16:50 +0300
-Subject: [PATCH 3/5] ACPI / watchdog: Prefer iTCO_wdt always when WDAT table
- uses RTC SRAM
-
-After we added quirk for Lenovo Z50-70 it turns out there are at least
-two more systems where WDAT table includes instructions accessing RTC
-SRAM. Instead of quirking each system separately, look for such
-instructions in the table and automatically prefer iTCO_wdt if found.
-
-Link: https://bugzilla.kernel.org/show_bug.cgi?id=199033
-Reported-by: Arnold Guy <aurnoldg@gmail.com>
-Reported-by: Alois Nespor <nespor@fssp.cz>
-Reported-by: Yury Pakin <zxwarior@gmail.com>
-Reported-by: Ihor Chyhin <ihorchyhin@ukr.net>
-Signed-off-by: Mika Westerberg <mika.westerberg@linux.intel.com>
-Acked-by: Guenter Roeck <linux@roeck-us.net>
----
- drivers/acpi/acpi_watchdog.c | 72 ++++++++++++++++++++++--------------
- 1 file changed, 45 insertions(+), 27 deletions(-)
-
-diff --git a/drivers/acpi/acpi_watchdog.c b/drivers/acpi/acpi_watchdog.c
-index 4bde16fb97d88..95600309ce420 100644
---- a/drivers/acpi/acpi_watchdog.c
-+++ b/drivers/acpi/acpi_watchdog.c
-@@ -12,35 +12,51 @@
- #define pr_fmt(fmt) "ACPI: watchdog: " fmt
- 
- #include <linux/acpi.h>
--#include <linux/dmi.h>
- #include <linux/ioport.h>
- #include <linux/platform_device.h>
- 
- #include "internal.h"
- 
--static const struct dmi_system_id acpi_watchdog_skip[] = {
--	{
--		/*
--		 * On Lenovo Z50-70 there are two issues with the WDAT
--		 * table. First some of the instructions use RTC SRAM
--		 * to store persistent information. This does not work well
--		 * with Linux RTC driver. Second, more important thing is
--		 * that the instructions do not actually reset the system.
--		 *
--		 * On this particular system iTCO_wdt seems to work just
--		 * fine so we prefer that over WDAT for now.
--		 *
--		 * See also https://bugzilla.kernel.org/show_bug.cgi?id=199033.
--		 */
--		.ident = "Lenovo Z50-70",
--		.matches = {
--			DMI_MATCH(DMI_SYS_VENDOR, "LENOVO"),
--			DMI_MATCH(DMI_PRODUCT_NAME, "20354"),
--			DMI_MATCH(DMI_PRODUCT_VERSION, "Lenovo Z50-70"),
--		},
--	},
--	{}
--};
-+#ifdef CONFIG_RTC_MC146818_LIB
-+#include <linux/mc146818rtc.h>
-+
-+/*
-+ * There are several systems where the WDAT table is accessing RTC SRAM to
-+ * store persistent information. This does not work well with the Linux RTC
-+ * driver so on those systems we skip WDAT driver and prefer iTCO_wdt
-+ * instead.
-+ *
-+ * See also https://bugzilla.kernel.org/show_bug.cgi?id=199033.
-+ */
-+static bool acpi_watchdog_uses_rtc(const struct acpi_table_wdat *wdat)
-+{
-+	const struct acpi_wdat_entry *entries;
-+	int i;
-+
-+	entries = (struct acpi_wdat_entry *)(wdat + 1);
-+	for (i = 0; i < wdat->entries; i++) {
-+		const struct acpi_generic_address *gas;
-+
-+		gas = &entries[i].register_region;
-+		if (gas->space_id == ACPI_ADR_SPACE_SYSTEM_IO) {
-+			switch (gas->address) {
-+			case RTC_PORT(0):
-+			case RTC_PORT(1):
-+			case RTC_PORT(2):
-+			case RTC_PORT(3):
-+				return true;
-+			}
-+		}
-+	}
-+
-+	return false;
-+}
-+#else
-+static bool acpi_watchdog_uses_rtc(const struct acpi_table_wdat *wdat)
-+{
-+	return false;
-+}
-+#endif
- 
- static const struct acpi_table_wdat *acpi_watchdog_get_wdat(void)
- {
-@@ -50,9 +66,6 @@ static const struct acpi_table_wdat *acpi_watchdog_get_wdat(void)
- 	if (acpi_disabled)
- 		return NULL;
- 
--	if (dmi_check_system(acpi_watchdog_skip))
--		return NULL;
--
- 	status = acpi_get_table(ACPI_SIG_WDAT, 0,
- 				(struct acpi_table_header **)&wdat);
- 	if (ACPI_FAILURE(status)) {
-@@ -60,6 +73,11 @@ static const struct acpi_table_wdat *acpi_watchdog_get_wdat(void)
- 		return NULL;
- 	}
- 
-+	if (acpi_watchdog_uses_rtc(wdat)) {
-+		pr_info("Skipping WDAT on this system because it uses RTC SRAM\n");
-+		return NULL;
-+	}
-+
- 	return wdat;
- }
- 
-
-From 0edeffbcce2711999349fe02599d196fa922c5aa Mon Sep 17 00:00:00 2001
-From: Denis Kenzior <denkenz@gmail.com>
-Date: Tue, 19 Jun 2018 10:39:50 -0500
-Subject: [PATCH 4/5] mac80211: disable BHs/preemption in
- ieee80211_tx_control_port()
-
-On pre-emption enabled kernels the following print was being seen due to
-missing local_bh_disable/local_bh_enable calls.  mac80211 assumes that
-pre-emption is disabled in the data path.
-
-    BUG: using smp_processor_id() in preemptible [00000000] code: iwd/517
-    caller is __ieee80211_subif_start_xmit+0x144/0x210 [mac80211]
-    [...]
-    Call Trace:
-    dump_stack+0x5c/0x80
-    check_preemption_disabled.cold.0+0x46/0x51
-    __ieee80211_subif_start_xmit+0x144/0x210 [mac80211]
-
-Fixes: 911806491425 ("mac80211: Add support for tx_control_port")
-Signed-off-by: Denis Kenzior <denkenz@gmail.com>
-[commit message rewrite, fixes tag]
-Signed-off-by: Johannes Berg <johannes.berg@intel.com>
----
- net/mac80211/tx.c | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/net/mac80211/tx.c b/net/mac80211/tx.c
-index 05a265cd573d4..7404a51145977 100644
---- a/net/mac80211/tx.c
-+++ b/net/mac80211/tx.c
-@@ -4800,7 +4800,9 @@ int ieee80211_tx_control_port(struct wiphy *wiphy, struct net_device *dev,
- 	skb_reset_network_header(skb);
- 	skb_reset_mac_header(skb);
- 
-+	local_bh_disable();
- 	__ieee80211_subif_start_xmit(skb, skb->dev, flags);
-+	local_bh_enable();
- 
- 	return 0;
- }
-
-From d697907ebaadd66196d13f46ab948baec942b107 Mon Sep 17 00:00:00 2001
-From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
-Date: Thu, 9 Aug 2018 13:54:03 +0200
-Subject: [PATCH 5/5] Arch Linux kernel v4.17.14-arch1
-
----
- Makefile | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/Makefile b/Makefile
-index ce4248f558d14..e3b36190778ac 100644
---- a/Makefile
-+++ b/Makefile
-@@ -2,7 +2,7 @@
- VERSION = 4
- PATCHLEVEL = 17
- SUBLEVEL = 11
--EXTRAVERSION =
-+EXTRAVERSION = -arch1
- NAME = Merciless Moray
- 
- # *DOCUMENTATION*

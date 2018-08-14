@@ -71,7 +71,7 @@ _localmodcfg=
 pkgbase=linux-ck
 _srcver=4.17.11-arch1
 pkgver=${_srcver%-*}
-pkgrel=4
+pkgrel=6
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -88,7 +88,11 @@ source=(
   linux.preset   # standard config files for mkinitcpio ramdisk
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz" # enable_additional_cpu_optimizations_for_gcc
   "http://ck.kolivas.org/patches/4.0/4.17/4.17-ck${_ckpatchversion}/${_ckpatchname}.xz"
-  0001-ARCH_patches-20180809.patch
+  0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
+  0002-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
+  0003-ACPI-watchdog-Prefer-iTCO_wdt-always-when-WDAT-table.patch
+  0004-mac80211-disable-BHs-preemption-in-ieee80211_tx_cont.patch
+  0005-Arch-Linux-kernel-v4.17.14-arch1.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -97,12 +101,16 @@ validpgpkeys=(
 sha256sums=('db1e84ed4f213b43d50f3373627b2ffcdb3b65f3430f746a38f801554ef3728c'
             'SKIP'
             '3453b5c4c7ce4b44f611050f95488e272119539f812dfde0667fe9c66402fd9b'
-            '36e326d8a88b4087a3a0ee0d47643fc03baeda487659980d0e9d08791e4c729c'
+            'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
             '6a0e9cce53da8c55161d01920cc02a09a3b70a60f1050ec91fafd9bb59cb6bb4'
-            'f1db9d4b6051e217969ab99d8ddedde4ca48c061d89fe535c04e6b4384506955')
+            'd7bb2655c3fb94639e2e944df64559111db71fcefb30c93a2427f6ea8ef9ce02'
+            'e4cf27e521701cb691384575e9bad853faae49b330d45337ff6f7edf407d3144'
+            '1321cbd6e2967a4f76d70d567de23b1e71639a0c6b924d371eb827af3c41a474'
+            '08d998cbbe3b51ac8a506775b0fb2c62e19d0f1ec28af56bd019f8b2b80d239d'
+            'daa0d2ef905d20b7ffdac6701083079adf0f6178c1f32a98f95ac0333e132c0c')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
