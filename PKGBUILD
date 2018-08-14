@@ -7,8 +7,8 @@
 pkgname=inox-dev
 pk=dnox
 name=chromium
-pkgver=70.0.3514.0
-pkgrel=2
+pkgver=70.0.3520.0
+pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
@@ -117,7 +117,7 @@ https://raw.githubusercontent.com/bn0785ac/in-dev/master/desu.patch
 )
 
 
-sha256sums=('204987876e9243b607688ff43fcaed4379873d97ffddb953fd1f1963e4294b0a'
+sha256sums=('8d7b1f1779d52f43a544349eda01bd2b22af24a947a2ad41102d648cf00b781b'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             'f636b4f57c85634a40f2bdf66bcd7080a730a088a791d8dbf54c7f8c14d6d6af'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -155,7 +155,7 @@ sha256sums=('204987876e9243b607688ff43fcaed4379873d97ffddb953fd1f1963e4294b0a'
             '0a148b0a15a63feb08ed79695a80d09ad39db7a3373b217cd499909218b94fda'
             '9465f89adc5b177050fd154b3be459f167fd3e157a1ebc0537b29070f0dbda5d'
             '5a4ec61000266fd623e0a3377210ed324ed62eeba6c61ecd95ffb49d4d20640f'
-            '19d30e8a8c2afd9bcfd2845ebaa7245aff59ad14b1d3a5388522ad8ae48e0c6d'
+            '4aaeaa4113a7d95816ddf678b36ca2d268e7ff12c52e4702ff30ca794626013f'
             '8aa6928dfeec97b5a2c2b22e1abda42fd0e57b6c480356c12ca4726a59f12fa8'
             '2acda9e5de0efa71c8347eb490bcae7993ae28dceaba406a0dafb50110539ba2'
             '66ff55dce4ebefdf0030c5cccfbf1dc4e269c681ad9e23d7be5df17c0a884858'
@@ -179,7 +179,7 @@ sha256sums=('204987876e9243b607688ff43fcaed4379873d97ffddb953fd1f1963e4294b0a'
             '51ee1c87a7889f9fae1fd0ecad57d97394cc89b1cea83bafdbaa8992a87e6561'
             '97aacef479160113f763217df130a72c7b467e27ae556866d2c039965e77bc71'
             '2c7a6274bfe2afcaa4186d421a0690ac2bc0015e8bc80e3a589f04b4931a030f'
-            '0c78e8e15d0780dd096e0b72876e3816cf77155a8cb476a6db6fcdf06fe3a321'
+            'e99372f8b32ed58a2564eb11f55fe8b5b8d2ad92c53caf1d4b54d8d2b818e01e'
             '54d4471bec9e4390e1d2c562a6a3278bf44deb65d01fe5fb8f1477e67e8a957a'
             '0848fe30322bfb6dd7c06110f5d8468f1ce68caf6cd6a184b531cc9653f21420'
             'cdc55ec692caffb02fba826308c6e39b0045674460098bda085237f2123798a0'
@@ -189,7 +189,7 @@ sha256sums=('204987876e9243b607688ff43fcaed4379873d97ffddb953fd1f1963e4294b0a'
             'a31bfe021beb091a37252a443c452ba6f3bc50299f237f47880ae5163d014b28'
             'c367599e25bd9d408d52dd26ceec9f0048b0991cc74980c8c40d602e61a2a844'
             'b54a69d6eeb03bf56e5a6430cbc07fd8d12532709876d38828e4c455eca29e3b'
-            '4b78aa9824a87d83a9ad9ebae6dd78dbf83d9c592d3e5477fd58936dda40bdef'
+            '9e3cfae2857defe22dc5b377beee5aaec808acc8088d5f75b5cf7d3a4b8c9ded'
             'a0fc68d001dc6bad673997394184112eed59b74b8e6bbcd173db55402c95c121'
             'fb3abae54309adf69b98bd2435fbc23f17bc526dbf1d1e97907da87e7cf0aeed'
             'fb7c96ecf7f97fd6d356b8ca714efc518fc5bf40d92a23a5ff1ad8462d56b248'
@@ -214,6 +214,7 @@ sha256sums=('204987876e9243b607688ff43fcaed4379873d97ffddb953fd1f1963e4294b0a'
             '70f49d5b69641669c24d0532fb723b5ef1313a56224f41bf35bf6bb07fc93974'
             'cd4c8fa8294f542a3fea1dd3df4a0a7370723f7139e5c59ec53f4ed639976d80'
             'a00a82e7c6e692c695971b2bf462442076975ebb42d9b66009d8e8489465c29e')
+
 
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
