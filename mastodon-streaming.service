@@ -1,11 +1,11 @@
 [Unit]
-Description=mastodon-streaming
+Description=Mastodon streaming API service
 After=network.target
 
 [Service]
 Type=simple
 User=mastodon
-WorkingDirectory=/var/lib/mastodon/live
+WorkingDirectory=/var/lib/mastodon
 Environment="NODE_ENV=production"
 Environment="PORT=4000"
 ExecStart=/usr/bin/npm run start

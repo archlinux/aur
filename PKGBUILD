@@ -1,47 +1,42 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=mastodon-git
 pkgver=1.2.2_22_ga0ed88a9
 _branch=master
-pkgrel=0.4
-pkgdesc="A GNU Social-compatible microblogging server"
-arch=('i686' 'x86_64')
-url="https://mastodon.social"
-license=('AGPL-3.0')
+pkgrel=1
+pkgdesc='Free software social network server based on ActivityPub and OStatus'
+arch=(i686 x86_64)
+url=https://joinmastodon.org
+license=(AGPL3)
+depends=(ffmpeg
+         imagemagick
+         libpqxx
+         libxml2
+         libxslt
+         nodejs-lts-boron
+         postgresql
+         redis
+         ruby-bundler
+         protobuf)
+makedepends=(yarn python2 rsync)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" "${pkgname%-git}-docker" "${pkgname%-git}-docker-git")
-makedepends=(
-    'yarn'
-    'ruby-bundler>=1.14.6'
-    'protobuf'
-    )
-depends=(
-    'ffmpeg'
-    'imagemagick'
-    'libpqxx'
-    'libxml2'
-    'libxslt'
-    'nodejs'
-    'postgresql'
-    'redis'
-    'ruby>=2.4.0'
-    )
-source=(
-    "git://github.com/tootsuite/${pkgname%-git}.git#branch=$_branch"
-    "mastodon-web.service"
-    "mastodon-sidekiq.service"
-    "mastodon-streaming.service"
-    "mastodon.target"
-    )
-backup=("etc/mastodon/env.production")
-sha256sums=('SKIP'
-            '2b3a22149ee88c4bacf83aa1958b06fc791057089737596b35b6e1968b1443aa'
-            '5f72e3ee2921f8b760bac614d910a3c36334ebfefdfd4ba0c9058e21d8537c73'
-            '5a7bd6a66b93480468483205a12640317f5df5de3b4b4b6fcee38976bff606e4'
-            '0920e862a1ad598022743381f2b0a38c3c745c7e1a6566c3fe51275bbef82e72')
 install=mastodon.install
+source=("git://github.com/tootsuite/${pkgname%-git}.git#branch=$_branch"
+        "mastodon-web.service"
+        "mastodon-sidekiq.service"
+        "mastodon-streaming.service"
+        "mastodon.target"
+    )
+# backup=("etc/mastodon/env.production")
+sha512sums=('SKIP'
+            'b7b197e4badc4efd0e1ac5c41a8505c2c3ca03b6f2b690b6e78b66365bfab4c168b4034feb693787a3ab48cc29a0e6448895394db670a146399e7f91c6b473f1'
+            '603a7877288c762855a29fd2399d3ff7d218a7f1b7d6378cad7f30048cdbfe2a13f2ed2b5c94cb683bdcaead8cd47243e564a2ae70d7f21fa33f295c5396f4f7'
+            '90a0761b7709659bec6f29c366c503fdd348226cbb585cf4f6eaa065854e2027d08ab3b352eb13ad7c0e327d662f13bc00fb4163ea0c583ef55b1795ab2e0b31'
+            'c9820c2a83d08bd5d842a78e924682db97ebd5c7291b682603ad30dafcdcc5816c13e717ad39554f042b9d9ed71ab902ce3f604952264a900a72612ee8060acb')
 _user=mastodon
-_homedir=/var/lib/mastodon
+_homedir=/var/lib/${pkgname%-git}
 _shell=/bin/false
 
 pkgver() {
@@ -49,51 +44,16 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/-/_/g'
 }
 
-prepare() {
+build() {
   cd "${pkgname%-git}"
   bundle install --deployment --without development test
   yarn install
 }
 
-build() {
-  cd "${pkgname%-git}"
-  RAILS_ENV=production bundle exec rake mastodon:setup
-}
-
-post_install() {
-  sed -i -e "/^PAPERCLIP_SECRET=\$/s/\$/$(rake secret)/" \
-         -e "/^SECRET_KEY_BASE=\$/s/\$/$(rake secret)/" \
-         -e "/^OTP_SECRET=\$/s/\$/$(rake secret)/" \
-         -e "/^REDIS_HOST=redis\$/s/redis\$/localhost/" \
-         -e "/^DB_HOST=db\$/s/redis\$/localhost/" \
-      /etc/mastodon/env.production
-
-  echo "1. Configure your instance:"
-  echo "    $ vim /etc/mastodon/env.production"
-  echo ""
-  echo "2. Create a postgres user for mastodon:"
-  echo "    $ sudo -u postgres psql"
-  echo "    > CREATE USER mastodon CREATEDB;"
-  echo ""
-  echo "3. Then setup the database for the first time:"
-  echo "    $ cd ~mastodon && sudo -u mastodon RAILS_ENV=production bundle exec rails db:setup"
-  echo ""
-  echo "4. Create an administrator account:"
-  echo "    $ cd ~mastodon && sudo -u mastodon RAILS_ENV=production bundle exec rails mastodon:make_admin USERNAME=<username>"
-  echo ""
-  echo "5. Enable and start instance:"
-}
-
-post_upgrade() {
-  cd ~mastodon && sudo -u mastodon RAILS_ENV=production bundle exec rails db:migrate
-}
-
 package() {
-  cd "${pkgname%-git}"
+  install -Dm 644 -t "$pkgdir"/usr/lib/systemd/system mastodon-{web,sidekiq,streaming}.service mastodon.target
+  install -d "${pkgdir}/${_homedir}"
+  rsync -av --exclude '.git' ${pkgname%-git}/ "${pkgdir}/${_homedir}/"
 
-  install -Dm 644 .env.production.sample ${pkgdir}/etc/mastodon/env.production
-
-  for service in mastodon-{web,sidekiq,streaming}.service mastodon.target; do
-    install -Dm644 "${srcdir}/${service}" "${pkgdir}/usr/lib/systemd/system/${service}"
-  done
+  # install -Dm 644 .env.production.sample ${pkgdir}/etc/mastodon/env.production
 }

@@ -1,11 +1,11 @@
 [Unit]
-Description=mastodon-sidekiq
+Description=Mastodon background queue service
 After=network.target
 
 [Service]
 Type=simple
 User=mastodon
-WorkingDirectory=/var/lib/mastodon/live
+WorkingDirectory=/var/lib/mastodon
 Environment="RAILS_ENV=production"
 Environment="DB_POOL=5"
 ExecStart=/usr/bin/bundle exec sidekiq -c 5 -q default -q mailers -q pull -q push

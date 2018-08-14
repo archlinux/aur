@@ -3,6 +3,57 @@ _homedir=/var/lib/mastodon
 _shell=/bin/false
 
 post_install() {
-    getent group ${_user} > /dev/null || groupadd ${_user} > /dev/null
-    getent passwd ${_user} > /dev/null || useradd -d ${_homedir} -g ${_user} -s ${_shell} ${_user} > /dev/null
+    getent group ${_user} > /dev/null ||
+        groupadd -r ${_user} > /dev/null
+    getent passwd ${_user} > /dev/null ||
+        useradd -rd ${_homedir} -g ${_user} -s ${_shell} ${_user} > /dev/null
+    chown -R ${_user}:${_user} ${_homedir}
+
+  # sed -i -e "/^PAPERCLIP_SECRET=\$/s/\$/$(rake secret)/" \
+  #        -e "/^SECRET_KEY_BASE=\$/s/\$/$(rake secret)/" \
+  #        -e "/^OTP_SECRET=\$/s/\$/$(rake secret)/" \
+  #        -e "/^REDIS_HOST=redis\$/s/redis\$/localhost/" \
+  #        -e "/^DB_HOST=db\$/s/redis\$/localhost/" \
+  #     /etc/mastodon/env.production
+  
+    cat <<- EOF
+    To setup Mastodon, enable and start PostgreSQL and Redis:
+    # systemctl enable --now postgresql redis
+    Create the Mastodon PostgreSQL user and grant it the ability to create databases with:
+    # su - postgres -s /bin/sh -c "createdb -d mastodon"
+    Then, run:
+    # su - mastodon -s /bin/sh -c "cd '/var/lib/mastodon'; RAILS_ENV=production bundle exec rails mastodon:setup"
+    Finally, enable and start all the required services:
+    # systemctl enable --now mastodon.target
+    EOF
+
+  # echo "1. Configure your instance:"
+  # echo "    $ vim /etc/mastodon/env.production"
+  # echo ""
+  # echo "2. Create a postgres user for mastodon:"
+  # echo "    $ sudo -u postgres psql"
+  # echo "    > CREATE USER mastodon CREATEDB;"
+  # echo ""
+  # echo "3. Then setup the database for the first time:"
+  # echo "    $ cd ~mastodon && sudo -u mastodon RAILS_ENV=production bundle exec rails db:setup"
+  # echo ""
+  # echo "4. Create an administrator account:"
+  # echo "    $ cd ~mastodon && sudo -u mastodon RAILS_ENV=production bundle exec rails mastodon:make_admin USERNAME=<username>"
+  # echo ""
+  # echo "5. Enable and start instance:"
+}
+
+post_upgrade() {
+    chown -R ${_user}:${_user} ${_homedir}
+
+    cat <<- EOF
+    To upgrade the database schema, run:
+    # su - mastodon -s /bin/sh -c "RAILS_ENV=production bundle exec rails db:migrate"
+    To pre-compile assets, run:
+    # su - mastodon -s /bin/sh -c "RAILS_ENV=production bundle exec rails assets:precompile"
+    EOF
+}
+
+post_remove() {
+  echo 'You may want to remove the Mastodon user.'
 }
