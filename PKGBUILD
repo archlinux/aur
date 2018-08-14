@@ -2,7 +2,7 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=mastodon-git
-pkgver=1.2.2_22_ga0ed88a9
+pkgver=2.4.3_85_g018a9e4e7
 _branch=master
 pkgrel=1
 pkgdesc='Free software social network server based on ActivityPub and OStatus'
