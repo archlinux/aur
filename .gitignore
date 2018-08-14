@@ -1,0 +1,6 @@
+pkg/
+src/
+godot/
+gdosc/
+godot-osc-git-*.tar.xz
+.AURINFO
