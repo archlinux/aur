@@ -2,7 +2,7 @@
 
 pkgbase=swift-language
 pkgname=(swift swift-lldb)
-_swiftver=4.1-RELEASE
+_swiftver=4.1.3-RELEASE
 pkgver=${_swiftver//-RELEASE/}
 pkgrel=1
 pkgdesc="The Swift programming language and debugger"
@@ -27,19 +27,21 @@ source=(
     "swift-corelibs-libdispatch-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-libdispatch/archive/swift-${_swiftver}.tar.gz"
     "swift-compiler-rt-${_swiftver}.tar.gz::https://github.com/apple/swift-compiler-rt/archive/swift-${_swiftver}.tar.gz"
     "swift-integration-tests-${_swiftver}.tar.gz::https://github.com/apple/swift-integration-tests/archive/swift-${_swiftver}.tar.gz"
+    "0001-sanitizer-Use-pre-computed-size-of-struct-ustat.patch"
 )
-sha256sums=('f957f107b8e726b80c66a4902b769b0c3795e7bfde1af2e1c833948f6398acdb'
-            'c8632074d178e04abc9ab3becb40618373c1b6f810053e18ddd7ff91dbbc8a48'
-            'e03c4508f714837c54da39a1c45ce78110c47428d970bbdde3ebc12068c15da2'
-            'b246dda82e3e151b5e76944812a83323a61320378e5d34aa87eff67bbf0a224e'
-            '21fc799d557838cc730e8e4e833cee18fea5e5733bdda6212f75c9331b9461ac'
-            '88f2451e8c78a27ea18379b0062eb8e4fc961fca3089b5d485b6ceaeb7f67360'
-            'fcb4f55349143b9e8ad5ba0a5237beaa93a2bc42844ebb3d85c6df8a01e14142'
-            'cbcf4ebc75660f0bc7d3c32f6e4a7909b3616ecbf156ad7134beeb09a890a2dd'
-            '5ec606f2776e2ea1a23a3c0e1ca6844c02ac4f17a9ec8cffa5d85c2970f1dab0'
-            '73e2385be9a61f6168b7e98ab8c2370bc976c43bbe8577a44be371db45368137'
-            '2110384f8cfa97334d4b9a2a17b1966b286189fb3a1526db8f2382c8872df189'
-            '5718fdad339a6b8c0cd671fd4f840288103adb458651a902694a9f89a6c00ac7')
+sha256sums=('3b1b6666744c5d74c8581820d33a4653f241929e8c42e25a7f4354c4a7ae3b00'
+            '3d51d1b66c5706deb78e394f2751ea0bb1caa1eaf4fda61bacaaae7eafbb79be'
+            '73001677afb29fcac692aa94b1b91ae9c99310df37b84bb00c832da4872617a4'
+            'a2690836e4e9a767fac9fc172693b2ce58f770c4e0b0dc13ae269618e1f057ef'
+            '49a8c9407a0dea12dc5377a79e76f740466b1d69eb31ff6b4979ecf5f515a583'
+            '15c5a8efa87343134cef485f07a9999c8d38cfbdf3cc6bc4fec9f479db5cbb1c'
+            '7b655c994c092bf88245775e77d4c4d39f6d880cab59b67d2290df02505ed355'
+            '9fa49cc67e8d3daef5061a347cbd0ab8ffe30cb05d525341988c517f43b90999'
+            'ca4b76ebfcd9e9c72e08da6c75e0a6b2350ae0961bd89a85e48839dc35ce51ca'
+            'd0afe2441574743687c74a0b5b30090f57af0ab436d5e2e6d19c2dd83363a779'
+            'd0ea7a395137cb488979570deeb63cd767c5da6af63c132f3f8ba623ffc571d3'
+            '74fabb7cd667b4cd64d589fb570fc03aa0a3b0c6835afc0692b29d275fbdbccc'
+            '5cd08c3a83c71e552fa2fd9ec8b076fbd25ba5450b9ecd59a0c877a9c9407b34')
 
 prepare() {
     # Use python2 where appropriate
@@ -66,6 +68,9 @@ prepare() {
     done
     ln -sf swift-swift-${_swiftver} swift
     ln -sf swift-package-manager-swift-${_swiftver} swiftpm
+
+    # Backport compiler-rt SVN r333213
+    ( cd compiler-rt && patch -p1 -i "$srcdir/0001-sanitizer-Use-pre-computed-size-of-struct-ustat.patch" )
 }
 
 _common_build_params=(
@@ -79,7 +84,8 @@ _common_build_params=(
 )
 
 _build_script_wrapper() {
-    # Makepkg now adds -fno-plt to C(XX)FLAGS by default, which clang doesn't understand
+    # Makepkg now adds -fno-plt to C(XX)FLAGS by default, which clang-5.0
+    # (built within swift's sources) doesn't understand
     export CFLAGS=$(echo "$CFLAGS" | sed -e 's/\(\W\+\|^\)-fno-plt\b//')
     export CXXFLAGS=$(echo "$CXXFLAGS" | sed -e 's/\(\W\+\|^\)-fno-plt\b//')
 
