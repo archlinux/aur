@@ -2,17 +2,17 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=pachi
-pkgver=12.00
+pkgver=12.10
 _pkgcodename=jowa
-pkgrel=2
+pkgrel=1
 pkgdesc="A reasonably strong engine for the board game go" 
 arch=('i686' 'x86_64')
 depends=('glibc')
 url="http://pachi.or.cz/"
 license=('GPL')
 source=("https://github.com/pasky/pachi/archive/$pkgname-$pkgver-$_pkgcodename.tar.gz" makefile.patch)
-sha256sums=('d409e939ce8f72f0118febc42039fa1d42548b0324ebdf7e6df1fef9deb15bb2'
-            'b58e883f873c0617c89fe12f8dbf0792158baff976456e73cae6a0526236f167')
+sha256sums=('0a303f41c5cb87cabd6aa31fc47fd8d2d25eaf142a8c8ab23ecb6663e74df4af'
+            '23113ff4493ccb9b63f5a7f9a25f197b6d8aaf538b659acf4b1d124312ccf0bc')
 options=('!makeflags')
 
 prepare() {
