@@ -1,6 +1,6 @@
 pkgbase = linux-aarch64-rock64-bin
 	pkgver = 4.4.138_1094
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ayufan-rock64/linux-kernel
 	arch = aarch64
 	license = GPL2

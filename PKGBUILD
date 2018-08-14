@@ -15,7 +15,7 @@ _desc="AArch64 for Rock64. This package will fetch a Debian built kernel as a te
 pkgbase=linux-aarch64-rock64-bin
 pkgname=('linux-aarch64-rock64-bin' 'linux-aarch64-rock64-bin-headers')
 pkgver="${_pkgver}"
-pkgrel=1
+pkgrel=2
 arch=('aarch64')
 url="https://github.com/ayufan-rock64/linux-kernel"
 license=('GPL2')
@@ -73,7 +73,7 @@ package_linux-aarch64-rock64-bin() {
   cp -r boot "${pkgdir}/boot"
   cp "boot/vmlinuz-${_kernver}" "${pkgdir}/boot/Image"
   mkdir -p "${pkgdir}/boot/dtbs/rockchip"
-  mv "usr/lib/linux-image-${_kernver}/rockchip" "${pkgdir}/boot/dtbs/rockchip"
+  mv "usr/lib/linux-image-${_kernver}/rockchip" "${pkgdir}/boot/dtbs/"
 
   # copy kernel files
   mkdir -p "${pkgdir}/usr"
@@ -140,6 +140,7 @@ package_linux-aarch64-rock64-bin-headers() {
   find "${pkgdir}/usr/lib/modules/${_kernver}/build" -type d -exec chmod 755 {} \;
 
   # strip scripts directory
+  echo "Runing strip on some files found in headers 'script' directory, it's safe to ignore errors after this point"
   find "${pkgdir}/usr/lib/modules/${_kernver}/build/scripts" -type f -perm -u+w 2>/dev/null | while read binary ; do
     case "$(file -bi "${binary}")" in
       *application/x-sharedlib*) # Libraries (.so)
