@@ -1,6 +1,6 @@
 pkgbase = libchewing-git
 	pkgdesc = Intelligent Chinese phonetic input method
-	pkgver = 0.5.1.r73.g7282e05
+	pkgver = 0.5.1.r74.g3df07c9
 	pkgrel = 1
 	epoch = 1
 	url = http://chewing.im/

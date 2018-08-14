@@ -1,9 +1,9 @@
-# Maintainer: Yen Chi Hsuan <yan12125 at gmail.com>
+# Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
 # Contributor: Yushin Huang <hyslion AT gmail.com>
 
 _pkgname=libchewing
 pkgname=libchewing-git
-pkgver=0.5.1.r73.g7282e05
+pkgver=0.5.1.r74.g3df07c9
 pkgrel=1
 epoch=1
 pkgdesc='Intelligent Chinese phonetic input method'
