@@ -45,5 +45,7 @@ package() {
         cd network-manager-fortisslvpn/
 
         make DESTDIR="${pkgdir}" install
+
+        chmod a+rx "${pkgdir}"/var/lib/NetworkManager-fortisslvpn
 }
 
