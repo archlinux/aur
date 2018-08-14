@@ -27,3 +27,15 @@
  }
  
  void EnchantChecker::ignoreWord (const UT_UCSChar *toCorrect, size_t toCorrectLen)
+
+--- abiword-3.0.2/configure	2018-08-14 17:58:49.176036155 +0100
++++ abiword-3.0.2/configure	2018-08-14 17:57:54.396998207 +0100
+@@ -4197,7 +4197,7 @@
+ "
+ 
+ # optional deps
+-enchant_req='enchant >= 1.2.0'
++enchant_req='enchant-2 >= 1.2.0'
+ gio_req='gio-2.0'
+ goffice_req='libgoffice-0.10 >= 0.10.0'
+ 
