@@ -7,7 +7,7 @@
 
 pkgname=phantomjs
 pkgver=2.1.1
-pkgrel=12
+pkgrel=13
 pkgdesc='Headless WebKit with JavaScript API'
 url='http://www.phantomjs.org/'
 license=('BSD' 'LGPL' 'MIT')
@@ -29,19 +29,15 @@ prepare() {
   cd $pkgname-$pkgver
 
   rmdir src/qt/qt{base,webkit}
-  ln -s ../../../qtbase-$_qtbase_commit src/qt/qtbase
-  ln -s ../../../qtwebkit-$_qtwebkit_commit src/qt/qtwebkit
+  mv ../qtbase-$_qtbase_commit src/qt/qtbase
+  mv ../qtwebkit-$_qtwebkit_commit src/qt/qtwebkit
+  # Make qt build like a git clone
+  # https://bugreports.qt.io/browse/QTBUG-32397
+  mkdir src/qt/qt{base,webkit}/.git
 
   patch -Np1 -d src/qt/qtwebkit <../icu59.patch
   mkdir "$srcdir/python2-path"
   ln -s /usr/bin/python2 "$srcdir/python2-path/python"
-
-  # syncqt creates forwarded header files (include/QtCore/...). Normally, it's
-  # run in git checkouts and skipped in stable versions as forwarded headers
-  # are pre-generated. In this package, Qt mistakenly thinks this is a stable
-  # version as .git is missing, so we need to run this command manually.
-  cd src/qt/qtbase
-  ./bin/syncqt.pl -minimal -module QtCore "$srcdir/$pkgname-$pkgver/src/qt/qtbase"
 }
 
 build() {
