@@ -1,7 +1,8 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
+# Maintainer: fuero <fuerob@gmail.com>
 
 pkgname=lazygit
-pkgver=0.1.55
+pkgver=0.1.59
 pkgrel=1
 pkgdesc="A simple terminal UI for git commands"
 arch=("x86_64")
@@ -9,17 +10,20 @@ url="https://github.com/jesseduffield/${pkgname}"
 license=("MIT")
 depends=("glibc")
 makedepends=("go-pie")
+provides=("lazygit")
+conflicts=("lazygit-git")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jesseduffield/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=("c77f6f2176a850d324992e502e6088a3d2dbc4faa15898af24d68b01e33acef3")
+sha256sums=('011019983746869849cda61142fd199ae357774d9e1a7d07103782c627ae11e3')
+_commit='652237d48fabc401d795e9703c12fd37e2ec478e'
 
 build () {
   echo "Linking to repository path..."
   mkdir -p "${srcdir}/src/github.com/jesseduffield"
-  ln -s "${srcdir}/${pkgname}-${pkgver}" "${srcdir}/src/github.com/jesseduffield/"
-  cd "${srcdir}/src/github.com/jesseduffield/${pkgname}-${pkgver}"
+  ln -s "${srcdir}/${pkgname}-${pkgver}" "${srcdir}/src/github.com/jesseduffield/${pkgname}"
+  cd "${srcdir}/src/github.com/jesseduffield/${pkgname}"
   
   echo "Building..."
-  GOPATH="${srcdir}" PATH="$PATH:$GOPATH/bin" go build -x -i -v -ldflags "-X main.commit=${pkgver##*.} -X main.date=$(date -u +%Y%m%d.%H%M%S) -X main.version=$(cat VERSION).${pkgver##*.}" -o "${pkgname}.bin"
+  GOPATH="${srcdir}" PATH="$PATH:$GOPATH/bin" go build -x -i -v -ldflags "-X main.commit=${_commit:0:7} -X main.date=$(date -u +%Y%m%d.%H%M%S) -X main.version=${pkgver}" -o "${pkgname}.bin"
   
   echo "Removing link..."
   rm -rf "${srcdir}/src"
