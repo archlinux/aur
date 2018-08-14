@@ -1,4 +1,4 @@
-# Maintainer: Yen Chi Hsuan
+# Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
 # Contributor: Penguin <TGates81.at.gmail.dot.com>
 
 _pkgname=pylzma
@@ -6,7 +6,7 @@ pkgname=python2-$_pkgname
 pkgver=0.4.9
 pkgrel=1
 pkgdesc="Platform independent python bindings for the LZMA compression library"
-url="http://www.joachim-bauch.de/projects/python/pylzma"
+url="https://www.joachim-bauch.de/projects/pylzma/"
 license=("LGPL2.1")
 arch=(i686 x86_64)
 depends=('python2')
