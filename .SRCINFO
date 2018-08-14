@@ -10,6 +10,7 @@ pkgbase = networkmanager-fortisslvpn-git
 	makedepends = intltool
 	makedepends = python
 	makedepends = xorgproto
+	makedepends = pkg-config
 	depends = networkmanager
 	depends = nm-connection-editor
 	depends = openfortivpn
