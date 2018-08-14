@@ -1,7 +1,7 @@
 # Maintainer: Yuval Adam <yuval at y3xz dot com> PGP-Key: 271386AA2EB7672F
 
 pkgname=libosmo-sccp
-pkgver=0.0.6.3
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Osmocom library for SCCP"
 arch=('any')
