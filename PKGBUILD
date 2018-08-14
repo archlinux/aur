@@ -6,13 +6,13 @@ pkgver=0.13.0
 pkgrel=1
 pkgdesc="Common base library for LXQt components."
 arch=("i686" "x86_64")
-url="http://lxqt.org"
+url="https://lxqt.org"
 license=("GPL2")
 depends=("qt5-base" "qt5-x11extras" "kwindowsystem" "libqtxdg-git" "libxss" "polkit-qt5")
 makedepends=("git" "cmake" "qt5-tools" "lxqt-build-tools-git")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+https://github.com/lxde/$_pkgname.git")
+source=("git+https://github.com/lxqt/$_pkgname.git")
 sha256sums=('SKIP')
 
 

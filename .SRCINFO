@@ -2,7 +2,7 @@ pkgbase = liblxqt-git
 	pkgdesc = Common base library for LXQt components.
 	pkgver = 0.13.0
 	pkgrel = 1
-	url = http://lxqt.org
+	url = https://lxqt.org
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -18,7 +18,7 @@ pkgbase = liblxqt-git
 	depends = polkit-qt5
 	provides = liblxqt
 	conflicts = liblxqt
-	source = git+https://github.com/lxde/liblxqt.git
+	source = git+https://github.com/lxqt/liblxqt.git
 	sha256sums = SKIP
 
 pkgname = liblxqt-git
