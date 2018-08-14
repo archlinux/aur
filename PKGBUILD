@@ -1,8 +1,8 @@
 # Maintainer: pappy <pappy _AT_ a s c e l i o n _DOT_ com>
 
 pkgname=lxdui
-pkgver=2.1.1
-pkgrel=2
+pkgver=2.1.2
+pkgrel=1
 pkgdesc="Web UI for the native Linux container technology LXD/LXC"
 arch=(x86_64)
 url="https://github.com/AdaptiveScale/lxdui"
@@ -36,7 +36,7 @@ source=($pkgname-$pkgver.tar.gz::https://github.com/AdaptiveScale/$pkgname/archi
 		0010-paths.patch
 		)
 
-sha256sums=('d537f589d8433931f251071dff0cd15cb24cf3b6a6ce6932430991043bf4e8e4'
+sha256sums=('a9354d2f2c9fa2c3dd9e9f69407d3cda435ab86572536c518272d25dcd599ebe'
             'e419e1ecb8bec84fd676e7a729d91b48065a3a7616956bc5356e64e6d8286eac'
             'b149cf164d32659b95802d0e4e455e98736de0d0ece519c48eae2eb846c35f3c'
             '0f1eca29cbdfc2aeceeb37ece9d6cdfce19503307bd2de3803cf8de2b8139a2c'
@@ -77,7 +77,9 @@ package() {
 	install -Dm644 $pkgname.service $pkgdir/usr/lib/systemd/system/$pkgname.service
 	install -Dm644 $pkgname.tmpfiles $pkgdir/usr/lib/tmpfiles.d/$pkgname.conf
 
-	mv $pkgdir/usr/lib/$pkgname/lib/python3.6/site-packages/LXDUI-$pkgver-py3.6.egg/conf/* $pkgdir/etc/$pkgname
+	PYVER=$($pkgdir/usr/lib/$pkgname/bin/python --version|cut -d\  -f2|cut -d. -f1,2)
+
+	mv $pkgdir/usr/lib/$pkgname/lib/python$PYVER/site-packages/LXDUI-$pkgver-py$PYVER.egg/conf/* $pkgdir/etc/$pkgname
 	chmod 600 $pkgdir/etc/$pkgname/auth.conf
 }
 
