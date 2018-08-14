@@ -3,13 +3,14 @@
 pkgname=skypat
 _pkgname=SkyPat
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A C++ unit and performance testing framework'
 arch=('i686' 'x86_64')
 url='https://skypat.skymizer.com/'
 license=('custom:BSD')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/skymizer/SkyPat/archive/v${pkgver}.tar.gz")
 sha256sums=('882342ada942057f6296162d137015e2ce0595d3fb3198a506b5b51bfa6e7420')
+options=('staticlibs')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
