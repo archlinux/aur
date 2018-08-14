@@ -1,11 +1,19 @@
 # Maintainer: Yunhui Fu <yhfudev@gmail.com>
 
-USE_DEV=1
+USE_DEV=0
+VER_RELEASE=3.28
 
-pkgname=ns3-hg
-pkgver=r13735
+pkgbase=ns3-hg
+pkgver=r13737
 pkgrel=1
-pkgdesc='Discrete-event network simulator for Internet systems'
+
+if [ "${USE_DEV}" = "0" ]; then
+pkgbase=ns3
+pkgver=${VER_RELEASE}
+fi
+pkgname=(${pkgbase}{,-netanim})
+
+pkgdesc='Full package for the ns3 -- a Discrete-event network simulator for Internet systems'
 arch=( 'i686' 'x86_64' 'armv6' 'armv6h' 'arm7h' )
 url='http://www.nsnam.org/'
 license=('GPL')
@@ -15,7 +23,7 @@ depends=(
     'doxygen'
     'graphviz' 'imagemagick' 'dia' 'qt4'
     'python2' 'python2-setuptools' 'python2-pydot' 'goocanvas' 'pygoocanvas' 'pygtk' 'python2-pygraphviz'
-    'pygccxml'
+    'pygccxml' 'castxml'
     'openmpi' # MPI for HPC
     'flex' # for nsc
     'valgrind'
@@ -34,8 +42,9 @@ optdepends=(
     'uncrustify' # utils/check-style.py style check program
     )
 provides=('ns3')
+conflicts=('ns3' 'ns-3' 'ns3-full' 'ns3-hg')
 source=(
-    #"https://www.nsnam.org/release/ns-allinone-${pkgver}.tar.bz2"
+    "https://www.nsnam.org/release/ns-allinone-${VER_RELEASE}.tar.bz2"
     "ns3-hg::hg+http://code.nsnam.org/ns-3-allinone"
     "ns3-openflow-hg::hg+http://code.nsnam.org/openflow"
     "ns3-click-git::git+https://github.com/kohler/click"
@@ -69,24 +78,37 @@ pkgver_hg() {
 }
 
 pkgver() {
-    pkgver_hg
+    if [ ! "${USE_DEV}" = "0" ]; then
+        pkgver_hg
+    else
+        echo $pkgver
+    fi
 }
 
 prepare()
 {
-    if [ ! "${USE_DEV}" = "0" ]; then
+    local DN_PYBINDGEN="$srcdir/pybindgen-git"
+    local DN_NETANIM="$srcdir/ns3-netanim-hg"
+    if [ "${USE_DEV}" = "0" ]; then
+        cd "$srcdir/ns-allinone-$pkgver/"
+        local FN=`ls | grep pybindgen`
+        DN_PYBINDGEN="$srcdir/ns-allinone-$pkgver/$FN"
+        FN=`ls | grep netanim`
+        DN_NETANIM="$srcdir/ns-allinone-$pkgver/$FN"
+    fi
+
+    if [ "${USE_DEV}" = "0" ]; then
+        # already include source for netanim, pybindgen, and ns3-xxx
+        cd $srcdir/ns-allinone-$pkgver
+
+        sed '1s|^|#!/usr/bin/env python2\n|' -i ns-$pkgver/bindings/python/wscript
+        sed -e 's|#!/usr/bin/env python$|#!/usr/bin/env python2|g' -i ns-$pkgver/waf
+    else
         # setup: bake, netanim, pybindgen, and ns-3-dev
         cd "${srcdir}/${pkgname}"
 
         sed '1s|^|#!/usr/bin/env python2\n|' -i ${srcdir}/ns3-dev-hg/bindings/python/wscript
         sed -e 's|#!/usr/bin/env python$|#!/usr/bin/env python2|g' -i ${srcdir}/ns3-dev-hg/waf
-    else
-        # already include source for netanim, pybindgen, and ns3-xxx
-        cd $srcdir/ns-allinone-$pkgver
-
-        sed '1s|^|#!/usr/bin/env python2\n|' -i ns3-$pkgver/bindings/python/wscript
-        sed -e 's|#!/usr/bin/env python$|#!/usr/bin/env python2|g' -i ns3-$pkgver/waf
-
     fi
 
     if [ 0 = 1 ]; then
@@ -123,18 +145,15 @@ prepare()
     echo "  waf build ..."
     PYTHON=`which python2` ./waf build
 
-
     echo "compile pybindgen lib support ..."
-    #cd $srcdir/pybindgen-git
-    sed -e 's|#!/usr/bin/env python$|#!/usr/bin/env python2|g' -i ${srcdir}/pybindgen-git/waf
-    cd $srcdir/ns3-hg/pybindgen
+    cd "${DN_PYBINDGEN}"
+    sed -e 's|#!/usr/bin/env python$|#!/usr/bin/env python2|g' -i waf
     grep -rl '/usr/bin/env python' . \
         | xargs sed -e 's|/usr/bin/env python$|/usr/bin/env python2|g' -i
-    echo "  waf configure ..."
-    PYTHON=`which python2` ./waf configure
-    echo "  waf build ..."
-    PYTHON=`which python2` ./waf build
-
+    #echo "  waf configure ..."
+    #PYTHON=`which python2` ./waf configure
+    #echo "  waf build ..."
+    #PYTHON=`which python2` ./waf build
 
     echo "compile click support ..."
     cd $srcdir/ns3-click-git
@@ -174,22 +193,29 @@ prepare()
 
     echo "(NSC) scons ..."
     #python2 scons.py
-    PYTHON=`which python2` SHLIBSUFFIX=.so ./scons.py
+    PYTHON=`which python2` SHLIBSUFFIX=.so ./scons.py -j $(nproc)
 
     fi
 }
 
 build()
 {
-    if [ ! "${USE_DEV}" = "0" ]; then
-        cd "${srcdir}/${pkgname}"
-    else
+    local DN_PYBINDGEN="$srcdir/pybindgen-git"
+    if [ "${USE_DEV}" = "0" ]; then
+        cd "$srcdir/ns-allinone-$pkgver/"
+        local FN=`ls | grep pybindgen`
+        DN_PYBINDGEN="$srcdir/ns-allinone-$pkgver/$FN"
+    fi
+
+    if [ "${USE_DEV}" = "0" ]; then
         cd $srcdir/ns-allinone-$pkgver
+    else
+        cd "${srcdir}/${pkgname}"
     fi
 
     echo "Build ns-3 with build.py ..."
     PYTHON=`which python2` ./build.py \
-        --build-options=--progress \
+        --build-options="--progress -j $(nproc)" \
         --qmake-path=/usr/bin/qmake-qt4 \
         -- \
         -d release -o build-shared \
@@ -199,22 +225,34 @@ build()
         --progress \
         --enable-mpi \
         --enable-sudo \
+        --enable-des-metrics \
+        --force-planetlab \
         --with-nsclick=$srcdir/ns3-click-git \
         --with-openflow=$srcdir/ns3-openflow-hg \
         --with-brite=$srcdir/ns3-brite-hg \
-        --with-pybindgen=$srcdir/pybindgen-git \
         --with-nsc=$srcdir/ns3-nsc-hg \
-        #--enable-examples \
-        #--enable-tests \
-        #$(NULL)
+        "--with-pybindgen=${DN_PYBINDGEN}" \
+        --enable-examples \
+        --enable-tests \
+        $(NULL)
+
+    # replace directory path
+    find . -name "*.pc" | xargs -n 1 sed -e "s|[^[:blank:]\r\n]\+$srcdir[^[:blank:]\r\n]\+||g" -i
 }
 
 build1()
 {
-    if [ ! "${USE_DEV}" = "0" ]; then
-        cd "${srcdir}/${pkgname}/ns-3-dev"
-    else
+    local DN_PYBINDGEN="$srcdir/pybindgen-git"
+    if [ "${USE_DEV}" = "0" ]; then
+        cd "$srcdir/ns-allinone-$pkgver/"
+        local FN=`ls | grep pybindgen`
+        DN_PYBINDGEN="$srcdir/ns-allinone-$pkgver/$FN"
+    fi
+
+    if [ "${USE_DEV}" = "0" ]; then
         cd $srcdir/ns-allinone-$pkgver/ns-$pkgver
+    else
+        cd "${srcdir}/${pkgname}/ns-3-dev"
     fi
     echo "Build ns-3 with waf ..."
     PYTHON=`which python2` ./waf configure \
@@ -225,23 +263,33 @@ build1()
         --progress \
         --enable-mpi \
         --enable-sudo \
+        --enable-des-metrics \
+        --force-planetlab \
         --with-nsclick=$srcdir/ns3-click-git \
         --with-openflow=$srcdir/ns3-openflow-hg \
         --with-brite=$srcdir/ns3-brite-hg \
-        --with-pybindgen=$srcdir/pybindgen-git \
         --with-nsc=$srcdir/ns3-nsc-hg \
-        #--enable-examples \
-        #--enable-tests \
-        #$(NULL)
-    PYTHON=`which python2` ./waf build
+        "--with-pybindgen=${DN_PYBINDGEN}" \
+        --enable-examples \
+        --enable-tests \
+        $(NULL)
+    PYTHON=`which python2` ./waf build --progress -j $(nproc)
+    # replace directory path
+    find . -name "*.pc" | xargs -n 1 sed -e "s|[^[:blank:]\r\n]\+$srcdir[^[:blank:]\r\n]\+||g" -i
 }
 
 verify_build()
 {
-    if [ ! "${USE_DEV}" = "0" ]; then
-        cd "${srcdir}/${pkgname}/ns-3-dev"
-    else
+
+    LIBVER="3-dev"
+    if [ "${USE_DEV}" = "0" ]; then
+        LIBVER="${pkgver}"
+    fi
+
+    if [ "${USE_DEV}" = "0" ]; then
         cd $srcdir/ns-allinone-$pkgver/ns-$pkgver
+    else
+        cd "${srcdir}/${pkgname}/ns-3-dev"
     fi
 
     # openflow
@@ -260,22 +308,81 @@ verify_build()
     # nsc
     # https://www.nsnam.org/docs/models/html/tcp.html?#network-simulation-cradle
     PYTHON=`which python2` ./test.py -s ns3-tcp-interoperability
+
+    g++ -std=c++11 \
+      `pkg-config --cflags libns${LIBVER}-applications libns${LIBVER}-point-to-point` \
+      `pkg-config --libs   libns${LIBVER}-applications libns${LIBVER}-point-to-point` \
+      -o ns3-first examples/tutorial/first.cc
 }
 
-package()
+package_ns3-hg()
 {
-    if [ ! "${USE_DEV}" = "0" ]; then
-        cd "${srcdir}/${pkgname}/ns-3-dev"
-    else
+    if [ "${USE_DEV}" = "0" ]; then
         cd $srcdir/ns-allinone-$pkgver/ns-$pkgver
+    else
+        cd "${srcdir}/${pkgname}/ns-3-dev"
     fi
     PYTHON=`which python2` ./waf install \
         --with-python=`which python2` \
         --destdir=$pkgdir/
 }
 
+package_ns3()
+{
+    if [ "${USE_DEV}" = "0" ]; then
+        cd $srcdir/ns-allinone-$pkgver/ns-$pkgver
+    else
+        cd "${srcdir}/${pkgname}/ns-3-dev"
+    fi
+    PYTHON=`which python2` ./waf install \
+        --with-python=`which python2` \
+        --destdir=$pkgdir/
+}
+
+package_ns3-hg-netanim()
+{
+    pkgdesc='NS 3 NetAnim.'
+    depends=("qt4")
+
+    local LIBVER="3-dev"
+    if [ "${USE_DEV}" = "0" ]; then
+        LIBVER="${pkgver}"
+    fi
+    local DN_NETANIM="$srcdir/ns3-netanim-hg"
+    if [ "${USE_DEV}" = "0" ]; then
+        cd "$srcdir/ns-allinone-$pkgver/"
+        FN=`ls | grep netanim`
+        DN_NETANIM="$srcdir/ns-allinone-$pkgver/$FN"
+    fi
+
+    cd "${DN_NETANIM}"
+    echo "ns3-hg-netanim: pwd=`pwd`"
+    echo "ns3-hg-netanim: ${DN_NETANIM}"
+    install -Dm755 NetAnim ${pkgdir}/usr/bin/ns${LIBVER}-netanim
+}
+
+package_ns3-netanim()
+{
+    local LIBVER="3-dev"
+    if [ "${USE_DEV}" = "0" ]; then
+        LIBVER="${pkgver}"
+    fi
+    local DN_NETANIM="$srcdir/ns3-netanim-hg"
+    if [ "${USE_DEV}" = "0" ]; then
+        cd "$srcdir/ns-allinone-$pkgver/"
+        FN=`ls | grep netanim`
+        DN_NETANIM="$srcdir/ns-allinone-$pkgver/$FN"
+    fi
+
+    cd "${DN_NETANIM}"
+    echo "ns3-netanim: pwd=`pwd`"
+    echo "ns3-netanim: ${DN_NETANIM}"
+    install -Dm755 NetAnim ${pkgdir}/usr/bin/ns${LIBVER}-netanim
+}
+
 #sha1sums=('59a9a3cfd738c48e17253eb7ed2aaccfc1cc498d' 'SKIP' 'SKIP' 'SKIP')
 md5sums=('SKIP' #c1580dbd9bd1f65b3453cd8956d36ae7
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'

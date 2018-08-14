@@ -1,6 +1,6 @@
-pkgbase = ns3-hg
-	pkgdesc = Discrete-event network simulator for Internet systems
-	pkgver = r13735
+pkgbase = ns3
+	pkgdesc = Full package for the ns3 -- a Discrete-event network simulator for Internet systems
+	pkgver = 3.28
 	pkgrel = 1
 	url = http://www.nsnam.org/
 	arch = i686
@@ -33,6 +33,7 @@ pkgbase = ns3-hg
 	depends = pygtk
 	depends = python2-pygraphviz
 	depends = pygccxml
+	depends = castxml
 	depends = openmpi
 	depends = flex
 	depends = valgrind
@@ -43,6 +44,11 @@ pkgbase = ns3-hg
 	optdepends = python2-sphinx
 	optdepends = uncrustify
 	provides = ns3
+	conflicts = ns3
+	conflicts = ns-3
+	conflicts = ns3-full
+	conflicts = ns3-hg
+	source = https://www.nsnam.org/release/ns-allinone-3.28.tar.bz2
 	source = ns3-hg::hg+http://code.nsnam.org/ns-3-allinone
 	source = ns3-openflow-hg::hg+http://code.nsnam.org/openflow
 	source = ns3-click-git::git+https://github.com/kohler/click
@@ -61,6 +67,9 @@ pkgbase = ns3-hg
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
+	md5sums = SKIP
 
-pkgname = ns3-hg
+pkgname = ns3
+
+pkgname = ns3-netanim
 
