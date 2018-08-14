@@ -9,8 +9,7 @@ arch=('i686' 'x86_64')
 url="http://www.nongnu.org/gap/addresses/index.html"
 license=('GPL')
 groups=('gnustep-apps')
-depends=('gnustep-base'
-         'gnustep-gui')
+depends=('gnustep-base' 'gnustep-gui' 'gnustep-back')
 makedepends=('gcc-objc'
              'gnustep-make')
 source=("http://savannah.nongnu.org/download/gap/$_pkgname-$pkgver.tar.gz")
