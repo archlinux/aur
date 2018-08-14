@@ -2,7 +2,7 @@
 pkgname='ripcord-test'
 pkgver=0.3.1
 pkgrel=1
-pkgdesc='Qt-based Discord and Slack client'
+pkgdesc='Latest test version of Ripcord'
 arch=('x86_64')
 url='https://cancel.fm/ripcord/'
 license=('custom')
