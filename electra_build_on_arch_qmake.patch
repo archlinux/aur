@@ -1,5 +1,5 @@
---- electra-wallet-git.original/electra-qt.pro	2018-01-16 22:38:16.338360205 +0100
-+++ electra-wallet-git.new/electra-qt.pro	2018-01-16 22:51:17.306722352 +0100
+--- electra-wallet-git.original/electra-qt.pro	2018-08-14 12:20:38.169553155 +0200
++++ electra-wallet-git.new/electra-qt.pro	2018-08-14 12:22:26.766215488 +0200
 @@ -51,7 +51,12 @@
  
      !windows:!macx {
@@ -14,7 +14,7 @@
      }
  }
  
-@@ -467,7 +472,7 @@
+@@ -467,10 +472,10 @@
  # Set libraries and includes at end, to use platform-defined defaults if not overridden
  INCLUDEPATH += $$BOOST_INCLUDE_PATH $$BDB_INCLUDE_PATH $$OPENSSL_INCLUDE_PATH $$QRENCODE_INCLUDE_PATH
  LIBS += $$join(BOOST_LIB_PATH,,-L,) $$join(BDB_LIB_PATH,,-L,) $$join(OPENSSL_LIB_PATH,,-L,) $$join(QRENCODE_LIB_PATH,,-L,)
@@ -22,4 +22,8 @@
 +LIBS += -l:libdb_cxx$$join(BDB_LIB_SUFFIX,,,.so) -l:libssl.so$$OPENSSL_LIB_SUFFIX -l:libcrypto.so$$OPENSSL_LIB_SUFFIX 
  # -lgdi32 has to happen after -lcrypto (see  #681)
  windows:LIBS += -lws2_32 -lshlwapi -lmswsock -lole32 -loleaut32 -luuid -lgdi32
- LIBS += -lboost_system$$BOOST_LIB_SUFFIX -lboost_filesystem$$BOOST_LIB_SUFFIX -lboost_program_options$$BOOST_LIB_SUFFIX -lboost_thread$$BOOST_THREAD_LIB_SUFFIX
+-LIBS += -lboost_system$$BOOST_LIB_SUFFIX -lboost_filesystem$$BOOST_LIB_SUFFIX -lboost_program_options$$BOOST_LIB_SUFFIX -lboost_thread$$BOOST_THREAD_LIB_SUFFIX
++LIBS += -lboost_system$$BOOST_LIB_SUFFIX -lboost_filesystem$$BOOST_LIB_SUFFIX -lboost_program_options$$BOOST_LIB_SUFFIX -lboost_thread$$BOOST_THREAD_LIB_SUFFIX -lboost_chrono$$BOOST_LIB_SUFFIX
+ windows:LIBS += -lboost_chrono$$BOOST_LIB_SUFFIX
+ 
+ contains(RELEASE, 1) {
