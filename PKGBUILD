@@ -1,11 +1,11 @@
 # Contributor: Graziano Giuliani <graziano.giuliani@gmail.com>
 pkgname=gadap
 pkgver=2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="OPeNDAP access of in situ data." 
 arch=("i686" "x86_64")
 url="http://cola.gmu.edu/grads/gadoc/supplibs.html"
-depends=('libdap')
+depends=('libdap' 'libtirpc')
 options=('staticlibs')
 license=('custom')
 source=(ftp://cola.gmu.edu/grads/Supplibs/2.1/src/${pkgname}-${pkgver}.tar.gz
@@ -26,7 +26,8 @@ build() {
   patch -p1 -i ${srcdir}/test-errors.patch
   rm -f gadap.pc.in
   patch -p1 -i ${srcdir}/pkg-config.patch
-  ./configure --prefix=/usr 
+  ./configure --prefix=/usr CPPFLAGS="$CPPFLAGS -I/usr/include/tirpc" \
+    LIBS=-ltirpc
   make
   make check
 }
