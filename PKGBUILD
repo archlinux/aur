@@ -12,7 +12,7 @@ optdepends=('gksu')
 makedepends=('git')
 conflicts=('woeusb-git')
 provides=('woeusb-git')
-source=("$pkgname-$pkgver::https://github.com/slacka/WoeUSB/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/slacka/WoeUSB/archive/v$pkgver.tar.gz")
 sha256sums=('472746470e7874c81a72d5189f3d1fa9004ba1ea1d3c9715e78b64cbf8fc0948')
 
 prepare() {

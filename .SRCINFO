@@ -15,7 +15,7 @@ pkgbase = woeusb
 	optdepends = gksu
 	provides = woeusb-git
 	conflicts = woeusb-git
-	source = woeusb-3.2.2::https://github.com/slacka/WoeUSB/archive/v3.2.2.tar.gz
+	source = woeusb-3.2.2.tar.gz::https://github.com/slacka/WoeUSB/archive/v3.2.2.tar.gz
 	sha256sums = 472746470e7874c81a72d5189f3d1fa9004ba1ea1d3c9715e78b64cbf8fc0948
 
 pkgname = woeusb
