@@ -2,7 +2,7 @@
 
 _pkgname=GNUMail
 pkgname=gnumail.app
-pkgrel=1
+pkgrel=2
 pkgver=1.3.0
 pkgdesc='A mailclient built using GNUstep and a clone of NeXT Mail.app'
 arch=('i686' 'x86_64' 'armv7h')
