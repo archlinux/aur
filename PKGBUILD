@@ -1,14 +1,14 @@
-# Maintainer: Thomas Ascher <thomas.ascher@gmx.at>
-# Contributor: Thomas Ascher <thomas.ascher@gmx.at>
+# Maintainer: Icarus Mitchellson <mumei AT airmail DOT cc>
+
 pkgname=addresses.app
 _pkgname=Addresses
-pkgrel=1
+pkgrel=2
 pkgver=0.4.8
 pkgdesc="A versatile Address Book application and framework."
 arch=('i686' 'x86_64')
 url="http://www.nongnu.org/gap/addresses/index.html"
 license=('GPL')
-groups=('gnustep')
+groups=('gnustep-apps')
 depends=('gnustep-base'
          'gnustep-gui')
 makedepends=('gcc-objc'

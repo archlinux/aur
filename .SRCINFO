@@ -1,11 +1,11 @@
 pkgbase = addresses.app
 	pkgdesc = A versatile Address Book application and framework.
 	pkgver = 0.4.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nongnu.org/gap/addresses/index.html
 	arch = i686
 	arch = x86_64
-	groups = gnustep
+	groups = gnustep-apps
 	license = GPL
 	makedepends = gcc-objc
 	makedepends = gnustep-make
