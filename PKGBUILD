@@ -2,7 +2,7 @@
 
 _pkgname=godot
 pkgname=${_pkgname}-osc-git
-pkgver=3.1.r15659.c4e75aa63
+pkgver=3.1.r15719.bbdb6cf16
 pkgrel=1
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine (git version with OSC support)"
 url="http://www.godotengine.org"
@@ -41,13 +41,22 @@ prepare() {
 
   ln -sf "${srcdir}/gdosc" modules/gdosc
   cd modules/gdosc
+  git checkout develop
   git submodule update --init
 }
 
 build() {
   cd "${srcdir}/${_pkgname}"
 
-  scons -j$(nproc) target=release_debug platform=x11 use_llvm=yes bits=${_arch}
+  # SCons apparently uses full path for calling the compiler
+  # so we have to tell it to use ccache explicitly.
+  if echo $PATH | grep -q /usr/lib/ccache && test -x /usr/lib/ccache/bin/clang++ ; then
+    CXX=/usr/lib/ccache/bin/clang++
+  else
+    CXX=/usr/bin/clang++
+  fi
+
+  scons -j$(nproc) target=release_debug platform=x11 use_llvm=yes bits=${_arch} CXX=$CXX
 }
 
 package() {
