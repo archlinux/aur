@@ -5,7 +5,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-clojure-mode-git
-pkgver=5.6.1.38.g118c197
+pkgver=5.8.2
 pkgrel=1
 arch=('any')
 pkgdesc="Emacs major mode for the clojure language"
@@ -31,9 +31,9 @@ build() {
 
 package() {
   cd ${pkgname%-git}
-  install -d "${pkgdir}/usr/share/emacs/site-lisp/"
+  install -d "$pkgdir"/usr/share/emacs/site-lisp/
 
   # install the files in directory created above
-  install -m644 clojure-mode.el{,c} -t "${pkgdir}/usr/share/emacs/site-lisp/"
-  install -m644 clojure-mode-extra-font-locking.el -t "${pkgdir}/usr/share/emacs/site-lisp/"
+  install -m644 clojure-mode.el{,c} -t "$pkgdir"/usr/share/emacs/site-lisp/
+  install -m644 clojure-mode-extra-font-locking.el -t "$pkgdir"/usr/share/emacs/site-lisp/
 }
