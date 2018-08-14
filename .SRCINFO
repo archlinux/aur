@@ -1,7 +1,7 @@
 pkgbase = fcode-utils-git
 	pkgdesc = Utilities to process FCODE, OpenFirmware's byte code
 	pkgver = v1.0.2.r20.gd89219a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.openfirmware.info/FCODE_suite
 	arch = i686
 	arch = x86_64
