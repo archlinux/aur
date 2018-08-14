@@ -9,7 +9,7 @@
 
 pkgname=davinci-resolve
 _pkgname=resolve
-pkgver=14.3.1
+pkgver=15.0
 pkgrel=0
 pkgdesc='Professional A/V post-production software suite'
 arch=('x86_64')
@@ -31,7 +31,7 @@ if [ ! -f ${pkgdir}/DaVinci_Resolve_${pkgver}_Linux.zip ]; then
 fi
 
 source=("local://DaVinci_Resolve_${pkgver}_Linux.zip")
-sha256sums=('9f00c18881db9922604e184d0a6cbd47a145ec7ebe04aa5043286e9e755e8551')
+sha256sums=('bdb6c3bce14f40d79a4732c533e3fe23624c68493a8f55586a35a8abe0e6c1d2')
 
 package() {
 #	msg2 "Did you download the archive manually? If not, this will fail."
