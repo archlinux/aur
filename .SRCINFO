@@ -1,8 +1,8 @@
 pkgbase = lxqt-config-git
 	pkgdesc = LXQt system configuration.
-	pkgver = 0.12.0
-	pkgrel = 1
-	url = http://lxqt.org
+	pkgver = 0.12.0.12.g7ac37d2
+	pkgrel = 2
+	url = https://lxqt.org
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -17,7 +17,7 @@ pkgbase = lxqt-config-git
 	depends = hicolor-icon-theme
 	provides = lxqt-config
 	conflicts = lxqt-config
-	source = git+https://github.com/lxde/lxqt-config.git
+	source = git+https://github.com/lxqt/lxqt-config.git
 	sha256sums = SKIP
 
 pkgname = lxqt-config-git
