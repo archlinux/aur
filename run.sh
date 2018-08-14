@@ -1,4 +1,4 @@
 #!/bin/bash
 
-cd /opt/patchbay-git
+cd /opt/patchbay
 exec electron index.js index.js "$@"

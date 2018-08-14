@@ -1,4 +1,5 @@
 pkg
 src
 patchbay
-patchbay-git*.pkg.tar.xz
+patchbay-*.pkg.tar.xz
+v*.*.*.zip
