@@ -4,7 +4,7 @@ pkgname=sensu
 _pkgname=sensu-go
 pkgver=2.0.0beta3.1
 _pkgver=2.0.0-beta.3-1
-pkgrel=5
+pkgrel=6
 pkgdesc="A monitoring framework that aims to be simple, malleable and scalable."
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 url='https://sensu.io'
@@ -18,6 +18,9 @@ md5sums=('SKIP'
          'dddfcec286ee7b0f6241673c4136a12c')
 _gourl=github.com/sensu/sensu-go
 
+warn_build_references() {
+    : # I like __FILE__ and don't consider build references to be a problem
+}
 
 prepare(){
   export GOPATH="${srcdir}/gopath"
@@ -32,7 +35,7 @@ prepare(){
   # apply fix for yarn.lock
   git cherry-pick bc7cc911e37190512c4ff01f541da301e967003a
 
-  mv . "$GOPATH/src/${_gourl}"
+  mv "${srcdir}/sensu-go" "$GOPATH/src/${_gourl}"
 }
 
 build() {
