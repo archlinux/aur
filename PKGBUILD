@@ -1,26 +1,22 @@
 # Maintainer: Alex Branham <branham@utexas.edu>
-_cranname=ipred
-_cranver=0.9-6
-_pkgtar=${_cranname}_${_cranver}.tar.gz
+_cranver=0.9-7
 pkgname=r-ipred
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc="Improved Predictors"
+pkgdesc='Improved Predictors'
 arch=('x86_64')
-url="https://cran.r-project.org/package=${_cranname}"
+url='https://cran.r-project.org/package=ipred'
 license=('GPL')
 depends=('r' 'r-prodlim')
-
 optdepends=('r-mvtnorm' 'r-mlbench' 'r-th.data')
-
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('90676d45838b14249eaeba6df2be65cc')
+source=("https://cran.r-project.org/src/contrib/ipred_"$_cranver".tar.gz")
+md5sums=('99613c15d6ff4c4fd42644de48c05c20')
 
 build(){
-    R CMD INSTALL ${_pkgtar} -l $srcdir
+    R CMD INSTALL ipred_"$_cranver".tar.gz -l "$srcdir"
 }
 package() {
-    install -d "$pkgdir/usr/lib/R/library"
-    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
+    install -dm0755 "$pkgdir"/usr/lib/R/library
+    cp -a --no-preserve=ownership ipred "$pkgdir"/usr/lib/R/library
 }
 
