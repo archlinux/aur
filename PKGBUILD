@@ -10,8 +10,14 @@ license=('custom')
 validpgpkeys=('ABBAD1CB484F53024CF5868B69332F9203F21F5C')
 
 _file="Ripcord-${pkgver}-${CARCH}.AppImage"
-source=("https://cancel.fm/dl/$_file")
-sha256sums=('5510196fbc040ee5e95dfd4685ef0ec97990dbea87a0b142edb972ed83115d71')
+source=(
+	"https://cancel.fm/dl/$_file"
+	"https://cancel.fm/dl/$_file.asc"
+	)
+sha256sums=(
+	'5510196fbc040ee5e95dfd4685ef0ec97990dbea87a0b142edb972ed83115d71'
+	'SKIP'
+	)
 
 # !! AppImage is emptied if symbols are stripped away !!
 options=('!strip')
