@@ -2,13 +2,13 @@
 
 _pkgname=suil
 pkgname="${_pkgname}-git"
-pkgver=0.8.3.r245.57a850c
+pkgver=0.10.0.r292.570e04f
 pkgrel=1
 pkgdesc="A lightweight C library for loading and wrapping LV2 plugin UIs"
 arch=('i686' 'x86_64')
 url="http://drobilla.net/software/suil/"
 license=('custom:ISC')
-makedepends=('subversion' 'python' 'lv2' 'qt4' 'gtk2')
+makedepends=('subversion' 'python2' 'lv2' 'qt4' 'gtk2')
 optdepends=('qt4: Qt 4.x UI wrapping support'
             'qt5-base: Qt 5.x UI wrapping support'
             'gtk2: GTK+ 2.x UI wrapping support')
@@ -28,13 +28,13 @@ pkgver() {
 build() {
   cd "${srcdir}/${_pkgname}"
 
-  python waf configure --prefix=/usr --configdir=/etc
-  python waf
+  python2 waf configure --prefix=/usr --configdir=/etc
+  python2 waf
 }
 
 package() {
   cd "${srcdir}/${_pkgname}"
 
-  python waf install --destdir="${pkgdir}"
+  python2 waf install --destdir="${pkgdir}"
   install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${_svnname}/LICENSE"
 }
