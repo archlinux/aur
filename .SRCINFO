@@ -1,0 +1,17 @@
+pkgbase = python-buildbot-pkg-git
+	pkgdesc = Utilities and common code for building and testing www plugins.
+	pkgver = 1.2.0.r43.g55fc75395
+	pkgrel = 2
+	url = https://buildbot.net
+	arch = any
+	license = GPL
+	checkdepends = python-twisted
+	makedepends = git
+	depends = python-setuptools
+	provides = python-buildbot-pkg=1.2.0.r43.g55fc75395
+	conflicts = python-buildbot-pkg
+	source = git+https://github.com/buildbot/buildbot.git
+	sha256sums = SKIP
+
+pkgname = python-buildbot-pkg-git
+
