@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [ ! -d ~/wg++ ]; then
+	cp -R /usr/share/wg++ ~
+fi
+
+mono /opt/wg++/bin/WebGrab+Plus.exe ~/wg++/
