@@ -1,7 +1,7 @@
 pkgbase = vcash-bin
 	pkgdesc = A decentralized currency for the internet.
 	pkgver = 0.6.0.4
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/openvcash/vcash
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = vcash-bin
 	optdepends = vcash-rpc: rpc command script
 	provides = vcash=0.6.0.4
 	conflicts = vcash
+	validpgpkeys = 3AD44B909DC5AA919BF97768339CB8BE119B90C0
 	source_i686 = https://github.com/openvcash/vcash/releases/download/0.6.0.4/vcashd-0.6.0.4-linux32.tar.gz
 	source_i686 = https://github.com/openvcash/vcash/releases/download/0.6.0.4/vcashd-0.6.0.4-linux32.tar.gz.sig
 	sha512sums_i686 = 06210c5893675b422b9467cc2581d409e2e5e13b290f9351ecdadb086ca7478a4a624e3c31f140919778b0b157814619c4210c56ed02a6f45f3327e8853acfba

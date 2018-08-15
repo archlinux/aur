@@ -1,7 +1,7 @@
 # Maintainer: sum01 <sum01@protonmail.com>
 pkgname=vcash-bin
 pkgver=0.6.0.4
-pkgrel=4
+pkgrel=5
 pkgdesc="A decentralized currency for the internet."
 arch=('i686' 'x86_64')
 url="https://github.com/openvcash/vcash"
@@ -18,6 +18,7 @@ sha512sums_x86_64=('42c59ad6e19dc923105d8148c0738c36fa6afbc5797dca41a6110c50a986
                    'SKIP')
 conflicts=('vcash')
 provides=("vcash=$pkgver")
+validpgpkeys=('3AD44B909DC5AA919BF97768339CB8BE119B90C0')
 package() {
 	install -Dsm755 "$srcdir/vcashd" "$pkgdir/usr/bin/vcashd"
 }
