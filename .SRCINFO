@@ -1,0 +1,16 @@
+pkgbase = viber-bin
+	pkgdesc = Viber for Linux
+	pkgver = 7.0.0
+	pkgrel = 1
+	url = http://www.viber.com
+	arch = x86_64
+	license = custom
+	provides = viber
+	provides = viber
+	options = !strip
+	options = staticlibs
+	source = https://github.com/vitaliel/aur-viber-bin/releases/download/v7.0.0/viber_7.0.0_amd64.deb
+	sha256sums = 92822b621843654541bf144ecb77ce727a860521b00afd4acbc6938e3717b71a
+
+pkgname = viber-bin
+
