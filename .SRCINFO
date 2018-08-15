@@ -1,6 +1,6 @@
 pkgbase = ruby-gdk3
-	pkgdesc = Ruby/GDK3 is a Ruby binding of GDK-3.x.
-	pkgver = 3.2.7
+	pkgdesc = Ruby/GDK3 is a Ruby binding of GDK-3.x
+	pkgver = 3.2.9
 	pkgrel = 1
 	url = http://ruby-gnome2.sourceforge.jp/
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = ruby-gdk3
 	depends = ruby-gdk_pixbuf2
 	depends = ruby-gobject-introspection
 	depends = ruby-pango
-	noextract = gdk3-3.2.7.gem
+	noextract = gdk3-3.2.9.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/gdk3-3.2.7.gem
-	sha256sums = 02c47cf1d532cba2b91c5c19e36668dd6d8ba8914b0220b04422f353143522af
+	source = https://rubygems.org/downloads/gdk3-3.2.9.gem
+	sha256sums = eb5998b22d5a0f3a33189b03b080be6966962aa6ae46037250badeecc959309a
 
 pkgname = ruby-gdk3
 

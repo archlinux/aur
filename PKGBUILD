@@ -4,9 +4,9 @@
 
 _gemname=gdk3
 pkgname=ruby-${_gemname}
-pkgver=3.2.7
+pkgver=3.2.9
 pkgrel=1
-pkgdesc='Ruby/GDK3 is a Ruby binding of GDK-3.x.'
+pkgdesc='Ruby/GDK3 is a Ruby binding of GDK-3.x'
 arch=('x86_64')
 url='http://ruby-gnome2.sourceforge.jp/'
 license=('LGPL2.1')
@@ -15,7 +15,7 @@ makedepends=('ruby-rake' 'ruby-rdoc')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/${_gemname}-${pkgver}.gem")
 noextract=("${_gemname}-${pkgver}.gem")
-sha256sums=('02c47cf1d532cba2b91c5c19e36668dd6d8ba8914b0220b04422f353143522af')
+sha256sums=('eb5998b22d5a0f3a33189b03b080be6966962aa6ae46037250badeecc959309a')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
