@@ -1,6 +1,6 @@
 pkgbase = python-mistralclient
 	pkgdesc = Mistral Client Library
-	pkgver = 3.6.0
+	pkgver = 3.7.0
 	pkgrel = 1
 	url = https://docs.openstack.org/developer/mistral/
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-mistralclient
 	makedepends = git
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = git+https://git.openstack.org/openstack/python-mistralclient#tag=3.6.0
+	source = git+https://git.openstack.org/openstack/python-mistralclient#tag=3.7.0
 	sha512sums = SKIP
 
 pkgname = python-mistralclient
