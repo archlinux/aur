@@ -2,7 +2,7 @@
 
 pkgname=freetube
 pkgver=0.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="An open source desktop YouTube player built with privacy in mind."
 arch=('x86_64')
 url="https://github.com/FreeTubeApp/FreeTube"
@@ -36,7 +36,6 @@ package() {
     rm "$_pdir/glibc/"{.BUILDINFO,.INSTALL,.MTREE,.PKGINFO}
     patchelf --set-interpreter "$_idir/glibc/usr/lib/ld-linux-x86-64.so.2" "$_pbin"
     patchelf --set-rpath "$_idir:$_idir/glibc/usr/lib" "$_pbin"
-    patchelf --shrink-rpath "$_pbin"
 }
 
 

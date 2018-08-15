@@ -1,7 +1,7 @@
 pkgbase = freetube
 	pkgdesc = An open source desktop YouTube player built with privacy in mind.
 	pkgver = 0.3.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/FreeTubeApp/FreeTube
 	install = freetube.install
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = freetube
 	options = staticlibs
 	source = freetube.install
 	source = freetube.desktop
-	source = freetube-0.3.2-2.zip::https://github.com/FreeTubeApp/FreeTube/releases/download/v0.3.2-beta/FreeTube-linux-x64.zip
+	source = freetube-0.3.2-3.zip::https://github.com/FreeTubeApp/FreeTube/releases/download/v0.3.2-beta/FreeTube-linux-x64.zip
 	source = https://archive.archlinux.org/packages/g/glibc/glibc-2.27-3-x86_64.pkg.tar.xz
 	validpgpkeys = A8F7858263C1E39480B731DCEAD4F103068DF8E5
 	md5sums = f9127e651de14f462fc4afee3c7fb675
