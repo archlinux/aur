@@ -1,0 +1,14 @@
+pkgbase = python-mtgsdk
+	pkgdesc = Magic: The Gathering SDK Python implementation. It is a wrapper around the MTG API of magicthegathering.io.
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/MagicTheGathering/mtg-sdk-python
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/MagicTheGathering/mtg-sdk-python/archive/1.3.0.tar.gz
+	sha256sums = 429f2205bef7d406d798dc0fd8ecbdee099c085216be25883e1039fe56f43062
+
+pkgname = python-mtgsdk
+
