@@ -2,7 +2,7 @@
 # Contributor: Josip Ponjavic <josipponjavic@gmail.com>
 
 pkgname=gsignond
-pkgver=1.0.7
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='gSSO glib daemon'
 arch=('x86_64')
