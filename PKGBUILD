@@ -2,22 +2,22 @@
 # Contributor: winlu
 
 pkgname=shairplay
-_commit=ce80e00
-pkgver=20160101.ce80e00
+_commit=a761c22
+pkgver=20180806.a761c22
 pkgrel=1
 pkgdesc='Apple airplay and raop protocol server'
 arch=('x86_64')
 url='https://github.com/juhovh/shairplay'
 license=('custom')
-depends=('libao')
-optdepends=('avahi: to run the server')
+depends=('libao' 'avahi')
 makedepends=('git')
 source=(
     "$pkgname::git://github.com/juhovh/shairplay.git#commit=$_commit"
 	'shairplay.service'
 )
 sha256sums=('SKIP'
-	'f0a176539a6c5be46dc832d054be2f18c3256e5fd34c5f1416c9463bd75c82b3')
+            'f0a176539a6c5be46dc832d054be2f18c3256e5fd34c5f1416c9463bd75c82b3')
+options=(!libtool)
 
 pkgver() {
 	cd "$pkgname"
