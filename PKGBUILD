@@ -1,16 +1,16 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=rc-git
-pkgver=1.7.4.r547.47151e4
-pkgrel=2
+pkgver=1.7.4.r579.9c62112
+pkgrel=1
 epoch=
 pkgdesc="Independent re-implementation for Unix of the Plan 9 shell (from circa 1992)."
 arch=('i686' 'x86_64')
 url="https://github.com/rakitzis/rc"
 license=('zlib')
 groups=()
-depends=('')
+depends=()
 makedepends=('git')
-optdepends=()
+optdepends=('readline')
 checkdepends=()
 provides=()
 conflicts=()
@@ -33,7 +33,7 @@ pkgver() {
 build() {
   cd "$srcdir/$pkgname"
   autoreconf -vi
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --with-edit=readline
   make
 }
 
