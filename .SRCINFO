@@ -1,0 +1,30 @@
+pkgbase = lxd-git
+	pkgdesc = Daemon based on liblxc offering a REST API to manage containers
+	pkgver = 3.4.r0.520cea20
+	pkgrel = 1
+	url = https://github.com/lxc/lxd
+	arch = x86_64
+	license = APACHE
+	makedepends = go-pie
+	makedepends = git
+	makedepends = patchelf
+	depends = lxc
+	depends = squashfs-tools
+	depends = dnsmasq
+	depends = libuv
+	optdepends = lvm2: for lvm2 support
+	optdepends = thin-provisioning-tools: for thin provisioning support
+	optdepends = btrfs-progs: for btrfs storage driver support
+	optdepends = ceph: for ceph storage driver support
+	conflicts = lxd
+	conflicts = lxd-lts
+	options = !strip
+	options = !emptydirs
+	source = lxd.service
+	source = lxd.socket
+	md5sums = ad8ad313898fac0487fcf9a3b9b926ea
+	md5sums = 1fb28d8dfe82af71d0675c8e9a0a7293
+
+pkgname = lxd-git
+	install = lxd.install
+
