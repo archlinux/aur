@@ -1,15 +1,15 @@
 #Maintainer: AlpixTM aka Lukas N. <contact@alpix.eu>
 pkgname=transfersh
-pkgver=1.2
-pkgrel=2
+pkgver=1.3
+pkgrel=1
 pkgdesc="Unofficial command-line client for https://transfer.sh"
 arch=('any')
 url="https://github.com/AlpixTM/transfersh"
 license=('AGPL')
 depends=('python' 'python-requests')
 install=
-source=('https://github.com/AlpixTM/transfersh/archive/v1.2.tar.gz')
-md5sums=('1b21ace11239f351b36ed4b1fda9f67a')
+source=('https://github.com/AlpixTM/transfersh/archive/v1.3.tar.gz')
+md5sums=('0c86a00a50b0ede6e0ac188ca2ee2381')
 
 package() {
   cd "$pkgname-$pkgver"
