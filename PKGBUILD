@@ -55,8 +55,8 @@ build() {
   if [[ -z "${GOBIN}" ]]; then
     export GOBIN="$GOPATH/bin"
   fi
-
-  go get -u -t "$_gourl"
+  echo "Downloading and installing TEMPest using go get..."
+  go get -u -t -v "$_gourl"
 
   
 
@@ -113,6 +113,7 @@ package() {
 if ! tempest > /dev/null 2>&1; then                                            
    sudo ln -s $GOBIN/tempest /usr/bin/tempest                                        
 fi 
+echo "Ready to start, run tempest help to get started !"
 
 }
 
