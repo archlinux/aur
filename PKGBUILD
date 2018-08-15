@@ -8,93 +8,100 @@
 pkgname="google-cloud-sdk"
 pkgver=212.0.0
 pkgrel=1
-pkgdesc="Tools and libraries SDK for managing resources on the Google Cloud Platform (gcloud), plus Python/PHP appengine SDK components"
+pkgdesc="A set of command-line tools for the Google Cloud Platform. Includes gcloud (with beta and alpha commands), gsutil, and bq."
 url="https://cloud.google.com/sdk/"
 license=("Apache")
 arch=('x86_64')
-# replaces() only works for sysupgrade, not normal install/upgrade
-conflicts=('google-appengine-python-php' 'google-appengine-go'
-           'google-appengine-python' 'google-appengine-php')
-replaces=('google-appengine-python-php' 'google-appengine-go'
-          'google-appengine-python' 'google-appengine-php')
+provides=("$pkgname")
+conflicts=("google-cloud-sdk-minimal")
 depends=('python2')
-optdepends=('go: for Go version of App Engine'
-            'java-environment: for Java version of App Engine'
-            'php: for PHP version of App Engine'
-            'python2-crcmod: verify the integrity of object contents')
+optdepends=('python2-crcmod: [gsutil] verify the integrity of GCS object contents')
 options=('!strip' 'staticlibs')
 
 source=(
-  "https://dl.google.com/dl/cloudsdk/release/downloads/$pkgname-$pkgver-linux-x86_64.tar.gz"
-  "profile.sh"
+  "https://dl.google.com/dl/cloudsdk/release/downloads/for_packagers/linux/${pkgname}_${pkgver}.orig.tar.gz"
+  "google-cloud-sdk.sh"
 )
 sha256sums=(
-  '8f5191131672004363b0c238b3151d987d0f307808e720e1eecc5071f2d9c681'
+  '0806b15e9b0f109cc7edeb858c1830b823f25f7f14a00549b71a1f5dfd19d755'
   '36ac88de630e49ea4b067b1f5f229142e4cf97561b98b3bd3d8115a356946692'
 )
 
 prepare() {
-
   msg2 "Checking for newer upstream release"
-  _LATEST=$(curl -s https://dl.google.com/dl/cloudsdk/release/sha256.txt |
-            egrep "google-cloud-sdk-.*-linux-x86_64.tar.gz" | \
-            awk '{print $2}' | cut -d'-' -f4)
-  if [ "$_LATEST" != "$pkgver" ]; then
-    msg2 "This AUR release: $pkgver"
-    msg2 "Latest upstream release: $_LATEST"
-    msg2 "** Please flag out-of-date at https://aur.archlinux.org/packages/google-cloud-sdk"
-  fi
 
+  _latest=$(\
+    curl -s https://dl.google.com/dl/cloudsdk/release/sha256.txt |\
+    egrep "google-cloud-sdk_.*\.orig\.tar\.gz" |\
+    awk -e 'BEGIN{FS="/"}{print $4}' |\
+    sed 's/[^0-9]*\(\([[:digit:]]\+.\?\)\{2\}[^.]\+\).*/\1/')
+      # [^0-9]* :: matches any non-digit character 0-n times
+      # \( :: begins group 1
+      #   \([[:digit:]]\+.\?\)\{2\}
+      #     :: captures the major and minor parts of the version, with dot
+      #     :: capture group 2 is created to facilitate repeating with \{2\}
+      #   [^.]\+ :: matches the patch without the dot
+      # \) :: terminates group 1
+      # .* :: matches any character 0-n times
+      # /\1/ :: replaces the entire string with the contents of group 1
+
+  msg2 "This AUR release: ${pkgver}"
+  msg2 "Latest upstream release: ${_LATEST}"
+  if [ "${_latest}" != "${pkgver}" ]; then
+    msg2 "** Please flag out-of-date at https://aur.archlinux.org/packages/${pkgname}"
+  fi
 }
 
 package() {
-
   msg2 "Copying core SDK components"
-  mkdir "$pkgdir/opt"
-  cp -r "$srcdir/$pkgname" "$pkgdir/opt"
+  mkdir "${pkgdir}/opt"
+  cp -r "${srcdir}/${pkgname}" "${pkgdir}/opt"
 
-  # app-engine-python is actually the PHP+Python SDK widgets combined
-  # NOTE: due to how Google is using argparse we must bare word the components
-  _components=(app-engine-python beta app-engine-go)
-  msg2 "Running bootstrapping script and adding these additional components:"
-  msg2 "${_components[*]}"
-  python2 "$pkgdir/opt/$pkgname/bin/bootstrapping/install.py" \
-    --usage-reporting false --path-update false --bash-completion false \
-    --rc-path="$srcdir/fake.bashrc" \
-    --additional-components ${_components[@]}
+  msg2 "Running bootstrapping script and adding additional components"
+  _additional_components=(alpha beta)
 
-  # https://issuetracker.google.com/issues/35900282
-  msg2 "Fixing appengine bug #35900282 (RAND_egd)"
-  sed -i 's/from _ssl import RAND_add, RAND_egd, RAND_status/from _ssl import RAND_add, RAND_status/g' "$pkgdir/opt/$pkgname/platform/google_appengine/google/appengine/dist27/socket.py"
-  python2 -m py_compile "$pkgdir/opt/$pkgname/platform/google_appengine/google/appengine/dist27/socket.py"
+  # The Google code uses a _TraceAction() method which spams the screen even
+  # in "quiet" mode, we're throwing away output on purpose to keep it clean
+  #  ref: lib/googlecloudsdk/core/platforms_install.py
+  python2 "${pkgdir}/opt/${pkgname}/bin/bootstrapping/install.py" --quiet \
+    --usage-reporting False --path-update False --bash-completion False \
+    --additional-components "${_additional_components[@]}" 1 > /dev/null
 
-  # This is the strangest design they made to backup a fresh install
-  msg2 "Removing unnecessary backups created by bootstrap"
-  rm -rf "$pkgdir/opt/$pkgname/.install/.backup"
-  mkdir "$pkgdir/opt/$pkgname/.install/.backup"
+  msg2 "Cleaning up artifacts of the bootstrap script"
+  rm -rf "${pkgdir}/opt/${pkgname}/.install/.backup"
+  mkdir "${pkgdir}/opt/${pkgname}/.install/.backup"
 
-  msg2 "Setting up environment variables and shell completion"
-  install -Dm755 "$pkgdir/opt/$pkgname/completion.bash.inc" \
-    "$pkgdir/etc/bash_completion.d/google-cloud-sdk"
-  install -Dm755 "$srcdir/profile.sh" \
-    "$pkgdir/etc/profile.d/google-cloud-sdk.sh"
+  msg2 "Setting up profile environment variables"
+  install -Dm755 "${srcdir}/${source[1]}" \
+    "${pkgdir}/etc/profile.d/google-cloud-sdk.sh"
 
-  msg2 "Fixing python references for python2"
-  grep -Irl 'python' "$pkgdir/opt/$pkgname" | \
+  msg2 "Installing bash completion script"
+  install -Dm755 "${pkgdir}/opt/${pkgname}/completion.bash.inc" \
+    "${pkgdir}/etc/bash_completion.d/google-cloud-sdk"
+
+  msg2 "Fixing python references for python2 and compiling *.pyc"
+  grep -Irl 'python' "${pkgdir}/opt/${pkgname}" | \
     xargs sed -i 's|#!.*python\b|#!/usr/bin/env python2|g'
-  find "$pkgdir/opt/$pkgname/bin/" -maxdepth 1 -type f -exec \
+  find "${pkgdir}/opt/${pkgname}/bin/" -maxdepth 1 -type f -exec \
     sed -i 's/CLOUDSDK_PYTHON=python\b/CLOUDSDK_PYTHON=python2/g' {} \;
+  python2 -m compileall -q -f -x python3 -d "/opt/google-cloud-sdk" \
+    "${pkgdir}/opt/${pkgname}/"
 
-  msg2 "Creating symlinks for binaries"
-  mkdir -p "$pkgdir/usr/bin"
-  find "$pkgdir/opt/$pkgname/bin" -maxdepth 1 -type f -printf \
-    "/opt/$pkgname/bin/%f\n" | xargs ln -st "$pkgdir/usr/bin"
+  msg2 "Installing man pages"
+  mkdir -p "${pkgdir}/usr/share"
+  mv -f "${pkgdir}/opt/${pkgname}/help/man" "${pkgdir}/usr/share/"
+  chmod 0755 "${pkgdir}/usr/share/man"
+  chmod 0755 "${pkgdir}/usr/share/man/man1"
 
-  # The tarball is rather sloppy with it's file permissions
+  msg2 "Creating symlinks for applications"
+  mkdir -p "${pkgdir}/usr/bin"
+  find "${pkgdir}/opt/${pkgname}/bin" -maxdepth 1 -type f -printf \
+    "/opt/${pkgname}/bin/%f\n" | xargs ln -st "${pkgdir}/usr/bin"
+  rm -f "${pkgdir}"/usr/bin/{bq,dev_appserver.py*,endpointscfg.py*,java_dev_appserver.sh}
+
   msg2 "Fixing file permissions"
-  chown -R root:root "$pkgdir"
-  find "$pkgdir/opt/$pkgname" -name "*.html" -print0 | xargs -0 chmod -x
-  find "$pkgdir/opt/$pkgname" -name "*.json" -print0 | xargs -0 chmod -x
-  find "$pkgdir/opt/$pkgname" -name "*_test.py" -print0 | xargs -0 chmod +x
-
+  chmod -x "${pkgdir}"/usr/share/man/man1/*
+  find "${pkgdir}/opt/${pkgname}" -name "*.html" -print0 | xargs -0 chmod -x
+  find "${pkgdir}/opt/${pkgname}" -name "*.json" -print0 | xargs -0 chmod -x
+  find "${pkgdir}/opt/${pkgname}" -name "*_test.py" -print0 | xargs -0 chmod +x
 }
