@@ -11,7 +11,7 @@ url="https://github.com/sigmavirus24/charade"
 license=('LGPL')
 depends=('python2')
 
-source=(http://pypi.python.org/packages/source/c/charade/${_pkgname}-${pkgver}.tar.gz)
+source=(https://pypi.python.org/packages/source/c/charade/${_pkgname}-${pkgver}.tar.gz)
 md5sums=('79ac701a147705c09bdce31b79dfa12e')
 
 build() {
