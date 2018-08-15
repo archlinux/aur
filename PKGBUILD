@@ -1,7 +1,7 @@
 # Maintainer: Dmitri Goutnik <dg@syrec.org>
 
 pkgname=gops
-pkgver=0.3.3
+pkgver=0.3.5
 pkgrel=1
 pkgdesc='A tool to list and diagnose Go processes currently running on your system'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-md5sums=('9d831d9991f2792f91de0b6780c3f267')
+md5sums=('5f78bd18ea48117c37756c66c5bdb53e')
 
 prepare() {
   mkdir -p src/github.com/google
