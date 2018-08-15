@@ -2,10 +2,10 @@
 # Thanks to aAXEe <axel at brasshack dot de> and Alexandre Bique (abique)
 # for earlier work.
 pkgname=picoscope
-pkgver=6.12.9_4r35
+pkgver=6.13.7_4r707
 pkgrel=1
 pkgdesc="gui for picotech oscilloscope"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.picotech.com/linux.html"
 license=('custom')
 groups=()
@@ -24,7 +24,7 @@ source=(
   "http://labs.picotech.com/debian/pool/main/p/${pkgname}/${pkgname}_${pkgver//_/-}_all.deb"
   "picoscope.install"
   "95-pico.rules")
-md5sums=('6fd874bbc4f22e5c3032fa94641533de'
+md5sums=('11698ffee3c388e1e7bf7cefb54ae6c5'
          '503df69f2e6001e3e9269970a552af13'
          'afedfca88c003ead013c18f26f789fd4')
 
