@@ -1,7 +1,7 @@
 pkgbase = spirv-headers
 	pkgdesc = SPIR-V header files
 	pkgver = 1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.khronos.org/registry/spir-v/
 	arch = any
 	license = custom
@@ -11,10 +11,10 @@ pkgbase = spirv-headers
 	source = https://www.khronos.org/registry/spir-v/specs/unified1/SPIRV.html
 	source = https://www.khronos.org/registry/spir-v/specs/unified1/images/SPIR_Nov14.svg
 	source = https://www.khronos.org/registry/spir-v/specs/unified1/images/Khronos_Dec14.svg
-	sha1sums = a3e49dd13ef5809ce628cbab86bff2823dc42e3d
-	sha1sums = b6e21387f4cb7a9b9cf0411b4ba5ad81e0e17601
-	sha1sums = 76485af78b524289902f50a668bab1383f0c02e9
-	sha1sums = a0a0b71a4a36128ecd3e02faefcd3151f76542a3
+	sha1sums = 484a734dbfc23e8b2c1840690c3a04f4bb1aa8c4
+	sha1sums = ae5b0bf564ff6b42a490e4f8af722fcfd099f64c
+	sha1sums = cdbbb83a86f3edd501cccd83ebbb97ea4fb1c0d1
+	sha1sums = 51f7dca8e2298675f049997e059c266dc0d3814a
 	sha1sums = 52590721a4be88dcd10000d4b723694f70ebb301
 	sha1sums = c2608bbbb93ed17f122855d150bea9699181b8eb
 

@@ -2,7 +2,7 @@
 
 pkgname=spirv-headers
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='SPIR-V header files'
 arch=('any')
 url='https://www.khronos.org/registry/spir-v/'
@@ -13,10 +13,10 @@ source=("https://github.com/KhronosGroup/SPIRV-Headers/raw/master/include/spirv/
         "https://www.khronos.org/registry/spir-v/specs/unified1/SPIRV.html"
         "https://www.khronos.org/registry/spir-v/specs/unified1/images/SPIR_Nov14.svg"
         "https://www.khronos.org/registry/spir-v/specs/unified1/images/Khronos_Dec14.svg")
-sha1sums=('a3e49dd13ef5809ce628cbab86bff2823dc42e3d'
-          'b6e21387f4cb7a9b9cf0411b4ba5ad81e0e17601'
-          '76485af78b524289902f50a668bab1383f0c02e9'
-          'a0a0b71a4a36128ecd3e02faefcd3151f76542a3'
+sha1sums=('484a734dbfc23e8b2c1840690c3a04f4bb1aa8c4'
+          'ae5b0bf564ff6b42a490e4f8af722fcfd099f64c'
+          'cdbbb83a86f3edd501cccd83ebbb97ea4fb1c0d1'
+          '51f7dca8e2298675f049997e059c266dc0d3814a'
           '52590721a4be88dcd10000d4b723694f70ebb301'
           'c2608bbbb93ed17f122855d150bea9699181b8eb')
 
