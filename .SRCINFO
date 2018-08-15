@@ -1,5 +1,5 @@
 pkgbase = perl-www-youtube-download
-	pkgdesc = Very simple YouTube video download interface
+	pkgdesc = Very simple YouTube video download interface (cli apps included)
 	pkgver = 0.60
 	pkgrel = 1
 	url = https://metacpan.org/release/WWW-YouTube-Download
