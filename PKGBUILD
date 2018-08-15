@@ -3,7 +3,7 @@
 _pkgname=tea4cups
 pkgname="${_pkgname}-svn"
 pkgver=3.13alpha_unofficial+3574
-pkgrel=6
+pkgrel=7
 pkgdesc="CUPS backend wrapper which can capture print datas before they are sent to a printer and process, duplicate or dispatch them in a number of ways. Swiss army's knife of the CUPS' Administrator."
 url="http://www.pykota.com/software/tea4cups/"
 license=('GPL2')
@@ -26,12 +26,14 @@ _doc_debianwiki_url='http://wiki.debian.org/Tea4CUPS'
 source=(
   # "http://www.pykota.com/software/tea4cups/download/tarballs/tea4cups-${pkgver}_official.tar.gz"
   "${_pkgname}::svn+http://svn.pykota.com/tea4cups/trunk"
+  "fix_TEABILLING_is_int_typeerror.patch::http://gitlab.com/dadosch/tea4cups/commit/1aac1f51ed35300891b3f0f01b34b37b523f1736.patch" # See e.g. http://lists.debian.org/debian-user/2018/05/msg01024.html
   'doc_from_website.txt'
   "doc_debianwiki.html::${_doc_debianwiki_url}"
   "${install}"
 )
 sha256sums=(
   'SKIP'
+  'e426e84cbf5f67f262cb311ffd5b8aded826b790c8c29ddc8e9c2095544244e5'
   '6221890bbd1ab3806efeec8624161c80742d1c5fce24c9094e4f8f8466ba2923'
   'SKIP'
   '315c82e6e9d352ecb32d511c9290790ac2a52e60e82d4727bff350fcf03aacf0'
@@ -49,6 +51,11 @@ prepare() {
   
   msg "Patching executable to use 'python2' interpreter ..."
   sed -i '1s|python[[:space:]]*|python2|' tea4cups
+  
+  for _patch in "${srcdir}/fix_TEABILLING_is_int_typeerror.patch"; do
+    msg "Applying patch '${_patch}' ..."
+    patch -p1 -i "${_patch}"
+  done
 }
 
 
