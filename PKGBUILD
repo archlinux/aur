@@ -1,6 +1,6 @@
 # Maintainer: Asher Lieber <lieber dot asher at gmail dot com>
 pkgname='varedit'
-pkgver=1.0.32
+pkgver=1.0.37
 pkgrel=1
 pkgdesc="A fast virtual memory scanner and editor"
 arch=('any')

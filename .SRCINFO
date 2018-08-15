@@ -1,12 +1,12 @@
 pkgbase = varedit
 	pkgdesc = A fast virtual memory scanner and editor
-	pkgver = 1.0.32
+	pkgver = 1.0.37
 	pkgrel = 1
 	url = https://github.com/asherlie/varedit
 	arch = any
 	license = GPL
 	provides = varedit
-	source = varedit-1.0.32::git+https://github.com/asherlie/varedit
+	source = varedit-1.0.37::git+https://github.com/asherlie/varedit
 	md5sums = SKIP
 
 pkgname = varedit
