@@ -1,0 +1,14 @@
+pkgbase = bagh-chal-gui
+	pkgdesc = A bagh-chal game with a SDL GUI.
+	pkgver = 1.0
+	pkgrel = 1
+	arch = x86_64
+	license = MIT
+	depends = sdl2
+	depends = sdl2_ttf
+	depends = ttf-fira-sans
+	source = https://github.com/moverest/bagh-chal/archive/1.0.tar.gz
+	md5sums = c272cba13e72dde21e5140f5428d4de3
+
+pkgname = bagh-chal-gui
+
