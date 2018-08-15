@@ -14,7 +14,7 @@ pkgbase = limnoria-python3
 	optdepends = python-feedparser: RSS plugin support
 	optdepends = python-ecdsa: ECDSA support
 	source = https://github.com/ProgVal/Limnoria/archive/master-2018-06-25-2.tar.gz
-	md5sums = SKIP
+	md5sums = 71ccd3004ddfb8a7bca7114cab40bb72
 
 pkgname = limnoria-python3
 

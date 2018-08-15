@@ -21,7 +21,7 @@ optdepends=("python-charade: Detect page's encoding"
             #"python-mock: For testing only"
             "python-ecdsa: ECDSA support")
 source=("https://github.com/ProgVal/Limnoria/archive/master-${_pkgver}.tar.gz")
-md5sums=('SKIP')
+md5sums=('71ccd3004ddfb8a7bca7114cab40bb72')
 
 build() {
   cd "$srcdir/$_pkgname-master-${_pkgver}"
