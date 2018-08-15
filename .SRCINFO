@@ -1,14 +1,14 @@
 pkgbase = gateone-git
 	pkgdesc = Web-based terminal emulator and SSH client
-	pkgver = 1.1_r514.ga3f7aeb
-	pkgrel = 1
+	pkgver = 1.1_r521.g6ae1d01
+	pkgrel = 2
 	url = https://github.com/liftoff/GateOne
 	install = gateone-git.install
 	arch = any
 	license = AGPL3
 	makedepends = git
 	depends = python2
-	depends = python2-tornado
+	depends = python2-tornado-4.4
 	depends = python2-futures
 	depends = python2-setuptools
 	depends = python2-html5lib

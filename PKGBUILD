@@ -4,13 +4,13 @@
 
 pkgname=gateone-git
 _gitname="GateOne"
-pkgver=1.1_r514.ga3f7aeb
-pkgrel=1
+pkgver=1.1_r521.g6ae1d01
+pkgrel=2
 pkgdesc="Web-based terminal emulator and SSH client"
 arch=('any')
 url="https://github.com/liftoff/GateOne"
 license=('AGPL3')
-depends=('python2' 'python2-tornado' 'python2-futures' 'python2-setuptools' 'python2-html5lib')
+depends=('python2' 'python2-tornado-4.4' 'python2-futures' 'python2-setuptools' 'python2-html5lib')
 optdepends=('python2-imaging: A python module for manipulating images'
             'python2-pillow: An alternative to python2-imaging'
             'python2-pam: Only necessary if you plan to use the PAM authentication module'
