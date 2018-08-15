@@ -1,7 +1,7 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=('python-octaviaclient' 'python2-octaviaclient')
-pkgver='1.5.0'
+pkgver='1.6.0'
 pkgrel='1'
 pkgdesc='OpenStack Client plugin for Octavia, an OpenStack Load Balancing project'
 arch=('any')
