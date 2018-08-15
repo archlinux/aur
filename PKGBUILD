@@ -60,10 +60,10 @@ _1k_HZ_ticks=
 pkgbase=linux-bfq-mq
 #pkgbase=linux-custom       # Build kernel with a different name
 _major=4.17
-pkgver=4.17.14
+pkgver=4.17.15
 _srcpatch="${pkgver}"
 _srcname="linux-${pkgver}"
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -102,7 +102,7 @@ source=(# mainline kernel patches
         '0003-ACPI-watchdog-Prefer-iTCO_wdt-always-when-WDAT-table.patch'
         '0004-mac80211-disable-BHs-preemption-in-ieee80211_tx_cont.patch')
 
-sha256sums=('c846038df44ee74dd910d19b346044a100f62a5b933eec2264d17008758cbaaf'
+sha256sums=('e5b85dd46cf12bedb4b5d5a1ab8212aaf164ce45c41d4a4963a58d460384e079'
             'SKIP'
             '9f7177679c8d3f8d699ef0566a51349d828436dba04603bc2223f98c60d2d178'
             '7fa085ae8c7839fe22257bdebfcd1dfb1e60c40e61157972c349634c122ed086'
