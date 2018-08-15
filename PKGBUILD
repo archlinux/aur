@@ -1,6 +1,6 @@
 pkgname=plex-media-player-git
 pkgver=r1167.c975ed3
-pkgrel=1
+pkgrel=2
 pkgdesc='Next generation Plex Desktop Client'
 arch=('i686' 'x86_64')
 license=('GPL')
