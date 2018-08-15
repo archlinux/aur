@@ -9,8 +9,8 @@
 pkgbase=networkmanager-secure
 pkgname=(networkmanager-secure libnm-secure libnm-glib-secure)
 pkgver=1.12.3dev+1+g0a3755c17
-pkgrel=1
-pkgdesc="Network connection manager and user applications"
+pkgrel=2
+pkgdesc="Network connection manager and user applications with hostname sending removed"
 url="https://wiki.gnome.org/Projects/NetworkManager"
 arch=(x86_64)
 license=(GPL2 LGPL2.1)
