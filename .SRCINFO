@@ -1,19 +1,15 @@
 pkgbase = jzintv
 	pkgdesc = Intellivision Emulator
-	pkgver = 1.0beta4
+	pkgver = 1.0
 	pkgrel = 1
 	url = http://spatula-city.org/~im14u2c/intv/
-	arch = i686
 	arch = x86_64
-	arch = armv6h
-	arch = armv7h
 	license = GPL
 	depends = gcc-libs
 	depends = sdl
 	provides = jzintv
-	conflicts = jzintv
-	source = http://spatula-city.org/~im14u2c/intv/dl/jzintv-1.0-beta4-src.zip
-	md5sums = f0118ff87eefab719288ba7f234170f4
+	source = http://spatula-city.org/~im14u2c/intv/dl/jzintv-20180509-src.zip
+	md5sums = dd305e6ddca940c62781d8b2e88419e7
 
 pkgname = jzintv
 
