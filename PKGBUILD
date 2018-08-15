@@ -5,11 +5,21 @@
 pkgname=gdrivefs
 _gitname=GDriveFS
 pkgver=0.14.9
-pkgrel=3
+pkgrel=4
 pkgdesc='A complete FUSE adapter for Google Drive'
 url='https://github.com/dsoprea/GDriveFS'
-depends=('python2' 'python2-fusepy' 'python2-gevent' 'python2-google-api-python-client'
-         'python2-greenlet' 'python2-httplib2' 'python2-dateutil' 'python2-six' 'python2-wsgiref')
+depends=(
+  'python2'
+  'python2-dateutil'
+  'python2-fusepy'
+  'python2-gevent'
+  'python2-google-api-python-client'
+  'python2-greenlet'
+  'python2-httplib2'
+  'python2-oauth2client'
+  'python2-six'
+  'python2-wsgiref'
+)
 makedepends=('python2-distribute')
 license=('GPL2')
 arch=('any')
