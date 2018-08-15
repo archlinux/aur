@@ -1,7 +1,7 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=('python-magnumclient' 'python2-magnumclient')
-pkgver='2.9.1'
+pkgver='2.10.0'
 pkgrel='1'
 pkgdesc='Python client library for Magnum'
 arch=('any')
