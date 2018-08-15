@@ -2,7 +2,7 @@
 
 pkgname=('python-heatclient'
          'python2-heatclient')
-pkgver='1.16.0'
+pkgver='1.16.1'
 pkgrel='1'
 pkgdesc='Python client library for Heat'
 arch=('any')
