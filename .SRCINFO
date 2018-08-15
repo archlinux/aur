@@ -1,0 +1,14 @@
+pkgbase = python-configparser
+	pkgdesc = This library brings the updated configparser from Python 3.5 to Python 2.6-3.5.
+	pkgver = 3.5.0
+	pkgrel = 1
+	url = http://docs.python.org/3/library/configparser.html
+	arch = any
+	license = MIT
+	makedepends = python3
+	depends = python
+	source = https://files.pythonhosted.org/packages/7c/69/c2ce7e91c89dc073eb1aa74c0621c3eefbffe8216b3f9af9d3885265c01c/configparser-3.5.0.tar.gz
+	md5sums = cfdd915a5b7a6c09917a64a573140538
+
+pkgname = python-configparser
+
