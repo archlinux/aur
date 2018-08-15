@@ -2,7 +2,7 @@
 # Maintainer: fuero <fuerob@gmail.com>
 
 pkgname=lazygit
-pkgver=0.1.59
+pkgver=0.1.56
 pkgrel=1
 pkgdesc="A simple terminal UI for git commands"
 arch=("x86_64")
@@ -13,8 +13,8 @@ makedepends=("go-pie")
 provides=("lazygit")
 conflicts=("lazygit-git")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jesseduffield/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('011019983746869849cda61142fd199ae357774d9e1a7d07103782c627ae11e3')
-_commit='652237d48fabc401d795e9703c12fd37e2ec478e'
+sha256sums=("d3a9a1939d387e5f9433d825fd11f008f114a0e155449759ee06f29481cf727f")
+_commit="97daa5eeb26dba63a0d891b621ca616b4f069cc5"
 
 build () {
   echo "Linking to repository path..."
@@ -23,7 +23,7 @@ build () {
   cd "${srcdir}/src/github.com/jesseduffield/${pkgname}"
   
   echo "Building..."
-  GOPATH="${srcdir}" PATH="$PATH:$GOPATH/bin" go build -x -i -v -ldflags "-X main.commit=${_commit:0:7} -X main.date=$(date -u +%Y%m%d.%H%M%S) -X main.version=${pkgver}" -o "${pkgname}.bin"
+  GOPATH="${srcdir}" PATH="${PATH}:${GOPATH}/bin" go build -x -i -v -ldflags "-X main.commit=${_commit:0:7} -X main.date=$(date -u +%Y%m%d.%H%M%S) -X main.version=${pkgver}" -o "${pkgname}.bin"
   
   echo "Removing link..."
   rm -rf "${srcdir}/src"
