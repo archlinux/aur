@@ -1,20 +1,21 @@
+# Maintainer: int <int [ate] arcor [dot] de>
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-cache'
-pkgver='2.04'
+pkgver='2.11'
 pkgrel='1'
-pkgdesc="the Cache interface"
+pkgdesc="Perl/CPAN Module Cache: the Cache interface"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-digest-sha1>=2.01' 'perl-file-nfslock>=1.2' 'perl-heap' 'perl-io-string>=1.02' 'perl-timedate')
+depends=('perl>=5.12' 'perl-file-nfslock>=1.20' 'perl-heap' 'perl-io-string>=1.02' 'perl-timedate')
 makedepends=()
-url='http://search.cpan.org/dist/Cache'
-source=('http://search.cpan.org/CPAN/authors/id/C/CL/CLEISHMAN/Cache-2.04.tar.gz')
-md5sums=('c64b8dd8f04e101bd20cde0c7c2e3d17')
-sha512sums=('ebdb328313e1b420889aff567f7745ec059ff8aba9ddb5e184cf3f636e557b1b3fc04dd0c3be33493b344e7af31a9fbafab755742360ca41ff83165ac5bf3722')
-_distdir="Cache-2.04"
+url='https://metacpan.org/release/Cache'
+source=("http://search.cpan.org/CPAN/authors/id/S/SH/SHLOMIF/Cache-${pkgver}.tar.gz")
+md5sums=('86dff7867e417e89105f2616425c30a2')
+sha512sums=('cee1069bef2fbc19d6836181e6fda8eb479207864063ddb40ad009b5f4cd9be9e774a0a88311b4205439303a59426c349f4d875a5d417fc211e150942592a6c4')
+_distdir="Cache-2.11"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -24,23 +25,23 @@ build() {
       MODULEBUILDRC=/dev/null
 
     cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
-    make
+    /usr/bin/perl Build.PL
+    /usr/bin/perl Build
   )
 }
 
 check() {
   cd "$srcdir/$_distdir"
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
+    /usr/bin/perl Build test
   )
 }
 
 package() {
   cd "$srcdir/$_distdir"
-  make install
+  /usr/bin/perl Build install
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:

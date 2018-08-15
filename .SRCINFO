@@ -1,20 +1,20 @@
 pkgbase = perl-cache
-	pkgdesc = the Cache interface
-	pkgver = 2.04
+	pkgdesc = Perl/CPAN Module Cache: the Cache interface
+	pkgver = 2.11
 	pkgrel = 1
-	url = http://search.cpan.org/dist/Cache
+	url = https://metacpan.org/release/Cache
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	depends = perl-digest-sha1>=2.01
-	depends = perl-file-nfslock>=1.2
+	depends = perl>=5.12
+	depends = perl-file-nfslock>=1.20
 	depends = perl-heap
 	depends = perl-io-string>=1.02
 	depends = perl-timedate
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/C/CL/CLEISHMAN/Cache-2.04.tar.gz
-	md5sums = c64b8dd8f04e101bd20cde0c7c2e3d17
-	sha512sums = ebdb328313e1b420889aff567f7745ec059ff8aba9ddb5e184cf3f636e557b1b3fc04dd0c3be33493b344e7af31a9fbafab755742360ca41ff83165ac5bf3722
+	source = http://search.cpan.org/CPAN/authors/id/S/SH/SHLOMIF/Cache-2.11.tar.gz
+	md5sums = 86dff7867e417e89105f2616425c30a2
+	sha512sums = cee1069bef2fbc19d6836181e6fda8eb479207864063ddb40ad009b5f4cd9be9e774a0a88311b4205439303a59426c349f4d875a5d417fc211e150942592a6c4
 
 pkgname = perl-cache
 
