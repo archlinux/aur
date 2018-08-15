@@ -1,7 +1,7 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=('python-saharaclient' 'python2-saharaclient')
-pkgver='1.6.0'
+pkgver='2.0.0'
 pkgrel='1'
 pkgdesc='Python client library for Sahara'
 arch=('any')
