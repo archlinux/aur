@@ -1,14 +1,14 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=cilium-git
-pkgver=1.1.90.5920.6b842aa3a
+pkgver=v1.2.0.rc3.r1334.ge23f8469e
 pkgrel=1
 pkgdesc="API-aware Networking and Security for Containers based on BPF"
 arch=('x86_64')
 url="https://cilium.io/"
 license=('Apache')
 depends=('docker' 'iproute2' 'clang')
-makedepends=('go' 'lib32-glibc' 'bazel')
+makedepends=('go' 'lib32-glibc' 'bazel' 'ninja')
 optdepends=('consul' 'etcd')
 conflicts=()
 source=("${pkgname}::git+https://github.com/cilium/cilium" "cilium.sysusers")
@@ -18,18 +18,9 @@ sha256sums=('SKIP'
 pkgver() {
 	cd "${srcdir}/${pkgname}"
 
-	VERSION=$(<VERSION)
-
-	echo "${VERSION}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-	cd "${srcdir}/${pkgname}"
-
-	git reset HEAD --hard
-	git clean -dfq
-
-	git submodule update --init
+	#git tag -l --sort=-v:refname | sed 's/v\([0-9]*\)/\1/'
+	VERSION="$(git tag -l --sort=-v:refname | sed 's/v\([^-]*-g\)/r\1/;s/-/./g' | head -1)"
+	echo "${VERSION}.$(git describe --long --tags | sed 's/\([^-]*\)-\(g*\)/r\2/;s/-/./g')"
 }
 
 build() {
@@ -47,10 +38,9 @@ build() {
 	done
 	export GOPATH="$(pwd):$(pwd)/vendor"
 
-	export PKG_BUILD=1
-	export CCACHE_DISABLE=1
-
 	echo "${pkgver}" > VERSION
+
+	export PKG_BUILD=1
 
 	make -C daemon apply-bindata
 	make plugins bpf cilium daemon monitor cilium-health bugtool
@@ -65,6 +55,8 @@ build() {
 
 package() {
 	cd "${srcdir}/${pkgname}"
+
+	export PKG_BUILD=1
 
 	make DESTDIR="${pkgdir}" install
 
