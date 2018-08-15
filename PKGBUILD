@@ -1,16 +1,9 @@
 # Maintainer: Mikael Tillenius <mti at tillenius dot com>
 pkgname=libps3000
-pkgver=3.10.0_3r09
+pkgver=4.0.0_3r570
 pkgrel=1
 pkgdesc="library for picotech oscilloscope 3000 series"
-arch=('i686' 'x86_64')
-if [ "$CARCH" == "i686" ]; then
-  _arch="i386"
-  _md5sum='d12775dea4674998ec48764370563dd0'
-else
-  _arch="amd64"
-  _md5sum='12b8ebfe12db9280770d08ac7bfbc7d7'
-fi
+arch=('x86_64')
 url="http://www.picotech.com/linux.html"
 license=('custom')
 groups=()
@@ -23,8 +16,8 @@ backup=()
 options=(!strip)
 install=
 changelog=
-source=("http://labs.picotech.com/debian/pool/main/libp/libps3000/${pkgname}_${pkgver//_/-}_${_arch}.deb")
-md5sums=($_md5sum)
+source=("http://labs.picotech.com/debian/pool/main/libp/libps3000/${pkgname}_${pkgver//_/-}_amd64.deb")
+md5sums=('e138dcd24ea96ff32ca2daa4eb7621aa')
 
 package() {
   tar -xf data.tar.gz -C "${pkgdir}"
