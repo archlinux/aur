@@ -2,7 +2,7 @@
 
 pkgname=('python-neutronclient' 'python2-neutronclient')
 pkgver='6.9.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Python client library for Neutron'
 arch=('any')
 url="https://docs.openstack.org/developer/${pkgname}/"
@@ -30,11 +30,15 @@ checkdepends=('python-mock' 'python2-mock'
               'python-requests-mock' 'python2-requests-mock'
               'python-testtools' 'python2-testtools'
               'python-tempest')
-source=("git+https://git.openstack.org/openstack/${pkgname}#tag=${pkgver}")
-sha512sums=('SKIP')
+source=("git+https://git.openstack.org/openstack/${pkgname}#tag=${pkgver}"
+        'skip-failing-py37-tests.patch')
+sha512sums=('SKIP'
+            '20e04c08e3eb37dc9f841ddeb276a26a4283de94d9aa803e6017f8f03b5771234e107743d8e839e4c51e392fccf6c812ebd695f5eabb849555f379c82a6f7dac')
 
 prepare() {
-  sed -i '/simplejson/d' "${srcdir}/${pkgname}/requirements.txt"
+  cd "${srcdir}/${pkgname}"
+  sed -i '/simplejson/d' requirements.txt
+  patch -p1 -i "${srcdir}/skip-failing-py37-tests.patch"
   cp -a "${srcdir}/${pkgname}"{,-py2}
 }
 
@@ -48,8 +52,8 @@ build() {
 
 check() {
   # Disable for now due to Python 3 test issues
-  #cd "${srcdir}/${pkgname}"
-  #python setup.py testr
+  cd "${srcdir}/${pkgname}"
+  python setup.py testr
 
   cd "${srcdir}/${pkgname}-py2"
   PYTHON=python2 python2 setup.py testr

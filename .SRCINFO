@@ -1,7 +1,7 @@
 pkgbase = python-neutronclient
 	pkgdesc = Python client library for Neutron
 	pkgver = 6.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.openstack.org/developer/python-neutronclient/
 	arch = any
 	license = Apache
@@ -52,7 +52,9 @@ pkgbase = python-neutronclient
 	makedepends = python-babel
 	makedepends = python2-babel
 	source = git+https://git.openstack.org/openstack/python-neutronclient#tag=6.9.0
+	source = skip-failing-py37-tests.patch
 	sha512sums = SKIP
+	sha512sums = 20e04c08e3eb37dc9f841ddeb276a26a4283de94d9aa803e6017f8f03b5771234e107743d8e839e4c51e392fccf6c812ebd695f5eabb849555f379c82a6f7dac
 
 pkgname = python-neutronclient
 	depends = python-pbr
