@@ -2,7 +2,7 @@
 
 pkgname=arara-git
 _gitname=arara
-pkgver=3.0.r277.gf4c5e36
+pkgver=3.0.r588.g777ea4f
 pkgrel=1
 pkgdesc='The cool TeX automation tool'
 arch=('any')
@@ -25,7 +25,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}"/"${_gitname}"/application/
-  mvn assembly:assembly
+  mvn assembly:single
 }
 
 package() {
