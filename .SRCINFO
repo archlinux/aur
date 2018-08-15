@@ -5,6 +5,7 @@ pkgbase = yle-dl
 	url = http://aajanki.github.io/yle-dl/
 	arch = any
 	license = GPL3
+	makedepends = python-setuptools
 	depends = ffmpeg
 	depends = wget
 	optdepends = php: for downloading live TV and certain news broadcasts

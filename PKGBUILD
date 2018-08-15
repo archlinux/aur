@@ -12,6 +12,7 @@ depends=('ffmpeg' 'wget')
 optdepends=('php: for downloading live TV and certain news broadcasts'
             'rtmpdump: for downloading Areena audio streams'
 	    'youtube-dl: an alternative downloader backend to AdobeHDS.php')
+makedepends=('python-setuptools')
 provides=(${pkgname}=$pkgver)
 conflicts=(${pkgname})
 source=("$pkgname-$pkgver.tar.gz::https://github.com/aajanki/yle-dl/archive/${pkgver}.tar.gz")
