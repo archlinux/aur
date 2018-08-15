@@ -1,8 +1,8 @@
 pkgname=scrcpy-prebuiltserver
 _appname=scrcpy
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
-pkgdesc="Display and control of Android devices connected on USB (prebuilt server)"
+pkgdesc="Display and control your Android device connected on USB (prebuilt server)"
 arch=(x86_64)
 url=https://github.com/Genymobile/scrcpy
 license=(Apache)
@@ -11,8 +11,8 @@ makedepends=(meson)
 conflicts=(scrcpy)
 source=("${url}/archive/v${pkgver}.tar.gz"
         "${url}/releases/download/v${pkgver}/scrcpy-server-v${pkgver}.jar")
-sha256sums=('d340e3a0aa1625161bc00068ffccbe291b7866729a5fff7ff859904480ec0df3'
-            'cb39654ed2fda3d30ddff292806950ccc5c394375ea12b974f790c7f38f61f60')
+sha256sums=('e0e157341f6c052dc2e50ee6e912cf94df0bdda039759f19abb1eece37345f75'
+            '0f9a5a217f33f0ed7a1498ceb3c0cccf31c53533893aa952e674c1571d2740c1')
 
 package() {
   cd "scrcpy-${pkgver}"
