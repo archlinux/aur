@@ -2,7 +2,7 @@
 
 pkgname=('python-octaviaclient' 'python2-octaviaclient')
 pkgver='1.6.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='OpenStack Client plugin for Octavia, an OpenStack Load Balancing project'
 arch=('any')
 url="https://docs.openstack.org/developer/${pkgname}/"
@@ -61,7 +61,7 @@ check() {
   stestr run
 
   cd "${srcdir}/${pkgname}-py2"
-  stestr2 run
+  PYTHON=python2 stestr2 run
 }
 
 package_python-octaviaclient() {

@@ -1,7 +1,7 @@
 pkgbase = python-octaviaclient
 	pkgdesc = OpenStack Client plugin for Octavia, an OpenStack Load Balancing project
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.openstack.org/developer/python-octaviaclient/
 	arch = any
 	license = Apache
