@@ -1,7 +1,7 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=('python-barbicanclient' 'python2-barbicanclient')
-pkgver='4.6.0'
+pkgver='4.7.0'
 pkgrel='1'
 pkgdesc='Client library for the Barbican Key Management API'
 arch=('any')
@@ -29,11 +29,9 @@ source=("git+https://git.openstack.org/openstack/${pkgname}#tag=${pkgver}")
 sha512sums=('SKIP')
 
 prepare() {
-  cp -a "${srcdir}/${pkgname}"{,-py2}
-
-  # Fix test function name for Python 3
   cd "${srcdir}/${pkgname}"
   sed -i 's/assertItemsEqual/assertCountEqual/g' barbicanclient/tests/v1/*.py
+  cp -a "${srcdir}/${pkgname}"{,-py2}
 }
 
 build() {
@@ -46,10 +44,10 @@ build() {
 
 check() {
   cd "${srcdir}/${pkgname}"
-  python setup.py testr
+  stestr run
 
   cd "${srcdir}/${pkgname}-py2"
-  PYTHON=python2 python2 setup.py testr
+  stestr2 run
 }
 
 package_python-barbicanclient() {
