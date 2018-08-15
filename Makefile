@@ -1,6 +1,6 @@
 .PHONY: prepare
 
 prepare:
-	gpg --detach-sign --yes rebuild-detector
+	gpg --detach-sign --yes checkrebuild
 	updpkgsums
 	makepkg --printsrcinfo > .SRCINFO
