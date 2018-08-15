@@ -1,7 +1,7 @@
 # Maintainer: oi_wtf <brainpower at mailbox dot org>
 
 pkgname="bp-nfoview"
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="A Simple NFO-Viewer by brainpower"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('qt5-base')
 makedepends=('cmake' 'git')
 source=("https://github.com/brainpower/bp-nfoview/archive/v${pkgver}.tar.gz")
-sha256sums=('3c81e5e4de477b2063190fccb0c9f2599b0369e00a8e1a747110370a2ab9ea0d')
+sha256sums=('edfdff839c9f23964e81be562bcee7abb27696039f64ec180fcd9f777b0c3118')
 
 build(){
   cd "${srcdir}/${pkgname}-${pkgver}"
