@@ -8,8 +8,6 @@ User=factom-walletd
 Group=factom-walletd
 EnvironmentFile=-/etc/default/factom-walletd
 ExecStart=/usr/bin/factom-walletd $FACTOM_WALLETD_OPTS
-KillMode=control-group
-Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
