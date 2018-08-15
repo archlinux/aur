@@ -11,7 +11,7 @@ depends=('libliri-git' 'xdg-desktop-portal')
 makedepends=('git' 'liri-qbs-shared-git')
 conflicts=('xdg-desktop-portal-liri')
 replaces=('xdg-desktop-portal-liri')
-provides=('xdg-desktop-portal-liri')
+provides=('xdg-desktop-portal-liri' 'xdg-desktop-portal-impl')
 groups=('liri-git')
 
 _gitroot="git://github.com/lirios/xdg-desktop-portal-liri.git"
