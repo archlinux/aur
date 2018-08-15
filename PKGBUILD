@@ -2,10 +2,10 @@
 
 pkgname=pyznap
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="ZFS snapshot tool written in Python"
 url="https://github.com/yboetz/pyznap"
-depends=('python' )
+depends=('python' 'python-paramiko' 'python-configparser')
 makedepends=('python3' )
 license=('GPLv3')
 arch=('any')
@@ -13,11 +13,11 @@ source=("pyznap-${pkgver}.tar.gz::https://github.com/yboetz/pyznap/archive/v${pk
 sha256sums=('e506a3541b3af95f06cd3920269dcad11ba5b3a231591b3a51160ac0f3022002')
 
 build() {
-    cd $srcdir/pyznap-0.9.1
+    cd $srcdir/pyznap-${pkgver}
     python setup.py build
 }
 
 package() {
-    cd $srcdir/pyznap-0.9.1
+    cd $srcdir/pyznap-${pkgver}
     python setup.py install --root="$pkgdir" --optimize=1
 }
