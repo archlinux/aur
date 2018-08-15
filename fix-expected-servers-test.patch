@@ -1,0 +1,20 @@
+diff --git a/shade/tests/unit/test_normalize.py b/shade/tests/unit/test_normalize.py
+index 08d135ae..ad37ff84 100644
+--- a/shade/tests/unit/test_normalize.py
++++ b/shade/tests/unit/test_normalize.py
+@@ -578,7 +578,6 @@ class TestUtils(base.RequestsMockTestCase):
+                     u'version': 4}]},
+             'adminPass': None,
+             'created': u'2015-08-01T19:52:16Z',
+-            'created_at': u'2015-08-01T19:52:16Z',
+             'disk_config': u'MANUAL',
+             'flavor': {u'id': u'bbcb7eb5-5c8d-498f-9d7e-307c575d3566'},
+             'has_config_drive': True,
+@@ -650,7 +649,6 @@ class TestUtils(base.RequestsMockTestCase):
+             'cloud': '_test_cloud_',
+             'config_drive': u'True',
+             'created': u'2015-08-01T19:52:16Z',
+-            'created_at': u'2015-08-01T19:52:16Z',
+             'disk_config': u'MANUAL',
+             'flavor': {u'id': u'bbcb7eb5-5c8d-498f-9d7e-307c575d3566'},
+             'has_config_drive': True,
