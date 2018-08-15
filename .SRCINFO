@@ -1,7 +1,7 @@
 pkgbase = python-oslo-log
 	pkgdesc = Oslo Log library
-	pkgver = 3.38.1
-	pkgrel = 2
+	pkgver = 3.39.0
+	pkgrel = 1
 	url = https://docs.openstack.org/developer/oslo.log/
 	arch = any
 	license = Apache
@@ -9,12 +9,16 @@ pkgbase = python-oslo-log
 	checkdepends = python2-mock
 	checkdepends = python-oslotest
 	checkdepends = python2-oslotest
+	checkdepends = bandit
+	checkdepends = python-reno
 	checkdepends = python2-unittest2
 	makedepends = git
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	makedepends = python-pbr
 	makedepends = python2-pbr
+	makedepends = python-six
+	makedepends = python2-six
 	makedepends = python-oslo-config
 	makedepends = python2-oslo-config
 	makedepends = python-oslo-context
@@ -31,7 +35,9 @@ pkgbase = python-oslo-log
 	makedepends = python2-pyinotify
 	makedepends = python-dateutil
 	makedepends = python2-dateutil
-	source = git+https://git.openstack.org/openstack/oslo.log#tag=3.38.1
+	makedepends = python-monotonic
+	makedepends = python2-monotonic
+	source = git+https://git.openstack.org/openstack/oslo.log#tag=3.39.0
 	source = remove-failed-py37-tests.patch
 	sha512sums = SKIP
 	sha512sums = 041fa7f3c6546b1c7aa03df776c8d8da1725b7be34871d2b96f4cf1cd3026df96ed7f880eecf90beab22806901cd3b38db3419e5f2c6ff1b564c0270815f3ace
@@ -47,6 +53,7 @@ pkgname = python-oslo-log
 	depends = python-debtcollector
 	depends = python-pyinotify
 	depends = python-dateutil
+	depends = python-monotonic
 
 pkgname = python2-oslo-log
 	depends = python2-six
@@ -59,4 +66,5 @@ pkgname = python2-oslo-log
 	depends = python2-debtcollector
 	depends = python2-pyinotify
 	depends = python2-dateutil
+	depends = python2-monotonic
 
