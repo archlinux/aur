@@ -1,16 +1,18 @@
-# Maintainer: Albert Kugel (Lastebil) (lastebilaur@trebel.org)
-# Contributor : speps <speps at aur dot archlinux dot org>
-# Contributor: Eric Forgeot < http://ifiction.free.fr >
-# Submitter: favardin
+# Maintainer:  Caleb Maclennan <caleb@alerque.com>
+# Contributor: Albert Kugel (Lastebil) <lastebilaur@trebel.org>
+# Contributor: speps <speps@aur.archlinux.org>
+# Contributor: Eric Forgeot <http://ifiction.free.fr>
+# Contributor: favardin
 
 pkgname=wxlua
 pkgver=2.8.12.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A set of bindings to the wxWidgets library for the Lua programming language."
 arch=('i686' 'x86_64')
 url="http://wxlua.sourceforge.net"
 license=('custom:wxWindows')
-depends=('lua52' 'desktop-file-utils' 'wxgtk2.8' 'webkitgtk2' )
+depends=('lua52' 'desktop-file-utils' 'wxgtk2.8' 'webkitgtk2')
+optdepends=('webkit2gtk')
 makedepends=('cmake')
 provides=('wxstedit')
 conflicts=('wxstedit')
