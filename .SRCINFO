@@ -8,8 +8,17 @@ pkgbase = vim-python-mode
 	license = LGPL3
 	depends = vim
 	depends = python
+	optdepends = python-astroid
+	optdepends = autopep8
+	optdepends = python-mccabe
+	optdepends = python-pycodestyle
+	optdepends = python-pydocstyle
+	optdepends = python-pyflakes
+	optdepends = pylama
 	optdepends = python-pylint
 	optdepends = python-rope
+	optdepends = python-six
+	optdepends = python-snowballstemmer
 	source = https://github.com/python-mode/python-mode/archive/0.9.2.tar.gz
 	sha256sums = 1dffe0cd0f70e0a1d55196fe885426fc13e1c89d15047f73aaf85b037c651fbd
 
