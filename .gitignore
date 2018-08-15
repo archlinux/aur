@@ -1,0 +1,9 @@
+!./.SRCINFO
+!./.gitignore
+!./PKGBUILD
+!./mastodon-sidekiq.service
+!./mastodon-streaming.service
+!./mastodon-web.service
+!./mastodon.install
+!./mastodon.target
+*
