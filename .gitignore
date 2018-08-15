@@ -1,7 +1,7 @@
-pkg/
-src/
-*.asc
-*.gz
-*.log
-*.tar
-*.xz
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!*.install
+!*.patch
+!*.diff
