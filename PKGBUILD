@@ -17,33 +17,33 @@ _gourl=github.com/ChacaS0/tempest
 build() {
   export GOROOT=/usr/lib/go
 
-  rm -rf build
-  mkdir -p build/go
-  cd build/go
+  #rm -rf build
+  #mkdir -p build/go
+  #cd build/go
 
-  for f in "$GOROOT/"*; do
-    ln -s "$f"
-  done
+  #for f in "$GOROOT/"*; do
+  #  ln -s "$f"
+  #done
 
-  rm pkg
-  mkdir pkg
-  cd pkg
+  #rm pkg
+  #mkdir pkg
+  #cd pkg
 
-  for f in "$GOROOT/pkg/"*; do
-    ln -s "$f"
-  done
+  #for f in "$GOROOT/pkg/"*; do
+  #  ln -s "$f"
+  #done
 
-  platform=`for f in "$GOROOT/pkg/"*; do echo \`basename $f\`; done|grep linux`
+  #platform=`for f in "$GOROOT/pkg/"*; do echo \`basename $f\`; done|grep linux`
 
-  rm -f "$platform"
-  mkdir "$platform"
-  cd "$platform"
+  #rm -f "$platform"
+  #mkdir "$platform"
+  #cd "$platform"
 
-  for f in "$GOROOT/pkg/$platform/"*.h; do
-    ln -s "$f"
-  done
+  #for f in "$GOROOT/pkg/$platform/"*.h; do
+  #  ln -s "$f"
+  #done
 
-  export GOROOT="$srcdir/build/go"
+  #export GOROOT="$srcdir/build/go"
 
   # GOPATH
   if [[ -z "${GOPATH}" ]]; then
