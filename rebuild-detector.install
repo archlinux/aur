@@ -1,3 +1,0 @@
-post_install() {
-  echo ">> The lists of packages to rebuild will be stored in /var/cache/rebuild-detector/"
-}

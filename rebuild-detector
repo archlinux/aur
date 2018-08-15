@@ -1,29 +1,17 @@
 #!/bin/bash
 #
-# Detect broken packages that need to be rebuilt and save them grouped by repo.
+# Detect broken packages that need to be rebuilt
 
 shopt -s nullglob
 shopt -s extglob
 
-readonly REBUILD_DETECTOR_CACHE_DIR="/var/cache/rebuild-detector"
-mkdir -p "$REBUILD_DETECTOR_CACHE_DIR"
-
-
-get_installed_pkgs() {
-    printf -v installed '[%s]' "$(gettext installed)"
-    pacman -Sl | awk -v i="$installed" '$NF == i { print $1,$2 }'
-}
-
-get_binaries() {
-    find -L /usr/bin -type f -print0 | xargs -0 readlink -f
-}
-
-get_broken_pkgs() {
+get_broken_ldd_pkgs() {
+    while IFS= read -rd: dir; do readlink -f "$dir"; done <<<"$PATH" |
+    sort -u |
+    xargs -I{} find -L "{}" -maxdepth 1 -type f -print0 |
+    xargs -0 readlink -f |
+    sort -u |
     parallel --will-cite 'ldd "{}" 2>/dev/null | grep "not found" >/dev/null && pacman -Qqo "{}"'
-}
-
-get_pkg_repo() {
-    grep " $1" installed | cut -d' ' -f1
 }
 
 get_broken_python_pkgs() {
@@ -36,27 +24,18 @@ get_broken_perl_pkgs() {
     pacman -Qqo /usr/lib/perl*/!($perl_version) 2>/dev/null
 }
 
+get_broken_pkgs() {
+    {
+        get_broken_ldd_pkgs
+        get_broken_python_pkgs
+        get_broken_perl_pkgs
+    } | sort -u
+}
 
-tmp=$(mktemp -dt "rebuild-detector.XXXXXXXX") || exit
-trap 'rm -rf $tmp' EXIT
-cd "$tmp" || exit
+get_repo_pkgs() {
+    pacman -Sl | cut -d' ' -f1-2
+}
 
-# Detect broken packages
-get_installed_pkgs >installed
-get_binaries | get_broken_pkgs >broken
-get_broken_python_pkgs >>broken
-get_broken_perl_pkgs >>broken
-
-# Save broken packages grouped by repo, overriding previous results
-rm -f "$REBUILD_DETECTOR_CACHE_DIR/"*.list
-while read -r pkg; do
-    repo="$(get_pkg_repo "$pkg")"
-    echo "$pkg" >>"$REBUILD_DETECTOR_CACHE_DIR/$repo.list"
-done <broken
-
-# Remove duplicates
-for list in "$REBUILD_DETECTOR_CACHE_DIR/"*.list; do
-    sort -u "$list" -o "$list"
-done
+join -12 <(get_repo_pkgs | sort -k2) <(get_broken_pkgs) | awk '{ print $2 "\t" $1 }'
 
 exit 0
