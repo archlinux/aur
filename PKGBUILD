@@ -2,11 +2,13 @@
 
 pkgname=crictl-bin
 pkgver=1.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI tool for Kubelet Container Runtime Interface (CRI)"
 arch=(x86_64)
 url="https://github.com/kubernetes-incubator/cri-tools/blob/master/docs/crictl.md"
 license=('Apache')
+provides=('crictl')
+conflicts=('crictl')
 source=("https://github.com/kubernetes-incubator/cri-tools/releases/download/v${pkgver}/crictl-v${pkgver}-linux-amd64.tar.gz"
         "crictl.yaml")
 sha256sums=('ccf83574556793ceb01717dc91c66b70f183c60c2bbec70283939aae8fdef768'
