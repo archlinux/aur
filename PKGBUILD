@@ -3,25 +3,29 @@
 # Contributor: Thomas Mudrunka <harvie@@email..cz>
 
 pkgname=gretl
-pkgver=2018a
+pkgver=2018b
 pkgrel=1
 pkgdesc='A cross-platform software package for econometric analysis, written in the C programming language'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://gretl.sourceforge.net/"
 license=('GPL')
 options=('!makeflags')
 depends=('gtksourceview3' 'curl' 'lapack' 'mpfr' 'fftw' 'gnuplot' 'gmp')
-optdepends=('readline: provides a nice editable command line in gretlcli' 'JSON-GLib: provides for parsing of data from various websites')
-source=("https://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('f961fe48613cffd263bcb7ee3dff0bf5189d75b45a5cd03a062cfca381b455b7')
+optdepends=('readline: provides a nice editable command line in gretlcli'
+            'JSON-GLib: provides for parsing of data from various websites'
+            'openmpi: provides means for dividing labor among multiple nodes')
+source=("https://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('5ee4f395a500895b7b5eee5eb9ff0709a4aef439dbd7c20f2477148ba9e3dee1')
 
 build() {
-  cd $pkgname-$pkgver
+  cd "${pkgname}-${pkgver}"
+
   ./configure --prefix=/usr --disable-xdg-utils
   make
 }
 
 package() {
-  cd $pkgname-$pkgver
-  make DESTDIR=$pkgdir install
+  cd "${pkgname}-${pkgver}"
+
+  make DESTDIR="${pkgdir}" install
 }
