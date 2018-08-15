@@ -1,20 +1,19 @@
 pkgbase = python-keras-applications
 	pkgdesc = Applications module of the Keras deep learning library
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/keras-team/keras-applications/
 	arch = any
 	license = MIT
 	makedepends = python
 	makedepends = python-setuptools
 	makedepends = python-numpy
-	makedepends = python-keras
 	makedepends = python2
 	makedepends = python2-setuptools
 	makedepends = python2-numpy
 	provides = python-keras-applications
-	source = keras-applications-1.0.4.tar.gz::https://github.com/keras-team/keras-applications/archive/1.0.4.tar.gz
-	sha256sums = 37bd2f3ba9c0e0105c193999b1162fd99562cf43e5ef06c73932950ecc46d085
+	source = keras-applications-1.0.4-resnet.tar.gz::https://github.com/keras-team/keras-applications/archive/resnet.tar.gz
+	sha256sums = 43c0033a2506398e5707b0f05588a725015de1e89dc01759b9273924409bced0
 
 pkgname = python-keras-applications
 	depends = python
