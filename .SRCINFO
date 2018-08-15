@@ -1,0 +1,21 @@
+pkgbase = cpuminer-opt
+	pkgdesc = Optimized multi-algo CPU miner
+	pkgver = 3.8.8.1
+	pkgrel = 1
+	url = https://github.com/JayDDee/cpuminer-opt
+	arch = x86_64
+	license = GPL
+	depends = curl
+	depends = gmp
+	depends = jansson
+	depends = openssl
+	provides = cpuminer
+	provides = cpuminer-multi
+	conflicts = cpuminer
+	conflicts = cpuminer-multi
+	conflicts = cpuminer-multi-git
+	source = cpuminer-opt-3.8.8.1.tar.gz::https://github.com/JayDDee/cpuminer-opt/archive/v3.8.8.1.tar.gz
+	md5sums = bbba91c296b82830adf27db9d696487a
+
+pkgname = cpuminer-opt
+
