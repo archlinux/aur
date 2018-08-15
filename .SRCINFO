@@ -1,7 +1,7 @@
 pkgbase = bloscpack
 	pkgdesc = command line interface to and serialization format for Blosc.
 	pkgver = 0.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Blosc/bloscpack
 	arch = any
 	license = MIT

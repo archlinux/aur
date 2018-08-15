@@ -2,7 +2,7 @@
 
 pkgname=bloscpack
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='command line interface to and serialization format for Blosc.'
 arch=(any)
 url='https://github.com/Blosc/bloscpack'
