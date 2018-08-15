@@ -16,7 +16,6 @@ optdepends=('webkit2gtk')
 makedepends=('cmake')
 provides=('wxstedit')
 conflicts=('wxstedit')
-install="$pkgname.install"
 source=("http://downloads.sourceforge.net/$pkgname/$pkgname/$pkgver/wxLua-$pkgver-src.tar.gz")
 md5sums=('e0a28904d046400713c07d7c4c9515ef')
 
