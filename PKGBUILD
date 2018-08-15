@@ -3,14 +3,14 @@
 
 _pkgname=Terminal
 pkgname=terminal.app
-pkgrel=2
+pkgrel=3
 pkgver=0.9.9
 pkgdesc='A terminal emulator for GNUstep'
 arch=('i686' 'x86_64' 'armv7h')
 url='http://www.nongnu.org/gap/terminal/index.html'
 license=('GPL2')
 groups=('gnustep-apps')
-depends=('gnustep-base' 'gnustep-gui')
+depends=('gnustep-base' 'gnustep-gui' 'gnustep-back')
 makedepends=('gcc-objc')
 source=("https://savannah.nongnu.org/download/gap/Terminal-$pkgver.tar.gz")
 sha256sums=('27f81bbecdbd10cde8c080012cde4973bec20e551c58c29f353733cf03c220e9')
