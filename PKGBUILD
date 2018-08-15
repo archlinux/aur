@@ -4,7 +4,7 @@
 
 pkgname=menulibre
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An advanced menu editor that provides modern features in a clean, easy-to-use interface. All without GNOME dependencies.'
 arch=('any')
 url='https://launchpad.net/menulibre'
