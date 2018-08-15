@@ -1,6 +1,6 @@
 pkgbase = emacs-git
 	pkgdesc = GNU Emacs. Development.
-	pkgver = 27.0.50.133470
+	pkgver = 27.0.50.133972
 	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = emacs-git
 	depends = libotf
 	depends = libjpeg-turbo
 	depends = giflib
-	provides = emacs
 	conflicts = emacs
+	replaces = emacs
 	source = emacs-git::git+https://github.com/emacs-mirror/emacs.git#branch=master
 	md5sums = SKIP
 
