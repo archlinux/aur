@@ -2,7 +2,7 @@
 # Contributor: Tom Tobin <archlinux@tomxtobin.com>
 
 pkgname=awless
-pkgver=0.1.10
+pkgver=0.1.11
 pkgrel=1
 pkgdesc='A command line interface for Amazon Web Services (AWS)'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('Apache')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('d2e9075e1f16055796a699d165ff2b2dbc1b2fcf408bb644497553e3108a2cf3')
+sha256sums=('1a78636face8753cb983a5e4c1e3bfc9e1940e7eb932aa01fe2cbded46fd4292')
 
 prepare() {
   mkdir -p src/github.com/wallix
