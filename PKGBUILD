@@ -2,7 +2,7 @@
 
 pkgname=docfetcher
 _name=DocFetcher
-pkgver=1.1.21
+pkgver=1.1.22
 pkgrel=1
 _gtkver=gtk3 # variable that controls whether GTK2 or 3(default) is to be used.
 pkgdesc="A java open source desktop search application"
@@ -16,7 +16,7 @@ source=("https://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgve
   'docfetcher'
   'swt.patch'
   'docfetcher.desktop')
-sha256sums=('e5e3d81be3fc8029cead94fb121989a16d420ae69728cf5065d09183adc7dd1c'
+sha256sums=('0bf4ccf48947e0c0e2ed817d7f82c5cb04cc64684f6a76e289caf4a2ef61ba4f'
          'd49d1c1327b72345040c76ae510a3eaa520c82dd5c43f2a6e597f1c984b55c50'
          'edc2d63e3644eafe69229df44986c310a17eeecb06ce62818c24f55c9409ab54'
          '878ea6e2188733f13a7580606fef290ae5b547b814b33efcd61f8cef79b76b61')
