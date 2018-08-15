@@ -1,21 +1,27 @@
 pkgbase = exodus-eden
 	pkgdesc = An unsupported, advanced version of Exodus
 	pkgver = 1.57.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://exodus.io/eden
 	arch = x86_64
 	license = custom:"Copyright © 2018 Exodus"
+	makedepends = patchelf
 	depends = gconf
 	depends = gtk2
 	depends = nss
 	depends = libxss
+	noextract = glibc-2.27-3-x86_64.pkg.tar.xz
+	options = !strip
+	options = staticlibs
 	source = https://exodusbin.azureedge.net/releases/exodus-eden-linux-x64-1.57.0.zip
 	source = http://marceloneil.com/exodus-icons/eden-icons.zip
 	source = exodus-eden.desktop
+	source = https://archive.archlinux.org/packages/g/glibc/glibc-2.27-3-x86_64.pkg.tar.xz
 	sha256sums = f8ab85c529846a8810b69fe027a5fcbf8bf47aa2f554e4301b57a8aab63c8e85
 	sha256sums = 531447b0b49a27a4169fcd2639fa793135acf2776b05f52f36557b384bace7cb
 	sha256sums = 820c6de206ffdd5882f26a8b7d5a2720d0b2df6f9fe62d31aa3a9aaefb9b6322
+	sha256sums = a9e1b18d7f613be660556dbd6883781e88a0f5113230147e230d3e2f268792dc
 
 pkgname = exodus-eden
 
