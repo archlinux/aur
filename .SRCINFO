@@ -1,7 +1,7 @@
 pkgbase = python-easywebdav
 	pkgdesc = A straight-forward WebDAV client, implemented using Requests
 	pkgver = 1.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://pypi.python.org/pypi/easywebdav
 	arch = any
 	license = custom:ISC
