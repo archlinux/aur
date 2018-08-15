@@ -1,0 +1,26 @@
+diff --git a/src/chrono_opengl/ChOpenGLCamera.cpp b/src/chrono_opengl/ChOpenGLCamera.cpp
+index 32a0c62e1..7f352a9c6 100644
+--- a/src/chrono_opengl/ChOpenGLCamera.cpp
++++ b/src/chrono_opengl/ChOpenGLCamera.cpp
+@@ -16,6 +16,8 @@
+ 
+ #include "chrono_opengl/ChOpenGLCamera.h"
+ 
++#define GLM_ENABLE_EXPERIMENTAL
++
+ #include <glm/gtc/matrix_transform.hpp>
+ #include <glm/gtx/rotate_vector.hpp>
+ #include <glm/gtx/quaternion.hpp>
+diff --git a/src/chrono_opengl/ChOpenGLViewer.cpp b/src/chrono_opengl/ChOpenGLViewer.cpp
+index 68eb7c7e0..2f71c5051 100644
+--- a/src/chrono_opengl/ChOpenGLViewer.cpp
++++ b/src/chrono_opengl/ChOpenGLViewer.cpp
+@@ -53,6 +53,8 @@
+ #include "resources/cylinder.h"
+ #include "resources/cone.h"
+ 
++#define GLM_ENABLE_EXPERIMENTAL
++
+ #include <glm/gtc/type_ptr.hpp>
+ #include <glm/gtx/rotate_vector.hpp>
+ #include <glm/gtc/matrix_transform.hpp>

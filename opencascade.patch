@@ -1,0 +1,13 @@
+diff --git a/src/chrono_cascade/CMakeLists.txt b/src/chrono_cascade/CMakeLists.txt
+index bb79799bc..928f82244 100644
+--- a/src/chrono_cascade/CMakeLists.txt
++++ b/src/chrono_cascade/CMakeLists.txt
+@@ -50,7 +50,7 @@ IF(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
+     SET (CH_CASCADE_INCLUDES "${CH_CASCADE_DIR}/inc")
+ ELSEIF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+     FIND_PATH(CH_CASCADE_INCLUDES Standard_Version.hxx
+-      HINTS ${CH_CASCADE_INCLUDES} "${CH_CASCADE_DIR}/inc" "${CH_CASCADE_DIR}/include"
++      HINTS ${CH_CASCADE_INCLUDES} "${CH_CASCADE_DIR}/inc" "${CH_CASCADE_DIR}/include/opencascade"
+       PATHS
+       /usr/include/oce
+       /usr/local/include/oce
