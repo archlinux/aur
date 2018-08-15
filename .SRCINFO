@@ -1,7 +1,7 @@
 pkgbase = python-reno
 	pkgdesc = OpenStack RElease NOtes manager
 	pkgver = 2.9.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.openstack.org/developer/reno/
 	arch = any
 	license = Apache
