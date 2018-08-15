@@ -3,7 +3,8 @@
 pkgname=tempest
 pkgver=0.1.1
 pkgrel=1
-pkgdesc="TEMPest is CLI tool to help manage temporary content"
+pkgdesc="TEMPest is \a CLI tool to help manage temporary content - writtent in
+go"
 arch=('x86_64' 'i686')
 url="https://chacas0.github.io/tempest/"
 license=('MIT')

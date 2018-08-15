@@ -1,5 +1,5 @@
 pkgbase = tempest
-	pkgdesc = TEMPest is CLI tool to help manage temporary content
+	pkgdesc = TEMPest is \a CLI tool to help manage temporary content - writtent in go
 	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://chacas0.github.io/tempest/
