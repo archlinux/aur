@@ -1,16 +1,9 @@
 # Maintainer: Mikael Tillenius <mti at tillenius dot com>
 pkgname=libps2000
-pkgver=2.4.0_3r09
+pkgver=3.0.0_3r570
 pkgrel=1
 pkgdesc="library for picotech oscilloscope 2000 series"
-arch=('i686' 'x86_64')
-if [ "$CARCH" == "i686" ]; then
-  _arch="i386"
-  _md5sum='7772e4f4b405dba14c48403af6a50641'
-else
-  _arch="amd64"
-  _md5sum='cb81084caf054c9aa84b275d9e4568de'
-fi
+arch=('x86_64')
 url="http://www.picotech.com/linux.html"
 license=('custom')
 groups=()
@@ -23,8 +16,8 @@ backup=()
 options=(!strip)
 install=
 changelog=
-source=("http://labs.picotech.com/debian/pool/main/libp/libps2000/${pkgname}_${pkgver//_/-}_${_arch}.deb")
-md5sums=($_md5sum)
+source=("http://labs.picotech.com/debian/pool/main/libp/libps2000/${pkgname}_${pkgver//_/-}_amd64.deb")
+md5sums=('b1a44e81f0edcb5f53311b8ce7bed976')
 
 package() {
   tar -xf data.tar.gz -C "${pkgdir}"
