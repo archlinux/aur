@@ -2,7 +2,7 @@
 # Contributor: JP-Ellis <josh@jpellis.me>
 pkgname=lhapdf
 pkgver=6.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A particle physics tool for evaluating PDFs from discretised data files."
 arch=('x86_64' 'i686')
 url="http://lhapdf.hepforge.org/"
@@ -18,12 +18,14 @@ md5sums=('9e05567d538fdb4862d4781cd076d7db')
 prepare() {
         cd "$srcdir/LHAPDF-$pkgver"
         sed -e 's/print Cython.Compiler.Version.version/print (Cython.Compiler.Version.version)/g' -i m4/cython.m4
-        touch wrappers/python/lhapdf.pyx
         autoreconf -i
 }
 
 build() {
 	cd "$srcdir/LHAPDF-$pkgver"
+	## need to rebuild Python extension code with up-to-date Cython for Python 3.7
+	## will eventually be fixed upstream
+	touch wrappers/python/lhapdf.pyx
 	./configure --prefix=/usr
 	make
 }
