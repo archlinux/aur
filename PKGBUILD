@@ -1,7 +1,7 @@
 # Maintainer: jerry73204 <jerry73204@gmail.com>
 # Co-maintainer: circle <az6980522@gmail.com>
 pkgname=ncsdk
-pkgver=2.04.00.06
+pkgver=2.05.00.02
 pkgrel=1
 pkgdesc='Software Development Kit for the Intel® Movidius™ Neural Compute Stick'
 arch=('x86_64')
@@ -33,10 +33,11 @@ depends=(
 )
 makedepends=('python' 'python-pip' 'unzip')
 options=('strip')
-source=("https://github.com/movidius/ncsdk/archive/v${pkgver}.tar.gz"
-        "https://downloadmirror.intel.com/27738/eng/NCSDK-${pkgver}.tar.gz")
-sha256sums=('d2ec76479e20d5e4a458011648f1d908c9237d292bf920955514b63d081f4f53'
-            'c65d03b2f3769a7a0d2b74e55940f97772d3271b5eeeb6400f55b8dfdd380eb8')
+source=("https://ncs-forum-uploads.s3.amazonaws.com/ncsdk/ncsdk-0$(tr '.' '_' <<< ${pkgver})-full/ncsdk-${pkgver}.tar.gz"
+        "https://downloadmirror.intel.com/27839/eng/NCSDK-${pkgver}.tar.gz")
+
+sha256sums=('c59c1b5b5ff6128c162edf5444a46f8b02e8a148e2128415cc276755c5a856bc'
+            'a0f1fe7bc5c350850999e04dabe2b4163d8d39b8c0293a0d0b398232bd6ac048')
 
 package() {
   cd "$srcdir/${pkgname}-${pkgver}"
@@ -59,12 +60,9 @@ package() {
   install -m644 ${sdk_dir}/api/c/mvnc.h ${pkgdir}/usr/include/mvnc.h
 
   install -m644 ${sdk_dir}/api/c/libmvnc.so.0 ${pkgdir}/usr/lib/mvnc/libmvnc.so.0
-  install -m644 ${sdk_dir}/api/c/libmvnc_highclass.so.0 ${pkgdir}/usr/lib/mvnc/libmvnc_highclass.so.0
 
   ln -s mvnc/libmvnc.so.0 ${pkgdir}/usr/lib/libmvnc.so.0
   ln -s mvnc/libmvnc.so.0 ${pkgdir}/usr/lib/libmvnc.so
-  ln -s mvnc/libmvnc_highclass.so.0 ${pkgdir}/usr/lib/libmvnc_highclass.so.0
-  ln -s mvnc/libmvnc_highclass.so.0 ${pkgdir}/usr/lib/libmvnc_highclass.so
 
   # install Python api
   cd ${sdk_dir}/api
