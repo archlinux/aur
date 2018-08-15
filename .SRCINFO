@@ -1,7 +1,7 @@
 pkgbase = image_optim
 	pkgdesc = Optimize (lossless compress, optionally lossy) images (jpeg, png, gif, svg) using external utilities.
-	pkgver = 0.26.1
-	pkgrel = 3
+	pkgver = 0.26.2
+	pkgrel = 1
 	url = https://github.com/toy/image_optim
 	arch = any
 	license = MIT
@@ -22,12 +22,10 @@ pkgbase = image_optim
 	depends = ruby-image_size
 	depends = ruby-in_threads
 	depends = ruby-progress
-	noextract = image_optim-0.26.1.gem
+	noextract = image_optim-0.26.2.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/image_optim-0.26.1.gem
-	source = image_optim.gemspec.patch
-	sha512sums = c575a8abe94f7f61c064d8d5e259ed7a8cf8d1219b11123e5bda2a4ba5e0c8ef4d39f38f14a6fe243a0250f5457415c817d5ea5bfa1478905cc185e19f97041f
-	sha512sums = cd429eafaac94feed60b5f68bca519450fdbfaa2d85d6ceefa0fb85d44b951f1ffdec8922e14a4ae28ff5d6483b8e3f2832ca92acd6115bafd12bbc1bc84e7ca
+	source = https://rubygems.org/downloads/image_optim-0.26.2.gem
+	sha512sums = 91cd2ddf0909bc793ae3e4a347ef38e37117d4a0333e2337a871fb38ac466a2b69725cde2a3f1febccf514316636fc47891d913a46d65880cf10bea18c61ff62
 
 pkgname = image_optim
 
