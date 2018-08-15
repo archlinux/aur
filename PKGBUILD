@@ -19,7 +19,7 @@ checkdepends=('python-treq' 'python-boto3' 'python-mock' 'python-moto'
               'python-lz4' 'python-isort' 'python-pylint' 'python-pyenchant'
               'flake8' 'python-txrequests' 'python-setuptools_trial'
               'python-pyjade'
-              "buildbot-pkg-git=$pkgver" "buildbot-worker-git=$pkgver"
+              "python-buildbot-pkg-git=$pkgver" "buildbot-worker-git=$pkgver"
               'openssh')
 source=(git+https://github.com/buildbot/buildbot.git
         skip-linux-distro-test.patch)
