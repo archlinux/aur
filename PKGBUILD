@@ -2,15 +2,15 @@
 # Contributor: Joermungand <joermungand at gmail dot com>
 
 pkgname=avldrums-lv2-git
-pkgver=0.2.2.r11.g856f794
+pkgver=0.3.0.r1.gf670fcd
 pkgrel=1
 pkgdesc="Dedicated AVLDrumkits LV2 Plugin from x42"
 arch=('i686' 'x86_64')
 url="https://github.com/x42/avldrums.lv2"
 license=('GPL2')
 groups=('lv2-plugins')
-depends=('pango' 'glu')
-makedepends=('git' 'lv2')
+depends=('pango' 'libglvnd')
+makedepends=('git' 'lv2' 'glu')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=("${pkgname%-*}::git://github.com/x42/avldrums.lv2")
