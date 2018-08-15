@@ -1,7 +1,7 @@
 pkgbase = util-linux-selinux
 	pkgdesc = SELinux aware miscellaneous system utilities for Linux
 	pkgver = 2.32.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kernel.org/pub/linux/utils/util-linux/
 	arch = x86_64
 	groups = selinux
@@ -42,8 +42,8 @@ pkgname = util-linux-selinux
 	provides = eject
 	provides = zramctl
 	provides = rfkill
-	provides = util-linux=2.32.1-1
-	provides = selinux-util-linux=2.32.1-1
+	provides = util-linux=2.32.1-2
+	provides = selinux-util-linux=2.32.1-2
 	conflicts = eject
 	conflicts = zramctl
 	conflicts = rfkill
@@ -63,6 +63,6 @@ pkgname = libutil-linux-selinux
 	provides = libmount.so
 	provides = libsmartcols.so
 	provides = libuuid.so
-	provides = libutil-linux=2.32.1-1
+	provides = libutil-linux=2.32.1-2
 	conflicts = libutil-linux
 
