@@ -5,14 +5,14 @@
 BUILD_SELINUX=false
 
 pkgname=389-ds-base
-pkgver=1.4.0.12
-pkgrel=2
+pkgver=1.4.0.14
+pkgrel=1
 pkgdesc="389 Directory Server (base)"
 arch=(i686 x86_64)
 url="http://port389.org/"
 license=(GPL)
 depends=(cyrus-sasl cyrus-sasl-gssapi icu lm_sensors net-snmp libsystemd
-         openldap perl-netaddr-ip perl-socket libevent nss)
+         openldap perl-netaddr-ip perl-socket libevent nss pcre pam python)
 makedepends=(doxygen rsync)
 conflicts=(svrcore)
 provides=(svrcore)
@@ -31,7 +31,7 @@ backup=(etc/default/dirsrv
 options=(!libtool)
 install=${pkgname}.install
 source=("https://releases.pagure.org/389-ds-base/${pkgname}-${pkgver}.tar.bz2")
-sha512sums=('4d14db63bb6d61b08f395368b953d5eb8c3c8d3d9a6ab7b25cfb18b8dcefe1607ec8f7842afe6e798da04985f2e026ea9c82cae229266047e555eeca39027c28')
+sha512sums=('b23c785c88347901cb006c3aa9dc81d190c9ca85cf3b65a1cf4dfbd3f4e050cd1b1448f32a9a8ad4b96fb6cc5f5bc55a67a4857adc4cd4dc6bea014bb8d5f1c7')
 
 build() {
   cd "${pkgname}-${pkgver}"
