@@ -2,6 +2,7 @@
 pkgname=bagh-chal-gui
 pkgver=1.0
 pkgrel=1
+url="https://github.com/moverest/bagh-chal"
 pkgdesc="A bagh-chal game with a SDL GUI."
 arch=('x86_64')
 license=('MIT')
