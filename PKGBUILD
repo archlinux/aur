@@ -29,9 +29,9 @@ source=("git+https://git.openstack.org/openstack/${pkgname}#tag=${pkgver}")
 sha512sums=('SKIP')
 
 prepare() {
+  cp -a "${srcdir}/${pkgname}"{,-py2}
   cd "${srcdir}/${pkgname}"
   sed -i 's/assertItemsEqual/assertCountEqual/g' barbicanclient/tests/v1/*.py
-  cp -a "${srcdir}/${pkgname}"{,-py2}
 }
 
 build() {
@@ -47,7 +47,7 @@ check() {
   stestr run
 
   cd "${srcdir}/${pkgname}-py2"
-  stestr2 run
+  PYTHON=python2 stestr2 run
 }
 
 package_python-barbicanclient() {
