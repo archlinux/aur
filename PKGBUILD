@@ -5,7 +5,7 @@
 
 pkgname=pythonqt
 pkgver=3.2
-pkgrel=4
+pkgrel=5
 pkgdesc='A dynamic Python binding for Qt applications'
 arch=('i686' 'x86_64')
 url='http://pythonqt.sourceforge.net/'
@@ -13,7 +13,7 @@ license=('LGPL2.1')
 
 depends=('python' 'qt5-multimedia' 'qt5-svg' 'qt5-webkit' 'qt5-declarative')
 makedepends=('git' 'qt5-tools')
-conflicts=('qt5-python27-git')
+conflicts=("${pkgname}-svn" "${pkgname}-for-screencloud" 'qt5-python27-git')
 replaces=("${pkgname}-qt5")
 
 source=(
