@@ -1,15 +1,14 @@
 pkgbase = libps4000
 	pkgdesc = library for picotech oscilloscope 4000 series (4223, 4224, 4226, 4227, 4262, 4423, 4424)
-	pkgver = 1.6.0_2r10
+	pkgver = 2.1.0_2r570
 	pkgrel = 1
 	url = http://www.picotech.com/linux.html
-	arch = i686
 	arch = x86_64
 	license = custom
 	depends = libusb
 	options = !strip
-	source = http://labs.picotech.com/debian/pool/main/libp/libps4000/libps4000_1.6.0-2r10_amd64.deb
-	md5sums = 93c7e737cf280ef092d35b2d1c61ade9
+	source = http://labs.picotech.com/debian/pool/main/libp/libps4000/libps4000_2.1.0-2r570_amd64.deb
+	md5sums = 1f8b4930f9fdbebe844b7ad9405efe73
 
 pkgname = libps4000
 
