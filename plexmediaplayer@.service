@@ -1,14 +1,14 @@
 [Unit]
 Description = Plex Media Player
 After = systemd-user-sessions.service
-Conflicts = getty@tty7.service
+Conflicts = getty@tty1.service
 
 [Service]
 User = %i
 PAMName = login
 Type = simple
-TTYPath = /dev/tty7
-ExecStart = /usr/bin/xinit /usr/bin/plexmediaplayer --tv --fullscreen --scale-factor 1 -- :0 -nolisten tcp vt7
+TTYPath = /dev/tty1
+ExecStart = /usr/bin/xinit /usr/bin/plexmediaplayer --tv --fullscreen --scale-factor 1 -- :0 -nolisten tcp vt1
 Restart = on-success
 StandardInput = tty
 

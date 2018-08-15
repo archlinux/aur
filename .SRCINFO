@@ -1,7 +1,7 @@
 pkgbase = plex-media-player-git
 	pkgdesc = Next generation Plex Desktop Client
-	pkgver = r1165.f2338b5
-	pkgrel = 2
+	pkgver = r1167.c975ed3
+	pkgrel = 1
 	url = https://github.com/plexinc/plex-media-player
 	arch = i686
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = plex-media-player-git
 	source = plexmediaplayer@.service
 	sha256sums = SKIP
 	sha256sums = b03845b761cc18a88252b72d0c83e439006224660444d9174f53cc577f9498b6
-	sha256sums = 000807fe3fefa565844a41304678d5e5f767b54f32ec3b21f41401a29a4ceefc
+	sha256sums = 0b5a20681e785548eb82ce6bcb68119129bbd31e57bd862a99a52897e406a9d9
 
 pkgname = plex-media-player-git
 
