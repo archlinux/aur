@@ -1,0 +1,16 @@
+pkgbase = python-cursor
+	pkgdesc = Python package to hide or show the terminal cursor
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/GijsTimmers/cursor
+	arch = any
+	license = custom
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/c/cursor/cursor-1.2.0.tar.gz
+	source = LICENSE
+	sha256sums = 8ee9fe5b925e1001f6ae6c017e93682583d2b4d1ef7130a26cfcdf1651c0032c
+	sha256sums = 6c5881f3e2d6df1e317c8a73eed89041cc089da8c8124cec25c4b5fd500e5fc7
+
+pkgname = python-cursor
+
