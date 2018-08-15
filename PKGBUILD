@@ -18,16 +18,16 @@
 pkgbase=kodi-git
 pkgname=('kodi-git' 'kodi-eventclients-git' 'kodi-tools-texturepacker-git' 'kodi-dev-git')
 _gitname='xbmc'
-pkgver=18.0a3.r119.gc074f254087
+pkgver=18.0a3.r161.gfc9faf32d5f
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://kodi.tv"
 license=('GPL2')
 makedepends=('afpfs-ng' 'bluez-libs' 'boost' 'cmake' 'curl' 'cwiid' 'doxygen'
-             'git' 'ffmpeg' 'fmt' 'glew' 'gperf' 'hicolor-icon-theme' 'jasper' 'java-runtime'
-             'libaacs' 'libass' 'libbluray' 'libcdio' 'libcec' 'libgl' 'libmariadbclient'
-             'libmicrohttpd' 'libmodplug' 'libmpeg2' 'libnfs' 'libplist' 'libxrandr'
-             'libxslt' 'lirc' 'lzo' 'mesa' 'nasm' 'nss-mdns' 'python2-pillow'
+             'git' 'ffmpeg' 'flatbuffers' 'fmt' 'glew' 'gperf' 'hicolor-icon-theme' 'jasper'
+             'java-runtime' 'libaacs' 'libass' 'libbluray' 'libcdio' 'libcec' 'libgl'
+             'libmariadbclient' 'libmicrohttpd' 'libmodplug' 'libmpeg2' 'libnfs' 'libplist'
+             'libxrandr' 'libxslt' 'lirc' 'lzo' 'mesa' 'nasm' 'nss-mdns' 'python2-pillow'
              'python2-pybluez' 'python2-simplejson' 'rapidjson' 'rtmpdump' 'shairplay'
              'smbclient' 'swig' 'taglib' 'tinyxml' 'upower')
 source=("$_gitname::git+https://github.com/xbmc/xbmc.git#branch=master")
