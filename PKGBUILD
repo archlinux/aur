@@ -1,19 +1,23 @@
 # Maintainer: Erikas Rudinskas <erikmnkl@gmail.com>
 
 pkgname=nbfc-git
-pkgver=1.5.3.r69.gd66bb13
+pkgver=1.5.3.r71.gf45d282
 pkgrel=1
-pkgdesc="Cross-platform fan control service for notebooks (Development version)"
-arch=("i686" "x86_64")
-url="https://github.com/hirschmann/nbfc"
+pkgdesc='Cross-platform fan control service for notebooks (Development version)'
+arch=('i686' 'x86_64')
+url='https://github.com/hirschmann/nbfc'
 conflicts=('nbfc-beta' 'nbfc')
-license=("GPL3")
-depends=("mono")
-makedepends=("ncurses<=6.0-4")
-provides=("nbfc" "ec-probe")
-makedepends=("nuget")
-source=("${pkgname}::git+https://github.com/hirschmann/nbfc.git")
-md5sums=("SKIP")
+license=('GPL3')
+depends=('mono')
+makedepends=('ncurses<=6.0-4')
+provides=('nbfc' 'ec-probe')
+makedepends=('nuget')
+source=("${pkgname}::git+https://github.com/hirschmann/nbfc.git"
+        "nbfc"
+        "ec-probe")  
+md5sums=("SKIP"
+         "b8c7ecbe7816a43deeb91426b1ba3fbe"
+         "be72ba56253695932458f7cddc4a2194")
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"
@@ -27,22 +31,17 @@ build() {
 }
 
 package() {
-
-	# Files/executables installation:
+	# Files installation:
 	mkdir -p "${pkgdir}/opt/nbfc"
 	cp -R "${srcdir}/${pkgname}/Linux/bin/Release/"* "${pkgdir}/opt/nbfc/"
-	chmod -R 0755 "${pkgdir}/opt/nbfc"
 
 	# Systemd services:
 	install -D -m644 "${srcdir}/${pkgname}/Linux/nbfc.service" "${pkgdir}/etc/systemd/system/nbfc.service"
 	install -D -m644 "${srcdir}/${pkgname}/Linux/nbfc-sleep.service" "${pkgdir}/etc/systemd/system/nbfc-sleep.service"
-
-	# Make nbfc executable from CLI:
-	mkdir -p "${pkgdir}/usr/bin"
-	echo "mono /opt/nbfc/nbfc.exe \"\$@\" 2>&1 | sed 's/nbfc.exe/nbfc/g'" > "${pkgdir}/usr/bin/nbfc"
-	chmod 0755 "${pkgdir}/usr/bin/nbfc"
-	echo "mono /opt/nbfc/ec-probe.exe \"\$@\" 2>&1 | sed 's/ec-probe.exe/ec-probe/g'" > "${pkgdir}/usr/bin/ec-probe"
-	chmod 0755 "${pkgdir}/usr/bin/ec-probe"
+	
+	# Executables:
+	install -Dm755 "${srcdir}/nbfc" "${pkgdir}/usr/bin/nbfc"
+	install -Dm755 "${srcdir}/ec-probe" "${pkgdir}/usr/bin/ec-probe"
 
 	# License:
 	mkdir -p "${pkgdir}/usr/share/licenses/nbfc"
