@@ -1,5 +1,5 @@
 pkgbase = sat-cagou-hg
-	pkgver = r214.6a98d70a3a66
+	pkgver = r233.ba8f3a4a5ac7
 	pkgrel = 1
 	arch = any
 	license = AGPL3
@@ -10,6 +10,7 @@ pkgbase = sat-cagou-hg
 	depends = sat-templates-hg
 	depends = sat-tmp-hg
 	depends = xsel
+	depends = python2-kivy-garden
 	options = !emptydirs
 	source = hg+https://repos.goffi.org/cagou
 	md5sums = SKIP
