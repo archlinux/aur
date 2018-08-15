@@ -1,7 +1,7 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=('python-designateclient' 'python2-designateclient')
-pkgver='2.9.0'
+pkgver='2.10.0'
 pkgrel='1'
 pkgdesc='Python client library for Designate'
 arch=('any')
@@ -23,7 +23,7 @@ checkdepends=('python-cliff' 'python2-cliff'
               'python-requests-mock' 'python2-requests-mock'
               'python-subunit' 'python2-subunit')
 source=("git+https://git.openstack.org/openstack/${pkgname}#tag=$pkgver")
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 prepare() {
   cp -a "${srcdir}/${pkgname}"{,-py2}
@@ -39,10 +39,10 @@ build() {
 
 check() {
   cd "${srcdir}/${pkgname}"
-  python setup.py testr
+  stestr run
 
   cd "${srcdir}/${pkgname}-py2"
-  PYTHON=python2 python2 setup.py testr
+  PYTHON=python2 stestr run
 }
 
 package_python-designateclient() {
