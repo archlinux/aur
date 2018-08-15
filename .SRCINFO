@@ -1,6 +1,6 @@
 pkgbase = unity-editor-doc
 	pkgdesc = Unity User Manual and Scripting API Reference.
-	pkgver = 2018.2.2f1+20180703
+	pkgver = 2018.2.3f1+20180814
 	pkgrel = 1
 	url = https://unity3d.com/
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = unity-editor-doc
 	makedepends = libarchive
 	depends = unity-editor
 	options = !strip
-	source = http://beta.unity3d.com/download/fcee59332301/UnitySetup-2018.2.2f1
-	sha1sums = 612f9e45bd05ba2dc9c5c6d5afab8a3b2c0c2958
+	source = http://beta.unity3d.com/download/fba045906327/UnitySetup-2018.2.3f1
+	sha1sums = c4a11b282908d0938914d16a448ec4982a5ce34e
 
 pkgname = unity-editor-doc
 
