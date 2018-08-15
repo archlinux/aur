@@ -8,7 +8,18 @@ pkgdesc="Download video and audio from YLE Areena."
 arch=('any')
 url="http://aajanki.github.io/yle-dl/"
 license=('GPL3')
-depends=('ffmpeg' 'wget')
+depends=('ffmpeg'
+       'python-attrs>=17.4.0'
+       'python-attrs<18.1.0'
+       'python-configargparse'
+       'python-future'
+       'python-lxml'
+       'python-mini-amf'
+       'python-pycryptodomex'
+       'python-pysocks'
+       'python-requests'
+       'wget'
+)
 optdepends=('php: for downloading live TV and certain news broadcasts'
             'rtmpdump: for downloading Areena audio streams'
 	    'youtube-dl: an alternative downloader backend to AdobeHDS.php')

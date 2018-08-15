@@ -7,6 +7,15 @@ pkgbase = yle-dl
 	license = GPL3
 	makedepends = python-setuptools
 	depends = ffmpeg
+	depends = python-attrs>=17.4.0
+	depends = python-attrs<18.1.0
+	depends = python-configargparse
+	depends = python-future
+	depends = python-lxml
+	depends = python-mini-amf
+	depends = python-pycryptodomex
+	depends = python-pysocks
+	depends = python-requests
 	depends = wget
 	optdepends = php: for downloading live TV and certain news broadcasts
 	optdepends = rtmpdump: for downloading Areena audio streams
