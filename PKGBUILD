@@ -2,7 +2,7 @@
 
 pkgname=limnoria-python3-git
 _pkgname=Limnoria
-pkgver=0.83.4.1.10347.530c246
+pkgver=v0.83.4.1.r4198.6f9deecb
 pkgrel=1
 pkgdesc="An IRC bot based on Supybot, with sqlite3 support and other features (unstable version)"
 arch=('any')
@@ -25,7 +25,7 @@ md5sums=('SKIP')
 pkgver() {
   cd "$srcdir/$_pkgname"
 
-  echo $(awk -F"['+]" '/% version/ {print $2}' ./setup.py).$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {

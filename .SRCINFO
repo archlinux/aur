@@ -1,6 +1,6 @@
 pkgbase = limnoria-python3-git
 	pkgdesc = An IRC bot based on Supybot, with sqlite3 support and other features (unstable version)
-	pkgver = 0.83.4.1.10347.530c246
+	pkgver = v0.83.4.1.r4198.6f9deecb
 	pkgrel = 1
 	url = https://github.com/ProgVal/Limnoria
 	arch = any
