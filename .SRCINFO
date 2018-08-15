@@ -1,6 +1,6 @@
 pkgbase = vpn-unlimited
 	pkgdesc = VPN Unlimited client application
-	pkgver = 4.22
+	pkgver = 4.23
 	pkgrel = 2
 	url = https://www.vpnunlimitedapp.com
 	arch = x86_64
@@ -21,10 +21,10 @@ pkgbase = vpn-unlimited
 	depends = lsb-release
 	source_x86_64 = vpn-unlimited
 	source_x86_64 = vpn-unlimited-daemon.service
-	source_x86_64 = http://apt.keepsolid.com/debian/pool/main/v/vpn-unlimited/vpn-unlimited_4.22_amd64.deb
+	source_x86_64 = http://c7be0123d7efff32860a-a5a4fb8b39b86d00a1eb7d52603ae1d2.r6.cf1.rackcdn.com/vpn-unlimited_4.23_trusty_amd64.deb
 	sha256sums_x86_64 = b34f3093c4036e571117fd48791f52f8ece946ede7273758ef60bff294cba98f
 	sha256sums_x86_64 = 11042869fa2381bfe9132735146027d41a95038e2c0c4de8f48b9ef57f6b3288
-	sha256sums_x86_64 = c572ef22f4a1db19751b2ca85fee3907b9f4eb16d3b10e419b2c04b3228f5875
+	sha256sums_x86_64 = dbe0b0aee4cfb4029ebc461e373bd2cb688f6b0ba33e5f0bc74ff01faa8f1604
 
 pkgname = vpn-unlimited
 
