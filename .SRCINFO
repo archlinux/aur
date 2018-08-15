@@ -6,7 +6,7 @@ pkgbase = python-charade
 	arch = any
 	license = LGPL
 	depends = python
-	source = http://pypi.python.org/packages/source/c/charade/charade-1.0.3.tar.gz
+	source = https://pypi.python.org/packages/source/c/charade/charade-1.0.3.tar.gz
 	md5sums = 79ac701a147705c09bdce31b79dfa12e
 
 pkgname = python-charade
