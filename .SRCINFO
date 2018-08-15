@@ -1,0 +1,18 @@
+pkgbase = qmedbrowser-git
+	pkgdesc = A Qt based tool to browse and assign labels/annotations to large number of images
+	pkgver = r1.4f93e63
+	pkgrel = 1
+	url = https://github.com/ntoussaint/qmedbrowser
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = qt5-base
+	depends = insight-toolkit
+	provides = qmedbrowser
+	conflicts = qmedbrowser
+	source = qmedbrowser-git::git+https://github.com/ntoussaint/qmedbrowser.git
+	md5sums = SKIP
+
+pkgname = qmedbrowser-git
+
