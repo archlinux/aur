@@ -2,8 +2,8 @@
 # Contributor: Jan Lieven <echo amFuK2F1ckBkYXMtbGFib3Iub3JnCg== | base64 -d>
 
 pkgname=rp++-git
-pkgver=1+11+g5f0841c
-pkgrel=1
+pkgver=1+13+g3a54a7c
+pkgrel=2
 epoch=1
 pkgdesc='Find ROP gadgets in PE/ELF/MACH-O x86/x64 binaries'
 url='https://github.com/0vercl0k/rp'
@@ -24,13 +24,17 @@ pkgver() {
 prepare() {
   cd ${pkgname}
   mkdir build
-  sed 's/-static//g' -i CMakeLists.txt
+  # TODO fix and remove static build
+  #sed 's/-static//g' -i CMakeLists.txt
 }
 
 build() {
   cd ${pkgname}/build
-  cmake ..
-  make
+  export CFLAGS+=" -fPIC"
+  export CXXFLAGS+=" -fPIC"
+  export CPPFLAGS+=" -fPIC"
+  VERBOSE=1 cmake ..
+  VERBOSE=1 make
 }
 
 check() {
