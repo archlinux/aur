@@ -1,6 +1,6 @@
 pkgbase = kvantum-qt5-git
 	pkgdesc = SVG-based Qt5 theme engine plus a config tool and extra themes
-	pkgver = 0.10.7.r36.g3661d95
+	pkgver = 0.10.8.r0.g35d1d61
 	pkgrel = 1
 	url = https://github.com/tsujan/Kvantum
 	arch = x86_64
