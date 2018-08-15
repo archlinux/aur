@@ -2,7 +2,7 @@
 
 pkgname=signal-desktop-bin
 pkgver=1.15.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Private messaging from your desktop'
 arch=('x86_64')
 url='https://github.com/signalapp/Signal-Desktop'
@@ -28,18 +28,18 @@ package() {
   # fix permissions in 1.9.0+ (Some directories have now 775; changing them back to 755)
   find "${pkgdir}" -type d -not -perm 755 -exec chmod 755 {} \;
 
-  # Patch Signal to use glibc 2.27
-  _idir="/opt/Signal"
-  _pdir="${pkgdir}/${_idir}"
-  _pbin="${_pdir}/signal-desktop"
-  mkdir -p "$_pdir/glibc"
-  tar -xJf "glibc-2.27-3-x86_64.pkg.tar.xz" -C "$_pdir/glibc"
-  rm "$_pdir/glibc/"{.BUILDINFO,.INSTALL,.MTREE,.PKGINFO}
-  patchelf --set-interpreter "$_idir/glibc/usr/lib/ld-linux-x86-64.so.2" "$_pbin"
-  patchelf --set-rpath "$_idir:$_idir/glibc/usr/lib" "$_pbin"
-  patchelf --shrink-rpath "$_pbin"
-
   # install alias in /usr/bin
   mkdir "${pkgdir}/usr/bin"
   install -D -m755 signal-desktop "${pkgdir}/usr/bin/signal-desktop"
+
+  # Patch Signal to use glibc 2.27
+  _idir="/opt/Signal"
+  _pdir="${pkgdir}${_idir}"
+  _pbin="${_pdir}/signal-desktop"
+  mkdir -p "${_pdir}/glibc"
+  tar -xJf "glibc-2.27-3-x86_64.pkg.tar.xz" -C "${_pdir}/glibc"
+  rm "${_pdir}/glibc/"{.BUILDINFO,.INSTALL,.MTREE,.PKGINFO}
+
+  patchelf --set-interpreter "${_idir}/glibc/usr/lib/ld-linux-x86-64.so.2" "${_pbin}"
+  patchelf --set-rpath "${_idir}:${_idir}/glibc/usr/lib" "${_pbin}"
 }
