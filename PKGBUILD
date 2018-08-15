@@ -1,16 +1,9 @@
 # Maintainer: Mikael Tillenius <mti at tillenius dot com>
 pkgname=libps6000
-pkgver=1.7.0_6r10
+pkgver=2.1.0_6r580
 pkgrel=1
 pkgdesc="library for picotech oscilloscope 6000 series"
-arch=('i686' 'x86_64')
-if [ "$CARCH" == "i686" ]; then
-  _arch="i386"
-  _md5sum='8d12e29c6388b039b5637e6d0e57a129'
-else
-  _arch="amd64"
-  _md5sum='88ea8b545f4770c910362676573a86a0'
-fi
+arch=('x86_64')
 url="http://www.picotech.com/linux.html"
 license=('custom')
 groups=()
@@ -23,8 +16,8 @@ backup=()
 options=(!strip)
 install=
 changelog=
-source=("http://labs.picotech.com/debian/pool/main/libp/${pkgname}/${pkgname}_${pkgver//_/-}_${_arch}.deb")
-md5sums=($_md5sum)
+source=("http://labs.picotech.com/debian/pool/main/libp/${pkgname}/${pkgname}_${pkgver//_/-}_amd64.deb")
+md5sums=('1d3228a5e28ce392d578e6a725a0735a')
 
 package() {
   tar -xf data.tar.gz -C "${pkgdir}"
