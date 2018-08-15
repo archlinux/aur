@@ -1,26 +1,25 @@
 # Maintainer: Frank Siegert <frank.siegert@googlemail.com>
 pkgname=rivet
-pkgver=2.6.0
+pkgver=2.6.1
 pkgrel=1
 pkgdesc="A particle physics package for data analysis and validation of Monte Carlo event generators"
 arch=('x86_64' 'i686')
 url="http://rivet.hepforge.org"
 license=('GPL3')
-depends=('python2' 'yoda>=1.6.7' 'fastjet' 'gsl' 'hepmc')
-makedepends=('cython2' 'autoconf' 'libtool' 'automake')
+depends=('python' 'yoda>=1.7.1' 'fastjet' 'gsl' 'hepmc')
+optdepends=('texlive-core: Plotting functionality'
+            'ghostscript: PDF plot output'
+            'imagemagick: PNG plot output'
+            'python2: For Python2 module in addition to Python3')
+makedepends=('cython')
 source=(http://www.hepforge.org/archive/rivet/Rivet-$pkgver.tar.gz)
-md5sums=('ec2fc8ff0c0d0398019d02ccc1be20bd')
-
-prepare() {
-	cd "$srcdir/Rivet-$pkgver"
-        sed -e 's/\/usr\/bin\/env python$/\/usr\/bin\/env python2/g' -i bin/* doc/* pyext/setup.py.in pyext/rivet/spiresbib.py
-        sed -e 's/cython /cython2 /g' -i pyext/rivet/Makefile.am
-}
+md5sums=('8f1e052886eaed33695623a917a3952c')
 
 build() {
 	cd "$srcdir/Rivet-$pkgver"
-        export PYTHON=/usr/bin/python2
-        autoreconf -i
+        ## need to rebuild Python extension code with up-to-date Cython for Python 3.7
+        ## will eventually be fixed upstream
+        touch pyext/rivet/*.pyx
 	./configure --prefix=/usr
 	make
 }
@@ -28,6 +27,13 @@ build() {
 package() {
 	cd "$srcdir/Rivet-$pkgver"
 	make DESTDIR="$pkgdir/" install
+
+        # If python2 is present, also build a library for it
+        if [ -x /usr/bin/python2 ]; then
+          PYTHON=/usr/bin/python2 ./configure --prefix=/usr
+          make DESTDIR="$pkgdir/" install
+        fi
+        
         mkdir -p $pkgdir/etc/bash_completion.d
         mv $pkgdir/usr/share/Rivet/rivet-completion $pkgdir/etc/bash_completion.d
 }
