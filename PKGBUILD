@@ -1,7 +1,7 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=('python-gnocchiclient' 'python2-gnocchiclient')
-pkgver='7.0.2'
+pkgver='7.0.4'
 pkgrel='1'
 pkgdesc='Python bindings to the Gnocchi API'
 arch=('any')
