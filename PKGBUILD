@@ -3,7 +3,7 @@
 pkgname=perl-www-offliberty
 _author=MGV
 _pkgname=WWW-Offliberty
-pkgver=1.000007
+pkgver=1.000008
 pkgrel=1
 pkgdesc="a simple interface to the offliberty.com download service"
 arch=('any')
@@ -16,7 +16,7 @@ url="https://metacpan.org/release/${_pkgname}"
 
 _lastauthor=${_author:0:1}/${_author:0:2}/${_author}
 source=(https://cpan.metacpan.org/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz)
-sha256sums=('2edbe1fc2fb15f78abbe866b6009f83b3716f8233ddbbcf9a8fd8accd7ddccbe')
+sha256sums=('39aef40c354eafaa918d19b1a6d4775f165acc37239eb92a939e3d1659473649')
 
 build() {
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" \
