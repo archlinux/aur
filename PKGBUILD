@@ -1,7 +1,7 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=('python-muranoclient' 'python2-muranoclient')
-pkgver='1.0.1'
+pkgver='1.1.1'
 pkgrel='1'
 pkgdesc='Python client library for Murano'
 arch=('any')
@@ -48,10 +48,10 @@ check() {
   cd "${srcdir}/${pkgname}"
   # Fix test function name for Python 3
   sed -i 's/assertItemsEqual/assertCountEqual/g' muranoclient/tests/unit/osc/v1/*.py
-  python setup.py testr
+  stestr run
 
   cd "${srcdir}/${pkgname}-py2"
-  PYTHON=python2 python2 setup.py testr
+  PYTHON=python2 stestr2 run
 }
 
 package_python-muranoclient() {
