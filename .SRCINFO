@@ -1,0 +1,18 @@
+pkgbase = netclasses
+	pkgdesc = Networking framework for GNUstep and Mac OS X
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://gap.nongnu.org/talksoup/index.html
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	groups = gnustep-apps
+	license = GPL2
+	makedepends = gcc-objc
+	depends = gnustep-base
+	depends = gnustep-gui
+	source = http://savannah.nongnu.org/download/gap/netclasses-1.1.0.tar.gz
+	sha256sums = d7d783c5b85abb289ef2fbb4bbf709eacb631e6ddf5a78e26fa45b94fb717f40
+
+pkgname = netclasses
+
