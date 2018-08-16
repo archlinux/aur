@@ -8,9 +8,10 @@ arch=('i686' 'x86_64')
 url="https://github.com/asapach/peerflix-server"
 license=('MIT')
 depends=('nodejs')
-makedepends=('nodejs-grunt-cli' 'bower' 'npm')
-source=(peerflix-server.sh
-peerflix-server.service)
+makedepends=('npm')
+source=($pkgname.service
+	$pkgname.sh
+)
 conflicts=('peerflix-server-git')
 options=('!strip')
 
@@ -19,11 +20,11 @@ package(){
     local _npmdir="$pkgdir/usr/lib/node_modules/"
     mkdir -p $_npmdir
     cd $_npmdir
-    npm install -g --prefix "$pkgdir/usr" --ignore-scripts --production peerflix-server@$pkgver
+    npm install -g --prefix "$pkgdir/usr" --ignore-scripts --production $pkgname@$pkgver
 
-    install -Dm644 "${srcdir}/peerflix-server.service" "${pkgdir}/usr/lib/systemd/system/peerflix-server.service"
+    install -Dm644 "${srcdir}/$pkgname.service" "${pkgdir}/usr/lib/systemd/system/$pkgname.service"
     install -Dm775 "${srcdir}/peerflix-server.sh" "${pkgdir}/usr/bin/peerflix-server"
 }
 
-md5sums=('ea9702820f92bef0636a4f01d13dd348'
-'8eb4184190cd66435c3bda2435982422')
+md5sums=('c16f83bd40fe9905b51c3ffd073bbcd0'
+         'ea9702820f92bef0636a4f01d13dd348')

@@ -6,16 +6,14 @@ pkgbase = peerflix-server
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = nodejs-grunt-cli
-	makedepends = bower
 	makedepends = npm
 	depends = nodejs
 	conflicts = peerflix-server-git
 	options = !strip
-	source = peerflix-server.sh
 	source = peerflix-server.service
+	source = peerflix-server.sh
+	md5sums = c16f83bd40fe9905b51c3ffd073bbcd0
 	md5sums = ea9702820f92bef0636a4f01d13dd348
-	md5sums = 8eb4184190cd66435c3bda2435982422
 
 pkgname = peerflix-server
 

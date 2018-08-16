@@ -4,7 +4,6 @@ Description=Peerflix Server
 [Service]
 Type=forking
 User=root
-WorkingDirectory=/usr/lib/node_modules/peerflix-server/
 ExecStart=/usr/bin/peerflix-server
 
 [Install]
