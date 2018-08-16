@@ -1,7 +1,7 @@
 pkgbase = python-keras-preprocessing
 	pkgdesc = Preprocessing module of the Keras deep learning library
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/keras-team/keras-preprocessing/
 	arch = any
 	license = MIT
