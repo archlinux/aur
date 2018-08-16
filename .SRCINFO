@@ -1,7 +1,7 @@
 pkgbase = cdlabelgen
 	pkgdesc = Generates frontcards and traycards for inserting in CD/DVD jewel cases.
 	pkgver = 4.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.aczoom.com/tools/cdinsert
 	arch = any
 	license = BSD

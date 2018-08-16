@@ -1,7 +1,7 @@
 # Maintainer: Michael M. Tung <mtung at mat dot upv dot es>
 pkgname=cdlabelgen
 pkgver=4.3.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc='Generates frontcards and traycards for inserting in CD/DVD jewel cases.'
 arch=('any')
@@ -23,7 +23,6 @@ source=("$pkgname-$pkgver.tgz::http://www.aczoom.com/pub/tools/$pkgname-$pkgver.
         "$pkgname-$pkgver.patch"
 	'LICENSE')
 noextract=()
-md5sums=()
 validpgpkeys=()
 
 prepare() {
