@@ -1,16 +1,18 @@
 pkgbase = python2-translitcodec
 	pkgdesc = Unicode to 8-bit charset transliteration codec
-	pkgver = 0.4.0
-	pkgrel = 1
+	pkgver = 0.4
+	pkgrel = 2
 	url = https://github.com/claudep/translitcodec
 	arch = any
 	license = MIT
 	makedepends = python2-setuptools
+	makedepends = python-setuptools
 	depends = python2
-	options = !emptydirs
-	source = https://pypi.python.org/packages/source/t/translitcodec/translitcodec-0.4.0.tar.gz
-	md5sums = 7fd31bd3f792982a7919ab131ac848cf
-	sha256sums = 715a8995f84482cd23c1b02fd254ff4da66589e9d5222de10f7efe49d7bea683
+	source = https://github.com/claudep/translitcodec/archive/version-0.4.tar.gz
+	sha256sums = 672858880f6b53a668cc70ef53499c2a226958c6484ed6b5f50b7be527670bca
 
 pkgname = python2-translitcodec
+
+pkgname = python-translitcodec
+	depends = python
 
