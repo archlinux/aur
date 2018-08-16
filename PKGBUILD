@@ -4,7 +4,7 @@
 pkgname=puddletag-git
 pkgdesc="An audio tag editor for GNU/Linux."
 license=('GPL')
-url="http://puddletag.sourceforge.net/"
+url="http://docs.puddletag.net/"
 pkgver=758.489acd2
 pkgrel=1
 
