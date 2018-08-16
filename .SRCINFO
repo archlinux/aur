@@ -13,6 +13,7 @@ pkgbase = python-gpy
 	depends = python-six
 	depends = python-paramz
 	depends = python-matplotlib
+	depends = python-climin-git
 	optdepends = python-plotly
 	optdepends = ipython
 	optdepends = python-sphinx
