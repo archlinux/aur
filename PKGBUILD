@@ -11,7 +11,7 @@
 _srcname=ffmpeg
 pkgname=ffmpeg-qsv
 pkgver=4.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Complete solution to record, convert and stream audio and video (including qsv and libfdk-aac)'
 arch=('x86_64')
 url='http://www.ffmpeg.org/'
