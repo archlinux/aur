@@ -1,0 +1,17 @@
+pkgbase = inherit-acl
+	pkgdesc = Tool that applies to a path its parent directory's permissions and ACL
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = http://eomanis.mooo.com/permshare/inherit-acl/index.xhtml
+	arch = any
+	license = GPL3
+	depends = bash>=4.3
+	depends = coreutils
+	depends = sed
+	depends = acl
+	optdepends = sudo: Sudo integration
+	source = http://eomanis.mooo.com/permshare/inherit-acl/inherit-acl-0.1.0.tar.gz
+	sha256sums = 8df51daec1129b9d683498b797465b41d1377adc26860381dc9820c2ba68970e
+
+pkgname = inherit-acl
+
