@@ -1,7 +1,7 @@
 pkgbase = snd-usb-audio-lowlatency-dkms
 	pkgdesc = snd-usb-audio kernel module modified for low latency
 	pkgver = 4.17.14
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.kernel.org/
 	arch = any
 	license = GPL2

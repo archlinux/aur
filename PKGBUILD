@@ -1,9 +1,9 @@
 # Maintainer: Jonathan Liu <net147@gmail.com>
 pkgname=snd-usb-audio-lowlatency-dkms
 _basepkgname=snd-usb-audio-lowlatency
-_srcname=linux-4.17
 pkgver=4.17.14
-pkgrel=3
+_srcname=linux-${pkgver%.*}
+pkgrel=4
 pkgdesc="snd-usb-audio kernel module modified for low latency"
 arch=('any')
 url="https://www.kernel.org/"
