@@ -1,3 +1,3 @@
 #!/usr/bin/sh
-cd /opt/peerflix-server
-node server/bin.js &
+cd /usr/lib/node_modules/peerflix-server/server
+node bin.js &
