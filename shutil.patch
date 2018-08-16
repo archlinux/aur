@@ -1,0 +1,12 @@
+diff -ura halo-0.0.16.orig/halo/_utils.py halo-0.0.16.new/halo/_utils.py
+--- halo-0.0.16.orig/halo/_utils.py	2018-08-16 18:49:06.441628290 +0200
++++ halo-0.0.16.new/halo/_utils.py	2018-08-16 18:50:20.329250171 +0200
+@@ -4,7 +4,7 @@
+ import codecs
+ import platform
+ import six
+-from backports.shutil_get_terminal_size import get_terminal_size
++from shutil import get_terminal_size
+ 
+ from colorama import init
+ from termcolor import colored

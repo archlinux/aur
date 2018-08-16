@@ -13,7 +13,9 @@ pkgbase = python-halo
 	depends = python-termcolor
 	depends = python-six
 	source = https://files.pythonhosted.org/packages/source/h/halo/halo-0.0.16.tar.gz
+	source = shutil.patch
 	sha256sums = 5dab3e6ce10b388e91a5627622f7695c487eeb571b55a758c2999e62b173fa62
+	sha256sums = 53b7ac66f285e2abc4e1bf427c84ffce59b3c2b0a024230528759684ca012167
 
 pkgname = python-halo
 
