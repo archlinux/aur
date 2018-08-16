@@ -1,0 +1,19 @@
+pkgbase = pandoc-panflute
+	pkgdesc = A Python package that makes creating Pandoc filters fun.
+	pkgver = 1.10
+	pkgrel = 1
+	url = https://github.com/sergiocorreia/panflute
+	arch = any
+	license = BSD3
+	makedepends = git
+	depends = pandoc
+	depends = python
+	depends = python-pandocfilters
+	depends = pandoc-xnos
+	provides = pandoc-panflute-git
+	conflicts = pandoc-panflute-git
+	source = git://github.com/sergiocorreia/panflute.git
+	md5sums = SKIP
+
+pkgname = pandoc-panflute
+
