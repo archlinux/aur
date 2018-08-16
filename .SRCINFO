@@ -10,6 +10,7 @@ pkgbase = pandoc-panflute
 	depends = python
 	depends = python-pandocfilters
 	depends = python-shutilwhich
+	depends = python-future
 	provides = pandoc-panflute-git
 	conflicts = pandoc-panflute-git
 	source = git://github.com/sergiocorreia/panflute.git
