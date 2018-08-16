@@ -13,8 +13,8 @@ pkgbase = jflap
 	source = jflap.desktop
 	source = jflap.png
 	md5sums = 78075387e31ec1344b9aabc9b291a6ad
-	md5sums = fdc683f3cb88b3e336cda4a8d3b14837
-	md5sums = 20407ae51fdcd2dd89fe695efe934b9d
+	md5sums = 6ce7e5c80d16fdc9d4f04089b50a0e96
+	md5sums = e92fcec2107471a9595b654586303119
 	md5sums = a396345680d223883c2ea2c2bf50734d
 
 pkgname = jflap
