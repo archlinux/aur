@@ -6,4 +6,7 @@ post_install() {
     echo "Execute the following to set the sub{u,g}ids:"
     echo "'echo \"root:1000000:65536\" | sudo tee -a /etc/subuid /etc/subgid'"
     echo ""
+    echo "To enable the bash completion for lxc include the following in your environment (possibly ~/.bashrc)"
+    echo "'. /usr/share/bash-completion/completions/lxd complete -F __lxc_complete lxc'"
+    echo ""
 }

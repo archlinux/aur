@@ -5,7 +5,7 @@
 
 pkgname=lxd-git
 _pkgname=lxd
-pkgver=3.4.r0.520cea20
+pkgver=3.4.r8.7f82f4fa
 pkgrel=1
 pkgdesc="Daemon based on liblxc offering a REST API to manage containers"
 arch=('x86_64')
@@ -83,7 +83,7 @@ package() {
 
   # Bash completions
   install -p -m644 "${srcdir}/go/src/${_lxd}/scripts/bash/lxd-client" \
-    "${pkgdir}/usr/share/bash-completion/completions/lxd-client"
+    "${pkgdir}/usr/share/bash-completion/completions/lxd"
 }
 
 # vim:set ts=2 sw=2 et:
