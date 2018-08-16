@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Jflap
+Comment=Learn the basic concepts of Formal Languages and Automata Theory
+GenericName=Jflap
+Exec=jflap %U
+Icon=jflap
+Type=Application
+StartupNotify=true
+Categories=Utility;
+Categories=Application;Education;
+StartupWMClass=gui-Main
