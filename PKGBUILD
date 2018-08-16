@@ -9,7 +9,7 @@ url='http://pypi.python.org/pypi/Flask-Cache'
 license=('BSD')
 depends=('python-flask')
 makedepends=('python-distribute')
-source=("http://pypi.python.org/packages/source/F/Flask-Cache/Flask-Cache-${pkgver}.tar.gz")
+source=("https://pypi.python.org/packages/source/F/Flask-Cache/Flask-Cache-${pkgver}.tar.gz")
 md5sums=('ab82a9cd0844891ccdb54fbb93fd6c59')
 conflicts=('python-flask-cache-git')
 
