@@ -6,5 +6,5 @@ Exec=jflap %U
 Icon=jflap
 Type=Application
 StartupNotify=true
-Categories=Education;Science;ComputerScience
+Categories=Education;Science;ComputerScience;
 StartupWMClass=gui-Main
