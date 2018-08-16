@@ -14,7 +14,9 @@ pkgbase = qqbot
 	optdepends = python-wcwidth: For cmdQrcode
 	optdepends = shotwell: Automatically pop up QR code image
 	source = https://github.com/pandolia/qqbot/archive/v2.3.10.tar.gz
+	source = qqbot.service
 	sha512sums = c72f8a1c153c97a50adfaeb7704cbdacebcdd01b4a603e1a34ab571447cf3a2747c4da6480f7ce070eccd2b7fe5e3306924a111be1f680947fab245ee266a813
+	sha512sums = 88d5333217d868b227401cc4a954d547139272fef753384a5d885a21ca640bcd9529b2e98a02a7fb9ebd3b2a57bc634aefb3c3dedc09e5d9378ad827ffa629af
 
 pkgname = qqbot
 

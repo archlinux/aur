@@ -1,0 +1,13 @@
+[Unit]
+Description=QQBot Service
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+PIDFile=/var/run/qqbot.pid
+ExecStart=/usr/bin/qqbot -u /etc/qqbot
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
