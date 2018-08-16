@@ -1,15 +1,15 @@
 pkgbase = ansible-vim-git
 	pkgdesc = A vim plugin for syntax highlighting Ansible's common filetypes
-	pkgver = 20171223
-	pkgrel = 2
+	pkgver = 2.0.r5.gf1c9be3
+	pkgrel = 1
 	url = https://github.com/pearofducks/ansible-vim
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = ansible
-	depends = vim
+	depends = vim-runtime
 	source = ansible-vim-git::git+https://github.com/pearofducks/ansible-vim.git
-	md5sums = SKIP
+	sha512sums = SKIP
 
 pkgname = ansible-vim-git
 
