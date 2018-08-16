@@ -3,7 +3,7 @@
 pkgname=mars-mips
 pkgver=4.5
 _ver=${pkgver%.*}_${pkgver#*.}
-pkgrel=3
+pkgrel=4
 pkgdesc="An IDE for programming in MIPS assembly language intended for educational-level use"
 arch=('any')
 url="http://courses.missouristate.edu/KenVollmar/MARS/index.htm"

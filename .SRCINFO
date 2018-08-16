@@ -1,7 +1,7 @@
 pkgbase = mars-mips
 	pkgdesc = An IDE for programming in MIPS assembly language intended for educational-level use
 	pkgver = 4.5
-	pkgrel = 3
+	pkgrel = 4
 	url = http://courses.missouristate.edu/KenVollmar/MARS/index.htm
 	install = mars-mips.install
 	arch = any
