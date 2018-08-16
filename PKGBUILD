@@ -3,7 +3,7 @@
 
 pkgname=sil
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A game of adventure set in the first age of Middle-earth, when the world still rang with elven song and gleamed with dwarven mail. Walk the dark halls of Angband. Slay creatures black and fell. Wrest a shining Silmaril from Morgoth’s iron crown."
 arch=('i686' 'x86_64')
 url="http://www.amirrorclear.net/flowers/game/sil/"
@@ -13,7 +13,7 @@ install=sil.install
 source=(http://www.amirrorclear.net/flowers/game/sil/Sil-130-src.zip
         'sil.sh')
 md5sums=('de935f85ab8f9c98d5b781f9ed9e114c'
-         '6eca66c174e6c627b22bfb23acec1bf3')
+         '97f8ea581605782ef30b4594931d663f')
 
 build() {
   cd "$srcdir/Sil/src"
