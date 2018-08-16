@@ -1,6 +1,6 @@
 pkgbase = palemoon-bin
 	pkgdesc = Open source web browser based on Firefox focusing on efficiency.
-	pkgver = 27.9.4
+	pkgver = 28.0.0
 	pkgrel = 1
 	url = http://linux.palemoon.org/
 	arch = i686
@@ -16,19 +16,19 @@ pkgbase = palemoon-bin
 	depends = mime-types
 	depends = nss
 	optdepends = ffmpeg: record, convert, and stream audio and video
-	provides = palemoon=27.9.4
+	provides = palemoon=28.0.0
 	conflicts = palemoon
 	options = !strip
 	source = palemoon.desktop
 	validpgpkeys = 439F46F42C6AE3D23CF52E70865E6C87C65285EC
 	sha256sums = c6cae1c0de6b59da1d846cb2092ca2725ba2baa4d554223f747a4a71ee63002e
-	source_i686 = http://linux.palemoon.org/datastore/release/palemoon-27.9.4.en-US.linux-i686.tar.bz2
-	source_i686 = http://linux.palemoon.org/datastore/release/palemoon-27.9.4.en-US.linux-i686.tar.bz2.sig
-	sha256sums_i686 = d0bda90677102973c2f40df00f3c56cc2f15f3348a9cd868a4f49b70bbc0f94e
+	source_i686 = http://linux.palemoon.org/datastore/release/palemoon-28.0.0.linux-i686.tar.bz2
+	source_i686 = http://linux.palemoon.org/datastore/release/palemoon-28.0.0.linux-i686.tar.bz2.sig
+	sha256sums_i686 = 47a8c1c5040b4793a9e04763388a24e49d9f3e2e1efacc11bea44c155462eec6
 	sha256sums_i686 = SKIP
-	source_x86_64 = http://linux.palemoon.org/datastore/release/palemoon-27.9.4.en-US.linux-x86_64.tar.bz2
-	source_x86_64 = http://linux.palemoon.org/datastore/release/palemoon-27.9.4.en-US.linux-x86_64.tar.bz2.sig
-	sha256sums_x86_64 = 1c381994b1306d8d9ed2981cd6e4cbfa5ff00b1293e1c6176079d56515359906
+	source_x86_64 = http://linux.palemoon.org/datastore/release/palemoon-28.0.0.linux-x86_64.tar.bz2
+	source_x86_64 = http://linux.palemoon.org/datastore/release/palemoon-28.0.0.linux-x86_64.tar.bz2.sig
+	sha256sums_x86_64 = 25605ab52c327f047f79298510bf4ae00f69bb3acc86086289d07b2c53167cd3
 	sha256sums_x86_64 = SKIP
 
 pkgname = palemoon-bin
