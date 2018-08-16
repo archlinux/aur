@@ -3,7 +3,7 @@
 
 pkgname=python-gpy
 pkgver=1.9.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Gaussian processes framework in python"
 arch=("any")
 license=("BSD")

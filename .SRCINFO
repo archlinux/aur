@@ -1,7 +1,7 @@
 pkgbase = python-gpy
 	pkgdesc = Gaussian processes framework in python
 	pkgver = 1.9.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/SheffieldML/GPy
 	arch = any
 	license = BSD
