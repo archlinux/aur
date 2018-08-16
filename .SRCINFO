@@ -1,6 +1,6 @@
 pkgbase = godot-osc-git
 	pkgdesc = An advanced, feature packed, multi-platform 2D and 3D game engine (git version with OSC support)
-	pkgver = 3.1.r15719.bbdb6cf16
+	pkgver = 3.1.r15803.d7b892294
 	pkgrel = 1
 	url = http://www.godotengine.org
 	arch = i686
@@ -22,7 +22,7 @@ pkgbase = godot-osc-git
 	conflicts = godot
 	conflicts = godot-git
 	source = godot::git+https://github.com/godotengine/godot.git
-	source = gdosc::git+https://github.com/djiamnot/gdosc.git
+	source = gdosc::git+https://github.com/djiamnot/gdosc.git#branch=develop
 	sha256sums = SKIP
 	sha256sums = SKIP
 

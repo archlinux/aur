@@ -2,7 +2,7 @@
 
 _pkgname=godot
 pkgname=${_pkgname}-osc-git
-pkgver=3.1.r15719.bbdb6cf16
+pkgver=3.1.r15803.d7b892294
 pkgrel=1
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine (git version with OSC support)"
 url="http://www.godotengine.org"
@@ -15,7 +15,7 @@ conflicts=("${_pkgname}" "${_pkgname}-git")
 provides=("${_pkgname}")
 source=(
   "${_pkgname}::git+https://github.com/godotengine/${_pkgname}.git"
-  'gdosc::git+https://github.com/djiamnot/gdosc.git'
+  'gdosc::git+https://github.com/djiamnot/gdosc.git#branch=develop'
 )
 sha256sums=('SKIP' 'SKIP')
 
@@ -41,7 +41,6 @@ prepare() {
 
   ln -sf "${srcdir}/gdosc" modules/gdosc
   cd modules/gdosc
-  git checkout develop
   git submodule update --init
 }
 
