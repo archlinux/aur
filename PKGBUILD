@@ -105,7 +105,7 @@ build() {
 
 package_gdc() {
 	depends=('gcc' 'perl' 'binutils' 'libgphobos')
-	provides=('d-compiler=2.076.1' 'gdc-stable')
+	provides=('d-compiler=2.076.1')
 	pkgdesc="Compiler for D programming language which uses gcc backend"
 	conflicts=('gdc-stable')
     replaces=('gdc-stable')

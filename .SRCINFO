@@ -26,7 +26,6 @@ pkgname = gdc
 	depends = binutils
 	depends = libgphobos
 	provides = d-compiler=2.076.1
-	provides = gdc-stable
 	conflicts = gdc-stable
 	replaces = gdc-stable
 
