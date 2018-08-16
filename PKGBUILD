@@ -24,5 +24,6 @@ build() {
 package() {
     cd qqbot-$pkgver
     python setup.py install --root="$pkgdir"
+    install -Dm644 "$srcdir"/$pkgname.service "$pkgdir"/usr/lib/systemd/system/$pkgname.service
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
