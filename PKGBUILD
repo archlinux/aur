@@ -5,7 +5,7 @@ pkgver=1.10
 pkgrel=1
 pkgdesc='A Python package that makes creating Pandoc filters fun.'
 url='https://github.com/sergiocorreia/panflute'
-depends=('pandoc' 'python' 'python-pandocfilters' 'pandoc-xnos')
+depends=('pandoc' 'python' 'python-pandocfilters' 'python-shutilwhich')
 license=('BSD3')
 arch=('any')
 
