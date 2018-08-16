@@ -5,6 +5,16 @@ pkgbase = cros-adapta-gtk-theme-git
 	url = https://chromium.googlesource.com/chromiumos/third_party/cros-adapta/
 	arch = any
 	license = GPL2
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = inkscape>=0.91
+	makedepends = gdk-pixbuf2>=2.32.2
+	makedepends = glib2>=2.48.0
+	makedepends = libsass>=3.3
+	makedepends = libxml2
+	makedepends = pkgconf
+	makedepends = sassc>=3.3
+	makedepends = git
 	depends = gtk-engine-murrine
 	depends = gtk3
 	provides = cros-adapta-gtk-theme
