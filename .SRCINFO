@@ -25,7 +25,7 @@ pkgname = gdc
 	depends = perl
 	depends = binutils
 	depends = libgphobos
-	provides = d-compiler=2.076.1
+	provides = d-compiler=2.081.1
 	conflicts = gdc-stable
 	replaces = gdc-stable
 

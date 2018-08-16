@@ -10,13 +10,13 @@
 pkgname=('gdc' 'libgphobos')
 pkgver=8.2.0
 _majorver=${pkgver:0:1}
-pkgrel=1
+pkgrel=2
 _islver=0.19
+_dversion=2.081.1
 arch=('i686' 'x86_64')
 license=('GPL')
 url='https://github.com/D-Programming-GDC/GDC'
 makedepends=('binutils>=2.26' 'git' 'gdc-stable')
-
 source=(
 	https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz
 	http://isl.gforge.inria.fr/isl-$_islver.tar.bz2
@@ -105,7 +105,7 @@ build() {
 
 package_gdc() {
 	depends=('gcc' 'perl' 'binutils' 'libgphobos')
-	provides=('d-compiler=2.076.1')
+	provides=("d-compiler=$_dversion")
 	pkgdesc="Compiler for D programming language which uses gcc backend"
 	conflicts=('gdc-stable')
     replaces=('gdc-stable')
