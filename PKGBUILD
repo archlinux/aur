@@ -1,4 +1,5 @@
 # Maintainer: Matt Harrison <matt@harrison.us.com>
+# Maintained at: https://github.com/matt-h/aur-pkgbuilds
 # Contributor: scan
 
 pkgname=obsidian-2-theme
