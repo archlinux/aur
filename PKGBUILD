@@ -2,23 +2,23 @@
 # Contributor: Lothar Gesslein <ulmen@cryptomilch.de>
 
 pkgname=aoetools
-pkgver=36
-pkgrel=2
+pkgver=37
+pkgrel=1
 pkgdesc="ATA over Ethernet Tools"
 arch=('i686' 'x86_64')
-url="http://aoetools.sourceforge.net/"
+url="https://github.com/OpenAoE/aoetools/"
 license=('GPL')
-source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz)
-sha256sums=('fb5e2cd0de7644cc1ec04ee3aeb43211cf7445a0c19e13d6b3ed5a8fbdf215ff')
+source=(https://github.com/OpenAoE/aoetools/archive/$pkgname-$pkgver.tar.gz)
+sha256sums=('477e796f5c18e8c0e61b5d88e1759c68249e8e0210c2f3de2b98680e2cc63e32')
 
 build() {
-  cd "${srcdir}"/$pkgname-$pkgver
+  cd "${srcdir}"/$pkgname-$pkgname-$pkgver
 
   make
 }
 
 package() {
-  cd "${srcdir}"/$pkgname-$pkgver
+  cd "${srcdir}"/$pkgname-$pkgname-$pkgver
 
   make DESTDIR="${pkgdir}" SBINDIR=/usr/bin install
 }
