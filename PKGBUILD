@@ -11,7 +11,7 @@ pkgver=${_gogver}_${_gogrel}
 pkgrel=1
 pkgdesc='Vampire®: The Masquerade - Bloodlines™. GOG version (Wine).'
 arch=('x86_64')
-url='https://www.gog.com/game/jazz_jackrabbit_2_collection'
+url='https://www.gog.com/game/vampire_the_masquerade_bloodlines'
 license=('custom')
 
 depends=('wine')
