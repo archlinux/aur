@@ -1,6 +1,6 @@
 pkgbase = amdvlk-git
 	pkgdesc = AMD's standalone Vulkan driver
-	pkgver = r38.d88feee
+	pkgver = r43.6d9d93a
 	pkgrel = 1
 	url = https://github.com/GPUOpen-Drivers
 	arch = x86_64
@@ -23,14 +23,12 @@ pkgbase = amdvlk-git
 	source = git+https://github.com/GPUOpen-Drivers/wsa.git#branch=master
 	source = git+https://github.com/GPUOpen-Drivers/AMDVLK.git#branch=dev
 	source = git+https://github.com/GPUOpen-Drivers/llpc.git#branch=dev
-	source = amdPalSettings.cfg
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 5f798911bf1cbbe5a83f5ae4886107ef0d02be5753450753ae2d3fc6f80e7012
 
 pkgname = amdvlk-git
 
