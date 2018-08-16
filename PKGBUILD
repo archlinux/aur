@@ -1,8 +1,8 @@
 # Maintainer: Max Bruckner
 _basename=mirrorselect
 pkgname=gentoo-$_basename
-pkgver=2.2.2
-pkgrel=2
+pkgver=2.2.3
+pkgrel=1
 pkgdesc="Script for selecting Gentoo mirrors."
 arch=( 'any' )
 url="http://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/app-portage/mirrorselect/mirrorselect-9999.ebuild"
