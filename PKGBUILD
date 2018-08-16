@@ -3,7 +3,7 @@
 # Contributor: elmo-space
 pkgname=stride-desktop
 pkgver=1.22.76
-pkgrel=1
+pkgrel=2
 pkgdesc="Stride is a cloud-based team business communication and collaboration tool - Desktop client"
 arch=('x86_64')
 url="www.stride.com"
@@ -17,8 +17,13 @@ optdepends=('kde-cli-tools'
             'libgnome-keyring'
             'lsb-release'
             'pulseaudio')
-source=("https://packages.atlassian.com/stride-apt-client/pool/stride_${pkgver}_amd64.deb")
-sha256sums=('ae336753cd845e1981942f148a13e51974b564e88d313e484406b983202f2070')
+makedepends=('patchelf')
+options=('!strip' 'staticlibs')
+source=("https://packages.atlassian.com/stride-apt-client/pool/stride_${pkgver}_amd64.deb"
+        "https://archive.archlinux.org/packages/g/glibc/glibc-2.27-3-x86_64.pkg.tar.xz")
+noextract=("glibc-2.27-3-x86_64.pkg.tar.xz")
+sha256sums=('ae336753cd845e1981942f148a13e51974b564e88d313e484406b983202f2070'
+            'a9e1b18d7f613be660556dbd6883781e88a0f5113230147e230d3e2f268792dc')
 
 package(){
     # Extract package data
@@ -32,4 +37,15 @@ package(){
     # Remove all unnecessary stuff
     rm -rf "${pkgdir}/usr/share/doc"
     rm -rf "${pkgdir}/usr/share/lintian"
+	 
+    # Patch stride to use glibc 2.27
+    _idir="/usr/lib/stride"
+    _pdir="${pkgdir}${_idir}"
+    _pbin="${_pdir}/stride"
+    mkdir -p "$_pdir/glibc"
+    tar -xJf "glibc-2.27-3-x86_64.pkg.tar.xz" -C "$_pdir/glibc"
+    rm "$_pdir/glibc/"{.BUILDINFO,.INSTALL,.MTREE,.PKGINFO}
+    patchelf --set-interpreter "$_idir/glibc/usr/lib/ld-linux-x86-64.so.2" "$_pbin"
+    patchelf --set-rpath "$_idir:$_idir/glibc/usr/lib" "$_pbin"
+
 }
