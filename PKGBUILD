@@ -5,8 +5,8 @@ pkgver=3.0.2.r28.g8a69fd5
 pkgrel=1
 pkgdesc='A pandoc filter for numbering all kinds of things.'
 url='https://github.com/chdemko/pandoc-numbering'
-depends=('pandoc' 'python' 'python-pandocfilters' 'pandoc-xnos')
-license=('GPL')
+depends=('pandoc' 'python' 'python-pandocfilters' 'pandoc-xnos' 'pyhton-pypandoc' 'pandoc-panflute')
+license=('BSD3')
 arch=('any')
 
 makedepends=('git')
