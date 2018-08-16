@@ -10,6 +10,7 @@ arch=(any)
 license=(GPL2)
 
 provides=(${_pkgname}-gtk-theme)
+conflicts=(${_pkgname}-gtk-theme)
 makedepends=("autoconf"
              "automake"
              "inkscape>=0.91"
