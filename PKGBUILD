@@ -6,7 +6,7 @@
 pkgname=pgadmin4-systray-fix
 _pkgname=pgadmin4
 pkgver=3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Comprehensive design and management interface for PostgreSQL'
 url='https://www.pgadmin.org/'
 arch=('x86_64')
@@ -68,7 +68,7 @@ package() {
   ### fixup some python wonkyness
   local PYTHONVERSION="$(python -c 'import sys; print("{}.{}".format(sys.version_info.major, sys.version_info.minor))')"
   rm -r "${pkgdir}/usr/lib/pgadmin4/venv/lib/python${PYTHONVERSION}/site-packages/psycopg2"
-  ln -s /usr/lib/python3.6/lib-dynload "${pkgdir}/usr/lib/pgadmin4/venv/lib/python${PYTHONVERSION}/lib-dynload"
+  ln -s /usr/lib/python3.7/lib-dynload "${pkgdir}/usr/lib/pgadmin4/venv/lib/python${PYTHONVERSION}/lib-dynload"
 
   ### Launcher
 
