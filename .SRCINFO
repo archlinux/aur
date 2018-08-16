@@ -11,14 +11,17 @@ pkgbase = popsicle-git
 	makedepends = rust
 	makedepends = cargo
 	makedepends = help2man
+	makedepends = gtk3
 	source = git+https://github.com/pop-os/popsicle.git
 	sha256sums = SKIP
 
 pkgname = popsicle-cli-git
+	pkgdesc = CLI utility for flashing multiple USB devices in parallel, written in Rust
 	provides = popsicle-cli
 	conflicts = popsicle-cli
 
 pkgname = popsicle-gtk-git
+	pkgdesc = GTK app for flashing multiple USB devices in parallel, written in Rust
 	provides = popsicle-gtk
 	conflicts = popsicle-gtk
 

@@ -9,7 +9,7 @@ url="https://github.com/pop-os/popsicle"
 arch=(x86_64 i686 aarch64 armv7h)
 license=(MIT)
 
-makedepends=(rust cargo help2man)
+makedepends=(rust cargo help2man gtk3)
 
 source=("git+https://github.com/pop-os/popsicle.git")
 sha256sums=('SKIP')
@@ -24,18 +24,13 @@ prepare() {
     sed -i "s|/usr/local|/usr|g" "gtk/assets/popsicle-pkexec" "gtk/assets/com.system76.pkexec.popsicle.policy" "gtk/assets/popsicle.desktop" "Makefile"
 }
 
-build_popsicle-cli-git() {
+build() {
     cd popsicle
-    make cli
-}
-build_popsicle-gtk-git() {
-    makedepends=(gtk3)
-    
-    cd popsicle
-    make gtk
+    make
 }
 
 package_popsicle-cli-git() {
+    pkgdesc="CLI utility for flashing multiple USB devices in parallel, written in Rust"
     provides=(popsicle-cli)
     conflicts=(popsicle-cli)
     
@@ -43,6 +38,7 @@ package_popsicle-cli-git() {
     DESTDIR="${pkgdir}" make install-cli
 }
 package_popsicle-gtk-git() {
+    pkgdesc="GTK app for flashing multiple USB devices in parallel, written in Rust"
     provides=(popsicle-gtk)
     conflicts=(popsicle-gtk)
 
