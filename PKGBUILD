@@ -1,9 +1,9 @@
 # Maintainer : Karl-Felix Glatzer <karl.glatzer@gmx.de>
 pkgname=mingw-w64-x264
-pkgver=152.20171224
+pkgver=155.r0a84d986
 pkgrel=1
 epoch=2
-pkgdesc='free library for encoding H264/AVC video streams (mingw-w64)'
+pkgdesc='Open Source H264/AVC video encoder (mingw-w64)'
 arch=('any')
 url='http://www.videolan.org/developers/x264.html'
 license=('GPL')
@@ -11,7 +11,7 @@ depends=('mingw-w64-crt' 'mingw-w64-ffmpeg' 'mingw-w64-l-smash')
 #provides=('mingw-w64-libx264.so')
 options=(!strip !buildflags staticlibs)
 makedepends=('mingw-w64-gcc' 'git' 'nasm')
-_commit='e9a5903edf8ca59ef20e6f4894c196f135af735e'
+_commit='0a84d986e7020f8344f00752e3600b9769cc1e85'
 source=(git://git.videolan.org/x264.git#commit=${_commit})
 md5sums=('SKIP')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -19,9 +19,9 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 pkgver() {
   cd x264
   local _ver=$(grep '#define X264_BUILD' x264.h | cut -d' ' -f3)
-  local _date=$(git log -1 --format="%cd" --date=short | tr -d -)
+  local _rev=$(git rev-parse --short HEAD)
 
-  echo ${_ver}.${_date}
+  echo ${_ver}.r${_rev}
 }
 
 build() {
@@ -31,7 +31,6 @@ build() {
     unset LDFLAGS CPPFLAGS
     ${srcdir}/x264/configure --host=${_arch} \
       --cross-prefix="${_arch}-" \
-      --enable-win32thread \
       --enable-shared \
       --enable-static
 
@@ -46,7 +45,7 @@ package() {
       bindir=/usr/${_arch}/bin \
       libdir=/usr/${_arch}/lib \
       includedir=/usr/${_arch}/include \
-      install
+      install install-cli install-lib-shared
 
     ${_arch}-strip -s ${pkgdir}/usr/${_arch}/bin/*.exe
     ${_arch}-strip --strip-unneeded ${pkgdir}/usr/${_arch}/bin/*.dll
