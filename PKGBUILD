@@ -15,7 +15,7 @@ _islver=0.19
 arch=('i686' 'x86_64')
 license=('GPL')
 url='https://github.com/D-Programming-GDC/GDC'
-makedepends=('binutils>=2.26' 'git' 'gdc')
+makedepends=('binutils>=2.26' 'git' 'gdc-stable')
 
 source=(
 	https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz
@@ -105,7 +105,7 @@ build() {
 
 package_gdc() {
 	depends=('gcc' 'perl' 'binutils' 'libgphobos')
-	provides=('d-compiler=2.076.1')
+	provides=('d-compiler=2.076.1' 'gdc-stable')
 	pkgdesc="Compiler for D programming language which uses gcc backend"
 	conflicts=('gdc-stable')
     replaces=('gdc-stable')
