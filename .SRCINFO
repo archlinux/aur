@@ -1,0 +1,21 @@
+pkgbase = gog-vampire-the-masquerade-bloodlines
+	pkgdesc = Vampire®: The Masquerade - Bloodlines™. GOG version (Wine).
+	pkgver = 1.2_up10_22135
+	pkgrel = 1
+	url = https://www.gog.com/game/jazz_jackrabbit_2_collection
+	arch = x86_64
+	license = custom
+	makedepends = innoextract
+	makedepends = unzip
+	depends = wine
+	source = file://setup_vampire_the_masquerade_-_bloodlines_1.2_(up_10.0)_(22135).exe
+	source = file://setup_vampire_the_masquerade_-_bloodlines_1.2_(up_10.0)_(22135)-1.bin
+	source = file://vampire-the-masquerade-bloodlines.bash
+	source = file://vampire-the-masquerade-bloodlines.desktop
+	sha256sums = 660687df598d03866011e103680030e8c29aa165d9088fa05aae7c90f28bdf5b
+	sha256sums = b69f90787295c8780973ea3bf599b1089ac09b4bcd97a622fc89bbffeb65685d
+	sha256sums = 83dc8c11b71e060824061fca50523542af9735a115318689f3fb9cae22bf05cc
+	sha256sums = af3096274bd636907b9a588d5ecadc102c72a36da4040958833183da54100d43
+
+pkgname = gog-vampire-the-masquerade-bloodlines
+

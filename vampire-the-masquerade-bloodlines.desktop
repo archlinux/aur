@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Vampire: The Masquerade - Bloodlines
+Version=1.2
+Comment=Vampire®: The Masquerade - Bloodlines™ (GOG.com, Wine)
+Exec=/usr/bin/vampire-the-masquerade-bloodlines
+Icon=/usr/share/pixmaps/vampire-the-masquerade-bloodlines.png
+Type=Application
+StartupNotify=false
+Categories=Game;
