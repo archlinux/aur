@@ -3,8 +3,8 @@
 _lang=fra-eng
 _pkgname=dict-freedict-${_lang}
 pkgname=${_pkgname}-bin
-pkgver=0.4
-pkgrel=2
+pkgver=0.4.1
+pkgrel=1
 pkgdesc="French -> English dictionary for dictd et al. from Freedict.org"
 arch=('any')
 url="http://www.freedict.org/"
@@ -14,7 +14,7 @@ provides=(${_pkgname})
 conflicts=(${_pkgname})
 install=${pkgname}.install
 source=("https://download.freedict.org/dictionaries/${_lang}/${pkgver}/freedict-${_lang}-${pkgver}.dictd.tar.xz")
-sha512sums=('3125eb6e2a2ce1fe327a8263a21b8567c804e0511f73bac8adf9d9ce4c5c18a82477bb0ce95105aea399b266276b03077da337d834be326cfc5c9d0dff0bc2ca')
+sha512sums=('be43d4f51ba0df6256a59697bdec2cf7a93fcadb3c5ec20aa7cff2cc10af7c1dac83c39144020f07f687392367fdf9791595d65e2aa3c9da71b513b747449897')
 
 package()
 {
