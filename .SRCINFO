@@ -1,10 +1,11 @@
 pkgbase = electrum-ltc
 	pkgdesc = Lightweight Litecoin client
 	pkgver = 3.1.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://electrum-ltc.org/
 	arch = any
 	license = MIT
+	depends = desktop-file-utils
 	depends = python-btchip
 	depends = python-dnspython
 	depends = python-ecdsa

@@ -1,11 +1,12 @@
 pkgname=electrum-ltc
 pkgver=3.1.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Lightweight Litecoin client'
 arch=(any)
 url=https://electrum-ltc.org/
 license=(MIT)
-depends=(python-btchip
+depends=(desktop-file-utils
+         python-btchip
          python-dnspython
          python-ecdsa
          python-jsonrpclib-pelix
