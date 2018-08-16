@@ -1,0 +1,16 @@
+pkgbase = python-climin-git
+	pkgdesc = Optimizers for machine learning
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/BRML/climin
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+	source = git://github.com/BRML/climin.git
+	sha512sums = SKIP
+
+pkgname = python-climin-git
+
