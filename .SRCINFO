@@ -7,6 +7,7 @@ pkgbase = gdc
 	license = GPL
 	makedepends = binutils>=2.26
 	makedepends = git
+	makedepends = gdc
 	source = https://ftp.gnu.org/gnu/gcc/gcc-8.2.0/gcc-8.2.0.tar.xz
 	source = http://isl.gforge.inria.fr/isl-0.19.tar.bz2
 	source = gdc::git+https://github.com/D-Programming-GDC/GDC.git
@@ -25,12 +26,16 @@ pkgname = gdc
 	depends = binutils
 	depends = libgphobos
 	provides = d-compiler=2.076.1
+	conflicts = gdc-stable
+	replaces = gdc-stable
 
 pkgname = libgphobos
 	pkgdesc = Standard library for D programming language, GDC port
 	provides = d-runtime
 	provides = d-stdlib
 	conflicts = libgphobos-devel
+	conflicts = libgphobos-stable
 	replaces = libgphobos-devel
+	replaces = libgphobos-stable
 	options = staticlibs
 

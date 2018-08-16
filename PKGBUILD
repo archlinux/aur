@@ -15,7 +15,7 @@ _islver=0.19
 arch=('i686' 'x86_64')
 license=('GPL')
 url='https://github.com/D-Programming-GDC/GDC'
-makedepends=('binutils>=2.26' 'git')
+makedepends=('binutils>=2.26' 'git' 'gdc')
 
 source=(
 	https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz
@@ -52,7 +52,7 @@ prepare() {
 
 	# GDC setup
 	cd "$srcdir"/gdc
-	git checkout gdc-8-stable
+	git checkout gdc-8
 	git apply "$srcdir"/paths.diff
 	./setup-gcc.sh ../gcc
 
@@ -93,6 +93,7 @@ build() {
 		--enable-default-pie \
 		--disable-multilib \
 		--disable-werror \
+		--disable-bootstrap \
 		--enable-languages=d \
 		gdc_include_dir=/usr/include/dlang/gdc
 
@@ -106,6 +107,8 @@ package_gdc() {
 	depends=('gcc' 'perl' 'binutils' 'libgphobos')
 	provides=('d-compiler=2.076.1')
 	pkgdesc="Compiler for D programming language which uses gcc backend"
+	conflicts=('gdc-stable')
+    replaces=('gdc-stable')
 
 	# compiler
 	install -D -m755 "$srcdir"/gcc-build/gcc/gdc "$pkgdir"/usr/bin/gdc
@@ -121,8 +124,8 @@ package_libgphobos() {
 	pkgdesc="Standard library for D programming language, GDC port"
 	provides=('d-runtime' 'd-stdlib')
 	options=('staticlibs')
-    conflicts=('libgphobos-devel')
-    replaces=('libgphobos-devel')
+    conflicts=('libgphobos-devel' 'libgphobos-stable')
+    replaces=('libgphobos-devel' 'libgphobos-stable')
 
 	cd "$srcdir"/gcc-build
 	make -C $CHOST/libphobos DESTDIR="$pkgdir" install
