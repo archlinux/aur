@@ -1,7 +1,7 @@
 # Maintainer: Falk Alexander Seidl <fa@terminal.run>
 
-pkgname=passwordsafe-git
-_gitname=PasswordSafe
+pkgname=gnome-passwordsafe-git
+_gitname=KeepassGtk
 pkgver=0.9.2.r44.g1aa1945
 pkgrel=1
 pkgdesc="A password manager for GNOME"

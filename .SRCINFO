@@ -14,5 +14,5 @@ pkgbase = keepassgtk
 	source = https://gitlab.gnome.org/fseidl/KeepassGtk.git
 	md5sums = SKIP
 
-pkgname = passwordsafe-git
+pkgname = gnome-passwordsafe-git
 
