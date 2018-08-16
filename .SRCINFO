@@ -1,7 +1,7 @@
 pkgbase = gnudatalanguage
 	pkgdesc = An IDL (Interactive Data Language) compatible incremental compiler (ie. runs IDL programs)
-	pkgver = 0.9.7
-	pkgrel = 4
+	pkgver = 0.9.8
+	pkgrel = 1
 	url = http://gnudatalanguage.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -22,12 +22,13 @@ pkgbase = gnudatalanguage
 	depends = grib_api
 	depends = udunits
 	depends = eigen3
+	depends = libtirpc
 	options = !makeflags
-	source = http://downloads.sourceforge.net/gnudatalanguage/gdl-0.9.7.tgz
-	source = gdl-template.patch
+	source = http://downloads.sourceforge.net/gnudatalanguage/gdl-0.9.8.tgz
+	source = gdl-tirpc.patch
 	source = gdl.profile
-	md5sums = 0cd285d85e00e76e37b92310a76579c2
-	md5sums = 5be4d8c21ec3e004847e05f7978a77f0
+	md5sums = 451532f1263bbaa8745a4ca8978533c0
+	md5sums = cad6430a812e906ee7f1e15b4589dcac
 	md5sums = 40aa5fd8278cd8e80425c62a577563cc
 
 pkgname = gnudatalanguage
