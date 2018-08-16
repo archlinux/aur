@@ -20,6 +20,8 @@ build() {
     bazel build -c opt tensorflow_serving/model_servers:tensorflow_model_server
 }
 package() {
+    conflicts=("tensorflow-model-server-cuda-git")
+
     install -Dm755 ${srcdir}/serving/bazel-bin/tensorflow_serving/model_servers/tensorflow_model_server ${pkgdir}/usr/bin/tensorflow_model_server
     install -Dm644 ${srcdir}/serving/LICENSE ${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE
 }
