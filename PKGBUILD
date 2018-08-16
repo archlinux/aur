@@ -2,7 +2,7 @@
 
 pkgname=ffmpeg-tmblock-git
 pkgver=r91177.970872f23a
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video, with TMBlock support'
 arch=('x86_64')
