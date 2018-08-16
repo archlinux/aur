@@ -5,6 +5,7 @@ pkgbase = mutagen-git
 	url = https://github.com/quodlibet/mutagen
 	arch = any
 	license = GPL2
+	makedepends = git
 	depends = python-setuptools
 	provides = mutagen
 	conflicts = mutagen

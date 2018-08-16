@@ -13,7 +13,7 @@ provides=('mutagen')
 source=("$pkgname::git+$url.git")
 md5sums=('SKIP')
 depends=('python-setuptools')
-makepends=('git')
+makedepends=('git')
 arch=('any')
 
 pkgver() {
