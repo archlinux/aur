@@ -7,6 +7,7 @@ pkgdesc="Software to learning the basic concepts of Formal Languages and Automat
 arch=('i686' 'x86_64')
 url="http://www.jflap.org/"
 license=('CCPL')
+noextract=("JFLAP$pkgver.jar")
 depends=('java-environment')
 source=(https://www2.cs.duke.edu/csed/jflap/jflaptmp/july27-18/JFLAP$pkgver.jar
     $pkgname.sh
