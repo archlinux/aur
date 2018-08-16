@@ -5,8 +5,9 @@ pkgbase = fetchmirrors
 	url = https://github.com/deadhead420/fetchmirrors
 	arch = any
 	license = GPL
-	depends = curl pacman-contrib
-	source = https://raw.githubusercontent.com/deadhead420/fetchmirrors/master/fetchmirrors.sh
+	depends = curl
+	depends = pacman-contrib
+    source = https://raw.githubusercontent.com/deadhead420/fetchmirrors/master/fetchmirrors.sh
 
 pkgname = fetchmirrors
 
