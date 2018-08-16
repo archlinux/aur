@@ -15,7 +15,7 @@ md5sums=('b97b2f2f23517973ac551bde968d7b7e')
 
 package() {
   cd "$srcdir/$_name-$pkgver"
-  python2 setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1
+  python setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1
 }
 
 # vim:set ts=2 sw=2 et:
