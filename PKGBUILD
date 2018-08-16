@@ -1,4 +1,5 @@
 # Maintainer: Matt Harrison <matt@harrison.us.com>
+# Maintained at: https://github.com/matt-h/aur-pkgbuilds
 # Contributor: Jesús Jerez <jerezmoreno@gmail.com>
 # collaborator: Alessio Sergi <asergi@archlinux.us>
 # Contributor: Sagar Chalise <chalisesagar@gmail.com>
