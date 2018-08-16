@@ -2,15 +2,15 @@
 # Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=libratbag-git
-pkgver=0.9.901.r1.cbcdc4b
+pkgver=0.9.902.r34.e43cf7a
 pkgrel=1
 pkgdesc='A library to configure gaming mice'
 arch=('x86_64')
 url='https://github.com/libratbag/libratbag'
 license=('MIT')
-depends=('glib2' 'glibc' 'libevdev'
+depends=('glib2' 'libevdev' 'python'
          'libsystemd.so' 'libudev.so')
-makedepends=('doxygen' 'git' 'graphviz' 'meson' 'swig' 'systemd')
+makedepends=('git' 'meson' 'swig' 'systemd')
 conflicts=('libratbag')
 provides=('libratbag')
 source=('git+https://github.com/libratbag/libratbag.git')
@@ -22,29 +22,15 @@ pkgver() {
   git describe | sed 's/^v//; s/-/.r/; s/-g/./'
 }
 
-prepare() {
-  cd libratbag
-
-  if [[ -d build ]]; then
-    rm -rf build
-  fi
-  meson build \
-    --prefix='/usr' \
-    -Denable-tests='false'
-}
-
 build() {
-  cd libratbag
-
+  arch-meson libratbag build \
+    -Dtests='false'
   ninja -C build
 }
 
 package() {
-  cd libratbag
-
   DESTDIR="${pkgdir}" ninja -C build install
-
-  install -Dm 644 COPYING -t "${pkgdir}"/usr/share/licenses/libratbag-git/
+  install -Dm 644 libratbag/COPYING -t "${pkgdir}"/usr/share/licenses/libratbag-git/
 }
 
 # vim: ts=2 sw=2 et:
