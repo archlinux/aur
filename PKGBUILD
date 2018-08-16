@@ -1,7 +1,7 @@
 # Maintainer: Myles English <myles at tdma dot co>
 pkgname=pastix
-pkgver=6.0.0
-pkgrel=2
+pkgver=6.0.1
+pkgrel=1
 pkgdesc="high performance parallel solver for very large sparse linear systems based on direct methods"
 arch=('x86_64')
 url="https://gitlab.inria.fr/solverstack/pastix"
@@ -16,6 +16,7 @@ md5sums=("SKIP")
 
 prepare() {
     cd ${pkgname}
+    patch -p2 <../../gitmodules.diff
     /usr/bin/git submodule update --init --recursive
 }
 
