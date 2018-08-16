@@ -1,28 +1,25 @@
 # Maintainer: Frank Siegert <frank.siegert@googlemail.com>
 pkgname=yoda-hg
-pkgver=r1060.63c03a9d5e8f
+pkgver=r1479.e335e6743a5e
 pkgrel=1
 pkgdesc="A particle physics package for data analysis (specifically histogramming) classes -- latest build from hg-repo."
 arch=('x86_64' 'i686')
 url="http://yoda.hepforge.org"
-license=('GPL2')
+license=('GPL3')
+depends=('python')
+optdepends=('python2: For Python2 module in addition to Python3')
+makedepends=('cython')
 conflicts=('yoda')
 provides=('yoda')
-depends=('python2')
-makedepends=('cython2' 'boost' 'mercurial' 'autoconf' 'libtool' 'automake')
 source=('hg+https://yoda.hepforge.org/hg/yoda')
 md5sums=('SKIP')
 
-prepare() {
-	cd "$srcdir/yoda"
-        sed -e 's/\/usr\/bin\/env python$/\/usr\/bin\/env python2/g' -i bin/* pyext/yoda/mktemplates pyext/setup.py.in
-        sed -e 's/cython /cython2 /g' -i pyext/yoda/Makefile.am
-}
-
 build() {
 	cd "$srcdir/yoda"
-        export PYTHON=/usr/bin/python2
         autoreconf -i
+        ## need to rebuild Python extension code with up-to-date Cython for Python 3.7
+        ## will eventually be fixed upstream
+        touch pyext/yoda/*.pyx
 	./configure --prefix=/usr
 	make
 }
@@ -30,6 +27,13 @@ build() {
 package() {
 	cd "$srcdir/yoda"
 	make DESTDIR="$pkgdir/" install
+
+        # If python2 is present, also build a library for it
+        if [ -x /usr/bin/python2 ]; then
+          PYTHON=/usr/bin/python2 ./configure --prefix=/usr
+          make DESTDIR="$pkgdir/" install
+        fi
+        
         mkdir -p $pkgdir/etc/bash_completion.d
         mv $pkgdir/usr/share/YODA/yoda-completion $pkgdir/etc/bash_completion.d
 }
