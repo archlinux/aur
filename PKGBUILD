@@ -1,20 +1,21 @@
+# Maintainer: int <int [ate] arcor [dot] de>
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-lingua-en-inflect'
-pkgver='1.895'
+pkgver='1.903'
 pkgrel='1'
-pkgdesc="Convert singular to plural. Select \"a\" or \"an\"."
+pkgdesc="Perl/CPAN Module Lingua::EN::Inflect: Convert singular to plural. Select \"a\" or \"an\"."
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
 makedepends=()
-url='http://search.cpan.org/dist/Lingua-EN-Inflect'
-source=('http://search.cpan.org/CPAN/authors/id/D/DC/DCONWAY/Lingua-EN-Inflect-1.895.tar.gz')
-md5sums=('96ce4517a21800a6e90df1f4cdd515a5')
-sha512sums=('f077d638840e700ebddce37952f89a002a2b67610eb86475a4e86b9f64cf89fac4b8e68c75c6739ac4fcfb4b6d5cc12491b2bf892ad08000f7bc38c509461eaf')
-_distdir="Lingua-EN-Inflect-1.895"
+url='https://metacpan.org/release/Lingua-EN-Inflect'
+source=("http://search.cpan.org/CPAN/authors/id/D/DC/DCONWAY/Lingua-EN-Inflect-${pkgver}.tar.gz")
+md5sums=('b92bebce0a8cbc578fbae485ed4cd07d')
+sha512sums=('2f629e1dd9eddba123423c95531907a7c0a7eb0bc99ee425ea2c3cdb4059af0e78625c45392eb65780c8b06da8eec790e242d51912c87a15bcf5d466d68549ce')
+_distdir="Lingua-EN-Inflect-${pkgver}"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -40,7 +41,7 @@ package() {
   cd "$srcdir/$_distdir"
   make install
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:
