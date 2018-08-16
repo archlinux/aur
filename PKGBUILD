@@ -5,7 +5,7 @@ pkgname=(popsicle-cli-git popsicle-gtk-git)
 pkgver=latest
 pkgrel=1
 pkgdesc="Linux utility for flashing multiple USB devices in parallel, written in Rust"
-url="https://github.com/pop-os/${_pkgbase}"
+url="https://github.com/pop-os/popsicle"
 arch=(x86_64 i686 aarch64 armv7h)
 license=(MIT)
 
@@ -17,6 +17,11 @@ sha256sums=('SKIP')
 pkgver() {
     cd popsicle
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd popsicle
+    sed -i "s|/usr/local|/usr|g" "gtk/assets/popsicle-pkexec" "gtk/assets/com.system76.pkexec.popsicle.policy" "gtk/assets/popsicle.desktop" "Makefile"
 }
 
 build_popsicle-cli-git() {
@@ -31,18 +36,16 @@ build_popsicle-gtk-git() {
 }
 
 package_popsicle-cli-git() {
-    pkgdesc="Command-line interface for flashing multiple USB devices in parallel, written in Rust"
     provides=(popsicle-cli)
     conflicts=(popsicle-cli)
     
     cd popsicle
-    DESTDIR="${pkgdir}" make install-cli default_prefix="/usr"
+    DESTDIR="${pkgdir}" make install-cli
 }
 package_popsicle-gtk-git() {
-    pkgdesc="GTK app for flashing multiple USB devices in parallel, written in Rust"
     provides=(popsicle-gtk)
     conflicts=(popsicle-gtk)
 
     cd popsicle
-    DESTDIR="${pkgdir}" make install-gtk default_prefix="/usr"
+    DESTDIR="${pkgdir}" make install-gtk
 }
