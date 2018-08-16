@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc="SSL-capable man-in-the-middle HTTP proxy"
 arch=('any')
 url="https://mitmproxy.org/"
-license=('GPL')
+license=('MIT')
 depends=('python-blinker' 'python-brotlipy' 'python-click' 'python-cryptography' 'python-h2'
          'python-hyperframe' 'python-kaitaistruct' 'python-ldap3' 'python-passlib' 'python-protobuf'
          'python-pyasn1' 'python-pyopenssl' 'python-pyparsing' 'python-pyperclip'
@@ -24,7 +24,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/mitmproxy/mitmproxy/archive
 sha512sums=('e08ea8b1c75a95b822c463625509037bbc8a979161cacaa1f0185f98df8d6d7e5400925365dbbe70d18751251b1005824f739a8cd035c0389f7b4aea562adfb3')
 
 prepare() {
-  cd mitmproxy-$pkgver
+  cd $pkgname-$pkgver
 
   # Let's remove all the upper bounds and use system certificate store
   sed -e '/certifi/d' \
@@ -36,16 +36,18 @@ prepare() {
 }
 
 build() {
-  cd mitmproxy-$pkgver
+  cd $pkgname-$pkgver
   python setup.py build
 }
 
 check() {
-  cd mitmproxy-$pkgver
+  cd $pkgname-$pkgver
   python setup.py pytest || warning "https://github.com/mitmproxy/mitmproxy/issues/3287"
 }
 
 package() {
-  cd mitmproxy-$pkgver
+  cd $pkgname-$pkgver
   python setup.py install --root="$pkgdir" -O1
+
+  install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
