@@ -3,8 +3,8 @@
 
 pkgbase=lib32-smbclient
 pkgname=('lib32-libwbclient' 'lib32-smbclient')
-pkgver=4.8.0
-pkgrel=2
+pkgver=4.8.3
+pkgrel=1
 pkgdesc="Tools to access a server's filespace and printers via SMB"
 arch=('x86_64')
 url='http://www.samba.org'
@@ -13,9 +13,10 @@ makedepends=('lib32-avahi' 'lib32-gnutls' 'lib32-libbsd' 'lib32-libcap'
              'lib32-libcups' 'lib32-libgcrypt' 'lib32-pam' 'lib32-python2'
              'lib32-systemd' 'lib32-talloc' 'lib32-tdb' 'lib32-popt'
              'lib32-tevent' 'lib32-ldb' 'lib32-libarchive' 'lib32-libaio'
-             'perl-parse-yapp' 'lib32-jansson' 'rpcsvc-proto' 'smbclient' 'libwbclient')
+             'lib32-libnsl' 'lib32-libtirpc' 'perl-parse-yapp'
+             'lib32-jansson' 'rpcsvc-proto' 'smbclient' 'libwbclient')
 source=("https://www.samba.org/samba/samba/ftp/stable/samba-${pkgver}.tar.gz")
-sha256sums=('87d9b585dbd8628e79aabb6e621a94bd20a072a00762e78e0899fad22fc18fb7')
+sha256sums=('e0569a8a605d5dfb49f1fdd11db796f4d36fe0351c4a7f21387ef253010b82ed')
 
 prepare() {
   cd samba-${pkgver}
@@ -49,6 +50,7 @@ build() {
 
   ./configure --enable-fhs \
               --prefix=/usr \
+              --sysconfdir=/etc \
               --sbindir=/usr/bin \
               --libdir=/usr/lib32 \
               --libexecdir=/usr/lib32/samba \
