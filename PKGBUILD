@@ -1,9 +1,9 @@
 # Maintainer: Oscar Morante <spacepluk at gmail dot com>
 
-_version=2017.4.8
+_version=2017.4.9
 _build=f1
-_buildtag=20180703
-_randomstring=8140fe378247
+_buildtag=20180816
+_randomstring=cc814e4d942d
 _prefix=/opt/UnityLts
 _unitydownloads="http://beta.unity3d.com/download/${_randomstring}"
 #_keepdownloads=yes
@@ -22,7 +22,7 @@ depends=('unity-editor-lts'
 optdepends=('android-ndk-13b: needed for IL2CPP builds')
 makedepends=('gtk2' 'libsoup' 'libarchive')
 source=("${_unitydownloads}/UnitySetup-${_version}${_build}")
-sha1sums=('119ec24433cf9e94ead7d62e64b69cec686d5aa5')
+sha1sums=('6d4284af0002b3f06a6923649d57ffd045999756')
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 

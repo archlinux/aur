@@ -1,6 +1,6 @@
 pkgbase = unity-editor-lts-android
 	pkgdesc = Allows building your Unity projects for the Android platform
-	pkgver = 2017.4.8f1+20180703
+	pkgver = 2017.4.9f1+20180816
 	pkgrel = 1
 	url = https://unity3d.com/
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = unity-editor-lts-android
 	depends = android-udev
 	optdepends = android-ndk-13b: needed for IL2CPP builds
 	options = !strip
-	source = http://beta.unity3d.com/download/8140fe378247/UnitySetup-2017.4.8f1
-	sha1sums = 119ec24433cf9e94ead7d62e64b69cec686d5aa5
+	source = http://beta.unity3d.com/download/cc814e4d942d/UnitySetup-2017.4.9f1
+	sha1sums = 6d4284af0002b3f06a6923649d57ffd045999756
 
 pkgname = unity-editor-lts-android
 
