@@ -8,6 +8,7 @@ pkgbase = squid4
 	makedepends = krb5
 	depends = openssl
 	depends = libecap
+	depends = libnetfilter_conntrack
 	depends = pam
 	depends = perl
 	depends = libltdl

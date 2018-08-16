@@ -4,7 +4,7 @@ pkgrel=4
 pkgdesc='Full-featured Web proxy cache server with the support SSL, eCAP, iCAP-client. Include patches for normal work with cache, long url`s and CDN.'
 arch=('x86_64')
 url='http://www.squid-cache.org'
-depends=('openssl' 'libecap' 'pam' 'perl' 'libltdl' 'libcap' 'nettle' 'gnutls' 'libnsl' 'gperftools')
+depends=('openssl' 'libecap' 'libnetfilter_conntrack' 'pam' 'perl' 'libltdl' 'libcap' 'nettle' 'gnutls' 'libnsl' 'gperftools')
 makedepends=('krb5')
 conflicts=('squid' 'squid4' 'squid5')
 license=('GPL')
@@ -62,15 +62,19 @@ build() {
     --enable-icap-client \
     --enable-auth \
     --enable-auth-basic \
-    --enable-auth-ntlm \
-    --enable-auth-digest \
+    --disable-auth-ntlm \
+    --disable-auth-digest \
     --enable-auth-negotiate \
     --enable-removal-policies="lru,heap" \
-    --enable-storeio="aufs,ufs,diskd,rock" \
+    --enable-storeio="ufs,aufs,diskd,rock" \
     --enable-delay-pools \
     --enable-arp-acl \
+    --enable-zph-qos \
+    --with-netfilter-conntrack \
     --with-openssl=/usr/include/openssl \
     --enable-snmp \
+    --enable-xmalloc-statistics \
+    --enable-inline \
     --enable-linux-netfilter \
     --enable-ident-lookups \
     --enable-useragent-log \
@@ -90,6 +94,7 @@ build() {
     --disable-arch-native \
     --disable-strict-error-checking \
     --enable-wccpv2 \
+    --disable-wccp \
     --enable-ssl-crtd \
     --with-build-environment=POSIX_V6_LP64_OFF64 \
     'CFLAGS=-g -O2 -fPIE -fstack-protector-strong -DNDEBUG -Wformat -Werror=format-security -Wall -ltcmalloc_minimal' \
