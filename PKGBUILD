@@ -1,3 +1,4 @@
+# Maintainer: bar0metr <admin@os-admin.ru>
 pkgname=squid4
 pkgver=4.2
 pkgrel=4
@@ -97,7 +98,7 @@ build() {
     --disable-wccp \
     --enable-ssl-crtd \
     --with-build-environment=POSIX_V6_LP64_OFF64 \
-    --enable-build-info="Intercept/WCCPv2/SSL/CRTD/(A)UFS/DISKD/ROCK/eCAP/64/GCC Production" \
+    --enable-build-info="Intercept/WCCPv2/SSL/CRTD/(A)UFS/DISKD/ROCK/eCAP/ICAP/64/GCC Production" \
     'CFLAGS=-g -O2 -fPIE -fstack-protector-strong -DNDEBUG -Wformat -Werror=format-security -Wall -ltcmalloc_minimal' \
     'LDFLAGS=-fPIE -pie -Wl,-z,relro -Wl,-z,now' \
     'CPPFLAGS=-D_FORTIFY_SOURCE=2' \
