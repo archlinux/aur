@@ -2,7 +2,7 @@
 
 pkgname=pokemon-revolution-online-bin
 pkgver=0.98.4.2.rootsedition
-pkgrel=1
+pkgrel=2
 pkgdesc="A free-to-play, fan-made, MMO game that is predicated around the official Pokémon games."
 arch=('x86_64')
 url="https://pokemon-revolution-online.net"
@@ -13,7 +13,7 @@ optdepends=('gtk2: required for the Unity ScreenSelector plugin')
 conflicts=('pokemon-revolution-online')
 install="INSTALL"
 __DATA_VER=0.1.1
-source=("https://gitlab.com/fabish_random/pokemon-revolution-online-data/-/archive/${__DATA_VER}/pokemon-revolution-online-data-${__DATA_VER}.zip")
+source=("https://gitlab.com/Fabish/pokemon-revolution-online-data/-/archive/${__DATA_VER}/pokemon-revolution-online-data-${__DATA_VER}.zip")
 sha256sums=('533d250127b85054f4aa087857b130e7a21525ce6382aefd63adb564f4125212')
 
 
