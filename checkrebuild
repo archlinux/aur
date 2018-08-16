@@ -15,11 +15,13 @@ get_broken_ldd_pkgs() {
 }
 
 get_broken_python_pkgs() {
+    command -v python >/dev/null || return
     python_version="$(python --version | cut -d'.' -f2)"
     pacman -Qqo /usr/lib/python3.!($python_version) 2>/dev/null
 }
 
 get_broken_perl_pkgs() {
+    command -v perl >/dev/null || return
     perl_version="$(perl -v | grep -Po '\d+' | head -n2 | paste -sd '.\n')"
     pacman -Qqo /usr/lib/perl*/!($perl_version) 2>/dev/null
 }
