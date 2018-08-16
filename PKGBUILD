@@ -3,13 +3,13 @@
 
 pkgname=code
 pkgdesc='Microsoft Code -- The Open Source build of Visual Studio Code (vscode)'
-pkgver=1.25.1
+pkgver=1.26.0
 pkgrel=1
 arch=('i686' 'x86_64' 'armv7h')
 url='https://github.com/Microsoft/vscode'
 license=('MIT')
 makedepends=('npm' 'nodejs-lts-carbon' 'gulp' 'python2' 'git' 'yarn')
-depends=('gtk2' 'gconf' 'libnotify' 'libxss' 'libxtst' 'libxkbfile' 'nss'
+depends=('gtk3' 'gconf' 'libnotify' 'libxss' 'libxtst' 'libxkbfile' 'nss'
          'alsa-lib')
 conflicts=('vscode-oss' 'visual-studio-code-oss')
 provides=('vscode-oss' 'visual-studio-code-oss')
@@ -22,7 +22,7 @@ source=("vscode::git+https://github.com/Microsoft/vscode#tag=${pkgver}"
 sha256sums=('SKIP'
             'cd10a8532c0722298098cd9657df4ef05fcfe952e5be41f2294f50bb562a23dc'
             '8b2feded3382e5bf6b5b292c14083bfc536c05cd00f3235dd22b75b67fba134d'
-            '055bd73b72d7289dfc3834f2e7b2359d8c5ffea6f2fd266df7bad96bb6a7f3f6'
+            '0d0d8671e0d5bfb729d3e333584e19c6d507e864e725ad6f84df95d307a8cb8d'
             '90b8915d8195546088e845f3205fb965e941561d309c8b462bb0b22a159e041c')
 
 case "$CARCH" in
