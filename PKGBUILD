@@ -10,7 +10,7 @@ license=('GPL3')
 url="https://gitlab.gnome.org/fseidl/KeepassGtk"
 depends=('gtk3' 'python-pykeepass' 'gobject-introspection')
 makedepends=('git' 'meson' 'ninja')
-source=("https://gitlab.gnome.org/fseidl/KeepassGtk.git")
+source=("git+https://gitlab.gnome.org/fseidl/KeepassGtk.git")
 md5sums=('SKIP')
  
 pkgver() {

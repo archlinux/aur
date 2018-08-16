@@ -11,7 +11,7 @@ pkgbase = keepassgtk
 	makedepends = ninja
 	depends = gtk3
 	depends = python-pykeepass
-	source = https://gitlab.gnome.org/fseidl/KeepassGtk.git
+	source = git+https://gitlab.gnome.org/fseidl/KeepassGtk.git
 	md5sums = SKIP
 
 pkgname = gnome-passwordsafe-git
