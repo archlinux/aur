@@ -1,6 +1,6 @@
 pkgbase = aurs-git
 	pkgdesc = An AUR helper written in Rust
-	pkgver = 0.4.0.r0.gb102a34
+	pkgver = 0.4.1.r0.g2eef0f0
 	pkgrel = 1
 	url = https://gitlab.com/hpdeifel/aurs
 	arch = x86_64
