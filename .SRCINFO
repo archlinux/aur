@@ -17,6 +17,7 @@ pkgbase = squid4
 	depends = libnsl
 	conflicts = squid
 	conflicts = squid4
+	conflicts = squid5
 	options = emptydirs
 	backup = etc/squid/squid.conf
 	backup = etc/squid/cachemgr.conf
