@@ -1,6 +1,6 @@
 pkgbase = compute-runtime-git
 	pkgdesc = Intel(R) Graphics Compute Runtime for OpenCL(TM). Replaces Beignet for Gen8 (Broadwell) and beyond. Git version.
-	pkgver = 18.27.11048.r34.g7bc1bc3
+	pkgver = 18.31.11200.r90.g5e906617
 	pkgrel = 1
 	url = https://01.org/compute-runtime
 	arch = x86_64
