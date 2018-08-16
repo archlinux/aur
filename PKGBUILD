@@ -13,10 +13,10 @@ source=("http://biologylabs.utah.edu/jorgensen/wayned/ape/Download/WIndows/ApE_w
 md5sums=('SKIP')
 
 build() {
-    rm -rf ApE.vfs
-    sdx.kit unwrap ApE.exe
-    convert -resize 48x48 "ApE.vfs/Accessory Files/Icons and images/monkey_icon.gif" "ape-48x48.png"
-    convert "ApE.vfs/Accessory Files/Icons and images/monkey_icon.gif" "ape-128x128.png"
+    rm -rf ApE_win_current.vfs
+    sdx.kit unwrap ApE_win_current.exe
+    convert -resize 48x48 "ApE_win_current.vfs/Accessory Files/Icons and images/monkey_icon.gif" "ape-48x48.png"
+    convert "ApE_win_current.vfs/Accessory Files/Icons and images/monkey_icon.gif" "ape-128x128.png"
     cat <<EOF > ape
 #!/bin/sh
 tclkit-dyn /opt/ApE/main.tcl $@
@@ -36,7 +36,7 @@ EOF
 
 package() {
     install -d "$pkgdir/opt"
-    cp -r ApE.vfs  "$pkgdir/opt/ApE"
+    cp -r ApE_win_current.vfs  "$pkgdir/opt/ApE"
     install -m755 -D ape "$pkgdir/usr/bin/ape"
     install -m644 -D ApE.desktop "$pkgdir/usr/share/applications/ApE.desktop"
     install -m644 -D ape-48x48.png "$pkgdir/usr/share/icons/hicolor/48x48/apps/ape.png"
