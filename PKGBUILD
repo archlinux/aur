@@ -4,7 +4,7 @@
 # Contributor: jibi <jibi@paranoici.org>
 
 pkgname='inspircd'
-pkgver='2.0.24'
+pkgver='2.0.26'
 pkgrel='1'
 pkgdesc='A stable, modern and lightweight IRC daemon'
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=('gnutls: m_ssl_gnutls'
 install='inspircd.install'
 source=("https://github.com/inspircd/inspircd/archive/v$pkgver.tar.gz"
         'inspircd.service')
-sha512sums=('766ed9b2786a36c6f3765405b5e02d831ea5ae1089c1b646ed0340b08147f9bb8d477ff94e16b0d9ed02dc109c6273f3772e1bed10bc45d1e9e9b409a37d2b6a'
+sha512sums=('950982629eab0dabeac9e7f2ab6e8b923bc5dafa978280cb91aa28c40997b7cfac2e4d39d74bb4c9cdb8f818205cc17bf782ec86f0aae966cb9c47bbf8143d1a'
             '5a16a7c237693ffc6a108358f339b6aa2451fb16430561848ae869f890199b38fab6a13640bcc35cf1d07e32d7e5fff405d88668ee05ddaffc2ef61cb42ee832')
 
 build() {
