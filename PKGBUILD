@@ -11,7 +11,7 @@ url='http://virtualbox.org'
 license=('GPL')
 makedepends=('linux-ck-headers' "virtualbox-host-dkms>=$pkgver" "virtualbox-guest-dkms>=$pkgver" 'dkms')
 
-_extramodules=extramodules-4.17-ck
+_extramodules=extramodules-ck
 _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
 
 build() {
