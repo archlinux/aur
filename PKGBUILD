@@ -7,7 +7,7 @@ url="https://github.com/EvanPurkhiser/linux-vt-setcolors"
 pkgver=62.4e1686f
 pkgrel=1
 
-source=("$pkgname::git://github.com/EvanPurkhiser/linux-vt-setcolors")
+source=("$pkgname::git+$url.git")
 md5sums=('SKIP')
 depends=('glibc')
 makedepends=('git')
