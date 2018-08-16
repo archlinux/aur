@@ -9,7 +9,6 @@ arch=(x86_64 i686)
 depends=(glibc)
 source=("$url/archive/containers-$pkgver.tar.gz")
 sha256sums=("38a13fc323f163657fa6c1aa8653e468eb003eae7de071c16acf810cdd1ce981")
-_src="$pkgname-$pkgname-$pkgver"
 
 build() {
 	cd "$pkgname-$pkgname-$pkgver"
