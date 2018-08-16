@@ -7,7 +7,7 @@ url="https://github.com/EvanPurkhiser/keyfinder-cli"
 pkgver=40.91ec8bb
 pkgrel=1
 
-source=("$pkgname::git://github.com/EvanPurkhiser/keyfinder-cli")
+source=("$pkgname::git+$url.git")
 md5sums=('SKIP')
 depends=('libkeyfinder-git' 'ffmpeg')
 makedepends=('git')
