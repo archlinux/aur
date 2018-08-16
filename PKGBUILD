@@ -2,7 +2,7 @@
 
 pkgname=mono-stable
 _pkgname=mono
-pkgver=5.12.0.226
+pkgver=5.14.0.177
 pkgrel=1
 pkgdesc="Stable version of free .NET implementation."
 arch=(i686 x86_64)
@@ -15,7 +15,7 @@ conflicts=('mono' 'monodoc')
 install="${_pkgname}.install"
 source=("https://download.mono-project.com/sources/mono/${_pkgname}-${pkgver}.tar.bz2"
         "mono.binfmt.d")
-sha256sums=('f0636baa0c1399805526142e799cb697ddccf736e506cf1a30a870eaa2830a89'
+sha256sums=('d4f5fa2e8188d66fbc8054f4145711e45c1faa6d070e63600efab93d1d189498'
             '9a657fc153ef4ce23bf5fc369a26bf4a124e9304bde3744d04c583c54ca47425')
 
 build() {
