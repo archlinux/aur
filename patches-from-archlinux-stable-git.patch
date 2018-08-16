@@ -1,291 +1,31 @@
 diff --git a/Makefile b/Makefile
-index ce4248f558d1..e3b36190778a 100644
+index 863f58503bee..453968f9fb71 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -2,7 +2,7 @@
  VERSION = 4
- PATCHLEVEL = 17
- SUBLEVEL = 14
+ PATCHLEVEL = 18
+ SUBLEVEL = 0
 -EXTRAVERSION =
 +EXTRAVERSION = -arch1
  NAME = Merciless Moray
  
  # *DOCUMENTATION*
-diff --git a/drivers/acpi/acpi_watchdog.c b/drivers/acpi/acpi_watchdog.c
-index 4bde16fb97d8..95600309ce42 100644
---- a/drivers/acpi/acpi_watchdog.c
-+++ b/drivers/acpi/acpi_watchdog.c
-@@ -12,35 +12,51 @@
- #define pr_fmt(fmt) "ACPI: watchdog: " fmt
+diff --git a/drivers/gpu/drm/i915/intel_lspcon.c b/drivers/gpu/drm/i915/intel_lspcon.c
+index 8ae8f42f430a..be1b08f589a4 100644
+--- a/drivers/gpu/drm/i915/intel_lspcon.c
++++ b/drivers/gpu/drm/i915/intel_lspcon.c
+@@ -74,7 +74,7 @@ static enum drm_lspcon_mode lspcon_wait_mode(struct intel_lspcon *lspcon,
+ 	DRM_DEBUG_KMS("Waiting for LSPCON mode %s to settle\n",
+ 		      lspcon_mode_name(mode));
  
- #include <linux/acpi.h>
--#include <linux/dmi.h>
- #include <linux/ioport.h>
- #include <linux/platform_device.h>
+-	wait_for((current_mode = lspcon_get_current_mode(lspcon)) == mode, 100);
++	wait_for((current_mode = lspcon_get_current_mode(lspcon)) == mode, 1000);
+ 	if (current_mode != mode)
+ 		DRM_ERROR("LSPCON mode hasn't settled\n");
  
- #include "internal.h"
- 
--static const struct dmi_system_id acpi_watchdog_skip[] = {
--	{
--		/*
--		 * On Lenovo Z50-70 there are two issues with the WDAT
--		 * table. First some of the instructions use RTC SRAM
--		 * to store persistent information. This does not work well
--		 * with Linux RTC driver. Second, more important thing is
--		 * that the instructions do not actually reset the system.
--		 *
--		 * On this particular system iTCO_wdt seems to work just
--		 * fine so we prefer that over WDAT for now.
--		 *
--		 * See also https://bugzilla.kernel.org/show_bug.cgi?id=199033.
--		 */
--		.ident = "Lenovo Z50-70",
--		.matches = {
--			DMI_MATCH(DMI_SYS_VENDOR, "LENOVO"),
--			DMI_MATCH(DMI_PRODUCT_NAME, "20354"),
--			DMI_MATCH(DMI_PRODUCT_VERSION, "Lenovo Z50-70"),
--		},
--	},
--	{}
--};
-+#ifdef CONFIG_RTC_MC146818_LIB
-+#include <linux/mc146818rtc.h>
-+
-+/*
-+ * There are several systems where the WDAT table is accessing RTC SRAM to
-+ * store persistent information. This does not work well with the Linux RTC
-+ * driver so on those systems we skip WDAT driver and prefer iTCO_wdt
-+ * instead.
-+ *
-+ * See also https://bugzilla.kernel.org/show_bug.cgi?id=199033.
-+ */
-+static bool acpi_watchdog_uses_rtc(const struct acpi_table_wdat *wdat)
-+{
-+	const struct acpi_wdat_entry *entries;
-+	int i;
-+
-+	entries = (struct acpi_wdat_entry *)(wdat + 1);
-+	for (i = 0; i < wdat->entries; i++) {
-+		const struct acpi_generic_address *gas;
-+
-+		gas = &entries[i].register_region;
-+		if (gas->space_id == ACPI_ADR_SPACE_SYSTEM_IO) {
-+			switch (gas->address) {
-+			case RTC_PORT(0):
-+			case RTC_PORT(1):
-+			case RTC_PORT(2):
-+			case RTC_PORT(3):
-+				return true;
-+			}
-+		}
-+	}
-+
-+	return false;
-+}
-+#else
-+static bool acpi_watchdog_uses_rtc(const struct acpi_table_wdat *wdat)
-+{
-+	return false;
-+}
-+#endif
- 
- static const struct acpi_table_wdat *acpi_watchdog_get_wdat(void)
- {
-@@ -50,9 +66,6 @@ static const struct acpi_table_wdat *acpi_watchdog_get_wdat(void)
- 	if (acpi_disabled)
- 		return NULL;
- 
--	if (dmi_check_system(acpi_watchdog_skip))
--		return NULL;
--
- 	status = acpi_get_table(ACPI_SIG_WDAT, 0,
- 				(struct acpi_table_header **)&wdat);
- 	if (ACPI_FAILURE(status)) {
-@@ -60,6 +73,11 @@ static const struct acpi_table_wdat *acpi_watchdog_get_wdat(void)
- 		return NULL;
- 	}
- 
-+	if (acpi_watchdog_uses_rtc(wdat)) {
-+		pr_info("Skipping WDAT on this system because it uses RTC SRAM\n");
-+		return NULL;
-+	}
-+
- 	return wdat;
- }
- 
-diff --git a/drivers/gpu/drm/i915/intel_dp.c b/drivers/gpu/drm/i915/intel_dp.c
-index cd6e87756509..492b0cb9bb2b 100644
---- a/drivers/gpu/drm/i915/intel_dp.c
-+++ b/drivers/gpu/drm/i915/intel_dp.c
-@@ -1674,23 +1674,6 @@ static int intel_dp_compute_bpp(struct intel_dp *intel_dp,
- 	return bpp;
- }
- 
--static bool intel_edp_compare_alt_mode(struct drm_display_mode *m1,
--				       struct drm_display_mode *m2)
--{
--	bool bres = false;
--
--	if (m1 && m2)
--		bres = (m1->hdisplay == m2->hdisplay &&
--			m1->hsync_start == m2->hsync_start &&
--			m1->hsync_end == m2->hsync_end &&
--			m1->htotal == m2->htotal &&
--			m1->vdisplay == m2->vdisplay &&
--			m1->vsync_start == m2->vsync_start &&
--			m1->vsync_end == m2->vsync_end &&
--			m1->vtotal == m2->vtotal);
--	return bres;
--}
--
- bool
- intel_dp_compute_config(struct intel_encoder *encoder,
- 			struct intel_crtc_state *pipe_config,
-@@ -1737,16 +1720,8 @@ intel_dp_compute_config(struct intel_encoder *encoder,
- 		pipe_config->has_audio = intel_conn_state->force_audio == HDMI_AUDIO_ON;
- 
- 	if (intel_dp_is_edp(intel_dp) && intel_connector->panel.fixed_mode) {
--		struct drm_display_mode *panel_mode =
--			intel_connector->panel.alt_fixed_mode;
--		struct drm_display_mode *req_mode = &pipe_config->base.mode;
--
--		if (!intel_edp_compare_alt_mode(req_mode, panel_mode))
--			panel_mode = intel_connector->panel.fixed_mode;
--
--		drm_mode_debug_printmodeline(panel_mode);
--
--		intel_fixed_panel_mode(panel_mode, adjusted_mode);
-+		intel_fixed_panel_mode(intel_connector->panel.fixed_mode,
-+				       adjusted_mode);
- 
- 		if (INTEL_GEN(dev_priv) >= 9) {
- 			int ret;
-@@ -6123,7 +6098,6 @@ static bool intel_edp_init_connector(struct intel_dp *intel_dp,
- 	struct drm_i915_private *dev_priv = to_i915(dev);
- 	struct drm_connector *connector = &intel_connector->base;
- 	struct drm_display_mode *fixed_mode = NULL;
--	struct drm_display_mode *alt_fixed_mode = NULL;
- 	struct drm_display_mode *downclock_mode = NULL;
- 	bool has_dpcd;
- 	struct drm_display_mode *scan;
-@@ -6178,14 +6152,13 @@ static bool intel_edp_init_connector(struct intel_dp *intel_dp,
- 	}
- 	intel_connector->edid = edid;
- 
--	/* prefer fixed mode from EDID if available, save an alt mode also */
-+	/* prefer fixed mode from EDID if available */
- 	list_for_each_entry(scan, &connector->probed_modes, head) {
- 		if ((scan->type & DRM_MODE_TYPE_PREFERRED)) {
- 			fixed_mode = drm_mode_duplicate(dev, scan);
- 			downclock_mode = intel_dp_drrs_init(
- 						intel_connector, fixed_mode);
--		} else if (!alt_fixed_mode) {
--			alt_fixed_mode = drm_mode_duplicate(dev, scan);
-+			break;
- 		}
- 	}
- 
-@@ -6222,8 +6195,7 @@ static bool intel_edp_init_connector(struct intel_dp *intel_dp,
- 			      pipe_name(pipe));
- 	}
- 
--	intel_panel_init(&intel_connector->panel, fixed_mode, alt_fixed_mode,
--			 downclock_mode);
-+	intel_panel_init(&intel_connector->panel, fixed_mode, downclock_mode);
- 	intel_connector->panel.backlight.power = intel_edp_backlight_power;
- 	intel_panel_setup_backlight(connector, pipe);
- 
-diff --git a/drivers/gpu/drm/i915/intel_drv.h b/drivers/gpu/drm/i915/intel_drv.h
-index 04d2774fe0ac..bc0ee1015ea9 100644
---- a/drivers/gpu/drm/i915/intel_drv.h
-+++ b/drivers/gpu/drm/i915/intel_drv.h
-@@ -269,7 +269,6 @@ struct intel_encoder {
- 
- struct intel_panel {
- 	struct drm_display_mode *fixed_mode;
--	struct drm_display_mode *alt_fixed_mode;
- 	struct drm_display_mode *downclock_mode;
- 
- 	/* backlight */
-@@ -1819,7 +1818,6 @@ void intel_overlay_reset(struct drm_i915_private *dev_priv);
- /* intel_panel.c */
- int intel_panel_init(struct intel_panel *panel,
- 		     struct drm_display_mode *fixed_mode,
--		     struct drm_display_mode *alt_fixed_mode,
- 		     struct drm_display_mode *downclock_mode);
- void intel_panel_fini(struct intel_panel *panel);
- void intel_fixed_panel_mode(const struct drm_display_mode *fixed_mode,
-diff --git a/drivers/gpu/drm/i915/intel_dsi.c b/drivers/gpu/drm/i915/intel_dsi.c
-index 384b37e2da70..f349b3920199 100644
---- a/drivers/gpu/drm/i915/intel_dsi.c
-+++ b/drivers/gpu/drm/i915/intel_dsi.c
-@@ -1852,7 +1852,7 @@ void intel_dsi_init(struct drm_i915_private *dev_priv)
- 	connector->display_info.width_mm = fixed_mode->width_mm;
- 	connector->display_info.height_mm = fixed_mode->height_mm;
- 
--	intel_panel_init(&intel_connector->panel, fixed_mode, NULL, NULL);
-+	intel_panel_init(&intel_connector->panel, fixed_mode, NULL);
- 	intel_panel_setup_backlight(connector, INVALID_PIPE);
- 
- 	intel_dsi_add_properties(intel_connector);
-diff --git a/drivers/gpu/drm/i915/intel_dvo.c b/drivers/gpu/drm/i915/intel_dvo.c
-index 6604806f89d5..61d908e0df0e 100644
---- a/drivers/gpu/drm/i915/intel_dvo.c
-+++ b/drivers/gpu/drm/i915/intel_dvo.c
-@@ -542,7 +542,7 @@ void intel_dvo_init(struct drm_i915_private *dev_priv)
- 			 */
- 			intel_panel_init(&intel_connector->panel,
- 					 intel_dvo_get_current_mode(intel_encoder),
--					 NULL, NULL);
-+					 NULL);
- 			intel_dvo->panel_wants_dither = true;
- 		}
- 
-diff --git a/drivers/gpu/drm/i915/intel_lvds.c b/drivers/gpu/drm/i915/intel_lvds.c
-index 34dd1e5233ac..48f618dc9abb 100644
---- a/drivers/gpu/drm/i915/intel_lvds.c
-+++ b/drivers/gpu/drm/i915/intel_lvds.c
-@@ -1180,8 +1180,7 @@ void intel_lvds_init(struct drm_i915_private *dev_priv)
- out:
- 	mutex_unlock(&dev->mode_config.mutex);
- 
--	intel_panel_init(&intel_connector->panel, fixed_mode, NULL,
--			 downclock_mode);
-+	intel_panel_init(&intel_connector->panel, fixed_mode, downclock_mode);
- 	intel_panel_setup_backlight(connector, INVALID_PIPE);
- 
- 	lvds_encoder->is_dual_link = compute_is_dual_link_lvds(lvds_encoder);
-diff --git a/drivers/gpu/drm/i915/intel_panel.c b/drivers/gpu/drm/i915/intel_panel.c
-index 41d00b1603e3..b443278e569c 100644
---- a/drivers/gpu/drm/i915/intel_panel.c
-+++ b/drivers/gpu/drm/i915/intel_panel.c
-@@ -1928,13 +1928,11 @@ intel_panel_init_backlight_funcs(struct intel_panel *panel)
- 
- int intel_panel_init(struct intel_panel *panel,
- 		     struct drm_display_mode *fixed_mode,
--		     struct drm_display_mode *alt_fixed_mode,
- 		     struct drm_display_mode *downclock_mode)
- {
- 	intel_panel_init_backlight_funcs(panel);
- 
- 	panel->fixed_mode = fixed_mode;
--	panel->alt_fixed_mode = alt_fixed_mode;
- 	panel->downclock_mode = downclock_mode;
- 
- 	return 0;
-@@ -1948,10 +1946,6 @@ void intel_panel_fini(struct intel_panel *panel)
- 	if (panel->fixed_mode)
- 		drm_mode_destroy(intel_connector->base.dev, panel->fixed_mode);
- 
--	if (panel->alt_fixed_mode)
--		drm_mode_destroy(intel_connector->base.dev,
--				panel->alt_fixed_mode);
--
- 	if (panel->downclock_mode)
- 		drm_mode_destroy(intel_connector->base.dev,
- 				panel->downclock_mode);
 diff --git a/kernel/fork.c b/kernel/fork.c
-index 5ad558e6f8fe..767485c6f7cc 100644
+index 1b27babc4c78..a88dd3ccd31c 100644
 --- a/kernel/fork.c
 +++ b/kernel/fork.c
 @@ -103,6 +103,11 @@
@@ -300,7 +40,7 @@ index 5ad558e6f8fe..767485c6f7cc 100644
  
  /*
   * Minimum number of threads to boot the kernel
-@@ -1600,6 +1605,10 @@ static __latent_entropy struct task_struct *copy_process(
+@@ -1624,6 +1629,10 @@ static __latent_entropy struct task_struct *copy_process(
  	if ((clone_flags & (CLONE_NEWUSER|CLONE_FS)) == (CLONE_NEWUSER|CLONE_FS))
  		return ERR_PTR(-EINVAL);
  
@@ -311,7 +51,7 @@ index 5ad558e6f8fe..767485c6f7cc 100644
  	/*
  	 * Thread groups must share signals as well, and detached threads
  	 * can only be started up within the thread group.
-@@ -2394,6 +2403,12 @@ int ksys_unshare(unsigned long unshare_flags)
+@@ -2420,6 +2429,12 @@ int ksys_unshare(unsigned long unshare_flags)
  	if (unshare_flags & CLONE_NEWNS)
  		unshare_flags |= CLONE_FS;
  
@@ -325,7 +65,7 @@ index 5ad558e6f8fe..767485c6f7cc 100644
  	if (err)
  		goto bad_unshare_out;
 diff --git a/kernel/sysctl.c b/kernel/sysctl.c
-index 6a78cf70761d..35a1d24282f4 100644
+index 2d9837c0aff4..eb5236c069fc 100644
 --- a/kernel/sysctl.c
 +++ b/kernel/sysctl.c
 @@ -105,6 +105,9 @@ extern int core_uses_pid;
@@ -355,7 +95,7 @@ index 6a78cf70761d..35a1d24282f4 100644
  	{
  		.procname	= "tainted",
 diff --git a/kernel/user_namespace.c b/kernel/user_namespace.c
-index 246d4d4ce5c7..f64432b45cec 100644
+index c3d7583fcd21..6ee37e516869 100644
 --- a/kernel/user_namespace.c
 +++ b/kernel/user_namespace.c
 @@ -26,6 +26,9 @@
@@ -368,17 +108,3 @@ index 246d4d4ce5c7..f64432b45cec 100644
  static struct kmem_cache *user_ns_cachep __read_mostly;
  static DEFINE_MUTEX(userns_state_mutex);
  
-diff --git a/net/mac80211/tx.c b/net/mac80211/tx.c
-index 05a265cd573d..7404a5114597 100644
---- a/net/mac80211/tx.c
-+++ b/net/mac80211/tx.c
-@@ -4800,7 +4800,9 @@ int ieee80211_tx_control_port(struct wiphy *wiphy, struct net_device *dev,
- 	skb_reset_network_header(skb);
- 	skb_reset_mac_header(skb);
- 
-+	local_bh_disable();
- 	__ieee80211_subif_start_xmit(skb, skb->dev, flags);
-+	local_bh_enable();
- 
- 	return 0;
- }
