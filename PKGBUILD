@@ -1,23 +1,23 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: AndyRTR <andyrtr@archlinux.org>
 # Contributor: Judd Vinet <jvinet@zeroflux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname=lib32-unixodbc
-pkgver=2.3.6
+pkgver=2.3.7
 pkgrel=1
 pkgdesc='ODBC is an open specification for providing application developers with a predictable API with which to access Data Sources'
 arch=('x86_64')
 url='http://www.unixodbc.org/'
 license=('GPL2' 'LGPL2.1')
 depends=('lib32-libltdl' 'unixodbc')
-makedepends=('gcc-multilib')
-groups=('pipelight-libs')
+makedepends=('lib32-gcc-libs')
 source=("ftp://ftp.unixodbc.org/pub/unixODBC/unixODBC-${pkgver}.tar.gz")
-sha256sums=('88b637f647c052ecc3861a3baa275c3b503b193b6a49ff8c28b2568656d14d69')
+sha256sums=('45f169ba1f454a72b8fcbb82abd832630a3bf93baa84731cf2949f449e1e3e77')
 
 build() {
-  cd unixODBC-${pkgver}
+  cd ${srcdir}/unixODBC-${pkgver}
 
   export CC='gcc -m32'
   export CXX='g++ -m32'
@@ -31,7 +31,7 @@ build() {
 }
 
 package() {
-  cd unixODBC-${pkgver}
+  cd ${srcdir}/unixODBC-${pkgver}
 
   make DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir}"/{etc,usr/{bin,include,share}}
