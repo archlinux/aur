@@ -6,3 +6,4 @@ Exec=/usr/share/tinyMediaManager/tinyMediaManager.sh
 Icon=tmm
 Comment=A multi-OS media managment tool
 Categories=AudioVideo;Video;Database;Java;
+StartupWMClass=org-tinymediamanager-TinyMediaManager

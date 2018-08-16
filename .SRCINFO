@@ -13,7 +13,7 @@ pkgbase = tiny-media-manager-bin
 	source = tinymediamanager
 	source = tinymediamanager-cli
 	md5sums = eb147e559090199f59f51418f4410a61
-	md5sums = 9cc43e1296880768bacc51c63f913cbd
+	md5sums = 010f5308884b7293bb398b2a63079883
 	md5sums = c382f9ba03915a1f70f5aaea8699cfe5
 	md5sums = 677bed3f438e84ecd948c9f6faa37194
 
