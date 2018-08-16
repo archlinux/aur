@@ -17,7 +17,7 @@ pkgbase = cros-adapta-gtk-theme
 	makedepends = git
 	depends = gtk-engine-murrine
 	depends = gtk3
-	provides = cros-adapta-gtk-theme
+	conflicts = cros-adapta-gtk-theme-git
 	source = git+https://chromium.googlesource.com/chromiumos/third_party/cros-adapta#branch=release-R69-10895.B
 	sha256sums = SKIP
 

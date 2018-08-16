@@ -9,7 +9,6 @@ url="https://chromium.googlesource.com/chromiumos/third_party/cros-adapta/"
 arch=(any)
 license=(GPL2)
 
-provides=(${_pkgname}-gtk-theme)
 conflicts=(${_pkgname}-gtk-theme-git)
 makedepends=("autoconf"
              "automake"
