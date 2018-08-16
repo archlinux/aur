@@ -1,7 +1,7 @@
 pkgbase = your-freedom-network
 	pkgdesc = A service to bypass Firewalls, Proxies and content Filters and stay anonymous while surfing, playing and downloading
 	pkgver = 20180405
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.your-freedom.net/
 	arch = any
 	license = LGPL2.1
@@ -17,9 +17,9 @@ pkgbase = your-freedom-network
 	source = your-freedom.desktop
 	source = ACCEPTABLE_USE_POLICY
 	md5sums = 3d793fc912bae717032c1e65e7859c48
-	md5sums = 25446e531e35feadc0c152b9d5d2b71b
-	md5sums = b32b06860316c2d08b819a8ce84d04e7
-	md5sums = 5353802c3316b0011724ec8cdbf51e8f
+	md5sums = 9ab24f759c04f123e5367395fa0f43d8
+	md5sums = fe4ab41f26652258ea5fa4c309869972
+	md5sums = b8017cf56973d10dba097e83917f0f78
 	md5sums = e71ac5216e24c68db28abc1d92fba5d5
 
 pkgname = your-freedom-network

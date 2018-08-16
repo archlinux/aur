@@ -8,3 +8,4 @@ Name=Your Freedom
 Comment=VPN and Proxy Service
 Categories=Network;
 Icon=your-freedom
+StartupWMClass=emsgui
