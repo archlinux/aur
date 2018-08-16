@@ -14,12 +14,15 @@ pkgdesc="Comprehensive design and management interface for PostgreSQL (LTS by Bi
 arch=('i686' 'x86_64')
 url="https://www.bigsql.org/"
 license=('custom')
-depends=('wxgtk' 'postgresql-libs' 'libxslt' 'libgcrypt')
+# Dependency wxgtk3 is not supported due to segmentation fault (FS#54676)
+depends=('wxgtk2' 'postgresql-libs' 'libxslt' 'libgcrypt')
 makedepends=('libpqxx' 'krb5' 'postgresql' 'imagemagick' 'python-sphinx')
 provides=("pgadmin3")
 conflicts=("pgadmin3")
-source=("git+https://bitbucket.org/openscg/$_pkgname.git")
-sha256sums=('SKIP')
+source=("git+https://bitbucket.org/openscg/$_pkgname.git"
+  "pgadmin3-fix-segfault.patch")
+sha256sums=('SKIP'
+  'b175869b77bcbfa43f1bc256277966882789883792c4f9dd26038ec248def6a2')
 
 pkgver() {
   cd "${_pkgname}"
@@ -30,7 +33,10 @@ prepare() {
   cd "$srcdir"
   convert $_pkgname/pgadmin/include/images/pgAdmin3.ico pgAdmin3.png
 
+
   cd "$_pkgname"
+  patch -p1 -i ../pgadmin3-fix-segfault.patch
+
   CPPFLAGS+=" -fno-delete-null-pointer-checks"
   ./bootstrap
 }
