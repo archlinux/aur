@@ -1,6 +1,6 @@
 pkgbase = hg-prompt-hg
 	pkgdesc = An "hg prompt" command for viewing Mercurial repository information.
-	pkgver = r122.1cb3af183d2f
+	pkgver = r142.dc481ce24b60
 	pkgrel = 1
 	url = http://sjl.bitbucket.org/hg-prompt/
 	arch = any

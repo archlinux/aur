@@ -2,7 +2,7 @@
 # Maintainer: Antony Lee <anntzer dot lee at gmail dot com>
 
 pkgname=hg-prompt-hg
-pkgver=r140.5334581e231a
+pkgver=r142.dc481ce24b60
 pkgrel=1
 pkgdesc='An "hg prompt" command for viewing Mercurial repository information.'
 arch=('any')
