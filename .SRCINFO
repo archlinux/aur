@@ -1,0 +1,43 @@
+pkgbase = gdc-stable
+	pkgver = 8.2.0
+	pkgrel = 1
+	url = https://github.com/D-Programming-GDC/GDC
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = binutils>=2.26
+	makedepends = git
+	source = https://ftp.gnu.org/gnu/gcc/gcc-8.2.0/gcc-8.2.0.tar.xz
+	source = http://isl.gforge.inria.fr/isl-0.19.tar.bz2
+	source = gdc::git+https://github.com/D-Programming-GDC/GDC.git
+	source = git+https://github.com/D-Programming-GDC/GDMD.git
+	source = paths.diff
+	sha256sums = 196c3c04ba2613f893283977e6011b2345d1cd1af9abeac58e916b1aab3e0080
+	sha256sums = d59726f34f7852a081fbd3defd1ab2136f174110fc2e0c8d10bb122173fa9ed8
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = bb4219be52f61de48fc02f522220f013f12859a03c678417b03a1c8ee783d9dd
+
+pkgname = gdc-stable
+	pkgdesc = Compiler for D programming language which uses gcc backend
+	depends = gcc
+	depends = perl
+	depends = binutils
+	depends = libgphobos-stable
+	provides = d-compiler=2.076.1
+	provides = gdc
+	conflicts = gdc
+	replaces = gdc
+
+pkgname = libgphobos-stable
+	pkgdesc = Standard library for D programming language, GDC port
+	provides = d-runtime
+	provides = d-stdlib
+	provides = gnu-d-runtime
+	provides = libgphobos
+	conflicts = libgphobos-devel
+	conflicts = libgphobos
+	replaces = libgphobos-devel
+	replaces = libgphobos
+	options = staticlibs
+
