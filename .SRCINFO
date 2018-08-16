@@ -1,0 +1,23 @@
+pkgbase = jack_capture-git
+	pkgdesc = Simple command line tool to record JACK audio output to a file (git version)
+	pkgver = 0.9.73.r163.472b13e
+	pkgrel = 1
+	url = https://github.com/kmatheussen/jack_capture
+	arch = i686
+	arch = x86_64
+	groups = pro-audio
+	license = GPL
+	makedepends = git
+	depends = jack
+	depends = lame
+	depends = liblo
+	depends = libsndfile
+	optdepends = meterbridge: levels monitor
+	optdepends = zenity: gtk2 gui
+	provides = jack_capture
+	conflicts = jack_capture
+	source = jack_capture::git+https://github.com/kmatheussen/jack_capture.git
+	md5sums = SKIP
+
+pkgname = jack_capture-git
+

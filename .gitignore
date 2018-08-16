@@ -1,0 +1,6 @@
+pkg/
+src/
+.AURINFO
+jack_capture/
+jack_capture-git-*.tar.xz
+jack_capture-git-*.src.tar.gz
