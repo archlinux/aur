@@ -9,8 +9,6 @@ url="https://github.com/pop-os/${_pkgbase}"
 arch=(x86_64 i686 aarch64 armv7h)
 license=(MIT)
 
-provides=(popsicle-cli-git popsicle-gtk-git)
-conflicts=(popsicle-cli-git popsicle-gtk-git)
 makedepends=(rust cargo)
 
 source=("git+https://github.com/pop-os/popsicle.git")
@@ -34,12 +32,16 @@ build_popsicle-gtk-git() {
 
 package_popsicle-cli-git() {
     pkgdesc="Command-line interface for flashing multiple USB devices in parallel, written in Rust"
+    provides=(popsicle-cli)
+    conflicts=(popsicle-cli)
     
     cd popsicle
     DESTDIR="${pkgdir}" make install-cli default_prefix="/usr"
 }
 package_popsicle-gtk-git() {
     pkgdesc="GTK app for flashing multiple USB devices in parallel, written in Rust"
+    provides=(popsicle-gtk)
+    conflicts=(popsicle-gtk)
 
     cd popsicle
     DESTDIR="${pkgdir}" make install-gtk default_prefix="/usr"
