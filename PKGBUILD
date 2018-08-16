@@ -2,7 +2,7 @@
 
 pkgname=hqplayer-network-audio-daemon
 pkgver=3.5.4
-pkgrel=4
+pkgrel=5
 pkgdesc="Signalyst Network Audio Daemon"
 arch=('x86_64')
 url="http://www.signalyst.com/consumer.html"
