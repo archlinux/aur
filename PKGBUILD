@@ -8,7 +8,7 @@ url="https://github.com/EvanPurkhiser/${_pkgname}"
 pkgver=9.5264b13
 pkgrel=1
 
-source=("$pkgname::git://github.com/EvanPurkhiser/${_pkgname}")
+source=("$pkgname::git+$url.git")
 md5sums=('SKIP')
 install="usage.install"
 depends=('mkinitcpio' 'setcolors-git')
