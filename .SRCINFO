@@ -1,12 +1,12 @@
 pkgbase = squid4
-	pkgdesc = Full-featured Web proxy cache server with the support SSL, eCAP, iCAP-client. Include patches for normal work with long url`s and CDN.
+	pkgdesc = Full-featured Web proxy cache server with the support SSL, eCAP, iCAP-client. Include patches for normal work with cache, long url`s and CDN.
 	pkgver = 4.2
 	pkgrel = 4
 	url = http://www.squid-cache.org
 	arch = x86_64
 	license = GPL
 	makedepends = krb5
-	depends = openssl-1.0
+	depends = openssl
 	depends = libecap
 	depends = pam
 	depends = perl

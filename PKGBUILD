@@ -1,10 +1,10 @@
 pkgname=squid4
 pkgver=4.2
 pkgrel=4
-pkgdesc='Full-featured Web proxy cache server with the support SSL, eCAP, iCAP-client. Include patches for normal work with long url`s and CDN.'
+pkgdesc='Full-featured Web proxy cache server with the support SSL, eCAP, iCAP-client. Include patches for normal work with cache, long url`s and CDN.'
 arch=('x86_64')
 url='http://www.squid-cache.org'
-depends=('openssl-1.0' 'libecap' 'pam' 'perl' 'libltdl' 'libcap' 'nettle' 'gnutls' 'libnsl')
+depends=('openssl' 'libecap' 'pam' 'perl' 'libltdl' 'libcap' 'nettle' 'gnutls' 'libnsl')
 makedepends=('krb5')
 conflicts=('squid' 'squid4')
 license=('GPL')
@@ -35,20 +35,20 @@ sha256sums=('SKIP'
 prepare() {
 	cd "$srcdir/squid-$pkgver"
 	msg "Preparing Squid..."
-	msg2 "Getting the client_side_request patch..."
+	msg2 "Getting the client_side_request patch (for work with CDN)..."
 	wget https://raw.githubusercontent.com/bar0metr/squid/master/client_side_request.patch
 	msg2 "Patching Squid..."
-        msg2 "Getting the sm_pagesize patch..."
-        wget https://raw.githubusercontent.com/bar0metr/squid/master/sm_pagesize.patch
+        msg2 "Getting the archive_mode patch (for cache's work)..."
+        wget http://os-admin.ru/files/archive_mode.patch
         msg2 "Patching Squid..."
-	patch -p0 -i sm_pagesize.patch
+	patch -p0 -i archive_mode.patch
 	msg2 "Done!"
 }
 
 build() {
   cd "$srcdir/squid-$pkgver"
 
-  PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig \
+  PKG_CONFIG_PATH=/usr/lib \
   ./configure \
     --prefix=/usr \
     --sbindir=/usr/bin \
@@ -66,10 +66,10 @@ build() {
     --enable-auth-digest \
     --enable-auth-negotiate \
     --enable-removal-policies="lru,heap" \
-    --enable-storeio="aufs,ufs,diskd" \
+    --enable-storeio="aufs,ufs,diskd,rock" \
     --enable-delay-pools \
     --enable-arp-acl \
-    --with-openssl=/usr/include/openssl-1.0/openssl \
+    --with-openssl=/usr/include/openssl \
     --enable-snmp \
     --enable-linux-netfilter \
     --enable-ident-lookups \
