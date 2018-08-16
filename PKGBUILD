@@ -1,7 +1,7 @@
 # Maintainer: Pedro Silva <psilva+git@pedrosilva.pt>
 
 pkgname=ape
-pkgver=2.0.53
+pkgver=2.0.55
 pkgrel=1
 pkgdesc="A plasmid editor"
 arch=('any')

@@ -1,6 +1,6 @@
 pkgbase = ape
 	pkgdesc = A plasmid editor
-	pkgver = 2.0.53
+	pkgver = 2.0.55
 	pkgrel = 1
 	url = http://biologylabs.utah.edu/jorgensen/wayned/ape/
 	arch = any
