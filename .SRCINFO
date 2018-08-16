@@ -13,4 +13,5 @@ pkgbase = tensorflow-model-server-git
 	md5sums = SKIP
 
 pkgname = tensorflow-model-server-git
+	conflicts = tensorflow-model-server-cuda-git
 
