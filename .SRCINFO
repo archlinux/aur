@@ -1,0 +1,16 @@
+pkgbase = tensorflow-model-server-git
+	pkgdesc = A flexible, high-performance serving system for machine learning models
+	pkgver = 1.10
+	pkgrel = 1
+	url = https://tensorflow.org/serving
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = bazel
+	makedepends = gcc
+	depends = gcc-libs
+	source = git+https://github.com/tensorflow/serving.git
+	md5sums = SKIP
+
+pkgname = tensorflow-model-server-git
+
