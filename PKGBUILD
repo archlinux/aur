@@ -9,7 +9,7 @@ url="https://github.com/pop-os/${_pkgbase}"
 arch=(x86_64 i686 aarch64 armv7h)
 license=(MIT)
 
-makedepends=(rust cargo)
+makedepends=(rust cargo help2man)
 
 source=("git+https://github.com/pop-os/popsicle.git")
 sha256sums=('SKIP')

@@ -10,6 +10,7 @@ pkgbase = popsicle-git
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
+	makedepends = help2man
 	source = git+https://github.com/pop-os/popsicle.git
 	sha256sums = SKIP
 
