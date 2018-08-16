@@ -1,8 +1,9 @@
-# Maintainer: Justin Dray <justin@dray.be>
+# Maintainer: Christian Mauderer <oss@c-mauderer.de>
+# Previous maintainer: Justin Dray <justin@dray.be>
 
 pkgname='python-flask-cache'
 pkgver=0.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Adds cache support to your Flask application'
 arch=('any')
 url='http://pypi.python.org/pypi/Flask-Cache'
@@ -16,6 +17,10 @@ conflicts=('python-flask-cache-git')
 build() {
 
   cd "${srcdir}/Flask-Cache-${pkgver}"
+
+  # Workaround for https://github.com/thadeusb/flask-cache/issues/188
+  sed -e 's/flask.ext.cache/flask_cache/g' -i flask_cache/jinja2ext.py
+
   python ./setup.py build
 
 }
