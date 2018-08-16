@@ -2,7 +2,7 @@
 # Contributor: Alexey Khromov <zxalexis at gmail dot com>
 
 pkgname=deadwood
-pkgver=3.2.11
+pkgver=3.2.12
 pkgrel=1
 pkgdesc="Deadwood is MaraDNS 2.0's recursive resolver"
 arch=('x86_64')
@@ -29,5 +29,5 @@ package() {
   cp -r ${srcdir}/deadwood-${pkgver}/doc/* $pkgdir/usr/share/doc/Deadwood
   rmdir ${pkgdir}/usr/sbin
 }
-sha256sums=('2cf7a6fee33451da8a1fd759f92b3f3e656b3752dbc6f2e3db4ad7922d078dbb'
+sha256sums=('aedfb41c21a801423972d6c8aa8baa0d39cec5919669f0662615824d56c67bea'
             '0c3430f97fbf44e03d6e9024b3531ffe4366d04b692527b23293689a970b455b')
