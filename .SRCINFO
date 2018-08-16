@@ -1,0 +1,20 @@
+pkgbase = r-ps
+	pkgdesc = List, Query, Manipulate System Processes
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=ps
+	arch = x86_64
+	license = BSD
+	depends = r
+	optdepends = r-callr
+	optdepends = r-covr
+	optdepends = r-processx
+	optdepends = r-r6
+	optdepends = r-rlang
+	optdepends = r-testthat
+	optdepends = r-tibble
+	source = https://cran.r-project.org/src/contrib/ps_1.1.0.tar.gz
+	md5sums = 50ca1f0d770f10e76d7a406cdaa95b79
+
+pkgname = r-ps
+
