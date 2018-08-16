@@ -1,23 +1,26 @@
+mk_add_options AUTOCLOBBER=1
+mk_add_options MOZ_OBJDIR=%SRCDIR%/pmbuild
+ac_add_options --enable-application=palemoon
+
+ac_add_options --enable-optimize="-O2"
+
 ac_add_options --enable-official-branding
 export MOZILLA_OFFICIAL=1
 
-mk_add_options MOZ_CO_PROJECT=browser
-ac_add_options --enable-application=browser
-
-mk_add_options MOZ_OBJDIR=%SRCDIR%/pmbuild
-
-ac_add_options --disable-installer
-ac_add_options --disable-updater
-
-ac_add_options --disable-debug
-
+ac_add_options --enable-default-toolkit=cairo-gtk2
 ac_add_options --enable-jemalloc
-#ac_add_options --enable-jemalloc-lib #potentially causes serious regressions
-ac_add_options --with-pthreads
-
 ac_add_options --enable-strip
-ac_add_options --enable-optimize="-O2 -msse2 -mfpmath=sse"
-
+ac_add_options --with-pthreads
+ 
+ac_add_options --disable-tests
+ac_add_options --disable-eme
+ac_add_options --disable-parental-controls
+ac_add_options --disable-accessibility
+ac_add_options --disable-webrtc
+ac_add_options --disable-gamepad
+ac_add_options --disable-necko-wifi
+ac_add_options --disable-updater
+  
 ac_add_options --x-libraries=/usr/lib
 
 # gcc6 now builds, but explicitly use gcc5 for now. Upstream recommends using gcc4.9 over either but is EOL.
@@ -30,16 +33,3 @@ mk_add_options PYTHON=/usr/bin/python2
 # uncomment the following to limit the number of parallel build jobs
 # remember to run updpkgsums after, or you'll get a checksum failure
 #mk_add_options MOZ_MAKE_FLAGS="-j4"
-
-# disable junk
-ac_add_options --disable-codesighs
-ac_add_options --disable-gamepad
-ac_add_options --disable-logging
-ac_add_options --disable-necko-wifi
-ac_add_options --disable-websms-backend
-
-# enable useful features
-ac_add_options --enable-chrome-format=omni
-ac_add_options --enable-startup-notification
-ac_add_options --enable-shared-js
-ac_add_options --enable-devtools

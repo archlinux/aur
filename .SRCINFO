@@ -1,6 +1,6 @@
 pkgbase = palemoon
 	pkgdesc = Open source web browser based on Firefox focusing on efficiency.
-	pkgver = 27.9.4
+	pkgver = 28.0.0
 	pkgrel = 1
 	url = https://www.palemoon.org/
 	arch = i686
@@ -14,6 +14,7 @@ pkgbase = palemoon
 	makedepends = unzip
 	makedepends = zip
 	makedepends = yasm
+	makedepends = gconf
 	makedepends = libpulse
 	makedepends = gcc5
 	depends = gtk2
@@ -24,13 +25,11 @@ pkgbase = palemoon
 	depends = alsa-lib
 	depends = startup-notification
 	optdepends = libpulse: PulseAudio audio driver
-	optdepends = hunspell: spell checker and morphological analyzer
-	optdepends = hyphen: library for hyphenation and justification
 	optdepends = ffmpeg: various video and audio support
-	source = git+https://github.com/MoonchildProductions/Pale-Moon#tag=27.9.4_Release
+	source = git+https://github.com/MoonchildProductions/UXP#tag=PM28.0.0_Release
 	source = mozconfig.in
 	md5sums = SKIP
-	md5sums = 3b1d2eff90892a99ff6a0e078b35a839
+	md5sums = 24969676f8b0228701bfb87e05b4526e
 
 pkgname = palemoon
 
