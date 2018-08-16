@@ -15,6 +15,7 @@ pkgbase = squid4
 	depends = nettle
 	depends = gnutls
 	depends = libnsl
+	depends = gperftools
 	conflicts = squid
 	conflicts = squid4
 	conflicts = squid5

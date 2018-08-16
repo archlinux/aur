@@ -4,7 +4,7 @@ pkgrel=4
 pkgdesc='Full-featured Web proxy cache server with the support SSL, eCAP, iCAP-client. Include patches for normal work with cache, long url`s and CDN.'
 arch=('x86_64')
 url='http://www.squid-cache.org'
-depends=('openssl' 'libecap' 'pam' 'perl' 'libltdl' 'libcap' 'nettle' 'gnutls' 'libnsl')
+depends=('openssl' 'libecap' 'pam' 'perl' 'libltdl' 'libcap' 'nettle' 'gnutls' 'libnsl' 'gperftools')
 makedepends=('krb5')
 conflicts=('squid' 'squid4' 'squid5')
 license=('GPL')
@@ -90,7 +90,12 @@ build() {
     --disable-arch-native \
     --disable-strict-error-checking \
     --enable-wccpv2 \
-    --enable-ssl-crtd 
+    --enable-ssl-crtd \
+    --with-build-environment=POSIX_V6_LP64_OFF64 \
+    'CFLAGS=-g -O2 -fPIE -fstack-protector-strong -DNDEBUG -Wformat -Werror=format-security -Wall -ltcmalloc_minimal' \
+    'LDFLAGS=-fPIE -pie -Wl,-z,relro -Wl,-z,now' \
+    'CPPFLAGS=-D_FORTIFY_SOURCE=2' \
+    'CXXFLAGS=-g -O2 -fPIE -fstack-protector-strong -DNDEBUG -Wformat -Werror=format-security -ltcmalloc_minimal'
   make -j$(nproc)
 }
 
