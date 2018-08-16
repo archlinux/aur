@@ -12,19 +12,19 @@ depends=('java-runtime')
 noextract=("Mars${_ver}.jar")
 install="${pkgname}.install"
 source=(http://courses.missouristate.edu/KenVollmar/MARS/MARS_${_ver}_Aug2014/Mars${_ver}.jar
-	mars-mips
-	mars.png
-	mars.desktop)
+    $pkgname.sh
+    $pkgname.svg
+$pkgname.desktop)
 
 package() {
-  mkdir -p $pkgdir/usr/share/java/$pkgname
-  cp $srcdir/*.jar $pkgdir/usr/share/java/$pkgname/Mars.jar
-  install -Dm755 $srcdir/mars-mips "$pkgdir"/usr/bin/mars-mips 
-  install -Dm644 $srcdir/mars.png "$pkgdir"/usr/share/icons/hicolor/48x48/apps/mars.png
-  install -Dm644 $srcdir/mars.desktop "$pkgdir"/usr/share/applications/mars.desktop
+    mkdir -p $pkgdir/usr/share/java/$pkgname
+    cp $srcdir/*.jar $pkgdir/usr/share/java/$pkgname/Mars.jar
+    install -Dm755 $srcdir/$pkgname.sh "$pkgdir"/usr/bin/$pkgname
+    install -Dm644 $srcdir/$pkgname.svg "$pkgdir"/usr/share/pixmaps/$pkgname.svg
+    install -Dm644 $srcdir/$pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
 }
 
 md5sums=('4709fae736e6c9d4078ea4b21e0be1e9'
-         '1e93838f364be5c798b1c09de7e4a5b8'
-         '6a74c887b0166d4adb5b06c64d6a444b'
-         '83281c7998223ff073bb31efd473275c')
+    'c813605eb22e575b22d4c35a3827706d'
+    'a0ecbc5271020cddb0c81bc32524734b'
+'e5dd4f170d32badc2e1fd3e2e27402b8')
