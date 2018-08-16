@@ -13,7 +13,7 @@ pkgdesc="Drivers (patched to remove use of libImageProcessor) for HP DeskJet, Of
 arch=('x86_64')
 url="http://hplipopensource.com"
 conflicts=('hplip')
-provides=('hplip')
+provides=('hplip=$pkgver')
 license=('GPL2' 'custom')
 depends=('python-dbus' 'ghostscript' 'net-snmp' 'foomatic-db-engine')
 makedepends=('python-pyqt5' 'python-gobject' 'sane' 'rpcbind' 'cups' 'libusb')
