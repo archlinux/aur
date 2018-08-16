@@ -2,7 +2,7 @@
 # Contributor: Callan Barrett <wizzomafizzo@gmail.com>
 
 pkgname=9wm
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="X11 Window Manager inspired by Plan 9's rio"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/9wm/9wm"
 license=('MIT')
 depends=('libxext' 'libxau' 'libxdmcp')
 source=($pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/$pkgver.tar.gz)
-sha256sums=('a4edc21011a80aba8481325d2b3ea7656e594b882343346d70378497e704e36e')
+sha256sums=('4b204d79538643911af562a3ef46c4f7f0c2da85e894f2bc773d72104073d87d')
 
 build() {
   cd "${srcdir}"/$pkgname-$pkgver
