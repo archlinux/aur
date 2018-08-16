@@ -1,12 +1,12 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=claws-mail-git
-pkgver=3.16.0.r24.g93eaaa941
+pkgver=3.17.0.r2.g779d80e31
 pkgrel=1
 pkgdesc='A GTK+ based e-mail client - git checkout'
 arch=('i686' 'x86_64')
 license=('GPL3')
-url='http://www.claws-mail.org/'
+url='https://www.claws-mail.org/'
 depends=('gtk2' 'gnutls' 'startup-notification' 'enchant' 'gpgme' 'libetpan' 'compface'
 	'libsm' 'dbus-glib' 'hicolor-icon-theme' 'desktop-file-utils')
 makedepends=('git' 'spamassassin' 'bogofilter' 'valgrind'
@@ -42,11 +42,11 @@ pkgver() {
 		printf '%s.r%s.g%s' \
 			"$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG})" \
 			"$(git rev-list --count ${GITTAG}..)" \
-			"$(git log -1 --format='%h')"
+			"$(git rev-parse --short HEAD)"
 	else
 		printf '0.r%s.g%s' \
 			"$(git rev-list --count master)" \
-			"$(git log -1 --format='%h')"
+			"$(git rev-parse --short HEAD)"
 	fi
 }
 
