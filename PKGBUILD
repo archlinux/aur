@@ -65,10 +65,10 @@ _rev_override="n"
 
 pkgbase=linux-clear
 __basekernel=4.18
-_minor=0
+_minor=1
 pkgver=${__basekernel}.${_minor}
-_clearver=${pkgver}-619
-pkgrel=2
+_clearver=${pkgver}-620
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
@@ -78,9 +78,9 @@ _gcc_more_v='20180509'
 source=(
   "https://www.kernel.org/pub/linux/kernel/v4.x/linux-${__basekernel}.tar.xz"
   "https://www.kernel.org/pub/linux/kernel/v4.x/linux-${__basekernel}.tar.sign"
-  #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+  "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
   "clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=${_clearver}"
-  'https://downloadmirror.intel.com/27945/eng/microcode-20180703.tgz'
+  'https://downloadmirror.intel.com/28039/eng/microcode-20180807.tgz'
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz" # enable_additional_cpu_optimizations_for_gcc
   '60-linux.hook'  # pacman hook for depmod
   '90-linux.hook'  # pacman hook for initramfs regeneration
@@ -93,9 +93,9 @@ validpgpkeys=(
 )
 sha256sums=('19d8bcf49ef530cd4e364a45b4a22fa70714b70349c8100e7308488e26f1eaf1'
             'SKIP'
-            #'bf4d95df98dc6197024bc2a7c8a8ef5fd3b21495298c7a7a5dbd63c159ea9f17'
+            'f0580daf3ea0716301c929be78c09db4dc3d8add65a1da392c2fc2c841244e8c'
             'SKIP'
-            '4a1a346fdf48e1626d4c9d0d47bbbc6a4052f56e359c85a3dd2d10fd555e5938'
+            '29f9e8dc27e6c9b6488cecd7fe2394030307799e511db2d197d9e6553a7f9e40'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
@@ -108,7 +108,7 @@ prepare() {
   cd linux-${__basekernel}
 
   # add upstream patch
-  #patch -p1 -i ../patch-${pkgver}
+  patch -p1 -i ../patch-${pkgver}
 
   # Apply clearlinux patches
   for i in $(grep '^Patch' ${srcdir}/clearlinux/linux.spec | grep -Ev '^Patch0500' | sed -n 's/.*: //p'); do
