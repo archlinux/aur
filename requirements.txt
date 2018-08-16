@@ -1,0 +1,5 @@
+pyspotify
+colorama
+mutagen
+requests
+schedule
