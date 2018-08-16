@@ -1,0 +1,18 @@
+pkgbase = python-ghdiff-git
+	pkgdesc = Generate Github-style HTML for unified diffs.
+	pkgver = r60.fa5ec34
+	pkgrel = 1
+	url = https://github.com/kilink/ghdiff
+	arch = any
+	license = MIT
+	makedepends = python-distribute
+	makedepends = git
+	depends = python
+	provides = python-ghdiff
+	conflicts = python-ghdiff
+	options = !emptydirs
+	source = python-ghdiff::git+https://github.com/kilink/ghdiff
+	md5sums = SKIP
+
+pkgname = python-ghdiff-git
+
