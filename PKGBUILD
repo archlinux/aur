@@ -9,7 +9,7 @@ _cracklib=default
 _ldap=default
 
 pkgname=xtheme
-pkgver=7.5.2
+pkgver=8.0.0
 pkgrel=1
 pkgdesc="A fork of the atheme IRC services"
 arch=("i686" "x86_64")
@@ -33,7 +33,7 @@ source=(
 	"system.service"
 )
 md5sums=(
-	"72053a58e89a72423cabe4acd525f0e1"
+	"5ce6c772cf3f061424ab699d60148b77"
 	"SKIP"
 )
 
