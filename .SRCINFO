@@ -16,7 +16,7 @@ pkgbase = gurobi
 	source = https://packages.gurobi.com/8.0/gurobi8.0.1_linux64.tar.gz
 	source = gurobi.sh
 	source = gurobi_setup.m
-	sha256sums = f82e1c12568de89ede61f9700344b1538027a812cffb0063d7ff7c657c21132c
+	sha256sums = 28c028b8708869c27a93edc2769b645db4906dc7c80a4d283ed6db672b587478
 	sha256sums = 30d535f7100627195dbe8d1c9a5ce603ed645b93eb8869984eb8a15e8db6d1c8
 	sha256sums = fd328dc00b276258e7828b301c93574f9aa8e6f143caf5428a648851a6ecf93c
 
