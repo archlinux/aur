@@ -10,9 +10,10 @@ url="http://www.davep.org/norton-guides/"
 license=('GPL')
 depends=('slang')
 provides=('expertguide')
-conflicts=("expertguide-git eg")
+conflicts=('expertguide-git' 'eg')
 source=("https://github.com/davep/eg/archive/${_srcname}-v${pkgver}.tar.gz"
-        'build.patch')
+        "build.patch"
+        )
 sha1sums=('1287c9c5d6a8e5b0b90b530128f639d7f586bfd2'
           '872b7364e7149f788d1ab814ac907dc302cae335')
 
