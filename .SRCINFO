@@ -1,0 +1,23 @@
+pkgbase = rtl8192cu-fixes
+	pkgdesc = This is a repackaging of Realtek's own 8192CU USB WiFi driver for Ubuntu 13.10 and later.
+	pkgver = v4.12.1
+	pkgrel = 13
+	url = ajwsnet.ddns.net
+	arch = any
+	license = GPL
+	depends = dkms
+	makedepends = git
+	conflicts = 8192cu
+	conflicts = rt8192cu
+	conflicts = dkms-8192cu
+	replaces = dkms-8192cu
+	options = !strip
+	source = 8192cu::git+https://github.com/pvaret/rtl8192cu-fixes
+	source = dkms.conf
+	source = blacklist-native-rtl8192.conf
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = rtl8192cu-fixes
+
