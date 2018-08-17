@@ -1,0 +1,23 @@
+pkgbase = python-cocoapi-git
+	pkgdesc = COCO is a large image dataset designed for object detection, segmentation, person keypoints detection, stuff segmentation, and caption generation.
+	pkgver = r193.ed842bf
+	pkgrel = 1
+	url = https://github.com/cocodataset/cocoapi
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = python
+	makedepends = python2
+	source = cocoapi::git+https://github.com/cocodataset/cocoapi.git
+	md5sums = SKIP
+
+pkgname = python-cocoapi-git
+	depends = python
+	provides = python-cocoapi
+	conflicts = python-cocoapi
+
+pkgname = python2-cocoapi-git
+	depends = python2
+	provides = python2-cocoapi
+	conflicts = python2-cocoapi
+
