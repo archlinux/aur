@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=lyricue
-pkgver=4.0.12
+pkgver=4.0.13
 pkgrel=1
 pkgdesc='GNU Lyric Display System, server and client'
 arch=('x86_64' 'armv6h')
@@ -30,25 +30,25 @@ makedepends=('gcc'
 optdepends=('mariadb'
         'perl-gtk3-trayicon'
         'perl-net-bonjour')
-source=("https://github.com/cjd/${pkgname}/archive/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('e88aefc03c0dfae9d361ef8590ad32dcb1e2cc20b8549e7d47402ba4f274a2e3')
+source=("https://github.com/cjd/${pkgname}/archive/${pkgver}.tar.gz")
+sha256sums=('ebe494a9c46bef42d247987f9c25e888e8b39a4f72166e6475eaf8817aefce1d')
 
 prepare () {
-    cd "${pkgname}-${pkgname}-${pkgver}"
+    cd "${pkgname}-${pkgver}"
     ./autogen.sh --prefix=/usr
 }
 
 build() {
-    cd "${pkgname}-${pkgname}-${pkgver}"
+    cd "${pkgname}-${pkgver}"
     make
 }
 
 check() {
-    cd "${pkgname}-${pkgname}-${pkgver}"
+    cd "${pkgname}-${pkgver}"
     make -k check
 }
 
 package() {
-    cd "${pkgname}-${pkgname}-${pkgver}"
+    cd "${pkgname}-${pkgver}"
     make DESTDIR="$pkgdir/" install
 }
