@@ -1,17 +1,18 @@
 pkgbase = r-fansi
 	pkgdesc = Counterparts to R string manipulation functions that account for the effects of ANSI text formatting control sequences.
-	pkgver = 0.2.3
-	pkgrel = 3
-	url = http://cran.r-project.org/web/packages/fansi/index.html
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=fansi
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = r
-	optdepends = unitizer
+	optdepends = r-unitizer
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
 	provides = r-fansi
 	conflicts = r-fansi
-	source = http://cran.r-project.org/src/contrib/fansi_0.2.3.tar.gz
-	sha256sums = db6dfef8bfe6682d58b654b6a6a1d59cb07225ca41755176b465ab8611fd96c9
+	source = http://cran.r-project.org/src/contrib/fansi_0.3.0.tar.gz
+	sha256sums = dd6401d5c91ff4c45d752cceddd5379d1ae39a8a1196f236b0bc0ec6d691b88c
 
 pkgname = r-fansi
-
