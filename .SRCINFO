@@ -2,7 +2,7 @@ pkgbase = spacefm
 	pkgdesc = Multi-panel tabbed file manager
 	pkgver = 1.0.6
 	pkgrel = 1
-	url = http://ignorantguru.github.com/spacefm/
+	url = https://ignorantguru.github.io/spacefm/
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -24,8 +24,10 @@ pkgbase = spacefm
 	optdepends = gphotofs: mount cameras
 	optdepends = ifuse: mount your iPhone/iPod Touch
 	optdepends = fuseiso: mount ISO files
-	source = https://github.com/IgnorantGuru/spacefm/archive/1.0.6.tar.gz
+	source = spacefm-1.0.6.tar.gz::https://github.com/IgnorantGuru/spacefm/archive/1.0.6.tar.gz
+	source = 0001-glibc-2.28-compatibility.patch
 	sha512sums = 37fc0dd31f02158502f592415b4c375ee49560af6f03d75b035d7c6c45bdc47064bba1ae8987b4cc8be2e02b3dfcdc17ec760411975e7b5f74343a2293fb2c8c
+	sha512sums = e6a6b2cca04a0e503480493c967725319a82938be1e431e437c49967f9b5da4e442502159fc1583981af5336d5a1213379c377776460b2431b92aecf5c3cb084
 
 pkgname = spacefm
 
