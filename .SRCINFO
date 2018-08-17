@@ -1,6 +1,7 @@
 pkgbase = xavs2
+	pkgdesc = Open-Source encoder of AVS2-P2/IEEE1857.4 video coding standard
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pkuvcl/xavs2/
 	arch = i686
 	arch = x86_64
@@ -9,25 +10,17 @@ pkgbase = xavs2
 	makedepends = yasm
 	makedepends = l-smash
 	depends = glibc
-	source = xavs2-1.0.tar.gz::https://github.com/pkuvcl/xavs2/archive/1.0.tar.gz
-	sha256sums = 0e7f682ad20dc783864ff0c483d03b2fbcd70d2fbd098e18c8d06ab6341da71d
-
-pkgname = xavs2
-	pkgdesc = CLI tool for the open-source encoder of AVS2-P2/IEEE1857.4 video coding standard
-	depends = glibc
-	depends = l-smash
-	provides = 
-	provides = xavs2-bit
-	provides = xavs2-bit
-	conflicts = 
-	conflicts = xavs2-bit-git
-
-pkgname = libxavs2
-	pkgdesc = Library for the open-source encoder of AVS2-P2/IEEE1857.4 video coding standard (8bit depth)
-	provides = libxavs2-8bit
+	depends = liblsmash.so
 	provides = libxavs2
 	provides = libxavs2.so
-	conflicts = libxavs2-8bit-git
-	conflicts = libxavs2-10bit
-	conflicts = libxavs2-10bit-git
+	conflicts = xavs2-git
+	conflicts = libxavs2
+	conflicts = libxavs2-git
+	replaces = libxavs2
+	source = xavs2-1.0.tar.gz::https://github.com/pkuvcl/xavs2/archive/1.0.tar.gz
+	source = xavs2-1.0-disable-10bit.patch
+	sha256sums = 0e7f682ad20dc783864ff0c483d03b2fbcd70d2fbd098e18c8d06ab6341da71d
+	sha256sums = e4893da3e1f22e85f8a8f50e58ecaff037d729a3ed64b71794aab6f359c0370c
+
+pkgname = xavs2
 
