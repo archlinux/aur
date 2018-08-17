@@ -59,8 +59,8 @@ _1k_HZ_ticks=
 
 pkgbase=linux-bfq-mq
 #pkgbase=linux-custom       # Build kernel with a different name
-_major=4.17
-pkgver=4.17.15
+_major=4.18
+pkgver=4.18.1
 _srcpatch="${pkgver}"
 _srcname="linux-${pkgver}"
 pkgrel=1
@@ -70,13 +70,13 @@ license=('GPL2')
 makedepends=('kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 _bfqpath="https://gitlab.com/tom81094/custom-patches/raw/master/bfq-mq"
-_lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.17"
-#_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/4.17"
+_lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.18"
+#_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/4.18"
 _gcc_path="https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+.patch"
 _bfq_sq_mq_path="bfq-sq-mq"
 _bfq_sq_mq_ver='v8r12'
-_bfq_sq_mq_rel='2K180625'
+_bfq_sq_mq_rel='2K180816'
 _bfq_sq_mq_patch="${_major}-bfq-sq-mq-${_bfq_sq_mq_ver}-${_bfq_sq_mq_rel}.patch"
 
 source=(# mainline kernel patches
@@ -98,24 +98,20 @@ source=(# mainline kernel patches
          # standard config files for mkinitcpio ramdisk
         'linux.preset'
         '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch'
-        '0002-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch'
-        '0003-ACPI-watchdog-Prefer-iTCO_wdt-always-when-WDAT-table.patch'
-        '0004-mac80211-disable-BHs-preemption-in-ieee80211_tx_cont.patch')
+        '0002-Increase-timeout-in-lspcon_wait_mode.patch')
 
-sha256sums=('e5b85dd46cf12bedb4b5d5a1ab8212aaf164ce45c41d4a4963a58d460384e079'
+sha256sums=('725fadc6e9d5a1ad6d7269bb75b256bccac5372927995ad0408c059d110cfa42'
             'SKIP'
             '9f7177679c8d3f8d699ef0566a51349d828436dba04603bc2223f98c60d2d178'
-            '7fa085ae8c7839fe22257bdebfcd1dfb1e60c40e61157972c349634c122ed086'
+            'c054840ef3df56d5b3ce574c5bf158b10a41bab4a1edc48a50b5b97c2f12b751'
             'eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531'
-            '2bcc7d7713ad223bbd347d669b824192d469cfbc7ca0bd2306f87947ae1c6cb6'
+            'f0f96c09a316e95cc038c2893ad38b6e609f9e7c9317ab4e98674c45815de4b2'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             '5f6ba52aaa528c4fa4b1dc097e8930fad0470d7ac489afcb13313f289ca32184'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '92f848d0e21fbb2400e50d1c1021514893423641e5450896d7b1d88aa880b2b9'
-            'fc3c50ae6bd905608e0533a883ab569fcf54038fb9d6569b391107d9fd00abbc'
-            'bc50c605bd0e1fa7437c21ddef728b83b6de3322b988e14713032993dfa1fc69'
-            '66284102261c4ed53db050e9045c8672ba0e5171884b46e58f6cd417774d8578')
+            '2f91c43b6848cbae2b2c1969323dcaf1c6aace130cd2165c543a7fcf73759aa1'
+            '3730fe7144a02ae7d9e6d7674138c8cd205f94dd56f141b527b07333ce7f404c')
 validpgpkeys=(
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
              )
