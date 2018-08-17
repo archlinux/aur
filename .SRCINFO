@@ -1,0 +1,17 @@
+pkgbase = govmomi-git
+	pkgdesc = A Go library for interacting with VMware vSphere APIs (ESXi and/or vCenter).
+	pkgver = r1823.badd514
+	pkgrel = 1
+	url = https://github.com/vmware/govmomi
+	arch = x86_64
+	license = Apache
+	makedepends = go-pie
+	makedepends = git
+	depends = glibc
+	provides = govmomi
+	conflicts = govmomi
+	source = git+https://github.com/vmware/govmomi#commit=master
+	sha512sums = SKIP
+
+pkgname = govmomi-git
+

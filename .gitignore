@@ -1,0 +1,3 @@
+/govmomi/
+*.tar.gz
+*.pkg.tar.xz
