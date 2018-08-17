@@ -1,17 +1,17 @@
 # Maintainer: Jorge Israel Peña <jorge.israel.p@gmail.com>
 
 pkgname=syncplay
-_pkgver=1.5.3
-pkgver=${_pkgver//-RC/.rc}
+_pkgver=1.5.6-Beta2
+pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="synchronize watching movies on mplayer2, vlc, mpv, and mpc-hc on many computers"
 arch=('any')
 url="http://syncplay.pl/"
 license=('custom')
-depends=(python2 python2-pyside python2-twisted)
+depends=(python python-pyside python-twisted)
 source=("https://github.com/Syncplay/syncplay/archive/v${_pkgver}.tar.gz"
         syncplay@.service)
-sha256sums=('db7dff9362645e7ed1f79eb5c70a742a8ffb6f52c9412def6766c2a9a55260fa'
+sha256sums=('afc5e05779b861ff2e9f531fef5ea7ff43dbc358e6259b0b90629462ea303e3b'
             '2033d40daad02f06eede073d0cee39fba8c70289dd71e8444d429b810438ec3a')
 
 package() {
