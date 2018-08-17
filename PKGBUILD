@@ -1,123 +1,89 @@
-# Maintainer: Det <nimetonmaili at-gmail a-dot com>
+# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Contributor: Det <nimetonmaili at-gmail a-dot com>
 # Contributor: PelPix <kylebloss[at]pelpix[dot]info>
 # Contributor: DrZaius <lou[at]fakeoutdoorsman.com>
 # Contributor: zhuqin <zhuqin83[at]gmail>
 # Contributor: pressh <pressh[at]gmail>
-# Based on extra/x264's trunk: https://git.archlinux.org/svntogit/packages.git/tree/trunk/PKGBUILD?h=packages/x264
 
-# Build 8bit or 10bit x264? (10bit = Better quality, but slower)
-# For comparison, see, e.g.: https://gist.github.com/l4n9th4n9/4459997
-_build=0   # 0 = Conflict after 1st build (default)
-           # 1 = 8bit
-           # 2 = 10bit
-           # (Auto-detected later based on installed version)
+# NOTE:
+# This package provides both 8 and 10-bit support in a single package.
+# x264 from the [extra] official repository is currently 8-bit only.
+# When used "normally", this package is just like x264 from [extra],
+# acting as 8-bit. For explanation and comparison about 8-bit and
+# 10-bit, please see, e.g.: https://gist.github.com/l4n9th4n9/4459997
 
-pkgname=('x264-git' 'libx264-git' 'libx264-10bit-git' 'libx264-all-git')
-_pkgname=x264
-pkgver=152.20170626.r2851
+pkgname=x264-git
+pkgver=157.r2932.g303c484e
 pkgrel=1
-arch=('x86_64')
+arch=('i686' 'x86_64')
+pkgdesc='Open Source H264/AVC video encoder (git version)'
 url='https://www.videolan.org/developers/x264.html'
 license=('GPL')
-depends=('glibc')
-makedepends=('nasm' 'git' 'ffmpeg' 'l-smash')
-source=("git+https://git.videolan.org/git/x264.git")
+depends=('libavcodec.so' 'libavformat.so' 'libavutil.so' 'liblsmash.so'
+         'libswscale.so')
+makedepends=('git' 'nasm' 'ffmpeg' 'l-smash')
+provides=('x264' 'libx264' 'libx264-git' 'libx264.so')
+conflicts=('x264' 'libx264' 'libx264-10bit' 'libx264-all'
+           'libx264-git' 'libx264-10bit-git' 'libx264-all-git')
+replaces=('libx264-git' 'libx264-10bit-git' 'libx264-all-git')
+source=("$pkgname"::'git+https://git.videolan.org/git/x264.git')
 sha256sums=('SKIP')
 
-# 8bit or 10bit?
-if [[ ${_build} = 1 ]] || ( [[ ${_build} = 0 ]] && pacman -Q libx264-git &>/dev/null ); then
-  pkgname=('x264-git' 'libx264-git' 'libx264-all-git')
-elif [[ ${_build} = 2 ]] || pacman -Q libx264-10bit-git &>/dev/null; then
-  pkgname=('x264-git' 'libx264-10bit-git' 'libx264-all-git')
-fi
-
 pkgver() {
-  cd ${_pkgname}
-
-  _ver=$(grep '#define X264_BUILD' x264.h | cut -d' ' -f3)
-  _date=$(git log -1 --format="%cd" --date=short | tr -d -)
-  _commits=$(git rev-list --count HEAD)
-
-  echo ${_ver}.${_date}.r${_commits}
-}
-
-prepare() {
-  rm -rf build-{8,10}bit
-  mkdir build-{8,10}bit
+    cd "$pkgname"
+    
+    local _version
+    local _revision
+    local _shorthash
+    
+    _version="$(grep '#define X264_BUILD' x264.h | awk '{ print $3 }')"
+    _revision="$( git rev-list  --count HEAD)"
+    _shorthash="$(git rev-parse --short HEAD)"
+    
+    printf '%s.r%s.g%s' "$_version" "$_revision" "$_shorthash"
 }
 
 build() {
-  for _b in 8 10; do (
-    cd build-${_b}bit
-
-    msg2 "Configuring ${_b}bit..."
-    ../${_pkgname}/configure \
-      --prefix='/usr' \
-      --enable-shared \
-      --enable-pic \
-      --enable-lto \
-      --bit-depth="${_b}"
-
-    msg2 "Making ${_b}bit..."
+    mkdir -p "$pkgname"/build-{8,10}bit
+    
+    msg2 'Building for 8-bit...'
+    cd "${pkgname}/build-8bit"
+    ../configure \
+        --prefix='/usr' \
+        --enable-shared \
+        --bit-depth='8' \
+        --enable-lto \
+        --enable-pic \
+        --disable-gpac
     make
-  ) done
+    
+    msg2 'Building for 10-bit...'
+    cd ../build-10bit
+    ../configure \
+        --prefix='/usr' \
+        --libdir='/usr/lib/x264-10bit' \
+        --includedir='/usr/include/x264-10bit' \
+        --enable-shared \
+        --bit-depth='10' \
+        --enable-lto \
+        --enable-pic \
+        --disable-gpac
+    make
 }
 
-package_x264-git() {
-  pkgdesc='CLI tools for encoding H264/AVC video streams (Git)'
-  depends=('libavcodec.so' 'libavformat.so' 'libavutil.so' 'liblsmash.so'
-           'libswscale.so')
-  provides=('x264')
-  conflicts=('x264')
-
-  for _b in {8,10}bit; do
-    provides+=("x264-${_b}")
-
-    msg2 "Make-installing ${_b}..."
-    make -C build-${_b} DESTDIR="${pkgdir}" install-cli
-    mv "${pkgdir}"/usr/bin/x264{,-${_b}}
-  done
-
-  ln -s x264-8bit "${pkgdir}"/usr/bin/x264
+package() {
+    cd "$pkgname"
+    
+    local _depth
+    
+    for _depth in 10 8
+    do
+        msg2 "Installing for ${_depth}-bit..."
+        make -C "build-${_depth}bit" DESTDIR="$pkgdir" install-cli install-lib-shared
+        
+        if [ "$_depth" -eq '10' ] 
+        then
+            mv "${pkgdir}/usr/bin/x264" "${pkgdir}/usr/bin/x264-${_depth}bit"
+        fi
+    done
 }
-
-package_libx264-git() {
-  pkgdesc='Library for encoding H264/AVC video streams (8bit depth) (Git)'
-  provides=('libx264-8bit' 'libx264.so' 'libx264')
-  conflicts=('libx264')
-
-  msg2 "Make-installing..."
-  make -C build-8bit DESTDIR=${pkgdir} install-lib-shared
-}
-
-package_libx264-10bit-git() {
-  pkgdesc='Library for encoding H264/AVC video streams (10bit depth) (Git)'
-  provides=('libx264' 'libx264.so' 'libx264-10bit')
-  conflicts=('libx264' 'libx264-10bit')
-
-  msg2 "Make-installing..."
-  make -C build-10bit DESTDIR=${pkgdir} install-lib-shared
-}
-
-package_libx264-all-git() {
-  pkgdesc="Library for encoding H264/AVC video streams (all depths) (Git)"
-  provides=('libx264-all')
-  conflicts=('libx264-all')
-  _ver=$(grep '#define X264_BUILD' "${_pkgname}"/x264.h | cut -d' ' -f3)
-
-  install -d "${pkgdir}"/usr/lib/x264
-
-  for _b in {8,10}bit; do
-    provides+=("libx264-${_b}.so")
-
-    msg2 "Make-installing ${_b}..."
-    make -C build-${_b} DESTDIR="${pkgdir}" install-lib-shared
-
-    mv "${pkgdir}"/usr/lib/libx264.so.${_ver} "${pkgdir}"/usr/lib/x264/libx264-${_b}.so.${_ver}
-    rm -r "${pkgdir}"/usr/{include,lib/libx264.so,lib/pkgconfig}
-
-    ln -sr "${pkgdir}"/usr/lib/x264/libx264-${_b}.so{.${_ver},}
-  done
-}
-
-# vim: ts=2 sw=2 et:
