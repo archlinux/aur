@@ -1,13 +1,13 @@
 # Maintainer: Jorge Israel Peña <jorge.israel.p@gmail.com>
 
 pkgname=syncplay-git
-pkgver=1.5.3.r3.gcd8bbf4
+pkgver=1.5.6.Beta2.r4.g2c2045b
 pkgrel=1
 pkgdesc="synchronize watching movies on mplayer2, vlc, mpv, and mpc-hc on many computers"
 arch=('any')
 url="http://syncplay.pl/"
 license=('custom')
-depends=('python2' 'python2-pyside' 'python2-twisted')
+depends=('python' 'python-pyside' 'python-twisted')
 makedepends=('git')
 provides=('syncplay')
 conflicts=('syncplay')
