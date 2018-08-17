@@ -1,0 +1,32 @@
+pkgbase = lidarr-develop
+	pkgdesc = Music downloader for usenet and torrents.
+	pkgver = 0.3.1.483
+	pkgrel = 1
+	url = https://github.com/lidarr/Lidarr
+	arch = any
+	license = GPL3
+	depends = mono
+	depends = libmediainfo
+	depends = sqlite
+	optdepends = sabnzbd: usenet downloader
+	optdepends = nzbget: usenet downloader
+	optdepends = transmission-cli: torrent downloader (CLI and daemon)
+	optdepends = transmission-gtk: torrent downloader (GTK+)
+	optdepends = transmission-qt: torrent downloader (Qt)
+	optdepends = deluge: torrent downloader
+	optdepends = rtorrent: torrent downloader
+	optdepends = jackett: torrent indexer proxy
+	optdepends = libgdiplus: provides a gdi+ compatible api
+	provides = lidarr
+	conflicts = lidarr
+	source = https://ci.appveyor.com/api/buildjobs/vfjb0xh8k6kccuek/artifacts/Lidarr.develop.0.3.1.483.linux.tar.gz
+	source = lidarr.service
+	source = lidarr.tmpfiles
+	source = lidarr.sysusers
+	sha512sums = d23f722ace4fad229377a9d59ea2eaf4ad65320765ac8bce20eb70c7616e4bf8a9d6c0136f039465ed48e990a05388825785acd32b004d4c6ae95601e2e4d2f8
+	sha512sums = f910a619c850889105b1934cb4a77e6482faee9e24b4e33db1bc35957149fe3ea6f43eb8f1056555182b3af7672769ab98105b575314d35eff973fa993e62eed
+	sha512sums = e40ce79a3e1741e7e06312797e652a85d199bd6d719ef953ea8c3c030756ee44e202956ac9e13cff17fac38312c27398f457f79923a7d0f56bd563a69af6ab63
+	sha512sums = ffd466960527256d8de1d9887d90d4da87486eff062950c46cbc4fd4af1ef89e7d5c070ef1e649b23a95fbab15651e289fd5bdc6d34649e4a6ecdf2f6da06622
+
+pkgname = lidarr-develop
+

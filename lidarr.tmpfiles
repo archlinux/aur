@@ -1,0 +1,5 @@
+# Override this file with a modified version in /etc/tmpfiles.d/
+d /var/lib/lidarr 0755 lidarr lidarr
+Z /var/lib/lidarr - lidarr lidarr
+Z /usr/lib/lidarr - lidarr lidarr
+L /var/log/lidarr - - - - /var/lib/lidarr/logs
