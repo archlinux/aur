@@ -5,7 +5,7 @@
 # Maintainer: SanskritFritz (gmail)
 
 pkgname=firehol
-pkgver=3.1.5
+pkgver=3.1.6
 pkgrel=1
 epoch=2
 pkgdesc="The iptables stateful packet filtering firewall builder."
@@ -14,35 +14,36 @@ arch=('any')
 license=('GPL')
 depends=('iptables' 'gawk' 'iproute' 'iprange' 'ipset' 'traceroute')
 backup=('etc/firehol/firehol.conf' 'etc/firehol/fireqos.conf')
-install='firehol.install'
-source=("https://github.com/firehol/firehol/releases/download/v$pkgver/firehol-$pkgver.tar.xz"
-        "firehol.service"
-        "fireqos.service")
+source=("https://github.com/firehol/firehol/releases/download/v$pkgver/firehol-$pkgver.tar.xz")
+
+prepare() {
+	cd "$pkgname-$pkgver"
+	sed -i 's|sbin|bin|' contrib/fireqos.service
+	sed -i 's|sbin|bin|' contrib/firehol.service
+}
 
 build() {
-  cd "$pkgname-$pkgver"
+	cd "$pkgname-$pkgver"
 
-  ./configure \
-    --prefix=/usr \
-    --sbindir=/usr/bin \
-    --sysconfdir=/etc \
-    --libexecdir=/usr/lib
-  
-  make
+	./configure \
+		--prefix=/usr \
+		--sbindir=/usr/bin \
+		--sysconfdir=/etc \
+		--libexecdir=/usr/lib
+
+	make
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+	cd "$pkgname-$pkgver"
 
-  make install DESTDIR="$pkgdir"
+	make install DESTDIR="$pkgdir"
 
-  install -d -m755 "$pkgdir"/usr/lib/systemd/system/
-  install -m644 "$srcdir"/fire{hol,qos}.service "$pkgdir"/usr/lib/systemd/system/
+	install -d -m755 "$pkgdir"/usr/lib/systemd/system/
+	install -m644 "contrib"/fire{hol,qos}.service "$pkgdir"/usr/lib/systemd/system/
 
-  touch "$pkgdir"/etc/firehol/fire{hol,qos}.conf
+	touch "$pkgdir"/etc/firehol/fire{hol,qos}.conf
 
 }
 
-md5sums=('9cb848f6ddd9c144e8fb7b4d54bd88a4'
-         '6c6571af548273e1f172313e366532df'
-         'ae9fc18b19a69149108e9f4ab9ba5de9')
+md5sums=('fe6a48617eae701586057d2e0aba24d5')
