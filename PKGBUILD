@@ -8,7 +8,7 @@ _srcname=linux-${_basekernel}
 _patchname=linux-hardened
 _hardenedver=a
 pkgver=${_basekernel}.15.${_hardenedver}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/yardenac/linux-linode"
 license=(GPL2)
@@ -52,7 +52,7 @@ validpgpkeys=(
               'E240B57E2C4630BA768E2F26FC1B547C8D8172C8' # Levente Polyak
 )
 pkgdesc="Kernel for Linode servers"
-depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7' 'grub')
+depends=(coreutils linux-firmware kmod mkinitcpio grub)
 provides=(linux)
 conflicts=(grub-legacy)
 backup=(etc/mkinitcpio.d/${pkgname}.preset boot/grub/menu.lst)
@@ -61,37 +61,33 @@ install=install
 prepare() {
   cd "${srcdir}/${_srcname}"
   patch -p1 -i "${srcdir}/${_patchname}-${pkgver}.patch"
-  cat "${srcdir}/config" - > ./.config <<-EOF
-	CONFIG_LOCALVERSION="${_kernelname}"
-	CONFIG_LOCALVERSION_AUTO=n
-	EOF
-  sed -i '2iexit 0' scripts/depmod.sh
-  sed -e "/^EXTRAVERSION =/s/=.*/= -${pkgrel}/" \
-      -e "/^EXTRAVERSION =/aLOCALVERSION =" \
-      -i Makefile
-  chmod +x tools/objtool/sync-check.sh
-  make prepare
+  sed -e "/^EXTRAVERSION =/s/=.*/= .${_hardenedver}/" -i Makefile
+  scripts/setlocalversion --save-scmversion
+  cp "${srcdir}/config" .config
+  make olddefconfig
+  make -s kernelrelease > ../version
 }
 
 build() {
   cd "${srcdir}/${_srcname}"
   [[ "$MAKEFLAGS" =~ -j[0-9]* ]] || MAKEFLAGS+=" -j$(nproc)"
-  ionice -c 3 nice -n 16 make ${MAKEFLAGS} LOCALVERSION= bzImage modules
+  ionice -c 3 nice -n 16 make ${MAKEFLAGS} bzImage modules
 }
 
-package_linux-linode() {
+package() {
   cd "${srcdir}/${_srcname}"
-  _kernver="$(make kernelrelease)"
-  emdir="extramodules-${_basekernel}${_kernelname}"
+  local _kernver="$(<${srcdir}/version)"
+  emdir="extramodules${_kernelname}"
   mkdir -p "${pkgdir}"/{usr/lib/modules/"$emdir",boot/grub}
-  make INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
+  make INSTALL_MOD_PATH="${pkgdir}/usr" DEPMOD=/doesnt/exist modules_install
   rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/{source,build}
-  cp arch/x86/boot/bzImage "${pkgdir}/boot/vmlinuzll-${pkgname}"
+  install -D -m644 "$(make -s image_name)"          "${pkgdir}/boot/vmlinuzll-${pkgname}"
   install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux"
   install -D -m644 "${srcdir}/preset" "${pkgdir}/etc/mkinitcpio.d/${pkgname}.preset"
   install -D -m644 "${srcdir}/98-linux-linode.hook" "${pkgdir}/usr/share/libalpm/hooks/98-linux-linode.hook"
   install -D -m644 "${srcdir}/99-grub-ll.hook"      "${pkgdir}/usr/share/libalpm/hooks/99-grub-ll.hook"
   install -D -m755 "${srcdir}/08_linux_linode" "${pkgdir}/etc/grub.d/08_linux_linode"
+  install -D -m644 "${srcdir}/version"              "${pkgdir}/usr/lib/modules/${emdir}/version"
   sed \
     -e  "s/KERNEL_NAME=.*/KERNEL_NAME=${_kernelname}/" \
     -i "${startdir}/install"
@@ -101,7 +97,7 @@ package_linux-linode() {
     -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgname}-fallback.img\"|" \
     -i "${pkgdir}/etc/mkinitcpio.d/${pkgname}.preset"
   ln -s "../${emdir}" "${pkgdir}/usr/lib/modules/${_kernver}/extramodules"
-  echo "${_kernver}" >| "${pkgdir}/usr/lib/modules/${emdir}/version"
-  depmod -b "${pkgdir}/usr" -F System.map "${_kernver}"
+  depmod -b "${pkgdir}/usr" -E Module.symvers "${_kernver}"
   sed "s/%VER%/${pkgver}-${pkgrel}/ig" "${srcdir}/menu.lst" > "${pkgdir}/boot/grub/menu.lst"
+  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
