@@ -1,0 +1,23 @@
+From 2b5b6fb8b8c7ea35d482ea7fc17e5fcb05cc4708 Mon Sep 17 00:00:00 2001
+From: luofl <falei.luo@gmail.com>
+Date: Sat, 28 Jul 2018 18:52:35 +0800
+Subject: [PATCH] Disable `10-bit` in configure to avoid misleading errors.
+
+---
+ build/linux/configure | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/build/linux/configure b/build/linux/configure
+index bcbf22d..a3d26eb 100755
+--- a/build/linux/configure
++++ b/build/linux/configure
+@@ -499,6 +499,9 @@ for opt do
+             if [ "$bit_depth" -lt "8" -o "$bit_depth" -gt "10" ]; then
+                 echo "Supplied bit depth must be in range [8,10]."
+                 exit 1
++            elif [[ "$bit_depth" = "9" || "$bit_depth" = "10" ]]; then
++                echo "BitDepth $bit_depth not supported currently."
++                exit 1
+             fi
+             bit_depth=`expr $bit_depth + 0`
+             ;;

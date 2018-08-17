@@ -1,6 +1,7 @@
 pkgbase = davs2
+	pkgdesc = Open-Source encoder of AVS2-P2/IEEE1857.4 video coding standard
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pkuvcl/davs2/
 	arch = i686
 	arch = x86_64
@@ -9,27 +10,19 @@ pkgbase = davs2
 	makedepends = yasm
 	makedepends = l-smash
 	depends = glibc
-	source = davs2-1.0.tar.gz::https://github.com/pkuvcl/davs2/archive/1.0.tar.gz
-	source = davs2-1.0-add-linux-support.patch
-	sha256sums = 1b8bd800f7c4d63e904a4355de0144c55d427d3f1477064b53de1c3e028d9eaa
-	sha256sums = 66166908defadbac7bbaab44a2eaab09af9f6b9ad37c035772e32a6a09c0b605
-
-pkgname = davs2
-	pkgdesc = CLI tool for the open-source decoder of AVS2-P2/IEEE1857.4 video coding standard
-	depends = glibc
-	depends = l-smash
-	provides = 
-	provides = davs2-bit
-	provides = davs2-bit
-	conflicts = 
-	conflicts = davs2-bit-git
-
-pkgname = libdavs2
-	pkgdesc = Library for the open-source decoder of AVS2-P2/IEEE1857.4 video coding standard (8bit depth)
-	provides = libdavs2-8bit
+	depends = liblsmash.so
 	provides = libdavs2
 	provides = libdavs2.so
-	conflicts = libdavs2-8bit-git
-	conflicts = libdavs2-10bit
-	conflicts = libdavs2-10bit-git
+	conflicts = davs2-git
+	conflicts = libdavs2
+	conflicts = libdavs2-git
+	replaces = libdavs2
+	source = davs2-1.0.tar.gz::https://github.com/pkuvcl/davs2/archive/1.0.tar.gz
+	source = davs2-1.0-add-linux-support.patch
+	source = davs2-1.0-disable-10bit.patch
+	sha256sums = 1b8bd800f7c4d63e904a4355de0144c55d427d3f1477064b53de1c3e028d9eaa
+	sha256sums = 66166908defadbac7bbaab44a2eaab09af9f6b9ad37c035772e32a6a09c0b605
+	sha256sums = d9ff66752e6a30cbd94526f77074bfe826628cf3a285b19443cc53a803316c2f
+
+pkgname = davs2
 
