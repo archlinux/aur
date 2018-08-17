@@ -23,10 +23,6 @@ ac_add_options --disable-updater
   
 ac_add_options --x-libraries=/usr/lib
 
-# gcc6 now builds, but explicitly use gcc5 for now. Upstream recommends using gcc4.9 over either but is EOL.
-export CC=gcc-5
-export CXX=g++-5
-
 # Use python2
 mk_add_options PYTHON=/usr/bin/python2
 
