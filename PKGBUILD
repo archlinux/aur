@@ -1,7 +1,7 @@
 # Maintainer: Milk Brewster (milk on freenode)
 _pkgname=moony.lv2
 pkgname=moony-lv2-git
-pkgver=0.22.0.r2371.fc1e8ab
+pkgver=0.22.0.r2432.8a5483a
 pkgrel=1
 pkgdesc="Realtime Lua as programmable glue in LV2 - git master"
 arch=('i686' 'x86_64')
@@ -32,32 +32,24 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_pkgname"
-
-  rm -rf build
-	mkdir build
 }
 
 build() {
-  cd "$srcdir/$_pkgname/build"
-
-  cmake \
-    -DCMAKE_BUILD_TYPE="Release" \
-		-DCMAKE_INSTALL_PREFIX="/usr" \
-    -DBUILD_TESTING=1 \
-		..
-  make
+  cd "$srcdir/$_pkgname"
+  meson build
+  cd build
+  ninja -j4
 }
 
 package() {
   cd "$srcdir/$_pkgname/build"
-
-  make DESTDIR="$pkgdir/" install
+  DESTDIR="$pkgdir/" ninja install
 }
 
 check() {
   cd "$srcdir/$_pkgname/build"
 
-  ARGS='-VV' make test
+  # ARGS='-VV' make test
 }
 
 # vim:set ts=2 sw=2 et:
