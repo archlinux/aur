@@ -4,12 +4,12 @@
 pkgname=epiphany-mse
 _pkgname=epiphany
 pkgver=3.28.3.1
-pkgrel=2
-pkgdesc="A GNOME web browser based on the WebKit rendering engine - MSE enabled"
+pkgrel=3
+pkgdesc="A GNOME web browser based on the WebKit rendering engine - MSE and EME enabled"
 url="https://wiki.gnome.org/Apps/Web"
 arch=(i686 x86_64)
 license=(GPL)
-depends=(webkit2gtk-mse gcr icu)
+depends=(webkit2gtk gcr icu)
 makedepends=(itstool docbook-xml startup-notification lsb-release
              gobject-introspection yelp-tools appstream-glib git meson)
 groups=(gnome)
@@ -21,7 +21,7 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 sha256sums=('SKIP'
             'b6c8ee6ace934c053f2fd89758e0b587cb8953c6b0246c1359aecaae4de70289'
-            'e7eb909859f4fa5ac56fe57a927dbb213a05af8fee271ab2f735a90456d65924')
+            'cb5edbb54d500fc593b109f83aa5b13644fda49374db6ee479f8904f90d9a415')
 
 pkgver() {
   cd $pkgname

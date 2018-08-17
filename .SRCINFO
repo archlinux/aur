@@ -1,7 +1,7 @@
 pkgbase = epiphany-mse
-	pkgdesc = A GNOME web browser based on the WebKit rendering engine - MSE enabled
+	pkgdesc = A GNOME web browser based on the WebKit rendering engine - MSE and EME enabled
 	pkgver = 3.28.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.gnome.org/Apps/Web
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = epiphany-mse
 	makedepends = appstream-glib
 	makedepends = git
 	makedepends = meson
-	depends = webkit2gtk-mse
+	depends = webkit2gtk
 	depends = gcr
 	depends = icu
 	provides = epiphany
@@ -26,7 +26,7 @@ pkgbase = epiphany-mse
 	source = enable_mse.patch
 	sha256sums = SKIP
 	sha256sums = b6c8ee6ace934c053f2fd89758e0b587cb8953c6b0246c1359aecaae4de70289
-	sha256sums = e7eb909859f4fa5ac56fe57a927dbb213a05af8fee271ab2f735a90456d65924
+	sha256sums = cb5edbb54d500fc593b109f83aa5b13644fda49374db6ee479f8904f90d9a415
 
 pkgname = epiphany-mse
 

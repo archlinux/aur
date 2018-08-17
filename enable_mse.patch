@@ -1,26 +1,28 @@
-From 54234fe9e5652408d1a6cbf046ac66dd212c20b1 Mon Sep 17 00:00:00 2001
+From 55011a974c375adacd8178532a56b18315026a7a Mon Sep 17 00:00:00 2001
 From: Giovanni Santini <giovannisantini93@yahoo.it>
-Date: Sat, 14 Apr 2018 16:30:33 +0200
-Subject: [PATCH] Enabling MSE (Media Source Extensions) MSE support has been
- merged already within WebkitGTK+ and is useful for many video and audio
- streaming websites (one to mention, Youtube). This simple line enables MSE
- when WebkitGTK+ is built with the proper flag.
+Date: Wed, 15 Aug 2018 15:45:48 +0200
+Subject: [PATCH] Enabling MSE (Media Source Extensions) and EME (Encrypted
+ Media Extensions) MSE and EME support has been merged already within
+ WebkitGTK+ and is useful for many video and audio streaming websites (one to
+ mention, Youtube). This simple tweak enables MSE and EME when WebkitGTK+ is
+ built with the proper flags.
 
 ---
- embed/ephy-embed-prefs.c | 1 +
- 1 file changed, 1 insertion(+)
+ embed/ephy-embed-prefs.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
 diff --git a/embed/ephy-embed-prefs.c b/embed/ephy-embed-prefs.c
-index d85413732..1e2679464 100644
+index 0ce447f30..830d0b58f 100644
 --- a/embed/ephy-embed-prefs.c
 +++ b/embed/ephy-embed-prefs.c
-@@ -433,6 +433,7 @@ ephy_embed_prefs_init (gpointer user_data)
+@@ -432,6 +432,8 @@ ephy_embed_prefs_init (gpointer user_data)
+                                                        "enable-javascript", TRUE,
                                                         "enable-dns-prefetching", TRUE,
-                                                        "hardware-acceleration-policy", WEBKIT_HARDWARE_ACCELERATION_POLICY_NEVER,
                                                         "javascript-can-open-windows-automatically", TRUE,
 +                                                       "enable-mediasource", TRUE,
++                                                       "enable-encrypted-media", TRUE,
                                                         NULL);
 
    for (i = 0; i < G_N_ELEMENTS (webkit_pref_entries); i++) {
 --
-2.17.0
+2.18.0
