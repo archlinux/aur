@@ -1,8 +1,9 @@
+# Maintainer: Simon Legner <Simon.Legner@gmail.com>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 # Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-pod-spell'
-pkgver='1.17'
+pkgver='1.20'
 pkgrel='1'
 pkgdesc="a formatter for spellchecking Pod"
 arch=('any')
@@ -12,10 +13,10 @@ depends=('perl-class-tiny' 'perl-file-sharedir-projectdistdir>=1.000' 'perl-ling
 makedepends=()
 checkdepends=('perl-test-deep')
 url='https://metacpan.org/release/Pod-Spell'
-source=('http://search.cpan.org/CPAN/authors/id/X/XE/XENO/Pod-Spell-1.17.tar.gz')
-md5sums=('b0895135155569ad4f8903ab11cbeb0b')
-sha512sums=('45538a9d310d7a9b61607919e71421e1dab604d7acac591248d54cc98747cc49adea72d1d53be8dce6b969cb31cf7948348364da2e6d3b0421421380e121753b')
-_distdir="Pod-Spell-1.17"
+source=('https://cpan.metacpan.org/authors/id/D/DO/DOLMEN/Pod-Spell-1.20.tar.gz')
+md5sums=('5e4d4c2b74e3cb780c5531cb8bfb04d4')
+sha512sums=('9a676a897dae7dfe37e9bfca2e5c11bcdc3221ed532b79970e6cc4d0de8dec0eca754cb9fbc5cbbbf6533a213c284d691609dd86d246ae146187bd9cd37d292e')
+_distdir="Pod-Spell-1.20"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
