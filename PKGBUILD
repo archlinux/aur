@@ -6,8 +6,8 @@ _module="$_name"
 pkgname=("python-$_module")
 #pkgname=("python-$_module" "python2-$_module") 
 pkgdesc="Set of tools for automatic astrophotography images acquisition and processing"
-pkgver=0.2.24
-pkgrel=2
+pkgver=0.2.25
+pkgrel=1
 url="https://github.com/pozar87/apts"
 license=('Apache 2')
 arch=('any')
@@ -21,11 +21,13 @@ makedepends=('python-pbr'
              'python-seaborn'
              'python-cairo'
              'python-pytz'
+             'pyside2'
+             'python-aenum'
              'python-svgwrite'
              'python-timezonefinder'
              'python-requests-cache')
 source=("https://github.com/pozar87/apts/archive/v$pkgver.tar.gz")
-md5sums=('0aff7f7b86f9fb8ded9951834e34920d')
+md5sums=('ef054bac74e6748c934e3b1360d79a68')
 
 build() {
     cd "$_name-$pkgver"
@@ -43,6 +45,8 @@ package_python-apts(){
              'python-seaborn'
              'python-cairo'
              'python-pytz'
+             'pyside2'
+             'python-aenum'
              'python-timezonefinder'
              'python-requests-cache')
     cd "$_name-$pkgver"
