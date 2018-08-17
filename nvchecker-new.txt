@@ -1,0 +1,11 @@
+bzip 1.0.6-7
+c-ares 1.14.0-1
+curl 7.61.0-2
+gnupg 2.2.9-1
+gpgerror 1.32-1
+gpgme 1.11.1-2
+libarchive 3.3.2-2
+libassuan 2.5.1-1
+nghttp2 1.32.0-1
+ssl 1.1.0.h-1
+xz 5.2.4-1
