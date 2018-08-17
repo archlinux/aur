@@ -1,6 +1,6 @@
 pkgbase = racket-git
 	pkgdesc = Minimal Racket installation, without DrRacket, from git
-	pkgver = 7.0.0.2.38715.5a4ea2cd1b
+	pkgver = 7.0.0.12.38897.369eb65ec2
 	pkgrel = 1
 	url = http://racket-lang.org/
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = racket-git
 	conflicts = racket
 	options = !strip
 	options = !emptydirs
-	source = git://github.com/racket/racket.git#commit=5a4ea2cd1b2bd13a7633a80c1ddff9755a11fd42
+	source = git://github.com/racket/racket.git
 	md5sums = SKIP
 
 pkgname = racket-git

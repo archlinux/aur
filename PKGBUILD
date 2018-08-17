@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=racket-git
-pkgver=7.0.0.2.38715.5a4ea2cd1b
+pkgver=7.0.0.12.38897.369eb65ec2
 pkgrel=1
 pkgdesc="Minimal Racket installation, without DrRacket, from git"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('git')
 provides=('racket')
 conflicts=('racket')
 options=('!strip' '!emptydirs')
-source=("git://github.com/racket/racket.git#commit=5a4ea2cd1b2bd13a7633a80c1ddff9755a11fd42")
+source=("git://github.com/racket/racket.git")
 _gitname="racket"
 md5sums=('SKIP')
 
@@ -26,15 +26,21 @@ pkgver() {
 }
 
 build() {
-  cd ${_gitname}/${_gitname}/src
-  [[ -d build ]] || mkdir build
-  cd build
-  [[ "$CARCH" == "x86_64" ]] && export CFLAGS+=" -fPIC -O2"
-  ../configure --prefix=/usr --sysconfdir=/etc --enable-shared --disable-strip
-  make
+  cd $_gitname
+
+  make in-place
 }
 
 package() {
-  cd ${_gitname}/${_gitname}/src/build
-  make DESTDIR="${pkgdir}" install
+  cd $_gitname/$_gitname
+  install -d "$pkgdir"/usr/share/doc/racket
+  install -d "$pkgdir"/usr/lib
+  install -d "$pkgdir"/usr/share/racket/
+  cp -r bin "$pkgdir"/usr
+  cp -r collects "$pkgdir"/usr/share/racket/
+  cp -r lib "$pkgdir"/usr/lib/racket
+  cp -r doc/* "$pkgdir"/usr/share/doc/racket
+  install -Dm644 etc/config.rktd "$pkgdir"/etc/config.rktd
+  cp -r man "$pkgdir"/usr/share
+  cp -r share/applications "$pkgdir"/usr/share
 }
