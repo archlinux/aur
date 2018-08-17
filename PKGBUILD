@@ -10,12 +10,12 @@ url="http://www.nongnu.org/gap/addresses/index.html"
 license=('GPL')
 groups=('gnustep-apps')
 depends=('gnustep-base' 'gnustep-gui' 'gnustep-back')
-makedepends=('gcc-objc' 'gnustep-make'
-             'gnustep-make')
+makedepends=('gcc-objc' 'gnustep-make')
 source=("http://savannah.nongnu.org/download/gap/$_pkgname-$pkgver.tar.gz")
 sha256sums=('329531bfd31db1845f3af385c1c2448f308b1bf28af5ee7d4f50f403dbb6ac0a')
 
 build() {
+  source /usr/share/GNUstep/Makefiles/GNUstep.sh
   cd "$_pkgname-$pkgver"
   make
 }
@@ -25,16 +25,4 @@ package() {
   make DESTDIR="$pkgdir/" install
   install -D -m644 "$pkgdir/usr/lib/GNUstep/Applications/AddressManager.app/Resources/AddressManager.desktop" \
     "$pkgdir/usr/share/applications/AddressManager.desktop"
-}
-
-post_install() {
-  update-desktop-database -q
-}
-
-post_upgrade() {
-  post_install $1
-}
-
-post_remove() {
-  post_install $1
 }
