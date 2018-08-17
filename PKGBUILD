@@ -2,7 +2,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kirigami2
-pkgver=5.48.0
+pkgver=5.49.0
 pkgrel=1
 pkgdesc='A QtQuick based components set'
 arch=(x86_64)
@@ -12,7 +12,7 @@ groups=(kf5)
 depends=(qt5-quickcontrols qt5-quickcontrols2 qt5-graphicaleffects)
 makedepends=(extra-cmake-modules qt5-tools qt5-svg kpackage doxygen)
 source=("https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz"{,.sig})
-sha256sums=('a2d8bfbf79f33c03793631e9f3575b7c3043e09d282b0e56ad878bfdbfcd0138'
+sha256sums=('5fd1c7fb34faa9d739967d24a261be85a9d8a908a54927ddf7fbcb3d0f4c56f1'
             'SKIP')
 validpgpkeys=('53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB') # David Faure <faure@kde.org>
 
