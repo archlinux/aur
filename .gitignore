@@ -1,0 +1,4 @@
+src
+pkg
+*.pkg.tar*
+3dstools-*.tar.bz2
