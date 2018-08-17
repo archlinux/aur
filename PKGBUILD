@@ -10,7 +10,7 @@ url='http://wiki.gnustep.org/index.php/GNUMail'
 license=('GPL2')
 groups=('gnustep-apps')
 depends=('gnustep-base' 'gnustep-gui')
-makedepends=('gcc-objc')
+makedepends=('gcc-objc' 'gnustep-make')
 source=("http://download.savannah.nongnu.org/releases/gnustep-nonfsf/Pantomime-1.3.0.tar.gz")
 sha256sums=('935845b67ec4cf32596828091dc41f3599ca8870ab9085891c365be23094b910')
 

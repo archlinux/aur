@@ -9,6 +9,7 @@ pkgbase = pantomime
 	groups = gnustep-apps
 	license = GPL2
 	makedepends = gcc-objc
+	makedepends = gnustep-make
 	depends = gnustep-base
 	depends = gnustep-gui
 	source = http://download.savannah.nongnu.org/releases/gnustep-nonfsf/Pantomime-1.3.0.tar.gz
