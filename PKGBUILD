@@ -2,24 +2,19 @@
 
 pkgname=exodus-eden
 pkgver=1.57.0
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="An unsupported, advanced version of Exodus"
 arch=('x86_64')
 url="https://exodus.io/eden"
 license=('custom:"Copyright © 2018 Exodus"')
-depends=('gconf' 'gtk2' 'nss' 'libxss')
-makedepends=(patchelf)
-options=("!strip" "staticlibs")
-noextract=("glibc-2.27-3-x86_64.pkg.tar.xz")
+depends=('gconf' 'gtk2' 'nss' 'libxss' 'glibc>=2.28-4')
 source=("https://exodusbin.azureedge.net/releases/exodus-eden-linux-x64-${pkgver//_/-}.zip"
 	"http://marceloneil.com/exodus-icons/eden-icons.zip"
-	"${pkgname}.desktop"
-        "https://archive.archlinux.org/packages/g/glibc/glibc-2.27-3-x86_64.pkg.tar.xz")
+	"${pkgname}.desktop")
 sha256sums=('f8ab85c529846a8810b69fe027a5fcbf8bf47aa2f554e4301b57a8aab63c8e85'
             '531447b0b49a27a4169fcd2639fa793135acf2776b05f52f36557b384bace7cb'
-            '820c6de206ffdd5882f26a8b7d5a2720d0b2df6f9fe62d31aa3a9aaefb9b6322'
-            'a9e1b18d7f613be660556dbd6883781e88a0f5113230147e230d3e2f268792dc')
+            '820c6de206ffdd5882f26a8b7d5a2720d0b2df6f9fe62d31aa3a9aaefb9b6322')
 
 package() {
   cd $srcdir/ExodusEden-linux-x64
@@ -38,15 +33,4 @@ package() {
 		   $pkgdir/usr/share/icons/hicolor/$i/apps/$pkgname.png
   done
   chmod -R ugo+rX $pkgdir/opt
-
-  # From https://aur.archlinux.org/cgit/aur.git/commit/?h=visual-studio-code-bin&id=e025a0af8d422d5f0d1e7ccd31e340473acb5512
-  cd $srcdir
-  _ldir="/opt/$pkgname"
-  _pdir="$pkgdir/$_ldir"
-  _pexe="$_pdir/ExodusEden"
-  mkdir -p "$_pdir/glibc"
-  tar -xJC "$_pdir/glibc" -f "glibc-2.27-3-x86_64.pkg.tar.xz"
-  rm "$_pdir/glibc/"{.BUILDINFO,.INSTALL,.MTREE,.PKGINFO}
-  patchelf --set-interpreter "$_ldir/glibc/usr/lib/ld-linux-x86-64.so.2" "$_pexe"
-  patchelf --set-rpath "$_ldir:$_ldir/glibc/usr/lib" "$_pexe"
 }
