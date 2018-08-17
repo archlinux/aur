@@ -1,24 +1,20 @@
 pkgbase = vorbis-tools-git
 	pkgdesc = Command-line tools for creating and playing Ogg Vorbis files
-	pkgver = r919.b61076d
+	pkgver = r936.134b784
 	pkgrel = 1
-	url = http://www.vorbis.com/
+	url = https://xiph.org/vorbis/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	depends = libvorbis
-	depends = flac
-	depends = speex
 	depends = curl
+	depends = flac
+	depends = libvorbis
+	depends = speex
 	provides = vorbis-tools
 	conflicts = vorbis-tools
 	source = git+https://git.xiph.org/vorbis-tools.git
-	source = vorbis-tools-CVE-2015-6749.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/vorbis-tools-CVE-2015-6749.patch?h=packages/vorbis-tools
-	source = vorbis-tools-cve9638-cve9639.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/vorbis-tools-cve9638-cve9639.patch?h=packages/vorbis-tools
 	sha256sums = SKIP
-	sha256sums = 52f1d083c16b9caa2bc7bd5315210bac810dd6a0565e4c270650177a4c815fa7
-	sha256sums = 5a6d74de56e67613c4887e3fe9102aadfce4cd4a9a477fb2c1ed1a26f11fdff6
 
 pkgname = vorbis-tools-git
 
