@@ -1,12 +1,14 @@
 pkgbase = gfxbench
 	pkgdesc = Unified graphics benchmark based on DXBenchmark (DirectX) and GLBenchmark (OpenGL ES)
 	pkgver = 4.0.13
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gfxbench.com/
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = libpng12
+	depends = qt5-base
+	depends = icu
 	source_i686 = https://gfxbench.com/download/gfxbench_gl-linux-qt-4.0.13+community_32bit.sh
 	sha1sums_i686 = dfbcd1deeeb3a21cd79738c30d535f08ebfdac6c
 	source_x86_64 = https://gfxbench.com/download/gfxbench_gl-linux-qt-4.0.13+community_64bit.sh
