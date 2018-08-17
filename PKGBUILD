@@ -4,7 +4,7 @@ pkgname=nginx-mainline-mod-lua-fixedrepo
 pkgver=0.10.13
 pkgrel=2
 
-_modname="${pkgname#nginx-mainline-mod-}"
+_modname="lua"
 _nginxver=1.15.2
 
 pkgdesc='Lua script engine module for mainline nginx'
