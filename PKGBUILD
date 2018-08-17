@@ -74,10 +74,8 @@ package_gurobi() {
   ln -sf ./libgurobi_g++5.2.a "${pkgdir}/usr/lib/libgurobi_c++.a"
 
   python2 setup.py install --root="$pkgdir" --optimize=1
-  python3.5 setup.py install --root="$pkgdir" --optimize=1
-  python3.6 setup.py install --root="$pkgdir" --optimize=1
+  python3 setup.py install --root="$pkgdir" --optimize=1
   install -D "lib/python2.7_utf32/gurobipy/gurobipy.so" "${pkgdir}/usr/lib/python2.7/site-packages/gurobipy/"
-  install -D "lib/python3.5_utf32/gurobipy/gurobipy.so" "${pkgdir}/usr/lib/python3.5/site-packages/gurobipy/"
   install -D "lib/python3.6_utf32/gurobipy/gurobipy.so" "${pkgdir}/usr/lib/python3.6/site-packages/gurobipy/"
 
   install -D -m644 lib/gurobi.jar "${pkgdir}/usr/share/java/${_basename}/gurobi.jar"
