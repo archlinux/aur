@@ -15,6 +15,7 @@ source=("http://download.savannah.nongnu.org/releases/gnustep-nonfsf/GNUMail-1.3
 sha256sums=('c4611bdfd43e84fb133f41747e9ac1078efbc398166af271b15e590eeefcdb76')
 
 build() {
+  source /usr/share/GNUstep/Makefiles/GNUstep.sh
   cd "$_pkgname-$pkgver"
   make
 }
