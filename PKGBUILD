@@ -11,8 +11,8 @@ license=('unknown')
 depends=('libsm' 'gtk3' 'gst-plugins-base-libs')
 source_i686=('http://www.seventhstring.com/xscribe/downlinux32/xscsetup.tar.gz')
 source_x86_64=('http://www.seventhstring.com/xscribe/downlinux64/xsc64setup.tar.gz')
-md5sums_i686=('2f089229edf91f0e04d6d3fd638c8f74')
-md5sums_x86_64=('6da56d0683d82885c22cfb32dfe4836d')
+md5sums_i686=('ad2f49b506f0af62c681cf88a8a72ce6')
+md5sums_x86_64=('22e6c79b20e0e25f7a7708acceb6d5a1')
 
 package() {
 	cd "$srcdir/$pkgname"
