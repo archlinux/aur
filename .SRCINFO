@@ -1,6 +1,6 @@
 pkgbase = digilent.waveforms
 	pkgdesc = Digilent WaveForms Application, Runtime and SDK
-	pkgver = 3.7.5
+	pkgver = 3.8.2
 	pkgrel = 1
 	url = https://reference.digilentinc.com/waveforms3
 	install = digilent.waveforms.install
@@ -15,14 +15,14 @@ pkgbase = digilent.waveforms
 	depends = shared-mime-info
 	depends = xdg-utils
 	options = !strip
-	source_i686 = https://files.digilent.com/Software/Waveforms2015/3.7.5/digilent.waveforms_3.7.5_i386.deb
-	sha256sums_i686 = 7fba3eb37ce93d2852b1913ebbad82d662e367df0d68b52aba2c76ad0e46be8b
-	source_x86_64 = https://files.digilent.com/Software/Waveforms2015/3.7.5/digilent.waveforms_3.7.5_amd64.deb
-	sha256sums_x86_64 = 53aefbffde0a105224fc36e6cbc5d1c9cc64d755feacfbed7068bbad3287a21c
-	source_armv6h = https://files.digilent.com/Software/Waveforms2015/3.7.5/digilent.waveforms_3.7.5_armhf.deb
-	sha256sums_armv6h = 39d66e8f91e6fdb66cc41764267a70fc93c5eef23f0bc2b5319e72db6e0cbfc0
-	source_armv7h = https://files.digilent.com/Software/Waveforms2015/3.7.5/digilent.waveforms_3.7.5_armhf.deb
-	sha256sums_armv7h = 39d66e8f91e6fdb66cc41764267a70fc93c5eef23f0bc2b5319e72db6e0cbfc0
+	source_i686 = https://files.digilent.com/Software/Waveforms2015/3.8.2/digilent.waveforms_3.8.2_i386.deb
+	sha256sums_i686 = e323fd5675300c7e2d4e266f32895d3a7b2b6e5ef3df4ab7bc83dfe95aac33d8
+	source_x86_64 = https://files.digilent.com/Software/Waveforms2015/3.8.2/digilent.waveforms_3.8.2_amd64.deb
+	sha256sums_x86_64 = c973f26c6b4938437ee685ae02ee280cd0aeebe2f7cf88cc6fb3d9b423f338bf
+	source_armv6h = https://files.digilent.com/Software/Waveforms2015/3.8.2/digilent.waveforms_3.8.2_armhf.deb
+	sha256sums_armv6h = d1ed9b55e9db63a618105fc2d922ae74c97f2b5429cbf9edb61b6729ea5b278f
+	source_armv7h = https://files.digilent.com/Software/Waveforms2015/3.8.2/digilent.waveforms_3.8.2_armhf.deb
+	sha256sums_armv7h = d1ed9b55e9db63a618105fc2d922ae74c97f2b5429cbf9edb61b6729ea5b278f
 
 pkgname = digilent.waveforms
 
