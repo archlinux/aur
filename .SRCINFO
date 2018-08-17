@@ -1,7 +1,7 @@
 pkgbase = rocketchat-desktop
 	pkgdesc = Rocket.Chat Native Cross-Platform Desktop Application via Electron.
 	pkgver = 2.12.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/RocketChat/Rocket.Chat.Electron
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,9 @@ pkgbase = rocketchat-desktop
 	depends = gtk3
 	depends = glibc
 	conflicts = rocketchat-client-bin
+	source = fix-icon-name_use_target_dir.patch
 	source = rocketchat-desktop-2.12.1.tar.gz::https://github.com/RocketChat/Rocket.Chat.Electron/archive/2.12.1.tar.gz
+	sha512sums = a56502c1c5604326ef98363caefb6f353375df18260aee731462caa120b49fa2334797eca9915e4d57839f194a3c2274d492734bf63576ebc4f59ebb564db309
 	sha512sums = 12c94d53d04748fd7876b6ffd2552d62ae10acdc07b49b928b0587b3421a9557f922d3595b3c431dc1cae44a5d5d2ab91e4ded8f3c2b5807d6598d428191d244
 
 pkgname = rocketchat-desktop
