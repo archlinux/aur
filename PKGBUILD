@@ -10,7 +10,7 @@ url='http://www.nongnu.org/gap/ftp/index.html'
 license=('GLP2')
 groups=('gnustep-apps')
 depends=('gnustep-base' 'gnustep-gui' 'gnustep-back')
-makedepends=('gcc-objc')
+makedepends=('gcc-objc' 'gnustep-make')
 source=("http://savannah.nongnu.org/download/gap/FTP-0.6.tar.gz")
 sha256sums=('f9884c1d0a3f37fea183ed1f80905d0f9ed3c99f776dc6a876434c7512c4d610')
 

@@ -9,6 +9,7 @@ pkgbase = ftp.app
 	groups = gnustep-apps
 	license = GLP2
 	makedepends = gcc-objc
+	makedepends = gnustep-make
 	depends = gnustep-base
 	depends = gnustep-gui
 	depends = gnustep-back
