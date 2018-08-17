@@ -1,7 +1,7 @@
 pkgbase = python-sregistry
 	pkgdesc = Singularity Registry Client CLI tool (built with [registry] support)
-	pkgver = 0.0.89
-	pkgrel = 3
+	pkgver = 0.0.94
+	pkgrel = 1
 	url = https://singularityhub.github.io/sregistry-cli/
 	arch = any
 	license = AGPL3
@@ -13,8 +13,8 @@ pkgbase = python-sregistry
 	depends = python-sqlalchemy
 	optdepends = singularity-container: to use and manipulate Singularity Containers
 	provides = singularity-registry-cli
-	source = https://files.pythonhosted.org/packages/source/s/sregistry/sregistry-0.0.89.tar.gz
-	sha256sums = c836ed5fe68de318593c0ef5da6847f7033c2778d352aac9ee11eb9d6cb4b2f6
+	source = https://files.pythonhosted.org/packages/source/s/sregistry/sregistry-0.0.94.tar.gz
+	sha256sums = 215393b7259120121337686b98b16568f859d58ff8cc9994c76efab725da37fb
 
 pkgname = python-sregistry
 

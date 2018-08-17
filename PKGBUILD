@@ -1,8 +1,8 @@
 # Maintainer: Hans-Nikolai Viessmann <hans AT viess.mn>
 pkgname=python-sregistry
 _pkgname=sregistry
-pkgver=0.0.89
-pkgrel=3
+pkgver=0.0.94
+pkgrel=1
 pkgdesc="Singularity Registry Client CLI tool (built with [registry] support)"
 arch=('any')
 url="https://singularityhub.github.io/sregistry-cli/"
@@ -16,7 +16,7 @@ depends=('python-spython'
 provides=('singularity-registry-cli')
 optdepends=('singularity-container: to use and manipulate Singularity Containers')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('c836ed5fe68de318593c0ef5da6847f7033c2778d352aac9ee11eb9d6cb4b2f6')
+sha256sums=('215393b7259120121337686b98b16568f859d58ff8cc9994c76efab725da37fb')
 
 prepare() {
 	cd "${_pkgname}-${pkgver}"
