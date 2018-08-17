@@ -1,24 +1,27 @@
-# Maintainer: Marti Raudsepp <marti@juffo.org>
+# Maintainer: void09  <sgmihai@gmail.com>
+# Contributor: Marti Raudsepp <marti@juffo.org>
 # Contributor: triaxx
-
+ 
 pkgname=gnuclad
 pkgver=0.2.4
-pkgrel=2
-pkgdesc="A cladogram tree generator mainly used by GNU/Linux distro timeline project"
+pkgrel=3
+pkgdesc="A cladogram tree generator mainly used by GNU/Linux distro 
+timeline project"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="https://launchpad.net/gnuclad"
+makedepends=('binutils' 'gcc' 'make')
 depends=()
-source=(http://launchpad.net/gnuclad/trunk/0.2/+download/$pkgname-$pkgver.tar.gz)
-md5sums=('5ca520333ee496a1d2e49f14d0b9549e')
-
+source=(https://github.com/FabioLolix/gnuclad/archive/master.zip)
+md5sums=('SKIP')
+ 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-master"
   ./configure --prefix=/usr
   make
 }
-
+ 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-master"
   make DESTDIR="$pkgdir" install
 }
