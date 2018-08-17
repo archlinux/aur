@@ -1,20 +1,21 @@
+# Maintainer : int <int [ate] arcor [dot] de>
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-hash-multivalue'
-pkgver='0.15'
+pkgver='0.16'
 pkgrel='1'
-pkgdesc="Store multiple values per key"
+pkgdesc="Perl/CPAN Module Hash::MultiValue: Store multiple values per key"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl')
+depends=('perl>=5.8.1')
 makedepends=()
-url='http://search.cpan.org/dist/Hash-MultiValue'
-source=('http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Hash-MultiValue-0.15.tar.gz')
-md5sums=('eb7df1402b774b07a305dbb67873817a')
-sha512sums=('fd97db887590c8c9ecbd0e58434df01fae8e3d2aa2335245ea1217d454e50c3bf1177921dd340f4cca3685808bebc573d13c892da7ccd685d3658c1db9d96465')
-_distdir="Hash-MultiValue-0.15"
+url='https://metacpan.org/release/Hash-MultiValue'
+source=("http://search.cpan.org/CPAN/authors/id/A/AR/ARISTOTLE/Hash-MultiValue-${pkgver}.tar.gz")
+md5sums=('508015312eb08cd2bcea987c4efbb93d')
+sha512sums=('a6e1cab00ff24492bc84343b83a1282ad0eaded6633e7c511389dfb1d21cd8987dc2f1ad9ab69df69f36b651d68c70df3160666ff9ee584dbb1b6ab7095b78ac')
+_distdir="Hash-MultiValue-${pkgver}"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -40,7 +41,7 @@ package() {
   cd "$srcdir/$_distdir"
   make install
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:
