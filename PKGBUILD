@@ -15,8 +15,8 @@ provides=('jlink-debugger')
 depends=('qt4' 'jlink-software-and-documentation>=5.10n')
 source_x86_64=("Ozone_Linux_V${pkgver/./}_x86_64.tgz::https://www.segger.com/downloads/jlink/Ozone_Linux_V${pkgver/./}_x86_64.tgz")
 source_i686=("Ozone_Linux_V${pkgver/./}_i686.tgz::https://www.segger.com/downloads/jlink/Ozone_Linux_V${pkgver/./}_i386.tgz")
-md5sums_x86_64=('f58fd1f254bc0d20d25793c95ec689b4')
-md5sums_i686=('66e3767a3a72897ded43b68fdf215ae0')
+md5sums_x86_64=('ac6c76c2d9b6950a32cebe8c4e04dfaa')
+md5sums_i686=('2575df22f817a4ff23ec3f24a64606d4')
 url="https://www.segger.com/jlink-software.html"
 options=(!strip)
 
