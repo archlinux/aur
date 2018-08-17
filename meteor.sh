@@ -1,8 +1,8 @@
 #!/bin/bash
 
-if [ ! -d "$HOME/.meteor" ]; then
-  install -d "$HOME/.meteor"
-  cp -r /usr/share/meteor/* "$HOME/.meteor/"
+if [ ! -d "$HOME"/.meteor ]; then
+  mkdir "$HOME"/.meteor
+  cp -r /usr/share/meteor/* "$HOME"/.meteor
 fi
 
-"$HOME/.meteor/meteor" "$@"
+"$HOME"/.meteor/meteor "$@"

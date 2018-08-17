@@ -11,27 +11,24 @@
 # Contributor: Kamil Śliwak <cameel2 gmail>
 
 pkgname=meteor
-pkgver=1.7.0.3
+pkgver=1.7.0.4
 pkgrel=1
 pkgdesc='Full-stack JavaScript platform for developing modern web and mobile applications'
-arch=(x86_64 i686)
+arch=(i686 x86_64)
 url=https://www.meteor.com
 license=(MIT)
 depends=(nodejs mongodb)
-conflicts=(meteor-js)
 options=(!strip)
 install=meteor.install
-source=(meteor.sh
-        meteor.install)
-sha512sums=(6322041c40be5740da446ee8c707cf611412aab1433a4726f08a7f8f7865224f21e59b0e0bf5d2b57871018d4eedef588fcbbab61df9a1c8ca95edbb91058275
-            b1934622af4450c130ca11c920af6ad17dcc1a91cb30d23787c0c971c027c4e4175001f7c13801c79f8a46fafbc98f16e801608d83553a5a41b06afa57cf02bd)
-source_x86_64=(meteor-bootstrap-os.linux.$pkgver.x86_64.tar.gz::https://meteorinstall-4168.kxcdn.com/packages-bootstrap/$pkgver/meteor-bootstrap-os.linux.x86_64.tar.gz)
-sha512sums_x86_64=(1c90c4f418c3b0e597e70acfa639f6842644a566235db288922944d305310a0730c7359e7efe9f28034e30bfcd23a7e6304a7455cf76e7cb2a47b882d4491672)
+source=(meteor.sh)
 source_i686=(meteor-bootstrap-os.linux.$pkgver.i686.tar.gz::https://meteorinstall-4168.kxcdn.com/packages-bootstrap/$pkgver/meteor-bootstrap-os.linux.x86_32.tar.gz)
-sha512sums_i686=(0a377c8fd7695f3284a75029618be342f81a971f380a6e15a1becedaf74ff1ae58f3e8f2931fcad0644ca2c250df11ae5578fb6a3a52be13e349b5c7a181484e)
+source_x86_64=(meteor-bootstrap-os.linux.$pkgver.x86_64.tar.gz::https://meteorinstall-4168.kxcdn.com/packages-bootstrap/$pkgver/meteor-bootstrap-os.linux.x86_64.tar.gz)
+sha512sums=('739ff7cb9eed1b919335851f0b1b62d21655b046cdbec83a1c8fd7aae83f8044dd39caeec855c8baafc2caf68c5ab986d7d96a98732adeaa90fdffa118a4b393')
+sha512sums_i686=('7f1e9551004919975090d895cbf1fbce7030199dbde3853d64d921a62fbfeb21b8a848ae774e5f55b9b47d6b25428d1cb9b015a1d230161b95e420cb013c45e3')
+sha512sums_x86_64=('589b09e03d96164192dc7f4517b301fa8eec490446f03611422f72e0cfd865d1213d2df105ee1aaff8133201dc21dd8c80ded3a5ad3d0965d8e68f9031d60b34')
 
 package() {
-  install -d $pkgdir/usr/share
-  cp -r $srcdir/.meteor $pkgdir/usr/share/meteor
-  install -Dm 755 $srcdir/meteor.sh $pkgdir/usr/bin/meteor
+  install -d "$pkgdir"/usr/share
+  cp -a .meteor "$pkgdir"/usr/share/meteor
+  install -D meteor.sh "$pkgdir"/usr/bin/meteor
 }
