@@ -1,0 +1,26 @@
+pkgbase = python-attrs17
+	pkgdesc = Attributes without boilerplate.
+	pkgver = 17.4.0
+	pkgrel = 1
+	url = https://attrs.readthedocs.org/
+	arch = any
+	license = MIT
+	checkdepends = python-pytest-runner
+	checkdepends = python2-pytest-runner
+	checkdepends = python-zope-interface
+	checkdepends = python2-zope-interface
+	checkdepends = python-hypothesis
+	checkdepends = python2-hypothesis
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	provides = python-attrs=17.4.0
+	conflicts = python-attrs
+	source = https://pypi.io/packages/source/a/attrs/attrs-17.4.0.tar.gz
+	sha512sums = b631cd5af1be7c78175230363a3cf9d37cb0237d87b24f994812b5734985d114708d5bf7ee5d92b8b13c6b8daa313efde4a9f60f0630df0b62bbcf4928a016ff
+
+pkgname = python-attrs17
+	depends = python
+
+pkgname = python2-attrs17
+	depends = python2
+
