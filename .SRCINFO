@@ -1,0 +1,21 @@
+pkgbase = yy-wine-1
+	pkgdesc = YY Voice from douwan run on wine
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.yy.com/
+	arch = i686
+	arch = x86_64
+	license = unknow
+	depends = p7zip
+	depends = wine
+	depends = xorg-xwininfo
+	depends = xdotool
+	source = ftp://ftp.icmp.eu.org/tools/yy-wine-1-1.0-1.tar.gz
+	source = http://yydl.duowan.com/4/setup/YYSetup-8.30.0.0-zh-CN.exe
+	source = run.sh
+	md5sums = 03a803bc2e36b3e48a855f0bf96be1ef
+	md5sums = dc0bcee0ab07845e3c0b4156c042d9cc
+	md5sums = dab77123bed67a79d771fd718dea4be2
+
+pkgname = yy-wine-1
+
