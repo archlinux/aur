@@ -24,7 +24,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar."{xz,sign}
         'preset')
 sha512sums=('950eb85ac743b291afe9f21cd174d823e25f11883ee62cecfbfff8fe8c5672aae707654b1b8f29a133b1f2e3529e63b9f7fba4c45d6dacccc8000b3a9a9ae038' 'SKIP'
             '1079145e514f9b253e0864895bbcec1c9f0da0b60d8baa9ec63e1904b2f42c958c146f1dc329cad47b3912ac4d0dbf00cb684a4dd36492ab9706693728c8b59d' 'SKIP'
-            '8eedd803337f0746ccc712acd868e08a4ef0ae9eaafe878faa25fb06087c5a79ac91874b2c8811b65a0f8b46d2eb04bf54dd7a8de8e9d930be344edec7b73780'
+            '3d911e2f9339d4226c43c362283c345b135f0f42ad3e94589abc705100ae0ff85d6ecf43a3757b6a2cb5ce04b67123883783e21f7044dd2b55d71f19af6b82ce'
             '7a80f858c32a9dd62f43aba0b7119a1196869216117164bcde24ab46022e8a1bbe27821faa26ca690a1633a5a9fe324e98e5cdf14f37591d569cbc71f542482d'
             'c57a6c8d9978cb6a1034bed33ba5e06bef9b134f22113761798d4fa46e8091e7b0bd26f3a14d79122ba780b2f7a93ca26850f4da6a654f81b34cc79c242f683f'
             'db9080b2548e4dcd61eaaf20cd7d37cbbc8c204ce85a2e3408d0671f6b26010f77a61affd2c77e809768714eca29d3afb64765a3f2099317a2c928eff3feb4cf'
@@ -32,7 +32,7 @@ sha512sums=('950eb85ac743b291afe9f21cd174d823e25f11883ee62cecfbfff8fe8c5672aae70
             '62870a08f000abfe8eb1f50271afdf04686af108554f7629dc5e1d7610ad14bdc9cd14d2609270b83f9edb745a520b81fa7bfb92ebcc28a146df040c895b549b')
 sha256sums=('19d8bcf49ef530cd4e364a45b4a22fa70714b70349c8100e7308488e26f1eaf1' 'SKIP'
             'fc50a9b4c735229161bca195e4a3d9c6815e2884a7dcfcf6b7738bfe08bef6ce' 'SKIP'
-            '75fe99352aeb24158e3270e23d76c4559809148acbd2446ade532d97c25beaa0'
+            'a20c7082a8e9d7fe06e7d65afeeedc01e7cf0f3adc199187ef0934fa95d33080'
             '7d56a81083d1468d90ebec97a44ec44f80f8cb87bd506ed1918d6664d6309ad5'
             '3efa91fcb4698bde0598678bbf9a4a747c011823af82704eed2c146ed7cd9734'
             '368fb58e7aa465f597e9a72da4b6eea4183c1a85242173412d54ad18d10d8fb3'
@@ -40,7 +40,7 @@ sha256sums=('19d8bcf49ef530cd4e364a45b4a22fa70714b70349c8100e7308488e26f1eaf1' '
             '29fa2c1ea75f55a61276496507b788b1a8bde1d7c16bee4f525651db34076e46')
 md5sums=('bee5fe53ee1c3142b8f0c12c0d3348f9' 'SKIP'
          'c92e3e58d1f340166d10869bc4711417' 'SKIP'
-         'aaf4606a7ee4bd418569a012070eaeb1'
+         'a12b1ec6ef2dae1110f14e1ab0805411'
          'bc30565cf444b710c252675cf65fb46e'
          'c52c29a8502f6c75e309208f0afab11f'
          '625481f015365febcd65aa136ee555f9'
@@ -64,7 +64,7 @@ prepare() {
   sed -e "/^EXTRAVERSION =/s/=.*/= .${_hardenedver}/" -i Makefile
   scripts/setlocalversion --save-scmversion
   cp "${srcdir}/config" .config
-  make olddefconfig
+  make oldconfig
   make -s kernelrelease > ../version
 }
 
@@ -79,7 +79,7 @@ package() {
   local _kernver="$(<${srcdir}/version)"
   emdir="extramodules${_kernelname}"
   mkdir -p "${pkgdir}"/{usr/lib/modules/"$emdir",boot/grub}
-  make INSTALL_MOD_PATH="${pkgdir}/usr" DEPMOD=/doesnt/exist modules_install
+  make INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
   rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/{source,build}
   install -D -m644 "$(make -s image_name)"          "${pkgdir}/boot/vmlinuzll-${pkgname}"
   install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux"
@@ -97,7 +97,6 @@ package() {
     -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgname}-fallback.img\"|" \
     -i "${pkgdir}/etc/mkinitcpio.d/${pkgname}.preset"
   ln -s "../${emdir}" "${pkgdir}/usr/lib/modules/${_kernver}/extramodules"
-  depmod -b "${pkgdir}/usr" -E Module.symvers "${_kernver}"
   sed "s/%VER%/${pkgver}-${pkgrel}/ig" "${srcdir}/menu.lst" > "${pkgdir}/boot/grub/menu.lst"
   chmod -Rc u=rwX,go=rX "$pkgdir"
 }
