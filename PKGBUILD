@@ -5,7 +5,7 @@
 
 pkgname=libvirt
 pkgver=4.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('x86_64')
 url="http://libvirt.org/"
@@ -13,7 +13,7 @@ license=('LGPL')
 makedepends=('lvm2' 'linux-api-headers' 'dnsmasq' 'lxc' 'libiscsi' 'open-iscsi'
              'perl-xml-xpath' 'libxslt' 'qemu' 'parted' 'python')
 depends=('e2fsprogs' 'gnutls' 'iptables' 'libxml2' 'parted' 'polkit' 'avahi'
-         'jansson' 'libpciaccess' 'udev' 'dbus' 'libxau' 'libxdmcp' 'libpcap'
+         'yajl' 'libpciaccess' 'udev' 'dbus' 'libxau' 'libxdmcp' 'libpcap'
          'libcap-ng' 'curl' 'libsasl' 'libgcrypt' 'libgpg-error' 'openssl'
          'libxcb' 'gcc-libs' 'iproute2' 'libnl' 'libx11' 'numactl' 'gettext'
          'libssh2' 'netcf' 'fuse2' 'glusterfs' 'ceph-libs')
@@ -102,7 +102,6 @@ build() {
     --sbindir=/usr/bin \
     --disable-static \
     --with-init-script=systemd \
-    --with-qemu \
     --with-qemu-user=nobody \
     --with-qemu-group=kvm \
     --without-hal \
@@ -110,7 +109,6 @@ build() {
     --with-lxc \
     --with-netcf \
     --with-udev \
-    --with-jansson \
     --with-storage-disk \
     --with-storage-gluster \
     --with-storage-iscsi \
