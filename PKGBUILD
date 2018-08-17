@@ -2,26 +2,23 @@
 
 _npmname=less-plugin-autoprefix
 pkgname=nodejs-$_npmname
-pkgver=1.5.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Uses autoprefixer to add prefixes to css after conversion from less"
-arch=('any')
-url="https://github.com/less/less-plugin-autoprefix"
+arch=(any)
+url='http://lesscss.org'
 license=('Apache 2.0')
-depends=(
-        'nodejs'
+depends=('nodejs'
         'npm'
         'nodejs-less'
-        'nodejs-autoprefixer'
-)
-source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
-sha256sums=('90c3cf3afb86f0a0d1d94c0f8a245d3eefa0580b41e8a61fd7dbface6e889476')
-noextract=($_npmname-$pkgver.tgz)
+        'nodejs-autoprefixer')
+source=("https://registry.npmjs.org/$_npmname/-/${_npmname}-${pkgver}.tgz")
+sha256sums=('aa7edec73f63896fc4670d05d15d4344ba0e276479dec2672915a54cb5519e6f')
+noextract=("${source[@]##*/}")
 
 package() {
-        cd "$srcdir"
-        local _npmdir="$pkgdir/usr/lib/node_modules/"
-        mkdir -p "$_npmdir"
-        cd "$_npmdir"
-        npm install --user root -g --prefix "$pkgdir/usr" $_npmname@$pkgver
+    local _npmdir="${pkgdir}/usr/lib/node_modules/"
+    mkdir -p "${_npmdir}"
+    cd "${_npmdir}"
+    npm install --user root -g --prefix "${pkgdir}/usr" "${_npmname}@${pkgver}"
 }
