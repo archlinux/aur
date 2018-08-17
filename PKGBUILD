@@ -1,8 +1,9 @@
+# Maintainer: Simon Legner <Simon.Legner@gmail.com>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 # Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-path-finddev'
-pkgver='0.5.2'
+pkgver='0.5.3'
 pkgrel='1'
 pkgdesc="Find a development path somewhere in an upper hierarchy."
 arch=('any')
@@ -11,10 +12,10 @@ options=('!emptydirs')
 depends=('perl-class-tiny>=0.010' 'perl-path-isdev>=0.2.2' 'perl-path-tiny>=0.054' 'perl-sub-exporter')
 makedepends=()
 url='https://metacpan.org/release/Path-FindDev'
-source=('http://search.cpan.org/CPAN/authors/id/K/KE/KENTNL/Path-FindDev-0.5.2.tar.gz')
-md5sums=('b494d775273230d3542851073c2a9da2')
-sha512sums=('bf66a5725e470198135dd888b51966b7dcdd62d90c718a96057ece2c39813cc2e88f96a5c8687aeaec13f3e1696de7e183697a7424b1140aecbb171be3a5e800')
-_distdir="Path-FindDev-0.5.2"
+source=('https://cpan.metacpan.org/authors/id/K/KE/KENTNL/Path-FindDev-v0.5.3.tar.gz')
+md5sums=('590bf126fe33ebb34bb72e747dce371e')
+sha512sums=('dd7a6a05f9e21c45a5ef25b3e2598a8f769a2ab3ef24ddb8e918b17a0f025bc5ba5b23fecf832911b7003de6cdaceb0e4a8c1139b4e23b080920739604e37bf6')
+_distdir="Path-FindDev-v0.5.3"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
