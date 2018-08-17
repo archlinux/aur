@@ -14,9 +14,9 @@
 _configuration=1
 ##
 ## Look inside 'choose-gcc-optimization.sh' to choose your microarchitecture
-## Only valid numbers are: 0 to 22
+## Only valid numbers are: 0 to 25
 ## Default is: 0 => generic
-## Good option if your package is for one machine: 22 => native
+## Good option if your package is for one machine: 25 => native
 _microarchitecture=0
 ##
 
