@@ -7,11 +7,11 @@ _materia_cmt=df30959eb068ef55db18a18ed23a4a1c79129768
 _arc_cmt=c49e1f7fb0aa937789f7c2430c74479e66b6b230
 _archdroid_ver=1.0.2
 _gnome_colors_ver=5.5.3
-_oomoxify_ver=1.0
+_oomoxify_ver=1.0.1
 
 pkgname=oomox
 pkgver=${_oomox_ver}
-pkgrel=2
+pkgrel=3
 pkgdesc='Graphical application for generating different color variations of Numix/Materia/Arc theme (GTK2, GTK3), gnome-colors and ArchDroid icon themes.
 Have a hack for HiDPI in gtk2.'
 arch=('i686' 'x86_64')
@@ -64,7 +64,7 @@ md5sums=('d98a9d2d2db29e8496f8684a965b8033'
          '23460fc1c478f6595a56c9a6a98bdac8'
          'cb669130685dcbf03a8f7f5738c71dc6'
          'ae3250f1dce9505dbaa60d92dcb9a239'
-         'df970e658de7668a7088bd445e4634fb')
+         '02f3cefaf6ce3b89b8a5cc6b8a7430b4')
 
 prepare() {
     cd ${srcdir}
