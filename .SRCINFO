@@ -9,6 +9,7 @@ pkgbase = talksoup.app
 	groups = gnustep-apps
 	license = GPL2
 	makedepends = gcc-objc
+	makedepends = gnustep-make
 	depends = gnustep-base
 	depends = gnustep-gui
 	depends = gnustep-back

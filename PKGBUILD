@@ -10,7 +10,7 @@ url='http://gap.nongnu.org/talksoup/index.html'
 license=('GPL2')
 groups=('gnustep-apps')
 depends=('gnustep-base' 'gnustep-gui' 'gnustep-back' 'netclasses')
-makedepends=('gcc-objc')
+makedepends=('gcc-objc' 'gnustep-make')
 source=("http://savannah.nongnu.org/download/gap/TalkSoup-1.1.tar.gz")
 sha256sums=('3a469c66ce3067a88603d6ebae6f63fbcfad55586dd5455179887f28e5a63ae7')
 
