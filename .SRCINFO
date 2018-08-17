@@ -1,6 +1,6 @@
 pkgbase = apache-spark-git
 	pkgdesc = fast and general engine for large-scale data processing
-	pkgver = 2.1.0.SNAPSHOT.20160917.17622
+	pkgver = 2.4.0.SNAPSHOT.20180817.22533
 	pkgrel = 1
 	url = http://spark.apache.org
 	install = apache-spark.install
