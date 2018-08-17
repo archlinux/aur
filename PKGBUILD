@@ -4,6 +4,7 @@ pkgname=nginx-mainline-mod-ndk-fixedrepo
 pkgver=0.3.0
 pkgrel=16
 provides=('nginx-mainline-mod-ndk')
+replaces=('nginx-mainline-mod-ndk')
 
 _modname="ngx_devel_kit"
 _nginxver=1.15.2
