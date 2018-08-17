@@ -16,9 +16,6 @@ install=
 changelog=
 _mirror="http://yydl.duowan.com"
 YYver=8.30.0.0
-#source=("$pkgname-$pkgver.tar.gz"
-#        "${_mirror}/4/setup/YYSetup-${YYver}.${YYrel}-zh-CN.exe"
-#	"run.sh")
 source=("ftp://ftp.icmp.eu.org/tools/${pkgname}-${pkgver}-${pkgrel}.tar.gz"
 	"${_mirror}/4/setup/YYSetup-${YYver}-zh-CN.exe"
 	"run.sh")
