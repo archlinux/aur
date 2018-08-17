@@ -22,7 +22,7 @@ pkgver() {
 build() {
   cd Iosevka
   npm install
-  npm run build -- contents:iosevka
+  npm run build -- ttf:iosevka
 }
 
 package() {
