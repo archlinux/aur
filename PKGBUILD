@@ -6,7 +6,7 @@
 
 pkgname=firehol-git
 _gitname=firehol
-pkgver=v3.1.3.r1.ga436004
+pkgver=v3.1.6.r1.gaaa6552
 pkgrel=1
 epoch=1
 pkgdesc="The iptables stateful packet filtering firewall builder."
@@ -18,13 +18,17 @@ makedepends=('git' 'dblatex' 'pandoc')
 provides=('firehol')
 conflicts=('firehol')
 backup=('etc/firehol/firehol.conf' 'etc/firehol/fireqos.conf')
-install='firehol.install'
-source=("$_gitname::git+https://github.com/firehol/firehol"
-        'firehol.service' 'fireqos.service')
+source=("$_gitname::git+https://github.com/firehol/firehol")
 
 pkgver() {
 	cd "$_gitname"
 	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+	cd "$_gitname"
+	sed -i 's|sbin|bin|' contrib/fireqos.service
+	sed -i 's|sbin|bin|' contrib/firehol.service
 }
 
 build() {
@@ -48,18 +52,11 @@ package() {
 
 	make install DESTDIR="$pkgdir"
 
-	install -D -m644 $srcdir/firehol.service "$pkgdir/usr/lib/systemd/system/firehol.service"
-	install -D -m644 $srcdir/fireqos.service "$pkgdir/usr/lib/systemd/system/fireqos.service"
+	install -d -m755 "$pkgdir"/usr/lib/systemd/system/
+	install -m644 "contrib"/fire{hol,qos}.service "$pkgdir"/usr/lib/systemd/system/
 
-	# backup does not work if the file is not contained in the package
-	# plus, creating it in post_install will set 777 permissions and we don't want that
-	touch "$pkgdir/etc/firehol/firehol.conf"
-	chmod 600 "$pkgdir/etc/firehol/firehol.conf"
-	touch "$pkgdir/etc/firehol/fireqos.conf"
-	chmod 600 "$pkgdir/etc/firehol/fireqos.conf"
+	touch "$pkgdir"/etc/firehol/fire{hol,qos}.conf
 
 }
 
-md5sums=('SKIP'
-         'd87f844ac0ef319fd0ea0adcb0a66905'
-         'ea0b9238f494e4eeeac7a975346bcf3c')
+md5sums=('SKIP')
