@@ -1,27 +1,27 @@
 # Maintainer: Mikel Pintado <mikelaitornube2010@gmail.com>
 
 pkgname=recultis
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Return to the cult games. On Linux, with modern, open source engines. Requires the multilib repository to be enabled."
 arch=('x86_64')
-url="https://makson96.github.io/Recultis"
+url="https://makson.gitlab.io/Recultis/"
 license=('GPL3')
 install=recultis.install
 depends=('python' 'python-pyqt5' 'xorg-server' 'binutils' 'mesa' 'openal')
     optdepends=('dpkg: alternative to ar.')
     makedepends=('lib32-glibc' 'lib32-libstdc++5')
     source=(
-    https://codeload.github.com/makson96/Recultis/tar.gz/v${pkgver}
+    https://gitlab.com/makson/Recultis/-/archive/v${pkgver}/Recultis-v${pkgver}.tar.gz
     recultis.desktop
 )
 md5sums=(
-    '3e9c6f5662be15489e5c1415423ee4f9'
+    'c252e15bf3382341819bf1f16603ba82'
     '2aa3806d1cdfdaa2513cf777405a8512'
 )
 
 package()   {
-    mv Recultis-${pkgver} Recultis
+    mv Recultis-v${pkgver} Recultis
     mkdir opt
     mv Recultis opt
     cp --preserve=mode -r opt "${pkgdir}"
