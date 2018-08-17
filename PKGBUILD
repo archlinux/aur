@@ -1,6 +1,6 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
-pkgname=nginx-mainline-mod-lua
+pkgname=nginx-mainline-mod-lua-fixedrepo
 pkgver=0.10.13
 pkgrel=2
 

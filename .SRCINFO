@@ -1,4 +1,4 @@
-pkgbase = nginx-mainline-mod-lua
+pkgbase = nginx-mainline-mod-lua-fixedrepo
 	pkgdesc = Lua script engine module for mainline nginx
 	pkgver = 0.10.13
 	pkgrel = 2
@@ -14,5 +14,5 @@ pkgbase = nginx-mainline-mod-lua
 	sha256sums = eeba09aecfbe8277ac33a5a2486ec2d6731739f3c1c701b42a0c3784af67ad90
 	sha256sums = ecea8c3d7f69dd48c6132498ddefb5d83ba9f387fa3d4da14e2abeacdfc8a3ee
 
-pkgname = nginx-mainline-mod-lua
+pkgname = nginx-mainline-mod-lua-fixedrepo
 
