@@ -1,2 +1,5 @@
 #!/bin/bash
-WINEDEBUG=-all WINEARCH=win32 WINEPREFIX="$HOME"/.eternally-us wine /usr/share/eternally-us/EternallyUs.exe
+set -e
+
+WINEDEBUG=-all WINEARCH=win32 WINEPREFIX="$HOME"/.eternally-us winetricks vd=1024x768 winxp
+WINEDEBUG=-all WINEARCH=win32 WINEPREFIX="$HOME"/.eternally-us wine start "Z:\\usr\\share\\eternally-us\\EternallyUs.exe"
