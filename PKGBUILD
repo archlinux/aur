@@ -2,7 +2,7 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 
 pkgname=tslint
-pkgver=5.10.0
+pkgver=5.11.0
 pkgrel=1
 pkgdesc="A Linter for the TypeScript language."
 arch=('any')
@@ -17,4 +17,4 @@ package() {
   npm install -g --user root --prefix "$pkgdir"/usr "$srcdir"/$pkgname-$pkgver.tgz
 }
 
-sha256sums=('a347ac3cd381406382ddeb260fd2479ffa84d3d77206436a08fbf5347710b4e4')
+sha256sums=('b2016e35464f38722fa8939dcec49a3c54a7550c5aed4f952af7bdd9a3b813c4')
