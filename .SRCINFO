@@ -1,6 +1,6 @@
 pkgbase = expertguide-git
 	pkgdesc = Expert Guide, a Norton Guide reader for GNU/Linux
-	pkgver = 1.01.15.g6ff2aa0
+	pkgver = v1.02.r0.g3c7e6fd
 	pkgrel = 1
 	url = http://www.davep.org/norton-guides/
 	arch = i686
@@ -9,7 +9,8 @@ pkgbase = expertguide-git
 	makedepends = git
 	depends = slang
 	provides = expertguide
-	conflicts = expertguide eg
+	conflicts = expertguide
+	conflicts = eg
 	source = git+https://github.com/davep/eg.git
 	source = build.patch
 	sha1sums = SKIP

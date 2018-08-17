@@ -2,7 +2,7 @@
 
 pkgname=expertguide-git
 _gitname=eg
-pkgver=1.01.15.g6ff2aa0
+pkgver=v1.02.r0.g3c7e6fd
 pkgrel=1
 pkgdesc="Expert Guide, a Norton Guide reader for GNU/Linux"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('slang')
 makedepends=('git')
 provides=('expertguide')
-conflicts=("expertguide eg")
+conflicts=('expertguide' 'eg')
 source=('git+https://github.com/davep/eg.git'
         'build.patch')
 sha1sums=('SKIP'
@@ -19,7 +19,7 @@ sha1sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
-  git describe --tags | sed -e 's/eg-v//;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
