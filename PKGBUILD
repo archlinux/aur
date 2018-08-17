@@ -1,42 +1,27 @@
-# Maintainer: Thomas Ascher <thomas.ascher@gmx.at>
-# Contributor: Thomas Ascher <thomas.ascher@gmx.at>
-pkgname=graphos.app
+# Maintainer: Icarus Mitchellson <mumei AT airmail DOT cc>
+
 _pkgname=Graphos
+pkgname=graphos.app
 pkgrel=1
-pkgver=0.5
-pkgdesc="A vector drawing application centered around Bézier curves."
-arch=('i686' 'x86_64')
-url="http://www.nongnu.org/gap/graphos/index.html"
-license=('GPL')
-groups=('gnustep')
-depends=('gnustep-base'
-         'gnustep-gui')
-makedepends=('gcc-objc'
-             'gnustep-make')
-source=("http://savannah.nongnu.org/download/gap/$_pkgname-$pkgver.tar.gz")
-sha256sums=('0195dd6481fd60d24dd95ea15c89683b8db6130b57681a6042c5cc9b4a482c08')
+pkgver=0.7
+pkgdesc='Graphos is a vector drawing application centered around bezier paths. '
+arch=('i686' 'x86_64' 'armv7h')
+url='http://gap.nongnu.org/graphos/index.html'
+license=('GPL2')
+groups=('gnustep-apps')
+depends=('gnustep-base' 'gnustep-gui' 'gnustep-back')
+makedepends=('gcc-objc' 'gnustep-make')
+source=("http://savannah.nongnu.org/download/gap/Graphos-0.7.tar.gz")
+sha256sums=('d2a2567d244787a56572733cc91ca02ceb1030dfbd54401aa86e26650c34810b')
 
 build() {
+  source /usr/share/GNUstep/Makefiles/GNUstep.sh
   cd "$_pkgname-$pkgver"
   make
 }
 
 package() {
   cd "$_pkgname-$pkgver"
-  make DESTDIR="$pkgdir/" install
-  install -D -m644 "$pkgdir/usr/lib/GNUstep/Applications/$_pkgname.app/Resources/$_pkgname.desktop" \
-    "$pkgdir/usr/share/applications/$_pkgname.desktop"
+  make DESTDIR="$pkgdir" install
+  install -Dm644 "$pkgdir/usr/lib/GNUstep/Applications/$_pkgname.app/Resources/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
 }
-
-post_install() {
-  update-desktop-database -q
-}
-
-post_upgrade() {
-  post_install $1
-}
-
-post_remove() {
-  post_install $1
-}
-

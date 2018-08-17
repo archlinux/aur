@@ -1,18 +1,20 @@
 pkgbase = graphos.app
-	pkgdesc = A vector drawing application centered around Bézier curves.
-	pkgver = 0.5
+	pkgdesc = Graphos is a vector drawing application centered around bezier paths.
+	pkgver = 0.7
 	pkgrel = 1
-	url = http://www.nongnu.org/gap/graphos/index.html
+	url = http://gap.nongnu.org/graphos/index.html
 	arch = i686
 	arch = x86_64
-	groups = gnustep
-	license = GPL
+	arch = armv7h
+	groups = gnustep-apps
+	license = GPL2
 	makedepends = gcc-objc
 	makedepends = gnustep-make
 	depends = gnustep-base
 	depends = gnustep-gui
-	source = http://savannah.nongnu.org/download/gap/Graphos-0.5.tar.gz
-	sha256sums = 0195dd6481fd60d24dd95ea15c89683b8db6130b57681a6042c5cc9b4a482c08
+	depends = gnustep-back
+	source = http://savannah.nongnu.org/download/gap/Graphos-0.7.tar.gz
+	sha256sums = d2a2567d244787a56572733cc91ca02ceb1030dfbd54401aa86e26650c34810b
 
 pkgname = graphos.app
 
