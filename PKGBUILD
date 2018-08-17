@@ -3,7 +3,7 @@
 
 pkgname=code
 pkgdesc='Microsoft Code -- The Open Source build of Visual Studio Code (vscode)'
-pkgver=1.26.0
+pkgver=1.26.1
 pkgrel=1
 arch=('i686' 'x86_64' 'armv7h')
 url='https://github.com/Microsoft/vscode'
