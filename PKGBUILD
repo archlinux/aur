@@ -15,6 +15,7 @@ source=("https://github.com/ericwa/TextEdit/archive/master.zip")
 sha256sums=('13fb1df424d69eeb95f1ba8c6c9c4cfd039798dc5b01b20760d79d532a374b07')
 
 build() {
+  source /usr/share/GNUstep/Makefiles/GNUstep.sh
   cd "TextEdit-master"
   make
 }
