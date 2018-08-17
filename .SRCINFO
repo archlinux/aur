@@ -1,5 +1,6 @@
 pkgbase = davs2-git
-	pkgver = 1.0.r116.gc29c026
+	pkgdesc = Open-Source decoder of AVS2-P2/IEEE1857.4 video coding standard (git version)
+	pkgver = 1.0.r124.gb81c17c
 	pkgrel = 1
 	url = https://github.com/pkuvcl/davs2/
 	arch = i686
@@ -10,26 +11,17 @@ pkgbase = davs2-git
 	makedepends = yasm
 	makedepends = l-smash
 	depends = glibc
+	depends = liblsmash.so
+	provides = davs2
+	provides = libdavs2
+	provides = libdavs2-git
+	provides = libdavs2.so
+	conflicts = davs2
+	conflicts = libdavs2
+	conflicts = libdavs2-git
+	replaces = libdavs2-git
 	source = davs2-git::git+https://github.com/pkuvcl/davs2.git
 	sha256sums = SKIP
 
 pkgname = davs2-git
-	pkgdesc = CLI tool for the open-source decoder of AVS2-P2/IEEE1857.4 video coding standard (git version)
-	depends = glibc
-	depends = l-smash
-	provides = 
-	provides = davs2-bit-git
-	provides = davs2-bit
-	conflicts = 
-	conflicts = davs2-bit
-
-pkgname = libdavs2-git
-	pkgdesc = Library for the open-source decoder of AVS2-P2/IEEE1857.4 video coding standard (8bit depth) (git version)
-	provides = libdavs2-8bit-git
-	provides = libdavs2-8bit
-	provides = libdavs2
-	provides = libdavs2.so
-	conflicts = libdavs2-8bit
-	conflicts = libdavs2-10bit
-	conflicts = libdavs2-10bit-git
 
