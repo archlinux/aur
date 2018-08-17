@@ -12,8 +12,8 @@
 pkgbase=lib32-mesa-git
 pkgname=('lib32-mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=18.3.0_devel.104104.de57926dc9
-pkgrel=1
+pkgver=18.3.0_devel.104232.9baff597ce
+pkgrel=2
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
              'lib32-gcc-libs' 'lib32-libvdpau' 'lib32-libelf' 'lib32-llvm-svn' 'git' 'lib32-libgcrypt' 'lib32-systemd'
@@ -95,6 +95,7 @@ package_lib32-mesa-git () {
   rm -rf "$pkgdir"/etc
   rm -rf "$pkgdir"/usr/include
   rm -rf "$pkgdir"/usr/share/glvnd/
+  rm "$pkgdir"/usr/share/drirc.d/00-mesa-defaults.conf
 
   # remove files present in lib32-libglvnd
   rm "$pkgdir"/usr/lib32/libGLESv{1_CM,2}.so*
