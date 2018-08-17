@@ -7,7 +7,7 @@
 
 pkgname=('gurobi')
 _basename=gurobi
-pkgver=7.5.2
+pkgver=8.0.1
 pkgrel=1
 pkgdesc="State-of-the-art solver for mathematical programming"
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=(
   "gurobi.sh"
   "gurobi_setup.m"
 )
-sha256sums=('d2e6e2eb591603d57e54827e906fe3d7e2e0e1a01f9155d33faf5a2a046d218e'
+sha256sums=('f82e1c12568de89ede61f9700344b1538027a812cffb0063d7ff7c657c21132c'
             '30d535f7100627195dbe8d1c9a5ce603ed645b93eb8869984eb8a15e8db6d1c8'
             'fd328dc00b276258e7828b301c93574f9aa8e6f143caf5428a648851a6ecf93c')
 
@@ -69,11 +69,14 @@ package_gurobi() {
   # Programming interfaces
   install lib/*.so* "${pkgdir}/usr/lib/"
   install -m644 lib/*.a "${pkgdir}/usr/lib/"
-  ln -sf ./libgurobi.so.7.5.2 "${pkgdir}/usr/lib/libgurobi75.so"
+  ln -sf ./libgurobi.so.8.0.1 "${pkgdir}/usr/lib/libgurobi80.so"
   ln -sf ./libgurobi_g++5.2.a "${pkgdir}/usr/lib/libgurobi_c++.a"
 
   python2 setup.py install --root="$pkgdir" --optimize=1
-  python3 setup.py install --root="$pkgdir" --optimize=1
+  python3.5 setup.py install --root="$pkgdir" --optimize=1
+  python3.6 setup.py install --root="$pkgdir" --optimize=1
+  install -D "lib/python2.7_utf32/gurobipy/gurobipy.so" "${pkgdir}/usr/lib/python2.7/site-packages/gurobipy/"
+  install -D "lib/python3.5_utf32/gurobipy/gurobipy.so" "${pkgdir}/usr/lib/python3.5/site-packages/gurobipy/"
   install -D "lib/python3.6_utf32/gurobipy/gurobipy.so" "${pkgdir}/usr/lib/python3.6/site-packages/gurobipy/"
 
   install -D -m644 lib/gurobi.jar "${pkgdir}/usr/share/java/${_basename}/gurobi.jar"
