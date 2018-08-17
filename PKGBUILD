@@ -3,7 +3,7 @@
 
 pkgname=itch-bin
 pkgver=23.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The best way to play itch.io games."
 
 arch=('i686' 'x86_64')
@@ -41,7 +41,7 @@ package() {
 
   for icon in ${srcdir}/extras/icon*.png
   do
-    iconsize="${icon#release/images/itch-icons/icon}"
+    iconsize="${icon#${srcdir}/extras/icon}"
     iconsize="${iconsize%.png}"
     icondir="${pkgdir}/usr/share/icons/hicolor/${iconsize}x${iconsize}/apps/"
     install -d "${icondir}"
