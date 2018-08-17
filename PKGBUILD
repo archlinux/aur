@@ -4,7 +4,7 @@
 
 pkgname=meandmyshadow-git
 _gitname=meandmyshadow
-pkgver=v0.5.devel002.r0.gdb2c849
+pkgver=v0.5.devel002.r287.gc929975
 pkgrel=1
 pkgdesc="Puzzle/platform game in which you try to reach the exit by solving puzzles. Forked by Jz Pan (acmepjz)."
 arch=('i686' 'x86_64')
@@ -23,6 +23,11 @@ pkgver() {
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
+}
+
+prepare() {
+	cd "$_gitname"
+	sed -i 's|Find_Package (Lua REQUIRED)|Find_Package (Lua 5.2 EXACT REQUIRED)|' CMakeLists.txt
 }
 
 build() {
