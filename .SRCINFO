@@ -1,6 +1,6 @@
 pkgbase = nextcloud-desktop-git
 	pkgdesc = Nextcloud desktop client
-	pkgver = 2.3.3
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://nextcloud.com/
 	arch = i686
@@ -13,6 +13,7 @@ pkgbase = nextcloud-desktop-git
 	depends = hicolor-icon-theme
 	depends = xdg-utils
 	depends = qt5-webengine
+	depends = qt5-svg
 	optdepends = python2-nautilus: integration with Nautilus
 	optdepends = nemo-python: integration with Nemo
 	provides = nextcloud-client

@@ -1,14 +1,14 @@
 # Maintainer: Tyler Dence <tyzoid@archlinux32.org>
 
 pkgname=nextcloud-desktop-git
-pkgver='2.3.3'
+pkgver='2.5.0'
 pkgrel='1'
 pkgdesc='Nextcloud desktop client'
 arch=('i686' 'x86_64')
 url='https://nextcloud.com/'
 license=('GPL2')
 makedepends=('cmake' 'qt5-tools')
-depends=('qtkeychain' 'qt5-webkit' 'hicolor-icon-theme' 'xdg-utils' 'qt5-webengine')
+depends=('qtkeychain' 'qt5-webkit' 'hicolor-icon-theme' 'xdg-utils' 'qt5-webengine' 'qt5-svg')
 optdepends=(
   'python2-nautilus: integration with Nautilus'
   'nemo-python: integration with Nemo'
