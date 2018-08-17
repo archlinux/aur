@@ -1,4 +1,5 @@
-# Maintainer: Sven Frenzel <aur@frenzel.dk>
+# Maintainer: Donald Webster <fryfrog@gmail.com>
+# Helpful url: https://ci.appveyor.com/project/Lidarr/lidarr/branch/develop/artifacts
 
 pkgname="lidarr-develop"
 pkgver="0.3.1.483"
