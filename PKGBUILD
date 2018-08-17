@@ -3,7 +3,7 @@
 
 pkgname=itch-bin
 pkgver=23.6.3
-pkgrel=2
+pkgrel=3
 pkgdesc="The best way to play itch.io games."
 
 arch=('i686' 'x86_64')
@@ -21,8 +21,9 @@ install="itch.install"
 [ "$CARCH" = "x86_64" ] && _ELECTRON_ARCH=x64;  _ITCH_ARCH=amd64
 
 # sic. - source is in itch repo, kitch is a dummy repo for canary-channel github releases
-source=("https://github.com/itchio/itch/releases/download/v${pkgver}/itch-${pkgver}-${_ITCH_ARCH}.tar.xz")
-sha256sums=('d9015929cecf5d68c05b109dc462ee42d457f7e7a5feb8885678fcc355ae8212')
+source=("https://github.com/itchio/itch/releases/download/v${pkgver}/itch-${pkgver}-${_ITCH_ARCH}.tar.xz" 
+"extras.tar.gz")
+sha256sums=('d9015929cecf5d68c05b109dc462ee42d457f7e7a5feb8885678fcc355ae8212' '66da55a3c7700a411aadc70123ac3bff4ba4a529683381fa9dd14ef303065799')
 
 prepare() {
   basedir=`cd .. && pwd`;
