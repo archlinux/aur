@@ -60,7 +60,7 @@ _1k_HZ_ticks=
 pkgbase=linux-bfq-mq
 #pkgbase=linux-custom       # Build kernel with a different name
 _major=4.18
-pkgver=4.18.1
+pkgver=4.18.2
 _srcpatch="${pkgver}"
 _srcname="linux-${pkgver}"
 pkgrel=1
@@ -100,7 +100,7 @@ source=(# mainline kernel patches
         '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch'
         '0002-Increase-timeout-in-lspcon_wait_mode.patch')
 
-sha256sums=('725fadc6e9d5a1ad6d7269bb75b256bccac5372927995ad0408c059d110cfa42'
+sha256sums=('d56082dd9d895c32ab5d898096abb3e7f5525bb0a603e5c3be9f83921484eda5'
             'SKIP'
             '9f7177679c8d3f8d699ef0566a51349d828436dba04603bc2223f98c60d2d178'
             'c054840ef3df56d5b3ce574c5bf158b10a41bab4a1edc48a50b5b97c2f12b751'
@@ -276,7 +276,8 @@ _package() {
   msg2 "Installing modules..."
   local modulesdir="$pkgdir/usr/lib/modules/$kernver"
   mkdir -p "$modulesdir"
-  make INSTALL_MOD_PATH="$pkgdir/usr" DEPMOD=/doesnt/exist modules_install
+  # make INSTALL_MOD_PATH="$pkgdir/usr" DEPMOD=/doesnt/exist modules_install
+  make INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
 
   # a place for external modules,
   # with version file for building modules and running depmod from hook
