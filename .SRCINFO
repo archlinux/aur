@@ -1,7 +1,7 @@
 pkgbase = ttf-bitstream-charter
-	pkgdesc = OTF and TTF versions of a serif typeface designed by Matthew Carter for low resolution devices
+	pkgdesc = TTF version of a serif typeface designed by Matthew Carter for low resolution devices
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://practicaltypography.com/charter.html
 	arch = any
 	license = custom
