@@ -9,6 +9,7 @@ pkgbase = netclasses
 	groups = gnustep-apps
 	license = GPL2
 	makedepends = gcc-objc
+	makedepends = gnustep-make
 	depends = gnustep-base
 	depends = gnustep-gui
 	source = http://savannah.nongnu.org/download/gap/netclasses-1.1.0.tar.gz

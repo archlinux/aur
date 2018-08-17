@@ -9,7 +9,7 @@ url='http://gap.nongnu.org/talksoup/index.html'
 license=('GPL2')
 groups=('gnustep-apps')
 depends=('gnustep-base' 'gnustep-gui')
-makedepends=('gcc-objc')
+makedepends=('gcc-objc' 'gnustep-make')
 source=("http://savannah.nongnu.org/download/gap/netclasses-1.1.0.tar.gz")
 sha256sums=('d7d783c5b85abb289ef2fbb4bbf709eacb631e6ddf5a78e26fa45b94fb717f40')
 
