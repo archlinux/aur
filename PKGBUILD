@@ -5,8 +5,8 @@ pkgname=linux-usermode
 true && pkgname=(linux-usermode linux-usermode-modules)
 pkgbase=linux-usermode
 _kernelname=-usermodelinux
-_srcname=linux-4.17
-pkgver=4.17.3
+_srcname=linux-4.18
+pkgver=4.18.1
 pkgrel=1
 pkgdesc="User mode Linux kernel and modules"
 arch=('x86_64')
@@ -16,14 +16,14 @@ depends=('coreutils')
 makedepends=('bc' 'inetutils' 'gcc7')
 source=(
   http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
-  http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.{xz,sign}
+#  http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.{xz,sign}
+  http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz
   config)
 
-sha256sums=('9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13'
+sha256sums=('19d8bcf49ef530cd4e364a45b4a22fa70714b70349c8100e7308488e26f1eaf1'
             'SKIP'
-            '01d5cc024dcfed615f84fd83be9c248261d8fc2c062520d38397cead6857b596'
-            'SKIP'
-            'a3ae8758ea7e1bec8f0dcaf4802f2985d96b6ab3178bc041faf6e00fd9d95ceb')
+            'f0580daf3ea0716301c929be78c09db4dc3d8add65a1da392c2fc2c841244e8c'
+            '10ef174f9512a35cce7ffa93ead6ae3e01ccd7df0d9bdba909024cdade67c082')
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -67,7 +67,8 @@ package_linux-usermode-modules() {
 
   cd "${srcdir}/${_srcname}"
 
-  # get kernel version
+  # get kernel version, but discard the first result
+  make ARCH=um kernelrelease > /dev/null
   _kernver="$(make ARCH=um kernelrelease)"
 
   #  make ARCH=um INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
