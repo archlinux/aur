@@ -1,5 +1,5 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
-# Maintainer: Devin Buhl <devin.kray@gmail.com>
+# Helpful url: https://ci.appveyor.com/project/galli-leo/radarr-usby1/branch/develop/artifacts
 pkgname="radarr-develop"
 pkgver="0.2.0.1160"
 _pkghash="ykp56g10c2xkm2j6"
