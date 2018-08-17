@@ -51,7 +51,7 @@ _1k_HZ_ticks=
 pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
 _major=4.18
-_minor=1
+_minor=2
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
 pkgrel=1
@@ -213,7 +213,8 @@ _package() {
   msg2 "Installing modules..."
   local modulesdir="$pkgdir/usr/lib/modules/$kernver"
   mkdir -p "$modulesdir"
-  make INSTALL_MOD_PATH="$pkgdir/usr" DEPMOD=/doesnt/exist modules_install
+  # make INSTALL_MOD_PATH="$pkgdir/usr" DEPMOD=/doesnt/exist modules_install
+  make INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
 
   # a place for external modules,
   # with version file for building modules and running depmod from hook
@@ -360,7 +361,7 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('3c1646a49b3cc2d94e572549e75b111b6e580c507e6acd7e31fbb3126c61c0c3b36a158971714b1b0013ff7cf8410a84dce761c832f00644860e34e3700b729b'
+sha512sums=('9b96541ffba6c8fc79dc5847dddeab904bd719400dc82f1b41d38df442d3cefc08ec64177067c4b34d5dddef88c6aa58586bd0e0d4822ef81c04c4f3a1bc7e0f'
             'SKIP'
             'e62aa377a0acc4f63f394e27a0fb7316583ff1a6a6afdfcc97593ddffd7d2bc224cfd70b552cb3fb9513cf6b8db4c2fd913d21ec2380db8cd642e37d4d67370c'
             '675e4f2d9ec025e26bf50e6ebac2cea657fa75f1264ce4de20dfa874b68ce5b46756b94f7f4668f2b44e956ed9a5ded32aadd58bf0f12ff477bc18d46f1df195'
