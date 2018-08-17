@@ -21,7 +21,8 @@ optdepends=(
   'matlab: MATLAB programming interface support, versions 2008b onwards'
 )
 source=(
-  "${_basename}${pkgver}_linux64.tar.gz::file://${_basename}${pkgver}_linux64.tar.gz"
+#  "${_basename}${pkgver}_linux64.tar.gz::file://${_basename}${pkgver}_linux64.tar.gz"
+  "https://packages.gurobi.com/8.0/gurobi8.0.1_linux64.tar.gz"
   "gurobi.sh"
   "gurobi_setup.m"
 )
