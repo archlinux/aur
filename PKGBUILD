@@ -1,7 +1,7 @@
 # Maintainer: Andy Kluger <AndyKluger@gmail.com>
 # Contributor: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-git
-pkgver=r1115.0d6e7af
+pkgver=r1137.ffc50ab3
 pkgrel=1
 pkgdesc='A slender monospace sans-serif and slab-serif typeface inspired by Pragmata Pro, M+ and PF DIN Mono.'
 arch=('any')
@@ -22,7 +22,7 @@ pkgver() {
 build() {
   cd Iosevka
   npm install
-  make
+  npm run build -- contents:iosevka
 }
 
 package() {
