@@ -3,7 +3,7 @@ _pkgname=pcgen
 pkgname=${_pkgname}-git
 provides=(pcgen)
 pkgrel=1
-pkgver=6.07.08.g4f0948c954
+pkgver=6.07.08.ga8acb6c65b
 conflicts=(pcgen)
 pkgdesc="An RPG Character Generator."
 arch=(any)
@@ -31,7 +31,7 @@ pkgver(){
 
 build(){
     cd "${srcdir}/${pkgname}"
-    ./gradlew
+    ./gradlew build
 }
 
 package(){
@@ -44,7 +44,7 @@ package(){
   install -Dm644 ${pkgname}/output/pcgen-batch-convert.jar "${pkgdir}/usr/share/java/pcgen/pcgen-batch-convert.jar"
   install -Dm644 ${pkgname}/code/src/images/PCGenApp.png \
     "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${_pkgname}.png"
-  for dir in data docs output/libs outputsheets plugins preview system; do
+  for dir in data docs libs outputsheets plugins preview system; do
     cp -a ${pkgname}/$dir ${pkgdir}/usr/share/java/${_pkgname}/
   done
 }
