@@ -1,14 +1,14 @@
 # Maintainer:  Mike Polvere <mic.tjs@gmail.com>
 
 pkgname=libretro-mess-git
-pkgver=58759.0e48418d26
+pkgver=60457.77ee2b9128
 pkgrel=1
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 pkgdesc="libretro implementation of MAME. (MESS Port)"
 url="https://github.com/libretro/mame"
 license=('custom:MAME License')
 groups=('libretro')
-depends=('zlib' 'glibc' 'libretro-core-info')
+depends=('gcc-libs' 'glibc')
 makedepends=('git' 'python2')
 
 _libname=mess_libretro

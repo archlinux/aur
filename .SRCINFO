@@ -1,6 +1,6 @@
 pkgbase = libretro-mess-git
 	pkgdesc = libretro implementation of MAME. (MESS Port)
-	pkgver = 58759.0e48418d26
+	pkgver = 60457.77ee2b9128
 	pkgrel = 1
 	url = https://github.com/libretro/mame
 	arch = i686
@@ -12,9 +12,8 @@ pkgbase = libretro-mess-git
 	license = custom:MAME License
 	makedepends = git
 	makedepends = python2
-	depends = zlib
+	depends = gcc-libs
 	depends = glibc
-	depends = libretro-core-info
 	source = git+https://github.com/libretro/mame.git
 	md5sums = SKIP
 
