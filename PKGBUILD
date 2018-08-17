@@ -2,41 +2,41 @@
 # Contributor: Tri Le <trile7@gmail.com>
 # Contributor: libc <primehunter326@gmail.com>
 # Contributor: Albert Nguyen <albertbmnguyen@yahoo.com>
+# Contributor: Maxim Devaev <mdevaev@gmail.com>
 
-pkgname=mjpg-streamer
-pkgver=r63
-pkgrel=5
+
+pkgname="mjpg-streamer"
+pkgver="r67"
+pkgrel="1"
 pkgdesc="Stream mjpeg frames from a webcam via http"
-arch=('any')
-url="http://sourceforge.net/projects/mjpg-streamer"
-license=('GPL')
-groups=(multimedia)
-depends=(libjpeg imagemagick)
-makedepends=(gcc)
-provides=(mjpeg-streamer)
-options=(!makeflags)
-source=("http://downloads.sourceforge.net/project/mjpg-streamer/mjpg-streamer/Sourcecode/$pkgname-$pkgver.tar.gz" "uvc.patch")
+url="https://github.com/jacksonliam/mjpg-streamer"
+license=("GPL")
+arch=("i686" "x86_64" "armv6h" "armv7h")
+depends=("libjpeg")
+makedepends=("gcc" "cmake")
 
-prepare() {
-  cd "$srcdir"
-  patch -p0 < uvc.patch
-  cd "$srcdir/$pkgname-$pkgver"
-  find . -type f -print0 | xargs -0 sed -i s/videodev.h/videodev2.h/g
-  sed -i "s/make -C plugins\/input_gspcav1/# make -C plugins\/input_gspcav1/" Makefile
-  sed -i "s/cp plugins\/input_gspcav1\/input_gspcav1.so/# cp plugins\/input_gspcav1\/input_gspcav1.so/" Makefile
+_commit="f387bb44e6c087271b763b27da998bf2e06c4f5d"
+source=("https://github.com/jacksonliam/mjpg-streamer/archive/$_commit.tar.gz")
+sha1sums=("298ad7adebe3876b87d4e19f76e4d2425fd0c9ff")
+
+
+build() {
+	cd "$srcdir/mjpg-streamer-$_commit/mjpg-streamer-experimental"
+
+	unset CPPFLAGS
+	unset LDFLAGS
+	unset CXXFLAGS
+	unset CHOST
+	unset CFLAGS
+
+	[ -d _build ] || mkdir _build
+	[ -f _build/Makefile ] || (cd _build && cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=$(CMAKE_BUILD_TYPE) ..)
+	make -C _build
+	cp _build/mjpg_streamer .
+	find _build -name "*.so" -type f -exec cp {} . \;
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make clean all || return 1
-  mkdir -p $pkgdir/usr/share/mjpeg-streamer/www/
-  mkdir -p $pkgdir/usr/lib
-  install *.so $pkgdir/usr/lib/
-  install -m 644 www/* $pkgdir/usr/share/mjpeg-streamer/www/
-  install -m 755 www/functions.js $pkgdir/usr/share/mjpeg-streamer/www/
-  mkdir -p $pkgdir/usr/bin
-  install mjpg_streamer $pkgdir/usr/bin/
-  install -m 644 CHANGELOG LICENSE README start.sh $pkgdir/usr/share/mjpeg-streamer/
+	cd "$srcdir/mjpg-streamer-$_commit/mjpg-streamer-experimental"
+	make DESTDIR=$pkgdir install
 }
-
-md5sums=('1c424b5441a2bf8379cdecd7dbebc935' 'edcdd714d87411d0daba9f8a336d6b82')
