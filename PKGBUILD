@@ -4,7 +4,7 @@
 pkgbase=mariadb-mainline-noconflict
 _pkgbase=mariadb
 pkgname=('mariadb-mainline-noconflict' 'libmariadbclient-mainline-noconflict' 'mariadb-clients-mainline-noconflict' 'mytop-mainline-noconflict')
-pkgver=10.3.8
+pkgver=10.3.9
 pkgrel=1
 pkgdesk="MariaDB mainline version with libmysqlclient.so.18 (mariadb 10.1 compatible)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ url='http://mariadb.org/'
 makedepends=('cmake' 'zlib' 'libaio' 'libxml2' 'openssl' 'jemalloc' 'lz4' 'boost' 'libevent' 'systemd' 'coreutils')
 validpgpkeys=('199369E5404BD5FC7D2FE43BCBCB082A1BB943DB') # MariaDB Package Signing Key <package-signing-key@mariadb.org>
 source=("https://ftp.heanet.ie/mirrors/mariadb/mariadb-$pkgver/source/mariadb-$pkgver.tar.gz"{,.asc})
-sha256sums=('30bec17514d12d811a05757be46bd41724df28002cdec550d5c757b0b3f31ab8'
+sha256sums=('561c6969bbd24dbb22d1d196a6b037665389b91e6dab881f39c5616389f156f4'
             'SKIP')
 
 prepare() {
@@ -85,7 +85,7 @@ build() {
 }
 
 package_libmariadbclient-mainline-noconflict() {
-  pkgdesc='MariaDB client libraries'
+  pkgdesc='MariaDB-mainline client libraries'
   depends=('openssl' 'libaio' 'zlib' 'lz4' 'lzo' 'xz')
   conflicts=('libmysqlclient' 'libmariadbclient')
   provides=("libmysqlclient=$pkgver" "libmariadbclient=$pkgver")
@@ -110,7 +110,7 @@ package_libmariadbclient-mainline-noconflict() {
 }
 
 package_mariadb-clients-mainline-noconflict() {
-  pkgdesc='MariaDB client tools'
+  pkgdesc='MariaDB-mainline client tools'
   depends=("libmariadbclient-mainline-noconflict=${pkgver}" 'zlib' 'openssl' 'jemalloc')
   conflicts=('mysql-clients' 'mariadb-clients')
   provides=("mysql-clients=$pkgver" "mariadb-clients=$pkgver")
@@ -126,7 +126,7 @@ package_mariadb-clients-mainline-noconflict() {
 }
 
 package_mytop-mainline-noconflict() {
-  pkgdesc='Top clone for MariaDB'
+  pkgdesc='Top clone for MariaDB-mainline'
   depends=('perl' 'perl-dbd-mysql' 'perl-term-readkey')
   conflicts=('mytop')
   provides=("mytop=$pkgver")
@@ -137,7 +137,7 @@ package_mytop-mainline-noconflict() {
 }
 
 package_mariadb-mainline-noconflict() {
-  pkgdesc='Fast SQL database server, drop-in replacement for MySQL'
+  pkgdesc='MariaDB mainline version with libmysqlclient.so.18 (mariadb 10.1 compatible)'
   backup=('etc/mysql/my.cnf'
           'etc/mysql/wsrep.cnf')
   install=mariadb.install
