@@ -4,7 +4,7 @@
 
 pkgname=phoronix-test-suite-milestone
 pkgver=8.2.0m2
-pkgrel=1
+pkgrel=2
 pkgdesc="The most comprehensive testing and benchmarking platform available for Linux, milestone version"
 arch=('any')
 license=('GPL3')
@@ -40,6 +40,9 @@ package() {
 
   install -D "${srcdir}/phoronix-test-suite-${pkgver}"/pts-core/external-test-dependencies/xml/arch-packages.xml \
              "${pkgdir}"/usr/share/phoronix-test-suite/pts-core/external-test-dependencies/xml/arch-packages.xml
+
+  install -D "${srcdir}/phoronix-test-suite-${pkgver}"/pts-core/external-test-dependencies/xml/generic-packages.xml \
+             "${pkgdir}"/usr/share/phoronix-test-suite/pts-core/external-test-dependencies/xml/generic-packages.xml
 
   sed -e "s/^export PTS_DIR=.*/export PTS_DIR=\/usr\/share\/phoronix-test-suite/g" -i ${pkgdir}/usr/bin/phoronix-test-suite
 }
