@@ -10,7 +10,7 @@ url="http://www.nongnu.org/gap/addresses/index.html"
 license=('GPL')
 groups=('gnustep-apps')
 depends=('gnustep-base' 'gnustep-gui' 'gnustep-back')
-makedepends=('gcc-objc'
+makedepends=('gcc-objc' 'gnustep-make'
              'gnustep-make')
 source=("http://savannah.nongnu.org/download/gap/$_pkgname-$pkgver.tar.gz")
 sha256sums=('329531bfd31db1845f3af385c1c2448f308b1bf28af5ee7d4f50f403dbb6ac0a')
