@@ -1,0 +1,4 @@
+*.pkg.*
+git-bug_linux_amd64
+/pkg
+/src
