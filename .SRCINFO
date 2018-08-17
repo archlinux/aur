@@ -1,26 +1,21 @@
 pkgbase = exodus
 	pkgdesc = All-in-one app to secure, manage and exchange blockchain assets
-	pkgver = 1.57.0
-	pkgrel = 2
+	pkgver = 1.58.0
+	pkgrel = 1
 	url = https://exodus.io
 	arch = x86_64
 	license = custom:"Copyright © 2017 Exodus"
-	makedepends = patchelf
 	depends = gconf
 	depends = gtk2
 	depends = nss
 	depends = libxss
-	noextract = glibc-2.27-3-x86_64.pkg.tar.xz
-	options = !strip
-	options = staticlibs
-	source = https://exodusbin.azureedge.net/releases/exodus-linux-x64-1.57.0.zip
+	depends = glibc>=2.28-4
+	source = https://exodusbin.azureedge.net/releases/exodus-linux-x64-1.58.0.zip
 	source = http://marceloneil.com/exodus-icons/icons.zip
 	source = exodus.desktop
-	source = https://archive.archlinux.org/packages/g/glibc/glibc-2.27-3-x86_64.pkg.tar.xz
-	sha256sums = fc4e439274f8ff93e893c0c878e20b0f04f97d5b4ec668814549daad0b8ecf93
+	sha256sums = ec71068851075b535764bfb66ebb4445c043f5ff3d8517b1874aad2db0dc36ae
 	sha256sums = 5f3da3a79fea80477f38e698a2ea1723320f4b3fc90bf7d615dab12af0d34c1a
 	sha256sums = 04676d81272a35a91150a7eec4640e69ca50f2e479d29fad8be90160ee74122c
-	sha256sums = a9e1b18d7f613be660556dbd6883781e88a0f5113230147e230d3e2f268792dc
 
 pkgname = exodus
 
