@@ -1,0 +1,20 @@
+pkgbase = waiho.app
+	pkgdesc = GUI FTP client with ability to queue files and directories
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://www.roard.com/waiho/description.html
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	groups = gnustep-apps
+	license = GPL2
+	makedepends = gcc-objc
+	makedepends = gnustep-make
+	depends = gnustep-base
+	depends = gnustep-gui
+	depends = gnustep-back
+	source = http://www.roard.com/waiho/download/Waiho-0.2.tgz
+	sha256sums = e3f496896a82766e2b2a4dc41bb9c7b5bb2e97cbdb6e46cc19925134f4c9d06c
+
+pkgname = waiho.app
+
