@@ -50,8 +50,8 @@ _1k_HZ_ticks=
 
 pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
-_major=4.17
-_minor=15
+_major=4.18
+_minor=1
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
 pkgrel=1
@@ -62,7 +62,8 @@ options=('!strip')
 makedepends=('kmod' 'inetutils' 'bc' 'libelf')
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
-_uksm_path="https://raw.githubusercontent.com/dolohow/uksm/master"
+#_uksm_path="https://raw.githubusercontent.com/dolohow/uksm/master"
+_uksm_path="https://raw.githubusercontent.com/zaza42/uksm/master"
 _uksm_patch="uksm-${_major}.patch"
 _gcc_path="https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+.patch"
@@ -82,9 +83,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
          # standard config files for mkinitcpio ramdisk
         'linux.preset'
         '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch'
-        '0002-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch'
-        '0003-ACPI-watchdog-Prefer-iTCO_wdt-always-when-WDAT-table.patch'
-        '0004-mac80211-disable-BHs-preemption-in-ieee80211_tx_cont.patch')
+        '0002-Increase-timeout-in-lspcon_wait_mode.patch')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-uksm} 
@@ -361,19 +360,17 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('dee98912491515e338ace15243c35d74069aa70d6a69375c059ab63989c95ca9c0a388cee299448b5530bd069f843846f5d3e72fdc2a527b7ec7a5fd2b972b82'
+sha512sums=('3c1646a49b3cc2d94e572549e75b111b6e580c507e6acd7e31fbb3126c61c0c3b36a158971714b1b0013ff7cf8410a84dce761c832f00644860e34e3700b729b'
             'SKIP'
             'e62aa377a0acc4f63f394e27a0fb7316583ff1a6a6afdfcc97593ddffd7d2bc224cfd70b552cb3fb9513cf6b8db4c2fd913d21ec2380db8cd642e37d4d67370c'
-            '30fc872a19686bd75b0cfa0614980a41d74f4cd40c9fd2c98f82ab4554ad39ccd7ddace9068f354572c1bdf14eed55c8e6d3390127c1a83ec093cf1487a31a0d'
-            '9235b48da7c4be217c275cea1760b542254585fe63bf2c0768b693081793ee27303e6b559575a1cbf33a9440c4e89ae9d9acf61bdd6e608ebd43426df5c322ce'
+            '675e4f2d9ec025e26bf50e6ebac2cea657fa75f1264ce4de20dfa874b68ce5b46756b94f7f4668f2b44e956ed9a5ded32aadd58bf0f12ff477bc18d46f1df195'
+            '75ca5b63bfa3e70b1a413922952f6cfcdbfe0a6c02460d923a159c33ffa25996b91e27402e27e689e6cb9231a5180a1a38b5778d0394d444ec9738437269098d'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '4a8b324aee4cccf3a512ad04ce1a272d14e5b05c8de90feb82075f55ea3845948d817e1b0c6f298f5816834ddd3e5ce0a0e2619866289f3c1ab8fd2f35f04f44'
             '6346b66f54652256571ef65da8e46db49a95ac5978ecd57a507c6b2a28aee70bb3ff87045ac493f54257c9965da1046a28b72cb5abb0087204d257f14b91fd74'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
-            'd7160f9a3560c95736d43bc75601a73d507c55b80bd8466bc60b19209fd5d672312db34572bc813df9df4322906032d55ce744df1c05db4bbde014ae92f6241e'
-            'ea157e29d4c7d2121586eb1dbcbbb3b15a3cf0074469fbc957ba3f660f71cfe2825da7d7d58824c22d02abbe7995d32491ec381741c5e7ae83e88f6e14944d6e'
-            '8f70e4145486c1567c58663bcd9b6e2e519d21f682103edefd916ec9cd1275802f61685dc0f8255471023fd39591f3bbd7ad9293751f6cd3d33580b664d44b3d'
-            'f82aecc333581c08b75014a39504c184724802203551b601354452b18ae80e69b5fc8d14f1eb86f75423e9907e13dbe7dbede8758be6477a42dd85238c229b05')
+            '9dac5b65f2af3e4e6d0881e8367a818b67fef81c254e5e8ce971c76edd078516dea913771a77ca54a7c2f25250e29da93a8f4afa55b337b05df0a5bf291e6b03'
+            'e8e05699aa8028fd498d9b5d055fd15e04012411e2948a0751bd9342265365fdebc197203919b9371da935960a5393f4161d6e0b396472e11837fa8563077bae')
             
 validpgpkeys=(
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
