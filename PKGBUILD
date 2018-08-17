@@ -7,6 +7,7 @@ url="https://github.com/bulletmark/$pkgname"
 license=("GPL3")
 arch=("any")
 depends=("python")
+makedepends=("python-setuptools")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 md5sums=('50bbc9e3b856b29fe53e0a97a1191838')
 
