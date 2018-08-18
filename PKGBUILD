@@ -2,7 +2,7 @@
 # Contributor:
 
 pkgname=progit2
-pkgver=2.1.51
+pkgver=2.1.82
 pkgrel=1
 pkgdesc="The offline version of the entire Pro Git book, written by Scott Chacon and Ben Straub"
 arch=('any')
@@ -24,7 +24,7 @@ source=(
     "https://github.com/progit/progit2/archive/${pkgver}.tar.gz"
 )
 sha512sums=(
-    068a78ea590aefdc11ddd49c6fde39883d72ce55593fddd38e2be2e14976e68b6609e69515863a8374b72fcb40b413d4c0763ee9fbd84fdffc69ef2e796194df
+    '9dfcee7dd16d53f90a0b89ace0efb112b766da1f1ff10223f4de148e40806071bbe1e5085342835e2e3ff4ccc75b7c1168b27fd0cfd20259fa76043e12774eef'
 )
 
 prepare() {
