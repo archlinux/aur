@@ -4,9 +4,9 @@
 
 pkgname=libbitcoin-system-git
 pkgver=20170307
-pkgrel=3
+pkgrel=4
 pkgdesc="Bitcoin Cross-Platform C++ Development Toolkit"
-arch=('i686' 'x86_64')
+arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 depends=('boost'
          'boost-libs'
          'icu'
