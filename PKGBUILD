@@ -1,13 +1,13 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 # Maintainer: Daniel Egeberg <daniel.egeberg@gmail.com>
 pkgname="nzbhydra2"
-pkgver=1.5.2
+pkgver=2.0.0
 pkgrel=2
 pkgdesc="Meta search for NZB indexers"
 arch=('any')
 url="https://github.com/theotherp/nzbhydra2"
 license=('Apache')
-depends=('python2' 'java-runtime-headless=8')
+depends=('python2' 'java-runtime-headless>=8')
 
 source=("https://github.com/theotherp/nzbhydra2/releases/download/v${pkgver}/${pkgname}-${pkgver}-linux.zip"
         "nzbhydra2wrapper-${pkgver}-${pkgrel}.py::https://raw.githubusercontent.com/theotherp/nzbhydra2/master/other/wrapper/nzbhydra2wrapper.py"
@@ -15,8 +15,8 @@ source=("https://github.com/theotherp/nzbhydra2/releases/download/v${pkgver}/${p
         'nzbhydra2.tmpfiles'
         'nzbhydra2.sysusers')
 
-sha256sums=('031c93c71d4f8d1bf7f7bb7eb91e29f46b4b503467e55db5d298f0e31da9ad4f'
-            '4e47c49941726f701decc6e7dfa6fbeb3ce00ea4311f9033ec3a73d3afe4be6c'
+sha256sums=('3fda9ab41f1121253b8ceac3c3a89a235adeb25f584d39c60d5ce3232d3026ac'
+            '997ef5dc72846640c07330fdf936f8ca3771c2508761284a84089ac0039b30e0'
             '8c864fa865c92a6e0182f4dd3d4032ad85f09d021444cca217efafecbeff33c3'
             '464bffa0e7bf99ccd7bbcdb787b25b53b7692f86f081a4fe347b92f88c56fb09'
             '8f91eb4f98f7f5c11590b29b1394dfa7ca62ad115feeac4f402c9ac094fb925a')
