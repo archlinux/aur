@@ -1,6 +1,6 @@
 pkgbase = eclipse-jubula
 	pkgdesc = Jubula plugins for Eclipse IDE to create functional GUI tests
-	pkgver = 5.0.0
+	pkgver = 6.0.0
 	pkgrel = 1
 	url = http://eclipse.org/jubula/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = eclipse-jubula
 	depends = eclipse>=4.6.0,
 	depends = eclipse-common
 	options = !strip
-	source = https://hudson.eclipse.org/jubula/job/jubula-oxygen/5/artifact/org.eclipse.jubula.core/org.eclipse.jubula.repo/target/org.eclipse.jubula.repo-5.0.0-SNAPSHOT.zip
-	sha256sums = 8daadcfc3ca1c1963881edf694101dbd793e760f5ab4d3165d4902acddc6cc6c
+	source = https://hudson.eclipse.org/jubula/job/jubula-photon/3/artifact/org.eclipse.jubula.core/org.eclipse.jubula.repo/target/org.eclipse.jubula.repo-6.0.0-SNAPSHOT.zip
+	sha256sums = 2c657061966153d012f5b0ff253caf7d4c56e97792078396d5fb2053f749f0b2
 
 pkgname = eclipse-jubula
 

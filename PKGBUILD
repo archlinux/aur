@@ -1,9 +1,9 @@
 #Maintainer: Raimar Buehmann <raimar at buehmann dot de>
 
 pkgname=eclipse-jubula
-pkgver=5.0.0
-_eclipseName=oxygen
-_buildNumber=5
+pkgver=6.0.0
+_eclipseName=photon
+_buildNumber=3
 pkgrel=1
 pkgdesc='Jubula plugins for Eclipse IDE to create functional GUI tests'
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('java-environment-common')
 options=('!strip')
 source=(
 "https://hudson.eclipse.org/jubula/job/jubula-${_eclipseName}/${_buildNumber}/artifact/org.eclipse.jubula.core/org.eclipse.jubula.repo/target/org.eclipse.jubula.repo-${pkgver}-SNAPSHOT.zip")
-sha256sums=('8daadcfc3ca1c1963881edf694101dbd793e760f5ab4d3165d4902acddc6cc6c')
+sha256sums=('2c657061966153d012f5b0ff253caf7d4c56e97792078396d5fb2053f749f0b2')
 
 package() {
   # remove features and plug-ins contain sources
