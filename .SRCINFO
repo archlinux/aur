@@ -1,19 +1,23 @@
 pkgbase = zfs-linux-hardened
-	pkgver = 0.7.9_4.17.14.a.1
+	pkgver = 0.7.9_4.18.2.a.1
 	pkgrel = 2
 	url = http://zfsonlinux.org/
 	arch = x86_64
 	license = CDDL
-	makedepends = linux-hardened-headers=4.17.14.a-1
+	makedepends = linux-hardened-headers=4.18.2.a-1
 	makedepends = spl-linux-hardened-headers
 	depends = kmod
 	depends = spl-linux-hardened
 	depends = zfs-utils-common=0.7.9
-	depends = linux-hardened=4.17.14.a-1
+	depends = linux-hardened=4.18.2.a-1
 	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.9/zfs-0.7.9.tar.gz
 	source = upstream-ac09630-Fix-zpl_mount-deadlock.patch
+	source = upstream-9f64c1e-Linux-4.18-compat-inode-timespec_timespec64.patch
+	source = upstream-9161ace-Linux-compat-4.18-check_disk_size_change.patch
 	sha256sums = f50ca2441c6abde4fe6b9f54d5583a45813031d6bb72b0011b00fc2683cd9f7a
 	sha256sums = 1799f6f7b2a60a23b66106c9470414628398f6bfc10da3d0f41c548bba6130e8
+	sha256sums = 03ed45af40850c3a51a6fd14f36c1adc06501c688a67afb13db4fded6ec9db1d
+	sha256sums = afbde4a2507dff989404665dbbdfe18eecf5aba716a6513902affa0e4cb033fe
 
 pkgname = zfs-linux-hardened
 	pkgdesc = Kernel modules for the Zettabyte File System.
