@@ -1,7 +1,7 @@
 pkgbase = ham-radio-meta
 	pkgdesc = Meta package for ham radio packages.
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	groups = ham-radio
 	depends = chirp-daily
@@ -20,7 +20,7 @@ pkgbase = ham-radio-meta
 	depends = xnec2c
 	depends = gridtracker-bin
 	depends = gqrx
-	depends = tqsl
+	depends = trustedqsl
 
 pkgname = ham-radio-meta
 
