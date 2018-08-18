@@ -1,18 +1,22 @@
 pkgbase = zfs-linux-lts-git
-	pkgver = 2018.08.03.r4665.gc8c308362.4.14.62.1
+	pkgver = 2018.08.17.r4677.g802715b74.4.14.63.1
 	pkgrel = 1
 	url = http://zfsonlinux.org/
 	arch = x86_64
 	license = CDDL
-	makedepends = linux-lts-headers=4.14.62-1
+	makedepends = linux-lts-headers=4.14.63-1
 	makedepends = git
 	depends = kmod
-	depends = zfs-utils-common-git=2018.08.03.r4665.gc8c308362
-	depends = linux-lts=4.14.62-1
-	source = git+https://github.com/zfsonlinux/zfs.git#commit=c8c308362c2f0a43adbe21a44b3443a27d2c7ca9
+	depends = zfs-utils-common-git=2018.08.17.r4677.g802715b74
+	depends = linux-lts=4.14.63-1
+	source = git+https://github.com/zfsonlinux/zfs.git#commit=802715b74a23a58d66028699a99eb141c85b7447
 	source = upstream-ac09630-Fix-zpl_mount-deadlock.patch
+	source = upstream-9f64c1e-Linux-4.18-compat-inode-timespec_timespec64.patch
+	source = upstream-9161ace-Linux-compat-4.18-check_disk_size_change.patch
 	sha256sums = SKIP
 	sha256sums = 1799f6f7b2a60a23b66106c9470414628398f6bfc10da3d0f41c548bba6130e8
+	sha256sums = 03ed45af40850c3a51a6fd14f36c1adc06501c688a67afb13db4fded6ec9db1d
+	sha256sums = afbde4a2507dff989404665dbbdfe18eecf5aba716a6513902affa0e4cb033fe
 
 pkgname = zfs-linux-lts-git
 	pkgdesc = Kernel modules for the Zettabyte File System.
