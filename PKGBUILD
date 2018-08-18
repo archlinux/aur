@@ -19,7 +19,7 @@
 
 pkgbase=kodi-pre-release
 pkgname=("kodi-${pkgbase#kodi-*}" "kodi-eventclients-${pkgbase#kodi-*}" "kodi-tools-texturepacker-${pkgbase#kodi-*}" "kodi-dev-${pkgbase#kodi-*}")
-pkgver=18.0a3
+pkgver=18.0b1
 pkgrel=1
 arch=('x86_64')
 url="http://kodi.tv"
@@ -54,6 +54,7 @@ _libdvdread_version="6.0.0-$_codename-$_rtype"-3
 _fmt_version="3.0.1"
 _crossguid_version="8f399e8bd4"
 _fstrcmp_version="0.7.D001"
+_flatbuffers_version="1.9.0"
 source=(
   "${pkgbase%%-*}-$pkgver-$_codename.tar.gz::https://github.com/xbmc/xbmc/archive/$pkgver-$_codename.tar.gz"
   "ffmpeg-$_ffmpeg_version.tar.gz::https://github.com/xbmc/FFmpeg/archive/$_ffmpeg_version.tar.gz"
@@ -63,6 +64,7 @@ source=(
   "http://mirrors.kodi.tv/build-deps/sources/fmt-$_fmt_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/crossguid-$_crossguid_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/fstrcmp-$_fstrcmp_version.tar.gz"
+  "http://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
   'cheat-sse-build.patch'
   'cpuinfo'
 )
@@ -75,7 +77,7 @@ noextract=(
   "crossguid-$_crossguid_version.tar.gz"
   "fstrcmp-$_fstrcmp_version.tar.gz"
 )
-sha256sums=('f452388b8ce34f9f2d3c002f7e5f28a7b3ad69e8d2be9d775b8ef8f89497d211'
+sha256sums=('2619243e5d97981d2ceac487e8ea65d9eca24b1dfe430ef0e2c291a3c9a9a20f'
             '0e4980abac7b886e0eb5f4157941947be3c10d616a19bd311dc2f9fd2eb6a631'
             '6af3d4f60e5af2c11ebe402b530c07c8878df1a6cf19372e16c92848d69419a5'
             '071e414e61b795f2ff9015b21a85fc009dde967f27780d23092643916538a57a'
@@ -83,6 +85,7 @@ sha256sums=('f452388b8ce34f9f2d3c002f7e5f28a7b3ad69e8d2be9d775b8ef8f89497d211'
             'dce62ab75a161dd4353a98364feb166d35e7eea382169d59d9ce842c49c55bad'
             '3d77d09a5df0de510aeeb940df4cb534787ddff3bb1828779753f5dfa1229d10'
             'e4018e850f80700acee8da296e56e15b1eef711ab15157e542e7d7e1237c3476'
+            '5ca5491e4260cacae30f1a5786d109230db3f3a6e5a0eb45d0d0608293d247e3'
             '304d4581ef024bdb302ed0f2dcdb9c8dea03f78ba30d2a52f4a0d1c8fc4feecd'
             '27387e49043127f09c5ef0a931fffb864f5730e79629100a6e210b68a1b9f2c1')
 
@@ -115,6 +118,8 @@ build() {
     -DENABLE_INTERNAL_FMT=ON \
     -DFSTRCMP_URL="$srcdir/fstrcmp-$_fstrcmp_version.tar.gz" \
     -DENABLE_INTERNAL_FSTRCMP=ON \
+    -DFLATBUFFERS_URL="$srcdir/flatbuffers-$_flatbuffers_version.tar.gz" \
+    -DENABLE_INTERNAL_FLATBUFFERS=ON \
     -DCROSSGUID_URL="$srcdir/crossguid-$_crossguid_version.tar.gz" \
     ../"xbmc-$pkgver-$_codename"
   make
@@ -125,7 +130,7 @@ build() {
 # components: kodi, kodi-bin
 
 package_kodi-pre-release() {
-  pkgdesc="Alpha, Beta, or RC version of a media player and entertainment hub for digital media."
+  pkgdesc="Alpha, Beta, or RC version Kodi."
   depends=(
     'bluez-libs' 'desktop-file-utils' 'freetype2' 'fribidi'
     'hicolor-icon-theme' 'libass' 'libcdio' 'libjpeg-turbo' 'libmariadbclient'
