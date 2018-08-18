@@ -1,0 +1,26 @@
+pkgbase = ham-radio-meta
+	pkgdesc = Meta package for ham radio packages.
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	groups = ham-radio
+	depends = chirp-daily
+	depends = cqrlog
+	depends = fldigi
+	depends = flmsg
+	depends = flrig
+	depends = flxmlrpc
+	depends = gr-ham-git
+	depends = qsstv
+	depends = qtel
+	depends = tlf
+	depends = wsjtx
+	depends = gpredict
+	depends = netlogger
+	depends = xnec2c
+	depends = gridtracker-bin
+	depends = gqrx
+	depends = tqsl
+
+pkgname = ham-radio-meta
+
