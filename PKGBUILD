@@ -7,26 +7,28 @@
 #
 pkgname="zfs-utils-common-git"
 
-pkgver=2018.08.03.r4665.gc8c308362
+pkgver=2018.08.17.r4677.g802715b74
 pkgrel=1
 pkgdesc="Kernel module support files for the Zettabyte File System."
 depends=("python2")
 makedepends=("git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
-source=("git+https://github.com/zfsonlinux/zfs.git#commit=c8c308362c2f0a43adbe21a44b3443a27d2c7ca9"
+source=("git+https://github.com/zfsonlinux/zfs.git#commit=802715b74a23a58d66028699a99eb141c85b7447"
         "zfs-utils.bash-completion-r1"
         "zfs-utils.initcpio.install"
-        "zfs-utils.initcpio.hook")
+        "zfs-utils.initcpio.hook"
+        "zfs-utils.initcpio.zfsencryptssh.install")
 sha256sums=("SKIP"
             "b60214f70ffffb62ffe489cbfabd2e069d14ed2a391fac0e36f914238394b540"
             "335e309ebf5b74fd8956f5e8805939c37d4008b0bcc3b00be6e7ef1d5b7c1669"
-            "3eb874cf2cbb6c6a0e1c11a98af54f682d6225667af944b43435aeabafa0112f")
+            "60ca3ce382c404c1c97873d6a352d0e99b28e948fde4e3f67d92e05f6eb216f0"
+            "29080a84e5d7e36e63c4412b98646043724621245b36e5288f5fed6914da5b68")
 license=("CDDL")
 groups=("archzfs-linux-git")
 provides=("zfs-utils")
 install=zfs-utils.install
-conflicts=('zfs-utils-common' 'spl-utils-common-git')
+conflicts=('zfs-utils-common' 'spl-utils-common' 'spl-utils-common-git')
 replaces=("spl-utils-common-git")
 backup=('etc/zfs/zed.d/zed.rc' 'etc/default/zfs')
 
@@ -57,5 +59,6 @@ package() {
     # Install the support files
     install -D -m644 "${srcdir}"/zfs-utils.initcpio.hook "${pkgdir}"/usr/lib/initcpio/hooks/zfs
     install -D -m644 "${srcdir}"/zfs-utils.initcpio.install "${pkgdir}"/usr/lib/initcpio/install/zfs
+    install -D -m644 "${srcdir}"/zfs-utils.initcpio.zfsencryptssh.install "${pkgdir}"/usr/lib/initcpio/install/zfsencryptssh
     install -D -m644 "${srcdir}"/zfs-utils.bash-completion-r1 "${pkgdir}"/usr/share/bash-completion/completions/zfs
 }
