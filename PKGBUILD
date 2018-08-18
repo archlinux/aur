@@ -4,9 +4,9 @@
 
 pkgname=libbitcoin-network
 pkgver=3.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitcoin P2P Network Library"
-arch=('i686' 'x86_64')
+arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 depends=('boost'
          'boost-libs'
          'icu'
