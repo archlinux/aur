@@ -6,7 +6,7 @@ pkgbase=linux-odroid-u3-git
 pkgmain=linux-odroid
 pkgname=('linux-odroid-u3-git' 'linux-headers-odroid-u3-git')
 _kernelname=${pkgname#linux}
-_basekernel=4.17.14
+_basekernel=4.18.3
 pkgver=${_basekernel}
 pkgrel=1
 arch=('armv7h')
@@ -265,8 +265,8 @@ package_linux-headers-odroid-u3-git() {
   rm -rf "${pkgdir}"/usr/src/linux-${_kernver}/arch/{alpha,arm26,avr32,blackfin,cris,frv,h8300,ia64,m32r,m68k,m68knommu,mips,microblaze,mn10300,parisc,powerpc,ppc,s390,sh,sh64,sparc,sparc64,um,v850,x86,xtensa}
 }
 
-sha256sums=('c846038df44ee74dd910d19b346044a100f62a5b933eec2264d17008758cbaaf'
-            '4bd24a542259d06459bb7764c420cd1e7fa6608a914f8ba3c9d99efcc3ab72fa'
+sha256sums=('81ed3ccef8eb43cba3d2451a963d0bbaf5392af98435d42caee82d019a8443d4'
+            '9baba0ceddc52b11a95713ea45bf685b2a963f246c44e5302f453a75f4db8762'
             '8fa78f0372deb78ad2d24b895c734da95b5bece05729312762b8310e886df7ca'
             '781ec4b25b1e8fc52fa283225fee9240e7c9b37eb68aa3bbb6f6f57e30beaafe'
             'a0deabebc9e00693b514fdaeb70b6888c7c5610e79b41d324026c616c3ec10f7')
