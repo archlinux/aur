@@ -1,0 +1,18 @@
+pkgbase = xaos
+	pkgdesc = A fast portable real-time interactive fractal zoomer
+	pkgver = 3.6
+	pkgrel = 4
+	url = http://matek.hu/xaos/
+	arch = x86_64
+	license = GPL
+	depends = gsl
+	depends = libpng
+	depends = aalib
+	options = !makeflags
+	source = http://downloads.sourceforge.net/sourceforge/xaos/xaos-3.6.tar.gz
+	source = xaos-3.5-build-fix-i686.patch
+	sha1sums = 0c68d25c4f9c8eaf557e37d9e4586a04ab56d7a0
+	sha1sums = d2ea8f0460c79c47fb289a4c2f87fe5c44057f9d
+
+pkgname = xaos
+
