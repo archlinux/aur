@@ -1,6 +1,6 @@
 # Maintainer: Denys Vitali <denys@denv.it>
 pkgname=pong
-pkgver=2.01
+pkgver=2.02
 pkgrel=1
 pkgdesc="pong is not ping. pong is CLI game. "
 reponame=pong-command
