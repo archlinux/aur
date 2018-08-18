@@ -1,19 +1,19 @@
 # Maintainer: Adrià Cereto i Massagué <ssorgatem at gmail.com>
 
 pkgbase=dxvk-wine-git
-pkgname=('dxvk-wine64-git')
-pkgver=0.65_42_g861165f
+pkgname=('dxvk-wine64-git' 'dxvk-wine32-git')
+pkgver=0.70_5_g4c8bf44
 pkgrel=1
 pkgdesc="A Vulkan-based compatibility layer for Direct3D 11 and 10 which allows running 3D applications on Linux using Wine. Winelib version"
 arch=('x86_64')
 url="https://github.com/doitsujin/dxvk"
 license=('zlib/libpng')
-depends=('vulkan-icd-loader' 'wine>=3.10')
+depends=('vulkan-icd-loader' 'wine>=3.14' 'winetricks')
 makedepends=('ninja' 'meson>=0.43' 'glslang' 'git' 'wine')
 source=(dxvk-src::"git+https://github.com/doitsujin/dxvk.git" 
-    fix_dll_dir.diff
+    setup_dxvk_aur.verb
     )
-sha256sums=("SKIP" "c9c1733a8f1e159c1c38e1f1448a2c9d60d8d31c86b9431eddd3f68a2038532d")
+sha256sums=("SKIP" "b441fc757176718b2601aab73987fb103ddd7cd4a4c3587de1e88d73e762be6b")
 
 pkgver() {
         cd dxvk-src
@@ -23,25 +23,34 @@ pkgver() {
 
 build() {
         cd dxvk-src
-        patch -p1 < ../fix_dll_dir.diff
-        rm -rf "$pkgbase/build.wine64"
+        rm -rf "$pkgbase/build.wine??"
 	meson --cross-file build-wine64.txt \
             --buildtype "release"\
-            --prefix "$PWD/../build"\
+            --prefix "$PWD/../build64"\
             --strip\
             -Denable_tests=false\
             "$pkgbase/build.wine64"
         cd "$pkgbase/build.wine64"
         ninja install
+        cd "../.."
+	meson --cross-file build-wine32.txt \
+            --buildtype "release"\
+            --prefix "$PWD/../build32"\
+            --strip\
+            -Denable_tests=false\
+            "$pkgbase/build.wine32"
+        cd "$pkgbase/build.wine32"
+        ninja install
 }
 
-package_dxvk-wine64-git() {
-        arch=('x86_64')
-        conflicts=("dxvk-win64-bin" "dxvk-win64-git" "dxvk-git" "dxvk-bin")
-        provides=("dxvk" "dxvk64")
-        _destdir="/usr/lib/dxvk/"
+_package_dxvk() {
+        if [ "$1" = "32" ]; then
+            _destdir="/usr/lib32/dxvk/"
+        else
+            _destdir="/usr/lib/dxvk/"
+        fi
         mkdir -p "$pkgdir/$_destdir"
-	cp -v build/*/* "$pkgdir/$_destdir"
+	cp -v build$1/*/* "$pkgdir/$_destdir"
 	extension=".dll.so"
 	for libname in "d3d11" "dxgi" "d3d10" "d3d10_1" "d3d10core"; do
             if [ ! -f "$pkgdir"/$_destdir/$libname$extension ] ; then
@@ -50,5 +59,24 @@ package_dxvk-wine64-git() {
             fi
         done
         mkdir -p "$pkgdir/usr/bin"
-        ln -s "$_destdir/setup_dxvk.sh" "$pkgdir/usr/bin/setup_dxvk64"
+        cat setup_dxvk_aur.verb | sed s/"DXVK_ARCH=64"/"DXVK_ARCH=$1"/g > "$pkgdir/$_destdir/setup_dxvk_aur.verb"
+	echo "winetricks --force $_destdir/setup_dxvk_aur.verb" > "$pkgdir/usr/bin/setup_dxvk$1"
+	chmod +x "$pkgdir/usr/bin/setup_dxvk$1"
+}
+
+package_dxvk-wine64-git() {
+        arch=('x86_64')
+        conflicts=("dxvk-win64-bin" "dxvk-win64-git" "dxvk-git" "dxvk-bin")
+        provides=("dxvk" "dxvk64")
+        optdepends=('dxvk32: 32-bit support')
+        _package_dxvk 64
+}
+
+package_dxvk-wine32-git() {
+        arch=('i686' 'x86_64')
+        conflicts=("dxvk-win32-bin" "dxvk-win32-git" "dxvk-git" "dxvk-bin")
+        depends=('lib32-vulkan-icd-loader' 'wine>=3.14' 'winetricks')
+        optdepends=('dxvk64: 64-bit support')
+        provides=("dxvk" "dxvk64")
+        _package_dxvk 32
 }
