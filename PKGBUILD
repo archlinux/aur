@@ -1,7 +1,7 @@
 _pkgbase=r8168
 pkgname=${_pkgbase}-dkms
 pkgver=8.046.00
-pkgrel=1
+pkgrel=2
 pkgdesc="A kernel module for Realtek 8168 network cards"
 url="http://www.realtek.com.tw"
 license=("GPL")
@@ -12,7 +12,7 @@ optdepends=('linux-headers: Needed for build the module for Arch kernel'
 	'linux-lts-headers: Needed for build the module for LTS Arch kernel'
 	'linux-zen-headers: Needed for build the module for ZEN Arch kernel')
 #source=(https://github.com/mtorromeo/r8168/archive/$pkgver/r8168-$pkgver.tar.gz
-source=(https://az695102.vo.msecnd.net/rtdrivers/cn/nic/0011-r8168-8.046.00.tar.bz2
+source=(https://az695102.vo.msecnd.net/rtdrivers/cn/nic/0012-r8168-8.046.00.tar.bz2
         dkms.conf)
 install=r8168-dkms.install
 
