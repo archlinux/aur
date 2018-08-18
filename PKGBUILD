@@ -2,9 +2,9 @@
 
 pkgname=libbitcoin-explorer
 pkgver=3.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitcoin Command Line Tool"
-arch=('i686' 'x86_64')
+arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 depends=('boost'
          'boost-libs'
          'icu'
