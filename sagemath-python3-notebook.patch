@@ -16,7 +16,7 @@ diff --git a/src/sage/repl/ipython_kernel/install.py b/src/sage/repl/ipython_ker
 index 3912b8cdf5..bd40cdadda 100644
 --- a/src/sage/repl/ipython_kernel/install.py
 +++ b/src/sage/repl/ipython_kernel/install.py
-@@ -280,7 +280,6 @@ def have_prerequisites(debug=True):
+@@ -289,7 +289,6 @@ def have_prerequisites(debug=True):
          True
      """
      try:

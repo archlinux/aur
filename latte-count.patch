@@ -51,7 +51,7 @@ diff --git a/src/sage/interfaces/latte.py b/src/sage/interfaces/latte.py
 index 066cedd401..302b39910d 100644
 --- a/src/sage/interfaces/latte.py
 +++ b/src/sage/interfaces/latte.py
-@@ -88,7 +88,7 @@ def count(arg, ehrhart_polynomial=False, multivariate_generating_function=False,
+@@ -93,7 +93,7 @@ def count(arg, ehrhart_polynomial=False, multivariate_generating_function=False,
          sage: n = count(cddin, cdd=True, verbose=True, raw_output=True)  # optional - latte_int
          This is LattE integrale ...
          ...
@@ -60,12 +60,30 @@ index 066cedd401..302b39910d 100644
          ...
          Total Unimodular Cones: ...
          Maximum number of simplicial cones in memory at once: ...
-@@ -108,7 +108,7 @@ def count(arg, ehrhart_polynomial=False, multivariate_generating_function=False,
-     from sage.misc.misc import SAGE_TMP
-     from sage.rings.integer import Integer
+@@ -112,7 +112,7 @@ def count(arg, ehrhart_polynomial=False, multivariate_generating_function=False,
+     # Check that LattE is present
+     Latte().require()
  
 -    args = ['count']
 +    args = ['latte-count']
      if ehrhart_polynomial and multivariate_generating_function:
          raise ValueError
      if ehrhart_polynomial:
+diff --git a/src/sage/features/latte.py b/src/sage/features/latte.py
+index 63d227fd35..040a5cf1f9 100644
+--- a/src/sage/features/latte.py
++++ b/src/sage/features/latte.py
+@@ -10,10 +10,10 @@ from . import Executable, Feature, FeatureTestResult
+ 
+ class Latte_count(Executable):
+     r"""
+-    Feature for the executable ``count`` from the LattE suite.
++    Feature for the executable ``latte-count`` from the LattE suite.
+     """
+     def __init__(self):
+-        Executable.__init__(self, "count", executable="count", spkg="latte_int", url="https://www.math.ucdavis.edu/~latte/software.php")
++        Executable.__init__(self, "latte-count", executable="latte-count", spkg="latte_int", url="https://www.math.ucdavis.edu/~latte/software.php")
+ 
+ class Latte_integrate(Executable):
+     r"""
+

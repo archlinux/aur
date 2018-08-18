@@ -8,7 +8,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=8.3.rc2.r0.gf608d821e8
+pkgver=8.4.beta1.r0.g23a2b10da6
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -17,7 +17,8 @@ license=(GPL)
 depends=(ipython2 ppl palp brial cliquer maxima-ecl gfan sympow nauty python2-rpy2 python2-fpylll python2-psutil python2-cypari2
   python2-matplotlib python2-scipy python2-sympy python2-networkx python2-pillow python2-future libgap flintqs lcalc lrcalc arb
   eclib gmp-ecm zn_poly gd python2-cvxopt pynac linbox rubiks pari-galdata pari-seadata-small planarity rankwidth tachyon
-  sage-data-combinatorial_designs sage-data-elliptic_curves sage-data-graphs sage-data-polytopes_db sage-data-conway_polynomials)
+  sage-data-combinatorial_designs sage-data-elliptic_curves sage-data-graphs sage-data-polytopes_db sage-data-conway_polynomials
+  libhomfly libbraiding)
 optdepends=('cython2: to compile cython code' 'python2-pkgconfig: to compile cython code'
   'jmol: 3D plots' 'sage-notebook: Flask notebook interface (deprecated)'
   'sagemath-doc: Documentation and inline help' 'python2-igraph: igraph backend for graph theory'
@@ -26,13 +27,13 @@ optdepends=('cython2: to compile cython code' 'python2-pkgconfig: to compile cyt
   'ffmpeg: to export animations to video' 'imagemagick: to show animations'
   'coxeter: Coxeter groups implementation' 'cryptominisat5: SAT solver' 'gap-4.8-data: for computing Galois groups'
   'lrs: Algorithms for linear reverse search used in game theory and for computing volume of polytopes'
-  'libhomfly: for computing the homfly polynomial of links' 'libbraiding: for computing in braid groups'
   'libfes: exhaustive search of solutions for boolean equations' 'python2-pynormaliz: Normaliz backend for polyhedral computations'
   'latte-integrale: integral point count in polyhedra' 'polymake: polymake backend for polyhedral computations'
   'shared_meataxe: faster matrix arithmetic over finite fields' 'openblas: faster linear algebra'
   'sirocco: for computing the fundamental group of the complement of a plane curve' 'primecount: faster prime_pi implementation'
-  'three.js: alternative 3D plots engine' 'dot2tex: for displaying some diagrams')
-makedepends=(cython2 boost ratpoints symmetrica python2-jinja coin-or-cbc libhomfly libbraiding sirocco
+  'three.js: alternative 3D plots engine' 'dot2tex: for displaying some diagrams'
+  'python2-pip: to install optional packages with sage -pip')
+makedepends=(cython2 boost ratpoints symmetrica python2-jinja coin-or-cbc sirocco
   mcqd coxeter bliss-graphs tdlib python2-pkgconfig shared_meataxe libfes primecount git)
 source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-env.patch
@@ -44,30 +45,22 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         fes02.patch
         sagemath-threejs.patch
         sagemath-cremona.patch
-        sagemath-scipy-1.0.patch
         sagemath-singular-4.1.1.patch
         sagemath-lcalc-c++11.patch
-        sagemath-gap-4.8.patch
-        sagemath-cypari2.patch::"https://git.sagemath.org/sage.git/patch?id=da380b32"
-        sagemath-cddlib-0.94j.patch::"https://git.sagemath.org/sage.git/patch?id=af0e6066"
-        sagemath-eclib-20180710.patch)
+        sagemath-gap-4.8.patch)
 sha256sums=('SKIP'
-            '51da03781554b20e5ccdc64923911b610b834ff0ce71c5321d7ef85edb8ee01a'
-            '9e3c998e0ca8dcbf7ad9f5a8d591f2bc4cb792be14708e064594046081e9b60d'
-            '0b680e674c11c47afa86162d8b49645620b8912722e08133d23357c29ca9310a'
-            '962ce805c87147212b21fc2ab0ac9af9bd0033942c7a6905b9906645b48e8a4f'
-            '18edeafb01cc1ed7270c2dfb41a58717918680c98e8eada1858736acd65d92ba'
+            'f483a448c045aeff186bec4b402da8109fa12547ff36219a9aa427c2561ec8e5'
+            '960afe4fcbffe2762b66119b8f14355386ced0d8ee52b535d0dac1dba90d365b'
+            'ef265f88ceb6caf4aac2d86ea74850861d99a63d11c94fc52b2ce88053c26d1e'
+            'fc393ee5fbf507dfb76d6ad0e9193d74a954acb13f35a371bf91e11bbcb08244'
+            'e57c9bb3abc37684c8630076c0c7c838eca918dc0e8acd7006797ca438839e0b'
             'afd0952b9bb8f52fd428eae36cf719a58ff85a894baae88cbb2124e043768cc7'
             '7fcb52e96935dccb0f958d37c2f4e3918392480b9af53e08562f6cba6c68cb94'
-            '93b4cbdf7f36287ad643853b99e77011fcf5bdcd17514f3bf6d2bd74a1c82fd2'
-            'f801be68d043f317cc2a85a5ca059010b68eaeafa3bbf5c9148f2c154e2a707d'
-            '17397b8e1843b013ef5d2e083369109f0719651edd8ef0c8493cb49e2bc4324a'
-            '250a6ca3b58f98b335699d650a4a0f2587036a3feb059471f8cf26e27664bdb1'
+            '4722f9257f7b58a5dc8be2e9163ebba6d7b3ee011ff1ab9c0dbfb1330d367261'
+            '7efb38ba511037feb3abbd88576323320555ba50235ddc7e3d423ca294dd42ed'
+            '600701ee849d296cef63fad2dbf57db4d6d6259e2e5e1415a7ceaa385d98d5b9'
             '5114c912f821900e5bfae1e2cfeb7984de946d0b23e1182b0bf15be1d803dfd0'
-            '6917cb74e50ae965ea8d7c39577e5f0a5068e4b6a67b53fc6f219149a7d06584'
-            '94847fc033fd36bc59217c8484d4cf48d0640ff35bb5ca5ffba88a8158c6dd44'
-            '9a690bda83c280c0801f6d04353e8a909da80ccfee92e06d200ae6eb9be9a5a8'
-            '182b0765d58494978bf27628bada8b42c95ef7eb2671b91ddf9c67608560c662')
+            '3d02f6e349213ff4cea6a3acf5e7f8ec11a37b6ead61b338931f07073ebcb36e')
 
 pkgver() {
   cd sage
@@ -92,26 +85,18 @@ prepare(){
   patch -p1 -i ../sagemath-python3-notebook.patch
 # fix three.js plotting backend
   patch -p1 -i ../sagemath-threejs.patch
-# remove deprecated scipy parameters
-  patch -p1 -i ../sagemath-scipy-1.0.patch
 # fix build with Singular 4.1.1
   patch -p1 -i ../sagemath-singular-4.1.1.patch
 # don't force c++98 for lcalc (fixes build with NTL 11)
   patch -p1 -i ../sagemath-lcalc-c++11.patch
 # Adjust paths for gap-4.8
   patch -p1 -i ../sagemath-gap-4.8.patch
-# Fix build with eclib 20180710
-  patch -p1 -i ../sagemath-eclib-20180710.patch
 
 # Upstream patches  
 # fix build against libfes 0.2 http://trac.sagemath.org/ticket/15209
   patch -p1 -i ../fes02.patch
 # use Features to detect Cremona databases https://trac.sagemath.org/ticket/25825
   patch -p1 -i ../sagemath-cremona.patch
-# update to cypari2 https://trac.sagemath.org/ticket/25813
-  patch -p1 -i ../sagemath-cypari2.patch
-# port to cddlib 0.94j https://trac.sagemath.org/ticket/25344
-  patch -p1 -i ../sagemath-cddlib-0.94j.patch
 
 # use python2
   sed -e 's|#!/usr/bin/env sage-python23|#!/usr/bin/env python2|' -e 's|#!/usr/bin/env python\b|#!/usr/bin/env python2|' -i src/bin/*

@@ -80,8 +80,8 @@
  # The compilers are set in order of priority by
  # 1) environment variables
 @@ -296,8 +296,9 @@
- export SAGE_EXTCODE="$SAGE_SHARE/sage/ext"
  export SAGE_SPKG_INST="$SAGE_LOCAL/var/lib/sage/installed"
+ export SAGE_SPKG_SCRIPTS="$SAGE_LOCAL/var/lib/sage/scripts"
  export SAGE_LOGS="$SAGE_ROOT/logs/pkgs"
 -export SAGE_SRC="$SAGE_ROOT/src"
 -export SAGE_DOC_SRC="$SAGE_SRC/doc"
@@ -91,17 +91,48 @@
  export SAGE_DOC="$SAGE_SHARE/doc/sage"
  
  if [ -z "${SAGE_ORIG_PATH_SET}" ]; then
-@@ -403,6 +403,9 @@
+@@ -403,29 +403,8 @@
      export SAGE_STARTUP_FILE
  fi
  
 +export LIBMTX="$DOT_SAGE/meataxe"
 +[[ -d $LIBMTX ]] || mkdir -p $LIBMTX # Create meataxe data dir
-+
- if [ "$PYTHON_EGG_CACHE" = "" ]; then
-     PYTHON_EGG_CACHE="$DOT_SAGE/.python-eggs"
-     export PYTHON_EGG_CACHE
-@@ -608,9 +608,6 @@
+-if [ "$PYTHON_EGG_CACHE" = "" ]; then
+-    PYTHON_EGG_CACHE="$DOT_SAGE/.python-eggs"
+-    export PYTHON_EGG_CACHE
+-fi
+-
+-# Set PYTHONUSERBASE to avoid picking up non-Sage versions of
+-# Matplotlib, numpy, etc. See http://trac.sagemath.org/ticket/19612.
+-#
+-# For more history (it used to be PYTHONNOUSERSITE=yes which killed
+-# the ability to do "sage -pip install PACKAGE --user"), see
+-# http://trac.sagemath.org/ticket/14243 and
+-# http://trac.sagemath.org/ticket/18955.
+-
+-if [ "$PYTHONUSERBASE" = "" ]; then
+-    PYTHONUSERBASE="$DOT_SAGE/local"
+-    export PYTHONUSERBASE
+-fi
+-
+-if [ -n "$PYTHONHOME" ]; then
+-    >&2 echo "Warning: PYTHONHOME must not be set when running Sage, clearing env..."
+-    unset PYTHONHOME
+-fi
+-
+ LDFLAGS="-L$SAGE_LOCAL/lib -Wl,-rpath,$SAGE_LOCAL/lib $LDFLAGS"
+ export LDFLAGS
+ 
+@@ -489,8 +489,6 @@
+     fi
+ fi
+
+-export MAXIMA_PREFIX="$SAGE_LOCAL"
+-export MAXIMA_USERDIR="$DOT_SAGE/maxima"
+ 
+ PERL5LIB="$SAGE_LOCAL/lib/perl5:$PERL5LIB" && export PERL5LIB
+ 
+@@ -601,9 +601,6 @@
      LD_LIBRARY_PATH="$SAGE_LOCAL/bin:$LD_LIBRARY_PATH" && export LD_LIBRARY_PATH
  fi
  
@@ -130,7 +161,7 @@
  
  try:
      sitepackages_dirs = site.getsitepackages()
-@@ -163,7 +163,7 @@
+@@ -164,7 +164,7 @@
  _add_variable_or_fallback('GRAPHS_DATA_DIR',  opj('$SAGE_SHARE','graphs'))
  _add_variable_or_fallback('ELLCURVE_DATA_DIR',opj('$SAGE_SHARE','ellcurves'))
  _add_variable_or_fallback('POLYTOPE_DATA_DIR',opj('$SAGE_SHARE','reflexive_polytopes'))
