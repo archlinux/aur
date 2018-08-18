@@ -2,9 +2,9 @@
 # Contributor: Victor Häggqvist <aur@snilius.com>
 
 pkgname=rainbowstream
-pkgver=1.3.7
-pkgrel=5
-pkgdesc="A smart and nice Twitter client on terminal written in Python"
+pkgver=1.3.8
+pkgrel=1
+pkgdesc="A smart and nice Twitter client on terminal"
 url="http://www.rainbowstream.org/"
 license=('MIT')
 arch=('any')
@@ -22,10 +22,10 @@ makedepends=('python-setuptools')
 provides=('rainbowstream')
 conflicts=('rainbowstream')
 source=(
-https://pypi.python.org/packages/b6/2b/37822d04aca421be670cd3a4bdfb4221bd742786f72a242baa5686bc76c7/rainbowstream-${pkgver}.tar.gz
+${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/d1/ff/3bba3e1b21c6892c859f06c62c1c183d8ac129d1cb8bfbed0336f88ba9a9/${pkgname}-${pkgver}.tar.gz
 setup.py.patch
 rainbow.py.patch)
-sha512sums=('252e4dd402845b6ff4334c2df76a36f48cc483f0645e9201f8e62b219765bf7007cb9070fb16f367a311ad080470f800bfb892ecf6c2b4565ff78870fbb2dcac'
+sha512sums=('3a4925e3b4023271fa1b6ee8fb16229281f653b64e505599a5fdb4c5323358be5c2bcc1da606df6481c81d9dca8ceef1297399c439eb0ffa20364cf3c9835f28'
             'd5203f37697dbff3fe745fa4a0236dd22f5565c833e3dd17e3c762706ab8b2758e6b56d2147e021c7ccb370f1bc97fb42cae602a3fc31213af03b1482fca5a9b'
             '4298b90e5f34228e09a52910738c393da6f5c350c43dabe367ffb9ac5efea64b56e80da9c46044d7ddd2145fb440efcbeb3b75d4bffc9067d39d573279070821')
 
