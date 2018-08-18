@@ -1,0 +1,12 @@
+pkgbase = glyph-bin
+	pkgdesc = A static site generator utilizing Github issues and pages.
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/dbriemann/glyph
+	arch = x86_64
+	license = MIT
+	source_x86_64 = https://github.com/dbriemann/glyph/releases/download/v0.3.1-beta/glyph
+	sha256sums_x86_64 = 87409c27020bc7db3f25c3a9b1761ecccea0c58d5a8f3dcf952f3a990f7edc9c
+
+pkgname = glyph-bin
+
