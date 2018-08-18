@@ -3,7 +3,7 @@
 
 pkgname=mat2
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Metadata anonymisation toolkit"
 arch=('any')
 url="https://0xacab.org/jvoisin/mat2"
