@@ -2,7 +2,7 @@
 
 pkgname=vdhcoapp-bin
 pkgver=1.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Companion application for Video DownloadHelper browser add-on, precompiled binary version"
 arch=('i686' 'x86_64')
 url="https://github.com/mi-g/vdhcoapp"
@@ -26,6 +26,6 @@ prepare() {
 
 package() {
   cp -Rfp ${srcdir}/${pkgname}/* ${pkgdir}/
-  mkdir -p ${srcdir}/${pkgname}/usr/bin
+  mkdir -p ${pkgdir}/usr/bin
   ln -s /opt/net.downloadhelper.coapp/bin/net.downloadhelper.coapp-linux-64 ${pkgdir}/usr/bin/vdhcoapp
 }
