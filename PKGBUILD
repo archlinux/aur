@@ -1,16 +1,16 @@
 # Maintainer: Falk Alexander Seidl <fa@terminal.run>
 
 pkgname=gnome-passwordsafe-git
-_gitname=KeepassGtk
-pkgver=0.9.2.r44.g1aa1945
-pkgrel=1
+_gitname=PasswordSafe
+pkgver=0.9.2.r62.g77c1cb9
+pkgrel=2
 pkgdesc="A password manager for GNOME"
 arch=('i686' 'x86_64')
 license=('GPL3')
 url="https://gitlab.gnome.org/fseidl/KeepassGtk"
 depends=('gtk3' 'python-pykeepass' 'gobject-introspection')
 makedepends=('git' 'meson' 'ninja')
-source=("git+https://gitlab.gnome.org/fseidl/KeepassGtk.git")
+source=("git+https://gitlab.gnome.org/World/PasswordSafe.git")
 md5sums=('SKIP')
  
 pkgver() {
