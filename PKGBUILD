@@ -2,9 +2,9 @@
 
 pkgname=libbitcoin-protocol
 pkgver=3.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitcoin Blockchain Query Protocol"
-arch=('i686' 'x86_64')
+arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 depends=('boost'
          'boost-libs'
          'libbitcoin-system'
