@@ -1,7 +1,7 @@
 # Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
 
 pkgname=zstr-git
-pkgver=r38.d9e0254
+pkgver=r39.af8c8d1
 pkgrel=1
 pkgdesc='A C++ header-only ZLib wrapper'
 arch=('any')
@@ -23,6 +23,6 @@ package() {
   cd zstr
   install -dm755 "${pkgdir}/usr/include/"
   install -m644 src/zstr.hpp "${pkgdir}/usr/include/zstr.hpp"
-  install -m644 src/zstr.hpp "${pkgdir}/usr/include/strict_fstream.hpp"
+  install -m644 src/strict_fstream.hpp "${pkgdir}/usr/include/strict_fstream.hpp"
   install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/zstr-git/LICENSE
 }

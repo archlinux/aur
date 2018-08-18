@@ -1,6 +1,6 @@
 pkgbase = zstr-git
 	pkgdesc = A C++ header-only ZLib wrapper
-	pkgver = r38.d9e0254
+	pkgver = r39.af8c8d1
 	pkgrel = 1
 	url = https://github.com/sandsmark/zstr
 	arch = any
