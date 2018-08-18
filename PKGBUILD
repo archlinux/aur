@@ -38,7 +38,7 @@ fi
 if (("${_disable_vala}" == 0));then
 	_opts+=(-DENABLE_VALAPANEL=ON)
 	pkgname+=('vala-panel-genmon-git')
-	makedepends+=('vala-panel-git')
+	makedepends+=('vala-panel>=0.4.60')
 	msg "Vala Panel applet enabled"
 else
 	_opts+=(-DENABLE_VALAPANEL=OFF)
@@ -61,7 +61,7 @@ _pkgbase=xfce4-genmon-plugin
 _cmakename=cmake-vala
 _dbusmenuname=vala-dbusmenu
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cyclically spawns a script/program, captures its output and displays the resulting string in the panel"
 url="https://gitlab.com/vala-panel-project/xfce4-genmon-plugin"
 arch=('i686' 'x86_64')
