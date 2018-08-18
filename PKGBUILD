@@ -1,6 +1,6 @@
 # Maintainer: NexAdn <nexadn@yandex.com>
 pkgname=cef-minimal
-pkgver=3.3325.1750.gaabe4c4
+pkgver=3.3440.1803.gde363ee
 pkgrel=1
 pkgdesc="Chromium Embedded Framework minimal release"
 arch=("i686" "x86_64")
@@ -16,8 +16,8 @@ source_i686=(
 source_x86_64=(
     "http://opensource.spotify.com/cefbuilds/cef_binary_${pkgver}_linux64_minimal.tar.bz2"
 )
-sha1sums_i686=('e335181d6784765031f3ca3b185ae19e065b1e51')
-sha1sums_x86_64=('0f551ec430b6c31f64ada7e7e468c612706fd1bd')
+sha1sums_i686=('4044f102fb444b8f97f3cf019a24721a032bb588')
+sha1sums_x86_64=('22ab61b4ed91012dab82eb55725ba96a3dfacc4c')
 [[ "$CARCH" = "i686" ]] && _arch="32"
 [[ "$CARCH" = "x86_64" ]] && _arch="64"
 build() {
