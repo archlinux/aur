@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=nmh-git
-pkgver=1.6+dev.r3793
+pkgver=1.7+dev.r4358
 pkgrel=1
 epoch=
 pkgdesc="Powerful electronic mail handling system, based on a set of command-line utilities."
@@ -73,7 +73,6 @@ build() {
 package() {
   cd "$srcdir/$pkgname"
   make DESTDIR="$pkgdir/" install
-  mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
-  install -m644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/"
+  install -D -m644 COPYRIGHT "$pkgdir/usr/share/licenses/${pkgname%-*}/COPYRIGHT"
 }
 
