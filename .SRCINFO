@@ -1,6 +1,6 @@
 pkgbase = gocryptfs
 	pkgdesc = Encrypted overlay filesystem written in Go.
-	pkgver = 1.5
+	pkgver = 1.6
 	pkgrel = 1
 	url = https://github.com/rfjakob/gocryptfs
 	arch = i686
@@ -12,10 +12,10 @@ pkgbase = gocryptfs
 	depends = gcc-libs
 	depends = openssl
 	depends = fuse
-	source = gocryptfs-git::git+https://github.com/rfjakob/gocryptfs.git#tag=v1.5
+	source = gocryptfs-git::git+https://github.com/rfjakob/gocryptfs.git#tag=v1.6
 	source = gocryptfs.1
 	md5sums = SKIP
-	md5sums = 9623b72dbbb5df3e8c0f45daf4e2e7fa
+	md5sums = 3538f2918067705951168dcc4c3a3ba6
 
 pkgname = gocryptfs
 
