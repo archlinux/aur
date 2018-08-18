@@ -7,7 +7,7 @@ pkgbase=systemd-git
 _pkgbase=systemd
 pkgname=('systemd-git' 'libsystemd-git' 'systemd-resolvconf-git' 'systemd-sysvcompat-git')
 pkgdesc="systemd (git version)"
-pkgver=239.502
+pkgver=239.528
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.github.com/systemd/systemd"
@@ -64,35 +64,48 @@ pkgver() {
 }
 
 build() {
-  local timeservers=({0..3}.arch.pool.ntp.org)
+  local _timeservers=({0..3}.arch.pool.ntp.org)
+  local _nameservers=(
+    # We use these public name services, ordered by their
+    # privacy policy (hopefully):
+    #  * Cloudflare (https://1.1.1.1/)
+    #  * Quad9 without filtering (https://www.quad9.net/)
+    #  * Google (https://developers.google.com/speed/public-dns/)
+    1.1.1.1
+    9.9.9.10
+    8.8.8.8
+    2606:4700:4700::1111
+    2620:fe::10
+    2001:4860:4860::8888
+  )
 
-  local meson_options=(
+  local _meson_options=(
     -Daudit=false
     -Dgnuefi=true
     -Dima=false
     -Dlz4=true
 
     -Ddbuspolicydir=/usr/share/dbus-1/system.d
-    -Ddefault-dnssec=no
     # TODO(dreisner): consider changing this to unified
     -Ddefault-hierarchy=hybrid
     -Ddefault-kill-user-processes=false
     -Dfallback-hostname='archlinux'
-    -Dntp-servers="${timeservers[*]}"
+    -Dntp-servers="${_timeservers[*]}"
+    -Ddns-servers="${_nameservers[*]}"
     -Drpmmacrosdir=no
     -Dsysvinit-path=
     -Dsysvrcnd-path=
   )
-
+  
   arch-meson "$_pkgbase" build "${meson_options[@]}"
 
   ninja -C build
 }
 
-# check() {
-#   cd build
-#   meson test
-# }
+check() {
+  cd build
+  meson test
+}
 
 package_systemd-git() {
   pkgdesc="system and service manager (git version)"
