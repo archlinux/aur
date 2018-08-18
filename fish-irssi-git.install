@@ -2,7 +2,7 @@ post_install() {
   echo ">>> If you installed the module in the default directory,               "
   echo "    you just need to run the following command inside irssi to load it: " 
   echo ""
-  echo "    /load fish"
+  echo "      /load fish"
 }
 
 post_upgrade() {
