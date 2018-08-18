@@ -20,7 +20,7 @@
 pkgbase=kodi-pre-release
 pkgname=("kodi-${pkgbase#kodi-*}" "kodi-eventclients-${pkgbase#kodi-*}" "kodi-tools-texturepacker-${pkgbase#kodi-*}" "kodi-dev-${pkgbase#kodi-*}")
 pkgver=18.0b1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://kodi.tv"
 license=('GPL2')
@@ -136,7 +136,7 @@ package_kodi-pre-release() {
     'hicolor-icon-theme' 'libass' 'libcdio' 'libjpeg-turbo' 'libmariadbclient'
     'libmicrohttpd' 'libpulse' 'libssh' 'libva' 'libvdpau' 'libxrandr' 'libcec'
     'libxslt' 'lirc' 'lzo' 'mesa' 'python2-pillow' 'python2-simplejson' 'smbclient'
-    'speex' 'taglib' 'tinyxml' 'xorg-xdpyinfo' 'yajl'
+    'speex' 'taglib' 'tinyxml' 'xorg-xdpyinfo' 'yajl' 'libbluray'
   )
   optdepends=(
     'afpfs-ng: Apple shares support'
