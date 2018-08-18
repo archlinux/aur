@@ -1,11 +1,12 @@
 # Maintainer: S. Leduc <sebastien@sleduc.fr>
+# Contributor: redfish <redfish@galactica.pw>
 # Contributor: Amr Hassan <amr.hassan@gmail.com>
 # Contributor: Nathan Owe <ndowens.aur at gmail dot com>
 # Contributor: G. Richard Bellamy <rbellamy@pteradigm.com>
 
 pkgname=flexget
 _pkgname=Flexget
-pkgver=2.10.48
+pkgver=2.14.16
 pkgrel=1
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
@@ -14,74 +15,83 @@ arch=('any')
 url="http://flexget.com/"
 license=('MIT')
 
-depends=('python2'
-         # documented in FlexGet.egg-info/requires.txt
-         'python2-feedparser'
-         'python2-sqlalchemy'
-         'python2-yaml'
-         'python2-beautifulsoup4'
-         'python2-html5lib'
-         'python2-pyrss2gen' #AUR#
-         'python2-pynzb' #AUR#
-         'python2-rpyc' #AUR#
-         'python2-jinja'
-         'python2-requests'
-         'python2-dateutil'
-         'python2-jsonschema'
-         'python2-path' #AUR#
-         'python2-guessit>=2.1.2'
-         'python2-apscheduler>=3.2.0' #AUR#
-         'python2-terminaltables'
-         'python2-colorclass'
-         'python2-pytvmaze>=1.4.8' #AUR#
-         'python2-ordereddict'
-         'python2-cherrypy>=3.7.0'
-         'python2-flask'
-         'python2-flask-restful' #AUR#
-         'python2-flask-restplus086' #AUR#
-         'python2-flask-compress'
-         'python2-flask-login>=0.3.2'
-         'python2-flask-cors>=2.1.2'
-         'python2-pyparsing>=2.0.3'
-         'python2-future'
-         'python2-zxcvbn'
+depends=('python'
+         # documented in requirements.in
+         'python-feedparser>=5.2.1'
+         'python-sqlalchemy>=1.0.9'
+         'python-yaml'
+         'python-beautifulsoup4>=4.5'
+         'python-html5lib>=0.11'
+         'python-pyrss2gen'
+         'python-pynzb'
+         'python-rpyc'
+         'python-jinja'
+         'python-requests>=2.16.3'
+         'python-dateutil>=2.5.3'
+         'python-jsonschema>=2.0'
+         'python-path>=8.1.1'
+         'python-pathlib>=1.0'
+         #'python-guessit' # feature disabled until upstream updates to latest API
+         'python-rebulk'
+         'python-apscheduler>=3.2.0'
+         'python-terminaltables>=3.1.0'
+         'python-colorclass>=2.2.0'
+         'python-cherrypy>=3.7.0'
+         'python-flask>=0.7'
+         'python-flask-restful>=0.3.3'
+         'python-flask-restplus'
+         'python-flask-compress>=1.2.1'
+         'python-flask-login>=0.4.0'
+         'python-flask-cors>=2.1.2'
+         'python-pyparsing>=2.0.3'
+         'python-zxcvbn'
+         'python-future>=0.15.2'
          )
-optdepends=('python2-guppy: for memusage plugin' #AUR#
-            'python2-transmissionrpc: Transmission support' #AUR#
-            'python2-rarfile: decompress plugin' #AUR#
+optdepends=('python-guppy: for memusage plugin' #AUR#
+            'python-transmissionrpc: Transmission support' #AUR#
+            'python-rarfile: decompress plugin' #AUR#
+            'python-boto3: SNS output plugin' #AUR#
             )
-makedepends=('python2-paver'
-             'python2-setuptools'
+makedepends=('python-paver'
+             'python-setuptools'
              )
 
 source=("https://github.com/Flexget/Flexget/archive/${pkgver}.tar.gz"
         'flexget.service'
         "http://download.flexget.com/ChangeLog"
-        "fix_guessit_2.1.2.patch"
         )
 
 changelog=ChangeLog
 
-sha256sums=('fe7024b516030f869189ff87afcaee09b31c34516c44346514715bf41e988f6f'
-            'e2c3a958ed0c286337cd37fba1d6cbdf4306c57fcddf2b9cc43615ce80ae83aa'
-            'dcc1bc676b8c2b798fa9a7e0ed2b6853323e9e9d8ff696696dddeaf29cbc13d6'
-            '8246a4cbdb902d41379c8c4e6045da349c98428adefaf682aff0413b8b8969f7')
-
 prepare() {
   cd "${_pkgname}"-"${pkgver}"
 
-  msg "Patching shebangs to point to python2"
-  sed -i 's/\(python\)/\12/' flexget{,/ui}/__init__.py
+  #msg "Patching shebangs to point to python2"
+  sed -i '1s/python2/python/' flexget{,/ui}/__init__.py
 
-  patch -p0 < ${srcdir}/fix_guessit_2.1.2.patch
+  # Don't use the requirements.txt with pinned deps
+  cp requirements.{in,txt}
 
+  # Remove specific versions, because they are not going to match
+  # versions of Arch packages. Yes, this might break something.
+  sed -i 's/==.*//g' requirements.txt
+  sed -i 's/<=.*//g' requirements.txt
+  sed -i 's/~=.*//g' requirements.txt
+  sed -i 's/; python_version.*//g' requirements.txt
+
+  # zxcvbn-python has been renamed zxcvbn
+  sed -i 's/zxcvbn-python/zxcvbn/' requirements.txt
+
+  # disable this parser because python-guessit API changed and upstream
+  # needs to be patched to support it.
+  rm flexget/plugins/parsers/parser_guessit.py
 }
 
 package() {
   cd "${_pkgname}"-"${pkgver}"
 
   # Python setup
-  python2 setup.py install --root="${pkgdir}"/ --prefix=/usr --optimize=1
+  python setup.py install --root="${pkgdir}"/ --prefix=/usr --optimize=1
 
   # License
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
@@ -89,5 +99,9 @@ package() {
   # install systemd user unit
   install -Dm644 ../flexget.service "${pkgdir}"/usr/lib/systemd/user/flexget.service
 }
+
+sha256sums=('0827f68a9baf0207cb8f036dc8e51e786a4e36b87d947924f1f4a433ae03722c'
+            'e2c3a958ed0c286337cd37fba1d6cbdf4306c57fcddf2b9cc43615ce80ae83aa'
+            'dcc1bc676b8c2b798fa9a7e0ed2b6853323e9e9d8ff696696dddeaf29cbc13d6')
 
 # vim:set ts=2 sw=2 et:
