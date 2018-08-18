@@ -1,7 +1,7 @@
 # Maintainer: aimileus <me at aimileus dot nl>
 pkgname=fedora-arm-installer
 _pkgname=arm-image-installer
-pkgver=2.1
+pkgver=2.5
 pkgrel=1
 pkgdesc="Script to automate the installation of Fedora on ARM boards"
 arch=('any')
