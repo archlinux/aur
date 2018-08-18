@@ -1,5 +1,5 @@
 pkgname=osvr-core-git
-pkgver=0.2.r3046.geaa0340e
+pkgver=0.2.r3045.g2d6e9cbf
 pkgrel=1
 pkgdesc="The core libraries, applications, and plugins of the OSVR software platform."
 arch=(i686 x86_64)
@@ -42,7 +42,7 @@ build() {
   git submodule init
   git submodule update
   cd "$srcdir/osvr-core-build"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DOSVR_UTIL_DEV_VERBOSE=0 -DBUILD_TESTING=0 -DBUILD_HEADER_DEPENDENCY_TESTS=0 -DCMAKE_INSTALL_LIBDIR=lib ../osvr-core
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DOSVR_UTIL_DEV_VERBOSE=0 -DBUILD_TESTING=0 -DBUILD_HEADER_DEPENDENCY_TESTS=0 -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_CXX_FLAGS='-Wno-ignored-attributes' ../osvr-core
   make
 }
 
