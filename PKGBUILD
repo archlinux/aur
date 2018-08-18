@@ -84,30 +84,30 @@ package() {
   for _path in $(find /usr/lib/modules/extramodules-*/version -printf '%h\n'); do
     _extramodules=$(cat $_path/version)
 
-  # Nvidia kernel module; provides low-level access to your NVIDIA hardware for the other components. Generally
-  # loaded into the kernel when the X server is started, to be used by the X driver and OpenGL. Consists of two
-  # pieces: the binary-only core, and a kernel interface that must be compiled specifically for your kernel version,
-  # because the Linux kernel doesn't have a consistent binary interface like the X server.
-  install -Dm644 $_pkg/kernel-$_extramodules/nvidia.ko \
-         "$pkgdir"/$_path/nvidia.ko
+    # Nvidia kernel module; provides low-level access to your NVIDIA hardware for the other components. Generally
+    # loaded into the kernel when the X server is started, to be used by the X driver and OpenGL. Consists of two
+    # pieces: the binary-only core, and a kernel interface that must be compiled specifically for your kernel version,
+    # because the Linux kernel doesn't have a consistent binary interface like the X server.
+    install -Dm644 $_pkg/kernel-$_extramodules/nvidia.ko \
+           "$pkgdir"/$_path/nvidia.ko
 
-  # NVIDIA Unified Memory kernel module; provides functionality for sharing memory between the CPU and GPU in
-  # CUDA programs. Generally loaded into the kernel when a CUDA program is started, and used by the CUDA
-  # driver on supported platforms: http://devblogs.nvidia.com/parallelforall/unified-memory-in-cuda-6/
-  install -Dm644 $_pkg/kernel-$_extramodules/nvidia-uvm.ko \
-         "$pkgdir"/$_path/nvidia-uvm.ko
+    # NVIDIA Unified Memory kernel module; provides functionality for sharing memory between the CPU and GPU in
+    # CUDA programs. Generally loaded into the kernel when a CUDA program is started, and used by the CUDA
+    # driver on supported platforms: http://devblogs.nvidia.com/parallelforall/unified-memory-in-cuda-6/
+    install -Dm644 $_pkg/kernel-$_extramodules/nvidia-uvm.ko \
+           "$pkgdir"/$_path/nvidia-uvm.ko
 
-  # Kernel module responsible for programming the display engine of the GPU. User-mode NVIDIA driver components
-  # such as the NVIDIA X driver, OpenGL driver, and VDPAU driver communicate with nvidia-modeset.ko through the
-  # /dev/nvidia-modeset device file.
-  install -Dm644 $_pkg/kernel-$_extramodules/nvidia-modeset.ko \
-         "$pkgdir"/$_path/nvidia-modeset.ko
+    # Kernel module responsible for programming the display engine of the GPU. User-mode NVIDIA driver components
+    # such as the NVIDIA X driver, OpenGL driver, and VDPAU driver communicate with nvidia-modeset.ko through the
+    # /dev/nvidia-modeset device file.
+    install -Dm644 $_pkg/kernel-$_extramodules/nvidia-modeset.ko \
+           "$pkgdir"/$_path/nvidia-modeset.ko
 
-  # NVIDIA DRM kernel module; registers as a DRM driver to provide GEM and PRIME DRM capabilities
-  # for atomic DRM KMS and graphics display offload on Optimus notebooks:
-  # https://devtalk.nvidia.com/default/topic/925605/linux/nvidia-364-12-release-vulkan-glvnd-drm-kms-and-eglstreams/
-  install -Dm644 $_pkg/kernel-$_extramodules/nvidia-drm.ko \
-         "$pkgdir"/$_path/nvidia-drm.ko
+    # NVIDIA DRM kernel module; registers as a DRM driver to provide GEM and PRIME DRM capabilities
+    # for atomic DRM KMS and graphics display offload on Optimus notebooks:
+    # https://devtalk.nvidia.com/default/topic/925605/linux/nvidia-364-12-release-vulkan-glvnd-drm-kms-and-eglstreams/
+    install -Dm644 $_pkg/kernel-$_extramodules/nvidia-drm.ko \
+           "$pkgdir"/$_path/nvidia-drm.ko
 
     # Compress
     gzip "$pkgdir"/$_path/nvidia*.ko
