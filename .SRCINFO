@@ -1,8 +1,8 @@
 pkgbase = pref-git
-	pkgdesc = https://pref.github.io/
+	pkgdesc = Portable Reverse Engineering Framework
 	pkgver = r575.5761543
 	pkgrel = 1
-	url = Portable Reverse Engineering Framework
+	url = https://pref.github.io/
 	arch = i686
 	arch = x86_64
 	license = GPL3
