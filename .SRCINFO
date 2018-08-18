@@ -1,0 +1,44 @@
+pkgbase = iptables-fullcone-nat
+	pkgdesc = iptables with FULLCONENAT extension
+	pkgver = 1.8.0.r73.g92f7b04f
+	pkgrel = 1
+	url = https://github.com/Chion82/netfilter-full-cone-nat
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = linux-api-headers
+	depends = glibc
+	depends = libmnl
+	depends = libnftnl
+	depends = libpcap
+	depends = netfilter-full-cone-nat-dkms
+	provides = iptables
+	conflicts = iptables
+	source = file:///usr/src/netfilter-full-cone-nat-ec14efe/libipt_FULLCONENAT.c
+	source = git://git.netfilter.org/iptables
+	source = empty-filter.rules::https://git.archlinux.org/svntogit/packages.git/plain/trunk/empty-filter.rules?h=packages/iptables
+	source = empty-mangle.rules::https://git.archlinux.org/svntogit/packages.git/plain/trunk/empty-mangle.rules?h=packages/iptables
+	source = empty-nat.rules::https://git.archlinux.org/svntogit/packages.git/plain/trunk/empty-nat.rules?h=packages/iptables
+	source = empty-raw.rules::https://git.archlinux.org/svntogit/packages.git/plain/trunk/empty-raw.rules?h=packages/iptables
+	source = empty-security.rules::https://git.archlinux.org/svntogit/packages.git/plain/trunk/empty-security.rules?h=packages/iptables
+	source = empty.rules::https://git.archlinux.org/svntogit/packages.git/plain/trunk/empty.rules?h=packages/iptables
+	source = ip6tables.service::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ip6tables.service?h=packages/iptables
+	source = iptables-flush::https://git.archlinux.org/svntogit/packages.git/plain/trunk/iptables-flush?h=packages/iptables
+	source = iptables.service::https://git.archlinux.org/svntogit/packages.git/plain/trunk/iptables.service?h=packages/iptables
+	source = simple_firewall.rules::https://git.archlinux.org/svntogit/packages.git/plain/trunk/simple_firewall.rules?h=packages/iptables
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = iptables-fullcone-nat
+
