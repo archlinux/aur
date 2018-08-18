@@ -1,0 +1,14 @@
+pkgbase = firefox-extension-hide-fixed-elements
+	pkgdesc = Browser extension to hide position:fixed elements
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/andfarm/HideFixedElements
+	arch = any
+	license = MIT
+	depends = firefox
+	noextract = hide_fixed_elements-1.2-an+fx.xpi
+	source = https://addons.cdn.mozilla.net/user-media/addons/910283/hide_fixed_elements-1.2-an+fx.xpi
+	sha256sums = 4fb639bbd5297a8d503d1f932b1d61dfd93f8543772761273114cfd45aabbf16
+
+pkgname = firefox-extension-hide-fixed-elements
+
