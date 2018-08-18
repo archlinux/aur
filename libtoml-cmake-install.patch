@@ -1,0 +1,10 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 76ff67a..9f6d3d5 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -31,2 +31,5 @@ ADD_LIBRARY(toml SHARED ${SRCS})
+ TARGET_LINK_LIBRARIES(toml ${PC_LIBICU_LIBRARIES})
++TARGET_INCLUDE_DIRECTORIES(toml PUBLIC $<INSTALL_INTERFACE:include/toml>)
++INSTALL(TARGETS toml EXPORT tomlConfig LIBRARY DESTINATION lib)
++INSTALL(EXPORT tomlConfig DESTINATION lib/cmake/toml)
+ 
