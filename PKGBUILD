@@ -2,9 +2,9 @@
 
 pkgname=libsecp256k1-git
 pkgver=20171221
-pkgrel=1
+pkgrel=2
 pkgdesc="Optimized C library for EC operations on curve secp256k1"
-arch=('i686' 'x86_64')
+arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/bitcoin-core/secp256k1"
 makedepends=('autoconf' 'automake' 'git' 'm4' 'make' 'pkg-config')
 license=('MIT')
