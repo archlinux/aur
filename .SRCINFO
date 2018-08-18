@@ -1,0 +1,17 @@
+pkgbase = pcrio-git
+	pkgdesc = C library for editing resource strings in pe/coff files.
+	pkgver = r38.793bb07
+	pkgrel = 1
+	url = https://github.com/sandsmark/pcrio
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = glibc
+	provides = pcrio
+	conflicts = pcrio
+	source = git+https://github.com/sandsmark/pcrio.git
+	md5sums = SKIP
+
+pkgname = pcrio-git
+
