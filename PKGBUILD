@@ -16,6 +16,7 @@ sha256sums=('3afd9345a4c046bb24e6f4c7b562cc32dc6a06415bc57d189ffb7cf0510ce8e0')
 
 build() {
   cd "$_pkgname-$pkgver"
+  source /usr/share/GNUstep/Makefiles/GNUstep.sh
   make
 }
 
