@@ -1,6 +1,6 @@
 pkgbase = baidupcs-go-git
 	pkgdesc = The terminal utility for Baidu Network Disk (Golang Version).
-	pkgver = r313.eb5f66a
+	pkgver = r314.e403a71
 	pkgrel = 1
 	url = https://github.com/iikira/BaiduPCS-Go
 	arch = x86_64
