@@ -1,11 +1,11 @@
 pkgname='python-aiorpcx'
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A generic asyncio library implementation of RPC suitable for an application that is a client, server or both."
 url="https://github.com/kyuupichan/aiorpcX/"
 arch=('any')
 license=('MIT')
-depends=('python>=3.6')
+depends=('python>=3.6', 'python-attrs')
 makedepends=('python-setuptools')
 source=("https://github.com/kyuupichan/aiorpcX/archive/${pkgver}.tar.gz")
 
