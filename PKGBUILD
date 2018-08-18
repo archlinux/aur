@@ -1,10 +1,11 @@
 # $Id: PKGBUILD 194152 2016-10-31 13:48:24Z spupykin $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: Jose Riha <jose1711 gmail com>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Shahar Weiss <sweiss4@gmx.net>
 
 pkgname=torcs-data
 pkgver=1.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A 3D racing cars simulator using OpenGL"
 url="http://torcs.sourceforge.net"
 license=("GPL")
