@@ -6,13 +6,13 @@ pkgver=r31.d0725c0
 pkgrel=1
 pkgdesc="A cross-platform OTP token manager"
 arch=('x86_64')
-url="https://gitlab.com/dasith.gunawardhana/auther.git"
+url="https://gitlab.com/dg10a/auther.git"
 license=('GPL3')
 depends=('qt5-base')
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=('git+https://gitlab.com/dasith.gunawardhana/auther.git'
+source=('git+https://gitlab.com/dg10a/auther.git'
 	'git+https://github.com/keepassxreboot/keepassxc.git')
 md5sums=('SKIP' 'SKIP')
 
