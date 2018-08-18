@@ -1,4 +1,9 @@
 post_install() {
-  gtk-update-icon cache -q -t -f /usr/share/icons/hicolor
-  update-desktop-database -q
+  echo ">>>"
+  echo ">>> To complete the installation you should edit /etc/php/php.ini"
+  echo ">>> - Enable zip.so, sockets.so"
+  echo ">>>"
+  echo ">>> EXAMPLE:"
+  echo ">>> extension=zip.so"
+  echo ">>> extension=sockets.so"
 }

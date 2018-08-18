@@ -1,7 +1,7 @@
 pkgbase = phoronix-test-suite-git
 	pkgdesc = The most comprehensive testing and benchmarking platform available for Linux
-	pkgver = 8.0.1.r56.g24ecd03a9
-	pkgrel = 1
+	pkgver = 8.2.0m2.r7.g642feee05
+	pkgrel = 2
 	url = http://www.phoronix-test-suite.com/
 	install = phoronix-test-suite-git.install
 	arch = any
