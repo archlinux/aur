@@ -1,7 +1,7 @@
 # Contributor: Chris Brannon <cmbrannon79@gmail.com>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=nmh
-pkgver=1.7
+pkgver=1.7.1
 pkgrel=1
 epoch=
 pkgdesc="Powerful electronic mail handling system, based on a set of command-line utilities."
@@ -47,18 +47,18 @@ install=
 source=("http://download.savannah.nongnu.org/releases/nmh/$pkgname-$pkgver.tar.gz")
 noextract=()
 options=()
-md5sums=('f6f8adbc9665bca76b153b07ff2fe294')
-sha1sums=('626e4c759807fa0714a825bcc4f4c60ba9360ea5')
-sha256sums=('cd05c7ca2cae524ae99f6ba673463a5cdeff62df93e85913aa9277ae8304ce44')
+md5sums=('0f2e117eb3acbe949af43b5048de28c5')
+sha1sums=('441b56502827eb8296745520a243c7d46153ad94')
+sha256sums=('f1fb94bbf7d95fcd43277c7cfda55633a047187f57afc6c1bb9321852bd07c11')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
 
-    ./configure --prefix=/usr                  \
-                --sysconfdir=/etc/$pkgname     \
-                --libdir=/usr/lib/$pkgname     \
-                --libexecdir=/usr/lib/$pkgname \
-                --with-cyrus-sasl              \
+    ./configure --prefix=/usr         \
+                --sysconfdir=/etc     \
+                --libdir=/usr/lib     \
+                --libexecdir=/usr/lib \
+                --with-cyrus-sasl     \
                 --with-tls
     make
 }
