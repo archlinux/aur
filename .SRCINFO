@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-compat-57
 	pkgdesc = Compatibility package for ffmpeg to provide versions 57 of libavcodec, libavdevice and libavformat, not anymore provided by the ffmpeg package
 	pkgver = 3.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ffmpeg.org/
 	arch = i686
 	arch = x86_64
@@ -50,7 +50,7 @@ pkgbase = ffmpeg-compat-57
 	depends = libvorbisenc.so
 	depends = libvorbis.so
 	depends = libvpx.so
-	depends = libx264.so
+	depends = libx264
 	depends = libx265.so
 	depends = libxvidcore.so
 	provides = libavcodec.so=57
