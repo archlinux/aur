@@ -1,13 +1,13 @@
 # Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
 
 pkgname=genieutils-git
-pkgver=r386.d2d4c6a
+pkgver=r387.c5926df
 pkgrel=1
 pkgdesc='A library to read/write certain data and resource files of genie engine games'
 arch=('x86_64' 'i686')
 url='https://github.com/sandsmark/genieutils'
 license=('LGPL3')
-depends=('zstr' 'pcrio')
+depends=('zstr-git' 'pcrio-git')
 makedepends=('git')
 conflicts=(genieutils)
 provides=(genieutils)
