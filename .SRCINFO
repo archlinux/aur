@@ -15,7 +15,7 @@ pkgbase = iptables-fullcone-nat
 	depends = netfilter-full-cone-nat-dkms
 	provides = iptables
 	conflicts = iptables
-	source = file:///usr/src/netfilter-full-cone-nat-ec14efe/libipt_FULLCONENAT.c
+	source = file:///usr/src/netfilter-full-cone-nat-git+ec14efe/libipt_FULLCONENAT.c
 	source = git://git.netfilter.org/iptables
 	source = empty-filter.rules::https://git.archlinux.org/svntogit/packages.git/plain/trunk/empty-filter.rules?h=packages/iptables
 	source = empty-mangle.rules::https://git.archlinux.org/svntogit/packages.git/plain/trunk/empty-mangle.rules?h=packages/iptables

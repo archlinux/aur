@@ -11,7 +11,7 @@ depends=('glibc' 'libmnl' 'libnftnl' 'libpcap' 'netfilter-full-cone-nat-dkms')
 makedepends=('git' 'linux-api-headers')
 provides=('iptables')
 conflicts=('iptables')
-source=("file:///usr/src/netfilter-full-cone-nat-ec14efe/libipt_FULLCONENAT.c"
+source=("file:///usr/src/netfilter-full-cone-nat-git+ec14efe/libipt_FULLCONENAT.c"
 	"git://git.netfilter.org/iptables"
         "empty-filter.rules::https://git.archlinux.org/svntogit/packages.git/plain/trunk/empty-filter.rules?h=packages/iptables"
         "empty-mangle.rules::https://git.archlinux.org/svntogit/packages.git/plain/trunk/empty-mangle.rules?h=packages/iptables"
