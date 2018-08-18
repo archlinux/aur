@@ -1,24 +1,23 @@
 pkgbase = beaker-browser-bin
 	pkgdesc = Peer-to-peer browser with tools to create and host websites
 	pkgver = 0.8.0_prerelease.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://beakerbrowser.com/
 	install = beaker-browser-bin.install
 	arch = x86_64
 	license = Modified MIT License (MIT)
+	depends = libxss
+	depends = libxtst
+	depends = libnotify
+	depends = gconf
+	depends = electron
 	provides = beaker-browser
 	provides = beakerbrowser
 	options = !strip
 	source = https://github.com/beakerbrowser/beaker/releases/download/0.8.0-prerelease.7/beaker-browser-0.8.0-prerelease.7-x86_64.AppImage
 	source = beaker-browser.desktop
-	source = beaker-browser
-	source = beaker.png
-	source = LICENSE
 	md5sums = 29ce7033348b13431fea4dfbe2fa94fc
-	md5sums = b10231529d8728fda5cadec2363d1ed1
-	md5sums = cb6c4917ea8c4e6eb037d7167b76410c
-	md5sums = 9cbb1795dc2934472f7c2b021294964d
-	md5sums = 3862c029863f42c81265a712f9c17c4c
+	md5sums = 34b48b022c6c71212f0adb3981f2925d
 
 pkgname = beaker-browser-bin
 

@@ -1,36 +1,40 @@
 # Maintainer: JC Francois <jc.francois@gmail.com>
 pkgname=beaker-browser-bin
 pkgver=0.8.0_prerelease.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Peer-to-peer browser with tools to create and host websites"
 arch=('x86_64')
 url="https://beakerbrowser.com/"
 license=('Modified MIT License (MIT)')
 provides=('beaker-browser' 'beakerbrowser')
+depends=('libxss' 'libxtst' 'libnotify' 'gconf' 'electron')
 backup=()
 
 options=(!strip)
 source=("https://github.com/beakerbrowser/beaker/releases/download/${pkgver//_/-}/beaker-browser-${pkgver//_/-}-${arch}.AppImage"
-        "beaker-browser.desktop"
-        "beaker-browser"
-        "beaker.png"
-        "LICENSE")
+        "beaker-browser.desktop")
 noextract=()
 md5sums=('29ce7033348b13431fea4dfbe2fa94fc'
-         'b10231529d8728fda5cadec2363d1ed1'
-         'cb6c4917ea8c4e6eb037d7167b76410c'
-         '9cbb1795dc2934472f7c2b021294964d'
-         '3862c029863f42c81265a712f9c17c4c')
+         '34b48b022c6c71212f0adb3981f2925d')
 
 install='beaker-browser-bin.install'
 
-package() {
-    install -Dm644 ${srcdir}/beaker-browser.desktop                         ${pkgdir}/usr/share/applications/beaker-browser.desktop
-    install -Dm644 ${srcdir}/beaker.png                                     ${pkgdir}/usr/share/icons/hicolor/48x48/apps/beaker.png
-    install -Dm444 ${srcdir}/LICENSE                                        ${pkgdir}/usr/share/LICENSES/beaker-browser/LICENSE
-    install -Dm755 ${srcdir}/beaker-browser                                 ${pkgdir}/usr/bin/beaker-browser
-    install -Dm755 ${srcdir}/beaker-browser-${pkgver//_/-}-${arch}.AppImage ${pkgdir}/opt/beaker-browser/beaker-browser.AppImage
+prepare() {
+    chmod u+x beaker-browser-${pkgver//_/-}-${arch}.AppImage
+    ./beaker-browser-${pkgver//_/-}-${arch}.AppImage --appimage-extract
 }
 
-# Possible alternative to deleting unwanted files at every run:
-# touch /usr/share/appimagekit/no_desktopintegration to prevent installation (but from ALL AppImages)
+package() {
+    find            ${srcdir}/squashfs-root/app/ -type d -exec chmod 755 {} +
+    install -d      ${pkgdir}/opt/beaker-browser
+    cp -r           ${srcdir}/squashfs-root/app/*                       ${pkgdir}/opt/beaker-browser
+ 
+    find            ${srcdir}/squashfs-root/usr/share/icons/ -type d -exec chmod 755 {} +
+    install -d      ${pkgdir}/usr/share/icons
+    cp -r           ${srcdir}/squashfs-root/usr/share/icons/hicolor     ${pkgdir}/usr/share/icons/hicolor              
+
+    install -Dm644  ${srcdir}/beaker-browser.desktop                    ${pkgdir}/usr/share/applications/beaker-browser.desktop
+
+    install -Dm755  ${srcdir}/beaker-browser                            ${pkgdir}/usr/bin/beaker-browser
+    install -Dm444  ${srcdir}/LICENSE                                   ${pkgdir}/usr/share/LICENSES/beaker-browser/LICENSE
+}

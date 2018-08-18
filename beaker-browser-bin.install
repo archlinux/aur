@@ -1,8 +1,14 @@
 
-# Remove bash script that was installed in /opt/beaker-browser before v0.7.11-2
 post_upgrade() {
+    # Remove bash script that was installed before v0.7.11-2
     if [ -e /opt/beaker-browser/beaker-browser.sh ];
     then
         rm /opt/beaker-browser/beaker-browser.sh;
     fi
+    # Remove AppImage that was installed prior to v0.8.0-prerelease.7-3
+    if [ -e /opt/beaker-browser/beaker-browser.AppImage ];
+    then
+        rm /opt/beaker-browser/beaker-browser.AppImage;
+    fi
+
 }
