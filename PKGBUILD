@@ -32,6 +32,8 @@ md5sums=('d3556202869f629e0c251b59ad4b9bee'
          '2640eac092c220073f0668a7aaff61f7')
 [[ $_pkg = NVIDIA-Linux-x86_64-$pkgver ]] && md5sums[0]='42b1a62681dff47f82d66bf9e9406915'
 
+_extramodules=extramodules-ARCH
+
 # Patch
 #source+=('linux-4.11.patch')
 #md5sums+=('cc8941b6898d9daa0fb67371f57a56b6')
@@ -69,7 +71,7 @@ prepare() {
   bsdtar -xf nvidia-persistenced-init.tar.bz2
 
   # Kernel version (e.g. 4.15.0-1-ARCH)
-  _kernel=$(cat /usr/lib/modules/extramodules-*-ARCH/version)
+  _kernel=$(cat /usr/lib/modules/$_extramodules/version)
 
   # Loop patches (linux-4.15.patch, lol.patch, ...)
   for _p in $(printf -- '%s\n' ${source[@]} | grep .patch); do  # https://stackoverflow.com/a/21058239/1821548
@@ -88,7 +90,7 @@ prepare() {
 
 build() {
   # Version of 'linux'
-  _kernel=$(cat /usr/lib/modules/extramodules-*-ARCH/version)
+  _kernel=$(cat /usr/lib/modules/$_extramodules/version)
 
   # Build module
   cd $_pkg/kernel
@@ -322,10 +324,6 @@ package_nvidia-full-beta() {
   conflicts=('nvidia-96xx' 'nvidia-173xx' 'nvidia')
   install=$pkgname.install
   
-  # Version of 'linux'
-  _major=$(pacman -Q linux | grep -Po "\d+\.\d+")
-  _extramodules=extramodules-$_major-ARCH
-
   # Nvidia kernel module; provides low-level access to your NVIDIA hardware for the other components. Generally
   # loaded into the kernel when the X server is started, to be used by the X driver and OpenGL. Consists of two
   # pieces: the binary-only core, and a kernel interface that must be compiled specifically for your kernel version,
