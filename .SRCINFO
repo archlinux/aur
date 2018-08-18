@@ -1,7 +1,7 @@
 pkgbase = linux-threadripper
-	pkgver = 4.16.9
+	pkgver = 4.18.3.arch1
 	pkgrel = 1
-	url = https://www.kernel.org/
+	url = https://git.archlinux.org/linux.git/log/?h=v4.18.3-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = xmlto
@@ -9,35 +9,23 @@ pkgbase = linux-threadripper
 	makedepends = inetutils
 	makedepends = bc
 	makedepends = libelf
+	makedepends = git
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.16.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.16.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.16.9.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.16.9.sign
+	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v4.18.3-arch1
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
 	source = linux.preset
-	source = 0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-	source = 0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
-	source = 0003-Partially-revert-swiotlb-remove-various-exports.patch
-	source = 0004-xhci-Fix-USB3-NULL-pointer-dereference-at-logical-di.patch
-	source = 0005-restore-pci-bridge-configuration-space-on-bridge-reset.patch
+	source = 0001-restore-pci-bridge-configuration-space-on-bridge-reset.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = 63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9
+	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
 	sha256sums = SKIP
-	sha256sums = 299b45a4f16f763ecf654e6642c020b6e9e461601d056ef44ecb21b54d736cbf
-	sha256sums = SKIP
-	sha256sums = 66e44d128ddbc6ca30127d7fca3947f0200146b451bf3d7376fc2ef985a4a89b
+	sha256sums = bb700544d499a92dab141a218cc1eac62fdff0b67682748cb827035269c02a55
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = 75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
-	sha256sums = 69241df4bd7897eb04db90e4d0a82c6e0b99b806019ba96bb885278ca8da89df
-	sha256sums = 10728f672a83a515af540cafafde62346e9ccc2d14bf74e417fd2693865b1293
-	sha256sums = a81b612369e78d142ff80ec3adda36b3f94503e5a68d54282c508a112cc8dae0
-	sha256sums = 052a39582f84c52b027c261fcec90325493f4d46f15647c274a58e39145deced
-	sha256sums = b3437e2c9f6ebb90f293b24fa1a988a309eb05b61c5733c41ec8a3481e8c5d7f
+	sha256sums = 8ccbf4cc0ea5e093ff77eb36e514c6a54a2da055ab31e1381f147192f42496cd
 
 pkgname = linux-threadripper
 	pkgdesc = The Linux-threadripper kernel and modules
@@ -45,7 +33,7 @@ pkgname = linux-threadripper
 	depends = coreutils
 	depends = linux-firmware
 	depends = kmod
-	depends = mkinitcpio>=0.7
+	depends = mkinitcpio
 	optdepends = crda: to set the correct wireless channels of your country
 	backup = etc/mkinitcpio.d/linux-threadripper.preset
 
