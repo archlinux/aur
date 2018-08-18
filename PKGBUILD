@@ -10,7 +10,8 @@ _target=m68k-elf
 _target_cpu=m68000
 pkgname=${_target}-newlib
 pkgver=3.0.0
-pkgrel=3
+_srcdate=20180802
+pkgrel=4
 pkgdesc="C library for bare metal systems (${_target})."
 arch=(any)
 url="https://sourceware.org/newlib/"
@@ -18,8 +19,8 @@ license=('BSD')
 groups=(devel)
 depends=("${_target}-gcc-bootstrap" "${_target}-binutils")
 options=('!makeflags' '!strip' 'staticlibs' '!libtool')
-source=("ftp://sourceware.org/pub/newlib/newlib-${pkgver}.tar.gz")
-sha256sums=('c8566335ee74e5fcaeb8595b4ebd0400c4b043d6acb3263ecb1314f8f5501332')
+source=("ftp://sourceware.org/pub/newlib/newlib-${pkgver}.${_srcdate}.tar.gz")
+sha256sums=('85444b42f1379678d1c9f295813bc81d12f7f5a648f0c9a872fe7c24568263f6')
 
 prepare() {
   mkdir ${srcdir}/newlib-build
@@ -29,7 +30,7 @@ build() {
   cd ${srcdir}/newlib-build
 
   export CFLAGS_FOR_TARGET="-Os -g -ffunction-sections -fdata-sections -fomit-frame-pointer -ffast-math"
-  ../newlib-${pkgver}/configure \
+  ../newlib-${pkgver}.${_srcdate}/configure \
     --target=${_target} \
     --prefix=/usr \
     --disable-newlib-supplied-syscalls \
