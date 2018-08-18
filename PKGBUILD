@@ -3,9 +3,9 @@
 pkgname=pref-git
 pkgver=r575.5761543
 pkgrel=1
-pkgdesc='https://pref.github.io/'
+url='https://pref.github.io/'
 arch=('i686' 'x86_64')
-url='Portable Reverse Engineering Framework'
+pkgdesc='Portable Reverse Engineering Framework'
 license=('GPL3')
 depends=('qt5-base')
 makedepends=('git')
