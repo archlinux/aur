@@ -1,12 +1,13 @@
 pkgbase = libtoml-git
 	pkgdesc = Fast C parser using Ragel to generate the state machine.
 	pkgver = r90.03e8a3a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ajwans/libtoml
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
 	makedepends = cunit
+	makedepends = git
 	makedepends = pkgconf
 	makedepends = ragel
 	depends = icu

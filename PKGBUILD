@@ -2,13 +2,13 @@
 
 pkgname=libtoml-git
 pkgver=r90.03e8a3a
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast C parser using Ragel to generate the state machine."
 arch=('x86_64')
 url="https://github.com/ajwans/libtoml"
 license=('BSD')
 depends=('icu')
-makedepends=('cmake' 'cunit' 'pkgconf' 'ragel')
+makedepends=('cmake' 'cunit' 'git' 'pkgconf' 'ragel')
 source=('libtoml::git+https://github.com/ajwans/libtoml' 'libtoml-cmake-install.patch')
 sha256sums=('SKIP' '29554fb7c3c01cc8a37b3f03225a97aa6d8d15ff0a489bea83bd6530c563c0a5')
 
