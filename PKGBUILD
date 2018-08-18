@@ -4,12 +4,12 @@
 # Contributor: Renato Silva <br.renatosilva@gmail.com>
 pkgname=mingw-w64-glib2
 pkgver=2.56.2
-pkgrel=1
+pkgrel=2
 _commit=d4b60396c79c7294ab69a2c591518e76ab17b603  # tags/2.56.2^0
 arch=(any)
 pkgdesc="Low level core library (mingw-w64)"
-depends=(mingw-w64-libffi mingw-w64-pcre mingw-w64-gettext)
-makedepends=(mingw-w64-configure python shared-mime-info mingw-w64-zlib git)
+depends=(mingw-w64-libffi mingw-w64-pcre mingw-w64-gettext mingw-w64-zlib)
+makedepends=(mingw-w64-configure python shared-mime-info git)
 license=("LGPL2.1")
 options=(!strip !buildflags staticlibs !emptydirs)
 url="http://www.gtk.org/"
