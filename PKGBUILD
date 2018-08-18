@@ -5,14 +5,14 @@
 
 pkgname=('handbrake-fdkaac' 'handbrake-cli-fdkaac')
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://handbrake.fr/"
 license=('GPL')
 makedepends=('intltool' 'python2' 'yasm' 'wget' 'cmake' 'bzip2' 'gcc-libs'
              'zlib' 'libnotify' 'gst-plugins-base' 'gtk3' 'dbus-glib' 'libass'
              'lame' 'libxml2' 'opus' 'libvorbis' 'libtheora' 'libsamplerate'
-             'x264' 'libx264' 'jansson' 'librsvg' 'libgudev')
+             'x264' 'jansson' 'librsvg' 'libgudev')
 source=(https://download.handbrake.fr/releases/$pkgver/HandBrake-$pkgver-source.tar.bz2)
 sha256sums=('e3390c5fd901fb06d72e29c62a63d373d5fb5b3467295d114d815ae7b78a9d7a')
 
@@ -31,7 +31,7 @@ package_handbrake-fdkaac() {
   conflicts=('handbrake')
   depends=('bzip2' 'gcc-libs' 'zlib' 'gst-plugins-base' 'libnotify' 'dbus-glib'
            'gtk3' 'libass' 'lame' 'libxml2' 'opus' 'libvorbis' 'libtheora'
-           'libsamplerate' 'libx264' 'jansson' 'librsvg' 'libgudev'
+           'libsamplerate' 'x264' 'jansson' 'librsvg' 'libgudev'
            'desktop-file-utils' 'hicolor-icon-theme')
   optdepends=('gst-plugins-good: for video previews'
               'gst-libav: for video previews'
@@ -47,7 +47,7 @@ package_handbrake-cli-fdkaac() {
   pkgdesc="Multithreaded video transcoder (CLI)"
   conflicts=('handbrake-cli')
   depends=('bzip2' 'gcc-libs' 'zlib' 'libass' 'lame' 'libxml2' 'opus'
-           'libvorbis' 'libtheora' 'libsamplerate' 'libx264' 'jansson')
+           'libvorbis' 'libtheora' 'libsamplerate' 'x264' 'jansson')
   optdepends=('libdvdcss: for decoding encrypted DVDs')
 
   cd "$srcdir/HandBrake-$pkgver/build"
