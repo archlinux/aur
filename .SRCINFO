@@ -9,6 +9,7 @@ pkgbase = freeaoe-git
 	makedepends = git
 	depends = genieutils-git
 	depends = sfml
+	depends = mini_al-git
 	provides = freeaoe
 	conflicts = freeaoe
 	source = git+https://github.com/sandsmark/freeaoe.git
