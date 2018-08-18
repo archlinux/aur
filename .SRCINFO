@@ -1,10 +1,10 @@
 pkgbase = libbitcoin-server
 	pkgdesc = Bitcoin Full Node and Query Server
 	pkgver = 3.5.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/libbitcoin/libbitcoin-server
 	install = bs.install
-	arch = i686
+	arch = aarch64
 	arch = x86_64
 	groups = libbitcoin
 	groups = obelisk
