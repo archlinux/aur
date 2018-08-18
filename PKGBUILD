@@ -2,9 +2,9 @@
 
 pkgname=libbitcoin-node-git
 pkgver=20180309
-pkgrel=3
+pkgrel=4
 pkgdesc="Bitcoin Full Node"
-arch=('i686' 'x86_64')
+arch=('aarch64' 'x86_64')
 depends=('boost'
          'boost-libs'
          'icu'

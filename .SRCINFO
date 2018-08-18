@@ -1,10 +1,10 @@
 pkgbase = libbitcoin-node-git
 	pkgdesc = Bitcoin Full Node
 	pkgver = 20180309
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/libbitcoin/libbitcoin-node
 	install = bn.install
-	arch = i686
+	arch = aarch64
 	arch = x86_64
 	groups = libbitcoin
 	groups = obelisk
