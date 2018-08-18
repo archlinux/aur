@@ -2,11 +2,11 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=pakku-git
-pkgver=0.6
+pkgver=0.13.1.gd25443b
 pkgrel=1
 pkgdesc='Pacman wrapper with AUR support with latest changes from github repo'
 arch=('x86_64')
-url="https://github.com/kitsunyan/$pkgname"
+url="https://github.com/kitsunyan/pakku"
 license=('GPL3')
 depends=('libcurl.so' 'git')
 makedepends=('nim' 'git' 'asciidoc')
