@@ -38,7 +38,7 @@ fi
 if (("${_disable_vala}" == 0));then
 	_opts+=(-DENABLE_VALAPANEL=ON)
 	pkgname+=('vala-panel-sntray-git')
-	makedepends+=('vala-panel-git')
+	makedepends+=('vala-panel>=0.3.75')
 	msg "Vala Panel applet enabled"
 else
 	_opts+=(-DENABLE_VALAPANEL=OFF)
@@ -61,7 +61,7 @@ _pkgbase=xfce4-sntray-plugin
 _cmakename=cmake-vala
 _dbusmenuname=vala-dbusmenu
 pkgver=0.4.10
-pkgrel=3
+pkgrel=4
 pkgdesc="Plugin for xfce4-panel and vala-panel to show StatusNotifierItems (AppIndicators) via FlowBox"
 url="https://gitlab.com/vala-panel-project/xfce4-sntray-plugin"
 arch=('i686' 'x86_64')
@@ -135,7 +135,7 @@ package_mate-panel-sntray-git(){
 
 package_vala-panel-sntray-git(){
 	pkgdesc="Plugin for vala-panel to show StatusNotifierItems (AppIndicators) via FlowBox"
-	depends=('gtk3' 'vala-panel' 'libpeas' 'sntray-plugin-translations-git')
+	depends=('gtk3' 'vala-panel' 'sntray-plugin-translations-git')
 	optdepends=('vala-panel-extras-volume: ALSA volume applet'
 				'vala-panel-extras-battery: UPower battery applet'
 				'vala-panel-extras-weather: Weather applet'
