@@ -8,7 +8,7 @@ pkgname=inox-beta
 pk=bnox
 name=chromium
 pkgver=69.0.3497.42
-pkgrel=1
+pkgrel=2
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
@@ -425,6 +425,7 @@ build() {
     'enable_nacl_nonsfi=false'
     'enable_print_preview=true'
     'enable_remoting=false'
+    'enable_google_now=false'
   )
 
 
