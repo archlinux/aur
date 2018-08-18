@@ -2,11 +2,11 @@
 
 pkgname=(alacritty-scrollback-git alacritty-scrollback-terminfo-git)
 pkgver=0.1.0+894+g8e8ecdd
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64)
 url=https://github.com/jwilm/alacritty
 license=(Apache)
-makedepends=(git rust cargo cmake fontconfig freetype2 ncurses)
+makedepends=(git rust cargo cmake fontconfig freetype2 ncurses libicns)
 source=(git+$url#branch=scrollback)
 sha512sums=(SKIP)
 
@@ -40,8 +40,11 @@ package_alacritty-scrollback-git() {
   _desktop="$pkgdir"/usr/share/applications/alacritty.desktop
   install -Dm 644 alacritty.desktop "$_desktop"
   sed -i 's#utilities-terminal#alacritty#' "$_desktop"
-  install -Dm 644 assets/osx/Alacritty.app/Contents/Resources/alacritty.icns "$pkgdir"/usr/share/icons/alacritty.png
-}
+  _icons="$pkgdir"/usr/share/icons
+  mkdir -p "$_icons"
+  icns2png -x -s 1024 assets/osx/Alacritty.app/Contents/Resources/alacritty.icns -o "$_icons"
+  mv "$_icons"/alacritty{_1024x1024x32,}.png
+ }
 
 package_alacritty-scrollback-terminfo-git() {
   pkgdesc='Terminfo files for the alacritty terminal emulator (scrollback branch)'
