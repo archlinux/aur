@@ -1,6 +1,6 @@
 # Maintainer: Guillaume Hayot <ghayot@postblue.info>
 pkgname=parlatype
-pkgver=1.5.5
+pkgver=1.5.6
 pkgrel=1
 pkgdesc="GNOME audio player for transcription"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('libreoffice' 'yelp-tools' 'intltool' 'gobject-introspection')
 # makedepends=('libreoffice' 'yelp-tools' 'intltool' 'gobject-introspection' 'glade' 'gtk-doc')
 optdepends=('libreoffice: LibreOffice macros' 'gst-plugins-ugly: Play MP3 files')
 source=("https://github.com/gkarsay/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('8416302349f3c97378a5a9755be08d09c23d23a4a917e8aa5d8f4aa3adf18997')
+sha256sums=('ae72ac7c80e1adfec8b0f04bec066e2c45adf0da90736707a5f962cfdd722f3f')
 
 prepare() {
 	cd "$pkgname-$pkgver"
