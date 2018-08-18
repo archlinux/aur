@@ -9,7 +9,7 @@
 _target=m68k-elf
 _target_cpu=m68000
 pkgname=${_target}-gdb
-pkgver=8.1
+pkgver=8.1.1
 pkgrel=1
 pkgdesc="The GNU Project Debugger (${_target})"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ url="https://www.gnu.org/software/gdb/"
 depends=("${_target}-binutils>=2.29-1" "${_target}-gcc" 'zlib' 'guile2.0')
 source=("http://ftp.gnu.org/gnu/gdb/gdb-${pkgver}.tar.xz")
         
-sha256sums=('af61a0263858e69c5dce51eab26662ff3d2ad9aa68da9583e8143b5426be4b34')
+sha256sums=('97dcc3169bd430270fc29adb65145846a58c1b55cdbb73382a4a89307bdad03c')
 
 prepare() {
   cd ${srcdir}/gdb-${pkgver}
