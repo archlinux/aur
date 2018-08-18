@@ -2,9 +2,9 @@
 
 pkgname=libbitcoin-server-git
 pkgver=20180315
-pkgrel=3
+pkgrel=4
 pkgdesc="Bitcoin Full Node and Query Server"
-arch=('i686' 'x86_64')
+arch=('aarch64' 'x86_64')
 depends=('boost'
          'boost-libs'
          'icu'
