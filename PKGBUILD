@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('ffmpeg' 'orc')
 makedepends=()
 options=('!strip') # IMPORTANT! DO NOT REMOVE THIS, OTHERWISE THE BINARY WILL BE BROKEN!
-source=(https://github.com/mi-g/vdhcoapp/releases/download/v${pkgver}/net.downloadhelper.coapp-${pkgver}-${pkgrel}_amd64.deb
+source=(https://github.com/mi-g/vdhcoapp/releases/download/v${pkgver}/net.downloadhelper.coapp-${pkgver}-1_amd64.deb
         vdhcoapp-install.hook
         vdhcoapp-remove.hook)
 sha256sums=('36306d53b5258cb1a588ddec73851208398c8d3f5d8c6389d45a9cbb0493e383'
