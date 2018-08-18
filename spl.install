@@ -12,5 +12,5 @@ post_upgrade() {
 
 run_depmod() {
     echo ">>> Updating SPL module dependencies"
-    depmod -a 4.17.14-zen1-1-zen
+    depmod -a 4.18.1-zen1-1-zen
 }
