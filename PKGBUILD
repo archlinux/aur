@@ -1,13 +1,13 @@
 # Maintainer: David Baum <david.baum@naraesk.eu>
 pkgname=plasma5-applets-feedreader
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="System tray support for Feedreader"
 arch=('i686' 'x86_64')
 url="https://github.com/naraesk/plasma-feedreader"
 license=('GPL3')
 groups=()
-depends=('plasma-workspace')
+depends=('plasma-workspace' 'feedreader')
 makedepends=('cmake' 'extra-cmake-modules' 'ki18n' 'qt5-base' 'qt5-declarative' 'qt5-tools')
 optdepends=()
 provides=()
