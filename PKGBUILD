@@ -2,7 +2,7 @@
 
 pkgname=ham-radio-meta
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Meta package for ham radio packages."
 arch=('any')
 groups=('ham-radio')
@@ -23,5 +23,5 @@ depends=(
         'xnec2c'
         'gridtracker-bin'
         'gqrx'
-        'tqsl'
+        'trustedqsl'
         )
