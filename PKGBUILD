@@ -56,7 +56,7 @@ fi
 
 msg "If you want to disable an applet, edit pkgbuild variables _disable_[applet]"
 
-pkgbase=vala-panel-genmon-git
+pkgbase=generic-monitor-plugin-git
 _pkgbase=xfce4-genmon-plugin
 _cmakename=cmake-vala
 _dbusmenuname=vala-dbusmenu
