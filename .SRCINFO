@@ -1,0 +1,12 @@
+pkgbase = eventstat-updated
+	pkgdesc = Simple monitoring of system events
+	pkgver = 0.04.04
+	pkgrel = 1
+	url = http://kernel.ubuntu.com/~cking/eventstat/
+	arch = any
+	license = GPL
+	source = http://kernel.ubuntu.com/~cking/tarballs/eventstat/eventstat-updated-0.04.04.tar.gz
+	md5sums = 9934c3d8810ef5b0d0346907f4f25e09
+
+pkgname = eventstat-updated
+
