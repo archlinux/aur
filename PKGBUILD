@@ -1,7 +1,7 @@
 # Maintainer: Dang Mai <contact at dangmai dot net>
 
 pkgname=sfdx-cli
-pkgver="6.28.0_4b5e047039"
+pkgver="6.29.0_0a2482692c"
 pkgrel=1
 _dirname="${pkgname}-v${pkgver}"
 pkgdesc="a tool for creating and managing Salesforce DX projects from the command line"
@@ -12,8 +12,8 @@ optdepends=('gnome-keyring: saving default credentials')
 provides=('sfdx-cli')
 options=(!strip)
 conflicts=()
-source_i686=("https://developer.salesforce.com/media/salesforce-cli/sfdx-cli/channels/stable/sfdx-cli-v6.28.0-4b5e047039-linux-x86.tar.xz")
-source_x86_64=("https://developer.salesforce.com/media/salesforce-cli/sfdx-cli/channels/stable/sfdx-cli-v6.28.0-4b5e047039-linux-x64.tar.xz")
+source_i686=("https://developer.salesforce.com/media/salesforce-cli/sfdx-cli/channels/stable/sfdx-cli-v6.29.0-0a2482692c-linux-x86.tar.xz")
+source_x86_64=("https://developer.salesforce.com/media/salesforce-cli/sfdx-cli/channels/stable/sfdx-cli-v6.29.0-0a2482692c-linux-x64.tar.xz")
 
 package() {
     _arch=""
@@ -30,9 +30,9 @@ package() {
 
     install -dm 755 "${pkgdir}"/opt
     install -dm 755 "${pkgdir}"/usr/bin
-    sfdx_dir="sfdx-cli-v"6.28.0-4b5e047039"-linux-${_arch}"
+    sfdx_dir="sfdx-cli-v"6.29.0-0a2482692c"-linux-${_arch}"
     cp -a "${sfdx_dir}" "${pkgdir}"/opt/sfdx-cli
     ln -s /opt/sfdx-cli/bin/sfdx "${pkgdir}"/usr/bin/sfdx
 }
-sha256sums_i686=("0001ff423e8f7cf5729e4d8bf58e6d4bbf4d4f5ca595129cf73fd9a3f999f019")
-sha256sums_x86_64=("5738a2c8e3cec8b014688919895b02abba5e4571b2568a506dbedb545c57982b")
+sha256sums_i686=("f4dc5b50f6fdc14f9adb5214fe57dcd70a602fc70008f6b4771fc0db42bd2754")
+sha256sums_x86_64=("9348651b9f73f2fa48d7e24ca8a2c42b27074410b0474d34ac38264fe83e311e")
