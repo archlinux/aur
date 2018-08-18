@@ -2,7 +2,7 @@
 
 pkgname=ffmpeg-compat-57
 pkgver=3.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Compatibility package for ffmpeg to provide versions 57 of libavcodec, libavdevice and libavformat, not anymore provided by the ffmpeg package"
 arch=('i686' 'x86_64')
 url="http://ffmpeg.org/"
