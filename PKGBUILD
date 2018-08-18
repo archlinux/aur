@@ -2,9 +2,9 @@
 
 pkgname=libbitcoin-database-git
 pkgver=20170303
-pkgrel=3
+pkgrel=4
 pkgdesc="Bitcoin High Performance Blockchain Database"
-arch=('i686' 'x86_64')
+arch=('aarch64' 'x86_64')
 depends=('boost'
          'boost-libs'
          'libbitcoin-system'
