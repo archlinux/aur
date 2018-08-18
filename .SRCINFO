@@ -1,6 +1,6 @@
 pkgbase = linux-amd-wip-git
 	pkgdesc = Linux kernel with AMDGPU DC patches
-	pkgver = 4.19.766936.5495d8d27570
+	pkgver = 4.20.769967.52a385da1ae2
 	pkgrel = 1
 	url = https://cgit.freedesktop.org/~agd5f/linux/
 	arch = x86_64
@@ -13,12 +13,12 @@ pkgbase = linux-amd-wip-git
 	makedepends = git
 	makedepends = libelf
 	options = !strip
-	source = linux-amd-wip-git::git://people.freedesktop.org/~agd5f/linux#branch=drm-next-4.19-wip
+	source = linux-amd-wip-git::git://people.freedesktop.org/~agd5f/linux#branch=drm-next-4.20-wip
 	source = config.x86_64
 	source = linux.install
 	source = linux-amd-wip-git.preset
 	sha256sums = SKIP
-	sha256sums = 71f574ef42e92421f99e7c2a5447c1fab3e25370ea3cf0326fcf5e3d2ab8c074
+	sha256sums = 8edac3a458e2228b4cf186eff12835184148213d62a2e191d5be17d3f6ec944d
 	sha256sums = d590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 
