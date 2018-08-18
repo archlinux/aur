@@ -2,9 +2,9 @@
 
 pkgname=libbitcoin-blockchain-git
 pkgver=20170228
-pkgrel=3
+pkgrel=4
 pkgdesc="Bitcoin Blockchain Library"
-arch=('i686' 'x86_64')
+arch=('aarch64' 'x86_64')
 depends=('boost'
          'boost-libs'
          'icu'
