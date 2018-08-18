@@ -4,9 +4,9 @@
 
 pkgname=libbitcoin-network-git
 pkgver=20170307
-pkgrel=3
+pkgrel=4
 pkgdesc="Bitcoin P2P Network Library"
-arch=('i686' 'x86_64')
+arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 depends=('boost'
          'boost-libs'
          'icu'
