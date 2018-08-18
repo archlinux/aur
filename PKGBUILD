@@ -41,7 +41,7 @@ fi
 if (("${_disable_vala}" == 0));then
 	_opts+=(-DENABLE_VALAPANEL=ON)
 	pkgname+=('vala-panel-appmenu-valapanel-git')
-	makedepends+=('vala-panel-git')
+	makedepends+=('vala-panel>=0.3.75')
 	msg "Vala Panel applet enabled"
 else
 	_opts+=(-DENABLE_VALAPANEL=OFF)
@@ -63,7 +63,7 @@ _pkgbase=vala-panel-appmenu
 pkgbase=${_pkgbase}-xfce-git
 _cmakename=cmake-vala
 pkgver=0.6.94
-pkgrel=5
+pkgrel=6
 pkgdesc="AppMenu (Global Menu) plugin"
 url="https://gitlab.com/vala-panel-project/vala-panel-appmenu"
 arch=('i686' 'x86_64')
