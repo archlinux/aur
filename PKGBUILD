@@ -42,20 +42,20 @@ prepare() {
   sh $_pkg.run -x
   cd $_pkg
 
-  # Kernel version (e.g. 4.15.0-1-ARCH)
+  # Kernel version (e.g. 4.18.3-arch1-1-ARCH)
   _kernel=$(cat /usr/lib/modules/$_extramodules/version)
 
-  # Loop patches (linux-4.15.patch, lol.patch, ...)
-  for _p in $(printf -- '%s\n' ${source[@]} | grep .patch); do  # https://stackoverflow.com/a/21058239/1821548
-    # Patch version (4.15, "", ...)
-    _patch=$(echo $_p | grep -Po "\d+\.\d+")
+  # Loop patches (e.g. linux-4.18.patch, lol.patch, ...)
+  for _patch in $(printf -- '%s\n' ${source[@]} | grep .patch); do  # https://stackoverflow.com/a/21058239/1821548
+    # Get patch version (if any) from filename
+    _patchver=$(echo $_patch | grep -Po "\d+\.\d+")
 
     # Compare versions
-    if (( $(vercmp "$_kernel" "$_patch") >= 0 )); then
-      msg2 "Applying $_p..."
-      patch -p1 -i "$srcdir"/$_p
+    if (( $(vercmp "$_kernel" "$_patchver") >= 0 )); then
+      msg2 "Applying $_patch..."
+      patch -p1 -i "$srcdir"/$_patch
     else
-      msg2 "Skipping $_p..."  # List these, instead of ignoring silently
+      msg2 "Skipping $_patch..."  # List these, instead of ignoring silently
     fi
   done
 }
