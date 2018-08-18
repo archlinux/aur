@@ -9,7 +9,7 @@
 _target=m68k-elf
 _target_cpu=m68000
 pkgname=${_target}-gcc
-pkgver=8.1.0
+pkgver=8.2.0
 _mpfrver=4.0.1
 _mpcver=1.1.0
 _gmpver=6.1.2
@@ -28,7 +28,7 @@ source=("http://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/gcc-${pkgver}.tar.xz"
         "http://ftp.gnu.org/gnu/mpc/mpc-${_mpcver}.tar.gz"
         "http://ftp.gnu.org/gnu/gmp/gmp-${_gmpver}.tar.xz")
 
-sha256sums=('1d1866f992626e61349a1ccd0b8d5253816222cdc13390dcfaa74b093aa2b153'
+sha256sums=('196c3c04ba2613f893283977e6011b2345d1cd1af9abeac58e916b1aab3e0080'
             '67874a60826303ee2fb6affc6dc0ddd3e749e9bfcb4c8655e3953d0458a6e16e'
             '6985c538143c1208dcb1ac42cedad6ff52e267b47e5f970183a3e75125b43c2e'
             '87b565e89a9a684fe4ebeeddb8399dce2599f9c9049854ca8c0dfbdea0e21912')
