@@ -1,23 +1,20 @@
 pkgbase = logmein-hamachi
 	pkgdesc = A zero-configuration VPN service
-	pkgver = 2.1.0.174
-	pkgrel = 3
+	pkgver = 2.1.0.198
+	pkgrel = 1
 	url = https://www.vpn.net/linux
 	arch = i686
 	arch = x86_64
 	arch = arm
-	arch = armv6h
 	arch = armv7h
 	license = custom
 	conflicts = hamachi
 	replaces = hamachi
 	options = !strip
-	source = https://www.vpn.net/installers/logmein-hamachi-2.1.0.174-x64.tgz
-	source = systemd
-	source = https://archive.archlinux.org/packages/g/glibc/glibc-2.25-7-x86_64.pkg.tar.xz
-	sha1sums = dafb47d24d44dd7bd3a80a81b62a297f497f52a5
-	sha1sums = c0d5b67ba0a938cef9742568fd09bb2a4b85b513
-	sha1sums = 5d0ac1bf449524db37e94320c0d04d3dbc2d0408
+	source = https://www.vpn.net/installers/logmein-hamachi-2.1.0.198-x64.tgz
+	source = logmein-hamachi.service
+	sha1sums = 235806bf8eecf79da054ffe253150772c677c73c
+	sha1sums = 2b8052f91bb47beac1fdab0c0c455a36f8876671
 
 pkgname = logmein-hamachi
 
