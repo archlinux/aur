@@ -7,7 +7,7 @@
 pkgname=inox-beta
 pk=bnox
 name=chromium
-pkgver=69.0.3497.23
+pkgver=69.0.3497.42
 pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
@@ -116,7 +116,7 @@ https://raw.githubusercontent.com/bn0785ac/ih-beta/master/desu.patch
 )
 
 
-sha256sums=('cb460ba9f150b9c8cd4f9071d7bae720549c00f3faa409beaf25194b035d5d3c'
+sha256sums=('347941bd5fd9cc121edbfc9c97d75a32283d481933264450afef89908683f022'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             '1a3a33e34764205c7be280c7436730f5d899bdbc44339ec5df208e09fd102883'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -154,14 +154,14 @@ sha256sums=('cb460ba9f150b9c8cd4f9071d7bae720549c00f3faa409beaf25194b035d5d3c'
             '0a148b0a15a63feb08ed79695a80d09ad39db7a3373b217cd499909218b94fda'
             '9465f89adc5b177050fd154b3be459f167fd3e157a1ebc0537b29070f0dbda5d'
             '5a4ec61000266fd623e0a3377210ed324ed62eeba6c61ecd95ffb49d4d20640f'
-            '2ea208978965da5d85d508f06835c2b6f62fe2566341beb8e87958bb3187ea01'
+            'bcb2f4588cf5dcf75cde855c7431e94fdcc34bdd68b876a90f65ab9938594562'
             '8aa6928dfeec97b5a2c2b22e1abda42fd0e57b6c480356c12ca4726a59f12fa8'
             '2acda9e5de0efa71c8347eb490bcae7993ae28dceaba406a0dafb50110539ba2'
             '66ff55dce4ebefdf0030c5cccfbf1dc4e269c681ad9e23d7be5df17c0a884858'
             '3c9aa1b7151d7b8b617c52a0bc0b2f68e2fac7ca0a3f41be48a3ad6d3b5737b9'
             '216829c72f1cc378bc66fb4f62f047cccd31684d946ba9a406b6e7a8f1351677'
             'bc31df03dbddf8f1389ca482c5ba97dfc1a77834bdfbc952dc60cf4da73713a1'
-            'f73e7e255432379d53613e7d53d4d176ef830dc34ef7743be294568aeea03a1c'
+            'e32139f263ecfa452baf0ea4ce728044a2bea975e4150f5d4bcf684d66f32555'
             '0ac16793634edde24c214eeffa9def755b9b76b256dfa3d9fd31de6002ff5dfa'
             'df1cb61901ad861ffe1335f2dd516d473a062507cd498e6b6afd93ad41ff03af'
             '9d4953a3dc73cb01d9d65ea297ab4b09d47b4daaa5f2291ef35d0784a2f18a4e'
@@ -402,6 +402,8 @@ build() {
   mkdir -p "$TMPDIR"
 
    local _flags=(
+    "custom_toolchain=\"//build/toolchain/linux/unbundle:default\""
+    "host_toolchain=\"//build/toolchain/linux/unbundle:default\""
     'symbol_level=0'
     'is_debug=false'
     'fatal_linker_warnings=false'
@@ -421,10 +423,10 @@ build() {
     'enable_nacl=false'
     'enable_swiftshader=false'
     'enable_nacl_nonsfi=false'
-    'enable_google_now=false'
     'enable_print_preview=true'
     'enable_remoting=false'
   )
+
 
       _clang_path="${srcdir}/chromium-${pkgver}/third_party/llvm-build/Release+Asserts/bin"
       _c_compiler="${_clang_path}/clang"
