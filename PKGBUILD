@@ -3,12 +3,12 @@
 _basename=gst-libav
 pkgname="lib32-$_basename"
 pkgver=1.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GStreamer Multimedia Framework ffmpeg Plugin (32-bit)"
 url="https://gstreamer.freedesktop.org/"
 arch=(x86_64)
 license=(GPL)
-depends=('lib32-gst-plugins-base-libs=1.14.1' 'bzip2')
+depends=('lib32-gst-plugins-base-libs' 'bzip2')
 makedepends=(python autoconf-archive git valgrind-multilib yasm)
 provides=("lib32-gst-ffmpeg=$pkgver-$pkgrel")
 _commit=4c3e87fec718c64282f35ab58492771a77147da6	# tags/1.14.1
