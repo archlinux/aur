@@ -21,7 +21,9 @@ pkgver() {
 
 package() {
   cd mini_al
-  install -dm755 "${pkgdir}/usr/include/"
-  install -m644 mini_al.h "${pkgdir}/usr/include/mini_al.h"
+  install -dm755 "${pkgdir}/usr/include/mini_al/"
+  install -m644 mini_al.h "${pkgdir}/usr/include/mini_al/mini_al.h"
+  install -dm755 "${pkgdir}/usr/include/mini_al/extras/"
+  install -m644 extras/*.h "${pkgdir}/usr/include/mini_al/extras/"
   install -Dm644 README.md ${pkgdir}/usr/share/licenses/mini_al-git/LICENSE
 }
