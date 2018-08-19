@@ -1,7 +1,7 @@
 pkgbase = deepin.com.qq.im
 	pkgdesc = Deepin Wine QQ 8.9.
-	pkgver = 8.9.19983deepin22
-	pkgrel = 3
+	pkgver = 8.9.19983deepin23
+	pkgrel = 1
 	url = http://im.qq.com/
 	arch = i686
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = deepin.com.qq.im
 	makedepends = tar
 	depends = deepin-wine
 	conflicts = deepin-qq-im
-	noextract = deepin.com.qq.im_8.9.19983deepin22_i386.deb
-	source = https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/deepin.com.qq.im/deepin.com.qq.im_8.9.19983deepin22_i386.deb
-	md5sums = 8cc202749ac759c1a6d3f387e6b83387
+	noextract = deepin.com.qq.im_8.9.19983deepin23_i386.deb
+	source = https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/deepin.com.qq.im/deepin.com.qq.im_8.9.19983deepin23_i386.deb
+	md5sums = 5135313eb131feeb6fef613ba02804cf
 
 pkgname = deepin.com.qq.im
 
