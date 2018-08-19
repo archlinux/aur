@@ -3,20 +3,20 @@
 pkgbase="python-sacred"
 pkgname=("python-sacred" "python2-sacred")
 _pkgname="sacred"
-pkgver="0.7.1"
+pkgver="0.7.4"
 pkgrel="1"
 pkgdesc='Sacred is a tool to configure, organize, log and reproduce computational experiments.'
 arch=('any')
 url='https://github.com/IDSIA/sacred'
 license=('MIT')
-depends=('python' 'python-docopt' 'python-wrapt' 'python-jsonpickle' 'python-mock' 'python-munch' 'python-py' 'python-pbr' 'python-pytest'
+depends=('python' 'python-docopt' 'python-wrapt' 'python-jsonpickle' 'python-mock' 'python-munch' 'python-py' 'python-pbr' 'python-pytest' 'python-py-cpuinfo'
          'python2' 'python2-docopt' 'python2-wrapt' 'python2-jsonpickle' 'python2-mock' 'python2-munch' 'python2-py' 'python2-pbr' 'python2-pytest')
 makedepends=('python-distribute'
              'python2-distribute')
 optdepends=('python-numpy' 'python-pymongo'
             'python2-numpy' 'python2-pymongo')
-source=("https://pypi.python.org/packages/8a/81/e4c7b7ad0ca1003ba4c86675659ee914fb7eaf61c4b3e143b98ab90ba873/sacred-${pkgver}.tar.gz")
-md5sums=('e4e69ffe281592e14043c011caebc1c5')
+source=("https://files.pythonhosted.org/packages/78/7c/07dc814c4e2edd516a323785fdf523c6b08db563c654bd5f11d8453ef9e7/sacred-${pkgver}.tar.gz")
+md5sums=('3b19ff7cb69d3d1593f004bfd06c0e99')
 
 prepare() {
   cd "$srcdir/"
@@ -45,7 +45,7 @@ package_python2-sacred() {
 }
 
 package_python-sacred() {
-  depends=('python' 'python-docopt' 'python-wrapt' 'python-jsonpickle' 'python-mock' 'python-munch' 'python-py' 'python-pbr' 'python-pytest')
+  depends=('python' 'python-docopt' 'python-wrapt' 'python-jsonpickle' 'python-mock' 'python-munch' 'python-py' 'python-pbr' 'python-pytest' 'python-py-cpuinfo')
   cd "$srcdir/$_pkgname-$pkgver"
   python setup.py install --root="$pkgdir"/ --optimize=1
 }
