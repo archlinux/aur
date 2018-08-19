@@ -1,6 +1,6 @@
 pkgbase = 1password-cli
 	pkgdesc = 1Password command line tool
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://app-updates.agilebits.com/product_history/CLI
 	arch = x86_64
@@ -10,14 +10,14 @@ pkgbase = 1password-cli
 	license = custom
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://cache.agilebits.com/dist/1P/op/pkg/v0.5.1/op_linux_amd64_v0.5.1.zip
-	sha256sums_x86_64 = fb7312e9323ee286a8265b62b9ca7f663368b7f41e7d2f49e96927d9620ed7a3
-	source_i686 = https://cache.agilebits.com/dist/1P/op/pkg/v0.5.1/op_linux_386_v0.5.1.zip
-	sha256sums_i686 = 05c1d91f14fe21759327238636bd270525373ae4d1bb84d0904edc9ae7393a04
-	source_arm = https://cache.agilebits.com/dist/1P/op/pkg/v0.5.1/op_linux_arm_v0.5.1.zip
-	sha256sums_arm = 303d0be8d1eac69242ca5eb896f2e2e135084f746c60a3d30b3d9eb30e4c87c0
-	source_armv6h = https://cache.agilebits.com/dist/1P/op/pkg/v0.5.1/op_linux_arm_v0.5.1.zip
-	sha256sums_armv6h = 303d0be8d1eac69242ca5eb896f2e2e135084f746c60a3d30b3d9eb30e4c87c0
+	source_x86_64 = https://cache.agilebits.com/dist/1P/op/pkg/v0.5.2/op_linux_amd64_v0.5.2.zip
+	sha256sums_x86_64 = ac8162f708cc079264f91318eaeb7f54a6cf319c50c51444e565f08932f25f4c
+	source_i686 = https://cache.agilebits.com/dist/1P/op/pkg/v0.5.2/op_linux_386_v0.5.2.zip
+	sha256sums_i686 = cc5ff4df7ba75eb8225ad3419a33f55ed66eefb5f67499fdd10f97c93573aee6
+	source_arm = https://cache.agilebits.com/dist/1P/op/pkg/v0.5.2/op_linux_arm_v0.5.2.zip
+	sha256sums_arm = 8f7f334985897c88c8a8601735026e429a0c533ad4b6ba504721145d49cac9b3
+	source_armv6h = https://cache.agilebits.com/dist/1P/op/pkg/v0.5.2/op_linux_arm_v0.5.2.zip
+	sha256sums_armv6h = 8f7f334985897c88c8a8601735026e429a0c533ad4b6ba504721145d49cac9b3
 
 pkgname = 1password-cli
 
