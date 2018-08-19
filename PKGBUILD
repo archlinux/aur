@@ -5,7 +5,7 @@ _symlink_dir="usr/bin"
 
 pkgname="$_pkg_name"
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A utility to automatically perform Arch Linux system maintenance"
 arch=('x86_64')
 url="https://gitlab.com/mgdobachesky/ArchSystemMaintenance"
@@ -27,9 +27,9 @@ source=("https://gitlab.com/mgdobachesky/ArchSystemMaintenance/raw/master/$pkgna
         "https://gitlab.com/mgdobachesky/ArchSystemMaintenance/raw/master/$pkgname-$pkgver/archNews.py"
         "https://gitlab.com/mgdobachesky/ArchSystemMaintenance/raw/master/$pkgname-$pkgver/settings.sh")
 
-md5sums=('f1379c947704d22c19dfe348a297ddc9'
+md5sums=('989ca727bc39fdcbb1d02b10b50ec818'
          'af05a3013904f4e47822164bfece1e3e'
-         'e941155c4ab8fb7170711086752137a5')
+         'be5b0ba37b5a140d2f315b4c4ef6d52e')
 
 build() {
     umask 022
