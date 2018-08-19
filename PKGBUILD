@@ -1,9 +1,9 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
-pkgname='blink'
-_reponame='blink-qt'
-pkgver='3.0.3'
-pkgrel='4'
+pkgname=blink
+_reponame=blink-qt
+pkgver=3.0.3
+pkgrel=5
 pkgdesc='A state of the art, easy to use SIP client'
 arch=('any')
 url='http://icanblink.com'
@@ -22,8 +22,8 @@ depends=('icu'
 optdepends=('python2-service-identity: for TLS certificate hostname verification'
             'x11vnc: for screen sharing')
 
-source=("https://github.com/AGProjects/${_reponame}/archive/release-${pkgver}/${_reponame}-${pkgver}.tar.gz")
-sha256sums=('26bf454c1db3407c4f6c16e0edece31d2cbbbd4e45d61fd11eb319c695f8b277')
+source=("https://github.com/AGProjects/${_reponame}/archive/release-${pkgver}.tar.gz")
+sha512sums=('bf00da76662de27a968e8c9f4f14eaa6292b0bde26a82adfb47f4b90cdfae5816a6c3296ace564c7112cb4a44918035f7fd10095937c3f4cf78e4eee517d791e')
 
 build() {
   cd ${srcdir}/${_reponame}-release-${pkgver}
