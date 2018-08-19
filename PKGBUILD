@@ -1,6 +1,6 @@
 # Maintainer: copygirl <copygirl@mcft.net>
 pkgname=vintagestory
-pkgver=1.6.6
+pkgver=1.6.7
 pkgrel=1
 pkgdesc="An in-development indie sandbox game about innovation and exploration"
 arch=("any")
@@ -10,7 +10,7 @@ depends=("mono")
 source=("https://account.vintagestory.at/files/stable/vs_archive_$pkgver.tar.gz"
         "vintagestory.desktop"
         "vintagestory.sh")
-md5sums=("862bddf4d0d8e1ab7e1f0adfd1aef201"
+md5sums=("8a1f69386d541cb2d679a5e8000f49c2"
          "7cf82f218ba3026aff620b131b7dc581"
          "da232b56f48e047ec60791bb7d8b6398")
 
