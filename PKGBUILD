@@ -2,7 +2,7 @@
 
 pkgname=python-pyhomematic
 _name=pyhomematic
-pkgver=0.1.43
+pkgver=0.1.46
 pkgrel=1
 pkgdesc="Python 3 Interface to interact with Homematic devices"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('python-setuptools')
 depends=('python')
 source=("https://github.com/danielperna84/pyhomematic/archive/${pkgver}.tar.gz")
-sha512sums=('c08900f8b898b9677b98f293684268c0a6b35299cbd1a7b5c1e92e873c5e59608936f476b8f472e2a920fd640c815d74f3151df1fe434aaa3b9bb806153c79dc')
+sha512sums=('3fe6cea451fdd2897ee04b8d27028279e45438da69b55acd8d22fb12d6bde171ed23910960c09b56c75ae34e6e6b311e7b33ccaf49878c634b308a04c13b59f6')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
