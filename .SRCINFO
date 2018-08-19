@@ -1,17 +1,18 @@
 pkgbase = ruby-typhoeus-0.6
 	pkgdesc = Parallel HTTP library on top of libcurl multi.
-	pkgver = 0.6.8
-	pkgrel = 2
+	pkgver = 0.6.9
+	pkgrel = 1
 	url = https://github.com/typhoeus/typhoeus
 	arch = any
 	license = MIT
 	makedepends = ruby-rdoc
 	depends = ruby
-	depends = ruby-ethon>=0.9.0
-	noextract = typhoeus-0.6.8.gem
+	depends = ruby-ethon
+	provides = ruby-typhoeus=0.6.9
+	noextract = typhoeus-0.6.9.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/typhoeus-0.6.8.gem
-	sha512sums = 11d00c258aecfa1298c986703bec48112cbf40d3dbf8d6c1be8909fe90b8c162df3ac2e947874352e90afcca0fff805a426eb3941116d10c6aa85801691c2523
+	source = https://rubygems.org/downloads/typhoeus-0.6.9.gem
+	sha512sums = 5063d3217f35db29d216327b6eed10d6613d018c496935e78aa8e2b10ec21f3372df11fe48155b45387767d5572efa93e74afb0bb9b10782d28e87dead0294a4
 
 pkgname = ruby-typhoeus-0.6
 
