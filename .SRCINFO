@@ -1,0 +1,13 @@
+pkgbase = epitarendu
+	pkgdesc = TP manager in EPITA
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/cedricfarinazzo/EPITA-rendu
+	arch = any
+	license = MIT
+	makedepends = python3
+	makedepends = nuitka
+	provides = screen
+
+pkgname = epitarendu
+
