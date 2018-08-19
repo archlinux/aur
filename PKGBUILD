@@ -2,20 +2,19 @@
 # Contributor: Nicholas Wang <me@nicho1as.wang>
 
 pkgname=emercoin
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Digital currency and blockchain service platform"
 arch=('i686' 'x86_64')
 url="https://emercoin.com/"
 license=('GPL')
-depends=('openssl-1.0' 'boost-libs' 'miniupnpc' 'qt5-base' 'protobuf' 'qrencode')
+depends=('boost-libs' 'miniupnpc' 'qt5-base' 'protobuf' 'qrencode')
 makedepends=('boost')
 source=("https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}emc.tar.gz"
         "Fix-missing-include.patch"
 )
-sha256sums=('89ae9724bc4934ff7ad6be920dc90f1558e7a1dcc8e1c8f0651d629d9af75d8e'
-            '75b1e7bebb53a48cf93f2b701bbd8d9a1e7005b45c63a804596b68b0e9343c87'
-)
+sha256sums=('e1ec2ebf0bb5fb0d92ccf99f691118c3eafa0c2a58c9154d6af1eb436a30d590'
+            '75b1e7bebb53a48cf93f2b701bbd8d9a1e7005b45c63a804596b68b0e9343c87')
 prepare() {
 	cd "${pkgname}-${pkgver}emc"
 	patch -Np1 -i ${srcdir}/Fix-missing-include.patch #See https://doc.qt.io/Qt-5/qintvalidator.html for more details
@@ -23,10 +22,6 @@ prepare() {
 
 build() {
 	cd "${pkgname}-${pkgver}emc"
-	export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
-	export CFLAGS+=" -I/usr/include/openssl-1.0 -fPIC"
-	export CXXFLAGS+=" -fPIC"
-	export LDFLAGS+=" -L/usr/lib/openssl-1.0 -lssl"
 	./autogen.sh
 	./configure --prefix=/usr --with-gui=qt5 --with-incompatible-bdb --with-openssl --with-libressl=no --enable-tests=no
 	make
