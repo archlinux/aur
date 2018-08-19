@@ -31,7 +31,6 @@ pkgbase = python-rsgislib
 	depends = mpfr
 	depends = kealib
 	depends = python-numpy
-	conflicts = python2-rsgislib
 	options = !emptydirs
 	source = https://bitbucket.org/petebunting/rsgislib/get/3.5.7.tar.bz2
 	sha256sums = ee41fcad9956350a66b3cb230670d369c598a9b157e316af4efe8186435960cf
