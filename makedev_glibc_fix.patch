@@ -1,0 +1,20 @@
+--- a/qemuarch.c
++++ b/qemuarch.c
+@@ -24,6 +24,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <sys/types.h>
++#include <sys/sysmacros.h>
+ #include <sys/stat.h>
+ #include <sys/wait.h>
+ #include <sys/socket.h>
+--- a/test_file.c
++++ b/test_file.c
+@@ -5,6 +5,7 @@
+ #include <unistd.h>
+ #include <sys/stat.h>
+ #include <sys/types.h>
++#include <sys/sysmacros.h>
+ #include "file.h"
+ #include "parameter.h"
+ 

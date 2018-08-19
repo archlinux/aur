@@ -2,7 +2,7 @@
 # Contributor: JD Horelick <jdhore1@gmail.com>
 # Contributor: Alad Wenter <alad@linuxbbq.org>
 pkgname=cowdancer
-pkgver=0.86
+pkgver=0.87
 pkgrel=1
 pkgdesc="Copy-on-write wrapper for pbuilder"
 arch=('i686' 'x86_64')
@@ -11,11 +11,24 @@ license=('GPL')
 depends=('pbuilder-ubuntu'
          'ncurses'
 	 'ncurses5-compat-libs')
+makedepends=('quilt')
 optdepends=('qemu: if you want to use qemubuilder'
             'bash-completion: bash autocomplete support')
 
-source=(http://httpredir.debian.org/debian/pool/main/c/$pkgname/${pkgname}_${pkgver}.tar.xz)
-sha256sums=('7a2bd85025bc585543e189aa5f48f4088d30c89885d9d9576295f9a844ee6bf7')
+source=(http://httpredir.debian.org/debian/pool/main/c/$pkgname/${pkgname}_${pkgver}.tar.xz
+        series
+	makedev_glibc_fix.patch)
+sha256sums=('d5696d80197e727363833c0e5c520867bd10e456d5b5856a35bfdbdffc533a9c'
+            'c7345323ff3cf9f3e7f7339319f06b14a001dd75fc7720ad4e58ae99db2a62ea'
+            'ef983677d8218b3301f194129d9b97f39abf9a4463aa5b6da7b4c376b5b20ed1')
+
+prepare() {
+  mkdir ${pkgname}-${pkgver}/patches
+  cp series ${pkgname}-${pkgver}/patches/
+  cp makedev_glibc_fix.patch ${pkgname}-${pkgver}/patches/
+  cd ${pkgname}-${pkgver}
+  quilt push -a
+}
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
