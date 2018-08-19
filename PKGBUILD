@@ -8,7 +8,7 @@
 pkgname=lib32-x264
 _pkgname=x264
 pkgver=155.r0a84d986
-pkgrel=1
+pkgrel=2
 pkgdesc='Open Source H264/AVC video encoder (lib32)'
 arch=('x86_64')
 url='https://www.videolan.org/developers/x264.html'
@@ -44,7 +44,8 @@ export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 	--enable-shared \
 	--enable-pic \
 	--enable-lto \
-	-libdir=/usr/lib32 --host=i686-linux-gnu --libexecdir=/usr/lib32
+	--libdir=/usr/lib32 \
+	--host=i686-linux-gnu
 make
 }
 
