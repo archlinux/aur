@@ -1,0 +1,16 @@
+pkgbase = babel-eslint
+	pkgdesc = Custom parser for ESLint
+	pkgver = 9.0.0
+	pkgrel = 1
+	url = https://github.com/babel/babel-eslint
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	depends = eslint
+	noextract = babel-eslint-9.0.0.tgz
+	source = http://registry.npmjs.org/babel-eslint/-/babel-eslint-9.0.0.tgz
+	md5sums = d3378ac787ebe8143255db94cd1202b6
+
+pkgname = babel-eslint
+
