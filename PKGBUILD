@@ -1,7 +1,7 @@
 # Maintainer: Stefan Majewsky <majewsky@gmx.net>
-pkgname='mpv-mpris'
-pkgver=0.1
-pkgrel=2
+pkgname=mpv-mpris
+pkgver=0.2
+pkgrel=1
 pkgdesc='MPRIS (Media Player Remote Interface Spec) plugin for mpv'
 arch=('i686' 'x86_64')
 url='https://github.com/hoyon/mpv-mpris'
@@ -10,9 +10,9 @@ depends=(
     'mpv'
     'glib2'
 )
-install="${pkgname}.install"
-source=("https://github.com/hoyon/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('47afa6064fdd7552079d1574644bb1b16b782e96ed6aeebe24269e00b90a381b')
+install=mpv-mpris.install
+source=("https://github.com/hoyon/${pkgname}/archive/${pkgver}.tar.gz")
+sha256sums=('d21a9617759bc368d6e9cb229d099b12968f0e673db5cd0bf12d8a251516d81a')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"

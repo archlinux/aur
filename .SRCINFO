@@ -1,7 +1,7 @@
 pkgbase = mpv-mpris
 	pkgdesc = MPRIS (Media Player Remote Interface Spec) plugin for mpv
-	pkgver = 0.1
-	pkgrel = 2
+	pkgver = 0.2
+	pkgrel = 1
 	url = https://github.com/hoyon/mpv-mpris
 	install = mpv-mpris.install
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = mpv-mpris
 	license = MIT
 	depends = mpv
 	depends = glib2
-	source = https://github.com/hoyon/mpv-mpris/archive/v0.1.tar.gz
-	sha256sums = 47afa6064fdd7552079d1574644bb1b16b782e96ed6aeebe24269e00b90a381b
+	source = https://github.com/hoyon/mpv-mpris/archive/0.2.tar.gz
+	sha256sums = d21a9617759bc368d6e9cb229d099b12968f0e673db5cd0bf12d8a251516d81a
 
 pkgname = mpv-mpris
 
