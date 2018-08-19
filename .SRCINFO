@@ -1,6 +1,6 @@
 pkgbase = openbazaar
 	pkgdesc = Front-end Electron application for talking with the OpenBazaar daemon
-	pkgver = 2.2.3
+	pkgver = 2.2.4
 	pkgrel = 1
 	url = https://github.com/OpenBazaar/openbazaar-desktop
 	install = openbazaar.install
@@ -10,10 +10,10 @@ pkgbase = openbazaar
 	makedepends = npm
 	depends = electron
 	options = !strip
-	source = https://github.com/OpenBazaar/openbazaar-desktop/archive/v2.2.3.tar.gz
+	source = https://github.com/OpenBazaar/openbazaar-desktop/archive/v2.2.4.tar.gz
 	source = openbazaar.js
 	source = openbazaar.desktop
-	md5sums = 50401c6785fd3e9aa536df0e4b59d90f
+	md5sums = 8e38ce7fe55081fd6f97c9293eb8ae11
 	md5sums = 122a3e23d7ecfef0a82e756cb97c3e98
 	md5sums = 2e7c7804b970baa7f9274dae47618a52
 
