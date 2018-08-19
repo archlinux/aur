@@ -2,12 +2,13 @@
 
 pkgname=collabora-online-server-nodocker
 pkgver=3.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Collabora CODE (LibreOffice Online) server for Nextcloud or ownCloud, without Docker"
 arch=('x86_64')
 url="https://www.collaboraoffice.com/code/"
 license=('MPL')
 provides=('libreoffice' 'libreoffice-en-US')
+makedepends=(bzip2 coreutils curl fontconfig gawk grep gzip libcap sed systemd tar util-linux xz)
 
 # From official Archlinux’ LibreOffice:
 optdepends=(
