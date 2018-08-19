@@ -1,7 +1,10 @@
 # Maintainer: Michael Dobachesky <mgdobachesky@outlook.com>
+_pkg_name="maint"
+_install_dir="opt/$_pkg_name"
+_symlink_dir="usr/bin"
 
-pkgname=maint
-pkgver=1.0.0
+pkgname="$_pkg_name"
+pkgver=1.0
 pkgrel=2
 pkgdesc="A utility to automatically perform Arch Linux system maintenance"
 arch=('x86_64')
@@ -18,6 +21,7 @@ depends=('python'
          'pacman-contrib' 
          'pacutils'
          'vim')
+backup=("$_install_dir/settings.sh")
 
 source=("https://gitlab.com/mgdobachesky/ArchSystemMaintenance/raw/master/$pkgname-$pkgver/run.sh"
         "https://gitlab.com/mgdobachesky/ArchSystemMaintenance/raw/master/$pkgname-$pkgver/archNews.py"
@@ -27,26 +31,23 @@ md5sums=('f1379c947704d22c19dfe348a297ddc9'
          'af05a3013904f4e47822164bfece1e3e'
          'e941155c4ab8fb7170711086752137a5')
 
-install_dir="opt/$pkgname"
-symlink_dir="usr/bin"
-
 build() {
     umask 022
-    mkdir -p "$srcdir/$install_dir"
-    mkdir -p "$srcdir/$symlink_dir"
+    mkdir -p "$srcdir/$_install_dir"
+    mkdir -p "$srcdir/$_symlink_dir"
 
-    sed -i "s|{{PKG_PATH}}|/${install_dir}|" "$srcdir/run.sh"
+    sed -i "s|{{PKG_PATH}}|/${_install_dir}|" "$srcdir/run.sh"
 
-    install -m 755 "$srcdir/run.sh" $install_dir
-    install -m 755 "$srcdir/archNews.py" "$install_dir"
-    install -m 755 "$srcdir/settings.sh" $install_dir
+    install -m 755 "$srcdir/run.sh" $_install_dir
+    install -m 755 "$srcdir/archNews.py" "$_install_dir"
+    install -m 755 "$srcdir/settings.sh" $_install_dir
 }
 
 package() {
-    install_base=$(echo "$install_dir" | cut -d '/' -f 1)
-    symlink_base=$(echo "$symlink_dir" | cut -d '/' -f 1)
+    install_base=$(echo "$_install_dir" | cut -d '/' -f 1)
+    symlink_base=$(echo "$_symlink_dir" | cut -d '/' -f 1)
 
     cp -r "$srcdir/$install_base" "$pkgdir"
     cp -r "$srcdir/$symlink_base" "$pkgdir"
-    ln -s "/$install_dir/run.sh" "$pkgdir/$symlink_dir/$pkgname"
+    ln -s "/$_install_dir/run.sh" "$pkgdir/$_symlink_dir/$pkgname"
 }
