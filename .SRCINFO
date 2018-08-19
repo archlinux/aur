@@ -1,6 +1,6 @@
 pkgbase = chatterino2-git
 	pkgdesc = Chatterino 2 is the second installment of the Twitch chat client series "Chatterino". dev/git version.
-	pkgver = nightly.win.r39.ge23ce31
+	pkgver = r1503.8bcc9c48
 	pkgrel = 1
 	url = https://chatterino.com
 	install = chatterino2-git.install
@@ -15,6 +15,7 @@ pkgbase = chatterino2-git
 	depends = qt5-base
 	depends = qt5-svg
 	depends = pulseaudio
+	optdepends = streamlink: For piping streams to video players
 	provides = chatterino
 	conflicts = chatterino
 	source = chatterino.png

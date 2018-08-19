@@ -2,7 +2,7 @@
 
 _name=chatterino2
 pkgname="$_name-git"
-pkgver=nightly.win.r39.ge23ce31
+pkgver=r1503.8bcc9c48
 pkgrel=1
 pkgdesc='Chatterino 2 is the second installment of the Twitch chat client series "Chatterino". dev/git version.'
 arch=('any')
@@ -12,16 +12,14 @@ install=$pkgname.install
 provides=("${_name%2}")
 conflicts=("${_name%2}")
 depends=('rapidjson' 'gst-plugins-ugly' 'gst-plugins-good' 'qt5-multimedia' 'qt5-base' 'qt5-svg' 'pulseaudio')
+optdepends=('streamlink: For piping streams to video players')
 makedepends=('boost' 'git')
 source=("${_name%2}.png" "${_name%2}.desktop" "git://github.com/fourtf/$_name")
 sha1sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
     cd "$srcdir/$_name"
-    ( set -o pipefail
-        git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    )
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare () {
