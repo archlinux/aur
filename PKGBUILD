@@ -5,7 +5,7 @@
 _basename=opencv
 pkgname=lib32-opencv
 pkgver=3.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source Computer Vision Library (32-bit)"
 arch=('x86_64')
 license=('BSD')
