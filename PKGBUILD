@@ -3,7 +3,7 @@
 
 pkgname=php-mailparse
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Extension for parsing and working with email messages (RFC822 and RFC2045)"
 arch=('i686' 'x86_64')
 url="https://pecl.php.net/package/mailparse"
