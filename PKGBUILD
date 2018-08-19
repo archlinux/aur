@@ -1,27 +1,23 @@
 # Maintainer: Alex Branham <branham@utexas.edu>
-_cranname=rlang
-_cranver=0.2.1
-_pkgtar=${_cranname}_${_cranver}.tar.gz
+_cranver=0.2.2
 pkgname=r-rlang
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc="Functions for Base Types and Core R and Tidyverse Features"
+pkgdesc='Functions for Base Types and Core R and Tidyverse Features'
 arch=('x86_64')
-url="https://cran.r-project.org/package=${_cranname}"
+url='https://cran.r-project.org/package=rlang'
 license=('GPL3')
 depends=('r' )
-
 optdepends=('r-crayon' 'r-knitr' 'r-pillar' 'r-rmarkdown' 'r-testthat' 'r-covr')
-
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('71ba956eb1f40b39f16dd28888753524')
 replaces=('r-cran-rlang')
+source=("https://cran.r-project.org/src/contrib/rlang_"$_cranver".tar.gz")
+md5sums=('df2abf3a1936c503ed1edd4350ffb5f0')
 
 build(){
-    R CMD INSTALL ${_pkgtar} -l $srcdir
+    R CMD INSTALL rlang_"$_cranver".tar.gz -l "$srcdir"
 }
 package() {
-    install -d "$pkgdir/usr/lib/R/library"
-    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
+    install -dm0755 "$pkgdir"/usr/lib/R/library
+    cp -a --no-preserve=ownership rlang "$pkgdir"/usr/lib/R/library
 }
 
