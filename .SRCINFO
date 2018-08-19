@@ -1,7 +1,7 @@
 pkgbase = maint
 	pkgdesc = A utility to automatically perform Arch Linux system maintenance
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/mgdobachesky/ArchSystemMaintenance
 	arch = x86_64
 	license = GPLv3

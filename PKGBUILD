@@ -2,7 +2,7 @@
 
 pkgname=maint
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A utility to automatically perform Arch Linux system maintenance"
 arch=('x86_64')
 url="https://gitlab.com/mgdobachesky/ArchSystemMaintenance"
