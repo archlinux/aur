@@ -1,0 +1,34 @@
+pkgbase = php-homegear
+	pkgdesc = Patched version of PHP for Homegear
+	pkgver = 7.2.9
+	pkgrel = 1
+	url = http://www.php.net
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = PHP
+	depends = gmp
+	depends = enchant
+	depends = libedit
+	depends = libmcrypt
+	depends = libzip
+	depends = libxml2
+	depends = openssl
+	provides = php7-homegear
+	replaces = php7-homegear
+	options = !emptydirs
+	source = http://www.php.net/distributions/php-7.2.9.tar.xz
+	source = http://www.php.net/distributions/php-7.2.9.tar.xz.asc
+	source = https://github.com/krakjoe/pthreads/archive/99a86fab88ede56a7ae0bd3e70249425caf5ad05.tar.gz
+	source = enchant-2.patch
+	validpgpkeys = B1B44D8F021E4E2D6021E995DC9FF8D3EE5AF27F
+	validpgpkeys = 1729F83938DA44E27BA0F4D3DBDB397470D12172
+	sha512sums = b898e78fcb4aeeb441395dcabe2e7686425487e32dffbf0e99393aedb917da87a744b23f0be557c45e447433c8058df6e53c34869fc2dcf874cc1af97ff8331f
+	sha512sums = SKIP
+	sha512sums = 1c07413da097d381c1e78ea41e6d8c4f09d217e378be1d7cee0a5ae4536ed8b074065f12bea9a7c7c0ee5410f272c1269b5d66517ee539a4f94f338fd1c04b05
+	sha512sums = 89993be67988f6db09e1102214a41fdb7223274bc6ca71f1defc5fe9548d832485f7133b8ba82860f04da00c7f655d701c7550460c0172a2a2d31ef3f3f96038
+
+pkgname = php-homegear
+
