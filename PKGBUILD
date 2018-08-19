@@ -1,19 +1,20 @@
-# Contributor: C. Dominik Bódi <domimik dot bodi at gmx dot de>
+# Maintainer: C. Dominik Bódi <domimik dot bodi at gmx dot de>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-bareword-filehandles'
-pkgver='0.005'
-pkgrel='2'
+pkgver='0.006'
+pkgrel='1'
 pkgdesc="disables bareword filehandles"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-b-hooks-op-check>=0' 'perl-lexical-sealrequirehints>=0' 'perl>=5.8.1')
+depends=('perl-b-hooks-op-check>=0'
+	 'perl>=5.12.0')
 makedepends=('perl-extutils-depends')
 url='https://metacpan.org/release/bareword-filehandles'
-source=('http://search.cpan.org/CPAN/authors/id/I/IL/ILMARI/bareword-filehandles-0.005.tar.gz')
-sha512sums=('ea1117a31ad9d8d58aa0c17dd6d327ccc82f3ddc8e6c3649a1b35c9e623a39fb851b94a69c855a400d1e678d1a18da1143678efc16ccd78b151b10a2ec5a8a02')
-_distdir="bareword-filehandles-0.005"
+source=('http://search.cpan.org/CPAN/authors/id/I/IL/ILMARI/bareword-filehandles-0.006.tar.gz')
+sha512sums=('73cf85f35d10d13d4ad3be471e30cce0a19a899a7c4d033d2202d815dae8e30aa54b2ad7923dba6d798db1c49d2dcbc7c4f72b2d3f1f08e6e009700682d4e65e')
+_distdir="bareword-filehandles-0.006"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
