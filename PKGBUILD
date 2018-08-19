@@ -12,10 +12,11 @@ makedepends=('git' 'valabind' 'swig')
 
 source=("${pkgname}::git://github.com/radare/radare2-bindings.git"
         "radare2-pipe-git::git+https://github.com/radare/radare2-r2pipe.git"
+        "plugin.path.patch"
         )
 md5sums=('SKIP'
          'SKIP'
-         )
+         '6274d65a2455632c6083697602039679')
 
 
 pkgver() {
@@ -25,6 +26,7 @@ pkgver() {
 
 prepare() {
   cd ${srcdir}/${basename}
+  git apply ${srcdir}/plugin.path.patch
 }
 
 build() {

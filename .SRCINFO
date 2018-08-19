@@ -14,8 +14,10 @@ pkgbase = radare2-bindings-git
 	depends = python2
 	source = radare2-bindings-git::git://github.com/radare/radare2-bindings.git
 	source = radare2-pipe-git::git+https://github.com/radare/radare2-r2pipe.git
+	source = plugin.path.patch
 	md5sums = SKIP
 	md5sums = SKIP
+	md5sums = 6274d65a2455632c6083697602039679
 
 pkgname = radare2-bindings-git
 	provides = radare2-bindings

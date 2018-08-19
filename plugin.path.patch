@@ -1,0 +1,22 @@
+diff --git a/libr/lang/p/Makefile b/libr/lang/p/Makefile
+index fc2eae3..05d0eec 100644
+--- a/libr/lang/p/Makefile
++++ b/libr/lang/p/Makefile
+@@ -6,7 +6,7 @@ CFLAGS+=-DPREFIX=\"${PREFIX}\"
+ 
+ DUK_CFLAGS+=-Wall -DPREFIX=\"${PREFIX}\" -I. -Iduk
+ 
+-R2PM_PLUGDIR?=$(shell r2 -H R2_USER_PLUGINS)
++R2PM_PLUGDIR?=$(shell r2 -H R2_LIBR_PLUGINS)
+ EXT_SO?=$(shell r2 -H LIBEXT)
+ 
+ ifeq ($(EXT_SO),)
+@@ -130,7 +130,7 @@ mrproper clean:
+ 
+ #R2_PLUGIN_PATH=$(shell r2 -hh| grep PLUGINS|awk '{print $$2}')
+ #R2_PLUGIN_PATH=$(shell r2 -nqc 'e dir.plugins' -)
+-R2_PLUGIN_PATH=$(shell r2 -H R2_USER_PLUGINS)
++R2_PLUGIN_PATH=$(shell r2 -H R2_LIBR_PLUGINS)
+ 
+ install:
+ 	mkdir -p $(DESTDIR)/$(R2_PLUGIN_PATH)
