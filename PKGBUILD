@@ -1,4 +1,5 @@
-# Maintainer: Carsten Feuls <archlinux@carstenfeuls.de>
+# Maintainer: DDoSolitary <DDoSolitary@gmail.com>
+# Contributor: Carsten Feuls <archlinux@carstenfeuls.de>
 
 _gemname=websocket
 pkgname=ruby-$_gemname
