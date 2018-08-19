@@ -1,6 +1,6 @@
 pkgbase = deepin-qq-eim
 	pkgdesc = Deepin Wine QQEIM 1.90
-	pkgver = 1.90.2220deepin0
+	pkgver = 1.90.2220deepin1
 	pkgrel = 1
 	url = http://b.qq.com/
 	arch = i686
@@ -9,9 +9,9 @@ pkgbase = deepin-qq-eim
 	makedepends = tar
 	depends = deepin-wine
 	conflicts = deepin.com.qq.eim
-	noextract = deepin.com.qq.b.eim_1.90.2220deepin0_i386.deb
-	source = https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/deepin.com.qq.b.eim/deepin.com.qq.b.eim_1.90.2220deepin0_i386.deb
-	md5sums = c6e7c4990e25e6885cb55e3b19818d5c
+	noextract = deepin.com.qq.b.eim_1.90.2220deepin1_i386.deb
+	source = https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/deepin.com.qq.b.eim/deepin.com.qq.b.eim_1.90.2220deepin1_i386.deb
+	md5sums = 23b90ffce6d145a8b66722cfadd6ab92
 
 pkgname = deepin-qq-eim
 
