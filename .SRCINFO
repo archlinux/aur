@@ -1,0 +1,17 @@
+pkgbase = libhomegear-ipc
+	pkgdesc = Library to create IPC clients for Homegear
+	pkgver = 0.7.27
+	pkgrel = 1
+	url = https://homegear.eu
+	arch = x86_64
+	arch = i686
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = LGPL3
+	depends = gcc-libs
+	source = https://github.com/Homegear/libhomegear-ipc/archive/0.7.27.tar.gz
+	sha512sums = bb02d047351fe7e1abb2c3fd881772dd76853e0a63890da99a6ee024bb764708cbcb00aa67b0ea3aa4cd691d9f4f8c6277963971c9dd10675fe46668c573959d
+
+pkgname = libhomegear-ipc
+
