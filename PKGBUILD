@@ -3,13 +3,13 @@
 
 pkgname='frr'
 pkgver='5.0.1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='FRRouting (quagga fork) supports BGP4, OSPFv2, OSPFv3, ISIS, RIP, RIPng, PIM, LDP, NHRP and EIGRP.'
 arch=('any')
 url="https://frrouting.org/"
 license=('GPL2')
 depends=('libcap' 'libnl' 'readline' 'ncurses' 'perl' 'json-c' 'net-snmp' 'rtrlib')
-makedepends=('patch' 'gcc' 'net-snmp' 'json-c' 'bison' 'c-ares' 'perl-xml-libxml' 'rtrlib' 'python-sphinx')
+makedepends=('patch' 'gcc' 'net-snmp' 'bison' 'c-ares' 'perl-xml-libxml' 'python-sphinx' 'python-pytest')
 conflicts=('quagga' 'babeld' 'quagga_cumulus')
 provides=('quagga' 'quagga_cumulus')
 source=("https://github.com/FRRouting/${pkgname}/archive/${pkgname}-${pkgver}.tar.gz"
@@ -56,6 +56,11 @@ prepare() {
 build() {
   cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
   make
+}
+
+check() {
+  cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
+  make check
 }
 
 package() {
