@@ -11,7 +11,8 @@ depends=('python'
          'python-xmltodict' 
          'python-dateutil' 
          'sed' 
-         'awk' 
+         'awk'
+         'duplicity'
          'reflector' 
          'rmlint'
          'pacman-contrib' 
@@ -22,9 +23,9 @@ source=("https://gitlab.com/mgdobachesky/ArchSystemMaintenance/raw/master/$pkgna
         "https://gitlab.com/mgdobachesky/ArchSystemMaintenance/raw/master/$pkgname-$pkgver/archNews.py"
         "https://gitlab.com/mgdobachesky/ArchSystemMaintenance/raw/master/$pkgname-$pkgver/settings.sh")
 
-md5sums=('fcac288b1798304a273f9ac27e03be16'
+md5sums=('f1379c947704d22c19dfe348a297ddc9'
          'af05a3013904f4e47822164bfece1e3e'
-         '3b8dfc54bac5b356e20372f9f5e9d0c0')
+         'e941155c4ab8fb7170711086752137a5')
 
 install_dir="opt/$pkgname"
 symlink_dir="usr/bin"

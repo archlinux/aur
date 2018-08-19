@@ -10,6 +10,7 @@ pkgbase = maint
 	depends = python-dateutil
 	depends = sed
 	depends = awk
+	depends = duplicity
 	depends = reflector
 	depends = rmlint
 	depends = pacman-contrib
@@ -18,9 +19,9 @@ pkgbase = maint
 	source = https://gitlab.com/mgdobachesky/ArchSystemMaintenance/raw/master/maint-1.0.0/run.sh
 	source = https://gitlab.com/mgdobachesky/ArchSystemMaintenance/raw/master/maint-1.0.0/archNews.py
 	source = https://gitlab.com/mgdobachesky/ArchSystemMaintenance/raw/master/maint-1.0.0/settings.sh
-	md5sums = fcac288b1798304a273f9ac27e03be16
+	md5sums = f1379c947704d22c19dfe348a297ddc9
 	md5sums = af05a3013904f4e47822164bfece1e3e
-	md5sums = 3b8dfc54bac5b356e20372f9f5e9d0c0
+	md5sums = e941155c4ab8fb7170711086752137a5
 
 pkgname = maint
 
