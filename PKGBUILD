@@ -2,7 +2,7 @@
 # Contributor: Ner0 (based on chromium-pepperflash-dev PKGBUILD)
 
 pkgname=chromium-widevine-dev
-pkgver=1.4.9.1088
+pkgver=4.10.1188.0
 pkgrel=1
 pkgdesc="The Widevine Media Optimizer is a browser plugin designed for the viewing of premium video content (Only for chromium-dev)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('chromium-dev'
          )
 options=('!strip')
 source=('https://www.google.com/chrome/intl/en/eula_text.html')
-sha1sums=('9839044035b56b5dbeb9377e27a4ea0f5a1b94e2')
+sha1sums=('9deae92612b49634c02c6e6b3f5f02086e2cf19f')
 _metadata="$(curl -sL "https://dl.google.com/linux/chrome/rpm/stable/x86_64/repodata/other.xml.gz" | gzip -df)"
 _rpm_ver="$(echo "${_metadata}" | grep -m1 -e unstable | awk -v FS='ver="' -v RS='" ' '$0=$2')"
 _rpm_rel="$(echo "${_metadata}" | grep -m1 -e unstable | awk -v FS='rel="' -v RS='"/' '$0=$2')"
