@@ -4,7 +4,7 @@
 # You should check having enough space on your storage.
 
 pkgname=knp
-pkgver=4.18
+pkgver=4.19
 pkgrel=1
 pkgdesc="Japanese Dependency and Case Structure Analyzer"
 url="http://nlp.ist.i.kyoto-u.ac.jp/index.php?KNP"
@@ -13,7 +13,7 @@ license=("custom")
 depends=("juman")
 conflicts=("crfpp")
 source=("http://nlp.ist.i.kyoto-u.ac.jp/DLcounter/lime.cgi?down=http://nlp.ist.i.kyoto-u.ac.jp/nl-resource/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha512sums=('6bb2c72b847a050079ee290bd35a8f5dd825987ddeaa982629827161d5ca26df9a9765b9733d43f282f37b20f4451a6aa3ace9ec65a4d880215abebc9ef15042')
+sha512sums=('5518d37437b699e00de2e98545d5b6a77f6ed7e5ee8f8cf756015cd577acc3bba7e6990addf247b7115464909d87b8cc60428dea3c6b18a4eb4ad05a78caf53f')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
