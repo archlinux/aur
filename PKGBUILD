@@ -6,7 +6,7 @@
 
 pkgname=ruby-cri
 _gemname="${pkgname#ruby-}"
-pkgver=2.12.0
+pkgver=2.13.0
 pkgrel=1
 pkgdesc='A library for building easy-to-use commandline tools.'
 arch=(any)
@@ -17,7 +17,7 @@ makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=("http://rubygems.org/downloads/${_gemname}-${pkgver}.gem")
 noextract=("${_gemname}-${pkgver}.gem")
-sha256sums=('4218c80c85a043c4396a566303744a03f03ffe7667496f5dcd51bb7c87bb7116')
+sha256sums=('b2083defe702fae889536b6c115bf0e5550f42a6083f6a08e62b55f7a3460d5e')
 
 package() {
   # install gem
