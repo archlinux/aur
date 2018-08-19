@@ -1,5 +1,5 @@
 # Maintainer: Alex Branham <branham@utexas.edu>
-_cranver=3.98-1.15
+_cranver=3.98-1.16
 pkgname=r-xml
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -11,7 +11,7 @@ depends=('r' 'libxml2')
 optdepends=('r-bitops' 'r-rcurl')
 replaces=('r-cran-xml')
 source=("https://cran.r-project.org/src/contrib/XML_"$_cranver".tar.gz")
-md5sums=('e36ed67ab0dd91806e04697299e43462')
+md5sums=('b2cd5b2a5b83f2a33658310e99b59fd5')
 
 build(){
     R CMD INSTALL XML_"$_cranver".tar.gz -l "$srcdir"
