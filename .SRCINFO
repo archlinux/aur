@@ -1,12 +1,12 @@
 pkgbase = vdo
 	pkgdesc = Userspace tools for managing VDO volumes
 	pkgver = 6.2.0.197
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dm-vdo/vdo
 	arch = x86_64
 	license = GPL2
-	depends = kvdo
-	depends = python
+	depends = kvdo-dkms
+	depends = python-yaml
 	depends = device-mapper
 	source = vdo-6.2.0.197.tar.gz::https://github.com/dm-vdo/vdo/archive/6.2.0.197.tar.gz
 	sha256sums = 2ca31bfbf5aa960395a9b5b2e56745e6387b4934adfb8d2f06a525564d835a70
