@@ -3,12 +3,12 @@
 
 pkgname=pidgin-kwallet
 pkgver=1.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="KWallet plugin for Pidgin"
 arch=('x86_64')
 url="https://www.linux-apps.com/content/show.php/Pidgin+KWallet+Plugin?content=127136"
 license=('GPL')
-depends=('pidgin' 'kdelibs')
+depends=('pidgin' 'kwallet')
 makedepends=('cmake')
 # The original url is dynamically generated at regular intervals and cannot be relied on.
 source=("https://sources.archlinux.org/other/community/$pkgname/127136-PidginKWallet-$pkgver.tar.bz2")
