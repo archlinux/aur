@@ -1,15 +1,16 @@
 pkgbase = lib32-openexr
 	pkgdesc = An high dynamic-range image file format library
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = http://www.openexr.com/
 	arch = x86_64
 	license = BSD
-	depends = lib32-zlib
+	depends = lib32-gcc-libs
 	depends = lib32-ilmbase
+	depends = lib32-zlib
 	depends = openexr
-	source = http://download.savannah.nongnu.org/releases/openexr/openexr-2.2.0.tar.gz
-	md5sums = b64e931c82aa3790329c21418373db4e
+	source = http://download.savannah.nongnu.org/releases/openexr/openexr-2.2.1.tar.gz
+	sha256sums = 8f9a5af6131583404261931d9a5c83de0a425cb4b8b25ddab2b169fbf113aecd
 
 pkgname = lib32-openexr
 
