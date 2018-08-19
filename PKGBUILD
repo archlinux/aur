@@ -9,6 +9,7 @@ arch=('any')
 url="http://www.nongnu.org/texi2html/"
 license=('GPL')
 depends=('perl')
+provides=($_name=$pkgver)
 source=(https://download.savannah.gnu.org/releases/texi2html/$_name-$pkgver.tar.bz2{,.sig})
 sha256sums=('d69c1effc416896409003ea64fdb21152cc0a9a7c665d437a0a3bef9b588b4f1'
             'SKIP')

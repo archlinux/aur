@@ -6,6 +6,7 @@ pkgbase = texi2html1.82
 	arch = any
 	license = GPL
 	depends = perl
+	provides = texi2html=1.82
 	source = https://download.savannah.gnu.org/releases/texi2html/texi2html-1.82.tar.bz2
 	source = https://download.savannah.gnu.org/releases/texi2html/texi2html-1.82.tar.bz2.sig
 	validpgpkeys = CB6A07CA90C54234E8A3C8D02C3D4E4C17F231A4
