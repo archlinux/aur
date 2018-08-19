@@ -1,19 +1,18 @@
-# Maintainer: Alex Whitt <alex.joseph.whitt@gmail.com>
+# Contributor: Alex Whitt <alex.joseph.whitt@gmail.com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 _pkgsrcname=f.el
 _pkgmaintainer=rejeep
-_pkgdestdirname=f
-_versionprefix=v
-pkgver=0.19.0
+pkgver=0.20.0
 pkgrel=1
 pkgdesc="Modern API for working with files and directories in Emacs"
-pkgname=emacs-${_pkgdestdirname}
-arch=(any)
-url="https://github.com/${_pkgmaintainer}/${_pkgsrcname}"
+pkgname=emacs-f
+arch=('any')
+url="https://github.com/${_pkgmaintainer}/f.el"
 license=('GPL3')
 depends=('emacs' 'emacs-s' 'emacs-dash')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/${_pkgmaintainer}/${_pkgsrcname}/archive/${_versionprefix}${pkgver}.tar.gz")
-sha256sums=('3abf449393f5b26a68520a7ebaa7823995868dfaedd83e3d4646710f902d2914')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/${_pkgmaintainer}/f.el/archive/v${pkgver}.tar.gz")
+sha256sums=('12aeec6c4e8b85fc9ab840365bce379d10257c383a1450d78f6fb1475f1b11da')
 install=${pkgname}.install
 
 build() {
@@ -22,7 +21,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${_pkgsrcname}-${pkgver}"
-  mkdir -p "${pkgdir}/usr/share/emacs/site-lisp/${_pkgdestdirname}/"
-  install -m644 *.el{c,} "${pkgdir}/usr/share/emacs/site-lisp/${_pkgdestdirname}/"
+  cd "${srcdir}"/${_pkgsrcname}-${pkgver}
+  mkdir -p "${pkgdir}"/usr/share/emacs/site-lisp/f/
+  install -m644 *.el{c,} "${pkgdir}"/usr/share/emacs/site-lisp/f
 }
