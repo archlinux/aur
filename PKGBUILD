@@ -1,12 +1,15 @@
 # Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
+#
+# This PKGBUILD is maintained on https://github.com/archlinuxhardened/selinux.
+# If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=selinux-refpolicy-git
 _policyname=refpolicy-git
-pkgver=RELEASE_2_20180114.r30.g6b0abaf88089
+pkgver=RELEASE_2_20180701.r14.g3899825c1cde
 pkgrel=1
 pkgdesc="Modular SELinux reference policy including headers and docs"
 arch=('any')
-url="https://github.com/TresysTechnology/refpolicy/wiki"
+url="https://github.com/SELinuxProject/refpolicy/wiki"
 license=('GPL2')
 groups=('selinux')
 makedepends=('git' 'python' 'checkpolicy>=2.8' 'semodule-utils')
@@ -14,11 +17,13 @@ depends=('policycoreutils>=2.8')
 optdepends=('linux-hardened: Linux kernel with SELinux support'
             'linux-selinux: Linux kernel with SELinux support')
 install="${pkgname}.install"
-source=("git+https://github.com/TresysTechnology/refpolicy"
-        "git+https://github.com/TresysTechnology/refpolicy-contrib"
+# refpolicy 2.20180701 moved the repository to SELinuxProject Github organization
+# When updating, if makepkg reports "refpolicy is not a clone of https://github.com/SELinuxProject/refpolicy",
+# you need to update the remote of the git repository, for example with the following command:
+#   git -C refpolicy remote set-url origin https://github.com/SELinuxProject/refpolicy
+source=("git+https://github.com/SELinuxProject/refpolicy"
         'config')
 sha256sums=('SKIP'
-            'SKIP'
             'a5faaa2a2c3f986770a9296882b1887c2bdd38b0a990a36f95fe22f22ffb5c13')
 
 pkgver() {
@@ -28,11 +33,6 @@ pkgver() {
 
 prepare() {
   cd refpolicy
-
-  # Check out contrib module
-  git submodule init
-  git config submodule.policy/modules/contrib.url "${srcdir}/refpolicy-contrib"
-  git submodule update
 
   # Ensure the environment is clean
   make bare
