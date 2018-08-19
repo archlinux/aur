@@ -1,7 +1,7 @@
 # Maintainer: Michael Dobachesky <mgdobachesky@outlook.com>
 
 pkgname=maint
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A utility to automatically perform Arch Linux system maintenance"
 arch=('x86_64')
