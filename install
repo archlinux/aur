@@ -45,7 +45,6 @@ post_upgrade() {
   ## From Debian packages ##
 
   setcap cap_fowner,cap_mknod,cap_sys_chroot=ep usr/bin/loolforkit || true
-  setcap cap_sys_admin=ep usr/bin/loolmount || true
 
   systemd-sysusers collabora-online-server-nodocker.conf
   chown lool:lool etc/loolwsd/loolwsd.xml
