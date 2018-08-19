@@ -1,0 +1,16 @@
+pkgbase = etime
+	pkgdesc = A UTC based universal time system. Explained at etime.neocities.org
+	pkgver = 1
+	pkgrel = 1
+	url = http://github.com/LaPingvino/etime/
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = go
+	options = !strip
+	options = !emptydirs
+	source = http://github.com/LaPingvino/etime/archive/1.tar.gz
+	sha256sums = 78367c8e010f3b23d5479bf28a96426e4d1e94b8f7c30a507b4eaeeac731e17b
+
+pkgname = etime
+
