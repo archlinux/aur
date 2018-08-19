@@ -9,11 +9,12 @@ license=('GPL2' 'LGPL2.1')
 depends=('fftw' 'libglvnd' 'mxml' 'jack' 'liblo' 'alsa-lib' 'portaudio')
 makedepends=('git' 'wget' 'cmake' 'python' 'ruby-rake'
              'glu' # For building pugl, which does not seem to actually need it at runtime
+             'python2' # Also for pugl
 )
 provides=('zynaddsubfx')
 conflicts=('zynaddsubfx')
 source=("git+https://github.com/zynaddsubfx/zynaddsubfx.git#tag=$pkgver"
-        'git+https://github.com/mruby-zest/mruby-zest-build.git#commit=f98cdb072bb25bdcc2f5fe8370dce204b1149000')
+        'git+https://github.com/mruby-zest/mruby-zest-build.git#commit=c66085607ab2e3a0a2a8e90bda28bdc1ef8dc0e6')
 sha512sums=('SKIP' 'SKIP')
 
 prepare() {
