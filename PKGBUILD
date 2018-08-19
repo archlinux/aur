@@ -5,7 +5,7 @@
 pkgname=rtl8814au-dkms-git
 _pkgbase=rtl8814au
 pkgver=4.3.21.r34.ga0c4479
-pkgrel=1
+pkgrel=2
 pkgdesc="RTL8814AU and RTL8813AU chipset driver with firmware v4.3.21"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/zebulon2/rtl8814au"
