@@ -1,7 +1,7 @@
 # Maintainer: Ferdinand "yrlf" Bachmann <theferdi265@gmail.com>
 pkgname=libbass_fx
-pkgver=2.4.11.1
-pkgrel=2
+pkgver=2.4.12.1
+pkgrel=1
 pkgdesc="BASS audio library - Effects Add-On"
 arch=(i686 x86_64 armv6h armv7h aarch64)
 url="http://www.un4seen.com/"
@@ -13,7 +13,7 @@ source=(
     LICENSE
 )
 sha256sums=(
-    '0d2696f8bf6be9156d079a49046728a84e1dad06b1d75781ff3d837a06455b47'
+    '362e1d84475dd35374547b56904394526cc4e2b2f68d55f4c51dfa783e390fe0'
     'f7bc36320110c8fd2f87c6d2bb5df6d2231ca9ab31a299b1565de63f7681cc83'
 )
 
