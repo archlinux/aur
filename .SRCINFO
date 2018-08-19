@@ -5,8 +5,11 @@ pkgbase = glyph-bin
 	url = https://github.com/dbriemann/glyph
 	arch = x86_64
 	license = MIT
-	source_x86_64 = https://github.com/dbriemann/glyph/releases/download/v0.3.1-beta/glyph
-	sha256sums_x86_64 = 87409c27020bc7db3f25c3a9b1761ecccea0c58d5a8f3dcf952f3a990f7edc9c
+	depends = glibc
+	source = https://github.com/dbriemann/glyph/releases/download/v0.3.1-beta/glyph
+	source = https://raw.githubusercontent.com/dbriemann/glyph/master/LICENSE
+	sha256sums = 87409c27020bc7db3f25c3a9b1761ecccea0c58d5a8f3dcf952f3a990f7edc9c
+	sha256sums = dad68ea093e446e0fddeb016cb84a03e5bf7bd77d7200a2e274779bf6a652dc5
 
 pkgname = glyph-bin
 
