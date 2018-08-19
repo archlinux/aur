@@ -5,7 +5,7 @@
 
 _jqueryver=1.9.1
 pkgname=etherpad-lite
-pkgver=1.6.6
+pkgver=1.7.0
 pkgrel=1
 epoch=1
 pkgdesc="Lightweight fork of etherpad based on javascript"
@@ -27,7 +27,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ether/${pkgname}/archiv
         "${pkgname}-sysusers.conf"
         "${pkgname}-tmpfiles.conf"
         "${pkgname}.service")
-sha512sums=('dd67d0a35faa155849faf5f48e4b0f3e23ea8358920c63092b3894093761d34a8f461d12ec3485d5f2ac332fcfa294a1e7b41c6ff810a1cba7b7f44ab8dc3ff8'
+sha512sums=('6acffc4f05efd0d64774ab1908a74878eec7456e74674cfa90efe1cf873290f35c45e070511ac85d06584ec747d81031e341942f7761df4ad3ee64e1f71a21b5'
             'd62700e7a1ff41f9d6326ca024ba2be1d391bc8fbb2aeae0f427d74837899b230940bf7c2df3d193f5300a68bb3686706d4c31328234b5cda026a1bf52ef9e70'
             '8c9093cc82acb814023b60eecffae7cb697abfa6193a68ca068f010baf3bf1e5f1678bdb862f4af370badbd71deb6a8499f61c8b6115d280477db1b3fd895dfd'
             '31a411f8a93ec2bbd854545cce80eaf435b75432f876ac81df0a6d4ba2bc8437a7b9196456cb04b0a5c9b29d013be7f35501f0af48de5c2fe261d12adb3a1895'
