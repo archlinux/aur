@@ -2,10 +2,10 @@
 
 pkgname=yq
 pkgver=2.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line YAML processor - jq wrapper for YAML documents"
 url="https://github.com/kislyuk/yq"
-depends=('python' 'python-yaml' 'jq' 'python-xmltodict>=0.11.0')
+depends=('python' 'python-yaml' 'jq' 'python-xmltodict>=0.11.0' 'python-toml>=0.9.4')
 makedepends=('python-setuptools')
 license=('Apache')
 arch=('any')

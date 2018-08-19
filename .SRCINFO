@@ -1,7 +1,7 @@
 pkgbase = yq
 	pkgdesc = Command-line YAML processor - jq wrapper for YAML documents
 	pkgver = 2.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kislyuk/yq
 	arch = any
 	license = Apache
@@ -10,6 +10,7 @@ pkgbase = yq
 	depends = python-yaml
 	depends = jq
 	depends = python-xmltodict>=0.11.0
+	depends = python-toml>=0.9.4
 	source = https://files.pythonhosted.org/packages/source/y/yq/yq-2.7.0.tar.gz
 	sha256sums = f62de3b596056bfb26517b88c1c1775b8364cdae963e36b29ba49623e689a8db
 
@@ -18,4 +19,5 @@ pkgname = yq
 	depends = python-yaml
 	depends = jq
 	depends = python-xmltodict>=0.11.0
+	depends = python-toml>=0.9.4
 
