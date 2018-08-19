@@ -1,0 +1,19 @@
+pkgbase = advancedgenieeditor-git
+	pkgdesc = A program for editing data of genie files.
+	pkgver = r688.cbcc581
+	pkgrel = 1
+	url = http://aok.heavengames.com/blacksmith/showfile.php?fileid=11002
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	depends = genieutils-git
+	depends = sfml
+	depends = wxgtk2
+	provides = advancedgenieeditor
+	conflicts = advancedgenieeditor
+	source = git+https://github.com/sandsmark/AGE.git
+	md5sums = SKIP
+
+pkgname = advancedgenieeditor-git
+
