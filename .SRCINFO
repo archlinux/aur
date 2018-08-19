@@ -1,19 +1,19 @@
 pkgbase = lib32-libkate
 	pkgdesc = A karaoke and text codec for embedding in ogg (32-bit)
 	pkgver = 0.4.1
-	pkgrel = 2
-	url = https://code.google.com/archive/p/libkate/
+	pkgrel = 3
+	url = https://wiki.xiph.org/OggKate
 	arch = x86_64
 	license = BSD
 	makedepends = pkg-config
-	depends = lib32-libpng
+	makedepends = git
 	depends = lib32-libogg
-	depends = lib32-python2
+	depends = lib32-libpng
 	depends = libkate
-	optdepends = wxpython: for KateDJ
-	optdepends = liboggz: for KateDJ
-	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/libkate/libkate-0.4.1.tar.gz
-	md5sums = 1dfdbdeb2fa5d07063cf5b8261111fca
+	source = libkate::git+git://git.xiph.org/users/oggk/kate.git#tag=kate-0.4.1
+	source = 0001-Fix-automake-warnings.patch
+	sha512sums = SKIP
+	sha512sums = 525d120cddd040441859f2783e6e566da631ba304074bfa40a34399879fc3053577e8e71ef804168aeef519fac62e205829b50a61d770cddd46f7dbfba660842
 
 pkgname = lib32-libkate
 

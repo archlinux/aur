@@ -1,45 +1,55 @@
-# Maintainer: orumin <dev@orum.in>
+# Maintainer: Rodrigo Bezerra <rodrigobezerra21 at gmail dot com>
+# Contributor: orumin <dev@orum.in>
 
 _basename=libkate
 pkgname="lib32-$_basename"
 pkgver=0.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A karaoke and text codec for embedding in ogg (32-bit)"
-url="https://code.google.com/archive/p/libkate/"
+url="https://wiki.xiph.org/OggKate"
 license=('BSD')
 arch=('x86_64')
-depends=('lib32-libpng' 'lib32-libogg' 'lib32-python2' "$_basename")
-makedepends=('pkg-config')
-optdepends=('wxpython: for KateDJ'
-            'liboggz: for KateDJ')
-source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/$_basename/$_basename-$pkgver.tar.gz")
-md5sums=('1dfdbdeb2fa5d07063cf5b8261111fca')
+depends=('lib32-libogg' 'lib32-libpng' 'libkate')
+makedepends=('pkg-config' 'git')
+source=("$_basename::git+git://git.xiph.org/users/oggk/kate.git#tag=kate-${pkgver}"
+        0001-Fix-automake-warnings.patch)
+sha512sums=('SKIP'
+            '525d120cddd040441859f2783e6e566da631ba304074bfa40a34399879fc3053577e8e71ef804168aeef519fac62e205829b50a61d770cddd46f7dbfba660842')
+
+prepare() {
+    cd $_basename
+
+    patch -Np1 -i "$srcdir/0001-Fix-automake-warnings.patch"
+
+    ./autogen.sh
+}
 
 build() {
-  cd "${srcdir}/${_basename}-${pkgver}"
+    cd $_basename
 
-  export PYTHON="/usr/bin/python2"
-  sed "1s/python$/python2/" -i tools/KateDJ/KateDJ
+    export CC='gcc -m32'
+    export CXX='g++ -m32'
+    export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
-  export CC='gcc -m32'
-  export CXX='g++ -m32'
-  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+    ./configure \
+        --build=i686-pc-linux-gnu \
+        --prefix=/usr \
+        --libdir=/usr/lib32 \
+        --disable-static \
+        --disable-doc
 
-  ./configure --prefix=/usr \
-              --libdir=/usr/lib32 \
-              --build=i686-pc-linux-gnu \
-              --disable-static \
-              --disable-doc
-  make
+    make
 }
 
 package() {
-  cd $_basename-$pkgver
-  make DESTDIR="${pkgdir}" install
+    cd $_basename
 
-  python2-32 -m compileall "${pkgdir}/usr/lib/python2.7/site-packages/kdj/"
+    make DESTDIR=$pkgdir install
 
-  cd "$pkgdir"/usr
-  mv lib/* lib32
-  rm -r bin lib include share
+    install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+    cd "$pkgdir/usr"
+
+    mv lib lib32
+    rm -r bin include lib32/lib share/{doc,man}
 }
