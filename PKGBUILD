@@ -2,7 +2,7 @@
 pkgname=('radare2-bindings-git' 'radare2-pipe-git')
 basename='radare2-bindings-git'
 pkgver=2.8.0.r1.gb0d5faf
-pkgrel=1
+pkgrel=2
 pkgdesc="Language bindings for radare2 (git version)"
 arch=('i686' 'x86_64')
 url="https://radare.org"
