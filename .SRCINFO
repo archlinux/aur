@@ -1,0 +1,16 @@
+pkgbase = texi2html1.82
+	pkgdesc = Converts texinfo documents to HTML (legacy)
+	pkgver = 1.82
+	pkgrel = 1
+	url = http://www.nongnu.org/texi2html/
+	arch = any
+	license = GPL
+	depends = perl
+	source = https://download.savannah.gnu.org/releases/texi2html/texi2html-1.82.tar.bz2
+	source = https://download.savannah.gnu.org/releases/texi2html/texi2html-1.82.tar.bz2.sig
+	validpgpkeys = CB6A07CA90C54234E8A3C8D02C3D4E4C17F231A4
+	sha256sums = d69c1effc416896409003ea64fdb21152cc0a9a7c665d437a0a3bef9b588b4f1
+	sha256sums = SKIP
+
+pkgname = texi2html1.82
+
