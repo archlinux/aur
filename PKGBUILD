@@ -1,7 +1,8 @@
 # Maintainer: Yardena Cohen <yardenack at gmail dot com>
+# Co-Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 
 pkgname=https-everywhere-chrome
-pkgver=2015.4.7
+pkgver=2018.6.21
 pkgrel=1
 pkgdesc="Chrome/Chromium extension to use HTTPS whenever possible"
 arch=('any')
@@ -11,7 +12,7 @@ depends=()
 makedepends=()
 options=()
 source=(https://www.eff.org/files/$pkgname-$pkgver.crx)
-sha512sums=('515d3caba50fd1452d483cdec2367c8a90194aef7df9998bd28288d8a316a5dcddf2c8e04d284369aafbab11141f00811b9d94d9a08da6b456e97fb19a3618a0')
+sha512sums=('55256046ab2d7001a0faae2d27554efbc260d5d5e8d62eff6a08a093ad80f01ec51c45943872aae2905d612c41f4b426ede14770f96af2e0549ed30ed3bc18ff')
 
 package() {
 	 mkdir -p $pkgdir/usr/share/$pkgname
