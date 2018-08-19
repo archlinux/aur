@@ -3,7 +3,7 @@
 pkgname=heroku-cli
 pkgver=7.9.3
 _builddir=cli-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc="a tool for creating and managing Heroku apps from the command line"
 arch=('x86_64')
 url="https://devcenter.heroku.com/articles/heroku-cli"
