@@ -1,27 +1,25 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 
 pkgname=goodvibes
-pkgver=0.3.7
+pkgver=0.4
 pkgrel=1
 pkgdesc="Lightweight internet radio player"
 arch=('i686' 'x86_64')
-url="https://github.com/elboulangero/goodvibes"
+url="https://gitlab.com/goodvibes/goodvibes"
 license=('GPL')
-depends=("glib2" "dconf" "gtk3" "libsoup" "libkeybinder3"
-         "gst-plugins-base" "gst-plugins-good" "gst-plugins-ugly")
-source=("https://github.com/elboulangero/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('610f3a3cf1332b6894b9b851605dd3a97dcaf9f24076c98a2af65a7eb50f7f27')
+depends=("libkeybinder3" "gst-plugins-base" "gst-plugins-good" "gst-plugins-ugly")
+makedepends=("meson")
+source=("https://gitlab.com/${pkgname}/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
+sha256sums=('937969f0a6666173196eae31b0ba5d2e149fa71b623f702502cb160ce0062c95')
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
-
-    ./autogen.sh
-    ./configure --prefix=/usr --enable-all
-    make
+    cd "$srcdir/$pkgname-v$pkgver"
+    meson --prefix=/usr build
+    cd build
+    ninja
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
-
-    make DESTDIR="$pkgdir" install
+    cd "$srcdir/$pkgname-v$pkgver/build"
+    DESTDIR="$pkgdir" ninja install
 }
