@@ -10,6 +10,7 @@ pkgbase = lib32-srt
 	makedepends = ninja
 	depends = lib32-gcc-libs
 	depends = lib32-openssl
+	depends = srt
 	source = git+https://github.com/Haivision/srt#commit=d6499ca374fe1bff5ccfd959786309b18a8e7388
 	source = no-rpath.diff
 	sha256sums = SKIP
