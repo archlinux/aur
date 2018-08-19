@@ -27,10 +27,6 @@ source=("https://gitlab.com/mgdobachesky/ArchSystemMaintenance/raw/master/$pkgna
         "https://gitlab.com/mgdobachesky/ArchSystemMaintenance/raw/master/$pkgname-$pkgver/archNews.py"
         "https://gitlab.com/mgdobachesky/ArchSystemMaintenance/raw/master/$pkgname-$pkgver/settings.sh")
 
-md5sums=(''
-         ''
-         '')
-
 build() {
     umask 022
     mkdir -p "$srcdir/$_install_dir"

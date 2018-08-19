@@ -20,9 +20,6 @@ pkgbase = maint
 	source = https://gitlab.com/mgdobachesky/ArchSystemMaintenance/raw/master/maint-1.0/run.sh
 	source = https://gitlab.com/mgdobachesky/ArchSystemMaintenance/raw/master/maint-1.0/archNews.py
 	source = https://gitlab.com/mgdobachesky/ArchSystemMaintenance/raw/master/maint-1.0/settings.sh
-	md5sums = 
-	md5sums = 
-	md5sums = 
 
 pkgname = maint
 
