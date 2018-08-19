@@ -1,7 +1,7 @@
 pkgbase = fs-uae-launcher-devel
 	pkgdesc = Launcher and configuration program for FS-UAE (development version).
 	pkgver = 2.9.7dev2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://fs-uae.net/download-devel
 	arch = any
 	license = GPL2
