@@ -1,16 +1,16 @@
-# Maintainer: orumin <dev at orum.in>
+# Maintainer: Rodrigo Bezerra <rodrigobezerra21 at gmail dot com>
+# Contributor:orumin <dev at orum.in>
 
-pkgname=lib32-libwmf
 _basename=libwmf
+pkgname=lib32-libwmf
 pkgver=0.2.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for reading vector images in Microsoft's native Windows Metafile Format (WMF) (32-bit)"
 arch=('x86_64')
 url="http://wvware.sourceforge.net/libwmf.html"
 license=('LGPL')
-depends=('lib32-libx11' 'lib32-libjpeg' 'gsfonts' 'libwmf')
+depends=('lib32-expat' 'lib32-freetype2' 'lib32-gdk-pixbuf2' 'libwmf')
 makedepends=('lib32-gtk2' 'lib32-libxt')
-optdepends=('gdk-pixbuf2: for pixbuf loader')
 options=('!docs' '!emptydirs')
 source=(http://downloads.sourceforge.net/sourceforge/wvware/${_basename}-${pkgver}.tar.gz
         libwmf-0.2.8.4-libpng-1.5.patch
@@ -44,43 +44,51 @@ sha1sums=('822ab3bd0f5e8f39ad732f2774a8e9f18fc91e89'
           '9f8670ef0b4862bb84aecc582bfbec45573a8831')
 
 prepare() {
-  cd ${_basename}-${pkgver}
-  patch -p1 -i "${srcdir}/libwmf-0.2.8.4-libpng-1.5.patch"
-  patch -p1 -i "${srcdir}/libwmf-0.2.8.4-useafterfree-CVE-2009-1364.patch"
-  patch -p1 -i "${srcdir}/libwmf-0.2.8.4-intoverflow-CVE-2006-3376.patch"
-  patch -p1 -i "${srcdir}/libwmf-0.2.8.4-CAN-2004-0941.patch"
-  patch -p1 -i "${srcdir}/libwmf-0.2.8.4-CVE-2007-0455.patch"
-  patch -p1 -i "${srcdir}/libwmf-0.2.8.4-CVE-2007-2756.patch"
-  patch -p1 -i "${srcdir}/libwmf-0.2.8.4-CVE-2007-3472.patch"
-  patch -p1 -i "${srcdir}/libwmf-0.2.8.4-CVE-2007-3473.patch"
-  patch -p1 -i "${srcdir}/libwmf-0.2.8.4-CVE-2007-3477.patch"
-  patch -p1 -i "${srcdir}/libwmf-0.2.8.4-CVE-2009-3546.patch"
-  patch -p1 -i "${srcdir}/libwmf-0.2.8.4-CVE-2015-0848+CVE-2015-4588.patch"
-  patch -p1 -i "${srcdir}/libwmf-0.2.8.4-CVE-2015-4695.patch"
-  patch -p1 -i "${srcdir}/libwmf-0.2.8.4-CVE-2015-4696.patch"
-  patch -p1 -i "${srcdir}/libwmf-0.2.8.4-CVE-2016-9011.patch"
+    cd ${_basename}-${pkgver}
+
+    patch -p1 -i "${srcdir}/libwmf-0.2.8.4-libpng-1.5.patch"
+    patch -p1 -i "${srcdir}/libwmf-0.2.8.4-useafterfree-CVE-2009-1364.patch"
+    patch -p1 -i "${srcdir}/libwmf-0.2.8.4-intoverflow-CVE-2006-3376.patch"
+    patch -p1 -i "${srcdir}/libwmf-0.2.8.4-CAN-2004-0941.patch"
+    patch -p1 -i "${srcdir}/libwmf-0.2.8.4-CVE-2007-0455.patch"
+    patch -p1 -i "${srcdir}/libwmf-0.2.8.4-CVE-2007-2756.patch"
+    patch -p1 -i "${srcdir}/libwmf-0.2.8.4-CVE-2007-3472.patch"
+    patch -p1 -i "${srcdir}/libwmf-0.2.8.4-CVE-2007-3473.patch"
+    patch -p1 -i "${srcdir}/libwmf-0.2.8.4-CVE-2007-3477.patch"
+    patch -p1 -i "${srcdir}/libwmf-0.2.8.4-CVE-2009-3546.patch"
+    patch -p1 -i "${srcdir}/libwmf-0.2.8.4-CVE-2015-0848+CVE-2015-4588.patch"
+    patch -p1 -i "${srcdir}/libwmf-0.2.8.4-CVE-2015-4695.patch"
+    patch -p1 -i "${srcdir}/libwmf-0.2.8.4-CVE-2015-4696.patch"
+    patch -p1 -i "${srcdir}/libwmf-0.2.8.4-CVE-2016-9011.patch"
 }
 
 build() {
-  cd ${_basename}-${pkgver}
+    cd ${_basename}-${pkgver}
 
-  export CC='gcc -m32'
-  export CXX='g++ -m32'
-  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+    export CC='gcc -m32'
+    export CXX='g++ -m32'
+    export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+    export FREETYPE_CONFIG='/usr/bin/pkg-config-32 freetype2'
 
-  ./configure --prefix=/usr \
-              --build=i686-pc-linux-gnu --libdir=/usr/lib32 \
-              --with-gsfontdir=/usr/share/fonts/Type1 \
-	      --with-fontdir=/usr/share/fonts/Type1 \
-	      --with-gsfontmap=/usr/share/ghostscript/9.10/Resource/Init/Fontmap.GS
-  make
+    ./configure \
+        --build=i686-pc-linux-gnu \
+        --prefix=/usr \
+        --libdir=/usr/lib32 \
+        --with-gsfontdir=/usr/share/fonts/Type1 \
+        --with-fontdir=/usr/share/fonts/Type1 \
+        --with-gsfontmap=/usr/share/ghostscript/9.10/Resource/Init/Fontmap.GS
+
+    make
 }
 
 package() {
-  cd ${_basename}-${pkgver}
-  make DESTDIR="${pkgdir}" install
-  rm -r "${pkgdir}/usr/bin"
-  rm -r "${pkgdir}/usr/include"
-  #Remove fonts, these are in gsfonts
-  rm -rf "${pkgdir}/usr/share/fonts"
+    cd ${_basename}-${pkgver}
+
+    make DESTDIR="${pkgdir}" install
+
+    rm -r "${pkgdir}/usr/bin"
+    rm -r "${pkgdir}/usr/include"
+
+    #Remove fonts, these are in gsfonts
+    rm -rf "${pkgdir}/usr/share/fonts"
 }
