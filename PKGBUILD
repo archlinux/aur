@@ -1,6 +1,6 @@
 # Maintainer: Cédric FARINAZZO <cedric.farinazzo@gmail.com>
 pkgname=epitarendu
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 epoch=
 pkgdesc="TP manager in EPITA"
@@ -19,16 +19,16 @@ prepare() {
 }
 
 build() {
-	cd $pkgname/
+	cd EPITA-rendu/
 	make
 	make build-simple
 }
 
 package() {
-	cd $pkgname/
+	cd EPITA-rendu/
 	sudo cp ./bin/epitarendu /usr/bin/$pkgname
 }
 
 check() {
-	cd $pkgname/
+	cd EPITA-rendu/
 }
