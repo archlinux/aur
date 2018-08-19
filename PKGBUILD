@@ -10,9 +10,9 @@ pkgdesc="Open Source Computer Vision Library (32-bit)"
 arch=('x86_64')
 license=('BSD')
 url="https://opencv.org"
-depends=('lib32-intel-tbb' 'lib32-openexr' 'lib32-gst-plugins-base' 'lib32-libdc1394'
-         'lib32-libgphoto2' 'lib32-jasper' 'lib32-tesseract' 'lib32-ffmpeg' 'lib32-gtk3' 'opencv')
-makedepends=('cmake' 'eigen')
+depends=('lib32-ffmpeg' 'lib32-gst-plugins-base' 'lib32-gtk3' 'lib32-hdf5' 'lib32-intel-tbb'
+        'lib32-jasper' 'lib32-libdc1394' 'lib32-libgphoto2' 'lib32-openexr' 'lib32-tesseract' 'opencv')
+makedepends=('cmake' 'eigen' 'lib32-libaec')
 source=("$_basename-$pkgver.tar.gz::https://github.com/opencv/opencv/archive/$pkgver.zip"
         "opencv_contrib-$pkgver.tar.gz::https://github.com/opencv/opencv_contrib/archive/$pkgver.tar.gz")
 sha256sums=('9405c5d7d8ab1696e98631d0c92125816356ec366a73c417bdcc4d74783b42aa'
