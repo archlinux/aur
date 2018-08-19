@@ -1,14 +1,14 @@
 pkgbase = droidquest
 	pkgdesc = A Java recreation of the classic game Robot Odyssey
 	pkgver = 2.8.r44.3bf267f
-	pkgrel = 1
-	url = https://github.com/cromerc/DroidQuest
+	pkgrel = 2
+	url = https://git.cromer.cl/cromer/DroidQuest
 	arch = any
 	license = GPL3
 	makedepends = gcc
 	makedepends = maven
 	depends = java-environment
-	source = droidquest::git+https://github.com/cromerc/DroidQuest.git
+	source = droidquest::git+https://git.cromer.cl/cromer/DroidQuest.git
 	sha256sums = SKIP
 
 pkgname = droidquest
