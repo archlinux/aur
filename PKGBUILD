@@ -10,6 +10,6 @@ sha512sums=('e21bfeb353a8ab8b1879bbe8e6015ba9517c0c570f5c90f81b78e40365a8341ec11
 
 package() {
     install -Dm644 "$srcdir"/aria2.service "$pkgdir"/usr/lib/systemd/system/aria2.service
-    sed 's/\/etc/%h\/.config/g'
+    sed 's/\/etc/%h\/.config/g' aria2.service -i
     install -Dm644 "$srcdir"/aria2.service "$pkgdir"/usr/lib/systemd/user/aria2.service
 }
