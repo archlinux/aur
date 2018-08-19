@@ -1,5 +1,5 @@
-# Maintainer: Johannes Schleifenbaum <johannes [at] js-webcoding [dot] de>
-# Please report issues at https://github.com/jojosch/pkgbuilds
+# Maintainer: Thomas Gerbet <thomas at gerbet dot me>
+# Contributor: Johannes Schleifenbaum <johannes [at] js-webcoding [dot] de>
 
 pkgname=php-mailparse
 pkgver=3.0.2
