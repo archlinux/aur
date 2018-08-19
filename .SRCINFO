@@ -1,6 +1,6 @@
 pkgbase = lib32-wildmidi
 	pkgdesc = Open Source MIDI Synthesizer (32-bit)
-	pkgver = 0.4.0
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = http://www.mindwerks.net/projects/wildmidi/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = lib32-wildmidi
 	makedepends = cmake
 	depends = lib32-alsa-lib
 	depends = wildmidi
-	source = https://github.com/psi29a/wildmidi/archive/wildmidi-0.4.0.tar.gz
-	md5sums = 478816b3c0a7634d2740faf71717415c
+	source = https://github.com/psi29a/wildmidi/archive/wildmidi-0.4.2.tar.gz
+	sha256sums = 551d43cb6de6019885f933a20b6f3205a92814f50da8b0d8bceac002b9a8109d
 
 pkgname = lib32-wildmidi
 
