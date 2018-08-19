@@ -1,6 +1,6 @@
 pkgbase = cups-ipp14
-	pkgver = 2.2.6
-	pkgrel = 4
+	pkgver = 2.2.8
+	pkgrel = 3
 	url = https://www.cups.org/
 	arch = i686
 	arch = x86_64
@@ -26,11 +26,11 @@ pkgbase = cups-ipp14
 	makedepends = inetutils
 	makedepends = libpaper
 	makedepends = valgrind
-	provides = cups=2.2.6-4
+	provides = cups=2.2.8-3
 	conflicts = cups
 	replaces = cups
-	source = https://github.com/apple/cups/releases/download/v2.2.6/cups-2.2.6-source.tar.gz
-	source = https://github.com/apple/cups/releases/download/v2.2.6/cups-2.2.6-source.tar.gz.sig
+	source = https://github.com/apple/cups/releases/download/v2.2.8/cups-2.2.8-source.tar.gz
+	source = https://github.com/apple/cups/releases/download/v2.2.8/cups-2.2.8-source.tar.gz.sig
 	source = cups.logrotate
 	source = cups.pam
 	source = cups.sysusers
@@ -39,9 +39,13 @@ pkgbase = cups-ipp14
 	source = cups-no-gzip-man.patch
 	source = cups-1.6.2-statedir.patch
 	source = cups-systemd-socket.patch
+	source = guid.patch
+	source = cups-2.2.8-5325.patch
 	source = add-ipp-backend-of-cups-1.4.patch
 	validpgpkeys = 3737FD0D0E63B30172440D2DDBA3A7AB08D76223
-	sha256sums = 40385778c2b3bdf55030d1c999734e22774c79e3425d91339ce677825620169b
+	validpgpkeys = 45D083946E3035282B3CCA9AF434104235DA97EB
+	validpgpkeys = 845464660B686AAB36540B6F999559A027815955
+	sha256sums = 3968fc1d26fc48727508db1c1380e36c6694ab90177fd6920aec5f6cc73af9e4
 	sha256sums = SKIP
 	sha256sums = d87fa0f0b5ec677aae34668f260333db17ce303aa1a752cba5f8e72623d9acf9
 	sha256sums = 57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5
@@ -50,7 +54,9 @@ pkgbase = cups-ipp14
 	sha256sums = ff3eb0782af0405f5dafe89e04b1b4ea7a49afc5496860d724343bd04f375832
 	sha256sums = b8fc2e3bc603495f0278410350ea8f0161d9d83719feb64f573b63430cb4800b
 	sha256sums = 23349c96f2f7aeb7d48e3bcd35a969f5d5ac8f55a032b0cfaa0a03d7e37ea9af
-	sha256sums = cdad3c266cb2abb0f90af3113420fa47a09e3ed974a2ffa9fb6a642e11971d65
+	sha256sums = f909719e2595e016c320afa421cad74ccda285ac59b11749ddac58e707d4330a
+	sha256sums = d4537526c1e075866ae22ad263da000fc2a592d36c26b79a459a1cfdade2bb2d
+	sha256sums = b1daf250e16d34539149535c68a241f32223b1f34d142d0ee369fde019340de9
 	sha256sums = 375614399e38ddb7af9375472a75e8a83eb3c587595ee079286cbc45094e3c26
 
 pkgname = cups-ipp14
@@ -58,7 +64,7 @@ pkgname = cups-ipp14
 	install = cups.install
 	depends = acl
 	depends = pam
-	depends = libcups-ipp14>=2.2.6
+	depends = libcups-ipp14>=2.2.8
 	depends = cups-filters
 	depends = bc
 	depends = dbus
