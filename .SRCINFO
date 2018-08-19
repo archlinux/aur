@@ -1,12 +1,13 @@
 pkgbase = blaze-git
 	pkgdesc = An open-source, high-performance C++ math library for dense and sparse arithmetic.
-	pkgver = 3.2.r424.55424cc65
+	pkgver = 3.3.r430.ea158fdf7
 	pkgrel = 1
 	url = https://bitbucket.org/blaze-lib/blaze
 	arch = i686
 	arch = x86_64
 	license = New BSD
 	makedepends = git
+	makedepends = cmake
 	optdepends = blas: for maximum performance.
 	optdepends = lapack: for computing the determinant of a dense matrix and for the dense matrix inversion.
 	optdepends = boost: to use Boost threads to run numeric operations in parallel.
