@@ -4,7 +4,7 @@
 pkgbase=gridcoinresearch
 pkgname=(gridcoinresearch-qt gridcoinresearchd)
 pkgver=3.7.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cryptocurrency that rewards users for participating on the BOINC network"
 makedepends=('boost' 'qt5-tools' 'qrencode' 'db' 'icoutils')
 
@@ -24,7 +24,7 @@ build() {
   cd "$srcdir/$_sourcename"
 
   ./autogen.sh
-  mkdir build && cd build
+  mkdir -p build && cd build
   ../configure --prefix=/usr --with-gui=qt5 --with-incompatible-bdb --disable-tests
   make DESTDIR="$srcdir/$_sourcename" install
 }
