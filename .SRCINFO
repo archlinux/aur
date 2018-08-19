@@ -1,6 +1,6 @@
 pkgbase = ntopng
 	pkgdesc = The next generation version of the original ntop, a network traffic probe that shows the network usage
-	pkgver = 3.2
+	pkgver = 3.4
 	pkgrel = 1
 	url = http://www.ntop.org/
 	arch = x86_64
@@ -17,15 +17,13 @@ pkgbase = ntopng
 	depends = libmariadbclient
 	depends = libpcap
 	depends = sqlite
-	source = https://github.com/ntop/ntopng/archive/3.2.tar.gz
-	source = https://github.com/ntop/nDPI/archive/2.2.tar.gz
+	source = https://github.com/ntop/ntopng/archive/3.4.tar.gz
+	source = https://github.com/ntop/nDPI/archive/521afe7e1f340eff5d475b4f0bc6f91ea91c0601.zip
 	source = ntopng@.service
-	source = luajit.patch
 	validpgpkeys = EFD9413B17293AFDFE6EA6F1402A088DEDF104CB
-	sha512sums = 75c12d30e9253b6a33c8f464a40b5dc27ba8b9d623a73ba8fb6a02a8fbbd4091f30ab10f83d9538f1acc479dcb91ae66d3eba7e2f52187f1398c73336f4aa1b6
-	sha512sums = ee1e0a1cc87a3971408877bd5d3154f6bd5d4ddcd2437c8e03e5d8a5093da2b1cbfefad1e28e77145af4286eecbd341ef90f94aa5c7f36a98e3625e9948e96d6
+	sha512sums = 0fc6671b11412d8ecaef45cc3cdd57ab5970af7e08b78181d61657b74bea1a6fed717d00a5c951d2e47ad9c046839be998f39ae0fc5a7b616d5c569f044a12e9
+	sha512sums = fbaa20b0a043d0e39ba9149a5e445765d184892c4385640b445b91a456264ca8365d890eb4a83e76d8f5767b097a5405dc1f2c374adf7e9cfa1211bfc7fd7063
 	sha512sums = b3d9a2032cce91ee4faf81522a30a2877540b3fc7a0d43f8fe4f01c16efb0b8f6e73cfe26028b3a070296d7156abf511d3e11f93635ca2de8a4d67322b0ade60
-	sha512sums = ca3ddd814c2be339ed58a61e95002be3d03b1d425b3fb1cdc3b20c7f724038f9d18444537d564bb39543434bde3a8a79daf856837b75d3d6ea48447cd8796c64
 
 pkgname = ntopng
 
