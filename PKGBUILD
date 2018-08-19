@@ -6,7 +6,7 @@ pkgname=php-homegear
 pkgver=7.2.9
 _pthreadversion=99a86fab88ede56a7ae0bd3e70249425caf5ad05
 _pkgbase=php
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc="Patched version of PHP for Homegear"
 license=('PHP')
@@ -44,7 +44,7 @@ build() {
                 --enable-embed=static \
                 --with-config-file-path=/etc/homegear \
                 --with-config-file-scan-dir=/etc/homegear/php.conf.d \
-                --includedir=/usr/include/php7-homegear \
+                --includedir=/usr/include/php-homegear \
                 --libdir=/usr/lib/homegear/php \
                 --libexecdir=${prefix}/lib \
                 --datadir=${prefix}/share \
@@ -113,7 +113,7 @@ package() {
 
     make INSTALL_ROOT="${pkgdir}" install
 
-    mv "${pkgdir}/usr/include/php7-homegear/php/"* "${pkgdir}/usr/include/php7-homegear/"
+    mv "${pkgdir}/usr/include/php-homegear/php/"* "${pkgdir}/usr/include/php-homegear/"
     install -d -m755 "${pkgdir}/usr/lib"
     mv "${pkgdir}/usr/lib/homegear/php/lib/libphp7.a" "${pkgdir}/usr/lib/libphp7-homegear.a"
 
