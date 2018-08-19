@@ -1,14 +1,14 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=python-pyxel
-pkgver=0.7.3
-pkgrel=4
+pkgver=0.7.10
+pkgrel=1
 pkgdesc='Retro game development environment'
 arch=('any')
 url='https://github.com/kitao/pyxel'
 license=('MIT')
 depends=('portaudio' 'python-glfw' 'python-numpy' 'python-opengl'
-'python-pillow' 'python-sounddevice')
+         'python-pillow' 'python-sounddevice')
 makedepends=('git' 'python-setuptools')
 source=("git+https://github.com/kitao/pyxel#tag=v$pkgver")
 md5sums=('SKIP')
