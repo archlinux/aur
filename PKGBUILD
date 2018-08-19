@@ -1,41 +1,43 @@
-# Maintainer: orumin <dev@orum.in>
+# Maintainer: Rodrigo Bezerra <rodrigobezerra21 at gmail dot com>
+# Contributor: orumin <dev@orum.in>
 
 _basename=chromaprint
 pkgname="lib32-$_basename"
-pkgver=1.3.1
-pkgrel=2
+pkgver=1.4.3
+pkgrel=1
 pkgdesc='Library that implements a custom algorithm for extracting fingerprints from any audio source (32-bit)'
 url='https://acoustid.org/chromaprint'
 arch=('x86_64')
 license=('LGPL')
 depends=('lib32-ffmpeg')
 makedepends=('cmake')
-source=("https://bitbucket.org/acoustid/${_basename}/downloads/${_basename}-${pkgver}.tar.gz")
-sha1sums=('439c5d34a3ff46bcdb54cbcb613da175eb4d83c5')
+source=("https://github.com/acoustid/chromaprint/releases/download/v${pkgver}/chromaprint-${pkgver}.tar.gz")
+sha256sums=('ea18608b76fb88e0203b7d3e1833fb125ce9bb61efe22c6e169a50c52c457f82')
 
 prepare() {
-  mkdir build
+    mkdir build
 }
 
 build() {
-  cd build
+    cd build
 
-  export CC='gcc -m32'
-  export CXX='g++ -m32'
-  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+    export CC='gcc -m32'
+    export CXX='g++ -m32'
+    export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
-  cmake ../$_basename-$pkgver \
-      -DCMAKE_INSTALL_PREFIX=/usr \
-      -DCMAKE_BUILD_TYPE=Release \
-      -DBUILD_EXAMPLES=ON
-  make
+    cmake "../$_basename-v$pkgver" \
+        -DCMAKE_INSTALL_PREFIX=/usr
+
+    make
 }
 
 package() {
-  cd build
-  make DESTDIR="${pkgdir}" install
+    cd build
 
-  cd "$pkgdir"/usr
-  rm -r bin include
-  mv lib lib32
+    make DESTDIR="$pkgdir" install
+
+    cd "$pkgdir"/usr
+
+    rm -r include
+    mv lib lib32
 }
