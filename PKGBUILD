@@ -81,6 +81,11 @@ _backports=(
     # https://github.com/systemd/systemd/issues/9585
     # https://sourceware.org/bugzilla/show_bug.cgi?id=23410
     06202b9e659e5cc72aeecc5200155b7c012fccbc
+    # build-sys: Detect whether struct statx is defined in sys/stat.h
+    # glibc 2.28 now defines struct statx
+    # https://github.com/systemd/systemd/commit/75720bff62a84896e9a0654afc7cf9408cf89a38
+    # https://sourceware.org/git/?p=glibc.git;a=commitdiff;h=fd70af45528d59a00eb3190ef6706cb299488fcd
+    75720bff62a84896e9a0654afc7cf9408cf89a38
 )
 
 _reverts=(
