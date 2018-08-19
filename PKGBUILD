@@ -1,10 +1,10 @@
 # Maintainer: C. Dominik Bódi <dominik dot bodi at gmx dot de>
 pkgname=signing-party
 pkgver=2.7
-_debrel=1
-pkgrel=1
+_debrel=2
+pkgrel=2
 pkgdesc="Collection for all kinds of pgp related things, including signing scripts, party preparation scripts etc."
-url="http://pgp-tools.alioth.debian.org/"
+url="https://salsa.debian.org/debian/signing-party"
 arch=(i686 x86_64)
 license=(GPL)
 depends=(libmd
@@ -32,7 +32,7 @@ source=("http://httpredir.debian.org/debian/pool/main/s/signing-party/signing-pa
         "gpgwrap_makefile.patch")
 
 sha256sums=('41641cbf3fb5c8d91da678e4aa64a3f1d76f906490a17cb0b9671edbf7a3d37e'
-            '81dc1c863a1d6f7fa09698c335f828672a491e756b9bd83169fce6c02155949e'
+            '0a4d1fca0895d83692caf45bc9bb8a4fea3ababb4ddeaaf22d9f6fd26463fd0d'
             'ca79e24dfd09a261e32a51382c81340b47fee0b0d34287adb4c0974eb33d06ea'
             '2816acc843c914b60110c7829cf44eb350f140df664998f3837d2731028c2f34')
 

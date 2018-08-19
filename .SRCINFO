@@ -1,8 +1,8 @@
 pkgbase = signing-party
 	pkgdesc = Collection for all kinds of pgp related things, including signing scripts, party preparation scripts etc.
 	pkgver = 2.7
-	pkgrel = 1
-	url = http://pgp-tools.alioth.debian.org/
+	pkgrel = 2
+	url = https://salsa.debian.org/debian/signing-party
 	install = signing-party.install
 	arch = i686
 	arch = x86_64
@@ -28,11 +28,11 @@ pkgbase = signing-party
 	conflicts = sig2dot
 	conflicts = signing-party-svn
 	source = http://httpredir.debian.org/debian/pool/main/s/signing-party/signing-party_2.7.orig.tar.gz
-	source = http://httpredir.debian.org/debian/pool/main/s/signing-party/signing-party_2.7-1.debian.tar.xz
+	source = http://httpredir.debian.org/debian/pool/main/s/signing-party/signing-party_2.7-2.debian.tar.xz
 	source = series
 	source = gpgwrap_makefile.patch
 	sha256sums = 41641cbf3fb5c8d91da678e4aa64a3f1d76f906490a17cb0b9671edbf7a3d37e
-	sha256sums = 81dc1c863a1d6f7fa09698c335f828672a491e756b9bd83169fce6c02155949e
+	sha256sums = 0a4d1fca0895d83692caf45bc9bb8a4fea3ababb4ddeaaf22d9f6fd26463fd0d
 	sha256sums = ca79e24dfd09a261e32a51382c81340b47fee0b0d34287adb4c0974eb33d06ea
 	sha256sums = 2816acc843c914b60110c7829cf44eb350f140df664998f3837d2731028c2f34
 
