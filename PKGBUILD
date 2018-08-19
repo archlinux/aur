@@ -1,7 +1,7 @@
 # Maintainer: Dino Duratović <dinomol  mail  com>
 pkgname=firefox-dpms-git
 pkgver=1
-pkgrel=2
+pkgrel=1
 pkgdesc="Disable DPMS settings when playing video in Firefox"
 arch=('any')
 url="https://github.com/dglava/firefox-dpms"
