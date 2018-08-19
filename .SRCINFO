@@ -1,6 +1,6 @@
 pkgbase = ovh-dns
 	pkgdesc = Update a given A record in your DNS zone, using OVH API
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/aureooms/ovh-dns
 	arch = any
@@ -10,7 +10,8 @@ pkgbase = ovh-dns
 	depends = iputils
 	depends = jq
 	depends = ovh-api-client
-	source = https://github.com/aureooms/ovh-dns/archive/v1.0.1.tar.gz
+	optdepends = myip: ovh-dns-watch support
+	source = https://github.com/aureooms/ovh-dns/archive/v1.1.0.tar.gz
 	md5sums = SKIP
 
 pkgname = ovh-dns

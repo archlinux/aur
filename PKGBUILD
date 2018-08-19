@@ -1,6 +1,6 @@
 # Maintainer: Aurélien Ooms <aurelien.ooms@gmail.com>
 pkgname=ovh-dns
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 epoch=
 pkgdesc="Update a given A record in your DNS zone, using OVH API"
@@ -11,7 +11,7 @@ groups=()
 depends=('bash' 'coreutils' 'iputils' 'jq' 'ovh-api-client')
 makedepends=('git')
 checkdepends=()
-optdepends=()
+optdepends=('myip: ovh-dns-watch support')
 provides=()
 conflicts=()
 replaces=()
