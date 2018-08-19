@@ -12,7 +12,6 @@ _common_deps=('gsl' 'gdal' 'geos' 'xerces-c' 'muparser' 'cgal'
               'hdf5-cpp-fortran' 'gmp' 'mpfr' 'kealib' 'python-numpy')
 makedepends=('cmake' 'boost' "${_common_deps[@]}")
 depends=('boost-libs' "${_common_deps[@]}")
-conflicts=('python2-rsgislib')
 options=(!emptydirs)
 source=("https://bitbucket.org/petebunting/rsgislib/get/$pkgver.tar.bz2")
 sha256sums=('ee41fcad9956350a66b3cb230670d369c598a9b157e316af4efe8186435960cf')
