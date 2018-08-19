@@ -1,13 +1,21 @@
 pkgname=privatebin
-pkgver=1.1
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="a minimalist, open source online pastebin where the server has zero knowledge of pasted data"
 url='https://privatebin.info'
 arch=("any")
 license=("zlib")
 depends=("php" "php-gd")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/PrivateBin/PrivateBin/archive/$pkgver.tar.gz")
-md5sums=('623be6c7f72f13d4269999941fed18d9')
+options=("emptydirs")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/PrivateBin/PrivateBin/archive/$pkgver.tar.gz"
+        "config.patch")
+md5sums=('8a481d83f43a421f56f147b90488a7b7'
+         '912b477a3d0c7505111bbe17c3901f4a')
+
+prepare(){
+    cd PrivateBin-$pkgver/cfg
+    patch conf.sample.php ../../config.patch
+}
 
 package(){
     cd PrivateBin-$pkgver
@@ -17,4 +25,9 @@ package(){
     mkdir -p "$pkgdir/etc/webapps/"
     mv "$pkgdir/usr/share/webapps/$pkgname/cfg" "$pkgdir/etc/webapps/$pkgname/"
     ln -s /etc/webapps/$pkgname "$pkgdir/usr/share/webapps/$pkgname/cfg"
+    # data and runtime folders
+    for folder in model purgelimit trafficlimits;
+    do
+        mkdir -p "$pkgdir/var/lib/$pkgname/$folder"
+    done
 }
