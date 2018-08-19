@@ -5,7 +5,7 @@ _pkgname=xst
 pkgname=${_pkgname}-git
 pkgver=20180816.1c9a2e8
 pkgrel=1
-pkgdesc='st fork'
+pkgdesc='st fork fork with xresources support and other patches'
 url='https://github.com/neeasade/xst'
 arch=('i686' 'x86_64')
 license=('MIT')
@@ -15,7 +15,6 @@ source=("git://github.com/gnotclub/${_pkgname}.git")
 sha1sums=('SKIP')
 
 provides=(
-	'st'
 	${_pkgname}
 )
 conflicts=(
