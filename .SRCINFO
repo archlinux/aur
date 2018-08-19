@@ -1,7 +1,7 @@
 pkgbase = tootle
 	pkgdesc = GTK3 client for Mastodon
 	pkgver = 0.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bleakgrey/tootle
 	arch = x86_64
 	license = GPL3
@@ -18,7 +18,6 @@ pkgbase = tootle
 	depends = glib2
 	depends = gtk3
 	depends = hicolor-icon-theme
-	depends = vala
 	depends = libsoup
 	depends = granite
 	depends = json-glib
