@@ -2,7 +2,7 @@
 # Mon May  2 01:11:51 UTC 2016
 pkgbase = xst-git
 	pkgdesc = st fork
-	pkgver = 20160407.74c6832
+	pkgver = 20180816.1c9a2e8
 	pkgrel = 1
 	url = https://github.com/neeasade/xst
 	arch = i686
@@ -12,10 +12,10 @@ pkgbase = xst-git
 	makedepends = libxext
 	makedepends = git
 	depends = libxft
+	provides = st
 	provides = xst
 	conflicts = xst
-	conflicts = st
-	source = git://github.com/neeasade/xst.git
+	source = git://github.com/gnotclub/xst.git
 	sha1sums = SKIP
 
 pkgname = xst-git

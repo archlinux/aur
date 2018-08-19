@@ -3,7 +3,7 @@
 
 _pkgname=xst
 pkgname=${_pkgname}-git
-pkgver=20160407.74c6832
+pkgver=20180816.1c9a2e8
 pkgrel=1
 pkgdesc='st fork'
 url='https://github.com/neeasade/xst'
@@ -11,11 +11,16 @@ arch=('i686' 'x86_64')
 license=('MIT')
 depends=('libxft')
 makedepends=('ncurses' 'libxext' 'git')
-source=("git://github.com/neeasade/${_pkgname}.git")
+source=("git://github.com/gnotclub/${_pkgname}.git")
 sha1sums=('SKIP')
 
-provides=("${_pkgname}")
-conflicts=("${_pkgname}" "st")
+provides=(
+	'st'
+	${_pkgname}
+)
+conflicts=(
+	"${_pkgname}"
+)
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
