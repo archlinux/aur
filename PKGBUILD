@@ -5,7 +5,7 @@ pkgname=('python-pycalverter'
 	 'python2-pycalverter')
 pkgdesc="Python Calendar Converter"
 pkgver=1.6.1
-pkgrel=2
+pkgrel=3
 url="https://bitbucket.org/bayazee/pycalverter/overview"
 license=('GPLv2')
 arch=('any')
