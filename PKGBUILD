@@ -1,7 +1,7 @@
 # Maintainer: FFY00 <filipe.lains@gmail.com>
 pkgname=tribler
-pkgver=7.1.0
-_gitver=$pkgver-exp3
+_gitver=7.1.0-beta
+pkgver=${_gitver//-/_}
 pkgrel=1
 pkgdesc="Privacy enhanced BitTorrent client with P2P content discovery"
 url="https://www.tribler.org/"
@@ -11,18 +11,18 @@ depends=('python2-cryptography' 'python2-feedparser' 'python2-apsw' 'python2-che
 	 'python2-pillow' 'python2-pyqt5' 'qt5-svg' 'phonon-qt5-vlc' 'python2-feedparser' 'python2-chardet'
 	 'python2-psutil' 'python2-meliae' 'python2-decorator' 'python2-netifaces' 'python2-requests'
 	 'python2-twisted' 'libsodium' 'libtorrent-rasterbar' 'python2-m2crypto' 'python2-configobj'
-	 'python2-matplotlib' 'python2-service_identity' 'python2-keyring' 'python2-keyrings-alt'
-	 'python2-libnacl')
+	 'python2-matplotlib' 'python2-service-identity' 'python2-keyring' 'python2-keyrings-alt'
+	 'python2-libnacl' 'python2-contextlib2' 'python2-zc.lockfile' 'python2-datrie')
 optdepends=('vlc: for internal video player')
-makedepends=('python2-setuptools')
+makedepends=('python2-setuptools' 'git')
 provides=('python2-pyipv8')
 conflicts=('python2-pyipv8')
 source=("git+https://github.com/Tribler/tribler.git#tag=v$_gitver"
-	'git+https://github.com/Tribler/dispersy.git'
-	'git+https://github.com/devos50/pymdht.git'
-	'git+https://github.com/spesmilo/electrum'
-	'git+https://github.com/Tribler/py-ipv8.git')
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+	'git+https://github.com/Tribler/dispersy.git#tag=v1.0'
+	'git+https://github.com/devos50/pymdht.git#tag=12.7.0'
+	'git+https://github.com/spesmilo/electrum#tag=3.2.2'
+	'git+https://github.com/Tribler/py-ipv8.git#commit=4d2ead9e6a0ff02bcaa0cfd5cb94b70cd4d881ee') # Should have a tag
+sha512sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 prepare() {
   cd "$srcdir"/$pkgname
@@ -32,6 +32,13 @@ prepare() {
   git config submodule.electrum.url "$srcdir"/electrum
   git config submodule.py-ipv8.url "$srcdir"/py-ipv8
   git submodule update
+
+  # Fix tribler path
+  sed -i 's|/opt/tribler|/usr/share/tribler|g' systemd/anontunnel_helper@.service
+  sed -i 's|/opt/tribler|/usr/share/tribler|g' systemd/tribler.service
+
+  # Fix version
+  sed -i "s|7.0.0-GIT|$_gitver|g" Tribler/Core/version.py
 }
 
 build () {
@@ -45,6 +52,7 @@ package() {
   python2 setup.py install --root="$pkgdir" --optimize=1
 
   install -dm 755 "$pkgdir"/usr/{bin,share/tribler}
+#  install -dm 755 "$pkgdir"/var/lib/{tribler,tunnel_helper}
   cp -dr --no-preserve=ownership Tribler "$pkgdir"/usr/share/tribler
   cp -dr --no-preserve=ownership TriblerGUI "$pkgdir"/usr/share/tribler
   ln -s Tribler/Core/CacheDB/schema_sdb_v*.sql "$pkgdir"/usr/share/tribler/Tribler
@@ -60,5 +68,9 @@ package() {
 
   cp -dr --no-preserve=ownership twisted "$pkgdir"/usr/share/tribler
   cp -dr --no-preserve=ownership electrum "$pkgdir"/usr/share/tribler
+
+  # Install systemd files
+  install -Dm 644 systemd/anontunnel_helper@.service "$pkgdir"/usr/lib/systemd/system/anontunnel_helper@.service
+  install -Dm 644 systemd/tribler.service "$pkgdir"/usr/lib/systemd/system/tribler.service
 }
 

@@ -1,11 +1,12 @@
 pkgbase = tribler
 	pkgdesc = Privacy enhanced BitTorrent client with P2P content discovery
-	pkgver = 7.1.0
+	pkgver = 7.1.0_beta
 	pkgrel = 1
 	url = https://www.tribler.org/
 	arch = any
 	license = LGPL3
 	makedepends = python2-setuptools
+	makedepends = git
 	depends = python2-cryptography
 	depends = python2-feedparser
 	depends = python2-apsw
@@ -28,23 +29,26 @@ pkgbase = tribler
 	depends = python2-m2crypto
 	depends = python2-configobj
 	depends = python2-matplotlib
-	depends = python2-service_identity
+	depends = python2-service-identity
 	depends = python2-keyring
 	depends = python2-keyrings-alt
 	depends = python2-libnacl
+	depends = python2-contextlib2
+	depends = python2-zc.lockfile
+	depends = python2-datrie
 	optdepends = vlc: for internal video player
 	provides = python2-pyipv8
 	conflicts = python2-pyipv8
-	source = git+https://github.com/Tribler/tribler.git#tag=v7.1.0-exp3
-	source = git+https://github.com/Tribler/dispersy.git
-	source = git+https://github.com/devos50/pymdht.git
-	source = git+https://github.com/spesmilo/electrum
-	source = git+https://github.com/Tribler/py-ipv8.git
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = git+https://github.com/Tribler/tribler.git#tag=v7.1.0-beta
+	source = git+https://github.com/Tribler/dispersy.git#tag=v1.0
+	source = git+https://github.com/devos50/pymdht.git#tag=12.7.0
+	source = git+https://github.com/spesmilo/electrum#tag=3.2.2
+	source = git+https://github.com/Tribler/py-ipv8.git#commit=4d2ead9e6a0ff02bcaa0cfd5cb94b70cd4d881ee
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
 
 pkgname = tribler
 
