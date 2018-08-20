@@ -10,6 +10,7 @@ pkgrel=1
 arch=('i686' 'x86_64')
 url="http://kubernetes.io"
 license=('Apache')
+makedepends=('go')
 conflicts=('kubernetes>=1.4.6')
 #source=("git+https://github.com/kubernetes/kubernetes#tag=v${pkgver}")
 source=("kubernetes-$pkgver.tar.gz::https://dl.k8s.io/v$pkgver/kubernetes-src.tar.gz")
