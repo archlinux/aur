@@ -1,6 +1,6 @@
 pkgbase = xsettingsd
 	pkgdesc = xsettingsd is a daemon that implements the XSETTINGS specification.
-	pkgver = r82
+	pkgver = r86
 	pkgrel = 1
 	epoch = 1
 	url = http://code.google.com/p/xsettingsd/
