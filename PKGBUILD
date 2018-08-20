@@ -1,6 +1,6 @@
 # Maintainer: NexAdn
 pkgname=obs-linuxbrowser
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Browser source plugin for obs-studio based on CEF. Alternative to obs-qtwebkit."
 arch=("i686" "x86_64")
@@ -26,14 +26,11 @@ build() {
 	cd "${srcdir}"/${pkgname}
 	mkdir -p ./build
 	cd ./build
-	cmake -D CEF_DIR="/opt/cef" ..
-	make clean
+	cmake -DCEF_ROOT_DIR="/opt/cef" -DINSTALL_SYSTEMWIDE=true -DCMAKE_INSTALL_PREFIX="/usr" ..
 	make
 }
+
 package() {
-	mkdir -p "${pkgdir}"/usr/lib/obs-plugins/
-	mkdir -p "${pkgdir}"/usr/share/obs/obs-plugins/${pkgname}
-	cp -R "${srcdir}"/${pkgname}/build/build/${pkgname}/bin/64bit/* "${pkgdir}"/usr/lib/obs-plugins/
-	mv "${pkgdir}"/usr/lib/obs-plugins/libobs-linuxbrowser.so "${pkgdir}"/usr/lib/obs-plugins/obs-linuxbrowser.so
-	cp -R "${srcdir}"/${pkgname}/build/build/${pkgname}/data/* "${pkgdir}"/usr/share/obs/obs-plugins/${pkgname}
+	cd "${srcdir}"/${pkgname}/build
+	make DESTDIR="${pkgdir}" install
 }
