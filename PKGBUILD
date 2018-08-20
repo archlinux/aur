@@ -1,7 +1,7 @@
 # Maintainer: Emanuel Fernandes <efernandes@tektorque.com>
 
 pkgname=rapidminer-studio
-pkgver=8.2.1
+pkgver=9.0.1
 pkgrel=1
 pkgdesc="Empowers data scientists and business analysts to effortlessly design predictive analytics from mashup to modeling to deployment"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('java-environment')
 makedepends=('unzip' 'gendesk')
 source=(https://s3.amazonaws.com/rapidminer.releases/rapidminer-studio/$pkgver/rapidminer-studio-$pkgver.zip \
         rapidminer-studio.sh)
-sha256sums=('fc45e674e546581b2eb08b7ce18ea59acb64642f96a19d10d0ca7c93240a485c'
+sha256sums=('14e01dd0c1c21180a7e9d5fda3f91f5d6805b8a4d23e17bbbe3fc3f2e48d0c91'
             'd3d76353c1ae15eec44c2fc638bbde98a192b70447bd467763f6d41cf24b6e5a')
 
 prepare() {
