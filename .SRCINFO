@@ -1,5 +1,5 @@
 pkgbase = graphos.app
-	pkgdesc = Graphos is a vector drawing application centered around bezier paths.
+	pkgdesc = Vector drawing application centered around bezier paths
 	pkgver = 0.7
 	pkgrel = 1
 	url = http://gap.nongnu.org/graphos/index.html
