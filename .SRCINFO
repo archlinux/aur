@@ -6,7 +6,7 @@ pkgbase = libvisca
 	arch = x86_64
 	license = LGPL
 	depends = glibc
-	source = http://sourceforge.net/projects/libvisca/files/libvisca/1.1.0/libvisca-1.1.0.tar.gz/download
+	source = libvisca-1.1.0.tar.gz::https://sourceforge.net/projects/libvisca/files/libvisca/1.1.0/libvisca-1.1.0.tar.gz/download
 	md5sums = 98a2ee940091dcf25c9af89e55518890
 
 pkgname = libvisca
