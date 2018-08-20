@@ -6,10 +6,10 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 #pkgbase=linux               # Build stock -ARCH kernel
-pkgbase=linux-rt-lts             # Build kernel with a different name
-_srcname=linux-4.9
-_pkgver=4.9.84
-_rtpatchver=rt62
+pkgbase=linux-rt-lts          # Build kernel with a different name
+_srcname=linux-4.14
+_pkgver=4.14.59
+_rtpatchver=rt37
 pkgver=${_pkgver}_${_rtpatchver}
 pkgrel=1
 arch=('x86_64')
@@ -18,18 +18,17 @@ license=('GPL2')
 makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 source=(
-  "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
-  "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-  "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${_pkgver}.xz"
-  "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${_pkgver}.sign"
-  "https://www.kernel.org/pub/linux/kernel/projects/rt/4.9/older/patch-${_pkgver}-${_rtpatchver}.patch.xz"
-  "https://www.kernel.org/pub/linux/kernel/projects/rt/4.9/older/patch-${_pkgver}-${_rtpatchver}.patch.sign"
+  "https://www.kernel.org/pub/linux/kernel/v4.x/linux-${_pkgver}.tar.xz"
+  "https://www.kernel.org/pub/linux/kernel/v4.x/linux-${_pkgver}.tar.sign"
+  "https://www.kernel.org/pub/linux/kernel/projects/rt/4.14/older/patch-${_pkgver}-${_rtpatchver}.patch.xz"
+  "https://www.kernel.org/pub/linux/kernel/projects/rt/4.14/older/patch-${_pkgver}-${_rtpatchver}.patch.sign"
   'config'         # the main kernel config file
   '60-linux-rt-lts.hook'  # pacman hook for depmod
   '90-linux-rt-lts.hook'  # pacman hook for initramfs regeneration
   'linux-rt-lts.preset'   # standard config files for mkinitcpio ramdisk
-  'change-default-console-loglevel.patch'
-  'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch'
+  0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
+  0006-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
+  fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -37,45 +36,38 @@ validpgpkeys=(
   '64254695FFF0AA4466CC19E67B96E8162A8CF5D1'  # Sebastian Andrzej Siewior
   '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73'  # Steven Rostedt
   'E644E2F1D45FA0B2EAA02F33109F098506FF0B14'  # Thomas Gleixner
-  '2B82682463E46862339A88A90A120DD923EEDD5F'  # Julia J. Cartwright
 )
-sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
+sha256sums=('7ec633c661bba941239e340bb35391d356eda541fb4c323d07034d09d05b319b'
             'SKIP'
-            '366b7e544ae5f8fe90d8aa7e31f8633553d629e485c1c6f246d833cfdfe8c95a'
+            '1cc964d8dc584d9dda24d2e8e30d268204848de480b777d748924daa88c239e2'
             'SKIP'
-            '399c873031599e356231fcf5694c7a438fb1f9faaa9bedcc0df4ef13fd8efc80'
-            'SKIP'
-            '600af19804c27ae31adbe5ba37af5c1f7b4902b1350c98a637340767847f5df0'
+            '59320fbc40a4eb20df2a8662e98792b870cb0dc75017662503eb1ce3173b856e'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
+            'd8a865a11665424b21fe6be9265eb287ee6d5646261a486954ddf3a4ee87e78f'
+            'ec7342aab478af79a17ff65cf65bbd6744b0caee8f66c77a39bba61a78e6576d'
             '85f7612edfa129210343d6a4fe4ba2a4ac3542d98b7e28c8896738e7e6541c06')
 
 _kernelname=${pkgbase#linux}
 
 prepare() {
-  cd ${_srcname}
-
-  # add upstream patch
-  patch -p1 -i ../patch-${_pkgver}
+  cd linux-${_pkgver}
 
   # security patches
 
-  # add latest fixes from stable queue, if needed
-  # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
+  # disable USER_NS for non-root users by default
+  patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
 
-  # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
-  # remove this when a Kconfig knob is made available by upstream
-  # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
-  patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
+  # https://bugs.archlinux.org/task/56711
+  patch -Np1 -i ../0006-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
 
   # add realtime patch
   msg "applying patch-${_pkgver}-${_rtpatchver}.patch"
   patch -Np1 -i ../patch-${_pkgver}-${_rtpatchver}.patch
 
   # A patch to fix a problem that ought to be fixed in the NVIDIA source code.
-  # Stops X from hanging on certain NVIDIA cards
+  # Stops X from hanging on NVIDIA cards
   msg "fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch"
   patch -Np1 -i ../fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch
 
@@ -110,7 +102,7 @@ prepare() {
 }
 
 build() {
-  cd ${_srcname}
+  cd linux-${_pkgver}
 
   make ${MAKEFLAGS} LOCALVERSION= bzImage modules
 }
@@ -123,7 +115,7 @@ _package() {
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install="${pkgbase}.install"
 
-  cd ${_srcname}
+  cd linux-${_pkgver}
 
   # get kernel version
   _kernver="$(make LOCALVERSION= kernelrelease)"
@@ -144,9 +136,6 @@ _package() {
 
   # remove build and source links
   rm "${pkgdir}"/usr/lib/modules/${_kernver}/{source,build}
-
-  # remove the firmware
-  rm -rf "${pkgdir}"/usr/lib/firmware
 
   # now we call depmod...
   depmod -b "${pkgdir}/usr" -F System.map "${_kernver}"
@@ -179,7 +168,7 @@ _package() {
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
 
-  cd ${_srcname}
+  cd linux-${_pkgver}
   local _builddir="${pkgdir}/usr/lib/modules/${_kernver}/build"
 
   install -Dt "${_builddir}" -m644 Makefile .config Module.symvers
@@ -246,7 +235,7 @@ _package-headers() {
 _package-docs() {
   pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
 
-  cd ${_srcname}
+  cd linux-${_pkgver}
   local _builddir="${pkgdir}/usr/lib/modules/${_kernver}/build"
 
   mkdir -p "${_builddir}"
