@@ -7,7 +7,7 @@
 pkgname=inox-edgy
 pk=enox
 name=chromium
-pkgver=70.0.3520.0
+pkgver=70.0.3527.0
 pkgrel=2
 _launcher_ver=5
 pkgdesc="Chromium nightly snapshots, without google blobs"
@@ -117,7 +117,7 @@ https://raw.githubusercontent.com/bn0785ac/in-night/master/desu.patch
 
 
 
-sha256sums=('8d7b1f1779d52f43a544349eda01bd2b22af24a947a2ad41102d648cf00b781b'
+sha256sums=('e41de965932ea4316172a9a58843d21c45e7df7f94f169e2bf53bf27a04e3757'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             '2d33f3b42c0e48de5044548fe885ea351f66a60f3164b700721af8bf200243eb'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -136,7 +136,7 @@ sha256sums=('8d7b1f1779d52f43a544349eda01bd2b22af24a947a2ad41102d648cf00b781b'
             '7beb0f3bbc55960092347767d423415860a3867525f6d1bbb057b3d72fae0618'
             'bcaeeb52d5d17fa9e6d4883cdeef8150f7e6ce440e0fcd3cef17d99f4b5db672'
             'f6a4c02feb5b21f1814d0b835b94a8b6222628ff97800b5411dc86852bfa5883'
-            '5f6f2042b1699a7602a40aac03961e9e7fdec468cb87eadc6a11ff2c1c8bafe9'
+            '5827624b6a67b94617c4a4481f4181269ecdc9fb546f154ac80bf09137f24605'
             'd64928f6542292b4191a001fc475ef8ea02ea966f5292841ede47a7e70f5d785'
             '0aeb560922cb5d628528fbd33fad23a3d33c3b0caa06a6fa799da2e55741f5cb'
             '1632b2d3b9062e6ec8872b9df180f82a93099a50eda6f15125ffe56dd45beca6'
@@ -162,7 +162,7 @@ sha256sums=('8d7b1f1779d52f43a544349eda01bd2b22af24a947a2ad41102d648cf00b781b'
             '5530e0c60dcfed5d17c7877d3c717b2b9fb2679c59bfe29a3784dce8b7bdd54b'
             '216829c72f1cc378bc66fb4f62f047cccd31684d946ba9a406b6e7a8f1351677'
             '48a42d38899795d4e959c6ec27a5e2288a3db54d3abf99f9caae887402d53988'
-            '4d1c096914e723133fcd918550b58ae5f7c52a13663ff31a0b8bfc77ad1f8a85'
+            'c50f99a73e981701a62e48860fb8407370585233613c055b93568ad6b6045721'
             '0ac16793634edde24c214eeffa9def755b9b76b256dfa3d9fd31de6002ff5dfa'
             'df1cb61901ad861ffe1335f2dd516d473a062507cd498e6b6afd93ad41ff03af'
             '9d4953a3dc73cb01d9d65ea297ab4b09d47b4daaa5f2291ef35d0784a2f18a4e'
@@ -189,7 +189,7 @@ sha256sums=('8d7b1f1779d52f43a544349eda01bd2b22af24a947a2ad41102d648cf00b781b'
             'a31bfe021beb091a37252a443c452ba6f3bc50299f237f47880ae5163d014b28'
             'c367599e25bd9d408d52dd26ceec9f0048b0991cc74980c8c40d602e61a2a844'
             'b54a69d6eeb03bf56e5a6430cbc07fd8d12532709876d38828e4c455eca29e3b'
-            '9e3cfae2857defe22dc5b377beee5aaec808acc8088d5f75b5cf7d3a4b8c9ded'
+            'ee2239fca1a378b5789e764d65f9a82b816fd594eb18c2008d0ad1868517fe03'
             'a0fc68d001dc6bad673997394184112eed59b74b8e6bbcd173db55402c95c121'
             'fb3abae54309adf69b98bd2435fbc23f17bc526dbf1d1e97907da87e7cf0aeed'
             'fb7c96ecf7f97fd6d356b8ca714efc518fc5bf40d92a23a5ff1ad8462d56b248'
@@ -211,7 +211,7 @@ sha256sums=('8d7b1f1779d52f43a544349eda01bd2b22af24a947a2ad41102d648cf00b781b'
             'd3a3451b002f122c4d96d239964eb8c511d4d16191848c4752eb18cb26a50581'
             '519d1c2787ae7a7cc3300a55292a3be1252775e9c40e19df24d5fcb93c48adb1'
             'c8225c0c14288c21f5cc448afc0f67fc4563517c39a8680af9e659f5b2d8f418'
-            '70f49d5b69641669c24d0532fb723b5ef1313a56224f41bf35bf6bb07fc93974'
+            'cc2a93ff16087377faec53ff907969bb0b9c2b9f4168f3f0d74ba5788ed4988d'
             'cd4c8fa8294f542a3fea1dd3df4a0a7370723f7139e5c59ec53f4ed639976d80'
             'a00a82e7c6e692c695971b2bf462442076975ebb42d9b66009d8e8489465c29e')
 
@@ -291,7 +291,7 @@ patch -Np1 -i ../030.patch
 patch -Np1 -i ../CP.patch
 patch -Np1 -i ../032.patch
 patch -Np1 -i ../034.patch
-patch -Np1 -i ../035.patch
+#patch -Np1 -i ../035.patch
 patch -Np1 -i ../360.patch
 patch -Np1 -i ../888.patch
 patch -Np1 -i ../meme.patch
@@ -311,7 +311,7 @@ patch -Np1 -i ../2ka.patch
 patch -Np1 -i ../2kc.patch
 patch -Np1 -i ../2kd.patch
 patch -Np1 -i ../2ke.patch
-patch -Np1 -i ../2kf.patch
+#patch -Np1 -i ../2kf.patch
 patch -Np1 -i ../2kg.patch
 patch -Np1 -i ../2kh.patch
 patch -Np1 -i ../2ki.patch
