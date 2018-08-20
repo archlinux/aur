@@ -1,0 +1,150 @@
+--- src/spamprobe/Command_exec.cc
++++ src/spamprobe/Command_exec.cc
+@@ -28,6 +28,7 @@
+ //    http://www.cooldevtools.com/qpl.html
+ //
+ 
++#include <cstdlib>
+ #include "SpamFilter.h"
+ #include "CommandConfig.h"
+ #include "ConfigManager.h"
+--- src/spamprobe/Command_edit_term.cc
++++ src/spamprobe/Command_edit_term.cc
+@@ -28,6 +28,7 @@
+ //    http://www.cooldevtools.com/qpl.html
+ //
+ 
++#include <cstdlib>
+ #include "SpamFilter.h"
+ #include "FrequencyDB.h"
+ #include "CommandConfig.h"
+--- src/spamprobe/Command_cleanup.cc
++++ src/spamprobe/Command_cleanup.cc
+@@ -28,6 +28,7 @@
+ //    http://www.cooldevtools.com/qpl.html
+ //
+ 
++#include <cstdlib>
+ #include "CleanupManager.h"
+ #include "SpamFilter.h"
+ #include "FrequencyDB.h"
+--- src/spamprobe/spamprobe.cc
++++ src/spamprobe/spamprobe.cc
+@@ -28,6 +28,7 @@
+ //    http://www.cooldevtools.com/qpl.html
+ //
+ 
++#include <cstdlib>
+ #include <unistd.h>
+ #include <locale.h>
+ #include <signal.h>
+--- src/spamprobe/Command_purge.cc
++++ src/spamprobe/Command_purge.cc
+@@ -28,6 +28,7 @@
+ //    http://www.cooldevtools.com/qpl.html
+ //
+ 
++#include <cstdlib>
+ #include "CleanupManager.h"
+ #include "SpamFilter.h"
+ #include "FrequencyDB.h"
+--- src/spamprobe/Command_import.cc
++++ src/spamprobe/Command_import.cc
+@@ -28,6 +28,7 @@
+ //    http://www.cooldevtools.com/qpl.html
+ //
+ 
++#include <cstdlib>
+ #include <fstream>
+ #include "LineReader.h"
+ #include "IstreamCharReader.h"
+--- src/database/DatabaseConfig.cc
++++ src/database/DatabaseConfig.cc
+@@ -29,6 +29,7 @@
+ //
+ 
+ #include <stdexcept>
++#include <cstdlib>
+ #include "File.h"
+ #include "WordData.h"
+ #include "FrequencyDBImpl.h"
+--- src/parser/MailMessageReader.cc
++++ src/parser/MailMessageReader.cc
+@@ -28,6 +28,7 @@
+ //    http://www.cooldevtools.com/qpl.html
+ //
+ 
++#include <cstdlib>
+ #include "RegularExpression.h"
+ #include "MailMessage.h"
+ #include "MailMessageList.h"
+--- src/parser/MbxMailMessageReader.cc
++++ src/parser/MbxMailMessageReader.cc
+@@ -28,6 +28,7 @@
+ //    http://www.cooldevtools.com/qpl.html
+ //
+ 
++#include <cstdlib>
+ #include <stdexcept>
+ #include "MailMessage.h"
+ #include "MailMessageList.h"
+--- src/parser/AutoTrainMailMessageReader.cc
++++ src/parser/AutoTrainMailMessageReader.cc
+@@ -28,6 +28,7 @@
+ //    http://www.cooldevtools.com/qpl.html
+ //
+ 
++#include <cstdlib>
+ #include "MailMessage.h"
+ #include "AutoTrainMailMessageReader.h"
+ 
+--- src/parser/HtmlTokenizer.cc
++++ src/parser/HtmlTokenizer.cc
+@@ -28,6 +28,7 @@
+ //    http://www.cooldevtools.com/qpl.html
+ //
+ 
++#include <cstdlib>
+ #include "AbstractTokenReceiver.h"
+ #include "StringReader.h"
+ #include "RegularExpression.h"
+--- src/hdl/HdlTokenizer.cc
++++ src/hdl/HdlTokenizer.cc
+@@ -28,6 +28,7 @@
+ //    http://www.cooldevtools.com/qpl.html
+ //
+ 
++#include <cstdlib>
+ #include "AbstractCharReader.h"
+ #include "HdlError.h"
+ #include "HdlToken.h"
+--- src/includes/util.h
++++ src/includes/util.h
+@@ -42,6 +42,7 @@
+ #include <cassert>
+ #include <iostream>
+ #include <cstdio>
++#include <cstring>
+ #include "Ptr.h"
+ #include "Ref.h"
+ 
+--- src/includes/MultiLineSubString.h
++++ src/includes/MultiLineSubString.h
+@@ -31,6 +31,7 @@
+ #ifndef _MultiLineSubString_h
+ #define _MultiLineSubString_h
+ 
++#include <climits>
+ #include "AbstractMultiLineString.h"
+ 
+ class MultiLineSubString : public AbstractMultiLineString
+--- src/includes/Buffer.h
++++ src/includes/Buffer.h
+@@ -32,6 +32,7 @@
+ #define _Buffer_h
+ 
+ #include "Array.h"
++#include <cassert>
+ 
+ //
+ // Similar to Array but handles variable length.

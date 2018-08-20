@@ -1,0 +1,20 @@
+--- src/includes/Ref.h.orig	2006-11-17 08:24:48.000000000 +0100
++++ src/includes/Ref.h	2013-05-14 08:53:37.453762087 +0200
+@@ -189,7 +189,7 @@
+ 
+   CRef<T> &operator=(const CRef<T> &other)
+   {
+-    assign(other);
++    this->assign(other);
+     return *this;
+   }
+ 
+@@ -245,7 +245,7 @@
+ 
+   Ref<T> &operator=(const Ref<T> &other)
+   {
+-    assign(other);
++    this->assign(other);
+     return *this;
+   }
+ 

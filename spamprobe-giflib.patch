@@ -1,0 +1,20 @@
+--- src/parser/GifParser.cc	2006-11-17 08:24:49.000000000 +0100
++++ src/parser/GifParser.cc	2014-07-31 09:23:19.372474921 +0200
+@@ -81,7 +81,7 @@
+ GifParser::~GifParser()
+ {
+   if (m_gif) {
+-    DGifCloseFile(m_gif);
++    DGifCloseFile(m_gif, NULL);
+   }
+ }
+ 
+@@ -99,7 +99,7 @@
+ void GifParser::openImage()
+ {
+   m_nextByteIndex = 0;
+-  m_gif = DGifOpen(this, readFromBuffer);
++  m_gif = DGifOpen(this, readFromBuffer, NULL);
+   if (!m_gif) {
+     throw runtime_error("open gif failed");
+   }
