@@ -1,7 +1,7 @@
 pkgbase = textedit.app
 	pkgdesc = GNUstep port of OS X 10.6 TextEdit
 	pkgver = 264
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ericwa/TextEdit
 	arch = i686
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = textedit.app
 	depends = gnustep-base
 	depends = gnustep-gui
 	depends = gnustep-back
+	depends = aspell-en
 	source = https://github.com/ericwa/TextEdit/archive/master.zip
 	sha256sums = 13fb1df424d69eeb95f1ba8c6c9c4cfd039798dc5b01b20760d79d532a374b07
 
