@@ -4,7 +4,7 @@
 pkgbase=linux-apparmor
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.17
-pkgver=4.17.8
+pkgver=4.17.9
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -30,7 +30,7 @@ validpgpkeys=(
 )
 sha256sums=('9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13'
             'SKIP'
-            '146f68fa5ded4c33f3bafba23224ed8fae2a27f701257c899c6a4a7fa61eb6d0'
+            '52131a497efaed724afaa7f7022249f8f8e6e555cbe407a6619908ed2ebcee89'
             'SKIP'
             'f8e890eac9779a89009c1e2339f757e9781864df09805211fad005146fe2578b'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
