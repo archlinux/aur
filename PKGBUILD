@@ -1,17 +1,18 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=vue-cli
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc='Standard tooling for Vue.js development'
-arch=(any)
+arch=(i686 x86_64)
 url=https://cli.vuejs.org
 license=(MIT)
 depends=(nodejs)
 makedepends=(npm)
 conflicts=(nodejs-vue-cli)
+options=(!strip)
 source=(https://github.com/vuejs/vue-cli/archive/v$pkgver.tar.gz)
-sha512sums=('e3e5cdbf87e9141c531f4f486e8f65c99f3317f1966190aa8f54908235aec202c4f4eb90fc663883f02d8287da7874d5f20c04b91528845633ce169b64535738')
+sha512sums=('a547fd18933cb94f76df12280ba95260089964d4bbf2274247902f01a24951cd9b5cd0d473a315dbc7be8a55725d82182dc31032e0fce593b8f485493eeaf01e')
 
 build() {
   cd vue-cli-$pkgver
@@ -21,7 +22,7 @@ build() {
 package() {
   cd vue-cli-$pkgver
   _dest="$pkgdir"/usr/lib/node_modules/vue-cli
-  mkdir -p $_dest
-  cp -a . $_dest
+  mkdir -p "$_dest"
+  cp -a . "$_dest"
   install -Dm 644 -t "$pkgdir"/usr/share/licenses/vue-cli LICENSE
 }
