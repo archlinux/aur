@@ -3,7 +3,7 @@
 pkgname=('python-django-bootstrap4' 'python2-django-bootstrap4')
 pkgdesc="Bootstrap 4 integration with Django"
 pkgver=0.0.6
-pkgrel=1
+pkgrel=2
 url="https://github.com/zostera/django-bootstrap4"
 license=('BSD-3-Clause')
 arch=('any')
