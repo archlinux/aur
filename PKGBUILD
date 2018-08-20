@@ -3,9 +3,9 @@ pkgver=2.2
 pkgrel=1
 pkgdesc="A very small C interpreter for scripting."
 arch=('x86_64')
-url="https://github.com/zsaleeba/picoc"
+url="https://gitlab.com/zsaleeba/picoc"
 license=('GPL')
-source=("git://github.com/zsaleeba/picoc")
+source=("git+https://gitlab.com/zsaleeba/picoc.git")
 options=('!buildflags')
 md5sums=('SKIP')
  
