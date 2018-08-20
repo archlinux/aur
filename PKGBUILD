@@ -1,7 +1,7 @@
 # Maintainer: Denys Vitali <denys@denv.it>
 pkgname=pong
 pkgver=2.02
-pkgrel=1
+pkgrel=2
 pkgdesc="pong is not ping. pong is CLI game. "
 reponame=pong-command
 arch=('any')
@@ -22,6 +22,7 @@ md5sums=('SKIP')
 
 build() {
   cd "$srcdir/${reponame}-${pkgver}/"
+  go get github.com/nsf/termbox-go
   go build -o "$srcdir/${reponame}-${pkgver}/pong_out" -i pong/*
 }
 
