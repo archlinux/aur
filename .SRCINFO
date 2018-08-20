@@ -1,0 +1,16 @@
+pkgbase = python-zope.testing
+	pkgdesc = Zope testing frameworks
+	pkgver = 4.6.2
+	pkgrel = 1
+	url = https://github.com/zopefoundation/zope.testing
+	arch = any
+	license = custom:ZPL
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = python-zope.testing-4.6.2.tar.gz::https://github.com/zopefoundation/zope.testing/archive/4.6.2.tar.gz
+	sha512sums = 5eb5946ca22ac29138a43660a0d28282a0cd89ed9c18aab01ac0fa62107d79b4ff8d5c4b4278b8ddb5ef578e71d9f48eb6c1ded619c43917ccba0bd4a5167d1f
+
+pkgname = python-zope.testing
+
+pkgname = python2-zope.testing
+
