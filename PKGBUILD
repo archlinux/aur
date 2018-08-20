@@ -2,7 +2,7 @@
 pkgname=firebird-superserver
 _pkgver=2.5.8
 pkgver=$_pkgver.27089
-pkgrel=3
+pkgrel=4
 pkgdesc="A open source SQL relational database management system (RDMS)"
 arch=('i686' 'x86_64')
 url="http://www.firebirdsql.org/"
@@ -12,6 +12,7 @@ provides=("libfbclient=$pkgver")
 conflicts=('firebird-classicserver' 'libfbclient')
 options=('!makeflags')
 install=firebird-superserver.install
+backup=('etc/firebird/firebird.conf' 'etc/firebird/fbtrace.conf' 'etc/firebird/aliases.conf')
 
 source=("https://github.com/FirebirdSQL/firebird/releases/download/R${_pkgver//./_}/Firebird-${pkgver}-0.tar.bz2"
         'default.password'
