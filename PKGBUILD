@@ -2,7 +2,7 @@
 pkgname=('python-keras-contrib-git' 'python2-keras-contrib-git')
 _pkgname='keras-contrib'
 pkgver=r460.3427000
-pkgrel=1
+pkgrel=2
 pkgdesc='Keras community contributions'
 arch=('x86_64')
 url='https://github.com/keras-team/keras-contrib'
@@ -27,7 +27,7 @@ build_python2-keras-contrib-git() {
 }
 
 package_python-keras-contrib-git() {
-  depends=('python')
+  depends=('python' 'python-keras')
   provides=("${pkgname%-git}")
   conflicts=("${pkgname%-git}")
 
@@ -37,7 +37,7 @@ package_python-keras-contrib-git() {
 }
 
 package_python2-keras-contrib-git() {
-  depends=('python2')
+  depends=('python2' 'python2-keras')
   provides=("${pkgname%-git}")
   conflicts=("${pkgname%-git}")
 
