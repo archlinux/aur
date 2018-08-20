@@ -1,6 +1,6 @@
 pkgname=picoc-git
 pkgver=2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A very small C interpreter for scripting."
 arch=('x86_64')
 url="https://gitlab.com/zsaleeba/picoc"
