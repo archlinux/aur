@@ -20,8 +20,8 @@ prepare() {
 } 
 
 build() {
-  source /usr/share/GNUstep/Makefiles/GNUstep.sh
   cd "$_pkgname-master"
+  export GNUSTEP_MAKEFILES="$(gnustep-config --variable=GNUSTEP_MAKEFILES)"
   make
 }
 
