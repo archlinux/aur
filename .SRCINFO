@@ -1,12 +1,12 @@
 pkgbase = toss
 	pkgdesc = Dead simple LAN file transfers from the command line
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/zerotier/toss
 	arch = x86_64
 	license = MIT
-	source = https://github.com/zerotier/toss/archive/1.0.tar.gz
-	sha256sums = 547299da1b81c4b9cf8f135edb12555e3dea24bb10d4a73aa5b91299e73bea42
+	source = https://github.com/zerotier/toss/archive/1.1.tar.gz
+	sha256sums = 49a712f488e46731277319bbf9153565d99209579dd6b039efdebf76c118f6f1
 
 pkgname = toss
 
