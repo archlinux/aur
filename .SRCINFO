@@ -1,7 +1,7 @@
 pkgbase = radare2-bindings-git
 	pkgdesc = Language bindings for radare2 (git version)
 	pkgver = 2.8.0.r1.gb0d5faf
-	pkgrel = 2
+	pkgrel = 3
 	url = https://radare.org
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = radare2-bindings-git
 	makedepends = git
 	makedepends = valabind
 	makedepends = swig
-	depends = radare2
+	depends = radare2-git
 	depends = python3
 	depends = python2
 	source = radare2-bindings-git::git://github.com/radare/radare2-bindings.git
