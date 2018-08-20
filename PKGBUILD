@@ -11,7 +11,7 @@ depends=('xdg-utils')
 source_x86_64=("https://github.com/liberodark/sFTP-Client/releases/download/${pkgver}/sFTP-Client.deb")
 source=($pkgname.desktop
         $pkgname.png)
-sha512sums=('6e508d188c9f8ca370ca8e4a11c8ee4e5ce75e29019ff4365fa479c8fc32126dc648decb59b75687a09de749346a4fd4fffbeba149f7307ec476da36ffd71187'
+sha512sums=('07b47e9b62e1be3b0683c775f5fa9a427a57ff76663e7b067fc540242a868de1e6e9283542a279d269994b2e5084116cd26d35e5f304bf92ebcffcad6b87a5d4'
          '3106d299356c6e7eb40124ca16e0d7046e98ed5640ef29e66ca3013bb9bf8d7eff9bdaabe44f2334579830cbcc92d59553ab8393ced3101222bb5d79a670b690')
 sha512sums_x86_64=('dd0560f1ab3d4cf591af6dfd16a5771640b1d69cf25e9637c760f1a6c4fb0fc91854e1b86607185187dfade9c9ece6bfcac294997743b443a84fed5a1e174875')
         

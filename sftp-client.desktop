@@ -2,7 +2,7 @@
 Name=sFTP Client
 Comment=Transfer files with FTP, FTPIS, FTPES and SFTP (Including SSH Terminal)
 GenericName=sFTP Client
-Exec=/usr/lib/sftpclient/sFTP\ Client %U
+Exec=/usr/lib/sftpclient/sFTP\ Client
 Icon=sftp-client
 Type=Application
 StartupNotify=true
