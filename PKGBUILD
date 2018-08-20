@@ -3,7 +3,7 @@
 
 # Maintainer: Vincenzo Maffione <v.maffione@gmail.com>
 pkgname=netmap
-pkgver=r3265.cc77a035
+pkgver=r3450.4b381787
 pkgrel=1
 pkgdesc="A framework for high speed network packet I/O, using kernel bypass"
 arch=('any')
@@ -37,8 +37,8 @@ build() {
     asp export linux
     NESTEDDIR="$srcdir/asp/linux"
     cd $NESTEDDIR
-    grep "pkgver[ ]*=" PKGBUILD > .ksver
-    KSVER=$(sed 's|pkgver[ ]*=[ ]*||g' .ksver | sed 's|\([1-9]\.[0-9]\+\).*|\1|g')
+    grep "_srcver[ ]*=" PKGBUILD > .ksver
+    KSVER=$(sed 's|_srcver[ ]*=[ ]*||g' .ksver | sed 's|\([1-9]\.[0-9]\+\).*|\1|g')
     rm .ksver
     RKVER=$(uname -r | sed 's|\.[^.]*$||')
     if [ "$KSVER" != "$RKVER" ]; then
