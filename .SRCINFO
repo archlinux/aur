@@ -1,0 +1,20 @@
+pkgbase = python-zc.lockfile
+	pkgdesc = Zope testing frameworks
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/zopefoundation/zc.lockfile
+	arch = any
+	license = custom:ZPL
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	makedepends = python-zope.testing
+	makedepends = python2-zope.testing
+	source = python-zc.lockfile-1.3.0.tar.gz::https://github.com/zopefoundation/zc.lockfile/archive/1.3.0.tar.gz
+	sha512sums = 33385e2b9400e507c4270cd754cbbf61a4733ac11b93a7c985f75cd9148df596afeaa16c9307712e1b9b525e8523ed6aa8ad0d3575f52266848b16933d5a60be
+
+pkgname = python-zc.lockfile
+	depends = python
+
+pkgname = python2-zc.lockfile
+	depends = python2
+
