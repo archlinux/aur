@@ -2,7 +2,7 @@
 pkgname=firebird-superserver
 _pkgver=2.5.8
 pkgver=$_pkgver.27089
-pkgrel=2
+pkgrel=3
 pkgdesc="A open source SQL relational database management system (RDMS)"
 arch=('i686' 'x86_64')
 url="http://www.firebirdsql.org/"
@@ -19,7 +19,8 @@ source=("https://github.com/FirebirdSQL/firebird/releases/download/R${_pkgver//.
         'firebird-sysusers.conf'
         'firebird.service'
         'firebird-icu60.patch'
-        'firebird-gcc6.patch')
+        'firebird-gcc6.patch'
+        'firebird-libio.patch')
 
 md5sums=('38862a3da39cf91f4f2366fb510f18a6'
          'ee601f52f1ba2481fe1f05b25d000bb8'
@@ -27,12 +28,14 @@ md5sums=('38862a3da39cf91f4f2366fb510f18a6'
          'a43ab472f4d95e48ac21910bb33a5e86'
          '90b4631c9bff99aab08511b3a184593e'
          '70197fc801f9c66a6a1d7710e0c63718'
-         '9ab88cfcda674f9d28850a4f86f23741')
+         '9ab88cfcda674f9d28850a4f86f23741'
+         '8e7cac6da439c8798dccf6d4b4e457db')
 
 prepare() {
     cd $srcdir/Firebird-$pkgver-0
     patch -Np1 -i ../firebird-icu60.patch
     patch -Np1 -i ../firebird-gcc6.patch
+    patch -Np1 -i ../firebird-libio.patch
 }
 
 build() {
