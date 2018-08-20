@@ -15,8 +15,8 @@ source=("http://download.savannah.nongnu.org/releases/gnustep-nonfsf/LuserNET-0.
 sha256sums=('5b96eb6eca35cd549c54abd60412eb3c753de341965735f3a25c7d7e8452d3e1')
 
 build() {
-  source /usr/share/GNUstep/Makefiles/GNUstep.sh
   cd "$_pkgname-$pkgver"
+  export GNUSTEP_MAKEFILES="$(gnustep-config --variable=GNUSTEP_MAKEFILES)"
   make
 }
 
