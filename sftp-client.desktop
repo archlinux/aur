@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=sFTP Client
+Comment=Transfer files with FTP, FTPIS, FTPES and SFTP (Including SSH Terminal)
+GenericName=sFTP Client
+Exec=/usr/lib/sftpclient/sFTP\ Client %U
+Icon=sftp-client
+Type=Application
+StartupNotify=true
+Categories=GNOME;GTK;Utility;
+

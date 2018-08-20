@@ -1,19 +1,27 @@
 # Maintainer: liberodark
 
 pkgname=sftp-client
-pkgver=3.0.17
+pkgver=3.0.18
 pkgrel=1
 pkgdesc="FTP / SFTP / SSH client build in electron."
 arch=('x86_64')
-url="https://www.sftpclient.io"
+url="https://github.com/headsetapp/headset-electron"
 license=('Custom')
 depends=('xdg-utils')
 source_x86_64=("https://github.com/liberodark/sFTP-Client/releases/download/${pkgver}/sFTP-Client.deb")
-sha512sums_x86_64=('9ebec0bbe2becdb72494c7e8cfcf8209e631cb63326109705f2da83deee7eec53da2aadde8e970c9f2f1e8a96c463172514cf79d8789594eb8fd010a1015a88a')
+source=($pkgname.desktop
+        $pkgname.png)
+sha512sums=('6e508d188c9f8ca370ca8e4a11c8ee4e5ce75e29019ff4365fa479c8fc32126dc648decb59b75687a09de749346a4fd4fffbeba149f7307ec476da36ffd71187'
+         '3106d299356c6e7eb40124ca16e0d7046e98ed5640ef29e66ca3013bb9bf8d7eff9bdaabe44f2334579830cbcc92d59553ab8393ced3101222bb5d79a670b690')
+sha512sums_x86_64=('dd0560f1ab3d4cf591af6dfd16a5771640b1d69cf25e9637c760f1a6c4fb0fc91854e1b86607185187dfade9c9ece6bfcac294997743b443a84fed5a1e174875')
         
 package() {
   cd $srcdir
   tar xvf data.tar.xz
   cp -r usr $pkgdir
+  rm $pkgdir/usr/share/pixmaps/*.png
+  rm $pkgdir/usr/share/applications/*.desktop
+  rm -r $pkgdir/usr/bin
+  install -vDm644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
+  install -vDm644 $srcdir/$pkgname.png $pkgdir/usr/share/pixmaps/$pkgname.png
 }
-
