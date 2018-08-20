@@ -5,7 +5,7 @@ pkgbase = toss
 	url = https://github.com/zerotier/toss
 	arch = x86_64
 	license = MIT
-	source = https://github.com/zerotier/toss/archive/1.1.tar.gz
+	source = toss-1.1.tar.gz::https://github.com/zerotier/toss/archive/1.1.tar.gz
 	sha256sums = 49a712f488e46731277319bbf9153565d99209579dd6b039efdebf76c118f6f1
 
 pkgname = toss
