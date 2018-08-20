@@ -2,25 +2,15 @@
 
 _pkgname=GSL
 pkgname=microsoft-gsl
-pkgver=1.0.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="C++ Core Guidelines Support Library"
 arch=('any')
 url="https://github.com/Microsoft/GSL"
 license=('MIT')
-makedepends=('cmake' 'catch2')
-source=("https://github.com/Microsoft/GSL/archive/v${pkgver}.tar.gz"
-        "gcc_unsigned_error.patch"
-        "use_system_catch2.patch")
-sha256sums=('9694b04cd78e5b1a769868f19fdd9eea2002de3d4c3a81a1b769209364543c36'
-            'c558af38ad46d26b65f0d4d7091fd0b034ffde860b5c5546cda7c43942d93b4b'
-            '984e53dbccf938725519be8fd0b46c67f6f60d2d573a6b0ab82fbe94fce3f43c')
-
-prepare() {
-    cd "$_pkgname-$pkgver"
-    patch -Np1 -i "$srcdir/gcc_unsigned_error.patch"
-    patch -Np1 -i "$srcdir/use_system_catch2.patch"
-}
+makedepends=('cmake' 'git')
+source=("$url/archive/v${pkgver}.tar.gz")
+sha256sums=('6cce6fb16b651e62711a4f58e484931013c33979b795d1b1f7646f640cfa9c8e')
 
 build() {
     cd "$_pkgname-$pkgver"
