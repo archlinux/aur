@@ -1,5 +1,5 @@
 pkgbase = stratisd
-	pkgdesc = Stratis is a new tool that meets the needs of Red Hat Enterprise Linux (RHEL) users calling for an easily configured, tightly integrated solution for storage that works within the existing Red Hat storage management stack.
+	pkgdesc = Easy to use local storage management for Linux.
 	pkgver = 0.5.5
 	pkgrel = 1
 	url = https://stratis-storage.github.io/
@@ -7,21 +7,10 @@ pkgbase = stratisd
 	license = MPL2
 	makedepends = asciidoc
 	makedepends = cargo
-	makedepends = git
-	makedepends = mpfr
 	makedepends = rust
-	provides = stratisd
-	conflicts = stratisd
+	makedepends = git
 	source = stratisd-0.5.5.tar.gz::https://github.com/stratis-storage/stratisd/archive/v0.5.5.tar.gz
-	source = initcpio-install
-	source = org.storage.stratis1.service
-	source = stratisd.service
-	source = stratisd-boot.service
 	sha256sums = ca0de355c1ae5caa562b3fae5554eb8bae8f1916b3ef7052ec5d88037eaf0458
-	sha256sums = e12069c231c3f7c6e16b347ffcddb5cf919c9e5105c56a7b9a994e1adc49da25
-	sha256sums = 72ab992ff564d4dd6f0290bd12e973268e45ac0b154e4695796e9737ffed31fe
-	sha256sums = 2143a3f942a3c2975a006c96ec78cf960417943a2425b564f91425f3a50a7ccd
-	sha256sums = cf2a2ed28cdcfa2a3b90b63a50a6ab8ca9690f8def273feab2d92d84113b931c
 
 pkgname = stratisd
 
