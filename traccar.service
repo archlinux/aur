@@ -1,0 +1,16 @@
+[Unit]
+Description=Traccar GPS System
+After=network.target
+
+[Service]
+Type=forking
+WorkingDirectory=/opt/traccar
+ExecStart=/usr/bin/java -Dwrapper.daemon.dir=/opt/traccar/init.d -Dwrapper.pidfile=/var/run/wrapper.traccar.pid -Dwrapper.service=true -Dwrapper.visible=false -Djna_tmpdir=/opt/traccar/tmp -jar /opt/traccar/wrapper.jar -tx /opt/traccar/conf/wrapper.conf
+ExecStop=/usr/bin/java -Dwrapper.daemon.dir=/opt/traccar/init.d -Dwrapper.pidfile=/var/run/wrapper.traccar.pid -Dwrapper.service=true -Dwrapper.visible=false -Djna_tmpdir=/opt/traccar/tmp -jar /opt/traccar/wrapper.jar -px /opt/traccar/conf/wrapper.conf
+
+PIDFile=/var/run/wrapper.traccar.pid
+SuccessExitStatus=143
+TimeoutStopSec=30
+
+[Install]
+WantedBy=multi-user.target
