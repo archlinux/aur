@@ -1,6 +1,6 @@
 pkgbase = python-apts
 	pkgdesc = Set of tools for automatic astrophotography images acquisition and processing
-	pkgver = 0.2.26
+	pkgver = 0.2.27
 	pkgrel = 1
 	url = https://github.com/pozar87/apts
 	arch = any
@@ -20,8 +20,8 @@ pkgbase = python-apts
 	makedepends = python-svgwrite
 	makedepends = python-timezonefinder
 	makedepends = python-requests-cache
-	source = https://github.com/pozar87/apts/archive/v0.2.26.tar.gz
-	md5sums = 915c085e0e96dd5bb02cf4a3005a722b
+	source = https://github.com/pozar87/apts/archive/v0.2.27.tar.gz
+	md5sums = 9625dac2533c47a3446e41b1e75be079
 
 pkgname = python-apts
 	depends = python-matplotlib
