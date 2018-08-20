@@ -6,7 +6,7 @@ pkgname=z-push
 groups=('zarafa'
 	'kopano')
 pkgver=2.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="open-source implementation of the ActiveSync protocol"
 arch=('any')
 url="http://z-push.sf.net/"
@@ -15,7 +15,7 @@ makedepends=('git'
 	     'php-composer')
 depends=('nginx'
 	 'php'
-	 'kopano-core' # php-mapi
+	# 'kopano-core' # php-mapi
 	 'php-fpm')
 install='install'
 backup=('etc/webapps/z-push/nginx-location.conf'
