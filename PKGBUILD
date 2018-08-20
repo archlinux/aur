@@ -2,7 +2,7 @@
 
 pkgname=blheli-configurator
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Crossplatform configuration tool for BLHeli based ESCs"
 arch=('x86_64')
 url="https://github.com/blheli-configurator/blheli-configurator"
@@ -23,7 +23,7 @@ package() {
   mkdir -p "$pkgdir/opt/blheli-configurator"
   mkdir -p "$pkgdir/usr/bin"
   install -Dm644 "$srcdir/blheli-configurator.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-  install -Dm644 "icon_128.png?raw=true" "$pkgdir/opt/blheli-configurator/blheli_icon_128.png"
+  install -Dm644 "$srcdir/icon_128.png?raw=true" "$pkgdir/opt/blheli-configurator/blheli_icon_128.png"
   cp -r --preserve=all "$srcdir/BLHeli Configurator/." "$pkgdir/opt/blheli-configurator"
-  ln -s "$pkgdir/opt/blheli-configurator/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  ln -s "/opt/blheli-configurator/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }

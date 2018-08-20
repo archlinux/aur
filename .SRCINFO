@@ -1,7 +1,7 @@
 pkgbase = blheli-configurator
 	pkgdesc = Crossplatform configuration tool for BLHeli based ESCs
 	pkgver = 1.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/blheli-configurator/blheli-configurator
 	arch = x86_64
 	license = custom
