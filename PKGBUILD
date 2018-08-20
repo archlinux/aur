@@ -3,7 +3,7 @@
 
 pkgbase=lib32-smbclient
 pkgname=('lib32-libwbclient' 'lib32-smbclient')
-pkgver=4.8.3
+pkgver=4.8.4
 pkgrel=1
 pkgdesc="Tools to access a server's filespace and printers via SMB"
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=('lib32-avahi' 'lib32-gnutls' 'lib32-libbsd' 'lib32-libcap'
              'lib32-libnsl' 'lib32-libtirpc' 'perl-parse-yapp'
              'lib32-jansson' 'rpcsvc-proto' 'smbclient' 'libwbclient')
 source=("https://www.samba.org/samba/samba/ftp/stable/samba-${pkgver}.tar.gz")
-sha256sums=('e0569a8a605d5dfb49f1fdd11db796f4d36fe0351c4a7f21387ef253010b82ed')
+sha256sums=('f5044d149e01894a08b1d114b8b69aed78171a7bb19608bd1fd771453b9a5406')
 
 prepare() {
   cd samba-${pkgver}
