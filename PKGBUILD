@@ -3,14 +3,14 @@
 pkgbase='python-sphinxcontrib-autoprogram'
 pkgname=('python-sphinxcontrib-autoprogram'
 	       'python2-sphinxcontrib-autoprogram')
-pkgver='0.1.2'
-pkgrel='2'
+pkgver='0.1.5'
+pkgrel='1'
 pkgdesc="This contrib extension provides an automated way to document CLI programs"
 arch=('any')
 url="https://bitbucket.org/birkenfeld/sphinx-contrib"
 license=('BSD')
-source=("https://pypi.python.org/packages/a2/a1/ce06bf97c2121cdfa1d2934076edece770179adf8cf3d6b4adb5abf90212/sphinxcontrib-autoprogram-${pkgver}.tar.gz")
-md5sums=('0601b888f1f68b14742dc07fb21479b9')
+source=("https://files.pythonhosted.org/packages/93/d4/ded802ffad1fd1870d3abbb7cfa1c31b059dc46c68f6a66b73360621f6c3/sphinxcontrib-autoprogram-${pkgver}.tar.gz")
+md5sums=('79ff83740db65b55c623c4ed676562a6')
 
 package_python-sphinxcontrib-autoprogram() {
   makedepends=('python-setuptools')	
