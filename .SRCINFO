@@ -1,7 +1,7 @@
 pkgbase = python-jira
 	pkgdesc = Python library for interacting with JIRA via REST APIs
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pycontribs/jira
 	arch = any
 	license = BSD
