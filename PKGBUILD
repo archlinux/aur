@@ -15,8 +15,8 @@ source=("http://savannah.nongnu.org/download/gap/FTP-0.6.tar.gz")
 sha256sums=('f9884c1d0a3f37fea183ed1f80905d0f9ed3c99f776dc6a876434c7512c4d610')
 
 build() {
-  source /usr/share/GNUstep/Makefiles/GNUstep.sh
   cd "$_pkgname-$pkgver"
+  export GNUSTEP_MAKEFILES="$(gnustep-config --variable=GNUSTEP_MAKEFILES)"
   make
 }
 
