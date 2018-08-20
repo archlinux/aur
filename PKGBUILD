@@ -7,7 +7,7 @@ pkgdesc='Additional fields, validators and widgets for WTForms'
 arch=('any')
 url="https://wtforms-components.readthedocs.io"
 license=('BSD')
-depends=('python-colour' 'python-dateutil' 'python-infinity')
+depends=('python-colour' 'python-dateutil' 'python-infinity' 'python-validators')
 checkdepends=('python-wtforms-test')
 
 source=("https://github.com/kvesteri/wtforms-components/archive/$pkgver.tar.gz")
