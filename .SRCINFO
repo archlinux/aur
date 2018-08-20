@@ -9,6 +9,7 @@ pkgbase = emacs-ansible
 	depends = emacs-s
 	depends = emacs-f
 	depends = emacs-yasnippet
+	depends = ansible
 	source = emacs-ansible-0.1.0.tar.gz::https://github.com/k1LoW/emacs-ansible/archive/0.1.0.tar.gz
 	sha256sums = 0de0cf9d9506b3abf0c27e72eea47282e81abb3d8b7c2808f1ab401456d1aa8f
 
