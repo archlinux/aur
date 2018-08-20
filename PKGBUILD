@@ -15,8 +15,8 @@ source=("http://download.savannah.nongnu.org/releases/gnustep-nonfsf/Pantomime-1
 sha256sums=('935845b67ec4cf32596828091dc41f3599ca8870ab9085891c365be23094b910')
 
 build() {
-  source /usr/share/GNUstep/Makefiles/GNUstep.sh
   cd "$_pkgname-$pkgver"
+  export GNUSTEP_MAKEFILES="$(gnustep-config --variable=GNUSTEP_MAKEFILES)"
   make
 }
 
