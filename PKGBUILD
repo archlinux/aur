@@ -1,4 +1,5 @@
-# Maintainer: Taijian <taijian@posteo.de>
+# Maintainer: James Bunton <jamesbunton@delx.net.au>
+# Contributor: Taijian <taijian@posteo.de>
 # Contributor: Jonathan Conder <jonno.conder@gmail.com>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 # Contributor: Juergen Hoetzel <juergen@archlinux.org>
@@ -6,8 +7,8 @@
 # Contributor: dorphell <dorphell@archlinux.org>
 
 pkgname=mythtv
-pkgver=29.1
-pkgrel=9
+pkgver=29+fixes.20180821.e5fc66e8
+pkgrel=1
 epoch=1
 pkgdesc="A Homebrew PVR project"
 arch=('x86_64')
@@ -27,28 +28,30 @@ optdepends=('glew: for GPU commercial flagging'
             'python2-requests-cache: for metadata-lookup / cover art')
 conflicts=('myththemes' 'mythplugins-mythvideo')
 replaces=('myththemes' 'mythplugins-mythvideo')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/MythTV/$pkgname/archive/v$pkgver.tar.gz"
+source=("git+https://github.com/MythTV/mythtv#branch=fixes/29"
         'mythbackend.service'
         '99-mythbackend.rules'
-        'sysusers.d'
-        'freetype2.patch')
-sha256sums=('e40ec8111d39fd059a9ec741b10016683bcc66ee3b33c4cdaab93d60851f5d3e'
+        'sysusers.d')
+sha256sums=('SKIP'
             'ed5ca54de26b7cd8a64e09626eed6e09f35d677daf88c530bb24cc4252bcce6d'
             'ecfd02bbbef5de9773f4de2c52e9b2b382ce8137735f249d7900270d304fd333'
-			'470de0a4050c16c7af11a0e5cfe2810b7daae42df4acf5456c7eae274dc7c5ae'
-            '4451cbb28513e03cc2f62c50581daeb436d027f8a0968ba5d99a3b05da103343')
+            '470de0a4050c16c7af11a0e5cfe2810b7daae42df4acf5456c7eae274dc7c5ae')
+
+pkgver() {
+  cd "${srcdir}/mythtv/mythtv"
+  echo -n "29+fixes.$(date +%Y%m%d).$(git rev-parse --short=8 HEAD)"
+}
 
 prepare() {
-  cd $pkgname-$pkgver/$pkgname
+  cd "${srcdir}/mythtv/mythtv"
 
   find 'bindings/python' 'contrib' 'programs/scripts' -type f | xargs sed -i 's@^#!.*python$@#!/usr/bin/python2@'
 
-  #apply freetype2.patch to fix configure error
-  patch -Np1 -i ../../freetype2.patch
+  find 'external/FFmpeg' -type f | xargs sed -i 's/x264_bit_depth/X264_BIT_DEPTH/'
 }
 
 build() {
-  cd $pkgname-$pkgver/$pkgname
+  cd "${srcdir}/mythtv/mythtv"
 
   ARCH="${CARCH/_/-}"
   ./configure --prefix=/usr \
@@ -68,14 +71,14 @@ build() {
 }
 
 package() {
-  cd $pkgname-$pkgver/$pkgname
+  cd "${srcdir}/mythtv/mythtv"
   make INSTALL_ROOT="$pkgdir" install
 
   install -D -m644 "$srcdir/mythbackend.service" "$pkgdir/usr/lib/systemd/system/mythbackend.service"
   install -D -m644 'database/mc.sql' "$pkgdir/usr/share/mythtv/mc.sql"
   install -D -m644 "$srcdir/sysusers.d" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 
-#  mkdir -p "$pkgdir/usr/share/mythtv"
+  mkdir -p "$pkgdir/usr/share/mythtv"
   cp -R 'contrib' "$pkgdir/usr/share/mythtv"
   mkdir -p "$pkgdir/var/log/mythtv"
 
