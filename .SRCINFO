@@ -1,7 +1,7 @@
 pkgbase = python-workalendar
 	pkgdesc = Worldwide holidays and working days helper and toolkit
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/novafloss/workalendar
 	arch = any
 	license = MIT
