@@ -64,11 +64,12 @@ _rev_override="n"
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-clear
-__basekernel=4.18
-_minor=1
-pkgver=${__basekernel}.${_minor}
-_clearver=${pkgver}-621
-pkgrel=2
+_major=4.18
+_minor=3
+pkgver=${_major}.${_minor}
+_srcname=linux-${_major}
+pkgrel=1
+_clr=623
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
@@ -76,10 +77,10 @@ makedepends=('bc' 'git' 'inetutils' 'kmod' 'libelf' 'linux-firmware' 'xmlto')
 options=('!strip')
 _gcc_more_v='20180509'
 source=(
-  "https://www.kernel.org/pub/linux/kernel/v4.x/linux-${__basekernel}.tar.xz"
-  "https://www.kernel.org/pub/linux/kernel/v4.x/linux-${__basekernel}.tar.sign"
+  "https://www.kernel.org/pub/linux/kernel/v4.x/linux-${_major}.tar.xz"
+  "https://www.kernel.org/pub/linux/kernel/v4.x/linux-${_major}.tar.sign"
   "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-  "clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=${_clearver}"
+  "clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=${pkgver}-${_clr}"
   'https://downloadmirror.intel.com/28039/eng/microcode-20180807.tgz'
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz" # enable_additional_cpu_optimizations_for_gcc
   '60-linux.hook'  # pacman hook for depmod
@@ -87,13 +88,260 @@ source=(
   '99-linux.hook'  # pacman hook for remove initramfs
   'linux.preset'   # standard config files for mkinitcpio ramdisk
 )
-validpgpkeys=(
-  'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
-  '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
-)
+
+_kernelname=${pkgbase#linux}
+: ${_kernelname:=-clear}
+
+prepare() {
+    cd ${_srcname}
+
+    ### Add upstream patches
+        msg2 "Add upstream patches"
+        patch -Np1 -i ../patch-${pkgver}
+
+    ### Setting version
+        msg2 "Setting version..."
+        scripts/setlocalversion --save-scmversion
+        echo "-$pkgrel" > localversion.10-pkgrel
+        echo "$_kernelname" > localversion.20-pkgname
+
+    ### Add Clearlinux patches
+        for i in $(grep '^Patch' ${srcdir}/clearlinux/linux.spec | grep -Ev '^Patch0500' | sed -n 's/.*: //p'); do
+        msg2 "Applying patch ${i}..."
+        patch -Np1 -i "$srcdir/clearlinux/${i}"
+        done
+
+    ### Setting config
+        msg2 "Setting config..."
+        cp -Tf $srcdir/clearlinux/config ./.config
+        make olddefconfig
+
+    ### Copying i915 firmware and intel-ucode
+        msg2 "Copying i915 firmware and intel-ucode..."
+        cp -a /usr/lib/firmware/i915 firmware/
+        cp -a ${srcdir}/intel-ucode firmware/
+        cp  ${srcdir}/intel-ucode-with-caveats/06* firmware/intel-ucode/
+        rm -f firmware/intel-ucode/0f*
+
+    ### Prepared version
+        make -s kernelrelease > ../version
+        msg2 "Prepared %s version %s" "$pkgbase" "$(<../version)"
+
+    ### Set ACPI_REV_OVERRIDE_POSSIBLE to prevent optimus lockup
+        if [ "${_rev_override}" = "y" ]; then
+        msg2 "Enabling ACPI Rev Override Possible..."
+        sed -i "s|# CONFIG_ACPI_REV_OVERRIDE_POSSIBLE is not set|CONFIG_ACPI_REV_OVERRIDE_POSSIBLE=y|g" ./.config
+        fi
+
+    ### Bluez package on arch needs this module for bluetooth to work
+        # https://bugs.archlinux.org/task/55880
+        msg2 "Enabling crypto_user module..."
+        sed -i "s|# CONFIG_CRYPTO_USER is not set|CONFIG_CRYPTO_USER=m|g" ./.config
+
+    ### Patch source to unlock additional gcc CPU optimizations
+        # https://github.com/graysky2/kernel_gcc_patch
+        if [ "${_enable_gcc_more_v}" = "y" ]; then
+        msg2 "Enabling additional gcc CPU optimizations..."
+        patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+.patch"
+        fi
+
+    ### Get kernel version
+        if [ "${_enable_gcc_more_v}" = "y" ] || [ -n "${_subarch}" ]; then
+        yes "$_subarch" | make oldconfig
+        else
+        make prepare
+        fi
+
+    ### Optionally load needed modules for the make localmodconfig
+        # See https://aur.archlinux.org/packages/modprobed-db
+        if [ -n "$_localmodcfg" ]; then
+            msg2 "If you have modprobe-db installed, running it in recall mode now"
+            if [ -e /usr/bin/modprobed-db ]; then
+                [[ -x /usr/bin/sudo ]] || {
+                echo "Cannot call modprobe with sudo. Install sudo and configure it to work with this user."
+                exit 1; }
+                sudo /usr/bin/modprobed-db recall
+            fi
+            msg2 "Running Steven Rostedt's make localmodconfig now"
+            make localmodconfig
+        fi
+
+    ### Running make nconfig
+
+        [[ -z "$_makenconfig" ]] || make nconfig
+
+    ### Save configuration for later reuse
+
+        cp -Tf ./.config "${startdir}/config-${pkgver}-${pkgrel}${_kernelname}"
+}
+
+build() {
+    cd ${_srcname}
+
+    make bzImage modules
+}
+
+_package() {
+    pkgdesc="Clearlinux kernel and modules"
+    depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
+    optdepends=('crda: to set the correct wireless channels of your country' 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
+    backup=("etc/mkinitcpio.d/${pkgbase}.preset")
+    install=linux.install
+
+    local kernver="$(<version)"
+
+    cd ${_srcname}
+
+    msg2 "Installing boot image..."
+    install -Dm644 "$(make -s image_name)" "$pkgdir/boot/vmlinuz-$pkgbase"
+
+    msg2 "Installing modules..."
+    local modulesdir="$pkgdir/usr/lib/modules/$kernver"
+    mkdir -p "$modulesdir"
+    make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
+
+    # a place for external modules,
+    # with version file for building modules and running depmod from hook
+    local extramodules="extramodules$_kernelname"
+    local extradir="$pkgdir/usr/lib/modules/$extramodules"
+    install -Dt "$extradir" -m644 ../version
+    ln -sr "$extradir" "$modulesdir/extramodules"
+
+    # remove build and source links
+    rm "$modulesdir"/{source,build}
+
+    msg2 "Installing hooks..."
+    
+    # sed expression for following substitutions
+    local subst="
+      s|%PKGBASE%|$pkgbase|g
+      s|%KERNVER%|$kernver|g
+      s|%EXTRAMODULES%|$extramodules|g
+    "
+
+    # hack to allow specifying an initially nonexisting install file
+    sed "$subst" "$startdir/$install" > "$startdir/$install.pkg"
+    true && install=$install.pkg
+
+    # fill in mkinitcpio preset and pacman hooks
+    sed "$subst" ../linux.preset | install -Dm644 /dev/stdin \
+        "$pkgdir/etc/mkinitcpio.d/$pkgbase.preset"
+    sed "$subst" ../60-linux.hook | install -Dm644 /dev/stdin \
+        "$pkgdir/usr/share/libalpm/hooks/60-${pkgbase}.hook"
+    sed "$subst" ../90-linux.hook | install -Dm644 /dev/stdin \
+        "$pkgdir/usr/share/libalpm/hooks/90-${pkgbase}.hook"
+    sed "$subst" ../99-linux.hook | install -Dm644 /dev/stdin \
+        "$pkgdir/usr/share/libalpm/hooks/99-${pkgbase}.hook"
+
+    msg2 "Fixing permissions..."
+    chmod -Rc u=rwX,go=rX "$pkgdir"
+}
+
+_package-headers() {
+    pkgdesc="Header files and scripts for building modules for linux-clear"
+    depends=('linux-clear')
+
+    local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
+
+    cd ${_srcname}
+
+    msg2 "Installing build files..."
+    install -Dt "$builddir" -m644 Makefile .config Module.symvers System.map vmlinux
+    install -Dt "$builddir/kernel" -m644 kernel/Makefile
+    install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
+    cp -t "$builddir" -a scripts
+
+    # add objtool for external module building and enabled VALIDATION_STACK option
+    install -Dt "$builddir/tools/objtool" tools/objtool/objtool
+
+    # add xfs and shmem for aufs building
+    mkdir -p "$builddir"/{fs/xfs,mm}
+
+    # ???
+    mkdir "$builddir/.tmp_versions"
+
+    msg2 "Installing headers..."
+    cp -t "$builddir" -a include
+    cp -t "$builddir/arch/x86" -a arch/x86/include
+    install -Dt "$builddir/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
+
+    install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
+    install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
+
+    # http://bugs.archlinux.org/task/13146
+    install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
+
+    # http://bugs.archlinux.org/task/20402
+    install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
+    install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
+    install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
+
+    msg2 "Installing KConfig files..."
+    find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
+
+    msg2 "Removing unneeded architectures..."
+    local arch
+    for arch in "$builddir"/arch/*/; do
+        [[ $arch = */x86/ ]] && continue
+        echo "Removing $(basename "$arch")"
+        rm -r "$arch"
+    done
+
+    msg2 "Removing documentation..."
+    rm -r "$builddir/Documentation"
+
+    msg2 "Removing broken symlinks..."
+    find -L "$builddir" -type l -printf 'Removing %P\n' -delete
+
+    msg2 "Removing loose objects..."
+    find "$builddir" -type f -name '*.o' -printf 'Removing %P\n' -delete
+
+    msg2 "Stripping build tools..."
+    local file
+    while read -rd '' file; do
+        case "$(file -bi "$file")" in
+            application/x-sharedlib\;*)      # Libraries (.so)
+                strip -v $STRIP_SHARED "$file" ;;
+            application/x-archive\;*)        # Libraries (.a)
+                strip -v $STRIP_STATIC "$file" ;;
+            application/x-executable\;*)     # Binaries
+                strip -v $STRIP_BINARIES "$file" ;;
+            application/x-pie-executable\;*) # Relocatable binaries
+                strip -v $STRIP_SHARED "$file" ;;
+        esac
+    done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
+
+    msg2 "Fixing permissions..."
+    chmod -Rc u=rwX,go=rX "$pkgdir"
+}
+
+_package-docs() {
+    pkgdesc="Kernel hackers manual - HTML documentation that comes with the linux-clear"
+    depends=('linux-clear')
+
+    local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
+
+    cd ${_srcname}
+
+    msg2 "Installing documentation..."
+    mkdir -p "$builddir"
+    cp -t "$builddir" -a Documentation
+
+    msg2 "Fixing permissions..."
+    chmod -Rc u=rwX,go=rX "$pkgdir"
+}
+
+pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
+for _p in "${pkgname[@]}"; do
+  eval "package_$_p() {
+    $(declare -f "_package${_p#$pkgbase}")
+    _package${_p#$pkgbase}
+  }"
+done
+
 sha256sums=('19d8bcf49ef530cd4e364a45b4a22fa70714b70349c8100e7308488e26f1eaf1'
             'SKIP'
-            'f0580daf3ea0716301c929be78c09db4dc3d8add65a1da392c2fc2c841244e8c'
+            '760c723f1fd48f849464f2e07a5252035423e39101c812ea20690cb416b982cd'
             'SKIP'
             '29f9e8dc27e6c9b6488cecd7fe2394030307799e511db2d197d9e6553a7f9e40'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
@@ -102,240 +350,7 @@ sha256sums=('19d8bcf49ef530cd4e364a45b4a22fa70714b70349c8100e7308488e26f1eaf1'
             '5f6ba52aaa528c4fa4b1dc097e8930fad0470d7ac489afcb13313f289ca32184'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 
-_kernelname=${pkgbase#linux}
-
-prepare() {
-  cd linux-${__basekernel}
-
-  # add upstream patch
-  patch -p1 -i ../patch-${pkgver}
-
-  # Apply clearlinux patches
-  for i in $(grep '^Patch' ${srcdir}/clearlinux/linux.spec | grep -Ev '^Patch0500' | sed -n 's/.*: //p'); do
-    msg "Applying ${i}"
-    patch -p1 -i "$srcdir/clearlinux/${i}"
-  done
-
-  # Clean tree and copy CLEAR config over
-  make mrproper
-
-  cp -Tf $srcdir/clearlinux/config ./.config
-  cp -a /usr/lib/firmware/i915 firmware/
-  cp -a ${srcdir}/intel-ucode firmware/
-  cp  ${srcdir}/intel-ucode-with-caveats/06* firmware/intel-ucode/
-  rm -f firmware/intel-ucode/0f*
-
-  if [ "${_kernelname}" != "" ]; then
-    sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
-    sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
-  fi
-
-  # set extraversion to pkgrel and empty localversion
-  sed -e "/^EXTRAVERSION =/s/=.*/= -${pkgrel}/" \
-      -e "/^EXTRAVERSION =/aLOCALVERSION =" \
-      -i Makefile
-
-  # set ACPI_REV_OVERRIDE_POSSIBLE to prevent optimus lockup
-  if [ "${_rev_override}" = "y" ]; then
-    sed -i "s|# CONFIG_ACPI_REV_OVERRIDE_POSSIBLE is not set|CONFIG_ACPI_REV_OVERRIDE_POSSIBLE=y|g" ./.config
-  fi
-
-  # bluez package on arch needs this module for bluetooth to work
-  # https://bugs.archlinux.org/task/55880
-  sed -i "s|# CONFIG_CRYPTO_USER is not set|CONFIG_CRYPTO_USER=m|g" ./.config
-
-  # don't run depmod on 'make install'. We'll do this ourselves in packaging
-  sed -i '2iexit 0' scripts/depmod.sh
-
-  make olddefconfig
-
-  # Patch source to unlock additional gcc CPU optimizatons
-  # https://github.com/graysky2/kernel_gcc_patch
-  if [ "${_enable_gcc_more_v}" = "y" ]; then
-    patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+.patch"
-  fi
-
-  # get kernel version
-  if [ "${_enable_gcc_more_v}" = "y" ] || [ -n "${_subarch}" ]; then
-    yes "$_subarch" | make oldconfig
-  else
-    make prepare
-  fi
-
-  ### Optionally load needed modules for the make localmodconfig
-  # See https://aur.archlinux.org/packages/modprobed-db
-  if [ -n "$_localmodcfg" ]; then
-    msg "If you have modprobed-db installed, running it in recall mode now"
-    if [ -e /usr/bin/modprobed-db ]; then
-      [[ -x /usr/bin/sudo ]] || {
-      echo "Cannot call modprobe with sudo. Install sudo and configure it to work with this user."
-      exit 1; }
-      sudo /usr/bin/modprobed-db recall
-    fi
-    msg "Running Steven Rostedt's make localmodconfig now"
-    make localmodconfig
-  fi
-
-  [[ -z "$_makenconfig" ]] || make nconfig
-
-  # rewrite configuration
-  yes "" | make config >/dev/null
-
-  # save configuration for later reuse
-  cp -Tf ./.config "${startdir}/config-${pkgver}-${pkgrel}${_kernelname}"
-}
-
-build() {
-  cd linux-${__basekernel}
-
-  make bzImage modules
-}
-
-_package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
-  depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
-  optdepends=('crda: to set the correct wireless channels of your country')
-  backup=("etc/mkinitcpio.d/${pkgbase}.preset")
-  install=linux.install
-
-  cd linux-${__basekernel}
-
-  # get kernel version
-  _kernver="$(make kernelrelease)"
-  _basekernel=${_kernver%%-*}
-  _basekernel=${_basekernel%.*}
-
-  mkdir -p "${pkgdir}"/{boot,usr/lib/modules}
-  make INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
-  cp arch/x86/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
-
-  # make room for external modules
-  local _extramodules="extramodules-${_basekernel}${_kernelname:--ARCH}"
-  ln -s "../${_extramodules}" "${pkgdir}/usr/lib/modules/${_kernver}/extramodules"
-
-  # add real version for building modules and running depmod from hook
-  echo "${_kernver}" |
-    install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modules/${_extramodules}/version"
-
-  # remove build and source links
-  rm "${pkgdir}"/usr/lib/modules/${_kernver}/{source,build}
-
-  # now we call depmod...
-  depmod -b "${pkgdir}/usr" -F System.map "${_kernver}"
-
-  # add vmlinux
-  install -Dt "${pkgdir}/usr/lib/modules/${_kernver}/build" -m644 vmlinux
-
-  # sed expression for following substitutions
-  local _subst="
-    s|%PKGBASE%|${pkgbase}|g
-    s|%KERNVER%|${_kernver}|g
-    s|%EXTRAMODULES%|${_extramodules}|g
-  "
-
-  # hack to allow specifying an initially nonexisting install file
-  sed "${_subst}" "${startdir}/${install}" > "${startdir}/${install}.pkg"
-  true && install=${install}.pkg
-
-  # install mkinitcpio preset file
-  sed "${_subst}" ../linux.preset |
-    install -Dm644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
-
-  # install pacman hooks
-  sed "${_subst}" ../60-linux.hook |
-    install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/60-${pkgbase}.hook"
-  sed "${_subst}" ../90-linux.hook |
-    install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
-  sed "${_subst}" ../99-linux.hook |
-    install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/99-${pkgbase}.hook"
-}
-
-_package-headers() {
-  pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
-
-  cd linux-${__basekernel}
-  local _builddir="${pkgdir}/usr/lib/modules/${_kernver}/build"
-
-  install -Dt "${_builddir}" -m644 Makefile .config Module.symvers
-  install -Dt "${_builddir}/kernel" -m644 kernel/Makefile
-
-  mkdir "${_builddir}/.tmp_versions"
-
-  cp -t "${_builddir}" -a include scripts
-
-  install -Dt "${_builddir}/arch/x86" -m644 arch/x86/Makefile
-  install -Dt "${_builddir}/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
-
-  cp -t "${_builddir}/arch/x86" -a arch/x86/include
-
-  install -Dt "${_builddir}/drivers/md" -m644 drivers/md/*.h
-  install -Dt "${_builddir}/net/mac80211" -m644 net/mac80211/*.h
-
-  # http://bugs.archlinux.org/task/13146
-  install -Dt "${_builddir}/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
-
-  # http://bugs.archlinux.org/task/20402
-  install -Dt "${_builddir}/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
-  install -Dt "${_builddir}/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
-  install -Dt "${_builddir}/drivers/media/tuners" -m644 drivers/media/tuners/*.h
-
-  # add xfs and shmem for aufs building
-  mkdir -p "${_builddir}"/{fs/xfs,mm}
-
-  # copy in Kconfig files
-  find . -name Kconfig\* -exec install -Dm644 {} "${_builddir}/{}" \;
-
-  # add objtool for external module building and enabled VALIDATION_STACK option
-  install -Dt "${_builddir}/tools/objtool" tools/objtool/objtool
-
-  # remove unneeded architectures
-  local _arch
-  for _arch in "${_builddir}"/arch/*/; do
-    [[ ${_arch} == */x86/ ]] && continue
-    rm -r "${_arch}"
-  done
-
-  # remove files already in linux-docs package
-  rm -r "${_builddir}/Documentation"
-
-  # remove now broken symlinks
-  find -L "${_builddir}" -type l -printf 'Removing %P\n' -delete
-
-  # Fix permissions
-  chmod -R u=rwX,go=rX "${_builddir}"
-
-  # strip scripts directory
-  local _binary _strip
-  while read -rd '' _binary; do
-    case "$(file -bi "${_binary}")" in
-      *application/x-sharedlib*)  _strip="${STRIP_SHARED}"   ;; # Libraries (.so)
-      *application/x-archive*)    _strip="${STRIP_STATIC}"   ;; # Libraries (.a)
-      *application/x-executable*) _strip="${STRIP_BINARIES}" ;; # Binaries
-      *) continue ;;
-    esac
-    /usr/bin/strip ${_strip} "${_binary}"
-  done < <(find "${_builddir}/scripts" -type f -perm -u+w -print0 2>/dev/null)
-}
-
-_package-docs() {
-  pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
-
-  cd linux-${__basekernel}
-  local _builddir="${pkgdir}/usr/lib/modules/${_kernver}/build"
-
-  mkdir -p "${_builddir}"
-  cp -t "${_builddir}" -a Documentation
-
-  # Fix permissions
-  chmod -R u=rwX,go=rX "${_builddir}"
-}
-
-pkgname=("${pkgbase}" "${pkgbase}-headers" "${pkgbase}-docs")
-for _p in ${pkgname[@]}; do
-  eval "package_${_p}() {
-    $(declare -f "_package${_p#${pkgbase}}")
-    _package${_p#${pkgbase}}
-  }"
-done
-
-# vim:set ts=8 sts=2 sw=2 et:
+validpgpkeys=(
+  'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
+  '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
+)

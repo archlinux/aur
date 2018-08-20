@@ -1,6 +1,6 @@
 pkgbase = linux-clear
-	pkgver = 4.18.1
-	pkgrel = 2
+	pkgver = 4.18.3
+	pkgrel = 1
 	url = https://github.com/clearlinux-pkgs/linux
 	arch = x86_64
 	license = GPL2
@@ -14,8 +14,8 @@ pkgbase = linux-clear
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.18.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.18.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.18.1.xz
-	source = clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=4.18.1-621
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.18.3.xz
+	source = clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=4.18.3-623
 	source = https://downloadmirror.intel.com/28039/eng/microcode-20180807.tgz
 	source = enable_additional_cpu_optimizations-20180509.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20180509.tar.gz
 	source = 60-linux.hook
@@ -26,7 +26,7 @@ pkgbase = linux-clear
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 19d8bcf49ef530cd4e364a45b4a22fa70714b70349c8100e7308488e26f1eaf1
 	sha256sums = SKIP
-	sha256sums = f0580daf3ea0716301c929be78c09db4dc3d8add65a1da392c2fc2c841244e8c
+	sha256sums = 760c723f1fd48f849464f2e07a5252035423e39101c812ea20690cb416b982cd
 	sha256sums = SKIP
 	sha256sums = 29f9e8dc27e6c9b6488cecd7fe2394030307799e511db2d197d9e6553a7f9e40
 	sha256sums = 226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d
@@ -36,18 +36,21 @@ pkgbase = linux-clear
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 
 pkgname = linux-clear
-	pkgdesc = The Linux-clear kernel and modules
+	pkgdesc = Clearlinux kernel and modules
 	install = linux.install
 	depends = coreutils
 	depends = linux-firmware
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
 	backup = etc/mkinitcpio.d/linux-clear.preset
 
 pkgname = linux-clear-headers
-	pkgdesc = Header files and scripts for building modules for Linux-clear kernel
+	pkgdesc = Header files and scripts for building modules for linux-clear
+	depends = linux-clear
 
 pkgname = linux-clear-docs
-	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-clear kernel
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the linux-clear
+	depends = linux-clear
 
