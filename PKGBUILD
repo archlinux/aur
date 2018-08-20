@@ -2,31 +2,30 @@
 
 pkgname=rplay
 pkgver=3.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Network audio system library"
 arch=('x86_64' 'i686')
 url="http://rplay.doit.org/"
 license=('GPL')
 depends=('bash')
-install=rplay.install
-source=("http://rplay.doit.org/dist/$pkgname-$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/boyns/$pkgname/archive/release_3-3-2.tar.gz"
         "http://archive.debian.org/debian/pool/main/r/rplay/rplay_3.3.2-11.1.diff.gz"
         'rplayd.service'
         'rplayd@.service'
         'rplayd.socket')
-md5sums=('e39888f6bea32e1c8cf4a8880b416e56'
+md5sums=('34e22dbd85811879f16b3c30a0122fb2'
          '180052b0ddb28e63e5dc463e7a7fde5c'
          '471ea54447697c613c24dd9d00e0bd0f'
          'b41553f8993893ba263ba80ee17f42bc'
          'aa2208275aec7d92a874f32d9d52d4fe')
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd $pkgname-release_3-3-2
   patch -Np1 <../rplay_3.3.2-11.1.diff
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd $pkgname-release_3-3-2
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc/rplay \
@@ -37,7 +36,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd $pkgname-release_3-3-2
   make install \
     prefix="$pkgdir/usr" \
      infodir="$pkgdir/usr/share/info" \
