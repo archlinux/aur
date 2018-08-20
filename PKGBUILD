@@ -10,13 +10,13 @@ _blender=$(expac %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.
 
 pkgname=blender-plugin-${name}
 pkgver=0.1_r29.74a9fbf
-pkgrel=1
+pkgrel=2
 pkgdesc="Import Reprap Gcode files into blender."
 arch=('any')
 url=${github_link}
 license=('GPL')
 depends=('blender')
-makedepends=('git')
+makedepends=('git' 'expac')
 source=("${name}::git+${github_link}${fragment}")
 md5sums=('SKIP')
 
