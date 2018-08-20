@@ -15,8 +15,8 @@ source=("http://savannah.nongnu.org/download/gap/TalkSoup-1.1.tar.gz")
 sha256sums=('3a469c66ce3067a88603d6ebae6f63fbcfad55586dd5455179887f28e5a63ae7')
 
 build() {
-  source /usr/share/GNUstep/Makefiles/GNUstep.sh
   cd "$_pkgname-$pkgver"
+  export GNUSTEP_MAKEFILES="$(gnustep-config --variable=GNUSTEP_MAKEFILES)"
   make
 }
 
