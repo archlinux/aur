@@ -1,8 +1,8 @@
 # Maintainer: Lukas Grossar <lukas.grossar@gmail.com>
 
 pkgname=kubernetes-helm
-pkgver=2.9.1
-pkgrel=4
+pkgver=2.10.0
+pkgrel=1
 pkgdesc="A tool to manage Kubernetes charts"
 arch=('i686' 'x86_64')
 url="https://github.com/kubernetes/helm"
@@ -17,9 +17,9 @@ source_x86_64=(
   "https://kubernetes-helm.storage.googleapis.com/helm-v$pkgver-linux-amd64.tar.gz"
   "add_compdef_zsh_completion.patch"
 )
-sha512sums_i686=('d13c7ebe1048635bf255e87dc48ed3104dd4328a687451a045d68b170972c75ad59533687701be8b79c736a8f46b3e8f068a77d4a82147a17047b34a18d4d9df'
+sha512sums_i686=('30772e84fddfb85e1962c2a9abd6c2d9692ecc346693c8be034cdd727fc2a79cc987fe926b138133602785e8786e64b58c4c4fdb99280a41e7870edd5f7bb5fc'
                  'e4a888d9e892e7a53e07159b8d6e9bfc3757b12355f7d9b2a6fc3d0890946b774a3f83d87142460440caa0d84bf1569d08a7d3a6a3b900bdb01df902367de9a3')
-sha512sums_x86_64=('f9c2e3f0c1055a1645e3a811b67e3929f9f54bae0e5005b83efd9fdeef5d3d6b4692fbd32793f599ac141cce5bc7b299617c04cbe1be51141eff26a825156c6c'
+sha512sums_x86_64=('00fd28cbfbc60796b0c232edc38655f792ccff36f3335b57ad504c90432227c88092bf8337f23ce0db83b92286fd5f133b1f7346070f17f54160dcefe470fb62'
                    'e4a888d9e892e7a53e07159b8d6e9bfc3757b12355f7d9b2a6fc3d0890946b774a3f83d87142460440caa0d84bf1569d08a7d3a6a3b900bdb01df902367de9a3')
 
 package() {
