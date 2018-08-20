@@ -14,8 +14,8 @@ source=("http://savannah.nongnu.org/download/gap/netclasses-1.1.0.tar.gz")
 sha256sums=('d7d783c5b85abb289ef2fbb4bbf709eacb631e6ddf5a78e26fa45b94fb717f40')
 
 build() {
-  source /usr/share/GNUstep/Makefiles/GNUstep.sh
   cd "$pkgname-$pkgver"
+  export GNUSTEP_MAKEFILES="$(gnustep-config --variable=GNUSTEP_MAKEFILES)"
   ./configure
   make
 }
