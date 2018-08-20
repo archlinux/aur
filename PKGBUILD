@@ -1,5 +1,5 @@
 pkgname=nlohmann-json
-pkgver=3.1.2
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Header-only JSON library for Modern C++"
 url="https://github.com/nlohmann/json"
