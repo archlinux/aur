@@ -1,7 +1,7 @@
 # Maintainer: Javier Tiá <javier dot tia at gmail dot com>
 
 pkgname=visidata
-pkgver=1.3
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='A terminal spreadsheet multitool for discovering and arranging data'
 arch=('any')
@@ -17,11 +17,11 @@ optdepends=('python-dateutil: for converting string column to datetime'
 provides=("visidata=${pkgver}")
 conflicts=('visidata-git')
 replaces=('visidata-git')
-source=("${_url}/archive/v${pkgver}.tar.gz")
-sha256sums=('19f07a7ad68bf1af8224fbbc6fe20bd55cf575a2b996119decc241048426c7c3')
+source=("${_url}/archive/v.${pkgver}.tar.gz")
+sha256sums=('387837ed440a10c97fb139a7e1921d347ee8c30f578742266e0fb530b8ec5ecc')
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-v.${pkgver}"
   python setup.py -q install --root="${pkgdir}" --optimize=1
   install -Dm644 LICENSE.gpl3 "${pkgdir}/usr/share/licenses/${pkgname%-*}/LICENSE"
 }
