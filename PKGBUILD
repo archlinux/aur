@@ -3,9 +3,9 @@
 
 pkgname=kodi-addon-inputstream-adaptive-18-git
 pkgver=r371.430c440
-pkgrel=1
+pkgrel=2
 pkgdesc="InputStream client for adaptive streams for Kodi 18"
-arch=('x86_64' 'i686')
+arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/peak3d/inputstream.adaptive"
 license=('GPL2')
 depends=('kodi>=18.0')
