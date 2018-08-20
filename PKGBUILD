@@ -1,16 +1,22 @@
-# Maintainer: Zack Emmert <zack.emmert@gmail.com>
+# Maintainer: Zack Emmert <zemmert@fastmail.com>
 pkgname=krita-plugin-gmic-git
-pkgver=2.0.3
-pkgrel=3
-epoch=
+pkgver=2.3.3.r16.ge1f2980
+pkgrel=1
 pkgdesc="Krita plugin for the G'MIC image processing framework"
 arch=("x86_64")
 url="http://gmic.eu/"
 license=('GPL3')
-depends=('krita')
-install="$pkgname.install"
+depends=('krita' 'gmic')
+makedepends=('git')
+conflicts=('krita-plugin-gmic')
+provides=('krita-plugin-gmic')
 source=("git+https://github.com/c-koi/gmic-qt.git" "git+https://github.com/dtschump/gmic.git")
 sha256sums=('SKIP' 'SKIP')
+
+pkgver() {
+	cd "gmic-qt"
+	  git describe --long | sed 's/^v.//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
     make -C gmic/src CImg.h gmic_stdlib.h
@@ -20,6 +26,6 @@ build() {
 }
 
 package() {
-	mkdir -p "$pkgdir/usr/lib/kritaplugins"
-	mv "gmic-qt/gmic_krita_qt" "$pkgdir/usr/lib/kritaplugins/"
+	mkdir -p "$pkgdir/usr/bin"
+	install -Dm775 "gmic-qt/gmic_krita_qt" "$pkgdir/usr/bin/"
 }
