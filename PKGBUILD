@@ -15,8 +15,8 @@ source=("http://sourceforge.net/projects/price/files/1.3.0/PRICE-1.3.0.tar.gz/do
 sha256sums=('464bca113731023b43949992456cfa054f2d0fa3e1c5e7b5ca399f3f6f0af49b')
 
 build() {
-  source /usr/share/GNUstep/Makefiles/GNUstep.sh
   cd "$_pkgname-$pkgver"
+  export GNUSTEP_MAKEFILES="$(gnustep-config --variable=GNUSTEP_MAKEFILES)"
   make
 }
 
