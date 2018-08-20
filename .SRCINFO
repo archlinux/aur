@@ -1,11 +1,12 @@
 pkgbase = x11vnc-git
 	pkgdesc = VNC server for real X displays
-	pkgver = 0.9.14.r422.g31453a9
+	pkgver = 0.9.14.r508.g38e295a
 	pkgrel = 1
 	url = https://LibVNC.github.io
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = git
 	makedepends = autoconf-archive
 	depends = cairo
 	depends = libxcursor
@@ -22,9 +23,10 @@ pkgbase = x11vnc-git
 	optdepends = java-environment: java-applet support
 	provides = x11vnc
 	conflicts = x11vnc
-	options = !emptydirs
-	source = x11vnc-git::git+https://github.com/bbidulock/x11vnc.git
+	source = x11vnc-git::git+https://github.com/LibVNC/x11vnc.git
+	source = x11vnc.service
 	sha1sums = SKIP
+	sha1sums = 9e3838c8dcd4e0a20ab7808937375476cf191318
 
 pkgname = x11vnc-git
 

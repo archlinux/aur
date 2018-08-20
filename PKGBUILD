@@ -4,23 +4,24 @@
 # Contributor: damir <damir@archlinux.org>
 
 pkgname=x11vnc-git
-pkgver=0.9.14.r422.g31453a9
+pkgver=0.9.14.r508.g38e295a
 pkgrel=1
 pkgdesc='VNC server for real X displays'
 url="https://LibVNC.github.io"
 arch=('i686' 'x86_64')
 license=('GPL')
-options=('!emptydirs')
 provides=('x11vnc')
 conflicts=('x11vnc')
 depends=('cairo' 'libxcursor' 'libxcomposite' 'libvncserver-git' 'libxtst' 'libxinerama' 'libxdamage' 'libxrandr' 'avahi')
-makedepends=(autoconf-archive)
+makedepends=('git' 'autoconf-archive')
 optdepends=('tk: GUI support'
 	    'net-tools: -auth guess'
 	    'xf86-video-dummy: Xdummy script'
 	    'java-environment: java-applet support')
-source=("$pkgname::git+https://github.com/bbidulock/x11vnc.git")
-sha1sums=('SKIP')
+source=("$pkgname::git+https://github.com/LibVNC/x11vnc.git"
+	"x11vnc.service")
+sha1sums=('SKIP'
+          '9e3838c8dcd4e0a20ab7808937375476cf191318')
 
 pkgver() {
   cd $pkgname
@@ -42,5 +43,5 @@ package() {
   cd $pkgname
   make DESTDIR="$pkgdir" install
   install -m755 tkx11vnc misc/{rx11vnc,Xdummy} "$pkgdir/usr/bin"
-  install -Dm644 x11vnc.service "${pkgdir}/usr/lib/systemd/system/x11vnc.service"
+  install -Dm644 ../x11vnc.service "${pkgdir}/usr/lib/systemd/system/x11vnc.service"
 }
