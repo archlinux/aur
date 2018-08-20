@@ -1,6 +1,6 @@
 pkgbase = linux-apparmor
 	pkgver = 4.17.11.arch1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/archlinux/linux/commits/v4.17.11-arch1
 	arch = x86_64
 	license = GPL2
