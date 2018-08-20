@@ -6,7 +6,7 @@
 _pkgname=xvidcore
 pkgname=lib32-$_pkgname
 pkgver=1.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="XviD is an open source MPEG-4 video codec (32-bit)"
 arch=('x86_64')
 license=('GPL')
@@ -42,7 +42,6 @@ rm -rf "${pkgdir}"/usr/{include,share,bin}
 
 #Fix dynamic libraries
 cd ${pkgdir}/usr/lib32
-mylib=$(basename libxvidcore.so.*)
-ln -sf ${mylib} libxvidcore.so.4
-ln -sf ${mylib} libxvidcore.so
+ln -sf libxvidcore.so.4.3 libxvidcore.so.4
+ln -sf libxvidcore.so.4.3 libxvidcore.so
 }
