@@ -1,0 +1,23 @@
+pkgbase = python-keras-contrib-git
+	pkgdesc = Keras community contributions
+	pkgver = r460.3427000
+	pkgrel = 1
+	url = https://github.com/keras-team/keras-contrib
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = python
+	makedepends = python2
+	source = keras-contrib::git+https://github.com/keras-team/keras-contrib.git
+	md5sums = SKIP
+
+pkgname = python-keras-contrib-git
+	depends = python
+	provides = python-keras-contrib
+	conflicts = python-keras-contrib
+
+pkgname = python2-keras-contrib-git
+	depends = python2
+	provides = python2-keras-contrib
+	conflicts = python2-keras-contrib
+
