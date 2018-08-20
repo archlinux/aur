@@ -107,6 +107,39 @@ String* api_curl_data(const char* url) {
     return pString;
 }
 
+void iex_batch_store_data(Info_Array* pInfo_Array, Data_Level data_level) {
+    // TO-DO -- MAKE FUNCTION HANDLE MORE THAN 100 SECURITIES (API LIMITATION)
+
+    char iex_api_string[URL_MAX_LENGTH], symbol_list_string[URL_MAX_LENGTH];
+    symbol_list_string[0] = '\0';
+    for (size_t i = 0; i < pInfo_Array->length; i++)
+        if (strcmp(pInfo_Array->array[i]->symbol, "USD$") != 0)
+            sprintf(&symbol_list_string[strlen(symbol_list_string)], "%s,",
+                    pInfo_Array->array[i]->symbol);
+
+    symbol_list_string[strlen(symbol_list_string) - 1] = '\0'; // Remove last comma
+
+    char endpoints[128];
+    if (data_level == ALL)
+        strcpy(endpoints, "quote,chart,company,stats,peers,news,earnings&range=5y");
+    else if (data_level == CHECK)
+        strcpy(endpoints, "quote,chart");
+    else strcpy(endpoints, "company,stats,peers,news,earnings&range=5y");
+    sprintf(iex_api_string,
+            "https://api.iextrading.com/1.0/stock/market/batch?symbols=%s&types=%s",
+            symbol_list_string, endpoints);
+
+    String* pString = api_curl_data(iex_api_string);
+    if (pString == NULL)
+        return;
+
+    Json* jobj = json_tokener_parse(pString->data);
+    info_array_store_all_from_json(pInfo_Array, jobj);
+
+    json_object_put(jobj);
+    string_destroy(&pString);
+}
+
 void* iex_store_company(void* vpInfo) {
     Info* symbol_info = vpInfo;
     char iex_api_string[URL_MAX_LENGTH];
@@ -650,6 +683,40 @@ void* api_info_array_store_check_data(void* vpPortfolio_Data) {
     return ret;
 }
 
+void api_info_array_store_data_batch(Info_Array* pInfo_Array, Data_Level data_level) {
+    iex_batch_store_data(pInfo_Array, data_level);
+
+    // All IEX securities are accounted for
+    Info* pInfo;
+    pthread_t threads[pInfo_Array->length];
+    for (size_t i = 0; i < pInfo_Array->length; i++) {
+        pInfo = pInfo_Array->array[i];
+        if (pInfo->api_provider == EMPTY && strcmp(pInfo->symbol, "USD$") != 0) {
+            if (strlen(pInfo->symbol) > 5) // Crypto
+                pthread_create(&threads[i], NULL, coinmarketcap_store_info, pInfo);
+            else pthread_create(&threads[i], NULL, alphavantage_store_info, pInfo); // AV
+        }
+    }
+
+    for (size_t i = 0; i < pInfo_Array->length; i++) {
+        pInfo = pInfo_Array->array[i];
+        if (pInfo->api_provider != IEX && strcmp(pInfo->symbol, "USD$") != 0) {
+            pthread_join(threads[i], NULL);
+            if (strlen(pInfo->symbol) <= 5) // Crypto with 5 char or less name
+                pthread_create(&threads[i], NULL, alphavantage_store_info, pInfo);
+        }
+    }
+    for (size_t i = 0; i < pInfo_Array->length; i++) {
+        pInfo = pInfo_Array->array[i];
+        if (pInfo->api_provider != IEX && pInfo->api_provider != ALPHAVANTAGE &&
+            strlen(pInfo->symbol) <= 5 && strcmp(pInfo->symbol, "USD$") != 0)
+            pthread_join(threads[i], NULL); // Crypto with 5 char or less name
+
+        info_store_check_data(pInfo_Array->array[i]);
+    }
+    info_array_store_totals(pInfo_Array);
+}
+
 void info_store_check_data(Info* pInfo) {
     if (pInfo->amount == EMPTY)
         return;
@@ -720,6 +787,207 @@ Ref_Data* iex_get_valid_symbols(void) {
     json_object_put(jobj);
     string_destroy(&pString);
     return pRef_Data;
+}
+
+void info_array_store_all_from_json(Info_Array* pInfo_Array, const Json* jobj) {
+    Json* jsymbol, * jquote, * jchart, * jcompany, * jstats, * jpeers, * jnews, * jearnings;
+    Info* pInfo;
+    for (size_t i = 0; i < pInfo_Array->length; i++) {
+        jsymbol = json_object_object_get(jobj, pInfo_Array->array[i]->symbol);
+        if (jsymbol != NULL) {
+            pInfo = pInfo_Array->array[i];
+            pInfo->api_provider = IEX;
+            jquote = json_object_object_get(jsymbol, "quote");
+            jchart = json_object_object_get(jsymbol, "chart");
+            jcompany = json_object_object_get(jsymbol, "company");
+            jstats = json_object_object_get(jsymbol, "stats");
+            jpeers = json_object_object_get(jsymbol, "peers");
+            jnews = json_object_object_get(jsymbol, "news");
+            jearnings = json_object_object_get(jsymbol, "earnings");
+            if (jquote != NULL)
+                info_store_quote_from_json(pInfo, jquote);
+            if (jchart != NULL)
+                info_store_chart_from_json(pInfo, jchart);
+            if (jcompany != NULL)
+                info_store_company_from_json(pInfo, jcompany);
+            if (jstats != NULL)
+                info_store_stats_from_json(pInfo, jstats);
+            if (jpeers != NULL)
+                info_store_peers_from_json(pInfo, jpeers);
+            if (jnews != NULL)
+                info_store_news_from_json(pInfo, jnews);
+            if (jearnings != NULL)
+                info_store_earnings_from_json(pInfo, jearnings);
+        }
+    }
+}
+
+void info_store_quote_from_json(Info* pInfo, const Json* jquote) {
+    if (json_object_get_int64(json_object_object_get(jquote, "extendedPriceTime")) >
+        json_object_get_int64(json_object_object_get(jquote, "latestUpdate"))) {
+        pInfo->price = json_object_get_double(json_object_object_get(jquote, "extendedPrice"));
+        pInfo->intraday_time = json_object_get_int64(json_object_object_get(jquote,
+                                                                            "extendedPriceTime")) / 1000;
+    } else {
+        pInfo->price = json_object_get_double(json_object_object_get(jquote, "latestPrice"));
+        pInfo->intraday_time = json_object_get_int64(json_object_object_get(jquote, "latestUpdate")) /
+                               1000;
+    }
+    pInfo->price_last_close = json_object_get_double(json_object_object_get(jquote, "previousClose"));
+    if (pInfo->price_last_close == 0) // May be 0 over weekend
+        pInfo->price_last_close = EMPTY;
+    pInfo->marketcap = json_object_get_int64(json_object_object_get(jquote, "marketCap"));
+    pInfo->volume_1d = json_object_get_int64(json_object_object_get(jquote, "latestVolume"));
+    pInfo->pe_ratio = json_object_get_double(json_object_object_get(jquote, "peRatio"));
+}
+
+
+void info_store_chart_from_json(Info* pInfo, const Json* jchart) {
+    size_t len = json_object_array_length(jchart);
+    pInfo->points = calloc(len + 1, sizeof(double));
+    pointer_alloc_check(pInfo->points);
+    for (size_t i = 0; i < len; i++)
+        pInfo->points[i] = json_object_get_double(
+                json_object_object_get(json_object_array_get_idx(jchart, i), "close"));
+    if (pInfo->price_last_close == EMPTY) // May be 0 over weekend, so get last close from points array
+        pInfo->price_last_close = pInfo->points[len - 1];
+    if (len > 5)
+        pInfo->price_7d = pInfo->points[len - 5];
+    if (len > 21)
+        pInfo->price_30d = pInfo->points[len - 21];
+    if (len < 25) // 1 month api data
+        pInfo->price_30d = pInfo->points[0];
+}
+
+void info_store_company_from_json(Info* pInfo, const Json* jcompany) {
+    Json* jsymbol, * jname, * jindustry, * jwebsite, * jdescription, * jceo, * jtype, * jsector;
+    jsymbol = json_object_object_get(jcompany, "symbol");
+    jname = json_object_object_get(jcompany, "companyName");
+    jindustry = json_object_object_get(jcompany, "industry");
+    jwebsite = json_object_object_get(jcompany, "website");
+    jdescription = json_object_object_get(jcompany, "description");
+    jceo = json_object_object_get(jcompany, "CEO");
+    jtype = json_object_object_get(jcompany, "issueType");
+    jsector = json_object_object_get(jcompany, "sector");
+
+    if (jsymbol != NULL)
+        strcpy(pInfo->symbol, json_object_get_string(jsymbol));
+    if (jname != NULL)
+        strcpy(pInfo->name, json_object_get_string(jname));
+    if (jindustry != NULL)
+        strcpy(pInfo->industry, json_object_get_string(jindustry));
+    if (jwebsite != NULL)
+        strcpy(pInfo->website, json_object_get_string(jwebsite));
+    if (jdescription != NULL)
+        strcpy(pInfo->description, json_object_get_string(jdescription));
+    if (jceo != NULL)
+        strcpy(pInfo->ceo, json_object_get_string(jceo));
+    if (jtype != NULL)
+        strcpy(pInfo->issue_type, json_object_get_string(jtype));
+    if (jsector != NULL)
+        strcpy(pInfo->sector, json_object_get_string(jsector));
+}
+
+void info_store_stats_from_json(Info* pInfo, const Json* jstats) {
+    pInfo->div_yield = json_object_get_double(json_object_object_get(jstats, "dividendYield"));
+    pInfo->revenue = json_object_get_int64(json_object_object_get(jstats, "revenue"));
+    pInfo->gross_profit = json_object_get_int64(json_object_object_get(jstats, "grossProfit"));
+    pInfo->cash = json_object_get_int64(json_object_object_get(jstats, "cash"));
+    pInfo->debt = json_object_get_int64(json_object_object_get(jstats, "debt"));
+}
+
+void info_store_peers_from_json(Info* pInfo, const Json* jpeers) {
+    size_t len = json_object_array_length(jpeers);
+    if (len == 0)
+        return;
+
+    if (len > MAX_PEERS)
+        len = MAX_PEERS;
+
+    pInfo->peers = api_info_array_init_from_length(len);
+    for (size_t i = 0; i < pInfo->peers->length; i++)
+        strcpy(pInfo->peers->array[i]->symbol, json_object_get_string(
+                json_object_array_get_idx(jpeers, i)));
+
+    api_info_array_store_data_batch(pInfo->peers, CHECK);
+}
+
+void info_store_news_from_json(Info* pInfo, const Json* jnews) {
+    Json* idx, * headline, * source, * date, * summary, * url, * related;
+    size_t len = json_object_array_length(jnews);
+    if (len < (unsigned) pInfo->num_articles)
+        pInfo->num_articles = (int)len;
+
+    pInfo->articles = malloc(sizeof(News*) * pInfo->num_articles);
+    pointer_alloc_check(pInfo->articles);
+
+    for (int i = 0; i < pInfo->num_articles; i++) {
+        idx = json_object_array_get_idx(jnews, (size_t) i);
+        headline = json_object_object_get(idx, "headline");
+        source = json_object_object_get(idx, "source");
+        date = json_object_object_get(idx, "datetime");
+        summary = json_object_object_get(idx, "summary");
+        url = json_object_object_get(idx, "url");
+        related = json_object_object_get(idx, "related");
+
+        /*
+         * If two articles in a row are the same, change num_articles and break loop. This will
+         * happen if there are not enough articles supplied by API.
+         */
+        if (i > 0 && headline != NULL &&
+            strcmp(json_object_get_string(headline), pInfo->articles[i - 1]->headline) == 0) {
+            pInfo->num_articles = i;
+            break;
+        }
+
+        pInfo->articles[i] = api_news_init();
+        if (headline != NULL)
+            strcpy(pInfo->articles[i]->headline, json_object_get_string(headline));
+        if (source != NULL)
+            strcpy(pInfo->articles[i]->source, json_object_get_string(source));
+        if (date != NULL)
+            strncpy(pInfo->articles[i]->date, json_object_get_string(date), 10);
+        pInfo->articles[i]->date[10] = '\0'; // strncpy doesn't null terminate
+        if (summary != NULL)
+            strcpy(pInfo->articles[i]->summary, json_object_get_string(summary));
+        strip_tags(pInfo->articles[i]->summary); // Summary will be html formatted, so strip tags
+        if (url != NULL)
+            strcpy(pInfo->articles[i]->url, json_object_get_string(url));
+        if (related != NULL)
+            strcpy(pInfo->articles[i]->related, json_object_get_string(related));
+        int related_num = 0;
+        for (size_t j = 0; j < strlen(pInfo->articles[i]->related); j++) { // List only first five related symbols
+            if (pInfo->articles[i]->related[j] == ',')
+                related_num++;
+            if (related_num == 5) {
+                pInfo->articles[i]->related[j] = '\0';
+                break;
+            }
+        }
+    }
+}
+
+void info_store_earnings_from_json(Info* pInfo, const Json* jearnings) {
+    // ETFs don't report earnings
+    if (!json_object_is_type(json_object_object_get(jearnings, "earnings"), json_type_array))
+        return;
+
+    size_t len = json_object_array_length(json_object_object_get(jearnings, "earnings"));
+    Json* idx, * period, * end_date, * report_date;
+    for (size_t i = 0; i < len; i++) {
+        idx = json_object_array_get_idx(json_object_object_get(jearnings, "earnings"), i);
+        pInfo->eps[i] = json_object_get_double(json_object_object_get(idx, "actualEPS"));
+        pInfo->eps_year_ago[i] = json_object_get_double(json_object_object_get(idx, "yearAgo"));
+        period = json_object_object_get(idx, "fiscalPeriod");
+        end_date = json_object_object_get(idx, "fiscalEndDate");
+        report_date = json_object_object_get(idx, "EPSReportDate");
+        if (period != NULL)
+            strcpy(pInfo->fiscal_period[i], json_object_get_string(period));
+        else if (end_date != NULL)
+            strcpy(pInfo->fiscal_period[i], json_object_get_string(end_date));
+        else if (report_date != NULL)
+            strcpy(pInfo->fiscal_period[i], json_object_get_string(report_date));
+    }
 }
 
 Info* info_array_get_info_from_symbol(const Info_Array* pInfo_Array, const char* symbol) {

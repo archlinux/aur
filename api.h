@@ -13,6 +13,14 @@
 #define ALPHAVANTAGE 2
 #define COINMARKETCAP 3
 
+typedef enum data_level {
+    ALL, CHECK, MISC
+} Data_Level;
+
+#define DATA_ALL 0
+#define DATA_CHECK 1
+#define DATA_MISC 2
+
 #define QUARTERS 4
 #define DATE_MAX_LENGTH 32
 #define CELL_MAX_LENGTH 16
@@ -183,6 +191,8 @@ size_t api_string_writefunc(void* ptr, size_t size, size_t nmemb, String* pStrin
  */
 String* api_curl_data(const char* url);
 
+void iex_batch_store_data(Info_Array* pInfo_Array, Data_Level data_level);
+
 /**
  * Designed for threading
  *
@@ -344,6 +354,8 @@ void* api_store_misc_info(void* vpInfo);
  */
 void* api_info_array_store_check_data(void* vpPortfolio_Data);
 
+void api_info_array_store_data_batch(Info_Array* pInfo_Array, Data_Level data_level);
+
 /**
  * After API data and portfolio have already been collected, uses them to populate the Info fields current_value and
  * all the profit fields.
@@ -362,6 +374,22 @@ void info_array_store_totals(Info_Array* pInfo_Array);
  * @return Info_Array*
  */
 Ref_Data* iex_get_valid_symbols(void);
+
+void info_array_store_all_from_json(Info_Array* pInfo_Array, const Json* jobj);
+
+void info_store_quote_from_json(Info* pInfo, const Json* jquote);
+
+void info_store_chart_from_json(Info* pInfo, const Json* jchart);
+
+void info_store_company_from_json(Info* pInfo, const Json* jcompany);
+
+void info_store_stats_from_json(Info* pInfo, const Json* jstats);
+
+void info_store_peers_from_json(Info* pInfo, const Json* jpeers);
+
+void info_store_news_from_json(Info* pInfo, const Json* jnews);
+
+void info_store_earnings_from_json(Info* pInfo, const Json* jearnings);
 
 /**
  * Searches through an Info_Array and returns a ponter to the Info which has the same symbol as

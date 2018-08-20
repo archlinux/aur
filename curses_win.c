@@ -167,9 +167,11 @@ void portfolio_print_stock(const char* symbol) {
 }
 
 void interface_print(const char* symbol) {
-    Info* symbol_info = api_info_init();
+    Info_Array* pInfo_Array = api_info_array_init_from_length(1);
+    Info* symbol_info = pInfo_Array->array[0];
     strcpy(symbol_info->symbol, symbol);
-    if (api_store_all_info(symbol_info) == NULL) {
+    api_info_array_store_data_batch(pInfo_Array, ALL);
+    if (symbol_info->api_provider == EMPTY) {
         api_info_destroy(&symbol_info);
         RET_MSG("Invalid symbol.")
     }

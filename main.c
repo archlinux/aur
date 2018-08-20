@@ -66,7 +66,7 @@ int main(int argc, char* argv[]) {
                 Info_Array* portfolio_data = portfolio_info_array_init_from_portfolio_string(
                         pString);
                 if (portfolio_data != NULL) {
-                    api_info_array_store_check_data(portfolio_data);
+                    api_info_array_store_data_batch(portfolio_data, CHECK);
                     info_array_portfolio_printw(portfolio_data);
                     api_info_array_destroy(&portfolio_data);
                 }

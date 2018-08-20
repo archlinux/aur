@@ -129,7 +129,7 @@ void on_load_button_clicked(GtkButton* button) {
     app.portfolio_data = portfolio_info_array_init_from_portfolio_string(app.portfolio_string);
     if (app.portfolio_data != NULL) { // If file is not a length 0 JSON array
         check_list_create_from_string();
-        api_info_array_store_check_data(app.portfolio_data);
+        api_info_array_store_data_batch(app.portfolio_data, CHECK);
         check_list_add_api_data();
     }
 
@@ -410,7 +410,7 @@ void list_store_update(void) {
     // Recreate Info_Array
     check_list_create_from_string(); // Will set app.portfolio_data if success
     if (app.portfolio_data != NULL) {
-        api_info_array_store_check_data(app.portfolio_data);
+        api_info_array_store_data_batch(app.portfolio_data, CHECK);
         check_list_add_api_data();
     }
 }
