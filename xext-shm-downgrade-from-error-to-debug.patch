@@ -1,0 +1,27 @@
+From d36128a72acac4d54813c52c93efefad2dc9af41 Mon Sep 17 00:00:00 2001
+From: Alexander Volkov <a.volkov@rusbitech.ru>
+Date: Mon, 12 Mar 2018 15:12:10 +0300
+Subject: Xext/shm: Downgrade from error to debug log output about success
+
+Signed-off-by: Alexander Volkov <a.volkov@rusbitech.ru>
+Reviewed-by: Adam Jackson <ajax@redhat.com>
+---
+ Xext/shm.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Xext/shm.c b/Xext/shm.c
+index 15e1b67..fc8441c 100644
+--- a/Xext/shm.c
++++ b/Xext/shm.c
+@@ -1199,7 +1199,7 @@ shm_tmpfile(void)
+ #ifdef O_TMPFILE
+ 	fd = open(SHMDIR, O_TMPFILE|O_RDWR|O_CLOEXEC|O_EXCL, 0666);
+ 	if (fd >= 0) {
+-		ErrorF ("Using O_TMPFILE\n");
++		DebugF ("Using O_TMPFILE\n");
+ 		return fd;
+ 	}
+ 	ErrorF ("Not using O_TMPFILE\n");
+-- 
+cgit v1.1
+
