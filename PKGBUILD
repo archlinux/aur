@@ -2,12 +2,12 @@
 
 pkgname=kscript
 pkgver=2.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Enhanced scripting support for Kotlin on *nix-based systems'
 arch=('any')
 url='https://github.com/holgerbrandl/kscript'
 license=('MIT')
-depends=('kotlin')
+depends=('kotlin' 'maven')
 source=("${pkgname}-${pkgver}.bin.zip::https://github.com/holgerbrandl/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}-bin.zip")
 sha256sums=('33dbb4bab37520c44c702a5e476fc40b9218ab8a60db47297ca66c1624ecc645')
 
