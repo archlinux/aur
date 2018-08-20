@@ -2,8 +2,8 @@
 
 pkgname=openconnect-git
 _pkgname=openconnect
-pkgver=7.06.r93.g11ad105
-pkgrel=2
+pkgver=7.08.r127.g8977877
+pkgrel=1
 pkgdesc="Open client for Cisco AnyConnect VPN"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -15,6 +15,7 @@ options=('!emptydirs')
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=("$pkgname::git+https://gitlab.com/ocserv/$_pkgname.git/")
+source=("$pkgname::git://git.infradead.org/users/dwmw2/$_pkgname.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -27,7 +28,8 @@ build() {
   ./autogen.sh
   PYTHON=/usr/bin/python2 ./configure --prefix=/usr \
       --sbindir=/usr/bin \
-      --disable-static
+      --disable-static \
+      --without-gnutls
   make V=0
 }
 
