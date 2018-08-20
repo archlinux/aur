@@ -1,6 +1,6 @@
 # Maintainer: Alex Butler <alexheretic@gmail.com>
 pkgname=apart-gtk
-pkgver=0.18
+pkgver=0.19
 pkgrel=1
 pkgdesc="Linux GUI for cloning & restoring disk partitions to & from compressed image files."
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=('polkit: to run as non-root user'
 makedepends=('rustup'
              'git')
 source=("https://github.com/alexheretic/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('be4ea15b3575c71dc6710835a03f15d4060c0325b2123fe77aad7908fea66af1')
+sha256sums=('ca676c10f6e352fdc2a1d3bfc9516334c58e578fe4ecf227aa195825766a9c37')
 
 build() {
   cd "$pkgname-$pkgver"
