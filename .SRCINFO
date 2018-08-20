@@ -5,12 +5,13 @@ pkgbase = gmastermind.app
 	url = http://www.nongnu.org/gap/gmastermind/index.html
 	arch = i686
 	arch = x86_64
-	groups = gnustep
+	groups = gnustep-games
 	license = GPL
 	makedepends = gcc-objc
 	makedepends = gnustep-make
 	depends = gnustep-base
 	depends = gnustep-gui
+	depends = gnustep-back
 	source = http://savannah.nongnu.org/download/gap/GMastermind-0.6.tar.gz
 	sha256sums = 188bb6ebc30838af8e35b7a0bc1af32051ceb0a6011806ada0e7b77e2b07dea7
 
