@@ -1,6 +1,6 @@
 pkgbase = lazygit
 	pkgdesc = A simple terminal UI for git commands
-	pkgver = 0.1.75
+	pkgver = 0.1.76
 	pkgrel = 1
 	url = https://github.com/jesseduffield/lazygit
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = lazygit
 	depends = glibc
 	provides = lazygit
 	conflicts = lazygit-git
-	source = lazygit-0.1.75.tar.gz::https://github.com/jesseduffield/lazygit/archive/v0.1.75.tar.gz
-	sha256sums = ed0aa4922ad41d89dc718603ceadab830a80fbccd4d5995e68a4032a84e0992c
+	source = lazygit-0.1.76.tar.gz::https://github.com/jesseduffield/lazygit/archive/v0.1.76.tar.gz
+	sha256sums = 5763f7c5241040d54889de07230e7f61d9453eb49303ed361b039fb0e56126b7
 
 pkgname = lazygit
 
