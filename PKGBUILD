@@ -5,7 +5,7 @@ pkgname=('python-lunardate'
 	 'python2-lunardate')
 pkgdesc="A Chinese Calendar Library in Pure Python"
 pkgver=0.1.5
-pkgrel=2
+pkgrel=3
 url="https://github.com/lidaobing/python-lunardate"
 license=('GPLv3')
 arch=('any')
@@ -14,8 +14,8 @@ md5sums=('7a7ca79f68ccea1d0981286ef9af1cc5')
 
 package_python-lunardate(){
 	depends=('python')
-        cd "${srcdir}/lunardate-${pkgver}"
-        python setup.py install --root="${pkgdir}" --optimize=1
+    cd "${srcdir}/lunardate-${pkgver}"
+    python setup.py install --root="${pkgdir}" --optimize=1
 }
 
 package_python2-lunardate(){
