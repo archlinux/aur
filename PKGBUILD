@@ -3,7 +3,7 @@
 
 
 pkgname="kvmd"
-pkgver="0.58"
+pkgver="0.59"
 pkgrel="1"
 pkgdesc="The main Pi-KVM daemon"
 arch=("any")
@@ -17,6 +17,7 @@ depends=(
 	"python-pyudev"
 	"python-raspberry-gpio"
 	"python-pyserial"
+	"python-setproctitle"
 )
 makedepends=("python-setuptools")
 source=("$url/archive/v$pkgver.tar.gz")
