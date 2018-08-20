@@ -1,4 +1,5 @@
-# Maintainer: FFY00 <filipe.lains@gmail.com>
+# Maintainer: Filipe Laíns (FFY00) <lains@archlinux.org>
+
 pkgname=tribler
 _gitver=7.1.0-beta
 pkgver=${_gitver//-/_}
