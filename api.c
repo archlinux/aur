@@ -586,6 +586,7 @@ void* alphavantage_store_info(void* vpInfo) {
     symbol_info->price_last_close = symbol_info->points[len - 2];
     symbol_info->price_7d = symbol_info->points[len - 6];
     symbol_info->price_30d = symbol_info->points[len - 22];
+    string_destroy(&pString);
     return vpInfo;
 }
 
