@@ -1,7 +1,7 @@
 pkgbase = python-datrie
 	pkgdesc = Super-fast, efficiently stored Trie for Python
 	pkgver = 0.7.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pytries/datrie
 	arch = x86_64
 	license = LGPL
@@ -13,7 +13,7 @@ pkgbase = python-datrie
 	makedepends = python2-setuptools
 	makedepends = cython
 	options = !emptydirs
-	source = python-datrie-0.7.1.tar.gz::https://pypi.io/packages/source/d/datrie/datrie-0.7.1.tar.gz
+	source = python-datrie-0.7.1.tar.gz::https://files.pythonhosted.org/packages/source/d/datrie/datrie-0.7.1.tar.gz
 	sha512sums = 9dd76a0240f0b890a7802463072ee14fb93baf94e009afe9476997200c17be9c94d08339ac85051f9c9a0b47c800d9804665484b6ecfb81305a183c38fd0d300
 
 pkgname = python-datrie

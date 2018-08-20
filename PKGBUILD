@@ -5,7 +5,7 @@ _name=datrie
 pkgbase=python-datrie
 pkgname=(python-datrie python2-datrie)
 pkgver=0.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Super-fast, efficiently stored Trie for Python"
 arch=('x86_64')
 url="https://github.com/pytries/datrie"
@@ -13,7 +13,7 @@ license=('LGPL')
 makedepends=('python-setuptools' 'python2-setuptools' 'cython')
 checkdepends=('python-pytest-runner' 'python2-pytest-runner' 'python-hypothesis' 'python2-hypothesis')
 options=(!emptydirs)
-source=("${pkgname}-${pkgver}.tar.gz::https://pypi.io/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
 sha512sums=('9dd76a0240f0b890a7802463072ee14fb93baf94e009afe9476997200c17be9c94d08339ac85051f9c9a0b47c800d9804665484b6ecfb81305a183c38fd0d300')
 
 prepare() {
