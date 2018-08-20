@@ -2,6 +2,20 @@
 
 int zoom_months[] = {60, 48, 36, 24, 12, 9, 6, 3, 1}, zoom_change_x_months[] = {12, 12, 12, 12, 12, 3, 3, 3, 2};
 
+void portfolio_printw(void) {
+    String* pString = portfolio_ncurses_get_plaintext_string(NULL);
+    if (pString != NULL) {
+        Info_Array* portfolio_data = portfolio_info_array_init_from_portfolio_string(
+                pString);
+        if (portfolio_data != NULL) {
+            api_info_array_store_data_batch(portfolio_data, CHECK);
+            info_array_portfolio_printw(portfolio_data);
+            api_info_array_destroy(&portfolio_data);
+        }
+        string_destroy(&pString);
+    }
+}
+
 void info_array_portfolio_printw(Info_Array* portfolio_data) {
     if (portfolio_data == NULL)
         return;

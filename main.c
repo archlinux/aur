@@ -60,19 +60,9 @@ int main(int argc, char* argv[]) {
 
         // Check
     else if (strcmp(cmd, "check") == 0 && (argc == 2 || argc == 3)) {
-        if (argc == 2) {
-            String* pString = portfolio_ncurses_get_plaintext_string(NULL);
-            if (pString != NULL) {
-                Info_Array* portfolio_data = portfolio_info_array_init_from_portfolio_string(
-                        pString);
-                if (portfolio_data != NULL) {
-                    api_info_array_store_data_batch(portfolio_data, CHECK);
-                    info_array_portfolio_printw(portfolio_data);
-                    api_info_array_destroy(&portfolio_data);
-                }
-                string_destroy(&pString);
-            }
-        } else portfolio_print_stock(sym);
+        if (argc == 2)
+            portfolio_printw();
+        else portfolio_print_stock(sym);
     }
 
         // Portfolio

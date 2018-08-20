@@ -50,6 +50,8 @@
 
 extern int zoom_months[9], zoom_change_x_months[9];
 
+void portfolio_printw(void);
+
 /**
  * Prints to stdout information about every security contained in the portfolio: symbol, number of shares, USD spent,
  * current value, profit, and 24h profit. Additionally, print a grand total with info from all securities.
