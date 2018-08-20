@@ -36,6 +36,7 @@ pkgbase = tribler
 	depends = python2-contextlib2
 	depends = python2-zc.lockfile
 	depends = python2-datrie
+	depends = python2-networkx
 	optdepends = vlc: for internal video player
 	provides = python2-pyipv8
 	conflicts = python2-pyipv8

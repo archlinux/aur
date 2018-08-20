@@ -13,7 +13,7 @@ depends=('python2-cryptography' 'python2-feedparser' 'python2-apsw' 'python2-che
 	 'python2-psutil' 'python2-meliae' 'python2-decorator' 'python2-netifaces' 'python2-requests'
 	 'python2-twisted' 'libsodium' 'libtorrent-rasterbar' 'python2-m2crypto' 'python2-configobj'
 	 'python2-matplotlib' 'python2-service-identity' 'python2-keyring' 'python2-keyrings-alt'
-	 'python2-libnacl' 'python2-contextlib2' 'python2-zc.lockfile' 'python2-datrie')
+	 'python2-libnacl' 'python2-contextlib2' 'python2-zc.lockfile' 'python2-datrie' 'python2-networkx')
 optdepends=('vlc: for internal video player')
 makedepends=('python2-setuptools' 'git')
 provides=('python2-pyipv8')
@@ -69,6 +69,9 @@ package() {
 
   cp -dr --no-preserve=ownership twisted "$pkgdir"/usr/share/tribler
   cp -dr --no-preserve=ownership electrum "$pkgdir"/usr/share/tribler
+
+  # Remove tests
+  find "$pkgdir" -type d -name "test" -name "tests" -exec rm -rf {} \;
 
   # Install systemd files
   install -Dm 644 systemd/anontunnel_helper@.service "$pkgdir"/usr/lib/systemd/system/anontunnel_helper@.service
