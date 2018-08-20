@@ -15,8 +15,8 @@ source=("http://savannah.nongnu.org/download/gap/Graphos-0.7.tar.gz")
 sha256sums=('d2a2567d244787a56572733cc91ca02ceb1030dfbd54401aa86e26650c34810b')
 
 build() {
-  source /usr/share/GNUstep/Makefiles/GNUstep.sh
   cd "$_pkgname-$pkgver"
+  export GNUSTEP_MAKEFILES="$(gnustep-config --variable=GNUSTEP_MAKEFILES)"
   make
 }
 
