@@ -1,0 +1,20 @@
+pkgbase = brother-hll2305w
+	pkgdesc = LPR and CUPS driver for HLL2305 model.
+	pkgver = 3.2.0_1
+	pkgrel = 1
+	url = http://support.brother.com/g/s/id/linux/en
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = cups
+	depends = ghostscript
+	depends = lib32-glibc
+	source = http://download.brother.com/welcome/dlf101902/hll2305lpr-3.2.0-1.i386.rpm
+	source = http://download.brother.com/welcome/dlf101903/hll2305cupswrapper-3.2.0-1.i386.rpm
+	source = brother_lpdwrapper_HLL2305.patch
+	md5sums = 9a62315bab0d4e3e92637cfd8432ba73
+	md5sums = 1f86aab2fc7c243723d40ff9c40ec081
+	md5sums = dc776a2b7cc4be618624a1bba896ccca
+
+pkgname = brother-hll2305w
+
