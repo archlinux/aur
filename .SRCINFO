@@ -11,6 +11,7 @@ pkgbase = ovh-dns
 	depends = jq
 	depends = ovh-api-client
 	optdepends = myip: ovh-dns-watch support
+	optdepends = xxhash: ovh-dns-watch support
 	source = https://github.com/aureooms/ovh-dns/archive/v1.2.0.tar.gz
 	md5sums = SKIP
 
