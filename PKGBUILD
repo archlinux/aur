@@ -1,7 +1,6 @@
 # Maintainer: Aiyion <aur@aiyionpri.me>
-_pkgname=heimdallr
-pkgname=$_pkgname-git
-pkgver=r91.7aebb3a
+pkgname=heimdallr
+pkgver="v1.0"
 pkgrel=1
 pkgdesc="finding public ssh keys with ease"
 arch=('x86_64')
@@ -9,36 +8,28 @@ url="https://github.com/AiyionPrime/heimdallr"
 license=('MIT')
 groups=()
 depends=('curl' 'json-c' 'libssh')
-makedepends=('git')
+makedepends=()
 checkdepends=()
 optdepends=()
-provides=('heimdallr-git')
-conflicts=('heimdallr')
+provides=('heimdallr')
+conflicts=('heimdallr-git')
 replaces=()
 backup=()
 options=()
 install=
 changelog=
-source=(git+https://github.com/aiyionprime/heimdallr.git)
+source=(https://github.com/AiyionPrime/$pkgname/archive/$pkgver.tar.gz)
 noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
 
-pkgver() {
-  cd "$_pkgname"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
-}
-
 build() {
-        cd "$_pkgname"
+        cd "$pkgname"
         make
 }
 
 package() {
-        cd "$_pkgname"
+        cd "$pkgname"
         make DESTDIR="$pkgdir/" install-bin
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	make doc
