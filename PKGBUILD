@@ -38,6 +38,7 @@ check() {
 }
 
 package_python-zope.testing() {
+  depends=('python')
   cd $_pkgname-$pkgver
 
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
@@ -46,6 +47,7 @@ package_python-zope.testing() {
 }
 
 package_python2-zope.testing() {
+  depends=('python2')
   cd $_pkgname-$pkgver-py2
 
   python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build

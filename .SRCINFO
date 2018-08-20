@@ -11,6 +11,8 @@ pkgbase = python-zope.testing
 	sha512sums = 5eb5946ca22ac29138a43660a0d28282a0cd89ed9c18aab01ac0fa62107d79b4ff8d5c4b4278b8ddb5ef578e71d9f48eb6c1ded619c43917ccba0bd4a5167d1f
 
 pkgname = python-zope.testing
+	depends = python
 
 pkgname = python2-zope.testing
+	depends = python2
 
