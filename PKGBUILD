@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=artanis-git
-pkgver=r1184.ef8c4ec
+pkgver=0.2.5.81.g9e82b7d
 pkgrel=1
 pkgdesc="A fast monolithic web-framework of Scheme"
 arch=('x86_64')
@@ -17,12 +17,12 @@ options=('!strip')
 _gitname="artanis"
 
 pkgver() {
-  cd "$_gitname"
-  printf "r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+  cd $_gitname
+  git describe|cut -c2-|tr - .
 }
 
 build() {
-  cd "$_gitname"
+  cd $_gitname
   ./autogen.sh 
   GUILE_EFFECTIVE_VERSION=2.2 ./configure --prefix=/usr \
 			 --bindir=/usr/bin \
@@ -33,15 +33,15 @@ build() {
 }
 
 check() {
-  cd "$srcdir"/"$_gitname"
+  cd $_gitname
   export GUILE_LOAD_PATH=$GUILE_LOAD_PATH:.
   guile -c '(display (@ (artanis artanis) artanis-version))'
 }
 
 package() {
-  cd "$srcdir/$_gitname"
+  cd $_gitname
   make DESTDIR="$pkgdir/" install
   # repair
-  cp -r $pkgdir/{share,bin} $pkgdir/usr
-  rm -r $pkgdir/{share,bin}
+  cp -r "$pkgdir"/bin "$pkgdir"/usr
+  rm -r "$pkgdir"/bin
 }
