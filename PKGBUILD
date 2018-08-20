@@ -1,7 +1,7 @@
 # Maintainer: Nick Webster <nick@nick.geek.nz>
 pkgname=micropad
-pkgver=3.8.2
-pkgrel=3
+pkgver=3.9.0
+pkgrel=1
 pkgdesc="A powerful notepad app that respects your freedoms and runs on everything."
 arch=('x86_64')
 url="https://getmicropad.com"
@@ -12,7 +12,7 @@ source=(
     "micropad-bin"
 )
 md5sums=(
-    'f1a4287e26cadd94153dd1500c08d1eb'
+    'd129360c69a6aaf9a6be82b0645802dc'
     'fb88bf75df0f836b4a6da178be1cb6c2'
 )
 install="micropad.install"
