@@ -1,7 +1,7 @@
 pkgbase = proxyee-down
 	pkgdesc = 基于HTTP代理的百度网盘(Baidu)不限速下载，SwitchyOmega设置请参见项目主页说明
 	pkgver = 2.54
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/monkeyWie/proxyee-down
 	arch = any
 	license = Apache License 2.0
