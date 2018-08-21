@@ -3,8 +3,8 @@
 
 _gemname=xcpretty
 pkgname=ruby-$_gemname
-pkgver=0.2.8
-pkgrel=3
+pkgver=0.3.0
+pkgrel=1
 pkgdesc='xcodebuild formatter done right'
 arch=(any)
 url='https://github.com/supermarin/xcpretty'
@@ -17,7 +17,7 @@ depends=(
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('6eb726d6cf072f334f482cd55e9e35ae90c6ce6e')
+sha1sums=('65b6b3b352c3bc87854fcb54f5ae21d20c0cb733')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
