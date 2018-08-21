@@ -1,6 +1,6 @@
 pkgbase = peertube
 	pkgdesc = Federated (ActivityPub) video streaming platform using P2P (BitTorrent) directly in the web browser with WebTorrent and Angular.
-	pkgver = 1.0.0_beta.10
+	pkgver = 1.0.0_beta.11
 	pkgrel = 1
 	url = https://joinpeertube.org/
 	install = peertube.install
@@ -17,9 +17,9 @@ pkgbase = peertube
 	depends = redis
 	depends = npm
 	backup = etc/peertube/production.yaml
-	source = https://github.com/Chocobozzz/PeerTube/releases/download/v1.0.0-beta.10/peertube-v1.0.0-beta.10.zip
+	source = https://github.com/Chocobozzz/PeerTube/releases/download/v1.0.0-beta.11/peertube-v1.0.0-beta.11.zip
 	source = peertube.install
-	sha256sums = 04eeb14775979403b3bae63ae3bc940876d8a296e516687255f940c4dcfe9ae4
+	sha256sums = 0683215c2a5cb417b3a20b46727c01a4312f99df80fb20ae8dd95eff075c26e6
 	sha256sums = 68801235fa38c9fa62fbd9314240a58e735a2bdd480fced473813d38a78b5faf
 
 pkgname = peertube
