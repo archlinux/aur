@@ -1,4 +1,4 @@
-From c91efb6c180e7b939addb4e65eddb100c48e0945 Mon Sep 17 00:00:00 2001
+From 815b4a27e6a455998a05b5c43252f561025be68f Mon Sep 17 00:00:00 2001
 From: jjacky <i.am.jack.mail@gmail.com>
 Date: Fri, 5 Apr 2013 15:22:11 +0200
 Subject: [PATCH 2/3] smartPlacement: w/ snap_to_border we snap to bottom/right
@@ -13,7 +13,7 @@ Signed-off-by: Olivier Brunel <jjk@jjacky.com>
  1 file changed, 21 insertions(+), 12 deletions(-)
 
 diff --git a/src/placement.c b/src/placement.c
-index a6ce2636..41c48824 100644
+index 0d94313a..7264a845 100644
 --- a/src/placement.c
 +++ b/src/placement.c
 @@ -702,7 +702,7 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
@@ -98,5 +98,5 @@ index a6ce2636..41c48824 100644
          c->x += frame_left;
          c->y += frame_top;
 -- 
-2.12.0
+2.15.1
 
