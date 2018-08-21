@@ -5,11 +5,11 @@
 pkgname=indigo-renderer
 pkgver=4.0.66
 _package_src_dir=IndigoRenderer_x64_v${pkgver}
-_pkgver_blendigo=4.0.10
+_pkgver_blendigo=4.0.16-892ac6c
 #_blender=$(blender -v | head -n1 | cut -f2 -d ' ')
 #_blender=$(expac "%v" -S blender|egrep -o [[:alnum:]]{1}.[[:alnum:]]{2})
 _blender=$(expac -S %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
-pkgrel=4
+pkgrel=5
 pkgdesc="Physically-based unbiased render engine"
 arch=('x86_64')
 url="http://www.indigorenderer.com/"
@@ -27,7 +27,7 @@ md5sums=('c6fe27e58f027166a81707835ef08ee5'
          '19fde0fa8b9151f7d2aa56710a1296d6'
          'd45b9ffc8d51e949ab73abcb598acb28'
          '169f8b7bcb0174de0a9c25a0f340b661'
-         '8d5b9e67a3e035882de9fce285ff50b2')
+         'd296557294b088b218598a8da4595e06')
 
 
 package() {

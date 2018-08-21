@@ -1,7 +1,7 @@
 pkgbase = indigo-renderer
 	pkgdesc = Physically-based unbiased render engine
 	pkgver = 4.0.66
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.indigorenderer.com/
 	install = indigo.install
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = indigo-renderer
 	source = indigo-renderer.png
 	source = indigo.sh
 	source = indigo_console.sh
-	source = http://downloads.indigorenderer.com/dist/exporters/blendigo/blendigo-4.0.10.zip
+	source = http://downloads.indigorenderer.com/dist/exporters/blendigo/blendigo-4.0.16-892ac6c.zip
 	md5sums = c6fe27e58f027166a81707835ef08ee5
 	md5sums = 3d1ee12344502bda3a41f496e97a4cf4
 	md5sums = 19fde0fa8b9151f7d2aa56710a1296d6
