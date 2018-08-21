@@ -1,0 +1,21 @@
+pkgbase = hash-checker
+	pkgdesc = A Free tool for checking any file's MD5, SHA256 & SHA512 hash easily
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://github.com/Rizwan-Hasan/Hash-Checker/
+	arch = x86_64
+	license = MIT
+	makedepends = cython>=0.28.4
+	depends = python>=3.6.6
+	depends = python-pyqt5>=5.11.2
+	depends = python-sip-pyqt5>=4.19.12
+	depends = pyqt5-common>=5.11.2
+	depends = python-pyperclip>=1.6.2
+	depends = python-packaging>=17.1
+	source = Hash-Checker.tar.gz::https://github.com/Rizwan-Hasan/Hash-Checker/archive/v2.1.tar.gz
+	source = Hash Checker.desktop
+	md5sums = SKIP
+	md5sums = b2cedfbfe84c6e8688a018545414dc8e
+
+pkgname = hash-checker
+
