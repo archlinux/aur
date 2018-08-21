@@ -45,7 +45,7 @@ prepare() {
       # /\1/ :: replaces the entire string with the contents of group 1
 
   msg2 "This AUR release: ${pkgver}"
-  msg2 "Latest upstream release: ${_LATEST}"
+  msg2 "Latest upstream release: ${_latest}"
   if [ "${_latest}" != "${pkgver}" ]; then
     msg2 "** Please flag out-of-date at https://aur.archlinux.org/packages/${pkgname}"
   fi
