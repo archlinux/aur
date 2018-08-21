@@ -1,0 +1,14 @@
+pkgbase = abseil-cpp
+	pkgdesc = Abseil Common Libraries (C++)
+	pkgver = 20180600
+	pkgrel = 1
+	url = https://github.com/abseil/abseil-cpp
+	arch = any
+	license = Apache
+	makedepends = cmake
+	makedepends = git
+	source = https://github.com/abseil/abseil-cpp/archive/20180600.tar.gz
+	sha256sums = 794d483dd9a19c43dc1fbbe284ce8956eb7f2600ef350dac4c602f9b4eb26e90
+
+pkgname = abseil-cpp
+
