@@ -2,7 +2,7 @@
 # Maintainer: Daniel Milde <daniel / milde.cz>
 
 pkgname=winbox
-pkgver=3.16
+pkgver=3.17
 pkgrel=1
 pkgdesc="Mikrotik RouterOS GUI Configurator (wine)"
 url="http://www.mikrotik.com"
@@ -17,7 +17,7 @@ source=("${pkgname}-${pkgver}.exe::http://download2.mikrotik.com/routeros/winbox
         "${pkgname}.desktop"
         "${pkgname}.png"
         "${pkgname}")
-sha256sums=('9f461fe55d4d04c66275c910c70dd6971fa765fcdcc64898478ae5a7f3694354'
+sha256sums=('19353af5d67ee61a83741b418c06911cf4cbd5ccf86b4f1683ca287f3000b7a7'
             '6e9ffe5ff24d286d2d719455dd52f6ddf8c5ed2ba0494c566a67555df37d5c19'
             '603eaed8dfb5b6146712c5cee801e6d77f1f45d6bd5c4b545f9f84193834d380'
             'e7d6a2ffc0eda07ac40db88d92629bf8b1e2fa9433f3b74b1eef3437c1d0f6c6')
