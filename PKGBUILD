@@ -3,7 +3,7 @@
 _pkgname=audiveris
 pkgname="${_pkgname}-git"
 pkgver=5.1.0.rc.r0.g0bf682689
-pkgrel=1
+pkgrel=2
 pkgdesc="Music score OMR engine - current"
 arch=('x86_64')
 url="https://github.com/Audiveris/audiveris"
@@ -12,6 +12,7 @@ depends=(
   'java-runtime>=7'
   'java-runtime<=8'
   'tesseract-data-eng'
+  'freetype'
 )
 makedepends=(
   'java-environment>=7'
