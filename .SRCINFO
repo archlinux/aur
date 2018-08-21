@@ -1,18 +1,19 @@
 pkgbase = reprotest
 	pkgdesc = Run a process twice and check the output for reproducibility
 	pkgver = 0.7.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://salsa.debian.org/reproducible-builds/reprotest
 	arch = any
 	license = GPL2
 	license = GPL3
+	depends = python-setuptools
 	depends = python
 	depends = python-rstr
 	depends = diffoscope
 	depends = fakeroot
 	depends = python-distro
-	optdepends = disorderfs
-	optdepends = python-progressbar
+	optdepends = disorderfs: to enable the shuffle-dirents option
+	optdepends = python-progressbar: to show a progress bar during diffoscope
 	source = https://salsa.debian.org/reproducible-builds/reproducible-lfs/raw/master/releases/reprotest/reprotest_0.7.8.tar.xz
 	source = https://salsa.debian.org/reproducible-builds/reproducible-lfs/raw/master/releases/reprotest/reprotest_0.7.8.tar.xz.asc
 	validpgpkeys = A405E58AB3725B396ED1B85C1318EFAC5FBBDBCE
@@ -21,6 +22,4 @@ pkgbase = reprotest
 	sha512sums = SKIP
 
 pkgname = reprotest
-	depends = python
-	depends = python-setuptools
 

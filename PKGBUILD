@@ -3,7 +3,7 @@
 
 pkgname=('reprotest')
 pkgver=0.7.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Run a process twice and check the output for reproducibility"
 arch=('any')
 license=('GPL2' 'GPL3')
