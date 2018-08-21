@@ -9,7 +9,6 @@
 pkgname=mythtv-fixes
 pkgver=29+fixes.20180821.e5fc66e8
 pkgrel=1
-epoch=1
 pkgdesc="A Homebrew PVR project"
 arch=('x86_64')
 url="https://www.mythtv.org/"
