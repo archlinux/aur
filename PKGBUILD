@@ -4,7 +4,7 @@
 # Contributor: Maik Broemme <mbroemme@libmpq.org>
 
 pkgname=asterisk-cisco
-pkgver=13.19.0
+pkgver=13.21.1
 pkgrel=1
 pkgdesc="A complete PBX solution. Includes the Cisco Presence patch for use with Cisco IP Phones"
 provides=('asterisk')
@@ -121,25 +121,25 @@ backup=('etc/asterisk/acl.conf'
 	'etc/asterisk/xmpp.conf')
 url="http://www.asterisk.org"
 license=('GPL')
-depends=('alsa-lib' 'speex' 'popt' 'libvorbis' 'curl' 'libxml2' 'jansson' 'libxslt' 'pjproject')
+depends=('alsa-lib' 'speex' 'popt' 'libvorbis' 'curl' 'libxml2' 'jansson' 'libxslt')
 makedepends=('sqlite3' 'gsm')
 optdepends=('lua51' 'libsrtp' 'postgresql' 'unixodbc' 'iksemel' 'dahdi')
 source=(http://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-${pkgver}.tar.gz \
-	https://issues.asterisk.org/jira/secure/attachment/56887/cisco-usecallmanager-13.19.0.patch \
+	https://issues.asterisk.org/jira/secure/attachment/57644/cisco-usecallmanager-13.21.1.patch \
 	https://issues.asterisk.org/jira/secure/attachment/55770/DialTemplate.xml \
 	https://issues.asterisk.org/jira/secure/attachment/55771/FeaturePolicy.xml \
-	https://issues.asterisk.org/jira/secure/attachment/56888/SEPMAC.cnf.xml \
+	https://issues.asterisk.org/jira/secure/attachment/57258/SEPMAC.cnf.xml \
 	https://issues.asterisk.org/jira/secure/attachment/55769/SoftKeys.xml \
 	https://issues.asterisk.org/jira/secure/attachment/55772/AppDialRules.xml \
 	asterisk.service \
 	asterisk.logrotated \
 	asterisk.tmpfile)
 install=asterisk.install
-sha256sums=('57b3f37f7c9f557754b6e67b183922a4957c832dc9150ae4024aedc4948d53d0'
-            '2d37057b7af09ba080655c3f2d17a856f8f8207f81a0b34ba789a843c00e4e07'
+sha256sums=('013f61155bb53c14c8244d8d4779df931fa4a139895d7a420db99c5f339024df'
+            '3355f7abc9af1e63ae4fbf405407ba417955078caf5cbcb292c71ebd421d4720'
             '10795bc3b2fb28b79b3ab74bbd8f33b667e3bf4b1c87ccfb2aae168f9b07a17c'
             'da5a87717517b37d0554369235e0bdb86700bd696c1a70db5a47d9f4711b44db'
-            '972e5cb93ea2d4570554beb3188cdb7556950266be6d78d0953c2bc330f404a9'
+            'ecff1e7807003beb3198f95859fa3c1b57d618940872d1c8638e65f5a49afce4'
             'f75707ccd176ae1223f80a1c02fdebafbd0bce3e5ec12667e6e061b0427bb075'
             'c1243a3459b0d43020f9644fa2a2a6c9003a7bd51927715d626dc4060c234818'
             '94acb6e68424195a12fd9d406b3fb586f264a550e75801f6e020a86e800dd42c'
@@ -153,7 +153,7 @@ prepare() {
 
 build() {
   cd ${srcdir}/asterisk-${pkgver}
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin --with-pjproject-bundled
   make
 }
 
