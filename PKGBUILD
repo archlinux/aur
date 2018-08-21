@@ -4,7 +4,7 @@
 _gemname=nanaimo
 pkgname=ruby-$_gemname
 pkgver=0.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A library for (de)serialization of ASCII Plists.'
 arch=(any)
 url='https://github.com/CocoaPods/Nanaimo'
@@ -13,7 +13,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('53e624a22222814fa4d3d99b74a519952fb7a32a')
+sha1sums=('8a377d67ea659325d5097ef1aa39f7e9e5352138')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
