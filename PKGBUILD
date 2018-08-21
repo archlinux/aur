@@ -6,7 +6,7 @@ version=0.3.1
 #fragment="#commit=7e49329 "
 files=(import_off.py)
 is_flat="yes"
-_blender=$(expac %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
+_blender=$(expac -S %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
 
 pkgname=blender-plugin-${name}
 pkgver=v0.3.1.r2.g77d9456
