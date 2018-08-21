@@ -1,18 +1,19 @@
+
 # Maintainer: Harm Müller <harm[DOT]mueller[AT]gmail[DOT]com>
 pkgname='perl-rex'
-pkgver='1.4.1'
+pkgver='1.6.0'
 pkgrel='1'
 pkgdesc="(R)?ex Deployment & Configuration Management"
 arch=('any')
 license=('Apache')
 options=('!emptydirs')
-depends=('perl-hash-merge' 'perl-net-ssh2' 'perl-libwww' 'perl-io-string' 'perl-json-xs' 'perl-list-allutils' 'perl-sort-naturally' 'perl-term-readkey' 'perl-text-glob' 'perl-xml-simple' 'perl-yaml' 'perl-net-openssh' 'perl-test-useallmodules' 'perl-io-tty' 'perl-net-sftp-foreign' 'perl-test-pod' 'perl-string-escape' 'perl-test-deep' 'perl-devel-caller' 'perl-padwalker')
+depends=('perl-hash-merge' 'perl-net-ssh2' 'perl-libwww' 'perl-io-string' 'perl-json-xs' 'perl-list-allutils' 'perl-sort-naturally' 'perl-term-readkey' 'perl-text-glob' 'perl-xml-simple' 'perl-yaml' 'perl-net-openssh' 'perl-test-useallmodules' 'perl-io-tty' 'perl-net-sftp-foreign' 'perl-test-pod' 'perl-string-escape' 'perl-test-deep' 'perl-devel-caller' 'perl-padwalker' 'perl-json-maybexs' 'perl-data-validate-ip')
 makedepends=()
 url='http://www.rexify.org/'
-source=('https://cpan.metacpan.org/authors/id/J/JF/JFRIED/Rex-1.4.1.tar.gz')
-md5sums=('eb979192874904fc0e63555db80c7dca')
-sha256sums=('6898add0c9ad8b30b1ea5f70730a53cf899e4fe7228e1f8d5006d6694cfe8eb2')
-_distdir="Rex-1.4.1"
+source=('https://cpan.metacpan.org/authors/id/J/JF/JFRIED/Rex-1.6.0.tar.gz')
+md5sums=('93b7d49e8aa76ccdc22d66031a65d72e')
+sha256sums=('1c35c5a48018205bc540d0cc1d11fc2a47579b1319262940412ba2b8372459d6')
+_distdir="Rex-1.6.0"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
