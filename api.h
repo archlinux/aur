@@ -191,6 +191,10 @@ size_t api_string_writefunc(void* ptr, size_t size, size_t nmemb, String* pStrin
  */
 String* api_curl_data(const char* url);
 
+void iex_batch_store_data_info_array(Info_Array* pInfo_Array, Data_Level data_level);
+
+void iex_batch_store_data_info(Info* pInfo, Data_Level data_level);
+
 /**
  * This function will only store stock and ETF data.
  * Queries several of IEX's endpoints for multiple symbols at a time to store the data in
@@ -201,8 +205,8 @@ String* api_curl_data(const char* url);
  * @param pInfo_Array the Info_Array
  * @param data_level endpoints to query
  */
-void iex_batch_store_data(Info_Array* pInfo_Array, Data_Level data_level);
-
+String* iex_batch_get_data_string(char* symbol_array[SYMBOL_MAX_LENGTH], size_t len,
+                                  Data_Level data_level);
 /**
  * Designed for threading
  *
@@ -397,6 +401,8 @@ Ref_Data* iex_get_valid_symbols(void);
  * @param jobj
  */
 void info_array_store_all_from_json(Info_Array* pInfo_Array, const Json* jobj);
+
+void info_store_all_from_json(Info* pInfo, const Json* jsymbol);
 
 /**
  * IEX quote endpoint.

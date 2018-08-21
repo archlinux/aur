@@ -107,15 +107,49 @@ String* api_curl_data(const char* url) {
     return pString;
 }
 
-void iex_batch_store_data(Info_Array* pInfo_Array, Data_Level data_level) {
+void iex_batch_store_data_info_array(Info_Array* pInfo_Array, Data_Level data_level) {
+    char** symbol_array = malloc(pInfo_Array->length * sizeof(char*));
+    pointer_alloc_check(symbol_array);
+    for (size_t i = 0; i < pInfo_Array->length; i++) {
+        symbol_array[i] = malloc(SYMBOL_MAX_LENGTH);
+        pointer_alloc_check(symbol_array[i]);
+        strcpy(symbol_array[i], pInfo_Array->array[i]->symbol);
+    }
+
+    String* pString = iex_batch_get_data_string(symbol_array, pInfo_Array->length, data_level);
+    Json* jobj = json_tokener_parse(pString->data);
+    info_array_store_all_from_json(pInfo_Array, jobj);
+
+    for (size_t i = 0; i < pInfo_Array->length; i++)
+        free(symbol_array[i]);
+
+    free(symbol_array);
+    json_object_put(jobj);
+    string_destroy(&pString);
+}
+
+void iex_batch_store_data_info(Info* pInfo, Data_Level data_level) {
+    char* symbol_array = malloc(SYMBOL_MAX_LENGTH);
+    free(symbol_array);
+    strcpy(symbol_array, pInfo->symbol);
+    String* pString = iex_batch_get_data_string(&symbol_array, 1, data_level);
+    Json* jobj = json_tokener_parse(pString->data);
+    info_store_all_from_json(pInfo, json_object_object_get(jobj, pInfo->symbol));
+
+    free(symbol_array);
+    json_object_put(jobj);
+    string_destroy(&pString);
+}
+
+String* iex_batch_get_data_string(char* symbol_array[SYMBOL_MAX_LENGTH], size_t len,
+        Data_Level data_level) {
     // TO-DO -- MAKE FUNCTION HANDLE MORE THAN 100 SECURITIES (API LIMITATION)
 
     char iex_api_string[URL_MAX_LENGTH], symbol_list_string[URL_MAX_LENGTH];
     symbol_list_string[0] = '\0';
-    for (size_t i = 0; i < pInfo_Array->length; i++)
-        if (strcmp(pInfo_Array->array[i]->symbol, "USD$") != 0)
-            sprintf(&symbol_list_string[strlen(symbol_list_string)], "%s,",
-                    pInfo_Array->array[i]->symbol);
+    for (size_t i = 0; i < len; i++)
+        if (strcmp(symbol_array[i], "USD$") != 0)
+            sprintf(&symbol_list_string[strlen(symbol_list_string)], "%s,", symbol_array[i]);
 
     symbol_list_string[strlen(symbol_list_string) - 1] = '\0'; // Remove last comma
 
@@ -129,15 +163,7 @@ void iex_batch_store_data(Info_Array* pInfo_Array, Data_Level data_level) {
             "https://api.iextrading.com/1.0/stock/market/batch?symbols=%s&types=%s",
             symbol_list_string, endpoints);
 
-    String* pString = api_curl_data(iex_api_string);
-    if (pString == NULL)
-        return;
-
-    Json* jobj = json_tokener_parse(pString->data);
-    info_array_store_all_from_json(pInfo_Array, jobj);
-
-    json_object_put(jobj);
-    string_destroy(&pString);
+    return api_curl_data(iex_api_string);
 }
 
 void* iex_store_company(void* vpInfo) {
@@ -685,7 +711,7 @@ void* api_info_array_store_check_data(void* vpPortfolio_Data) {
 }
 
 void api_info_array_store_data_batch(Info_Array* pInfo_Array, Data_Level data_level) {
-    iex_batch_store_data(pInfo_Array, data_level);
+    iex_batch_store_data_info_array(pInfo_Array, data_level);
 
     // All IEX securities are accounted for
     Info* pInfo;
@@ -791,36 +817,38 @@ Ref_Data* iex_get_valid_symbols(void) {
 }
 
 void info_array_store_all_from_json(Info_Array* pInfo_Array, const Json* jobj) {
-    Json* jsymbol, * jquote, * jchart, * jcompany, * jstats, * jpeers, * jnews, * jearnings;
-    Info* pInfo;
+    Json* jsymbol;
     for (size_t i = 0; i < pInfo_Array->length; i++) {
         jsymbol = json_object_object_get(jobj, pInfo_Array->array[i]->symbol);
-        if (jsymbol != NULL) {
-            pInfo = pInfo_Array->array[i];
-            pInfo->api_provider = IEX;
-            jquote = json_object_object_get(jsymbol, "quote");
-            jchart = json_object_object_get(jsymbol, "chart");
-            jcompany = json_object_object_get(jsymbol, "company");
-            jstats = json_object_object_get(jsymbol, "stats");
-            jpeers = json_object_object_get(jsymbol, "peers");
-            jnews = json_object_object_get(jsymbol, "news");
-            jearnings = json_object_object_get(jsymbol, "earnings");
-            if (jquote != NULL)
-                info_store_quote_from_json(pInfo, jquote);
-            if (jchart != NULL)
-                info_store_chart_from_json(pInfo, jchart);
-            if (jcompany != NULL)
-                info_store_company_from_json(pInfo, jcompany);
-            if (jstats != NULL)
-                info_store_stats_from_json(pInfo, jstats);
-            if (jpeers != NULL)
-                info_store_peers_from_json(pInfo, jpeers);
-            if (jnews != NULL)
-                info_store_news_from_json(pInfo, jnews);
-            if (jearnings != NULL)
-                info_store_earnings_from_json(pInfo, jearnings);
-        }
+        if (jsymbol != NULL)
+            info_store_all_from_json(pInfo_Array->array[i], jsymbol);
     }
+}
+
+void info_store_all_from_json(Info* pInfo, const Json* jsymbol) {
+    Json* jquote, * jchart, * jcompany, * jstats, * jpeers, * jnews, * jearnings;
+    pInfo->api_provider = IEX;
+    jquote = json_object_object_get(jsymbol, "quote");
+    jchart = json_object_object_get(jsymbol, "chart");
+    jcompany = json_object_object_get(jsymbol, "company");
+    jstats = json_object_object_get(jsymbol, "stats");
+    jpeers = json_object_object_get(jsymbol, "peers");
+    jnews = json_object_object_get(jsymbol, "news");
+    jearnings = json_object_object_get(jsymbol, "earnings");
+    if (jquote != NULL)
+        info_store_quote_from_json(pInfo, jquote);
+    if (jchart != NULL)
+        info_store_chart_from_json(pInfo, jchart);
+    if (jcompany != NULL)
+        info_store_company_from_json(pInfo, jcompany);
+    if (jstats != NULL)
+        info_store_stats_from_json(pInfo, jstats);
+    if (jpeers != NULL)
+        info_store_peers_from_json(pInfo, jpeers);
+    if (jnews != NULL)
+        info_store_news_from_json(pInfo, jnews);
+    if (jearnings != NULL)
+        info_store_earnings_from_json(pInfo, jearnings);
 }
 
 void info_store_quote_from_json(Info* pInfo, const Json* jquote) {
