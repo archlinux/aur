@@ -3,21 +3,18 @@
 #
 # Maintainer: uffe Jakobsen <_uffe_-at-_uffe_-_dot_-_org>
 
-_pkgver="1_8"
+_pkgver="1_8d"
 
 pkgname=vasm
-pkgver=1.8
+pkgver=1.8d
 pkgrel=1
 pkgdesc="Portable and retargetable 6502 6800 arm c16x jagrisc m68k ppc test tr3200 vidcore x86 z80 assembler."
 arch=('i686' 'x86_64')
 url="http://sun.hasenbraten.de/vasm/"
 license=('custom')
 depends=()
-source=(http://server.owl.de/~frank/tags/${pkgname}${_pkgver}.tar.gz
-	patch-cpus_test_cpu.c.patch)
-md5sums=('8ac42c171c84d1460119f28cca601467'
-         '46a0705ebc82b4290dc73acdcc53fc73')
-
+source=(http://server.owl.de/~frank/tags/${pkgname}${_pkgver}.tar.gz)
+md5sums=('03c2715f4c15330d3fde4b23b02b5c60')
 
 CPU_LIST="6502 6800 arm c16x jagrisc m68k ppc test tr3200 vidcore x86 z80"
 SYNTAX_LIST="std madmac mot oldstyle" # test
@@ -26,7 +23,6 @@ OUTPUT_LIST="aout bin elf hunk test tos vobj"
 prepare()
 {
   cd ${srcdir}/${pkgname}
-  patch -p0 -i "${srcdir}/patch-cpus_test_cpu.c.patch"
 }
 
 build()
