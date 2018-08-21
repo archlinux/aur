@@ -2,7 +2,7 @@
 
 pkgname=concierge
 pkgver=0.2.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Think SASS for SSH config files'
 license=('MIT')
 url='https://github.com/9seconds/concierge'
@@ -20,6 +20,9 @@ prepare() {
   cd $srcdir/${pkgname}-$pkgver
   sed -i 14d setup.py
   sed -i 's/^\([ ]*\)"inotify_simple",$/\1"inotify_simple"/' setup.py
+
+  sed -i 's/^VALID_OPTIONS = set(($/VALID_OPTIONS = set((\n    "AddKeysToAgent",/' \
+      concierge/core/parser.py
 }
 
 package() {
