@@ -1,12 +1,12 @@
 # Maintainer: liums <liums at openaliasbox.org>
 pkgname=opendbviewer-git
-pkgver=v1.0.2.r21.ga3fc4a8
+pkgver=v1.0.2.r83.gb158d2c
 pkgrel=1
 pkgdesc="A simple database explorer for SQLITE, MySQL, PostgreSQL."
 arch=('x86_64' 'i686')
 url="https://github.com/Jet1oeil/opendbviewer"
 license=('GPL3')
-depends=('qt5-base')
+depends=('qt5-base' 'imagemagick')
 makedepends=('cmake' 'git' 'qt5-tools')
 provides=('opendbviewer')
 conflicts=('opendbviewer')

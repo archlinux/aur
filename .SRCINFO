@@ -1,6 +1,6 @@
 pkgbase = opendbviewer-git
 	pkgdesc = A simple database explorer for SQLITE, MySQL, PostgreSQL.
-	pkgver = v1.0.2.r21.ga3fc4a8
+	pkgver = v1.0.2.r83.gb158d2c
 	pkgrel = 1
 	url = https://github.com/Jet1oeil/opendbviewer
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = opendbviewer-git
 	makedepends = git
 	makedepends = qt5-tools
 	depends = qt5-base
+	depends = imagemagick
 	provides = opendbviewer
 	conflicts = opendbviewer
 	source = git://github.com/Jet1oeil/opendbviewer.git
