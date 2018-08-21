@@ -1,0 +1,18 @@
+pkgbase = protoplug
+	pkgdesc = A VST plugin which runs Lua scripts as audio and MIDI effects and instruments
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = http://www.osar.fr/protoplug/
+	arch = i686
+	arch = x86_64
+	groups = vst-plugins
+	license = MIT
+	depends = curl
+	depends = gtk3
+	depends = luajit
+	optdepends = fftw: FFTW support for protoplug Lua scripts
+	source = protoplug-1.4.0.tar.gz::https://github.com/pac-dev/protoplug/archive/v1.4.0.tar.gz
+	sha256sums = 69fd7a581d2371b6776209fa199e7c7109e248b97605d34593de3cd1ed91c886
+
+pkgname = protoplug
+

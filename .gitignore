@@ -1,0 +1,6 @@
+src/
+pkg/
+protoplug-*.tar.gz
+protoplug-*.tar.xz
+protoplug-*.src.tar.gz
+.AURINFO
