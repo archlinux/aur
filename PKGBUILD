@@ -3,8 +3,8 @@
 # Maintainer: Wainer Vandelli <wainer dot vandelli at gmail dot com>
 # Contributor: Konstantin Gizdov < arch at kge dot pw >
 pkgname=cvmfs
-pkgver=2.5.0
-pkgrel=2
+pkgver=2.5.1
+pkgrel=1
 pkgdesc="A client-server file system implemented in FUSE and developed to deliver software distributions onto virtual machines in a fast, scalable, and reliable way."
 arch=('x86_64')
 url="http://cernvm.cern.ch/portal/filesystem"
@@ -17,13 +17,11 @@ options=('!emptydirs')
 source=("https://ecsft.cern.ch/dist/$pkgname/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz"
     'settings.cmake'
 	'externals.patch'
-	'sqlite-scratch.patch'
-    'xattr.patch')
-md5sums=('d46705e06267278fd3a65b277a6d9e16'
+	'sqlite-scratch.patch')
+md5sums=('0c240a990d94d8fb1bade350f07de96f'
          '20dc60c61077f4a3711463e8686d260d'
-         '109a95cab95276c1c19bc46b66f0906f'
-         '0ef4c858aa9648dcd46768991748eb06'
-         '08a46f14c08fe50b8d7cd33ec95ddda8')
+         '3054d07ba4d5f96159a6c2c36244bda8'
+         '0ef4c858aa9648dcd46768991748eb06')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -35,9 +33,6 @@ prepare() {
 
     # Sqlite deprecated the SCRATCH configuration option
     patch -Np1 -i "$srcdir/sqlite-scratch.patch"
-
-    # Do not use attr/xattr.h as it is not installed in Arch
-    patch -Np1 -i "$srcdir/xattr.patch"
 }
 
 build() {
