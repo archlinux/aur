@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-vitals-git
 	pkgdesc = Displays system vitals in a GNOME Shell top bar pop-down.
-	pkgver = 34.r62.g6fbd54b
+	pkgver = 34.r80.gd6f2750
 	pkgrel = 1
 	url = https://github.com/corecoding/Vitals
 	arch = any

@@ -1,7 +1,7 @@
 # Maintainer: Llewelyn Trahaearn <WoefulDerelict at GMail dot com>
 
 pkgname=gnome-shell-extension-vitals-git
-pkgver=34.r62.g6fbd54b
+pkgver=34.r80.gd6f2750
 pkgrel=1
 pkgdesc="Displays system vitals in a GNOME Shell top bar pop-down."
 arch=('any')
@@ -34,4 +34,9 @@ package() {
   cp -r --no-preserve=ownership,mode helpers "${_destdir}"
   install -Dm644 schemas/gschemas.compiled "${_destdir}/schemas/gschemas.compiled"
   install -Dm644 schemas/prefs.ui "${_destdir}/schemas/prefs.ui"
+  cd locale
+  for locale in */
+    do
+      install -Dm644 -t "${pkgdir}/usr/share/locale/${locale}/LC_MESSAGES" "${locale}/LC_MESSAGES"/*.mo
+    done
 }
