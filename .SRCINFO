@@ -1,0 +1,23 @@
+pkgbase = writer-git
+	pkgdesc = Word processor designed for Pantheon Shell
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/ryonakano/writer
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = gtk3
+	depends = vala
+	depends = granite
+	depends = gtksourceview3
+	depends = zeitgeist
+	provides = writer
+	conflicts = writer
+	source = git+https://github.com/ryonakano/writer.git
+	md5sums = SKIP
+
+pkgname = writer-git
+
