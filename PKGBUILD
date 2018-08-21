@@ -1,7 +1,7 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 pkgname=carp
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="EncFS gui and cli front-end"
 arch=("any")
 url="https://projects.deparis.io/projects/carp"
