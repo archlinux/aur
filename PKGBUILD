@@ -2,8 +2,8 @@
 # Contributor: Dave Blair <mail@dave-blair.de>
 
 pkgname=autokey-py3
-pkgver=0.95.2
-pkgrel=5
+pkgver=0.95.3
+pkgrel=1
 pkgdesc="Python 3 port of AutoKey, a desktop automation utility for Linux and X11 with new features."
 url="https://github.com/autokey/autokey"
 depends=('python' 'wmctrl' 'hicolor-icon-theme' 'python-dbus' 'python-pyinotify'
@@ -20,16 +20,13 @@ conflicts=('autokey' 'autokey-gtk' 'autokey-data')
 license=('GPL3')
 arch=('any')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/autokey-py3/autokey/archive/v${pkgver}.tar.gz"
-        "atspi.patch"
         "requires.patch")
-sha256sums=('2354d0ea45b6d4dafdb9da9b9d046e204616f2612c8c21ac36550e88f362b499'
-            '1e5014aec1a8a1b6bdb292e6c1c8133e885bfe9b5c04691e786393776f30b8fd'
-            '4e33374c4eff96573ce92fda5e8263c8a610c9ba9fdce98046a0a3a05ac9a478')
+sha256sums=('895749bfcc515d6bdeacc3192afba4263e91a8ad6ee9db42b983db67da3b847c'
+            'b904d9e336e5fa6480820148e4394aedfbfa2d3662b1ae38d03a200a9bcbbdd8')
 
 prepare() {
     cd "$srcdir/autokey-${pkgver}"
     patch -Np1 -i ../requires.patch
-    patch -Np1 -i ../atspi.patch
 }
 
 package() {
