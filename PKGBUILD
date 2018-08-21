@@ -2,7 +2,7 @@
 # Maintainer: Christoph J. Thompson <thompsonc@protonmail.ch>
 
 pkgname=nitrokey-app
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 _cppcodecver=61d9b044d6644293f99fb87dfadc15dcab951bd9
 pkgdesc="Nitrokey management application"
@@ -14,7 +14,7 @@ makedepends=('cmake' 'qt5-tools')
 install=nitrokey-app.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Nitrokey/nitrokey-app/archive/v$pkgver.tar.gz"
         "cppcodec.tar.gz::https://github.com/tplgy/cppcodec/archive/${_cppcodecver}.tar.gz")
-sha256sums=('602b226256192d1217a9b9300f835b4ff0814e14c2243828cb054dad60fcffa8'
+sha256sums=('4b137cdaf21dbb62e693e4f4e2bab13b4964e18a5e878a97337624c30b3d0441'
             '80c2f0ebc0da7186386f525d798bad0eaf14837c9548d86060b503751193b010')
 
 prepare() {
