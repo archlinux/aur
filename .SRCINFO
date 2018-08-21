@@ -2,7 +2,6 @@ pkgbase = mythtv-fixes
 	pkgdesc = A Homebrew PVR project
 	pkgver = 29+fixes.20180821.e5fc66e8
 	pkgrel = 1
-	epoch = 1
 	url = https://www.mythtv.org/
 	arch = x86_64
 	license = GPL
