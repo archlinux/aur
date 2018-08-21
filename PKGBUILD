@@ -6,7 +6,7 @@ version=0.9
 #fragment="#commit=7e49329 "
 files=(__init__.py cork.py exceptions.py init.py lib.py)
 #is_flat="yes"
-_blender=$(expac %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
+_blender=$(expac -S %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
 
 pkgname=blender-plugin-${name}
 pkgver=0.9.r9.g39f7746
