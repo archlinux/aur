@@ -3,7 +3,7 @@
 # Contributor: dserban <dserban01@yahoo.com>
 
 pkgname=switchboard
-pkgver=2.3.0
+pkgver=2.3.2
 pkgrel=1
 pkgdesc='The Pantheon Control Center'
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('GPL3')
 groups=('pantheon')
 depends=('clutter-gtk' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libgee' 'wayland'
          'libgranite.so')
-makedepends=('cmake' 'intltool' 'vala')
+makedepends=('cmake' 'git' 'intltool' 'vala')
 optdepends=('switchboard-plug-about: About plug'
             'switchboard-plug-applications: Applications plug'
             'switchboard-plug-datetime: Date & Time plug'
@@ -26,8 +26,8 @@ optdepends=('switchboard-plug-about: About plug'
             'switchboard-plug-power: Power plug'
             'switchboard-plug-security-privacy: Security & Privacy plug')
 provides=('libswitchboard-2.0.so')
-source=("switchboard-${pkgver}.tar.gz::https://github.com/elementary/switchboard/archive/${pkgver}.tar.gz")
-sha256sums=('3ad8a145691a91c708c17919683eee533f0fbf3ce9bc04298e723a7b750c2166')
+source=("git+https://github.com/elementary/switchboard.git#tag=${pkgver}")
+sha256sums=('SKIP')
 
 prepare() {
   if [[ -d build ]]; then
@@ -39,7 +39,7 @@ prepare() {
 build() {
   cd build
 
-  cmake ../switchboard-${pkgver} \
+  cmake ../switchboard \
     -DCMAKE_BUILD_TYPE='Release' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DCMAKE_INSTALL_LIBDIR='/usr/lib' \
