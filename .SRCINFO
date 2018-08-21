@@ -1,7 +1,7 @@
 pkgbase = python-flask-git
 	pkgdesc = Micro webdevelopment framework for Python
-	pkgver = 0.12.r46.g7a5e8ef3
-	pkgrel = 2
+	pkgver = 1.0.2.r81.g7d9dcfa2
+	pkgrel = 1
 	url = http://flask.pocoo.org/
 	arch = any
 	license = custom:BSD

@@ -1,8 +1,9 @@
-# Maintainer: Sean Enck <enckse@gmail.com>
+# Maintainer: Tyler Cook <tcc@sandpolis.com>
+# Contributor: Sean Enck <enckse@gmail.com>
 pkgname=python-flask-git
 _pkgname=flask
-pkgver=0.12.r46.g7a5e8ef3
-pkgrel=2
+pkgver=1.0.2.r81.g7d9dcfa2
+pkgrel=1
 pkgdesc='Micro webdevelopment framework for Python'
 arch=('any')
 url='http://flask.pocoo.org/'
