@@ -4,7 +4,7 @@ name=molecular
 version=1.03
 #fragment="#commit=7e49329 "
 files=(__init__.py cmolcore*.so cmolcore*.html)
-_blender=$(expac %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
+_blender=$(expac -S %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
 
 pkgname=blender-plugin-${name}
 pkgver=1.03_r193.7f8282e
