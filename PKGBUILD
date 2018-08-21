@@ -2,9 +2,9 @@
 # Contributor:
 pkgname=sensu
 _pkgname=sensu-go
-pkgver=2.0.0beta3.1
-_pkgver=2.0.0-beta.3-1
-pkgrel=8
+pkgver=2.0.0beta4.1
+_pkgver=2.0.0-beta.4-1
+pkgrel=1
 pkgdesc="A monitoring framework that aims to be simple, malleable and scalable."
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 url='https://sensu.io'
@@ -27,13 +27,7 @@ prepare(){
 
   mkdir -p "$GOPATH/src/${_gourl}"
   rm -rf "$GOPATH/src/${_gourl}"
-  mv "sensu-go" "$GOPATH/src/${_gourl}"
-  cd "$GOPATH/src/${_gourl}"
-  # git needs to be setup for the repo or it will fail
-  git config user.email "makepkg@localhost"
-  git config user.name "makepkg"
-  # apply fix for yarn.lock
-  git cherry-pick bc7cc911e37190512c4ff01f541da301e967003a
+  mv "${_pkgname}" "$GOPATH/src/${_gourl}"
 }
 
 build() {

@@ -1,4 +1,4 @@
-*.deb
+sensu-go/
 
 # Created by https://www.gitignore.io/api/vim,archlinuxpackages
 
