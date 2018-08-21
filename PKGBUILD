@@ -3,10 +3,10 @@
 # Contributor: Alessio Biancalana <dottorblaster@gmail.com>
 # Contributor: Maik Broemme <mbroemme@libmpq.org>
 
-pkgname=asterisk-cisco
+pkgname=asterisk-cisco-gvsip
 pkgver=13.21.1
 pkgrel=1
-pkgdesc="A complete PBX solution. Includes the Cisco Presence patch for use with Cisco IP Phones"
+pkgdesc="A complete PBX solution. Includes the Cisco Presence patch for use with Cisco IP Phones. Also includes Google Voice SIP Patches"
 provides=('asterisk')
 conflicts=('asterisk')
 arch=('i686' 'x86_64')
@@ -121,7 +121,7 @@ backup=('etc/asterisk/acl.conf'
 	'etc/asterisk/xmpp.conf')
 url="http://www.asterisk.org"
 license=('GPL')
-depends=('alsa-lib' 'speex' 'popt' 'libvorbis' 'curl' 'libxml2' 'jansson' 'libxslt')
+depends=('alsa-lib' 'speex' 'popt' 'libvorbis' 'curl' 'libxml2' 'jansson' 'libxslt' 'openssl')
 makedepends=('sqlite3' 'gsm')
 optdepends=('lua51' 'libsrtp' 'postgresql' 'unixodbc' 'iksemel' 'dahdi')
 source=(http://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-${pkgver}.tar.gz \
@@ -133,6 +133,7 @@ source=(http://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-$
 	https://issues.asterisk.org/jira/secure/attachment/55772/AppDialRules.xml \
 	asterisk.service \
 	asterisk.logrotated \
+    gvsip.patch \
 	asterisk.tmpfile)
 install=asterisk.install
 sha256sums=('013f61155bb53c14c8244d8d4779df931fa4a139895d7a420db99c5f339024df'
@@ -144,16 +145,18 @@ sha256sums=('013f61155bb53c14c8244d8d4779df931fa4a139895d7a420db99c5f339024df'
             'c1243a3459b0d43020f9644fa2a2a6c9003a7bd51927715d626dc4060c234818'
             '94acb6e68424195a12fd9d406b3fb586f264a550e75801f6e020a86e800dd42c'
             'caa24cfec5c6b4f8cea385269e39557362acad7e2a552994c3bc24080e3bdd4e'
+            '0d4faa71894338d9c522c3b722214b10854de1836f0c634d4776cbeac63468c0'
             '673c0c55bce8068c297f9cdd389402c2d5d5a25e2cf84732cb071198bd6fa78a')
 
 prepare() {
   cd ${srcdir}/asterisk-${pkgver}
   patch -p1 -i "${srcdir}/cisco-usecallmanager-${pkgver}.patch"
+  patch -p1 -i "${srcdir}/gvsip.patch"
 }
 
 build() {
   cd ${srcdir}/asterisk-${pkgver}
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin --with-pjproject-bundled
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin --with-pjproject-bundled --with-ssl
   make
 }
 

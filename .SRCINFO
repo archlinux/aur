@@ -1,5 +1,5 @@
-pkgbase = asterisk-cisco
-	pkgdesc = A complete PBX solution. Includes the Cisco Presence patch for use with Cisco IP Phones
+pkgbase = asterisk-cisco-gvsip
+	pkgdesc = A complete PBX solution. Includes the Cisco Presence patch for use with Cisco IP Phones. Also includes Google Voice SIP Patches
 	pkgver = 13.21.1
 	pkgrel = 1
 	url = http://www.asterisk.org
@@ -17,6 +17,7 @@ pkgbase = asterisk-cisco
 	depends = libxml2
 	depends = jansson
 	depends = libxslt
+	depends = openssl
 	optdepends = lua51
 	optdepends = libsrtp
 	optdepends = postgresql
@@ -143,6 +144,7 @@ pkgbase = asterisk-cisco
 	source = https://issues.asterisk.org/jira/secure/attachment/55772/AppDialRules.xml
 	source = asterisk.service
 	source = asterisk.logrotated
+	source = gvsip.patch
 	source = asterisk.tmpfile
 	sha256sums = 013f61155bb53c14c8244d8d4779df931fa4a139895d7a420db99c5f339024df
 	sha256sums = 3355f7abc9af1e63ae4fbf405407ba417955078caf5cbcb292c71ebd421d4720
@@ -153,7 +155,8 @@ pkgbase = asterisk-cisco
 	sha256sums = c1243a3459b0d43020f9644fa2a2a6c9003a7bd51927715d626dc4060c234818
 	sha256sums = 94acb6e68424195a12fd9d406b3fb586f264a550e75801f6e020a86e800dd42c
 	sha256sums = caa24cfec5c6b4f8cea385269e39557362acad7e2a552994c3bc24080e3bdd4e
+	sha256sums = 0d4faa71894338d9c522c3b722214b10854de1836f0c634d4776cbeac63468c0
 	sha256sums = 673c0c55bce8068c297f9cdd389402c2d5d5a25e2cf84732cb071198bd6fa78a
 
-pkgname = asterisk-cisco
+pkgname = asterisk-cisco-gvsip
 
