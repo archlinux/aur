@@ -2,7 +2,7 @@
 # Contributor:	Ondřej Surý <ondrej@sury.org>
 
 pkgname=knot-resolver
-pkgver=2.4.1
+pkgver=3.0.0
 pkgrel=1
 pkgdesc='full caching DNS resolver implementation'
 url='https://www.knot-resolver.cz/'
@@ -12,24 +12,20 @@ backup=('etc/knot-resolver/kresd.conf')
 options=(debug strip)
 install=install
 depends=('cmocka'
-	 'gnutls'
-         'knot>=2.6.7'
-	 'libedit'
-	 'libsystemd'
+         'gnutls'
+         'knot>=2.7.1'
+         'libedit'
+         'libsystemd'
          'libuv'
-	 'lmdb'
-	 'lua51-sec'
-	 'lua51-socket'
-	 'luajit')
-source=("https://secure.nic.cz/files/${pkgname}/${pkgname}-${pkgver}.tar.xz"
-	"kresd.conf"
-	"root.keys")
+         'lmdb'
+         'lua51-sec'
+         'lua51-socket'
+         'luajit')
+source=("https://secure.nic.cz/files/${pkgname}/${pkgname}-${pkgver}.tar.xz")
 
 _makevars="PREFIX=/usr SBINDIR=/usr/bin LIBDIR=/usr/lib INCLUDEDIR=/usr/include ETCDIR=/etc/knot-resolver V=1"
 
-sha256sums=('e8044316cd897ad29b3c5284de06652e1568c4d5861e3147ec2191fbacd8d9ff'
-	    '929658c7432252d5123ff11ee07759c595c8f5a3f4320a62d451a5f69cd2254a'
-	    '06c74ef5ef53344c78c9af2b29dc458a2abe93f1bff429705955c033e7a0686f')
+sha256sums=('68a0137e0e15061ee7dec53a2e424aa3266611720db3843853c6e7774a414f40')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
@@ -55,6 +51,6 @@ package() {
 	install -Dm 0644 "${srcdir}/${pkgname}-${pkgver}/distro/common/systemd/kresd.systemd.7" "${pkgdir}/usr/share/man/man7/kresd.systemd.7"
 	install -Dm 0644 "${srcdir}/${pkgname}-${pkgver}/distro/common/tmpfiles/knot-resolver.conf" "${pkgdir}/usr/lib/tmpfiles.d/knot-resolver.conf"
 	install -dm 0775 "${pkgdir}/etc/knot-resolver"
-	install -Dm 0644 "${srcdir}/kresd.conf" "${pkgdir}/etc/knot-resolver/kresd.conf"
-	install -Dm 0664 "${srcdir}/root.keys" "${pkgdir}/etc/knot-resolver/root.keys"
+	install -Dm 0644 "${srcdir}/${pkgname}-${pkgver}/distro/common/kresd.conf" "${pkgdir}/etc/knot-resolver/kresd.conf"
+	install -Dm 0664 "${srcdir}/${pkgname}-${pkgver}/distro/common/root.keys" "${pkgdir}/etc/knot-resolver/root.keys"
 }
