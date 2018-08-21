@@ -2,12 +2,12 @@
 pkgname=x11-touchscreen-calibrator-git
 _basename=${pkgname%-git}
 pkgver=0.2.r14.g1d3e955
-pkgrel=2
+pkgrel=3
 pkgdesc="X Window System Touchscreen Calibrator"
 arch=('i686' 'x86_64')
 url="https://github.com/djpohly/x11-touchscreen-calibrator"
 license=('GPL')
-depends=('libxi' 'libxrandr')
+depends=('libxi' 'libxrandr' 'libxfixes')
 makedepends=('git')
 source=("git+https://github.com/djpohly/$_basename.git")
 sha256sums=('SKIP')
