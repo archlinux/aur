@@ -2,7 +2,7 @@
 
 pkgname='stratisd'
 pkgver=0.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Easy to use local storage management for Linux.'
 arch=('x86_64')
 url='https://stratis-storage.github.io/'
@@ -23,6 +23,8 @@ build() {
 
   # patch systemd config
   sed -i 's,/usr/libexec,/usr/bin,g' stratisd.service
+  sed -i '/Type=dbus/d' stratisd.service
+  sed -i '/BusName=org.storage.stratis1/d' stratisd.service
 }
 
 check() {

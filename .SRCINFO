@@ -1,7 +1,7 @@
 pkgbase = stratisd
 	pkgdesc = Easy to use local storage management for Linux.
 	pkgver = 0.5.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://stratis-storage.github.io/
 	arch = x86_64
 	license = MPL2
