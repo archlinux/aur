@@ -2,7 +2,7 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
 name=retopoflow
-_blender=$(expac %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
+_blender=$(expac -S %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
 
 pkgname=blender-plugin-${name}-git
 pkgver=1.3.2.r0.gd9b542f
