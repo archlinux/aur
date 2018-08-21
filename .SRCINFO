@@ -1,16 +1,17 @@
-pkgbase = opencorsairlink-git
-	pkgdesc = Linux® support for Corsair H100i and other water coolers of the same brand.
-	pkgver = 20180515
+pkgbase = opencorsairlink-testing-git
+	pkgdesc = Linux® support for Corsair H100i and other water coolers of the same brand. Testing branch, more feature rich, less stable.
+	pkgver = 20180819
 	pkgrel = 1
 	url = https://github.com/audiohacked/OpenCorsairLink
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = libdrm
+	makedepends = pkg-config
 	depends = libusb
-	provides = opencorsairlink=20180515
-	source = git+https://github.com/audiohacked/OpenCorsairLink
+	provides = opencorsairlink=20180819
+	source = git+https://github.com/audiohacked/OpenCorsairLink#branch=testing
 	md5sums = SKIP
 
-pkgname = opencorsairlink-git
+pkgname = opencorsairlink-testing-git
 
