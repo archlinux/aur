@@ -1,14 +1,15 @@
 pkgbase = salome-meca-bin
 	pkgdesc = Integration of the Code_Aster solver in the Salome platform
-	pkgver = 2017.0.2
-	pkgrel = 6
+	pkgver = 2018
+	pkgrel = 1
 	url = https://www.code-aster.org/spip.php?article303
 	arch = x86_64
 	license = LGPL
+	depends = coreutils
 	depends = openblas
 	provides = salome-meca
-	source = https://www.code-aster.org/FICHIERS/Salome-Meca-2017.0.2-LGPL-1.tgz
-	md5sums = e65b4da01a8200492b94a278db621029
+	source = https://www.code-aster.org/FICHIERS/salome_meca-2018-LGPL-2.tgz
+	md5sums = 9f1b0c7b30fab902e75199a37eac5c34
 
 pkgname = salome-meca-bin
 
