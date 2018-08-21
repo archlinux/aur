@@ -15,3 +15,20 @@ pkgbase = python-pysam
 
 pkgname = python-pysam
 
+pkgbase = python-pysam
+	pkgdesc = Python interface for the SAM/BAM sequence alignment and mapping format
+	pkgver = 0.15.0
+	pkgrel = 1
+	url = https://github.com/pysam-developers/pysam
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = cython>=0.22
+	depends = python
+	provides = python-pysam
+	options = !emptydirs
+	source = https://github.com/pysam-developers/pysam/archive/v0.15.0.tar.gz
+	md5sums = 80b6cd208a601b06b3778d4af33ddb89
+
+pkgname = python-pysam
+
