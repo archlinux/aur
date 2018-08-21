@@ -3,8 +3,8 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=python-atspi-git
-pkgver=2.26.0+0+g813ba13
-pkgrel=2
+pkgver=2.26.0+7+g9ec63fc
+pkgrel=1
 pkgdesc="Python 3 bindings for at-spi (with async fixes)"
 arch=('any')
 url="https://gitlab.gnome.org/GNOME/pyatspi2"
@@ -14,11 +14,8 @@ makedepends=('python-gobject' 'gnome-common' 'git')
 provides=(python-atspi)
 conflicts=(python-atspi)
 
-_commit=813ba139a46c071103efd45ec65481213974f07f  # tags/PYATSPI_2_26_0^0
-source=("git+https://gitlab.gnome.org/GNOME/pyatspi2.git#commit=$_commit"
-        "async-fix.diff")
-sha256sums=('SKIP'
-            'ab4f8acf08e4661bbb0388995dcb45e4e103b59b16fcdd8a77b097722ebb1893')
+source=("git+https://gitlab.gnome.org/GNOME/pyatspi2.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd pyatspi2
@@ -31,7 +28,6 @@ pkgver() {
 prepare() {
   mkdir -p python2 python3
   cd pyatspi2
-  patch -p1 < ../async-fix.diff
   NOCONFIGURE=1 ./autogen.sh
 }
 

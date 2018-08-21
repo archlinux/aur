@@ -1,7 +1,7 @@
 pkgbase = python-atspi-git
 	pkgdesc = Python 3 bindings for at-spi (with async fixes)
-	pkgver = 2.26.0+0+g813ba13
-	pkgrel = 2
+	pkgver = 2.26.0+7+g9ec63fc
+	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/pyatspi2
 	arch = any
 	license = GPL2
@@ -12,10 +12,8 @@ pkgbase = python-atspi-git
 	depends = at-spi2-core
 	provides = python-atspi
 	conflicts = python-atspi
-	source = git+https://gitlab.gnome.org/GNOME/pyatspi2.git#commit=813ba139a46c071103efd45ec65481213974f07f
-	source = async-fix.diff
+	source = git+https://gitlab.gnome.org/GNOME/pyatspi2.git
 	sha256sums = SKIP
-	sha256sums = ab4f8acf08e4661bbb0388995dcb45e4e103b59b16fcdd8a77b097722ebb1893
 
 pkgname = python-atspi-git
 
