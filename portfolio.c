@@ -82,7 +82,8 @@ int portfolio_modify_string(String* pString, const char* symbol, double quantity
         if (strcmp("USD$", symbol) != 0) { // Check that the symbol is valid, except if it's USD
             Info* data = api_info_init();
             strcpy(data->symbol, symbol);
-            if (api_store_check_info(data) == NULL) {// If NULL response from APIs, it's invalid
+            api_info_store_data_batch(data, CHECK);
+            if (data->api_provider == EMPTY) {// If NULL response from APIs, it's invalid
                 api_info_destroy(&data);
                 status = 1;
                 GOTO_CLEAN_MSG("Invalid symbol.")

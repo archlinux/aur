@@ -130,7 +130,7 @@ void iex_batch_store_data_info_array(Info_Array* pInfo_Array, Data_Level data_le
 
 void iex_batch_store_data_info(Info* pInfo, Data_Level data_level) {
     char* symbol_array = malloc(SYMBOL_MAX_LENGTH);
-    free(symbol_array);
+    pointer_alloc_check(symbol_array);
     strcpy(symbol_array, pInfo->symbol);
     String* pString = iex_batch_get_data_string(&symbol_array, 1, data_level);
     Json* jobj = json_tokener_parse(pString->data);
@@ -158,7 +158,9 @@ String* iex_batch_get_data_string(char* symbol_array[SYMBOL_MAX_LENGTH], size_t 
         strcpy(endpoints, "quote,chart,company,stats,peers,news,earnings&range=5y");
     else if (data_level == CHECK)
         strcpy(endpoints, "quote,chart");
-    else strcpy(endpoints, "company,stats,peers,news,earnings&range=5y");
+    else if (data_level == MISC)
+        strcpy(endpoints, "company,stats,peers,news,earnings&range=5y");
+    else strcpy(endpoints, "news");
     sprintf(iex_api_string,
             "https://api.iextrading.com/1.0/stock/market/batch?symbols=%s&types=%s",
             symbol_list_string, endpoints);
@@ -325,6 +327,15 @@ void api_info_array_store_data_batch(Info_Array* pInfo_Array, Data_Level data_le
         info_store_check_data(pInfo_Array->array[i]);
     }
     info_array_store_totals(pInfo_Array);
+}
+
+void api_info_store_data_batch(Info* pInfo, Data_Level data_level) {
+    iex_batch_store_data_info(pInfo, data_level);
+    if (pInfo->api_provider == EMPTY && alphavantage_store_info(pInfo) == NULL &&
+        coinmarketcap_store_info(pInfo) == NULL)
+            return;
+
+    info_store_check_data(pInfo);
 }
 
 void info_store_check_data(Info* pInfo) {

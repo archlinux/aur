@@ -14,7 +14,7 @@
 #define COINMARKETCAP 3
 
 typedef enum data_level {
-    ALL, CHECK, MISC
+    ALL, CHECK, MISC, NEWS
 } Data_Level;
 
 #define DATA_ALL 0
@@ -244,6 +244,8 @@ void* coinmarketcap_store_info(void* vpInfo);
  * @param data_level the data level to store
  */
 void api_info_array_store_data_batch(Info_Array* pInfo_Array, Data_Level data_level);
+
+void api_info_store_data_batch(Info* pInfo, Data_Level data_level);
 
 /**
  * After API data and portfolio have already been collected, uses them to populate the Info fields current_value and

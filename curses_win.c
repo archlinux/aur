@@ -162,7 +162,7 @@ void portfolio_print_stock(const char* symbol) {
 
     Info* info = api_info_init();
     strcpy(info->symbol, symbol);
-    api_store_check_info(info);
+    api_info_store_data_batch(info, CHECK);
 
     info->amount = json_object_get_double(json_object_object_get(json_object_array_get_idx(jobj, i), "Shares"));
     info->total_spent = json_object_get_double(json_object_object_get(json_object_array_get_idx(jobj, i), "USD_Spent"));
@@ -181,10 +181,9 @@ void portfolio_print_stock(const char* symbol) {
 }
 
 void interface_print(const char* symbol) {
-    Info_Array* pInfo_Array = api_info_array_init_from_length(1);
-    Info* symbol_info = pInfo_Array->array[0];
+    Info* symbol_info = api_info_init();
     strcpy(symbol_info->symbol, symbol);
-    api_info_array_store_data_batch(pInfo_Array, ALL);
+    api_info_store_data_batch(symbol_info, ALL);
     if (symbol_info->api_provider == EMPTY) {
         api_info_destroy(&symbol_info);
         RET_MSG("Invalid symbol.")
@@ -359,7 +358,8 @@ void news_print(const char* symbol, int num_articles) {
     Info* symbol_info = api_info_init();
     strcpy(symbol_info->symbol, symbol);
     symbol_info->num_articles = num_articles;
-    if (iex_store_news(symbol_info) == NULL) {
+    api_info_store_data_batch(symbol_info, NEWS);
+    if (symbol_info->api_provider == EMPTY) {
         api_info_destroy(&symbol_info);
         RET_MSG("Invalid symbol");
     }
@@ -398,7 +398,8 @@ void peers_printw(WINDOW* window, const Info* symbol_info) {
 void graph_print(const char* symbol, const char* symbol2) {
     Info* symbol_info = api_info_init(), * symbol_info2 = NULL;
     strcpy(symbol_info->symbol, symbol);
-    if (api_store_check_info(symbol_info) == NULL) {
+    api_info_store_data_batch(symbol_info, CHECK);
+    if (symbol_info->api_provider == EMPTY) {
         api_info_destroy(&symbol_info);
         RET_MSG("Invalid symbol")
     }
@@ -406,7 +407,8 @@ void graph_print(const char* symbol, const char* symbol2) {
     if (symbol2 != NULL) {
         symbol_info2 = api_info_init();
         strcpy(symbol_info2->symbol, symbol2);
-        if (api_store_check_info(symbol_info2) ==  NULL) {
+        api_info_store_data_batch(symbol_info2, CHECK);
+        if (symbol_info2->api_provider ==  EMPTY) {
             api_info_destroy(&symbol_info);
             api_info_destroy(&symbol_info2);
             RET_MSG("Invalid symbol")
