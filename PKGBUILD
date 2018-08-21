@@ -2,8 +2,9 @@
 # Maintainer: Gegrely Imreh <imrehg@gmail.com>
 
 pkgname=balena
-pkgver=17.06.rev1
-pkgrel=2
+pkgver=17.12
+_branchname="${pkgver}-resin"
+pkgrel=1
 epoch=1
 pkgdesc='A Moby-based container engine for IoT'
 arch=('x86_64' 'i686')
@@ -20,7 +21,7 @@ options=('!strip' '!buildflags')
 # https://github.com/docker/containerd/issues/299#issuecomment-240745119
 # see commit in hack/dockerfile/binaries-commits
 # https://github.com/docker/docker-ce/blob/master/components/engine/hack/dockerfile/binaries-commits
-source=("git+https://github.com/resin-os/balena.git#tag=17.06-rev1"
+source=("git+https://github.com/resin-os/balena.git#branch=${_branchname}"
         "balena.service"
         "balena.socket"
         "balena.sysusers"
@@ -38,7 +39,7 @@ build() {
 }
 
 package() {
-    install -Dm755 "${srcdir}/balena/bundles/latest/dynbinary-balena/balena" "${pkgdir}/usr/bin/balena"
+    install -Dm755 "${srcdir}/balena/bundles/latest/binary-balena/balena" "${pkgdir}/usr/bin/balena"
     symlinks=(balenad balena-containerd balena-containerd-ctr balena-containerd-shim balena-proxy balena-runc)
     for s in "${symlinks[@]}"; do
         ln -s "balena" "${pkgdir}/usr/bin/${s}"
