@@ -1,40 +1,26 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-indicator-session
-pkgver=2.0.3
+pkgver=2.1.0
 pkgrel=1
-pkgdesc='Wingpanel Session Indicator'
+pkgdesc='Session indicator for Wingpanel'
 arch=('x86_64')
 url='https://github.com/elementary/wingpanel-indicator-session'
 license=('GPL3')
 groups=('pantheon')
-depends=('accountsservice' 'cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3'
+depends=('accountsservice' 'gdk-pixbuf2' 'glib2' 'gtk3'
          'libgranite.so' 'libwingpanel-2.0.so')
-makedepends=('cmake' 'gobject-introspection' 'vala' 'wingpanel')
-source=("wingpanel-indicator-session-${pkgver}.tar.gz::https://github.com/elementary/wingpanel-indicator-session/archive/${pkgver}.tar.gz")
-sha256sums=('a05bbb4d5a69887d0519214013add74b6a15a035e3c4dc22a51109f60aa309fa')
-
-prepare() {
-  if [[ -d build ]]; then
-    rm -rf build
-  fi
-  mkdir build
-}
+makedepends=('git' 'gobject-introspection' 'meson' 'vala' 'wingpanel')
+source=("git+https://github.com/elementary/wingpanel-indicator-session.git#tag=${pkgver}")
+sha256sums=('SKIP')
 
 build() {
-  cd build
-
-  cmake ../wingpanel-indicator-session-${pkgver} \
-    -DCMAKE_BUILD_TYPE='Release' \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DCMAKE_INSTALL_LIBDIR='/usr/lib'
-  make
+  arch-meson wingpanel-indicator-session build
+  ninja -C build
 }
 
 package() {
-  cd build
-
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja -C build install
 }
 
 # vim: ts=2 sw=2 et:
