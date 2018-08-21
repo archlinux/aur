@@ -1,21 +1,20 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-indicator-sound-git
-pkgver=r198.b4ec8a1
+pkgver=r275.c74ff97
 pkgrel=1
 pkgdesc='Sound indicator for Wingpanel'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://github.com/elementary/wingpanel-indicator-sound'
 license=('GPL3')
 groups=('pantheon-unstable')
-depends=('cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libcanberra' 'libgee'
-         'libnotify' 'libpulse'
+depends=('cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk2' 'gtk3' 'libcanberra'
+         'libgee' 'libnotify' 'libpulse'
          'libgranite.so' 'libwingpanel-2.0.so')
-makedepends=('cmake' 'git' 'gobject-introspection' 'granite-git' 'gtk2' 'vala'
+makedepends=('git' 'gobject-introspection' 'granite-git' 'gtk2' 'meson' 'vala'
              'wingpanel-git')
 provides=('wingpanel-indicator-sound')
 conflicts=('wingpanel-indicator-sound')
-replaces=('wingpanel-indicator-cound-bzr')
 source=('git+https://github.com/elementary/wingpanel-indicator-sound.git')
 sha256sums=('SKIP')
 
@@ -26,8 +25,6 @@ pkgver() {
 }
 
 prepare() {
-  cd wingpanel-indicator-sound
-
   if [[ -d build ]]; then
     rm -rf build
   fi
@@ -35,20 +32,16 @@ prepare() {
 }
 
 build() {
-  cd wingpanel-indicator-sound/build
+  cd build
 
-  cmake .. \
-    -DCMAKE_BUILD_TYPE='Release' \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DCMAKE_INSTALL_LIBDIR='/usr/lib' \
-    -DGSETTINGS_COMPILE='OFF'
-  make
+  arch-meson ../wingpanel-indicator-sound
+  ninja
 }
 
 package() {
-  cd wingpanel-indicator-sound/build
+  cd build
 
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja install
 }
 
 # vim: ts=2 sw=2 et:
