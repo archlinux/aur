@@ -3,7 +3,7 @@
 
 _gemname=nanaimo
 pkgname=ruby-$_gemname
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc='A library for (de)serialization of ASCII Plists.'
 arch=(any)
