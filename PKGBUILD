@@ -1,26 +1,22 @@
 # Maintainer: Alex Branham <branham@utexas.edu>
-_cranname=pls
-_cranver=2.6-0
-_pkgtar=${_cranname}_${_cranver}.tar.gz
+_cranver=2.7-0
 pkgname=r-pls
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc="Partial Least Squares and Principal Component Regression"
+pkgdesc='Partial Least Squares and Principal Component Regression'
 arch=('any')
-url="https://cran.r-project.org/package=${_cranname}"
+url='https://cran.r-project.org/package=pls'
 license=('GPL2')
 depends=('r' )
-
-optdepends=('r-rmpi')
-
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('04e02e8e46d983c5ed53c1f952b329df')
+optdepends=('r-rmpi' 'r-testthat' 'r-runit')
+source=("https://cran.r-project.org/src/contrib/pls_"$_cranver".tar.gz")
+md5sums=('cee00eec5332707f55de26ddee595baa')
 
 build(){
-    R CMD INSTALL ${_pkgtar} -l $srcdir
+    R CMD INSTALL pls_"$_cranver".tar.gz -l "$srcdir"
 }
 package() {
-    install -d "$pkgdir/usr/lib/R/library"
-    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
+    install -dm0755 "$pkgdir"/usr/lib/R/library
+    cp -a --no-preserve=ownership pls "$pkgdir"/usr/lib/R/library
 }
 
