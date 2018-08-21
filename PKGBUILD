@@ -5,7 +5,7 @@ set -u
 _pyver="python"
 _pybase='pathspec'
 pkgname="${_pyver}-${_pybase}"
-pkgver='0.5.6'
+pkgver='0.5.7'
 pkgrel='1'
 pkgdesc='Utility library for gitignore style pattern matching of file paths'
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 _srcdir="${_pybase}-${pkgver}"
 _verwatch=("https://pypi.org/simple/${_pybase}/" "${_pybase}-\([0-9\.]\+\)\.tar\.gz" 't')
 source=("https://pypi.io/packages/source/${_pybase: 0:1}/${_pybase}/${_pybase}-${pkgver}.tar.gz")
-sha256sums=('be664567cf96a718a68b33329862d1e6f6803ef9c48a6e2636265806cfceb29d')
+sha256sums=('69ac7869c9ce308cfe631e29c09f9da60fae02baf31418885bbbb0c75adcd8c5')
 
 build() {
   set -u
