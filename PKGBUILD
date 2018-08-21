@@ -3,8 +3,8 @@
 
 _gemname=tty-screen
 pkgname=ruby-$_gemname
-pkgver=0.6.4
-pkgrel=3
+pkgver=0.6.5
+pkgrel=1
 pkgdesc='Terminal screen size detection which works on Linux, OS X and Windows/Cygwin platforms and supports MRI, JRuby and Rubinius interpreters.'
 arch=(any)
 url='http://peter-murach.github.io/tty/'
@@ -13,7 +13,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('2acbee888409d2d06bec051c6af05422650e4c9e')
+sha1sums=('d82f29f1374cae91593680916f3ae18f20b5a4d1')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
