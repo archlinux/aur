@@ -1,6 +1,6 @@
 # Maintainer: Daniel Milde <daniel@milde.cz>
 pkgname=jaxx
-pkgver=1.3.17
+pkgver=1.3.18
 pkgrel=1
 pkgdesc="Multi-chain cryptocurrency wallet"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://jaxx.io/"
 license=('unknown')
 options=(!strip)
 source=("https://github.com/Jaxx-io/Jaxx/releases/download/v${pkgver}/jaxx-${pkgver}-x86_64.AppImage")
-sha256sums=('5b7c4ca531d1d5e74e66d08b1efdbd80fc62fa30efa702efbd91aba83c279e09')
+sha256sums=('a42ccb92c5dcd0a1d7667998783e162d9c48e1bf62e2b43f9d25345fed50756d')
 
 package() {
         mkdir -p $pkgdir/opt/$pkgname
