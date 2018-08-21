@@ -2,7 +2,7 @@
 _pkgname=heimdallr
 pkgname=$_pkgname
 pkgver=r91.7aebb3a
-pkgrel=1
+pkgrel=2
 pkgdesc="finding public ssh keys with ease"
 arch=('x86_64')
 url="https://github.com/AiyionPrime/heimdallr"
