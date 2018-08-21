@@ -2,7 +2,7 @@
 # Original Maintainer: Micael Dias
 
 _fragment="#tag=blendluxcore_v2.0"
-_blender=$(expac %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
+_blender=$(expac -S %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
 _name="luxcorerender"
 
 pkgname=blender-plugin-luxcorerender
