@@ -1,5 +1,5 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
-_blender=$(expac %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
+_blender=$(expac -S %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
 pkgname=blender-plugin-animation-nodes
 name=animation_nodes
 pkgver=2.0
@@ -9,7 +9,7 @@ arch=(i686 x86_64)
 url="https://github.com/JacquesLucke/animation_nodes"
 license=('GPL')
 depends=(python-numpy)
-makedepends=(cython)
+makedepends=(cython expac)
 source=("https://github.com/JacquesLucke/animation_nodes/archive/v2.0.tar.gz"
         "fix-colision-with-git-package.patch"
         )
