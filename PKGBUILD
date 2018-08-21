@@ -1,6 +1,7 @@
 # Maintainer: Jake <aur@ja-ke.tech>
 
 pkgname=searx-py3
+_pkgname=searx
 pkgver=0.14.0
 pkgrel=3
 pkgdesc="A privacy-respecting, hackable metasearch engine (python3 based)"
@@ -31,21 +32,21 @@ sha512sums=('97478d0dd61201510542d6574e7d59f43159fc30608257b8d31200567591e6fc0c1
 
 
 package() {
-  cd $srcdir/searx-$pkgver
+  cd $srcdir/$_pkgname-$pkgver
 
   # Allow newer versions of the dependencies
   sed -i "s|==|>=|g" requirements.txt
   
   # Generate a random secret key
-  sed -i -e "s/ultrasecretkey\" # change this!/`openssl rand -hex 32`\"/g" searx/settings.yml
+  sed -i -e "s/ultrasecretkey\" # change this!/`openssl rand -hex 32`\"/g" $_pkgname/settings.yml
 
   python3.7 setup.py install --root=$pkgdir --optimize=1
   
   mv $pkgdir/usr/lib/python3.7/site-packages/{README.rst,requirements*,tests,searx}
   
-  mkdir -p $pkgdir/etc/searx
-  mv $pkgdir/usr/lib/python3.7/site-packages/searx/settings.yml $pkgdir/etc/searx/
-  ln -s /etc/searx/settings.yml $pkgdir/usr/lib/python3.7/site-packages/searx/settings.yml
+  mkdir -p $pkgdir/etc/$_pkgname
+  mv $pkgdir/usr/lib/python3.7/site-packages/$_pkgname/settings.yml $pkgdir/etc/$_pkgname/
+  ln -s /etc/$_pkgname/settings.yml $pkgdir/usr/lib/python3.7/site-packages/$_pkgname/settings.yml
 
   install -Dm0644 ../searx.service $pkgdir/usr/lib/systemd/system/searx.service
   install -Dm644 "${srcdir}/searx.sysusers" "${pkgdir}/usr/lib/sysusers.d/searx.conf"
