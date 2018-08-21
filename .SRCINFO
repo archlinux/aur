@@ -1,7 +1,7 @@
 pkgbase = lib32-ffmpeg
 	pkgdesc = Complete solution to record, convert and stream audio and video (32 bit)
 	pkgver = 4.0.2
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://ffmpeg.org/
 	arch = x86_64
@@ -49,7 +49,7 @@ pkgbase = lib32-ffmpeg
 	depends = lib32-libva
 	depends = lib32-libvorbis
 	depends = lib32-libvpx
-	depends = lib32-libx264
+	depends = lib32-x264
 	depends = lib32-xvidcore
 	optdepends = lib32-ladspa: LADSPA filters
 	provides = libavcodec.so
