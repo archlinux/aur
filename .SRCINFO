@@ -1,7 +1,7 @@
 pkgbase = obhud
 	pkgdesc = Script for handling laptop-specific keys and events in Openbox
 	pkgver = 0.1.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/nwg-piotr/obhud
 	arch = i686
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = obhud
 	source = https://github.com/nwg-piotr/obhud/raw/master/dist/obhud
 	source = https://github.com/nwg-piotr/obhud/raw/master/dist/obhud.conf
 	md5sums = 77f3812e07e9b99a4ff10277148b8262
-	md5sums = 5b26cb8e7fff160d1eccc183e8ae2d28
+	md5sums = 1e4b91cc92741a45d276126646ab8036
 	md5sums = 4429cf48928bf71e761df0f9b7dcbd8a
 
 pkgname = obhud
