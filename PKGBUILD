@@ -2,14 +2,14 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=ttf-ibm-plex
-pkgver=1.1.4
+pkgver=1.1.5
 pkgrel=1
 url="https://ibm.github.io/type/"
 pkgdesc="IBM Plex Mono, Sans, and Serif typefaces in truetype format"
 arch=('any')
 license=('custom')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/IBM/type/archive/v$pkgver.tar.gz")
-sha256sums=('bd08eb276c0a684ba7fad388588af905c8fa002484650ed9a5a720ae837335b7')
+sha256sums=('46b5238046ee82b2e0d844566ddcbc7cc6003aa4a5f56ba66a348bda1151ff81')
 
 package() {
   cd plex-${pkgver}
