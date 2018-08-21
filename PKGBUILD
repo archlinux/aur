@@ -1,38 +1,26 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-printers
-pkgver=0.1.1
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Printers plug for Switchboard'
 arch=('x86_64')
 url='https://github.com/elementary/switchboard-plug-printers'
 license=('GPL3')
 groups=('pantheon')
-depends=('glib2' 'glibc' 'gtk3' 'libcups' 'libgee'
+depends=('glib2' 'gtk3' 'libcups' 'libgee'
          'libgranite.so' 'libswitchboard-2.0.so')
-makedepends=('cmake' 'vala')
-source=("switchboard-plug-printers-${pkgver}.tar.gz::https://github.com/elementary/switchboard-plug-printers/archive/${pkgver}.tar.gz")
-sha256sums=('b6dc3fac39e7dfa67baf507d932a1b6b0ead227bc36d09a08575ce0cb748209d')
-
-prepare() {
-  if [[ -d build ]]; then
-    rm -rf build
-  fi
-  mkdir build
-}
+makedepends=('git' 'meson' 'vala')
+source=("git+https://github.com/elementary/switchboard-plug-printers.git#tag=${pkgver}")
+sha256sums=('SKIP')
 
 build() {
-  cd build
-
-  cmake ../switchboard-plug-printers-${pkgver} \
-    -DCMAKE_BUILD_TYPE='Release' \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DCMAKE_INSTALL_LIBDIR='/usr/lib'
-  make
+  arch-meson switchboard-plug-printers build
+  ninja -C build
 }
 
 package() {
-  make DESTDIR="${pkgdir}" -C build install
+  DESTDIR="${pkgdir}" ninja -C build install
 }
 
 # vim: ts=2 sw=2 et:
