@@ -2,23 +2,28 @@
 
 pkgname=hdf-eos2
 pkgver=2.20
-pkgrel=2
+pkgrel=3
 pkgdesc="The HDF-EOS v2 is a software library designed built on HDF4 to support EOS-specific data structures, namely Grid, Point, and Swath."
 url="http://www.hdfeos.org/software/library.php"
 license=('GPL')
 arch=('i686' 'x86_64')
 depends=('libaec' 'hdf5' 'hdf4' 'gdal' 'hdf-eos-common')
 options=('libtool' 'staticlibs')
-source=(ftp://edhs1.gsfc.nasa.gov/edhs/hdfeos/latest_release/HDF-EOS${pkgver}v1.00.tar.Z)
-md5sums=('4697174a9296aa3d921915b75b3362d1')
+source=("ftp://edhs1.gsfc.nasa.gov/edhs/hdfeos/latest_release/HDF-EOS${pkgver}v1.00.tar.Z"
+        "szip_cc.patch")
+md5sums=('4697174a9296aa3d921915b75b3362d1'
+         'f4bf627e4dedaae3f142ca05253743eb')
 
 build() {
-  cd $srcdir/hdfeos
+  cd hdfeos
+  
+  patch -p1 -i ../szip_cc.patch
 
   ./configure CC=/usr/bin/h5cc \
     --with-hdf5=/usr \
     --with-hdf4=/opt/hdf4 \
     --with-zlib=/usr \
+    --with-szlib=/usr \
     --prefix=/usr \
     --disable-static \
     --enable-static=no \
@@ -38,7 +43,7 @@ build() {
 }
 
 package() {
-  cd $srcdir/hdfeos
+  cd hdfeos
   make DESTDIR=$pkgdir install
 
   #install example
