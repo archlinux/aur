@@ -2,7 +2,7 @@
 
 pkgname=kadnode
 pkgver=2.2.4
-pkgrel=1
+pkgrel=2
 
 pkgdesc="A P2P based DNS resolver"
 arch=('x86_64' 'i686')
@@ -19,8 +19,9 @@ install="kadnode.install"
 build()
 {
 	cd ${srcdir}/KadNode-${pkgver}
+	LDFLAGS=
 	make clean
-	make FEATURES="tls bob cmd lpd nss"
+	make
 }
 
 package() {
@@ -29,7 +30,7 @@ package() {
 	install -Dm755 build/kadnode ${pkgdir}/usr/bin/kadnode
 	install -Dm755 build/kadnode-ctl ${pkgdir}/usr/bin/kadnode-ctl
 
-	install -Dm644 build/libnss_kadnode.so.2 ${pkgdir}/usr/lib/libnss_kadnode.so.2
+	install -Dm644 build/libnss_kadnode-2.0.so ${pkgdir}/usr/lib/libnss_kadnode.so.2
 
 	# package systemd units go to /usr/lib/systemd, /etc is for admin override
 	install -Dm644 archlinux/kadnode.service ${pkgdir}/usr/lib/systemd/system/kadnode.service

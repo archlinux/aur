@@ -1,7 +1,7 @@
 pkgbase = kadnode
 	pkgdesc = A P2P based DNS resolver
 	pkgver = 2.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/mwarning/KadNode
 	install = kadnode.install
 	arch = x86_64
