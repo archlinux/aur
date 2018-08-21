@@ -4,7 +4,7 @@ name=cubesurfer
 version=1.0
 #fragment="#commit=7e49329 "
 files=(__init__.py mciso*.so mciso*.html)
-_blender=$(expac %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
+_blender=$(expac -S %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
 
 pkgname=blender-plugin-${name}
 pkgver=1.0_r22.1d6d9a6
