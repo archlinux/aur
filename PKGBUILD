@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-terminal-git
-pkgver=r1759.e13ae45
+pkgver=r1760.0ebbc82
 pkgrel=1
 pkgdesc='The Pantheon Terminal Emulator'
 arch=('x86_64')
