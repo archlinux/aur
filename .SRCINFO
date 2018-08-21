@@ -1,6 +1,6 @@
 pkgbase = dolphin-meld
 	pkgdesc = KDE File Manager, using Meld rather than Kompare
-	pkgver = 18.04.3
+	pkgver = 18.08.0
 	pkgrel = 1
 	url = https://kde.org/applications/system/dolphin/
 	arch = x86_64
@@ -21,13 +21,14 @@ pkgbase = dolphin-meld
 	optdepends = ruby: installing new service menus from KDE Store
 	optdepends = kdegraphics-thumbnailers: PDF and PS thumbnails
 	optdepends = konsole: terminal panel
-	provides = dolphin=18.04.3
-	conflicts = dolphin=18.04.3
-	source = https://download.kde.org/stable/applications/18.04.3/src/dolphin-18.04.3.tar.xz
-	source = https://download.kde.org/stable/applications/18.04.3/src/dolphin-18.04.3.tar.xz.sig
+	optdepends = purpose: share context menu
+	provides = dolphin=18.08.0
+	conflicts = dolphin=18.08.0
+	source = https://download.kde.org/stable/applications/18.08.0/src/dolphin-18.08.0.tar.xz
+	source = https://download.kde.org/stable/applications/18.08.0/src/dolphin-18.08.0.tar.xz.sig
 	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
 	validpgpkeys = F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87
-	sha256sums = 41fd637f6283c984774a4cd143960be8c7318a13d5ea75f86d1d5695ed4ca3c6
+	sha256sums = 5efb4c5dc304a6d179915b6553ad0f5232dc4e6b38a9d4dbd80a72a5351e6fe4
 	sha256sums = SKIP
 
 pkgname = dolphin-meld

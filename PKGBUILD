@@ -7,7 +7,7 @@
 
 _pkgname=dolphin
 pkgname=dolphin-meld
-pkgver=18.04.3
+pkgver=18.08.0
 pkgrel=1
 pkgdesc="KDE File Manager, using Meld rather than Kompare"
 arch=(x86_64)
@@ -19,10 +19,11 @@ depends=(baloo-widgets knewstuff kio-extras kcmutils kparts kinit)
 makedepends=(extra-cmake-modules kdoctools)
 optdepends=('kde-cli-tools: for editing file type options' 'ffmpegthumbs: video thumbnails'
             'meld: file comparisons'
-            'ruby: installing new service menus from KDE Store' 'kdegraphics-thumbnailers: PDF and PS thumbnails' 'konsole: terminal panel')
+            'ruby: installing new service menus from KDE Store' 'kdegraphics-thumbnailers: PDF and PS thumbnails'
+            'konsole: terminal panel' 'purpose: share context menu')
 groups=(kde-applications kdebase)
 source=("https://download.kde.org/stable/applications/$pkgver/src/$_pkgname-$pkgver.tar.xz"{,.sig})
-sha256sums=('41fd637f6283c984774a4cd143960be8c7318a13d5ea75f86d1d5695ed4ca3c6'
+sha256sums=('5efb4c5dc304a6d179915b6553ad0f5232dc4e6b38a9d4dbd80a72a5351e6fe4'
             'SKIP')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87) # Christoph Feck <cfeck@kde.org>
