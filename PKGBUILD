@@ -6,7 +6,7 @@ version=0.1
 #fragment="#commit=7e49329 "
 files=(io_import_gcode.py)
 is_flat="yes"
-_blender=$(expac %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
+_blender=$(expac -S %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
 
 pkgname=blender-plugin-${name}
 pkgver=0.1_r29.74a9fbf
