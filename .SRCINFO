@@ -1,16 +1,17 @@
 pkgbase = heimdallr
 	pkgdesc = finding public ssh keys with ease
-	pkgver = v1.0
+	pkgver = r91.7aebb3a
 	pkgrel = 1
 	url = https://github.com/AiyionPrime/heimdallr
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	depends = curl
 	depends = json-c
 	depends = libssh
 	provides = heimdallr
 	conflicts = heimdallr-git
-	source = https://github.com/AiyionPrime/heimdallr/archive/v1.0.tar.gz
+	source = git+https://github.com/aiyionprime/heimdallr.git
 	md5sums = SKIP
 
 pkgname = heimdallr
