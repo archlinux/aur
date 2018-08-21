@@ -4,7 +4,7 @@
 # Contributor: Maribu <leonidas200@web.de>
 
 pkgname=lib32-gdbm
-pkgver=1.17
+pkgver=1.18
 pkgrel=1
 pkgdesc='GNU database library'
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('gdbm' 'lib32-gcc-libs' 'lib32-glibc')
 makedepends=('gcc-multilib')
 source=("ftp://ftp.gnu.org/gnu/gdbm/gdbm-${pkgver}.tar.gz")
 options=('!makeflags')
-sha256sums=('7cd8cc2e35b1aaede6084ea57cc9447752f498daaea854100a4bad567614977d')
+sha256sums=('b8822cb4769e2d759c828c06f196614936c88c141c3132b18252fe25c2b635ce')
 
 build() {
   cd gdbm-${pkgver}
