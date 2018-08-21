@@ -2,7 +2,7 @@
 # Contributor: Hervé Bitteur <herve.bitteur@audiveris.com>
 pkgname=audiveris
 pkgver=5.1.0_rc
-pkgrel=1
+pkgrel=2
 pkgdesc="Music score OMR engine"
 arch=('x86_64')
 url="https://github.com/Audiveris/audiveris"
@@ -11,6 +11,7 @@ depends=(
   'java-runtime>=7'
   'java-runtime<=8'
   'tesseract-data-eng'
+  'freetype2'
 )
 makedepends=(
   'java-environment>=7'
