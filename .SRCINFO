@@ -14,7 +14,7 @@ pkgbase = hash-checker
 	depends = python-packaging>=17.1
 	source = Hash-Checker.tar.gz::https://github.com/Rizwan-Hasan/Hash-Checker/archive/v2.1.tar.gz
 	source = Hash Checker.desktop
-	md5sums = SKIP
+	md5sums = 66f6ea663a0206e980bfc96cd8c83685
 	md5sums = b2cedfbfe84c6e8688a018545414dc8e
 
 pkgname = hash-checker
