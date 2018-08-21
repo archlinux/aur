@@ -1,7 +1,7 @@
 pkgbase = powerpc-linux-gnu-gcc-stage2
 	pkgdesc = The GNU Compiler Collection. Stage 2 for toolchain building (powerpc-linux-gnu)
-	pkgver = 8.1.0
-	pkgrel = 2
+	pkgver = 8.2.0
+	pkgrel = 1
 	url = http://gcc.gnu.org
 	arch = i686
 	arch = x86_64
@@ -13,18 +13,18 @@ pkgbase = powerpc-linux-gnu-gcc-stage2
 	depends = powerpc-linux-gnu-glibc-headers>=2.27-1
 	depends = libmpc
 	depends = zlib
-	provides = powerpc-linux-gnu-gcc-stage1=8.1.0
+	provides = powerpc-linux-gnu-gcc-stage1=8.2.0
 	conflicts = powerpc-linux-gnu-gcc-stage1
 	replaces = powerpc-linux-gnu-gcc-stage1
 	options = !emptydirs
 	options = !distcc
 	options = !strip
-	source = https://ftp.gnu.org/gnu/gcc/gcc-8.1.0/gcc-8.1.0.tar.xz
-	source = http://isl.gforge.inria.fr/isl-0.18.tar.bz2
+	source = https://ftp.gnu.org/gnu/gcc/gcc-8.2.0/gcc-8.2.0.tar.xz
+	source = http://isl.gforge.inria.fr/isl-0.19.tar.bz2
 	validpgpkeys = F3691687D867B81B51CE07D9BBE43771487328A9
 	validpgpkeys = 13975A70E63C361C73AE69EF6EEB81F8981C74C7
-	sha256sums = 1d1866f992626e61349a1ccd0b8d5253816222cdc13390dcfaa74b093aa2b153
-	sha256sums = 6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b
+	sha256sums = 196c3c04ba2613f893283977e6011b2345d1cd1af9abeac58e916b1aab3e0080
+	sha256sums = d59726f34f7852a081fbd3defd1ab2136f174110fc2e0c8d10bb122173fa9ed8
 
 pkgname = powerpc-linux-gnu-gcc-stage2
 
