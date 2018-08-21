@@ -2,7 +2,7 @@
 
 pkgname=vue-cli
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Standard tooling for Vue.js development'
 arch=(i686 x86_64)
 url=https://cli.vuejs.org
@@ -21,8 +21,9 @@ build() {
 
 package() {
   cd vue-cli-$pkgver
-  _dest="$pkgdir"/usr/lib/node_modules/vue-cli
-  mkdir -p "$_dest"
-  cp -a . "$_dest"
+  _dest=/usr/lib/node_modules/vue-cli
+  mkdir -p "$pkgdir"/{$_dest,/usr/bin}
+  cp -a . "$pkgdir"/$_dest
+  ln -s $_dest/packages/@vue/cli/bin/vue.js "$pkgdir"/usr/bin/vue
   install -Dm 644 -t "$pkgdir"/usr/share/licenses/vue-cli LICENSE
 }
