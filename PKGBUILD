@@ -2,14 +2,14 @@
 
 pkgname=python-inotify-simple
 _name=inotify_simple
-pkgver=1.1.7
-pkgrel=2
+pkgver=1.1.8
+pkgrel=1
 pkgdesc="A simple wrapper around inotify."
 license=("BSD")
 url="https://pypi.python.org/pypi/inotify_simple"
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/i/${_name}/${_name}-${pkgver}.tar.gz")
-md5sums=('076f74257b9e0d8ffa4f5f31f737ddd2')
+sha256sums=('fc2c10dd73278a1027d0663f2db51240af5946390f363a154361406ebdddd8dd')
 arch=('any')
 options=(!emptydirs)
 
