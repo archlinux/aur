@@ -2,7 +2,7 @@
 
 pkgname=searx-py3
 pkgver=0.14.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A privacy-respecting, hackable metasearch engine (python3 based)"
 arch=('any')
 url="https://asciimoo.github.io/searx/"
@@ -22,12 +22,11 @@ depends=(
         'python-pysocks')
 conflicts=('searx-git' 'searx')
 backup=('etc/searx/settings.yml')
-install=searx.install
 source=("https://github.com/asciimoo/searx/archive/v$pkgver.zip"
-        'searx.install'
+        'searx.sysusers'
         'searx.service')
 sha512sums=('97478d0dd61201510542d6574e7d59f43159fc30608257b8d31200567591e6fc0c1a41a6614e74e29988e4f76d0eae276688e060a6fe7d021fa29e23bbc80b76'
-            'ad2d321f4d4c60f8aae9b577e9bbaa4558a927c198f849c610657e3994a780e6f402fe70ff36201075b1a82eddabd1b4a2c7e517a6ae5996b2b1c9ae8323c2c3'
+            '0f4e134ffb7d36807a0591b92e10d2d74a790aeba50d90dc6bdff634353a1e9ed48c572dcf724483daa9eceb5505dc9b79a1b5a8c28a228b300a01b1eafcdc9f'
             '64ab805f7e0089d9b638c2972687ba60331304b3d63bfff138ce8b7903d999f40854067c384cafbc6c635afc335bd084b758cbb7c5cac397d97ed1f31e67ac6e')
 
 
@@ -49,4 +48,5 @@ package() {
   ln -s /etc/searx/settings.yml $pkgdir/usr/lib/python3.7/site-packages/searx/settings.yml
 
   install -Dm0644 ../searx.service $pkgdir/usr/lib/systemd/system/searx.service
+  install -Dm644 "${srcdir}/searx.sysusers" "${pkgdir}/usr/lib/sysusers.d/searx.conf"
 }
