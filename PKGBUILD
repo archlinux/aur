@@ -1,13 +1,13 @@
 # Maintainer: Flat <flat@imo.uto.moe>
 pkgname=imgbrd-grabber-git
-pkgver=v5.4.2.r4.5fb5509c
+pkgver=v6.0.4.r0.a35b805a
 pkgrel=1
 pkgdesc="Very customizable imageboard/booru downloader with powerful filenaming features."
 arch=('i686' 'x86_64')
 url="https://github.com/Bionus/imgbrd-grabber"
 license=('Apache')
-depends=('qt5-multimedia' 'qt5-script')
-makedepends=('git' 'cmake')
+depends=('qt5-multimedia' 'qt5-declarative' 'nodejs')
+makedepends=('git' 'cmake' 'qt5-tools')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/Bionus/imgbrd-grabber.git')
