@@ -8,15 +8,15 @@ url="https://github.com/florentc/xob"
 license=('GPL3')
 depends=('libx11' 'libconfig')
 makedepends=('git')
-source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-md5sums=('SKIP')
+source=("${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('751d148fdf2bfa4779f05afa22673653b3475ab0418d4803162d2e4a3097f896')
 
 build() {
-	cd "$pkgname"
+	cd "$pkgname-$pkgver"
 	make PREFIX="/usr"
 }
 
 package() {
-	cd "$pkgname"
+	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" install
 }
