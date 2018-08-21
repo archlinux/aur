@@ -8,7 +8,7 @@ _package_src_dir=IndigoRenderer_x64_v${pkgver}
 _pkgver_blendigo=4.0.10
 #_blender=$(blender -v | head -n1 | cut -f2 -d ' ')
 #_blender=$(expac "%v" -S blender|egrep -o [[:alnum:]]{1}.[[:alnum:]]{2})
-_blender=$(expac %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
+_blender=$(expac -S %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
 pkgrel=4
 pkgdesc="Physically-based unbiased render engine"
 arch=('x86_64')
