@@ -3,7 +3,7 @@
 
 _gemname=simctl
 pkgname=ruby-$_gemname
-pkgver=1.6.4
+pkgver=1.6.5
 pkgrel=1
 pkgdesc='Ruby interface to xcrun simctl'
 arch=(any)
@@ -18,7 +18,7 @@ makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('3f93c4199751a9367209748affc09441cf3617d2')
+sha1sums=('f6cd9326a0ad1caca8d7b65b45361499cba49573')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
