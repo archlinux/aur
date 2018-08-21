@@ -1,7 +1,7 @@
 pkgbase = perl-par-packer
 	pkgdesc = PAR Packager
-	pkgver = 1.045
-	pkgrel = 2
+	pkgver = 1.047
+	pkgrel = 1
 	url = https://metacpan.org/release/PAR-Packer
 	arch = any
 	license = PerlArtistic
@@ -15,8 +15,8 @@ pkgbase = perl-par-packer
 	depends = perl-par>=1.010
 	depends = perl-par-dist>=0.22
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/R/RS/RSCHUPP/PAR-Packer-1.045.tar.gz
-	md5sums = a3333754b0112ee8fe80083042b89a3b
+	source = https://cpan.metacpan.org/authors/id/R/RS/RSCHUPP/PAR-Packer-1.047.tar.gz
+	md5sums = 103a265266464dc6cbfd9dfb13b800f3
 
 pkgname = perl-par-packer
 
