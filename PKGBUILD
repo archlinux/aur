@@ -3,7 +3,7 @@
 
 pkgname=autokey-py3
 pkgver=0.95.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Python 3 port of AutoKey, a desktop automation utility for Linux and X11 with new features."
 url="https://github.com/autokey/autokey"
 depends=('python' 'wmctrl' 'hicolor-icon-theme' 'python-dbus' 'python-pyinotify'
@@ -15,7 +15,7 @@ optdepends=('kdialog: for Qt interface'
             'python-pyqt5: for Qt interface'
             'python-qscintilla-qt5: for Qt interface'
             'qt-at-spi: to work with KDE/Qt applications'
-            'python-atspi-git: temporarily required for ATSPI in Gtk interface')
+            'python-atspi: for ATSPI in Gtk interface')
 conflicts=('autokey' 'autokey-gtk' 'autokey-data')
 license=('GPL3')
 arch=('any')
