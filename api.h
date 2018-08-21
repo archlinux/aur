@@ -191,6 +191,16 @@ size_t api_string_writefunc(void* ptr, size_t size, size_t nmemb, String* pStrin
  */
 String* api_curl_data(const char* url);
 
+/**
+ * This function will only store stock and ETF data.
+ * Queries several of IEX's endpoints for multiple symbols at a time to store the data in
+ * pInfo_Array. data_level will determine the endpoints queried:
+ * ALL -- quote, chart, company, stats, peers, news, earnings
+ * CHECK -- quote, chart
+ * MISC -- company, stats, peers, news, earnings
+ * @param pInfo_Array the Info_Array
+ * @param data_level endpoints to query
+ */
 void iex_batch_store_data(Info_Array* pInfo_Array, Data_Level data_level);
 
 /**
@@ -354,6 +364,12 @@ void* api_store_misc_info(void* vpInfo);
  */
 void* api_info_array_store_check_data(void* vpPortfolio_Data);
 
+/**
+ * Queries IEX, AlphaVantage, and Coinmarketcap to store api data in pInfo_Array. data_level will
+ * determine the level of data stored. See iex_batch_store_data for more information on data_level.
+ * @param pInfo_Array the Info_Array
+ * @param data_level the data level to store
+ */
 void api_info_array_store_data_batch(Info_Array* pInfo_Array, Data_Level data_level);
 
 /**
@@ -375,20 +391,67 @@ void info_array_store_totals(Info_Array* pInfo_Array);
  */
 Ref_Data* iex_get_valid_symbols(void);
 
+/**
+ * Stores the data found in IEX formatted jobj in the Info_Array.
+ * @param pInfo_Array
+ * @param jobj
+ */
 void info_array_store_all_from_json(Info_Array* pInfo_Array, const Json* jobj);
 
+/**
+ * IEX quote endpoint.
+ * intraday_time, price, price_last_close, marketcap, volume_1d, and pe_ratio is stored.
+ * @param pInfo
+ * @param jquote
+ */
 void info_store_quote_from_json(Info* pInfo, const Json* jquote);
 
+/**
+ * IEX chart endpoint.
+ * change_7d, change_30d, and points is stored.
+ * @param pInfo
+ * @param jchart
+ */
 void info_store_chart_from_json(Info* pInfo, const Json* jchart);
 
+/**
+ * IEX company endpoint.
+ * symbol, name, industry, website, description, ceo, issue_type, and sector is stored.
+ * @param pInfo
+ * @param jcompany
+ */
 void info_store_company_from_json(Info* pInfo, const Json* jcompany);
 
+/**
+ * IEX stats endpoint.
+ * div_yield, revenue, gross_profit, cash, and debt is stored.
+ * @param pInfo
+ * @param jstats
+ */
 void info_store_stats_from_json(Info* pInfo, const Json* jstats);
 
+/**
+ * IEX peers endpoint.
+ * peers is stored.
+ * @param pInfo
+ * @param jpeers
+ */
 void info_store_peers_from_json(Info* pInfo, const Json* jpeers);
 
+/**
+ * IEX news endpoint.
+ * articles and num_articles is stored.
+ * @param pInfo
+ * @param jnews
+ */
 void info_store_news_from_json(Info* pInfo, const Json* jnews);
 
+/**
+ * IEX earnings endpoint.
+ * eps, fiscal_period, and eps_year_ago is stored.
+ * @param pInfo
+ * @param jearnings
+ */
 void info_store_earnings_from_json(Info* pInfo, const Json* jearnings);
 
 /**
