@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-pango
 	pkgdesc = A library for layout and rendering of text (mingw-w64)
-	pkgver = 1.42.3
+	pkgver = 1.42.4
 	pkgrel = 1
 	url = http://www.pango.org
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = mingw-w64-pango
 	options = !strip
 	options = staticlibs
 	options = !buildflags
-	source = git+https://gitlab.gnome.org/GNOME/pango.git#commit=67471cbfe24cd4418e9e97837ac85207f0d974de
+	source = git+https://gitlab.gnome.org/GNOME/pango.git#commit=a6a89818246b0b14c0fe3d00d6120929fc0a11d9
 	sha256sums = SKIP
 
 pkgname = mingw-w64-pango
