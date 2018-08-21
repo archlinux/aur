@@ -4,8 +4,8 @@
 pkgname=memsource-editor
 _pkg=MemsourceEditor
 _platform=ubuntu-14.04
-pkgver=6.216.3
-pkgrel=2
+pkgver=6.217.2
+pkgrel=1
 pkgdesc="A CAT translation tool, requires Memsource subscription"
 arch=('x86_64')
 license=('custom')
@@ -31,9 +31,9 @@ source=("http://download.memsource.com/production/updates/memsource-editor/linux
         "memsource"
         "license.desktop")
 
-sha256sums=('14b0c32268a466142f34e251eef0cbbc7e22fbc65b90171e3f9eb85cd63b5920'
-            '943056f6643f110d94663e4bbf1650850d49ea0adb48cc0355ad5b4f6112da24'
-            'dbe0e241bc352b170577725c6f8b86922b36757f1cc82b6d16f967fe5f398266'
+sha256sums=('326f509f22cf3dcd995584d1088ec4b327ed3a9b51967fa259b8f759e11b2950'
+            'cecca627cc0371ce3b66f49922c70cd4147262d358f5fbace111cdf420bd9ce6'
+            'b6e611ad7a037e496f7b97581657a56bf9b253a127ad759fe25be06683032ce9'
             '4802b77ffefd2cdd7526fec28a690f8dc560fef74501806b3485648dcac830fe'
             '3c6d72cdb51dab05682d0c84153171de68ef14cf8b593dfd44123a9365dd1f1e')
 
@@ -69,7 +69,7 @@ package() {
     "${srcdir}/build/memsource-editor/MemsourceEditor.desktop"
 
   cp -a ${srcdir}/build/memsource-editor ${pkgdir}/opt
-  
+
   find ${pkgdir}/opt -type d | while read _item; do chmod 755 "$_item"; done
   find ${pkgdir}/opt -type f | while read _item; do chmod 644 "$_item"; done
   chmod +x ${pkgdir}/opt/memsource-editor/TranslationEditor
@@ -81,6 +81,6 @@ package() {
     ${pkgdir}/usr/share/icons/hicolor/${sz}x${sz}/apps/memsource-editor.png
     install -d ${pkgdir}/usr/share/icons/hicolor/${sz}x${sz}/mimetypes
     convert ${srcdir}/build/memsource-editor/application-x-mxliff.svg -resize ${sz}x${sz} \
-    ${pkgdir}/usr/share/icons/hicolor/${sz}x${sz}/mimetypes/memsource-editor-translation.png
+    ${pkgdir}/usr/share/icons/hicolor/${sz}x${sz}/mimetypes/application-x-memsource-editor.png
   done
 }

@@ -2,8 +2,20 @@ post_install() {
   gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
   update-mime-database /usr/share/mime
   update-desktop-database -q
+  for sz in 16 24 32 36 48 64 96 128 192 256
+  do
+    xdg-icon-resource install --size $sz --context mimetypes \
+    /usr/share/icons/hicolor/${sz}x${sz}/mimetypes/application-x-memsource-editor.png \
+    application-x-memsource-editor
+  done
+  xdg-mime install /usr/share/mime/application/x-memsource-editor.xml
 }
 
 post_remove() {
   post_install
+  for sz in 16 24 32 36 48 64 96 128 192 256
+  do
+    xdg-icon-resource uninstall --size $sz --context mimetypes application-x-memsource-editor
+  done
+  xdg-mime uninstall /usr/share/mime/application/x-memsource-editor.xml
 }
