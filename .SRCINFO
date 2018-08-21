@@ -1,0 +1,21 @@
+pkgbase = agenda-git
+	pkgdesc = A simple, fast, no-nonsense to-do (task) list designed for Pantheon Shell
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/dahenson/agenda
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = vala
+	makedepends = git
+	depends = gtk3
+	depends = vala
+	depends = granite
+	provides = agenda
+	conflicts = agenda
+	source = git+https://github.com/dahenson/agenda.git
+	md5sums = SKIP
+
+pkgname = agenda-git
+
