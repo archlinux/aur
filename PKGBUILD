@@ -4,7 +4,7 @@ name=yavne
 version=1.3.0
 #fragment="#commit=7e49329 "
 files=(__init__.py operators.py panel.py preferences.py utils.py)
-_blender=$(expac %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
+_blender=$(expac -S %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
 
 pkgname=blender-plugin-${name}
 pkgver=1.3.0_r16.8eb2b18
