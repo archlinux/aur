@@ -16,6 +16,7 @@ pkgbase = webwatcher-git
 	depends = json-glib
 	depends = libsoup
 	depends = libappindicator-gtk3
+	depends = libunity
 	depends = sqlite
 	conflicts = webwatcher
 	source = git+https://github.com/kjlaw89/webwatcher.git

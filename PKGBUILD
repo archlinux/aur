@@ -1,15 +1,16 @@
 # Maintainer: Helder Bertoldo <helder.bertoldo@gmail.com>
 
 gitname=webwatcher
+author=kjlaw89
 pkgname=("${gitname}-git")
 pkgver=latest
 pkgrel=1
 pkgdesc="Know when your websites are misbehaving! An app designed for elementary OS"
 arch=('i686' 'x86_64')
-url="https://github.com/kjlaw89/${gitname}"
+url="https://github.com/${author}/${gitname}"
 license=('GPL3')
 depends=('gtk3' 'vala' 'granite'
-         'glib2' 'json-glib' 'libsoup' 'libappindicator-gtk3' 'sqlite')
+         'glib2' 'json-glib' 'libsoup' 'libappindicator-gtk3' 'libunity' 'sqlite')
 optdepends=()
 makedepends=('git' 'meson' 'ninja')
 provides=("$_pkgname")
