@@ -1,0 +1,14 @@
+--- a/configure
++++ b/configure
+@@ -22107,11 +22107,7 @@
+    { (exit 1); exit 1; }; }
+     fi
+ 
+-    SZIP_CC=szip_cc
+-    cat $PURE_CC | $AWK '{ if ( $0 ~ /^LDFLAGS=\"(.*)/ ) { print substr($0, 1, 9) " -L'$szlib_lib' " substr($0, 10) } else  { print } } ' > $SZIP_CC
+-    chmod 755 $SZIP_CC
+     saved_CC="$CC"
+-    CC=./$SZIP_CC
+ 
+     { echo "$as_me:$LINENO: checking for szlib encoder" >&5
+ echo $ECHO_N "checking for szlib encoder... $ECHO_C" >&6; }
