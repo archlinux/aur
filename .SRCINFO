@@ -1,7 +1,7 @@
 pkgbase = spark2014-git
 	pkgdesc = formally defined programming language based on ada (gnat fsf)
-	pkgver = 0.3.draft.r17301.g094e550af
-	pkgrel = 5
+	pkgver = 0.3.draft.r17341.g2536e7fb9
+	pkgrel = 1
 	url = https://www.spark-2014.org
 	arch = x86_64
 	license = GPL
@@ -28,14 +28,10 @@ pkgbase = spark2014-git
 	source = git+https://github.com/AdaCore/spark2014
 	source = why3-adacore::git+https://github.com/AdaCore/why3
 	source = git+https://github.com/gcc-mirror/gcc
-	source = https://github.com/AdaCore/spark2014/files/2261639/sa_messages.ads.txt
-	source = https://github.com/AdaCore/spark2014/files/2261640/sa_messages.adb.txt
 	source = makefile-installdir-fixes.diff
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 6f3e5269b3d6e2b6c62d77976994056b7d32668ec2837b91e201405da52546a3
-	sha256sums = 9d4d0d228a025c1d723dbf9f18e2bfd1335f1d35a60360ad67f0cc55e2990a06
 	sha256sums = 2820a309db93782af029ba5b8492379e7aa2c58350629def00f748123866f3dd
 
 pkgname = spark2014-git
