@@ -4,7 +4,7 @@
 
 _pkgname=xfwm4
 pkgname=$_pkgname-hover-inactive
-pkgver=4.12.4
+pkgver=4.12.5
 pkgrel=1
 pkgdesc="Xfce window manager w/ hover effect for inactive windows"
 arch=('i686' 'x86_64')
@@ -16,10 +16,10 @@ makedepends=('pkgconfig' 'intltool')
 options=('!libtool')
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=(http://archive.xfce.org/src/xfce/${_pkgname}/4.12/${_pkgname}-${pkgver}.tar.bz2
+source=(https://archive.xfce.org/src/xfce/${_pkgname}/4.12/${_pkgname}-${pkgver}.tar.bz2
         0001-Add-hover-effects-for-titlebar-s-buttons-of-inactive.patch)
-sha1sums=('d1019cce2a2f7978e36cb30fdc0f27cf9f626244'
-          'bbb13e8616a560775f48e2f0a4ccc1467a8eb152')
+sha1sums=('c41e435d07d8b782e534bbdde45e429bc59b3fa2'
+          'd018ab82df264c0d222ac95704e86a840534e324')
 
 prepare() {
   cd ${srcdir}/${_pkgname}-${pkgver}
