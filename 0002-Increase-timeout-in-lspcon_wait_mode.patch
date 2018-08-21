@@ -1,0 +1,26 @@
+From 5f8d2a1c7b1c25d18e5b7a40e78be651d14ebfeb Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
+Date: Mon, 13 Aug 2018 00:40:29 +0200
+Subject: [PATCH 2/3] Increase timeout in lspcon_wait_mode
+
+From https://bugs.freedesktop.org/attachment.cgi?id=141051&action=edit
+---
+ drivers/gpu/drm/i915/intel_lspcon.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/i915/intel_lspcon.c b/drivers/gpu/drm/i915/intel_lspcon.c
+index 8ae8f42f430a..be1b08f589a4 100644
+--- a/drivers/gpu/drm/i915/intel_lspcon.c
++++ b/drivers/gpu/drm/i915/intel_lspcon.c
+@@ -74,7 +74,7 @@ static enum drm_lspcon_mode lspcon_wait_mode(struct intel_lspcon *lspcon,
+ 	DRM_DEBUG_KMS("Waiting for LSPCON mode %s to settle\n",
+ 		      lspcon_mode_name(mode));
+ 
+-	wait_for((current_mode = lspcon_get_current_mode(lspcon)) == mode, 100);
++	wait_for((current_mode = lspcon_get_current_mode(lspcon)) == mode, 1000);
+ 	if (current_mode != mode)
+ 		DRM_ERROR("LSPCON mode hasn't settled\n");
+ 
+-- 
+2.18.0
+

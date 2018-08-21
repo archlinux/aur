@@ -4,9 +4,9 @@
 
 pkgbase=linux-rc
 pkgrel=1
-_srcname=linux-4.17
-_stable=4.17.15
-_patchver=4.17.16
+_srcname=linux-4.18
+_stable=4.18.3
+_patchver=4.18.4
 _rcver=1
 pkgver=${_patchver}rc${_rcver}
 _rcpatch=patch-${_patchver}-rc${_rcver}
@@ -16,35 +16,29 @@ license=('GPL2')
 makedepends=('kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 source=(
-  "https://www.kernel.org/pub/linux/kernel/v4.x/linux-$_stable.tar".{xz,sign}
-#  https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
+  https://www.kernel.org/pub/linux/kernel/v4.x/linux-$_stable.tar.{xz,sign}
   https://www.kernel.org/pub/linux/kernel/v4.x/stable-review/$_rcpatch.{xz,sign}
-#  https://www.kernel.org/pub/linux/kernel/v4.x/patch-${_stable}.xz
   config         # the main kernel config file
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  0002-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
-  0003-ACPI-watchdog-Prefer-iTCO_wdt-always-when-WDAT-table.patch
-  0004-mac80211-disable-BHs-preemption-in-ieee80211_tx_cont.patch
+  0002-Increase-timeout-in-lspcon_wait_mode.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('e5b85dd46cf12bedb4b5d5a1ab8212aaf164ce45c41d4a4963a58d460384e079'
+sha256sums=('81ed3ccef8eb43cba3d2451a963d0bbaf5392af98435d42caee82d019a8443d4'
             'SKIP'
-            'e83b07ba823ed299a130904460d4a57404bdaaf18743344db224d75597aa38da'
+            '5a24b710f5dec1f3144a586bf85ed29feb59cb88e92a51cb009edb4074bee07d'
             'SKIP'
-            'aa7b6756f193f3b3a3fc4947e7a77b09e249df2e345e6495292055d757ba8be6'
-            '36e326d8a88b4087a3a0ee0d47643fc03baeda487659980d0e9d08791e4c729c'
+            'bb700544d499a92dab141a218cc1eac62fdff0b67682748cb827035269c02a55'
+            'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            'd7bb2655c3fb94639e2e944df64559111db71fcefb30c93a2427f6ea8ef9ce02'
-            'e4cf27e521701cb691384575e9bad853faae49b330d45337ff6f7edf407d3144'
-            '1321cbd6e2967a4f76d70d567de23b1e71639a0c6b924d371eb827af3c41a474'
-            '08d998cbbe3b51ac8a506775b0fb2c62e19d0f1ec28af56bd019f8b2b80d239d')
+            '30449a2f7f18eae3bb62e956595c0b8a584d6b998ed7539bde995d6df45c7c4e'
+            'fddc020ad516100fabc0aa16538d81d5156de377c7a0fbd2dc23b284b9e36cbe')
 
 _kernelname=${pkgbase#linux}
 
@@ -125,11 +119,7 @@ _package() {
   # remove build and source links
   rm "$modulesdir"/{source,build}
 
-  msg2 "Running depmod..."
-  depmod -b "$pkgdir/usr" -E Module.symvers -e "$kernver"
-
   msg2 "Installing hooks..."
-
   # sed expression for following substitutions
   local subst="
     s|%PKGBASE%|$pkgbase|g
@@ -225,6 +215,29 @@ _package-headers() {
         strip -v $STRIP_SHARED "$file" ;;
     esac
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
+
+  msg2 "Adding symlink..."
+  mkdir -p "$pkgdir/usr/src"
+  ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase-$pkgver"
+
+  msg2 "Fixing permissions..."
+  chmod -Rc u=rwX,go=rX "$pkgdir"
+}
+
+_package-docs() {
+  pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
+
+  local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
+
+  cd $_srcname
+
+  msg2 "Installing documentation..."
+  mkdir -p "$builddir"
+  cp -t "$builddir" -a Documentation
+
+  msg2 "Adding symlink..."
+  mkdir -p "$pkgdir/usr/share/doc"
+  ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
 
   msg2 "Fixing permissions..."
   chmod -Rc u=rwX,go=rX "$pkgdir"
