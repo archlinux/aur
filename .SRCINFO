@@ -7,7 +7,6 @@ pkgbase = google-cloud-sdk
 	license = Apache
 	depends = python2
 	optdepends = python2-crcmod: [gsutil] verify the integrity of GCS object contents
-	provides = google-cloud-sdk
 	conflicts = google-cloud-sdk-minimal
 	options = !strip
 	options = staticlibs
