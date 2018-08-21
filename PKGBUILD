@@ -31,7 +31,7 @@ prepare() {
 
 build() {
     cd "$srcdir/$pkgname"
-    ./configure
+    ./configure CFLAGS="-w"
     make
     gzip -f debian/telegram-cli.8
 }
