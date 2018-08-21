@@ -4,10 +4,10 @@
 # Contributor: Zack Baldwin <zack@zackb.com>
 
 pkgname=ombi-dev
-pkgver=3.0.3566
+pkgver=3.0.3594
 pkgrel=1
 pkgdesc="Ombi V3 Develop branch. Gives Plex or Emby users the ability to request content by themselves"
-jobid=7bhvyipd3llcqvg8
+jobid=howedbld0ufggvyy
 arch=('x86_64')
 url='https://github.com/tidusjar/Ombi'
 license=('GPL2')
@@ -30,7 +30,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://ci.appveyor.com/api/buildjobs/$job
         'ombi.sysusers'
         'ombi.tmpfiles')
 noextract=("${pkgname}-${pkgver}.tar.gz")
-sha256sums=('12425a80d6e1f1279c33c589ba1c3eccfc30ba6f6018855116bd2f3c5e00bfbd'
+sha256sums=('250c5da159af1cc387d0a754194e93b0a2498353e8bb5a827606378a83255e15'
             '79f4860eaf9d00d3739c6d9fc5e9625ea68dc329bb1cbddae5b51ae4faaae20f'
             '6efc381990e1113737686d4f61795095fa8edbc176daa877fd755f1ddb3a40fa'
             'afb971692d313d988096cb4447033f8ca2234016ccc2b3590afd5cbcb36a8e56')
