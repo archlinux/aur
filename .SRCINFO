@@ -1,7 +1,7 @@
 pkgbase = apache-flex-sdk
 	pkgdesc = The open-source framework for building expressive web and mobile applications
 	pkgver = 4.16.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://flex.apache.org/
 	install = apache-flex-sdk.install
 	arch = any
@@ -16,8 +16,8 @@ pkgbase = apache-flex-sdk
 	source = https://fpdownload.macromedia.com/get/flashplayer/installers/archive/playerglobal/playerglobal30_0.swc
 	source = apache-flex-sdk.sh
 	sha256sums = 17fda7ac8d3e476cad3127f345455ef316acfb87c6f4322e5897bd8d9b09388e
-	sha256sums = f906e5c9cbb958ec3da5c7eff054627b20eff4ac28a09bee48f6a02618fa3aad
-	sha256sums = 950fcb6fbdb1349018fd47277eaaacf0821ee44951e8b64cd1676839f0d39814
+	sha256sums = 71a8428d4d9bbdbe9bde5a8d81ec87a426436040f209ea5b3129e6651483a409
+	sha256sums = 0bb488494fed38498c90c5eb0fede79827f1b074cc21de94bebf2eae28c27890
 
 pkgname = apache-flex-sdk
 
