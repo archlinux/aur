@@ -1,27 +1,34 @@
 # $Id$
 # Contributor: Paul Nicholson <brenix@gmail.com>
 
-_name=openpyn
 pkgname=openpyn-nordvpn
-pkgver=2.2.0
-pkgrel=3
+pkgver=2.2.0.r273.gd329ec2
+pkgrel=1
 pkgdesc="Easily connect to and switch between OpenVPN servers hosted by NordVPN"
 provides=('python-openpyn' 'openpyn-nordvpn')
 arch=('any')
 url="https://github.com/jotyGill/openpyn-nordvpn"
 license=('GPLv3')
-depends=('openvpn' 'systemd' 'python-requests' 'python-colorama' 'wget' 'unzip')
+depends=('openvpn' 'systemd' 'python-humanfriendly' 'python-requests' 'python-colorama' 'python-coloredlogs' 'python-verboselogs' 'wget' 'unzip')
 makedepends=('python-setuptools')
 install="${pkgname}.install"
-source=("${_name}-${pkgver}.tar.gz::https://github.com/jotyGill/openpyn-nordvpn/releases/download/${pkgver}/${_name}-2.2.tar.gz")
-sha512sums=('2657fb3d3a5a4e649e7a84d5ed4c842a70847764948cbf99dc81fc2130eec16d87c3148949714226d78bafe3b4749a0cf75eb10518c1009b60d0149f53785d57')
+source=("${pkgname}::git+https://github.com/jotyGill/openpyn-nordvpn.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "${pkgname}"
+  ( set -o pipefail
+    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
+}
 
 build() {
-  cd "${srcdir}"/${_name}-2.2
+  cd "${srcdir}"/${pkgname}
   python setup.py build
 }
 
 package() {
-  cd "${srcdir}"/${_name}-2.2
+  cd "${srcdir}"/${pkgname}
   python setup.py install --skip-build -O1 --root="${pkgdir}"
 }

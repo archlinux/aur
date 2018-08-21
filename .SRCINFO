@@ -1,7 +1,7 @@
 pkgbase = openpyn-nordvpn
 	pkgdesc = Easily connect to and switch between OpenVPN servers hosted by NordVPN
-	pkgver = 2.2.0
-	pkgrel = 3
+	pkgver = 2.2.0.r273.gd329ec2
+	pkgrel = 1
 	url = https://github.com/jotyGill/openpyn-nordvpn
 	install = openpyn-nordvpn.install
 	arch = any
@@ -9,14 +9,17 @@ pkgbase = openpyn-nordvpn
 	makedepends = python-setuptools
 	depends = openvpn
 	depends = systemd
+	depends = python-humanfriendly
 	depends = python-requests
 	depends = python-colorama
+	depends = python-coloredlogs
+	depends = python-verboselogs
 	depends = wget
 	depends = unzip
 	provides = python-openpyn
 	provides = openpyn-nordvpn
-	source = openpyn-2.2.0.tar.gz::https://github.com/jotyGill/openpyn-nordvpn/releases/download/2.2.0/openpyn-2.2.tar.gz
-	sha512sums = 2657fb3d3a5a4e649e7a84d5ed4c842a70847764948cbf99dc81fc2130eec16d87c3148949714226d78bafe3b4749a0cf75eb10518c1009b60d0149f53785d57
+	source = openpyn-nordvpn::git+https://github.com/jotyGill/openpyn-nordvpn.git
+	sha512sums = SKIP
 
 pkgname = openpyn-nordvpn
 
