@@ -1,7 +1,7 @@
 pkgbase = ruby-googleauth
 	pkgdesc = Google Auth Library for Ruby
-	pkgver = 0.6.2
-	pkgrel = 2
+	pkgver = 0.6.5
+	pkgrel = 1
 	url = https://github.com/google/google-auth-library-ruby
 	arch = any
 	license = Apache-2.0
@@ -20,10 +20,10 @@ pkgbase = ruby-googleauth
 	depends = ruby-os<1
 	depends = ruby-signet>=0.7
 	depends = ruby-signet<1
-	noextract = googleauth-0.6.2.gem
+	noextract = googleauth-0.6.5.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/googleauth-0.6.2.gem
-	sha1sums = 41447bc2ddc56e602ba05972f24e6322763fbc33
+	source = https://rubygems.org/downloads/googleauth-0.6.5.gem
+	sha1sums = ee3d1dfcb6b7494dfb96dec0cc2ecd6c00d2242d
 
 pkgname = ruby-googleauth
 
