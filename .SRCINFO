@@ -1,0 +1,15 @@
+pkgbase = blender-plugin-light-studio-git
+	pkgdesc = Blender addon adding studio lights setup.
+	pkgver = r52.5077528
+	pkgrel = 1
+	url = https://github.com/leomoon-studios/blender-light-studio
+	arch = any
+	license = GPL
+	makedepends = expac
+	makedepends = git
+	source = light-studio::git+https://github.com/leomoon-studios/blender-light-studio.git
+	md5sums = SKIP
+
+pkgname = blender-plugin-light-studio-git
+	depends = blender
+
