@@ -31,7 +31,7 @@ source=(
     "ftp://ftp.cmbi.umcn.nl/pub/molgraph/molden/$pkgname$pkgver.tar.gz"
 )
 noextract=()
-md5sums=('4d4deb20dda0627d19980d2c6cff5b34')
+md5sums=('86a99a007d2023bb5abbf161d08b8a71')
 
 build() {
   cd "$pkgname$pkgver"
