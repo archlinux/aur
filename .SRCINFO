@@ -1,6 +1,6 @@
 pkgbase = suricata-emerging-rules
 	pkgdesc = Suricata rules from emergingthreatspro.com
-	pkgver = 8918
+	pkgver = 8983
 	pkgrel = 1
 	url = https://rules.emergingthreatspro.com/open/suricata/
 	arch = any
