@@ -1,6 +1,6 @@
 # Maintainer: Marcel Krüger <zauguin at gmail dot com>
 pkgname=stdman-git
-pkgver=v0.2.r3.15f2ae8
+pkgver=2018.03.11.r0.439fd390
 pkgrel=1
 pkgdesc="Formatted C++11/14 stdlib man pages (cppreference)"
 arch=(any)
@@ -19,7 +19,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	./configure --prefix=/usr
+	./configure --datarootdir="/usr/local"
 }
 
 package() {

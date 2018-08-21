@@ -1,6 +1,6 @@
 pkgbase = stdman-git
 	pkgdesc = Formatted C++11/14 stdlib man pages (cppreference)
-	pkgver = v0.2.r3.15f2ae8
+	pkgver = 2018.03.11.r0.439fd390
 	pkgrel = 1
 	url = https://github.com/jeaye/stdman
 	arch = any
