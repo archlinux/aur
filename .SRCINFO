@@ -1,0 +1,15 @@
+pkgbase = xob
+	pkgdesc = A lightweight volume (or anything) bar for the X Window System
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/florentc/xob
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = libx11
+	depends = libconfig
+	source = xob::git+https://github.com/florentc/xob.git#tag=v0.1
+	md5sums = SKIP
+
+pkgname = xob
+
