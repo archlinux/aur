@@ -1,12 +1,12 @@
 # Maintainer: alicewww <almw@protonmail.com>
 pkgname=mullvad-vpn
 pkgver=2018.2
-pkgrel=1
+pkgrel=2
 pkgdesc="VPN Client for Mullvad.net, a bitcoin-friendly VPN for anonymity and privacy"
 url="https://www.mullvad.net"
 arch=('any')
 license=('GPLv3')
-depends=(rpmextract gcc openssl libappindicator-gtk2 libappindicator-gtk3 rust yarn nodejs)
+depends=(rpmextract gcc openssl gtk2 gconf libappindicator-gtk2 libappindicator-gtk3)
 makedepends=()
 conflicts=(mullvad-vpn-new)
 replaces=(mullvad)
