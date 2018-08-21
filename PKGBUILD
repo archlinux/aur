@@ -11,7 +11,7 @@ depends=('python>=3.6.6' 'python-pyqt5>=5.11.2' 'python-sip-pyqt5>=4.19.12' 'pyq
 makedepends=('cython>=0.28.4')
 source=(Hash-Checker.tar.gz::"https://github.com/Rizwan-Hasan/Hash-Checker/archive/v${pkgver}.tar.gz"
                              "Hash Checker.desktop")
-md5sums=('SKIP' 
+md5sums=('66f6ea663a0206e980bfc96cd8c83685' 
 		 'b2cedfbfe84c6e8688a018545414dc8e')
 
 package() {
