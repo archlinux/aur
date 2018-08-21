@@ -1,0 +1,30 @@
+pkgbase = python-pyside
+	pkgver = 1.2.4
+	pkgrel = 9
+	url = https://wiki.qt.io/PySide
+	arch = x86_64
+	license = LGPL
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	makedepends = python-shiboken
+	makedepends = python2-shiboken
+	makedepends = phonon-qt4
+	makedepends = cmake
+	source = pypi-python-pyside-1.2.4.tar.gz::https://pypi.python.org/packages/source/P/PySide/PySide-1.2.4.tar.gz
+	sha256sums = 1421bc1bf612c396070de9e1ffe227c07c1f3129278bc7d30c754b5146be2433
+
+pkgname = python-pyside-common
+	pkgdesc = Provides LGPL Qt bindings for Python and related tools for binding generation (Common Files)
+
+pkgname = python2-pyside
+	pkgdesc = Provides LGPL Qt bindings for Python and related tools for binding generation (Python 2 version)
+	depends = python2-shiboken
+	depends = python-pyside-common
+	optdepends = phonon-qt4: for PySide.phonon
+
+pkgname = python-pyside
+	pkgdesc = Provides LGPL Qt bindings for Python and related tools for binding generation (Python 3 version)
+	depends = python-shiboken
+	depends = python-pyside-common
+	optdepends = phonon-qt4: for PySide.phonon
+
