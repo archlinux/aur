@@ -23,7 +23,7 @@ depends=('python'
          'vim')
 backup=("$_install_dir/settings.sh")
 
-source=('https://gitlab.com/mgdobachesky/ArchSystemMaintenance/raw/master/tar/maint-1.0-1.tar.xz')
+source=('https://gitlab.com/mgdobachesky/ArchSystemMaintenance/raw/master/tar/maint-1.0.tar.xz')
 
 md5sums=('81f5f794650aea59316c647ef692f154')
 
@@ -32,7 +32,7 @@ build() {
     mkdir -p "$_install_dir"
     mkdir -p "$_symlink_dir"
 
-    cd "$pkgname-$pkgver-$pkgrel"
+    cd "$pkgname-$pkgver"
 
     sed -i "s|{{PKG_PATH}}|/${_install_dir}|" "run.sh"
 
