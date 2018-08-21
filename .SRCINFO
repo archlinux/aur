@@ -1,5 +1,5 @@
 pkgbase = linux-bld
-	pkgver = 4.15.18
+	pkgver = 4.18.3
 	pkgrel = 1
 	url = https://github.com/rmullick/linux
 	arch = x86_64
@@ -10,30 +10,20 @@ pkgbase = linux-bld
 	makedepends = bc
 	makedepends = libelf
 	options = !strip
-	source = http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.15.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.15.tar.sign
-	source = http://www.kernel.org/pub/linux/kernel/v4.x/patch-4.15.18.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.15.18.sign
+	source = https://git.archlinux.org/linux.git/snapshot/linux-4.18.3-arch1.tar.xz
 	source = 60-linux.hook
 	source = 90-linux.hook
 	source = linux-bld.preset
-	source = config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=8bf91ab3f60005767a118c90bf00659e9bf0db69
-	source = https://raw.githubusercontent.com/rmullick/bld-patches/master/BLD-4.15.patch
-	source = 0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch?h=packages/linux&id=8bf91ab3f60005767a118c90bf00659e9bf0db69
-	source = 0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch?h=packages/linux&id=8bf91ab3f60005767a118c90bf00659e9bf0db69
+	source = config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=1b6a5cb5698273f17644c79b1298512deb6b6b68
+	source = https://raw.githubusercontent.com/rmullick/bld-patches/master/BLD-4.18.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = 5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769
-	sha256sums = SKIP
-	sha256sums = beac2c2aef09ea2aa4b97512071c1364dee14c0fbf291ea85cd4ab8bfb6bc5da
-	sha256sums = SKIP
+	sha256sums = cf5ac95cb29705916794cd4cb8f9a0ee49a92146dfc17dcb0e391a64a8510c18
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = 75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919
 	sha256sums = 5b51a1eacb3e00b304ca54d31f467ec1fb15fdfce93f1c62963d087bf753e812
-	sha256sums = f38927db126ec7141ea2dd70cabb2ef378552672b31db4ab621493928497abd7
-	sha256sums = 5b06300c5bf7e206a53e483820b8e8bc37415cd15ac7e0e5354ec8fd3023df02
-	sha256sums = 4ffdc2a458845c2a7c03c735477dbf51b5b01b10568bf577b37a29e872135cab
-	sha256sums = 12b281dc45f1954cc3f52276927bb2965c3132c0a8bd7f485869ced2c541d485
+	sha256sums = bb700544d499a92dab141a218cc1eac62fdff0b67682748cb827035269c02a55
+	sha256sums = 53c93e1b5c05a749a976ed4702daeab5524326d779c157f8878308125de2e68b
 
 pkgname = linux-bld
 	pkgdesc = The Linux-bld kernel and modules with BLD patches

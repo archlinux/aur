@@ -2,11 +2,12 @@
 # Contributor: graysky <graysky AT archlinux DOT us>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
-pkgbase=linux-bld       # Build kernel with a different name
+pkgbase=linux-bld
 pkgname=(linux-bld linux-bld-headers)
 _kernelname=-bld
-pkgver=4.15.18
-_srcname=linux-4.15
+pkgver=4.18.3
+archlinux_linux_version=$pkgver-arch1
+_srcname=linux-4.18
 _pkgver2=${_srcname#*-}.0
 pkgrel=1
 arch=('x86_64')
@@ -15,17 +16,12 @@ license=('GPL2')
 makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 _BLDpatch="BLD-${_srcname#*-}.patch"
-arch_config_trunk=8bf91ab3f60005767a118c90bf00659e9bf0db69
+arch_config_trunk=1b6a5cb5698273f17644c79b1298512deb6b6b68
 
 # Arch additional patches
-arch_patches=(
-  0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch
-)
-source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
-	"https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-	"http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-	"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+#arch_patches=(
+#)
+source=("https://git.archlinux.org/linux.git/snapshot/linux-${archlinux_linux_version}.tar.xz"
         '60-linux.hook'  # pacman hook for depmod
 	'90-linux.hook'  # pacman hook for initramfs regeneration
         # standard config files for mkinitcpio ramdisk
@@ -37,27 +33,17 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         )
 for _patch in ${arch_patches[@]} ; do source+=("${_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${_patch}?h=packages/linux&id=${arch_config_trunk}") ; done
 
-sha256sums=('5a26478906d5005f4f809402e981518d2b8844949199f60c4b6e1f986ca2a769'
-            'SKIP'
-            'beac2c2aef09ea2aa4b97512071c1364dee14c0fbf291ea85cd4ab8bfb6bc5da'
-            'SKIP'
+sha256sums=('cf5ac95cb29705916794cd4cb8f9a0ee49a92146dfc17dcb0e391a64a8510c18'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             '5b51a1eacb3e00b304ca54d31f467ec1fb15fdfce93f1c62963d087bf753e812'
-            'f38927db126ec7141ea2dd70cabb2ef378552672b31db4ab621493928497abd7'
-            '5b06300c5bf7e206a53e483820b8e8bc37415cd15ac7e0e5354ec8fd3023df02'
-            '4ffdc2a458845c2a7c03c735477dbf51b5b01b10568bf577b37a29e872135cab'
-            '12b281dc45f1954cc3f52276927bb2965c3132c0a8bd7f485869ced2c541d485')
+            'bb700544d499a92dab141a218cc1eac62fdff0b67682748cb827035269c02a55'
+            '53c93e1b5c05a749a976ed4702daeab5524326d779c157f8878308125de2e68b')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
 	      '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
              )
-
-# Running with a 1000 HZ tick rate (vs the ARCH 300) is reported to solve the
-# issues with the bfs/linux 3.1x and suspend. For more see:
-# http://ck-hack.blogspot.com/2013/09/bfs-0441-311-ck1.html?showComment=1378756529345#c5266548105449573343
-_1k_HZ_ticks=y
 
 # NUMA is optimized for multi-socket motherboards. A single multi-core CPU can
 # actually run slower with NUMA enabled. Most users will want to set this option
@@ -70,23 +56,20 @@ _NUMAdisable=y
 makenconfig=
 
 prepare() {
-  cd "${srcdir}/${_srcname}"
-
-  if [ "${_srcname#*-}" != "$pkgver" ]; then
-    msg2 "Appliyng upstream patch only if a sub-version is detected"
-    patch -p1 -i "${srcdir}/patch-${pkgver}"
-  else
-    msg2 "Upstream patch not needed"
-  fi
+  cd "${srcdir}/linux-$archlinux_linux_version"
 
   msg2 "BLD patches"
   patch -Np1 -i "${srcdir}/${_BLDpatch}"
 
-  msg2 "Patches from Archlinux standard package"
-  for n in ${arch_patches[@]} ; do patch -Np1 -i ../$n ; done
-
   cp -Tf ../config .config
 
+  ### Add CONFIG_BLD=y directly in .config
+  ### BLD requires NUMA_BALANCING and SMT off
+  msg "Enabling BLD. Disabling NUMA_BALANCING and SCHED_SMT"
+  echo "CONFIG_BLD=y" >> .config
+  sed -i -e 's/CONFIG_NUMA_BALANCING=y/# CONFIG_NUMA_BALANCING is not set/' \
+      -i -e '/CONFIG_NUMA_BALANCING_DEFAULT_ENABLED=y/d' \
+      -i -e 's/CONFIG_SCHED_SMT=y/# CONFIG_SCHED_SMT is not set/' ./.config
 
   ### Optionally disable NUMA for 64-bit kernels only
   # (x86 kernels do not support NUMA)
@@ -106,29 +89,11 @@ prepare() {
     fi
   fi
 
-  ### Optionally use running kernel's config
-  # code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
-  if [ -n "$_use_current" ]; then
-    if [[ -s /proc/config.gz ]]; then
-      msg "Extracting config from /proc/config.gz..."
-      # modprobe configs
-      zcat /proc/config.gz > ./.config
-    else
-      warning "Your kernel was not compiled with IKCONFIG_PROC!"
-      warning "You cannot read the current config!"
-      warning "Aborting!"
-      exit
-    fi
-  fi
-
   if [ "${_kernelname}" != "" ]; then
     sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
     sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
   fi
   
-  ### Add CONFIG_BLD=y directly in .config
-  echo "CONFIG_BLD=y" >> .config
-
   # set extraversion to pkgrel
   sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
 
@@ -165,8 +130,7 @@ prepare() {
 }
 
 build() {
-  cd ${_srcname}
-
+  cd "${srcdir}/linux-$archlinux_linux_version"
   make ${MAKEFLAGS} LOCALVERSION= bzImage modules
 }
 
@@ -178,7 +142,7 @@ package_linux-bld() {
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux-bld.install
 
-  cd ${_srcname}
+  cd "${srcdir}/linux-$archlinux_linux_version"
 
   # get kernel version
   _kernver="$(make LOCALVERSION= kernelrelease)"
@@ -231,7 +195,7 @@ package_linux-bld() {
 package_linux-bld-headers() {
   pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
 
-  cd ${_srcname}
+  cd "${srcdir}/linux-$archlinux_linux_version"
   local _builddir="${pkgdir}/usr/lib/modules/${_kernver}/build"
 
   install -Dt "${_builddir}" -m644 Makefile .config Module.symvers
@@ -248,9 +212,6 @@ package_linux-bld-headers() {
 
   install -Dt "${_builddir}/drivers/md" -m644 drivers/md/*.h
   install -Dt "${_builddir}/net/mac80211" -m644 net/mac80211/*.h
-
-  # http://bugs.archlinux.org/task/9912
-  install -Dt "${_builddir}/drivers/media/dvb-core" -m644 drivers/media/dvb-core/*.h
 
   # http://bugs.archlinux.org/task/13146
   install -Dt "${_builddir}/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
