@@ -3,7 +3,7 @@
 
 _gemname=atomos
 pkgname=ruby-$_gemname
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='A simple gem to atomically write files'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('1a5f131ad85630f851ab323a9a3e7c05da1efa3f')
+sha1sums=('ee13146975117fe09a5a165aa42ad74a18d9c978')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
