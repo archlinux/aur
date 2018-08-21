@@ -1,0 +1,38 @@
+pkgbase = shiboken
+	pkgver = 1.2.4
+	pkgrel = 4
+	url = http://www.pyside.org
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	makedepends = python2
+	makedepends = python
+	makedepends = qt4
+	makedepends = libxslt
+	source = shiboken-1.2.4.tar.gz::https://github.com/PySide/Shiboken/archive/1.2.4.tar.gz
+	source = support-new-python.diff
+	md5sums = c284197d06ad25d78009ff55f18dd512
+	md5sums = 19d5032866f4e232f442fe19f12b94de
+
+pkgname = python2-shiboken
+	pkgdesc = Support library for Python2 bindings
+	depends = qt4>=4.8
+	depends = libxslt
+	depends = python2
+	depends = shiboken
+
+pkgname = python-shiboken
+	pkgdesc = Support library for Python bindings
+	depends = qt4>=4.8
+	depends = libxslt
+	depends = python
+	depends = shiboken
+
+pkgname = shiboken
+	pkgdesc = CPython bindings generator for C++ libraries
+	depends = python
+	depends = qt4
+	depends = libxslt
+	optdepends = python2-shiboken: for compilation against python2
+	optdepends = python-shiboken: for compilation against python
+
