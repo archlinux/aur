@@ -24,6 +24,7 @@ typedef enum data_level {
 #define NAME_MAX_LENGTH 128
 #define URL_MAX_LENGTH 2048
 #define INFO_TEXT_MAX 2048
+#define NEWS_MAX_LENGTH 10500
 #define EMPTY (-999)
 #define DEFAULT_NUM_ARTICLES 3
 #define MAX_PEERS 12

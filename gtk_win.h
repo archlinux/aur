@@ -200,6 +200,8 @@ void info_pane_populate_company(const Info* pInfo);
 
 void info_pane_populate_peers(const Info* pInfo);
 
+void info_pane_populate_news(const Info* pInfo);
+
 /**
  * Shows a generic message dialog.
  * @param message the message to show

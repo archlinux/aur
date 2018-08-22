@@ -450,6 +450,7 @@ void info_pane_populate_all(const Info* pInfo) {
     info_pane_populate_header(pInfo);
     info_pane_populate_company(pInfo);
     info_pane_populate_peers(pInfo);
+    info_pane_populate_news(pInfo);
 }
 
 void info_pane_populate_header(const Info* pInfo) {
@@ -554,6 +555,20 @@ void info_pane_populate_peers(const Info* pInfo) {
                            PEER_COLUMN_PROFIT_7D_PERCENT, idx->fprofit_7d_percent,
                            PEER_COLUMN_PROFIT_30D_PERCENT, idx->fprofit_30d_percent, -1);
     }
+}
+
+void info_pane_populate_news(const Info* pInfo) {
+    GtkTextView* pTextView = GTK_TEXT_VIEW(GET_OBJECT("info_news_text_view"));
+    gchar news_buff[pInfo->num_articles * NEWS_MAX_LENGTH];
+    news_buff[0] = '\0';
+    News* article;
+    for (int i = 0; i < pInfo->num_articles; i++) {
+        article = pInfo->articles[i];
+        sprintf(&news_buff[strlen(news_buff)], "%s | %s | %s\n%s\n%s | Related: %s\n\n",
+                article->headline, article->source, article->date, article->summary, article->url,
+                article->related);
+    }
+    gtk_text_buffer_set_text(gtk_text_view_get_buffer(pTextView), news_buff, -1);
 }
 
 void show_generic_message_dialog(const char* message, gboolean success) {
