@@ -1,8 +1,8 @@
 # Maintainer: Markus Richter <mqus at disroot dot org>
 
 pkgname=bitwarden_rs-vault-git
-pkgver=v2.1.1.r0.ge7c6fbf
-pkgrel=2
+pkgver=v2.1.1.r25.g7107387
+pkgrel=3
 pkgdesc="Integrates the Vault Web-Interface into bitwarden_rs."
 arch=('any')
 url="https://github.com/bitwarden/web"
@@ -13,10 +13,8 @@ conflicts=("bitwarden_rs-vault")
 provides=('bitwarden_rs-vault') 
 install=bitwarden_rs-vault.install
 source=("git+https://github.com/bitwarden/web.git"
-	"0001-Set-Vault-BaseURL.patch"
 	"${pkgname%-git}.install")
 sha512sums=('SKIP'
-            'ac3252b4a023c1caa703d8c4c881033719676b0a5ea040f44be6c6a8b5df5ca188ba4be9adc6b8cd010cbcdd453ba89e8d71013b161ce6a261e9503e534fbf33'
             '5265612afd40cb757e7d6550ca902f9c02c558e7d03607a181df923374efdf9eff85296c216db7c96d9987eb1fe0834a7eb90de7dcd988c9f7443dc69b9469b1')
 
 pkgver() {
@@ -25,13 +23,6 @@ pkgver() {
             git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
             printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
         )
-}
-
-prepare() {
-	#patch paths
-	cd "$srcdir/web"
-	patch -N -i "$srcdir/0001-Set-Vault-BaseURL.patch" "src/app/services/services.module.ts"
-
 }
 
 build() {
