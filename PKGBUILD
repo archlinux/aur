@@ -1,6 +1,6 @@
 # Maintainer: Ammann Max <maximilian.ammann@googlemail.com>
 pkgname=mingw-w64-libmicrohttpd
-pkgver=0.9.44
+pkgver=0.9.59
 pkgrel=1
 pkgdesc="GNU libmicrohttpd is a small C library that is supposed to make it easy to run an HTTP server as part of another application"
 arch=('any')
@@ -9,8 +9,8 @@ license=('GPL')
 makedepends=('mingw-w64-configure')
 depends=('mingw-w64-crt')
 options=('!strip' '!buildflags' 'staticlibs')
-source=("https://ftp.gnu.org/gnu/libmicrohttpd/libmicrohttpd-0.9.44.tar.gz")
-md5sums=('9101b5ebf8f71792938ae672da314da2')
+source=("https://ftp.gnu.org/gnu/libmicrohttpd/libmicrohttpd-0.9.59.tar.gz")
+md5sums=('8ab5123535549195aff19e91b4e49f48')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
