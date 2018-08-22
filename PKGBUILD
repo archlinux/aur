@@ -35,6 +35,9 @@ md5sums=('SKIP'
 
 _fakeadd_error() {
 
+	echo "NOTE: makepkg -R is not supported because it does not load libfakeuser."
+	echo "      If pass -R, you will always see the following error message."
+	echo
 	echo "You must have a 'gnunet' user and group, and additionally a 'gnunetdns' group in"
 	echo 'your system prior to building this package.'
 	echo
