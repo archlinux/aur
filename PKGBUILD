@@ -3,7 +3,7 @@
 # Based on nvidia-beta: https://aur.archlinux.org/packages/nvidia-beta/
 
 pkgname=nvidia-beta-all
-pkgver=396.51
+pkgver=396.54
 pkgrel=1
 pkgdesc="NVIDIA drivers for all kernels on the system (beta)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ options=('!strip')
 install=$pkgname.install
 _pkg="NVIDIA-Linux-x86_64-$pkgver-no-compat32"
 source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/$_pkg.run")
-md5sums=('d3556202869f629e0c251b59ad4b9bee')
+md5sums=('710acf72a2d8dde844dd2638e0782819')
 
 # Patch
 #source+=('linux-4.11.patch')
