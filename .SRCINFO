@@ -1,7 +1,7 @@
 pkgbase = ruby-emoji_regex
 	pkgdesc = A pair of Ruby regular expressions for matching Unicode Emoji symbols.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ticky/ruby-emoji-regex
 	arch = any
 	license = MIT
