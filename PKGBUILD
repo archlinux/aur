@@ -3,7 +3,7 @@
 pkgname=perl-coro
 _realname=Coro
 pkgver=6.514
-pkgrel=2
+pkgrel=3
 pkgdesc="CPAN/Coro - the only real threads in perl"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
@@ -38,7 +38,7 @@ fi
 package() {
   cd $_realname-$pkgver
   make PERL_MM_USE_DEFAULT=1 DESTDIR="$pkgdir" install
-  find "$pkgdir" -name '.packlist' -o -name '*.pod' -delete
+  find "$pkgdir" \( -name '.packlist' -o -name '*.pod' \) -delete
   _perl_depends
 }
 

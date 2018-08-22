@@ -1,7 +1,7 @@
 pkgbase = perl-coro
 	pkgdesc = CPAN/Coro - the only real threads in perl
 	pkgver = 6.514
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/Coro
 	arch = i686
 	arch = x86_64
