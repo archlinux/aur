@@ -113,17 +113,22 @@ Cryptocurrency information is taken from Coinmarketcap's free API.
 Please do not abuse the APIs by repeatedly requesting information. Read
 the provided license for more information.
 #### Future Ideas/To-do
-* Look for API to replace Morningstar/AlphaVantage for MUTF/OTCMKTS data, preferably with
-intraday data (wait for iex v2 probably)
+* APIv2 will be released in early Q4 (https://github.com/iexg/IEX-API/issues/403), which will likely enable:
+    * Better reliability for issue type (I had problems in the past with it)
+    * Mutual funds
+    * Options
+    * Commodities
+    * Indices
+    * OTC
+    * Treasuries
+    * Ratings
+    * Currencies
+    * International
 * DEB/RPM package
-* List whether stock/etf/mutual fund/crypto/etc. in portfolio for less API calls
-and portfolio distribution (tried to implement, but IEX API is unpredictable; wait for v2)
-* Format prices with commas (set locale?)
-* Function to add new attributes to portfolio if not found
 * Bookmark certain stocks (not included in portfolio)
 * Zoom in more than one month for graph
 * Average graph points when skipping indices for greater accuracy
 * Android app?
-* Index support (djia, sp500)
 * History stack
 * GUI info, graph, etc.
+* Replace coinmarketcap (depending on iexv2 release date)
