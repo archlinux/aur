@@ -9,7 +9,7 @@ url='https://github.com/HalosGhost/enlighten'
 arch=('i686' 'x86_64')
 license=('GPL3')
 
-makedepends=('git' 'clang' 'python-docutils')
+makedepends=('git' 'clang' 'python-docutils' 'python-sphinx')
 
 source=('git+https://github.com/HalosGhost/enlighten.git')
 sha256sums=('SKIP')
