@@ -1,17 +1,20 @@
 # Maintainer: orumin <dev at orum.in>
 
-pkgname=lib32-ilmbase
 _basename=ilmbase
-pkgver=2.2.0
+pkgname=lib32-ilmbase
+pkgver=2.3.0
 pkgrel=1
-depends=('gcc-libs-multilib' 'ilmbase')
-pkgdesc="Base libraries from ILM for OpenEXR"
+depends=('gcc-libs-multilib' 'ilmbase' 'lib32-glu')
+pkgdesc="Base libraries from ILM for OpenEXR (32-bit)"
 arch=(x86_64)
 url="http://www.openexr.com"
 license=('custom')
-source=(http://download.savannah.nongnu.org/releases/openexr/$_basename-$pkgver.tar.gz
+source=(https://github.com/openexr/openexr/releases/download/v$pkgver/$_basename-$pkgver.tar.gz
         ilmbase-2.0.1-no_undefined.patch
         ilmbase-1.0.3-pkgconfig.patch)
+sha256sums=('456978d1a978a5f823c7c675f3f36b0ae14dba36638aeaa3c4b0e784f12a3862'
+            'ac295811a586dbd1d2ec3fa5dcb40580722b1c97523ff64dfcbd8c7bfaa93aa5'
+            'e1050e564987df31a2ed83218c7aa62486b8c117179b0184933c92172eba9bda')
 
 prepare() {
   cd "${srcdir}/$_basename-$pkgver"
@@ -26,7 +29,9 @@ build() {
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
   cd "${srcdir}/$_basename-$pkgver"
-  ./configure --prefix=/usr --build=i686-pc-linux-gnu --libdir=/usr/lib32
+  ./configure --prefix=/usr \
+	  --build=i686-pc-linux-gnu \
+	  --libdir=/usr/lib32
   # manually set PTHREAD_LIBS to include -lpthread until libtool bogosity is fixed,
   # https://bugzilla.redhat.com/show_bug.cgi?id=661333
   make PTHREAD_LIBS="-pthread -lpthread"
@@ -43,6 +48,3 @@ package() {
   make DESTDIR="${pkgdir}" install
   rm -r "${pkgdir}"/usr/include
 }
-md5sums=('b540db502c5fa42078249f43d18a4652'
-         '27ff3915e03964f85a9e9fb896a93479'
-         'ed3eb3dfa2393adc6829cc9ca8caa0ff')

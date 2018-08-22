@@ -1,18 +1,19 @@
 pkgbase = lib32-ilmbase
-	pkgdesc = Base libraries from ILM for OpenEXR
-	pkgver = 2.2.0
+	pkgdesc = Base libraries from ILM for OpenEXR (32-bit)
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = http://www.openexr.com
 	arch = x86_64
 	license = custom
 	depends = gcc-libs-multilib
 	depends = ilmbase
-	source = http://download.savannah.nongnu.org/releases/openexr/ilmbase-2.2.0.tar.gz
+	depends = lib32-glu
+	source = https://github.com/openexr/openexr/releases/download/v2.3.0/ilmbase-2.3.0.tar.gz
 	source = ilmbase-2.0.1-no_undefined.patch
 	source = ilmbase-1.0.3-pkgconfig.patch
-	md5sums = b540db502c5fa42078249f43d18a4652
-	md5sums = 27ff3915e03964f85a9e9fb896a93479
-	md5sums = ed3eb3dfa2393adc6829cc9ca8caa0ff
+	sha256sums = 456978d1a978a5f823c7c675f3f36b0ae14dba36638aeaa3c4b0e784f12a3862
+	sha256sums = ac295811a586dbd1d2ec3fa5dcb40580722b1c97523ff64dfcbd8c7bfaa93aa5
+	sha256sums = e1050e564987df31a2ed83218c7aa62486b8c117179b0184933c92172eba9bda
 
 pkgname = lib32-ilmbase
 
