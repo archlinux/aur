@@ -5,7 +5,7 @@
 
 pkgname=lib32-gdbm
 pkgver=1.18
-pkgrel=1
+pkgrel=2
 pkgdesc='GNU database library'
 arch=('x86_64')
 url='http://www.gnu.org/software/gdbm/gdbm.html'

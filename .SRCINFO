@@ -1,7 +1,7 @@
 pkgbase = lib32-gdbm
 	pkgdesc = GNU database library
 	pkgver = 1.18
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnu.org/software/gdbm/gdbm.html
 	arch = x86_64
 	license = GPL
