@@ -1,0 +1,25 @@
+pkgbase = cynthiune.app
+	pkgdesc = Romantic and extensible music player for GNUstep and Mac OS X
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://gap.nongnu.org/cynthiune/index.html
+	arch = i686
+	arch = x86_64
+	groups = gnustep-apps
+	license = GPL
+	makedepends = gcc-objc
+	makedepends = gnustep-make
+	depends = gnustep-base
+	depends = gnustep-gui
+	depends = gnustep-back
+	depends = libid3tag
+	depends = libmad
+	depends = libvorbis
+	depends = libogg
+	depends = libmpcdec
+	depends = esound
+	source = http://savannah.nongnu.org/download/gap/Cynthiune-1.0.0.tar.gz
+	sha256sums = 3cc5228c8cdb66256bbcec4b317bbd3853397f09ec9b7378a7f65140eff5bcaf
+
+pkgname = cynthiune.app
+
