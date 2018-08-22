@@ -1,5 +1,5 @@
 pkgname=nanocurrency
-pkgver=14.2
+pkgver=15.2
 _tag="V$pkgver"
 pkgrel=1
 pkgdesc="Nano (formerly RaiBlocks) is a cryptocurrency designed from the ground up for scalable instant transactions and zero transaction fees."
@@ -17,7 +17,7 @@ source=(nanowallet.desktop
   nano-node.service
   "git+https://github.com/nanocurrency/raiblocks.git#tag=${_tag}"
   git+https://github.com/weidai11/cryptopp.git
-  git+https://github.com/clemahieu/lmdb.git
+  "git+https://github.com/nanocurrency/lmdb.git#branch=lmdb_0_9_21"
   git+https://github.com/miniupnp/miniupnp.git
   git+https://github.com/clemahieu/phc-winner-argon2.git)
 
