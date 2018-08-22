@@ -1,0 +1,35 @@
+pkgbase = yaourtix-git
+	pkgdesc = Yaourt (= a pacman wrapper with extended features and AUR support) patched with user definable repo-support for building from source, and other customizepkg-enhancements.
+	pkgver = 1.9.r3.gfe1bcdd
+	pkgrel = 1
+	url = http://www.archlinux.fr/yaourt-en/
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = package-query>=1.8
+	depends = pacman>=5.0
+	optdepends = aurvote: Vote for your favorite AUR packages.
+	optdepends = git: Retrieve PKGBUILDs from Artix Linux and other repositories.
+	optdepends = subversion: Retrieve PKGBUILDs from some unofficial user repositories.
+	optdepends = customizepkg: Automatically modify PKGBUILD during install/upgrade.
+	provides = yaourt=1.9.r3.gfe1bcdd
+	provides = yaourt-git=1.9.r3.gfe1bcdd
+	provides = yaourtix=1.9.r3.gfe1bcdd
+	conflicts = yaourt
+	conflicts = yaourt-git
+	conflicts = yaourtix
+	backup = etc/yaourtrc
+	backup = etc/yaourtix/abs-logic.sh
+	source = yaourt::git+https://github.com/archlinuxfr/yaourt.git
+	source = abs-logic.sh::http://ix.io/1kYS
+	source = yaourt_customizepkg-abort-on-error.patch::http://ix.io/STN
+	source = abs-logic.patch::http://ix.io/1kYR
+	source = abs.abort-on-error.patch::http://ix.io/1kYT
+	sha256sums = SKIP
+	sha256sums = eb03ef2c373b3e1f0128a96870fcd50c11d56041b6a56c92c5109ce3b54083e8
+	sha256sums = 99ee7a66e5468d9a95fa855ed245234224961159e85f215a9705410fa393a84f
+	sha256sums = 90a28218294ee2ba70193e9b5a77aab982f0ceae3800e8157e37f675fc1093f2
+	sha256sums = 1b0f81e2a516777922ab312d46ab2a95a679af556ca4dba84f9868bf9797511e
+
+pkgname = yaourtix-git
+
