@@ -5,7 +5,7 @@
 
 pkgname=ocrmypdf
 pkgver=7.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to add an OCR text layer to scanned PDF files, allowing them to be searched"
 url="https://github.com/jbarlow83/OCRmyPDF"
 arch=('any')
@@ -25,6 +25,7 @@ depends=('python>=3.5'
                 'pngquant>=2.0.0'
                 'python-xmp-toolkit>=2.0.1'
                 'python-pikepdf>=0.3.1'
+                'python-reportlab>=3.3.0'
 )
 
 makedepends=('python-setuptools')
