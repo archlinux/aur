@@ -1,0 +1,14 @@
+pkgbase = nodejs-git-stats-html
+	pkgdesc = Turn git-stats result into HTML output.
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://github.com/IonicaBizau/git-stats-html
+	arch = any
+	license = MIT
+	depends = nodejs
+	noextract = git-stats-html-1.0.6.tgz
+	source = http://registry.npmjs.org/git-stats-html/-/git-stats-html-1.0.6.tgz
+	sha256sums = aa8b2245b2151481d02ba06586dec01ce5cb09c9e1b708e41f33121a417e5b46
+
+pkgname = nodejs-git-stats-html
+
