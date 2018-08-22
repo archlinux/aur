@@ -1,0 +1,12 @@
+pkgbase = bunny-git
+	pkgdesc = A simple shell script wrapper around multiple package managers
+	pkgver = 1
+	pkgrel = 1
+	url = https://gitlab.com/tim241/bunny
+	arch = any
+	license = GPLv3
+	source = git+https://gitlab.com/tim241/bunny.git
+	sha256sums = SKIP
+
+pkgname = bunny-git
+
