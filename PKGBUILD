@@ -2,8 +2,8 @@
 
 
 pkgname=cloudcross
-pkgver=1.4.2
-pkgrel=1
+pkgver=1.4.0
+pkgrel=2
 pkgdesc="CloudCross is a improved multi-cloud client with OneDrive, Yandex disk, Google Drive, Dropbox and Mail.ru support."
 arch=('i686' 'x86_64')
 url="http://cloudcross.mastersoft24.ru"
@@ -22,7 +22,7 @@ source=("https://github.com/MasterSoft24/CloudCross/archive/master.tar.gz")
 #source=("dev.tar.gz")
 
 
-md5sums=('72780e225692ab6c8d76fd9f175ddb3c')
+md5sums=("")
 
 
 build() {
@@ -42,11 +42,11 @@ package() {
 	#cd "$srcdir/CloudCross-dev/build"
 	
 	mkdir -p "${pkgdir}/usr/bin"
-        mkdir -p "${pkgdir}/usr/share/man/man0"
+        mkdir -p "${pkgdir}/usr/share/man/man1"
 	
 	
 	cp "$srcdir/CloudCross-master/build/ccross-app/ccross" "${pkgdir}/usr/bin"
 	cp "$srcdir/CloudCross-master/build/ccross-curl-executor/ccross-curl" "${pkgdir}/usr/bin"
-        cp "$srcdir/CloudCross-master/ccross-app/doc/ccross" "${pkgdir}/usr/share/man/man0"
+        cp "$srcdir/CloudCross-master/ccross-app/doc/ccross" "${pkgdir}/usr/share/man/man1"
 
 }
