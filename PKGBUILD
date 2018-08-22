@@ -3,12 +3,12 @@
 _pkgbase=netfilter-full-cone-nat
 pkgname=netfilter-full-cone-nat-dkms
 pkgver=git+ec14efe
-pkgrel=1
+pkgrel=2
 pkgdesc="A kernel module that turns MASQUERADE into full cone SNAT"
 arch=('x86_64')
 url="https://github.com/Chion82/netfilter-full-cone-nat"
 license=('GPL2')
-depends=('dkms' 'linux-headers')
+depends=('dkms')
 conflicts=("${_pkgbase}")
 source=('dkms.conf'
 	'xt_FULLCONENAT.c.patch'
