@@ -1,7 +1,7 @@
 pkgbase = xmobar-alsa
 	pkgdesc = A Minimalistic Text Based Status Bar compiled with ALSA
-	pkgver = 0.26
-	pkgrel = 3
+	pkgver = 0.27
+	pkgrel = 1
 	url = https://hackage.haskell.org/package/xmobar
 	arch = i686
 	arch = x86_64
@@ -19,18 +19,21 @@ pkgbase = xmobar-alsa
 	depends = haskell-utf8-string
 	depends = haskell-network-uri
 	depends = haskell-hinotify
+	depends = haskell-stm
+	depends = haskell-parsec
+	depends = haskell-parsec-numbers
+	depends = haskell-mtl
 	depends = haskell-regex-base
 	depends = haskell-regex-compat
 	depends = haskell-http
-	depends = haskell-dbus0.10
+	depends = haskell-dbus
 	depends = haskell-libmpd
 	depends = haskell-iwlib
 	depends = wireless_tools
+	depends = haskell-text
 	conflicts = xmobar
-	source = xmobar-alsa-0.26.tar.gz::https://github.com/jaor/xmobar/archive/0.26.tar.gz
-	source = hinotify-0.3.10.patch::https://github.com/jaor/xmobar/commit/fb0a23f395445540f865ae00b33e75e0175db4ef.patch
-	sha512sums = c67c1552f7183a6f33b472f19686cda41cca27c0de89a8d0dcb1f8ea008aea85a143d75608d4392a1a1c9933737a6cbe881cff9ddd13f632d581cd0e10ca8d4d
-	sha512sums = 53b7cca689386e976383ebbe56db877fb01896a5dfcb1e4e4e5424a9ce1ef7cc75a38dbed2bdb23e9521357c1e5945a7b58f70df07029fd38e398c6ca4891264
+	source = xmobar-alsa-0.27.tar.gz::https://github.com/jaor/xmobar/archive/0.27.tar.gz
+	sha512sums = ad235a81dd59a972646c189500b665c9c18d3ca644c9fa4bc18f6f1004e1e6914b6b5f3e83db439b946efd622bbf4d0894eb84fcf521255916f095632d8249da
 
 pkgname = xmobar-alsa
 

@@ -1,8 +1,8 @@
 # Maintainer: Andy B. <brofi.archlinux at gmail dot com>
 
 pkgname=xmobar-alsa
-pkgver=0.26
-pkgrel=3
+pkgver=0.27
+pkgrel=1
 pkgdesc="A Minimalistic Text Based Status Bar compiled with ALSA"
 url="https://hackage.haskell.org/package/xmobar"
 license=('BSD')
@@ -11,19 +11,13 @@ conflicts=('xmobar')
 depends=('haskell-alsa-core>=0.5.0' 'haskell-alsa-mixer>0.2.0.2' 'libxft'
          'libxinerama' 'libxrandr' 'libxpm' 'ghc-libs' 'haskell-x11'
          'haskell-x11-xft' 'haskell-utf8-string' 'haskell-network-uri'
-         'haskell-hinotify' 'haskell-regex-base' 'haskell-regex-compat'
-         'haskell-http' 'haskell-dbus0.10' 'haskell-libmpd' 'haskell-iwlib'
-         'wireless_tools')
+         'haskell-hinotify' 'haskell-stm' 'haskell-parsec'
+         'haskell-parsec-numbers' 'haskell-mtl' 'haskell-regex-base'
+         'haskell-regex-compat' 'haskell-http' 'haskell-dbus' 'haskell-libmpd'
+         'haskell-iwlib' 'wireless_tools' 'haskell-text')
 makedepends=('ghc')
-source=(${pkgname}-${pkgver}.tar.gz::https://github.com/jaor/xmobar/archive/${pkgver}.tar.gz
-        hinotify-0.3.10.patch::https://github.com/jaor/xmobar/commit/fb0a23f395445540f865ae00b33e75e0175db4ef.patch)
-sha512sums=('c67c1552f7183a6f33b472f19686cda41cca27c0de89a8d0dcb1f8ea008aea85a143d75608d4392a1a1c9933737a6cbe881cff9ddd13f632d581cd0e10ca8d4d'
-            '53b7cca689386e976383ebbe56db877fb01896a5dfcb1e4e4e5424a9ce1ef7cc75a38dbed2bdb23e9521357c1e5945a7b58f70df07029fd38e398c6ca4891264')
-
-prepare() {
-  cd xmobar-$pkgver
-  patch -p1 -i ../hinotify-0.3.10.patch
-}
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/jaor/xmobar/archive/${pkgver}.tar.gz)
+sha512sums=('ad235a81dd59a972646c189500b665c9c18d3ca644c9fa4bc18f6f1004e1e6914b6b5f3e83db439b946efd622bbf4d0894eb84fcf521255916f095632d8249da')
 
 build() {
     cd xmobar-$pkgver
