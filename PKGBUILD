@@ -2,7 +2,7 @@
 
 pkgname=libaxc
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Client lib for libsignal-protocol-c"
 arch=('i686' 'x86_64')
 url='https://github.com/gkdr/axc'
@@ -27,7 +27,7 @@ build() {
 package() {
     cd "${srcdir}/axc-${pkgver}"
     mkdir -p "${pkgdir}/usr/lib"
-    install build/libaxc.a "${pkgdir}/usr/lib"
-    mkdir -p "${pkgdir}/usr/include/axc"
-    install src/*.h "${pkgdir}/usr/include/axc"
+    install build/*.a "${pkgdir}/usr/lib"
+    mkdir -p "${pkgdir}/usr/include"
+    install src/*.h "${pkgdir}/usr/include"
 }

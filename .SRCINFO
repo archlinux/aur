@@ -1,7 +1,7 @@
 pkgbase = libaxc
 	pkgdesc = Client lib for libsignal-protocol-c
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gkdr/axc
 	arch = i686
 	arch = x86_64
