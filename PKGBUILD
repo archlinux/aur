@@ -4,7 +4,7 @@
 pkgname=perl-b-hooks-op-check
 _cpanname="B-Hooks-OP-Check"
 pkgver=0.19
-pkgrel=6
+pkgrel=7
 pkgdesc="Wrap OP check callbacks"
 arch=('i686' 'x86_64')
 license=('GPL' 'PerlArtistic')
@@ -53,6 +53,6 @@ package() {
 	make install
 
 	# Remove "perllocal.pod" and ".packlist".
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 	_perl_depends
 }
