@@ -22,7 +22,7 @@ prepare() {
     sed -i '70,73{s/^.*//}' GNUmakefile
   fi
   #libmpcdec
-  if test "$pkg-config --exists esound" != 0; then
+  if test "$pkg-config --exists libmpcdec" != 0; then
     sed -i '74,76{s/^.*//}' GNUmakefile
   fi
   #esound
