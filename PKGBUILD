@@ -1,7 +1,7 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=qt5ct-svn
-pkgver=0.36.r485
+pkgver=0.37.r501
 pkgrel=1
 pkgdesc="Qt5 Configuration Tool - svn version."
 arch=('i686' 'x86_64')
