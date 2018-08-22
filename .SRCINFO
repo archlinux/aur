@@ -1,0 +1,17 @@
+pkgbase = libomemo
+	pkgdesc = Implements OMEMO in C
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://github.com/gkdr/libomemo
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = mxml
+	depends = libgcrypt
+	depends = glib2
+	depends = sqlite
+	source = https://github.com/gkdr/libomemo/archive/v0.6.2.tar.gz
+	md5sums = 57a838ae647a94e409c01b9ee9869945
+
+pkgname = libomemo
+
