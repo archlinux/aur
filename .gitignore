@@ -1,0 +1,5 @@
+/pkg/
+/src/
+/libwpe-git/
+/*.tar
+/*.tar.gz
