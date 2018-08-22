@@ -1,19 +1,20 @@
-# Maintainer: GordonGR <ntheo1979@gmail.com>
+# Maintainer: Adam <adam900710@gmail.com>
+# Contributor: GordonGR <ntheo1979@gmail.com>
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 
 _pkgname=fftw
 pkgname=lib32-${_pkgname}
-pkgver=3.3.7
+pkgver=3.3.8
 pkgrel=1
 pkgdesc="A library for computing the discrete Fourier transform (DFT) (32 bit)"
 arch=('x86_64')
 license=('GPL2')
 url="http://www.fftw.org/"
 depends=('lib32-glibc' "${_pkgname}")
-makedepends=('gcc-fortran-multilib')
+makedepends=('gcc-fortran')
 options=('!libtool')
 source=("http://www.fftw.org/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('0d5915d7d39b3253c1cc05030d79ac47')
+sha1sums=('59831bd4b2705381ee395e54aa6e0069b10c3626')
 
 # notes:
 # http://www.fftw.org/fftw2_doc/fftw_6.html#SEC69
