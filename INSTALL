@@ -1,0 +1,22 @@
+post_install() {
+	# Adding all users to the input group
+	for user in `ls /home`
+	do
+		gpasswd -a $user input
+	done
+	fi
+}
+
+post_remove() {
+	# Remove configuration
+	for user in `ls /home`
+	do
+		if [ -d /home/$user/.cache/blade ]; then
+			rm -R /home/$user/.cache/blade
+		fi
+
+		if [ -d /home/$user/.config/Shadow\ Beta ]; then
+			rm -R /home/$user/.config/Shadow\ Beta
+		fi
+	done
+}
