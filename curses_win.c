@@ -398,7 +398,7 @@ void peers_printw(WINDOW* window, const Info* symbol_info) {
 void graph_print(const char* symbol, const char* symbol2) {
     Info* symbol_info = api_info_init(), * symbol_info2 = NULL;
     strcpy(symbol_info->symbol, symbol);
-    api_info_store_data_batch(symbol_info, CHECK);
+    api_info_store_data_batch(symbol_info, ALL);
     if (symbol_info->api_provider == EMPTY) {
         api_info_destroy(&symbol_info);
         RET_MSG("Invalid symbol")
@@ -407,7 +407,7 @@ void graph_print(const char* symbol, const char* symbol2) {
     if (symbol2 != NULL) {
         symbol_info2 = api_info_init();
         strcpy(symbol_info2->symbol, symbol2);
-        api_info_store_data_batch(symbol_info2, CHECK);
+        api_info_store_data_batch(symbol_info2, ALL);
         if (symbol_info2->api_provider ==  EMPTY) {
             api_info_destroy(&symbol_info);
             api_info_destroy(&symbol_info2);
