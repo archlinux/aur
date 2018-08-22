@@ -1,7 +1,7 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=es-shell-git
-pkgver=0.9.1.r2.ge65327f
-pkgrel=3
+pkgver=0.9.1.r4.g1da0089
+pkgrel=1
 epoch=
 pkgdesc="A extensible shell with higher-order functions, derived from the Plan 9 shell, rc."
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/wryun/es-shell"
 license=('Public Domain')
 categories=()
 groups=()
-depends=('')
+depends=()
 makedepends=('git')
 optdepends=('termcap: for mksignal')
 checkdepends=()
