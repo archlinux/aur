@@ -19,12 +19,12 @@
 pkgbase="zfs-linux-git"
 pkgname=("zfs-linux-git" "zfs-linux-git-headers")
 
-pkgver=2018.08.20.r4687.gc962fd6c4.4.18.3.arch1.1
+pkgver=2018.08.22.r4690.ge8a8208ee.4.18.3.arch1.1
 pkgrel=1
 makedepends=("linux-headers=4.18.3.arch1-1" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
-source=("git+https://github.com/zfsonlinux/zfs.git#commit=c962fd6c4e3836be223af93b0d75d92e8ee98fb4"
+source=("git+https://github.com/zfsonlinux/zfs.git#commit=e8a8208eef3f2e256ddbf91e73add2e08705d482"
         "upstream-ac09630-Fix-zpl_mount-deadlock.patch"
         "upstream-9f64c1e-Linux-4.18-compat-inode-timespec_timespec64.patch"
         "upstream-9161ace-Linux-compat-4.18-check_disk_size_change.patch")
@@ -33,7 +33,7 @@ sha256sums=("SKIP"
             "03ed45af40850c3a51a6fd14f36c1adc06501c688a67afb13db4fded6ec9db1d"
             "afbde4a2507dff989404665dbbdfe18eecf5aba716a6513902affa0e4cb033fe")
 license=("CDDL")
-depends=("kmod" "zfs-utils-common-git=2018.08.20.r4687.gc962fd6c4" "linux=4.18.3.arch1-1")
+depends=("kmod" "zfs-utils-common-git=2018.08.22.r4690.ge8a8208ee" "linux=4.18.3.arch1-1")
 
 build() {
     cd "${srcdir}/zfs"
