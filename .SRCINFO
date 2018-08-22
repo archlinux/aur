@@ -2,7 +2,7 @@
 # Wed Aug 22 00:57:19 UTC 2018
 pkgbase = cloudcross
 	pkgdesc = CloudCross is a improved multi-cloud client with OneDrive, Yandex disk, Google Drive, Dropbox and Mail.ru support.
-	pkgver = 1.4.0
+	pkgver = 1.4.2
 	pkgrel = 2
 	url = http://cloudcross.mastersoft24.ru
 	arch = i686
