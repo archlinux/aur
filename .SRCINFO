@@ -1,7 +1,7 @@
 pkgbase = aurorafw-git
 	pkgdesc = A Powerful General Purpose Framework
 	pkgver = r62.7a2733e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/aurorafossorg/p/framework/core
 	arch = any
 	license = GNU LGPLv3

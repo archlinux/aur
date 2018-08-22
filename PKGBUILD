@@ -2,7 +2,7 @@
 
 pkgname=aurorafw-git
 pkgver=r62.7a2733e
-pkgrel=1
+pkgrel=2
 pkgdesc="A Powerful General Purpose Framework"
 arch=('any')
 url="https://gitlab.com/aurorafossorg/p/framework/core"
@@ -20,10 +20,12 @@ pkgver() {
 }
 
 package() {
+  pushd "$srcdir/core"
   meson --buildtype=release . .build
   pushd .build
   ninja
   ninja install
+  popd
   popd
 }
 
