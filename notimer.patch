@@ -1,0 +1,19 @@
+diff -ura pdfpc-4.1.2.orig/src/classes/timer_label.vala pdfpc-4.1.2.new/src/classes/timer_label.vala
+--- pdfpc-4.1.2.orig/src/classes/timer_label.vala	2018-08-22 16:32:38.500386644 -0300
++++ pdfpc-4.1.2.new/src/classes/timer_label.vala	2018-08-22 16:33:30.163549315 -0300
+@@ -204,14 +204,7 @@
+             minutes = timeInSecs / 60 % 60;
+             seconds = timeInSecs % 60 % 60;
+ 
+-            this.set_text(
+-                "%s%.2u:%.2u:%.2u".printf(
+-                    prefix,
+-                    hours,
+-                    minutes,
+-                    seconds
+-                )
+-            );
++            this.set_text("");
+         }
+     }
+ 

@@ -1,0 +1,30 @@
+From 21e4efb3afe325fe7e2f800d1c22fd1bc28bc3d7 Mon Sep 17 00:00:00 2001
+From: Andreas Bilke <andreas@bilke.org>
+Date: Wed, 23 May 2018 19:51:00 +0200
+Subject: [PATCH] Fix regression introduced in
+ 13e3b372711fdc94acdb26be69ef0cf1465911ed
+
+See Debian Bug 888677.
+---
+ src/classes/metadata/pdf.vala | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/classes/metadata/pdf.vala b/src/classes/metadata/pdf.vala
+index 30493e3..0e3c253 100644
+--- a/src/classes/metadata/pdf.vala
++++ b/src/classes/metadata/pdf.vala
+@@ -442,10 +442,12 @@ namespace pdfpc.Metadata {
+                                 note_text += "\n";
+                             }
+                             note_text += a.get_contents();
++
++                            // Remove the annotation to avoid its rendering
++                            page.remove_annot(a);
++
+                             break;
+                     }
+-                    // Remove the annotation to avoid its rendering
+-                    page.remove_annot(a);
+                 }
+                 if (note_text != "") {
+                     this.notes.set_note(note_text, user_slide, true);
