@@ -1,0 +1,51 @@
+diff --git a/Makefile b/Makefile
+index c703089..91c1665 100644
+--- a/Makefile
++++ b/Makefile
+@@ -17,6 +17,9 @@ SQLITE3_LDFLAGS ?= $(shell $(PKG_CONFIG) --libs sqlite3)
+ LIBGCRYPT_CONFIG ?= libgcrypt-config
+ LIBGCRYPT_LDFLAGS ?= $(shell $(LIBGCRYPT_CONFIG) --libs)
+ 
++LIBSIGNAL_CFLAGS ?= $(shell $(PKG_CONFIG) --cflags libsignal-protocol-c)
++LIBSIGNAL_LDFLAGS ?= $(shell $(PKG_CONFIG) --libs libsignal-protocol-c)
++
+ SDIR = src
+ LDIR = lib
+ BDIR = build
+@@ -30,11 +33,13 @@ AX_PATH=$(AX_BDIR)/libsignal-protocol-c.a
+ 
+ PKGCFG_C=$(GLIB_CFLAGS) \
+ 	 $(SQLITE3_CFLAGS) \
+-	 $(LIBGCRYPT_CFLAGS)
++	 $(LIBGCRYPT_CFLAGS) \
++	 $(LIBSIGNAL_CFLAGS)
+ 
+ PKGCFG_L=$(GLIB_LDFLAGS) \
+ 	 $(SQLITE3_LDFLAGS) \
+-	 $(LIBGCRYPT_LDFLAGS)
++	 $(LIBGCRYPT_LDFLAGS) \
++	 $(LIBSIGNAL_LDFLAGS)
+ 
+ HEADERS=-I$(AX_DIR)/src
+ CFLAGS += $(HEADERS) $(PKGCFG_C) -std=c11 -g -Wall -Wextra -Wpedantic \
+@@ -43,7 +48,7 @@ CFLAGS += $(HEADERS) $(PKGCFG_C) -std=c11 -g -Wall -Wextra -Wpedantic \
+ CPPFLAGS += -D_XOPEN_SOURCE=700 -D_BSD_SOURCE -D_POSIX_SOURCE -D_GNU_SOURCE
+ TESTFLAGS=$(HEADERS) $(PKGCFG_C) -g -O0 --coverage
+ PICFLAGS=-fPIC $(CFLAGS)
+-LDFLAGS += -pthread -ldl $(PKGCFG_L) $(AX_PATH) -lm
++LDFLAGS += -pthread -ldl $(PKGCFG_L) -lm
+ LDFLAGS_T= -lcmocka $(LDFLAGS)
+ 
+ all: $(BDIR)/libaxc.a
+diff --git a/src/axc.c b/src/axc.c
+index 9b72b57..b86dc00 100644
+--- a/src/axc.c
++++ b/src/axc.c
+@@ -14,7 +14,6 @@
+ #include "key_helper.h"
+ #include "protocol.h"
+ #include "session_builder.h"
+-#include "session_builder_internal.h"
+ #include "session_cipher.h"
+ #include "session_state.h"
+ 
