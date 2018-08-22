@@ -2,7 +2,7 @@
 # Maintainer: farawayer <farwayer@gmail.com>
 
 _gemname=emoji_regex
-pkgname=ruby-$_gemname
+pkgname=ruby-$_gemname-0
 pkgver=0.1.1
 pkgrel=1
 pkgdesc='A pair of Ruby regular expressions for matching Unicode Emoji symbols.'

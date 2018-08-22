@@ -1,4 +1,4 @@
-pkgbase = ruby-emoji_regex
+pkgbase = ruby-emoji_regex-0
 	pkgdesc = A pair of Ruby regular expressions for matching Unicode Emoji symbols.
 	pkgver = 0.1.1
 	pkgrel = 1
@@ -14,5 +14,5 @@ pkgbase = ruby-emoji_regex
 	source = https://rubygems.org/downloads/emoji_regex-0.1.1.gem
 	sha1sums = f06e21c20b09eabc06595730effa1f562ed83a1c
 
-pkgname = ruby-emoji_regex
+pkgname = ruby-emoji_regex-0
 
