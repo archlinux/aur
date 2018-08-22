@@ -8,6 +8,7 @@ pkgbase = jsettlers-git
 	license = MIT
 	makedepends = jdk8-openjdk
 	makedepends = unzip
+    makedepends = gradle
 	depends = java-environment
 	depends = sh
 	optdepends = settlers3-demo-data
