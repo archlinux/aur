@@ -28,7 +28,7 @@ post_upgrade() {
 	echo ""
 	echo "##########"
 	echo "#"
-	echo "#   Remember to restart the bitwarden via 'systemctl restart bitwarden_rs.service', if neccessary."
+	echo "#   Remember to restart the bitwarden_rs unit via 'systemctl restart bitwarden_rs.service', if neccessary."
 	echo "#"
 	echo "##########"
 	echo ""
