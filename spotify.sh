@@ -1,2 +1,2 @@
 #!/bin/sh
-LD_PRELOAD=libcurl.so.3 /opt/spotify/spotify "$@"
+LD_PRELOAD=libcurl-gnutls.so.4 /opt/spotify/spotify "$@"
