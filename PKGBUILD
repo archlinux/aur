@@ -3,7 +3,7 @@
 pkgname=perl-extutils-cchecker
 _realname=ExtUtils-CChecker
 pkgver=0.09
-pkgrel=1
+pkgrel=2
 pkgdesc="CPAN/ExtUtils::CChecker - configure-time utilities for using C headers,
 libraries, or OS features"
 arch=('any')
@@ -29,7 +29,7 @@ check() {
 package() {
   cd "$srcdir/$_realname-$pkgver"
   make install DESTDIR="$pkgdir"
-  find "$pkgdir" -name '.packlist' -o -name '*.pod' -delete
+  find "$pkgdir" \( -name '.packlist' -o -name '*.pod' \) -delete
 }
 
 # vim:set ts=2 sw=2 et:

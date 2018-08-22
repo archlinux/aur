@@ -1,7 +1,7 @@
 pkgbase = perl-extutils-cchecker
 	pkgdesc = CPAN/ExtUtils::CChecker - configure-time utilities for using C headers, libraries, or OS features
 	pkgver = 0.09
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/ExtUtils-CChecker
 	arch = any
 	license = PerlArtistic
