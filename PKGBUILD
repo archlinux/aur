@@ -1,4 +1,5 @@
 # Maintainer : George Eleftheriou <eleftg>
+# Contributor: Jingbei Li <petronny>
 # Contributor: Ronald van Haren <ronald.archlinux.org>
 # Contributor: Bruno Pagani (a.k.a. ArchangeGabriel) <archange@archlinux.org>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
@@ -10,11 +11,11 @@
 _pkgname=hdf5
 _mpi=mpich
 pkgname=${_pkgname}-${_mpi}
-pkgver=1.10.2
-pkgrel=3
+pkgver=1.10.3
+pkgrel=1
 pkgdesc="General purpose library and file format for storing scientific data (${_mpi} version) (full version including its Java Native Interfaces)"
 arch=('x86_64')
-url="https://www.hdfgroup.org/HDF5/"
+url="https://portal.hdfgroup.org/display/support"
 license=('custom')
 depends=('zlib' 'libaec' "${_mpi}")
 makedepends=('time' 'gcc-fortran' 'java-environment')
@@ -22,23 +23,21 @@ provides=('hdf5' 'hdf5-openmpi' 'hdf5-openmpi-java')
 conflicts=('hdf5' 'hdf5-openmpi' 'hdf5-openmpi-java')
 source=("https://support.hdfgroup.org/ftp/HDF5/releases/${_pkgname}-${pkgver:0:4}/${_pkgname}-${pkgver}/src/${_pkgname}-${pkgver}.tar.bz2"
         'mpi.patch')
-md5sums=('41fb9347801b546fba323523a1c1af51'
+md5sums=('56c5039103c51a40e493b43c504ce982'
          'dfa8dd50b8a7ebb3ad7249c627156cf9')
 
 prepare() {
-    cd ${_pkgname}-${pkgver}
-
-    # Fix building with GCC 8.1
-    sed 's/\(.*\)(void) HDF_NO_UBSAN/HDF_NO_UBSAN \1(void)/' -i src/H5detect.c
+    [ ! -d build ] && mkdir -p build
+    cd "${_pkgname}-${pkgver}"
 
     # FS#33343
     patch -p1 -i ../mpi.patch
 }
 
 build() {
-    cd ${_pkgname}-${pkgver}
+    cd build
 
-    ./configure \
+    "${srcdir}/${_pkgname}-${pkgver}"/configure \
         CXX="/opt/mpich/bin/mpicxx" \
         CC="/opt/mpich/bin/mpicc" \
         FC="/opt/mpich/bin/mpif90" \
@@ -58,11 +57,12 @@ build() {
         --with-pic \
         --with-zlib \
         --with-szlib
+
     make
 }
 
 check() {
-    cd ${_pkgname}-${pkgver}
+    cd build
 
     # This is a parallel build, there will always be some MPI bugs,
     # so skip failures and don't kill the entire packaging process
@@ -70,12 +70,12 @@ check() {
 }
 
 package() {
-    cd ${_pkgname}-${pkgver}
+    cd build
 
     make -j1 DESTDIR="${pkgdir}" install
 
-    install -dm755 "${pkgdir}"/usr/share/doc/${_pkgname}
+    install -dm755 "${pkgdir}/usr/share/doc/${_pkgname}"
     mv "${pkgdir}"/usr/share/{hdf5_examples,doc/${_pkgname}/examples}
 
-    install -Dm644 COPYING "${pkgdir}"/usr/share/licenses/${_pkgname}/LICENSE
+    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/COPYING" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }

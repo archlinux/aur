@@ -1,8 +1,8 @@
 pkgbase = hdf5-mpich
 	pkgdesc = General purpose library and file format for storing scientific data (mpich version) (full version including its Java Native Interfaces)
-	pkgver = 1.10.2
-	pkgrel = 3
-	url = https://www.hdfgroup.org/HDF5/
+	pkgver = 1.10.3
+	pkgrel = 1
+	url = https://portal.hdfgroup.org/display/support
 	arch = x86_64
 	license = custom
 	makedepends = time
@@ -17,9 +17,9 @@ pkgbase = hdf5-mpich
 	conflicts = hdf5
 	conflicts = hdf5-openmpi
 	conflicts = hdf5-openmpi-java
-	source = https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.10/hdf5-1.10.2/src/hdf5-1.10.2.tar.bz2
+	source = https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.10/hdf5-1.10.3/src/hdf5-1.10.3.tar.bz2
 	source = mpi.patch
-	md5sums = 41fb9347801b546fba323523a1c1af51
+	md5sums = 56c5039103c51a40e493b43c504ce982
 	md5sums = dfa8dd50b8a7ebb3ad7249c627156cf9
 
 pkgname = hdf5-mpich
