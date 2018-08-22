@@ -1,5 +1,5 @@
 # Maintainer: aligator <aligator at-symbol suncraft-server dot de>
-pkgrel=1
+pkgrel=2
 _pkgname='jsettlers'
 pkgname=${_pkgname}'-git'
 
@@ -25,7 +25,7 @@ build() {
     cd ${srcdir}/${_pkgname}
     
     # build game (without android)
-    JAVA_HOME="/usr/lib/jvm/java-8-openjdk" ANDROID_HOME="" gradle releaseJSettlers || return 1
+    JAVA_HOME="/usr/lib/jvm/java-8-openjdk" ANDROID_HOME="" gradle --gradle-user-home=. releaseJSettlers || return 1
 }
 
 package() {
