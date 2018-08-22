@@ -1,0 +1,28 @@
+pkgbase = qca-qt4
+	pkgdesc = Qt Cryptographic Architecture. Qt4 Build (GIT Version)
+	pkgver = 2.1.3
+	pkgrel = 1
+	url = http://download.kde.org/stable/qca/2.1.3/src/qca-2.1.3.tar.xz
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = git
+	makedepends = botan
+	makedepends = pkcs11-helper
+	makedepends = libsasl
+	makedepends = libgcrypt
+	depends = qt4
+	optdepends = botan: Botan plugin
+	optdepends = pkcs11-helper: PKCS11 plugin
+	optdepends = nss: nss plugin
+	optdepends = libsasl: SASL plugin
+	optdepends = libgcrypt: gcrypt plugin
+	provides = qca-qt4
+	conflicts = qca-qt4
+	source = git://anongit.kde.org/qca.git
+	md5sums = SKIP
+
+pkgname = qca-qt4
+
