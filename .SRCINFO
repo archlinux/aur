@@ -1,11 +1,10 @@
 pkgbase = python2-translate-toolkit-lib
 	pkgdesc = A toolkit to convert between various different translation formats, help process and validate localisations
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://toolkit.translatehouse.org/
 	arch = any
 	license = GPL
-	makedepends = python2-setuptools
 	makedepends = python2-setuptools
 	depends = bash
 	depends = python2-lxml
