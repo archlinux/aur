@@ -5,14 +5,14 @@ pkgname=koditools-git
 provides=('koditools')
 conflicts=('koditools')
 replaces=('xbmctools-git')
-pkgver=1.2.r4.g6b5a228
+pkgver=1.2.r11.gf2420c8
 pkgrel=1
 arch=('any')
 license=('GPL2')
 pkgdesc="Set of tools to interface with Kodi/XBMC"
 url="http://github.com/grimpy/"
-depends=('python2')
-makedepends=('python2-distribute' 'git')
+depends=('python')
+makedepends=('python-distribute' 'git')
 optdepends=('nginx: For sending media to kodi')
 
 source=("$pkgname"::'git://github.com/grimpy/koditools.git')
@@ -25,10 +25,10 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
-  python2 setup.py build
+  python setup.py build
 }
 
 package() {
   cd "$srcdir/$pkgname"
-  python2 setup.py install --skip-build --root=${pkgdir} --optimize=1
+  python setup.py install --skip-build --root=${pkgdir} --optimize=1
 }
