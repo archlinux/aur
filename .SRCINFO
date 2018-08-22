@@ -10,13 +10,12 @@ pkgbase = virtscreen
 	depends = xorg-xrandr
 	depends = x11vnc
 	depends = python-pyqt5
-	depends = python-twisted
+	depends = python-quamash-git
 	depends = python-netifaces
-	depends = python-qt5reactor
 	optdepends = arandr: for display settings option
 	provides = virtscreen
-	source = https://github.com/kbumsik/VirtScreen/archive/0.2.4.tar.gz
-	sha256sums = 0a62fd5e2b89ff7d83f9769d33b6a795c452a8bf09cf2e61ccd8282b40cefd6f
+	source = src::git+https://github.com/kbumsik/VirtScreen.git#tag=0.2.4
+	md5sums = SKIP
 
 pkgname = virtscreen
 

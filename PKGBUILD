@@ -8,7 +8,7 @@ arch=("i686" "x86_64")
 url="https://github.com/kbumsik/VirtScreen"
 license=('GPL')
 groups=()
-depends=('xorg-xrandr' 'x11vnc' 'python-pyqt5' 'python-twisted' 'python-netifaces' 'python-qt5reactor')
+depends=('xorg-xrandr' 'x11vnc' 'python-pyqt5' 'python-quamash-git' 'python-netifaces')
 makedepends=('python-pip')
 optdepends=(
     'arandr: for display settings option'
@@ -20,12 +20,12 @@ backup=()
 options=()
 install=
 changelog=
-source=(https://github.com/kbumsik/$_pkgname_camelcase/archive/$pkgver.tar.gz)
+source=(src::git+https://github.com/kbumsik/$_pkgname_camelcase.git#tag=$pkgver)
 noextract=()
-sha256sums=('0a62fd5e2b89ff7d83f9769d33b6a795c452a8bf09cf2e61ccd8282b40cefd6f')
+md5sums=('SKIP')
 
 package() {
-  cd $_pkgname_camelcase-$pkgver
+  cd $srcdir/src
   PIP_CONFIG_FILE=/dev/null /usr/bin/pip install --isolated --root="$pkgdir" --ignore-installed --no-deps .
   # These are already installed by setup.py
   # install -Dm644 "data/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
