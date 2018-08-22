@@ -1,18 +1,16 @@
 pkgbase = libhdf5
-	pkgdesc = HDF5 - static library
-	pkgver = 1.10.2
+	pkgdesc = the static libraries of HDF5
+	pkgver = 1.10.3
 	pkgrel = 1
-	url = http://www.hdfgroup.org/HDF5/
-	arch = i686
+	url = https://portal.hdfgroup.org/display/support
 	arch = x86_64
 	license = custom
 	makedepends = time
 	makedepends = gcc-fortran
 	depends = zlib
 	depends = libaec
-	depends = bash
-	source = https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.10/hdf5-1.10.2/src/hdf5-1.10.2.tar.bz2
-	md5sums = 41fb9347801b546fba323523a1c1af51
+	source = https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.10/hdf5-1.10.3/src/hdf5-1.10.3.tar.bz2
+	md5sums = 56c5039103c51a40e493b43c504ce982
 
 pkgname = libhdf5
 

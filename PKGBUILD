@@ -1,50 +1,55 @@
-# based on https://git.archlinux.org/svntogit/community.git/tree/trunk/PKGBUILD?h=packages/hdf5
-# Maintainer: Xavier Corredor <xavier.corredor.llano (a) gmail.com>
+# Maintainer : George Eleftheriou <eleftg>
+# Contributor: Xavier Corredor <xavier.corredor.llano (a) gmail.com>
+# Contributor: Frisbee Whisperwind <Frisbee>
 
+_pkgname=hdf5
 pkgname=libhdf5
-real_pkgname=hdf5
-pkgver=1.10.2
-_pkgver=1.10
+pkgver=1.10.3
 pkgrel=1
-arch=('i686' 'x86_64')
-pkgdesc="HDF5 - static library"
-url="http://www.hdfgroup.org/HDF5/"
+arch=('x86_64')
+pkgdesc="the static libraries of HDF5"
+url="https://portal.hdfgroup.org/display/support"
 license=('custom')
-depends=('zlib' 'libaec' 'bash')
+depends=('zlib' 'libaec')
 makedepends=('time' 'gcc-fortran')
-source=(https://support.hdfgroup.org/ftp/HDF5/releases/${real_pkgname}-${_pkgver}/${real_pkgname}-${pkgver}/src/${real_pkgname}-${pkgver}.tar.bz2)
-md5sums=('41fb9347801b546fba323523a1c1af51')
+source=("https://support.hdfgroup.org/ftp/HDF5/releases/${_pkgname}-${pkgver:0:4}/${_pkgname}-${pkgver}/src/${_pkgname}-${pkgver}.tar.bz2")
+md5sums=('56c5039103c51a40e493b43c504ce982')
 
 prepare() {
-    cd ${real_pkgname}-${pkgver}
-    # Fix building with GCC 8.1
-    sed 's/\(.*\)(void) HDF_NO_UBSAN/HDF_NO_UBSAN \1(void)/' -i src/H5detect.c
+    [ ! -d build ] && mkdir -p build
 }
 
 build() {
-    cd ${real_pkgname}-${pkgver}
+    cd build
   
-    ./configure \
+    "${srcdir}/${_pkgname}-${pkgver}"/configure \
         --prefix=/usr \
-        --enable-hl \
-        --disable-threadsafe \
-        --enable-linux-lfs \
-        --enable-build-mode=production \
-        --with-pic \
-        --docdir=/usr/share/doc/hdf5/ \
-        --with-pthread=/usr/lib/ \
         --disable-sharedlib-rpath \
+        --disable-shared \
+        --docdir=/usr/share/doc/hdf5/ \
+        --enable-static \
+        --enable-build-mode=production \
+        --enable-hl \
         --enable-cxx \
         --enable-fortran \
         --with-pic \
         --with-zlib \
         --with-szlib
+
     make
 }
 
+check() {
+    cd build
+    make check
+}
+
 package() {
-    install -d -m755 $pkgdir/usr/lib
-    install -m644 ${real_pkgname}-${pkgver/_/-}/src/.libs/libhdf5.a $pkgdir/usr/lib/
-    install -m644 ${real_pkgname}-${pkgver/_/-}/hl/src/.libs/libhdf5_hl.a $pkgdir/usr/lib/
+    cd build
+
+    make DESTDIR="${pkgdir}" install
+
+    rm -rf "${pkgdir}"/usr/{bin,include,share}
+    rm -rf "${pkgdir}"/usr/lib/libhdf5.settings
 }
 
