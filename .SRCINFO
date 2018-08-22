@@ -1,7 +1,7 @@
 pkgbase = perl-glib-ex-objectbits
 	pkgdesc = Glib::Ex::ObjectBits -- misc Glib object helpers
 	pkgver = 16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Glib-Ex-ObjectBits
 	arch = any
 	license = LGPL

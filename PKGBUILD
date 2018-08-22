@@ -4,7 +4,7 @@ pkgname=perl-glib-ex-objectbits
 _realname=Glib-Ex-ObjectBits
 _module=Glib::Ex::ObjectBits
 pkgver=16
-pkgrel=1
+pkgrel=2
 pkgdesc="${_module} -- misc Glib object helpers"
 arch=('any')
 url="https://metacpan.org/release/${_realname}"
@@ -28,7 +28,7 @@ check() {
 package() {
   cd  "$srcdir/$_realname-$pkgver"
   make install DESTDIR="$pkgdir"
-  find "$pkgdir" -name '.packlist' -o -name '*.pod' -delete
+  find "$pkgdir" \( -name '.packlist' -o -name '*.pod' \) -delete
 }
 
 # vim:set ts=2 sw=2 et:
