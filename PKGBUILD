@@ -5,8 +5,8 @@
 
 pkgbase=python-numpy
 pkgname=('python-numpy' 'python2-numpy')
-pkgver=1.15.0
-pkgrel=2
+pkgver=1.15.1
+pkgrel=1
 pkgdesc="Scientific tools for Python"
 arch=('x86_64')
 license=('custom')
@@ -16,7 +16,7 @@ makedepends=('cblas' 'lapack' 'python' 'python2' 'python-setuptools' 'python2-se
 checkdepends=('python-pytest' 'python2-pytest')
 options=('staticlibs')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/numpy/numpy/archive/v$pkgver.tar.gz")
-sha512sums=('1ee1c6cdf4ae287f1a0e7c49533c143c5842817cd92681cf72507f32904866de2e1fdca648f09fdca9fae391c78cebdd9a32a7116ff10ca3887f6f5ab18763b2')
+sha512sums=('8d0558fcd92bfc16d3e419fc8f8379885bb7ec395ba67641d84b6f3a60a9d64eb66c9f5521adc5eb84dc2529a5f10188237eae60c0ae076e2a1effe081ace6c5')
 
 prepare() {
   cp -a numpy-$pkgver{,-py2}
@@ -72,8 +72,4 @@ package_python2-numpy() {
 
   install -m755 -d "${pkgdir}/usr/share/licenses/python2-numpy"
   install -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/python2-numpy/"
-
-  for _exe in conv-template f2py from-template; do
-    mv "$pkgdir"/usr/bin/"$_exe"{,2}
-  done
 }
