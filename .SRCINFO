@@ -1,20 +1,22 @@
 pkgbase = python-pytest-pep8
-	pkgdesc = pytest plugin to check PEP8 requirements.
+	pkgdesc = pytest plugin to check PEP8 requirements
 	pkgver = 1.0.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://bitbucket.org/pytest-dev/pytest-pep8
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
-	depends = pep8
-	depends = python
-	depends = python-pip
-	depends = python-pytest
-	depends = python-pytest-cache
-	options = !emptydirs
-	source = https://pypi.python.org/packages/source/p/pytest-pep8/pytest-pep8-1.0.6.tar.gz
-	md5sums = 3debd0bac8f63532ae70c7351e73e993
+	makedepends = python-pycodestyle
+	makedepends = python-pytest-cache
+	makedepends = python2-pycodestyle
+	makedepends = python2-pytest-cache
+	source = https://pypi.org/packages/source/p/pytest-pep8/pytest-pep8-1.0.6.tar.gz
 	sha256sums = 032ef7e5fa3ac30f4458c73e05bb67b0f036a8a5cb418a534b3170f89f120318
 
 pkgname = python-pytest-pep8
+	depends = python-pycodestyle
+	depends = python-pytest-cache
+
+pkgname = python2-pytest-pep8
+	depends = python2-pycodestyle
+	depends = python2-pytest-cache
 
