@@ -1,7 +1,7 @@
 # Maintainer: Aleksandar Trifunović <akstrfn@gmail.com>
 
 pkgname=valhalla
-pkgver=2.6.2
+pkgver=2.6.3
 pkgrel=1
 pkgdesc="Routing engine for OpenStreetMap."
 arch=('x86_64')
@@ -10,12 +10,17 @@ license=('custom:MIT')
 depends=('prime_server' 'boost-libs' 'protobuf' 'python' 'lua' 'libspatialite')
 makedepends=('cmake' 'git' 'vim' 'jq' 'boost' 'rapidjson')
 source=("${url}/archive/$pkgver.tar.gz")
-sha256sums=('d6efbda5d66ea20dddf070dc70e9b4891270df2d3fa06d801f0f800aab011126')
+sha256sums=('42db5bc48409983b4ccfd0a152347016e0a6dd6aa1313b9ba6896d2346df9d0b')
 
 prepare() {
   cd "$pkgname-$pkgver"
-  git clone --depth=1 https://github.com/scrosby/OSM-binary third_party/OSM-binary
-  git clone --depth=1 https://github.com/valhalla/osmlr-tile-spec third_party/OSMLR
+  git clone https://github.com/scrosby/OSM-binary third_party/OSM-binary
+  git clone https://github.com/valhalla/osmlr-tile-spec third_party/OSMLR
+
+  cd "$srcdir/$pkgname-$pkgver"/third_party/OSM-binary && git checkout 4e32fa2
+  cd "$srcdir/$pkgname-$pkgver"/third_party/OSMLR && git checkout ae07abe
+
+  cd "$srcdir/$pkgname-$pkgver"
 
   # TODO this seems fixed but tests are failing upstream anyway
   # There is probably a better way to solve this. Sources:
