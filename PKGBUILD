@@ -4,7 +4,7 @@
 
 _pkgbase=pika
 pkgname=(python-${_pkgbase} python2-${_pkgbase})
-pkgver=0.11.2
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="A pure-Python implementation of the AMQP 0-9-1 protocol"
 arch=(any)
@@ -13,7 +13,7 @@ license=('GPL')
 depends=()
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://github.com/$_pkgbase/$_pkgbase/archive/$pkgver.tar.gz")
-sha256sums=('1235cad0dd5cc8305321c007f5a9ed5cb4f7fc83753234a709228491b7174474')
+sha256sums=('3b1bd9025b63ad6fdd183dd79010620fa168966adda6154a23a7d5ed4f88cf9d')
 
 build() {
   cd "$srcdir/$_pkgbase-$pkgver"
