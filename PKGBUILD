@@ -19,9 +19,9 @@ sha256sums=('13fb1df424d69eeb95f1ba8c6c9c4cfd039798dc5b01b20760d79d532a374b07'
 
 prepare() {
   cd "TextEdit-master"
-  patch  < ../debian/patches/fix-info-plist
-  patch  < ../debian/patches/ftbfs-hurd.patch
-  patch  < ../debian/patches/migrate-defaults.patch
+  for patch in ../debian/patches/*.patch; do 
+    patch < $patch
+  done
 }
 
 build() {
