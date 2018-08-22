@@ -2,8 +2,8 @@
 
 pkgname=mariadb-connector-odbc
 conflicts=('mariadb-connector-odbc-bin')
-pkgver=3.0.5
-pkgrel=3
+pkgver=3.0.6
+pkgrel=1
 pkgdesc="MariaDB Connector/ODBC is a standardized, LGPL licensed database driver using the industry standard ODBC API"
 arch=('x86_64' 'i686')
 url="https://mariadb.com/kb/en/mariadb/mariadb-connector-odbc/"
@@ -11,15 +11,19 @@ license=('LGPL')
 depends=('unixodbc>=2.3' 'openssl')
 makedepends=('git' 'cmake')
 options=('staticlibs')
-source=("https://downloads.mariadb.org/interstitial/connector-odbc-${pkgver}/${pkgname}-${pkgver}-ga-src.tar.gz")
+source=("https://downloads.mariadb.org/interstitial/connector-odbc-${pkgver}/${pkgname}-${pkgver}-ga-src.tar.gz"
+        "https://downloads.mariadb.org/interstitial/connector-c-${pkgver}/mariadb-connector-c-${pkgver}-src.tar.gz")
 
-sha1sums=('c2b26efbc9332dec5322a5de70436e5516cda8fa')
+sha256sums=('1b45b801774ea356f56ca7eb5dc5d58df8c0e61893c9f9901c4d716e34d5d71d'
+            '2b2d18dc969dc385f7f740e4db112300e11bc626c9ba9aa05c284704095b9e48')
 
 install=mariadb-connector-odbc.install
 
 prepare() {
-    cd "$srcdir"
-    rm -Rf build $pkgname-$pkgver-ga-src/CMakeCache.txt
+    cd $pkgname-$pkgver-ga-src
+    [ -d libmariadb ] || ln -s ../mariadb-connector-c-$pkgver-src libmariadb
+    cd ..
+    rm -Rf build
     mkdir build
     cd build
     cmake ../$pkgname-$pkgver-ga-src \
@@ -31,14 +35,16 @@ prepare() {
 
 build() {
     cd build
-    make maodbc
+    make
 }
 
 package() {
-    # The cmake install is completely hosed right now so do it manually. It's only 3 files.
+    cd build
+    DESTDIR="$pkgdir" cmake -DCOMPONENT=ODBCLibs -P cmake_install.cmake
+    DESTDIR="$pkgdir" cmake -DCOMPONENT=Documentation -P cmake_install.cmake
     cd "$pkgdir"
-    mkdir -p usr/lib usr/share/licenses/$pkgname
-    install "${srcdir}/build/libmaodbc.so" usr/lib/libmaodbc.so
-    install "$srcdir/$pkgname-$pkgver-ga-src/COPYING" usr/share/licenses/$pkgname/COPYING
-    install "$srcdir/$pkgname-$pkgver-ga-src/README" usr/share/licenses/$pkgname/README
+    mv usr/share/doc/{mariadb_connector_odbc,$pkgname}
+    [ -d usr/lib64 ] && mv usr/lib64 usr/lib
+    mkdir -p usr/share/licenses/$pkgname
+    mv usr/share/doc/$pkgname/COPYING usr/share/licenses/$pkgname/COPYING
 }
