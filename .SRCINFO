@@ -8,7 +8,7 @@ pkgbase = tpm2-pk11-git
 	license = LGPL
 	makedepends = git
 	makedepends = cmake
-	depends = tpm2-abrmd-git
+	depends = tpm2-abrmd
 	source = git+https://github.com/irtimmer/tpm2-pk11.git
 	sha256sums = SKIP
 
