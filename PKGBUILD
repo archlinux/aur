@@ -1,7 +1,7 @@
 # Maintainer: Andy Kluger <AndyKluger@gmail.com>
 # Contributor: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-custom-git
-pkgver=r1115.0d6e7af
+pkgver=r1137.ffc50ab3
 pkgrel=1
 pkgdesc='A slender monospace sans-serif and slab-serif typeface inspired by Pragmata Pro, M+ and PF DIN Mono.'
 arch=('any')
@@ -11,20 +11,30 @@ makedepends=('git' 'nodejs' 'npm' 'ttfautohint' 'otfcc')
 depends=('fontconfig' 'xorg-font-utils')
 conflicts=()
 provides=()
-source=("git+https://github.com/be5invis/Iosevka")
-md5sums=('SKIP')
+source=(
+  "git+https://github.com/be5invis/Iosevka"
+  "private-build-plans.toml"
+)
+md5sums=(
+  'SKIP'
+  '2f29f9633449e8f381a615e334f67ef9'
+)
 
 pkgver() {
-  cd "Iosevka"
+  cd Iosevka
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  buildplans="$HOME/.config/iosevka/private-build-plans.toml"
+  [[ -f "$buildplans" ]] && cp "$buildplans" ../ || echo "$buildplans not found, using pkgbuild creator's"
+  cp ../private-build-plans.toml Iosevka/
+}
+
 build() {
-  : ${IOSEVKA_DESIGN='v-l-tailed v-i-hooky v-g-opendoublestorey v-m-shortleg v-zero-dotted'}
   cd Iosevka
   npm install
-  make custom-config design="$IOSEVKA_DESIGN" family='Iosevka Custom'
-  make custom
+  npm run build -- ttf:iosevka-custom
 }
 
 package() {
@@ -33,96 +43,3 @@ package() {
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
   install -m644 Iosevka/LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
-
-# general shape:
-#   sans : Sans serif (default).
-#   slab : Slab serif. When present, the family of your font would be Iosevka Slab.
-# ligations and spacing:
-#   term : Disable ligations. When this style is present, the font built will not contain ligatures, and its family name will be set to “Iosevka Term”. In case of your OS or editor cannot handle ligatures correctly, you can disable ligations with it.
-#   termlig : Similar to term, the font is exact monospace to make fontconfig happy, while ligations are still present.
-#   type : Make some symbols, like arrows (→) and mathematical operators full-width.
-#   stress-fw : When included, full-width characters varying form U+FF00 to U+FFFF will be boxed to present a clear distinguish between ASCII and Full-width. The family name will be set to “Iosevka StFW”.
-# ss## and cv## feature tags, including:
-#   ss01~ss10 : Predefined stylistic sets based on other Monospace fonts.
-#   cv01~cv53 : Standalone character variants.
-# ligation sets, include:
-#   ligset-haskell: Default ligation set would be assigned to Haskell.
-#   ligset-idris: Default ligation set would be assigned to Idris.
-#   ligset-coq: Default ligation set would be assigned to Coq.
-#   ligset-elm: Default ligation set would be assigned to Elm.
-#   ligset-ml: Default ligation set would be assigned to ML.
-#   ligset-fs: Default ligation set would be assigned to F#.
-#   ligset-fstar: Default ligation set would be assigned to F*.
-#   ligset-swift: Default ligation set would be assigned to Swift.
-#   ligset-purescript: Default ligation set would be assigned to PureScript.
-# letter l:
-#   v-l-hooky : Hooky l.
-#   v-l-zshaped : Z-shaped l.
-#   v-l-serifed : Serifed l (default for upright and oblique).
-#   v-l-italic : Italic l (default for italic).
-#   v-l-tailed : l with a curved tail.
-#   v-l-hookybottom : l with a straight tail.
-# letter i:
-#   v-i-hooky : Hooky i.
-#   v-i-zshaped : Z-shaped i.
-#   v-i-serifed : Serifed i (default for upright and oblique).
-#   v-i-italic : Italic i (default for italic).
-# letter a:
-#   v-a-doublestorey : Double-storey a (default for upright and oblique).
-#   v-a-singlestorey : Single-storey a (default for italic).
-# letter f:
-#   v-f-straight : f without bottom hook (default for upright and oblique).
-#   v-f-tailed : f with a leftward bottom hook (default for italic).
-# letter g:
-#   v-g-doublestorey : Double-storey g (default).
-#   v-g-singlestorey : Single-storey g.
-#   v-g-opendoublestorey : Open Single-storey g.
-# letter m:
-#   v-m-longleg : m with long middle leg (default).
-#   v-m-shortleg : m with shorter middle leg.
-# letter t:
-#   v-t-standard : Standard t shape (default).
-#   v-t-cross : Futura-like t shape.
-# letter Q:
-#   v-q-taily : Q with a curly tail (default).
-#   v-q-straight : Q with a straight tail in the old versions.
-# letter y:
-#   v-y-straight : More-straight letter y.
-#   v-y-curly : Curly, cursive-like y.
-# zero (0):
-#   v-zero-slashed : Slashed Zero 0 (default).
-#   v-zero-dotted : Dotted Zero 0.
-#   v-zero-unslashed : O-like 0.
-# one (1):
-#   v-one-serifed : 1 with bottom serif (default for Slab).
-#   v-one-hooky : 1 without bottom serif (default for Sans).
-# three (3):
-#   v-three-flattop : Flat top 3 (Like Museo Sans / Montserrat).
-#   v-three-twoarks : Arched top 3 (default).
-# ASCII tilde (~), asterisk (*), paragaraph(¶), underscore (_) and ASCII Caret (^):
-#   v-tilde-high : Higher tilde ~.
-#   v-tilde-low : Lower tilde ~ (default).
-#   v-asterisk-high : Higher asterisk * (default).
-#   v-asterisk-low : Lower asterisk *.
-#   v-paragraph-high : Higher paragraph symbol ¶ (default).
-#   v-paragraph-low : Lower paragraph symbol ¶.
-#   v-caret-high : Higher circumflex ^ (default).
-#   v-caret-low : Lower circumflex ^.
-#   v-underscore-high : Higher underscore _ (default).
-#   v-underscore-low : Lower underscore _.
-# At (@):
-#   v-at-long : The long, three-fold At symbol in Iosevka 1.7.x.
-#   v-at-fourfold : The traditional, four-fold At symbol.
-#   v-at-short : The shorter, Fira-like At symbol introduced in Iosevka 1.8.
-# Eszet(ß):
-#   v-eszet-traditional : Tratidional, Fraktur-like Eszet.
-#   v-eszet-sulzbacher : A more modern, beta-like Eszet (default).
-# curly brackets ({}):
-#   v-brace-straight : More straight braces.
-#   v-brace-curly : More curly braces (default).
-# dollar symbol ($):
-#   v-dollar-open : Dollar symbol with open contour.
-#   v-dollar-through : Dollar symbol with strike-through vertical bar (default).
-# Number sign (#):
-#   v-numbersign-upright : Number sign with vertical bars (default).
-#   v-numbersign-slanted : Number sign with slanted bars.
