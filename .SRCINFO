@@ -1,6 +1,6 @@
 pkgbase = nordselect
 	pkgdesc = Select the ideal NordVPN server
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/editicalu/nordselect
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = nordselect
 	makedepends = cargo
 	depends = curl
 	provides = nordselect
-	source = https://github.com/editicalu/nordselect/archive/0.3.1.tar.gz
+	source = https://github.com/editicalu/nordselect/archive/0.3.2.tar.gz
 	validpgpkeys = CC0B7CE9604A8A91F0D70B778489DB248465FDD7
-	sha512sums = 514a024e4a759f2d7c2a6efbeb28f6d749bf8c27b410c5ddd62c8d87e8f15dac185899692e5ebc02afbaa385e9376a4a6bc7c330b40597d4c1005141c6c14e1b
+	sha512sums = 8ffca528bdc8e8a1d7fae92b97b27988126584fe5e4420adceca3cc4b0bd5c86f67476a0b2a053c61fdbfd893a8abc9ae22b21a98180f2d6954f38e2d1728d2c
 
 pkgname = nordselect
 
