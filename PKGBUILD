@@ -2,8 +2,8 @@
 
 _pkgname=qtc-markview
 pkgname=qtcreator-markview-plugin-git
-pkgver=911587a
-pkgrel=2
+pkgver=r69.6fee38c
+pkgrel=1
 pkgdesc="Qt Creator markup plugin"
 groups=('qt' 'qt5')
 arch=('i686' 'x86_64')
@@ -17,8 +17,8 @@ source=("$pkgname::git://github.com/OneMoreGres/qtc-markview.git")
 md5sums=('SKIP')
 
 pkgver() {
-	cd $pkgname
-	git describe --always | sed 's|-|.|g'
+  cd $pkgname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
