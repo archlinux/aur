@@ -1,7 +1,7 @@
 pkgbase = perl-file-configdir
 	pkgdesc = Perl/CPAN File::ConfigDir - get directories of configuration files
 	pkgver = 0.015
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/File-ConfigDir
 	arch = any
 	license = PerlArtistic

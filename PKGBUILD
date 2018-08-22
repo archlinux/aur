@@ -2,7 +2,7 @@
 pkgname=perl-file-configdir
 _cpanname=File-ConfigDir
 pkgver=0.015
-pkgrel=1
+pkgrel=2
 pkgdesc="Perl/CPAN File::ConfigDir - get directories of configuration files"
 arch=('any')
 url="https://metacpan.org/release/$_cpanname"
@@ -29,5 +29,5 @@ package() {
   make DESTDIR="$pkgdir" install
 
   # remove perllocal.pod and .packlist
-  find "$pkgdir" -name '*.pod' -o -name '.packlist' -delete
+  find "$pkgdir" \( -name '*.pod' -o -name '.packlist' \) -delete
 }
