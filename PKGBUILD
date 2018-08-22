@@ -3,7 +3,7 @@
 pkgname=perl-alpm
 _cpanname=ALPM
 pkgver=3.06
-pkgrel=9
+pkgrel=10
 pkgdesc='ArchLinux Package Manager backend library.'
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
@@ -37,6 +37,6 @@ fi
 package() {
   cd $_cpanname-$pkgver
   make install DESTDIR="$pkgdir"
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
   _perl_depends
 }
