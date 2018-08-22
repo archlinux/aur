@@ -1,7 +1,7 @@
 pkgbase = perl-extutils-cbuilder
 	pkgdesc = CPAN/ExtUtils::CBuilder - Compile and link C code for Perl modules
 	pkgver = 0.280216
-	pkgrel = 1
+	pkgrel = 2
 	url = http://metacpan.org/release/ExtUtils-CBuilder
 	arch = any
 	license = PerlArtistic
