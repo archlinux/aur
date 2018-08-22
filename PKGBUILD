@@ -12,7 +12,7 @@ url="http://zaach.github.com/$_npmname}/"
 license=('MIT')
 depends=('nodejs')
 makedepends=('nodejs' 'npm')
-source=("http://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz")
+source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz")
 sha256sums=('987f42f0754b7bc0c84967b81fc2b4db0ed2ebe2117ccc5a5faa59e462447723')
 noextract=("${source[@]##*/}")
 
