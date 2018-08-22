@@ -1,6 +1,6 @@
 pkgbase = base-meta
 	pkgdesc = Meta package for the group `base`
-	pkgver = 2018.06.28
+	pkgver = 2018.08.22
 	pkgrel = 1
 	url = https://www.archlinux.org/
 	arch = any
@@ -54,10 +54,11 @@ pkgbase = base-meta
 	depends = vi
 	depends = which
 	depends = xfsprogs
-	depends = dhcpcd
-	depends = linux
-	depends = netctl
-	depends = systemd-sysvcompat
+	depends = bzip2
+	depends = coreutils
+	depends = e2fsprogs
+	depends = file
+	depends = s-nail
 
 pkgname = base-meta
 
