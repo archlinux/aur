@@ -1,0 +1,20 @@
+pkgbase = python-pytest-env
+	pkgdesc = py.test plugin that allows you to add environment variables.
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://github.com/MobileDynasty/pytest-env
+	arch = any
+	license = MIT
+	makedepends = python-pytest
+	makedepends = python2-pytest
+	source = https://pypi.org/packages/source/p/pytest-env/pytest-env-0.6.2.tar.gz
+	source = https://raw.githubusercontent.com/MobileDynasty/pytest-env/master/LICENSE
+	sha256sums = 7e94956aef7f2764f3c147d216ce066bf6c42948bb9e293169b1b1c880a580c2
+	sha256sums = 62b9b932cf5effd097de675f6604f05dc1fa57553ad5e25381563c0cd9a922b4
+
+pkgname = python-pytest-env
+	depends = python-pytest
+
+pkgname = python2-pytest-env
+	depends = python2-pytest
+
