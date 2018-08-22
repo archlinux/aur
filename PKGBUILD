@@ -22,7 +22,8 @@ optdepends=('bluez-libs'
 	    'python'
 	    'glpk'
 	    'libpulse'
-	    'opus')
+	    'opus'
+	    'python2-zbar')
 install='gnunet.install'
 backup=('etc/gnunetd.conf')
 options=('!makeflags')
@@ -64,6 +65,10 @@ pkgver() {
 prepare() {
 
 	cd "${srcdir}/${_appname}"
+
+	# zbar only has bindings for python2
+	sed -i '1s/python/python2/' gnunet/src/util/gnunet-qr
+
 	autoreconf -fi
 	sed -i 's|contrib doc|doc|' Makefile.*
 	[ -f Makefile ] || ./configure --prefix=/usr \
