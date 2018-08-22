@@ -5,8 +5,8 @@
 # Contributor: Martin Blumenstingl <martin.blumenstingl at googlemail dot com>
 # Contributor: Erik van der Kolk <developer at smerik dot nl>
 pkgname=selenium-server-standalone
-pkgver=3.12.0
-_pkgver=3.12
+pkgver=3.14.0
+_pkgver=3.14
 pkgrel=1
 pkgdesc="Test automation server for web applications"
 arch=('any')
@@ -16,7 +16,7 @@ depends=('java-runtime>=8')
 source=("https://selenium-release.storage.googleapis.com/$_pkgver/$pkgname-$pkgver.jar"
         'Selenium.desktop')
 noextract=("$pkgname-$pkgver.jar")
-md5sums=('c1a7fb9ba2b8cd07722942a9662e3b85'
+md5sums=('376450bd517510442b60018646deadfe'
          '3346b64141247b38e79e8e0b9481aad6')
 
 package() {
