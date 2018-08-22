@@ -2,7 +2,7 @@
 
 pkgname=fortune-mod-darkestdungeon
 pkgver=20171129
-pkgrel=3
+pkgrel=4
 pkgdesc="Fortune cookies: Darkest Dungeon (game)."
 arch=('any')
 license=('CCPL:by-nc-sa')
@@ -10,7 +10,7 @@ depends=(fortune-mod)
 url="https://darkestdungeon.gamepedia.com/Narrator"
 
 source=('darkestdungeon')
-sha256sums=('7123ad0b8e4970cb4d7c2579445fd368bddd596b6b9c34e17c3a8272a6a0795f')
+sha256sums=('c829b84e3c03e3c254f439ea13fa4061f98b7fc170fb44924557a0b695fd3e7e')
 
 build() {
 	strfile "${srcdir}"/darkestdungeon "${srcdir}"/darkestdungeon.dat
