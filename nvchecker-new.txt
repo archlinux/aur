@@ -7,5 +7,5 @@ gpgme 1.11.1-2
 libarchive 3.3.2-2
 libassuan 2.5.1-1
 nghttp2 1.32.0-1
-ssl 1.1.0.h-1
+ssl 1.1.0.i-1
 xz 5.2.4-1

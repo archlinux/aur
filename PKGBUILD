@@ -4,8 +4,8 @@ pkgname=pacman-static
 pkgver=5.1.1
 _cares_ver=1.14.0
 _nghttp2_ver=1.32.0
-_curlver=7.57.0
-_sslver=1.1.0h
+_curlver=7.61.0
+_sslver=1.1.0i
 _xzver=5.2.4
 _bzipver=1.0.6
 _libarchive_ver=3.3.2
@@ -13,7 +13,7 @@ _gpgerrorver=1.32
 _libassuanver=2.5.1
 _gpgmever=1.11.1
 _gnupgver=2.2.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Statically-compiled pacman (to fix or install systems without libc)"
 arch=('i686' 'x86_64')
 url="https://www.archlinux.org/pacman/"
@@ -58,9 +58,9 @@ sha512sums=('7112025dbd3e263c16f5b0ab34c9db3e8d631a0801bb086b47a2252d1764172261b
             'ec7e417fbc5497861d2b6dde5145da1640b36441882824e85940e5ca6ac52ec444aa7123846960f7211dd96462eab421d39f9cc49454f3f52e0dcdb36402044e'
             '30cd3f8c4eea15f994b2ceb44d84e506858f69f624e651e39bb4db523fea9ad5e8906b75abf07131ae364be19172274ed4053059669091f21ce4463cdbb857bf'
             'SKIP'
-            '1ce8138c708965d29628f9b3e37cb9cb5c586f82f42091d5e60ba66ddcebcd55dba874c5d903365af0ef94c5c1679430bdd8c0cefbffdf5f7f347d9055824648'
+            'e55193d1893e7619c8a599299bc030db1307260b19803d01983d4229820e3da8afd274eaee9c5be57911591ffe1fe44ac10d2da38f2d3d3204d8ce9df8d06a93'
             'SKIP'
-            'fb7750fcd98e6126eb5b92e7ed63d811a5cfa3391d98572003d925f6c7b477690df86a9aa1fa6bf6bf33d02c6c7aee6cff50a38faa8911409f310645898fda39'
+            '4a9d454031f644a3072a980f4ea20df976f6c5c58178549dfa62fd4dcf1417509e3be517d2ccb265c87688836f2993531b142fc5971bac5c41d33060057627df'
             'SKIP'
             '3857c298663728a465b5f95a3ef44547efbfb420d755e9dde7f20aa3905171b400e1c126d8db5c2b916c733bbd0724d8753cad16c9baf7b12dcd225a3ee04a97'
             'e5bf6eb88365d2dbdc774db49261fb9fae0544ed297891fc20f1ed223f4072cb0357cbd98146ac35b6d29410a12b6739bbd111cd57d4a225bef255ed46988578'
@@ -153,14 +153,15 @@ build() {
 
     # curl
     cd "${srcdir}"/curl-${_curlver}
-    # c-ares/openssl is not detected via pkg-config :(
+    # c-ares is not detected via pkg-config :(
+    # https:// support segfaults, disable ssl for now
     ./configure --prefix="${srcdir}"/temp/usr \
                 --disable-shared \
                 --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt \
-                --disable-{dict,file,gopher,imap,imaps,ldap,ldaps,manual,pop3,pop3s,rtsp,scp,sftp,smb,smbs,smtp,smtps,telnet,tftp} \
+                --disable-{dict,gopher,imap,imaps,ldap,ldaps,manual,pop3,pop3s,rtsp,scp,sftp,smb,smbs,smtp,smtps,telnet,tftp} \
                 --without-{brotli,libidn2,librtmp,libssh2} \
                 --disable-libcurl-option \
-                --with-openssl="${srcdir}"/temp/usr \
+                --without-ssl \
                 --enable-ares="${srcdir}"/temp/usr
     make -C lib
     make install-pkgconfigDATA
@@ -189,6 +190,10 @@ build() {
         --disable-languages
     make -C src
     make -C src install-libLTLIBRARIES install-binSCRIPTS install-nodist_includeHEADERS
+
+    # ew libtool
+    rm "${srcdir}"/temp/usr/lib/lib*.la
+    export PKG_CONFIG='pkg-config --static'
 
     # Finally, it's a pacman!
     # TODO: figure out why any pacman action that attempts to download things, segfaults
