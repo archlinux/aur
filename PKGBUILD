@@ -10,6 +10,7 @@ depends=('libx11' 'libconfig')
 makedepends=('git')
 source=("${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('751d148fdf2bfa4779f05afa22673653b3475ab0418d4803162d2e4a3097f896')
+backup=("etc/${pkgname}/styles.cfg")
 
 build() {
 	cd "$pkgname-$pkgver"
