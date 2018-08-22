@@ -1,8 +1,8 @@
 # Maintainer: Ismael González Valverde <ismgonval@gmail.com>
 
 pkgname=rnr
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc='A CLI tool to rename files and directories that supports regex.'
 arch=('x86_64')
 url='https://github.com/ChuckDaniels87/rnr'
