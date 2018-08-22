@@ -1,19 +1,18 @@
 pkgbase = waybar-git
 	pkgdesc = Highly customizable wayland bar for sway or wlroots based compositor.
-	pkgver = r70.8d5b61a9
+	pkgver = r118.0dba3abc
 	pkgrel = 2
 	url = https://github.com/Alexays/Waybar/
 	arch = x86_64
 	license = MIT
 	makedepends = meson
+	makedepends = git
 	depends = gtkmm3
 	depends = jsoncpp
 	depends = libinput
 	depends = libnl>=3.0
 	depends = libsigc++>=2.0
 	depends = wayland
-	depends = waylandpp
-	depends = wireless_tools
 	depends = libpulse
 	depends = wlroots
 	source = waybar-git::git://github.com/Alexays/Waybar
