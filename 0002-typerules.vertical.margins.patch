@@ -1,5 +1,5 @@
---- typerules.orig	2017-07-19 00:24:44.000000000 -0400
-+++ typerules	2017-07-19 01:02:17.200865735 -0400
+--- typerules.orig	2018-08-21 22:51:42.000000000 -0400
++++ typerules	2018-08-21 22:51:42.000000000 -0400
 @@ -148,11 +148,11 @@
  #
  0	string		WNGZWZSS	error	Wingz spreadsheet support not configured
@@ -13,7 +13,7 @@
  # can be used when a converter is installed.  Enable the 
  # conversion match and disable the corresponding error.
  0	string		GIF		error	filetype conversion support not configured
-@@ -209,11 +209,11 @@
+@@ -213,11 +213,11 @@
  
  #
  # This causes anything else with ascii-only data to be treated as text.

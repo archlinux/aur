@@ -124,6 +124,10 @@ $fontxlat{'CharterBT-Bold'}="n021004l.pfb";
 $fontxlat{'CharterBT-BoldItalic'}="n021024l.pfb";
 $fontxlat{'CharterBT-Italic'}="n021003l.pfb";
 $fontxlat{'CharterBT-Roman'}="n021023l.pfb";
+# Nimbus Sans Lite looks good to me
+$fontxlat{'NimbusSans-BoldItalic'}="n019024l.pfb";
+$fontxlat{'NimbusSansNarrow-BoldOblique'}="n019064l.pfb"; # an exact match!
+$fontxlat{'NimbusSans-Italic'}="n019023l.pfb";
 
 # Convert all lines of the form
 # (BoringFontName)\t/AnotherBoringFontName ;

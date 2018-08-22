@@ -21,6 +21,7 @@
 # TODO: Better default font.
 # TODO: Fix faxd-makefile-bug on make install
 # TODO: Improve systemd code now that it's out of sed and in patch
+# TODO: Remove hfaxd.service and faxq.service symlinks
 
 # Setting these skel defaults will make adding modems easier.
 
@@ -54,8 +55,8 @@ _opt_pagesize="Letter" # A4, Letter, Legal
 # man faxq # used only if modems are present on this system
 # man hfaxd # also read the part about SNPP
 # Enable the ones you want. faxsetup will start them.
-# systemctl enable faxq
-# systemctl enable hfaxd
+# systemctl enable hylafax-faxq
+# systemctl enable hylafax-hfaxd
 
 # sudo faxsetup
 
@@ -96,8 +97,8 @@ _opt_pagesize="Letter" # A4, Letter, Legal
 # upgrade. This PKGBUILD is programmed to not require this.
 
 # Are the services running?
-# systemctl status faxq
-# systemctl status hfaxd
+# systemctl status hylafax-faxq
+# systemctl status hylafax-hfaxd
 # systemctl list-units 'faxgetty@*.service'
 # systemctl list-timers 'hylafax.timer'
 
@@ -172,8 +173,8 @@ _opt_pagesize="Letter" # A4, Letter, Legal
 set -u
 pkgname='hylafaxplus'
 _pkgnick='hylafax'
-pkgver='5.5.9'
-pkgrel='3'
+pkgver='5.6.0'
+pkgrel='1'
 _sendfaxvsicommit='18fabc74490362cd26690331d546d727c727db25'
 pkgdesc='Enterprise Fax Server'
 arch=('i686' 'x86_64')
@@ -199,7 +200,7 @@ provides=("hylafax=${pkgver}")
 conflicts=('hylafax')
 # backup=(var/spool/hylafax/bin/{faxrcvd,notify})
 install="${_pkgnick}.install"
-#	'var/spool/hylafax/etc/hosts.hfaxd') # This is better handled with a .default file.
+# 'var/spool/hylafax/etc/hosts.hfaxd') # This is better handled with a .default file.
 _verwatch=("${url}" 'news/\([0-9\.]\+\)\.php' 'l')
 source=(
   "https://downloads.sourceforge.net/hylafax/${_pkgnick}-${pkgver}.tar.gz"
@@ -210,15 +211,19 @@ source=(
   '0002-typerules.vertical.margins.patch'
   '0003-graphic.logo.instructions.patch'
   '0004-hylafaxplus-systemd.patch'
+  '0004a-hylafaxplus-systemd.patch'
+  '0005-hylafaxplus-faxsetup.patch'
 )
-sha256sums=('22e6b98ae008a37b44136b4d08c85bdc2ef8f90629de424e06ec308063a47e30'
+sha256sums=('d905b4c70ed22d765427bd67cc16e9fed6a0e33bffa06aff6665cdc427090589'
             '0aed186ab30fdb7cf36895a0ff50b03bd4a68db63cf4f19763995dabd9caffb0'
-            '613140010f9373998b441eaf7408b59877d00e1f4edb379740d27ccb93250272'
+            '466ab17cdaa1eb1f1f0b5bdc444a90df5835a1896b1363584264920bbc3929f2'
             '80d2e28ee7a7d8f93501e32c96e9895e242409da1326761d36dbf28e5a0e3677'
             'dd4728f8204d0bba2a026768f0e0216778ed26583c3f799f6266554e21b48fe2'
-            '0a24bee3159a74440a00783c5da1ee2a5e529e46a26a9a91b6be72a5167f40f3'
+            '5f19fa1f3b12fd480f4c28a9a2bdf041359d5510e1040b735d5f312071dcbd04'
             'b4b93c149164ed7c96f4f04373c32198c1e19c89ca9e2ab6e92e17c0a48bd1af'
-            '989d6f71a8cfe99a3ca983981f8d8e9368776e2fc7667a809755d8d7292d52ad')
+            '989d6f71a8cfe99a3ca983981f8d8e9368776e2fc7667a809755d8d7292d52ad'
+            '528f267805203b792741423f46114fee7b48664f1aab35a0edff7d519555ccc2'
+            'e2b43c19705ce112dd3a08ecd0cae4c5558910366291524566cdd5890b2c6095')
 # The HylaFAX binaries work very well. The scripts need major fixes!
 # HylaFAX+ is pretty much completely broken for any Linux install,
 # and some parts are broken for other Unix too. The original HylaFAX
@@ -255,6 +260,7 @@ prepare() {
 
   # sbin is deprecated and should not be used. We'll obliterate 
   # all uses of /sbin. Some /sbin not applicable to our OS are left alone.
+  #cp -p 'configure'{,.Arch}
   sed -e 's:^\(DIR_SBIN=/usr/local/\)sbin$:\1bin:g' \
       -e 's|:/sbin:\($PATH\)|:\1|g' \
       -e 's|\(findApp [^ ]\+ \)/sbin:\($PATH\)|\1\2|g' \
@@ -263,6 +269,7 @@ prepare() {
       -e 's:^\(test -d /usr/sbin &&\):#\1:g' \
       -e 's:^#!/bin/sh$:#!/usr/bin/dash:g' \
     -i 'configure'
+  test ! -s 'configure.Arch' || echo "${}"
 
   # Eliminate all uses of /bin/sh which on Arch Linux is bash. configure gets 
   # some of them. dash is partly for performance on high volume fax servers 
@@ -273,40 +280,20 @@ prepare() {
   sed -e 's:execl("/bin/sh":execl("/usr/bin/dash":g' -i faxd/{faxApp.c++,faxGettyApp.c++}
 
   #cp -p 'etc/faxsetup.sh.in'{,.Arch}
-  # diff -pNau5 'etc/faxsetup.sh.in'{.Arch,} > '0004-hylafaxplus-systemd.patch'
-  patch -Nup0 < "${srcdir}/0004-hylafaxplus-systemd.patch"
+  # diff -pNau5 'etc/faxsetup.sh.in'{.Arch,} > '0004a-hylafaxplus-systemd.patch'
+  patch -Nbup0 -i "${srcdir}/0004a-hylafaxplus-systemd.patch"
+  sed -e 's:/bin/systemctl:/usr/bin/systemctl:g' -i 'etc/faxsetup.sh.in'
+  test ! -s 'etc/faxsetup.sh.in.Arch' || echo "${}"
 
-  sed -e '# Fix FAXD= typo' \
-      -e 's:^\(\s\+\)\(FAXD="`findproc hfaxd`"\)$:\1H\2:g' \
-      -e "# Remove ' for mcedit syntax highlighter" \
-      -e 's:\([dD]on\)'"'"'t:\1t:g' \
-      -e "# This would have been easier to fix if the error wasn't hidden" \
-      -e 's:^\(\s\+\)\($DIR_SBIN/faxmodem $devid\)\( >/dev/null 2>&1\)$:\1\2 #\3 # Hiding these errors is counter productive!:g' \
-      -e '# Fix LN for anyone who has LN in their environment' \
-      -e 's:^\(LN=\):unset LN\n\1:g' \
-      -e '# vgetty and egetty are not readily available on Arch Linux so kill the warning.' \
-      -e '# Supress warning: /bin/vgetty does not exist or is not an executable program!' \
-      -e '# Supress warning: /bin/egetty does not exist or is not an executable program!' \
-      -e 's|^\(\s\+\)\(test -x $PATH_\)\([VE]GETTY\)\(.\+\)$|\1echo "\3 not available for Arch Linux" # \2\3\4 # http://www.hylafax.org/site2/HylaFAQ/Q360.html Q360: The truth about egetty/vgetty|g' \
-      -e '# The gsfonts are likely to never be again placed in this folder.' \
-      -e '# Why does gs report the folder in the search path?' \
-      -e '# Supress warning: /usr/share/ghostscript/fonts does not exist or is not a directory!' \
-      -e 's|^\(\s\+\)\(if \[ -d $FDIR \]; then\)$|\1if [ ! -d "$FDIR" -a "$FDIR" = "/usr/share/ghostscript/fonts" ]; then\n\1    echo -n ""\n\1el\2|g' \
+  #cp -p 'etc/faxsetup.sh.in'{,.Arch}
+  # diff -pNau5 'faxsetup.sh.in'{.orig,} > '0005-hylafaxplus-faxsetup.patch'
+  patch -Nbup0 -i "${srcdir}/0005-hylafaxplus-faxsetup.patch"
+  sed -Ee "# Remove ' for mcedit syntax highlighter" \
+      -e "s:([dD]on)'t:"'\1t:g' \
       -e '# Branding' \
-      -e 's|^\(Note "Setup program for HylaFAX (tm) $VERSION\)."$|\1-Arch Linux."|g' \
-      -e '# Improve display for 25 line screens. I skipped one that would take too much regex to get.' \
-      -e 's|^\(\t\t\)\(Note ""\)$|\1# \2|g' \
-      -e 's|^\(\t    \)\(Note ""\)$|\1# \2|g' \
-      -e '# Fix genfontmap output to get rid of glyph metric error.' \
-      -e 's:\($DIR_SPOOL/bin/genfontmap.ps\) \(> $DIR_SPOOL/etc/Fontmap.HylaFAX\):\1 | $DIR_SPOOL/bin/fmfix.pl \2:g' \
-      -e '# Fix some typos. Clarify SNPP.' \
-      -e 's|\(\[2\] Init script starts hfaxd\)|\1:|g' \
-      -e 's|\(\[3\] Start paging protocol\):\t|\1 (SNPP):|g' \
-      -e '# More sbin fixes' \
-      -e 's:^\(test -d /usr/sbin &&\):#\1:g' \
-      -e '# Remove /etc from path' \
-      -e 's|^\(PATH\)=.\+$|\1=/usr/bin:/usr/local/sbin|g' \
-    -i 'etc/faxsetup.sh.in'
+      -e 's:^(Note "Setup program for HylaFAX (tm) \$VERSION)."$:\1-Arch Linux.":g' \
+     -i 'etc/faxsetup.sh.in'
+  test ! -s 'etc/faxsetup.sh.in.Arch' || echo "${}"
 
   # Var $TTY clashes with the Arch Linux environment and likely all other Linux 
   # too. $TTY contains the terminal device from `tty`. With this already set 
@@ -334,6 +321,8 @@ prepare() {
   # same as faxaddmodem ttyUSB0. 
   # With all these bugs fixed you can install HylaFAX+ the way it was 
   # originally designed, and it's not very hard.
+  #cp -p 'etc/faxaddmodem.sh.in'{,.Arch}
+  #cp -p 'etc/probemodem.sh.in'{,.Arch}
   sed -e 's:$TTY\>:$MDMTTY:g' \
       -e 's:\<TTY=:MDMTTY=:g' \
       -e 's:\<read TTY\>:read MDMTTY:g' \
@@ -341,25 +330,12 @@ prepare() {
       -e 's?^\(\s\+\)\(prompt "Serial port that modem is connected to .\+\)$?\1echo ""\n\1echo "Leave /dev off if your device is in /dev"\n\1echo "Examples: ttyUSB0, ttyACM0, ttyS0"\n\1\2\n\1test "$MDMTTY" || (cd /dev; ls tty[^0-9]*)\n\1cleanMDM "$DEVPATH" "$MDMTTY"?g' \
       -e 's?$DEVPATH$MDMTTY?$SHOWTTY?g' \
     -i etc/{faxaddmodem,probemodem}.sh.in
+  test ! -s 'etc/faxaddmodem.sh.in.Arch'
+  test ! -s 'etc/probemodem.sh.in.Arch'
 
   # It is not necessary to add faster baud rates to the 2 modem scripts. 
   #   38400 is only the speed at which the script will test the modem. 
   # The modem config will set the proper speed during use.
-
-  # quick grammar error fix
-  sed -e 's:^a \(modem device \):\1:g' -i 'man/ondelay.1m'
-
-  # unknown isn't good enough for me. Let's brand! 
-  # We don't brand any of the build files which just get deleted anyways.
-  # sed -e 's:-unknown-linux-:-arch-linux-:g' -s -i etc/{faxaddmodem,probemodem,faxsetup}.sh.in
-  # This crude branding was eliminated by the configure option above.
-
-  # A patch from the Gentoo hylafaxplus ebuild. hostname -f produces a useless result on my system
-  # sed -e 's:hostname:hostname -f:g' -i util/{faxrcvd,pollrcvd}.sh.in
-  # More patches from the Gentoo hylafaxplus ebuild
-  # Respect LDFLAGS(at least partially)
-  # sed -e "/^LDFLAGS/s/LDOPTS}/LDOPTS} ${LDFLAGS}/" -i 'defs.in'
-  # sed -e 's|-fpic|-fPIC|g' -i 'configure'
 
   # A serious error that needs a bit more explanation before somebody gets fired for crashing the fax server.
   sed -e 's|\(emsg = fxStr::format("Unable to open scheduler FIFO: %s\)\(",\)$|\1 (try running faxsetup)\2|g' \
@@ -367,7 +343,7 @@ prepare() {
 
   # Provide clear instructions to remove and replace the SGI logo
   # diff -pNau5 cover.templ{.default,} > '0003-graphic.logo.instructions.patch'
-  patch -d 'util' -Nup0 < "${srcdir}/0003-graphic.logo.instructions.patch"
+  patch -d 'util' -Nup0 -i "${srcdir}/0003-graphic.logo.instructions.patch"
 
   set +u
 
@@ -381,6 +357,8 @@ build() {
   if [ ! -s 'Makefile' ]; then
     # On my system LN has something in it. Short variable names should be avoided in scripts.
     LN= \
+    CHOWN="${srcdir}/chown" \
+    CHGRP="${srcdir}/chgrp" \
     ./configure \
       --nointeractive \
       --with-OPTIMIZER="${CFLAGS}" \
@@ -405,9 +383,37 @@ build() {
 package() {
   set -u
   cd "${_pkgnick}-${pkgver}"
-  make -j1 INSTALLROOT="${pkgdir}" install
 
-  # My crude VSI-FAX tag support
+  local _chown="${pkgdir}/_install_chown.sh"
+
+  # create chgrp capture
+  install -Dm755 <(cat << EOF
+#!/bin/bash
+
+echo "  chgrp" \$(printf " '%s'" "\$@") >> "${_chown}"
+EOF
+  ) "${srcdir}/chgrp"
+  # create chown capture
+  install -Dm755 <(cat << EOF
+#!/bin/bash
+
+echo "  chown" \$(printf " '%s'" "\$@") >> "${_chown}"
+EOF
+  ) "${srcdir}/chown"
+  echo -e "#!/bin/sh\n\n_fn_install() {" > "${_chown}"
+
+  make -j1 INSTALLROOT="${pkgdir}" install
+  echo -e "}\n_fn_install" >> "${_chown}"
+  sed -e '# Remove pkgdir from script' \
+      -e "s:${pkgdir}::g" \
+      -e '# This file doesnt at the point where this is run in .install and we just chown them again' \
+      -e '/hosts.hfaxd/ s:^:#:g' \
+    -i "${_chown}"
+  sed -e "s:${srcdir}:/usr/bin:g" -i "${pkgdir}/usr/bin/faxsetup"
+  mv "${_chown}" "${pkgdir}/var/spool/hylafax/bin/"
+  unset _chown
+
+  # My crude vsi-fax tag support
   make -C "${srcdir}/sendfaxvsi-${_sendfaxvsicommit}" -j1 install DESTDIR="${pkgdir}" BINDIR='/usr/bin'
 
   # Thanks to looking at everything in mc I can see that these files have the wrong permissions.
@@ -437,13 +443,13 @@ package() {
   # and that's only if the admin knows what to do because the errors on 
   # sendfax don't reveal much about the problem.
 # 460 Failed to submit job 6: Unable to open scheduler FIFO: No such file or directory.
-  # See above for where we amend this error to give the poor admin a chance.
+  # See patch where we amend this error to give the poor admin a chance.
   # Removing the FIFO here ensures that the system will continue to run 
   # after an upgrade until it is convenient to run faxsetup to restart the 
   # daemons. Besides, the FIFO from the package is not made correctly.
   rm -f "${pkgdir}/var/spool/hylafax/FIFO"
 
-  # My fixer tool to get rid of the glyph metrics warning. Look above for where sed hacks this in.
+  # My fixer tool to get rid of the glyph metrics warning. Look where patch hacks this in.
   # Alternate solution: ftp://ftp.hylafax.org/contrib/fontmap/fontmap.pl
   # Alternate solution: configure --with-AFM=no (seems supported only in HylaFAX, not HylaFAX+)
   install -Dpm744 "${srcdir}/fmfix.pl" "${pkgdir}/var/spool/hylafax/bin"
@@ -488,13 +494,13 @@ EOF
 
   # Add dial rules for USA 7 and 10 digit numbers. The posted examples have them in the wrong order.
   # diff -pNau5 dialrules{.default,} > '0001-dialrules.7-10.digits.USA.patch'
-  patch -d "${pkgdir}/var/spool/hylafax/etc" -Nup0 < "${srcdir}/0001-dialrules.7-10.digits.USA.patch"
+  patch -d "${pkgdir}/var/spool/hylafax/etc" -Nup0 -i "${srcdir}/0001-dialrules.7-10.digits.USA.patch"
   install -Dpm755 "${srcdir}/localnxxtoregex.sh" -t "${pkgdir}/usr/bin"
 
   # top and bottom margin patch because fax doesn't do page layout like a regular printer
   # http://aplawrence.com/Linux/hylafax-scripts.html
   # diff -pNau5 typerules{.orig,} > '0002-typerules.vertical.margins.patch'
-  patch -d "${pkgdir}/usr/lib/fax" -Nup0 < "${srcdir}/0002-typerules.vertical.margins.patch"
+  patch -d "${pkgdir}/usr/lib/fax" -Nup0 -i "${srcdir}/0002-typerules.vertical.margins.patch"
 
   # More user customizable files from the Slackbuild
   pushd "${pkgdir}/var/spool/hylafax/etc" > /dev/null
@@ -529,7 +535,9 @@ ExecReload=/bin/kill -HUP \$MAINPID
 [Install]
 WantedBy=multi-user.target
 EOF
-  ) "${pkgdir}/usr/lib/systemd/system/hfaxd.service"
+  ) "${pkgdir}/usr/lib/systemd/system/hylafax-hfaxd.service"
+  # Compatibility mode for the old service names
+  ln -s '/usr/lib/systemd/system/hylafax-hfaxd.service' "${pkgdir}//usr/lib/systemd/system/hfaxd.service"
   install -Dm644 <(cat << EOF
 # Automatically generated by ${pkgname}-${pkgver} PKGBUILD from Arch Linux AUR
 # https://aur.archlinux.org/
@@ -546,7 +554,8 @@ ExecReload=/bin/kill -HUP \$MAINPID
 [Install]
 WantedBy=multi-user.target
 EOF
-  ) "${pkgdir}/usr/lib/systemd/system/faxq.service"
+  ) "${pkgdir}/usr/lib/systemd/system/hylafax-faxq.service"
+  ln -s '/usr/lib/systemd/system/hylafax-faxq.service' "${pkgdir}//usr/lib/systemd/system/faxq.service"
   install -Dm644 <(cat << EOF
 #  This file is part of systemd.
 #

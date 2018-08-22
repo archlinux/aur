@@ -1,0 +1,175 @@
+--- etc/faxsetup.sh.in.orig	2018-07-04 20:37:28.000000000 -0400
++++ etc/faxsetup.sh.in	2018-08-21 19:54:21.746958348 -0400
+@@ -39,17 +39,17 @@
+ # faxsetup [options]
+ #
+ # This script interactively prepares and verifies 
+ # a HylaFAX client and/or server machine for use.
+ #
+-PATH=/bin:/usr/bin:/etc
+-test -d /usr/ucb  && PATH=$PATH:/usr/ucb		# Sun and others
+-test -d /usr/bsd  && PATH=$PATH:/usr/bsd		# Silicon Graphics
+-test -d /usr/5bin && PATH=/usr/5bin:$PATH:/usr/etc	# Sun and others
+-test -d /usr/sbin && PATH=/usr/sbin:$PATH		# 4.4BSD-derived
+-test -d /usr/local/bin && PATH=$PATH:/usr/local/bin	# for GNU tools
+-test -d /usr/gnu/bin && PATH=$PATH:/usr/gnu/bin		# for GNU tools (SCO)
++#PATH=/bin:/usr/bin:/etc
++#test -d /usr/ucb  && PATH=$PATH:/usr/ucb		# Sun and others
++#test -d /usr/bsd  && PATH=$PATH:/usr/bsd		# Silicon Graphics
++#test -d /usr/5bin && PATH=/usr/5bin:$PATH:/usr/etc	# Sun and others
++#test -d /usr/sbin && PATH=/usr/sbin:$PATH		# 4.4BSD-derived
++#test -d /usr/local/bin && PATH=$PATH:/usr/local/bin	# for GNU tools
++#test -d /usr/gnu/bin && PATH=$PATH:/usr/gnu/bin		# for GNU tools (SCO)
+ 
+ AWK=@AWK@			# awk for use below
+ CAT=@CAT@			# cat command for use below
+ CHGRP=@CHGRP@			# change file group for use below
+ CHMOD=@CHMOD@			# change file mode for use below
+@@ -58,10 +58,11 @@ CP=@CP@				# cp command for use below
+ ECHO=@ECHO@			# echo command for use below
+ ENCODING=@ENCODING@		# encoding style for uuencode/mimencode
+ FILECMD=@FILECMD@		# command for determining filetypes
+ FUSER=@FUSER@			# fuser command to dump in setup.cache
+ GREP=@GREP@			# grep command for use below
++unset LN
+ LN=@LN@				# ln command for use below
+ LN_S=@LN_S@			# ln option for creating a symbolic link
+ MIMENCODE=@MIMENCODE@		# mimencode command to dump in setup.cache
+ MKFIFO=@MKFIFO@			# FIFO creation program for use below
+ MV=@MV@				# move file for use below
+@@ -627,11 +628,11 @@ EOF
+ 	}
+ 	;;
+     *)
+ 	dumpTTYFuncs()
+ 	{
+-	    Note ""
++	    # Note ""
+ 	    Note "Beware, I am guessing the tty naming conventions for your system."
+ 	    cat<<'EOF'
+ 	    ttyPort()
+ 	    {
+ 		expr $1 : 'tty\(.*\)'
+@@ -1236,13 +1237,13 @@ if onClient; then
+ 	}
+ 	# If configure --with-PATH_AFM=<path> was used then we need to include it first.
+ 	RUNTIME_PATH_AFM=$PATH_AFM:`getGSFonts`
+ 	if [ -n "$RUNTIME_PATH_AFM" \
+ 				-a "$RUNTIME_PATH_AFM" != "$PATH_AFM" ]; then 
+-	    Note ""
++	    # Note ""
+ 	    FONTPATHS=`echo $RUNTIME_PATH_AFM | sed 's/:/ /g'`
+-	    $PATH_GSRIP -q -sDEVICE=tiffg3 -sFONTPATH="$FONTPATHS" $DIR_SPOOL/bin/genfontmap.ps > $DIR_SPOOL/etc/Fontmap.HylaFAX 2>/dev/null
++	    $PATH_GSRIP -q -sDEVICE=tiffg3 -sFONTPATH="$FONTPATHS" $DIR_SPOOL/bin/genfontmap.ps | $DIR_SPOOL/bin/fmfix.pl > $DIR_SPOOL/etc/Fontmap.HylaFAX 2>/dev/null
+ 	    # Ghostscript 8.71 segfaults on that, but produces a valid Fontmap file, so we don't test exit code, but examine the product, instead.
+ 	    {
+ 		#
+ 		# genfontmap.ps really just gives us a copy of Fontmap.GS, and in later Ghostscript versions there
+ 		# are many Fontmap.GS references that are left undefined.  This may work for Ghostscript, but 
+@@ -1269,20 +1270,20 @@ if onClient; then
+ 		$RM -f $tmpfile
+ 		$MV -f $newfontmap $fontmap
+ 	    }
+ 	    if [ -n "`$GREP Courier-Bold $DIR_SPOOL/etc/Fontmap.HylaFAX`" ]; then
+ 		FONTMAP="$DIR_SPOOL/etc"
+-		Note ""
++		# Note ""
+ 		Note "Created our own Fontmap file in $DIR_SPOOL/etc."
+-		Note ""
++		# Note ""
+ 	    else
+ 		FONTMAP="$RUNTIME_PATH_AFM"
+ 		$RM -f $DIR_SPOOL/etc/Fontmap.HylaFAX
+ 	    fi
+-	    Note ""
++	    # Note ""
+ 	    Note "Setting Ghostscript font path in $DIR_LIBDATA/hyla.conf."
+-	    Note ""
++	    # Note ""
+ 	    if [ -f $DIR_LIBDATA/hyla.conf ]; then
+ 		$AWK '!/^FontMap|^FontPath|\/FontPath added by/ { print }' \
+ 			$DIR_LIBDATA/hyla.conf > $DIR_LIBDATA/hyla.conf.tmp
+ 	    fi
+ 	    echo "# FontMap/FontPath added by faxsetup (`date 2>/dev/null`)" \
+@@ -1299,11 +1300,13 @@ fi
+ #
+ if onClient; then
+     FDIRS=`echo $PATH_AFM | sed "s/:/ /g"`
+     MATCH=
+     for FDIR in $FDIRS; do
+-    if [ -d $FDIR ]; then
++    if [ ! -d "$FDIR" -a "$FDIR" = "/usr/share/ghostscript/fonts" ]; then
++        echo -n ""
++    elif [ -d $FDIR ]; then
+ 	cd $FDIR
+ 	if [ -n "`ls | grep '\.afm'`" ] || [ -f Courier ]; then
+ 		MATCH=$FDIR
+ 		break
+ 	fi
+@@ -1435,30 +1438,30 @@ EOF
+     $RM bin/ps2fax
+     $RM bin/pdf2fax
+     if [ -n "$LN_S" ]; then
+ 	$LN $LN_S ps2fax.$PS bin/ps2fax;
+ 	if [ $PS = gs ]; then
+-	    Note ""
++	    # Note ""
+ 	    Note "Make $DIR_SPOOL/bin/pdf2fax a link to $DIR_SPOOL/bin/pdf2fax.$PS."
+-	    Note ""
++	    # Note ""
+ 	    $LN $LN_S pdf2fax.$PS bin/pdf2fax;
+ 	else
+-	    Note ""
++	    # Note ""
+ 	    Note "Server-side PDF conversion is not supported on this system."
+-	    Note ""
++	    # Note ""
+ 	fi
+     else
+ 	$LN bin/ps2fax.$PS bin/ps2fax;
+ 	if [ $PS = gs ]; then
+-	    Note ""
++	    # Note ""
+ 	    Note "Make $DIR_SPOOL/bin/pdf2fax a link to $DIR_SPOOL/bin/pdf2fax.$PS."
+-	    Note ""
++	    # Note ""
+ 	    $LN bin/pdf2fax.$PS bin/pdf2fax;
+ 	else
+-	    Note ""
++	    # Note ""
+ 	    Note "Server-side PDF conversion is not supported on this system."
+-	    Note ""
++	    # Note ""
+ 	fi
+     fi
+ fi
+ 
+ #
+@@ -2096,12 +2099,12 @@ if onServer; then
+ 	cat<<EOF
+ 
+ 	HylaFAX configuration parameters are:
+ 
+ 	[1] Init script starts faxq:		$FAXQ_SERVER
+-	[2] Init script starts hfaxd		$HFAXD_SERVER
+-	[3] Start paging protocol:		$HFAXD_SNPP_SERVER
++	[2] Init script starts hfaxd:		$HFAXD_SERVER
++	[3] Start paging protocol (SNPP):	$HFAXD_SNPP_SERVER
+ EOF
+     }
+ 
+     promptForParameter()
+     {
+@@ -2658,11 +2661,11 @@ EOF
+ 		if isOK "$x"; then
+ 		    for x in $DEVS; do
+ 			devid="`expr $x : 'config.\(.*\)'`"
+ 			if [ -w $DIR_SPOOL/FIFO.$devid ]; then
+ 			    echo $DIR_SBIN/faxmodem $devid
+-			    $DIR_SBIN/faxmodem $devid >/dev/null 2>&1
++			    $DIR_SBIN/faxmodem $devid # >/dev/null 2>&1 # Hiding these errors is counter productive!
+ 			fi
+ 		    done
+ 		fi
+ 	    fi
+ 	fi

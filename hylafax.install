@@ -46,6 +46,7 @@ _clean_or_copy() {
 
 post_upgrade() {
   set -u
+  /usr/bin/sh "${_hyhome}/bin/_install_chown.sh"
   # Only some of the files and folders are chown
   chown "${_hyuser}:${_hygroup}" "${_hyhome}"/{,archive,bin,client,config,dev,docq,doneq,etc}
   chown "${_hyuser}:${_hygroup}" "${_hyhome}"/{info,log,pollq,recvq,sendq,status,tmp}
