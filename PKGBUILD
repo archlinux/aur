@@ -5,7 +5,7 @@ pkgname=memsource-editor
 _pkg=MemsourceEditor
 _platform=ubuntu-14.04
 pkgver=6.217.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A CAT translation tool, requires Memsource subscription"
 arch=('x86_64')
 license=('custom')
@@ -33,7 +33,7 @@ source=("http://download.memsource.com/production/updates/memsource-editor/linux
 
 sha256sums=('326f509f22cf3dcd995584d1088ec4b327ed3a9b51967fa259b8f759e11b2950'
             'cecca627cc0371ce3b66f49922c70cd4147262d358f5fbace111cdf420bd9ce6'
-            'b6e611ad7a037e496f7b97581657a56bf9b253a127ad759fe25be06683032ce9'
+            '8a40f0172dc948dfadec126b5ab9a4f983216034aa8fbf19a41b9466e6253866'
             '4802b77ffefd2cdd7526fec28a690f8dc560fef74501806b3485648dcac830fe'
             '3c6d72cdb51dab05682d0c84153171de68ef14cf8b593dfd44123a9365dd1f1e')
 
@@ -81,6 +81,6 @@ package() {
     ${pkgdir}/usr/share/icons/hicolor/${sz}x${sz}/apps/memsource-editor.png
     install -d ${pkgdir}/usr/share/icons/hicolor/${sz}x${sz}/mimetypes
     convert ${srcdir}/build/memsource-editor/application-x-mxliff.svg -resize ${sz}x${sz} \
-    ${pkgdir}/usr/share/icons/hicolor/${sz}x${sz}/mimetypes/application-x-memsource-editor.png
+    ${pkgdir}/usr/share/icons/hicolor/${sz}x${sz}/mimetypes/memsource-translation.png
   done
 }

@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
-  <mime-type type="application/x-memsource-editor">
+  <mime-type type="application/x-memsource-editor-mxliff">
    <comment>Memsource editor translation</comment>
+   <icon name="memsource-translation"/>
    <glob pattern="*.mxliff"/>
   </mime-type>
 </mime-info>
