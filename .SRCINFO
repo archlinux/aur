@@ -1,7 +1,7 @@
 pkgbase = shadow-selinux
 	pkgdesc = Password and account management tool suite with support for shadow files and PAM - SELinux support
-	pkgver = 4.5
-	pkgrel = 4
+	pkgver = 4.6
+	pkgrel = 1
 	url = https://github.com/shadow-maint/shadow
 	install = shadow.install
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = shadow-selinux
 	depends = pam-selinux
 	depends = acl
 	depends = libsemanage
-	provides = shadow=4.5-4
-	provides = selinux-shadow=4.5-4
+	provides = shadow=4.6-1
+	provides = selinux-shadow=4.6-1
 	conflicts = shadow
 	conflicts = selinux-shadow
 	options = strip
@@ -36,7 +36,7 @@ pkgbase = shadow-selinux
 	backup = etc/pam.d/chgpasswd
 	backup = etc/pam.d/groupmems
 	backup = etc/default/useradd
-	source = git+https://github.com/shadow-maint/shadow.git#tag=4.5
+	source = git+https://github.com/shadow-maint/shadow.git#tag=4.6
 	source = LICENSE
 	source = chgpasswd
 	source = chpasswd
