@@ -1,0 +1,18 @@
+pkgbase = devtools-repro-git
+	pkgdesc = Tools to reproduce arch linux packages
+	pkgver = r80.85eb2b9
+	pkgrel = 1
+	url = http://github.com/foxboron/devtools-repro
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = asciidoc
+	depends = diffoscope
+	depends = curl
+	depends = gnupg
+	depends = git
+	source = git+https://github.com/foxboron/devtools-repro.git
+	sha256sums = SKIP
+
+pkgname = devtools-repro-git
+
