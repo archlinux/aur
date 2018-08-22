@@ -1,6 +1,6 @@
 pkgname=nanocurrency-node-git
-pkgver=14.0.r99.g87a9d3dd
-pkgrel=2
+pkgver=15.0RC.r53.g5eb3f6c2
+pkgrel=1
 pkgdesc="Nano (formerly RaiBlocks) is a cryptocurrency designed from the ground up for scalable instant transactions and zero transaction fees. Command-line version without wallet GUI or Qt dependencies."
 arch=('i686' 'x86_64')
 url="https://nano.org/"
@@ -20,7 +20,7 @@ source=(nanowallet.desktop
   nano-node.service
   git+https://github.com/nanocurrency/raiblocks.git
   git+https://github.com/weidai11/cryptopp.git
-  git+https://github.com/nanocurrency/lmdb.git
+  "git+https://github.com/nanocurrency/lmdb.git#branch=lmdb_0_9_21"
   git+https://github.com/miniupnp/miniupnp.git
   git+https://github.com/clemahieu/phc-winner-argon2.git)
 
