@@ -2,7 +2,7 @@
 
 pkgname=inav-configurator-bin
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Crossplatform configuration tool for the INAV flight control system"
 arch=('i686' 'x86_64')
 url="https://github.com/iNavFlight/inav-configurator"
