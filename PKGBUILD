@@ -4,7 +4,7 @@
 _gemname=fastlane
 pkgname=$_gemname
 pkgver=2.102.0
-pkgrel=2
+pkgrel=3
 pkgdesc='The easiest way to automate beta deployments and releases for your iOS and Android apps'
 arch=(any)
 url='https://fastlane.tools'
@@ -40,13 +40,15 @@ depends=(
   'ruby-security=0.1.3'
   'ruby-simctl>=1.6.3' 'ruby-simctl<1.7'
   'ruby-slack-notifier<3' 'ruby-slack-notifier>=2'
-  'ruby-terminal-notifier<2' 'ruby-terminal-notifier>=1.6.2'
+  # 'ruby-terminal-notifier<2' 'ruby-terminal-notifier>=1.6.2'
+  ruby-terminal-notifier-1
   'ruby-terminal-table<2' 'ruby-terminal-table>=1.4.5'
   'ruby-tty-screen>=0.6.3' 'ruby-tty-screen<1'
   'ruby-tty-spinner>=0.8' 'ruby-tty-spinner<1'
   'ruby-word_wrap<1.1' 'ruby-word_wrap>=1'
   'ruby-xcodeproj>=1.5.7' 'ruby-xcodeproj<2'
-  'ruby-xcpretty<0.3' 'ruby-xcpretty>=0.2.8' 
+  # 'ruby-xcpretty<0.3' 'ruby-xcpretty>=0.2.8' 
+  ruby-xcpretty-0.2
   'ruby-xcpretty-travis-formatter>=0.0.3'
 )
 makedepends=(ruby-rdoc)
