@@ -10,13 +10,19 @@ arch=('any')
 url="https://github.com/Pylons/hupper"
 license=('MIT')
 depends=('python')
-makedepends=('python-distribute')
+makedepends=('python-setuptools')
+checkdepends=('python-watchdog' 'python-pytest-cov')
 source=($url/archive/${pkgver}.tar.gz)
 sha256sums=('c6bf5fbbf7b80aa765124ae638fa2d44e7c064b2a3fd6f8dd3b495b99a9d083a')
 
 build(){
     cd ${_pkgname}-${pkgver}
     python setup.py build
+}
+
+check(){
+    cd ${_pkgname}-${pkgver}
+    python setup.py pytest -v
 }
 
 package() {
