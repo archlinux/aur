@@ -5,6 +5,11 @@
 #include "portfolio.h"
 
 #define GET_OBJECT(obj) gtk_builder_get_object(app.builder, obj)
+#define PEER_COLUMN_SYMBOL 0
+#define PEER_COLUMN_PROFIT_24H_PERCENT 1
+#define PEER_COLUMN_PROFIT_7D_PERCENT 2
+#define PEER_COLUMN_PROFIT_30D_PERCENT 3
+#define PEER_NUM_COLS 4
 
 typedef enum column_index {
     AMOUNT, SYMBOL, VALUE, SPENT, PROFIT, PROFIT_PERCENT, PROFIT_24H, PROFIT_24H_PERCENT, PROFIT_7D,
@@ -192,6 +197,8 @@ void info_pane_populate_all(const Info* pInfo);
 void info_pane_populate_header(const Info* pInfo);
 
 void info_pane_populate_company(const Info* pInfo);
+
+void info_pane_populate_peers(const Info* pInfo);
 
 /**
  * Shows a generic message dialog.

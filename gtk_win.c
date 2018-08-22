@@ -346,8 +346,10 @@ void on_check_tree_view_row_activated(GtkTreeView* tree_view, GtkTreePath* path,
     if (pInfo->api_provider != IEX) // Only see info for iex securities
         return;
 
-    if (pInfo->name[0] == '\0') // MISC not loaded yet
-        iex_batch_store_data_info(pInfo, MISC);
+    if (pInfo->name[0] == '\0') {// MISC not loaded yet
+        api_info_store_data_batch(pInfo, MISC);
+        format_cells(pInfo->peers);
+    }
 
     info_pane_populate_all(pInfo);
     g_free(symbol);
@@ -447,6 +449,7 @@ void list_store_update(void) {
 void info_pane_populate_all(const Info* pInfo) {
     info_pane_populate_header(pInfo);
     info_pane_populate_company(pInfo);
+    info_pane_populate_peers(pInfo);
 }
 
 void info_pane_populate_header(const Info* pInfo) {
@@ -533,6 +536,23 @@ void info_pane_populate_company(const Info* pInfo) {
         sprintf(&eps_1y_label_name[len], "%d", i + 1);
         sprintf(eps, "%.2lf", pInfo->eps_year_ago[i]);
         gtk_label_set_label(GTK_LABEL(GET_OBJECT(eps_1y_label_name)), eps);
+    }
+}
+
+void info_pane_populate_peers(const Info* pInfo) {
+    GtkListStore* pListStore = GTK_LIST_STORE(GET_OBJECT("peers_list"));
+    gtk_list_store_clear(pListStore);
+
+    Info* idx; // Append pListStore store with portfolio data
+    GtkTreeIter iter;
+    for (size_t i = 0; i < pInfo->peers->length; i++) {
+        gtk_list_store_append(pListStore, &iter);
+        idx = pInfo->peers->array[i];
+        gtk_list_store_set(pListStore, &iter,
+                           PEER_COLUMN_SYMBOL, idx->symbol,
+                           PEER_COLUMN_PROFIT_24H_PERCENT, idx->fprofit_last_close_percent,
+                           PEER_COLUMN_PROFIT_7D_PERCENT, idx->fprofit_7d_percent,
+                           PEER_COLUMN_PROFIT_30D_PERCENT, idx->fprofit_30d_percent, -1);
     }
 }
 
