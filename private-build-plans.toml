@@ -1,0 +1,171 @@
+# docs:
+# https://github.com/be5invis/Iosevka
+
+# ss## stylistic sets:
+# https://raw.githubusercontent.com/be5invis/Iosevka/master/images/stylesets.png
+
+# cv## character variants:
+# https://raw.githubusercontent.com/be5invis/Iosevka/master/images/charvars.png
+
+# ligset-* ligature sets:
+# https://raw.githubusercontent.com/be5invis/Iosevka/master/images/ligations.png
+
+[buildPlans.iosevka-custom] # Plan name
+family = "Iosevka Custom"   # Font menu family name
+design = [                  # Common styles
+
+  "cv05",                   # hooky i
+  "cv14",                   # dotted zero
+  "cv24",                   # open double story g
+  "cv26",                   # short leg m
+  "cv27",                   # tailed l
+  "cv38",                   # open $
+  "cv46",                   # flat top 3
+
+  # "slab",
+
+  # "term",                   # strict mono; no ligatures
+  # "termlig",                # strict mono; with ligatures
+
+  # "ligset-haskell",
+  # "ligset-idris",
+  # "ligset-coq",
+  # "ligset-elm",
+  # "ligset-ml",
+  # "ligset-fs",              # F#
+  # "ligset-fstar",           # F*
+  # "ligset-swift",
+  # "ligset-purescript",
+
+]
+# upright = []                # Upright-only styles
+# italic = []                 # Italic-only styles
+# oblique = []                # Oblique-only styles
+
+[buildPlans.iosevka-slab-custom] # Plan name
+family = "Iosevka Slab Custom"   # Font menu family name
+design = [                       # Common styles
+
+  "cv05",                        # hooky i
+  "cv14",                        # dotted zero
+  "cv24",                        # open double story g
+  "cv26",                        # short leg m
+  "cv27",                        # tailed l
+  "cv38",                        # open $
+  "cv46",                        # flat top 3
+
+  "slab",
+
+  # "term",                        # strict mono; no ligatures
+  # "termlig",                     # strict mono; with ligatures
+
+  # "ligset-haskell",
+  # "ligset-idris",
+  # "ligset-coq",
+  # "ligset-elm",
+  # "ligset-ml",
+  # "ligset-fs",                   # F#
+  # "ligset-fstar",                # F*
+  # "ligset-swift",
+  # "ligset-purescript",
+
+]
+# upright = []                     # Upright-only styles
+# italic = []                      # Italic-only styles
+# oblique = []                     # Oblique-only styles
+
+[buildPlans.iosevka-term-custom] # Plan name
+family = "Iosevka Term Custom"   # Font menu family name
+design = [                       # Common styles
+
+  "cv05",                        # hooky i
+  "cv14",                        # dotted zero
+  "cv24",                        # open double story g
+  "cv26",                        # short leg m
+  "cv27",                        # tailed l
+  "cv38",                        # open $
+  "cv46",                        # flat top 3
+
+  # "slab",
+
+  "term",                        # strict mono; no ligatures
+  # "termlig",                     # strict mono; with ligatures
+
+  # "ligset-haskell",
+  # "ligset-idris",
+  # "ligset-coq",
+  # "ligset-elm",
+  # "ligset-ml",
+  # "ligset-fs",                   # F#
+  # "ligset-fstar",                # F*
+  # "ligset-swift",
+  # "ligset-purescript",
+
+]
+# upright = []                     # Upright-only styles
+# italic = []                      # Italic-only styles
+# oblique = []                     # Oblique-only styles
+
+[buildPlans.iosevka-termlig-custom] # Plan name
+family = "Iosevka TermLig Custom"   # Font menu family name
+design = [                          # Common styles
+
+  "cv05",                           # hooky i
+  "cv14",                           # dotted zero
+  "cv24",                           # open double story g
+  "cv26",                           # short leg m
+  "cv27",                           # tailed l
+  "cv38",                           # open $
+  "cv46",                           # flat top 3
+
+  # "slab",
+
+  # "term",                           # strict mono; no ligatures
+  "termlig",                        # strict mono; with ligatures
+
+  # "ligset-haskell",
+  # "ligset-idris",
+  # "ligset-coq",
+  # "ligset-elm",
+  # "ligset-ml",
+  # "ligset-fs",                      # F#
+  # "ligset-fstar",                   # F*
+  # "ligset-swift",
+  # "ligset-purescript",
+
+]
+# upright = []                        # Upright-only styles
+# italic = []                         # Italic-only styles
+# oblique = []                        # Oblique-only styles
+
+[buildPlans.iosevka-term-slab-custom] # Plan name
+family = "Iosevka Term Slab Custom"   # Font menu family name
+design = [                            # Common styles
+
+  "cv05",                             # hooky i
+  "cv14",                             # dotted zero
+  "cv24",                             # open double story g
+  "cv26",                             # short leg m
+  "cv27",                             # tailed l
+  "cv38",                             # open $
+  "cv46",                             # flat top 3
+
+  "slab",
+
+  "term",                             # strict mono; no ligatures
+  # "termlig",                          # strict mono; with ligatures
+
+  # "ligset-haskell",
+  # "ligset-idris",
+  # "ligset-coq",
+  # "ligset-elm",
+  # "ligset-ml",
+  # "ligset-fs",                        # F#
+  # "ligset-fstar",                     # F*
+  # "ligset-swift",
+  # "ligset-purescript",
+
+]
+# upright = []                          # Upright-only styles
+# italic = []                           # Italic-only styles
+# oblique = []                          # Oblique-only styles
