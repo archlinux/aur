@@ -5,14 +5,13 @@
 _npmname=jsonlint
 pkgname=nodejs-${_npmname}
 pkgver=1.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Validate JSON'
 arch=(any)
 url='http://zaach.github.com/jsonlint/'
 license=('MIT')
-depends=('nodejs'
-         'npm')
-makedepends=('nodejs')
+depends=('nodejs')
+makedepends=('nodejs' 'npm')
 source=("http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
 noextract=($_npmname-$pkgver.tgz)
 sha256sums=('987f42f0754b7bc0c84967b81fc2b4db0ed2ebe2117ccc5a5faa59e462447723')
