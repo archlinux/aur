@@ -161,6 +161,11 @@ void on_check_window_destroy(void);
  */
 void on_column_clicked(GtkTreeViewColumn* column, GtkListStore* list_store);
 
+void on_check_tree_view_row_activated(GtkTreeView* tree_view, GtkTreePath* path,
+        GtkTreeViewColumn* column);
+
+void on_info_back_button_clicked(GtkButton* button);
+
 /** UTILS **/
 
 /**
@@ -181,6 +186,12 @@ void list_store_sort(GtkListStore* list_store, Col_Index idx);
  * recreates the check list.
  */
 void list_store_update(void);
+
+void info_pane_populate_all(const Info* pInfo);
+
+void info_pane_populate_header(const Info* pInfo);
+
+void info_pane_populate_company(const Info* pInfo);
 
 /**
  * Shows a generic message dialog.

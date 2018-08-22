@@ -330,6 +330,35 @@ void on_column_clicked(GtkTreeViewColumn* column, GtkListStore* list_store) {
     list_store_sort(list_store, idx);
 }
 
+void on_check_tree_view_row_activated(GtkTreeView* tree_view, GtkTreePath* path,
+                                      GtkTreeViewColumn* column) {
+    GtkContainer* window = GTK_CONTAINER(GET_OBJECT("check_window"));
+    gtk_container_remove(window, GTK_WIDGET(GET_OBJECT("check_pane")));
+    gtk_container_add(window, GTK_WIDGET(GET_OBJECT("info_pane")));
+
+    GtkTreeIter iter;
+    GtkTreeModel* model = GTK_TREE_MODEL(GET_OBJECT("check_list"));
+    gtk_tree_model_get_iter(model, &iter, path);
+    gchar* symbol;
+    gtk_tree_model_get(model, &iter, SYMBOL, &symbol, -1);
+
+    Info* pInfo = info_array_get_info_from_symbol(app.portfolio_data, symbol);
+    if (pInfo->api_provider != IEX) // Only see info for iex securities
+        return;
+
+    if (pInfo->name[0] == '\0') // MISC not loaded yet
+        iex_batch_store_data_info(pInfo, MISC);
+
+    info_pane_populate_all(pInfo);
+    g_free(symbol);
+}
+
+void on_info_back_button_clicked(GtkButton* button) {
+    GtkContainer* window = GTK_CONTAINER(GET_OBJECT("check_window"));
+    gtk_container_remove(window, GTK_WIDGET(GET_OBJECT("info_pane")));
+    gtk_container_add(window, GTK_WIDGET(GET_OBJECT("check_pane")));
+}
+
 void format_cells(Info_Array* portfolio_data) {
     Info* idx;
     for (size_t i = 0; i < portfolio_data->length + 1; i++) { // +1 for totals
@@ -412,6 +441,98 @@ void list_store_update(void) {
     if (app.portfolio_data != NULL) {
         api_info_array_store_data_batch(app.portfolio_data, CHECK);
         check_list_add_api_data();
+    }
+}
+
+void info_pane_populate_all(const Info* pInfo) {
+    info_pane_populate_header(pInfo);
+    info_pane_populate_company(pInfo);
+}
+
+void info_pane_populate_header(const Info* pInfo) {
+    GtkLabel* symbol_label = GTK_LABEL(GET_OBJECT("info_header_symbol_label"));
+    GtkLabel* name_label = GTK_LABEL(GET_OBJECT("info_header_name_label"));
+    GtkLabel* date_label = GTK_LABEL(GET_OBJECT("info_header_date_label"));
+    GtkLabel* percent_24H_label = GTK_LABEL(GET_OBJECT("info_header_24H_change_label"));
+    GtkLabel* percent_7D_label = GTK_LABEL(GET_OBJECT("info_header_7D_change_label"));
+    GtkLabel* percent_30D_label = GTK_LABEL(GET_OBJECT("info_header_30D_change_label"));
+
+    gchar date_string[DATE_MAX_LENGTH];
+    if (pInfo->intraday_time != EMPTY) {
+        time_t time = pInfo->intraday_time;
+        struct tm* ts = localtime(&time);
+        strftime(date_string, DATE_MAX_LENGTH, "%F %T", ts);
+    } else date_string[0] = '\0';
+
+    gtk_label_set_label(symbol_label, pInfo->symbol);
+    gtk_label_set_label(name_label, pInfo->name);
+    gtk_label_set_label(date_label, date_string);
+    gtk_label_set_label(percent_24H_label, pInfo->fprofit_last_close_percent);
+    gtk_label_set_label(percent_7D_label, pInfo->fprofit_7d_percent);
+    gtk_label_set_label(percent_30D_label, pInfo->fprofit_30d_percent);
+}
+
+void info_pane_populate_company(const Info* pInfo) {
+    gchar revenue[32], cash[32], marketcap[32], pe_ratio[32], gross_profit[32], debt[32],
+    volume[32], div_yield[32];
+    sprintf(revenue, "%ld", pInfo->revenue);
+    sprintf(cash, "%ld", pInfo->cash);
+    sprintf(marketcap, "%ld", pInfo->cash);
+    sprintf(pe_ratio, "%lf", pInfo->pe_ratio);
+    sprintf(gross_profit, "%ld", pInfo->gross_profit);
+    sprintf(debt, "%ld", pInfo->debt);
+    sprintf(volume, "%ld", pInfo->volume_1d);
+    sprintf(div_yield, "%lf", pInfo->div_yield);
+
+    gtk_label_set_label(GTK_LABEL(GET_OBJECT("info_description_label")), pInfo->description);
+    gtk_label_set_label(GTK_LABEL(GET_OBJECT("info_ceo_label")), pInfo->ceo);
+    gtk_label_set_label(GTK_LABEL(GET_OBJECT("info_sector_label")), pInfo->sector);
+
+    if (pInfo->revenue != EMPTY)
+        gtk_label_set_label(GTK_LABEL(GET_OBJECT("info_revenue_label")), revenue);
+    if (pInfo->cash != EMPTY)
+        gtk_label_set_label(GTK_LABEL(GET_OBJECT("info_cash_label")), cash);
+    if (pInfo->marketcap != EMPTY)
+        gtk_label_set_label(GTK_LABEL(GET_OBJECT("info_market_cap_label")), marketcap);
+    if (pInfo->pe_ratio != EMPTY)
+        gtk_label_set_label(GTK_LABEL(GET_OBJECT("info_pe_ratio_label")), pe_ratio);
+
+    gtk_label_set_label(GTK_LABEL(GET_OBJECT("info_website_label")), pInfo->website);
+    gtk_label_set_label(GTK_LABEL(GET_OBJECT("info_industry_label")), pInfo->industry);
+
+    if (pInfo->gross_profit != EMPTY)
+        gtk_label_set_label(GTK_LABEL(GET_OBJECT("info_gross_profit_label")), gross_profit);
+    if (pInfo->debt != EMPTY)
+        gtk_label_set_label(GTK_LABEL(GET_OBJECT("info_debt_label")), debt);
+    if (pInfo->volume_1d != EMPTY)
+        gtk_label_set_label(GTK_LABEL(GET_OBJECT("info_volume_label")), volume);
+    if (pInfo->div_yield != EMPTY)
+        gtk_label_set_label(GTK_LABEL(GET_OBJECT("info_div_yield_label")), div_yield);
+
+    gchar period_label_name[32];
+    strcpy(period_label_name, "info_fiscal_period_label");
+    size_t len = strlen(period_label_name);
+    for (int i = 0; i < QUARTERS && pInfo->fiscal_period[i][0] != '\0'; i++) {
+        sprintf(&period_label_name[len], "%d", i + 1);
+        gtk_label_set_label(GTK_LABEL(GET_OBJECT(period_label_name)), pInfo->fiscal_period[i]);
+    }
+
+    gchar eps_label_name[32], eps[16];
+    strcpy(eps_label_name, "info_eps_label");
+    len = strlen(eps_label_name);
+    for (int i = 0; i < QUARTERS && pInfo->eps[i] != EMPTY; i++) {
+        sprintf(&eps_label_name[len], "%d", i + 1);
+        sprintf(eps, "%.2lf", pInfo->eps[i]);
+        gtk_label_set_label(GTK_LABEL(GET_OBJECT(eps_label_name)), eps);
+    }
+
+    gchar eps_1y_label_name[32];
+    strcpy(eps_1y_label_name, "info_eps_previous_label");
+    len = strlen(eps_1y_label_name);
+    for (int i = 0; i < QUARTERS && pInfo->eps_year_ago[i] != EMPTY; i++) {
+        sprintf(&eps_1y_label_name[len], "%d", i + 1);
+        sprintf(eps, "%.2lf", pInfo->eps_year_ago[i]);
+        gtk_label_set_label(GTK_LABEL(GET_OBJECT(eps_1y_label_name)), eps);
     }
 }
 
