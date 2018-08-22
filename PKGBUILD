@@ -5,7 +5,7 @@
 
 # Maintainer: Cesar Lucas <jester2@gmail.com>
 pkgname=cdf-nasa
-pkgver=3.6.4
+pkgver=3.7.0
 pkgrel=1
 epoch=
 pkgdesc="NASA Common Data Format (CDF) library for scientific data management"
@@ -24,25 +24,25 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://spdf.sci.gsfc.nasa.gov/pub/software/cdf/dist/cdf36_4/linux/cdf36_4-dist-all.tar.gz")
+source=("https://spdf.sci.gsfc.nasa.gov/pub/software/cdf/dist/cdf37_0/linux/cdf37_0-dist-all.tar.gz")
 noextract=()
-md5sums=("55baa5e6d7bc502bd13330f48c42650f")
+md5sums=("36c5485a0700fb76d11cc7d01bbe2995")
 validpgpkeys=()
 
 #prepare() {
 #}
 
 build() {
-	cd cdf36_4-dist 
+	cd cdf37_0-dist 
 	make OS=linux ENV=gnu SHARED=yes all
 }
 
 check() {
-	cd cdf36_4-dist
+	cd cdf37_0-dist 
 	make test
 }
 
 package() {
-	cd cdf36_4-dist
+	cd cdf37_0-dist
 	make INSTALLDIR="$pkgdir/usr" install
 }
