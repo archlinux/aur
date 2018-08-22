@@ -1,5 +1,5 @@
 pkgbase = cynthiune.app
-	pkgdesc = Romantic and extensible music player for GNUstep and Mac OS X
+	pkgdesc = Romantic and extensible music player for GNUstep
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = http://gap.nongnu.org/cynthiune/index.html
