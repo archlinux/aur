@@ -2,15 +2,15 @@
 
 pkgname=aurorafw-git
 pkgver=r62.7a2733e
-pkgrel=2
+pkgrel=3
 pkgdesc="A Powerful General Purpose Framework"
 arch=('any')
 url="https://gitlab.com/aurorafossorg/p/framework/core"
 license=('GNU LGPLv3')
 provides=('aurorafw')
 conflicts=('aurorafw')
-depends=('glfw' 'vulkan-headers' 'opengl-driver' 'libx11' 'freeimage' 'portaudio' 'libsndfile')
-makedepends=('doxygen' 'meson' 'ninja')
+depends=('glfw' 'vulkan-headers' 'opengl-driver' 'libx11' 'freeimage' 'portaudio' 'libsndfile' 'glew' 'gtk3')
+makedepends=('doxygen' 'meson' 'ninja' 'pkgconf')
 source=('git+https://gitlab.com/aurorafossorg/p/framework/core.git')
 sha256sums=('SKIP')
 
