@@ -1,7 +1,7 @@
 pkgbase = lxd
 	pkgdesc = REST API, command line tool and OpenStack integration plugin for LXC.
 	pkgver = 3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lxc/lxd
 	arch = x86_64
 	license = APACHE
@@ -10,7 +10,7 @@ pkgbase = lxd
 	depends = lxc
 	depends = squashfs-tools
 	depends = dnsmasq
-	depends = dqlite-git
+	depends = dqlite
 	optdepends = lvm2: for lvm2 support
 	optdepends = thin-provisioning-tools: for thin provisioning support
 	optdepends = btrfs-progs: for btrfs support
