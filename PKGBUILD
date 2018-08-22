@@ -2,16 +2,18 @@
 
 _pkgname=yuzu
 pkgname=$_pkgname-qt-canary-git
-pkgver=r8139.8c9a8123d
+pkgver=r8185.c91add0ad
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo Switch emulator/debugger"
 arch=('i686' 'x86_64')
 url="https://github.com/yuzu-emu/yuzu-canary"
 license=('GPL2')
-depends=('shared-mime-info' 'desktop-file-utils' 'sdl2' 'qt5-base' 'qt5-multimedia' 'mbedtls')
-makedepends=('git' 'cmake')
+depends=('shared-mime-info' 'desktop-file-utils' 'sdl2' 'qt5-base' 'qt5-multimedia')
+makedepends=('git' 'cmake' 'python')
 optdepends=('libxkbcommon-x11: for X11 support'
 	'qt5-wayland: for Wayland support')
+provides=('yuzu')
+conflicts=('yuzu')
 source=("$_pkgname::git+https://github.com/yuzu-emu/yuzu-canary"
         'git+https://github.com/svn2github/inih'
         'git+https://github.com/yuzu-emu/ext-boost'
