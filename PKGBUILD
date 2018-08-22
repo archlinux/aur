@@ -1,9 +1,9 @@
 # Maintainer: aligator <aligator at-symbol suncraft-server dot de>
-pkgrel=2
+pkgrel=1
 _pkgname='jsettlers'
 pkgname=${_pkgname}'-git'
 
-pkgver=0.4.0.alpha.r276.g0c7a1979b
+pkgver=0.4.0.alpha.r613.gb51b35a5c
 pkgver() {
   cd  ${_pkgname}
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
@@ -16,7 +16,7 @@ license=('MIT')
 provides=(${_pkgname})
 depends=('java-environment' 'sh')
 optdepends=('settlers3-demo-data')
-makedepends=('jdk8-openjdk' 'unzip')
+makedepends=('jdk8-openjdk' 'unzip' 'gradle')
 install=${pkgname}'.install'
 source=('jsettlers::git+https://github.com/jsettlers/settlers-remake.git')
 sha512sums=('SKIP')
@@ -25,7 +25,7 @@ build() {
     cd ${srcdir}/${_pkgname}
     
     # build game (without android)
-    JAVA_HOME="/usr/lib/jvm/java-8-openjdk" ANDROID_HOME="" ./gradlew releaseJSettlers || return 1
+    JAVA_HOME="/usr/lib/jvm/java-8-openjdk" ANDROID_HOME="" gradle releaseJSettlers || return 1
 }
 
 package() {
