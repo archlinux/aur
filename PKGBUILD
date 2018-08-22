@@ -18,9 +18,9 @@ sha256sums=('3a877322100f20da98aaeada85b639d15eef7dced4ca635c91cf4f6c3295765e'
 
 prepare() {
   cd "charmap-$pkgver"
-  patch < ../debian/patches/fix-exception-gui0.24.patch
-  patch < ../debian/patches/ftbfs-fix.patch
-  patch < ../debian/patches/gcc-warnings.patch
+  for patch in ../debian/patches/*.patch; do 
+    patch < $patch
+  done
 }
 
 build() {
