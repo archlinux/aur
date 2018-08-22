@@ -6,6 +6,7 @@ pkgbase = powershell-bin
 	install = powershell.install
 	arch = x86_64
 	depends = libunwind
+	depends = icu
 	provides = powershell
 	conflicts = powershell
 	options = staticlibs
