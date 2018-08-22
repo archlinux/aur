@@ -3,7 +3,7 @@
 
 pkgname='perl-moose'
 pkgver='2.2011'
-pkgrel='3'
+pkgrel='4'
 pkgdesc="A postmodern object system for Perl 5"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -38,7 +38,7 @@ package() {
   cd "$srcdir/$_distdir"
   make install
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
 
 # Local Variables:
