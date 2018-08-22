@@ -4,8 +4,8 @@
 
 pkgname=nodejs-elm
 _pkgname=elm
-pkgver=0.18.0
-pkgrel=2
+pkgver=0.19.0
+pkgrel=1
 pkgdesc="Binaries for the Elm programming language"
 arch=(any)
 url="https://www.npmjs.com/package/elm"
@@ -16,7 +16,7 @@ optdepends=(
         'ncurses5-compat-libs: required by elm repl'
     )
 source=("http://registry.npmjs.org/$_pkgname/-/$_pkgname-$pkgver.tgz")
-sha256sums=('2c189789b3b7a097c35b4370a0bfb2afe806b70e7bf9d402f174d528eea034d5')
+sha256sums=('cea3ee384b1bf34489d04854fada596648954e1f2cb2ea70789851c7b3b580ba')
 noextract=("$_pkgname-$pkgver.tgz")
 
 package() {
