@@ -355,24 +355,24 @@ void api_info_store_data_batch(Info* pInfo, Data_Level data_level) {
 }
 
 void info_store_check_data(Info* pInfo) {
-    if (pInfo->amount == EMPTY)
-        return;
-
     if (strcmp(pInfo->symbol, "USD$") != 0) {
-        pInfo->current_value = pInfo->amount * pInfo->price;
-        pInfo->profit_total = pInfo->current_value - pInfo->total_spent;
-        pInfo->profit_total_percent = 100 * (pInfo->current_value / pInfo->total_spent - 1);
-        pInfo->profit_last_close = pInfo->amount * (pInfo->price - pInfo->price_last_close);
-        pInfo->profit_last_close_percent = 100 * (pInfo->current_value / (pInfo->current_value -
-                                                                          pInfo->profit_last_close) - 1);
-        pInfo->profit_7d = pInfo->amount * (pInfo->price - pInfo->price_7d);
-        pInfo->profit_7d_percent = 100 * (pInfo->current_value / (pInfo->current_value - pInfo->profit_7d) - 1);
-        pInfo->profit_30d = pInfo->amount * (pInfo->price - pInfo->price_30d);
-        pInfo->profit_30d_percent = 100 * (pInfo->current_value / (pInfo->current_value - pInfo->profit_30d) - 1);
+        if (pInfo->amount != EMPTY) {
+            pInfo->current_value = pInfo->amount * pInfo->price;
+            pInfo->profit_total = pInfo->current_value - pInfo->total_spent;
+            pInfo->profit_total_percent = 100 * (pInfo->current_value / pInfo->total_spent - 1);
+            pInfo->profit_last_close = pInfo->amount * (pInfo->price - pInfo->price_last_close);
+            pInfo->profit_7d = pInfo->amount * (pInfo->price - pInfo->price_7d);
+            pInfo->profit_30d = pInfo->amount * (pInfo->price - pInfo->price_30d);
+        }
+        pInfo->profit_last_close_percent = 100 * (pInfo->price / pInfo->price_last_close - 1);
+        pInfo->profit_7d_percent = 100 * (pInfo->price / pInfo->price_7d - 1);
+        pInfo->profit_30d_percent = 100 * (pInfo->price / pInfo->price_30d - 1);
     } else {
-        pInfo->current_value = pInfo->amount;
-        pInfo->profit_total = pInfo->current_value - pInfo->total_spent;
-        pInfo->profit_total_percent = 100 * pInfo->profit_total / pInfo->total_spent;
+        if (pInfo->amount != EMPTY) {
+            pInfo->current_value = pInfo->amount;
+            pInfo->profit_total = pInfo->current_value - pInfo->total_spent;
+            pInfo->profit_total_percent = 100 * pInfo->profit_total / pInfo->total_spent;
+        }
         pInfo->profit_last_close = 0;
         pInfo->profit_last_close_percent = 0;
         pInfo->profit_7d = 0;
