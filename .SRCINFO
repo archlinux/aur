@@ -1,5 +1,5 @@
 pkgbase = linux-bfq-mq
-	pkgver = 4.18.3
+	pkgver = 4.18.4
 	pkgrel = 1
 	url = https://github.com/Algodev-github/bfq-mq/
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = linux-bfq-mq
 	makedepends = bc
 	makedepends = libelf
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.18.3.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.18.3.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.18.4.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.18.4.tar.sign
 	source = https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master/enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+.patch
 	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.18/bfq-sq-mq/4.18-bfq-sq-mq-v8r12-2K180817.patch
 	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.18/0100-Check-presence-on-tree-of-every-entity-after-every-a.patch
@@ -22,7 +22,7 @@ pkgbase = linux-bfq-mq
 	source = 0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
 	source = 0002-Increase-timeout-in-lspcon_wait_mode.patch
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = 81ed3ccef8eb43cba3d2451a963d0bbaf5392af98435d42caee82d019a8443d4
+	sha256sums = 12dbc87b5bdb7c47980fefea06911ea43b9ef226747e17e879428e6d4d8ba842
 	sha256sums = SKIP
 	sha256sums = 9f7177679c8d3f8d699ef0566a51349d828436dba04603bc2223f98c60d2d178
 	sha256sums = 53565d514e80aade2439906e35d758f72aef1eece869a87a1623e80dbacc86e7
@@ -44,19 +44,19 @@ pkgname = linux-bfq-mq
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
-	provides = linux-bfq-mq=4.18.3
-	provides = linux=4.18.3
+	provides = linux-bfq-mq=4.18.4
+	provides = linux=4.18.4
 	backup = etc/mkinitcpio.d/linux-bfq-mq.preset
 
 pkgname = linux-bfq-mq-headers
 	pkgdesc = Header files and scripts for building modules for Linux-bfq-mq kernel
-	depends = linux-bfq-mq=4.18.3
-	provides = linux-bfq-mq-headers=4.18.3
-	provides = linux-headers=4.18.3
+	depends = linux-bfq-mq=4.18.4
+	provides = linux-bfq-mq-headers=4.18.4
+	provides = linux-headers=4.18.4
 
 pkgname = linux-bfq-mq-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-bfq-mq kernel
-	depends = linux-bfq-mq=4.18.3
-	provides = linux-bfq-mq-docs=4.18.3
-	provides = linux-docs=4.18.3
+	depends = linux-bfq-mq=4.18.4
+	provides = linux-bfq-mq-docs=4.18.4
+	provides = linux-docs=4.18.4
 
