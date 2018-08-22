@@ -1,15 +1,16 @@
 pkgbase = lib32-hdf5
 	pkgdesc = General purpose library and file format for storing scientific data (32-bit)
-	pkgver = 1.10.2
+	pkgver = 1.10.3
 	pkgrel = 1
-	url = https://www.hdfgroup.org/hdf5/
+	url = https://portal.hdfgroup.org/display/support
 	arch = x86_64
 	license = custom
 	makedepends = time
 	makedepends = gcc-fortran-multilib
 	depends = lib32-zlib
-	source = https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.10/hdf5-1.10.2/src/hdf5-1.10.2.tar.bz2
-	md5sums = 41fb9347801b546fba323523a1c1af51
+	depends = lib32-libaec
+	source = https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.10/hdf5-1.10.3/src/hdf5-1.10.3.tar.bz2
+	md5sums = 56c5039103c51a40e493b43c504ce982
 
 pkgname = lib32-hdf5
 

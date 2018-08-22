@@ -3,28 +3,25 @@
 
 _pkgname=hdf5
 pkgname=lib32-${_pkgname}
-pkgver=1.10.2
+pkgver=1.10.3
 pkgrel=1
 pkgdesc="General purpose library and file format for storing scientific data (32-bit)"
 arch=('x86_64')
-url="https://www.hdfgroup.org/hdf5/"
+url="https://portal.hdfgroup.org/display/support"
 license=('custom')
-depends=('lib32-zlib')
+depends=('lib32-zlib' 'lib32-libaec')
 makedepends=('time' 'gcc-fortran-multilib')
 source=("https://support.hdfgroup.org/ftp/HDF5/releases/${_pkgname}-${pkgver:0:4}/${_pkgname}-${pkgver}/src/${_pkgname}-${pkgver}.tar.bz2")
-md5sums=('41fb9347801b546fba323523a1c1af51')
+md5sums=('56c5039103c51a40e493b43c504ce982')
 
 prepare() {
-    cd ${_pkgname}-${pkgver}
-
-    # Fix building with GCC 8.1
-    sed 's/\(.*\)(void) HDF_NO_UBSAN/HDF_NO_UBSAN \1(void)/' -i src/H5detect.c
+    [ ! -d build ] && mkdir -p build
 }
 
 build() {
-    cd ${_pkgname}-${pkgver}
+    cd build
 
-    ./configure \
+    "${srcdir}/${_pkgname}-${pkgver}"/configure \
         CFLAGS="-m32 ${CFLAGS}" \
         CXXFLAGS="-m32 ${CXXFLAGS}" \
         FCFLAGS="-m32 ${FCFLAGS}" \
@@ -41,27 +38,29 @@ build() {
         --enable-cxx \
         --enable-fortran \
         --with-pic \
-        --with-zlib
+        --with-zlib \
+        --with-szlib
+
     make
 }
 
 check() {
-    cd ${_pkgname}-${pkgver}
+    cd build
 
     # Without exporting LD_LIBRARY_PATH, tests fail being unable to
     # locate the newly built (not installed yet) hdf5 runtime
-    export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${srcdir}/${_pkgname}-${pkgver}/src/.libs"
-    export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${srcdir}/${_pkgname}-${pkgver}/c++/src/.libs"
-    export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${srcdir}/${_pkgname}-${pkgver}/fortran/src/.libs"
-    export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${srcdir}/${_pkgname}-${pkgver}/hl/src/.libs"
-    export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${srcdir}/${_pkgname}-${pkgver}/hl/c++/src/.libs"
-    export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${srcdir}/${_pkgname}-${pkgver}/hl/fortran/src/.libs"
+    export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${srcdir}/build/src/.libs"
+    export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${srcdir}/build/c++/src/.libs"
+    export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${srcdir}/build/fortran/src/.libs"
+    export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${srcdir}/build/hl/src/.libs"
+    export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${srcdir}/build/hl/c++/src/.libs"
+    export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${srcdir}/build/hl/fortran/src/.libs"
 
     make check
 }
 
 package() {
-    cd ${_pkgname}-${pkgver}
+    cd build
 
     make -j1 DESTDIR="${pkgdir}" install
 
