@@ -1,0 +1,10 @@
+[Unit]
+Description=Prometheus exporter for redis
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/prometheus_redis_exporter
+User=nobody
+
+[Install]
+WantedBy=multi-user.target
