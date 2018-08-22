@@ -1,13 +1,17 @@
 pkgbase = teleconsole-bin
 	pkgdesc = Command line tool to share your UNIX terminal and forward local TCP ports to people you trust.
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/gravitational/teleconsole/
 	arch = x86_64
+	arch = arm
 	license = Apache
 	depends = glibc
-	source = https://github.com/gravitational/teleconsole/releases/download/0.3.1/teleconsole-v0.3.1-linux-amd64.tar.gz
-	sha256sums = bcc08d8ea2c8a7ad01fb7a336c5f9ebd75b7b2624db9b0cc88c5f60b5c3e533b
+	options = !strip
+	source_x86_64 = https://github.com/gravitational/teleconsole/releases/download/0.4.0/teleconsole-v0.4.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = f444828117f2aa8555ec33abd03ef1caadbc72d0f5bc273c48334c55318aafeb
+	source_arm = https://github.com/gravitational/teleconsole/releases/download/0.4.0/teleconsole-v0.4.0-linux-arm.tar.gz
+	sha256sums_arm = f39244db0d04ee42efb9e6a0a98a861b69e448b10b4eecd52923d1c870337ff5
 
 pkgname = teleconsole-bin
 
