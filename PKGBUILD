@@ -2,7 +2,7 @@
 # Maintainer: Adrian Petrescu <apetresc@gmail.com>
 
 pkgname=hexgui
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=2
 pkgdesc='SGF editor and engine client for the board game Hex'
 arch=('any')
@@ -15,7 +15,7 @@ source=("https://github.com/apetresc/hexgui/archive/v$pkgver.tar.gz"
         'hexgui'
         'hexgui.xml'
         'hexgui.desktop')
-md5sums=('eb264a51b3b446d79ef1628a4bbf6e2a'
+md5sums=('5456c74b6e2ff619bc8f488128f02764'
          '77035cf26c8a2e4c656ad874b44ccf29'
          'df0600845bfe27c7f5775f274ee12202'
          'd6c7e88fb22bff99ef68efc26ccb8d56')
