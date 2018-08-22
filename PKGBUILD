@@ -5,24 +5,22 @@ _sysroot=/usr/lib/${_target}
 _pkgname=binutils
 
 pkgname=$_target-${_pkgname}
-pkgver=2.29
-pkgrel=2
+pkgver=2.31.1
+pkgrel=1
 pkgdesc='A set of programs to assemble and manipulate binary and object files for the x86_64-elf target'
 arch=(x86_64)
 url='http://www.gnu.org/software/binutils/'
 license=(GPL)
 depends=(zlib)
 options=(!emptydirs !docs)
-source=("http://mirrors.kernel.org/gnu/binutils/binutils-$pkgver.tar.xz"
-        "libiberty-ignore-cflags.patch")
-sha256sums=('0b871e271c4c620444f8264f72143b4d224aa305306d85dd77ab8dce785b1e85'
-            '8b2aea00e98f7c311b1d0fb14e4b435a03c65fde32bc992c924edb6fa7b83c9c')
+source=("http://mirrors.kernel.org/gnu/binutils/binutils-$pkgver.tar.xz")
+sha256sums=('5d20086ecf5752cc7d9134246e9588fa201740d540f7eb84d795b1f7a93bca86')
 _basedir=binutils-$pkgver
 
 prepare() {
 	cd ${srcdir}/${_pkgname}-${pkgver}
 
-	patch -p1 -i $srcdir/libiberty-ignore-cflags.patch
+    sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
 
 	mkdir $srcdir/binutils-build
 }
