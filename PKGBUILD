@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-terminal-git
-pkgver=r1760.0ebbc82
+pkgver=r1763.87a4849
 pkgrel=1
 pkgdesc='The Pantheon Terminal Emulator'
 arch=('x86_64')
@@ -23,7 +23,8 @@ pkgver() {
 }
 
 build() {
-  arch-meson pantheon-terminal build
+  arch-meson pantheon-terminal build \
+    -Dubuntu-bionic-patched-vte='false'
   ninja -C build
 }
 
