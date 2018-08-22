@@ -1,0 +1,17 @@
+pkgbase = fsharp-git
+	pkgdesc = The F# Compiler, Core Library & Tools (F# Software Foundation Repository) (master branch)
+	pkgver = r6614.15bd45404
+	pkgrel = 1
+	url = http://fsharp.org/
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = mono
+	depends = msbuild-stable
+	provides = fsharp
+	conflicts = fsharp
+	source = git+https://github.com/fsharp/fsharp
+	sha256sums = SKIP
+
+pkgname = fsharp-git
+
