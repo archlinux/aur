@@ -1,0 +1,14 @@
+pkgbase = vim-asyncrun-git
+	pkgdesc = Run Async Shell Commands in Vim 8.0 / NeoVim and Output to Quickfix Window
+	pkgver = r188.a81b997
+	pkgrel = 1
+	url = https://github.com/skywind3000/asyncrun.vim
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = vim
+	source = git+https://github.com/skywind3000/asyncrun.vim
+	md5sums = SKIP
+
+pkgname = vim-asyncrun-git
+
