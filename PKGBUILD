@@ -14,8 +14,8 @@ url="http://gnunet.org"
 license=('GPL')
 provides=("${_appname}")
 conflicts=("${_appname}")
-depends=('gmp' 'libgcrypt' 'libextractor' 'sqlite' 'gnurl'
-	 'libmicrohttpd' 'libunistring' 'libidn' 'jansson')
+depends=('libextractor' 'sqlite' 'gnurl'
+	 'libmicrohttpd' 'jansson')
 makedepends=('gettext' 'pkgconfig' 'autoconf' 'fakeuser-git'
 	     'bluez-libs' 'python' 'glpk' 'libpulse' 'opus')
 optdepends=('bluez-libs'
