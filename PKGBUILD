@@ -67,7 +67,7 @@ pkgrel=1
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
-makedepends=('kmod' 'inetutils' 'bc' 'libelf')
+makedepends=('kmod' 'inetutils' 'bc' 'libelf' 'python-sphinx' 'graphviz')
 options=('!strip')
 _bfqpath="https://gitlab.com/tom81094/custom-patches/raw/master/bfq-mq"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.18"
@@ -98,7 +98,7 @@ source=(# mainline kernel patches
          # standard config files for mkinitcpio ramdisk
         'linux.preset'
         '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch'
-        '0002-Increase-timeout-in-lspcon_wait_mode.patch')
+        '0002-drm-i915-Increase-LSPCON-timeout.patch')
 
 sha256sums=('12dbc87b5bdb7c47980fefea06911ea43b9ef226747e17e879428e6d4d8ba842'
             'SKIP'
@@ -111,7 +111,7 @@ sha256sums=('12dbc87b5bdb7c47980fefea06911ea43b9ef226747e17e879428e6d4d8ba842'
             '5f6ba52aaa528c4fa4b1dc097e8930fad0470d7ac489afcb13313f289ca32184'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '2f91c43b6848cbae2b2c1969323dcaf1c6aace130cd2165c543a7fcf73759aa1'
-            '3730fe7144a02ae7d9e6d7674138c8cd205f94dd56f141b527b07333ce7f404c')
+            '31904ff5b35e1bdddaf8a27016179d7c299ce4304b266643957c3cd374e39386')
 validpgpkeys=(
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
              )
@@ -255,7 +255,7 @@ prepare() {
 build() {
   cd ${_srcname}
 
-  make bzImage modules
+  make bzImage modules htmldocs
 }
 
 _package() {
@@ -410,7 +410,19 @@ _package-docs() {
   msg2 "Installing documentation..."
   mkdir -p "$builddir"
   cp -t "$builddir" -a Documentation
-  
+
+  msg2 "Removing doctrees..."
+  rm -r "$builddir/Documentation/output/.doctrees"
+
+  msg2 "Moving HTML docs..."
+  local src dst
+  while read -rd '' src; do
+    dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
+    mkdir -p "${dst%/*}"
+    mv "$src" "$dst"
+    rmdir -p --ignore-fail-on-non-empty "${src%/*}"
+  done < <(find "$builddir/Documentation/output" -type f -print0)
+
   msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/share/doc"
   ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
