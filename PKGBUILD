@@ -3,13 +3,14 @@
 # Contributor: Stephan Eisvogel <eisvogel at embinet dot de>
 pkgname=python-xmp-toolkit
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A library for working with XMP metadata'
 arch=(any)
 url='http://python-xmp-toolkit.readthedocs.org/'
 license=(custom)
 depends=('python>=3.5'
-         'exempi>=2.2.0')
+         'exempi>=2.2.0'
+         'python-pytz')
 source=('https://files.pythonhosted.org/packages/5b/0b/4f95bc448e4e30eb0e831df0972c9a4b3efa8f9f76879558e9123215a7b7/python-xmp-toolkit-2.0.1.tar.gz')
 sha256sums=('f8d912946ff9fd46ed5c7c355aa5d4ea193328b3f200909ef32d9a28a1419a38')
  
