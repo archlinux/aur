@@ -1,7 +1,7 @@
 # Maintainer: Alexis Rouillard <contact@arouillard.fr>
 
 pkgname=waybar-git
-pkgver=r70.8d5b61a9
+pkgver=r118.0dba3abc
 pkgrel=2
 pkgdesc='Highly customizable wayland bar for sway or wlroots based compositor.'
 arch=('x86_64')
@@ -13,13 +13,12 @@ depends=('gtkmm3'
          'libnl>=3.0'
          'libsigc++>=2.0'
          'wayland'
-         'waylandpp'
-         'wireless_tools'
          'libpulse'
          'wlroots')
-makedepends=('meson')
+makedepends=('meson'
+             'git')
 
-# source=("${pkgname}::git://github.com/Alexays/Waybar#commit=8d5b61a9"
+# source=("${pkgname}::git://github.com/Alexays/Waybar#commit=0dba3abc"
 source=("${pkgname}::git://github.com/Alexays/Waybar"
         'meson.build.patch')
 
