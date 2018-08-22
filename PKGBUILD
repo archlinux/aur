@@ -1,4 +1,5 @@
-# Maintainer : Jo De Boeck <deboeck.jo@gmail.com>
+# Maintainer : Frederik “Freso” S. Olesen <freso.dk@gmail.com>
+# Contributor : Jo De Boeck <deboeck.jo@gmail.com>
 
 pkgname=koditools-git
 provides=('koditools')
