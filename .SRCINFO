@@ -1,10 +1,12 @@
 pkgbase = spirv-headers-git
 	pkgdesc = SPIR-V header files Git version
 	pkgver = r110.2c51218
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.khronos.org/registry/spir-v/
 	arch = any
 	license = custom
+	provides = spirv-headers
+	conflicts = spirv-headers
 	source = git://github.com/KhronosGroup/SPIRV-Headers.git
 	sha1sums = SKIP
 
