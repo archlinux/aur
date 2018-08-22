@@ -1,13 +1,6 @@
 post_install() {
 	echo "Symlink has been installed for /usr/bin/neon-wallet"
 	ln -s /opt/Neon/neon /usr/bin/neon-wallet
-	echo \
-		"####################################
-If you're using the Neon App, please
-ensure you're using version 1.1.1 or
-above
-####################################"
-}
 
 post_upgrade() {
 	if [ ! -e /usr/bin/neon-wallet ]; then
@@ -17,12 +10,6 @@ post_upgrade() {
 		echo "Symlink already present, not reinstalling"
 	fi
         echo \
-                "####################################
-If you're using the Neon App, please
-ensure you're using version 1.1.1 or
-above
-####################################"
-}
 
 post_remove() {
 	echo "Symlink to /usr/bin/neon-wallet has been removed"
