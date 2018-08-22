@@ -2,7 +2,7 @@
 
 _target=x86_64-elf
 pkgname=$_target-gcc
-pkgver=7.2.0
+pkgver=8.2.0
 pkgrel=2
 pkgdesc='The GNU Compiler Collection - cross compiler for x86_64-elf target'
 arch=(x86_64)
@@ -10,16 +10,14 @@ url='http://gcc.gnu.org/'
 license=(GPL LGPL)
 depends=($_target-binutils zlib libmpc mpfr gmp)
 options=(!emptydirs)
-source=("https://mirrors.kernel.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz"
-	"libiberty-ignore-cflags.patch")
-sha256sums=('1cf7adf8ff4b5aa49041c8734bbcf1ad18cc4c94d0029aae0f4e48841088479a'
-	'8b2aea00e98f7c311b1d0fb14e4b435a03c65fde32bc992c924edb6fa7b83c9c')
+source=("https://mirrors.kernel.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz")
+sha256sums=('196c3c04ba2613f893283977e6011b2345d1cd1af9abeac58e916b1aab3e0080')
 _basedir=gcc-$pkgver
 
 prepare() {
 	cd $_basedir
 	
-	patch -p1 -i $srcdir/libiberty-ignore-cflags.patch
+	sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
 
 	mkdir $srcdir/gcc-build
 }
