@@ -6,8 +6,8 @@
 
 pkgname=yaourtix
 pkgver=1.9
-pkgrel=1
-pkgdesc='Yaourt (= a pacman wrapper with extended features and AUR support) patched with user definable repo-support for building from source, and other customizepkg-enhancements.'
+pkgrel=2
+pkgdesc='Yaourt (= a pacman wrapper with extended features and AUR support) patched with user definable repo-support for building from source, and other customizepkg-enhancements. Artix support included.'
 arch=('any')
 url="https://github.com/archlinuxfr/yaourt"
 license=('GPL')
@@ -23,13 +23,11 @@ optdepends=(
 )
 provides=(
   "yaourt=${pkgver}"
-  "yaourt-git=${pkgver}"
-  "yaourtix=${pkgver}"
 )
 conflicts=(
   "yaourt"
   "yaourt-git"
-  "yaourtix"
+  "yaourtix-git"
 )
 backup=(
   "etc/yaourtrc"

@@ -1,7 +1,7 @@
 pkgbase = yaourtix
-	pkgdesc = Yaourt (= a pacman wrapper with extended features and AUR support) patched with user definable repo-support for building from source, and other customizepkg-enhancements.
+	pkgdesc = Yaourt (= a pacman wrapper with extended features and AUR support) patched with user definable repo-support for building from source, and other customizepkg-enhancements. Artix support included.
 	pkgver = 1.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/archlinuxfr/yaourt
 	arch = any
 	license = GPL
@@ -12,11 +12,9 @@ pkgbase = yaourtix
 	optdepends = subversion: Retrieve PKGBUILDs from some unofficial user repositories.
 	optdepends = customizepkg: Automatically modify PKGBUILD during install/upgrade.
 	provides = yaourt=1.9
-	provides = yaourt-git=1.9
-	provides = yaourtix=1.9
 	conflicts = yaourt
 	conflicts = yaourt-git
-	conflicts = yaourtix
+	conflicts = yaourtix-git
 	backup = etc/yaourtrc
 	backup = etc/yaourtix/abs-logic.sh
 	source = yaourt-1.9.tar.gz::https://github.com/archlinuxfr/yaourt/releases/download/1.9/yaourt-1.9.tar.gz
