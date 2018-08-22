@@ -1,7 +1,7 @@
 pkgbase = python-plaster
 	pkgdesc = A loader interface around multiple config file formats.
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Pylons/plaster
 	arch = any
 	license = MIT
