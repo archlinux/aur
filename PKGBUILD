@@ -1,9 +1,10 @@
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-getopt-long-descriptive'
-pkgver='0.100'
-pkgrel='1'
+pkgver=0.100
+pkgrel=2
 pkgdesc="Getopt::Long, but simpler and more powerful"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -41,7 +42,7 @@ package() {
   cd "$srcdir/$_distdir"
   make install
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
 
 # Local Variables:
