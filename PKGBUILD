@@ -1,6 +1,6 @@
 # Maintainer: NexAdn
 pkgname=obs-linuxbrowser-bin
-pkgver=0.5.1
+pkgver=0.5.2
 _obsver=21.1.2
 pkgrel=1
 pkgdesc="Browser source plugin for obs-studio based on CEF. Alternative to obs-qtwebkit."
@@ -20,7 +20,7 @@ optdepends=(
 source=(
     "https://github.com/bazukas/obs-linuxbrowser/releases/download/${pkgver}/linuxbrowser${pkgver}-obs${_obsver}-64bit.tgz"
 )
-sha256sums=('56c76525ed9c608536b4db67af7492a0ae2090fd005036103343d73bd1714ba5')
+sha256sums=('97dcc3bea09e8ebe5befd6888039aea06b705c24a0d397eb615cefbfe6af18ee')
 package() {
     cd ${srcdir}/obs-linuxbrowser
     install -d ${pkgdir}/usr/lib/obs-plugins/
