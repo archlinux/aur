@@ -4,7 +4,7 @@
 
 pkgname='perl-event'
 pkgver='1.26'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Event loop processing"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
@@ -49,7 +49,7 @@ package() {
   cd "$srcdir/$_distdir"
   make install
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
   _perl_depends
 }
 
