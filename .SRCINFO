@@ -1,7 +1,7 @@
 pkgbase = perl-file-homedir
 	pkgdesc = Find your home and other directories on any platform
 	pkgver = 1.004
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/File-HomeDir
 	arch = any
 	license = PerlArtistic
