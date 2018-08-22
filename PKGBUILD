@@ -1,14 +1,14 @@
 # Maintainer: Pierre Choffet <peuc@wanadoo.fr>
 
 pkgname=return-to-the-roots-git
-pkgver=r3863.e340f253
-pkgrel=3
+pkgver=r3946.826300c2
+pkgrel=1
 pkgdesc="Free/libre implementation of The Settlers II game engine"
 arch=("x86_64")
 url="https://siedler25.org/"
 license=("GPL3")
-makedepends=("cmake" "git" "boost" "mesa" "sdl_mixer" "curl" "lua" "miniupnpc")
-depends=("boost-libs" "libgl" "sdl_mixer" "miniupnpc")
+makedepends=("cmake" "git" "boost" "mesa" "sdl_mixer" "curl" "lua52" "miniupnpc")
+depends=("boost-libs" "libgl" "sdl_mixer" "miniupnpc" "lua52")
 conflicts=("return-to-the-roots" "s25rttr" "s25rttr-nightly-bin")
 provides=("return-to-the-roots")
 install="return-to-the-roots.install"
@@ -67,12 +67,14 @@ prepare() {
 }
 
 build() {
-	cd "s25client/build/"
+	cd s25client
 
-	# NOTE: Fix upstream make install problem in s-c since 056acfe5b75cf08d433e2b356758c1202b7ebdea
-	sed -i 's/PARAMS="$PARAMS -DRTTR_BINDIR=$RTTR_BINDIR"/PARAMS="$PARAMS -DRTTR_BINDIR=$RTTR_BINDIR -DRTTR_EXTRA_BINDIR=$RTTR_BINDIR"/' cmake.sh
+	# Force use of system LUA library
+	sed -i 's/set(_contrib_lua_libpath ${_contrib_lua_path}\/lin64)/set(_contrib_lua_libpath \/usr\/lib\/)/' src/libGamedata/CMakeLists.txt
 
-	./cmake.sh --prefix="${pkgdir}/usr" --RTTR_BINDIR="bin" --RTTR_DATADIR="share/s25rttr" --RTTR_LIBDIR="lib/s25rttr"
+	# Build
+	mkdir -p build && cd build
+	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" -RTTR_BINDIR="bin" -DRTTR_DATADIR="share/s25rttr" -DRTTR_LIBDIR="lib/s25rttr" -DRTTR_EXTRA_BINDIR="bin" ..
 	make
 }
 
@@ -82,7 +84,7 @@ package() {
 	# Use make based installer
 	make install
 
-	# Deal with binaries
+	# Deal with extra binaries
 	rm ${pkgdir}/usr/bin/s25update
 
 	# Copy launch script

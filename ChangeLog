@@ -1,3 +1,9 @@
+2018-08-22 Pierre Choffet <peuc@wanadoo.fr>
+	* r3946.826300c2-1 :
+	Add missing dependencies
+	Update build after upstream changes
+	Force build system to use system LUA library instead of the provided one
+
 2018-02-16 Pierre Choffet <peuc@wanadoo.fr>
 	* r3863.e340f253-3 :
 	Add missing depends and makedepends
