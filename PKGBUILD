@@ -65,15 +65,15 @@ _rev_override="n"
 
 pkgbase=linux-clear
 _major=4.18
-_minor=3
+_minor=4
 pkgver=${_major}.${_minor}
 _srcname=linux-${_major}
 pkgrel=1
-_clr=623
+_clr=624
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
-makedepends=('bc' 'git' 'inetutils' 'kmod' 'libelf' 'linux-firmware' 'xmlto')
+makedepends=('bc' 'git' 'graphviz' 'inetutils' 'kmod' 'libelf' 'linux-firmware' 'python-sphinx' 'xmlto')
 options=('!strip')
 _gcc_more_v='20180509'
 source=(
@@ -178,7 +178,7 @@ prepare() {
 build() {
     cd ${_srcname}
 
-    make bzImage modules
+    make bzImage modules htmldocs
 }
 
 _package() {
@@ -311,6 +311,10 @@ _package-headers() {
         esac
     done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
+    msg2 "Adding symlink..."
+    mkdir -p "$pkgdir/usr/src"
+    ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase-$pkgver"
+
     msg2 "Fixing permissions..."
     chmod -Rc u=rwX,go=rX "$pkgdir"
 }
@@ -327,6 +331,22 @@ _package-docs() {
     mkdir -p "$builddir"
     cp -t "$builddir" -a Documentation
 
+    msg2 "Removing doctrees..."
+    rm -r "$builddir/Documentation/output/.doctrees"
+
+    msg2 "Moving HTML docs..."
+    local src dst
+    while read -rd '' src; do
+        dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
+        mkdir -p "${dst%/*}"
+        mv "$src" "$dst"
+        rmdir -p --ignore-fail-on-non-empty "${src%/*}"
+    done < <(find "$builddir/Documentation/output" -type f -print0)
+
+    msg2 "Adding symlink..."
+    mkdir -p "$pkgdir/usr/share/doc"
+    ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
+
     msg2 "Fixing permissions..."
     chmod -Rc u=rwX,go=rX "$pkgdir"
 }
@@ -341,7 +361,7 @@ done
 
 sha256sums=('19d8bcf49ef530cd4e364a45b4a22fa70714b70349c8100e7308488e26f1eaf1'
             'SKIP'
-            '760c723f1fd48f849464f2e07a5252035423e39101c812ea20690cb416b982cd'
+            'cc22261cd9651dc2a05ad817a5b5fd3c63076ca86abfade7097915e7ba0b3bd6'
             'SKIP'
             '29f9e8dc27e6c9b6488cecd7fe2394030307799e511db2d197d9e6553a7f9e40'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
