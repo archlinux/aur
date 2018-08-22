@@ -1,7 +1,7 @@
 #Maintainer: Morten Linderud <foxboron@archlinux.org 
 
 pkgname=devtools-repro-git
-pkgver=r80.85eb2b9
+pkgver=r84.e1aa4a1
 pkgrel=1
 pkgdesc='Tools to reproduce arch linux packages'
 arch=('any')
@@ -24,5 +24,5 @@ build(){
 
 package() {
   cd devtools-repro
-  make PREFIX=/usr DESTDIR="$pkgdir" install
+  make PREFIX=/usr DESTDIR="$pkgdir" PROGNM=$pkgname install
 }
