@@ -1,24 +1,24 @@
 pkgbase = nvidia-beta-dkms
 	pkgdesc = NVIDIA driver sources for linux (beta version)
-	pkgver = 396.51
+	pkgver = 396.54
 	pkgrel = 1
 	url = http://www.nvidia.com/
 	arch = x86_64
 	license = custom
 	depends = dkms
-	depends = nvidia-utils-beta>=396.51
+	depends = nvidia-utils-beta>=396.54
 	depends = libglvnd
 	optdepends = linux-headers: build the module for Arch kernel
 	optdepends = linux-lts-headers: build the module for LTS Arch kernel
-	provides = nvidia=396.51
-	provides = nvidia-dkms=396.51
-	provides = nvidia-beta=396.51
+	provides = nvidia=396.54
+	provides = nvidia-dkms=396.54
+	provides = nvidia-beta=396.54
 	conflicts = nvidia
 	conflicts = nvidia-dkms
 	conflicts = nvidia-beta
-	source = http://us.download.nvidia.com/XFree86/Linux-x86_64/396.51/NVIDIA-Linux-x86_64-396.51-no-compat32.run
+	source = http://us.download.nvidia.com/XFree86/Linux-x86_64/396.54/NVIDIA-Linux-x86_64-396.54-no-compat32.run
 	source = linux-4.16.patch
-	sha256sums = 9889d3dadaba49631ce1348ca9cc02349d12a50a718e9b629b0a0478fb681c6d
+	sha256sums = ac4a2224eff9062c32697fe6878832467321952093e9bff37eaea353a1731bd2
 	sha256sums = 622ac792ec200b2239cb663c0010392118b78c9904973d82cd261165c16d6385
 
 pkgname = nvidia-beta-dkms

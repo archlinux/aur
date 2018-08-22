@@ -9,7 +9,7 @@
 # Contributor: sl1pkn07 <sl1pkn07 at gmail dot com>
 
 pkgname=nvidia-beta-dkms
-pkgver=396.51
+pkgver=396.54
 pkgrel=1
 pkgdesc='NVIDIA driver sources for linux (beta version)'
 arch=('x86_64')
@@ -20,14 +20,15 @@ optdepends=('linux-headers: build the module for Arch kernel'
             'linux-lts-headers: build the module for LTS Arch kernel')
 provides=("nvidia=${pkgver}" "nvidia-dkms=${pkgver}" "nvidia-beta=${pkgver}")
 conflicts=('nvidia' 'nvidia-dkms' 'nvidia-beta')
-_srcname="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
-source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_srcname}.run"
+_srcname="NVIDIA-Linux-${CARCH}-${pkgver}-no-compat32"
+source=("http://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_srcname}.run"
         'linux-4.16.patch')
-sha256sums=('9889d3dadaba49631ce1348ca9cc02349d12a50a718e9b629b0a0478fb681c6d'
+sha256sums=('ac4a2224eff9062c32697fe6878832467321952093e9bff37eaea353a1731bd2'
             '622ac792ec200b2239cb663c0010392118b78c9904973d82cd261165c16d6385')
 
 prepare() {
     # extract the source file
+    rm -rf "$_srcname"
     sh "${_srcname}.run" --extract-only
     
     # restore phys_to_dma support
