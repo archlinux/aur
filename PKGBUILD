@@ -5,7 +5,7 @@
 pkgname='perl-devel-overloadinfo'
 _realname='Devel-OverloadInfo'
 pkgver='0.005'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="introspect overloaded operators"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -41,7 +41,7 @@ package() {
   cd "$srcdir/$_distdir"
   make install
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
 
 # Local Variables:
