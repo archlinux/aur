@@ -3,8 +3,8 @@
 
 pkgname='perl-digest-perl-md5'
 pkgver='1.9'
-pkgrel='1'
-pkgdesc=""
+pkgrel='2'
+pkgdesc="generate an md5 digest"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
@@ -40,7 +40,7 @@ package() {
   cd "$srcdir/$_distdir"
   make install
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
 
 # Local Variables:

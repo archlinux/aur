@@ -1,6 +1,7 @@
 pkgbase = perl-digest-perl-md5
+	pkgdesc = generate an md5 digest
 	pkgver = 1.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.mcpan.org/dist/Digest-Perl-MD5
 	arch = any
 	license = PerlArtistic
