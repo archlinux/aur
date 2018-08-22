@@ -301,29 +301,45 @@ void api_info_array_store_data_batch(Info_Array* pInfo_Array, Data_Level data_le
     // All IEX securities are accounted for
     Info* pInfo;
     pthread_t threads[pInfo_Array->length];
+    int open_threads[pInfo_Array->length];
+    memset(open_threads, 0, pInfo_Array->length * sizeof(int));
     for (size_t i = 0; i < pInfo_Array->length; i++) {
         pInfo = pInfo_Array->array[i];
         if (pInfo->api_provider == EMPTY && strcmp(pInfo->symbol, "USD$") != 0) {
-            if (strlen(pInfo->symbol) > 5) // Crypto
-                pthread_create(&threads[i], NULL, coinmarketcap_store_info, pInfo);
-            else pthread_create(&threads[i], NULL, alphavantage_store_info, pInfo); // AV
+            open_threads[i] = 1;
+            if (strlen(pInfo->symbol) > 5 && pthread_create(&threads[i], NULL,
+                    coinmarketcap_store_info, pInfo)) { // Crypto
+                EXIT_MSG("Error creating thread!");
+            } else if (pthread_create(&threads[i], NULL, alphavantage_store_info, pInfo)) {
+                EXIT_MSG("Error creating thread!");
+            }
         }
     }
 
+    // All IEX and AV are accounted for
     for (size_t i = 0; i < pInfo_Array->length; i++) {
         pInfo = pInfo_Array->array[i];
-        if (pInfo->api_provider != IEX && strcmp(pInfo->symbol, "USD$") != 0) {
-            pthread_join(threads[i], NULL);
-            if (strlen(pInfo->symbol) <= 5) // Crypto with 5 char or less name
-                pthread_create(&threads[i], NULL, alphavantage_store_info, pInfo);
-        }
-    }
-    for (size_t i = 0; i < pInfo_Array->length; i++) {
-        pInfo = pInfo_Array->array[i];
-        if (pInfo->api_provider != IEX && pInfo->api_provider != ALPHAVANTAGE &&
-            strlen(pInfo->symbol) <= 5 && strcmp(pInfo->symbol, "USD$") != 0)
-            pthread_join(threads[i], NULL); // Crypto with 5 char or less name
+        if (open_threads[i]) {
+            if (pthread_join(threads[i], NULL))
+                EXIT_MSG("Error joining thread!");
 
+            open_threads[i] = 0;
+        }
+
+        // Crypto with 5 char or less name
+        if (pInfo->api_provider == EMPTY && strcmp(pInfo->symbol, "USD$") != 0 &&
+            pthread_create(&threads[i], NULL, coinmarketcap_store_info, pInfo))
+            EXIT_MSG("Error creating thread!");
+    }
+
+    // All accounted for
+    for (size_t i = 0; i < pInfo_Array->length; i++) {
+        if (open_threads[i]) {
+            if (pthread_join(threads[i], NULL))
+                EXIT_MSG("Error joining thread!");
+
+            open_threads[i] = 0;
+        }
         info_store_check_data(pInfo_Array->array[i]);
     }
     info_array_store_totals(pInfo_Array);
@@ -466,6 +482,7 @@ void info_store_quote_from_json(Info* pInfo, const Json* jquote) {
 
 
 void info_store_chart_from_json(Info* pInfo, const Json* jchart) {
+    free(pInfo->points);
     size_t len = json_object_array_length(jchart);
     pInfo->points = calloc(len + 1, sizeof(double));
     pointer_alloc_check(pInfo->points);

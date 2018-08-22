@@ -17,10 +17,6 @@ typedef enum data_level {
     ALL, CHECK, MISC, NEWS
 } Data_Level;
 
-#define DATA_ALL 0
-#define DATA_CHECK 1
-#define DATA_MISC 2
-
 #define QUARTERS 4
 #define DATE_MAX_LENGTH 32
 #define CELL_MAX_LENGTH 16
