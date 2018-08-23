@@ -1,7 +1,7 @@
 # Maintainer: Thiago França da Silva <tfsthiagobr98@outlook.com>
 
 pkgname=powershell-preview-bin
-_pkgver=6.1.0-preview.4
+_pkgver=6.1.0-rc.1
 _version=6-preview
 pkgver=${_pkgver/-/.}
 pkgrel=1
@@ -12,8 +12,8 @@ depends=()
 provides=('powershell')
 options=(staticlibs !strip)
 install=powershell-preview.install
-sha256sums=('09bb203a94a0b966e87fd7de1eb4361c2c3dc65af0701b728c2b444540ff8976')
-source=("https://github.com/PowerShell/PowerShell/releases/download/v${_pkgver}/powershell-preview_${_pkgver}-1.ubuntu.18.04_amd64.deb")
+sha256sums=('304910fb2445b9a6bda4a116962dcfb8bb276385a7cb973090e39ad08e0ac423')
+source=("https://github.com/PowerShell/PowerShell/releases/download/v${_pkgver}/powershell-preview_${pkgver}-1.ubuntu.18.04_amd64.deb")
 
 package() {
   bsdtar xf data.tar.gz
