@@ -8,10 +8,9 @@
 #ifndef TICK_API_H
 #define TICK_API_H
 
-#define IEX 0
-#define MORNINGSTAR 1
-#define ALPHAVANTAGE 2
-#define COINMARKETCAP 3
+typedef enum api_providers {
+    IEX, MORNINGSTAR, ALPHAVANTAGE, COINMARKETCAP
+} Api_Provider;
 
 typedef enum data_level {
     ALL, CHECK, MISC, NEWS

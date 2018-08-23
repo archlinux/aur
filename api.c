@@ -134,8 +134,9 @@ void iex_batch_store_data_info(Info* pInfo, Data_Level data_level) {
     strcpy(symbol_array, pInfo->symbol);
     String* pString = iex_batch_get_data_string(&symbol_array, 1, data_level);
     Json* jobj = json_tokener_parse(pString->data);
-    if (is_string_json_array(pString) && json_object_array_length(jobj) == 1)
-        info_store_all_from_json(pInfo, json_object_object_get(jobj, pInfo->symbol));
+    Json* jsymbol = json_object_object_get(jobj, pInfo->symbol);
+    if (jsymbol != NULL)
+        info_store_all_from_json(pInfo, jsymbol);
 
     free(symbol_array);
     json_object_put(jobj);
