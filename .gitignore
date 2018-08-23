@@ -1,0 +1,14 @@
+# Directories
+pkg
+src
+goat
+
+# Archives
+*.tar
+*.tar.*
+*.zip
+*.tgz
+
+# Logs
+*.log
+*.log.*

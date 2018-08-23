@@ -1,0 +1,18 @@
+pkgbase = goat-git
+	pkgdesc = Database management frontend written in Qt5 (git version)
+	pkgver = r151.7f25d1a
+	pkgrel = 1
+	url = https://github.com/mispp/goat
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = qt5-tools
+	depends = hicolor-icon-theme
+	depends = qt5-base
+	provides = goat
+	source = git+https://github.com/mispp/goat.git
+	md5sums = SKIP
+
+pkgname = goat-git
+
