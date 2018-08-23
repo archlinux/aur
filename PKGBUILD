@@ -1,7 +1,7 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=meshlab-git
-pkgver=d596d7c.r0.gd596d7c0
-pkgrel=3
+pkgver=b1b7728.r0.gb1b77287
+pkgrel=1
 pkgdesc="System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)"
 arch=('i686' 'x86_64')
 url="http://www.meshlab.net"
