@@ -4,7 +4,7 @@
 pkgname=mu-editor
 epoch=1
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple Python editor for beginner programmers'
 arch=('any')
 url='https://codewith.mu/'
@@ -42,7 +42,7 @@ build() {
     --exec=$pkgname \
     --terminal=false \
     --startupnotify=true \
-    "--mimetypes=text/x-python;text/x-python3;"
+    "--mimetypes=text/x-python;text/x-python3"
 }
 
 package() {
