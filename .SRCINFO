@@ -1,9 +1,8 @@
 pkgbase = gmsh
 	pkgdesc = An automatic 3D finite element mesh generator with pre and post-processing facilities.
-	pkgver = 3.0.6
-	pkgrel = 2
+	pkgver = 4.0.0
+	pkgrel = 1
 	url = http://gmsh.info/
-	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = cmake
@@ -19,10 +18,10 @@ pkgbase = gmsh
 	optdepends = python2: for onelab.py
 	optdepends = python: for onelab.py
 	options = !emptydirs
-	source = http://gmsh.info/src/gmsh-3.0.6-source.tgz
+	source = http://gmsh.info/src/gmsh-4.0.0-source.tgz
 	source = gmsh.desktop
 	source = gmsh.completion
-	sha256sums = 9700bcc440d7a6b16a49cbfcdcdc31db33efe60e1f5113774316b6fa4186987b
+	sha256sums = fb0c8afa37425c6f4315ab3b3124e9e102fcf270a35198423a4002796f04155f
 	sha256sums = 43a8ca33ac917ee7196fdae305ff2c8cb9ae1072569ee546c0ce8ff580c966ae
 	sha256sums = 11605e97636a56cf51e445e65019526ee253bd2e0553fb71ba6d94488dcd34ef
 
