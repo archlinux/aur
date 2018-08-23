@@ -346,9 +346,10 @@ void on_check_tree_view_row_activated(GtkTreeView* tree_view, GtkTreePath* path,
     if (pInfo->api_provider != IEX) // Only see info for iex securities
         return;
 
-    if (pInfo->name[0] == '\0') {// MISC not loaded yet
+    if (pInfo->name[0] == '\0') { // MISC not loaded yet
         api_info_store_data_batch(pInfo, MISC);
-        format_cells(pInfo->peers);
+        if (pInfo->peers != NULL) // ETFs may not have peers
+            format_cells(pInfo->peers);
     }
 
     info_pane_populate_all(pInfo);
@@ -544,6 +545,9 @@ void info_pane_populate_peers(const Info* pInfo) {
     GtkListStore* pListStore = GTK_LIST_STORE(GET_OBJECT("peers_list"));
     gtk_list_store_clear(pListStore);
 
+    if (pInfo->peers == NULL) // ETFs may not have peers
+        return;
+
     Info* idx; // Append pListStore store with portfolio data
     GtkTreeIter iter;
     for (size_t i = 0; i < pInfo->peers->length; i++) {
@@ -559,6 +563,11 @@ void info_pane_populate_peers(const Info* pInfo) {
 
 void info_pane_populate_news(const Info* pInfo) {
     GtkTextView* pTextView = GTK_TEXT_VIEW(GET_OBJECT("info_news_text_view"));
+    if (pInfo->num_articles == 0) {
+        gtk_text_buffer_set_text(gtk_text_view_get_buffer(pTextView), "No news available.", -1);
+        return;
+    }
+
     gchar news_buff[pInfo->num_articles * NEWS_MAX_LENGTH];
     news_buff[0] = '\0';
     News* article;
