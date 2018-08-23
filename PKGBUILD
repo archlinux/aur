@@ -4,7 +4,7 @@
 
 _pkgbasename=libuv
 pkgname=lib32-$_pkgbasename
-pkgver=1.18.0
+pkgver=1.23.0
 pkgrel=1
 pkgdesc="Multi-platform support library with a focus on asynchronous I/O"
 arch=('x86_64')
@@ -44,4 +44,4 @@ package() {
    ln -s $_pkgbasename "$pkgdir/usr/share/licenses/$pkgname"
 }
 
-sha512sums=('d1ef70b0f060f40cf57b282279d1d63d6dd019b4b811211b2252db32633a80af46290d201b4a4338f84b3efdfe9754a11b29bfa4a7636b06540b1a65e1fd4fbc')
+sha512sums=('d1622ea9c03661ce2dfa18e1725fc1bfdf3b16d7e40babc552dcc5b2f86d52f4dd81cac9bf89914024b11e4ed3671264dfcfba867cfa3b1a2206b89c59c95851')
