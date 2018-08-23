@@ -2,7 +2,7 @@
 
 pkgname=flv-extract
 pkgver=2.1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Front-end FLV extract and mp4/mkv remuxing GUI software.'
 arch=('any')
 url='https://code.google.com/p/flv-extraxct/'
@@ -15,8 +15,8 @@ source=(
     "flv-extract.desktop"
     "Rewrite.png"
 )
-md5sums=('30de5eb15c89bb7a28a363236efc2bf5'
-         '132f4cf02d9a4cce3935eda733721c1c'
+md5sums=('3832c81f73805ed71d58406811a9f4c2'
+         'e7785cf3b2ace12258fd354e04986055'
          '1154329f0dda79902f722f6991d13be8'
          'ed0bd9b9898b78bf0e0e98ddff70a3c2')
 
