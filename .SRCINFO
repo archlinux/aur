@@ -1,6 +1,6 @@
 pkgbase = slurm-llnl-dev
 	pkgdesc = Simple Linux Utility for Resource Management (development version)
-	pkgver = 18.08.0.0pre2
+	pkgver = 18.08.0.0rc1
 	pkgrel = 1
 	url = https://www.schedmd.com
 	install = slurm-llnl-dev.install
@@ -27,7 +27,7 @@ pkgbase = slurm-llnl-dev
 	optdepends = ncurses: adds the smap command
 	optdepends = gtk2: enables the sview command, a simple graphical frontend
 	optdepends = pmix: support Open MPI applications using PMIx
-	provides = slurm-llnl=18.08.0.0pre2
+	provides = slurm-llnl=18.08.0.0rc1
 	conflicts = slurm-llnl
 	backup = etc/default/slurm-llnl
 	source = slurm-tmpfiles.conf
@@ -35,12 +35,12 @@ pkgbase = slurm-llnl-dev
 	source = slurmctld.service
 	source = slurmd.service
 	source = slurmdbd.service
-	source = https://github.com/SchedMD/slurm/archive/slurm-18-08-0-0pre2.tar.gz
+	source = https://github.com/SchedMD/slurm/archive/slurm-18-08-0-0rc1.tar.gz
 	sha512sums = 61f07699353d607ec43bab2a4fe29b4a380dab10108619e67ca2737193ab044a6e263179f7def932660acefd34c790c9d2b301cd6a49d92b8b80deeb1c7b8011
 	sha512sums = f74dacaaffa35fa11a62bb9efa492bb4ef9b197748f28c15210f362382da27ec1dd88a57a48fc6807029c93c9033c82e11545ea36622c683ae7bd09970ef8710
 	sha512sums = a1c2478a049dc1c024d773a73f363da6c9106d9533137f919394e8213376cb9167c8fcca7b038d1c45c441a1adce4524ccb68b6dd269a1000aba11b84b5352d5
 	sha512sums = ae2d0275bc9e0aac15d0d1dd4913b70ed4d4032e76c9c6ffdeae345c55834219f6495429d1d1c9129779221d6d08bada1228ccdb1c671b05d4a92ed6088bf55c
 	sha512sums = 56459e20d7f2624a8e8dd2982693b257e65df22c3609d991afdc1b2f79adaefc0586a76fd5fdd7dc2bdd39b3af0c91f38ddc4b1139081968903450bc28aca304
-	sha512sums = e215b0457b7e83ff658d1e06715d47a09717409b27c654e00158dba6a992c214320dceb732c0a0c69b10a79b981fcf33fb1fecfdd23b0d8a45cd574473a64e24
+	sha512sums = b76a6c51f7a7525b7bd225150c2bfbbf65d39c9de9cb5d8d96e6e774e57b05d845d423422f29d6fe2f287e076476441e66a1978b7f7747570f8a01423cfcada0
 
 pkgname = slurm-llnl-dev
