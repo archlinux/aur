@@ -15,6 +15,7 @@ pkgbase = gnome-podcasts-git
 	depends = openssl
 	depends = sqlite
 	depends = gtk3
+	depends = libhnady-git
 	provides = gnome-podcasts
 	conflicts = gnome-podcasts
 	conflicts = hammond

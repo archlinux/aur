@@ -1,6 +1,6 @@
 # Maintainer: brainblasted <brainblasted at disroot dot org>
 pkgname=gnome-podcasts-git
-pkgver=r1267.9d64d3e
+pkgver=r1401.8bc81d6
 pkgrel=1
 _gitname=podcasts
 pkgdesc="A Podcast Client for the GNOME Desktop written in Rust (Git version)"
@@ -10,7 +10,7 @@ provides=('gnome-podcasts')
 conflicts=('gnome-podcasts' 'hammond')
 replaces=('hammond' 'hammond-git')
 url="https://gitlab.gnome.org/World/${_gitname}"
-depends=('glib2' 'openssl' 'sqlite' 'gtk3')
+depends=('glib2' 'openssl' 'sqlite' 'gtk3' 'libhandy-git')
 makedepends=('gtk3' 'rust' 'pkg-config' 'git' 'meson' 'git')
 source=("git+https://gitlab.gnome.org/World/${_gitname}.git")
 sha256sums=('SKIP')
