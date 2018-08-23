@@ -1,32 +1,30 @@
 # Maintainer: Juliette Monsel <j_4321 at protonmail dot com>
 pkgname=('python-tkcalendar' 'python2-tkcalendar')
-pkgver=1.2.1
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
+_name=tkcalendar
 pkgdesc="Calendar widget for Tkinter"
 arch=('any')
 url="https://pypi.python.org/pypi/tkcalendar"
 license=('GPL3')
-source=("tkcalendar-$pkgver.tar.gz::https://github.com/j4321/tkcalendar/archive/v$pkgver.tar.gz")
-sha512sums=('07eaf907c84aeace56dca809dcd07aa590d324ddaeee792ce2b7b768ede5233c0f7642af1d6fd39fc3fa76ab4b7c026fbe3d1025a5f92ef4903234487a09e602')
+source=("tkcalendar-$pkgver.tar.gz::https://github.com/j4321/$_name/archive/v$pkgver.tar.gz")
+sha512sums=('fc3d823527a141fa1f11bc2a42f89ba368946c16b0db38ccc2476bc49d2b31ce17eecb88107851d430f6e8b990038579aa0be97861228721426cd10a4df19b7d')
+makedepends=('python-setuptools' 'python2-setuptools')
 
-check() {
-    checkdepends=('python' 'python2' 'tk')
-    cd "${srcdir}/tkcalendar-${pkgver}"
-    python2 setup.py test
-    python setup.py test
+build() {
+    cd "$srcdir/$_name-$pkgver"
+    python setup.py build
 }
 
 package_python-tkcalendar() {
-  makedepends=('python-setuptools')
   depends=('python' 'tk')
-  cd "${srcdir}/tkcalendar-${pkgver}"
-  python setup.py install --root="${pkgdir}/" --optimize=1
+  cd "$srcdir/$_name-$pkgver"
+  python setup.py install --root="${pkgdir}/" --optimize=1  --skip-build
 }
 
 package_python2-tkcalendar() {
-  makedepends=('python2-setuptools')
   depends=('python2' 'tk')
-  cd "${srcdir}/tkcalendar-${pkgver}"
-  python2 setup.py install --root="${pkgdir}/" --optimize=1
+  cd "$srcdir/$_name-$pkgver"
+  python2 setup.py install --root="${pkgdir}/" --optimize=1  --skip-build
 }
 
