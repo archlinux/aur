@@ -7,6 +7,8 @@
 #  aws-cli & aws-cli-git
 #  python-botocore & python-botocore-git
 
+# TODO: put tox back into depends
+
 # Use mcdiff to watch for changes
 _fn_foobar() {
 local _foobar="
@@ -26,18 +28,18 @@ colorama>=0.2.5,<=0.3.9
 mock==1.3.0
 rsa>=3.1.2,<=3.5.0
 wheel==0.24.0
-PyYAML>=3.10,<=3.12
+PyYAML>=3.10,<=3.13
 
 #setup.py
 import awscli
 
 
-requires = ['botocore==1.10.28',
+requires = ['botocore==1.10.83',
             'colorama>=0.2.5,<=0.3.9',
             'docutils>=0.10',
             'rsa>=3.1.2,<=3.5.0',
             's3transfer>=0.1.12,<0.2.0',
-            'PyYAML>=3.10,<=3.12']
+            'PyYAML>=3.10,<=3.13']
 "
 }
 unset -f _fn_foobar
@@ -52,7 +54,7 @@ else
 pkgname="${_pyver}-${_pybase}-git"
 _pyverother='python'
 fi
-pkgver=1.15.28.r5801.g5ce09c18
+pkgver=1.15.84.r6101.ge70633c2
 # Generally when this version changes, the version of botocore also changes
 pkgrel=1
 pkgdesc='Universal Command Line Interface for Amazon Web Services awscli'
@@ -61,7 +63,7 @@ url="https://github.com/aws/${_pybase}"
 license=('Apache') # Apache License 2.0
 _pydepends=( # See setup.py, README.rst, and requirements.txt for version dependencies
   "${_pyver}-bcdoc"           # AUR
-  "${_pyver}-botocore>=1.10.28" # AUR == would make upgrades from AUR impossible. See below.
+  "${_pyver}-botocore>=1.10.83" # AUR == would make upgrades from AUR impossible. See below.
   "${_pyver}-colorama>=0.2.5" #,"<=0.3.7"}   # COM requested by phw
   "${_pyver}-rsa"{'>=3.2','<=3.5.0'}
   "${_pyver}-s3transfer"{'>=0.1.12','<0.2.0'} # AUR
@@ -70,8 +72,8 @@ _pydepends=( # See setup.py, README.rst, and requirements.txt for version depend
   "${_pyver}-wheel>=0.24.0"   # AUR ==
   "${_pyver}-dateutil"{">=2.1","<3.0.0"} # COM
   "${_pyver}-jmespath>=0.7.1" # AUR == is possible for repositories. Makes upgrades impossible in AUR.
-  "${_pyver}-tox"{'>=2.3.1','<3.0.0'} # COM
-  "${_pyver}-yaml"{">=3.10","<=3.12"} # COM
+  #"${_pyver}-tox"{'>=2.3.1','<3.0.0'} # COM
+  "${_pyver}-yaml"{">=3.10","<=3.13"} # COM
   "${_pyver}-nose>=1.3.7"     # COM ==
   "${_pyver}-mock>=1.3.0"     # COM ==
   "${_pyver}-docutils>=0.10"  # COM
@@ -87,7 +89,7 @@ depends=("${_pyver}" "${_pydepends[@]}")
 makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 options=('!emptydirs' '!strip')
 source=("${_pybase}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('3c2b3a6f5dc0c6eb336e4848009db73a3fa3cf9fe10203aef714bb521e8aae55')
+sha256sums=('0d37c61fbab169ea88e0c174e15e3df01b91341c894038a76ab33e3cb3e8c82b')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   _srcdir="${_pybase}"
