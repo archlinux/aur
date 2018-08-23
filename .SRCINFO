@@ -1,6 +1,6 @@
 pkgbase = gnome-podcasts-git
 	pkgdesc = A Podcast Client for the GNOME Desktop written in Rust (Git version)
-	pkgver = r1267.9d64d3e
+	pkgver = r1401.8bc81d6
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/podcasts
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = gnome-podcasts-git
 	depends = openssl
 	depends = sqlite
 	depends = gtk3
-	depends = libhnady-git
+	depends = libhandy-git
 	provides = gnome-podcasts
 	conflicts = gnome-podcasts
 	conflicts = hammond
