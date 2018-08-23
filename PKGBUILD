@@ -1,31 +1,48 @@
 # Maintainer: Luís Ferreira <contact@lsferreira.net>
+# Maintainer: Filipe Laíns (FFY00) <lains@archlinux.org>
 
 pkgname=aurorafw-git
-pkgver=r62.7a2733e
-pkgrel=3
+_gitname=core
+pkgver=0.0.1.alpha.2.r27.914cf66
+pkgrel=1
 pkgdesc="A Powerful General Purpose Framework"
-arch=('any')
+arch=('x86_64' 'i686')
 url="https://gitlab.com/aurorafossorg/p/framework/core"
-license=('GNU LGPLv3')
+license=('LGPL3')
 provides=('aurorafw')
 conflicts=('aurorafw')
-depends=('glfw' 'vulkan-headers' 'opengl-driver' 'libx11' 'freeimage' 'portaudio' 'libsndfile' 'glew' 'gtk3')
-makedepends=('doxygen' 'meson' 'ninja' 'pkgconf')
-source=('git+https://gitlab.com/aurorafossorg/p/framework/core.git')
-sha256sums=('SKIP')
+depends=('glfw' 'opengl-driver' 'libx11' 'freeimage' 'portaudio' 'libsndfile' 'glew' 'gtk3' 'vulkan-icd-loader')
+makedepends=('git' 'doxygen' 'meson' 'vulkan-headers' 'ldc')
+source=("$pkgname-$_gitname::git+https://gitlab.com/aurorafossorg/p/framework/core.git")
+sha512sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/core"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd $pkgname-$_gitname
+
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g;s/\.rc./rc/g'
+}
+
+build() {
+  mkdir -p $pkgname-$_gitname/build
+  cd $pkgname-$_gitname/build
+
+  export DC=ldmd
+
+  #arch-meson ..
+  meson --prefix=/usr ..
+
+  ninja
+}
+
+check() {
+  cd $pkgname-$_gitname/build
+
+  meson test
 }
 
 package() {
-  pushd "$srcdir/core"
-  meson --buildtype=release . .build
-  pushd .build
-  ninja
-  ninja install
-  popd
-  popd
+  cd $pkgname-$_gitname/build
+
+  DESTDIR="$pkgdir" ninja install
 }
 
