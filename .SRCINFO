@@ -1,7 +1,7 @@
 pkgbase = emulationstation
 	pkgdesc = Emulation Station is a flexible emulator front-end supporting keyboardless navigation and custom system themes.
 	pkgver = 2.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RetroPie/EmulationStation
 	install = emulationstation.install
 	arch = i686
@@ -21,6 +21,7 @@ pkgbase = emulationstation
 	depends = boost-libs
 	depends = freeimage
 	depends = curl
+	depends = libraw
 	optdepends = ttf-droid: Fallback fonts for Chinese/Japanese/Korean characters
 	optdepends = dolphin-emu: GameCube and Wii support
 	optdepends = mupen64plus: Nintendo 64 support
