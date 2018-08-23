@@ -1,12 +1,12 @@
-# Maintainer: Marcel Korpel <marcel[dot]korpel[at]gmail>
-# Contributor: Vojtech Aschenbrenner <v@asch.cz>
+# Maintainer: Vojtech Aschenbrenner <v@asch.cz>
+# Contributor: Marcel Korpel <marcel[dot]korpel[at]gmail>
 # Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 # Contributor: Peter Richard Lewis <plewis@aur.archlinux.org>
 # Contributor: Emiliano Vavassori <syntaxerrormmm@gmail.com>
 
 pkgname=ruby-highline
 _gemname=highline
-pkgver=1.7.8
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A high-level text user interface toolkit for Ruby"
 arch=('any')
@@ -17,7 +17,7 @@ depends=('ruby')
 options=(!emptydirs)
 source=(http://rubygems.org/downloads/${_gemname}-${pkgver}.gem)
 noextract=(${_gemname}-${pkgver}.gem)
-sha256sums=('795274094fd385bfe45a2ac7b68462b6ba43e21bf311dbdca5225a63dba3c5d9')
+sha256sums=('74524686caf43dd56465ba847bd2c33b552028cf23973c4f1fbb5e5971f93a19')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
