@@ -11,6 +11,7 @@ pkgdesc="A high-level text user interface toolkit for Ruby, version $pkgver"
 arch=('any')
 url="http://rubygems.org/gems/highline"
 license=('GPL2' 'RUBY')
+makedepends=('ruby-rdoc')
 depends=('ruby')
 provides=("ruby-highline=$pkgver")
 conflicts=('ruby-highline')
