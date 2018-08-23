@@ -9,7 +9,7 @@
 ###########################################################
 
 pkgname=i2p
-pkgver=0.9.35
+pkgver=0.9.36
 pkgrel=1
 pkgdesc="A distributed anonymous network"
 url="https://geti2p.net"
@@ -29,7 +29,7 @@ _url="https://launchpad.net/i2p/trunk/${pkgver}/+download"
 source=("${_url}/i2psource_${pkgver}.tar.bz2"{,.sig}
         'i2prouter.service' 'i2prouter.sh' 'wrapper.config' 'router.config')
 
-sha256sums=('8bb88d3db355ebfa5be65d48089db60919875ac298b7217b7f8150048ea5079e'
+sha256sums=('148c0f86f000d833901e7182797f6fb6470c1b600344056c710e326789d0fd54'
             'SKIP'
             '9bb899ece87099716da29bac8b7da02916fc325699b68989e73c1fe333a6342f'
             'ea8f97e66461d591b1819eab39bbc40056b89ae12f7729b3dd9fd2ce088e5e53'
