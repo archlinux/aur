@@ -16,6 +16,8 @@ pkgbase = soci-git
 	optdepends = sqlite3: support for sqlite databases
 	optdepends = unixodbc: support for ODBC databases
 	optdepends = boost
+	provides = soci
+	conflicts = soci
 	source = git+https://github.com/SOCI/soci.git
 	sha1sums = SKIP
 

@@ -4,6 +4,7 @@
 # Contributor: Mika Fischer <mika.fischer@zoopnet.de>
 
 pkgname=soci-git
+pkgname_=soci
 pkgver=3.2.3.r695.gd081e124
 pkgrel=1
 pkgdesc="Database access library for C++"
@@ -18,11 +19,13 @@ optdepends=('instantclient-basic: support for oracle databases'
             'sqlite3: support for sqlite databases'
             'unixodbc: support for ODBC databases'
             'boost')
+provides=('soci')
+conflicts=('soci')
 source=("git+https://github.com/SOCI/soci.git")
 sha1sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${pkgname_}"
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/; s/-/./g'
 }
 
@@ -33,7 +36,7 @@ build() {
         -DSOCI_TESTS=OFF \
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_CXX_FLAGS="-Wno-format-overflow" \
-        "${srcdir}/${pkgname}"
+        "${srcdir}/${pkgname_}"
     make
 }
 
@@ -45,6 +48,6 @@ package() {
     if [ -e "${pkgdir}/usr/lib64" ]; then
         mv "${pkgdir}/usr/lib64" "${pkgdir}/usr/lib"
     fi
-    install -Dm0644 "${srcdir}/${pkgname}/LICENSE_1_0.txt" \
+    install -Dm0644 "${srcdir}/${pkgname_}/LICENSE_1_0.txt" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
