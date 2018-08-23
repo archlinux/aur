@@ -1,7 +1,7 @@
 pkgname=nanocurrency
 pkgver=15.2
 _tag="V$pkgver"
-pkgrel=1
+pkgrel=2
 pkgdesc="Nano (formerly RaiBlocks) is a cryptocurrency designed from the ground up for scalable instant transactions and zero transaction fees."
 arch=('i686' 'x86_64')
 url="https://nano.org/"
@@ -64,7 +64,6 @@ build() {
   cd "$srcdir/raiblocks"
   make nano_wallet
   make rai_node
-  make rai_lib
 }
 
 package() {
@@ -74,8 +73,6 @@ package() {
   ln -s /usr/bin/nano_wallet "$pkgdir"/usr/bin/rai_wallet
   install -Dm755 rai_node "$pkgdir"/usr/bin/rai_node
   ln -s /usr/bin/rai_node "$pkgdir"/usr/bin/nano_node
-  install -Dm644 librai_lib.so "$pkgdir"/usr/lib/librai_lib.so
-  ln -s /usr/lib/librai_lib.so "$pkgdir"/usr/lib/libnano_lib.so
 
   install -Dm644 "$srcdir"/nanowallet128.png "$pkgdir"/usr/share/pixmaps/nanowallet128.png
   install -Dm644 "$srcdir"/nanowallet.desktop "$pkgdir"/usr/share/applications/nanowallet.desktop
