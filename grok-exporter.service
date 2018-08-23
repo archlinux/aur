@@ -1,0 +1,9 @@
+[Unit]
+Description=Grox Exporter for prometheus
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/grok_exporter -config /etc/prometheus/grok.yml
+
+[Install]
+WantedBy=multi-user.target
