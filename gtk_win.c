@@ -338,10 +338,6 @@ void on_column_clicked(GtkTreeViewColumn* column, GtkListStore* list_store) {
 
 void on_check_tree_view_row_activated(GtkTreeView* tree_view, GtkTreePath* path,
                                       GtkTreeViewColumn* column) {
-    GtkContainer* window = GTK_CONTAINER(GET_OBJECT("check_window"));
-    gtk_container_remove(window, GTK_WIDGET(GET_OBJECT("check_pane")));
-    gtk_container_add(window, GTK_WIDGET(GET_OBJECT("info_pane")));
-
     GtkTreeIter iter;
     GtkTreeModel* model = GTK_TREE_MODEL(GET_OBJECT("check_list"));
     gtk_tree_model_get_iter(model, &iter, path);
@@ -351,6 +347,10 @@ void on_check_tree_view_row_activated(GtkTreeView* tree_view, GtkTreePath* path,
     Info* pInfo = info_array_get_info_from_symbol(app.portfolio_data, symbol);
     if (pInfo->api_provider != IEX) // Only see info for iex securities
         return;
+
+    GtkContainer* window = GTK_CONTAINER(GET_OBJECT("check_window"));
+    gtk_container_remove(window, GTK_WIDGET(GET_OBJECT("check_pane")));
+    gtk_container_add(window, GTK_WIDGET(GET_OBJECT("info_pane")));
 
     if (pInfo->name[0] == '\0') { // MISC not loaded yet
         api_info_store_data_batch(pInfo, MISC);
