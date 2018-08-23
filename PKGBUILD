@@ -3,13 +3,13 @@
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 pkgname=mingw-w64-cairo-bootstrap
 pkgver=1.15.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Cairo vector graphics library (mingw-w64 bootstrap)"
 arch=(any)
 url="http://cairographics.org/"
 license=("LGPL" "MPL")
 makedepends=(mingw-w64-configure)
-depends=(mingw-w64-pixman mingw-w64-glib2 mingw-w64-fontconfig)
+depends=(mingw-w64-pixman mingw-w64-glib2 mingw-w64-fontconfig mingw-w64-libpng mingw-w64-lzo)
 options=(!strip !buildflags staticlibs)
 provides=(${pkgname%-bootstrap})
 conflicts=(${pkgname%-bootstrap})
