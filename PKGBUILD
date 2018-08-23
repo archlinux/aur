@@ -2,12 +2,12 @@
 
 pkgname='perl-devel-repl'
 pkgver='1.003028'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="a modern perl interactive shell"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-file-homedir' 'perl-module-runtime' 'perl-moose>=0.93' 'perl-moosex-getopt>=0.18' 'perl-moosex-object-pluggable>=0.0009' 'perl-namespace-autoclean' 'perl-task-weaken')
+depends=('perl-file-homedir' 'perl-module-runtime' 'perl-moose>=0.93' 'perl-moosex-getopt>=0.72' 'perl-moosex-object-pluggable>=0.0009' 'perl-namespace-autoclean' 'perl-task-weaken')
 makedepends=('perl-test-fatal')
 url='http://search.cpan.org/dist/Devel-REPL/'
 source=("https://cpan.metacpan.org/authors/id/E/ET/ETHER/Devel-REPL-${pkgver}.tar.gz")
