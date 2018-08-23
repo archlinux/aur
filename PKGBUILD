@@ -11,11 +11,10 @@ pkgdesc="libretro port of Mupen64 Plus"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/libretro/mupen64plus-libretro"
 license=('GPL3')
-depends=('libretro-core-info')
+groups=('libretro')
+depends=('libglvnd' 'libpng')
 makedepends=('git')
 source=("${_gitname}::git://github.com/libretro/${_gitname}.git")
-groups=('libretro')
-
 md5sums=('SKIP')
 
 pkgver() {
