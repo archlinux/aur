@@ -1,4 +1,5 @@
 # Maintainer:  Mike Polvere <mic.tjs@gmail.com>
+# Contributor: Tomasz Paś <kierek93@gmail.com>
 
 pkgname=libretro-mupen64plus-git
 
