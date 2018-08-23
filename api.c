@@ -145,7 +145,7 @@ String* iex_batch_get_data_string(char* symbol_array[SYMBOL_MAX_LENGTH], size_t 
         Data_Level data_level) {
     // TO-DO -- MAKE FUNCTION HANDLE MORE THAN 100 SECURITIES (API LIMITATION)
 
-    char iex_api_string[URL_MAX_LENGTH], symbol_list_string[URL_MAX_LENGTH];
+    char iex_api_string[URL_MAX_LENGTH * 2], symbol_list_string[URL_MAX_LENGTH];
     symbol_list_string[0] = '\0';
     for (size_t i = 0; i < len; i++)
         if (strcmp(symbol_array[i], "USD$") != 0)
