@@ -76,6 +76,11 @@ void check_list_add_api_data(void) {
 }
 
 void on_load_button_clicked(GtkButton* button) {
+    if (strcmp(gtk_button_get_label(button), "Reload") == 0) { // Reload portfolio
+        list_store_update();
+        return;
+    }
+
     // If already loaded, do nothing
     if (app.portfolio_string != NULL && is_string_json_array(app.portfolio_string)
         && app.portfolio_data != NULL)
@@ -138,6 +143,7 @@ void on_load_button_clicked(GtkButton* button) {
     gtk_widget_set_sensitive(GTK_WIDGET(GET_OBJECT("add_button")), TRUE);
     gtk_widget_set_sensitive(GTK_WIDGET(GET_OBJECT("remove_button")), TRUE);
     gtk_widget_set_sensitive(GTK_WIDGET(GET_OBJECT("set_button")), TRUE);
+    gtk_button_set_label(button, "Reload"); // Change to reload button
     if (app.password[0] == '\0') // Plaintext
         gtk_button_set_label(lock_button, "Encrypt");
     else gtk_button_set_label(lock_button, "Decrypt");
@@ -294,7 +300,7 @@ void on_password_entry_activate(GtkEntry* entry) {
         strcpy(app.password, modified_pw);
 
         // Reload portfolio
-        on_load_button_clicked(NULL);
+        on_load_button_clicked(GTK_BUTTON(GET_OBJECT("load_button")));
     }
 }
 
