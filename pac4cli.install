@@ -1,33 +1,43 @@
+source "/usr/share/makepkg/util/message.sh"
+
 pre_install() {
+	colorize
 	# check for already defined http(s)_proxy
 	RESULT=$(grep -r -E '(http_proxy=)|(HTTP_PROXY=)|(https_proxy=)|(HTTPS_PROXY=)' \
 			${DESTDIR}/${PREFIX}/etc/profile.d | cut -d':' -f1 | sort | uniq)
 	if [[ "x${RESULT}" != "x" ]];then 
-		echo "Found these scripts setting the enviroment variables http_proxy & HTTP_PROXY:"
+		warning "Found these scripts setting the enviroment variables http_proxy & HTTP_PROXY:"
 		while read -ra FILES; do
 			for FILE in "${FILES[@]}"; do 
 				echo ${FILE}
 			done
 		done  <<< "${RESULT}"
-		echo "You have to either remove those definitions, or set them manually to 'localhost:3128'."
-		echo "Otherwise, pac4cli may fail to work properly."
+		warning "You have to either remove those definitions, or set them manually to 'localhost:3128'."
+		warning "Otherwise, pac4cli may fail to work properly."
 	fi
 }
 
 pre_upgrade() {
-	IS_ENABLED=$(systemctl is-enabled pac4cli 2>/dev/null)
+	colorize
 	IS_ACTIVE=$(systemctl is-active pac4cli 2>/dev/null)
-
-	systemctl stop pac4cli
+	if [[ "xIS_ACTIVE" == "xactive" ]]; then
+		msg2 "Stopping pac4cli service..."
+		systemctl stop pac4cli
+	fi
 }
 
 post_upgrade() {
-	if [[ "x$IS_ENABLED" == "xenabled" ]]; then
-		systemctl enable pac4cli
+	colorize
+	if [[ "x$IS_ACTIVE" == "xactive" ]]; then
+		warning "You need to reload systemd daemons and start pac4cli service."
+		warning "# systemd daemon-reload"
+		warning "# systemd start pac4cli"
 	fi
-	if [[ "x$IS_ENABLED" != "x" && "x$IS_ACTIVE" == "xactive" ]]; then
-		systemctl start pac4cli
-	fi
+}
+
+post_install() {
+	colorize
+	msg "You need to restart your machine and then start pac4cli service."
 }
 
 pre_remove() {
