@@ -1,6 +1,6 @@
 # Maintainer: Daniel Maslowski <info@orangecms.org>
 pkgname=vim-dein
-pkgver=1.5
+pkgver=2.0
 pkgrel=1
 pkgdesc="dark powered Vim/Neovim plugin manager"
 arch=('any')
@@ -12,9 +12,10 @@ optdepends=(
   'vim: use in vim'
 )
 makedepends=('git')
+conflicts=('vim-dein-git')
 install=vim-dein.install
 source=("https://github.com/Shougo/dein.vim/archive/${pkgver}.tar.gz")
-sha512sums=('5640c1867cc8b9516ee409991971cf029ddf355a4d9a11ccf2cd58ccaae81a0a2e52a69a2c7444bd794c6e9af8e7447bbb621c7605cda3e152e153381f15f461')
+sha512sums=('7029a4285e83fecf26cbd25cc167b270175b2cef24202185965bcf734f867c5c6e713f22f4826133eea3dfa27abc4eb98b15afab828b1ce6414390a8e0f7aee5')
 
 package() {
   cd "dein.vim-${pkgver}"
