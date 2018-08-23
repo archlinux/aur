@@ -2,7 +2,7 @@
 
 pkgbase=python2-fedmsg
 pkgname=('python-fedmsg' 'python2-fedmsg')
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Utilities used around Fedora Infrastructure to send and receive messages'
 arch=(any)
@@ -15,7 +15,7 @@ sha256sums=('3471f5a2750d2b8742f65c5957bd22ad4a7a09cb97281eb434b938837827eebc')
 
 package_python-fedmsg() {
   pkgdesc='Utilities used around Fedora Infrastructure to send and receive messages (Python 3 version)'
-  depends=('python3-kitchen')
+  depends=('python-kitchen' 'python-pygments' 'python-pyzmq' 'python-arrow')
   cd "fedmsg-${pkgver}"
 
   python setup.py install --root="${pkgdir}" --optimize=1
@@ -28,7 +28,7 @@ package_python-fedmsg() {
 
 package_python2-fedmsg() {
   pkgdesc='Utilities used around Fedora Infrastructure to send and receive messages (Python 2 version)'
-  depends=('python2-kitchen')
+  depends=('python2-kitchen' 'python2-pygments' 'python2-pyzmq' 'python2-arrow')
   cd "fedmsg-${pkgver}"
 
   python2 setup.py install --root="$pkgdir" --optimize=1
