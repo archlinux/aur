@@ -1,0 +1,18 @@
+pkgbase = python2-webdavclient
+	pkgdesc = WebDAV API, resource API and wdc for WebDAV servers
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = https://github.com/CloudPolis/webdav-client-python
+	arch = any
+	license = MIT
+	makedepends = python2-pip
+	makedepends = curl
+	depends = python2
+	depends = python2-pycurl
+	depends = python2-lxml
+	depends = python2-argcomplete
+	source = https://files.pythonhosted.org/packages/source/w/webdavclient/webdavclient-1.0.8.tar.gz
+	sha256sums = c4df5953822f87b48504fc0f4ecdb08ae6a518e67e96f9e8e27d841c0cd29d7a
+
+pkgname = python2-webdavclient
+
