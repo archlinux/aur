@@ -39,6 +39,8 @@ void portfolio_modify_write(const char* symbol, double quantity_shares, double u
 
     char* password = NULL; // Store password for re-encryption
     String* pString = portfolio_ncurses_get_plaintext_string(&password);
+    if (pString == NULL) // Decryption error
+        return;
 
     // Perform modification
     portfolio_modify_string(pString, symbol, quantity_shares, usd_spent, mod_option);
