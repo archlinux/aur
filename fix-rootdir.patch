@@ -1,17 +1,14 @@
-diff -Naur src/Mailpile/scripts/mailpile src/Mailpile-arch/scripts/mailpile
---- src/Mailpile/scripts/mailpile	2016-02-22 11:16:38.027643894 -0500
-+++ src/Mailpile-arch/scripts/mailpile	2016-02-22 11:38:12.453109125 -0500
-@@ -1,12 +1,7 @@
- #!/usr/bin/env python2
+--- src/Mailpile/scripts/mailpile	2018-08-23 15:28:24.387631335 -0400
++++ mailpile_patched	2018-08-23 15:22:28.030942793 -0400
+@@ -1,10 +1,7 @@
+ #!/usr/bin/env python2.7
  import sys, os
  
 -# Make imports work without PYTHONPATH
 -mailpile_root = os.path.dirname(     # Mailpile root
 -    os.path.dirname(                 # scripts/
--        os.path.realpath(__file__)   # this script
--    )
--)
+-        os.path.realpath(__file__))) # this script
 +mailpile_root = "/usr/share/mailpile"
  
- sys.path.append(mailpile_root)
+ sys.path = [mailpile_root, os.path.join(mailpile_root, 'lib')] + sys.path
  

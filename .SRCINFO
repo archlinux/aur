@@ -1,6 +1,6 @@
 pkgbase = mailpile-git
 	pkgdesc = A modern, fast web-mail client with user-friendly encryption and privacy features.
-	pkgver = r5657.ad70997b
+	pkgver = r5955.cb4f0a71
 	pkgrel = 1
 	url = http://www.mailpile.is
 	install = mailpile.install
@@ -28,7 +28,7 @@ pkgbase = mailpile-git
 	source = fix-rootdir.patch
 	source = mailpile.service
 	md5sums = SKIP
-	md5sums = 777cd528c847876b6f720af8f21951db
+	md5sums = 87acc0758b08e62b4a8eea17e5f0da5e
 	md5sums = 5109bf42611bb0e9f1ce7caa5a00a6e7
 
 pkgname = mailpile-git

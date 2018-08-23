@@ -2,7 +2,7 @@
 # Contributor: Maxim Andersson <thesilentboatman@gmail.com>
 
 pkgname=mailpile-git
-pkgver=r5657.ad70997b
+pkgver=r5955.cb4f0a71
 pkgrel=1
 pkgdesc="A modern, fast web-mail client with user-friendly encryption and privacy features."
 arch=('any')
@@ -13,7 +13,7 @@ provides=("mailpile")
 conflicts=("mailpile")
 install=mailpile.install
 source=('git://github.com/pagekite/Mailpile.git' 'fix-rootdir.patch' 'mailpile.service')
-md5sums=('SKIP' '777cd528c847876b6f720af8f21951db' '5109bf42611bb0e9f1ce7caa5a00a6e7')
+md5sums=('SKIP' '87acc0758b08e62b4a8eea17e5f0da5e' '5109bf42611bb0e9f1ce7caa5a00a6e7')
 
 pkgver() {
   cd "${srcdir}/Mailpile"
@@ -23,7 +23,7 @@ pkgver() {
 prepare() {
 
   # Fix path
-  patch -p1 < fix-rootdir.patch
+  patch "${srcdir}/Mailpile/scripts/mailpile" fix-rootdir.patch
   cd "${srcdir}/Mailpile"
 
   # python2 fixes
