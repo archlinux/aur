@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=forking
-ExecStart=/usr/bin/bmx6
+ExecStart=/usr/bin/bmx7
 ExecStop=/usr/bin/kill -15 $MAINPID
 PIDFile=/var/run/bmx6/pid
 Restart=on-failure
