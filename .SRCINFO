@@ -1,0 +1,21 @@
+pkgbase = libretro-beetle-pce-fast-git
+	pkgdesc = Standalone port of Mednafen PCE Fast to libretro.
+	pkgver = 916.6dfaf04
+	pkgrel = 1
+	url = https://github.com/libretro/beetle-pce-fast-libretro
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	groups = libretro
+	license = GPL2
+	makedepends = git
+	depends = gcc-libs
+	conflicts = libretro-mednafen-pce-fast-git
+	replaces = libretro-mednafen-pce-fast-git
+	source = git+https://github.com/libretro/beetle-pce-fast-libretro.git
+	sha256sums = SKIP
+
+pkgname = libretro-beetle-pce-fast-git
+
