@@ -1,0 +1,16 @@
+pkgbase = android-platform-28
+	pkgdesc = Android SDK Platform, API-28
+	pkgver = 9_r06
+	pkgrel = 1
+	url = http://developer.android.com/sdk/index.html
+	arch = any
+	license = custom
+	depends = android-sdk
+	depends = android-sdk-platform-tools
+	conflicts = android-platform==28
+	options = !strip
+	source = http://dl.google.com/android/repository/platform-28_r06.zip
+	sha1sums = 9a4e52b1d55bd2e24216b150aafae2503d3efba6
+
+pkgname = android-platform-28
+
