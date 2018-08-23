@@ -4,9 +4,9 @@
 # Contributor: Bill Durr <billyburly [at] gmail [dot] com>
 pkgname=crashplan-pro
 _pkgname=crashplan
-pkgver=6.7.2
-_pkgtimestamp=1512021600672
-_pkgbuild=5609
+pkgver=6.8.2
+_pkgtimestamp=1525200006682
+_pkgbuild=369
 pkgrel=1
 pkgdesc="An business online/offsite backup solution"
 url="http://www.crashplan.com/business"
@@ -19,7 +19,7 @@ install=crashplan-pro.install
 source=(https://web-lbm-msp.crashplanpro.com/client/installers/CrashPlanSmb_${pkgver}_${_pkgtimestamp}_${_pkgbuild}_Linux.tgz
         crashplan-pro
         crashplan-pro.service)
-sha256sums=('778ec1fcd4ba7f089a2d231cc48c6218e634dc1e62cd59c71542ee382cdc77f3'
+sha256sums=('54b7c0cdde1db0dc3dbfd76445574119b84a9cfa6eec81054b55ab4f11c29a16'
             'b306d7da0dd41341512ce80ddcfb21bff8a9bb73ab5018696e69d08b89f7f1b6'
             'fd4c80dbd2ea3dcfc9966832a599f1bb310f705f813474d1900c1867ea55155c')
 
