@@ -1,7 +1,7 @@
 pkgbase = kiwix-lib
 	pkgdesc = Library providing the Kiwix software core
 	pkgver = 2.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kiwix/kiwix-lib
 	arch = any
 	license = GPL3
