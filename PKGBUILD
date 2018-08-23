@@ -1,8 +1,8 @@
-_libressl_ver='2.5.1'
-pkgname='acme-client'
+_libressl_ver='2.8.0'
+pkgname=acme-client
 pkgdesc="Secure Let's Encrypt client"
-pkgver='0.1.16'
-pkgrel='1'
+pkgver=0.1.16
+pkgrel=2
 license=('custom:ISC')
 url='https://kristaps.bsd.lv/acme-client/'
 arch=('x86_64' 'i686')
@@ -11,7 +11,7 @@ source=("https://kristaps.bsd.lv/acme-client/snapshots/${pkgname}-portable-${pkg
 	"http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${_libressl_ver}.tar.gz"
 	README.archlinux LICENSE.md)
 sha512sums=('730c20bdf9d72b24e66c54b009a282e04da3ea8ce3b9eb053750672c53c9586b2879d87a565ddbab033d7ba6a577dd6399313b20cf654b185905db4de988b6b7'
-            '44557c7c3e6bc9c0af9ae83b26765be9707d53708a32a5a945108a49ea20503afa4197919801830d27821c069b87e0e0edd284bd1b8a85340dbc0da2c162c2f9'
+            '3004cd78a9d52dece9f24272389778d6afca549de245852004ddd57b01a0c3a6fa1cee2d56980d067d23b3ead7f7a4aa6bcf4e0c57a56f5f7d9fd3f8d23f3ca2'
             '0a1d1baad45510687e66fafb44459a503f6688a73f7ceb402c204b096dee4e56ea2e9f71ed6f59421b81acf854a3d39395739a5a063c1536d557e3eccac6cee4'
             'b3580f1332469005c03b695ba1c5bc4d36accd2983f8d59f9fe6ce5616b208f1a7c65ad9c3d6a28d4b196ee765d07753e9c1308b5428408ccb3d5049b69c970c')
 replaces=('letskencrypt')
@@ -32,8 +32,9 @@ build () {
 	cd "${srcdir}/${pkgname}-portable-${pkgver}"
 	local wwwdir='-DWWW_DIR=\""/srv/http/acme\""'
 	make PREFIX=/usr \
-		CPPFLAGS="-I${srcdir}/libressl-${_libressl_ver}/prefix/usr/include ${wwwdir}" \
-		LDFLAGS="-L${srcdir}/libressl-${_libressl_ver}/prefix/usr/lib"
+		CFLAGS="${CFLAGS} -pthread" \
+		CPPFLAGS="${CPPFLAGS} -I${srcdir}/libressl-${_libressl_ver}/prefix/usr/include ${wwwdir}" \
+		LDFLAGS="${LDFLAGS} -L${srcdir}/libressl-${_libressl_ver}/prefix/usr/lib -pthread"
 }
 
 package () {
