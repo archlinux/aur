@@ -3,7 +3,7 @@
 _jslib_commit="4ca7a9709e9ccd0e67ce09309ae605f2057bf089"
 pkgname=bitwarden_rs-vault
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Integrates the Vault Web-Interface into bitwarden_rs."
 arch=('any')
 url="https://github.com/bitwarden/web"
@@ -36,7 +36,7 @@ build() {
 	#build vault webinterface
 	cd "$srcdir/web-$pkgver"
 	npm install --cache "${srcdir}/npm-cache" 
-	npm run dist:selfhost --cache "${srcdir}/npm-cache" 
+	npm run dist --cache "${srcdir}/npm-cache" 
 }
 
 package() {
