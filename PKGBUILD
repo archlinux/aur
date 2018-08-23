@@ -4,7 +4,7 @@
 _gemname=gh
 pkgname=ruby-$_gemname
 pkgver=0.15.1
-pkgrel=1
+pkgrel=2
 pkgdesc='layered github client'
 arch=(any)
 url='https://github.com/travis-ci/gh'
@@ -19,6 +19,7 @@ sha512sums=('1bc684cf9d6c2276920bfd9658828f20f49c4f8458dea147f5db14a5e93b3dcf6a5
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
   gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  sed -i 's/~>/>=/g' "$pkgdir/$_gemdir/specifications/$_gemname-$pkgver.gemspec"
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
   install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
