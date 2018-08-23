@@ -17,7 +17,9 @@ pkgbase = kicadlibrarian-git
 	provides = kicadlibrarian
 	conflicts = kicadlibrarian
 	source = kicadlibrarian-git::git+git://github.com/randrej/KiCad-Librarian.git
+	source = mime_xml.patch
 	md5sums = SKIP
+	md5sums = 09d71e29cd532ce0395dac9e7c026424
 
 pkgname = kicadlibrarian-git
 

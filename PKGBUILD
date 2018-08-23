@@ -11,8 +11,10 @@ makedepends=(git make cmake)
 install=kicadlibrarian-git.install
 provides=("kicadlibrarian")
 conflicts=("kicadlibrarian")
-source=("${pkgname}"'::git+git://github.com/randrej/KiCad-Librarian.git')
-md5sums=('SKIP')
+source=("${pkgname}"'::git+git://github.com/randrej/KiCad-Librarian.git'
+        'mime_xml.patch')
+md5sums=('SKIP'
+         '09d71e29cd532ce0395dac9e7c026424')
 
 pkgver() {
 	cd "$srcdir/${pkgname}"
@@ -22,6 +24,7 @@ pkgver() {
 build() {
   cd "$srcdir/$pkgname/src"
   sed -ie "s#/usr/share/#${pkgdir}/usr/share/#" CMakeLists.txt
+  patch  "$srcdir/$pkgname/kicadlibrarian.xml" "$srcdir/mime_xml.patch"
   cmake -DCMAKE_INSTALL_PREFIX=${pkgdir}/opt/${pkgname} -DKiCadLibrarian_USE_CX3D=0 -DKiCadLibrarian_USE_CURL=1
   make
 }

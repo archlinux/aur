@@ -1,0 +1,16 @@
+--- kicadlibrarian.xml	2017-07-23 02:14:44.782036361 +0200
++++ kicadlibrarian.xml	2018-08-23 16:17:17.474262924 +0200
+@@ -1,10 +1,8 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+- <mime-type type="application/x-binary">
++ <mime-type type="application/x-kicadlibrarian-item">
+     <sub-class-of type="application/xml"/>
+     <comment>KiCad Librarian</comment>
+     <icon>kicadlibrarian32</icon>
+-    <root-XML localName="kicadlibrarian" />
+-  </mime-type>
+- </mime-info>
+-
++ </mime-type>
++</mime-info>
