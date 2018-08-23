@@ -40,8 +40,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
 # Local Variables:
