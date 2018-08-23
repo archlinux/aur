@@ -1,0 +1,19 @@
+pkgbase = modbox
+	pkgdesc = A 3D game where modules loaded in runtime control most of gameplay
+	pkgver = 0.1_pre_dev
+	pkgrel = 1
+	url = https://github.com/kodo-pp/ModBox
+	arch = x86_64
+	license = MIT
+	depends = irrlicht
+	provides = modbox
+	conflicts = modbox-git
+	source = modbox-0.1_pre_dev.tar.gz::https://github.com/kodo-pp/ModBox/archive/0.1_pre_dev.tar.gz
+	source = https://github.com/kodo-pp/ModBox/releases/download/0.1_pre_dev/start-installed-modbox.sh
+	md5sums = 1e65ef7ecf9e0cc2a8c123e36c658a7d
+	md5sums = 49846d29c0f44849b043e6888b9c5cc4
+	sha256sums = d972d8f01fbf9d1328a12bc58920503199f2cd073135c18d716ec2968e0a7c5d
+	sha256sums = d761cb52f9c77c7abd3b9d926a2719cc07ffd00efa1ddb12ec12c65b81eee0f4
+
+pkgname = modbox
+
