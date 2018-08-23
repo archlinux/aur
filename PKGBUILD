@@ -68,12 +68,12 @@ _major=4.18
 _minor=4
 pkgver=${_major}.${_minor}
 _srcname=linux-${_major}
-pkgrel=1
-_clr=624
+pkgrel=2
+_clr=625
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
-makedepends=('bc' 'git' 'graphviz' 'inetutils' 'kmod' 'libelf' 'linux-firmware' 'python-sphinx' 'xmlto')
+makedepends=('bc' 'git' 'inetutils' 'kmod' 'libelf' 'linux-firmware' 'xmlto')
 options=('!strip')
 _gcc_more_v='20180509'
 source=(
@@ -106,7 +106,7 @@ prepare() {
         echo "$_kernelname" > localversion.20-pkgname
 
     ### Add Clearlinux patches
-        for i in $(grep '^Patch' ${srcdir}/clearlinux/linux.spec | grep -Ev '^Patch0500' | sed -n 's/.*: //p'); do
+        for i in $(grep '^Patch' ${srcdir}/clearlinux/linux.spec | grep -Ev '^Patch0107|^Patch0500' | sed -n 's/.*: //p'); do
         msg2 "Applying patch ${i}..."
         patch -Np1 -i "$srcdir/clearlinux/${i}"
         done
@@ -178,7 +178,7 @@ prepare() {
 build() {
     cd ${_srcname}
 
-    make bzImage modules htmldocs
+    make bzImage modules
 }
 
 _package() {
@@ -319,39 +319,7 @@ _package-headers() {
     chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
-_package-docs() {
-    pkgdesc="Kernel hackers manual - HTML documentation that comes with the linux-clear"
-    depends=('linux-clear')
-
-    local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
-
-    cd ${_srcname}
-
-    msg2 "Installing documentation..."
-    mkdir -p "$builddir"
-    cp -t "$builddir" -a Documentation
-
-    msg2 "Removing doctrees..."
-    rm -r "$builddir/Documentation/output/.doctrees"
-
-    msg2 "Moving HTML docs..."
-    local src dst
-    while read -rd '' src; do
-        dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
-        mkdir -p "${dst%/*}"
-        mv "$src" "$dst"
-        rmdir -p --ignore-fail-on-non-empty "${src%/*}"
-    done < <(find "$builddir/Documentation/output" -type f -print0)
-
-    msg2 "Adding symlink..."
-    mkdir -p "$pkgdir/usr/share/doc"
-    ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
-
-    msg2 "Fixing permissions..."
-    chmod -Rc u=rwX,go=rX "$pkgdir"
-}
-
-pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
+pkgname=("$pkgbase" "$pkgbase-headers")
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
     $(declare -f "_package${_p#$pkgbase}")
