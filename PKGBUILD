@@ -1,13 +1,16 @@
-# Maintainer: Tomasz Paś <kierek93@gmail.com>
+# Maintainer:  Mike Polvere <mic.tjs@gmail.com>
 
 pkgname=libretro-mupen64plus-git
+
 _gitname=mupen64plus-libretro
-pkgver=633.6f80cbc
+_libname=mupen64plus_libretro
+
+pkgver=651.4ca2fa8
 pkgrel=1
 pkgdesc="libretro port of Mupen64 Plus"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/libretro/mupen64plus-libretro"
-license=('custom' 'GPL' 'LGPL')
+license=('GPL3')
 depends=('libretro-core-info')
 makedepends=('git')
 source=("${_gitname}::git://github.com/libretro/${_gitname}.git")
@@ -16,23 +19,23 @@ groups=('libretro')
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${_gitname}"
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  	cd "${_gitname}"
+  	echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {
-  cd "${_gitname}"
-  if grep -q odroid /proc/cpuinfo ;then
-   platform=odroid make WITH_DYNAREC=arm
-  elif grep -q BCM /proc/cpuinfo ;then
-   platform=rpi make WITH_DYNAREC=arm
-  elif [ $CARCH == "i686" ];then
-   make WITH_DYNAREC=x86
-  else
-   make WITH_DYNAREC=$CARCH
-  fi
+  	cd "${_gitname}"
+	if [ ! -z "$(grep -i 'odroid' /proc/cpuinfo 2>/dev/null)" ]; then
+		platform=odroid make WITH_DYNAREC=$CARCH
+	elif [[ "$CARCH" == arm || "$CARCH" == armv6h || "$CARCH" == armv7h ]]; then
+		platform=rpi make WITH_DYNAREC=$CARCH
+	elif [ $CARCH == "i686" ]; then
+		make WITH_DYNAREC=x86
+	elif [ $CARCH == "x86_64" ]; then
+		make WITH_DYNAREC=$CARCH
+	fi
 }
 
 package() {
-  install -Dm644 "${_gitname}/mupen64plus_libretro.so" "${pkgdir}/usr/lib/libretro/libretro-mupen64plus.so"
+  	install -Dm644 "${_gitname}/${_libname}.so" "${pkgdir}/usr/lib/libretro/${_libname}.so"
 }
