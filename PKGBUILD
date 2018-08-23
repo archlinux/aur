@@ -5,7 +5,7 @@ _systemd_pkgver=0.9.5
 _service_identity_pkgver=17.0.0
 
 pkgname=pac4cli-git
-pkgver=0.1
+pkgver=0.2
 pkgrel=2
 pkgdesc="Proxy-auto-discovery for command line applications"
 arch=('i686' 'x86_64')
