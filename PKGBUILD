@@ -1,13 +1,13 @@
 # Maintainer: Stelios Tsampas <loathingkernel @at gmail .dot com>
 
 pkgname=arenatracker-git
-pkgver=6.3.r48.g3df0c73
+pkgver=6.72.r7.g9a47c38
 pkgrel=1
 pkgdesc="Arena Tracker is a deck tracker that gives you a lot of extra info while playing Hearthstone"
 arch=('x86_64')
 url="https://github.com/supertriodo/Arena-Tracker"
 license=('GPL')
-depends=('qt5-base' 'python-pyautogui' 'xcb-util-renderutil' 'libpng12' 'opencv2')
+depends=('qt5-base' 'qt5-websockets' 'python-pyautogui' 'libzip' 'opencv2')
 makedepends=('imagemagick' 'git')
 provides=("${pkgname/%-git/}")
 conflicts=("${pkgname/%-git/}")
