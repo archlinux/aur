@@ -1,7 +1,7 @@
 # Maintainer: Juliette Monsel <j_4321 at protonmail dot com>
 pkgname=('python-tkcalendar' 'python2-tkcalendar')
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 _name=tkcalendar
 pkgdesc="Calendar widget for Tkinter"
 arch=('any')
@@ -17,13 +17,13 @@ build() {
 }
 
 package_python-tkcalendar() {
-  depends=('python' 'tk')
+  depends=('python-babel' 'tk')
   cd "$srcdir/$_name-$pkgver"
   python setup.py install --root="${pkgdir}/" --optimize=1  --skip-build
 }
 
 package_python2-tkcalendar() {
-  depends=('python2' 'tk')
+  depends=('python2-babel' 'tk')
   cd "$srcdir/$_name-$pkgver"
   python2 setup.py install --root="${pkgdir}/" --optimize=1  --skip-build
 }
