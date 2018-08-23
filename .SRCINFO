@@ -1,9 +1,8 @@
 pkgbase = xfce4-windowck-plugin
 	pkgdesc = Xfce panel plugin which allows to put the maximized window title and buttons on the panel.
-	pkgver = 0.4.4
+	pkgver = 0.4.5
 	pkgrel = 1
 	url = https://github.com/cedl38/xfce4-windowck-plugin
-	install = xfce4-windowck-plugin.install
 	arch = i686
 	arch = x86_64
 	groups = xfce4
@@ -14,8 +13,8 @@ pkgbase = xfce4-windowck-plugin
 	makedepends = imagemagick
 	depends = xfce4-panel
 	options = !libtool
-	source = xfce4-windowck-plugin-0.4.4.tar.gz::https://github.com/cedl38/xfce4-windowck-plugin/archive/v0.4.4.tar.gz
-	sha256sums = 92b6c9e199d32cf96619c31e2cfac19e375575d581e78fa043f9f6a59c1df13f
+	source = xfce4-windowck-plugin-0.4.5.tar.gz::https://github.com/cedl38/xfce4-windowck-plugin/archive/v0.4.5.tar.gz
+	sha256sums = 7c20e2af27e6f0406dd0598c0282a9ed73c5e83a178f7f79bb577482f4b5b091
 
 pkgname = xfce4-windowck-plugin
 
