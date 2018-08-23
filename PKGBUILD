@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 
 pkgname=https-everywhere-chrome
-pkgver=2018.6.21
+pkgver=2018.8.22
 pkgrel=1
 pkgdesc="Chrome/Chromium extension to use HTTPS whenever possible"
 arch=('any')
@@ -12,7 +12,7 @@ depends=()
 makedepends=()
 options=()
 source=(https://www.eff.org/files/$pkgname-$pkgver.crx)
-sha512sums=('55256046ab2d7001a0faae2d27554efbc260d5d5e8d62eff6a08a093ad80f01ec51c45943872aae2905d612c41f4b426ede14770f96af2e0549ed30ed3bc18ff')
+sha512sums=('69aada92267a6afcc710a8456e219ff0e402d1d99386788c578a18568825a266ab1cb97fbc8b41fe6e4091065dd38b2b6e049f9ddec7b819213f3efac225befc')
 
 package() {
 	 mkdir -p $pkgdir/usr/share/$pkgname
