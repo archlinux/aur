@@ -4,12 +4,12 @@
 _gemname=travis
 pkgname=ruby-$_gemname
 pkgver=1.8.9
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI and Ruby client library for Travis CI'
 arch=(any)
 url='https://github.com/travis-ci/travis.rb'
 license=(MIT)
-depends=(ruby ruby-backports ruby-faraday ruby-faraday-middleware ruby-gh ruby-highline ruby-launchy ruby-pusher-client 'ruby-typhoeus>=0.6.8' 'ruby-typhoeus<1.0.0' ruby-connection_pool)
+depends=(ruby ruby-backports ruby-faraday ruby-faraday-middleware ruby-gh 'ruby-highline>=1.6.0' 'ruby-highline<2.0.0' ruby-launchy ruby-pusher-client 'ruby-typhoeus>=0.6.8' 'ruby-typhoeus<1.0.0' ruby-connection_pool)
 makedepends=('ruby-rdoc')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)

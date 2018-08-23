@@ -1,7 +1,7 @@
 pkgbase = ruby-travis
 	pkgdesc = CLI and Ruby client library for Travis CI
 	pkgver = 1.8.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/travis-ci/travis.rb
 	arch = any
 	license = MIT
@@ -11,7 +11,8 @@ pkgbase = ruby-travis
 	depends = ruby-faraday
 	depends = ruby-faraday-middleware
 	depends = ruby-gh
-	depends = ruby-highline
+	depends = ruby-highline>=1.6.0
+	depends = ruby-highline<2.0.0
 	depends = ruby-launchy
 	depends = ruby-pusher-client
 	depends = ruby-typhoeus>=0.6.8
