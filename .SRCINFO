@@ -1,22 +1,16 @@
 pkgbase = pcloud-drive
 	pkgdesc = pCloud drive. Electron edition.
 	pkgver = 1.2.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.pcloud.com
 	arch = x86_64
 	makedepends = jq
-	makedepends = patchelf
 	makedepends = sed
 	conflicts = pcloud-git
 	conflicts = pcloud
-	noextract = glibc-2.27-3-x86_64.pkg.tar.xz
-	options = !strip
-	options = staticlibs
 	validpgpkeys = A8F7858263C1E39480B731DCEAD4F103068DF8E5
-	source_x86_64 = pcloud-drive-1.2.2-3::http://p-def4.pcloud.com/cBZIXwAjFZW61SeFZZZOUQNU7Z2ZZdcLZkZsy6IXZY0ZX0ZXVZikZs0ZKZUkZbXZLVZ5Zp0Z3VZmkZIVZjUqB7ZLhpCbqMBmpuBs7V9K8XJjpOaFVU7/pcloud
-	source_x86_64 = https://archive.archlinux.org/packages/g/glibc/glibc-2.27-3-x86_64.pkg.tar.xz
+	source_x86_64 = pcloud-drive-1.2.2-4::http://p-def4.pcloud.com/cBZIXwAjFZW61SeFZZZCz6NU7Z2ZZdcLZkZsy6IXZY0ZX0ZXVZikZs0ZKZUkZbXZLVZ5Zp0Z3VZmkZIVZjUqB7ZxLRzjQg1gT47jvdtgSNsc7NfQtYk/pcloud
 	md5sums_x86_64 = 3327646879234379fc9bd313a96b042e
-	md5sums_x86_64 = 57c1dc79d8552f40602e49b84be65752
 
 pkgname = pcloud-drive
 
