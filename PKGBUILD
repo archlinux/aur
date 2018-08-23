@@ -8,7 +8,7 @@ url=''
 license=('GPL3')
 conflicts=(jackman)
 provides=(jackman)
-depends=('jackdbus' 'alsa-utils' 'python2-dbus' 'systemd' 'coreutils')
+depends=('jack' 'alsa-utils' 'python2-dbus' 'systemd' 'coreutils')
 makedepends=('git')
 optdepends=('zenity: system notifications'
 	   'kdialog: system notifications')
