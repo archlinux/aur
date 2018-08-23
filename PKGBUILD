@@ -4,7 +4,7 @@
 pkgname=lyvi-git
 _gitname=lyvi
 pkgver=v2.0.0.20.g7cc7a3f.g7cc7a3f
-pkgrel=2
+pkgrel=3
 pkgdesc="Command-line lyrics, guitar tabs, and artist information viewer"
 url="http://ok100.github.io/lyvi/"
 arch=(any)
@@ -23,6 +23,7 @@ pkgver() {
 
 package() {
   cd "$srcdir/$_gitname"
+  sed -i 's/from pip.req import parse_requirements/from pip._internal.req import parse_requirements/' setup.py
   python setup.py install --root=$pkgdir
 }
 
