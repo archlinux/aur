@@ -25,7 +25,7 @@ check() {
 	python setup.py test
 }
 
-package_python-pykwalify() {
+package() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
-	python setup.py -q install --root="$pkgdir" --optimize=1
+	python setup.py -q install --root="$pkgdir" --optimize=1 --skip-build
 }
