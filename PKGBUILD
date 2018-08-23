@@ -2,12 +2,12 @@
 
 pkgname=gnome-passwordsafe-git
 _gitname=PasswordSafe
-pkgver=0.9.2.r62.g77c1cb9
+pkgver=0.9.3
 pkgrel=2
 pkgdesc="A password manager for GNOME"
 arch=('i686' 'x86_64')
 license=('GPL3')
-url="https://gitlab.gnome.org/fseidl/KeepassGtk"
+url="https://gitlab.gnome.org/World/PasswordSafe"
 depends=('gtk3' 'python-pykeepass' 'gobject-introspection')
 makedepends=('git' 'meson' 'ninja')
 source=("git+https://gitlab.gnome.org/World/PasswordSafe.git")
