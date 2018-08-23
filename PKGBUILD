@@ -13,7 +13,7 @@ source=("https://github.com/nwg-piotr/obhud/raw/master/dist/obhud-0.1.7.tar.gz"
 "https://github.com/nwg-piotr/obhud/raw/master/dist/obhud.conf")
 
 md5sums=('77f3812e07e9b99a4ff10277148b8262'
-         '1e4b91cc92741a45d276126646ab8036'
+         '89995467e1d46692720d5331b8d444ac'
          '4429cf48928bf71e761df0f9b7dcbd8a')
 
 package() {
