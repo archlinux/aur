@@ -11,8 +11,8 @@ url="https://gitlab.com/aurorafossorg/p/framework/core"
 license=('LGPL3')
 provides=('aurorafw')
 conflicts=('aurorafw')
-depends=('glfw' 'opengl-driver' 'libx11' 'freeimage' 'portaudio' 'libsndfile' 'glew' 'gtk3' 'vulkan-icd-loader')
-makedepends=('git' 'doxygen' 'meson' 'vulkan-headers' 'ldc')
+depends=('glfw' 'opengl-driver' 'libx11' 'freeimage' 'portaudio' 'libsndfile' 'glew' 'gtk3' 'vulkan-icd-loader' 'vulkan-headers')
+makedepends=('git' 'doxygen' 'meson' 'ldc')
 source=("$pkgname-$_gitname::git+https://gitlab.com/aurorafossorg/p/framework/core.git")
 sha512sums=('SKIP')
 
@@ -26,10 +26,7 @@ build() {
   mkdir -p $pkgname-$_gitname/build
   cd $pkgname-$_gitname/build
 
-  export DC=ldmd
-
-  #arch-meson ..
-  meson --prefix=/usr ..
+  env DC=ldmd arch-meson ..
 
   ninja
 }
