@@ -1,0 +1,25 @@
+--- a/src/app/services/services.module.ts
++++ b/src/app/services/services.module.ts
+@@ -120,20 +120,15 @@ const environmentService = new EnvironmentService(apiService, storageService, notificationsService);
+ const auditService = new AuditService(cryptoFunctionService, apiService);
+ 
+-const analytics = new Analytics(window, () => platformUtilsService.isDev() || platformUtilsService.isSelfHost(),
++const analytics = new Analytics(window, () => platformUtilsService.isDev() || platformUtilsService.isSelfHost() || true,
+     platformUtilsService, storageService, appIdService);
+ containerService.attachToWindow(window);
+ 
+ export function initFactory(): Function {
+     return async () => {
+         await (storageService as HtmlStorageService).init();
+-        const isDev = platformUtilsService.isDev();
++        const isDev = false;
+-        if (!isDev && platformUtilsService.isSelfHost()) {
+-            environmentService.baseUrl = window.location.origin;
+-        } else {
+-            environmentService.notificationsUrl = isDev ? 'http://localhost:61840' :
+-                window.location.origin + '/notifications';
+-        }
++        environmentService.baseUrl = window.location.origin;
+         await apiService.setUrls({
+             base: isDev ? null : window.location.origin,
+             api: isDev ? 'http://localhost:4000' : null,
