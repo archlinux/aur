@@ -4,7 +4,7 @@ _name=poetry
 pkgbase='python-poetry'
 pkgname=('python-poetry' 'python2-poetry')
 pkgver=0.11.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Python dependency management and packaging made easy"
 arch=('any')
 url=https://github.com/sdispater/"${_name}"
@@ -13,8 +13,16 @@ makedepends=(
   'python' 'python-setuptools'
   'python2' 'python2-setuptools')
 options=(!emptydirs)
-source=("${pkgname}"-"${pkgver}".tar.gz::https://pypi.io/packages/source/"${_name:0:1}"/"${_name}"/"${_name}"-"${pkgver}".tar.gz)
-sha256sums=('78d0514fb91fa0ed90f9d7228c2fd0aa3d94fe7961f7dd00013c691fc47164d1')
+source=(
+  "${pkgname}"-"${pkgver}".tar.gz::https://pypi.io/packages/source/"${_name:0:1}"/"${_name}"/"${_name}"-"${pkgver}".tar.gz
+  poetry.sh
+  poetry2.sh
+)
+sha256sums=(
+  '78d0514fb91fa0ed90f9d7228c2fd0aa3d94fe7961f7dd00013c691fc47164d1'
+  '2d86ca07e5cc944c717c7ef8f38332d6d3a3feb0a99bb7dabe0e9deff11e994e'
+  'b890851b5cb53d1c437a051f79a024857e12b5e6ec0089dddb07a94d09d45af8'
+)
 
 prepare() {
   cp -a "${_name}"-"${pkgver}"{,-py2}
@@ -42,6 +50,7 @@ package_python2-poetry() {
     'python2-cleo'
     'python2-html5lib'
     'python2-jsonschema'
+    'python2-pathlib'
     'python2-pkginfo'
     'python2-pyparsing'
     'python2-pyrsistent'
@@ -49,11 +58,14 @@ package_python2-poetry() {
     'python2-requests-toolbelt'
     'python2-shellingham'
     'python2-tomlkit'
+    'python2-typing'
+    'python2-virtualenv'
 )
 
   cd "${_name}"-"${pkgver}"-py2
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
   python2 setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
+  install -Dm755 "${srcdir}"/poetry2.sh "${pkgdir}"/usr/bin/poetry2
 }
 
 package_python-poetry() {
@@ -77,4 +89,5 @@ package_python-poetry() {
   cd "${_name}"-"${pkgver}"
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
   python setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
+  install -Dm755 "${srcdir}"/poetry.sh "${pkgdir}"/usr/bin/poetry
 }
