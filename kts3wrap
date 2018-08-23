@@ -1,0 +1,3 @@
+#!/bin/sh
+export PATH=/opt/kts3wrap-bin:$PATH
+teamspeak3 $@
