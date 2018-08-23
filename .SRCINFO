@@ -1,11 +1,12 @@
 pkgbase = inkdrop
 	pkgdesc = Note-taking App with Robust Markdown Editor
 	pkgver = 3.21.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.inkdrop.info/
 	arch = x86_64
 	license = custom
 	depends = gnome-keyring
+	depends = gconf
 	source = inkdrop.png
 	source = inkdrop.desktop
 	md5sums = 7958b69a1fc0f069fde15b334314c2aa
