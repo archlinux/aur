@@ -1,7 +1,7 @@
 # Maintainer: aimileus <me at aimileus dot nl>
 pkgname=protonmail-bridge
 _pkgver=1.0.6
-_pkgrel=1
+_pkgrel=2
 pkgver="${_pkgver}.${_pkgrel}"
 pkgrel=1
 pkgdesc="Application to use IMAP/SMTP with your paid ProtonMail account"
@@ -18,7 +18,7 @@ depends=(
 )
 options=('!strip')
 source=("https://protonmail.com/download/protonmail-bridge_${_pkgver}-${_pkgrel}_amd64.deb")
-sha256sums=('48341a59787e04500596e3abaccc63448c900800335c9e1765898b1975eb44ab')
+sha256sums=('8815fae433c69af5502aa73d5f16fd62d146ab91c0606be9016be4a8c7ce7e5b')
 
 prepare() {
 	tar xvJf data.tar.xz
@@ -29,8 +29,9 @@ prepare() {
                 usr/share/applications/protonmail-bridge.desktop
 
 	# Don't pollute /usr/share/icons
-	# mv usr/share/icons/protonmail/Desktop-Bridge.svg \
-	#	usr/share/icons/hicolor/scalable/apps/protonmail-bridge.svg
+	mkdir -p usr/share/icons/hicolor/scalable/apps
+	mv usr/share/icons/protonmail/Desktop-Bridge.svg \
+		usr/share/icons/hicolor/scalable/apps/protonmail-bridge.svg
         rmdir usr/share/icons/protonmail
 }
 
