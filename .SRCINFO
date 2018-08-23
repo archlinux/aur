@@ -11,6 +11,7 @@ pkgbase = pubs
 	depends = python-bibtexparser
 	depends = python-beautifulsoup4
 	depends = python-yaml
+	depends = python-feedparser
 	provides = pubs
 	source = https://github.com/pubs/pubs/archive/v0.8.0.tar.gz
 	sha256sums = 13c0d12a3548e0bced0453ef31cb74eb7bac68006859269eb323b4ecfde2d8dc
