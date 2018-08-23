@@ -1,9 +1,10 @@
 # CPAN Name  : Email::Outlook::Message
 # Maintainer: Jose Riha <jose 1711 at gmail dot com>
 # Contributor: zman0900
+# Contributor: bidulock
 pkgname=perl-email-outlook-message
 pkgver=0.919
-pkgrel=1
+pkgrel=2
 pkgdesc="Perl module to read Outlook .msg files"
 arch=("any")
 url="http://search.cpan.org/dist/Email-Outlook-Message/"
@@ -27,5 +28,5 @@ check() {
 package() {
   cd "$srcdir/Email-Outlook-Message-${pkgver}"
   make install DESTDIR="$pkgdir"
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
