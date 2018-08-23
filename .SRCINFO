@@ -1,19 +1,15 @@
 pkgbase = libretro-parallel-n64-git
-	pkgdesc = Optimized/rewritten Nintendo 64 emulator made specifically for Libretro. Originally based on Mupen64 Plus.
-	pkgver = r4975.ab155da1
+	pkgdesc = libretro implementation to Nintendo 64 e 64DD
+	pkgver = 4975.ab155da1
 	pkgrel = 1
 	url = https://github.com/libretro/parallel-n64
 	arch = i686
 	arch = x86_64
 	groups = libretro
-	license = GPL
-	license = custom:multiple OSI licenses
+	license = GPL2
 	makedepends = git
-	makedepends = vulkan-headers
 	depends = libglvnd
-	depends = vulkan-icd-loader
-	depends = libretro-core-info
-	source = libretro-parallel-n64-git::git+https://github.com/libretro/parallel-n64
+	source = parallel-n64::git://github.com/libretro/parallel-n64.git
 	md5sums = SKIP
 
 pkgname = libretro-parallel-n64-git
