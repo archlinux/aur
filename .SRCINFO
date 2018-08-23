@@ -1,5 +1,5 @@
 pkgbase = mariadb-10.3
-	pkgver = 10.3.8
+	pkgver = 10.3.9
 	pkgrel = 1
 	url = http://mariadb.org/
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = mariadb-10.3
 	makedepends = openssl
 	makedepends = systemd
 	makedepends = zlib
-	source = https://ftp.heanet.ie/mirrors/mariadb/mariadb-10.3.8/source/mariadb-10.3.8.tar.gz
-	source = https://ftp.heanet.ie/mirrors/mariadb/mariadb-10.3.8/source/mariadb-10.3.8.tar.gz.asc
+	source = https://ftp.heanet.ie/mirrors/mariadb/mariadb-10.3.9/source/mariadb-10.3.9.tar.gz
+	source = https://ftp.heanet.ie/mirrors/mariadb/mariadb-10.3.9/source/mariadb-10.3.9.tar.gz.asc
 	validpgpkeys = 199369E5404BD5FC7D2FE43BCBCB082A1BB943DB
-	sha256sums = 30bec17514d12d811a05757be46bd41724df28002cdec550d5c757b0b3f31ab8
+	sha256sums = 561c6969bbd24dbb22d1d196a6b037665389b91e6dab881f39c5616389f156f4
 	sha256sums = SKIP
 
 pkgname = libmariadbclient-10.3
@@ -30,16 +30,16 @@ pkgname = libmariadbclient-10.3
 	depends = openssl
 	depends = xz
 	depends = zlib
-	provides = libmariadbclient=10.3.8
+	provides = libmariadbclient=10.3.9
 	conflicts = libmysqlclient
 	conflicts = libmariadbclient
 
 pkgname = mariadb-clients-10.3
 	pkgdesc = MariaDB client tools
-	depends = libmariadbclient-10.3=10.3.8
+	depends = libmariadbclient-10.3=10.3.9
 	depends = jemalloc
-	provides = mysql-clients=10.3.8
-	provides = mariadb-clients=10.3.8
+	provides = mysql-clients=10.3.9
+	provides = mariadb-clients=10.3.9
 	conflicts = mysql-clients
 	conflicts = mariadb-clients
 
@@ -48,20 +48,20 @@ pkgname = mytop-10.3
 	depends = perl
 	depends = perl-dbd-mysql
 	depends = perl-term-readkey
-	provides = mytop=10.3.8
+	provides = mytop=10.3.9
 	conflicts = mytop
 
 pkgname = mariadb-10.3
 	pkgdesc = Fast SQL database server, drop-in replacement for MySQL
 	install = mariadb.install
-	depends = mariadb-clients-10.3=10.3.8
+	depends = mariadb-clients-10.3=10.3.9
 	depends = inetutils
 	depends = libsystemd
 	depends = libxml2
 	optdepends = galera: for MariaDB cluster with Galera WSREP
 	optdepends = perl-dbd-mysql: for mysqlhotcopy, mysql_convert_table_format and mysql_setpermission
-	provides = mysql=10.3.8
-	provides = mariadb=10.3.8
+	provides = mysql=10.3.9
+	provides = mariadb=10.3.9
 	conflicts = mysql
 	conflicts = mariadb
 	options = emptydirs

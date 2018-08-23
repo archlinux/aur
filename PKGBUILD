@@ -4,7 +4,7 @@
 
 pkgbase=mariadb-10.3
 pkgname=('libmariadbclient-10.3' 'mariadb-clients-10.3' 'mytop-10.3' 'mariadb-10.3')
-pkgver=10.3.8
+pkgver=10.3.9
 pkgrel=1
 arch=('x86_64')
 license=('GPL')
@@ -13,7 +13,7 @@ makedepends=('boost' 'bzip2' 'cmake' 'jemalloc' 'libaio' 'libxml2' 'lz4' 'lzo'
              'openssl' 'systemd' 'zlib')
 validpgpkeys=('199369E5404BD5FC7D2FE43BCBCB082A1BB943DB') # MariaDB Package Signing Key <package-signing-key@mariadb.org>
 source=("https://ftp.heanet.ie/mirrors/mariadb/mariadb-$pkgver/source/mariadb-$pkgver.tar.gz"{,.asc})
-sha256sums=('30bec17514d12d811a05757be46bd41724df28002cdec550d5c757b0b3f31ab8'
+sha256sums=('561c6969bbd24dbb22d1d196a6b037665389b91e6dab881f39c5616389f156f4'
             'SKIP')
 
 prepare() {
