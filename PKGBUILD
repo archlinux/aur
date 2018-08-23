@@ -29,8 +29,8 @@ check() {
 	PYTHON=python2 python2 setup.py test
 }
 
-package_python2-pykwalify() {
+package() {
 	cd "${srcdir}/${_pkgname}-${pkgver}-py2"
-	python2 setup.py -q install --root="$pkgdir" --optimize=1
+	python2 setup.py -q install --root="$pkgdir" --optimize=1 --skip-build
 	mv "${pkgdir}/usr/bin/pykwalify" "${pkgdir}/usr/bin/pykwalify2"
 }
