@@ -1,0 +1,11 @@
+diff -Naur owfs.orig/module/owlib/src/c/ow_arg.c owfs/module/owlib/src/c/ow_arg.c
+--- owfs.orig/module/owlib/src/c/ow_arg.c	2018-08-23 11:13:57.554396652 +0300
++++ owfs/module/owlib/src/c/ow_arg.c	2018-08-23 11:16:29.856931576 +0300
+@@ -17,6 +17,7 @@
+ #include "ow.h"
+ #include "ow_connection.h"
+ #include "ow_usb_msg.h" // for DS9490_port_setup
++#include <sys/sysmacros.h>
+ 
+ enum arg_address { arg_addr_device, arg_addr_null,
+ 	arg_addr_ip, arg_addr_colon,
