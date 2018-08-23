@@ -1,4 +1,7 @@
 # Maintainer:  Mike Polvere <mic.tjs@gmail.com>
+# Contributor: Fabio 'Lolix' Loli <lolix@disroot.org>
+# Contributor: Tomasz Paś <kierek93@gmail.com>
+# Contributor: Thomas Schneider <maxmusterm@gmail.com>
 
 pkgname=libretro-parallel-n64-git
 
