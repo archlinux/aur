@@ -7,6 +7,7 @@ pkgbase = mingw-w64-pango
 	license = LGPL
 	makedepends = gtk-doc
 	makedepends = gobject-introspection
+	makedepends = mingw-w64-poppler
 	makedepends = mingw-w64-meson
 	makedepends = mingw-w64-wine
 	makedepends = git

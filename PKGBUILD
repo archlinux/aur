@@ -19,6 +19,7 @@ depends=('mingw-w64-harfbuzz'
 optdepends=('mingw-w64-libthai: libthai support')
 makedepends=('gtk-doc'
              'gobject-introspection'
+             'mingw-w64-poppler'
              'mingw-w64-meson'
              'mingw-w64-wine'
              'git')
