@@ -5,6 +5,7 @@ pkgbase = fonts-et-book
 	url = https://edwardtufte.github.io/et-book
 	arch = any
 	license = MIT
+	makedepends = git
 	source = et-book::git+https://github.com/edwardtufte/et-book.git#commit=5cadf4d
 	source = et-book-ligatures::git+https://github.com/adactio/et-book.git#commit=65f7802
 	source = LICENSE::https://raw.githubusercontent.com/edwardtufte/et-book/gh-pages/LICENSE
