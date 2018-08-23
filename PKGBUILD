@@ -6,7 +6,7 @@
 
 pkgname=yaourtix-git
 pkgver=1.9.r3.gfe1bcdd
-pkgrel=4
+pkgrel=5
 
 pkgdesc='Yaourt (= a pacman wrapper with extended features and AUR support) patched with user definable repo-support for building from source, and other customizepkg-enhancements. Artix support included.'
 arch=('any')
@@ -40,14 +40,14 @@ backup=(
 source=(
   "yaourt::git+https://github.com/archlinuxfr/yaourt.git"
   "abs-logic.sh::http://ix.io/1l0E"
-  "yaourt_customizepkg-abort-on-error.patch::http://ix.io/1l0z"
+  "yaourt_customizepkg-abort-on-error.patch::http://ix.io/1l29"
   "abs-logic.patch::http://ix.io/1l0D"
   "abs.abort-on-error.patch::http://ix.io/1l0y"
 )
 sha256sums=(
   'SKIP'
   '918f828518854e944fbfade270a7d9f2969f663010315c1c0f0063842d068c8e'
-  'b778a8f800c52a662bca9c981371b01f430838da0d2380bf6f8fcfba7d04d124'
+  'ecdd938a3a0f36b85ab11a4c3d32df8572659dd259903c241ad444ef8a85c421'
   '33773ffaf79f0852ab80d477fab9939c15a5d648e6d5e94588e1ef5091485b08'
   'fd3f1beb524f3994a2086e4931fc6104c6a7640676ad9de2fea3796b2940c97d'
 )
