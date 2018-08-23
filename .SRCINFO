@@ -1,6 +1,6 @@
 pkgbase = qgroundcontrol
 	pkgdesc = Ground control for unmanned vehicles.
-	pkgver = 3.3.2
+	pkgver = 3.4.1
 	pkgrel = 1
 	url = http://qgroundcontrol.org/
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = qgroundcontrol
 	depends = phonon-qt4
 	depends = qt5-serialport
 	depends = qt5-quickcontrols
-	source = qgroundcontrol-3.3.2-1::https://github.com/mavlink/qgroundcontrol/releases/download/v3.3.2/qgroundcontrol.tar.bz2
-	sha256sums = fe02e01447a191968ddc822fcc9a451d7e3b1429538edca6fa36adeb186eb110
+	source = qgroundcontrol-3.4.1-1::https://github.com/mavlink/qgroundcontrol/releases/download/v3.4.1/qgroundcontrol.tar.bz2
+	sha256sums = 24d56ec916943c94439bbb55e74af72e352d21f174973ea78c07879a8750284f
 
 pkgname = qgroundcontrol
 
