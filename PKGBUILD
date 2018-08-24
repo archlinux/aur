@@ -2,7 +2,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=textext-git
-pkgver=20180206
+pkgver=0.8.1.1.g0164a57
+epoch=1
 pkgrel=1
 pkgdesc="An inkscape extension which lets you add LaTeX equations to your drawings"
 arch=('any')
@@ -23,7 +24,7 @@ prepare() {
 
 pkgver() {
   cd textext
-  echo $(git log -1 --format="%cd" --date=short | sed 's|-||g')
+  git describe --tags |tr - .
 }
 
 package() {

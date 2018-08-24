@@ -1,7 +1,8 @@
 pkgbase = textext-git
 	pkgdesc = An inkscape extension which lets you add LaTeX equations to your drawings
-	pkgver = 20180206
+	pkgver = 0.8.1.1.g0164a57
 	pkgrel = 1
+	epoch = 1
 	url = https://bitbucket.org/pitgarbe/textext
 	arch = any
 	license = custom:BSD
