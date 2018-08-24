@@ -7,6 +7,7 @@ pkgdesc="More convenient key definitions in emacs"
 arch=('any')
 url="https://github.com/noctuid/general.el"
 license=('GPL')
+depends=('emacs')
 makedepends=('git')
 provides=('emacs-general.el')
 source=("git+https://github.com/noctuid/general.el.git")

@@ -6,6 +6,7 @@ pkgbase = emacs-general.el-git
 	arch = any
 	license = GPL
 	makedepends = git
+	depends = emacs
 	provides = emacs-general.el
 	source = git+https://github.com/noctuid/general.el.git
 	md5sums = SKIP
