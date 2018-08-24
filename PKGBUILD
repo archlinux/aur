@@ -1,7 +1,7 @@
 # Maintainer: Jonas Frei <freijon@gmail.com>
 
 pkgname=memefs
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A filesystem for your memes"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('fuse2')
 makedepends=('cargo')
 source=("memefs-${pkgver}.tar.gz::https://github.com/svenstaro/memefs/archive/${pkgver}.tar.gz")
-sha512sums=('84b7ae2f898945738be8164f3a88852ec9373f3b1cd7ed259b2ec7d023d5e8fbff02c3137aaed1b967ec81ba89bfc44a6e52d562d5015d914023ed66ebe62a02')
+sha512sums=('c656d63e9e434ed5b12e0451441dfd6b35c691cbac67be80b348433ef418be891fa4136f9d61496494706c242bd242740175f24ca1e636b6cb8ff235b1ee5105')
 provides=('memefs')
 
 build() {
