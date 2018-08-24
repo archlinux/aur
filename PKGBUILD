@@ -17,11 +17,11 @@ build() {
   make
 }
 
+# Disabled because the check needs root permissions
 #check() {
 #  cd "$pkgname-$pkgver"
 #  make check
 #}
-# Disabled because the check needs root permission (I don't know how to fix this)
 
 package() {
   cd "$pkgname-$pkgver"
