@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-gst-plugins-bad-git
-pkgver=1.14.0.r190.3f2314a1a
+pkgver=1.14.0.r347.62a194c78
 pkgrel=1
 _gitname=gst-plugins-bad
 pkgdesc="GStreamer Multimedia Framework Bad Plugins (mingw-w64)"
@@ -8,7 +8,22 @@ arch=(any)
 url="http://gstreamer.freedesktop.org/"
 license=('LGPL')
 depends=('mingw-w64-gst-plugins-base-git' 'mingw-w64-orc')
-makedepends=('git' 'mingw-w64-meson' 'mingw-w64-openh264' 'mingw-w64-nettle' 'mingw-w64-opus' 'mingw-w64-bzip2' 'mingw-w64-libsrtp' 'mingw-w64-vo-aacenc' 'mingw-w64-libkate' 'mingw-w64-librsvg' 'mingw-w64-openjpeg2' 'mingw-w64-opencv' 'mingw-w64-libfdk-aac' 'mingw-w64-librtmp0' 'mingw-w64-libwebp' 'mingw-w64-srt')
+makedepends=('git' 'python' 'mingw-w64-meson' 'mingw-w64-openh264' 'mingw-w64-nettle' 'mingw-w64-opus' 'mingw-w64-bzip2' 'mingw-w64-libsrtp' 'mingw-w64-vo-aacenc' 'mingw-w64-libkate' 'mingw-w64-librsvg' 'mingw-w64-openjpeg2' 'mingw-w64-opencv' 'mingw-w64-libfdk-aac' 'mingw-w64-librtmp0' 'mingw-w64-libwebp' 'mingw-w64-srt' 'mingw-w64-curl' 'mingw-w64-bz2' 'mingw-w64-nettle')
+optdepends=(
+  "mingw-w64-openh264: H.264 video codec plugin"
+  "mingw-w64-opus: OPUS audio parser plugin"
+  "mingw-w64-libsrtp: Secure RTP codec plugin"
+  "mingw-w64-vo-aacenc: AAC audio encoder plugin"
+  "mingw-w64-libkate: Kate subtitle parser, tagger, and codec plugin"
+  "mingw-w64-librsvg: SVG overlayer and image decoder plugin"
+  "mingw-w64-openjpeg2: JPEG2000 image codec plugin"
+  "mingw-w64-opencv: OpenCV computer vision library support"
+  "mingw-w64-libfdk-aac: Fraunhofer AAC audio codec plugin"
+  "mingw-w64-librtmp0: RTMP video network source and sink plugin"
+  "mingw-w64-srt: Secure, Reliable, Transport client/server network source/sink plugin"
+  "mingw-w64-curl: cURL network source and sink plugin"
+  "mingw-w64-bz2: bz2 stream encoder and decoder plugin"
+)
 options=('!strip' '!buildflags' 'staticlibs')
 conflicts=('mingw-w64-gst-plugins-bad')
 
