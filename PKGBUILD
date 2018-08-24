@@ -1,15 +1,15 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
-_blender=$(expac -S %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
+_blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
 pkgname=blender-plugin-animation-nodes
 name=animation_nodes
 pkgver=2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Node based visual scripting system designed for motion graphics in Blender."
 arch=(i686 x86_64)
 url="https://github.com/JacquesLucke/animation_nodes"
 license=('GPL')
 depends=(python-numpy)
-makedepends=(cython expac)
+makedepends=(cython)
 source=("https://github.com/JacquesLucke/animation_nodes/archive/v2.0.tar.gz"
         "fix-colision-with-git-package.patch"
         )
