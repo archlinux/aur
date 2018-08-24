@@ -1,7 +1,7 @@
 pkgbase = libdiff
 	pkgdesc = C library to generate arbitrary sequence diffs
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kristapsdz/libdiff
 	arch = x86_64
 	license = custom:MIT
