@@ -1,0 +1,525 @@
+diff -Naur ninja-ide-2.3.orig/ninja_ide/core/settings.py ninja-ide-2.3/ninja_ide/core/settings.py
+--- ninja-ide-2.3.orig/ninja_ide/core/settings.py	2013-07-08 03:29:32.000000000 +0200
++++ ninja-ide-2.3/ninja_ide/core/settings.py	2017-02-08 00:07:13.137020930 +0100
+@@ -216,16 +216,12 @@
+ 
+ SHOW_PROJECT_EXPLORER = True
+ SHOW_SYMBOLS_LIST = True
+-SHOW_WEB_INSPECTOR = False
+ SHOW_ERRORS_LIST = False
+ SHOW_MIGRATION_LIST = True
+ 
+ #Symbols handler per language (file extension)
+ SYMBOLS_HANDLER = {}
+ 
+-#Backward compatibility with older Qt versions
+-WEBINSPECTOR_SUPPORTED = True
+-
+ 
+ ###############################################################################
+ # WORKSPACE
+@@ -381,7 +377,6 @@
+     global CENTER_ON_SCROLL
+     global SHOW_PROJECT_EXPLORER
+     global SHOW_SYMBOLS_LIST
+-    global SHOW_WEB_INSPECTOR
+     global SHOW_ERRORS_LIST
+     global SHOW_MIGRATION_LIST
+     global BOOKMARKS
+@@ -523,8 +518,6 @@
+         'preferences/interface/showProjectExplorer', True, type=bool)
+     SHOW_SYMBOLS_LIST = qsettings.value(
+         'preferences/interface/showSymbolsList', True, type=bool)
+-    SHOW_WEB_INSPECTOR = qsettings.value(
+-        'preferences/interface/showWebInspector', False, type=bool)
+     SHOW_ERRORS_LIST = qsettings.value(
+         'preferences/interface/showErrorsList', False, type=bool)
+     SHOW_MIGRATION_LIST = qsettings.value(
+diff -Naur ninja-ide-2.3.orig/ninja_ide/gui/actions.py ninja-ide-2.3/ninja_ide/gui/actions.py
+--- ninja-ide-2.3.orig/ninja_ide/gui/actions.py	2013-07-08 03:29:32.000000000 +0200
++++ ninja-ide-2.3/ninja_ide/gui/actions.py	2017-02-08 00:17:11.134743269 +0100
+@@ -127,7 +127,6 @@
+         self.shortFindPrevious = QShortcut(short("Find-previous"), self.ide)
+         self.shortFindReplace = QShortcut(short("Find-replace"), self.ide)
+         self.shortFindWithWord = QShortcut(short("Find-with-word"), self.ide)
+-        self.shortHelp = QShortcut(short("Help"), self.ide)
+         self.shortSplitHorizontal = QShortcut(short("Split-horizontal"),
+             self.ide)
+         self.shortSplitVertical = QShortcut(short("Split-vertical"), self.ide)
+@@ -236,8 +235,6 @@
+             self.editor_comment)
+         self.connect(self.shortUncomment, SIGNAL("activated()"),
+             self.editor_uncomment)
+-        self.connect(self.shortHelp, SIGNAL("activated()"),
+-            self.ide.mainContainer.show_python_doc)
+         self.connect(self.shortImport, SIGNAL("activated()"),
+             self.import_from_everywhere)
+         self.connect(self.shortFindInFiles, SIGNAL("activated()"),
+@@ -349,7 +346,6 @@
+         self.shortFindPrevious.setKey(short("Find-previous"))
+         self.shortFindReplace.setKey(short("Find-replace"))
+         self.shortFindWithWord.setKey(short("Find-with-word"))
+-        self.shortHelp.setKey(short("Help"))
+         self.shortSplitHorizontal.setKey(short("Split-horizontal"))
+         self.shortSplitVertical.setKey(short("Split-vertical"))
+         self.shortFollowMode.setKey(short("Follow-mode"))
+@@ -591,8 +587,6 @@
+             #TODO: Remove the IF statment with polymorphism using Handler
+             if ext == 'py':
+                 self.ide.misc.run_application(editorWidget.ID)
+-            elif ext == 'html':
+-                self.ide.misc.render_web_page(editorWidget.ID)
+ 
+     def execute_project(self):
+         """Execute the project marked as Main Project."""
+diff -Naur ninja-ide-2.3.orig/ninja_ide/gui/dialogs/preferences.py ninja-ide-2.3/ninja_ide/gui/dialogs/preferences.py
+--- ninja-ide-2.3.orig/ninja_ide/gui/dialogs/preferences.py	2013-07-08 03:29:32.000000000 +0200
++++ ninja-ide-2.3/ninja_ide/gui/dialogs/preferences.py	2017-02-08 00:48:08.494419677 +0100
+@@ -451,14 +451,12 @@
+         self._checkProjectExplorer = QCheckBox(
+             self.tr("Show Project Explorer."))
+         self._checkSymbols = QCheckBox(self.tr("Show Symbols List."))
+-        self._checkWebInspetor = QCheckBox(self.tr("Show Web Inspector."))
+         self._checkFileErrors = QCheckBox(self.tr("Show File Errors."))
+         self._checkMigrationTips = QCheckBox(self.tr("Show Migration Tips."))
+         self._checkStatusBarNotifications = QCheckBox(
+             self.tr("Show Status Bar Notifications."))
+         vboxExplorer.addWidget(self._checkProjectExplorer)
+         vboxExplorer.addWidget(self._checkSymbols)
+-        vboxExplorer.addWidget(self._checkWebInspetor)
+         vboxExplorer.addWidget(self._checkFileErrors)
+         vboxExplorer.addWidget(self._checkMigrationTips)
+         vboxExplorer.addWidget(self._checkStatusBarNotifications)
+@@ -529,7 +527,6 @@
+         self._checkProjectExplorer.setChecked(
+             settings.SHOW_PROJECT_EXPLORER)
+         self._checkSymbols.setChecked(settings.SHOW_SYMBOLS_LIST)
+-        self._checkWebInspetor.setChecked(settings.SHOW_WEB_INSPECTOR)
+         self._checkFileErrors.setChecked(settings.SHOW_ERRORS_LIST)
+         self._checkMigrationTips.setChecked(settings.SHOW_MIGRATION_LIST)
+         self._checkStatusBarNotifications.setChecked(
+@@ -704,7 +701,7 @@
+         qsettings.beginGroup('interface')
+         previous_state = (settings.SHOW_PROJECT_EXPLORER or
+             settings.SHOW_SYMBOLS_LIST or settings.SHOW_MIGRATION_LIST or
+-            settings.SHOW_ERRORS_LIST or settings.SHOW_WEB_INSPECTOR)
++            settings.SHOW_ERRORS_LIST)
+         qsettings.setValue('showProjectExplorer',
+             self._checkProjectExplorer.isChecked())
+         settings.SHOW_PROJECT_EXPLORER = self._checkProjectExplorer.isChecked()
+@@ -718,13 +715,6 @@
+             explorer_container.ExplorerContainer().add_tab_symbols()
+         else:
+             explorer_container.ExplorerContainer().remove_tab_symbols()
+-        qsettings.setValue('showWebInspector',
+-            self._checkWebInspetor.isChecked())
+-        settings.SHOW_WEB_INSPECTOR = self._checkWebInspetor.isChecked()
+-        if settings.SHOW_WEB_INSPECTOR:
+-            explorer_container.ExplorerContainer().add_tab_inspector()
+-        else:
+-            explorer_container.ExplorerContainer().remove_tab_inspector()
+         qsettings.setValue('showErrorsList',
+             self._checkFileErrors.isChecked())
+         settings.SHOW_ERRORS_LIST = self._checkFileErrors.isChecked()
+@@ -757,7 +747,7 @@
+         actions.Actions().reload_toolbar()
+         end_state = (settings.SHOW_PROJECT_EXPLORER or
+             settings.SHOW_SYMBOLS_LIST or settings.SHOW_MIGRATION_LIST or
+-            settings.SHOW_ERRORS_LIST or settings.SHOW_WEB_INSPECTOR)
++            settings.SHOW_ERRORS_LIST)
+         if previous_state != end_state:
+             actions.Actions().view_explorer_visibility()
+ 
+diff -Naur ninja-ide-2.3.orig/ninja_ide/gui/explorer/explorer_container.py ninja-ide-2.3/ninja_ide/gui/explorer/explorer_container.py
+--- ninja-ide-2.3.orig/ninja_ide/gui/explorer/explorer_container.py	2013-07-08 03:29:32.000000000 +0200
++++ ninja-ide-2.3/ninja_ide/gui/explorer/explorer_container.py	2017-02-08 00:03:52.891139633 +0100
+@@ -42,12 +42,6 @@
+ from ninja_ide.gui.dialogs import wizard_new_project
+ from ninja_ide.tools import json_manager
+ from ninja_ide.tools import ui_tools
+-
+-try:
+-    from PyQt4.QtWebKit import QWebInspector
+-except:
+-    settings.WEBINSPECTOR_SUPPORTED = False
+-
+ from ninja_ide.tools.logger import NinjaLogger
+ 
+ logger = NinjaLogger('ninja_ide.gui.explorer.explorer_container')
+@@ -90,9 +84,6 @@
+         self._treeSymbols = None
+         if settings.SHOW_SYMBOLS_LIST:
+             self.add_tab_symbols()
+-        self._inspector = None
+-        if settings.SHOW_WEB_INSPECTOR and settings.WEBINSPECTOR_SUPPORTED:
+-            self.add_tab_inspector()
+         self._listErrors = None
+         if settings.SHOW_ERRORS_LIST:
+             self.add_tab_errors()
+@@ -164,17 +155,6 @@
+         if self._treeSymbols is not None:
+             self._treeSymbols.select_current_item(line, col)
+ 
+-    def add_tab_inspector(self):
+-        if not settings.WEBINSPECTOR_SUPPORTED:
+-            QMessageBox.information(self,
+-                self.tr("Web Inspector not Supported"),
+-                self.tr("Your Qt version doesn't support the Web Inspector"))
+-        if not self._inspector:
+-            self._inspector = WebInspector(self)
+-            self.addTab(self._inspector, self.tr("Web Inspector"))
+-            self.connect(self._inspector.btnDock, SIGNAL("clicked()"),
+-                         self._dock_inspector)
+-
+     def add_tab_errors(self):
+         if not self._listErrors:
+             self._listErrors = errors_lists.ErrorsWidget()
+@@ -204,21 +184,6 @@
+             self.removeTab(self.indexOf(self._treeSymbols))
+             self._treeSymbols = None
+ 
+-    def remove_tab_inspector(self):
+-        if self._inspector:
+-            self.removeTab(self.indexOf(self._inspector))
+-            self._inspector = None
+-
+-    def _dock_inspector(self):
+-        if self._inspector.parent():
+-            self._inspector.btnDock.setText(self.tr("Dock"))
+-            self._inspector.setParent(None)
+-            self._inspector.resize(500, 500)
+-            self._inspector.show()
+-        else:
+-            self.addTab(self._inspector, self.tr("Web Inspector"))
+-            self._inspector.btnDock.setText(self.tr("Undock"))
+-
+     def add_tab(self, widget, name, icon):
+         self.addTab(widget, QIcon(icon), name)
+ 
+@@ -236,20 +201,6 @@
+         if self._treeSymbols:
+             self.setCurrentWidget(self._treeSymbols)
+ 
+-    def show_web_inspector(self):
+-        if self._inspector:
+-            self.setCurrentWidget(self._inspector)
+-
+-    def refresh_inspector(self):
+-        if self._inspector:
+-            self._inspector._webInspector.hide()
+-            self._inspector._webInspector.show()
+-
+-    def set_inspection_page(self, page):
+-        if self._inspector:
+-            self._inspector._webInspector.setPage(page)
+-            self._inspector._webInspector.setVisible(True)
+-
+     def open_project_folder(self, folderName='', notIDEStart=True):
+         if not self._treeProjects and notIDEStart:
+             QMessageBox.information(self, self.tr("Projects Disabled"),
+@@ -428,14 +379,3 @@
+             self._listErrors.clear()
+         if self._listMigration:
+             self._listMigration.clear()
+-
+-
+-class WebInspector(QWidget):
+-
+-    def __init__(self, parent):
+-        QWidget.__init__(self, parent)
+-        vbox = QVBoxLayout(self)
+-        self._webInspector = QWebInspector(self)
+-        vbox.addWidget(self._webInspector)
+-        self.btnDock = QPushButton(self.tr("Undock"))
+-        vbox.addWidget(self.btnDock)
+diff -Naur ninja-ide-2.3.orig/ninja_ide/gui/main_panel/browser_widget.py ninja-ide-2.3/ninja_ide/gui/main_panel/browser_widget.py
+--- ninja-ide-2.3.orig/ninja_ide/gui/main_panel/browser_widget.py	2013-07-08 03:29:32.000000000 +0200
++++ ninja-ide-2.3/ninja_ide/gui/main_panel/browser_widget.py	1970-01-01 01:00:00.000000000 +0100
+@@ -1,77 +0,0 @@
+-# -*- coding: utf-8 -*-
+-#
+-# This file is part of NINJA-IDE (http://ninja-ide.org).
+-#
+-# NINJA-IDE is free software; you can redistribute it and/or modify
+-# it under the terms of the GNU General Public License as published by
+-# the Free Software Foundation; either version 3 of the License, or
+-# any later version.
+-#
+-# NINJA-IDE is distributed in the hope that it will be useful,
+-# but WITHOUT ANY WARRANTY; without even the implied warranty of
+-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-# GNU General Public License for more details.
+-#
+-# You should have received a copy of the GNU General Public License
+-# along with NINJA-IDE; If not, see <http://www.gnu.org/licenses/>.
+-from __future__ import absolute_import
+-from __future__ import unicode_literals
+-
+-import time
+-
+-from PyQt4.QtGui import QWidget
+-from PyQt4.QtGui import QVBoxLayout
+-from PyQt4.QtCore import Qt
+-from PyQt4.QtCore import QUrl
+-from PyQt4.QtCore import SIGNAL
+-from PyQt4.QtWebKit import QWebView
+-
+-from ninja_ide.core import file_manager
+-from ninja_ide.gui.main_panel import itab_item
+-
+-
+-class BrowserWidget(QWidget, itab_item.ITabItem):
+-
+-###############################################################################
+-# RecentProjectItem SIGNALS
+-###############################################################################
+-    """
+-    openProject(QString)
+-    openPreferences()
+-    dontOpenStartPage()
+-    """
+-###############################################################################
+-
+-    def __init__(self, url, process=None, parent=None):
+-        QWidget.__init__(self, parent)
+-        itab_item.ITabItem.__init__(self)
+-        self._id = url
+-        self._process = process
+-        vbox = QVBoxLayout(self)
+-        #Web Frame
+-        self.webFrame = QWebView(self)
+-        self.webFrame.setAcceptDrops(False)
+-
+-        self.webFrame.load(QUrl(url))
+-
+-        vbox.addWidget(self.webFrame)
+-
+-        if process is not None:
+-            time.sleep(0.5)
+-            self.webFrame.load(QUrl(url))
+-
+-        self.webFrame.page().currentFrame().setScrollBarPolicy(
+-            Qt.Vertical, Qt.ScrollBarAsNeeded)
+-        self.webFrame.page().currentFrame().setScrollBarPolicy(
+-            Qt.Horizontal, Qt.ScrollBarAsNeeded)
+-
+-    def start_page_operations(self, url):
+-        opt = file_manager.get_basename(url.toString())
+-        self.emit(SIGNAL(opt))
+-
+-    def shutdown_pydoc(self):
+-        if self._process is not None:
+-            self._process.kill()
+-
+-    def find_match(self, word, back=False, sensitive=False, whole=False):
+-        self.webFrame.page().findText(word)
+\ Nincs új sor a fájl végén
+diff -Naur ninja-ide-2.3.orig/ninja_ide/gui/main_panel/main_container.py ninja-ide-2.3/ninja_ide/gui/main_panel/main_container.py
+--- ninja-ide-2.3.orig/ninja_ide/gui/main_panel/main_container.py	2013-07-08 03:29:32.000000000 +0200
++++ ninja-ide-2.3/ninja_ide/gui/main_panel/main_container.py	2017-02-08 00:19:23.452015487 +0100
+@@ -37,7 +37,6 @@
+ from ninja_ide.gui.editor import editor
+ from ninja_ide.gui.editor import highlighter
+ from ninja_ide.gui.editor import helpers
+-from ninja_ide.gui.main_panel import browser_widget
+ from ninja_ide.gui.main_panel import start_page
+ from ninja_ide.gui.main_panel import image_viewer
+ from ninja_ide.tools import runner
+@@ -776,16 +775,6 @@
+         else:
+             self.move_to_open("Start Page")
+ 
+-    def show_python_doc(self):
+-        if sys.platform == 'win32':
+-            self.docPage = browser_widget.BrowserWidget(
+-                'http://docs.python.org/')
+-            self.add_tab(self.docPage, self.tr("Python Documentation"))
+-        else:
+-            process = runner.start_pydoc()
+-            self.docPage = browser_widget.BrowserWidget(process[1], process[0])
+-            self.add_tab(self.docPage, self.tr("Python Documentation"))
+-
+     def editor_jump_to_line(self, lineno=None):
+         """Jump to line *lineno* if it is not None
+         otherwise ask to the user the line number to jump
+diff -Naur ninja-ide-2.3.orig/ninja_ide/gui/main_panel/tab_widget.py ninja-ide-2.3/ninja_ide/gui/main_panel/tab_widget.py
+--- ninja-ide-2.3.orig/ninja_ide/gui/main_panel/tab_widget.py	2013-07-08 03:29:32.000000000 +0200
++++ ninja-ide-2.3/ninja_ide/gui/main_panel/tab_widget.py	2017-02-08 00:20:03.259867889 +0100
+@@ -37,7 +37,6 @@
+                                                                 DELETED
+ from ninja_ide.core.filesystem_notifications import NinjaFileSystemWatcher
+ from ninja_ide.gui.editor import editor
+-from ninja_ide.gui.main_panel import browser_widget
+ 
+ from ninja_ide.tools.logger import NinjaLogger
+ 
+@@ -295,9 +294,7 @@
+                     self.emit(SIGNAL("saveActualEditor()"))
+                     if widget.textModified:
+                         return
+-            if type(widget) == browser_widget.BrowserWidget:
+-                widget.shutdown_pydoc()
+-            elif type(widget) is editor.Editor and widget.ID:
++            if type(widget) is editor.Editor and widget.ID:
+                 self._add_to_last_opened(widget.ID)
+                 self._parent.remove_standalone_watcher(widget.ID)
+                 widget.completer.cc.unload_module()
+diff -Naur ninja-ide-2.3.orig/ninja_ide/gui/menus/menu_about.py ninja-ide-2.3/ninja_ide/gui/menus/menu_about.py
+--- ninja-ide-2.3.orig/ninja_ide/gui/menus/menu_about.py	2013-07-08 03:29:32.000000000 +0200
++++ ninja-ide-2.3/ninja_ide/gui/menus/menu_about.py	2017-02-08 00:42:45.458550764 +0100
+@@ -25,7 +25,6 @@
+ 
+ from ninja_ide import resources
+ from ninja_ide.gui.main_panel import main_container
+-from ninja_ide.gui.main_panel import browser_widget
+ from ninja_ide.gui.dialogs import about_ninja
+ 
+ 
+@@ -35,12 +34,8 @@
+         QObject.__init__(self)
+ 
+         startPageAction = menuAbout.addAction(self.tr("Show Start Page"))
+-        helpAction = menuAbout.addAction(self.tr("Python Help (%s)") %
+-            resources.get_shortcut("Help").toString(QKeySequence.NativeText))
+         menuAbout.addSeparator()
+         reportBugAction = menuAbout.addAction(self.tr("Report Bugs!"))
+-        pluginsDocAction = menuAbout.addAction(
+-                                        self.tr("Plugins Documentation"))
+         menuAbout.addSeparator()
+ 
+         aboutNinjaAction = menuAbout.addAction(self.tr("About NINJA-IDE"))
+@@ -54,22 +49,12 @@
+             self.show_report_bugs)
+         self.connect(aboutQtAction, SIGNAL("triggered()"),
+                             self._show_about_qt)
+-        self.connect(helpAction, SIGNAL("triggered()"),
+-            main_container.MainContainer().show_python_doc)
+         self.connect(aboutNinjaAction, SIGNAL("triggered()"),
+                             self._show_about_ninja)
+-        self.connect(pluginsDocAction, SIGNAL("triggered()"),
+-            self.show_plugins_doc)
+ 
+     def show_report_bugs(self):
+         webbrowser.open(resources.BUGS_PAGE)
+ 
+-    def show_plugins_doc(self):
+-        bugsPage = browser_widget.BrowserWidget(resources.PLUGINS_DOC,
+-            parent=main_container.MainContainer())
+-        main_container.MainContainer().add_tab(
+-            bugsPage, self.tr("How to Write NINJA-IDE plugins"))
+-
+     def _show_about_qt(self):
+         QMessageBox.aboutQt(main_container.MainContainer(),
+             self.tr("About Qt"))
+diff -Naur ninja-ide-2.3.orig/ninja_ide/gui/misc/misc_container.py ninja-ide-2.3/ninja_ide/gui/misc/misc_container.py
+--- ninja-ide-2.3.orig/ninja_ide/gui/misc/misc_container.py	2013-07-08 03:29:32.000000000 +0200
++++ ninja-ide-2.3/ninja_ide/gui/misc/misc_container.py	2017-02-08 00:12:41.383395144 +0100
+@@ -27,14 +27,12 @@
+ from PyQt4.QtGui import QSpacerItem
+ from PyQt4.QtGui import QSizePolicy
+ from PyQt4.QtCore import SIGNAL
+-from PyQt4.QtWebKit import QWebPage
+ 
+ from ninja_ide import resources
+ from ninja_ide .core import settings
+ from ninja_ide.gui.explorer import explorer_container
+ from ninja_ide.gui.misc import console_widget
+ from ninja_ide.gui.misc import run_widget
+-from ninja_ide.gui.misc import web_render
+ from ninja_ide.gui.misc import find_in_files
+ from ninja_ide.gui.misc import results
+ from ninja_ide.tools import ui_tools
+@@ -74,9 +72,6 @@
+         self._runWidget = run_widget.RunWidget()
+         self.stack.addWidget(self._runWidget)
+ 
+-        self._web = web_render.WebRender()
+-        self.stack.addWidget(self._web)
+-
+         self._findInFilesWidget = find_in_files.FindInFilesWidget(
+             self.parent())
+         self.stack.addWidget(self._findInFilesWidget)
+@@ -156,17 +151,6 @@
+     def kill_application(self):
+         self._runWidget.kill_process()
+ 
+-    def render_web_page(self, url):
+-        self._item_changed(2)
+-        self.show()
+-        self._web.render_page(url)
+-        if settings.SHOW_WEB_INSPECTOR:
+-            explorer_container.ExplorerContainer().set_inspection_page(
+-            self._web.webFrame.page())
+-            self._web.webFrame.triggerPageAction(
+-                QWebPage.InspectElement, True)
+-            explorer_container.ExplorerContainer().refresh_inspector()
+-
+     def add_to_stack(self, widget, icon_path, description):
+         """
+         Add a widget to the container and an button(with icon))to the toolbar
+diff -Naur ninja-ide-2.3.orig/ninja_ide/gui/misc/web_render.py ninja-ide-2.3/ninja_ide/gui/misc/web_render.py
+--- ninja-ide-2.3.orig/ninja_ide/gui/misc/web_render.py	2013-07-08 03:29:32.000000000 +0200
++++ ninja-ide-2.3/ninja_ide/gui/misc/web_render.py	1970-01-01 01:00:00.000000000 +0100
+@@ -1,43 +0,0 @@
+-# -*- coding: utf-8 -*-
+-#
+-# This file is part of NINJA-IDE (http://ninja-ide.org).
+-#
+-# NINJA-IDE is free software; you can redistribute it and/or modify
+-# it under the terms of the GNU General Public License as published by
+-# the Free Software Foundation; either version 3 of the License, or
+-# any later version.
+-#
+-# NINJA-IDE is distributed in the hope that it will be useful,
+-# but WITHOUT ANY WARRANTY; without even the implied warranty of
+-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-# GNU General Public License for more details.
+-#
+-# You should have received a copy of the GNU General Public License
+-# along with NINJA-IDE; If not, see <http://www.gnu.org/licenses/>.
+-from __future__ import absolute_import
+-
+-from PyQt4.QtGui import QWidget
+-from PyQt4.QtGui import QVBoxLayout
+-from PyQt4.QtWebKit import QWebView
+-from PyQt4.QtCore import QUrl
+-from PyQt4.QtWebKit import QWebSettings
+-
+-
+-class WebRender(QWidget):
+-
+-    def __init__(self):
+-        QWidget.__init__(self)
+-
+-        vbox = QVBoxLayout(self)
+-        #Web Frame
+-        self.webFrame = QWebView()
+-        QWebSettings.globalSettings().setAttribute(
+-            QWebSettings.DeveloperExtrasEnabled, True)
+-        vbox.addWidget(self.webFrame)
+-
+-    def render_page(self, url):
+-        self.webFrame.load(QUrl('file:///' + url))
+-
+-    def render_from_html(self, html, url=None):
+-        url = url and QUrl(url) or ""
+-        self.webFrame.setHtml(html, url)
+diff -Naur ninja-ide-2.3.orig/ninja_translate ninja-ide-2.3/ninja_translate
+--- ninja-ide-2.3.orig/ninja_translate	2013-07-08 03:29:32.000000000 +0200
++++ ninja-ide-2.3/ninja_translate	2017-02-08 00:20:31.334037628 +0100
+@@ -38,7 +38,6 @@
+     ninja_ide/gui/main_panel/itab_item.py \
+     ninja_ide/gui/main_panel/image_viewer.py \
+     ninja_ide/gui/main_panel/class_diagram.py \
+-    ninja_ide/gui/main_panel/browser_widget.py \
+     ninja_ide/gui/main_panel/main_container.py \
+     ninja_ide/gui/menus/menu_view.py \
+     ninja_ide/gui/menus/menu_source.py \
+@@ -47,7 +46,6 @@
+     ninja_ide/gui/menus/menu_file.py \
+     ninja_ide/gui/menus/menu_edit.py \
+     ninja_ide/gui/menus/menu_about.py \
+-    ninja_ide/gui/misc/web_render.py \
+     ninja_ide/gui/misc/run_widget.py \
+     ninja_ide/gui/misc/shortcut_manager.py \
+     ninja_ide/gui/misc/results.py \
