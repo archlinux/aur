@@ -1,0 +1,23 @@
+pkgbase = python2-pyqwt
+	pkgdesc = Python bindings for Qt Widgets for Technical Applications
+	pkgver = 5.2.0
+	pkgrel = 3
+	url = http://pyqwt.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	depends = python2-pyqt
+	depends = python2-numpy
+	depends = qwt5
+	depends = sip
+	provides = pyqwt
+	conflicts = pyqwt
+	options = !makeflags
+	source = http://downloads.sourceforge.net/sourceforge/pyqwt/PyQwt-5.2.0.tar.gz
+	source = qplt.py-r1.21.patch
+	source = pyqtconfig.py
+	md5sums = fcd6c6029090d473dcc9df497516eae7
+	md5sums = 30011f9139ad12ddbeac79c6a45d4b43
+	md5sums = 954bc3020a8b5b164b0f49f2ef1e4a6c
+
+pkgname = python2-pyqwt
+
