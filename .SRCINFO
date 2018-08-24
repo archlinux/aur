@@ -1,25 +1,23 @@
 pkgbase = github-desktop
 	pkgdesc = GUI for managing Git and GitHub.
-	pkgver = 1.3.1
+	pkgver = 1.3.4
 	pkgrel = 1
 	url = https://desktop.github.com
 	arch = x86_64
 	license = MIT
-	makedepends = libcurl-openssl-1.0
 	makedepends = xorg-server-xvfb
+	makedepends = nodejs
+	makedepends = nvm
 	makedepends = yarn
 	makedepends = python2
-    makedepends = nvm
 	depends = gnome-keyring
 	depends = git
-	depends = electron
-	depends = nodejs
-	depends = libcurl-compat
 	depends = libcurl-gnutls
 	optdepends = hub: CLI interface for GitHub.
-	source = git+https://github.com/desktop/desktop.git#tag=release-1.3.1
+	source = git+https://github.com/desktop/desktop.git#tag=release-1.3.4
 	source = github-desktop.desktop
 	sha256sums = SKIP
 	sha256sums = be057e4a392e64760f7a40203ac886b7cf5551de254ad55c706376dca8aa4341
 
 pkgname = github-desktop
+
