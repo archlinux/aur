@@ -1,13 +1,13 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
 _name=blenderseed
-_blender=$(expac -S %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
+_blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
 #version=1.3.0
 #fragment="#commit=7e49329 "
 _files=(__init__.py operators.py panel.py preferences.py utils.py)
 pkgname=blender-plugin-${_name}-git
 pkgver=0.8.1.beta.r6.gdc2c536
-pkgrel=1
+pkgrel=2
 pkgdesc="appleseed Blender integrator"
 arch=('any')
 url="https://github.com/appleseedhq/blenderseed"

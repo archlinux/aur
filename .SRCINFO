@@ -1,7 +1,7 @@
 pkgbase = blender-plugin-blenderseed-git
 	pkgdesc = appleseed Blender integrator
 	pkgver = 0.8.1.beta.r6.gdc2c536
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/appleseedhq/blenderseed
 	arch = any
 	license = MIT
