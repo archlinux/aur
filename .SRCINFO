@@ -1,12 +1,11 @@
 pkgbase = indigo-renderer
 	pkgdesc = Physically-based unbiased render engine
 	pkgver = 4.0.66
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.indigorenderer.com/
 	install = indigo.install
 	arch = x86_64
 	license = custom
-	makedepends = expac
 	depends = libpng12
 	options = docs
 	backup = opt/indigo/inifile.xml
@@ -21,7 +20,7 @@ pkgbase = indigo-renderer
 	md5sums = 19fde0fa8b9151f7d2aa56710a1296d6
 	md5sums = d45b9ffc8d51e949ab73abcb598acb28
 	md5sums = 169f8b7bcb0174de0a9c25a0f340b661
-	md5sums = 8d5b9e67a3e035882de9fce285ff50b2
+	md5sums = d296557294b088b218598a8da4595e06
 
 pkgname = indigo-renderer
 

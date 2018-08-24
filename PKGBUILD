@@ -7,15 +7,14 @@ pkgver=4.0.66
 _package_src_dir=IndigoRenderer_x64_v${pkgver}
 _pkgver_blendigo=4.0.16-892ac6c
 #_blender=$(blender -v | head -n1 | cut -f2 -d ' ')
-#_blender=$(expac "%v" -S blender|egrep -o [[:alnum:]]{1}.[[:alnum:]]{2})
-_blender=$(expac -S %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
-pkgrel=5
+#_blender=$(expac -S "%v" blender|egrep -o [[:alnum:]]{1}.[[:alnum:]]{2})
+_blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
+pkgrel=6
 pkgdesc="Physically-based unbiased render engine"
 arch=('x86_64')
 url="http://www.indigorenderer.com/"
 license=('custom')
 depends=('libpng12')
-makedepends=('expac')
 backup=('opt/indigo/inifile.xml')
 options=(docs)
 install=indigo.install
