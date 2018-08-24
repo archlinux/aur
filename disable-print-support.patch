@@ -1,0 +1,373 @@
+diff -Naur krecipes-2.1.0.orig/src/actionshandlers/recipeactionshandler.cpp krecipes-2.1.0/src/actionshandlers/recipeactionshandler.cpp
+--- krecipes-2.1.0.orig/src/actionshandlers/recipeactionshandler.cpp	2015-03-20 00:50:18.000000000 +0100
++++ krecipes-2.1.0/src/actionshandlers/recipeactionshandler.cpp	2017-02-07 04:35:34.049493887 +0100
+@@ -25,12 +25,6 @@
+ #include <kmenu.h>
+ #include <KAction>
+ #include <kprogressdialog.h>
+-#include <QWebFrame>
+-#include <KWebPage>
+-#include <QPrintPreviewDialog>
+-#include <QPrinter>
+-#include <KTempDir>
+-#include <KStandardDirs>
+ 
+ #include "dialogs/selectcategoriesdialog.h"
+ 
+@@ -268,32 +262,6 @@
+ 	}
+ }
+ 
+-void RecipeActionsHandler::recipePrint()
+-{
+-	QList<Q3ListViewItem *> items = parentListView->selectedItems();
+-	if ( !items.isEmpty() ) {
+-		QList<int> ids = recipeIDs( items );
+-		printRecipes( ids, database );
+-	}
+-	else //if nothing selected, print all visible recipes
+-	{
+-		QList<int> ids = getAllVisibleItems();
+-		if ( !ids.isEmpty() ) {
+-			switch ( KMessageBox::questionYesNo( kapp->mainWidget(),
+-			i18n("No recipes are currently selected.\n"
+-			"Would you like to print all recipes in the current view?")) )
+-			{
+-			case KMessageBox::Yes:
+-				printRecipes( ids, database );
+-				break;
+-			default: break;
+-			}
+-		}
+-		else
+-			KMessageBox::sorry( kapp->mainWidget(), i18n("No recipes selected."), i18n("Print") );
+-	}
+-}
+-
+ void RecipeActionsHandler::removeFromCategory()
+ {
+ 	QList<Q3ListViewItem *> items = parentListView->selectedItems();
+@@ -446,49 +414,6 @@
+ 	delete fd;
+ }
+ 
+-void RecipeActionsHandler::printRecipes( const QList<int> &ids, RecipeDB *database )
+-{
+-	//Create the temporary directory.
+-	m_tempdir = new KTempDir(KStandardDirs::locateLocal("tmp", "krecipes-data-print"));
+-	QString tmp_filename = m_tempdir->name() + "krecipes_recipe_view.html";
+-	//Export to HTML in the temporary directory.
+-	XSLTExporter html_generator( tmp_filename, "html" );
+-	KConfigGroup config(KGlobal::config(), "Page Setup" );
+-	QString styleFile = config.readEntry( "PrintLayout", KStandardDirs::locate( "appdata", "layouts/None.klo" ) );
+-	if ( !styleFile.isEmpty() && QFile::exists( styleFile ) )
+-		html_generator.setStyle( styleFile );
+-
+-	QString templateFile = config.readEntry( "PrintTemplate", KStandardDirs::locate( "appdata", "layouts/Default.xsl" ) );
+-	if ( !templateFile.isEmpty() && QFile::exists( templateFile ) )
+-		html_generator.setTemplate( templateFile );
+-	html_generator.exporter( ids, database );
+-	//Load the generated HTML. When loaded, RecipeActionsHandlerView::print(...) will be called.
+-	m_printPage = new KWebPage;
+-	connect(m_printPage, SIGNAL(loadFinished(bool)), SLOT(print(bool)));
+-	m_printPage->mainFrame()->load( KUrl(tmp_filename) );
+-}
+-
+-void RecipeActionsHandler::print(bool ok)
+-{
+-	Q_UNUSED(ok)
+-	QPrinter printer;
+-	QPointer<QPrintPreviewDialog> previewdlg = new QPrintPreviewDialog(&printer);
+-	//Show the print preview dialog.
+-	connect(previewdlg, SIGNAL(paintRequested(QPrinter *)),
+-		m_printPage->mainFrame(), SLOT(print(QPrinter *)));
+-	previewdlg->exec();
+-	delete previewdlg;
+-	//Remove the temporary directory which stores the HTML and free memory.
+-	m_tempdir->unlink();
+-	delete m_tempdir;
+-	emit( printDone() );
+-}
+-
+-void RecipeActionsHandler::printDoneSlot()
+-{
+-	delete m_printPage;
+-}
+-
+ void RecipeActionsHandler::recipesToClipboard( const QList<int> &ids, RecipeDB *db )
+ {
+ 	KConfigGroup config = KGlobal::config()->group("Export");
+diff -Naur krecipes-2.1.0.orig/src/actionshandlers/recipeactionshandler.h krecipes-2.1.0/src/actionshandlers/recipeactionshandler.h
+--- krecipes-2.1.0.orig/src/actionshandlers/recipeactionshandler.h	2015-03-20 00:50:18.000000000 +0100
++++ krecipes-2.1.0/src/actionshandlers/recipeactionshandler.h	2017-02-07 04:36:27.502518327 +0100
+@@ -22,8 +22,6 @@
+ class KMenu;
+ class RecipeDB;
+ class KAction;
+-class KTempDir;
+-class KWebPage;
+ 
+ /** @brief A class that centralizes common actions for recipes such as saving and editing.
+   * 
+@@ -57,9 +55,6 @@
+ 	void recipeSelected( bool );
+ 	void recipeSelected( int id, int action );
+ 	void recipesSelected( const QList<int> &ids, int action );
+-	
+-	//For internal use only
+-	void printDone();
+ 
+ public slots:
+ 	void exec( ItemType type, const QPoint &p );
+@@ -82,12 +77,6 @@
+ 	  */
+ 	void recipeExport();
+ 
+-	/** Prints the recipe(s) currently selected in the list view, showing a dialog to preview */
+-	void recipePrint();
+-	
+-	/** Prints the given recipes, showing a dialog to preview the result */
+-	void printRecipes( const QList<int> &ids, RecipeDB *db );
+-
+ 	/** Removes the recipe(s) currently selected in the list view from its current category */
+ 	void removeFromCategory();
+ 
+@@ -110,10 +99,6 @@
+ 
+ 	void selectionChangedSlot();
+ 
+-private slots:
+-	void print( bool ok );
+-	void printDoneSlot();
+-
+ private:
+ 	KMenu *kpop;
+ 	KMenu *catPop;
+@@ -126,9 +111,6 @@
+ 
+ 	QList<int> getAllVisibleItems();
+ 	QList<int> recipeIDs( const QList<Q3ListViewItem *> &items ) const;
+-
+-	KTempDir * m_tempdir;
+-	KWebPage * m_printPage;
+ };
+ 
+ #endif //RECIPEACTIONSHANDLER_H
+diff -Naur krecipes-2.1.0.orig/src/CMakeLists.txt krecipes-2.1.0/src/CMakeLists.txt
+--- krecipes-2.1.0.orig/src/CMakeLists.txt	2015-03-20 00:50:18.000000000 +0100
++++ krecipes-2.1.0/src/CMakeLists.txt	2017-02-07 04:46:04.978747428 +0100
+@@ -342,7 +342,7 @@
+    ${krecipesdialogs_SRCS}
+    ${krecipesactionshandlers_SRCS})
+ 
+-target_link_libraries(krecipes krecipescommon ${KDE4_KHTML_LIBS} ${KDE4_KDEUI_LIBS} ${KDE4_KDE3SUPPORT_LIBS} ${QT_QTSQL_LIBRARY} ${LIBXSLT_LIBRARIES} ${LIBXML2_LIBRARIES} ${QT_QTWEBKIT_LIBRARY} ${KDE4_KDEWEBKIT_LIBS})
++target_link_libraries(krecipes krecipescommon ${KDE4_KHTML_LIBS} ${KDE4_KDEUI_LIBS} ${KDE4_KDE3SUPPORT_LIBS} ${QT_QTSQL_LIBRARY} ${LIBXSLT_LIBRARIES} ${LIBXML2_LIBRARIES})
+ 
+ 
+ install(TARGETS krecipes ${INSTALL_TARGETS_DEFAULT_ARGS})
+diff -Naur krecipes-2.1.0.orig/src/dialogs/dietviewdialog.cpp krecipes-2.1.0/src/dialogs/dietviewdialog.cpp
+--- krecipes-2.1.0.orig/src/dialogs/dietviewdialog.cpp	2015-03-20 00:50:18.000000000 +0100
++++ krecipes-2.1.0/src/dialogs/dietviewdialog.cpp	2017-02-07 04:43:55.559593993 +0100
+@@ -27,8 +27,6 @@
+ 	setModal( false );
+ 	KVBox *page = new KVBox( this );
+ 	setMainWidget(page);
+-	setButtonText( KDialog::User1, KStandardGuiItem::print().text() );
+-	setButtonIcon( KDialog::User1, KIcon( "document-print" ) );
+ 
+ 	setButtonText( KDialog::User2, i18nc( "@action:button", "Create &Shopping List" ) );
+ 	setButtonIcon( KDialog::User2, KIcon( "view-pim-tasks" ) );
+@@ -42,7 +40,6 @@
+ 
+ 	connect ( this, SIGNAL( user2Clicked() ), this, SLOT( slotOk() ) );
+ 	connect ( this, SIGNAL( closeClicked() ), this, SLOT( close() ) );
+-	connect ( this, SIGNAL( user1Clicked() ), this, SLOT( print() ) );
+ 
+ 	// Show the diet
+ 	showDiet( recipeList, dayNumber, mealNumber, dishNumbers );
+@@ -130,11 +127,6 @@
+ 	dietView->end();
+ }
+ 
+-void DietViewDialog::print( void )
+-{
+-	dietView->view()->print();
+-}
+-
+ void DietViewDialog::slotOk( void )
+ {
+ 	emit signalOk();
+diff -Naur krecipes-2.1.0.orig/src/dialogs/dietviewdialog.h krecipes-2.1.0/src/dialogs/dietviewdialog.h
+--- krecipes-2.1.0.orig/src/dialogs/dietviewdialog.h	2015-03-20 00:50:18.000000000 +0100
++++ krecipes-2.1.0/src/dialogs/dietviewdialog.h	2017-02-07 04:44:09.153167219 +0100
+@@ -35,7 +35,6 @@
+ 	// Private methods
+ 	void showDiet( const RecipeList &recipeList, int dayNumber, int mealNumber, const QList <int> &dishNumbers );
+ private slots:
+-	void print( void );
+ 	void slotOk( void );
+ signals:
+ 	void signalOk( void );
+diff -Naur krecipes-2.1.0.orig/src/dialogs/shoppinglistviewdialog.cpp krecipes-2.1.0/src/dialogs/shoppinglistviewdialog.cpp
+--- krecipes-2.1.0.orig/src/dialogs/shoppinglistviewdialog.cpp	2015-03-20 00:50:18.000000000 +0100
++++ krecipes-2.1.0/src/dialogs/shoppinglistviewdialog.cpp	2017-02-07 04:44:32.020249405 +0100
+@@ -30,7 +30,6 @@
+ 	this->setCaption( i18nc( "@title:window", "Shopping List" ) );
+ 	this->setModal( true );
+ 	this->setButtons( KDialog::Close | KDialog::User1 );
+-	this->setButtonGuiItem( KDialog::User1 , KStandardGuiItem::print() );
+ 	this->setDefaultButton( KDialog::Close );
+ 	this->showButtonSeparator( false );
+ 	
+@@ -42,7 +41,6 @@
+ 
+ 	setInitialSize( QSize(350, 450) );
+ 
+-	connect ( this, SIGNAL( user1Clicked() ), this, SLOT( print() ) );
+ 	connect ( this, SIGNAL( closeClicked() ), this, SLOT( accept() ) );
+ 
+ 	//---------- Sort the list --------
+@@ -102,9 +100,4 @@
+ 
+ }
+ 
+-void ShoppingListViewDialog::print()
+-{
+-	shoppingListView->view() ->print();
+-}
+-
+ #include "shoppinglistviewdialog.moc"
+diff -Naur krecipes-2.1.0.orig/src/dialogs/shoppinglistviewdialog.h krecipes-2.1.0/src/dialogs/shoppinglistviewdialog.h
+--- krecipes-2.1.0.orig/src/dialogs/shoppinglistviewdialog.h	2015-03-20 00:50:18.000000000 +0100
++++ krecipes-2.1.0/src/dialogs/shoppinglistviewdialog.h	2017-02-07 04:43:22.252362998 +0100
+@@ -30,9 +30,6 @@
+ 	ShoppingListViewDialog( QWidget *parent, const IngredientList &ingredientList );
+ 	~ShoppingListViewDialog();
+ 
+-public slots:
+-	void print();
+-
+ private:
+ 
+ 	// Widgets
+diff -Naur krecipes-2.1.0.orig/src/krecipes.cpp krecipes-2.1.0/src/krecipes.cpp
+--- krecipes-2.1.0.orig/src/krecipes.cpp	2015-03-20 00:50:18.000000000 +0100
++++ krecipes-2.1.0/src/krecipes.cpp	2017-02-07 04:39:25.659516260 +0100
+@@ -134,7 +134,6 @@
+ 	switch ( panel ) {
+ 	case RecipeView: {
+ 			exportAction->setEnabled( show );
+-			printAction->setEnabled( show );
+ 			reloadAction->setEnabled( show );
+ 			copyToClipboardAction->setEnabled( show );
+ 			showRecipeAction->setEnabled( false );
+@@ -149,13 +148,11 @@
+ 			break;
+ 		}
+ 	case RecipeEdit: {
+-			printAction->setEnabled( show );
+ 			exportAction->setEnabled( false );
+ 			showRecipeAction->setEnabled( show );
+ 			break;
+ 		}
+ 	case SelectP: {
+-			printAction->setEnabled( show );
+ 			exportAction->setEnabled( show );
+ 			if (show)
+ 				m_view->selectPanel->haveSelectedItems();
+@@ -164,7 +161,6 @@
+ 			break;
+ 		}
+ 	case MatcherP: {
+-			printAction->setEnabled( show );
+ 			exportAction->setEnabled( show );
+ 			if (show) 
+ 				m_view->ingredientMatcherPanel->haveSelectedItems();
+@@ -187,8 +183,6 @@
+ void Krecipes::setupActions()
+ {
+ 
+-	printAction =  KStandardAction::print( this, SLOT( filePrint() ), actionCollection() );
+-
+ 	reloadAction = new KAction( this );
+ 	reloadAction->setText( i18nc("@action:inmenu Reload Recipe", "Reloa&d" ) );
+ 	reloadAction->setIcon( KIcon( "view-refresh" ) );
+@@ -412,7 +406,6 @@
+ 	updateActions( SelectP, true );
+ 	updateActions( RecipeView, false );
+ 	exportAction->setEnabled( true );
+-	printAction->setEnabled( true );
+ 
+ 	createGUI();
+ }
+@@ -490,11 +483,6 @@
+ 	m_view->exportToClipboard();
+ }
+ 
+-void Krecipes::filePrint()
+-{
+-	m_view->printRequested();
+-}
+-
+ void Krecipes::import()
+ {
+ 	QPointer<KFileDialog> file_dialog = new KFileDialog( KUrl(), QString(
+diff -Naur krecipes-2.1.0.orig/src/krecipes.h krecipes-2.1.0/src/krecipes.h
+--- krecipes-2.1.0.orig/src/krecipes.h	2015-03-20 00:50:18.000000000 +0100
++++ krecipes-2.1.0/src/krecipes.h	2017-02-07 04:40:25.833352673 +0100
+@@ -73,7 +73,6 @@
+ 	void fileSave();
+ 	void fileExport();
+ 	void fileToClipboard();
+-	void filePrint();
+ 	//void optionsShowToolbar();
+ 	void optionsShowStatusbar();
+ 	void optionsConfigureKeys();
+@@ -114,7 +113,6 @@
+ 	KAction *saveAction;
+ 	KAction *exportAction;
+ 	KAction *editAction;
+-	KAction *printAction;
+ 	KAction *reloadAction;
+ 	KAction *copyToClipboardAction;
+ 	KAction *converterAction;
+diff -Naur krecipes-2.1.0.orig/src/krecipesview.cpp krecipes-2.1.0/src/krecipesview.cpp
+--- krecipes-2.1.0.orig/src/krecipesview.cpp	2015-03-20 00:50:18.000000000 +0100
++++ krecipes-2.1.0/src/krecipesview.cpp	2017-02-07 04:38:06.279134978 +0100
+@@ -382,21 +382,6 @@
+ 	button8->setTitle( i18n( "Ingredient Matcher" ) );
+ }
+ 
+-void KrecipesView::printRequested()
+-{
+-	QWidget * vis_panel = rightPanel->visiblePanel();
+-	if ( vis_panel == viewPanel ) {
+-		m_actionshandler.printRecipes( viewPanel->currentRecipes(), database );
+-	}
+-	else if ( vis_panel == selectPanel ) {
+-		selectPanel->getActionsHandler()->recipePrint();
+-	}
+-	else if ( vis_panel == ingredientMatcherPanel ) {
+-		ingredientMatcherPanel->getActionsHandler()->recipePrint();
+-	}
+-
+-}
+-
+ void KrecipesView::cut()
+ {
+ 	QWidget * vis_panel = rightPanel->visiblePanel();
+diff -Naur krecipes-2.1.0.orig/src/krecipesview.h krecipes-2.1.0/src/krecipesview.h
+--- krecipes-2.1.0.orig/src/krecipesview.h	2015-03-20 00:50:18.000000000 +0100
++++ krecipes-2.1.0/src/krecipesview.h	2017-02-07 04:38:26.065864217 +0100
+@@ -88,11 +88,6 @@
+ 	virtual QString currentDatabase() const;
+ 	RecipeDB *database;
+ 
+-	/**
+-	 * Print this view to any medium -- paper or not
+-	 */
+-	void printRequested();
+-
+ 	virtual void show ( void ); //Needed to make sure that the raise() is done after the construction of all the widgets, otherwise childEvent in the PanelDeco is called only _after_ the raise(), and can't be shown.
+ 
+ signals:

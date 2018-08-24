@@ -1,0 +1,22 @@
+pkgbase = krecipes
+	pkgdesc = A tool designed to make organizing your personal recipes collection fast and easy
+	pkgver = 2.1.0
+	pkgrel = 5
+	url = http://extragear.kde.org/apps/krecipes/
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = docbook-xsl
+	depends = kdebase-runtime
+	optdepends = mariadb
+	optdepends = postgresql
+	source = http://download.kde.org/stable/krecipes/2.1.0/src/krecipes-2.1.0.tar.xz
+	source = krecipes-gcc6.patch::https://cgit.kde.org/krecipes.git/patch/?id=f6d4f709ec57835b3fa4a660239a07321c9d02ff
+	source = disable-print-support.patch
+	md5sums = 422ff3df8ab5aac56617d87942762e88
+	md5sums = 1d45e7057062d7fee915c616af22855f
+	md5sums = 8fe35c741681b22030fca2d2b7cc164e
+
+pkgname = krecipes
+
