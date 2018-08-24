@@ -1,0 +1,13 @@
+pkgbase = libdiff
+	pkgdesc = C library to generate arbitrary sequence diffs
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/kristapsdz/libdiff
+	arch = x86_64
+	license = custom:MIT
+	depends = zlib
+	source = libdiff-0.1.0.tar.gz::https://github.com/kristapsdz/libdiff/archive/VERSION_0_1_0.tar.gz
+	sha512sums = b5b49914ef7405b225c80a154edda23d2b0149b523449244b748c1f6565132128ff139ef193300b534e6838baeaff8e19ad36baf3f2e293d392ef7a1cd979ca5
+
+pkgname = libdiff
+
