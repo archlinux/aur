@@ -1,11 +1,11 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=nawk-git
-pkgver=r26.24e81c2
+pkgver=20180823.r9.0f4e1ba
 pkgrel=1
 epoch=
-pkgdesc="Brian Kernighan's Awk - With Fixes"
+pkgdesc='The version of awk described in "The AWK Programming Language".'
 arch=('i686' 'x86_64')
-url="https://github.com/arnoldrobbins/bwk-awk"
+url="https://github.com/onetrueawk/awk"
 license=('MIT')
 groups=()
 depends=(glibc)
@@ -27,7 +27,9 @@ sha256sums=('SKIP' '5f0e0e737626b5060559a1a97dfc191875d6b2f784aa4fe2256add03d38f
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.r%s.%s" "$(grep '*version' main.c | sed 's/.*version //;s/";//')" \
+                     "$(git rev-list --count HEAD)" \
+                     "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
