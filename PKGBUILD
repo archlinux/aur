@@ -1,13 +1,26 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-gst-plugins-good
 pkgver=1.14.2
-pkgrel=1
+pkgrel=2
 pkgdesc="GStreamer Multimedia Framework Good Plugins (mingw-w64)"
 arch=(any)
 url="http://gstreamer.freedesktop.org/"
 license=('LGPL')
-depends=('mingw-w64-gstreamer' 'mingw-w64-orc')
-makedepends=('mingw-w64-configure' 'mingw-w64-libsoup' 'mingw-w64-cairo' 'mingw-w64-gdk-pixbuf2' 'mingw-w64-libjpeg-turbo' 'mingw-w64-libpng' 'mingw-w64-libvpx' 'mingw-w64-bzip2' 'mingw-w64-speex' 'mingw-w64-flac' 'mingw-w64-wavpack' 'mingw-w64-mpg123' 'mingw-w64-lame')
+depends=('mingw-w64-gst-plugins-base' 'mingw-w64-orc')
+makedepends=('python' 'mingw-w64-configure' 'mingw-w64-libsoup' 'mingw-w64-cairo' 'mingw-w64-gdk-pixbuf2' 'mingw-w64-libpng' 'mingw-w64-libjpeg-turbo' 'mingw-w64-libvpx' 'mingw-w64-bzip2' 'mingw-w64-speex' 'mingw-w64-flac' 'mingw-w64-wavpack' 'mingw-w64-mpg123' 'mingw-w64-lame')
+optdepends=(
+  "mingw-w64-libsoup: http src and sink plugins"
+  "mingw-w64-cairo: cairo overlay plugin"
+  "mingw-w64-pixbuf2: pixbuf plugins"
+  "mingw-w64-libpng: png encoding/decoding plugins"
+  "mingw-w64-libjpeg-turbo: jpeg encoding/decoding plugins"
+  "mingw-w64-libvpx: VP8/9 encoding/decoding plugins"
+  "mingw-w64-speex: speex encoding/decoding plugins"
+  "mingw-w64-flac: flac encoding/decoding plugins"
+  "mingw-w64-wavpack: wavpack encoding/decoding plugins"
+  "mingw-w64-mpg123: mp3 decoding plugin"
+  "mingw-w64-lame: mp3 encoding plugin"
+)
 options=('!strip' '!buildflags' 'staticlibs')
 
 source=(${url}/src/gst-plugins-good/gst-plugins-good-${pkgver}.tar.xz)
