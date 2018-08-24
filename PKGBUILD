@@ -1,14 +1,27 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-gst-plugins-good-git
-pkgver=1.14.0.r110.0fbde2a07
+pkgver=1.14.0.r197.fd0afe033
 pkgrel=1
 _gitname=gst-plugins-good
 pkgdesc="GStreamer Multimedia Framework Good Plugins (mingw-w64)"
 arch=(any)
 url="http://gstreamer.freedesktop.org/"
 license=('LGPL')
-depends=('mingw-w64-gstreamer-git' 'mingw-w64-orc')
-makedepends=('git' 'mingw-w64-meson' 'mingw-w64-libsoup' 'mingw-w64-cairo' 'mingw-w64-gdk-pixbuf2' 'mingw-w64-libjpeg-turbo' 'mingw-w64-libpng' 'mingw-w64-libvpx' 'mingw-w64-bzip2' 'mingw-w64-speex' 'mingw-w64-flac' 'mingw-w64-wavpack' 'mingw-w64-mpg123' 'mingw-w64-lame')
+depends=('mingw-w64-gst-plugins-base-git' 'mingw-w64-orc')
+makedepends=('git' 'python' 'mingw-w64-meson' 'mingw-w64-libsoup' 'mingw-w64-cairo' 'mingw-w64-gdk-pixbuf2' 'mingw-w64-libjpeg-turbo' 'mingw-w64-libpng' 'mingw-w64-libvpx' 'mingw-w64-bzip2' 'mingw-w64-speex' 'mingw-w64-flac' 'mingw-w64-wavpack' 'mingw-w64-mpg123' 'mingw-w64-lame')
+optdepends=(
+  "mingw-w64-libsoup: libsoup HTTP client source/sink plugin"
+  "mingw-w64-cairo: Cairo overlay plugin"
+  "mingw-w64-gdk-pixbuf2: gdk-pixbuf image decoder, overlay, and sink plugin"
+  "mingw-w64-libpng: PNG image codec plugin"
+  "mingw-w64-libjpeg-turbo: JPEG image codec plugin"
+  "mingw-w64-libvpx: VP8 and VP9 video codec plugin"
+  "mingw-w64-speex: Speex audio codec plugin"
+  "mingw-w64-flac: FLAC audio codec plugin"
+  "mingw-w64-wavpack: Wavpack audio codec plugin"
+  "mingw-w64-mpg123: mpg123 mp3 audio decoder plugin"
+  "mingw-w64-lame: LAME mp3 audio encoder plugin"
+)
 options=('!strip' '!buildflags' 'staticlibs')
 conflicts=('mingw-w64-gst-plugins-good')
 
