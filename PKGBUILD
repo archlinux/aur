@@ -36,7 +36,7 @@ provides=("mkinitcpio-nban")
 source=("http://ninjaos.org/downloads/projects/${pkgname}-${pkgver}.tar.gz"
         "http://ninjaos.org/downloads/projects/${pkgname}-${pkgver}.tar.gz.sig"
         "README")
-sha256sums=('64dc4c79c8d90a7bd510d7e046b8e70d57354043fa12aa6c18de4e5c301da841'
+sha256sums=('dce692bbd844646182223bf395451a233f942a69e37be20a6c5bb5f771d58ce8'
             'SKIP'
             '93e1fe5810a837399724d1e6fb9403aa68e852c731b93656c6667ea4bea2b075')
 validpgpkeys=('D5E76841665A4408D73C2D8796FD6113A1F8331E')
