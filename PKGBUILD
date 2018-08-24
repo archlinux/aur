@@ -1,6 +1,6 @@
 # Maintainer: Kuchiriel <matheus.almeida@techie.com>
 
-_commit=848f46cb720fcb78563b043fd6d09f80025a0eae  # tags=v1.9.7
+_commit=f425e4061c732c55581ca6a0a569baaf52a97179  # tags=v1.9.7
 pkgname=librealsense-1.9.7
 pkgver=v1.9.7
 pkgrel=1
