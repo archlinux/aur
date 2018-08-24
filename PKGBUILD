@@ -3,7 +3,7 @@
 # Contributor: megadriver <megadriver at gmx dot com>
 
 pkgname=emacs-helm
-pkgver=2.9.4
+pkgver=2.9.8
 pkgrel=1
 pkgdesc="Incremental completion and selection narrowing framework for Emacs"
 url="https://github.com/emacs-helm/helm"
@@ -14,7 +14,7 @@ makedepends=('git')
 provides=('emacs-helm')
 conflicts=('emacs-helm')
 source=("https://github.com/emacs-helm/helm/archive/v${pkgver}.tar.gz")
-sha256sums=('128cf2072a091be8f2b4925dac45b0e6dde5d3ad4486d4585af8702a0d89754e')
+sha256sums=('6a88da31eaa18e11ffcb0f120baf3db885a64a4e03a281705a33631a90ea2a29')
 
 build() {
   cd "${srcdir}/helm-${pkgver}"
