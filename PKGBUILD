@@ -2,17 +2,17 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
 name=retopoflow
-_blender=$(expac -S %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
+_blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
 
 pkgname=blender-plugin-${name}-git
 pkgver=1.3.2.r0.gd9b542f
-pkgrel=1
+pkgrel=2
 pkgdesc="A suite of retopology tools for Blender"
 arch=('any')
 url="https://cgcookiemarkets.com/all-products/retopoflow/"
 license=('GPL')
 depends=('blender')
-makedepends=('expac' 'git')
+makedepends=('git')
 conflicts=('blender-plugin-retopoflow')
 source=("git+https://github.com/CGCookie/retopoflow.git")
 md5sums=('SKIP')
