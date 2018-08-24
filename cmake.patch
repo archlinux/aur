@@ -1,0 +1,13 @@
+--- src/CMakeLists.txt.orig	2012-03-17 19:36:44.834973898 +0800
++++ src/CMakeLists.txt	2012-03-17 19:40:00.894972395 +0800
+@@ -121,6 +121,10 @@
+                                   recorditnow_recorder
+                                   recorditnow_encoder
+                                   recorditnow_keymon
++                                  recorditnow_plugin
++                                  ${X11_X11_LIB}
++                                  ${X11_Xext_LIB}
++                                  ${X11_Xfixes_LIB}
+                                   ${X11_Xcursor_LIB})
+ 
+ if (BUILD_WITH_JOSCHY)

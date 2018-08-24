@@ -1,0 +1,26 @@
+pkgbase = recorditnow
+	pkgdesc = A plugin based desktop recorder for KDE SC 4
+	pkgver = 0.8.1
+	pkgrel = 10
+	url = http://kde-apps.org/content/show.php/RecordItNow?content=114610
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = recordmydesktop
+	makedepends = mencoder
+	depends = kdebase-runtime
+	depends = ffmpeg
+	depends = xdg-utils
+	optdepends = mencoder: for mencoder encoder plugin
+	optdepends = recordmydesktop
+	provides = joschy
+	source = http://downloads.sourceforge.net/project/recorditnow/recorditnow-0.8.1.tar.bz2
+	source = cmake.patch
+	source = ffmpeg.patch
+	md5sums = 6619b4048545adbab1d13a790189e80f
+	md5sums = 74ea0ababc2291e2a62e5d045c62616a
+	md5sums = 867f30a0cba692c7dad56195fd64b092
+
+pkgname = recorditnow
+

@@ -1,0 +1,16 @@
+--- src/plugins/recorder/ffmpegrecorder/ffmpegrecorder.cpp.orig	2010-03-04 17:39:20.000000000 +0100
++++ src/plugins/recorder/ffmpegrecorder/ffmpegrecorder.cpp	2013-09-10 18:17:26.193834681 +0200
+@@ -120,11 +120,10 @@
+             videoQuality = 2;
+         }
+ 
+-        args << "-f" << "x11grab" << "-qscale" << QString::number(videoQuality) << "-r" << QString::number(d.fps);
++        args << "-f" << "x11grab" << "-r" << QString::number(d.fps);
+         args << "-s" << QString("%1x%2").arg(geometry.width()).arg(geometry.height());
+         args << "-i" << DisplayString(QX11Info::display())+QString("+%1,%2").arg(geometry.x()).arg(geometry.y());
+-        args << "-s" << QString("%1x%2").arg(geometry.width()).arg(geometry.height());
+-        args << m_tmpFile;
++        args << "-qscale" << QString::number(videoQuality) << m_tmpFile;
+         //ffmpeg -f x11grab -qscale 2 -r 20 -s 1440x900 -i :0.0 -s 1440x900 x11grab.avi
+     } else {
+ 
