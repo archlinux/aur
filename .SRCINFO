@@ -1,11 +1,10 @@
 pkgbase = blender-plugin-multiedit
 	pkgdesc = Blender addon for editing multiple meshes at once.
 	pkgver = r12.a68a7ce
-	pkgrel = 1
+	pkgrel = 2
 	url = https://blenderartists.org/forum/showthread.php?339369-MultiEdit-version-1-0-Multiple-Objects-Editing
 	arch = any
 	license = GPL
-	makedepends = expac
 	makedepends = git
 	depends = blender
 	source = multiedit::git+https://github.com/antoni4040/MultiEdit-Addon.git

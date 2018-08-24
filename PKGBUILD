@@ -2,17 +2,17 @@
 
 name=multiedit
 files=(MultiEdit_1_0.py)
-_blender=$(expac -S %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
+_blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
 
 pkgname=blender-plugin-${name}
 pkgver=r12.a68a7ce
-pkgrel=1
+pkgrel=2
 pkgdesc="Blender addon for editing multiple meshes at once."
 arch=('any')
 url="https://blenderartists.org/forum/showthread.php?339369-MultiEdit-version-1-0-Multiple-Objects-Editing"
 license=('GPL')
 depends=('blender')
-makedepends=(expac 'git')
+makedepends=('git')
 source=("${name}::git+https://github.com/antoni4040/MultiEdit-Addon.git")
 md5sums=('SKIP')
 
