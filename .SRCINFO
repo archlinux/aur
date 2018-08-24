@@ -1,0 +1,30 @@
+pkgbase = simonpi
+	pkgdesc = A quick & dirty script to emulate Raspberry PI family devices on your laptop
+	pkgver = 1.0.13
+	pkgrel = 1
+	url = https://github.com/M0Rf30/simonpi
+	install = simonpi.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = coreutils
+	depends = dnsmasq
+	depends = dosfstools
+	depends = e2fsprogs
+	depends = file
+	depends = grep
+	depends = iproute2
+	depends = iptables
+	depends = libarchive
+	depends = ovmf-arm
+	depends = ovmf-aarch64
+	depends = procps-ng
+	depends = qemu-headless-arch-extra
+	depends = sudo
+	depends = util-linux
+	depends = wget
+	source = https://github.com/M0Rf30/simonpi/archive/1.0.13.tar.gz
+	md5sums = fcb647c20c42cd43d62f9b3cafc49a09
+
+pkgname = simonpi
+
