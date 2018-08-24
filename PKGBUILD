@@ -1,7 +1,7 @@
 # Maintainer: Bruce Zhang
 pkgname=vkd3d
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Direct3D 12 to Vulkan translation library By WineHQ'
 arch=('x86_64')
 url='https://www.winehq.org/news/2018052301'
@@ -14,7 +14,7 @@ install=vkd3d.install
 
 prepare() {
   cd "${srcdir}/vkd3d-${pkgver}"
-  ./configure
+  ./configure --prefix=/usr
 }
 
 build() {
