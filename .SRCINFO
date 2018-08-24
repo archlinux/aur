@@ -1,7 +1,7 @@
 pkgbase = pi-hole-server
 	pkgdesc = The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.
 	pkgver = 4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pi-hole/pi-hole
 	install = pi-hole-server.install
 	arch = any
@@ -22,6 +22,7 @@ pkgbase = pi-hole-server
 	backup = etc/pihole/blacklist.txt
 	backup = etc/dnsmasq.d/01-pihole.conf
 	backup = etc/pihole/adlists.list
+	backup = etc/dnsmasq.conf
 	source = pihole-4.0.tar.gz::https://github.com/pi-hole/pi-hole/archive/v4.0.tar.gz
 	source = admin-4.0.tar.gz::https://github.com/pi-hole/AdminLTE/archive/v4.0.tar.gz
 	source = dnsmasq.main

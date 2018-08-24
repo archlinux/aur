@@ -4,7 +4,7 @@
 pkgname=pi-hole-server
 _pkgname=pi-hole
 pkgver=4.0
-pkgrel=2
+pkgrel=3
 _wwwpkgname=AdminLTE
 _wwwpkgver=4.0
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
@@ -21,7 +21,7 @@ optdepends=(
 conflicts=('pi-hole-standalone')
 install=$pkgname.install
 backup=('etc/pihole/whitelist.txt' 'etc/pihole/blacklist.txt'
-'etc/dnsmasq.d/01-pihole.conf' 'etc/pihole/adlists.list')
+'etc/dnsmasq.d/01-pihole.conf' 'etc/pihole/adlists.list' 'etc/dnsmasq.conf')
 
 source=(pihole-$pkgver.tar.gz::https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
 	admin-$_wwwpkgver.tar.gz::https://github.com/$_pkgname/$_wwwpkgname/archive/v$_wwwpkgver.tar.gz
@@ -254,6 +254,9 @@ prepare() {
   # pi-hole sudoers file is now populated by install script
   echo "http ALL=NOPASSWD: /usr/bin/pihole" >> $_pkgname-$pkgver/advanced/Templates/pihole.sudo
 
+  # pi-hole dnsmasq config file include ready
+  echo "conf-dir=/etc/dnsmasq.d/,*.conf" >> $_pkgname-$pkgver/advanced/dnsmasq.conf.original
+
   # adlists.default is gone and adlists.list is populated by install script
   # from basic-install.sh -- function chooseBlocklists()
   cat <<EOF > $_pkgname-$pkgver/adlists.list
@@ -287,6 +290,7 @@ package() {
 
   install -dm750 "$pkgdir"/etc/sudoers.d
   install -Dm440 $_pkgname-$pkgver/advanced/Templates/pihole.sudo "$pkgdir"/etc/sudoers.d/pihole
+  install -Dm644 $_pkgname-$pkgver/advanced/dnsmasq.conf.original "$pkgdir"/etc/dnsmasq.conf
 
   install -Dm644 pi-hole.tmpfile "$pkgdir"/usr/lib/tmpfiles.d/pi-hole.conf
 
