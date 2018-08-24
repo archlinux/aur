@@ -1,0 +1,25 @@
+--- a/external/FFmpeg/libavcodec/libx264.c
++++ b/external/FFmpeg/libavcodec/libx264.c
+@@ -279,7 +279,7 @@
+ 
+     x264_picture_init( &x4->pic );
+     x4->pic.img.i_csp   = x4->params.i_csp;
+-    if (x264_bit_depth > 8)
++    if (X264_BIT_DEPTH > 8)
+         x4->pic.img.i_csp |= X264_CSP_HIGH_DEPTH;
+     x4->pic.img.i_plane = avfmt2_num_planes(ctx->pix_fmt);
+ 
+@@ -889,11 +889,11 @@
+ 
+ static av_cold void X264_init_static(AVCodec *codec)
+ {
+-    if (x264_bit_depth == 8)
++    if (X264_BIT_DEPTH == 8)
+         codec->pix_fmts = pix_fmts_8bit;
+-    else if (x264_bit_depth == 9)
++    else if (X264_BIT_DEPTH == 9)
+         codec->pix_fmts = pix_fmts_9bit;
+-    else if (x264_bit_depth == 10)
++    else if (X264_BIT_DEPTH == 10)
+         codec->pix_fmts = pix_fmts_10bit;
+ }

@@ -7,15 +7,15 @@
 
 pkgname=mythtv
 pkgver=29.1
-pkgrel=9
+pkgrel=10
 epoch=1
 pkgdesc="A Homebrew PVR project"
 arch=('x86_64')
 url="https://www.mythtv.org/"
 license=('GPL')
 depends=('libass' 'qt5-script' 'libavc1394' 'fftw' 'exiv2' 'taglib' 'libva' 'libiec61883' 'perl-net-upnp' 'urlgrabber'
-         'qt5-webkit' 'x265' 'libx264' 'jack' 'libvpx' 'libvdpau' 'lame' 'libxinerama' 'libpulse' 'libxrandr' 'mysql-python')
-makedepends=('git' 'help2man' 'yasm' 'libmariadbclient' 'libxml2' 'libcec' 'x264' 'libcdio' 'lirc' 'perl-io-socket-inet6' 'perl-libwww'
+         'qt5-webkit' 'x265' 'x264' 'jack' 'libvpx' 'libvdpau' 'lame' 'libxinerama' 'libpulse' 'libxrandr' 'mysql-python')
+makedepends=('git' 'help2man' 'yasm' 'libmariadbclient' 'libxml2' 'libcec' 'libcdio' 'lirc' 'perl-io-socket-inet6' 'perl-libwww'
              'perl-dbd-mysql' 'python2-lxml')
 optdepends=('glew: for GPU commercial flagging'
             'libcec: for consumer electronics control capabilities'
@@ -31,12 +31,14 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/MythTV/$pkgname/archive/v$p
         'mythbackend.service'
         '99-mythbackend.rules'
         'sysusers.d'
-        'freetype2.patch')
+        'freetype2.patch'
+        'libx264.patch')
 sha256sums=('e40ec8111d39fd059a9ec741b10016683bcc66ee3b33c4cdaab93d60851f5d3e'
             'ed5ca54de26b7cd8a64e09626eed6e09f35d677daf88c530bb24cc4252bcce6d'
             'ecfd02bbbef5de9773f4de2c52e9b2b382ce8137735f249d7900270d304fd333'
-			'470de0a4050c16c7af11a0e5cfe2810b7daae42df4acf5456c7eae274dc7c5ae'
-            '4451cbb28513e03cc2f62c50581daeb436d027f8a0968ba5d99a3b05da103343')
+            '470de0a4050c16c7af11a0e5cfe2810b7daae42df4acf5456c7eae274dc7c5ae'
+            '4451cbb28513e03cc2f62c50581daeb436d027f8a0968ba5d99a3b05da103343'
+            '810f26ac761c1a4c43d67637091d2765ccaf4be98036d8f33506b29d208ef344')
 
 prepare() {
   cd $pkgname-$pkgver/$pkgname
@@ -45,6 +47,9 @@ prepare() {
 
   #apply freetype2.patch to fix configure error
   patch -Np1 -i ../../freetype2.patch
+
+  #apply libx264.patch
+  patch -Np1 -i ../../libx264.patch
 }
 
 build() {
