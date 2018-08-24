@@ -13,7 +13,7 @@ makedepends=('python-setuptools')
 provides=('pyregions')
 conflicts=('pyregions')
 source=("https://github.com/sk8higher/pyRegions/archive/$pkgver.tar.gz")
-sha256sums=(SKIP)
+sha256sums=('77caf90d375b5c552e13e2c96db16d6225c8448472eff6485436375ece83aeea')
 
 package() {
   cd "$srcdir/$appname-$pkgver"
