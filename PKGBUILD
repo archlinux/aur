@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-gst-plugins-base-git
-pkgver=1.14.0.r137.3ac37bbe6
+pkgver=1.14.0.r261.f1272e547
 pkgrel=1
 _gitname=gst-plugins-base
 pkgdesc="GStreamer Multimedia Framework Base Plugins (mingw-w64)"
@@ -9,6 +9,13 @@ url="http://gstreamer.freedesktop.org/"
 license=('LGPL')
 depends=('mingw-w64-gstreamer-git' 'mingw-w64-orc')
 makedepends=('git' 'mingw-w64-meson' 'mingw-w64-opus' 'mingw-w64-libvorbis' 'mingw-w64-pango' 'mingw-w64-libtheora' 'mingw-w64-libvisual')
+optdepends=(
+  "mingw-w64-libvisual: libvisual audio visualization plugin"
+  "mingw-w64-opus: OPUS audio codec plugin"
+  "mingw-w64-libvorbis: Vorbis audio parser, tagger, and codec plugin"
+  "mingw-w64-libtheora: Theora video parser and codec plugin"
+  "mingw-w64-pango: Pango text rendering and overlay plugin"
+)
 options=('!strip' '!buildflags' 'staticlibs')
 conflicts=('mingw-w64-gst-plugins-base')
 
@@ -27,8 +34,8 @@ build() {
   for _arch in $_architectures; do
     mkdir -p "build-${_arch}" && pushd build-${_arch}
     ${_arch}-meson \
-      -D examples=false \
-      -D gtk_doc=false \
+      -D examples=disabled \
+      -D gtk_doc=disabled \
       -D package-name="GStreamer (Arch Linux)" \
       -D package-origin="http://www.archlinux.org/" ..
     ninja
