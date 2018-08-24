@@ -3,17 +3,17 @@
 name=surface-follow
 #fragment="#commit=7e49329 "
 files=(ModelingCloth TextureHack.py UVShape.py)
-_blender=$(expac -S %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
+_blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
 
 pkgname=blender-plugin-${name}
 pkgver=r18.a7e7e18
-pkgrel=1
+pkgrel=2
 pkgdesc="Blender addon for binding object to deforming surfaces."
 arch=('any')
 url="https://blenderartists.org/forum/showthread.php?412706-Surface-Follow-from-2016-Blender-Conference"
 license=('MIT')
 depends=('blender')
-makedepends=('expac' 'git')
+makedepends=('git')
 source=("${name}::git+https://github.com/the3dadvantage/BlenderSurfaceFollow.git${fragment}")
 md5sums=('SKIP')
 
