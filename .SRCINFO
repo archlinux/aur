@@ -1,0 +1,18 @@
+pkgbase = librealsense-1.9.7
+	pkgdesc = Intel® RealSense™ SDK 2.0 is a cross-platform library for Intel® RealSense™ depth cameras (D400 series and the SR300)
+	pkgver = v1.9.7
+	pkgrel = 1
+	url = https://github.com/IntelRealSense/librealsense
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = linux-lts-headers
+	depends = glfw-x11
+	depends = gtk3
+	depends = libusb
+	depends = linux-lts
+	source = git+https://github.com/Kuchiriel/librealsense-1.9.7#commit=28c7aa1f70e7d5669b825c9c431eedfdbcdc2c5d
+	sha256sums = SKIP
+
+pkgname = librealsense-1.9.7
+
