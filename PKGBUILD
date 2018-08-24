@@ -11,7 +11,7 @@ install='openssh-ldap-publickey.install'
 makedepends=('pear-net-ldap2' 'pear-net-ldap3' 'perl-net-ldap-server')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=('git+git://github.com/AndriiGrytsenko/openssh-ldap-publickey'
+source=('git+git://github.com/AndriiGrytsenko/openssh-ldap-publickey.git'
         'openssh-ldap-publickey.install')
 sha256sums=('SKIP'
             '3969eccfd326056ec1e00094c9ea7a47a8d79b0c51b4885a729051be781869a4')
