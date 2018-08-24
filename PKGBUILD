@@ -3,12 +3,12 @@
 pybase=(pypylon)
 pkgname=(python-pypylon)
 pkgver=1.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="The official python wrapper for the Basler pylon Camera Software Suite."
 arch=('any')
 license=('Basler AG')
 url="https://github.com/basler/pypylon"
-makedepends=('swig')
+makedepends=('swig' 'gcc')
 depends=('python' 'python-setuptools' 'pylon')
 
 source=("git+${url}#tag=${pkgver}")
