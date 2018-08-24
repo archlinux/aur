@@ -1,5 +1,5 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
-pkgname=(phonon-qt4)
+pkgname=phonon-qt4
 pkgver=4.10.1
 pkgrel=1
 pkgdesc="The multimedia framework for KDE4"
