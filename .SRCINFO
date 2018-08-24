@@ -1,6 +1,6 @@
 pkgbase = emoji-keyboard-edam-git
 	pkgdesc = Virtual keyboard-like emoji picker for Linux (edam's fork).
-	pkgver = r37.c54fade
+	pkgver = r38.af418a0
 	pkgrel = 1
 	url = https://github.com/edam/emoji-keyboard
 	arch = i686
