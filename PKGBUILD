@@ -9,7 +9,7 @@ pkgdesc="Game data files and manual of Blue Byte's 'Siedler II'/'Settlers II' to
 url='http://archive.org/details/die_siedler_2_151'
 arch=('any')
 pkgver='venividivici_gold'
-pkgrel=2
+pkgrel=3
 license=('unknown: proprietary')
 options+=('emptydirs')
 
@@ -30,7 +30,7 @@ package_siedler2-data() {
   pkgdesc="Game data files of Blue Byte's 'Siedler II'/'Settlers II' to be used with 'Return to the Roots'."
   optdepends+=(
     "return-to-the-roots: To play the game."
-    "sieler2-doc: The original Blue Byte manual."
+    "siedler2-doc: The original Blue Byte manual."
   )
 
   cd "${srcdir}"
