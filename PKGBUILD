@@ -3,7 +3,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.28
 
 pkgname='perl-b-keywords'
-pkgver='1.18'
+pkgver='1.19'
 pkgrel='1'
 pkgdesc="Lists of reserved barewords and symbol names"
 arch=('any')
@@ -12,10 +12,9 @@ options=('!emptydirs')
 depends=('perl')
 makedepends=()
 url='http://search.mcpan.org/dist/B-Keywords'
-source=('http://search.mcpan.org/CPAN/authors/id/R/RU/RURBAN/B-Keywords-1.18.tar.gz')
-md5sums=('a9f13ca16c6e6d773d55847abb9dd795')
-sha512sums=('b1a6b4f8d1a557168257c4b8648e5f0e98e91dde7ba9122ba9a99cfb8b399a6857a2ee005ff26c4908d7f01e1e2ffb1dafae3aa6fe5acd3773588911ef159ff4')
-_distdir="B-Keywords-1.18"
+source=('http://search.mcpan.org/CPAN/authors/id/R/RU/RURBAN/B-Keywords-1.19.tar.gz')
+sha512sums=('b6c4d858a16754b3606894fe3133e3057c49526b6def135ca5c21ea3c0c67d23cbd4e95fe62166bb2465fe15621a25b3f336b9ba6a1fa5d2f68a1a944f578af9')
+_distdir="B-Keywords-1.19"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
