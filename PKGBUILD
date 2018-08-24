@@ -6,7 +6,7 @@
 # Contributor: post-factum
 
 pkgname=i2pd
-pkgver=2.19.0
+pkgver=2.20.0
 pkgrel=1
 pkgdesc="Simplified C++ implementation of I2P client"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -73,4 +73,4 @@ package(){
   	chmod -R o= $pkgdir/${_home_dest}
 }
 
-md5sums=('543d8947d015741708acfc54f25dcd00')
+md5sums=('ca19cb9658b32d8f92c7f15b154f5352')
