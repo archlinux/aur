@@ -8,7 +8,7 @@
 pkgbase=handbrake-git
 pkgname=('handbrake-gtk-git' 'handbrake-cli-git')
 epoch=1
-pkgver=1.1.0.r291.g3c303e2f2
+pkgver=1.1.0.r342.gabe12fe7a
 pkgrel=1
 pkgdesc="Multiplatform, multithreaded DVD to MPEG-4/H264/Theora converter"
 arch=('i686' 'x86_64')
@@ -75,7 +75,7 @@ build() {
 package_handbrake-gtk-git() {
   pkgdesc="Multiplatform, multithreaded DVD to MPEG-4/H264/Theora converter (GUI version)"
   depends=('opus' 'jansson' 'libsamplerate' 'libx264' 'libtheora' 'lame' 'libass' 'gtk3'
-	   'gst-plugins-base-libs' 'libgudev' 'libva' 'speex')
+	   'libva' 'speex')
   optdepends=('gst-plugins-bad: For Preview Window'
               'gst-plugins-good: For Preview Window'
               'gst-plugins-ugly: For Preview Window'
@@ -94,7 +94,7 @@ package_handbrake-gtk-git() {
 
 package_handbrake-cli-git() {
   pkgdesc="Multiplatform, multithreaded DVD to MPEG-4/H264/Theora converter (CLI version)"
-  depends=('opus' 'jansson' 'libsamplerate' 'libx264' 'libtheora' 'lame' 'libass' 'libxml2' 'libva' 'speex')
+  depends=('opus' 'jansson' 'libsamplerate' 'libx264' 'libtheora' 'lame' 'libass' 'libva' 'speex')
   provides=('handbrake-cli')
   conflicts=('handbrake-cli')
   install -D -m755 "$srcdir"/$_gitname/build/HandBrakeCLI "$pkgdir"/usr/bin/HandBrakeCLI
