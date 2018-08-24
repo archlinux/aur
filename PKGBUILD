@@ -2,18 +2,18 @@
 # Original Maintainer: Micael Dias
 
 _fragment="#tag=blendluxcore_v2.0"
-_blender=$(expac -S %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
+_blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
 _name="luxcorerender"
 
 pkgname=blender-plugin-luxcorerender
 pkgver=2.0.r0.gbb9c5ee
-pkgrel=1
+pkgrel=2
 pkgdesc="LuxCoreRender exporter plugin for Blender"
 arch=('any')
 url="http://www.luxrender.net/"
 license=('GPL')
 depends=(blender luxcorerender)
-makedepends=(git expac)
+makedepends=(git)
 conflicts=(luxblend25 luxblend25-hg)
 source=("${_name}::git+https://github.com/LuxCoreRender/BlendLuxCore.git${_fragment}")
 md5sums=("SKIP")
