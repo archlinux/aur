@@ -1,6 +1,6 @@
 # Maintainer: Johannes Lange (<firstname>DOT<lastname>ATcern.ch>)
 pkgname=cernbox
-pkgver=2.4.1_2352.1
+pkgver=2.4.2_2401.2
 pkgrel=1
 pkgdesc="Synchronization client for CERN's CERNBox cloud service (based on ownCloud). Note: CERN IT does not provide official support for Arch Linux. Use at your own risk."
 arch=('x86_64')
@@ -16,8 +16,8 @@ source=(
     ${_repo}libcernboxsync0-${pkgver/_/-}.x86_64.rpm
 )
 md5sums=(
-    '2f1c23bd05a9ae7629fd49ed2baeb8c7'
-    'baf4c583957c411125360f62a3293320'
+    '44d31ad35dbb9a6ef02f278e569739ee'
+    '6767e6cd1340e60c3de915a8de6263ae'
 )
 
 package() {
