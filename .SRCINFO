@@ -12,6 +12,8 @@ pkgbase = sygnm
 	makedepends = swig
 	makedepends = python
 	makedepends = python-setuptools
+	makedepends = pandoc
+	makedepends = python-pypandoc
 	depends = flint
 	depends = arb
 	depends = boost-libs
@@ -21,10 +23,16 @@ pkgbase = sygnm
 	depends = readline
 	depends = python
 	depends = sqlite
+	depends = libmpc
+	depends = mpfr
+	depends = gmp-ecm
+	depends = eigen
+	depends = ruby
+	depends = jdk7-openjdk
 	conflicts = sygnm-git
 	options = debug
 	options = !strip
-	source = local://sygnm-1.0.0alpha1.tar.gz
+	source = sygnm-git::git+https://git.sygnm.org/sygnmdev/sygnm.git#tag=1.0.0alpha1
 	md5sums = SKIP
 
 pkgname = sygnm

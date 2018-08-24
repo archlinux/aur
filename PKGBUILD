@@ -6,8 +6,8 @@ pkgdesc="Computer algebra framework (currently alpha, install only if you know w
 arch=('i686' 'x86_64' 'armv6h')
 url="https://sygnm.org/"
 license=('AGPL3')
-depends=('flint' 'arb' 'boost-libs' 'icu' 'gmp' 'qt5-base' 'readline' 'python' 'sqlite')
-makedepends=('boost' 'cmake' 'swig' 'python' 'python-setuptools')
+depends=('flint' 'arb' 'boost-libs' 'icu' 'gmp' 'qt5-base' 'readline' 'python' 'sqlite' 'libmpc' 'mpfr' 'gmp-ecm' 'eigen' 'ruby' 'jdk7-openjdk')
+makedepends=('boost' 'cmake' 'swig' 'python' 'python-setuptools' 'pandoc' 'python-pypandoc')
 source=("sygnm-git::git+https://git.sygnm.org/sygnmdev/sygnm.git#tag=1.0.0alpha1")
 options=(debug !strip)
 conflicts=('sygnm-git')
