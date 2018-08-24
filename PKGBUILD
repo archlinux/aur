@@ -1,7 +1,7 @@
 # Maintainer: TC <crt@archlinux.email>
 pkgname=openssh-ldap-publickey-git
 _pkgname=openssh-ldap-publickey
-pkgver=20180824
+pkgver=6d21a03
 pkgrel=1
 pkgdesc="Wrapper for OpenSSH to store public keys inside the OpenLDAP entry."
 arch=('any')
@@ -18,7 +18,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$_pkgname"
-  date '+%Y%m%d'
+  git rev-parse --short HEAD
 }
 
 package() {
