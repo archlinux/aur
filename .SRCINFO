@@ -5,6 +5,8 @@ pkgbase = grok-exporter
 	url = https://github.com/fstab/grok_exporter
 	arch = x86_64
 	license = Apache
+	makedepends = go
+	makedepends = git
 	depends = oniguruma>=6.1.1
 	provides = grok-exporter
 	conflicts = grok-exporter

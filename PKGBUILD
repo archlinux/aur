@@ -11,7 +11,7 @@ arch=('x86_64')
 url="https://github.com/fstab/grok_exporter"
 license=('Apache')
 depends=('oniguruma>=6.1.1')
-makedepends=()
+makedepends=('go' 'git')
 backup=('etc/prometheus/grok.yml')
 provides=('grok-exporter')
 conflicts=('grok-exporter')
