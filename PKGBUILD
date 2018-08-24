@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-gst-plugins-ugly-git
-pkgver=1.14.0.r8.906b37de
+pkgver=1.14.0.r17.71a35e7c
 pkgrel=1
 _gitname=gst-plugins-ugly
 pkgdesc="GStreamer Multimedia Framework Ugly Plugins (mingw-w64)"
@@ -9,6 +9,10 @@ url="http://gstreamer.freedesktop.org/"
 license=('LGPL')
 depends=('mingw-w64-gst-plugins-base-git')
 makedepends=('git' 'mingw-w64-meson' 'mingw-w64-x264' 'mingw-w64-opencore-amr')
+optdepends=(
+  "mingw-w64-x264: H.264 video encoder plugin"
+  "mingw-w64-opencore-amr: Adaptive Multi-Rate Narrow-Band audio codec plugin"
+)
 options=('!strip' '!buildflags' 'staticlibs')
 conflicts=('mingw-w64-gst-plugins-ugly')
 
