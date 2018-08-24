@@ -30,7 +30,7 @@ pkgver() {
 build() {
 	cd "$srcdir/${pkgname%-git}/SpriteSheetPacker"
 	qmake
-	sed -i '/\$(TARGET):/!b;n;n;n;d' Makefile
+	sed -i '\:SpriteSheetPacker/../install/linux/bin/SpriteSheetPacker$:d' Makefile
 	make
 }
 
