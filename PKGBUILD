@@ -1,5 +1,5 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
-pkgname=(phonon-qt4-gstreamer)
+pkgname=phonon-qt4-gstreamer
 pkgver=4.9.0
 pkgrel=1
 arch=(x86_64)
