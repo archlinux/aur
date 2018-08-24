@@ -1,0 +1,27 @@
+pkgbase = python-sqlalchemy-continuum
+	pkgdesc = Versioning and auditing extension for SQLAlchemy
+	pkgver = 1.3.6
+	pkgrel = 1
+	url = https://github.com/kvesteri/sqlalchemy-continuum
+	arch = any
+	license = BSD
+	checkdepends = python-pytest
+	checkdepends = python-flexmock
+	checkdepends = python-psycopg2
+	checkdepends = python-mysql-connector
+	checkdepends = python-six
+	checkdepends = python-flask-sqlalchemy
+	checkdepends = python-flask-login
+	makedepends = python2-setuptools
+	makedepends = python-setuptools
+	source = https://pypi.io/packages/source/S/SQLAlchemy-Continuum/SQLAlchemy-Continuum-1.3.6.tar.gz
+	sha256sums = 969258e409678d734b4ec12b4e31eca5d4543c75e0d5b3a265f07eefb2adc02d
+
+pkgname = python2-sqlalchemy-continuum
+	depends = python2-sqlalchemy
+	depends = python2-sqlalchemy-utils
+
+pkgname = python-sqlalchemy-continuum
+	depends = python-sqlalchemy
+	depends = python-sqlalchemy-utils
+
