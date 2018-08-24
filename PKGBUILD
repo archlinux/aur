@@ -98,8 +98,7 @@ package_libc++experimental() {
   depends=("libc++=$pkgver-$pkgrel")
   pkgdesc='LLVM C++ experimental library.'
   install -Dm644 ${srcdir}/build/lib/libc++experimental.a ${pkgdir}/usr/lib/libc++experimental.a
-  install -d ${pkgdir}/usr/include/c++/v1/experimental
-  install -m644 ${srcdir}/build/include/c++/v1/experimental/* ${pkgdir}/usr/include/c++/v1/experimental
+  install -Dm644 -t ${pkgdir}/usr/include/c++/v1/experimental ${srcdir}/build/include/c++/v1/experimental/*
   install -Dm644 ${srcdir}/llvm/projects/libcxx/CREDITS.TXT "${pkgdir}/usr/share/licenses/${pkgname}/CREDITS"
   install -Dm644 ${srcdir}/llvm/projects/libcxx/LICENSE.TXT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
