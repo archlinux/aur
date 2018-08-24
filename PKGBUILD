@@ -1,8 +1,8 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 # Developer: MitSoft <signa-support@mitsoft.lt>
 pkgname=signa-browser-ext
-r=7771
-d=2017-08-12
+r=8295
+d=2018-07-25
 pkgver=1.0.r${r}.${d//-}
 pkgrel=1
 pkgdesc="Native helper for web login using Lithuanian identity cards (for SoDra, VMI, &c)"
@@ -11,7 +11,7 @@ arch=(any)
 license=('custom')
 depends=('pcsclite>=1.5' 'jre8-openjdk')
 source=("https://www.mitsoft.lt/sites/mitsoft/files/SignaBrowserExt_r${r}_${d}_Linux.zip")
-sha256sums=('d7ff7d8bee3cdf4d630ed746ee4a5be03d63acf236f1612e52a4e129e7570153')
+sha256sums=('bdf58906c1844d0b7622f2d3b4eb51a68098c57226abe9804a4daa6ba7689d57')
 
 # Update check:
 # curl -I https://www.mitsoft.lt/sites/mitsoft/files/SignaBrowserExt_Linux.zip
