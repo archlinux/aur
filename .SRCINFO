@@ -1,8 +1,9 @@
 pkgbase = iptables-fullcone-nat
 	pkgdesc = iptables with FULLCONENAT extension
-	pkgver = 1.8.0.r73.g92f7b04f
+	pkgver = 1.8.0.r85.g0800d9b4
 	pkgrel = 1
 	url = https://github.com/Chion82/netfilter-full-cone-nat
+	install = iptables-fullcone-nat.install
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -27,6 +28,7 @@ pkgbase = iptables-fullcone-nat
 	source = iptables-flush::https://git.archlinux.org/svntogit/packages.git/plain/trunk/iptables-flush?h=packages/iptables
 	source = iptables.service::https://git.archlinux.org/svntogit/packages.git/plain/trunk/iptables.service?h=packages/iptables
 	source = simple_firewall.rules::https://git.archlinux.org/svntogit/packages.git/plain/trunk/simple_firewall.rules?h=packages/iptables
+	source = iptables-fullcone-nat.install
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -39,6 +41,7 @@ pkgbase = iptables-fullcone-nat
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 28c1f28f2e8b2b95b562ff807ac472134f27da350cb787f7e0f2d59f80d16ac0
 
 pkgname = iptables-fullcone-nat
 

@@ -1,7 +1,7 @@
 # Maintainer: Edward Pacman <micro DOT fedora AT gmail DOT com>
 
 pkgname=iptables-fullcone-nat
-pkgver=1.8.0.r73.g92f7b04f
+pkgver=1.8.0.r85.g0800d9b4
 pkgrel=1
 pkgdesc="iptables with FULLCONENAT extension"
 arch=('i686' 'x86_64')
@@ -11,6 +11,7 @@ depends=('glibc' 'libmnl' 'libnftnl' 'libpcap' 'netfilter-full-cone-nat-dkms')
 makedepends=('git' 'linux-api-headers')
 provides=('iptables')
 conflicts=('iptables')
+install=${pkgname}.install
 source=("file:///usr/src/netfilter-full-cone-nat-git+ec14efe/libipt_FULLCONENAT.c"
 	"git://git.netfilter.org/iptables"
         "empty-filter.rules::https://git.archlinux.org/svntogit/packages.git/plain/trunk/empty-filter.rules?h=packages/iptables"
@@ -22,7 +23,8 @@ source=("file:///usr/src/netfilter-full-cone-nat-git+ec14efe/libipt_FULLCONENAT.
         "ip6tables.service::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ip6tables.service?h=packages/iptables"
         "iptables-flush::https://git.archlinux.org/svntogit/packages.git/plain/trunk/iptables-flush?h=packages/iptables"
         "iptables.service::https://git.archlinux.org/svntogit/packages.git/plain/trunk/iptables.service?h=packages/iptables"
-        "simple_firewall.rules::https://git.archlinux.org/svntogit/packages.git/plain/trunk/simple_firewall.rules?h=packages/iptables")
+        "simple_firewall.rules::https://git.archlinux.org/svntogit/packages.git/plain/trunk/simple_firewall.rules?h=packages/iptables"
+        "iptables-fullcone-nat.install")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -34,7 +36,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            '28c1f28f2e8b2b95b562ff807ac472134f27da350cb787f7e0f2d59f80d16ac0')
 
 
 pkgver() {
