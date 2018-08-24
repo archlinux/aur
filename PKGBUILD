@@ -5,11 +5,10 @@ buildarch=220
 
 pkgname=onionscan-git
 pkgver=20170225.r130
-pkgrel=2
+pkgrel=1
 pkgdesc="Tool to scan onion services(git version)"
 arch=('armv6h' 'armv7h' 'x86_64' 'i686' 'aarch64')
-url="https://github.com/s-rah/onionscan"
-groups=('archstrike' 'archstrike-scanners')
+url="https://github.com/s-rah/onionscan"S
 license=("MIT")
 depends=('libexif')
 makedepends=('go' 'git')
