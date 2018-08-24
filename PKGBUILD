@@ -1,20 +1,23 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com>
 
 pkgname=bdflib-git
-pkgver=20101119
+pkgver=20150305
 pkgrel=1
 pkgdesc="A Python library for reading, writing and modifying bitmap fonts in BDF format"
-url="http://gitorious.org/bdflib"
+#url="http://gitorious.org/bdflib"  #
+url="https://github.com/peter-conalgo/bdflib"
+# https://gitlab.com/Screwtapello/bdflib maybe?
 arch=('any')
 license=('GPL2')
 depends=('python2')
 makedepends=('git')
 conflicts=("bdflib")
 provides=("bdflib")
-source=('git://gitorious.org/bdflib/mainline.git')
+#source=('git://gitorious.org/bdflib/mainline.git')
+source=('git://github.com/peter-conalgo/bdflib.git')
 md5sums=('SKIP')
 
-_gitname="mainline"
+_gitname="bdflib"
 
 pkgver() {
   cd $_gitname
