@@ -1,6 +1,6 @@
 pkgbase = emacs-all-the-icons-ivy-git
 	pkgdesc = all-the-icons.el for Ivy/Counsel
-	pkgver = r16.52b3f4a
+	pkgver = r21.789e335
 	pkgrel = 1
 	url = https://github.com/asok/all-the-icons-ivy
 	arch = any
