@@ -5,17 +5,17 @@
 
 pkgbase=virtualbox-modules-lts
 pkgname=('virtualbox-host-modules-lts' 'virtualbox-guest-modules-lts')
-pkgver=5.2.8
-pkgrel=3
+pkgver=5.2.18
+pkgrel=6
 _linux_major=4
 _linux_minor=14
 arch=('x86_64')
 url='http://virtualbox.org'
 license=('GPL')
-makedepends=("linux-lts>=${_linux_major}.${_linux_minor}"
-             "linux-lts<${_linux_major}.$((_linux_minor+1))"
-             "linux-lts-headers>=${_linux_major}.${_linux_minor}"
-             "linux-lts-headers<${_linux_major}.$((_linux_minor+1))"
+_linux_cur=${_linux_major}.${_linux_minor}
+_linux_next=${_linux_major}.$((_linux_minor + 1))
+makedepends=("linux-lts>=$_linux_cur" "linux-lts<$_linux_next"
+             "linux-lts-headers>=$_linux_cur" "linux-lts-headers<$_linux_next"
              "virtualbox-host-dkms>=$pkgver"
              "virtualbox-guest-dkms>=$pkgver")
 
@@ -24,8 +24,7 @@ _extramodules=extramodules-${_linux_major}.${_linux_minor}-lts
 package_virtualbox-host-modules-lts(){
   _kernver="$(cat /usr/lib/modules/$_extramodules/version)"
   pkgdesc='Virtualbox host kernel modules for LTS Kernel'
-  depends=("linux-lts>=${_linux_major}.${_linux_minor}"
-           "linux-lts<${_linux_major}.$((_linux_minor+1))")
+  depends=("linux-lts>=$_linux_cur" "linux-lts<$_linux_next")
   replaces=('virtualbox-modules' 'virtualbox-host-modules')
   conflicts=('virtualbox-modules' 'virtualbox-host-modules'
 			 'virtualbox-host-dkms')
@@ -38,7 +37,7 @@ package_virtualbox-host-modules-lts(){
   find "$pkgdir" -name '*.ko' -exec xz -T1 {} +
 
   # systemd module loading
-  printf "vboxdrv\nvboxpci\nvboxnetadp\nvboxnetflt\n" |
+  printf '%s\n' vboxdrv vboxpci vboxnetadp vboxnetflt |
     install -Dm644 /dev/stdin "$pkgdir/usr/lib/modules-load.d/$pkgname.conf"
 }
 
@@ -46,8 +45,7 @@ package_virtualbox-guest-modules-lts(){
   _kernver="$(cat /usr/lib/modules/$_extramodules/version)"
   pkgdesc='Virtualbox guest kernel modules for LTS Kernel'
   license=('GPL')
-  depends=("linux-lts>=${_linux_major}.${_linux_minor}"
-           "linux-lts<${_linux_major}.$((_linux_minor+1))")
+  depends=("linux-lts>=$_linux_cur" "linux-lts<$_linux_next")
   replaces=('virtualbox-archlinux-modules' 'virtualbox-guest-modules')
   conflicts=('virtualbox-archlinux-modules' 'virtualbox-guest-modules'
              'virtualbox-guest-dkms')
@@ -58,10 +56,6 @@ package_virtualbox-guest-modules-lts(){
 
   # compress each module individually
   find "$pkgdir" -name '*.ko' -exec xz -T1 {} +
-
-  # systemd module loading
-  printf "vboxguest\nvboxsf\nvboxvideo\n" |
-    install -Dm644 /dev/stdin "$pkgdir/usr/lib/modules-load.d/$pkgname.conf"
 }
 
 # vim:set ts=2 sw=2 et:
