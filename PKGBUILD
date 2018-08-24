@@ -1,5 +1,6 @@
 # Maintainer: Kuchiriel <matheus.almeida@techie.com>
 
+_commit=1e8aa8002bc3d6afbfc7b733ea4a19864bbeca14  # tags=v1.9.7
 pkgname=librealsense-1.9.7
 pkgver=v1.9.7
 pkgrel=1
@@ -10,7 +11,7 @@ url="https://github.com/IntelRealSense/librealsense"
 license=('Apache')
 makedepends=('cmake')
 depends=('glfw-x11' 'gtk3' 'libusb')
-source=("git+https://github.com/IntelRealSense/librealsense/tree/v1.9.7")
+source=("git+https://github.com/IntelRealSense/librealsense#commit=${_commit}")
 sha256sums=(SKIP)
 
 build() {

@@ -9,7 +9,7 @@ pkgbase = librealsense-1.9.7
 	depends = glfw-x11
 	depends = gtk3
 	depends = libusb
-	source = git+https://github.com/IntelRealSense/librealsense/tree/v1.9.7
+	source = git+https://github.com/IntelRealSense/librealsense#commit=1e8aa8002bc3d6afbfc7b733ea4a19864bbeca14
 	sha256sums = SKIP
 
 pkgname = librealsense-1.9.7
