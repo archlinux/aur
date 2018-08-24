@@ -1,7 +1,7 @@
 # Maintainer: TC <crt@archlinux.email>
 pkgname=openssh-ldap-publickey-git
 _pkgname=openssh-ldap-publickey
-pkgver=20170922
+pkgver=20180824
 pkgrel=1
 pkgdesc="Wrapper for OpenSSH to store public keys inside the OpenLDAP entry."
 arch=('any')
@@ -15,23 +15,24 @@ source=('git+git://github.com/AndriiGrytsenko/openssh-ldap-publickey'
         'openssh-ldap-publickey.install')
 sha256sums=('SKIP'
             '3969eccfd326056ec1e00094c9ea7a47a8d79b0c51b4885a729051be781869a4')
+
 pkgver() {
   cd "$_pkgname"
   date '+%Y%m%d'
 }
 
 package() {
-	cd "$srcdir/$_pkgname"
+  cd "$srcdir/$_pkgname"
 	
-    # install openssh-ldap-publickey to /usr/local/bin 
-    install -Dm755 "bin/openssh-ldap-publickey" \
-        "${pkgdir}/usr/local/bin/openssh-ldap-publickey"
+# install openssh-ldap-publickey to /usr/local/bin
+  install -Dm755 "bin/openssh-ldap-publickey" \
+    "${pkgdir}/usr/local/bin/openssh-ldap-publickey"
 
-    # install man page 
-    install -Dm644 "man/openssh-ldap-publickey.8" \
-        "${pkgdir}/usr/share/man/man8/openssh-ldap-publickey.8"
+# install man page
+  install -Dm644 "man/openssh-ldap-publickey.8" \
+    "${pkgdir}/usr/share/man/man8/openssh-ldap-publickey.8"
 
-    # install openssh-lpk-openldap.schema to openldap schema directory with ldap:ldap perms
-    install -Dm644 -o 439 -g 439 "misc/openssh-lpk-openldap.schema" \
-        "${pkgdir}/etc/openldap/schema/openssh-lpk-openldap.schema"
+# install openssh-lpk-openldap.schema to openldap schema directory with ldap:ldap perms
+  install -Dm644 -o 439 -g 439 "misc/openssh-lpk-openldap.schema" \
+    "${pkgdir}/etc/openldap/schema/openssh-lpk-openldap.schema"
 }
