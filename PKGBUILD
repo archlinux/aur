@@ -2,7 +2,7 @@
 
 _pkgname=yuzu
 pkgname=$_pkgname-qt-canary-git
-pkgver=r8185.c91add0ad
+pkgver=r8217.d68a85b99
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo Switch emulator/debugger"
 arch=('i686' 'x86_64')
@@ -25,8 +25,10 @@ source=("$_pkgname::git+https://github.com/yuzu-emu/yuzu-canary"
         'git+https://github.com/lz4/lz4'
         'git+https://github.com/yuzu-emu/unicorn'
         'git+https://github.com/DarkLordZach/mbedtls'
-        'git+https://github.com/ogniK5377/opus')
+        'git+https://github.com/ogniK5377/opus'
+        'git+https://github.com/citra-emu/ext-soundtouch')
 md5sums=('SKIP'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -60,6 +62,7 @@ prepare() {
 	git config submodule.unicorn.url "$srcdir/unicorn"
 	git config submodule.mbedtls.url "$srcdir/mbedtls"
 	git config submodule.opus.url "$srcdir/opus"
+	git config submodule.soundtouch.url "$srcdir/ext-soundtouch"
 	git submodule update --init --recursive
 }
 
