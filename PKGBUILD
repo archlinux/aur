@@ -5,50 +5,42 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=mysql-workbench-git
-pkgver=6.3.9.r0.g1972008
+pkgver=8.0.12.r0.g7d05cc5df
 pkgrel=1
-# mysql & mysql-connector-c++ from git
-_gdal_version=2.2.3
-_boost_version=1.59.0
+# mysql from git
+_connector_version=8.0.12
+_gdal_version=2.3.1
+_boost_version=1.67.0
 pkgdesc='A cross-platform, visual database design tool developed by MySQL - git checkout'
 arch=('x86_64')
 url='https://www.mysql.com/products/workbench/'
 license=('GPL2')
 depends=('cairo' 'ctemplate' 'desktop-file-utils' 'freetype2' 'gtkmm3'
-	'hicolor-icon-theme' 'libgl' 'libgnome-keyring' 'libiodbc' 'libxml2'
-	'libzip' 'mysql-python' 'pcre' 'python2' 'python2-cairo' 'python2-paramiko'
-	'python2-pexpect' 'tinyxml' 'unixodbc' 'vsqlite++' 'proj' 'json-c')
-optdepends=('gnome-keyring: store SSH/MySQL passwords in GNOME password manager'
-	'python2-pyodbc: database migration')
+	'hicolor-icon-theme' 'libgl' 'libsecret' 'libiodbc' 'libxml2'
+	'libzip' 'mysql-python' 'pcre' 'python2' 'python2-cairo' 'libssh'
+	'python2-pexpect' 'tinyxml' 'unixodbc' 'vsqlite++' 'proj' 'json-c'
+	'antlr4-runtime')
+optdepends=('python2-pyodbc: database migration')
 provides=('mysql-workbench')
 conflicts=('mysql-workbench')
-makedepends=('git' 'cmake' 'boost' 'mesa' 'swig' 'java-runtime' 'imagemagick')
-validpgpkeys=('A4A9406876FCBD3C456770C88C718D3B5072E1F5')
+makedepends=('git' 'cmake' 'boost' 'mesa' 'swig' 'java-runtime' 'imagemagick' 'antlr4')
+validpgpkeys=('A4A9406876FCBD3C456770C88C718D3B5072E1F5') # MySQL Release Engineering <mysql-build@oss.oracle.com>
 source=('git://github.com/mysql/mysql-workbench.git'
 	'git://github.com/mysql/mysql-server.git'
-	'git://github.com/mysql/mysql-connector-cpp.git'
+	"https://cdn.mysql.com/Downloads/Connector-C++/mysql-connector-c++-${_connector_version}-src.tar.gz"{,.asc}
 	"http://download.osgeo.org/gdal/${_gdal_version}/gdal-${_gdal_version}.tar.xz"
 	"https://downloads.sourceforge.net/project/boost/boost/${_boost_version}/boost_${_boost_version//./_}.tar.bz2"
-	'http://www.antlr3.org/download/antlr-3.4-complete.jar'
 	'0001-mysql-workbench-no-check-for-updates.patch'
 	'0002-disable-unsupported-operating-system-warning.patch'
-	'0003-add-option-to-hide-nonstandard-server-warning.patch'
-	'0005-gdal-use-CPLFree.patch'
-	'0006-mysql-include-my_dir.patch'
-	'0007-gdal-json-c-0-13.patch'
 	'arch_linux_profile.xml')
 sha256sums=('SKIP'
             'SKIP'
+            '47d9f152988fe205350a6d31d032692a6777f838a886c3b3dc7af3b0652fdd50'
             'SKIP'
-            'a328d63d476b3653f5a25b5f7971e87a15cdf8860ab0729d4b1157ba988b8d0b'
-            '727a932322d94287b62abb1bd2d41723eec4356a7728909e38adb65ca25241ca'
-            '9d3e866b610460664522520f73b81777b5626fb0a282a5952b9800b751550bf7'
-            'b189e15c6b6f5a707357d9a9297f39ee3a33264fd28b44d5de6f537f851f82cf'
-            '0d65832bc5a73d4cfecef4b552bb78a30ce6020a5fabe5558dcf2ade8341b593'
-            '3c9097af599f08388c471d6fd02f40ea72e5759eaa89f731e662852a5e67feea'
-            '0965b4f12a0ae26bea131f05c7383d4a9b068d556b092ad23e19e1d8f6895531'
-            'd97a1fec15e0dc4491e79ce380f6f994f1c4b387d960c13e178a18b0299c0436'
-            '7000da5a03b7a44b26d86653104558798879ce9a2f6e7e1b929f8f9fcabdf33f'
+	    '9c4625c45a3ee7e49a604ef221778983dd9fd8104922a87f20b99d9bedb7725a'
+	    '2684c972994ee57fc5632e03bf044746f6eb45d4920c343937a465fd67a5adba'
+	    'cdf687f23bc6e8d52dbee9fa02b23d755e80f88476f0fc2e7c4c71cdfed3792f'
+	    '2d0f6dcf38f22e49ef7ab9de0230484f1ffac41b7ac40feaf5ef4538ae2f7a18'
             '2ade582ca25f6d6d748bc84a913de39b34dcaa6e621a77740fe143007f2833af')
 
 pkgver() {
@@ -58,25 +50,15 @@ pkgver() {
 		printf '%s.r%s.g%s' \
 			"$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG})" \
 			"$(git rev-list --count ${GITTAG}..)" \
-			"$(git log -1 --format='%h')"
+			"$(git rev-parse --short HEAD)"
 	else
 		printf '0.r%s.g%s' \
 			"$(git rev-list --count master)" \
-			"$(git log -1 --format='%h')"
+			"$(git rev-parse --short HEAD)"
 	fi
 }
 
 prepare() {
-	cd "${srcdir}/mysql-server/"
-
-	# fix build without server
-	patch -Np1 < "${srcdir}"/0006-mysql-include-my_dir.patch
-
-	cd "${srcdir}/gdal-${_gdal_version}"
-
-	# Add support for json-c v0.13
-	patch -Np2 < "${srcdir}"/0007-gdal-json-c-0-13.patch
-
 	cd "${srcdir}/mysql-workbench/"
 
 	# Disable 'Help' -> 'Check for Updates'
@@ -86,24 +68,14 @@ prepare() {
 	# disable unsupported operating system warning
 	patch -Np1 < "${srcdir}"/0002-disable-unsupported-operating-system-warning.patch
 
-	# add option to hide nonstandard server warning
-	patch -Np1 < "${srcdir}"/0003-add-option-to-hide-nonstandard-server-warning.patch
-
-	# gdal: use CPLFree()
-	patch -Np1 < "${srcdir}"/0005-gdal-use-CPLFree.patch
-
 	# GCC 7.x introduced some new warnings, remove '-Werror' for the build to complete
 	sed -i '/^set/s|-Werror -Wall|-Wall|' CMakeLists.txt
 
 	# GCC 7.x complains about unsupported flag
 	sed -i 's|-Wno-deprecated-register||' ext/scintilla/gtk/CMakeLists.txt
 
-	# we need python 2.x
-	sed -i '/^FIND_PROGRAM(PYTHON_EXEC /c FIND_PROGRAM(PYTHON_EXEC "python2")' \
-		CMakeLists.txt
-
-	# put antlr into place
-	install -D ${srcdir}/antlr-3.4-complete.jar ${srcdir}/linux-res/bin/antlr-3.4-complete.jar
+	# disable stringop-truncation for GCC 8.x
+	sed -i '/^set/s|-Wall|-Wall -Wno-stringop-truncation|' CMakeLists.txt
 
 	# make sure to link against bundled libraries
 	sed -i "/target_link_libraries/s|\\$|-L${srcdir}/install-bundle/usr/lib/ \\$|" backend/wbpublic/CMakeLists.txt
@@ -111,34 +83,41 @@ prepare() {
 
 build() {
 	# Build mysql
-	cd "${srcdir}/mysql-server/"
-	cmake . \
+	mkdir "${srcdir}/mysql-build"
+	cd "${srcdir}/mysql-build"
+	msg "Configure mysql"
+	cmake "${srcdir}/mysql-server" \
 		-DWITHOUT_SERVER=ON \
 		-DBUILD_CONFIG=mysql_release \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_INSTALL_LIBDIR=lib \
 		-DSYSCONFDIR=/etc/mysql \
 		-DMYSQL_DATADIR=/var/lib/mysql \
 		-DWITH_BOOST="${srcdir}/boost_${_boost_version//./_}"
+	msg "Build mysql"
 	make
+	msg "Install mysql"
 	make DESTDIR="${srcdir}/install-bundle/" install
 
 	# Build mysql-connector-c++
-	cd "${srcdir}/mysql-connector-cpp/"
-	cmake . \
+	mkdir "${srcdir}/mysql-connector-c++-${_connector_version}-src-build"
+	cd "${srcdir}/mysql-connector-c++-${_connector_version}-src-build"
+	msg "Configure mysql-connector-c++"
+	cmake "${srcdir}/mysql-connector-c++-${_connector_version}-src" \
 		-Wno-dev \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=Release \
-		-DCMAKE_INSTALL_LIBDIR=lib \
-		-DMYSQLCPPCONN_BUILD_EXAMPLES=OFF \
+		-DINSTALL_LIB_DIR=lib \
 		-DMYSQL_DIR="${srcdir}/install-bundle/" \
 		-DMYSQL_CONFIG_EXECUTABLE="${srcdir}/install-bundle/usr/bin/mysql_config" \
-		-DBOOST_ROOT:STRING="${srcdir}/boost_${_boost_version//./_}"
-
+		-DWITH_JDBC=ON
+	msg "Build mysql-connector-c++"
+	make
+	msg "Install mysql-connector-c++"
 	make DESTDIR="${srcdir}/install-bundle/" install
 
 	# Build gdal
-	cd "${srcdir}/gdal-${_gdal_version}/"
+	cd "${srcdir}/gdal-${_gdal_version}"
+	msg "Configure gdal"
 	./configure \
 		--prefix=/usr \
 		--includedir=/usr/include/gdal \
@@ -146,45 +125,56 @@ build() {
 		--with-mysql="${srcdir}/install-bundle/usr/bin/mysql_config" \
 		--with-curl \
 		--without-jasper
-	make
-	make DESTDIR="${srcdir}/install-bundle/" install
+	msg "Build gdal"
+	make LD_LIBRARY_PATH="${srcdir}/install-bundle/usr/lib/"
+	msg "Install gdal"
+	make LD_LIBRARY_PATH="${srcdir}/install-bundle/usr/lib/" DESTDIR="${srcdir}/install-bundle/" install
 
 	# Build MySQL Workbench itself with bundled libs
-	cd "${srcdir}/mysql-workbench/"
-	cmake . \
+	mkdir "${srcdir}/mysql-workbench-build"
+	cd "${srcdir}/mysql-workbench-build"
+	msg "Configure mysql-workbench"
+	cmake "${srcdir}/mysql-workbench" \
+		-Wno-dev \
 		-DCMAKE_INSTALL_PREFIX:PATH=/usr \
-		-DCMAKE_CXX_FLAGS="-std=c++11" \
+		-DCMAKE_CXX_FLAGS="-std=c++14" \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DMySQL_CONFIG_PATH="${srcdir}/install-bundle/usr/bin/mysql_config" \
 		-DMySQLCppConn_LIBRARY="${srcdir}/install-bundle/usr/lib/libmysqlcppconn.so" \
-		-DMySQLCppConn_INCLUDE_DIR="${srcdir}/install-bundle/usr/include" \
+		-DMySQLCppConn_INCLUDE_DIR="${srcdir}/install-bundle/usr/include/jdbc" \
 		-DGDAL_INCLUDE_DIR="${srcdir}/install-bundle/usr/include" \
 		-DGDAL_LIBRARY="${srcdir}/install-bundle/usr/lib/libgdal.so" \
+		-DWITH_ANTLR_JAR='/usr/share/java/antlr-complete.jar' \
 		-DUSE_BUNDLED_MYSQLDUMP=1
+	msg "Build mysql-workbench"
 	make
 }
 
 package() {
-	# install bundled libraries files and files
+	# install bundled libraries
 	for LIBRARY in $(find "${srcdir}/install-bundle/usr/lib/" -type f -regex '.*/lib\(gdal\|mysql\(client\|cppconn\)\)\.so\..*'); do
-		install -D -m0755 "${LIBRARY}" "${pkgdir}"/usr/lib/mysql-workbench/"$(basename "${LIBRARY}")"
+		BASENAME="$(basename "${LIBRARY}")"
+		SONAME="$(readelf -d "${LIBRARY}" | grep -Po '(?<=(Library soname: \[)).*(?=\])')"
+		install -D -m0755 "${LIBRARY}" "${pkgdir}"/usr/lib/mysql-workbench/"${BASENAME}"
+		ln -s "${BASENAME}" "${pkgdir}"/usr/lib/mysql-workbench/"${SONAME}"
 	done
-	for SYMLINK in $(find "${srcdir}/install-bundle/usr/lib/" -type l -regex '.*/lib\(gdal\|mysql\(client\|cppconn\)\)\.so\..*'); do
-		ln -s "$(readlink "${SYMLINK}")" "${pkgdir}"/usr/lib/mysql-workbench/"$(basename "${SYMLINK}")"
-	done
+
+	# install bundled mysql and mysqldump
 	install -m0755 "${srcdir}/install-bundle/usr/bin/mysql"{,dump} "${pkgdir}"/usr/lib/mysql-workbench/
 
 	# install MySQL Workbench itself
-	cd "${srcdir}/mysql-workbench/"
+	cd "${srcdir}/mysql-workbench-build/"
 
+	# where should these file be generated!?
+	touch "${srcdir}"/mysql-workbench/build/mysql-workbench-commercial.{mime,sharedmimeinfo}
 	make DESTDIR="${pkgdir}" install
 
 	# icons
 	for SIZE in 16 24 32 48 64 96 128; do
 		convert -scale ${SIZE} \
-			images/icons/linux/128x128/apps/mysql-workbench.png \
-			${srcdir}/mysql-workbench.png
-		install -D -m0644 ${srcdir}/mysql-workbench.png "${pkgdir}/usr/share/icons/hicolor/${SIZE}x${SIZE}/apps/mysql-workbench.png"
+			"${srcdir}/mysql-workbench/images/icons/MySQLWorkbench-128.png" \
+			"${srcdir}/mysql-workbench.png"
+		install -D -m0644 "${srcdir}/mysql-workbench.png" "${pkgdir}/usr/share/icons/hicolor/${SIZE}x${SIZE}/apps/mysql-workbench.png"
 	done
 
 	install -D -m 0644 "${srcdir}"/arch_linux_profile.xml \
