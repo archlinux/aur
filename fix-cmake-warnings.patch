@@ -1,0 +1,39 @@
+From: Stephen Kelly <steveire@gmail.com>
+Date: Sun, 19 Jul 2015 19:24:51 +0000
+Subject: Don't attempt to add dependencies which do not exist.
+X-Git-Url: http://quickgit.kde.org/?p=automoc.git&a=commitdiff&h=48f6e64d98e4aaa47f2a49faa5f3e821bc21fd6e
+---
+Don't attempt to add dependencies which do not exist.
+---
+
+
+--- a/Automoc4Config.cmake
++++ b/Automoc4Config.cmake
+@@ -132,7 +132,6 @@
+    if(_moc_files)
+       set(_automoc_source "${CMAKE_CURRENT_BINARY_DIR}/${_target_NAME}_automoc.cpp")
+       get_directory_property(_moc_incs INCLUDE_DIRECTORIES)
+-      get_directory_property(_moc_defs DEFINITIONS)
+       get_directory_property(_moc_cdefs COMPILE_DEFINITIONS)
+ 
+       # Assume CMAKE_INCLUDE_CURRENT_DIR is set
+@@ -198,7 +197,6 @@
+       set(_automoc_source "${CMAKE_CURRENT_BINARY_DIR}/${_target_NAME}.cpp")
+       set(_automoc_dotFiles "${CMAKE_CURRENT_BINARY_DIR}/${_target_NAME}.cpp.files")
+       get_directory_property(_moc_incs INCLUDE_DIRECTORIES)
+-      get_directory_property(_moc_defs DEFINITIONS)
+       get_directory_property(_moc_cdefs COMPILE_DEFINITIONS)
+ 
+       # Assume CMAKE_INCLUDE_CURRENT_DIR is set
+@@ -274,7 +272,9 @@
+ 
+ 
+ macro(_AUTOMOC4_KDE4_POST_TARGET_HANDLING _target)
+-   add_dependencies(${_target} "${_target}_automoc")
++  if (TARGET "${_target}_automoc")
++    add_dependencies(${_target} "${_target}_automoc")
++  endif()
+ endmacro(_AUTOMOC4_KDE4_POST_TARGET_HANDLING)
+ 
+ 
+
