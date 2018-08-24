@@ -4,11 +4,11 @@ name=bullet-constraints-builder
 version=1.0
 #fragment="#commit=7e49329 "
 files=(__init__.py operators.py panel.py preferences.py utils.py)
-_blender=$(expac -S %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
+_blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
 
 pkgname=blender-plugin-${name}
 pkgver=1.0_r259.a800d20
-pkgrel=1
+pkgrel=2
 pkgdesc="This Blender Add-on connect rigid bodies via constraints in a physical plausible way"
 arch=('any')
 url="https://github.com/KaiKostack/bullet-constraints-builder"
