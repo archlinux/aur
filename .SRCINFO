@@ -1,6 +1,6 @@
 pkgbase = pyregions
 	pkgdesc = Telegram Bot - Car registration regions of Russia
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/sk8higher/pyRegions
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = pyregions
 	depends = python-pytelegrambotapi
 	provides = pyregions
 	conflicts = pyregions
-	source = https://github.com/sk8higher/pyRegions/archive/1.0.2.tar.gz
-	sha256sums = 89cfbc6d089a02ab20c182f41a9b3307f35cc1989c2e81a559de853b996bee0d
+	source = https://github.com/sk8higher/pyRegions/archive/1.0.3.tar.gz
+	sha256sums = SKIP
 
 pkgname = pyregions
 
