@@ -4,7 +4,7 @@
 pkgname=pi-hole-server
 _pkgname=pi-hole
 pkgver=4.0
-pkgrel=1
+pkgrel=2
 _wwwpkgname=AdminLTE
 _wwwpkgver=4.0
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
@@ -58,7 +58,7 @@ prepare() {
   _ssc="/tmp/sedcontrol"
   
   # the return of service management
-  sed -i "s|service \${resolver} \${svcOption}|systemctl \${svcOption} \${resolver}|w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
+  sed -i "s|service \${resolver} \${svcOption}|systemctl \${svcOption} pi-hole-ftl|w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: the return of service management" && return 1 ; fi
 
   # setting up and securing pihole wrapper script
