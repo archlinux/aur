@@ -3,23 +3,24 @@
 
 _basename=gst-plugins-bad
 pkgname=lib32-gst-plugins-bad
-pkgver=1.14.1
+pkgver=1.14.2
 pkgrel=1
 pkgdesc="GStreamer Multimedia Framework Bad Plugins (32-bit)"
 url="https://gstreamer.freedesktop.org/"
 arch=(x86_64)
 license=(LGPL)
-depends=(lib32-mjpegtools lib32-curl lib32-chromaprint lib32-libmms
-         lib32-faad2 lib32-celt lib32-libdca lib32-libdvdnav lib32-libgme lib32-libofa lib32-libsrtp
-         lib32-sbc lib32-rtmpdump lib32-libmpeg2 lib32-wildmidi lib32-ladspa
-         lib32-openal lib32-vulkan-icd-loader lib32-libfdk-aac lib32-faac lib32-soundtouch
-         lib32-spandsp lib32-neon lib32-webrtc-audio-processing lib32-libmpcdec
-         lib32-zvbi lib32-libbs2b lib32-libnice lib32-bluez-libs lib32-srt
-         lib32-x265 lib32-lilv lib32-libkate lib32-opencv lib32-fluidsynth
-         lib32-aom lib32-libde265 gst-plugins-bad)
-makedepends=(python autoconf-archive git gobject-introspection lib32-gtk3 vulkan-headers
-             lib32-vulkan-validation-layers lib32-libtiger)
-_commit=fd178617d0fc3bed781d566def792f90d7825d01  # tags/1.14.1^0
+depends=(lib32-aom lib32-bluez-libs lib32-celt lib32-chromaprint lib32-curl lib32-faac lib32-faad2
+         lib32-glu lib32-gnutls lib32-gst-plugins-base-libs lib32-ladspa lib32-lcms2 lib32-libbs2b
+         lib32-libdc1394 lib32-libdca lib32-libdvdnav lib32-libdvdread lib32-libexif
+         lib32-libfdk-aac lib32-libgme lib32-libgudev lib32-libmms lib32-libmodplug lib32-libmpcdec
+         lib32-libmpeg2 lib32-libnice lib32-libofa lib32-libsrtp lib32-libusb lib32-libvdpau
+         lib32-libwebp lib32-mjpegtools lib32-neon lib32-openal lib32-openexr lib32-openjpeg2
+         lib32-rtmpdump lib32-sbc lib32-soundtouch lib32-spandsp lib32-srt lib32-vulkan-icd-loader
+         lib32-wayland lib32-webrtc-audio-processing lib32-wildmidi lib32-zvbi gst-plugins-bad)
+makedepends=(autoconf-archive lib32-fluidsynth git gobject-introspection lib32-gtk3 lib32-librsvg
+             lib32-libtiger lib32-lilv lib32-opencv python vulkan-headers
+             lib32-vulkan-validation-layers)
+_commit=513ef5efdf85f9af4a016e8ae69f28cf16c9ec58  # tags/1.14.2^0
 source=("git+https://anongit.freedesktop.org/git/gstreamer/gst-plugins-bad#commit=$_commit"
         "gst-common::git+https://anongit.freedesktop.org/git/gstreamer/common"
         missing-includes.diff)
@@ -79,7 +80,7 @@ check() {
     cd $_basename
 
     # bad tests are bad
-    make -k check || :
+    #make -k check || :
 }
 
 package() {
