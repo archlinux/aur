@@ -3,15 +3,15 @@
 
 pkgname=emscripten-git
 epoch=1
-pkgver=1.38.0.15.gd54eb4efb
+pkgver=1.38.11.64.gc5a076bf0
 pkgrel=1
 pkgdesc="LLVM-to-JavaScript compiler"
 arch=('i686' 'x86_64')
 url="http://emscripten.org"
 license=('custom')
-depends=('nodejs' 'python2' 'python')
-makedepends=('git' 'cmake' 'clang' 'libxml2' 'ocaml-ctypes' 'gcc6')
-optdepends=('java-environment: for using clojure'
+depends=('nodejs' 'python2' 'python' 'libxml2')
+makedepends=('git' 'cmake' 'clang' 'ocaml-ctypes')
+optdepends=('java-runtime: for using clojure'
 	    'gcc-go: for using llvm-go, go may also work'
 	    'ruby: for running some scripts')
 conflicts=('emscripten')
@@ -60,7 +60,7 @@ prepare() {
 
 build() {
   cd ${pkgname%-git}-fastcomp/build
-  CC=gcc-6 CXX=g++-6 cmake .. -DPYTHON_EXECUTABLE=/usr/bin/python2 \
+  cmake .. -DPYTHON_EXECUTABLE=/usr/bin/python2 \
     -DCMAKE_BUILD_TYPE=Release \
     -DLLVM_TARGETS_TO_BUILD="X86;JSBackend" \
     -DLLVM_BUILD_RUNTIME=OFF \
