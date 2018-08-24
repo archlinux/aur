@@ -1,6 +1,6 @@
 # Maintainer: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
 pkgname='emoji-keyboard-edam-git'
-pkgver=r37.c54fade
+pkgver=r38.af418a0
 pkgrel=1
 pkgdesc="Virtual keyboard-like emoji picker for Linux (edam's fork)."
 arch=('i686' 'x86_64')
