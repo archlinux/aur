@@ -1,26 +1,22 @@
 # Maintainer: Alex Branham <branham@utexas.edu>
-_cranname=callr
-_cranver=2.0.4
-_pkgtar=${_cranname}_${_cranver}.tar.gz
+_cranver=3.0.0
 pkgname=r-callr
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc="Call R from R"
+pkgdesc='Call R from R'
 arch=('any')
-url="https://cran.r-project.org/package=${_cranname}"
+url='https://cran.r-project.org/package=callr'
 license=('MIT')
-depends=('r' 'r-processx>=3.1.0' 'r-r6')
-
-optdepends=('r-covr' 'r-testthat' 'r-withr')
-
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('14d542a7a422c9449beece9c82db3ade')
+depends=('r' 'r-base64enc' 'r-processx>=3.2.0' 'r-r6')
+optdepends=('r-covr' 'r-crayon' 'r-ps' 'r-testthat' 'r-withr')
+source=("https://cran.r-project.org/src/contrib/callr_"$_cranver".tar.gz")
+md5sums=('ed29786f0760021d76fff26b205be2fd')
 
 build(){
-    R CMD INSTALL ${_pkgtar} -l $srcdir
+    R CMD INSTALL callr_"$_cranver".tar.gz -l "$srcdir"
 }
 package() {
-    install -d "$pkgdir/usr/lib/R/library"
-    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
+    install -dm0755 "$pkgdir"/usr/lib/R/library
+    cp -a --no-preserve=ownership callr "$pkgdir"/usr/lib/R/library
 }
 
