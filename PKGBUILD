@@ -20,7 +20,7 @@ install=
 changelog=
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Bottersnike/block/archive/v${pkgver}.tar.gz")
 noextract=()
-md5sums=('25fea1e9d57a54b51cafe40c606b2677')
+md5sums=('ce253719087018705ca88b524743b1f8')
 validpgpkeys=()
 
 build() {
