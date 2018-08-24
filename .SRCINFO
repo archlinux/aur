@@ -1,6 +1,6 @@
 pkgbase = webvirtcloud-git
 	pkgdesc = WebVirtCloud is virtualization web interface for admins and users
-	pkgver = 20180814.408.3748a46
+	pkgver = 20180824.422.3f98aa2
 	pkgrel = 1
 	url = https://github.com/retspen/webvirtcloud
 	install = webvirtcloud-git.install
