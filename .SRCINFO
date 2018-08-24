@@ -17,9 +17,15 @@ pkgname = python-smart_open
 	depends = python-boto
 	depends = python-boto3
 	optdepends = python-bz2file: Handling bz2 files
+	provides = python-smart-open
+	conflicts = python-smart-open
+	replaces = python-smart-open
 
 pkgname = python2-smart_open
 	depends = python2-requests
 	depends = python2-boto
 	depends = python2-boto3
 	optdepends = python2-bz2file: Handling bz2 files
+	provides = python2-smart-open
+	conflicts = python2-smart-open
+	replaces = python2-smart-open
