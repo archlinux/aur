@@ -22,7 +22,7 @@ pkgver() {
 
 package() {
   cd "$srcdir/$pkgname"
-	
+
 # install openssh-ldap-publickey to /usr/local/bin
   install -Dm755 "bin/openssh-ldap-publickey" \
     "${pkgdir}/usr/local/bin/openssh-ldap-publickey"
