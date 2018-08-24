@@ -5,17 +5,17 @@
 pkgname=nautilus-open-terminal-git
 _gitname=nautilus-open-terminal
 pkgver=0.20.15.g07fe03e
-pkgrel=1
+pkgrel=2
 pkgdesc="Nautilus plugin for opening terminals in arbitrary local paths and on SSH servers"
 arch=('i686' 'x86_64')
-url="http://git.gnome.org/browse/nautilus-open-terminal/"
+url="https://gitlab.gnome.org/GNOME/nautilus-open-terminal/"
 license=('GPL')
 depends=('nautilus' 'intltool' 'gettext' 'gconf')
 makedepends=('git' 'gnome-common')
 provides=('nautilus-open-terminal')
 conflicts=('nautilus-open-terminal')
 
-source=('git://git.gnome.org/nautilus-open-terminal'
+source=('git+https://gitlab.gnome.org/GNOME/nautilus-open-terminal.git'
         'automake.diff'
         'nautilus-open-terminal.patch')
 
@@ -41,6 +41,6 @@ build() {
 }
 
 package() {
-	cd $_gitname
+  cd $_gitname
   make DESTDIR="$pkgdir/" install
 }
