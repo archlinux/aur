@@ -126,9 +126,11 @@ the provided license for more information.
     * International
 * DEB/RPM package
 * Bookmark certain stocks (not included in portfolio)
-* Zoom in more than one month for graph
+* Zoom in more than one month for ncurses graph
 * Average graph points when skipping indices for greater accuracy
 * Android app?
-* History stack
-* GUI info, graph, etc.
-* Replace coinmarketcap (depending on iexv2 release date)
+* GTK+ graph
+* Implement Coinmarketcap v2
+* Notes for portfolio securities
+* Search for securities
+* History per session
