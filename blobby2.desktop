@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Blobby Volley 2
+Exec=blobby
+Icon=blobby2
+Terminal=false
+Type=Application
+Categories=Game;ArcadeGame;
+StartupNotify=false
+Comment=Volley game with network support
+GenericName=Volley Game
