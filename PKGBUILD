@@ -1,7 +1,7 @@
 # Maintainer: sballert <sballert@posteo.de>
 
 pkgname=emacs-all-the-icons-ivy-git
-pkgver=r16.52b3f4a
+pkgver=r21.789e335
 pkgrel=1
 pkgdesc="all-the-icons.el for Ivy/Counsel"
 arch=('any')
