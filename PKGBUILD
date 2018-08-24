@@ -11,7 +11,7 @@ makedepends=('python' 'mingw-w64-configure' 'mingw-w64-libsoup' 'mingw-w64-cairo
 optdepends=(
   "mingw-w64-libsoup: http src and sink plugins"
   "mingw-w64-cairo: cairo overlay plugin"
-  "mingw-w64-pixbuf2: pixbuf plugins"
+  "mingw-w64-gdk-pixbuf2: pixbuf plugins"
   "mingw-w64-libpng: png encoding/decoding plugins"
   "mingw-w64-libjpeg-turbo: jpeg encoding/decoding plugins"
   "mingw-w64-libvpx: VP8/9 encoding/decoding plugins"
