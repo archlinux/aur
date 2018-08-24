@@ -3,7 +3,7 @@
 pkgname=pi-hole-standalone
 _pkgname=pi-hole
 pkgver=4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch alteration for standalone PC.'
 arch=('any')
 license=('EUPL-1.1')
@@ -34,7 +34,7 @@ prepare() {
   _ssc="/tmp/sedcontrol"
   
   # the return of service management
-  sed -i "s|service \${resolver} \${svcOption}|systemctl \${svcOption} \${resolver}|w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
+  sed -i "s|service \${resolver} \${svcOption}|systemctl \${svcOption} pi-hole-ftl|w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: the return of service management" && return 1 ; fi
 
   # setting up and securing pihole wrapper script
