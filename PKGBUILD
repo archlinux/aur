@@ -1,7 +1,7 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
 pkgname=mingw-w64-libvpx
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="VP8 and VP9 codec (mingw-w64)"
 arch=('any')
 url="http://www.webmproject.org/"
@@ -34,7 +34,7 @@ build() {
       _targetarch="x86_64-win64-gcc"
     fi
 
-    CFLAGS="$EXTRA_CFLAGS $CFLAGS" CROSS="${_arch}-" ../configure \
+    CFLAGS="$EXTRA_CFLAGS $CFLAGS -fno-asynchronous-unwind-tables" CROSS="${_arch}-" ../configure \
         --prefix=/usr/${_arch} \
         --target=${_targetarch} \
         --enable-runtime-cpu-detect \
