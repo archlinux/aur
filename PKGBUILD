@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/GIJack/bleachbit-msf"
 license=('GPLv3')
 depends=('bleachbit')
-source=("${pkgname}-${pkgver}::https://github.com/GIJack/bleachbit-msf/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/GIJack/bleachbit-msf/archive/v${pkgver}.tar.gz")
 sha256sums=('84ceb8bc2b7ce04e1a86982fe1c95a58d516b2be8ccad9cb65952c7a04f90389')
 
 package() {
