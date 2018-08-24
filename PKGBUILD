@@ -6,17 +6,17 @@ version=0.1
 #fragment="#commit=7e49329 "
 files=(io_import_gcode.py)
 is_flat="yes"
-_blender=$(expac -S %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
+_blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
 
 pkgname=blender-plugin-${name}
 pkgver=0.1_r29.74a9fbf
-pkgrel=2
+pkgrel=3
 pkgdesc="Import Reprap Gcode files into blender."
 arch=('any')
 url=${github_link}
 license=('GPL')
 depends=('blender')
-makedepends=('git' 'expac')
+makedepends=('git')
 source=("${name}::git+${github_link}${fragment}")
 md5sums=('SKIP')
 
