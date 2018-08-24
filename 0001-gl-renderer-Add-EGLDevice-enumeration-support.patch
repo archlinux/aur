@@ -1,4 +1,4 @@
-From 89c953d8bc97cb9d80c344d8dad4e44ed22ee691 Mon Sep 17 00:00:00 2001
+From 0592a2a1b337880ce74d621297d10c988972efd1 Mon Sep 17 00:00:00 2001
 From: "Miguel A. Vico" <mvicomoya@nvidia.com>
 Date: Mon, 2 May 2016 15:56:37 +0200
 Subject: [PATCH 1/8] gl-renderer: Add EGLDevice enumeration support
@@ -17,8 +17,8 @@ Reviewed-by: Andy Ritger <aritger@nvidia.com>
 Reviewed-by: Adam Cheney <acheney@nvidia.com>
 Reviewed-by: James Jones <jajones@nvidia.com>
 ---
- libweston/gl-renderer.c | 89 ++++++++++++++++++++++++++++++++++++++++++++++++-
- libweston/gl-renderer.h |  8 +++++
+ libweston/gl-renderer.c | 89 ++++++++++++++++++++++++++++++++++++++++-
+ libweston/gl-renderer.h |  8 ++++
  2 files changed, 96 insertions(+), 1 deletion(-)
 
 diff --git a/libweston/gl-renderer.c b/libweston/gl-renderer.c
@@ -152,5 +152,5 @@ index b47ea07f..9ff4e21e 100644
  };
  
 -- 
-2.15.1
+2.18.0
 

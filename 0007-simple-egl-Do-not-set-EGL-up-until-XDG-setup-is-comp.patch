@@ -1,7 +1,7 @@
-From 6e414ed71b82b92fc21dd2bd05dc66fd1d05de97 Mon Sep 17 00:00:00 2001
+From 27266e389b238f023f8789fec40ae661541372e4 Mon Sep 17 00:00:00 2001
 From: "Miguel A. Vico" <mvicomoya@nvidia.com>
 Date: Mon, 27 Feb 2017 15:31:35 -0800
-Subject: [PATCH 6/8] simple-egl: Do not set EGL up until XDG setup is complete
+Subject: [PATCH 7/8] simple-egl: Do not set EGL up until XDG setup is complete
 X-NVConfidentiality: public
 
 There is nothing that prohibits the underlying EGL_PLATFORM_WAYLAND
@@ -18,7 +18,7 @@ Related bug:
 
 Signed-off-by: Miguel A Vico Moya <mvicomoya@nvidia.com>
 ---
- clients/simple-egl.c | 67 +++++++++++++++++++++++++++-------------------------
+ clients/simple-egl.c | 67 +++++++++++++++++++++++---------------------
  1 file changed, 35 insertions(+), 32 deletions(-)
 
 diff --git a/clients/simple-egl.c b/clients/simple-egl.c
@@ -164,5 +164,5 @@ index a1e57aef..0ca66415 100644
  	wl_surface_destroy(display.cursor_surface);
  	if (display.cursor_theme)
 -- 
-2.15.1
+2.18.0
 

@@ -1,7 +1,7 @@
-From 81512adf8d6f1ced68ea55513a8428f323d1185f Mon Sep 17 00:00:00 2001
+From 8d52cfe1ae51e6a69ec2c41c65faeb02a5cc1314 Mon Sep 17 00:00:00 2001
 From: "Miguel A. Vico" <mvicomoya@nvidia.com>
 Date: Thu, 18 May 2017 14:35:36 -0700
-Subject: [PATCH 7/8] compositor: Process stream attach requests with
+Subject: [PATCH 6/8] compositor: Process stream attach requests with
  wl_eglstream_controller
 X-NVConfidentiality: public
 
@@ -32,18 +32,18 @@ Signed-off-by: Ashutosh Agarwal <asagarwal@nvidia.com>
 Signed-off-by: Miguel A Vico Moya <mvicomoya@nvidia.com>
 ---
  Makefile.am                               |   5 +
- libweston/compositor.c                    |  78 ++++++++++++++++
+ libweston/compositor.c                    |  78 ++++++++++++
  libweston/compositor.h                    |   4 +
- libweston/gl-renderer.c                   | 147 +++++++++++++++++++-----------
- protocol/wayland-eglstream-controller.xml |  37 ++++++++
+ libweston/gl-renderer.c                   | 147 ++++++++++++++--------
+ protocol/wayland-eglstream-controller.xml |  37 ++++++
  5 files changed, 217 insertions(+), 54 deletions(-)
  create mode 100644 protocol/wayland-eglstream-controller.xml
 
 diff --git a/Makefile.am b/Makefile.am
-index 69ca6cba..fbfbe8d0 100644
+index 83bb2533..3b8fe631 100644
 --- a/Makefile.am
 +++ b/Makefile.am
-@@ -172,6 +172,11 @@ nodist_libweston_@LIBWESTON_MAJOR@_la_SOURCES =				\
+@@ -173,6 +173,11 @@ nodist_libweston_@LIBWESTON_MAJOR@_la_SOURCES =				\
  
  BUILT_SOURCES += $(nodist_libweston_@LIBWESTON_MAJOR@_la_SOURCES)
  
@@ -56,18 +56,18 @@ index 69ca6cba..fbfbe8d0 100644
  
  weston_LDFLAGS = -export-dynamic
 diff --git a/libweston/compositor.c b/libweston/compositor.c
-index 4816f33e..8c144117 100644
+index 9deb7817..a2941788 100644
 --- a/libweston/compositor.c
 +++ b/libweston/compositor.c
-@@ -2,6 +2,7 @@
-  * Copyright © 2010-2011 Intel Corporation
+@@ -3,6 +3,7 @@
   * Copyright © 2008-2011 Kristian Høgsberg
-  * Copyright © 2012-2015 Collabora, Ltd.
-+ * Copyright © 2017 NVIDIA Corporation
+  * Copyright © 2012-2018 Collabora, Ltd.
+  * Copyright © 2017, 2018 General Electric Company
++ * Copyright © 2017-2018 NVIDIA Corporation
   *
   * Permission is hereby granted, free of charge, to any person obtaining
   * a copy of this software and associated documentation files (the
-@@ -63,6 +64,7 @@
+@@ -64,6 +65,7 @@
  #include "git-version.h"
  #include "version.h"
  #include "plugin-registry.h"
@@ -75,7 +75,7 @@ index 4816f33e..8c144117 100644
  
  #define DEFAULT_REPAINT_WINDOW 7 /* milliseconds */
  
-@@ -5243,6 +5245,80 @@ bind_presentation(struct wl_client *client,
+@@ -6246,6 +6248,80 @@ bind_presentation(struct wl_client *client,
  	wp_presentation_send_clock_id(resource, compositor->presentation_clock);
  }
  
@@ -156,7 +156,7 @@ index 4816f33e..8c144117 100644
  static void
  compositor_bind(struct wl_client *client,
  		void *data, uint32_t version, uint32_t id)
-@@ -5355,6 +5431,8 @@ weston_compositor_create(struct wl_display *display, void *user_data)
+@@ -6361,6 +6437,8 @@ weston_compositor_create(struct wl_display *display, void *user_data)
  			      ec, bind_presentation))
  		goto fail;
  
@@ -166,10 +166,10 @@ index 4816f33e..8c144117 100644
  		goto fail;
  
 diff --git a/libweston/compositor.h b/libweston/compositor.h
-index 010f1fa8..d43625bc 100644
+index 8b7a1020..2edce664 100644
 --- a/libweston/compositor.h
 +++ b/libweston/compositor.h
-@@ -769,6 +769,10 @@ struct weston_renderer {
+@@ -924,6 +924,10 @@ struct weston_renderer {
  	void (*query_dmabuf_modifiers)(struct weston_compositor *ec,
  				int format, uint64_t **modifiers,
  				int *num_modifiers);
@@ -421,5 +421,5 @@ index 00000000..dea072e6
 +  </interface>
 +</protocol>
 -- 
-2.15.1
+2.18.0
 

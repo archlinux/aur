@@ -1,4 +1,4 @@
-From b1109f50484634fe66e07e9ef958e870263a0b21 Mon Sep 17 00:00:00 2001
+From 1ec5af6e4f51004856d7aee2184d7e4fe11ef086 Mon Sep 17 00:00:00 2001
 From: "Miguel A. Vico" <mvicomoya@nvidia.com>
 Date: Thu, 29 Mar 2018 00:15:49 -0700
 Subject: [PATCH 3/8] gl-renderer: Add EGL client support for EGLStream frame
@@ -24,7 +24,7 @@ Signed-off-by: Miguel A Vico Moya <mvicomoya@nvidia.com>
 Reviewed-by: Adam Cheney <acheney@nvidia.com>
 Reviewed-by: James Jones <jajones@nvidia.com>
 ---
- libweston/gl-renderer.c | 183 +++++++++++++++++++++++++++++++++++++++++++++++-
+ libweston/gl-renderer.c | 183 +++++++++++++++++++++++++++++++++++++++-
  shared/weston-egl-ext.h |   5 ++
  2 files changed, 187 insertions(+), 1 deletion(-)
 
@@ -322,5 +322,5 @@ index f39990ed..96982e2d 100644
  
  /* EGL platform definition are keept to allow compositor-xx.c to build */
 -- 
-2.15.1
+2.18.0
 

@@ -1,4 +1,4 @@
-From c87642ad69fb5ce256430b85fd3a0b00bd0355d3 Mon Sep 17 00:00:00 2001
+From 58926a862d2fe59c918ab2cd4d15ac60f51039f3 Mon Sep 17 00:00:00 2001
 From: "Miguel A. Vico" <mvicomoya@nvidia.com>
 Date: Wed, 9 Aug 2017 16:01:34 -0700
 Subject: [PATCH 8/8] Add nvidia-release-notes file
@@ -12,15 +12,15 @@ Signed-off-by: Miguel A Vico Moya <mvicomoya@nvidia.com>
 
 diff --git a/nvidia-release-notes b/nvidia-release-notes
 new file mode 100644
-index 00000000..5da24838
+index 00000000..1ef437ea
 --- /dev/null
 +++ b/nvidia-release-notes
 @@ -0,0 +1,27 @@
-+NVIDIA EGLStream-based Weston version 4.0
-+-----------------------------------------
++NVIDIA EGLStream-based Weston version 5.0.0
++-------------------------------------------
 +
 +This branch includes NVIDIA EGLStream patches on top of
-+Weston 4.0.
++Weston 5.0.0.
 +
 +* Known issues:
 +
@@ -30,13 +30,13 @@ index 00000000..5da24838
 +
 +    Fixed if using wl_eglstream_controller from commit:
 +
-+      a044287897d3646440644555f7ac1d756e39e0d2 compositor: Process stream attach requests with wl_eglstream_controller
++      8d52cfe1ae51e6a69ec2c41c65faeb02a5cc1314 compositor: Process stream attach requests with wl_eglstream_controller
 +
 +      (Needs libnvidia-egl-wayland.so >= 1.0.2 - https://github.com/NVIDIA/egl-wayland)
 +
 +    Fixed in 'weston-simple-egl' with commit:
 +
-+      ce015e27839809ed4d602dd8d977f2df770b0921 simple-egl: Do not set EGL up until XDG setup is complete
++      27266e389b238f023f8789fec40ae661541372e4 simple-egl: Do not set EGL up until XDG setup is complete
 +
 +
 +* Contact:
@@ -44,5 +44,5 @@ index 00000000..5da24838
 +  Miguel A. Vico (mvicomoya AT nvidia.com)
 +
 -- 
-2.15.1
+2.18.0
 

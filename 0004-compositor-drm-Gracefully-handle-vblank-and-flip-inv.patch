@@ -1,4 +1,4 @@
-From e207c4f2bf1e359e329b73974184ac4f8ef3a7f3 Mon Sep 17 00:00:00 2001
+From 51f88599bea32521399f572e02da6f7ff1557172 Mon Sep 17 00:00:00 2001
 From: "Miguel A. Vico" <mvicomoya@nvidia.com>
 Date: Tue, 1 Mar 2016 22:19:14 +0100
 Subject: [PATCH 4/8] compositor-drm: Gracefully handle vblank and flip invalid
@@ -22,18 +22,18 @@ Reviewed-by: Andy Ritger <aritger@nvidia.com>
  1 file changed, 25 insertions(+), 3 deletions(-)
 
 diff --git a/libweston/compositor-drm.c b/libweston/compositor-drm.c
-index c09c49bf..24573f48 100644
+index 38911763..577d2e2f 100644
 --- a/libweston/compositor-drm.c
 +++ b/libweston/compositor-drm.c
-@@ -1,6 +1,7 @@
- /*
-  * Copyright © 2008-2011 Kristian Høgsberg
+@@ -3,6 +3,7 @@
   * Copyright © 2011 Intel Corporation
-+ * Copyright © 2016 NVIDIA Corporation
+  * Copyright © 2017, 2018 Collabora, Ltd.
+  * Copyright © 2017, 2018 General Electric Company
++ * Copyright © 2016-2018 NVIDIA Corporation
   *
   * Permission is hereby granted, free of charge, to any person obtaining
   * a copy of this software and associated documentation files (the
-@@ -1433,6 +1434,19 @@ drm_output_update_complete(struct drm_output *output, uint32_t flags,
+@@ -1860,6 +1861,19 @@ drm_output_update_complete(struct drm_output *output, uint32_t flags,
  
  	ts.tv_sec = sec;
  	ts.tv_nsec = usec * 1000;
@@ -53,7 +53,7 @@ index c09c49bf..24573f48 100644
  	weston_output_finish_frame(&output->base, &ts, flags);
  
  	/* We can't call this from frame_notify, because the output's
-@@ -2434,8 +2448,16 @@ drm_output_start_repaint_loop(struct weston_output *output_base)
+@@ -2849,8 +2863,16 @@ drm_output_start_repaint_loop(struct weston_output *output_base)
  	vbl.request.type |= drm_waitvblank_pipe(output);
  	ret = drmWaitVBlank(backend->drm.fd, &vbl);
  
@@ -72,7 +72,7 @@ index c09c49bf..24573f48 100644
  		ts.tv_sec = vbl.reply.tval_sec;
  		ts.tv_nsec = vbl.reply.tval_usec * 1000;
  
-@@ -2456,7 +2478,7 @@ drm_output_start_repaint_loop(struct weston_output *output_base)
+@@ -2871,7 +2893,7 @@ drm_output_start_repaint_loop(struct weston_output *output_base)
  		}
  	}
  
@@ -82,5 +82,5 @@ index c09c49bf..24573f48 100644
  	 */
  
 -- 
-2.15.1
+2.18.0
 

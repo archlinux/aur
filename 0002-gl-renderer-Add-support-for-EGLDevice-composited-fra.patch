@@ -1,4 +1,4 @@
-From 61c044bfaa84364e6043e19dd8c056e1ccffb749 Mon Sep 17 00:00:00 2001
+From db0add622cd4f8594222e493e164bfb3224230e5 Mon Sep 17 00:00:00 2001
 From: "Miguel A. Vico" <mvicomoya@nvidia.com>
 Date: Mon, 2 May 2016 16:34:01 +0200
 Subject: [PATCH 2/8] gl-renderer: Add support for EGLDevice composited frame
@@ -42,9 +42,9 @@ Reviewed-by: Andy Ritger <aritger@nvidia.com>
 Reviewed-by: Adam Cheney <acheney@nvidia.com>
 Reviewed-by: James Jones <jajones@nvidia.com>
 ---
- libweston/gl-renderer.c | 262 +++++++++++++++++++++++++++++++++++++++++++++++-
+ libweston/gl-renderer.c | 262 +++++++++++++++++++++++++++++++++++++++-
  libweston/gl-renderer.h |  16 +++
- shared/weston-egl-ext.h |  40 ++++++++
+ shared/weston-egl-ext.h |  40 ++++++
  3 files changed, 315 insertions(+), 3 deletions(-)
 
 diff --git a/libweston/gl-renderer.c b/libweston/gl-renderer.c
@@ -518,5 +518,5 @@ index 0784ea2d..f39990ed 100644
  #endif /* ENABLE_EGL */
  
 -- 
-2.15.1
+2.18.0
 
