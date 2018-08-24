@@ -1,9 +1,10 @@
-# Maintainer: Ben Widawsky <ben@bwidawsk.net>
+# Maintainer: John Garland <johnnybg+aur@gmail.com>
+# Contributor: Ben Widawsky <ben@bwidawsk.net>
 # Contributor: Jonathan Arnold <jarnold@buddydog.org>
 # Contributor: Marq Schneider <queueRAM@gmail.com>
 
 pkgname=p4v
-pkgver=2018.1.1637591
+pkgver=2018.2.1687764
 pkgrel=1
 pkgdesc="Perforce Visual Client"
 arch=('x86_64')
@@ -18,7 +19,7 @@ sha256sums=('1fc7ea925fdcb38915f191b6a9c85fb46db9ef501dbaa077e8f38876c5e8fda0'
             '10e470c6099459a072565494c4fd21cc1f4198f1024fe6fdeb6c77ea7e594827'
             '139c5e4951ea9ab040912ef1f9705de16a37d32fdf7b8c7116eb5a785829c634'
             'c4ed3aef62b1bbf2d16ce4cceb65dc49ab9635b38e2fed0a595fe259283a9f32'
-            '0769893ec9534d43a0c562d076426838c5dbc497b486281978a388a7eaadda4a')
+            '9b1da4f908f24b17d3fb4e8aa6ea7ede6fd72f93d6964a8c3e3704e0fd40f114')
 
 package() {
   cd ${pkgname}-${pkgver}/
@@ -33,9 +34,9 @@ package() {
 
   # Install icons
   mkdir -p "$pkgdir"/usr/share/icons/hicolor/scalable/apps
-  install -Dm644 lib/p4v/P4VResources/icons/p4admin.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/p4admin.svg
-  install -Dm644 lib/p4v/P4VResources/icons/p4merge.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/p4merge.svg
-  install -Dm644 lib/p4v/P4VResources/icons/p4v.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/p4v.svg
+  install -Dm644 lib/P4VResources/icons/p4admin.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/p4admin.svg
+  install -Dm644 lib/P4VResources/icons/p4merge.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/p4merge.svg
+  install -Dm644 lib/P4VResources/icons/p4v.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/p4v.svg
 
   mkdir -p "${pkgdir}"/usr/share/applications
 
