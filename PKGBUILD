@@ -18,12 +18,12 @@
 pkgbase="zfs-linux-lts-git"
 pkgname=("zfs-linux-lts-git" "zfs-linux-lts-git-headers")
 
-pkgver=2018.08.22.r4690.ge8a8208ee.4.14.65.1
+pkgver=2018.08.23.r4692.g55972a672.4.14.66.1
 pkgrel=1
-makedepends=("linux-lts-headers=4.14.65-1" "git")
+makedepends=("linux-lts-headers=4.14.66-1" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
-source=("git+https://github.com/zfsonlinux/zfs.git#commit=e8a8208eef3f2e256ddbf91e73add2e08705d482"
+source=("git+https://github.com/zfsonlinux/zfs.git#commit=55972a6724ca49d98d67a47fe0f0b28ad21260d5"
         "upstream-ac09630-Fix-zpl_mount-deadlock.patch"
         "upstream-9f64c1e-Linux-4.18-compat-inode-timespec_timespec64.patch"
         "upstream-9161ace-Linux-compat-4.18-check_disk_size_change.patch")
@@ -32,7 +32,7 @@ sha256sums=("SKIP"
             "03ed45af40850c3a51a6fd14f36c1adc06501c688a67afb13db4fded6ec9db1d"
             "afbde4a2507dff989404665dbbdfe18eecf5aba716a6513902affa0e4cb033fe")
 license=("CDDL")
-depends=("kmod" "zfs-utils-common-git=2018.08.22.r4690.ge8a8208ee" "linux-lts=4.14.65-1")
+depends=("kmod" "zfs-utils-common-git=2018.08.23.r4692.g55972a672" "linux-lts=4.14.66-1")
 
 build() {
     cd "${srcdir}/zfs"
@@ -40,8 +40,8 @@ build() {
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
                 --datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
                 --libexecdir=/usr/lib/zfs-0.7.9 --with-config=kernel \
-                --with-linux=/usr/lib/modules/4.14.65-1-lts/build \
-                --with-linux-obj=/usr/lib/modules/4.14.65-1-lts/build
+                --with-linux=/usr/lib/modules/4.14.66-1-lts/build \
+                --with-linux-obj=/usr/lib/modules/4.14.66-1-lts/build
     make
 }
 
@@ -67,5 +67,5 @@ package_zfs-linux-lts-git-headers() {
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.14.65-1-lts/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.14.66-1-lts/Module.symvers
 }
