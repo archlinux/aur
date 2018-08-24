@@ -1,9 +1,8 @@
 pkgbase = plymouth
 	pkgdesc = A graphical boot splash screen with kernel mode-setting support
 	pkgver = 0.9.3
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.freedesktop.org/wiki/Software/Plymouth/
-	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = docbook-xsl
@@ -36,6 +35,7 @@ pkgbase = plymouth
 	source = plymouth-quit.service.in.patch
 	source = plymouth-set-default-theme.in.patch
 	source = plymouth-update-initrd.patch
+	source = sysmacros.patch
 	md5sums = b261c720888a5431cdfce8494805eab3
 	md5sums = 65fa2763d5c9bb9f80973ea5e6e3db3e
 	md5sums = d67132b297ccfb1a877a2efd78076963
@@ -54,6 +54,7 @@ pkgbase = plymouth
 	md5sums = 165a39dbedcc6e123c8ca05d5b4b2e25
 	md5sums = f79edbbb30c71b0dbcd102c7dd31660b
 	md5sums = 0357775c16b5f90f1af485e6a4c80a9e
+	md5sums = d2805e2ac2b4dcaf44f63e9a5f898e94
 
 pkgname = plymouth
 
