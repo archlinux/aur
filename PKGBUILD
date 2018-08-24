@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-gstreamer-git
-pkgver=1.14.0.r73.dfe546720
+pkgver=1.14.0.r146.3ee4896be
 pkgrel=1
 _gitname=gstreamer
 pkgdesc="GStreamer Multimedia Framework (mingw-w64)"
@@ -27,9 +27,8 @@ build() {
   for _arch in $_architectures; do
     mkdir -p "build-${_arch}" && pushd build-${_arch}
     ${_arch}-meson \
-      -D libunwind=false \
-      -D examples=false \
-      -D gtk_doc=false \
+      -D examples=disabled \
+      -D gtk_doc=disabled \
       -D package-name="GStreamer (Arch Linux)" \
       -D package-origin="http://www.archlinux.org/" ..
     ninja 
