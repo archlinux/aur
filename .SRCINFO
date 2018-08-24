@@ -1,7 +1,7 @@
 pkgbase = sprycloud-client-git
 	pkgdesc = spryCloud client for Linux
 	pkgver = 2.5.0.spry.r8.r0.g774cecd22
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.spryservers.net/
 	install = sprycloud-client.install
 	arch = i686
@@ -22,7 +22,6 @@ pkgbase = sprycloud-client-git
 	optdepends = python2-nautilus
 	optdepends = python-sphinx
 	optdepends = doxygen
-	optdepends = libcloudproviders
 	provides = sprycloud-client
 	provides = sprycloud-client-git
 	conflicts = sprycloud-client
