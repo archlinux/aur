@@ -1,6 +1,6 @@
 pkgname=sparforte-git
-pkgver=2.1.r31.ga05bf87
-pkgrel=2
+pkgver=2.1.r181.g8feee7e
+pkgrel=1
 
 pkgdesc='shell and scripting language formally known as bush'
 url='http://www.sparforte.com'
@@ -17,7 +17,7 @@ source=('git+https://github.com/kburtch/SparForte'
         'config.linux')
 
 sha256sums=('SKIP'
-            '139639a486cb9c85fa06a89b16db33eff20e800007aa0eb8811556bb0a26b866')
+            '6c7539230e5b0542154e5943ae3be2b244477b4929ad20f75a2e052517bae656')
 
 pkgver() {
     cd SparForte

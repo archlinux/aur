@@ -8,6 +8,7 @@
 #   and other damage sparforte's configure script can do such as calling sudo.
 
 readonly startdir=$PWD
+SOURCE_DATE_EPOCH=${SOURCE_DATE_EPOCH:-$(date +%s)}
 
 CC=gcc
 CPU_FLAG=-march
@@ -24,14 +25,22 @@ prepare() {
     local ext=${1##*.}
     printf -- '%s: updating...\n' "$1"
     cp -- "$1".orig temp."$ext"
-    if gnatprep -DPOSTGRES=true -DMYSQL=false -DOPENGL=true -DREADLINE=true -DSOUND=false \
-                -DGCGI=false -DBDB=false -DAPQ=true temp."$ext" "$1" 2> /dev/null; then
+    if gnatprep -DconfigbuildDate="\"$(date -d @"$SOURCE_DATE_EPOCH" +%y%m%d)\"" \
+                -Dconfigreleased=false \
+                -DPOSTGRES=true \
+                -DMYSQL=false \
+                -DOPENGL=true \
+                -DREADLINE=true \
+                -DSOUND=false \
+                -DGCGI=false \
+                -DBDB=false \
+                -DAPQ=true temp."$ext" "$1" 2> /dev/null; then
+        chmod 0444 "$1"
         rm -- temp."$ext" 2> /dev/null
     fi
 }
 
 cd "$startdir"
-
 cp -v src/os_bindings/spar_linux.ads src/spar_os.ads
 cp -v src/scanner-calendar-latest.ads src/scanner-calendar.ads
 cp -v src/scanner-calendar-latest.adb src/scanner-calendar.adb
@@ -75,10 +84,14 @@ APQINCLSSUB='-I./apq-2.1'
 
 # readline
 RLINCL='-I./areadline'
-RLLIBS='-lreadline'
+RLLIBS='-lreadline -lhistory'
 
+# disable mysql support since it seems to include nonsense code:
+#   apq-mysql.ads:38:24: identifier expected
+#   apq-mysql.ads:40:23: aggregate may not have single positional component
+#   apq-mysql.ads:40:24: missing operand
 cd "$startdir"/src/apq-2.1
-HAVE_PG=1 ./configure
+HAVE_MY=0 ./configure
 
 touch c_gstreamer.c
 
@@ -87,7 +100,6 @@ prepare world.ads
 prepare user_io-getline.adb
 prepare scanner_res.adb
 prepare scanner_res.ads
-prepare parser.adb
 prepare builtins.adb
 prepare parser_db.adb
 prepare parser_dbm.adb

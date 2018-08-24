@@ -1,7 +1,7 @@
 pkgbase = sparforte-git
 	pkgdesc = shell and scripting language formally known as bush
-	pkgver = 2.1.r31.ga05bf87
-	pkgrel = 2
+	pkgver = 2.1.r181.g8feee7e
+	pkgrel = 1
 	url = http://www.sparforte.com
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = sparforte-git
 	source = git+https://github.com/kburtch/SparForte
 	source = config.linux
 	sha256sums = SKIP
-	sha256sums = 139639a486cb9c85fa06a89b16db33eff20e800007aa0eb8811556bb0a26b866
+	sha256sums = 6c7539230e5b0542154e5943ae3be2b244477b4929ad20f75a2e052517bae656
 
 pkgname = sparforte-git
 
