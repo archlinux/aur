@@ -1,0 +1,20 @@
+global:
+    config_version: 2
+input:
+    type: file
+    path: /var/log/exim/mainlog
+    readall: false # Read from the beginning of the file? False means we start at the end of the file and read only new lines.
+grok:
+    patterns_dir: /usr/lib/grok-exporter/patterns/
+    additional_patterns:
+    - 'EXIM_MESSAGE [a-zA-Z ]*'
+metrics:
+    - type: counter
+      name: exim_rejected_rcpt_total
+      help: Total number of rejected recipients, partitioned by error message.
+      match: '%{EXIM_DATE} %{EXIM_REMOTE_HOST} F=<%{EMAILADDRESS}> rejected RCPT <%{EMAILADDRESS}>: %{EXIM_MESSAGE:message}'
+      labels:
+          error_message: '{{.message}}'
+server:
+    host: localhost
+    port: 9144
