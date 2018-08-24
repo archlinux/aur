@@ -15,7 +15,7 @@ source=("git+https://github.com/IntelRealSense/librealsense#commit=${_commit}")
 sha256sums=(SKIP)
 
 build() {
-  cd "${srcdir}/${librealsense}"
+  cd "${srcdir}/librealsense"
   mkdir -p build && cd build
   CFLAGS="${CFLAGS} -Wformat" \
   CXXFLAGS="${CXXFLAGS} -Wformat" \
@@ -33,9 +33,9 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${librealsense}/build"
+  cd "${srcdir}/librealsense/build"
   DESTDIR="${pkgdir}" make install
-  cd "${srcdir}/${librealsense}/config"
+  cd "${srcdir}/librealsense/config"
   install -Dm644 99-realsense-libusb.rules 
 "${pkgdir}/etc/udev/rules.d/99-realsense-libusb.rules"
 }
