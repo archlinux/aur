@@ -1,13 +1,20 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-gst-plugins-base
 pkgver=1.14.2
-pkgrel=1
+pkgrel=2
 pkgdesc="GStreamer Multimedia Framework Base Plugins (mingw-w64)"
 arch=(any)
 url="http://gstreamer.freedesktop.org/"
 license=('LGPL')
 depends=('mingw-w64-gstreamer' 'mingw-w64-orc')
 makedepends=('mingw-w64-configure' 'mingw-w64-opus' 'mingw-w64-libvorbis' 'mingw-w64-pango' 'mingw-w64-libtheora' 'mingw-w64-libvisual')
+optdepends=(
+  "mingw-w64-libvisual: libvisual plugins"
+  "mingw-w64-opus: opus encoding/decoding plugins"
+  "mingw-w64-libvorbis: vorbis plugins"
+  "mingw-w64-libtheora: theora plugins"
+  "mingw-w64-pango: pango overlay plugins"
+)
 options=('!strip' '!buildflags' 'staticlibs')
 
 source=("${url}/src/gst-plugins-base/gst-plugins-base-${pkgver}.tar.xz")
