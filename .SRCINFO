@@ -1,0 +1,23 @@
+pkgbase = phonon-qt4-gstreamer
+	pkgdesc = Phonon GStreamer backend for Qt4
+	pkgver = 4.9.0
+	pkgrel = 1
+	url = http://phonon.kde.org/
+	arch = x86_64
+	license = LGPL
+	makedepends = gst-plugins-base
+	makedepends = extra-cmake-modules
+	makedepends = phonon-qt4
+	depends = gst-plugins-base
+	depends = phonon-qt4
+	optdepends = pulseaudio: PulseAudio support
+	optdepends = gst-plugins-good: PulseAudio support and good codecs
+	optdepends = gst-plugins-bad: additional codecs
+	optdepends = gst-plugins-ugly: additional codecs
+	optdepends = gst-libav: libav codec
+	provides = phonon-qt4-backend
+	source = http://download.kde.org/stable/phonon/phonon-backend-gstreamer/4.9.0/phonon-backend-gstreamer-4.9.0.tar.xz
+	sha256sums = cec3e5ece1261d344b68363ef0606ebf49772628ba94bb55b0c0d18773b885f1
+
+pkgname = phonon-qt4-gstreamer
+
