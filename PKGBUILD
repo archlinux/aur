@@ -14,11 +14,6 @@ depends=('glfw-x11' 'gtk3' 'libusb')
 source=("git+https://github.com/Kuchiriel/librealsense-1.9.7#commit=${_commit}")
 sha256sums=(SKIP)
 
-pkgver() {
-  cd "${srcdir}/${pkgname}"
-  git describe --tags | sed 's/-/+/g'
-}
-
 build() {
   cd "${srcdir}/${pkgname}"
   mkdir -p build && cd build
