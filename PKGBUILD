@@ -1,14 +1,14 @@
 # Maintainer: Bruce Zhang <zttt183525594@gmail.com>
 pkgname=ubports-installer
-_pkgcode=0.1.11
+_pkgcode=0.1.21
 _pkgstate=beta
 pkgver=${_pkgcode}_${_pkgstate}
 _pkgver=${_pkgcode}-${_pkgstate}
-pkgrel=2
+pkgrel=1
 epoch=1
 pkgdesc="Install Ubuntu Touch on Your Device"
 arch=('x86_64')
-url="https://ubports.com/ubuntu-touch/get-ut"
+url="https://ubuntu-touch.io/get-ut"
 license=('GPL3')
 makedepends=()
 depends=()
