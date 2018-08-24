@@ -3,15 +3,15 @@
 
 _basename=openexr
 pkgname=lib32-openexr
-pkgver=2.2.1
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="An high dynamic-range image file format library"
 url="http://www.openexr.com/"
 arch=('x86_64')
 license=('BSD')
 depends=('lib32-gcc-libs' 'lib32-ilmbase' 'lib32-zlib' 'openexr')
-source=("http://download.savannah.nongnu.org/releases/${_basename}/${_basename}-${pkgver}.tar.gz")
-sha256sums=('8f9a5af6131583404261931d9a5c83de0a425cb4b8b25ddab2b169fbf113aecd')
+source=("https://github.com/openexr/openexr/releases/download/v$pkgver/$_basename-$pkgver.tar.gz")
+sha256sums=('fd6cb3a87f8c1a233be17b94c74799e6241d50fc5efd4df75c7a4b9cf4e25ea6')
 
 build() {
     export CC='gcc -m32'
@@ -37,5 +37,5 @@ package() {
     rm -r "${pkgdir}/usr/include"
     rm -r "${pkgdir}/usr/share"
 
-    install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
