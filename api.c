@@ -349,9 +349,9 @@ void api_info_array_store_data_batch(Info_Array* pInfo_Array, Data_Level data_le
 
 void api_info_store_data_batch(Info* pInfo, Data_Level data_level) {
     iex_batch_store_data_info(pInfo, data_level);
-    if (pInfo->api_provider == EMPTY && alphavantage_store_info(pInfo) == NULL &&
-        coinmarketcap_store_info(pInfo) == NULL)
-            return;
+    if (data_level == NEWS || (pInfo->api_provider == EMPTY &&
+        alphavantage_store_info(pInfo) == NULL && coinmarketcap_store_info(pInfo) == NULL))
+        return;
 
     info_store_check_data(pInfo);
 }
