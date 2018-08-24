@@ -3,10 +3,11 @@
 
 pkgname=lix
 pkgver=0.9.19
-pkgrel=1
+pkgrel=2
 changelog=.CHANGELOG
 conflicts=("${pkgname}-git")
-source=("${pkgname}::git+https://github.com/SimonN/LixD.git#tag=v${pkgver}"
+source=(#"${pkgname}::git+https://github.com/SimonN/LixD.git#tag=v${pkgver}"
+		"${pkgname}::git+https://github.com/SimonN/LixD.git#commit=4e1204cf1770a2b48603fee7b570cd765979fa43"
 		"${pkgname}-music-1.zip::http://www.lixgame.com/dow/lix-music.zip"
 		"${pkgname}.desktop")
 sha512sums=('SKIP'
