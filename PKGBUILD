@@ -2,14 +2,16 @@
 
 pkgname=pi-hole-ftl
 _pkgname=FTL
-pkgver=3.0
-pkgrel=2
+pkgver=4.0
+pkgrel=1
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc="The Pi-hole FTL engine"
 url="https://github.com/pi-hole/FTL"
 license=('EUPL-1.1')
-depends=()
+depends=('nettle' 'gmp')
 makedepends=('sqlite')
+conflicts=('dnsmasq')
+provides=('dnsmasq')
 install=$pkgname.install
 backup=('etc/pihole/pihole-FTL.conf')
 source=("https://github.com/pi-hole/FTL/archive/v$pkgver.tar.gz"
@@ -18,9 +20,9 @@ source=("https://github.com/pi-hole/FTL/archive/v$pkgver.tar.gz"
 	"$pkgname.conf"
 	"$pkgname.sysuser"
   )
-md5sums=('45fd33e4498b2ab9403d96e1251abb8c'
+md5sums=('923cc5cc17f57bb9a59407c1685d70aa'
          'ca844c23699ba64777571253bc7ccb21'
-         '0f65203b2585fb83e02826091d220386'
+         'f3e42ec6f04180c6d6972998bf172a41'
          '2d6ae93eea48a09ce5bc5bf62e081dd4'
          '68e78907dc2a0c89421d02377e76d353')
 
@@ -28,6 +30,13 @@ prepare() {
   _ssc="/tmp/sedcontrol"
 
   cd "$srcdir"/"$_pkgname"-"$pkgver"
+
+  # makefile disable static linking
+  sed -n "/LIBS=-pthread -Wl,/w $_ssc" "$srcdir"/$_pkgname-$pkgver/Makefile
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: makefile disable static linking 1" && return 1 ; fi
+  sed -i '/LIBS=-pthread -Wl,/d' "$srcdir"/$_pkgname-$pkgver/Makefile
+  sed -i "s|#LIBS=-pthread -lnettle|LIBS=-pthread -lnettle|w $_ssc" "$srcdir"/$_pkgname-$pkgver/Makefile
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: makefile disable static linking 2" && return 1 ; fi
 
   # git descriptions setup
   sed -i "s|^GIT_BRANCH := .*$|GIT_BRANCH := master|w $_ssc" "$srcdir"/$_pkgname-$pkgver/Makefile

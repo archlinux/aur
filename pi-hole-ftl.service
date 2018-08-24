@@ -1,9 +1,7 @@
 [Unit]
-Description=Pi-hole FTL engine
+Description=Pi-hole FTLDNS engine
 
 [Service]
-User=pihole
-Group=pihole
 PIDFile=/run/pihole-ftl/pihole-FTL.pid
 ExecStart=/usr/bin/pihole-FTL no-daemon
 Restart=on-failure
