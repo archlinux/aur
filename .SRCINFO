@@ -1,0 +1,24 @@
+pkgbase = python-pytest-pylint
+	pkgdesc = pytest plugin to check source code with pylint
+	pkgver = 0.12.1
+	pkgrel = 1
+	url = https://github.com/carsongee/pytest-pylint
+	arch = any
+	license = MIT
+	makedepends = python-pytest
+	makedepends = python-pylint
+	makedepends = python2-pytest
+	makedepends = python2-pylint
+	source = https://pypi.org/packages/source/p/pytest-pylint/pytest-pylint-0.12.1.tar.gz
+	source = https://raw.githubusercontent.com/carsongee/pytest-pylint/master/LICENSE
+	sha256sums = d30da4ddbf2ad3a0b47987a664db1510b8aa273fc50f4fdc883404381ec0ba89
+	sha256sums = 25b3eef02225972bdfe2c043ab26eabb5c0ce9730a9b8ce366855d9da36c8995
+
+pkgname = python-pytest-pylint
+	depends = python-pytest
+	depends = python-pylint
+
+pkgname = python2-pytest-pylint
+	depends = python2-pytest
+	depends = python2-pylint
+
