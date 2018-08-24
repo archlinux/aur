@@ -6,12 +6,10 @@ pkgbase = librealsense-1.9.7
 	arch = x86_64
 	license = Apache
 	makedepends = cmake
-	makedepends = linux-lts-headers
 	depends = glfw-x11
 	depends = gtk3
 	depends = libusb
-	depends = linux-lts
-	source = git+https://github.com/Kuchiriel/librealsense-1.9.7#commit=28c7aa1f70e7d5669b825c9c431eedfdbcdc2c5d
+	source = git+https://github.com/Kuchiriel/librealsense-1.9.7#commit=848f46cb720fcb78563b043fd6d09f80025a0eae
 	sha256sums = SKIP
 
 pkgname = librealsense-1.9.7
