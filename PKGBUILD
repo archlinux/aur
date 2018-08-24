@@ -14,7 +14,7 @@ install=simonpi.install
 source=("https://github.com/M0Rf30/simonpi/archive/$pkgver.tar.gz")
 
 package() {
-	cd $srcdir/simonpi
+	cd $srcdir/$pkgname-$pkgver
 	install -Dm755 simonpi $pkgdir/usr/bin/simonpi
 	install -dm755 $pkgdir/opt/simonpiemu/
 	cp -r simonpiemu/* $pkgdir/opt/simonpiemu/
