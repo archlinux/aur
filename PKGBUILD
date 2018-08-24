@@ -1,11 +1,11 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
 name=uvsquares
-_blender=$(expac -S %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
+_blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
 
 pkgname=blender-plugin-${name}-git
 pkgver=r63.db80da3
-pkgrel=3
+pkgrel=4
 pkgdesc="Blender addon for reshaping UV selection into grid."
 arch=('any')
 url="https://cgcookiemarkets.com/blender/all-products/uv-squares/"
