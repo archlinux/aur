@@ -1,7 +1,7 @@
-fontconfig/
-pkg/
-src/
-*.bz2
-*.log
-*.tar
-*.xz
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!*.install
+!*.patch
+!*.diff

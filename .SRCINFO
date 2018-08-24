@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-fontconfig
 	pkgdesc = A library for configuring and customizing font access (mingw-w64)
-	pkgver = 2.13.0+10+g58f5285
+	pkgver = 2.13.0+17+gc78afa9
 	pkgrel = 1
 	url = https://www.freedesktop.org/wiki/Software/fontconfig/
 	arch = any
@@ -13,10 +13,10 @@ pkgbase = mingw-w64-fontconfig
 	makedepends = python-six
 	depends = mingw-w64-expat
 	depends = mingw-w64-freetype2
-	options = staticlibs
 	options = !strip
+	options = staticlibs
 	options = !buildflags
-	source = git+https://anongit.freedesktop.org/git/fontconfig#commit=58f52853d5689e897525a5926c1a222340d3f404
+	source = git+https://anongit.freedesktop.org/git/fontconfig#commit=c78afa906699933e87889895ca2039887943b639
 	source = 0007-pkgconfig.mingw.patch
 	sha256sums = SKIP
 	sha256sums = af373531873da46d0356305da5444c1ec74f443cd2635ea2db6b7dadd1561f5b
