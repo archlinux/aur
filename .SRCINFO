@@ -1,7 +1,7 @@
 pkgbase = blender-plugin-cubesurfer
 	pkgdesc = IsoSurface mesher addons for Blender ( wrote in Cython )
 	pkgver = 1.0_r22.1d6d9a6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pyroevil.com/category/scripts-addons/cubesurfece/
 	arch = i686
 	arch = x86_64

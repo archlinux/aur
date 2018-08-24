@@ -4,17 +4,17 @@ name=cubesurfer
 version=1.0
 #fragment="#commit=7e49329 "
 files=(__init__.py mciso*.so mciso*.html)
-_blender=$(expac -S %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
+_blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
 
 pkgname=blender-plugin-${name}
 pkgver=1.0_r22.1d6d9a6
-pkgrel=1
+pkgrel=2
 pkgdesc="IsoSurface mesher addons for Blender ( wrote in Cython )"
 arch=(i686 x86_64)
 url="http://pyroevil.com/category/scripts-addons/cubesurfece/"
 license=('GPL')
 depends=(blender)
-makedepends=(expac git cython)
+makedepends=(git cython)
 #options=(debug !strip)
 source=("${name}::git+https://github.com/Pyroevil/CubeSurfer.git${fragment}")
 md5sums=('SKIP')
