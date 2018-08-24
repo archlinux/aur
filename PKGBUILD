@@ -1,6 +1,5 @@
 # Maintainer: TC <crt@archlinux.email>
 pkgname=openssh-ldap-publickey
-_pkgname=openssh-ldap-publickey
 pkgver=6d21a03
 pkgrel=1
 pkgdesc="Wrapper for OpenSSH to store public keys inside the OpenLDAP entry."
@@ -17,12 +16,12 @@ sha256sums=('SKIP'
             '3969eccfd326056ec1e00094c9ea7a47a8d79b0c51b4885a729051be781869a4')
 
 pkgver() {
-  cd "$_pkgname"
+  cd "$pkgname"
   git rev-parse --short HEAD
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$pkgname"
 	
 # install openssh-ldap-publickey to /usr/local/bin
   install -Dm755 "bin/openssh-ldap-publickey" \
