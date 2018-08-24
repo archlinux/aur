@@ -1,14 +1,14 @@
 pkgbase = ubports-installer
 	pkgdesc = Install Ubuntu Touch on Your Device
 	pkgver = 0.1.21_beta
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://ubuntu-touch.io/get-ut
 	install = ubports-installer.install
 	arch = x86_64
 	license = GPL3
 	source = https://github.com/ubports/ubports-installer/releases/download/0.1.21-beta/ubports-installer_0.1.21-beta_amd64.deb
-	md5sums = e05ba3e93c12bfe12590f779dcb26fc0
+	md5sums = 9f9667278991d35e64cc7286d23b439f
 
 pkgname = ubports-installer
 
