@@ -5,7 +5,7 @@ _ghname='EternalTerminal'
 _tarname='et'
 pkgbase='eternalterminal'
 pkgname=('eternalterminal-client' 'eternalterminal-server' 'eternalterminal')
-pkgver='5.0.7'
+pkgver='5.1.0'
 pkgrel=1
 arch=('x86_64')
 depends=(
@@ -22,7 +22,7 @@ source=(
 		"https://github.com/MisterTea/${_ghname}/archive/${_tarname}-v${pkgver}.tar.gz"
 )
 sha256sums=(
-		'6c05fcf34a108d7d990a9a0eddfa6667f8bfb012e1f542c07d216fa01ececb36'
+		'c096e7d7aa37eb7b8606260a322b49a53feb49b1d150cf25669c66bf74be62a6'
 )
 
 prepare() {
@@ -62,6 +62,7 @@ package_eternalterminal-server() {
 
 	msg2 "Installing ${_ghname} server to package root"
 	install -D -m 0755 "${srcdir}/${_ghname}-${_tarname}-v${pkgver}/build/etserver" "${pkgdir}/usr/bin/etserver"
+	install -D -m 0755 "${srcdir}/${_ghname}-${_tarname}-v${pkgver}/build/etserver" "${pkgdir}/usr/bin/etterminal"
 	install -D -m 0644 "${srcdir}/${_ghname}-${_tarname}-v${pkgver}/debian/et.service" "${pkgdir}/usr/lib/systemd/system/et.service"
 	install -D -m 0644 "${srcdir}/${_ghname}-${_tarname}-v${pkgver}/etc/et.cfg" "${pkgdir}/etc/et.cfg"
 }
@@ -77,6 +78,7 @@ package_eternalterminal() {
 	install -D -m 0755 "${srcdir}/${_ghname}-${_tarname}-v${pkgver}/build/et" "${pkgdir}/usr/bin/htm"
 	install -D -m 0755 "${srcdir}/${_ghname}-${_tarname}-v${pkgver}/build/et" "${pkgdir}/usr/bin/htmd"
 	install -D -m 0755 "${srcdir}/${_ghname}-${_tarname}-v${pkgver}/build/etserver" "${pkgdir}/usr/bin/etserver"
+	install -D -m 0755 "${srcdir}/${_ghname}-${_tarname}-v${pkgver}/build/etserver" "${pkgdir}/usr/bin/etterminal"
 	install -D -m 0644 "${srcdir}/${_ghname}-${_tarname}-v${pkgver}/debian/et.service" "${pkgdir}/usr/lib/systemd/system/et.service"
 	install -D -m 0644 "${srcdir}/${_ghname}-${_tarname}-v${pkgver}/etc/et.cfg" "${pkgdir}/etc/et.cfg"
 }
