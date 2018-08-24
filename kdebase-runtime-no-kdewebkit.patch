@@ -1,0 +1,49 @@
+diff --git a/plasma/declarativeimports/graphicswidgets/graphicswidgetsbindingsplugin.cpp b/plasma/declarativeimports/graphicswidgets/graphicswidgetsbindingsplugin.cpp
+index 72bf7f828f..14a2905f97 100644
+--- a/plasma/declarativeimports/graphicswidgets/graphicswidgetsbindingsplugin.cpp
++++ b/plasma/declarativeimports/graphicswidgets/graphicswidgetsbindingsplugin.cpp
+@@ -47,7 +47,6 @@
+ #include <Plasma/ToolButton>
+ #include <Plasma/TreeView>
+ #include <Plasma/VideoWidget>
+-#include <Plasma/WebView>
+ 
+ #include "declarativetabbar.h"
+ 
+@@ -99,7 +98,6 @@ void GraphicsWidgetsBindingsPlugin::registerTypes(const char *uri)
+     qmlRegisterType<Plasma::ToolButton>(uri, 0, 1, "ToolButton");
+     qmlRegisterType<Plasma::TreeView>(uri, 0, 1, "TreeView");
+     qmlRegisterType<Plasma::VideoWidget>(uri, 0, 1, "VideoWidget");
+-    qmlRegisterType<Plasma::WebView>(uri, 0, 1, "WebView");
+ }
+ 
+ 
+diff --git a/plasma/scriptengines/javascript/simplebindings/uiloader.cpp b/plasma/scriptengines/javascript/simplebindings/uiloader.cpp
+index f13ad5cef0..fe85910ccb 100644
+--- a/plasma/scriptengines/javascript/simplebindings/uiloader.cpp
++++ b/plasma/scriptengines/javascript/simplebindings/uiloader.cpp
+@@ -49,7 +49,6 @@
+ #include <Plasma/TextEdit>
+ #include <Plasma/ToolButton>
+ #include <Plasma/TreeView>
+-#include <Plasma/WebView>
+ #include <Plasma/VideoWidget>
+ 
+ 
+@@ -78,7 +77,6 @@ QGraphicsWidget *createTextEdit(QGraphicsWidget *parent) { return new Plasma::Te
+ QGraphicsWidget *createToolButton(QGraphicsWidget *parent) { return new Plasma::ToolButton(parent); }
+ QGraphicsWidget *createTreeView(QGraphicsWidget *parent) { return new Plasma::TreeView(parent); }
+ QGraphicsWidget *createVideoWidget(QGraphicsWidget *parent) { return new Plasma::VideoWidget(parent); }
+-QGraphicsWidget *createWebView(QGraphicsWidget *parent) { return new Plasma::WebView(parent); }
+ QGraphicsWidget *createGraphicsWidget(QGraphicsWidget *parent) { return new QGraphicsWidget(parent); }
+ 
+ UiLoader::UiLoader()
+@@ -108,8 +106,6 @@ UiLoader::UiLoader()
+     m_widgetCtors.insert("ToolButton", createToolButton);
+     m_widgetCtors.insert("TreeView", createTreeView);
+     m_widgetCtors.insert("VideoWidget", createVideoWidget);
+-    m_widgetCtors.insert("WebView", createWebView);
+-    m_widgetCtors.insert("GraphicsWidget", createWebView);
+ }
+ 
+ UiLoader::~UiLoader()

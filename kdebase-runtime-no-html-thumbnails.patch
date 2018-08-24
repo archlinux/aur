@@ -1,0 +1,21 @@
+--- kde-runtime-16.12.1/kioslave/thumbnail/CMakeLists.txt.0	2017-01-19 12:11:22.764891155 +0000
++++ kde-runtime-16.12.1/kioslave/thumbnail/CMakeLists.txt	2017-01-19 12:11:40.741524858 +0000
+@@ -89,18 +89,6 @@
+ 
+ ########### next target ###############
+ 
+-if(NOT WINCE)
+-set(htmlthumbnail_PART_SRCS htmlcreator.cpp)
+-
+-kde4_add_plugin(htmlthumbnail ${htmlthumbnail_PART_SRCS})
+-
+-target_link_libraries(htmlthumbnail ${KDE4_KDEWEBKIT_LIBS})
+-
+-install(TARGETS htmlthumbnail DESTINATION ${PLUGIN_INSTALL_DIR})
+-endif(NOT WINCE)
+-
+-########### next target ###############
+-
+ if(NOT WIN32)
+ set(djvuthumbnail_PART_SRCS djvucreator.cpp)
+ 
