@@ -7,7 +7,7 @@
 pkgname=inox-beta
 pk=bnox
 name=chromium
-pkgver=69.0.3497.42
+pkgver=69.0.3497.57
 pkgrel=2
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
@@ -116,7 +116,7 @@ https://raw.githubusercontent.com/bn0785ac/ih-beta/master/desu.patch
 )
 
 
-sha256sums=('347941bd5fd9cc121edbfc9c97d75a32283d481933264450afef89908683f022'
+sha256sums=('1265f696160b38a94c6341cf42a74eaf74dbac62f00157dcf8032add26bb958f'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             '1a3a33e34764205c7be280c7436730f5d899bdbc44339ec5df208e09fd102883'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -213,6 +213,7 @@ sha256sums=('347941bd5fd9cc121edbfc9c97d75a32283d481933264450afef89908683f022'
             '70f49d5b69641669c24d0532fb723b5ef1313a56224f41bf35bf6bb07fc93974'
             'cd4c8fa8294f542a3fea1dd3df4a0a7370723f7139e5c59ec53f4ed639976d80'
             'a00a82e7c6e692c695971b2bf462442076975ebb42d9b66009d8e8489465c29e')
+
 
 
 
