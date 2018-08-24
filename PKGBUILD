@@ -2,17 +2,17 @@
 
 name=gaffer
 git_user_name=gregzaal
-_blender=$(expac -S %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
+_blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
 
 pkgname=blender-plugin-${name}-git
 pkgver=3.0.4.r1.gf74e188
-pkgrel=1
+pkgrel=2
 pkgdesc="Blender addon for light and hdri managament."
 arch=('any')
 url="https://blendermarket.com/products/gaffer-light-manager/"
 license=('GPL')
 depends=('blender')
-makedepends=('expac' 'git')
+makedepends=('git')
 install="${pkgname}.install"
 source=("${name}::git+https://github.com/${git_user_name}/${name}.git"
         "remove.updater.patch")
