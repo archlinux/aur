@@ -1,7 +1,7 @@
 # Maintainer: sballert <sballert@posteo.de>
 
 pkgname=emacs-swiper-git
-pkgver=r1848.58289b9
+pkgver=r1938.02537c9
 pkgrel=1
 pkgdesc="Ivy - a generic completion frontend for Emacs, Swiper - isearch with an overview, and more. Oh, man!"
 url="https://github.com/abo-abo/swiper"
