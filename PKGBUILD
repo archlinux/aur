@@ -1,7 +1,7 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=nawk-git
 pkgver=20180823.r9.0f4e1ba
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc='The version of awk described in "The AWK Programming Language".'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=(glibc)
 makedepends=(git)
 optdepends=()
 checkdepends=()
-provides=()
+provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 replaces=()
 backup=()
@@ -40,6 +40,11 @@ prepare() {
 build() {
   cd "$srcdir/$pkgname"
   make "CPPFLAGS=-DHAS_ISBLANK $CPPFLAGS" "LDFLAGS=$LDFLAGS" "CFLAGS=$CFLAGS"
+}
+
+check() {
+  cd "$srcdir/$pkgname"
+  ./REGRESS
 }
 
 package() {
