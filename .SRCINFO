@@ -1,6 +1,6 @@
 pkgbase = jetbrains-toolbox
 	pkgdesc = Manage all your JetBrains Projects and Tools
-	pkgver = 1.10.4088
+	pkgver = 1.11.4231
 	pkgrel = 1
 	url = http://www.jetbrains.com/toolbox/
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = jetbrains-toolbox
 	depends = libxslt
 	depends = libxss
 	options = !strip
-	source = https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.10.4088.tar.gz
+	source = https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.11.4231.tar.gz
 	source = jetbrains-toolbox.desktop
-	sha512sums = c97be570a2b453a1fc05a42d6514681d272e0998a28b43ef2a16b3e5051e6a9e00c97a9633c07bcb774065bd6066838de14902cf0c4618887c2b2deeea292ab7
+	sha512sums = 4983869f69d545d5fa585d73adff6c7d928dd30db8d6bec85e4cf4df08bc940b09f6a7c3575adda7e99f87d03f4ce1f8f550ad1776eb6c21aa97c40c758b9567
 	sha512sums = 727b6378a8e3803c552ccae2c0d252eb8e79d213eabeecbd00bc25352cd0ffc6f53abaabf016688136822a65a76b2838f99e909931c21f49382934332446d1b4
 
 pkgname = jetbrains-toolbox
