@@ -1,18 +1,18 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 # original maintainer : Fabien Devaux <fdev31@gmail.com>
 
-_blender=$(expac -S %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
+_blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
 
 pkgname=blender-plugin-miratools
 pkgver=r688.6f50f8d # commit-num.commit-hash 
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern modeling and retopology tools"
 url="https://github.com/mifth/mifthtools/wiki/Mira-Tools"
 license=("GPL")
 arch=('any')
 depends=('blender')
 groups=('blender')
-makedepends=('expac' 'git')
+makedepends=('git')
 source=("${pkgname}::git+https://github.com/mifth/mifthtools.git")
 md5sums=('SKIP')
 

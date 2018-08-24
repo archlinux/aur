@@ -1,12 +1,11 @@
 pkgbase = blender-plugin-miratools
 	pkgdesc = Modern modeling and retopology tools
 	pkgver = r688.6f50f8d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mifth/mifthtools/wiki/Mira-Tools
 	arch = any
 	groups = blender
 	license = GPL
-	makedepends = expac
 	makedepends = git
 	depends = blender
 	source = blender-plugin-miratools::git+https://github.com/mifth/mifthtools.git
