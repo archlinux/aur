@@ -1,10 +1,11 @@
 # Maintainer: Jose Riha <jose1711 gmail com>
 # Contributor: Alexander 'hatred' Drozdov <adrozdoff@gmail.com>
+# Contributor: willemw
 
 pkgname=routeconverter
 pkgver=2.24
-pkgrel=1
-pkgdesc="A free tool to edit and convert routes, tracks and waypoints."
+pkgrel=2
+pkgdesc="A free tool to edit and convert routes, tracks and waypoints"
 arch=('i686' 'x86_64')
 url="http://www.routeconverter.de/en"
 license=('GPL')
@@ -22,21 +23,15 @@ noextract=(RouteConverterCmdLine.jar
 
 package()
 {
-  cd "$srcdir"
-
-  install -m 755 -o root -g root -d ${pkgdir}/usr/bin
-  install -m 755 -o root -g root -d ${pkgdir}/usr/lib/${pkgname}
-  install -m 755 -o root -g root \
-			${srcdir}/routeconverter \
-			${srcdir}/routeconverter-cli \
-			${pkgdir}/usr/bin/
-  install -m 644 -o root -g root \
-			${srcdir}/RouteConverterCmdLine.jar \
-			${pkgdir}/usr/lib/${pkgname}/
-  install -m 644 -o root -g root \
-			${srcdir}/RouteConverterLinux.jar \
-			${pkgdir}/usr/lib/${pkgname}/ || true
-
+  install -m755 -d "${pkgdir}/usr/bin"
+  install -m755 -d "${pkgdir}/usr/lib/${pkgname}"
+  install -m755 "${srcdir}/routeconverter" \
+		"${srcdir}/routeconverter-cli" \
+		"${pkgdir}/usr/bin/"
+  install -m644 "${srcdir}/RouteConverterCmdLine.jar" \
+		"${pkgdir}/usr/lib/${pkgname}/"
+  install -m644 "${srcdir}/RouteConverterLinux.jar" \
+		"${pkgdir}/usr/lib/${pkgname}/"
 }
 
 md5sums=('e4cdc9db82a9f8c550afb44f851d897f'
