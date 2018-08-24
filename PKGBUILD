@@ -7,7 +7,7 @@
 pkgname=inox-edgy
 pk=enox
 name=chromium
-pkgver=70.0.3527.0
+pkgver=70.0.3530.0
 pkgrel=2
 _launcher_ver=5
 pkgdesc="Chromium nightly snapshots, without google blobs"
@@ -117,13 +117,13 @@ https://raw.githubusercontent.com/bn0785ac/in-night/master/desu.patch
 
 
 
-sha256sums=('e41de965932ea4316172a9a58843d21c45e7df7f94f169e2bf53bf27a04e3757'
+sha256sums=('b94e72bd901d397f3e78408dba022da02eac43ea086ce946c58ab0a61daf40b1'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             '2d33f3b42c0e48de5044548fe885ea351f66a60f3164b700721af8bf200243eb'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
             '35435e8dae76737baafecdc76d74a1c97281c4179e416556e033a06a31468e6d'
             'd81319f168dad0e411c8e810f73daa2f56ff579578771bd9c9bb1aa2d7c09a8b'
-            'f51c64f334d34a3f498d187b74201f22fe89ad5b8c6fe5883ef52df0b56b7c64'
+            '1d351402281b218029fa06bd309994cc29419cc82707178a5ce6e9c835f7e9a2'
             '12d446a2f50c80168b07506c9c733447651830ad1b7f04f494256ebfdc8e0655'
             '2a584c6e3938ecc14e591369441a7ffdd4988e02336440614a52f2eee615517f'
             '0a6e050f5acbe9b90de88f3f7c3828bc190f5831ed582a8e49005fe999db306c'
