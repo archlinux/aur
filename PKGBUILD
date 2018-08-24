@@ -7,7 +7,7 @@ arch=('i686' 'x86_64' 'armv6h')
 url="https://sygnm.org/"
 license=('AGPL3')
 depends=('flint' 'arb' 'boost-libs' 'icu' 'gmp' 'qt5-base' 'readline' 'python' 'sqlite' 'libmpc' 'mpfr' 'gmp-ecm' 'eigen' 'ruby' 'jdk7-openjdk')
-makedepends=('boost' 'cmake' 'swig' 'python' 'python-setuptools' 'pandoc' 'python-pypandoc')
+makedepends=('boost' 'cmake' 'swig' 'python' 'python-setuptools' 'pandoc' 'python-pypandoc' 'ninja')
 source=("sygnm-git::git+https://git.sygnm.org/sygnmdev/sygnm.git#tag=1.0.0alpha1")
 options=(debug !strip)
 conflicts=('sygnm-git')
@@ -16,13 +16,13 @@ md5sums=('SKIP')
 
 build() {
   cd "${srcdir}/sygnm-git"
-  cmake . -DCMAKE_BUILD_TYPE=Debug -DSYGNM_BUILD_ALL=On -DCMAKE_INSTALL_PREFIX=/usr
-  make
+  cmake . -GNinja -DCMAKE_BUILD_TYPE=Debug -DSYGNM_BUILD_ALL=On -DCMAKE_INSTALL_PREFIX=/usr
+  ninja
 }
 
 package() {
  cd "${srcdir}/sygnm-git"
- make DESTDIR="$pkgdir/" install
+ DESTDIR="$pkgdir/" ninja install
  cd sygnm-jupyter
  python setup.py install --root="$pkgdir/" --optimize=1
  cd ../sygnm/python
