@@ -2,7 +2,7 @@
 pkgname=appleseed-git
 #_fragment="#tag=1.7.1-beta"
 pkgver=1.9.0.beta.r209.g32774c124
-pkgrel=1
+pkgrel=2
 pkgdesc="physically-based global illumination rendering engine primarily designed for animation and visual effects. "
 arch=(i686 x86_64)
 url="http://appleseedhq.net"
@@ -19,7 +19,7 @@ md5sums=('SKIP'
          '1cc8d927665c126dde4d1135e500c0dc')
   
 #_pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
-#_pyver=$(expac -S %v python|grep -oP ^[0-9.]{3})
+#_pyver=$(pacman -Sddp --print-format %v python|grep -oP ^[0-9.]{3})
 CMAKE_FLAGS=" -DUSE_EXTERNAL_EXR=ON \
               -DUSE_EXTERNAL_OCIO=ON \
               -DUSE_EXTERNAL_EMBREE=ON \
