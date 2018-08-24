@@ -1,6 +1,6 @@
 pkgbase = glibc-git
 	pkgdesc = GNU C Library
-	pkgver = 2.28.r46.g2ce7ba7d15
+	pkgver = 2.28.r89.g60bcac09c0
 	pkgrel = 1
 	url = https://www.gnu.org/software/libc/
 	install = glibc-git.install

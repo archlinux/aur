@@ -4,7 +4,7 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=glibc-git
-pkgver=2.28.r46.g2ce7ba7d15
+pkgver=2.28.r89.g60bcac09c0
 pkgrel=1
 pkgdesc='GNU C Library'
 arch=('i686' 'x86_64')
@@ -46,6 +46,10 @@ prepare() {
     # have a solution. See https://bugs.archlinux.org/task/59550 and
     # https://github.com/electron/electron/issues/13972#issuecomment-411532741
     patch -p1 -i ../0001-Revert-elf-Correct-absolute-SHN_ABS-symbol-run-time-.patch
+
+    # revert untested patch that breaks the build.
+    # make[2]: *** No rule to make target '/build/glibc-git/src/build/support/links-dso-program', needed by 'others'.  Stop.
+    git show 561b0bec4448f0302cb4915bf67c919bde4a1c57 -- ':!ChangeLog' | git apply --verbose --reverse --index
 }
 
 build() {
