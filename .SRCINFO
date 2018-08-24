@@ -1,0 +1,22 @@
+pkgbase = phonon-qt4
+	pkgdesc = The multimedia framework for KDE4
+	pkgver = 4.10.1
+	pkgrel = 1
+	url = http://phonon.kde.org/
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = libpulse
+	makedepends = qt4
+	depends = qt4
+	depends = libpulse
+	depends = phonon-qt4-backend
+	optdepends = pulseaudio: PulseAudio support
+	source = http://download.kde.org/stable/phonon/4.10.1/phonon-4.10.1.tar.xz
+	source = http://download.kde.org/stable/phonon/4.10.1/phonon-4.10.1.tar.xz.sig
+	validpgpkeys = CB9387521E1EE0127DA804843FDBB55084CC5D84
+	sha256sums = e5a98df31aeffc22493afc8d6adbca5d6f0c27cc2eed73b3be05195321e08db7
+	sha256sums = SKIP
+
+pkgname = phonon-qt4
+
