@@ -1,5 +1,5 @@
 # Maintainer: TC <crt@archlinux.email>
-pkgname=openssh-ldap-publickey-git
+pkgname=openssh-ldap-publickey
 _pkgname=openssh-ldap-publickey
 pkgver=6d21a03
 pkgrel=1
