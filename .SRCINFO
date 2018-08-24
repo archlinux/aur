@@ -1,0 +1,22 @@
+pkgbase = hashlink-git
+	pkgdesc = A virtual machine for Haxe
+	pkgver = r1022.2ba8897
+	pkgrel = 1
+	url = https://hashlink.haxe.org/
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = libpng
+	depends = libjpeg-turbo
+	depends = libvorbis
+	depends = openal
+	depends = sdl2
+	depends = mbedtls
+	depends = libuv
+	provides = hashlink-git
+	conflicts = hashlink-git
+	source = hashlink-git::git+https://github.com/HaxeFoundation/hashlink.git
+	md5sums = SKIP
+
+pkgname = hashlink-git
+
