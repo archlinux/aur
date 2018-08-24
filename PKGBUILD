@@ -1,10 +1,9 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=phonon-qt4
 pkgver=4.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The multimedia framework for KDE4"
 arch=(x86_64)
-depends=(qt4 libpulse phonon-qt4-backend)
 optdepends=('pulseaudio: PulseAudio support')
 makedepends=(extra-cmake-modules libpulse qt4)
 url='http://phonon.kde.org/'
@@ -30,6 +29,9 @@ build() {
 }
 
 package(){
+
+  depends=(qt4 libpulse phonon-qt4-backend)
+
   cd build
   make DESTDIR="$pkgdir" install
 
