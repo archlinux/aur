@@ -1,6 +1,6 @@
 pkgbase = emacs-general.el-git
 	pkgdesc = More convenient key definitions in emacs
-	pkgver = r253.e690ef9
+	pkgver = r255.6b8f7bc
 	pkgrel = 1
 	url = https://github.com/noctuid/general.el
 	arch = any

@@ -1,7 +1,7 @@
 # Maintainer: sballert <sballert@posteo.de>
 
 pkgname=emacs-general.el-git
-pkgver=r253.e690ef9
+pkgver=r255.6b8f7bc
 pkgrel=1
 pkgdesc="More convenient key definitions in emacs"
 arch=('any')
