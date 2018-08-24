@@ -1,11 +1,10 @@
 pkgbase = blender-plugin-mesh-off
 	pkgdesc = Integrate cork boolean library into blender
 	pkgver = v0.3.1.r2.g77d9456
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alextsui05/blender-off-addon.git
 	arch = any
 	license = GPL
-	makedepends = expac
 	makedepends = git
 	depends = blender
 	source = mesh-off::git+https://github.com/alextsui05/blender-off-addon.git
