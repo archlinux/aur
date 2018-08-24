@@ -1,7 +1,7 @@
 # Maintainer: Omar Pakker <archlinux@opakker.nl>
 
 pkgname=python-bidict
-pkgver=0.14.2
+pkgver=0.17.2
 pkgrel=1
 pkgdesc='Bidirectional map implementation and related functionality to work with one-to-one mappings in Python 3'
 arch=('any')
@@ -9,8 +9,8 @@ url='https://bidict.readthedocs.org/'
 license=('MPLv2')
 makedepends=('python-setuptools')
 depends=('python')
-source=("https://pypi.python.org/packages/00/bd/043125d6ecb0532b0e379784d356936e1f366fcf9f5a11b36b9d88c497b5/bidict-${pkgver}.tar.gz")
-sha256sums=('3f6ec9df779b919fcf8998be8955ade9c4337df04d215a0a0e4296f66e70eac9')
+source=("https://files.pythonhosted.org/packages/79/a8/83a52f422b1c041758fcfa3ac4438fc92a14e3cbe2b36f97282d973aff55/bidict-${pkgver}.tar.gz")
+sha256sums=('a6477740bb73b925c1814d0f0d6deca1b74aa19f2d31f252d71f14acc53b187d')
 
 build() {
 	cd "bidict-${pkgver}"
@@ -19,10 +19,7 @@ build() {
 
 check() {
 	cd "bidict-${pkgver}"
-
-	# This doctest is failing on a missing function on an object in another library
-	# Disable it for now
-	python3 setup.py test --addopts=--ignore=docs/sortedbidicts.rst.inc
+	python3 setup.py test
 }
 
 package() {
