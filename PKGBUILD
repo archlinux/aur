@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${_gitname}"
-  printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  printf "%s" "$(git describe --always --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -27,7 +27,7 @@ build() {
   for _arch in $_architectures; do
     mkdir -p "build-${_arch}" && pushd build-${_arch}
     ${_arch}-meson \
-      -D gtkdoc=false ..
+      -D gtkdoc=disabled ..
     ninja
     popd
   done
