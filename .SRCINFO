@@ -1,7 +1,7 @@
 pkgbase = sws
 	pkgdesc = A collection of features that seamlessly integrate into REAPER
 	pkgver = 2.9.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.sws-extension.org/
 	arch = x86_64
 	license = MIT
@@ -17,7 +17,7 @@ pkgbase = sws
 	source = https://swsaur.000webhostapp.com/files/reaper_plugin_functions.tar.xz
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 27ce6d555c5a8390c3446842631f1f16467ff430f77293d59d4289c419ee13b3
+	sha256sums = a6b11fb81d79a3cd0b1f0bf472777ac2895db3b88c161549ef65f34c90d2675f
 
 pkgname = sws
 
