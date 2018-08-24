@@ -1,0 +1,12 @@
+pkgbase = aqua-git
+	pkgdesc = Light and dark colorful Gtk3.20+ theme
+	pkgver = r4.69afc23
+	pkgrel = 1
+	url = https://github.com/EliverLara/Aqua
+	arch = any
+	license = GPL3
+	source = aqua::git+https://github.com/EliverLara/Aqua
+	sha256sums = SKIP
+
+pkgname = aqua-git
+
