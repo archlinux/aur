@@ -1,7 +1,7 @@
 #Maintainer: Dimitris Pappas <mitsakosgr@gmail.com>
 pkgname=minizinc-ide
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple IDE for writing and running MiniZinc models"
 arch=('x86_64')
 url="http://www.minizinc.org/ide/"
@@ -10,7 +10,8 @@ provides=('minizinc')
 conflicts=('libminizinc')
 
 source=('minizinc-ide.desktop'
-        'minizinc.png')
+        'minizinc.png'
+	https://github.com/MiniZinc/MiniZincIDE/releases/download/"${pkgver}"/MiniZincIDE-"${pkgver}"-bundle-linux-x86_64.tgz)
 
 depends=('libpng12'
 	 'pcre'
@@ -18,11 +19,9 @@ depends=('libpng12'
 	 'gst-plugins-base-libs'
 	 'double-conversion')
 
-source_x86_64=(https://github.com/MiniZinc/MiniZincIDE/releases/download/"${pkgver}"/MiniZincIDE-"${pkgver}"-bundle-linux-x86_64.tgz)
-source_i686=(https://github.com/MiniZinc/MiniZincIDE/releases/download/"${pkgver}"/MiniZincIDE-"${pkgver}"-bundle-linux-x86_32.tgz)
-
 sha256sums=('b86ef15b8ee1014342a2f38358d7f806a58b900bf1150101b535aecddaa122d1'
-            '1b9fa21e25c48e1080eaea2348eb98a45242e045b7ba94fe4723a9b01cbcdb2a')
+            '1b9fa21e25c48e1080eaea2348eb98a45242e045b7ba94fe4723a9b01cbcdb2a'
+	    '822d22dff9946e20aa430704a718067e5e8d634965b21c02f174001984ab7c16')
 
 
 package() {
@@ -44,7 +43,7 @@ package() {
     install "${srcdir}/"minizinc.png "${pkgdir}"/usr/share/"${pkgname}"
 
     # Move uncompressed files to package
-    mv "${srcdir}/"MiniZincIDE-"${pkgver}"-bundle-linux-x86_"${_arch}"/* "${pkgdir}"/usr/share/"${pkgname}"
+    mv "${srcdir}/"MiniZincIDE-"${pkgver}"-bundle-linux/* "${pkgdir}"/usr/share/"${pkgname}"
 
 
     # Rewrite MiniZincIDE.sh in order to change locations
