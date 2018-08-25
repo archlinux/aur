@@ -9,18 +9,19 @@ license=('LGPL')
 depends=('mingw-w64-gst-plugins-base' 'mingw-w64-orc')
 makedepends=('python' 'mingw-w64-configure' 'mingw-w64-libsoup' 'mingw-w64-cairo' 'mingw-w64-gdk-pixbuf2' 'mingw-w64-libpng' 'mingw-w64-libjpeg-turbo' 'mingw-w64-libvpx' 'mingw-w64-bzip2' 'mingw-w64-speex' 'mingw-w64-flac' 'mingw-w64-wavpack' 'mingw-w64-mpg123' 'mingw-w64-lame')
 optdepends=(
-  "mingw-w64-libsoup: http src and sink plugins"
-  "mingw-w64-cairo: cairo overlay plugin"
-  "mingw-w64-gdk-pixbuf2: pixbuf plugins"
-  "mingw-w64-libpng: png encoding/decoding plugins"
-  "mingw-w64-libjpeg-turbo: jpeg encoding/decoding plugins"
-  "mingw-w64-libvpx: VP8/9 encoding/decoding plugins"
-  "mingw-w64-speex: speex encoding/decoding plugins"
-  "mingw-w64-flac: flac encoding/decoding plugins"
-  "mingw-w64-wavpack: wavpack encoding/decoding plugins"
-  "mingw-w64-mpg123: mp3 decoding plugin"
-  "mingw-w64-lame: mp3 encoding plugin"
+  "mingw-w64-libsoup: libsoup HTTP client source/sink plugin"
+  "mingw-w64-cairo: Cairo overlay plugin"
+  "mingw-w64-gdk-pixbuf2: gdk-pixbuf image decoder, overlay, and sink plugin"
+  "mingw-w64-libpng: PNG image codec plugin"
+  "mingw-w64-libjpeg-turbo: JPEG image codec plugin"
+  "mingw-w64-libvpx: VP8 and VP9 video codec plugin"
+  "mingw-w64-speex: Speex audio codec plugin"
+  "mingw-w64-flac: FLAC audio codec plugin"
+  "mingw-w64-wavpack: Wavpack audio codec plugin"
+  "mingw-w64-mpg123: mpg123 mp3 audio decoder plugin"
+  "mingw-w64-lame: LAME mp3 audio encoder plugin"
 )
+
 options=('!strip' '!buildflags' 'staticlibs')
 
 source=(${url}/src/gst-plugins-good/gst-plugins-good-${pkgver}.tar.xz)
