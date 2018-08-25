@@ -1,6 +1,6 @@
 pkgbase = angular-cli
 	pkgdesc = CLI tool for Angular
-	pkgver = 6.0.8
+	pkgver = 6.1.5
 	pkgrel = 1
 	url = https://github.com/angular/angular-cli
 	arch = any
