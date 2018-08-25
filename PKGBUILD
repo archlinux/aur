@@ -5,14 +5,14 @@
 
 pkgbase=virtualbox-modules-uksm
 pkgname=('virtualbox-host-modules-uksm')
-pkgver=5.2.16
+pkgver=5.2.18
 pkgrel=1
 arch=('x86_64')
 url='http://virtualbox.org'
 license=('GPL')
 makedepends=('linux-uksm-headers' "virtualbox-host-dkms>=$pkgver" 'dkms')
 
-_extramodules=extramodules-4.17-uksm
+_extramodules=extramodules-uksm
 _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
 
 build() {
@@ -39,3 +39,4 @@ package_virtualbox-host-modules-uksm() {
         printf "vboxdrv\nvboxpci\nvboxnetadp\nvboxnetflt\n" |
         install -Dm644 /dev/stdin "$pkgdir/usr/lib/modules-load.d/virtualbox-host-modules-uksm.conf"
 }
+
