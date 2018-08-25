@@ -1,5 +1,5 @@
 pkgbase = gamehub-git
-	pkgdesc = All your games in one place. Games manager/downloader/library written in Vala designed for Pantheon.
+	pkgdesc = All your games in one place. Games manager/downloader/library written in Vala designed for Pantheon Shell. Supports GOG, Steam and Humble Bundle
 	pkgver = latest
 	pkgrel = 1
 	url = https://github.com/tkashkin/GameHub
