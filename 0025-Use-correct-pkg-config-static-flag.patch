@@ -1,7 +1,7 @@
 From 2c846ab2a45c159905715e98338246f86e98e5a8 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:50:21 +0200
-Subject: [PATCH 25/33] Use correct pkg-config --static flag
+Subject: [PATCH 25/34] Use correct pkg-config --static flag
 
 ---
  configure.pri | 3 +++
