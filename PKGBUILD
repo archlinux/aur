@@ -3,7 +3,7 @@
 pkgname=python2-notify2
 _pypiname=${pkgname/python2-/}
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Python interface to DBus notifications'
 arch=('any')
 url='https://pypi.python.org/pypi/notify2/'
