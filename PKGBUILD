@@ -11,7 +11,8 @@ arch=('i686' 'x86_64')
 url="https://github.com/${_author}/${_gitname}"
 license=('GPL3')
 depends=('gtk3' 'vala' 'granite'
-         'curl' 'libarchive' 'libevent' 'miniupnpc' 'openssl')
+         'curl' 'libb64' 'libevent' 'libnatpmp' 'libunity' 
+         'miniupnpc' 'openssl')
 optdepends=()
 makedepends=('cmake' 'vala' 'git')
 provides=("${_gitname}")
