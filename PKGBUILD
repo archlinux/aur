@@ -8,7 +8,7 @@ arch=('any')
 url="https://javacard.pro/globalplatform/"
 license=('LGPL3')
 depends=('java-environment' 'pcsclite')
-makedepends=('git' 'apache-ant')
+makedepends=('git' 'apache-ant' 'maven')
 source=(
   "$pkgname::git+https://github.com/martinpaljak/GlobalPlatformPro.git"
   'gp-pro'

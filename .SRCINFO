@@ -7,6 +7,7 @@ pkgbase = globalplatformpro-git
 	license = LGPL3
 	makedepends = git
 	makedepends = apache-ant
+	makedepends = maven
 	depends = java-environment
 	depends = pcsclite
 	source = globalplatformpro-git::git+https://github.com/martinpaljak/GlobalPlatformPro.git
