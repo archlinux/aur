@@ -1,0 +1,19 @@
+pkgbase = garmindev
+	pkgdesc = Garmin Device Drivers for QlandkarteGT
+	pkgver = 0.3.4
+	pkgrel = 9
+	url = http://www.qlandkarte.org/
+	install = garmindev.install
+	changelog = garmindev.changelog
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = libusb-compat
+	source = http://downloads.sourceforge.net/qlandkartegt/garmindev-0.3.4.tar.gz
+	source = 51-garmin.rules
+	sha256sums = 86c38f65ba1a05c5d5eb076107094cb789db6ffc5d80bfd7bb209d645bcf87d5
+	sha256sums = 0196ae234c0daf97afb9f4af6fdc04c2af77bb742233731870ba8cfc6ae5a7d7
+
+pkgname = garmindev
+
