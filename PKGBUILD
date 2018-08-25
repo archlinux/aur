@@ -27,7 +27,7 @@ build() {
     cd $GOPATH/src/github.com/$_pkgname/$_pkgname
     git submodule init
     git submodule update
-    sed "s/(untracked)/$(git describe --tags | sed -e 's/^v//' -e 's/-/./g')/" -i filebrowser.go
+    sed "s/(untracked)/$(git describe --tags | sed -e 's/^v//' -e 's/-/./g')/" -i lib/filebrowser.go
     sh build/build_all.sh
 }
 
@@ -35,5 +35,5 @@ package() {
     install -Dm644 "$srcdir"/$_pkgname.service "$pkgdir"/usr/lib/systemd/system/$_pkgname.service
     sed -e 's/.pid/-%i.pid/' -e 's/config/%i/' -i filebrowser.service
     install -Dm644 "$srcdir"/$_pkgname.service "$pkgdir"/usr/lib/systemd/system/$_pkgname@.service
-    install -Dm755 "$GOPATH"/src/github.com/$_pkgname/$_pkgname/$_pkgname "$pkgdir"/usr/bin/$_pkgname
+    install -Dm755 "$GOPATH"/src/github.com/$_pkgname/$_pkgname/cli/$_pkgname "$pkgdir"/usr/bin/$_pkgname
 }
