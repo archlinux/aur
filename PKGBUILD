@@ -60,7 +60,7 @@ _minor=17
 #_patchlevel=0
 #_subversion=1
 _basekernel=${_major}.${_minor}
-_srcname=linux-${_major}.${_minor}
+_srcname=linux-${_basekernel}
 pkgbase=linux-pf
 _pfrel=6
 _kernelname=-pf
@@ -435,25 +435,33 @@ _package() {
   echo # get kernel version
   _kernver="$(make LOCALVERSION= kernelrelease)"
 
-  mkdir -p "${pkgdir}"/{usr/lib/modules,boot}
+  mkdir -p "${pkgdir}"/usr/lib/modules
   make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
-  cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
+
+  msg2 "Installing boot image..."
+  install -Dm644 "$(make -s image_name)" "$pkgdir/boot/vmlinuz-${pkgbase}"
 
   ### c/p from linux-ARCH
   
   # make room for external modules
   local _extramodules="extramodules-${_basekernel}${_kernelname:--ARCH}"
-  ln -s "../${_extramodules}" "${pkgdir}/usr/lib/modules/${_kernver}/extramodules"
+  ln -s "../${_extramodules}" \
+     "${pkgdir}/usr/lib/modules/${_kernver}/extramodules"
 
   # add real version for building modules and running depmod from hook
   echo "${_kernver}" |
-    install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modules/${_extramodules}/version"
+    install -Dm644 /dev/stdin \
+            "${pkgdir}/usr/lib/modules/${_extramodules}/version"
+
   
   # remove build and source links
   rm "${pkgdir}"/usr/lib/modules/${_kernver}/{source,build}
   
   # add vmlinux
   install -Dt "${pkgdir}/usr/lib/modules/${_kernver}/build" -m644 vmlinux
+
+  msg2 "Fixing permissions..."
+  chmod -Rc u=rwX,go=rX "$pkgdir"
   
   # end c/p
 }
@@ -462,44 +470,43 @@ _package() {
 _package-headers() {
   pkgname=${pkgbase}-headers
   pkgdesc="Header files and scripts for building modules for linux-pf kernel."
-  depends=('linux-pf') 
-  cd "${srcdir}/linux-${_basekernel}"
-  local _builddir="${pkgdir}/usr/lib/modules/${_kernver}/build"
-  # c/p from linux-ARCH
 
-  install -dm755 "${_builddir}"
+  local _builddir="${pkgdir}/usr/lib/modules/${_kernver}/build"
+  
+  cd "${srcdir}/${_srcname}"
 
   # only install objtool when stack validation is enabled
   if grep -q CONFIG_STACK_VALIDATION=y .config   ; then
     install -Dt "${_builddir}/tools/objtool" tools/objtool/objtool
   fi
-  
-  cd "${srcdir}/${_srcname}"
+
+
+  msg2 "Installing build files..."
+  install -dm755 "${_builddir}" 
   install -Dt "${_builddir}" -m644 Makefile .config Module.symvers
   install -Dt "${_builddir}/kernel" -m644 kernel/Makefile
 
-  mkdir -p "${_builddir}/include"
+  
+  install -D -m644 arch/${KARCH}/Makefile -t "${_builddir}/arch/${KARCH}/"
+  
+  if [ "${CARCH}" = "i686" ]; then
+    install -Dm644 arch/${KARCH}/Makefile_32.cpu -t "${_builddir}/arch/${KARCH}/"
+  fi
 
-  for i in acpi asm-generic config crypto drm generated keys linux math-emu \
-                media net pcmcia rdma scsi soc sound trace uapi video xen; do
-    cp -a include/${i} "${_builddir}/include/"
-  done
-
-  # copy arch includes for external modules
-  mkdir -p "${_builddir}/arch/x86"
-  cp -a arch/x86/include "${_builddir}/arch/x86/"
   # copy files necessary for later builds, like nvidia and vmware
   cp -a scripts "${_builddir}"
+
+ 
+  msg2 "Installing headers..."
+  cp -t "$_builddir" -a include
+  # copy arch includes for external modules
+  cp -t "$_builddir/arch/x86" -a arch/x86/include
+
 
   # fix permissions on scripts dir
   chmod og-w -R "${_builddir}/scripts"
   mkdir -p "${_builddir}/.tmp_versions"
 
-  install -D -m644 arch/${KARCH}/Makefile "${_builddir}/arch/${KARCH}/"
-
-  if [ "${CARCH}" = "i686" ]; then
-    install -Dm644 arch/${KARCH}/Makefile_32.cpu "${_builddir}/arch/${KARCH}/"
-  fi
 
   install -D -m644 -t "${_builddir}/arch/${KARCH}/kernel/" arch/${KARCH}/kernel/asm-offsets.s
 
@@ -528,15 +535,9 @@ _package-headers() {
   # add xfs and shmem for aufs building
   mkdir -p "${_builddir}/"{fs/xfs,mm}
 
-  # copy in Kconfig files
+  msg2 "Installing KConfig files..."
   find . -name Kconfig\* -exec install -Dm644 {} "${_builddir}/{}" \;
-  
-  # remove files already in linux-docs package
-  rm -r "${_builddir}/Documentation"
-  
-  # Fix permissions
-  chmod -R u=rwX,go=rX "${_builddir}"
-  
+    
   # strip scripts directory
   find "${_builddir}/scripts" -type f -perm -u+w 2>/dev/null | while read binary ; do
     case "$(file -bi "${binary}")" in
@@ -549,14 +550,29 @@ _package-headers() {
     esac
   done
   
-  # remove unneeded architectures
-  rm -rf "${_builddir}"/arch/{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
-  # end c/p
+  msg2 "Removing unneeded architectures..."
+  local arch
+  for arch in "$_builddir"/arch/*/; do
+    [[ $arch = */x86/ ]] && continue
+    echo "Removing $(basename "$arch")"
+    rm -r "$arch"
+  done
+
+  # remove files already in linux-docs package
+  msg2 "Removing documentation..."
+  rm -r "$_builddir/Documentation"
   
   # Add version.h for dumb binary blob installers which aren't
   cd "${_builddir}/include/linux/"
   [[ -e version.h ]] || ln -s ../generated/uapi/linux/version.h
-  
+
+
+  msg2 "Adding symlink..."
+  mkdir -p "$pkgdir/usr/src"
+  ln -sr "$_builddir" "$pkgdir/usr/src/$pkgbase-$pkgver"
+
+  # Fix permissions
+  chmod -R u=rwX,go=rX "${_builddir}"
 }
 _package-preset-default()
 {
