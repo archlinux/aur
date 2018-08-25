@@ -1,0 +1,20 @@
+pkgbase = python-openshift
+	pkgdesc = Python client for the OpenShift API
+	pkgver = 0.6.3
+	pkgrel = 1
+	url = https://github.com/openshift/openshift-restclient-python
+	arch = any
+	license = APACHE
+	makedepends = python-setuptools
+	depends = python<3.7
+	depends = python-dictdiffer
+	depends = python-jinja
+	depends = python-kubernetes
+	depends = python-string-utils
+	depends = python-ruamel-yaml
+	depends = python-six
+	source = https://files.pythonhosted.org/packages/source/o/openshift/openshift-0.6.3.tar.gz
+	md5sums = b2ff1c4f57bd5c3584c009d634074cff
+
+pkgname = python-openshift
+
