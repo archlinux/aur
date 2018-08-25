@@ -1,0 +1,2162 @@
+From aa4df5b102e81bb057b256fab1754fb5449e1b18 Mon Sep 17 00:00:00 2001
+From: Markus Heidelberg <markus.heidelberg@web.de>
+Date: Sat, 25 Aug 2018 11:56:42 +0200
+Subject: [PATCH 2/2] Change #include <QtGui> to <QtWidgets> to fix several
+ compile errors
+
+See:
+https://wiki.qt.io/Transition_from_Qt_4.x_to_Qt5#Solution
+---
+ 3rdparty/QTextHtmlExporter/QTextHtmlExporter.h | 2 +-
+ src/CActions.cpp                               | 2 +-
+ src/CCanvas.cpp                                | 2 +-
+ src/CCanvas.cpp.orig                           | 2 +-
+ src/CCreateMapFineTune.cpp                     | 2 +-
+ src/CCreateMapGeoTiff.cpp                      | 2 +-
+ src/CCreateMapGridTool.cpp                     | 2 +-
+ src/CCreateMapQMAP.cpp                         | 2 +-
+ src/CDeviceGPSD.cpp                            | 2 +-
+ src/CDeviceGarmin.cpp                          | 2 +-
+ src/CDeviceGarminBulk.cpp                      | 2 +-
+ src/CDeviceMagellan.cpp                        | 2 +-
+ src/CDeviceNMEA.cpp                            | 2 +-
+ src/CDeviceQLandkarteM.cpp                     | 2 +-
+ src/CDeviceTwoNav.cpp                          | 2 +-
+ src/CDiaryDB.cpp                               | 2 +-
+ src/CDiaryEdit.cpp                             | 2 +-
+ src/CDiskCache.cpp                             | 2 +-
+ src/CDiskCacheZip.cpp                          | 2 +-
+ src/CDlgCombineDistOvl.cpp                     | 2 +-
+ src/CDlgCombineTracks.cpp                      | 2 +-
+ src/CDlgConfig.cpp                             | 2 +-
+ src/CDlgConfig3D.cpp                           | 2 +-
+ src/CDlgConvertToTrack.cpp                     | 2 +-
+ src/CDlgCropMap.cpp                            | 2 +-
+ src/CDlgDelWpt.cpp                             | 2 +-
+ src/CDlgDeviceExportPath.cpp                   | 2 +-
+ src/CDlgEditFolder.cpp                         | 2 +-
+ src/CDlgEditMapLevel.cpp                       | 2 +-
+ src/CDlgEditRoute.cpp                          | 2 +-
+ src/CDlgEditText.cpp                           | 2 +-
+ src/CDlgEditWpt.cpp                            | 2 +-
+ src/CDlgExport.cpp                             | 2 +-
+ src/CDlgImportImages.cpp                       | 2 +-
+ src/CDlgLoadOnlineMap.cpp                      | 2 +-
+ src/CDlgMapJNXConfig.cpp                       | 2 +-
+ src/CDlgMapQMAPConfig.cpp                      | 2 +-
+ src/CDlgMapRMPConfig.cpp                       | 2 +-
+ src/CDlgMapTDBConfig.cpp                       | 2 +-
+ src/CDlgMapTmsConfig.cpp                       | 2 +-
+ src/CDlgMapWmsConfig.cpp                       | 2 +-
+ src/CDlgMultiColorConfig.cpp                   | 2 +-
+ src/CDlgNoMapConfig.cpp                        | 2 +-
+ src/CDlgParentWpt.cpp                          | 2 +-
+ src/CDlgProjWizzard.cpp                        | 2 +-
+ src/CDlgProxy.cpp                              | 2 +-
+ src/CDlgScreenshot.cpp                         | 2 +-
+ src/CDlgSelGeoDBFolder.cpp                     | 2 +-
+ src/CDlgSetupGarminIcons.cpp                   | 4 ++--
+ src/CDlgSetupGrid.cpp                          | 2 +-
+ src/CDlgTrackFilter.cpp                        | 2 +-
+ src/CDlgWpt2Rte.cpp                            | 2 +-
+ src/CDlgWptIcon.cpp                            | 2 +-
+ src/CExchangeGarmin.cpp                        | 2 +-
+ src/CGarminExport.cpp                          | 2 +-
+ src/CGarminIndex.cpp                           | 2 +-
+ src/CGarminTile.cpp                            | 2 +-
+ src/CGeoDB.cpp                                 | 2 +-
+ src/CGridDB.cpp                                | 2 +-
+ src/CImage.cpp                                 | 2 +-
+ src/CImageSelect.cpp                           | 2 +-
+ src/CImageViewer.cpp                           | 2 +-
+ src/CLiveLogDB.cpp                             | 2 +-
+ src/CLiveLogToolWidget.cpp                     | 2 +-
+ src/CMainWindow.cpp                            | 2 +-
+ src/CMap3D.cpp                                 | 2 +-
+ src/CMap3DWidget.cpp                           | 2 +-
+ src/CMapDB.cpp                                 | 2 +-
+ src/CMapDEM.cpp                                | 2 +-
+ src/CMapDEMSlopeSetup.cpp                      | 2 +-
+ src/CMapEditWidget.cpp                         | 2 +-
+ src/CMapGeoTiff.cpp                            | 2 +-
+ src/CMapJnx.cpp                                | 2 +-
+ src/CMapLevel.cpp                              | 2 +-
+ src/CMapNoMap.cpp                              | 2 +-
+ src/CMapQMAP.cpp                               | 2 +-
+ src/CMapQMAPExport.cpp                         | 2 +-
+ src/CMapRaster.cpp                             | 2 +-
+ src/CMapRmap.cpp                               | 2 +-
+ src/CMapRmp.cpp                                | 2 +-
+ src/CMapSearchCanvas.cpp                       | 2 +-
+ src/CMapSearchThread.cpp                       | 2 +-
+ src/CMapSearchWidget.cpp                       | 2 +-
+ src/CMapSelectionGarmin.cpp                    | 2 +-
+ src/CMapSelectionRaster.cpp                    | 2 +-
+ src/CMapTDB.cpp                                | 2 +-
+ src/CMapTms.cpp                                | 2 +-
+ src/CMapToolWidget.cpp                         | 2 +-
+ src/CMapWms.cpp                                | 2 +-
+ src/CMegaMenu.cpp                              | 2 +-
+ src/CMenus.cpp                                 | 2 +-
+ src/CMouseAddArea.cpp                          | 2 +-
+ src/CMouseAddDistance.cpp                      | 2 +-
+ src/CMouseAddText.cpp                          | 2 +-
+ src/CMouseAddTextBox.cpp                       | 2 +-
+ src/CMouseAddWpt.cpp                           | 2 +-
+ src/CMouseColorPicker.cpp                      | 2 +-
+ src/CMouseCutTrack.cpp                         | 2 +-
+ src/CMouseEditWpt.cpp                          | 2 +-
+ src/CMouseMoveMap.cpp                          | 2 +-
+ src/CMouseMoveWpt.cpp                          | 2 +-
+ src/CMouseOverlay.cpp                          | 2 +-
+ src/CMouseRefPoint.cpp                         | 2 +-
+ src/CMouseSelMap.cpp                           | 2 +-
+ src/CMouseSelTrack.cpp                         | 2 +-
+ src/CMouseSelWpt.cpp                           | 2 +-
+ src/CMouseZoomMap.cpp                          | 2 +-
+ src/COverlayArea.cpp                           | 2 +-
+ src/COverlayAreaEditWidget.cpp                 | 2 +-
+ src/COverlayDB.cpp                             | 2 +-
+ src/COverlayDistance.cpp                       | 2 +-
+ src/COverlayDistanceEditWidget.cpp             | 2 +-
+ src/COverlayText.cpp                           | 2 +-
+ src/COverlayTextBox.cpp                        | 2 +-
+ src/COverlayToolWidget.cpp                     | 2 +-
+ src/CPlot.cpp                                  | 2 +-
+ src/CPlotAxisTime.cpp                          | 2 +-
+ src/CResources.cpp                             | 2 +-
+ src/CRoute.cpp                                 | 2 +-
+ src/CRouteDB.cpp                               | 2 +-
+ src/CRouteToolWidget.cpp                       | 2 +-
+ src/CSearchDB.cpp                              | 2 +-
+ src/CSearchToolWidget.cpp                      | 2 +-
+ src/CSpline.cpp                                | 2 +-
+ src/CStatusDEM.cpp                             | 2 +-
+ src/CTabWidget.cpp                             | 2 +-
+ src/CTextBrowser.cpp                           | 2 +-
+ src/CTextEditWidget.cpp                        | 2 +-
+ src/CTrack.cpp                                 | 2 +-
+ src/CTrackDB.cpp                               | 2 +-
+ src/CTrackEditWidget.cpp                       | 2 +-
+ src/CTrackFilterWidget.cpp                     | 2 +-
+ src/CTrackStatDistanceWidget.cpp               | 2 +-
+ src/CTrackStatExtensionWidget.cpp              | 2 +-
+ src/CTrackStatProfileWidget.cpp                | 2 +-
+ src/CTrackStatSpeedWidget.cpp                  | 2 +-
+ src/CTrackStatTraineeWidget.cpp                | 2 +-
+ src/CTrackToolWidget.cpp                       | 2 +-
+ src/CWpt.cpp                                   | 2 +-
+ src/CWptDB.cpp                                 | 2 +-
+ src/CWptToolWidget.cpp                         | 2 +-
+ src/GeoMath.cpp                                | 2 +-
+ src/IDB.cpp                                    | 2 +-
+ src/IDevice.cpp                                | 2 +-
+ src/IDiskCache.cpp                             | 2 +-
+ src/IExchange.cpp                              | 2 +-
+ src/IGarminTyp.h                               | 2 +-
+ src/IItem.cpp                                  | 2 +-
+ src/IMap.cpp                                   | 2 +-
+ src/IMouse.cpp                                 | 2 +-
+ src/IOverlay.cpp                               | 2 +-
+ src/ITrackStat.cpp                             | 2 +-
+ src/main.cpp                                   | 2 +-
+ 153 files changed, 154 insertions(+), 154 deletions(-)
+
+diff --git a/3rdparty/QTextHtmlExporter/QTextHtmlExporter.h b/3rdparty/QTextHtmlExporter/QTextHtmlExporter.h
+index 4b57322..c1ccce2 100644
+--- a/3rdparty/QTextHtmlExporter/QTextHtmlExporter.h
++++ b/3rdparty/QTextHtmlExporter/QTextHtmlExporter.h
+@@ -42,7 +42,7 @@
+ #ifndef QTEXTHTMLEXPORTER_H
+ #define QTEXTHTMLEXPORTER_H
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ namespace QLGT
+ {
+diff --git a/src/CActions.cpp b/src/CActions.cpp
+index 3ea8cb3..30ac403 100644
+--- a/src/CActions.cpp
++++ b/src/CActions.cpp
+@@ -44,7 +44,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ #include "CTabWidget.h"
+ #include "COverlayDistance.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ CActions::CActions(QObject *parent) :
+ QObject(parent), parent(parent)
+diff --git a/src/CCanvas.cpp b/src/CCanvas.cpp
+index faa0e47..62919cc 100644
+--- a/src/CCanvas.cpp
++++ b/src/CCanvas.cpp
+@@ -62,7 +62,7 @@
+ #include "CGridDB.h"
+ #include "CMapDEMSlopeSetup.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ #include <stdio.h>
+ #ifndef QK_QT5_TZONE
+diff --git a/src/CCanvas.cpp.orig b/src/CCanvas.cpp.orig
+index d7559d7..3662e4c 100644
+--- a/src/CCanvas.cpp.orig
++++ b/src/CCanvas.cpp.orig
+@@ -62,7 +62,7 @@
+ #include "CGridDB.h"
+ #include "CMapDEMSlopeSetup.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ #include <stdio.h>
+ #ifndef QK_QT5_TZONE
+diff --git a/src/CCreateMapFineTune.cpp b/src/CCreateMapFineTune.cpp
+index 551b62e..a239f79 100644
+--- a/src/CCreateMapFineTune.cpp
++++ b/src/CCreateMapFineTune.cpp
+@@ -24,7 +24,7 @@
+ #include "config.h"
+ #include "CSettings.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QFileDialog>
+ #include <gdal_priv.h>
+ 
+diff --git a/src/CCreateMapGeoTiff.cpp b/src/CCreateMapGeoTiff.cpp
+index f5c2fef..7e91a97 100644
+--- a/src/CCreateMapGeoTiff.cpp
++++ b/src/CCreateMapGeoTiff.cpp
+@@ -33,7 +33,7 @@
+ #include <ogr_spatialref.h>
+ #include <gdal_priv.h>
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QMessageBox>
+ #include <QFileDialog>
+ #include <QScrollBar>
+diff --git a/src/CCreateMapGridTool.cpp b/src/CCreateMapGridTool.cpp
+index f5bfccc..2d237d9 100644
+--- a/src/CCreateMapGridTool.cpp
++++ b/src/CCreateMapGridTool.cpp
+@@ -25,7 +25,7 @@
+ #include "CDlgProjWizzard.h"
+ #include "CSettings.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QMessageBox>
+ 
+ #include <gdal.h>
+diff --git a/src/CCreateMapQMAP.cpp b/src/CCreateMapQMAP.cpp
+index 8f3035d..d6b83cd 100644
+--- a/src/CCreateMapQMAP.cpp
++++ b/src/CCreateMapQMAP.cpp
+@@ -26,7 +26,7 @@
+ 
+ #include "config.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QFileDialog>
+ #include <QMessageBox>
+ 
+diff --git a/src/CDeviceGPSD.cpp b/src/CDeviceGPSD.cpp
+index d690869..f5be09c 100644
+--- a/src/CDeviceGPSD.cpp
++++ b/src/CDeviceGPSD.cpp
+@@ -16,7 +16,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ ********************************************************************************************* */
+ #include "CDeviceGPSD.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QtCore/QMutex>
+ #include <QMessageBox>
+ #include <sys/select.h>
+diff --git a/src/CDeviceGarmin.cpp b/src/CDeviceGarmin.cpp
+index b8ab18d..502b1a3 100644
+--- a/src/CDeviceGarmin.cpp
++++ b/src/CDeviceGarmin.cpp
+@@ -35,7 +35,7 @@
+ #undef IDEVICE_H
+ #include <garmin/IDevice.h>
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QMessageBox>
+ #include <QSound>
+ #include <QProgressDialog>
+diff --git a/src/CDeviceGarminBulk.cpp b/src/CDeviceGarminBulk.cpp
+index 84d6653..aacc296 100644
+--- a/src/CDeviceGarminBulk.cpp
++++ b/src/CDeviceGarminBulk.cpp
+@@ -28,7 +28,7 @@
+ #include "CSettings.h"
+ #include "CDlgDeviceExportPath.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QtXml>
+ #include <QMessageBox>
+ #include <QFileDialog>
+diff --git a/src/CDeviceMagellan.cpp b/src/CDeviceMagellan.cpp
+index 32a5f6e..ca1aedf 100644
+--- a/src/CDeviceMagellan.cpp
++++ b/src/CDeviceMagellan.cpp
+@@ -26,7 +26,7 @@
+ #include "CCanvas.h"
+ #include "CDlgDeviceExportPath.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QMessageBox>
+ #include <QFileDialog>
+ 
+diff --git a/src/CDeviceNMEA.cpp b/src/CDeviceNMEA.cpp
+index 398b288..84b14af 100644
+--- a/src/CDeviceNMEA.cpp
++++ b/src/CDeviceNMEA.cpp
+@@ -17,7 +17,7 @@
+ **********************************************************************************************/
+ #include "CDeviceNMEA.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QMessageBox>
+ #include <proj_api.h>
+ 
+diff --git a/src/CDeviceQLandkarteM.cpp b/src/CDeviceQLandkarteM.cpp
+index a58d2f7..fdc4609 100644
+--- a/src/CDeviceQLandkarteM.cpp
++++ b/src/CDeviceQLandkarteM.cpp
+@@ -21,7 +21,7 @@
+ #include "CTrack.h"
+ #include "CTrackDB.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QNetworkInterface>
+ #include <QMessageBox>
+ #include <QProgressDialog>
+diff --git a/src/CDeviceTwoNav.cpp b/src/CDeviceTwoNav.cpp
+index 6129bb3..802a230 100644
+--- a/src/CDeviceTwoNav.cpp
++++ b/src/CDeviceTwoNav.cpp
+@@ -28,7 +28,7 @@
+ #include "CTrack.h"
+ #include "CDlgDeviceExportPath.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QMessageBox>
+ #include <QFileDialog>
+ 
+diff --git a/src/CDiaryDB.cpp b/src/CDiaryDB.cpp
+index ce596b4..84f405a 100644
+--- a/src/CDiaryDB.cpp
++++ b/src/CDiaryDB.cpp
+@@ -21,7 +21,7 @@
+ #include "CQlb.h"
+ #include "CGpx.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ CDiaryDB * CDiaryDB::m_self = 0;
+ 
+diff --git a/src/CDiaryEdit.cpp b/src/CDiaryEdit.cpp
+index f4f499d..b3688ca 100644
+--- a/src/CDiaryEdit.cpp
++++ b/src/CDiaryEdit.cpp
+@@ -33,7 +33,7 @@
+ #include "IUnit.h"
+ #include "CSettings.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QMessageBox>
+ #include <QColorDialog>
+ #include <QPrintDialog>
+diff --git a/src/CDiskCache.cpp b/src/CDiskCache.cpp
+index 09866b7..6849733 100644
+--- a/src/CDiskCache.cpp
++++ b/src/CDiskCache.cpp
+@@ -21,7 +21,7 @@
+ #include "CResources.h"
+ #endif                           //!STANDALONE
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ #ifdef STANDALONE
+ CDiskCache::CDiskCache(const QString &path, QObject *parent)
+diff --git a/src/CDiskCacheZip.cpp b/src/CDiskCacheZip.cpp
+index 40a101b..55e45a1 100644
+--- a/src/CDiskCacheZip.cpp
++++ b/src/CDiskCacheZip.cpp
+@@ -23,7 +23,7 @@
+ 
+ #include "../3rdparty/QZip/qzipreader.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ #ifdef STANDALONE
+ CDiskCacheZip::CDiskCacheZip(const QString &path, QObject *parent)
+diff --git a/src/CDlgCombineDistOvl.cpp b/src/CDlgCombineDistOvl.cpp
+index 65e37aa..309cecc 100644
+--- a/src/CDlgCombineDistOvl.cpp
++++ b/src/CDlgCombineDistOvl.cpp
+@@ -20,7 +20,7 @@
+ #include "COverlayDB.h"
+ #include "IOverlay.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ CDlgCombineDistOvl::CDlgCombineDistOvl(QWidget * parent)
+ : QDialog(parent)
+diff --git a/src/CDlgCombineTracks.cpp b/src/CDlgCombineTracks.cpp
+index dabf96d..e16fe6d 100644
+--- a/src/CDlgCombineTracks.cpp
++++ b/src/CDlgCombineTracks.cpp
+@@ -20,7 +20,7 @@
+ #include "CTrackDB.h"
+ #include "CTrack.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ bool trackLessThan(CTrack * s1, CTrack * s2)
+ {
+diff --git a/src/CDlgConfig.cpp b/src/CDlgConfig.cpp
+index 64029e4..d8f35d4 100644
+--- a/src/CDlgConfig.cpp
++++ b/src/CDlgConfig.cpp
+@@ -26,7 +26,7 @@
+ #include "CDlgSetupGarminIcons.h"
+ #include "GeoMath.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QNetworkProxy>
+ #include <QColorDialog>
+ #include <QFileDialog>
+diff --git a/src/CDlgConfig3D.cpp b/src/CDlgConfig3D.cpp
+index 3e4996c..716ce16 100644
+--- a/src/CDlgConfig3D.cpp
++++ b/src/CDlgConfig3D.cpp
+@@ -19,7 +19,7 @@
+ #include "CDlgConfig3D.h"
+ #include "CMap3D.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ CDlgConfig3D::CDlgConfig3D(CMap3D& view3D)
+ : QDialog(&view3D)
+diff --git a/src/CDlgConvertToTrack.cpp b/src/CDlgConvertToTrack.cpp
+index d90dd2c..8bc7454 100644
+--- a/src/CDlgConvertToTrack.cpp
++++ b/src/CDlgConvertToTrack.cpp
+@@ -19,7 +19,7 @@
+ #include "CDlgConvertToTrack.h"
+ #include "CSettings.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ CDlgConvertToTrack::CDlgConvertToTrack(QWidget * parent)
+ : QDialog(parent)
+diff --git a/src/CDlgCropMap.cpp b/src/CDlgCropMap.cpp
+index 87530b3..5ac93d5 100644
+--- a/src/CDlgCropMap.cpp
++++ b/src/CDlgCropMap.cpp
+@@ -19,7 +19,7 @@
+ #include "CMapFile.h"
+ #include "CSettings.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QScrollBar>
+ 
+ CDlgCropMap::CDlgCropMap(const QString &filename, quint32 x, quint32 y, quint32 w, quint32 h)
+diff --git a/src/CDlgDelWpt.cpp b/src/CDlgDelWpt.cpp
+index 798975e..d0fecf4 100644
+--- a/src/CDlgDelWpt.cpp
++++ b/src/CDlgDelWpt.cpp
+@@ -21,7 +21,7 @@
+ #include "CWptDB.h"
+ #include "WptIcons.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ CDlgDelWpt::CDlgDelWpt(QWidget * parent)
+ : QDialog(parent)
+diff --git a/src/CDlgDeviceExportPath.cpp b/src/CDlgDeviceExportPath.cpp
+index cfa37a2..b9b9ad1 100644
+--- a/src/CDlgDeviceExportPath.cpp
++++ b/src/CDlgDeviceExportPath.cpp
+@@ -17,7 +17,7 @@
+ **********************************************************************************************/
+ #include "CDlgDeviceExportPath.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ CDlgDeviceExportPath::CDlgDeviceExportPath(const QString& what, QDir &dir, QString& subdir, mode_e mode, QWidget * parent)
+ : QDialog(parent)
+diff --git a/src/CDlgEditFolder.cpp b/src/CDlgEditFolder.cpp
+index 3b504fa..1855a01 100644
+--- a/src/CDlgEditFolder.cpp
++++ b/src/CDlgEditFolder.cpp
+@@ -19,7 +19,7 @@
+ #include "CDlgEditFolder.h"
+ #include "CGeoDB.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ CDlgEditFolder::CDlgEditFolder(QString& name, QString& comment, int& type)
+ : name(name)
+diff --git a/src/CDlgEditMapLevel.cpp b/src/CDlgEditMapLevel.cpp
+index 6f90122..44b1b03 100644
+--- a/src/CDlgEditMapLevel.cpp
++++ b/src/CDlgEditMapLevel.cpp
+@@ -18,7 +18,7 @@
+ 
+ #include "CDlgEditMapLevel.h"
+ #include "CCreateMapQMAP.h"
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QFileDialog>
+ #include <gdal.h>
+ 
+diff --git a/src/CDlgEditRoute.cpp b/src/CDlgEditRoute.cpp
+index e84fd30..ca3e75e 100644
+--- a/src/CDlgEditRoute.cpp
++++ b/src/CDlgEditRoute.cpp
+@@ -21,7 +21,7 @@
+ #include "CDlgWptIcon.h"
+ #include "WptIcons.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ CDlgEditRoute::CDlgEditRoute(CRoute& rte, QWidget * parent)
+ : QDialog(parent)
+diff --git a/src/CDlgEditText.cpp b/src/CDlgEditText.cpp
+index 84b038b..34978b3 100644
+--- a/src/CDlgEditText.cpp
++++ b/src/CDlgEditText.cpp
+@@ -19,7 +19,7 @@
+ #include "CDlgEditText.h"
+ #include "CTextEditWidget.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QDialogButtonBox>
+ 
+ CDlgEditText::CDlgEditText(QString& content, QWidget * parent)
+diff --git a/src/CDlgEditWpt.cpp b/src/CDlgEditWpt.cpp
+index 59e7da2..4f4e1f6 100644
+--- a/src/CDlgEditWpt.cpp
++++ b/src/CDlgEditWpt.cpp
+@@ -32,7 +32,7 @@
+ 
+ #include "CImageViewer.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QtNetwork>
+ #ifndef QK_QT5_PORT
+ #include <tzdata.h>
+diff --git a/src/CDlgExport.cpp b/src/CDlgExport.cpp
+index ef4e1fc..50e7e81 100644
+--- a/src/CDlgExport.cpp
++++ b/src/CDlgExport.cpp
+@@ -28,7 +28,7 @@
+ #include "WptIcons.h"
+ #include "GeoMath.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <proj_api.h>
+ 
+ CDlgExport::CDlgExport(QWidget * parent, QStringList * wpt, QStringList * trk, QStringList * rte)
+diff --git a/src/CDlgImportImages.cpp b/src/CDlgImportImages.cpp
+index 366cb5a..3a037bd 100644
+--- a/src/CDlgImportImages.cpp
++++ b/src/CDlgImportImages.cpp
+@@ -21,7 +21,7 @@
+ #include "CWptDB.h"
+ #include "GeoMath.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QFileDialog>
+ 
+ CDlgImportImages::CDlgImportImages(QWidget *parent)
+diff --git a/src/CDlgLoadOnlineMap.cpp b/src/CDlgLoadOnlineMap.cpp
+index 9a4050b..ac3c484 100644
+--- a/src/CDlgLoadOnlineMap.cpp
++++ b/src/CDlgLoadOnlineMap.cpp
+@@ -19,7 +19,7 @@
+ #include "CDlgLoadOnlineMap.h"
+ #include "CSettings.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QtNetwork>
+ #include <QFileDialog>
+ 
+diff --git a/src/CDlgMapJNXConfig.cpp b/src/CDlgMapJNXConfig.cpp
+index e4386ab..19f8d4a 100644
+--- a/src/CDlgMapJNXConfig.cpp
++++ b/src/CDlgMapJNXConfig.cpp
+@@ -19,7 +19,7 @@
+ #include "CDlgMapJNXConfig.h"
+ #include "CMapJnx.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ #ifndef WIN32
+ #include <unistd.h>
+diff --git a/src/CDlgMapQMAPConfig.cpp b/src/CDlgMapQMAPConfig.cpp
+index 9db3f1a..4244670 100644
+--- a/src/CDlgMapQMAPConfig.cpp
++++ b/src/CDlgMapQMAPConfig.cpp
+@@ -19,7 +19,7 @@
+ #include "CDlgMapQMAPConfig.h"
+ #include "CMapQMAP.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ #ifndef WIN32
+ #include <unistd.h>
+diff --git a/src/CDlgMapRMPConfig.cpp b/src/CDlgMapRMPConfig.cpp
+index 29ec8fe..3cee8b7 100644
+--- a/src/CDlgMapRMPConfig.cpp
++++ b/src/CDlgMapRMPConfig.cpp
+@@ -18,7 +18,7 @@
+ #include "CDlgMapRMPConfig.h"
+ #include "CMapRmp.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ #ifndef WIN32
+ #include <unistd.h>
+diff --git a/src/CDlgMapTDBConfig.cpp b/src/CDlgMapTDBConfig.cpp
+index e684878..c8f21d3 100644
+--- a/src/CDlgMapTDBConfig.cpp
++++ b/src/CDlgMapTDBConfig.cpp
+@@ -19,7 +19,7 @@
+ #include "CDlgMapTDBConfig.h"
+ #include "CMapTDB.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ #ifndef WIN32
+ #include <unistd.h>
+diff --git a/src/CDlgMapTmsConfig.cpp b/src/CDlgMapTmsConfig.cpp
+index 78e94ab..7da400e 100644
+--- a/src/CDlgMapTmsConfig.cpp
++++ b/src/CDlgMapTmsConfig.cpp
+@@ -18,7 +18,7 @@
+ 
+ #include "CDlgMapTmsConfig.h"
+ #include "CMapTms.h"
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ CDlgMapTmsConfig::CDlgMapTmsConfig(CMapTms& m)
+ {
+diff --git a/src/CDlgMapWmsConfig.cpp b/src/CDlgMapWmsConfig.cpp
+index e4f5ed4..1452802 100644
+--- a/src/CDlgMapWmsConfig.cpp
++++ b/src/CDlgMapWmsConfig.cpp
+@@ -22,7 +22,7 @@
+ #include "CResources.h"
+ #include "CMainWindow.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QtXml>
+ #include <QtNetwork>
+ #include <proj_api.h>
+diff --git a/src/CDlgMultiColorConfig.cpp b/src/CDlgMultiColorConfig.cpp
+index cd5f1cc..3d99061 100644
+--- a/src/CDlgMultiColorConfig.cpp
++++ b/src/CDlgMultiColorConfig.cpp
+@@ -18,7 +18,7 @@
+ 
+ #include "CDlgMultiColorConfig.h"
+ #include "CCanvas.h"
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ CDlgMultiColorConfig::CDlgMultiColorConfig(CTrack::multi_color_setup_t &setup)
+ : setup(setup)
+diff --git a/src/CDlgNoMapConfig.cpp b/src/CDlgNoMapConfig.cpp
+index d0115d4..a0bbf93 100644
+--- a/src/CDlgNoMapConfig.cpp
++++ b/src/CDlgNoMapConfig.cpp
+@@ -19,7 +19,7 @@
+ #include "CMapNoMap.h"
+ #include "CDlgProjWizzard.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ CDlgNoMapConfig::CDlgNoMapConfig(CMapNoMap &map)
+ : map(map)
+diff --git a/src/CDlgParentWpt.cpp b/src/CDlgParentWpt.cpp
+index 89071af..5ccc291 100644
+--- a/src/CDlgParentWpt.cpp
++++ b/src/CDlgParentWpt.cpp
+@@ -20,7 +20,7 @@
+ #include "CWptDB.h"
+ #include "CWpt.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ CDlgParentWpt::CDlgParentWpt(QString &name, QWidget *parent)
+ : QDialog(parent)
+diff --git a/src/CDlgProjWizzard.cpp b/src/CDlgProjWizzard.cpp
+index 2a40b2b..e6a3513 100644
+--- a/src/CDlgProjWizzard.cpp
++++ b/src/CDlgProjWizzard.cpp
+@@ -20,7 +20,7 @@
+ #include "mitab.h"
+ #include <proj_api.h>
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QMessageBox>
+ 
+ struct mitab_entry_t {QString name; int idx;};
+diff --git a/src/CDlgProxy.cpp b/src/CDlgProxy.cpp
+index acc0587..9a6c266 100644
+--- a/src/CDlgProxy.cpp
++++ b/src/CDlgProxy.cpp
+@@ -20,7 +20,7 @@
+ #include "CResources.h"
+ #include "CMainWindow.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ CDlgProxy::CDlgProxy(QString &user, QString &pwd, QWidget *parent)
+ : QDialog(parent)
+diff --git a/src/CDlgScreenshot.cpp b/src/CDlgScreenshot.cpp
+index 72b3ed0..4d10606 100644
+--- a/src/CDlgScreenshot.cpp
++++ b/src/CDlgScreenshot.cpp
+@@ -23,7 +23,7 @@
+ #include "config.h"
+ #include "CSettings.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QFileDialog>
+ 
+ CDlgScreenshot::CDlgScreenshot(QWidget * parent)
+diff --git a/src/CDlgSelGeoDBFolder.cpp b/src/CDlgSelGeoDBFolder.cpp
+index afe39aa..ceeafb9 100644
+--- a/src/CDlgSelGeoDBFolder.cpp
++++ b/src/CDlgSelGeoDBFolder.cpp
+@@ -18,7 +18,7 @@
+ #include "CDlgSelGeoDBFolder.h"
+ #include "CGeoDB.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QSqlDatabase>
+ #include <QSqlQuery>
+ #include <QSqlError>
+diff --git a/src/CDlgSetupGarminIcons.cpp b/src/CDlgSetupGarminIcons.cpp
+index 6c2527f..19ead63 100644
+--- a/src/CDlgSetupGarminIcons.cpp
++++ b/src/CDlgSetupGarminIcons.cpp
+@@ -24,12 +24,12 @@
+ #include "CDeviceGarmin.h"
+ #include "CSettings.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ #undef IDEVICE_H
+ #include <garmin/IDevice.h>
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QMessageBox>
+ #include <QFileDialog>
+ 
+diff --git a/src/CDlgSetupGrid.cpp b/src/CDlgSetupGrid.cpp
+index 23d8207..badfb02 100644
+--- a/src/CDlgSetupGrid.cpp
++++ b/src/CDlgSetupGrid.cpp
+@@ -21,7 +21,7 @@
+ #include "CGridDB.h"
+ #include "CMapDB.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QColorDialog>
+ 
+ CDlgSetupGrid::CDlgSetupGrid(QWidget * parent)
+diff --git a/src/CDlgTrackFilter.cpp b/src/CDlgTrackFilter.cpp
+index cd380d4..2f910cf 100644
+--- a/src/CDlgTrackFilter.cpp
++++ b/src/CDlgTrackFilter.cpp
+@@ -23,7 +23,7 @@
+ #include "IUnit.h"
+ #include "CSettings.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QProgressDialog>
+ 
+ // Change this when changing comboMeterFeet
+diff --git a/src/CDlgWpt2Rte.cpp b/src/CDlgWpt2Rte.cpp
+index 1640539..dde95f0 100644
+--- a/src/CDlgWpt2Rte.cpp
++++ b/src/CDlgWpt2Rte.cpp
+@@ -22,7 +22,7 @@
+ #include "CRoute.h"
+ #include "CRouteDB.h"
+ #include "CMegaMenu.h"
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ CDlgWpt2Rte::CDlgWpt2Rte(QList<CWpt*>& selWpt)
+ : selWpt(selWpt)
+diff --git a/src/CDlgWptIcon.cpp b/src/CDlgWptIcon.cpp
+index 40c2fd3..5ddd95c 100644
+--- a/src/CDlgWptIcon.cpp
++++ b/src/CDlgWptIcon.cpp
+@@ -19,7 +19,7 @@
+ #include "CDlgWptIcon.h"
+ #include "WptIcons.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QToolButton>
+ 
+ static bool keyLessThanAlpha(const QString&  s1, const QString&  s2)
+diff --git a/src/CExchangeGarmin.cpp b/src/CExchangeGarmin.cpp
+index 236e4ad..d7c1928 100644
+--- a/src/CExchangeGarmin.cpp
++++ b/src/CExchangeGarmin.cpp
+@@ -20,7 +20,7 @@
+ 
+ #include <QtDBus>
+ #include <QtXml>
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QMessageBox>
+ 
+ CGarminTreeWidgetItem::CGarminTreeWidgetItem(const QString& id, QTreeWidget *parent)
+diff --git a/src/CGarminExport.cpp b/src/CGarminExport.cpp
+index a68001d..1fedc93 100644
+--- a/src/CGarminExport.cpp
++++ b/src/CGarminExport.cpp
+@@ -21,7 +21,7 @@
+ #include "CGarminTile.h"
+ #include "CSettings.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QFileDialog>
+ #include <QScrollBar>
+ 
+diff --git a/src/CGarminIndex.cpp b/src/CGarminIndex.cpp
+index 21910ca..4f50f97 100644
+--- a/src/CGarminIndex.cpp
++++ b/src/CGarminIndex.cpp
+@@ -20,7 +20,7 @@
+ #include "CGarminTile.h"
+ #include "config.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QSqlQuery>
+ #include <QSqlError>
+ 
+diff --git a/src/CGarminTile.cpp b/src/CGarminTile.cpp
+index ea5e15e..3d3f6f6 100644
+--- a/src/CGarminTile.cpp
++++ b/src/CGarminTile.cpp
+@@ -24,7 +24,7 @@
+ #include "CMapDB.h"
+ #include "QFileExt.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QSqlDatabase>
+ #include <QSqlQuery>
+ #include <QSqlError>
+diff --git a/src/CGeoDB.cpp b/src/CGeoDB.cpp
+index 2a4d71c..9e8958d 100644
+--- a/src/CGeoDB.cpp
++++ b/src/CGeoDB.cpp
+@@ -42,7 +42,7 @@
+ #include "CQlb.h"
+ #include "CSettings.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QSqlQuery>
+ #include <QSqlError>
+ #include <QFileDialog>
+diff --git a/src/CGridDB.cpp b/src/CGridDB.cpp
+index 4f166a3..28e6af2 100644
+--- a/src/CGridDB.cpp
++++ b/src/CGridDB.cpp
+@@ -23,7 +23,7 @@
+ #include "CDlgSetupGrid.h"
+ #include "CSettings.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QCheckBox>
+ #include <QFileDialog>
+ #include <QStatusBar>
+diff --git a/src/CImage.cpp b/src/CImage.cpp
+index ad5d600..89aefef 100644
+--- a/src/CImage.cpp
++++ b/src/CImage.cpp
+@@ -18,7 +18,7 @@
+ 
+ #include "CImage.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ CImage::CImage(QObject * parent)
+ : QObject(parent)
+diff --git a/src/CImageSelect.cpp b/src/CImageSelect.cpp
+index 554e0ba..8b27988 100644
+--- a/src/CImageSelect.cpp
++++ b/src/CImageSelect.cpp
+@@ -19,7 +19,7 @@
+ #include "CImageSelect.h"
+ #include "CWpt.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ #define WIDTH   100.0
+ #define HEIGHT  100.0
+diff --git a/src/CImageViewer.cpp b/src/CImageViewer.cpp
+index b0cead8..8eefa28 100644
+--- a/src/CImageViewer.cpp
++++ b/src/CImageViewer.cpp
+@@ -15,7 +15,7 @@ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ ********************************************************************************************* */
+ #include "CImageViewer.h"
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ CImageViewer::CImageViewer(QList<CWpt::image_t>& images, int idx, QWidget *parent)
+ : QDialog(parent)
+diff --git a/src/CLiveLogDB.cpp b/src/CLiveLogDB.cpp
+index b7948ab..8dd9204 100644
+--- a/src/CLiveLogDB.cpp
++++ b/src/CLiveLogDB.cpp
+@@ -30,7 +30,7 @@
+ #include "IUnit.h"
+ #include "CSettings.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ #include <limits>
+ #ifdef WIN32
+diff --git a/src/CLiveLogToolWidget.cpp b/src/CLiveLogToolWidget.cpp
+index f1fef48..b652137 100644
+--- a/src/CLiveLogToolWidget.cpp
++++ b/src/CLiveLogToolWidget.cpp
+@@ -19,7 +19,7 @@
+ #include "CLiveLogToolWidget.h"
+ #include "CLiveLogDB.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ CLiveLogToolWidget::CLiveLogToolWidget(QTabWidget * parent)
+ :QWidget(parent)
+diff --git a/src/CMainWindow.cpp b/src/CMainWindow.cpp
+index 03feac3..d81365b 100644
+--- a/src/CMainWindow.cpp
++++ b/src/CMainWindow.cpp
+@@ -62,7 +62,7 @@
+ #include "CSettings.h"
+ #include "version.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #ifndef WIN32
+ #include <unistd.h>
+ #endif
+diff --git a/src/CMap3D.cpp b/src/CMap3D.cpp
+index f6e673a..714bd7e 100644
+--- a/src/CMap3D.cpp
++++ b/src/CMap3D.cpp
+@@ -31,7 +31,7 @@
+ #include "WptIcons.h"
+ #include "CSettings.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QtOpenGL>
+ #include <math.h>
+ #if defined(Q_OS_MAC)
+diff --git a/src/CMap3DWidget.cpp b/src/CMap3DWidget.cpp
+index 9bbf56c..039a86b 100644
+--- a/src/CMap3DWidget.cpp
++++ b/src/CMap3DWidget.cpp
+@@ -29,7 +29,7 @@
+ #include "CDlgEditWpt.h"
+ #include "GeoMath.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QtOpenGL>
+ #include <QPixmap>
+ #include <QPainter>
+diff --git a/src/CMapDB.cpp b/src/CMapDB.cpp
+index 48f0ec4..6d26aca 100644
+--- a/src/CMapDB.cpp
++++ b/src/CMapDB.cpp
+@@ -43,7 +43,7 @@
+ #include "IMouse.h"
+ #include "CSettings.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QMessageBox>
+ #include <QtXml/QDomDocument>
+ 
+diff --git a/src/CMapDEM.cpp b/src/CMapDEM.cpp
+index 4fcac8d..29e81b0 100644
+--- a/src/CMapDEM.cpp
++++ b/src/CMapDEM.cpp
+@@ -34,7 +34,7 @@
+ #define isnan(x) _isnan(x)
+ #endif
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QMessageBox>
+ #include <QStatusBar>
+ 
+diff --git a/src/CMapDEMSlopeSetup.cpp b/src/CMapDEMSlopeSetup.cpp
+index 35a2c5b..b63ef1c 100644
+--- a/src/CMapDEMSlopeSetup.cpp
++++ b/src/CMapDEMSlopeSetup.cpp
+@@ -19,7 +19,7 @@
+ #include "CMapDEMSlopeSetup.h"
+ #include "CCanvas.h"
+ #include "CMapDEM.h"
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ CMapDEMSlopeSetup *CMapDEMSlopeSetup::m_pSelf = 0;
+ 
+diff --git a/src/CMapEditWidget.cpp b/src/CMapEditWidget.cpp
+index de73206..9827533 100644
+--- a/src/CMapEditWidget.cpp
++++ b/src/CMapEditWidget.cpp
+@@ -21,7 +21,7 @@
+ #include "CCreateMapGeoTiff.h"
+ #include "CCreateMapFineTune.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ CMapEditWidget::CMapEditWidget(QWidget * parent)
+ : QWidget(parent)
+diff --git a/src/CMapGeoTiff.cpp b/src/CMapGeoTiff.cpp
+index 178e85d..d77713d 100644
+--- a/src/CMapGeoTiff.cpp
++++ b/src/CMapGeoTiff.cpp
+@@ -25,7 +25,7 @@
+ #include <ogr_spatialref.h>
+ #include <math.h>
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QMessageBox>
+ #include <QCheckBox>
+ 
+diff --git a/src/CMapJnx.cpp b/src/CMapJnx.cpp
+index fc17cd7..65df0c1 100644
+--- a/src/CMapJnx.cpp
++++ b/src/CMapJnx.cpp
+@@ -22,7 +22,7 @@
+ #include "GeoMath.h"
+ #include "CMainWindow.h"
+ #include "CSettings.h"
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QCheckBox>
+ 
+ #define MAX_IDX_ZOOM 26
+diff --git a/src/CMapLevel.cpp b/src/CMapLevel.cpp
+index 4aa7b59..fba4403 100644
+--- a/src/CMapLevel.cpp
++++ b/src/CMapLevel.cpp
+@@ -22,7 +22,7 @@
+ #include "CMapQMAP.h"
+ #include "CWpt.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ CMapLevel::CMapLevel(quint32 min, quint32 max, CMapQMAP * parent)
+ : QObject(parent)
+diff --git a/src/CMapNoMap.cpp b/src/CMapNoMap.cpp
+index d143c93..5e3c2b0 100644
+--- a/src/CMapNoMap.cpp
++++ b/src/CMapNoMap.cpp
+@@ -21,7 +21,7 @@
+ #include "CDlgNoMapConfig.h"
+ #include "CSettings.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QCheckBox>
+ 
+ CMapNoMap::CMapNoMap(CCanvas * parent)
+diff --git a/src/CMapQMAP.cpp b/src/CMapQMAP.cpp
+index 5082293..dc672ec 100644
+--- a/src/CMapQMAP.cpp
++++ b/src/CMapQMAP.cpp
+@@ -27,7 +27,7 @@
+ #include "CDlgMapQMAPConfig.h"
+ #include "CMainWindow.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QCheckBox>
+ 
+ #include <gdal_priv.h>
+diff --git a/src/CMapQMAPExport.cpp b/src/CMapQMAPExport.cpp
+index 53dcd5b..b52ba17 100644
+--- a/src/CMapQMAPExport.cpp
++++ b/src/CMapQMAPExport.cpp
+@@ -25,7 +25,7 @@
+ #include "CDlgProjWizzard.h"
+ #include "CSettings.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QFileDialog>
+ #include <QScrollBar>
+ #include <QMessageBox>
+diff --git a/src/CMapRaster.cpp b/src/CMapRaster.cpp
+index 1c992a7..8d9e462 100644
+--- a/src/CMapRaster.cpp
++++ b/src/CMapRaster.cpp
+@@ -20,7 +20,7 @@
+ #include <gdal_priv.h>
+ #include <ogr_spatialref.h>
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QMessageBox>
+ 
+ CMapRaster::CMapRaster(const QString& fn, CCanvas * parent)
+diff --git a/src/CMapRmap.cpp b/src/CMapRmap.cpp
+index 10fd0e5..b6d60d5 100644
+--- a/src/CMapRmap.cpp
++++ b/src/CMapRmap.cpp
+@@ -21,7 +21,7 @@
+ #include "CCanvas.h"
+ #include "CSettings.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QMessageBox>
+ #include <QCheckBox>
+ 
+diff --git a/src/CMapRmp.cpp b/src/CMapRmp.cpp
+index ddb9aae..0d479bc 100644
+--- a/src/CMapRmp.cpp
++++ b/src/CMapRmp.cpp
+@@ -21,7 +21,7 @@
+ #include "CCanvas.h"
+ #include "CDlgMapRMPConfig.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QMessageBox>
+ #include <QCheckBox>
+ 
+diff --git a/src/CMapSearchCanvas.cpp b/src/CMapSearchCanvas.cpp
+index 0d8b421..493a66c 100644
+--- a/src/CMapSearchCanvas.cpp
++++ b/src/CMapSearchCanvas.cpp
+@@ -18,7 +18,7 @@
+ 
+ #include "CMapSearchCanvas.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ CMapSearchCanvas::CMapSearchCanvas(QWidget * parent)
+ : QWidget(parent)
+diff --git a/src/CMapSearchThread.cpp b/src/CMapSearchThread.cpp
+index fde9cdb..969bbe9 100644
+--- a/src/CMapSearchThread.cpp
++++ b/src/CMapSearchThread.cpp
+@@ -20,7 +20,7 @@
+ #include "CMapQMAP.h"
+ #include "CImage.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ CMapSearchThread::CMapSearchThread(QObject * parent)
+ : QThread(parent)
+diff --git a/src/CMapSearchWidget.cpp b/src/CMapSearchWidget.cpp
+index dd40de8..a1d4c9e 100644
+--- a/src/CMapSearchWidget.cpp
++++ b/src/CMapSearchWidget.cpp
+@@ -30,7 +30,7 @@
+ #include "IMap.h"
+ #include "config.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QMessageBox>
+ 
+ #define SEARCHDELAY 1500
+diff --git a/src/CMapSelectionGarmin.cpp b/src/CMapSelectionGarmin.cpp
+index 6ee1f6c..88da4f9 100644
+--- a/src/CMapSelectionGarmin.cpp
++++ b/src/CMapSelectionGarmin.cpp
+@@ -19,7 +19,7 @@
+ #include "CMapDB.h"
+ #include "IMap.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <proj_api.h>
+ #ifdef __MINGW32__
+ #undef LP
+diff --git a/src/CMapSelectionRaster.cpp b/src/CMapSelectionRaster.cpp
+index 3aefba8..dbf9abe 100644
+--- a/src/CMapSelectionRaster.cpp
++++ b/src/CMapSelectionRaster.cpp
+@@ -17,7 +17,7 @@
+ **********************************************************************************************/
+ #include "CMapSelectionRaster.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <proj_api.h>
+ #ifdef __MINGW32__
+ #undef LP
+diff --git a/src/CMapTDB.cpp b/src/CMapTDB.cpp
+index 51123b0..ec51b51 100644
+--- a/src/CMapTDB.cpp
++++ b/src/CMapTDB.cpp
+@@ -33,7 +33,7 @@
+ #include "CSpline.h"
+ #include "CSettings.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QSqlDatabase>
+ #include <algorithm>
+ #include <QCheckBox>
+diff --git a/src/CMapTms.cpp b/src/CMapTms.cpp
+index cc61a95..e09a078 100644
+--- a/src/CMapTms.cpp
++++ b/src/CMapTms.cpp
+@@ -27,7 +27,7 @@
+ #include "CMapSelectionRaster.h"
+ #include "CSettings.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QtNetwork>
+ #include <QtXml>
+ #include <QtScript>
+diff --git a/src/CMapToolWidget.cpp b/src/CMapToolWidget.cpp
+index fc8d6a1..c9a199d 100644
+--- a/src/CMapToolWidget.cpp
++++ b/src/CMapToolWidget.cpp
+@@ -29,7 +29,7 @@
+ 
+ #include "config.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QFileDialog>
+ #include <QMessageBox>
+ #include <QShortcut>
+diff --git a/src/CMapWms.cpp b/src/CMapWms.cpp
+index 2fa09b9..06c2a30 100644
+--- a/src/CMapWms.cpp
++++ b/src/CMapWms.cpp
+@@ -25,7 +25,7 @@
+ #include "CMapSelectionRaster.h"
+ #include "CSettings.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QtXml>
+ #include <QtNetwork>
+ #include <QMessageBox>
+diff --git a/src/CMegaMenu.cpp b/src/CMegaMenu.cpp
+index 78cf206..ca21da0 100644
+--- a/src/CMegaMenu.cpp
++++ b/src/CMegaMenu.cpp
+@@ -35,7 +35,7 @@
+ #include "CActions.h"
+ #include "CMap3D.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QMenu>
+ #include <QMenuBar>
+ 
+diff --git a/src/CMenus.cpp b/src/CMenus.cpp
+index e36bc0b..64eeb9f 100644
+--- a/src/CMenus.cpp
++++ b/src/CMenus.cpp
+@@ -21,7 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ #include "CCanvas.h"
+ #include "CMegaMenu.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QMenu>
+ 
+ // #define lqdebug(x) qDebug() << x
+diff --git a/src/CMouseAddArea.cpp b/src/CMouseAddArea.cpp
+index cca9f0c..805e0d3 100644
+--- a/src/CMouseAddArea.cpp
++++ b/src/CMouseAddArea.cpp
+@@ -22,7 +22,7 @@
+ #include "COverlayDB.h"
+ #include "COverlayArea.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ CMouseAddArea::CMouseAddArea(CCanvas *canvas)
+ : IMouse(canvas)
+diff --git a/src/CMouseAddDistance.cpp b/src/CMouseAddDistance.cpp
+index 5d6881d..1908ddf 100644
+--- a/src/CMouseAddDistance.cpp
++++ b/src/CMouseAddDistance.cpp
+@@ -22,7 +22,7 @@
+ #include "IMap.h"
+ #include "COverlayDB.h"
+ #include "COverlayDistance.h"
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ CMouseAddDistance::CMouseAddDistance(CCanvas * canvas)
+ : IMouse(canvas)
+diff --git a/src/CMouseAddText.cpp b/src/CMouseAddText.cpp
+index d7f1f25..c152acf 100644
+--- a/src/CMouseAddText.cpp
++++ b/src/CMouseAddText.cpp
+@@ -21,7 +21,7 @@
+ #include "CMapDB.h"
+ #include "COverlayDB.h"
+ #include "COverlayText.h"
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ CMouseAddText::CMouseAddText(CCanvas * canvas)
+ : IMouse(canvas)
+diff --git a/src/CMouseAddTextBox.cpp b/src/CMouseAddTextBox.cpp
+index 0a446e6..0b52b62 100644
+--- a/src/CMouseAddTextBox.cpp
++++ b/src/CMouseAddTextBox.cpp
+@@ -21,7 +21,7 @@
+ #include "CMapDB.h"
+ #include "COverlayDB.h"
+ #include "COverlayTextBox.h"
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ CMouseAddTextBox::CMouseAddTextBox(CCanvas * canvas)
+ : IMouse(canvas)
+diff --git a/src/CMouseAddWpt.cpp b/src/CMouseAddWpt.cpp
+index 8d0b5af..23e74ec 100644
+--- a/src/CMouseAddWpt.cpp
++++ b/src/CMouseAddWpt.cpp
+@@ -21,7 +21,7 @@
+ #include "CWptDB.h"
+ #include "CMapDB.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ CMouseAddWpt::CMouseAddWpt(CCanvas * canvas)
+ : IMouse(canvas)
+diff --git a/src/CMouseColorPicker.cpp b/src/CMouseColorPicker.cpp
+index e58a919..f15c94b 100644
+--- a/src/CMouseColorPicker.cpp
++++ b/src/CMouseColorPicker.cpp
+@@ -20,7 +20,7 @@
+ #include "IMap.h"
+ #include "CMainWindow.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ CMouseColorPicker::CMouseColorPicker(CCanvas * canvas)
+ : IMouse(canvas)
+diff --git a/src/CMouseCutTrack.cpp b/src/CMouseCutTrack.cpp
+index 13cd9f9..0a5825b 100644
+--- a/src/CMouseCutTrack.cpp
++++ b/src/CMouseCutTrack.cpp
+@@ -22,7 +22,7 @@
+ #include "CMapDB.h"
+ #include "IMap.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ CMouseCutTrack::CMouseCutTrack(CCanvas * canvas)
+ : IMouse(canvas)
+diff --git a/src/CMouseEditWpt.cpp b/src/CMouseEditWpt.cpp
+index cea08f4..ba8bcfa 100644
+--- a/src/CMouseEditWpt.cpp
++++ b/src/CMouseEditWpt.cpp
+@@ -21,7 +21,7 @@
+ #include "CMainWindow.h"
+ #include "CCanvas.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ CMouseEditWpt::CMouseEditWpt(CCanvas * canvas)
+ : IMouse(canvas)
+diff --git a/src/CMouseMoveMap.cpp b/src/CMouseMoveMap.cpp
+index 6b6cc88..1bbed70 100644
+--- a/src/CMouseMoveMap.cpp
++++ b/src/CMouseMoveMap.cpp
+@@ -28,7 +28,7 @@
+ #include "CGridDB.h"
+ #include "CDlgCropMap.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QMenu>
+ #include "CUndoStackView.h"
+ #include "CMapUndoCommandMove.h"
+diff --git a/src/CMouseMoveWpt.cpp b/src/CMouseMoveWpt.cpp
+index 7406100..f264ea6 100644
+--- a/src/CMouseMoveWpt.cpp
++++ b/src/CMouseMoveWpt.cpp
+@@ -26,7 +26,7 @@
+ #include "IUnit.h"
+ #include "CWptDB.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ CMouseMoveWpt::CMouseMoveWpt(CCanvas * canvas)
+ : IMouse(canvas)
+diff --git a/src/CMouseOverlay.cpp b/src/CMouseOverlay.cpp
+index 1538113..ed3c865 100644
+--- a/src/CMouseOverlay.cpp
++++ b/src/CMouseOverlay.cpp
+@@ -19,7 +19,7 @@
+ #include "CMouseOverlay.h"
+ #include "IOverlay.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ CMouseOverlay::CMouseOverlay(CCanvas * canvas)
+ : IMouse(canvas)
+diff --git a/src/CMouseRefPoint.cpp b/src/CMouseRefPoint.cpp
+index 6c7ec90..96956ed 100644
+--- a/src/CMouseRefPoint.cpp
++++ b/src/CMouseRefPoint.cpp
+@@ -21,7 +21,7 @@
+ #include "CMapDB.h"
+ #include "CCreateMapGridTool.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QMenu>
+ 
+ CMouseRefPoint::CMouseRefPoint(CCanvas * canvas)
+diff --git a/src/CMouseSelMap.cpp b/src/CMouseSelMap.cpp
+index 5d04dbd..e852271 100644
+--- a/src/CMouseSelMap.cpp
++++ b/src/CMouseSelMap.cpp
+@@ -21,7 +21,7 @@
+ #include "CMapDB.h"
+ #include "CMapSelectionRaster.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QMenu>
+ 
+ CMouseSelMap::CMouseSelMap(CCanvas * canvas)
+diff --git a/src/CMouseSelTrack.cpp b/src/CMouseSelTrack.cpp
+index 1d56769..1636f74 100644
+--- a/src/CMouseSelTrack.cpp
++++ b/src/CMouseSelTrack.cpp
+@@ -20,7 +20,7 @@
+ #include "CCanvas.h"
+ #include "CTrackDB.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ CMouseSelTrack::CMouseSelTrack(CCanvas * canvas)
+ : IMouse(canvas)
+diff --git a/src/CMouseSelWpt.cpp b/src/CMouseSelWpt.cpp
+index 3839c39..ffa8711 100644
+--- a/src/CMouseSelWpt.cpp
++++ b/src/CMouseSelWpt.cpp
+@@ -24,7 +24,7 @@
+ #include "CResources.h"
+ #include "CWptDB.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QMouseEvent>
+ 
+ CMouseSelWpt::CMouseSelWpt(CCanvas * canvas)
+diff --git a/src/CMouseZoomMap.cpp b/src/CMouseZoomMap.cpp
+index 081f933..03e0e3c 100644
+--- a/src/CMouseZoomMap.cpp
++++ b/src/CMouseZoomMap.cpp
+@@ -21,7 +21,7 @@
+ #include "CMapDB.h"
+ #include "IMap.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ CMouseZoomMap::CMouseZoomMap(CCanvas * parent)
+ : IMouse(parent)
+diff --git a/src/COverlayArea.cpp b/src/COverlayArea.cpp
+index 596cba5..9e19b95 100644
+--- a/src/COverlayArea.cpp
++++ b/src/COverlayArea.cpp
+@@ -25,7 +25,7 @@
+ #include "CResources.h"
+ #include "COverlayAreaEditWidget.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QMenu>
+ 
+ static bool operator==(const projXY& p1, const projXY& p2)
+diff --git a/src/COverlayAreaEditWidget.cpp b/src/COverlayAreaEditWidget.cpp
+index 2ba4fac..aae959d 100644
+--- a/src/COverlayAreaEditWidget.cpp
++++ b/src/COverlayAreaEditWidget.cpp
+@@ -24,7 +24,7 @@
+ #include "GeoMath.h"
+ #include "CCanvas.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QMenu>
+ #include <QColorDialog>
+ 
+diff --git a/src/COverlayDB.cpp b/src/COverlayDB.cpp
+index 5370ff5..db6da28 100644
+--- a/src/COverlayDB.cpp
++++ b/src/COverlayDB.cpp
+@@ -32,7 +32,7 @@
+ #include "CMapDB.h"
+ #include "CSettings.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <proj_api.h>
+ #ifdef __MINGW32__
+ #undef LP
+diff --git a/src/COverlayDistance.cpp b/src/COverlayDistance.cpp
+index d0940cb..1b6b151 100644
+--- a/src/COverlayDistance.cpp
++++ b/src/COverlayDistance.cpp
+@@ -32,7 +32,7 @@
+ #include "CDlgConvertToTrack.h"
+ #include "CResources.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QMenu>
+ 
+ bool COverlayDistance::showBullets = true;
+diff --git a/src/COverlayDistanceEditWidget.cpp b/src/COverlayDistanceEditWidget.cpp
+index 89d9460..9f43b23 100644
+--- a/src/COverlayDistanceEditWidget.cpp
++++ b/src/COverlayDistanceEditWidget.cpp
+@@ -26,7 +26,7 @@
+ #include "CActions.h"
+ #include "COverlayDB.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QMenu>
+ #include <QPushButton>
+ 
+diff --git a/src/COverlayText.cpp b/src/COverlayText.cpp
+index b0b770a..ebf507b 100644
+--- a/src/COverlayText.cpp
++++ b/src/COverlayText.cpp
+@@ -22,7 +22,7 @@
+ #include "COverlayDB.h"
+ #include "CDlgEditText.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ COverlayText::COverlayText(const QString& text, const QRect& rect, QObject * parent)
+ : IOverlay(parent, "Text", ":/icons/iconText16x16.png")
+diff --git a/src/COverlayTextBox.cpp b/src/COverlayTextBox.cpp
+index ff0d922..86e981f 100644
+--- a/src/COverlayTextBox.cpp
++++ b/src/COverlayTextBox.cpp
+@@ -24,7 +24,7 @@
+ #include "CDlgEditText.h"
+ #include "GeoMath.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ COverlayTextBox::COverlayTextBox(const QString& text, double lon, double lat, const QPoint& anchor, const QRect& r, QObject * parent)
+ : IOverlay(parent, "TextBox", ":/icons/iconTextBox16x16.png")
+diff --git a/src/COverlayToolWidget.cpp b/src/COverlayToolWidget.cpp
+index 9c27aa7..cea7491 100644
+--- a/src/COverlayToolWidget.cpp
++++ b/src/COverlayToolWidget.cpp
+@@ -23,7 +23,7 @@
+ #include "COverlayAreaEditWidget.h"
+ #include "COverlayDistanceEditWidget.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QMenu>
+ 
+ COverlayToolWidget::COverlayToolWidget(QTabWidget * parent)
+diff --git a/src/CPlot.cpp b/src/CPlot.cpp
+index 3192d43..64a547b 100644
+--- a/src/CPlot.cpp
++++ b/src/CPlot.cpp
+@@ -26,7 +26,7 @@
+ #include "CTrack.h"
+ #include "CSettings.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QMenu>
+ #include <QMessageBox>
+ #include <QFileDialog>
+diff --git a/src/CPlotAxisTime.cpp b/src/CPlotAxisTime.cpp
+index f47a774..8cb1f02 100644
+--- a/src/CPlotAxisTime.cpp
++++ b/src/CPlotAxisTime.cpp
+@@ -18,7 +18,7 @@
+ #include "CPlotAxisTime.h"
+ 
+ #include <math.h>
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ CPlotAxisTime::CPlotAxisTime(QObject * parent)
+ : CPlotAxis(parent)
+diff --git a/src/CResources.cpp b/src/CResources.cpp
+index 8a2a081..eb93472 100644
+--- a/src/CResources.cpp
++++ b/src/CResources.cpp
+@@ -43,7 +43,7 @@
+ #include <unistd.h>
+ #endif
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ #include "CMainWindow.h"
+ #include "CDlgProxy.h"
+diff --git a/src/CRoute.cpp b/src/CRoute.cpp
+index 8dd7ddf..6c15542 100644
+--- a/src/CRoute.cpp
++++ b/src/CRoute.cpp
+@@ -22,7 +22,7 @@
+ #include "CRouteDB.h"
+ #include "IUnit.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QtXml>
+ 
+ struct rte_head_entry_t
+diff --git a/src/CRouteDB.cpp b/src/CRouteDB.cpp
+index 629c07d..a18fef8 100644
+--- a/src/CRouteDB.cpp
++++ b/src/CRouteDB.cpp
+@@ -27,7 +27,7 @@
+ #include "IDevice.h"
+ #include "GeoMath.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ CRouteDB * CRouteDB::m_self = 0;
+ 
+diff --git a/src/CRouteToolWidget.cpp b/src/CRouteToolWidget.cpp
+index 7606f9c..c6e92d7 100644
+--- a/src/CRouteToolWidget.cpp
++++ b/src/CRouteToolWidget.cpp
+@@ -32,7 +32,7 @@
+ #include "CSettings.h"
+ #include "CMainWindow.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QtXml>
+ #include <QNetworkAccessManager>
+ #include <QNetworkRequest>
+diff --git a/src/CSearchDB.cpp b/src/CSearchDB.cpp
+index 70e274a..f58a501 100644
+--- a/src/CSearchDB.cpp
++++ b/src/CSearchDB.cpp
+@@ -24,7 +24,7 @@
+ #include "CMapDB.h"
+ #include "IMap.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QtXml>
+ #include <QtNetwork>
+ #include <QNetworkProxy>
+diff --git a/src/CSearchToolWidget.cpp b/src/CSearchToolWidget.cpp
+index 387120d..4f20b7a 100644
+--- a/src/CSearchToolWidget.cpp
++++ b/src/CSearchToolWidget.cpp
+@@ -26,7 +26,7 @@
+ #include "CWptDB.h"
+ #include "CSettings.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QMenu>
+ 
+ CSearchToolWidget::CSearchToolWidget(QTabWidget * parent)
+diff --git a/src/CSpline.cpp b/src/CSpline.cpp
+index caa252a..d13ffc7 100644
+--- a/src/CSpline.cpp
++++ b/src/CSpline.cpp
+@@ -18,7 +18,7 @@
+ 
+ **********************************************************************************************/
+ #include "CSpline.h"
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ static int lookup(double x, const QPolygonF &values)
+ 
+diff --git a/src/CStatusDEM.cpp b/src/CStatusDEM.cpp
+index 82f0cfe..d648b55 100644
+--- a/src/CStatusDEM.cpp
++++ b/src/CStatusDEM.cpp
+@@ -21,7 +21,7 @@
+ #include "CCanvas.h"
+ #include "CSettings.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ CStatusDEM::CStatusDEM(QWidget * parent)
+ : QWidget(parent)
+diff --git a/src/CTabWidget.cpp b/src/CTabWidget.cpp
+index f12446d..9610f73 100644
+--- a/src/CTabWidget.cpp
++++ b/src/CTabWidget.cpp
+@@ -18,7 +18,7 @@
+ 
+ #include "CTabWidget.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QTabBar>
+ 
+ CTabWidget::CTabWidget(QWidget * parent)
+diff --git a/src/CTextBrowser.cpp b/src/CTextBrowser.cpp
+index a1a8f01..7749281 100644
+--- a/src/CTextBrowser.cpp
++++ b/src/CTextBrowser.cpp
+@@ -19,7 +19,7 @@
+ #include "CTextBrowser.h"
+ #include "CCanvas.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QScrollBar>
+ 
+ CTextBrowser::CTextBrowser(QWidget *parent)
+diff --git a/src/CTextEditWidget.cpp b/src/CTextEditWidget.cpp
+index 37c41e8..89faecd 100644
+--- a/src/CTextEditWidget.cpp
++++ b/src/CTextEditWidget.cpp
+@@ -55,7 +55,7 @@
+ #include "CResources.h"
+ #include "CCanvas.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QColorDialog>
+ 
+ CTextEditWidget::CTextEditWidget(QWidget * parent)
+diff --git a/src/CTrack.cpp b/src/CTrack.cpp
+index c6205e4..bb5af33 100644
+--- a/src/CTrack.cpp
++++ b/src/CTrack.cpp
+@@ -27,7 +27,7 @@
+ #include "CTrackDB.h"
+ #include "CSettings.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QNetworkProxy>
+ #include <QMessageBox>
+ #include <QProgressDialog>
+diff --git a/src/CTrackDB.cpp b/src/CTrackDB.cpp
+index 297408e..9d80aec 100644
+--- a/src/CTrackDB.cpp
++++ b/src/CTrackDB.cpp
+@@ -35,7 +35,7 @@
+ #include "CSettings.h"
+ #include "GeoMath.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QMessageBox>
+ #include "CUndoStackModel.h"
+ #include "CTrackUndoCommandSelect.h"
+diff --git a/src/CTrackEditWidget.cpp b/src/CTrackEditWidget.cpp
+index 2849d30..29ef8b5 100644
+--- a/src/CTrackEditWidget.cpp
++++ b/src/CTrackEditWidget.cpp
+@@ -39,7 +39,7 @@
+ #include "CPlot.h"
+ #include "CDlgMultiColorConfig.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QMessageBox>
+ #include <QMenu>
+ #include <QDesktopWidget>
+diff --git a/src/CTrackFilterWidget.cpp b/src/CTrackFilterWidget.cpp
+index 7ce3d5a..7eb61dc 100644
+--- a/src/CTrackFilterWidget.cpp
++++ b/src/CTrackFilterWidget.cpp
+@@ -26,7 +26,7 @@
+ #include "CWptDB.h"
+ #include "config.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QMessageBox>
+ #include <QProgressDialog>
+ #include <QMenu>
+diff --git a/src/CTrackStatDistanceWidget.cpp b/src/CTrackStatDistanceWidget.cpp
+index 34af6fa..e8cb578 100644
+--- a/src/CTrackStatDistanceWidget.cpp
++++ b/src/CTrackStatDistanceWidget.cpp
+@@ -23,7 +23,7 @@
+ #include "IUnit.h"
+ #include "CWptDB.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ CTrackStatDistanceWidget::CTrackStatDistanceWidget(QWidget * parent)
+ : ITrackStat(eOverTime, parent)
+diff --git a/src/CTrackStatExtensionWidget.cpp b/src/CTrackStatExtensionWidget.cpp
+index f7a5c3e..c435c75 100644
+--- a/src/CTrackStatExtensionWidget.cpp
++++ b/src/CTrackStatExtensionWidget.cpp
+@@ -23,7 +23,7 @@
+ #include "CTrack.h"
+ #include "IUnit.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ CTrackStatExtensionWidget::CTrackStatExtensionWidget(type_e type, QWidget * parent,  QString name)
+ : ITrackStat(type, parent)
+diff --git a/src/CTrackStatProfileWidget.cpp b/src/CTrackStatProfileWidget.cpp
+index 836d538..9fe7525 100644
+--- a/src/CTrackStatProfileWidget.cpp
++++ b/src/CTrackStatProfileWidget.cpp
+@@ -24,7 +24,7 @@
+ #include "CWptDB.h"
+ #include "WptIcons.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ CTrackStatProfileWidget::CTrackStatProfileWidget(type_e type, QWidget * parent)
+ : ITrackStat(type, parent)
+diff --git a/src/CTrackStatSpeedWidget.cpp b/src/CTrackStatSpeedWidget.cpp
+index 90927d9..8652bcd 100644
+--- a/src/CTrackStatSpeedWidget.cpp
++++ b/src/CTrackStatSpeedWidget.cpp
+@@ -22,7 +22,7 @@
+ #include "IUnit.h"
+ #include "GeoMath.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ CTrackStatSpeedWidget::CTrackStatSpeedWidget(type_e type, QWidget * parent)
+ : ITrackStat(type, parent)
+diff --git a/src/CTrackStatTraineeWidget.cpp b/src/CTrackStatTraineeWidget.cpp
+index bf98b34..4abc545 100644
+--- a/src/CTrackStatTraineeWidget.cpp
++++ b/src/CTrackStatTraineeWidget.cpp
+@@ -21,7 +21,7 @@
+ #include "CTrack.h"
+ #include "IUnit.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ CTrackStatTraineeWidget::CTrackStatTraineeWidget(type_e type, QWidget * parent)
+ : ITrackStat(type, parent)
+diff --git a/src/CTrackToolWidget.cpp b/src/CTrackToolWidget.cpp
+index 5e928d5..f86d316 100644
+--- a/src/CTrackToolWidget.cpp
++++ b/src/CTrackToolWidget.cpp
+@@ -29,7 +29,7 @@
+ #include "GeoMath.h"
+ #include "CSettings.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QMessageBox>
+ #include <QMenu>
+ 
+diff --git a/src/CWpt.cpp b/src/CWpt.cpp
+index ffb2dd1..78b75bb 100644
+--- a/src/CWpt.cpp
++++ b/src/CWpt.cpp
+@@ -23,7 +23,7 @@
+ #include "config.h"
+ #include "GeoMath.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QtXml>
+ 
+ #ifndef QK_QT5_TZONE
+diff --git a/src/CWptDB.cpp b/src/CWptDB.cpp
+index 4e49e12..546e2df 100644
+--- a/src/CWptDB.cpp
++++ b/src/CWptDB.cpp
+@@ -36,7 +36,7 @@
+ #include "CSettings.h"
+ #include "CTrackDB.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QMessageBox>
+ #include <QPixmap>
+ #include <QProgressDialog>
+diff --git a/src/CWptToolWidget.cpp b/src/CWptToolWidget.cpp
+index f28a091..70e573a 100644
+--- a/src/CWptToolWidget.cpp
++++ b/src/CWptToolWidget.cpp
+@@ -34,7 +34,7 @@
+ #include "CDlgParentWpt.h"
+ #include "CSettings.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QMenu>
+ #include <QInputDialog>
+ 
+diff --git a/src/GeoMath.cpp b/src/GeoMath.cpp
+index 1af9713..9da5f70 100644
+--- a/src/GeoMath.cpp
++++ b/src/GeoMath.cpp
+@@ -19,7 +19,7 @@
+ #include "GeoMath.h"
+ #include "CResources.h"
+ #include <stdlib.h>
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QMessageBox>
+ #include <limits>
+ #ifndef QK_QT5_TZONE
+diff --git a/src/IDB.cpp b/src/IDB.cpp
+index 16f9b4b..d2b2b89 100644
+--- a/src/IDB.cpp
++++ b/src/IDB.cpp
+@@ -19,7 +19,7 @@
+ 
+ #include "IDB.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QString>
+ #include <QDateTime>
+ #include <QTabWidget>
+diff --git a/src/IDevice.cpp b/src/IDevice.cpp
+index 6c695f7..10694fb 100644
+--- a/src/IDevice.cpp
++++ b/src/IDevice.cpp
+@@ -23,7 +23,7 @@
+ #include "CDlgExport.h"
+ #include "CMainWindow.h"
+ #include "CCanvas.h"
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QMessageBox>
+ #include <QProgressDialog>
+ 
+diff --git a/src/IDiskCache.cpp b/src/IDiskCache.cpp
+index 933f8cf..bce3e03 100644
+--- a/src/IDiskCache.cpp
++++ b/src/IDiskCache.cpp
+@@ -21,7 +21,7 @@
+ #include "CResources.h"
+ #endif                           //!STANDALONE
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ #ifdef STANDALONE
+ IDiskCache::IDiskCache(const QString &path, QObject *parent)
+diff --git a/src/IExchange.cpp b/src/IExchange.cpp
+index 74a4070..12d7ddb 100644
+--- a/src/IExchange.cpp
++++ b/src/IExchange.cpp
+@@ -17,7 +17,7 @@
+ **********************************************************************************************/
+ 
+ #include "IExchange.h"
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QtDBus>
+ #include <QMetaType>
+ 
+diff --git a/src/IGarminTyp.h b/src/IGarminTyp.h
+index a7d24f0..d3a9fd1 100644
+--- a/src/IGarminTyp.h
++++ b/src/IGarminTyp.h
+@@ -19,7 +19,7 @@
+ #ifndef IGARMINTYP_H
+ #define IGARMINTYP_H
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ class IGarminTyp : public QObject
+ {
+diff --git a/src/IItem.cpp b/src/IItem.cpp
+index 803cddd..0faacac 100644
+--- a/src/IItem.cpp
++++ b/src/IItem.cpp
+@@ -18,7 +18,7 @@
+ 
+ #include "IItem.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ quint32 IItem::keycnt = 0;
+ 
+diff --git a/src/IMap.cpp b/src/IMap.cpp
+index 26d2598..9bf4a22 100644
+--- a/src/IMap.cpp
++++ b/src/IMap.cpp
+@@ -25,7 +25,7 @@
+ #include "GeoMath.h"
+ #include "CSettings.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QMessageBox>
+ #include <math.h>
+ 
+diff --git a/src/IMouse.cpp b/src/IMouse.cpp
+index 915d7ef..9badefc 100644
+--- a/src/IMouse.cpp
++++ b/src/IMouse.cpp
+@@ -35,7 +35,7 @@
+ #include "CSearchDB.h"
+ #include "IMapSelection.h"
+ #include "CImageViewer.h"
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ QPointer<IOverlay> IMouse::selOverlay;
+ 
+diff --git a/src/IOverlay.cpp b/src/IOverlay.cpp
+index 4524fec..c792840 100644
+--- a/src/IOverlay.cpp
++++ b/src/IOverlay.cpp
+@@ -21,7 +21,7 @@
+ #include "COverlayDistance.h"
+ #include "GeoMath.h"
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ struct ovl_head_entry_t
+ {
+     ovl_head_entry_t() : type(IOverlay::eEnd), offset(0) {}
+diff --git a/src/ITrackStat.cpp b/src/ITrackStat.cpp
+index 9934494..788efda 100644
+--- a/src/ITrackStat.cpp
++++ b/src/ITrackStat.cpp
+@@ -26,7 +26,7 @@
+ 
+ #define SPACING 9
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ ITrackStat::ITrackStat(type_e type, QWidget * parent)
+ : QWidget(parent)
+diff --git a/src/main.cpp b/src/main.cpp
+index f2653d3..f28e1a8 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -19,7 +19,7 @@
+ #include <iostream>
+ 
+ #include <QtCore>
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QRegExp>
+ #include <gdal_priv.h>
+ #include <proj_api.h>
+-- 
+2.18.0
+

@@ -1,0 +1,109 @@
+From 5e9896e4300777a66b3694c5afc2cd9cf6a30383 Mon Sep 17 00:00:00 2001
+From: Markus Heidelberg <markus.heidelberg@web.de>
+Date: Sat, 25 Aug 2018 11:09:03 +0200
+Subject: [PATCH 1/2] Fix compile errors with VER_STR string creation
+
+See also https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=906505
+---
+ 3rdparty/cache2gtiff/main.cpp       | 2 +-
+ 3rdparty/map2gcm/main.cpp           | 2 +-
+ 3rdparty/map2jnx/main.cpp           | 2 +-
+ 3rdparty/map2rmap/main.cpp          | 2 +-
+ 3rdparty/map2rmp/CFileGenerator.cpp | 2 +-
+ 3rdparty/map2rmp/main.cpp           | 2 +-
+ src/version.h                       | 2 +-
+ 7 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/3rdparty/cache2gtiff/main.cpp b/3rdparty/cache2gtiff/main.cpp
+index 500bbb4..ed1da7f 100644
+--- a/3rdparty/cache2gtiff/main.cpp
++++ b/3rdparty/cache2gtiff/main.cpp
+@@ -35,7 +35,7 @@
+ #define _MKSTR(x)           _MKSTR_1(x)
+ #endif
+ 
+-#define VER_STR             _MKSTR(VER_MAJOR)"."_MKSTR(VER_MINOR)"."_MKSTR(VER_STEP)
++#define VER_STR             _MKSTR(VER_MAJOR) "." _MKSTR(VER_MINOR) "." _MKSTR(VER_STEP)
+ #define WHAT_STR            "cache2gtiff, Version " VER_STR
+ 
+ 
+diff --git a/3rdparty/map2gcm/main.cpp b/3rdparty/map2gcm/main.cpp
+index 1fcc9b8..a4d7976 100644
+--- a/3rdparty/map2gcm/main.cpp
++++ b/3rdparty/map2gcm/main.cpp
+@@ -40,7 +40,7 @@ extern "C"
+ #define _MKSTR(x)           _MKSTR_1(x)
+ #endif
+ 
+-#define VER_STR             _MKSTR(VER_MAJOR)"."_MKSTR(VER_MINOR)"."_MKSTR(VER_STEP)
++#define VER_STR             _MKSTR(VER_MAJOR) "." _MKSTR(VER_MINOR) "." _MKSTR(VER_STEP)
+ #define WHAT_STR            "map2gcm, Version " VER_STR
+ 
+ #define MAX_TILE_SIZE   1024
+diff --git a/3rdparty/map2jnx/main.cpp b/3rdparty/map2jnx/main.cpp
+index be2872c..ebf08bf 100644
+--- a/3rdparty/map2jnx/main.cpp
++++ b/3rdparty/map2jnx/main.cpp
+@@ -51,7 +51,7 @@ extern "C"
+ #define _MKSTR(x)           _MKSTR_1(x)
+ #endif
+ 
+-#define VER_STR             _MKSTR(VER_MAJOR)"."_MKSTR(VER_MINOR)"."_MKSTR(VER_STEP)
++#define VER_STR             _MKSTR(VER_MAJOR) "." _MKSTR(VER_MINOR) "." _MKSTR(VER_STEP)
+ #define WHAT_STR            "map2jnx, Version " VER_STR
+ 
+ #define JNX_MAX_TILES       50000 //6250
+diff --git a/3rdparty/map2rmap/main.cpp b/3rdparty/map2rmap/main.cpp
+index 9a6629b..1a112dc 100644
+--- a/3rdparty/map2rmap/main.cpp
++++ b/3rdparty/map2rmap/main.cpp
+@@ -33,7 +33,7 @@
+ #define _MKSTR(x)           _MKSTR_1(x)
+ #endif
+ 
+-#define VER_STR             _MKSTR(VER_MAJOR)"."_MKSTR(VER_MINOR)"."_MKSTR(VER_STEP)
++#define VER_STR             _MKSTR(VER_MAJOR) "." _MKSTR(VER_MINOR) "." _MKSTR(VER_STEP)
+ #define WHAT_STR            "map2rmap, Version " VER_STR
+ 
+ 
+diff --git a/3rdparty/map2rmp/CFileGenerator.cpp b/3rdparty/map2rmp/CFileGenerator.cpp
+index c747846..6f5195d 100644
+--- a/3rdparty/map2rmp/CFileGenerator.cpp
++++ b/3rdparty/map2rmp/CFileGenerator.cpp
+@@ -27,7 +27,7 @@
+ #define _MKSTR(x)           _MKSTR_1(x)
+ #endif
+ 
+-#define VER_STR             _MKSTR(VER_MAJOR)"."_MKSTR(VER_MINOR)"."_MKSTR(VER_STEP)
++#define VER_STR             _MKSTR(VER_MAJOR) "." _MKSTR(VER_MINOR) "." _MKSTR(VER_STEP)
+ 
+ 
+ extern "C"
+diff --git a/3rdparty/map2rmp/main.cpp b/3rdparty/map2rmp/main.cpp
+index 916c05f..079f6f7 100644
+--- a/3rdparty/map2rmp/main.cpp
++++ b/3rdparty/map2rmp/main.cpp
+@@ -32,7 +32,7 @@
+ #define _MKSTR(x)           _MKSTR_1(x)
+ #endif
+ 
+-#define VER_STR             _MKSTR(VER_MAJOR)"."_MKSTR(VER_MINOR)"."_MKSTR(VER_STEP)
++#define VER_STR             _MKSTR(VER_MAJOR) "." _MKSTR(VER_MINOR) "." _MKSTR(VER_STEP)
+ #define WHAT_STR            "map2rmp, Version " VER_STR
+ 
+ int main(int argc, char ** argv)
+diff --git a/src/version.h b/src/version.h
+index e86d6eb..d5cb9a6 100644
+--- a/src/version.h
++++ b/src/version.h
+@@ -23,6 +23,6 @@
+ #define _MKSTR(x)      _MKSTR_1(x)
+ #endif
+ 
+-#define VER_STR       _MKSTR(VER_MAJOR)"."_MKSTR(VER_MINOR)"."_MKSTR(VER_STEP)
++#define VER_STR       _MKSTR(VER_MAJOR) "." _MKSTR(VER_MINOR) "." _MKSTR(VER_STEP)
+ #define WHAT_STR      "QLandkarte GT, Version " VER_STR
+ #endif                           //VERSION_H
+-- 
+2.18.0
+
