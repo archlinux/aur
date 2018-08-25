@@ -281,7 +281,9 @@ void* coinmarketcap_store_info(void* vpInfo) {
 
     Json* jobj = json_tokener_parse(pString->data);
     Json* data = json_object_array_get_idx(jobj, 0);
-    strcpy(symbol_info->name, json_object_get_string(json_object_object_get(data, "name")));
+    strncpy(symbol_info->name, json_object_get_string(json_object_object_get(data, "name")),
+            NAME_MAX_LENGTH - 1);
+    symbol_info->name[NAME_MAX_LENGTH - 1] = '\0';
     strcpy(symbol_info->symbol, json_object_get_string(json_object_object_get(data, "symbol")));
     symbol_info->price = strtod(json_object_get_string(json_object_object_get(data, "price_usd")), NULL);
     symbol_info->price_last_close = symbol_info->price /
@@ -420,7 +422,9 @@ Ref_Data* iex_get_valid_symbols(void) {
         idx = json_object_array_get_idx(jobj, i);
         strcpy(pRef_Data->symbols[i], json_object_get_string(json_object_object_get(idx,
                 "symbol")));
-        strcpy(pRef_Data->names[i], json_object_get_string(json_object_object_get(idx, "name")));
+        strncpy(pRef_Data->names[i], json_object_get_string(json_object_object_get(idx, "name")),
+                NAME_MAX_LENGTH -1);
+        pRef_Data->names[i][NAME_MAX_LENGTH - 1] = '\0';
     }
 
     json_object_put(jobj);
@@ -514,8 +518,10 @@ void info_store_company_from_json(Info* pInfo, const Json* jcompany) {
 
     if (jsymbol != NULL)
         strcpy(pInfo->symbol, json_object_get_string(jsymbol));
-    if (jname != NULL)
-        strcpy(pInfo->name, json_object_get_string(jname));
+    if (jname != NULL) {
+        strncpy(pInfo->name, json_object_get_string(jname), NAME_MAX_LENGTH - 1);
+        pInfo->name[NAME_MAX_LENGTH -1] = '\0';
+    }
     if (jindustry != NULL)
         strcpy(pInfo->industry, json_object_get_string(jindustry));
     if (jwebsite != NULL)

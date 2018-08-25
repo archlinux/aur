@@ -60,10 +60,10 @@ struct info {
     /* Company */
     char symbol[SYMBOL_MAX_LENGTH];     // ex. AAPL
     char name[NAME_MAX_LENGTH];         // ex. Apple Inc.
-    char industry[INFO_TEXT_MAX];       // ex. Computer Hardware
+    char industry[NAME_MAX_LENGTH];       // ex. Computer Hardware
     char website[URL_MAX_LENGTH];       // ex. apple.com
     char description[INFO_TEXT_MAX];    // Paragraph description of company
-    char ceo[INFO_TEXT_MAX];            // ex. Timothy D. Cook
+    char ceo[NAME_MAX_LENGTH];            // ex. Timothy D. Cook
     char issue_type[3];                 /* ad – American Depository Receipt (ADR’s)
                                            re – Real Estate Investment Trust (REIT’s)
                                            ce – Closed end fund (Stock and Bond Fund)
@@ -74,7 +74,7 @@ struct info {
                                            (blank) = Not Available, i.e., Warrant, Note, or (non-filing)
                                            Closed Ended Funds
                                         */
-    char sector[INFO_TEXT_MAX];         // ex. Technology
+    char sector[NAME_MAX_LENGTH];         // ex. Technology
 
     /* Quote */
     int64_t intraday_time;              // Unix timestamp of current price
