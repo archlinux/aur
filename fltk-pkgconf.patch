@@ -1,0 +1,19 @@
+--- fltk-1.3.4-2-a/configure.ac	2016-09-30 22:51:45.000000000 +0200
++++ fltk-1.3.4-2-b/configure.ac	2018-07-18 21:27:39.362105340 +0200
+@@ -1006,12 +1006,12 @@
+ 
+ 	xft_found=no
+ 	if test x$enable_xft != xno; then
+-	    AC_PATH_PROG(FTCONFIG, freetype-config)
++	    AC_PATH_PROG(FTCONFIG, pkgconf)
+ 
+ 	    if test "x$FTCONFIG" != x; then
+-		CPPFLAGS="`$FTCONFIG --cflags` $CPPFLAGS"
+-		CFLAGS="`$FTCONFIG --cflags` $CFLAGS"
+-		CXXFLAGS="`$FTCONFIG --cflags` $CXXFLAGS"
++		CPPFLAGS="`$FTCONFIG --cflags freetype2` $CPPFLAGS"
++		CFLAGS="`$FTCONFIG --cflags freetype2` $CFLAGS"
++		CXXFLAGS="`$FTCONFIG --cflags freetype2` $CXXFLAGS"
+ 
+ 		AC_CHECK_LIB(fontconfig, FcPatternCreate)
+ 		AC_CHECK_HEADER(X11/Xft/Xft.h,

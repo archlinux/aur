@@ -1,23 +1,26 @@
 pkgbase = lib32-fltk
 	pkgdesc = Graphical user interface toolkit for X (32-bit)
 	pkgver = 1.3.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.fltk.org
 	arch = x86_64
 	license = custom:LGPL
-	makedepends = lib32-gcc-libs
+	makedepends = lib32-alsa-lib
+	makedepends = libxft
 	depends = fltk
-	depends = lib32-gcc-libs
 	depends = lib32-glu
 	depends = lib32-libjpeg-turbo
-	depends = lib32-libpng
 	depends = lib32-libxcursor
 	depends = lib32-libxinerama
 	depends = lib32-libxft
 	source = http://fltk.org/pub/fltk/1.3.4/fltk-1.3.4-2-source.tar.gz
 	source = fltk-config-dynlibs.patch
+	source = fltk-libpng.patch
+	source = fltk-pkgconf.patch
 	sha512sums = cc169449b71ca966b2043ceedc55e92220ccb6be07b0ac54eeec36bbed5d60e2f59c6faba2403b5292b9120f5255227880a066d98ac82e57d502522bc627fd4d
 	sha512sums = c2f15a5c134a258082454dacf8db14b4d276c8c9ed207b1d2275690a2829272cfee81186caf794031339f7ed619898485bd59c6d59d2e71cd98facfbb564c1f5
+	sha512sums = e8e9b79936a09c333ce915a6215753878b6ac8a9800fd2b042e420c266ed1a05fa804eeb70a4fac6ee62ae94e2f24a7a08c4eea0767344524870d558ca1ffc02
+	sha512sums = 68c42be32141de7a3014b3f4f180b80feae02af33a5345e9cd9000042b9887037f34f08cc74b7a771f66db668613638650c6153c8a7b2471158bec6ec203af35
 
 pkgname = lib32-fltk
 
