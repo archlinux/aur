@@ -1,12 +1,14 @@
 pkgbase = eovim-git
 	pkgdesc = EFL powered Neovim GUI
-	pkgver = r311.08ccc91
+	pkgver = r322.47c6da7
 	pkgrel = 1
 	url = https://github.com/jeanguyomarch/eovim
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = git
+	makedepends = python
+	makedepends = python-jinja
 	depends = efl
 	depends = neovim
 	depends = msgpack-c
