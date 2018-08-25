@@ -9,18 +9,19 @@ license=('LGPL')
 depends=('mingw-w64-gst-plugins-base' 'mingw-w64-orc')
 makedepends=('python' 'mingw-w64-configure' 'mingw-w64-openh264' 'mingw-w64-nettle' 'mingw-w64-opus' 'mingw-w64-bzip2' 'mingw-w64-libsrtp' 'mingw-w64-vo-aacenc' 'mingw-w64-libkate' 'mingw-w64-librsvg' 'mingw-w64-openjpeg2' 'mingw-w64-opencv' 'mingw-w64-libfdk-aac' 'mingw-w64-librtmp0' 'mingw-w64-libwebp' 'mingw-w64-srt' 'mingw-w64-curl')
 optdepends=(
-  "mingw-w64-openh264: H.264 encoding/decoding plugins"
-  "mingw-w64-opus: opus parse plugin"
-  "mingw-w64-libsrtp: srtp plugins"
-  "mingw-w64-vo-aacenc: AAC encoder plugin"
-  "mingw-w64-libkate: kate subtitle plugins"
-  "mingw-w64-librsvg: svg decoding and overlay plugins"
-  "mingw-w64-openjpeg2: JPEG2000 encoding/decoding plugins"
-  "mingw-w64-opencv: opencv plugins"
-  "mingw-w64-libfdk-aac: Fraunhofer FDK AAC encoding/decoding plugins"
-  "mingw-w64-librtmp0: rtmp source and sink plugins"
-  "mingw-w64-srt: srt source and sink plugins"
-  "mingw-w64-curl: curl plugins"
+  "mingw-w64-openh264: H.264 video codec plugin"
+  "mingw-w64-opus: OPUS audio parser plugin"
+  "mingw-w64-libsrtp: Secure RTP codec plugin"
+  "mingw-w64-vo-aacenc: AAC audio encoder plugin"
+  "mingw-w64-libkate: Kate subtitle parser, tagger, and codec plugin"
+  "mingw-w64-librsvg: SVG overlayer and image decoder plugin"
+  "mingw-w64-openjpeg2: JPEG2000 image codec plugin"
+  "mingw-w64-opencv: OpenCV computer vision library support"
+  "mingw-w64-libfdk-aac: Fraunhofer AAC audio codec plugin"
+  "mingw-w64-librtmp0: RTMP video network source and sink plugin"
+  "mingw-w64-srt: Secure, Reliable, Transport client/server network source/sink plugin"
+  "mingw-w64-curl: cURL network source and sink plugin"
+  "mingw-w64-bzip2: bz2 stream encoder and decoder plugin"
 )
 options=('!strip' '!buildflags' 'staticlibs')
 
