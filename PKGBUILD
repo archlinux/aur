@@ -7,7 +7,7 @@ pkgdesc="GStreamer Multimedia Framework Base Plugins (mingw-w64)"
 arch=(any)
 url="http://gstreamer.freedesktop.org/"
 license=('LGPL')
-depends=('mingw-w64-gstreamer-git' 'mingw-w64-orc')
+depends=('mingw-w64-gstreamer-git' 'mingw-w64-orc' 'mingw-w64-libjpeg-turbo' 'mingw-w64-libpng')
 makedepends=('git' 'mingw-w64-meson' 'mingw-w64-opus' 'mingw-w64-libvorbis' 'mingw-w64-pango' 'mingw-w64-libtheora' 'mingw-w64-libvisual')
 optdepends=(
   "mingw-w64-libvisual: libvisual audio visualization plugin"
