@@ -113,7 +113,7 @@ END
 
 build() {
   cd mozilla-unified
-  cargo install cbindgen
+  cargo install --force cbindgen
 
   # _FORTIFY_SOURCE causes configure failures
   CPPFLAGS+=" -O2"
