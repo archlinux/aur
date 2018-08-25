@@ -2,8 +2,8 @@
 # Contributor: 
 
 _gitname=GameHub
-_author=gamehub
-_auxname=tkashkin
+_auxname=gamehub
+_author=tkashkin
 pkgname=("${_auxname}-git")
 pkgver=latest
 pkgrel=1

@@ -1,4 +1,4 @@
-pkgbase = tkashkin-git
+pkgbase = gamehub-git
 	pkgdesc = All your games in one place. Games manager/downloader/library written in Vala designed for Pantheon.
 	pkgver = latest
 	pkgrel = 1
@@ -19,10 +19,10 @@ pkgbase = tkashkin-git
 	depends = sqlite
 	depends = webkit2gtk
 	optdepends = lib32-json-glib
-	provides = tkashkin
-	conflicts = tkashkin
+	provides = gamehub
+	conflicts = gamehub
 	source = git+https://github.com//GameHub.git
 	md5sums = SKIP
 
-pkgname = tkashkin-git
+pkgname = gamehub-git
 
