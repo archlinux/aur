@@ -1,25 +1,10 @@
---- src/system76/src/graphics.rs	2018-08-02 15:35:01.827659700 -0700
-+++ src/system76/src/graphics.rs.new	2018-08-02 15:34:54.020993125 -0700
-@@ -12,10 +12,10 @@
- blacklist nvidia
- blacklist nvidia-drm
- blacklist nvidia-modeset
--alias nouveau off
--alias nvidia off
--alias nvidia-drm off
--alias nvidia-modeset off
-+#alias nouveau off
-+#alias nvidia off
-+#alias nvidia-drm off
-+#alias nvidia-modeset off
- "#;
- 
- pub struct Graphics {
+--- src/system76/src/graphics.rs	2018-08-25 00:37:50.963144090 -0700
++++ src/system76/src/graphics.rs.new	2018-08-24 15:57:13.563144181 -0700
 @@ -135,14 +135,14 @@
                  }
              }
  
--            eprintln!("Updating initramfs");
+-            info!("Updating initramfs");
 -            let status = process::Command::new("update-initramfs").arg("-u").status()?;
 -            if ! status.success() {
 -                return Err(io::Error::new(
@@ -27,7 +12,7 @@
 -                    format!("update-initramfs: failed with {}", status)
 -                ));
 -            }
-+            // eprintln!("Updating initramfs");
++            // info!("Updating initramfs");
 +            // let status = process::Command::new("update-initramfs").arg("-u").status()?;
 +            // if ! status.success() {
 +            //     return Err(io::Error::new(

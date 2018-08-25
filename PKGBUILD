@@ -3,8 +3,8 @@
 _pkgname=system76
 _pkgbase=system76-power
 pkgname=system76-power
-pkgver=75
-pkgrel=2
+pkgver=97
+pkgrel=1
 pkgdesc="System76 Power Management"
 arch=('any')
 url="https://github.com/pop-os/system76-power"
@@ -17,13 +17,13 @@ depends=(
 )
 makedepends=('rust')
 source=(
-  'system76::git+https://github.com/pop-os/system76-power.git#commit=eb86327bd825c632cea35324d463852a4bf9e763'
+  'system76::git+https://github.com/pop-os/system76-power.git#commit=d7925643457fb7e0b27b7204d29f95704581759c'
   'graphics.patch'
   'nvidia-fallback.service'
   )
 sha1sums=(
   'SKIP'
-  'da260fc98072a5eabb0adea71674337c55044b1d'
+  '171ba625717bb419e830a1275f8ba313915d3045'
   '5a81fb98c76cab0cd6e958d6776fca852c5ee4e2'
 )
 
