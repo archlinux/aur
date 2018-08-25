@@ -7,7 +7,7 @@ export JAVA_HOME=/usr/lib/jvm/default
 #export REPLICATOR_ENABLED=true
 
 export TOMCAT_HOME=$ARTIFACTORY_HOME/tomcat
-export ARTIFACTORY_PID=/run/artifactory.pid
+export ARTIFACTORY_PID=/opt/artifactory/run/artifactory.pid
 
 export JAVA_OPTIONS='-server -Xms512m -Xmx2g -Xss256k -XX:+UseG1GC -XX:OnOutOfMemoryError="kill -9 %p"'
 export JAVA_OPTIONS="$JAVA_OPTIONS -Djruby.compile.invokedynamic=false -Dfile.encoding=UTF8 -Dartdist=zip -Dorg.apache.tomcat.util.buf.UDecoder.ALLOW_ENCODED_SLASH=true -Djava.security.egd=file:/dev/urandom"

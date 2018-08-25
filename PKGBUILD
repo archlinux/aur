@@ -1,7 +1,8 @@
+# Maintainer: Michael J. Pento <mjpento@verizon.net>
 # Maintainer: Yegorius <yegorius@domic.us>
 
 pkgname=artifactory-oss
-pkgver=5.11.0
+pkgver=6.2.0
 pkgrel=1
 pkgdesc='Artifactory is an advanced Binary Repository Manager for use by build tools, dependency management tools and build servers'
 arch=('any')
@@ -13,16 +14,16 @@ source=("jfrog-artifactory-oss-${pkgver}.zip::https://bintray.com/jfrog/artifact
         'artifactory.service'
         'artifactory.conf'
         'artifactory.default')
-sha256sums=('8b00705d5ce6b8321fd1a623a80cea24fbf2fd8545672c72778e7c918405b6dc'
-            '5ffe6fc1cfd8b52276cfa8c191c90526f79ad0d000d893e7acb7d30f9004601b'
+sha256sums=('45c08f56159a82c0b2f72832bac6af0dfcef14b6672356f3b78640fdd2fb9480'
+            '8ba1287f4d062f57a5cf9e5426d4affcfcc00ca2680cd603f41c603957a42c20'
             '48bc1cddf9fa64f0d62a519470a490719398d67b6baeef6a3e647b737d6484df'
-            '1ce98bff3733c965889cd851c43a7f993161fbb9001b79dcd3ea17a29c380129')
+            '34337e72bbdca63a3244a61d3d1aad324c473782d976da68b72ff72ed38ac5e5')
 options=('!strip')
 PKGEXT='.pkg.tar'
 
 package() {
   local artdir="/opt/artifactory"
-  
+
   pushd "$pkgname-$pkgver"
   rm -f bin/*.{exe,bat}
   rm -f bin/{install,uninstall}Service.sh
@@ -30,7 +31,7 @@ package() {
   rm -f tomcat/bin/*.bat
   rm -f COPYING* *.txt *.html
   popd
-  
+
   install -d "$pkgdir$artdir"
   cp -r "$pkgname-$pkgver"/* "$pkgdir$artdir"
   install -Dm644 "$srcdir/artifactory.conf" "$pkgdir/usr/lib/sysusers.d/artifactory.conf"
