@@ -1,0 +1,4 @@
+# This is RainbowStream App info
+CONSUMER_KEY = 'Xk1DGhR1FJa4xjg7GbdogzLJw'
+CONSUMER_SECRET = 'SpHtDmbSGCSm55AAlIeb2PsD3kGEzxyo1325rJgrND5abeOh2T'
+PCKT_CONSUMER_KEY = '51260-b14895b9bf67e46eb28912ce'
