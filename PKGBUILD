@@ -4,7 +4,7 @@
 
 pkgname=routeconverter
 pkgver=2.24
-pkgrel=3
+pkgrel=4
 pkgdesc="A free tool to edit and convert routes, tracks and waypoints"
 arch=('i686' 'x86_64')
 url="http://www.routeconverter.de/en"
@@ -24,7 +24,7 @@ noextract=(RouteConverterCmdLine.jar
            RouteConverterLinux.jar
            RouteConverterLinuxOffline.jar)
 
-prepare() {
+build() {
   cd "${srcdir}"
   gendesk -f -n --pkgname "${pkgname}" --exec "routeconverter" --pkgdesc "$pkgdesc" --categories 'Utility'
   gendesk -f -n --pkgname "${pkgname}_offline" --exec "routeconverter-offline" --pkgdesc "$pkgdesc (offline)" --categories 'Utility'
