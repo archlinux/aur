@@ -32,7 +32,6 @@ pkgbase = firefox-wayland-hg
 	depends = dbus-glib
 	depends = ffmpeg
 	depends = nss
-	depends = hunspell
 	depends = sqlite
 	depends = ttf-font
 	depends = libpulse
