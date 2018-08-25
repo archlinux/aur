@@ -1,0 +1,13 @@
+pkgbase = elm-live
+	pkgdesc = A flexible dev server for Elm
+	pkgver = 2.7.5
+	pkgrel = 1
+	url = https://github.com/architectcodes/elm-live
+	arch = any
+	depends = nodejs
+	depends = npm
+	depends = elm-platform
+	options = !strip
+
+pkgname = elm-live
+
