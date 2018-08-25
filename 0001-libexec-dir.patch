@@ -1,0 +1,21 @@
+diff -aur dnssec-trigger-0.16.orig/riggerd/reshook.c dnssec-trigger-0.16.new/riggerd/reshook.c
+--- dnssec-trigger-0.16.orig/riggerd/reshook.c	2017-06-08 17:06:17.000000000 +0200
++++ dnssec-trigger-0.16.new/riggerd/reshook.c	2018-08-25 09:26:23.159139318 +0200
+@@ -256,7 +256,7 @@
+ 	win_set_resolv("127.0.0.1");
+ #else /* not on windows */
+ #  ifndef HOOKS_OSX /* on Linux/BSD */
+-	if (system("/usr/libexec/dnssec-trigger-script --setup") == 0)
++	if (system(LIBEXEC_DIR "/dnssec-trigger-script --setup") == 0)
+ 		return;
+ 
+ 	if(really_set_to_localhost(cfg)) {
+@@ -285,7 +285,7 @@
+ 	char iplist[10240];
+ 	iplist[0] = 0;
+ #else
+-	if (system("/usr/libexec/dnssec-trigger-script --restore") == 0)
++	if (system(LIBEXEC_DIR "/dnssec-trigger-script --restore") == 0)
+ 		return;
+ #endif
+ 	set_to_localhost = 0;
