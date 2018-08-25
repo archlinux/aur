@@ -1,7 +1,7 @@
 pkgbase = cynthiune.app
-	pkgdesc = Romantic and extensible music player for GNUstep
+	pkgdesc = Free software and romantic music player for GNUstep
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gap.nongnu.org/cynthiune/index.html
 	arch = i686
 	arch = x86_64
@@ -19,7 +19,9 @@ pkgbase = cynthiune.app
 	optdepends = libmpcdec
 	optdepends = esound
 	source = http://savannah.nongnu.org/download/gap/Cynthiune-1.0.0.tar.gz
+	source = http://http.debian.net/debian/pool/main/c/cynthiune.app/cynthiune.app_1.0.0-2.debian.tar.xz
 	sha256sums = 3cc5228c8cdb66256bbcec4b317bbd3853397f09ec9b7378a7f65140eff5bcaf
+	sha256sums = 7b74006468777e24b3ca077449f95bf1fff529672d6c6fec61fd276e379716b7
 
 pkgname = cynthiune.app
 
