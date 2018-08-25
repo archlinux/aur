@@ -1,0 +1,23 @@
+pkgbase = textedit-classic.app
+	pkgdesc = A text editor with font, color, and style capabilities for GNUstep
+	pkgver = 4.0+20061029
+	pkgrel = 1
+	url = http://www.nongnu.org/backbone/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	groups = gnustep-apps
+	license = GPL
+	makedepends = gcc-objc
+	makedepends = gnustep-make
+	depends = gnustep-base
+	depends = gnustep-gui
+	depends = gnustep-back
+	conflicts = textedit.app
+	source = http://http.debian.net/debian/pool/main/t/textedit.app/textedit.app_4.0+20061029.orig.tar.gz
+	source = http://http.debian.net/debian/pool/main/t/textedit.app/textedit.app_4.0+20061029-3.5.diff.gz
+	sha256sums = 3abb2ae8142edc64feb8b44dec3d449f6c72a0059253ab979ec335b8766b03dd
+	sha256sums = d9cc1881003e62e1f1997566b5885ae766ad53905c9870ec62712b4d1164fb33
+
+pkgname = textedit-classic.app
+
