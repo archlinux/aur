@@ -4,7 +4,7 @@
 pkgname=qlcplus-qt5
 _pkgname=qlcplus
 pkgver=4.11.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Q Light Controller Plus - The open DMX lighting desk software for controlling professional lighting fixtures."
 arch=('i686' 'x86_64')
 url="http://qlcplus.org/"
