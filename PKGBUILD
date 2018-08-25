@@ -1,6 +1,6 @@
 # Mantainer: Sean Anderson <seanga2@gamil.com>
 pkgname=proton
-pkgver=3.7_20180821
+pkgver=3.7_20180823
 pkgrel=1
 epoch=
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components"
@@ -27,7 +27,7 @@ install=
 changelog=
 source=("https://github.com/ValveSoftware/Proton/archive/$pkgname-${pkgver//_/-}.tar.gz")
 noextract=()
-md5sums=('7a14f75fcde394c3883800dc51b105a5')
+md5sums=('3d44538bf4ee0547de219a793c92194f')
 
 prepare() {
 	cd "Proton-$pkgname-${pkgver//_/-}"
