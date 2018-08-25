@@ -1,0 +1,23 @@
+pkgbase = anno-git
+	pkgdesc = Desktop application to annotate images for semantic segmentation purposes
+	pkgver = r105.ad72d66
+	pkgrel = 1
+	url = https://github.com/reunanen/anno
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = qt5-base
+	provides = anno
+	conflicts = anno
+	source = git+https://github.com/sandsmark/anno.git
+	source = git+https://github.com/sandsmark/QResultImageView.git#branch=add-annotation-mode
+	source = git+https://github.com/reunanen/cpp-move-file-to-trash.git
+	source = git+https://github.com/reunanen/qt-image-flood-fill.git
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = anno-git
+
