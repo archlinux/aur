@@ -2,7 +2,7 @@ pkgbase = gamehub-git
 	pkgdesc = All your games in one place. Games manager/downloader/library written in Vala designed for Pantheon.
 	pkgver = latest
 	pkgrel = 1
-	url = https://github.com//GameHub
+	url = https://github.com/tkashkin/GameHub
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -21,7 +21,7 @@ pkgbase = gamehub-git
 	optdepends = lib32-json-glib
 	provides = gamehub
 	conflicts = gamehub
-	source = git+https://github.com//GameHub.git
+	source = git+https://github.com/tkashkin/GameHub.git
 	md5sums = SKIP
 
 pkgname = gamehub-git

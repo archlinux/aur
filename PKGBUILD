@@ -9,7 +9,7 @@ pkgver=latest
 pkgrel=1
 pkgdesc="All your games in one place. Games manager/downloader/library written in Vala designed for Pantheon."
 arch=('i686' 'x86_64')
-url="https://github.com/${author}/${_gitname}"
+url="https://github.com/${_author}/${_gitname}"
 license=('GPL3')
 depends=('gtk3' 'vala' 'granite'
          'glib2' 'libgee' 'libsoup' 'json-glib' 'sqlite' 'webkit2gtk')
