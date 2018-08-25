@@ -17,7 +17,10 @@ source=("https://github.com/adventuregamestudio/ags/archive/v.${pkgver}.tar.gz")
 sha256sums=('7dd75df2131333f1b6885c89db275e0dee3f7b55d3d9c4e8afae612c94aca4e2')
 
 prepare() {
-  sed -i 's/-Wfatal-errors\ //' "ags-v.$pkgver/Engine/Makefile-defs.linux"
+  # Copious use of auto_ptr spams the compilation output. Until they're
+  # replaced, just suppress the message.
+  sed -i 's/-Wfatal-errors/-Wfatal-errors\ -Wno-deprecated-declarations/' \
+    "ags-v.$pkgver/Engine/Makefile-defs.linux"
 }
 
 build() {
