@@ -4,7 +4,7 @@
 # Contributor: judd <jvinet@zeroflux.org>
 
 pkgname=lilo-git
-pkgver=164.f85a56e
+pkgver=140.05bc1df
 pkgrel=1
 pkgdesc="Current git tree of a bootloader for Linux"
 arch=('i686' 'x86_64')
@@ -18,16 +18,16 @@ install=lilo.install
 options=('!makeflags')
 provides=('lilo')
 replaces=('lilo')
-source=('git+https://alioth.debian.org/anonscm/git/lilo/lilo.git'
-	'lilo.conf')
+source=('git+https://salsa.debian.org/joowie-guest/maintain_lilo.git'
+        'lilo.conf')
 
 pkgver() {
-  cd "${srcdir}"/lilo
+  cd "${srcdir}"/maintain_lilo
   echo `git rev-list --count master`.`git rev-parse --short master`
 }
 
 build() {
-  cd "${srcdir}"/lilo
+  cd "${srcdir}"/maintain_lilo
   export LC_ALL=C
 
   sed -i -e 's/strip lilo.static/strip lilo.static || true/' src/Makefile
@@ -35,7 +35,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}"/lilo
+  cd "${srcdir}"/maintain_lilo
   make DESTDIR="${pkgdir}" install
 
   install -D -m644 "${srcdir}"/lilo.conf "${pkgdir}"/etc/lilo.conf
