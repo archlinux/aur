@@ -24,7 +24,7 @@ _pkgname="grub"
 pkgname="grub-luks-keyfile"
 pkgdesc="GNU GRand Unified Bootloader (2) with crypto extensions to support for DMCrypt and LUKS volumes with detached headers and key files."
 pkgver=2.02
-pkgrel=6
+pkgrel=7
 epoch=2
 url="https://www.gnu.org/software/grub/"
 arch=('x86_64')
@@ -74,6 +74,8 @@ source=("https://ftp.gnu.org/gnu/${_pkgname}/${_pkgname}-${pkgver}.tar.xz"{,.sig
         'http://grub.johnlane.ie/assets/0004-Cryptomount-support-plain-dm-crypt.patch'
         'http://grub.johnlane.ie/assets/0005-Cryptomount-support-for-hyphens-in-UUID.patch'
         '0006-Cryptomount-support-for-using-whole-device-as-keyfile.patch::https://github.com/johnlane/grub/pull/8.patch'
+	'0009-xfs-Accept-filesystem-with-sparse-inodes.patch'
+	'0010-relocation.patch'
         'grub.default'
         'grub.cfg')
 
@@ -94,6 +96,8 @@ sha256sums=('810b3798d316394f94096ec2797909dbf23c858e48f7b3830826b8daa06b7b0f'
             'e47409d04f740a71360775af25c53662386a49ea7f93ada39ed636b9ae8a0a22'
             '7b9ff45ba6e6c1ad45e6984580393e3801ef86144e48dbe5fe97d4aa8b90706e'
             '2c312e4e46fc3b5a215771fb9bfb328079d588ac59751e980cecaed06f7f5c76'
+            'fcd5a626d4af33665d041ce42df813f1f198d8230ea186481b155a5b676f3b87'
+            '51562fa1016c54567dbf42a86c0cfc902372ab579bbee17879a81aff09b76b99'
             '74e5dd2090a153c10a7b9599b73bb09e70fddc6a019dd41641b0f10b9d773d82'
             'c5e4f3836130c6885e9273c21f057263eba53f4b7c0e2f111f6e5f2e487a47ad')
 
@@ -131,6 +135,12 @@ prepare() {
 	patch -Np1 -i "${srcdir}/0005-Cryptomount-support-for-hyphens-in-UUID.patch"
 	patch -Np1 -i "${srcdir}/0006-Cryptomount-support-for-using-whole-device-as-keyfile.patch"
 	echo
+
+	msg "Patch xfs: Accept filesystem with sparse inodes"
+	patch -Np1 -i "${srcdir}/0009-xfs-Accept-filesystem-with-sparse-inodes.patch"
+
+	msg "Patch x86-64: Treat R_X86_64_PLT32 as R_X86_64_PC32"
+	patch -Np1 -i "${srcdir}/0010-relocation.patch"
 
 	msg "Fix DejaVuSans.ttf location so that grub-mkfont can create *.pf2 files for starfield theme"
 	sed 's|/usr/share/fonts/dejavu|/usr/share/fonts/dejavu /usr/share/fonts/TTF|g' -i "configure.ac"

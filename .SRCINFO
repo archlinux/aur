@@ -1,7 +1,7 @@
 pkgbase = grub-luks-keyfile
 	pkgdesc = GNU GRand Unified Bootloader (2) with crypto extensions to support for DMCrypt and LUKS volumes with detached headers and key files.
 	pkgver = 2.02
-	pkgrel = 6
+	pkgrel = 7
 	epoch = 2
 	url = https://www.gnu.org/software/grub/
 	install = grub.install
@@ -67,6 +67,8 @@ pkgbase = grub-luks-keyfile
 	source = http://grub.johnlane.ie/assets/0004-Cryptomount-support-plain-dm-crypt.patch
 	source = http://grub.johnlane.ie/assets/0005-Cryptomount-support-for-hyphens-in-UUID.patch
 	source = 0006-Cryptomount-support-for-using-whole-device-as-keyfile.patch::https://github.com/johnlane/grub/pull/8.patch
+	source = 0009-xfs-Accept-filesystem-with-sparse-inodes.patch
+	source = 0010-relocation.patch
 	source = grub.default
 	source = grub.cfg
 	validpgpkeys = E53D497F3FA42AD8C9B4D1E835A93B74E82E4209
@@ -88,6 +90,8 @@ pkgbase = grub-luks-keyfile
 	sha256sums = e47409d04f740a71360775af25c53662386a49ea7f93ada39ed636b9ae8a0a22
 	sha256sums = 7b9ff45ba6e6c1ad45e6984580393e3801ef86144e48dbe5fe97d4aa8b90706e
 	sha256sums = 2c312e4e46fc3b5a215771fb9bfb328079d588ac59751e980cecaed06f7f5c76
+	sha256sums = fcd5a626d4af33665d041ce42df813f1f198d8230ea186481b155a5b676f3b87
+	sha256sums = 51562fa1016c54567dbf42a86c0cfc902372ab579bbee17879a81aff09b76b99
 	sha256sums = 74e5dd2090a153c10a7b9599b73bb09e70fddc6a019dd41641b0f10b9d773d82
 	sha256sums = c5e4f3836130c6885e9273c21f057263eba53f4b7c0e2f111f6e5f2e487a47ad
 
