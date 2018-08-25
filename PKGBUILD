@@ -36,15 +36,6 @@ sha256sums=('SKIP'
             '3b3a9075f79ca7f2a4fd34eb182a5c1ada6eb118a95e49c1526df516365bbfe5'
             'd22f0d922856639c7cc5f71bdd620cc8b3eb54af923b1a43703faac217b8b13b')
 
-case "$CARCH" in
-	x86_64)
-		_arch=x64
-		;;
-	i686)
-		_arch=x86
-		;;
-esac
-
 pkgver() {
 	cd "$srcdir/osu"
 	git describe --always --tags | sed -E -e 's/^(v|changelog-)//g' -e 's/-/_/g'
