@@ -1,15 +1,15 @@
 # Maintainer: Michael Zimmermann <sigmaepsilon92@gmail.com>
 pkgname=esp32ulp-elf-binutils-bin
-pkgver=d2ae637d
+pkgver=2.28.51.20180809
 pkgrel=1
 pkgdesc="Binutils fork with support for the ESP32 ULP co-processor"
 arch=('x86_64')
 depends=('glibc')
 url="https://esp-idf.readthedocs.io/en/latest/api-guides/ulp.html"
-source=("https://dl.espressif.com/dl/esp32ulp-elf-binutils-linux64-d2ae637d.tar.gz")
+source=("https://github.com/espressif/binutils-esp32ulp/releases/download/v2.28.51-esp32ulp-20180809/binutils-esp32ulp-linux64-2.28.51-esp32ulp-20180809.tar.gz")
 license=('GPL')
 options=(!strip staticlibs)
-sha256sums=('265105b1f2592468b539033503abe2d862d7448208f0decec1543fb841f2a8d5')
+sha256sums=('c1bbcd65e1e30c7312a50344c8dbc70c2941580a79aa8f8abbce8e0e90c79566')
 
 package() {
   mkdir -p $pkgdir/usr
