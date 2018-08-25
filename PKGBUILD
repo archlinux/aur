@@ -4,8 +4,9 @@
 pkgname=firefox-nightly-ru
 pkgdesc='Web browser from mozilla.org, nightly build, russian version'
 url='http://nightly.mozilla.org/'
-_version=62.0a1
-pkgver=62.0a1.20180625
+#_version=62.0a1
+_version=$(curl -qL https://product-details.mozilla.org/1.0/firefox_versions.json | grep FIREFOX_NIGHTLY | cut -d'"' -f4)
+pkgver=63.0a1.20180825
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
