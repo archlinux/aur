@@ -1,0 +1,28 @@
+pkgbase = tkashkin-git
+	pkgdesc = All your games in one place. Games manager/downloader/library written in Vala designed for Pantheon.
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com//GameHub
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = gtk3
+	depends = vala
+	depends = granite
+	depends = glib2
+	depends = libgee
+	depends = libsoup
+	depends = json-glib
+	depends = sqlite
+	depends = webkit2gtk
+	optdepends = lib32-json-glib
+	provides = tkashkin
+	conflicts = tkashkin
+	source = git+https://github.com//GameHub.git
+	md5sums = SKIP
+
+pkgname = tkashkin-git
+
