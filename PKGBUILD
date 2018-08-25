@@ -13,7 +13,7 @@
 
 pkgname="griffith"
 pkgver=0.15
-pkgrel=1
+pkgrel=2
 _gitcommit=05b5803f770818d6309b0946e77de6e523b51fc9
 pkgdesc="Movie collection manager application"
 arch=('any')
