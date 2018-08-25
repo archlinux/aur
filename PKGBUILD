@@ -4,14 +4,14 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=tin
 pkgver=2.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A threaded NNTP and spool based UseNet newsreader."
 arch=('i686' 'x86_64')
 url="http://www.tin.org"
 license=('BSD')
 depends=('ncurses' 'ispell' 'perl' 'gnupg' 'dante' 'icu' 'libidn')
 conflicts=('tin-unstable')
-source=("ftp://ftp.tin.org/pub/news/clients/tin/${pkgver%.*}/$pkgname-$pkgver.tar.gz"
+source=("ftp://ftp.tin.org/pub/news/clients/tin/v${pkgver%.*}/$pkgname-$pkgver.tar.gz"
         'LICENSE')
 md5sums=('f7661a5049454e1381a9532ce0705d7e'
          '22de35b1bdc6f0df87c93ae794198b21')
