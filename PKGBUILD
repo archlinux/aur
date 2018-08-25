@@ -17,7 +17,7 @@ if $build_kernel_modules; then
 fi
 pkgver=2.3.1
 #_commit=6ae1f7d55bf10cc6b5cb62a5ce99ff22c43e0701
-pkgrel=2
+pkgrel=3
 pkgdesc="An entirely open source driver and user-space daemon that allows you to manage your Razer peripherals on GNU/Linux."
 arch=('any')
 url="https://github.com/openrazer/openrazer"

@@ -1,7 +1,7 @@
 pkgbase = openrazer
 	pkgdesc = An entirely open source driver and user-space daemon that allows you to manage your Razer peripherals on GNU/Linux.
 	pkgver = 2.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/openrazer/openrazer
 	arch = any
 	license = GPL2
