@@ -1,14 +1,18 @@
 pkgbase = check_mk-agent
 	pkgdesc = Agent to send information to a Check_MK server
-	pkgver = 1.4.0p33
+	pkgver = 1.5.0p2
 	pkgrel = 2
 	url = https://mathias-kettner.de
 	install = check_mk-agent.install
 	arch = any
 	license = GPLv2
 	depends = xinetd
-	source = https://mathias-kettner.de/support/1.4.0p33/check-mk-raw-1.4.0p33.cre.tar.gz
-	md5sums = c1d6a9b98b9a414a94f696ac75fe8ab8
+	source = check_mk_agent.linux::http://git.mathias-kettner.de/git/?p=check_mk.git;a=blob_plain;f=agents/check_mk_agent.linux;h=124838d5c32f90ba9d3ed0f6495c91cedd5a866d;hb=b1572e7f970af0185163e5f6e0d98a41b67a87d9
+	source = check_mk_caching_agent.linux::http://git.mathias-kettner.de/git/?p=check_mk.git;a=blob_plain;f=agents/check_mk_caching_agent.linux;h=327f2fd350ca16d6b9e915ede22c35af95e661cd;hb=b1572e7f970af0185163e5f6e0d98a41b67a87d9
+	source = xinetd.conf::http://git.mathias-kettner.de/git/?p=check_mk.git;a=blob_plain;f=agents/cfg_examples/xinetd.conf;h=e612f044c927297cb7c012e9f44f49a93b5c48a9;hb=b1572e7f970af0185163e5f6e0d98a41b67a87d9
+	md5sums = c260f0823ce6e60442d6ffeab62d8f83
+	md5sums = f3e131661041e4129d9a169271d35fbf
+	md5sums = 4a114a25ffdbf7a8bc79552041490395
 
 pkgname = check_mk-agent
 
