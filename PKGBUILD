@@ -1,5 +1,5 @@
-# $Id$
-# Maintainer: Jaroslav Lichtblau <svetlemodry@archlinux.org>
+# Maintainer: Markus Heidelberg <markus.heidelberg@web.de>
+# Contributor: Jaroslav Lichtblau <svetlemodry@archlinux.org>
 # Contributor: Matthias Maennich <arch@maennich.net>
 # Contributor: <boenki@gmx.de>
 
