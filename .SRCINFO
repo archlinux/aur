@@ -1,7 +1,7 @@
 pkgbase = libsvm
 	pkgdesc = A library for Support Vector Machines classification (includes binaries and bindings for python and java)
 	pkgver = 3.23
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.csie.ntu.edu.tw/~cjlin/libsvm/
 	arch = i686
 	arch = x86_64
