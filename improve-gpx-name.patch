@@ -1,0 +1,45 @@
+From a668a9fab679859a1524b9342e7e06e4f7b1a6a0 Mon Sep 17 00:00:00 2001
+From: Markus Heidelberg <markus.heidelberg@web.de>
+Date: Thu, 9 Jul 2015 00:25:34 +0200
+Subject: [PATCH 2/2] Allow missing or empty <name> elements in GPX waypoints
+
+Set the name to "Unnamed" (or translation) as fallback. The locale files
+have to be updated therefore.
+
+Before this change, these waypoints have been ignored when reading GPX files.
+But according to the GPX schema version 1.1 the "name" element does not have to
+exist.
+Garmin Dakota 20 can create waypoints with an empty "name" element.
+Also the OpenStreetMap Notes API currently creates waypoints without
+"name" element.
+---
+ src/CWptDB.cpp | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/src/CWptDB.cpp b/src/CWptDB.cpp
+index 6b2062d..31bc8b2 100644
+--- a/src/CWptDB.cpp
++++ b/src/CWptDB.cpp
+@@ -466,6 +466,10 @@ void CWptDB::loadGPX(CGpx& gpx)
+         {
+             wpt->name = waypoint.namedItem("name").toElement().text();
+         }
++        if(wpt->name.isEmpty())
++        {
++            wpt->name = tr("Unnamed");
++        }
+         if(waypoint.namedItem("cmt").isElement())
+         {
+             wpt->comment = waypoint.namedItem("cmt").toElement().text();
+@@ -567,7 +571,7 @@ void CWptDB::loadGPX(CGpx& gpx)
+             }
+         }
+ 
+-        if(wpt->lat == 1000 || wpt->lon == 1000 || (wpt->name.isEmpty() && wpt->comment.isEmpty()))
++        if(wpt->lat == 1000 || wpt->lon == 1000)
+         {
+             delete wpt;
+             continue;
+-- 
+2.4.5
+

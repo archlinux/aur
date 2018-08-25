@@ -1,0 +1,30 @@
+From cc2d08b4a444e2ba20046711bf5f67f6cfd9d390 Mon Sep 17 00:00:00 2001
+From: Markus Heidelberg <markus.heidelberg@web.de>
+Date: Tue, 7 Jul 2015 10:13:36 +0200
+Subject: [PATCH 1/2] Tolerate missing "creator" attribute when reading GPX
+ files
+
+According to the robustness principle.
+
+The OpenStreetMap Notes API currently sends malformed files, example:
+http://api.openstreetmap.org/api/0.6/notes.gpx?bbox=-0.65094,51.312159,0.374908,51.669148
+---
+ src/CGpx.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/CGpx.cpp b/src/CGpx.cpp
+index 34b021d..86cae0b 100644
+--- a/src/CGpx.cpp
++++ b/src/CGpx.cpp
+@@ -219,7 +219,7 @@ void CGpx::load(const QString& filename)
+     }
+ 
+     if (!docElem.hasAttribute("creator"))
+-        throw tr("GPX schema violation: no \"creator\" attribute.");
++        qWarning() << tr("GPX schema violation: no \"creator\" attribute.");
+ 
+     QString creator = docElem.attribute("creator");
+     if (creator.startsWith("QLandkarte"))
+-- 
+2.4.5
+
