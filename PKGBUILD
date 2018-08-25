@@ -4,27 +4,28 @@
 # SELinux Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
 # SELinux Contributor: Timothée Ravier <tim@siosm.fr>
 # SELinux Contributor: Nicky726 <Nicky726@gmail.com>
+#
+# This PKGBUILD is maintained on https://github.com/archlinuxhardened/selinux.
+# If you want to help keep it up to date, please open a Pull Request there.
 
-pkgname=cronie-selinux
-pkgver=1.5.1
+pkgname='cronie-selinux'
+pkgver=1.5.2
 pkgrel=1
 pkgdesc='Daemon that runs specified programs at scheduled times and related tools with SELinux support'
-#url='https://fedorahosted.org/cronie/'
-url='https://github.com/cronie-crond/cronie'
+url='https://github.com/cronie-crond/cronie/'
 license=('custom:BSD')
 arch=('i686' 'x86_64')
 depends=('pam-selinux' 'bash' 'run-parts' 'libselinux')
-optdepends=('pm-utils: defer anacron on battery power'
-            'smtp-server: send job output via email'
+optdepends=('smtp-server: send job output via email'
             'smtp-forwarder: forward job output to email server')
 source=("https://github.com/cronie-crond/cronie/releases/download/${pkgname/-selinux}-${pkgver}/${pkgname/-selinux}-${pkgver}.tar.gz"
         'service'
         'pam.d'
         'deny')
-sha1sums=('0d757921c1ed248cffa14a754a50ccd27e9a8245'
-          'eb8ed1e22dbe9c02075fe4bbe925b6eeb9954649'
-          '5eff7fb31f6bc0a924243ff046704726cf20c221'
-          '0f279b8fb820340267d578dc85511c980715f91e')
+sha256sums=('370bf34641691489330e708bd4cdbd779267296a030668a12f77b7e36872fd75'
+            'ac3ff3c8a5ce1b6367b06877b4b12ff74e7f18a3c510fb9f80d6ea6b6321e3b1'
+            '00864268b491bab8c66400a4a4b4bf85f168a6e44e85676105e084940924090c'
+            'ae6e533ecdfc1bd2dd80a9e25acb0260cbe9f00c4e4abee93d552b3660f263fc')
 
 backup=('etc/cron.deny'
         'etc/pam.d/crond'
