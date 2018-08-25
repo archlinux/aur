@@ -1,7 +1,7 @@
 # Maintainer: Emeric Grange <emeric.grange@gmail.com>
 
 pkgname=watchflower
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc="WatchFlower helps you read and plot datas from your Xiaomi 'Flower Care' devices!"
 arch=("i686" "x86_64")
@@ -11,7 +11,7 @@ depends=("qt5-base" "qt5-connectivity" "qt5-charts" "qt5-svg" "sqlite")
 makedepends=("qt5-tools")
 
 source=("https://github.com/emericg/WatchFlower/archive/v${pkgver}.zip")
-sha256sums=('128c31c984faf431ab97f7fee007d0b599258d40353fb6ea51217d857c29a021')
+sha256sums=('425f2b6959b8e7f2cd4b7ec4076e4efeb7b6b49707941e6aaf035c3cefff0dc6')
 
 build() {
   mkdir -p "WatchFlower-${pkgver}"
