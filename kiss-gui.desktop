@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=KISS GUI
+Comment=Crossplatform configuration tool for the KISS flight control system
+Exec=kiss-gui
+Icon=kiss-gui
+Terminal=false
+Type=Application
+Categories=Utility
