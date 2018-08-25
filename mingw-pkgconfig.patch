@@ -1,30 +1,19 @@
-diff -ru libssh-0.7.2/CMakeLists.txt patched/CMakeLists.txt
---- libssh-0.7.2/CMakeLists.txt	2015-09-16 08:44:35.000000000 +0200
-+++ patched/CMakeLists.txt	2015-12-26 16:06:48.989612824 +0100
-@@ -84,8 +84,8 @@
+diff -ruN libssh-0.8.1/CMakeLists.txt patched/CMakeLists.txt
+--- libssh-0.8.1/CMakeLists.txt	2018-08-13 22:21:19.000000000 +0200
++++ patched/CMakeLists.txt	2018-08-26 00:27:16.718587338 +0200
+@@ -98,7 +98,7 @@
  add_subdirectory(src)
  
  # pkg-config file
 -if (UNIX)
--configure_file(libssh.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/libssh.pc)
 +if (UNIX OR MINGW)
-+configure_file(libssh.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/libssh.pc @ONLY)
+ configure_file(libssh.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/libssh.pc)
  install(
    FILES
-     ${CMAKE_CURRENT_BINARY_DIR}/libssh.pc
-@@ -97,7 +97,7 @@
- )
- 
-     if (LIBSSH_THREADS)
--        configure_file(libssh_threads.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/libssh_threads.pc)
-+        configure_file(libssh_threads.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/libssh_threads.pc @ONLY)
-         install(
-           FILES
-             ${CMAKE_CURRENT_BINARY_DIR}/libssh.pc
 @@ -108,7 +108,7 @@
-             pkgconfig
-         )
-     endif (LIBSSH_THREADS)
+   COMPONENT
+     pkgconfig
+ )
 -endif (UNIX)
 +endif (UNIX OR MINGW)
  
