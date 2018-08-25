@@ -6,7 +6,7 @@ pkgbase = dart-sdk-dev
 	arch = x86_64
 	license = custom
 	depends = unzip
-	provides = dart
+	provides = dart=$pkgver
 	conflicts = dart
 	source = https://storage.googleapis.com/dart-archive/channels/dev/release/2.1.0-dev.2.0/sdk/dartsdk-linux-x64-release.zip
 	sha256sums = 4f6c1b2a37a89cc852469479f99e86ef97188dcb9b93822b5e29e799a6ab6a45

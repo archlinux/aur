@@ -8,7 +8,7 @@ url="https://www.dartlang.org/tools/sdk/archive"
 license=('custom')
 depends=('unzip')
 conflicts=('dart')
-provides=('dart')
+provides=('dart=$pkgver')
 source=("https://storage.googleapis.com/dart-archive/channels/dev/release/${pkgver//_/-}/sdk/dartsdk-linux-x64-release.zip")
 sha256sums=('4f6c1b2a37a89cc852469479f99e86ef97188dcb9b93822b5e29e799a6ab6a45')
 
