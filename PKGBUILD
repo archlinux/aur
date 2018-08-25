@@ -10,20 +10,19 @@ pkgdesc='Intelligent Chinese phonetic input method'
 url='http://chewing.im/'
 arch=('i686' 'x86_64')
 license=('GPL')
-conflicts=('libchewing')
-provides=('libchewing')
+conflicts=("$_pkgname")
+provides=("$_pkgname=$pkgver")
 depends=('sqlite')
 makedepends=('git')
 source=("git+https://github.com/chewing/libchewing/"
-        "issue219.patch")
+        "issue219.patch"::"https://github.com/chewing/libchewing/pull/294.patch")
 md5sums=('SKIP'
-         '16f494709a35233177ba6bc234953871')
+         '22a1d758203218c3f1e264eac77017e5')
 
 pkgver() {
   cd "${_pkgname}"
   ( set -o pipefail
-    git describe --long --tag 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tag 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
   )
 }
 
@@ -31,18 +30,19 @@ prepare() {
   cd "${_pkgname}"
 
   patch -Np1 -i ../issue219.patch
+
+  autoreconf -fvi
 }
 
 build() {
   cd "${_pkgname}"
-  ./autogen.sh
   ./configure --prefix=/usr --disable-static
   make
 }
 
 check() {
   cd "${_pkgname}"
-  # parallel testing is broken
+  # parallel testing is broken (https://github.com/chewing/libchewing/issues/293)
   make -j1 check
 }
 

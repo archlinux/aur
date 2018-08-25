@@ -9,12 +9,12 @@ pkgbase = libchewing-git
 	license = GPL
 	makedepends = git
 	depends = sqlite
-	provides = libchewing
+	provides = libchewing=0.5.1.r74.g3df07c9
 	conflicts = libchewing
 	source = git+https://github.com/chewing/libchewing/
-	source = issue219.patch
+	source = issue219.patch::https://github.com/chewing/libchewing/pull/294.patch
 	md5sums = SKIP
-	md5sums = 16f494709a35233177ba6bc234953871
+	md5sums = 22a1d758203218c3f1e264eac77017e5
 
 pkgname = libchewing-git
 
