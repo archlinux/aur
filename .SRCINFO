@@ -18,6 +18,7 @@ pkgbase = torrential-git
 	depends = libnatpmp
 	depends = libunity
 	depends = libtransmission
+	depends = libutp
 	depends = miniupnpc
 	depends = openssl
 	provides = torrential

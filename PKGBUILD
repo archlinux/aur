@@ -12,7 +12,7 @@ url="https://github.com/${_author}/${_gitname}"
 license=('GPL3')
 depends=('gtk3' 'vala' 'granite'
          'curl' 'libb64' 'libevent' 'libnatpmp' 'libunity' 'libtransmission'
-         'miniupnpc' 'openssl')
+         'libutp' 'miniupnpc' 'openssl')
 optdepends=()
 makedepends=('cmake' 'vala' 'git')
 provides=("${_gitname}")
