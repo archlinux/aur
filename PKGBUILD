@@ -4,7 +4,7 @@
 pkgname=emacs-neotree
 pkgver=0.5.2
 pkgrel=1
-pkgdesc="Project Interaction Library for Emacs"
+pkgdesc="A emacs tree plugin like NerdTree for Vim."
 arch=(any)
 url="https://github.com/jaypei/emacs-neotree"
 license=('GPL3')
