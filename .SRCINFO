@@ -1,7 +1,7 @@
 pkgbase = python-syncthing
 	pkgdesc = Python bindings to the Syncthing REST interface
 	pkgver = 2.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/blakev/python-syncthing
 	arch = any
 	license = GPL
@@ -11,7 +11,9 @@ pkgbase = python-syncthing
 	depends = python-dateutil
 	options = !emptydirs
 	source = https://files.pythonhosted.org/packages/source/s/syncthing/syncthing-2.3.1.tar.gz
+	source = dependencies.patch
 	md5sums = ead41fbbc898fa53d276261b490d5b45
+	md5sums = 87ca42df5cd7771906db75c32452bb3d
 
 pkgname = python-syncthing
 

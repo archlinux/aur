@@ -1,0 +1,20 @@
+--- setup.py	2018-08-13 19:08:11.000000000 +0200
++++ -	2018-08-25 14:42:08.852853550 +0200
+@@ -12,8 +12,8 @@
+     url = 'https://github.com/blakev/python-syncthing',
+     license = 'The MIT License',
+     install_requires = [
+-        'python-dateutil==2.6.1',
+-        'requests==2.18.4'
++        'python-dateutil',
++        'requests'
+     ],
+     extras_require = {
+         'dev': [
+@@ -43,4 +43,4 @@
+         'Programming Language :: Python :: 3.7',
+         'Topic :: System :: Archiving :: Mirroring'
+     ],
+-)
+\ No newline at end of file
++)
