@@ -1,6 +1,6 @@
 # Maintainer: TC <crt@archlinux.email>
 pkgname=openssh-ldap-publickey
-pkgver=6d21a03
+pkgver=9edb4e8
 pkgrel=2
 pkgdesc="Wrapper for OpenSSH to store public keys inside the OpenLDAP entry."
 arch=('any')
@@ -34,4 +34,7 @@ package() {
 # install openssh-lpk-openldap.schema to openldap schema directory with ldap:ldap perms
   install -Dm644 -o 439 -g 439 "misc/openssh-lpk-openldap.schema" \
     "${pkgdir}/etc/openldap/schema/openssh-lpk-openldap.schema"
+
+# install license
+  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
