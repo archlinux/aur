@@ -14,7 +14,8 @@ makedepends=('mono'
              'git')
 depends=('dotnet-sdk'
          'ffmpeg'
-         'libgl')
+         'libgl'
+         'shared-mime-info')
 optdepends=()
 options=()
 provides=('osu-lazer')
@@ -89,6 +90,10 @@ package() {
 	# Application icon
 	mkdir -p "$pkgdir/usr/share/pixmaps"
 	install -m644 "${pkgname%-git}.png" "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
+
+	# Copy license file
+	mkdir -p "$pkgdir/usr/share/licenses/${pkgname%-git}"
+	install -m644 "$srcdir/osu/LICENCE" "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
 
 	# Copy binaries
 	cd "$srcdir/osu/osu.Desktop/bin/Release/netcoreapp2.1"

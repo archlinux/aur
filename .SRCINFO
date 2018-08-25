@@ -11,6 +11,7 @@ pkgbase = osu-lazer-git
 	depends = dotnet-sdk
 	depends = ffmpeg
 	depends = libgl
+	depends = shared-mime-info
 	provides = osu-lazer
 	conflicts = osu-lazer
 	source = git+https://github.com/ppy/osu.git
