@@ -12,6 +12,7 @@ groups=('gnustep-apps')
 #[UPSTREAM-BUG] Program will hang without a working aspell dictionary
 depends=('gnustep-base' 'gnustep-gui' 'gnustep-back' 'aspell-en')
 makedepends=('gcc-objc' 'gnustep-make')
+conflicts=('textedit-classic.app')
 source=("https://github.com/ericwa/TextEdit/archive/master.zip"
         "http://http.debian.net/debian/pool/main/t/textedit.app/textedit.app_5.0-2.debian.tar.xz")
 sha256sums=('13fb1df424d69eeb95f1ba8c6c9c4cfd039798dc5b01b20760d79d532a374b07'
