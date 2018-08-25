@@ -67,6 +67,7 @@ source=("https://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.xz"{,.sig}
         '0007-grub-mkconfig_10_linux_Support_multiple_early_initrd_images.patch'
         '0008-Fix-packed-not-aligned-error-on-GCC-8.patch'
         '0009-xfs-Accept-filesystem-with-sparse-inodes.patch'
+        '0010-relocation.patch'
         'grub.default'
         'grub.cfg')
 
@@ -82,6 +83,7 @@ sha256sums=('810b3798d316394f94096ec2797909dbf23c858e48f7b3830826b8daa06b7b0f'
             'e43566c4fe3b1b87e677167323d4716b82ac0810410a9d8dc7fbf415c8db2b8a'
             'e84b8de569c7e6b73263758c35cf95c6516fde85d4ed451991427864f6a4e5a8'
             'fcd5a626d4af33665d041ce42df813f1f198d8230ea186481b155a5b676f3b87'
+            '51562fa1016c54567dbf42a86c0cfc902372ab579bbee17879a81aff09b76b99'
             '74e5dd2090a153c10a7b9599b73bb09e70fddc6a019dd41641b0f10b9d773d82'
             'c5e4f3836130c6885e9273c21f057263eba53f4b7c0e2f111f6e5f2e487a47ad')
 		
@@ -130,8 +132,11 @@ prepare() {
 	msg "Patch to fix packed-not-aligned error on GCC 8"
 	patch -Np1 -i "${srcdir}/0008-Fix-packed-not-aligned-error-on-GCC-8.patch"
 
-	msg "xfs: Accept filesystem with sparse inodes"
+	msg "Patch xfs: Accept filesystem with sparse inodes"
 	patch -Np1 -i "${srcdir}/0009-xfs-Accept-filesystem-with-sparse-inodes.patch"
+
+	msg "Patch x86-64: Treat R_X86_64_PLT32 as R_X86_64_PC32"
+	patch -Np1 -i "${srcdir}/0010-relocation.patch"
 
 	msg "Fix DejaVuSans.ttf location so that grub-mkfont can create *.pf2 files for starfield theme"
 	sed 's|/usr/share/fonts/dejavu|/usr/share/fonts/dejavu /usr/share/fonts/TTF|g' -i "configure.ac"
