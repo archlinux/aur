@@ -28,7 +28,7 @@ pkgver() {
 package() {
   cd "$_pkgbase"
 
-  for i in autoload doc ftdetect ftplugin indent syntax
+  for i in autoload/julia doc ftdetect ftplugin indent syntax
   do
     install -dm 755 "${pkgdir}"/usr/share/vim/vimfiles/$i
     for j in `ls $i/`
