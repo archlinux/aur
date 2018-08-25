@@ -1,0 +1,36 @@
+pkgbase = qlandkartegt
+	pkgdesc = Use your GPS with Linux
+	pkgver = 1.8.1
+	pkgrel = 8
+	url = http://www.qlandkarte.org/
+	changelog = qlandkartegt.changelog
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = garmindev
+	makedepends = mesa
+	makedepends = qt5-tools
+	depends = gdal
+	depends = gpsd
+	depends = libdmtx
+	depends = libexif
+	depends = libmariadbclient
+	depends = glu
+	depends = postgresql-libs
+	depends = shared-mime-info
+	depends = qt5-script
+	depends = qt5-multimedia
+	depends = qt5-webkit
+	depends = qt5-serialport
+	depends = proj
+	optdepends = garmindev: to connect garmin devices
+	source = http://downloads.sourceforge.net/qlandkartegt/qlandkartegt-1.8.1.tar.gz
+	source = qlandkartegt-mimetypes.xml
+	source = fix-qt5-build.patch
+	sha256sums = 9e0605ab8f4cbd27741b507f252f08370e9ccca4e05ec35878256c59b22a9be7
+	sha256sums = e8d33948831f8a66edd752c71c653085d6c4d9f1969e70dd8c40b9c7ca37fba0
+	sha256sums = e71d843289f8f1099388a431bf488281232344b9ce6c0a28d1a60f68b6ec3e4b
+
+pkgname = qlandkartegt
+
