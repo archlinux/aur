@@ -3,7 +3,6 @@ pkgbase = qlandkartegt
 	pkgver = 1.8.1
 	pkgrel = 10
 	url = http://www.qlandkarte.org/
-	changelog = qlandkartegt.changelog
 	arch = i686
 	arch = x86_64
 	license = GPL

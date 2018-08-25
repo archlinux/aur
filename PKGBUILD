@@ -15,7 +15,6 @@ depends=('gdal' 'gpsd' 'libdmtx' 'libexif' 'libmariadbclient' 'glu'
          'qt5-webkit' 'qt5-serialport' 'proj')
 makedepends=('cmake' 'garmindev' 'mesa' 'qt5-tools')
 optdepends=('garmindev: to connect garmin devices')
-changelog=$pkgname.changelog
 source=(https://bitbucket.org/maproom/qlandkarte-gt/downloads/$pkgname-$pkgver.tar.gz
         $pkgname-mimetypes.xml
         fix-qt5-build.patch
