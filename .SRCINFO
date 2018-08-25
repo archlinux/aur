@@ -1,6 +1,6 @@
 pkgbase = xob
 	pkgdesc = A lightweight volume (or anything) bar for the X Window System
-	pkgver = 0.1
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/florentc/xob
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = xob
 	depends = libx11
 	depends = libconfig
 	backup = etc/xob/styles.cfg
-	source = https://github.com/florentc/xob/archive/v0.1.tar.gz
-	sha256sums = 751d148fdf2bfa4779f05afa22673653b3475ab0418d4803162d2e4a3097f896
+	source = https://github.com/florentc/xob/archive/v0.1.1.tar.gz
+	sha256sums = 78e06280504ff21213bc947c97fb0604c42addc0d8dc4a18c239bfd8f0aa1614
 
 pkgname = xob
 
