@@ -18,6 +18,9 @@ build() {
   cd "${srcdir}/sygnm-git"
   cmake . -GNinja -DCMAKE_BUILD_TYPE=Debug -DSYGNM_BUILD_ALL=On -DCMAKE_INSTALL_PREFIX=/usr
   ninja
+  # TODO: On some machines, compilation randomly fails with 'ld: file not recognized: file truncated' errors, so multiple attempts are needed.
+  ninja
+  ninja
 }
 
 package() {
