@@ -1,6 +1,6 @@
 pkgbase = doomretro-git
 	pkgdesc = The classic, refined DOOM source port (git version)
-	pkgver = 2.7.1.r60.g71953b08
+	pkgver = 2.7.2.r10.gc8a70e6b
 	pkgrel = 1
 	url = http://doomretro.com
 	arch = i686
