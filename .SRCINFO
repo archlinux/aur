@@ -22,3 +22,27 @@ pkgbase = screens-git
 
 pkgname = screens-git
 
+pkgbase = screens-git
+	pkgdesc = A utility for taking and managing screenshots.
+	pkgver = 200718
+	pkgrel = 3
+	url = https://www.gitlab.com/DavidBittner/screens
+	arch = any
+	license = GPL3
+	makedepends = cmake
+	makedepends = pkg-config
+	makedepends = git
+	depends = gtk3
+	depends = gtkmm3
+	depends = libpng
+	depends = libx11
+	depends = curl
+	depends = gstreamermm
+	depends = glibmm
+	provides = screens
+	conflicts = screens
+	source = screens::git+https://www.gitlab.com/DavidBittner/screens.git
+	md5sums = SKIP
+
+pkgname = screens-git
+
