@@ -1,8 +1,7 @@
-pkgbase = mythtv
+pkgbase = mythtv-git
 	pkgdesc = A Homebrew PVR project
 	pkgver = 29+fixes.20180821.e5fc66e8
 	pkgrel = 1
-	epoch = 1
 	url = https://www.mythtv.org/
 	arch = x86_64
 	license = GPL
@@ -50,8 +49,10 @@ pkgbase = mythtv
 	optdepends = python2-requests-cache: for metadata-lookup / cover art
 	conflicts = myththemes
 	conflicts = mythplugins-mythvideo
+	conflicts = mythtv
 	replaces = myththemes
 	replaces = mythplugins-mythvideo
+	replaces = mythtv
 	source = git+https://github.com/MythTV/mythtv#branch=fixes/29
 	source = mythbackend.service
 	source = 99-mythbackend.rules
@@ -61,5 +62,5 @@ pkgbase = mythtv
 	sha256sums = ecfd02bbbef5de9773f4de2c52e9b2b382ce8137735f249d7900270d304fd333
 	sha256sums = 470de0a4050c16c7af11a0e5cfe2810b7daae42df4acf5456c7eae274dc7c5ae
 
-pkgname = mythtv
+pkgname = mythtv-git
 

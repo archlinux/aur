@@ -6,10 +6,9 @@
 # Contributor: <kleptophobiac@gmail.com>
 # Contributor: dorphell <dorphell@archlinux.org>
 
-pkgname=mythtv
+pkgname=mythtv-git
 pkgver=29+fixes.20180821.e5fc66e8
 pkgrel=1
-epoch=1
 pkgdesc="A Homebrew PVR project"
 arch=('x86_64')
 url="https://www.mythtv.org/"
@@ -26,8 +25,8 @@ optdepends=('glew: for GPU commercial flagging'
             'python2-future: for metadata-lookup / cover art'
             'python2-requests: for metadata-lookup / cover art'
             'python2-requests-cache: for metadata-lookup / cover art')
-conflicts=('myththemes' 'mythplugins-mythvideo')
-replaces=('myththemes' 'mythplugins-mythvideo')
+conflicts=('myththemes' 'mythplugins-mythvideo' 'mythtv')
+replaces=('myththemes' 'mythplugins-mythvideo' 'mythtv')
 source=("git+https://github.com/MythTV/mythtv#branch=fixes/29"
         'mythbackend.service'
         '99-mythbackend.rules'
