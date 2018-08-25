@@ -1,6 +1,6 @@
 pkgname=pakku-gui
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK frontend for pakku"
 arch=("any") # If pakku and python can be installed, this too
 url="https://gitlab.com/mrvik/pakku-gui"

@@ -1,7 +1,7 @@
 pkgbase = pakku-gui
 	pkgdesc = GTK frontend for pakku
-	pkgver = 0.1.4
-	pkgrel = 1
+	pkgver = 0.2.0
+	pkgrel = 2
 	url = https://gitlab.com/mrvik/pakku-gui
 	arch = any
 	license = GPL2
@@ -11,8 +11,8 @@ pkgbase = pakku-gui
 	depends = pakku
 	provides = pakku-gui
 	conflicts = pakku-gui-git
-	source = https://gitlab.com/mrvik/pakku-gui/-/archive/0.1.4/pakku-gui-0.1.4.tar
-	sha256sums = 3979441e0b0d9f0ffa8b1dbbc4c10cbe353578ff05b95c9f187ff97ad0281901
+	source = https://gitlab.com/mrvik/pakku-gui/-/archive/0.2.0/pakku-gui-0.2.0.tar
+	sha256sums = f9f90d712eddcfd560a762118ccfd18690ca974ab28486067628d01ec257581b
 
 pkgname = pakku-gui
 
