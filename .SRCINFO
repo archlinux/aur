@@ -4,7 +4,6 @@ pkgbase = garmindev
 	pkgrel = 9
 	url = http://www.qlandkarte.org/
 	install = garmindev.install
-	changelog = garmindev.changelog
 	arch = i686
 	arch = x86_64
 	license = GPL

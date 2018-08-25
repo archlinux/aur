@@ -1,5 +1,5 @@
-# $Id$
-# Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+# Maintainer: Markus Heidelberg <markus.heidelberg@web.de>
+# Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 # Contributor: Matthias Maennich <arch@maennich.net>
 
 pkgname=garmindev
@@ -11,7 +11,6 @@ url="http://www.qlandkarte.org/"
 license=('GPL')
 depends=('libusb-compat')
 makedepends=('cmake')
-changelog=$pkgname.changelog
 install=$pkgname.install
 source=(http://downloads.sourceforge.net/qlandkartegt/$pkgname-$pkgver.tar.gz \
         51-garmin.rules)
