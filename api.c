@@ -646,6 +646,22 @@ Info* info_array_get_info_from_symbol(const Info_Array* pInfo_Array, const char*
     return NULL;
 }
 
+int ref_data_get_index_from_name_bsearch(const Ref_Data* pRef_Data, const char* name,
+                                           size_t left, size_t right) {
+    if (right < left)
+        return -1;
+
+    size_t mid = left + (right - left) / 2;
+    int cmp = strcmp(name, pRef_Data->names[mid]);
+    if (cmp == 0)
+        return (int) mid;
+
+    if (cmp > 0)
+        return ref_data_get_index_from_name_bsearch(pRef_Data, name, mid + 1, right);
+
+    return ref_data_get_index_from_name_bsearch(pRef_Data, name, left, mid - 1);
+}
+
 void api_ref_data_destroy(Ref_Data** phRef_Data) {
     if (*phRef_Data == NULL)
         return;
