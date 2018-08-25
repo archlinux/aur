@@ -1,7 +1,7 @@
 From 1eb6c3cccc09e51f68f30ab2fc6d8bbf04085031 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 13:58:28 +0200
-Subject: [PATCH 06/33] Don't add resource files to LIBS parameter
+Subject: [PATCH 06/34] Don't add resource files to LIBS parameter
 
 Solves an issue where the generated pkg-config
 files contained invalid Libs.private references

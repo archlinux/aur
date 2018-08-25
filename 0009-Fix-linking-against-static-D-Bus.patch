@@ -1,7 +1,7 @@
 From d79b593a0d432b88521ec58ed6e7411a85347bb8 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 3 Feb 2017 19:36:25 +0100
-Subject: [PATCH 09/33] Fix linking against static D-Bus
+Subject: [PATCH 09/34] Fix linking against static D-Bus
 
 ---
  configure.json             | 9 +++++++--

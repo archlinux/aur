@@ -1,7 +1,7 @@
 From f17fa5afa2f24bc569eda2bbe35b77a4ab268608 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 13:41:38 +0200
-Subject: [PATCH 03/33] Use external ANGLE library
+Subject: [PATCH 03/34] Use external ANGLE library
 
 ---
  src/gui/Qt5GuiConfigExtras.cmake.in       | 4 ++--
