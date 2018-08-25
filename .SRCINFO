@@ -1,0 +1,24 @@
+pkgbase = hackup-git
+	pkgdesc = Read Hacker News from the desktop. An app designed for Pantheon Shell
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/mdh34/hackup
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = gtk3
+	depends = vala
+	depends = granite
+	depends = json-glib
+	depends = webkit2gtk
+	optdepends = lib32-json-glib
+	provides = hackup
+	conflicts = hackup
+	source = git+https://github.com/mdh34/hackup.git
+	md5sums = SKIP
+
+pkgname = hackup-git
+
