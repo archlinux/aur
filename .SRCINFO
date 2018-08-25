@@ -1,0 +1,25 @@
+pkgbase = fondo-git
+	pkgdesc = Wallpaper App designed for Pantheon Shell
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/calo001/fondo
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = gtk3
+	depends = vala
+	depends = granite
+	depends = libsoup
+	depends = libunity
+	depends = json-glib
+	optdepends = lib32-json-glib
+	provides = fondo
+	conflicts = fondo
+	source = git+https://github.com/calo001/fondo.git
+	md5sums = SKIP
+
+pkgname = fondo-git
+
