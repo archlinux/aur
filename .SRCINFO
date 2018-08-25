@@ -1,6 +1,6 @@
 pkgbase = iuvolt
 	pkgdesc = Experimental script to undervolt Intel CPUs
-	pkgver = 39
+	pkgver = 44
 	pkgrel = 1
 	url = https://github.com/tiziw/iuvolt
 	install = iuvolt.install
@@ -8,7 +8,7 @@ pkgbase = iuvolt
 	license = GPL
 	depends = bc
 	depends = msr-tools
-	source = iuvolt::git+https://github.com/tiziw/iuvolt.git#commit=36ff7401139694a83be6dd47eac35ef733b783d8
+	source = iuvolt::git+https://github.com/tiziw/iuvolt.git#commit=5e3599798177ac16e6bab4e2ad5c81f6690481c3
 	source = iuvolt.cfg
 	sha1sums = SKIP
 	sha1sums = ed5ee6f4a93c14c28b3aa505f0d400d571db4cfe

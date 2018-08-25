@@ -1,7 +1,7 @@
 # Maintainer: Francisco Soto <ebobby(at)ebobby(dot)org>
 
 pkgname=iuvolt
-pkgver=39
+pkgver=44
 pkgrel=1
 pkgdesc="Experimental script to undervolt Intel CPUs"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL')
 install="${pkgname}.install"
 depends=('bc' 'msr-tools')
 source=(
-  'iuvolt::git+https://github.com/tiziw/iuvolt.git#commit=36ff7401139694a83be6dd47eac35ef733b783d8'
+  'iuvolt::git+https://github.com/tiziw/iuvolt.git#commit=5e3599798177ac16e6bab4e2ad5c81f6690481c3'
   'iuvolt.cfg'
   )
 sha1sums=(
