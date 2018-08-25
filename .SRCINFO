@@ -1,6 +1,6 @@
 pkgbase = psisolver-git
 	pkgdesc = Exact Inference Engine for Probabilistic Programs
-	pkgver = da79cad
+	pkgver = 24d07f7
 	pkgrel = 1
 	url = http://psisolver.org/
 	arch = i686
