@@ -2,7 +2,7 @@ pkgbase = translator-git
 	pkgdesc = Translater app that uses Yandex API designed for Pantheon. Donate Link: http://bit.do/Translator_Donate
 	pkgver = latest
 	pkgrel = 1
-	url = https://github.com//Translator
+	url = https://github.com/RapidFingers/Translator
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -18,7 +18,7 @@ pkgbase = translator-git
 	depends = libsoup
 	provides = translator
 	conflicts = translator
-	source = git+https://github.com//Translator.git
+	source = git+https://github.com/RapidFingers/Translator.git
 	md5sums = SKIP
 
 pkgname = translator-git
