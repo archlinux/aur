@@ -1,12 +1,12 @@
 pkgbase = eclipse-scala-ide
 	pkgdesc = Scala IDE for Eclipse
-	pkgver = 4.6.1
+	pkgver = 4.7.0
 	pkgrel = 1
 	url = http://www.scala-ide.org/
 	arch = any
 	license = custom
 	depends = eclipse>=4.4
-	source = eclipse-scala-ide-4.6.1.zip::http://download.scala-ide.org/sdk/lithium/e46/scala212/stable/update-site.zip
+	source = eclipse-scala-ide-4.7.0.zip::http://download.scala-ide.org/sdk/lithium/e46/scala212/stable/update-site.zip
 	source = LICENSE
 	source = scala-ide.desktop
 	source = product.png

@@ -1,8 +1,9 @@
+#Maintainer: Michael J. Pento <mjpento@verizon.net>
 #Maintainer: Andrzej Giniewicz <gginiu@gmail.com>
 #Contributor: Kristof Jozsa <kjozsa@fsdev.hu>
 
 pkgname=eclipse-scala-ide
-pkgver=4.6.1
+pkgver=4.7.0
 pkgrel=1
 pkgdesc="Scala IDE for Eclipse"
 arch=('any')
