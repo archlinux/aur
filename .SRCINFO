@@ -1,6 +1,6 @@
 pkgbase = debugedit
 	pkgdesc = Tool to mangle source locations in .debug files
-	pkgver = 4.13.0.1
+	pkgver = 4.14.2
 	pkgrel = 1
 	url = http://www.rpm.org/
 	arch = x86_64
