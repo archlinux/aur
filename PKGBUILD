@@ -1,4 +1,5 @@
 # Maintainer: Michael Dobachesky <mgdobachesky@outlook.com>
+
 _pkg_name="maint"
 _install_dir="opt/$_pkg_name"
 _symlink_dir="usr/bin"
@@ -32,13 +33,11 @@ build() {
     mkdir -p "$_install_dir"
     mkdir -p "$_symlink_dir"
 
-    cd "$pkgname-$pkgver"
-
     sed -i "s|{{PKG_PATH}}|/${_install_dir}|" "run.sh"
 
-    install -m 755 "run.sh" "../$_install_dir"
-    install -m 755 "archNews.py" "../$_install_dir"
-    install -m 755 "settings.sh" "../$_install_dir"
+    install -m 755 "run.sh" "$_install_dir"
+    install -m 755 "archNews.py" "$_install_dir"
+    install -m 755 "settings.sh" "$_install_dir"
 }
 
 package() {
