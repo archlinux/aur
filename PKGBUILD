@@ -2,7 +2,7 @@
 
 pkgname='python-stormssh'
 _name=storm
-pkgver=0.6.9
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='Manage your SSH like a boss'
 url='https://github.com/emre/storm'
@@ -14,7 +14,7 @@ replaces=('python2-stormssh-git')
 makedepends=('python')
 provides=("${_name}=${pkgver}")
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('29c20e4ed27604a7cdf2f77fe97d861100d87c0dbaa9ecf6628cf9da917e98ce')
+sha256sums=('c2e5da1cb4a27b309ed7e470c5acebe2822f7928c5ef0e38f9dade247cf9a6c6')
 
 # Enable for tests
 # check() {
