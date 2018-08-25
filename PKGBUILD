@@ -9,11 +9,11 @@ license=('LGPL')
 depends=('mingw-w64-gstreamer' 'mingw-w64-orc')
 makedepends=('mingw-w64-configure' 'mingw-w64-opus' 'mingw-w64-libvorbis' 'mingw-w64-pango' 'mingw-w64-libtheora' 'mingw-w64-libvisual')
 optdepends=(
-  "mingw-w64-libvisual: libvisual plugins"
-  "mingw-w64-opus: opus encoding/decoding plugins"
-  "mingw-w64-libvorbis: vorbis plugins"
-  "mingw-w64-libtheora: theora plugins"
-  "mingw-w64-pango: pango overlay plugins"
+  "mingw-w64-libvisual: libvisual audio visualization plugin"
+  "mingw-w64-opus: OPUS audio codec plugin"
+  "mingw-w64-libvorbis: Vorbis audio parser, tagger, and codec plugin"
+  "mingw-w64-libtheora: Theora video parser and codec plugin"
+  "mingw-w64-pango: Pango text rendering and overlay plugin"
 )
 options=('!strip' '!buildflags' 'staticlibs')
 
