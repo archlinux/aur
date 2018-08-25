@@ -142,9 +142,6 @@ prepare() {
         -i -e '/CONFIG_ACPI_NUMA=y/d' ./.config
   fi
 
-  # Don't run depmod on 'make install'. We'll do this ourselves in packaging
-  sed -i '2iexit 0' scripts/depmod.sh
-
   # If the following is set, stop right there. We only need the headers for
   # dependent drivers' compiling (nvidia, virtualbox etc)
 
@@ -451,11 +448,9 @@ _package() {
   # add real version for building modules and running depmod from hook
   echo "${_kernver}" |
     install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modules/${_extramodules}/version"
+  
   # remove build and source links
   rm "${pkgdir}"/usr/lib/modules/${_kernver}/{source,build}
-  
-  # Now we call depmod...
-  depmod -b "$pkgdir/usr" -F System.map "$_kernver"
   
   # add vmlinux
   install -Dt "${pkgdir}/usr/lib/modules/${_kernver}/build" -m644 vmlinux
