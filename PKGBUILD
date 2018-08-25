@@ -26,7 +26,7 @@ backup=("$_install_dir/settings.sh")
 
 source=("https://gitlab.com/mgdobachesky/ArchSystemMaintenance/raw/master/pkg/$pkgname-$pkgver.tar.xz")
 
-md5sums=('bdba5f407ca127effd230bfa10e4421d')
+md5sums=('c891b6df920c4b75087dffa2e103106a')
 
 build() {
     umask 022
