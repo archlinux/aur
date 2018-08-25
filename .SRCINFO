@@ -15,7 +15,9 @@ pkgbase = findutils-selinux
 	conflicts = findutils
 	conflicts = selinux-findutils
 	source = https://ftp.gnu.org/pub/gnu/findutils/findutils-4.6.0.tar.gz
+	source = gnulib-glibc2.28-compatibility.patch
 	sha1sums = f18e8aaee3f3d4173a1f598001003be8706d28b0
+	sha1sums = 089b2f56a7c4b24e03184c158f1352ade2b5d050
 
 pkgname = findutils-selinux
 

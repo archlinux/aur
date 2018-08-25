@@ -19,9 +19,17 @@ conflicts=("${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
 provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
 url="http://www.gnu.org/software/findutils"
-source=(https://ftp.gnu.org/pub/gnu/findutils/${pkgname/-selinux}-${pkgver}.tar.gz)
-sha1sums=('f18e8aaee3f3d4173a1f598001003be8706d28b0')
+source=(https://ftp.gnu.org/pub/gnu/findutils/${pkgname/-selinux}-${pkgver}.tar.gz
+        gnulib-glibc2.28-compatibility.patch)
+sha1sums=('f18e8aaee3f3d4173a1f598001003be8706d28b0'
+          '089b2f56a7c4b24e03184c158f1352ade2b5d050')
 #validpgpkeys=('A15B725964A95EE5') # James Youngman <james@youngman.org>
+
+prepare() {
+  cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
+  patch -Np1 -i ../gnulib-glibc2.28-compatibility.patch
+}
+
 build() {
   cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
 
