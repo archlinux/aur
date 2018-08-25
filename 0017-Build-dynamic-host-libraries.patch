@@ -1,7 +1,7 @@
 From c79c2a4f048484d235574a69e6f6ba3dcff23abe Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 14:27:28 +0200
-Subject: [PATCH 17/33] Build dynamic host libraries
+Subject: [PATCH 17/34] Build dynamic host libraries
 
 This came initially from Fedora, not sure whether
 it makes sense to keep it. Regular Arch package
