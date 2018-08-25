@@ -1,6 +1,6 @@
 # Maintainer: Victor van den Elzen <victor.vde@gmail.com>
 pkgname=psisolver-git
-pkgver=da79cad
+pkgver=24d07f7
 pkgrel=1
 pkgdesc="Exact Inference Engine for Probabilistic Programs"
 arch=('i686' 'x86_64')

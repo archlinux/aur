@@ -1,5 +1,5 @@
 DCC = dmd
-DFLAGS = -J.
+DFLAGS = -J. -Jlibrary
 SRC = $(wildcard *.d)
 OBJ = $(SRC:.d=.o)
 OUT = psi
