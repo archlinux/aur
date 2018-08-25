@@ -10,7 +10,7 @@
 pkgname=davinci-resolve
 _pkgname=resolve
 pkgver=15.0
-pkgrel=0
+pkgrel=1
 pkgdesc='Professional A/V post-production software suite'
 arch=('x86_64')
 url="https://www.blackmagicdesign.com/"
@@ -20,12 +20,14 @@ depends=('glu' 'gtk2' 'gstreamer' 'libpng12' 'lib32-libpng12' 'ocl-icd' 'openssl
          'qt5-webengine' 'qt5-websockets')
 options=('!strip')
 conflicts=('davinci-resolve-beta' 'davinci-resolve-studio' 'davinci-resolve-studio-beta')
+DOWNLOADS_DIR=`xdg-user-dir DOWNLOAD`
 
 if [ ! -f ${pkgdir}/DaVinci_Resolve_${pkgver}_Linux.zip ]; then
-  if [ -f $HOME/Downloads/DaVinci_Resolve_${pkgver}_Linux.zip ]; then
-    ln -sfn $HOME/Downloads/DaVinci_Resolve_${pkgver}_Linux.zip ${pkgdir}
+  if [ -f $DOWNLOADS_DIR/DaVinci_Resolve_${pkgver}_Linux.zip ]; then
+    ln -sfn $DOWNLOADS_DIR/DaVinci_Resolve_${pkgver}_Linux.zip ${pkgdir}
   else
-    msg2 "Please remember to put a package archive DaVinci_Resolve_${pkgver}_Linux.zip in ${pkgdir} or in your Downloads directory."
+    msg2 "The package can be downloaded here: https://www.blackmagicdesign.com/products/davinciresolve/"
+    msg2 "Please remember to put a downloaded package DaVinci_Resolve_${pkgver}_Linux.zip into ${pkgdir} or $DOWNLOADS_DIR"
     sleep 3
   fi
 fi
