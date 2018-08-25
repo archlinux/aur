@@ -12,7 +12,7 @@ depends=('emacs' 'python-jedi' 'emacs-auto-complete' 'emacs-epc' 'emacs-python-e
 makedepends=('git')
 provides=('emacs-jedi')
 source=("$pkgname-$pkgver.zip::https://github.com/tkf/emacs-jedi/archive/master.zip")
-sha256sums=('SKIP')
+sha256sums=('4adff270a37ee3a1757d0b7947d904bd2f88118db571f608c571363afe8315dc')
 
 build() {
   cd emacs-jedi-master

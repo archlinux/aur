@@ -14,7 +14,7 @@ pkgbase = emacs-jedi
 	depends = python-virtualenv
 	provides = emacs-jedi
 	source = emacs-jedi-0.2.7.zip::https://github.com/tkf/emacs-jedi/archive/master.zip
-	sha256sums = SKIP
+	sha256sums = 4adff270a37ee3a1757d0b7947d904bd2f88118db571f608c571363afe8315dc
 
 pkgname = emacs-jedi
 
