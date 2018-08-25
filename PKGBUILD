@@ -116,4 +116,7 @@ package() {
   # Blacklist Nouveau
   install -d "$pkgdir"/usr/lib/modprobe.d/
   echo "blacklist nouveau" >> "$pkgdir"/usr/lib/modprobe.d/nvidia.conf
+
+  # License
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/nvidia/LICENSE
 }
