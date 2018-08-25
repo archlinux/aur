@@ -1,25 +1,25 @@
 pkgname=pantheon-git-meta
-pkgver=20180527
-pkgrel=1
+pkgver=20180825
+pkgrel=2
 pkgdesc='Meta package for the complete Pantheon desktop & apps'
 arch=(any)
 url='http://elementary.io'
 license=(LGPL)
 depends=(pantheon-videos-git
 	cerbere-git
-	contractor-git
-    elementary-wallpapers-git
+  contractor-git
+  elementary-wallpapers-git
 	pantheon-dpms-helper-git
 	elementary-icon-theme-git
 	gala-git
 	granite-git
 	gtk-theme-elementary-git
 	lightdm-pantheon-greeter-git
-    pantheon-music-git
+  pantheon-music-git
 	pantheon-calculator-git
 	pantheon-default-settings-git
 	pantheon-files-git
-    pantheon-calendar-git
+  pantheon-calendar-git
 	pantheon-code-git
 	pantheon-session-git
 	pantheon-screenshot-git
@@ -50,7 +50,7 @@ depends=(pantheon-videos-git
 	wingpanel-indicator-power-git
 	wingpanel-indicator-session-git
 	wingpanel-indicator-sound-git
-    wingpanel-indicator-nightlight-git
+  wingpanel-indicator-nightlight-git
 	)
 
 package(){
