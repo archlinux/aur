@@ -1,7 +1,7 @@
 # Maintainer : Bjoern Bidar - theodorstormgrade@gmail.com
      
 pkgname=nvidia-pf
-pkgver=396.51
+pkgver=396.54
 pkgrel=1
 _goodkver=4.17
 _badkver=4.18
