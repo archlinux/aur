@@ -1,19 +1,19 @@
 pkgbase = snd-usb-audio-lowlatency-dkms
 	pkgdesc = snd-usb-audio kernel module modified for low latency
-	pkgver = 4.17.14
-	pkgrel = 4
+	pkgver = 4.18.4
+	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = any
 	license = GPL2
 	depends = dkms
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.17.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.17.14.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.18.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-4.18.4.xz
 	source = dkms.conf
 	source = lowlatency.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = 9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13
-	sha256sums = bf4d95df98dc6197024bc2a7c8a8ef5fd3b21495298c7a7a5dbd63c159ea9f17
+	sha256sums = 19d8bcf49ef530cd4e364a45b4a22fa70714b70349c8100e7308488e26f1eaf1
+	sha256sums = cc22261cd9651dc2a05ad817a5b5fd3c63076ca86abfade7097915e7ba0b3bd6
 	sha256sums = 69f325c3af92c4098c9d118b2eab7de76eba691677864f714697bce5f47005e2
 	sha256sums = c2b7784899d184b142c5969c1be17cc949f11f4e59fbe5b1a8ffe062a1c4a88f
 
