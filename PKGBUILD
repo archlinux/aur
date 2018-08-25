@@ -9,8 +9,8 @@ license=('LGPL')
 depends=('mingw-w64-gst-plugins-base')
 makedepends=('mingw-w64-configure' 'mingw-w64-x264' 'mingw-w64-opencore-amr')
 optdepends=(
-  "mingw-w64-x264: H.264 encoding plugin"
-  "mingw-w64-opencore-amr: Adaptive Multi-Rate Narrow-Band audio encoding/decoding/parsing plugins"
+  "mingw-w64-x264: H.264 video encoder plugin"
+  "mingw-w64-opencore-amr: Adaptive Multi-Rate Narrow-Band audio codec plugin"
 )
 
 options=('!strip' '!buildflags' 'staticlibs')
