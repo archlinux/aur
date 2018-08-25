@@ -2,9 +2,10 @@
 
 pkgname=proaudio-meta
 pkgver=2018.08.25
-pkgrel=1
+pkgrel=2
 pkgdesc="Metapackage for most useful audio production software"
 arch=("x86_64")
+install="${pkgname}.install"
 url="https://github.com/Bleuzen/archlinux-packages"
 depends=("jack2-dbus"
          "pulseaudio-jack"

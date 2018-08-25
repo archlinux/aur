@@ -1,0 +1,3 @@
+post_install() {
+  echo "Now add your user to the 'audio' and 'realtime' group and re-login."
+}
