@@ -1,6 +1,6 @@
 # Maintainer: Vincent Gatine <nurelin@nurelin.eu>
 pkgname=eovim-git
-pkgver=r311.08ccc91
+pkgver=r322.47c6da7
 pkgrel=1
 epoch=
 pkgdesc="EFL powered Neovim GUI"
@@ -9,7 +9,7 @@ url="https://github.com/jeanguyomarch/eovim"
 license=('MIT')
 groups=()
 depends=('efl' 'neovim' 'msgpack-c')
-makedepends=('cmake' 'git')
+makedepends=('cmake' 'git' 'python' 'python-jinja')
 checkdepends=()
 optdepends=()
 provides=()
