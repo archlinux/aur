@@ -1,12 +1,13 @@
 # Maintainer: Helder Bertoldo <helder.bertoldo@gmail.com>
 
 _gitname=aesop
+_author=lainsce
 pkgname=("${_gitname}-git")
 pkgver=latest
 pkgrel=1
-pkgdesc="The simplest PDF viewer around designed for elementary OS"
+pkgdesc="The simplest PDF viewer around designed for Pantheon Shell"
 arch=('i686' 'x86_64')
-url="https://github.com/lainsce/${_gitname}"
+url="https://github.com/${_author}/${_gitname}"
 license=('GPL3')
 depends=('gtk3' 'vala' 'granite' 'libsoup' 'json-glib' 'poppler-glib')
 optdepends=('lib32-json-glib')
