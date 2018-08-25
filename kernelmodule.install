@@ -1,0 +1,18 @@
+# Contributor : RangHo Lee <hibiki_love@rangho.moe>
+
+post_install() {
+	echo -n "Regenerating Initramfs..."
+	mkinitcpio -p linux
+}
+
+post_upgrade() {
+	post_install $1
+}
+
+post_remove() {
+	post_install $1
+}
+
+op=$1
+shift
+$op $*
