@@ -7,8 +7,8 @@
 pkgname=inox-edgy
 pk=enox
 name=chromium
-pkgver=70.0.3530.0
-pkgrel=2
+pkgver=70.0.3532.0
+pkgrel=1
 _launcher_ver=5
 pkgdesc="Chromium nightly snapshots, without google blobs"
 arch=('i686' 'x86_64')
@@ -117,7 +117,7 @@ https://raw.githubusercontent.com/bn0785ac/in-night/master/desu.patch
 
 
 
-sha256sums=('b94e72bd901d397f3e78408dba022da02eac43ea086ce946c58ab0a61daf40b1'
+sha256sums=('18a5beafb91577ddf4821b4f61dc441d7d4b971b2bf4079e012bb5e518dbc0dd'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             '2d33f3b42c0e48de5044548fe885ea351f66a60f3164b700721af8bf200243eb'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
@@ -155,7 +155,7 @@ sha256sums=('b94e72bd901d397f3e78408dba022da02eac43ea086ce946c58ab0a61daf40b1'
             '0a148b0a15a63feb08ed79695a80d09ad39db7a3373b217cd499909218b94fda'
             '9465f89adc5b177050fd154b3be459f167fd3e157a1ebc0537b29070f0dbda5d'
             '5a4ec61000266fd623e0a3377210ed324ed62eeba6c61ecd95ffb49d4d20640f'
-            '4aaeaa4113a7d95816ddf678b36ca2d268e7ff12c52e4702ff30ca794626013f'
+            '46b0af3227b403138a411ff510653cc9b46c1f8aed5d4aa5fb6dc619e881ed3e'
             '8aa6928dfeec97b5a2c2b22e1abda42fd0e57b6c480356c12ca4726a59f12fa8'
             '2acda9e5de0efa71c8347eb490bcae7993ae28dceaba406a0dafb50110539ba2'
             '66ff55dce4ebefdf0030c5cccfbf1dc4e269c681ad9e23d7be5df17c0a884858'
@@ -214,6 +214,7 @@ sha256sums=('b94e72bd901d397f3e78408dba022da02eac43ea086ce946c58ab0a61daf40b1'
             'cc2a93ff16087377faec53ff907969bb0b9c2b9f4168f3f0d74ba5788ed4988d'
             'cd4c8fa8294f542a3fea1dd3df4a0a7370723f7139e5c59ec53f4ed639976d80'
             'a00a82e7c6e692c695971b2bf462442076975ebb42d9b66009d8e8489465c29e')
+
 
 
 
@@ -291,7 +292,7 @@ patch -Np1 -i ../030.patch
 patch -Np1 -i ../CP.patch
 patch -Np1 -i ../032.patch
 patch -Np1 -i ../034.patch
-#patch -Np1 -i ../035.patch
+patch -Np1 -i ../035.patch
 patch -Np1 -i ../360.patch
 patch -Np1 -i ../888.patch
 patch -Np1 -i ../meme.patch
