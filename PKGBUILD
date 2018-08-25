@@ -14,7 +14,7 @@ provides=(${_pkgname})
 conflicts=(${_pkgname})
 install=${pkgname}.install
 source=("https://download.freedict.org/dictionaries/${_lang}/${pkgver}/freedict-${_lang}-${pkgver}.dictd.tar.xz")
-sha512sums=('be43d4f51ba0df6256a59697bdec2cf7a93fcadb3c5ec20aa7cff2cc10af7c1dac83c39144020f07f687392367fdf9791595d65e2aa3c9da71b513b747449897')
+sha512sums=('81d8c1fbef03e441275f90c00fba3e6e08fc70f86da1ad4af352760591e4a124d1e2da00dbcc2349c693b205f6d637b92cf1cb56be132e1a25428579080fe485')
 
 package()
 {
