@@ -24,10 +24,10 @@
 
 _pkgname=retroshare
 pkgname=${_pkgname}-git
-pkgver=v0.6.4.r356.ge2bb3aef1
+pkgver=v0.6.4.r389.g45306910d
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://retroshare.sourceforge.net/"
 license=('GPL' 'LGPL')
 depends=('qt5-multimedia' 'qt5-x11extras' 'libupnp' 'libxss' 'libmicrohttpd' 'sqlcipher' 'xapian-core')
