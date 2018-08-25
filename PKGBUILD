@@ -6,37 +6,20 @@
 
 pkgname=ddclient-ipv6
 _pkgname=ddclient
-pkgver=3.8.3
-pkgrel=3
-pkgdesc="Update dynamic DNS entries for accounts on many dynamic DNS services, with IPv6 patch"
+pkgver=3.9.0
+pkgrel=1
+pkgdesc="Update dynamic DNS entries for accounts on many dynamic DNS services"
 arch=('any')
 url="http://ddclient.sourceforge.net"
 license=('GPL2')
-depends=('perl-io-socket-ssl' 'perl-digest-sha1' 'net-tools' 'perl-regexp-ipv6')
+depends=('perl-io-socket-ssl' 'perl-digest-sha1' 'net-tools' 'perl-data-validate-ip')
 provides=('ddclient')
 conflicts=('ddclient')
 backup=('etc/ddclient/ddclient.conf')
-source=(http://downloads.sourceforge.net/sourceforge/$_pkgname/$_pkgname-$pkgver.tar.bz2
-        "ddclient.patch::https://bugs.debian.org/cgi-bin/bugreport.cgi?msg=25;filename=ddclient.patch;att=1;bug=704467"
-        "ddclient-invalid_adresses_fix.patch::https://bugs.debian.org/cgi-bin/bugreport.cgi?att=1;bug=704467;filename=ddclient.patch;msg=55"
-        "0001-cloudflare_ipv6_support.patch"
-        "0002-ipv6-regex-fix.patch"
+source=("ddclient-${pkgver}.tar.gz::https://github.com/ddclient/ddclient/archive/v${pkgver}.tar.gz"
         $_pkgname.service)
-md5sums=('3b426ae52d509e463b42eeb08fb89e0b'
-         '55c0d00d6127c8834bb839fda19445b0'
-         'da70c9cd9ea29557a930783293e9bba8'
-         'f476c2bf79307584c114883281cba2d6'
-         'b94ea3cf971531ca2f382b1de6fd4b40'
+md5sums=('20f5cac911d6671799eac6e1a627868c'
          '1bcd3e75309e658931532adef2a0608a')
-
-prepare(){
-  cd "$srcdir"/$_pkgname-$pkgver
-
-	patch -p0 -i "$srcdir"/ddclient.patch
-	patch -p3 -i "$srcdir"/ddclient-invalid_adresses_fix.patch
-	patch -p0 -i "$srcdir"/0001-cloudflare_ipv6_support.patch
-	patch -p0 -i "$srcdir"/0002-ipv6-regex-fix.patch
-}
 
 package() {
   cd "$srcdir"/$_pkgname-$pkgver
