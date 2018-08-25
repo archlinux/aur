@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 build() {
     cd "$srcdir/$pkgname"
-    git checkout $(git rev-list --tags --max-count=1) # Checks out latest tag instead of latest commit
+    git checkout -q $(git rev-list --tags --max-count=1) # Checks out latest tag instead of latest commit
     CPPFLAGS="$CPPFLAGS -O2"
 	make
 }
