@@ -1,6 +1,6 @@
 pkgbase = jmeters
 	pkgdesc = Various analog-style audio level meters for JACK
-	pkgver = 0.4.4
+	pkgver = 0.4.5
 	pkgrel = 1
 	url = http://kokkinizita.linuxaudio.org/linuxaudio/downloads/
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = jmeters
 	depends = clthreads
 	depends = clxclient
 	depends = jack
-	source = http://kokkinizita.linuxaudio.org/linuxaudio/downloads/jmeters-0.4.4.tar.bz2
-	md5sums = 49ace779e6b0a937039543b130ae8441
+	source = http://kokkinizita.linuxaudio.org/linuxaudio/downloads/jmeters-0.4.5.tar.bz2
+	md5sums = ea74a6166e5254d60abd798369ffcbe3
 
 pkgname = jmeters
 
