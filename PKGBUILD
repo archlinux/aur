@@ -124,7 +124,7 @@ package_opencl-nvidia-full-beta-all() {
 
   # License (link)
   install -d "$pkgdir"/usr/share/licenses/
-  ln -s nvidia/ "$pkgdir"/usr/share/licenses/opencl-nvidia
+  ln -s nvidia-utils/ "$pkgdir"/usr/share/licenses/opencl-nvidia
 }
 
 package_nvidia-libgl-full-beta-all() {
@@ -154,7 +154,7 @@ package_nvidia-libgl-full-beta-all() {
 
   # License (link)
   install -d "$pkgdir"/usr/share/licenses/
-  ln -s nvidia/ "$pkgdir"/usr/share/licenses/nvidia-libgl
+  ln -s nvidia-utils/ "$pkgdir"/usr/share/licenses/nvidia-libgl
 }
 
 package_nvidia-egl-wayland-full-beta-all() {
@@ -314,9 +314,8 @@ package_nvidia-utils-full-beta-all() {
   cp -r html "$pkgdir"/usr/share/doc/nvidia/
   ln -s nvidia/ "$pkgdir"/usr/share/doc/nvidia-utils
 
-  # Licenses
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/nvidia/LICENSE
-  ln -s nvidia/ "$pkgdir"/usr/share/licenses/nvidia-utils
+  # License
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/nvidia-utils/LICENSE
 
   # Disable logo splash
   install -Dm644 "$srcdir"/20-nvidia.conf "$pkgdir"/etc/X11/xorg.conf.d/20-nvidia.conf
@@ -368,6 +367,9 @@ package_nvidia-full-beta-all() {
   # Blacklist Nouveau
   install -d "$pkgdir"/usr/lib/modprobe.d/
   echo "blacklist nouveau" >> "$pkgdir"/usr/lib/modprobe.d/nvidia.conf
+
+  # License
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/nvidia/LICENSE
 }
 
 package_lib32-opencl-nvidia-full-beta-all() {
