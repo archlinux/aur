@@ -1,5 +1,5 @@
 pkgname=pakku-gui
-pkgver=0.1.4
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="GTK frontend for pakku"
 arch=("any") # If pakku and python can be installed, this too
@@ -9,7 +9,7 @@ depends=("python" "python-gobject" "gtk3" "pakku")
 source=("https://gitlab.com/mrvik/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar")
 provides=($pkgname)
 conflicts=($pkgname-git)
-sha256sums=("3979441e0b0d9f0ffa8b1dbbc4c10cbe353578ff05b95c9f187ff97ad0281901")
+sha256sums=("f9f90d712eddcfd560a762118ccfd18690ca974ab28486067628d01ec257581b")
 
 package(){
     _libdir=$pkgdir/usr/lib/$pkgname
