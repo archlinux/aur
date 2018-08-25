@@ -4,7 +4,7 @@
 pkgname=xfce-evolution-themes
 _name=xfce-evolution
 pkgver=4.17.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The Xfce Evolution theme attempts to rid the Xfce desktop of visual distractions by providing a more consistent look (buttons, scrollbars, menus, etc) across older and newer applications."
 arch=('any')
 url="http://www.itgroup.ro/WSX/browser.htm?.landingpage=wsx_content/en/linux/xfce-evolution.html"
@@ -26,6 +26,10 @@ package() {
     		    cp -rp "${i##*/}" "$pkgdir/usr/share/themes/"
 	    fi
     done
+
+    # Copy QT font fix over to global font conf
+    install -dm 755 "$pkgdir/etc/fonts/conf.d/"
+    cp "$srcdir/Xfce Evolution/90-qt5.conf" "$pkgdir/etc/fonts/conf.d/91-qt5-xfce-evolution-fix.conf"
 
     # Remove unnecessary TOOLS folder
     rm -rf "$pkgdir/usr/share/themes/Xfce Evolution/TOOLS"

@@ -1,7 +1,7 @@
 pkgbase = xfce-evolution-themes
 	pkgdesc = The Xfce Evolution theme attempts to rid the Xfce desktop of visual distractions by providing a more consistent look (buttons, scrollbars, menus, etc) across older and newer applications.
 	pkgver = 4.17.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.itgroup.ro/WSX/browser.htm?.landingpage=wsx_content/en/linux/xfce-evolution.html
 	arch = any
 	license = GPLv2
