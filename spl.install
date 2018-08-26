@@ -12,5 +12,5 @@ post_upgrade() {
 
 run_depmod() {
     echo ">>> Updating SPL module dependencies"
-    depmod -a 4.18.2.a-1-hardened
+    depmod -a 4.18.5.a-1-hardened
 }
