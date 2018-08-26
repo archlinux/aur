@@ -1,31 +1,33 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: asm0dey <pavel.finkelshtein+AUR@gmail.com>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 
 pkgname=lib32-gstreamer0.10
-pkgver=0.10.36
-pkgrel=5
+pkgver=0.10.36.1
+pkgrel=1
 pkgdesc='GStreamer Multimedia Framework'
 arch=('x86_64')
 license=('LGPL')
 url='http://gstreamer.freedesktop.org/'
-depends=('gstreamer0.10' 'lib32-glib2' 'lib32-libxml2')
+depends=('gstreamer0.10' 'lib32-glib2' 'lib32-libxml2' 'gtk-doc')
 makedepends=('gcc-multilib' 'git' 'intltool' 'python2')
-source=('git://anongit.freedesktop.org/gstreamer-sdk/gstreamer#commit=3ddc31eaa18c3be1613e43430eca78a3e445639e'
-        'bison3.patch')
+source=('git://github.com/GStreamer/gstreamer.git#branch=0.10'
+        'git://github.com/GStreamer/common.git')
 sha256sums=('SKIP'
-            'ed154e280abf59b24d98a8ab0fe868b449b26aa61f7ae3813fab8ac615fcaefa')
+            'SKIP')
 
 prepare() {
-  cd gstreamer
+  cd "$srcdir/gstreamer" || exit 1
 
-  patch -Np1 -i ../bison3.patch
-  sed 's/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/' -i configure.ac
+  git submodule init
+  git config submodule.common.url "$srcdir/common"
+  git submodule update 
 
   NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd gstreamer
+  cd "$srcdir/gstreamer" || exit 1
 
   export CC='gcc -m32'
   export CXX='g++ -m32'
@@ -47,10 +49,10 @@ build() {
 }
 
 package() {
-  cd gstreamer
+  cd "$srcdir/gstreamer" || exit 1
 
   make DESTDIR="${pkgdir}" install
-  rm -rf "${pkgdir}"/usr/{bin,include,share}
+  rm -rf "${pkgdir:?}"/usr/{bin,include,share}
 }
 
 # vim: ts=2 sw=2 et:

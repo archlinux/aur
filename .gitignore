@@ -1,0 +1,5 @@
+common/
+gstreamer/
+src/
+pkg/
+lib32-gstreamer0.10*tar.xz
