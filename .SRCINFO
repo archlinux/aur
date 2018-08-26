@@ -1,6 +1,6 @@
 pkgbase = radarr-develop
 	pkgdesc = Movie download automation for usenet and torrents.
-	pkgver = 0.2.0.1170
+	pkgver = 0.2.0.1174
 	pkgrel = 1
 	url = https://github.com/Radarr/Radarr
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = radarr-develop
 	optdepends = libgdiplus: provides a gdi+ compatible api
 	provides = radarr
 	conflicts = radarr
-	source = https://ci.appveyor.com/api/buildjobs/lp8qfm49eg5l9qal/artifacts/_artifacts/Radarr.develop.0.2.0.1170.linux.tar.gz
+	source = https://ci.appveyor.com/api/buildjobs/1f5qbykhycyra4so/artifacts/_artifacts/Radarr.develop.0.2.0.1174.linux.tar.gz
 	source = radarr.service
 	source = radarr.tmpfiles
 	source = radarr.sysusers
