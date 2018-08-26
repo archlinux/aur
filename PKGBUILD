@@ -3,13 +3,13 @@
 
 pkgname=ocz-ssd-utility
 pkgver=2.3.2963
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI based tool for managing OCZ SSD including firmware and BIOS updates."
 arch=('i686' 'x86_64')
 url="https://ocz.com/us/download/"
 license=('custom:OCZ EULA')
 depends=('libxrender' 'fontconfig' 'libgl')
-source=("https://ocz.com/download/software/ssd-utility/${pkgver}/SSDUtility_${pkgver}_Linux.zip"
+source=("https://ssd.toshiba-memory.com/download/software/ssd-utility/${pkgver}/SSDUtility_${pkgver}_Linux.zip"
         "${pkgname}.desktop"
         "${pkgname}.png"
         "${pkgname}_polkit"
