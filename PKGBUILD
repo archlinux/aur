@@ -3,7 +3,7 @@
 
 pkgbase=freetype2-git
 pkgname=('freetype2-git' 'freetype2-demos-git' 'freetype2-docs-git')
-pkgver=2.9.1+p48+gcc6267722
+pkgver=2.9.1+p197+gb287c80b6
 pkgrel=1
 epoch=1
 pkgdesc="Font rasterization library (from git)"
@@ -13,7 +13,7 @@ url="https://www.freetype.org/"
 # adding harfbuzz for improved OpenType features auto-hinting
 # introduces a cycle dep to harfbuzz depending on freetype wanted by upstream
 depends=('zlib' 'bzip2' 'sh' 'libpng' 'harfbuzz')
-makedepends=('libx11' 'git' 'python2')
+makedepends=('libx11' 'git' 'python2-pip')
 source=(git://git.sv.gnu.org/freetype/freetype2.git
         git://git.sv.gnu.org/freetype/freetype2-demos.git
         0001-Enable-table-validation-modules.patch
@@ -46,6 +46,8 @@ prepare() {
   mkdir path
   ln -s /usr/bin/python2 path/python
 
+  pip2 install --user docwriter
+
   cd freetype2
   patch -Np1 -i ../0001-Enable-table-validation-modules.patch
   patch -Np1 -i ../0002-Enable-infinality-subpixel-hinting.patch
@@ -68,7 +70,7 @@ build() {
   make
 
   # Build docs
-  PATH="$srcdir/path:$PATH" make refdoc
+  PATH="$srcdir/path:$HOME/.local/bin:$PATH" make refdoc
 
   # Build demos
   cd ../freetype2-demos

@@ -1,6 +1,6 @@
 pkgbase = freetype2-git
 	pkgdesc = Font rasterization library (from git)
-	pkgver = 2.9.1+p48+gcc6267722
+	pkgver = 2.9.1+p197+gb287c80b6
 	pkgrel = 1
 	epoch = 1
 	url = https://www.freetype.org/
@@ -9,7 +9,7 @@ pkgbase = freetype2-git
 	license = GPL
 	makedepends = libx11
 	makedepends = git
-	makedepends = python2
+	makedepends = python2-pip
 	depends = zlib
 	depends = bzip2
 	depends = sh
@@ -36,7 +36,7 @@ pkgbase = freetype2-git
 pkgname = freetype2-git
 	install = freetype2.install
 	provides = libfreetype.so
-	provides = freetype2=2.9.1+p48+gcc6267722
+	provides = freetype2=2.9.1+p197+gb287c80b6
 	conflicts = freetype2
 	backup = etc/profile.d/freetype2.sh
 
@@ -44,12 +44,12 @@ pkgname = freetype2-demos-git
 	pkgdesc = Freetype tools and demos (from git)
 	depends = freetype2-git
 	depends = libx11
-	provides = freetype2-demos=2.9.1+p48+gcc6267722
+	provides = freetype2-demos=2.9.1+p197+gb287c80b6
 	conflicts = freetype2-demos
 
 pkgname = freetype2-docs-git
 	pkgdesc = Freetype documentation (from git)
 	depends = freetype2-git
-	provides = freetype2-docs=2.9.1+p48+gcc6267722
+	provides = freetype2-docs=2.9.1+p197+gb287c80b6
 	conflicts = freetype2-docs
 
