@@ -1,7 +1,7 @@
 pkgbase = eidklient
 	pkgdesc = Slovak eID Client
-	pkgver = 1.9.4
-	pkgrel = 2
+	pkgver = 2.0.2
+	pkgrel = 1
 	url = https://www.slovensko.sk/
 	arch = i686
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = eidklient
 	depends = openssl
 	depends = chrpath
 	options = !strip
-	source_i686 = https://eidas.minv.sk/TCTokenService/download/linux/debian/eidklient_i386_debian.tar.gz
+	source_i686 = https://eidas.minv.sk/TCTokenService/download/linux/debian/Aplikacia_pre_eID_i386_debian.tar.gz
 	md5sums_i686 = SKIP
-	source_x86_64 = https://eidas.minv.sk/TCTokenService/download/linux/debian/eidklient_amd64_debian.tar.gz
+	source_x86_64 = https://eidas.minv.sk/TCTokenService/download/linux/debian/Aplikacia_pre_eID_amd64_debian.tar.gz
 	md5sums_x86_64 = SKIP
 
 pkgname = eidklient
