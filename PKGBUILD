@@ -1,13 +1,13 @@
 # Maintainer: Johannes Wienke <languitar@semipol.de>
 
 pkgname=autosuspend-git
-pkgver=2.0.0.186
+pkgver=2.1.0.192
 pkgrel=1
 pkgdesc="A daemon to suspend your server in case of inactivity"
 arch=(any)
 url="https://github.com/languitar/autosuspend"
 license=('GPL2')
-depends=('python' 'python-psutil')
+depends=('python' 'python-psutil' 'python-portalocker')
 optdepends=('python-dbus: logind session discovery'
             'python-mpd2: MPD playing status check'
             'python-requests: network-based checks'

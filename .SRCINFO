@@ -1,6 +1,6 @@
 pkgbase = autosuspend-git
 	pkgdesc = A daemon to suspend your server in case of inactivity
-	pkgver = 2.0.0.186
+	pkgver = 2.1.0.192
 	pkgrel = 1
 	url = https://github.com/languitar/autosuspend
 	install = autosuspend-git.install
@@ -13,6 +13,7 @@ pkgbase = autosuspend-git
 	makedepends = python-sphinx-issues
 	depends = python
 	depends = python-psutil
+	depends = python-portalocker
 	optdepends = python-dbus: logind session discovery
 	optdepends = python-mpd2: MPD playing status check
 	optdepends = python-requests: network-based checks
