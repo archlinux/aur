@@ -1,12 +1,12 @@
 pkgbase = fotoxx-maps
 	pkgdesc = optional map files for Fotoxx
-	pkgver = 1.1
-	pkgrel = 4
+	pkgver = 1.2
+	pkgrel = 1
 	url = http://kornelix.net/downloads/downloads.html
 	arch = any
 	license = GPL3
-	source = http://www.kornelix.net/downloads/tarballs/fotoxx-maps-1.1.tar.gz
-	sha256sums = 65683b8dabe74483747fd5b8dfbe71abc0ed4c9604dcea5da9f3987d2692815e
+	source = http://www.kornelix.net/downloads/tarballs/fotoxx-maps-1.2.tar.gz
+	sha256sums = 8d5e8c237036f0681ad96fa7532d5302d7622b8ddf2fdbb25b80b3dcb203b644
 
 pkgname = fotoxx-maps
 

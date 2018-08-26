@@ -1,13 +1,13 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=fotoxx-maps
-pkgver=1.1
-pkgrel=4
+pkgver=1.2
+pkgrel=1
 pkgdesc="optional map files for Fotoxx"
 url="http://kornelix.net/downloads/downloads.html"
 arch=('any')
 license=('GPL3')
 source=("http://www.kornelix.net/downloads/tarballs/$pkgname-$pkgver.tar.gz")
-sha256sums=('65683b8dabe74483747fd5b8dfbe71abc0ed4c9604dcea5da9f3987d2692815e')
+sha256sums=('8d5e8c237036f0681ad96fa7532d5302d7622b8ddf2fdbb25b80b3dcb203b644')
 
 package() {
   cd "$srcdir"/$pkgname-$pkgver
