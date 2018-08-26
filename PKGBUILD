@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="A quick & dirty script to emulate Raspberry PI family devices on your laptop"
 arch=(any)
 url="https://github.com/M0Rf30/simonpi"
-license=('GPL')
+license=('GPL3')
 depends=('coreutils' 'dnsmasq' 'dosfstools' 'e2fsprogs' 'file' 'grep' 'iproute2' 'iptables' 'libarchive' 'ovmf-arm' 'ovmf-aarch64' 'procps-ng' 'qemu-headless-arch-extra' 'sudo' 
 'util-linux' 'wget')
 makedepends=('git')
@@ -20,4 +20,5 @@ package() {
 	cp -r simonpiemu/* $pkgdir/opt/simonpiemu/
 	sed -i "s/OPT=./OPT=\/opt/g" $pkgdir/usr/bin/simonpi
 }
-md5sums=('fcb647c20c42cd43d62f9b3cafc49a09')
+
+md5sums=('990de971183000ee9570facaacda76d9')

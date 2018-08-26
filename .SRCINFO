@@ -5,7 +5,7 @@ pkgbase = simonpi
 	url = https://github.com/M0Rf30/simonpi
 	install = simonpi.install
 	arch = any
-	license = GPL
+	license = GPL3
 	makedepends = git
 	depends = coreutils
 	depends = dnsmasq
@@ -24,7 +24,7 @@ pkgbase = simonpi
 	depends = util-linux
 	depends = wget
 	source = https://github.com/M0Rf30/simonpi/archive/1.0.13.tar.gz
-	md5sums = fcb647c20c42cd43d62f9b3cafc49a09
+	md5sums = 990de971183000ee9570facaacda76d9
 
 pkgname = simonpi
 
