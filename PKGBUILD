@@ -7,7 +7,7 @@ pkgname="${_pkgname}-svn"
 # _pkgver=2.9j
 epoch=1
 pkgver=2.9j+svn2241
-pkgrel=3
+pkgrel=5
 pkgdesc="Simple caching proxy server with special features (request, recursive fetch, subscription, modify HTML, ...) for use with dial-up internet links. Includes startup scripts for OpenRC, System V init, systemd."
 arch=('i686' 'x86_64' 'arm' 'arm64')
 url="http://www.gedanken.org.uk/software/wwwoffle/"
@@ -47,6 +47,7 @@ _svnurl="http://gedanken.org.uk/svn/wwwoffle/trunk"
 source=(
   # "http://www.gedanken.org.uk/software/wwwoffle/download/${_pkgname}-${_pkgver}.tgz"
   "${_pkgname}::svn+${_svnurl}"
+  'io.c.io_write_data_type_mismatch.patch::http://ix.io/1lgN'
   'conf_d_wwwoffle'
   'initscript_openrc'
   'initscript_systemd'
@@ -57,6 +58,7 @@ source=(
 sha256sums=(
             # 'e6341a4ec2631dc22fd5209c7e5ffe628a5832ad191d444c56aebc3837eed2ae' # Main source, release
             'SKIP'                                                             # Main source, SVN
+            '3cc0e6f4b6b83870ca9c14acdc0e938b0dc4416b98e4718c329bdf56c963f628' # io.c.io_write_data_type_mismatch.patch
             '5491ffc23ae113db4b46167883594b5bcb6f1bbd0ce11432bc45047efbd635d2' # conf_d_wwwoffle
             'd9451db92f979a6573cecbab23c26b6ca8ea026ef61b22ec4b61c0c9051142e9' # initscript_openrc
             '03bebce87a0da1b383666ab7a95b9810e15f2a024c0954f09c959d342c5d9c87' # initscript_systemd
@@ -130,7 +132,7 @@ prepare() {
   cd "${_unpackeddir}"
   find "${srcdir}"/*.patch -xtype f 2>/dev/null | while read _patch; do
     msg "Applying patch '${_patch}' ..."
-    patch -p1 < "${_patch}" || exit "$?"
+    patch -N -p1 --follow-symlinks -i "${_patch}" || return "$?"
   done
 
   ### Update version.h to the actual version.
@@ -164,9 +166,9 @@ build() {
     --bindir=/usr/bin \
     --sbindir=/usr/bin \
     --exec-prefix=/usr \
-    --with-zlib=/usr/include \
+    --with-zlib \
     --with-gnutls \
-    --with-gcrypt=/usr/include \
+    --with-gcrypt \
     --with-ipv6 \
     --with-spooldir=/var/spool/wwwoffle \
     --with-confdir=/etc/wwwoffle \
