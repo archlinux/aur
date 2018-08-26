@@ -1,0 +1,9 @@
+
+post_install() {
+	setcap cap_net_raw=ep usr/bin/bing  2>/dev/null || chmod +s usr/bin/ping 
+}
+
+post_upgrade() {
+	post_install "$1"
+}
+

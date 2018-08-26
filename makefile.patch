@@ -1,0 +1,15 @@
+diff -u bing-1.3.5.orig/Makefile bing-1.3.5/Makefile
+--- bing-1.3.5.orig/Makefile	1999-10-26 08:42:16.000000000 +0200
++++ bing-1.3.5/Makefile	2018-08-26 17:22:36.976401721 +0200
+@@ -46,9 +46,9 @@
+ # You may optionally provide some optimisation flags. Optimising bing for 
+ # speed should slightly improve the results.
+ #  -> if you want to debug bing define
+-COPTIM = -g -Wall -D_DEBUG
++#COPTIM = -g -Wall -D_DEBUG
+ #  -> on Linux, SunOS 4 and OSF1 V2.0 you may specify
+-#COPTIM = -O2
++COPTIM = -O2
+ #  -> on Solaris you may use
+ #COPTIM = -O
+ # on some hosts like AIX, HP-UX the optimisation options are already set
