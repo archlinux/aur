@@ -1,5 +1,5 @@
 [Desktop Entry]
-Version=1.0
+Version=1.9.6
 Name=Libgdx Project Setup
 GenericName=Libgdx Project Setup
 Exec=gdx-setup %U

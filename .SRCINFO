@@ -1,7 +1,7 @@
 pkgbase = gdx-setup
 	pkgdesc = Libgdx project setup
-	pkgver = 20160703
-	pkgrel = 11
+	pkgver = 7cc02a96
+	pkgrel = 1
 	url = http://libgdx.badlogicgames.com
 	arch = any
 	license = APACHE2
@@ -12,7 +12,7 @@ pkgbase = gdx-setup
 	source = http://libgdx.badlogicgames.com/img/features_hover.png
 	md5sums = SKIP
 	md5sums = 2c7c983f8fa177e78a7e19cf94236899
-	md5sums = ff0443d3594a1ae79ab59ef2fa41005b
+	md5sums = 257fb7b869f2cf0c44834370031b4d5b
 	md5sums = a391aeb480342564c076cd9217536884
 
 pkgname = gdx-setup

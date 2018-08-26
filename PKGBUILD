@@ -1,7 +1,9 @@
-# Maintainer: Syn Waker <syncrtl64@gmail.com>
+# Maintainer: Ding Xiao <tinocodfcdsa10@mails.tsinghua.edu.cn>
+# Contributor: Syn Waker <syncrtl64@gmail.com>
+
 pkgname=gdx-setup
-pkgver=`date +"%Y%m%d"`
-pkgrel=11
+pkgver=7cc02a96
+pkgrel=1
 pkgdesc="Libgdx project setup"
 arch=('any')
 url="http://libgdx.badlogicgames.com"
@@ -13,8 +15,13 @@ source=('http://libgdx.badlogicgames.com/nightlies/dist/gdx-setup.jar'
         'http://libgdx.badlogicgames.com/img/features_hover.png')
 md5sums=('SKIP'
          '2c7c983f8fa177e78a7e19cf94236899'
-         'ff0443d3594a1ae79ab59ef2fa41005b'
+         '257fb7b869f2cf0c44834370031b4d5b'
          'a391aeb480342564c076cd9217536884')
+
+pkgver() {
+  cd ${srcdir}
+  md5sum gdx-setup.jar --tag | tail -c 9 | head -c 8
+}
 
 package() {
   cd $srcdir
