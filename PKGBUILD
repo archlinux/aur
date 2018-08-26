@@ -5,14 +5,14 @@
 
 pkgname=abiword-git
 pkgver=20472.09026668e
-pkgrel=1
+pkgrel=2
 pkgdesc="Fully-featured word processor from official gnome gitlab mirror"
 arch=('i686' 'x86_64')
 url="http://www.abisource.com"
 license=('GPL')
-depends=('fribidi' 'wv' 'goffice' 'redland' 'libical' 'loudmouth' 
-	 'enchant' 'lasem' 'libwpg' 'libwmf' 'link-grammar' 'gtkmathview' 'aiksaurus'
-	 'libots' 'libchamplain' 'psiconv' 'telepathy-glib' 'libwps')
+depends=('wv' 'goffice' 'redland' 'libical' 'loudmouth' 'enchant' 'libwpg'
+	 'libwmf' 'link-grammar' 'gtkmathview' 'aiksaurus' 'libots'
+	 'libchamplain' 'psiconv' 'telepathy-glib' 'libwps')
 makedepends=('git' 'asio' 'boost' 'gobject-introspection' 'python2' 'libwpd')
 provides=('abiword' 'abiword-plugins')
 conflicts=('abiword' 'abiword-plugins')
@@ -20,11 +20,12 @@ options=('!makeflags')
 source=("abiword-git::git+https://gitlab.gnome.org/World/AbiWord.git"
 	'enchant-2.1.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/enchant-2.1.patch?h=packages/abiword'
 	'aiksaurus-plugin.m4::https://git.archlinux.org/svntogit/packages.git/plain/trunk/aiksaurus-plugin.m4?h=packages/abiword' 
-	'command-plugin.m4::https://git.archlinux.org/svntogit/packages.git/plain/trunk/command-plugin.m4?h=packages/abiword')
+	'command-plugin.m4::https://git.archlinux.org/svntogit/packages.git/plain/trunk/command-plugin.m4?h=packages/abiword' in_chroot.patch)
 sha256sums=('SKIP'
             '444dc2aadea3c80310a509b690097541573f6d2652c573d04da66a0f385fcfb2'
             '5f80a2f94f9929cdba9809c5e1a87cd5d537a2518bb879bfb9eab51a71c8dac1'
-            '2f26826e9d59d80dacd0dae4aceb815804eaa75954e47507a0897794f33e45be')
+            '2f26826e9d59d80dacd0dae4aceb815804eaa75954e47507a0897794f33e45be'
+            '379908e0a2d9fd58fe7529283378079c79da6a519d99dc59a2e774f2f045a8e4')
 
 pkgver() {
   cd ${pkgname}
@@ -40,7 +41,7 @@ prepare() {
   # Generate m4 file for configure
   find plugins -name plugin.m4 | xargs cat > plugin-list.m4
   patch -Np1 < "$srcdir"/enchant-2.1.patch || true
-  sed -i '/AC_INIT/ a m4_pattern_allow([AC_MSG_ERROR])' configure.ac
+  patch -Np0 < "$srcdir"/in_chroot.patch || true
 }
 
 build() {
