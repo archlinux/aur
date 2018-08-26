@@ -1,5 +1,5 @@
 pkgbase = linux-xanmod
-	pkgver = 4.18.2
+	pkgver = 4.18.4
 	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = x86_64
@@ -10,19 +10,19 @@ pkgbase = linux-xanmod
 	makedepends = bc
 	makedepends = libelf
 	options = !strip
-	source = https://github.com/xanmod/linux/archive/4.18.2-xanmod2.tar.gz
+	source = https://github.com/xanmod/linux/archive/4.18.4-xanmod3.tar.gz
 	source = 60-linux.hook
 	source = 90-linux.hook
 	source = linux-xanmod.preset
 	source = choose-gcc-optimization.sh
 	source = patches-from-archlinux-stable-git.patch
-	sha256sums = 8bd1332f87a134a92c7b4343a46ac9498bf688d76d60098da86554ac7f52b085
+	sha256sums = ff358b58a9c69c0376368d61fdf10303935a8893b6f30a5088eae032d8c36ac7
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = 75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 	sha256sums = 9d2623553e79fae8420fff03175614b29dd566e8280b294b53ab318a0eebeb50
 	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
-	source_x86_64 = config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=8e9144d01f3bd342c528fe065e0dfd162f93fc4a
+	source_x86_64 = config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=bdb4c2236296b87ec038b5546298f6cd96f15e8a
 	sha256sums_x86_64 = bb700544d499a92dab141a218cc1eac62fdff0b67682748cb827035269c02a55
 
 pkgname = linux-xanmod
