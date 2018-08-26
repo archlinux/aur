@@ -1,0 +1,15 @@
+pkgbase = lib32-cppunit
+	pkgdesc = A C++ unit testing framework (32-bit)
+	pkgver = 1.14.0
+	pkgrel = 1
+	url = http://www.freedesktop.org/wiki/Software/cppunit
+	arch = x86_64
+	license = LGPL
+	depends = cppunit
+	depends = lib32-gcc-libs
+	options = !emptydirs
+	source = https://dev-www.libreoffice.org/src/cppunit-1.14.0.tar.gz
+	sha256sums = 3d569869d27b48860210c758c4f313082103a5e58219a7669b52bfd29d674780
+
+pkgname = lib32-cppunit
+
