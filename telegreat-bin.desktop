@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Name=Telegreat
+Comment=Unofficial desktop application for the Telegram messaging service
+TryExec=telegreat
+Exec=telegreat -- %u
+Icon=telegreat
+Terminal=false
+StartupWMClass=Telegreat
+Type=Application
+Categories=Network;InstantMessaging;Qt;
+MimeType=x-scheme-handler/tg;
+X-Desktop-File-Install-Version=0.24
