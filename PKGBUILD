@@ -1,9 +1,10 @@
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
 # Generator  : CPANPLUS::Dist::Arch 1.25
 
-pkgname='perl-io-interactive'
-pkgver='1.021'
-pkgrel='3'
+pkgname=perl-io-interactive
+pkgver=1.022
+pkgrel=1
 pkgdesc="Utilities for interactive I/O"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -11,9 +12,9 @@ options=('!emptydirs')
 depends=('perl')
 makedepends=()
 url='http://search.cpan.org/dist/IO-Interactive'
-source=('http://search.cpan.org/CPAN/authors/id/B/BD/BDFOY/IO-Interactive-1.021.tar.gz')
-md5sums=('1636503b9e7b34d88450233e2504b73f')
-_distdir="IO-Interactive-1.021"
+source=("http://search.cpan.org/CPAN/authors/id/B/BD/BDFOY/IO-Interactive-$pkgver.tar.gz")
+md5sums=('bd48bfaac706b5c4b848210872d9c9fa')
+_distdir="IO-Interactive-$pkgver"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -22,25 +23,24 @@ build() {
       PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
       MODULEBUILDRC=/dev/null
 
-    cd "$srcdir/$_distdir"
+    cd $_distdir
     /usr/bin/perl Makefile.PL
     make
   )
 }
 
 check() {
-  cd "$srcdir/$_distdir"
+  cd $_distdir
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
     make test
   )
 }
 
 package() {
-  cd "$srcdir/$_distdir"
+  cd $_distdir
   make install
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
-  rm -fr "$pkgdir/usr/lib"
+  find "$pkgdir" '(' -name .packlist -o -name perllocal.pod ')' -delete
 }
 
 # Local Variables:
