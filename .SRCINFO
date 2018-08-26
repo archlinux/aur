@@ -1,0 +1,14 @@
+pkgbase = arduino-cli-git
+	pkgdesc = Arduino command line interface
+	pkgver = r690.2f07f94
+	pkgrel = 1
+	url = https://github.com/arduino/arduino-cli
+	arch = any
+	groups = arduino
+	license = GPLv3
+	makedepends = go
+	source = git://github.com/arduino/arduino-cli.git
+	md5sums = SKIP
+
+pkgname = arduino-cli-git
+
