@@ -1,7 +1,7 @@
 # Maintainer: jerry73204 <jerry73204 at gmail dot com>
 pkgname=tilecache
 pkgver=2.11
-pkgrel=1
+pkgrel=2
 pkgdesc='TileCache is an implementation of a WMS-C compliant server made available under the BSD license by MetaCarta.'
 arch=('x86_64')
 url='http://tilecache.org/'
@@ -17,6 +17,9 @@ optdepends=(
   'python2-memcached'
   'python2-wsgiref'
   'python2-paste'
+)
+makedepends=(
+  'python-sphinx'
 )
 source=("http://tilecache.org/${pkgname}-${pkgver}.tar.gz"
         'apache.example.conf')

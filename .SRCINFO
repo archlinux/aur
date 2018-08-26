@@ -1,10 +1,11 @@
 pkgbase = tilecache
 	pkgdesc = TileCache is an implementation of a WMS-C compliant server made available under the BSD license by MetaCarta.
 	pkgver = 2.11
-	pkgrel = 1
+	pkgrel = 2
 	url = http://tilecache.org/
 	arch = x86_64
 	license = BSD
+	makedepends = python-sphinx
 	depends = python2
 	optdepends = memcached
 	optdepends = mapserver
