@@ -4,6 +4,7 @@ pkgbase = attica-qt4
 	pkgrel = 4
 	url = https://projects.kde.org/projects/frameworks/attica
 	arch = x86_64
+	arch = i686
 	license = LGPL
 	makedepends = cmake
 	depends = qt4
