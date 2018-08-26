@@ -3,10 +3,12 @@ pkgbase = arduino-cli-git
 	pkgver = r690.2f07f94
 	pkgrel = 1
 	url = https://github.com/arduino/arduino-cli
-	arch = any
+	arch = x86_64
+	arch = i686
 	groups = arduino
-	license = GPLv3
+	license = GPL3
 	makedepends = go
+	makedepends = git
 	source = git://github.com/arduino/arduino-cli.git
 	md5sums = SKIP
 

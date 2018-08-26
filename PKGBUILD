@@ -8,11 +8,17 @@ pkgver() {
 }
 pkgrel=1
 pkgdesc="Arduino command line interface"
-arch=('any')
+arch=(
+    'x86_64'
+    'i686'
+)
 url="https://github.com/arduino/arduino-cli"
-license=('GPLv3')
+license=('GPL3')
 groups=('arduino')
-makedepends=('go')
+makedepends=(
+    'go'
+    'git'
+)
 source=("git://github.com/arduino/arduino-cli.git")
 md5sums=('SKIP')
 package() {
