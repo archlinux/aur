@@ -7,7 +7,7 @@ _pkgname=keras-preprocessing
 pkgbase=python-keras-preprocessing
 pkgname=("python-keras-preprocessing" "python2-keras-preprocessing")
 pkgver=1.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Preprocessing module of the Keras deep learning library"
 arch=('any')
 url="https://github.com/keras-team/keras-preprocessing/"
@@ -22,6 +22,9 @@ sha256sums=('64212b715a435b43724ecf26be67a441cee426e3ef614a6326aba06016ba9779')
 
 prepare() {
   cd "$srcdir/"
+# Fix for 1.0.2 release mismatching setup.py number
+  sed -e "s/version='1.0.1'/version='1.0.2'/" -i ${_pkgname}-${pkgver}/setup.py
+# Python 2 package
   cp -a "${_pkgname}-${pkgver}" "${_pkgname}-${pkgver}-py2"
   cd "${_pkgname}-${pkgver}-py2"
   sed -e "s|#![ ]*/usr/bin/python$|#!/usr/bin/python2|" \
