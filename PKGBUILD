@@ -6,7 +6,7 @@
 
 pkgname=multimarkdown
 pkgver=6.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A superset of Markdown with various output formats"
 arch=("i686" "x86_64")
 url="http://fletcherpenney.net/multimarkdown/"
@@ -28,7 +28,7 @@ prepare() {
 
 build() {
         cd "$srcdir/multimarkdown"
-        make
+        make release
         cd "$srcdir/multimarkdown/build"
         make
 }
