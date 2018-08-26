@@ -1,6 +1,6 @@
 # Maintainer: Martin Müllenhaupt <mm+aur.archlinux.org@netlair.de>
 pkgname=faf-ice-adapter
-pkgver=6.2.4
+pkgver=6.3.2
 pkgrel=1
 epoch=0
 pkgdesc="A P2P connection proxy for Supreme Commander: Forged Alliance using ICE"
@@ -19,8 +19,8 @@ backup=()
 options=()
 install=
 changelog=
-source=("git+https://github.com/FAForever/ice-adapter.git" "https://github.com/FAForever/libwebrtc/releases/download/v1.0.0-faf5/libwebrtc-1.0.0-faf5-linux-x64.tar.gz")
-sha256sums=('SKIP' '322e3ee7cd2769ccde8a345b7932807181d4007261d6bfcb3ca76a2cc2c79520')
+source=("git+https://github.com/FAForever/ice-adapter.git" "https://github.com/FAForever/libwebrtc/releases/download/68-faf-1/libwebrtc-68-faf-1-linux-x64.tar.gz")
+sha256sums=('SKIP' '6407a3fe87d68d8f0f62f7405de219218ecdf4cf0f3a9cd724dd261b6055d686')
 noextract=()
 validpgpkeys=()
 
@@ -30,7 +30,7 @@ pkgver() {
 }
 
 build() {
-  tar xf "libwebrtc-1.0.0-faf5-linux-x64.tar.gz"
+  tar xf "libwebrtc-68-faf-1-linux-x64.tar.gz"
   cd "ice-adapter"
   cmake -G Ninja -DCMAKE_CXX_COMPILER="/usr/bin/clang++" -DWEBRTC_INCLUDE_DIRS="../include" -DWEBRTC_LIBRARIES="../lib/libwebrtc.a" -DCMAKE_BUILD_TYPE=Release .
   ninja
