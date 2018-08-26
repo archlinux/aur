@@ -3,10 +3,10 @@
 pkgbase=('python-picos')
 pkgname=('python-picos' 'python2-picos')
 pkgver=1.1.2
-pkgrel=4
-pkgdesc='A Python Interface for Conic Optimization Solvers.'
+pkgrel=5
+pkgdesc='A Python interface to conic optimization solvers.'
 arch=('any')
-url='http://picos.zib.de'
+url='https://gitlab.com/picos-api/picos'
 license=('GPL3')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://gitlab.com/picos-api/picos/-/archive/v${pkgver}/picos-v${pkgver}.tar.gz")
