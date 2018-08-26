@@ -1,6 +1,6 @@
 # Maintainer: Vincent Bernardoff <vb AT luminar.eu.org>
 pkgname=nng-git
-pkgver=v1.0.0.18.g68d117e
+pkgver=v1.0.1.55.g1c3350f6
 pkgrel=1
 pkgdesc="Rewrite of the SP protocol library known as libnanomsg"
 arch=(arm armv6h armv7h aarch64 x86_64 i686)
@@ -58,6 +58,7 @@ package() {
     cd "$srcdir/${pkgname%-git}"
     install -d "$pkgdir/usr/lib"
     cp -a build/libnng* "$pkgdir/usr/lib"
+    install -Dm755 build/tools/nngcat/nngcat "$pkgdir/usr/bin/nngcat"
     for i in `find src -name "*.h"` ; do
         install -Dm644 $i "$pkgdir/usr/include/${pkgname%-git}/${i#*/}"
     done
