@@ -1,9 +1,9 @@
-pkgbase = wine-git
-	pkgdesc = A compatibility layer for running Windows programs (git version)
-	pkgver = 3.8.r0.g7280f7fb74
+pkgbase = wine-valve
+	pkgdesc = A compatibility layer for running Windows programs (Valve version)
+	pkgver = 3.14
 	pkgrel = 1
-	url = https://www.winehq.org/
-	install = wine-git.install
+	url = https://github.com/wine-mirror/wine
+	install = wine-valve.install
 	arch = i686
 	arch = x86_64
 	license = LGPL
@@ -85,6 +85,7 @@ pkgbase = wine-git
 	makedepends = libpcap
 	makedepends = lib32-libpcap
 	makedepends = desktop-file-utils
+	makedepends = libgphoto2
 	optdepends = giflib
 	optdepends = lib32-giflib
 	optdepends = libpng
@@ -124,9 +125,9 @@ pkgbase = wine-git
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	provides = wine=3.8.r0.g7280f7fb74
-	provides = bin32-wine=3.8.r0.g7280f7fb74
-	provides = wine-wow64=3.8.r0.g7280f7fb74
+	provides = wine=3.14
+	provides = bin32-wine=3.14
+	provides = wine-wow64=3.14
 	conflicts = wine
 	conflicts = wine-staging
 	conflicts = wine-staging-git
@@ -134,16 +135,16 @@ pkgbase = wine-git
 	conflicts = wine-wow64
 	replaces = bin32-wine
 	options = staticlibs
-	source = wine-git::git://source.winehq.org/git/wine.git
+	source = https://github.com/wine-mirror/wine/archive/wine-3.14.tar.gz
 	source = harmony-fix.diff
 	source = 30-win32-aliases.conf
 	source = wine-binfmt.conf
-	sha256sums = SKIP
+	sha256sums = 3cb739a07939e48cf949c70f0f351fde5814529688594de0ba839cecd73ee07e
 	sha256sums = 50ccb5bd2067e5d2739c5f7abcef11ef096aa246f5ceea11d2c3b508fc7f77a1
 	sha256sums = 9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7
 	sha256sums = 6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4
 
-pkgname = wine-git
+pkgname = wine-valve
 	depends = fontconfig
 	depends = lib32-fontconfig
 	depends = lcms2
@@ -171,4 +172,5 @@ pkgname = wine-git
 	depends = libpcap
 	depends = lib32-libpcap
 	depends = desktop-file-utils
+	depends = libgphoto2
 

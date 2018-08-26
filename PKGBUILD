@@ -1,13 +1,15 @@
-# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer: Sean Anderson <seanga2@gmail.com>
+# Contributor: Daniel Bermond <danielbermond@yahoo.com>
 # Contributor: Sidney Crestani <sidneycrestani@archlinux.net>
 # Contributor: sxe <sxxe@gmx.de>
 
-pkgname=wine-git
-pkgver=3.8.r0.g7280f7fb74
+pkgname=wine-valve
+pkgver=3.14
+_oname=wine-wine-$pkgver
 pkgrel=1
-pkgdesc='A compatibility layer for running Windows programs (git version)'
+pkgdesc='A compatibility layer for running Windows programs (Valve version)'
 arch=('i686' 'x86_64')
-url='https://www.winehq.org/'
+url='https://github.com/wine-mirror/wine'
 license=('LGPL')
 _depends=(
     'fontconfig'            'lib32-fontconfig'
@@ -24,6 +26,7 @@ _depends=(
     'gcc-libs'              'lib32-gcc-libs'
     'libpcap'               'lib32-libpcap'
     'desktop-file-utils'
+    'libgphoto2'
 )
 makedepends=('git' 'autoconf' 'ncurses' 'bison' 'perl' 'fontforge' 'flex'
     'gcc>=4.5.0-2'
@@ -75,12 +78,12 @@ optdepends=(
     'dosbox'
 )
 options=('staticlibs')
-install="$pkgname".install
-source=("$pkgname"::'git://source.winehq.org/git/wine.git'
+install="$pkgname.install"
+source=("https://github.com/wine-mirror/wine/archive/wine-$pkgver.tar.gz"
         'harmony-fix.diff'
         '30-win32-aliases.conf'
         'wine-binfmt.conf')
-sha256sums=('SKIP'
+sha256sums=('3cb739a07939e48cf949c70f0f351fde5814529688594de0ba839cecd73ee07e'
             '50ccb5bd2067e5d2739c5f7abcef11ef096aa246f5ceea11d2c3b508fc7f77a1'
             '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
             '6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4')
@@ -101,7 +104,7 @@ else
 fi
 
 prepare() {
-    cd "$pkgname"
+    cd "$_oname"
     
     # fix path of opencl headers
     sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
@@ -110,15 +113,10 @@ prepare() {
     patch -Np1 -i "${srcdir}/harmony-fix.diff"
 }
 
-pkgver() {
-    cd "$pkgname"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^wine.//;s/^v//;s/\.rc/rc/'
-}
-
 build() {
     # delete old build dirs (from previous builds) and make new ones
-    rm    -rf "$pkgname"-{32,64}-build
-    mkdir -p  "$pkgname"-32-build
+    rm    -rf "$_oname"-{32,64}-build
+    mkdir -p  "$_oname"-32-build
     
     # workaround for FS#55128
     # https://bugs.archlinux.org/task/55128
@@ -132,10 +130,10 @@ build() {
     then
         msg2 'Building Wine-64...'
 
-        mkdir "$pkgname"-64-build
-        cd    "$pkgname"-64-build
+        mkdir "$_oname"-64-build
+        cd    "$_oname"-64-build
         
-        ../"$pkgname"/configure \
+        ../"$_oname"/configure \
                           --prefix='/usr' \
                           --libdir='/usr/lib' \
                           --with-x \
@@ -145,7 +143,7 @@ build() {
         
         local _wine32opts=(
                     '--libdir=/usr/lib32'
-                    "--with-wine64=${srcdir}/${pkgname}-64-build"
+                    "--with-wine64=${srcdir}/${_oname}-64-build"
         )
         
         export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
@@ -154,9 +152,9 @@ build() {
     # build wine 32-bit
     msg2 'Building Wine-32...'
     
-    cd "${srcdir}/${pkgname}"-32-build
+    cd "${srcdir}/${_oname}"-32-build
     
-    ../"$pkgname"/configure \
+    ../"$_oname"/configure \
                       --prefix='/usr' \
                       --with-x \
                       --with-gstreamer \
@@ -171,7 +169,7 @@ package() {
     # (according to the wine wiki, this reverse 32-bit/64-bit packaging order is important)
     msg2 'Packaging Wine-32...'
     
-    cd "$pkgname"-32-build
+    cd "$_oname"-32-build
     
     if [ "$CARCH" = 'i686' ] 
     then
@@ -184,7 +182,7 @@ package() {
         # package wine 64-bit
         msg2 'Packaging Wine-64...'
         
-        cd "${srcdir}/${pkgname}"-64-build
+        cd "${srcdir}/${_oname}"-64-build
         
         make prefix="$pkgdir/usr" \
              libdir="$pkgdir/usr/lib" \
