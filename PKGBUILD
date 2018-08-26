@@ -2,7 +2,7 @@
 # Contributor: Syn Waker <syncrtl64@gmail.com>
 
 pkgname=gdx-setup
-pkgver=7cc02a96
+pkgver=1.9.6.nightly
 pkgrel=1
 pkgdesc="Libgdx project setup"
 arch=('any')
@@ -17,11 +17,6 @@ md5sums=('SKIP'
          '2c7c983f8fa177e78a7e19cf94236899'
          '257fb7b869f2cf0c44834370031b4d5b'
          'a391aeb480342564c076cd9217536884')
-
-pkgver() {
-  cd ${srcdir}
-  md5sum gdx-setup.jar --tag | tail -c 9 | head -c 8
-}
 
 package() {
   cd $srcdir
