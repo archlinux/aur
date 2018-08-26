@@ -1,6 +1,6 @@
 pkgbase = taffybar
 	pkgdesc = A desktop bar similar to xmobar, but with more GUI
-	pkgver = 2.1.3
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = http://github.com/travitch/taffybar
 	install = taffybar.install
@@ -49,7 +49,7 @@ pkgbase = taffybar
 	depends = haskell-gi-gtk-hs
 	depends = xmonad
 	depends = xmonad-contrib
-	source = https://github.com/taffybar/taffybar/archive/v2.1.3.tar.gz
+	source = https://github.com/taffybar/taffybar/archive/v3.0.0.tar.gz
 	source = dynamic-compilation.patch
 	source = taffybar.install
 	source = taffybar.service

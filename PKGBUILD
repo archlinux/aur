@@ -1,7 +1,7 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com
 # Maintainer: Leif Warner <abimelech@gmail.com>
 pkgname=taffybar
-pkgver=2.1.3
+pkgver=3.0.0
 pkgrel=1
 license=('BSD3')
 pkgdesc="A desktop bar similar to xmobar, but with more GUI"
