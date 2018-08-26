@@ -7,7 +7,6 @@ pkgbase = python-pytaglib
 	arch = x86_64
 	license = GPL3
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
 	makedepends = taglib
 	options = !emptydirs
 	source = https://files.pythonhosted.org/packages/c7/f0/c6d15860c6ab5953320edd36b5050e9d813d025bd49563ef7a24154b69c7/pytaglib-1.4.3.tar.gz
@@ -15,9 +14,5 @@ pkgbase = python-pytaglib
 
 pkgname = python-pytaglib
 	depends = python
-	depends = taglib
-
-pkgname = python2-pytaglib
-	depends = python2
 	depends = taglib
 
