@@ -15,8 +15,8 @@ depends=('python-blinker' 'python-brotlipy' 'python-click' 'python-cryptography'
          'python-pyasn1' 'python-pyopenssl' 'python-pyparsing' 'python-pyperclip'
          'python-ruamel-yaml' 'python-setuptools' 'python-sortedcontainers' 'python-tornado'
          'python-urwid' 'python-wsproto')
-checkdepends=('python-asynctest' 'python-flask' 'python-parver' 'python-pytest-runner'
-              'python-pytest-asyncio' 'python-requests')
+checkdepends=('python-asynctest' 'python-beautifulsoup4' 'python-flask' 'python-parver'
+              'python-pytest-runner' 'python-pytest-asyncio' 'python-requests')
 provides=('pathod')
 conflicts=('pathod')
 replaces=('pathod')
@@ -26,7 +26,7 @@ sha512sums=('e08ea8b1c75a95b822c463625509037bbc8a979161cacaa1f0185f98df8d6d7e540
 prepare() {
   cd $pkgname-$pkgver
 
-  # Let's remove all the upper bounds and use system certificate store
+  # Let's remove all the upper bounds and use system ca-certificatescate store
   sed -e '/certifi/d' \
       -e 's/, *<[0-9=.]*//' \
       -i setup.py
@@ -42,7 +42,7 @@ build() {
 
 check() {
   cd $pkgname-$pkgver
-  python setup.py pytest || warning "https://github.com/mitmproxy/mitmproxy/issues/3287"
+  python setup.py pytest
 }
 
 package() {
