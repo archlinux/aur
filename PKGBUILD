@@ -18,9 +18,6 @@ options=('!strip')
 _BLDpatch="BLD-${_srcname#*-}.patch"
 arch_config_trunk=2fffeb774d887ae22358f117849404b952d4e55d
 
-# Arch additional patches
-#arch_patches=(
-#)
 source=("https://git.archlinux.org/linux.git/snapshot/linux-${archlinux_linux_version}.tar.xz"
         '60-linux.hook'  # pacman hook for depmod
 	'90-linux.hook'  # pacman hook for initramfs regeneration
@@ -31,7 +28,6 @@ source=("https://git.archlinux.org/linux.git/snapshot/linux-${archlinux_linux_ve
         # main BLD patch
         "https://raw.githubusercontent.com/rmullick/bld-patches/master/${_BLDpatch}"
         )
-for _patch in ${arch_patches[@]} ; do source+=("${_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${_patch}?h=packages/linux&id=${arch_config_trunk}") ; done
 
 sha256sums=('cf222d0653ae97f79340c81c012e228a2ac9226bfce2850f744a92c48422b6da'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
