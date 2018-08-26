@@ -1,0 +1,18 @@
+pkgbase = lib32-librsync
+	pkgdesc = Library for calculating and applying network deltas (32-bit)
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = http://librsync.sourcefrog.net/
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	makedepends = lib32-gcc-libs
+	depends = lib32-popt
+	depends = lib32-bzip2
+	depends = lib32-zlib
+	depends = librsync
+	source = librsync-2.0.2.tar.gz::https://github.com/librsync/librsync/archive/v2.0.2.tar.gz
+	sha256sums = e67b9520ee84f7239be6e948795803bd95495091cc00bf6d0e8c6976032a4af1
+
+pkgname = lib32-librsync
+
