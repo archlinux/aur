@@ -14,5 +14,7 @@ source=("https://github.com/jarun/nnn/archive/v${pkgver//_/-}.tar.gz")
 sha256sums=('7ba298a55a579640fe0ae37f553be739957da0c826f532beac46acfb56e2d726')
 
 package() {
-  make -C "${pkgname}-$pkgver" DESTDIR="${pkgdir}" PREFIX="/usr" install
+  pkg_loc="${pkgname}-${pkgver}"
+  make -C $pkg_loc DESTDIR="${pkgdir}" PREFIX="/usr" install
+  install -Dm644 "$pkg_loc/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
