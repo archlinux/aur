@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=IOTA Trinity Wallet
+Comment=Desktop wallet for IOTA
+Exec=/usr/bin/iota-trinity-wallet
+Icon=trinity-desktop
+Terminal=false
+Type=Application
+Categories=Office;Utility;Application;Finance;
+MimeType=x-scheme-handler/iota;

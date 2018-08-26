@@ -1,0 +1,48 @@
+# Maintainer: TrueRandom <rantruedom at gmail dot com>
+pkgname=iota-trinity-wallet
+pkgver=0.3.2
+pkgrel=1
+pkgdesc="The IOTA Trinity Wallet"
+arch=(x86_64)
+url="https://trinity.iota.org/"
+license=('Apache')
+provides=(iota-trinity-wallet)
+source=()
+options=('!strip')
+
+source_x86_64=("https://github.com/iotaledger/trinity-wallet/releases/download/vdesktop-v$pkgver/trinity-desktop-$pkgver.AppImage")
+md5sums_x86_64=('e23cdbfb1c70d200923aa265aebed3c0')
+sha512sums_x86_64=('2ede825bee5985516d8b11612de876538a60e12b84f14369e35d3f0f02614a850cf4563f3681fc42eaca2b44db2a6826aba7444eeaecca35ffa7f8b8982fb006')
+
+source=("iota-trinity-wallet.desktop")
+md5sums=('ebf2fc6a46b006ded903b6591c8f5897')
+sha512sums=('eac7d8322ce501a0352d8998cd9fe53bd33c836f1fc9f1b775573bd741a2b402f66f82785f747b72702add15320e5cee8f62482bf2882176af57a9f5b3b0af0f')
+
+prepare() {
+    # Extract Appimage
+    chmod +x "${srcdir}/trinity-desktop-$pkgver.AppImage"
+    "${srcdir}/trinity-desktop-$pkgver.AppImage" --appimage-extract
+    chmod -x "${srcdir}/trinity-desktop-$pkgver.AppImage"
+}
+
+package() {
+    # Copy files
+    install -dm755 "${pkgdir}/opt/${pkgname}"
+    cp -Rr "${srcdir}/squashfs-root/"* "${pkgdir}/opt/${pkgname}"
+
+    # Desktop entry
+    install -Dm644 "${srcdir}/iota-trinity-wallet.desktop" "${pkgdir}/usr/share/applications/trinity-desktop.desktop"
+
+    # Icon
+    install -dm755 "${pkgdir}/usr/share/icons/hicolor"
+    cp -Rr "${srcdir}/squashfs-root/usr/share/icons/hicolor/" "${pkgdir}/usr/share/icons/"
+
+    # fix file permissions - all files as 644 - directories as 755
+    find "${pkgdir}/"{opt,usr} -type d -exec chmod 755 {} \;
+    find "${pkgdir}/"{opt,usr} -type f -exec chmod 644 {} \;
+    chmod +x "${pkgdir}/opt/${pkgname}/trinity-desktop"
+
+    # Link binary
+    install -dm755 "${pkgdir}/usr/bin"
+    ln -sr "${pkgdir}/opt/${pkgname}/trinity-desktop" "${pkgdir}/usr/bin/iota-trinity-wallet"
+}
