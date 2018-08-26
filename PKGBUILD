@@ -4,12 +4,12 @@
 
 pkgname=lib32-gstreamer0.10
 pkgver=0.10.36.1
-pkgrel=1
+pkgrel=2
 pkgdesc='GStreamer Multimedia Framework'
 arch=('x86_64')
 license=('LGPL')
 url='http://gstreamer.freedesktop.org/'
-depends=('gstreamer0.10' 'lib32-glib2' 'lib32-libxml2' 'gtk-doc')
+depends=('gstreamer0.10' 'lib32-glib2' 'lib32-libxml2')
 makedepends=('gcc-multilib' 'git' 'intltool' 'python2')
 source=('git://github.com/GStreamer/gstreamer.git#branch=0.10'
         'git://github.com/GStreamer/common.git')
