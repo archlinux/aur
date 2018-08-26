@@ -53,6 +53,7 @@ package() {
     cd "$srcdir/${pkgname}-${pkgver}"
     install -d "$pkgdir/usr/lib"
     cp -a build/libnng* "$pkgdir/usr/lib"
+    install -Dm755 build/tools/nngcat/nngcat "$pkgdir/usr/bin/nngcat"
     for i in `find src -name "*.h"` ; do
         install -Dm644 $i "$pkgdir/usr/include/${pkgname%-git}/${i#*/}"
     done
