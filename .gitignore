@@ -1,0 +1,6 @@
+spacechem-linux*.deb
+*.pkg.tar.gz
+*.pkg.tar.xz
+*.pkg.tar
+pkg/
+src/

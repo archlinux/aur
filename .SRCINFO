@@ -1,0 +1,25 @@
+pkgbase = spacechem-hib
+	pkgdesc = A design-based puzzle game from Zachtronics Industries. Humble Bundle version.
+	pkgver = 1345144627
+	pkgrel = 1
+	url = http://www.zachtronics.com/spacechem/
+	arch = x86_64
+	license = custom
+	depends = sdl
+	depends = sdl_image
+	depends = sdl_mixer
+	depends = mono
+	depends = xclip
+	optdepends = lib32-glibc: Recording runs via rgb2theora
+	provides = spacechem
+	conflicts = spacechem
+	conflicts = gog-spacechem
+	source = spacechem-linux-1345144627-amd64.deb::hib://spacechem-linux-1345144627-amd64.deb
+	source = spacechem-hib.desktop
+	source = spacechem-hib.patch
+	md5sums = c08fb05e1909c0b4ccae82a862da6e3a
+	md5sums = 9a436b55222c47c0c03060de4043d8a1
+	md5sums = ba3ced2decc0fce6d6cf609f7cd44713
+
+pkgname = spacechem-hib
+

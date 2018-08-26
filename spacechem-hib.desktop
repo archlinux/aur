@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=SpaceChem
+GenericName=Game
+Comment=Solve design-based challenges in this game from Zachtronics Industries
+Icon=spacechem
+Exec=/opt/spacechem/spacechem-launcher.sh
+Terminal=false
+Categories=Game;
