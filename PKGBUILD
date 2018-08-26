@@ -38,7 +38,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/mythtv/mythtv"
-  echo -n "29+fixes.$(date +%Y%m%d).$(git rev-parse --short=8 HEAD)"
+  echo -n "29+fixes.$(git show -s --format=%cd --date=short | tr -d -).$(git rev-parse --short=8 HEAD)"
 }
 
 prepare() {
