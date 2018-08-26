@@ -3,14 +3,14 @@
 pkgname="auryo"
 desktopname="auryo"
 fullpkgname="Auryo"
-pkgver=1.4.3
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="A SoundCloud client for your desktop."
 arch=("x86_64")
 url="http://auryo.com"
-license=("")
+license=("GPL3")
 source=("https://github.com/Superjo149/auryo/releases/download/v${pkgver}/${fullpkgname}-${pkgver}.pacman")
-md5sums=("05f226c49d9c6f99ae5b00dedc388de2")
+md5sums=("7F914C0B912E01AEB3531DC2A6FEBB0E")
 replace_str="\/opt\/${fullpkgname}\/${fullpkgname}"
 
 package() {
