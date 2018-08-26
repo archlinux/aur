@@ -1,6 +1,6 @@
 pkgbase = postgresql-96-upgrade
 	pkgdesc = PostgreSQL build for migrating between major versions with pg_upgrade
-	pkgver = 9.6.9
+	pkgver = 9.6.10
 	pkgrel = 1
 	url = http://www.postgresql.org/
 	arch = i686
@@ -17,8 +17,8 @@ pkgbase = postgresql-96-upgrade
 	provides = postgresql-96-upgrade=9.6
 	conflicts = postgresql-old-upgrade
 	conflicts = postgresql-lts-old-upgrade
-	source = http://ftp.postgresql.org/pub/source/v9.6.9/postgresql-9.6.9.tar.bz2
-	sha256sums = b97952e3af02dc1e446f9c4188ff53021cc0eed7ed96f254ae6daf968c443e2e
+	source = http://ftp.postgresql.org/pub/source/v9.6.10/postgresql-9.6.10.tar.bz2
+	sha256sums = 8615acc56646401f0ede97a767dfd27ce07a8ae9c952afdb57163b7234fe8426
 
 pkgname = postgresql-96-upgrade
 
