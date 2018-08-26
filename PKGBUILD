@@ -7,18 +7,23 @@ pkgbase=digikam
 pkgname=(digikam kipi-plugins)
 _pkgver=5.9.0
 pkgver=${_pkgver//-/_} # for beta versions
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced digital photo management application"
 arch=(x86_64)
 license=(GPL)
 url="http://www.digikam.org/"
 makedepends=(extra-cmake-modules libkipi libksane liblqr opencv doxygen lensfun eigen boost kdoctools marble-common
              kfilemetadata akonadi-contacts qtav threadweaver kcalcore knotifyconfig libmediawiki libkvkontakte glu)
-source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${_pkgver}.tar.xz")
-sha256sums=('660d32eedcfd6fe1a75170a651fab068ae62f7f092ae710771a2f32a1c550d1b')
+source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${_pkgver}.tar.xz"
+        kdebug-395875.patch::"https://cgit.kde.org/digikam.git/patch/core?id=486e34a0")
+sha256sums=('660d32eedcfd6fe1a75170a651fab068ae62f7f092ae710771a2f32a1c550d1b'
+            '3910f0f36ef933649691fe6da47f205d86d79afa9b4f239f86dd540648b55731')
 
 prepare() {
   mkdir -p build
+
+  cd $pkgbase-$pkgver
+  patch -p1 -i ../kdebug-395875.patch   # Fix window state saving on close
 }
 
 build() {
