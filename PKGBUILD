@@ -4,10 +4,10 @@
 
 _pkgname=wwwoffle
 pkgname="${_pkgname}-svn"
-# _pkgver=2.9i
+# _pkgver=2.9j
 epoch=1
 pkgver=2.9j+svn2241
-pkgrel=1
+pkgrel=3
 pkgdesc="Simple caching proxy server with special features (request, recursive fetch, subscription, modify HTML, ...) for use with dial-up internet links. Includes startup scripts for OpenRC, System V init, systemd."
 arch=('i686' 'x86_64' 'arm' 'arm64')
 url="http://www.gedanken.org.uk/software/wwwoffle/"
@@ -64,11 +64,9 @@ sha256sums=(
             '106f4ce3de6d6ea020e8dcd8a4fd4f78ed2ae855e8a953a8783134e4d2cfba12' # ${install}
 )
 
-options+=('ccache')
-
 _pgmver() {
   _unpackeddir="${srcdir}/${_pkgname}"
-  
+
   # # Well, this _is_ useless use of cat, but to make it more clear to see in which order things are going on I do the cat first and then the grep.
   # _ver="$(cat "${_unpackeddir}/conf/wwwoffle.conf.template" | \
   #           grep -E '^#.*WWWOFFLE.*[Vv]ersion' | \
@@ -76,7 +74,7 @@ _pgmver() {
   #           sed 's|.* \([^ ]*\)$|\1|g' | \
   #           sed 's|\.$||g'
   #        )"
-  
+
   # Well, this _is_ useless use of cat, but to make it more clear to see in which order things are going on I do the cat first and then the grep.
   _ver="$(cat "${_unpackeddir}/src/version.h" | \
             grep -E '^[[:space:]]*#define[[:space:]]+WWWOFFLE_VERSION' | \
@@ -85,9 +83,9 @@ _pgmver() {
             awk -F+ '{print $1}'
         )"
 
-  
+
   echo "${_ver}"
-  
+
   if [ -z "${_ver}" ]; then
     return 1
   fi
@@ -96,9 +94,9 @@ _pgmver() {
 _svnrelease() {
   _unpackeddir="${srcdir}/${_pkgname}"
   _rev="$(svn info "${_unpackeddir}" | grep '^Revision' | cut -d' ' -f2)"
-  
+
   echo "${_rev}"
-  
+
   if [ -z "${_rev}" ]; then
     return 1
   fi
@@ -106,24 +104,24 @@ _svnrelease() {
 
 pkgver() {
   _unpackeddir="${srcdir}/${_pkgname}"
-  
+
   _ver="$(_pgmver)"
   _rev="$(_svnrelease)"
-  
+
   if [ -z "${_ver}" ]; then
     echo "$0: Error: Could not determine version." > /dev/stderr
     echo "Aborting." > /dev/stderr
     false
     return 1
   fi
-  
+
   if [ -z "${_rev}" ]; then
     echo "$0: Error: Could not determine SVN revision." > /dev/stderr
     echo "Aborting." > /dev/stderr
     false
     return 1
   fi
-  
+
   echo "${_ver}+svn${_rev}"
 }
 
@@ -134,7 +132,7 @@ prepare() {
     msg "Applying patch '${_patch}' ..."
     patch -p1 < "${_patch}" || exit "$?"
   done
-  
+
   ### Update version.h to the actual version.
   _ver="$(_pgmver)"
   _rev="$(_svnrelease)"
@@ -146,28 +144,36 @@ prepare() {
 build() {
   _unpackeddir="${srcdir}/${_pkgname}"
   cd "${_unpackeddir}"
-  
+
+  ### Setting CFGLAGS.
+  CFLAGS+=' -Wno-error=unused-result'
+  export CFLAGS
+  msg "Using the following CFLAGS: '${CFLAGS}'"
+
   ### Make the ./configure-script.
   # libtoolize --force
   # aclocal
   # autoheader
+  msg "Running 'autoconf' to generate './configure' from 'configure.in' ..."
   autoconf -o configure -v configure.in
-  
+
   ### Configure the Makefile.
+  msg "Running './configure' (with options) ..."
   ./configure \
     --prefix=/usr \
     --bindir=/usr/bin \
     --sbindir=/usr/bin \
     --exec-prefix=/usr \
     --with-zlib=/usr/include \
-    --with-gnutls=/usr/include/gnutls \
+    --with-gnutls \
     --with-gcrypt=/usr/include \
     --with-ipv6 \
     --with-spooldir=/var/spool/wwwoffle \
     --with-confdir=/etc/wwwoffle \
     --with-default-language=en
-  
+
   ### Build the software.
+  msg "Running 'make' ..."
   make || return 1
 }
 
@@ -176,7 +182,11 @@ package() {
   cd "${_unpackeddir}"
 
   ### Install the software.
+  msg "Runnung 'make install' (with options) ..."
   make DESTDIR="${pkgdir}" install
+
+
+  msg "Installing other files ..."
 
   ### Move documentation into the place we want it.
   mkdir -p "${pkgdir}/usr/share"
