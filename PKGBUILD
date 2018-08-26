@@ -1,6 +1,6 @@
 # Mantainer maz-1 < ohmygod19993 at gmail dot com >
 pkgname=grub2-editor-frameworks
-pkgver=20160125.g8944771
+pkgver=20180827.ga7ad1d9
 pkgrel=1
 pkgdesc="A KDE Control Module for configuring the GRUB2 bootloader. Unofficial KF5 port."
 arch=('i686' 'x86_64')
