@@ -1,17 +1,18 @@
 pkgbase = hmtimer
 	pkgdesc = graphical shutdown timer
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://cges30901.github.io/hmtimer-website/
 	install = hmtimer.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = qt5-tools
 	depends = qt5-base
 	depends = qt5-multimedia
 	depends = hicolor-icon-theme
-	source = https://github.com/cges30901/hmtimer/releases/download/hmtimer-3.0.0/hmtimer-3.0.0-src.tar.bz2
-	md5sums = d5900551ea0ab25a0a990a19158bb587
+	source = https://github.com/cges30901/hmtimer/archive/v3.0.1.tar.gz
+	md5sums = fdd860a4ab4ad8ecd41a5ec2f2f537db
 
 pkgname = hmtimer
 
