@@ -5,13 +5,13 @@
 
 pkgname=firefox-eme-free
 name=firefox
-pkgver=61.0
+pkgver=61.2
 pkgrel=1
 pkgdesc="Deblobbed and EME free Firefox"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
-meme=FIREFOX_60_0_RELEASE
-meme2=FIREFOX_RELEASE_60_BASE
+meme=FIREFOX_60_2_RELEASE
+meme2=FIREFOX_RELEASE_62_BASE
 url="https://www.mozilla.org/firefox/"
 depends=(gtk3 gtk2 mozilla-common libxt startup-notification mime-types dbus-glib ffmpeg
          nss hunspell sqlite ttf-font libpulse)
@@ -38,7 +38,7 @@ https://raw.githubusercontent.com/bn0785ac/thunderbeta/master/fix2.patch
 https://raw.githubusercontent.com/bn0785ac/thunderbeta/master/fix.patch
 )
 
-sha256sums=('d6f8178365e81f1a9e1fbbdbd05e81fe089e92d71adf3f1651e59beb4d7968a3'
+sha256sums=('7c43bf42062c7d7db7c4cec15b66d5eaeebcf9c4ab724daf1491610273632b1b'
             'f068b84ad31556095145d8fefc012dd3d1458948533ed3fff6cbc7250b6e73ed'
             'e98a3453d803cc7ddcb81a7dc83f883230dd8591bdf936fc5a868428979ed1f1'
             'aba767995ffb1a55345e30aaba667f43d469e23bd9b1b68263cf71b8118acc96'
