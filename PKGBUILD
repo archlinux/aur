@@ -4,7 +4,7 @@ _srcname='shotcut'
 pkgdesc='Video editor'
 pkgver='18.08.14'
 _commit='fef059a536a5b32745cba0b1c4fceab689a58014'
-pkgrel='1'
+pkgrel='2'
 arch=('i686' 'x86_64')
 url='https://www.shotcut.org/'
 license=('GPL3')
@@ -54,6 +54,9 @@ build() {
         QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" \
         SHOTCUT_VERSION="${pkgver}"
     make
+
+    cd translations
+    lrelease ./*.ts
 }
 
 package() {
