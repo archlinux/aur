@@ -1,14 +1,14 @@
 pkgbase = topgrade
 	pkgdesc = Invoke the upgrade proceadure of multiple package managers
-	pkgver = 0.12.0
+	pkgver = 0.12.1
 	pkgrel = 1
 	url = https://github.com/r-darwish/topgrade
 	arch = x86_64
 	arch = armv7
 	license = GPL3
 	makedepends = rust
-	source = topgrade-0.12.0.tar.gz::https://github.com/r-darwish/topgrade/archive/v0.12.0.tar.gz
-	sha256sums = 2e7123153e729ab1586923e596858c05c6dbbce98c137b82379772c263be5d53
+	source = topgrade-0.12.1.tar.gz::https://github.com/r-darwish/topgrade/archive/v0.12.1.tar.gz
+	sha256sums = 4c17abd0e40f3be33be9a88c5c82ac7ccf050e7a95a6210223f9ddc570579287
 
 pkgname = topgrade
 
