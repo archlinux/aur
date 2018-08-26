@@ -8,7 +8,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=8.4.beta1.r0.g23a2b10da6
+pkgver=8.4.beta2.r0.g8b4f9a0885
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -41,11 +41,9 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         latte-count.patch
         sagemath-python3-notebook.patch
         test-optional.patch
-        r-no-readline.patch
         fes02.patch
         sagemath-threejs.patch
         sagemath-cremona.patch
-        sagemath-singular-4.1.1.patch
         sagemath-lcalc-c++11.patch
         sagemath-gap-4.8.patch)
 sha256sums=('SKIP'
@@ -54,11 +52,9 @@ sha256sums=('SKIP'
             'ef265f88ceb6caf4aac2d86ea74850861d99a63d11c94fc52b2ce88053c26d1e'
             'fc393ee5fbf507dfb76d6ad0e9193d74a954acb13f35a371bf91e11bbcb08244'
             'e57c9bb3abc37684c8630076c0c7c838eca918dc0e8acd7006797ca438839e0b'
-            'afd0952b9bb8f52fd428eae36cf719a58ff85a894baae88cbb2124e043768cc7'
             '7fcb52e96935dccb0f958d37c2f4e3918392480b9af53e08562f6cba6c68cb94'
             '4722f9257f7b58a5dc8be2e9163ebba6d7b3ee011ff1ab9c0dbfb1330d367261'
             '7efb38ba511037feb3abbd88576323320555ba50235ddc7e3d423ca294dd42ed'
-            '600701ee849d296cef63fad2dbf57db4d6d6259e2e5e1415a7ceaa385d98d5b9'
             '5114c912f821900e5bfae1e2cfeb7984de946d0b23e1182b0bf15be1d803dfd0'
             '3d02f6e349213ff4cea6a3acf5e7f8ec11a37b6ead61b338931f07073ebcb36e')
 
@@ -77,16 +73,12 @@ prepare(){
   patch -p0 -i ../sagemath-env.patch
 # don't list optional packages when running tests
   patch -p0 -i ../test-optional.patch
-# fix freezes in R interface with readline 7 (Debian)
-  patch -p1 -i ../r-no-readline.patch
 # use correct latte-count binary name
   patch -p1 -i ../latte-count.patch
 # make 'sage -notebook=jupyter' work with our python3 jupyter-notebook package
   patch -p1 -i ../sagemath-python3-notebook.patch
 # fix three.js plotting backend
   patch -p1 -i ../sagemath-threejs.patch
-# fix build with Singular 4.1.1
-  patch -p1 -i ../sagemath-singular-4.1.1.patch
 # don't force c++98 for lcalc (fixes build with NTL 11)
   patch -p1 -i ../sagemath-lcalc-c++11.patch
 # Adjust paths for gap-4.8
@@ -99,9 +91,9 @@ prepare(){
   patch -p1 -i ../sagemath-cremona.patch
 
 # use python2
-  sed -e 's|#!/usr/bin/env sage-python23|#!/usr/bin/env python2|' -e 's|#!/usr/bin/env python\b|#!/usr/bin/env python2|' -i src/bin/*
+  sed -e 's|sage-python23|python2|' -e 's|#!/usr/bin/env python\b|#!/usr/bin/env python2|' -i src/bin/*
   sed -e 's|cython {OPT}|cython2 {OPT}|' -e 's|python setup.py|python2 setup.py|' -i src/sage/misc/cython.py
-  sed -e 's|exec ipython\b|exec ipython2|' -e 's|exec pip\b|exec pip2|' -e 's|cygdb|cygdb2|g' -i src/bin/sage
+  sed -e 's|exec ipython\b|exec ipython2|' -e 's|cygdb|cygdb2|g' -i src/bin/sage
   sed -e "s|'cython'|'cython2'|" -i src/bin/sage-cython
 }
 
