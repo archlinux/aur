@@ -7,13 +7,13 @@
 
 pkgname=postgresql-9.6
 pkgver=9.6.10
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.postgresql.org/"
 pkgdesc="A powerful, open source object-relational database system"
 license=('custom:PostgreSQL')
-conflicts=('postgresql' 'postgresql-libs' 'postgresql-testing' 'postgresql-client')
-provides=("postgresql=$pkgver" "postgresql-libs=$pkgver" "postgresql-client=$pkgver")
+conflicts=('postgresql' 'postgresql-libs' 'postgresql-testing' 'postgresql-client' 'postgresql-docs')
+provides=("postgresql=$pkgver" "postgresql-libs=$pkgver" "postgresql-client=$pkgver" "postgresql-docs=$pkgver")
 depends=('libxml2' 'krb5' 'openssl>=1.0.0' 'readline>=6.0')
 makedepends=('python2' 'perl' 'tcl>=8.6.0')
 optdepends=('python2: for PL/Python support'
