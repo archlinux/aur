@@ -1,6 +1,6 @@
 pkgbase = perl-proc-daemon
 	pkgdesc = Run Perl program(s) as a daemon process
-	pkgver = 0.22
+	pkgver = 0.23
 	pkgrel = 1
 	url = https://metacpan.org/release/Proc-Daemon
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = perl-proc-daemon
 	makedepends = perl-proc-processtable
 	depends = perl
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/A/AK/AKREAL/Proc-Daemon-0.22.tar.gz
-	md5sums = 0c10a6291d776025d3cfd58e49b540af
-	sha512sums = 4845882034fc5ddd34361bff90d265fe512a7b3a54238bc899a07bf29ce1d030f45c6de769c146767436a61d17ddc7198e344a3c073bc168af16f05872f38af5
+	source = http://search.cpan.org/CPAN/authors/id/A/AK/AKREAL/Proc-Daemon-0.23.tar.gz
+	md5sums = c5fb746a14b6948bb8533a6b6e9650bc
+	sha512sums = 078c4b0dc3a16ac0ccf98814a639ef1ea8009cdb3b133182761cdb5ea5e29bac2d8967ef6d2a902e15dc30e21cbd3aeff449a3efe67dfbc4f76a619491782bae
 
 pkgname = perl-proc-daemon
 

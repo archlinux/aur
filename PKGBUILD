@@ -1,9 +1,10 @@
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
-pkgname='perl-proc-daemon'
-pkgver='0.22'
-pkgrel='1'
+pkgname=perl-proc-daemon
+pkgver=0.23
+pkgrel=1
 pkgdesc="Run Perl program(s) as a daemon process"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -11,10 +12,10 @@ options=('!emptydirs')
 depends=('perl')
 makedepends=('perl-proc-processtable')
 url='https://metacpan.org/release/Proc-Daemon'
-source=('http://search.cpan.org/CPAN/authors/id/A/AK/AKREAL/Proc-Daemon-0.22.tar.gz')
-md5sums=('0c10a6291d776025d3cfd58e49b540af')
-sha512sums=('4845882034fc5ddd34361bff90d265fe512a7b3a54238bc899a07bf29ce1d030f45c6de769c146767436a61d17ddc7198e344a3c073bc168af16f05872f38af5')
-_distdir="Proc-Daemon-0.22"
+source=("http://search.cpan.org/CPAN/authors/id/A/AK/AKREAL/Proc-Daemon-$pkgver.tar.gz")
+md5sums=('c5fb746a14b6948bb8533a6b6e9650bc')
+sha512sums=('078c4b0dc3a16ac0ccf98814a639ef1ea8009cdb3b133182761cdb5ea5e29bac2d8967ef6d2a902e15dc30e21cbd3aeff449a3efe67dfbc4f76a619491782bae')
+_distdir="Proc-Daemon-$pkgver"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -23,24 +24,24 @@ build() {
       PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
       MODULEBUILDRC=/dev/null
 
-    cd "$srcdir/$_distdir"
+    cd $_distdir
     /usr/bin/perl Makefile.PL
     make
   )
 }
 
 check() {
-  cd "$srcdir/$_distdir"
+  cd $_distdir
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
     make test
   )
 }
 
 package() {
-  cd "$srcdir/$_distdir"
+  cd $_distdir
   make install
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" '(' -name .packlist -o -name perllocal.pod ')' -delete
 }
 
 # Local Variables:
