@@ -56,7 +56,7 @@ source=("https://github.com/taffybar/taffybar/archive/v${pkgver}.tar.gz"
         "taffybar.service"
         "https://raw.githubusercontent.com/taffybar/taffybar/13b32fc2bc62129093494e939339a979d641691c/xmonad.hs.example")
 
-sha256sums=('cdb9a8372feb99289fef3f85f4932d396e2b6160fecb53a540945c14a3d83114'
+sha256sums=('6d6de1a4de2c9bf4758db69c8dd322ce0ffe7fe2eb5042bac5d0857230152ffa'
             'ff90b6e3d05b3bb94cfc2365708bbabbb96fd9a9a4919c0face6f8d2b69037e7'
             'e1a1c820057c64fab4521de3c9b153e4d54e7df9a96d94679dbffc9cec245076'
             'f4a08e887ba527a24f4cecc22393023bf7230172cc76f840ddfc5cfc54182a7e'
