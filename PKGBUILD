@@ -1,7 +1,7 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=terminus-terminal-git
 _pkgname=Terminus
-pkgver=v1.0.0.alpha.44.r4.128fe24
+pkgver=v1.0.0.alpha.52.r15.3f8f87a
 pkgrel=1
 pkgdesc="A terminal for a more modern age"
 arch=('x86_64')
@@ -28,7 +28,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/${_pkgname}"
-  yarn add angular
+  #yarn add angular
   yarn install
   node ./scripts/build-native
   node ./scripts/vars
@@ -37,13 +37,11 @@ build() {
 }
 
 package() {
-	cd "$srcdir/${_pkgname}"
-  appdir=/opt/${_pkgname}
-  install -d "${pkgdir}"${appdir}
-  cp -r dist/linux-unpacked/* "${pkgdir}"${appdir}
+  cd "$srcdir/${_pkgname}"
   ar x dist/*.deb
   tar -xf data.tar.xz
   cp -r usr/ $pkgdir
+  cp -r opt/ $pkgdir
   install -Dm755 /dev/stdin "$pkgdir"/usr/bin/$_pkgname <<END
   #!/usr/bin/bash
   /opt/Terminus/terminus
