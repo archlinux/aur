@@ -1,7 +1,7 @@
 # Maintainer: JC Francois <jc.francois@gmail.com>
 pkgname=beaker-browser-bin
 pkgver=0.8.0_prerelease.7
-pkgrel=3
+pkgrel=4
 pkgdesc="Peer-to-peer browser with tools to create and host websites"
 arch=('x86_64')
 url="https://beakerbrowser.com/"
@@ -12,10 +12,13 @@ backup=()
 
 options=(!strip)
 source=("https://github.com/beakerbrowser/beaker/releases/download/${pkgver//_/-}/beaker-browser-${pkgver//_/-}-${arch}.AppImage"
-        "beaker-browser.desktop")
-noextract=()
+        "beaker-browser.desktop"
+        "beaker-browser"
+        "LICENSE")
 md5sums=('29ce7033348b13431fea4dfbe2fa94fc'
-         '34b48b022c6c71212f0adb3981f2925d')
+         '34b48b022c6c71212f0adb3981f2925d'
+         '37dccf6c7d9145b93538d884e3d0f4dd'
+         '3862c029863f42c81265a712f9c17c4c')
 
 install='beaker-browser-bin.install'
 
