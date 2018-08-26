@@ -1,0 +1,15 @@
+pkgbase = makepp
+	pkgdesc = Compatible but reliable and improved replacement for make
+	pkgver = 2.0.99.2
+	pkgrel = 1
+	url = http://makepp.sourceforge.net/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.8
+	source = makepp-2.0.99.2.txz::https://sourceforge.net/projects/makepp/files/2.1/makepp-2.0.99.2.txz/download
+	md5sums = 62aa55f8a20a4256f7413746724be58a
+	sha1sums = c7696cd00a28114c8c667ef5f735e010a00023ad
+
+pkgname = makepp
+
