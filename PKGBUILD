@@ -1,6 +1,10 @@
 # Mantainer: Sean Anderson <seanga2@gamil.com>
 pkgname=proton
-pkgver=3.7_20180823
+# Upstream version
+_pkgver='3.7beta-20180824'
+# Version for arch
+#pkgver="${_pkgver//_/-}"
+pkgver=3.7_20180824_beta
 pkgrel=1
 epoch=
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components"
@@ -25,17 +29,17 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/ValveSoftware/Proton/archive/$pkgname-${pkgver//_/-}.tar.gz")
+source=("https://github.com/ValveSoftware/Proton/archive/$pkgname-$_pkgver.tar.gz")
 noextract=()
-md5sums=('3d44538bf4ee0547de219a793c92194f')
+md5sums=('1ee5c8c0f53bb5cf9d0d2375940a9f59')
 
 prepare() {
-	cd "Proton-$pkgname-${pkgver//_/-}"
+	cd "Proton-$pkgname-$_pkgver"
 	sed -i 's/openvr_v0.9.16//g' vrclient_x64/vrclient_x64/*
 }
 
 build() {
-	cd "Proton-$pkgname-${pkgver//_/-}"
+	cd "Proton-$pkgname-$_pkgver"
 
 	export CXXFLAGS="$CXXFLAGS -Wno-attributes"
 	export WINEMAKEFLAGS="--nosource-fix --nolower-include --nodlls --nomsvcrt --dll"
@@ -67,11 +71,11 @@ build() {
 }
 
 check() {
-	cd "Proton-$pkgname-${pkgver//_/-}"
+	cd "Proton-$pkgname-$_pkgver"
 }
 
 package() {
-	cd "Proton-$pkgname-${pkgver//_/-}"
+	cd "Proton-$pkgname-$_pkgver"
 	
 	install -d -m755 $pkgdir/usr/share/licenses/$pkgname
 	install -m644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
