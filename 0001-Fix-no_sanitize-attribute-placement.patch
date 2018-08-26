@@ -1,0 +1,46 @@
+From 47b53f700ffd25b8d3c492d0395011fbb7fc7f52 Mon Sep 17 00:00:00 2001
+From: marxin <mliska@suse.cz>
+Date: Wed, 21 Jun 2017 15:13:17 +0200
+Subject: [PATCH] Fix no_sanitize attribute placement.
+
+In order to enable building with GCC 8+, no_sanitize attribute must
+be placed before a function declarator.
+---
+ webrtc/common_audio/vad/vad_core.c                           |  4 ++--
+ .../audio_coding/codecs/isac/fix/source/entropy_coding.c     | 12 ++++++------
+ webrtc/modules/audio_coding/codecs/isac/fix/source/lattice.c |  4 ++--
+ 3 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/webrtc/common_audio/vad/vad_core.c b/webrtc/common_audio/vad/vad_core.c
+index 0340165eb..1a3889c36 100644
+--- a/webrtc/common_audio/vad/vad_core.c
++++ b/webrtc/common_audio/vad/vad_core.c
+@@ -115,8 +115,8 @@ static int32_t WeightedAverage(int16_t* data, int16_t offset,
+ // undefined behavior, so not a good idea; this just makes UBSan ignore the
+ // violation, so that our old code can continue to do what it's always been
+ // doing.)
+-static inline int32_t OverflowingMulS16ByS32ToS32(int16_t a, int32_t b)
+-    RTC_NO_SANITIZE("signed-integer-overflow") {
++static inline int32_t RTC_NO_SANITIZE("signed-integer-overflow")
++    OverflowingMulS16ByS32ToS32(int16_t a, int32_t b) {
+   return a * b;
+ }
+ 
+diff --git a/webrtc/modules/audio_coding/codecs/isac/fix/source/lattice.c b/webrtc/modules/audio_coding/codecs/isac/fix/source/lattice.c
+index 2b92acb64..b69a885f3 100644
+--- a/webrtc/modules/audio_coding/codecs/isac/fix/source/lattice.c
++++ b/webrtc/modules/audio_coding/codecs/isac/fix/source/lattice.c
+@@ -209,8 +209,8 @@ void WebRtcIsacfix_NormLatticeFilterMa(size_t orderCoef,
+ // Left shift of an int32_t that's allowed to overflow. (It's still undefined
+ // behavior, so not a good idea; this just makes UBSan ignore the violation, so
+ // that our old code can continue to do what it's always been doing.)
+-static inline int32_t OverflowingLShiftS32(int32_t x, int shift)
+-    RTC_NO_SANITIZE("shift") {
++static inline int32_t RTC_NO_SANITIZE("shift")
++    OverflowingLShiftS32(int32_t x, int shift) {
+   return x << shift;
+ }
+ 
+-- 
+2.13.1
+
