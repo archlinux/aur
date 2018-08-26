@@ -18,9 +18,9 @@
 pkgbase="spl-linux-lts"
 pkgname=("spl-linux-lts" "spl-linux-lts-headers")
 
-pkgver=0.7.9.4.14.66.1
+pkgver=0.7.9.4.14.67.1
 pkgrel=2
-makedepends=("linux-lts-headers=4.14.66-1")
+makedepends=("linux-lts-headers=4.14.67-1")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.9/spl-0.7.9.tar.gz"
@@ -28,7 +28,7 @@ source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.9/spl-0.7.9
 sha256sums=("49832e446a5abce0b55ba245c9b5f94959604d44378320fdffae0233bf1e8c00"
             "72d1b4103c0b52e0fc2b7135485e346c898289ab42f7bc1ae2748d072a360f66")
 license=("GPL")
-depends=("spl-utils-common=0.7.9" "kmod" "linux-lts=4.14.66-1")
+depends=("spl-utils-common=0.7.9" "kmod" "linux-lts=4.14.67-1")
 prepare() {
     cd "${srcdir}/spl-0.7.9"
     patch -Np1 -i ${srcdir}/upstream-eb1f893-Linux-4.18-compat-inode-timespec_timespec64.patch
@@ -38,8 +38,8 @@ build() {
     cd "${srcdir}/spl-0.7.9"
     ./autogen.sh
     ./configure --prefix=/usr --libdir=/usr/lib --sbindir=/usr/bin \
-                --with-linux=/usr/lib/modules/4.14.66-1-lts/build \
-                --with-linux-obj=/usr/lib/modules/4.14.66-1-lts/build \
+                --with-linux=/usr/lib/modules/4.14.67-1-lts/build \
+                --with-linux-obj=/usr/lib/modules/4.14.67-1-lts/build \
                 --with-config=kernel
     make
 }
@@ -64,5 +64,5 @@ package_spl-linux-lts-headers() {
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.14.66-1-lts/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.14.67-1-lts/Module.symvers
 }
