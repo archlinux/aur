@@ -2,7 +2,7 @@
 pkgname=('shotcut-git')
 _srcname='shotcut'
 pkgdesc='Video editor'
-pkgver='r2701'
+pkgver='r2732'
 pkgrel='1'
 arch=('i686' 'x86_64')
 url='https://github.com/mltframework/shotcut'
@@ -62,6 +62,9 @@ build() {
         QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" \
         SHOTCUT_VERSION="${pkgver}"
     make
+
+    cd translations
+    lrelease ./*.ts
 }
 
 package() {

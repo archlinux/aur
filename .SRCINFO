@@ -1,6 +1,6 @@
 pkgbase = shotcut-git
 	pkgdesc = Video editor
-	pkgver = r2701
+	pkgver = r2732
 	pkgrel = 1
 	url = https://github.com/mltframework/shotcut
 	arch = i686
