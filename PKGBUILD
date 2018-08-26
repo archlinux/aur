@@ -3,22 +3,22 @@
 #              Christoph Haag <haagch@studi,informatik.uni-stuttgart.de>
 #              WorMzy Tykashi <wormzy.tykashi@gmail.com>
 pkgname=steamos-compositor
-pkgver=1.34
+pkgver=1.35
 pkgrel=1
 pkgdesc="Compositor used by SteamOS \"based on xcompmgr by Keith Packard et al.\""
 arch=('i686' 'x86_64')
 url="http://repo.steampowered.com/steamos/pool/main/s/steamos-compositor/"
 license=('GPL')
 depends=('libxfixes' 'libxext' 'libxcomposite' 'libxdamage' 'libxrender' 'libxxf86vm' 'sdl_image' 'libgl')
-makedepends=('mesa' 'libxt' 'libxpm' 'openmotif')
+makedepends=('mesa')
 _msver=1.10
 source=("http://repo.steamstatic.com/steamos/pool/main/s/steamos-compositor/steamos-compositor_${pkgver}.tar.xz"
         "http://repo.steamstatic.com/steamos/pool/main/s/steamos-modeswitch-inhibitor/steamos-modeswitch-inhibitor_${_msver}.tar.xz")
-md5sums=('1ed726245e5887ea9544fb85c7d563d8'
+md5sums=('7615da46332153b2e5f17aeb674214b1'
          'ab8b731fb917aff183aa338bf3298495')
 
 build() {
-  export LIBS="-lXm -lXext -lXt -lXpm -lXdamage -lXfixes"
+  export LIBS="-lXext -lXdamage -lXfixes"
   cd "$srcdir/$pkgname-$pkgver"
   ./configure --prefix=/usr
   make
