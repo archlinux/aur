@@ -1,8 +1,8 @@
 # Maintainer: kodemeister <kodemeister@outlook.com>
 
 pkgname=compdb
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="The compilation database Swiss army knife"
 arch=("any")
 url="https://github.com/Sarcasm/$pkgname"
@@ -11,8 +11,8 @@ depends=("python")
 makedepends=("python-setuptools")
 conflicts=("$pkgname-git")
 source=("https://github.com/Sarcasm/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=("7e6c2cade127fa64c4772d639641a50f")
-sha256sums=("1b630fad573e8e4e8e60b77e6f7e7fe1186eb228c47ccbeb21969aebae46e69d")
+md5sums=("6cc607c8a0822862a69ef0b507ba21cf")
+sha256sums=("bfa945f924678b701f1311098f24d9a4d0358a874913c55698a8acbb7047ac67")
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
