@@ -1,6 +1,9 @@
 # Uncomment the line below if you have a problem of incompatible libraries
 #export VMWARE_USE_SHIPPED_LIBS=yes
 
+# Need the next line to avoid a problem with incompatible libraries
+export LD_LIBRARY_PATH=/usr/lib/vmware/lib/librsvg-2.so.2:$LD_LIBRARY_PATH
+
 # Avoid an issue with some keyboard layouts using iBus
 export GTK_IM_MODULE_FILE=/dev/null
 
