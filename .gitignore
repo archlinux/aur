@@ -1,0 +1,4 @@
+*.pkg.tar.xz
+qtbase-opensource-src-*.tar.xz
+pkg
+src
