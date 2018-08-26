@@ -1,0 +1,5 @@
+/pkg
+/src
+/crunch
+*.tar.gz
+*.pkg.tar.xz
