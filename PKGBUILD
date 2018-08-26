@@ -6,7 +6,7 @@ pkgname=netkit-telnet-ssl
 _debver=0.17.41+0.2
 _debrel=3
 pkgver=$_debver
-pkgrel=2
+pkgrel=3
 pkgdesc="Telnet client and server with TLS support (Debian Netkit version)"
 arch=('i686' 'x86_64')
 depends=('glibc' 'openssl' 'ncurses')
@@ -16,6 +16,7 @@ source=(https://deb.debian.org/debian/pool/main/n/${pkgname}/${pkgname}_${_debve
         https://deb.debian.org/debian/pool/main/n/${pkgname}/${pkgname}_${_debver}-${_debrel}.debian.tar.xz
         netkit-telnet-ssl.arch.patch
         netkit-telnet-ssl.sysusers
+        netkit-telnet-ssl.tmpfiles
         netkit-telnetd{,-ssl}.socket
         netkit-telnetd{,-ssl}@.service
         netkit-telnetd-ssl.acmetool.sh)
@@ -23,12 +24,12 @@ sha256sums=('9c80d5c7838361a328fb6b60016d503def9ce53ad3c589f3b08ff71a2bb88e00'
             '3f8b155bc5085e37a0d836867af330f2911953055010e30f30ca46698559a0aa'
             '339308000345e294f0188c232bdb6cf4a22225db2efe188064f14caabd915ed4'
             'be6cc69383e1326a9aa49d36bfda856d049f16512655ea83b991910800d540ba'
+            '202fbfc51e6f6b92246853342a7ef47a731d64d012c8a8a026f9e9b154b9ade5'
             '25a9cd6c6fd3dd50a20038c05d755c519be1081e42bcb148f71e7a8f182e91a2'
             'a9a14476c43d65a57d50eec7e7d773ff1031cf1c13c12e84a9de5eaa14279434'
             '6e45cfed7968af48b59f172523934db421964e58fdb624872a831160e2848284'
             'b4220954373f5431b127509b4344dad32d5c692871c536106507fa8b052ef40a'
             'f59cab8283d1eb5982e74caa8cdb4536621ced36e399e746f6e203de3b60b9bc')
-install=$pkgname.install
 
 prepare() {
   cd netkit-telnet-0.17
@@ -63,6 +64,9 @@ package() {
 
   install -D -m 644 "$srcdir"/netkit-telnet-ssl.sysusers \
                     "$pkgdir"/usr/lib/sysusers.d/netkit-telnet-ssl.conf
+
+  install -D -m 644 "$srcdir"/netkit-telnet-ssl.tmpfiles \
+                    "$pkgdir"/usr/lib/tmpfiles.d/netkit-telnet-ssl.conf
 
   for unit in netkit-telnetd{,-ssl}{.socket,@.service}; do
     install -D -m 644 "$srcdir"/"$unit" \

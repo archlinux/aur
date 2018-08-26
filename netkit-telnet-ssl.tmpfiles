@@ -1,0 +1,6 @@
+z /usr/lib/telnetlogin -    root _telnetd
+z /usr/lib/telnetlogin 4754 -    -
+
+# 2018-08-26 grawity: Two steps are needed to make setuid-chmod happen *after* chown,
+#                     otherwise systemd-tmpfiles changes the mode first, owner later
+#                     (and the kernel neutralizes the setuid bit).

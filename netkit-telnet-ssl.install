@@ -1,9 +1,0 @@
-post_install() {
-  post_upgrade
-}
-
-post_upgrade() {
-  systemd-sysusers netkit-telnet-ssl.conf
-  chown root:_telnetd /usr/lib/telnetlogin
-  chmod 04754 /usr/lib/telnetlogin
-}
