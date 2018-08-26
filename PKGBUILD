@@ -3,13 +3,13 @@
 
 pkgname=oczclout
 pkgver=4.02.00.695
-pkgrel=3
+pkgrel=4
 pkgdesc="A command line interface (CLI) based tool for managing OCZ enterprise SSD including firmware and BIOS updates."
 arch=('x86_64')
 url="https://ocz.com/us/download/"
 license=('custom')
-source=("https://ocz.com/download/software/clout/clout_v${pkgver//./_}_linux.tar.gz"
-        "UserGuide.pdf"::"https://ocz.com/download/software/clout/CLOUT_UserGuide_English.07112016.pdf")
+source=("https://ssd.toshiba-memory.com/download/software/clout/clout_v${pkgver//./_}_linux.tar.gz"
+        "UserGuide.pdf"::"https://ssd.toshiba-memory.com/download/software/clout/CLOUT_UserGuide_English.07112016.pdf")
 sha256sums=('7dbe23572ed956fb00d45a904d4adbdda995befaf99a3dc9cc428b817b34d145'
             '9632af47a6dc63710e9d543d69b29d227820f4d5471f72bef7793ee3b8181968')
 
