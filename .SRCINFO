@@ -1,8 +1,8 @@
 pkgbase = cbindgen
-	pkgdesc = Audit Cargo.lock for crates with security vulnerabilities
+	pkgdesc = A project for generating C bindings from Rust code
 	pkgver = 0.6.2
-	pkgrel = 1
-	url = https://github.com/RustSec/cargo-audit
+	pkgrel = 2
+	url = https://github.com/eqrion/cbindgen
 	arch = i686
 	arch = x86_64
 	license = MIT
