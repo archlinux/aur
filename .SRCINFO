@@ -1,14 +1,13 @@
 pkgbase = emacs-color-theme
 	pkgdesc = Emacs color themes
 	pkgver = 6.6.0
-	pkgrel = 9
+	pkgrel = 10
 	url = http://www.nongnu.org/color-theme/
 	install = emacs-color-theme.install
 	arch = any
 	license = GPL2
 	makedepends = emacs
 	depends = emacs
-	depends = xorg-fonts-100dpi
 	provides = color-theme
 	replaces = color-theme
 	source = http://download.savannah.gnu.org/releases/color-theme/color-theme-6.6.0.tar.gz

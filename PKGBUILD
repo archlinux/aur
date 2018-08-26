@@ -3,12 +3,12 @@
 
 pkgname=emacs-color-theme
 pkgver=6.6.0
-pkgrel=9
+pkgrel=10
 arch=('any')
 pkgdesc="Emacs color themes"
 url="http://www.nongnu.org/color-theme/"
 license=('GPL2')
-depends=('emacs' 'xorg-fonts-100dpi')
+depends=('emacs')
 makedepends=('emacs')
 provides=('color-theme')
 replaces=('color-theme')
