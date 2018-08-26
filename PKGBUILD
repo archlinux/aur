@@ -1,8 +1,8 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=4kslideshowmaker
-pkgver=1.7.0.968
-pkgrel=2
+pkgver=1.7.1.978
+pkgrel=1
 pkgdesc="A straightforward and easy-to-use app to create slideshows from music and photos, with Instagram support."
 arch=('x86_64')
 url="http://www.4kdownload.com/products/product-slideshowmaker"
@@ -11,7 +11,7 @@ depends=('qt5-script' 'qt5-quickcontrols' 'libexif' 'portaudio' 'ffmpeg2.8' 'lib
 source=("${pkgname}_${pkgver}_amd64.tar.bz2"::"https://dl.4kdownload.com/app/${pkgname}_${pkgver%.*}_amd64.tar.bz2"
         "${pkgname}.desktop"
         "${pkgname}.png")
-sha256sums=('c5582e7bdee6761c9556f655f8a01ef19c8806c39df9e4f65bcaadafc8498332'
+sha256sums=('449aa7c621ae18759d766542fad98771e63c9670f015adab34c7a40e2f1402d3'
             'e77851c895f713a7f615010c0b62d0749254dac5178f9853ae45a915ac1f84f0'
             '8e14e4f39f5b794b56dfe7246723e62b59ab9d664330065847cc90654aee3468')
 
