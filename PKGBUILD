@@ -2,34 +2,26 @@
 
 pkgname=membrane-soap
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic SOAP client with a dynamic form generator for SOAP requests."
-arch=('i686' 'x86_64')
-url="http://www.membrane-soa.org/soap-client/"
+arch=('x86_64')
+url="https://github.com/membrane/client"
 license=('APACHE')
+makedepends=('unzip')
 depends=('java-runtime' 'desktop-file-utils')
-install="${pkgname}.install"
-source=("http://mirror.predic8.com/membrane/client/linux-x86/membrane-client-linux.gtk.x86-${pkgver}.tar"
+source=("http://url.muflone.com/membrane-client-linux.gtk.x86_64-${pkgver}.tar"
         "${pkgname}.desktop")
-md5sums=('25a96915b83e3b6e7922c822a81abf0d'
-         'fac69611ec1ae412cebac29545399c26')
-if [ "$CARCH" = 'x86_64' ]; then
-  source[0]="http://mirror.predic8.com/membrane/client/linux-x64/membrane-client-linux.gtk.x86_64-${pkgver}.tar"
-  md5sums[0]='25a96915b83e3b6e7922c822a81abf0d'
-fi
+sha256sums=('12b981a3b773879fab8345bea279e553a33079ea226976146c5ed001e7cf27e7'
+            '1ec31aea2471f17b95b0512f3c80d510132bedca15878696e67094b3fe9fe173')
 
 package() {
   # Install the desktop file
   install -m 755 -d "${pkgdir}/usr/share/applications"
   install -m 755 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   # Copy all the required files
-  if [ "$CARCH" = 'x86_64' ]; then
-    cd "linux.gtk.x86_64"
-  else
-    cd "linux.gtk.x86"
-  fi
+  cd "linux.gtk.x86_64"
   install -m 755 -d "${pkgdir}/usr/lib/${pkgname}"
-  cp -r configuration plugins membrane-client membrane-client.ini "${pkgdir}/usr/lib/${pkgname}"
+  cp -r "configuration" "plugins" "membrane-client" "membrane-client.ini" "${pkgdir}/usr/lib/${pkgname}"
   # Create the symbolic link to the executable
   install -m 755 -d "${pkgdir}/usr/bin"
   ln -s "/usr/lib/${pkgname}/membrane-client" "${pkgdir}/usr/bin/${pkgname}"
