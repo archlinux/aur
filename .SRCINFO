@@ -17,7 +17,7 @@ pkgbase = maint
 	depends = vim
 	backup = opt/maint/settings.sh
 	source = https://gitlab.com/mgdobachesky/ArchSystemMaintenance/raw/master/pkg/maint-1.4.tar.xz
-	md5sums = 146bea9848a63db39b57f709de739137
+	md5sums = 0b879f86e611ccbfecb222da869aac8f
 
 pkgname = maint
 
