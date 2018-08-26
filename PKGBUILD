@@ -3,7 +3,7 @@
 # Contributor: Dan McGee <dan@archlinux.org>
 
 pkgname=postgresql-94-upgrade
-pkgver=9.4.18
+pkgver=9.4.19
 _majorver=${pkgver%.*}
 pkgrel=1
 pkgdesc="PostgreSQL build for migrating between major versions with pg_upgrade"
@@ -15,7 +15,7 @@ makedepends=('krb5' 'python2' 'perl' 'tcl>=8.6.0')
 provides=("postgresql-94-upgrade=${_majorver}")
 conflicts=('postgresql-old-upgrade' 'postgresql-lts-old-upgrade')
 source=(http://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar.bz2)
-sha256sums=('428337f2b2f5e3ea21b8a44f88eb89c99a07a324559b99aebe777c9abdf4c4c0')
+sha256sums=('03776b036b2a05371083558e10c21cc4b90bde9eb3aff60299c4ce7c084c168b')
 
 build() {
   cd "${srcdir}/postgresql-${pkgver}"
