@@ -5,7 +5,7 @@
 
 pkgname=firefox-beta
 name=firefox-beta
-pkgver=62.9
+pkgver=63.0
 pkgrel=1
 meme=FIREFOX_62_0b9_RELEASE
 meme2=DEVEDITION_63_0b1_RELEASE
@@ -17,7 +17,7 @@ url="https://www.mozilla.org/firefox/"
 depends=(gtk3 gtk2 mozilla-common libxt startup-notification mime-types dbus-glib ffmpeg
          nss hunspell sqlite ttf-font libpulse)
 makedepends=(unzip zip diffutils python2 yasm mesa imake gconf inetutils xorg-server-xvfb
-             autoconf2.13 rust mercurial clang llvm jack)
+             autoconf2.13 rust mercurial clang llvm jack cbindgen)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
@@ -68,7 +68,6 @@ prepare() {
 
 
 patch -Np1 -i ../firefox-52-disable-data-sharing-infobar.patch
-patch -Np1 -i ../firefox-52-disable-location.services.mozilla.com.patch
 patch -Np1 -i ../firefox-52-disable-telemetry.patch
 patch -Np1 -i ../fix.patch
 patch -Np1 -i ../fix2.patch

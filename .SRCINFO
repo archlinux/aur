@@ -1,6 +1,6 @@
 pkgbase = firefox-beta
 	pkgdesc = Standalone web browser from mozilla.org, with telemetry and signing disabled
-	pkgver = 62.9
+	pkgver = 63.0
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = i686
@@ -24,6 +24,7 @@ pkgbase = firefox-beta
 	makedepends = clang
 	makedepends = llvm
 	makedepends = jack
+	makedepends = cbindgen
 	depends = gtk3
 	depends = gtk2
 	depends = mozilla-common
