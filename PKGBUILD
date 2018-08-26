@@ -3,7 +3,7 @@
 
 _pkgname=pyotp
 pkgname=python2-${_pkgname}
-pkgver=2.2.1
+pkgver=2.2.6
 pkgrel=1
 pkgdesc='PyOTP is a Python library for generating and verifying one-time passwords'
 arch=(any)
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('python2' 'python-future')
 makedepends=('python2-setuptools' 'unzip')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz" )
-md5sums=('7c9d3c0a19d2ced48b10f0c1fd8f0bb2')
+md5sums=('125ae00de613905bb8d3b4c12bd1e71d')
 
 build() {
   cd ${srcdir}/${_pkgname}-${pkgver}

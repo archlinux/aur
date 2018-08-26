@@ -1,6 +1,6 @@
 pkgbase = python2-pyotp
 	pkgdesc = PyOTP is a Python library for generating and verifying one-time passwords
-	pkgver = 2.2.1
+	pkgver = 2.2.6
 	pkgrel = 1
 	url = https://pyotp.readthedocs.io/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python2-pyotp
 	makedepends = unzip
 	depends = python2
 	depends = python-future
-	source = https://files.pythonhosted.org/packages/source/p/pyotp/pyotp-2.2.1.tar.gz
-	md5sums = 7c9d3c0a19d2ced48b10f0c1fd8f0bb2
+	source = https://files.pythonhosted.org/packages/source/p/pyotp/pyotp-2.2.6.tar.gz
+	md5sums = 125ae00de613905bb8d3b4c12bd1e71d
 
 pkgname = python2-pyotp
 
