@@ -1,9 +1,9 @@
 # Maintainer: Oscar Morante <spacepluk at gmail dot com>
 
-_version=2018.2.3
+_version=2018.2.4
 _build=f1
-_buildtag=20180814
-_randomstring=fba045906327
+_buildtag=20180820
+_randomstring=fe703c5165de
 _prefix=/opt/Unity
 _unitydownloads="http://beta.unity3d.com/download/${_randomstring}"
 #_keepdownloads=yes
@@ -31,20 +31,19 @@ depends=('desktop-file-utils'
          'intel-tbb'
          'gtk3')
 optdepends=('unity-editor-doc'
-            'unity-editor-standardassets'
-            'unity-editor-example'
             'unity-editor-android'
             'unity-editor-ios'
             'unity-editor-mac'
             'unity-editor-webgl'
             'unity-editor-windows'
-            'unity-editor-facebook')
+            'unity-editor-facebook'
+            'visual-studio-code-bin')
 makedepends=('gtk2' 'libsoup' 'libarchive')
 source=("${_unitydownloads}/UnitySetup-${_version}${_build}"
         'unity-editor'
         'unity-editor.desktop'
         'unity-editor-icon.png')
-sha1sums=('c4a11b282908d0938914d16a448ec4982a5ce34e'
+sha1sums=('a1c6cca4876703bcfd4f8465e7def36a15804158'
           'c3727d6851a3ffd0aef9b380e2485eed9f02ef6b'
           '6ba1a3051bc0d5ed08e2fa4551d0f6c679109176'
           'fddf4861974f88f0565de7f54f7418204e729894')
