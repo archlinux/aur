@@ -1,0 +1,17 @@
+pkgbase = googleallodesktop-git
+	pkgdesc = QT based Google Allo Desktop app
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://bitbucket.org/jjgalvez/googleallodesktop
+	arch = any
+	license = PSF
+	makedepends = git
+	depends = python
+	depends = python-pyqt5
+	provides = googleallodesktop
+	conflicts = googleallodesktop
+	source = googleallodesktop::git+https://jjgalvez@bitbucket.org/jjgalvez/googleallodesktop.git#tag=1.2
+	md5sums = SKIP
+
+pkgname = googleallodesktop-git
+
