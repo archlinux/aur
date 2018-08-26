@@ -11,6 +11,7 @@ pkgbase = keepassgtk
 	makedepends = ninja
 	depends = gtk3
 	depends = python-pykeepass
+	depends = gobject-introspection
 	source = git+https://gitlab.gnome.org/World/PasswordSafe.git
 	md5sums = SKIP
 
