@@ -1,0 +1,24 @@
+[Unit]
+Description=Etherdraw
+Documentation=https://github.com/JohnMcLear/draw/wiki
+After=network.target
+
+[Service]
+Environment=NODE_ENV=production
+User=etherdraw
+Group=etherdraw
+StateDirectory=etherdraw
+CacheDirectory=etherdraw
+LogsDirectory=etherdraw
+WorkingDirectory=/usr/share/etherdraw
+ExecStart=/usr/bin/node /usr/share/etherdraw/src/server.js --settings /etc/etherdraw/settings.json
+PrivateTmp=true
+NoNewPrivileges=true
+PrivateDevices=true
+ProtectHome=yes
+ProtectControlGroups=yes
+ProtectKernelModules=yes
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

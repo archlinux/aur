@@ -1,0 +1,29 @@
+pkgbase = etherdraw
+	pkgdesc = Lightweight fork of etherpad based on javascript
+	pkgver = 1.7.0
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/JohnMcLear/draw
+	arch = any
+	license = Apache
+	makedepends = npm
+	makedepends = python2
+	depends = nodejs
+	depends = cairo
+	optdepends = sqlite: to use sqlite as databse
+	optdepends = mariadb: to use mariadb as database
+	optdepends = postgresql: to use postgresql as database
+	backup = etc/etherdraw/settings.json
+	source = https://github.com/JohnMcLear/draw/archive/master.zip
+	source = etherdraw-sysusers.conf
+	source = etherdraw-tmpfiles.conf
+	source = etherdraw.service
+	source = fix-postgres.patch
+	sha512sums = SKIP
+	sha512sums = 6e6d41aecfae912f7c9b4b848a6bd5b287026920074e20d95c199f8e492280755d794b463db1a905bd50d95aef7802ea181f1395f80a616ff1a56c1a673cbd3a
+	sha512sums = 64badedd03d121a838850ac60fe526c4e9243ee0d8e7b6484255a99bbc066107b905159b5be46d2abe58ec78d62cfa182a2c832e5494403233bc130d2937f058
+	sha512sums = 7b5c21ddf243546bc1dca5da6c140ed59b77507b7ae1798c571cb765e2d05cf6ab36252a1aa48cd10ba8e2e8a83572924207690ad4345f1febb1754dcb218f0c
+	sha512sums = c55b06bfc5bf0c0b1d171322c3aec4c2156c3f08c8e40c6dbe8dccf80444d7cbc3af46f82eef5f9d38252c84b7beb047163640d574b09f6f752cd878a9a02497
+
+pkgname = etherdraw
+
