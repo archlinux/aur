@@ -1,10 +1,10 @@
 # Maintainer: Flakebi <flakebi@t-online.de>
 
 pkgname=etherdraw
-pkgver=1.7.0
+pkgver=1.0.0
 pkgrel=1
 epoch=1
-pkgdesc="Lightweight fork of etherpad based on javascript"
+pkgdesc="A real time collaborative drawing tool using nodejs, socket.io & paper.js "
 arch=(any)
 url="https://github.com/JohnMcLear/draw"
 license=('Apache')

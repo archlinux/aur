@@ -1,6 +1,6 @@
 pkgbase = etherdraw
-	pkgdesc = Lightweight fork of etherpad based on javascript
-	pkgver = 1.7.0
+	pkgdesc = A real time collaborative drawing tool using nodejs, socket.io & paper.js
+	pkgver = 1.0.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/JohnMcLear/draw
