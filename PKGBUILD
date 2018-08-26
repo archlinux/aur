@@ -1,13 +1,13 @@
 # Maintainer: Andrey Vihrov <andrey.vihrov at gmail.com>
 
 pkgname=sbupdate-git
-pkgver=0.r48.3c81747
+pkgver=0.r64.f3d610b
 pkgrel=1
 pkgdesc="Generate and sign kernel images for UEFI Secure Boot"
 arch=('any')
 url="https://github.com/andreyv/sbupdate"
 license=('GPL3')
-depends=('systemd' 'binutils' 'sbsigntools')
+depends=('bash>=4.4' 'systemd' 'binutils' 'sbsigntools')
 makedepends=('git')
 backup=('etc/default/sbupdate')
 source=("git+https://github.com/andreyv/sbupdate.git")
