@@ -2,13 +2,13 @@
 
 pkgname=dotfiles-git
 _pkgname=dotfiles
-pkgver=r358.8998a93
+pkgver=r374.9a1f55e
 pkgrel=1
 pkgdesc='A tool to make managing your dotfile symlinks in $HOME easy, allowing you to keep all of them in a single directory.'
 url='https://github.com/jbernard/dotfiles'
 license=('ISC')
 arch=('any')
-depends=('python' 'python-py')
+depends=('python' 'python-py' 'python-click')
 makedepends=('git' 'python-setuptools')
 conflicts=('dotfiles')
 provides=('dotfiles')
