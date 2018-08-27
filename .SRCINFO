@@ -1,0 +1,12 @@
+pkgbase = vesc_tool-git
+	pkgdesc = VESC ESC graphical configuration tool
+	pkgver = 0.95
+	pkgrel = 1
+	url = https://vesc-project.com/
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = qt5-connectivity
+
+pkgname = vesc_tool-git
+
