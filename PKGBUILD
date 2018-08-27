@@ -4,12 +4,12 @@ _target="msp430-elf"
 pkgname=${_target}-gcc-stage1
 pkgver=8.2.0
 _islver=0.19
-pkgrel=1
+pkgrel=2
 pkgdesc="The GNU Compiler Collection bootstrap for the ${_target} target."
 arch=(i686 x86_64)
 license=('GPL' 'LGPL')
 url="http://gcc.gnu.org"
-depends=("${_target}-binutils>=2.25" 'libmpc' 'elfutils')
+depends=("${_target}-binutils>=2.25" 'libmpc' 'elfutils' 'zlib')
 options=('staticlibs' '!buildflags' '!libtool' '!emptydirs' 'zipman' 'docs' '!strip')
 source=(http://isl.gforge.inria.fr/isl-${_islver}.tar.xz
         ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz)
@@ -53,6 +53,7 @@ build() {
     --enable-multilib \
     --without-headers \
     --with-newlib \
+    --with-system-zlib \
     --with-local-prefix=/usr/${_target} \
     --with-sysroot=/usr/${_target} \
     --with-as=/usr/bin/${_target}-as \
