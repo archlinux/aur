@@ -8,6 +8,7 @@ pkgbase = tautulli
 	license = GPL
 	makedepends = curl
 	depends = python2
+	depends = python2-setuptools
 	provides = tautulli
 	conflicts = plexpy-git
 	conflicts = tautulli-beta
