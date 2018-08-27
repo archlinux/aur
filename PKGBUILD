@@ -4,7 +4,7 @@
 # and https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=hyper-appimage
 
 pkgname=gingko
-pkgver=2.1.5
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='Gingko is a new kind of tool, that lets you shape your ideas with lists, outlines and cards, all in the same clean interface.'
 arch=('x86_64' 'i686')
@@ -39,5 +39,5 @@ package() {
   find "${pkgdir}/"{opt,usr} -type f -exec chmod 644 {} \;
   chmod +x "${pkgdir}/opt/${pkgname}/gingko-client"
 }
-sha512sums=('702dfc2ea70d3e211b683b00301cee4bf47f4158bf350da268b185d0d266ad5d97f388e2e1245ef272df7f42b67c0997618d1b95723b98a56b365e2e541d47b8'
+sha512sums=('30294eb49def3689a27c0a8b36160983986bca73709325564ba7dfb7cf4b0436f7cddf597c982fed994553eec5537d7303713f0009b986f71c6489fb33614803'
             'c11e9c2541211d0ff43d4ff26fd23f6c64d8bb8008bddbbe174a420a69cc981120c3c5466e47894515fee0dbaccd95309eb61a16ffc3b3193af0609e62b46820')
