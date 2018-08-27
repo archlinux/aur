@@ -1,11 +1,12 @@
 pkgbase = xfe
 	pkgdesc = X File Explorer (Xfe) is an MS-Explorer like file manager for X
 	pkgver = 1.43
-	pkgrel = 2
+	pkgrel = 3
 	url = http://roland65.free.fr/xfe
 	arch = x86_64
 	license = GPL
 	makedepends = intltool
+	makedepends = libxft
 	depends = fox>=1:1.6
 	depends = fox<1:1.7
 	depends = freetype2

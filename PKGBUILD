@@ -6,13 +6,13 @@
 
 pkgname=xfe
 pkgver=1.43
-pkgrel=2
+pkgrel=3
 pkgdesc='X File Explorer (Xfe) is an MS-Explorer like file manager for X'
 arch=('x86_64')
 url='http://roland65.free.fr/xfe'
 license=('GPL')
 depends=('fox>=1:1.6' 'fox<1:1.7' 'freetype2' 'xcb-util')
-makedepends=('intltool')
+makedepends=('intltool' 'libxft')
 source=("https://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('6bd17b7aa6ac56c6c70238ad8aa5af9606cd2dfe34b35b44fc8041e4c1ba60a0')
 
