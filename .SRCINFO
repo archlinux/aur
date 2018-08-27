@@ -1,7 +1,7 @@
 pkgbase = pycp
 	pkgdesc = cp and mv with a progressbar
 	pkgver = 8.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/dmerejkowsky/pycp
 	arch = any
 	license = MIT

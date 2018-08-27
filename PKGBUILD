@@ -1,6 +1,6 @@
 pkgname=pycp
 pkgver="8.0.6"
-pkgrel=1
+pkgrel=2
 pkgdesc="cp and mv with a progressbar"
 url="http://github.com/dmerejkowsky/pycp"
 arch=('any')
