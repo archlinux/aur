@@ -2,12 +2,13 @@
 
 pkgname=lib32-lightning
 pkgver=2.1.2
-pkgrel=1
-pkgdesc='Library that generates assembly language code at run-time'
+pkgrel=2
+pkgdesc='Library that generates assembly language code at run-time (32-bit)'
 arch=('x86_64')
 url='https://www.gnu.org/software/lightning/'
 license=('GPL')
-depends=('lib32-glibc' 'lib32-gcc-libs' 'lib32-zlib' 'lightning')
+depends=('lib32-glibc' 'lib32-zlib' 'lightning')
+makedepends=('lib32-gcc-libs')
 source=("https://ftp.gnu.org/gnu/lightning/lightning-${pkgver}.tar.gz")
 sha256sums=('9b289ed1c977602f9282da507db2e980dcfb5207ee8bd2501536a6852a157a69')
 
