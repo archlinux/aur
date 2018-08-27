@@ -1,0 +1,16 @@
+diff -ura package.orig/tasks/release.js package.new/tasks/release.js
+--- package.orig/tasks/release.js	2018-08-27 17:49:25.000000000 +0200
++++ package.new/tasks/release.js	2018-08-27 21:39:14.241592905 +0200
+@@ -8,10 +8,7 @@
+ const publish = getEnvName() !== 'production' ? 'never' : 'onTagOrDraft';
+ gulp.task('release:darwin', () => build({ publish, x64: true, mac: [] }));
+ gulp.task('release:win32', () => build({ publish, x64: true, win: [ 'nsis', 'appx' ] }));
+-gulp.task('release:linux', (cb) => {
+-    build({ publish, x64: true, linux: [] })
+-        .then(() => build({ publish, ia32: true, linux: config.linux.target.filter(target => target !== 'snap') }))
+-        .then(() => cb(), (error) => cb(error));
+-});
++gulp.task('release:linux-x64', () => build({ x64: true, linux: [] }));
++gulp.task('release:linux-ia32', () => build({ ia32: true, linux: [] }));
+ 
+ gulp.task('release', [ 'build-app', `release:${ process.platform }` ]);

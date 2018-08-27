@@ -1,7 +1,7 @@
 pkgbase = rocketchat-desktop
 	pkgdesc = Rocket.Chat Native Cross-Platform Desktop Application via Electron.
-	pkgver = 2.12.1
-	pkgrel = 3
+	pkgver = 2.13.0
+	pkgrel = 1
 	url = https://github.com/RocketChat/Rocket.Chat.Electron
 	arch = i686
 	arch = x86_64
@@ -17,10 +17,12 @@ pkgbase = rocketchat-desktop
 	depends = gtk3
 	depends = glibc
 	conflicts = rocketchat-client-bin
-	source = fix-icon-name_use_target_dir.patch
 	source = rocketchat-desktop-2.12.1.tar.gz::https://github.com/RocketChat/Rocket.Chat.Electron/archive/2.12.1.tar.gz
-	sha512sums = a56502c1c5604326ef98363caefb6f353375df18260aee731462caa120b49fa2334797eca9915e4d57839f194a3c2274d492734bf63576ebc4f59ebb564db309
-	sha512sums = 12c94d53d04748fd7876b6ffd2552d62ae10acdc07b49b928b0587b3421a9557f922d3595b3c431dc1cae44a5d5d2ab91e4ded8f3c2b5807d6598d428191d244
+	source = fix-icon-name_use_target_dir.patch
+	source = fix-gulp-release.patch
+	sha512sums = 96765b2e7f852448f229d7b42de98a9d31dbb6580ec6a84d3ddb22812d88c435c93bf142987b9cd8ee91e05546ffc783f7b078ad46220dcef53926eeb40ea6cc
+	sha512sums = 5fab6bf05f1ee924e2a79cc133908c043d72d119a299c38badeb793bf12f1a328eac98e8ed1afabcf8cd3c06aeea7265421d6350e0094d2c55bf64cc30501a88
+    sha512sums = 4494d43f2ff3eef3c6d188cd147ec04fe6894ae7518aee3a5a4d5e23e081402051e7d1a2bdfd1da35e9c3336b3b8d5d3d4a25ab9bb96ed75b7d54a180d954d56
 
 pkgname = rocketchat-desktop
 

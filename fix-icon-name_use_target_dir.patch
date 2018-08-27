@@ -1,20 +1,21 @@
-diff -ura package.orig/package.json package.new/package.json
---- package.orig/package.json	2018-08-17 12:03:28.681824081 +0200
-+++ package.new/package.json	2018-08-17 12:03:46.091941868 +0200
-@@ -59,9 +59,7 @@
-       },
-       "category": "GNOME;GTK;Network;InstantMessaging",
-       "target": [
--        "deb",
--        "rpm",
--        "snap"
-+        "dir"
-       ]
+diff -ura package.orig/electron-builder.json package.new/electron-builder.json
+--- package.orig/electron-builder.json	2018-08-27 21:06:57.486299055 +0200
++++ package.new/electron-builder.json	2018-08-27 21:10:40.483612838 +0200
+@@ -46,10 +46,7 @@
      },
-     "publish": [
+     "category": "GNOME;GTK;Network;InstantMessaging",
+     "target": [
+-      "tar.gz",
+-      "deb",
+-      "rpm",
+-      "snap"
++      "dir"
+     ]
+   },
+   "publish": [
 diff -ura package.orig/snap/gui/rocketchat-desktop.desktop package.new/snap/gui/rocketchat-desktop.desktop
---- package.orig/snap/gui/rocketchat-desktop.desktop	2018-08-17 12:03:28.748491198 +0200
-+++ package.new/snap/gui/rocketchat-desktop.desktop	2018-08-17 12:04:03.495393068 +0200
+--- package.orig/snap/gui/rocketchat-desktop.desktop	2018-08-27 21:06:57.506299438 +0200
++++ package.new/snap/gui/rocketchat-desktop.desktop	2018-08-27 21:07:38.663744205 +0200
 @@ -4,6 +4,6 @@
  Exec=rocketchat-desktop
  Terminal=false
@@ -22,4 +23,4 @@ diff -ura package.orig/snap/gui/rocketchat-desktop.desktop package.new/snap/gui/
 -Icon=${SNAP}/meta/gui/icon.png
 +Icon=rocketchat-desktop
  Categories=GNOME;GTK;Network;InstantMessaging
- StartupWMClass=Rocket.Chat+
+ StartupWMClass=Rocket.Chat
