@@ -40,7 +40,7 @@ conflicts=(
     'clang-tools-extra'
     'templight'
 )
-pkgdesc='The LLVM Compiler Infrastructure'
+pkgdesc='A collection of LLVM-based C++ dev tools'
 
 pkgver=8.0.0svn_r340760
 pkgrel=1
