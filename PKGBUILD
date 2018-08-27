@@ -1,12 +1,12 @@
 # Maintainer: Augugrumi <augugrumi@gmail.com>
 pkgname=libviface-git # '-bzr', '-git', '-hg' or '-svn'
 pkgver=v1.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Fork of the official libviface package. C++ bindings for Linux tun/tap and netdevice interface."
 arch=('x86_64')
 url="https://github.com/Augugrumi/libviface"
 license=('APACHE')
-groups=( 'linux-tools')
+groups=('linux-tools')
 depends=()
 optdepends=('libtins: packets manipulation'
             'gcc-libs: additional gcc support')
@@ -16,7 +16,6 @@ conflicts=("${pkgname%-VCS}")
 replaces=()
 backup=()
 options=()
-#install=
 source=("${pkgname%-git}::git://github.com/Augugrumi/libviface.git")
 noextract=()
 md5sums=('SKIP')
@@ -28,7 +27,7 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/${pkgname%-git}"
   rm -Rf ./build/
   mkdir ./build/
   cd ./build/

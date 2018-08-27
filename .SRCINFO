@@ -1,7 +1,7 @@
 pkgbase = libviface-git
 	pkgdesc = Fork of the official libviface package. C++ bindings for Linux tun/tap and netdevice interface.
 	pkgver = v1.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Augugrumi/libviface
 	arch = x86_64
 	groups = linux-tools
