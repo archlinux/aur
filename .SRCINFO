@@ -7,12 +7,11 @@ pkgbase = hmtimer
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = qt5-tools
 	depends = qt5-base
 	depends = qt5-multimedia
 	depends = hicolor-icon-theme
-	source = https://github.com/cges30901/hmtimer/archive/v3.0.1.tar.gz
-	md5sums = fdd860a4ab4ad8ecd41a5ec2f2f537db
+	source = https://github.com/cges30901/hmtimer/releases/download/v3.0.1/hmtimer-3.0.1-src.tar.bz2
+	md5sums = f27076f333a7ab70a9ae744fcc642871
 
 pkgname = hmtimer
 

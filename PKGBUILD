@@ -8,7 +8,7 @@ url="https://cges30901.github.io/hmtimer-website/"
 license=('GPL3')
 groups=()
 depends=('qt5-base' 'qt5-multimedia' 'hicolor-icon-theme')
-makedepends=('qt5-tools')
+makedepends=()
 optdepends=()
 provides=()
 conflicts=()
@@ -17,13 +17,12 @@ backup=()
 options=()
 install="$pkgname.install"
 changelog=
-source=("https://github.com/cges30901/hmtimer/archive/v$pkgver.tar.gz")
+source=("https://github.com/cges30901/hmtimer/releases/download/v$pkgver/hmtimer-$pkgver-src.tar.bz2")
 noextract=()
-md5sums=('fdd860a4ab4ad8ecd41a5ec2f2f537db')
+md5sums=('f27076f333a7ab70a9ae744fcc642871')
 
 build() {
   cd "$pkgname-$pkgver"
-  lrelease src/language/hmtimer_*.ts
   qmake
   make
   gzip hmtimer.1
