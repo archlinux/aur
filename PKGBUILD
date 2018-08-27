@@ -7,11 +7,12 @@
 # and install them as we would other apps, for convenience sake.
 pkgname=koreader-appimage
 pkgver=2018.07.29.beta
-pkgrel=1
+pkgrel=2
 
 pkgdesc="An ebook reader application supporting PDF, DjVu, EPUB, FB2 and many more formats"
 arch=('x86_64')
 depends=('zlib')
+makedepends=('p7zip')
 url="http://koreader.rocks/"
 license=('AGPL3')
 _filename='koreader-appimage-x86_64-linux-gnu-v2015.11-1800-g0924b57_2018-07-29.AppImage'
@@ -27,9 +28,7 @@ prepare() {
     mv "$_filename" "koreader.AppImage"
     7z x "${srcdir}/koreader.AppImage" koreader.png
     7z x "${srcdir}/koreader.AppImage" koreader.desktop
-    mkdir -p usr/share/pixmaps
-    mkdir -p usr/share/applications
-    mkdir -p opt/appimages
+    mkdir -p usr/share/pixmaps usr/share/applications opt/appimages
     mv koreader.png usr/share/pixmaps
     patch -Np0 <../koreader.patch
     mv koreader.desktop usr/share/applications
