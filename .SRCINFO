@@ -1,16 +1,18 @@
 pkgbase = 3proxy
 	pkgdesc = A tiny crossplatform proxy server
 	pkgver = 0.8.12
-	pkgrel = 1
+	pkgrel = 3
 	url = http://www.3proxy.ru/
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = BSD
 	makedepends = gcc
 	makedepends = make
 	depends = glibc
+	backup = etc/3proxy/3proxy.cfg
 	source = https://github.com/z3APA3A/3proxy/archive/0.8.12.tar.gz
+	source = 3proxy.service
 	md5sums = f8ccbe689ff8da8ff67942fc440187ae
+	md5sums = 107033a7d0d3584c72de16f7953b139e
 
 pkgname = 3proxy
 
