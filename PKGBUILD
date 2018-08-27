@@ -2,8 +2,9 @@
 # Contributor: Syn Waker <syncrtl64@gmail.com>
 
 pkgname=gdx-setup
-pkgver=1.9.6.nightly
+pkgver=1.9.8.nightly
 pkgrel=1
+epoch=1
 pkgdesc="Libgdx project setup"
 arch=('any')
 url="http://libgdx.badlogicgames.com"
