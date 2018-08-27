@@ -50,5 +50,5 @@ package() {
 	
 	install -d $pkgdir/usr/lib/modules/$(uname -r)/kernel/drivers/bluetooth
 	cp $srcdir/linux-$version/drivers/bluetooth/btusb.ko.xz \
-		$pkgdir/usr/lib/modules/$(uname -r)/kernel/drivers/
+		$pkgdir/usr/lib/modules/$(uname -r)/kernel/drivers/bluetooth/
 }
