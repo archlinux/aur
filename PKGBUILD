@@ -1,20 +1,33 @@
-# Contributor: Dany Marcoux <danymarcoux+archlinux@gmail.com>
+# Contributor: Ian Beringer <ian@ianberinger.com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=lf
-pkgver=4
+pkgver=r7
 pkgrel=1
-pkgdesc='lf: A terminal file manager, heavily inspired by ranger (Precompiled binary from official repository)'
-arch=('i686' 'x86_64' 'armv7h')
-url='https://github.com/gokcehan/lf'
-license=('MIT') # https://github.com/gokcehan/lf/blob/master/LICENSE
-options=('!strip' '!emptydirs')
-source_i686=("${url}/releases/download/r${pkgver}/lf-linux-386.tar.gz")
-source_x86_64=("${url}/releases/download/r${pkgver}/lf-linux-amd64.tar.gz")
-source_armv7h=("${url}/releases/download/r${pkgver}/lf-linux-arm.tar.gz")
-md5sums_i686=('208d736544a2eadb3ceaad6000932dce')
-md5sums_x86_64=('e8c9fe971c41a428bf302e00f077fe26')
-md5sums_armv7h=('0a6a42df17202bbee767cbbace27726f')
+license=('MIT')
+pkgdesc='lf is a terminal file manager written in Go'
+depends=("glibc")
+makedepends=("git" "go>=1.6")
+arch=("i686" "x86_64")
+_gourl='github.com/gokcehan/lf'
+url="https://${_gourl}"
+source=("git+https://github.com/gokcehan/lf.git#commit=ffa913d9431574da81bd90fb6fb9e8566823dbe")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/${pkgname}"
+  git describe --tags |tr - .
+}
+
+build() {
+  cd "${srcdir}/${pkgname}"
+  GOPATH="${srcdir}/go" go get -u "${_gourl}"
+  GOPATH="${srcdir}/go" go build
+}
 
 package() {
-  install -Dm755 "lf" "$pkgdir/usr/bin/lf"
+  cd "${srcdir}/${pkgname}"
+  install -Dm755 ./lf "${pkgdir}"/usr/bin/lf
+  install -Dm644 ./LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm644 ./README.md "${pkgdir}"/usr/share/doc/${pkgname}/README.md
 }

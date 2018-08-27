@@ -1,20 +1,16 @@
 pkgbase = lf
-	pkgdesc = lf: A terminal file manager, heavily inspired by ranger (Precompiled binary from official repository)
-	pkgver = 4
+	pkgdesc = lf is a terminal file manager written in Go
+	pkgver = r7
 	pkgrel = 1
 	url = https://github.com/gokcehan/lf
 	arch = i686
 	arch = x86_64
-	arch = armv7h
 	license = MIT
-	options = !strip
-	options = !emptydirs
-	source_i686 = https://github.com/gokcehan/lf/releases/download/r4/lf-linux-386.tar.gz
-	md5sums_i686 = 208d736544a2eadb3ceaad6000932dce
-	source_x86_64 = https://github.com/gokcehan/lf/releases/download/r4/lf-linux-amd64.tar.gz
-	md5sums_x86_64 = e8c9fe971c41a428bf302e00f077fe26
-	source_armv7h = https://github.com/gokcehan/lf/releases/download/r4/lf-linux-arm.tar.gz
-	md5sums_armv7h = 0a6a42df17202bbee767cbbace27726f
+	makedepends = git
+	makedepends = go>=1.6
+	depends = glibc
+	source = git+https://github.com/gokcehan/lf.git#commit=ffa913d9431574da81bd90fb6fb9e8566823dbe
+	sha256sums = SKIP
 
 pkgname = lf
 
