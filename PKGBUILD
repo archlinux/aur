@@ -3,7 +3,7 @@
 
 _pkgname=gpac
 pkgname=$_pkgname-git
-pkgver=0.5.2.r3092.ge64a7d229
+pkgver=0.5.2.r3434.g76781df5f
 pkgrel=1
 epoch=1
 pkgdesc="A multimedia framework based on the MPEG-4 Systems standard (git version)"
@@ -20,7 +20,7 @@ optdepends=('jack: for jack support'
 options=('staticlibs' '!makeflags')
 conflicts=('gpac')
 source=(
-    git://github.com/gpac/gpac.git
+    git+https://github.com/gpac/gpac.git
 )
 sha256sums=('SKIP')
 
