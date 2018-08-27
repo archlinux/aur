@@ -6,7 +6,7 @@ pkgver=2.0.11
 pkgrel=1
 _commit=46e13e7
 pkgdesc="The KISS GUI is the crossplatform configuration tool for the Flyduino flight control system like the KISSfc, KISScc and KISSfcV2F7"
-url="https://github.com/flyduino/kissfc-chrome-gui"
+url="https://github.com/flyduino/kiss-gui"
 
 source=("$url/releases/download/$pkgver/KISS-GUI_$pkgver-master_$_commit-linux64.zip"
         "https://raw.githubusercontent.com/flyduino/kissfc-chrome-gui/master/images/icon_128.png"
