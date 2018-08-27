@@ -1,9 +1,9 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=mastodon
-pkgver=2.4.4
+pkgver=2.4.5
 pkgrel=1
-pkgdesc='Free software social network server based on ActivityPub and OStatus'
+pkgdesc='Free software social-network server based on ActivityPub and OStatus'
 arch=(i686 x86_64)
 url=https://joinmastodon.org
 license=(AGPL3)
@@ -26,7 +26,7 @@ source=(https://github.com/tootsuite/mastodon/archive/v$pkgver.tar.gz
         mastodon-sidekiq.service
         mastodon-streaming.service
         mastodon.target)
-sha512sums=('b08ce705185164e4f84aa654084fcf5a3c40fa1bb77204721f23d80233cbd979e2a18a94a658d707db7ea5eae8654b9dc63c02b9d494c28ebcb36d925de6b440'
+sha512sums=('78933a9e81baf43bbf9ef631e31a553ae34706f9af1d64fdc7a7d812225937bd615c286b1af53f7f747f3e9fc75f7834bef5d465b254dff2f1dfd0911ed16403'
             '532929aeeda9a0ccf72de0695a3381547cc389344e1e67f05ef1d7ce5c1ad57278b647423bb52d4a87069ad85479452533fbe3786e5e5c4b62730c6ef72ff267'
             '603a7877288c762855a29fd2399d3ff7d218a7f1b7d6378cad7f30048cdbfe2a13f2ed2b5c94cb683bdcaead8cd47243e564a2ae70d7f21fa33f295c5396f4f7'
             '90a0761b7709659bec6f29c366c503fdd348226cbb585cf4f6eaa065854e2027d08ab3b352eb13ad7c0e327d662f13bc00fb4163ea0c583ef55b1795ab2e0b31'
