@@ -2,7 +2,7 @@
 
 pkgname=coda
 pkgver=6.14.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A distributed file system with disconnected operation."
 depends=('bash' 'perl')
 arch=(i686 x86_64 armv7h)
@@ -15,6 +15,7 @@ prepare() {
     cd $pkgname-$pkgver
     for f in al/pdbtool.c al/pdbtool.8 al/pdb.h al/Makefile.am auth2/passwd.coda.5 scripts/vice-setup-user.in ; do
 	    sed -i -e 's,pdbtool,cpdbtool,g' coda-src/$f
+	    sed -i -e 's,PDBTOOL,CPDBTOOL,g' coda-src/$f
     done
     mv coda-src/al/pdbtool.c coda-src/al/cpdbtool.c
     mv coda-src/al/pdbtool.8 coda-src/al/cpdbtool.8

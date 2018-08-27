@@ -1,7 +1,7 @@
 pkgbase = coda
 	pkgdesc = A distributed file system with disconnected operation.
 	pkgver = 6.14.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://coda.cs.cmu.edu/
 	arch = i686
 	arch = x86_64
