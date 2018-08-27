@@ -32,8 +32,6 @@ build() {
     make install
     cd ..
 
-    cp -r ${DESTDIR}/${DESTDIR}/* ${DESTDIR}/
-    rm -rf ${DESTDIR}/${DESTDIR}/
     export ibrcommon_CFLAGS="-I${DESTDIR}/include/ibrcommon-1.0/"
     export ibrcommon_LIBS="-L${DESTDIR}/lib/ -librcommon"
     cd ibrdtn/ibrdtn
@@ -44,8 +42,6 @@ build() {
     make install
     cd ..
 
-    cp -r ${DESTDIR}/${DESTDIR}/* ${DESTDIR}/
-    rm -rf ${DESTDIR}/${DESTDIR}/
     export ibrdtn_CFLAGS="${ibrcommon_CFLAGS} -I${DESTDIR}/include/ibrdtn-1.0"
     export ibrdtn_LIBS="${ibrcommon_LIBS} -librdtn"
     cd daemon
@@ -56,8 +52,6 @@ build() {
     make install
     cd ..
 
-    cp -r ${DESTDIR}/${DESTDIR}/* ${DESTDIR}/
-    rm -rf ${DESTDIR}/${DESTDIR}/
     export ibrdtn_CFLAGS="${ibrcommon_CFLAGS} -I${DESTDIR}/include/ibrdtn-1.0"
     export ibrdtn_LIBS="${ibrcommon_LIBS} -librdtn -lz"
     cd tools
@@ -69,8 +63,6 @@ build() {
     cd ..
     cd ..
 
-    cp -r ${DESTDIR}/${DESTDIR}/* ${DESTDIR}/
-    rm -rf ${DESTDIR}/${DESTDIR}/
     strip ${DESTDIR}/sbin/dtnd
     strip ${DESTDIR}/sbin/dtntunnel
     strip ${DESTDIR}/bin/dtnconvert
