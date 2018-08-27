@@ -2,12 +2,13 @@
 
 pkgname=lib32-libosip2
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="oSIP is an implementation of SIP"
 arch=('x86_64')
 url="http://www.gnu.org/software/osip/"
 license=('LGPL')
-depends=('lib32-glibc' 'lib32-gcc-libs' 'libosip2')
+depends=('lib32-glibc' 'libosip2')
+makedepends=('lib32-gcc-libs')
 options=(!emptydirs)
 validpgpkeys=('34C3985D068879312FE23C8BB5902A3AD90A5421')
 source=(https://ftp.gnu.org/gnu/osip/libosip2-${pkgver/_/-}.tar.gz)

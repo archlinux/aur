@@ -1,12 +1,12 @@
 pkgbase = lib32-libosip2
 	pkgdesc = oSIP is an implementation of SIP
 	pkgver = 5.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnu.org/software/osip/
 	arch = x86_64
 	license = LGPL
+	makedepends = lib32-gcc-libs
 	depends = lib32-glibc
-	depends = lib32-gcc-libs
 	depends = libosip2
 	options = !emptydirs
 	source = https://ftp.gnu.org/gnu/osip/libosip2-5.0.0.tar.gz
