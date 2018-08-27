@@ -9,7 +9,7 @@
 # Maintainer: Alvin Jian <alvinchien0624@gmail.com>
 pkgname=python-autobgch
 pkgver=0.4
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple and automatic wallpaper changer supporting various backends for Linux"
 arch=('any')
 url="https://github.com/AlvinJian/auto_background_changer"
