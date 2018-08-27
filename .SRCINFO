@@ -1,6 +1,6 @@
 pkgbase = manocoin-qt
 	pkgdesc = Cryptocurrency wallet(QT)
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://manocoin.org/
 	install = manocoin-qt.install
@@ -18,7 +18,7 @@ pkgbase = manocoin-qt
 	depends = protobuf
 	depends = libevent
 	conflicts = manocoin
-	source = manocoin-qt::git+https://github.com/MasternodeFoundation/MANOcoin.git
+	source = manocoin-qt::git+https://github.com/MasternodeFoundation/MANOcoin.git#tag=v1.1.0
 	source = manocoin-qt.desktop
 	source = secp256k1.patch
 	sha256sums = SKIP

@@ -1,7 +1,7 @@
 # Maintainer: metscoin <mets_coin@outlook.com>
 
 pkgname=manocoin-qt
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://manocoin.org/"
@@ -11,7 +11,7 @@ depends=(boost-libs qt5-base qrencode miniupnpc db4.8 zeromq protobuf libevent)
 makedepends=(boost qt5-tools)
 conflicts=(manocoin)
 install=manocoin-qt.install
-source=("${pkgname%-git}::git+https://github.com/MasternodeFoundation/MANOcoin.git"
+source=("${pkgname%-git}::git+https://github.com/MasternodeFoundation/MANOcoin.git#tag=v${pkgver}"
         "$pkgname.desktop" "secp256k1.patch")
 sha256sums=('SKIP'
             'cd17b24fd5ca7d2d1faa810ad791b762f7a4a858d5db27bbf0908b340eb58cbb'
