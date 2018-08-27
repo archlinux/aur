@@ -10,7 +10,7 @@ pkgver=1.3.0.r53.g36d2e3332
 pkgrel=1
 arch=('any')
 url="https://buildbot.net"
-license=("GPL")
+license=("GPL2")
 depends=('python-twisted' 'python-jinja' 'python-zope-interface' 'python-future'
          'python-sqlalchemy-migrate' 'python-dateutil' 'python-txaio'
          'python-autobahn' 'python-pyjwt')
@@ -19,7 +19,7 @@ checkdepends=('python-treq' 'python-boto3' 'python-mock' 'python-moto'
               'python-lz4' 'python-isort' 'python-pylint' 'python-pyenchant'
               'flake8' 'python-txrequests' 'python-setuptools_trial'
               'python-pyjade'
-              "python-buildbot-pkg-git=$pkgver" "buildbot-worker-git=$pkgver"
+              'python-buildbot-pkg-git' 'buildbot-worker-git'
               'openssh')
 source=(git+https://github.com/buildbot/buildbot.git
         skip-linux-distro-test.patch)
