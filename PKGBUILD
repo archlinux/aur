@@ -67,5 +67,7 @@ package() {
 
 	getCRAWLOPT
 	make install $CRAWLOPT
+	# Crawl now creates the save directory in /usr for some reason...
+	rm -rf $pkgdir/usr/\~/
 	install -Dm644 "dat/tiles/stone_soup_icon-32x32.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 }
