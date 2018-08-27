@@ -11,7 +11,7 @@ makedepends=('wget' 'make' 'gcc' 'linux-headers')
 install=kernelmodule.install
 
 prepare() {
-	cd "$srcdir"
+	cd $srcdir
 	
 	export version=$(uname -r | cut -d '-' -f 1)
 
@@ -30,7 +30,8 @@ prepare() {
 }
 
 pkgver() {
-	echo $version
+	cd $srcdir
+	echo $version.r$(git rev-list --count HEAD)
 }
 
 build() {
