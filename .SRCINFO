@@ -1,6 +1,6 @@
 pkgbase = gdc
 	pkgver = 8.2.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/D-Programming-GDC/GDC
 	arch = i686
 	arch = x86_64

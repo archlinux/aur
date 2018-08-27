@@ -10,7 +10,7 @@
 pkgname=('gdc' 'libgphobos')
 pkgver=8.2.0
 _majorver=${pkgver:0:1}
-pkgrel=2
+pkgrel=3
 _islver=0.19
 _dversion=2.081.1
 arch=('i686' 'x86_64')
@@ -73,6 +73,7 @@ build() {
 		--mandir=/usr/share/man \
 		--infodir=/usr/share/info \
 		--with-bugurl=https://bugs.archlinux.org/ \
+		--with-pkgversion="$_dversion" \
 		--enable-shared \
 		--enable-static \
 		--enable-threads=posix \
