@@ -30,5 +30,5 @@ no-resolv
 cache-size=10000
 log-queries=extra
 log-facility=/run/log/pihole/pihole.log
-local-ttl=300
+local-ttl=2
 log-async
