@@ -1,11 +1,11 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=liburcu-git
-pkgver=0.10.1.r16.gfdfad81
+pkgver=0.10.1.r18.g34b11dd
 pkgrel=1
 pkgdesc="Userspace RCU implementation"
 arch=('i686' 'x86_64')
-url="http://liburcu.org/"
+url="https://liburcu.org/"
 license=('custom')
 depends=('glibc')
 makedepends=('git')

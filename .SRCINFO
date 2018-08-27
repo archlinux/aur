@@ -1,8 +1,8 @@
 pkgbase = liburcu-git
 	pkgdesc = Userspace RCU implementation
-	pkgver = 0.10.1.r16.gfdfad81
+	pkgver = 0.10.1.r18.g34b11dd
 	pkgrel = 1
-	url = http://liburcu.org/
+	url = https://liburcu.org/
 	arch = i686
 	arch = x86_64
 	license = custom
