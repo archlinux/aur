@@ -17,7 +17,7 @@ package() {
   cd $srcdir
   tar xvf data.tar.xz
   cp -r usr $pkgdir
-  rm $pkgdir/usr/share/applications/{stacer.desktop}
+  rm $pkgdir/usr/share/applications/{*.desktop}
   install -vDm644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
 }
 
