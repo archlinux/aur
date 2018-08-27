@@ -22,7 +22,7 @@ makedepends=(git
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+https://github.com/haecker-felix/Fragments.git")
-md5sums=('SKIP')
+md5sums=(SKIP)
 
 prepare() {
     cd Fragments
