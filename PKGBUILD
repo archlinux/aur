@@ -6,12 +6,12 @@
 
 pkgname=impressive
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A fancy PDF presentation program (previously known as KeyJNote)'
 arch=('any')
 url='http://impressive.sourceforge.net'
 license=('GPL2')
-depends=('python2-pygame' 'python2-opengl' 'python2-pillow' 'ghostscript' 'pdftk')
+depends=('python2-pygame' 'python2-opengl' 'python2-pillow' 'ghostscript' 'pdftk-bin')
 optdepends=('xdg-utils: for starting web or e-mail hyperlinks from PDF documents'
             'mplayer: for sound and video playback')
 source=(http://downloads.sourceforge.net/${pkgname}/Impressive-${pkgver}.tar.gz)
