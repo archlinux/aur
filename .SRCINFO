@@ -1,7 +1,7 @@
 pkgbase = kotlin-native-bin
 	pkgdesc = A LLVM backend for the Kotlin compiler
 	pkgver = 0.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JetBrains/kotlin-native
 	arch = x86_64
 	license = Apache

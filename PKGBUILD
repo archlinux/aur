@@ -4,7 +4,7 @@ PKGEXT=.pkg.tar
 
 pkgname=kotlin-native-bin
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A LLVM backend for the Kotlin compiler"
 arch=('x86_64')
 url="https://github.com/JetBrains/kotlin-native"
