@@ -1,8 +1,9 @@
 # Maintainer: Sean Anderson <seanga2@gmail.com>
+# Contributor: Taran Lynn <taranlynn0@gmail.com>
 _srcname=crawl
 pkgname=crawl-tiles
 pkgver=0.22.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Dungeon Crawl Stone Soup with graphical tiles and sound support"
 arch=('i686' 'x86_64')
