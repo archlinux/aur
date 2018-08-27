@@ -20,6 +20,7 @@ md5sums_i686=('b53b1696e2a0624f54eb516538ac655b')
 md5sums_x86_64=('2d19b66de26dbd01a7980427a0535a8f')
 
 
+
 if [[ $CARCH == x86_64 ]]; then
   _installer=warsaw_64_installer.run
   _warsawdir=tmp/warsaw_x64
@@ -104,10 +105,6 @@ package() {
   for i in ld-linux-x86-64.so.2 libc.so.6 libdl.so.2 libpthread.so.0; do
     cp /usr/lib/$i $pkgdir/usr/lib/warsaw/$i
   done
-
-  # for i in ld-linux-x86-64.so.2 libc.so.6 libdl.so.2 libpthread.so.0; do
-  #   chattr +i $pkgdir/usr/lib/warsaw/$i
-  # done
 
   install -dm755  $pkgdir/etc/sysctl.d/
   cat << EOF > $pkgdir/etc/sysctl.d/warsaw.conf

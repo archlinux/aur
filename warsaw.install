@@ -4,7 +4,7 @@ post_install() {
   echo "openrc: # rc-service warsaw stop"
 
   for i in ld-linux-x86-64.so.2 libc.so.6 libdl.so.2 libpthread.so.0; do
-      chattr -V +i /usr/local/lib/warsaw/$i
+      sudo chattr -V +i /usr/local/lib/warsaw/$i
   done
 
 }
