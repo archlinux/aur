@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=net-tools-git
-pkgver=1.60.r364.g479bb4a
+pkgver=1.60.r366.gaebd88e
 pkgrel=1
 pkgdesc="The collection of base networking utilities for Linux"
 arch=('i686' 'x86_64')
-url="http://net-tools.sourceforge.net/"
+url="https://sourceforge.net/projects/net-tools/"
 license=('GPL2')
-depends=('glibc' 'gettext')
+depends=('glibc')
 makedepends=('git')
 provides=('net-tools')
 conflicts=('net-tools')
