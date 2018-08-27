@@ -1,8 +1,8 @@
 # Maintainer: Cosku Bas <cosku.bas@gmail.com>
 
 pkgname=trenchbroom
-pkgver=2.0.5
-pkgrel=3
+pkgver=2.0.6
+pkgrel=1
 pkgdesc="TrenchBroom is a modern cross-platform level editor for Quake-engine based games."
 arch=('i686' 'x86_64')
 url="http://kristianduske.com/trenchbroom"
@@ -13,7 +13,7 @@ depends=('freeimage' 'freetype2' 'wxgtk2-dev' 'mesa' 'libgl' 'freeglut' 'libxxf8
 conflicts=('trenchbroom-git')
 
 source=(https://github.com/kduske/TrenchBroom/archive/v${pkgver}.tar.gz)
-sha1sums=('de2133545739adb05037c97e38acae493305cca8')
+sha1sums=('95a7ca3cab04732a329e7f82cfde87df7042db4b')
 
 build() {
 	tar -zxvf v${pkgver}.tar.gz
