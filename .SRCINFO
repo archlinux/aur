@@ -1,7 +1,7 @@
 pkgbase = factom-walletd
 	pkgdesc = Server for the factom wallet web service api
-	pkgver = 0.4.2.21
-	pkgrel = 5
+	pkgver = 2.2.13
+	pkgrel = 1
 	url = https://github.com/FactomProject/factom-walletd
 	install = factom-walletd.install
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = factom-walletd
 	makedepends = git
 	options = emptydirs
 	backup = var/lib/factom-walletd/m2/factomd.conf
-	source = git+https://github.com/FactomProject/factom-walletd#tag=v0.4.2.21
+	source = git+https://github.com/FactomProject/factom-walletd#tag=v2.2.13
 	source = factom-walletd.service
 	source = sysusers-factom-walletd.conf
 	source = factom-walletd.conf

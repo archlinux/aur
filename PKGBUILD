@@ -1,8 +1,8 @@
 # Maintainer: Adam S Levy <adam@aslevy.com>
 
-pkgname='factom-walletd'
-pkgver='0.4.2.21'
-pkgrel='5'
+pkgname=factom-walletd
+pkgver=2.2.13
+pkgrel=1
 pkgdesc='Server for the factom wallet web service api'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/FactomProject/$pkgname"
