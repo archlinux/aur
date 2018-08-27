@@ -1,7 +1,7 @@
 pkgbase = nncli-git
 	pkgdesc = NextCloud Notes Command Line Interface
 	pkgver = v0.1.1.r13.ga666640
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/djmoch/nncli
 	arch = any
 	license = MIT
@@ -9,6 +9,8 @@ pkgbase = nncli-git
 	makedepends = git
 	depends = python-urwid
 	depends = python-requests
+	provides = nncli
+	conflicts = nncli
 	source = git+https://github.com/djmoch/nncli.git
 	sha256sums = SKIP
 

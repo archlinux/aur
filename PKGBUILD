@@ -2,10 +2,12 @@
 _name=nncli
 pkgname=nncli-git
 pkgver=v0.1.1.r13.ga666640
-pkgrel=1
+pkgrel=2
 pkgdesc="NextCloud Notes Command Line Interface"
 arch=('any')
 url="https://github.com/djmoch/${_name}"
+provides=('nncli')
+conflicts=('nncli')
 license=('MIT')
 depends=('python-urwid' 'python-requests')
 makedepends=('python-setuptools' 'git')
