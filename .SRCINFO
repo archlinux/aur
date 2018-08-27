@@ -24,7 +24,7 @@ pkgname = lapack-git
 
 pkgname = blas-git
 	pkgdesc = Basic linear algebra subprograms
-	url = http://www.netlib.org/blas/
+	url = https://www.netlib.org/blas/
 	provides = cblas
 	provides = blas
 	conflicts = cblas
@@ -32,7 +32,7 @@ pkgname = blas-git
 
 pkgname = lapacke-git
 	pkgdesc = C Interface to LAPACK
-	url = http://www.netlib.org/lapack/lapacke.html
+	url = https://www.netlib.org/lapack/lapacke.html
 	depends = glibc
 	depends = lapack
 	provides = lapacke

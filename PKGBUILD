@@ -61,7 +61,7 @@ package_lapack-git() {
 
 package_blas-git() {
   pkgdesc="Basic linear algebra subprograms"
-  url="http://www.netlib.org/blas/"
+  url="https://www.netlib.org/blas/"
   provides=('cblas' 'blas')
   conflicts=('cblas' 'blas')
 
@@ -76,7 +76,7 @@ package_blas-git() {
 
 package_lapacke-git() {
   pkgdesc="C Interface to LAPACK"
-  url="http://www.netlib.org/lapack/lapacke.html"
+  url="https://www.netlib.org/lapack/lapacke.html"
   depends=('glibc' 'lapack')
   provides=('lapacke')
   conflicts=('lapacke')
