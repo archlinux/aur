@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-python
 	pkgdesc = Next generation of the python high-level scripting language (mingw-w64)
 	pkgver = 3.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.python.org/
 	arch = any
 	license = PSF
@@ -29,7 +29,7 @@ pkgbase = mingw-w64-python
 	source = patches.tar.gz
 	source = wine-python.sh
 	sha1sums = 653cffa5b9f2a28150afe4705600d2e55d89b564
-	sha1sums = a16075f44a5222b7b32471aacd6444b60528a620
+	sha1sums = 62f705a61edc4d212053485db7c357d292e53f49
 	sha1sums = a024e7fd7eea7984a0d050164a4a015dea762da7
 
 pkgname = mingw-w64-python

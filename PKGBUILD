@@ -6,7 +6,7 @@
 pkgname=mingw-w64-python
 pkgver=3.7.0
 _pybasever=3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Next generation of the python high-level scripting language (mingw-w64)"
 arch=('any')
 license=('PSF')
@@ -32,7 +32,7 @@ source=("http://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz"
         'patches.tar.gz'
         "wine-python.sh")
 sha1sums=('653cffa5b9f2a28150afe4705600d2e55d89b564'
-          'a16075f44a5222b7b32471aacd6444b60528a620'
+          '62f705a61edc4d212053485db7c357d292e53f49'
           'a024e7fd7eea7984a0d050164a4a015dea762da7')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -335,9 +335,15 @@ package() {
       -e "s/'\/share'/sys.prefix + '\/share'/g" \
       -i "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/_sysconfigdata*.py
     
-    # Correct name of _sysconfigdata_m_win32_.py and copy it to lib-dynload
+    # Correct name of _sysconfigdata_m_win32_.py and copy both to lib-dynload
     cp -f "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/_sysconfigdata_m_win_.py "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/_sysconfigdata_m_win32_.py
+    cp -f "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/_sysconfigdata_m_win_.py "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/lib-dynload/_sysconfigdata_m_win_.py
     cp -f "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/_sysconfigdata_m_win32_.py "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/lib-dynload/_sysconfigdata_m_win32_.py 
+    
+    # strip executables and libraries
+    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.exe
+    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
+    ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
     
     # install wrappers
     mkdir -p ${pkgdir}/usr/bin
