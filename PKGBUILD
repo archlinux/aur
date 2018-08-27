@@ -6,9 +6,8 @@
 # Contributor: Jesus Alvarez <jeezusjr@gmail.com>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: Elijah Stone <elronnd@elronnd.net>
-# Contributor: Daniel Kozak <kozzi11@gmail.com>
 
-pkgname=('gdc' 'libgphobos')
+pkgname=('gdc-git' 'libgphobos-git')
 pkgver=8.1.1+20180531
 _majorver=${pkgver:0:1}
 _islver=0.19
