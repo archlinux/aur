@@ -3,7 +3,7 @@
 pkgname=lib32-libosip2
 pkgver=5.0.0
 pkgrel=2
-pkgdesc="oSIP is an implementation of SIP"
+pkgdesc="oSIP is an implementation of SIP (32-bit)"
 arch=('x86_64')
 url="http://www.gnu.org/software/osip/"
 license=('LGPL')

@@ -1,5 +1,5 @@
 pkgbase = lib32-libosip2
-	pkgdesc = oSIP is an implementation of SIP
+	pkgdesc = oSIP is an implementation of SIP (32-bit)
 	pkgver = 5.0.0
 	pkgrel = 2
 	url = http://www.gnu.org/software/osip/
