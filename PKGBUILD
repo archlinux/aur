@@ -18,9 +18,7 @@ source=("git+https://github.com/mattn/calendar-vim.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  #cd ${pkgname%-git}
   cd ${_pkg_dir}
-  # cutting off 'v' prefix from the git tag
   #git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
   git describe --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
