@@ -1,11 +1,12 @@
 pkgbase = lfe-git
 	pkgdesc = Lisp Flavoured Erlang
-	pkgver = r963.2880c8a
+	pkgver = r974.ea62f92
 	pkgrel = 1
 	url = http://lfe.io/
 	arch = x86_64
 	license = Apache_v2
-	depends = erlang-nox
+	depends = erlang
+	provides = lfe
 	conflicts = lfe
 	source = git+https://github.com/rvirding/lfe.git#branch=develop
 	sha256sums = SKIP

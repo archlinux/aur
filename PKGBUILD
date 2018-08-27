@@ -1,21 +1,22 @@
-# Maintainer: Dan Beste <dan.ray.beste@gmail.com>
+# Contributor: Dan Beste <dan.ray.beste@gmail.com>
 # Contributor: anekos <anekos@snca.net>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname='lfe-git'
-_pkgname='lfe'
-pkgver=r963.2880c8a
+pkgver=r974.ea62f92
 pkgrel=1
 pkgdesc="Lisp Flavoured Erlang"
 url='http://lfe.io/'
 arch=('x86_64')
 license=('Apache_v2')
-depends=('erlang-nox')
-conflicts=("${_pkgname}")
+depends=('erlang')
+conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}")
 source=('git+https://github.com/rvirding/lfe.git#branch=develop')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgname}"
+  cd "${pkgname%-git}"
 
   printf "r%s.%s"                  \
     "$(git rev-list --count HEAD)" \
@@ -23,17 +24,17 @@ pkgver() {
 }
 
 build() {
-  cd "${_pkgname}"
+  cd "${pkgname%-git}"
 
   make
 }
 
 package () {
-  cd "${_pkgname}"
+  cd "${pkgname%-git}"
 
   make PREFIX="${pkgdir}/usr" install
 
-  cd "${pkgdir}/usr/bin"
+  cd "${pkgdir}"/usr/bin
 
   # Properly symlink lfe binaries:
   for link in *; do
@@ -46,5 +47,3 @@ package () {
   rm -rv "${pkgdir}/usr/share/man/cat7"
   rm -v "${pkgdir}/usr/share/man/index.db"
 }
-
-# vim:set ts=2 sw=2 et:
