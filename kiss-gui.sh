@@ -1,3 +1,3 @@
 #!/bin/sh
 
-/usr/share/kiss-gui/kiss-gui
+nw /usr/share/kiss-gui
