@@ -4,7 +4,7 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=glibc-git
-pkgver=2.28.r89.g60bcac09c0
+pkgver=2.28.r97.g99ea93ca31
 pkgrel=1
 pkgdesc='GNU C Library'
 arch=('i686' 'x86_64')
@@ -23,10 +23,12 @@ install='glibc-git.install'
 source=('git+https://sourceware.org/git/glibc.git'
         'locale-gen'
         '0001-Revert-elf-Correct-absolute-SHN_ABS-symbol-run-time-.patch'
+        '0001-test-in-container-fix-Arch-Linux-build-programs-bug.patch'
         'bz20338.patch')
 sha256sums=('SKIP'
             '05fbb88877cdddc99ef25e48304d6e5ac236660c20925d461cb4e90ebcb3b7de'
             '3b764c4e5658486d1f9e98a36043eb51705c4eebc9abe3f9edc5049dd5dcdc47'
+            'a1f8f7dbe9cbaf81df21a7134b80beea7bedeecd37777c6d2f78f84d0f0548e0'
             '959d4f41edd004bddd9091c4d8c8c3aa07d79a04bfdb89d59f9f26fe5a74d32a')
 
 pkgver() {
@@ -47,9 +49,9 @@ prepare() {
     # https://github.com/electron/electron/issues/13972#issuecomment-411532741
     patch -p1 -i ../0001-Revert-elf-Correct-absolute-SHN_ABS-symbol-run-time-.patch
 
-    # revert untested patch that breaks the build.
+    # fix build error, turns out to be lack of testing for build-programs=no in configparms
     # make[2]: *** No rule to make target '/build/glibc-git/src/build/support/links-dso-program', needed by 'others'.  Stop.
-    git show 561b0bec4448f0302cb4915bf67c919bde4a1c57 -- ':!ChangeLog' | git apply --verbose --reverse --index
+    patch -p1 -i ../0001-test-in-container-fix-Arch-Linux-build-programs-bug.patch
 }
 
 build() {
