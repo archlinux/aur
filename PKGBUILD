@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libuv-git
-pkgver=1.18.0.r69.g70d61b6c
+pkgver=1.23.0.r83.g6e7da5fb
 pkgrel=1
 pkgdesc="A multi-platform support library with a focus on asynchronous I/O"
 arch=('i686' 'x86_64')
-url="http://libuv.org/"
+url="https://libuv.org/"
 license=('MIT')
-depends=('glibc')
+depends=('glibc' 'libnsl')
 makedepends=('git' 'python-sphinx')
 provides=('libuv')
 conflicts=('libuv')
