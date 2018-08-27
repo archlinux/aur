@@ -1,6 +1,6 @@
 pkgbase = gtk-sni-tray
 	pkgdesc = A standalone StatusNotifierItem/AppIndicator tray in haskell
-	pkgver = 0.1.4.0
+	pkgver = 0.1.5.0
 	pkgrel = 1
 	url = https://hackage.haskell.org/package/gtk-sni-tray
 	arch = i686
@@ -36,8 +36,8 @@ pkgbase = gtk-sni-tray
 	depends = haskell-text
 	depends = haskell-transformers
 	depends = libdbusmenu-gtk3
-	source = https://hackage.haskell.org/packages/archive/gtk-sni-tray/0.1.4.0/gtk-sni-tray-0.1.4.0.tar.gz
-	sha256sums = 0286ac2b68da169576bea6d368e6118c446931bf05082bfcf95c4ee95f16bab3
+	source = https://hackage.haskell.org/packages/archive/gtk-sni-tray/0.1.5.0/gtk-sni-tray-0.1.5.0.tar.gz
+	sha256sums = a0a79c780852c99fabc756df65a199fdf4dd70ddaee33d4f1c2a5406ffd4dd6d
 
 pkgname = gtk-sni-tray
 
