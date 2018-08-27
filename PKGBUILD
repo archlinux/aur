@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=tcpdump-git
-pkgver=4.9.0.r59.g3951a87c
+pkgver=4.9.0.r1079.g7f1d1729
 pkgrel=1
 pkgdesc="A powerful command-line packet analyzer"
 arch=('i686' 'x86_64')
-url="http://www.tcpdump.org/"
+url="https://www.tcpdump.org/"
 license=('BSD')
-depends=('glibc' 'openssl')
+depends=('glibc' 'libcap-ng' 'libpcap' 'openssl')
 makedepends=('git')
 provides=('tcpdump')
 conflicts=('tcpdump')

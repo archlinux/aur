@@ -1,13 +1,15 @@
 pkgbase = tcpdump-git
 	pkgdesc = A powerful command-line packet analyzer
-	pkgver = 4.9.0.r59.g3951a87c
+	pkgver = 4.9.0.r1079.g7f1d1729
 	pkgrel = 1
-	url = http://www.tcpdump.org/
+	url = https://www.tcpdump.org/
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git
 	depends = glibc
+	depends = libcap-ng
+	depends = libpcap
 	depends = openssl
 	provides = tcpdump
 	conflicts = tcpdump
