@@ -13,8 +13,8 @@ pkgver=1.3.0.r2.g95fc42ba3
 pkgrel=1
 arch=('any')
 url="https://buildbot.net"
-license=("GPL")
-makedepends=('git' "buildbot-git=$pkgver" "python-buildbot-pkg-git=$pkgver" 'python-mock' 'npm' 'yarn' 'python1')
+license=("GPL2")
+makedepends=('git' 'buildbot-git' 'python-buildbot-pkg-git' 'python-mock' 'npm' 'yarn' 'python2')
 source=(git+https://github.com/buildbot/buildbot.git
         cairosvg2.patch)
 sha256sums=('SKIP'
@@ -35,7 +35,7 @@ prepare() {
 }
 
 package_python-buildbot-www-git() {
-  depends=("buildbot-git=$pkgver")
+  depends=('buildbot-git')
   pkgdesc="Buildbot UI"
 
   cd buildbot/www/base
@@ -43,7 +43,7 @@ package_python-buildbot-www-git() {
 }
 
 package_python-buildbot-waterfall-view-git() {
-  depends=("buildbot-git=$pkgver")
+  depends=('buildbot-git')
   pkgdesc="Buildbot Waterfall View plugin"
 
   cd buildbot/www/waterfall_view
@@ -51,7 +51,7 @@ package_python-buildbot-waterfall-view-git() {
 }
 
 package_python-buildbot-console-view-git() {
-  depends=("buildbot-git=$pkgver")
+  depends=('buildbot-git')
   pkgdesc="Buildbot Console View plugin"
 
   cd buildbot/www/console_view
@@ -59,7 +59,7 @@ package_python-buildbot-console-view-git() {
 }
 
 package_python-buildbot-grid-view-git() {
-  depends=("buildbot-git=$pkgver")
+  depends=('buildbot-git')
   pkgdesc="Buildbot Grid View plugin"
 
   cd buildbot/www/grid_view
@@ -67,7 +67,7 @@ package_python-buildbot-grid-view-git() {
 }
 
 package_python-buildbot-wsgi-dashboards-git() {
-  depends=("buildbot-git=$pkgver")
+  depends=('buildbot-git')
   pkgdesc="Buildbot plugin to integrate flask or bottle dashboards to buildbot UI"
 
   cd buildbot/www/wsgi_dashboards
@@ -75,7 +75,7 @@ package_python-buildbot-wsgi-dashboards-git() {
 }
 
 package_python-buildbot-badges-git() {
-  depends=("buildbot-git=$pkgver" 'python-klein' 'python-cairosvg' 'python-cairocffi' 'python-jinja')
+  depends=('buildbot-git' 'python-klein' 'python-cairosvg' 'python-cairocffi' 'python-jinja')
   pkgdesc="Buildbot badges"
 
   cd buildbot/www/badges

@@ -3,14 +3,14 @@ pkgbase = buildbot-www-git
 	pkgrel = 1
 	url = https://buildbot.net
 	arch = any
-	license = GPL
+	license = GPL2
 	makedepends = git
-	makedepends = buildbot-git=1.3.0.r2.g95fc42ba3
-	makedepends = python-buildbot-pkg-git=1.3.0.r2.g95fc42ba3
+	makedepends = buildbot-git
+	makedepends = python-buildbot-pkg-git
 	makedepends = python-mock
 	makedepends = npm
 	makedepends = yarn
-	makedepends = python1
+	makedepends = python2
 	source = git+https://github.com/buildbot/buildbot.git
 	source = cairosvg2.patch
 	sha256sums = SKIP
@@ -18,27 +18,27 @@ pkgbase = buildbot-www-git
 
 pkgname = python-buildbot-www-git
 	pkgdesc = Buildbot UI
-	depends = buildbot-git=1.3.0.r2.g95fc42ba3
+	depends = buildbot-git
 
 pkgname = python-buildbot-waterfall-view-git
 	pkgdesc = Buildbot Waterfall View plugin
-	depends = buildbot-git=1.3.0.r2.g95fc42ba3
+	depends = buildbot-git
 
 pkgname = python-buildbot-console-view-git
 	pkgdesc = Buildbot Console View plugin
-	depends = buildbot-git=1.3.0.r2.g95fc42ba3
+	depends = buildbot-git
 
 pkgname = python-buildbot-grid-view-git
 	pkgdesc = Buildbot Grid View plugin
-	depends = buildbot-git=1.3.0.r2.g95fc42ba3
+	depends = buildbot-git
 
 pkgname = python-buildbot-wsgi-dashboards-git
 	pkgdesc = Buildbot plugin to integrate flask or bottle dashboards to buildbot UI
-	depends = buildbot-git=1.3.0.r2.g95fc42ba3
+	depends = buildbot-git
 
 pkgname = python-buildbot-badges-git
 	pkgdesc = Buildbot badges
-	depends = buildbot-git=1.3.0.r2.g95fc42ba3
+	depends = buildbot-git
 	depends = python-klein
 	depends = python-cairosvg
 	depends = python-cairocffi
