@@ -1,7 +1,7 @@
 # Maintainer: asm0dey <pavel.finkelshtein@gmail.com>
 pkgname=panotourpro
-pkgver=2.5.11
-_pkgver=2511_201804-10
+pkgver=2.5.14
+_pkgver=2514_201808-10
 _pkgname=PanotourPro
 pkgrel=1
 pkgdesc='Create pro-quality virtual tours (trial version).'
@@ -15,7 +15,7 @@ install=$pkgname.install
           "$pkgname" 
           "$pkgname.desktop" 
           "$pkgname.png")
-md5sums=('4a7c1b910e2ca1ad0b5ef18eaf5351ea'
+md5sums=('e9547b4e02e3e4d4cabf89cd7ad64857'
          '2fb0de89c4749a8a50c7a8fe14555d98'
          '361fb305589d79e1047f57c8809a6a30'
          '38a6cdebc5175c97a5cd0a8cac4b1b11')
