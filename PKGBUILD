@@ -1,4 +1,5 @@
-# Maintainer: Luchesar V. ILIEV <luchesar%2eiliev%40gmail%2ecom>
+# Maintainer: mikezackles
+# Contributor: Luchesar V. ILIEV <luchesar%2eiliev%40gmail%2ecom>
 # Contributor: Anders Bergh <anders@archlinuxppc.org>
 # Contributor: Armin K. <krejzi at email dot com>
 # Contributor: Christian Babeux <christian.babeux@0x80.ca>
@@ -9,38 +10,58 @@
 # Contributor: Tomas Lindquist Olsen <tomas@famolsen.dk>
 # Contributor: Tomas Wilhelmsson <tomas.wilhelmsson@gmail.com>
 
-pkgbase=llvm-svn
-
-pkgname=(
-    'llvm-svn'
-    'llvm-libs-svn'
-    'llvm-ocaml-svn'
-    'lld-svn'
-    'lldb-svn'
-    'clang-svn'
-    'clang-analyzer-svn'
-    'clang-compiler-rt-svn'
-    'clang-tools-extra-svn'
-)
+pkgname=clang-trunk
 _pkgname='llvm'
+provides=(
+    'llvm'
+    'llvm-libs'
+    'lld'
+    'lldb'
+    'libc++'
+    'libc++abi'
+    'libc++experimental'
+    'clang'
+    'clang-analyzer'
+    'clang-compiler-rt'
+    'clang-tools-extra'
+    'templight'
+)
+conflicts=(
+    'llvm'
+    'llvm-libs'
+    'lld'
+    'lldb'
+    'libc++'
+    'libc++abi'
+    'libc++experimental'
+    'clang'
+    'clang-analyzer'
+    'clang-compiler-rt'
+    'clang-tools-extra'
+    'templight'
+)
+pkgdesc='The LLVM Compiler Infrastructure'
 
-pkgver=8.0.0svn_r340523
+pkgver=8.0.0svn_r340760
 pkgrel=1
 
 arch=('i686' 'x86_64')
 url='https://llvm.org/'
 license=('custom:University of Illinois')
 
+depends=(
+    'python2-six' # for lldb
+)
 makedepends=(
     'cmake'
     'libedit'
     'libffi'
-    'ocaml-ctypes'
-    'ocaml-findlib'
+    'ninja'
+    'python'
     'python2'
-    'python2-recommonmark'
-    'python2-requests'
-    'python2-sphinx'
+    'python-recommonmark'
+    'python-requests'
+    'python-sphinx'
     'subversion'
     'swig'
 )
@@ -56,6 +77,10 @@ source=(
     'lld::svn+https://llvm.org/svn/llvm-project/lld/trunk'
     'lldb::svn+https://llvm.org/svn/llvm-project/lldb/trunk'
     'polly::svn+https://llvm.org/svn/llvm-project/polly/trunk'
+    'libcxx::svn+https://llvm.org/svn/llvm-project/libcxx/trunk'
+    'libcxxabi::svn+https://llvm.org/svn/llvm-project/libcxxabi/trunk'
+    'templight::git+https://github.com/mikael-s-persson/templight'
+    'templight.patch'
     'llvm-Config-llvm-config.h'
 )
 
@@ -67,77 +92,15 @@ sha256sums=(
     'SKIP'
     'SKIP'
     'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'dbc8086e8c2f05ddd4128fd3a0d39261eed19ffd0c9509a50ad656a8a5936c1f'
     '597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48'
 )
 
 #
 # BEGIN INTERNAL VARIABLES AND FUNCTIONS
-#
-
-# Python site-packages dir (relative to ${pkgdir})
-_py_sitepkg_dir="/usr/lib/python2.7/site-packages"
-
-# Determine the installed OCaml package version
-# Arguments: NONE
-_ocamlver() {
-    { pacman -Q ocaml 2>/dev/null || pacman -Sp --print-format '%n %v' ocaml ;} \
-        | awk '{ print $2 }' | cut -d - -f 1 | cut -d . -f 1,2,3
-}
-
-# Fix the Python interpreter path in .py files to point to python2
-# Arguments: py_file_to_patch [py_file_to_patch ...]
-_fix_python_exec_path() {
-    sed -i \
-        -e 's|^#!/usr/bin/python$|&2|' \
-        -e 's|^#!/usr/bin/env python$|&2|' \
-        ${@}
-}
-
-# Compile the Python files in a directory
-# Arguments: directory_to_operate_on
-_compile_python_files() {
-    python2 -m compileall "${1}"
-    python2 -O -m compileall "${1}"
-}
-
-# Install the Python bindings of a package
-# Arguments: source_directory_to_install_from
-_install_python_bindings() {
-    install -m 0755 -d "${pkgdir}${_py_sitepkg_dir}"
-    cp -r "${1}" "${pkgdir}${_py_sitepkg_dir}/"
-    _compile_python_files "${pkgdir}${_py_sitepkg_dir}/${1##*/}"
-}
-
-# Install the license files for a package
-# Arguments: source_directory_to_install_from
-# Notes: We prune some directories that are inserted into the tree in prepare() 
-#        in order to eliminate possible duplicates. We also use NULL-terminated
-#        strings, just in case we have paths including spaces. Finally, we opt
-#        for a flat directory structure, so all license files in subdirectories
-#        get their names from the relative path with '/'s replaced by dashes.
-#        Not the most elegant solution, but should be working well enough.
-_install_licenses() {
-    find "${1}" \
-        \( \
-            -path "${srcdir}/${_pkgname}/tools/lld" -o \
-            -path "${srcdir}/${_pkgname}/tools/clang" -o \
-            -path "${srcdir}/${_pkgname}/tools/lldb" -o \
-            -path "${srcdir}/${_pkgname}/projects/compiler-rt" \
-        \) -prune -o \
-        \( \
-            -iname 'license*' -o \
-            -iname 'credits*' -o \
-            -iname 'copyright*' \
-        \) -printf '%P\0' \
-        | while read -d $'\0' license_file; do
-            install -D -m 0644 \
-                "${1}/${license_file}" \
-                "${pkgdir}/usr/share/licenses/${pkgname}/${license_file//\//-}"
-        done
-}
-
-#
-# END INTERNAL VARIABLES AND FUNCTIONS
 #
 
 pkgver() {
@@ -160,9 +123,16 @@ prepare() {
     svn export --force "${srcdir}/clang" tools/clang
     svn export --force "${srcdir}/clang-tools-extra" tools/clang/tools/extra
     svn export --force "${srcdir}/compiler-rt" projects/compiler-rt
+    svn export --force "${srcdir}/libcxx" projects/libcxx
+    svn export --force "${srcdir}/libcxxabi" projects/libcxxabi
     svn export --force "${srcdir}/lld" tools/lld
     svn export --force "${srcdir}/lldb" tools/lldb
     svn export --force "${srcdir}/polly" tools/polly
+    git clone "${srcdir}/templight" tools/clang/tools/templight
+    echo "add_clang_subdirectory(templight)" >> tools/clang/tools/CMakeLists.txt
+
+    cd "${srcdir}/${_pkgname}/tools/clang/tools/templight"
+    git apply "${srcdir}/templight.patch"
 
     mkdir -p "${srcdir}/build"
 }
@@ -170,26 +140,12 @@ prepare() {
 build() {
     cd "${srcdir}/build"
 
-    # Building with any already installed on the system LLVM OCaml bindings is very error-prone.
-    # The problems almost certainly arise from incompatibilities between the installed system-wide
-    # bindings and the newly built ones. Unfortunately, the OCAMLPATH environment variable doesn't
-    # allow overriding the search path set in the system configuration file, only adding to it.
-    # Even same version bindings cause problems in certain circumstances, so let's play safe.
-    ocamlfind query llvm >/dev/null 2>&1 && {
-        error 'Incompatible LLVM OCaml bindings installed.'
-        plain 'Building with already installed on the system LLVM OCaml bindings is not supported.'
-        plain 'Please either uninstall any currently installed llvm-ocaml* package before building,'
-        plain 'or, __preferably__, build in a clean chroot, as described on the Arch Linux wiki:'
-        plain 'https://wiki.archlinux.org/index.php/DeveloperWiki:Building_in_a_Clean_Chroot'
-        exit 1
-    }
-
     export PKG_CONFIG_PATH='/usr/lib/pkgconfig'
 
     # LLVM_BUILD_LLVM_DYLIB: Build the dynamic runtime libraries (e.g. libLLVM.so).
     # LLVM_LINK_LLVM_DYLIB:  Link our own tools against the libLLVM dynamic library, too.
     # LLVM_BINUTILS_INCDIR:  Set to binutils' plugin-api.h location in order to build LLVMgold.
-    cmake -G 'Unix Makefiles' \
+    cmake -G 'Ninja' \
         -DCMAKE_BUILD_TYPE:STRING=Release \
         -DCMAKE_INSTALL_PREFIX:PATH=/usr \
         -DLLVM_APPEND_VC_REV:BOOL=ON \
@@ -207,309 +163,25 @@ build() {
         -DLLVM_BUILD_LLVM_DYLIB:BOOL=ON \
         -DLLVM_LINK_LLVM_DYLIB:BOOL=ON \
         -DLLVM_BINUTILS_INCDIR:PATH=/usr/include \
+        -DLIBCXX_ENABLE_EXPERIMENTAL_LIBRARY=On \
         "../${_pkgname}"
 
-    make
-    make ocaml_doc
+    ninja
 }
 
 check() {
     cd "${srcdir}/build"
     # Dirty fix for unittests failing because the shared lib is not in the library path.
     # Also, disable the LLVM tests on i686 as they seem to fail too often there.
-    [[ "${CARCH}" == "i686" ]] || LD_LIBRARY_PATH="${srcdir}/build/lib" make check
-    make check-clang
-    make check-polly
+    [[ "${CARCH}" == "i686" ]] || LD_LIBRARY_PATH="${srcdir}/build/lib" ninja check
+    ninja check-clang
+    ninja check-polly
 }
 
-package_llvm-svn() {
-    pkgdesc='The LLVM Compiler Infrastructure'
-    depends=(
-        "llvm-libs-svn=${pkgver}-${pkgrel}"
-    )
-    groups=('llvm-toolchain-svn')
-    provides=('llvm')
-    conflicts=('llvm')
-
+package() {
     cd "${srcdir}/build"
-
-    # Disable automatic installation of components that go into subpackages
-    sed -i '/\(clang\|lld\|lldb\)\/cmake_install.cmake/d' tools/cmake_install.cmake
-
-    make DESTDIR="${pkgdir}" install
-
-    # The runtime libraries get installed in llvm-libs-svn
-    rm -f "${pkgdir}"/usr/lib/lib{LLVM,LTO}{,-*}.so{,.*}
-    mv -f "${pkgdir}"/usr/lib/{BugpointPasses,LLVMgold,LLVMHello}.so "${srcdir}/"
-
-    # Clang libraries and OCaml bindings go to separate packages
-    rm -rf "${srcdir}"/{clang,ocaml.{doc,lib}}
-    mv "${pkgdir}/usr/lib/clang" "${srcdir}/clang"
-    mv "${pkgdir}/usr/lib/ocaml" "${srcdir}/ocaml.lib"
-    mv "${pkgdir}/usr/share/doc/llvm/ocaml-html" "${srcdir}/ocaml.doc"
-
-    if [[ "${CARCH}" == "x86_64" ]]; then
-        # Needed for multilib (https://bugs.archlinux.org/task/29951)
-        # Header stubs are taken from Fedora
-        mv "${pkgdir}/usr/include/llvm/Config/llvm-config"{,-64}.h
-        cp "${srcdir}/llvm-Config-llvm-config.h" "${pkgdir}/usr/include/llvm/Config/llvm-config.h"
-    fi
-
-    # Clean up documentation
-    # TODO: This may not be needed any more.
-    rm -rf "${pkgdir}/usr/share/doc/llvm/html/_sources"
-
-    _install_python_bindings "${srcdir}/llvm/bindings/python/llvm"
-
-    _install_licenses "${srcdir}/llvm"
-}
-
-package_llvm-libs-svn() {
-    pkgdesc='The LLVM Compiler Infrastructure (runtime libraries)'
-    depends=(
-        'libffi'
-        'zlib'
-    )
-    groups=('llvm-toolchain-svn')
-    provides=('llvm-libs')
-    conflicts=('llvm-libs')
-
-    cd "${srcdir}/build"
-
-    make DESTDIR="${pkgdir}" install-{LLVM,LTO}
-
-    # Moved from the llvm-svn package here
-    mv "${srcdir}"/{BugpointPasses,LLVMgold,LLVMHello}.so "${pkgdir}/usr/lib/"
-
-    # Ref: https://llvm.org/docs/GoldPlugin.html
-    install -m755 -d "${pkgdir}/usr/lib/bfd-plugins"
-    ln -s {/usr/lib,"${pkgdir}/usr/lib/bfd-plugins"}/LLVMgold.so
-
-    # Since r262066 lto.h is also installed, but we don't need it in the -libs package.
-    rm -rf "${pkgdir}/usr/include"
-
-    # Must have a symlink that corresponds to the output of `llvm-config --version`.
-    # Without it, some builds, e.g. Mesa, might fail for "lack of shared libraries".
-    _sover="$(echo ${pkgver} | cut -d . -f -1)svn"
-    # libLLVM.so.3.8.0svn-r123456
-    ln -s "libLLVM-${_sover}.so" "${pkgdir}/usr/lib/libLLVM.so.$(echo ${pkgver} | tr _ -)"
-    # libLLVM-3.8.0svn-r123456.so
-    ln -s "libLLVM-${_sover}.so" "${pkgdir}/usr/lib/libLLVM-$(echo ${pkgver} | tr _ -).so"
-
-    _install_licenses "${srcdir}/llvm"
-}
-
-package_llvm-ocaml-svn() {
-    pkgdesc='OCaml bindings for LLVM'
-    depends=(
-        "llvm-svn=${pkgver}-${pkgrel}"
-        "ocaml=$(_ocamlver)"
-        'ocaml-ctypes'
-    )
-    provides=('llvm-ocaml')
-    conflicts=('llvm-ocaml')
-
-    cd "${srcdir}/build"
-
-    install -m755 -d "${pkgdir}/usr/lib"
-    install -m755 -d "${pkgdir}/usr/share/doc/llvm"
-    cp -a "${srcdir}/ocaml.lib" "${pkgdir}/usr/lib/ocaml"
-    cp -a "${srcdir}/ocaml.doc" "${pkgdir}/usr/share/doc/llvm/ocaml-html"
-
-    _install_licenses "${srcdir}/llvm"
-}
-
-package_lld-svn() {
-    pkgdesc='A linker from the LLVM project'
-    url='https://lld.llvm.org/'
-    depends=(
-        "llvm-libs-svn=${pkgver}-${pkgrel}"
-    )
-    groups=('llvm-toolchain-svn')
-    provides=('lld')
-    conflicts=('lld')
-
-    cd "${srcdir}/build/tools/lld"
-
-    make DESTDIR="${pkgdir}" install
-
-    # Clean up documentation
-    # TODO: This may at some point not be needed any more.
-    rm -rf "${pkgdir}/usr/share/doc/lld/html/_sources"
-
-    _install_licenses "${srcdir}/lld"
-}
-
-package_lldb-svn() {
-    pkgdesc='Next generation, high-performance debugger'
-    url='https://lldb.llvm.org/'
-    depends=(
-        "llvm-libs-svn=${pkgver}-${pkgrel}"
-        'libedit'
-        'libxml2'
-        'python2-six'
-    )
-    groups=('llvm-toolchain-svn')
-    provides=('lldb')
-    conflicts=('lldb')
-
-    cd "${srcdir}/build/tools/lldb"
-
-    make DESTDIR="${pkgdir}" install
-
-    # Clean up conflicting files
-    # TODO: This should probably be discussed with upstream.
-    rm -rf "${pkgdir}/usr/lib/python2.7/site-packages/six.py"
-
-    _fix_python_exec_path \
-        "${pkgdir}${_py_sitepkg_dir}/lldb/utils/symbolication.py"
-
-    _compile_python_files "${pkgdir}${_py_sitepkg_dir}/lldb"
-
-    _install_licenses "${srcdir}/lldb"
-}
-
-package_clang-svn() {
-    pkgdesc='C language family frontend for LLVM'
-    url='https://clang.llvm.org/'
-    depends=(
-        "llvm-svn=${pkgver}-${pkgrel}"
-    )
-    optdepends=(
-        'clang-analyzer-svn: source code analysis for Clang, supporting C, C++, and Objective-C'
-        'clang-compiler-rt-svn: sanitizer runtimes, builtins, profile library and BlocksRuntime'
-        'clang-tools-extra-svn: standalone tools: syntax checking, formatting, refactoring, etc.'
-        'python2: git-clang-format and clang-format-diff.py support'
-    )
-    groups=('llvm-toolchain-svn')
-    provides=('clang')
-    conflicts=('clang')
-
-    cd "${srcdir}/build/tools/clang"
-
-    # Exclude the extra directory, since it'll be installed in a separate package
-    sed -i \
-        "s|^\([[:blank:]]*include(\"${srcdir}/build/tools/clang/tools/extra/cmake_install.cmake\")\)$|#\1|" \
-        tools/cmake_install.cmake
-
-    make DESTDIR="${pkgdir}" install
-
-    # The Clang Static Analyzer is installed in a separate package
-    # TODO: Probably there's more elegant way to achieve this.
-
-    rm -rf "${srcdir}/clang-analyzer.tmp"
-
-    install -m 0755 -d \
-        "${srcdir}/clang-analyzer.tmp/usr/bin" \
-        "${srcdir}/clang-analyzer.tmp/usr/share/man/man1" \
-        "${srcdir}/clang-analyzer.tmp/usr/share/scan-build" \
-        "${srcdir}/clang-analyzer.tmp/usr/share/scan-view"
-
-    mv \
-        "${pkgdir}/usr/bin/scan-build" \
-        "${pkgdir}/usr/bin/scan-view" \
-        "${pkgdir}/usr/libexec/c++-analyzer" \
-        "${pkgdir}/usr/libexec/ccc-analyzer" \
-        \
-        "${srcdir}/clang-analyzer.tmp/usr/bin/"
-
-    mv \
-        "${pkgdir}/usr/share/man/man1/scan-build.1" \
-        \
-        "${srcdir}/clang-analyzer.tmp/usr/share/man/man1/"
-
-    mv \
-        "${pkgdir}/usr/share/scan-build/scanview.css" \
-        "${pkgdir}/usr/share/scan-build/sorttable.js" \
-        \
-        "${srcdir}/clang-analyzer.tmp/usr/share/scan-build/"
-
-    mv \
-        "${pkgdir}/usr/share/scan-view/FileRadar.scpt" \
-        "${pkgdir}/usr/share/scan-view/GetRadarVersion.scpt" \
-        "${pkgdir}/usr/share/scan-view/Reporter.py" \
-        "${pkgdir}/usr/share/scan-view/ScanView.py" \
-        "${pkgdir}/usr/share/scan-view/bugcatcher.ico" \
-        "${pkgdir}/usr/share/scan-view/startfile.py" \
-        \
-        "${srcdir}/clang-analyzer.tmp/usr/share/scan-view/"
-
-    rmdir \
-        "${pkgdir}/usr/libexec" \
-        "${pkgdir}/usr/share/scan-build" \
-        "${pkgdir}/usr/share/scan-view"
-
-    # Clean up documentation
-    # TODO: This may not be needed any more.
-    rm -rf "${pkgdir}/usr/share/doc/clang/html/_sources"
-
-    _fix_python_exec_path \
-        "${pkgdir}/usr/bin/git-clang-format" \
-        "${pkgdir}/usr/share/clang/clang-format-diff.py"
-
-    _install_python_bindings "${srcdir}/llvm/tools/clang/bindings/python/clang"
-
-    _install_licenses "${srcdir}/clang"
-}
-
-package_clang-analyzer-svn() {
-    pkgdesc='Source code analysis tool for Clang, supporting C, C++, and Objective-C'
-    url='https://clang-analyzer.llvm.org/'
-    depends=(
-        "clang-svn=${pkgver}-${pkgrel}"
-        'perl'
-        'python2'
-    )
-    groups=('llvm-toolchain-svn')
-    provides=('clang-analyzer')
-    conflicts=('clang-analyzer')
-
-    cd "${srcdir}"
-
-    mv "${srcdir}/clang-analyzer.tmp"/* "${pkgdir}"/
-
-    sed -i 's|/libexec/|/bin/|' "${pkgdir}/usr/bin/scan-build"
-
-    _fix_python_exec_path \
-        "${pkgdir}/usr/bin/scan-view"
-
-    _compile_python_files "${pkgdir}/usr/share/scan-view"
-
-    _install_licenses "${srcdir}/clang"
-}
-
-package_clang-compiler-rt-svn() {
-    pkgdesc='The "compiler-rt" set of runtime libraries for Clang and LLVM'
-    url='https://compiler-rt.llvm.org/'
-    depends=(
-        "clang-svn=${pkgver}-${pkgrel}"
-    )
-    groups=('llvm-toolchain-svn')
-    provides=('clang-compiler-rt')
-    conflicts=('clang-compiler-rt')
-
-    cd "${srcdir}/build/projects/compiler-rt"
-
-    make DESTDIR="${pkgdir}" install
-
-    _install_licenses "${srcdir}/compiler-rt"
-}
-
-package_clang-tools-extra-svn() {
-    pkgdesc='Standalone tools for Clang: syntax checking, formatting, refactoring, etc.'
-    url='https://clang.llvm.org/docs/ClangTools.html'
-    depends=(
-        "clang-svn=${pkgver}-${pkgrel}"
-    )
-    groups=('llvm-toolchain-svn')
-    provides=('clang-tools-extra')
-    conflicts=('clang-tools-extra')
-
-    cd "${srcdir}/build/tools/clang/tools/extra"
-
-    make DESTDIR="${pkgdir}" install
-
-    _install_licenses "${srcdir}/clang-tools-extra"
+    DESTDIR=${pkgdir} ninja install
+    rm "${pkgdir}/usr/lib/python2.7/site-packages/six.py"
 }
 
 # vim:set ts=4 sts=4 sw=4 et:
