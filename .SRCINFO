@@ -1,22 +1,17 @@
 pkgbase = ponyprog
 	pkgdesc = PonyProg is a serial device programmer based on some simple and cheap interfaces for the PC
-	pkgver = 2.08d
-	pkgrel = 5
+	pkgver = V2_08d.r281.e0ea8ee
+	pkgrel = 6
 	url = http://www.LancOS.com
 	arch = any
-	license = GPL
-	depends = libx11
-	depends = libxt
-	depends = libxext
-	depends = libxaw
-	source = http://downloads.sourceforge.net/project/ponyprog/PonyProg%20sources/PonyProg2000-2.08d.tar.gz
-	source = fix-build.patch
-	source = ponyprog.desktop
-	source = ponyprog.png
-	md5sums = 19d12a550d1ce7b4f034a918e04dbe2a
-	md5sums = 24333137616811ce10a386b207ea873c
-	md5sums = 614b9bcd0a846373b4c32de89ec2bd71
-	md5sums = 9ff33c34d7a43d26b83b2ea40ceea7a6
+	license = GPLv2
+	makedepends = coreutils
+	makedepends = git
+	makedepends = cmake
+	depends = qt5-base
+	depends = qt5-multimedia
+	source = git://github.com/lancos/ponyprog.git
+	md5sums = SKIP
 
 pkgname = ponyprog
 

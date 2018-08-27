@@ -1,46 +1,41 @@
-# Maintainer: Claudio Lanconelli <lancos@libero.it>
+# Maintainer: Egor Panasenko <gaura.panasenko@gmail.com>
 
 pkgname=ponyprog
-pkgver=2.08d
-pkgrel=5
+pkgver=V2_08d.r281.e0ea8ee
+pkgrel=6
 pkgdesc="PonyProg is a serial device programmer based on some simple and cheap interfaces for the PC"
 arch=('any')
 url="http://www.LancOS.com"
-license=('GPL')
-depends=("libx11" "libxt" "libxext" "libxaw")
-source=("http://downloads.sourceforge.net/project/ponyprog/PonyProg%20sources/PonyProg2000-2.08d.tar.gz"
-	"fix-build.patch"
-	"ponyprog.desktop"
-	"ponyprog.png")
-md5sums=("19d12a550d1ce7b4f034a918e04dbe2a"
-	 "24333137616811ce10a386b207ea873c"
-	 "614b9bcd0a846373b4c32de89ec2bd71"
-	 "9ff33c34d7a43d26b83b2ea40ceea7a6")
+license=('GPLv2')
+depends=("qt5-base" "qt5-multimedia")
+makedepends=("coreutils" "git" "cmake")
+source=("git://github.com/lancos/${pkgname}.git")
+md5sums=("SKIP")
+
+pkgver() {
+	cd "$srcdir/${pkgname%-git}"
+
+# Git, tags available
+	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+}
+
+prepare() {
+	cd "$srcdir/${pkgname%-git}"
+	git submodule update --init
+}
 
 build() {
-	cd "${srcdir}/PonyProg-${pkgver}"
-
-	patch -Np1 -i "${srcdir}/fix-build.patch"
-
-	./config.sh /usr
-
-	make clean
-	make
+	cd "$srcdir/${pkgname%-git}"
+	CPU_NUM=$(nproc --all)
+	DIRECTORY="build"
+	install -m755 -d "$DIRECTORY"
+	cd "$DIRECTORY"
+	rm * -rf
+	cmake -DUSE_DEBUGGER=OFF -DUSE_QT5=ON -DCMAKE_INSTALL_PREFIX=/usr ..
+	make -j$CPU_NUM
 }
 
 package() {
-	cd "${srcdir}/PonyProg-${pkgver}"
-
-	msg2 'Adding binary'
-	install -m755 -d "${pkgdir}/usr/bin"
-	install -m755    "${srcdir}/PonyProg-${pkgver}/bin/ponyprog2000" "${pkgdir}/usr/bin"
-
-	msg2 'Adding application'
-	install -m755 -d "${pkgdir}/usr/share/applications"
-	install -m644    "${srcdir}/ponyprog.desktop" "${pkgdir}/usr/share/applications"
-
-	msg2 'Adding pixmap'
-	#convert "${srcdir}/PonyProg-${pkgver}/ponyprog.ico" "${srcdir}/ponyprog.png"
-	install -m755 -d "${pkgdir}/usr/share/pixmaps"
-	install -m644    "${srcdir}/ponyprog.png" "${pkgdir}/usr/share/pixmaps"
+	cd "$srcdir/${pkgname%-git}/build"
+	make DESTDIR="$pkgdir/" install
 }

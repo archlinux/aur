@@ -1,9 +1,0 @@
-[Desktop Entry]
-Encoding=UTF-8
-Name=Ponyprog
-Comment=PonyProg is a serial device programmer based on some simple and cheap interfaces for the PC
-Exec=ponyprog2000 %u
-Icon=ponyprog
-Terminal=false
-Type=Application
-Categories=Development;
