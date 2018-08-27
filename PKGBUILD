@@ -1,5 +1,3 @@
-#Maintainer: "Yannick LM <yannicklm1337 AT gmail DOT com>"
-
 pkgname=pycp
 pkgver="8.0.6"
 pkgrel=1
