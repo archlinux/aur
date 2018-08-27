@@ -6,7 +6,7 @@
 
 pkgname=firefox-wayland-hg
 _pkgname=firefox
-pkgver=r428351.02c8644c45b1
+pkgver=r433427.e4e2245fc142
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 arch=(x86_64)
@@ -15,7 +15,7 @@ url="https://www.mozilla.org/firefox/"
 depends=(gtk3 gtk2 mozilla-common libxt startup-notification mime-types dbus-glib ffmpeg
          nss sqlite ttf-font libpulse libvpx icu)
 makedepends=(unzip zip diffutils python2 yasm mesa imake gconf inetutils xorg-server-xvfb
-             autoconf2.13 rust mercurial clang llvm jack)
+             autoconf2.13 rust cbindgen mercurial clang llvm jack)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
@@ -113,7 +113,6 @@ END
 
 build() {
   cd mozilla-unified
-  cargo install --force cbindgen
 
   # _FORTIFY_SOURCE causes configure failures
   CPPFLAGS+=" -O2"

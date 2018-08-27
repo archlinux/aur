@@ -1,6 +1,6 @@
 pkgbase = firefox-wayland-hg
 	pkgdesc = Standalone web browser from mozilla.org
-	pkgver = r428351.02c8644c45b1
+	pkgver = r433427.e4e2245fc142
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = firefox-wayland-hg
 	makedepends = xorg-server-xvfb
 	makedepends = autoconf2.13
 	makedepends = rust
+	makedepends = cbindgen
 	makedepends = mercurial
 	makedepends = clang
 	makedepends = llvm
