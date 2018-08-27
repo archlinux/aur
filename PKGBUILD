@@ -2,8 +2,8 @@
 
 pkgname=cotire
 _cotirever=1.8.0
-_cmakever=3.11
-_cmakegooduntil=3.12
+_cmakever=3.12
+_cmakegooduntil=3.13
 pkgver=${_cotirever}_${_cmakever}
 pkgrel=1
 pkgdesc='CMake module to speed up builds. By fully automating techniques like precompiled header usage and single compilation unit builds for C and C++'
