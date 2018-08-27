@@ -1,6 +1,6 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=wayfire-git 
-pkgver=r528.35d3f54
+pkgver=r616.7e011aa
 pkgrel=1
 pkgdesc="3D wayland compositor"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
 options=()
-source=('git+https://github.com/ammen99/wayfire#branch=wlroots')
+source=('git+https://github.com/ammen99/wayfire')
 sha256sums=('SKIP')
 
 prepare() {
