@@ -29,7 +29,7 @@ source=("http://download.sonarr.tv/v3/phantom/${pkgver}/Sonarr.phantom.${pkgver}
 
 noextract=()
 sha256sums=('b0e7b41794597e850bb622c693e2013892e035f279ce7e23236b52e589fc1160'
-            'c177024bdf5c8c0e42a866cb0509e6130e2bb79a14c7e91556e42f8b18e37bd5'
+            '3c45b902c3c9c56963b675ce0fae9b8a77d79c33dcefde14f2b40469de089f5f'
             'cc3c69f719fa64335f4c5b41b2588f1ec56865fb2202f5919d3668b50b8f398e'
             'a436a979ca3a9e78bdc410bd0027d97956bfa8d2d4f2b7bdf3f7d2ed199dd6a8')
 
