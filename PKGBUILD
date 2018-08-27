@@ -1,7 +1,7 @@
 # Maintainer: Daniel Chatfield <chatfielddaniel@gmail.com>
 pkgname=trello-bin
-pkgver=0.1.1
-pkgrel=1
+pkgver=0.1.9
+pkgrel=2
 pkgdesc="Unofficial Trello Desktop app"
 arch=(any)
 url="https://github.com/danielchatfield/trello-desktop"
@@ -13,7 +13,7 @@ conflicts=("${pkgname%-bin}")
 source=("${pkgname%-bin}.zip::https://github.com/danielchatfield/${pkgname%-bin}-desktop/releases/download/v${pkgver}/Trello-linux-${pkgver}.zip"
 		"${pkgname%-bin}.desktop"
 		"${pkgname%-bin}.png")
-md5sums=("11df848759cf7fe8fae9f87b07538750"
+md5sums=("65c8f18ea3461b1991489d4edbd9ee3e"
 		 "c636a75cff12fb5f706c96fcf00d0ae9"
 		 "ddf0e16e77fce510e2a67d6bdd16c433")
 noextract=("${pkgname%-bin}.zip")
