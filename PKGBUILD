@@ -1,6 +1,6 @@
 pkgname=charmtimetracker
-pkgver=1.12.0rc2
-pkgrel=2
+pkgver=1.12.0
+pkgrel=1
 arch=(any)
 pkgdesc=""
 license=("GPL")
