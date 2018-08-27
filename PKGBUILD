@@ -2,7 +2,7 @@
 
 pkgname=parquet-cpp
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A C++ library to read and write the Apache Parquet columnar data format."
 arch=('x86_64')
 url="https://arrow.apache.org"

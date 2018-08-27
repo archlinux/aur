@@ -1,7 +1,7 @@
 pkgbase = parquet-cpp
 	pkgdesc = A C++ library to read and write the Apache Parquet columnar data format.
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://arrow.apache.org
 	arch = x86_64
 	license = Apache
