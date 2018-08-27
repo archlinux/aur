@@ -2,7 +2,7 @@
 
 pkgname=c-lolcat
 pkgver=r40.ceb4d66
-pkgrel=1
+pkgrel=2
 pkgdesc="High-performance implementation of lolcat"
 arch=('i686' 'x86_64')
 url="https://github.com/jaseg/lolcat"

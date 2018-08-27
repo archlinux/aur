@@ -1,7 +1,7 @@
 pkgbase = c-lolcat
 	pkgdesc = High-performance implementation of lolcat
-	pkgver = r37.32c34ab
-	pkgrel = 1
+	pkgver = r40.ceb4d66
+	pkgrel = 2
 	url = https://github.com/jaseg/lolcat
 	arch = i686
 	arch = x86_64
