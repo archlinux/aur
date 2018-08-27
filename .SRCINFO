@@ -1,0 +1,14 @@
+pkgbase = dnsproxy
+	pkgdesc = A simple DNS proxy server, runing on multiple platform
+	pkgver = git+f03234a
+	pkgrel = 1
+	url = https://github.com/vietor/dnsproxy
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = make
+	source = git+https://github.com/vietor/dnsproxy.git
+	md5sums = SKIP
+
+pkgname = dnsproxy
+
