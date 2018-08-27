@@ -1,4 +1,4 @@
-pkgbase = clickable-git
+pkgbase = clickable
 	pkgdesc = Compile, build, and deploy Ubuntu Touch click packages all from the command line.
 	pkgver = 272.c18271a
 	pkgrel = 1
@@ -13,10 +13,10 @@ pkgbase = clickable-git
 	depends = python-cookiecutter
 	depends = android-tools
 	optdepends = lxd
-	provides = clickable-git
-	conflicts = clickable-git
+	provides = clickable
+	conflicts = clickable
 	source = git+https://github.com/bhdouglass/clickable.git
 	sha256sums = SKIP
 
-pkgname = clickable-git
+pkgname = clickable
 
