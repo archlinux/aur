@@ -1,0 +1,20 @@
+pkgbase = jave-beta
+	pkgdesc = Java Ascii Versatile Editor
+	pkgver = 6.0rc2
+	pkgrel = 1
+	url = http://www.jave.de
+	arch = any
+	license = custom:CPL
+	depends = java-runtime
+	provides = jave
+	source = jave-beta-6.0rc2.zip::http://www.jave.de/developer/jave_6.0_RC2.zip
+	source = license.html::http://www.eclipse.org/legal/cpl-v10.html
+	source = jave.sh
+	source = jave.desktop
+	md5sums = e044ca82cbd25ce2ed87b617a0d2dc29
+	md5sums = SKIP
+	md5sums = 864e22ea9faa856f5ab9bbaef88a1ad8
+	md5sums = f83b8c47668639aa0418b3bd2ffacb57
+
+pkgname = jave-beta
+
