@@ -1,0 +1,15 @@
+pkgbase = spice-html5-git
+	pkgdesc = A HTML5 client for the Spice protocol
+	pkgver = spice.html5.0.1.7.r0.36b8ad3
+	pkgrel = 1
+	url = https://www.spice-space.org/spice-html5.html
+	arch = any
+	license = GPL
+	makedepends = git
+	provides = spice-html5
+	conflicts = spice-html5
+	source = spice-html5::git+https://gitlab.freedesktop.org/spice/spice-html5.git#tag=spice-html5-0.1.7
+	sha256sums = SKIP
+
+pkgname = spice-html5-git
+
