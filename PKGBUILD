@@ -1,11 +1,11 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libnl-git
-pkgver=3.3.0.r50.g27c404a
+pkgver=3.4.0.r70.g9e34b5d
 pkgrel=1
 pkgdesc="A collection of libraries providing APIs to netlink protocol based Linux kernel interfaces"
 arch=('i686' 'x86_64')
-url="http://www.infradead.org/~tgr/libnl/"
+url="https://www.infradead.org/~tgr/libnl/"
 license=('LGPL2')
 depends=('glibc')
 makedepends=('git')
@@ -27,7 +27,7 @@ build() {
   cd "libnl"
 
   ./autogen.sh
-  ./configure --prefix="/usr"
+  ./configure --prefix="/usr" --sysconfdir="/etc"
   make
 }
 
