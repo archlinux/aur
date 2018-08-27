@@ -1,17 +1,18 @@
 pkgbase = kiss-gui
 	pkgdesc = The KISS GUI is the crossplatform configuration tool for the Flyduino flight control system like the KISSfc, KISScc and KISSfcV2F7
-	pkgver = 2.0.9
+	pkgver = 2.0.11
 	pkgrel = 1
 	url = https://github.com/flyduino/kissfc-chrome-gui
 	arch = x86_64
 	options = !strip
-	source = https://github.com/flyduino/kissfc-chrome-gui/releases/download/2.0.9/KISS-GUI_2.0.9-master_d6ff322-linux64.zip
+	source = https://github.com/flyduino/kissfc-chrome-gui/releases/download/2.0.11/KISS-GUI_2.0.11-master_46e13e7-linux64.zip
 	source = https://raw.githubusercontent.com/flyduino/kissfc-chrome-gui/master/images/icon_128.png
 	source = kiss-gui.sh
 	source = kiss-gui.desktop
-	sha512sums = fa00afd475131619e22220e3a206896cfdf7d7b9c203fbce9bafad435d5505618441db1f7b07b98eff5b55250fa6b177d414be08529b8b4f695832d955d65a28
+	sha512sums = db8277486619d3fd2ae9f383c85770d9954c07a875cfcf8829fad0c63bfc3ac712145c5bef9d58c8dacfa7312cfd1be1aef6dc6aee362dab033828c584e84c74
 	sha512sums = 36af702cf64bc0606eaf01febd3ed7db47e327bfb68f10f23f65d36b9a9482038e22149711d5b1fbbeabc1a6fcef9de25e971aa7f67b475983fd9aa3c57ca22f
 	sha512sums = 7aaaeb1688560a0874e69455ce25f273fa03aa5ad3a41116f4a71cde49ccfe334c05c955384e3624f5a7fca1300461eec41540cd05a7d61a3343dac09b576497
 	sha512sums = 5a43483c365a1b1134bdd176be481a0400d3807b270cf0a31a575d5a7b0de167db6d1cd182ee9443cc0c86c77fbe14bb66bb1147c230f994aab36540687536ae
 
 pkgname = kiss-gui
+
