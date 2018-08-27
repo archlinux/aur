@@ -1,14 +1,15 @@
 # Maintainer: Augugrumi <augugrumi@gmail.com>
 pkgname=libviface-git # '-bzr', '-git', '-hg' or '-svn'
 pkgver=v1.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Fork of the official libviface package. C++ bindings for Linux tun/tap and netdevice interface."
-arch=('any')
+arch=('x86_64')
 url="https://github.com/Augugrumi/libviface"
-license=('Apache License 2.0')
+license=('APACHE')
 groups=( 'linux-tools')
 depends=()
-optdepends=('libtins: packets manipulation')
+optdepends=('libtins: packets manipulation'
+            'gcc-libs: additional gcc support')
 makedepends=(git cmake) # 'bzr', 'git', 'mercurial' or 'subversion'
 provides=("${pkgname%-VCS}")
 conflicts=("${pkgname%-VCS}")
