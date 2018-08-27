@@ -3,7 +3,6 @@ pkgbase = parquet-cpp
 	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://arrow.apache.org
-	arch = i686
 	arch = x86_64
 	license = Apache
 	makedepends = boost
@@ -13,8 +12,8 @@ pkgbase = parquet-cpp
 	depends = arrow
 	depends = boost-libs
 	depends = gcc-libs
-	source = https://github.com/apache/parquet-cpp/archive/apache-parquet-cpp-1.4.0.tar.gz
-	sha256sums = 52899be6c9dc49a14976d4ad84597243696c3fa2882e5c802b56e912bfbcc7ce
+	source = git+https://github.com/apache/parquet-cpp.git#commit=310ef0637276
+	sha256sums = SKIP
 
 pkgname = parquet-cpp
 
