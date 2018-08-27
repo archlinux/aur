@@ -1,14 +1,16 @@
 pkgbase = coda
 	pkgdesc = A distributed file system with disconnected operation.
-	pkgver = 6.11.1
+	pkgver = 6.14.0
 	pkgrel = 1
 	url = http://coda.cs.cmu.edu/
-	arch = i868
+	arch = i686
 	arch = x86_64
 	arch = armv7h
 	license = GPL
-	source = http://coda.cs.cmu.edu/coda/source/coda-6.11.1.tar.xz
-	sha512sums = 6726edeb3253f79ed648adfd503d3c5001e0145100c6b63eb13c289ee54aeecd9eb2af3717675cdd35162ae7760a344efb42a09234a8efbc950338b8e3c170a5"
+	depends = bash
+	depends = perl
+	source = http://coda.cs.cmu.edu/coda/source/coda-6.14.0.tar.xz
+	sha512sums = e131b7e4a8661af05708b55c4210e5ec88c7d46a9af4eb9a82267516f293da00ddf50a4279c88e22c5abb619263c56d42c7265a7fa2f2d81946fd7dd951e8d40
 
 pkgname = coda
 
