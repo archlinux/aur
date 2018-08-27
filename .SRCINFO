@@ -1,12 +1,12 @@
 pkgbase = lib32-libexosip2
-	pkgdesc = A library that hides the complexity of using SIP for multimedia session establishement
+	pkgdesc = A library that hides the complexity of using SIP for multimedia session establishement (32-bit)
 	pkgver = 5.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://savannah.nongnu.org/projects/exosip/
 	arch = x86_64
 	license = GPL
+	makedepends = lib32-gcc-libs
 	depends = lib32-glibc
-	depends = lib32-gcc-libs
 	depends = lib32-libosip2>=4.0.0
 	depends = lib32-openssl
 	depends = libexosip2
