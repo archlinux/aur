@@ -1,24 +1,27 @@
-# Maintainer: Anatol Pomozov
+# Contributor: Ivan Semkin (ivan at semkin dot ru)
+# Contributor: Anatol Pomozov
 
+_pkgname=bootimg-tools
 pkgname=bootimg-tools-git
-pkgver=r10.cc55014
+pkgver=r11.a7540ac
 pkgrel=1
 pkgdesc='Android boot.img creation and extraction tools'
 url='https://github.com/pbatard/bootimg-tools'
 license=(Apache)
-arch=(i686 x86_64)
+arch=(x86_64)
 depends=(glibc)
 makedepends=(git)
+conflicts=(android-tools)
 source=(git://github.com/pbatard/bootimg-tools)
 sha256sums=('SKIP')
 
 pkgver() {
-  cd bootimg-tools
+  cd "$_pkgname"
   echo r$(git rev-list --count master).$(git rev-parse --short master)
 }
 
 build() {
-  cd bootimg-tools
+  cd "$_pkgname"
   make
 }
 

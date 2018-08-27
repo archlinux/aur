@@ -1,13 +1,13 @@
 pkgbase = bootimg-tools-git
 	pkgdesc = Android boot.img creation and extraction tools
-	pkgver = r10.cc55014
+	pkgver = r11.a7540ac
 	pkgrel = 1
 	url = https://github.com/pbatard/bootimg-tools
-	arch = i686
 	arch = x86_64
 	license = Apache
 	makedepends = git
 	depends = glibc
+	conflicts = android-tools
 	source = git://github.com/pbatard/bootimg-tools
 	sha256sums = SKIP
 
