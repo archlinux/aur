@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 
 pkgname='python-pyarrow'
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="A columnar in-memory analytics layer for big data."
 arch=('x86_64')
@@ -12,7 +12,7 @@ checkdepends=('python-pytest')
 optdepends=()
 makedepends=('cmake' 'cython')
 source=("https://github.com/apache/arrow/archive/apache-arrow-$pkgver.tar.gz")
-sha256sums=('65f89a3910b6df02ac71e4d4283db9b02c5b3f1e627346c7b6a5982ae994af91')
+sha256sums=('2094cc6492e77ede19937375769de105603a50440a6257fefd4038f1176a0626')
 
 build(){
   cd "$srcdir/arrow-apache-arrow-$pkgver/python"
