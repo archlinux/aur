@@ -2,8 +2,9 @@
 
 pkgname=pi-hole-ftl
 _pkgname=FTL
+_servicename=pihole-FTL
 pkgver=4.0
-pkgrel=5
+pkgrel=6
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc="The Pi-hole FTL engine"
 url="https://github.com/pi-hole/FTL"
@@ -13,14 +14,16 @@ makedepends=('sqlite')
 conflicts=('dnsmasq')
 provides=('dnsmasq')
 install=$pkgname.install
-backup=('etc/pihole/pihole-FTL.conf')
+backup=('etc/pihole/pihole-FTL.conf' 'etc/pihole/pihole-FTL.db')
 source=("https://github.com/pi-hole/FTL/archive/v$pkgver.tar.gz"
 	"$pkgname.tmpfile"
 	"$pkgname.service"
+	"$pkgname.db"
 	"$pkgname.conf")
 md5sums=('923cc5cc17f57bb9a59407c1685d70aa'
          '5faa64558cc0a5888923fcf77c299fa7'
          'f3e42ec6f04180c6d6972998bf172a41'
+         '0495c002b7d5dce303d451e4cd2fede5'
          '2d6ae93eea48a09ce5bc5bf62e081dd4')
 
 prepare() {
@@ -69,8 +72,9 @@ package() {
 
   install -dm755 "$pkgdir"/etc/pihole
   install -Dm644 "$pkgname.conf" "$pkgdir"/etc/pihole/pihole-FTL.conf
+  install -Dm644 "$pkgname.db" "$pkgdir"/etc/pihole/pihole-FTL.db
 
-  install -Dm644 "$pkgname.service" "$pkgdir"/usr/lib/systemd/system/$pkgname.service
+  install -Dm644 "$pkgname.service" "$pkgdir"/usr/lib/systemd/system/$_servicename.service
   install -dm755 "$pkgdir/usr/lib/systemd/system/multi-user.target.wants"
-  ln -s ../$pkgname.service "$pkgdir/usr/lib/systemd/system/multi-user.target.wants/$pkgname.service"
+  ln -s ../$_servicename.service "$pkgdir/usr/lib/systemd/system/multi-user.target.wants/$_servicename.service"
 }
