@@ -1,31 +1,29 @@
 # Maintainer: Simon Hanna <simon dot hanna AT serve-me DOT info>
 
 pkgname=('mailman-core')
-_pkgbase='mailman'
-_commit=28dbc044a0d0c464c6800df6b5e27e2b25025b8d
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="A mailing list management system"
 arch=(any)
 conflicts=('mailman')
 makedepends=('python-setuptools')
 depends=('python-zope-interface' 'python-zope-event' 'python-zope-configuration'
-         'python-zope-component' 'python-passlib'
+         'python-zope-component' 'python-passlib' 'python-click'
          'python-flufl-lock' 'python-flufl-i18n' 'python-flufl-bounce' 'python-falcon'
          'python-alembic' 'python-lazr-config' 'python-lazr-smtptest'
          'python-aiosmtpd' 'python-atpublic' 'python-dnspython' 'python-requests'
-         'python-sqlalchemy' 'postfix')
+         'postfix')
 optdepends=('python-mailman-hyperkitty-plugin: Plugin to send emails to Hyperkitty for archival')
 url="https://gitlab.com/mailman/mailman"
 license=('LGPL')
 options=(!emptydirs)
 install=$pkgname.install
 backup=('var/lib/mailman/var/etc/mailman.cfg')
-source=("mailman-${pkgver}.tar.gz::https://gitlab.com/mailman/mailman/repository/archive.tar.gz?ref=${pkgver}"
-				'mailman.sysusers'
+source=("mailman-${pkgver}.tar.gz::https://gitlab.com/mailman/mailman/-/archive/${pkgver}/mailman-${pkgver}.tar.gz"
+        'mailman.sysusers'
         'mailman.service'
         'mailman.cfg')
-sha256sums=('fca0317ee15dca752786f7de5fa5750807484dd1d57ffa33fa5527c087611b2c'
+sha256sums=('17b9765b75e13b933df27aff01d634bd2ab6574bd4ee3b248b4f9ee9ed8dffc4'
             'a99bf88267184fee0568856ac09bb682224ee67029cfc20f603a43fe5f053dad'
             '81048cb6a27490fb36881b2eb88567b2ea2271b481dd0254fe9a398e6ca9beaf'
             'f48dac59786be58c6a8b5fe2a12f4f356872d87600be64506f22066508847f3a')
@@ -39,7 +37,7 @@ package() {
   install -dm 770 "$pkgdir/var/lib/mailman"
   install -Dm 644 "mailman.cfg" "$pkgdir/var/lib/mailman/var/etc/mailman.cfg"
 
-  cd "$srcdir/mailman-$pkgver-$_commit"
+  cd "$srcdir/mailman-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
