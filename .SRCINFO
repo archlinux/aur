@@ -1,7 +1,7 @@
 pkgbase = crashplan-pro
 	pkgdesc = An business online/offsite backup solution
 	pkgver = 6.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.crashplan.com/business
 	install = crashplan-pro.install
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = crashplan-pro
 	depends = java-runtime-headless=8
 	depends = alsa-lib
 	depends = gconf
-	depends = gtk2
+	depends = gtk3
 	depends = libxss
 	conflicts = crashplan
 	source = https://web-lbm-msp.crashplanpro.com/client/installers/CrashPlanSmb_6.8.2_1525200006682_369_Linux.tgz

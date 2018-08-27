@@ -7,12 +7,12 @@ _pkgname=crashplan
 pkgver=6.8.2
 _pkgtimestamp=1525200006682
 _pkgbuild=369
-pkgrel=1
+pkgrel=2
 pkgdesc="An business online/offsite backup solution"
 url="http://www.crashplan.com/business"
 arch=('x86_64')
 license=('custom')
-depends=('bash' 'java-runtime-headless=8' 'alsa-lib' 'gconf' 'gtk2' 'libxss')
+depends=('bash' 'java-runtime-headless=8' 'alsa-lib' 'gconf' 'gtk3' 'libxss')
 makedepends=('cpio')
 conflicts=('crashplan')
 install=crashplan-pro.install
