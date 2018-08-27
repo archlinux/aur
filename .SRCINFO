@@ -1,23 +1,22 @@
 pkgbase = halium-devel
 	pkgdesc = Metapackage to pull all dependencies required to build Halium
 	pkgver = 0.1
-	pkgrel = 1
-	url = https://wiki.archlinux.org/index.php/Android#Building_Android
+	pkgrel = 2
+	url = halium.org
 	arch = x86_64
 	license = None
 	depends = ffmpeg
 	depends = ninja
 	depends = lzop
 	depends = pngcrush
-	depends = pngcrush
 	depends = aosp-devel
 	depends = imagemagick
 	depends = simg-tools
-	depends = android-sdk-platform-tools
-	depends = bootimg-tools-git
+	depends = android-tools
 	depends = abootimg-git
 	depends = qemu
 	depends = qemu-user-static
+	depends = binfmt-qemu-static
 
 pkgname = halium-devel
 
