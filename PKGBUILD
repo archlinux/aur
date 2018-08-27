@@ -1,40 +1,42 @@
 # Maintainer: Pierre Lalet <pl@ivre.rocks>
 
-pkgname=ivre
+pkgname='ivre'
 pkgver=0.9.11
-pkgrel=1
-pkgdesc="Network recon framework"
-url="https://ivre.rocks/"
+pkgrel=2
+pkgdesc='Network recon framework'
 arch=('any')
+url='https://ivre.rocks/'
 license=('GPL3')
-depends=('python' 'python-crypto' 'python-pymongo' 'python-future'
-         'python-bottle')
-optdepends=('python-py2neo: flow analysis support'
-            'python-sqlalchemy: PostgreSQL backend support'
-            'python-psycopg2: PostgreSQL backend support'
-            'python-pillow: Screenshots'
+depends=('python' 'python-pymongo' 'python-future' 'python-bottle')
+optdepends=('python-py2neo: experimental flow analysis (Neo4j backend)'
+            'python-sqlalchemy: experimental PostgreSQL & SQLite backends'
+            'python-psycopg2: experimental PostgreSQL backend'
+            'python-pillow: trim screenshots on insertion'
+            'tesseract: extract words from screenshots on insertion'
+            'python-crypto: extract data from public keys ("ivre getmoduli")'
+            'python-scapy: parse PCAP files for ARP inspection (flow analysis)'
+            'python-matplotlib: create graphs from command line tools'
             'python-dbus: 3D traceroute graphs'
-            'python-matplotlib: Plots'
             'mongodb: database server'
-            'postgresql: database server'
+            'postgresql: database server (experimental backend)'
+            'neo4j-community: database server (experimental flow analysis)'
             'apache: Web server'
+            'mod_wsgi: Web server'
             'dokuwiki: Web server (notebook)'
             'nmap: Network scan'
             'masscan: Network scan'
-            'zmap: Network scan'
             'bro: Network traffic analysis'
             'argus: Network traffic analysis'
             'nfdump: Netflow analysis'
-            'phantomjs: Screenshots (http)'
-            'imagemagick: Screenshots'
-            'ffmpeg: Screenshots (rtsp)'
-            'tesseract: Screenshots analysis')
+            'imagemagick: Screenshots via Nmap scripts'
+            'phantomjs: HTTP screenshots via Nmap script'
+            'ffmpeg: RTSP Screenshots via Nmap script')
 makedepends=('python-setuptools')
 backup=('etc/httpd/conf/extra/ivre.conf')
 source=("https://files.pythonhosted.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz"
         "https://raw.githubusercontent.com/cea-sec/$pkgname/v$pkgver/pkg/apache/ivre.conf")
 sha256sums=('95f456024b101d8a834a5f1a6925cb8b8e4f5067d57fbe02e54f7183555cccef'
-            '9c7267b7b2bde354e03a0cf683b56c0ca2410296bdd7424a964fb2b4f14c7ee3')
+            '1befe4daf20ccdf1b1906de244df2de5519843210e95491f3d8fe62ec660848c')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
