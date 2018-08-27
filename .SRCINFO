@@ -1,0 +1,18 @@
+pkgbase = birdwatcher
+	pkgdesc = An HTTP API server for the BIRD routing daemon
+	pkgver = r190.5b5b1e2
+	pkgrel = 1
+	url = https://github.com/ecix/birdwatcher
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = go
+	options = !strip
+	options = !emptydirs
+	source = birdwatcher4.service
+	source = birdwatcher6.service
+	md5sums = 98c680d53e514274a309ee2d9e3a09b6
+	md5sums = 5cafb43834c8212e421246e8cd8186c7
+
+pkgname = birdwatcher
+

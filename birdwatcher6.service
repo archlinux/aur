@@ -1,0 +1,10 @@
+[Unit]
+Description=BIRDwatcher IPv6 
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/birdwatcher -6 -config /etc/birdwatcher.conf
+
+[Install]
+WantedBy=multi-user.target
