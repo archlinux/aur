@@ -1,0 +1,18 @@
+pkgbase = vim-calendar-git
+	pkgdesc = Vim-Calendar creates a calendar window you can use within vim. It is useful in its own right as a calendar-inside-vim. It also provides hooks to customise its behaviour, making it a good basis for writing new plugins which require calendar functionality.
+	pkgver = im7ish.r52.g867d0cd
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/mattn/calendar-vim
+	arch = any
+	groups = vim-plugins
+	license = PublicDomain
+	makedepends = git
+	depends = vim
+	provides = vim-calendar
+	conflicts = vim-calendar
+	source = git+https://github.com/mattn/calendar-vim.git
+	sha256sums = SKIP
+
+pkgname = vim-calendar-git
+
