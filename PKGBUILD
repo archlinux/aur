@@ -1,118 +1,124 @@
-# Maintainer: Moritz Maxeiner <moritz@ucworks.org>
-
+# Maintainer: Daniel Kozak (kozzi) <kozzi11@gmail.com>
+# Maintainer: Filipe Laíns (FFY00) <lains@archlinux.org>
 # Contributor: Mihails Strasuns <public@dicebot.lv>
+# Contributor: Moritz Maxeiner <moritz@ucworks.org>
 # Contributor: Jerome Berger <jeberger@free.fr>
 # Contributor: Jesus Alvarez <jeezusjr@gmail.com>
+# Contributor: Allan McRae <allan@archlinux.org>
+# Contributor: Elijah Stone <elronnd@elronnd.net>
+# Contributor: Daniel Kozak <kozzi11@gmail.com>
 
-pkgname=gdc-git
-_gitname=gdc
-_gccver=4.9
-#_gccsnapshot=20131027
-_gccsnapshot=20140416
-pkgver=4.9.20140416.1325.3209d01
+pkgname=('gdc' 'libgphobos')
+pkgver=8.1.1+20180531
+_majorver=${pkgver:0:1}
+_islver=0.19
 pkgrel=1
-pkgdesc="GDC, The D Programming Language (D2) frontend for GCC. GIT master branch compiled with GCC trunk snapshot."
 arch=('i686' 'x86_64')
+license=('GPL3')
 url="https://github.com/D-Programming-GDC/GDC"
-license=('GPL')
-provides=('gdc' 'd-compiler' 'd-runtime' 'd-stdlib')
-depends=('perl' 'libmpc' 'cloog')
-makedepends=('binutils>=2.22' 'git')
-groups=('dlang' 'dlang-gdc')
-conflicts=('gdc1-bin' 'gdc1-hg' 'gdc')
-options=('!libtool' '!emptydirs' '!buildflags')
-source=(ftp://gcc.gnu.org/pub/gcc/snapshots/${_gccver}-${_gccsnapshot}/gcc-${_gccver}-${_gccsnapshot}.tar.bz2
-        ${_gitname}.tar.gz::git://github.com/D-Programming-GDC/GDC.git
-        folders.diff)
+makedepends=('binutils' 'git')
+source=("https://sources.archlinux.org/other/gcc/gcc-${pkgver/+/-}.tar.xz"
+        "http://isl.gforge.inria.fr/isl-$_islver.tar.bz2"
+        'gdc::git+https://github.com/D-Programming-GDC/GDC.git'
+        'git+https://github.com/D-Programming-GDC/GDMD.git'
+        'paths.diff')
+sha512sums=('a92eb923a4368548666acfc619074c76c4f6cdc34c9348f7e7aa56656aaee0d5'
+            'd59726f34f7852a081fbd3defd1ab2136f174110fc2e0c8d10bb122173fa9ed8'
+            'SKIP'
+            'SKIP'
+            'bb4219be52f61de48fc02f522220f013f12859a03c678417b03a1c8ee783d9dd')
 
-pkgver()
-{
-  cd "${srcdir}"/${_gitname}
-  echo ${_gccver}.${_gccsnapshot}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
-}
+_libdir=usr/lib/gcc/$CHOST/${pkgver%%+*}
 
-prepare()
-{
-  cd "${srcdir}"/gcc-${_gccver}-${_gccsnapshot}
+prepare() {
+  [[ ! -d gcc ]] && ln -s gcc-${pkgver/+/-} gcc
+  cd gcc
+
+  # link isl for in-tree build
+  ln -s ../isl-$_islver isl
 
   # Do not run fixincludes
   sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
 
-  # Arch Linux installs x86_64 libraries in /lib
-  [[ $CARCH == "x86_64" ]] && sed -i '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64
+  # Arch Linux installs x86_64 libraries /lib
+  sed -i '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64
 
   # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
 
-  cd "${srcdir}"/${_gitname}
-  git apply "$srcdir"/folders.diff # fix gdc_include_path
-  ./setup-gcc.sh ../gcc-${_gccver}-${_gccsnapshot}
+  # GDC setup
+  cd $srcdir/gdc
+  git checkout gdc-8-stable
+  git apply $srcdir/paths.diff
+  ./setup-gcc.sh ../gcc
 
-  mkdir "${srcdir}"/gcc-build
+  mkdir $srcdir/gcc-build
 }
 
-build()
-{
-  cd "${srcdir}"/gcc-build
+build() {
+  cd $srcdir/gcc-build
 
-  "${srcdir}"/gcc-${_gccver}-${_gccsnapshot}/configure --prefix=/usr \
-        --libdir=/usr/lib --libexecdir=/usr/lib \
-        --mandir=/usr/share/man --infodir=/usr/share/info \
-        --with-bugurl=https://bugs.archlinux.org/ \
-        --enable-languages=d \
-        --enable-shared --enable-threads=posix \
-        --with-system-zlib --enable-__cxa_atexit \
-        --disable-libunwind-exceptions --enable-clocale=gnu \
-        --disable-libstdcxx-pch \
-        --enable-gnu-unique-object --enable-linker-build-id \
-        --enable-cloog-backend=isl --disable-cloog-version-check \
-        --enable-lto --enable-gold --enable-ld=default \
-        --enable-plugin --with-plugin-ld=ld.gold \
-        --with-linker-hash-style=gnu --disable-install-libiberty \
-        --disable-multilib --disable-libssp --disable-werror \
-        --disable-nls --disable-bootstrap \
-        --disable-libgomp --disable-libmudflap --disable-libquadmath
+  # using -pipe causes spurious test-suite failures
+  # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48565
+  export CFLAGS="${CFLAGS/-pipe/} -O2"
+  export CXXFLAGS="${CXXFLAGS/-pipe/} -O2"
+
+  $srcdir/gcc/configure --prefix=/usr \
+                        --libdir=/usr/lib \
+                        --libexecdir=/usr/lib \
+                        --mandir=/usr/share/man \
+                        --infodir=/usr/share/info \
+                        --with-bugurl=https://bugs.archlinux.org/ \
+                        --enable-shared \
+                        --enable-static \
+                        --enable-threads=posix \
+                        --enable-libmpx \
+                        --with-system-zlib \
+                        --with-isl \
+                        --enable-__cxa_atexit \
+                        --disable-libunwind-exceptions \
+                        --enable-clocale=gnu \
+                        --disable-libstdcxx-pch \
+                        --disable-libssp \
+                        --enable-gnu-unique-object \
+                        --enable-linker-build-id \
+                        --enable-plugin \
+                        --enable-install-libiberty \
+                        --with-linker-hash-style=gnu \
+                        --enable-gnu-indirect-function \
+                        --enable-default-pie \
+                        --disable-multilib \
+                        --disable-werror \
+                        --enable-languages=d \
+                        gdc_include_dir=/usr/include/dlang/gdc
+
+                        #--enable-lto \
+                        #--enable-gold \
+
 
   make
 }
 
-package()
-{
-  #cd "${srcdir}"/gcc-build
+package_gdc-git() {
+  depends=('gcc' 'perl' 'binutils' 'libgphobos')
+  provides=('d-compiler=2.076.1')
+  pkgdesc="Compiler for D programming language which uses gcc backend"
 
-  # Easier to just do a full install and remove the excess later
-  #make DESTDIR=${pkgdir} install
+  # Binaries
+  install -Dm 755 gcc-build/gcc/gdc "$pkgdir"/usr/bin/gdc
+  install -Dm 755 gcc-build/gcc/cc1d "$pkgdir"/$_libdir/cc1d
+  install -Dm 755 GDMD/dmd-script "$pkgdir"/usr/bin/gdmd
 
-  # Delete all the stuff we don't need
-  # rm -rf ${pkgdir}/usr/lib/gcc/${CHOST}/${_gccver}-${_gccsnapshot}/{*.a,*.so*,lto-wrapper,lto1,plugin*}
-  # rm -rf ${pkgdir}/usr/lib/gcc/${CHOST}/${_gccver}-${_gccsnapshot}/{crt*,cc1,collect2,include*,install*}
-  #rm -rf ${pkgdir}/usr/share/info
-  #rm -rf ${pkgdir}/usr/lib/{libgcc*,libiberty*,libitm*,libstdc++*,libsupc++*,libasan*,libtsan*}
-  #rm -rf ${pkgdir}/usr/share/man/man1/{cpp,gc,g++}*
-  #rm -rf ${pkgdir}/usr/share/man/man7/{fsf,gfdl,gpl}*
-  #rm -rf ${pkgdir}/usr/bin/{gcc,gcov,cpp,${CHOST}-gcc,${CHOST}-gcc-${_gccver}-${_gccsnapshot},c++,g++,${CHOST}-c++,${CHOST}-g++}
-  #rm -rf ${pkgdir}/usr/bin/{gcc-ar,gcc-nm,gcc-ranlib,${CHOST}-gcc-ar,${CHOST}-gcc-nm,${CHOST}-gcc-ranlib}
-
-  # Fix permissions
-  #chmod 644 ${pkgdir}/usr/lib/*
-  #chmod 755 ${pkgdir}/usr/lib/gcc
-
-  # gdc
-  install -D -m755 "${srcdir}"/gcc-build/gcc/gdc "${pkgdir}"/usr/bin/gdc
-  install -D -m755 "${srcdir}"/gcc-build/gcc/cc1d "${pkgdir}"/usr/lib/gcc/${CHOST}/${_gccver}/cc1d
-
-  # druntime
-  install -D "${srcdir}"/gdc/libphobos/libdruntime/object.di "${pkgdir}"/usr/include/dlang/gdc/${pkgver}/object.di
-  cp -r "${srcdir}"/gdc/libphobos/libdruntime/core "${pkgdir}"/usr/include/dlang/gdc/${pkgver}/core
-  cp -r "${srcdir}"/gdc/libphobos/libdruntime/gcc "${pkgdir}"/usr/include/dlang/gdc/${pkgver}/gcc
-
-  # phobos
-  cp "${srcdir}"/gdc/libphobos/src/crc32.d "${pkgdir}"/usr/include/dlang/gdc/${pkgver}/crc32.d
-  cp -r "${srcdir}"/gdc/libphobos/src/std "${pkgdir}"/usr/include/dlang/gdc/${pkgver}/std
-  cp -r "${srcdir}"/gdc/libphobos/src/etc "${pkgdir}"/usr/include/dlang/gdc/${pkgver}/etc
-
-  install -D -m644 "${srcdir}"/gcc-build/${CHOST}/libphobos/src/libgphobos2.a "${pkgdir}"/usr/lib/libgphobos2.a
+  # Doc
+  install -D -m644 $srcdir/GDMD/dmd-script.1 $pkgdir/usr/share/man/man1/gdmd.1
 }
-sha256sums=('a1bac4e9fe8d8eca0c70fe22374e34abecd138dfc49130b01d73133f68b03b48'
-            'SKIP'
-            '82f1ba0825164a74660bd5008d8f3acae1bacc3271c86475efc1601fe0da73c4')
+
+
+package_libgphobos-git() {
+  pkgdesc="Standard library for D programming language, GDC port"
+  provides=('d-runtime' 'd-stdlib')
+  options=('staticlibs')
+
+  cd $srcdir/gcc-build
+  make -C $CHOST/libphobos DESTDIR="$pkgdir" install
+}
