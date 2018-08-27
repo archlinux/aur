@@ -13,8 +13,8 @@ pkgbase = python-jupyter_kernel_gateway
 	depends = python-traitlets
 	depends = python-tornado
 	depends = python-requests
-	source = https://pypi.python.org/packages/a9/e5/34b171dec6a1172c8358717c76ecd9dd1fb154c44c73e05f10697491d01b/jupyter_kernel_gateway-2.0.2.tar.gz
-	md5sums = de5435b1f865f357385ec15a3ab989ab
+	source = https://files.pythonhosted.org/packages/1d/b5/64a86ba0d97ff6f83385b4f3d7ae27e67fd134da6f9dc3cafe8cde031dcc/jupyter_kernel_gateway-2.0.2.tar.gz
+	sha256sums = 7fb26c04e1cd16ddbf9184a4cb0b74e90031b72b48f1c659e22ecaa8b49a95ce
 
 pkgname = python-jupyter_kernel_gateway
 
