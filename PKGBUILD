@@ -158,8 +158,8 @@ build() {
   if [[ -e $srcdir/batch_opts ]] ; then
     source "$srcdir/batch_opts"
     # enable cpu optimisations acording to $CPU and enable pkgopt
-    if [[ "$CPU" ]] ; then
-      CPU=${CPU^^}
+    if [[ "$LCPU" ]] ; then
+      CPU=${LCPU^^}
       sed -e "s|# CONFIG_M$CPU is not set|CONFIG_M$CPU=y|" \
           -e '/CONFIG_GENERIC_CPU=y/d' \
           -i "$srcdir/linux-${_basekernel}/.config"
@@ -262,14 +262,14 @@ build() {
     # Give option to rename package according to CPU
     echo
     if [[ "$CPU" != "GENERIC" ]]; then
-      lcpu=$(tr '[:upper:]' '[:lower:]' <<< $CPU)
-      lcpu=$(sed -e "s/entium//" <<<$lcpu)
+      LCPU=$(tr '[:upper:]' '[:lower:]' <<< $CPU)
+      LCPU=$(sed -e "s/entium//" <<<$LCPU)
       echo "=============================================================="
       msg "An non-generic CPU was selected for this kernel."
       echo
       msg "Hit <G>     :  to create a generic package named linux-pf"
       msg "Hit <ENTER> :  to create a package named after the selected CPU"
-      msg "               (linux-pf-${lcpu} - recommended default)"
+      msg "               (linux-pf-${LCPU} - recommended default)"
       echo
       msg "This option affects ONLY the package name. Whether or not the"
       msg "kernel is optimized was determined at the previous config step."
@@ -288,6 +288,7 @@ build() {
   # only export non-generic
   if [[ $CPU != GENERIC ]] ; then
     export CPU
+    export LCPU
   fi
   
   #----------------------------------------
@@ -629,11 +630,12 @@ done
 if [ "$makepkg_version" ] ; then
   if in_array ${source[*]} batch_opts ; then #FIXME bugs updpkgsums
     source batch_opts
-    package[0]=linux-pf${CPU+-}${CPU,,}
   fi
 fi
 
-eval "package_linux-pf${CPU+-$CPU,,}() {
+pkgname[0]=linux-pf${LCPU+-}${LCPU}
+
+eval "package_linux-pf${LCPU+-$LCPU}() {
      $(declare -f "_package")
      _package
      }"
