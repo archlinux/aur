@@ -1,7 +1,7 @@
 # Maintainer: Vincent Loupmon <vloupmong@gmail.com>
 
 pkgname=slit
-pkgver=20170426
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A modern PAGER for viewing logs, get more than most in less time. Written in Go"
 arch=('x86_64' 'i686')
@@ -9,12 +9,19 @@ url="https://github.com/tigrawap/slit"
 license=('MIT')
 makedepends=('go' 'git')
 options=('!strip' '!emptydirs')
+source=("git+https://github.com/tigrawap/slit#commit=f1d770e")
+md5sums=('SKIP')
 _gourl=github.com/tigrawap/slit
+
+pkgver() {
+  cd slit
+  git describe --tags | tr - .
+}
 
 build() {
   export GOROOT=/usr/lib/go
-
-  rm -rf build
+  export GOFLAGS='-gcflags "all=-trimpath=${GOPATH}" -asmflags "all=-trimpath=${GOPATH}"'
+  [[ -d build ]] && rm -rf build
   mkdir -p build/go
   cd build/go
 
