@@ -4,7 +4,7 @@
 # Contributor: Rafał Michalski <plum.michalski at gmail dot com>
 pkgname="burp-backup-dev"
 _pkgname="burp"
-pkgver=2.2.6
+pkgver=2.2.8
 pkgrel=1
 pkgdesc="A next generation experimental version of the burp backup and restore program."
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ source=(
   "readme-archlinux.txt"
 )
 
-sha256sums=('6c0812d9aca4fae0bfced087c3025f80f59bf9246695fcc27da10a11d9b9d17e'
+sha256sums=('8350266b5c91807fe1df8979c2338241ca13848a3c91ad47f8897c88f999ade1'
             '1d2c97471494dd5924bd0676e817ebfac54465c4ec0e23b49ad1c3c91d36460f'
             '94e1b5f8cf61c44f84675f685279e0d3376abd61ac1e6e4f5da0dd6b922c481f'
             '7908970e23cfb08554cbf53da1f8f3193a6b6ee076584f797644efab8431bfe3'
