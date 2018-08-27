@@ -10,8 +10,9 @@
 pkgname=('gdc-stable' 'libgphobos-stable')
 pkgver=8.2.0
 _majorver=${pkgver:0:1}
-pkgrel=1
+pkgrel=2
 _islver=0.19
+_dversion=2.068.0
 arch=('i686' 'x86_64')
 license=('GPL')
 url='https://github.com/D-Programming-GDC/GDC'
@@ -73,6 +74,7 @@ build() {
 		--mandir=/usr/share/man \
 		--infodir=/usr/share/info \
 		--with-bugurl=https://bugs.archlinux.org/ \
+		--with-pkgversion="$_dversion" \
 		--enable-shared \
 		--enable-static \
 		--enable-threads=posix \
@@ -105,7 +107,7 @@ build() {
 
 package_gdc-stable() {
 	depends=('gcc' 'perl' 'binutils' 'libgphobos-stable')
-	provides=('d-compiler=2.076.1' 'gdc')
+	provides=("d-compiler=$_dversion" 'gdc')
 	replaces=('gdc')
 	conflicts=('gdc')
 	pkgdesc="Compiler for D programming language which uses gcc backend"

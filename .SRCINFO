@@ -1,6 +1,6 @@
 pkgbase = gdc-stable
 	pkgver = 8.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/D-Programming-GDC/GDC
 	arch = i686
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgname = gdc-stable
 	depends = perl
 	depends = binutils
 	depends = libgphobos-stable
-	provides = d-compiler=2.076.1
+	provides = d-compiler=2.068.0
 	provides = gdc
 	conflicts = gdc
 	replaces = gdc
