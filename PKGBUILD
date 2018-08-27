@@ -4,18 +4,23 @@ pkgname=fragments
 pkgver=1.1
 pkgrel=1
 pkgdesc="A GTK3 BitTorrent client following the GNOME Human Interface Guidelines"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=(i686 x86_64 armv6h armv7h)
 url="https://github.com/haecker-felix/Fragments"
-license=('GPL3')
-depends=('gtk3')
-makedepends=('git'
-             'gobject-introspection'
-             'libdazzle'
-             'meson'
-             'vala')
+license=(GPL3)
+depends=(curl
+         gtk3
+         libb64
+         libevent
+         libnatpmp
+         miniupnpc)
+makedepends=(git
+             gobject-introspection
+             libdazzle
+             meson
+             vala)
 conflicts=("$pkgname-git")
 source=("git+https://github.com/haecker-felix/Fragments.git#tag=${pkgver}")
-md5sums=('SKIP')
+md5sums=(SKIP)
 
 prepare() {
     cd Fragments

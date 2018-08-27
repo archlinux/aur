@@ -13,7 +13,12 @@ pkgbase = fragments
 	makedepends = libdazzle
 	makedepends = meson
 	makedepends = vala
+	depends = curl
 	depends = gtk3
+	depends = libb64
+	depends = libevent
+	depends = libnatpmp
+	depends = miniupnpc
 	conflicts = fragments-git
 	source = git+https://github.com/haecker-felix/Fragments.git#tag=1.1
 	md5sums = SKIP
