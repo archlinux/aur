@@ -1,7 +1,7 @@
 pkgbase = linux-mainline
-	pkgver = 4.18
+	pkgver = 4.19rc1
 	pkgrel = 1
-	url = https://www.kernel.org/
+	url = https://git.archlinux.org/linux.git/log/?h=v
 	arch = x86_64
 	license = GPL2
 	makedepends = xmlto
@@ -10,16 +10,19 @@ pkgbase = linux-mainline
 	makedepends = bc
 	makedepends = libelf
 	makedepends = git
+	makedepends = python-sphinx
+	makedepends = graphviz
 	options = !strip
-	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=v4.18
+	source = linux-mainline::git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=v4.19-rc1
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
 	source = linux.preset
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
 	sha256sums = SKIP
-	sha256sums = 0269d9a56f0d0306c9bd5c179a7e32214b0a1c082d3bca581661203b27305f17
+	sha256sums = b2d33bfc5cbd455037921b1b88d0b4f5e1173bbcf3fc49a165311bab86d32ec6
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
@@ -30,7 +33,7 @@ pkgname = linux-mainline
 	depends = coreutils
 	depends = linux-firmware
 	depends = kmod
-	depends = mkinitcpio>=0.7
+	depends = mkinitcpio
 	optdepends = crda: to set the correct wireless channels of your country
 	backup = etc/mkinitcpio.d/linux-mainline.preset
 
