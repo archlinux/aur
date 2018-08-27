@@ -2,9 +2,9 @@
 
 pkgname=perl-shell
 _realname=Shell
-pkgver=0.72
-_pkgver=0.72_01
-pkgrel=2
+pkgver=0.73
+_pkgver=0.73
+pkgrel=1
 pkgdesc="Run shell commands transparently within perl."
 arch=(any)
 license=('PerlArtistic')
@@ -12,7 +12,7 @@ url="http://search.cpan.org/dist/${_realname}/"
 depends=('perl>=5.011')
 options=(!emptydirs)
 source=(http://search.cpan.org/CPAN/authors/id/F/FE/FERREIRA/${_realname}-${_pkgver}.tar.gz)
-sha256sums=('823c044e668239be0ac96d0006f5fc9646b8a9a8adfd5f58f2dcd297e875106f')
+sha256sums=('f7dbebf65261ed0e5abd0f57052b64d665a1a830bab4c8bbc220f235bd39caf5')
 
 build() {
   cd ${srcdir}/${_realname}-${_pkgver}
