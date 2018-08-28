@@ -1,0 +1,22 @@
+diff -u -r -N my_basic/makefile my_basic-makefile/makefile
+--- my_basic/makefile	2018-08-28 20:17:25.725132293 +0200
++++ my_basic-makefile/makefile	2018-08-28 20:32:42.807023449 +0200
+@@ -1,3 +1,5 @@
++CFLAGS=-Os
++
+ OS := $(shell uname -s)
+ IS_APPLE := $(shell echo $(OS)|grep -i darwin)
+ 
+@@ -10,10 +12,10 @@
+ endif
+ 
+ main.o : shell/main.c core/my_basic.h
+-	cc -Os -c shell/main.c -Wno-unused-result
++	cc $(CFLAGS) -c shell/main.c -Wno-unused-result
+ 
+ my_basic.o : core/my_basic.c core/my_basic.h
+-	cc -Os -c core/my_basic.c -Wno-multichar -Wno-overflow -Wno-unused-result
++	cc $(CFLAGS) -c core/my_basic.c -Wno-multichar -Wno-overflow -Wno-unused-result
+ 
+ clean :
+ 	rm -f main.o my_basic.o output/my_basic_bin output/my_basic_bin.exe
