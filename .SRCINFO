@@ -1,0 +1,18 @@
+pkgbase = ocaml-base-git
+	pkgdesc = Full standard library replacement for OCaml
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/janestreet/base
+	arch = x86_64
+	license = Apache
+	makedepends = dune
+	depends = ocaml
+	depends = ocaml-sexplib0
+	provides = ocaml
+	replaces = ocaml
+	options = !strip
+	source = base::git+https://github.com/janestreet/base.git
+	md5sums = SKIP
+
+pkgname = ocaml-base-git
+
