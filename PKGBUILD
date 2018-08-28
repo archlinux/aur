@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=cilium-git
-pkgver=v1.2.0.rc3.r1334.ge23f8469e
+pkgver=v1.2.1.r1473.gdfa1e1449
 pkgrel=1
 pkgdesc="API-aware Networking and Security for Containers based on BPF"
 arch=('x86_64')
