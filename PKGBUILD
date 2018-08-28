@@ -2,7 +2,7 @@
 pkgbase=python-mutatormath
 pkgname=(python-mutatormath python2-mutatormath)
 _pkgname=MutatorMath
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc='A library for the calculation of piecewise linear interpolations in n-dimensions with any number of masters.'
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python' 'python-fonttools' 'python-ufolib' 'python-defcon' 'python-fon
 makedepends=('python-pip' 'python2-pip')
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/py2.py3/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}-py2.py3-none-any.whl")
-sha256sums=('46bb5209af53ee245d0e6cb9fe47f4f5718db7c158136715cd28494b239395c5')
+sha256sums=('e6da8ae2a7008085ee0bac6d62737d37b90ce4a883d89a0f3d5c19dd350b0538')
 
 package_python-mutatormath() {
   depends=('python' 'python-fonttools' 'python-ufolib' 'python-defcon' 'python-fontmath')
