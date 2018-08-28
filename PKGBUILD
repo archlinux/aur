@@ -3,7 +3,7 @@
 pkgname=babel-eslint
 pkgver=9.0.0
 pkgrel=1
-pkgdesc='Custom parser for ESLint'
+pkgdesc="A wrapper for Babel's parser used for ESLint"
 arch=('any')
 url='https://github.com/babel/babel-eslint'
 license=('MIT')
