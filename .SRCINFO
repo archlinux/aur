@@ -25,6 +25,7 @@ pkgbase = idjc
 	depends = twolame
 	depends = vorbis-tools
 	optdepends = mysql-python: Ampache and Prokyon 3 support
+	optdepends = python2-irc: IRC notification support
 	conflicts = idjc-git
 	source = http://downloads.sourceforge.net/idjc/idjc-0.8.17.tar.gz
 	md5sums = 47f13035d94f5c378bf237c335194a4d

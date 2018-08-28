@@ -1,6 +1,6 @@
 # Maintainer: robertfoster
-# Contributor: Tobias Luther <tobias [at] tonstrom [dot] de> 
-# Contributor: GraveDigger 
+# Contributor: Tobias Luther <tobias [at] tonstrom [dot] de>
+# Contributor: GraveDigger
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 
 pkgname=idjc
@@ -11,38 +11,39 @@ url='http://idjc.sourceforge.net/'
 license=('GPL2')
 arch=('i686' 'x86_64')
 depends=('python2-dbus'
-	'desktop-file-utils'
-	'ffmpeg'
-	'flac'
-	'glib2'
-	'jack'
-	'lame'
-	'libmad'
-	'libsamplerate'
-	'libshout-idjc'
-	'libsndfile'
-	'mutagen'
-	'pygtk'
-	'python2'
-	'speex'
-	'twolame'
-	'vorbis-tools'
+    'desktop-file-utils'
+    'ffmpeg'
+    'flac'
+    'glib2'
+    'jack'
+    'lame'
+    'libmad'
+    'libsamplerate'
+    'libshout-idjc'
+    'libsndfile'
+    'mutagen'
+    'pygtk'
+    'python2'
+    'speex'
+    'twolame'
+    'vorbis-tools'
 )
 
-optdepends=('mysql-python: Ampache and Prokyon 3 support')
+optdepends=('mysql-python: Ampache and Prokyon 3 support'
+'python2-irc: IRC notification support')
 conflicts=('idjc-git')
 install=${pkgname}.install
 source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 
 build() {
-   cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}-${pkgver}"
 
-   export PYTHON=/usr/bin/python2
+    export PYTHON=/usr/bin/python2
     ./configure \
         --prefix=/usr \
         --libexecdir=/usr/lib \
         --disable-static
-   make
+    make
 }
 
 package() {
