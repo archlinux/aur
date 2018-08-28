@@ -1,0 +1,22 @@
+pkgbase = ceres-solver-git
+	pkgdesc = Solver for nonlinear least squares problems
+	pkgver = r1397.402a2e4b
+	pkgrel = 1
+	url = http://ceres-solver.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = gcc-libs
+	makedepends = cmake
+	depends = google-glog>=0.3.4
+	depends = eigen>=3.3.0
+	depends = suitesparse>=4.4.5
+	optdepends = openmp
+	provides = ceres-solver=r1397.402a2e4b
+	conflicts = ceres-solver
+	options = staticlibs
+	source = ceres-solver-git::git+https://github.com/ceres-solver/ceres-solver.git
+	sha256sums = SKIP
+
+pkgname = ceres-solver-git
+
