@@ -2,7 +2,7 @@
 
 pkgname=perl-b-hooks-parser
 pkgver=0.19
-pkgrel=1
+pkgrel=2
 pkgdesc="Interface to perl's parser variables"
 _dist=B-Hooks-Parser
 arch=('any')

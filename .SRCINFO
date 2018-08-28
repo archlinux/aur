@@ -1,7 +1,7 @@
 pkgbase = perl-b-hooks-parser
 	pkgdesc = Interface to perl's parser variables
-	pkgver = 0.16
-	pkgrel = 1
+	pkgver = 0.19
+	pkgrel = 2
 	url = https://metacpan.org/module/B-Hooks-Parser
 	arch = any
 	license = GPL
@@ -12,8 +12,8 @@ pkgbase = perl-b-hooks-parser
 	depends = perl-test-exception
 	options = !emptydirs
 	options = purge
-	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/B-Hooks-Parser-0.16.tar.gz
-	md5sums = 5db64fd81d0c294d86af241529131680
+	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/B-Hooks-Parser-0.19.tar.gz
+	md5sums = 5ea29de2b6dc0aab04dec2aa7d9d7805
 
 pkgname = perl-b-hooks-parser
 
