@@ -14,16 +14,15 @@ pkgbase = ibrdtn
 	makedepends = automake
 	makedepends = autoconf
 	makedepends = pkgconf
+	depends = ibrcommon
 	depends = sqlite
 	depends = libcurl-compat
 	depends = libcurl-gnutls
 	depends = libnl
-	depends = libdaemon
 	depends = zlib
 	provides = ibrdtn
 	source = git://github.com/ibrdtn/ibrdtn.git
 	sha512sums = SKIP
 
 pkgname = ibrdtn
-
 
