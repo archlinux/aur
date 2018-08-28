@@ -12,21 +12,18 @@
 pkgbase=mesa-git
 pkgname=('mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=18.3.0_devel.104104.de57926dc9
+pkgver=18.3.0_devel.104414.4a8444d5bc
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'llvm-svn' 'clang-svn' 'xorgproto'
               'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libomxil-bellagio'
               'ocl-icd' 'vulkan-icd-loader' 'libgcrypt'  'wayland' 'wayland-protocols' 'meson')
-#  removed libclc from makedepends
 depends=('libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
          'libomxil-bellagio' 'llvm-libs-svn' 'libunwind' 'libglvnd' 'wayland' 'lm_sensors' 'libclc')
-# removed liblcl from depends
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
 provides=('mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau' 'vulkan-driver' 'opencl-mesa' 'opengl-driver' 'opencl-driver')
-# removed opencl-driver from provides
 conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau')
-url="http://mesa3d.sourceforge.net"
+url="https://www.mesa3d.org"
 license=('custom')
 source=('mesa::git://anongit.freedesktop.org/mesa/mesa'
         'LICENSE'
@@ -77,7 +74,6 @@ build () {
        -D gallium-opencl=icd \
        -D valgrind=false \
        -D tools=[]
-# remove -D gallium-opencl=icd \
     meson configure _build
     ninja -C _build
 }
