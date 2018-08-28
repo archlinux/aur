@@ -21,7 +21,7 @@ provides=(
 'java-runtime=10'
 'java-runtime-headless=10'
 )
-makedepends=('coreutils' 'bash' 'wget')
+makedepends=('coreutils' 'bash')
 source=("https://github.com/AdoptOpenJDK/openjdk10-openj9-releases/releases/download/jdk-${_majver_java}.${_pkgver_minweb}_openj9-${_openj_ver}/OpenJDK${_majver_java}-OPENJ9_x64_Linux_jdk-${_majver_java}.${_pkgver_minor}_openj9-${_openj_ver}.tar.gz")
 noextract=("OpenJDK${_majver_java}-OPENJ9_x64_Linux_jdk-${pkgver}_openj9-${_pkgver_minweb}.tar.gz")
 # https://github.com/AdoptOpenJDK/openjdk9-openj9-releases/releases/download/jdk-9%2B181/OpenJDK9-OPENJ9_x64_Linux_jdk-9.181.sha256.txt

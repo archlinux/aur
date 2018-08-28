@@ -7,7 +7,6 @@ pkgbase = jdk10-openjdk-openj9-bin
 	license = custom
 	makedepends = coreutils
 	makedepends = bash
-	makedepends = wget
 	depends = java-environment-common
 	depends = ca-certificates-utils
 	depends = nss
