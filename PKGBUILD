@@ -3,7 +3,7 @@
 pkgname=pamac-aur
 _pkgver=6.9.0
 pkgver=$_pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc="A Gtk3 frontend for libalpm"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://gitlab.manjaro.org/applications/pamac"
@@ -15,7 +15,7 @@ depends=('glib2>=2.42' 'json-glib' 'libsoup' 'dbus-glib' 'polkit' 'vte3>=0.38' '
   optdepends=('polkit-gnome: needed for authentification in Cinnamon, Gnome'
               'lxsession: needed for authentification in Xfce, LXDE etc.'
               'pamac-tray-appindicator: tray icon for KDE')
-makedepends=('gettext' 'itstool' 'vala>=0.36.6' 'meson' 'ninja' 'git')
+makedepends=('gettext' 'itstool' 'vala>=0.36.6' 'meson' 'ninja' 'git' 'gobject-introspection')
 backup=('etc/pamac.conf')
 conflicts=('pamac')
 provides=('pamac')
