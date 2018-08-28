@@ -13,7 +13,7 @@ _gpgerrorver=1.32
 _libassuanver=2.5.1
 _gpgmever=1.11.1
 _gnupgver=2.2.9
-pkgrel=2
+pkgrel=3
 pkgdesc="Statically-compiled pacman (to fix or install systems without libc)"
 arch=('i686' 'x86_64')
 url="https://www.archlinux.org/pacman/"
@@ -98,7 +98,7 @@ build() {
     ./Configure --prefix="${srcdir}"/temp/usr \
                 --openssldir=/etc/ssl \
                 --libdir=lib \
-                no-shared \
+                -static \
                 no-ssl3-method \
                 ${optflags} \
                 "${openssltarget}" \
@@ -161,7 +161,7 @@ build() {
                 --disable-{dict,gopher,imap,imaps,ldap,ldaps,manual,pop3,pop3s,rtsp,scp,sftp,smb,smbs,smtp,smtps,telnet,tftp} \
                 --without-{brotli,libidn2,librtmp,libssh2} \
                 --disable-libcurl-option \
-                --without-ssl \
+                --with-ssl \
                 --enable-ares="${srcdir}"/temp/usr
     make -C lib
     make install-pkgconfigDATA
