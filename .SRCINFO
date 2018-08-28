@@ -1,0 +1,25 @@
+pkgbase = dtn-tools
+	pkgdesc = IBR-DTN - A modular and lightweight implementation of the bundle protocol
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ibrdtn/ibrdtn
+	arch = i686
+	arch = x86_64
+	license = Apache License 2.0
+	makedepends = git
+	makedepends = binutils
+	makedepends = gcc
+	makedepends = libtool
+	makedepends = cppunit
+	makedepends = automake
+	makedepends = autoconf
+	makedepends = pkgconf
+	depends = dtnd
+	depends = ibrdtn
+	depends = ibrcommon
+	provides = dtn-tools
+	source = git://github.com/ibrdtn/ibrdtn.git
+	sha512sums = SKIP
+
+pkgname = dtn-tools
+
