@@ -2,8 +2,8 @@
 # Maintainer: yuki-san <yuki.from.akita {at} gmail.com>
 
 pkgname=howm
-pkgver=1.4.2
-pkgrel=2
+pkgver=1.4.4
+pkgrel=1
 pkgdesc="Hitori Otegaru Wiki Modoki: A note-taking tool on Emacs."
 arch=('any')
 url="http://howm.sourceforge.jp/index.html"
@@ -13,7 +13,7 @@ depends=('emacs')
 optdepends=('ruby: HTML conversion and calendar support')
 install=${pkgname}.install
 source=("http://howm.sourceforge.jp/a/$pkgname-$pkgver.tar.gz")
-md5sums=('704001b8e4031e3293fc3eb1cb08befa')
+md5sums=('79e4846e9917589bed38344828d35908')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
