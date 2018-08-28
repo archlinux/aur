@@ -1,5 +1,5 @@
 pkgname=go-bin
-pkgver=1.10.3
+pkgver=1.11
 pkgrel=3
 provides=('go')
 pkgdesc='Compiler and tools for the Go programming language from Google'
@@ -9,10 +9,10 @@ license=('custom')
 depends=('bash' 'perl')
 optdepends=('java-environment: for running testsuite')
 options=('!strip' 'staticlibs')
-sha256sums_x86_64=('fa1b0e45d3b647c252f51f5e1204aba049cde4af177ef9f2181f43004f901035'
+sha256sums_x86_64=('b3fcf280ff86558e0559e185b601c9eade0fd24c900b4c63cd14d1d38613e499'
                  '4eaad54a24d35bf72234011eb141e6a0b712b9703587747792f9aeed1c1faf2b')
 source_x86_64=("https://storage.googleapis.com/golang/go${pkgver}.linux-amd64.tar.gz" etcgobin)
-sha256sums_i686=('acbe19d56123549faf747b4f61b730008b185a0e2145d220527d2383627dfe69'
+sha256sums_i686=('1a91932b65b4af2f84ef2dce10d790e6a0d3d22c9ea1bdf3d8c4d9279dfa680e'
                '4eaad54a24d35bf72234011eb141e6a0b712b9703587747792f9aeed1c1faf2b')
 source_i686=("https://storage.googleapis.com/golang/go${pkgver}.linux-386.tar.gz" etcgobin)
 
