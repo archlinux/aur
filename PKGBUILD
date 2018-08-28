@@ -33,20 +33,20 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-_srcver=4.18-arch1
+_srcver=4.18.5-arch1
 pkgver=${_srcver%-*}
 pkgrel=1
-_pdsversion=098u
+_pdsversion=098w
 arch=(x86_64)
 url="https://cchalpha.blogspot.co.uk/"
 license=(GPL2)
-makedepends=(xmlto kmod inetutils bc libelf git)
+makedepends=(xmlto kmod inetutils bc libelf git python-sphinx graphviz)
 options=('!strip')
 _srcname=linux-$_srcver
 _psd_patch="v4.18_pds${_pdsversion}.patch"
 _gcc_more_v='20180509'
 source=(
-  "$_srcname.tar.gz::https://github.com/archlinux/linux/archive/v$_srcver.tar.gz"
+  "$_srcname.tar.gz::https://git.archlinux.org/linux.git/snapshot/linux-$_srcver.tar.gz"
   config         # the main kernel config file
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
@@ -59,13 +59,13 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('211d069d65aa062e0e5f2aebafcb1f61b226e1bb0100ef6e60b3a5dc4fced27c'
-            '39a6f6fe97efb5a4c4c0e147748a0d00d4002f76c063d4e98cd6cdd059fd1961'
+sha256sums=('5c9253e2467f28757b13c9fe5fec23e3a132a830f9a9e3ec7c368870f6a1fa8f'
+            '1a4ff6cc164b44e0cc6ddaa624907283d2bc8eb7d10eae91eac3c0956cef5468'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
-            '24c9986367523bcc8418ec7bcb049284d1e6c057fa21a5e7d6fc55c6e629f888')
+            'ac54edcabbe40a70002a160f7068416f535ae4148c6640fb97883aa1b3351a7f')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
@@ -139,8 +139,7 @@ prepare() {
 
 build() {
   cd $_srcname
-
-  make bzImage modules
+  make bzImage modules htmldocs
 }
 
 _package() {
@@ -161,7 +160,7 @@ _package() {
   msg2 "Installing modules..."
   local modulesdir="$pkgdir/usr/lib/modules/$kernver"
   mkdir -p "$modulesdir"
-  make INSTALL_MOD_PATH="$pkgdir/usr" DEPMOD=/doesnt/exist modules_install
+  make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
 
   # a place for external modules,
   # with version file for building modules and running depmod from hook
@@ -173,11 +172,7 @@ _package() {
   # remove build and source links
   rm "$modulesdir"/{source,build}
 
-  msg2 "Running depmod..."
-  depmod -b "$pkgdir/usr" -E Module.symvers -e "$kernver"
-
   msg2 "Installing hooks..."
-
   # sed expression for following substitutions
   local subst="
     s|%PKGBASE%|$pkgbase|g
@@ -275,6 +270,10 @@ _package-headers() {
         strip -v $STRIP_SHARED "$file" ;;
     esac
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
+
+  msg2 "Adding symlink..."
+  mkdir -p "$pkgdir/usr/src"
+  ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase-$pkgver"
 
   msg2 "Fixing permissions..."
   chmod -Rc u=rwX,go=rX "$pkgdir"
