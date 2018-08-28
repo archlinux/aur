@@ -1,7 +1,8 @@
-# Maintainer: Firmy <firmianay@gmail.com>
+# Maintainer: Ding Xiao <tinocodfcdsa10@mails.tsinghua.edu.cn>
+# Contributor: Firmy <firmianay@gmail.com>
 pkgname=python2-pwntools
-pkgver=3.12.0
-pkgrel=2
+pkgver=3.13.0beta0
+pkgrel=1
 pkgdesc='A CTF framework and exploit development library.'
 arch=('any')
 url='https://github.com/Gallopsled/pwntools'
@@ -26,10 +27,11 @@ depends=('python2>=2.7'
          'python2-intervaltree'
          'python2-pip'
          'ropgadget')
-conflicts=('python2-pwntools' 'python2-pwntools-git')
+provides=('python2-pwntools')
+conflicts=('python2-pwntools')
 options=('strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Gallopsled/pwntools/archive/${pkgver}.tar.gz")
-sha256sums=('e743daa158a3ac1e958b52e61de47f3db6cec701379712eeda4f4a977ca32309')
+sha256sums=('c67aa5545f77e76dee270fa6ac2b7dfe31189aff7ebebb2dc57b786212892d6e')
 
 _repodir="pwntools-${pkgver}"
 
