@@ -10,8 +10,8 @@ license=('Apache')
 depends=('ocaml' 'ocaml-sexplib0')
 makedepends=('dune')
 options=('!strip')
-provides=("${pkgname%%-*git}")
-replaces=("${pkgname%%-*git}")
+provides=("${pkgname%%-git}")
+replaces=("${pkgname%%-git}")
 source=("base::git+https://github.com/janestreet/base.git")
 
 pkgver() {
