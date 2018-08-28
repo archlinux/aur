@@ -21,6 +21,7 @@ typedef struct app_data {
     String* portfolio_string;
     GtkBuilder* builder;
     char password[PASS_MAX];
+    time_t last_reload;
 } App_Data;
 
 /**

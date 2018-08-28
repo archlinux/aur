@@ -12,6 +12,7 @@ void window_main(void) {
     app.portfolio_string = NULL;
     app.builder = gtk_builder_new();
     app.password[0] = '\0';
+    app.last_reload = 0;
 
     // Read glade XML config file
     gtk_builder_add_from_file(app.builder, "/usr/share/tick/window_main.glade", NULL);
@@ -76,6 +77,11 @@ void check_list_add_api_data(void) {
 }
 
 void on_load_button_clicked(GtkButton* button) {
+    time_t now;
+    time(&now);
+    if (difftime(now, app.last_reload) <= 60)
+        return;
+
     if (strcmp(gtk_button_get_label(button), "Reload") == 0) { // Reload portfolio
         list_store_update();
         return;
@@ -134,6 +140,7 @@ void on_load_button_clicked(GtkButton* button) {
     app.portfolio_data = portfolio_info_array_init_from_portfolio_string(app.portfolio_string);
     if (app.portfolio_data != NULL) { // If file is not a length 0 JSON array
         check_list_create_from_string();
+        app.last_reload = now;
         api_info_array_store_data_batch(app.portfolio_data, CHECK);
         check_list_add_api_data();
     }
