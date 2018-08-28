@@ -1,7 +1,7 @@
 # Maintainer: liberodark
 
 pkgname=cycligent-git-tool
-pkgver=0.5.8
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Cross-platform, Actionable, Graphical Git Dashboard"
 arch=('x86_64')
