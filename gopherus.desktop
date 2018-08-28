@@ -1,0 +1,21 @@
+[Desktop Entry]
+Version=1.0
+Name=Gopherus
+GenericName=Gopher browser
+GenericName[en_GB]=Gopher browser
+GenericName[fr]=Navigateur gopher
+GenericName[it]=Browser gopher
+GenericName[nb]=Gopherleser
+Comment=Browse gopherspace
+Comment[de]=Gopher surfen
+Comment[en_GB]=Browse gopherspace
+Comment[fr]=Naviguer les sites Gopher
+Comment[it]=Esplora i siti Gopher
+Comment[nb]=Surf på Gopher
+Keywords=gopher;
+Type=Application
+Icon=gopherus
+Categories=SDL;Network;
+Exec=gopherus-sdl %F
+Terminal=false
+StartupNotify=true

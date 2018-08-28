@@ -1,0 +1,20 @@
+pkgbase = gopherus-svn
+	pkgdesc = Gopher client
+	pkgver = 1.1.r33
+	pkgrel = 1
+	url = http://gopherus.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = subversion
+	depends = ncurses
+	optdepends = sdl2
+	provides = gopherus
+	conflicts = gopherus
+	source = gopherus::svn://svn.code.sf.net/p/gopherus/code
+	source = gopherus.desktop
+	sha256sums = SKIP
+	sha256sums = dfce631c4c60761a5324e90dbe9938f9f74b21b68ee4e8c1bf8dc36018ad32cb
+
+pkgname = gopherus-svn
+
