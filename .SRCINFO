@@ -1,0 +1,17 @@
+pkgbase = perl-perlio-gzip
+	pkgdesc = Perl extension to provide a PerlIO layer to gzip/gunzip
+	pkgver = 0.20
+	pkgrel = 1
+	url = https://metacpan.org/pod/PerlIO::gzip
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=0
+	depends = zlib>=1:1.2.11
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/N/NW/NWCLARK/PerlIO-gzip-0.20.tar.gz
+	md5sums = 0393eae5d0b23df6cf40ed44af7d711c
+
+pkgname = perl-perlio-gzip
+
