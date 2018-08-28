@@ -1,13 +1,13 @@
 # Maintainer: Juliette Monsel <j_4321 at protonmail dot com>
 pkgname=checkmails
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="System tray unread mail checker using IMAP protocol"
 arch=('any')
 url="https://sourceforge.net/projects/checkmails"
 license=('GPL3')
 makedepends=('python-setuptools')
-depends=('python' 'tk' 'python-pillow' 'python-crypto' 'gettext' 'desktop-file-utils' 'libnotify')
+depends=('python' 'tk' 'python-pillow' 'python-pycryptodome' 'gettext' 'desktop-file-utils' 'libnotify')
 optdepends=('tktray: GUI toolkit for the system tray icon (at least one must be installed)',
             'pygtk: GUI toolkit for the system tray icon (at least one must be installed)',
             'python-pyqt5: GUI toolkit for the system tray icon (at least one must be installed)',

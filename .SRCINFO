@@ -1,7 +1,7 @@
 pkgbase = checkmails
 	pkgdesc = System tray unread mail checker using IMAP protocol
 	pkgver = 1.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sourceforge.net/projects/checkmails
 	changelog = changelog
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = checkmails
 	depends = python
 	depends = tk
 	depends = python-pillow
-	depends = python-crypto
+	depends = python-pycryptodome
 	depends = gettext
 	depends = desktop-file-utils
 	depends = libnotify
