@@ -19,7 +19,7 @@ makedepends=('cmake' 'ros-build-tools'
 
 ros_depends=()
 depends=(${ros_depends[@]}
-  python2-catkin-pkg
+  python2-catkin_pkg
   gtest
   python2-nose
   python2-empy
