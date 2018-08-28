@@ -10,12 +10,16 @@ license=('GPLv3')
 
 depends=()
 
-source=("git+https://gitlab.com/tim241/${_pkgname}.git")
+source=("git+$url.git#branch=develop")
 
 sha256sums=('SKIP')
 
+pkgver() {
+    git describe --tags | sed "s|-|.|g"
+}
+
 package() {
     cd "$_pkgname"
-    make install prefix="/usr/" destdir="$pkgdir" -j1
+    make install prefix="/usr/" destdir="$pkgdir" version="$pkgver" -j1 
 }
 
