@@ -2,12 +2,12 @@
 pkgname=aclidswitch-git
 _pkgname=aclidswitch
 pkgdesc='Simple Power Management tool'
-pkgrel=3
+pkgrel=4
 pkgver=35.19b1955
 arch=('any')
 license=('GPL2')
 install=$pkgname.install
-depends=('light-git' 'xorg-xset')
+depends=('light' 'xorg-xset')
 backup=("etc/default/$_pkgname")
 makedepends=('git')
 url="https://github.com/nielsema/$_pkgname"
