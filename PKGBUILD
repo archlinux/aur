@@ -1,22 +1,38 @@
+# Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
+
 pkgname=dico
-pkgver=2.2
+pkgver=2.6
 pkgrel=1
-pkgdesc="GNU Dico is a flexible modular implementation of DICT server (RFC 2229). In contrast to another implementations, it does not depend on particular database format. GNU Dico handles database accesses using loadable modules."
-arch=('any')
-url="ftp://download.gnu.org.ua/pub/release/$pkgname"
-license=(GPLv3)
-depends=('libtool>=2.4.6' 'pcre>=8.38' 'guile>=2.0' 'python2>=2.7.11' 'gettext>=0.19.7')
-source=("$url/$pkgname-$pkgver.tar.gz")
-md5sums=('45145e4790ce64332b2d8e842ce5f957')
+pkgdesc="GNU Dictionary Server"
+arch=('x86_64')
+url="http://puszcza.gnu.org.ua/software/$pkgname"
+license=(GPL3)
+depends=(python gsasl wordnet guile pam)
+source=("ftp://download.gnu.org.ua/pub/release/$pkgname/$pkgname-$pkgver.tar.xz"{,.sig})
+sha1sums=('a66771ec12d335351efc88614d7d79dddf4ae9c0'
+          'SKIP')
+validpgpkeys=('325F650C4C2B6AD58807327A3602B07F55D0C732')
+   # Sergey Poznyakoff <gray@gnu.org>
+   # To validate, see instructions at:
+   #   https://puszcza.gnu.org.ua/software/dico/download.html
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver/"
-  patch -p1 < ../../stdio.patch
-  ./configure DEFAULT_DICT_SERVER=dict.org 
+  cd $pkgname-$pkgver
+  ./configure \
+    --prefix=/usr \
+    --libexecdir=/usr/lib/dico \
+    --sysconfdir=/etc \
+    --with-pcre \
+    --with-wordnet
   make
 }
 
+check() {
+  cd $pkgname-$pkgver
+  make -k check
+}
+
 package() {
-  cd "$srcdir/$pkgname-$pkgver/"
+  cd $pkgname-$pkgver
   make PREFIX=/usr DESTDIR="$pkgdir" install
 }
