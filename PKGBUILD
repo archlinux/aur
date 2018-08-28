@@ -1,10 +1,10 @@
-# Maintainer: Firmy <firmianay@gmail.com>
-_pkgname=pwntools
+# Maintainer: Ding Xiao <tinocodfcdsa10@mails.tsinghua.edu.cn>
+# Contributor : Firmy <firmianay@gmail.com>
 
-pkgname="python2-${_pkgname}-git"
-pkgver=3.13.0beta0.r1.gaa1f7920
-pkgrel=1
-pkgdesc='A CTF framework and exploit development library.'
+pkgname="python2-pwntools-git"
+pkgver=3.13.0beta0.r43.gb666e9ee
+pkgrel=2
+pkgdesc='A CTF framework and exploit development library. (git version, branch dev)'
 arch=('any')
 url='https://github.com/Gallopsled/pwntools'
 license=('GPL2' 'BSD' 'MIT')
@@ -28,7 +28,8 @@ depends=('python2>=2.7'
          'python2-pypandoc'
          'python2-packaging'
          'ropgadget')
-conflicts=('python2-pwntools-git' 'python2-pwntools')
+provides=('python2-pwntools')
+conflicts=('python2-pwntools')
 source=("${pkgname}::git+https://github.com/Gallopsled/pwntools.git")
 md5sums=('SKIP')
 
@@ -52,4 +53,3 @@ package() {
   install -D -m 644 LICENSE-pwntools.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
   rm -f ${pkgdir}/usr/lib/python*/site-packages/*.{txt,md}
 }
-# vim:set ts=2 sw=2 et:

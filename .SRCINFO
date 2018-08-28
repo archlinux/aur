@@ -1,6 +1,6 @@
 pkgbase = python2-pwntools-git
-	pkgdesc = A CTF framework and exploit development library.
-	pkgver = 3.13.0beta0.r1.gaa1f7920
+	pkgdesc = A CTF framework and exploit development library. (git version, branch dev)
+	pkgver = 3.13.0beta0.r43.gb666e9ee
 	pkgrel = 1
 	url = https://github.com/Gallopsled/pwntools
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = python2-pwntools-git
 	depends = python2-pypandoc
 	depends = python2-packaging
 	depends = ropgadget
-	conflicts = python2-pwntools-git
+	provides = python2-pwntools
 	conflicts = python2-pwntools
 	source = python2-pwntools-git::git+https://github.com/Gallopsled/pwntools.git
 	md5sums = SKIP
