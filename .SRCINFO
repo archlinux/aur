@@ -1,0 +1,18 @@
+pkgbase = endless-sky-editor
+	pkgdesc = Map editor for Endless Sky
+	pkgver = 0.7.10
+	pkgrel = 1
+	url = https://github.com/endless-sky/endless-sky-editor
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = endless-sky
+	depends = qt5-base
+	depends = hicolor-icon-theme
+	source = endless-sky-editor-0.7.10.tar.gz::https://github.com/endless-sky/endless-sky-editor/archive/v0.7.10.tar.gz
+	source = endless-sky-editor.pro.patch
+	sha512sums = 6252ce85be161a2540857c72d59a42ae7d752a6e6dc50f4e4e53346c379d2f221cf0fd814e19a1b66079cad2779cece60d25c75021ab2ee628cd63f3c4fc9c12
+	sha512sums = 1c7b06bc56400d1657836834c52363dcc35bbd7ada27768b00935938a1f0d11fbb8867c0abba5019e26c884cf7401e54a0ed6d6d42a1ec27e835669dae50f796
+
+pkgname = endless-sky-editor
+
