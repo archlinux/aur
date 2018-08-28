@@ -7,7 +7,7 @@
 pkgbase=iup
 pkgname=('iup' 'lua-iup' 'lua51-iup' 'lua52-iup')
 pkgver=3.25
-pkgrel=1
+pkgrel=2
 pkgdesc="C cross platform GUI toolkit"
 arch=('x86_64')
 url="http://www.tecgraf.puc-rio.br/iup/"

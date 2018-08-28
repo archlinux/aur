@@ -1,7 +1,7 @@
 pkgbase = iup
 	pkgdesc = C cross platform GUI toolkit
 	pkgver = 3.25
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.tecgraf.puc-rio.br/iup/
 	arch = x86_64
 	license = MIT
