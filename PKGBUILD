@@ -1,5 +1,5 @@
 pkgname=exfat-utils-autodetect
-pkgver=1.2.5
+pkgver=1.2.8
 pkgrel=1
 pkgdesc="Utilities for exFAT file system"
 arch=('i686' 'x86_64')
@@ -7,7 +7,7 @@ url="https://github.com/relan/exfat"
 depends=( 'fuse' 'glibc')
 makedepends=( 'rsync')
 conflicts=( 'exfat-utils')
-provides=( 'exfat-utils')
+provides=('exfat-utils-nofuse' 'exfat-utils')
 license=('GPL2')
 source_x86_64=("BIN_exfat-utils-x86_64.pkg.tar.xz::https://www.archlinux.org/packages/community/x86_64/exfat-utils/download/")
 md5sums_x86_64=('SKIP')
