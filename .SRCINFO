@@ -1,0 +1,14 @@
+pkgbase = perl-file-cat
+	pkgdesc = Perl implementation of cat(1)
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://metacpan.org/pod/File::Cat
+	arch = any
+	license = PerlArtistic
+	depends = perl>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/F/FI/FIMM/File-Cat-1.2.tar.gz
+	md5sums = 300600b3786cec4360e88947f775f4fb
+
+pkgname = perl-file-cat
+
