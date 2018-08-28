@@ -1,7 +1,7 @@
 pkgbase = i3lock-color
 	pkgdesc = An improved screenlocker based upon XCB and PAM with color configuration support
 	pkgver = 2.11
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/PandorasFox/i3lock-color
 	arch = i686
 	arch = x86_64
