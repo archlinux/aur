@@ -1,13 +1,13 @@
 pkgname=sseqplayer-git
-pkgver=r31.a645b25
+pkgver=r32.a865efb
 pkgrel=1
 pkgdesc="Library for decoding Nitro Composer Sound Format (NSCF) files"
 arch=(i686 x86_64)
-url='https://gitlab.kode54.net/kode54/SSEQPlayer'
+url='https://bitbucket.org/losnoco/sseqplayer'
 license=(custom:WTFPL)
 depends=(glibc gcc-libs)
 makedepends=(git)
-source=(${pkgname}::git+https://gitlab.kode54.net/kode54/SSEQPlayer.git
+source=(${pkgname}::git+https://bitbucket.org/losnoco/sseqplayer.git
         makefile.patch
         g++-fix.patch
         g++-fix-2.patch)
