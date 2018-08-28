@@ -1,0 +1,12 @@
+pkgbase = rancher16-cli-bin
+	pkgdesc = The Rancher Command Line Interface (CLI) is a unified tool to manage your Rancher server. This version is for older rancher 1.6 servers.
+	pkgver = 0.6.11
+	pkgrel = 1
+	url = https://github.com/rancher/cli
+	arch = x86_64
+	license = APACHE
+	source = https://github.com/rancher/cli/releases/download/v0.6.11/rancher-linux-amd64-v0.6.11.tar.xz
+	sha256sums = 34a4e2bf3408551a2197bc126c1796a94afa60548cb3e829176b39a60eb51824
+
+pkgname = rancher16-cli-bin
+
