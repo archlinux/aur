@@ -1,4 +1,4 @@
-pkgbase = psmt2-frontend-git
+pkgbase = ocaml-psmt2-frontend-git
 	pkgdesc = A simple parser and type-checker for polomorphic extension of the SMT-LIB 2 language
 	pkgver = 0.1
 	pkgrel = 1
@@ -12,5 +12,5 @@ pkgbase = psmt2-frontend-git
 	options = !strip
 	options = staticlibs
 
-pkgname = psmt2-frontend-git
+pkgname = ocaml-psmt2-frontend-git
 

@@ -1,4 +1,4 @@
-pkgname=psmt2-frontend-git
+pkgname=ocaml-psmt2-frontend-git
 pkgver=0.1
 pkgrel=1
 pkgdesc="A simple parser and type-checker for polomorphic extension of the SMT-LIB 2 language"
