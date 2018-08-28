@@ -1,0 +1,16 @@
+pkgbase = perl-hook-afterruntime
+	pkgdesc = Run code at the end of the compiling scope's runtime
+	pkgver = 0.006
+	pkgrel = 1
+	url = https://metacpan.org/release/Hook-AfterRuntime
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.006
+	depends = perl-b-hooks-parser>=0.09
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/P/PT/PTC/Hook-AfterRuntime-0.006.tar.gz
+	md5sums = 2e0b1b7617e158aa34a711ec57ae935b
+
+pkgname = perl-hook-afterruntime
+
