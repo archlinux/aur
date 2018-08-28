@@ -1,0 +1,15 @@
+pkgbase = templar-git
+	pkgdesc = Visualization tool for Templight C++ template debugger traces
+	pkgver = 5d81da1
+	pkgrel = 1
+	arch = any
+	makedepends = git
+	makedepends = qt5-base
+	makedepends = clang-trunk
+	provides = templar
+	conflicts = templar
+	source = git+https://github.com/schulmar/Templar
+	md5sums = SKIP
+
+pkgname = templar-git
+
