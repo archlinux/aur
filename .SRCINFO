@@ -6,7 +6,7 @@ pkgbase = python2-fedmsg
 	arch = any
 	license = LGPLv2
 	source = https://github.com/fedora-infra/fedmsg/archive/1.1.1.tar.gz
-	sha256sums = 3471f5a2750d2b8742f65c5957bd22ad4a7a09cb97281eb434b938837827eebc
+	sha256sums = bdccd7206d0670f452cc502072afc89359664fdc5f9d49380cf6c99d9d84a8c2
 
 pkgname = python-fedmsg
 	pkgdesc = Utilities used around Fedora Infrastructure to send and receive messages (Python 3 version)
