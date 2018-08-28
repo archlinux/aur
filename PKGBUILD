@@ -1,7 +1,7 @@
 # Maintainer: Mark Grimes <mgrimes at peculier.com>
 
 pkgname=perl-b-hooks-parser
-pkgver=0.16
+pkgver=0.19
 pkgrel=1
 pkgdesc="Interface to perl's parser variables"
 _dist=B-Hooks-Parser
@@ -11,7 +11,7 @@ license=('GPL' 'PerlArtistic')
 depends=('perl>=5.10' 'perl-b-hooks-op-check' 'perl-b-hooks-endofscope' 'perl-test-exception')
 options=('!emptydirs' purge)
 source=(https://cpan.metacpan.org/authors/id/E/ET/ETHER/$_dist-$pkgver.tar.gz)
-md5sums=('5db64fd81d0c294d86af241529131680')
+md5sums=('5ea29de2b6dc0aab04dec2aa7d9d7805')
 
 # Setup environment to ensure installation in system perl and vender directory
 clean_env() {
