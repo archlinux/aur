@@ -7,7 +7,7 @@
 
 pkgname=ffmpeg2.8
 pkgver=2.8.15
-pkgrel=1
+pkgrel=2
 pkgdesc='Complete solution to record, convert and stream audio and video'
 arch=('x86_64')
 url='https://ffmpeg.org/'
@@ -17,7 +17,7 @@ depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
          'libvdpau' 'libwebp' 'libx11' 'libxcb' 'libxext' 'libxv'
          'opencore-amr' 'openjpeg' 'opus' 'schroedinger' 'sdl' 'speex'
          'v4l-utils' 'xz' 'zlib'
-         'libass.so' 'libbluray.so' 'libdcadec.so' 'libfreetype.so' 'libva.so'
+         'libass.so' 'libbluray.so' 'dcadec' 'libfreetype.so' 'libva.so'
          'libvidstab.so' 'libvorbisenc.so' 'libvorbis.so' 'libvpx.so'
          'libx264.so' 'libx265.so' 'libxvidcore.so')
 makedepends=('ladspa' 'yasm')
