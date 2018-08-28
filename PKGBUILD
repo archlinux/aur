@@ -2,7 +2,7 @@
 
 pkgname=osquery-git
 pkgver=3.3.0.r72.g1103d2cf2
-pkgrel=1
+pkgrel=2
 pkgdesc="SQL powered operating system instrumentation, monitoring, and analytics."
 arch=('i686' 'x86_64')
 url="https://osquery.io"
@@ -16,7 +16,7 @@ makedepends=('asio' 'audit' 'aws-sdk-cpp-git' 'git' 'clang' 'benchmark'
 			 'gtest' 'gmock' 'lldpd' 'lld' 'zstd' 'rapidjson' 'apt' 'dpkg'
 			 'rpm-org' 'python2-jinja' 'librdkafka-git' 'augeas>=1.9.0'
 			 'boost>=1.65.1' 'boost-libs>=1.65.1' 'libc++' 'cppcheck'
-			 'ssdeep')
+			 'ssdeep' 'libelfin-git')
 conflicts=()
 backup=('etc/osquery/osquery.conf')
 options=(!strip !ccache)
