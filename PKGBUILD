@@ -1,5 +1,5 @@
-# Maintainer: WFCody
-# Contributor: Myrddin
+# Maintainer: WFCody (Jens Staal <staal1978@gmail.com>)
+# Contributor: Myrddin (Myrddin <darknesseatsall@aol.com>)
 pkgname=jdk10-openjdk-openj9-bin
 _pkgver_minor="0.2.13"
 _pkgver_split="0.2"
