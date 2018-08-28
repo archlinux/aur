@@ -1,16 +1,14 @@
 # Maintainer: robertfoster
 
 pkgname=g4l
-pkgver=0.53
+pkgver=0.54
 pkgrel=1
 pkgdesc="Ghost 4 Linux is a hard disk and partition imaging and cloning tool."
 arch=('any')
 url="http://freecode.com/projects/g4l/"
 license=('GPL')
 depends=('ddrescue' 'partimage' 'dd_rhelp' 'dialog' 'lzop' 'gzip' 'bzip2' 'ncurses' 'fsarchiver')
-source=(
-#ftp://fedoragcc.dyndns.org/${pkgname}-v${pkgver}.devel.tar.gz
-http://fossies.org/linux/misc/${pkgname}-v${pkgver}.devel.tar.gz)
+source=(http://fossies.org/linux/misc/${pkgname}-v${pkgver}.devel.tar.gz)
 noextract=(${pkgname}-v${pkgver}.devel.tar.gz)
 makedepends=(wget)
 
@@ -27,4 +25,4 @@ package() {
   install -c -s -m 755 jetcat-mod $pkgdir/usr/bin
 }
 
-md5sums=('5b84a8b676d4c6ca9ea1c70e7dbac641')
+md5sums=('ba472043a9b3d796faed9ec58fa175f4')
