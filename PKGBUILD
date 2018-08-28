@@ -3,7 +3,7 @@
 
 pkgname=amor
 pkgver=15.08.3
-pkgrel=1
+pkgrel=2
 pkgdesc='On-Screen Creature'
 url='https://projects.kde.org/projects/kde/kdetoys/amor'
 arch=('i686' 'x86_64')

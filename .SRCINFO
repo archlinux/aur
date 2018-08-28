@@ -1,7 +1,7 @@
 pkgbase = amor
 	pkgdesc = On-Screen Creature
 	pkgver = 15.08.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://projects.kde.org/projects/kde/kdetoys/amor
 	install = amor.install
 	arch = i686
