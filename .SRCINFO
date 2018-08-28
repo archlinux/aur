@@ -1,6 +1,6 @@
 pkgbase = dxvk-wine-git
-	pkgdesc = A Vulkan-based compatibility layer for Direct3D 11 and 10 which allows running 3D applications on Linux using Wine. Winelib version
-	pkgver = 0.70_5_g4c8bf44
+	pkgdesc = A Vulkan-based compatibility layer for Direct3D 10/11 which allows running 3D applications on Linux using Wine. Winelib version
+	pkgver = 0.70_21_g715d257
 	pkgrel = 1
 	url = https://github.com/doitsujin/dxvk
 	arch = x86_64
@@ -36,7 +36,7 @@ pkgname = dxvk-wine32-git
 	depends = winetricks
 	optdepends = dxvk64: 64-bit support
 	provides = dxvk
-	provides = dxvk64
+	provides = dxvk32
 	conflicts = dxvk-win32-bin
 	conflicts = dxvk-win32-git
 	conflicts = dxvk-git
