@@ -1,15 +1,17 @@
-# Maintainer: Christoph J. Thompson <thompsonc@protonmail.ch>
+# Maintainer: Christoph J. Thompson <thompsonc at protonmail dot ch>
 
 pkgname=hexchat-otr-git
-pkgver=r25.g2845436
-pkgrel=1
+pkgver=r50.ga7a6016
+pkgrel=2
 pkgdesc="OTR support for hexchat"
+url="https://github.com/TingPing/hexchat-otr"
+license=('GPL2')
 arch=('i686' 'x86_64')
 depends=('hexchat' 'libotr>=4.1.0')
 makedepends=('git' 'gnome-common')
-url="https://github.com/TingPing/hexchat-otr"
-license=('GPL2')
-source=("${pkgname}::git+https://github.com/TingPing/hexchat-otr")
+conflicts=('hexchat-otr')
+provides=('hexchat-otr')
+source=("${pkgname}::git+${url}")
 md5sums=('SKIP')
 
 pkgver() {
@@ -22,7 +24,7 @@ pkgver() {
 build() {
   cd "${pkgname}"
   ./autogen.sh
-  ./configure --prefix="/usr"
+  CFLAGS="${CFLAGS}" ./configure --prefix="/usr"
   make
 }
 
@@ -30,4 +32,3 @@ package() {
   cd "${pkgname}"
   make DESTDIR="${pkgdir}" install
 }
-
