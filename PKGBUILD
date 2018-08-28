@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="kcm module for ufw from nomad desktop"
 arch=('i686' 'x86_64')
 url="https://github.com/nomad-desktop/nomad-firewall"
-license=('GPL2')
+license=('GPL3')
 depends=('kdeclarative' 'kcoreaddons' 'kcmutils' 'ki18n' 'plasma-framework' 'kdelibs4support'
         'kauth' 'kconfig' 'kio' 'knewstuff' 'kconfigwidgets' 'net-tools' 'ufw')
 makedepends=('git' 'extra-cmake-modules' 'kdoctools')
