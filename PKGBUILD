@@ -33,4 +33,7 @@ package() {
     make DESTDIR="$pkgdir" install
     mv ${pkgdir}/usr/sbin/dtnd ${pkgdir}/usr/bin/dtnd
     rmdir ${pkgdir}/usr/sbin
+    mkdir ${pkgdir}/etc
+    mv ${pkgdir}/usr/etc/ibrdtnd.conf ${pkgdir}/etc/ibrdtnd.conf
+    rmdir ${pkgdir}/usr/etc
 }
