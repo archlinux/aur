@@ -1,14 +1,14 @@
 pkgbase = python2-vulndb
 	pkgdesc = Vulnerability Database
-	pkgver = 0.0.19
-	pkgrel = 2
+	pkgver = 0.1.0
+	pkgrel = 1
 	url = https://github.com/vulndb/python-sdk/
 	arch = any
 	license = custom:BSD-3-Clause
 	makedepends = python2-setuptools
 	depends = python2
-	source = 0.0.19.tar.gz::https://pypi.python.org/packages/d3/5e/512a8c7abe1ea11939524eb07758f3813d8d49bf00bb6023d18df1837c4d/vulndb-0.0.19.tar.gz
-	sha512sums = b2176762b91d5aab595db2afdddee56ebf3dc27104cce4a3208e46eff72911ddd4e0c197e99ab27be0ecc10d093c08fc0fb071fb75a379b8cd35410c0ad08533
+	source = 0.1.0.tar.gz::https://files.pythonhosted.org/packages/b6/8e/e5dc89c7d916615f44d8854d471e93965ab25282df2818d239ff8e759fed/vulndb-0.1.0.tar.gz
+	sha256sums = 8f1f5e806adeaaea3c97094bcea8b21ac90b40d5432d0dc9760796e624decf78
 
 pkgname = python2-vulndb
 
