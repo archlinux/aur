@@ -1,18 +1,19 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=xvolkolak
-pkgver=0.21
-pkgrel=2
+pkgver=0.22
+pkgrel=1
 pkgdesc="Xvolkolak is an unpacker emulator"
 arch=(x86_64)
 url="http://n10info.blogspot.com/"
 license=(custom)
 depends=(glibc)
 # official source below
-#source=('https://www.dropbox.com/s/5p3qflue2wmu9m7/xvlk_lin64_public_0.21.tar.gz?dl=1')
-source=("http://libpcap.net/xvolkolak/xvlk_lin64_public_0.21.tar.gz")
+#source=('https://www.dropbox.com/s/7sk61nc798kcg32/xvlk_lin64_public_0.22.tar.gz?dl=1')
+# wget --mirror --no-parent --convert-links --directory-prefix=xvolkolak --html-extension --restrict-file-names=windows http://n10info.blogspot.com/2018/08/xvolkolak-022.html
+source=("http://libpcap.net/xvolkolak/xvlk_lin64_public_${pkgver}.tar.gz")
 install="$pkgname.install"
-sha256sums=('9c2a704c0134528e9259e414ad5c5d301e637a71f441709bbcd5cb366fc2577a')
+sha256sums=('4b77ce5eab33314b13b7982cffdd7526b7a8f3575945ad13aae3ec1a79d95035')
 
 package() {
 	mkdir -p "$pkgdir/usr/share/xvolkolak" "$pkgdir/usr/bin"

@@ -1,14 +1,14 @@
 pkgbase = xvolkolak
 	pkgdesc = Xvolkolak is an unpacker emulator
-	pkgver = 0.21
-	pkgrel = 2
+	pkgver = 0.22
+	pkgrel = 1
 	url = http://n10info.blogspot.com/
 	install = xvolkolak.install
 	arch = x86_64
 	license = custom
 	depends = glibc
-	source = http://libpcap.net/xvolkolak/xvlk_lin64_public_0.21.tar.gz
-	sha256sums = 9c2a704c0134528e9259e414ad5c5d301e637a71f441709bbcd5cb366fc2577a
+	source = http://libpcap.net/xvolkolak/xvlk_lin64_public_0.22.tar.gz
+	sha256sums = 4b77ce5eab33314b13b7982cffdd7526b7a8f3575945ad13aae3ec1a79d95035
 
 pkgname = xvolkolak
 
