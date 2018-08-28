@@ -3,7 +3,7 @@
 # Contributor: xsmile <sascha_r gmx de>
 
 pkgname=nessus
-pkgver=7.1.3
+pkgver=7.2.0
 pkgrel=1
 pkgdesc="Nessus vulnerability scanner"
 arch=('x86_64')
@@ -13,12 +13,12 @@ url="https://www.nessus.org"
 install=${pkgname}.install
 
 # Note: I had to use ipfs because I don't want to redistribute the file on a known server.
-source=("Nessus-7.1.3-fc20.x86_64.rpm::https://gateway.ipfs.io/ipfs/QmSxr3yEsgP5JvnpyNtb7dfcvCJgqoxh7sDWV2fjPs8ZkZ"
+source=("Nessus-7.2.0-fc20.x86_64.rpm::https://gateway.ipfs.io/ipfs/QmbZj2Nkhtug2uhvm1A1KsqvUXqiGQZG7FdHAY1w2ndq29"
         nessus.desktop
         nessus.sh
         LICENSE)
 
-sha256sums=('abbae32cee99762787e8bbdd009526d35551a27362191d93a292eb078d8c0b25'
+sha256sums=('879fed652b2bf6d3ec58292f2b34fcf5331ba3a8ae3438068607dc7b55a27587'
             '8c5e82d609a7290c34cbfa5635012cb66820e4e2c1db2bf5808fc306fcefdc30'
             '9b8e2c15d86ce7b83806a27bd6685f009ad339f3ea52022b87a75fbd2802ec5a'
             '089073d03bf83e101b50da858348ace6bb2a553ce2249532d6f5d7ed29182dac')
