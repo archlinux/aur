@@ -1,8 +1,8 @@
 pkgbase = ffmpeg3.4
 	pkgdesc = Complete solution to record, convert and stream audio and video
 	pkgver = 3.4.4
-	pkgrel = 2
-	url = https://ffmpeg.org/
+	pkgrel = 3
+	url = https://ffmpeg.org
 	arch = x86_64
 	arch = i686
 	arch = arm
@@ -69,8 +69,9 @@ pkgbase = ffmpeg3.4
 	provides = libswresample.so=2
 	provides = libswscale.so=4
 	conflicts = ffmpeg-full3.4
-	source = https://ffmpeg.org//releases/ffmpeg-3.4.4.tar.xz
-	source = https://ffmpeg.org//releases/ffmpeg-3.4.4.tar.xz.asc
+	conflicts = ffmpeg-compat-57
+	source = https://ffmpeg.org/releases/ffmpeg-3.4.4.tar.xz
+	source = https://ffmpeg.org/releases/ffmpeg-3.4.4.tar.xz.asc
 	source = fs56089.patch
 	validpgpkeys = FCF986EA15E6E293A5644F10B4322F04D67658D8
 	sha256sums = 386f7601e865df6bddde05bb6927119b5a853f0b92e2e9834f59c125a17d3fc6

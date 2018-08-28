@@ -14,10 +14,10 @@
 
 pkgname=ffmpeg3.4
 pkgver=3.4.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Complete solution to record, convert and stream audio and video'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
-url='https://ffmpeg.org/'
+url='https://ffmpeg.org'
 license=('GPL3')
 depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
          'jack' 'lame' 'libavc1394' 'libiec61883' 'libmodplug' 'libpulse'
@@ -33,7 +33,7 @@ optdepends=('ladspa: LADSPA filters')
 provides=('libavcodec.so=57' 'libavdevice.so=57' 'libavfilter.so=6' 'libavformat.so=57'
           'libavresample.so=3' 'libavutil.so=55' 'libpostproc.so=54' 'libswresample.so=2'
           'libswscale.so=4')
-conflicts=('ffmpeg-full3.4')
+conflicts=('ffmpeg-full3.4' 'ffmpeg-compat-57')
 source=("${url}/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         'fs56089.patch')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
@@ -51,6 +51,8 @@ prepare() {
 
 build() {
 	cd ${srcdir}/ffmpeg-${pkgver}
+
+	[[ $CARCH == "armv7h" || $CARCH == "aarch64" ]] && CONFIG='--host-cflags="-fPIC"'
 
 	./configure \
 		--prefix='/usr' \
