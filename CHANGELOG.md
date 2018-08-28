@@ -1,18 +1,32 @@
 # Change Log
 
-## [Unreleased](https://github.com/langurmonkey/gaiasky/tree/HEAD)
-
-[Full Changelog](https://github.com/langurmonkey/gaiasky/compare/2.0.2...HEAD)
+## [2.0.3](https://github.com/langurmonkey/gaiasky/tree/2.0.3) (2018-08-28)
+[Full Changelog](https://github.com/langurmonkey/gaiasky/compare/2.0.2-vr...2.0.3)
 
 **Implemented enhancements:**
 
-- Add controls to manage datasets [\#290](https://github.com/langurmonkey/gaiasky/issues/290)
+- Clean up logging code [\#299](https://github.com/langurmonkey/gaiasky/issues/299)
+- Improve debug info [\#298](https://github.com/langurmonkey/gaiasky/issues/298)
+- Handle vertex data more efficiently [\#297](https://github.com/langurmonkey/gaiasky/issues/297)
+- API: Provide a way to hook into main loop thread [\#294](https://github.com/langurmonkey/gaiasky/issues/294)
+- Add support for different line widths [\#293](https://github.com/langurmonkey/gaiasky/issues/293)
+- API call: lines between arbitrary positions [\#292](https://github.com/langurmonkey/gaiasky/issues/292)
+- Add Top/Bottom to the mode profiles for 3DTV [\#268](https://github.com/langurmonkey/gaiasky/issues/268)
 
-## [2.0.2](https://github.com/langurmonkey/gaiasky/tree/2.0.2) (2018-07-05)
+**Merged pull requests:**
+
+- REST server static files use assets.location [\#300](https://github.com/langurmonkey/gaiasky/pull/300) ([vga101](https://github.com/vga101))
+- Re-introduce REST API [\#281](https://github.com/langurmonkey/gaiasky/pull/281) ([vga101](https://github.com/vga101))
+
+## [2.0.2-vr](https://github.com/langurmonkey/gaiasky/tree/2.0.2-vr) (2018-07-25)
+[Full Changelog](https://github.com/langurmonkey/gaiasky/compare/2.0.2...2.0.2-vr)
+
+## [2.0.2](https://github.com/langurmonkey/gaiasky/tree/2.0.2) (2018-07-06)
 [Full Changelog](https://github.com/langurmonkey/gaiasky/compare/2.0.1...2.0.2)
 
 **Implemented enhancements:**
 
+- Add controls to manage datasets [\#290](https://github.com/langurmonkey/gaiasky/issues/290)
 - Separate base texture from clouds texture [\#289](https://github.com/langurmonkey/gaiasky/issues/289)
 - Add gamma correction [\#288](https://github.com/langurmonkey/gaiasky/issues/288)
 - Add label size control [\#287](https://github.com/langurmonkey/gaiasky/issues/287)
