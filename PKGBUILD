@@ -1,8 +1,9 @@
-# Maintainer: Levente Polyak <levente[at]leventepolyak[dot]net>
+# Maintainer: Ding Xiao <tinocodfcdsa10@mails.tsinghua.edu.cn>
+# Contributor: Levente Polyak <levente[at]leventepolyak[dot]net>
 
 pkgname=w3af-git
 pkgver=2018.8.22r16213.bb29b9e34
-pkgrel=1
+pkgrel=2
 pkgdesc="Web Application Attack and Audit Framework"
 url='http://w3af.org/'  
 arch=('any')

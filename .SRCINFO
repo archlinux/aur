@@ -1,7 +1,7 @@
 pkgbase = w3af-git
 	pkgdesc = Web Application Attack and Audit Framework
 	pkgver = 2018.8.22r16213.bb29b9e34
-	pkgrel = 1
+	pkgrel = 2
 	url = http://w3af.org/
 	arch = any
 	license = GPL2
