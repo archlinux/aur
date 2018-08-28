@@ -3,7 +3,6 @@ pkgbase = iup
 	pkgver = 3.25
 	pkgrel = 1
 	url = http://www.tecgraf.puc-rio.br/iup/
-	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = lsb-release
