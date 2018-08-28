@@ -1,0 +1,8 @@
+post_install() {
+  echo "==>"
+  echo "==> !!! ATTENTION !!!"
+  echo "==> You need to symlink a file to autostart when you log in:"
+  echo "==> $ ln -s /usr/share/kservices5/yubioath-krunner.py ~/.config/autostart-scripts/yubioath-krunner.py"
+  echo "==> You may need to restart to start the service."
+  echo "==>"
+}
