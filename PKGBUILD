@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=osquery-git
-pkgver=3.2.9.r6.g6b7ff81ad
+pkgver=3.3.0.r72.g1103d2cf2
 pkgrel=1
 pkgdesc="SQL powered operating system instrumentation, monitoring, and analytics."
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ makedepends=('asio' 'audit' 'aws-sdk-cpp-git' 'git' 'clang' 'benchmark'
 conflicts=()
 backup=('etc/osquery/osquery.conf')
 options=(!strip !ccache)
-_gitcommit='6b7ff81ad8041abf90d974f4025b71a24945d36a'
+_gitcommit='1103d2cf248a04d84d93394177b197c5c579f940'
 #source=("${pkgname}::git+https://github.com/facebook/osquery"
 source=("${pkgname}::git+https://github.com/facebook/osquery#commit=${_gitcommit}"
 		"osqueryd.conf.d"
@@ -28,10 +28,10 @@ source=("${pkgname}::git+https://github.com/facebook/osquery#commit=${_gitcommit
 		"arch-linux.patch")
 sha256sums=('SKIP'
             'ee15a171f114f47a326d236a7d03a07cc3e711016e9a5039638e6137f63e87ec'
-            '82611f3296d1d5b68d2cb32200c95a9ae3469dc5a9696643b69e89a5b9798a72'
-            'ab8fb189578bc819d8f28bff4308613355a7641eabd7055757fcfcfd351b6043')
+            '0c28be3fb234325c3279aa3c02a5b0636db833c06f89ec551b77addb86507ce4'
+            'eb7483518e0ed6bd60445209e5aad8a69585f1d1d9f9b07bce529af8f702ce86')
 
-#pkgver() {
+##pkgver() {
 #	cd ${pkgname}
 #
 #	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
@@ -65,7 +65,7 @@ build() {
 
 	export CC="/usr/bin/gcc"
 	export CXX="/usr/bin/g++"
-	export SKIP_TESTS=True SKIP_BENCHMARKS=True
+	export SKIP_TESTS=True SKIP_BENCHMARKS=True SKIP_SMART=True
 
 	[[ -z $DEBUG ]] || unset DEBUG
 	cmake -Wno-dev \
@@ -75,7 +75,7 @@ build() {
 		-DBUILD_GMOCK=OFF \
 		-DCMAKE_VERBOSE_MAKEFILE=ON
 
-	find . -type f -name link.txt -exec sed -i -re 's/Bstatic -lgflags/Bdynamic -lgflags/g' "{}" \;
+	#find . -type f -name link.txt -exec sed -i -re 's/Bstatic -lgflags/Bdynamic -lgflags/g' "{}" \;
 
 	make ${MAKEFLAGS} all
 }

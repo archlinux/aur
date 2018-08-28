@@ -54,10 +54,20 @@ index 8efb6202..7f9d64aa 100644
    ADD_OSQUERY_LINK_ADDITIONAL("blkid")
    ADD_OSQUERY_LINK_ADDITIONAL("ip4tc")
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 1c067c938..70f98f4b7 100644
+index c7b6b23b9..57b292ee7 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -327,7 +327,6 @@ if (POSIX)
+@@ -176,9 +176,6 @@ if(NOT WIN32)
+ endif()
+ 
+ if(POSIX)
+-  add_compile_options(
+-    -Werror
+-  )
+   if(CLANG)
+     add_compile_options(
+       -Qunused-arguments
+@@ -330,7 +327,6 @@ if (POSIX)
    # To be safe, only include them when building 'release' outputs.
    add_compile_options(
      "$<$<CONFIG:RELEASE>:-g>"
@@ -65,7 +75,7 @@ index 1c067c938..70f98f4b7 100644
      "$<$<CONFIG:RELEASE>:-fPIE>"
      "$<$<CONFIG:RELEASE>:-fpie>"
      "$<$<CONFIG:RELEASE>:-fPIC>"
-@@ -546,6 +545,8 @@ endif()
+@@ -555,6 +551,8 @@ endif()
  
  if(APPLE)
    LOG_PLATFORM("OS X")
