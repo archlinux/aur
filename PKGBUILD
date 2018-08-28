@@ -1,14 +1,14 @@
-# Maintainer: Daniel Lima <danielm@nanohub.tk>
+# Maintainer: Daniel Lima <danielmariodelima@gmail.com>
 
 pkgname=bdf2psf
 pkgdesc='Debian utility to convert BDF font files to PSF format.'
-pkgver=1.184
+pkgver=1.185
 pkgrel=1
 arch=('any')
 license=('GPL2+')
 url='https://packages.debian.org/sid/bdf2psf'
 source=("http://deb.debian.org/debian/pool/main/c/console-setup/bdf2psf_${pkgver}_all.deb")
-md5sums=('895da9bfd7f00d25e7554910adadcd40')
+md5sums=('5f7feb4e2c9e8e0c173cd82f8c9043d8')
 depends=('perl')
 
 build() {
