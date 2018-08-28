@@ -15,6 +15,7 @@ pkgbase = freecad
 	makedepends = cmake
 	makedepends = coin>=3.1.3-9
 	makedepends = python2-pyside2
+	makedepends = python2-shiboken2
 	makedepends = pyside2
 	makedepends = shiboken2
 	depends = boost-libs
