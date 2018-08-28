@@ -1,7 +1,7 @@
 pkgbase = fastlane
 	pkgdesc = The easiest way to automate beta deployments and releases for your iOS and Android apps
 	pkgver = 2.102.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://fastlane.tools
 	arch = any
 	license = MIT
@@ -35,8 +35,7 @@ pkgbase = fastlane
 	depends = ruby-gh_inspector>=1.1.2
 	depends = ruby-google-api-client>=0.21.2
 	depends = ruby-google-api-client<0.24
-	depends = ruby-highline<2
-	depends = ruby-highline>=1.7.2
+	depends = ruby-highline-1
 	depends = ruby-json<3
 	depends = ruby-mini_magick-4.5
 	depends = ruby-multi_json

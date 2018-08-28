@@ -4,7 +4,7 @@
 _gemname=fastlane
 pkgname=$_gemname
 pkgver=2.102.0
-pkgrel=3
+pkgrel=4
 pkgdesc='The easiest way to automate beta deployments and releases for your iOS and Android apps'
 arch=(any)
 url='https://fastlane.tools'
@@ -27,7 +27,8 @@ depends=(
   'ruby-fastimage>=2.1' 'ruby-fastimage<3'
   'ruby-gh_inspector<2' 'ruby-gh_inspector>=1.1.2'
   'ruby-google-api-client>=0.21.2' 'ruby-google-api-client<0.24'
-  'ruby-highline<2' 'ruby-highline>=1.7.2'
+  # 'ruby-highline<2' 'ruby-highline>=1.7.2'
+  ruby-highline-1
   'ruby-json<3'
   # 'ruby-mini_magick<4.6' 'ruby-mini_magick>=4.5.1'
   ruby-mini_magick-4.5
