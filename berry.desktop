@@ -1,0 +1,6 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=berry
+Comment=A healthy, bite-sized window manager written in C
+Exec=berry
+Type=XSession

@@ -1,0 +1,12 @@
+index 9174b8d..ee1b6d4 100644
+--- src/berry-master/config.mk
++++ src/berry-master/config.mk
+@@ -4,7 +4,7 @@ __CONFIG_NAME__ = autostart
+ __THIS_VERSION__ = $(shell cat VERSION)
+ 
+ PREFIX    = /usr/local
+-MANPREFIX = $(PREFIX)/share/man
++MANPREFIX = $(PREFIX)/man
+ MANDIR    = $(MANPREFIX)/man1
+ DOCPREFIX = $(PREFIX)/share/doc
+ X11INC    = /usr/X11R6/include

@@ -2,7 +2,7 @@
 
 pkgname=berry-git
 pkgbase=berry
-pkgver=0.0.2
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="A healthy, bite-sized window manager written over the XLib Library"
 url="https://github.com/JLErvin/berry"
@@ -10,19 +10,27 @@ arch=('x86_64')
 license=('MIT')
 makedepends=('gcc')
 depends=('libx11')
-source=(
-  "https://github.com/JLErvin/berry/archive/master.zip"
-)
+source=("https://github.com/JLErvin/berry/archive/master.zip")
 sha256sums=('SKIP')
 
-build() {
-	cd berry-master/
+prepare() {
+	patch -p1 -i ../manual.patch
 	
+	# Installing the desktop file doesn't work, so N/A for now.
+	#install -D -m644 ../berry.desktop "${pkgdir}/usr/share/xsessions/"
+}
+
+build() {
+	# Build the package.
+	cd berry-master/
 	make
 }
 
 package() {
+	# ...and install.
 	cd berry-master/
+	make DESTDIR="$pkgdir/" install
 	
+	cd man/
 	make DESTDIR="$pkgdir/" install
 }
