@@ -1,7 +1,7 @@
 pkgbase = ocaml-ssl
 	pkgdesc = OCaml SSL Library
 	pkgver = 0.5.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://savonet.sourceforge.net/
 	arch = i686
 	arch = x86_64
