@@ -11,5 +11,5 @@ post_upgrade() {
 }
 
 post_remove() {
-  userdel -f pihole
+  id -u pihole > /dev/null 2>&1 && userdel -f pihole
 }
