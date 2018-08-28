@@ -1,33 +1,40 @@
-# Maintainer: Christoph J. Thompson <thompsonc@protonmail.ch>
+# Maintainer: Christoph J. Thompson <thompsonc at protonmail dot ch>
 
 pkgname=gopherus
-pkgver=1.0b
+pkgver=1.0c
 pkgrel=1
 pkgdesc="Gopher client"
 arch=('i686' 'x86_64')
 url="http://gopherus.sourceforge.net"
 license=('GPL3')
-depends=('sdl2')
+depends=('ncurses')
+optdepends=('sdl2')
 source=(http://downloads.sourceforge.net/project/${pkgname}/v${pkgver}/${pkgname}-${pkgver}.tar.gz
         gopherus.desktop)
-sha256sums=(c8ec94fa7c9e042845dcb2b460a798d46b4e8374c432f1a830fcfc1a4838e556
-            4126b4f4e292e531c0bcfd74f0f0b4eb38838e7c78e48822d1e85ccc872dc10d)
+sha256sums=('84f5192659658bb57f6d77609654e74f9e96f7596c0e3ae10e707877d1cebaf4'
+            'dfce631c4c60761a5324e90dbe9938f9f74b21b68ee4e8c1bf8dc36018ad32cb')
 
 build() {
   cd "${pkgname}-${pkgver}"
   sed -i '/upx --best --lzma/d' Makefile.lin
   make -f Makefile.lin
+  make -f Makefile.lin gopherus-sdl
 }
 
 package() {
-  install -m 0755 -d "${pkgdir}/usr/share/applications"
-  install -m 0644 gopherus.desktop "${pkgdir}/usr/share/applications"
   cd "${pkgname}-${pkgver}"
-  install -m 0755 -d "${pkgdir}/usr/bin"
-  install -m 0755 -s gopherus "${pkgdir}/usr/bin"
-  install -m 0755 -d "${pkgdir}/usr/doc/${pkgname}"
-  install -m 0644 gopherus.txt history.txt "${pkgdir}/usr/doc/${pkgname}"
-  install -m 0755 -d "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
-  install -m 0644 icon.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
+
+  install -dm755 "${pkgdir}/usr/bin"
+  install -m755 gopherus gopherus-sdl "${pkgdir}/usr/bin"
+
+  install -dm755 "${pkgdir}/usr/share/doc/${pkgname}"
+  install -m644 gopherus.txt history.txt \
+   "${pkgdir}/usr/share/doc/${pkgname}"
+
+  install -Dm644 icon.svg \
+   "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
+
+  install -Dm644 "${srcdir}/gopherus.desktop" \
+   "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
 

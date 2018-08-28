@@ -16,6 +16,6 @@ Keywords=gopher;
 Type=Application
 Icon=gopherus
 Categories=SDL;Network;
-Exec=gopherus %F
+Exec=gopherus-sdl %F
 Terminal=false
 StartupNotify=true
