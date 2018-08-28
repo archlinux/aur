@@ -1,0 +1,13 @@
+diff --git a/configure b/configure
+index 61a111e..96850dd 100755
+--- a/configure
++++ b/configure
+@@ -5536,7 +5536,7 @@ fi
+ { $as_echo "$as_me:${as_lineno-$LINENO}: result: $large_secmem" >&5
+ $as_echo "$large_secmem" >&6; }
+ if test "$large_secmem" = yes ; then
+-   SECMEM_BUFFER_SIZE=65536
++   SECMEM_BUFFER_SIZE=1048576
+ else
+    SECMEM_BUFFER_SIZE=32768
+ fi
