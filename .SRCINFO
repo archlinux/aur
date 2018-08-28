@@ -1,5 +1,5 @@
 pkgbase = nomad-firewall-git
-	pkgdesc = kcm module for ufw from nomad desktop
+	pkgdesc = kcm module for firewall from nomad desktop
 	pkgver = 0.1.r68.gfb8937e
 	pkgrel = 1
 	url = https://github.com/nomad-desktop/nomad-firewall
