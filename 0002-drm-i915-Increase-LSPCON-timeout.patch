@@ -1,0 +1,50 @@
+From 4e09b725c6fa6530385d97363346e72a26d418be Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fredrik=20Sch=C3=B6n?= <fredrikschon@gmail.com>
+Date: Fri, 17 Aug 2018 22:07:28 +0200
+Subject: [PATCH 2/3] drm/i915: Increase LSPCON timeout
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+100 ms is not enough time for the LSPCON adapter on Intel NUC devices to
+settle. This causes dropped display modes at boot or screen reconfiguration.
+Empirical testing can reproduce the error up to a timeout of 190 ms. Basic
+boot and stress testing at 200 ms has not (yet) failed.
+
+Increase timeout to 400 ms to get some margin of error.
+
+Changes from v1:
+The initial suggestion of 1000 ms was lowered due to concerns about delaying
+valid timeout cases.
+Update patch metadata.
+
+Bugzilla: https://bugs.freedesktop.org/show_bug.cgi?id=107503
+Bugzilla: https://bugzilla.redhat.com/show_bug.cgi?id=1570392
+Fixes: 357c0ae9198a ("drm/i915/lspcon: Wait for expected LSPCON mode to settle")
+Cc: Shashank Sharma <shashank.sharma@intel.com>
+Cc: Imre Deak <imre.deak@intel.com>
+Cc: Jani Nikula <jani.nikula@intel.com>
+Cc: <stable@vger.kernel.org> # v4.11+
+Reviewed-by: Rodrigo Vivi <rodrigo.vivi@intel.com>
+Signed-off-by: Fredrik Schön <fredrik.schon@gmail.com>
+Reviewed-by: Shashank Sharma <shashank.sharma@intel.com>
+---
+ drivers/gpu/drm/i915/intel_lspcon.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/i915/intel_lspcon.c b/drivers/gpu/drm/i915/intel_lspcon.c
+index 8ae8f42f430a..6b6758419fb3 100644
+--- a/drivers/gpu/drm/i915/intel_lspcon.c
++++ b/drivers/gpu/drm/i915/intel_lspcon.c
+@@ -74,7 +74,7 @@ static enum drm_lspcon_mode lspcon_wait_mode(struct intel_lspcon *lspcon,
+ 	DRM_DEBUG_KMS("Waiting for LSPCON mode %s to settle\n",
+ 		      lspcon_mode_name(mode));
+ 
+-	wait_for((current_mode = lspcon_get_current_mode(lspcon)) == mode, 100);
++	wait_for((current_mode = lspcon_get_current_mode(lspcon)) == mode, 400);
+ 	if (current_mode != mode)
+ 		DRM_ERROR("LSPCON mode hasn't settled\n");
+ 
+-- 
+2.18.0
+
