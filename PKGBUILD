@@ -1,7 +1,7 @@
 # Maintainer: Matti Niemenmaa <matti.niemenmaa+aur ät iki dȯt fi>
 
 pkgname=game_music_emu-kode54-git
-pkgver=r192.d3df0db
+pkgver=r193.be0a069
 pkgrel=1
 pkgdesc="Multi-purpose console music emulator and player library (a.k.a. libgme) (kode54's fork)"
 arch=(i686 x86_64)
@@ -11,8 +11,8 @@ depends=('gcc-libs' 'glibc')
 makedepends=('git' 'qt5-base')
 conflicts=('libgme')
 provides=('libgme')
-source=("${pkgname}::git+https://gitlab.kode54.net/kode54/Game_Music_Emu.git"
-        'File_Extractor::git+https://gitlab.kode54.net/kode54/File_Extractor.git')
+source=("${pkgname}::git+https://bitbucket.org/losnoco/game_music_emu.git"
+        'File_Extractor::git+https://bitbucket.org/losnoco/file_extractor.git')
 sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
@@ -37,12 +37,12 @@ prepare() {
    # Don't request a static lib, it prevents a dynamic one from being built.
    sed -i '/^CONFIG /s/staticlib //' Game_Music_Emu.pro
 
-   # Install the header file too, and fix linking.
+   # Install the header file too.
    cat >> Game_Music_Emu.pro <<EOF
 headers.path = /usr/include/gme
 headers.files += ../../gme/gme.h
 INSTALLS += headers
-QMAKE_LFLAGS += -Wl,--allow-multiple-definition -Wl,-Bsymbolic -lz
+QMAKE_LFLAGS += -Wl,--allow-multiple-definition
 EOF
 }
 
