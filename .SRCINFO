@@ -24,5 +24,6 @@ pkgbase = ibrdtn
 	source = git://github.com/ibrdtn/ibrdtn.git
 	sha512sums = SKIP
 
+
 pkgname = ibrdtn
 
