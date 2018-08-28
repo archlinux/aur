@@ -1,0 +1,15 @@
+pkgbase = protontricks-git
+	pkgdesc = A simple wrapper that does winetricks things for Proton enabled games.
+	pkgver = 0.r14.c219cd2
+	pkgrel = 1
+	url = https://github.com/Sirmentio/protontricks
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = winetricks
+	source = git+https://github.com/Sirmentio/protontricks.git
+	sha256sums = SKIP
+
+pkgname = protontricks-git
+
