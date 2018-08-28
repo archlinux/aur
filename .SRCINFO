@@ -1,7 +1,7 @@
 pkgbase = multisystem
 	pkgdesc = A GUI tool to create a usb system that can boot multiple distro's
-	pkgver = 1.0423
-	pkgrel = 2
+	pkgver = 1.0424
+	pkgrel = 1
 	url = http://liveusb.info/dotclear/index.php
 	arch = i686
 	arch = x86_64
@@ -34,8 +34,8 @@ pkgbase = multisystem
 	provides = multisystem
 	source = http://liveusb.info/multisystem/multisystem.tar.bz2
 	source = http://liveusb.info/multisystem/depot/dists/all/main/binary-i386/Packages
-	sha256sums = 000f6420b727309c2ec7cb89f806dcaacf9230b88c0b2b35fc2db4ea60228f43
-	sha256sums = 555d09b1e13a4ce2387148cf47c944dea4025620420f450caaaab0baf4ec457c
+	sha256sums = 2a6058bf4ce13c14b1fba575eb02916835f828329d9a1193d20c32de87bf9fa2
+	sha256sums = 45042a69300ccc48f89b6050f56b33a9d244d7af51ebf935f00d56c0eaf20c09
 
 pkgname = multisystem
 

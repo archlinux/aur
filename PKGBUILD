@@ -3,8 +3,8 @@
 # Contributor: ValHue <vhuelamo at gmail dot com>
 #
 pkgname="multisystem"
-pkgver=1.0423
-pkgrel=2
+pkgver=1.0424
+pkgrel=1
 pkgdesc="A GUI tool to create a usb system that can boot multiple distro's"
 url="http://liveusb.info/dotclear/index.php"
 arch=('i686' 'x86_64')
@@ -19,8 +19,8 @@ provides=("${pkgname}")
 source=("http://liveusb.info/${pkgname}/${pkgname}.tar.bz2"
         "http://liveusb.info/${pkgname}/depot/dists/all/main/binary-i386/Packages"
 )
-sha256sums=('000f6420b727309c2ec7cb89f806dcaacf9230b88c0b2b35fc2db4ea60228f43'
-            '555d09b1e13a4ce2387148cf47c944dea4025620420f450caaaab0baf4ec457c')
+sha256sums=('2a6058bf4ce13c14b1fba575eb02916835f828329d9a1193d20c32de87bf9fa2'
+            '45042a69300ccc48f89b6050f56b33a9d244d7af51ebf935f00d56c0eaf20c09')
 
 _multisystem="#!/usr/bin/sh
 exec /usr/local/share/multisystem/gui_multisystem.sh
@@ -65,10 +65,10 @@ pkgver() {
 build() {
     cd "${srcdir}"
     echo -e "$_multisystem" | tee multisystem_bin
-    echo -e "$_update_grub2" | tee update-grub2    
+    echo -e "$_update_grub2" | tee update-grub2
     echo -e "$_liveusb_desktop" | tee multisystem-liveusb.desktop
     echo -e "$_vbox_desktop" | tee multisystem-vbox.desktop
-    
+
     cd "${srcdir}/${pkgname}"
     sed -i '/fatresize/d' dependances.txt
     sed -i '/kvm/d' dependances.txt
