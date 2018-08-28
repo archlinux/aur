@@ -1,0 +1,16 @@
+pkgbase = emacs-avy-git
+	pkgdesc = Jump to things in Emacs tree-style
+	pkgver = r247.157486a
+	pkgrel = 1
+	url = https://github.com/abo-abo/avy
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	provides = emacs-avy
+	conflicts = emacs-avy
+	source = git+https://github.com/abo-abo/avy.git
+	sha256sums = SKIP
+
+pkgname = emacs-avy-git
+
