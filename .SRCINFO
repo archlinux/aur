@@ -1,0 +1,16 @@
+pkgbase = python2-ruamel.ordereddict
+	pkgdesc = This is an implementation of an ordered dictionary with Key Insertion Order
+	pkgver = r41.983a529c0f41
+	pkgrel = 1
+	url = https://pypi.org/project/ruamel.ordereddict
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	makedepends = mercurial
+	depends = python2>=2.7
+	provides = python2-ruamel.ordereddict
+	source = python2-ruamel.ordereddict::hg+https://bitbucket.org/ruamel/ordereddict
+	md5sums = SKIP
+
+pkgname = python2-ruamel.ordereddict
+
