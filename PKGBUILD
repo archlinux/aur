@@ -71,7 +71,7 @@ _localmodcfg=
 pkgbase=linux-ck
 _srcver=4.18.5-arch1
 pkgver=${_srcver%-*}
-pkgrel=1
+pkgrel=2
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -88,6 +88,7 @@ source=(
   linux.preset   # standard config files for mkinitcpio ramdisk
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz" # enable_additional_cpu_optimizations_for_gcc
   "http://ck.kolivas.org/patches/4.0/4.18/4.18-ck${_ckpatchversion}/${_ckpatchname}.xz"
+  Fix_MuQSS_full_dynticks_build.patch::https://github.com/ckolivas/linux/commit/abb4fd30fa127a0e8178b975343eb01713bc2b18.patch
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-drm-i915-Increase-LSPCON-timeout.patch
   0003-Arch-Linux-kernel-v4.18.4-arch1.patch
@@ -104,6 +105,7 @@ sha256sums=('fb090a3680eddf6f10bf895bc3075bd3f830e3d2429ce469982db5a28df647bd'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
             '0354083492adb3785dd31d2d4bf7dc805110aceffb369deed6cbded121f8a3d3'
+            '6e1f3cc3eb9a1e30a69ef1999f9aa6ad7f2f9fe4af7ba5dabe25d4ff19ee6740'
             '723f124ce9910f6e110c59ef2d1a26f8e8f2bc00a42a75e7657ba1ff71f12c06'
             'd7d3b3c7509afb1c91da402164c17a18f3d0d5fa9867f188278c6bef2a3186da'
             '72136fdb875318b751dafe5e81cfd44dacea07711fe2f4a07b7a423454a62531')
@@ -118,6 +120,12 @@ prepare() {
   scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "$_kernelname" > localversion.20-pkgname
+
+  # fix naming schema in EXTRAVERSION of ck patch set
+  sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "../${_ckpatchname}"
+
+  msg2 "Patching with ck patchset..."
+  patch -Np1 -i "$srcdir/${_ckpatchname}"
 
   local src
   for src in "${source[@]}"; do
@@ -145,15 +153,6 @@ prepare() {
       -i -e '/CONFIG_USE_PERCPU_NUMA_NODE_ID=y/d' \
       -i -e '/CONFIG_ACPI_NUMA=y/d' ./.config
   fi
-
-  # don't run depmod on 'make install'. We'll do this ourselves in packaging
-  #sed -i '2iexit 0' scripts/depmod.sh
-
-  # fix naming schema in EXTRAVERSION of ck patch set
-  sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "../${_ckpatchname}"
-
-  msg2 "Patching with ck patchset..."
-  patch -Np1 -i "$srcdir/${_ckpatchname}"
 
   # https://github.com/graysky2/kernel_gcc_patch
   msg2 "Patching to enabled additional gcc CPU optimizatons..."
