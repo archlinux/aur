@@ -1,17 +1,15 @@
 pkgbase = lib32-libsecret
-	pkgdesc = Library for storing and retrieving passwords and other secrets
+	pkgdesc = Library for storing and retrieving passwords and other secrets (32-bit)
 	pkgver = 0.18.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/Projects/Libsecret
 	arch = x86_64
 	license = LGPL
-	makedepends = gcc
 	makedepends = intltool
 	makedepends = gobject-introspection
 	makedepends = vala
 	makedepends = git
 	makedepends = gtk-doc
-	depends = lib32-gcc-libs
 	depends = lib32-glib2
 	depends = lib32-libgcrypt
 	depends = libsecret=0.18.6
