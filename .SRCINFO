@@ -1,0 +1,23 @@
+pkgbase = php71-redis-noconflict
+	pkgdesc = PHP extension for interfacing with Redis
+	pkgver = 4.1.1
+	pkgrel = 1
+	url = http://pecl.php.net/package/redis
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	license = PHP
+	makedepends = php>=7.0.0
+	makedepends = php-igbinary
+	makedepends = php71-noconflict
+	depends = php>=7.0.0
+	depends = php-igbinary
+	depends = php71-noconflict
+	conflicts = phpredis-git
+	backup = etc/php71/conf.d/redis.ini
+	source = http://pecl.php.net/get/redis-4.1.1.tgz
+	sha256sums = e407583431386d82307c4bef5dedafe50ad2f0288501b9922fb31b5b700bc9dc
+
+pkgname = php71-redis-noconflict
+
