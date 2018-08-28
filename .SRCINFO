@@ -1,13 +1,13 @@
 pkgbase = vanity-monero-bin
 	pkgdesc = Generates vanity address for CryptoNote currencies. Currently only Monero main net and test net are supported.
-	pkgver = 0.2.4
+	pkgver = v0.2.6
 	pkgrel = 1
 	url = https://github.com/Equim-chan/vanity-monero
 	arch = x86_64
 	license = MIT
-	provides = vanity-monero=0.2.4
-	source = https://github.com/Equim-chan/vanity-monero/releases/download/0.2.4/vanity-monero-linux-64.tar.xz
-	sha256sums = fbd4ddfbc4dc0ff80beda753b9b359e69d1ece21fee7a8659d6dc22f9a2293af
+	provides = vanity-monero=v0.2.6
+	source = https://github.com/Equim-chan/vanity-monero/releases/download/v0.2.6/vanity-monero-linux-64.tar.xz
+	sha256sums = eae8cb0130b2a238051a880bac5d7c122716eb9593112c7b0c9161f0fda4deaf
 
 pkgname = vanity-monero-bin
 
