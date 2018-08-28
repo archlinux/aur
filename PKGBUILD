@@ -6,7 +6,7 @@
 # Contributor: Angel 'angvp' Velasquez <angvp@archlinux.com.ve>
 
 pkgname=mantisbt
-pkgver=2.13.1
+pkgver=2.16.0
 pkgrel=1
 pkgdesc='Web-based issue tracking system'
 arch=('any')
@@ -28,7 +28,7 @@ backup=('etc/webapps/mantisbt/config_inc.php'
         'etc/webapps/mantisbt/custom_constants_inc.php'
 )
 source=("https://downloads.sourceforge.net/project/${pkgname}/mantis-stable/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('618a89dd90ba9c173d4bd610b3e8009ae2974f65edac16d4d3158c45cd980afae4e65019ca27b55f7415ac3623ecf4f17407f8df88472d14b343d1c5c0f3cc60')
+sha512sums=('03356253b60e36bb77631321a8079973fbfdcc6ed67d28f16c7cd8ee1d6cb57e72cea3e8cede55aa5c44818584d4ad3a174b6e9ab054657b012178fcb13e79dd')
 install="${pkgname}.install"
 
 prepare() {
@@ -46,7 +46,7 @@ package() {
     "${pkgdir}/etc/webapps/${pkgname}/config_inc.php"
 
   # readme
-  install -vDm644 readme.md "${pkgdir}/usr/share/doc/${pkgname}/readme.md"
+  install -vDm 644 readme.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
   cp -av --no-preserve='ownership' ../${pkgname}-${pkgver}/* \
     "${pkgdir}/usr/share/webapps/${pkgname}"
 
