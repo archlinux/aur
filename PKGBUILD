@@ -2,24 +2,24 @@
 
 
 pkgname=debops
-pkgver=0.7.2
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A collection of Ansible playbooks, scalable from one container to an entire data center."
 arch=('any')
 url="http://debops.org/"
 license=('GPL3')
 depends=('python' 'ansible' 'python-netaddr' 'python-ldap' 'python-passlib' 'util-linux' 'encfs' 'gnupg' 'python-dnspython')
-makedepends=('python2-setuptools')
+makedepends=('python-setuptools')
 conflicts=('depops-git')
-source=("https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('862e04cfeb6bdd6a30aea1cb063548784b14e1bd2750a8a61c4c1744ccab1b96')
+source=("https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('0068745fdf79f57a3d1436b88b5849421b1f48c9c5c64da450e51ce9022b0c70')
 
 build() {
-	cd "$pkgname-$pkgver"
-	python2 setup.py build
+	cd "${pkgname}-${pkgver}"
+	python setup.py build
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	python2 setup.py install --root="$pkgdir" --optimize=1
+	cd "${pkgname}-${pkgver}"
+	python setup.py install --root="${pkgdir}" --optimize=1
 }
