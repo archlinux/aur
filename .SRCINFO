@@ -1,16 +1,18 @@
 pkgbase = ttf-fixedsys-excelsior-linux
 	pkgdesc = fixedsys font for linux, use only at 12pt
-	pkgver = 3.0.1
-	pkgrel = 2
-	url = https://bugs.launchpad.net/ubuntu/+bug/200671
+	pkgver = 3.02.9
+	pkgrel = 1
+	url = https://github.com/kika/fixedsys
 	install = ttf-fixedsys-excelsior-linux.install
 	arch = any
 	license = custom
 	depends = fontconfig
 	depends = xorg-fonts-encodings
 	depends = xorg-font-utils
-	source = http://launchpadlibrarian.net/26228254/FSEX301-L2.ttf
-	sha256sums = e07f8a9edd4b633dba6cc08f12a8d9cbf4d10b177fea64cdb5741c60dd27dfc7
+	source = https://github.com/kika/fixedsys/releases/download/v3.02.9/FSEX302.ttf
+	source = https://github.com/kika/fixedsys/releases/download/v3.02.9/FSEX302-alt.ttf
+	sha256sums = b3f8e1da97b722a42477ee9a72f953eb2bc7c2195df5e2b6b7d4781dd3f8b2cc
+	sha256sums = e4abb547b387d4676892f2db7c4a19d5cda0a91680ccc52331b2b49456e307da
 
 pkgname = ttf-fixedsys-excelsior-linux
 
