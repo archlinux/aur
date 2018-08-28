@@ -495,7 +495,7 @@ void info_pane_populate_company(const Info* pInfo) {
     volume[32], div_yield[32];
     sprintf(revenue, "%ld", pInfo->revenue);
     sprintf(cash, "%ld", pInfo->cash);
-    sprintf(marketcap, "%ld", pInfo->cash);
+    sprintf(marketcap, "%ld", pInfo->marketcap);
     sprintf(pe_ratio, "%lf", pInfo->pe_ratio);
     sprintf(gross_profit, "%ld", pInfo->gross_profit);
     sprintf(debt, "%ld", pInfo->debt);
