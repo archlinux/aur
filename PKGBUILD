@@ -1,6 +1,6 @@
 # Maintainer: snafu
 pkgname=env-modules-tcl
-pkgver=4.1.2
+pkgver=4.1.4
 pkgrel=0
 epoch=
 pkgdesc="Provides for an easy dynamic modification of a user's environment via modulefile."
@@ -21,8 +21,8 @@ changelog=
 source=("https://sourceforge.net/projects/modules/files/Modules/modules-$pkgver/modules-$pkgver.tar.gz" zshcomp.patch)
 noextract=()
 validpgpkeys=()
-md5sums=('e6e9ce6774c557f3f825baa35c7780fd'
-         '5b4c34fac86b88c96a092c5972afa1fe')
+md5sums=('c19bff662003fad79f92a89b9ad47139'
+         '48195d9f1c157c17b5c07e3997739f9c')
 
 # Install locations:
 install_prefix=/usr

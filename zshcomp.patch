@@ -1,7 +1,5 @@
-diff --git a/init/zsh-functions/_module b/init/zsh-functions/_module
-index 45042d1..a1c686a 100644
 --- a/init/zsh-functions/_module
-+++ b/init/zsh-functions/_module
++++ a/init/zsh-functions/_module
 @@ -4,17 +4,35 @@
  # Zsh command-line completion for module
  # Copyright (C) 2017 Xavier Delaruelle <xavier.delaruelle@cea.fr>
@@ -48,30 +46,27 @@ index 45042d1..a1c686a 100644
  }
  
  _module_savelist() {
-@@ -24,18 +42,15 @@ _module_savelist() {
+@@ -24,16 +42,13 @@ _module_savelist() {
        /:ERROR:/d;'
  }
  
 -_module_not_yet_loaded() {
--   _module_avail | sort | sed -r "\%^(${LOADEDMODULES//:/|})$%d"
+-   _module_avail | sort | sed -E "\%^(${LOADEDMODULES//:/|})$%d"
 -}
--
--
++_module_all_mods() {
++    _module_completion
++ }
+ 
+ 
  _module_avail_mods() {
 -   local -a avail_mods;
 -   avail_mods=(${$(_module_avail)})
-+    _module_completion dir
-+}
- 
+-
 -   _describe -t avail-mods 'available modulefiles' avail_mods && ret=0
-+_module_all_mods() {
-+    _module_completion
++    _module_completion dir
  }
  
-+
  _module_saved_colls() {
-    local -a saved_colls;
-    saved_colls=(${$(_module_savelist)})
 @@ -44,10 +59,8 @@ _module_saved_colls() {
  }
  
