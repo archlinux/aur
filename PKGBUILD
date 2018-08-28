@@ -1,13 +1,13 @@
 pkgname=psflib-git
-pkgver=r29.7da887b
+pkgver=r32.936a2bd
 pkgrel=1
 pkgdesc="A small C library for reading Portable Sound Format files"
 arch=(i686 x86_64)
-url='https://gitlab.kode54.net/kode54/psflib'
+url='https://bitbucket.org/losnoco/psflib'
 license=(MIT)
 depends=(glibc zlib)
 makedepends=(git)
-source=(${pkgname}::git+https://gitlab.kode54.net/kode54/psflib.git)
+source=(${pkgname}::git+https://bitbucket.org/losnoco/psflib.git)
 sha256sums=('SKIP')
 
 pkgver() {
