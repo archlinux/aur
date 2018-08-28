@@ -1,0 +1,19 @@
+pkgbase = highlighterkit
+	pkgdesc = A framework to allow easy incorporation of syntax highlighting features into your application
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = http://wiki.gnustep.org/index.php/HighlighterKit
+	arch = i686
+	arch = x86_64
+	groups = gnustep-apps
+	license = GPL
+	makedepends = gcc-objc
+	makedepends = gnustep-make
+	depends = gnustep-base
+	depends = gnustep-gui
+	depends = gnustep-back
+	source = http://download.savannah.nongnu.org/releases/gnustep-nonfsf/HighlighterKit-0.1.3.tar.gz
+	sha256sums = cae933c9e402352ae70e96cbe70a52dd504b5d8efd5910cc4c3ff35a29fba86c
+
+pkgname = highlighterkit
+
