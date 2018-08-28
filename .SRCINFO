@@ -1,6 +1,6 @@
 pkgbase = lib32-libwacom
 	pkgdesc = Library to identify Wacom tablets and their features (32-bit)
-	pkgver = 0.30
+	pkgver = 0.31
 	pkgrel = 1
 	url = https://github.com/linuxwacom/libwacom/wiki
 	arch = x86_64
@@ -10,12 +10,12 @@ pkgbase = lib32-libwacom
 	depends = lib32-systemd
 	depends = lib32-libgudev
 	depends = libwacom
-	source = https://github.com/linuxwacom/libwacom/releases/download/libwacom-0.30/libwacom-0.30.tar.bz2
-	source = https://github.com/linuxwacom/libwacom/releases/download/libwacom-0.30/libwacom-0.30.tar.bz2.sig
+	source = https://github.com/linuxwacom/libwacom/releases/download/libwacom-0.31/libwacom-0.31.tar.bz2
+	source = https://github.com/linuxwacom/libwacom/releases/download/libwacom-0.31/libwacom-0.31.tar.bz2.sig
 	validpgpkeys = 3C2C43D9447D5938EF4551EBE23B7E70B467F0BF
-	sha1sums = f1f75093309a792343872835865573206a0f2ef0
+	sha1sums = 09ee6ae1d4e8b55756a8ffaf9136df03c521ae44
 	sha1sums = SKIP
-	sha256sums = 523408680514c0f01052e478503d8e89f86d72ddc7129fdd63988c221c492259
+	sha256sums = 18d58c254bee88527f5d58f6fd18458a9f0097641a1ee116dc2b6950619fbf03
 	sha256sums = SKIP
 
 pkgname = lib32-libwacom
