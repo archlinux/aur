@@ -1,13 +1,13 @@
 pkgname=hvl_replay-kode54-git
-pkgver=r51.0f9107e
+pkgver=r52.f1ad113
 pkgrel=1
 pkgdesc="Hively Tracker (HVL and AHX) replayer library (kode54's fork, from foo_input_hvl)"
 arch=(i686 x86_64)
-url='https://gitlab.kode54.net/kode54/foo_input_hvl'
+url='https://bitbucket.org/losnoco/foo_input_hvl'
 license=(MIT)
 depends=(glibc)
 makedepends=('git' 'qt5-base')
-source=("${pkgname}::git+https://gitlab.kode54.net/kode54/foo_input_hvl.git")
+source=("${pkgname}::git+https://bitbucket.org/losnoco/foo_input_hvl.git")
 sha256sums=('SKIP')
 
 pkgver() {
