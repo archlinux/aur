@@ -1,0 +1,19 @@
+pkgbase = perl-moosex-undeftolerant
+	pkgdesc = Make your attribute(s) tolerant to undef initialization
+	pkgver = 0.21
+	pkgrel = 1
+	url = https://metacpan.org/pod/MooseX::UndefTolerant
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-moose>=0
+	checkdepends = perl-test-fatal>=0
+	depends = perl>=5.006
+	depends = perl-moose>=0.89
+	depends = perl-namespace-autoclean>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/MooseX-UndefTolerant-0.21.tar.gz
+	md5sums = 8dbeb476c37ed546df210cc58310020d
+
+pkgname = perl-moosex-undeftolerant
+
