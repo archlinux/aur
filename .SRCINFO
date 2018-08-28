@@ -1,7 +1,7 @@
 pkgbase = freeblocks
 	pkgdesc = Tetris Attack-like puzzle game
 	pkgver = 0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/dorkster/freeblocks
 	arch = i686
 	arch = x86_64
