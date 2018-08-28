@@ -54,7 +54,7 @@ ocaml-taglib
 ocaml-lame
 
 # SHINE is for fixed-point MP3 encoding.
-#ocaml-shine
+ocaml-shine
 
 # OGG is for ogg/vorbis and ogg/theora encoding and decoding
 ocaml-ogg
@@ -80,7 +80,7 @@ ocaml-opus
 ocaml-fdkaac
 
 # FAAD for AAC decoding.
-#ocaml-faad
+ocaml-faad
 
 # FLAC is for flac, native and/or ogg (if using ocaml-ogg)
 # format decoding and encoding.
@@ -111,17 +111,17 @@ ocaml-gavl
 
 # FFMPEG is currently only used to convert from
 # and to many formats.
-#ocaml-ffmpeg
+ocaml-ffmpeg
 
 # Frei0r is a minimalistic plugin API for video sources and filters.
-#ocaml-frei0r
+ocaml-frei0r
 
 # ============================================================================
 # Sound synthesis
 # ============================================================================
 
 # DSSI is a standard for synthesizer plugins
-#ocaml-dssi
+ocaml-dssi
 
 # ============================================================================
 # Various modules
@@ -136,7 +136,7 @@ ocaml-lastfm
 
 # A library supporting the OSC protocol to have external controls
 # such as faders
-#ocaml-lo
+ocaml-lo
 
 # ============================================================================
 # Finally, the mandatory lib dtools, duppy and liquidsoap...
