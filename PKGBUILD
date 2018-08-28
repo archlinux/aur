@@ -4,14 +4,15 @@
 _gemname=commander-fastlane
 pkgname=ruby-$_gemname
 pkgver=4.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc='The complete solution for Ruby command-line executables'
 arch=(any)
 url='https://github.com/commander-rb/commander'
 license=(MIT)
 depends=(
   ruby
-  'ruby-highline<1.8' 'ruby-highline>=1.7.2'
+  # 'ruby-highline<1.8' 'ruby-highline>=1.7.2'
+  ruby-highline-1
 )
 makedepends=(ruby-rdoc)
 options=(!emptydirs)

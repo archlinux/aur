@@ -1,14 +1,13 @@
 pkgbase = ruby-commander-fastlane
 	pkgdesc = The complete solution for Ruby command-line executables
 	pkgver = 4.4.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/commander-rb/commander
 	arch = any
 	license = MIT
 	makedepends = ruby-rdoc
 	depends = ruby
-	depends = ruby-highline<1.8
-	depends = ruby-highline>=1.7.2
+	depends = ruby-highline-1
 	noextract = commander-fastlane-4.4.6.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/commander-fastlane-4.4.6.gem
