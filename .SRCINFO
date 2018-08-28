@@ -1,6 +1,6 @@
 pkgbase = kuser-frameworks
 	pkgdesc = User Manager
-	pkgver = 15.08.3
+	pkgver = 16.08.3
 	pkgrel = 1
 	url = http://kde.org/applications/system/kuser/
 	install = kuser.install
@@ -14,6 +14,7 @@ pkgbase = kuser-frameworks
 	makedepends = cmake
 	makedepends = automoc4
 	makedepends = extra-cmake-modules
+	makedepends = kdesignerplugin
 	depends = kdelibs4support
 	depends = kio
 	depends = kldap
@@ -21,10 +22,10 @@ pkgbase = kuser-frameworks
 	provides = kuser
 	conflicts = kdeadmin-kuser
 	conflicts = kuser
-	source = http://download.kde.org/stable/applications/15.08.3/src/kuser-15.08.3.tar.xz
+	source = https://download.kde.org/Attic/applications/16.08.3/src/kuser-16.08.3.tar.xz
 	source = port_to_kf5.patch
-	sha1sums = 45a1ba4913e6dfe0104675151d81527f289703a8
-	sha1sums = SKIP
+	md5sums = 8a386e34875ba0966bb73a23b2180d44
+	md5sums = ff4a978c0e431b0582bd933640568cba
 
 pkgname = kuser-frameworks
 
