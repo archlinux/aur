@@ -1,7 +1,7 @@
 # Maintainer: Ian Emnace <igemnace@gmail.com>
 
 pkgname=babel-eslint
-pkgver=8.2.6
+pkgver=9.0.0
 pkgrel=1
 pkgdesc='Custom parser for ESLint'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('nodejs' 'eslint')
 makedepends=('npm')
 source=("http://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-md5sums=('80f61e8329e1d804b3c9f5248c3ee89b')
+md5sums=('d3378ac787ebe8143255db94cd1202b6')
 
 package() {
 	npm install -g --user root --prefix "$pkgdir/usr" "$srcdir/$pkgname-$pkgver.tgz"
