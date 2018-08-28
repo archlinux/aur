@@ -1,12 +1,12 @@
 # Maintainer: Oden S. <hello [at] odensc [dot] me>
 pkgname=yubioath-krunner
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Displays your YubiKey OATH credentials in krunner when you search for them."
 arch=("any")
 url="https://github.com/odensc/yubioath-krunner"
 license=("LGPL")
-depends=("python" "python-dbus" "python-fuzzywuzzy" "python-gobject" "libnotify" "yubikey-manager")
+depends=("python" "python-dbus" "python-fuzzywuzzy" "python-levenshtein" "python-gobject" "libnotify" "yubikey-manager")
 install=$pkgname.install
 source=("https://github.com/odensc/yubioath-krunner/archive/v1.0.0.tar.gz")
 # update with updpkgsums
