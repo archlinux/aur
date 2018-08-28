@@ -1,6 +1,6 @@
 pkgname=highly-quixotic-git
 pkgver=r31.423c661
-pkgrel=1
+pkgrel=2
 pkgdesc="Highly Quixotic Capcom QSound (QSF) emulator library"
 arch=(i686 x86_64)
 url='https://bitbucket.org/losnoco/highly_quixotic'
@@ -20,6 +20,9 @@ prepare() {
 
    # Don't request a static lib, it prevents a dynamic one from being built.
    sed -i '/^CONFIG /s/ staticlib//' Core.pro
+
+   # Add qsound_ctr.c to the sources, it's required.
+   sed -i '/^SOURCES /aqsound_ctr.c \\' Core.pro
 
    # Install the header files too.
    cat >> Core.pro <<EOF

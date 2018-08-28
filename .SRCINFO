@@ -1,7 +1,7 @@
 pkgbase = highly-quixotic-git
 	pkgdesc = Highly Quixotic Capcom QSound (QSF) emulator library
 	pkgver = r31.423c661
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/losnoco/highly_quixotic
 	arch = i686
 	arch = x86_64
