@@ -1,12 +1,12 @@
 pkgbase = lib32-libmnl
-	pkgdesc = Minimalistic user-space library oriented to Netlink developers.
+	pkgdesc = Minimalistic user-space library oriented to Netlink developers. (32-bit)
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.netfilter.org/projects/libmnl/
 	arch = x86_64
 	license = LGPL2.1
+	makedepends = lib32-gcc-libs
 	depends = lib32-glibc
-	depends = lib32-gcc-libs
 	depends = libmnl
 	source = http://www.netfilter.org/projects/libmnl/files/libmnl-1.0.4.tar.bz2
 	source = http://www.netfilter.org/projects/libmnl/files/libmnl-1.0.4.tar.bz2.sig
