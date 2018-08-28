@@ -1,7 +1,7 @@
 # Maintainer: Wes Jackson <icebal dot 7 at gmail dot com>
 
 pkgname=nfs-ganesha-git
-pkgver=11870.32e8a2462
+pkgver=V2.7.rc3.r0.g32e8a2462
 pkgrel=1
 pkgdesc="Nfs-ganesha supports both the NFS and 9P protocols."
 arch=('any')
