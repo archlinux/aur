@@ -1,0 +1,17 @@
+pkgbase = qviaggiatreno-git
+	pkgdesc = Un'applicazione per controllare gli orari dei treni in tutta Italia tramite il sito viaggiatreno.it.
+	pkgver = 14.f46278b
+	pkgrel = 1
+	url = http://www.solotreni.net
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = qt5-base
+	depends = qt5-webkit
+	conflicts = qviaggiatreno-svn
+	replaces = qviaggiatreno-svn
+	source = qviaggiatreno::git+https://github.com/M0Rf30/qviaggiatreno
+	md5sums = SKIP
+
+pkgname = qviaggiatreno-git
+
