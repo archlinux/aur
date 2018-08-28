@@ -13,7 +13,7 @@ source=(https://github.com/wxWidgets/wxWidgets/releases/download/v$pkgver/wxWidg
         wxgtk-filezilla-assert.patch::"https://github.com/wxWidgets/wxWidgets/commit/ce1dce11.patch")
 sha1sums=('f999c3cf1887c0a60e519214c14b15cb9bb5ea6e'
           'dfe38650c655395b90bf082b5734c4093508bfa3'
-          'c9d013552b3078d7a9700df897333c2960207b0f'
+          'd2bd62d0852f3647782780565849692e7837c10c'
           '550c368a68eec8b6c32c61da289df76e4dd5a798'
           '1da8af91ef6c590da9c43dd115f52d605730f16a')
 
