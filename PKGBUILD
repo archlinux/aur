@@ -24,7 +24,7 @@ md5sums=('923cc5cc17f57bb9a59407c1685d70aa'
          '5faa64558cc0a5888923fcf77c299fa7'
          'f3e42ec6f04180c6d6972998bf172a41'
          '0495c002b7d5dce303d451e4cd2fede5'
-         '15a1cdfea2fac5de28fcf8e2c93f6f1a')
+         '22f9b6e6c170a3daba5e626d6fc2254c')
 
 prepare() {
   _ssc="/tmp/sedcontrol"
