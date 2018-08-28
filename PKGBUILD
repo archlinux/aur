@@ -4,7 +4,7 @@
 # PRs welcome at: https://github.com/ActivityWatch/aur-activitywatch-bin
 
 pkgname=activitywatch-bin
-pkgver='0.8.0b5'
+pkgver='0.8.0b6'
 pkgrel=1
 epoch=
 pkgdesc="Log what you do on your computer. Simple, extensible, no third parties."
@@ -39,6 +39,7 @@ package() {
     cp activitywatch/aw-qt.desktop $pkgdir/etc/xdg/autostart
 
     # Remove unneeded libs
+    # TODO: Move to CI scripts
     rm -r $pkgdir/opt/activitywatch/pytz
 
     # These takes a lot of space, getting rid of them would be nice
