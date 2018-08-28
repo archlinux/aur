@@ -1,0 +1,16 @@
+pkgbase = nodejs-mochawesome
+	pkgdesc = Mochawesome is a custom reporter for use with the Javascript testing framework, mocha.
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://github.com/adamgruber/mochawesome
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	depends = nodejs-mocha
+	noextract = mochawesome-3.0.1.tgz
+	source = https://registry.npmjs.org/mochawesome/-/mochawesome-3.0.1.tgz
+	sha256sums = 4f674b4c29e8307d9d87d12506258dbf7ed25b92b027b720dce7dc22106ca620
+
+pkgname = nodejs-mochawesome
+
