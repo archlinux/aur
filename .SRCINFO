@@ -1,0 +1,29 @@
+pkgbase = nomad-firewall-git
+	pkgdesc = kcm module for ufw from nomad desktop
+	pkgver = 0.1.r68.gfb8937e
+	pkgrel = 1
+	url = https://github.com/nomad-desktop/nomad-firewall
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools
+	depends = kdeclarative
+	depends = kcoreaddons
+	depends = kcmutils
+	depends = ki18n
+	depends = plasma-framework
+	depends = kdelibs4support
+	depends = kauth
+	depends = kconfig
+	depends = kio
+	depends = knewstuff
+	depends = kconfigwidgets
+	depends = net-tools
+	depends = ufw
+	source = git+https://github.com/nomad-desktop/nomad-firewall.git
+	md5sums = SKIP
+
+pkgname = nomad-firewall-git
+
