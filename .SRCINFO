@@ -1,13 +1,13 @@
 pkgbase = idjc
 	pkgdesc = Powerful client for individuals interested in streaming live radio shows
 	pkgver = 0.8.17
-	pkgrel = 2
+	pkgrel = 3
 	url = http://idjc.sourceforge.net/
 	install = idjc.install
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	depends = dbus-python
+	depends = python2-dbus
 	depends = desktop-file-utils
 	depends = ffmpeg
 	depends = flac

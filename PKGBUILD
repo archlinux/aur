@@ -5,12 +5,12 @@
 
 pkgname=idjc
 pkgver=0.8.17
-pkgrel=2
+pkgrel=3
 pkgdesc='Powerful client for individuals interested in streaming live radio shows'
 url='http://idjc.sourceforge.net/'
 license=('GPL2')
 arch=('i686' 'x86_64')
-depends=('dbus-python'
+depends=('python2-dbus'
 	'desktop-file-utils'
 	'ffmpeg'
 	'flac'
