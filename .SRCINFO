@@ -13,7 +13,7 @@ pkgbase = amor
 	makedepends = cmake
 	makedepends = automoc4
 	depends = kdebase-runtime
-	source = git+https://github.com/gregodadone/amor.git
+	source = git+https://github.com/KDE/amor.git
 	sha1sums = SKIP
 
 pkgname = amor

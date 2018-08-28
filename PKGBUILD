@@ -12,7 +12,7 @@ groups=('kde-applications')
 depends=('kdebase-runtime')
 makedepends=('cmake' 'automoc4')
 install=${pkgname}.install
-source=(git+https://github.com/gregodadone/amor.git)
+source=(git+https://github.com/KDE/amor.git)
 sha1sums=('SKIP')
 
 build() {
