@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/loads/molotov"
 license=('APL')
 makedepends=('python-setuptools')
-depends=('python' 'python-aiohttp')
+depends=('python' 'python-aiohttp' 'python-aiomeasures')
 source=("$_name-$pkgver.tar.gz::https://github.com/loads/molotov/archive/1.6.tar.gz")
 md5sums=('302e24fda5c61a0c525951fc5f19ff8b')
 
