@@ -1,8 +1,8 @@
-# Maintainer: Christoph J. Thompson <thompsonc@protonmail.ch>
+# Maintainer: Christoph J. Thompson <thompsonc at protonmail dot ch>
 
 pkgname=freeblocks-git
-pkgver=r181.g68b11ed
-pkgrel=1
+pkgver=r193.gfa7088c
+pkgrel=2
 pkgdesc="Tetris Attack-like puzzle game"
 arch=('i686' 'x86_64')
 url="https://github.com/dorkster/freeblocks"
@@ -24,7 +24,9 @@ pkgver() {
 
 build() {
   cd "${pkgname}"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr .
+  cmake \
+   -DCMAKE_C_FLAGS="${CFLAGS}" \
+   -DCMAKE_INSTALL_PREFIX=/usr .
   make
 }
 
@@ -32,4 +34,3 @@ package() {
   cd "${pkgname}"
   make DESTDIR="${pkgdir}" install
 }
-
