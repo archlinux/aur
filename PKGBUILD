@@ -2,8 +2,8 @@
 
 pkgname=libmodulemd-git
 _pkgname=libmodulemd
-pkgver=1.6.1.r5.gefda265
-pkgrel=2
+pkgver=1.6.2.r4.g7b1c167
+pkgrel=1
 pkgdesc="C Library for manipulating module metadata files"
 arch=("any")
 license=("MIT")
