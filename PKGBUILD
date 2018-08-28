@@ -5,7 +5,7 @@
 
 pkgname=gingko
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Gingko is a new kind of tool, that lets you shape your ideas with lists, outlines and cards, all in the same clean interface.'
 arch=('x86_64' 'i686')
 url='https://gingko.io/'
@@ -23,7 +23,7 @@ prepare() {
 package() {
   install -d -m 755 "${pkgdir}/usr/bin/"
   install -d -m 755 "${pkgdir}/opt/${pkgname}"
-  cp -Rr "${srcdir}/squashfs-root/app/"* "${pkgdir}/opt/${pkgname}"
+  cp -Rr "${srcdir}/squashfs-root/"* "${pkgdir}/opt/${pkgname}"
 
   install -d -m755 "${pkgdir}/usr/share/icons/hicolor"
   cp -Rr "${srcdir}/squashfs-root/usr/share/icons/hicolor/" \
