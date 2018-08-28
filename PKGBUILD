@@ -4,10 +4,10 @@ pkgver=0.0.1
 pkgrel=1
 license=('GPL3')
 pkgdesc='Adjust bashisms in shell scripts.'
-url='https://github.com/limadm/pacman-bashisms-hook#tag=0.0.1'
+url='https://github.com/limadm/pacman-bashisms-hook'
 arch=('any')
 depends=('checkbashisms')
-source=("${pkgname}::git+${url}")
+source=("${pkgname}::git+${url}#tag=${pkgver}")
 md5sums=('SKIP')
 
 package () {
