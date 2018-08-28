@@ -1,6 +1,6 @@
 pkgbase = ruby-google-api-client
 	pkgdesc = Client for accessing Google APIs
-	pkgver = 0.23.6
+	pkgver = 0.23.7
 	pkgrel = 1
 	url = https://github.com/google/google-api-ruby-client
 	arch = any
@@ -18,10 +18,12 @@ pkgbase = ruby-google-api-client
 	depends = ruby-representable<4
 	depends = ruby-retriable>=2
 	depends = ruby-retriable<4
-	noextract = google-api-client-0.23.6.gem
+	depends = ruby-signet>=0.9
+	depends = ruby-signet<1
+	noextract = google-api-client-0.23.7.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/google-api-client-0.23.6.gem
-	sha1sums = 91d5df3eb03f5a90fec5dc05547898f536d3d59b
+	source = https://rubygems.org/downloads/google-api-client-0.23.7.gem
+	sha1sums = 0f0f22eb990ae4760eba98a1a482d60615932ddb
 
 pkgname = ruby-google-api-client
 
