@@ -1,13 +1,13 @@
 pkgname=libupse-kode54-git
-pkgver=r21.40a0cb1
+pkgver=r22.46351eb
 pkgrel=1
 pkgdesc="UPSE: the unix playstation sound emulator (kode54's fork)"
 arch=(i686 x86_64)
-url='https://gitlab.kode54.net/kode54/libupse'
+url='https://bitbucket.org/losnoco/libupse'
 license=(GPL2 GPL3 BSD)
 depends=(glibc zlib)
 makedepends=(git)
-source=(${pkgname}::git+https://gitlab.kode54.net/kode54/libupse.git makefile.patch LICENSE.BSD)
+source=(${pkgname}::git+https://bitbucket.org/losnoco/libupse.git makefile.patch LICENSE.BSD)
 sha256sums=('SKIP'
             '8b845895dce8519b121c08e60f7dbc74dc1ae3267d3affd765325372cf5e592b'
             'd9d4f5d400a8e04b361a012ee5b96a77f51405ba3739f613d332095774110ce4')
