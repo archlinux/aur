@@ -8,7 +8,7 @@ _relverdate=${_relver}-${_reldate}
 # This is how I want to define the pkgver, but the AUR doesn't understand it
 #pkgver=${_relver}_${_reldate//-/_}
 pkgver=7.8_2014.09
-pkgrel=2
+pkgrel=3
 pkgdesc="Linaro GDB is a branch of FSF GDB that contains ARM focused features and patches."
 arch=(i686 x86_64)
 url="https://releases.linaro.org/"
@@ -20,7 +20,7 @@ optdepends=('openocd: for debugging JTAG targets')
 provides=('arm-none-eabi-gdb')
 conflicts=('cross-arm-none-eabi-gdb' 'arm-none-eabi-gdb')
 options=(!libtool !emptydirs)
-source=(https://releases.linaro.org/archive/${_relshortdate}/components/toolchain/gdb-linaro/gdb-linaro-${_relverdate}.tar.xz)
+source=(http://releases.linaro.org/archive/${_relshortdate}/components/toolchain/gdb-linaro/gdb-linaro-${_relverdate}.tar.xz)
 _basedir=gdb-linaro-${_relverdate}
 
 build() {
