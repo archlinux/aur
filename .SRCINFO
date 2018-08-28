@@ -1,12 +1,13 @@
 pkgbase = openbazaar-bin
 	pkgdesc = OpenBazaar Client, Decentralized Peer to Peer Marketplace for Bitcoin -- Static binaries
 	pkgver = 2.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OpenBazaar/openbazaar-desktop
 	install = openbazaar-bin.install
 	arch = i686
 	arch = x86_64
 	license = MIT
+	makedepends = npm
 	depends = desktop-file-utils
 	depends = gconf
 	depends = glibc

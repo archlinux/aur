@@ -4,12 +4,13 @@
 pkgname=openbazaar-bin
 _name=${pkgname%-bin}
 pkgver=2.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenBazaar Client, Decentralized Peer to Peer Marketplace for Bitcoin -- Static binaries"
 arch=('i686' 'x86_64')
 url="https://github.com/OpenBazaar/openbazaar-desktop"
 license=('MIT')
 depends=('desktop-file-utils' 'gconf' 'glibc' 'gtk2' 'libcap' 'libgcrypt' 'libnotify' 'libxtst' 'nodejs' 'nss' 'python' 'xdg-utils')
+makedepends=('npm')
 optdepends=('gnome-keyring' 'gvfs' 'libgnome-keyring' 'lsb-release')
 conflicts=('openbazaar')
 provides=('openbazaar')
