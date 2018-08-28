@@ -3,7 +3,7 @@
 pkgname=rocketchat-desktop
 pkgver=2.13.0
 _srcname="Rocket.Chat.Electron-$pkgver"
-pkgrel=2
+pkgrel=3
 pkgdesc='Rocket.Chat Native Cross-Platform Desktop Application via Electron.'
 arch=('i686' 'x86_64')
 url="https://github.com/RocketChat/Rocket.Chat.Electron"
@@ -14,7 +14,7 @@ conflicts=('rocketchat-client-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/RocketChat/Rocket.Chat.Electron/archive/$pkgver.tar.gz"
         fix-icon-name_use_target_dir.patch
         fix-gulp-release.patch)
-sha512sums=('96765b2e7f852448f229d7b42de98a9d31dbb6580ec6a84d3ddb22812d88c435c93bf142987b9cd8ee91e05546ffc783f7b078ad46220dcef53926eeb40ea6cc'
+sha512sums=('cb7eb28ecf9cb2f2cac6ce8cf81d6b2eb94e7dd7d68eebb5ac00e3c04c481569d1b5c7bff4f3640708ae70a8d632f6e4eb2d8378d929b485f9326c6735f5f01f'
             '5fab6bf05f1ee924e2a79cc133908c043d72d119a299c38badeb793bf12f1a328eac98e8ed1afabcf8cd3c06aeea7265421d6350e0094d2c55bf64cc30501a88'
             '4494d43f2ff3eef3c6d188cd147ec04fe6894ae7518aee3a5a4d5e23e081402051e7d1a2bdfd1da35e9c3336b3b8d5d3d4a25ab9bb96ed75b7d54a180d954d56')
 if [[ $CARCH == "i686" ]]; then
