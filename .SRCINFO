@@ -11,8 +11,11 @@ pkgbase = jdk10-openjdk-openj9-bin
 	depends = ca-certificates-utils
 	depends = nss
 	provides = java-environment=10
+	provides = java-environment-openjdk=10
 	provides = java-runtime=10
+	provides = java-runtime-openjdk=10
 	provides = java-runtime-headless=10
+	provides = java-runtime-headless-openjdk=10
 	noextract = OpenJDK10-OPENJ9_x64_Linux_jdk-10.0.2.u13_openj9-0.2%2B13.tar.gz
 	source = https://github.com/AdoptOpenJDK/openjdk10-openj9-releases/releases/download/jdk-10.0.2%2B13_openj9-0.9.0/OpenJDK10-OPENJ9_x64_Linux_jdk-10.0.2.13_openj9-0.9.0.tar.gz
 	sha256sums = 1ef0dab3853b2f3666091854ef8149fcb85970254558d5d62cfa9446831779d1
