@@ -1,10 +1,9 @@
 pkgbase = polkit-git
 	pkgdesc = Application development toolkit for controlling system-wide privileges
-	pkgver = 0.113.r29.g3272a98
+	pkgver = 0.115.r7.g42227b5
 	pkgrel = 1
 	epoch = 1
-	url = http://www.freedesktop.org/wiki/Software/polkit
-	install = polkit.install
+	url = https://www.freedesktop.org/wiki/Software/polkit/
 	arch = i686
 	arch = x86_64
 	license = LGPL
@@ -12,17 +11,18 @@ pkgbase = polkit-git
 	makedepends = gtk-doc
 	makedepends = gobject-introspection
 	makedepends = git
+	makedepends = autoconf-archive
+	makedepends = python-six
 	depends = glib2
 	depends = pam
 	depends = expat
 	depends = systemd
-	depends = js
+	depends = js52
 	provides = polkit
 	conflicts = polkit
+	options = !emptydirs
 	source = polkit-git::git+http://anongit.freedesktop.org/git/polkit.git
-	source = polkit.pam
-	md5sums = SKIP
-	md5sums = 6564f95878297b954f0572bc1610dd15
+	sha256sums = SKIP
 
 pkgname = polkit-git
 

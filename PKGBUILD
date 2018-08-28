@@ -4,20 +4,20 @@
 # Contributor: Aline Freitas <aline@alinefreitas.com.br>
 
 pkgname=polkit-git
-pkgver=0.113.r29.g3272a98
+pkgver=0.115.r7.g42227b5
 pkgrel=1
 epoch=1
 pkgdesc="Application development toolkit for controlling system-wide privileges"
 arch=(i686 x86_64)
 license=(LGPL)
-url="http://www.freedesktop.org/wiki/Software/polkit"
-depends=(glib2 pam expat systemd js)
-makedepends=(intltool gtk-doc gobject-introspection git)
-install=polkit.install
+url="https://www.freedesktop.org/wiki/Software/polkit/"
+depends=(glib2 pam expat systemd js52)
+makedepends=(intltool gtk-doc gobject-introspection git autoconf-archive python-six)
 provides=('polkit')
 conflicts=('polkit')
-source=($pkgname::git+http://anongit.freedesktop.org/git/polkit.git
-	polkit.pam)
+options=('!emptydirs')
+source=($pkgname::git+http://anongit.freedesktop.org/git/polkit.git)
+sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
@@ -28,20 +28,36 @@ build() {
   cd $pkgname
 
   ./autogen.sh --prefix=/usr --sysconfdir=/etc \
-      --localstatedir=/var --libexecdir=/usr/lib/polkit-1 \
+      --localstatedir=/var --libexecdir=/usr/lib \
       --enable-libsystemd-login=yes --disable-static \
-      --enable-gtk-doc --with-mozjs=mozjs-17.0
+      --enable-gtk-doc --with-os-type=redhat
+
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+
   make
+}
+
+check() {
+  cd $pkgname
+  make -k check || :
 }
 
 package() {
   cd $pkgname
   make DESTDIR="$pkgdir" install
 
-  chown 102 "$pkgdir/etc/polkit-1/rules.d"
-  chown 102 "$pkgdir/usr/share/polkit-1/rules.d"
+  chmod 0755 "$pkgdir/etc/polkit-1/rules.d"
+  chmod 0755 "$pkgdir/usr/share/polkit-1/rules.d"
 
-  install -m644 "$srcdir/polkit.pam" "$pkgdir/etc/pam.d/polkit-1"
+  install -Dm644 /dev/stdin "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf" <<END
+d /etc/polkit-1/rules.d 0750 root polkitd -
+d /usr/share/polkit-1/rules.d 0750 root polkitd -
+END
+
+  install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/$pkgname.conf" <<END
+u polkitd 102 "PolicyKit daemon"
+m polkitd proc
+END
 }
-md5sums=('SKIP'
-	 '6564f95878297b954f0572bc1610dd15')
+
+# vim: ts=2 sw=2 et:
