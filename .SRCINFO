@@ -1,0 +1,15 @@
+pkgbase = lib32-jemalloc
+	pkgdesc = General-purpose scalable concurrent malloc implementation (32-bit)
+	pkgver = 5.1.0
+	pkgrel = 1
+	url = http://www.canonware.com/jemalloc/
+	arch = x86_64
+	license = BSD
+	depends = lib32-glibc
+	depends = lib32-gcc-libs
+	depends = jemalloc
+	source = https://github.com/jemalloc/jemalloc/releases/download/5.1.0/jemalloc-5.1.0.tar.bz2
+	sha256sums = 5396e61cc6103ac393136c309fae09e44d74743c86f90e266948c50f3dbb7268
+
+pkgname = lib32-jemalloc
+
