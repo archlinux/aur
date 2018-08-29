@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=gst-plugins-intel-msdk-git
-pkgver=1.3.3.rc9.r29.g060718e
+pkgver=1.3.3.rc9.r37.g54dbdec
 pkgrel=1
 pkgdesc='GStreamer plugins for Intel Media SDK (MSDK) (git version)'
 arch=('x86_64')
@@ -20,11 +20,9 @@ provides=('gst-plugins-intel-msdk')
 conflicts=('gst-plugins-intel-msdk')
 source=("$pkgname"::'git+https://github.com/intel/gstreamer-media-SDK.git'
         'gst-plugins-intel-msdk-git-fix-intel-media-sdk-directories.patch'
-        'gst-plugins-intel-msdk-git-fix-libdrm-include-directory.patch'
         'gst-plugins-intel-msdk-git-fix-link-and-install.patch')
 sha256sums=('SKIP'
             'd7c521d9308d2dbed770caff81031c663b4af384deb237fde8cf4b2c36759da5'
-            'b55a8a8785ce2292c2792ffc814f004e8bd05b8d70e4e14a2fd93924901c020e'
             'fc410ebcb456894e084b3705ddb5deceede0cb7977206e89cc7b86c29d011fe0')
 
 prepare() {
@@ -33,7 +31,6 @@ prepare() {
     mkdir -p build
     
     patch -Np1 -i "${srcdir}/gst-plugins-intel-msdk-git-fix-intel-media-sdk-directories.patch"
-    patch -Np1 -i "${srcdir}/gst-plugins-intel-msdk-git-fix-libdrm-include-directory.patch"
     patch -Np1 -i "${srcdir}/gst-plugins-intel-msdk-git-fix-link-and-install.patch"
 }
 
