@@ -1,6 +1,6 @@
 # Maintainer: asm0dey <pavel.finkelshtein+AUR@gmail.com>
 pkgname=feedreader-git
-pkgver=2.3.0.r2669
+pkgver=2.3.0.r2673
 pkgrel=1
 pkgdesc="FeedReader is a modern desktop application designed to complement existing web-based RSS accounts."
 arch=('i686' 'x86_64')
