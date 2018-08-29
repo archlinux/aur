@@ -1,0 +1,29 @@
+--- a/setup/Linux/oss/build/osscore.c   2018-07-22 16:35:24.559690072 +0100
++++ b/setup/Linux/oss/build/osscore.c   2018-07-22 16:39:42.948338371 +0100
+@@ -32,6 +32,7 @@
+ #include <linux/sched.h>
+ #include <linux/interrupt.h>
+ #if LINUX_VERSION_CODE > KERNEL_VERSION(3,10,0)
++#include <linux/cred.h>
+ #include <linux/uidgid.h>
+ #endif
+ #undef strlen
+@@ -475,13 +476,17 @@
+ unsigned int
+ oss_get_uid (void)
+ {
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,10,0)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,13,0)
++  return current->cred->uid.val;
++#else 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,14,0)
+   return __kuid_val(current->cred->uid);
+ #elif LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,29)
+   return current->cred->uid;
+ #else
+   return current->uid;
+ #endif
++#endif
+   return 0;
+ }
+
