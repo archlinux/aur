@@ -1,0 +1,19 @@
+pkgbase = wf-config-git
+	pkgdesc = A library for managing configuration files, written for wayfire
+	pkgver = r29.c8af83a
+	pkgrel = 1
+	url = https://github.com/WayfireWM/wf-config
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = libevdev
+	depends = wlroots-git
+	provides = wf-config
+	conflicts = wf-config
+	source = git+https://github.com/WayfireWM/wf-config
+	sha256sums = SKIP
+
+pkgname = wf-config-git
+
