@@ -1,0 +1,31 @@
+pkgbase = podman
+	pkgdesc = Utility for running OCI-based containers.
+	pkgver = 0.8.4
+	pkgrel = 1
+	url = https://github.com/containers/libpod
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = libseccomp
+	makedepends = libselinux
+	makedepends = glibc
+	makedepends = git
+	depends = conmon
+	depends = device-mapper
+	depends = libseccomp
+	depends = iptables
+	depends = runc
+	depends = go
+	depends = ostree
+	source = https://github.com/containers/libpod/archive/v0.8.4.tar.gz
+	source = registries.conf
+	source = mounts.conf
+	source = seccomp.json
+	source = policy.json
+	sha256sums = 2ab6c755f54e0263f1dbcf56d84c7cbe07bcd0b61db20b3ee3a8e82dab3661f2
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = podman
+
