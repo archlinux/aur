@@ -15,7 +15,7 @@ options=('!emptydirs')
 conflicts=('evolution-ews')
 replaces=('evolution-ews')
 provides=('evolution-ews')
-source=(git://git.gnome.org/evolution-ews)
+source=(evolution-ews::git+https://gitlab.gnome.org/GNOME/evolution-ews.git)
 sha256sums=('SKIP')
 
 pkgver() {

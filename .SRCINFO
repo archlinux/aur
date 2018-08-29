@@ -13,7 +13,7 @@ pkgbase = evolution-ews-git
 	conflicts = evolution-ews
 	replaces = evolution-ews
 	options = !emptydirs
-	source = git://git.gnome.org/evolution-ews
+	source = evolution-ews::git+https://gitlab.gnome.org/GNOME/evolution-ews.git
 	sha256sums = SKIP
 
 pkgname = evolution-ews-git
