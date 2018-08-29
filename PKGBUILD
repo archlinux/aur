@@ -1,6 +1,6 @@
 # Maintainer: Eragon <sam.vzh@gmail.com>
 pkgname=bide
-pkgver=4.3.1
+pkgver=4.4
 pkgrel=1
 pkgdesc="BIDE, Basic IDE by Zezombye"
 arch=("any")
@@ -9,7 +9,7 @@ license=('GPL')
 depends=("jre8-openjdk")
 provides=("bide")
 source=("https://www.planet-casio.com/Fr/logiciels/dl_logiciel.php?id=118&file=1" "bide.desktop")
-md5sums=('8f1fa1e609db852b59caa29c3411f237'
+md5sums=('bf7418912defe6e7008dd0a257d7ef83'
          '286c8e2e0edd5acd78cc4c3e10b04d1d')
 
 build() {

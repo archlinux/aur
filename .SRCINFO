@@ -1,6 +1,6 @@
 pkgbase = bide
 	pkgdesc = BIDE, Basic IDE by Zezombye
-	pkgver = 4.3.1
+	pkgver = 4.4
 	pkgrel = 1
 	url = https://www.planet-casio.com/Fr/logiciels/voir_un_logiciel_casio.php?showid=118
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = bide
 	provides = bide
 	source = https://www.planet-casio.com/Fr/logiciels/dl_logiciel.php?id=118&file=1
 	source = bide.desktop
-	md5sums = 8f1fa1e609db852b59caa29c3411f237
+	md5sums = bf7418912defe6e7008dd0a257d7ef83
 	md5sums = 286c8e2e0edd5acd78cc4c3e10b04d1d
 
 pkgname = bide
