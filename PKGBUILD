@@ -7,7 +7,7 @@ pkgdesc="Git GUI Client"
 arch=('x86_64')
 url="https://github.com/soramimi/Guitar/"
 license=('GPL')
-depends=('xdg-utils' 'git' 'qt5ct' 'libpng')
+depends=('xdg-utils' 'git' 'qt5ct' 'libpng' 'libxcb' 'icu')
 source_x86_64=("http://files.soramimi.jp/guitar/${pkgver}/Guitar-${pkgver}-debian9-x86-64bit.tar.gz")
 source=($pkgname.desktop
         $pkgname.png)
