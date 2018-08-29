@@ -8,12 +8,12 @@ pkgdesc="SAGECal is a very fast, memory efficient and GPU accelerated radio inte
 arch=('i686' 'x86_64')
 url="https://github.com/nlesc-dirac/sagecal"
 license=('GPL-2.0')
-makedepends=('casacore' 'make' 'pkg-config' 'binutils' 'boost' 'boost-libs' 'cmake' 'gcc-fortran' 'gcc' 'flex' 
+makedepends=('casacore' 'make' 'pkg-config' 'binutils' 'boost' 'boost-libs' 'cmake' 'gcc-fortran' 'gcc7' 'flex' 
 	     'bison' 'openblas' 'lapack' 'cfitsio' 'wcslib'
 	     )
 depends=('casacore')
 optdepends=('fftw' 'hdf5' 'python2-numpy' 'ncurses')
-conflicts=('')
+conflicts=()
 provides=("${pkgname}")
 source=("https://github.com/nlesc-dirac/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('f9e0ff3960023a40e954485e0f9f2c74a58c218fbb96956a159d88d08a7b9781')
@@ -23,7 +23,11 @@ build() {
     mkdir build
 
     cd build
-    cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DENABLE_CUDA=OFF
+    cmake .. \
+      -DCMAKE_CXX_COMPILER=/usr/sbin/g++-7 \
+      -DCMAKE_C_COMPILER=/usr/sbin/gcc-7 \
+      -DCMAKE_INSTALL_PREFIX=/usr \
+      -DENABLE_CUDA=OFF
     make
 }
 
