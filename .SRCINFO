@@ -1,11 +1,11 @@
 pkgbase = zipper.app
-	pkgdesc = Multi-format archive extractor with compression services.
+	pkgdesc = Multi-format archive extractor with compression services
 	pkgver = 1.5
 	pkgrel = 1
 	url = http://www.nongnu.org/gap/zipper/index.html
 	arch = i686
 	arch = x86_64
-	groups = gnustep
+	groups = gnustep-apps
 	license = GPL
 	makedepends = gcc-objc
 	makedepends = gnustep-make
