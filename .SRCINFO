@@ -1,0 +1,14 @@
+pkgbase = playlist-length
+	pkgdesc = A command-line tool to get length of all audios/videos in a directory
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = http://github.com/karansthr/playlist-length
+	arch = any
+	license = MIT License
+	makedepends = python3
+	depends = python
+	source = https://files.pythonhosted.org/packages/6a/16/a73537a0243c8784f1a175b9fa0d014aa7a51bc095c0163b4c965b2da53a/playlist-length-1.6.1.tar.gz
+	md5sums = f7d591f7821fe1b56fbfd1b0e83765c5
+
+pkgname = playlist-length
+
