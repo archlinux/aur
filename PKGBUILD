@@ -9,11 +9,11 @@ arch=('i686' 'x86_64')
 url=""
 license=('GPL-2.0')
 makedepends=('make' 'pkg-config' 'binutils' 'boost' 'boost-libs' 'cmake' 'gcc-fortran' 'gcc' 'flex' 
-	     'bison' 'blas' 'lapack' 'cfitsio' 'wcslib'
+	     'bison' 'blas' 'lapack' 'cfitsio' 'wcslib' 'python-numpy'
 	     )
 depends=('')
 optdepends=('sofa: only for testing casacore measures'
-	    'fftw' 'hdf5' 'python-numpy' 'ncurses')
+	    'fftw' 'hdf5' 'ncurses')
 conflicts=('')
 provides=("${pkgname}")
 source=("https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
