@@ -1,7 +1,7 @@
 pkgbase = python-node-semver
 	pkgdesc = python version of node-semver
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/podhmo/python-semver
 	arch = any
 	license = MIT
