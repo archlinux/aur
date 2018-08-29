@@ -1,8 +1,8 @@
 pkgbase = wine-staging-pba-git
 	pkgdesc = Wine staging branch with PBA patches for increased D3D performance. Git versions. (Also includes Path of Exile DX11 patch!)
-	pkgver = 3.13.r0.g44aadc3a+wine.3.13.r0.g25cc380b8e+pba.3.13.r68.68129ed
-	pkgrel = 1
-	url = https://github.com/acomminos/wine-pba
+	pkgver = 3.14
+	pkgrel = 2
+	url = https://github.com/Firerat/wine-pba
 	install = wine.install
 	arch = x86_64
 	license = LGPL
@@ -164,18 +164,17 @@ pkgbase = wine-staging-pba-git
 	optdepends = lib32-vulkan-icd-loader
 	optdepends = cups
 	optdepends = samba
-	provides = wine=3.13.r0.g25cc380b8e
-	provides = wine-wow64=3.13.r0.g25cc380b8e
-	provides = wine-git=3.13.r0.g25cc380b8e
-	provides = wine-staging=3.13.r0.g44aadc3a
-	provides = wine-pba=3.13.r68.68129ed
+	provides = wine=3.14
+	provides = wine-git=3.14
+	provides = wine-staging=3.14
+	provides = wine-wow64=3.14
 	conflicts = wine
 	conflicts = wine-wow64
 	conflicts = wine-staging
 	options = staticlibs
 	source = wine-git::git://source.winehq.org/git/wine.git
 	source = wine-staging-git::git+https://github.com/wine-staging/wine-staging.git
-	source = wine-pba::git+https://github.com/goldpaw/wine-pba.git
+	source = wine-pba-firerat-git::git+https://github.com/Firerat/wine-pba
 	source = steam.patch
 	source = poe-fix.patch
 	source = harmony-fix.diff

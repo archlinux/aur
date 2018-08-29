@@ -2,13 +2,13 @@
 # Maintainer: Lars Norberg < arch-packages at cogwerkz dot org >
 
 pkgname=wine-staging-pba-git
-pkgver=3.13.r0.g44aadc3a+wine.3.13.r0.g25cc380b8e+pba.3.13.r68.68129ed
-pkgrel=1
+pkgver=3.14
+pkgrel=2
 _winesrcdir='wine-git'
 _stgsrcdir='wine-staging-git'
-_pbasrcdir='wine-pba'
+_pbasrcdir='wine-pba-firerat-git'
 pkgdesc='Wine staging branch with PBA patches for increased D3D performance. Git versions. (Also includes Path of Exile DX11 patch!)'
-url='https://github.com/acomminos/wine-pba'
+url='https://github.com/Firerat/wine-pba'
 arch=('x86_64')
 options=('staticlibs')
 license=('LGPL')
@@ -92,7 +92,7 @@ optdepends=(
 )
 source=("$_winesrcdir"::'git://source.winehq.org/git/wine.git'
 		"$_stgsrcdir"::'git+https://github.com/wine-staging/wine-staging.git'
-		"$_pbasrcdir"::'git+https://github.com/goldpaw/wine-pba.git'
+		"$_pbasrcdir"::'git+https://github.com/Firerat/wine-pba'
 		'steam.patch'
 		'poe-fix.patch'
 		'harmony-fix.diff'
@@ -107,39 +107,15 @@ sha256sums=('SKIP'
 			'9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
 			'c589c1668851cf5973b8e76d9bd6ae3b9cb9e6524df5d9cb90af4ac20d61d152')
 provides=(
-	"wine=$(        printf '%s' "$pkgver" | sed 's/.*\+wine\.//' | sed 's/\+pba.*//')"
-	"wine-wow64=$(  printf '%s' "$pkgver" | sed 's/.*\+wine\.//' | sed 's/\+pba.*//')"
-	"wine-git=$(    printf '%s' "$pkgver" | sed 's/.*\+wine\.//' | sed 's/\+pba.*//')"
-	"wine-staging=$(printf '%s' "$pkgver" | sed 's/\+wine.*//')"
-	"wine-pba=$(    printf '%s' "$pkgver" | sed 's/.*\+pba\.//')"
+	"wine=$pkgver"
+	"wine-git=$pkgver"
+	"wine-staging=$pkgver" 
+	"wine-wow64=$pkgver"
 )
 
 conflicts=('wine' 'wine-wow64' 'wine-staging')
 makedepends=(${makedepends[@]} ${depends[@]})
 install=wine.install
-
-pkgver() {
-	# retrieve current wine-staging version
-	cd "${srcdir}/${_stgsrcdir}"
-	#local _stagingVer=$( printf "%s.r%s.%s" "$_stagingTag" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" )
-	local _stagingTag="$(git tag --sort='version:refname' | tail -n1 | sed 's/-/./g;s/^v//;s/\.rc/rc/')"
-	local _stagingVer="$(git describe --long --tags \
-								| sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//;s/\.rc/rc/' \
-								| sed "s/^latest.release/${_stagingTag}/")"
-
-	# retrieve current wine version
-	cd "${srcdir}/${_winesrcdir}"
-	local _wineVer="$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//;s/\.rc/rc/')"
-
-	# retrieve current wine-pba version
-	cd "${srcdir}/${_pbasrcdir}"
-	local _pbaTag="$(git tag --sort='version:refname' | tail -n1 | sed 's/-/./g;s/^v//;s/\.rc/rc/')"
-	local _pbaVer=$( printf "%s.r%s.%s" "$_pbaTag" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" )
-
-	# version string might be a bit over the top, 
-	# but I want the build versions of all the 3 source repositories in it.
-	printf '%s+%s+pba.%s' "$_stagingVer" "$_wineVer" "$_pbaVer"
-}
 
 prepare() {
 	cd "${srcdir}"/"${_winesrcdir}"
