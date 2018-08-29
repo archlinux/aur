@@ -18,7 +18,7 @@ pkgbase = straks-qt
 	depends = protobuf
 	depends = libevent
 	conflicts = straks
-	source = straks-qt::git+https://github.com/straks/straks.git
+	source = straks-qt::git+https://github.com/straks/straks.git#tag=1.14.7
 	source = straks-qt.desktop
 	sha256sums = SKIP
 	sha256sums = 779e1b3cd7d97a06f98137be94de99a0abd0717ebd4fab054f6a33057de944d8

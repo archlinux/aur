@@ -11,7 +11,7 @@ depends=(boost-libs qt5-base qrencode miniupnpc db4.8 zeromq protobuf libevent)
 makedepends=(boost qt5-tools)
 conflicts=(straks)
 install=straks-qt.install
-source=("${pkgname%-git}::git+https://github.com/straks/straks.git"
+source=("${pkgname%-git}::git+https://github.com/straks/straks.git#tag=${pkgver}"
         "$pkgname.desktop")
 sha256sums=('SKIP'
             '779e1b3cd7d97a06f98137be94de99a0abd0717ebd4fab054f6a33057de944d8')
