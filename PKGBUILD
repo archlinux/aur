@@ -2,9 +2,9 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=miredo
-pkgver=1.2.6+139+g6eb5e5a
+pkgver=1.2.6+149+g5db176c
 pkgrel=1
-_commit='6eb5e5a417667d47dfca31f80d5f3debbc4c4e0e'
+_commit='5db176c6aae10fe3d743738244c82f0b52f80cd7'
 pkgdesc='Teredo client and server.'
 arch=('x86_64')
 url='https://www.remlab.net/miredo/'
@@ -34,8 +34,10 @@ build() {
 		--libexecdir=/usr/lib \
 		--sbindir=/usr/bin \
 		--with-Judy \
+		--with-pic \
 		--disable-assert \
 		--disable-static \
+		--disable-rpath \
 		--enable-miredo-user
 	make
 }
