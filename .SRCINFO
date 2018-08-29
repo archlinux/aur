@@ -1,14 +1,14 @@
 pkgbase = boram
 	pkgdesc = Cross-platform WebM converter
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/Kagami/boram
 	arch = x86_64
 	license = CC0-1.0
 	depends = mpv
 	depends = ffmpeg
-	source = https://github.com/Kagami/boram/releases/download/v0.4.0/boram-v0.4.0-linux-x64.7z
-	md5sums = b5f9bc1f85209ce16eb75522edb58958
+	source = https://github.com/Kagami/boram/releases/download/v0.5.0/boram-v0.5.0-linux-x64.7z
+	md5sums = 48c3bbd87c6409d0c244b2808546de95
 
 pkgname = boram
 
