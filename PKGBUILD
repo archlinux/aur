@@ -15,8 +15,6 @@ source=("https://github.com/JLErvin/berry/archive/master.zip")
 sha256sums=('SKIP')
 
 prepare() {
-	patch -p1 -i ../manual.patch
-	
 	# Installing the desktop file doesn't work, so N/A for now.
 	#install -D -m644 ../berry.desktop "${pkgdir}/usr/share/xsessions/"
 }
