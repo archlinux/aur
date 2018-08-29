@@ -1,0 +1,12 @@
+diff --git a/src/openpose/CMakeLists.txt b/src/openpose/CMakeLists.txt
+index cedcfdb..4a918a5 100644
+--- a/src/openpose/CMakeLists.txt
++++ b/src/openpose/CMakeLists.txt
+@@ -25,6 +25,7 @@ endif ()
+ # Ubuntu
+ if(UNIX AND NOT APPLE)
+   target_link_libraries(openpose ${OpenCV_LIBS} ${Caffe_LIBS}
++      GLU
+       ${GFLAGS_LIBRARY} ${GLOG_LIBRARY} ${MKL_LIBS} ${GLUT_LIBRARY} ${SPINNAKER_LIB})
+   if (CMAKE_COMPILER_IS_GNUCXX)
+     foreach (SUB_DIR ${SUB_DIRS})

@@ -1,0 +1,165 @@
+diff --git a/examples/openpose/openpose.cpp b/examples/openpose/openpose.cpp
+index 711b0ad..3930674 100755
+--- a/examples/openpose/openpose.cpp
++++ b/examples/openpose/openpose.cpp
+@@ -64,9 +64,9 @@ DEFINE_int32(frame_rotate,              0,              "Rotate each frame, 4 po
+ DEFINE_bool(frames_repeat,              false,          "Repeat frames when finished.");
+ DEFINE_bool(process_real_time,          false,          "Enable to keep the original source frame rate (e.g. for video). If the processing time is"
+                                                         " too long, it will skip frames. If it is too fast, it will slow it down.");
+-DEFINE_string(camera_parameter_folder,  "models/cameraParameters/flir/", "String with the folder where the camera parameters are located.");
++DEFINE_string(camera_parameter_folder,  "/usr/lib/OpenPose/models/cameraParameters/flir/", "String with the folder where the camera parameters are located.");
+ // OpenPose
+-DEFINE_string(model_folder,             "models/",      "Folder path (absolute or relative) where the models (pose, face, ...) are located.");
++DEFINE_string(model_folder,             "",      "Folder path (absolute or relative) where the models (pose, face, ...) are located.");
+ DEFINE_string(output_resolution,        "-1x-1",        "The image resolution (display and output). Use \"-1x-1\" to force the program to use the"
+                                                         " input image resolution.");
+ DEFINE_int32(num_gpu,                   -1,             "The number of GPU devices to use. If negative, it will use all the available GPUs in your"
+diff --git a/examples/tests/handFromJsonTest.cpp b/examples/tests/handFromJsonTest.cpp
+index c6925a9..822ec88 100644
+--- a/examples/tests/handFromJsonTest.cpp
++++ b/examples/tests/handFromJsonTest.cpp
+@@ -18,7 +18,7 @@ DEFINE_int32(logging_level,             3,              "");
+ DEFINE_string(image_dir,                "", "");
+ DEFINE_string(hand_ground_truth,        "", "");
+ // OpenPose
+-DEFINE_string(model_folder,             "models/",      "");
++DEFINE_string(model_folder,             "/usr/lib/OpenPose/models/",      "");
+ DEFINE_int32(num_gpu,                   -1,             "");
+ DEFINE_int32(num_gpu_start,             0,              "");
+ // OpenPose Hand
+@@ -60,7 +60,7 @@ int handFromJsonTest()
+     op::WrapperStructPose wrapperStructPose{false, op::flagsToPoint("656x368"), op::flagsToPoint("1280x720"),
+                                             op::ScaleMode::InputResolution, FLAGS_num_gpu, FLAGS_num_gpu_start,
+                                             1, 0.15f, op::RenderMode::None, op::PoseModel::COCO_18,
+-                                            true, 0.f, 0.f, 0, "models/", {}, op::ScaleMode::ZeroToOne, false,
++                                            true, 0.f, 0.f, 0, "/usr/lib/OpenPose/models/", {}, op::ScaleMode::ZeroToOne, false,
+                                             0.05f, -1, enableGoogleLogging, false, identification};
+     wrapperStructPose.modelFolder = FLAGS_model_folder;
+     // Hand configuration (use op::WrapperStructHand{} to disable it)
+diff --git a/examples/tutorial_add_module/1_custom_post_processing.cpp b/examples/tutorial_add_module/1_custom_post_processing.cpp
+index 54b9d13..e4f489d 100644
+--- a/examples/tutorial_add_module/1_custom_post_processing.cpp
++++ b/examples/tutorial_add_module/1_custom_post_processing.cpp
+@@ -73,9 +73,9 @@ DEFINE_int32(frame_rotate,              0,              "Rotate each frame, 4 po
+ DEFINE_bool(frames_repeat,              false,          "Repeat frames when finished.");
+ DEFINE_bool(process_real_time,          false,          "Enable to keep the original source frame rate (e.g. for video). If the processing time is"
+                                                         " too long, it will skip frames. If it is too fast, it will slow it down.");
+-DEFINE_string(camera_parameter_folder,  "models/cameraParameters/flir/", "String with the folder where the camera parameters are located.");
++DEFINE_string(camera_parameter_folder,  "/usr/lib/OpenPose/models/cameraParameters/flir/", "String with the folder where the camera parameters are located.");
+ // OpenPose
+-DEFINE_string(model_folder,             "models/",      "Folder path (absolute or relative) where the models (pose, face, ...) are located.");
++DEFINE_string(model_folder,             "/usr/lib/OpenPose/models/",      "Folder path (absolute or relative) where the models (pose, face, ...) are located.");
+ DEFINE_string(output_resolution,        "-1x-1",        "The image resolution (display and output). Use \"-1x-1\" to force the program to use the"
+                                                         " input image resolution.");
+ DEFINE_int32(num_gpu,                   -1,             "The number of GPU devices to use. If negative, it will use all the available GPUs in your"
+diff --git a/examples/tutorial_pose/1_extract_from_image.cpp b/examples/tutorial_pose/1_extract_from_image.cpp
+index b0a75c9..8d37f86 100644
+--- a/examples/tutorial_pose/1_extract_from_image.cpp
++++ b/examples/tutorial_pose/1_extract_from_image.cpp
+@@ -34,7 +34,7 @@ DEFINE_string(image_path,               "examples/media/COCO_val2014_00000000019
+ // OpenPose
+ DEFINE_string(model_pose,               "COCO",         "Model to be used. E.g. `COCO` (18 keypoints), `MPI` (15 keypoints, ~10% faster), "
+                                                         "`MPI_4_layers` (15 keypoints, even faster but less accurate).");
+-DEFINE_string(model_folder,             "models/",      "Folder path (absolute or relative) where the models (pose, face, ...) are located.");
++DEFINE_string(model_folder,             "/usr/lib/OpenPose/models/",      "Folder path (absolute or relative) where the models (pose, face, ...) are located.");
+ DEFINE_string(net_resolution,           "-1x368",       "Multiples of 16. If it is increased, the accuracy potentially increases. If it is"
+                                                         " decreased, the speed increases. For maximum speed-accuracy balance, it should keep the"
+                                                         " closest aspect ratio possible to the images or videos to be processed. Using `-1` in"
+diff --git a/examples/tutorial_pose/2_extract_pose_or_heatmat_from_image.cpp b/examples/tutorial_pose/2_extract_pose_or_heatmat_from_image.cpp
+index b2c2bee..9e1afc9 100644
+--- a/examples/tutorial_pose/2_extract_pose_or_heatmat_from_image.cpp
++++ b/examples/tutorial_pose/2_extract_pose_or_heatmat_from_image.cpp
+@@ -34,7 +34,7 @@ DEFINE_string(image_path,               "examples/media/COCO_val2014_00000000019
+ // OpenPose
+ DEFINE_string(model_pose,               "COCO",         "Model to be used. E.g. `COCO` (18 keypoints), `MPI` (15 keypoints, ~10% faster), "
+                                                         "`MPI_4_layers` (15 keypoints, even faster but less accurate).");
+-DEFINE_string(model_folder,             "models/",      "Folder path (absolute or relative) where the models (pose, face, ...) are located.");
++DEFINE_string(model_folder,             "/usr/lib/OpenPose/models/",      "Folder path (absolute or relative) where the models (pose, face, ...) are located.");
+ DEFINE_string(net_resolution,           "-1x368",       "Multiples of 16. If it is increased, the accuracy potentially increases. If it is"
+                                                         " decreased, the speed increases. For maximum speed-accuracy balance, it should keep the"
+                                                         " closest aspect ratio possible to the images or videos to be processed. Using `-1` in"
+diff --git a/examples/tutorial_thread/1_openpose_read_and_display.cpp b/examples/tutorial_thread/1_openpose_read_and_display.cpp
+index 2003d28..a2def83 100644
+--- a/examples/tutorial_thread/1_openpose_read_and_display.cpp
++++ b/examples/tutorial_thread/1_openpose_read_and_display.cpp
+@@ -44,7 +44,7 @@ DEFINE_bool(flir_camera,                false,          "Whether to use FLIR (Po
+ DEFINE_string(ip_camera,                "",             "String with the IP camera URL. It supports protocols like RTSP and HTTP.");
+ DEFINE_bool(process_real_time,          false,          "Enable to keep the original source frame rate (e.g. for video). If the processing time is"
+                                                         " too long, it will skip frames. If it is too fast, it will slow it down.");
+-DEFINE_string(camera_parameter_folder,  "models/cameraParameters/flir/", "String with the folder where the camera parameters are located.");
++DEFINE_string(camera_parameter_folder,  "/usr/lib/OpenPose/models/cameraParameters/flir/", "String with the folder where the camera parameters are located.");
+ // OpenPose
+ DEFINE_string(output_resolution,        "-1x-1",        "The image resolution (display and output). Use \"-1x-1\" to force the program to use the"
+                                                         " input image resolution.");
+diff --git a/examples/tutorial_thread/2_user_processing_function.cpp b/examples/tutorial_thread/2_user_processing_function.cpp
+index b098502..2662284 100644
+--- a/examples/tutorial_thread/2_user_processing_function.cpp
++++ b/examples/tutorial_thread/2_user_processing_function.cpp
+@@ -45,7 +45,7 @@ DEFINE_bool(flir_camera,                false,          "Whether to use FLIR (Po
+ DEFINE_string(ip_camera,                "",             "String with the IP camera URL. It supports protocols like RTSP and HTTP.");
+ DEFINE_bool(process_real_time,          false,          "Enable to keep the original source frame rate (e.g. for video). If the processing time is"
+                                                         " too long, it will skip frames. If it is too fast, it will slow it down.");
+-DEFINE_string(camera_parameter_folder,  "models/cameraParameters/flir/", "String with the folder where the camera parameters are located.");
++DEFINE_string(camera_parameter_folder,  "/usr/lib/OpenPose/models/cameraParameters/flir/", "String with the folder where the camera parameters are located.");
+ // OpenPose
+ DEFINE_string(output_resolution,        "-1x-1",        "The image resolution (display and output). Use \"-1x-1\" to force the program to use the"
+                                                         " input image resolution.");
+diff --git a/examples/tutorial_wrapper/1_user_asynchronous_output.cpp b/examples/tutorial_wrapper/1_user_asynchronous_output.cpp
+index 181113f..dcead2d 100644
+--- a/examples/tutorial_wrapper/1_user_asynchronous_output.cpp
++++ b/examples/tutorial_wrapper/1_user_asynchronous_output.cpp
+@@ -63,9 +63,9 @@ DEFINE_int32(frame_rotate,              0,              "Rotate each frame, 4 po
+ DEFINE_bool(frames_repeat,              false,          "Repeat frames when finished.");
+ DEFINE_bool(process_real_time,          false,          "Enable to keep the original source frame rate (e.g. for video). If the processing time is"
+                                                         " too long, it will skip frames. If it is too fast, it will slow it down.");
+-DEFINE_string(camera_parameter_folder,  "models/cameraParameters/flir/", "String with the folder where the camera parameters are located.");
++DEFINE_string(camera_parameter_folder,  "/usr/lib/OpenPose/models/cameraParameters/flir/", "String with the folder where the camera parameters are located.");
+ // OpenPose
+-DEFINE_string(model_folder,             "models/",      "Folder path (absolute or relative) where the models (pose, face, ...) are located.");
++DEFINE_string(model_folder,             "/usr/lib/OpenPose/models/",      "Folder path (absolute or relative) where the models (pose, face, ...) are located.");
+ DEFINE_string(output_resolution,        "-1x-1",        "The image resolution (display and output). Use \"-1x-1\" to force the program to use the"
+                                                         " input image resolution.");
+ DEFINE_int32(num_gpu,                   -1,             "The number of GPU devices to use. If negative, it will use all the available GPUs in your"
+diff --git a/examples/tutorial_wrapper/2_user_synchronous.cpp b/examples/tutorial_wrapper/2_user_synchronous.cpp
+index 606321c..006632d 100644
+--- a/examples/tutorial_wrapper/2_user_synchronous.cpp
++++ b/examples/tutorial_wrapper/2_user_synchronous.cpp
+@@ -46,7 +46,7 @@ DEFINE_string(image_dir,                "examples/media/",      "Process a direc
+ DEFINE_double(camera_fps,               30.0,           "Frame rate for the webcam (also used when saving video). Set this value to the minimum"
+                                                         " value between the OpenPose displayed speed and the webcam real frame rate.");
+ // OpenPose
+-DEFINE_string(model_folder,             "models/",      "Folder path (absolute or relative) where the models (pose, face, ...) are located.");
++DEFINE_string(model_folder,             "/usr/lib/OpenPose/models/",      "Folder path (absolute or relative) where the models (pose, face, ...) are located.");
+ DEFINE_string(output_resolution,        "-1x-1",        "The image resolution (display and output). Use \"-1x-1\" to force the program to use the"
+                                                         " input image resolution.");
+ DEFINE_int32(num_gpu,                   -1,             "The number of GPU devices to use. If negative, it will use all the available GPUs in your"
+diff --git a/examples/tutorial_wrapper/3_user_asynchronous.cpp b/examples/tutorial_wrapper/3_user_asynchronous.cpp
+index 085be55..cbf20a6 100644
+--- a/examples/tutorial_wrapper/3_user_asynchronous.cpp
++++ b/examples/tutorial_wrapper/3_user_asynchronous.cpp
+@@ -46,7 +46,7 @@ DEFINE_string(image_dir,                "examples/media/",      "Process a direc
+ DEFINE_double(camera_fps,               30.0,           "Frame rate for the webcam (also used when saving video). Set this value to the minimum"
+                                                         " value between the OpenPose displayed speed and the webcam real frame rate.");
+ // OpenPose
+-DEFINE_string(model_folder,             "models/",      "Folder path (absolute or relative) where the models (pose, face, ...) are located.");
++DEFINE_string(model_folder,             "/usr/lib/OpenPose/models/",      "Folder path (absolute or relative) where the models (pose, face, ...) are located.");
+ DEFINE_string(output_resolution,        "-1x-1",        "The image resolution (display and output). Use \"-1x-1\" to force the program to use the"
+                                                         " input image resolution.");
+ DEFINE_int32(num_gpu,                   -1,             "The number of GPU devices to use. If negative, it will use all the available GPUs in your"
+diff --git a/src/openpose/pose/poseExtractorCaffe.cpp b/src/openpose/pose/poseExtractorCaffe.cpp
+index e59513b..7033d94 100644
+--- a/src/openpose/pose/poseExtractorCaffe.cpp
++++ b/src/openpose/pose/poseExtractorCaffe.cpp
+@@ -110,9 +110,10 @@ namespace op
+             try
+             {
+                 // Add Caffe Net
++              std::string folder = modelFolder.empty() ? "/usr/lib/OpenPose/models/" : modelFolder;
+                 netCaffe.emplace_back(
+-                    std::make_shared<NetCaffe>(modelFolder + getPoseProtoTxt(poseModel),
+-                                               modelFolder + getPoseTrainedModel(poseModel),
++                    std::make_shared<NetCaffe>(folder + getPoseProtoTxt(poseModel),
++                                               folder + getPoseTrainedModel(poseModel),
+                                                gpuId, enableGoogleLogging)
+                 );
+                 // Initializing them on the thread
