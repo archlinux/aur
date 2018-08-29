@@ -19,8 +19,10 @@
 
 pkgbase=kodi-pre-release
 pkgname=("kodi-${pkgbase#kodi-*}" "kodi-eventclients-${pkgbase#kodi-*}" "kodi-tools-texturepacker-${pkgbase#kodi-*}" "kodi-dev-${pkgbase#kodi-*}")
-pkgver=18.0b1
-pkgrel=2
+pkgver=18.0b1v2
+pkgrel=1
+_commit=f21b477993cae9f59f77b8798a1390159863f3f7
+_short=${_commit::+7}
 arch=('x86_64')
 url="http://kodi.tv"
 license=('GPL2')
@@ -56,7 +58,7 @@ _crossguid_version="8f399e8bd4"
 _fstrcmp_version="0.7.D001"
 _flatbuffers_version="1.9.0"
 source=(
-  "${pkgbase%%-*}-$pkgver-$_codename.tar.gz::https://github.com/xbmc/xbmc/archive/$pkgver-$_codename.tar.gz"
+  "${pkgbase%%-*}-$pkgver-$_codename.tar.gz::https://api.github.com/repos/xbmc/xbmc/tarball/$_commit"
   "ffmpeg-$_ffmpeg_version.tar.gz::https://github.com/xbmc/FFmpeg/archive/$_ffmpeg_version.tar.gz"
   "libdvdcss-$_libdvdcss_version.tar.gz::https://github.com/xbmc/libdvdcss/archive/$_libdvdcss_version.tar.gz"
   "libdvdnav-$_libdvdnav_version.tar.gz::https://github.com/xbmc/libdvdnav/archive/$_libdvdnav_version.tar.gz"
@@ -77,7 +79,7 @@ noextract=(
   "crossguid-$_crossguid_version.tar.gz"
   "fstrcmp-$_fstrcmp_version.tar.gz"
 )
-sha256sums=('2619243e5d97981d2ceac487e8ea65d9eca24b1dfe430ef0e2c291a3c9a9a20f'
+sha256sums=('be2ccdfd2e9d360893a81ca49580d786d78219e764ddb6d65865eb10806c6f38'
             '0e4980abac7b886e0eb5f4157941947be3c10d616a19bd311dc2f9fd2eb6a631'
             '6af3d4f60e5af2c11ebe402b530c07c8878df1a6cf19372e16c92848d69419a5'
             '071e414e61b795f2ff9015b21a85fc009dde967f27780d23092643916538a57a'
@@ -93,7 +95,7 @@ prepare() {
   [[ -d kodi-build ]] && rm -rf kodi-build
   mkdir kodi-build
 
-  cd "xbmc-$pkgver-$_codename"
+  cd "xbmc-xbmc-$_short"
   # detect if building in arch chroot
   if [[ "$srcdir" =~ ^\/build.* ]]; then
     patch -Np1 -i "$srcdir/cheat-sse-build.patch"
@@ -116,12 +118,13 @@ build() {
     -DFFMPEG_URL="$srcdir/ffmpeg-$_ffmpeg_version.tar.gz" \
     -DFMT_URL="$srcdir/fmt-$_fmt_version.tar.gz" \
     -DENABLE_INTERNAL_FMT=ON \
+    -DCROSSGUID_URL="$srcdir/crossguid-$_crossguid_version.tar.gz" \
+    -DENABLE_INTERNAL_CROSSGUID=ON \
     -DFSTRCMP_URL="$srcdir/fstrcmp-$_fstrcmp_version.tar.gz" \
     -DENABLE_INTERNAL_FSTRCMP=ON \
     -DFLATBUFFERS_URL="$srcdir/flatbuffers-$_flatbuffers_version.tar.gz" \
     -DENABLE_INTERNAL_FLATBUFFERS=ON \
-    -DCROSSGUID_URL="$srcdir/crossguid-$_crossguid_version.tar.gz" \
-    ../"xbmc-$pkgver-$_codename"
+    ../"xbmc-xbmc-$_short"
   make
   make preinstall
 }
