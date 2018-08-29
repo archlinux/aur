@@ -494,7 +494,7 @@ static void decorate_download_title(Window* window, display::Canvas* canvas, cor
 // show ratio progress by color (ratio is scaled x1000)
 static int ratio_color(int ratio) {
     int rcol = sizeof(ratio_col) / sizeof(*ratio_col) - 1;
-    return ratio_col[std::min(rcol, ratio * rcol / 1200)];
+    return ratio_col[std::min(rcol, std::max(0, ratio) * rcol / 1200)];
 }
 
 

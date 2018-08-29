@@ -933,6 +933,53 @@ torrent::Object cmd_string_substr(rpc::target_type target, const torrent::Object
 }
 
 
+torrent::Object cmd_string_shorten(rpc::target_type target, const torrent::Object::list_type& args) {
+    const std::string text = string_get_first_arg("shorten", args);
+
+    torrent::Object::list_const_iterator itr = args.begin() + 1;
+    int64_t u8len = u8_length(text), maxlen = u8len, tail = 5;
+    if (itr != args.end()) maxlen = string_get_value_arg("shorten(maxlen)", itr);
+    if (itr != args.end()) tail = string_get_value_arg("shorten(tail)", itr);
+
+    if (maxlen < 0 || tail < 0) {
+       throw torrent::input_error("string.shorten: Invalid negative maximal or tail length!");
+    }
+
+    if (!maxlen) return std::string();
+    if (u8len <= maxlen) return text;
+
+    int64_t head = std::max(int64_t(0), std::min(u8len, maxlen - tail - 1));
+    if (2*tail >= maxlen) {
+        tail = (maxlen - 1) / 2;
+        head = maxlen - tail - 1;
+    }
+
+    std::mbstate_t mbs = std::mbstate_t();
+    const char* pos = text.c_str();
+    int bytes = 0, skip;
+    while (head-- > 0 && *pos && (skip = std::mbrlen(pos, text.length() - bytes, &mbs)) > 0) {
+        pos += skip;
+        bytes += skip;
+    }
+    std::string::size_type head_bytes = bytes;
+    std::string::size_type tail_bytes = bytes;
+
+    std::string::size_type offsets[text.length() + 1];
+    int64_t idx = 0;
+    while (*pos && (skip = std::mbrlen(pos, text.length() - bytes, &mbs)) > 0) {
+        offsets[idx++] = bytes;
+        pos += skip;
+        bytes += skip;
+    }
+    offsets[idx] = bytes;
+    if (tail <= idx) tail_bytes = offsets[idx - tail];
+
+    return text.substr(0, head_bytes) +
+           (head + tail < u8len ? "…" : "") +
+           (tail ? text.substr(tail_bytes) : "");
+}
+
+
 torrent::Object::value_type apply_string_contains(bool ignore_case, const torrent::Object::list_type& args) {
     if (args.size() < 2) {
         throw torrent::input_error("string.contains[_i] takes at least two arguments!");
@@ -1311,6 +1358,7 @@ void initialize_command_pyroscope() {
     CMD2_ANY_LIST("string.join", &cmd_string_join);
     CMD2_ANY_LIST("string.split", &cmd_string_split);
     CMD2_ANY_LIST("string.substr", &cmd_string_substr);
+    CMD2_ANY_LIST("string.shorten", &cmd_string_shorten);
     CMD2_ANY_LIST("string.contains", &cmd_string_contains);
     CMD2_ANY_LIST("string.contains_i", &cmd_string_contains_i);
     CMD2_ANY_LIST("string.map", &cmd_string_map);

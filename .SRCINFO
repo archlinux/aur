@@ -1,6 +1,6 @@
 pkgbase = rtorrent-ps
 	pkgdesc = Extended rTorrent distribution with UI enhancements, colorization, and some added features
-	pkgver = 1.1.r29.g78a68a0
+	pkgver = 1.1.r38.gd52abd2
 	pkgrel = 1
 	url = https://github.com/pyroscope/rtorrent-ps
 	arch = any
