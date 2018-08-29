@@ -1,0 +1,14 @@
+pkgbase = wmuc
+	pkgdesc = A git repository manager.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/mfinelli/wmuc
+	arch = x86_64
+	license = GPL3
+	makedepends = go
+	makedepends = dep
+	source = https://github.com/mfinelli/wmuc/archive/v0.1.0.tar.gz
+	sha256sums = eae6c270c42adae2018c3b7d775321c83cff36ce58b364193c0a8287669fb08c
+
+pkgname = wmuc
+
