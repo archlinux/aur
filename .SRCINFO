@@ -1,6 +1,6 @@
 pkgbase = python-pypi2pkgbuild
 	pkgdesc = Convert PyPI packages to Arch Linux packages
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/anntzer/pypi2pkgbuild
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-pypi2pkgbuild
 	depends = namcap
 	depends = pkgfile
 	conflicts = python-pypi2pkgbuild-git
-	source = https://github.com/anntzer/pypi2pkgbuild/archive/v0.1.tar.gz
-	sha512sums = 8aff0909d9fb334ee7280d4bd9bbf1a17cf89d347fc66901f1299f6e0b426ecb7be787664a086469de048d041b5e17d2394caed1cdf7da1b8c174336364b89c9
+	source = https://files.pythonhosted.org/packages/source/p/pypi2pkgbuild/pypi2pkgbuild-0.2.tar.gz
+	sha256sums = 3387180d2864f09e67429eeaa41d3b9fba95ec1dd5badaae54a550003db70f98
 
 pkgname = python-pypi2pkgbuild
 
