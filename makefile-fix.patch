@@ -1,6 +1,6 @@
-diff -ruN librsvg-2.43.4/Makefile.am librsvg-2.43.4-patched/Makefile.am
---- librsvg-2.43.4/Makefile.am	2018-06-23 02:49:55.000000000 +0800
-+++ librsvg-2.43.4-patched/Makefile.am	2018-07-13 13:20:38.820156946 +0800
+diff -ruN librsvg-2.44.1/Makefile.am librsvg-2.44.1-patched/Makefile.am
+--- librsvg-2.44.1/Makefile.am	2018-06-23 02:49:55.000000000 +0800
++++ librsvg-2.44.1-patched/Makefile.am	2018-07-13 13:20:38.820156946 +0800
 @@ -149,6 +149,7 @@
  cargo_verbose_1 = --verbose
  
@@ -27,9 +27,9 @@ diff -ruN librsvg-2.43.4/Makefile.am librsvg-2.43.4-patched/Makefile.am
  	$(DLOPEN_LIBS)
  
  librsvgincdir = $(includedir)/librsvg-$(RSVG_API_VERSION)/librsvg
-diff -ruN librsvg-2.43.4/Makefile.in librsvg-2.43.4-patched/Makefile.in
---- librsvg-2.43.4/Makefile.in	2018-06-23 02:50:20.000000000 +0800
-+++ librsvg-2.43.4-patched/Makefile.in	2018-07-13 13:20:38.820156946 +0800
+diff -ruN librsvg-2.44.1/Makefile.in librsvg-2.44.1-patched/Makefile.in
+--- librsvg-2.44.1/Makefile.in	2018-06-23 02:50:20.000000000 +0800
++++ librsvg-2.44.1-patched/Makefile.in	2018-07-13 13:20:38.820156946 +0800
 @@ -225,7 +225,7 @@
  LTLIBRARIES = $(lib_LTLIBRARIES)
  am__DEPENDENCIES_1 =
