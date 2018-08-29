@@ -1,6 +1,6 @@
 pkgbase = pass-steam-git
 	pkgdesc = A pass extension for managing Steam Guard codes
-	pkgver = 6bb1a5b
+	pkgver = r20.2af58ec
 	pkgrel = 1
 	url = https://github.com/vanyasem/pass-steam
 	arch = any

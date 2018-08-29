@@ -4,7 +4,7 @@
 
 _pkgname='pass-steam'
 pkgname='pass-steam-git'
-pkgver=6bb1a5b
+pkgver=r20.2af58ec
 pkgrel=1
 pkgdesc='A pass extension for managing Steam Guard codes'
 arch=('any')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  echo "$(git describe --always)"
+  echo "r$(git rev-list --count HEAD).$(git describe --always)"
 }
 
 package() {
