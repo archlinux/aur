@@ -2,7 +2,7 @@
 
 pkgname=mastodon
 pkgver=2.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Free software social-network server based on ActivityPub and OStatus'
 arch=(i686 x86_64)
 url=https://joinmastodon.org
@@ -16,8 +16,9 @@ depends=(ffmpeg
          postgresql
          redis
          ruby-bundler
-         protobuf)
-makedepends=(yarn python2)
+         protobuf
+         yarn)
+makedepends=(git npm python2)
 conflicts=(mastodon-git)
 backup=(etc/mastodon/environment)
 install=mastodon.install
@@ -39,7 +40,7 @@ build() {
 }
 
 package() {
-  install -d "$pkgdir"{/var/lib,/etc/mastodon}
+  install -d "$pkgdir"/{var/lib,etc/mastodon}
   cp -a mastodon-$pkgver "$pkgdir"/var/lib/mastodon
   ln -s /etc/mastodon/environment "$pkgdir"/var/lib/mastodon/.env
   touch "$pkgdir"/etc/mastodon/environment
