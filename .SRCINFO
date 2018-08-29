@@ -1,7 +1,7 @@
 pkgbase = micropad
 	pkgdesc = A powerful notepad app that respects your freedoms and runs on everything.
 	pkgver = 3.9.1
-	pkgrel = 3
+	pkgrel = 1
 	url = https://getmicropad.com
 	install = micropad.install
 	arch = x86_64
