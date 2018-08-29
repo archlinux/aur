@@ -2,8 +2,8 @@
 # Contributor: cocreature <moritz.kiefer<at>purelyfunctional<dot>org>
 
 pkgname=carla-git
-pkgver=1.9.9.r0.gc03571a9
-pkgrel=2
+pkgver=1.9.9.r100.g265cd5d9
+pkgrel=1
 epoch=1
 pkgdesc="Audio Plugin Host"
 arch=("i686" "x86_64")
@@ -13,14 +13,9 @@ conflicts=("carla")
 provides=("carla")
 depends=(
     'ffmpeg'
-    'fftw'
     'file'
     'fluidsynth'
     'liblo'
-    'linuxsampler'
-    'mxml'
-    'ntk'
-    'projectm'
     'python-pyqt5'
 )
 makedepends=(
@@ -35,7 +30,6 @@ optdepends=(
     'python-pyliblo: OSC control support'
     'python-rdflib: LADSPA-RDF support'
     'qt4: LV2 Qt4 UI support'
-    'zynaddsubfx: zynaddsubfx sound banks'
 )
 source=("$pkgname"::"git://github.com/falkTX/Carla.git")
 md5sums=('SKIP')
