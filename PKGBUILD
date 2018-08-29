@@ -14,10 +14,8 @@ depends=('libx11')
 source=("https://github.com/JLErvin/berry/archive/master.zip")
 sha256sums=('SKIP')
 
-prepare() {
-	# Installing the desktop file doesn't work, so N/A for now.
-	#install -D -m644 ../berry.desktop "${pkgdir}/usr/share/xsessions/"
-}
+# For later.
+#install -D -m644 ../berry.desktop "${pkgdir}/usr/share/xsessions/"
 
 build() {
 	# Build the package.
