@@ -1,0 +1,3 @@
+post_install() {
+    libtool --finish /usr/lib32
+}
