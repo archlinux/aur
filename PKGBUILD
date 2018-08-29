@@ -94,13 +94,13 @@ package() {
 
   msg2 "Creating symlinks for applications"
   mkdir -p "${pkgdir}/usr/bin"
-  find "${pkgdir}/opt/${pkgname}/bin" -maxdepth 1 -type f -printf \
-    "/opt/${pkgname}/bin/%f\n" | xargs ln -st "${pkgdir}/usr/bin"
+  for i in "${pkgdir}/opt/${pkgname}/bin"/*; do
+    ln -st "${pkgdir}/usr/bin/" "${i#${pkgdir}}"
+  done
   rm -f "${pkgdir}"/usr/bin/{bq,dev_appserver.py*,endpointscfg.py*,java_dev_appserver.sh}
 
   msg2 "Fixing file permissions"
   chmod -x "${pkgdir}"/usr/share/man/man1/*
-  find "${pkgdir}/opt/${pkgname}" -name "*.html" -print0 | xargs -0 chmod -x
-  find "${pkgdir}/opt/${pkgname}" -name "*.json" -print0 | xargs -0 chmod -x
-  find "${pkgdir}/opt/${pkgname}" -name "*_test.py" -print0 | xargs -0 chmod +x
+  find "${pkgdir}/opt/${pkgname}" -name "*.html" -o -name "*.json" -exec chmod -x {} \;
+  find "${pkgdir}/opt/${pkgname}" -name "*_test.py" -exec chmod +x {} \;
 }
