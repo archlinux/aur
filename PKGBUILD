@@ -1,4 +1,5 @@
-# Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
+# Contributor: bartus <arch-user-repoᘓbartus.33mail.com>
+# Contributor: Rafael Fontenelle <rafaelff@gnome.org>
 
 # NOTE about libgl dependency 
 # if you have and use 'mesa',     install 'mesa-libgl'
@@ -8,8 +9,8 @@
 
 pkgname=teighaviewer-qt5
 _altname=teighaviewer
-pkgver=4.3.1
-_version=4.3.1.0
+pkgver=19.5.0
+_version=19.5.0.0
 pkgrel=1
 pkgdesc="Application for the visualization of CAD drawing files, QT5 version"
 arch=('x86_64')
@@ -19,7 +20,7 @@ conflicts=('teighaviewer-qt4')
 depends=('qt5-base' 'libxfixes' 'libgl' 'libxkbcommon-x11' 'bash' 'hicolor-icon-theme')
 source=("${pkgname}-x86_64-${_version}.deb::https://download.opendesign.com/guestfiles/TeighaViewer/TeighaViewer_QT5_lnxX64_4.7dll.deb"
         'license')
-sha256sums=('faf112d69e631ddf6a28290ab4ceee8a38121b5350c2896553ad98dbc1429f57'
+sha256sums=('b891749c7dd711e9113e8193e699453bfe284dfe4c3c3f87d9660031472d5159'
             '770baed2dda51def38a40583d559b1e731a22b94a1e30b8d59f41aea153b25a7')
 
 prepare() {
