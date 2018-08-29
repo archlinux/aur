@@ -2,15 +2,15 @@
 
 _pkgname=understand
 pkgname=$_pkgname-bin
-_pkgbuild=923
-pkgver=4.0.$_pkgbuild
+_pkgbuild=956
+pkgver=5.0.$_pkgbuild
 pkgrel=1
 pkgdesc="Static analysis tool for maintaining, measuring & analyzing critical or large code bases."
 arch=('i686' 'x86_64')
 url="https://scitools.com/"
 license=('custom')
 depends=('libx11' 'libxau' 'libxcb' 'libxdmcp' 'libxext' 'ncurses5-compat-libs')
-options=('!strip' '!upx')
+options=('!strip')
 
 source_i686=("http://builds.scitools.com/all_builds/b$_pkgbuild/${_pkgname^}/${_pkgname^}-$pkgver-Linux-32bit.tgz"
 "$_pkgname.desktop"
@@ -19,10 +19,10 @@ source_i686=("http://builds.scitools.com/all_builds/b$_pkgbuild/${_pkgname^}/${_
 source_x86_64=("http://builds.scitools.com/all_builds/b$_pkgbuild/${_pkgname^}/${_pkgname^}-$pkgver-Linux-64bit.tgz"
 "$_pkgname.desktop"
 "$_pkgname")
-md5sums_i686=('SKIP'
+md5sums_i686=('0370570bdc1095cfdd6828c509423fb8'
               '86ea741c38198d7291d5126ef0cd17f8'
               '2927bc21f24ff8776a1c601379c9f19f')
-md5sums_x86_64=('SKIP'
+md5sums_x86_64=('e1650e2d7471f1104683d3b59a3ce74f'
                 '86ea741c38198d7291d5126ef0cd17f8'
                 '2927bc21f24ff8776a1c601379c9f19f')
 
@@ -40,5 +40,5 @@ package() {
     install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
     install -Dm644 "$pkgdir/opt/scitools/bin/linux$_source_arch/${_pkgname}_64.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
 
-    install -Dm644 "$pkgdir/opt/scitools/conf/license/readme.txt" "$pkgdir/usr/share/licenses/$pkgname/readme.txt"
+    # install -Dm644 "$pkgdir/opt/scitools/conf/license/readme.txt" "$pkgdir/usr/share/licenses/$pkgname/readme.txt"
 }
