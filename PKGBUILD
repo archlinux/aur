@@ -3,7 +3,7 @@ _components='itk itk-segmentation itk-io itk-registration itk-core itk-numerics 
 _py=cp37
 pkgname=python-itk
 pkgver=4.13.1.post1
-pkgrel=1
+pkgrel=2
 pkgdesc='ITK is an open-source toolkit for multidimensional image analysis'
 arch=('x86_64')
 url='https://itk.org/'
@@ -24,6 +24,8 @@ md5sums=('ed2fcb9dfeffacb6071d71556b168373'
 for _name in $_components; do
 	source+=("https://files.pythonhosted.org/packages/$_py/${_name::1}/$_name/${_name/-/_}-$pkgver-$_py-${_py}m-manylinux1_x86_64.whl")
 done
+
+noextract=("${source[@]##*/}")
 
 
 package() {
