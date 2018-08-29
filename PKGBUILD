@@ -26,7 +26,7 @@ license=(GPL)
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 replace=("${_pkgname}")
-source=('git://git.gnome.org/evolution-data-server')
+source=(evolution-data-server::git+https://gitlab.gnome.org/GNOME/evolution-data-server.git)
 sha256sums=('SKIP')
 
 pkgver() {

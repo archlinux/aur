@@ -20,7 +20,7 @@ pkgbase = evolution-data-server-git
 	depends = libsignon-glib
 	provides = evolution-data-server
 	conflicts = evolution-data-server
-	source = git://git.gnome.org/evolution-data-server
+	source = evolution-data-server::git+https://gitlab.gnome.org/GNOME/evolution-data-server.git
 	sha256sums = SKIP
 
 pkgname = evolution-data-server-git
