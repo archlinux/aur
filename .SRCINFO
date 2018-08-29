@@ -1,0 +1,14 @@
+pkgbase = pcd
+	pkgdesc = cli podcatcher writter in go
+	pkgver = 20180829.50_4b513e0
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	makedepends = git
+	source = pcd::git://github.com/kvannotten/pcd.git#branch=master
+	md5sums = SKIP
+
+pkgname = pcd
+
