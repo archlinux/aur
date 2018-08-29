@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Guitar
+Exec=/opt/Guitar/Guitar
+Icon=guitar
+Terminal=false
