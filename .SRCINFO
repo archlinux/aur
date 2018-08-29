@@ -7,7 +7,6 @@ pkgbase = google-cloud-sdk
 	license = Apache
 	depends = python2
 	optdepends = python2-crcmod: [gsutil] verify the integrity of GCS object contents
-	conflicts = google-cloud-sdk-minimal
 	options = !strip
 	options = staticlibs
 	source = https://dl.google.com/dl/cloudsdk/release/downloads/for_packagers/linux/google-cloud-sdk_214.0.0.orig.tar.gz
