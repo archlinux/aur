@@ -1,0 +1,22 @@
+pkgbase = maxio-git
+	pkgdesc = Companion daemon for the reMarkable paper tablet.
+	pkgver = r46.7cc593a
+	pkgrel = 1
+	url = https://github.com/reHackable/maxio
+	arch = any
+	license = GPLv3
+	makedepends = git
+	depends = openssh
+	depends = pdftk
+	depends = imagemagick
+	depends = python
+	optdepends = librsvg: to avoid rasterizing of lines
+	optdepends = ghostscript: to account for original pdf size
+	optdepends = poppler: to account for original pdf size
+	provides = maxio
+	conflicts = maxio
+	source = maxio::git+https://github.com/reHackable/maxio
+	md5sums = SKIP
+
+pkgname = maxio-git
+
