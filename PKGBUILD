@@ -10,13 +10,14 @@
 pkgbase=oss-git
 pkgname=oss-git
 true && pkgname=(oss-git libflashsupport-oss-git)
-pkgver=891ddd2
-pkgrel=7
+pkgver=7cf6b07
+pkgrel=1
 arch=(i686 x86_64)
 url="http://developer.opensound.com/"
 license=(GPL2)
 makedepends=(gtk2 git)
 source=(oss::git://git.code.sourceforge.net/p/opensound/git
+        oss4_sys-libs_glibc-2.23_ossdetect_fix_git.patch
         oss.service
         remove-hal.patch
         rm-init-scripts.patch
@@ -24,6 +25,7 @@ source=(oss::git://git.code.sourceforge.net/p/opensound/git
         kmod-link.patch
         ossvermagic.patch)
 sha512sums=('SKIP'
+            '5599f75ac2784aca7d0367e88705938d2680e7a0eb7ae7300080e3fc0ea0c9d3b183554a9e208ed8359f675028024e8de62baa5f8dbc79e9f3bd942db6aa6157'
             '355e1380432947c0e9caa21114b2c3debeb162fb5abcf845125ec281ce52b437ad1ee1db04d37e9b7a5ac79816c4dcbc21b4ed4cf8191f71218d99acd7bab70e'
             '6956e5e2e9323b568bb18e80bbee591b0e5ffd3d4612a50df09879941b2733c31d6b3178dc9a46c283bd1629f76b7ff5e2b54893a42a47f6379eaee4731fd9be'
             '64e6d9d8eb5320f737d3a0698a245da2b2d141b68cfb2f02e448144d1c610aa8b8a6c38b56fcca364d63171a49afe93161a00545cdb90086b5328997b3096690'
@@ -53,6 +55,9 @@ prepare() {
   # - no longer required (from commit 891ddd)
   # patch -p0 < "$srcdir/linux-4.8-usercopy.patch"
   patch -p0 < "$srcdir/ossvermagic.patch"
+
+  # make OSS compile with glibc >= 2.23
+  patch -p1 < "$srcdir/oss4_sys-libs_glibc-2.23_ossdetect_fix_git.patch"
 
   # make OSS compile with gcc-5
   # - no longer required (from commit b3dc64)

@@ -1,0 +1,18 @@
+commit ad097a606d8b6ba46e0bcd12b284ca355592ac44
+Author: hash <hashn0n@users.noreply.github.com>
+Date:   Sun Sep 24 19:53:49 2017 +0300
+
+    Fix os_cmd/Linux/ossdetect/ossdetect.c compile problem with >=sys-libs/glibc-2.23, need to include sys/sysmacros.h
+
+diff --git a/os_cmd/Linux/ossdetect/ossdetect.c b/os_cmd/Linux/ossdetect/ossdetect.c
+index 86b86ba..1dce64a 100644
+--- a/os_cmd/Linux/ossdetect/ossdetect.c
++++ b/os_cmd/Linux/ossdetect/ossdetect.c
+@@ -12,6 +12,7 @@
+ #include <unistd.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
++#include <sys/sysmacros.h>
+ #include <sys/dir.h>
+ 
+ #define PCI_PASS	0
