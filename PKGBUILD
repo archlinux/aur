@@ -6,7 +6,7 @@ _opts=(
 	-DCMAKE_INSTALL_LIBEXECDIR=lib
 )
 
-makedepends=('cmake' 'vala' 'gtk3' 'vala-panel>=0.4.60' 'libwnck')
+makedepends=('cmake' 'vala' 'gtk3' 'vala-panel>=0.4.62' 'libwnck')
 pkgname=(
 'vala-panel-applets-xembed-git'
 'vala-panel-applets-icontasks-git'
@@ -46,14 +46,14 @@ build(){
 
 package_vala-panel-applets-xembed-git(){
 	pkgdesc="Old XEmbed system tray for vala-panel"
-	depends=('gtk3' 'vala-panel>=0.4.60' 'libx11' 'libxrender')
+	depends=('gtk3' 'vala-panel>=0.4.62' 'libx11' 'libxrender')
 	cd "${srcdir}/${_pkgbase}"
 	make -C "xembed" DESTDIR="${pkgdir}" install
 }
 
 package_vala-panel-applets-icontasks-git(){
 	pkgdesc="Budgie's icontasks for vala-panel"
-	depends=('gtk3' 'vala-panel>=0.4.60' 'libwnck')
+	depends=('gtk3' 'vala-panel>=0.4.62' 'libwnck')
 	cd "${srcdir}/${_pkgbase}"
 	make -C "icontasks" DESTDIR="${pkgdir}" install
 }
