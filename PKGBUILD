@@ -1,8 +1,8 @@
 # Maintainer: Amr Hassan
 
 pkgname=bjarkan
-pkgver=1.3.0
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="A bluez 5 compatible command line utility and python 3 library "
 arch=("any")
 url="https://github.com/GetWellNetwork/bjarkan"
@@ -21,4 +21,4 @@ package() {
     python setup.py install --skip-build --root="${pkgdir}" --optimize=1
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-md5sums=('198816d4fb3caadfdaaef3db27b2c7ae')
+md5sums=('057281a4cebe4a4bb1ea80826df3a63b')
