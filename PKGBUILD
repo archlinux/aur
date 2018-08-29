@@ -3,7 +3,7 @@
 pkgname=lib32-xcb-util-keysyms1
 _pkgname=xcb-util-keysyms
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Utility libraries for XC Binding - Standard X key constants and conversion to/from keycodes lib32"
 arch=('x86_64')
 url="https://xcb.freedesktop.org"
@@ -31,6 +31,7 @@ check() {
 
 package() { 
   cd ${_pkgname}-${pkgver}
-  rm -f ./usr/include/xcb/xcb_keysyms.h
   make DESTDIR="${pkgdir}" install
+  cd ${pkgdir}
+  rm -f ./usr/include/xcb/xcb_keysyms.h
 }

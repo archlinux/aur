@@ -1,7 +1,7 @@
 pkgbase = lib32-xcb-util-keysyms1
 	pkgdesc = Utility libraries for XC Binding - Standard X key constants and conversion to/from keycodes lib32
 	pkgver = 0.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://xcb.freedesktop.org
 	arch = x86_64
 	license = custom
