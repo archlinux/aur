@@ -1,7 +1,7 @@
 pkgbase = vkd3d
 	pkgdesc = Direct3D 12 to Vulkan translation library By WineHQ
 	pkgver = 1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.winehq.org/news/2018052301
 	install = vkd3d.install
 	arch = x86_64

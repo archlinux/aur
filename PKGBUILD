@@ -1,7 +1,7 @@
 # Maintainer: Bruce Zhang
 pkgname=vkd3d
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Direct3D 12 to Vulkan translation library By WineHQ'
 arch=('x86_64')
 url='https://www.winehq.org/news/2018052301'
