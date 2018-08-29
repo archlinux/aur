@@ -1,10 +1,10 @@
 # Maintainer: Jiachen Yang <farseerfc@gmail.com>
-# Maintainer: Ariel AxionL <axiionl@aosc.io>
+# Maintainer: Ariel AxionL <axionl@aosc.io>
 
 pkgname=netease-musicbox-git
 _gitname=musicbox
 pkgver=r577.cdcbd50
-pkgrel=1
+pkgrel=2
 pkgdesc="A sexy command line interface musicbox for NetEase based on Python"
 arch=(any)
 url="https://github.com/darknessomi/musicbox"
@@ -37,8 +37,8 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_gitname}"
-  git apply "${srcdir}/0001-Remove_python_requests_cache_as_depends.patch"
-  git apply "${srcdir}/0002-Replace_pyqt4_to_pyqt5_as_depends.patch"
+  patch -Np1 -i "${srcdir}/0001-Remove_python_requests_cache_as_depends.patch"
+  patch -Np1 -i "${srcdir}/0002-Replace_pyqt4_to_pyqt5_as_depends.patch"
 }
 
 package() {
