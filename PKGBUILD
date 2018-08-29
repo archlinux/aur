@@ -5,7 +5,7 @@
 
 pkgname=wdm
 pkgver=1.28
-pkgrel=8
+pkgrel=9
 pkgdesc="An replacement X window display manager similar to, and based on XDM"
 arch=(i686 x86_64)
 url="http://github.com/raorn/wdm"
@@ -21,8 +21,8 @@ md5sums=('SKIP'
 
 prepare() {
   cd $pkgname
-  cp -f "$srcdir/Makefile.in" .
-  cp -f "$srcdir/cy.po" po/cy.po
+  cp -f ../Makefile.in .
+  cp -f ../cy.po po/cy.po
   autoreconf -fiv
 }
 
@@ -44,5 +44,5 @@ package() {
   chmod 0755 "$pkgdir/etc/wdm/authdir"
   rm -f "$pkgdir/etc/wdm/wdm-config.in"
   rm -f "$pkgdir/etc/Xclients.in"
-  install -Dm644 wdm.service "$pkgdir/usr/lib/systemd/system/wdm.service"
+  install -Dm644 ../wdm.service "$pkgdir/usr/lib/systemd/system/wdm.service"
 }
