@@ -7,7 +7,7 @@
 
 pkgname=coin
 pkgver=3.1.3
-pkgrel=16
+pkgrel=17
 pkgdesc='A high-level 3D graphics toolkit on top of OpenGL'
 url='http://www.coin3d.org/'
 license=('GPL')
@@ -22,10 +22,12 @@ optdepends=('openal: sound/dynamic linking support'
             'simage: image format support')
 source=("https://bitbucket.org/Coin3D/coin/downloads/Coin-${pkgver}.tar.gz"
         'fixed-wrong-assignment.patch'
-        'gcc6-crash-fix.patch')
+        'gcc6-crash-fix.patch'
+        'remove-expat.patch')
 sha256sums=('583478c581317862aa03a19f14c527c3888478a06284b9a46a0155fa5886d417'
             'f71a13da97f6000ce66a63ae780a67226bcd906f9abf289436ea6e218d77fae0'
-            '23326a4790f7a9c9654bd114baec400386a350bf49450c72c17a369056287c53')
+            '23326a4790f7a9c9654bd114baec400386a350bf49450c72c17a369056287c53'
+            'ab939e75dd5e9be87781ab6c9f4c69c9a85c6d6c6c554249fbd3f4e646b4a7de')
 
 prepare() {
 	cd Coin-${pkgver}
@@ -42,8 +44,12 @@ prepare() {
 	# fixes char to pointer assignment
 	patch -i "$srcdir/fixed-wrong-assignment.patch" -p1
 
-    # fix crash at startup
-    patch -i "$srcdir/gcc6-crash-fix.patch" -p1
+	# fix crash at startup
+	patch -i "$srcdir/gcc6-crash-fix.patch" -p1
+
+	# remove bundled expat
+	rm -rf src/xml/expat
+	patch -i "$srcdir/remove-expat.patch" -p1
 }
 
 build() {
