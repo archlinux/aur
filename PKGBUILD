@@ -1,13 +1,13 @@
 # Maintainer: asm0dey <pavel.finkelshtein+AUR@gmail.com>
 pkgname=feedreader-git
-pkgver=2.2.r2661
+pkgver=2.3.0.r2669
 pkgrel=1
 pkgdesc="FeedReader is a modern desktop application designed to complement existing web-based RSS accounts."
 arch=('i686' 'x86_64')
 url="https://github.com/jangernert/FeedReader"
 license=('GPL3')
 groups=()
-depends=('sqlite3' 'gtk3' 'webkit2gtk' 'libnotify' 'libsoup' 'libgee' 'json-glib' 'libsecret' 'libpeas' 'gnome-online-accounts' 'curl')
+depends=('sqlite3' 'gtk3' 'webkit2gtk' 'libnotify' 'libsoup' 'libgee' 'json-glib' 'libsecret' 'libpeas' 'gnome-online-accounts' 'curl' 'gumbo-git')
 makedepends=('git' 'vala' 'gobject-introspection' 'meson')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
