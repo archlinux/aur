@@ -12,7 +12,7 @@ makedepends=('casacore' 'make' 'pkg-config' 'binutils' 'boost' 'boost-libs' 'cma
 	     'bison' 'openblas' 'lapack' 'cfitsio' 'wcslib'
 	     )
 depends=('')
-optdepends=('fftw' 'hdf5' 'python-numpy' 'ncurses')
+optdepends=('fftw' 'hdf5' 'python2-numpy' 'ncurses')
 conflicts=('')
 provides=("${pkgname}")
 source=("https://github.com/nlesc-dirac/${pkgname}/archive/v${pkgver}.tar.gz")
