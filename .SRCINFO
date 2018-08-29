@@ -1,0 +1,14 @@
+pkgbase = nordvpn-bin
+	pkgdesc = NordVPN CLI tool for Linux
+	pkgver = 1.1.5
+	pkgrel = 1
+	url = https://nordvpn.com/download/linux/
+	arch = x86_64
+	license = custom
+	depends = openvpn
+	options = !strip
+	source = https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_1.1.5_amd64.deb
+	sha256sums = 21cb8cbc3f2e7fd071ff6ad1eedc6fcdc74b0d399582fea2759cbc35e0d65970
+
+pkgname = nordvpn-bin
+
