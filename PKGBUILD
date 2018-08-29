@@ -48,7 +48,7 @@ conflicts=('evolution' 'evolution-bogofilter' 'evolution-spamassassin')
 replaces=('evolution' 'evolution-bogofilter' 'evolution-spamassassin')
 provides=('evolution' 'evolution-bogofilter' 'evolution-spamassassin')
 install=$_pkgname.install
-source=(git://git.gnome.org/evolution)
+source=(evolution::git+https://gitlab.gnome.org/GNOME/evolution.git)
 sha256sums=('SKIP')
 
 pkgver() {

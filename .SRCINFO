@@ -49,7 +49,7 @@ pkgbase = evolution-git
 	replaces = evolution-bogofilter
 	replaces = evolution-spamassassin
 	options = !emptydirs
-	source = git://git.gnome.org/evolution
+	source = evolution::git+https://gitlab.gnome.org/GNOME/evolution.git
 	sha256sums = SKIP
 
 pkgname = evolution-git
