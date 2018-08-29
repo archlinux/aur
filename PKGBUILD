@@ -8,12 +8,12 @@ pkgdesc="Suite of c++ libraries for radio astronomy data processing"
 arch=('i686' 'x86_64')
 url=""
 license=('GPL-2.0')
-makedepends=('make' 'pkg-config' 'binutils' 'cmake' 'gcc-fortran' 'gcc' 'flex' 
+makedepends=('make' 'pkg-config' 'binutils' 'boost-libs' 'cmake' 'gcc-fortran' 'gcc' 'flex' 
 	     'bison' 'blas' 'lapack' 'cfitsio' 'wcslib'
 	     )
 depends=('')
 optdepends=('sofa: only for testing casacore measures'
-	    'fftw' 'hdf5' 'python-numpy' 'boost' 'ncurses')
+	    'fftw' 'hdf5' 'python-numpy' 'ncurses')
 conflicts=('')
 provides=("${pkgname}")
 source=("https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
