@@ -1,0 +1,11 @@
+--- bpm-tag.orig	2018-08-29 20:14:26.377916126 +0200
++++ bpm-tag	2018-08-29 20:14:54.127095932 +0200
+@@ -88,7 +88,7 @@
+ 	BPM=`metaflac --show-tag=BPM "$FILE" | sed -e 's/BPM=//'`
+ 	;;
+ *.mp3)
+-	BPM=`id3v2 -R "$FILE" | sed -n 's/^TBPM.*: \([0-9\.]\+\)/\1/p'`
++	BPM=`id3v2 -l "$FILE" | sed -n 's/^TBPM.*: \([0-9\.]\+\)/\1/p'`
+ 	;;
+ *.ogg)
+ 	BPM=`vorbiscomment "$FILE" | sed -n 's/^BPM=//p'`
