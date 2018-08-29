@@ -9,7 +9,7 @@ arch=('any')
 url="http://github.com/edio/randrctl"
 license=('GPLv3')
 makedepends=('git' 'python-pip')
-depends=('python' 'xorg-xrandr')
+depends=('python' 'python-argcomplete' 'xorg-xrandr')
 optdepends=('bash-completion')
 source=(
   'git+https://github.com/edio/randrctl.git'

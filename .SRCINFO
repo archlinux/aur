@@ -9,6 +9,7 @@ pkgbase = randrctl-git
 	makedepends = git
 	makedepends = python-pip
 	depends = python
+	depends = python-argcomplete
 	depends = xorg-xrandr
 	optdepends = bash-completion
 	provides = randrctl
