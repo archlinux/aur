@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-code-git
-pkgver=r3281.9523f101
+pkgver=r3316.6c46c77b
 pkgrel=1
 pkgdesc='The Pantheon Code Editor'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/elementary/scratch'
 license=('GPL3')
 groups=('pantheon-unstable')
 depends=('cairo' 'editorconfig-core-c' 'glib2' 'glibc' 'gtk3' 'gtksourceview3'
-         'libgee' 'libpeas' 'libsoup' 'pango' 'zeitgeist'
+         'libgee' 'libgit2-glib' 'libpeas' 'libsoup' 'pango' 'zeitgeist'
          'libgranite.so')
 makedepends=('appstream' 'git' 'gobject-introspection' 'granite-git'
              'gtkspell3' 'intltool' 'meson' 'vala' 'vte3' 'webkit2gtk')
