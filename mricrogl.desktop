@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=MRIcroGL
+Comment=Start MRIcroGL
+Exec=mricrogl
+Type=Application
+StartupNotify=true
+Categories=Graphics;MedicalSoftware;Science;
+X-Desktop-File-Install-Version=
+MimeType=
