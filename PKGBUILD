@@ -6,7 +6,7 @@ pkgname=$_pkgname-pantheon-bzr
 ephyver=3.27.90-1ubuntu1
 ubunturel=bionic
 pkgver=3.27.90.1ubuntu1.r20
-pkgrel=5
+pkgrel=6
 pkgdesc="A GNOME web browser based on the WebKit rendering engine, with Elementary OS patches"
 url="http://www.gnome.org/projects/epiphany/"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ conflicts=(epiphany)
 source=("bzr+lp:~elementary-os/elementaryos/os-patch-epiphany-browser-${ubunturel}"
         epiphany-sync{,.service})
 sha256sums=('SKIP'
-            'bb8c06dadcba9c9f0ba887dc0a65283c26282f7db75c22dade209fcaa6f72f72'
+            'cf90f3ea93fff8c61f82da40c8d07d5db2f33dc9a0d91408a6ffc4142bbedd20'
             'ce1ac321d7bf9d88638634a141dfcb99119fc59ee44c4892e0874608e85006ba')
 
 pkgver() {
