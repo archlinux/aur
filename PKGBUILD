@@ -4,7 +4,7 @@
 # Submitter: fluffylime <fluffylime@gmail.com>
 
 pkgname=redsocks2-git
-pkgver=0.66.r17.g56015a6
+pkgver=0.66.r39.gc9618cd
 pkgrel=1
 pkgdesc='redsocks2 adapted to compile with openssl 1.0'
 arch=('i686' 'x86_64')
@@ -16,7 +16,8 @@ conflicts=('redsocks')
 provides=('redsocks2')
 install=redsocks2.install
 backup=('etc/conf.d/redsocks2'
-        'etc/iptables/redsocks2.rules')
+        'etc/iptables/redsocks2.rules'
+	'etc/redsocks2.conf')
 
 source=("$pkgname"::'git+https://github.com/gilcu3/redsocks.git'
         'redsocks2.tmpfiles'
