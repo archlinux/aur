@@ -1,21 +1,11 @@
-diff -ura conan-1.4.1-pristine/conans/requirements_server.txt conan-1.4.1-new/conans/requirements_server.txt
---- conan-1.4.1-pristine/conans/requirements_server.txt	2018-06-01 01:05:26.293713938 +0200
-+++ conan-1.4.1-new/conans/requirements_server.txt	2018-06-01 01:08:47.883721146 +0200
-@@ -1,3 +1,3 @@
- # Server
--bottle>=0.12.8, < 0.13
--pluginbase>=0.5, < 1.0
-\ No newline at end of file
-+bottle>=0.12.8
-+pluginbase>=0.5
-diff -ura conan-1.4.1-pristine/conans/requirements.txt conan-1.4.1-new/conans/requirements.txt
---- conan-1.4.1-pristine/conans/requirements.txt	2018-06-01 01:05:26.293713938 +0200
-+++ conan-1.4.1-new/conans/requirements.txt	2018-06-01 01:07:53.777054966 +0200
+diff -ura conan-1.7.0-pristine/conans/requirements.txt conan-1.7.0-new/conans/requirements.txt
+--- conan-1.7.0-pristine/conans/requirements.txt	2018-08-29 09:50:03.000000000 +0200
++++ conan-1.7.0-new/conans/requirements.txt	2018-08-29 20:46:21.124478890 +0200
 @@ -1,14 +1,14 @@
 -PyJWT>=1.4.0, <2.0.0
 -requests>=2.7.0, <3.0.0
 -colorama>=0.3.3, <0.4.0
--PyYAML>=3.11, <3.13.0
+-PyYAML>=3.11, <3.14.0
 +PyJWT>=1.4.0
 +requests>=2.7.0
 +colorama>=0.3.3
@@ -25,14 +15,22 @@ diff -ura conan-1.4.1-pristine/conans/requirements.txt conan-1.4.1-new/conans/re
  six>=1.10.0
 -node-semver==0.2.0
 -distro>=1.0.2, <1.2.0
--pylint>=1.8.1, <1.9.0
 +node-semver>=0.2.0
 +distro>=1.0.2
-+pylint>=1.8.1
+ pylint>=1.9.3
  future==0.16.0
 -pygments>=2.0, <3.0
--astroid>=1.6, <1.7
--deprecation>=2.0, <2.1
 +pygments>=2.0
-+astroid>=1.6
+ astroid>=1.6.5
+-deprecation>=2.0, <2.1
 +deprecation>=2.0
+diff -ura conan-1.7.0-pristine/conans/requirements_server.txt conan-1.7.0-new/conans/requirements_server.txt
+--- conan-1.7.0-pristine/conans/requirements_server.txt	2018-08-29 09:50:03.000000000 +0200
++++ conan-1.7.0-new/conans/requirements_server.txt	2018-08-29 20:46:48.419563288 +0200
+@@ -1,3 +1,3 @@
+ # Server
+-bottle>=0.12.8, < 0.13
+-pluginbase>=0.5, < 1.0
+\ No newline at end of file
++bottle>=0.12.8
++pluginbase>=0.5
