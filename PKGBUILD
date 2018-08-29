@@ -20,7 +20,7 @@
 pkgbase=kodi-pre-release
 pkgname=("kodi-${pkgbase#kodi-*}" "kodi-eventclients-${pkgbase#kodi-*}" "kodi-tools-texturepacker-${pkgbase#kodi-*}" "kodi-dev-${pkgbase#kodi-*}")
 pkgver=18.0b1v2
-pkgrel=1
+pkgrel=2
 _commit=f21b477993cae9f59f77b8798a1390159863f3f7
 _short=${_commit::+7}
 arch=('x86_64')
@@ -71,13 +71,14 @@ source=(
   'cpuinfo'
 )
 noextract=(
+  "ffmpeg-$_ffmpeg_version.tar.gz"
   "libdvdcss-$_libdvdcss_version.tar.gz"
   "libdvdnav-$_libdvdnav_version.tar.gz"
   "libdvdread-$_libdvdread_version.tar.gz"
-  "ffmpeg-$_ffmpeg_version.tar.gz"
   "fmt-$_fmt_version.tar.gz"
   "crossguid-$_crossguid_version.tar.gz"
   "fstrcmp-$_fstrcmp_version.tar.gz"
+  "flatbuffers-$_flatbuffers_version.tar.gz"
 )
 sha256sums=('be2ccdfd2e9d360893a81ca49580d786d78219e764ddb6d65865eb10806c6f38'
             '0e4980abac7b886e0eb5f4157941947be3c10d616a19bd311dc2f9fd2eb6a631'
@@ -116,6 +117,7 @@ build() {
     -Dlibdvdnav_URL="$srcdir/libdvdnav-$_libdvdnav_version.tar.gz" \
     -Dlibdvdread_URL="$srcdir/libdvdread-$_libdvdread_version.tar.gz" \
     -DFFMPEG_URL="$srcdir/ffmpeg-$_ffmpeg_version.tar.gz" \
+    -DENABLE_INTERNAL_FFMPEG=ON \
     -DFMT_URL="$srcdir/fmt-$_fmt_version.tar.gz" \
     -DENABLE_INTERNAL_FMT=ON \
     -DCROSSGUID_URL="$srcdir/crossguid-$_crossguid_version.tar.gz" \
