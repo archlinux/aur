@@ -7,8 +7,9 @@
 # Contributor: Laszlo Papp <djszapi2 at gmail com>
 # Contributor: Samuel Tardieu <sam@rfc1149.net>
 
+_pkgbase=openocd
 pkgname=openocd-git
-pkgver=0.10.0.r506.gc04a59286
+pkgver=0.10.0.r523.g2a3b709aa
 pkgrel=1
 pkgdesc="Debugging, in-system programming and boundary-scan testing for embedded target devices (git version)"
 arch=('i686' 'x86_64' 'arm')
@@ -92,7 +93,9 @@ build() {
 
 package() {
   cd "$srcdir/${pkgname}"
-  make DESTDIR=${pkgdir} install
+  make "DESTDIR=${pkgdir}" install
   rm -rf ${srcdir}/$pkgname-build
-  rm -rf $pkgdir/usr/share/info/dir
+  rm -rf "$pkgdir/usr/share/info/dir"
+  mkdir -p "$pkgdir/usr/lib/udev/rules.d"
+  mv "$pkgdir/usr/share/$_pkgbase/contrib/60-openocd.rules" "$pkgdir/usr/lib/udev/rules.d"
 }
