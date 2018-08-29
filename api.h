@@ -339,6 +339,8 @@ Info* info_array_get_info_from_symbol(const Info_Array* pInfo_Array, const char*
 int ref_data_get_index_from_name_bsearch(const Ref_Data* pRef_Data, const char* name,
         size_t left, size_t right);
 
+Info* info_array_find_symbol_recursive(const Info_Array* pInfo_Array, const char* symbol);
+
 /**
  * Destroys Ref_Data object and frees memory. Sets the pointer of the Ref_Data to NULL
  * @param phRef_Data the Ref_Data to destroy

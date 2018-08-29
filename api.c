@@ -662,6 +662,22 @@ int ref_data_get_index_from_name_bsearch(const Ref_Data* pRef_Data, const char* 
     return ref_data_get_index_from_name_bsearch(pRef_Data, name, left, mid - 1);
 }
 
+Info* info_array_find_symbol_recursive(const Info_Array* pInfo_Array, const char* symbol) {
+    Info* pInfo = NULL;
+    if (pInfo_Array == NULL)
+        return NULL;
+
+    for (size_t i = 0; i < pInfo_Array->length; i++) {
+        if (strcmp(pInfo_Array->array[i]->symbol, symbol) == 0)
+            return pInfo_Array->array[i];
+
+        pInfo = info_array_find_symbol_recursive(pInfo_Array->array[i]->peers, symbol);
+        if (pInfo != NULL)
+            return pInfo;
+    }
+    return NULL;
+}
+
 void api_ref_data_destroy(Ref_Data** phRef_Data) {
     if (*phRef_Data == NULL)
         return;
