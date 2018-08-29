@@ -2,7 +2,7 @@
 pkgname=mingw-w64-lapack
 pkgname=('mingw-w64-lapack' 'mingw-w64-blas' 'mingw-w64-cblas' 'mingw-w64-lapacke')
 pkgver=3.8.0
-pkgrel=2
+pkgrel=3
 arch=('any')
 pkgdesc="Linear Algebra PACKage (mingw-w64)"
 makedepends=('mingw-w64-cmake')
@@ -69,7 +69,7 @@ package_mingw-w64-lapack()
 package_mingw-w64-blas()
 {
   pkgdesc="Basic Linear Algebra Subprograms (mingw-w64)"
-  depends=("mingw-w64-crt")
+  depends=(mingw-w64-crt mingw-w64-gcc)
   for _arch in ${_architectures}; do
     cd "$srcdir/lapack-${pkgver}/build-${_arch}-static/BLAS"
     make install DESTDIR="$pkgdir"
