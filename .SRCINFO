@@ -6,6 +6,7 @@ pkgbase = teamocil
 	arch = any
 	license = MIT
 	makedepends = rubygems
+	makedepends = ruby-rdoc
 	depends = ruby
 	depends = tmux
 	noextract = teamocil-1.4.2.gem
