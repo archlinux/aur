@@ -1,4 +1,5 @@
 pkgname=ttydisp-git
+_pkgname=ttydisp
 pkgver=0.0.1
 pkgrel=1
 pkgdesc="Play video in the terminal"
@@ -11,12 +12,12 @@ url='https://github.com/jamesthoughton/ttydisp'
 sha256sums=('SKIP')
 
 build() {
-	cd "${pkgname}"
+	cd "${_pkgname}"
 	cmake . -DCMAKE_INSTALL_PREFIX=/usr
 	make
 }
 
 package() {
-	cd "${pkgname}"
+	cd "${_pkgname}"
 	make DESTDIR="${pkgdir}" install
 }
