@@ -1,17 +1,17 @@
 pkgbase = web3j
 	pkgdesc = A lightweight, reactive, type safe Java and Android library for integrating with nodes on Ethereum blockchains
-	pkgver = 3.4.0
+	pkgver = 3.5.0
 	pkgrel = 1
 	url = https://web3j.io/
 	arch = any
 	license = Apache
 	depends = java-runtime>=8
 	source = web3j
-	source = https://github.com/web3j/web3j/releases/download/v3.4.0/web3j-3.4.0.tar
-	source = https://github.com/web3j/web3j/releases/download/v3.4.0/web3j-3.4.0.tar.asc
+	source = https://github.com/web3j/web3j/releases/download/v3.5.0/web3j-3.5.0.tar
+	source = https://github.com/web3j/web3j/releases/download/v3.5.0/web3j-3.5.0.tar.asc
 	validpgpkeys = 99854D26AD9C565C34BCE2471295E078F64311DB
 	sha256sums = 410a2c96c3dfcf1db1a3db0de346e25334b7b8b817bece714559845f21a65a57
-	sha256sums = 7c7d46c5eaf71f42fd74e57704b9e93bfc239edf9743f9fc3809f398bc2572ae
+	sha256sums = a67f7ba3216806305b8def174483cd26057ecf8d3af909dfbc11d03750198969
 	sha256sums = SKIP
 
 pkgname = web3j
