@@ -9,7 +9,7 @@
 _name=ffmpeg
 pkgname=ffmpeg-libfdk_aac
 pkgver=4.0.2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)'
 arch=('x86_64')
@@ -17,10 +17,10 @@ url='http://ffmpeg.org/'
 license=('GPL3' 'custom:libfdk-aac')
 depends=('alsa-lib' 'aom' 'bzip2' 'fontconfig' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
   'alsa-lib' 'aom' 'bzip2' 'fontconfig' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
-  'lame' 'libavc1394' 'libdrm' 'libiec61883' 'libmodplug' 'libomxil-bellagio'
-  'libpulse' 'libraw1394' 'libsoxr' 'libssh' 'libtheora' 'libvdpau' 'libwebp'
-  'libx11' 'libxcb' 'libxext' 'libxml2' 'libxv' 'opencore-amr' 'openjpeg2'
-  'opus' 'sdl2' 'speex' 'v4l-utils' 'xz' 'zlib'
+  'jack' 'lame' 'libavc1394' 'libdrm' 'libiec61883' 'libmodplug'
+  'libomxil-bellagio' 'libpulse' 'libraw1394' 'libsoxr' 'libssh' 'libtheora'
+  'libvdpau' 'libwebp' 'libx11' 'libxcb' 'libxext' 'libxml2' 'libxv'
+  'opencore-amr' 'openjpeg2' 'opus' 'sdl2' 'speex' 'v4l-utils' 'xz' 'zlib'
   'libass.so' 'libbluray.so' 'libfreetype.so' 'libva-drm.so' 'libva.so'
   'libva-x11.so' 'libvidstab.so' 'libvorbisenc.so' 'libvorbis.so' 'libvpx.so'
   'libx264.so' 'libx265.so' 'libxvidcore.so'
@@ -60,6 +60,7 @@ build() {
     --enable-libfribidi \
     --enable-libgsm \
     --enable-libiec61883 \
+    --enable-libjack \
     --enable-libmodplug \
     --enable-libmp3lame \
     --enable-libopencore_amrnb \
