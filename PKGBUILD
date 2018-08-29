@@ -9,9 +9,8 @@ pkgdesc="MUlticomponent Thermodynamic And Transport properties for partially ION
 arch=('i686' 'x86_64')
 url="https://sync.vki.ac.be/mpp/mutationpp"
 license=('GPL3')
-depends=('eigen' 'gcc-libs')
-checkdepends=('eigen')
-makedepends=('python2' 'git' 'gcc' 'cmake')
+depends=('eigen3' 'gcc-libs')
+makedepends=('git' 'gcc' 'cmake')
 source=("$_pkgname::git+https://sync.vki.ac.be/mpp/mutationpp.git")
 sha256sums=('SKIP')
 export MAKEFLAGS="-j"$(cat /proc/cpuinfo | awk '/^processor/{print $3}' | wc -l)
@@ -76,4 +75,7 @@ Version: ${pkgver}
 Libs: -L\${prefix}/lib -lmutation++
 Cflags: -I\${prefix}/include/mutation++
 EOF
+
+  # add symbolic link for eigen3 header, this is necessary for coolfluid
+  ln -srf ${pkgdir}/usr/include/eigen3 ${pkgdir}/usr/include/mutation++/eigen3
 }
