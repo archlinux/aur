@@ -1,5 +1,5 @@
 pkgbase = teamocil
-	pkgdesc = Teamocil helps you set up window and splits layouts for tmux using YAML configuration files.
+	pkgdesc = set up window and splits layouts for tmux using YAML configuration files
 	pkgver = 1.4.2
 	pkgrel = 1
 	url = http://www.teamocil.com
