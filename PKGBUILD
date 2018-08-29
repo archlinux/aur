@@ -9,7 +9,7 @@ arch=('any')
 url='http://www.tomighty.org/'
 license=('Apache')
 makedepends=('imagemagick' 'maven')
-source=("git://github.com/tomighty/tomighty.git#branch=version-0.7"
+source=("git+https://github.com/tomighty/tomighty.git#branch=version-0.7"
 		'tomighty.sh'
 		'tomighty.desktop'
 		'https://github.com/ccidral/tomighty/raw/50d0094c024f1923bd0d6ff1bf77572ae5f5b5f6/img/tomato.ico')
