@@ -1,16 +1,16 @@
-# Maintainer: Michael Yang <ohmyarchlinux@gmail.com>
+# Maintainer: Michael Yang <ohmyarchlinux@protonmail.com>
 
 pkgname=kdreports
-pkgver=1.7.1
+pkgver=1.8.0
 pkgrel=1
-pkgdesc="A Qt library for creating printable reports"
-arch=('i686' 'x86_64')
-url="http://www.kdab.com/kd-reports/"
+pkgdesc='A Qt library for generating printable and exportable reports from code and from XML descriptions'
+arch=('x86_64')
+url='https://www.kdab.com/development-resources/qt-tools/kd-reports'
 license=('GPL' 'LGPL' 'custom')
 depends=('qt5-base')
-makedepends=('cmake>=2.8.11')
+makedepends=('cmake>=2.8.12')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/KDAB/KDReports/releases/download/kdreports-${pkgver}/kdreports-${pkgver}.tar.gz")
-sha512sums=('b06b1e58ad9cb4181b0b8b9c7e161a5eb8be4e44930964e4becfbb84b7be901bcfa4d0bc7959209c840be5374cbf09703bea581b6691a542125827caf1062ef7')
+sha512sums=('55514cd6107ac319b1f52d32d1b9780e00382fc89698f4a9ffa6e93c92cb9c2f5bc6df6a95fa7bbad53a332f3c7e86b738a50e68047afb40d05d4ba1b385ca02')
 
 prepare() {
   mkdir -p build
@@ -19,10 +19,15 @@ prepare() {
 build() {
   cd build
   cmake ../${pkgname}-${pkgver} \
-    -DKDReports_TESTS=OFF \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib
   make
+}
+
+check() {
+  cd build
+  make test
 }
 
 package() {
