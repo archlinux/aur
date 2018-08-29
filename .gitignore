@@ -1,5 +1,6 @@
 make/*
 pkg/*
 src/*
+ivideon-client/*
 *.deb
 *.tar.*
