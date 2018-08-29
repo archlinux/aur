@@ -1,8 +1,9 @@
 # Maintainer: Kyle Guarco <kyleguarco55@gmail.com>
 
+_pkgname=berry-master
 pkgname=berry-git
 pkgbase=berry
-pkgver=0.0.4
+pkgver=devel
 pkgrel=1
 pkgdesc="A healthy, bite-sized window manager written over the XLib Library"
 url="https://github.com/JLErvin/berry"
@@ -22,13 +23,13 @@ prepare() {
 
 build() {
 	# Build the package.
-	cd berry-master/
+	cd ${_pkgname}/
 	make
 }
 
 package() {
 	# ...and install.
-	cd berry-master/
+	cd ${_pkgname}/
 	make DESTDIR="$pkgdir/" install
 	
 	cd man/
