@@ -10,9 +10,9 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=sudo-selinux
-_sudover=1.8.23
+_sudover=1.8.24
 pkgver=${_sudover/p/.p}
-pkgrel=2
+pkgrel=1
 pkgdesc="Give certain users the ability to run some commands as root - SELinux support"
 arch=('x86_64')
 url="https://www.sudo.ws/sudo/"
@@ -25,19 +25,14 @@ provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
 backup=('etc/sudoers' 'etc/pam.d/sudo')
 install=${pkgname/-selinux}.install
 source=(https://www.sudo.ws/sudo/dist/${pkgname/-selinux}-$_sudover.tar.gz{,.sig}
-        allow-preserve-env-with-arg.patch
         sudo.pam)
-sha256sums=('d863d29b6fc87bc784a3223350e2b28a2ff2c4738f0fb8f1c92bb38c3017e679'
+sha256sums=('b488557a198ecef30b7ad4011b59a66232dec2364ad956e11d8e17906c225be8'
             'SKIP'
-            '439edd65dbc0115794dec833968c538c98a275522ec9a2e0ac3d4a9eb9cc3b33'
             'd1738818070684a5d2c9b26224906aad69a4fea77aabd960fc2675aee2df1fa2')
 validpgpkeys=('59D1E9CCBA2B376704FDD35BA9F4C021CEA470FB')
 
 prepare() {
   cd "$srcdir/${pkgname/-selinux}-$_sudover"
-
-  # https://bugzilla.sudo.ws/show_bug.cgi?id=835
-  patch -Np1 -i ../allow-preserve-env-with-arg.patch
 }
 
 build() {
