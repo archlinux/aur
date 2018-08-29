@@ -3,13 +3,13 @@
 
 pkgname=btrfs-autosnap
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Pacman hook which makes btrfs root snapshot before any action."
 arch=(any)
 url="https://github.com/vvl-rulez/btrfs-autosnap"
 license=('MIT')
 source=("https://github.com/vvl-rulez/btrfs-autosnap/archive/v$pkgver.tar.gz")
-depends=('btrfs-tools' 'util-linux')
+depends=('btrfs-progs' 'util-linux')
 sha256sums=('7f77e0040461e3bfe1dc8a3bf7abc2e7d3c3dc68d048e664406fc5e524af4ec4')
 package() {
 	cd "$pkgname-$pkgver"
