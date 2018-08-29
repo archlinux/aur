@@ -76,6 +76,13 @@ Info_Array* api_info_array_init_from_length(size_t length) {
     return pInfo_Array;
 }
 
+void info_array_append(Info_Array* pInfo_Array, const char* symbol) {
+    pInfo_Array->array = realloc(pInfo_Array->array, sizeof(char*) * (pInfo_Array->length + 1));
+    pInfo_Array->length++;
+    pInfo_Array->array[pInfo_Array->length - 1] = api_info_init();
+    strcpy(pInfo_Array->array[pInfo_Array->length - 1]->symbol, symbol);
+}
+
 size_t api_string_writefunc(void* ptr, size_t size, size_t nmemb, String* pString) {
     size_t new_len = pString->len + size * nmemb;
     pString->data = realloc(pString->data, new_len + 1);

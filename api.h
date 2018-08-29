@@ -174,6 +174,8 @@ Info_Array* api_info_array_init(void);
  */
 Info_Array* api_info_array_init_from_length(size_t length);
 
+void info_array_append(Info_Array* pInfo_Array, const char* symbol);
+
 /**
  * writefunction for cURL HTTP GET/POST
  * stolen from a nice man on stackoverflow
