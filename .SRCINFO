@@ -1,6 +1,6 @@
 pkgbase = jq-git
 	pkgdesc = Command-line JSON processor
-	pkgver = 1.5rc1.115.g4a316fb
+	pkgver = 1.6rc2
 	pkgrel = 1
 	url = http://stedolan.github.io/jq/
 	arch = i686
@@ -14,6 +14,7 @@ pkgbase = jq-git
 	makedepends = flex
 	makedepends = glibc
 	depends = oniguruma
+	provides = jq
 	conflicts = jq
 	source = git+https://github.com/stedolan/jq.git
 	md5sums = SKIP

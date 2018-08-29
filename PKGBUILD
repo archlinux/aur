@@ -1,20 +1,18 @@
+# Maintainer: Tucker Boniface <tucker@boniface.tech>
 # Submitter: Alex Chamberlain <alex@alexchamberlain.co.uk>
 # Maintainer: Kars Wang <jaklsy@gmail.com>
 
 pkgname=jq-git
 _gitname='jq'
-pkgver=1.5rc1.115.g4a316fb
+pkgver=1.6rc2
 pkgrel=1
 pkgdesc='Command-line JSON processor'
 arch=('i686' 'x86_64')
 url='http://stedolan.github.io/jq/'
 license=('custom')
-groups=()
 depends=('oniguruma')
 makedepends=('python2' 'git' 'autoconf' 'automake' 'bison' 'flex' 'glibc')
-checkdepends=()
-optdepends=()
-provides=()
+provides=('jq')
 conflicts=('jq')
 source=('git+https://github.com/stedolan/jq.git')
 md5sums=(SKIP)
