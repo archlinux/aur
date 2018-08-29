@@ -1,6 +1,6 @@
 pkgbase = flirc-bin
 	pkgdesc = CLI and GUI application to program your Flirc device
-	pkgver = 3.11.6
+	pkgver = 3.20.0
 	pkgrel = 1
 	url = http://flirc.tv
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = flirc-bin
 	provides = flirc
 	conflicts = flirc
 	replaces = flirc
-	source = flirc_3.11.6_amd64.deb::https://packagecloud.io/Flirc/repo/packages/ubuntu/zesty/flirc_3.11.6_amd64.deb/download.deb
-	md5sums = 4d76b6e51013539fcb5c0624cbf07708
+	source = flirc_3.20.0_amd64.deb::https://packagecloud.io/Flirc/repo/packages/ubuntu/zesty/flirc_3.20.0_amd64.deb/download.deb
+	md5sums = 586bd40b0374f0057c8e39dcac869f0b
 
 pkgname = flirc-bin
 

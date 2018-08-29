@@ -4,7 +4,7 @@
 
 pkgname=flirc-bin
 _pkgname=flirc
-_pkgver=3.11.6
+_pkgver=3.20.0
 pkgver=${_pkgver/-/.}
 pkgrel=1
 pkgdesc="CLI and GUI application to program your Flirc device"
@@ -16,7 +16,7 @@ provides=('flirc')
 conflicts=('flirc')
 replaces=('flirc')
 source=(${_pkgname}_${_pkgver}_amd64.deb::https://packagecloud.io/Flirc/repo/packages/ubuntu/zesty/${_pkgname}_${_pkgver}_amd64.deb/download.deb)
-md5sums=('4a4fd33bbec21e9eba909bb7e2836d00')
+md5sums=('586bd40b0374f0057c8e39dcac869f0b')
 
 package() {
   tar -xf data.tar.gz -C "$pkgdir"
