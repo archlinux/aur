@@ -1,6 +1,6 @@
 pkgbase = wayfire-git
 	pkgdesc = 3D wayland compositor
-	pkgver = r616.7e011aa
+	pkgver = r631.8680e3c
 	pkgrel = 1
 	url = https://github.com/ammen99/wayfire
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = wayfire-git
 	depends = glm
 	depends = libjpeg
 	depends = gtk3
+	depends = wf-config-git
 	provides = wayfire
 	conflicts = wayfire
 	source = git+https://github.com/ammen99/wayfire

@@ -1,12 +1,12 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=wayfire-git 
-pkgver=r616.7e011aa
+pkgver=r631.8680e3c
 pkgrel=1
 pkgdesc="3D wayland compositor"
 arch=('x86_64')
 url="https://github.com/ammen99/wayfire"
 license=('MIT')
-depends=('wlroots-git' 'cairo' 'glm' 'libjpeg' 'gtk3')
+depends=('wlroots-git' 'cairo' 'glm' 'libjpeg' 'gtk3' 'wf-config-git')
 makedepends=('git' 'meson' 'ninja' 'wayland-protocols' )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -29,22 +29,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/wayfire/"
-   meson setup build \
-  --prefix         /usr \
-  --libdir         /usr/lib \
-  --libexecdir     /usr/lib \
-  --bindir         /usr/bin \
-  --sbindir        /usr/bin \
-  --includedir     /usr/include \
-  --datadir        /usr/share \
-  --mandir         /usr/share/man \
-  --infodir        /usr/share/info \
-  --localedir      /usr/share/locale \
-  --sysconfdir     /etc \
-  --localstatedir  /var \
-  --sharedstatedir /var/lib \
-  --buildtype      release \
-  --wrap-mode      default
+  arch-meson build
   ninja -C build
 }
 
