@@ -6,6 +6,7 @@ pkgver=0.9.1
 pkgrel=1
 pkgdesc="Pacman hook which makes btrfs root snapshot before any action."
 arch=(any)
+url="https://github.com/vvl-rulez/btrfs-autosnap"
 license=('MIT')
 source=("https://github.com/vvl-rulez/btrfs-autosnap/archive/v$pkgver.tar.gz")
 depends=('btrfs-tools' 'util-linux')
