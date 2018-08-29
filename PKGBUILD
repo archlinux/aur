@@ -2,15 +2,15 @@
 
 pkgname=electron-windows95-bin
 _pkgname=windows95
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Windows 95 in Electron. Runs on macOS, Linux, and Windows.'
 arch=('x86_64')
 url='https://github.com/felixrieseberg/windows95'
 license=('MIT')
 depends=('electron')
-source=("https://github.com/felixrieseberg/windows95/releases/download/v$pkgver/windows95-linux-$pkgver.-linux-x86_64.rpm")
-sha256sums=('279732aca2e4909706ce6640a7a68cf9598b7e2527c221e09646b9de37e1b0d7')
+source=("https://github.com/felixrieseberg/windows95/releases/download/v$pkgver/windows95-linux-$pkgver.x86_64.rpm")
+sha256sums=('15d498ada7edc3a6f7b60fa3243b7e4ea385221e22a7f148856e27e941134ab3')
 
 package() { 
   install -d "${pkgdir}/usr/bin"
