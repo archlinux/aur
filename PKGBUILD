@@ -2,9 +2,8 @@
 # Contributor: Jeremy MountainJohnson <jskier@gmail.com>
 
 pkgname=xfce-evolution-themes
-_name=xfce-evolution
-pkgver=4.17.0
-pkgrel=4
+pkgver=4.18.0
+pkgrel=1
 pkgdesc="The Xfce Evolution theme attempts to rid the Xfce desktop of visual distractions by providing a more consistent look (buttons, scrollbars, menus, etc) across older and newer applications."
 arch=('any')
 url="http://itgroup.ro/xfce-evolution"
@@ -12,7 +11,7 @@ license=(GPLv2)
 depends=(gtk-engine-murrine)
 optdepends=(lib32-gtk-engine-murrine qt5-styleplugins noto-fonts elementary-xfce-icons nemo)
 source=(https://downloads.sourceforge.net/project/xfce-evolution/xfce-evolution-${pkgver}.zip)
-sha512sums=('616bcce9637ed8cecec3cd0272143b5f194733856fd0d8b7a201e4e2e07b98a0ab0e6322f6383a363a96f0d21b8d6caf9aefa1fcac3aa497018bd507bd1b383f')
+sha512sums=('09f7fd64a58a1e3bb751db833bf7e528eb9d58c06a2ceeef61561a4a0457839061faf073b3b5433829b68cb2fa23f98e65776bf4cd937068a4c1948ff29504fc')
 
 package() {
     # Set correct mode on files from zip source extraction
@@ -28,9 +27,9 @@ package() {
     done
 
     # Copy QT font fix over to global font conf
-    install -dm 755 "$pkgdir/etc/fonts/conf.d/"
-    cp "$srcdir/Xfce Evolution/90-qt5.conf" "$pkgdir/etc/fonts/conf.d/91-qt5-xfce-evolution-fix.conf"
-
+    install -dm 755 "$pkgdir/etc/fonts/conf.avail/" "$pkgdir/etc/fonts/conf.d"
+    install -Dm 644 "$srcdir/Xfce Evolution/90-qt5.conf" "$pkgdir/etc/fonts/conf.avail/91-qt5-xfce-evolution-fix.conf"
+    ln -s "../conf.avail/91-qt5-xfce-evolution-fix.conf" "$pkgdir/etc/fonts/conf.d/91-qt5-xfce-evolution-fix.conf"
     # Remove unnecessary TOOLS folder
     rm -rf "$pkgdir/usr/share/themes/Xfce Evolution/TOOLS"
 }
