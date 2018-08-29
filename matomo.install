@@ -1,14 +1,97 @@
-post_install() {
-  ln -s /etc/webapps/matomo/config.ini.php /usr/share/webapps/matomo/config/
+pre_upgrade() {
+  # Owner preservation (compare post_upgrade)
+  if [ -d /etc/webapps/matomo ]; then
+    touch /etc/webapps/matomo/.owner.tmp
+  fi
+  if [ -d /usr/share/webapps/matomo/plugins ]; then
+    touch /usr/share/webapps/matomo/plugins/.owner.tmp
+    # We’ll chown -R /usr/share/webapps/matomo before getting to plugins, so
+    # must move it to a different directory so we don’t accidentally chmod it!
+    mv /usr/share/webapps/matomo/plugins/.owner.tmp /tmp/matomo-plugins-owner.tmp
+  fi
 
-  chown -R http:http /usr/share/webapps/matomo
+  # The rest is 3.4.0-1 → 3.5.1-1 or later upgrade matters.
+  if [ ! -L /usr/share/webapps/matomo/tmp ]; then
+    # It’s a directory rather than a symlink: gotta be pre-3.5.1-1.
+    install -dm700 /var/lib/webapps/matomo
+    mv /usr/share/webapps/matomo/tmp /var/lib/webapps/matomo/tmp
+    chown -R http:http /var/lib/webapps/matomo
+    # No changes needed in /usr/share/webapps/matomo/config, it’ll upgrade cleanly.
+    echo 'matomo 3.5.1-1 onward has some location and permissions changes to be aware'
+    echo 'of. Everything necessary is moved to the new locations, so you have lost'
+    echo 'nothing, and everything should continue to work just fine with no changes.'
+    echo 'This is really just a FYI.'
+    echo
+    echo '- /usr/share/webapps/matomo/tmp is moved to /var/lib/webapps/matomo/tmp,'
+    echo '  and a symlink left in its place.'
+    echo
+    echo '- Instead of copying global.ini.php to /etc/webapps/matomo/config.ini.php and'
+    echo '  making a symlink to it in /usr/share/webapps/matomo/config, the entire'
+    echo '  config directory is moved to /etc/webapps/matomo (*not* as'
+    echo '  /etc/webapps/matomo/config) with a symlink in its place. Your config.ini.php'
+    echo '  (which is in the same place as ever, /etc/webapps/matomo/config.ini.php)'
+    echo '  is probably now rather bloated by comparison with that of a regular Matomo'
+    echo '  installation, as it started as a copy of global.ini.php rather than empty.'
+    echo
+    echo '- The owner has changed for /usr/share/webapps/matomo: rather than http:http,'
+    echo '  it’s now root:http, so that matomo itself can’t modify any of its own files.'
+    echo '  Only the /var and /etc locations now, plus piwik.js and the plugins'
+    echo '  directory, are writeable:'
+    echo
+    echo '  - /var/lib/webapps/matomo/tmp is owned by http:http because it’s essential'
+    echo '    for the web server to be able to write there;'
+    echo '  - /etc/webapps/matomo is owned by http:http so the installer can run;'
+    echo '    but after that it need not be writeable; if you like, you can'
+    echo '    `chown -R root:http /etc/webapps/matomo` for security);'
+    echo '  - /usr/share/webapps/matomo/piwik.js is group-writeable because some plugins'
+    echo '    want to add to it; you can `chmod g-w` it if you like, but I’m not sure if'
+    echo '    that will persist across future upgrades.'
+    echo '  - Actually I lied about ownership: /usr/share/webapps/matomo/plugins is'
+    echo '    owned by http:http instead of root:http, so that you can add plugins from'
+    echo '    the marketplace, upgrade them, and so forth. You can harden it with'
+    echo '    `chown -R root:http /usr/share/webapps/matomo/plugins` if you like,'
+    echo '    and this will persist across future upgrades.'
+    echo
+  fi
+}
+
+
+post_install() {
+  chown -R root:http /usr/share/webapps/matomo
+  chown -R http:http /usr/share/webapps/matomo/plugins
   chown -R http:http /etc/webapps/matomo
-  chmod 600 /etc/webapps/matomo/*
+  chown -R http:http /var/lib/webapps/matomo
+  echo 'matomo: you will need to hook matomo up in your http server somehow (the files'
+  echo 'are in /usr/share/webapps/matomo), then go through its installer process.'
+  echo 'After that, consider making the config and plugin directories read-only like'
+  echo 'this (the directory owner changes will persist across matomo package upgrades):'
+  echo
+  echo '    chown -R root:http /etc/webapps/matomo'
+  echo '    chown -R root:http /usr/share/webapps/matomo/plugins'
+  echo
 }
 
 
 post_upgrade() {
-  chown -R http:http /usr/share/webapps/matomo
-  chown -R http:http /etc/webapps/matomo
-  chmod 600 /etc/webapps/matomo/*
+  chown -R root:http /usr/share/webapps/matomo
+
+  # This way, if the user did a `chown -R root:http` to make config files read-only,
+  # we keep that owner after upgrade. (Yeah, it’s still not a great technique.)
+  if [ -f /etc/webapps/matomo/.owner.tmp ]; then
+    chown -R --reference=/etc/webapps/matomo/.owner.tmp /etc/webapps/matomo
+    rm /etc/webapps/matomo/.owner.tmp
+  else
+    chown -R http:http /etc/webapps/matomo
+  fi
+
+  # Ditto on the plugins directory.
+  if [ -f /tmp/matomo-plugins-owner.tmp ]; then
+    chown -R --reference=/tmp/matomo-plugins-owner.tmp /usr/share/webapps/matomo/plugins
+    rm /tmp/matomo-plugins-owner.tmp
+  else
+    chown -R http:http /usr/share/webapps/matomo/plugins
+  fi
+
+  # /var/lib/webapps/matomo: owner was set correctly in post_install or pre_upgrade,
+  # and we don’t install any files to that directory, so no need to fiddle with it here.
 }
