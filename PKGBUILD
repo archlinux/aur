@@ -20,7 +20,7 @@ md5sums=('SKIP')
 build() {
   cd "$srcdir/${_github_repo}"
   unset EMACS
-  make LOAD_PATH="-L /usr/share/emacs/site-lisp/dash" \
+  make LOAD_PATH="-L /usr/share/emacs/site-lisp" \
        lisp info
 }
 
