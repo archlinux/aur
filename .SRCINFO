@@ -8,6 +8,7 @@ pkgbase = casacore
 	makedepends = make
 	makedepends = pkg-config
 	makedepends = binutils
+	makedepends = boost
 	makedepends = boost-libs
 	makedepends = cmake
 	makedepends = gcc-fortran
