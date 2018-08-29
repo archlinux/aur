@@ -41,7 +41,7 @@ eval "package_linux-pf-$cpu() {
      _package   
      }"                 
 EOF
-            echo "CPU=$cpu" > batch_opts
+            echo "LCPU=$cpu" > batch_opts
             build_pkg
             ;;
     esac
