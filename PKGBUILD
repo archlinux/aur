@@ -1,4 +1,4 @@
-# Maintainer: ugjka <ugis.germanis@gmail.com>
+# Maintainer: ugjka <esesmu@protonmail.com>
 
 _pkgname=zipper
 pkgname="$_pkgname-git"
