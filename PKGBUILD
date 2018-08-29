@@ -12,7 +12,7 @@
 pkgbase=mesa-git
 pkgname=('mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=18.3.0_devel.104414.4a8444d5bc
+pkgver=18.3.0_devel.104495.93b8b987d0
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'llvm-svn' 'clang-svn' 'xorgproto'
