@@ -1,7 +1,7 @@
 # Maintainer: Aleksandar Trifunović <akstrfn at gmail dot com>
 
 _pkgname=markov-typing
-pkgver=r207.b9a7b31
+pkgver=r209.7116ca7
 pkgrel=1
 pkgname=markov-typing-git
 pkgdesc="Typing tutor that uses Markov chain to generate random strings."
@@ -9,7 +9,7 @@ arch=('x86_64' 'i686')
 url="https://github.com/akstrfn/markov-typing"
 license=('MIT')
 depends=('ncurses')
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 source=("$_pkgname::git+$url")
 provides=("$_pkgname")
 sha256sums=('SKIP')
@@ -32,7 +32,7 @@ build() {
     cmake --build build
 }
 
-# no test atm
+# no tests atm
 # check() {
 #     cd "$_pkgname"
 #     cmake --build build -- check
@@ -40,6 +40,6 @@ build() {
 
 package() {
     cd "$_pkgname"
-    cmake --build build -- DESTDIR="${pkgdir}" install
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cmake --build build -- DESTDIR="$pkgdir" install
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

@@ -1,12 +1,13 @@
 pkgbase = markov-typing-git
 	pkgdesc = Typing tutor that uses Markov chain to generate random strings.
-	pkgver = r207.b9a7b31
+	pkgver = r209.7116ca7
 	pkgrel = 1
 	url = https://github.com/akstrfn/markov-typing
 	arch = x86_64
 	arch = i686
 	license = MIT
 	makedepends = cmake
+	makedepends = git
 	depends = ncurses
 	provides = markov-typing
 	source = markov-typing::git+https://github.com/akstrfn/markov-typing
