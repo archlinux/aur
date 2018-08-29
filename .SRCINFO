@@ -1,6 +1,6 @@
 pkgbase = emacs-magit-popup
 	pkgdesc = A generic interface for toggling switches and setting options and then invoking an Emacs command which does something with these arguments
-	pkgver = 2.12.3
+	pkgver = 2.12.4
 	pkgrel = 2
 	url = http://github.com/magit/magit-popup
 	install = emacs-magit-popup.install
@@ -11,7 +11,7 @@ pkgbase = emacs-magit-popup
 	depends = emacs-dash>=2.13.0
 	provides = emacs-magit-popup
 	conflicts = emacs-magit<=2.11.0
-	source = git+https://github.com/magit/magit-popup.git#tag=v2.12.3
+	source = git+https://github.com/magit/magit-popup.git#tag=v2.12.4
 	md5sums = SKIP
 
 pkgname = emacs-magit-popup
