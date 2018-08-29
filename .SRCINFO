@@ -1,6 +1,6 @@
 pkgbase = randrctl-git
 	pkgdesc = Lightweight profile based screen manager for X
-	pkgver = 1.7.1.r1.1be3084
+	pkgver = 1.7.1.r6.895dee6
 	pkgrel = 1
 	url = http://github.com/edio/randrctl
 	install = randrctl.install
