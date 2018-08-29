@@ -1,0 +1,14 @@
+pkgbase = conmon
+	pkgdesc = Library for running OCI-based containers.
+	pkgver = 1.11.2
+	pkgrel = 1
+	url = https://github.com/containers/libpod
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = go
+	depends = go
+	source = https://github.com/kubernetes-incubator/cri-o/archive/v1.11.2.tar.gz
+	sha256sums = cd63d23f16ad4daa535c39e34322a62d2065017bd5d7cc09fa98515322d04cce
+
+pkgname = conmon
+
