@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 pkgname=fftw-static
 _name=${pkgname%-static}
-pkgver=3.3.7
+pkgver=3.3.8
 pkgrel=1
 pkgdesc="A library for computing the discrete Fourier transform (DFT)"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="http://www.fftw.org/"
 depends=('bash' 'gcc-libs')
 makedepends=('gcc-fortran')
 source=("http://www.fftw.org/${_name}-${pkgver}.tar.gz")
-sha1sums=('2ae980a8d44c161ce4a09c6e2d1c79243ecbabb2')
+sha1sums=('59831bd4b2705381ee395e54aa6e0069b10c3626')
 options=('staticlibs')
 
 # notes:

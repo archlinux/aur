@@ -1,6 +1,6 @@
 pkgbase = fftw-static
 	pkgdesc = A library for computing the discrete Fourier transform (DFT)
-	pkgver = 3.3.7
+	pkgver = 3.3.8
 	pkgrel = 1
 	url = http://www.fftw.org/
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = fftw-static
 	depends = bash
 	depends = gcc-libs
 	options = staticlibs
-	source = http://www.fftw.org/fftw-3.3.7.tar.gz
-	sha1sums = 2ae980a8d44c161ce4a09c6e2d1c79243ecbabb2
+	source = http://www.fftw.org/fftw-3.3.8.tar.gz
+	sha1sums = 59831bd4b2705381ee395e54aa6e0069b10c3626
 
 pkgname = fftw-static
 
