@@ -41,7 +41,7 @@ source=("https://github.com/rakshasa/$_pkgname/archive/$_pkgver.tar.gz"
         'ui_pyroscope.patch')
 md5sums=('b8b4009f95f8543244ae1d23b1810d7c'
          'b49903d3fa25a66c72db69570dfe8b47'
-         'e7f737e4b2c4db9659faf2609a17732e'
+         '9e1b37fc7e5423245d7d07ece0590fd5'
          '27e2b4099fa2b943812d80d9306dab79'
          'fbe511a1dfe89fe0510a077e61ae6ec7'
          '22fae392c6e281dc438b39a5019e7e1b'
@@ -63,7 +63,7 @@ md5sums=('b8b4009f95f8543244ae1d23b1810d7c'
          '26faff00b306b6ef276a7d9e6d964994'
          'bd04a0699b80c8042e1cf63a7e0e4222'
          'd0a956f0eb4b53b66d83df2a8a4d16dc'
-         'd6eb433a0516d987ac1054e8b14e8129'
+         '39e18c251a6049b60c2c28b1494eff2a'
          'a4528366d1839ee400e51abc793446f5'
          '0a2bbaf74c7160ba33876dcc2f050f14')
 
