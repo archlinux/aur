@@ -1,7 +1,7 @@
 pkgbase = mkinitcpio-lvm2c
 	pkgdesc = Provide lvm2 hook compatible with older kernels
-	pkgver = 2.02.168
-	pkgrel = 2
+	pkgver = 2.02.181
+	pkgrel = 1
 	url = https://aur.archlinux.org/packages/mkinitcpio-lvm2c
 	install = mkinitcpio-lvm2c.install
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = mkinitcpio-lvm2c
 	depends = lvm2
 	depends = mkinitcpio
 	source = lvm2c.patch
-	md5sums = 859531ebdfb19d080f7045d815820aed
+	md5sums = 945b7683359f4981a8ee1ff8a1304e90
 
 pkgname = mkinitcpio-lvm2c
 

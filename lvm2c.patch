@@ -1,8 +1,7 @@
-diff -up src/mkinitcpio-lvm2c/lvm2c_hook.orig src/mkinitcpio-lvm2c/lvm2c_hook
-diff -up src/mkinitcpio-lvm2c/lvm2c_install.orig src/mkinitcpio-lvm2c/lvm2c_install
---- src/mkinitcpio-lvm2c/lvm2c_install.orig	2017-03-06 00:08:57.000000000 -0700
-+++ src/mkinitcpio-lvm2c/lvm2c_install	2017-03-06 00:09:51.000000000 -0700
-@@ -3,8 +3,20 @@
+diff -up ./lvm2c_install.orig ./lvm2c_install
+--- ./lvm2c_install.orig	2018-08-29 13:56:33.000000000 -0600
++++ ./lvm2c_install	2018-08-29 13:55:18.000000000 -0600
+@@ -3,9 +3,21 @@
  build() {
      local mod
      local symlink
@@ -10,9 +9,10 @@ diff -up src/mkinitcpio-lvm2c/lvm2c_install.orig src/mkinitcpio-lvm2c/lvm2c_inst
 +    local minor
 +    local dm_cache_smq
  
+     # device mapper modules
 -    for mod in dm-mod dm-snapshot dm-mirror dm-cache dm-cache-smq dm-thin-pool; do
 +    major=$(echo $KERNELVERSION|awk 'BEGIN{FS="."}{print$1}')
-+    minor=$(echo $KERNELVERSION|awk 'BEGIN{FS="."}{print$2}')
++   minor=$(echo $KERNELVERSION|awk 'BEGIN{FS="."}{print$2}')
 +
 +    if [ $major -lt 4 -o \( $major -eq 4 -a $minor -lt 4 \) ]; then
 +        dm_cache_smq='dm-cache-mq'
@@ -24,10 +24,10 @@ diff -up src/mkinitcpio-lvm2c/lvm2c_install.orig src/mkinitcpio-lvm2c/lvm2c_inst
          add_module "$mod"
      done
  
-diff -up src/mkinitcpio-lvm2c/sd-lvm2c_install.orig src/mkinitcpio-lvm2c/sd-lvm2c_install
---- src/mkinitcpio-lvm2c/sd-lvm2c_install.orig	2017-03-06 00:09:09.000000000 -0700
-+++ src/mkinitcpio-lvm2c/sd-lvm2c_install	2017-03-06 00:11:03.000000000 -0700
-@@ -3,8 +3,21 @@
+diff -up ./sd-lvm2c_install.orig ./sd-lvm2c_install
+--- ./sd-lvm2c_install.orig	2018-08-29 13:56:27.000000000 -0600
++++ ./sd-lvm2c_install	2018-08-29 13:56:14.000000000 -0600
+@@ -3,9 +3,22 @@
  build() {
      local mod
      local symlink
@@ -35,6 +35,7 @@ diff -up src/mkinitcpio-lvm2c/sd-lvm2c_install.orig src/mkinitcpio-lvm2c/sd-lvm2
 +    local minor
 +    local dm_cache_smq
  
+     # device mapper modules
 -    for mod in dm-mod dm-snapshot dm-mirror dm-cache dm-cache-smq dm-thin-pool; do
 +    major=$(echo $KERNELVERSION|awk 'BEGIN{FS="."}{print$1}')
 +    minor=$(echo $KERNELVERSION|awk 'BEGIN{FS="."}{print$2}')
