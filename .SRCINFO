@@ -1,7 +1,7 @@
 pkgbase = zeit-now-bin
 	pkgdesc = Realtime Global Deployments by Zeit, pre-built binary
-	pkgver = 11.0.6
-	pkgrel = 2
+	pkgver = 11.4.0
+	pkgrel = 1
 	url = https://zeit.co/now
 	arch = x86_64
 	license = Apache
@@ -10,8 +10,8 @@ pkgbase = zeit-now-bin
 	provides = zeit-now
 	conflicts = nodejs-now
 	options = !strip
-	source = https://github.com/zeit/now-cli/releases/download/11.0.6/now-linux.gz
-	md5sums = bfdd9ff3926982c046168a647de25829
+	source = now-linux-11.4.0.gz::https://github.com/zeit/now-cli/releases/download/11.4.0/now-linux.gz
+	md5sums = 791963aabd72437c7d2af1df817e7966
 
 pkgname = zeit-now-bin
 
