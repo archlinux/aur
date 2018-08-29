@@ -2,13 +2,13 @@
 
 pkgname=bjarkan
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A bluez 5 compatible command line utility and python 3 library "
 arch=("any")
 url="https://github.com/GetWellNetwork/bjarkan"
 license=("BSD")
 makedepends=("python-setuptools")
-depends=("python")
+depends=("python" "python-systemd")
 source=("https://github.com/GetWellNetwork/bjarkan/archive/v${pkgver}.tar.gz")
 
 build() {
