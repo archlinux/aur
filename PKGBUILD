@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url=""
 license=('GPL-2.0')
 makedepends=('make' 'pkg-config' 'binutils' 'boost' 'boost-libs' 'cmake' 'gcc-fortran' 'gcc' 'flex' 
-	     'bison' 'blas' 'lapack' 'cfitsio' 'wcslib' 'python2-numpy'
+	     'bison' 'openblas' 'lapack' 'cfitsio' 'wcslib' 'python2-numpy'
 	     )
 depends=()
 optdepends=('sofa: only for testing casacore measures'
