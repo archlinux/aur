@@ -11,7 +11,7 @@ license=('GPL-2.0')
 makedepends=('make' 'pkg-config' 'binutils' 'boost' 'boost-libs' 'cmake' 'gcc-fortran' 'gcc' 'flex' 
 	     'bison' 'blas' 'lapack' 'cfitsio' 'wcslib' 'python2-numpy'
 	     )
-depends=('')
+depends=()
 optdepends=('sofa: only for testing casacore measures'
 	    'fftw' 'hdf5' 'ncurses')
 conflicts=('')
