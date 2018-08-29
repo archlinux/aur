@@ -5,11 +5,12 @@
 # Contributor: perlawk
 # Contributor: xsmile
 # Contributor: p00h <p00hzone at gmail dot com>
+# Contributor: Michał Walenciak <Kicer86 at gmail dot com>
 
 pkgname=('python-dlib-cuda' 'python2-dlib-cuda')
 _pkgname='dlib'
 pkgver=19.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Dlib is a general purpose cross-platform C++ library designed using contract programming and modern C++ techniques."
 arch=('x86_64')
 url="http://www.dlib.net/"
@@ -26,24 +27,27 @@ optdepends=('cblas: for BLAS support'
 source=("http://dlib.net/files/${_pkgname}-${pkgver}.tar.bz2")
 sha256sums=('5340eeaaea7dd6d93d55e7a7d2fdb1f854a77b75f66049354db53671a202c11d')
 
-# Detecting whether certain cpu optimisations can be made
-_avx_available=()
-if grep -q avx /proc/cpuinfo; then
-  _avx_available=( '--yes' 'USE_AVX_INSTRUCTIONS' )
-fi
-
-_sse2_available=()
-if grep -q sse2 /proc/cpuinfo; then
-  _sse2_available=( '--yes' 'USE_SSE2_INSTRUCTIONS' )
-fi
-
-_sse4_available=()
-if grep -q sse4 /proc/cpuinfo; then
-  _sse4_available=( '--yes' 'USE_SSE4_INSTRUCTIONS' )
-fi
-
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
+
+  _compiler_opts=()
+  # Detecting whether certain cpu optimisations can be made
+  if grep -q avx /proc/cpuinfo; then
+    _compiler_opts+=( '--yes' 'USE_AVX_INSTRUCTIONS' )
+  fi
+
+  if grep -q sse2 /proc/cpuinfo; then
+    _compiler_opts+=( '--yes' 'USE_SSE2_INSTRUCTIONS' )
+  fi
+
+  if grep -q sse4 /proc/cpuinfo; then
+    _compiler_opts+=( '--yes' 'USE_SSE4_INSTRUCTIONS' )
+  fi
+
+  # Checking if neon is installed
+  if [[ -f '/usr/lib/libneon.so' ]]; then
+    _compiler_opts+=( '--yes' 'USE_NEON_INSTRUCTIONS' )
+  fi
 
   # Preparing array of variables setting the compiler for CUDA and optionally
   # ccache support.
@@ -57,21 +61,15 @@ build() {
   fi
 
   # Compiling for Python 3
-  python setup.py build "${_avx_available[@]}" \
-                        "${_sse2_available[@]}" \
-                        "${_sse4_available[@]}" \
-                        "${_compiler_vars[@]}"
+  python setup.py build "${_compiler_opts[@]}" "${_compiler_vars[@]}"
 
   # Compiling for Python 2
-  python2 setup.py build "${_avx_available[@]}" \
-                         "${_sse2_available[@]}" \
-                         "${_sse4_available[@]}" \
-                         "${_compiler_vars[@]}"
+  python2 setup.py build "${_compiler_opts[@]}" "${_compiler_vars[@]}"
 }
 
 package_python-dlib-cuda() {
   depends=('python' 'cuda' 'cudnn' 'libx11')
-  provides=('python-dlib')
+  provides=("python-dlib=$pkgver")
   conflicts=('python-dlib')
 
   cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -80,7 +78,7 @@ package_python-dlib-cuda() {
 
 package_python2-dlib-cuda() {
   depends=('python2' 'cuda' 'cudnn' 'libx11')
-  provides=('python2-dlib')
+  provides=("python2-dlib=$pkgver")
   conflicts=('python2-dlib')
 
   cd "${srcdir}/${_pkgname}-${pkgver}"
