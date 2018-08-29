@@ -1,11 +1,9 @@
 [Unit]
-Description=JACK net
+Description=JACK low-latency audio server daemon
 After=sound.target
 
 [Service]
 EnvironmentFile=/etc/conf.d/jackd.conf
-LimitRTPRIO=infinity
-LimitMEMLOCK=infinity
 User=%I
 ExecStart=/usr/bin/jackd $OPTIONS
 
