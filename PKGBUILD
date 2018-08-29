@@ -4,14 +4,14 @@ pkgname=('rdma-core')
 _srcname='rdma-core'
 pkgdesc='RDMA core userspace libraries and daemons'
 pkgver='19'
-_tag="v${pkgver}"
-pkgrel='1'
+_commit='6a669675be31ea5e3254b8b80c7593033b0447ea'
+pkgrel='2'
 arch=('x86_64')
 url="https://github.com/linux-rdma/${_srcname}"
 license=('GPL2' 'custom:OpenIB.org BSD (MIT variant)')
 
 depends=('libnl')
-makedepends=('git' 'cmake' 'gcc' 'libnl' 'libsystemd' 'systemd' 'pkg-config' 'ninja' 'bash')
+makedepends=('git' 'cmake' 'gcc' 'libnl' 'libsystemd' 'systemd' 'pkg-config' 'ninja' 'bash' 'pandoc')
 _provides=("${pkgname[0]%-git}" 'rdma' 'ibacm' 'iwpmd' 'libibcm' 'libibumad' 'libibverbs'
            'librdmacm' 'libcxgb3' 'libcxgb4' 'libmlx4' 'libmlx5' 'libmthca' 'libnes' 'libocrdma'
            'srptools')
@@ -19,41 +19,11 @@ provides=("${_provides[@]}")
 conflicts=("${_provides[@]}")
 replaces=("${_provides[@]:1}")
 
-source=("${_srcname}::git+${url}.git#tag=${_tag}")
+source=("${_srcname}::git+${url}.git#commit=${_commit}")
 sha512sums=('SKIP')
-validpgpkeys=('921AFFAF83A9D7FD38CAA681E4637B88367258A7')
-
-_validate_tag() {
-  local success fingerprint trusted status
-
-  parse_gpg_statusfile /dev/stdin < <( git verify-tag --raw "${_tag}" 2>&1 )
-
-  if (( ! success )); then
-    error 'failed to validate tag %s\n' "${_tag}"
-    return 1
-  fi
-
-  if ! in_array "${fingerprint}" "${validpgpkeys[@]}" && (( ! trusted )); then
-    error 'unknown or untrusted public key: %s\n' "${fingerprint}"
-    return 1
-  fi
-
-  case "${status}" in
-    'expired')
-      warning 'the signature has expired'
-      ;;
-    'expiredkey')
-      warning 'the key has expired'
-      ;;
-  esac
-
-  return 0
-}
 
 prepare() {
     cd "${srcdir}/${_srcname}"
-
-    _validate_tag || return
 
     find redhat -type f -exec sed --in-place \
         --expression='s|/usr/libexec|/usr/lib/rdma|g' \
