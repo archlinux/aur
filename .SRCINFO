@@ -11,7 +11,6 @@ pkgbase = teighaviewer-qt5
 	depends = libxkbcommon-x11
 	depends = bash
 	depends = hicolor-icon-theme
-	conflicts = teighaviewer-qt4
 	source = teighaviewer-qt5-x86_64-19.5.0.0.deb::https://download.opendesign.com/guestfiles/TeighaViewer/TeighaViewer_QT5_lnxX64_4.7dll.deb
 	source = license
 	sha256sums = b891749c7dd711e9113e8193e699453bfe284dfe4c3c3f87d9660031472d5159

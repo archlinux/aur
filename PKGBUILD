@@ -16,7 +16,6 @@ pkgdesc="Application for the visualization of CAD drawing files, QT5 version"
 arch=('x86_64')
 url="https://www.opendesign.com/guestfiles/teigha_viewer"
 license=('custom')
-conflicts=('teighaviewer-qt4')
 depends=('qt5-base' 'libxfixes' 'libgl' 'libxkbcommon-x11' 'bash' 'hicolor-icon-theme')
 source=("${pkgname}-x86_64-${_version}.deb::https://download.opendesign.com/guestfiles/TeighaViewer/TeighaViewer_QT5_lnxX64_4.7dll.deb"
         'license')
