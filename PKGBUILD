@@ -1,11 +1,11 @@
 pkgname=ttydisp-git
 _pkgname=ttydisp
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Play video in the terminal"
 arch=('i686' 'x86_64')
 license=('MIT')
-depends=('ffmpeg')
+depends=('ffmpeg' 'libvdpau')
 makedepends=('cmake' 'git')
 source=("git+https://github.com/jamesthoughton/ttydisp")
 url='https://github.com/jamesthoughton/ttydisp'
