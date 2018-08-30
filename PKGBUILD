@@ -2,7 +2,7 @@
 
 pkgname=gopherus
 pkgver=1.0c
-pkgrel=1
+pkgrel=2
 pkgdesc="Gopher client"
 arch=('i686' 'x86_64')
 url="http://gopherus.sourceforge.net"
@@ -17,8 +17,8 @@ sha256sums=('84f5192659658bb57f6d77609654e74f9e96f7596c0e3ae10e707877d1cebaf4'
 build() {
   cd "${pkgname}-${pkgver}"
   sed -i '/upx --best --lzma/d' Makefile.lin
-  make -f Makefile.lin
-  make -f Makefile.lin gopherus-sdl
+  make -f Makefile.lin CFLAGS="${CFLAGS}"
+  make -f Makefile.lin gopherus-sdl CFLAGS="${CFLAGS}"
 }
 
 package() {
