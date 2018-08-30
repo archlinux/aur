@@ -7,21 +7,21 @@ pkgdesc="A powered Minecraft launcher that supports a lot of features."
 arch=('any')
 url="https://github.com/huanghongxun/HMCL"
 license=('GPL3')
-depends=('jre')
-makedepends=("git" "jdk")
+depends=('java-openjfx>=8')
+makedepends=("git" "java-environment>=8")
 provides=('hmcl')
 conflicts=('hmcl')
 source=("git://github.com/huanghongxun/$_pkgname.git"
         "$_pkgname.run")
 sha512sums=("SKIP"
-            "72d3dc8366c09075ada4eafab977b7c175cf2da6b353e18421b89168044d4f32cd8cd5c5242ba67548b5d415ccc2ea4d81c4909e11407ed1411708e4550d9175")
+            "a9277570636161664a4d4b5c7cef7ff029e9dcccd2c36372c1294fc41cfec3c63a4be3e0f6c0acff79020f6a087d40b41c2463bce0acb16c866dfa7f9c0d533a")
 
 pkgver() {
     git -C HMCL describe --tag | sed 's/^v//'
 }
 
 build() {
-    _java=$(ls /usr/lib/jvm | grep -v openjdk | grep java | grep jdk | sort -t - -k 2 -n | tail -n 1)
+    _java=$(ls /usr/lib/jvm | grep java | grep jdk | sort -t - -k 2 -n | tail -n 1)
     export JAVA_HOME=/usr/lib/jvm/$_java
     cd $srcdir/$_pkgname
     sh gradlew build

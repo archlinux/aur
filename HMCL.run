@@ -5,5 +5,5 @@ if [[ "$1" != "-p" ]]; then
     mkdir -p $WORKDIR
     cd $WORKDIR
 fi
-_java=$(ls /usr/lib/jvm | grep -v openjdk | grep java | grep jre | sort -t - -k 2 -n | tail -n 1)
+_java=$(ls /usr/lib/jvm | grep java | grep 8 | grep jre | sort -t - -k 2 -n | tail -n 1)
 exec /usr/lib/jvm/$_java/jre/bin/java -jar /usr/share/hmcl/hmcl.jar
