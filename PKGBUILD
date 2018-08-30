@@ -1,7 +1,7 @@
 # Maintainer:  JP-Ellis <josh@jpellis.me>
 pkgname=papis
 pkgver=0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Papis is a powerful and highly extensible command-line based document and bibliography manager."
 arch=('any')
 url="https://github.com/papis/papis"
@@ -16,9 +16,10 @@ depends=('python'
          'python-magic-ahupp'
          'python-papis-python-rofi'
          'python-parse'
-         'python-prompt_toolkit'
+         'python-prompt_toolkit>=2.0.0'
          'python-pylibgen'
          'python-pyparser'
+         'python-slugify'
          'python-unidecode'
          'python-urwid'
          'python-vobject'
