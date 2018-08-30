@@ -6,6 +6,7 @@ pkgbase = python-azlyrics-git
 	arch = any
 	license = GPL
 	makedepends = git
+	makedepends = python-setuptools
 	depends = python
 	depends = python-beautifulsoup4
 	provides = python-azlyrics
