@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/QuantStack/${pkgname}"
 license=('BSD-3-Clause')
 depends=()
-makedepends=('cmake' 'gcc' 'gtest')
+makedepends=('cmake' 'gtest')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/QuantStack/${pkgname}/archive/${pkgver}.tar.gz")
 sha512sums=('937d342d21a1543c9e2d9f0e3a2f0bcfa6209b589c7bf6e1c571de5e7680493bc106aea6b5d11bdcafc10d2d44e19d8445281436ca2c8a63de3dc3339ccddf44')
 
