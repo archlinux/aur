@@ -5,7 +5,7 @@
 
 pkgname=fcitx-sogoupinyin
 pkgver=2.2.0.0108
-pkgrel=2
+pkgrel=3
 pkgdesc="Sogou Pinyin for Linux"
 arch=('x86_64' 'i686')
 url="https://pinyin.sogou.com/linux/"
@@ -18,7 +18,7 @@ source=('sogou-autostart')
 source_i686=("http://cdn2.ime.sogou.com/dl/index/${_i686_time}/sogoupinyin_${pkgver}_i386.deb")
 source_x86_64=("http://cdn2.ime.sogou.com/dl/index/${_x86_64_time}/sogoupinyin_${pkgver}_amd64.deb")
 
-md5sums=('d1b6c174a455f7d7795da6e4ab829b12')
+md5sums=('ff599d805084f49b95ba99fe640bc170')
 md5sums_x86_64=('3fc65450b4a8c2f00561d9c8a4a07b5a')
 md5sums_i686=('475d07b3a99c2e23daca68c7d900388f')
 
