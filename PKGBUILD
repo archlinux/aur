@@ -5,7 +5,7 @@
 # Contributor: Andres Perera <aepd87@gmail.com>
 
 pkgname=pacman-buildenv_ext-git
-pkgver=5.1.0.19.g0d6e82d3
+pkgver=5.1.1.13.g7d05ffce
 pkgrel=1
 pkgdesc="A library-based package manager with dependency support with support for build environment extensions. git version."
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ license=('GPL')
 depends=('bash' 'curl' 'gpgme' 'libarchive' 'pacman-mirrorlist')
 makedepends=('git' 'asciidoc')
 optdepends=('fakeroot: for makepkg usage as normal user'
-            'makepkg-optimize2: supplemental build and packaging optimizations')
+            'makepkg-optimize: supplemental build and packaging optimizations')
 checkdepends=('python2' 'fakechroot')
 provides=(pacman{,-git}=${pkgver%.*.*} 'libalpm.so')
 conflicts=('pacman')
@@ -113,12 +113,7 @@ package() {
     -e "s|@CHOST[@]|$mychost|g" \
     -e "s|@CARCHFLAGS[@]|$myflags|g"
 
-  # install completion files
-  rm -r "$pkgdir/etc/bash_completion.d"
   install -Dm644 scripts/completion/bash_completion "$pkgdir/usr/share/bash-completion/completions/pacman"
-  for f in makepkg pacman-key; do
-    ln -s pacman "$pkgdir/usr/share/bash-completion/completions/$f"
-  done
 
   install -Dm644 scripts/completion/zsh_completion $pkgdir/usr/share/zsh/site-functions/_pacman
 
