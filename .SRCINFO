@@ -10,7 +10,7 @@ pkgbase = zeit-now-bin
 	provides = zeit-now
 	conflicts = nodejs-now
 	options = !strip
-	source = now-linux-11.4.0.gz::https://github.com/zeit/now-cli/releases/download/11.4.0/now-linux.gz
+	source = https://github.com/zeit/now-cli/releases/download/11.4.0/now-linux.gz
 	md5sums = 791963aabd72437c7d2af1df817e7966
 
 pkgname = zeit-now-bin
