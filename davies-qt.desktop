@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Daviescoin
+Comment=Daviescoin P2P Cryptocurrency
+Exec=/usr/bin/davies-qt
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/davies128.png
+MimeType=x-scheme-handler/davies;
+Categories=Office;
+Name[en_US]=davies-qt.desktop

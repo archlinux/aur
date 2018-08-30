@@ -1,0 +1,27 @@
+pkgbase = davies-qt
+	pkgdesc = Cryptocurrency wallet(QT)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://daviescoin.io/
+	install = davies-qt.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	makedepends = qt5-tools
+	depends = boost-libs
+	depends = qt5-base
+	depends = qrencode
+	depends = miniupnpc
+	depends = db4.8
+	depends = zeromq
+	depends = protobuf
+	depends = libevent
+	conflicts = davies
+	source = davies-qt::git+https://github.com/devdavies/daviescoin.git#tag=v1.0.1
+	source = davies-qt.desktop
+	sha256sums = SKIP
+	sha256sums = d833c556e50d74df856da2b85ef26fa07ebf72a91412191591b20e799177f019
+
+pkgname = davies-qt
+
