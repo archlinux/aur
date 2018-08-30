@@ -1,8 +1,8 @@
 # Maintainer: Daniel Moch <daniel@danielmoch.com>
 _name=nncli
 pkgname=nncli-git
-pkgver=v0.1.1.r13.ga666640
-pkgrel=2
+pkgver=v0.1.1.r17.gef9ace7
+pkgrel=1
 pkgdesc="NextCloud Notes Command Line Interface"
 arch=('any')
 url="https://github.com/djmoch/${_name}"
@@ -10,7 +10,9 @@ provides=('nncli')
 conflicts=('nncli')
 license=('MIT')
 depends=('python-urwid' 'python-requests')
-makedepends=('python-setuptools' 'git')
+makedepends=('python-setuptools'
+    'git'
+    'python-setuptools-scm')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
