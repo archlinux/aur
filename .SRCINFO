@@ -1,0 +1,16 @@
+pkgbase = emacs-hydra-git
+	pkgdesc = Make Emacs bindings that stick around
+	pkgver = r330.87cc74b
+	pkgrel = 1
+	url = https://github.com/abo-abo/hydra
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	provides = emacs-hydra
+	conflicts = emacs-hydra
+	source = git+https://github.com/abo-abo/hydra.git
+	sha256sums = SKIP
+
+pkgname = emacs-hydra-git
+
