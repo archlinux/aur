@@ -1,15 +1,15 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=rnp
 pkgdesc='High performance C++ OpenPGP library derived from NetPGP'
-pkgver=0.9.1
-pkgrel=2
+pkgver=0.10.0
+pkgrel=1
 url='https://github.com/riboseinc/rnp'
 license=(custom:BSD)
 arch=(i686 x86_64)
 makedepends=(cmake pkgconf)
 depends=(botan zlib bzip2 json-c)
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('6ab74018e2a8cd8a27bc04180f813bd423ce7d94ce7abaeb393987eff8e11dc0ef20b2d0881e42211aaffb39999b2fad8d5d85ccc0731cce8828ff56979809a8')
+sha512sums=('c11160d9a0f93c3912f3f80ea5ab346e9ef6c9f04b079b0b2a2840869ce1997e8dd67efcec6296ce2e70f434bebb6dffd455e7aadcadf082c7058bc73113d33d')
 
 build ()
 {
