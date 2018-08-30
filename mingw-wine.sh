@@ -22,5 +22,5 @@ else
   export WINEARCH=win32
 fi
 
-wine "$@"
+/usr/bin/wine "$@"
 
