@@ -16,6 +16,7 @@ pkgbase = templight-git
 	optdepends = templight-tools: Additional facilities to process the profiling data.
 	provides = templight
 	conflicts = templight
+	conflicts = clang-trunk
 	source = llvm::svn+http://llvm.org/svn/llvm-project/llvm/trunk
 	source = cfe::svn+http://llvm.org/svn/llvm-project/cfe/trunk
 	source = git://github.com/mikael-s-persson/templight.git

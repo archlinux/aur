@@ -9,7 +9,7 @@ depends=('llvm-libs' 'gcc' 'clang' 'compiler-rt')
 optdepends=('templight-tools: Additional facilities to process the profiling data.')
 makedepends=('git' 'subversion' 'llvm' 'cmake')
 provides=("templight")
-conflicts=("templight")
+conflicts=("templight" "clang-trunk")
 source=(llvm::svn+http://llvm.org/svn/llvm-project/llvm/trunk
         cfe::svn+http://llvm.org/svn/llvm-project/cfe/trunk
         git://github.com/mikael-s-persson/templight.git
