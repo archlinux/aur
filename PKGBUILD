@@ -2,7 +2,7 @@
 
 _basename="seqan3"
 pkgname=${_basename}-git
-pkgver=3.0.r628.35e4fba
+pkgver=r628.35e4fba
 pkgrel=1
 pkgdesc="The modern C++ library for sequence analysis"
 arch=('i686' 'x86_64')
@@ -17,11 +17,11 @@ md5sums=('SKIP')
 
 prepare() {
   cd "${srcdir}/${_basename}"
-  echo "3.0.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 package() {
   cd "${srcdir}/${_basename}"
-  mkdir -p "${pkgdir}/usr/include/"
-  cp -rf include/seqan3 "$pkgdir/usr/include/"
+  install -Dd -m644 "${srcdir}/${_basename}/include/${_basename}" \
+          "$pkgdir/usr/include/${_basename}"
 }
