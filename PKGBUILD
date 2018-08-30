@@ -22,6 +22,6 @@ prepare() {
 
 package() {
   cd "${srcdir}/${_basename}"
-  install -Dd -m644 "${srcdir}/${_basename}/include/${_basename}" \
-          "$pkgdir/usr/include/"
+  install -Dd -m644 "${srcdir}/${_basename}/include/" \
+          "$pkgdir/usr/include/${_basename}"
 }
