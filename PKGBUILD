@@ -2,12 +2,12 @@
 
 pkgname=syncplay-git
 pkgver=1.5.6.Beta2.r4.g2c2045b
-pkgrel=1
+pkgrel=2
 pkgdesc="synchronize watching movies on mplayer2, vlc, mpv, and mpc-hc on many computers"
 arch=('any')
 url="http://syncplay.pl/"
 license=('custom')
-depends=('python' 'python-pyside' 'python-twisted')
+depends=('python' 'python-twisted' 'pyside2' 'qt5-declarative')
 makedepends=('git')
 provides=('syncplay')
 conflicts=('syncplay')
