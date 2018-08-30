@@ -1,7 +1,7 @@
 # Maintainer: Ben Booth <benwbooth@gmail.com>
 pkgname=gmap-gsnap
-_version=2015-09-29
-pkgver=2015.09.29
+_version=2018-07-04
+pkgver=2018.07.04
 pkgrel=1
 epoch=
 pkgdesc="A Genomic Mapping and Alignment Program for mRNA and EST Sequences, and Genomic Short-read Nucleotide Alignment Program"
@@ -11,7 +11,7 @@ license=('custom')
 depends=('perl')
 options=()
 source=("http://research-pub.gene.com/gmap/src/$pkgname-$_version.tar.gz")
-md5sums=('e929947ce1cb4f5316d9bddf064b795c')
+md5sums=('8d2ae859b906bc271a1aa26b4a2ffb9c')
 
 build() {
 	cd "$srcdir/gmap-$_version"
