@@ -22,7 +22,7 @@ source=("https://github.com/MasterSoft24/CloudCross/archive/master.tar.gz")
 #source=("dev.tar.gz")
 
 
-md5sums=("36792708f46eed21d82630b9eae70ea4")
+md5sums=("72780e225692ab6c8d76fd9f175ddb3c")
 
 
 build() {
