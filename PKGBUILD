@@ -9,7 +9,7 @@ url="http://kristianduske.com/trenchbroom"
 license=('GPLv3')
 
 makedepends=('git' 'pandoc')
-depends=('freeimage' 'freetype2' 'wxgtk2-dev' 'mesa' 'libgl' 'freeglut' 'libxxf86vm' 'glew' 'glm')
+depends=('freeimage' 'freetype2' 'wxgtk2-dev' 'wxgtk-common-dev' 'mesa' 'libgl' 'freeglut' 'libxxf86vm' 'glew' 'glm')
 conflicts=('trenchbroom-git')
 
 source=(https://github.com/kduske/TrenchBroom/archive/v${pkgver}.tar.gz)
