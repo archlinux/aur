@@ -1,6 +1,6 @@
 pkgbase = aws-xray-daemon
 	pkgdesc = Listen for X-Ray segments on UDP port 2000 and pass them to AWS X-Ray API
-	pkgver = 2.0.0
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = http://docs.aws.amazon.com/xray/latest/devguide/xray-daemon.html
 	install = aws-xray-daemon.install
@@ -8,8 +8,8 @@ pkgbase = aws-xray-daemon
 	arch = x86_64
 	license = Apache
 	depends = glibc
-	source = https://s3.dualstack.us-east-2.amazonaws.com/aws-xray-assets.us-east-2/xray-daemon/aws-xray-daemon-2.0.0.rpm
-	md5sums = ab96cb73e17dffb757d395a0f0ebd6df
+	source = https://s3.dualstack.us-east-2.amazonaws.com/aws-xray-assets.us-east-2/xray-daemon/aws-xray-daemon-3.0.0.rpm
+	md5sums = d9763ee07f612763d1704a3134a06fc5
 
 pkgname = aws-xray-daemon
 
