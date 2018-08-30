@@ -1,0 +1,13 @@
+pkgbase = python-bohrium
+	pkgdesc = Automatic parallelization of Python/NumPy, C, and C++ codes on Linux and MacOSX
+	pkgver = 0.9.1
+	pkgrel = 1
+	arch = x86_64
+	license = LGPL3
+	makedepends = cmake
+	depends = python
+	source = https://github.com/bh107/bohrium/archive/v0.9.1.tar.gz
+	sha256sums = a8675db35ea4587ef12d5885a1aa19b59fd9c3f1366e239059de8b0f3cf51e04
+
+pkgname = python-bohrium
+
