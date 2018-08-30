@@ -1,21 +1,20 @@
 pkgbase = r-xtable
 	pkgdesc = Export Tables to LaTeX or HTML
-	pkgver = 1.8.2
+	pkgver = 1.8.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=xtable
 	arch = any
 	license = GPL
 	depends = r
 	optdepends = r-knitr
-	optdepends = r-lsmeans
 	optdepends = r-spdep
 	optdepends = r-splm
 	optdepends = r-sphet
 	optdepends = r-plm
 	optdepends = r-zoo
 	replaces = r-cran-xtable
-	source = https://cran.r-project.org/src/contrib/xtable_1.8-2.tar.gz
-	md5sums = 239e4825cd046156a67efae3aac01d86
+	source = https://cran.r-project.org/src/contrib/xtable_1.8-3.tar.gz
+	md5sums = 10f7aebbf39e64798c1042b2a57a39a0
 
 pkgname = r-xtable
 

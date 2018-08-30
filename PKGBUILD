@@ -1,27 +1,23 @@
 # Maintainer: Alex Branham <branham@utexas.edu>
-_cranname=xtable
-_cranver=1.8-2
-_pkgtar=${_cranname}_${_cranver}.tar.gz
+_cranver=1.8-3
 pkgname=r-xtable
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc="Export Tables to LaTeX or HTML"
+pkgdesc='Export Tables to LaTeX or HTML'
 arch=('any')
-url="https://cran.r-project.org/package=${_cranname}"
+url='https://cran.r-project.org/package=xtable'
 license=('GPL')
 depends=('r' )
-
-optdepends=('r-knitr' 'r-lsmeans' 'r-spdep' 'r-splm' 'r-sphet' 'r-plm' 'r-zoo')
-
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('239e4825cd046156a67efae3aac01d86')
+optdepends=('r-knitr' 'r-spdep' 'r-splm' 'r-sphet' 'r-plm' 'r-zoo')
 replaces=('r-cran-xtable')
+source=("https://cran.r-project.org/src/contrib/xtable_"$_cranver".tar.gz")
+md5sums=('10f7aebbf39e64798c1042b2a57a39a0')
 
 build(){
-    R CMD INSTALL ${_pkgtar} -l $srcdir
+    R CMD INSTALL xtable_"$_cranver".tar.gz -l "$srcdir"
 }
 package() {
-    install -d "$pkgdir/usr/lib/R/library"
-    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
+    install -dm0755 "$pkgdir"/usr/lib/R/library
+    cp -a --no-preserve=ownership xtable "$pkgdir"/usr/lib/R/library
 }
 
