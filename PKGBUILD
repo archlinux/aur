@@ -3,8 +3,8 @@
 _name=pdftotext
 _srcurl="https://files.pythonhosted.org"
 pkgname=("python-${_name}")
-pkgver=2.0.2
-pkgrel=3
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="Simple PDF text extraction"
 arch=('any')
 url="https://pypi.org/project/pdftotext"
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('poppler')
 source=("${pkgname}-${pkgver}.tar.gz::${_srcurl}/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
         LICENSE)
-md5sums=('2658a8827afc08e44eba314759ac2d35'
+md5sums=('8fd132b4b2873a3e41578c1036280bb2'
          '061d0915f2f14e32775f999a25bed0fe')
 
 build() {
