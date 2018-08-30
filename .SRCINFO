@@ -1,0 +1,34 @@
+pkgbase = python-pyjwkest
+	pkgdesc = Implementation of JWT, JWS, JWE and JWK.
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/rohe/pyjwkest
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = python-pycryptodomex
+	makedepends = python-requests
+	makedepends = python-six
+	makedepends = python-future
+	makedepends = python2-setuptools
+	makedepends = python2-pycryptodomex
+	makedepends = python2-requests
+	makedepends = python2-six
+	makedepends = python2-future
+	source = python-pyjwkest-1.4.0.tar.gz::https://github.com/rohe/pyjwkest/archive/v1.4.0.tar.gz
+	sha256sums = da7c2a0fa21bde050525a50b4b6ae7b265fc2319d598e44e84a4430961bed420
+
+pkgname = python-pyjwkest
+	depends = python-setuptools
+	depends = python-pycryptodomex
+	depends = python-requests
+	depends = python-six
+	depends = python-future
+
+pkgname = python2-pyjwkest
+	depends = python2-setuptools
+	depends = python2-pycryptodomex
+	depends = python2-requests
+	depends = python2-six
+	depends = python2-future
+
