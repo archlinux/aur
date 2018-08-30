@@ -1,7 +1,7 @@
 pkgbase = discord-ptb
 	pkgdesc = All-in-one voice and text chat for gamers that's free and secure.
 	pkgver = 0.0.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://discordapp.com/
 	install = DiscordPTB.install
 	arch = x86_64
@@ -18,6 +18,7 @@ pkgbase = discord-ptb
 	optdepends = libpulse: For pulseaudio support
 	optdepends = noto-fonts-emoji: Google font for emoji support.
 	optdepends = ttf-symbola: Font for emoji support.
+	optdepends = noto-fonts-cjk: Font for special characters such as /shrug face.
 	provides = discord
 	source = LICENSE
 	source = https://dl-ptb.discordapp.net/apps/linux/0.0.9/discord-ptb-0.0.9.tar.gz

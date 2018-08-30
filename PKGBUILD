@@ -5,7 +5,7 @@
 
 pkgname='discord-ptb'
 pkgver=0.0.9
-pkgrel=2
+pkgrel=3
 pkgdesc="All-in-one voice and text chat for gamers that's free and secure."
 arch=('x86_64')
 url='https://discordapp.com/'
@@ -16,6 +16,7 @@ optdepends=(
   'libpulse: For pulseaudio support'
   'noto-fonts-emoji: Google font for emoji support.'
   'ttf-symbola: Font for emoji support.'
+  'noto-fonts-cjk: Font for special characters such as /shrug face.'
 )
 
 install="DiscordPTB.install"
