@@ -6,6 +6,14 @@ pkgbase = python-bohrium
 	license = LGPL3
 	makedepends = cmake
 	depends = python
+	depends = openmp
+	depends = boost
+	depends = python-numpy
+	depends = zlib
+	depends = cython
+	depends = cblas
+	depends = lapacke
+	depends = swig
 	source = https://github.com/bh107/bohrium/archive/v0.9.1.tar.gz
 	sha256sums = a8675db35ea4587ef12d5885a1aa19b59fd9c3f1366e239059de8b0f3cf51e04
 
