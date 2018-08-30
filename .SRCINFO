@@ -1,18 +1,17 @@
 pkgbase = gdc-git
 	pkgdesc = GCC based D compiler
 	pkgver = 8.2.0+2.081.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/D-Programming-GDC/GDC
 	arch = x86_64
 	arch = i686
 	groups = dlang
-	groups = dlang-dmd
 	license = GPL3
 	makedepends = git
 	makedepends = gdc
 	source = https://ftp.gnu.org/gnu/gcc/gcc-8.2.0/gcc-8.2.0.tar.xz
 	source = http://isl.gforge.inria.fr/isl-0.19.tar.bz2
-	source = gdc::git+https://github.com/D-Programming-GDC/GDC.git
+	source = gdc::git+https://github.com/D-Programming-GDC/GDC.git#branch=gdc-8
 	source = git+https://github.com/D-Programming-GDC/GDMD.git
 	source = paths.diff
 	sha512sums = SKIP

@@ -14,16 +14,16 @@ _branch=gdc-8 # Change here! pkgver/_gccver/_d_ver will be automatically updated
 _islver=0.19 # Change here!
 _gccver=$(curl https://raw.githubusercontent.com/D-Programming-GDC/GDC/$_branch/gcc.version)
 _d_ver=''
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'i686')
 license=('GPL3')
 url="https://github.com/D-Programming-GDC/GDC"
 pkgdesc="GCC based D compiler"
-groups=('dlang' 'dlang-dmd')
+groups=('dlang')
 makedepends=('git' 'gdc')
 source=("https://ftp.gnu.org/gnu/gcc/$_gccver/$_gccver.tar.xz"
         "http://isl.gforge.inria.fr/isl-$_islver.tar.bz2"
-        'gdc::git+https://github.com/D-Programming-GDC/GDC.git'
+        "gdc::git+https://github.com/D-Programming-GDC/GDC.git#branch=$_branch"
         'git+https://github.com/D-Programming-GDC/GDMD.git'
         'paths.diff')
 sha512sums=('SKIP'
@@ -33,6 +33,12 @@ sha512sums=('SKIP'
             '841504e9dffe718f7e5a5fbbf03299f2b51acd783d47f99894aa5d411abcc56aedfffd4b16595e3a9446f2206f9eb29cb01e235e82c211796cd24dc23c02b578')
 
 pkgver() {
+  if [ -f gdc/gcc/d/verstr.h ]; then
+    _d_ver="+$(cat gdc/gcc/d/verstr.h | sed 's|\"||g')"
+  elif [ -f gdc/gcc/d/VERSION ]; then
+    _d_ver="+$(cat gdc/gcc/d/VERSION | sed 's|\"||g')"
+  fi
+
   echo "$(cat gdc/gcc.version | sed -e 's|gcc-||' -e 's|-.*||')$_d_ver"
 }
 
@@ -51,17 +57,10 @@ prepare() {
   # Seup gdc
   cd "$srcdir"/gdc
 
-  git checkout $_branch
   git apply "$srcdir"/paths.diff
   ./setup-gcc.sh ../gcc
 
   mkdir "$srcdir"/gcc-build
-
-  if [ -f gcc/d/verstr.h ]; then
-    _d_ver="+$(cat gcc/d/verstr.h | sed 's|\"||g')"
-  elif [ -f gcc/d/VERSION ]; then
-    _d_ver="+$(cat gcc/d/VERSION | sed 's|\"||g')"
-  fi
 }
 
 build() {
@@ -100,27 +99,25 @@ build() {
                           --disable-bootstrap \
                           --enable-default-pie \
                           --enable-default-ssp \
-                          --with-bugurl=https://bugs.archlinux.org/ \
-                          --with-pkgversion="GDC ${pkgver%+*} based on D v$_d_ver built with ISL $_isl for Arch Linux"
+                          --with-bugurl=https://bugzilla.gdcproject.org/ \
+                          --with-pkgversion="GDC ${pkgver%+*} based on D v${pkgver#*+} built with ISL $_islver for Arch Linux" \
                           gdc_include_dir=/usr/include/dlang/gdc
 
-                          #--enable-gold \ 
+                          #--enable-gold \
 
 
   make
 }
 
 package_gdc-git() {
+  pkgdesc="Compiler for D programming language which uses gcc backend"
   depends=('gcc' 'perl' 'binutils' 'libgphobos')
   provides=("d-compiler=${pkgver#*+}" 'gdc')
   conflicts=('gdc')
-  pkgdesc="Compiler for D programming language which uses gcc backend"
-
-  _libdir=usr/lib/gcc/$CHOST/${pkgver%+*}
 
   # Binaries
   install -Dm 755 gcc-build/gcc/gdc "$pkgdir"/usr/bin/gdc
-  install -Dm 755 gcc-build/gcc/cc1d "$pkgdir"/$_libdir/cc1d
+  install -Dm 755 gcc-build/gcc/cc1d "$pkgdir"/usr/lib/gcc/$CHOST/${pkgver%+*}/cc1d
   install -Dm 755 GDMD/dmd-script "$pkgdir"/usr/bin/gdmd
 
   # Doc
@@ -136,4 +133,9 @@ package_libgphobos-git() {
 
   cd "$srcdir"/gcc-build
   make -C $CHOST/libphobos DESTDIR="$pkgdir" install
+
+  if [ -d "$pkgdir"/usr/lib64 ]; then
+    mv "$pkgdir"/usr/lib64/* "$pkgdir"/usr/lib
+    rmdir "$pkgdir"/usr/lib64
+  fi
 }
