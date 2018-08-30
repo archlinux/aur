@@ -1,4 +1,5 @@
 # Maintainer: obedmr <obed.n.munoz@gmail.com>
+# Contributor: Anthony Bonafide <AnthonyMBonafide@gmail.com>
 # Contributor: fzerorubigd <fzerorubigd@gmail.com>
 # Contributor: Vesa Kaihlavirta <vegai@iki.fi>
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
@@ -13,7 +14,7 @@
 
 pkgname=go-git
 epoch=1
-pkgver=1.11beta3
+pkgver=1.11
 pkgrel=1
 pkgrepo=go
 pkgdesc='Core compiler tools for the Go programming language'
@@ -22,7 +23,7 @@ url='http://golang.org/'
 license=(BSD)
 makedepends=(git)
 options=(!strip staticlibs)
-_commit=1b870077c896379c066b41657d3c9062097a6943
+_commit=41e62b8c49d21659b48a95216e3062032285250f
 source=(git+https://go.googlesource.com/go#commit=$_commit)
 md5sums=('SKIP')
 
