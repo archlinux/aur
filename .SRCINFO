@@ -1,7 +1,7 @@
 pkgbase = gnome-settings-daemon-elementary
 	pkgdesc = GNOME Settings Daemon (with elementary OS patch)
 	pkgver = 3.28.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/GNOME/gnome-settings-daemon
 	arch = i686
 	arch = x86_64
@@ -38,7 +38,7 @@ pkgbase = gnome-settings-daemon-elementary
 	conflicts = gnome-settings-daemon
 	conflicts = gnome-settings-daemon-ubuntu
 	source = git+https://gitlab.gnome.org/GNOME/gnome-settings-daemon.git/#commit=5ac1a8240fb784cc92e2b394156153e34e21dab9
-	source = git+https://git.gnome.org/browse/libgnome-volume-control.git/
+	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git/
 	source = manage-dpms.patch
 	source = https://launchpad.net/ubuntu/+archive/primary/+files/gnome-settings-daemon_3.28.0-0ubuntu1.debian.tar.xz
 	sha512sums = SKIP

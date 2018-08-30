@@ -22,7 +22,7 @@ else
     _commit=5ac1a8240fb784cc92e2b394156153e34e21dab9 # tags/GNOME_SETTINGS_DAEMON_3_28_0^0
 fi
 pkgver=3.28.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME Settings Daemon (with elementary OS patch)"
 url="https://gitlab.gnome.org/GNOME/gnome-settings-daemon"
 arch=(i686 x86_64)
@@ -35,7 +35,7 @@ groups=(gnome unity pantheon-qq)
 provides=(gnome-settings-daemon{,-ubuntu}="${pkgver}")
 conflicts=(gnome-settings-daemon{,-ubuntu})
 source=("git+https://gitlab.gnome.org/GNOME/gnome-settings-daemon.git/#commit=${_commit}"
-        "git+https://git.gnome.org/browse/libgnome-volume-control.git/"
+        "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git/"
         'manage-dpms.patch')
 
 if [[ "${_use_ppa}" == "true" ]]; then
@@ -62,7 +62,7 @@ prepare() {
   cd "${pkgname%-*}"
 
     git submodule init
-    git config --local submodule."panels/media-keys/gvc".url "${srcdir}/libgnome-volume-control"
+    git config --local submodule."subprojects/gvc".url "${srcdir}/libgnome-volume-control"
     git submodule update
 
   # Apply Ubuntu's patches
