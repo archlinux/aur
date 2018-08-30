@@ -2,8 +2,8 @@
 
 
 pkgname=cloudcross
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.4.2
+pkgrel=4
 pkgdesc="CloudCross is a improved multi-cloud client with OneDrive, Yandex disk, Google Drive, Dropbox and Mail.ru support."
 arch=('i686' 'x86_64')
 url="http://cloudcross.mastersoft24.ru"
@@ -22,7 +22,7 @@ source=("https://github.com/MasterSoft24/CloudCross/archive/master.tar.gz")
 #source=("dev.tar.gz")
 
 
-md5sums=("")
+md5sums=("36792708f46eed21d82630b9eae70ea4")
 
 
 build() {
