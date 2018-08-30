@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=QT Quest Soft Player
+Comment=a interactive fiction stories and games player
+Exec=/usr/bin/Qqsp
+Icon=qsp
+Terminal=false
+StartupNotify=false
+Categories=Application;Game;
+MimeType=application/x-qsp;
