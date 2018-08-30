@@ -1,7 +1,7 @@
 pkgbase = trisycl-git
 	pkgdesc = It is the open source implementation of the SYCL Khronos specification, to do some kind of OpenCL like programming in C++ fashion.
 	pkgver = 1.2.1.r1159.6172c33a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/triSYCL/triSYCL.git
 	arch = x86_64
 	arch = i686
