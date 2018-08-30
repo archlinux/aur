@@ -2,7 +2,7 @@
 # Previous Maintainer: crasm <crasm@firebase-tools.aur.yooz4sio.vczf.io>
 # PKGBUILD structure copied from grunt-cli package
 
-pkgname=firebase-tools-421
+pkgname=firebase-tools
 pkgver=4.2.1
 pkgrel=0
 pkgdesc="The Firebase Command Line Tools"

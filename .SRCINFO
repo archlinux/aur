@@ -1,4 +1,4 @@
-pkgbase = firebase-tools
+pkgbase = firebase-tools-421
 	pkgdesc = The Firebase Command Line Tools
 	pkgver = 4.2.1
 	pkgrel = 0
@@ -15,5 +15,5 @@ pkgbase = firebase-tools
 	source = https://registry.npmjs.org/firebase-tools/-/firebase-tools-4.2.1.tgz
 	sha256sums = f4ed23660fb4cb4dcb8ecfcb8e32ebc9a7323de42e661a9fa8dfcf4e370f21c5
 
-pkgname = firebase-tools-421
+pkgname = firebase-tools
 
