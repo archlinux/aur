@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=RESQChain
+Comment=RESQChain P2P Cryptocurrency
+Exec=/usr/bin/resq-qt
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/resq128.png
+MimeType=x-scheme-handler/resq;
+Categories=Office;
+Name[en_US]=resq-qt.desktop

@@ -1,0 +1,27 @@
+pkgbase = resq-qt
+	pkgdesc = Cryptocurrency wallet(QT)
+	pkgver = 1.0.1.1
+	pkgrel = 1
+	url = https://ravencoin.org/
+	install = resq-qt.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	makedepends = qt5-tools
+	depends = boost-libs
+	depends = qt5-base
+	depends = qrencode
+	depends = miniupnpc
+	depends = db4.8
+	depends = zeromq
+	depends = protobuf
+	depends = libevent
+	conflicts = resq
+	source = resq-qt::git+https://github.com/RESQ-Chain/resq-chain.git#tag=v1.0.1.1
+	source = resq-qt.desktop
+	sha256sums = SKIP
+	sha256sums = 02008d8837e3e9200be5d87dc55f8396bae49a07ad614ee085712490ec67236a
+
+pkgname = resq-qt
+
