@@ -1,0 +1,17 @@
+pkgbase = emacs-ace-window-git
+	pkgdesc = Quickly switch windows in Emacs
+	pkgver = r152.d93e16b
+	pkgrel = 1
+	url = https://github.com/abo-abo/ace-window
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	depends = emacs-avy
+	provides = emacs-ace-window
+	conflicts = emacs-ace-window
+	source = git+https://github.com/abo-abo/ace-window.git
+	sha256sums = SKIP
+
+pkgname = emacs-ace-window-git
+
