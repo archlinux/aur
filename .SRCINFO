@@ -1,7 +1,7 @@
 pkgbase = keepassgtk
 	pkgdesc = A password manager for GNOME
-	pkgver = 0.9.3
-	pkgrel = 2
+	pkgver = r420.05d2404
+	pkgrel = 1
 	url = https://gitlab.gnome.org/World/PasswordSafe
 	arch = i686
 	arch = x86_64

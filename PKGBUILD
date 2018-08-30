@@ -2,7 +2,7 @@
 
 pkgname=gnome-passwordsafe-git
 _gitname=PasswordSafe
-pkgver=0.9.3.r13.g05d2404
+pkgver=r420.05d2404
 pkgrel=1
 pkgdesc="A password manager for GNOME"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ md5sums=('SKIP')
  
 pkgver() {
 	cd "${srcdir}/${_gitname}/"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
