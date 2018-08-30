@@ -7,7 +7,7 @@
 
 pkgname=ypserv
 pkgver=4.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Linux NIS Server'
 arch=('i686' 'x86_64')
 url='https://github.com/thkukuk/ypserv'
@@ -51,5 +51,5 @@ package() {
 md5sums=('0b2cf49154881b65d37e44f89e163071'
          '0639cc2e8f667272335649eeede77206'
          '9ff147310a5b83749357b6587cccdf34'
-         '89b8b608c81fd01bb81cdb551854833f'
-         '9a3d6ce34139003f1188b9e39dd9a8e8')
+         '3428dcc728b2ac6c4edda9f43e834238'
+         'ee375afa24cdb5ffbf83c39aa2f08e54')
