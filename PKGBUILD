@@ -5,7 +5,7 @@
 pkgname=camlidl
 pkgver=1.06
 _pkgver=${pkgver/\./}
-pkgrel=3
+pkgrel=4
 pkgdesc="A stub code generator and COM binding for Objective Caml (OCaml)"
 arch=('i686' 'x86_64')
 url="https://github.com/xavierleroy/camlidl"
