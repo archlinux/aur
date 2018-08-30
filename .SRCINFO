@@ -1,0 +1,17 @@
+pkgbase = hocr-tools
+	pkgdesc = Tools for manipulating and evaluating the hOCR format for representing multi-lingual OCR results by embedding them into HTML.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/tmbdev
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = python-pillow
+	makedepends = python-lxml
+	makedepends = python-reportlab
+	depends = python
+	source = https://github.com/tmbdev/hocr-tools/archive/v1.2.0.tar.gz
+	sha256sums = 0d3fb25e48b812afc7293b0e84bda68995ccdec627befe4607be5b79b82f508b
+
+pkgname = hocr-tools
+
