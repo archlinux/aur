@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=python-django-q
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='A multiprocessing distributed task queue for Django'
 arch=('any')
