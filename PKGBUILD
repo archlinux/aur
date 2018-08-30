@@ -2,7 +2,7 @@
 
 pkgname=podman
 pkgver=0.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility for running OCI-based containers."
 arch=('x86_64')
 url="https://github.com/containers/libpod"
