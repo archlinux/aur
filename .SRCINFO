@@ -1,6 +1,6 @@
 pkgbase = python-pivy-git
 	pkgdesc = Coin binding for Python
-	pkgver = 0.6.4.r3.gad7b50f
+	pkgver = 0.6.4.r4.gd828a33
 	pkgrel = 1
 	url = https://github.com/FreeCAD/pivy
 	arch = x86_64
@@ -14,9 +14,7 @@ pkgbase = python-pivy-git
 	provides = python-pivy
 	conflicts = python-pivy
 	source = pivy::git+https://github.com/FreeCAD/pivy.git
-	source = char_ptr_fix.patch
 	md5sums = SKIP
-	md5sums = 0ba9c4ba4f822ed8f819209c333d5cbc
 
 pkgname = python-pivy-git
 
