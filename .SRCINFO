@@ -1,0 +1,18 @@
+pkgbase = rehackable_scripts-git
+	pkgdesc = A set of bash scripts to interact with the reMarkable tablet.
+	pkgver = r76.200668e
+	pkgrel = 1
+	url = https://github.com/reHackable/scripts
+	arch = any
+	license = GPLv3
+	makedepends = git
+	depends = openssh
+	depends = curl
+	depends = netcat
+	provides = rehackable_scripts
+	conflicts = rehackable_scripts
+	source = rehackable_scripts::git+https://github.com/reHackable/scripts
+	md5sums = SKIP
+
+pkgname = rehackable_scripts-git
+
