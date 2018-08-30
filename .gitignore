@@ -1,4 +1,1 @@
-*.pkg.tar.xz
-pkg/
-src/
-makepkg-optimize2/
+*
