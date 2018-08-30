@@ -1,0 +1,16 @@
+pkgbase = python2-saml
+	pkgdesc = OneLogin's SAML Python Toolkit. Python 2 version / upstream python-saml.
+	pkgver = 2.4.1
+	pkgrel = 1
+	url = https://github.com/onelogin/python-saml
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2-defusedxml
+	depends = python2-isodate
+	depends = python2-dm.xmlsec.binding
+	source = python2-saml-2.4.1.tar.gz::https://github.com/onelogin/python-saml/archive/v2.4.1.tar.gz
+	sha256sums = 05a189309d58d5ac58fe8e82caf98c6a948748af066d7dc24bb267584026a05d
+
+pkgname = python2-saml
+
