@@ -1,0 +1,15 @@
+pkgbase = i3-projects
+	pkgdesc = Project creation and management for i3-wm
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/zzelman/i3-projects
+	arch = any
+	license = GPL3
+	depends = i3-wm
+	depends = python3
+	depends = zenity
+	source = git+https://github.com/zzelman/i3-projects.git#tag=release/1.0.0
+	md5sums = SKIP
+
+pkgname = i3-projects
+
