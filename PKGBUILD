@@ -4,7 +4,7 @@ _pkgname=gopherus
 _pkgver=1.1
 pkgname=$_pkgname-svn
 pkgver=1.1.r33
-pkgrel=1
+pkgrel=2
 pkgdesc="Gopher client"
 arch=('i686' 'x86_64')
 url="http://gopherus.sourceforge.net"
@@ -28,8 +28,8 @@ pkgver() {
 build() {
   cd "${_pkgname}/trunk"
   sed -i '/upx --best --lzma/d' Makefile.lin
-  make -f Makefile.lin
-  make -f Makefile.lin gopherus-sdl
+  make -f Makefile.lin CFLAGS="${CFLAGS}"
+  make -f Makefile.lin gopherus-sdl CFLAGS="${CFLAGS}"
 }
 
 package() {
