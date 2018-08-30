@@ -1,16 +1,25 @@
-diff -wbBur Umlet/umlet.sh Umlet.my/umlet.sh
---- Umlet/umlet.sh	2011-02-18 18:27:14.000000000 +0000
-+++ Umlet.my/umlet.sh	2011-03-03 15:20:48.000000000 +0000
-@@ -2,11 +2,7 @@
- 
- # Shell script for running umlet from the command prompt in linux
- 
+--- a/umlet.sh	2018-04-06 09:59:28.000000000 +0200
++++ b/umlet.sh	2018-08-30 18:54:03.979319149 +0200
+@@ -13,11 +13,8 @@
+ #   UMLET_JAVA_OPTS       (optional) additional Java start options (-X..., -D...)
+ #   UMLET_HOME            (optional) program directory of UMLet
+ # ---------------------------------------------------------------------------------
+-#
 -# If you want to put umlet.sh in your home bin directory ($HOME/bin/) to start it from anywhere with
 -#    $ umlet.sh myDiagram.uxf
--# you must specify the programDir directly instead
--#programDir=/path/to/umlet
--programDir=$(cd $(dirname $0);pwd)
-+programDir=/usr/share/umlet
+-# you must export the UMLET_HOME environment variable with the full qualified path of the UMLet installation directory.
+-# export UMLET_HOME=/path/to/umlet
++
++export UMLET_HOME=/usr/share/umlet
  
- if [ $# -gt 0 ]
-  then java -jar ${programDir}/umlet.jar -filename="$1"
+ _UMLET_HOME="$(cd $(dirname $0);pwd)"
+ 
+@@ -28,7 +25,7 @@
+ fi
+ 
+ # UMLET_HOME wins against deprecated programDir
+-if [ ! -x "${UMLET_HOME}" ] ; then
++if [ ! -z "${UMLET_HOME}" ] ; then
+   _UMLET_HOME="${UMLET_HOME}"
+ fi
+ 

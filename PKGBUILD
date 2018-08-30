@@ -1,23 +1,23 @@
-# $Id: PKGBUILD 194152 2016-10-31 13:48:24Z spupykin $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: Sven Karsten Greiner <sven@sammyshp.de>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Gleidson Echeli <gleidson dot echeli at gmail dot com>
 
 pkgname=umlet
-pkgver=14.2
-_pkgver=14_2
+pkgver=14.3.0
+_pkgver=14_3
 pkgrel=1
 pkgdesc="Free UML Tool for Fast UML Diagrams (stand-alone version)"
 arch=('any')
-url="http://www.umlet.com"
+url="https://www.umlet.com"
 license=('GPL')
 depends=('java-runtime')
 makedepends=('unzip' 'patch')
 source=("http://www.umlet.com/umlet_${_pkgver}/umlet-standalone-${pkgver}.zip"
 	'umlet.desktop'
 	'UMLet.sh.diff')
-md5sums=('25d249dc14dc93cfe8aebee5b138fcde'
+md5sums=('1202a9f93780b2187bfcdf96f8984955'
          '4efcfeea2f54b849bc86e3f1905449be'
-         'ef9620bd90f0e3bba7133629cf5885c8')
+         '8117f3f2bf7764d94c38ac8ca02ed279')
 
 prepare() {
   cd "$srcdir"/Umlet
