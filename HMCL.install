@@ -1,5 +1,0 @@
-HOME=$(grep 1000 /etc/passwd | head -1 | awk -F ':' '{print $6}')
-GRADLE=$HOME/.gradle
-post_remove() {
-    rm -r $GRADLE
-}
