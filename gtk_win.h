@@ -10,6 +10,7 @@
 #define PEER_COLUMN_PROFIT_7D_PERCENT 2
 #define PEER_COLUMN_PROFIT_30D_PERCENT 3
 #define PEER_NUM_COLS 4
+#define INFO_ARRAY_CACHE_MAX 128
 
 typedef enum column_index {
     AMOUNT, SYMBOL, VALUE, SPENT, PROFIT, PROFIT_PERCENT, PROFIT_24H, PROFIT_24H_PERCENT, PROFIT_7D,
@@ -20,6 +21,8 @@ typedef struct app_data {
     Info_Array* portfolio_data;
     String* portfolio_string;
     GtkBuilder* builder;
+    Ref_Data* iex_ref_data;
+    Info_Array* info_cache;
     char password[PASS_MAX];
     time_t last_reload;
 } App_Data;
@@ -171,6 +174,12 @@ void on_check_tree_view_row_activated(GtkTreeView* tree_view, GtkTreePath* path,
         GtkTreeViewColumn* column);
 
 void on_info_back_button_clicked(GtkButton* button);
+
+void on_search_entry_focus_in_event(GtkWidget* search_entry, GdkEvent* event);
+
+void on_search_entry_activate(GtkEntry* entry);
+
+void symbol_show_info(const char* symbol);
 
 /** UTILS **/
 

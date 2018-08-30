@@ -62,727 +62,6 @@ https://github.com/aokellermann/
       <column type="gchararray"/>
     </columns>
   </object>
-  <object class="GtkApplicationWindow" id="check_window">
-    <property name="can_focus">False</property>
-    <property name="show_menubar">False</property>
-    <signal name="destroy" handler="on_check_window_destroy" swapped="no"/>
-    <child>
-      <placeholder/>
-    </child>
-    <child>
-      <object class="GtkPaned" id="check_pane">
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="orientation">vertical</property>
-        <signal name="delete-event" handler="gtk_widget_hide_on_delete" swapped="no"/>
-        <child>
-          <object class="GtkBox" id="top_bar_box">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <child>
-              <object class="GtkButtonBox" id="top_bar_button_box">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="layout_style">start</property>
-                <child>
-                  <object class="GtkButton" id="load_button">
-                    <property name="label" translatable="yes">Load Portfolio</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
-                    <signal name="clicked" handler="on_load_button_clicked" swapped="no"/>
-                  </object>
-                  <packing>
-                    <property name="expand">True</property>
-                    <property name="fill">True</property>
-                    <property name="position">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkButton" id="lock_button">
-                    <property name="label" translatable="yes">Encrypt/Decrypt</property>
-                    <property name="visible">True</property>
-                    <property name="sensitive">False</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
-                    <signal name="clicked" handler="on_lock_button_clicked" swapped="no"/>
-                  </object>
-                  <packing>
-                    <property name="expand">True</property>
-                    <property name="fill">True</property>
-                    <property name="position">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkButton" id="add_button">
-                    <property name="label" translatable="yes">Add</property>
-                    <property name="visible">True</property>
-                    <property name="sensitive">False</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
-                    <signal name="clicked" handler="on_modify_button_clicked" swapped="no"/>
-                  </object>
-                  <packing>
-                    <property name="expand">True</property>
-                    <property name="fill">True</property>
-                    <property name="position">2</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkButton" id="remove_button">
-                    <property name="label" translatable="yes">Remove</property>
-                    <property name="visible">True</property>
-                    <property name="sensitive">False</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
-                    <signal name="clicked" handler="on_modify_button_clicked" swapped="no"/>
-                  </object>
-                  <packing>
-                    <property name="expand">True</property>
-                    <property name="fill">True</property>
-                    <property name="position">3</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkButton" id="set_button">
-                    <property name="label" translatable="yes">Set</property>
-                    <property name="visible">True</property>
-                    <property name="sensitive">False</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
-                    <signal name="clicked" handler="on_modify_button_clicked" swapped="no"/>
-                  </object>
-                  <packing>
-                    <property name="expand">True</property>
-                    <property name="fill">True</property>
-                    <property name="position">4</property>
-                  </packing>
-                </child>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
-          </object>
-          <packing>
-            <property name="resize">False</property>
-            <property name="shrink">True</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkScrolledWindow" id="check_scroll_window">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="shadow_type">in</property>
-            <child>
-              <object class="GtkTreeView" id="check_tree_view">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="hscroll_policy">natural</property>
-                <property name="vscroll_policy">natural</property>
-                <property name="model">check_list</property>
-                <property name="enable_search">False</property>
-                <property name="fixed_height_mode">True</property>
-                <property name="show_expanders">False</property>
-                <property name="enable_grid_lines">both</property>
-                <signal name="row-activated" handler="on_check_tree_view_row_activated" swapped="no"/>
-                <child internal-child="selection">
-                  <object class="GtkTreeSelection" id="check_selection"/>
-                </child>
-                <child>
-                  <object class="GtkTreeViewColumn" id="amount_column">
-                    <property name="resizable">True</property>
-                    <property name="sizing">fixed</property>
-                    <property name="min_width">100</property>
-                    <property name="title" translatable="yes">Amount</property>
-                    <property name="expand">True</property>
-                    <property name="clickable">True</property>
-                    <property name="sort_indicator">True</property>
-                    <signal name="clicked" handler="on_column_clicked" object="check_list" swapped="no"/>
-                    <child>
-                      <object class="GtkCellRendererText" id="amount_renderer">
-                        <property name="xalign">1</property>
-                      </object>
-                      <attributes>
-                        <attribute name="text">0</attribute>
-                      </attributes>
-                    </child>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkTreeViewColumn" id="symbol_column">
-                    <property name="resizable">True</property>
-                    <property name="sizing">fixed</property>
-                    <property name="min_width">100</property>
-                    <property name="title" translatable="yes">Symbol</property>
-                    <property name="expand">True</property>
-                    <property name="clickable">True</property>
-                    <property name="sort_indicator">True</property>
-                    <signal name="clicked" handler="on_column_clicked" object="check_list" swapped="no"/>
-                    <child>
-                      <object class="GtkCellRendererText" id="symbol_renderer">
-                        <property name="xalign">0</property>
-                      </object>
-                      <attributes>
-                        <attribute name="text">1</attribute>
-                      </attributes>
-                    </child>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkTreeViewColumn" id="value_column">
-                    <property name="resizable">True</property>
-                    <property name="sizing">fixed</property>
-                    <property name="min_width">100</property>
-                    <property name="title" translatable="yes">Value</property>
-                    <property name="expand">True</property>
-                    <property name="clickable">True</property>
-                    <property name="sort_indicator">True</property>
-                    <signal name="clicked" handler="on_column_clicked" object="check_list" swapped="no"/>
-                    <child>
-                      <object class="GtkCellRendererText" id="value_renderer">
-                        <property name="xalign">1</property>
-                        <property name="alignment">right</property>
-                      </object>
-                      <attributes>
-                        <attribute name="text">2</attribute>
-                      </attributes>
-                    </child>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkTreeViewColumn" id="spent_column">
-                    <property name="resizable">True</property>
-                    <property name="sizing">fixed</property>
-                    <property name="min_width">100</property>
-                    <property name="title" translatable="yes">Spent</property>
-                    <property name="expand">True</property>
-                    <property name="clickable">True</property>
-                    <property name="sort_indicator">True</property>
-                    <signal name="clicked" handler="on_column_clicked" object="check_list" swapped="no"/>
-                    <child>
-                      <object class="GtkCellRendererText" id="spent_renderer">
-                        <property name="xalign">1</property>
-                        <property name="alignment">right</property>
-                      </object>
-                      <attributes>
-                        <attribute name="text">3</attribute>
-                      </attributes>
-                    </child>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkTreeViewColumn" id="profit_column">
-                    <property name="resizable">True</property>
-                    <property name="sizing">fixed</property>
-                    <property name="min_width">100</property>
-                    <property name="title" translatable="yes">Profit</property>
-                    <property name="expand">True</property>
-                    <property name="clickable">True</property>
-                    <property name="sort_indicator">True</property>
-                    <signal name="clicked" handler="on_column_clicked" object="check_list" swapped="no"/>
-                    <child>
-                      <object class="GtkCellRendererText" id="profit_renderer">
-                        <property name="xalign">1</property>
-                        <property name="alignment">right</property>
-                      </object>
-                      <attributes>
-                        <attribute name="text">4</attribute>
-                      </attributes>
-                    </child>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkTreeViewColumn" id="profit_percent_column">
-                    <property name="resizable">True</property>
-                    <property name="sizing">fixed</property>
-                    <property name="min_width">65</property>
-                    <property name="title" translatable="yes">%</property>
-                    <property name="expand">True</property>
-                    <property name="clickable">True</property>
-                    <property name="sort_indicator">True</property>
-                    <signal name="clicked" handler="on_column_clicked" object="check_list" swapped="no"/>
-                    <child>
-                      <object class="GtkCellRendererText" id="profit_percent_renderer">
-                        <property name="xalign">1</property>
-                        <property name="alignment">right</property>
-                      </object>
-                      <attributes>
-                        <attribute name="text">5</attribute>
-                      </attributes>
-                    </child>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkTreeViewColumn" id="profit_24h_column">
-                    <property name="resizable">True</property>
-                    <property name="sizing">fixed</property>
-                    <property name="min_width">65</property>
-                    <property name="title" translatable="yes">24H</property>
-                    <property name="expand">True</property>
-                    <property name="clickable">True</property>
-                    <property name="sort_indicator">True</property>
-                    <signal name="clicked" handler="on_column_clicked" object="check_list" swapped="no"/>
-                    <child>
-                      <object class="GtkCellRendererText" id="profit_24h_renderer">
-                        <property name="xalign">1</property>
-                        <property name="alignment">right</property>
-                      </object>
-                      <attributes>
-                        <attribute name="text">6</attribute>
-                      </attributes>
-                    </child>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkTreeViewColumn" id="profit_24h_percent_column">
-                    <property name="resizable">True</property>
-                    <property name="sizing">fixed</property>
-                    <property name="min_width">65</property>
-                    <property name="title" translatable="yes">24H%</property>
-                    <property name="expand">True</property>
-                    <property name="clickable">True</property>
-                    <property name="sort_indicator">True</property>
-                    <signal name="clicked" handler="on_column_clicked" object="check_list" swapped="no"/>
-                    <child>
-                      <object class="GtkCellRendererText" id="profit_24h_percent_renderer">
-                        <property name="xalign">1</property>
-                        <property name="alignment">right</property>
-                      </object>
-                      <attributes>
-                        <attribute name="text">7</attribute>
-                      </attributes>
-                    </child>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkTreeViewColumn" id="profit_7d_column">
-                    <property name="resizable">True</property>
-                    <property name="sizing">fixed</property>
-                    <property name="min_width">65</property>
-                    <property name="title" translatable="yes">7D</property>
-                    <property name="expand">True</property>
-                    <property name="clickable">True</property>
-                    <property name="sort_indicator">True</property>
-                    <signal name="clicked" handler="on_column_clicked" object="check_list" swapped="no"/>
-                    <child>
-                      <object class="GtkCellRendererText" id="profit_7d_renderer">
-                        <property name="xalign">1</property>
-                        <property name="alignment">right</property>
-                      </object>
-                      <attributes>
-                        <attribute name="text">8</attribute>
-                      </attributes>
-                    </child>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkTreeViewColumn" id="profit_7d_percent_column">
-                    <property name="resizable">True</property>
-                    <property name="sizing">fixed</property>
-                    <property name="min_width">65</property>
-                    <property name="title" translatable="yes">7D%</property>
-                    <property name="expand">True</property>
-                    <property name="clickable">True</property>
-                    <property name="sort_indicator">True</property>
-                    <signal name="clicked" handler="on_column_clicked" object="check_list" swapped="no"/>
-                    <child>
-                      <object class="GtkCellRendererText" id="profit_7d_percent_renderer">
-                        <property name="xalign">1</property>
-                        <property name="alignment">right</property>
-                      </object>
-                      <attributes>
-                        <attribute name="text">9</attribute>
-                      </attributes>
-                    </child>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkTreeViewColumn" id="profit_30d_column">
-                    <property name="resizable">True</property>
-                    <property name="sizing">fixed</property>
-                    <property name="min_width">80</property>
-                    <property name="title" translatable="yes">30D</property>
-                    <property name="expand">True</property>
-                    <property name="clickable">True</property>
-                    <property name="sort_indicator">True</property>
-                    <signal name="clicked" handler="on_column_clicked" object="check_list" swapped="no"/>
-                    <child>
-                      <object class="GtkCellRendererText" id="profit_30d_renderer">
-                        <property name="xalign">1</property>
-                        <property name="alignment">right</property>
-                      </object>
-                      <attributes>
-                        <attribute name="text">10</attribute>
-                      </attributes>
-                    </child>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkTreeViewColumn" id="profit_30d_percent_column">
-                    <property name="resizable">True</property>
-                    <property name="sizing">fixed</property>
-                    <property name="min_width">65</property>
-                    <property name="title" translatable="yes">30D%</property>
-                    <property name="expand">True</property>
-                    <property name="clickable">True</property>
-                    <property name="sort_indicator">True</property>
-                    <signal name="clicked" handler="on_column_clicked" object="check_list" swapped="no"/>
-                    <child>
-                      <object class="GtkCellRendererText" id="profit_30d_percent_renderer">
-                        <property name="xalign">1</property>
-                        <property name="alignment">right</property>
-                      </object>
-                      <attributes>
-                        <attribute name="text">11</attribute>
-                      </attributes>
-                    </child>
-                  </object>
-                </child>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="resize">True</property>
-            <property name="shrink">True</property>
-          </packing>
-        </child>
-      </object>
-    </child>
-  </object>
-  <object class="GtkMessageDialog" id="decrypt_dialog">
-    <property name="can_focus">False</property>
-    <property name="modal">True</property>
-    <property name="destroy_with_parent">True</property>
-    <property name="type_hint">dialog</property>
-    <property name="skip_taskbar_hint">True</property>
-    <property name="urgency_hint">True</property>
-    <property name="transient_for">check_window</property>
-    <property name="message_type">question</property>
-    <property name="buttons">ok-cancel</property>
-    <property name="text" translatable="yes">Enter your password:</property>
-    <signal name="close" handler="gtk_widget_hide" swapped="no"/>
-    <signal name="destroy-event" handler="gtk_widget_hide_on_delete" swapped="no"/>
-    <signal name="response" handler="on_decrypt_dialog_response" swapped="no"/>
-    <child>
-      <placeholder/>
-    </child>
-    <child internal-child="vbox">
-      <object class="GtkBox">
-        <property name="can_focus">False</property>
-        <property name="orientation">vertical</property>
-        <property name="spacing">2</property>
-        <child internal-child="action_area">
-          <object class="GtkButtonBox">
-            <property name="can_focus">False</property>
-            <property name="layout_style">end</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">False</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkEntry" id="decrypt_password_entry">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="visibility">False</property>
-            <property name="invisible_char">●</property>
-            <property name="max_width_chars">31</property>
-            <property name="input_purpose">password</property>
-            <signal name="activate" handler="on_decrypt_password_entry_activate" swapped="no"/>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">2</property>
-          </packing>
-        </child>
-      </object>
-    </child>
-  </object>
-  <object class="GtkMessageDialog" id="generic_check_window_error_dialog">
-    <property name="can_focus">False</property>
-    <property name="type_hint">dialog</property>
-    <property name="transient_for">check_window</property>
-    <property name="message_type">error</property>
-    <property name="buttons">ok</property>
-    <signal name="delete-event" handler="gtk_widget_hide_on_delete" swapped="no"/>
-    <signal name="response" handler="gtk_widget_hide" swapped="no"/>
-    <child>
-      <placeholder/>
-    </child>
-    <child internal-child="vbox">
-      <object class="GtkBox">
-        <property name="can_focus">False</property>
-        <property name="orientation">vertical</property>
-        <property name="spacing">2</property>
-        <child internal-child="action_area">
-          <object class="GtkButtonBox">
-            <property name="can_focus">False</property>
-            <property name="homogeneous">True</property>
-            <property name="layout_style">end</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">False</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
-      </object>
-    </child>
-  </object>
-  <object class="GtkMessageDialog" id="generic_check_window_success_dialog">
-    <property name="can_focus">False</property>
-    <property name="type_hint">dialog</property>
-    <property name="transient_for">check_window</property>
-    <property name="buttons">ok</property>
-    <signal name="delete-event" handler="gtk_widget_hide_on_delete" swapped="no"/>
-    <signal name="response" handler="gtk_widget_hide" swapped="no"/>
-    <child>
-      <placeholder/>
-    </child>
-    <child internal-child="vbox">
-      <object class="GtkBox">
-        <property name="can_focus">False</property>
-        <property name="orientation">vertical</property>
-        <property name="spacing">2</property>
-        <child internal-child="action_area">
-          <object class="GtkButtonBox">
-            <property name="can_focus">False</property>
-            <property name="layout_style">end</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">False</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
-      </object>
-    </child>
-  </object>
-  <object class="GtkMessageDialog" id="get_password_dialog">
-    <property name="can_focus">False</property>
-    <property name="modal">True</property>
-    <property name="destroy_with_parent">True</property>
-    <property name="type_hint">dialog</property>
-    <property name="skip_taskbar_hint">True</property>
-    <property name="urgency_hint">True</property>
-    <property name="transient_for">check_window</property>
-    <property name="message_type">question</property>
-    <property name="buttons">ok-cancel</property>
-    <property name="text" translatable="yes">Enter your password:</property>
-    <signal name="close" handler="gtk_widget_hide" swapped="no"/>
-    <signal name="delete-event" handler="gtk_widget_hide_on_delete" swapped="no"/>
-    <signal name="response" handler="on_get_password_dialog_response" swapped="no"/>
-    <child>
-      <placeholder/>
-    </child>
-    <child internal-child="vbox">
-      <object class="GtkBox">
-        <property name="can_focus">False</property>
-        <property name="orientation">vertical</property>
-        <property name="spacing">2</property>
-        <child internal-child="action_area">
-          <object class="GtkButtonBox">
-            <property name="can_focus">False</property>
-            <property name="homogeneous">True</property>
-            <property name="layout_style">end</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">False</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkEntry" id="password_entry">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="visibility">False</property>
-            <property name="invisible_char">●</property>
-            <property name="max_width_chars">31</property>
-            <property name="input_purpose">password</property>
-            <signal name="activate" handler="on_password_entry_activate" swapped="no"/>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">2</property>
-          </packing>
-        </child>
-      </object>
-    </child>
-  </object>
-  <object class="GtkMessageDialog" id="portfolio_modify_dialog">
-    <property name="can_focus">False</property>
-    <property name="modal">True</property>
-    <property name="destroy_with_parent">True</property>
-    <property name="type_hint">dialog</property>
-    <property name="transient_for">check_window</property>
-    <property name="message_type">question</property>
-    <property name="buttons">ok-cancel</property>
-    <signal name="close" handler="gtk_widget_hide" swapped="no"/>
-    <signal name="delete-event" handler="gtk_widget_hide_on_delete" swapped="no"/>
-    <signal name="response" handler="on_portfolio_modify_dialog_response" swapped="no"/>
-    <child>
-      <placeholder/>
-    </child>
-    <child internal-child="vbox">
-      <object class="GtkBox" id="portfolio_modify_vbox">
-        <property name="can_focus">False</property>
-        <property name="orientation">vertical</property>
-        <property name="spacing">2</property>
-        <child internal-child="action_area">
-          <object class="GtkButtonBox">
-            <property name="can_focus">False</property>
-            <property name="homogeneous">True</property>
-            <property name="layout_style">end</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">False</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkEntry" id="modify_symbol_entry">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="max_width_chars">16</property>
-            <property name="caps_lock_warning">False</property>
-            <property name="placeholder_text" translatable="yes">Symbol</property>
-            <property name="input_purpose">alpha</property>
-            <signal name="activate" handler="on_modify_entry_activate" swapped="no"/>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">2</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkEntry" id="modify_amount_entry">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="max_width_chars">16</property>
-            <property name="placeholder_text" translatable="yes">Quantity</property>
-            <property name="input_purpose">digits</property>
-            <signal name="activate" handler="on_modify_entry_activate" swapped="no"/>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">3</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkEntry" id="modify_spent_entry">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="max_width_chars">16</property>
-            <property name="placeholder_text" translatable="yes">Price per share</property>
-            <property name="input_purpose">digits</property>
-            <signal name="activate" handler="on_modify_entry_activate" swapped="no"/>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">4</property>
-          </packing>
-        </child>
-      </object>
-    </child>
-  </object>
-  <object class="GtkMessageDialog" id="set_password_dialog">
-    <property name="can_focus">False</property>
-    <property name="modal">True</property>
-    <property name="destroy_with_parent">True</property>
-    <property name="type_hint">dialog</property>
-    <property name="skip_taskbar_hint">True</property>
-    <property name="urgency_hint">True</property>
-    <property name="transient_for">check_window</property>
-    <property name="message_type">question</property>
-    <property name="buttons">ok-cancel</property>
-    <property name="text" translatable="yes">Choose a password:</property>
-    <signal name="close" handler="gtk_widget_hide" swapped="no"/>
-    <signal name="delete-event" handler="gtk_widget_hide_on_delete" swapped="no"/>
-    <signal name="response" handler="on_set_password_dialog_response" swapped="no"/>
-    <child>
-      <placeholder/>
-    </child>
-    <child internal-child="vbox">
-      <object class="GtkBox">
-        <property name="can_focus">False</property>
-        <property name="orientation">vertical</property>
-        <property name="spacing">2</property>
-        <child internal-child="action_area">
-          <object class="GtkButtonBox">
-            <property name="can_focus">False</property>
-            <property name="layout_style">end</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">False</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkEntry" id="set_password_entry1">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="visibility">False</property>
-            <property name="invisible_char">●</property>
-            <property name="max_width_chars">31</property>
-            <property name="placeholder_text" translatable="yes">password</property>
-            <property name="input_purpose">password</property>
-            <signal name="activate" handler="on_set_password_entry_activate" swapped="no"/>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">2</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkEntry" id="set_password_entry2">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="visibility">False</property>
-            <property name="invisible_char">●</property>
-            <property name="max_width_chars">31</property>
-            <property name="placeholder_text" translatable="yes">enter the password again</property>
-            <signal name="activate" handler="on_set_password_entry_activate" swapped="no"/>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">4</property>
-          </packing>
-        </child>
-      </object>
-    </child>
-  </object>
-  <object class="GtkTextBuffer" id="info_header_buffer"/>
-  <object class="GtkListStore" id="news_list">
-    <columns>
-      <!-- column-name Headline -->
-      <column type="gchararray"/>
-      <!-- column-name Source -->
-      <column type="gchararray"/>
-      <!-- column-name Date -->
-      <column type="gchararray"/>
-      <!-- column-name Summary -->
-      <column type="gchararray"/>
-      <!-- column-name Url -->
-      <column type="gchararray"/>
-      <!-- column-name Related -->
-      <column type="gchararray"/>
-    </columns>
-  </object>
   <object class="GtkListStore" id="peers_list">
     <columns>
       <!-- column-name Symbol -->
@@ -1669,6 +948,745 @@ https://github.com/aokellermann/
         <property name="resize">True</property>
         <property name="shrink">True</property>
       </packing>
+    </child>
+  </object>
+  <object class="GtkListStore" id="search_entry_completion_store">
+    <columns>
+      <!-- column-name Symbol -->
+      <column type="gchararray"/>
+    </columns>
+  </object>
+  <object class="GtkEntryCompletion" id="search_entry_completion">
+    <property name="model">search_entry_completion_store</property>
+    <property name="text_column">0</property>
+    <child>
+      <object class="GtkCellRendererText" id="search_entry_completion_renderer"/>
+      <attributes>
+        <attribute name="text">0</attribute>
+      </attributes>
+    </child>
+  </object>
+  <object class="GtkApplicationWindow" id="check_window">
+    <property name="can_focus">False</property>
+    <property name="show_menubar">False</property>
+    <signal name="destroy" handler="on_check_window_destroy" swapped="no"/>
+    <child>
+      <placeholder/>
+    </child>
+    <child>
+      <object class="GtkPaned" id="check_pane">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="orientation">vertical</property>
+        <signal name="delete-event" handler="gtk_widget_hide_on_delete" swapped="no"/>
+        <child>
+          <object class="GtkBox" id="top_bar_box">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <child>
+              <object class="GtkButtonBox" id="top_bar_button_box">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="layout_style">start</property>
+                <child>
+                  <object class="GtkButton" id="load_button">
+                    <property name="label" translatable="yes">Load Portfolio</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                    <signal name="clicked" handler="on_load_button_clicked" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="expand">True</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkButton" id="lock_button">
+                    <property name="label" translatable="yes">Encrypt/Decrypt</property>
+                    <property name="visible">True</property>
+                    <property name="sensitive">False</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                    <signal name="clicked" handler="on_lock_button_clicked" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="expand">True</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkButton" id="add_button">
+                    <property name="label" translatable="yes">Add</property>
+                    <property name="visible">True</property>
+                    <property name="sensitive">False</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                    <signal name="clicked" handler="on_modify_button_clicked" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="expand">True</property>
+                    <property name="fill">True</property>
+                    <property name="position">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkButton" id="remove_button">
+                    <property name="label" translatable="yes">Remove</property>
+                    <property name="visible">True</property>
+                    <property name="sensitive">False</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                    <signal name="clicked" handler="on_modify_button_clicked" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="expand">True</property>
+                    <property name="fill">True</property>
+                    <property name="position">3</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkButton" id="set_button">
+                    <property name="label" translatable="yes">Set</property>
+                    <property name="visible">True</property>
+                    <property name="sensitive">False</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                    <signal name="clicked" handler="on_modify_button_clicked" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="expand">True</property>
+                    <property name="fill">True</property>
+                    <property name="position">4</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSearchEntry" id="search_entry">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="caps_lock_warning">False</property>
+                <property name="primary_icon_name">edit-find-symbolic</property>
+                <property name="primary_icon_activatable">False</property>
+                <property name="primary_icon_sensitive">False</property>
+                <property name="completion">search_entry_completion</property>
+                <signal name="activate" handler="on_search_entry_activate" swapped="no"/>
+                <signal name="grab-focus" handler="on_search_entry_focus_in_event" swapped="no"/>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="pack_type">end</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="resize">False</property>
+            <property name="shrink">True</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkScrolledWindow" id="check_scroll_window">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="shadow_type">in</property>
+            <child>
+              <object class="GtkTreeView" id="check_tree_view">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="hscroll_policy">natural</property>
+                <property name="vscroll_policy">natural</property>
+                <property name="model">check_list</property>
+                <property name="enable_search">False</property>
+                <property name="fixed_height_mode">True</property>
+                <property name="show_expanders">False</property>
+                <property name="enable_grid_lines">both</property>
+                <signal name="row-activated" handler="on_check_tree_view_row_activated" swapped="no"/>
+                <child internal-child="selection">
+                  <object class="GtkTreeSelection" id="check_selection"/>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="amount_column">
+                    <property name="resizable">True</property>
+                    <property name="sizing">fixed</property>
+                    <property name="min_width">100</property>
+                    <property name="title" translatable="yes">Amount</property>
+                    <property name="expand">True</property>
+                    <property name="clickable">True</property>
+                    <property name="sort_indicator">True</property>
+                    <signal name="clicked" handler="on_column_clicked" object="check_list" swapped="no"/>
+                    <child>
+                      <object class="GtkCellRendererText" id="amount_renderer">
+                        <property name="xalign">1</property>
+                      </object>
+                      <attributes>
+                        <attribute name="text">0</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="symbol_column">
+                    <property name="resizable">True</property>
+                    <property name="sizing">fixed</property>
+                    <property name="min_width">100</property>
+                    <property name="title" translatable="yes">Symbol</property>
+                    <property name="expand">True</property>
+                    <property name="clickable">True</property>
+                    <property name="sort_indicator">True</property>
+                    <signal name="clicked" handler="on_column_clicked" object="check_list" swapped="no"/>
+                    <child>
+                      <object class="GtkCellRendererText" id="symbol_renderer">
+                        <property name="xalign">0</property>
+                      </object>
+                      <attributes>
+                        <attribute name="text">1</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="value_column">
+                    <property name="resizable">True</property>
+                    <property name="sizing">fixed</property>
+                    <property name="min_width">100</property>
+                    <property name="title" translatable="yes">Value</property>
+                    <property name="expand">True</property>
+                    <property name="clickable">True</property>
+                    <property name="sort_indicator">True</property>
+                    <signal name="clicked" handler="on_column_clicked" object="check_list" swapped="no"/>
+                    <child>
+                      <object class="GtkCellRendererText" id="value_renderer">
+                        <property name="xalign">1</property>
+                        <property name="alignment">right</property>
+                      </object>
+                      <attributes>
+                        <attribute name="text">2</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="spent_column">
+                    <property name="resizable">True</property>
+                    <property name="sizing">fixed</property>
+                    <property name="min_width">100</property>
+                    <property name="title" translatable="yes">Spent</property>
+                    <property name="expand">True</property>
+                    <property name="clickable">True</property>
+                    <property name="sort_indicator">True</property>
+                    <signal name="clicked" handler="on_column_clicked" object="check_list" swapped="no"/>
+                    <child>
+                      <object class="GtkCellRendererText" id="spent_renderer">
+                        <property name="xalign">1</property>
+                        <property name="alignment">right</property>
+                      </object>
+                      <attributes>
+                        <attribute name="text">3</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="profit_column">
+                    <property name="resizable">True</property>
+                    <property name="sizing">fixed</property>
+                    <property name="min_width">100</property>
+                    <property name="title" translatable="yes">Profit</property>
+                    <property name="expand">True</property>
+                    <property name="clickable">True</property>
+                    <property name="sort_indicator">True</property>
+                    <signal name="clicked" handler="on_column_clicked" object="check_list" swapped="no"/>
+                    <child>
+                      <object class="GtkCellRendererText" id="profit_renderer">
+                        <property name="xalign">1</property>
+                        <property name="alignment">right</property>
+                      </object>
+                      <attributes>
+                        <attribute name="text">4</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="profit_percent_column">
+                    <property name="resizable">True</property>
+                    <property name="sizing">fixed</property>
+                    <property name="min_width">65</property>
+                    <property name="title" translatable="yes">%</property>
+                    <property name="expand">True</property>
+                    <property name="clickable">True</property>
+                    <property name="sort_indicator">True</property>
+                    <signal name="clicked" handler="on_column_clicked" object="check_list" swapped="no"/>
+                    <child>
+                      <object class="GtkCellRendererText" id="profit_percent_renderer">
+                        <property name="xalign">1</property>
+                        <property name="alignment">right</property>
+                      </object>
+                      <attributes>
+                        <attribute name="text">5</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="profit_24h_column">
+                    <property name="resizable">True</property>
+                    <property name="sizing">fixed</property>
+                    <property name="min_width">65</property>
+                    <property name="title" translatable="yes">24H</property>
+                    <property name="expand">True</property>
+                    <property name="clickable">True</property>
+                    <property name="sort_indicator">True</property>
+                    <signal name="clicked" handler="on_column_clicked" object="check_list" swapped="no"/>
+                    <child>
+                      <object class="GtkCellRendererText" id="profit_24h_renderer">
+                        <property name="xalign">1</property>
+                        <property name="alignment">right</property>
+                      </object>
+                      <attributes>
+                        <attribute name="text">6</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="profit_24h_percent_column">
+                    <property name="resizable">True</property>
+                    <property name="sizing">fixed</property>
+                    <property name="min_width">65</property>
+                    <property name="title" translatable="yes">24H%</property>
+                    <property name="expand">True</property>
+                    <property name="clickable">True</property>
+                    <property name="sort_indicator">True</property>
+                    <signal name="clicked" handler="on_column_clicked" object="check_list" swapped="no"/>
+                    <child>
+                      <object class="GtkCellRendererText" id="profit_24h_percent_renderer">
+                        <property name="xalign">1</property>
+                        <property name="alignment">right</property>
+                      </object>
+                      <attributes>
+                        <attribute name="text">7</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="profit_7d_column">
+                    <property name="resizable">True</property>
+                    <property name="sizing">fixed</property>
+                    <property name="min_width">65</property>
+                    <property name="title" translatable="yes">7D</property>
+                    <property name="expand">True</property>
+                    <property name="clickable">True</property>
+                    <property name="sort_indicator">True</property>
+                    <signal name="clicked" handler="on_column_clicked" object="check_list" swapped="no"/>
+                    <child>
+                      <object class="GtkCellRendererText" id="profit_7d_renderer">
+                        <property name="xalign">1</property>
+                        <property name="alignment">right</property>
+                      </object>
+                      <attributes>
+                        <attribute name="text">8</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="profit_7d_percent_column">
+                    <property name="resizable">True</property>
+                    <property name="sizing">fixed</property>
+                    <property name="min_width">65</property>
+                    <property name="title" translatable="yes">7D%</property>
+                    <property name="expand">True</property>
+                    <property name="clickable">True</property>
+                    <property name="sort_indicator">True</property>
+                    <signal name="clicked" handler="on_column_clicked" object="check_list" swapped="no"/>
+                    <child>
+                      <object class="GtkCellRendererText" id="profit_7d_percent_renderer">
+                        <property name="xalign">1</property>
+                        <property name="alignment">right</property>
+                      </object>
+                      <attributes>
+                        <attribute name="text">9</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="profit_30d_column">
+                    <property name="resizable">True</property>
+                    <property name="sizing">fixed</property>
+                    <property name="min_width">80</property>
+                    <property name="title" translatable="yes">30D</property>
+                    <property name="expand">True</property>
+                    <property name="clickable">True</property>
+                    <property name="sort_indicator">True</property>
+                    <signal name="clicked" handler="on_column_clicked" object="check_list" swapped="no"/>
+                    <child>
+                      <object class="GtkCellRendererText" id="profit_30d_renderer">
+                        <property name="xalign">1</property>
+                        <property name="alignment">right</property>
+                      </object>
+                      <attributes>
+                        <attribute name="text">10</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="profit_30d_percent_column">
+                    <property name="resizable">True</property>
+                    <property name="sizing">fixed</property>
+                    <property name="min_width">65</property>
+                    <property name="title" translatable="yes">30D%</property>
+                    <property name="expand">True</property>
+                    <property name="clickable">True</property>
+                    <property name="sort_indicator">True</property>
+                    <signal name="clicked" handler="on_column_clicked" object="check_list" swapped="no"/>
+                    <child>
+                      <object class="GtkCellRendererText" id="profit_30d_percent_renderer">
+                        <property name="xalign">1</property>
+                        <property name="alignment">right</property>
+                      </object>
+                      <attributes>
+                        <attribute name="text">11</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="resize">True</property>
+            <property name="shrink">True</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkMessageDialog" id="decrypt_dialog">
+    <property name="can_focus">False</property>
+    <property name="modal">True</property>
+    <property name="destroy_with_parent">True</property>
+    <property name="type_hint">dialog</property>
+    <property name="skip_taskbar_hint">True</property>
+    <property name="urgency_hint">True</property>
+    <property name="transient_for">check_window</property>
+    <property name="message_type">question</property>
+    <property name="buttons">ok-cancel</property>
+    <property name="text" translatable="yes">Enter your password:</property>
+    <signal name="close" handler="gtk_widget_hide" swapped="no"/>
+    <signal name="destroy-event" handler="gtk_widget_hide_on_delete" swapped="no"/>
+    <signal name="response" handler="on_decrypt_dialog_response" swapped="no"/>
+    <child>
+      <placeholder/>
+    </child>
+    <child internal-child="vbox">
+      <object class="GtkBox">
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox">
+            <property name="can_focus">False</property>
+            <property name="layout_style">end</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="decrypt_password_entry">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="visibility">False</property>
+            <property name="invisible_char">●</property>
+            <property name="max_width_chars">31</property>
+            <property name="input_purpose">password</property>
+            <signal name="activate" handler="on_decrypt_password_entry_activate" swapped="no"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkMessageDialog" id="generic_check_window_error_dialog">
+    <property name="can_focus">False</property>
+    <property name="type_hint">dialog</property>
+    <property name="transient_for">check_window</property>
+    <property name="message_type">error</property>
+    <property name="buttons">ok</property>
+    <signal name="delete-event" handler="gtk_widget_hide_on_delete" swapped="no"/>
+    <signal name="response" handler="gtk_widget_hide" swapped="no"/>
+    <child>
+      <placeholder/>
+    </child>
+    <child internal-child="vbox">
+      <object class="GtkBox">
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox">
+            <property name="can_focus">False</property>
+            <property name="homogeneous">True</property>
+            <property name="layout_style">end</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkMessageDialog" id="generic_check_window_success_dialog">
+    <property name="can_focus">False</property>
+    <property name="type_hint">dialog</property>
+    <property name="transient_for">check_window</property>
+    <property name="buttons">ok</property>
+    <signal name="delete-event" handler="gtk_widget_hide_on_delete" swapped="no"/>
+    <signal name="response" handler="gtk_widget_hide" swapped="no"/>
+    <child>
+      <placeholder/>
+    </child>
+    <child internal-child="vbox">
+      <object class="GtkBox">
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox">
+            <property name="can_focus">False</property>
+            <property name="layout_style">end</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkMessageDialog" id="get_password_dialog">
+    <property name="can_focus">False</property>
+    <property name="modal">True</property>
+    <property name="destroy_with_parent">True</property>
+    <property name="type_hint">dialog</property>
+    <property name="skip_taskbar_hint">True</property>
+    <property name="urgency_hint">True</property>
+    <property name="transient_for">check_window</property>
+    <property name="message_type">question</property>
+    <property name="buttons">ok-cancel</property>
+    <property name="text" translatable="yes">Enter your password:</property>
+    <signal name="close" handler="gtk_widget_hide" swapped="no"/>
+    <signal name="delete-event" handler="gtk_widget_hide_on_delete" swapped="no"/>
+    <signal name="response" handler="on_get_password_dialog_response" swapped="no"/>
+    <child>
+      <placeholder/>
+    </child>
+    <child internal-child="vbox">
+      <object class="GtkBox">
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox">
+            <property name="can_focus">False</property>
+            <property name="homogeneous">True</property>
+            <property name="layout_style">end</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="password_entry">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="visibility">False</property>
+            <property name="invisible_char">●</property>
+            <property name="max_width_chars">31</property>
+            <property name="input_purpose">password</property>
+            <signal name="activate" handler="on_password_entry_activate" swapped="no"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkMessageDialog" id="portfolio_modify_dialog">
+    <property name="can_focus">False</property>
+    <property name="modal">True</property>
+    <property name="destroy_with_parent">True</property>
+    <property name="type_hint">dialog</property>
+    <property name="transient_for">check_window</property>
+    <property name="message_type">question</property>
+    <property name="buttons">ok-cancel</property>
+    <signal name="close" handler="gtk_widget_hide" swapped="no"/>
+    <signal name="delete-event" handler="gtk_widget_hide_on_delete" swapped="no"/>
+    <signal name="response" handler="on_portfolio_modify_dialog_response" swapped="no"/>
+    <child>
+      <placeholder/>
+    </child>
+    <child internal-child="vbox">
+      <object class="GtkBox" id="portfolio_modify_vbox">
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox">
+            <property name="can_focus">False</property>
+            <property name="homogeneous">True</property>
+            <property name="layout_style">end</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="modify_symbol_entry">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="max_width_chars">16</property>
+            <property name="caps_lock_warning">False</property>
+            <property name="placeholder_text" translatable="yes">Symbol</property>
+            <property name="input_purpose">alpha</property>
+            <signal name="activate" handler="on_modify_entry_activate" swapped="no"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="modify_amount_entry">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="max_width_chars">16</property>
+            <property name="placeholder_text" translatable="yes">Quantity</property>
+            <property name="input_purpose">digits</property>
+            <signal name="activate" handler="on_modify_entry_activate" swapped="no"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="modify_spent_entry">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="max_width_chars">16</property>
+            <property name="placeholder_text" translatable="yes">Price per share</property>
+            <property name="input_purpose">digits</property>
+            <signal name="activate" handler="on_modify_entry_activate" swapped="no"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">4</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkMessageDialog" id="set_password_dialog">
+    <property name="can_focus">False</property>
+    <property name="modal">True</property>
+    <property name="destroy_with_parent">True</property>
+    <property name="type_hint">dialog</property>
+    <property name="skip_taskbar_hint">True</property>
+    <property name="urgency_hint">True</property>
+    <property name="transient_for">check_window</property>
+    <property name="message_type">question</property>
+    <property name="buttons">ok-cancel</property>
+    <property name="text" translatable="yes">Choose a password:</property>
+    <signal name="close" handler="gtk_widget_hide" swapped="no"/>
+    <signal name="delete-event" handler="gtk_widget_hide_on_delete" swapped="no"/>
+    <signal name="response" handler="on_set_password_dialog_response" swapped="no"/>
+    <child>
+      <placeholder/>
+    </child>
+    <child internal-child="vbox">
+      <object class="GtkBox">
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox">
+            <property name="can_focus">False</property>
+            <property name="layout_style">end</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="set_password_entry1">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="visibility">False</property>
+            <property name="invisible_char">●</property>
+            <property name="max_width_chars">31</property>
+            <property name="placeholder_text" translatable="yes">password</property>
+            <property name="input_purpose">password</property>
+            <signal name="activate" handler="on_set_password_entry_activate" swapped="no"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="set_password_entry2">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="visibility">False</property>
+            <property name="invisible_char">●</property>
+            <property name="max_width_chars">31</property>
+            <property name="placeholder_text" translatable="yes">enter the password again</property>
+            <signal name="activate" handler="on_set_password_entry_activate" swapped="no"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">4</property>
+          </packing>
+        </child>
+      </object>
     </child>
   </object>
 </interface>

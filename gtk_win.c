@@ -11,6 +11,8 @@ void window_main(void) {
     app.portfolio_data = NULL;
     app.portfolio_string = NULL;
     app.builder = gtk_builder_new();
+    app.info_cache = api_info_array_init();
+    app.iex_ref_data = NULL;
     app.password[0] = '\0';
     app.last_reload = 0;
 
@@ -330,6 +332,7 @@ void on_check_window_destroy(void) {
     // Destroy String and Info_Array and exit main GTK loop
     string_destroy(&app.portfolio_string);
     api_info_array_destroy(&app.portfolio_data);
+    api_ref_data_destroy(&app.iex_ref_data);
     gtk_main_quit();
 }
 
@@ -350,22 +353,7 @@ void on_check_tree_view_row_activated(GtkTreeView* tree_view, GtkTreePath* path,
     gtk_tree_model_get_iter(model, &iter, path);
     gchar* symbol;
     gtk_tree_model_get(model, &iter, SYMBOL, &symbol, -1);
-
-    Info* pInfo = info_array_get_info_from_symbol(app.portfolio_data, symbol);
-    if (pInfo->api_provider != IEX) // Only see info for iex securities
-        return;
-
-    GtkContainer* window = GTK_CONTAINER(GET_OBJECT("check_window"));
-    gtk_container_remove(window, GTK_WIDGET(GET_OBJECT("check_pane")));
-    gtk_container_add(window, GTK_WIDGET(GET_OBJECT("info_pane")));
-
-    if (pInfo->name[0] == '\0') { // MISC not loaded yet
-        api_info_store_data_batch(pInfo, MISC);
-        if (pInfo->peers != NULL) // ETFs may not have peers
-            format_cells(pInfo->peers);
-    }
-
-    info_pane_populate_all(pInfo);
+    symbol_show_info(symbol);
     g_free(symbol);
 }
 
@@ -373,6 +361,60 @@ void on_info_back_button_clicked(GtkButton* button) {
     GtkContainer* window = GTK_CONTAINER(GET_OBJECT("check_window"));
     gtk_container_remove(window, GTK_WIDGET(GET_OBJECT("info_pane")));
     gtk_container_add(window, GTK_WIDGET(GET_OBJECT("check_pane")));
+}
+
+void on_search_entry_focus_in_event(GtkWidget* search_entry, GdkEvent* event) {
+    if (app.iex_ref_data != NULL) // If ref data has already been loaded return
+        return;
+
+    app.iex_ref_data = iex_get_valid_symbols();
+    GtkListStore* list_store = GTK_LIST_STORE(GET_OBJECT("search_entry_completion_store"));
+    GtkTreeIter iter;
+    for (size_t i = 0; i < app.iex_ref_data->length; i++) {
+        gtk_list_store_append(list_store, &iter);
+        gtk_list_store_set(list_store, &iter, 0, app.iex_ref_data->symbols[i], -1);
+        //gtk_list_store_append(list_store, &iter);
+        //gtk_list_store_set(list_store, &iter, 0, app.iex_ref_data->names[i], -1);
+    }
+}
+
+void on_search_entry_activate(GtkEntry* entry) {
+    const gchar* symbol = gtk_entry_get_text(entry);
+    char modstr[strlen(symbol) + 1];
+    strcpy(modstr, symbol);
+    strtoupper(modstr);
+    if (symbol[0] != '\0' && ref_data_get_index_from_symbol_bsearch(app.iex_ref_data,
+            modstr, 0, app.iex_ref_data->length - 1) != -1)
+        symbol_show_info(modstr);
+}
+
+void symbol_show_info(const char* symbol) {
+    Info* pInfo = info_array_find_symbol_recursive(app.portfolio_data, symbol);
+    if (pInfo == NULL)
+        pInfo = info_array_find_symbol_recursive(app.info_cache, symbol);
+
+    if (pInfo == NULL) { // Append to cache
+        if (app.info_cache->length == INFO_ARRAY_CACHE_MAX) {
+            api_info_array_destroy(&app.info_cache);
+            app.info_cache = api_info_array_init();
+        }
+
+        info_array_append(app.info_cache, symbol);
+        pInfo = app.info_cache->array[app.info_cache->length - 1];
+    }
+
+    if (pInfo->price == EMPTY)
+        api_info_store_data_batch(pInfo, ALL);
+    else if (pInfo->name[0] == '\0')
+        api_info_store_data_batch(pInfo, MISC);
+
+    if (pInfo->peers != NULL)
+        format_cells(pInfo->peers);
+
+    info_pane_populate_all(pInfo);
+    GtkContainer* window = GTK_CONTAINER(GET_OBJECT("check_window"));
+    gtk_container_remove(window, GTK_WIDGET(GET_OBJECT("check_pane")));
+    gtk_container_add(window, GTK_WIDGET(GET_OBJECT("info_pane")));
 }
 
 void format_cells(Info_Array* portfolio_data) {
