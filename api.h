@@ -338,6 +338,9 @@ void info_store_earnings_from_json(Info* pInfo, const Json* jearnings);
  */
 Info* info_array_get_info_from_symbol(const Info_Array* pInfo_Array, const char* symbol);
 
+int ref_data_get_index_from_symbol_bsearch(const Ref_Data* pRef_Data, const char* symbol,
+                                         size_t left, size_t right);
+
 int ref_data_get_index_from_name_bsearch(const Ref_Data* pRef_Data, const char* name,
         size_t left, size_t right);
 
