@@ -14,14 +14,14 @@ _branch=gdc-8 # Change here! pkgver/_gccver/_d_ver will be automatically updated
 _islver=0.19 # Change here!
 _gccver=$(curl https://raw.githubusercontent.com/D-Programming-GDC/GDC/$_branch/gcc.version)
 _d_ver=''
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'i686')
 license=('GPL3')
 url="https://github.com/D-Programming-GDC/GDC"
 pkgdesc="GCC based D compiler"
 groups=('dlang' 'dlang-dmd')
 makedepends=('git' 'gdc')
-source=("ftp://gcc.gnu.org/pub/gcc/snapshots/${_gccver#gcc-}/$_gccver.tar.xz"
+source=("https://ftp.gnu.org/gnu/gcc/$_gccver/$_gccver.tar.xz"
         "http://isl.gforge.inria.fr/isl-$_islver.tar.bz2"
         'gdc::git+https://github.com/D-Programming-GDC/GDC.git'
         'git+https://github.com/D-Programming-GDC/GDMD.git'
@@ -131,7 +131,7 @@ package_gdc-git() {
 package_libgphobos-git() {
   pkgdesc="Standard library for D programming language, GDC port"
   provides=('d-runtime' 'd-stdlib' 'libgphobos')
-  conflicts=('libgpgobos')
+  conflicts=('libgphobos')
   options=('staticlibs')
 
   cd "$srcdir"/gcc-build

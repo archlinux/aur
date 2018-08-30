@@ -1,7 +1,7 @@
 pkgbase = gdc-git
 	pkgdesc = GCC based D compiler
 	pkgver = 8.2.0+2.081.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/D-Programming-GDC/GDC
 	arch = x86_64
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = gdc-git
 	license = GPL3
 	makedepends = git
 	makedepends = gdc
-	source = ftp://gcc.gnu.org/pub/gcc/snapshots/8.2.0/gcc-8.2.0.tar.xz
+	source = https://ftp.gnu.org/gnu/gcc/gcc-8.2.0/gcc-8.2.0.tar.xz
 	source = http://isl.gforge.inria.fr/isl-0.19.tar.bz2
 	source = gdc::git+https://github.com/D-Programming-GDC/GDC.git
 	source = git+https://github.com/D-Programming-GDC/GDMD.git
@@ -36,6 +36,6 @@ pkgname = libgphobos-git
 	provides = d-runtime
 	provides = d-stdlib
 	provides = libgphobos
-	conflicts = libgpgobos
+	conflicts = libgphobos
 	options = staticlibs
 
