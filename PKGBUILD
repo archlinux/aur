@@ -11,9 +11,9 @@ source=("git+https://github.com/zzelman/i3-projects.git#tag=release/1.0.0")
 md5sums=("SKIP")
 
 package() {
-  cd i3-projects
+  cd "${srcdir}"
 
-  mkdir -p $pkgdir/usr/bin
-  cp i3-projects $pkgdir/usr/bin
-  chmod 755 $pkgdir/usr/bin/i3-projects
+  mkdir -p "${pkgdir}/usr/bin"
+  cp "${srcdir}/i3-projects/i3-projects" "${pkgdir}/usr/bin"
+  chmod 755 "${pkgdir}/usr/bin/i3-projects"
 }
