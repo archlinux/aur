@@ -1,9 +1,11 @@
-# Maintainer: Sam Stuewe <halosghost at archlinux dot info>
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor: Sam Stuewe <halosghost at archlinux dot info>
 
 _name=tty-solitaire
 pkgname="${_name}-git"
-pkgver=248.7b127c9
+pkgver=v1.1.0.r2.g9cbfc95
 pkgrel=1
+epoch=1
 pkgdesc='An ncurses-based Klondike solitaire clone'
 arch=('i686' 'x86_64')
 url='https://github.com/mpereira/tty-solitaire'
@@ -15,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_name}"
-  printf '%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
