@@ -11,8 +11,21 @@ url='http://virtualbox.org'
 license=('GPL')
 makedepends=('linux-ck-headers' "virtualbox-host-dkms>=$pkgver" "virtualbox-guest-dkms>=$pkgver" 'dkms')
 
-_extramodules=extramodules-ck
+# 1: Get the installed ck from pacman. ex: linux-ck-ivybridge 4.17.11-6
+# 2: Get first column. ex: linux-ck-ivybridge
+# 3: Get core version. ex: ivybridge
+_kernel="$(pacman -Q linux-ck | awk '{print $1}' | cut -d \- -f 3)"
+_extramodules=extramodules-ck-${_kernel}
 _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
+
+
+pkgver() {
+        pacman -Ss virtualbox-host-dkms | awk 'NR==1{print $2}' | cut -d \- -f 1
+}
+
+pkgrel() {
+        pacman -Ss virtualbox-host-dkms | awk 'NR==1{print $2}' | cut -d \- -f 2
+}
 
 build() {
 	# dkms need modification to be run as user
@@ -28,7 +41,9 @@ package_virtualbox-ck-host-modules() {
 	#pkgdesc="${_Hpkgdesc}"
 	pkgdesc='Host kernel modules for VirtualBox running under Linux-ck.'
 	provides=("VIRTUALBOX-HOST-MODULES")
-	depends=('linux-ck>=4.17' 'linux-ck<4.18')
+	depends=('linux-ck')
+	# In case needed. Repo version: pacman -Ss linux-ck-${_kernel} | awk 'NR==1{print $2}' | cut -d \- -f 1 | cut -d \. -f 1,2
+	#depends=('linux-ck>=4.17' 'linux-ck<4.18')
 	#replaces=('virtualbox-ck-host-modules-corex')
 	#groups=('ck-generic')
 
