@@ -1,0 +1,8 @@
+*.src.tar.xz
+*.src.tar.xz.sig
+*.pkg.tar.xz
+src/
+pkg/
+templight/
+cfe/
+llvm/
