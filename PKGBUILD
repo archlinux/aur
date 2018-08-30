@@ -10,7 +10,7 @@
 
 pkgname='unreal-engine'
 install="$pkgname.install"
-pkgver=4.20.1
+pkgver=4.20.2
 # shellcheck disable=SC2034
 {
   pkgrel=1
@@ -46,7 +46,7 @@ sha256sums=('SKIP'
             '006bfc6dc6c4258b55768cac34a3c42f033a2777332272d8c47c340282bf400f')
 
   # Package is 3 Gib smaller with "strip" but it's skipped because it takes a long time and generates many warnings
-  options=(!strip staticlibs)
+  options=(strip staticlibs)
 }
 
 prepare() {
