@@ -52,7 +52,7 @@ source=($pkgname::git+https://github.com/AdaptiveScale/$_pkgname
 sha256sums=('SKIP'
             'e419e1ecb8bec84fd676e7a729d91b48065a3a7616956bc5356e64e6d8286eac'
             'b149cf164d32659b95802d0e4e455e98736de0d0ece519c48eae2eb846c35f3c'
-            '0f1eca29cbdfc2aeceeb37ece9d6cdfce19503307bd2de3803cf8de2b8139a2c'
+            '4f96bb6af509e6dacf97e2298da9f2bf783f46279c6957ed288fed478206696d'
             '7487a9b77522a23b1be4c02961f46917d48b9c617d669843bbf26c4fd285d75d'
             '929c933ed0085d74972fd20c14f07b01ad4aaaff93c84897527868424447ef1f')
 

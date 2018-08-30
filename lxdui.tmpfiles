@@ -1,2 +1,5 @@
 d /var/log/lxdui 0750 lxdui lxdui -
 d /run/lxdui 0750 lxdui lxdui -
+z /etc/lxdui/auth.conf 0600 lxdui lxdui -
+Z /var/log/lxdui 0750 lxdui lxdui -
+

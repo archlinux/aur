@@ -1,10 +1,5 @@
 post_install()
 {
-	systemd-sysusers
-
-	chmod 600 /etc/lxdui/auth.conf
-	chown lxdui:lxdui /etc/lxdui/auth.conf
-
 	cat <<EOF
 
 To change the default admin password run
@@ -24,9 +19,6 @@ EOF
 
 post_upgrade()
 {
-	chmod 600 /etc/lxdui/auth.conf
-	chown lxdui:lxdui /etc/lxdui/auth.conf
-
 	systemctl daemon-reload
 }
 
