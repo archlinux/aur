@@ -2,7 +2,7 @@
 # Contributor: VVL <me@ivvl.ru>
 
 pkgname=btrfs-autosnap
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Bash script with Pacman hook which help make btrfs root snapshots fast, simple and automatically."
 arch=(any)
@@ -10,7 +10,7 @@ url="https://github.com/vvl-rulez/btrfs-autosnap"
 license=('MIT')
 source=("https://github.com/vvl-rulez/btrfs-autosnap/archive/v$pkgver.tar.gz")
 depends=('btrfs-progs' 'util-linux' 'coreutils')
-sha256sums=('bf0b877ec2a13cd1f9df519efc262550ceb6a0e9b65040d20b64b3a8c7bd2e1a')
+sha256sums=('12daf51aad04f6a24ec2445f142f0612749c9ee917bafa0ea4cef4f6e21229c5')
 backup=('etc/btrfs-autosnap.conf')
 package() {
 	cd "$pkgname-$pkgver"
