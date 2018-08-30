@@ -1,0 +1,16 @@
+pkgbase = tunsafe
+	pkgdesc = High performance and secure VPN client that uses the WireGuard protocol
+	pkgver = 1.4_rc1
+	pkgrel = 1
+	url = https://tunsafe.com/
+	arch = i686
+	arch = x86_64
+	license = AGPL
+	license = BSD
+	license = custom: OpenSSL
+	depends = gcc-libs
+	source = tunsafe-1.4_rc1-src.tar.gz::https://github.com/TunSafe/TunSafe/archive/cf92ac7a0c444ba4b31bdf9b1744705e6542d028.tar.gz
+	sha256sums = 7dc8bf8dd136d2db8f3032a215f300189064cc8772d28242be4ebd4c14c0262b
+
+pkgname = tunsafe
+
