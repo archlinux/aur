@@ -54,7 +54,7 @@ ocaml-taglib
 ocaml-lame
 
 # SHINE is for fixed-point MP3 encoding.
-ocaml-shine
+#ocaml-shine
 
 # OGG is for ogg/vorbis and ogg/theora encoding and decoding
 ocaml-ogg
