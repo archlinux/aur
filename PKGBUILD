@@ -22,6 +22,6 @@ prepare() {
 
 package() {
   cd "${srcdir}/${_basename}"
-  mkdir -p "${pkgdir}/usr/include/${_basename}"
-  cp -rf include/seqan3 "$pkgdir/usr/include/${_basename}"
+  mkdir -p "${pkgdir}/usr/include/"
+  cp -rf include/seqan3 "$pkgdir/usr/include/"
 }
