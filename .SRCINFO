@@ -13,6 +13,7 @@ pkgbase = simpleagenda.app
 	depends = gnustep-base
 	depends = gnustep-gui
 	depends = gnustep-back
+	depends = libical
 	optdepends = addresses.app
 	source = https://github.com/poroussel/simpleagenda/archive/v0.44.tar.gz
 	sha256sums = 8c23bc54861ff374277335ef36a55dea9ded0cd99cd90795edb7bdde473b9228
