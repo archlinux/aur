@@ -26,7 +26,7 @@ makedepends+=('lib32-glibc>=2.20' 'texinfo')
 checkdepends=('dejagnu' 'inetutils')
 provides=("gcc${_pkgver//\./}") # no version as it is completely contained in the name
 conflicts=("gcc${_pkgver//\./}")
-options=('!emptydirs')
+options=('!emptydirs' '!strip')
 source=(
   "ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2"
   #ftp://gcc.gnu.org/pub/gcc/snapshots/${_snapshot}/gcc-${_snapshot}.tar.bz2
@@ -90,10 +90,18 @@ prepare() {
   'x86_64') sed -e '/m64=/ s/lib64/lib/' -i 'gcc/config/i386/t-linux64' ;;
   esac
 
-  echo "${pkgver}" > 'gcc/BASE-VER'
+  if ! grep -qFxe "${pkgver%%_*}" 'gcc/BASE-VER'; then
+    echo "Version has changed from ${pkgver%%_*} to"
+    cat 'gcc/BASE-VER'
+    set +u
+    false
+  fi
 
   # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
   sed -e '/^ac_cpp=/ s/\$CPPFLAGS/\$CPPFLAGS -O2/' -i {libiberty,gcc}/configure
+
+  # remove -V and -qversion as their aren't supported in gcc7
+  sed -e 's/ -V -qversion/ /g' -i $(grep --include='configure' -lrFe '-V -qversion')
 
   rm -rf 'gcc-build'
   mkdir 'gcc-build'
@@ -131,6 +139,7 @@ build() {
       --disable-libssp \
       --disable-libstdcxx-pch \
       --disable-libunwind-exceptions \
+      --disable-libsanitizer \
       --enable-multilib \
       --disable-werror \
       --enable-__cxa_atexit \
@@ -167,12 +176,14 @@ build() {
   LD_PRELOAD='/usr/lib/libstdc++.so' \
   nice make -j "${_nproc}"
 
+  set +u; msg 'Compile complete'; set -u
+
   # make documentation
   make -s -j1 -C "${CHOST}/libstdc++-v3/doc" 'doc-man-doxygen'
   set +u
 }
 
-_fn_check() {
+_check_disabled() {
   set -u
   cd "${_basedir}/gcc-build"
 
@@ -199,9 +210,9 @@ package() {
 
   # Move potentially conflicting stuff to version specific subdirectory
   case "${CARCH}" in
-  'x86_64') mv "${pkgdir}/usr/lib/gcc/${CHOST}"/lib*/ "${pkgdir}/usr/lib/gcc/${CHOST}/${pkgver}/" ;;
+  'x86_64') mv "${pkgdir}/usr/lib/gcc/${CHOST}"/lib*/ "${pkgdir}/usr/lib/gcc/${CHOST}/${pkgver%%_*}/" ;;
   esac
-  #mv "${pkgdir}/usr/lib"/lib* "${pkgdir}/usr/lib/gcc/${CHOST}/${pkgver}/"
+  #mv "${pkgdir}/usr/lib"/lib* "${pkgdir}/usr/lib/gcc/${CHOST}/${pkgver%%_*}/"
 
   # Install Runtime Library Exception
   install -Dpm644 '../COPYING.RUNTIME' \
