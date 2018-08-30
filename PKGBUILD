@@ -1,7 +1,8 @@
 # Maintainer: dmidge <quelque_ri1 at caramail point fr>
 pkgname=trisycl-git
-pkgver=1.2.1.r
-pkgrel=2
+_pkgver=1.2.1
+pkgver=1.2.1.r1159.6172c33a
+pkgrel=1
 pkgdesc="It is the open source implementation of the SYCL Khronos specification, to do some kind of OpenCL like programming in C++ fashion."
 arch=('x86_64' 'i686')
 url="https://github.com/triSYCL/triSYCL.git"
@@ -13,7 +14,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd triSYCL
-  echo "1.2.1.r`git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'`"
+  printf "${_pkgver}.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
