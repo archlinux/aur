@@ -14,7 +14,7 @@ conflicts=('hmcl')
 source=("git://github.com/huanghongxun/$_pkgname.git"
         "$_pkgname.run")
 sha512sums=("SKIP"
-            "1edd383debfde87cede19546391fc6d981e708c8bbe11a46e379e97e6e180235d5087cda8a66973403cc139bec4d75949729f05462d0c5003ae9379b816dcb82")
+            "72d3dc8366c09075ada4eafab977b7c175cf2da6b353e18421b89168044d4f32cd8cd5c5242ba67548b5d415ccc2ea4d81c4909e11407ed1411708e4550d9175")
 
 pkgver() {
     git -C HMCL describe --tag | sed 's/^v//'
