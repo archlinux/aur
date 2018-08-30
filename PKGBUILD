@@ -4,19 +4,19 @@
 
 _basename=opencv
 pkgname=lib32-opencv
-pkgver=3.4.2
-pkgrel=2
+pkgver=3.4.3
+pkgrel=1
 pkgdesc="Open Source Computer Vision Library (32-bit)"
 arch=('x86_64')
 license=('BSD')
 url="https://opencv.org"
 depends=('lib32-ffmpeg' 'lib32-gst-plugins-base' 'lib32-gtk3' 'lib32-hdf5' 'lib32-intel-tbb'
         'lib32-jasper' 'lib32-libdc1394' 'lib32-libgphoto2' 'lib32-openexr' 'lib32-tesseract' 'opencv')
-makedepends=('cmake' 'eigen' 'lib32-libaec')
+makedepends=('cmake' 'eigen' 'hdf5' 'lib32-libaec')
 source=("$_basename-$pkgver.tar.gz::https://github.com/opencv/opencv/archive/$pkgver.zip"
         "opencv_contrib-$pkgver.tar.gz::https://github.com/opencv/opencv_contrib/archive/$pkgver.tar.gz")
-sha256sums=('9405c5d7d8ab1696e98631d0c92125816356ec366a73c417bdcc4d74783b42aa'
-            '45a52764ebd2558fa0b7fd8dc47379b37dd0956d912abbf7c786228374fdf60d')
+sha256sums=('37c7d8c3b9807902ad11b9181bbde61dcb3898a78a563130494752f46fe8cc5f'
+            '6dfb51326f3dfeb659128df952edecd45683626a965aa4a8e1e9c970c40fb636')
 
 prepare() {
     mkdir -p build
