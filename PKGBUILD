@@ -2,24 +2,23 @@
 # Maintainer: Zeph <zeph33@gmail.com>
 
 pkgname=pamac-tray-appindicator
-_pkgver=6.4.0
+_pkgver=6.9.0
 pkgver=$_pkgver
 pkgrel=1
 pkgdesc="Tray icon using appindicator which feets better in KDE"
 depends=('pamac' 'libappindicator-gtk3')
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
-url="https://github.com/manjaro/pamac"
+url="https://gitlab.manjaro.org/applications/pamac"
 license=('GPL3')
-makedepends=('gettext' 'itstool' 'vala>=0.36' 'libappindicator-gtk3' 'meson' 'ninja')
+makedepends=('gettext' 'itstool' 'vala>=0.36.6' 'libappindicator-gtk3' 'meson' 'ninja' 'git')
+
 options=(!emptydirs)
 
-source=("pamac-$pkgver-$pkgrel.tar.gz::$url/archive/v$_pkgver.tar.gz"
-        #"git-$pkgver-$pkgrel.patch::https://github.com/manjaro/pamac/compare/v$_pkgver...master.patch"
-       )
-sha256sums=('4bb1223d318037f9b17c3b44197aae40ae19fb8a508e2540d6d09959796a0265')
+source=("pamac-$pkgver-$pkgrel.tar.gz::$url/-/archive/v$_pkgver/pamac-v$_pkgver.tar.gz")
+sha256sums=('dbbd623c57f96a3bb979cdf83830f2e0c50d401c13ae8d7c9c92c84204999a2c')
 
 prepare() {
-  cd "$srcdir/pamac-$pkgver"
+  cd "$srcdir/pamac-v$pkgver"
   # patches here
   #patch -p1 -i "$srcdir/git-$pkgver-$pkgrel.patch"
 
@@ -28,7 +27,7 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/pamac-$pkgver"
+  cd "$srcdir/pamac-v$pkgver"
   mkdir -p builddir
   cd builddir
   meson --prefix=/usr --sysconfdir=/etc -Denable-appindicator=true
@@ -38,7 +37,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/pamac-$pkgver"
+  cd "$srcdir/pamac-v$pkgver"
   install -Dm755 "builddir/src/pamac-tray-appindicator" "$pkgdir/usr/bin/pamac-tray-appindicator"
   install -Dm644 "data/applications/pamac-tray-appindicator.desktop" "$pkgdir/etc/xdg/autostart/pamac-tray-appindicator.desktop"
 }
