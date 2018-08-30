@@ -10,7 +10,7 @@
 
 _pkgname=angband
 pkgname=angband-ncurses
-pkgver=4.1.2
+pkgver=4.1.3
 pkgrel=1
 pkgdesc="A roguelike dungeon exploration game based on the writings of JRR Tolkien (ncurses-only)"
 arch=('i686' 'x86_64')
@@ -58,4 +58,4 @@ package() {
   install -Dm644 copying.txt "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING"
 }
 
-sha256sums=('30bc0979e0845cdc43de2a8f65c4d54d03d24d402b32b8589fbbc368ccfa0e2a')
+sha256sums=('9402c4f8da691edbd4567a948c5663e1066bee3fcb4a62fbcf86b5454918406f')
