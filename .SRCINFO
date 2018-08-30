@@ -1,7 +1,7 @@
 pkgbase = x11-touchscreen-calibrator-git
 	pkgdesc = X Window System Touchscreen Calibrator
 	pkgver = 0.2.r14.g1d3e955
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/djpohly/x11-touchscreen-calibrator
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = x11-touchscreen-calibrator-git
 	depends = libxi
 	depends = libxrandr
 	depends = libxfixes
+	provides = x11-touchscreen-calibrator
 	source = git+https://github.com/djpohly/x11-touchscreen-calibrator.git
 	sha256sums = SKIP
 
