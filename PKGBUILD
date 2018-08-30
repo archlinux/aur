@@ -1,15 +1,15 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
 pkgname=rtichoke
-pkgver=0.2.1
+pkgver=0.2.12
 pkgrel=1
 pkgdesc="A 21 century R console"
 url="https://github.com/randy3k/rtichoke"
 arch=('i686' 'x86_64')
 license=('MIT')
-depends=('r>=3.4.0' 'python-lineedit' 'python-rapi')
+depends=('r>=3.4.0' 'python-lineedit>=0.1.1' 'python-rapi>=0.1.2')
 makedepends=('python-setuptools')
 source=("https://github.com/randy3k/rtichoke/archive/v$pkgver.tar.gz")
-sha256sums=('d642c4cd6bd486d499048c5f327221e1beb30d41394057069ae46bc58cd50a57')
+sha256sums=('9936a374da26648117e6b0f103e23d44079843b5d15b7e34dcc8912b7df7e110')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
