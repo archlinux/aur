@@ -1,5 +1,5 @@
 pkgname=dokku
-pkgver=0.12.11
+pkgver=0.12.12
 pkgrel=1
 pkgdesc="Docker powered mini-Heroku in around 100 lines of Bash."
 arch=(any)
@@ -26,8 +26,8 @@ source=(
   "https://github.com/dokku/dokku/archive/v${pkgver}.zip"
   "${pkgname}.install"
 )
-sha256sums=('9d6f3082f6671317d9a4fd48290dd7bf89ef4bfbc390948ee0f302345c6e8025'
-            'caa9152e782dbeb1f6176fedab3314cdde737e815998393799a67cc24dd32109')
+sha256sums=('d48c3b9397c46efbc8cf92de63f4f7f01cc82bfde6d01779057b940475e90677'
+            '09e37fa26884952040f332f5386ce55d803856e0d0f8a42afd4684ade96db8ca')
 install=${pkgname}.install
 
 package() {
@@ -43,4 +43,6 @@ package() {
   find plugins/ -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | while read plugin; do cd "${pkgdir}/var/lib/dokku/core-plugins/available/${plugin}" && if [ -e Makefile ]; then make src-clean; fi; done
   find plugins/ -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | while read plugin; do touch "${pkgdir}/var/lib/dokku/core-plugins/available/${plugin}/.core"; done
   rm "${pkgdir}/var/lib/dokku/core-plugins/common.mk"
+  git describe --tags > "${pkgdir}/var/lib/dokku/VERSION"
+  cat "${pkgdir}/var/lib/dokku/VERSION" | cut -d '-' -f 1 | cut -d 'v' -f 2 > "${pkgdir}/var/lib/dokku/STABLE_VERSION"
 }

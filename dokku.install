@@ -51,7 +51,8 @@ post_install() {
   echo "Install all core plugins"
   dokku plugin:install --core
 
-  echo "$1" | cut -d "-" -f 1 > ${DOKKU_LIB_ROOT}/VERSION
+  rm -f ${DOKKU_ROOT}/VERSION
+  cp ${DOKKU_LIB_ROOT}/STABLE_VERSION ${DOKKU_ROOT}/VERSION
   
   hostname -f > "${DOKKU_ROOT}/HOSTNAME"
 
