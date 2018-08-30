@@ -10,8 +10,8 @@ pkgbase = libhandy
 	makedepends = meson
 	depends = gtk3
 	conflicts = libhandy-git
-	source = git+https://source.puri.sm/Librem5/libhandy.git#tag=v0.0.2
-	sha256sums = SKIP
+	source = https://source.puri.sm/Librem5/libhandy/-/archive/v0.0.2/libhandy-v0.0.2.tar.gz
+	md5sums = f4156ae8802bfe06e9caacb03479e979
 
 pkgname = libhandy
 

@@ -9,16 +9,14 @@ url="https://source.puri.sm/Librem5/libhandy"
 license=(LGPL2.1)
 arch=(x86_64)
 depends=(gtk3)
-makedepends=(git
-             pkg-config
-             meson)
-conflicts=(${pkgname}-git)
-source=("git+https://source.puri.sm/Librem5/${pkgname}.git#tag=v${pkgver}")
-sha256sums=(SKIP)
+makedepends=(pkg-config meson)
+conflicts=(libhandy-git)
+source=("https://source.puri.sm/Librem5/libhandy/-/archive/v${pkgver}/libhandy-v${pkgver}.tar.gz")
+md5sums=('f4156ae8802bfe06e9caacb03479e979')
 
 build() {
     rm -rf build
-    arch-meson "${pkgname}" build -Dexamples=false -Dgtk_doc=true
+    arch-meson "libhandy-v${pkgver}" build -Dexamples=false -Dgtk_doc=true
     ninja -C build
     ninja -C build libhandy-doc
 }
