@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0.1
+Type=Application
+Terminal=false
+Exec=/opt/memtypetool/MemTypeManager
+Name=MemType Tool
+Icon=/opt/memtypetool/logo.png
