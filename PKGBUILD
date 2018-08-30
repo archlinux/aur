@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/huanghongxun/HMCL"
 license=('GPL3')
 depends=('java-openjfx>=8')
-makedepends=("git" "java-environment>=8")
+makedepends=("git" "jdk")
 provides=('hmcl')
 conflicts=('hmcl')
 source=("git://github.com/huanghongxun/$_pkgname.git"
