@@ -1,6 +1,6 @@
 # Maintainer: tequa
 pkgname=libps3000a
-pkgver=1.7.0_6r09
+pkgver=2.1.0_6r570
 pkgrel=1
 pkgdesc="library for picotech oscilloscope 3000a series"
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ options=(!strip)
 install=
 changelog=
 source=("http://labs.picotech.com/debian/pool/main/libp/${pkgname}/${pkgname}_${pkgver//_/-}_${_arch}.deb")
-md5sums=('f91f4ae6a6087f1e0d69e14ba357f6a2')
+md5sums=('359c3cc60b45df41849a60468b1bb5c2')
 noextract=()
 
 build() {
