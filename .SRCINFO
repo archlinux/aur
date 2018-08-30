@@ -1,7 +1,7 @@
 pkgbase = tty-solitaire-git
 	pkgdesc = An ncurses-based Klondike solitaire clone
 	pkgver = v1.1.0.r2.g9cbfc95
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/mpereira/tty-solitaire
 	arch = i686
@@ -9,6 +9,8 @@ pkgbase = tty-solitaire-git
 	license = MIT
 	makedepends = git
 	depends = ncurses
+	conflicts = tty-solitaire
+	replaces = tty-solitaire
 	source = tty-solitaire::git+https://github.com/mpereira/tty-solitaire
 	sha256sums = SKIP
 
