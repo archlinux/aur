@@ -1,7 +1,7 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
 pkgname=python-lineedit
 _pkgname=${pkgname#python-}
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="a readline library based on prompt_toolkit which supports multiple modes"
 url="https://github.com/randy3k/lineedit/archive/v$pkgver.tar.gz"
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('readline' 'python-pygments' 'python-wcwidth' 'python-six')
 makedepends=('python-setuptools')
 source=("https://github.com/randy3k/lineedit/archive/v$pkgver.tar.gz")
-sha256sums=('f54661ca6fe5c9f6812133f5c7c4f32a73359709a8a7f2046196ea02b839beb9')
+sha256sums=('ad0e641387bd62f6b89938d61412b696a5b39b2b474749ae0da3f523885f93a0')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
