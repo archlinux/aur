@@ -1,0 +1,19 @@
+pkgbase = ttf-cica-git
+	pkgdesc = Composite Japanese font for coding. Mixed Ubuntu Mono, Rounded Mgen+, Nerd Fonts and Noto Emoji.
+	pkgver = v3.0.0.r4.g58ac972
+	pkgrel = 1
+	url = https://github.com/miiton/Cica
+	install = ttf-cica-git.install
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = docker
+	makedepends = docker-compose
+	depends = fontconfig
+	depends = xorg-font-utils
+	provides = ttf-cica
+	source = Cica::git+https://github.com/miiton/Cica.git
+	md5sums = SKIP
+
+pkgname = ttf-cica-git
+
