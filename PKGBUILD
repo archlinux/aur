@@ -8,20 +8,20 @@
 
 pkgname=mutter-781835-workaround
 _pkgname=mutter
-pkgver=3.28.3
-pkgrel=8
-pkgdesc="A window manager for GNOME. This package reverts a commit which may causes performance problems for nvidia driver users."
+pkgver=3.28.3+8+gd0d807801
+pkgrel=1
+pkgdesc="A window manager for GNOME. This package reverts a commit which may causes performance problems for nvidia driver users. Some performance patches also included."
 url="https://git.gnome.org/browse/mutter"
 arch=(x86_64)
 license=(GPL)
 depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas libcanberra
          startup-notification zenity libsm gnome-desktop upower libxkbcommon-x11
-         gnome-settings-daemon libgudev libinput pipewire 'gnome-shell=3.28.3+7+g721ce5403') # or gnome-shell-performance=3.28.3+7+g721ce5403
+         gnome-settings-daemon libgudev libinput pipewire gnome-shell) # or gnome-shell-performance=3.28.3+7+g721ce5403
 makedepends=(intltool gobject-introspection git)
 provides=(mutter)
 conflicts=(mutter)
 groups=(gnome)
-_commit=34f5bdeea3be10e200c52bac56763a267eb4d415 # tags/3.28.3^0
+_commit=d0d8078013749bb84dc611dfdf6b317512c8559e  # gnome-3-28
 source=("git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         startup-notification.patch
         revert.patch)
@@ -39,7 +39,7 @@ prepare() {
 
   ## Unmerged performance bits, enable with own risk and merge conflicts yourself
   # Multiline comment start, remove the line (and comment end line) below to enable the patches
-  : '
+  # : '
   ## https://gitlab.gnome.org/GNOME/mutter/merge_requests/70/commits
   git remote add vanvugt https://gitlab.gnome.org/vanvugt/mutter.git || true
   git fetch vanvugt
@@ -54,7 +54,7 @@ prepare() {
   # This causes stutter on Intel iGPU (i7 8550u). Works fine for nv GPU from my experience
   # git cherry-pick a4b62506 || bash
   # git cherry-pick 2088061a || bash
-  '
+  # '
   # Multiline comment end, remove the line above if enabling the patches
 
   # Revert offending commit
