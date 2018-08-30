@@ -1,13 +1,14 @@
 # Maintainer: Thiago L. A. Miller <thiago_leisrael@hotmail.com>
 pkgname=salmon
 pkgver=0.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Highly-accurate & wicked fast transcript-level quantification from RNA-seq reads using lightweight alignments"
 arch=('x86_64')
 url="https://combine-lab.github.io/$pkgname/"
 license=('GPL')
-depends=('boost>=1.55' 'ca-certificates' 'unzip')
-makedepends=('cmake')
+depends=('bzip2' 'intel-tbb' 'jemalloc' 'xz')
+makedepends=('boost>=1.55' 'cmake' 'unzip')
+options=('!emptydirs')
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/COMBINE-lab/$pkgname/archive/v$pkgver.tar.gz")
 md5sums=('d81f083e71adc6d46a21ed14df624136')
 
