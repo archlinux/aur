@@ -1,14 +1,14 @@
-diff --git a/src/app.cpp b/src/app.cpp
-index 35d06a3..3e33eb7 100644
---- a/src/app.cpp
-+++ b/src/app.cpp
-@@ -175,6 +175,9 @@ void initGL (glm::ivec4 &_viewport, bool _headless) {
-             glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
+diff --git a/src/window.cpp b/src/window.cpp
+index 66cf765..fc8f44c 100644
+--- a/src/window.cpp
++++ b/src/window.cpp
+@@ -204,6 +204,9 @@ void initGL (glm::ivec4 &_viewport, bool _headless, bool _alwaysOnTop) {
+             glfwWindowHint(GLFW_FLOATING, GL_TRUE);
          }
  
 +        // Make it float
 +        glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
 +
          window = glfwCreateWindow(_viewport.z, _viewport.w, appTitle.c_str(), NULL, NULL);
-         
+ 
          if(!window) {
