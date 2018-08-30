@@ -1,6 +1,6 @@
 pkgbase = s-tui
 	pkgdesc = Terminal UI stress test and monitoring tool
-	pkgver = 0.7.5
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/amanusk/s-tui
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = s-tui
 	depends = python-setuptools
 	conflicts = s-tui-git
 	options = !emptydirs
-	source = https://github.com/amanusk/s-tui/archive/v0.7.5.tar.gz
-	sha1sums = d4d3578a02118060f6e120518adca055e675f206
+	source = https://github.com/amanusk/s-tui/archive/v0.8.2.tar.gz
+	sha1sums = a2d5234f4cd4cf21cde0ea9283d9a91a84f7b77b
 
 pkgname = s-tui
 
