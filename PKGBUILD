@@ -2,19 +2,19 @@
 # Maintainer: Reihar <reihar@necronomicon.fr>
 
 pkgname=stone-soup-ncurses
-_majorver=0.21
-pkgver=${_majorver}.1
+_majorver=0.22
+pkgver=${_majorver}.0
 pkgrel=1
 pkgdesc='Open-source, single-player, role-playing roguelike game of exploration and treasure-hunting (ncurses-only)'
 arch=('i686' 'x86_64')
 url='http://crawl.develz.org/'
-depends=('lua51' 'ncurses' 'sqlite' 'ttf-dejavu')
+depends=('lua51' 'ncurses' 'sqlite' 'glu' 'freetype2' 'ttf-dejavu')
 makedepends=('bison' 'flex')
 conflicts=('crawl' 'stone-soup' 'stone-soup-tiles' 'stone-soup-git')
 license=('custom')
 install=stone-soup-ncurses.install
 source=("http://crawl.develz.org/release/${_majorver}/stone_soup-${pkgver}-nodeps.tar.xz")
-sha256sums=('974e962530a2ccc783ab3b216a378137f56980fc63e834e937b237f40ed391c1')
+sha256sums=('1ac56b0bb04ac20e634bcfb2548b76500c1b3403993aac015b3f0c4c4ae35019')
 
 prepare() {
   cd "$srcdir"
@@ -44,7 +44,7 @@ package() {
 
   
   # install crawl license
-  install -D -m644 ../licence.txt \
-          "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
+  install -D -m644 ../LICENSE \
+          "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 }
