@@ -1,0 +1,16 @@
+pkgbase = qsp-common
+	pkgdesc = Common files for packages qqsp and qsp-bin (mimetypes, icons)
+	pkgver = 20180830
+	pkgrel = 1
+	url = https://github.com/QSPFoundation/qsp/
+	arch = any
+	license = GPL
+	license = LGPL
+	makedepends = librsvg
+	source = https://raw.githubusercontent.com/QSPFoundation/qsp/45c4e7180704b2940e547eb041bbc5b57c46d9e2/help/qsp-logo-vector.svg
+	source = qsp.mime
+	sha256sums = 12de4d6a91bdc09d334585b04dbb3d2e9ae7277f0274090b9f73c812d414e5dc
+	sha256sums = SKIP
+
+pkgname = qsp-common
+

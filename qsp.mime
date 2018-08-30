@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/x-qsp">
+    <comment>QSP interactive fiction</comment>
+    <comment xml:lang="en">QSP interactive fiction</comment>
+    <comment xml:lang="pl">QSP fikcja interaktywna</comment>
+    <icon name="qsp"/>
+    <magic priority="50">
+      <match value="Q\0S\0P\0G\0A\0M\0E\0\r" type="string" offset="0" />
+    </magic>
+    <glob pattern="*.qsp"/>
+  </mime-type>
+  <mime-type type="application/x-qsp-sav">
+    <comment>QSP interactive fiction (save game)</comment>
+    <comment xml:lang="en">QSP interactive fiction (save game)</comment>
+    <comment xml:lang="pl">QSP fikcja interaktywna (zapis gry)</comment>
+    <magic priority="50">
+      <match value="Q\0\0\0S\0\0\0P\0\0\0S\0\0\0A" type="string" offset="0">
+        <match value="M\0\0\0E\0\0\0\r" type="string" offset="40" />
+      </match>
+    </magic>
+    <glob pattern="*.sav"/>
+  </mime-type>
+</mime-info>
