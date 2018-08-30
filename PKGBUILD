@@ -43,6 +43,5 @@ package() {
   find plugins/ -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | while read plugin; do cd "${pkgdir}/var/lib/dokku/core-plugins/available/${plugin}" && if [ -e Makefile ]; then make src-clean; fi; done
   find plugins/ -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | while read plugin; do touch "${pkgdir}/var/lib/dokku/core-plugins/available/${plugin}/.core"; done
   rm "${pkgdir}/var/lib/dokku/core-plugins/common.mk"
-  git describe --tags > "${pkgdir}/var/lib/dokku/VERSION"
-  cat "${pkgdir}/var/lib/dokku/VERSION" | cut -d '-' -f 1 | cut -d 'v' -f 2 > "${pkgdir}/var/lib/dokku/STABLE_VERSION"
+  echo "${pkgver}" > "${pkgdir}/var/lib/dokku/STABLE_VERSION"
 }
