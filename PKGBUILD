@@ -1,8 +1,9 @@
 # Maintainer: Kevin Velickovic <kevin dot velickovic at gmail dot com>
+# Maintainer: Reik Keutterling <spielkind at gmail dot com>
 
 _gemname=fusuma
 pkgname=ruby-$_gemname
-pkgver=0.1.2
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="Fusuma is multitouch gesture recognizer."
 arch=(any)
@@ -12,7 +13,7 @@ depends=(ruby xdotool)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('5e076da0550891e4c5ae1c44d2300c831f574045')
+sha1sums=('9eb64c590d1a653643b3ce7030cb1de715f1ea7e')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
