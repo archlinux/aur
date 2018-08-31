@@ -1,0 +1,21 @@
+pkgbase = emacs-lispy-git
+	pkgdesc = Short and sweet LISP editing
+	pkgver = r2095.0530371
+	pkgrel = 1
+	url = https://github.com/abo-abo/lispy
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	depends = emacs-ace-window
+	depends = emacs-hydra
+	depends = emacs-iedit
+	depends = emacs-swiper
+	depends = emacs-zoutline
+	provides = emacs-lispy
+	conflicts = emacs-lispy
+	source = git+https://github.com/abo-abo/lispy.git
+	sha256sums = SKIP
+
+pkgname = emacs-lispy-git
+
