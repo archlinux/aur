@@ -1,6 +1,6 @@
 pkgbase = yaics
 	pkgdesc = A simple GNU social client developed in Qt
-	pkgver = 0.5.r29.g1358c1a
+	pkgver = 0.6
 	pkgrel = 1
 	url = https://gitlab.com/stigatle/yaics/
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = yaics
 	depends = aspell
 	depends = hicolor-icon-theme
 	conflicts = yaics-git
-	source = yaics::git+https://gitlab.com/stigatle/yaics.git
+	source = yaics::git+https://gitlab.com/stigatle/yaics.git#commit=eb921d1415843f2a88c2a73d5f9278b0d978caf4
 	sha256sums = SKIP
 
 pkgname = yaics

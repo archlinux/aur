@@ -1,7 +1,7 @@
 # Maintainer: Icaro Perseo <icaroperseo[at]protonmail[dot]com>
 
 pkgname=yaics
-pkgver=0.5.r29.g1358c1a
+pkgver=0.6
 pkgrel=1
 pkgdesc="A simple GNU social client developed in Qt"
 arch=('i686' 'x86_64')
@@ -9,16 +9,8 @@ conflicts=('yaics-git')
 url="https://gitlab.com/stigatle/yaics/"
 license=('GPL')
 depends=('qt5-base' 'aspell' 'hicolor-icon-theme')
-source=("${pkgname}::git+https://gitlab.com/stigatle/yaics.git")
+source=("${pkgname}::git+https://gitlab.com/stigatle/yaics.git#commit=eb921d1415843f2a88c2a73d5f9278b0d978caf4")
 sha256sums=('SKIP')
-
-pkgver() {
-  cd "${pkgname}"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
-}
 
 build() {
   cd "${pkgname}"
