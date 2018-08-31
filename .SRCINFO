@@ -1,15 +1,15 @@
 pkgbase = slit
 	pkgdesc = A modern PAGER for viewing logs, get more than most in less time. Written in Go
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tigrawap/slit
 	arch = x86_64
 	arch = i686
 	license = MIT
-	makedepends = go
+	makedepends = go-pie
 	makedepends = git
+	depends = glibc
 	options = !strip
-	options = !emptydirs
 	source = git+https://github.com/tigrawap/slit#commit=f1d770e
 	md5sums = SKIP
 
