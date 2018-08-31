@@ -1,6 +1,6 @@
 pkgbase = youtube-viewer-git
 	pkgdesc = A command line utility for searching and streaming videos from YouTube.
-	pkgver = 3.3.4
+	pkgver = 3.4.0
 	pkgrel = 1
 	url = https://github.com/trizen/youtube-viewer
 	arch = any
@@ -21,6 +21,7 @@ pkgbase = youtube-viewer-git
 	optdepends = mplayer: for playing videos with MPlayer
 	optdepends = vlc: for playing videos with VLC
 	optdepends = mpv: for playing videos with MPV (recommended)
+	optdepends = ffmpeg: for conversions and MKV merging
 	provides = youtube-viewer
 	conflicts = youtube-viewer
 	source = git://github.com/trizen/youtube-viewer.git
