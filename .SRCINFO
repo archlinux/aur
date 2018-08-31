@@ -1,16 +1,13 @@
 pkgbase = apachetop
-	pkgdesc = Apachetop is a curses-based top-like display for Apache information, including requests per second, bytes per second, most popular URLs, etc.
-	pkgver = 0.12.6
-	pkgrel = 3
-	url = http://mirrors.zoelife4u.org/apachetop/
+	pkgdesc = A curses-based top-like display for Apache information, including requests per second, bytes per second, most popular URLs, etc.
+	pkgver = 0.18.4
+	pkgrel = 1
+	url = http://github.com/tessus/apachetop
 	arch = x86_64
-	arch = i686
 	license = BSD
 	depends = ncurses
-	source = http://mirrors.zoelife4u.org/apachetop/apachetop-0.12.6.tar.gz
-	source = apachetop-0.12.6-maxpathlen.patch
-	md5sums = 604283ac4bbbddd98fc9b1f11381657e
-	md5sums = f7a108df8f65cdf2cb66a2b8c6b53174
+	source = https://github.com/tessus/apachetop/releases/download/0.18.4/apachetop-0.18.4.tar.gz
+	sha256sums = 34ee3ad380f1f7c055a96296420f15011b522781691137ea4e3a36f6bd195568
 
 pkgname = apachetop
 
