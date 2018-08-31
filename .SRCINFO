@@ -1,0 +1,18 @@
+pkgbase = emacs-lispyville-git
+	pkgdesc = lispy + evil = lispyville
+	pkgver = r88.8c5fdec
+	pkgrel = 1
+	url = https://github.com/noctuid/lispyville
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	depends = emacs-evil
+	depends = emacs-lispy
+	provides = emacs-lispyville
+	conflicts = emacs-lispyville
+	source = git+https://github.com/noctuid/lispyville.git
+	sha256sums = SKIP
+
+pkgname = emacs-lispyville-git
+
