@@ -1,6 +1,6 @@
 pkgbase = cartaodecidadao
 	pkgdesc = Portuguese Citizen Card Application
-	pkgver = 2.4.6.5238
+	pkgver = 3.0.13
 	pkgrel = 1
 	url = http://www.cartaodecidadao.pt/
 	arch = i686
@@ -13,21 +13,24 @@ pkgbase = cartaodecidadao
 	depends = java-runtime-openjdk
 	depends = qt5-base
 	depends = qt5-tools
+	depends = qt5-quickcontrols2
 	depends = pcsclite>=1.5.0
 	depends = openssl-1.0
 	depends = ccid
 	depends = poppler-qt5
 	depends = xerces-c
-	depends = xml-security-c
+	depends = xml-security-c-ria
 	optdepends = autenticacao-gov-pt: Necessário para autenticações online
 	optdepends = cartaodecidadao-pki: PKI que confirma a validade dos certificados dos CC
 	optdepends = ecce-gov-pt-certificates: Certificados da ECCE (quem assina dos certificados contidos em cartaodecidadao-pki)
-	source = svn+https://svn.gov.pt/projects/ccidadao/repository/middleware-offline/tags/version2.4.6-5238/source/_src/eidmw
+	source = svn+https://svn.gov.pt/projects/ccidadao/repository/middleware-offline/tags/version3.0.13/_src/eidmw
 	source = 00-fix_certs_path.patch
 	source = 01-fix_pteiddialogsQTsrv_path.patch
+	source = 02-fix_missing_qicon.patch
 	sha512sums = SKIP
 	sha512sums = 0c2e434ee00d0b0b3f40d32bd7926d43332d9b1a0adb8d1ef53bd0a357caff92765ab6081207051ef94b7e5ad6800031573bfdb5ed9b45c956414ab6e2f89571
 	sha512sums = f47e75015582fddd0e97995ec27103fd26e5c72e987dc927cbbc0cd152522579115f3853bf727f4090b4689861fc7a9803c00ce1776b701d2a595c692fed1eb2
+	sha512sums = 2dc3e36d76024a08db8f9a78b9af986ece4391d09514626dbfe084d827cab634c2f55a79024611ca98e38fb23f472cecaf9c32070c92f165878040bd6b94ccd4
 
 pkgname = cartaodecidadao
 
