@@ -3,28 +3,28 @@
 
 _target=arm-none-eabi
 pkgname=$_target-newlib-linaro-git
-pkgver=.17991.eb4bfe462
-_pkgver=20171222
-pkgrel=2
+pkgver=3.0.0.18286.2ec54fb1d
+_pkgver=20180802
+pkgrel=1
 _libname=newlib
-_upstream_ver=snapshot-"${pkgver}"
+_upstream_ver=snapshot-$pkgver
 pkgdesc='A C standard library implementation intended for use on embedded systems (ARM bare metal) Linaro Git Version'
 arch=(any)
 url='http://www.sourceware.org/newlib/'
 license=(BSD)
-makedepends=($_target-gcc 'cloog')
+makedepends=($_target-gcc 'cloog-git')
 options=(!emptydirs !strip)
-provides=('"${_target}"-newlib')
+provides=($_target-newlib)
 source=("git+http://git.linaro.org/toolchain/newlib.git#tag=newlib-snapshot-$_pkgver")
 sha1sums=('SKIP')
 
 
 pkgver() {
-  cd ${_libname}
+  cd "$srcdir/${_libname}"
   printf "%s.%s.%s" \
     "$(git tag -l|grep -P '.+\..+\.\d+'|sed -r 's|v?([0-9\.]+)(-.+)?|\1|g'|sort -V -r|head -n1)" \
     "$(git rev-list --count HEAD)" \
-    "$(git rev-parse --short HEAD)"
+    "$(git rev-parse --short HEAD)" |cut -d "-" -f2 
 }
 
 build() {
