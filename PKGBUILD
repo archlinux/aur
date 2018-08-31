@@ -1,6 +1,6 @@
 # Maintainer: goetzc
 pkgname=cantata-git
-pkgver=2.2.0.r38.g2945e2da
+pkgver=2.3.2.r13.gd932126e1
 pkgrel=1
 pkgdesc="Qt5 graphical client for Music Player Daemon (MPD) - git version."
 arch=(i686 x86_64)
@@ -25,7 +25,7 @@ prepare() {
     if [[ -d build ]]; then
         rm -rf build
     fi
-        mkdir build
+    mkdir build
 }
 
 build() {
