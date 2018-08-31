@@ -2,17 +2,17 @@
 
 pkgname=dockbarx-macosx-theme
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="DockBarX Theme"
 arch=('any')
-url="http://gnome-look.org/content/show.php/DockbarX+MacOSX+X?content=119808"
+url="https://www.gnome-look.org/content/show.php/DockbarX+MacOSX+X?content=119808"
 license=('GPL')
 depends=('dockbarx')
 groups=('dockbarx-themes')
-source=('MacOSX.tar.gz::https://dl.opendesktop.org/api/files/download/id/1465391020/119808-MacOSX.tar.gz')
+source=('MacOSX.tar.gz::https://dl.opendesktop.org/api/files/download/id/1465391020/s/7abbe79c827b616b8487f55b78733911/t/1535688589/u//119808-MacOSX.tar.gz')
 noextract=('MacOSX.tar.gz')
 sha256sums=('20cc604f8009e4225b663bbaaec0df5c9e37da04f93c253aa10e30d2ee28fda4')
 
 package () {
-  install -D -m644 ${srcdir}/MacOSX.tar.gz ${pkgdir}/usr/share/dockbarx/themes/MacOSX.tar.gz
+  install -D -m644 "${srcdir}"/MacOSX.tar.gz "${pkgdir}"/usr/share/dockbarx/themes/MacOSX.tar.gz
 }
