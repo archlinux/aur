@@ -1,0 +1,12 @@
+pkgbase = ttf-ia-writer-duospace
+	pkgdesc = iA Writer Duospace font in ttf
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/iaolo/iA-Fonts
+	arch = any
+	license = custom
+	source = ia-writer-duospace-55edf60f544078ab1e14987bc67e9029a200e0eb.tar.gz::https://github.com/iaolo/iA-Fonts/archive/55edf60f544078ab1e14987bc67e9029a200e0eb.tar.gz
+	sha256sums = 9645212c27f0fac9a31d85b77483d46825af5c841875938005acd5117b5764d9
+
+pkgname = ttf-ia-writer-duospace
+
