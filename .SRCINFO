@@ -1,13 +1,13 @@
 pkgbase = mondo-generator
 	pkgdesc = a theme template manager and generator
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/budlabs/mondo
 	arch = any
 	license = MIT
 	depends = bash>=4.0.0
-	source = https://github.com/budlabs/mondo/archive/v.0.1.2.tar.gz
-	sha256sums = edc783bfa6ed0ec2beac0bc41290e796bc69356c3916af475b5edcd82ae0671b
+	source = https://github.com/budlabs/mondo/archive/v.0.1.3.tar.gz
+	sha256sums = 847f6ea4978ac48ded24a8dd356278a21a934dbf6100180dc2823d19f8d7a63c
 
 pkgname = mondo-generator
 

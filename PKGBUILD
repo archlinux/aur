@@ -2,7 +2,7 @@
 # Contributor: Nils Kvist <robstenklippa@gmail.com>
 
 pkgname=mondo-generator
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='a theme template manager and generator'
 arch=('any')
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/budlabs/mondo/archive/v.$pkgver.tar.gz")
 noextract=()
-sha256sums=('edc783bfa6ed0ec2beac0bc41290e796bc69356c3916af475b5edcd82ae0671b')
+sha256sums=('847f6ea4978ac48ded24a8dd356278a21a934dbf6100180dc2823d19f8d7a63c')
 
 package() {
   cd "mondo-v.$pkgver"
