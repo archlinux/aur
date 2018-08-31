@@ -3,7 +3,7 @@
 pkgbase=python-pyjwkest
 pkgname=($pkgbase 'python2-pyjwkest')
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Implementation of JWT, JWS, JWE and JWK.'
 arch=('any')
 url='https://github.com/rohe/pyjwkest'
@@ -42,5 +42,6 @@ package_python2-pyjwkest() {
 
     cd pyjwkest-$pkgver-python2
     python2 setup.py install --root $pkgdir
+    rename '.py' '2.py' ${pkgdir}/usr/bin/*
 
 }
