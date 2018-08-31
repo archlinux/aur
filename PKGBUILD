@@ -17,7 +17,7 @@ build() {
   cd "${srcdir}/expat-${pkgver}"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-configure ..
+    ${_arch}-configure --without-docbook ..
     make
     popd
   done
