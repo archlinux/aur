@@ -1,7 +1,7 @@
 pkgbase = templight-git
 	pkgdesc = Template Instantiation Profiler and Debugger
 	pkgver = r138.91589f9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mikael-s-persson/templight
 	arch = x86_64
 	license = custom:University of Illinois/NCSA Open Source License
