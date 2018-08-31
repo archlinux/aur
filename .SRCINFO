@@ -1,6 +1,6 @@
 pkgbase = dingtalk-electron
 	pkgdesc = 钉钉Linux版本
-	pkgver = 2.0.6
+	pkgver = 2.0.7
 	pkgrel = 1
 	url = https://github.com/nashaofu/dingtalk#readme
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = dingtalk-electron
 	depends = libxtst
 	depends = nss
 	depends = libxss
-	source = https://github.com/nashaofu/dingtalk/releases/download/v2.0.6/dingtalk_2.0.6_amd64.deb
-	md5sums = 7083edcd5ec9fdcff1a4c9d5d75a71a4
+	source = https://github.com/nashaofu/dingtalk/releases/download/v2.0.7/dingtalk_2.0.7_amd64.deb
+	md5sums = a6bc9a3480811f9c47d956ac47b400e8
 
 pkgname = dingtalk-electron
 
