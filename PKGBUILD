@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-fribidi
 pkgver=1.0.5
-pkgrel=3
+pkgrel=4
 pkgdesc="A Free Implementation of the Unicode Bidirectional Algorithm (mingw-w64)"
 arch=('any')
 license=('LGPL')
@@ -36,7 +36,7 @@ check() {
   export NEED_WINE=1
   for _arch in ${_architectures}; do
     cp ${srcdir}/fribidi/build-${_arch}/lib/*.dll ${srcdir}/fribidi/build-${_arch}/bin/
-    meson test -C ${srcdir}/fribidi/build-${_arch}
+    WINEDEBUG=-all meson test -C ${srcdir}/fribidi/build-${_arch}
   done
 }
 
