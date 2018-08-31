@@ -2,7 +2,7 @@
 
 pkgname=california
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A new calendar application for GNOME 3. It is currently under heavy development.'
 arch=('i686' 'x86_64')
 url="https://wiki.gnome.org/Apps/California"
