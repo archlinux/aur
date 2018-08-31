@@ -5,17 +5,19 @@ pkgbase = mutationpp-git
 	url = https://sync.vki.ac.be/mpp/mutationpp
 	arch = i686
 	arch = x86_64
-	license = GPL3
-	checkdepends = eigen
-	makedepends = python2
+	license = LGPL3
 	makedepends = git
 	makedepends = gcc
 	makedepends = cmake
-	depends = eigen
+	makedepends = gcc-fortran
+	depends = eigen3
 	depends = gcc-libs
 	provides = mutationpp
+	provides = mutation++
 	source = mutationpp::git+https://sync.vki.ac.be/mpp/mutationpp.git
+	source = 0001-Fix-some-issues-with-CMake.patch
 	sha256sums = SKIP
+	sha256sums = d5dbbdbc394eb5725cdc7637768fb3bd6fc189784a4d2ef77cdd4811613565ff
 
 pkgname = mutationpp-git
 

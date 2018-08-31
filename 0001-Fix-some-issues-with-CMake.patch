@@ -1,0 +1,86 @@
+From b93afe7395e2c011945d910821e09d55fbfd06d6 Mon Sep 17 00:00:00 2001
+From: Han Luo <han.luo@gmail.com>
+Date: Fri, 31 Aug 2018 02:25:58 -0400
+Subject: [PATCH] Fix some issues with CMake  - Replace the absolute path
+ provided by __FILE__ to the relative path  - Allow user to pass
+ CMAKE_INSTALL_PREFIX now  - Remove absolute path in src/CMakeLists.txt (Not
+ necessary)
+
+---
+ CMakeLists.txt       | 6 ++++--
+ src/CMakeLists.txt   | 5 +++++
+ src/general/Errors.h | 4 ++--
+ 3 files changed, 11 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3781ef4..22ca3b1 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -79,15 +79,17 @@ endif ()
+ ################################################################################
+ # Install prefix settings
+ ################################################################################
+-SET (CMAKE_INSTALL_PREFIX "../install" CACHE STRING
++if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
++  SET (CMAKE_INSTALL_PREFIX "../install" CACHE STRING
+     "Install path prefix, prepended onto install directories." FORCE)
++endif()
+ MARK_AS_ADVANCED (CMAKE_INSTALL_PREFIX)
+ 
+ if (CMAKE_COMPILER_IS_GNUCXX)
+     #set (CMAKE_CXX_FLAGS "-Wall -Wextra -Wno-unused-parameter -Wold-style-cast")
+     set (CMAKE_CXX_FLAGS "-g")
+ endif ()
+-
++set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D__FILENAME__='\"$(subst ${CMAKE_SOURCE_DIR}/,,$(abspath $<))\"'")
+ 
+ ################################################################################
+ # Fortran wrapper options
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index d9437f8..8326ffe 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -21,6 +21,9 @@
+ 
+ cmake_minimum_required(VERSION 2.6)
+ 
++# Set property to save the path of src
++set_property(GLOBAL PROPERTY MPPSRC_PATH "${CMAKE_CURRENT_SOURCE_DIR}")
++
+ #- Add sources for a target
+ #
+ #  ADD_SOURCES(<target> <source1> [<source2> ...])
+@@ -39,6 +42,8 @@ function (add_sources target)
+     if(NOT IS_ABSOLUTE "${src}")
+       get_filename_component(src "${src}" ABSOLUTE)
+     endif()
++    get_property(src_path_local GLOBAL PROPERTY MPPSRC_PATH)
++    file(RELATIVE_PATH src ${src_path_local} ${src})
+     list(APPEND SRCS "${src}")
+   endforeach()
+   # append to global property
+diff --git a/src/general/Errors.h b/src/general/Errors.h
+index 615989a..96377de 100644
+--- a/src/general/Errors.h
++++ b/src/general/Errors.h
+@@ -392,7 +392,7 @@ public:
+     }
+ }; // class LogicError
+ 
+-#define LogicError() LogicError(__FILE__, __LINE__)
++#define LogicError() LogicError(__FILENAME__, __LINE__)
+ 
+ 
+ /// Reports a "function not implemented" error.  Includes file, line number, and
+@@ -424,7 +424,7 @@ public:
+     }
+ };
+ 
+-#define NotImplementedError(_func_) NotImplementedError(_func_, __FILE__, __LINE__)
++#define NotImplementedError(_func_) NotImplementedError(_func_, __FILENAME__, __LINE__)
+ 
+ } // namespace Mutation
+ 
+-- 
+2.18.0
+

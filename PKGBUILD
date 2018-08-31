@@ -1,6 +1,6 @@
 # Maintainer: Han Luo <han dot luo at gmail dot com>
 pkgname=mutationpp-git
-provides=("${pkgname%-git}")
+provides=("${pkgname%-git}" "mutation++")
 _pkgname=${pkgname%-git}
 pkgver=r643.b100af0
 pkgrel=1
@@ -8,11 +8,13 @@ pkgrel=1
 pkgdesc="MUlticomponent Thermodynamic And Transport properties for partially IONized gases in C++"
 arch=('i686' 'x86_64')
 url="https://sync.vki.ac.be/mpp/mutationpp"
-license=('GPL3')
+license=('LGPL3')
 depends=('eigen3' 'gcc-libs')
-makedepends=('git' 'gcc' 'cmake')
-source=("$_pkgname::git+https://sync.vki.ac.be/mpp/mutationpp.git")
-sha256sums=('SKIP')
+makedepends=('git' 'gcc' 'cmake' 'gcc-fortran')
+source=("$_pkgname::git+https://sync.vki.ac.be/mpp/mutationpp.git"
+        0001-Fix-some-issues-with-CMake.patch)
+sha256sums=('SKIP'
+            'd5dbbdbc394eb5725cdc7637768fb3bd6fc189784a4d2ef77cdd4811613565ff')
 export MAKEFLAGS="-j"$(cat /proc/cpuinfo | awk '/^processor/{print $3}' | wc -l)
 
 pkgver() {
@@ -22,10 +24,14 @@ pkgver() {
 }
 
 prepare() {
-  #  sed -i "s|\.\./install|/usr|" ${_pkgname}/CMakeLists.txt #change install location
-  sed -i 's|^\(SET (CMAKE_INSTALL_PREFIX\).*$|\1 /usr CACHE PATH|' \
-    ${_pkgname}/CMakeLists.txt #change install location
+  # patch based on https://bitbucket.org/luohan/mutationpp/commits/b93afe7395e2c011945d910821e09d55fbfd06d6
+  cd $srcdir/$_pkgname
+  patch -Np1 -i ${srcdir}/0001-Fix-some-issues-with-CMake.patch
 
+  # configure the code
+  mkdir -p $srcdir/build
+  cd $srcdir/build
+  cmake ../${_pkgname} -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_FORTRAN_WRAPPER=ON
 }
 
 build() {
@@ -35,10 +41,9 @@ build() {
   # cd build
   # cmake ../ -DCMAKE_INSTALL_PREFIX=/usr
 
-  mkdir -p $srcdir/build
+  # compile the code
   cd $srcdir/build
-  cmake ../${_pkgname}
-  make $MAKEFLAGS
+  make $MAKEFLAGS DESTDIR="$pkgdir"
 }
 
 package() {
@@ -46,14 +51,20 @@ package() {
   # cd $srcdir/$_pkgname/thirdparty/eigen/build
   # make $MAKEFLAGS DESTDIR="$pkgdir" install
 
-
   cd $srcdir/build
   make $MAKEFLAGS DESTDIR="$pkgdir" install
 
+  install -d ${pkgdir}/opt/mutationpp
   # mutationpp data
-  mkdir -p ${pkgdir}/opt/mutationpp/data
   cp -r $srcdir/$_pkgname/data ${pkgdir}/opt/mutationpp/
 
+  # mutationpp example
+  cp -r $srcdir/$_pkgname/examples ${pkgdir}/opt/mutationpp/
+
+  # mutationpp src, we copy this to ease the diagnose
+  cp -r $srcdir/$_pkgname/src ${pkgdir}/opt/mutationpp/
+
+  # install a file for enviroment variables of mutationpp
   mkdir -p ${pkgdir}/etc/profile.d
   cat > ${pkgdir}/etc/profile.d/mutationpp.sh << EOF
 export MPP_DATA_DIRECTORY=/opt/mutationpp/data
@@ -72,10 +83,10 @@ Name: Mutation++
 Description: ${pkgdesc}
 Requires: eigen3
 Version: ${pkgver}
-Libs: -L\${prefix}/lib -lmutation++
+Libs: -L\${prefix}/lib -lmutation++ -lmutation++_fortran
 Cflags: -I\${prefix}/include/mutation++
 EOF
 
   # add symbolic link for eigen3 header, this is necessary for coolfluid
-  ln -srf ${pkgdir}/usr/include/eigen3 ${pkgdir}/usr/include/mutation++/eigen3
+  # ln -srf ${pkgdir}/usr/include/eigen3 ${pkgdir}/usr/include/mutation++/eigen3
 }
