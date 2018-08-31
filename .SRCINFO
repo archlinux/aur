@@ -7,7 +7,6 @@ pkgbase = emacs-iedit-git
 	license = GPL3
 	makedepends = git
 	depends = emacs
-	depends = emacs-avy
 	provides = emacs-iedit
 	conflicts = emacs-iedit
 	source = git+https://github.com/victorhge/iedit.git
