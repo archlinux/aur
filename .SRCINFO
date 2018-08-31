@@ -1,6 +1,6 @@
 pkgbase = pulseaudio-modules-bt-git
 	pkgdesc = PulseAudio Bluetooth modules with Sony LDAC Codec(A2DP Source) support
-	pkgver = r21.2d4398a
+	pkgver = r25.2d97ce7
 	pkgrel = 1
 	url = https://github.com/EHfive/pulseaudio-modules-bt
 	arch = i686
