@@ -1,0 +1,15 @@
+pkgbase = ttf-iskpota
+	pkgdesc = Unicode sinhala font iskoola pota
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.np.gov.lk
+	install = ttf-iskpota.install
+	arch = any
+	license = GPL
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = https://www.np.gov.lk/iskpota.ttf
+	md5sums = eead4a342b44623239b39790a0cc88d2
+
+pkgname = ttf-iskpota
+
