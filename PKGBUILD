@@ -14,7 +14,6 @@ depends=(
 makedepends=(
   'go'
 )
-conflicts=()
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Jguer/yay/archive/v${pkgver}.tar.gz")
 sha1sums=('a2010975261dcd4d18178b56ce5dee1c984906fd')
 
