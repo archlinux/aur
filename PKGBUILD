@@ -3,8 +3,8 @@
 # Contributor: ilikenwf
 # Contributor: American_Jesus
 pkgname=palemoon
-pkgver=28.0.0
-pkgrel=2
+pkgver=28.0.1
+pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('i686' 'x86_64')
 url="https://www.palemoon.org/"
