@@ -1,0 +1,16 @@
+pkgbase = emacs-expand-region-git
+	pkgdesc = Emacs extension to increase selected region by semantic units.
+	pkgver = r486.ed32924
+	pkgrel = 1
+	url = https://github.com/magnars/expand-region.el
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	provides = emacs-expand-region
+	conflicts = emacs-expand-region
+	source = git+https://github.com/magnars/expand-region.el.git
+	sha256sums = SKIP
+
+pkgname = emacs-expand-region-git
+
