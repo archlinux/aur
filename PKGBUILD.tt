@@ -24,7 +24,7 @@ checkdepends=(
 	'perl-test-checkdeps>=0.006'
 	'perl-test-deep'
 	'perl-test-fatal>=0.003'
-	'perl-test-requires'
+	'perl-test-needs'
 	'perl-test-trap'
 	'perl-test-warnings'
 	'perl-namespace-autoclean')
@@ -54,5 +54,7 @@ package() {
 	cd [% distdir %]
 	sanitize
 	perl Build install
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+
+	# Remove this when https://bugs.archlinux.org/task/53770 will be fixed
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }

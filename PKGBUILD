@@ -3,7 +3,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname=perl-moosex-getopt
-pkgver=0.71
+pkgver=0.72
 pkgrel=1
 pkgdesc='A Moose role for processing command line options'
 arch=('any')
@@ -24,13 +24,13 @@ checkdepends=(
 	'perl-test-checkdeps>=0.006'
 	'perl-test-deep'
 	'perl-test-fatal>=0.003'
-	'perl-test-requires'
+	'perl-test-needs'
 	'perl-test-trap'
 	'perl-test-warnings'
 	'perl-namespace-autoclean')
-source=(http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/MooseX-Getopt-0.71.tar.gz)
+source=(http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/MooseX-Getopt-0.72.tar.gz)
 options=(!emptydirs)
-md5sums=('7ac31336c49315143b27c856e10862b0')
+md5sums=('db096da80c503d635c21c1c73691b03a')
 
 sanitize() {
 	unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
@@ -38,21 +38,23 @@ sanitize() {
 }
 
 build() {
-	cd MooseX-Getopt-0.71
+	cd MooseX-Getopt-0.72
 	sanitize
 	perl Build.PL --installdirs vendor --destdir "$pkgdir"
 	perl Build
 }
 
 check() {
-	cd MooseX-Getopt-0.71
+	cd MooseX-Getopt-0.72
 	sanitize
 	perl Build test
 }
 
 package() {
-	cd MooseX-Getopt-0.71
+	cd MooseX-Getopt-0.72
 	sanitize
 	perl Build install
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+
+	# Remove this when https://bugs.archlinux.org/task/53770 will be fixed
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
