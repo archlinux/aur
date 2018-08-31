@@ -1,0 +1,17 @@
+pkgbase = emacs-iedit-git
+	pkgdesc = Edit multiple regions simultaneously in a buffer or a region
+	pkgver = r245.2ab2e8b
+	pkgrel = 1
+	url = https://github.com/victorhge/iedit
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	depends = emacs-avy
+	provides = emacs-iedit
+	conflicts = emacs-iedit
+	source = git+https://github.com/victorhge/iedit.git
+	sha256sums = SKIP
+
+pkgname = emacs-iedit-git
+
