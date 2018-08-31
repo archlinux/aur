@@ -1,7 +1,7 @@
 pkgbase = python-caldav
 	pkgdesc = a caldav client library
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/caldav
 	arch = any
 	license = GPL
