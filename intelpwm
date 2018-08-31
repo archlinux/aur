@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 CONFIG=/etc/intelpwm.conf
 if [ ! -f "$CONFIG" ]; then
     echo "$CONFIG not found"
