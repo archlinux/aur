@@ -23,7 +23,7 @@ source=("$pkgname"::'git+https://github.com/gilcu3/redsocks.git'
         'redsocks2.tmpfiles'
         'redsocks2.rules')
 md5sums=('SKIP'
-         '9be5e8bea768b1a8fdec55a8e8af33fd'
+         '786503490bd6acb33f526e22078fdc87'
          '04702a7faf31d707d3df4c116bd58a6d')
 
 pkgver() {
