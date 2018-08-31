@@ -1,11 +1,11 @@
 # Maintainer: pingplug <pingplug@foxmail.com>
 # Contributor: Schala Zeal <schalaalexiazeal@gmail.com>
 
-_commit=c78afa906699933e87889895ca2039887943b639  # master~43
+_commit=844d8709a1f3ecab45015b24b72dd775c13b2421  # tags/2.13.1^0
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-fontconfig
-pkgver=2.13.0+17+gc78afa9
+pkgver=2.13.1
 pkgrel=1
 pkgdesc="A library for configuring and customizing font access (mingw-w64)"
 arch=('any')
@@ -18,6 +18,7 @@ makedepends=('mingw-w64-configure'
              'autoconf-archive'
              'gperf'
              'python-lxml'
+             'json-c'
              'python-six')
 options=('!strip' 'staticlibs' '!buildflags')
 source=("git+https://anongit.freedesktop.org/git/fontconfig#commit=${_commit}"
@@ -33,6 +34,10 @@ pkgver() {
 prepare() {
   cd fontconfig
   patch -p1 -i ${srcdir}/0007-pkgconfig.mingw.patch
+  # do not build buggy test code
+  sed -i /test\\/Makefile/d configure.ac
+  sed -i "s/po-conf test/po-conf/g" Makefile.am
+  rm -r test
   NOCONFIGURE=1 ./autogen.sh
 }
 
