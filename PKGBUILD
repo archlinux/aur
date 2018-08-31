@@ -11,11 +11,9 @@ depends=('mpv' 'libcec' 'sdl2' 'p8-platform' 'protobuf' 'qt5-webengine' 'qt5-x11
 optdepends=('xorg-xinit: for running plex as a service')
 makedepends=('cmake' 'git')
 source=('git+https://github.com/plexinc/plex-media-player.git'
-        'plex-media-player.desktop'
-        'plexmediaplayer@.service')
+        'plex-media-player.desktop')
 sha256sums=('SKIP'
-            'b03845b761cc18a88252b72d0c83e439006224660444d9174f53cc577f9498b6'
-            '0b5a20681e785548eb82ce6bcb68119129bbd31e57bd862a99a52897e406a9d9')
+            'b03845b761cc18a88252b72d0c83e439006224660444d9174f53cc577f9498b6')
 
 pkgver() {
   cd plex-media-player
@@ -37,5 +35,4 @@ package() {
   cd "${srcdir}/plex-media-player/build"
   DESTDIR="${pkgdir}" make install
   install -Dm644 "${srcdir}/plex-media-player.desktop" "${pkgdir}/usr/share/applications/plex-media-player.desktop"
-  install -Dm644 "${srcdir}/plexmediaplayer@.service" "${pkgdir}/usr/lib/systemd/system/plexmediaplayer@.service"
 }
