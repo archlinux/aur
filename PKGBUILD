@@ -3,7 +3,7 @@
 
 pkgname=python-caldav
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="a caldav client library"
 arch=('any')
 url="https://pypi.python.org/pypi/caldav"
@@ -22,7 +22,7 @@ prepare() {
 package() {
   cd "$srcdir/caldav"
   python setup.py install --root="$pkgdir/" --optimize=1
-  rm -r "$pkgdir/usr/lib/python3.6/site-packages/tests"
+  rm -r "$pkgdir/usr/lib/python3.7/site-packages/tests"
 }
 
 # vim:set ts=2 sw=2 et:
