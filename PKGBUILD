@@ -27,11 +27,6 @@ prepare() {
   # patch based on https://bitbucket.org/luohan/mutationpp/commits/b93afe7395e2c011945d910821e09d55fbfd06d6
   cd $srcdir/$_pkgname
   patch -Np1 -i ${srcdir}/0001-Fix-some-issues-with-CMake.patch
-
-  # configure the code
-  mkdir -p $srcdir/build
-  cd $srcdir/build
-  cmake ../${_pkgname} -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_FORTRAN_WRAPPER=ON
 }
 
 build() {
@@ -40,6 +35,11 @@ build() {
   # mkdir -p build
   # cd build
   # cmake ../ -DCMAKE_INSTALL_PREFIX=/usr
+
+  # configure the code
+  mkdir -p $srcdir/build
+  cd $srcdir/build
+  cmake ../${_pkgname} -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_FORTRAN_WRAPPER=ON
 
   # compile the code
   cd $srcdir/build
