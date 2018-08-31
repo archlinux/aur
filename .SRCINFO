@@ -1,4 +1,4 @@
-pkgbase = alice-vision
+pkgbase = alice-vision-git
 	pkgdesc = Photogrammetric Computer Vision Framework which provides a 3D Reconstruction and Camera Tracking algorithms
 	pkgver = 2.0.0.r8.g62c55519
 	pkgrel = 1
@@ -28,14 +28,16 @@ pkgbase = alice-vision
 	depends = coin-or-lemon
 	depends = coin-or-osi
 	depends = google-glog
-	source = alice-vision::git+https://github.com/alicevision/AliceVision.git#branch=develop
-	source = osi_clp::git+https://github.com/alicevision/osi_clp.git
+	provides = alice-vision
+	conflicts = alice-vision
+	source = alice-vision-git::git+https://github.com/alicevision/AliceVision.git#branch=develop
 	source = ute_lib::git+https://github.com/alicevision/uncertaintyTE.git
 	source = geogram::git+https://github.com/alicevision/geogram.git
+	source = submodule.patch
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = SKIP
+	md5sums = eb62c8be5a0d7ce537a928314c9d0028
 
-pkgname = alice-vision
+pkgname = alice-vision-git
 
