@@ -1,6 +1,6 @@
 pkgbase = recap
 	pkgdesc = System status reporting
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/rackerlabs/recap
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = recap
 	depends = iproute2
 	provides = recap
 	conflicts = recap
-	source = https://github.com/rackerlabs/recap/archive/1.2.0.tar.gz
-	sha256sums = 029c07ee061ab7c95d347336b795559c4d1a4d81742d931e5ee4df959255293f
+	source = https://github.com/rackerlabs/recap/archive/1.3.0.tar.gz
+	sha256sums = 029d8333430b55ad7cea67409dc37290f44b8b4e1496e33094b0a5e50da4a326
 
 pkgname = recap
 
