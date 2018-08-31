@@ -4,12 +4,12 @@ _pkgname='github-desktop'
 pkgname="${_pkgname}-bin"
 pkgver=1.3.4
 gitname="release-${pkgver//_/-}"
-pkgrel=2
+pkgrel=3
 pkgdesc="GUI for managing Git and GitHub."
 arch=('x86_64')
 url="https://desktop.github.com"
 license=('MIT')
-depends=('gnome-keyring' 'git' 'libcurl-openssl-1.0')
+depends=('gnome-keyring' 'git' 'libcurl-gnutls')
 optdepends=('hub: CLI interface for GitHub.')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
@@ -26,5 +26,5 @@ package() {
     mv "${pkgdir}/opt/GitHubDesktop" "${pkgdir}/opt/${_pkgname}"
     rm "${pkgdir}/usr/share/applications/desktop.desktop"
     install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-    printf "#!/bin/sh\n\nLD_PRELOAD=libcurl.so.4 /opt/${_pkgname}/desktop \"$@\"\n" | install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${_pkgname}"
+    printf "#!/bin/sh\n\n/opt/${_pkgname}/desktop \"$@\"\n" | install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${_pkgname}"
 }
