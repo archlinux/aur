@@ -5,8 +5,8 @@ pkgbase = ant-dracula-gtk-theme
 	url = https://www.gnome-look.org/p/1099856/
 	arch = any
 	depends = gtk3
-	source = https://dl.opendesktop.org/api/files/downloadfile/id/1518217211/s/ce915579d3ecfc8b52d798c6a18b028d/t/1518650665/u//Ant-Dracula.tar
-	sha256sums = b2609db35003700108d64f15ba63fd7f6bd788331bc5e66921b42f54e7fd5a6c
+	source = https://dl.opendesktop.org/api/files/downloadfile/id/1535090502/s/cce086626aa135bd507e013233aec5ff/t/1535729389 cce086626aa135bd507e013233aec5ff 1535729389/u//Ant-Dracula.tar
+	sha256sums = c854fe5316bda78e3ef429d07b77bd624767f9bc8922b010d1f526a5054c8334
 
 pkgname = ant-dracula-gtk-theme
 

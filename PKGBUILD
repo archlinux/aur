@@ -10,8 +10,8 @@ depends=('gtk3')
 _p="var \(hash = '\(.*\)\|timetamp = '\(.*\)\)';"
 read _s _t <<< $(echo -n $(curl -s $url | sed -n "s/$_p/\2\3/p"))
 
-source=("https://dl.opendesktop.org/api/files/downloadfile/id/1518217211/s/$_s/t/$_t/u//Ant-Dracula.tar")
-sha256sums=('b2609db35003700108d64f15ba63fd7f6bd788331bc5e66921b42f54e7fd5a6c')
+source=("https://dl.opendesktop.org/api/files/downloadfile/id/1535090502/s/$_s/t/$_t/u//Ant-Dracula.tar")
+sha256sums=('c854fe5316bda78e3ef429d07b77bd624767f9bc8922b010d1f526a5054c8334')
 
 package(){
 	cd "$srcdir"
