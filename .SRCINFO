@@ -13,7 +13,6 @@ pkgbase = yay-git
 	depends = git
 	depends = sudo
 	provides = yay
-	conflicts = yay-bin
 	conflicts = yay
 	options = !strip
 	options = !emptydirs
