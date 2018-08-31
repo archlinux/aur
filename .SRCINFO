@@ -1,4 +1,4 @@
-pkgbase = berry
+pkgbase = berry-rel
 	pkgdesc = A healthy, bite-sized window manager written over the XLib Library
 	pkgver = 0.0.5
 	pkgrel = 1
