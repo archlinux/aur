@@ -13,8 +13,7 @@ url='http://fontmanager.github.io'
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('libgee' 'libxml2' 'sqlite' 'gucharmap' 'file-roller')
-makedepends=('git' 'gnome-common' 'automake' 'intltool' 'yelp-tools' 'gobject-introspection' 'vala')
-install=font-manager.install
+makedepends=('git' 'gnome-common' 'intltool' 'yelp-tools' 'gobject-introspection' 'vala')
 provides=('font-manager')
 conflicts=('font-manager')
 source=("${pkgname}::git://github.com/FontManager/master.git#branch=${_branch}")
