@@ -2,13 +2,13 @@
 
 pkgname=python3-saml
 pkgver=1.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="OneLogin's SAML Python 3 Toolkit"
 arch=('any')
 url='https://github.com/onelogin/python3-saml'
 license=('MIT')
 makedepends=('python-setuptools')
-makedepends=('python-defusedxml' 'python-isodate' 'python-xmlsec')
+depends=('python-defusedxml' 'python-isodate' 'python-xmlsec')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('e41a9459e2f4fec1cbfb3ab95d9792a85d83ea6988551092bf03fad16be61c61')
 
