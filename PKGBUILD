@@ -1,18 +1,24 @@
 # Maintainer: Kyle Guarco <kyleguarco55@gmail.com>
 
-_pkgname=berry-master
+_pkgname=berry
 pkgname=berry-git
 pkgbase=berry
 pkgver=devel
-pkgrel=1
+pkgrel=2
 pkgdesc="A healthy, bite-sized window manager written over the XLib Library"
 url="https://github.com/JLErvin/berry"
 arch=('x86_64')
 license=('MIT')
 makedepends=('gcc')
 depends=('libx11')
-source=("https://github.com/JLErvin/berry/archive/master.zip")
-sha256sums=('SKIP')
+source=(
+	"git://github.com/JLErvin/berry.git#branch=master"
+	berry.desktop
+)
+sha256sums=(
+	'SKIP'
+	'SKIP'
+)
 
 # For later.
 #install -D -m644 ../berry.desktop "${pkgdir}/usr/share/xsessions/"

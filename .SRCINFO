@@ -1,13 +1,15 @@
 pkgbase = berry
 	pkgdesc = A healthy, bite-sized window manager written over the XLib Library
 	pkgver = devel
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JLErvin/berry
 	arch = x86_64
 	license = MIT
 	makedepends = gcc
 	depends = libx11
-	source = https://github.com/JLErvin/berry/archive/master.zip
+	source = git://github.com/JLErvin/berry.git#branch=master
+	source = berry.desktop
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = berry-git
