@@ -1,8 +1,8 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname=('python-fastparquet')
 _module='fastparquet'
-pkgver='0.1.5'
-pkgrel=2
+pkgver='0.1.6'
+pkgrel=1
 pkgdesc="A python implementation of the parquet format."
 url="https://github.com/dask/fastparquet"
 checkdepends=('python-pytest'
@@ -19,15 +19,8 @@ optdepends=('python-snappy'
     'python-zstandard')
 license=('Apache')
 arch=('x86_64')
-source=("https://github.com/dask/fastparquet/archive/$pkgver.tar.gz"
-    "zstandard-0.9.patch")
-sha256sums=('017c9812cc0180d10e134557a29296a56b40b32bb63c62f44a781e818792bf29'
-            '08f34d49dc91c308a910347c6d141630eefb73d9e13284c0ace9893a9c834b39')
-
-prepare() {
-   cd "${srcdir}"
-   patch -p0 < ../zstandard-0.9.patch
-}
+source=("https://github.com/dask/fastparquet/archive/$pkgver.tar.gz")
+sha256sums=('383dec79c1c655772a64f7ce50de08f4d541afc6aa81bdf9a87fc6fbb76cfa8b')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
