@@ -1,0 +1,13 @@
+pkgbase = lazyman-plex-git
+	pkgdesc = Lazman Plugin for Plex
+	pkgver = r44.4b1f0da
+	pkgrel = 1
+	url = https://github.com/nomego/Lazyman.bundle
+	install = lazyman-plex-git.install
+	arch = any
+	depends = plex-media-server-plexpass
+	source = git+https://github.com/nomego/Lazyman.bundle.git
+	sha512sums = SKIP
+
+pkgname = lazyman-plex-git
+

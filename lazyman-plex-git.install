@@ -1,0 +1,11 @@
+post_install() {
+  echo """    Update /etc/hosts with the IP for powersports.ml
+
+    x.x.x.x mf.svc.nhl.com
+    x.x.x.x mlb-ws-mf.media.mlb.com
+    x.x.x.x playback.svcs.mlb.com"""
+}
+
+post_upgrade() {
+  post_install
+}

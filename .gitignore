@@ -1,0 +1,4 @@
+Lazyman.bundle/
+pkg/
+src/
+*.pkg.tar*
