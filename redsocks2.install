@@ -7,7 +7,12 @@ add_redsocks_user() {
 }
 
 post_install() {
+	setcap cap_net_bind_service,cap_net_admin+ep usr/bin/redsocks2  2>/dev/null
+}
+
+post_install() {
   add_redsocks_user
+  post_install
   cat << EOF
 To launch redsocks2:
 
@@ -24,6 +29,7 @@ EOF
 
 post_upgrade() {
   add_redsocks_user
+  post_install
 }
 
 post_remove() {
