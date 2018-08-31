@@ -1,16 +1,23 @@
 # Maintainer: Thiago L. A. Miller <thiago_leisrael@hotmail.com>
 pkgname=salmon
-pkgver=0.11.2
-pkgrel=2
+pkgver=0.11.3
+pkgrel=1
 pkgdesc="Highly-accurate & wicked fast transcript-level quantification from RNA-seq reads using lightweight alignments"
 arch=('x86_64')
 url="https://combine-lab.github.io/$pkgname/"
 license=('GPL')
-depends=('bzip2' 'intel-tbb' 'jemalloc' 'xz')
+depends=('bzip2' 'intel-tbb' 'xz')
 makedepends=('boost>=1.55' 'cmake' 'unzip')
 options=('!emptydirs')
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/COMBINE-lab/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('d81f083e71adc6d46a21ed14df624136')
+md5sums=('99e95233be7f8510bed5c4d0c46a5074')
+
+prepare() {
+  # Fix for now JEMalloc seg fault when using jemalloc package
+  # Force cmake to statically build JEMalloc from salmon's dev sources
+	cd "$pkgname-$pkgver"
+  sed -i '/^find_package(Jemalloc)/,/^endif()/s/\(.\+\)/#\1/' CMakeLists.txt
+}
 
 build() {
   cd "$pkgname-$pkgver"
