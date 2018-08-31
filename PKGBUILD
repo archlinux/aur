@@ -13,7 +13,7 @@ makedepends=('git')
 depends=('gmp')
 license=('MIT')
 conflicts=('isl-git' 'isl' 'isl14' 'isl15' 'isl16' 'isl17')
-source=("isl::git+http://repo.or.cz/isl.git")
+source=("isl::git+http://repo.or.cz/isl.git#tag=isl-0.19")
 sha256sums=('SKIP')
 
 build() {

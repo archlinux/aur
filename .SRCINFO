@@ -14,7 +14,7 @@ pkgbase = isl19
 	conflicts = isl15
 	conflicts = isl16
 	conflicts = isl17
-	source = isl::git+http://repo.or.cz/isl.git
+	source = isl::git+http://repo.or.cz/isl.git#tag=isl-0.19
 	sha256sums = SKIP
 
 pkgname = isl19
