@@ -1,0 +1,16 @@
+pkgbase = emacs-zoutline-git
+	pkgdesc = Emacs library for outlines
+	pkgver = r10.b3ee0f0
+	pkgrel = 1
+	url = https://github.com/abo-abo/zoutline
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	provides = emacs-zoutline
+	conflicts = emacs-zoutline
+	source = git+https://github.com/abo-abo/zoutline.git
+	sha256sums = SKIP
+
+pkgname = emacs-zoutline-git
+
