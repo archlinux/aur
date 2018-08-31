@@ -1,0 +1,17 @@
+pkgbase = emacs-evil-collection-git
+	pkgdesc = A set of keybindings for evil-mode
+	pkgver = r610.04a3e5c
+	pkgrel = 1
+	url = https://github.com/emacs-evil/evil-collection
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	depends = emacs-evil
+	provides = emacs-evil-collection
+	conflicts = emacs-evil-collection
+	source = git+https://github.com/emacs-evil/evil-collection.git
+	sha256sums = SKIP
+
+pkgname = emacs-evil-collection-git
+
