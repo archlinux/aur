@@ -1,7 +1,7 @@
 # Maintainer: Moritz Luedecke <ritze@skweez.net>
 pkgname=dup
-pkgver=20141004
-pkgrel=2
+pkgver=20160409
+pkgrel=1
 pkgdesc="du with progress bar in pacman style"
 url="https://github.com/ritze/dup"
 license=('GPL')
