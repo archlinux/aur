@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Hilux
+Comment=Hilux P2P Cryptocurrency
+Exec=/usr/bin/hilux-qt
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/hilux128.png
+MimeType=x-scheme-handler/hilux;
+Categories=Office;

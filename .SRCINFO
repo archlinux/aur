@@ -1,0 +1,27 @@
+pkgbase = hilux-qt
+	pkgdesc = Cryptocurrency wallet(QT)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://www.hiluxcoin.com/
+	install = hilux-qt.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	makedepends = qt5-tools
+	depends = boost-libs
+	depends = qt5-base
+	depends = qrencode
+	depends = miniupnpc
+	depends = db4.8
+	depends = zeromq
+	depends = protobuf
+	depends = libevent
+	conflicts = hilux
+	source = hilux-qt::git+https://github.com/swatchie-1/hilux.git#tag=v1.0.0
+	source = hilux-qt.desktop
+	sha256sums = SKIP
+	sha256sums = 2b16e0d549b5b537f7f1c5a46bca199c22e018179377e65ea89a1ff33a962770
+
+pkgname = hilux-qt
+
