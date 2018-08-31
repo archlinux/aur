@@ -22,7 +22,8 @@ pkgbase = piaware-git
 	depends = tcltls>=1.7.12
 	depends = python
 	depends = tcllauncher
-	optdepends = mlat-client: M-LAT support,net-tools
+	optdepends = mlat-client: M-LAT support
+	optdepends = net-tools
 	backup = etc/piaware.conf
 	source = piaware::git+git://github.com/flightaware/piaware#branch=dev
 	source = piaware.conf

@@ -14,7 +14,7 @@ license=('BSD')
 
 depends=('dump1090-fa-git' 'tcl' 'tcllib' 'tclx' 'tk' 'tcltls>=1.7.12' 'python' 'tcllauncher')
 makedepends=('git' 'autoconf' 'tcl' 'python' 'tcllauncher')
-optdepends=('mlat-client: M-LAT support','net-tools')
+optdepends=('mlat-client: M-LAT support' 'net-tools')
 
 source=('piaware::git+git://github.com/flightaware/piaware#branch=dev'
         'piaware.conf')
