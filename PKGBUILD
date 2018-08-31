@@ -5,7 +5,7 @@
 
 pkgname=redsocks2-git
 pkgver=0.66.r39.gc9618cd
-pkgrel=1
+pkgrel=2
 pkgdesc='redsocks2 adapted to compile with openssl 1.0'
 arch=('i686' 'x86_64')
 url='https://github.com/semigodking/redsocks'
