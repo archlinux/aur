@@ -1,16 +1,17 @@
 # $Id$
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+
 pkgname=icu4j
-pkgver=61.1
+pkgver=62.1
 pkgrel=1
 pkgdesc="International Components for Unicode for Java"
 arch=('any')
 url="http://site.icu-project.org/"
 license=('custom:icu')
 depends=('java-environment')
-makedepends=('apache-ant' 'java-environment')
+makedepends=('apache-ant' 'java-environment=8')
 source=("http://download.icu-project.org/files/${pkgname}/${pkgver}/${pkgname}-${pkgver//./_}.tgz")
-sha256sums=('d58ea00911faac51cc0c9080da3ba0076810181ff95e2e68bbecb06e72da9026')
+sha256sums=('49b6ccc2fce95210022ed4d3fa6dea36c4156371f771f9b9b5696e20184c4ef0')
 
 build() {	
 	ant
