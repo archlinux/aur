@@ -8,7 +8,7 @@ pkgname=update-hosts-git
 # shellcheck disable=SC2034
 pkgdesc="Generate a hosts file based on multiple sources (git)"
 # shellcheck disable=SC2034
-pkgver=r315.7c5aa4c
+pkgver=r330.f5924e9
 # shellcheck disable=SC2034
 pkgrel=1
 # shellcheck disable=SC2034
@@ -56,25 +56,11 @@ pkgver() {
 }
 
 package() {
-  _timer="${_gitname}.timer"
-  _service="${_gitname}.service"
-
-  # shellcheck disable=SC2154
   cd "$srcdir/$_gitname" || {
         msg "Could not cd into $srcdir/$_gitname"
         return 1
   }
 
-  # shellcheck disable=SC2154
-  install -Dm 755 "${_gitname}" "${pkgdir}/usr/bin/${_gitname}"
-  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${_gitname}/LICENSE"
-  install -Dm 644 "${_timer}" "${pkgdir}/usr/lib/systemd/system/${_timer}"
-  install -Dm 644 "${_service}" "${pkgdir}/usr/lib/systemd/system/${_service}"
-
-  # systemd needs absolute paths
-  sed -i "s#${_gitname}#/usr/bin/${_gitname}#g" \
-        "${pkgdir}/usr/lib/systemd/system/${_service}"
-
-  unset _timer _service
+  make DESTDIR="${pkgdir}" PREFIX="/usr" install
 }
 
