@@ -20,6 +20,7 @@ pkgver() {
 
 build() {
   cd ${srcdir}/Cica
+  sudo systemctl start docker.service
   sudo docker-compose up
   sudo docker-compose down
 }
