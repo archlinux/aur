@@ -2,7 +2,7 @@
 # Contributor: joyfulgirl <joyfulgirl (at) archlinux.us>
 pkgname=pspp
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Statistical analysis program. Free replacement for SPSS."
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/pspp/"
@@ -17,6 +17,8 @@ install=pspp.install
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
+
+	sed -i 's/_IO_ftrylockfile/_IO_EOF_SEEN/' gl/fseterr.c
 
 	./configure --prefix=/usr \
 				--sysconfdir=/etc \
