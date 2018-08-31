@@ -28,7 +28,7 @@ package() {
 	cd parabot
 	mkdir -p "$pkgdir"/usr/lib/systemd/user/ "$pkgdir"/usr/bin ~/.config/parabot/ ~/.local/share/parabot/
 	install -Dm755 target/release/parabot "$pkgdir"/usr/bin
-	install -Dm644 "$srcdir"/parabot.service "$pkgdir"/usr/lib/systemd/user/
-	install -Dm644 example_conf.toml ~/.config/parabot/conf.toml
-	install -Dm644 parabot_empty.db ~/.local/share/parabot/parabot.db
+	cp -n "$srcdir"/parabot.service "$pkgdir"/usr/lib/systemd/user/
+	cp -n example_conf.toml ~/.config/parabot/conf.toml
+	cp -n parabot_empty.db ~/.local/share/parabot/parabot.db
 }
