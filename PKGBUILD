@@ -1,7 +1,7 @@
 # Maintainer: Pierre Choffet <peuc@wanadoo.fr>
 
 pkgname=return-to-the-roots-git
-pkgver=r3946.826300c2
+pkgver=r3949.2d1e2c02
 pkgrel=1
 pkgdesc="Free/libre implementation of The Settlers II game engine"
 arch=("x86_64")
@@ -9,6 +9,7 @@ url="https://siedler25.org/"
 license=("GPL3")
 makedepends=("cmake" "git" "boost" "mesa" "sdl_mixer" "curl" "lua52" "miniupnpc")
 depends=("boost-libs" "libgl" "sdl_mixer" "miniupnpc" "lua52")
+optdepends=("siedler2-data")
 conflicts=("return-to-the-roots" "s25rttr" "s25rttr-nightly-bin")
 provides=("return-to-the-roots")
 install="return-to-the-roots.install"
@@ -39,7 +40,7 @@ sha256sums=("SKIP"
             "SKIP"
             "SKIP"
             "b623d74292ca332b65290f15adb0c41994a80eb4f5d247c713a0d43775f9e8f8"
-            "edb41253442928a2313f856021c06f6d2999b780f0426c05cd7bdb2381a627ea")
+            "888a1cd55350971ec3660de79c82760be63ed40617e8ef6931c20b07bc73e1a9")
 
 pkgver() {
 	cd "s25client/"

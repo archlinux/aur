@@ -1,3 +1,7 @@
+2018-08-31 Pierre Choffet <peuc@wanadoo.fr>
+	* r3949.2d1e2c02-1 :
+	Add siedler2-data package as optional dependency
+
 2018-08-22 Pierre Choffet <peuc@wanadoo.fr>
 	* r3946.826300c2-1 :
 	Add missing dependencies
