@@ -2,14 +2,15 @@
 # Contributor: anekos <anekos@snca.net>
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
-pkgname='lfe-git'
+pkgname=lfe-git
 pkgver=r974.ea62f92
-pkgrel=1
+pkgrel=2
 pkgdesc="Lisp Flavoured Erlang"
 url='http://lfe.io/'
 arch=('x86_64')
 license=('Apache_v2')
-depends=('erlang')
+depends=('erlang-nox' 'rebar')
+makedepends=('pandoc')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=('git+https://github.com/rvirding/lfe.git#branch=develop')
