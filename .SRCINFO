@@ -20,7 +20,7 @@ pkgbase = font-manager-git
 	provides = font-manager
 	conflicts = font-manager
 	source = font-manager-git::git://github.com/FontManager/master.git#branch=testing
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = font-manager-git
 

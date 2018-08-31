@@ -14,10 +14,10 @@ arch=('i686' 'x86_64')
 license=('GPL')
 depends=('libgee' 'libxml2' 'sqlite' 'gucharmap' 'file-roller')
 makedepends=('git' 'gnome-common' 'intltool' 'yelp-tools' 'gobject-introspection' 'vala')
-provides=('font-manager')
-conflicts=('font-manager')
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
 source=("${pkgname}::git://github.com/FontManager/master.git#branch=${_branch}")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"
@@ -27,7 +27,7 @@ pkgver() {
 build() {
   cd "${pkgname}"
   ./autogen.sh --prefix=/usr --disable-schemas-compile
-  make
+  make -j1
 }
 
 package() {
