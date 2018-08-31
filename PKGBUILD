@@ -9,7 +9,7 @@ pkgname=("${_subarchs[@]/#/$pkgbase-}")
 _date=20180817
 # inspect source tarball under $name/share/gcc-x.y.z
 pkgver=8.2.0
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 license=('GPL' )
 pkgdesc="Toolchain for Arch ARM builds via distcc on x86_64 slaves"
@@ -38,7 +38,7 @@ build() {
   # setup config and services
   _path=('' '6h' '7h' '8')
   _name=('arm-unknown-linux-gnueabi' 'arm-unknown-linux-gnueabihf'
-  'arm-unknown-linux-gnueabihf' 'aarch64-unknown-linux-gnueabi')
+  'arm-unknown-linux-gnueabihf' 'aarch64-unknown-linux-gnu')
   _port=('3633' '3634' '3635' '3636')
 
   for i in 0 1 2 3; do
