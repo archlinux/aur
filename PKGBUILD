@@ -2,7 +2,7 @@
 # Contributor: hexchain <i at hexchain.org>
 pkgname=hmcl
 pkgver=3.1.64
-pkgrel=2
+pkgrel=1
 pkgdesc="Hello Minecraft! Launcher, a powerful Minecraft launcher."
 arch=(any)
 license=('GPL3')
@@ -13,7 +13,7 @@ noextract=("HMCL-$pkgver.jar")
 source=('hmcl-launch-script'
         'hmcl.desktop.in'
         # "$url/releases/download/v${pkgver%.*}/HMCL-$pkgver.jar")
-	"HMCL-${pkgver}.jar::https://github.com/LinRs/HMCL/releases/download/v$pkgver/HMCL-${pkgver}.jar"
+	"HMCL-${pkgver}.jar::https://github.com/huanghongxun/HMCL/releases/download/v${pkgver}/HMCL-${pkgver}.jar"
 	#"hmcl::git+$url.git#commit=cbb2a1b5755389b751d24730bc93de1011bed119"
 	)
 
