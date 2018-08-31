@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 
 pkgname=python-dbg
-pkgver=3.6.6
+pkgver=3.7.0
 pkgrel=3
 epoch=0
 pkgdesc="Python 3 debug symbols."
@@ -20,7 +20,7 @@ options=(!debug !strip)
 
 source=("https://www.python.org/ftp/python/${pkgver%rc*}/Python-${pkgver}.tar.xz"
         dont-make-libpython-readonly.patch)
-md5sums=('c3f30a0aff425dda77d19e02f420d6ba'
+md5sums=('eb8c2a6b1447d50813c02714af4681f3'
          '60c9f7d02384f22834df06de5eb9c46a')
 
 prepare() {
@@ -51,11 +51,12 @@ build() {
                 --with-computed-gotos \
                 --with-dbmliborder=gdbm:ndbm \
                 --with-lto \
+                --with-pydebug \
                 --with-system-expat \
                 --with-system-ffi \
                 --with-system-libmpdec \
                 --with-threads \
-                --with-pydebug \
+                --with-valgrind \
                 --without-ensurepip
 
 

@@ -1,6 +1,6 @@
 pkgbase = python-dbg
 	pkgdesc = Python 3 debug symbols.
-	pkgver = 3.6.6
+	pkgver = 3.7.0
 	pkgrel = 3
 	epoch = 0
 	url = http://www.python.org/
@@ -20,9 +20,9 @@ pkgbase = python-dbg
 	provides = python
 	options = !debug
 	options = !strip
-	source = https://www.python.org/ftp/python/3.6.6/Python-3.6.6.tar.xz
+	source = https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tar.xz
 	source = dont-make-libpython-readonly.patch
-	md5sums = c3f30a0aff425dda77d19e02f420d6ba
+	md5sums = eb8c2a6b1447d50813c02714af4681f3
 	md5sums = 60c9f7d02384f22834df06de5eb9c46a
 
 pkgname = python-dbg
