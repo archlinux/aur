@@ -1,7 +1,7 @@
 pkgbase = gopherus-svn
 	pkgdesc = Gopher client
-	pkgver = 1.1.r33
-	pkgrel = 2
+	pkgver = 1.1.r37
+	pkgrel = 1
 	url = http://gopherus.sourceforge.net
 	arch = i686
 	arch = x86_64

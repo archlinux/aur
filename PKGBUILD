@@ -3,8 +3,8 @@
 _pkgname=gopherus
 _pkgver=1.1
 pkgname=$_pkgname-svn
-pkgver=1.1.r33
-pkgrel=2
+pkgver=1.1.r37
+pkgrel=1
 pkgdesc="Gopher client"
 arch=('i686' 'x86_64')
 url="http://gopherus.sourceforge.net"
