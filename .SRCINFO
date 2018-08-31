@@ -1,7 +1,7 @@
 pkgbase = libclassicclient
 	pkgdesc = Gemalto PKCS#11 driver
 	pkgver = 7.2.0_b04
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.luxtrust.lu/en/simple/225
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = libclassicclient
 	depends = gdk-pixbuf2
 	depends = gtk2
 	depends = libusb-compat
+	depends = openmp
 	depends = openssl-1.0>=1.0.2.k-4
 	depends = pcsclite
 	depends = qt5-base

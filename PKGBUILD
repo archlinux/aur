@@ -2,7 +2,7 @@
 pkgname=libclassicclient
 _luxver=1.2.1
 pkgver=7.2.0_b04
-pkgrel=4
+pkgrel=5
 pkgdesc="Gemalto PKCS#11 driver"
 url="https://www.luxtrust.lu/en/simple/225"
 arch=(i686 x86_64)
@@ -11,6 +11,7 @@ depends=(
   gdk-pixbuf2
   gtk2 # for CCChangePinTool
   libusb-compat
+  openmp
   openssl-1.0'>=1.0.2.k-4'
   pcsclite
   qt5-base # for SecureFooDialog
@@ -47,6 +48,8 @@ package() {
   # now clean up the mess
 
   cd "$pkgdir"
+
+  rm usr/lib/libiomp5.so
 
   chmod a-x etc/udev/rules.d/*
   chmod a+x usr/lib/**/*.so
