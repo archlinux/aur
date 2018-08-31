@@ -3,20 +3,20 @@
 
 pkgname=arm-none-eabi-gcc60-linaro
 _relver=snapshot-6.4
-_relshortdate=17.11
+_relshortdate=18.04
 _reldate=20${_relshortdate}
 _relverdate=${_relver}-${_reldate}
 # This is how I want to define the pkgver, but the AUR doesn't understand it, because multiple _ characters are not allowed
 #pkgver=${_relver}_${_reldate//-/_}
-pkgver=6.4_2017.11
-_pkgver=6.4-2017.11
-pkgrel=3
+pkgver=6.4_2018.04
+_pkgver=6.4-2018.04
+pkgrel=1
 pkgdesc="The GNU Compiler Collection - cross compiler for ARM EABI (bare-metal) target."
 arch=(i686 x86_64)
 url="https://releases.linaro.org/"
 license=('GPL' 'LGPL')
 groups=('arm-none-eabi-toolchain')
-depends=('arm-none-eabi-linaro-binutils' 'isl' 'mpc' 'gmp' 'cloog' 'arm-none-eabi-newlib-linaro-git' 'mpfr' 'libmpc')
+depends=('arm-none-eabi-linaro-binutils' 'isl19' 'mpc' 'gmp' 'cloog' 'arm-none-eabi-newlib-linaro-git' 'mpfr' 'libmpc')
 makedepends=('gcc-ada' 'expect' 'flex' 'bison')
 #provides=('arm-none-eabi-gcc')
 #conflicts=('arm-none-eabi-gcc' 'cross-arm-none-eabi-gcc')
@@ -28,7 +28,7 @@ source=(http://snapshots.linaro.org/components/toolchain/gcc-linaro/${_pkgver}/g
         1039-libcc1-fix-libcc1-s-install-path-and-rpath.patch)
 _basedir=gcc-linaro-${_relverdate}
 
-sha256sums=('bf2e8ad02196c2117d59aeebf3ba1b5b42beb4381c8bd0c27882e8c93d4a5edf'
+sha256sums=('b557579608963941647d06281a08a4499216957ceae6f02e040c32cdda3bca22'
             '76eab14830216c774291d2ac35d4b4690f3273aa8c630a2c1546f02538847d8a'
             'c9b6bc1dd53f9b4b80f5fdacdef94c9fce0e516c16fb78063107b66ba2e9fdd1'
             '9447a8fd40d7c1e238b8e9790b739492de5feaa489d61f4ecdab863e5ea1975a'
