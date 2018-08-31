@@ -1,27 +1,31 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
 _name=alice-vision
-#fragment="#commit=5bea89263bf5f3ed623b8e6e6a5f022a0ed9c1de"
-_fragment="#branch=develop"
 pkgname=${_name}
-pkgver=1.0.r707.g4e0a3a99
-pkgrel=1
+pkgver=2.0.0
+pkgrel=2
 pkgdesc="Photogrammetric Computer Vision Framework which provides a 3D Reconstruction and Camera Tracking algorithms"
 arch=('i686' 'x86_64')
 url="http://alicevision.github.io/"
 license=('MPL2' 'MIT')
 groups=()
+conflicts=(alice-vision-git)
+provides=(alice-vision)
 depends=('openblas-lapack' 'gflags' 'glfw-x11' 'alembic' 'boost-libs' 'openexr' 'openimageio' 'opengv-git' 'flann' 'coin-or-coinutils' 'coin-or-clp' 'coin-or-lemon' 'coin-or-osi' 'google-glog')
 makedepends=('boost' 'eigen' 'ceres-solver' 'cuda' 'git' 'cmake' 'magma')
-source=("${pkgname}::git+https://github.com/alicevision/AliceVision.git${_fragment}"
-        "osi_clp::git+https://github.com/alicevision/osi_clp.git"
+source=("https://github.com/alicevision/AliceVision/archive/v${pkgver}.tar.gz"
         "ute_lib::git+https://github.com/alicevision/uncertaintyTE.git"
         "geogram::git+https://github.com/alicevision/geogram.git"
+        "MeshSDFilter::git+https://github.com/alicevision/MeshSDFilter.git#branch=av_develop"
+        "nanoflann::git+https://github.com/alicevision/nanoflann.git"
+        "submodule.patch"
         )
-md5sums=('SKIP'
+md5sums=('1ff20994f1ff259850c3e170ef451634'
          'SKIP'
          'SKIP'
-         'SKIP')
+         'SKIP'
+         'SKIP'
+         'eb62c8be5a0d7ce537a928314c9d0028')
 
 _CMAKE_FLAGS=(
               -DCMAKE_INSTALL_PREFIX=/usr
@@ -37,17 +41,14 @@ _CMAKE_FLAGS=(
               -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc
              )
 
-
-pkgver() {
-  cd "$pkgname"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
+_path="AliceVision-${pkgver}"
 
 prepare() {
-  cd ${srcdir}/${pkgname}
-  git submodule init
-  git config submodule.src/dependencies/osi_clp.url ${srcdir}/osi_clp
-  git submodule update
+  cd ${srcdir}/${_path}
+  patch -Np1 -i ${srcdir}/submodule.patch
+  rmdir src/dependencies/{MeshSDFilter,nanoflann}
+  cp -r ${srcdir}/MeshSDFilter src/dependencies/MeshSDFilter
+  cp -r ${srcdir}/nanoflann src/dependencies/nanoflann
 }
 
 
@@ -68,16 +69,9 @@ build() {
   make DESTDIR="../geogram_bin" install
   cd ..
 
-#  msg2 "Build Osi library"
-#  mkdir -p osi_build && cd osi_build
-#  cmake -DCMAKE_INSTALL_PREFIX=/ ../osi_clp
-#  make
-#  make DESTDIR="../osi_bin" install
-#  cd ..
-
   msg2 "Build AliceVision library"
   mkdir -p build && cd build
-  cmake ${_CMAKE_FLAGS[@]} -DUNCERTAINTYTE_DIR=${srcdir}/ute_bin -DGEOGRAM_INSTALL_PREFIX=${srcdir}/geogram_bin ../${pkgname}
+  cmake ${_CMAKE_FLAGS[@]} -DUNCERTAINTYTE_DIR=${srcdir}/ute_bin -DGEOGRAM_INSTALL_PREFIX=${srcdir}/geogram_bin ../${_path}
   make
 }
 
