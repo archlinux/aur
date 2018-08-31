@@ -28,7 +28,7 @@ pkgbase = python-dask
 	optdepends = python-psutil
 	optdepends = python-sparse: sparse data support
 	optdepends = python-s3fs: S3 support
-	optdepends = python-gcfs: Google Cloud fs support
+	optdepends = python-gcsfs: Google Cloud Storage fs support
 	source = https://github.com/dask/dask/archive/0.19.0.tar.gz
 	sha256sums = 1ae2b772882012f65c732a17808f160c71e3beea4b61a5ae039287f810f965fc
 

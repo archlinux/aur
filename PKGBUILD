@@ -20,7 +20,7 @@ optdepends=('python-bcolz'
   'python-psutil'
   'python-sparse: sparse data support'
   'python-s3fs: S3 support'
-  'python-gcfs: Google Cloud fs support')
+  'python-gcsfs: Google Cloud Storage fs support')
 makedepends=('python-setuptools')
 source=("https://github.com/dask/dask/archive/$pkgver.tar.gz")
 sha256sums=('1ae2b772882012f65c732a17808f160c71e3beea4b61a5ae039287f810f965fc')
