@@ -1,0 +1,4 @@
+post_install() {
+    udevadm trigger
+    udevadm settle
+}
