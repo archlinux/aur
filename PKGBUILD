@@ -53,8 +53,6 @@ package() {
 
   cd $srcdir/build
   make $MAKEFLAGS DESTDIR="$pkgdir" install
-  # backward compatability
-  sed -i 's|__FILENAME__|__FILE__|g' $pkgdir/usr/include/mutation++/Errors.h
 
   install -d ${pkgdir}/opt/mutationpp
   # mutationpp data
