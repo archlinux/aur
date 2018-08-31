@@ -2,12 +2,12 @@
 
 pkgname='factom-cli'
 pkgver='0.4.2.21'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Command line interface for factomd and factom-walletd'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/FactomProject/$pkgname"
 license=('custom:MIT')
-makedepends=('go' 'git' 'glide')
+makedepends=('go' 'git')
 source=("git+$url#tag=v$pkgver")
 sha256sums=('SKIP')
 build()
@@ -23,6 +23,8 @@ build()
   cd "$gosrcdir/$pkgname"
 
   echo "Downloading dependencies"
+  go get -u github.com/Masterminds/glide
+  go install github.com/Masterminds/glide
   glide install -v
 
   echo "Building $pkgname version=$pkgver commit=$revision"
