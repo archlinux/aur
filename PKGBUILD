@@ -3,7 +3,7 @@
 pkgbase=python-pyjwkest
 pkgname=($pkgbase 'python2-pyjwkest')
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Implementation of JWT, JWS, JWE and JWK.'
 arch=('any')
 url='https://github.com/rohe/pyjwkest'
@@ -29,7 +29,7 @@ build() {
 
 package_python-pyjwkest() {
 
-    depends=('python-setuptools' 'python-pycryptodomex' 'python-requests' 'python-six' 'python-future')
+    depends=('python-pycryptodomex' 'python-requests' 'python-six' 'python-future')
 
     cd pyjwkest-$pkgver
     python setup.py install --root $pkgdir
@@ -38,7 +38,7 @@ package_python-pyjwkest() {
 
 package_python2-pyjwkest() {
 
-    depends=('python2-setuptools' 'python2-pycryptodomex' 'python2-requests' 'python2-six' 'python2-future')
+    depends=('python2-pycryptodomex' 'python2-requests' 'python2-six' 'python2-future')
 
     cd pyjwkest-$pkgver-python2
     python2 setup.py install --root $pkgdir
