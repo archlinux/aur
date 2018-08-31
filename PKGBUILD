@@ -15,7 +15,8 @@ prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     mkdir -p build
     cd build
-    cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+    cmake -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib ..
 }
 
 build() {
