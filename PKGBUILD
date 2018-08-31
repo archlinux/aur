@@ -16,7 +16,8 @@ set -u
 #_ubver='18.1'; _libgee='libgee>=0.18.0'
 #_ubver='18.1.1'; _libgee='libgee>=0.18.0'
 #_ubver='18.4'; _libgee='libgee>=0.18.0'
-_ubver='18.6.1'; _libgee='libgee>=0.18.0'
+#_ubver='18.6.1'; _libgee='libgee>=0.18.0'
+_ubver='18.8'; _libgee='libgee>=0.18.0'
 pkgname='timeshift'
 pkgver="${_ubver}"
 pkgrel='1'
@@ -29,11 +30,12 @@ url='https://github.com/teejee2008/timeshift'
 license=('GPL')
 _arch_depends=('rsync' 'libgee06' 'json-glib') # from installer/install.sh
 _arch_depends[1]="${_libgee}"
-depends=('gtk3' 'libsoup' 'desktop-file-utils' "${_arch_depends[@]}" 'cron')
+depends=('gtk3' 'libsoup' 'desktop-file-utils' "${_arch_depends[@]}" 'cronie')
 unset _arch_depends
 optdepends=('gksu: run timeshift from a menu')
 makedepends=('vala' 'diffutils' 'coreutils' 'vte3')
 options=('!emptydirs')
+install="${pkgname}-install.sh"
 #_verwatch=("${url//code/bazaar}/trunk/changes" 'v\([0-9\.]\+\)' 't')
 #source=("${url}/+files/${_srcdir}.tar.gz")
 #_srcdir='~teejee2008/timeshift/trunk'
@@ -42,7 +44,7 @@ _github='teejee2008'
 _verwatch=("https://github.com/${_github}/${pkgname}/releases.atom" '\s\+<title>Timeshift v\([0-9\.]\+\)</title>.*' 'f')
 _srcdir="${pkgname}-${pkgver}"
 source=("${pkgname}_v${pkgver}.tgz::https://github.com/${_github}/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('2c851b232e622f75facc289a4a163218d1943b239eeadb2988acb23c80fc30a2')
+sha256sums=('a0fd832c0d65124d3d6f31c760f771473fa6ef2f62e6aad42e185ceaadf90eeb')
 #sha256sums[0]='SKIP'
 
 build() {
