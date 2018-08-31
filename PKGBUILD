@@ -14,7 +14,7 @@ makedepends=('git' 'gcc' 'cmake' 'gcc-fortran')
 source=("$_pkgname::git+https://sync.vki.ac.be/mpp/mutationpp.git"
         0001-Fix-some-issues-with-CMake.patch)
 sha256sums=('SKIP'
-            'd5dbbdbc394eb5725cdc7637768fb3bd6fc189784a4d2ef77cdd4811613565ff')
+            '3471a798bc7a046d3b74c067ede3a953bdaeadae9b37f7a98898a31ff5ea09e2')
 export MAKEFLAGS="-j"$(cat /proc/cpuinfo | awk '/^processor/{print $3}' | wc -l)
 
 pkgver() {

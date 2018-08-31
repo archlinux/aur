@@ -1,4 +1,4 @@
-From b93afe7395e2c011945d910821e09d55fbfd06d6 Mon Sep 17 00:00:00 2001
+From 2b4a7f5d03dc605a9e2c0273d5e8c0d8c4777c07 Mon Sep 17 00:00:00 2001
 From: Han Luo <han.luo@gmail.com>
 Date: Fri, 31 Aug 2018 02:25:58 -0400
 Subject: [PATCH] Fix some issues with CMake  - Replace the absolute path
@@ -9,8 +9,8 @@ Subject: [PATCH] Fix some issues with CMake  - Replace the absolute path
 ---
  CMakeLists.txt       | 6 ++++--
  src/CMakeLists.txt   | 5 +++++
- src/general/Errors.h | 4 ++--
- 3 files changed, 11 insertions(+), 4 deletions(-)
+ src/general/Errors.h | 8 ++++++--
+ 3 files changed, 15 insertions(+), 4 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
 index 3781ef4..22ca3b1 100644
@@ -60,10 +60,21 @@ index d9437f8..8326ffe 100644
    endforeach()
    # append to global property
 diff --git a/src/general/Errors.h b/src/general/Errors.h
-index 615989a..96377de 100644
+index 615989a..81988f7 100644
 --- a/src/general/Errors.h
 +++ b/src/general/Errors.h
-@@ -392,7 +392,7 @@ public:
+@@ -27,6 +27,10 @@
+ #ifndef ERRORS_H
+ #define ERRORS_H
+ 
++#ifndef __FILENAME__
++#define __FILENAME__ __FILE__
++#endif
++
+ //#include <algorithm>
+ #include <cstdlib>
+ #include <exception>
+@@ -392,7 +396,7 @@ public:
      }
  }; // class LogicError
  
@@ -72,7 +83,7 @@ index 615989a..96377de 100644
  
  
  /// Reports a "function not implemented" error.  Includes file, line number, and
-@@ -424,7 +424,7 @@ public:
+@@ -424,7 +428,7 @@ public:
      }
  };
  

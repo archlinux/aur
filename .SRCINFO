@@ -17,7 +17,7 @@ pkgbase = mutationpp-git
 	source = mutationpp::git+https://sync.vki.ac.be/mpp/mutationpp.git
 	source = 0001-Fix-some-issues-with-CMake.patch
 	sha256sums = SKIP
-	sha256sums = d5dbbdbc394eb5725cdc7637768fb3bd6fc189784a4d2ef77cdd4811613565ff
+	sha256sums = 3471a798bc7a046d3b74c067ede3a953bdaeadae9b37f7a98898a31ff5ea09e2
 
 pkgname = mutationpp-git
 
