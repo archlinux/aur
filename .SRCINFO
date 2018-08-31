@@ -1,0 +1,19 @@
+pkgbase = emacs-evil-iedit-state-git
+	pkgdesc = Slick Evil states for iedit.
+	pkgver = r21.f75cff4
+	pkgrel = 1
+	url = https://github.com/syl20bnr/evil-iedit-state
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	depends = emacs-evil
+	depends = emacs-iedit
+	optdepends = emacs-expand-region: Integration with expand-region
+	provides = emacs-evil-iedit-state
+	conflicts = emacs-evil-iedit-state
+	source = git+https://github.com/syl20bnr/evil-iedit-state.git
+	sha256sums = SKIP
+
+pkgname = emacs-evil-iedit-state-git
+
