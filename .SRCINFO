@@ -1,7 +1,7 @@
 pkgbase = ecce-gov-pt-certificates
 	pkgdesc = CA Certificates from ECCE.gov.pt
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ecce.gov.pt/certificados/
 	arch = any
 	license = custom
