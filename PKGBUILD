@@ -1,5 +1,5 @@
 # Maintainer: Alex Branham <branham@utexas.edu>
-_cranver=0.7
+_cranver=0.8
 pkgname=r-tinytex
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -8,9 +8,9 @@ arch=('any')
 url='https://cran.r-project.org/package=tinytex'
 license=('MIT')
 depends=('r' 'r-xfun>=0.3')
-optdepends=('r-testit')
+optdepends=('r-testit' 'r-rstudioapi')
 source=("https://cran.r-project.org/src/contrib/tinytex_"$_cranver".tar.gz")
-md5sums=('105a001575dd59f7e1a613211c4308b5')
+md5sums=('d0dacfe98b6d0e06cbcb5b22216f0469')
 
 build(){
     R CMD INSTALL tinytex_"$_cranver".tar.gz -l "$srcdir"
