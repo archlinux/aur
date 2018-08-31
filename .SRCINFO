@@ -1,0 +1,16 @@
+pkgbase = ngmlr
+	pkgdesc = Long-read mapper designed to align PacBio or Oxford Nanopore to reference genomes
+	pkgver = 0.2.7
+	pkgrel = 1
+	url = https://github.com/philres/ngmlr
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = gcc-libs
+	depends = zlib
+	options = !emptydirs
+	source = ngmlr-0.2.7.tar.gz::https://github.com/philres/ngmlr/archive/v0.2.7.tar.gz
+	md5sums = f4eea67dd3e02d278ef586317b478841
+
+pkgname = ngmlr
+
