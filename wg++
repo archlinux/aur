@@ -1,7 +1,18 @@
 #!/bin/bash
 
-if [ ! -d ~/wg++ ]; then
-	cp -R /usr/share/wg++ ~
+# Check if user supplied any arguments
+if [ $# -eq 0 ]; then
+	# No arguments, so we expect config dir: ~/wg++
+	if [ ! -d ~/wg++ ]; then
+		cp -R /usr/share/wg++ ~
+		if [ -d ~/wg++ ]; then
+			echo "Configuration folder '~/wg++' created!"
+		else
+			echo "Failed to create configuration folder '~/wg++'!"
+		fi
+	fi
+	mono /opt/wg++/bin/WebGrab+Plus.exe ~/wg++/
+else
+	# User provides different directory:
+	mono /opt/wg++/bin/WebGrab+Plus.exe "$@"
 fi
-
-mono /opt/wg++/bin/WebGrab+Plus.exe ~/wg++/
