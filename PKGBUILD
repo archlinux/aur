@@ -2,7 +2,7 @@
 
 pkgname=python-dbg
 pkgver=3.7.0
-pkgrel=3
+pkgrel=1
 epoch=0
 pkgdesc="Python 3 debug symbols."
 arch=('i686' 'x86_64')
