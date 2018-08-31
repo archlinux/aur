@@ -8,7 +8,7 @@ pkgname=ipwaiter-git
 # shellcheck disable=SC2034
 pkgdesc="ipwaiter serves iptables"
 # shellcheck disable=SC2034
-pkgver=r73.90c6f93
+pkgver=r78.ffed093
 # shellcheck disable=SC2034
 pkgrel=1
 # shellcheck disable=SC2034
@@ -53,17 +53,11 @@ pkgver() {
 }
 
 package() {
-  # shellcheck disable=SC2154
   cd "$srcdir/$_gitname" || {
         msg "Could not cd into $srcdir/$_gitname"
         return 1
   }
 
-  # The install script will run
-  #   python setup.py install --root="${pkgdir}" --optimize=1
-  # as well as install system files to the correct locations
-
-  # shellcheck disable=SC2154
-  DESTDIR="${pkgdir}" ./install.sh install
+  make DESTDIR="${pkgdir}" install
 }
 
