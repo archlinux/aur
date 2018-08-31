@@ -1,15 +1,15 @@
 pkgbase = ruby-jekyll-paginate-v2
 	pkgdesc = Pagination Generator for Jekyll 3 (enhanced replacement for the old built-in jekyll-paginate gem)
-	pkgver = 1.9.4
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://rubygems.org/gems/jekyll-paginate-v2
 	arch = any
 	license = MIT
 	depends = ruby
 	depends = jekyll
-	noextract = jekyll-paginate-v2-1.9.4.gem
-	source = https://rubygems.org/downloads/jekyll-paginate-v2-1.9.4.gem
-	sha256sums = 37d0ba2f060ffa97a35462768f832d00c041ce1fb3e62d42bce54ef22af2cf05
+	noextract = jekyll-paginate-v2-2.0.0.gem
+	source = https://rubygems.org/downloads/jekyll-paginate-v2-2.0.0.gem
+	sha256sums = 2bb6178154bd1d060616fe17a6214654abbe9d8710199438ef4b195afd758b94
 
 pkgname = ruby-jekyll-paginate-v2
 
