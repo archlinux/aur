@@ -1,7 +1,7 @@
 pkgbase = california
 	pkgdesc = A new calendar application for GNOME 3. It is currently under heavy development.
 	pkgver = 0.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.gnome.org/Apps/California
 	install = california.install
 	arch = i686
