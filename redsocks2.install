@@ -6,13 +6,13 @@ add_redsocks_user() {
   systemd-tmpfiles --create redsocks2.conf
 }
 
-post_install() {
-	setcap cap_net_bind_service,cap_net_admin+ep usr/bin/redsocks2  2>/dev/null
+post_install_permission () {
+	setcap cap_net_bind_service,cap_net_admin+ep usr/bin/redsocks2 2>/dev/null
 }
 
 post_install() {
   add_redsocks_user
-  post_install
+  post_install_permission
   cat << EOF
 To launch redsocks2:
 
@@ -29,7 +29,7 @@ EOF
 
 post_upgrade() {
   add_redsocks_user
-  post_install
+  post_install_permission
 }
 
 post_remove() {
