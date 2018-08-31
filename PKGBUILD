@@ -1,7 +1,7 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=linphone-desktop-all-git
-pkgver=4.1.1.r525.b717d2ed
+pkgver=4.1.1.r571.da77d41e
 pkgrel=1
 pkgdesc="A free VoIP and video softphone based on the SIP protocol (Installed in /opt with all deps included)."
 arch=("x86_64")
@@ -10,7 +10,7 @@ license=("GPL2")
 depends=("qt5-graphicaleffects" "qt5-quickcontrols" "qt5-quickcontrols2" "qt5-svg" "qt5-tools")
 makedepends=("cmake" "doxygen" "git" "graphviz" "ladspa" "nasm" "python-pystache" "yasm")
 conflicts=("${pkgname%-all-git}")
-source=("${pkgname%-all-git}::git+https://gitlab.${pkgname%-desktop-all-git}.org/BC/public/${pkgname%-all-git}"
+source=("${pkgname%-all-git}::git+https://gitlab.${pkgname%-desktop-all-git}.org/BC/public/${pkgname%-all-git}.git"
         "bcg729::git+https://gitlab.${pkgname%-desktop-all-git}.org/BC/public/bcg729.git"
         "bcmatroska2::git+https://gitlab.${pkgname%-desktop-all-git}.org/BC/public/bcmatroska2.git"
         "bctoolbox::git+https://gitlab.${pkgname%-desktop-all-git}.org/BC/public/bctoolbox.git"
@@ -57,7 +57,7 @@ sha256sums=("SKIP"
             "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP"
             "SKIP"
             "346d983f503873811b3a4f72772e5afe4990275526c9e15c1b5cde2ad69a0544"
-            "c7971bd9866873218a429fb41ed0ce320513d34cf715d7b9967f67b4485fe2a0")
+            "93f80626cb626c25a5608d9fa53ad5ffcc7aed6b91ef3fc766ddd820e79737d3")
 
 prepare() {
   cd "${srcdir}/${pkgname%-all-git}"

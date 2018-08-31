@@ -1,5 +1,5 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 97555b08..2def4d35 100644
+index b9d0501d..efda8f09 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -26,6 +26,9 @@ project(linphoneqt VERSION 4.1.1)
@@ -43,7 +43,7 @@ index 2bb6086..d6729f8 100644
  option(CONFIG_EBML_UNICODE "Enable Unicode support" ON)
  option(CONFIG_DEBUGCHECKS "Enable internal checks" ON)
 diff --git a/submodules/bctoolbox/CMakeLists.txt b/submodules/bctoolbox/CMakeLists.txt
-index f0e2ce5..9068505 100644
+index ee2df9d..5c7e483 100644
 --- a/submodules/bctoolbox/CMakeLists.txt
 +++ b/submodules/bctoolbox/CMakeLists.txt
 @@ -39,12 +39,12 @@ set(PROJECT_VERSION_PATCH ${BCTOOLBOX_VERSION_PATCH})
@@ -112,7 +112,7 @@ index d28d927..9884374 100644
  
  macro(apply_compile_flags SOURCE_FILES)
 diff --git a/submodules/belle-sip/CMakeLists.txt b/submodules/belle-sip/CMakeLists.txt
-index 427ba41..36e5fdc 100644
+index 1a77461..6ff7d1a 100644
 --- a/submodules/belle-sip/CMakeLists.txt
 +++ b/submodules/belle-sip/CMakeLists.txt
 @@ -34,10 +34,10 @@ set(PACKAGE_URL "")
@@ -165,12 +165,12 @@ index 4a894e6..81917b7 100644
  
  
 diff --git a/submodules/linphone/CMakeLists.txt b/submodules/linphone/CMakeLists.txt
-index 60350bc42..5bd142835 100644
+index fee1f725e..7d88cf786 100644
 --- a/submodules/linphone/CMakeLists.txt
 +++ b/submodules/linphone/CMakeLists.txt
-@@ -36,10 +36,10 @@ string(REPLACE ";" " " LINPHONE_ALL_LANGS "${LINPHONE_ALL_LANGS_LIST}")
- 
+@@ -37,10 +37,10 @@ string(REPLACE ";" " " LINPHONE_ALL_LANGS "${LINPHONE_ALL_LANGS_LIST}")
  include(CMakeDependentOption)
+ include(cmake/Tools.cmake)
  
 -option(ENABLE_SHARED "Build shared library." YES)
 -option(ENABLE_STATIC "Build static library." YES)
@@ -180,16 +180,15 @@ index 60350bc42..5bd142835 100644
 -option(ENABLE_CONSOLE_UI "Turn on or off compilation of console interface." YES)
 +option(ENABLE_CONSOLE_UI "Turn on or off compilation of console interface." NO)
  option(ENABLE_CSHARP_WRAPPER "Build the C# wrapper for Liblinphone." OFF)
+ option(ENABLE_JAVA_WRAPPER "Build the Java wrapper for Liblinphone." OFF)
  option(ENABLE_CXX_WRAPPER "Build the C++ wrapper for Liblinphone." YES)
- option(ENABLE_DAEMON "Enable the linphone daemon interface." YES)
-@@ -50,11 +50,11 @@ option(ENABLE_GTK_UI "Turn on or off compilation of gtk interface." NO)
+@@ -50,10 +50,10 @@ option(ENABLE_DEBUG_LOGS "Turn on or off debug level logs." NO)
+ option(ENABLE_DOC "Enable API documentation generation." NO)
  option(ENABLE_JAVADOC "Add a target to generate documentation for Java API" NO)
  option(ENABLE_LDAP "Enable LDAP support." NO)
- option(ENABLE_NLS "Build with internationalisation support" YES)
 -option(ENABLE_RELATIVE_PREFIX "Find resources relatively to the installation directory." NO)
 +option(ENABLE_RELATIVE_PREFIX "Find resources relatively to the installation directory." YES)
  option(ENABLE_ROOTCA_DOWNLOAD "Download rootca.pem at build time." YES)
- option(ENABLE_SOCI_STORAGE "Turn on compilation soci storage, for messages, contacts, history" YES)
  option(ENABLE_SQLITE_STORAGE "Turn on compilation sqlite storage, for messages, contacts, history" YES)
 -option(ENABLE_STRICT "Build with strict compile options." YES)
 +option(ENABLE_STRICT "Build with strict compile options." NO)
@@ -197,7 +196,7 @@ index 60350bc42..5bd142835 100644
  option(ENABLE_TUNNEL "Turn on compilation of tunnel support." NO)
  option(ENABLE_TUTORIALS "Enable compilation of tutorials." YES)
 diff --git a/submodules/mediastreamer2/CMakeLists.txt b/submodules/mediastreamer2/CMakeLists.txt
-index 2052105e..3fe67db7 100644
+index 5f22a1cd..c7960efb 100644
 --- a/submodules/mediastreamer2/CMakeLists.txt
 +++ b/submodules/mediastreamer2/CMakeLists.txt
 @@ -57,15 +57,15 @@ endif()
@@ -313,7 +312,7 @@ index ba97d92..bb2df76 100644
  
  include(GNUInstallDirs)
 diff --git a/submodules/ortp/CMakeLists.txt b/submodules/ortp/CMakeLists.txt
-index cb70135..afab793 100644
+index 13c9718..ab7313c 100644
 --- a/submodules/ortp/CMakeLists.txt
 +++ b/submodules/ortp/CMakeLists.txt
 @@ -31,12 +31,12 @@ set(ORTP_VERSION ${PROJECT_VERSION})
