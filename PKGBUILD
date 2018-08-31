@@ -1,18 +1,18 @@
 # Contributor: twa022 <twa022@gmail.com>
 
 pkgname=dockbarx-deep-theme
-pkgver=20160608
+epoch=1
+pkgver=20101123
 pkgrel=1
 pkgdesc="DockBarX Theme"
 arch=('any')
-url="http://gnome-look.org/content/show.php/Deep+theme+for+DockbarX?content=135373"
-license=('GPL')
+url="https://www.deviantart.com/bigrza/art/Deep-theme-for-DockbarX-187183487"
+license=('CCPL:cc-by-nc-3.0')
 depends=('dockbarx')
 groups=('dockbarx-themes')
-source=('deep.tar.gz::https://dl.opendesktop.org/api/files/download/id/1465391033/135373-Deep.tar.gz')
-noextract=('deep.tar.gz')
-sha256sums=('721443c5531406965f477765e503704159bf7b8aff5876635d6cd3fc128251a3')
+source=('https://orig00.deviantart.net/54e9/f/2010/327/e/c/deep_theme_for_dockbarx_by_bigrza-d33fzpb.zip')
+sha256sums=('98309e84dd7116eef782abdf1b4cd9dd7c71020f9a8443ef0721025620201e32')
 
 package () {
-  install -D -m644 ${srcdir}/deep.tar.gz ${pkgdir}/usr/share/dockbarx/themes/deep.tar.gz
+  install -D -m644 "${srcdir}"/Deep.tar.gz "${pkgdir}"/usr/share/dockbarx/themes/deep.tar.gz
 }
