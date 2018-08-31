@@ -12,7 +12,7 @@ depends=(
   'git'
 )
 provides=('yay')
-conflicts=('yay' 'yay-git')
+conflicts=('yay')
 
 source_x86_64=("https://github.com/Jguer/yay/releases/download/v${pkgver}/${pkgname/-bin/}_${pkgver}_${CARCH}.tar.gz")
 sha1sums_x86_64=('b06693b0a078f4cee2725ca0e89f1a212fae1eea')
