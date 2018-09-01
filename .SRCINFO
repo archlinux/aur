@@ -1,0 +1,14 @@
+pkgbase = scratch-purge
+	pkgdesc = Simple tool to purge a folder used as scratch.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://gitlab.com/vejnar/scratch-purge
+	arch = i686
+	arch = x86_64
+	license = MPLv2
+	makedepends = go
+	source = https://gitlab.com/vejnar/scratch-purge/-/archive/v0.1/scratch-purge-v0.1.tar.gz
+	sha1sums = 63b1a272c10368b7fc84468a2a749655ff152279
+
+pkgname = scratch-purge
+
