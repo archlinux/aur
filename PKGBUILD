@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.29
 
 pkgname='perl-test-cleannamespaces'
-pkgver='0.16'
+pkgver='0.23'
 pkgrel='1'
 pkgdesc="Check for uncleaned imports"
 arch=('any')
@@ -11,10 +11,9 @@ options=('!emptydirs')
 depends=('perl-file-find-rule' 'perl-file-find-rule-perl' 'perl-module-runtime' 'perl-package-stash>=0.14' 'perl-role-tiny>=1.003000' 'perl-sub-exporter' 'perl-sub-identify' 'perl-test-deep' 'perl-test-requires' 'perl-test-tester' 'perl-test-warnings>=0.009' 'perl-namespace-clean')
 makedepends=()
 url='http://search.mcpan.org/dist/Test-CleanNamespaces'
-source=('http://search.mcpan.org/CPAN/authors/id/E/ET/ETHER/Test-CleanNamespaces-0.16.tar.gz')
-md5sums=('024f6f872d75cd7082aedcf2ad0c38bd')
-sha512sums=('e0e82660a7365c8c846ca4e326d51e91d8111cb8de16ca5a9835b8e7ac610d12e5e3bf2ddcaff861b7b38fa86093bfaeca815024867009934bd7e7973775fa6a')
-_distdir="Test-CleanNamespaces-0.16"
+source=("http://search.mcpan.org/CPAN/authors/id/E/ET/ETHER/Test-CleanNamespaces-$pkgver.tar.gz")
+sha512sums=('c40587c09bcd6a6ebc6801e12a3d33fcd2695b650fe02546a8a6da7d038ba5b1218d730a09f3b8942824a0506aca3edfcbcdf204906569dad5c46816b91e8a99')
+_distdir="Test-CleanNamespaces-$pkgver"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
