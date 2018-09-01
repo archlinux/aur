@@ -15,7 +15,7 @@ license=('GPL')
 arch=('i686' 'x86_64')
 depends=('python2-pygame' 'python2-pillow')
 makedepends=('dos2unix')
-source=(http://downloads.sourceforge.net/imgv/$pkgname-$pkgver-src.tar.gz imgv.profile imgv.sh)
+source=(http://downloads.sourceforge.net/imgv/"$pkgname-$pkgver"-src.tar.gz imgv.profile imgv.sh)
 md5sums=('48e19d90000b5d17bb609c93dd74d5b8'
          'bd0daba52c3165b38ba5a7b61ec0a94d'
          '60a287e055f6b17ba864c207cb78d9b2')
@@ -27,11 +27,11 @@ post_install() {
 }
 
 post_upgrade() {
-  post_install $1
+  post_install "$1"
 }
 
 build() {
-  cd "$srcdir/${pkgname}-${pkgver}"
+  cd "$srcdir/$pkgname-$pkgver"
   dos2unix *.py data/{imgv.conf,playlists}
   sed -i 's/#\s*$//g' *.py
   sed -i 's|COLOR|#COLOR|g' "data/imgv.conf"
@@ -39,7 +39,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/${pkgname}-${pkgver}"
+  cd "$srcdir/$pkgname-$pkgver"
   install -d "$pkgdir/usr/share/imgv"
   cp -r * "$pkgdir/usr/share/imgv/"
   install -Dm755 "$srcdir/imgv.profile" "$pkgdir/etc/profile.d/imgv.sh"
