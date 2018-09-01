@@ -1,0 +1,18 @@
+pkgbase = emacs-evil-git
+	pkgdesc = The extensible vi layer for Emacs.
+	pkgver = r2099.3d9f76f
+	pkgrel = 1
+	url = https://github.com/emacs-evil/evil
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	depends = emacs-goto-chg
+	depends = emacs-undo-tree
+	provides = emacs-evil
+	conflicts = emacs-evil
+	source = git+https://github.com/emacs-evil/evil.git
+	sha256sums = SKIP
+
+pkgname = emacs-evil-git
+
