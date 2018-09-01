@@ -14,23 +14,23 @@ arch=('i686' 'x86_64')
 license=('GPL')
 depends=('libgee' 'libxml2' 'sqlite' 'gucharmap' 'file-roller')
 makedepends=('git' 'gnome-common' 'intltool' 'yelp-tools' 'gobject-introspection' 'vala')
-provides=(${pkgname%-git})
-conflicts=(${pkgname%-git})
-source=("${pkgname}::git://github.com/FontManager/master.git#branch=${_branch}")
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("$pkgname::git://github.com/FontManager/master.git#branch=$_branch")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname}"
+  cd "$pkgname"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${pkgname}"
+  cd "$pkgname"
   ./autogen.sh --prefix=/usr --disable-schemas-compile
   make -j1
 }
 
 package() {
-  cd "${pkgname}"
-  make DESTDIR="${pkgdir}" install
+  cd "$pkgname"
+  make DESTDIR="$pkgdir" install
 }
