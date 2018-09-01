@@ -4,7 +4,7 @@
 
 _pkgname=android-sdk-platform-tools
 pkgname="${_pkgname}-dummy"
-pkgver=r26.0.1
+pkgver=28.0.1
 pkgrel=1
 _pkgdesc='Platform-Tools for Google Android SDK (adb and fastboot)'
 pkgdesc="${_pkgdesc}, dummy package"
