@@ -15,7 +15,7 @@ _opts=(
 )
 
 pkgname=(
-'vala-panel-appmenu-translations-git'
+'vala-panel-appmenu-common-git'
 )
 
 makedepends=('cmake' 'vala' 'gtk3' 'libwnck3' 'bamf>=0.5.0' 'git')
@@ -62,7 +62,7 @@ msg "If you want to disable an applet, edit pkgbuild variables _disable_[applet]
 _pkgbase=vala-panel-appmenu
 pkgbase=${_pkgbase}-xfce-git
 _cmakename=cmake-vala
-pkgver=0.6.95
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="AppMenu (Global Menu) plugin"
 url="https://gitlab.com/vala-panel-project/vala-panel-appmenu"
@@ -172,8 +172,9 @@ package_vala-panel-appmenu-budgie-git() {
   rm -rf "${pkgdir}/usr/lib/mate-panel"
 }
 
-package_vala-panel-appmenu-translations-git() {
-  pkgdesc="Translations for Global Menu"
+package_vala-panel-appmenu-common-git() {
+  pkgdesc="Translations and common files for Global Menu"
+  replaces=('vala-panel-appmenu-translations-git')
   optdepends=('vala-panel-appmenu-xfce-git'
               'vala-panel-appmenu-valapanel-git'
               'vala-panel-appmenu-mate-git'
