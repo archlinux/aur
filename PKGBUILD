@@ -36,5 +36,5 @@ build() {
 package() {
     cd "${pkgname%-git}"
 
-    make ENABLE_MAN=yes PREFIX=/usr DESTDIR="${pkgdir}" install
+    make ENABLE_MAN=yes PREFIX=/usr DESTDIR="$pkgdir" install
 }
