@@ -49,7 +49,7 @@ package() {
   sed \
     -e '/^#pidfile="\/var\/run\/turnserver.pid"$/c pidfile="\/var\/run\/turnserver\/turnserver.pid"' \
     -i "$pkgdir"/etc/turnserver.conf
-  find "$pkgdir" -type f ! -name '*.sh' ! -name '*.pl' -exec chmod 644 {} +
+  find "$pkgdir"/{etc,usr/include,usr/lib,usr/share,var} -type f ! -name '*.sh' ! -name '*.pl' -exec chmod 644 {} +
   mkdir -p "$pkgdir"/var/log/turnserver
   install -Dm 644 -t "$pkgdir"/usr/share/licenses/coturn LICENSE
   }
