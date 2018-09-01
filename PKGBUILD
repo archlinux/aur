@@ -3,7 +3,7 @@
 
 pkgname=brave
 pkgver=0.23.105
-pkgrel=1
+pkgrel=2
 pkgdesc='Web browser that blocks ads and trackers by default.'
 arch=('x86_64')
 url='https://www.brave.com'
@@ -14,8 +14,10 @@ optdepends=('cups: Printer support'
             'pepper-flash: Adobe Flash support')
 provides=('brave-browser')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/brave/browser-laptop/archive/v${pkgver}dev.tar.gz"
+        "$pkgname.sh"
         "$pkgname.desktop")
 sha512sums=('30e11974d15df5a2c3b30f373542f214ac9f4c3ddbeed667a46036149f9f88828ab32fe98fcd3d37ad6d68fba379d1b69d6f1649f2f54836a1accc17199efceb'
+            '985bc2ad94c20e9cc34bb65bc18d56d21f44e1df184a832c809dedb1814919b6396b85488a8cbe29bd312ef6d3553a96c13a59e34ca34a079686a25163d565e8'
             '400d345271a3c98be668e4aa08743d707647c92ee35951e937238ac07074119cfdb9601e1934cdf46014bd181b26ab0b568e4cab67c790efe53d029d8b0f9c55')
 
 _bdir=brave-linux-x64
@@ -30,10 +32,6 @@ build() {
 	sed -i "s/require('git-rev-sync').long()/'${pkgver}dev'/" tools/buildPackage.js
 
 	CHANNEL=dev npm run build-package
-
-	if [[ ! (-r /proc/sys/kernel/unprivileged_userns_clone && $(< /proc/sys/kernel/unprivileged_userns_clone) == 1 && -n $(zcat /proc/config.gz | grep CONFIG_USER_NS=y) ) ]]; then
-		echo "User namespaces are not detected as enabled on your system, brave will run with the sandbox disabled"
-	fi
 }
 
 package() {
@@ -42,19 +40,7 @@ package() {
 	install -dm0755 "$pkgdir/usr/lib"
 	cp -a --reflink=auto "$_bdir" "$pkgdir/usr/lib/$pkgname"
 
-	_launcher="$pkgdir/usr/bin/$pkgname"
-	install -Dm0755 /dev/stdin "$_launcher"<<END
-#!/usr/bin/sh
-
-FLAG="--no-sandbox"
-
-if [[ -r /proc/sys/kernel/unprivileged_userns_clone && \$(< /proc/sys/kernel/unprivileged_userns_clone) == 1 && -n \$(zcat /proc/config.gz | grep CONFIG_USER_NS=y) ]]; then
-	FLAG=""
-fi
-
-exec /usr/lib/$pkgname/brave "\$FLAG" -- "\$@"
-END
-
+	install -Dm0755 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
 	install -Dm0644 -t "$pkgdir/usr/share/applications/" "$pkgname.desktop"
 	install -Dm0644 res/dev/app.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
 	install -Dm0644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/MPL2"

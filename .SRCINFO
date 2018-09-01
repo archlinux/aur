@@ -1,7 +1,7 @@
 pkgbase = brave
 	pkgdesc = Web browser that blocks ads and trackers by default.
 	pkgver = 0.23.105
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.brave.com
 	arch = x86_64
 	license = custom
@@ -18,8 +18,10 @@ pkgbase = brave
 	optdepends = pepper-flash: Adobe Flash support
 	provides = brave-browser
 	source = brave-0.23.105.tar.gz::https://github.com/brave/browser-laptop/archive/v0.23.105dev.tar.gz
+	source = brave.sh
 	source = brave.desktop
 	sha512sums = 30e11974d15df5a2c3b30f373542f214ac9f4c3ddbeed667a46036149f9f88828ab32fe98fcd3d37ad6d68fba379d1b69d6f1649f2f54836a1accc17199efceb
+	sha512sums = 985bc2ad94c20e9cc34bb65bc18d56d21f44e1df184a832c809dedb1814919b6396b85488a8cbe29bd312ef6d3553a96c13a59e34ca34a079686a25163d565e8
 	sha512sums = 400d345271a3c98be668e4aa08743d707647c92ee35951e937238ac07074119cfdb9601e1934cdf46014bd181b26ab0b568e4cab67c790efe53d029d8b0f9c55
 
 pkgname = brave
