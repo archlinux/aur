@@ -1,14 +1,13 @@
 pkgbase = cquery
-	pkgdesc = Low-latency vscode language server for large C++ code-bases, powered by libclang.
+	pkgdesc = cquery is a highly-scalable, low-latency language server for C/C++/Objective-C.
 	pkgver = v20180718
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/cquery-project/cquery/
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = python
-	makedepends = llvm
-	depends = clang
+	makedepends = cmake>=3.1
+	depends = clang>=6.0.0
 	conflicts = cquery-git
 	source = https://github.com/cquery-project/cquery/archive/v20180718.tar.gz
 	source = git+https://github.com/miloyip/rapidjson?commit=daabb88
