@@ -1,5 +1,6 @@
-!.SRCINFO
-!.gitignore
-!PKGBUILD
-!*.patch
 *
+!./.SRCINFO
+!./.gitignore
+!./PKGBUILD
+!./rssowl.desktop
+!./rssowl.install
