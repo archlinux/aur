@@ -1,3 +1,5 @@
+# Maintainer: Genki Sky <alt+archlinux.org@genki.is>
+
 pkgname=slurp-git
 pkgver=1
 pkgrel=5
