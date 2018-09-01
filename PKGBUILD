@@ -10,7 +10,7 @@ url='https://github.com/alerque/casile/'
 license=('LGPL3')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git://github.com/alerque/${pkgname%-git}.git#branch=${_branch}")
+source=("git://github.com/alerque/${pkgname%-git}.git#branch=$_branch")
 sha512sums=('SKIP')
 makedepends=('git')
 depends=('cpdf'
