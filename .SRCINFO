@@ -1,11 +1,12 @@
 pkgbase = retroarch-rbp
 	pkgdesc = Reference frontend for the libretro API (Raspberry Pi)
-	pkgver = 1.7.3
+	pkgver = 1.7.4
 	pkgrel = 1.1
 	url = http://www.libretro.com/
 	arch = armv7h
 	groups = libretro
 	license = GPL
+	makedepends = git
 	makedepends = vulkan-icd-loader
 	depends = alsa-lib
 	depends = gcc-libs
@@ -43,10 +44,10 @@ pkgbase = retroarch-rbp
 	provides = retroarch
 	conflicts = retroarch
 	backup = etc/retroarch.cfg
-	source = retroarch-1.7.3.tar.gz::https://github.com/libretro/RetroArch/archive/v1.7.3.tar.gz
+	source = git+https://github.com/libretro/RetroArch.git#tag=v1.7.4
 	source = retroarch-config.patch
-	sha256sums = a60c2244609bb87cdb56dd8e1020c3be757569b5246141328804ebc5574327ea
-	sha256sums = 14f07b31d6bdb049dad62dd12597c292b8d2df5cb2803d15de00a7597d3081fd
+	sha256sums = SKIP
+	sha256sums = d79c542c126b74a1b221fcc1acbe053b95f76c6c9a6ccefd10b8f459ceee94dd
 
 pkgname = retroarch-rbp
 
