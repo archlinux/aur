@@ -1,0 +1,23 @@
+pkgbase = pdftk-java-git
+	pkgdesc = Port of pdftk into Java
+	pkgver = r72.d5cf2c0
+	pkgrel = 1
+	url = https://gitlab.com/pdftk-java/pdftk
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = apache-ant
+	makedepends = git
+	depends = java-runtime-headless
+	depends = bcprov
+	depends = java-commons-lang3
+	optdepends = poppler: Additional PDF utilities
+	source = git+https://gitlab.com/pdftk-java/pdftk.git
+	source = pdftk.pdftk-java
+	md5sums = SKIP
+	md5sums = 070aa01cf454d92826d9ea0141eeedec
+	sha256sums = SKIP
+	sha256sums = 48c481a27786324aa7fb7cf49c47a9af83ea14a24f5c25bd0d3580c4b2f202cc
+
+pkgname = pdftk-java-git
+

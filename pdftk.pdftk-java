@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+UBUNTUCP=/usr/share/java/bcprov.jar:/usr/share/java/commons-lang3.jar
+
+java -cp $UBUNTUCP:/usr/share/pdftk/pdftk.jar com.gitlab.pdftk_java.pdftk "$@"
