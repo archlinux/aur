@@ -1,7 +1,21 @@
-diff -Naur glib-2.46.0-orig/glib/glib-init.c glib-2.46.0/glib/glib-init.c
---- glib-2.46.0-orig/glib/glib-init.c	2015-09-12 18:13:45.000000000 +0300
-+++ glib-2.46.0/glib/glib-init.c	2015-09-22 09:09:00.512195800 +0300
-@@ -238,12 +238,14 @@
+From bc90511c1eb333e26e0bc0eaee62375d0e788db6 Mon Sep 17 00:00:00 2001
+From: Erik van Pienbroek <epienbro@fedoraproject.org>
+Date: Tue, 16 Apr 2013 11:42:11 +0200
+Subject: [PATCH] win32: Prefer the use of constructors over DllMain
+
+This prevents having to depend on DllMain in static libraries
+
+Constructors are available in both the GCC build (GCC 2.7 and later)
+and the MSVC build (MSVC 2008 and later using _Pragma, earlier
+versions using #pragma)
+---
+ glib/glib-init.c | 22 ++++++++++++++--------
+ 1 file changed, 14 insertions(+), 8 deletions(-)
+
+diff --git a/glib/glib-init.c b/glib/glib-init.c
+--- a/glib/glib-init.c 2018-08-02 16:09:46.277047195 +0200
++++ b/glib/glib-init.c 2018-08-02 16:10:23.617387056 +0200
+@@ -272,12 +272,14 @@
  
  #if defined (G_OS_WIN32)
  
@@ -18,7 +32,7 @@ diff -Naur glib-2.46.0-orig/glib/glib-init.c glib-2.46.0/glib/glib-init.c
  BOOL WINAPI
  DllMain (HINSTANCE hinstDLL,
           DWORD     fdwReason,
-@@ -253,11 +255,6 @@
+@@ -287,13 +289,6 @@
      {
      case DLL_PROCESS_ATTACH:
        glib_dll = hinstDLL;
@@ -27,10 +41,12 @@ diff -Naur glib-2.46.0-orig/glib/glib-init.c glib-2.46.0/glib/glib-init.c
 -      g_thread_win32_init ();
 -#endif
 -      glib_init ();
+-      /* must go after glib_init */
+-      g_console_win32_init ();
        break;
  
      case DLL_THREAD_DETACH:
-@@ -274,7 +271,10 @@
+@@ -317,7 +312,10 @@
    return TRUE;
  }
  
@@ -42,7 +58,7 @@ diff -Naur glib-2.46.0-orig/glib/glib-init.c glib-2.46.0/glib/glib-init.c
  
  #ifdef G_DEFINE_CONSTRUCTOR_NEEDS_PRAGMA
  #pragma G_DEFINE_CONSTRUCTOR_PRAGMA_ARGS(glib_init_ctor)
-@@ -284,6 +284,12 @@
+@@ -327,7 +325,15 @@
  static void
  glib_init_ctor (void)
  {
@@ -53,5 +69,8 @@ diff -Naur glib-2.46.0-orig/glib/glib-init.c glib-2.46.0/glib/glib-init.c
 +#endif /* defined (THREADS_WIN32) */
 +#endif /* defined (G_OS_WIN32) */
    glib_init ();
++  /* must go after glib_init */
++  g_console_win32_init ();
  }
  
+ #else
