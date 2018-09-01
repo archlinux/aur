@@ -1,21 +1,21 @@
 # Maintainer: Anselmo L. S. Melo <anselmo.melo@intel.com>
 
 pkgbasename='defcon'
-pkgname=('python-'$pkgbasename'-git')
+pkgname=('python-'"$pkgbasename"'-git')
 pkgver=r273.bba773c
 pkgrel=1
 pkgdesc=""
 arch=('any')
-url="https://github.com/trufont/"$pkgbasename
+url="https://github.com/trufont/""$pkgbasename"
 license=('MIT')
 makedepends=('git')
-source=("git+https://github.com/trufont/"$pkgbasename".git")
+source=("git+https://github.com/trufont/""$pkgbasename.git")
 sha256sums=('SKIP')
 
 package() {
   depends=('python-setuptools')
 
-  cd "$srcdir/"$pkgbasename
+  cd "$srcdir/""$pkgbasename"
   python3 setup.py install --root="$pkgdir/" --optimize=1
 }
 
