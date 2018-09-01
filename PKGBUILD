@@ -9,7 +9,7 @@ url="http://kanban.leanlabs.io/"
 license=('MIT')
 depends=('redis')
 conflicts=('kanban')
-source=("kanban::https://github.com/leanlabsio/kanban/releases/download/${pkgver}/kanban_x86_64_linux"
+source=("kanban::https://github.com/leanlabsio/kanban/releases/download/$pkgver/kanban_x86_64_linux"
         "kanban.service"
         "apache2.4.conf.example"
         "apache2.4-ssl.conf.example"
@@ -23,7 +23,7 @@ _etcdir="/etc/webapps/kanban"
 
 post_install() {
     groupadd kanban &>/dev/null
-    useradd -d "${_homedir}" -g kanban -s "/bin/false" kanban
+    useradd -d "$_homedir" -g kanban -s "/bin/false" kanban
 }
 
 post_remove() {
@@ -31,9 +31,9 @@ post_remove() {
 	getent group kanban >/dev/null 2>&1 && groupdel kanban
 }
 package() {
-    install -Dm0755 "kanban" "${pkgdir}/usr/bin/kanban"
-    install -Dm0644 kanban.service "${pkgdir}/usr/lib/systemd/system/kanban.service"
+    install -Dm0755 "kanban" "$pkgdir/usr/bin/kanban"
+    install -Dm0644 kanban.service "$pkgdir/usr/lib/systemd/system/kanban.service"
     for __cfg in apache2.4 apache2.4-ssl; do
-        install -Dm0644 "${srcdir}/${__cfg}.conf.example" "${pkgdir}${_etcdir}/${__cfg}.conf.example"
+        install -Dm0644 "$srcdir/$__cfg.conf.example" "$pkgdir$_etcdir/$__cfg.conf.example"
     done
 }
