@@ -1,0 +1,17 @@
+pkgbase = emacs-doom-themes-git
+	pkgdesc = An opinionated pack of modern color-themes
+	pkgver = r765.3769bf2
+	pkgrel = 1
+	url = https://github.com/hlissner/emacs-doom-themes
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	depends = emacs-all-the-icons
+	provides = emacs-doom-themes
+	conflicts = emacs-doom-themes
+	source = git+https://github.com/hlissner/emacs-doom-themes.git
+	sha256sums = SKIP
+
+pkgname = emacs-doom-themes-git
+
