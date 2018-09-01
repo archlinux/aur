@@ -16,12 +16,12 @@ pkgver() {
     git rev-parse --short HEAD
 }
 
-build() {
-	cd "krakenx"
+build() {  
+    cd "krakenx"
     python setup.py build
 }
 
 package() {
     cd "krakenx"
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
