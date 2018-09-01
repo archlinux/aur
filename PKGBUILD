@@ -1,16 +1,15 @@
-# Maintainer: Anthony Vitacco <anthony@littlegno.me>
-# Contributor: Jente Hidskes <hjdskes@gmail.com> 
+# Maintainer: Jente Hidskes <hjdskes@gmail.com>
 
 pkgname=gcolor3-git
 _gitname=gcolor3
-pkgver=2016.08.20
+pkgver=2018.09.01
 pkgrel=1
 pkgdesc="A simple color selection dialog in GTK3. Git version."
 arch=('i686' 'x86_64')
 url="http://hjdskes.github.io/projects/gcolor3/"
 license=('GPL2')
 depends=('gtk3' 'hicolor-icon-theme')
-makedepends=('git' 'intltool' 'gnome-common')
+makedepends=('git' 'gnome-common')
 conflicts=('gcolor3')
 source=('git://github.com/Hjdskes/gcolor3.git')
 md5sums=('SKIP')
@@ -22,12 +21,12 @@ pkgver() {
 
 build() {
     cd $_gitname/
-    ./autogen.sh --prefix=/usr
-    make
+    meson build --prefix=/usr
+    ninja -C build
 }
 
 package() {
     cd $_gitname/
-    make PREFIX=/usr DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" ninja -C build install
 }
 

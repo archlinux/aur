@@ -1,13 +1,12 @@
 pkgbase = gcolor3-git
 	pkgdesc = A simple color selection dialog in GTK3. Git version.
-	pkgver = 2016.08.20
+	pkgver = 2018.09.01
 	pkgrel = 1
 	url = http://hjdskes.github.io/projects/gcolor3/
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = git
-	makedepends = intltool
 	makedepends = gnome-common
 	depends = gtk3
 	depends = hicolor-icon-theme
