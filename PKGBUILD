@@ -10,12 +10,12 @@ url='http://www.teamocil.com'
 license=('MIT')
 depends=('ruby' 'tmux')
 makedepends=('rubygems' 'ruby-rdoc')
-source=("http://rubygems.org/downloads/${pkgname}-${pkgver}.gem")
+source=("http://rubygems.org/downloads/$pkgname-$pkgver.gem")
 sha256sums=('221bf0b600e0a277c98befbecea8a454ee87dbd1c7e8767a2f64dda8dc18aed0')
 noextract=("${source[@]##*/}")
 
 package() {
     local _gemdir="$(ruby -rrubygems -e'puts Gem.default_dir')"
     gem install --no-user-install --ignore-dependencies --verbose \
-        -i "${pkgdir}${_gemdir}" -n "${pkgdir}/usr/bin" "${source[@]##*/}"
+        -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" "${source[@]##*/}"
 }
