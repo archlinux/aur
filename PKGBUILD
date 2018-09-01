@@ -4,8 +4,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=abiword-git
-pkgver=20472.09026668e
-pkgrel=2
+pkgver=20474.39873476b
+pkgrel=1
 pkgdesc="Fully-featured word processor from official gnome gitlab mirror"
 arch=('i686' 'x86_64')
 url="http://www.abisource.com"
@@ -17,7 +17,7 @@ makedepends=('git' 'asio' 'boost' 'gobject-introspection' 'python2' 'libwpd')
 provides=('abiword' 'abiword-plugins')
 conflicts=('abiword' 'abiword-plugins')
 options=('!makeflags')
-source=("abiword-git::git+https://gitlab.gnome.org/World/AbiWord.git"
+source=("abiword::git+https://gitlab.gnome.org/World/AbiWord.git"
 	'enchant-2.1.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/enchant-2.1.patch?h=packages/abiword'
 	'aiksaurus-plugin.m4::https://git.archlinux.org/svntogit/packages.git/plain/trunk/aiksaurus-plugin.m4?h=packages/abiword' 
 	'command-plugin.m4::https://git.archlinux.org/svntogit/packages.git/plain/trunk/command-plugin.m4?h=packages/abiword' in_chroot.patch)
