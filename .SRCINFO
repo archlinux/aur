@@ -1,7 +1,7 @@
 pkgbase = perl-test-cleannamespaces
 	pkgdesc = Check for uncleaned imports
 	pkgver = 0.23
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.mcpan.org/dist/Test-CleanNamespaces
 	arch = any
 	license = PerlArtistic

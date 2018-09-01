@@ -1,9 +1,10 @@
+# Maintainer: Manifest0
 # Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 # Generator  : CPANPLUS::Dist::Arch 1.29
 
 pkgname='perl-test-cleannamespaces'
 pkgver='0.23'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Check for uncleaned imports"
 arch=('any')
 license=('PerlArtistic' 'GPL')
