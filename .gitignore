@@ -1,9 +1,6 @@
-*.src.tar.*
-*.pkg.tar.*
-*.orig
-*.rej
-*.swp
-*.part
-src
-pkg
-lcov-*
+*
+!./.SRCINFO
+!./.gitignore
+!./PKGBUILD
+!./fix-undef-behaviour.patch
+!./handle-equals-signs.patch
