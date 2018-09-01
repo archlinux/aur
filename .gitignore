@@ -1,5 +1,5 @@
-!.SRCINFO
-!.gitignore
-!PKGBUILD
-!*.patch
 *
+!./.SRCINFO
+!./.gitignore
+!./PKGBUILD
+!./python3.patch
