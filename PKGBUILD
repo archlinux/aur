@@ -29,32 +29,19 @@ build() {
 
 package() {
   cd "$srcdir/$_pkgbase"
-
-  msg2 'Installing bitcoin-qt...'
-  install -Dm755 "src/qt/bitcoin-qt" "$pkgdir/usr/bin/bitcoin-qt"
+  
+  make install DESTDIR=$pkgdir
   install -Dm644 "contrib/debian/bitcoin-qt.desktop" \
                  "$pkgdir/usr/share/applications/bitcoin.desktop"
   install -Dm644 "share/pixmaps/bitcoin128.png"\
                  "$pkgdir/usr/share/pixmaps/bitcoin128.png"
   install -Dm644 "contrib/debian/manpages/bitcoin-qt.1" \
                  "$pkgdir/usr/share/man/man1/bitcoin-qt.1"
-
-  msg2 'Installing bitcoin-daemon...'
-  install -Dm755 "src/bitcoind" "$pkgdir/usr/bin/bitcoind"
   install -Dm644 "contrib/debian/examples/bitcoin.conf"\
                  "$pkgdir/usr/share/doc/$pkgname/examples/bitcoin.conf"
   install -Dm644 "contrib/debian/manpages/bitcoind.1"\
                  "$pkgdir/usr/share/man/man1/bitcoind.1"
   install -Dm644 "contrib/debian/manpages/bitcoin.conf.5"\
                  "$pkgdir/usr/share/man/man5/bitcoin.conf.5"
-
-  msg2 'Installing bitcoin-cli...'
-  install -Dm755 "src/bitcoin-cli" "$pkgdir/usr/bin/bitcoin-cli"
-  install -Dm644 "contrib/debian/manpages/bitcoin-cli.1" \
-                 "$pkgdir/usr/share/man/man1/bitcoin-cli.1"
-
-  msg2 'Installing bitcoin-tx...'
-  install -Dm755 "src/bitcoin-tx" "$pkgdir/usr/bin/bitcoin-tx"
-
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
