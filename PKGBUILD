@@ -3,18 +3,19 @@
 _pkgname=sleepyhead
 pkgname=$_pkgname-git
 pkgver=1.1.r2356.8e6968fb
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source, cross platform, sleep tracking software with a focus on monitoring CPAP treatment."
 arch=('i686' 'x86_64')
 url="http://sleepyhead.jedimark.net"
 license=('GPL')
 depends=(
-  'qt5-base'
   'qt5-serialport'
   'qt5-tools'
-  'qt5-webkit'
 )
-makedepends=('git')
+makedepends=(
+  'git'
+  'glu'
+)
 provides=("$_pkgname")
 conflicts=('sleepyhead')
 source=(
