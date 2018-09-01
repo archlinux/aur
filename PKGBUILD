@@ -61,7 +61,7 @@ _pkgbase=xfce4-sntray-plugin
 _cmakename=cmake-vala
 _dbusmenuname=vala-dbusmenu
 pkgver=0.4.11
-pkgrel=2
+pkgrel=3
 pkgdesc="Plugin for xfce4-panel and vala-panel to show StatusNotifierItems (AppIndicators) via FlowBox"
 url="https://gitlab.com/vala-panel-project/xfce4-sntray-plugin"
 arch=('i686' 'x86_64')
@@ -92,7 +92,7 @@ build(){
 
 package_xfce4-panel-sntray-git(){
 	pkgdesc="Plugin for xfce4-panel to show StatusNotifierItems (AppIndicators) via FlowBox"
-	depends=('gtk3' 'xfce4-panel>=4.11.2' 'sntray-plugin-translations-git')
+	depends=('gtk3' 'xfce4-panel>=4.11.2' 'sntray-plugin-common-git')
 	optdepends=('vala-panel-extras-volume: ALSA volume applet'
 				'vala-panel-extras-battery: UPower battery applet'
 				'vala-panel-extras-weather: Weather applet'
@@ -114,7 +114,7 @@ package_xfce4-panel-sntray-git(){
 
 package_mate-panel-sntray-git(){
 	pkgdesc="Plugin for mate-panel to show StatusNotifierItems (AppIndicators) via FlowBox"
-	depends=('gtk3' 'mate-panel' 'sntray-plugin-translations-git')
+	depends=('gtk3' 'mate-panel' 'sntray-plugin-common-git')
 	optdepends=('vala-panel-extras-volume: ALSA volume applet'
 				'vala-panel-extras-battery: UPower battery applet'
 				'vala-panel-extras-weather: Weather applet'
@@ -135,7 +135,7 @@ package_mate-panel-sntray-git(){
 
 package_vala-panel-sntray-git(){
 	pkgdesc="Plugin for vala-panel to show StatusNotifierItems (AppIndicators) via FlowBox"
-	depends=('gtk3' 'vala-panel' 'sntray-plugin-translations-git')
+	depends=('gtk3' 'vala-panel' 'sntray-plugin-common-git')
 	optdepends=('vala-panel-extras-volume: ALSA volume applet'
 				'vala-panel-extras-battery: UPower battery applet'
 				'vala-panel-extras-weather: Weather applet'
@@ -157,7 +157,7 @@ package_vala-panel-sntray-git(){
 
 package_budgie-sntray-git(){
 	pkgdesc="Plugin for budgie to show StatusNotifierItems (AppIndicators) via FlowBox"
-	depends=('budgie-desktop' 'gtk3' 'libpeas' 'sntray-plugin-translations-git')
+	depends=('budgie-desktop' 'gtk3' 'libpeas' 'sntray-plugin-common-git')
 	optdepends=('vala-panel-extras-volume: ALSA volume applet'
 				'vala-panel-extras-battery: UPower battery applet'
 				'vala-panel-extras-weather: Weather applet'
