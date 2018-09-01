@@ -13,12 +13,12 @@ source=(http://download.support.xerox.com/pub/drivers/6500/drivers/linux/en_GB/X
 md5sums=('aad7730c2a9f7f755d66cb477d8f732a')
 
 build() {
-  cd ${srcdir}
-  rpmextract.sh ${_rpmname} || return 1
+  cd "$srcdir"
+  rpmextract.sh "$_rpmname" || return 1
 }
 
 package() {
-  cd ${srcdir}
-  cp -r usr ${pkgdir}
+  cd "$srcdir"
+  cp -r usr "$pkgdir"
 }
 
