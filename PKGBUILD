@@ -2,7 +2,7 @@
 # Contributor: Jason Lenz <Jason@Lenzplace.org>
 _pkgname=sleepyhead
 pkgname=$_pkgname-git
-pkgver=1.1.0.8e6968fb
+pkgver=1.1.r2356.8e6968fb
 pkgrel=1
 pkgdesc="Open-source, cross platform, sleep tracking software with a focus on monitoring CPAP treatment."
 arch=('i686' 'x86_64')
@@ -11,6 +11,7 @@ license=('GPL')
 depends=(
   'qt5-base'
   'qt5-serialport'
+  'qt5-tools'
   'qt5-webkit'
 )
 makedepends=('git')
@@ -27,9 +28,8 @@ pkgver() {
   cd sleepyhead-code
   _major=$(sed -rn 's/.*major_version = ([0-9]+).*/\1/p' < sleepyhead/version.h)
   _minor=$(sed -rn 's/.*minor_version = ([0-9]+).*/\1/p' < sleepyhead/version.h)
-  _rev=$(sed -rn 's/.*revision_number = ([0-9]+).*/\1/p' < sleepyhead/version.h)
-  _gitversion=$(git rev-parse --short HEAD)
-  echo $_major.$_minor.$_rev.$_gitversion
+  _gitversion=$(printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")
+  echo $_major.$_minor.$_gitversion
 }
 
 build() {
