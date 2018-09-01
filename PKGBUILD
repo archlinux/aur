@@ -7,7 +7,7 @@ pkgname=freecheck-git
 pkgver=0.30_6_g5f80e5a
 pkgrel=1
 _branch=devel
-url=https://github.com/alerque/${pkgname%-git}
+url=https://github.com/alerque/"${pkgname%-git}"
 pkgdesc='A blank check printer that adds MICR codes and check templates to blank stock.'
 arch=('any')
 license=('GPL2')
@@ -28,5 +28,5 @@ pkgver() {
 
 package() {
     cd "$srcdir/${pkgname%-git}"
-    make prefix=$pkgdir/ install
+    make prefix="$pkgdir"/ install
 }
