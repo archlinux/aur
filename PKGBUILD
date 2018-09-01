@@ -3,40 +3,19 @@
 pkgname=gnumicr
 pkgver=0.30
 pkgrel=1
-pkgdesc="An open-source licensed Type 1 MICR E13-B font"
+pkgdesc='An open-source licensed Type 1 MICR E13-B font'
 arch=('any')
-url="https://github.com/alerque/gnumicr"
+url='https://github.com/alerque/gnumicr'
 license=('GPL')
 depends=('fontconfig' 'xorg-font-utils')
-source=(https://github.com/alerque/gnumicr/archive/v0.30.tar.gz)
-md5sums=('20e317196feb2ffea5a2a11c082eff52')
-
-post_install() {
-    echo -n "==> Rebuilding font cache... "
-    fc-cache -f &> /dev/null
-    mkfontscale /usr/share/fonts/TTF
-    mkfontdir /usr/share/fonts/TTF
-    echo "done"
-}
-
-post_upgrade() {
-    post_install "$1"
-}
-
-post_remove() {
-    post_install "$1"
-}
+source=("https://github.com/alerque/$pkgname/archive/v$pkgver.tar.gz")
+sha256sums=('e087b0a85d1e5aa1ed4b11ae8f5716ec74e48ab4ca1b10b7fbba0dff6784b39b')
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
-
-    install -d "$pkgdir"/usr/share/fonts/TTF
-    install -d "$pkgdir"/usr/share/fonts/Type1
-    install -d "$pkgdir"/usr/share/fonts/OTF
-
-    install -Dm644 GnuMICR.ttf "$pkgdir/usr/share/fonts/TTF/"
-    install -Dm644 GnuMICR.pfb "$pkgdir/usr/share/fonts/Type1/"
-    install -Dm644 GnuMICR.pfm "$pkgdir/usr/share/fonts/Type1/"
-    install -Dm644 GnuMICR.afm "$pkgdir/usr/share/fonts/Type1/"
-    install -Dm644 GnuMICR.otf "$pkgdir/usr/share/fonts/OTF/"
+    cd "$pkgname-$pkgver"
+    install -Dm644 GnuMICR.ttf -t "$pkgdir/usr/share/fonts/TTF/"
+    install -Dm644 GnuMICR.pfb -t "$pkgdir/usr/share/fonts/Type1/"
+    install -Dm644 GnuMICR.pfm -t "$pkgdir/usr/share/fonts/Type1/"
+    install -Dm644 GnuMICR.afm -t "$pkgdir/usr/share/fonts/Type1/"
+    install -Dm644 GnuMICR.otf -t "$pkgdir/usr/share/fonts/OTF/"
 }
