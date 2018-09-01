@@ -1,20 +1,19 @@
 # Maintainer: ValHue <vhuelamo at gmail dot com>
-# https://github.com/ValHue/AUR-PKGBUILDs
 #
 # Contributor: Alexander Fehr <pizzapunk gmail com>
 #
 pkgname="jclic"
-pkgver="0.3.2.1"
+pkgver="0.3.2.9"
 pkgrel="1"
 pkgdesc="Java applications for educational activities."
 arch=('any')
-url="http://clic.xtec.cat/en/index.htm"
+url="https://clic.xtec.cat/legacy/en/index.html"
 license=('GPL2')
 depends=('java-environment')
 provides=("${pkgname}")
 
-source=("http://clic.xtec.cat/dist/${pkgname}/${pkgname}-${pkgver}.zip")
-sha256sums=('8c36a0fbedfdeef4331e43e0979778e38cb6d3ab27e1733469ec4a619c83f72c')
+source=("${pkgname}-${pkgver}.zip::http://clic.xtec.cat/dist/${pkgname}/${pkgname}-${pkgver}.zip")
+sha256sums=('c0134f552de35f0a819f37d9572b92f5fad038cd0268f2782138c2cc9226fcbc')
 
 _jclic_desktop="[Desktop Entry]
 Name=JClic
