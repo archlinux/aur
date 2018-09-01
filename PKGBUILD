@@ -2,8 +2,8 @@
 # Contributor: redfish <redfish at galactica.pw>
 
 pkgname=bitcoin-unlimited
-_pkgbase=BitcoinUnlimited
 pkgver=1.4.0.0
+_pkgbase=BitcoinUnlimited-bucash${pkgver}
 pkgrel=1
 pkgdesc='Bitcoin Unlimited Cash (BCH) versions of Bitcoind, bitcoin-cli, 
 bitcoin-tx, and bitcoin-qt, w/GUI and wallet'
