@@ -11,7 +11,7 @@ url='http://www.sile-typesetter.org/'
 license=('MIT')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git://github.com/alerque/${pkgname%-git}.git#branch=${_branch}")
+source=("git://github.com/alerque/${pkgname%-git}.git#branch=$_branch")
 sha512sums=('SKIP')
 makedepends=('git')
 depends=('lua-cosmo'
@@ -42,5 +42,5 @@ build () {
 
 package () {
     cd "$srcdir/${pkgname%-git}"
-    make install DESTDIR="${pkgdir}/"
+    make install DESTDIR="$pkgdir/"
 }
