@@ -20,19 +20,19 @@ post_install() {
 }
 
 post_upgrade() {
-    post_install $1
+    post_install "$1"
 }
 
 post_remove() {
-    post_install $1
+    post_install "$1"
 }
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
 
-    install -d ${pkgdir}/usr/share/fonts/TTF
-    install -d ${pkgdir}/usr/share/fonts/Type1
-    install -d ${pkgdir}/usr/share/fonts/OTF
+    install -d "$pkgdir"/usr/share/fonts/TTF
+    install -d "$pkgdir"/usr/share/fonts/Type1
+    install -d "$pkgdir"/usr/share/fonts/OTF
 
     install -Dm644 GnuMICR.ttf "$pkgdir/usr/share/fonts/TTF/"
     install -Dm644 GnuMICR.pfb "$pkgdir/usr/share/fonts/Type1/"
