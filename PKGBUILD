@@ -2,13 +2,13 @@
 
 pkgname=python-namedlist
 pkgver=1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Like namedtuples, but mutable"
 arch=(any)
 url="http://pypi.python.org/pypi/namedlist"
 license=('Apache')
 depends=('python')
-source=("http://pypi.python.org/packages/source/n/namedlist/namedlist-$pkgver.tar.gz")
+source=("https://pypi.python.org/packages/source/n/namedlist/namedlist-$pkgver.tar.gz")
 md5sums=('91932e6797b13df64bffcec4b5c810a3')
 
 build() {
