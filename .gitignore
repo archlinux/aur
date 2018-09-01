@@ -4,6 +4,7 @@ pkg
 tdesktop
 *.webp
 *.webp_*
+crl
 Catch
 GSL
 variant
