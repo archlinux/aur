@@ -10,7 +10,7 @@ url="https://metacpan.org/pod/${_cpname//-/::}"
 license=('GPL' 'PerlArtistic')
 depends=('perl>=5.10.0')
 options=(!emptydirs)
-source=("https://cpan.metacpan.org/authors/id/R/RC/RCLAMP/${_cpname}-${pkgver}.tar.gz")
+source=("https://cpan.metacpan.org/authors/id/R/RC/RCLAMP/$_cpname-$pkgver.tar.gz")
 sha256sums=('deb75ee5a2ffacb41b08ff8798972d0cd5ad338494653d5eae4100041a8d247f')
 
 build() {
