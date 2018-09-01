@@ -1,4 +1,5 @@
 pkgbase = sigrok-firmware-dreamsourcelab-dslogic
+	pkgdesc = Firmware for DreamsourceLab DSLogic & DScope logic analyzers
 	pkgver = 0.97
 	pkgrel = 2
 	arch = any

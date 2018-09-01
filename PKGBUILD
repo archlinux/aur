@@ -1,9 +1,8 @@
 # Maintainer: Cody Schafer <aur@codyps.com>
 pkgname=sigrok-firmware-dreamsourcelab-dslogic
-description="Firmware for DreamsourceLab DSLogic & DScope logic analyzers"
 pkgver=0.97
 pkgrel=2
-pkgdesc=""
+pkgdesc="Firmware for DreamsourceLab DSLogic & DScope logic analyzers"
 arch=(any)
 url=""
 license=('GPL')
