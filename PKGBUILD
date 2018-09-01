@@ -37,5 +37,5 @@ build() {
 package() {
     cd "${pkgname%-git}"
     python2 setup.py -q install --root="$pkgdir" --optimize=1
-    install -D -m644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 "LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
