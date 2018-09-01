@@ -10,8 +10,9 @@ bitcoin-tx, and bitcoin-qt, w/GUI and wallet'
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.bitcoinunlimited.info"
 license=('MIT')
-depends=('boost-libs' 'desktop-file-utils' 'libevent' 'qt5-base' 'protobuf' 'qrencode' 'openssl' 'miniupnpc' 'openssl-1.0')
-makedepends=('boost' 'libevent' 'qt5-base' 'qt5-tools' 'qrencode' 'protobuf')
+depends=('boost-libs' 'desktop-file-utils' 'libevent' 'openssl')
+optdepends=('miniupnpc' 'db4.8' 'qt5-base' 'protobuf' 'qrencode')
+makedepends=('boost' 'qt5-tools')
 provides=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 conflicts=('bitcoin-unlimited-git' 'bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 source=('https://github.com/BitcoinUnlimited/BitcoinUnlimited/archive/bucash1.4.0.0.tar.gz')
