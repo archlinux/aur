@@ -10,7 +10,6 @@ url="https://pypi.python.org/packages/c3/be/hkdf-${pkgver}"
 license=('BSD')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://pypi.python.org/packages/c3/be/327e072850db181ce56afd51e26ec7aa5659b18466c709fa5ea2548c935f/hkdf-${pkgver}.tar.gz")
-md5sums=('d10471ad0ec891cdbe165d78282c943e')
 
 build_python-hkdf() {
   cd "${srcdir}/${pkgname#python-}-${pkgver}"
@@ -33,3 +32,5 @@ package_python2-hkdf() {
   cd "${srcdir}/${pkgname#python2-}-${pkgver}"
   python2 setup.py install --root="${pkgdir}/" --optimize=1
 }
+
+sha256sums=('622a31c634bc185581530a4b44ffb731ed208acf4614f9c795bdd70e77991dca')
