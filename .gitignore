@@ -1,4 +1,7 @@
+*
 !./.SRCINFO
 !./.gitignore
 !./PKGBUILD
-*
+!./profile.csh
+!./profile.sh
+!./use-system-python.patch
