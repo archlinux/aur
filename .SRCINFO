@@ -6,7 +6,6 @@ pkgbase = gcolor3
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	makedepends = intltool
 	makedepends = gnome-common
 	depends = gtk3
 	depends = hicolor-icon-theme
