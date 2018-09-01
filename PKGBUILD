@@ -2,8 +2,8 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=azcopy
-pkgver=7.2.0
-pkgrel=3
+pkgver=7.3.0
+pkgrel=1
 pkgdesc="A command-line utility designed for copying data to/from Microsoft Azure"
 arch=('x86_64')
 url="https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy"
