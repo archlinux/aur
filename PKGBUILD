@@ -20,15 +20,15 @@ post_install() {
 }
 
 post_upgrade() {
-  post_install $1
+  post_install "$1"
 }
 
 post_remove() {
-  post_install $1
+  post_install "$1"
 }
 
 package() {
-    cd "${srcdir}/otf"
-    find . -maxdepth 1 -name '*.otf' -execdir install -Dm644 {} $pkgdir/usr/share/fonts/OTF/{} \;
+    cd "$srcdir/otf"
+    find . -maxdepth 1 -name '*.otf' -execdir install -Dm644 {} "$pkgdir"/usr/share/fonts/OTF/{} \;
 }
 
