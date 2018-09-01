@@ -7,7 +7,7 @@ pkgdesc='Conversion nodes for messages from SocketCAN to a ROS Topic and vice ve
 url="http://wiki.ros.org/${_pkgname}?distro=melodic"
 
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 license=('LGPL3')
 
@@ -44,6 +44,7 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
+        -DCATKIN_ENABLE_TESTING=OFF \
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
 #         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
 #         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
