@@ -2,7 +2,7 @@
 # Contributor: quasi <quasi@aur.archlinux.org>
 
 pkgname=protracker-svn
-pkgver=r5
+pkgver=r137
 pkgrel=1
 epoch=1
 pkgdesc="Rewrite of ProTracker v2.3D (Amiga)"
@@ -34,7 +34,7 @@ package(){
     mkdir -p $pkgdir/usr/bin
     mkdir -p $pkgdir/usr/share/applications
     mkdir -p $pkgdir/usr/share/pixmaps/
-    cp "$srcdir/$pkgname/release/protracker" $pkgdir/usr/bin
+    cp "$srcdir/$pkgname/release/other/protracker" $pkgdir/usr/bin
     install -Dm644 protracker.png "$pkgdir/usr/share/pixmaps/protracker.png"
     install -Dm644 protracker.desktop "$pkgdir/usr/share/applications/protracker.desktop"
 }
