@@ -7,9 +7,9 @@
 
 pkgbase=nvidia-vulkan
 pkgname=('nvidia-vulkan' 'nvidia-vulkan-dkms' 'nvidia-vulkan-utils' 'opencl-nvidia-vulkan' 'lib32-nvidia-vulkan-utils' 'lib32-opencl-nvidia-vulkan')
-pkgver=396.51.02
+pkgver=396.54.02
 _extramodules=extramodules-ARCH
-pkgrel=2
+pkgrel=1
 pkgdesc="NVIDIA drivers for linux (vulkan developer branch)"
 arch=('x86_64')
 url="https://developer.nvidia.com/vulkan-driver"
@@ -17,11 +17,11 @@ makedepends=('libglvnd' 'linux' 'linux-headers>=4.18' 'linux-headers<4.19')
 license=('custom')
 options=('!strip')
 _pkg="NVIDIA-Linux-x86_64-${pkgver}"
-source=("NVIDIA-Linux-x86_64-${pkgver}.run::https://developer.nvidia.com/linux-3965102"
+source=("NVIDIA-Linux-x86_64-${pkgver}.run::https://developer.nvidia.com/linux-3965402"
         'nvidia-drm-outputclass.conf'
         'nvidia-vulkan-utils.sysusers'
         'kernel-4.16.patch')
-sha512sums=('378e5495f7e5372b63a8f5e14d4e5433b5c356e0e0c91ff6c5cb735342b311fe625a87584d7c32c17d9c1d1b6225d4ab12818f51f2e24e1ebdbea486b07e57c4'
+sha512sums=('640b0869d13398e100c8250071b24b4ef784ef11015af33c6cf73b48d20d81409bb61960550be816ad4ff61a7f356de71f4c0a345010ff14e2c49bf472dc3edf'
             'c49d246a519731bfab9d22afa5c2dd2d366db06d80182738b84881e93cd697c783f16ee04819275c05597bb063451a5d6102fbc562cd078d2a374533a23cea48'
             '4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499'
             'ad1185d998adbf89abf7aea300e5b3bbabe2296016f42592fbc232a6c3983f233df1103d37f35a041f12cc1c722d3edce813a4a1b215784a49c7f0e3e652b5af')
