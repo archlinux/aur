@@ -12,10 +12,10 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-hash-merge-simple' 'perl-yaml-libyaml' 'perl>=5.006')
 makedepends=()
-url="https://github.com/andrefs/${_cpname}"
-source=("https://cpan.metacpan.org/authors/id/A/AN/ANDREFS/${_cpname}-${pkgver}_${_cpver}.tar.gz")
+url="https://github.com/andrefs/$_cpname"
+source=("https://cpan.metacpan.org/authors/id/A/AN/ANDREFS/$_cpname-${pkgver}_$_cpver.tar.gz")
 sha256sums=('01ccfbd91b1ff3a3b1edd14f343cf61f6470c4036456a8bfa350eb211c9d0517')
-_distdir="${_cpname}-${pkgver}_${_cpver}"
+_distdir="$_cpname-${pkgver}_$_cpver"
 
 build() {
     ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
