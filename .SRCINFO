@@ -1,7 +1,7 @@
 pkgbase = snd-usb-audio-lowlatency-dkms
 	pkgdesc = snd-usb-audio kernel module modified for low latency
 	pkgver = 4.18.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kernel.org/
 	install = snd-usb-audio-lowlatency-dkms.install
 	arch = any

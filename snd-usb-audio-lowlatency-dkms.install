@@ -6,6 +6,10 @@ To tweak parameters:
 3. modprobe -r snd-usb-audio
    Note: You will need to stop all processes currently using USB audio before unloading the module.
 4. modprobe snd-usb-audio
+
+Test round trip latency using one of the following tools with a loopback audio cable:
+- Cockos Reaper DAW ReaInsert plugin using "Ping detect" button (reaper-bin package)
+- jack_iodelay (jack2 package)
 EOF
 }
 
