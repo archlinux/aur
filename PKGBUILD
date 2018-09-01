@@ -1,44 +1,32 @@
-# Maintainer: Zach Adams <zach at zach-adams dot com>
-# Contributor: tadly
-pkgname=enpass-beta-bin
-_pkgname=enpass
-pkgver=5.5.0.2
-_pkgver=5.5.0-2
+pkgname='enpass-beta-bin'
+_pkgname='enpass-beta'
+pkgver=6.0.0.105
 pkgrel=1
-pkgdesc="A multiplatform password manager. Beta version"
+pkgdesc='A multiplatform password manager'
 arch=('x86_64')
-url="https://enpass.io"
+url='http://enpass.io/'
 license=('custom')
-depends=('qt5-base' 'qt5-websockets' 'qt5-svg' 'qt5-xmlpatterns' 'qt5-multimedia' 'unixodbc' 'gtk2' 'postgresql-libs')
+depends=('libxss' 'lsof')
 provides=("${_pkgname}")
-conflicts=('enpass-bin' 'enpass-rc-bin')
-# Disable strip as otherwise the browser extension will not work
-options=('!strip')
-install=enpass-bin.install
-source=(
-    "http://repo.sinew.in/testing/pool/beta/e/enpass/${_pkgname}_${_pkgver}beta_amd64.deb"
-    "LICENSE")
-sha256sums=('5d223d09a22c3c1f5931cc875b68091d3c6cf43494c44df6c33fa9204dde835d'
-            'cffbf5627a9cefa762384b198bdff09697c8432e9a189d483cfcc771a4b68ce7')
+install='enpass-beta-bin.install'
+source=("http://repo.sinew.in/pool/main/e/enpass-beta/${_pkgname}_${pkgver}_amd64.deb")
+sha256sums=('27cf9fb3acf7ce0f5f2a4887a48ba6cf40f49f34ea732adc5d3e454bce250e76')
 
+# Disable strip as otherwise the browser extension will not work
+#options=('!strip')
 
 package() {
     # Extract data
-    tar xfz "${srcdir}/data.tar.gz" -C ${pkgdir}
-
-    # Remove unnecessary files which are included in the .deb
-    find ${pkgdir} -name ".DS_Store" -delete
-    find ${pkgdir} -name "._.DS_Store" -delete
-    find ${pkgdir} -name "._enpass.png" -delete
-    find ${pkgdir} -name "*.swp" -delete
-
-    install -D -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+    tar xfz "${srcdir}/data.tar.gz" -C "${pkgdir}"
 
     # Update permissions to match the default system ones
-    chmod 755 ${pkgdir}/opt/
-    find ${pkgdir}/usr/ -type d -exec chmod 755 {} \;
+    chmod 755 "${pkgdir}/opt/"
+    find "${pkgdir}/usr/" -type d -exec chmod 755 {} \;
 
     # Symlink "runenpass.sh" to "/usr/bin" so it is accessible via cli
-    mkdir -p ${pkgdir}/usr/bin
-    ln -s /opt/Enpass/bin/runenpass.sh ${pkgdir}/usr/bin/enpass
+    mkdir -p "${pkgdir}/usr/bin"
+    ln -s '/opt/enpass-beta/Enpass6' "${pkgdir}/usr/bin/enpass-beta"
 }
+
+
+# vim: set syntax=sh:
