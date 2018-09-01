@@ -1,7 +1,6 @@
 # Maintainer: Jacob Mischka <jacob@mischka.me>
 pkgname=brave
 pkgver=0.23.105
-_pkgver="$pkgver"dev
 pkgrel=1
 pkgdesc='Web browser that blocks ads and trackers by default.'
 arch=('x86_64')
@@ -12,16 +11,16 @@ makedepends=('npm' 'python2' 'git')
 optdepends=('cups: Printer support'
             'pepper-flash: Adobe Flash support')
 provides=('brave-browser')
-source=("browser-laptop-"$_pkgver".tar.gz::https://github.com/brave/browser-laptop/archive/v"$_pkgver".tar.gz")
+source=("browser-laptop-$pkgver.tar.gz::https://github.com/brave/browser-laptop/archive/v${pkgver}dev.tar.gz")
 md5sums=('cc6c37bab7febd3a7ae18c5dcdc1bf98')
 
 build() {
-	cd "$srcdir"/browser-laptop-"$_pkgver"
+	cd "$srcdir"/browser-laptop-"$pkgver"dev
 
 	npm install
 
 	# Workaround for https://github.com/brave/browser-laptop/issues/12667
-	sed -i "s/require('git-rev-sync').long()/'$_pkgver'/" tools/buildPackage.js
+	sed -i "s/require('git-rev-sync').long()/'${pkgver}dev'/" tools/buildPackage.js
 
 	CHANNEL=dev npm run build-package
 
@@ -31,7 +30,7 @@ build() {
 }
 
 package() {
-	cd "$srcdir"/browser-laptop-"$_pkgver"
+	cd "$srcdir"/browser-laptop-"$pkgver"dev
 
 	install -dm0755 "$pkgdir"/usr/lib
 
