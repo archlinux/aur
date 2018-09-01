@@ -7,6 +7,7 @@ pkgbase = krakenx-git
 	license = GPL
 	makedepends = python-setuptools
 	depends = python
+	depends = python-pyusb
 	source = git+https://github.com/KsenijaS/krakenx.git
 	md5sums = SKIP
 
