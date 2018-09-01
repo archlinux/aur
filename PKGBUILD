@@ -5,7 +5,7 @@
 _name="mapcatcher"
 _python="python2"
 pkgname="gmapcatcher"
-pkgver="0.8.0.6"
+pkgver="0.8.0.8"
 pkgrel="1"
 pkgdesc="Offline maps viewer"
 arch=('any')
@@ -15,11 +15,10 @@ depends=('python2' 'pygtk' 'gtk2' 'python2-cairo' 'python2-gobject2')
 conflicts=('gmapcatcher-svn')
 provides=('gmapcatcher')
 source=("${pkgname}.png"
-        "${_name}_${pkgver}.tar.gz::https://github.com/heldersepu/GMapCatcher/archive/${pkgver}.tar.gz"
+        "${_name}_${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
 )
 sha256sums=('d3421d3a2ad41f0d9de1e1aa76366a8c6a1811da80f29d1dba2b853662ee29d1'
-            'cde11b3aa834b5f2d854c6cea78906e70b7fce946b90cd742a68812b1cc1936b'
-)
+            '5097cb79ca7d604159a60c813b986a42769d711257854e8e95077deb48d69a37')
 
 _gmapcatcher_desktop="[Desktop Entry]
 Name=GMapCatcher
