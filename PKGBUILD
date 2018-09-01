@@ -30,25 +30,25 @@ makedepends=('gcc'
 optdepends=('mariadb'
         'perl-gtk3-trayicon'
         'perl-net-bonjour')
-source=("https://github.com/cjd/${pkgname}/archive/${pkgver}.tar.gz")
+source=("https://github.com/cjd/$pkgname/archive/$pkgver.tar.gz")
 sha256sums=('ebe494a9c46bef42d247987f9c25e888e8b39a4f72166e6475eaf8817aefce1d')
 
 prepare () {
-    cd "${pkgname}-${pkgver}"
+    cd "$pkgname-$pkgver"
     ./autogen.sh --prefix=/usr
 }
 
 build() {
-    cd "${pkgname}-${pkgver}"
+    cd "$pkgname-$pkgver"
     make
 }
 
 check() {
-    cd "${pkgname}-${pkgver}"
+    cd "$pkgname-$pkgver"
     make -k check
 }
 
 package() {
-    cd "${pkgname}-${pkgver}"
+    cd "$pkgname-$pkgver"
     make DESTDIR="$pkgdir/" install
 }
