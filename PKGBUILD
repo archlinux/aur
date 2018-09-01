@@ -4,7 +4,7 @@ pkgver=0.23.105
 pkgrel=1
 pkgdesc='Web browser that blocks ads and trackers by default.'
 arch=('x86_64')
-url='https://www.brave.com/'
+url='https://www.brave.com'
 license=('custom')
 depends=('gtk3' 'nss' 'alsa-lib' 'libgnome-keyring' 'libxss' 'ttf-font')
 makedepends=('npm' 'python2' 'git')
@@ -15,7 +15,7 @@ source=("browser-laptop-$pkgver.tar.gz::https://github.com/brave/browser-laptop/
 md5sums=('cc6c37bab7febd3a7ae18c5dcdc1bf98')
 
 build() {
-	cd "$srcdir"/browser-laptop-"$pkgver"dev
+	cd "$srcdir/browser-laptop-${pkgver}dev"
 
 	npm install
 
@@ -30,9 +30,9 @@ build() {
 }
 
 package() {
-	cd "$srcdir"/browser-laptop-"$pkgver"dev
+	cd "$srcdir/browser-laptop-${pkgver}dev"
 
-	install -dm0755 "$pkgdir"/usr/lib
+	install -dm0755 "$pkgdir/usr/lib"
 
 	cp -a --reflink=auto brave-linux-x64 "$pkgdir/usr/lib/$pkgname"
 
@@ -173,7 +173,7 @@ END
 
 	install -Dm0644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/MPL2"
 
-	mv "$pkgdir"/usr/lib/$pkgname/{LICENSE,LICENSES.chromium.html} "$pkgdir/usr/share/licenses/$pkgname/"
+	mv "$pkgdir/usr/lib/$pkgname/"{LICENSE,LICENSES.chromium.html} "$pkgdir/usr/share/licenses/$pkgname/"
 
 	ln -s /usr/lib/PepperFlash "$pkgdir"/usr/lib/pepperflashplugin-nonfree
 }
