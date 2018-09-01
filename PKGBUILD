@@ -9,8 +9,8 @@ url='https://wiki.hydrogenaud.io/index.php?title=Nero_AAC'
 license=(custom)
 depends_x86_64=(lib32-gcc-libs)
 #depends_i686=(gcc-libs)
-source=('https://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Tumbleweed/Multimedia/x86_64/nero-aac-1.5.1-3.20.x86_64.rpm')
-sha256sums=('cc80d97c4167ad8c4bb4b151d06d34e7ca470f6167ef9aa8cb63a1c0f4b56d6e')
+source=('https://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Tumbleweed/Multimedia/x86_64/nero-aac-1.5.1-3.21.x86_64.rpm')
+sha256sums=('5e20efa92dfef1756bf26e0353d73ba442a5c6c1b4b9ede903b84138cc50b2c7')
 conflicts=(neroaacdec neroaacenc neroaactag)
 provides=(neroaacdec neroaacenc neroaactag)
 
