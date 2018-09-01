@@ -1,0 +1,8 @@
+post_install() {
+  echo "==========================================================="
+  echo "check out /etc/sharenix.json and throw your config in there"
+  echo "copy it to ~/.sharenix.json for user-specific settings"
+  echo "==========================================================="
+}
+
+# vim:set ts=2 sw=2 et:

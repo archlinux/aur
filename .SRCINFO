@@ -1,0 +1,21 @@
+pkgbase = sharenix-git
+	pkgdesc = file uploading tool with ShareX-compatible config
+	pkgver = r130.dbaa0f2
+	pkgrel = 1
+	url = https://github.com/francesco149/sharenix
+	install = sharenix-git.install
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	makedepends = go
+	makedepends = gtk2
+	depends = glibc
+	depends = gtk2
+	optdepends = gnome-screenshot: allows screenshotting regions with sharenix-window and sharenix-section
+	provides = sharenix
+	source = git+https://github.com/Francesco149/sharenix.git
+	md5sums = SKIP
+
+pkgname = sharenix-git
+
