@@ -1,6 +1,6 @@
 pkgbase = vim-julia-git
 	pkgdesc = Vim support for the Julia language.
-	pkgver = r333.4593c8b
+	pkgver = r345.e1fcde9
 	pkgrel = 1
 	url = https://github.com/JuliaLang/julia-vim
 	install = vim-julia.install
