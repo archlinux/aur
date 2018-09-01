@@ -7,10 +7,10 @@ pkgver=1.13
 pkgrel=3
 pkgdesc="front-end for GCC's coverage testing tool gcov"
 arch=('any')
-url="https://github.com/linux-test-project/${pkgname}"
+url="https://github.com/linux-test-project/$pkgname"
 license=('GPL')
 depends=('perl')
-source=("https://github.com/linux-test-project/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
+source=("https://github.com/linux-test-project/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"
         "handle-equals-signs.patch"
         "fix-undef-behaviour.patch")
 sha256sums=('44972c878482cc06a05fe78eaa3645cbfcbad6634615c3309858b207965d8a23'
@@ -18,12 +18,12 @@ sha256sums=('44972c878482cc06a05fe78eaa3645cbfcbad6634615c3309858b207965d8a23'
             'ceaf41f7cc9cea5a6fc4b0385ffef10d1ab8812acd2a5b16dcd8d7bca7120488')
 
 prepare () {
-    cd "${pkgname}-${pkgver}"
-    patch -p1 -i ${srcdir}/handle-equals-signs.patch
-    patch -p1 -i ${srcdir}/fix-undef-behaviour.patch
+    cd "$pkgname-$pkgver"
+    patch -p1 -i "$srcdir"/handle-equals-signs.patch
+    patch -p1 -i "$srcdir"/fix-undef-behaviour.patch
 }
 
 package () {
-    cd "${pkgname}-${pkgver}"
-    make PREFIX="/usr" DESTDIR="${pkgdir}" install
+    cd "$pkgname-$pkgver"
+    make PREFIX="/usr" DESTDIR="$pkgdir" install
 }
