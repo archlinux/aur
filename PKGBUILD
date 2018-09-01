@@ -14,16 +14,16 @@ depends=('python')
 options=(!emptydirs)
 provides=("${pkgname%-cw-git}")
 conflicts=("${pkgname%-cw-git}")
-source=("git://github.com/alerque/${_pypiname}.git#branch=${_branch}")
+source=("git://github.com/alerque/$_pypiname.git#branch=$_branch")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_pypiname}"
+  cd "$srcdir/$_pypiname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${srcdir}/${_pypiname}"
+  cd "$srcdir/$_pypiname"
   mv usfm2osis/scripts/*py usfm2osis/
   sed -i -e 's/usfm2osis.scripts/usfm2osis/g' setup.py
   sed -i -e '/__main__/s/^.*$/def main(args=None):/g' usfm2osis/usfm2osis.py
@@ -32,7 +32,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${_pypiname}"
+  cd "$srcdir/$_pypiname"
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
