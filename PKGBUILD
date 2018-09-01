@@ -11,12 +11,12 @@ url='https://github.com/starwing/luautf8'
 license=('MIT')
 depends=('lua')
 makedepends=('luarocks')
-source=("https://luarocks.org/${_rockname}-${pkgver}-${_rockrel}.src.rock")
-noextract=("${_rockname}-${pkgver}-${_rockrel}.src.rock")
+source=("https://luarocks.org/$_rockname-$pkgver-$_rockrel.src.rock")
+noextract=("$_rockname-$pkgver-$_rockrel.src.rock")
 sha256sums=('51aa211a9d39d62c65bfcca4eccb8482a11bfe918992eed58104b646338d62a0')
 
 package() {
-    luarocks --tree="$pkgdir/usr" install --deps-mode=none "${_rockname}-${pkgver}-${_rockrel}.src.rock"
+    luarocks --tree="$pkgdir/usr" install --deps-mode=none "$_rockname-$pkgver-$_rockrel.src.rock"
     find "$pkgdir/usr" -name manifest -delete
 }
 
