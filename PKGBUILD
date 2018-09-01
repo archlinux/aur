@@ -12,10 +12,10 @@ license=('MIT')
 depends=('lua')
 makedepends=('luarocks')
 conflicts=()
-source=("https://luarocks.org/${_rockname}-${pkgver}-${_rockrel}.src.rock")
+source=("https://luarocks.org/$_rockname-$pkgver-$_rockrel.src.rock")
 sha256sums=('6bffdd058af3f97c72a3e7fcfc7933a18c68661f4d559657a368e160ecc98071')
 
 package() {
-  luarocks --tree="$pkgdir/usr" install --deps-mode=none "${_rockname}-${pkgver}-${_rockrel}.src.rock"
+  luarocks --tree="$pkgdir/usr" install --deps-mode=none "$_rockname-$pkgver-$_rockrel.src.rock"
   find "$pkgdir/usr" -name manifest -delete
 }
