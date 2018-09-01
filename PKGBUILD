@@ -1,7 +1,7 @@
 # Maintainer of this PKGBUILD file: Martino Pilia <martino.pilia@gmail.com>
 pkgname=teem
 pkgver=1.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A coordinated group of libraries for representing, processing, and visualizing scientific raster data.'
 arch=('x86_64')
 url='http://teem.sourceforge.net/index.html'
@@ -21,6 +21,7 @@ prepare() {
 	cmake \
 		-DCMAKE_INSTALL_PREFIX:PATH="/usr" \
 		-DCMAKE_BUILD_TYPE:STRING=Release \
+		-DBUILD_SHARED_LIBS:BOOL=ON \
 		..
 }
 

@@ -1,7 +1,7 @@
 pkgbase = teem
 	pkgdesc = A coordinated group of libraries for representing, processing, and visualizing scientific raster data.
 	pkgver = 1.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://teem.sourceforge.net/index.html
 	arch = x86_64
 	license = LGPL
