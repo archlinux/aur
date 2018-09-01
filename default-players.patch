@@ -1,0 +1,44 @@
+--- src/players.h.orig	2018-09-01 15:12:27.329668584 +1000
++++ src/players.h	2018-09-01 15:13:19.813212476 +1000
+@@ -53,20 +53,6 @@
+ #define DEFAULT_DRIVER esound
+ #endif
+ 
+-// SDL driver
+-#ifdef DRIVER_SDL
+-#include "sdl.h"
+-#undef DEFAULT_DRIVER
+-#define DEFAULT_DRIVER sdl
+-#endif
+-
+-// AO driver
+-#ifdef DRIVER_AO
+-#include "ao.h"
+-#undef DEFAULT_DRIVER
+-#define DEFAULT_DRIVER ao 
+-#endif
+-
+ // OSS driver
+ #ifdef DRIVER_OSS
+ #include "oss.h"
+@@ -81,6 +67,20 @@
+ #define DEFAULT_DRIVER alsa
+ #endif
+ 
++// AO driver
++#ifdef DRIVER_AO
++#include "ao.h"
++#undef DEFAULT_DRIVER
++#define DEFAULT_DRIVER ao 
++#endif
++
++// SDL driver
++#ifdef DRIVER_SDL
++#include "sdl.h"
++#undef DEFAULT_DRIVER
++#define DEFAULT_DRIVER sdl
++#endif
++
+ // QSA driver
+ #ifdef DRIVER_QSA
+ #include "qsa.h"

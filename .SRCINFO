@@ -1,0 +1,14 @@
+pkgbase = adplay
+	pkgdesc = AdLib sound player tool
+	pkgver = 1.8
+	pkgrel = 1
+	url = http://adplug.sf.net/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = adplug
+	source = https://github.com/adplug/adplay-unix/releases/download/v1.8/adplay-1.8.tar.bz2
+	sha256sums = e9dea6a0ec02c6f2329454a3aaa3bfb4607a56917174c7fc38a4c7e66ff096ad
+
+pkgname = adplay
+
