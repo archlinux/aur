@@ -13,11 +13,11 @@ makedepends=('intltool')
 replaces=('gtkhtml')
 conflicts=('gtkhtml4')
 url='https://github.com/GNOME/gtkhtml'
-source=(http://ftp.gnome.org/pub/gnome/sources/${pkgname//3/}/3.32/${pkgname//3/}-${pkgver}.tar.bz2)
+source=(http://ftp.gnome.org/pub/gnome/sources/"${pkgname//3/}/3.32/${pkgname//3/}-$pkgver".tar.bz2)
 sha256sums=('8746053cf709e1de37c7ac775ab1364ddda4b75167660ed7f98a237b3797e39f')
 
 build() {
-  cd "${srcdir}/${pkgname//3/}-${pkgver}"
+  cd "$srcdir/${pkgname//3/}-$pkgver"
   CFLAGS+=" -lgthread-2.0" ./configure --prefix=/usr --sysconfdir=/etc \
 	      --libexecdir=/usr/lib/gtkhtml \
 	      --localstatedir=/var --disable-static \
@@ -26,6 +26,6 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname//3/}-${pkgver}"
-  make DESTDIR="${pkgdir}" install
+  cd "$srcdir/${pkgname//3/}-$pkgver"
+  make DESTDIR="$pkgdir" install
 }
