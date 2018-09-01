@@ -1,15 +1,15 @@
 # Maintainer: Dan Beste <dan.ray.beste@gmail.com>
 
 pkgname='stratisd'
-pkgver=0.5.5
-pkgrel=2
+pkgver=0.9.0
+pkgrel=1
 pkgdesc='Easy to use local storage management for Linux.'
 arch=('x86_64')
 url='https://stratis-storage.github.io/'
 license=('MPL2')
 makedepends=('asciidoc' 'cargo' 'rust' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/stratis-storage/stratisd/archive/v${pkgver}.tar.gz")
-sha256sums=('ca0de355c1ae5caa562b3fae5554eb8bae8f1916b3ef7052ec5d88037eaf0458')
+sha256sums=('855e5e9b0cfae527cdba19c6fc1559acd13620d7b0a915e8c80c6790d63f8fe2')
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -23,8 +23,6 @@ build() {
 
   # patch systemd config
   sed -i 's,/usr/libexec,/usr/bin,g' stratisd.service
-  sed -i '/Type=dbus/d' stratisd.service
-  sed -i '/BusName=org.storage.stratis1/d' stratisd.service
 }
 
 check() {
