@@ -1,0 +1,35 @@
+pkgbase = nrrdio
+	pkgdesc = Stand-alone library for doing basic nrrd operations and for reading and writing the NRRD file format
+	pkgver = 1.11.0
+	pkgrel = 1
+	url = http://teem.sourceforge.net/index.html
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	depends = zlib
+	source = https://sourceforge.net/projects/teem/files/teem/1.11.0/NrrdIO-1.11.0-src.tar.gz/download
+	source = FindNrrdIO.cmake
+	source = LICENSE
+	sha512sums = 3d65fcb6264a787e68d5d26eb4f9d456c59ccd6209d9c31c16130555014479e3c6d474468e5fd926a2874992336a85165fec7708308cca2215d79c07529f9428
+	sha512sums = a4c6eb6a9e2b8d0ced8ad084c7e71dfbd62c7fc24c6df17080a9e593bc2b43c3d1ccc3fe67925711ec6784af01154981b87c4aadf573c443297a8591dd4805d2
+	sha512sums = c1d25d40ddbcfe019275c4df815ad291c2b50e2b1deb9445a3d0435c829ac4b3b8b4d0e16099ac2374870a0320c045fff8964bfe1ec71c1761ba6a18a65bf191
+
+pkgname = nrrdio
+
+pkgbase = nrrdio
+	pkgdesc = Stand-alone library for doing basic nrrd operations and for reading and writing the NRRD file format
+	pkgver = 1.11.0
+	pkgrel = 1
+	url = http://teem.sourceforge.net/index.html
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	source = https://sourceforge.net/projects/teem/files/teem/1.11.0/NrrdIO-1.11.0-src.tar.gz/download
+	source = FindNrrdIO.cmake
+	source = LICENSE
+	sha512sums = 3d65fcb6264a787e68d5d26eb4f9d456c59ccd6209d9c31c16130555014479e3c6d474468e5fd926a2874992336a85165fec7708308cca2215d79c07529f9428
+	sha512sums = a4c6eb6a9e2b8d0ced8ad084c7e71dfbd62c7fc24c6df17080a9e593bc2b43c3d1ccc3fe67925711ec6784af01154981b87c4aadf573c443297a8591dd4805d2
+	sha512sums = c1d25d40ddbcfe019275c4df815ad291c2b50e2b1deb9445a3d0435c829ac4b3b8b4d0e16099ac2374870a0320c045fff8964bfe1ec71c1761ba6a18a65bf191
+
+pkgname = nrrdio
+
