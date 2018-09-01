@@ -6,7 +6,7 @@ _disable_vala=0
 _disable_budgie=0
 
 pkgname=(
-'sntray-plugin-translations-git'
+'sntray-plugin-common-git'
 )
 
 _opts=(
@@ -61,7 +61,7 @@ _pkgbase=xfce4-sntray-plugin
 _cmakename=cmake-vala
 _dbusmenuname=vala-dbusmenu
 pkgver=0.4.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for xfce4-panel and vala-panel to show StatusNotifierItems (AppIndicators) via FlowBox"
 url="https://gitlab.com/vala-panel-project/xfce4-sntray-plugin"
 arch=('i686' 'x86_64')
@@ -178,9 +178,10 @@ package_budgie-sntray-git(){
 	rm -rf "${pkgdir}/usr/share/dbus-1"
 }
 
-package_sntray-plugin-translations-git(){
-	pkgdesc="Translations for StatusNotifier Menu"
+package_sntray-plugin-common-git(){
+	pkgdesc="Translations and common files for StatusNotifier Menu"
 	optdepends=('xfce4-panel-sntray-git' 'mate-panel-sntray-git' 'vala-panel-sntray-git' 'budgie-sntray-git')
+    replaces=('sntray-plugin-translations-git')
 	arch=('any')
 	cd "${srcdir}/${_pkgbase}"
 	make -C "po" DESTDIR="${pkgdir}" install
