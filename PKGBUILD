@@ -4,16 +4,16 @@
 
 pkgname=sandy-git
 pkgver=0.5r4.6dcd566
-pkgrel=1
+pkgrel=2
 pkgdesc="An ncurses text editor with an easy-to-read, hackable C source."
 arch=('i686' 'x86_64')
 url="http://tools.suckless.org/sandy"
 license=('custom:MIT/X')
 depends=('ncurses')
 makedepends=('git')
-provides=('sandy' 'sandy-hg')
-conflicts=('sandy' 'sandy-hg')
-source=("$pkgname::git+http://github.com/antics/sandy.git")
+provides=('sandy')
+conflicts=('sandy')
+source=("git+http://github.com/antics/sandy.git")
 md5sums=('SKIP')
 sha1sums=('SKIP')
 
@@ -28,7 +28,7 @@ build() {
   if [ -e "$srcdir"/config.h ];
   then
     msg "use custom config.h"
-    cp $startdir/config.h .
+    cp "$srcdir"/config.h .
   else msg "use default config.h"
   fi
   make PREFIX=/usr
@@ -36,7 +36,7 @@ build() {
 
 package() {
   cd $pkgname
-  make PREFIX=/usr DESTDIR=$pkgdir install
-  install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  make PREFIX=/usr DESTDIR="$pkgdir" install
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
