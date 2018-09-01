@@ -1,13 +1,12 @@
 pkgname='enpass-bin'
 _pkgname='enpass'
 pkgver=5.6.9
-pkgrel=2
+pkgrel=3
 pkgdesc='A multiplatform password manager'
 arch=('x86_64')
 url='http://enpass.io/'
 license=('custom')
 depends=('libxss' 'lsof')
-conflicts=('enpass-beta-bin' 'enpass-rc-bin')
 provides=("${_pkgname}")
 install='enpass-bin.install'
 source=("http://repo.sinew.in/pool/main/e/enpass/${_pkgname}_${pkgver}_amd64.deb")
