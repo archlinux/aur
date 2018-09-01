@@ -8,7 +8,7 @@ pkgbase = gnumicr
 	depends = fontconfig
 	depends = xorg-font-utils
 	source = https://github.com/alerque/gnumicr/archive/v0.30.tar.gz
-	md5sums = 20e317196feb2ffea5a2a11c082eff52
+	sha256sums = e087b0a85d1e5aa1ed4b11ae8f5716ec74e48ab4ca1b10b7fbba0dff6784b39b
 
 pkgname = gnumicr
 
