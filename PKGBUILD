@@ -36,7 +36,7 @@ sha512sums=('SKIP'
             '90a0761b7709659bec6f29c366c503fdd348226cbb585cf4f6eaa065854e2027d08ab3b352eb13ad7c0e327d662f13bc00fb4163ea0c583ef55b1795ab2e0b31'
             'c9820c2a83d08bd5d842a78e924682db97ebd5c7291b682603ad30dafcdcc5816c13e717ad39554f042b9d9ed71ab902ce3f604952264a900a72612ee8060acb')
 _user=mastodon
-_homedir=/var/lib/${pkgname%-git}
+_homedir=/var/lib/"${pkgname%-git}"
 _shell=/bin/false
 
 pkgver() {
@@ -52,8 +52,8 @@ build() {
 
 package() {
   install -Dm 644 -t "$pkgdir"/usr/lib/systemd/system mastodon-{web,sidekiq,streaming}.service mastodon.target
-  install -d "${pkgdir}/${_homedir}"
-  rsync -av --exclude '.git' ${pkgname%-git}/ "${pkgdir}/${_homedir}/"
+  install -d "$pkgdir/$_homedir"
+  rsync -av --exclude '.git' "${pkgname%-git}"/ "$pkgdir/$_homedir/"
 
   # install -Dm 644 .env.production.sample ${pkgdir}/etc/mastodon/env.production
 }
