@@ -1,4 +1,6 @@
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Maintainer: Jacob Mischka <jacob@mischka.me>
+
 pkgname=brave
 pkgver=0.23.105
 pkgrel=1
@@ -11,11 +13,14 @@ makedepends=('npm' 'python2' 'git')
 optdepends=('cups: Printer support'
             'pepper-flash: Adobe Flash support')
 provides=('brave-browser')
-source=("browser-laptop-$pkgver.tar.gz::https://github.com/brave/browser-laptop/archive/v${pkgver}dev.tar.gz")
-md5sums=('cc6c37bab7febd3a7ae18c5dcdc1bf98')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/brave/browser-laptop/archive/v${pkgver}dev.tar.gz")
+sha512sums=('30e11974d15df5a2c3b30f373542f214ac9f4c3ddbeed667a46036149f9f88828ab32fe98fcd3d37ad6d68fba379d1b69d6f1649f2f54836a1accc17199efceb')
+
+_bdir=brave-linux-x64
+_edir="browser-laptop-${pkgver}dev"
 
 build() {
-	cd "$srcdir/browser-laptop-${pkgver}dev"
+	cd "$_edir"
 
 	npm install
 
@@ -30,11 +35,10 @@ build() {
 }
 
 package() {
-	cd "$srcdir/browser-laptop-${pkgver}dev"
+	cd "$_edir"
 
 	install -dm0755 "$pkgdir/usr/lib"
-
-	cp -a --reflink=auto brave-linux-x64 "$pkgdir/usr/lib/$pkgname"
+	cp -a --reflink=auto "$_bdir" "$pkgdir/usr/lib/$pkgname"
 
 	_launcher="$pkgdir/usr/bin/$pkgname"
 	install -Dm0755 /dev/stdin "$_launcher"<<END
@@ -170,10 +174,8 @@ MimeType=text/html;text/xml;application/xhtml_xml;image/webp;x-scheme-handler/ht
 END
 
 	install -Dm0644 res/dev/app.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
-
 	install -Dm0644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/MPL2"
-
 	mv "$pkgdir/usr/lib/$pkgname/"{LICENSE,LICENSES.chromium.html} "$pkgdir/usr/share/licenses/$pkgname/"
 
-	ln -s /usr/lib/PepperFlash "$pkgdir"/usr/lib/pepperflashplugin-nonfree
+	ln -s /usr/lib/PepperFlash "$pkgdir/usr/lib/pepperflashplugin-nonfree"
 }
