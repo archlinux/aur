@@ -3,17 +3,17 @@
 pkgname=brave-bin
 pkgver=0.23.105
 pkgrel=1
-pkgdesc="A web browser that stops ads and trackers by default. Binary release."
+pkgdesc='A web browser that stops ads and trackers by default. Binary release.'
 arch=('x86_64') # Upstream supports x86_64 only
-url="https://www.brave.com/"
+url='https://www.brave.com'
 license=('custom:several')
 depends=('gtk3' 'gconf' 'nss' 'alsa-lib' 'libxss' 'libgnome-keyring' 'ttf-font')
 optdepends=('cups: Printer support'
             'pepper-flash: Adobe Flash support')
-provides=('brave' 'brave-browser')
-conflicts=('brave')
+provides=("${pkgname%-bin}" 'brave-browser')
+conflicts=("${pkgname%-bin}")
 source=("$pkgname-$pkgver.tar.bz2::https://github.com/brave/browser-laptop/releases/download/v${pkgver}dev/brave.tar.bz2"
-        "MPL2::https://raw.githubusercontent.com/brave/browser-laptop/master/LICENSE.txt")
+        'MPL2::https://raw.githubusercontent.com/brave/browser-laptop/master/LICENSE.txt')
 options=(!strip)
 sha512sums=('a2063278b2c1f9a50571caf6a3a7b550daff7c52803402680790cbce571a9a8fca95de58ed1579b920582b7cbd4dcd453a0dd8c645506bd773b28fbeb9ced7e2'
             'b8823586fead21247c8208bd842fb5cd32d4cb3ca2a02339ce2baf2c9cb938dfcb8eb7b24c95225ae625cd0ee59fbbd8293393f3ed1a4b45d13ba3f9f62a791f')
@@ -29,9 +29,9 @@ build() {
 package() {
   cd "$srcdir"
 
-  install -d -m0755 "$pkgdir"/usr/lib
+  install -d -m0755 "$pkgdir/usr/lib"
 
-  cp -a --reflink=auto $_bdir "$pkgdir/usr/lib/$pkgname"
+  cp -a --reflink=auto "$_bdir" "$pkgdir/usr/lib/$pkgname"
 
   _launcher="$pkgdir/usr/bin/brave"
   install -Dm0755 /dev/stdin "$_launcher"<<END
@@ -43,7 +43,7 @@ if [[ -r /proc/sys/kernel/unprivileged_userns_clone && \$(< /proc/sys/kernel/unp
 	FLAG=""
 fi
 
-exec /usr/lib/$pkgname/brave "\$FLAG" -- "\$@"
+exec "/usr/lib/${pkgname}/brave" "\$FLAG" -- "\$@"
 END
 
   _deskfile="$pkgdir/usr/share/applications/$pkgname.desktop"
@@ -166,11 +166,11 @@ Categories=Network;WebBrowser;
 MimeType=text/html;text/xml;application/xhtml_xml;image/webp;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;
 END
 
-  install -Dm0644 "$srcdir"/$_bdir/resources/extensions/brave/img/braveAbout.png "$pkgdir"/usr/share/pixmaps/brave.png
+  install -Dm0644 "$srcdir/$_bdir/resources/extensions/brave/img/braveAbout.png" "$pkgdir/usr/share/pixmaps/brave.png"
 
-  install -Dm0664 "$srcdir"/MPL2 "$pkgdir/usr/share/licenses/$pkgname/MPL2"
+  install -Dm0664 "$srcdir/MPL2" "$pkgdir/usr/share/licenses/$pkgname/MPL2"
 
-  mv "$pkgdir"/usr/lib/"$pkgname"/{LICENSE,LICENSES.chromium.html} "$pkgdir/usr/share/licenses/$pkgname/"
+  mv "$pkgdir/usr/lib/$pkgname/{LICENSE,LICENSES.chromium.html}" "$pkgdir/usr/share/licenses/$pkgname/"
 
-  ln -s /usr/lib/PepperFlash "$pkgdir"/usr/lib/pepperflashplugin-nonfree
+  ln -s /usr/lib/PepperFlash "$pkgdir/usr/lib/pepperflashplugin-nonfree"
 }
