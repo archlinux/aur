@@ -1,21 +1,22 @@
+# Maintainer: Simon Legner <Simon.Legner@gmail.com>
 # Maintainer: James An <james@jamesan.ca>
 # Contributor: David Pugnasse <david.pugnasse@gmail.com>
 
-pkgname="pmd-bin"
+pkgname=pmd-bin
 _pkgname=${pkgname%-bin}
-pkgver=6.1.0
+pkgver=6.6.0
 pkgrel=1
 pkgdesc="An extensible cross-language static code analyzer."
 arch=('any')
-url="http://pmd.github.io"
+url="https://pmd.github.io"
 license=('BSD' 'Apache')
 depends=('java-environment')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("https://github.com/$_pkgname/$_pkgname/releases/download/${_pkgname}_releases/$pkgver/$pkgname-$pkgver.zip"
         pmdapp)
-md5sums=('566855f2010cfd6aa3a4957d00183197'
-         '7026fc0d1d333c8c2728ed8d9ca4f453')
+sha256sums=('61138e877233edd793fbb00f949bbb24ec02041673b94d1274887c8c218dcc98'
+            '0b4a682c5498a699cfff691ef3649117f0af455f7b38ff1d9648be46102797ae')
 
 package() {
     cd "$_pkgname-bin-$pkgver"
