@@ -1,6 +1,6 @@
 pkgbase = linux-amd-git
 	pkgdesc = Linux kernel with AMDGPU DC patches
-	pkgver = 4.19.769812.c9533d1bca33
+	pkgver = 4.19.769851.9d1d02ff3678
 	pkgrel = 1
 	url = https://cgit.freedesktop.org/~agd5f/linux/
 	arch = x86_64
