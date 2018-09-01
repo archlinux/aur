@@ -1,3 +1,4 @@
+*
 !./.SRCINFO
 !./.gitignore
 !./PKGBUILD
@@ -10,4 +11,3 @@
 !./gitlab.logrotate
 !./gitlab.target
 !./gitlab.tmpfiles.d
-*
