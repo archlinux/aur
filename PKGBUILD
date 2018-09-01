@@ -1,23 +1,26 @@
+# Maintainer: Simon Legner <Simon.Legner@gmail.com>
 # Maintainer: David Pugnasse <david.pugnasse@gmail.com>
 pkgname=pmd
-pkgver=6.1.0
+pkgver=6.6.0
 pkgrel=1
 pkgdesc="An extensible cross-language static code analyzer."
 arch=('any')
-url="http://pmd.github.io"
+url="https://pmd.github.io/"
 license=('BSD' 'Apache')
-depends=('java-environment')
+depends=('java-environment=10')
 makedepends=('java-environment-common' 'maven')
 source=("https://github.com/$pkgname/$pkgname/releases/download/${pkgname}_releases/$pkgver/$pkgname-src-$pkgver.zip"
         pmdapp)
-md5sums=('0f7ac91b14d57b18bf4c2192ce5c8152'
-         '170b76a131d4651f24213f273164d175')
+sha256sums=('0bf965f084f6c19b83811eba8167165418b6b6e30b26118327b311f88d78b4b0'
+            'b1a73343ba0435801ce18c7fc18e14b7fed6a9be7b0a5907b67730471c176fc8')
 
 build() {
     cd "$pkgname-src-$pkgver"
 
-    sh mvnw clean package -DskipTests=true -Dmaven.javadoc.skip=true
-    bsdtar -xzf pmd-dist/target/pmd-bin-6.1.0.zip --strip-components 1 pmd-bin-6.1.0/lib
+    export JAVA_HOME=/usr/lib/jvm/java-10-openjdk/
+    # exclude pmd-ui since no OpenJDK JavaFX 10 is currently packaged
+    sh mvnw clean package -DskipTests=true -Dmaven.javadoc.skip=true --projects !pmd-ui
+    bsdtar -xzf pmd-dist/target/pmd-bin-${pkgver}.zip --strip-components 1 pmd-bin-${pkgver}/lib
 }
 
 package() {
