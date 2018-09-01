@@ -2,7 +2,7 @@
 # Contributor: Jan Tojnar <jtojnar@gmail.com>
 
 _pkgname='hamster-gtk'
-pkgname="python-${_pkgname}-git"
+pkgname="python-$_pkgname-git"
 _branch='develop'
 pkgver=0.11.0.r105.g6b5d106
 pkgrel=1
@@ -15,18 +15,18 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 license=('GPL3')
 arch=('any')
-source=("git://github.com/projecthamster/${_pkgname}.git#branch=${_branch}")
+source=("git://github.com/projecthamster/$_pkgname.git#branch=$_branch")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "${_pkgname}"
+	cd "$_pkgname"
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-	cd "${_pkgname}"
+	cd "$_pkgname"
     find hamster_gtk -type f -exec sed -i 's/backports\.//g' {} +
     sed -i -e "s/find_packages()/find_packages(exclude=['tests'])/" setup.py
     sed -i -e 's!setup.py install!setup.py install --root="$(DESTDIR)"!g' Makefile
-    make install DESTDIR="${pkgdir}/"
+    make install DESTDIR="$pkgdir/"
 }
