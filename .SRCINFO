@@ -1,0 +1,19 @@
+pkgbase = upl-git
+	pkgdesc = A tiny script for uploading files to webservers over SSH
+	pkgver = 0.1.r0.g042c169
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/naoph/upl
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python
+	depends = python-yaml
+	depends = scp
+	provides = upl
+	conflicts = upl
+	source = upl-git::git+https://github.com/naoph/upl.git
+	md5sums = SKIP
+
+pkgname = upl-git
+
