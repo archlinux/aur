@@ -24,27 +24,27 @@ _bdir=brave-linux-x64
 _edir="browser-laptop-${pkgver}dev"
 
 build() {
-	cd "$_edir"
+    cd "$_edir"
 
-	npm install
+    npm install
 
-	# Workaround for https://github.com/brave/browser-laptop/issues/12667
-	sed -i "s/require('git-rev-sync').long()/'${pkgver}dev'/" tools/buildPackage.js
+    # Workaround for https://github.com/brave/browser-laptop/issues/12667
+    sed -i "s/require('git-rev-sync').long()/'${pkgver}dev'/" tools/buildPackage.js
 
-	CHANNEL=dev npm run build-package
+    CHANNEL=dev npm run build-package
 }
 
 package() {
-	cd "$_edir"
+    cd "$_edir"
 
-	install -dm0755 "$pkgdir/usr/lib"
-	cp -a --reflink=auto "$_bdir" "$pkgdir/usr/lib/$pkgname"
+    install -dm0755 "$pkgdir/usr/lib"
+    cp -a --reflink=auto "$_bdir" "$pkgdir/usr/lib/$pkgname"
 
-	install -Dm0755 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
-	install -Dm0644 -t "$pkgdir/usr/share/applications/" "$pkgname.desktop"
-	install -Dm0644 res/dev/app.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
-	install -Dm0644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/MPL2"
-	mv "$pkgdir/usr/lib/$pkgname/"{LICENSE,LICENSES.chromium.html} "$pkgdir/usr/share/licenses/$pkgname/"
+    install -Dm0755 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+    install -Dm0644 -t "$pkgdir/usr/share/applications/" "$pkgname.desktop"
+    install -Dm0644 res/dev/app.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
+    install -Dm0644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/MPL2"
+    mv "$pkgdir/usr/lib/$pkgname/"{LICENSE,LICENSES.chromium.html} "$pkgdir/usr/share/licenses/$pkgname/"
 
-	ln -s /usr/lib/PepperFlash "$pkgdir/usr/lib/pepperflashplugin-nonfree"
+    ln -s /usr/lib/PepperFlash "$pkgdir/usr/lib/pepperflashplugin-nonfree"
 }
