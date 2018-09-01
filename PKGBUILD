@@ -4,7 +4,7 @@
 # Contributor: Martin Florén <martin.floren@gmail.com>
 
 _ffname=raleway
-pkgname=otf-${_ffname}
+pkgname=otf-"$_ffname"
 pkgver=3.0
 pkgrel=1
 pkgdesc='An elegant sans-serif font, originally designed in a single thin weight'
@@ -13,7 +13,7 @@ url='http://theleagueofmoveabletype.com/${_ffname}'
 license=('custom:OFL')
 depends=('fontconfig' 'xorg-font-utils')
 conflicts=('ttf-raleway')
-source=("https://raw.githubusercontent.com/google/fonts/master/ofl/${_ffname}/OFL.txt"
+source=("https://raw.githubusercontent.com/google/fonts/master/ofl/$_ffname/OFL.txt"
     "https://raw.githubusercontent.com/impallari/Raleway/master/fonts/v3.000%20Fontlab/OTF/Raleway-Black-Italic-Original.otf"
     "https://raw.githubusercontent.com/impallari/Raleway/master/fonts/v3.000%20Fontlab/OTF/Raleway-Black-Original.otf"
     "https://raw.githubusercontent.com/impallari/Raleway/master/fonts/v3.000%20Fontlab/OTF/Raleway-Bold-Italic-Original.otf"
@@ -53,7 +53,7 @@ sha256sums=('e588abf45ca2b19c340c4b27349c9b6b6e5e198316fd965128ed9f4422942cbe'
             '0b31399835977f952ca112db90620109b82a1aa182bd2334e07e0d721d38fb6a')
 
 package() {
-    install -Dm0644 ${srcdir}/OFL.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-    find ${srcdir} -name "${_ffname^}-*.otf" \
-        -execdir install -Dm644 {} "${pkgdir}/usr/share/fonts/OTF/{}" \;
+    install -Dm0644 "$srcdir"/OFL.txt "$pkgdir/usr/share/licenses/$pkgname"/LICENSE
+    find "$srcdir" -name "${_ffname^}-*.otf" \
+        -execdir install -Dm644 {} "$pkgdir/usr/share/fonts/OTF/{}" \;
 }
