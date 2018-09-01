@@ -1,9 +1,7 @@
+*
 !./.SRCINFO
 !./.gitignore
 !./PKGBUILD
-!./mattermost-server-makefile.patch
 !./mattermost.service
-!./mattermost.sh
 !./mattermost.sysusers
 !./mattermost.tmpfiles
-*
