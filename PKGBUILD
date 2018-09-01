@@ -2,7 +2,7 @@
 _pkgname=NrrdIO
 pkgname=nrrdio
 pkgver=1.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Stand-alone library for doing basic nrrd operations and for reading and writing the NRRD file format'
 arch=('x86_64')
 url='http://teem.sourceforge.net/index.html'
