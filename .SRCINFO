@@ -1,7 +1,7 @@
 pkgbase = csync2-git
 	pkgdesc = Asynchronous cluster syncronisation tool based on librsync and inspired by Unison
-	pkgver = 2.0.r8.g175a01c
-	pkgrel = 2
+	pkgver = 2.0.r22.gce67c55
+	pkgrel = 1
 	url = http://oss.linbit.com/csync2/
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = csync2-git
 	optdepends = sqlite: for sqlite backend
 	provides = csync2=2.0
 	conflicts = csync2
-	source = csync2-git::git://git.linbit.com/csync2.git
+	source = csync2-git::git+https://github.com/LINBIT/csync2.git
 	source = csync2.socket
 	source = csync2@.service
 	source = csync2-rm-ssl-cert

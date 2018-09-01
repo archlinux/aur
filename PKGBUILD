@@ -3,8 +3,8 @@
 
 pkgname=csync2-git
 _pkgname=csync2
-pkgver=2.0.r8.g175a01c
-pkgrel=2
+pkgver=2.0.r22.gce67c55
+pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Asynchronous cluster syncronisation tool based on librsync and inspired by Unison"
 url="http://oss.linbit.com/csync2/"
@@ -14,7 +14,7 @@ conflicts=("$_pkgname")
 makedepends=('texlive-latexextra' 'sqlite' 'git')
 depends=('librsync' 'gnutls')
 optdepends=('sqlite: for sqlite backend')
-source=("$pkgname::git://git.linbit.com/csync2.git"
+source=("$pkgname::git+https://github.com/LINBIT/csync2.git"
         'csync2.socket'
         'csync2@.service'
         'csync2-rm-ssl-cert')
@@ -49,8 +49,12 @@ build() {
 package() {
   cd ${pkgname}
 
-  make DESTDIR="${pkgdir}" install
+  make -j1 DESTDIR="${pkgdir}" install
   install -Dm644 ../'csync2.socket' "$pkgdir/usr/lib/systemd/system/csync2.socket"
   install -Dm644 ../'csync2@.service' "$pkgdir/usr/lib/systemd/system/csync2@.service"
   install -Dm755 ../'csync2-rm-ssl-cert' "$pkgdir/usr/bin/csync2-rm-ssl-cert"
+  rm -fr "${pkgdir}"/var
+  install -Dm644 /dev/stdin "${pkgdir}"/usr/lib/tmpfiles.d/${_pkgname}.conf <<-END
+    d /var/lib/${_pkgname} 0755 root root -
+END
 }
