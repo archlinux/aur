@@ -1,7 +1,6 @@
 # Maintainer: Denis Demidov <dennis.demidov@gmail.com>
 
 pkgname=amgcl-git
-pkgver=20170420
 pkgrel=4
 pkgdesc='C++ library for solving large sparse linear systems with algebraic multigrid method'
 arch=('i686' 'x86_64')
@@ -15,6 +14,11 @@ provides=('amgcl')
 makedepends=('git' 'cmake' 'boost')
 source=(git+https://github.com/ddemidov/amgcl.git)
 md5sums=('SKIP')
+
+pkgver() {
+    cd "${srcdir}/amgcl"
+    git describe | tr - .
+}
 
 build() {
     cd "${srcdir}/amgcl"
