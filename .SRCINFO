@@ -5,9 +5,9 @@ pkgbase = python-defcon-git
 	arch = any
 	license = MIT
 	makedepends = git
+	makedepends = python-setuptools
 	source = git+https://github.com/trufont/defcon.git
 	sha256sums = SKIP
 
 pkgname = python-defcon-git
-	depends = python-setuptools
 
