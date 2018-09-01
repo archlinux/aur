@@ -1,0 +1,16 @@
+pkgbase = emacs-goto-chg-git
+	pkgdesc = goto last change
+	pkgver = r9.e5b38e4
+	pkgrel = 1
+	url = https://github.com/emacs-evil/goto-chg
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	provides = emacs-goto-chg
+	conflicts = emacs-goto-chg
+	source = git+https://github.com/emacs-evil/goto-chg.git
+	sha256sums = SKIP
+
+pkgname = emacs-goto-chg-git
+
