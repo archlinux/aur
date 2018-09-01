@@ -1,6 +1,6 @@
 _pkgname=cros-container-guest-tools
 pkgname=${_pkgname}-git
-pkgver=r48.e25d12d
+pkgver=r86.53b1b97
 pkgrel=1
 pkgdesc="Guest tools for the Crostini containers on ChromeOS"
 arch=('any')
@@ -47,8 +47,12 @@ package() {
 
 	install -m755 -D ${srcdir}/${_pkgname}/cros-garcon/garcon-url-handler \
 					 ${pkgdir}/usr/bin/garcon-url-handler
+	install -m755 -D ${srcdir}/${_pkgname}/cros-garcon/garcon-terminal-handler \
+					 ${pkgdir}/usr/bin/garcon-terminal-handler
 	install -m644 -D ${srcdir}/${_pkgname}/cros-garcon/garcon_host_browser.desktop \
 					 ${pkgdir}/usr/share/applications/garcon_host_browser.desktop
+	install -m644 -D ${srcdir}/${_pkgname}/cros-garcon/skel.cros-garcon.conf \
+					 ${pkgdir}/etc/skel/.config/cros-garcon.conf
 	install -m644 -D ${srcdir}/${_pkgname}/cros-garcon/cros-garcon.service \
 					 ${pkgdir}/usr/lib/systemd/user/cros-garcon.service
 	install -m644 -D ${srcdir}/${_pkgname}/cros-garcon/cros-garcon-override.conf \
@@ -73,19 +77,16 @@ package() {
 
 	### cros-sommelier
 
-#   Uncomment after https://bugs.archlinux.org/task/58701 is fixed
-
-#	ln -sf /opt/google/cros-containers/bin/sommelier \
-#		   ${pkgdir}/usr/bin/sommelier
-
 	install -m644 -D ${srcdir}/${_pkgname}/cros-sommelier/sommelierrc \
 					 ${pkgdir}/etc/sommelierrc
 	install -m644 -D ${srcdir}/${_pkgname}/cros-sommelier/sommelier.sh \
 					 ${pkgdir}/etc/profile.d/sommelier.sh
 	install -m644 -D ${srcdir}/${_pkgname}/cros-sommelier/sommelier@.service \
 					 ${pkgdir}/usr/lib/systemd/user/sommelier@.service
+	sed -i 's|=/usr|=/opt/google/cros-containers|g' ${pkgdir}/usr/lib/systemd/user/sommelier@.service
 	install -m644 -D ${srcdir}/${_pkgname}/cros-sommelier/sommelier-x@.service \
 					 ${pkgdir}/usr/lib/systemd/user/sommelier-x@.service
+	sed -i 's|=/usr|=/opt/google/cros-containers|g' ${pkgdir}/usr/lib/systemd/user/sommelier-x@.service
 	ln -sf ../sommelier@.service \
 		   ${pkgdir}/usr/lib/systemd/user/default.target.wants/sommelier@0.service
 	ln -sf ../sommelier-x@.service \
