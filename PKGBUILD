@@ -1,7 +1,7 @@
 # Maintainer: Naomi Phillips <naoph@cryptolab.net>
 pkgname=upl-git
 _pkgname=upl
-pkgver=0.1.r0.g042c169
+pkgver=0.1.1.r0.g72dd077
 pkgrel=1
 epoch=1
 pkgdesc="A tiny script for uploading files to webservers over SSH"
@@ -22,5 +22,5 @@ pkgver() {
 
 package() {
   cd $pkgname
-  install -Dm755 "upl" "$pkgdir/usr/bin/upl"
+  install -Dm755 "upl.py" "$pkgdir/usr/bin/upl"
 }

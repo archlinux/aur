@@ -1,6 +1,6 @@
 pkgbase = upl-git
 	pkgdesc = A tiny script for uploading files to webservers over SSH
-	pkgver = 0.1.r0.g042c169
+	pkgver = 0.1.1.r0.g72dd077
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/naoph/upl
