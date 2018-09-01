@@ -42,13 +42,13 @@ package () {
     # system authentication using LDAP. This needs to be fixed to be an option upstream!
     find ./ -type f -print0 | xargs -n1 -0 sed -i 's/ou=Group/ou=Groups/g'
 
-    mkdir -p ${pkgdir}/etc/webapps/ldapauthmanager
-    mkdir -p ${pkgdir}/usr/share/webapps/ldapauthmanager
+    mkdir -p "$pkgdir"/etc/webapps/ldapauthmanager
+    mkdir -p "$pkgdir"/usr/share/webapps/ldapauthmanager
 
     find ./ -type f -execdir chmod 0644 {} \;
-    cp -ra htdocs scripts sql resources ldap radius ${pkgdir}/usr/share/webapps/ldapauthmanager/
-    install -Dm0600 htdocs/admin/config.php ${pkgdir}/etc/webapps/ldapauthmanager/config.php
-    mv ${pkgdir}/{usr/share/webapps/ldapauthmanager/htdocs/include/sample-config,etc/webapps/ldapauthmanager/config-settings}.php
+    cp -ra htdocs scripts sql resources ldap radius "$pkgdir"/usr/share/webapps/ldapauthmanager/
+    install -Dm0600 htdocs/admin/config.php "$pkgdir"/etc/webapps/ldapauthmanager/config.php
+    mv "$pkgdir"/{usr/share/webapps/ldapauthmanager/htdocs/include/sample-config,etc/webapps/ldapauthmanager/config-settings}.php
 
-    install -Dm0664 $srcdir/apache.conf $pkgdir/etc/webapps/ldapauthmanager/apache.conf
+    install -Dm0664 "$srcdir"/apache.conf "$pkgdir"/etc/webapps/ldapauthmanager/apache.conf
 }
