@@ -1,10 +1,11 @@
-# Maintainer: Please see AUR package page for current maintainer(s) and contact information.
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer: Jacob Mischka <jacob@mischka.me>
 
 pkgname=brave-bin
 pkgver=0.23.105
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default. Binary release.'
-arch=('x86_64') # Upstream supports x86_64 only
+arch=('x86_64')
 url='https://www.brave.com'
 license=('custom:several')
 depends=('gtk3' 'gconf' 'nss' 'alsa-lib' 'libxss' 'libgnome-keyring' 'ttf-font')
@@ -29,14 +30,11 @@ build() {
 }
 
 package() {
-  cd "$srcdir"
+    install -d -m0755 "$pkgdir/usr/lib"
+    cp -a --reflink=auto "$_bdir" "$pkgdir/usr/lib/$pkgname"
 
-  install -d -m0755 "$pkgdir/usr/lib"
-
-  cp -a --reflink=auto "$_bdir" "$pkgdir/usr/lib/$pkgname"
-
-  _launcher="$pkgdir/usr/bin/brave"
-  install -Dm0755 /dev/stdin "$_launcher"<<END
+    _launcher="$pkgdir/usr/bin/brave"
+    install -Dm0755 /dev/stdin "$_launcher"<<END
 #!/usr/bin/sh
 
 FLAG="--no-sandbox"
@@ -48,13 +46,10 @@ fi
 exec "/usr/lib/${pkgname}/brave" "\$FLAG" -- "\$@"
 END
 
-  install -Dm0644 -t "$pkgdir/usr/share/applications" "$pkgname.desktop"
+    install -Dm0644 -t "$pkgdir/usr/share/applications" "$pkgname.desktop"
+    install -Dm0644 "$_bdir/resources/extensions/brave/img/braveAbout.png" "$pkgdir/usr/share/pixmaps/brave.png"
+    install -Dm0664 -t "$pkgdir/usr/share/licenses/$pkgname" "MPL2"
+    mv "$pkgdir/usr/lib/$pkgname/"{LICENSE,LICENSES.chromium.html} "$pkgdir/usr/share/licenses/$pkgname"
 
-  install -Dm0644 "$srcdir/$_bdir/resources/extensions/brave/img/braveAbout.png" "$pkgdir/usr/share/pixmaps/brave.png"
-
-  install -Dm0664 "$srcdir/MPL2" "$pkgdir/usr/share/licenses/$pkgname/MPL2"
-
-  mv "$pkgdir/usr/lib/$pkgname/{LICENSE,LICENSES.chromium.html}" "$pkgdir/usr/share/licenses/$pkgname/"
-
-  ln -s /usr/lib/PepperFlash "$pkgdir/usr/lib/pepperflashplugin-nonfree"
+    ln -s /usr/lib/PepperFlash "$pkgdir/usr/lib/pepperflashplugin-nonfree"
 }
