@@ -1,11 +1,10 @@
-# Maintainer: Carsten Feuls (DL1CAF) 'Der Techniker' <dl1caf@vfdb.org>
+# Maintainer: Galen Gold <galen@galengold.me>
 # Contributer: Carsten Feuls (DL1CAF) 'Der Techniker' <dl1caf@vfdb.org>
 # Contributer: Amateurfunk Station der Hochschule Niederrhein (DF0FN) <df0fn@hs-niederrhein.de>
-# Contributer: Galen Gold <galen@galengold.me>
 pkgname=('qtel')
 _pkgname=('svxlink')
 pkgver="17.12.2"
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64' 'armv5h' 'armv6h' 'armv7h')
 url="http://www.github.com/sm0svx/svxlink/"
 license=('GPL')
