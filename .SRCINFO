@@ -1,7 +1,7 @@
 pkgbase = python-namedlist
 	pkgdesc = Like namedtuples, but mutable
 	pkgver = 1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pypi.python.org/pypi/namedlist
 	arch = any
 	license = Apache
