@@ -40,16 +40,16 @@ package() {
   install -Dm 644 turnserver.tmpfiles.d "$pkgdir"/usr/lib/tmpfiles.d/turnserver.conf
   cd coturn
   make DESTDIR="$pkgdir" install
-  install -D "$pkgdir"/usr/share/turnserver/examples/etc/turnserver.conf "$pkgdir"/etc/turnserver.conf
+  mkdir "$pkgdir"/etc
+  mv "$pkgdir"/{usr/etc/turnserver.conf.default,etc/turnserver.conf}
+  rmdir "$pkgdir"/usr/etc
   sed \
     -e '/^#log-file=\/var\/tmp\/turn.log$/c log-file=\/var\/log\/turnserver\/turn.log' \
     -i "$pkgdir"/etc/turnserver.conf
   sed \
     -e '/^#pidfile="\/var\/run\/turnserver.pid"$/c pidfile="\/var\/run\/turnserver\/turnserver.pid"' \
     -i "$pkgdir"/etc/turnserver.conf
+  find "$pkgdir" -type f ! -name '*.sh' ! -name '*.pl' -exec chmod 644 {} +
   mkdir -p "$pkgdir"/var/log/turnserver
   install -Dm 644 -t "$pkgdir"/usr/share/licenses/coturn LICENSE
-  chmod 644 "$pkgdir"/{etc/turnserver.conf,usr/include/turn/ns_turn_defs.h,usr/lib/libturnclient.a,var/db/turndb}
-  find "$pkgdir"/usr/share/{doc,man} -type f -exec chmod 644 {} +
-  rm -r "$pkgdir"/usr/etc
-}
+  }
