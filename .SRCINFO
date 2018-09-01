@@ -9,9 +9,7 @@ pkgbase = trisycl-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = boost
-	makedepends = boost-libs
 	depends = boost
-	depends = boost-libs
 	source = git+git://github.com/triSYCL/triSYCL
 	md5sums = SKIP
 

@@ -7,8 +7,8 @@ pkgdesc="It is the open source implementation of the SYCL Khronos specification,
 arch=('x86_64' 'i686')
 url="https://github.com/triSYCL/triSYCL.git"
 license=('custom')
-depends=('boost' 'boost-libs')
-makedepends=('git' 'cmake' 'boost' 'boost-libs')
+depends=('boost')
+makedepends=('git' 'cmake' 'boost')
 source=(git+git://github.com/triSYCL/triSYCL)
 md5sums=('SKIP')
 
@@ -27,6 +27,6 @@ build() {
 }
 
 package() {
-  cd $srcdir/triSYCL/build
+  cd "$srcdir"/triSYCL/build
   make DESTDIR="$pkgdir" install
 }
