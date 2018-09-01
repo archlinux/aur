@@ -1,43 +1,28 @@
-# Maintainer: André Vitor de Lima Matos <andre.vmatos at gmail.com>
+# Maintainer: Dimitri Kaparis <dimitri at kaparis dot name>
 # Contributor: redfish <redfish at galactica.pw>
-# Contributor: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
 
 pkgname=bitcoin-unlimited
 _pkgbase=BitcoinUnlimited
-pkgver=1.0.3.0
+pkgver=1.4.0.0
 pkgrel=1
-pkgdesc='Bitcoin Unlimited versions of Bitcoind, bitcoin-cli, bitcoin-tx, and bitcoin-qt, w/GUI and wallet'
+pkgdesc='Bitcoin Unlimited Cash (BCH) versions of Bitcoind, bitcoin-cli, 
+bitcoin-tx, and bitcoin-qt, w/GUI and wallet'
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.bitcoinunlimited.info"
 license=('MIT')
 depends=('boost-libs' 'desktop-file-utils' 'libevent' 'qt5-base' 'protobuf' 'qrencode' 'openssl' 'miniupnpc' 'openssl-1.0')
 makedepends=('boost' 'libevent' 'qt5-base' 'qt5-tools' 'qrencode' 'protobuf')
-provides=('bitcoin-unlimited-git' 'bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
+provides=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 conflicts=('bitcoin-unlimited-git' 'bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
-source=('git+https://github.com/BitcoinUnlimited/BitcoinUnlimited.git')
-sha256sums=('SKIP')
+source=('https://github.com/BitcoinUnlimited/BitcoinUnlimited/archive/bucash1.4.0.0.tar.gz')
+sha256sums=('ff8e7be5d80333041d0e878c35a95c6cc12fcee019e9bff6a9ec9d8bc960a756')
 
-pkgver() {
-  cd "$srcdir/$_pkgbase"
-
-  # version based on last tag
-  # avoid rebuilding (same version) if last tag hasn't changed
-  git describe --long --tags | sed "s/^[^0-9]*\([0-9][^-]\+\).*$/\1/"
-}
 
 build() {
   cd "$srcdir/$_pkgbase"
-  export CXXFLAGS+=" -I/usr/include/openssl-1.0"
-  export LDFLAGS+=" -L/usr/lib/openssl-1.0 -lssl -lcrypto"
-
-  export SSL_CFLAGS="-I/usr/include/openssl-1.0"
-  export SSL_LIBS="-L/usr/lib/openssl-1.0 -lssl -lcrypto"
-
-  export CRYPTO_CFLAGS="-I/usr/include/openssl-1.0"
-  export CRYPTO_LIBS="-L/usr/lib/openssl-1.0 -lssl -lcrypto"
 
   ./autogen.sh
-  ./configure --prefix=/usr --with-incompatible-bdb --with-gui=qt5
+  ./configure --prefix=/usr --with-incompatible-bdb
   make
 }
 
@@ -72,5 +57,3 @@ package() {
 
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
-
-# vim:set ts=2 sw=2 et:
