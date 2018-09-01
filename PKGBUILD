@@ -29,22 +29,22 @@ optdepends=('bzr: support for bzr repositories'
             'vcsh: support for vcsh')
 url='http://myrepos.branchable.com'
 license=('GPL2')
-source=("https://git.joeyh.name/index.cgi/myrepos.git/snapshot/${pkgname}-${pkgver}.tar.gz")
+source=("https://git.joeyh.name/index.cgi/myrepos.git/snapshot/$pkgname-$pkgver.tar.gz")
 sha256sums=('bfb909037da678a1668f3f7f86efee7ee31f2bc66d90b83dd9e6b6a5f998c4e2')
 provides=('mr' 'myrepos' 'webcheckout')
 conflicts=('mr' 'webcheckout')
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "$pkgname-$pkgver"
   make
 }
 
 check() {
-  cd "${pkgname}-${pkgver}"
+  cd "$pkgname-$pkgver"
   make test
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
-  make DESTDIR="${pkgdir}" PREFIX=/usr install
+  cd "$pkgname-$pkgver"
+  make DESTDIR="$pkgdir" PREFIX=/usr install
 }
