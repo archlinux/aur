@@ -22,7 +22,7 @@ pkgver() {
 package() {
   cd "$srcdir/$pkgname"
   for f in *.otf; do
-    install -D -m644 $f "$pkgdir/usr/share/fonts/OTF/$f"
+    install -D -m644 "$f" "$pkgdir/usr/share/fonts/OTF/$f"
   done
   install -D -m644 OFL.txt "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
 }
