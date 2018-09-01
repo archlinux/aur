@@ -24,7 +24,7 @@ sha256sums=('67124886358e6badc2d747dc6b677e119a53fee1f8da56f7cc4fc8a5992a234f'
 
 build () {
     cd "$srcdir/$pkgname-$pkgver"
-    patch -p1 -i "${srcdir}"/tempfile.patch
+    patch -p1 -i "$srcdir"/tempfile.patch
 }
 
 package () {
