@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Electronic Arts Standard Template Library. It is an extensive and robust implementation that has an emphasis on high performance."
 arch=(any)
 url="https://github.com/electronicarts/EASTL"
-license=("BSD")
+license=("BSD", "other")
 depends=()
 makedepends=("cmake")
 source=("https://github.com/electronicarts/EASTL/archive/${pkgver}.tar.gz")
@@ -22,7 +22,8 @@ build() {
 package() {
   make DESTDIR="${pkgdir}" -C "${srcdir}/${pkgname_}-${pkgver}" install
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -Dm644 "${srcdir}/${pkgname_}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/${pkgname_}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 "${srcdir}/${pkgname_}-${pkgver}/3RDPARTYLICENSES.TXT" "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 # vim:set ts=2 sw=2 et:
