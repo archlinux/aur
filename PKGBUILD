@@ -1,7 +1,7 @@
 # Maintainer: metscoin <mets_coin@outlook.com>
 
 pkgname=actinium-qt
-pkgver=0.17.4
+pkgver=0.18.0.0
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://actinium.org/"
