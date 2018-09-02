@@ -1,7 +1,7 @@
 # Maintainer: Valerii Huz <ghotrix at gmail dot com>
 pkgname=lc0-client-git
 _pkgname=lc0-client
-pkgver=81
+pkgver=127
 pkgrel=1
 pkgdesc="Client for games generation to train Leela Chess Zero."
 arch=('i686' 'x86_64')
@@ -16,6 +16,7 @@ prepare() {
     cd "${srcdir}/${_pkgname}"
     export GOPATH=$GOPATH:`pwd`
     go get -u github.com/Tilps/chess
+    go get -u github.com/nightlyone/lockfile
 }
 
 pkgver() {
