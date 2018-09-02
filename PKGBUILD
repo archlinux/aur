@@ -3,16 +3,15 @@
 
 _basename=fontconfig
 pkgname=lib32-$_basename-infinality-ultimate
-pkgver=2.12.6
+pkgver=2.13.1
 pkgrel=1
-_master_name=fontconfig-ultimate-master
 pkgdesc="A library for configuring and customizing font access (32-bit, infinality-bundle)"
 arch=(x86_64)
 url="http://www.fontconfig.org/release/"
 license=('custom' 'MIT')
 groups=('infinality-bundle-multilib')
-depends=('lib32-expat' 'lib32-freetype2-infinality-ultimate' $_basename-infinality-ultimate)
-makedepends=('gcc-multilib' 'lib32-expat' 'gperf' 'python2-lxml')
+depends=('lib32-expat'  $_basename-infinality-ultimate)
+makedepends=('gcc-multilib' 'lib32-json-c' 'lib32-expat' 'gperf' 'python2-lxml')
 options=('!libtool')
 provides=('lib32-fontconfig')
 conflicts=('lib32-fontconfig')
@@ -20,7 +19,7 @@ install="lib32-fontconfig.install"
 
 source=(http://www.fontconfig.org/release/${_basename}-${pkgver}.tar.bz2
         lib32-fontconfig.hook)
-sha1sums=('cae963814ba4bc41f3c96876604d33fc3abfc572'
+sha1sums=('75612356ef4f801735b49baf987f8942b4a7a5e1'
           '765f355f84c200b9ca4e0ea3c69c41474167fc84')
 
 build() {
