@@ -9,21 +9,38 @@ pkgdesc="TV streaming server for Linux"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://tvheadend.org/"
 license=('GPL3')
-depends=('avahi' 'openssl' 'uriparser' 'ffmpeg' 'pcre2' 'libfdk-aac'
-         'libdvbcsa' 'libhdhomerun')
-makedepends=('git' 'python')
-optdepends=('xmltv: For an alternative source of programme listings')
+depends=(
+    'avahi'
+    'ffmpeg'
+    'libdvbcsa'
+    'libfdk-aac'
+    'libhdhomerun'
+    'openssl'
+    'pcre2'
+    'uriparser'
+)
+makedepends=(
+    'git'
+    'python'
+)
+optdepends=(
+    'xmltv: For an alternative source of programme listings'
+)
 provides=('tvheadend')
 conflicts=('tvheadend' 'hts-tvheadend' 'hts-tvheadend-svn' 'tvheadend-git')
 install=tvheadend.install
 backup=('etc/conf.d/tvheadend')
 
-source=("${_gitname}::git+https://github.com/tvheadend/tvheadend.git#branch=master"
-        'dvb-scan-tables::git+https://github.com/tvheadend/dtv-scan-tables.git#branch=tvheadend'
-        'fix-ffmpeg.patch')
-md5sums=('SKIP'
-         'SKIP'
-         '2caa4893574ebb6c7f672e2313df865b')
+source=(
+    "${_gitname}::git+https://github.com/tvheadend/tvheadend.git#branch=master"
+    'dvb-scan-tables::git+https://github.com/tvheadend/dtv-scan-tables.git#branch=tvheadend'
+    'fix-ffmpeg.patch'
+)
+md5sums=(
+    'SKIP'
+    'SKIP'
+    '2caa4893574ebb6c7f672e2313df865b'
+)
 
 pkgver() {
     cd "${srcdir}/${_gitname}"
