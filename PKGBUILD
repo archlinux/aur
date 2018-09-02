@@ -1,34 +1,31 @@
-# Maintainer: Alexis Viguié <alexis.viguie@epitech.eu>
+# Maintainer: Theo Bertacchini theo.bertacchini@epitech.eu
 pkgname=blih
 pkgver=1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Bocal Lightweight Interface for Humans, git repositories and SSH public keys management tool for EPITECH students"
 arch=('any')
 url="https://intra-bocal.epitech.eu"
 license=('GPL')
-groups=()
-depends=('python>=3.3.0' 'python-requests')
-makedepends=()
-optdepends=()
+depends=('python>=3.3.0'
+	'python-requests'
+	'git'
+	'sudo')
 provides=('blih')
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=(https://pkg.blinux.fr/pub/$pkgname/$pkgver/$pkgname-$pkgver.tgz)
-noextract=()
-md5sums=('8d737cc043bcd2217cfb89ab84882ceb')
+source=("${pkgname}-${pkgver}::https://github.com/bocal/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=("SKIP")
+
+prepare() {
+	cd "${pkgname}-${pkgver}"
+	sed -i s/python3.3/python/ ${pkgname}.py
+}
 
 build() {
-  cd "$pkgname-$pkgver"
-  cat blih.py | sed -e s/python3.3/python/ > blih
-  chmod 755 blih
+	cd ${pkgname}-${pkgver}
+	mv ${pkgname}.py ${pkgname}
+	chmod 755 ${pkgname}
 }
 
 package() {
-  mkdir $pkgdir/usr
-  mkdir $pkgdir/usr/bin
-  cp "$srcdir/$pkgname-$pkgver/$pkgname" "$pkgdir/usr/bin"
+	mkdir -p "${pkgdir}/usr/bin"
+	cp "$srcdir/$pkgname-$pkgver/$pkgname" "$pkgdir/usr/bin"
 }
