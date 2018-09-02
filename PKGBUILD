@@ -1,19 +1,19 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=libva-intel-driver-git
-pkgver=2.0.0.r26.g3d5c53d
-pkgrel=2
+pkgver=2.2.0.pre1.r7.gd805098c
+pkgrel=1
 pkgdesc='VA-API implementation for Intel G45 and HD Graphics family (git version)'
 arch=('i686' 'x86_64')
 url='https://01.org/linuxmedia/vaapi/'
 license=('MIT')
 depends=(
     # official repositories:
-        'glibc' 'libdrm'
+        'libdrm'
     # AUR:
         'libva-git'
 )
-makedepends=('git')
+makedepends=('git' 'meson')
 provides=('libva-intel-driver')
 conflicts=('libva-intel-driver')
 replaces=('libva-driver-intel')
@@ -38,15 +38,14 @@ pkgver() {
 build() {
     cd "$pkgname"
     
-    ./autogen.sh
-    ./configure --prefix='/usr'
-    make
+    arch-meson . build
+    ninja -C build
 }
 
 package() {
     cd "$pkgname"
     
-    make DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" ninja -C build install
     
     install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 } 
