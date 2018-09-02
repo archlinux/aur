@@ -2,7 +2,7 @@
 
 pkgname=libva-git
 pkgver=2.0.0.r44.g68a4bef
-pkgrel=1
+pkgrel=2
 pkgdesc='Video Acceleration (VA) API for Linux (git version)'
 arch=('i686' 'x86_64')
 url='https://01.org/linuxmedia/vaapi/'
@@ -14,7 +14,7 @@ optdepends=('libva-vdpau-driver: backend for Nvidia and AMD cards'
 provides=('libva' 'libva-drm.so' 'libva-glx.so' 'libva-wayland.so'
           'libva-x11.so' 'libva.so')
 conflicts=('libva')
-source=("$pkgname"::'git+https://github.com/01org/libva.git')
+source=("$pkgname"::'git+https://github.com/intel/libva.git')
 sha256sums=('SKIP')
 
 pkgver() {
