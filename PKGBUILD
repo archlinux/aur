@@ -1,7 +1,7 @@
 # Contributor: Alexander Scharinger
 # Contributor: Gustavo A. Gomez Farhat <gustavo_dot_gomez_dot_farhat at gmail_dot_com>
 pkgname=gecode
-pkgver=5.1.0
+pkgver=6.0.1
 pkgrel=1
 pkgdesc="The Generic Constraint Development Environment"
 arch=('i686' 'x86_64')
@@ -19,21 +19,21 @@ license=('MIT')
 # For further inormation see section 2.6.2 of the Gecode documentation
 # "Modeling and Programming with Gecode".
 #depends=('mpfr' 'gmp')
-source=(http://www.gecode.org/download/$pkgname-$pkgver.tar.gz)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/release-$pkgver.tar.gz")
 # MD5 sum can not be found anywhere on the webpage.
 # Use the following shell command to generate and update the md5 sum.
 # $ makepkg -g >> PKGBUILD
-md5sums=('79674c35d0af68d6ef8854da756792eb')
+sha512sums=('84be35c0bd6ff4814932027adce738aa896e3f53ef6c845664432dcc5fa5b6b53b316b870150c64ed9cb56151cfef8604d0882ee50e1e47d10873ea09d4be82e')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-release-$pkgver"
   ./configure --prefix=/usr --disable-examples
   #./configure --prefix=/usr --disable-examples --with-mpfr-include=/usr/include/ --with-mpfr-lib=/usr/lib/ --with-gmp-include=/usr/include/ --with-gmp-lib=/usr/lib/
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-release-$pkgver"
   make DESTDIR="$pkgdir" install
   rm -r "$pkgdir/usr/include/examples/"
   install -m 644 -D LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
