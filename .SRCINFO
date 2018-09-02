@@ -1,6 +1,6 @@
 pkgbase = telegram-desktop-dev
 	pkgdesc = Official Telegram Desktop client - development release
-	pkgver = 1.3.12
+	pkgver = 1.3.15
 	pkgrel = 1
 	url = https://desktop.telegram.org/
 	arch = i686
@@ -9,28 +9,28 @@ pkgbase = telegram-desktop-dev
 	makedepends = cmake
 	makedepends = git
 	makedepends = gyp
-	makedepends = range-v3
-	makedepends = python
 	makedepends = libappindicator-gtk3
-	depends = ffmpeg
+	makedepends = python
+	makedepends = range-v3
 	depends = desktop-file-utils
+	depends = ffmpeg
 	depends = hicolor-icon-theme
 	depends = minizip
 	depends = openal
+	depends = openssl
 	depends = qt5-base
 	depends = qt5-imageformats
-	depends = openssl
 	optdepends = libnotify: desktop notifications
 	provides = telegram-desktop
 	conflicts = telegram-desktop
-	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v1.3.12
+	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v1.3.15
 	source = libtgvoip::git+https://github.com/telegramdesktop/libtgvoip.git
 	source = variant::git+https://github.com/mapbox/variant.git
 	source = GSL::git+https://github.com/Microsoft/GSL.git
 	source = Catch::git+https://github.com/philsquared/Catch.git
 	source = crl::git+https://github.com/telegramdesktop/crl.git
-	source = CMakeLists.inj::https://git.archlinux.org/svntogit/community.git/plain/trunk/CMakeLists.inj?h=packages/telegram-desktop
-	source = tdesktop.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/tdesktop.patch?h=packages/telegram-desktop
+	source = CMakeLists_fixed.inj
+	source = tdesktop_fixed.patch
 	source = libtgvoip.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/libtgvoip.patch?h=packages/telegram-desktop
 	source = no-gtk2.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/no-gtk2.patch?h=packages/telegram-desktop
 	sha256sums = SKIP
@@ -39,8 +39,8 @@ pkgbase = telegram-desktop-dev
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 28a25d482ae099077ff501d882408afe0aaf6fb45346bc3423c6de7c2ed4c437
-	sha256sums = e92e8bc6c84d783e2a5f8337628cfb345c06aa4e18778a84e29d4d6f8d83246e
+	sha256sums = 053daeedb2f13e42a4cf784084adf2d41666f8fb4ac47e51e61d95263c229aa6
+	sha256sums = 97597dc8cd034e88ec36cda70219a09a003c1b62186d6320bdf611047c75f76c
 	sha256sums = 4dd2b1674b1a5bcfc5b640612278fe3a53b454192fbcc06b7476ff54ed6d2f6d
 	sha256sums = 8d707debe027c7cb658825501dc30fb3beb57ab21b1b6df2f01c5f76ca39a0e6
 
