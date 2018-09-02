@@ -7,7 +7,7 @@ pkgrel=1
 arch=(any)
 url=https://github.com/JuliaInterop/ZMQ.jl
 license=(MIT)
-depends=(julia julia-compat)
+depends=(julia julia-compat zeromq)
 
 source=($pkgname-$pkgver.tar.gz::https://github.com/JuliaInterop/$_pkgname.jl/archive/v$pkgver.tar.gz)
 sha256sums=('c7a88c94fb7a6c48d07cac152c36c8677c8a37b1f6c4e29ee65a51daaab1b9c3')
