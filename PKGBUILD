@@ -2,7 +2,7 @@
 
 pkgname=libva-utils-git
 pkgver=2.0.0.r22.g7b4827e
-pkgrel=1
+pkgrel=2
 pkgdesc='Intel VA-API Media Applications and Scripts for libva (git version)'
 arch=('i686' 'x86_64')
 url='https://github.com/01org/libva-utils/'
@@ -11,7 +11,7 @@ depends=('libva')
 makedepends=('git' 'mesa')
 provides=('libva-utils')
 conflicts=('libva-utils')
-source=("$pkgname"::'git+https://github.com/01org/libva-utils.git')
+source=("$pkgname"::'git+https://github.com/intel/libva-utils.git')
 sha256sums=('SKIP')
 
 pkgver() {
