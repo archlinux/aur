@@ -1,6 +1,5 @@
 _pkgname="kst"
 pkgname="${_pkgname}-git"
-pkgrel=1
 pkgver=2.0.8r3342.39b8a6c3
 pkgdesc="Fast real-time large-dataset viewing and plotting tool for KDE"
 arch=('i686' 'x86_64')
