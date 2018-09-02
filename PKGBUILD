@@ -4,14 +4,14 @@
 pkgname=urdfdom-headers
 _pkgname=urdfdom_headers
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The URDF (U-Robot Description Format) headers provides core data structure headers for URDF."
 arch=('any')
 url="https://github.com/ros/$_pkgname"
 license=('BSD')
 depends=()
 makedepends=('cmake')
-source=("https://github.com/ros/$_pkgname/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ros/$_pkgname/archive/$pkgver.tar.gz")
 md5sums=('af7359938ddada5e86d4e64322f1611e')
 
 build() {
