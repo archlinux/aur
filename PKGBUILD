@@ -1,30 +1,34 @@
-# Maintainer: ZaZam <zazaamm ät gmail döt com>
+# Maintainer: Daniel M. Capella <polycitizen@gmail.com>
+# Contributor: ZaZam <zazaamm ät gmail döt com>
 # Contributor: Yegorius <yegorius@domic.us>
 
 pkgname=pulseaudio-dlna
 pkgver=0.5.2
 pkgrel=3
-pkgdesc="A small DLNA server which brings DLNA/UPnP support to PulseAudio"
-arch=('i686' 'x86_64')
-url="https://github.com/masmu/pulseaudio-dlna"
+pkgdesc='A small DLNA server which brings DLNA/UPnP support to PulseAudio'
+arch=('x86_64')
+url=https://github.com/masmu/pulseaudio-dlna
 license=('GPL3')
-depends=('python2-pip' 'python2-dbus' 'python2-docopt'
-		 'python2-requests' 'python2-setproctitle' 'python2-gobject2'
-		 'python2-protobuf' 'python2-notify2' 'python2-psutil'
-		 'python2-futures' 'python2-chardet' 'python2-netifaces'
-		 'python2-lxml' 'python2-zeroconf')
+depends=('python2-chardet' 'python2-dbus' 'python2-docopt' 'python2-futures'
+         'python2-gobject2' 'python2-lxml' 'python2-netifaces' 'python2-notify2'
+         'python2-pip' 'python2-protobuf' 'python2-psutil'
+         'python2-requests' 'python2-setproctitle' 'python2-zeroconf')
 makedepends=('python2-setuptools')
-optdepends=('lame: MP3 transcoding support'
-			'faac: AAC transcoding support'
-			'flac: FLAC transcoding support'
-			'sox: WAV transcoding support'
-			'ffmpeg: multiple formats support'
-			'opus-tools: OPUS transcoding support'
-			'vorbis-tools: OGG transcoding support')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/masmu/pulseaudio-dlna/archive/$pkgver.tar.gz")
-sha256sums=('e07f6db31502d90f6f8971d2cd1f96a540e2bd7f26f0090afdaee5b5c73f6a68')
+optdepends=('faac: AAC transcoding support'
+            'ffmpeg: multiple formats support'
+            'flac: FLAC transcoding support'
+            'lame: MP3 transcoding support'
+            'opus-tools: OPUS transcoding support'
+            'sox: WAV transcoding support'
+            'vorbis-tools: OGG transcoding support')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha512sums=('298f61d643c35449fbb0001efa69a1792e41518953f58506703f3568902da4457d0f4f9e52b9641df26fc6f978670dd29a7f5d786b99339bd2a71f5fa59dd7db')
 
+build() {
+  cd $pkgname-$pkgver
+  python2 setup.py build
+}
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+  cd $pkgname-$pkgver
+  python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
