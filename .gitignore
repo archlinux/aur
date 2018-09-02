@@ -1,0 +1,9 @@
+# Ignored folders
+src/
+pkg/
+src/
+python-decrunch-git/
+
+# Ignored files
+*.pkg.tar.xz
+*.pkg.tar

@@ -1,0 +1,16 @@
+pkgbase = python-decrunch-git
+	pkgdesc = Python wrapper around Crunch DXTc decompressor
+	pkgver = 0.3.0.r0.g3c75975
+	pkgrel = 1
+	url = https://github.com/HearthSim/decrunch
+	arch = x86_64
+	license = ZLIB
+	makedepends = git
+	makedepends = cython
+	depends = python
+	provides = python-decrunch
+	source = python-decrunch-git::git+https://github.com/HearthSim/decrunch.git
+	md5sums = SKIP
+
+pkgname = python-decrunch-git
+
