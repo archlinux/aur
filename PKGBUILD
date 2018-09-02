@@ -12,7 +12,7 @@ depends=('nodejs' 'npm' 'mpv' 'w3m')
 optdepends=()
 makedepends=('git')
 source=(http://registry.npmjs.org/tidal-cli-client/-/tidal-cli-client-$pkgver.tgz)
-noextract=($_pkgname-$pkgver.tgz)
+noextract=(tidal-cli-client-$pkgver.tgz)
 sha1sums=(95949ef3c57f09010979c71d18cd727abdc9a15e)
 
 package() {
@@ -20,6 +20,6 @@ package() {
   local _npmdir="$pkgdir/usr/lib/node_modules/"
   mkdir -p $_npmdir
   cd $_npmdir
-  npm install -g --prefix "$pkgdir/usr" $_pkgname@$_pkgver
+  npm install -g --prefix "$pkgdir/usr" tidal-cli-client@$_pkgver
 }
 
