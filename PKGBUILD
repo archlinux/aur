@@ -1,7 +1,7 @@
 # Maintainer: Mort Yao <soi@mort.ninja>
 
 pkgname=mlkit
-pkgver=4.3.12
+pkgver=4.3.18
 pkgrel=1
 pkgdesc='Standard ML Compiler and Toolkit'
 url='http://www.elsman.com/mlkit/'
@@ -11,7 +11,7 @@ depends=('gmp')
 makedepends=('mlton>=20170725')
 source=("https://github.com/melsman/mlkit/archive/$pkgname-$pkgver.tar.gz"
         Makefiledefault)
-md5sums=('18af7fe5a62d547d51177cb1030b9321'
+md5sums=('6974708ab6e7b04a6a4e2e2430c7c636'
          '4aaf5cf417bfa1b816a14585199ec393')
 
 prepare() {
