@@ -1,6 +1,6 @@
 # Maintainer: Streetwalrus <streetwalrus@codewalr.us>
 pkgname=gitprompt-rs
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Simple Git prompt"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MPL2')
 depends=('git')
 makedepends=('cargo')
 source=("https://github.com/Streetwalrus/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('ecc8a61c9a149cfa07dace9890dd63d0')
+md5sums=('78284e88d5d42d9ef2707e1aeb16421a')
 
 build() {
   cd "${srcdir}/$pkgname-$pkgver"
