@@ -1,17 +1,14 @@
 pkgname=qmenu_hud-git
-pkgver=r18.b441c38
+pkgver=r20.06fcb36
 pkgrel=1
 pkgdesc="a small menu search program, similar to Unity's HUD"
 arch=('i686' 'x86_64')
 url="https://github.com/tetzank/qmenu_hud/"
 license=('GPL2')
 makedepends=('git' 'cmake')
-depends=('qt4' 'libdbusmenu-qt' 'libx11' 'dmenu')
-optdepends=('appmenu-qt: support for qt4 applications'
-            'appmenu-qt5-bzr: support for qt5 applications'
-			'unity-gtk-module-standalone-bzr: support for gtk applications')
-#source=(https://github.com/tetzank/qmenu_hud/archive/${pkgver}.tar.gz)
-#md5sums=('256c586a67d7e0bfde5bec47ef599469')
+depends=('qt5-base' 'libdbusmenu-qt5' 'libx11' 'dmenu')
+optdepends=('appmenu-qt4: support for qt4 applications'
+            'appmenu-gtk-module: support for gtk applications')
 source=("${pkgname%-git}::git+https://github.com/tetzank/qmenu_hud.git")
 md5sums=('SKIP')
 
