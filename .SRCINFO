@@ -1,7 +1,7 @@
 pkgbase = mousetrap
 	pkgdesc = An X11 utility that hides the mouse pointer after a specified interval of time
-	pkgver = 3.0.4
-	pkgrel = 2
+	pkgver = 3.0.5
+	pkgrel = 1
 	url = https://github.com/eazar001/mousetrap
 	install = mousetrap.install
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = mousetrap
 	depends = libx11
 	depends = libxfixes
 	provides = mousetrap
-	source = https://github.com/eazar001/mousetrap/archive/3.0.4.tar.gz
-	md5sums = bf094bdbe2fa54b08dbe94f42b99bac9
+	source = https://github.com/eazar001/mousetrap/archive/3.0.5.tar.gz
+	md5sums = 0ffbbaa1706cdd878c1f074ae32f33e0
 
 pkgname = mousetrap
 
