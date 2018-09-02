@@ -2,7 +2,7 @@
 
 pkgname=gcolor3
 pkgver=2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple color selection dialog in GTK3"
 arch=('i686' 'x86_64')
 url="http://hjdskes.github.io/projects/gcolor3/"
