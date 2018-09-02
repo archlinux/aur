@@ -1,16 +1,25 @@
 pkgbase = csync2
 	pkgdesc = Asynchronous cluster syncronisation tool based on librsync and inspired by Unison
 	pkgver = 2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://oss.linbit.com/csync2/
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = texlive-latexextra
+	makedepends = sqlite
+	makedepends = git
 	depends = librsync
 	depends = gnutls
 	optdepends = sqlite: for sqlite backend
 	source = http://oss.linbit.com/csync2/csync2-2.0.tar.gz
+	source = csync2.socket
+	source = csync2@.service
+	source = csync2-rm-ssl-cert
 	sha256sums = 11cb37380fb185bce0c22b804fec9b01c385d9d83cc528cfd48d748453834fa2
+	sha256sums = ccb6ac225d2a4b490d47c87d835c1f2fb8caa5a21c46cf117cce0253c05c8eb1
+	sha256sums = c51e1ca1b41e0204d73e036727f8122d2420e8b044ec50ae9fe8fc07a0712a43
+	sha256sums = f63ccb9d5dd4da556eec7920aed21925d8809d4fb6c081b22e82cc87c617567f
 
 pkgname = csync2
 
