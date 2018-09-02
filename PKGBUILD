@@ -4,7 +4,7 @@
 
 pkgname=cairo-infinality-ultimate
 _name=cairo
-pkgver=1.15.10
+pkgver=1.15.12
 pkgrel=1
 pkgdesc="Cairo vector graphics library"
 arch=(i686 x86_64)
