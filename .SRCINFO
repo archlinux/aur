@@ -1,0 +1,13 @@
+pkgbase = julia-zmq
+	pkgver = 0.6.4
+	pkgrel = 1
+	url = https://github.com/JuliaInterop/ZMQ.jl
+	arch = any
+	license = MIT
+	depends = julia
+	depends = julia-compat
+	source = julia-zmq-0.6.4.tar.gz::https://github.com/JuliaInterop/ZMQ.jl/archive/v0.6.4.tar.gz
+	sha256sums = c7a88c94fb7a6c48d07cac152c36c8677c8a37b1f6c4e29ee65a51daaab1b9c3
+
+pkgname = julia-zmq
+
