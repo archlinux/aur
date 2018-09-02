@@ -1,0 +1,84 @@
+Index: src/core/command.c
+===================================================================
+--- src/core/command.c	(revision 2434)
++++ src/core/command.c	(revision 2435)
+@@ -358,7 +358,7 @@
+ 	norm = atof(word[2]);
+ 	if (readfits(word[1], &fit, NULL))
+ 		return -1;
+-	fdiv(&gfit, &fit, norm);
++	siril_fdiv(&gfit, &fit, norm);
+ 	adjust_cutoff_from_updated_gfit();
+ 	redraw(com.cvport, REMAP_ALL);
+ 	redraw_previews();
+Index: src/core/proto.h
+===================================================================
+--- src/core/proto.h	(revision 2434)
++++ src/core/proto.h	(revision 2435)
+@@ -181,9 +181,8 @@
+ int	imoper(fits *a, fits *b, char oper);
+ int sub_background(fits* image, fits* background, int layer);
+ int 	addmax(fits *a, fits *b);
+-int	fdiv(fits *a, fits *b, float scalar);
+-int ndiv(fits *a, fits *b);
+-int fmul(fits *a, float coeff);
++int	siril_fdiv(fits *a, fits *b, float scalar);
++int siril_ndiv(fits *a, fits *b);
+ double 	gaussienne(double sigma, int size, double *gauss);
+ int 	unsharp(fits *,double sigma, double mult, gboolean verbose);
+ int	crop(fits *fit, rectangle *bounds);
+Index: src/core/siril.c
+===================================================================
+--- src/core/siril.c	(revision 2434)
++++ src/core/siril.c	(revision 2435)
+@@ -260,8 +260,8 @@
+ 	return 0;
+ }
+ 
+-/* If fdiv is ok, function returns 0. If overflow, fdiv returns 1*/
+-int fdiv(fits *a, fits *b, float coef) {
++/* If siril_fdiv is ok, function returns 0. If overflow, siril_fdiv returns 1*/
++int siril_fdiv(fits *a, fits *b, float coef) {
+ 	int i, layer;
+ 	int retvalue = 0;
+ 	double temp;
+@@ -289,7 +289,7 @@
+ 
+ /* normalized division a/b, stored in a, with max value equal to the original
+  * max value of a, for each layer. */
+-int ndiv(fits *a, fits *b) {
++int siril_ndiv(fits *a, fits *b) {
+ 	double *div;
+ 	int layer, i, nb_pixels;
+ 	if (a->rx != b->rx || a->ry != b->ry || a->naxes[2] != b->naxes[2]) {
+@@ -489,7 +489,7 @@
+ 	unsharp(&fit, sigma, 0, FALSE);
+ 	soper(&fit, (double) level, OPER_ADD);
+ 	nozero(&fit, 1);
+-	fdiv(a, &fit, level);
++	siril_fdiv(a, &fit, level);
+ 	soper(a, (double) coeff, OPER_MUL);
+ 	clearfits(&fit);
+ 	invalidate_stats_from_fit(a);
+@@ -824,7 +824,7 @@
+ 	}
+ 
+ 	if (com.preprostatus & USE_FLAT) {
+-		fdiv(brut, flat, level);
++		siril_fdiv(brut, flat, level);
+ 	}
+ 
+ 	return 0;
+Index: src/gui/callbacks.c
+===================================================================
+--- src/gui/callbacks.c	(revision 2434)
++++ src/gui/callbacks.c	(revision 2435)
+@@ -4775,7 +4775,7 @@
+ 		siril_log_message(_("Subtraction done ...\n"));
+ 		break;
+ 	case 1:
+-		if (ndiv(&gfit, &background_fit)) {
++		if (siril_ndiv(&gfit, &background_fit)) {
+ 			set_cursor_waiting(FALSE);
+ 			return;
+ 		}
