@@ -1,7 +1,8 @@
 # Ignored folders
 src/
-bro-git/
+pkg/
+python-unitypack-git/
 
 # Ignored files
 *.pkg.tar.xz
-
+*.pkg.tar
