@@ -1,0 +1,14 @@
+pkgbase = julia-fixedpointnumbers
+	pkgdesc = Fixed point types for Julia
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/JuliaMath/FixedPointNumbers.jl
+	arch = any
+	license = MIT
+	depends = julia
+	depends = julia-compat
+	source = julia-fixedpointnumbers-0.5.2.tar.gz::https://github.com/JuliaMath/FixedPointNumbers.jl/archive/v0.5.2.tar.gz
+	sha256sums = 05594e916740950a5a4ea436233d1009337033eaa9e99164d1ac87069b823933
+
+pkgname = julia-fixedpointnumbers
+
