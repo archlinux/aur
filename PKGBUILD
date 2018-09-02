@@ -29,6 +29,6 @@ build() {
 
 package() {
   cd "$_gitrepo"
-  install -d  "$pkgdir"/usr/share/emacs/site-lisp/${_gitrepo}/
-  install -m644 *.el{c,} "$pkgdir"/usr/share/emacs/site-lisp/${_gitrepo}/
+  install -d  "$pkgdir"/usr/share/emacs/site-lisp/f/
+  install -m644 *.el{c,} "$pkgdir"/usr/share/emacs/site-lisp/f/
 }
