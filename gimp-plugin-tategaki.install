@@ -1,0 +1,4 @@
+post_install() {
+    echo "FontDir には以下のディレクトリを設定してください。"
+    fc-list | grep -o '^.*/' | sort | uniq
+}

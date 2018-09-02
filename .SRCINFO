@@ -1,0 +1,20 @@
+pkgbase = gimp-plugin-tategaki
+	pkgdesc = GIMP で縦書きをするためのプラグイン。
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = http://reddog.s35.xrea.com/wiki/GIMPで縦書き.html
+	install = gimp-plugin-tategaki.install
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL2
+	makedepends = intltool
+	depends = gimp
+	source = http://reddog.s35.xrea.com/software/tategaki-1.2.1.tar.xz
+	md5sums = f48b2124884258056a89c0474e9bfdd4
+
+pkgname = gimp-plugin-tategaki
+
