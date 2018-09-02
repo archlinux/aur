@@ -5,6 +5,7 @@ pkgrel=2
 pkgdesc="Use nmaps ncat as netcat"
 dependencies=(nmap)
 conflicts=(gnu-netcat openbsd-netcat)
+provides=(netcat)
 arch=('i686' 'x86_64')
 license=('GPL')
 source=()
