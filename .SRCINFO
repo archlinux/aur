@@ -1,7 +1,7 @@
 pkgbase = luatex-git
 	pkgdesc = The LuaTeX engine, current git master, standalone binary
-	pkgver = 20180501
-	pkgrel = 2
+	pkgver = 20180828
+	pkgrel = 1
 	url = http://www.luatex.org
 	arch = i686
 	arch = x86_64
