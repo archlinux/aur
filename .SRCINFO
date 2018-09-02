@@ -1,0 +1,12 @@
+pkgbase = palns-git
+	pkgdesc = Header-only C++ library for the Parallel Adaptive Neighbourhood Search metaheuristic.
+	pkgver = r10.751c36f
+	pkgrel = 1
+	url = https://github.com/alberto-santini/adaptive-large-neighbourhood-search
+	arch = x86_64
+	license = GPL3
+	source = git+https://github.com/alberto-santini/adaptive-large-neighbourhood-search.git
+	sha256sums = SKIP
+
+pkgname = palns-git
+
