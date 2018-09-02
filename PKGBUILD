@@ -5,7 +5,7 @@
 pkgname=pulseaudio-dlna
 pkgver=0.5.2
 pkgrel=3
-pkgdesc='A small DLNA server which brings DLNA/UPnP support to PulseAudio'
+pkgdesc='Small DLNA server which brings DLNA/UPnP support to PulseAudio'
 arch=('x86_64')
 url=https://github.com/masmu/pulseaudio-dlna
 license=('GPL3')
