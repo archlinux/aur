@@ -12,13 +12,9 @@ depends=(julia julia-compat)
 source=($pkgname-$pkgver.tar.gz::https://github.com/JuliaInterop/$_pkgname.jl/archive/v$pkgver.tar.gz)
 sha256sums=('c7a88c94fb7a6c48d07cac152c36c8677c8a37b1f6c4e29ee65a51daaab1b9c3')
 
-package() {
+prepare() {
 	cd $_pkgname.jl-$pkgver
-	install -dm755 $pkgdir/usr/share/julia/environments/v1.0/$_pkgname
-	cp -r {src,test} $pkgdir/usr/share/julia/environments/v1.0/$_pkgname/
-
-	install -dm755 $pkgdir/usr/share/julia/environments/v1.0/$_pkgname/deps
-	cat > $pkgdir/usr/share/julia/environments/v1.0/$_pkgname/deps/deps.jl <<'EOF'
+	cat >deps/deps.jl <<'EOF'
 if isdefined((@static VERSION < v"0.7.0-DEV.484" ? current_module() : @__MODULE__), :Compat)
     import Compat.Libdl
 elseif VERSION >= v"0.7.0-DEV.3382"
@@ -36,6 +32,14 @@ function check_deps()
     end
 end
 EOF
+
+}
+
+package() {
+	cd $_pkgname.jl-$pkgver
+	install -dm755 $pkgdir/usr/share/julia/environments/v1.0/$_pkgname/deps
+	cp -r {src,test} $pkgdir/usr/share/julia/environments/v1.0/$_pkgname/
+	install deps/deps.jl $pkgdir/usr/share/julia/environments/v1.0/$_pkgname/deps/deps.jl
 }
 
 check() {
