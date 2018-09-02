@@ -1,15 +1,12 @@
-# Maintainer: Oscar Morante <spacepluk at gmail dot com>
+# Maintainer: Oscar Morante <spacepluk@gmail.com>
 
-_version=2018.2.5
+_version=2018.2.6
 _build=f1
-_buildtag=20180828
-_randomstring=88f43da96871
+_randomstring=c591d9a97a0b
 _prefix=/opt/Unity
-_unitydownloads="http://beta.unity3d.com/download/${_randomstring}"
-#_keepdownloads=yes
 
 pkgname=unity-editor
-pkgver=${_version}${_build}+${_buildtag}
+pkgver=${_version}${_build}
 pkgrel=1
 epoch=1
 pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences."
@@ -38,44 +35,22 @@ optdepends=('unity-editor-doc'
             'unity-editor-windows'
             'unity-editor-facebook'
             'visual-studio-code-bin')
-makedepends=('gtk2' 'libsoup' 'libarchive')
-source=("${_unitydownloads}/UnitySetup-${_version}${_build}"
+source=("https://download.unity3d.com/download_unity/${_randomstring}/LinuxEditorInstaller/Unity.tar.xz"
         'unity-editor'
         'unity-editor.desktop'
-        'unity-editor-icon.png')
-sha1sums=('2f1d98a40a6662fb7f1f722b311350b506fb931f'
+        'unity-editor-icon.png'
+        'eula.txt')
+sha1sums=('ae0441068e8850fd200493e18126797eefad7abf'
           'c3727d6851a3ffd0aef9b380e2485eed9f02ef6b'
           '6ba1a3051bc0d5ed08e2fa4551d0f6c679109176'
-          'fddf4861974f88f0565de7f54f7418204e729894')
+          'fddf4861974f88f0565de7f54f7418204e729894'
+          '1c3d4bc66fd16a10e68f78320e16cfd86afac7ac')
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
-unity-setup() {
-  ./UnitySetup-${_version}${_build} \
-    --download-location="${startdir}" \
-    --install-location="${pkgdir}${_prefix}" \
-    --unattended $@
-}
-
-extract-component() {
-  msg2 "Extracting $1..."
-  yes | unity-setup --components=$1 > "/tmp/$1.log"
-}
-
-prepare() {
-  chmod +x "${srcdir}/UnitySetup-${_version}${_build}"
-}
-
 package() {
-  msg2 "Extracting EULA..."
-  echo n | unity-setup | head -n -2 > "${srcdir}/EULA"
-
-  mkdir -p "${pkgdir}${_prefix}"
-  extract-component Unity
-
-  if [ -z "${_keepdownloads}" ]; then
-    rm "${startdir}/Unity.tar.xz"
-  fi
+  install -d "${pkgdir}/${_prefix}"
+  mv "${srcdir}/Editor" "${pkgdir}/${_prefix}"
 
   # HACK: fixes WebGL builds by adding a symlink (python -> python2) to the PATH
   ln -s /usr/bin/python2 "${pkgdir}${_prefix}/Editor/python"
@@ -89,6 +64,6 @@ package() {
   install -Dm644 -t "${pkgdir}/usr/share/applications" "${srcdir}/unity-editor.desktop"
   install -Dm644 -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps" "${srcdir}/unity-editor-icon.png"
   install -Dm755 -t "${pkgdir}/usr/bin" "${srcdir}/unity-editor"
-  install -Dm644 "${srcdir}/EULA" "${pkgdir}/usr/share/licenses/${pkgname}/EULA"
+  install -Dm644 "${srcdir}/eula.txt" "${pkgdir}/usr/share/licenses/${pkgname}/eula.txt"
 }
 
