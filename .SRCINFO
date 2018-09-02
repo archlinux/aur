@@ -1,0 +1,14 @@
+pkgbase = julia-versionparsing
+	pkgdesc = Flexible parsing of version-number strings into Julia's built-in VersionNumber type
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/stevengj/VersionParsing.jl
+	arch = any
+	license = MIT
+	depends = julia
+	depends = julia-compat
+	source = julia-versionparsing-1.1.2.tar.gz::https://github.com/stevengj/VersionParsing.jl/archive/v1.1.2.tar.gz
+	sha256sums = 118c64779a57dce18afaf5d0d0a1214c082381d0a8e0d205073144134f1373fd
+
+pkgname = julia-versionparsing
+
