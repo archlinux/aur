@@ -1,0 +1,19 @@
+pkgbase = emacs-shrink-path-git
+	pkgdesc = fish-style path truncation in emacs-lisp
+	pkgver = r54.9d06c45
+	pkgrel = 1
+	url = https://gitlab.com/bennya/shrink-path.el
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	depends = emacs-dash
+	depends = emacs-f
+	depends = emacs-s
+	provides = emacs-shrink-path
+	conflicts = emacs-shrink-path
+	source = git+https://gitlab.com/bennya/shrink-path.el.git
+	sha256sums = SKIP
+
+pkgname = emacs-shrink-path-git
+
