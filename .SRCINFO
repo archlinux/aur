@@ -1,0 +1,16 @@
+pkgbase = emacs-eldoc-eval-git
+	pkgdesc = Emacs extension that display eldoc info while minibuffer is in use.
+	pkgver = r41.f59a1ae
+	pkgrel = 1
+	url = https://github.com/thierryvolpiatto/eldoc-eval
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	provides = emacs-eldoc-eval
+	conflicts = emacs-eldoc-eval
+	source = git+https://github.com/thierryvolpiatto/eldoc-eval.git
+	sha256sums = SKIP
+
+pkgname = emacs-eldoc-eval-git
+
