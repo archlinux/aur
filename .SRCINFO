@@ -1,0 +1,14 @@
+pkgbase = php-pdf-version-converter
+	pkgdesc = PHP library for converting the version of PDF files (for compatibility purposes).
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/xthiago/pdf-version-converter
+	arch = any
+	license = MIT
+	depends = php>=5.3
+	depends = ghostscript
+	source = https://github.com/xthiago/pdf-version-converter/archive/v1.0.5.tar.gz
+	sha256sums = 88ee7547e3618ef09b5e3bc989fe3559a196bf5f1a15c6ee56f1b52fd0570f16
+
+pkgname = php-pdf-version-converter
+
