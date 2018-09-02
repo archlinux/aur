@@ -4,6 +4,7 @@ pkgname=julia-primes
 _pkgname=Primes
 pkgver=0.4.0
 pkgrel=1
+pkgdesc='Prime numbers in Julia'
 arch=(any)
 url=https://github.com/JuliaMath/Primes.jl
 license=(MIT)
