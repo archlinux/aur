@@ -1,14 +1,14 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=libva-git
-pkgver=2.0.0.r44.g68a4bef
-pkgrel=2
+pkgver=2.2.1.pre1.20180831.r0.gb6c50da
+pkgrel=1
 pkgdesc='Video Acceleration (VA) API for Linux (git version)'
 arch=('i686' 'x86_64')
 url='https://01.org/linuxmedia/vaapi/'
 license=('MIT')
-depends=('glibc' 'libdrm' 'libgl' 'libx11' 'libxext' 'libxfixes' 'wayland')
-makedepends=('git' 'mesa')
+depends=('libdrm' 'libgl' 'libx11' 'libxext' 'libxfixes' 'wayland')
+makedepends=('git' 'libglvnd' 'mesa' 'meson')
 optdepends=('libva-vdpau-driver: backend for Nvidia and AMD cards'
             'libva-intel-driver: backend for Intel cards')
 provides=('libva' 'libva-drm.so' 'libva-glx.so' 'libva-wayland.so'
@@ -27,15 +27,14 @@ pkgver() {
 build() {
     cd "$pkgname"
   
-    ./autogen.sh
-    ./configure --prefix='/usr'
-    make
+    arch-meson . build
+    ninja -C build
 }
 
 package() {
     cd "$pkgname"
     
-    make DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" ninja -C build install
     
     install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 } 
