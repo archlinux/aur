@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=muforth-git
-pkgver=r2038.90dc8dd
+pkgver=r2154.52dc70d0
 pkgrel=1
 epoch=
 pkgdesc="A simple, indirect-threaded Forth, written in C."
@@ -9,7 +9,7 @@ url="https://github.com/nimblemachines/muforth"
 url="http://muforth.nimblemachines.com/"
 license=('custom:BSD')
 groups=()
-depends=('')
+depends=()
 makedepends=('git')
 optdepends=()
 checkdepends=()
