@@ -2,7 +2,7 @@
 
 pkgname=opengv-git
 pkgver=r91.0b2017d
-pkgrel=1
+pkgrel=2
 pkgdesc="An efficient C++ library for calibrated camera pose computation using geometric computer vision algorithms."
 arch=('i686' 'x86_64')
 url="https://laurentkneip.github.io/opengv/"
@@ -12,9 +12,11 @@ makedepends=('boost' 'cmake' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+https://github.com/laurentkneip/opengv.git"
-        "https://github.com/laurentkneip/opengv/pull/61.patch")
+        "https://github.com/laurentkneip/opengv/pull/61.patch"
+        "https://github.com/laurentkneip/opengv/pull/76.patch")
 sha256sums=('SKIP'
-            'SKIP')
+            'SKIP'
+	    'SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -26,6 +28,7 @@ prepare() {
 	cd "$srcdir/${pkgname%-git}"
 
 	patch -p1 < ../61.patch
+	patch -p1 < ../76.patch
 
 	[ ! -d build ] || rm -r build
 }

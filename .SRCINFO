@@ -1,7 +1,7 @@
 pkgbase = opengv-git
 	pkgdesc = An efficient C++ library for calibrated camera pose computation using geometric computer vision algorithms.
 	pkgver = r91.0b2017d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://laurentkneip.github.io/opengv/
 	arch = i686
 	arch = x86_64
@@ -16,6 +16,8 @@ pkgbase = opengv-git
 	conflicts = opengv
 	source = opengv::git+https://github.com/laurentkneip/opengv.git
 	source = https://github.com/laurentkneip/opengv/pull/61.patch
+	source = https://github.com/laurentkneip/opengv/pull/76.patch
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
