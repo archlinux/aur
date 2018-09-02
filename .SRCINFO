@@ -1,0 +1,18 @@
+pkgbase = exmplayer-ubuntu
+	pkgdesc = MPlayer GUI front-end with 3D/2D video playback support and with audio converter, media cutter and audio extractor tools (ubuntu binary version)
+	pkgver = 5.0.1
+	pkgrel = 1
+	url = http://exmplayer.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	depends = ffmpeg
+	depends = mplayer
+	depends = qt4
+	optdepends = youtube-dl: download video/audio
+	provides = exmplayer
+	conflicts = exmplayer
+	source = http://ppa.launchpad.net/exmplayer-dev/exmplayer/ubuntu/pool/main/e/exmplayer/exmplayer_5.0.1_amd64.deb
+	md5sums = 2c11849d4e92145d246b8665fb5f2b9c
+
+pkgname = exmplayer-ubuntu
+
