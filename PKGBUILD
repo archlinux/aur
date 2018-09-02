@@ -3,8 +3,8 @@
 
 _gemname=emoji_regex
 pkgname=ruby-$_gemname
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc='A pair of Ruby regular expressions for matching Unicode Emoji symbols.'
 arch=(any)
 url='https://github.com/ticky/ruby-emoji-regex'
@@ -16,7 +16,7 @@ makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('b666122e31fa5a109dfead46c0d95a27ea94df77')
+sha1sums=('184508db42a24cb71a0541f8af5754e7d8c96f92')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
