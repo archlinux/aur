@@ -11,7 +11,6 @@ depends=(
   gdk-pixbuf2
   gtk2 # for CCChangePinTool
   libusb-compat
-  openmp
   openssl-1.0'>=1.0.2.k-4'
   pcsclite
   qt5-base # for SecureFooDialog
@@ -43,6 +42,8 @@ prepare() {
 }
 
 package() {
+  depends+=(openmp)
+
   cp -a etc usr "$pkgdir"/
 
   # now clean up the mess
