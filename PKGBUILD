@@ -40,7 +40,7 @@ sha256sums=('dac4d03ffb69c4657962343fdeaf5c20ca715ecbf06ee1bc7e00fe30fcbceb4c'
             '6ec0dcc53946590a3f9e12c239d968c3ae65fea5771a776a969c755d4880cdca'
             'dd9d33fa2698a0ec11ae86f4508f77e2e12bf4a21224f5b16640bc41d6c0999b')
 
-options=('!strip' '!upx') # Stripping and UPX will takes ages, I'd avoid it.
+options=(!strip !debug) # Stripping will takes ages, I'd avoid it
 PKGEXT=".pkg.tar" # Same as above, compressing takes too long.
 
 package() {

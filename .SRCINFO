@@ -21,7 +21,7 @@ pkgbase = quartus-free-130
 	optdepends = lib32-libxtst: For eclipse-nios2 support
 	provides = quartus-free=13.0.1.232
 	options = !strip
-	options = !upx
+	options = !debug
 	source = http://download.altera.com/akdlm/software/acdsinst/13.0sp1/232/ib_tar/Quartus-web-13.0.1.232-linux.tar
 	source = quartus.sh
 	source = quartus.desktop
