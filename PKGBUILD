@@ -1,38 +1,36 @@
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: sballert <sballert@posteo.de>
+
+_gituser="magnars"
+_gitrepo="dash.el"
 
 pkgname=emacs-dash-git
-pkgver=2.10.0.55.g7aec562
+pkgver=r570.453c775
 pkgrel=1
 pkgdesc='A modern list API for Emacs. No cl required'
 arch=('any')
-url="https://github.com/magnars/dash.el"
+url="https://github.com/${_gituser}/${_gitrepo}"
 license=('GPL')
 depends=('emacs')
 makedepends=('git')
 conflicts=('emacs-dash')
 provides=('emacs-dash')
-source=('git+https://github.com/magnars/dash.el')
+source=("git+https://github.com/${_gituser}/${_gitrepo}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd 'dash.el'
-  git describe --tags | sed 's/-/./g'
+  cd "${_gitrepo}"
+  printf "r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
 build() {
-  cd 'dash.el'
-
-  # byte compile
-  emacs -batch -f batch-byte-compile dash.el
-  emacs -batch -l dash.elc -f batch-byte-compile dash-functional.el
+  cd "${_gitrepo}"
+  emacs -Q -batch -L . -f batch-byte-compile dash{,-functional}.el
 }
 
 package() {
-  cd 'dash.el'
-
-  # create destination path
-  install -d "$pkgdir/usr/share/emacs/site-lisp/dash"
-
-  # copy over files into path
-  install -Dm644 *.el *.elc "$pkgdir/usr/share/emacs/site-lisp/dash"
+  cd "${_gitrepo}"
+  install -d "$pkgdir"/usr/share/emacs/site-lisp/dash/
+  install -Dm644 dash{,-functional}.{el,elc} "$pkgdir"/usr/share/emacs/site-lisp/dash/
+  install -Dm644 dash.info "$pkgdir"/usr/share/info/dash.info
 }
