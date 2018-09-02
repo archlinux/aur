@@ -1,7 +1,7 @@
 pkgbase = w3af
 	pkgdesc = Web Application Attack and Audit Framework
 	pkgver = 1.6.54
-	pkgrel = 1
+	pkgrel = 2
 	url = http://w3af.org/
 	arch = any
 	license = GPL2
@@ -55,6 +55,7 @@ pkgbase = w3af
 	depends = tcpdump
 	depends = libffi
 	depends = stunnel
+	depends = icu61
 	optdepends = webkitgtk2: required for w3af-gui
 	optdepends = pywebkit: required for w3af-gui
 	provides = w3af
