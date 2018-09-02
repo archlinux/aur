@@ -2,7 +2,7 @@
 
 pkgname=libva-intel-driver-git
 pkgver=2.0.0.r26.g3d5c53d
-pkgrel=1
+pkgrel=2
 pkgdesc='VA-API implementation for Intel G45 and HD Graphics family (git version)'
 arch=('i686' 'x86_64')
 url='https://01.org/linuxmedia/vaapi/'
@@ -17,7 +17,7 @@ makedepends=('git')
 provides=('libva-intel-driver')
 conflicts=('libva-intel-driver')
 replaces=('libva-driver-intel')
-source=("$pkgname"::'git+https://github.com/01org/intel-vaapi-driver.git')
+source=("$pkgname"::'git+https://github.com/intel/intel-vaapi-driver.git')
 sha256sums=('SKIP')
 
 prepare() {
