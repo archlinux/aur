@@ -1,0 +1,21 @@
+pkgbase = emacs-doom-modeline-git
+	pkgdesc = A fancy mode-line from DOOM Emacs.
+	pkgver = r181.ac03729
+	pkgrel = 1
+	url = https://github.com/seagle0128/doom-modeline
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	depends = emacs-all-the-icons
+	depends = emacs-dash
+	depends = emacs-eldoc-eval
+	depends = emacs-projectile
+	depends = emacs-shrink-path
+	provides = emacs-doom-modeline
+	conflicts = emacs-doom-modeline
+	source = git+https://github.com/seagle0128/doom-modeline.git
+	sha256sums = SKIP
+
+pkgname = emacs-doom-modeline-git
+
