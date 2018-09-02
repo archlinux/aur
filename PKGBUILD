@@ -2,7 +2,7 @@
 
 _pkgname=citra
 pkgname=$_pkgname-qt-canary-git
-pkgver=r6682.43545f4b8
+pkgver=r6778.86403f088
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger written in C++"
 arch=('i686' 'x86_64')
