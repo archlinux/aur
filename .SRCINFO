@@ -1,0 +1,23 @@
+pkgbase = mingw-w64-portablexdr
+	pkgdesc = external data representation (XDR) library
+	pkgver = 4.9.1
+	pkgrel = 1
+	url = http://people.redhat.com/~rjones/portablexdr/
+	arch = any
+	license = GPL2
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-crt
+	options = !strip
+	options = staticlibs
+	options = !buildflags
+	source = http://people.redhat.com/~rjones/portablexdr//files/portablexdr-4.9.1.tar.gz
+	source = https://git.alpinelinux.org/cgit/aports/plain/community/portablexdr/portablexdr-4.9.1-no-config-h.patch
+	source = https://git.alpinelinux.org/cgit/aports/plain/community/portablexdr/portablexdr-build-use-intptr_t-and-uintptr_t-to-cast-ptr-to-int.patch
+	source = https://git.alpinelinux.org/cgit/aports/plain/community/portablexdr/quad-types.patch
+	sha256sums = 5cf4bdd153cf4d44eaf10b725f451d0cfadc070b4b9a9ccfb64094b8f78de72c
+	sha256sums = 75cec27cba9d667d4e137f13fb8e66a3a91344f458691e93d13928f5891216b9
+	sha256sums = 7919d9157537552c34047f8423d3e923fcb79d097b796141d28e05d2c5b8b6e0
+	sha256sums = 2a75fff6a66cc99af987fe928600c38eb17bb5163e8346a7feafa7374c542ce2
+
+pkgname = mingw-w64-portablexdr
+
