@@ -8,7 +8,6 @@ url='https://github.com/plexinc/plex-media-player'
 provides=('plex-media-player')
 conflicts=('plex-media-player')
 depends=('mpv' 'libcec' 'sdl2' 'p8-platform' 'protobuf' 'qt5-pmp-webengine' 'qt5-pmp-x11extras' 'qt5-pmp-quickcontrols')
-optdepends=('xorg-xinit: for running plex as a service')
 makedepends=('cmake' 'git')
 source=('git+https://github.com/plexinc/plex-media-player.git'
         'plex-media-player.desktop')
