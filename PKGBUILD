@@ -4,6 +4,7 @@ pkgname=julia-zmq
 _pkgname=ZMQ
 pkgver=0.6.4
 pkgrel=1
+pkgdesc='Julia binding to the native API of ØMQ project'
 arch=(any)
 url=https://github.com/JuliaInterop/ZMQ.jl
 license=(MIT)

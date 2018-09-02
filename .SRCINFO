@@ -1,4 +1,5 @@
 pkgbase = julia-zmq
+	pkgdesc = Julia binding to the native API of ØMQ project
 	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://github.com/JuliaInterop/ZMQ.jl
