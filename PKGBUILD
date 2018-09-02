@@ -3,13 +3,14 @@
 
 pkgname=gnome-xcf-thumbnailer
 pkgver=1.0
-pkgrel=8
+pkgrel=9
 pkgdesc="GNOME thumbnailer for GIMP XCF files."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://download.gnome.org/sources/gnome-xcf-thumbnailer/"
 license=('GPL2')
 # Without gimp, .xcf thumbnails are never displayed
 depends=('glib2' 'libpng' 'gimp')
+makedepends=('gconf')
 source=("https://download.gnome.org/sources/gnome-xcf-thumbnailer/${pkgver}/gnome-xcf-thumbnailer-${pkgver}.tar.bz2"
         "gnome-xcf-thumbnailer.thumbnailer"
         "no-popt.patch"
@@ -22,32 +23,29 @@ sha256sums=('d0489a00a493242f65db22e2861d37f59c540055dd1aa573bb09886180ab4bd0'
             '1637e7b2d2904729b20174fb55ef554d4b70a56b55897e7393088591d862cf8e')
 
 prepare(){
-  # Patches used by Debian to build
-  patch -d gnome-xcf-thumbnailer-$pkgver -p1 < no-popt.patch
-  patch -d gnome-xcf-thumbnailer-$pkgver -p1 < CVE-2009-0217.patch
+    # Patches used by Debian to build
+    patch -d gnome-xcf-thumbnailer-$pkgver -p1 < no-popt.patch
+    patch -d gnome-xcf-thumbnailer-$pkgver -p1 < CVE-2009-0217.patch
 
-  # libpng12 does not distribute headers any more. We must adjust to be
-  # buildable with recent versions of libpng.
-  patch -d gnome-xcf-thumbnailer-$pkgver -p1 < NULL-updates.patch
+    # libpng12 does not distribute headers any more. We must adjust to be
+    # buildable with recent versions of libpng.
+    patch -d gnome-xcf-thumbnailer-$pkgver -p1 < NULL-updates.patch
+
+    install -m755 -d "$pkgdir/usr/share/gconf/schemas"
+    gconf-merge-schema "$pkgdir/usr/share/gconf/schemas/${pkgname}.schemas" \
+        --domain gnome-xcf-thumbnailer "$pkgdir/usr/share/$pkgname/${pkgname}.sc"
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  ./configure --prefix=/usr
-  make
+    cd "$pkgname-$pkgver"
+    ./configure --prefix=/usr
+    make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+    cd "$pkgname-$pkgver"
 
-  make DESTDIR="$pkgdir" install
+    make DESTDIR="$pkgdir" install
 
-  mkdir -p "$pkgdir/usr/share/thumbnailers"
-  cp ../gnome-xcf-thumbnailer.thumbnailer "$pkgdir/usr/share/thumbnailers"
-
-  install -m755 -d "$pkgdir/usr/share/gconf/schemas"
-  gconf-merge-schema "$pkgdir/usr/share/gconf/schemas/${pkgname}.schemas" \
-    --domain gnome-xcf-thumbnailer "$pkgdir/usr/share/$pkgname/${pkgname}.sc"
+    install -Dm644 ../gnome-xcf-thumbnailer.thumbnailer -t "$pkgdir/usr/share/thumbnailers/"
 }
-
-# vim: et sw=2 ts=2
