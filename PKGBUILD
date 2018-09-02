@@ -3,9 +3,9 @@
 
 pkgname=vna_j
 _realname=vnaJ
-pkgver=3.2.7
-pkgrel=2
-pkgdesc="HAMRADIO MiniVNA MAX6 network analyser software"
+pkgver=3.2.8
+pkgrel=1
+pkgdesc="GUI for various low cost network analyzers"
 arch=('any')
 license=('custom')
 url="http://vnaj.dl2sba.com/"
@@ -15,7 +15,7 @@ makedepends=('imagemagick')
 install=vna_j.install
 source=(http://download.dl2sba.com/vnaj/$pkgver/${_realname}.${pkgver}.jar
         vnaJ.sh vnaJ.desktop http://download.dl2sba.com/vnaj/$pkgver/logo.ico)
-md5sums=('f33f138a7d4557e491d9f68f584d2b14'
+md5sums=('f110726d92dd87a12a0f50679e66bba3'
          '305963e8e79cbab0741a535207020e2c'
          'e1f40625326a65e5df479f4eae742041'
          '9f3eed2cc9491779155f111d9e3d6bfd')
