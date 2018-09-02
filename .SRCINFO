@@ -1,0 +1,15 @@
+pkgbase = sigutils-git
+	pkgdesc = Digital signal processing library
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/BatchDrake/sigutils
+	arch = any
+	license = GPL
+	depends = libsndfile
+	provides = sigutils
+	conflicts = sigutils
+	source = sigutils::git+https://github.com/BatchDrake/sigutils.git
+	md5sums = SKIP
+
+pkgname = sigutils-git
+
