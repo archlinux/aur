@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Bink Player
+Comment=Play video files typically used for Games
+Exec=/usr/bin/binkplayer %f
+Icon=binkplayer
+Terminal=false
+MimeType=video/x-binkvideo;
+# There isn't a way to launch just the player by itself. This .desktop file is
+# just to allow file association.
+NoDisplay=true
+Type=Application
+Categories=Audio;AudioVideo;Video;
