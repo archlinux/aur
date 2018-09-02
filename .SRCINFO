@@ -1,0 +1,11 @@
+pkgbase = teamspeak3-kde-link-fix-hack
+	pkgdesc = Hack to work around the URL opening bug in TeamSpeak 3 occuring when using KDE
+	pkgver = 0.1
+	pkgrel = 1
+	arch = any
+	depends = teamspeak3
+	source = xdg-open
+	sha256sums = b38009aef984dd301d0e305acca92796d92e4ee5c280d9be5c6c6018d270e672
+
+pkgname = teamspeak3-kde-link-fix-hack
+
