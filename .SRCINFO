@@ -1,0 +1,17 @@
+pkgbase = gmmlib
+	pkgdesc = Intel Graphics Memory Management Library
+	pkgver = 18.3.pre1
+	pkgrel = 1
+	url = https://github.com/intel/gmmlib/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = gcc-libs
+	conflicts = gmmlib-git
+	options = !emptydirs
+	source = gmmlib-18.3.pre1.tag.gz::https://github.com/intel/gmmlib/archive/intel-gmmlib-18.3.pre1.tar.gz
+	sha256sums = e2b383ad7f39a8e5f4d53b7b7e8b81dc8e9299de6b943a45cb79c6e6e34b4876
+
+pkgname = gmmlib
+
