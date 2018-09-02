@@ -1,7 +1,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgbase=python2-iminuit
 pkgname=('python-iminuit' 'python2-iminuit')
-pkgver=1.3
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Python interface for MINUIT, a physics analysis tool for function minimization."
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('python-setuptools' 'python2-setuptools')
 #checkdepends=('cython' 'cython2' 'python-nose' 'python2-nose' 'python-matplotlib' 'python2-matplotlib' 'python-pytest-cov' 'python2-pytest-cov')
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/i/iminuit/iminuit-${pkgver}.tar.gz")
-md5sums=('5df333d172943bfe2d427809d66fea05')
+md5sums=('d3700bd61c02ee318c3fdd7a56126cb6')
 
 prepare() {
     cd ${srcdir}/iminuit-${pkgver}
