@@ -1,27 +1,31 @@
-# Maintainer: Thomas Hebb <tommyhebb@gmail.com>
+# Maintainer: Michał Lisowski <lisu@riseup.net>
+# Contributor: Thomas Hebb <tommyhebb@gmail.com>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 pkgname=revelation
 pkgver=0.4.14
-pkgrel=6
+pkgrel=7
 pkgdesc="A password manager for the GNOME desktop"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('gnome-python>=2.10' 'pycrypto>=1.9' 'python2-crack' 'desktop-file-utils' 'python2' 'hicolor-icon-theme' 'pkg-config' 'python2-dbus')
+depends=('gnome-python>=2.10' 'python2-crypto' 'python2-crack' 'desktop-file-utils' 'python2' 'hicolor-icon-theme' 'pkg-config' 'python2-dbus')
 makedepends=('intltool')
 install=revelation.install
 url="http://revelation.olasagasti.info/"
 source=("https://bitbucket.org/erikg/revelation/downloads/revelation-${pkgver}.tar.bz2"
         'cracklib.patch'
-        'gnome-python.patch')
+        'gnome-python.patch'
+        'crypto.patch')
 sha256sums=('2ab3d1d8bcc2f441feb58122ee6a0fe4070412228194843a180a7b1c9e910019'
             'f5cebe215115cb5a78f470da9753be3c5ff99095f28ab57ae45d2d03b3a686d6'
-            'b2803f3f0ab344453fc4f82c90c8eefe99e1b23f77de09bf598741c73458a044')
+            'b2803f3f0ab344453fc4f82c90c8eefe99e1b23f77de09bf598741c73458a044'
+            '6ed410e83810a6cb44ac0e4828ba686fe8ee1a9a7743d7240dcdc038ad15927c')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   patch -uNp1 -i "${srcdir}/cracklib.patch"
   patch -uNp1 -i "${srcdir}/gnome-python.patch"
+  patch -uNp1 -i "${srcdir}/crypto.patch"
 
   ./autogen.sh
 }

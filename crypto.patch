@@ -1,0 +1,142 @@
+diff -Naur revelation.orig/src/bundle/AfSplitter.py revelation/src/bundle/AfSplitter.py
+--- revelation.orig/src/bundle/AfSplitter.py	2018-09-01 12:38:17.702662965 +0200
++++ revelation/src/bundle/AfSplitter.py	2018-09-01 12:30:00.584871451 +0200
+@@ -42,14 +42,8 @@
+ 
+ # will need changed to use Crypto.Random (now in python-crypt git)
+ # see: http://lists.dlitz.net/pipermail/pycrypto/2008q3/000020.html
+-from Crypto.Util.randpool import RandomPool
+-from Crypto.Cipher import XOR
+-
+-def _xor(a, b):
+-	"""Internal function to performs XOR on two strings a and b"""
+-
+-	xor = XOR.new(a)
+-	return xor.encrypt(b)
++from Crypto.Random import get_random_bytes
++from Crypto.Util.strxor import strxor
+ 
+ def _diffuse(block, size, digest):
+ 	"""Internal function to diffuse information inside a buffer"""
+@@ -81,26 +75,19 @@
+ 
+ 	blockSize = len(data)
+ 
+-	rand = RandomPool()
+-
+ 	bufblock = "\x00" * blockSize
+ 
+ 	ret = ""
+ 	for i in range(0, stripes-1):
+ 
+ 		# Get some random data
+-		rand.randomize()
+-		rand.stir()
+-		r = rand.get_bytes(blockSize)
+-		if rand.entropy < 0:
+-			print "Warning: RandomPool entropy dropped below 0"
++		r = get_random_bytes(blockSize)
+ 
+ 		ret += r
+-		bufblock = _xor(r, bufblock)
++		bufblock = strxor(r, bufblock)
+ 		bufblock = _diffuse(bufblock, blockSize, digesttype)
+-		rand.add_event(bufblock)
+ 
+-	ret += _xor(bufblock, data)
++	ret += strxor(bufblock, data)
+ 	return ret
+ 
+ def AFMerge(data, stripes, digesttype='sha1'):
+@@ -113,7 +100,7 @@
+ 
+ 	bufblock = "\x00" * blockSize
+ 	for i in range(0, stripes - 1):
+-		bufblock = _xor(data[i*blockSize:(i+1)*blockSize], bufblock)
++		bufblock = strxor(data[i*blockSize:(i+1)*blockSize], bufblock)
+ 		bufblock = _diffuse(bufblock, blockSize, digesttype)
+ 
+-	return _xor(data[(stripes-1)*blockSize:], bufblock)
++	return strxor(data[(stripes-1)*blockSize:], bufblock)
+diff -Naur revelation.orig/src/bundle/luks.py revelation/src/bundle/luks.py
+--- revelation.orig/src/bundle/luks.py	2018-09-01 12:38:17.702662965 +0200
++++ revelation/src/bundle/luks.py	2018-09-01 12:47:42.047084845 +0200
+@@ -65,7 +65,7 @@
+ 
+ # will need changed to use Crypto.Random (now in python-crypt git)
+ # see: http://lists.dlitz.net/pipermail/pycrypto/2008q3/000020.html
+-from Crypto.Util.randpool import RandomPool
++from Crypto.Random import get_random_bytes
+ from Crypto.Cipher import *
+ import PBKDFv2, AfSplitter
+ 
+@@ -178,13 +178,11 @@
+ 		self.keyBytes = masterSize
+ 		self.hashSpec = hashSpec
+ 
+-		rand = RandomPool(self.SALT_SIZE + 16 + masterSize)
+-
+ 		# Generate the salt
+-		self.mkDigestSalt = rand.get_bytes(self.SALT_SIZE)
++		self.mkDigestSalt = get_random_bytes(self.SALT_SIZE)
+ 
+ 		# Generate a random master key
+-		self.masterKey = rand.get_bytes(self.keyBytes)
++		self.masterKey = get_random_bytes(self.keyBytes)
+ 		self.ivGen.set_key(self.masterKey)
+ 
+ 		# generate the master key digest
+@@ -210,7 +208,7 @@
+ 		self.payloadOffset = currentSector
+ 
+ 		# Generate a UUID for this file
+-		self._uuidgen(rand)
++		self._uuidgen()
+ 
+ 		# Create a new file, and save the header into it
+ 		self.file = file
+@@ -263,8 +261,7 @@
+ 		key.passwordIterations = iterations
+ 
+ 		# Generate a random salt for this key
+-		rand = RandomPool(self.SALT_SIZE)
+-		key.passwordSalt = rand.get_bytes(self.SALT_SIZE)
++		key.passwordSalt = get_random_bytes(self.SALT_SIZE)
+ 
+ 		# Hash the key using PBKDFv2
+ 		pbkdf = PBKDFv2.PBKDFv2()
+@@ -594,13 +591,13 @@
+ 		self.cipherName = cipherName
+ 		self.cipherMode = cipherMode
+ 
+-	def _uuidgen(self, rand):
++	def _uuidgen(self):
+ 		"""Internal function to generate a UUID"""
+ 
+ 		# I copied this code (and slightly modified it) from a module written
+ 		# by Denys Duchier http://ofxsuite.berlios.de/uuid.py  (which is under the GPL)
+ 
+-		buf = rand.get_bytes(16)
++		buf = get_random_bytes(16)
+ 		low,mid,hi_and_version,seq,node = struct.unpack(">IHHH6s",buf)
+ 		seq = (seq & 0x3FFF) | 0x8000
+ 		hi_and_version = (hi_and_version & 0x0FFF) | 0x4000
+diff -Naur revelation.orig/src/bundle/PBKDFv2.py revelation/src/bundle/PBKDFv2.py
+--- revelation.orig/src/bundle/PBKDFv2.py	2018-09-01 12:38:17.702662965 +0200
++++ revelation/src/bundle/PBKDFv2.py	2018-09-01 12:35:22.345594877 +0200
+@@ -32,7 +32,7 @@
+ """
+ 
+ import struct, string, math, hashlib, hmac # RFC2104
+-from Crypto.Cipher import XOR
++from Crypto.Util.strxor import strxor
+ 
+ ################ PBKDFv2
+ class PBKDFv2:
+@@ -145,5 +145,4 @@
+         if len(a) != len(b):
+             raise ValueError("ERROR: Strings are of different size! %s %s" % (len(a), len(b)))
+ 
+-	xor = XOR.new(a)
+-	return xor.encrypt(b)
++	return strxor(a, b)
