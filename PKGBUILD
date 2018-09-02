@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=gmmlib-git
-pkgver=r68.99ff764
+pkgver=18.3.pre1.r0.g99ff764
 pkgrel=1
 pkgdesc='Intel Graphics Memory Management Library (git version)'
 arch=('i686' 'x86_64')
@@ -18,8 +18,8 @@ sha256sums=('SKIP')
 pkgver() {
     cd "$pkgname"
     
-    # git, no tags available
-    printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    # git, tags available
+    git describe --long --tags | sed 's/^intel-gmmlib-//;s/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {

@@ -1,6 +1,6 @@
 pkgbase = gmmlib-git
 	pkgdesc = Intel Graphics Memory Management Library (git version)
-	pkgver = r68.99ff764
+	pkgver = 18.3.pre1.r0.g99ff764
 	pkgrel = 1
 	url = https://github.com/intel/gmmlib/
 	arch = i686
