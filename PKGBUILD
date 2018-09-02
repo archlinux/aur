@@ -12,7 +12,7 @@ depends=('nodejs' 'npm' 'mpv' 'w3m')
 optdepends=()
 makedepends=('git')
 source=(http://registry.npmjs.org/tidal-cli-client/-/tidal-cli-client-$pkgver.tgz)
-noextract=($pkgname-$pkgver.tgz)
+noextract=($_pkgname-$pkgver.tgz)
 sha1sums=(95949ef3c57f09010979c71d18cd727abdc9a15e)
 
 package() {
