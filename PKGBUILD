@@ -3,7 +3,6 @@
 pkgname=cvsba
 pkgver=1.0.0
 pkgrel=1
-epoch=1
 pkgdesc='OpenCV wrapper for the sba sparse bundle adjustment library'
 arch=('i686' 'x86_64')
 url='http://www.uco.es/investiga/grupos/ava/node/39/'
