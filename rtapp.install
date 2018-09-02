@@ -2,29 +2,6 @@ post_install() {
   echo "
 ========================================================================
 
-Before running rtapp, have a look at the config file located
-at /etc/rtapp/rtapp.conf and make sure the defaults
-are OK.
-
---------------------------------
-
-For the variables RTIRQ_PRIO_DECR, RTIRQ_PRIO_HIGH, RTIRQ_PRIO_DECR, RTIRQ_NAME_LIST see rtirq documentation.
-
-# Here you can list the applications that you want give realtime priority
-# jack and jackdbus shoud not be included in this list.
-APPLICATIONS="mpd hqplayer hqplayerd mediacenter20 networkaudiod deadbeef"
-
-# Maximum value MAX_PRIORITY for application priority. This must be (RTIRQ_PRIO_DECR + 1) < MAX_PRIORITY <= (RTIRQ_PRIO_HIGH - (RTIRQ_PRIO_DECR * <number of items in RTIRQ_NAME_LIST>))
-MAX_PRIORITY="80"
-
-# manual: the applications priority will have the value set in MAX_PRIORITY
-# manualdec: same as manual but the priority will decrease by one step from the first to the last application
-# auto: the value will be a step (RTIRQ_PRIO_DECR) under the minimum value of priority set by rtirq (this value depends on the number of items in RTIRQ_NAME_LIST and the number of audio hardware connected to the same USB bus)
-# autodec: same as auto but the priority will decrease by one step from the first to the last application
-MODE="auto"
-
--------------------------------
-
 To start rtapp, you must first start the systemctl timer:
   # systemctl start rtapp.timer
 
@@ -36,63 +13,10 @@ rtapp.timer will call rtapp.service in /usr/lib/systemd/system
 rtapp will check the priority of audio applications every 60 seconds.
 If you wanto to change this please edit OnUnitActiveSec in /usr/lib/systemd/system/rtapp.timer
 
-RTRESET
-
-rtreset will reset all real time priority (irq and applications) to SCHED_OTHER
-
-RTSTATUS
-
-rtstatus will show the status of irq and applications realtime priorities.
-It is also very useful for checking if your audio card is sharing IRQ with another device since it is showing the Vendor and Product names!
-(cat /proc/interrupts instead would be useless because it will not show cards names)
-
-In the EXAMPLE 1 below you can see three USB audio cards and HQplayer application with very high max priority in rtirq.
-In this example the Amanero USB card is connected to an USB extender.
-As you can see "CMEDIA USB2.0 High-Speed True HD Audio" is sharing interrupt 23 with "Combo384 Amanero", but "iFi HD USB Audio" is the only hardware device connected at interrupt 16, as it should be for best performance.
-
-Now, if you want to give the maximum priority to "iFi HD USB Audio", you must check the usb of this card, in this case usb1, and change the line 
-RTIRQ_NAME_LIST="rtc usb snd"
-to
-RTIRQ_NAME_LIST="rtc usb1 snd"
-
-RTMONITORIRQ
-
-For checking the realtime utilization you can start rtmonitorirq.
-Usage: rtmonitorirq <irq>
-Example: rtmonitorirq 23
-This will show the name of devices connected to the specified irq and the IRQs/Second parameter.
-If the same irq of an audio device is used by another device you will see that IRQs/Second will be > 0 also when the audio card is disconnected.
---> see EXAMPLE 2 below
-
-RTTEST
-
-rttest will show the latency of your system using first only with cyclictest (STANDARD TEST) and after with both hackbench and cyclictest (STRESS TEST). The package rt-tests is a dependency.
-If the results of STANDARD TEST are much higher than the results of STRESS TEST and you have an Intel processor you could add a line like
-intel_idle.max_cstate=0
-to your Grub or Syslinux kernel line in configuration file.
-
-RTCHECK
-
-rtcheck will show some important information about your system:
-1) Type of kernel (realtime or not)
-2) rtc0 and hpet max user frequency
-3) CPU scaling status
-4) System latency
-5) Audio group members
-6) pam-limits
-7) Realtime max priority and max memory allocation
+Please look at the readme file
+/usr/share/doc/rtapp/readme.txt
+before using it
 
 ========================================================================
-"
-}
-
-post_upgrade() {
-  echo "
-========================================================================
-
-New!
-
-Fix for rtirq.conf new location
-
 "
 }

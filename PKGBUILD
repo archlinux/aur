@@ -1,37 +1,40 @@
 ## Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
 
 pkgname=rtapp
-pkgver=0.6.8
+pkgver=0.7
 pkgrel=1
 pkgdesc="Realtime application thread priority tuning"
 arch=('any')
 url="http://www.audio-linux.com"
 license=('custom')
-depends=('util-linux' 'bash' 'rtirq')
-optdepends=('linux-rt: The Linux-rt kernel and modules'
-            'rt-tests: A collection of latency testing tools for the linux(-rt) kernel')
+depends=('util-linux' 'bash' 'rtirq' 'rt-tests')
+optdepends=('linux-rt: The Linux-rt kernel and modules')
 install=${pkgname}.install
 source=("http://www.tophifi.it/ftp/packages/$pkgname.tar.gz")
-sha256sums=('7fd7cedb037eded0a82283ddf4160607c794644f332fcd07ae9abbf6d41c595a')
+sha256sums=('2c41e691473946e0ccc03bf2a3a1eac07030d2bff125f2b4f21d0adf4f31e48e')
 backup=('etc/rtapp/rtapp.conf')
 
 package() {
  tar -xf $pkgname.tar.gz -C "$srcdir"
-     install -Dm755 "$srcdir/RTapp/rtapp" "$pkgdir/usr/bin/rtapp"
-     install -Dm755 "$srcdir/RTapp/rtstatus" "$pkgdir/usr/bin/rtstatus"
-     install -Dm755 "$srcdir/RTapp/rtreset" "$pkgdir/usr/bin/rtreset"
-     install -Dm755 "$srcdir/RTapp/rtmonitorirq" "$pkgdir/usr/bin/rtmonitorirq"
-     install -Dm755 "$srcdir/RTapp/rtcheck" "$pkgdir/usr/bin/rtcheck"
-     install -Dm755 "$srcdir/RTapp/rttest" "$pkgdir/usr/bin/rttest"
+     install -Dm755 "$srcdir/RTapp-new/rtapp" "$pkgdir/usr/bin/rtapp"
+     install -Dm755 "$srcdir/RTapp-new/rtstatus" "$pkgdir/usr/bin/rtstatus"
+     install -Dm755 "$srcdir/RTapp-new/rtreset" "$pkgdir/usr/bin/rtreset"
+     install -Dm755 "$srcdir/RTapp-new/rtmonitorirq" "$pkgdir/usr/bin/rtmonitorirq"
+     install -Dm755 "$srcdir/RTapp-new/rtcheck" "$pkgdir/usr/bin/rtcheck"
+     install -Dm755 "$srcdir/RTapp-new/rttest" "$pkgdir/usr/bin/rttest"
+     install -Dm755 "$srcdir/RTapp-new/rtcards" "$pkgdir/usr/bin/rtcards"
 
-     install -Dm644 "$srcdir/RTapp/rtapp.conf" "$pkgdir/etc/rtapp/rtapp.conf"
-     install -Dm644 "$srcdir/RTapp/readme.txt" "$pkgdir/usr/share/doc/rtapp/readme.txt"
-     install -Dm644 "$srcdir/RTapp/rtapp.timer" "$pkgdir/usr/lib/systemd/system/rtapp.timer"
-     install -Dm644 "$srcdir/RTapp/rtapp.service" "$pkgdir/usr/lib/systemd/system/rtapp.service"
+
+     install -Dm644 "$srcdir/RTapp-new/rtapp.conf" "$pkgdir/etc/rtapp/rtapp.conf"
+     install -Dm644 "$srcdir/RTapp-new/readme.txt" "$pkgdir/usr/share/doc/rtapp/readme.txt"
+     install -Dm644 "$srcdir/RTapp-new/rtapp.timer" "$pkgdir/usr/lib/systemd/system/rtapp.timer"
+     install -Dm644 "$srcdir/RTapp-new/rtapp.service" "$pkgdir/usr/lib/systemd/system/rtapp.service"
      
-     install -Dm644 "$srcdir/RTapp/rtstatus.desktop" "$pkgdir/usr/share/applications/rtstatus.desktop"
-     install -Dm644 "$srcdir/RTapp/rtreset.desktop" "$pkgdir/usr/share/applications/rtreset.desktop"
-     install -Dm644 "$srcdir/RTapp/rtmonitorirq.desktop" "$pkgdir/usr/share/applications/rtmonitorirq.desktop"
-     install -Dm644 "$srcdir/RTapp/rtcheck.desktop" "$pkgdir/usr/share/applications/rtcheck.desktop"
-     install -Dm644 "$srcdir/RTapp/rttest.desktop" "$pkgdir/usr/share/applications/rttest.desktop"
+     install -Dm644 "$srcdir/RTapp-new/rtstatus.desktop" "$pkgdir/usr/share/applications/rtstatus.desktop"
+     install -Dm644 "$srcdir/RTapp-new/rtreset.desktop" "$pkgdir/usr/share/applications/rtreset.desktop"
+     install -Dm644 "$srcdir/RTapp-new/rtmonitorirq.desktop" "$pkgdir/usr/share/applications/rtmonitorirq.desktop"
+     install -Dm644 "$srcdir/RTapp-new/rtcheck.desktop" "$pkgdir/usr/share/applications/rtcheck.desktop"
+     install -Dm644 "$srcdir/RTapp-new/rttest.desktop" "$pkgdir/usr/share/applications/rttest.desktop"
+     install -Dm644 "$srcdir/RTapp-new/rtcards.desktop" "$pkgdir/usr/share/applications/rtcards.desktop"
+
 }
