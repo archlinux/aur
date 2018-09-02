@@ -1,0 +1,13 @@
+pkgbase = widelands-maps-einstein
+	pkgdesc = Maps for widelands by user 'einstein'.
+	pkgver = 20160627
+	pkgrel = 1
+	url = http://wuatek.no-ip.org/~rak/widelands/?page=2
+	arch = any
+	license = GPL2
+	optdepends = widelands: To play the game.
+	source = PackageXL.zip::http://wuatek.no-ip.org/~rak/widelands/respondDownload.php?link=PackageXL_2016-06-27
+	sha256sums = c58c08a1057404e767b3c13eaa7f35907a24ebd3bc436d851a37a7da5a3a01fd
+
+pkgname = widelands-maps-einstein
+
