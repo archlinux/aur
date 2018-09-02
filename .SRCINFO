@@ -9,6 +9,7 @@ pkgbase = python-fsb5-git
 	depends = libogg
 	depends = libvorbis
 	depends = python
+	provides = python-fsb5
 	source = python-fsb5-git::git+https://github.com/HearthSim/python-fsb5.git
 	md5sums = SKIP
 

@@ -6,6 +6,7 @@ pkgrel=1
 pkgdesc="Library and tool to extract audio from FSB5 (FMOD Sample Bank) files"
 url="https://github.com/hearthsim/python-fsb5"
 arch=('x86_64')
+provides=('python-fsb5')
 license=('MIT')
 makedepends=('git')
 depends=('libogg' 'libvorbis' 'python')
