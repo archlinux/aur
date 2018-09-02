@@ -1,0 +1,23 @@
+pkgbase = openems-project-git
+	pkgdesc = free and open electromagnetic field solver using the FDTD method.
+	pkgver = 0.0.35
+	pkgrel = 1
+	url = http://openems.de/
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = cmake
+	depends = qt5-base
+	depends = tinyxml
+	depends = hdf5
+	depends = boost
+	depends = vtk
+	depends = unixodbc
+	depends = cgal
+	depends = openmpi
+	provides = openems-git
+	conflicts = openems
+	conflicts = openems-git
+
+pkgname = openems-project-git
+
