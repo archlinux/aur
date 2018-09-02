@@ -1,7 +1,7 @@
 # Maintainer: Jan Okoński <jandominikokonski@gmail.com>
 
 pkgname=tidal-cli-client-git
-_pkgname=${pkgname#nodejs-}
+_pkgname=tidal-cli-client
 pkgver=2.0.3
 pkgrel=1
 pkgdesc='You can now use Tidal on linux. With your loved CLI. <3'
