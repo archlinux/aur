@@ -1,0 +1,14 @@
+pkgbase = openaptx-git
+	pkgdesc = reverse-engineered apt-X
+	pkgver = r22.32f01e5
+	pkgrel = 1
+	url = https://github.com/Arkq/openaptx
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	provides = openaptx
+	source = git://github.com/Arkq/openaptx.git
+	md5sums = SKIP
+
+pkgname = openaptx-git
+
