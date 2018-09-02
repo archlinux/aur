@@ -2,7 +2,7 @@
 # Contributor: Ariel AxionL <axionl@aosc.io>
 
 pkgname=go-nebulas-git
-pkgver=r2222.4751ee13
+pkgver=r2237.2928567d
 pkgrel=1
 pkgdesc="Official Go implementation of the Nebulas protocol"
 arch=("x86_64")
@@ -16,12 +16,14 @@ install="go-nebulas-git.install"
 source=("$pkgname::git+https://github.com/nebulasio/go-nebulas.git"
         "config.conf"
         "genesis.conf"
+        "dynasty.conf"
         "go-nebulas.service"
         "go-nebulas-git.install"
         "go-nebulas-git.conf")
 sha256sums=('SKIP'
-            'a6cfe7b259320720830c190adf93329c80f85ef62019ca4fdb544cbb0fe6dbc5'
+            '0bc04c4f6b8bc78ea1bd346866c838a8d4ca667f91edd86256a2b005264e47c8'
             'f02573abd8979f50f4541b8e2c4b732f8ced823dc105b368d59b09e2591b3071'
+            'f137c0d7e28580c515f6a79bbf317f02106d66d3f7bf0da52566e918007c2531'
             'c950199571a367dff0987e9dac583199290df67565922386ff717d93b40a5183'
             '25c7cef2f26594514a5616bcc3965484dcd8dd7972f3e3e55087ec302aa6bebd'
             'eba28579d2c1d1213ed5dc09f84d8244de20bca1828d9adfaac841b603b54f06')
