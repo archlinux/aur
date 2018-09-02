@@ -4,6 +4,7 @@ pkgname=julia-softglobalscope
 _pkgname=SoftGlobalScope
 pkgver=1.0.2
 pkgrel=1
+pkgdesc='Utilities for "soft" global scope in interactive Julia environments'
 arch=(any)
 url=https://github.com/stevengj/SoftGlobalScope.jl
 license=(MIT)
