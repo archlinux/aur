@@ -11,8 +11,7 @@ license=('GPL2')
 
 depends=('opencv'
          'lapack'
-         'f2c'
-         'hdf5')
+         'f2c')
 makedepends=('cmake>=2.8.0')
 
 source=("https://downloads.sourceforge.net/project/$pkgname/$pkgver/$pkgname-$pkgver.tgz")
