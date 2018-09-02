@@ -2,30 +2,30 @@
 
 pkgname=gtk-theme-united-gnome
 pkgver=2.2
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="GTK2/3 + GNOME Shell theme based on a Ubuntu 18.04 design concept."
 arch=(any)
 url="https://github.com/godlyranchdressing/United-GNOME"
 license=('GPL3')
 source=("United-Antergos-$pkgver.tar.gz"::"https://github.com/godlyranchdressing/United-GNOME/releases/download/V$pkgver/United-Antergos.tar.gz"
-        "United-Antergos-Compact-$pkgver.tar.gz"::"https://github.com/godlyranchdressing/United-GNOME/releases/download/V$pkgver/United-Antergos-Compact.tar.gz"
-        "United-Arch-$pkgver.tar.gz"::"https://github.com/godlyranchdressing/United-GNOME/releases/download/V$pkgver/United-Arch.tar.gz"
-        "United-Arch-Compact-$pkgver.tar.gz"::"https://github.com/godlyranchdressing/United-GNOME/releases/download/V$pkgver/United-Arch-Compact.tar.gz"
-        "United-Debian-$pkgver.tar.gz"::"https://github.com/godlyranchdressing/United-GNOME/releases/download/V$pkgver/United-Debian.tar.gz"
-        "United-Debian-Compact-$pkgver.tar.gz"::"https://github.com/godlyranchdressing/United-GNOME/releases/download/V$pkgver/United-Debian-Compact.tar.gz"
-        "United-Fedora-$pkgver.tar.gz"::"https://github.com/godlyranchdressing/United-GNOME/releases/download/V$pkgver/United-Fedora.tar.gz"
-        "United-Fedora-Compact-$pkgver.tar.gz"::"https://github.com/godlyranchdressing/United-GNOME/releases/download/V$pkgver/United-Fedora-Compact.tar.gz"
-        "United-Latest-$pkgver.tar.gz"::"https://github.com/godlyranchdressing/United-GNOME/releases/download/V$pkgver/United-Latest.tar.gz"
-        "United-Latest-Compact-$pkgver.tar.gz"::"https://github.com/godlyranchdressing/United-GNOME/releases/download/V$pkgver/United-Latest-Compact.tar.gz"
-        "United-Manjaro-$pkgver.tar.gz"::"https://github.com/godlyranchdressing/United-GNOME/releases/download/V$pkgver/United-Manjaro.tar.gz"
-        "United-Manjaro-Compact-$pkgver.tar.gz"::"https://github.com/godlyranchdressing/United-GNOME/releases/download/V$pkgver/United-Manjaro-Compact.tar.gz"
-        "United-OpenSUSE-$pkgver.tar.gz"::"https://github.com/godlyranchdressing/United-GNOME/releases/download/V$pkgver/United-OpenSUSE.tar.gz"
-        "United-OpenSUSE-Compact-$pkgver.tar.gz"::"https://github.com/godlyranchdressing/United-GNOME/releases/download/V$pkgver/United-OpenSUSE-Compact.tar.gz"
-        "United-Solus-$pkgver.tar.gz"::"https://github.com/godlyranchdressing/United-GNOME/releases/download/V$pkgver/United-Solus.tar.gz"
-        "United-Solus-Compact-$pkgver.tar.gz"::"https://github.com/godlyranchdressing/United-GNOME/releases/download/V$pkgver/United-Solus-Compact.tar.gz"
-        "United-Ubuntu-alt-$pkgver.tar.gz"::"https://github.com/godlyranchdressing/United-GNOME/releases/download/V$pkgver/United-Ubuntu-alt.tar.gz"
-        "United-Ubuntu-alt-Compact-$pkgver.tar.gz"::"https://github.com/godlyranchdressing/United-GNOME/releases/download/V$pkgver/United-Ubuntu-alt-Compact.tar.gz")
+        "United-Antergos-Compact-$pkgver.tar.gz::https://github.com/godlyranchdressing/United-GNOME/releases/download/V$pkgver/United-Antergos-Compact.tar.gz"
+        "United-Arch-$pkgver.tar.gz::https://github.com/godlyranchdressing/United-GNOME/releases/download/V$pkgver/United-Arch.tar.gz"
+        "United-Arch-Compact-$pkgver.tar.gz::https://github.com/godlyranchdressing/United-GNOME/releases/download/V$pkgver/United-Arch-Compact.tar.gz"
+        "United-Debian-$pkgver.tar.gz::https://github.com/godlyranchdressing/United-GNOME/releases/download/V$pkgver/United-Debian.tar.gz"
+        "United-Debian-Compact-$pkgver.tar.gz::https://github.com/godlyranchdressing/United-GNOME/releases/download/V$pkgver/United-Debian-Compact.tar.gz"
+        "United-Fedora-$pkgver.tar.gz::https://github.com/godlyranchdressing/United-GNOME/releases/download/V$pkgver/United-Fedora.tar.gz"
+        "United-Fedora-Compact-$pkgver.tar.gz::https://github.com/godlyranchdressing/United-GNOME/releases/download/V$pkgver/United-Fedora-Compact.tar.gz"
+        "United-Latest-$pkgver.tar.gz::https://github.com/godlyranchdressing/United-GNOME/releases/download/V$pkgver/United-Latest.tar.gz"
+        "United-Latest-Compact-$pkgver.tar.gz::https://github.com/godlyranchdressing/United-GNOME/releases/download/V$pkgver/United-Latest-Compact.tar.gz"
+        "United-Manjaro-$pkgver.tar.gz::https://github.com/godlyranchdressing/United-GNOME/releases/download/V$pkgver/United-Manjaro.tar.gz"
+        "United-Manjaro-Compact-$pkgver.tar.gz::https://github.com/godlyranchdressing/United-GNOME/releases/download/V$pkgver/United-Manjaro-Compact.tar.gz"
+        "United-OpenSUSE-$pkgver.tar.gz::https://github.com/godlyranchdressing/United-GNOME/releases/download/V$pkgver/United-OpenSUSE.tar.gz"
+        "United-OpenSUSE-Compact-$pkgver.tar.gz::https://github.com/godlyranchdressing/United-GNOME/releases/download/V$pkgver/United-OpenSUSE-Compact.tar.gz"
+        "United-Solus-$pkgver.tar.gz::https://github.com/godlyranchdressing/United-GNOME/releases/download/V$pkgver/United-Solus.tar.gz"
+        "United-Solus-Compact-$pkgver.tar.gz::https://github.com/godlyranchdressing/United-GNOME/releases/download/V$pkgver/United-Solus-Compact.tar.gz"
+        "United-Ubuntu-alt-$pkgver.tar.gz::https://github.com/godlyranchdressing/United-GNOME/releases/download/V$pkgver/United-Ubuntu-alt.tar.gz"
+        "United-Ubuntu-alt-Compact-$pkgver.tar.gz::https://github.com/godlyranchdressing/United-GNOME/releases/download/V$pkgver/United-Ubuntu-alt-Compact.tar.gz")
 sha256sums=('2dbcfafbf4aee5c7422a6dc9379ec79a7f90a06dbc00901fee82fe8f6ceace3e'
             'b586fbde45c410e601c8a01a25b4b0104be5c141a0c7ce1b41904729eaff4a9a'
             '1b414a44739e7242bfdf7b326eebba75862cadf6af00d79e7a50a8ab9851d061'
