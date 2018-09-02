@@ -2,7 +2,7 @@
 
 pkgname=d-stdx-allocator
 pkgver=2.77.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Extracted std.experimental.allocator for usage via DUB"
 arch=(x86_64)
 url="https://github.com/dlang-community"
