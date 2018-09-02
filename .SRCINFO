@@ -1,7 +1,7 @@
 pkgbase = popcorntime
 	pkgdesc = Stream movies from torrents. Skip the downloads. Launch, click, watch.
 	pkgver = 0.3.10
-	pkgrel = 9
+	pkgrel = 10
 	url = https://popcorntime.sh/
 	arch = i686
 	arch = x86_64
@@ -25,11 +25,11 @@ pkgbase = popcorntime
 	source = popcorntime.desktop
 	sha256sums = SKIP
 	sha256sums = fa2615680bcb591b9892e8d6394235436ffa65210be6e942b8ca91de982e8cd2
-	sha256sums = 4422f21e16176fda697ed0c8a6d1fb6f9dd7c4bc3f3694f9bcc19cbe66630334
-	source_i686 = https://github.com/iteufel/nwjs-ffmpeg-prebuilt/releases/download/0.31.5/0.31.5-linux-ia32.zip
-	sha256sums_i686 = 78241eb9e051dff300ea310c7fb44093cd242be9f88e7659b0db991f378adbc3
-	source_x86_64 = https://github.com/iteufel/nwjs-ffmpeg-prebuilt/releases/download/0.31.5/0.31.5-linux-x64.zip
-	sha256sums_x86_64 = c7f4620cd51f3df1a573c84f42e57a575d320788730693b157a52115b73f3edc
+	sha256sums = b4df915286753c1155b67015b89b68df6d3c655daf8832286370afe4d334fd89
+	source_i686 = https://github.com/iteufel/nwjs-ffmpeg-prebuilt/releases/download/0.32.4/0.32.4-linux-ia32.zip
+	sha256sums_i686 = ab90d8c157abe8156bc0a1503cda8a52eb006eb5c7a664e22c6f006b1f3d76e1
+	source_x86_64 = https://github.com/iteufel/nwjs-ffmpeg-prebuilt/releases/download/0.32.4/0.32.4-linux-x64.zip
+	sha256sums_x86_64 = 4aebfb88ca4efd80672fd94528af51021f7e792637fbe0e5401f8a4ab07c74f2
 
 pkgname = popcorntime
 
