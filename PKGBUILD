@@ -27,7 +27,7 @@ prepare() {
 build() {
   cd "${srcdir}/plex-media-player/build"
   cmake -DCMAKE_INSTALL_PREFIX='/usr' -DCMAKE_BUILD_TYPE='Release' -DCMAKE_SKIP_RPATH=1 \
-        -DQTROOT='/usr/share/qt' -DLINUX_X11POWER=on ..
+        -DQTROOT='/opt/qt5-pmp/usr' -DLINUX_X11POWER=on ..
   make
 }
 
