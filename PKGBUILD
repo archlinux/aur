@@ -3,7 +3,7 @@
 
 pkgname=python-binaryornot
 _pkgname=binaryornot
-pkgver=0.3.0
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="Ultra-lightweight pure Python package to check if a file is binary or text"
 arch=('any')
@@ -18,7 +18,7 @@ replaces=()
 backup=()
 options=(!emptydirs)
 source=("https://github.com/audreyr/${_pkgname}/archive/${pkgver}.tar.gz")
-md5sums=("8ef002b896a5f93b9875d78ffa3cf666")
+md5sums=("aff341cdc4067a97ee947a3851721818")
 
 package() {
       cd "$srcdir/${_pkgname}-${pkgver}"
