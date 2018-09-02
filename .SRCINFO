@@ -1,0 +1,18 @@
+pkgbase = tidal-cli-client-git
+	pkgdesc = You can now use Tidal on linux. With your loved CLI. <3
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = https://github.com/okonek/tidal-cli-client
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = nodejs
+	depends = npm
+	depends = mpv
+	depends = w3m
+	noextract = tidal-cli-client-git-2.0.3.tgz
+	source = http://registry.npmjs.org/tidal-cli-client/-/tidal-cli-client-2.0.3.tgz
+	sha1sums = 95949ef3c57f09010979c71d18cd727abdc9a15e
+
+pkgname = tidal-cli-client-git
+
