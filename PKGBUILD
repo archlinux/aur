@@ -1,7 +1,7 @@
 # Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-hatari-git
-pkgver=5445.89850357
+pkgver=5449.ec40eb9c
 pkgrel=1
 pkgdesc="libretro implementation of Hatari v1.8 (Atari ST/STE/TT/Falcon)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
