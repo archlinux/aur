@@ -1,0 +1,8 @@
+# Ignored folders
+src/
+python-fsb5-git/
+
+# Ignored files
+*.pkg.tar.xz
+*.pkg.tar
+
