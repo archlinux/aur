@@ -1,0 +1,17 @@
+pkgbase = emacs-f-git
+	pkgdesc = Modern API for working with files and directories in Emacs
+	pkgver = r342.de6d4d4
+	pkgrel = 1
+	url = https://github.com/rejeep/f.el
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	depends = emacs-s
+	provides = emacs-f
+	conflicts = emacs-f
+	source = git+https://github.com/rejeep/f.el.git
+	sha256sums = SKIP
+
+pkgname = emacs-f-git
+
