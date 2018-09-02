@@ -40,5 +40,5 @@ EOF
 
 check() {
 	cd $_pkgname.jl-$pkgver
-	JULIA_LOAD_DIR=src julia test/runtests.jl
+	JULIA_LOAD_DIR=src:$JULIA_LOAD_DIR julia test/runtests.jl
 }
