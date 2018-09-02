@@ -1,4 +1,5 @@
-# Maintainer: KlipperKyle <kyleterrien at gmail dot com>
+# Maintainer: mar77i <mar77i at protonmail dot ch>
+# Former maintainer: KlipperKyle <kyleterrien at gmail dot com>
 # Former maintainer: speps <speps at aur dot archlinux dot org>
 
 pkgname=python-pygame-git
