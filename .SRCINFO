@@ -1,0 +1,15 @@
+pkgbase = unitypack-git
+	pkgdesc = Python deserialization library for Unity3D Asset format
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/HearthSim/UnityPack
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-lz4
+	source = unitypack-git::git+https://github.com/HearthSim/UnityPack.git
+	md5sums = SKIP
+
+pkgname = unitypack-git
+
