@@ -8,7 +8,7 @@ pkgbase = kst-git
 	license = GPL
 	makedepends = cmake
 	depends = gsl
-	depends = qt5
+	depends = qt5-base
 	depends = muparser
 	depends = python2-scipy>=0.9
 	depends = python2-numpy>=1.6
