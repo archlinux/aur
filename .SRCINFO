@@ -1,0 +1,23 @@
+pkgbase = python-pygame-git
+	pkgdesc = Python game library
+	pkgver = 1.9.4.r256.g9e24832d
+	pkgrel = 1
+	url = http://pygame.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = libjpeg-turbo
+	depends = sdl_ttf
+	depends = sdl_image
+	depends = sdl_mixer
+	depends = portmidi
+	provides = python-pygame
+	conflicts = python-pygame
+	source = python-pygame-git::git+https://github.com/pygame/pygame
+	md5sums = SKIP
+
+pkgname = python-pygame-git
+
