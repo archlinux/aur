@@ -9,24 +9,24 @@
 
 pkgname=polysh
 pkgver=0.9
-pkgrel=2
-pkgdesc="This is a deprecated package. You have to use python-polysh"
+pkgrel=3
+pkgdesc="a tool to aggregate several remote shells into one."
 arch=("any")
-url="https://pypi.org/project/polysh/"
+url="https://pypi.org/project/${pkgname}/"
 license=("GPL2")
 depends=("python" "openssh")
 makedepends=("python-setuptools" "python-docutils")
 options=(!emptydirs)
-source=("https://github.com/innogames/polysh/archive/polysh-${pkgver}.tar.gz")
+source=("https://github.com/innogames/${pkgname}/archive/${pkgname}-${pkgver}.tar.gz")
 sha256sums=("3f45061ad42fd9402fe6629e72e9f3d9f94b9f0b1401e76c3c1f69dcc713d2da")
 
 package() {
-  mkdir -p "${pkgdir}/usr/bin"
-  cat > "${pkgdir}/usr/bin/polysh" <<EOF
-#!/usr/bin/python
-print('The "polysh" package is deprecated. Please, install "python-polysh" from AUR')
-EOF
-  chmod +x "${pkgdir}/usr/bin/polysh"
+  # TODO: fix in upstream
+  cd "${srcdir}/${_basename}-${_basename}-${pkgver}"
+  # TODO: implement proper documentation in upstream
+  mkdir -p "${pkgdir}/usr/share/man/man1"
+  rst2man README.rst "${pkgdir}/usr/share/man/man1/${_basename}.1"
+  python setup.py install --root="${pkgdir}/" --optimize=1
 }
 
 # vim:set ts=2 sw=2 et:
