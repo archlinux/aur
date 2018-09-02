@@ -1,0 +1,13 @@
+pkgbase = julia-softglobalscope
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/stevengj/SoftGlobalScope.jl
+	arch = any
+	license = MIT
+	depends = julia
+	depends = julia-compat
+	source = softglobalscope-1.0.2.tar.gz::https://github.com/stevengj/SoftGlobalScope.jl/archive/v1.0.2.tar.gz
+	sha256sums = d9cd23262a9952917c7378cf0dac1124f505b4faaebb304a9cfb895c74e74c60
+
+pkgname = julia-softglobalscope
+
