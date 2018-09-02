@@ -12,6 +12,7 @@ depends=(julia
   julia-compat
   julia-json
   julia-mbedtls
+  julia-softglobalscope
   julia-zmq
   jupyter
 )
