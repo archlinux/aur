@@ -1,0 +1,16 @@
+pkgbase = emacs-s-git
+	pkgdesc = The long lost Emacs string manipulation library.
+	pkgver = r258.03410e6
+	pkgrel = 1
+	url = https://github.com/magnars/s.el
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	provides = emacs-s
+	conflicts = emacs-s
+	source = git+https://github.com/magnars/s.el.git
+	sha256sums = SKIP
+
+pkgname = emacs-s-git
+
