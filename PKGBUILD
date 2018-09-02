@@ -8,24 +8,23 @@ url="https://intra-bocal.epitech.eu"
 license=('GPL')
 depends=('python>=3.3.0'
 	'python-requests'
-	'git'
-	'sudo')
+	'git')
 provides=('blih')
-source=("${pkgname}-${pkgver}::https://github.com/bocal/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=("SKIP")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bocal/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('SKIP')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
-	sed -i s/python3.3/python/ ${pkgname}.py
+	sed -i s/python3.3/python/ "${pkgname}.py"
 }
 
 build() {
-	cd ${pkgname}-${pkgver}
-	mv ${pkgname}.py ${pkgname}
-	chmod 755 ${pkgname}
+	cd "${pkgname}-${pkgver}"
+	mv "${pkgname}.py" "${pkgname}"
+	chmod 755 "${pkgname}"
 }
 
 package() {
 	mkdir -p "${pkgdir}/usr/bin"
-	cp "$srcdir/$pkgname-$pkgver/$pkgname" "$pkgdir/usr/bin"
+	cp -a "${pkgname}-${pkgver}/${pkgname}" "${pkgdir}/usr/bin"
 }

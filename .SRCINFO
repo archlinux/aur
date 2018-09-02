@@ -8,9 +8,8 @@ pkgbase = blih
 	depends = python>=3.3.0
 	depends = python-requests
 	depends = git
-	depends = sudo
 	provides = blih
-	source = blih-1.7::https://github.com/bocal/blih/archive/v1.7.tar.gz
+	source = blih-1.7.tar.gz::https://github.com/bocal/blih/archive/v1.7.tar.gz
 	sha256sums = SKIP
 
 pkgname = blih
