@@ -1,12 +1,13 @@
 pkgbase = libva-utils-git
 	pkgdesc = Intel VA-API Media Applications and Scripts for libva (git version)
-	pkgver = 2.0.0.r22.g7b4827e
-	pkgrel = 2
+	pkgver = 2.2.0.pre1.r2.g9a10ad6
+	pkgrel = 1
 	url = https://github.com/01org/libva-utils/
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = git
+	makedepends = meson
 	makedepends = mesa
 	depends = libva
 	provides = libva-utils
