@@ -1,10 +1,11 @@
 pkgbase = julia-ijulia
-	pkgdesc = Julia-language backend combined with the Jupyter interactive environmen
+	pkgdesc = Julia-language backend combined with the Jupyter interactive environment
 	pkgver = 1.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JuliaLang/IJulia.jl
 	arch = any
-	license = custom
+	license = MIT
+	makedepends = julia-conda
 	depends = julia
 	depends = julia-compat
 	depends = julia-json
