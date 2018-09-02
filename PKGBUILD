@@ -3,8 +3,8 @@
 
 pkgname=tvheadend-git
 _gitname='tvheadend-git'
-pkgver=4.3.r1252.g595fd174f
-pkgrel=5
+pkgver=4.3.r1292.g9b9ee6859
+pkgrel=1
 pkgdesc="TV streaming server for Linux"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://tvheadend.org/"
@@ -34,12 +34,10 @@ backup=('etc/conf.d/tvheadend')
 source=(
     "${_gitname}::git+https://github.com/tvheadend/tvheadend.git#branch=master"
     'dvb-scan-tables::git+https://github.com/tvheadend/dtv-scan-tables.git#branch=tvheadend'
-    'fix-ffmpeg.patch'
 )
 md5sums=(
     'SKIP'
     'SKIP'
-    '2caa4893574ebb6c7f672e2313df865b'
 )
 
 pkgver() {
@@ -54,10 +52,6 @@ prepare() {
     cp -a "dvb-scan-tables" "${_dvbscan}"
     rm -rf "${_dvbscan}/.git"
     touch "${_dvbscan}/.stamp"
-
-    # Fix changed constant name in ffmpeg
-    cd "${srcdir}/${_gitname}"
-    patch -p1 -i "${srcdir}/fix-ffmpeg.patch"
 }
 
 build() {
