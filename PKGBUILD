@@ -1,6 +1,6 @@
 pkgname=kisslicer
 pkgver=1.6.3
-pkgrel=2
+pkgrel=1
 pkgdesc="KISSlicer is a fast, easy-to-use, cross-platform program that takes 3D files (STL) and generates path information (G-code) for a 3D Printer.  The FREE version has all the features needed for the hobbyist who uses a single-head machine."
 arch=('i686' 'x86_64')
 url="http://www.kisslicer.com/index.html"
