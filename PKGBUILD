@@ -1,7 +1,7 @@
 # Maintainer: Tinh Truong <xuantinh at gmail dot com>
 pkgname=aur-pkg-status
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A small utility to check the status of the AUR packages installed on your ArchLinux machine"
 arch=('i686' 'x86_64')
 license=('MIT')
