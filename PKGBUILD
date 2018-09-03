@@ -8,7 +8,7 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgbase=linux-selinux
-_srcver=4.18.4-arch1
+_srcver=4.18.5-arch1
 pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
