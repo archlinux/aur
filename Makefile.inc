@@ -3,9 +3,9 @@
 # Your changes will be lost the next time ./configure is run.
 #
 OMNETPP_PRODUCT = OMNeT++
-OMNETPP_RELEASE = omnetpp-5.4
-OMNETPP_VERSION = 5.4
-OMNETPP_BUILDID = 180611-572210e
+OMNETPP_RELEASE = omnetpp-6.0pre2
+OMNETPP_VERSION = 6.0pre2
+OMNETPP_BUILDID = 180809-1548ee5f82
 OMNETPP_EDITION = Academic Public License -- NOT FOR COMMERCIAL USE
 
 #
@@ -17,8 +17,6 @@ WITH_OSGEARTH ?= no
 WITH_NETBUILDER ?= yes
 WITH_PARSIM ?= yes
 WITH_SYSTEMC ?= no
-WITH_TKENV ?= no
-EMBED_TCL_CODE ?= yes
 PREFER_SQLITE_RESULT_FILES ?= no
 
 #
@@ -40,7 +38,6 @@ OMNETPP_LIB_DIR = $(OMNETPP_ROOT)/lib$(OUTPUT_PREFIX)
 OMNETPP_OUT_DIR = $(OMNETPP_ROOT)/out$(OUTPUT_PREFIX)
 OMNETPP_SRC_DIR = $(OMNETPP_ROOT)/src
 OMNETPP_UTILS_DIR = $(OMNETPP_SRC_DIR)/utils
-OMNETPP_TKENV_DIR = $(OMNETPP_SRC_DIR)/tkenv
 OMNETPP_UI_DIR = $(OMNETPP_ROOT)/ui
 OMNETPP_DOC_DIR = $(OMNETPP_ROOT)/doc
 OMNETPP_SAMPLES_DIR = $(OMNETPP_ROOT)/samples
@@ -136,12 +133,11 @@ RANLIB = ranlib
 SHLIB_LD = clang++ -shared -fPIC
 DLLTOOL = dlltool
 STRIP = strip
-WISH = 
 MAKEDEPEND = opp_makedep -Y --objdirtree
 LN = ln -f
 MKPATH = mkdir -p
 SHLIB_POSTPROCESS = opp_shlib_postprocess
-SWIG = not found
+SWIG = swig
 QMAKE = /usr/bin/qmake
 MOC=/usr/bin/moc
 UIC=/usr/bin/uic
@@ -149,8 +145,6 @@ RCC=/usr/bin/rcc
 
 HAVE_DLOPEN = 1
 SYS_LIBS = -ldl -lstdc++ 
-TK_CFLAGS = 
-TK_LIBS = 
 QT_CFLAGS = -isystem /usr/include/qt -isystem /usr/include/qt/QtCore -isystem /usr/include/qt/QtGui -isystem /usr/include/qt/QtWidgets -isystem /usr/include/qt/QtOpenGL -isystem /usr/include/qt/QtPrintSupport
 QT_LIBS = -lQt5Gui -lQt5Core -lQt5Widgets -lQt5PrintSupport -lQt5OpenGL -L/usr/lib -Wl,-rpath=/usr/lib
 QTENV_LDFLAGS = -Wl,-rpath-link=/usr/lib
@@ -188,7 +182,6 @@ SHARED_LIB_SUFFIX = $(SO_LIB_SUFFIX)
 #
 # omnetpp and system libraries linked with the simulations
 #
-TKENV_LIBS = $(LDFLAG_INCLUDE)_tkenv_lib $(AS_NEEDED_OFF) -lopptkenv$D -loppenvir$D -lopplayout$D
 QTENV_LIBS = $(LDFLAG_INCLUDE)_qtenv_lib $(AS_NEEDED_OFF) $(QTENV_LDFLAGS) -loppqtenv$D -loppenvir$D -lopplayout$D
 CMDENV_LIBS = $(LDFLAG_INCLUDE)_cmdenv_lib $(AS_NEEDED_OFF) -loppcmdenv$D -loppenvir$D
 ALL_ENV_LIBS = $(CMDENV_LIBS)
@@ -216,21 +209,6 @@ ifeq ($(WITH_QTENV),yes)
     endif
   endif
   ALL_ENV_LIBS += $(QTENV_LIBS)
-endif
-
-#
-# flags and libraries required for Ttenv
-#
-ifeq ($(WITH_TKENV),yes)
-  DEFINES += -DWITH_TKENV
-  # libraries required for static linking
-  ifneq ($(SHARED_LIBS),yes)
-    TKENV_LIBS += $(TK_LIBS) $(ZLIB_LIBS)
-    ifeq ($(PLATFORM),macosx)
-      TKENV_LIBS += -framework Carbon
-    endif
-  endif
-  ALL_ENV_LIBS += $(TKENV_LIBS)
 endif
 
 #

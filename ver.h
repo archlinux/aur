@@ -13,7 +13,7 @@
 *--------------------------------------------------------------*/
 
 #define OMNETPP_PRODUCT "OMNeT++"
-#define OMNETPP_RELEASE "omnetpp-5.4"
-#define OMNETPP_VERSION_STR "5.4"
-#define OMNETPP_BUILDID "180611-572210e"
+#define OMNETPP_RELEASE "omnetpp-6.0pre2"
+#define OMNETPP_VERSION_STR "6.0pre2"
+#define OMNETPP_BUILDID "180809-1548ee5f82"
 #define OMNETPP_EDITION "Academic Public License -- NOT FOR COMMERCIAL USE"
