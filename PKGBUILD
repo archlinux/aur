@@ -3,8 +3,9 @@
 # Contributor: Jose Valecillos <valecillosjg@gmail.com>
 
 pkgname=dosbox-svn
-pkgver=0.74.4085
+pkgver=0.74.2.4157
 pkgrel=1
+epoch=1
 pkgdesc="An emulator with builtin DOS for running DOS Games"
 arch=('i686' 'x86_64')
 url='http://dosbox.sourceforge.net/'
@@ -25,7 +26,7 @@ sha256sums=('SKIP'
     '228593e97732eaa31e0202b7d46da9d7529672369c17312db3f97784601b5d81')
 
 pkgver(){
-    echo $(cat $pkgname/VERSION).$(svnversion "$SRCDEST"/$pkgname/)
+    echo $(cat $pkgname/VERSION).$(svnversion "$SRCDEST"/$pkgname/) | sed 's/-/./'
 }
 
 build() {
