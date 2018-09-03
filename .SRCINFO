@@ -1,9 +1,10 @@
 pkgbase = jchempaint
 	pkgver = 3.3.1210
-	pkgrel = 1
+	pkgrel = 2
 	url = jchempaint.github.io
 	arch = x86_64
 	license = GPL
+	makedepends = imagemagick
 	depends = java-runtime
 	noextract = jchempaint-3.3-1210.jar
 	source = https://github.com/downloads/JChemPaint/jchempaint/jchempaint-3.3-1210.jar
