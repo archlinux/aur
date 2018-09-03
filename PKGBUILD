@@ -12,7 +12,7 @@ pkgrel=4
 pkgdesc="A web based interface used to manage mailboxes, virtual domains and aliases created for Kopano-Server with DB-Plugin and Postfix"
 arch=('any')
 license=('GPL')
-url="https://git.pietma.com/pietma/com-pietma-${pkgname}"
+url="https://github.com/pietmacom/com-pietma-zarafa-postfixadmin"
 depends=(
 	 'kopano-core'
 	 'bash'
