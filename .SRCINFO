@@ -12,7 +12,7 @@ pkgbase = gcolor3
 	depends = hicolor-icon-theme
 	conflicts = gcolor3-git
 	source = https://gitlab.gnome.org/World/gcolor3/-/archive/v2.3.1/gcolor3-v2.3.1.tar.gz
-	sha256sums = bb1196207bc1dd884f743f8210f8322282a3400e44e57b1c14f5a0bd04512625
+	sha256sums = b99a361d352ded2a7e867e2e6d33df2e03af0bebd4cc5bcd06959389566f9a79
 
 pkgname = gcolor3
 

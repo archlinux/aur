@@ -11,15 +11,15 @@ depends=('gtk3' 'hicolor-icon-theme')
 makedepends=('meson' 'gnome-common')
 conflicts=('gcolor3-git')
 source=(https://gitlab.gnome.org/World/gcolor3/-/archive/v$pkgver/gcolor3-v$pkgver.tar.gz)
-sha256sums=('bb1196207bc1dd884f743f8210f8322282a3400e44e57b1c14f5a0bd04512625')
+sha256sums=('b99a361d352ded2a7e867e2e6d33df2e03af0bebd4cc5bcd06959389566f9a79')
 
 build() {
-    cd "$srcdir"/$pkgname-$pkgver
+    cd "$srcdir"/$pkgname-v$pkgver
     meson build --prefix=/usr
     ninja -C build
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname-v$pkgver"
     DESTDIR="$pkgdir" ninja -C build install
 }
