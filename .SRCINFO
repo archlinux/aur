@@ -1,6 +1,6 @@
 pkgbase = pikaur-git
-	pkgdesc = AUR helper with minimal dependencies inspired by pacaur, yaourt and yay. Review PKGBUILDs all in once, next build them all without user interaction.
-	pkgver = 1.2.23
+	pkgdesc = AUR helper which asks all questions before installing/building. Inspired by pacaur, yaourt and yay.
+	pkgver = 1.2.24
 	pkgrel = 1
 	url = https://github.com/actionless/pikaur
 	arch = any

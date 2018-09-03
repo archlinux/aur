@@ -2,9 +2,9 @@
 # shellcheck disable=SC2034,SC2154
 
 pkgname=pikaur-git
-pkgver=1.2.23
+pkgver=1.2.24
 pkgrel=1
-pkgdesc="AUR helper with minimal dependencies inspired by pacaur, yaourt and yay. Review PKGBUILDs all in once, next build them all without user interaction."
+pkgdesc="AUR helper which asks all questions before installing/building. Inspired by pacaur, yaourt and yay."
 arch=('any')
 url="https://github.com/actionless/pikaur"
 license=('GPL3')
