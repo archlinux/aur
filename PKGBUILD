@@ -15,7 +15,7 @@ source=("https://files.pythonhosted.org/packages/25/b8/edd4a7817e613adef1c8814ec
 sha256sums=('22c8fd947216ff93d66725b1737139253f142b41f929c6287dce17bdf358df05')
 
 package() {
-  cd "$srcdir/$_realname-$pkgver"
+  cd $_realname-$pkgver
   python setup.py install --root="$pkgdir"
-  install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 README.md "$pkgdir"/usr/share/doc/$pkgname/README.md
 }
