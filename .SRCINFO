@@ -1,7 +1,7 @@
 pkgbase = python-dokuwiki
 	pkgdesc = Python binding for the dokuwiki rpc
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fmenabe/
 	arch = any
 	license = custom:MIT

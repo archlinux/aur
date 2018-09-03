@@ -2,7 +2,7 @@
 
 pkgname=python-dokuwiki
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python binding for the dokuwiki rpc"
 arch=('any')
 url="https://github.com/fmenabe/${_projname}"
