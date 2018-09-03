@@ -1,5 +1,5 @@
 # Maintainer: Michael Spradling <mike@mspradling.com>
-# Contributor: Daniel Albers <daniel@lbe.rs>
+# Contributor: Michael Spradling <mike@mspradling.com>
 
 pkgbase='bareos'
 
@@ -21,8 +21,8 @@ pkgname=("${pkgbase}-common"
          "${pkgbase}-filedaemon-python-plugin"
          "${pkgbase}-storage-python-plugin")
 
-pkgver=17.2.5
-pkgrel=4
+pkgver=17.2.7
+pkgrel=1
 arch=(i686 x86_64 armv7h aarch64)
 groups=('bareos')
 pkgdesc="Bareos - Backup Archiving REcovery Open Sourced"
