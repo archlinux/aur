@@ -7,18 +7,19 @@
 
 pkgname=w3af
 pkgver=1.6.54
-pkgrel=2
+pkgrel=3
 pkgdesc="Web Application Attack and Audit Framework"
 url='http://w3af.org/'
 arch=('any')
 license=('GPL2')
-depends=('python2-clamd' 'python2-pybloomfiltermmap' 'python2-esmre' 'python2-phply' 'python2-pysqlite' 'python2-nltk' 'python2-chardet' 'pdfminer' 'python2-futures' 'python2-pyopenssl' 'python2-lxml' 'scapy' 'python2-guess-language' 'python2-cluster' 'python2-msgpack' 'python2-ntlm' 'python2-pygithub' 'python2-smmap' 'python2-gitpython' 'graphviz' 'pygtksourceview2' 'pygtk' 'gtk2' 'python2-beautifulsoup3' 'xdot' 'halberd' 'python2-jinja' 'python2-ndg-httpsclient' 'python2-stopit' 'python2-tblib' 'python2-darts.util.lru' 'python2-pip' 'python2-setuptools' 'python2-termcolor' 'python2-pyasn1' 'python2-vulndb' 'python2-markdown' 'python2-psutil' 'mitmproxy' 'python2-tldextract' 'python2-ruamel.ordereddict' 'python2-pebble' 'python2-lz4' 'python2-diff_match_patch' 'python2-webkit-server' 'joe' 'tcpdump' 'libffi' 'stunnel' 'icu61')
+depends=('python2-clamd' 'python2-pybloomfiltermmap' 'python2-esmre' 'python2-phply' 'python2-pysqlite' 'python2-nltk' 'python2-chardet' 'pdfminer' 'python2-futures' 'python2-pyopenssl' 'python2-lxml' 'scapy' 'python2-guess-language' 'python2-cluster' 'python2-msgpack' 'python2-ntlm' 'python2-pygithub' 'python2-smmap' 'python2-gitpython' 'graphviz' 'pygtksourceview2' 'pygtk' 'gtk2' 'python2-beautifulsoup3' 'xdot' 'halberd' 'python2-jinja' 'python2-ndg-httpsclient' 'python2-stopit' 'python2-tblib' 'python2-darts.util.lru' 'python2-pip' 'python2-setuptools' 'python2-termcolor' 'python2-pyasn1' 'python2-vulndb' 'python2-markdown' 'python2-psutil' 'mitmproxy' 'python2-tldextract' 'python2-ruamel.ordereddict' 'python2-pebble' 'python2-lz4' 'python2-diff_match_patch' 'python2-webkit-server' 'joe' 'tcpdump' 'libffi' 'stunnel')
 makedepends=('git')
 options=('!strip')
 provides=('w3af')
 conflicts=('w3af-git')
 optdepends=('webkitgtk2: required for w3af-gui'
-'pywebkit: required for w3af-gui')
+'pywebkit: required for w3af-gui'
+'icu61: required for w3af-gui')
 source=(${pkgver}.tar.gz::https://github.com/andresriancho/${pkgname}/archive/${pkgver}.tar.gz
         w3af.desktop)
 sha512sums=('8132bb3ee0433739b9a3bd4a6b25d90e9f71d915eb1f7a63c382199bfc8b9dc5abe6bdd73c7715ab5804e6cf22a99f8ba98ac39cee92a5f3e547f7cb939f8ac6'
