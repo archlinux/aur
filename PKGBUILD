@@ -2,26 +2,26 @@
 
 pkgname=lazy-ips-git
 pkgver=r2.9048f9f
-pkgrel=1
+pkgrel=2
 pkgdesc="Patch ROMs with IPS files."
 arch=('any')
 url="https://github.com/btimofeev/lazy_ips"
 license=('GPL3')
 depends=('python2' 'pygtk')
-source=(
-    "git+https://github.com/btimofeev/lazy_ips.git"
-    'lazy-ips.desktop'
-)
-sha256sums=('SKIP'
-            '37d16380346b6270a90fc4903ee090bfaa5f3295d72e47c38f9bc3cd38104909')
+source=("git+https://github.com/btimofeev/lazy_ips.git")
+sha256sums=('SKIP')
+
+prepare() {
+    gendesk --name "Lazy IPS" ../PKGBUILD
+}
 
 pkgver() {
-    cd "$srcdir/lazy_ips"
+    cd lazy_ips
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-    install -Dm755 "$srcdir/lazy_ips/lazy_ips.py" "$pkgdir/usr/bin/lazy_ips"
+    install -Dm755 lazy_ips/lazy_ips.py "$pkgdir/usr/bin/lazy_ips"
     ln -s /usr/bin/lazy_ips "$pkgdir/usr/bin/lazy-ips"
-    install -Dm644 "$srcdir/lazy-ips.desktop" "$pkgdir/usr/share/applications/lazy-ips.desktop"
+    install -Dm644 lazy-ips.desktop -t "$pkgdir/usr/share/applications/"
 }
