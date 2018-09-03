@@ -1,0 +1,16 @@
+pkgbase = emacs-super-save-git
+	pkgdesc = Save Emacs buffers when they lose focus
+	pkgver = r22.1c8fbd5
+	pkgrel = 1
+	url = https://github.com/bbatsov/super-save
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	provides = emacs-super-save
+	conflicts = emacs-super-save
+	source = git+https://github.com/bbatsov/super-save.git
+	sha256sums = SKIP
+
+pkgname = emacs-super-save-git
+
