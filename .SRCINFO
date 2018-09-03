@@ -1,0 +1,16 @@
+pkgbase = emacs-fill-column-indicator-git
+	pkgdesc = An Emacs minor mode that graphically indicates the fill column.
+	pkgver = r145.d2536b1
+	pkgrel = 1
+	url = https://github.com/alpaker/Fill-Column-Indicator
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	provides = emacs-fill-column-indicator
+	conflicts = emacs-fill-column-indicator
+	source = git+https://github.com/alpaker/Fill-Column-Indicator.git
+	sha256sums = SKIP
+
+pkgname = emacs-fill-column-indicator-git
+
