@@ -1,16 +1,16 @@
 pkgbase = python2-efl
 	pkgdesc = Python2 bindings for the Enlightenment Foundation Libraries
-	pkgver = 1.20.0
-	pkgrel = 2
+	pkgver = 1.21.0
+	pkgrel = 1
 	url = http://www.enlightenment.org
 	arch = i686
 	arch = x86_64
 	license = LGPL3
 	license = GPL3
-	depends = efl>=1.20.0
+	depends = efl>=1.21.0
 	depends = python2-dbus
-	source = http://download.enlightenment.org/rel/bindings/python/python-efl-1.20.0.tar.xz
-	sha256sums = 70de0ee3fabe1e91da5aa0ca09dd908b62dbbeb5fce86ec194b8793967c30ea3
+	source = http://download.enlightenment.org/rel/bindings/python/python-efl-1.21.0.tar.xz
+	sha256sums = 87e04b345528c173e6bea124e48b742e88ae3207458470062300380bd166a223
 
 pkgname = python2-efl
 
