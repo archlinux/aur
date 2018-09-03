@@ -1,6 +1,6 @@
 # Maintainer: Nils Amiet <amietn@foobar>
 pkgname=python-pyhocon
-pkgver=0.3.35
+pkgver=0.3.44
 pkgrel=1
 pkgdesc="HOCON parser for Python"
 arch=(any)
