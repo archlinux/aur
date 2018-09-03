@@ -1,9 +1,16 @@
 #!/bin/sh
 
-#Check if directory exists
-if [ ! -d $HOME/.config/kisslicer ]
+#Check if XDG_CONFIG_HOME is set, and set it if it isn't
+if [ -z "$XDG_CONFIG_HOME" ]
 then
-	mkdir -p $HOME/.config/kisslicer
+	echo "XDG_CONFIG_HOME is not set, setting it to ~/.config"
+	export XDG_CONFIG_HOME="$HOME/.config"
+fi
+
+#Check if directory exists
+if [ ! -d $XDG_CONFIG_HOME/kisslicer ]
+then
+	mkdir -p $XDG_CONFIG_HOME/kisslicer
 fi
 
 #Change into it and start
