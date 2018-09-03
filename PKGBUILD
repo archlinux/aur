@@ -1,8 +1,8 @@
 # Maintainer: Ainola
 
 pkgname=python-image-git
-pkgver=r152.6995eb0
-pkgrel=3
+pkgver=r159.3e91ddf
+pkgrel=1
 pkgdesc="Django application that provides editing for images and videos."
 arch=('any')
 url="https://github.com/francescortiz/image"
@@ -14,16 +14,18 @@ source=("git+https://github.com/francescortiz/image.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/image"
+    cd image
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "$srcdir/image"
+    cd image
     python setup.py build
 }
 
 package() {
-    cd "$srcdir/image"
-    python setup.py install --root="$pkgdir/" --optimize=1
+    cd image
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+    install -Dm644 README.markdown -t "$pkgdir/usr/share/licenses/$pkgname/"
+    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
