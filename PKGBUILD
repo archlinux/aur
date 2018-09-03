@@ -3,7 +3,7 @@
 
 pkgname=minecraft-technic-launcher
 pkgver=4.360
-pkgrel=1
+pkgrel=2
 pkgdesc='Choose from thousands of community-made Minecraft modpacks available on the Technic Platform.'
 arch=('any')
 license=('custom')
@@ -12,28 +12,31 @@ depends=('java-runtime' 'xorg-xrandr' 'hicolor-icon-theme')
 makedepends=('icoutils')
 # bsdtar would fail with "can't replace existing directory with non-directory"
 noextract=('TechnicLauncher.jar')
-source=("$pkgname-$pkgver.jar"::"http://launcher.technicpack.net/launcher${pkgver:0:1}/${pkgver:2}/TechnicLauncher.jar"
+source=("$pkgname-$pkgver.jar::http://launcher.technicpack.net/launcher${pkgver:0:1}/${pkgver:2}/TechnicLauncher.jar"
         "technic-launcher"
         "technic-launcher.desktop")
 sha256sums=('869446fa77e9621d0c6d9ec9ee571b79c1e7d63c12b298f58440889ea11e0d43'
-            '16386e5284409af1106c254c432a623ff35108f1480423b48f57247f0fd755c7'
+            '11e5cbc3ae9888865c34bec90ce725532a039aa751aefa61cd4703c9f0460397'
             'bfea4300dc48adeb726b49125d05b5e65ed368cf08910ced970b1f1c571c4ecd')
+
+prepare() {
+    bsdtar xf "$pkgname-$pkgver.jar" licenses
+    bsdtar -xf "$pkgname-$pkgver.jar" net/technicpack/launcher/resources/icon.ico
+    icotool -x "net/technicpack/launcher/resources/icon.ico" -o .
+}
+
 package(){
-    cd "$srcdir"
-    install -D -m755 "${srcdir}/technic-launcher" "${pkgdir}/usr/bin/technic-launcher"
-    install -D -m644 "$srcdir/$pkgname-$pkgver.jar" "${pkgdir}/usr/share/technic-launcher/technic-launcher.jar"
+    install -Dm755 technic-launcher "$pkgdir/usr/bin/technic-launcher"
+    install -Dm644 "$pkgname-$pkgver.jar" \
+        "$pkgdir/usr/share/java/$pkgname/technic-launcher.jar"
 
 
     # Desktop integration
-    install -D -m644 "${srcdir}/technic-launcher.desktop" "${pkgdir}/usr/share/applications/technic-launcher.desktop"
-    bsdtar -xf "$pkgname-$pkgver.jar" net/technicpack/launcher/resources/icon.ico
-    icotool -x -o "$srcdir" "${srcdir}/net/technicpack/launcher/resources/icon.ico"
+    install -Dm644 technic-launcher.desktop -t "$pkgdir/usr/share/applications/"
     for size in 16 32 48 64; do
-        install -D -m644 "${srcdir}/icon_"?"_${size}x${size}x32.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/technic-launcher.png"
+        install -D -m644 "icon_"?"_${size}x${size}x32.png" \
+            "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/technic-launcher.png"
     done
 
-    bsdtar xf "$pkgname-$pkgver.jar" licenses
-    mkdir -p "$pkgdir/usr/share/licenses/$pkgname/"
-    install -Dm644 licenses/* "$pkgdir/usr/share/licenses/$pkgname/"
+    install -Dm644 licenses/* -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
