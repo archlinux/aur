@@ -1,0 +1,17 @@
+pkgbase = emacs-all-the-icons-dired-git
+	pkgdesc = Adds dired support to all-the-icons
+	pkgver = r31.980b774
+	pkgrel = 1
+	url = https://github.com/jtbm37/all-the-icons-dired
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	depends = emacs-all-the-icons
+	provides = emacs-all-the-icons-dired
+	conflicts = emacs-all-the-icons-dired
+	source = git+https://github.com/jtbm37/all-the-icons-dired.git
+	sha256sums = SKIP
+
+pkgname = emacs-all-the-icons-dired-git
+
