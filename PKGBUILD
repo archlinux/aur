@@ -2,13 +2,13 @@
 # Co-maintainer: Edoardo Morassutto <edoardo.morassutto@gmail.com>
 
 pkgname=task-maker-git
-pkgver=r711.bd79bde
+pkgver=r730.df7419f
 pkgrel=1
 pkgdesc="The new cmsMake!"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/algorithm-ninja/task-maker"
 license=('MPL2')
-depends=('python' 'capnproto' 'pybind11')
+depends=('python' 'python-ruamel-yaml' 'python-traits' 'capnproto' 'pybind11')
 makedepends=('cmake' 'gmock' 'gtest' 'python-pip')
 provides=('task-maker')
 conflicts=('task-maker')
