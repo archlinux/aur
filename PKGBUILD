@@ -2,13 +2,14 @@
 
 pkgname=perl-b-hooks-parser
 pkgver=0.19
-pkgrel=2
+pkgrel=3
 pkgdesc="Interface to perl's parser variables"
 _dist=B-Hooks-Parser
 arch=('any')
 url="https://metacpan.org/module/$_dist"
 license=('GPL' 'PerlArtistic')
 depends=('perl>=5.10' 'perl-b-hooks-op-check' 'perl-b-hooks-endofscope' 'perl-test-exception')
+checkdepends=('perl-test-fatal')
 options=('!emptydirs' purge)
 source=(https://cpan.metacpan.org/authors/id/E/ET/ETHER/$_dist-$pkgver.tar.gz)
 md5sums=('5ea29de2b6dc0aab04dec2aa7d9d7805')
