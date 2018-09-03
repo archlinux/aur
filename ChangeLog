@@ -1,3 +1,8 @@
+4.3.30 (2018-09-01 16:57:29)
+
+    Fixes a bug in the ELF loader regarding ARM relocations,
+    Fixes a crash while loading some files from the watchOS 5.0 beta shared DYLD cache.
+
 4.3.29 (2018-08-25 11:28:09)
 
     Fixes an issue where main screen would be impossible to read in some circumstances. 
