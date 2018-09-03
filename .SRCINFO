@@ -1,0 +1,16 @@
+pkgbase = emacs-vlf-git
+	pkgdesc = View Large Files in Emacs
+	pkgver = r305.31b292d
+	pkgrel = 1
+	url = https://github.com/m00natic/vlfi
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	provides = emacs-vlf
+	conflicts = emacs-vlf
+	source = git+https://github.com/m00natic/vlfi.git
+	sha256sums = SKIP
+
+pkgname = emacs-vlf-git
+
