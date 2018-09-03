@@ -5,7 +5,7 @@
 _basename=mjpegtools
 pkgname=lib32-${_basename}
 pkgver=2.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Set of tools that can do recording of videos and playback, simple cut-and-paste editing and the MPEG compression of audio and video. 32bit libraries"
 arch=('x86_64')
 license=('GPL')
@@ -22,11 +22,11 @@ prepare() {
 
 build() {
   cd ${_basename}-${pkgver}
-  export CC="${CC} -m32"
-  export CXX="${CXX} -m32"
+  export CC="gcc -m32 -fPIC"
+  export CXX="g++ -m32 -fPIC"
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
   #patch -Np0  -i "${srcdir}/v4l.patch" #video4linux is failing compilation
-  ./configure --prefix=/usr --libdir=/usr/lib32 --enable-largefile
+  ./configure --prefix=/usr --libdir=/usr/lib32 --enable-largefile 
 #  make clean
   make
 }
