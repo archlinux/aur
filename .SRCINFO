@@ -1,7 +1,7 @@
 pkgbase = nginx-mainline-mod-vts
 	pkgdesc = Nginx virtual host traffic status module (module for mainline nginx)
 	pkgver = 0.1.18
-	pkgrel = 9
+	pkgrel = 1
 	url = https://github.com/vozlt/nginx-module-vts
 	arch = i686
 	arch = x86_64
