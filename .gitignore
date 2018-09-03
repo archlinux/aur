@@ -1,5 +1,16 @@
-*
-!.gitignore
-!PKGBUILD
-!*.install
-!.SRCINFO
+# Directories
+pkg
+src
+endless-sky
+
+# Archives
+*.tar
+*.tar.*
+*.zip
+*.tgz
+*.sig
+*.deb
+
+# Logs
+*.log
+*.log.*
