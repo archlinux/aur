@@ -2,7 +2,7 @@
 
 pkgname=iptables-fullcone-nat
 pkgver=1.8.0.r85.g0800d9b4
-pkgrel=1
+pkgrel=2
 pkgdesc="iptables with FULLCONENAT extension"
 arch=('i686' 'x86_64')
 url="https://github.com/Chion82/netfilter-full-cone-nat"
@@ -12,7 +12,7 @@ makedepends=('git' 'linux-api-headers')
 provides=('iptables')
 conflicts=('iptables')
 install=${pkgname}.install
-source=("file:///usr/src/netfilter-full-cone-nat-git+ec14efe/libipt_FULLCONENAT.c"
+source=("file:///usr/src/netfilter-full-cone-nat-git+bc3fb32/libipt_FULLCONENAT.c"
 	"git://git.netfilter.org/iptables"
         "empty-filter.rules::https://git.archlinux.org/svntogit/packages.git/plain/trunk/empty-filter.rules?h=packages/iptables"
         "empty-mangle.rules::https://git.archlinux.org/svntogit/packages.git/plain/trunk/empty-mangle.rules?h=packages/iptables"
