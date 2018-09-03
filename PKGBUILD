@@ -2,12 +2,12 @@
 pkgname=ttf-churchslavonic
 _pkgname=fonts-churchslavonic
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Unicode-encoded TTF fonts for Church Slavonic"
 arch=('any')
 license=('SIL' 'GNUv3')
 url="https://github.com/typiconman/fonts-cu/"
-install=$pkgname.install
+#install=$pkgname.install
 source=("https://www.ponomar.net/files/${_pkgname}.zip")
 
 package() {
