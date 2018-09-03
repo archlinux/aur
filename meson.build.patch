@@ -1,8 +1,9 @@
-5c5
-<     default_options : ['cpp_std=c++17'],
+7c7,8
+<         'buildtype=release'
 ---
->     default_options : ['cpp_std=c++17', 'default_library=static']
-26c26
+>         'buildtype=release',
+>         'default_library=static'
+29c30
 < fmt = dependency('fmt', fallback: ['fmtlib', 'fmt_dep'])
 ---
 > fmt = subproject('fmtlib').get_variable('fmt_dep')

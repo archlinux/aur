@@ -1,8 +1,8 @@
 # Maintainer: Alexis Rouillard <contact@arouillard.fr>
 
 pkgname=waybar-git
-pkgver=r118.0dba3abc
-pkgrel=2
+pkgver=r128.28c65c64
+pkgrel=1
 pkgdesc='Highly customizable wayland bar for sway or wlroots based compositor.'
 arch=('x86_64')
 url='https://github.com/Alexays/Waybar/'
@@ -18,12 +18,12 @@ depends=('gtkmm3'
 makedepends=('meson'
              'git')
 
-# source=("${pkgname}::git://github.com/Alexays/Waybar#commit=0dba3abc"
+# source=("${pkgname}::git://github.com/Alexays/Waybar#commit=28c65c64"
 source=("${pkgname}::git://github.com/Alexays/Waybar"
         'meson.build.patch')
 
 sha1sums=('SKIP'
-          '2c20d1b264896312f59c14fab12251a7de18b86e')
+          '99b9da23d134953c04d6c3094f5ba7a435846a5e')
 
 prepare() {
     cd "${srcdir}/${pkgname}"
