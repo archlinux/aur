@@ -1,4 +1,4 @@
-# Maintainer: Richard Neumann aka. rne <mail at richard dash neumann period de>
+# Maintainer: Richard Neumann aka. schard <mail at richard dash neumann period de>
 
 pkgname='mcipc-git'
 pkgver=latest
