@@ -1,11 +1,11 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=wavemon-git
-pkgver=0.8.0.294.a33b956
+pkgver=0.8.2.343.324b151
 pkgrel=1
 pkgdesc='Ncurses-based monitoring application for wireless network devices'
-url='http://eden-feed.erg.abdn.ac.uk/wavemon/'
-arch=('i686' 'x86_64')
+url='https://github.com/uoaerg/wavemon'
+arch=('x86_64')
 license=('GPL3')
 depends=('ncurses' 'libcap' 'libnl')
 makedepends=('git')
