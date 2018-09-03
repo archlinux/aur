@@ -1,6 +1,6 @@
 pkgbase = haunt
 	pkgdesc = Static site generator written in Guile Scheme
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://haunt.dthompson.us
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = haunt
 	depends = guile
 	optdepends = guile-reader: Skribe support
 	optdepends = guile-commonmark: CommonMark support
-	source = https://files.dthompson.us/haunt/haunt-0.2.1.tar.gz
-	sha512sums = 4520e3f8793588559eafe6dd0d6b4bea2e892b3a9c2bdcd740e164bd453690cc98f97ae3d30ce385203739ca6735ea6c321f05a3e1336035a00f780b06859ff2
+	source = https://files.dthompson.us/haunt/haunt-0.2.2.tar.gz
+	sha512sums = a45ff725cf1cff841b66510baf072792f139c255266e3ccfcaf1439af56c33a554c124b3b0837922fd10ec40e66d08b3572251dca886b7cc5872877f85bfc17c
 
 pkgname = haunt
 
