@@ -1,4 +1,4 @@
-# Maintainer: Richard Neumann aka. rne <r dot neumann at homeinfo fullstop de>
+# Maintainer: Richard Neumann aka. rne <mail at richard dash neumann period de>
 
 pkgname='mcipc-git'
 pkgver=latest
