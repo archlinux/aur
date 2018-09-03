@@ -14,7 +14,7 @@ options=(!emptydirs)
 install=
 _name=${pkgname#python-}
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz)
-sha256sums=('67a887a401f19f182c61d144195280e53d0469efb4e9ae2a1c66f890b76774d4  ')
+sha256sums=('67a887a401f19f182c61d144195280e53d0469efb4e9ae2a1c66f890b76774d4')
 
 prepare() {
   cd "$srcdir/$_name-$pkgver"
