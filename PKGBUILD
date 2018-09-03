@@ -9,15 +9,15 @@
 
 pkgname=davinci-resolve
 _pkgname=resolve
-pkgver=15.0
-pkgrel=1
+pkgver=15.0.1
+pkgrel=0
 pkgdesc='Professional A/V post-production software suite'
 arch=('x86_64')
 url="https://www.blackmagicdesign.com/"
 license=('Commercial')
 depends=('glu' 'gtk2' 'gstreamer' 'libpng12' 'lib32-libpng12' 'ocl-icd' 'openssl-1.0'
          'opencl-driver' 'qt4' 'qt5-base' 'qt5-svg' 'qt5-webkit'
-         'qt5-webengine' 'qt5-websockets')
+         'qt5-webengine' 'qt5-websockets' 'xdg-user-dirs')
 options=('!strip')
 conflicts=('davinci-resolve-beta' 'davinci-resolve-studio' 'davinci-resolve-studio-beta')
 DOWNLOADS_DIR=`xdg-user-dir DOWNLOAD`
@@ -27,13 +27,13 @@ if [ ! -f ${pkgdir}/DaVinci_Resolve_${pkgver}_Linux.zip ]; then
     ln -sfn $DOWNLOADS_DIR/DaVinci_Resolve_${pkgver}_Linux.zip ${pkgdir}
   else
     msg2 "The package can be downloaded here: https://www.blackmagicdesign.com/products/davinciresolve/"
-    msg2 "Please remember to put a downloaded package DaVinci_Resolve_${pkgver}_Linux.zip into ${pkgdir} or $DOWNLOADS_DIR"
+    msg2 "Please remember to put a downloaded package DaVinci_Resolve_${pkgver}_Linux.zip into the build directory or $DOWNLOADS_DIR"
     sleep 3
   fi
 fi
 
 source=("local://DaVinci_Resolve_${pkgver}_Linux.zip")
-sha256sums=('bdb6c3bce14f40d79a4732c533e3fe23624c68493a8f55586a35a8abe0e6c1d2')
+sha256sums=('8f9d921a0173dc8feeb6228acdd494cdb46ce4f3013dfc76d21303d25e25c7e4')
 
 package() {
 #	msg2 "Did you download the archive manually? If not, this will fail."
