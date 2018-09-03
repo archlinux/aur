@@ -11,7 +11,7 @@ optdepends=('guile-reader: Skribe support'
             'guile-commonmark: CommonMark support')
 makedepends=('guile-reader' 'guile-commonmark')
 source=("https://files.dthompson.us/haunt/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('4520e3f8793588559eafe6dd0d6b4bea2e892b3a9c2bdcd740e164bd453690cc98f97ae3d30ce385203739ca6735ea6c321f05a3e1336035a00f780b06859ff2')
+sha512sums=('a45ff725cf1cff841b66510baf072792f139c255266e3ccfcaf1439af56c33a554c124b3b0837922fd10ec40e66d08b3572251dca886b7cc5872877f85bfc17c')
 
 build() {
   cd "$pkgname"-"$pkgver"
