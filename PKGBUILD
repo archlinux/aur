@@ -1,46 +1,55 @@
- 
-# Contributor: Felix Yan <felixonmars@gmail.com>
+# $Id$
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Marti Raudsepp <marti@juffo.org>
 # Contributor: Radu Andries <admiral0@tuxfamily.org>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 # Mantainer: Lorenzo Ferrillo <lorenzofer at live dot it>
+_pkgname=zbar
 pkgname=lib32-zbar
-pkgver=0.10
+pkgver=0.20
 pkgrel=1
 pkgdesc="Application and library for reading bar codes from various sources. 32bit libraries only version"
 arch=('x86_64')
-url="http://zbar.sourceforge.net/"
+url="https://github.com/procxx/zbar"
 license=('LGPL')
-depends=('lib32-imagemagick' 'lib32-libxv' 'lib32-python2' 'lib32-gtk2' 'pygtk' 'lib32-v4l-utils')
-makedepends=()
-conflicts=()
-provides=()
-optdepends=('lib32-qt4: for libzbarqt')
-source=("http://downloads.sourceforge.net/project/zbar/zbar/$pkgver/zbar-$pkgver.tar.bz2"
-        v4l1.patch)
-md5sums=('0fd61eb590ac1bab62a77913c8b086a5'
-         'SKIP')
+depends=('zbar')
+makedepends=('lib32-imagemagick' 'lib32-libxv' 'lib32-python2' 'lib32-gtk2' 'pygtk' 'lib32-v4l-utils')
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/procxx/zbar/archive/$pkgver.tar.gz"
+        imagemagick7.patch)
+sha512sums=('b013dc5f72f910e8e0dc73de1705684f76e5cb5b2026d48d3e149d3e8b46afdf273d06f32738c588c272218e95b5cd39d3c0b8be4eb9be17553504a13b11c144'
+            '43987414a6432b9e7da329f5a416f389d29bfc3417a6edc65a46b2677ade7dbb8c150df90c8b42464a6cb17c4732509fb8d3672387dafe9fd17a5def78a5ef63')
 
 prepare() {
   cd zbar-$pkgver
-  patch -p1 -i ../v4l1.patch
+  patch -p1 -i ../imagemagick7.patch
+  autoreconf -vfi
 }
 
 build() {
   cd zbar-$pkgver
-  export CC="${CC} -m32"
-  export CXX="${CXX} -m32"
+   export CC="gcc -m32"
+  export CXX="g++ -m32"
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
   export PYTHON='/usr/bin/python2-32'
   export PYTHON_CONFIG='/usr/bin/python2-32-config'
+
+  #PKG_CONFIG_PATH="/usr/lib32/imagemagick6/pkgconfig" \
   
-  ./configure --prefix=/usr --without-qt --with-gtk CFLAGS="$CFLAGS -DNDEBUG"
+  PYTHON="/usr/bin/python2" \
+  ./configure --prefix=/usr --libdir=/usr/lib32 --without-qt --without-gtk CFLAGS="$CFLAGS -DNDEBUG"
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
+
 }
 
 package() {
+
   cd zbar-$pkgver
   make DESTDIR="$pkgdir" install
-}
 
-# vim:set ts=2 sw=2 et:
+  rm -Rf "$pkgdir"/usr/lib32/*.a \
+	"$pkgdir"/usr/include/ \
+        "$pkgdir"/usr/bin \
+	"$pkgdir"/usr/share
+	
+}
