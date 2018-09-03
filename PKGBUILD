@@ -2,25 +2,23 @@
 
 pkgname=nuclear-throne-hib
 pkgver=20160815
-pkgrel=2
-pkgdesc="Action roguelike-like about mutants that spend their workdays trying to fight for the throne in a post-apocalyptic world."
-arch=('i686' 'x86_64')
+pkgrel=3
+pkgdesc="Action roguelike-like about mutants trying to fight for the throne in a post-apocalyptic world."
+arch=('x86_64')
 url="http://nuclearthrone.com"
-license=('custom: commercial')
+license=('custom')
 makedepends=('unzip')
-depends_i686=('openal' 'glu' 'openssl' 'libxxf86vm' 'libxrandr')
-depends_x86_64=('lib32-openal' 'lib32-glu' 'lib32-openssl'
-                'lib32-libxxf86vm' 'lib32-libxrandr')
-# If Firejail is installed, this application will be sandboxed automatically.
-optdepends=('firejail: Automatically sandbox this application from your OS')
+depends=('lib32-openssl-1.0' 'lib32-openal' 'lib32-glu'
+         'lib32-openssl' 'lib32-libxxf86vm' 'lib32-libxrandr')
 source=("hib://nuclearthrone-linux.zip"
         "${pkgname}.desktop"
         "$pkgname")
 sha256sums=('7834649060d8c0d50e976555617d49ae7c0787d1570c1768395ad4c04bd9f77b'
             '673fc3ff551fac28fced5386e9642019cc5dde1dbd44af0a8407a38eb4cdd9a2'
-            '5e837c75f2a539a5c11a3abd41c9d2314668d5c5ae2443a332deecd63554478c')
+            'a4eb9dd92ae6db76aef291969812dc367395bfcbc3599b31b3e0d32f8c600945')
 
-# Prevent compressing final package
+# Prevent compressing final package, otherwise compression time takes an
+# eternity for not much gain
 PKGEXT='.pkg.tar'
 
 # You need to download the Humble Bundle file manually or you can configure
@@ -35,16 +33,15 @@ PKGEXT='.pkg.tar'
 DLAGENTS+=("hib::/usr/bin/echo %u Download the HIB installer to \"$PWD\" or set up a hib:// DLAGENT. Read this PKGBUILD for more information.")
 
 package() {
-    mkdir -p "$pkgdir/opt/$pkgname"
-    cp -r "$srcdir/nuclearthrone/assets" "$pkgdir/opt/$pkgname/assets"
-    install -Dm755 "$srcdir/nuclearthrone/runner" "$pkgdir/opt/$pkgname/runner"
+    install -dm755 "$pkgdir/opt/$pkgname"
+    cp -r nuclearthrone/assets "$pkgdir/opt/$pkgname/assets"
+    install -Dm755 nuclearthrone/runner -t "$pkgdir/opt/$pkgname/"
 
-    mkdir -p "$pkgdir/usr/bin"
-    install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -Dm755 "$pkgname" -t "$pkgdir/usr/bin/"
 
     mkdir -p "$pkgdir"/usr/share/{pixmaps,applications}
-    ln -s "/opt/$pkgname/assets/icon.png" \
-          "$pkgdir/usr/share/pixmaps/$pkgname.png"
+    install -Dm644 "nuclearthrone/assets/icon.png" \
+        -t "$pkgdir/usr/share/pixmaps/$pkgname.png"
     install -Dm644 "$pkgname.desktop" \
-                   "$pkgdir/usr/share/applications/$pkgname.desktop"
+        "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
