@@ -45,7 +45,7 @@ source_i686=("https://github.com/iteufel/nwjs-ffmpeg-prebuilt/releases/download/
 source_x86_64=("https://github.com/iteufel/nwjs-ffmpeg-prebuilt/releases/download/$_nwjs/$_nwjs-linux-x64.zip")
 sha256sums=('SKIP'
             'fa2615680bcb591b9892e8d6394235436ffa65210be6e942b8ca91de982e8cd2'
-            'b4df915286753c1155b67015b89b68df6d3c655daf8832286370afe4d334fd89')
+            '4422f21e16176fda697ed0c8a6d1fb6f9dd7c4bc3f3694f9bcc19cbe66630334')
 sha256sums_i686=('ab90d8c157abe8156bc0a1503cda8a52eb006eb5c7a664e22c6f006b1f3d76e1')
 sha256sums_x86_64=('4aebfb88ca4efd80672fd94528af51021f7e792637fbe0e5401f8a4ab07c74f2')
 
