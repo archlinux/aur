@@ -1,7 +1,7 @@
 pkgbase = bazarr
 	pkgdesc = Manage and download subtitles for Sonarr and Radarr.
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/morpheus65535/bazarr
 	arch = any
 	license = GPL3

@@ -2,7 +2,7 @@
 
 pkgname=bazarr
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage and download subtitles for Sonarr and Radarr."
 arch=('any')
 url="https://github.com/morpheus65535/bazarr"
@@ -40,7 +40,7 @@ sha256sums=('77c320e53af250f27051ba2e8fa5f01b49f58e774775a64c6c58df3809ac317f'
 
 package() {
   install -d -m 755 "${pkgdir}/usr/lib/bazarr"
-  cp -dpr --no-preserve=ownership "${srcdir}/bazarr-${pkgver}" "${pkgdir}/usr/lib/"
+  cp -dpr --no-preserve=ownership "${srcdir}/bazarr-${pkgver}/"* "${pkgdir}/usr/lib/bazarr"
 
   install -D -m 644 "${srcdir}/bazarr.service" "${pkgdir}/usr/lib/systemd/system/bazarr.service"
   install -D -m 644 "${srcdir}/bazarr.sysusers" "${pkgdir}/usr/lib/sysusers.d/bazarr.conf"
