@@ -9,7 +9,7 @@
 
 pkgname=polysh
 pkgver=0.9
-pkgrel=3
+pkgrel=4
 pkgdesc="a tool to aggregate several remote shells into one."
 arch=("any")
 url="https://pypi.org/project/${pkgname}/"
@@ -22,7 +22,7 @@ sha256sums=("3f45061ad42fd9402fe6629e72e9f3d9f94b9f0b1401e76c3c1f69dcc713d2da")
 
 package() {
   # TODO: fix in upstream
-  cd "${srcdir}/${_basename}-${_basename}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
   # TODO: implement proper documentation in upstream
   mkdir -p "${pkgdir}/usr/share/man/man1"
   rst2man README.rst "${pkgdir}/usr/share/man/man1/${_basename}.1"
