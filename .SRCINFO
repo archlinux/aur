@@ -6,11 +6,10 @@ pkgbase = aur-pkg-status
 	arch = i686
 	arch = x86_64
 	license = MIT
+	makedepends = go
 	depends = pacman
-	source_i686 = https://github.com/tinhtruong/aur-pkg-status/releases/download/v0.1.0/aur-pkg-status_0.1.0_linux_i686.tar.gz
-	sha256sums_i686 = dc1a850e039e859bad8cd0239dbcc89e1cb74b91696fcdc18bcca725307d7e31
-	source_x86_64 = https://github.com/tinhtruong/aur-pkg-status/releases/download/v0.1.0/aur-pkg-status_0.1.0_linux_x86_64.tar.gz
-	sha256sums_x86_64 = 664d6699ff7e0f1a81fd34ab214f6d2c98ae56b72582ae8741a43d17489daa50
+	source = https://github.com/tinhtruong/aur-pkg-status/archive/v0.1.0.tar.gz
+	sha256sums = 3c2eb8ec02036cbbefd1540227a01638ee1fe942b126fab67b877f78ecf5b09b
 
 pkgname = aur-pkg-status
 
