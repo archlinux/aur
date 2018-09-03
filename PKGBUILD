@@ -1,6 +1,6 @@
 # Maintainer: JC Francois <jc.francois@gmail.com>
 pkgname=etcetera
-pkgver=0.6
+pkgver=0.7
 pkgrel=1
 pkgdesc="Simple command line tool to keep track of changes to config files of a linux system"
 arch=("x86_64" "armv6h")
@@ -10,11 +10,11 @@ depends=("python")
 optdepends=()
 options=()
 backup=("etc/etcetera.conf")
-source=("https://gitlab.com/jeancf/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-md5sums=("a81d657b7867f87532017f792b8fd260")
+source=("https://gitlab.com/jeancf/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+md5sums=('4aa1c4645cabbdeaecaa8c3f93186c98')
 
 package() {
-    cd ${srcdir}/${pkgname}-v${pkgver}
+    cd ${srcdir}/${pkgname}-${pkgver}
     install -Dm755 etcetera             ${pkgdir}/usr/bin/etcetera
     install -Dm644 commands.py          ${pkgdir}/usr/lib/etcetera/commands.py
     install -Dm644 toolbox.py           ${pkgdir}/usr/lib/etcetera/toolbox.py
