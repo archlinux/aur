@@ -1,0 +1,16 @@
+pkgbase = emacs-no-littering-git
+	pkgdesc = Help keeping ~/.emacs.d clean
+	pkgver = r144.3f6d290
+	pkgrel = 1
+	url = https://github.com/emacscollective/no-littering
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	provides = emacs-no-littering
+	conflicts = emacs-no-littering
+	source = git+https://github.com/emacscollective/no-littering.git
+	sha256sums = SKIP
+
+pkgname = emacs-no-littering-git
+
