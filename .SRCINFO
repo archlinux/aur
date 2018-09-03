@@ -1,14 +1,19 @@
 pkgbase = nncli
 	pkgdesc = NextCloud Notes Command Line Interface
-	pkgver = 0.1.2
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/djmoch/nncli
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
+	makedepends = python-pip
+	depends = python
 	depends = python-urwid
 	depends = python-requests
-	source = nncli-0.1.2.tar.gz::https://files.pythonhosted.org/packages/source/n/nncli/nncli-0.1.2.tar.gz
-	sha256sums = 6bec77deb14b2c09c73d30b500e7e0ed9f1bf4d28fd6bfb5386eda2a6499da97
+	depends = python-appdirs
+	noextract = nncli-0.2.0-py3-none-any.whl
+	source = nncli-0.2.0-py3-none-any.whl::https://files.pythonhosted.org/packages/py3/n/nncli/nncli-0.2.0-py3-none-any.whl
+	source = LICENSE::https://raw.githubusercontent.com/djmoch/nncli/v0.2.0/LICENSE
+	sha256sums = e8f07c22f1d8870e23e76c082a113eea2d0bc3e003525c25ac2e0bba1688606a
+	sha256sums = 5240402e10b059c75958f58a489e92eaf994c7274f0b8d566f95bb35dda62383
 
 pkgname = nncli
