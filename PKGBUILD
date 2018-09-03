@@ -26,7 +26,7 @@ changelog=
 source=(astroid::git+https://github.com/astroidmail/astroid.git astroid.1.gz)
 noextract=()
 md5sums=('SKIP'
-         '52c14022e2bf7e4806719e8ab4fb7909')
+         '1cae3fa289d3061dd7d1ac2aa1f9c643')
 
 build() {
   cd "$srcdir/astroid"
