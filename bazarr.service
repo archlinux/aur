@@ -1,0 +1,14 @@
+[Unit]
+Description=Bazarr Service
+After=network.target
+
+[Service]
+User=bazarr
+Group=bazarr
+Type=simple
+ExecStart=/usr/bin/python2 /usr/lib/bazarr/bazarr.py
+Restart=always
+TimeoutStopSec=30
+
+[Install]
+WantedBy=multi-user.target
