@@ -3,7 +3,7 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=vim-eunuch-git
-pkgver=1.1.r19.gb536b88
+pkgver=1.2.r0.g632d92e
 pkgrel=1
 pkgdesc="Vim sugar for the UNIX shell commands that need it the most, by tpope"
 arch=('any')
