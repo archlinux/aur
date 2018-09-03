@@ -1,7 +1,7 @@
 # Maintainer: 4leks4ndr <orthodox dot tk at gmail dot com>
 pkgname=ttf-churchslavonic
 _pkgname=fonts-churchslavonic
-pkgver=1.2
+pkgver=2.0
 pkgrel=1
 pkgdesc="Unicode-encoded TTF fonts for Church Slavonic"
 arch=('any')
