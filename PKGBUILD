@@ -1,8 +1,8 @@
 # Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
-_realname="pympv"
+_realname=pympv
 pkgname=python-pympv
-pkgver=0.4.1
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A python wrapper for libmpv."
 arch=('i686' 'x86_64')
@@ -10,8 +10,8 @@ url="https://github.com/marcan/pympv"
 license=('gpl')
 depends=('python' 'mpv')
 makedepends=('cython')
-source=("https://pypi.python.org/packages/d9/5e/0e4686a06dc6976416bc2728b727b6150ab044645542bfbcbdda0994e865/$_realname-$pkgver.tar.gz")
-md5sums=('6aea4b340bf300013bb95e0802d252d0')
+source=("https://files.pythonhosted.org/packages/25/b8/edd4a7817e613adef1c8814ecc492744ffd243aee81dc8c45502d5f24cc1/$_realname-$pkgver.tar.gz")
+sha256sums=('22c8fd947216ff93d66725b1737139253f142b41f929c6287dce17bdf358df05')
 
 package() {
   cd "$srcdir/$_realname-$pkgver"
