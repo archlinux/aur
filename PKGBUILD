@@ -39,7 +39,7 @@ backup=(
 
 source=(						  
 	"postfixadmin-${_postfixadminver}.tar.gz::https://downloads.sourceforge.net/project/postfixadmin/postfixadmin/postfixadmin-2.93/postfixadmin-${_postfixadminver}.tar.gz"
-	"kopano-postfixadmin-${pkgver}::git+https://git.pietma.com/pietma/com-pietma-zarafa-postfixadmin.git#branch=kopano" # #tag=v${pkgver}"
+	"kopano-postfixadmin-${pkgver}::git+https://github.com/pietmacom/com-pietma-zarafa-postfixadmin.git#branch=kopano" # #tag=v${pkgver}"
 	)
 
 md5sums=(
