@@ -1,6 +1,6 @@
 # Maintainer: Magnus Bergmark <magnus.bergmark@gmail.com>
 pkgname=graceful-shutdown
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Terminate a list of processes and wait for them to exit."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=()
 makedepends=('cargo')
 source=("https://github.com/Mange/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('cca3f83499da0cbd6c9f9fd32723bc5fcfc402960201a8aa7ecb880dc8e2af45a403375ce8178cfade26c7b9136e125ed7e24b3a0b2f97add2959941a4001d69')
+sha512sums=('f376fe5b7cab8b86773cfba8b3b4b73c5ad9d2f492cb687e7182e939bb219c3dbc8eb8b94386a110c2333cb48f6d88b7a52e00728cec5b923b3fbc44da99ff5c')
 
 build() {
   cd "$pkgname-$pkgver"
