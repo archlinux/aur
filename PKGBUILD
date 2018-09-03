@@ -2,31 +2,28 @@
 
 
 pkgname=edi
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.6.1
+pkgrel=1
 pkgdesc="EFL based IDE."
 arch=('i686' 'x86_64')
 url="https://www.enlightenment.org/"
 license=('BSD')
 depends=('efl' 'bear')
 provides=('edi')
-source=("http://download.enlightenment.org/rel/apps/${pkgname}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('88df33656917bb7cf312c5fbf42a89c8ec44c58c0c9202e6a945d72306541347')
+#add clang as depend or optdepend
+makedepends=('meson' 'ninja')
+source=("https://github.com/Enlightenment/edi/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('a85519a75dd114cf32c4ffc6e0957bdc0f18f5a3c1d85d0c74e0f302ca68d02b')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  ./configure --prefix=/usr
-  make
+  meson ./build --prefix=/usr
+  cd build
+  ninja
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-
-  make DESTDIR="${pkgdir}" install
-
-  install -d "${pkgdir}/usr/share/doc/${pkgname}/"
-  install -m644 -t "${pkgdir}/usr/share/doc/${pkgname}/" "ChangeLog" "NEWS" "README"
-
-  install -d "${pkgdir}/usr/share/licenses/${pkgname}/"
-  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" "AUTHORS" "COPYING"
+  cd ./build 
+  DESTDIR="${pkgdir}" ninja install
 }
