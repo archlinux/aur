@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=pss-git
-pkgver=1.39.r23.gb3b9f2b
+pkgver=1.42
 pkgrel=1
 epoch=
 pkgdesc="A power-tool for searching inside source code files."
