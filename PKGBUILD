@@ -1,4 +1,4 @@
-# Maintainer: Carsten Feuls <archlinux@carstenfeuls.de>
+# Maintainer: Bert Peters <bert@bertptrs.nl>
 # Contributor: Carsten Feuls <archlinux@carstenfeuls.de>
 
 pkgname=ruby-listen
