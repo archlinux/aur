@@ -3,8 +3,8 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=vim-eunuch
-pkgver=1.1
-pkgrel=3
+pkgver=1.2
+pkgrel=1
 pkgdesc="Vim sugar for the UNIX shell commands that need it the most, by tpope"
 arch=('any')
 url="https://github.com/tpope/${pkgname}"
@@ -12,7 +12,7 @@ license=('custom:vim')
 groups=('vim-plugins')
 depends=('vim')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('e452ddd541ef10e5fa9af48e36b181df6d95e5fe96fcea56cf41b20f99db8532')
+sha256sums=('c226391abb0753c2cadb04667466d33a6433ccd85fd3000bf76422d70980f806')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
