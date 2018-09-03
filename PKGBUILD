@@ -1,5 +1,6 @@
-# Maintainer : Christian Rebischke <Chris.Rebischke@archlinux.org>
-# Contributor:dront78 <dront78@gmail.com>
+# Maintainer  : George Angelopoulos <george@usermod.net>
+# Contributor : Christian Rebischke <Chris.Rebischke@archlinux.org>
+# Contributor : dront78 <dront78@gmail.com>
 pkgname=systemtap
 pkgver=3.3
 pkgrel=1
