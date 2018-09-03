@@ -1,0 +1,17 @@
+pkgbase = mingw-w64-trilinos
+	pkgdesc = Framework for the solution of large-scale, complex multi-physics engineering and scientific problems (mingw-w64)
+	pkgver = 12.12.1
+	pkgrel = 1
+	url = http://trilinos.org
+	arch = any
+	license = LGPL3
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-netcdf
+	options = staticlibs
+	options = !buildflags
+	options = !strip
+	source = https://github.com/trilinos/Trilinos/archive/trilinos-release-12-12-1.tar.gz
+	sha256sums = 5474c5329c6309224a7e1726cf6f0d855025b2042959e4e2be2748bd6bb49e18
+
+pkgname = mingw-w64-trilinos
+
