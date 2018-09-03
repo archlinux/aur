@@ -1,6 +1,6 @@
 # Maintainer: Florian Pelz <pelzflorian at pelzflorian.de>
 pkgname=haunt
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Static site generator written in Guile Scheme"
 arch=('any')
