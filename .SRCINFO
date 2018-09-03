@@ -1,7 +1,7 @@
 pkgbase = python-kwpbar
 	pkgdesc = A progress bar for Python.
-	pkgver = 0.1.1
-	pkgrel = 2
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://github.com/Kwpolska/kwpbar.py
 	arch = any
 	license = BSD
@@ -10,8 +10,8 @@ pkgbase = python-kwpbar
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	options = !emptydirs
-	source = https://pypi.io/packages/source/k/kwpbar/kwpbar-0.1.1.tar.gz
-	md5sums = 690f047d87983602016989bfc57bfb2b
+	source = https://files.pythonhosted.org/packages/source/k/kwpbar/kwpbar-0.2.0.tar.gz
+	md5sums = ce4fe5f03538c1f0666179762aa2366d
 
 pkgname = python-kwpbar
 	depends = python
