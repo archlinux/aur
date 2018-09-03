@@ -1,4 +1,4 @@
 pkg/
 src/
 eclipse-*.pkg.tar.xz
-org.eclipse.*.zip
+org.eclipse.*.zip*
