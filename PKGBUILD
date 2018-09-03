@@ -102,7 +102,7 @@ optdepends=('zarafa-webapp'
                 
 source=(
 	"git+https://stash.kopano.io/scm/kc/kopanocore.git#tag=kopanocore-${pkgver}"
-	"kopano-pietma::git+https://git.pietma.com/pietma/com-pietma-zarafa.git#branch=kopano"
+	"kopano-pietma::git+https://github.com/pietmacom/com-pietma-zarafa.git#branch=kopano"
 	)
 md5sums=(
 	 'SKIP'
