@@ -5,7 +5,7 @@ _install_dir="opt/$_pkg_name"
 _symlink_dir="usr/bin"
 
 pkgname="$_pkg_name"
-pkgver=1.6
+pkgver=1.7
 pkgrel=1
 pkgdesc="A utility to automatically perform Arch Linux system maintenance"
 arch=('x86_64')
@@ -13,20 +13,21 @@ url="https://gitlab.com/mgdobachesky/ArchSystemMaintenance"
 license=('GPLv3')
 depends=(
     'awk'
-    'duplicity'
     'pacman-contrib'
     'pacutils'
     'python'
     'python-dateutil'
     'python-xmltodict'
     'reflector'
+    'rsync'
     'sed'
+    'sudo'
     'vim')
 backup=("$_install_dir/settings.sh")
 
 source=("https://gitlab.com/mgdobachesky/ArchSystemMaintenance/raw/master/pkg/$pkgname-$pkgver.tar.xz")
 
-md5sums=('f3c4b1688389eefedc20cc356c8601c5')
+md5sums=('c6f9626703e7a15334ec0ebea649bd3d')
 
 build() {
     umask 022
