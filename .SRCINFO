@@ -1,0 +1,16 @@
+pkgbase = emacs-dired-k-git
+	pkgdesc = Highlighting dired buffer like k
+	pkgver = r132.c50e8f7
+	pkgrel = 1
+	url = https://github.com/syohex/emacs-dired-k
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	provides = emacs-dired-k
+	conflicts = emacs-dired-k
+	source = git+https://github.com/syohex/emacs-dired-k.git
+	sha256sums = SKIP
+
+pkgname = emacs-dired-k-git
+
