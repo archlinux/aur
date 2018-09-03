@@ -4,10 +4,10 @@
 pkgname=liferea-git
 _gitname=liferea
 pkgver=v1.12.4.r38.gd7819557
-pkgrel=1
+pkgrel=2
 pkgdesc="A news aggregator for GTK, git version."
 arch=('i686' 'x86_64')
-url="http://liferea.sourceforge.net"
+url="https://lzone.de/liferea/"
 license=('GPL')
 depends=('libpeas' 'webkit2gtk')
 makedepends=('autoconf' 'intltool' 'git' 'gobject-introspection' 'gconf')
@@ -20,14 +20,13 @@ sha1sums=('SKIP')
 
 pkgver() {
 	cd liferea
-        git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   cd liferea
   autoreconf -i
   intltoolize
-  #./autogen.sh
   ./configure --prefix=/usr --disable-schema-install
   make 
 } 
