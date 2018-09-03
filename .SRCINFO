@@ -1,0 +1,13 @@
+pkgbase = random
+	pkgdesc = Random number generator.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gitlab.com/fakeDeathBRX/random
+	arch = any
+	license = MIT
+	depends = gcc
+	source = random::git+https://gitlab.com/fakeDeathBRX/random
+	sha1sums = SKIP
+
+pkgname = random
+
