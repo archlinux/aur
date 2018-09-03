@@ -3,7 +3,7 @@
 
 _gemname=google-api-client
 pkgname=ruby-$_gemname
-pkgver=0.23.7
+pkgver=0.23.8
 pkgrel=1
 pkgdesc='Client for accessing Google APIs'
 arch=(any)
@@ -22,7 +22,7 @@ depends=(
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('0f0f22eb990ae4760eba98a1a482d60615932ddb')
+sha1sums=('6ba6e5bb12a5eeb849907eafba78519b353f934b')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
