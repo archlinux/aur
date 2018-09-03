@@ -1,7 +1,7 @@
 pkgbase = python-imgurpython
 	pkgdesc = Imgur API official Python bindings
 	pkgver = 1.1.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/imgur/imgurpython
 	arch = any
 	license = MIT
