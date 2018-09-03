@@ -1,15 +1,12 @@
-# Maintainer: Oscar Morante <spacepluk at gmail dot com>
+# Maintainer: Oscar Morante <spacepluk@gmail.com>
 
-_version=2017.4.9
+_version=2017.4.10
 _build=f1
-_buildtag=20180816
-_randomstring=cc814e4d942d
+_randomstring=f2cce2a5991f
 _prefix=/opt/UnityLts
-_unitydownloads="http://beta.unity3d.com/download/${_randomstring}"
-#_keepdownloads=yes
 
 pkgname=unity-editor-lts-android
-pkgver=${_version}${_build}+${_buildtag}
+pkgver=${_version}${_build}
 pkgrel=1
 pkgdesc="Allows building your Unity projects for the Android platform"
 arch=('x86_64')
@@ -19,35 +16,17 @@ depends=('unity-editor-lts'
          'android-platform'
          'android-sdk-build-tools'
          'android-udev')
+makedepends=('cpio')
 optdepends=('android-ndk-13b: needed for IL2CPP builds')
-makedepends=('gtk2' 'libsoup' 'libarchive')
-source=("${_unitydownloads}/UnitySetup-${_version}${_build}")
-sha1sums=('6d4284af0002b3f06a6923649d57ffd045999756')
+source=("https://download.unity3d.com/download_unity/${_randomstring}/MacEditorTargetInstaller/UnitySetup-Android-Support-for-Editor-${_version}${_build}.pkg")
+md5sums=('593f7e4a9fc1d6522f31bf4cf6c0550f')
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
-unity-setup() {
-  ./UnitySetup-${_version}${_build} \
-    --download-location="${startdir}" \
-    --install-location="${pkgdir}${_prefix}" \
-    --unattended $@
-}
-
-extract-component() {
-  msg2 "Extracting $1..."
-  yes | unity-setup --components=$1 > "/tmp/$1.log"
-}
-
-prepare() {
-  chmod +x "${srcdir}/UnitySetup-${_version}${_build}"
-}
-
 package() {
-  mkdir -p "${pkgdir}${_prefix}"
-  extract-component Android
-
-  if [ -z "${_keepdownloads}" ]; then
-    rm "${startdir}/UnitySetup-Android-Support-for-Editor-${_version}${_build}.pkg"
-  fi
+  _dest="${pkgdir}/${_prefix}/Editor/Data/PlaybackEngines/AndroidPlayer"
+  install -d "${_dest}"
+  cd "${_dest}"
+  cat "${srcdir}/TargetSupport.pkg.tmp/Payload" | gzip -dc | cpio -i
 }
 
