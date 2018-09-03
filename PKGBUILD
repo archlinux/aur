@@ -21,12 +21,6 @@ pkgver() {
 }
 
 
-prepare() {
-    # Clean up build dir.
-    rm -rf "${pkgname}/build"
-}
-
-
 package() {
     cd "${srcdir}/${pkgname}"
     python setup.py install --root "${pkgdir}" --optimize=1
