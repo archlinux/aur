@@ -1,24 +1,37 @@
-#! /bin/bash
+#!/usr/bin/env bash
 
-pkgname='gog-hollow-knight'
-pkgdir="/opt/${pkgname}/"
-run="${pkgdir}/start.sh"
+readonly APP='gog-hollow-knight'
 
-if hash firejail; then
-    echo "Firejail detected; attempting to enforce a sandbox..."
-    if [[ -f "${XDG_CONFIG_HOME}/firejail/${pkgname}.profile" ]]; then
-        echo "Firejail profile for ${pkgname} found in ${XDG_CONFIG_HOME}/firejail/"
-        echo "Enforcing a sandbox!"
-        firejail "${run}"
-    elif [[ -f "/etc/firejail/${pkgname}.profile" ]]; then
-        echo "Firejail profile for ${pkgname} found in /etc/firejail/"
-        echo "Enforcing a sandbox!"
-        firejail "${run}"
-    else
-        echo "No Firejail profile detected!"
-        echo "Skipping Firejail sandbox..."
-        "${run}"
-    fi
-else
-    "${run}"
-fi
+function warn() {
+  local -r msg="${1}"
+
+  if tty &> /dev/null; then
+    printf '%s\n' "${msg}" 1>&2
+  else
+    notify-send                              \
+      --app-name="${APP}"                    \
+      --icon="/usr/share/pixmaps/${APP}.png" \
+      "${APP}"                               \
+      "${msg}"
+  fi
+}
+
+function main() {
+  local -r dir="/opt/${APP}/"
+  local -r start="${dir}/start.sh"
+
+  # I don't make the rules... I just have to bend my scripts and PKGBUILDs to
+  # them... Basically Hollow Knight's global Config.ini must be writable by
+  # the user playing the game. To best accomplish this, I created a file that
+  # is writable by the group 'games':
+  if ! id "${USER}" | grep games &> /dev/null; then
+    warn "${USER} must be a member of group: 'games'"
+    return 1
+  fi
+
+  "${start}"
+}
+
+main "${@}"
+
+# vim: sw=2 ts=2 et:

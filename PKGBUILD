@@ -7,9 +7,9 @@
 #       - https://github.com/Sude-/lgogdownloader
 
 pkgname='gog-hollow-knight'
-pkgver=1.2.2.1
+pkgver=1.4.2.4
 pkgrel=1
-# Versioning shenanigans for v1.2.2.1
+# Fix upstream versioning shenanigans:
 epoch=1
 pkgdesc="Hollow Knight is a challenging 2D action-adventure. You’ll explore twisting caverns, battle tainted creatures and escape intricate traps, all to solve an ancient long-hidden mystery."
 url='http://hollowknight.com/'
@@ -19,12 +19,12 @@ arch=('x86_64')
 source=(
   "${pkgname}"
   "${pkgname}.desktop"
-  'file://hollow_knight_en_1_2_2_1_16377.sh'
+  'file://hollow_knight_en_1_4_2_4_23173.sh'
 )
 sha256sums=(
-  '5cd14be9e18be6277fc0daa39dd416d78d4e4445fe8998d3ddcf37a201a843b0'
+  '987b0c0e32895d0a4214650d0afb2f3c2359b049212e13860dc9ae67553c48b4'
   '8860a0daf52181f78711c2b1099d7a09a30ba09331c68e8aae71182a996a0acd'
-  '530b1653961c067934f27298b05f99679da40f02c958f7fc73a689413f31816f'
+  'a6dcc0d0078cb2598f81176b59541a81b2c9955a5288761086475f12d3d2f8cc'
 )
 
 prepare() {
@@ -62,6 +62,14 @@ package() {
   install -m 644                   \
     "${srcdir}/${pkgname}.desktop" \
     "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+
+  # If you can't access Config.ini, the game will not start... This is a bit
+  # of a hack, so if anyone has a better workaround I'm all ears (eyes?)!
+  # This workaround requires the user running the game to be a member of the
+  # group 'games':
+  install -g games -m 664 \
+    /dev/null             \
+    "${pkgdir}/opt/${pkgname}/game/hollow_knight_Data/Config.ini"
 }
 
 # vim: ts=2 sw=2 et:
