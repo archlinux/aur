@@ -3,7 +3,7 @@
 _projname=colored
 pkgname=python-colored
 pkgver=1.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Very simple Python library for color and formatting in terminal'
 arch=('any')
 url="https://github.com/dslackw/${_projname}"
