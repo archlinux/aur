@@ -1,6 +1,6 @@
 pkgbase = usbautomator
 	pkgdesc = Execute commands when USB device is un/plugged
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/greizgh/usbautomator
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = usbautomator
 	makedepends = cargo
 	depends = libsystemd
 	provides = usbautomator
-	source = usbautomator-0.1.0.tar.gz::https://github.com/greizgh/usbautomator/archive/v0.1.0.tar.gz
-	sha256sums = ae6af1e3be73720dca0f354cb98148f15eeb710b53133f29899071fcf69ea6ae
+	source = usbautomator-0.2.0.tar.gz::https://github.com/greizgh/usbautomator/archive/v0.2.0.tar.gz
+	sha256sums = ddfc3d7c66ad2b59b5d478d29e40ab2be1109f14480a05683537dd54499b0ef1
 
 pkgname = usbautomator
 
