@@ -2,7 +2,7 @@
 
 _pkgname=bazarr
 pkgname=$_pkgname-git
-pkgver=r496.0b8ae19
+pkgver=r564.22d85d7
 pkgrel=1
 pkgdesc="Manage and download subtitles for Sonarr and Radarr."
 arch=('any')
@@ -29,8 +29,8 @@ depends=('python2'
          'python2-webtest')
 
 makedepends=('git')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
+provides=('bazarr')
+conflicts=('bazarr')
 source=('git+https://github.com/morpheus65535/bazarr'
         'bazarr.service'
         'bazarr.sysusers'
