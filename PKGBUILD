@@ -1,35 +1,20 @@
-# Maintainer and Contributor: Vladimir Kamensky   <mastersoft24@yandex.ru>
-
+# Maintainer: Vladimir Kamensky <mastersoft24@yandex.ru>
 
 pkgname=cloudcross
-pkgver=1.4.2
-pkgrel=4
-pkgdesc="CloudCross is a improved multi-cloud client with OneDrive, Yandex disk, Google Drive, Dropbox and Mail.ru support."
-arch=('i686' 'x86_64')
+pkgver=1.4.3
+pkgrel=1
+pkgdesc="Opensource cross-platform client for multiple cloud providers."
+arch=('x86_64')
 url="http://cloudcross.mastersoft24.ru"
 license=('BSD')
 categories=('network')
 replaces=('grive2')
-
-
-
-depends=( 'qt5-base' 'mesa' 'curl')
-makedepends=( 'qt5-base' 'mesa' 'curl')
-options=(!emptydirs)
-
-
-source=("https://github.com/MasterSoft24/CloudCross/archive/master.tar.gz")
-#source=("dev.tar.gz")
-
-
-md5sums=("72780e225692ab6c8d76fd9f175ddb3c")
-
+depends=( 'qt5-base' 'curl')
+source=("$pkgname-$pkgver::https://github.com/MasterSoft24/CloudCross/archive/v$pkgver.tar.gz")
+md5sums=('2383effa9752bada4de3e5771dae6e8c')
 
 build() {
-
-	cd "$srcdir/CloudCross-master"
-	#cd "$srcdir/CloudCross-dev"
-	
+	cd CloudCross-$pkgver
 	rm -rf build
 	mkdir build
 	cd build
@@ -38,15 +23,9 @@ build() {
 }
  
 package() {
-	cd "$srcdir/CloudCross-master/build"
-	#cd "$srcdir/CloudCross-dev/build"
-	
-	mkdir -p "${pkgdir}/usr/bin"
-        mkdir -p "${pkgdir}/usr/share/man/man1"
-	
-	
-	cp "$srcdir/CloudCross-master/build/ccross-app/ccross" "${pkgdir}/usr/bin"
-	cp "$srcdir/CloudCross-master/build/ccross-curl-executor/ccross-curl" "${pkgdir}/usr/bin"
-        cp "$srcdir/CloudCross-master/ccross-app/doc/ccross" "${pkgdir}/usr/share/man/man1"
-
+	cd CloudCross-$pkgver/build
+	install -Dm755 ccross-app/ccross "$pkgdir/usr/bin/ccross"
+	install -m755  ccross-curl-executor/ccross-curl "$pkgdir/usr/bin"
+  install -Dm644 ../ccross-app/doc/ccross "$pkgdir/usr/share/man/man1/ccross.1"
+  install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
