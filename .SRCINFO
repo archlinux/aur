@@ -1,7 +1,7 @@
 pkgbase = kopano-postfixadmin
 	pkgdesc = A web based interface used to manage mailboxes, virtual domains and aliases created for Kopano-Server with DB-Plugin and Postfix
 	pkgver = 0.45.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://git.pietma.com/pietma/com-pietma-kopano-postfixadmin
 	install = install
 	arch = any
