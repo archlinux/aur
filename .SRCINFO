@@ -1,6 +1,6 @@
 pkgbase = maint
 	pkgdesc = A utility to automatically perform Arch Linux system maintenance
-	pkgver = 1.7
+	pkgver = 1.8
 	pkgrel = 1
 	url = https://gitlab.com/mgdobachesky/ArchSystemMaintenance
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = maint
 	depends = sudo
 	depends = vim
 	backup = opt/maint/settings.sh
-	source = https://gitlab.com/mgdobachesky/ArchSystemMaintenance/raw/master/pkg/maint-1.7.tar.xz
-	md5sums = d942d0a01b9a44cdbd6675c139b75458
+	source = https://gitlab.com/mgdobachesky/ArchSystemMaintenance/raw/master/pkg/maint-1.8.tar.xz
+	md5sums = bff33c2c9f922d0ff01780957d586086
 
 pkgname = maint
 
