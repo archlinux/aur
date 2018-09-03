@@ -1,6 +1,6 @@
 pkgbase = lidarr-develop
 	pkgdesc = Music downloader for usenet and torrents.
-	pkgver = 0.3.1.497
+	pkgver = 0.3.1.505
 	pkgrel = 1
 	url = https://github.com/lidarr/Lidarr
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = lidarr-develop
 	optdepends = libgdiplus: provides a gdi+ compatible api
 	provides = lidarr
 	conflicts = lidarr
-	source = https://ci.appveyor.com/api/buildjobs/53du6b8c60a1kwfd/artifacts/Lidarr.develop.0.3.1.497.linux.tar.gz
+	source = https://ci.appveyor.com/api/buildjobs/31djg4g29bx58wm9/artifacts/Lidarr.develop.0.3.1.505.linux.tar.gz
 	source = lidarr.service
 	source = lidarr.tmpfiles
 	source = lidarr.sysusers
