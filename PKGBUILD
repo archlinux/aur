@@ -2,7 +2,7 @@
 # Contributor: Marcin Karpezo <sirmacik at gmail dot com>
 # Contributor: Daenyth <Daenyth+Arch [at] gmail [dot] com>
 pkgname=rakudo
-pkgver=2018.06
+pkgver=2018.08
 pkgrel=1
 pkgdesc="Perl6 compiler for MoarVM"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ replaces=('rakudo-moarvm')
 conflicts=('rakudo-moarvm')
 options=('!makeflags')
 source=("http://rakudo.org/downloads/$pkgname/$pkgname-$pkgver.tar.gz")
-sha512sums=('574b074b4a2412b4e020906645787b9e57160a9e87c58b73771b1a3732a39a5b961d778d25a8099a8da5e7b3df57b84599df64cd65089a63fe236f3cae06355d')
+sha512sums=('0d4145cf372843514d4ea23f2f9768b6740b10bf19fca2a1878db3babb9e842599b4134c7cb75be08f9fd15c4f93dc4c73fc9f8bdfe370ec8efb059ed7737459')
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -27,5 +27,4 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir" install
-	install -Dm755 tools/install-dist.pl "$pkgdir/usr/bin/perl6-install-dist"
 }
