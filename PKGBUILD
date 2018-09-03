@@ -3,7 +3,7 @@
 pkgbase=python-oath
 pkgname=('python-oath' 'python2-oath')
 pkgver=1.4.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Python implementation of HOTP, TOTP and OCRA algorithms from OATH."
 arch=('any')
 url="https://github.com/bdauvergne/python-oath"
@@ -30,7 +30,7 @@ package_python-oath() {
 
 package_python2-oath() {
     cd "python-oath-$pkgver-py2"
-    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
     install -Dm644 COPYING -t "$pkgdir/usr/share/licenses/$pkgname/"
     install -Dm644 doc/* -t "$pkgdir/usr/share/doc/$pkgname/"
 }
