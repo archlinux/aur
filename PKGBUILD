@@ -7,26 +7,23 @@
 #       - https://github.com/Sude-/lgogdownloader
 
 pkgname='gog-stardew-valley'
-pkgver=2.8.0.10
+pkgver=1.3.28
 pkgrel=1
+# Fix upstream versioning shenanigans:
+epoch=1
 pkgdesc="You’ve inherited your grandfather’s old farm plot in Stardew Valley. Armed with hand-me-down tools and a few coins, you set out to begin your new life."
 url='http://stardewvalley.net/'
 license=('custom')
-arch=('i686' 'x86_64')
-optdepends=(
-  'firejail: Automatically sandbox this application from your OS'
-)
+arch=('x86_64')
 source=(
   "${pkgname}"
   "${pkgname}.desktop"
-  "${pkgname}.profile"
-  "file://${pkgname//-/_}_${pkgver}.sh"
+  "file://stardew_valley_en_1_3_28_22957.sh"
 )
 sha256sums=(
-  '69c2ff1923590a9a31f7ca40ec0507dcff8b779c7d682c9c8300594a8df478e4'
+  'bb34c68f0f161ef9f55c211f08b4d9391c763be7f99b9521dd966241c9d70036'
   'ca0fe151f73f5e8b594b226e1b0539655a2d95a7848eb0e43961cb6daa0de2ff'
-  'ce77054c463d2ce47c480a6ede84d8410cbcdc12c45518f530b84aaed042eddf'
-  '7158e9867a436209f01b691635414b3bc603c16f83a14616f7a6768600703da5'
+  'd65d8c2183f989aa076cd8a24cf5eca337bdb91bae6e56181fe3edb77eba5f51'
 )
 
 package() {
