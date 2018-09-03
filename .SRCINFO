@@ -1,7 +1,7 @@
 pkgbase = python-simplekml
 	pkgdesc = Simplekml is a python package which enables you to generate KML with as little effort as possible.
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.simplekml.com/
 	arch = any
 	license = GPL3

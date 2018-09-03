@@ -3,7 +3,7 @@
 _pkgname=simplekml
 pkgname=python-simplekml
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Simplekml is a python package which enables you to generate KML with as little effort as possible.'
 arch=('any')
 url="https://www.simplekml.com/"
