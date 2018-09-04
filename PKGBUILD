@@ -17,7 +17,7 @@ fi
 pkgname=caddy-with-cgi
 _pkgbase=caddy
 pkgver=0.11.0
-_cgiver=1.7
+_cgiver=1.8
 pkgrel=1
 pkgdesc='HTTP/2 Web Server with Automatic HTTPS, with caddy-cgi plugin and gcc-go support'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -25,7 +25,7 @@ url='https://caddyserver.com'
 license=('Apache')
 backup=('etc/caddy/caddy.conf')
 install='caddy.install'
-makedepends=('go>=1.8')
+makedepends=('go>=1.10')
 provides=('caddy')
 conflicts=('caddy')
 source=("https://$_gopkgname/archive/v$pkgver/$_pkgbase-$pkgver.tar.gz"
@@ -38,7 +38,7 @@ source=("https://$_gopkgname/archive/v$pkgver/$_pkgbase-$pkgver.tar.gz"
 	'noquic_aesni.patch'
 	'plugins.patch')
 sha256sums=('81e593d258460a9f5c6b5a5f46890a08b6b1ce15f5c0fc7bcaf09826368c3a1a'
-	'3e31a26d162b3c24dc7ae960883f48a2df332d55f7fc75b73a1d30b1524d29f3'
+	'712f365890bd9fcb1a295d4fc8b0a9b1e3c47b24aa53e87c4b3d44fbd623235f'
 	'e679dd79fd92dc351fc190c7af529c73e3896986aaa6b7c0ae01e561398d6b85'
 	'6db7aec45e95bbbf770ce4d120a60d8e4992d2262a8ebf668521179279aa5ae7'
 	'69e25def317a6172011472bd060655142f3085a0c81392f8a7a9c42b6a58bbd9'
