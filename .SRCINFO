@@ -1,6 +1,6 @@
 pkgbase = gajimbo-git
 	pkgdesc = A fork of Gajim with various enhancements, written in Python with GTK+
-	pkgver = v1.0.3.1.gc7bdd1c71
+	pkgver = gajim.1.0.0.beta1.558.g76758ffc9
 	pkgrel = 1
 	url = https://git.a3.pm/a/gajimbo
 	arch = any
@@ -36,7 +36,7 @@ pkgbase = gajimbo-git
 	conflicts = gajim-hg
 	conflicts = gajim-svn
 	conflicts = gajim-git
-	source = gajimbo::git+https://git.a3.pm/a/gajimbo
+	source = gajimbo::git+https://gitlab.com/aoz/gajimbo
 	md5sums = SKIP
 
 pkgname = gajimbo-git

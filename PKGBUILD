@@ -9,7 +9,7 @@
 
 _name=gajimbo
 pkgname="$_name-git"
-pkgver=v1.0.3.1.gc7bdd1c71
+pkgver=gajim.1.0.0.beta1.558.g76758ffc9
 pkgrel=1
 pkgdesc="A fork of Gajim with various enhancements, written in Python with GTK+"
 arch=('any')
@@ -37,7 +37,7 @@ optdepends=('python-dbus: for gajim-remote and zeroconf support'
             'geoclue2: for sharing your location')
 provides=('gajim')
 conflicts=('gajim' 'gajim-hg' 'gajim-svn' 'gajim-git')
-source=("$_name::git+https://git.a3.pm/a/gajimbo")
+source=("$_name::git+https://gitlab.com/aoz/gajimbo")
 md5sums=('SKIP')
 
 pkgver() {
