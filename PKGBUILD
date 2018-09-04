@@ -10,7 +10,7 @@ license=(LGPL2.1)
 depends=(glib2 libxml2 libsoup)
 makedepends=(gobject-introspection gtk-doc git)
 _commit=2971b3b92701f70fc368ad64bd25cefaea043f87  # tags/0.8.1^0
-source=("git+https://git.gnome.org/browse/librest#commit=$_commit")
+source=("git+https://gitlab.gnome.org/GNOME/librest.git#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
