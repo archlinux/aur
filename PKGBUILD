@@ -1,40 +1,36 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-libsoup
-pkgver=2.62.3
+pkgver=2.64.0
 pkgrel=1
 pkgdesc="HTTP client/server library (mingw-w64)"
 arch=(any)
 url="https://download.gnome.org/sources/libsoup"
-license=("LGPL")
-depends=('mingw-w64-glib2' 'mingw-w64-glib-networking' 'mingw-w64-libxml2' 'mingw-w64-sqlite')
-makedepends=('mingw-w64-configure' 'intltool')
+license=("LGPL2")
+depends=('mingw-w64-glib2' 'mingw-w64-glib-networking' 'mingw-w64-sqlite' 'mingw-w64-libxml2' 'mingw-w64-libpsl')
+makedepends=('mingw-w64-meson')
 options=(!strip !buildflags staticlibs)
 source=("http://ftp.gnome.org/pub/GNOME/sources/libsoup/${pkgver%.*}/libsoup-$pkgver.tar.xz")
-sha256sums=('d312ade547495c2093ff8bda61f9b9727a98cfdae339f3263277dd39c0451172')
+sha256sums=('d95bc9602c97ec805d80e5ddf75605665c4c4d6b2c56893c416e707ef578e727')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
-  cd libsoup-$pkgver
   for _arch in ${_architectures}; do
-    mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-configure \
-      --without-gnome \
-      --disable-more-warnings \
-      --disable-vala \
-      --with-gssapi=no
-    make
-    popd
+    mkdir -p "${srcdir}/libsoup-${pkgver}/build-${_arch}"
+    cd "${srcdir}/libsoup-${pkgver}/build-${_arch}"
+    ${_arch}-meson \
+      -D gssapi=false \
+      -D gnome=false \
+      -D vapi=false \
+      -D doc=false \
+      --default-library both ..
+    ninja
   done
 }
 
 package() {
   for _arch in ${_architectures}; do
-    cd "${srcdir}/libsoup-${pkgver}/build-${_arch}"
-    make DESTDIR="${pkgdir}" install
-    find "$pkgdir/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip --strip-all {} \;
-    find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
-    find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
+    DESTDIR="${pkgdir}" ninja -C "${srcdir}/libsoup-${pkgver}/build-${_arch}" install
   done
 }
 
