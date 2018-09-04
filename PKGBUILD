@@ -21,7 +21,7 @@ prepare() {
 }
 
 build() {
-  export LIBS+="-lws2_32"
+  export LIBS+=" -lws2_32"
   cd "${srcdir}/${_pkgname}-${pkgver}"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
