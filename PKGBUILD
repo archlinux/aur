@@ -3,17 +3,30 @@
 
 pkgname=azcopy-10
 pkgver=10.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A command-line utility designed for copying data to/from Microsoft Azure"
 arch=('x86_64')
-url="https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy"
-license=('unknown')
-source=("${pkgname}-${pkgver}.tar.gz::https://aka.ms/downloadazcopy-v10-linux")
-sha512sums=('387ba9faea7c214814cc99373be9ec7ed73aee3bbc7db6667683b31cc156d27e8b84ae93e895b9a23908301bbe8fc0941f5c0fcd5ed2703c686d082c649436ae')
-options=(!strip libtool staticlibs)
-depends=('openssl-1.0')
+url="https://github.com/Azure/azure-storage-azcopy"
+license=('MIT')
+depends=('go')
+_gourl=github.com/Azure/azure-storage-azcopy
+
+build() {
+  GOPATH="$srcdir" go get -v ${_gourl}/... # -fix -x
+}
+
+#check() {
+#  GOPATH="$GOPATH:$srcdir" go test -v -x ${_gourl}/...
+#}
 
 package() {
-  cd "${srcdir}/azcopy_linux_amd64_${pkgver}"
-  install -Dm755 azcopy "${pkgdir}/usr/bin/azcopy"
+  install -Dm755 "$srcdir/bin/azure-storage-azcopy" "$pkgdir/usr/bin/azcopy"
+
+  # Package license (if available)
+  for f in LICENSE COPYING LICENSE.* COPYING.*; do
+    if [ -e "$srcdir/src/$_gourl/$f" ]; then
+      install -Dm644 "$srcdir/src/$_gourl/$f" \
+        "$pkgdir/usr/share/licenses/$pkgname/$f"
+    fi
+  done
 }
