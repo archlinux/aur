@@ -3,7 +3,7 @@
 
 pkgname=tdom
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast XML/DOM/XPath package for Tcl written in C"
 arch=('i686' 'x86_64')
 url="http://www.tdom.org"
@@ -16,13 +16,13 @@ md5sums=('53d030649acd82e01720bbe82b3bf0b1'
          '3e3fc79c2cfea54e1dd128ea3acddbca')
 
 prepare() {
-  cd "$srcdir"/"${pkgname}-$pkgver"
+  cd "${pkgname}-$pkgver"
 
   patch -p0 -i "$srcdir"/no-build-dir.patch
 }
 
 build() {
-  cd "$srcdir"/"${pkgname}-$pkgver"
+  cd "${pkgname}-$pkgver"
   
   if [ $CARCH = "x86_64" ] ; then
     ./configure --prefix=/usr --enable-64bit
@@ -32,9 +32,15 @@ build() {
   make
 }
 
+check() {
+  cd "${pkgname}-$pkgver"
+  make test
+}
+
 package() {
-  cd "$srcdir"/"${pkgname}-$pkgver"
+  cd "${pkgname}-$pkgver"
   
   make DESTDIR="$pkgdir/" install
+  # rm empty directory
   rmdir "$pkgdir/usr/bin"
 }
