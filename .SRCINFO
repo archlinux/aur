@@ -1,0 +1,29 @@
+pkgbase = corebird-non-streaming-git
+	pkgdesc = Fork of corebird twitter client, modified to work within new twitter API limitations
+	pkgver = 1.1.r1710.ge843911e
+	pkgrel = 1
+	url = https://corebird.baedert.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = vala
+	makedepends = git
+	makedepends = meson
+	makedepends = intltool
+	depends = gtk3
+	depends = rest
+	depends = libgee
+	depends = sqlite3
+	depends = gst-plugins-good
+	depends = gst-plugins-bad
+	depends = gst-libav
+	depends = gspell
+	optdepends = noto-fonts-emoji: Emoji support
+	provides = corebird
+	conflicts = corebird
+	conflicts = corebird-git
+	source = corebird-non-streaming-git::git+https://github.com/IBBoard/corebird.git#branch=non-streaming
+	sha1sums = SKIP
+
+pkgname = corebird-non-streaming-git
+
