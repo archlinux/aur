@@ -5,7 +5,7 @@
 
 gitname=stylus
 pkgname=${gitname}-git
-pkgver=2312.7f4bc71
+pkgver=2378.d8914c38
 pkgrel=1
 pkgdesc="User styles manager extension for Chrome and Chrome-like things"
 arch=('any')
