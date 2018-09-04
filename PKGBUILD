@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname='wlroots-git'
-pkgver=r2746.9f1d6c58
-pkgrel=2
+pkgver=r3030.73423c98
+pkgrel=1
 license=('custom:MIT')
 pkgdesc='Modular Wayland compositor library'
 url='https://github.com/swaywm/wlroots'
@@ -32,14 +32,16 @@ build () {
 	meson build \
 		--prefix /usr \
 		--buildtype debug \
-		-Denable-libcap=true \
-		-Denable-systemd=true \
-		-Denable-elogind=false \
-		-Denable-xcb_errors=true \
-		-Denable-xwayland=true \
-		-Denable-x11_backend=true \
-		-Denable-rootston=true \
-		-Denable-examples=true
+		-Dlibcap=enabled \
+		-Dlogind=enabled \
+		-Dlogind-provider=systemd \
+		-Dxcb-errors=enabled \
+		-Dxcb-icccm=enabled \
+		-Dxcb-xkb=enabled \
+		-Dxwayland=enabled \
+		-Dx11-backend=enabled \
+		-Drootston=true \
+		-Dexamples=true
 	ninja -C build
 }
 
