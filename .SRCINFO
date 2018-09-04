@@ -1,7 +1,7 @@
 pkgbase = perl-b-keywords
 	pkgdesc = Lists of reserved barewords and symbol names
 	pkgver = 1.19
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.mcpan.org/dist/B-Keywords
 	arch = any
 	license = PerlArtistic
