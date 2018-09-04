@@ -2,14 +2,14 @@
 
 pkgname=jadx-git
 _gitname=jadx
-pkgver=0.6.1.529.913a5b5
+pkgver=0.8.0.735.a8febb2
 pkgrel=1
 pkgdesc='Command line and GUI tools to produce Java source code from Android Dex and APK files'
 url='https://github.com/skylot/jadx'
 arch=('any')
 license=('Apache')
-depends=('java-runtime' 'bash' 'fontconfig' 'xorg-font-utils')
-makedepends=('git' 'java-environment' 'gradle')
+depends=('java-runtime=8' 'bash' 'fontconfig' 'xorg-font-utils')
+makedepends=('git' 'java-environment=8' 'gradle')
 provides=('jadx')
 conflicts=('jadx')
 source=(${pkgname}::git+https://github.com/skylot/${_gitname})
@@ -23,28 +23,26 @@ pkgver() {
 
 build() {
   cd ${pkgname}
-  gradle --gradle-user-home=. dist
+  gradle dist
 }
 
 check() {
   cd ${pkgname}
-  gradle --gradle-user-home=. test
+  gradle test
 }
 
 package() {
   cd ${pkgname}/build/jadx
 
-  install -Dm 755 bin/jadx "${pkgdir}/usr/share/java/${_gitname}/bin/jadx"
-  install -Dm 755 bin/jadx-gui "${pkgdir}/usr/share/java/${_gitname}/bin/jadx-gui"
+  install -Dm 755 bin/{jadx,jadx-gui} -t "${pkgdir}/usr/share/java/${_gitname}/bin"
   install -Dm 644 lib/* -t "${pkgdir}/usr/share/java/${_gitname}/lib"
 
   install -d "${pkgdir}/usr/bin"
   ln -s /usr/share/java/${_gitname}/bin/jadx "${pkgdir}/usr/bin/jadx"
   ln -s /usr/share/java/${_gitname}/bin/jadx-gui "${pkgdir}/usr/bin/jadx-gui"
 
-  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm 644 NOTICE "${pkgdir}/usr/share/doc/${pkgname}/NOTICE"
-  install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm 644 NOTICE README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
