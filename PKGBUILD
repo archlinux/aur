@@ -3,7 +3,7 @@
 pkgname=mingw-w64-libpsl
 _pkgname=libpsl
 pkgver=0.20.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Public Suffix List library'
 url='https://github.com/rockdaboot/libpsl'
 arch=(any)
@@ -15,8 +15,13 @@ sha512sums=('fa9f6f7f0447d9fe00f5dfca5262c56ff26217eea44d0f7fc1e5d982224c41874e7
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
+prepare() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  autoreconf -fiv
+}
+
 build() {
-  export LIBS=-lws2_32
+  export LIBS+="-lws2_32"
   cd "${srcdir}/${_pkgname}-${pkgver}"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
@@ -24,7 +29,7 @@ build() {
       --disable-gtk-doc-html \
       --disable-man \
       ..
-    make
+    LC_CTYPE=en_US.UTF-8 make
     popd
   done
 }
@@ -33,7 +38,7 @@ package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/${_pkgname}-${pkgver}/build-${_arch}"
     make DESTDIR="${pkgdir}" install
-    find "$pkgdir/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip {} \;
+    find "$pkgdir/usr/${_arch}" -name '*.exe' -delete
     find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
     find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
   done
