@@ -3,16 +3,16 @@
 
 # Uncomment, if you want tha last release
 #_version=spry_v2.5.0
-_spryrel=2.5.0.spry.r8
+_spryrel=2.5.0.spry.r9
 pkgname=sprycloud-client-git
 _name=${pkgname/\-git/}
-pkgver=2.5.0.spry.r8.r0.g774cecd22
-pkgrel=5
+pkgver=2.5.0.spry.r9.r0.gb9418d01e
+pkgrel=1
 pkgdesc="spryCloud client for Linux"
 arch=('i686' 'x86_64')
 url="https://www.spryservers.net/"
 license=('GPL2')
-depends=('qtkeychain' 'qt5-webkit' 'qt5-webengine' 'hicolor-icon-theme' 'xdg-utils')
+depends=('qtkeychain' 'qt5-webkit' 'qt5-webengine' 'hicolor-icon-theme' 'xdg-utils' 'openssl')
 optdepends=('nemo-python' 'python2-nautilus' 'python-sphinx' 'doxygen')
 makedepends=('cmake' 'qt5-tools' 'extra-cmake-modules' 'doxygen' 'qtkeychain' 'python-sphinx')
 provides=('sprycloud-client' 'sprycloud-client-git')
@@ -20,10 +20,8 @@ conflicts=('sprycloud-client')
 install=${_name}.install
 options=(!strip)
 backup=('etc/spryCloud/sync-exclude.lst')
-source=("${_name}::git+https://github.com/SpryServers/sprycloud-client-next.git"
-        "${_name}.service")
-md5sums=('SKIP'
-         'SKIP')
+source=("${_name}::git+https://github.com/SpryServers/sprycloud-client-next.git")
+md5sums=('SKIP')
 
 pkgver() {
   if [[ -z "${_version}" ]]; then
@@ -52,7 +50,8 @@ build() {
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_BUILD_TYPE="Release" \
         -DNO_SHIBBOLETH=1 \
-        -DCMAKE_INSTALL_SYSCONFDIR=/etc/spryCloud \
+        -DCMIRALL_VERSION_SUFFIX=-spry-r9 \
+        -DCMIRALL_VERSION_BUILD=${pkgrel} \
         -DQTKEYCHAIN_LIBRARY=/usr/lib/libqt5keychain.so \
         -DQTKEYCHAIN_INCLUDE_DIR=/usr/include/qt5keychain/ \
         ../${_name}
@@ -66,6 +65,4 @@ check() {
 package() {
   cd "${srcdir}/${_name}"
   make DESTDIR="${pkgdir}" install
-
-  install -Dm644 "${srcdir}/${_name}.service" "${pkgdir}/usr/lib/systemd/user/${_name}.service"
 }
