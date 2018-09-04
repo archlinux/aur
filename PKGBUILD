@@ -5,13 +5,13 @@
 
 _pkgname=plasma-nm
 pkgname=${_pkgname}-light
-pkgver=5.13.4
+pkgver=5.13.5
 pkgrel=1
 pkgdesc='Plasma applet written in QML for managing network connections – lightweight version without modem and OpenConnect'
 arch=(x86_64)
 url='https://www.kde.org/workspaces/plasmadesktop/'
 license=(GPL2)
-depends=(plasma-workspace networkmanager-qt qca-qt5 kdeclarative kdelibs4support)
+depends=(plasma-workspace networkmanager-qt qca kdeclarative kdelibs4support)
 makedepends=(cmake extra-cmake-modules qt5-base qt5-declarative qt5-tools ki18n
 kwindowsystem kservice kcompletion kwidgetsaddons kio kcoreaddons kwallet
 kitemviews kxmlgui kconfigwidgets kiconthemes solid kdbusaddons knotifications
@@ -20,7 +20,7 @@ groups=(plasma)
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 source=("https://download.kde.org/stable/plasma/${pkgver}/${_pkgname}-${pkgver}.tar.xz"{,.sig})
-sha256sums=('3813e9b557a00352ec9c98d7ee69577913842291bd8b9807c944215e7faf4d61' 'SKIP')
+sha256sums=('b1762e5927c21ff7604654f59245475fecadfde5d1ab78e11647e5b77c2c0efd' 'SKIP')
 validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E'  # Jonathan Riddell
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
               'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson
