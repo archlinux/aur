@@ -6,10 +6,11 @@ pkgbase = pcloud-drive
 	arch = x86_64
 	makedepends = jq
 	makedepends = sed
+	depends = gconf
 	conflicts = pcloud-git
 	conflicts = pcloud
 	validpgpkeys = A8F7858263C1E39480B731DCEAD4F103068DF8E5
-	source_x86_64 = pcloud-drive-1.2.3-1::http://p-def7.pcloud.com/cBZl8NHRpZQnDnjpZZZjP2GU7Z2ZZdcLZkZm5EIXZ67ZrkZPZJZ00ZuVZKVZM0ZDXZS7Z6XZ7kZS0Zj0Zw8VD7ZDpclckRwzDm5AoyBuIzI3FADzoVk/pcloud
+	source_x86_64 = pcloud-drive-1.2.3-1::http://p-def7.pcloud.com/cBZl8NHRpZQnDnjpZZZXfYiU7Z2ZZdcLZkZm5EIXZ67ZrkZPZJZ00ZuVZKVZM0ZDXZS7Z6XZ7kZS0Zj0Zw8VD7ZOEoR6PsgBPBW8SdXkEtAWu28Os67/pcloud
 	md5sums_x86_64 = 7eaf260ca0f80776a058cf6e7ed78a5b
 
 pkgname = pcloud-drive

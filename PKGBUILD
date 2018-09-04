@@ -13,6 +13,7 @@ _api_url="https://api.pcloud.com/getpublinkdownload?code="
 _api_code="XZw8VD7Zk5qOwzwnYqVyB1eGyTB9i4KVIhMy"
 makedepends=('jq' 'sed')
 conflicts=('pcloud-git' 'pcloud')
+depends=('gconf')
 
 md5sums_x86_64=('7eaf260ca0f80776a058cf6e7ed78a5b')
 validpgpkeys=('A8F7858263C1E39480B731DCEAD4F103068DF8E5')
