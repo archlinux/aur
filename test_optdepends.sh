@@ -11,8 +11,8 @@ CONFOPTS=""
 
 # Add hypre support
 if [ -f "/usr/lib/libHYPRE.so" ]; then
-	VERSION_MIN=2.14.2
-	VERSION=$(readlink -f '/usr/lib/libHYPRE.so' | sed 's/^.*\.so\.')
+  VERSION_MIN=2.14.0
+  VERSION=$(readlink -f '/usr/lib/libHYPRE.so' | sed -r 's/^.*libHYPRE-(.*)\.so/\1/')
 
 	if [ "$VERSION_MIN" = "$(printf '%s\n' "$VERSION_MIN" "$VERSION" | sort -V | head -n1)" ]; then
 		CONFOPTS="${CONFOPTS} --with-hypre=1"
