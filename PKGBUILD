@@ -2,7 +2,7 @@
 
 pkgname=tcl-nothreading
 pkgver=8.6.8
-pkgrel=1
+pkgrel=3
 pkgdesc="The Tcl scripting language with threading disabled"
 arch=('x86_64')
 url="http://tcl.sourceforge.net/"
