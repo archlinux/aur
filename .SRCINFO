@@ -6,6 +6,7 @@ pkgbase = luadec-git
 	arch = i686
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	conflicts = luadec51-git
 	source = luadec-git::git+https://github.com/viruscamp/luadec
 	md5sums = SKIP
