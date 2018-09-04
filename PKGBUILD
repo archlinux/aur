@@ -1,7 +1,7 @@
 # Maintainer: Drew DeVault <sir@cmpwn.com>
 pkgname=mako
 pkgver=1.1
-pkgrel=4
+pkgrel=5
 license=('MIT')
 pkgdesc='Lightweight notification daemon for Wayland'
 makedepends=("meson" "scdoc")
@@ -26,5 +26,5 @@ build() {
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
-	DESTDIR="$pkgdir/" ninja -C build install
+	DESTDIR="${pkgdir}" ninja -C build install
 }
