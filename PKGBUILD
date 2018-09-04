@@ -1,13 +1,13 @@
 # Maintainer: Kyle Avrett <kyle dot avrett at gmail dot com>
 pkgname=i3-projects
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Project creation and management for i3-wm"
 arch=("any")
 url="https://github.com/zzelman/i3-projects"
 license=('GPL3')
 depends=('i3-wm' 'python3' 'zenity')
-source=("git+https://github.com/zzelman/i3-projects.git#tag=release/1.0.0")
+source=("git+https://github.com/zzelman/i3-projects.git#tag=release/1.1.0")
 md5sums=("SKIP")
 
 package() {
