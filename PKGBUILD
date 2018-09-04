@@ -32,6 +32,9 @@ prepare() {
   # above describes.
   mkdir -p "$(dirname "$GOPATH/src/${_gourl}")"
   ln --no-target-directory -fs "$srcdir/$pkgname-$pkgver" "$GOPATH/src/${_gourl}"
+
+  # Do not trigger snapd.failure.service
+  sed -i -e '/OnFailure=snapd.failure.service/d' data/systemd/snapd.service.in
 }
 
 build() {
@@ -98,6 +101,9 @@ package() {
      SYSTEMDSYSTEMUNITDIR=/usr/lib/systemd/system \
      SNAP_MOUNT_DIR=/var/lib/snapd/snap \
      DESTDIR="$pkgdir"
+
+  # Do not ship the snapd.failure.service
+  rm -f "$pkgdir/usr/lib/systemd/system/snapd.failure.service"
 
   # Install polkit policy
   install -Dm644 data/polkit/io.snapcraft.snapd.policy \
