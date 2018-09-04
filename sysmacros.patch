@@ -1,0 +1,33 @@
+diff -Nur kvpm-0.9.10/kvpm/logvol.cpp kvpm-0.9.10_patched/kvpm/logvol.cpp
+--- kvpm-0.9.10/kvpm/logvol.cpp	2016-09-20 23:21:26.000000000 +0200
++++ kvpm-0.9.10_patched/kvpm/logvol.cpp	2018-09-04 20:32:12.532421974 +0200
+@@ -17,6 +17,7 @@
+ 
+ #include <sys/types.h>
+ #include <sys/stat.h>
++#include <sys/sysmacros.h>
+ #include <fcntl.h>
+ #include <errno.h>
+ #include <unistd.h>
+diff -Nur kvpm-0.9.10/kvpm/misc.cpp kvpm-0.9.10_patched/kvpm/misc.cpp
+--- kvpm-0.9.10/kvpm/misc.cpp	2016-09-20 23:21:26.000000000 +0200
++++ kvpm-0.9.10_patched/kvpm/misc.cpp	2018-09-04 20:35:25.313740950 +0200
+@@ -16,6 +16,7 @@
+ 
+ #include <sys/types.h>
+ #include <sys/stat.h>
++#include <sys/sysmacros.h>
+ #include <fcntl.h>
+ #include <errno.h>
+ #include <unistd.h>
+diff -Nur kvpm-0.9.10/kvpm/storagebase.cpp kvpm-0.9.10_patched/kvpm/storagebase.cpp
+--- kvpm-0.9.10/kvpm/storagebase.cpp	2016-09-20 23:21:26.000000000 +0200
++++ kvpm-0.9.10_patched/kvpm/storagebase.cpp	2018-09-04 20:37:56.507786759 +0200
+@@ -14,6 +14,7 @@
+ 
+ 
+ #include <sys/types.h>
++#include <sys/sysmacros.h>
+ #include <kde_file.h>
+ 
+ #include <QByteArray>
