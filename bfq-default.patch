@@ -1,19 +1,23 @@
 --- a/block/elevator.c
 +++ b/block/elevator.c
-@@ -222,14 +222,14 @@ int elevator_init(struct request_queue *
+@@ -974,8 +974,8 @@ static int elevator_switch_mq(struct request_queue *q,
+ }
  
- 	if (!e) {
- 		/*
--		 * For blk-mq devices, we default to using mq-deadline,
-+		 * For blk-mq devices, we default to using bfq,
- 		 * if available, for single queue devices. If deadline
- 		 * isn't available OR we have multiple queues, default
- 		 * to "none".
- 		 */
- 		if (q->mq_ops) {
- 			if (q->nr_hw_queues == 1)
--				e = elevator_get(q, "mq-deadline", false);
-+				e = elevator_get(q, "bfq", false);
- 			if (!e)
- 				return 0;
- 		} else
+ /*
+- * For blk-mq devices, we default to using mq-deadline, if available, for single
+- * queue devices.  If deadline isn't available OR we have multiple queues,
++ * For blk-mq devices, we default to using BFQ, if available, for single
++ * queue devices. If BFQ isn't available OR we have multiple queues,
+  * default to "none".
+  */
+ int elevator_init_mq(struct request_queue *q)
+@@ -994,7 +994,7 @@ int elevator_init_mq(struct request_queue *q)
+ 	if (unlikely(q->elevator))
+ 		goto out_unlock;
+ 
+-	e = elevator_get(q, "mq-deadline", false);
++	e = elevator_get(q, "bfq", false);
+ 	if (!e)
+ 		goto out_unlock;
+ 
+

@@ -1,7 +1,7 @@
 pkgbase = linux-covolunablu-gaming
-	pkgver = 4.17.14.arch1
+	pkgver = 4.18.5.arch1
 	pkgrel = 1
-	url = https://github.com/archlinux/linux/commits/v4.17.14-arch1
+	url = https://git.archlinux.org/linux.git/log/?h=v4.18.5-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = xmlto
@@ -10,9 +10,11 @@ pkgbase = linux-covolunablu-gaming
 	makedepends = bc
 	makedepends = libelf
 	makedepends = git
+	makedepends = python-sphinx
+	makedepends = graphviz
 	conflicts = steamos-xpad-dkms
 	options = !strip
-	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v4.17.14-arch1
+	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v4.18.5-arch1
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
@@ -23,11 +25,11 @@ pkgbase = linux-covolunablu-gaming
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
 	sha256sums = SKIP
-	sha256sums = 2fbc996167a60cf16ba1d5628f85c17b2492191b07dcd0c77e9a0249db67b81c
-	sha256sums = 36e326d8a88b4087a3a0ee0d47643fc03baeda487659980d0e9d08791e4c729c
+	sha256sums = 44e4dd5bb0cb06606233e399fb57d81b5f5f91fa51585e47a610551577b0453f
+	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = 75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
-	sha256sums = a20f72660076bc5f73404800da9bc52ceb592bdfbdab19438d66da8c01edc4f4
+	sha256sums = 834c051bfa7e94678c6c48fe13be0931f7ef6c00547e8bc3e735c318296917dd
 	sha256sums = 24cd09c5eea6b7de311f9ae273a784f5a2c04d47f864825da4f8c6f8cf89620e
 
 pkgname = linux-covolunablu-gaming

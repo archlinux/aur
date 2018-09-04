@@ -5,13 +5,13 @@
 # Contributor: Thomas Baechler <thomas at archlinux dot org>
 
 pkgbase=linux-covolunablu-gaming
-_srcver=4.17.14-arch1
+_srcver=4.18.5-arch1
 pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
-url="https://github.com/archlinux/linux/commits/v$_srcver"
+url="https://git.archlinux.org/linux.git/log/?h=v$_srcver"
 license=(GPL2)
-makedepends=(xmlto kmod inetutils bc libelf git)
+makedepends=(xmlto kmod inetutils bc libelf git python-sphinx graphviz)
 options=('!strip')
 
 # Because is already included in the kernel itself, no need to use dkms.
@@ -22,7 +22,7 @@ conflicts=('steamos-xpad-dkms')
 
 _srcname=archlinux-linux
 source=(
-  "$_srcname::git+https://github.com/archlinux/linux?signed#tag=v$_srcver"
+  "$_srcname::git+https://git.archlinux.org/linux.git?signed#tag=v$_srcver"
   config         # the main kernel config file
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
@@ -36,12 +36,12 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '2fbc996167a60cf16ba1d5628f85c17b2492191b07dcd0c77e9a0249db67b81c'
-            '36e326d8a88b4087a3a0ee0d47643fc03baeda487659980d0e9d08791e4c729c'
+            '44e4dd5bb0cb06606233e399fb57d81b5f5f91fa51585e47a610551577b0453f'
+            'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             # -- covolunablu-gaming patches --
-            'a20f72660076bc5f73404800da9bc52ceb592bdfbdab19438d66da8c01edc4f4'
+            '834c051bfa7e94678c6c48fe13be0931f7ef6c00547e8bc3e735c318296917dd'
             '24cd09c5eea6b7de311f9ae273a784f5a2c04d47f864825da4f8c6f8cf89620e'
 )
 
@@ -78,7 +78,7 @@ prepare() {
 
 build() {
   cd $_srcname
-  make bzImage modules
+  make bzImage modules htmldocs
 }
 
 _package() {
@@ -99,7 +99,7 @@ _package() {
   msg2 "Installing modules..."
   local modulesdir="$pkgdir/usr/lib/modules/$kernver"
   mkdir -p "$modulesdir"
-  make INSTALL_MOD_PATH="$pkgdir/usr" DEPMOD=/doesnt/exist modules_install
+  make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
 
   # a place for external modules,
   # with version file for building modules and running depmod from hook
@@ -111,11 +111,7 @@ _package() {
   # remove build and source links
   rm "$modulesdir"/{source,build}
 
-  msg2 "Running depmod..."
-  depmod -b "$pkgdir/usr" -E Module.symvers -e "$kernver"
-
   msg2 "Installing hooks..."
-
   # sed expression for following substitutions
   local subst="
     s|%PKGBASE%|$pkgbase|g
@@ -212,6 +208,10 @@ _package-headers() {
     esac
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
+  msg2 "Adding symlink..."
+  mkdir -p "$pkgdir/usr/src"
+  ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase-$pkgver"
+
   msg2 "Fixing permissions..."
   chmod -Rc u=rwX,go=rX "$pkgdir"
 }
@@ -226,6 +226,22 @@ _package-docs() {
   msg2 "Installing documentation..."
   mkdir -p "$builddir"
   cp -t "$builddir" -a Documentation
+
+  msg2 "Removing doctrees..."
+  rm -r "$builddir/Documentation/output/.doctrees"
+
+  msg2 "Moving HTML docs..."
+  local src dst
+  while read -rd '' src; do
+    dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
+    mkdir -p "${dst%/*}"
+    mv "$src" "$dst"
+    rmdir -p --ignore-fail-on-non-empty "${src%/*}"
+  done < <(find "$builddir/Documentation/output" -type f -print0)
+
+  msg2 "Adding symlink..."
+  mkdir -p "$pkgdir/usr/share/doc"
+  ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
 
   msg2 "Fixing permissions..."
   chmod -Rc u=rwX,go=rX "$pkgdir"
