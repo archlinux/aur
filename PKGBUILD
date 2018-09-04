@@ -1,7 +1,7 @@
 # Maintainer: Caesim404 <caesim404 at gmail dot com>
 
 pkgname="yatqa"
-_pkgver="3.9e"
+_pkgver="3.9.3.1"
 pkgver="${_pkgver/-/}"
 epoch="1"
 pkgrel="1"
@@ -12,17 +12,16 @@ license=("custom")
 depends=("wine")
 makedepends=("p7zip" "icoutils")
 install="yatqa.install"
-source=("http://yat.qa/YaTQA-Setup_${_pkgver}.exe"
+source=("YaTQA-Setup_${_pkgver}.exe::https://dl.yat.qa/stable/" #"http://yat.qa/YaTQA-Setup_${_pkgver}.exe"
         "yatqa"
         "yatqa.desktop"
         "yatqa.install"
         "LICENSE")
-sha256sums=('deb82b7a9101a60740363a2598b27fcc15bb363b8023c2f9577461717105ef88'
+sha256sums=('2ef8e71ee129904e9d680712b7a4dc9240887e68c6b865f1d35f43fe42f9c436'
             '57fcd761e93b6f5d8bd6f4e354aafc9174ecdeea0fe39ea89dc68245b3c9ce02'
             '98c8f8313858f9fd7a00f75001effcf298b8b1bc43e142ac3e361016f5be9c6f'
             '45fe54d9f4655abb6774a01c961ee547507a92c2499645164f14ea5b1dc1a55a'
             'f2e3a5f026505316e61905695317531717e213b2d497132a351748efc861ce5f')
-
 build() {
     cd "${srcdir}"
     
