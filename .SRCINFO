@@ -1,6 +1,6 @@
 pkgbase = tremotesf
 	pkgdesc = Remote GUI for transmission-daemon
-	pkgver = 1.5.2
+	pkgver = 1.5.3
 	pkgrel = 1
 	url = https://github.com/equeim/tremotesf2
 	arch = x86_64
@@ -8,11 +8,12 @@ pkgbase = tremotesf
 	makedepends = qt5-tools
 	makedepends = cmake
 	makedepends = ninja
+	makedepends = gettext
 	depends = qt5-base
 	depends = kwidgetsaddons
 	depends = hicolor-icon-theme
-	source = https://github.com/equeim/tremotesf2/archive/1.5.2.tar.gz
-	sha256sums = 3254eccde3ab7c950921cc72ec053fdc8398e4d398cfef10b53a0b5eb1818e28
+	source = https://github.com/equeim/tremotesf2/archive/1.5.3.tar.gz
+	sha256sums = 91afed260ae6c41d93fea1dfaf4b000e8f2e9836fd0258d952e4ac7e00a2f365
 
 pkgname = tremotesf
 
