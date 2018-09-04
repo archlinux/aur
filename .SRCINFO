@@ -1,6 +1,6 @@
 pkgbase = lucaschess-git
 	pkgdesc = Play Train Compete
-	pkgver = 65
+	pkgver = 87
 	pkgrel = 1
 	url = http://lucaschess.pythonanywhere.com/
 	arch = i686
@@ -13,7 +13,6 @@ pkgbase = lucaschess-git
 	depends = python2-psutil
 	depends = python2-chardet
 	depends = python2-pygal
-	depends = python2-pocketsphinx
 	depends = python2-pyqt4
 	depends = python2-pillow
 	depends = python2-chess
