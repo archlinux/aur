@@ -60,10 +60,10 @@ struct info {
     /* Company */
     char symbol[SYMBOL_MAX_LENGTH];     // ex. AAPL
     char name[NAME_MAX_LENGTH];         // ex. Apple Inc.
-    char industry[NAME_MAX_LENGTH];       // ex. Computer Hardware
+    char industry[NAME_MAX_LENGTH];     // ex. Computer Hardware
     char website[URL_MAX_LENGTH];       // ex. apple.com
     char description[INFO_TEXT_MAX];    // Paragraph description of company
-    char ceo[NAME_MAX_LENGTH];            // ex. Timothy D. Cook
+    char ceo[NAME_MAX_LENGTH];          // ex. Timothy D. Cook
     char issue_type[3];                 /* ad – American Depository Receipt (ADR’s)
                                            re – Real Estate Investment Trust (REIT’s)
                                            ce – Closed end fund (Stock and Bond Fund)
@@ -71,10 +71,9 @@ struct info {
                                            lp – Limited Partnerships
                                            cs – Common Stock
                                            et – Exchange Traded Fund (ETF)
-                                           (blank) = Not Available, i.e., Warrant, Note, or (non-filing)
-                                           Closed Ended Funds
+                                           (blank) = Not Available
                                         */
-    char sector[NAME_MAX_LENGTH];         // ex. Technology
+    char sector[NAME_MAX_LENGTH];       // ex. Technology
 
     /* Quote */
     int64_t intraday_time;              // Unix timestamp of current price
@@ -92,14 +91,16 @@ struct info {
 
     /* Earnings */
     double eps[QUARTERS];               // Earnings per share per quarter for past four quarters
-    char fiscal_period[QUARTERS][DATE_MAX_LENGTH];  // Quarter and Year of past four quarters (ex. Q1 2018)
+    char fiscal_period[QUARTERS][DATE_MAX_LENGTH];  /* Quarter and Year of past four quarters
+                                                       (ex. Q1 2018)
+                                                    */
     double eps_year_ago[QUARTERS];      // Earnings per share per quarter for the previous year
 
     /* Chart */
     double price_last_close;            // Last close price
     double price_7d;                    // Price 7 days ago
     double price_30d;                   // Price 30 days ago
-    double* points;                     // Array of one price per day, startings five years previously
+    double* points;                     // Array of closing prices
     int num_points;                     // Number of data points
 
     /* News */
@@ -107,7 +108,7 @@ struct info {
     int num_articles;                   // Number of News pointers in array
 
     /* Peers */
-    Info_Array* peers;
+    Info_Array* peers;                  // Related securities
 
     /** PORTFOLIO DATA **/
 
@@ -129,6 +130,8 @@ struct info {
     double profit_7d_percent;           // Profit since seven days ago %
     double profit_30d;                  // Profit since thirty days ago
     double profit_30d_percent;          // Profit since thirty days ago %
+
+    /** FORMATTING DATA **/
 
     char fprofit_total[CELL_MAX_LENGTH];                // Total profit
     char fprofit_total_percent[CELL_MAX_LENGTH];        // Total profit %
@@ -174,6 +177,11 @@ Info_Array* api_info_array_init(void);
  */
 Info_Array* api_info_array_init_from_length(size_t length);
 
+/**
+ * Appends a security to an Info_Array.
+ * @param pInfo_Array the Info_Array to append
+ * @param symbol the symbol of the new security
+ */
 void info_array_append(Info_Array* pInfo_Array, const char* symbol);
 
 /**
@@ -189,8 +197,18 @@ size_t api_string_writefunc(void* ptr, size_t size, size_t nmemb, String* pStrin
  */
 String* api_curl_data(const char* url);
 
+/**
+ * Calls IEX's batch API to store data in pInfo_Array. symbol must be a valid string in each Info
+ * @param pInfo_Array the Info_Array to fill
+ * @param data_level the level of data to store
+ */
 void iex_batch_store_data_info_array(Info_Array* pInfo_Array, Data_Level data_level);
 
+/**
+ * Calls IEX's batch API to store data in pInfo. symbol must be a valid string in pInfo
+ * @param pInfo the Info to fill
+ * @param data_level the level of data to store
+ */
 void iex_batch_store_data_info(Info* pInfo, Data_Level data_level);
 
 /**
@@ -243,6 +261,12 @@ void* coinmarketcap_store_info(void* vpInfo);
  */
 void api_info_array_store_data_batch(Info_Array* pInfo_Array, Data_Level data_level);
 
+/**
+ * Queries IEX, AlphaVantage, and Coinmarketcap to store api data in pInfo. data_level will
+ * determine the level of data stored. See iex_batch_store_data for more information on data_level.
+ * @param pInfo
+ * @param data_level
+ */
 void api_info_store_data_batch(Info* pInfo, Data_Level data_level);
 
 /**
@@ -271,6 +295,11 @@ Ref_Data* iex_get_valid_symbols(void);
  */
 void info_array_store_all_from_json(Info_Array* pInfo_Array, const Json* jobj);
 
+/**
+ * Stores the data found in IEX formatted jsymbol in the Info_Array.
+ * @param pInfo
+ * @param jsymbol
+ */
 void info_store_all_from_json(Info* pInfo, const Json* jsymbol);
 
 /**
@@ -338,12 +367,36 @@ void info_store_earnings_from_json(Info* pInfo, const Json* jearnings);
  */
 Info* info_array_get_info_from_symbol(const Info_Array* pInfo_Array, const char* symbol);
 
+/**
+ * Recursive binary search function for Ref_Data. Returns the index of the security with the given
+ * symbol.
+ * @param pRef_Data the Ref_Data to search
+ * @param symbol symbol of the security to find
+ * @param left left-most index to start search
+ * @param right right-most index to start search
+ * @return index of security if found, -1 if not found
+ */
 int ref_data_get_index_from_symbol_bsearch(const Ref_Data* pRef_Data, const char* symbol,
                                          size_t left, size_t right);
 
+/**
+ * Recursive binary search function for Ref_Data. Returns the index of the security with the given
+ * name.
+ * @param pRef_Data the Ref_Data to search
+ * @param name name of the security to find
+ * @param left left-most index to start search
+ * @param right right-most index to start search
+ * @return index of security if found, -1 if not found
+ */
 int ref_data_get_index_from_name_bsearch(const Ref_Data* pRef_Data, const char* name,
         size_t left, size_t right);
 
+/**
+ * Recursively searches pInfo_Array and pInfo_Array->peers to find an Info* with the given symbol
+ * @param pInfo_Array the Info_Array to search
+ * @param symbol the symbol to find
+ * @return Info* of found symbol or NULL if not found
+ */
 Info* info_array_find_symbol_recursive(const Info_Array* pInfo_Array, const char* symbol);
 
 /**
