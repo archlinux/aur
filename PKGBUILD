@@ -1,6 +1,6 @@
 # Maintainer: epitron <chris AT ill-logic.com>
 
-pkgname=ansilove
+pkgname=ansilove-git
 pkgver=3.0.9.r20.g9fad130
 pkgrel=1
 pkgdesc='Program and shared library to converts ANSI and artscene related file formats into PNG images'
@@ -8,6 +8,8 @@ url='https://ansilove.org/'
 license=('BSD')
 depends=('gd')
 makedepends=('git' 'cmake' 'gcc')
+provides=('ansilove')
+conflicts=('ansilove')
 arch=('x86_64' 'i686')
 source=(
   'git+https://github.com/ansilove/libansilove.git'

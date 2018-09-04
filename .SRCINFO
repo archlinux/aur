@@ -1,4 +1,4 @@
-pkgbase = ansilove
+pkgbase = ansilove-git
 	pkgdesc = Program and shared library to converts ANSI and artscene related file formats into PNG images
 	pkgver = 3.0.9.r20.g9fad130
 	pkgrel = 1
@@ -10,10 +10,12 @@ pkgbase = ansilove
 	makedepends = cmake
 	makedepends = gcc
 	depends = gd
+	provides = ansilove
+	conflicts = ansilove
 	source = git+https://github.com/ansilove/libansilove.git
 	source = git+https://github.com/ansilove/ansilove.git
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = ansilove
+pkgname = ansilove-git
 
