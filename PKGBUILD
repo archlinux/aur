@@ -1,7 +1,7 @@
 # Maintainer:  Maxim Novikov <the.mlex@gmail.com>
 
 pkgname=php-pdo-oci
-pkgver=7.1.1
+pkgver=7.2.9
 pkgrel=1
 _extname=pdo_oci
 pkgdesc="PDO driver for OCI8"
