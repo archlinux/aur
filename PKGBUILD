@@ -1,7 +1,7 @@
 pkgname=nmclient
 pkgver=3.0.3
 _date=20160302
-pkgrel=2
+pkgrel=3
 pkgdesc="Novell Messenger Client for Linux"
 url="http://gwclient.provo.novell.com/"
 arch=('x86_64')

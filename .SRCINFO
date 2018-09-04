@@ -1,10 +1,10 @@
 pkgbase = nmclient
 	pkgdesc = Novell Messenger Client for Linux
 	pkgver = 3.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://gwclient.provo.novell.com/
 	arch = x86_64
-	license = custom
+	license = custom:proprietary
 	makedepends = unzip
 	depends = bin32-jre
 	depends = lib32-glib2
@@ -14,7 +14,9 @@ pkgbase = nmclient
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
 	source = https://gwclient.innerweb.novell.com/client/messenger/nim30linux.zip
+	source = LICENSE
 	sha256sums = 0defd9414ba96a66d407c34c6de88fc495f27ff028457afe95a64499e3f5504a
+	sha256sums = c7af4afb70c93eecfb851f799f7242c7b6798c196d455d50d992fa9f54d9f066
 
 pkgname = nmclient
 
