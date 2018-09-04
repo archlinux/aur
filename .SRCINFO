@@ -1,0 +1,18 @@
+pkgbase = emacs-avy-flycheck-git
+	pkgdesc = Jump to and fix syntax errors using flycheck with avy interface
+	pkgver = r19.5522f3b
+	pkgrel = 1
+	url = https://github.com/magicdirac/avy-flycheck
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	depends = emacs-flycheck
+	depends = emacs-avy
+	provides = emacs-avy-flycheck
+	conflicts = emacs-avy-flycheck
+	source = git+https://github.com/magicdirac/avy-flycheck.git
+	sha256sums = SKIP
+
+pkgname = emacs-avy-flycheck-git
+
