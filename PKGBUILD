@@ -3,12 +3,13 @@
 
 pkgname=azcopy-10
 pkgver=10.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A command-line utility designed for copying data to/from Microsoft Azure"
 arch=('x86_64')
 url="https://github.com/Azure/azure-storage-azcopy"
 license=('MIT')
 depends=('go')
+conflicts=('azcopy')
 _gourl=github.com/Azure/azure-storage-azcopy
 
 build() {
