@@ -5,8 +5,8 @@
 
 pkgbase=python-django-filter
 _pkgbase="${pkgbase#python-}"
-pkgname=(python-django-filter python2-django-filter)
-pkgver=1.1.0
+pkgname=python-django-filter
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Django-filter is a reusable Django application for allowing users to filter querysets dynamically.'
 arch=(any)
@@ -15,24 +15,15 @@ license=(BSD)
 makedepends=(
   'python-django>=1.8'
   python-setuptools
-  'python2-django>=1.8'
-  python2-setuptools
 )
 options=(!emptydirs)
 source=("https://github.com/carltongibson/${_pkgbase}/archive/${pkgver}.tar.gz")
-sha256sums=('2894cb3dbea0a7e0117f9f5fe8e64d356113784b51346e2cd23b49b3fb97e71e')
+sha256sums=('8c8b7b6befe08ff14e33c17455a5b15aec4d39df14ff3de1f7e8b4cb0795241f')
 
 package_python-django-filter() {
-  depends=('python-django>=1.8')
+  depends=('python-django>=1.11')
   cd "${srcdir}/${_pkgbase}-${pkgver}"
   python setup.py install --root="${pkgdir}/" --optimize=1
-  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
-
-package_python2-django-filter() {
-  depends=('python2-django>=1.8')
-  cd "${srcdir}/${_pkgbase}-${pkgver}"
-  python2 setup.py install --root="${pkgdir}/" --optimize=1
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
