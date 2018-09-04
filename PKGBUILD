@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=libelfin-git
-pkgver=r147.4a678c7
+pkgver=r148.ac45a09
 pkgrel=1
 pkgdesc="C++11 ELF/DWARF parser"
 arch=(x86_64)
