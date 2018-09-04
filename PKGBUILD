@@ -9,7 +9,7 @@
 pkgname=mutter-781835-workaround
 _pkgname=mutter
 pkgver=3.28.3+8+gd0d807801
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager for GNOME. This package reverts a commit which may causes performance problems for nvidia driver users. Some performance patches also included."
 url="https://git.gnome.org/browse/mutter"
 arch=(x86_64)
@@ -41,9 +41,10 @@ prepare() {
   # Multiline comment start, remove the line (and comment end line) below to enable the patches
   # : '
   ## https://gitlab.gnome.org/GNOME/mutter/merge_requests/70/commits
-  git remote add vanvugt https://gitlab.gnome.org/vanvugt/mutter.git || true
-  git fetch vanvugt
-  git cherry-pick 13870745 || bash
+  ## This is reported to cause lower performance for some users. The commit will also be replaced in future
+  # git remote add vanvugt https://gitlab.gnome.org/vanvugt/mutter.git || true
+  # git fetch vanvugt
+  # git cherry-pick 13870745 || bash
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/98/commits
   git remote add carlosg https://gitlab.gnome.org/carlosg/mutter.git || true
   git fetch carlosg
