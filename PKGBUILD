@@ -1,4 +1,5 @@
-# Maintainer: Phil Martella <philmartella@live.com>
+# Maintainer: David Pflug <david@pflug.email>
+# Based on package from Phil Martella <philmartella@live.com>
 # Based on brother-hl3150cdw by MCMic <come.bernigaud@laposte.net>
 pkgname="brother-hl3170cdw"
 pkgver="1.1.4"
@@ -23,13 +24,6 @@ if test "$CARCH" == x86_64; then
 	depends+=('lib32-glibc')
 fi
 prepare() {
-	#  do not install in '/usr/local'
-	if [ -d $srcdir/usr/local/Brother ]; then
-		install -d $srcdir/usr/share
-		mv $srcdir/usr/local/Brother/ $srcdir/usr/share/brother
-		rm -rf $srcdir/usr/local
-		sed -i 's|/usr/local/Brother|/usr/share/brother|g' `grep -lr '/usr/local/Brother' ./`
-	fi
 	# setup cups-directories
 	install -d $srcdir/usr/share/cups/model
 	install -d $srcdir/usr/lib/cups/filter
