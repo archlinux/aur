@@ -1,13 +1,6 @@
 post_install() {
   xdg-icon-resource forceupdate --theme hicolor
   systemctl daemon-reload
-  echo ================================== Important =================================
-  echo Start the spryCloud client daemon with:
-  echo systemctl start --user sprycloud-client.service
-  echo ==============================================================================
-  echo Enable the spryCloud client daemon with:
-  echo systemctl enable --user sprycloud-client.service
-  echo ==============================================================================
 }
 
 post_upgrade() {
