@@ -12,7 +12,7 @@ license=("custom")
 depends=("wine")
 makedepends=("p7zip" "icoutils")
 install="yatqa.install"
-source=("YaTQA-Setup_${_pkgver}.exe::https://dl.yat.qa/stable/" #"http://yat.qa/YaTQA-Setup_${_pkgver}.exe"
+source=("https://dl.yat.qa/stable/YaTQA-Setup_${_pkgver}.exe"
         "yatqa"
         "yatqa.desktop"
         "yatqa.install"
