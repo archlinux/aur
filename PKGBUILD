@@ -5,9 +5,9 @@ pkgver=0.200
 pkgrel=1
 pkgdesc="Tools for MAME / MESS: Castool, CHDman (MAME Compressed Hunks of Data CHD manager), floptool, jedutil, ldresample, romcmp ..."
 arch=('i686' 'x86_64')
-	if [[ "${CARCH}" == "i686" ]]; then
+	if [[ "$CARCH" == "i686" ]]; then
 		_ARCH_="i386"
-	elif [[ "${CARCH}" == "x86_64" ]]; then
+	elif [[ "$CARCH" == "x86_64" ]]; then
 		_ARCH_="amd64"
 	fi	
 url="http://mamedev.org"
