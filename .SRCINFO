@@ -1,0 +1,15 @@
+pkgbase = perl-file-lockf
+	pkgdesc = Perl module interface to the lockf system call
+	pkgver = 0.25
+	pkgrel = 1
+	url = https://metacpan.org/release/File-Lockf
+	arch = any
+	license = Unknown
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/P/PH/PHENSON/File-Lockf-0.25.tar.gz
+	md5sums = 3c6b8ca40caa1b3975f5b7567d91d6f1
+
+pkgname = perl-file-lockf
+
