@@ -1,0 +1,6 @@
+u _smtpd - "SMTP Daemon" /var/empty /sbin/nologin
+u _smtpq - "SMTP Queue"  /var/empty /sbin/nologin
+u _smtpf - "SMTP Filter"  /var/empty /sbin/nologin
+
+m _smtpq _smtpd
+m _smtpf _smtpd

@@ -18,11 +18,13 @@ backup=("etc/mail/smtpd.conf" "etc/mail/aliases")
 source=("http://www.opensmtpd.org/archives/${_pkgname}-${pkgver}.tar.gz"
         "smtpd.service"
         "smtpd.socket"
-        "smtpd.conf.patch")
+        "smtpd.conf.patch"
+        "opensmtpd.sysusers")
 sha256sums=('0fd10cff59719523e41fe489ff5c1490c2898a2ce47b98e4bf39f07ba3562252'
             '655ca04a3b95e7424d625e60304387c5d73eb35997a7878089cae94e1dae5b27'
             '32d46de5562d01de445d04c93bcc9f94bf103539b676e449c32e3603a3866cf8'
-            'da42f59718713c70c24d001604cd123fbde1da4314abbe445347207d0d14f5e4')
+            'da42f59718713c70c24d001604cd123fbde1da4314abbe445347207d0d14f5e4'
+            'c26ca99242d12b1942934fc5e47c14fcd7120614561c2d30beff378630f00d0c')
 install="${pkgname}.install"
 
 prepare() {
@@ -55,6 +57,7 @@ package() {
 
   install -Dm 644 "$srcdir/smtpd.service" "${pkgdir}/usr/lib/systemd/system/smtpd.service"
   install -Dm 644 "$srcdir/smtpd.socket"  "${pkgdir}/usr/lib/systemd/system/smtpd.socket"
+  install -Dm 644 "$srcdir/opensmtpd.sysusers" "$pkgdir/usr/lib/sysusers.d/opensmtpd.conf"
 
   install -Dm 644 /dev/null "$pkgdir/etc/mail/aliases"
 
