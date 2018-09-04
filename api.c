@@ -152,16 +152,6 @@ void iex_batch_store_data_info(Info* pInfo, Data_Level data_level) {
 
 String* iex_batch_get_data_string(char* symbol_array[SYMBOL_MAX_LENGTH], size_t len,
         Data_Level data_level) {
-    // TO-DO -- MAKE FUNCTION HANDLE MORE THAN 100 SECURITIES (API LIMITATION)
-
-    char iex_api_string[URL_MAX_LENGTH * 2], symbol_list_string[URL_MAX_LENGTH];
-    symbol_list_string[0] = '\0';
-    for (size_t i = 0; i < len; i++)
-        if (strcmp(symbol_array[i], "USD$") != 0)
-            sprintf(&symbol_list_string[strlen(symbol_list_string)], "%s,", symbol_array[i]);
-
-    symbol_list_string[strlen(symbol_list_string) - 1] = '\0'; // Remove last comma
-
     char endpoints[128];
     if (data_level == ALL)
         strcpy(endpoints, "quote,chart,company,stats,peers,news,earnings&range=5y");
@@ -170,11 +160,53 @@ String* iex_batch_get_data_string(char* symbol_array[SYMBOL_MAX_LENGTH], size_t 
     else if (data_level == MISC)
         strcpy(endpoints, "company,stats,peers,news,earnings&range=5y");
     else strcpy(endpoints, "news");
-    sprintf(iex_api_string,
-            "https://api.iextrading.com/1.0/stock/market/batch?symbols=%s&types=%s",
-            symbol_list_string, endpoints);
 
-    return api_curl_data(iex_api_string);
+    size_t num_partitions = len / 100 + (len % 100 > 0), idx;
+    char iex_api_string[num_partitions][URL_MAX_LENGTH * 2];
+    char symbol_list_string[num_partitions][INFO_TEXT_MAX];
+    memset(symbol_list_string, '\0', num_partitions * INFO_TEXT_MAX);
+    String* string_array[num_partitions];
+    pthread_t threads[num_partitions];
+    for (size_t i = 0; i < num_partitions; i++) {
+        for (size_t j = 0; j < 100; j++) {
+            idx = i * 100 + j;
+            if (idx == len)
+                break;
+
+            if (strcmp(symbol_array[idx], "USD$") != 0)
+                sprintf(&symbol_list_string[i][strlen(symbol_list_string[i])], "%s,",
+                        symbol_array[idx]);
+        }
+        symbol_list_string[i][strlen(symbol_list_string[i]) - 1] = '\0'; // Remove last comma
+        sprintf(iex_api_string[i],
+                "https://api.iextrading.com/1.0/stock/market/batch?symbols=%s&types=%s",
+                symbol_list_string[i], endpoints);
+        if (pthread_create(&threads[i], NULL, (void* (*)(void*)) api_curl_data,
+                           (void*) iex_api_string[i]))
+            EXIT_MSG("Error creating thread!");
+    }
+
+    for (size_t i = 0; i < num_partitions; i++)
+        if (strcmp(symbol_array[i], "USD$") != 0 &&
+            pthread_join(threads[i], (void**) &string_array[i]))
+            EXIT_MSG("Error joining thread!");
+
+    if (num_partitions > 1) {
+        size_t total_length = 0;
+        for (size_t i = 0; i < num_partitions; i++)
+            total_length += string_array[i]->len;
+
+        string_array[0]->len = total_length;
+        string_array[0]->data = realloc(string_array[0]->data, string_array[0]->len + 1);
+        pointer_alloc_check(string_array[0]->data);
+        for (size_t i = 1; i < num_partitions; i++) {
+            sprintf(&string_array[0]->data[strlen(string_array[0]->data) - 1], ",%s",
+                    &string_array[i]->data[1]);
+            string_destroy(&string_array[i]);
+        }
+    }
+
+    return string_array[0];
 }
 
 void* morningstar_store_info(void* vpInfo) {
