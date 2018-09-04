@@ -1,7 +1,7 @@
 pkgbase = python-graphviz
 	pkgdesc = Simple Python interface for Graphviz.
 	pkgver = 0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xflr6/graphviz
 	arch = any
 	license = MIT
