@@ -13,7 +13,7 @@ pkgver=v1.0.99.0.g76758ffc9
 pkgrel=1
 pkgdesc="A fork of Gajim with various enhancements, written in Python with GTK+"
 arch=('any')
-url="https://git.a3.pm/a/gajimbo"
+url="https://gitlab.com/aoz/gajimbo"
 license=('GPL3')
 depends=('python-gobject' 'python-pyopenssl' 'hicolor-icon-theme'
          'python-pyasn1' 'python-nbxmpp' 'python-cairo' 'python-keyring'
