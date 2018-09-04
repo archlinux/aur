@@ -2,16 +2,16 @@
 
 pkgname=('python-pyamg')
 _module='pyamg'
-pkgver='3.3.2'
+pkgver='4.0.0'
 pkgrel=1
 pkgdesc="PyAMG: Algebraic Multigrid Solvers in Python"
 url="https://github.com/pyamg/pyamg"
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'pybind11')
 license=('MIT')
 arch=('i686' 'x86_64')
 source=("https://files.pythonhosted.org/packages/source/p/pyamg/pyamg-${pkgver}.tar.gz")
-sha256sums=('ccebb1b0379cab87b493e8e5fc5388c89b9738445ae10e5adfebe6f48078ca27')
+sha256sums=('3ceb38ffd86e29774e759486f2961599c8ed847459c68727493cadeaf115a38a')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
