@@ -1,0 +1,18 @@
+pkgbase = emacs-flycheck-pos-tip-git
+	pkgdesc = Flycheck errors display in tooltip
+	pkgver = r60.9091139
+	pkgrel = 1
+	url = https://github.com/flycheck/flycheck-pos-tip
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	depends = emacs-flycheck
+	depends = emacs-pos-tip
+	provides = emacs-flycheck-pos-tip
+	conflicts = emacs-flycheck-pos-tip
+	source = git+https://github.com/flycheck/flycheck-pos-tip.git
+	sha256sums = SKIP
+
+pkgname = emacs-flycheck-pos-tip-git
+
