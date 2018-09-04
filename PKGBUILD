@@ -35,7 +35,7 @@ _localmodcfg=
 pkgbase=linux-gc
 _srcver=4.18.5-arch1
 pkgver=${_srcver%-*}
-pkgrel=2
+pkgrel=3
 _pdsversion=098x
 arch=(x86_64)
 url="https://cchalpha.blogspot.co.uk/"
@@ -139,7 +139,7 @@ prepare() {
 
 build() {
   cd $_srcname
-  make bzImage modules htmldocs
+  make bzImage modules
 }
 
 _package() {
