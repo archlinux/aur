@@ -1,7 +1,7 @@
 # Maintainer: Phil Martella <philmartella@live.com>
 # Based on brother-hl3150cdw by MCMic <come.bernigaud@laposte.net>
 pkgname="brother-hl3170cdw"
-pkgver="1.1.2"
+pkgver="1.1.4"
 pkgrel=1
 pkgdesc="LPR and CUPS driver for the Brother HL3170CDW"
 arch=('i686' 'x86_64')
@@ -10,17 +10,15 @@ license=('custom:brother commercial license')
 depends=('cups')
 install='brother-hl3170cdw.install'
 source=(
-	"http://www.brother.com/pub/bsc/linux/dlf/hl3170cdwlpr-$pkgver-$pkgrel.i386.rpm"
-	"http://www.brother.com/pub/bsc/linux/dlf/hl3170cdwcupswrapper-$pkgver-$pkgrel.i386.rpm"
+	"http://www.brother.com/pub/bsc/linux/dlf/hl3170cdwlpr-1.1.2-$pkgrel.i386.rpm"
+  "http://download.brother.com/welcome/dlf007057/hl3170cdwcupswrapper-${pkgver}-0.i386.rpm"
 	'cupswrapper-license.txt'
 	'lpr-license.txt'
 )
-md5sums=(
-	'cee1e8e7d4f4d74de7e8667af08016db'
-	'c33d91a477bfaa908b6e7a6e31e2def3'
-	'97ad0cffd216059e9d1d3121899d8646'
-	'5e87a3dc0f3e3438c088eda0f3565f0d'
-)
+sha512sums=('e21417ff2d44ae1d6c0af2254b29921acd029acaf2df45568e5a2722e2575b924d5260c706b03a3e4f97045e0009d3aa70d07a67c7bdebe697225dabf905ad68'
+            'b05a5969f27e0340d0be794c54a87c5b09dcf399438c3380634dc60b27ec7b895e528c3bee3ea4504ea500ce71b4aadd5ab11b27b42f5ca8aedb4a0099d3b9ee'
+            'bd035acc69734d954c132df67e80476094044d2c929e97bd6e0467aacfeefa9883da7474af8d8ff7fa65c3043ec6e1d8e0386e032c3f2121c36b0f6bfd079c86'
+            'bf555e3622b68cc8a4d89f9fbb26ca09f29acf66c07d517be8aa7b58d985e1408d0d1bde408ba3b0e0aa842a69d6ebf0b4a1d194673203f42a3cbcecdcfaca06')
 if test "$CARCH" == x86_64; then
 	depends+=('lib32-glibc')
 fi
