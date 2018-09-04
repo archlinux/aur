@@ -7,7 +7,7 @@ _reponame=reflective-rapidjson
 _llvmver=6
 pkgname=reflective-rapidjson
 pkgver=0.0.5
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc='Code generator for serializing/deserializing C++ objects to/from JSON using Clang and RapidJSON'
 license=('GPL')
@@ -17,11 +17,17 @@ optdepends=("$pkgname-doc: API documentation")
 makedepends=('cmake' 'clang-tools-extra' 'boost' 'llvm')
 checkdepends=('cppunit')
 url="https://github.com/Martchus/${_reponame}"
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz"
+        'https://github.com/Martchus/reflective-rapidjson/commit/5835cd85a5bbc72f4ac47a81b09e986cc8dee715.patch')
 sha256sums=('3ba7c7f2a73c9ab2afe38cd884b8f1290e770f17c9fd497de5468c7d4a690bdb')
 
 prepare() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
+
+  for patch in "$srcdir/"*.patch; do
+    msg2 "Applying patch $patch"
+    patch -p1 -i "$patch"
+  done
 }
 
 build() {
