@@ -1,0 +1,16 @@
+pkgbase = emacs-ws-butler-git
+	pkgdesc = Unobtrusively trim extraneous white-space *ONLY* in lines edited.
+	pkgver = r59.52321b9
+	pkgrel = 1
+	url = https://github.com/lewang/ws-butler
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	provides = emacs-ws-butler
+	conflicts = emacs-ws-butler
+	source = git+https://github.com/lewang/ws-butler.git
+	sha256sums = SKIP
+
+pkgname = emacs-ws-butler-git
+
