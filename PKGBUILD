@@ -13,7 +13,7 @@ pkgver=v1.0.99.0.g76758ffc9
 pkgrel=1
 pkgdesc="A fork of Gajim with various enhancements, written in Python with GTK+"
 arch=('any')
-url="https://gitlab.com/aoz/gajimbo"
+url="https://gitlab.com/ao/gajimbo"
 license=('GPL3')
 depends=('python-gobject' 'python-pyopenssl' 'hicolor-icon-theme'
          'python-pyasn1' 'python-nbxmpp' 'python-cairo' 'python-keyring'
@@ -37,7 +37,7 @@ optdepends=('python-dbus: for gajim-remote and zeroconf support'
             'geoclue2: for sharing your location')
 provides=('gajim')
 conflicts=('gajim' 'gajim-hg' 'gajim-svn' 'gajim-git')
-source=("$_name::git+https://gitlab.com/aoz/gajimbo")
+source=("$_name::git+https://gitlab.com/ao/gajimbo")
 md5sums=('SKIP')
 
 pkgver() {
