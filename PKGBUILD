@@ -1,8 +1,6 @@
-_npmname=create-elm-app
-_npmver=1.10.4
 pkgname=create-elm-app
-pkgver=1.10.4
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="Create Elm apps with zero configuration"
 arch=(any)
 url="https://github.com/halfzebra/create-elm-app"
@@ -12,7 +10,7 @@ optdepends=()
 options=(!strip)
 
 package() {
-    npm install -g --prefix "$pkgdir/usr" $_npmname@$_npmver
+    npm install -g --prefix "$pkgdir/usr" $pkgname@$pkgver
     # Non-deterministic race in npm gives 777 permissions to random directories.
     # See https://github.com/npm/npm/issues/9359 for details.
     find "${pkgdir}"/usr -type d -exec chmod 755 {} +
