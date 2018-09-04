@@ -1,0 +1,11 @@
+[Unit]
+Description=Watch Ethernet/IP paring on interface %i
+After=systemd-network-wait-online.service
+Wants=systemd-network-wait-online.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/addrwatch -o /var/lib/addrwatch/%i.dat %i
+
+[Install]
+WantedBy=multi-user.target
