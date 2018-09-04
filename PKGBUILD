@@ -1,7 +1,7 @@
 # Maintainer: James R. <justsomejames@gmail.com>
 pkgname=amount
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Filesystem mounting utility for ordinary users."
 license=('custom')
 arch=('any')
@@ -29,7 +29,7 @@ package()
 	export pkgdir ; install -d -m 755 "$pkgdir/usr/bin"
 	./install.sh /usr
 
-	install -d -m 644 "$pkgdir/usr/share/licenses/$pkgname"
+	install -d -m 755 "$pkgdir/usr/share/licenses/$pkgname"
 	./amountd -l > "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	chmod 644 "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
