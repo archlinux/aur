@@ -12,7 +12,7 @@ makedepends=('cmake' 'git')
 source=('git+https://github.com/plexinc/plex-media-player.git'
         'plex-media-player.desktop')
 sha256sums=('SKIP'
-            'b03845b761cc18a88252b72d0c83e439006224660444d9174f53cc577f9498b6')
+            '49f0e74c477faa73a6c7cbda11ba43a6708ac8a37d274482cc828252ec8aee71')
 
 pkgver() {
   cd plex-media-player
