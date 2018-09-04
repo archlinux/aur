@@ -2,7 +2,7 @@
 
 _pkgname=biboumi
 pkgname="$_pkgname-git"
-pkgver=8.2.r11.g5ff3696
+pkgver=8.2.r74.gcd20177
 pkgrel=1
 pkgdesc="XMPP gateway to IRC"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -19,21 +19,21 @@ md5sums=('SKIP'
          '4d83eb74d68a2328b19c1e8df5cdb5d7'
          '07c92af3248861ce94d361e98cfb7f5c')
 
-provides=("$_pkgname=5.99")
+provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd $_pkgname
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$srcdir/$_pkgname"
+  cd $_pkgname
   mkdir -p build
 }
 
 build() {
-  cd "$srcdir/$_pkgname/build"
+  cd $_pkgname/build
   cmake .. \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -43,14 +43,15 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname/build"
+  cd $_pkgname/build
   make DESTDIR="$pkgdir/" install
 
-  cd "$srcdir/$_pkgname"
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-  install -Dm644 doc/biboumi.1.rst "$pkgdir/usr/share/doc/$_pkgname/$_pkgname.rst"
-  install -Dm644 conf/biboumi.cfg "$pkgdir/etc/$_pkgname/$_pkgname.cfg"
+  cd ..
+  install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE
+  install -dm755 "$pkgdir"/usr/share/doc/$_pkgname/
+  install -Dm644 doc/*.rst "$pkgdir"/usr/share/doc/$_pkgname/
+  install -Dm644 conf/biboumi.cfg "$pkgdir"/etc/$_pkgname/$_pkgname.cfg
 
-  cd "$srcdir"
-  install -Dm644 sysuser.conf "$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"
+  cd ..
+  install -Dm644 sysuser.conf "$pkgdir"/usr/lib/sysusers.d/$_pkgname.conf
 }
