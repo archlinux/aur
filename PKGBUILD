@@ -33,4 +33,3 @@ package()
 	./amountd -l > "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	chmod 644 "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-md5sums=('08fb78d224c5d75eeec3ce902c98e625')
