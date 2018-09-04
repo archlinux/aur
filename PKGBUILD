@@ -3,14 +3,14 @@
 # Contributor: Star Brilliant <echo bTEzMjUzQGhvdG1haWwuY29tCg== | base64 -d>
 
 pkgname=sandbox
-pkgver=2.11
+pkgver=2.13
 pkgrel=1
 pkgdesc="sandbox'd LD_PRELOAD hack"
 arch=('i686' 'x86_64')
 url='http://www.gentoo.org/'
 license=('GPL')
 source=(http://distfiles.gentoo.org/distfiles/$pkgname-$pkgver.tar.xz)
-md5sums=('0580e04f2f8ff6ce44a020ff47e011ac')
+sha256sums=('257d9f70fa24e5fd30217f9a4ba7f2e81205c498276d2136637d5bfef83f8199')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver

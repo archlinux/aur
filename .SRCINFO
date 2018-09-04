@@ -1,13 +1,13 @@
 pkgbase = sandbox
 	pkgdesc = sandbox'd LD_PRELOAD hack
-	pkgver = 2.11
+	pkgver = 2.13
 	pkgrel = 1
 	url = http://www.gentoo.org/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	source = http://distfiles.gentoo.org/distfiles/sandbox-2.11.tar.xz
-	md5sums = 0580e04f2f8ff6ce44a020ff47e011ac
+	source = http://distfiles.gentoo.org/distfiles/sandbox-2.13.tar.xz
+	sha256sums = 257d9f70fa24e5fd30217f9a4ba7f2e81205c498276d2136637d5bfef83f8199
 
 pkgname = sandbox
 
