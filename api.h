@@ -368,7 +368,7 @@ void info_store_earnings_json(Info* pInfo, const Json* jearnings);
  * @param symbol the symbol to match
  * @return valid Info* or NULL if not found
  */
-Info* info_array_get_info_from_symbol(const Info_Array* pInfo_Array, const char* symbol);
+Info* info_array_find_symbol(const Info_Array* pInfo_Array, const char* symbol);
 
 /**
  * Recursive binary search function for Ref_Data. Returns the index of the security with the given

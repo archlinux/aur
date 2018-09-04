@@ -675,7 +675,7 @@ void info_store_earnings_json(Info* pInfo, const Json* jearnings) {
     }
 }
 
-Info* info_array_get_info_from_symbol(const Info_Array* pInfo_Array, const char* symbol) {
+Info* info_array_find_symbol(const Info_Array* pInfo_Array, const char* symbol) {
     for (size_t i = 0; i < pInfo_Array->length; i++)
         if (strcmp(symbol, pInfo_Array->array[i]->symbol) == 0)
             return pInfo_Array->array[i];
@@ -720,10 +720,11 @@ Info* info_array_find_symbol_recursive(const Info_Array* pInfo_Array, const char
     if (pInfo_Array == NULL)
         return NULL;
 
-    for (size_t i = 0; i < pInfo_Array->length; i++) {
-        if (strcmp(pInfo_Array->array[i]->symbol, symbol) == 0)
-            return pInfo_Array->array[i];
+    pInfo = info_array_find_symbol(pInfo_Array, symbol);
+    if (pInfo != NULL)
+        return pInfo;
 
+    for (size_t i = 0; i < pInfo_Array->length; i++) {
         pInfo = info_array_find_symbol_recursive(pInfo_Array->array[i]->peers, symbol);
         if (pInfo != NULL)
             return pInfo;
