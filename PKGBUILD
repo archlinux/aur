@@ -21,7 +21,8 @@ arch=('i686' 'x86_64')
 # Direct links to the download reference go bad on the next version. We want something that will persist for a while.
 url='https://www.canon-europe.com/support/products/imagerunner/imagerunner-1730i.aspx'
 #url='https://www.usa.canon.com/internet/portal/us/home/support/details/printers/black-and-white-laser/mf212w/imageclass-mf212w'
-license=('GPL' 'MIT' 'custom')
+license=('custom')
+license+=('GPL' 'MIT')
 depends=('libglade')
 depends_i686=('gcc-libs')
 depends_x86_64=("${depends_i686[@]/#/lib32-}")
@@ -36,12 +37,49 @@ source=(
 sha256sums=('a5bf2c2d53049ad64acf2ed8b6dc954ff261c4b996ce1cc81471e5baaf5e40cd')
 sha512sums=('c8b2abb2d0e9ccf972241dda5154c0ddd1ba9cfe6c721c242c40c90cf29e8d0b2c6a559907318cd191232f699a42425cc4148aebcaab6aa111f1cb5439777ce7')
 
-# build instructions are adapted from upstream file
-# cndrvcups-common.spec
-
 prepare() {
   set -u
   bsdtar -xf "linux-UFRII-drv-v${_pkgver//\./}-uken/Sources/${_srcdir}-1.tar.gz"
+
+  cd "${_srcdir}"
+
+  # It isn't easy to get sed to add LIBS at the right place of the soon to be generated make script
+  # so we patch it directly into autogen.sh
+  sed -e '2a export LIBS="-lgtk-x11-2.0 -lgobject-2.0 -lglib-2.0 -lgmodule-2.0"' -i 'cngplp/autogen.sh'
+
+  local _specs=(cndrvcups-*.spec)
+  if [ "${#_specs[@]}" -ne 1 ]; then
+    echo 'Too many or too few spec files'
+    set +u
+    false
+  fi
+
+  # allgen.sh where available is not useful for packaging
+  # Debian rules has some undesirable functionality
+  # The spec file packages well and is easy to fix and convert to shell
+
+  # Generate make from spec %setup, %build
+  sed -n -e '/^%setup/,/^%install/ p' "${_specs[@]}" | \
+  sed -e '# fix cwd transitioning from setup to build before grep removes all the spec %control lines' \
+      -e 's:^%build:'"cd '${srcdir}/${_srcdir}' # &:g" | \
+  grep -v '^%' | \
+  sed -e '# Convert spec %{VAR} to shell ${VAR}' \
+      -e 's:%{:${:g' \
+      -e '# Add autoreconf before autogen lines' \
+      -e '# Some autogen left out --prefix. More than one --prefix dont cause problems so we can add it to all of them.' \
+      -e 's:^./autogen.sh\b:autoreconf -i\n& --prefix=${_prefix}:g ' \
+    > 'make.Arch'
+
+  # Generate make install from spec %install
+  sed -n -e '/^%install/,/^%clean/ p' "${_specs[@]}" | \
+  grep -v '^%' | \
+  sed -e '# Convert spec %{VAR} to shell ${VAR}' \
+      -e 's:%{:${:g' \
+      -e '# Quote to handle path with spaces' \
+      -e 's:${RPM_BUILD_ROOT}:"&":g' \
+      -e '# ln -f hides problems so should be avoided' \
+      -e 's:ln -sf :ln -s :g' \
+    > 'make.install.Arch'
   set +u
 }
 
@@ -61,15 +99,10 @@ build() {
   set -u
 
   cd "${_srcdir}"
-  sed -e '2a export LIBS="-lgtk-x11-2.0 -lgobject-2.0 -lglib-2.0 -lgmodule-2.0"' -i 'cngplp/autogen.sh'
   local _vars; _setvars
-  sed -n -e '/^%setup/,/^%install/ p' cndrvcups-*.spec | \
-  sed -e 's:^%build:'"cd '${srcdir}/${_srcdir}' # &:g" | \
-  grep -v '^%' | \
-  sed -e 's:%{:${:g' \
-      -e 's:^./autogen.sh\b:autoreconf -i\n& --prefix=${_prefix}:g ' \
-  | env "${_vars[@]}" \
-  sh -e -u -x --
+  # Bash does not recognize var assigments hidden by array expansion so we use env.
+  env "${_vars[@]}" \
+  sh -e -u -x 'make.Arch'
 
   set +u
 }
@@ -80,13 +113,9 @@ package() {
   cd "${_srcdir}"
 
   local _vars; _setvars
-  sed -n -e '/^%install/,/^%clean/ p' cndrvcups-*.spec | \
-  grep -v '^%' | \
-  sed -e 's:%{:${:g' \
-      -e 's:${RPM_BUILD_ROOT}:"&":g' \
-  | env RPM_BUILD_ROOT="${pkgdir}" \
-  "${_vars[@]}" \
-  sh -e -u -x --
+  env "${_vars[@]}" \
+  RPM_BUILD_ROOT="${pkgdir}" \
+  sh -e -u -x 'make.install.Arch'
 
   _fin
 
