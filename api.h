@@ -9,24 +9,24 @@
 #define TICK_API_H
 
 typedef enum api_providers {
-    IEX, MORNINGSTAR, ALPHAVANTAGE, COINMARKETCAP
+    API_PROVIDER_IEX, API_PROVIDER_MORNINGSTAR,
+    API_PROVIDER_ALPHAVANTAGE, API_PROVIDER_COINMARKETCAP
 } Api_Provider;
 
 typedef enum data_level {
-    ALL, CHECK, MISC, NEWS
+    DATA_LEVEL_ALL, DATA_LEVEL_CHECK, DATA_LEVEL_MISC, DATA_LEVEL_NEWS
 } Data_Level;
 
-#define QUARTERS 4
-#define DATE_MAX_LENGTH 32
 #define CELL_MAX_LENGTH 16
+#define DATE_MAX_LENGTH 32
 #define SYMBOL_MAX_LENGTH 32
 #define NAME_MAX_LENGTH 128
 #define URL_MAX_LENGTH 2048
-#define INFO_TEXT_MAX 2048
+#define INFO_MAX_LENGTH 2048
 #define NEWS_MAX_LENGTH 10500
+
+#define QUARTERS 4
 #define EMPTY (-999)
-#define DEFAULT_NUM_ARTICLES 3
-#define MAX_PEERS 12
 
 #include <stddef.h>
 #include <curl/curl.h>
@@ -41,19 +41,17 @@ typedef struct ref_data {
 } Ref_Data;
 
 typedef struct news_article {
-    char headline[INFO_TEXT_MAX];
-    char source[INFO_TEXT_MAX];
+    char headline[INFO_MAX_LENGTH];
+    char source[INFO_MAX_LENGTH];
     char date[DATE_MAX_LENGTH];
-    char summary[INFO_TEXT_MAX];
+    char summary[INFO_MAX_LENGTH];
     char url[URL_MAX_LENGTH];
-    char related[INFO_TEXT_MAX];
+    char related[INFO_MAX_LENGTH];
 } News;
-
-typedef struct info Info;
 
 typedef struct info_array Info_Array;
 
-struct info {
+typedef struct info {
     int api_provider;                   // IEX, MORNINGSTAR, ALPHAVANTAGE, COINMARKETCAP
     /** API DATA **/
 
@@ -62,7 +60,7 @@ struct info {
     char name[NAME_MAX_LENGTH];         // ex. Apple Inc.
     char industry[NAME_MAX_LENGTH];     // ex. Computer Hardware
     char website[URL_MAX_LENGTH];       // ex. apple.com
-    char description[INFO_TEXT_MAX];    // Paragraph description of company
+    char description[INFO_MAX_LENGTH];    // Paragraph description of company
     char ceo[NAME_MAX_LENGTH];          // ex. Timothy D. Cook
     char issue_type[3];                 /* ad – American Depository Receipt (ADR’s)
                                            re – Real Estate Investment Trust (REIT’s)
@@ -141,7 +139,7 @@ struct info {
     char fprofit_7d_percent[CELL_MAX_LENGTH];           // Profit since seven days ago %
     char fprofit_30d[CELL_MAX_LENGTH];                  // Profit since thirty days ago
     char fprofit_30d_percent[CELL_MAX_LENGTH];          // Profit since thirty days ago %
-};
+} Info;
 
 struct info_array {
     Info** array;
@@ -149,33 +147,38 @@ struct info_array {
     Info* totals;
 };
 
-Ref_Data* api_ref_data_init_from_length(size_t length);
+/**
+ * Allocates a Ref_Data struct with length and returns a pointer to it.
+ * @param length
+ * @return Ref_Data*
+ */
+Ref_Data* ref_data_init_length(size_t length);
 
 /**
  * Allocates a News struct and returns a pointer to it.
  * @return News*
  */
-News* api_news_init(void);
+News* news_init(void);
 
 /**
  * Allocates an Info struct and returns a pointer to it. All numbers are set to EMPTY, all strings are NULL
  * terminated at length 0, and all pointers are set to NULL.
  * @return Info*
  */
-Info* api_info_init(void);
+Info* info_init(void);
 
 /**
  * Allocates an Info_Array struct with length 0.
  * @return Info_Array*
  */
-Info_Array* api_info_array_init(void);
+Info_Array* info_array_init(void);
 
 /**
  * Allocates an Info_Array struct with allocated length.
  * @param length number of Info pointers to allocate
  * @return Info_Array*
  */
-Info_Array* api_info_array_init_from_length(size_t length);
+Info_Array* info_array_init_length(size_t length);
 
 /**
  * Appends a security to an Info_Array.
@@ -185,31 +188,31 @@ Info_Array* api_info_array_init_from_length(size_t length);
 void info_array_append(Info_Array* pInfo_Array, const char* symbol);
 
 /**
- * writefunction for cURL HTTP GET/POST
+ * writefunction for cURL HTTP GET
  * stolen from a nice man on stackoverflow
  */
-size_t api_string_writefunc(void* ptr, size_t size, size_t nmemb, String* pString);
+size_t string_writefunc(void* ptr, size_t size, size_t nmemb, String* pString);
 
 /**
  * Performs a HTTP GET. Response data is stored and returned in an allocated String*.
  * @param url API url to GET
  * @return NULL if error or no response from server. Otherwise, String* containing data.
  */
-String* api_curl_data(const char* url);
+String* api_curl_url(const char* url);
 
 /**
  * Calls IEX's batch API to store data in pInfo_Array. symbol must be a valid string in each Info
  * @param pInfo_Array the Info_Array to fill
  * @param data_level the level of data to store
  */
-void iex_batch_store_data_info_array(Info_Array* pInfo_Array, Data_Level data_level);
+void api_iex_store_info_array(Info_Array* pInfo_Array, Data_Level data_level);
 
 /**
  * Calls IEX's batch API to store data in pInfo. symbol must be a valid string in pInfo
  * @param pInfo the Info to fill
  * @param data_level the level of data to store
  */
-void iex_batch_store_data_info(Info* pInfo, Data_Level data_level);
+void api_iex_store_info(Info* pInfo, Data_Level data_level);
 
 /**
  * This function will only store stock and ETF data.
@@ -221,8 +224,8 @@ void iex_batch_store_data_info(Info* pInfo, Data_Level data_level);
  * @param pInfo_Array the Info_Array
  * @param data_level endpoints to query
  */
-String* iex_batch_get_data_string(char* symbol_array[SYMBOL_MAX_LENGTH], size_t len,
-                                  Data_Level data_level);
+String* api_iex_get_data_string(char** symbol_array, size_t len,
+                                Data_Level data_level);
 /**
  * Designed for threading
  *
@@ -231,7 +234,7 @@ String* iex_batch_get_data_string(char* symbol_array[SYMBOL_MAX_LENGTH], size_t 
  * @param vpInfo Info*
  * @return vpInfo on success, NULL on error
  */
-void* morningstar_store_info(void* vpInfo);
+void* api_morningstar_store_info(void* vpInfo);
 
 /**
  * Designed for threading
@@ -241,7 +244,7 @@ void* morningstar_store_info(void* vpInfo);
  * @param vpInfo Info*
  * @return vpInfo on Success, NULL on error
  */
-void* alphavantage_store_info(void* vpInfo);
+void* api_alphavantage_store_info(void* vpInfo);
 
 /**
  * Designed for threading
@@ -251,7 +254,7 @@ void* alphavantage_store_info(void* vpInfo);
  * @param vpInfo Info*
  * @return vpInfo on success, NULL on error
  */
-void* coinmarketcap_store_info(void* vpInfo);
+void* api_coinmarketcap_store_info(void* vpInfo);
 
 /**
  * Queries IEX, AlphaVantage, and Coinmarketcap to store api data in pInfo_Array. data_level will
@@ -259,7 +262,7 @@ void* coinmarketcap_store_info(void* vpInfo);
  * @param pInfo_Array the Info_Array
  * @param data_level the data level to store
  */
-void api_info_array_store_data_batch(Info_Array* pInfo_Array, Data_Level data_level);
+void api_store_info_array(Info_Array* pInfo_Array, Data_Level data_level);
 
 /**
  * Queries IEX, AlphaVantage, and Coinmarketcap to store api data in pInfo. data_level will
@@ -267,14 +270,14 @@ void api_info_array_store_data_batch(Info_Array* pInfo_Array, Data_Level data_le
  * @param pInfo
  * @param data_level
  */
-void api_info_store_data_batch(Info* pInfo, Data_Level data_level);
+void api_store_info(Info* pInfo, Data_Level data_level);
 
 /**
  * After API data and portfolio have already been collected, uses them to populate the Info fields current_value and
  * all the profit fields.
  * @param pInfo Info*
  */
-void info_store_check_data(Info* pInfo);
+void info_store_portfolio_data(Info* pInfo);
 
 /**
  * Adds up values of Info array and sets values in totals.
@@ -286,21 +289,21 @@ void info_array_store_totals(Info_Array* pInfo_Array);
  * Returns a pointer to an Info_Array containing a list of all iex listed securities.
  * @return Info_Array*
  */
-Ref_Data* iex_get_valid_symbols(void);
+Ref_Data* api_iex_store_ref_data(void);
 
 /**
  * Stores the data found in IEX formatted jobj in the Info_Array.
  * @param pInfo_Array
  * @param jobj
  */
-void info_array_store_all_from_json(Info_Array* pInfo_Array, const Json* jobj);
+void info_array_store_endpoints_json(Info_Array* pInfo_Array, const Json* jobj);
 
 /**
  * Stores the data found in IEX formatted jsymbol in the Info_Array.
  * @param pInfo
  * @param jsymbol
  */
-void info_store_all_from_json(Info* pInfo, const Json* jsymbol);
+void info_store_endpoints_json(Info* pInfo, const Json* jsymbol);
 
 /**
  * IEX quote endpoint.
@@ -308,7 +311,7 @@ void info_store_all_from_json(Info* pInfo, const Json* jsymbol);
  * @param pInfo
  * @param jquote
  */
-void info_store_quote_from_json(Info* pInfo, const Json* jquote);
+void info_store_quote_json(Info* pInfo, const Json* jquote);
 
 /**
  * IEX chart endpoint.
@@ -316,7 +319,7 @@ void info_store_quote_from_json(Info* pInfo, const Json* jquote);
  * @param pInfo
  * @param jchart
  */
-void info_store_chart_from_json(Info* pInfo, const Json* jchart);
+void info_store_chart_json(Info* pInfo, const Json* jchart);
 
 /**
  * IEX company endpoint.
@@ -324,7 +327,7 @@ void info_store_chart_from_json(Info* pInfo, const Json* jchart);
  * @param pInfo
  * @param jcompany
  */
-void info_store_company_from_json(Info* pInfo, const Json* jcompany);
+void info_store_company_json(Info* pInfo, const Json* jcompany);
 
 /**
  * IEX stats endpoint.
@@ -332,7 +335,7 @@ void info_store_company_from_json(Info* pInfo, const Json* jcompany);
  * @param pInfo
  * @param jstats
  */
-void info_store_stats_from_json(Info* pInfo, const Json* jstats);
+void info_store_stats_json(Info* pInfo, const Json* jstats);
 
 /**
  * IEX peers endpoint.
@@ -340,7 +343,7 @@ void info_store_stats_from_json(Info* pInfo, const Json* jstats);
  * @param pInfo
  * @param jpeers
  */
-void info_store_peers_from_json(Info* pInfo, const Json* jpeers);
+void info_store_peers_json(Info* pInfo, const Json* jpeers);
 
 /**
  * IEX news endpoint.
@@ -348,7 +351,7 @@ void info_store_peers_from_json(Info* pInfo, const Json* jpeers);
  * @param pInfo
  * @param jnews
  */
-void info_store_news_from_json(Info* pInfo, const Json* jnews);
+void info_store_news_json(Info* pInfo, const Json* jnews);
 
 /**
  * IEX earnings endpoint.
@@ -356,7 +359,7 @@ void info_store_news_from_json(Info* pInfo, const Json* jnews);
  * @param pInfo
  * @param jearnings
  */
-void info_store_earnings_from_json(Info* pInfo, const Json* jearnings);
+void info_store_earnings_json(Info* pInfo, const Json* jearnings);
 
 /**
  * Searches through an Info_Array and returns a ponter to the Info which has the same symbol as
@@ -403,24 +406,24 @@ Info* info_array_find_symbol_recursive(const Info_Array* pInfo_Array, const char
  * Destroys Ref_Data object and frees memory. Sets the pointer of the Ref_Data to NULL
  * @param phRef_Data the Ref_Data to destroy
  */
-void api_ref_data_destroy(Ref_Data** phRef_Data);
+void ref_data_destroy(Ref_Data** phRef_Data);
 
 /**
  * Destroys News object and frees memory. Sets the pointer of the News to NULL
  * @param phNews the News to destroy
  */
-void api_news_destroy(News** phNews);
+void news_destroy(News** phNews);
 
 /**
  * Destroys Info object and frees memory. Sets the pointer to the Info to NULL
  * @param phInfo the Info to destroy
  */
-void api_info_destroy(Info** phInfo);
+void info_destroy(Info** phInfo);
 
 /**
  * Destroys Info_Array object and frees memory. Sets the pointer to the Info to NULL
  * @param phInfo_Array the Info_Array to destroy
  */
-void api_info_array_destroy(Info_Array** phInfo_Array);
+void info_array_destroy(Info_Array** phInfo_Array);
 
 #endif

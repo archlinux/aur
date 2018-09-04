@@ -134,3 +134,8 @@ the provided license for more information.
 * Notes for portfolio securities
 * Search for securities
 * History per session
+* Mutex on portfolio
+* Add security without reloading every security
+* Refactoring
+* Cache ref-data
+* streq

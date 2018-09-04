@@ -11,7 +11,7 @@ void window_main(void) {
     app.portfolio_data = NULL;
     app.portfolio_string = NULL;
     app.builder = gtk_builder_new();
-    app.info_cache = api_info_array_init();
+    app.info_cache = info_array_init();
     app.iex_ref_data = NULL;
     app.password[0] = '\0';
     app.last_reload = 0;
@@ -36,7 +36,7 @@ void window_main(void) {
 void check_list_create_from_string(void) {
     GtkListStore* pListStore = GTK_LIST_STORE(GET_OBJECT("check_list"));
     gtk_list_store_clear(pListStore); // Clear in case reloading
-    api_info_array_destroy(&app.portfolio_data); // Destroy in case reloading
+    info_array_destroy(&app.portfolio_data); // Destroy in case reloading
     app.portfolio_data = portfolio_info_array_init_from_portfolio_string(app.portfolio_string);
     if (app.portfolio_data == NULL) // Empty JSON array
         return;
@@ -138,12 +138,12 @@ void on_load_button_clicked(GtkButton* button) {
     }
 
     // Destroy and create a new Info_Array with portfolio and api data
-    api_info_array_destroy(&app.portfolio_data);
+    info_array_destroy(&app.portfolio_data);
     app.portfolio_data = portfolio_info_array_init_from_portfolio_string(app.portfolio_string);
     if (app.portfolio_data != NULL) { // If file is not a length 0 JSON array
         check_list_create_from_string();
         app.last_reload = now;
-        api_info_array_store_data_batch(app.portfolio_data, CHECK);
+        api_store_info_array(app.portfolio_data, DATA_LEVEL_CHECK);
         check_list_add_api_data();
     }
 
@@ -331,8 +331,8 @@ void on_check_window_destroy(void) {
 
     // Destroy String and Info_Array and exit main GTK loop
     string_destroy(&app.portfolio_string);
-    api_info_array_destroy(&app.portfolio_data);
-    api_ref_data_destroy(&app.iex_ref_data);
+    info_array_destroy(&app.portfolio_data);
+    ref_data_destroy(&app.iex_ref_data);
     gtk_main_quit();
 }
 
@@ -367,7 +367,7 @@ void on_search_entry_focus_in_event(GtkWidget* search_entry, GdkEvent* event) {
     if (app.iex_ref_data != NULL) // If ref data has already been loaded return
         return;
 
-    app.iex_ref_data = iex_get_valid_symbols();
+    app.iex_ref_data = api_iex_store_ref_data();
     GtkListStore* list_store = GTK_LIST_STORE(GET_OBJECT("search_entry_completion_store"));
     GtkTreeIter iter;
     for (size_t i = 0; i < app.iex_ref_data->length; i++) {
@@ -395,8 +395,8 @@ void symbol_show_info(const char* symbol) {
 
     if (pInfo == NULL) { // Append to cache
         if (app.info_cache->length == INFO_ARRAY_CACHE_MAX) {
-            api_info_array_destroy(&app.info_cache);
-            app.info_cache = api_info_array_init();
+            info_array_destroy(&app.info_cache);
+            app.info_cache = info_array_init();
         }
 
         info_array_append(app.info_cache, symbol);
@@ -404,9 +404,9 @@ void symbol_show_info(const char* symbol) {
     }
 
     if (pInfo->price == EMPTY)
-        api_info_store_data_batch(pInfo, ALL);
+        api_store_info(pInfo, DATA_LEVEL_ALL);
     else if (pInfo->name[0] == '\0')
-        api_info_store_data_batch(pInfo, MISC);
+        api_store_info(pInfo, DATA_LEVEL_MISC);
 
     if (pInfo->peers != NULL)
         format_cells(pInfo->peers);
@@ -497,7 +497,7 @@ void list_store_update(void) {
     // Recreate Info_Array
     check_list_create_from_string(); // Will set app.portfolio_data if success
     if (app.portfolio_data != NULL) {
-        api_info_array_store_data_batch(app.portfolio_data, CHECK);
+        api_store_info_array(app.portfolio_data, DATA_LEVEL_CHECK);
         check_list_add_api_data();
     }
 }

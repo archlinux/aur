@@ -8,9 +8,9 @@ void portfolio_printw(void) {
         Info_Array* portfolio_data = portfolio_info_array_init_from_portfolio_string(
                 pString);
         if (portfolio_data != NULL) {
-            api_info_array_store_data_batch(portfolio_data, CHECK);
+            api_store_info_array(portfolio_data, DATA_LEVEL_CHECK);
             info_array_portfolio_printw(portfolio_data);
-            api_info_array_destroy(&portfolio_data);
+            info_array_destroy(&portfolio_data);
         }
         string_destroy(&pString);
     }
@@ -34,7 +34,7 @@ void info_array_portfolio_printw(Info_Array* portfolio_data) {
     if (cols < 110) {
         endwin();
         puts("Terminal too small.");
-        api_info_array_destroy(&portfolio_data);
+        info_array_destroy(&portfolio_data);
         return;
     }
 
@@ -160,13 +160,13 @@ void portfolio_print_stock(const char* symbol) {
     if (i == len)
     GOTO_CLEAN_MSG("Your portfolio does not contain any of this security.")
 
-    Info* info = api_info_init();
+    Info* info = info_init();
     strcpy(info->symbol, symbol);
-    api_info_store_data_batch(info, CHECK);
+    api_store_info(info, DATA_LEVEL_CHECK);
 
     info->amount = json_object_get_double(json_object_object_get(json_object_array_get_idx(jobj, i), "Shares"));
     info->total_spent = json_object_get_double(json_object_object_get(json_object_array_get_idx(jobj, i), "USD_Spent"));
-    info_store_check_data(info);
+    info_store_portfolio_data(info);
     printf("  AMOUNT SYMBOL    VALUE    SPENT   PROFIT       (%%)      24H       (%%)      7D    "
            "    (%%)      30D      "
            " (%%)\n%8.2lf %6s %8.2lf %8.2lf %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%) %8.2lf (%6.2lf%%)\n",
@@ -174,24 +174,24 @@ void portfolio_print_stock(const char* symbol) {
            info->profit_total_percent, info->profit_last_close, info->profit_last_close_percent,
            info->profit_7d, info->profit_7d_percent, info->profit_30d, info->profit_30d_percent);
 
-    api_info_destroy(&info);
+    info_destroy(&info);
     cleanup:
     json_object_put(jobj);
     string_destroy(&pString);
 }
 
 void interface_print(const char* symbol) {
-    Info* symbol_info = api_info_init();
+    Info* symbol_info = info_init();
     strcpy(symbol_info->symbol, symbol);
-    api_info_store_data_batch(symbol_info, ALL);
+    api_store_info(symbol_info, DATA_LEVEL_ALL);
     if (symbol_info->api_provider == EMPTY) {
-        api_info_destroy(&symbol_info);
+        info_destroy(&symbol_info);
         RET_MSG("Invalid symbol.")
     }
 
     if (symbol_info->points == NULL || symbol_info->name[0] == '\0') { // If not IEX print to stdout
         info_print(symbol_info);
-        api_info_destroy(&symbol_info);
+        info_destroy(&symbol_info);
         return;
     }
 
@@ -238,7 +238,7 @@ void interface_print(const char* symbol) {
 
     cleanup:
     endwin();
-    api_info_destroy(&symbol_info);
+    info_destroy(&symbol_info);
 }
 
 void header_printw(WINDOW* window, const Info* symbol_info) {
@@ -355,19 +355,19 @@ void news_print(const char* symbol, int num_articles) {
     if (num_articles > 50 || num_articles < 1)
         RET_MSG("You cannot request more than 50 articles.");
 
-    Info* symbol_info = api_info_init();
+    Info* symbol_info = info_init();
     strcpy(symbol_info->symbol, symbol);
     symbol_info->num_articles = num_articles;
-    api_info_store_data_batch(symbol_info, NEWS);
+    api_store_info(symbol_info, DATA_LEVEL_NEWS);
     if (symbol_info->api_provider == EMPTY) {
-        api_info_destroy(&symbol_info);
+        info_destroy(&symbol_info);
         RET_MSG("Invalid symbol");
     }
     for (int i = 0; i < symbol_info->num_articles; i++)
         printf("%s | %s | %s\n%s\n%s | Related: %s\n\n",
                symbol_info->articles[i]->headline, symbol_info->articles[i]->source, symbol_info->articles[i]->date,
                symbol_info->articles[i]->summary, symbol_info->articles[i]->url, symbol_info->articles[i]->related);
-    api_info_destroy(&symbol_info);
+    info_destroy(&symbol_info);
 }
 
 void news_printw(WINDOW* window, const Info* symbol_info) {
@@ -396,21 +396,21 @@ void peers_printw(WINDOW* window, const Info* symbol_info) {
 }
 
 void graph_print(const char* symbol, const char* symbol2) {
-    Info* symbol_info = api_info_init(), * symbol_info2 = NULL;
+    Info* symbol_info = info_init(), * symbol_info2 = NULL;
     strcpy(symbol_info->symbol, symbol);
-    api_info_store_data_batch(symbol_info, CHECK);
+    api_store_info(symbol_info, DATA_LEVEL_CHECK);
     if (symbol_info->api_provider == EMPTY || symbol_info->points == NULL) {
-        api_info_destroy(&symbol_info);
+        info_destroy(&symbol_info);
         RET_MSG("Invalid symbol")
     }
 
     if (symbol2 != NULL) {
-        symbol_info2 = api_info_init();
+        symbol_info2 = info_init();
         strcpy(symbol_info2->symbol, symbol2);
-        api_info_store_data_batch(symbol_info2, CHECK);
+        api_store_info(symbol_info2, DATA_LEVEL_CHECK);
         if (symbol_info2->api_provider ==  EMPTY || symbol_info2->points == NULL) {
-            api_info_destroy(&symbol_info);
-            api_info_destroy(&symbol_info2);
+            info_destroy(&symbol_info);
+            info_destroy(&symbol_info2);
             RET_MSG("Invalid symbol")
         }
     }
@@ -421,8 +421,8 @@ void graph_print(const char* symbol, const char* symbol2) {
     }
 
     graph_printw(stdscr, symbol_info, symbol_info2);
-    api_info_destroy(&symbol_info);
-    api_info_destroy(&symbol_info2);
+    info_destroy(&symbol_info);
+    info_destroy(&symbol_info2);
     endwin();
 }
 

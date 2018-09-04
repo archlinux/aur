@@ -82,15 +82,15 @@ int portfolio_modify_string(String* pString, const char* symbol, double quantity
         }
 
         if (strcmp("USD$", symbol) != 0) { // Check that the symbol is valid, except if it's USD
-            Info* data = api_info_init();
+            Info* data = info_init();
             strcpy(data->symbol, symbol);
-            api_info_store_data_batch(data, CHECK);
+            api_store_info(data, DATA_LEVEL_CHECK);
             if (data->api_provider == EMPTY) {// If NULL response from APIs, it's invalid
-                api_info_destroy(&data);
+                info_destroy(&data);
                 status = 1;
                 GOTO_CLEAN_MSG("Invalid symbol.")
             }
-            api_info_destroy(&data);
+            info_destroy(&data);
         }
 
         Json* new_object = json_object_new_object(); // Creates new array index and adds values to it
@@ -153,7 +153,7 @@ Info_Array* portfolio_info_array_init_from_portfolio_string(String* pString) {
         RETNULL_MSG("Your portfolio is empty.");
     }
 
-    Info_Array* portfolio_data = api_info_array_init_from_length(length);
+    Info_Array* portfolio_data = info_array_init_length(length);
     portfolio_data->totals->total_spent = 0;
     for (size_t i = 0; i < portfolio_data->length; i++) {
         strcpy(portfolio_data->array[i]->symbol,

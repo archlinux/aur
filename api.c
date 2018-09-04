@@ -1,6 +1,6 @@
 #include "api.h"
 
-Ref_Data* api_ref_data_init_from_length(size_t length) {
+Ref_Data* ref_data_init_length(size_t length) {
     Ref_Data* pRef_Data = malloc(sizeof(Ref_Data));
     pointer_alloc_check(pRef_Data);
     pRef_Data->symbols = malloc(length * sizeof(char*));
@@ -17,7 +17,7 @@ Ref_Data* api_ref_data_init_from_length(size_t length) {
     return pRef_Data;
 }
 
-News* api_news_init(void) {
+News* news_init(void) {
     News* pNews = malloc(sizeof(News));
     pointer_alloc_check(pNews);
     *pNews = (News) {
@@ -26,7 +26,7 @@ News* api_news_init(void) {
     return pNews;
 }
 
-Info* api_info_init(void) {
+Info* info_init(void) {
     Info* pInfo = malloc(sizeof(Info));
     pointer_alloc_check(pInfo);
     *pInfo = (Info) { // Null terminate every string and set every value to EMPTY
@@ -51,7 +51,7 @@ Info* api_info_init(void) {
     return pInfo;
 }
 
-Info_Array* api_info_array_init(void) {
+Info_Array* info_array_init(void) {
     Info_Array* pInfo_Array = malloc(sizeof(Info_Array));
     pointer_alloc_check(pInfo_Array);
     *pInfo_Array = (Info_Array) {
@@ -60,18 +60,18 @@ Info_Array* api_info_array_init(void) {
     return pInfo_Array;
 }
 
-Info_Array* api_info_array_init_from_length(size_t length) {
+Info_Array* info_array_init_length(size_t length) {
     if (length == 0)
-        return api_info_array_init();
+        return info_array_init();
 
-    Info_Array* pInfo_Array = api_info_array_init();
+    Info_Array* pInfo_Array = info_array_init();
     pInfo_Array->length = length;
     pInfo_Array->array = malloc(sizeof(Info*) * length);
     pointer_alloc_check(pInfo_Array->array);
     for (size_t i = 0; i < length; i++)
-        pInfo_Array->array[i] = api_info_init();
+        pInfo_Array->array[i] = info_init();
 
-    pInfo_Array->totals = api_info_init();
+    pInfo_Array->totals = info_init();
     strcpy(pInfo_Array->totals->symbol, "TOTALS");
     return pInfo_Array;
 }
@@ -79,11 +79,11 @@ Info_Array* api_info_array_init_from_length(size_t length) {
 void info_array_append(Info_Array* pInfo_Array, const char* symbol) {
     pInfo_Array->array = realloc(pInfo_Array->array, sizeof(char*) * (pInfo_Array->length + 1));
     pInfo_Array->length++;
-    pInfo_Array->array[pInfo_Array->length - 1] = api_info_init();
+    pInfo_Array->array[pInfo_Array->length - 1] = info_init();
     strcpy(pInfo_Array->array[pInfo_Array->length - 1]->symbol, symbol);
 }
 
-size_t api_string_writefunc(void* ptr, size_t size, size_t nmemb, String* pString) {
+size_t string_writefunc(void* ptr, size_t size, size_t nmemb, String* pString) {
     size_t new_len = pString->len + size * nmemb;
     pString->data = realloc(pString->data, new_len + 1);
     pointer_alloc_check(pString->data);
@@ -93,7 +93,7 @@ size_t api_string_writefunc(void* ptr, size_t size, size_t nmemb, String* pStrin
     return size * nmemb;
 }
 
-String* api_curl_data(const char* url) {
+String* api_curl_url(const char* url) {
     CURL* curl = curl_easy_init();
     CURLcode res;
     if (!curl) // Error creating curl object
@@ -102,7 +102,7 @@ String* api_curl_data(const char* url) {
     String* pString = string_init();
     curl_easy_setopt(curl, CURLOPT_URL, url); // Set URL
     curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L); // Needed for HTTPS
-    curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, api_string_writefunc); // Specify writefunc for return data
+    curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, string_writefunc); // Specify writefunc for return data
     curl_easy_setopt(curl, CURLOPT_WRITEDATA, &pString->data); // Specify object for return data
     res = curl_easy_perform(curl);
     curl_easy_cleanup(curl);
@@ -114,7 +114,7 @@ String* api_curl_data(const char* url) {
     return pString;
 }
 
-void iex_batch_store_data_info_array(Info_Array* pInfo_Array, Data_Level data_level) {
+void api_iex_store_info_array(Info_Array* pInfo_Array, Data_Level data_level) {
     char** symbol_array = malloc(pInfo_Array->length * sizeof(char*));
     pointer_alloc_check(symbol_array);
     for (size_t i = 0; i < pInfo_Array->length; i++) {
@@ -123,9 +123,9 @@ void iex_batch_store_data_info_array(Info_Array* pInfo_Array, Data_Level data_le
         strcpy(symbol_array[i], pInfo_Array->array[i]->symbol);
     }
 
-    String* pString = iex_batch_get_data_string(symbol_array, pInfo_Array->length, data_level);
+    String* pString = api_iex_get_data_string(symbol_array, pInfo_Array->length, data_level);
     Json* jobj = json_tokener_parse(pString->data);
-    info_array_store_all_from_json(pInfo_Array, jobj);
+    info_array_store_endpoints_json(pInfo_Array, jobj);
 
     for (size_t i = 0; i < pInfo_Array->length; i++)
         free(symbol_array[i]);
@@ -135,36 +135,36 @@ void iex_batch_store_data_info_array(Info_Array* pInfo_Array, Data_Level data_le
     string_destroy(&pString);
 }
 
-void iex_batch_store_data_info(Info* pInfo, Data_Level data_level) {
+void api_iex_store_info(Info* pInfo, Data_Level data_level) {
     char* symbol_array = malloc(SYMBOL_MAX_LENGTH);
     pointer_alloc_check(symbol_array);
     strcpy(symbol_array, pInfo->symbol);
-    String* pString = iex_batch_get_data_string(&symbol_array, 1, data_level);
+    String* pString = api_iex_get_data_string(&symbol_array, 1, data_level);
     Json* jobj = json_tokener_parse(pString->data);
     Json* jsymbol = json_object_object_get(jobj, pInfo->symbol);
     if (jsymbol != NULL)
-        info_store_all_from_json(pInfo, jsymbol);
+        info_store_endpoints_json(pInfo, jsymbol);
 
     free(symbol_array);
     json_object_put(jobj);
     string_destroy(&pString);
 }
 
-String* iex_batch_get_data_string(char* symbol_array[SYMBOL_MAX_LENGTH], size_t len,
-        Data_Level data_level) {
+String* api_iex_get_data_string(char** symbol_array, size_t len,
+                                Data_Level data_level) {
     char endpoints[128];
-    if (data_level == ALL)
+    if (data_level == DATA_LEVEL_ALL)
         strcpy(endpoints, "quote,chart,company,stats,peers,news,earnings&range=5y");
-    else if (data_level == CHECK)
+    else if (data_level == DATA_LEVEL_CHECK)
         strcpy(endpoints, "quote,chart");
-    else if (data_level == MISC)
+    else if (data_level == DATA_LEVEL_MISC)
         strcpy(endpoints, "company,stats,peers,news,earnings&range=5y");
     else strcpy(endpoints, "news");
 
     size_t num_partitions = len / 100 + (len % 100 > 0), idx;
     char iex_api_string[num_partitions][URL_MAX_LENGTH * 2];
-    char symbol_list_string[num_partitions][INFO_TEXT_MAX];
-    memset(symbol_list_string, '\0', num_partitions * INFO_TEXT_MAX);
+    char symbol_list_string[num_partitions][INFO_MAX_LENGTH];
+    memset(symbol_list_string, '\0', num_partitions * INFO_MAX_LENGTH);
     String* string_array[num_partitions];
     pthread_t threads[num_partitions];
     for (size_t i = 0; i < num_partitions; i++) {
@@ -181,7 +181,7 @@ String* iex_batch_get_data_string(char* symbol_array[SYMBOL_MAX_LENGTH], size_t 
         sprintf(iex_api_string[i],
                 "https://api.iextrading.com/1.0/stock/market/batch?symbols=%s&types=%s",
                 symbol_list_string[i], endpoints);
-        if (pthread_create(&threads[i], NULL, (void* (*)(void*)) api_curl_data,
+        if (pthread_create(&threads[i], NULL, (void* (*)(void*)) api_curl_url,
                            (void*) iex_api_string[i]))
             EXIT_MSG("Error creating thread!");
     }
@@ -209,7 +209,7 @@ String* iex_batch_get_data_string(char* symbol_array[SYMBOL_MAX_LENGTH], size_t 
     return string_array[0];
 }
 
-void* morningstar_store_info(void* vpInfo) {
+void* api_morningstar_store_info(void* vpInfo) {
     Info* symbol_info = vpInfo;
     char today_str[DATE_MAX_LENGTH], five_year_str[DATE_MAX_LENGTH], morningstar_api_string[URL_MAX_LENGTH];
     time_t now = time(NULL);
@@ -223,7 +223,7 @@ void* morningstar_store_info(void* vpInfo) {
             "http://globalquote.morningstar.com/globalcomponent/RealtimeHistoricalStockData.ashx?showVol=true&dtype=his"
             "&f=d&curry=USD&isD=true&isS=true&hasF=true&ProdCode=DIRECT&ticker=%s&range=%s|%s",
             symbol_info->symbol, five_year_str, today_str);
-    String* pString = api_curl_data(morningstar_api_string);
+    String* pString = api_curl_url(morningstar_api_string);
     if (pString == NULL)
         return NULL;
 
@@ -232,7 +232,7 @@ void* morningstar_store_info(void* vpInfo) {
         return NULL;
     }
 
-    symbol_info->api_provider = MORNINGSTAR;
+    symbol_info->api_provider = API_PROVIDER_MORNINGSTAR;
 
     Json* jobj = json_tokener_parse(pString->data);
     Json* datapoints = json_object_object_get(
@@ -257,7 +257,7 @@ void* morningstar_store_info(void* vpInfo) {
     return vpInfo;
 }
 
-void* alphavantage_store_info(void* vpInfo) {
+void* api_alphavantage_store_info(void* vpInfo) {
     Info* symbol_info = vpInfo;
     if (symbol_info->symbol[0] == '\0')
         return NULL;
@@ -266,7 +266,7 @@ void* alphavantage_store_info(void* vpInfo) {
     sprintf(alphavantage_api_string, "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY"
                                      "&symbol=%s&apikey=DFUMLJ1ILOM2G7IH&outputsize=full&datatype"
                                      "=csv", symbol_info->symbol);
-    String* pString = api_curl_data(alphavantage_api_string);
+    String* pString = api_curl_url(alphavantage_api_string);
     if (pString == NULL)
         return NULL;
 
@@ -275,7 +275,7 @@ void* alphavantage_store_info(void* vpInfo) {
         return NULL;
     }
 
-    symbol_info->api_provider = ALPHAVANTAGE;
+    symbol_info->api_provider = API_PROVIDER_ALPHAVANTAGE;
 
     size_t len = string_get_num_lines(pString) - 1, idx = 0;
     if (len > 1260) // 5 years
@@ -303,11 +303,11 @@ void* alphavantage_store_info(void* vpInfo) {
     return vpInfo;
 }
 
-void* coinmarketcap_store_info(void* vpInfo) {
+void* api_coinmarketcap_store_info(void* vpInfo) {
     Info* symbol_info = vpInfo;
     char coinmarketcap_api_string[URL_MAX_LENGTH];
     sprintf(coinmarketcap_api_string, "https://api.coinmarketcap.com/v1/ticker/%s", symbol_info->symbol);
-    String* pString = api_curl_data(coinmarketcap_api_string);
+    String* pString = api_curl_url(coinmarketcap_api_string);
     if (pString == NULL)
         return NULL;
 
@@ -316,7 +316,7 @@ void* coinmarketcap_store_info(void* vpInfo) {
         return NULL;
     }
 
-    symbol_info->api_provider = COINMARKETCAP;
+    symbol_info->api_provider = API_PROVIDER_COINMARKETCAP;
 
     Json* jobj = json_tokener_parse(pString->data);
     Json* data = json_object_array_get_idx(jobj, 0);
@@ -338,8 +338,8 @@ void* coinmarketcap_store_info(void* vpInfo) {
     return vpInfo;
 }
 
-void api_info_array_store_data_batch(Info_Array* pInfo_Array, Data_Level data_level) {
-    iex_batch_store_data_info_array(pInfo_Array, data_level);
+void api_store_info_array(Info_Array* pInfo_Array, Data_Level data_level) {
+    api_iex_store_info_array(pInfo_Array, data_level);
 
     // All IEX securities are accounted for
     Info* pInfo;
@@ -351,9 +351,9 @@ void api_info_array_store_data_batch(Info_Array* pInfo_Array, Data_Level data_le
         if (pInfo->api_provider == EMPTY && strcmp(pInfo->symbol, "USD$") != 0) {
             open_threads[i] = 1;
             if (strlen(pInfo->symbol) > 5 && pthread_create(&threads[i], NULL,
-                    coinmarketcap_store_info, pInfo)) { // Crypto
+                                                            api_coinmarketcap_store_info, pInfo)) { // Crypto
                 EXIT_MSG("Error creating thread!");
-            } else if (pthread_create(&threads[i], NULL, alphavantage_store_info, pInfo)) {
+            } else if (pthread_create(&threads[i], NULL, api_alphavantage_store_info, pInfo)) {
                 EXIT_MSG("Error creating thread!");
             }
         }
@@ -371,7 +371,7 @@ void api_info_array_store_data_batch(Info_Array* pInfo_Array, Data_Level data_le
 
         // Crypto with 5 char or less name
         if (pInfo->api_provider == EMPTY && strcmp(pInfo->symbol, "USD$") != 0 &&
-            pthread_create(&threads[i], NULL, coinmarketcap_store_info, pInfo))
+                pthread_create(&threads[i], NULL, api_coinmarketcap_store_info, pInfo))
             EXIT_MSG("Error creating thread!");
     }
 
@@ -383,21 +383,22 @@ void api_info_array_store_data_batch(Info_Array* pInfo_Array, Data_Level data_le
 
             open_threads[i] = 0;
         }
-        info_store_check_data(pInfo_Array->array[i]);
+        info_store_portfolio_data(pInfo_Array->array[i]);
     }
     info_array_store_totals(pInfo_Array);
 }
 
-void api_info_store_data_batch(Info* pInfo, Data_Level data_level) {
-    iex_batch_store_data_info(pInfo, data_level);
-    if (data_level == NEWS || (pInfo->api_provider == EMPTY &&
-        alphavantage_store_info(pInfo) == NULL && coinmarketcap_store_info(pInfo) == NULL))
+void api_store_info(Info* pInfo, Data_Level data_level) {
+    api_iex_store_info(pInfo, data_level);
+    if (data_level == DATA_LEVEL_NEWS || (pInfo->api_provider == EMPTY &&
+            api_alphavantage_store_info(pInfo) == NULL &&
+            api_coinmarketcap_store_info(pInfo) == NULL))
         return;
 
-    info_store_check_data(pInfo);
+    info_store_portfolio_data(pInfo);
 }
 
-void info_store_check_data(Info* pInfo) {
+void info_store_portfolio_data(Info* pInfo) {
     if (strcmp(pInfo->symbol, "USD$") != 0) {
         if (pInfo->amount != EMPTY) {
             pInfo->current_value = pInfo->amount * pInfo->price;
@@ -450,13 +451,13 @@ void info_array_store_totals(Info_Array* pInfo_Array) {
                                               pInfo_Array->totals->total_spent;
 }
 
-Ref_Data* iex_get_valid_symbols(void) {
-    String* pString = api_curl_data("https://api.iextrading.com/1.0/ref-data/symbols");
+Ref_Data* api_iex_store_ref_data(void) {
+    String* pString = api_curl_url("https://api.iextrading.com/1.0/ref-data/symbols");
     if (pString == NULL)
         return NULL;
 
     Json* jobj = json_tokener_parse(pString->data), * idx;
-    Ref_Data* pRef_Data = api_ref_data_init_from_length(json_object_array_length(jobj));
+    Ref_Data* pRef_Data = ref_data_init_length(json_object_array_length(jobj));
     for (size_t i = 0; i < pRef_Data->length; i++) {
         idx = json_object_array_get_idx(jobj, i);
         strcpy(pRef_Data->symbols[i], json_object_get_string(json_object_object_get(idx,
@@ -471,18 +472,18 @@ Ref_Data* iex_get_valid_symbols(void) {
     return pRef_Data;
 }
 
-void info_array_store_all_from_json(Info_Array* pInfo_Array, const Json* jobj) {
+void info_array_store_endpoints_json(Info_Array* pInfo_Array, const Json* jobj) {
     Json* jsymbol;
     for (size_t i = 0; i < pInfo_Array->length; i++) {
         jsymbol = json_object_object_get(jobj, pInfo_Array->array[i]->symbol);
         if (jsymbol != NULL)
-            info_store_all_from_json(pInfo_Array->array[i], jsymbol);
+            info_store_endpoints_json(pInfo_Array->array[i], jsymbol);
     }
 }
 
-void info_store_all_from_json(Info* pInfo, const Json* jsymbol) {
+void info_store_endpoints_json(Info* pInfo, const Json* jsymbol) {
     Json* jquote, * jchart, * jcompany, * jstats, * jpeers, * jnews, * jearnings;
-    pInfo->api_provider = IEX;
+    pInfo->api_provider = API_PROVIDER_IEX;
     jquote = json_object_object_get(jsymbol, "quote");
     jchart = json_object_object_get(jsymbol, "chart");
     jcompany = json_object_object_get(jsymbol, "company");
@@ -491,22 +492,22 @@ void info_store_all_from_json(Info* pInfo, const Json* jsymbol) {
     jnews = json_object_object_get(jsymbol, "news");
     jearnings = json_object_object_get(jsymbol, "earnings");
     if (jquote != NULL)
-        info_store_quote_from_json(pInfo, jquote);
+        info_store_quote_json(pInfo, jquote);
     if (jchart != NULL)
-        info_store_chart_from_json(pInfo, jchart);
+        info_store_chart_json(pInfo, jchart);
     if (jcompany != NULL)
-        info_store_company_from_json(pInfo, jcompany);
+        info_store_company_json(pInfo, jcompany);
     if (jstats != NULL)
-        info_store_stats_from_json(pInfo, jstats);
+        info_store_stats_json(pInfo, jstats);
     if (jpeers != NULL)
-        info_store_peers_from_json(pInfo, jpeers);
+        info_store_peers_json(pInfo, jpeers);
     if (jnews != NULL)
-        info_store_news_from_json(pInfo, jnews);
+        info_store_news_json(pInfo, jnews);
     if (jearnings != NULL)
-        info_store_earnings_from_json(pInfo, jearnings);
+        info_store_earnings_json(pInfo, jearnings);
 }
 
-void info_store_quote_from_json(Info* pInfo, const Json* jquote) {
+void info_store_quote_json(Info* pInfo, const Json* jquote) {
     if (json_object_get_int64(json_object_object_get(jquote, "extendedPriceTime")) >
         json_object_get_int64(json_object_object_get(jquote, "latestUpdate"))) {
         pInfo->price = json_object_get_double(json_object_object_get(jquote, "extendedPrice"));
@@ -526,7 +527,7 @@ void info_store_quote_from_json(Info* pInfo, const Json* jquote) {
 }
 
 
-void info_store_chart_from_json(Info* pInfo, const Json* jchart) {
+void info_store_chart_json(Info* pInfo, const Json* jchart) {
     free(pInfo->points);
     size_t len = json_object_array_length(jchart);
     pInfo->points = calloc(len + 1, sizeof(double));
@@ -544,7 +545,7 @@ void info_store_chart_from_json(Info* pInfo, const Json* jchart) {
         pInfo->price_30d = pInfo->points[0];
 }
 
-void info_store_company_from_json(Info* pInfo, const Json* jcompany) {
+void info_store_company_json(Info* pInfo, const Json* jcompany) {
     Json* jsymbol, * jname, * jindustry, * jwebsite, * jdescription, * jceo, * jtype, * jsector;
     jsymbol = json_object_object_get(jcompany, "symbol");
     jname = json_object_object_get(jcompany, "companyName");
@@ -575,7 +576,7 @@ void info_store_company_from_json(Info* pInfo, const Json* jcompany) {
         strcpy(pInfo->sector, json_object_get_string(jsector));
 }
 
-void info_store_stats_from_json(Info* pInfo, const Json* jstats) {
+void info_store_stats_json(Info* pInfo, const Json* jstats) {
     pInfo->div_yield = json_object_get_double(json_object_object_get(jstats, "dividendYield"));
     pInfo->revenue = json_object_get_int64(json_object_object_get(jstats, "revenue"));
     pInfo->gross_profit = json_object_get_int64(json_object_object_get(jstats, "grossProfit"));
@@ -583,23 +584,20 @@ void info_store_stats_from_json(Info* pInfo, const Json* jstats) {
     pInfo->debt = json_object_get_int64(json_object_object_get(jstats, "debt"));
 }
 
-void info_store_peers_from_json(Info* pInfo, const Json* jpeers) {
+void info_store_peers_json(Info* pInfo, const Json* jpeers) {
     size_t len = json_object_array_length(jpeers);
     if (len == 0)
         return;
 
-    if (len > MAX_PEERS)
-        len = MAX_PEERS;
-
-    pInfo->peers = api_info_array_init_from_length(len);
+    pInfo->peers = info_array_init_length(len);
     for (size_t i = 0; i < pInfo->peers->length; i++)
         strcpy(pInfo->peers->array[i]->symbol, json_object_get_string(
                 json_object_array_get_idx(jpeers, i)));
 
-    api_info_array_store_data_batch(pInfo->peers, CHECK);
+    api_store_info_array(pInfo->peers, DATA_LEVEL_CHECK);
 }
 
-void info_store_news_from_json(Info* pInfo, const Json* jnews) {
+void info_store_news_json(Info* pInfo, const Json* jnews) {
     Json* idx, * headline, * source, * date, * summary, * url, * related;
     size_t len = json_object_array_length(jnews);
     if (len < (unsigned) pInfo->num_articles)
@@ -627,7 +625,7 @@ void info_store_news_from_json(Info* pInfo, const Json* jnews) {
             break;
         }
 
-        pInfo->articles[i] = api_news_init();
+        pInfo->articles[i] = news_init();
         if (headline != NULL)
             strcpy(pInfo->articles[i]->headline, json_object_get_string(headline));
         if (source != NULL)
@@ -654,7 +652,7 @@ void info_store_news_from_json(Info* pInfo, const Json* jnews) {
     }
 }
 
-void info_store_earnings_from_json(Info* pInfo, const Json* jearnings) {
+void info_store_earnings_json(Info* pInfo, const Json* jearnings) {
     // ETFs don't report earnings
     if (!json_object_is_type(json_object_object_get(jearnings, "earnings"), json_type_array))
         return;
@@ -733,7 +731,7 @@ Info* info_array_find_symbol_recursive(const Info_Array* pInfo_Array, const char
     return NULL;
 }
 
-void api_ref_data_destroy(Ref_Data** phRef_Data) {
+void ref_data_destroy(Ref_Data** phRef_Data) {
     if (*phRef_Data == NULL)
         return;
 
@@ -748,7 +746,7 @@ void api_ref_data_destroy(Ref_Data** phRef_Data) {
     *phRef_Data = NULL;
 }
 
-void api_news_destroy(News** phNews) {
+void news_destroy(News** phNews) {
     if (*phNews == NULL)
         return;
 
@@ -756,7 +754,7 @@ void api_news_destroy(News** phNews) {
     *phNews = NULL;
 }
 
-void api_info_destroy(Info** phInfo) {
+void info_destroy(Info** phInfo) {
     if (*phInfo == NULL)
         return;
 
@@ -764,26 +762,25 @@ void api_info_destroy(Info** phInfo) {
     free(pInfo->points);
     if (pInfo->articles != NULL)
         for (int i = 0; i < pInfo->num_articles; i++)
-            api_news_destroy(&pInfo->articles[i]);
+            news_destroy(&pInfo->articles[i]);
 
     if (pInfo->peers != NULL)
-        api_info_array_destroy(&pInfo->peers);
+        info_array_destroy(&pInfo->peers);
 
     free(pInfo->articles);
     free(*phInfo);
     *phInfo = NULL;
 }
 
-void api_info_array_destroy(Info_Array** phInfo_Array) {
+void info_array_destroy(Info_Array** phInfo_Array) {
     if (*phInfo_Array == NULL)
         return;
 
     Info_Array* pInfo_Array = *phInfo_Array;
     for (size_t i = 0; i < pInfo_Array->length; i++)
-        api_info_destroy(&pInfo_Array->array[i]);
+        info_destroy(&pInfo_Array->array[i]);
     free(pInfo_Array->array);
-    if (pInfo_Array->totals != NULL)
-        api_info_destroy(&pInfo_Array->totals);
+    info_destroy(&pInfo_Array->totals);
     free(*phInfo_Array);
     *phInfo_Array = NULL;
 }
