@@ -1,0 +1,12 @@
+pkgbase = elm-upgrade
+	pkgdesc = Upgrade Elm projects
+	pkgver = 0.19.6
+	pkgrel = 1
+	url = https://github.com/avh4/elm-upgrade
+	arch = any
+	depends = nodejs
+	depends = npm
+	options = !strip
+
+pkgname = elm-upgrade
+
