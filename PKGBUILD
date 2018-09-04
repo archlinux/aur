@@ -9,7 +9,7 @@
 
 pkgname=popcorntime
 pkgver=0.3.10
-pkgrel=10
+pkgrel=11
 pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch."
 arch=('i686' 'x86_64')
 url="https://popcorntime.sh/"
@@ -25,7 +25,7 @@ _commit_hash="commit=be800aa98cb9ef16f7e00737bbc51ba69204ed8f"
 _pkgname="popcorn-desktop"
 
 # Useful variables for builds
-_nwjs="0.32.4"
+_nwjs="0.32.3"
 [ "$CARCH" = "i686" ]   && _platform=linux32
 [ "$CARCH" = "x86_64" ] && _platform=linux64
 _srcdir="${_pkgname}"
