@@ -1,7 +1,7 @@
 # Maintainer of this PKGBUILD file: Martino Pilia <martino.pilia@gmail.com>
 pkgname='ants'
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Advanced Normalization Tools (ANTs) computes high-dimensional mappings to capture the statistics of brain structure and function'
 arch=('i686' 'x86_64')
 url='http://www.picsl.upenn.edu/ANTS/'
@@ -17,6 +17,10 @@ sha256sums=('62f8f9ae141cb45025f4bb59277c053acf658d4a3ba868c9e0f609af72e66b4a')
 prepare() {
 	_builddir="${srcdir}/ANTs-${pkgver}/build"
 	mkdir -p "$_builddir" || :
+
+	# include this patch: https://github.com/ANTsX/ANTs/commit/89af9b2694715bf8204993e032fa132f80cf37bd
+	sed -i 's/void GetPriorLabelParameterMap/LabelParameterMapType GetPriorLabelParameterMap/' \
+		"${srcdir}/ANTs-${pkgver}/ImageSegmentation/antsAtroposSegmentationImageFilter.h"
 
 	cd "$_builddir"
 
