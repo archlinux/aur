@@ -1,6 +1,6 @@
 # Maintainer: William Turner <willtur.will@gmail.com>
 pkgname=sqlops
-pkgver=0.32.6
+pkgver=0.32.8
 pkgrel=1
 pkgdesc="SQL Operations Studio is a data management tool that enables you to work with SQL Server, Azure SQL DB and SQL DW from Windows, macOS and Linux."
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('krb5: Windows authentication support')
 options=('staticlibs')
 source=("https://github.com/Microsoft/sqlopsstudio/releases/download/${pkgver}/sqlops-linux-${pkgver}.tar.gz"
 	'sqlops.desktop')
-sha256sums=('7464398beb8856d928fea68dddf03622e4eb4c18d39a45c03549757553b018a7'
+sha256sums=('8cd0644fc854621a77df0536ae3afcf626c8843672fb3fbb9561029bf69d75b4'
             'b14a6335e172e0da67ba777b9cd8ae82c23fc8002dfce8c1f5b0f0388a42d7ee')
 
 package() {
