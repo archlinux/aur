@@ -1,3 +1,4 @@
+# Maintainer: Jonas Schürmann <jonasschuermann@aol.de>
 pkgname=create-elm-app
 pkgver=2.0.0
 pkgrel=1
