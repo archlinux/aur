@@ -1,15 +1,22 @@
 pkgbase = doitlive
 	pkgdesc = Because sometimes you need to do it live.
-	pkgver = 3.0.0
-	pkgrel = 1
+	pkgver = 4.0.1
+	pkgrel = 00
 	url = https://github.com/sloria/doitlive
 	arch = any
 	license = MIT
-	makedepends = python3
+	makedepends = python-pip
 	depends = python
 	depends = python-click
-	source = https://pypi.python.org/packages/75/68/44b16599a252364964bebf1f1f59f03e9d3a1fcd9049dc877b3b9682bafa/doitlive-3.0.0.tar.gz
-	md5sums = 6d08a427f2d967fb3fc3b6e4110d80d8
+	depends = python-click-didyoumean
+	depends = python-click-completion
+	noextract = doitlive-4.0.1-py2.py3-none-any.whl
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/28/a6/0dbb29c997c74024cd7b4a8b919fa1623bcfbc2c1a1b103c8cb433eb9ede/doitlive-4.0.1-py2.py3-none-any.whl
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 1b2c6244bf980db44719b6a982330fc0
+	md5sums = 193aac7b283148548bee1c1ef13752fe
 
-pkgname = doitlive
+pkgname = python-doitlive
 
