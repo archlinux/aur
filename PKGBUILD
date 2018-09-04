@@ -2,7 +2,7 @@
 
 pkgname=(veles-git python-veles-git)
 pkgver=2018.05.0.r0.ge65de5a
-pkgrel=1
+pkgrel=2
 pkgdesc='Binary data analysis and visualization tool'
 url='https://codisec.com/veles'
 license=('APLv2')
@@ -31,6 +31,7 @@ build() {
   cd "${srcdir}/veles/build"
 
   cmake -Wno-dev .. \
+	  -DCMAKE_VERBOSE_MAKEFILE=ON \
 	  -DCMAKE_INSTALL_PREFIX:PATH="${pkgdir}/usr" \
 	  -DCMAKE_BUILD_TYPE=MinSizeRel
 }
