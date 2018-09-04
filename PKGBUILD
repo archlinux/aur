@@ -1,10 +1,10 @@
 # Maintainer: Élie Bouttier <elie+aur@bouttier.eu>
 pkgname=mvim-git
-pkgver=v0.1.0.r0.gee15d51
+pkgver=v0.1.0.r13.g3945fd5
 pkgrel=1
-pkgdesc="Rename or move files by editing their names with vim."
+pkgdesc="Rename, move or delete files by editing their names with vim."
 arch=(any)
-url="https://github.com/bouttier/mvim.git"
+url="https://github.com/bouttier/mvim"
 license=('APACHE')
 depends=('python')
 makedepends=('git')
