@@ -1,0 +1,5 @@
+libws2801/
+src/
+pkg/
+
+*.tar*
