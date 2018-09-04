@@ -1,0 +1,16 @@
+pkgbase = emacs-pos-tip-git
+	pkgdesc = Show tooltip at point
+	pkgver = r34.051e08f
+	pkgrel = 1
+	url = https://github.com/pitkali/pos-tip
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	provides = emacs-pos-tip
+	conflicts = emacs-pos-tip
+	source = git+https://github.com/pitkali/pos-tip.git
+	sha256sums = SKIP
+
+pkgname = emacs-pos-tip-git
+
