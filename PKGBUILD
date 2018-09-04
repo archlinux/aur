@@ -3,7 +3,7 @@
 pkgname=mame-tools
 pkgver=0.200
 pkgrel=1
-pkgdesc="Tools for MAME / MESS: Castool, CHDman (MAME Compressed Hunks of Data CHD manager), floptool, jedutil, ldresample, romcmp ..."
+pkgdesc="Tools for MAME / MESS: Castool, CHDman (Compressed Hunks of Data - CHD manager), floptool, jedutil, ldresample, romcmp ..."
 arch=('i686' 'x86_64')
 	if [[ "$CARCH" == "i686" ]]; then
 		_ARCH_="i386"
