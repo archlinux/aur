@@ -6,13 +6,13 @@
 
 pkgsubn=https-everywhere
 pkgname=${pkgsubn}-chrome-git
-pkgver=63606.174decbe26
+pkgver=64130.792d6eb6a5
 pkgrel=1
 pkgdesc="Chrome/Chromium extension to use HTTPS whenever possible - git/dev"
 arch=('any')
 url='https://www.eff.org/https-everywhere'
 license=('GPL')
-makedepends=(git perl python-lxml libxml2 vim zip rsync)
+makedepends=(git perl python36 python-lxml libxml2 vim zip rsync)
 source=("git+https://github.com/EFForg/${pkgsubn}.git")
 sha512sums=('SKIP')
 
