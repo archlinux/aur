@@ -1,18 +1,16 @@
 # Maintainer: Fredrick Brennan <copypaste@kittens.ph>
 # Contributor: Stephan Eisvogel <eisvogel at embinet dot de>
 pkgname=python-pikepdf
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='Read and write PDFs with Python, powered by qpdf'
 arch=('x86_64')
 url='https://github.com/pikepdf/pikepdf'
 license=(MPL)
-makedepends=('pybind11<3,>=2.2.3')
-depends=('python>=3.5'
-         'qpdf>=8.1.0'
-)
-source=('https://files.pythonhosted.org/packages/cd/e8/1de3832c09826b50babefe0d833e452bb2caee61800b047d1094f9fde5ec/pikepdf-0.3.1.tar.gz')
-sha256sums=('7cdf0a874de395c8cf00c92605a7c55445bbf41df9f0aae7c4d1625b66c4be26')
+makedepends=('pybind11')
+depends=('python' 'qpdf')
+source=('https://files.pythonhosted.org/packages/30/bd/7afb368ea0872e64208e9940c729afde2c27eff7ffe1bbb28a64b1bb5340/pikepdf-0.3.2.tar.gz')
+sha256sums=('574ab287d326ef80ed5fe042ac3493831f1feba6c6deff552ef4a101da4a5d3c')
 
 build() {
         cd "$srcdir/pikepdf-${pkgver}"
