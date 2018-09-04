@@ -20,11 +20,11 @@ backup=('etc/snapman.ini')
 install="$pkgname.install"
 
 build() {
-    cd "$startdir"
+    cd $srcdir/$pkgname-$pkgver
     make
     }
 
 package() {
-    cd "$startdir"
+    cd $srcdir/$pkgname-$pkgver
     make arch_install DESTDIR="$pkgdir"
 }
