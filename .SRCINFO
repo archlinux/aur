@@ -7,11 +7,14 @@ pkgbase = mingw-w64-trilinos
 	license = LGPL3
 	makedepends = mingw-w64-cmake
 	depends = mingw-w64-netcdf
+	depends = mingw-w64-blas
 	options = staticlibs
 	options = !buildflags
 	options = !strip
 	source = https://github.com/trilinos/Trilinos/archive/trilinos-release-12-12-1.tar.gz
+	source = mingw.patch
 	sha256sums = 5474c5329c6309224a7e1726cf6f0d855025b2042959e4e2be2748bd6bb49e18
+	sha256sums = SKIP
 
 pkgname = mingw-w64-trilinos
 

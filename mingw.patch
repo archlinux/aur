@@ -1,0 +1,41 @@
+diff --git a/packages/teuchos/numerics/src/Teuchos_BLAS.cpp b/packages/teuchos/numerics/src/Teuchos_BLAS.cpp
+index 70e3b05162..f7477e4b81 100644
+--- a/packages/teuchos/numerics/src/Teuchos_BLAS.cpp
++++ b/packages/teuchos/numerics/src/Teuchos_BLAS.cpp
+@@ -111,7 +111,7 @@ namespace Teuchos {
+ 
+ //Explicitly instantiating these templates for windows due to an issue with
+ //resolving them when linking dlls.
+-#ifdef _WIN32
++#ifdef _MSC_VER
+ #  ifdef HAVE_TEUCHOS_COMPLEX
+      template BLAS<long int, std::complex<float> >;
+      template BLAS<long int, std::complex<double> >;
+diff --git a/packages/teuchos/parameterlist/src/CMakeLists.txt b/packages/teuchos/parameterlist/src/CMakeLists.txt
+index 309259a5d0..2374fe597f 100644
+--- a/packages/teuchos/parameterlist/src/CMakeLists.txt
++++ b/packages/teuchos/parameterlist/src/CMakeLists.txt
+@@ -23,3 +23,7 @@ TRIBITS_ADD_LIBRARY(
+   SOURCES ${SOURCES}
+   DEFINES -DTEUCHOSPARAMETERLIST_LIB_EXPORTS_MODE
+   )
++
++if (WIN32)
++  target_link_libraries (teuchosparameterlist ws2_32)
++endif ()
+diff --git a/packages/teuchos/parameterlist/src/Teuchos_XMLPerfTestArchive.cpp b/packages/teuchos/parameterlist/src/Teuchos_XMLPerfTestArchive.cpp
+index 1cd1a00264..6c45fbebe9 100644
+--- a/packages/teuchos/parameterlist/src/Teuchos_XMLPerfTestArchive.cpp
++++ b/packages/teuchos/parameterlist/src/Teuchos_XMLPerfTestArchive.cpp
+@@ -47,9 +47,8 @@
+ #include <Teuchos_XMLObject.hpp>
+ #include <Teuchos_FileInputSource.hpp>
+ #include <Teuchos_XMLPerfTestArchive.hpp>
+-#if defined(_WIN32) || defined(__WIN32__) || defined(WIN32)
+-#include <Winsock2.h>
+-#pragma comment(lib, "ws2_32.lib")
++#ifdef _WIN32
++#include <winsock2.h>
+ #else
+ #include <unistd.h>
+ #endif

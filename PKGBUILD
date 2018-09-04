@@ -5,19 +5,17 @@ pkgdesc="Framework for the solution of large-scale, complex multi-physics engine
 arch=(any)
 url="http://trilinos.org"
 license=('LGPL3')
-depends=('mingw-w64-netcdf')
+depends=('mingw-w64-netcdf' 'mingw-w64-blas')
 makedepends=('mingw-w64-cmake')
 options=('staticlibs' '!buildflags' '!strip')
-source=("https://github.com/trilinos/Trilinos/archive/trilinos-release-${pkgver//./-}.tar.gz")
-sha256sums=('5474c5329c6309224a7e1726cf6f0d855025b2042959e4e2be2748bd6bb49e18')
+source=("https://github.com/trilinos/Trilinos/archive/trilinos-release-${pkgver//./-}.tar.gz" mingw.patch)
+sha256sums=('5474c5329c6309224a7e1726cf6f0d855025b2042959e4e2be2748bd6bb49e18' SKIP)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare () {
   cd "$srcdir"/Trilinos-trilinos-release-${pkgver//./-}
-  sed -i "s|<Winsock2.h>|<winsock2.h>|g" packages/teuchos/parameterlist/src/Teuchos_XMLPerfTestArchive.cpp
-  echo "target_link_libraries (teuchosparameterlist wsock32)" >> packages/teuchos/parameterlist/src/CMakeLists.txt
-  sed -i "s|#ifdef _WIN32|#ifdef _MSC_VER|g" packages/teuchos/numerics/src/Teuchos_BLAS.cpp
+  patch -p1 -i "$srcdir"/mingw.patch
 }
 
 build() {
