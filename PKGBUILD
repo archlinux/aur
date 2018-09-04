@@ -14,11 +14,10 @@ sha256sums=('dd6c587970023bbfd4973426d201daac347fa73566b5c61e253964f2ad7d36e9')
 
 package() {
   install -d "${pkgdir}/usr/bin"
-  install -d "${pkgdir}/usr/lib/${pkgname}"
   install -d "${pkgdir}/usr/share/bash-completion/completions"
   install -d "${pkgdir}/usr/share/zsh/site-functions"
 
-  install "${srcdir}/clever" "${pkgdir}/usr/lib/${pkgname}/clever"
+  install "${srcdir}/clever" "${pkgdir}/usr/bin/clever"
 
   "${srcdir}/clever" --bash-autocomplete-script /usr/bin/clever > "${pkgdir}/usr/share/bash-completion/completions/clever"
   "${srcdir}/clever" --zsh-autocomplete-script /usr/bin/clever > "${pkgdir}/usr/share/zsh/site-functions/_clever"
