@@ -11,9 +11,9 @@ pkgbase = pomello
 	makedepends = binutils
 	depends = libsystemd
 	options = !strip
-	source_x86_64 = Pomello-0.9.4.deb::http://www.pomelloapp.com/download/linux?package=deb&arch=64
+	source_x86_64 = Pomello-0.9.4.deb::https://pomelloapp.com/download/linux/latest?dist=ubuntu
 	md5sums_x86_64 = 7c999fc6596276f5d32d9f5f356ff27d
-	source_i686 = Pomello-0.9.4.deb::http://www.pomelloapp.com/download/linux?package=deb&arch=32
+	source_i686 = Pomello-0.9.4.deb::https://pomelloapp.com/download/linux/latest?dist=ubuntu&arch=32
 	md5sums_i686 = 2aa608af394fbe0303bb0e1411e1708e
 
 pkgname = pomello
