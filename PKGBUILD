@@ -2,7 +2,7 @@
 # Contributor: Dejan Cabrilo <dcabrilo [at] bitspan [dot] rs>
 
 pkgname=tdom
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="A fast XML/DOM/XPath package for Tcl written in C"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ groups=('devel')
 depends=('tcl')
 source=(http://tdom.org/downloads/tdom-${pkgver}-src.tgz
 	no-build-dir.patch)
-md5sums=('22a1a4ad5fed6dfbe29c83083bf14d83'
+md5sums=('53d030649acd82e01720bbe82b3bf0b1'
          '3e3fc79c2cfea54e1dd128ea3acddbca')
 
 prepare() {
