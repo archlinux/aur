@@ -1,0 +1,4 @@
+post_install()
+{
+	echo -e '\nPlease run `amountd` for information on configuring amount.\n'
+}
