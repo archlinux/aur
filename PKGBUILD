@@ -17,8 +17,9 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 prepare() {
   cd "${srcdir}/optpp-${pkgver}"
   sed -i "26i@top_builddir@_lib_libnewmat_la_LDFLAGS = -no-undefined" newmat11/Makefile.am
-  sed -i "22i@top_builddir@_lib_libopt_la_LIBADD = @top_builddir@/lib/libnewmat.la" src/Makefile.am
-  sed -i "23i@top_builddir@_lib_libopt_la_LDFLAGS = -no-undefined" src/Makefile.am
+  sed -i "22i@top_builddir@_lib_libopt_la_LIBADD += @top_builddir@/lib/libnewmat.la" src/Makefile.am
+  sed -i "22i@top_builddir@_lib_libopt_la_LIBADD += \$(BLAS_LIBS)" src/Makefile.am
+  sed -i "24i@top_builddir@_lib_libopt_la_LDFLAGS = -no-undefined" src/Makefile.am
   autoreconf -vfi
 }
 
