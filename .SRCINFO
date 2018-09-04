@@ -1,0 +1,16 @@
+pkgbase = fortune-mod-anti-jokes-git
+	pkgdesc = Anti-jokes fortune cookies
+	pkgver = r1.cc15045
+	pkgrel = 1
+	url = https://github.com/gandag/fortune-anti-jokes
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = fortune-mod
+	provides = fortune-mod-anti-jokes
+	conflicts = fortune-mod-anti-jokes
+	source = git+https://github.com/gandag/fortune-anti-jokes.git
+	md5sums = SKIP
+
+pkgname = fortune-mod-anti-jokes-git
+
