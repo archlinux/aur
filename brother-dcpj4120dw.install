@@ -1,5 +1,6 @@
 post_install() {
 	# lpr
+	sed -i 's/chown lp/chown root/g' /opt/brother/Printers/dcpj4120dw/inf/setupPrintcapij
 	/opt/brother/Printers/dcpj4120dw/inf/setupPrintcapij dcpj4120dw -i
 	
 	# cupswrapper
