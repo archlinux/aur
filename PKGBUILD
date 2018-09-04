@@ -8,6 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/viruscamp/luadec"
 license=('MIT')
 depends=()
+makedepends=('git')
 source=("${pkgname}"::'git+https://github.com/viruscamp/luadec')
 md5sums=('SKIP')
 conflicts=('luadec51-git')
