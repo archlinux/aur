@@ -12,8 +12,8 @@ license=('GPL')
 url="http://mjpeg.sourceforge.net/"
 depends=('lib32-libjpeg' 'lib32-libpng' 'lib32-sdl' 'gcc-libs-multilib' 'lib32-libdv')
 makedepends=('lib32-gtk2' 'lib32-v4l-utils')
-source=(http://downloads.sourceforge.net/sourceforge/mjpeg/${_basename}-${pkgver}.tar.gz    v4l.patch)
-md5sums=('57bf5dd78976ca9bac972a6511b236f3' 'SKIP')
+source=(http://downloads.sourceforge.net/sourceforge/mjpeg/${_basename}-${pkgver}.tar.gz    v4l.patch    avoid_fno_pic.patch   )
+md5sums=('57bf5dd78976ca9bac972a6511b236f3' 'SKIP' 'SKIP')
 
 prepare() {
   cd ${_basename}-${pkgver}
@@ -22,11 +22,13 @@ prepare() {
 
 build() {
   cd ${_basename}-${pkgver}
-  export CC="gcc -m32 -fPIC"
-  export CXX="g++ -m32 -fPIC"
+  export CC="gcc -m32 "
+  export CXX="g++ -m32 "
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+  patch -Np1  -i "${srcdir}/avoid_fno_pic.patch"
   #patch -Np0  -i "${srcdir}/v4l.patch" #video4linux is failing compilation
-  ./configure --prefix=/usr --libdir=/usr/lib32 --enable-largefile 
+  autoreconf  -f -i
+  ./configure --prefix=/usr --libdir=/usr/lib32 --enable-largefile   --without-libquicktime
 #  make clean
   make
 }
