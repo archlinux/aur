@@ -1,0 +1,33 @@
+post_install() {
+    echo "Reloading daemons..."
+    systemctl daemon-reload
+    if systemctl is-active snapman > /dev/null
+    then
+        echo "Restarting snapman service..."
+        systemctl restart snapman
+    fi
+}
+
+post_upgrade() {
+    echo "Reloading daemons..."
+    systemctl daemon-reload
+    if systemctl is-active snapman > /dev/null
+    then
+        echo "Restarting snapman service..."
+        systemctl restart snapman
+    fi
+}
+
+pre_remove() {
+    if systemctl is-active snapman > /dev/null
+    then
+        echo "Stopping snapman service..."
+        systemctl stop snapman
+    fi
+    if systemctl is-enabled snapman > /dev/null
+    then
+        echo "Disabling snapman service..."
+        systemctl disable snapman
+    fi
+}
+

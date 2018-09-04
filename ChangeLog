@@ -1,0 +1,31 @@
+snapman (1.0a) unstable; urgency=medium
+
+  * Release 1.0a.
+    + Per section umask.
+    + Qt graphic interface.
+    + New modular design.
+    + Added function for force creating a new snapshot.
+    + Minor changes in command line output.
+
+ -- Manuel Domínguez López <mdomlop@gmail.com>  Thu, 16 Aug 2018 18:42:14 +0200
+
+ snapman (0.9b) unstable; urgency=medium
+
+  * Release 0.9b.
+    + Cosmetic fixes.
+    + Debian and Arch linux packaging.
+
+ -- Manuel Domínguez López <mdomlop@gmail.com>  Mon, 30 Oct 2017 13:28:10 +0100
+
+snapman (0.9a) unstable; urgency=medium
+
+  * Release 0.9a.
+    + Renamed project to Snapman.
+    + Better format for configuration file.
+    + Multi-thread daemon mode.
+    + Removed --purge command line option. Improved options are available.
+    + Added new commad line options.
+    + Updated man pages.
+    + Debian packaging.
+
+ -- Manuel Domínguez López <mdomlop@gmail.com>  Sat, 28 Oct 2017 06:06:10 +0200

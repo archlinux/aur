@@ -1,0 +1,19 @@
+pkgbase = snapman
+	pkgdesc = A backup system based on Btrfs snapshots.
+	pkgver = 1.0a
+	pkgrel = 1
+	url = https://github.com/mdomlop/snapman
+	install = snapman.install
+	changelog = ChangeLog
+	arch = any
+	license = GPL3
+	makedepends = python-docutils
+	depends = btrfs-progs
+	depends = python>=3.5
+	depends = python-pyqt5
+	backup = etc/snapman.ini
+	source = https://github.com/mdomlop/snapman/archive/1.0a.tar.gz
+	md5sums = f1a861dce3f3fb22fb223fd21c179b4c
+
+pkgname = snapman
+
