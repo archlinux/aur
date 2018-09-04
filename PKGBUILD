@@ -4,12 +4,12 @@
 _basename=imagemagick
 pkgname=lib32-imagemagick
 pkgver=7.0.8.11
-pkgrel=1
+pkgrel=2
 pkgdesc="An image viewing/manipulation program (32-bit)"
 url="https://www.imagemagick.org/"
 arch=(x86_64)
 license=(custom)
-depends=(lib32-liblqr lib32-libltdl lib32-libraqm lib32-libraw lib32-librsvg lib32-libwebp
+depends=(lib32-libheif lib32-liblqr lib32-libltdl lib32-libraqm lib32-libraw lib32-librsvg lib32-libwebp
          lib32-libwmf lib32-openexr lib32-openjpeg2 imagemagick)
 makedepends=(ghostpcl ghostscript ghostxps lib32-glu lib32-ocl-icd opencl-headers)
 checkdepends=(ttf-dejavu)
@@ -66,8 +66,7 @@ build() {
         --without-fpx \
         --without-gcc-arch \
         --without-gvc \
-        --without-jbig \
-        --without-heic
+        --without-jbig
 
     sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 
