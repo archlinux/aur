@@ -1,0 +1,38 @@
+From d1716dec6ab6a3b947f217fff13839ed72ac0d36 Mon Sep 17 00:00:00 2001
+From: Falk Alexander Seidl <fa@terminal.run>
+Date: Tue, 4 Sep 2018 14:56:54 +0200
+Subject: [PATCH] Strip out non-ASCII characters on decrypt
+
+---
+ pykeepass/kdbx_parsing/common.py | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/pykeepass/kdbx_parsing/common.py b/pykeepass/kdbx_parsing/common.py
+index 1fe4003..2d2eca7 100644
+--- a/pykeepass/kdbx_parsing/common.py
++++ b/pykeepass/kdbx_parsing/common.py
+@@ -9,6 +9,7 @@ from construct import (
+ )
+ from lxml import etree
+ import base64
++import unicodedata
+ import zlib
+ from io import BytesIO
+ from collections import OrderedDict
+@@ -153,11 +154,11 @@ class UnprotectedStream(Adapter):
+         cipher = self.get_cipher(self.protected_stream_key(con))
+         for elem in tree.xpath(self.protected_xpath):
+             if elem.text is not None:
+-                elem.text = cipher.decrypt(
++                elem.text = ''.join(c for c in cipher.decrypt(
+                     base64.b64decode(
+                         elem.text
+                     )
+-                ).decode('utf-8')
++                ).decode('utf-8') if unicodedata.category(c)[0] != "C")
+             elem.attrib['Protected'] = 'False'
+         return tree
+ 
+--
+libgit2 0.27.2
+
