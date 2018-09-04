@@ -1,0 +1,19 @@
+pkgbase = retrosmart-aurorae-themes
+	pkgver = 1.0b
+	pkgrel = 1
+	url = https://github.com/mdomlop/retrosmart-aurorae-themes
+	changelog = ChangeLog
+	arch = any
+	license = GPL3
+	optdepends = retrosmart-kvantum-theme: The corresponding theme for Kvantum
+	optdepends = retrosmart-qtcurve-theme: The corresponding theme for QtCurve
+	optdepends = retrosmart-gtk-themes: The corresponding GTK themes
+	optdepends = retrosmart-openbox-themes: The corresponding Openbox themes
+	optdepends = retrosmart-wallpapers: The corresponding backgrounds project
+	optdepends = retrosmart-x11-cursors: The corresponding X11 cursor theme
+	optdepends = retrosmart-xfwm4-themes: The corresponding XFwm4 themes
+	source = https://github.com/mdomlop/retrosmart-aurorae-themes/archive/1.0b.tar.gz
+	md5sums = 17b7636af957356eb2936f62d422a20e
+
+pkgname = retrosmart-aurorae-themes
+
