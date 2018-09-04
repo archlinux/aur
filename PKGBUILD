@@ -7,7 +7,7 @@ arch=("any")
 url="https://github.com/zzelman/i3-projects"
 license=('GPL3')
 depends=('i3-wm' 'python3' 'zenity')
-source=("g!it+https://github.com/zzelman/i3-projects.git#tag=release/1.1.1")
+source=("git+https://github.com/zzelman/i3-projects.git#tag=release/1.1.1")
 md5sums=("SKIP")
 
 package() {
