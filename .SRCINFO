@@ -7,7 +7,8 @@ pkgbase = kde-servicemenus-rootactions
 	license = GPL
 	depends = dolphin
 	depends = kdialog
-	source = https://dl.opendesktop.org/api/files/downloadfile/id/1485341541/s/37ce21d94df1614cd1b445c3c8f4d69a/t/1517992544/u//rootactions_servicemenu_2.9.1.tar.gz
+	depends = perl
+	source = https://dl.opendesktop.org/api/files/download/id/1485341541/s/96a1dc488dabeeb88d1474b1337ca9d5/t/1536071896/u//rootactions_servicemenu_2.9.1.tar.gz
 	sha256sums = 8c02e552d6d18246235e3141eebd02b125fad15717660dfa231b629a14837f65
 
 pkgname = kde-servicemenus-rootactions
