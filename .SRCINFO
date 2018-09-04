@@ -1,6 +1,6 @@
 pkgbase = remacs-git
 	pkgdesc = Development branch of REmacs, a fork of GNU Emacs with components rewritten in Rust
-	pkgver = 26.0.50.128380
+	pkgver = 26.0.60.132231
 	pkgrel = 1
 	url = https://github.com/Wilfred/remacs.git
 	arch = i686
