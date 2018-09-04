@@ -1,12 +1,13 @@
 pkgbase = gdm3setup
 	pkgdesc = An interface to configure GDM3 and autologin options
 	pkgver = 20150813
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/Nano77/gdm3setup
 	arch = any
 	license = GPL
 	depends = gdm
 	depends = gnome-shell
+	depends = python2-gobject
 	depends = python2-lxml
 	depends = python2-dbus
 	depends = gdm3setup-utils>=20150507
