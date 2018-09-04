@@ -4,16 +4,23 @@
 
 pkgname=kvpm
 pkgver=0.9.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Front end for Linux LVM and Gnu parted. It also handles creating and mounting file systems"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/kvpm/"
 license=('GPL')
 depends=('parted' 'lvm2>=2.02.98' 'kdelibs4support' 'hicolor-icon-theme')
 makedepends=('cmake' 'extra-cmake-modules' 'automoc4' 'kdoctools' 'kdesignerplugin' )
-sha256sums=('16c44cf8f7bfbe3ba1c203b7245bc43bd66da847eb138d4c2a82a706850cc41c')
+source=(http://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver}.tar.gz
+        sysmacros.patch)
+sha256sums=('16c44cf8f7bfbe3ba1c203b7245bc43bd66da847eb138d4c2a82a706850cc41c'
+            'f396c360aeecbb770e456815ebf53407fb164f9b2fd96a3d7e22cbb02ab546e3')
 install=$pkgname.install
-source=(http://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver}.tar.gz)
+
+prepare () {
+       cd "${srcdir}/${pkgname}-${pkgver}"
+       patch -p1 -i "${srcdir}/sysmacros.patch"
+}
 
 build () {
        # cd ${srcdir}/${pkgname}-${pkgver}-${_pkgver}

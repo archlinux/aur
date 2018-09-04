@@ -1,7 +1,7 @@
 pkgbase = kvpm
 	pkgdesc = Front end for Linux LVM and Gnu parted. It also handles creating and mounting file systems
 	pkgver = 0.9.10
-	pkgrel = 2
+	pkgrel = 3
 	url = http://sourceforge.net/projects/kvpm/
 	install = kvpm.install
 	arch = i686
@@ -17,7 +17,9 @@ pkgbase = kvpm
 	depends = kdelibs4support
 	depends = hicolor-icon-theme
 	source = http://downloads.sourceforge.net/project/kvpm/kvpm-0.9.10.tar.gz
+	source = sysmacros.patch
 	sha256sums = 16c44cf8f7bfbe3ba1c203b7245bc43bd66da847eb138d4c2a82a706850cc41c
+	sha256sums = f396c360aeecbb770e456815ebf53407fb164f9b2fd96a3d7e22cbb02ab546e3
 
 pkgname = kvpm
 
