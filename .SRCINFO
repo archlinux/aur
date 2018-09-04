@@ -1,0 +1,16 @@
+pkgbase = emacs-aggressive-indent-mode-git
+	pkgdesc = Emacs minor mode that keeps your code always indented.
+	pkgver = r186.8e70039
+	pkgrel = 1
+	url = https://github.com/Malabarba/aggressive-indent-mode
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	provides = emacs-aggressive-indent-mode
+	conflicts = emacs-aggressive-indent-mode
+	source = git+https://github.com/Malabarba/aggressive-indent-mode.git
+	sha256sums = SKIP
+
+pkgname = emacs-aggressive-indent-mode-git
+
