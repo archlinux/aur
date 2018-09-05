@@ -14,7 +14,7 @@ index ef0dd566c104..bfdd901683ad 100644
 @@ -2,7 +2,7 @@
  VERSION = 4
  PATCHLEVEL = 18
- SUBLEVEL = 5
+ SUBLEVEL = 6
 -EXTRAVERSION =
 +EXTRAVERSION = -arch1
  NAME = Merciless Moray

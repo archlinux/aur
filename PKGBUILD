@@ -69,9 +69,9 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-_srcver=4.18.5-arch1
+_srcver=4.18.6-arch1
 pkgver=${_srcver%-*}
-pkgrel=4
+pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -97,9 +97,9 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('fb090a3680eddf6f10bf895bc3075bd3f830e3d2429ce469982db5a28df647bd'
+sha256sums=('05db97fd6891217af6d4203bdc442ef2af78d7902b6a8e9bd348682704c22894'
             'SKIP'
-            '24ad3167da0bed775ccebda07e79304fa089eba0c243c63d1edbacc8c8868a60'
+            '17addbbf0abc3ffc138592dd7f9eb9db649775f652c29d4891622b9b448da3a1'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
@@ -108,7 +108,7 @@ sha256sums=('fb090a3680eddf6f10bf895bc3075bd3f830e3d2429ce469982db5a28df647bd'
             '6e1f3cc3eb9a1e30a69ef1999f9aa6ad7f2f9fe4af7ba5dabe25d4ff19ee6740'
             '723f124ce9910f6e110c59ef2d1a26f8e8f2bc00a42a75e7657ba1ff71f12c06'
             'd7d3b3c7509afb1c91da402164c17a18f3d0d5fa9867f188278c6bef2a3186da'
-            '72136fdb875318b751dafe5e81cfd44dacea07711fe2f4a07b7a423454a62531')
+            '8fc2c4e9ec1800d4e30e43994623ccd6d42118700d0c218e2616ae0381168d2b')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
