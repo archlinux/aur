@@ -23,6 +23,8 @@ prepare() {
 
 build() {
     cd "${_pkgname}"
+    git submodule init
+    git submodule update
     cmake .
     make
 }
