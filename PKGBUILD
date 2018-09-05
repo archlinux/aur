@@ -4,7 +4,7 @@
 
 pkgbase=linux-zen           # Build stock -zen kernel
 #pkgbase=linux-custom       # Build kernel with a different name
-_srcver=4.18.5-zen1
+_srcver=4.18.6-zen1
 pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
@@ -26,7 +26,7 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '931789c60228540e2f727eee1bf59583446f2a5fc5a2495ca946e2bfc1b89099'
+            'fd5a7203579777ab2c0deb3bcdf94ded8a4422fefc81506b98c3bce8070b5a8f'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
