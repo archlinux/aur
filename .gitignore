@@ -1,13 +1,20 @@
-pkg/
-src/
+# ignore everything ...
+*
 
-*.swp
+# ... except itself
+!.gitignore
 
-*.zip
-*.t?z
-*.tar.*
+# ... except changes in package
+!PKGBUILD
+!.SRCINFO
 
-*.log
-*.log.*
-*.sig
-.AURINFO
+# ... except possible source files
+!*.patch
+!*.diff
+!*.desktop
+!*.png
+!LICENSE
+
+# ... except files from PKGBUILD fields
+!*.changelog
+!*.install
