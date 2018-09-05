@@ -1,0 +1,12 @@
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 43a20d7..61f36e0 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -79,6 +79,7 @@ else(MSVC)
+ 		${Boost_IOSTREAMS_LIBRARY}
+ 		${Boost_REGEX_LIBRARY}
+ 		${Boost_PROGRAM_OPTIONS_LIBRARY}
++        ${Boost_SYSTEM_LIBRARIES}
+ 		${LIBINTL_LIBRARIES}
+ 	)
+ endif(MSVC)
