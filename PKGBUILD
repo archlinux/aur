@@ -2,8 +2,8 @@
 # Contributor: Adria Arrufat <adria.arrufat+AUR@protonmail.ch>
 
 pkgname=dropbox-kde-systray-icons
-pkgver=1
-pkgrel=3
+pkgver=3
+pkgrel=1
 pkgdesc="Dropbox systray icons that fit better in KDE"
 install=dropbox-kde.install
 arch=('any')
@@ -15,7 +15,7 @@ provides=()
 conflicts=('dropbox-faenza-light' 'dropbox-humanity-dark-icons' 'dropbox-dark-panel-icons'
 'dropbox-humanity-icons' 'dropbox-light-panel-icons' 'dropbox-ubuntu-mono-light'
 'dropbox-ubuntu-mono-dark' 'dropbox-faenza-dark')
-source=('https://dl.opendesktop.org/api/files/download/id/1466612163/141519-dropbox-icons.tar.gz')
+source=('https://dl.opendesktop.org/api/files/download/id/1466612163/s/a69314ed4e57713e653eafb0b56adc00/t/1536177224/u//141519-dropbox-icons.tar.gz')
 md5sums=('d4ec417f3906e99f3deef704b38718ae')
 
 package() {
