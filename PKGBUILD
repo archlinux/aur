@@ -2,8 +2,8 @@
 _pkgname=vv
 pkgname=${_pkgname}-git
 pkgver=1.4.0.r271.g24b75af3
-pkgrel=1
-pkgdesc='VV is an open-source and cross platform image viewer for 2D, 2D+t, 3D and 3D+t (or 4D) images'
+pkgrel=2
+pkgdesc='Image viewer for 2D, 2D+t, 3D and 3D+t (or 4D) images'
 arch=('x86_64')
 url='https://www.creatis.insa-lyon.fr/rio/vv/'
 license=('BSD')
