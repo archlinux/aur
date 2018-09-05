@@ -1,3 +1,4 @@
+# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=cogl
@@ -10,7 +11,7 @@ license=(GPL2)
 depends=(mesa libdrm libxext libxdamage libxcomposite gdk-pixbuf2 pango libxrandr)
 makedepends=(gobject-introspection git gtk-doc)
 _commit=3baa2d7a65bc94b74d6e49392fe14e4ed65724a5  # cogl-1.22
-source=("git+https://git.gnome.org/browse/cogl#commit=$_commit")
+source=("git+https://gitlab.gnome.org/GNOME/cogl.git#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
