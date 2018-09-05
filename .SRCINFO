@@ -1,7 +1,7 @@
 pkgbase = nrrdio
-	pkgdesc = Stand-alone library for doing basic nrrd operations and for reading and writing the NRRD file format
+	pkgdesc = Stand-alone library for reading and writing the NRRD file format
 	pkgver = 1.11.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://teem.sourceforge.net/index.html
 	arch = x86_64
 	license = custom
