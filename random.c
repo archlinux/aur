@@ -59,18 +59,20 @@ OPTIONS:\n\
     srand(time(NULL));
     if(!f){
         for(int i = 0; i < gen; i++){
-            int r = (rand() % (max + 1))+min;
+            int r = (rand() % (max + 1));
+            if(r < min) r += min;
             if(line) printf("%d ", r);
             else printf("%d\n", r);
         }
     }else{
         for(int i = 0; i < gen; i++){
             float r = ((float)rand()/(float)(RAND_MAX)) * max;
+            if(r < min) r += min;
             if(line) printf("%.*f ", dec,(float)r);
             else printf("%.*f\n", dec,(float)r);
         }
     }
-
+    printf("min %d | max %d\n",min,max);
     return 0;
 }
 
