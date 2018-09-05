@@ -1,3 +1,4 @@
+# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: William Rea <sillywilly@gmail.com>
@@ -12,7 +13,7 @@ license=(LGPL)
 depends=(gtk3 cogl libinput)
 makedepends=(gobject-introspection gtk-doc git)
 _commit=2faa83baf3ce9b9c94635311ad79944ab2a73c84  # tags/1.26.2^0
-source=("git+https://git.gnome.org/browse/clutter#commit=$_commit")
+source=("git+https://gitlab.gnome.org/GNOME/clutter.git#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -47,3 +48,5 @@ package() {
   cd "$pkgname"
   make DESTDIR="$pkgdir" install
 }
+
+# vim:set sw=2 et:
