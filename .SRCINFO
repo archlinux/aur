@@ -1,6 +1,6 @@
 pkgbase = jupyterhub
 	pkgdesc = Multi-user server for Jupyter notebooks
-	pkgver = 0.7.2
+	pkgver = 0.9.2
 	pkgrel = 1
 	url = http://jupyter.org/
 	arch = any
@@ -15,8 +15,8 @@ pkgbase = jupyterhub
 	depends = python-sqlalchemy
 	depends = python-requests
 	depends = nodejs-configurable-http-proxy
-	source = https://github.com/jupyter/jupyterhub/archive/0.7.2.tar.gz
-	md5sums = 74698104e3a1753044a7d446069a525c
+	source = https://github.com/jupyter/jupyterhub/archive/0.9.2.tar.gz
+	sha256sums = ef86512a485050dd28df9b785cb9912cbbbf69a131a34da216753af93d095da7
 
 pkgname = jupyterhub
 
