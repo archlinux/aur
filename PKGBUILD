@@ -3,7 +3,7 @@
 # Contributor: Petrenko Alexey <alexey-p at uralweb dot ru>
 
 pkgname=perl-devel-nytprof
-pkgver=6.04
+pkgver=6.06
 pkgrel=1
 _author='T/TI/TIMB'
 _perlmod='Devel-NYTProf'
@@ -52,4 +52,4 @@ package(){
 #   ln -s /usr/bin/vendor_perl/nytprofcalls "$pkgdir"/usr/bin/nytprofcalls
 #   ln -s /usr/bin/vendor_perl/flamegraph.pl "$pkgdir"/usr/bin/flamegraph.pl
 }
-sha256sums=('c04c9f03663b7e4e9cc159f30bcdc0bab5652889c88c425ec157e831318d4891')
+sha256sums=('a14227ca79f1750b92cc7b8b0a5806c92abc4964a21a7fb100bd4907d6c4be55')
