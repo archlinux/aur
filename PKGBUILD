@@ -10,7 +10,7 @@
 #
 # Before running makepkg, you must do this:
 #
-# gpg --keyserver hkp://pgp.mit.edu:11371 --recv-keys D1483FA6C3C07136
+# gpg --keyserver hkp://pgp.mit.edu:11371 --recv-keys 0x4E2C6E8793298290
 #
 
 # To port this PKGBUILD to another language of tor-browser you have to
