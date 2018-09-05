@@ -39,7 +39,7 @@ backup=("etc/java-$_jname/management/jmxremote.access"
 options=('!strip') # JDK debug-symbols
 install=$_pkgname.install
 #source=("http://download.oracle.com/otn/java/jdk/${pkgver}+${_build}/${_hash}/${_pkgname}-${pkgver}_linux-x64_bin.tar.gz"
-source=('http://ftp.osuosl.org/pub/funtoo/distfiles/oracle-java/jdk-9.0.4_linux-x64_bin.tar.gz'
+source=('https://build.funtoo.org/distfiles/oracle-java/jdk-9.0.4_linux-x64_bin.tar.gz'
         "jconsole-$_jname.desktop"
         "jmc-$_jname.desktop"
         "policytool-$_jname.desktop")
