@@ -1,6 +1,6 @@
 pkgbase = python-multivault-git
 	pkgdesc = A CLI to encrypt and decrypt content for ansible
-	pkgver = r84.dfe5a94
+	pkgver = r86.7624e4a
 	pkgrel = 1
 	url = https://github.com/Selfnet/multivault/
 	arch = any
