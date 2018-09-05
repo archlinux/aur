@@ -1,15 +1,14 @@
-# Maintainer: Mark Wagie <yochanan.marqos@gmail.com>
+# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 # Co-Maintainer: jswenson
-# Packager: Chris Knepper <chris82thekid@gmail.com>
+# Packager: Chris Knepper <chris82thekid at gmail dot com>
 pkgname=android-messages-desktop
 pkgver=0.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Android Messages as a cross-platform desktop app"
 arch=('x86_64')
 url="https://github.com/chrisknepper/android-messages-desktop"
 license=('MIT')
 depends=('electron' 'libnotify' 'libappindicator-gtk2' 'libappindicator-gtk3' 'libappindicator-sharp')
-provides=(android-messages-desktop)
 source=("${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.pacman")
 md5sums=('d61810468879d8da2fa543448b84e251')
 
