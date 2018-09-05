@@ -1,6 +1,6 @@
 # Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
 pkgname=gutenberg
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="An opinionated static site generator"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/Keats/gutenberg"
 makedepends=(cargo cmake)
 license=('MIT')
 source=("https://github.com/Keats/gutenberg/archive/v${pkgver}.tar.gz")
-sha256sums=('62ece15697dce61d3b31e250eb26d41f4449a61fe0d3457f244343b278f63506')
+sha256sums=('8d3fb9972a17f6fa8a7830c8d129a7d587f0bbfc36f5351dc4c9e44f46aa4e2d')
 
 build() {
   cd gutenberg-$pkgver
