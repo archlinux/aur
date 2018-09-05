@@ -1,9 +1,8 @@
-# Maintainer: Alexandre Jesus <adbjesus@gmail.com>
-# Contributor: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: Stewart Webb <stew@rtwebb.com>
 
 _pkgname=luigi
 pkgname=python-${_pkgname}
-pkgver=2.7.6
+pkgver=2.7.8
 pkgrel=1
 pkgdesc="Workflow mgmgt + task scheduling + dependency resolution"
 arch=('any')
@@ -12,8 +11,8 @@ makedepends=('python-setuptools')
 url="https://github.com/spotify/luigi"
 license=('Apache')
 source=(https://github.com/spotify/luigi/archive/${pkgver}.tar.gz)
-md5sums=('b42ad20d745441b740c52f5d362cee23')
-sha256sums=('e0b04c0dd98e845d7bb8bb2148164ce5a3d20fbfb99c5cbbfaecb4bd3fbf7843')
+md5sums=('306deec511edc3ebfcc6ca158e562253')
+sha256sums=('d0117738c83824f12ddd3dfe5b62ab6fec2de22c1f517fbe3a51689bbd5d0a35')
 
 build() {
   cd "$srcdir/${_pkgname}-$pkgver"
