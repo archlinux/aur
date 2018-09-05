@@ -1,0 +1,16 @@
+pkgbase = emacs-org-bullets-git
+	pkgdesc = utf-8 bullets for org-mode
+	pkgver = r58.b56f2e3
+	pkgrel = 1
+	url = https://github.com/emacsorphanage/org-bullets
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	provides = emacs-org-bullets
+	conflicts = emacs-org-bullets
+	source = git+https://github.com/emacsorphanage/org-bullets.git
+	sha256sums = SKIP
+
+pkgname = emacs-org-bullets-git
+
