@@ -1,6 +1,6 @@
 # Maintainer: Hassan Zamani <hsn.zamani@gmail.com>
 pkgname=cri-containerd-bin
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc='An open and reliable container runtime'
 url='https://containerd.io/'
@@ -10,7 +10,7 @@ provides=('runc' 'containerd' 'crictl')
 arch=('x86_64')
 license=("APACHE")
 source=("cri-containerd-$pkgver.tar.gz::https://storage.googleapis.com/cri-containerd-release/cri-containerd-$pkgver.linux-amd64.tar.gz")
-sha256sums=('d4ed54891e90a5d1a45e3e96464e2e8a4770cd380c21285ef5c9895c40549218')
+sha256sums=('b65460ecb758a34dab77b0b88ff612888d5fc4cdb2f6ce9c60cc4b9d936ebf80')
 
 prepare() {
   cd "$srcdir"
