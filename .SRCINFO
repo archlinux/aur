@@ -1,7 +1,7 @@
 pkgbase = screens-git
 	pkgdesc = A utility for taking and managing screenshots.
 	pkgver = 200718
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.gitlab.com/DavidBittner/screens
 	arch = any
 	license = GPL3

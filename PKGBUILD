@@ -2,7 +2,7 @@
 _pkgname=screens
 pkgname="${_pkgname}-git"
 pkgver=200718
-pkgrel=3
+pkgrel=4
 pkgdesc="A utility for taking and managing screenshots."
 arch=('any')
 url="https://www.gitlab.com/DavidBittner/screens"
