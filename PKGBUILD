@@ -2,7 +2,7 @@
 
 pkgname=musixmatch-bin
 _pkgname=musixmatch
-pkgver=0.19.4
+pkgver=0.20.20
 pkgrel=1
 pkgdesc='Lyrics platform where users can search and share lyrics'
 arch=('x86_64')
@@ -15,7 +15,7 @@ sha256sums=('988119d55691f5bdc91da81d31f2cc460de9c0d74312f4739f813ded7efdf03c')
 
 prepare() {
   msg2 'Downloading from download-app.musixmatch.com...'
-  curl 'https://download-app.musixmatch.com/' -A 'Linux x86_64' -D headers.txt -OJf
+  curl 'https://download-app.musixmatch.com/' -A 'Linux x86_64' -D headers.txt -Lf -o linux_amd64.deb
 }
 
 pkgver() {
@@ -24,7 +24,7 @@ pkgver() {
 }
 
 package() {
-  ar vx "./${_pkgname}_${pkgver}_amd64.deb"
+  ar vx "./linux_amd64.deb"
   tar xaf data.tar.xz -C "$pkgdir"
 
   mkdir -p "${pkgdir}/usr/bin"
