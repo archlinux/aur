@@ -1,6 +1,6 @@
 pkgbase = bcc
 	pkgdesc = BPF Compiler Collection
-	pkgver = 0.6.1
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/iovisor/bcc
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = bcc
 	makedepends = bison
 	makedepends = python
 	makedepends = python2
-	source = https://github.com/iovisor/bcc/archive/v0.6.1.tar.gz
-	sha512sums = 096fa1f8f612fdaa1fbe7b30e2d710b6e9b4dae5fe4a327baccce66589492007d81aa208d885efbfd77ffd97677e0af317f4088f955ffabceb41c8e93f44fa01
+	source = https://github.com/iovisor/bcc/archive/v0.7.0.tar.gz
+	sha512sums = ebe6c4cbecba2d587c69af71ddc8cb451b2b8e1d49ef887f291c813320c2c60d49357500fc2751d5b418df2be1d02763c385d89de6efa6e10f049c25acf01b4e
 
 pkgname = bcc
 	pkgdesc = BPF Compiler Collection - C library and examples
