@@ -38,9 +38,9 @@ package(){
 
     ln -s /usr/lib/libopencc.so "$pkgdir"/usr/lib/libopencc.so.1
 
-    install -m755 sogou-autostart "$pkgdir"/usr/bin
+    # install -m755 sogou-autostart "$pkgdir"/usr/bin
 
     # Do not modify $pkgdir/etc/xdg/autostart/fcitx-ui-sogou-qimpanel.desktop, as it is
     # a symlink to absolute path "/usr/share/applications/fcitx-ui-sogou-qimpanel.desktop"
-    sed -i 's/sogou-qimpanel\ %U/sogou-autostart/g' "$pkgdir"/usr/share/applications/fcitx-ui-sogou-qimpanel.desktop
+    # sed -i 's/sogou-qimpanel\ %U/sogou-autostart/g' "$pkgdir"/usr/share/applications/fcitx-ui-sogou-qimpanel.desktop
 }
