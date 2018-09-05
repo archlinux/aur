@@ -12,8 +12,6 @@ pkgbase = minikube
 	optdepends = virtualbox: to use --vm-driver=virtualbox
 	optdepends = docker-machine-kvm: to use --vm-driver=kvm
 	optdepends = docker-machine-driver-kvm2: to use --vm-driver=kvm
-	provides = minikube
-	conflicts = minikube
 	source = git+https://github.com/kubernetes/minikube.git#tag=v0.28.2
 	md5sums = SKIP
 

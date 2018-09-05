@@ -15,8 +15,6 @@ optdepends=(
   'docker-machine-driver-kvm2: to use --vm-driver=kvm'
 )
 makedepends=('git' 'go')
-provides=('minikube')
-conflicts=('minikube')
 source=("git+https://github.com/kubernetes/minikube.git#tag=v$pkgver")
 md5sums=('SKIP')
 
