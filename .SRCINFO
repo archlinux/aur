@@ -1,7 +1,7 @@
 pkgbase = addrwatch-git
 	pkgdesc = A tool similar to arpwatch for IPv4/IPv6 and ethernet address pairing monitoring
 	pkgver = 1.0.1.r4.g3ac9f4e
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/fln/addrwatch
 	arch = x86_64
 	arch = i686
@@ -15,8 +15,8 @@ pkgbase = addrwatch-git
 	source = addrwatch-git.service
 	source = addrwatch-git.rules
 	sha512sums = SKIP
-	sha512sums = 2bc8cdb4b0b8906fd52c5b9e56e1cd2b1d8416a38ced1d33f8b0c9e0f739cde0ecc2e9267e1b1256c0e189fe53c66b69f8ab5a64addb77adf87ffa327f84b5c6
-	sha512sums = 69e2213923ada91ac32191f7747a6314f5a12fe8b644b07725d8d6441e411e6b597017eaf6f9336a26de0cb6bf7c46bb241462933d5b483dc3a026c499d999bd
+	sha512sums = 35aeb27ed449c29780a1a1ec0b9cf4efafdca2397e94d15e1590244e3799b14c29d043dcce9d68be341423fc56fac9c6ed62c0f95ce1efbb5603d0509bc9e935
+	sha512sums = ec8fdcc3d88ed433e5fc28e6c0394ddae7af8d2085e37872bbd85127e1c008b2d3e541644cc28a3d05e9ff8718964205d43b1661d580300b1696789a98ba4c29
 
 pkgname = addrwatch-git
 
