@@ -8,7 +8,15 @@ pkgdesc="A terminal application for Pocket"
 arch=(any)
 license=(MIT)
 url="https://github.com/rakanalh/${gitname}"
-depends=(python)
+depends=(
+    python
+    python-click
+    python-future
+    python-pocket-api
+    python-progress
+    python-requests
+    python-six
+)
 makedepends=(python-setuptools git)
 source=("git+$url.git")
 sha512sums=(SKIP)
@@ -27,4 +35,5 @@ build() {
 package() {
     cd "${srcdir}/${gitname}"
     python setup.py install --root="${pkgdir}/" --optimize=1
+    rm "$pkgdir"/usr/lib/python*/site-packages/pocket_cli-*.egg-info/requires.txt
 }
