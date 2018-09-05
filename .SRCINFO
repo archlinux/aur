@@ -1,15 +1,24 @@
 pkgbase = python2-pymupdf
 	pkgdesc = Python bindings for MuPDF
-	pkgver = 1.9.1
+	pkgver = 1.13.19
 	pkgrel = 1
 	url = https://github.com/rk700/PyMuPDF
-	arch = any
-	license = GPL3
-	makedepends = swig
-	depends = python2
-	depends = libmupdf
-	source = https://github.com/rk700/PyMuPDF/archive/v1.9.1.zip
-	md5sums = 27b8e869b9ca995ca505ebeba5b4557b
+	arch = x86_64
+	license = AGPL3
+	makedepends = python2-pip
+	makedepends = python-pip
+	depends = python2>=2.7
+	depends = python2<2.8
+	noextract = PyMuPDF-1.13.19-cp27-cp27mu-manylinux1_x86_64.whl
+	noextract = PyMuPDF-1.13.19-cp37-cp37m-manylinux1_x86_64.whl
+	source = https://github.com/rk700/PyMuPDF/releases/download/1.13.19/PyMuPDF-1.13.19-cp27-cp27mu-manylinux1_x86_64.whl
+	source = https://github.com/rk700/PyMuPDF/releases/download/1.13.19/PyMuPDF-1.13.19-cp37-cp37m-manylinux1_x86_64.whl
+	sha256sums = 6ce0975bc644c3153fd4d58e33085608106f80a3776ecc09cf3f72b716ddf89f
+	sha256sums = c18f8ee416bf261ef54bfafb8a4e76f140ad65a34e9b27601a610118a6bf96e3
 
 pkgname = python2-pymupdf
+
+pkgname = python-pymupdf
+	depends = python>=3.7
+	depends = python<3.8
 
