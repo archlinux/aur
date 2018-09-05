@@ -2,7 +2,7 @@
 
 pkgname=perl-module-cpanfile
 pkgver=1.1004
-pkgrel=1
+pkgrel=2
 _author="M/MI/MIYAGAWA"
 _perlmod="Module-CPANfile"
 pkgdesc="Module-CPANfile - Parse cpanfile"
