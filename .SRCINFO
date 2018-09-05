@@ -1,0 +1,20 @@
+pkgbase = elm-format-0.19-bin
+	pkgdesc = Format Elm source code according to a standard set of rules based on the official Elm Style Guide.
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/avh4/elm-format
+	arch = i686
+	arch = x86_64
+	license = unknown
+	provides = elm-format
+	conflicts = elm-format-0.16-bin
+	conflicts = elm-format-0.17-bin
+	conflicts = elm-format-0.18-bin
+	source = https://github.com/avh4/elm-format/releases/download/0.8.0/elm-format-0.19-0.8.0-linux-x64.tgz
+	source = https://github.com/avh4/elm-format/releases/download/0.8.0/elm-format-0.19-0.8.0-linux-x64.tgz.asc
+	validpgpkeys = C3B74EE9EBC8412DFEE1FECE11357FB6FDD7BEC0
+	md5sums = ecef0d7d0d66c7b35f9dd1c1ef5f9a52
+	md5sums = SKIP
+
+pkgname = elm-format-0.19-bin
+
