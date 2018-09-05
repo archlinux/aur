@@ -2,7 +2,7 @@
 
 pkgname=php-pdo-oci
 pkgver=7.2.9
-pkgrel=1
+pkgrel=2
 _extname=pdo_oci
 pkgdesc="PDO driver for OCI8"
 arch=('x86_64')
@@ -27,7 +27,7 @@ build() {
   cd "$srcdir/php-src-php-${pkgver}/ext/${_extname}"
 
   phpize
-  ./configure --prefix=/usr --with-pdo-oci=instantclient,/usr,12.1
+  ./configure --prefix=/usr --with-pdo-oci=instantclient,/usr
   make
 }
 
