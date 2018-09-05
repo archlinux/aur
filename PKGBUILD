@@ -5,8 +5,8 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Michel Brabants <michel.linux@tiscali.be>
 pkgname=seahorse-git
-pkgver=3.30.0
-pkgrel=1
+pkgver=3.30+1+gd4658e9f
+pkgrel=2
 pkgdesc="GNOME application for managing encryption keys and passwords in the
 GNOME Keyring."
 url="https://wiki.gnome.org/Apps/Seahorse"
@@ -20,14 +20,10 @@ provides=(x11-ssh-askpass)
 
 # Tag: 3.30.0: 7e0535880a2010df356d9c468c68cdcb77b45431
 #_commit=7e0535880a2010df356d9c468c68cdcb77b45431
-#source=("git+https://gitlab.gnome.org/GNOME/seahorse.git#commit=$_commit"
-#        0001-LDAP-source-Fix-non-debug-build.patch)
+#source=("git+https://gitlab.gnome.org/GNOME/seahorse.git#commit=$_commit")
 
-source=("git+https://gitlab.gnome.org/GNOME/seahorse.git"
-        0001-LDAP-source-Fix-non-debug-build.patch)
-
-sha256sums=('SKIP'
-            '7c45e55f9d98510e1f9305af71d9a11d66fd15100ed29239493c94d591eb9e98')
+source=("git+https://gitlab.gnome.org/GNOME/seahorse.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd seahorse/
@@ -36,7 +32,7 @@ pkgver() {
 
 prepare() {
   cd seahorse/
-  patch -Np1 -i ../0001-LDAP-source-Fix-non-debug-build.patch
+  #patch -Np1 -i ../0001-LDAP-source-Fix-non-debug-build.patch
 }
 
 build() {
