@@ -1,6 +1,6 @@
 pkgbase = sway-wlroots-git
 	pkgdesc = i3 compatible window manager for Wayland
-	pkgver = 1.0.alpha.4.r43.g27f65b94
+	pkgver = 1.0.alpha.5.r266.g610eb946
 	pkgrel = 1
 	url = http://swaywm.org
 	install = sway-wlroots-git.install
@@ -24,6 +24,7 @@ pkgbase = sway-wlroots-git
 	depends = libinput
 	depends = pam
 	depends = xorg-server-xwayland
+	depends = dbus
 	optdepends = libelogind: systemd logind support
 	provides = sway
 	conflicts = sway

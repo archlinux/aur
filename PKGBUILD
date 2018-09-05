@@ -1,6 +1,6 @@
 # Maintainer: Nils Brause <nilschrbrause@gmail.com>
 pkgname=sway-wlroots-git
-pkgver=1.0.alpha.4.r43.g27f65b94
+pkgver=1.0.alpha.5.r266.g610eb946
 pkgrel=1
 pkgdesc='i3 compatible window manager for Wayland'
 arch=('x86_64')
@@ -8,7 +8,7 @@ url='http://swaywm.org'
 license=('MIT')
 depends=('json-c' 'pcre' 'wlroots-git' 'wayland' 'wayland-protocols'
          'libxkbcommon' 'cairo' 'pango' 'gdk-pixbuf2' 'pixman' 'libcap'
-         'libinput' 'pam' 'xorg-server-xwayland')
+         'libinput' 'pam' 'xorg-server-xwayland' 'dbus')
 optdepends=('libelogind: systemd logind support')
 makedepends=('git' 'meson' 'ninja' 'scdoc')
 provides=('sway')
