@@ -1,16 +1,16 @@
 # Maintainer: Joël Porquet <joel@porquet.org>
 
 pkgname=jinstall-git
-pkgver=r7.eaaebaf
+pkgver=r24.df74938
 pkgrel=1
 pkgdesc="Terminal-based automated file installer"
-url="https://joel.porquet.org/wiki/hacking/jinstall/"
+url="https://github.com/joel-porquet/jinstall/"
 arch=('any')
 license=('GPL3')
 depends=('python' 'python-urwid')
-makedepends=('git' 'python-setuptools')
+makedepends=('git')
 
-source=("${pkgname}::git+https://joel.porquet.org/cgit/cgit.cgi/jinstall.git/")
+source=("${pkgname}::git+https://github.com/joel-porquet/jinstall/")
 md5sums=('SKIP')
 
 pkgver() {
@@ -21,5 +21,5 @@ pkgver() {
 package() {
     cd ${pkgname}
 
-    ./setup.py install --root="$pkgdir/"
+    python setup.py install --root="$pkgdir/" --optimize=1
 }
