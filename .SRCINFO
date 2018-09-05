@@ -65,7 +65,7 @@ pkgbase = chromium-vaapi
 	sha256sums = 02c69bb3954087db599def7f5b6d65cf8f7cf2ed81dfbdaa4bb7b51863b4df15
 	sha256sums = c4f2d1bed9034c02b8806f00c2e8165df24de467803855904bff709ceaf11af5
 	sha256sums = feca54ab09ac0fc9d0626770a6b899a6ac5a12173c7d0c1005bc3964ec83e7b3
-	sha256sums = a0688fcdd7e6ad43bc673c3dcce02dff29da20eb92febd9bd94e5af741ed8430
+	sha256sums = 86cbb0913edadac7048592c0f94ccc835e7d8dd80d8f191827bb0ec767b69bff
 
 pkgname = chromium-vaapi
 
