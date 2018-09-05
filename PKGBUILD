@@ -9,6 +9,7 @@ arch=("any")
 license=("MIT")
 makedepends=("git")
 depends=("texlive-core" "texlive-fontsextra" "texlive-bin" "texlive-formatsextra" "texlive-latexextra" "lilypond")
+conflicts=("texlive-music")
 install=lyluatex.install
 source=("$pkgbase::git+https://github.com/jperon/lyluatex.git")
 sha256sums=("SKIP")
