@@ -12,7 +12,7 @@ pkgbase=java8-openjdk-jetbrains
 _java_ver=8
 # Found @ https://github.com/JetBrains/jdk8u/releases
 _jdk_update=152
-_jdk_build=1136.16
+_jdk_build=1293.12
 pkgver=${_java_ver}.u${_jdk_update}.b${_jdk_build}
 _repo_ver=jb${_java_ver}u${_jdk_update}-b${_jdk_build}
 pkgrel=1
@@ -31,14 +31,14 @@ source=(jdk8u-${_repo_ver}.tar.gz::${_url_src}/archive/${_repo_ver}.tar.gz
         langtools-${_repo_ver}.tar.gz::${_url_src}_langtools/archive/${_repo_ver}.tar.gz
         nashorn-${_repo_ver}.tar.gz::${_url_src}_nashorn/archive/${_repo_ver}.tar.gz)
 
-sha256sums=('0797cb31bd0922ceb349299e9b3a9d5ab115cd381998eb192cfcd9f64fcd238c'
-            'a533e8177bd882c10a77745461513bcaabfd2c9a67c810eed82e250d3caca984'
-            'ace8e3a6a2895945f07430f8916aa36426237ada94182735f1be8f3f1053cc07'
-            '829b153db5e4b09ce93558bc23a8810712e9a44e8b75bea288cfa6a58da308f8'
-            'fc34d0f0e57f65af3e8bc3dceca8b3ac3c561293149a17950ceccf2869bac1e2'
-            '2bd1d3a0de168227f5b6231f4feb72737fa6c804bcc978ad1544c3de03e76e6d'
-            '5b4c6b520f9b406a624e8d2a8dc71b4d026ca86f20b4e06ecd625b1274d9e076'
-            'f1f2a7affe4334ab3bf7c116c0b35e974ef20e3f4196791a4374488245bbb74b')
+sha256sums=('7759ef249d76e543c2c131ca13eef47dac6d83559f2470d817a09964220e7668'
+            'a4db2a90f9f5971a31c1b4d12c702e40d476e831ab5e4b8ddc57135794ce79cd'
+            'bbddf12e5d6bf4f77578b8835374b52165fc80e15eb8966d7a03e1e8fe9923df'
+            '9edc1d381b889cbbdd658224be181086ddaa6eac5122ae0efa39731acf25c8e3'
+            'f25224edc9b8ad01cabcc24fc1884dffc554a926b9885b40f9b9c742f342b318'
+            '82eaae88900a291125ee437b8f418673caceb907ce8d02e214210da5f7ec4237'
+            '3b7ac52c81bfd4972da964c063b61528e13ea518a43e8f4d6ec1dc738b285183'
+            'dd9303effa8c701012803841685725a5444ffc554eb299a77b11b9491903c615')
 
 case "${CARCH}" in
   'x86_64') _JARCH=amd64 ; _DOC_ARCH=x86_64 ;;
