@@ -1,6 +1,6 @@
 pkgbase = intellij-idea-ce
 	pkgdesc = Intellij Idea IDE (community version) with Intellij JDK
-	pkgver = 2018.2.2
+	pkgver = 2018.2.3
 	pkgrel = 1
 	url = http://www.jetbrains.com/idea/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = intellij-idea-ce
 	depends = giflib
 	depends = libxtst
 	options = !strip
-	source = https://download.jetbrains.com/idea/ideaIC-2018.2.2.tar.gz
-	md5sums = cc1bb7d1ee94e0ece55ff8e47e5b939b
+	source = https://download.jetbrains.com/idea/ideaIC-2018.2.3.tar.gz
+	md5sums = ee781c755e4a46ead5f3572e0f0b5c0b
 
 pkgname = intellij-idea-ce
 
