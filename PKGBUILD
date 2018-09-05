@@ -38,10 +38,6 @@ prepare() {
 
 	npm install --user root
 
-	# Remove all references to `${srcdir}`
-	msg 'Removing all references to $srcdir...'
-	find "${srcdir}/${_appname}" -type f -print0 | xargs -0 sed -i "s|${srcdir}/${_appname}|/usr/share/${_appname}|g"
-
 }
 
 build() {
@@ -49,6 +45,10 @@ build() {
 	cd "${srcdir}/${_appname}"
 
 	"${srcdir}/${_appname}/node_modules/.bin/ng" build
+
+	# Remove all references to `${srcdir}`
+	msg 'Removing all references to $srcdir...'
+	find "${srcdir}/${_appname}" -type f -print0 | xargs -0 sed -i "s|${srcdir}/${_appname}|/usr/share/${_appname}|g"
 
 }
 
