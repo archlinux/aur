@@ -4,7 +4,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-esr
-pkgver=60.1.0
+pkgver=60.2.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(i686 x86_64)
@@ -23,7 +23,7 @@ conflicts=(firefox)
 options=(!emptydirs !makeflags !strip)
 source=(https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz
         firefox.desktop firefox-symbolic.svg)
-sha256sums=('a4e7bb80e7ebab19769b2b8940966349136a99aabd497034662cffa54ea30e40'
+sha256sums=('795bdc8b5648234ce74322e3e9b219947d984ce3a1e4e09ce1061fafbbe77717'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9')
 validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
@@ -54,9 +54,9 @@ ac_add_options --enable-application=browser
 
 ac_add_options --prefix=/usr
 ac_add_options --enable-release
-ac_add_options --enable-gold
-ac_add_options --enable-pie
-ac_add_options --enable-optimize="-O2"
+ac_add_options --enable-linker=gold
+ac_add_options --enable-hardening
+ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
 
 # Branding
@@ -80,7 +80,6 @@ ac_add_options --with-system-jpeg
 ac_add_options --with-system-libvpx
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
-ac_add_options --enable-system-hunspell
 ac_add_options --enable-system-sqlite
 ac_add_options --enable-system-ffi
 
@@ -97,7 +96,7 @@ build() {
   cd firefox-${pkgver}
 
   # _FORTIFY_SOURCE causes configure failures
-  CPPFLAGS+=" -O2"
+  #CPPFLAGS+=" -O2"
 
 #  export PATH="$srcdir/path:$PATH"
 
