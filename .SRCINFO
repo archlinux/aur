@@ -1,6 +1,6 @@
 pkgbase = nncli-git
 	pkgdesc = NextCloud Notes Command Line Interface
-	pkgver = v0.2.0.r0.g4a23f7b
+	pkgver = v0.2.0.r8.gccbf6c7
 	pkgrel = 1
 	url = https://github.com/djmoch/nncli
 	arch = any
@@ -10,6 +10,8 @@ pkgbase = nncli-git
 	makedepends = python-pip
 	makedepends = sed
 	makedepends = grep
+	makedepends = python-sphinx
+	makedepends = gzip
 	depends = python
 	depends = python-urwid
 	depends = python-requests
