@@ -1,0 +1,17 @@
+pkgbase = emacs-evil-org-git
+	pkgdesc = Supplemental evil-mode keybindings to emacs org-mode
+	pkgver = r168.b6d652a
+	pkgrel = 1
+	url = https://github.com/Somelauw/evil-org-mode
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	depends = emacs-evil
+	provides = emacs-evil-org
+	conflicts = emacs-evil-org
+	source = git+https://github.com/Somelauw/evil-org-mode.git
+	sha256sums = SKIP
+
+pkgname = emacs-evil-org-git
+
