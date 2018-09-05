@@ -1,7 +1,7 @@
 # Maintainer: Clever Cloud CI <ci@clever-cloud.com>
 
 pkgname=clever-tools-bin-beta
-pkgver=1.0.0_beta.10
+pkgver=1.0.0_beta.11
 pkgrel=1
 pkgdesc="Command Line Interface for Clever Cloud."
 arch=('x86_64')
@@ -9,8 +9,8 @@ url="https://github.com/CleverCloud/clever-tools"
 license=('MIT')
 
 options=('!strip')
-source=("clever-tools-1.0.0-beta.10_linux.tar.gz::https://clever-tools.cellar.services.clever-cloud.com/releases/1.0.0-beta.10/clever-tools-1.0.0-beta.10_linux.tar.gz")
-sha256sums=('69ad0770e5a5c2dee53294571466bb4c42b145e6f4e1ae180472f66ab1f32f1b')
+source=("clever-tools-1.0.0-beta.11_linux.tar.gz::https://clever-tools.cellar.services.clever-cloud.com/releases/1.0.0-beta.11/clever-tools-1.0.0-beta.11_linux.tar.gz")
+sha256sums=('2ffd32f7dd4aab13b17dd5529821174f06a4a8e1f3ca883c0ba2f7750469eb81')
 
 package() {
   install -d "${pkgdir}/usr/bin"
