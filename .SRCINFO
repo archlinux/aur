@@ -1,7 +1,7 @@
 pkgbase = vv-bin
-	pkgdesc = VV is an open-source and cross platform image viewer for 2D, 2D+t, 3D and 3D+t (or 4D) images
+	pkgdesc = Image viewer for 2D, 2D+t, 3D and 3D+t (or 4D) images
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.creatis.insa-lyon.fr/rio/vv/
 	arch = x86_64
 	license = BSD
