@@ -1,8 +1,8 @@
 # Maintainer of this PKGBUILD file: Martino Pilia <martino.pilia@gmail.com>
 pkgname='ants'
 pkgver=2.2.0
-pkgrel=2
-pkgdesc='Advanced Normalization Tools (ANTs) computes high-dimensional mappings to capture the statistics of brain structure and function'
+pkgrel=3
+pkgdesc='A state-of-the-art medical image registration and segmentation toolkit'
 arch=('i686' 'x86_64')
 url='http://www.picsl.upenn.edu/ANTS/'
 license=('Apache')
