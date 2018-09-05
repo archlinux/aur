@@ -1,7 +1,7 @@
 pkgbase = xqilla
 	pkgdesc = An XQuery and XPath 2.0 library, written in C++ and built on top of Xerces-C.
 	pkgver = 2.3.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://xqilla.sourceforge.net/
 	arch = x86_64
 	license = GPL3

@@ -3,7 +3,7 @@
 # Contributor: Daniel Biehl <dbiehl@live.de>
 pkgname=xqilla
 pkgver=2.3.4
-pkgrel=2
+pkgrel=3
 pkgdesc="An XQuery and XPath 2.0 library, written in C++ and built on top of Xerces-C."
 arch=("x86_64")
 url="http://xqilla.sourceforge.net/"
