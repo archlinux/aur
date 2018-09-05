@@ -1,14 +1,14 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=reposurgeon
-pkgver=3.44
+pkgver=3.45
 pkgrel=1
 pkgdesc="Performs surgery on version control repositories."
 arch=('any')
 url="http://www.catb.org/esr/$pkgname/"
 license=('BSD')
 depends=('pypy')
-makedepends=('asciidoc' 'xmlto')
+makedepends=('asciidoc' 'go' 'xmlto')
 optdepends=('bitkeeper'
             'bzr'
             'cvs-fast-export'
@@ -19,7 +19,7 @@ optdepends=('bitkeeper'
             'src'
             'subversion')
 source=("https://gitlab.com/esr/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('3506634ee20baf039627e4dac1ebdc94dc84c9f01aceee8718e34b7005d58997fde0e7391f4f87c68472592bab61206d23dbc401a21c3db76ac0e15e92e45251')
+sha512sums=('e0a609f2ef3d668bb352beadf63b5d4df72e9aa7bf8328cb9f858ae5875ccff68f65793f51a8bfee0ce69f5ba085cca23785755994f16b757618fc0af17e363e')
 
 prepare() {
   cd "$pkgbase-$pkgver"
