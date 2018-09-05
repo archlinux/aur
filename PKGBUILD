@@ -4,7 +4,7 @@
 
 pkgname=nvidia-390xx-ck
 pkgver=390.77
-pkgrel=5
+pkgrel=6
 _extramodules=extramodules-ck
 _pkgdesc="NVIDIA drivers for linux-ck, 390xx legacy branch."
 pkgdesc="$_pkgdesc"
@@ -18,7 +18,8 @@ conflicts=('nvidia-340xx-ck' 'nvidia-ck')
 license=('custom')
 options=('!strip')
 source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
-kernel-4.16.patch)
+kernel-4.16.patch
+unfuck.patch)
 sha256sums=('6eb950dc4b59697d12d79a975b2c21a5e3cde49a12b61432d7e836110a06a6ea'
             '622ac792ec200b2239cb663c0010392118b78c9904973d82cd261165c16d6385')
 
@@ -31,6 +32,7 @@ prepare() {
     # Restore phys_to_dma support (still needed for 396.18)
     # https://bugs.archlinux.org/task/58074
     patch -Np1 -i ../kernel-4.16.patch
+    patch -Np1 -i ../unfuck.patch
 }
 
 build() {
