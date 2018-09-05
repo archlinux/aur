@@ -1,6 +1,6 @@
 pkgbase = libzim
 	pkgdesc = Reference implementation of the ZIM specification by the openZIM project
-	pkgver = 4.0.3
+	pkgver = 4.0.4
 	pkgrel = 1
 	url = https://github.com/openzim/libzim
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = libzim
 	depends = xz
 	depends = icu
 	replaces = zimlib-git
-	source = https://github.com/openzim/libzim/archive/4.0.3.tar.gz
-	sha256sums = d246c5ed4839780215a4070e3f412bae9511a7201a881b1bfa93e3363af32017
+	source = https://github.com/openzim/libzim/archive/4.0.4.tar.gz
+	sha256sums = 8f56a16d15e810150d3c3ee9acce3606f676c90b72936e11f77f2a2548cd4611
 
 pkgname = libzim
 
