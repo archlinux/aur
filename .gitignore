@@ -13,6 +13,7 @@
 !*.diff
 !*.desktop
 !*.png
+!LICENSE
 
 # ... except files from PKGBUILD fields
 !*.changelog
