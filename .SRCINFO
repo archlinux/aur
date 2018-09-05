@@ -1,0 +1,16 @@
+pkgbase = arcint-gtk-theme-git
+	pkgdesc = My own version of horst3180's Arc theme
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gitgud.io/popcorns/arcint-theme
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = gtk3
+	makedepends = sassc
+	makedepends = optipng
+	makedepends = inkscape
+	optdepends = gnome-themes-standard: for gtk2 themes
+
+pkgname = arcint-gtk-theme-git
+
