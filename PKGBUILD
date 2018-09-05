@@ -2,11 +2,11 @@
 # Contributor: Victor van den Elzen <victor.vde at gmail dot com>
 pkgname=pgbadger
 pkgver=9.2
-pkgrel=5
+pkgrel=6
 pkgdesc="A fast PostgreSQL Log Analyzer"
 arch=("any")
-url="https://github.com/dalibo/pgbadger"
-license=("custom:Dalibo")
+url="https://github.com/darold/pgbadger"
+license=("custom:PostgreSQL")
 depends=('perl>=5.10.0')
 optdepends=(
   "perl-text-csv-xs: parse PostgreSQL CSV log files"
