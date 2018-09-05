@@ -4,7 +4,7 @@
 
 pkgname=variety-git
 _gitname=variety
-pkgver=0.7.0.beta1
+pkgver=0.6.9.r111.g24fc608
 pkgrel=1
 pkgdesc="Variety wallpaper changer (git version)"
 arch=('any')
@@ -20,6 +20,12 @@ provides=('variety')
 conflicts=('variety')
 source=(git+https://github.com/varietywalls/variety)
 md5sums=(SKIP)
+
+
+pkgver() {
+  cd "${_gitname}"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 package() {
   cd "${srcdir}/${_gitname}"
