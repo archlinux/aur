@@ -1,7 +1,7 @@
 # Maintainer: grufo <madmurphy333 AT gmail DOT com>
 
 pkgname='gnunet-fuse'
-pkgver='0.10.0'
+pkgver='0.11.0pre66'
 pkgrel=1
 pkgdesc='Read-only mounting of GNUnet directories as file systems using FUSE'
 arch=('i686' 'x86_64')
@@ -216,7 +216,7 @@ _get_mirror() {
 
 source=("$(_get_mirror _pkg_mirrors)")
 
-sha256sums=('6b39273ef351fe34d381139bbe1a5d52c982ad5f9da09f14691b9be6e713ec3d')
+sha256sums=('97c6857b9517510640bae86c088bd295aa3ddefa646c56b9e97c4c25513ffb04')
 
 prepare() {
 
