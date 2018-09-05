@@ -2,8 +2,8 @@
 # Maintainer: Lars Norberg < arch-packages at cogwerkz dot org >
 
 pkgname=wine-staging-pba-git
-pkgver=3.14
-pkgrel=2
+pkgver=3.15.r2.gb9ae1089+wine.3.15.r27.gc4131f69d3
+pkgrel=1
 _winesrcdir='wine-git'
 _stgsrcdir='wine-staging-git'
 _pbasrcdir='wine-pba-firerat-git'
@@ -107,10 +107,10 @@ sha256sums=('SKIP'
 			'9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
 			'c589c1668851cf5973b8e76d9bd6ae3b9cb9e6524df5d9cb90af4ac20d61d152')
 provides=(
-	"wine=$pkgver"
-	"wine-git=$pkgver"
-	"wine-staging=$pkgver" 
-	"wine-wow64=$pkgver"
+	"wine=$(        printf '%s' "$pkgver" | sed 's/.*\+wine\.//')"
+	"wine-wow64=$(  printf '%s' "$pkgver" | sed 's/.*\+wine\.//')"
+	"wine-git=$(    printf '%s' "$pkgver" | sed 's/.*\+wine\.//')"
+	"wine-staging=$(printf '%s' "$pkgver" | sed 's/\+wine.*//')"
 )
 
 conflicts=('wine' 'wine-wow64' 'wine-staging')
@@ -175,6 +175,18 @@ prepare() {
 	mkdir -p "${srcdir}"/"${pkgname}"-64-build
 	mkdir -p  "${srcdir}"/"${pkgname}"-32-build
 
+}
+
+pkgver() {
+    cd "${srcdir}/${_stgsrcdir}"
+    local _staging_tag="$(git tag --sort='version:refname' | tail -n1 | sed 's/-/./g;s/^v//;s/\.rc/rc/')"
+    local _staging_version="$(git describe --long --tags \
+                                | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//;s/\.rc/rc/' \
+                                | sed "s/^latest.release/${_staging_tag}/")"
+    cd "${srcdir}/${_winesrcdir}"
+    local _wine_version="$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//;s/\.rc/rc/')"
+    
+    printf '%s+%s' "$_staging_version" "$_wine_version"
 }
 
 build() {
