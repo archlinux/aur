@@ -4,16 +4,17 @@
 
 pkgname=variety-git
 _gitname=variety
-pkgver=0.6.9
+pkgver=0.7.0.beta1
 pkgrel=1
 pkgdesc="Variety wallpaper changer (git version)"
 arch=('any')
 url="https://github.com/varietywalls/variety"
 license=('GPL3')
-depends=('python2' 'gtk3' 'imagemagick' 'libgexiv2' 'libnotify' 'python2-beautifulsoup4' 'python2-cairo'
-         'python2-configobj' 'python2-dbus' 'python2-gobject' 'python2-httplib2' 'python2-pillow'
-         'python2-lxml' 'python2-pycurl' 'python2-requests')
-makedepends=('git' 'python2-distutils-extra')
+depends=('python3' 'gtk3' 'imagemagick' 'libgexiv2' 'libnotify'
+         'python-beautifulsoup4' 'python-lxml' 'python-cairo'
+         'python-configobj' 'python-pillow' 'python-requests' 'python-dbus' 'python-gobject' 'python-httplib2'
+         'python-pycurl')
+makedepends=('git' 'python-distutils-extra')
 optdepends=('xdg-user-dirs: set wallpaper for KDE Plasma')
 provides=('variety')
 conflicts=('variety')
@@ -22,5 +23,5 @@ md5sums=(SKIP)
 
 package() {
   cd "${srcdir}/${_gitname}"
-  python2 setup.py install --root="${pkgdir}" --optimize=1
+  python setup.py install --root="${pkgdir}" --optimize=1
 }
