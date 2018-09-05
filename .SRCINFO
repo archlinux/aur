@@ -1,0 +1,19 @@
+pkgbase = retrosmart-kvantum-theme
+	pkgver = 1.0b
+	pkgrel = 1
+	url = https://github.com/mdomlop/retrosmart-kvantum-theme.git
+	arch = any
+	license = GPL3
+	depends = kvantum-qt5
+	optdepends = retrosmart-aurorae-themes: The corresponding Aurorae themes
+	optdepends = retrosmart-icon-theme: The corresponding icon theme
+	optdepends = retrosmart-gtk-themes: The corresponding GTK themes
+	optdepends = retrosmart-openbox-themes: The corresponding Openbox themes
+	optdepends = retrosmart-wallpapers: The corresponding backgrounds project
+	optdepends = retrosmart-x11-cursors: The corresponding X11 cursor theme
+	optdepends = retrosmart-xfwm4-themes: The corresponding XFwm4 themes
+	source = https://github.com/mdomlop/retrosmart-kvantum-theme/archive/1.0b.tar.gz
+	md5sums = 5324149eac10878fc254b90d548f9d2f
+
+pkgname = retrosmart-kvantum-theme
+
