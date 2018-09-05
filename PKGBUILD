@@ -32,7 +32,7 @@ build() {
 package() {
     mkdir -p "${pkgdir}/usr/share/applications"
     mkdir -p "${pkgdir}/usr/bin/"
-    cd "${_pkgname}"
+    cd       "${_pkgname}"
 
     make DESTDIR="${pkgdir}" install
 
