@@ -1,7 +1,7 @@
 # Maintainer: Matt Bray <mattjbray@gmail.com>
 pkgname=elm-format-0.18-bin
 _source_pkgname=elm-format-0.18
-pkgver=0.6.1_alpha
+pkgver=0.8.0
 pkgrel=1
 epoch=
 pkgdesc="Format Elm source code according to a standard set of rules based on the official Elm Style Guide."
@@ -14,7 +14,7 @@ makedepends=()
 checkdepends=()
 optdepends=()
 provides=(elm-format)
-conflicts=(elm-format-0.16-bin elm-format-0.17-bin)
+conflicts=(elm-format-0.16-bin elm-format-0.17-bin elm-format-0.19-bin)
 replaces=()
 backup=()
 options=()
@@ -26,7 +26,7 @@ source=(
   )
 noextract=()
 md5sums=(
-  'ce51867a97cb32a309d6962a0da570e1'
+  '63a58630d656a7e20023b88028e51412'
   'SKIP'
 )
 validpgpkeys=(
