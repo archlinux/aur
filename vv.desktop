@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.4
+Name=VV
+Comment=VV is an open-source and cross platform image viewer for 2D, 2D+t, 3D and 3D+t (or 4D) images
+Exec=/usr/bin/vv
+Icon=vv
+Categories=Science;
+Type=Application
+Terminal=false
+StartupNotify=false

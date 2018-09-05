@@ -1,0 +1,21 @@
+pkgbase = vv-git
+	pkgdesc = VV is an open-source and cross platform image viewer for 2D, 2D+t, 3D and 3D+t (or 4D) images
+	pkgver = 1.4.0.r271.g24b75af3
+	pkgrel = 1
+	url = https://www.creatis.insa-lyon.fr/rio/vv/
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = insight-toolkit
+	depends = vtk
+	depends = qt5-base
+	provides = vv
+	conflicts = vv
+	conflicts = vv-bin
+	source = git+https://github.com/open-vv/vv.git
+	source = vv.desktop
+	sha512sums = SKIP
+	sha512sums = 7623abe987c52e2fee5ab8eec103c5f38276cc0f41365442db67e1c5e88442842edafa6b7cb9083e006b60b901a6b5b84fc406994cd0f128faae70e71732c094
+
+pkgname = vv-git
+
