@@ -1,7 +1,7 @@
---- SConstruct.orig	2017-06-29 09:16:49.422957000 +0300
-+++ /RHVoice/SConstruct	2017-09-15 09:17:27.345414000 +0300
-@@ -159,7 +159,7 @@
-         env.AppendUnique(CXXFLAGS=["/EHsc"])
+--- SConstruct.orig
++++ /RHVoice/SConstruct
+@@ -170,7 +170,7 @@
+             env.Tool("xp_compat")
      if "gcc" in env["TOOLS"]:
          env.MergeFlags("-pthread")
 -        env.AppendUnique(CXXFLAGS=["-std=c++03"])
@@ -9,7 +9,7 @@
          env.AppendUnique(CFLAGS=["-std=c99"])
      if sys.platform.startswith("linux"):
          env.Append(SHLINKFLAGS="-Wl,-soname,${TARGET.file}.${libversion.split('.')[0]}")
-@@ -215,7 +215,7 @@
+@@ -225,7 +225,7 @@
              env["audio_libs"].add("libao")
          if conf.CheckPKG("portaudio-2.0"):
              env["audio_libs"].add("portaudio")

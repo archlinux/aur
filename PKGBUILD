@@ -1,6 +1,6 @@
 pkgname=rhvoice-git
-pkgver=20180518
-pkgrel=2
+pkgver=20180905
+pkgrel=1
 pkgdesc="Free and open source speech synthesizer for Russian and other languages"
 arch=('i686' 'x86_64')
 url="https://github.com/Olga-Yakovleva/RHVoice"
