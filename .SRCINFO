@@ -1,5 +1,5 @@
 pkgbase = libretro-dinothawr-git
-	pkgdesc = Block pushing puzzle game on slippery surfaces. Free your dinosaur friends from their ice prison. Needs a libretro frontend to play.
+	pkgdesc = Block pushing puzzle game on slippery surfaces. Needs a libretro frontend to play.
 	pkgver = 469.92431d1
 	pkgrel = 1
 	url = https://github.com/libretro/Dinothawr
