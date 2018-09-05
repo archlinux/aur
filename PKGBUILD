@@ -51,10 +51,10 @@ _1k_HZ_ticks=
 pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
 _major=4.18
-_minor=5
+_minor=6
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=4
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
 license=('GPL2')
@@ -83,7 +83,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
          # standard config files for mkinitcpio ramdisk
         'linux.preset'
         '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch'
-        '0002-drm-i915-Increase-LSPCON-timeout.patch')
+        '0002-drm-i915-Increase-LSPCON-timeout.patch'
+        '0003-HID-core-fix-grouping-by-application.patch')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-uksm} 
@@ -377,7 +378,7 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('604b334ccd74b230faf21db8887e382c49d4877ec8ce8298c079001a12222a6c7be2542c8f37c025cb3d625905d30e4c8c37267f0285aea25bbbe5aa3457040c'
+sha512sums=('caa881792ba7cdec7681f5a87c8cde14e4749ace379b769415a3b7e56bd0d7c4ccb6aed92f29b9085b7ac929daac3340d1f1cdcae8a947690b7aa2c571c89432'
             'SKIP'
             'e62aa377a0acc4f63f394e27a0fb7316583ff1a6a6afdfcc97593ddffd7d2bc224cfd70b552cb3fb9513cf6b8db4c2fd913d21ec2380db8cd642e37d4d67370c'
             '675e4f2d9ec025e26bf50e6ebac2cea657fa75f1264ce4de20dfa874b68ce5b46756b94f7f4668f2b44e956ed9a5ded32aadd58bf0f12ff477bc18d46f1df195'
@@ -386,8 +387,9 @@ sha512sums=('604b334ccd74b230faf21db8887e382c49d4877ec8ce8298c079001a12222a6c7be
             '4a8b324aee4cccf3a512ad04ce1a272d14e5b05c8de90feb82075f55ea3845948d817e1b0c6f298f5816834ddd3e5ce0a0e2619866289f3c1ab8fd2f35f04f44'
             '6346b66f54652256571ef65da8e46db49a95ac5978ecd57a507c6b2a28aee70bb3ff87045ac493f54257c9965da1046a28b72cb5abb0087204d257f14b91fd74'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
-            '9dac5b65f2af3e4e6d0881e8367a818b67fef81c254e5e8ce971c76edd078516dea913771a77ca54a7c2f25250e29da93a8f4afa55b337b05df0a5bf291e6b03'
-            '1ab3b2662d521a6d2edcca7b8f466790786c11651fee64020ba5d2b6481fb3539d6556e21b07d0487b059e8214a6bac7e263f2c11693b29a94ce65b1f5b432f4')
+            '32bfd68f7191c70689a36f66b458f41fcc38f86ea2f580dcf656cd128ba4cc0f333fcdead9877bd873dbcb4cbbd26add9a0e21949b2bdd036e413d1236f3d2a1'
+            'c332fb1a77d1ba6aa682a2c958af9634236edd39c50a93dfa08f5ed5572f38effa4e34730e42b83ef24e9b2ffc0da7244facb25eb282ef03ac2369d562a01ca3'
+            '125bb9b8a9224e4c62c65f0c33312a793093389104d81fd4d596af7044024523686f44d9f5cb8884c5573b95e3cc77632649a5e7327ae21f436e3e5cbb9e6b75')
             
 validpgpkeys=(
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
