@@ -11,7 +11,7 @@ _fullname="$pkgname-$_fullver"
 _web_buildid="65-ec66d5dd11aa09"
 _web_desktop_ver="3.65.1-d11aa09"
 _web_tv_ver="3.66.1-ec66d5d"
-pkgrel=2
+pkgrel=3
 pkgdesc='Next generation Plex Desktop Client'
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
@@ -31,7 +31,7 @@ sha512sums=('5d39eebf68c190b5a083058bb04bccc886d1a74bbc1c907aab2e65d4d841981d2a7
             'd9b9a1d265f8b257d8005197cf8a73752acee4779ca21a36dcdb62a1c8433730e46fa6b38b02505f8328adb73536499b81d211d2701475a90a009b8afdf5ceea'
             '1d66ad7391c23e8aa09c8c26d7a9f031dc557a8b5e44b9c2cf5b35085a32ad433ce9923df8e9f27e2dec717637fdda3274c8ac0b211bc2cc69d254d2d80c8ce7'
             '84a623ceadeb0d09af8c82e2d6d7c6fcd1592b564cfffbfdd1ff5f7869da798fd930cb643b8aa7ebf116aa984bb9b958ce8e5d699cf16e45d2b1253856c41797'
-            'f24d70646babc2d248d6159442e3b9d5518276e7d8e33004f13d260953ebcd741067c507a47de25c24842e4391f4c403cdb46dc989b52fa1dde38a7312382db1')
+            '892f05cbdb3f3efedf0dfe63ae14f8b009841162eba85f505e371dc55b4240a612706a9ead0e94ed8c1e83f53da0e969f317b1790ef65fd5891863db37a8df54')
 
 prepare() {
     cd "${srcdir}/$_fullname"
