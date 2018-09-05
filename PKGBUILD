@@ -1,14 +1,13 @@
-# Maintainer: Mark Wagie <yochanan.marqos@gmail.com>
+# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=aptik-gtk
 pkgver=18.8
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK Frontend for Aptik System Migration Utility"
 arch=('i686' 'x86_64')
 url="https://github.com/teejee2008/aptik-gtk"
 license=('GPL3')
 depends=('aptik' 'glib2' 'gtk3' 'libgee')
 makedepends=('git' 'vala' 'vte3')
-provides=(aptik-gtk)
 source=("${pkgname}_v${pkgver}.tgz::https://github.com/teejee2008/${pkgname}/archive/v${pkgver}.tar.gz")
 source+=('0001-Update-TermBox.vala.patch')
 sha256sums=('1b5a0fc547ceafdc7bbf5005fa9b43b8fdac2ecb060bf004560f75b5ea84ff70'
