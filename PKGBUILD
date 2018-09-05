@@ -3,8 +3,8 @@
 # Contributor: Ian Ker-Seymer <i.kerseymer@gmail.com>
 
 pkgname=neovim-qt
-pkgver=0.2.9
-pkgrel=2
+pkgver=0.2.10
+pkgrel=1
 pkgdesc="A Qt5 GUI for Neovim."
 arch=('i686' 'x86_64')
 url="https://github.com/equalsraf/neovim-qt"
@@ -13,7 +13,7 @@ depends=('neovim' 'qt5-base')
 makedepends=('cmake')
 conflicts=('neovim-qt-git')
 source=("$url/archive/v${pkgver}.tar.gz")
-sha256sums=('0142a75f39a5fc19a7198673600d2612ef970bf59a02157b3a639a1d58bee008')
+sha256sums=('42e3205f3fa9924e4970aed8ff28d17d9aefeb394bb40493d37f8a0afba40c34')
 install=neovim-qt.install
 
 build() {
