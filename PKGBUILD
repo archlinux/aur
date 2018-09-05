@@ -1,4 +1,3 @@
-# $Id$
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Tom Gundersen <teg@jklm.no>
@@ -11,7 +10,7 @@
 pkgbase=dbus-selinux
 pkgname=(dbus-selinux dbus-docs-selinux)
 pkgver=1.12.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Freedesktop.org message bus system with SELinux support"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
 arch=(x86_64)
@@ -27,12 +26,12 @@ validpgpkeys=('DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90'  # Simon McVittie <simo
               '3C8672A0F49637FE064AC30F52A43A1E4B77B059') # Simon McVittie <simon.mcvittie@collabora.co.uk>
 
 pkgver() {
-  cd ${pkgbase/-selinux}
+  cd dbus
   git describe --tags | sed 's/^dbus-//;s/-/+/g'
 }
 
 prepare() {
-  cd ${pkgbase/-selinux}
+  cd dbus
 
   # Reduce docs size
   printf '%s\n' >>Doxyfile.in \
@@ -42,23 +41,25 @@ prepare() {
 }
 
 build() {
-  cd ${pkgbase/-selinux}
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-      --libexecdir=/usr/lib/dbus-1.0 --with-dbus-user=dbus \
-      --with-system-pid-file=/run/dbus/pid \
-      --with-system-socket=/run/dbus/system_bus_socket \
-      --with-console-auth-dir=/run/console/ \
-      --enable-inotify --disable-static \
-      --disable-verbose-mode --disable-asserts \
-      --with-systemdsystemunitdir=/usr/lib/systemd/system \
-      --enable-systemd --enable-user-session \
-      --enable-selinux --enable-libaudit
+  cd dbus
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    runstatedir=/run \
+    --libexecdir=/usr/lib/dbus-1.0 \
+    --with-system-socket=/run/dbus/system_bus_socket \
+    --with-dbus-session-bus-connect-address=unix:runtime=yes \
+    --with-dbus-user=dbus \
+    --enable-user-session \
+    --disable-static \
+    --without-x \
+    --enable-selinux --enable-libaudit
   make
 }
 
 check() {
-  cd ${pkgbase/-selinux}
-  make check
+  make -C dbus check
 }
 
 package_dbus-selinux() {
@@ -66,13 +67,11 @@ package_dbus-selinux() {
   conflicts=(libdbus libdbus-selinux "${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
   replaces=(libdbus libdbus-selinux)
 
-  cd ${pkgbase/-selinux}
-
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" make -C dbus install
 
   rm -r "$pkgdir/var/run"
 
-  install -Dt "$pkgdir/usr/share/licenses/$pkgbase" -m644 COPYING
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 dbus/COPYING
 
   # We have a pre-assigned uid (81)
   echo 'u dbus 81 "System Message Bus"' |
@@ -87,8 +86,7 @@ package_dbus-docs-selinux() {
   depends=(dbus-selinux)
   conflicts=("${pkgname/-selinux}")
 
-  install -d "$pkgdir/usr/share/licenses"
-  ln -s dbus-selinux "$pkgdir/usr/share/licenses/dbus-docs-selinux"
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 dbus/COPYING
 
   mv doc "$pkgdir/usr/share"
 }
