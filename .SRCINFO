@@ -1,13 +1,12 @@
 pkgbase = nautilus-mediainfo
 	pkgdesc = View media information from the properties tab
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linux-man/nautilus-mediainfo
 	arch = any
 	license = GPL3
 	depends = python2-mediainfodll
 	depends = python2-nautilus
-	provides = nautilus-mediainfo-tab
 	source = nautilus-mediainfo-0.1.tar.gz::https://github.com/linux-man/nautilus-mediainfo/archive/v0.1.tar.gz
 	md5sums = 779e0ccede05bd13e4f70a267c10d038
 
