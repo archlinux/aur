@@ -1,15 +1,16 @@
 pkgbase = minikube-bin
 	pkgdesc = A tool that makes it easy to run Kubernetes locally
 	pkgver = 0.28.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/kubernetes/minikube
 	arch = x86_64
 	license = Apache
-	depends = net-tools
 	optdepends = kubectl-bin: to manage the cluster
-	optdepends = virtualbox
-	optdepends = docker-machine-kvm
-	optdepends = docker-machine-driver-kvm2
+	optdepends = crictl: to use --vm-driver=none
+	optdepends = virtualbox: to use --vm-driver=virtualbox (default)
+	optdepends = docker-machine-kvm: to use --vm-driver=kvm
+	optdepends = docker-machine-driver-kvm2: to use --vm-driver=kvm2
+	provides = minikube
 	conflicts = minikube
 	source = minikube_0.28.2::https://storage.googleapis.com/minikube/releases/v0.28.2/minikube-linux-amd64
 	sha256sums = 3c84872ffa5ddbce472062fb548f9b3a25af72587d35243e12f18d86aaa6a085
