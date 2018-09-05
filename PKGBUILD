@@ -12,7 +12,7 @@
 
 pkgname=('llvm50' 'llvm50-libs' 'clang50')
 pkgver=5.0.2
-pkgrel=3
+pkgrel=4
 _prefix="/usr/lib/llvm-5.0"
 arch=('i686' 'x86_64')
 url="http://llvm.org/"
