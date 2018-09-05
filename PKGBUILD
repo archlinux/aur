@@ -5,7 +5,7 @@
 pkgname=tracktion-7-free-daw
 _pkgname=tracktion-7
 pkgver=7.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The world's best, fully featured, completely unlimited free daw for all music creators."
 arch=('x86_64')
 url="https://www.tracktion.com/products/t7-daw"
@@ -36,5 +36,5 @@ package() {
   ln -sf /opt/$_pkgname/usr/share/applications/tracktion7.desktop usr/share/applications/tracktion7.desktop
   ln -sf /opt/$_pkgname/usr/share/doc/tracktion7 usr/share/doc/tracktion7
   ln -sf /opt/$_pkgname/usr/share/mime/packages/tracktion7.xml usr/share/mime/packages/tracktion7.xml
-  ln -sf /opt/$_pkgname/usr/share/mime/pixmaps/tracktion7.png usr/share/mime/pixmaps/tracktion7.png
+  ln -sf /opt/$_pkgname/usr/share/pixmaps/tracktion7.png usr/share/pixmaps/tracktion7.png
 }

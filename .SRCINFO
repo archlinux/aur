@@ -1,7 +1,7 @@
 pkgbase = tracktion-7-free-daw
 	pkgdesc = The world's best, fully featured, completely unlimited free daw for all music creators.
 	pkgver = 7.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.tracktion.com/products/t7-daw
 	install = tracktion-7-free-daw.install
 	arch = x86_64
