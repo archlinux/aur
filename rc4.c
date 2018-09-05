@@ -102,7 +102,7 @@ void portfolio_write_encrypt_decrypt(int crypt_opt) {
     puts("You will be asked to enter your password again to make sure the entries match.");
     sleep(2); // Sleep so user can read above message before ncurses initscr()
     char* password_check = rc4_ncurses_get_password(); // Get password a second time
-    if (strcmp(password, password_check) != 0) { // Make sure the two passwords are the same
+    if (!streq(password, password_check)) { // Make sure the two passwords are the same
         free(password_check);
         GOTO_CLEAN_MSG("Passwords do not match!")
     }

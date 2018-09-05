@@ -81,7 +81,7 @@ int portfolio_modify_string(String* pString, const char* symbol, double quantity
             GOTO_CLEAN_MSG("You don't have any of this security to remove")
         }
 
-        if (strcmp("USD$", symbol) != 0) { // Check that the symbol is valid, except if it's USD
+        if (!streq("USD$", symbol)) { // Check that the symbol is valid, except if it's USD
             Info* data = info_init();
             strcpy(data->symbol, symbol);
             api_store_info(data, DATA_LEVEL_CHECK);
@@ -233,7 +233,7 @@ int portfolio_symbol_index(const char* symbol, const Json* jarray) {
     for (size_t i = 0; i < json_object_array_length(jarray); i++) {
         const char* string = json_object_get_string(
                 json_object_object_get(json_object_array_get_idx(jarray, (size_t) i), "Symbol"));
-        if (strcmp(string, symbol) == 0)
+        if (streq(string, symbol))
             return (int) i;
     }
 

@@ -31,7 +31,7 @@ int main(int argc, char* argv[]) {
         window_main();
 
     // News
-    else if (strcmp(cmd, "news") == 0 && (argc == 3 || argc == 4)) {
+    else if (streq(cmd, "news") && (argc == 3 || argc == 4)) {
         int num_articles = 3; // Default
         if (argc == 4)
             num_articles = (int) strtol(argv[3], NULL, 10);
@@ -39,19 +39,19 @@ int main(int argc, char* argv[]) {
     }
 
         //Encrypt/decrypt
-    else if ((strcmp(cmd, "encrypt") == 0 || strcmp(cmd, "decrypt") == 0) && argc == 2)
-        portfolio_write_encrypt_decrypt(strcmp(cmd, "encrypt") == 0); // 1 if encrypt, 0 if decrypt
+    else if ((streq(cmd, "encrypt") || streq(cmd, "decrypt")) && argc == 2)
+        portfolio_write_encrypt_decrypt(streq(cmd, "encrypt")); // 1 if encrypt, 0 if decrypt
 
         // Info
-    else if (strcmp(cmd, "info") == 0 && argc == 3)
+    else if (streq(cmd, "info") && argc == 3)
         interface_print(sym);
 
         // Graph
-    else if (strcmp(cmd, "graph") == 0 && argc == 3)
+    else if (streq(cmd, "graph") && argc == 3)
         graph_print(sym, NULL);
 
         // Compare
-    else if (strcmp(cmd, "cmp") == 0 && argc == 4) {
+    else if (streq(cmd, "cmp") && argc == 4) {
         char sym2[strlen(argv[3]) + 1];
         strcpy(sym2, argv[3]);
         strtoupper(sym2);
@@ -59,18 +59,18 @@ int main(int argc, char* argv[]) {
     }
 
         // Check
-    else if (strcmp(cmd, "check") == 0 && (argc == 2 || argc == 3)) {
+    else if (streq(cmd, "check") && (argc == 2 || argc == 3)) {
         if (argc == 2)
             portfolio_printw();
         else portfolio_print_stock(sym);
     }
 
         // Portfolio
-    else if (strcmp(cmd, "add") == 0)
+    else if (streq(cmd, "add"))
         modop = ADD;
-    else if (strcmp(cmd, "rm") == 0)
+    else if (streq(cmd, "rm"))
         modop = REMOVE;
-    else if (strcmp(cmd, "set") == 0)
+    else if (streq(cmd, "set"))
         modop = SET;
     else puts("Invalid arguments. Type \"man tick\" for help.");
 

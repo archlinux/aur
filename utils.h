@@ -1,6 +1,8 @@
 #ifndef TICK_UTILS_H
 #define TICK_UTILS_H
 
+#define streq(a,b) (strcmp(a,b) == 0)
+
 #define RET_MSG(msg) {\
     puts(msg);\
     return;\

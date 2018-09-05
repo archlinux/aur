@@ -116,7 +116,7 @@ void info_array_portfolio_printw(Info_Array* portfolio_data) {
                 sort_option++;
                 portfolio_sort(portfolio_data, sort_option);
                 for (size_t i = 0; i < portfolio_data->length; i++)
-                    if (strcmp(portfolio_data->array[i]->symbol, highlight_sym) == 0)
+                    if (streq(portfolio_data->array[i]->symbol, highlight_sym))
                         highlight_index = (int) i; // Make sure the same security stays highlighted
             } else sort_option++;
 
@@ -127,7 +127,7 @@ void info_array_portfolio_printw(Info_Array* portfolio_data) {
                 sort_option--;
                 portfolio_sort(portfolio_data, sort_option); // Sort security array
                 for (size_t i = 0; i < portfolio_data->length; i++)
-                    if (strcmp(portfolio_data->array[i]->symbol, highlight_sym) == 0)
+                    if (streq(portfolio_data->array[i]->symbol, highlight_sym))
                         highlight_index = (int) i; // Make sure the same security stays highlighted
             } else sort_option--;
 
@@ -153,12 +153,13 @@ void portfolio_print_stock(const char* symbol) {
 
     Json* jobj = json_tokener_parse(pString->data);
     size_t i = 0, len = json_object_array_length(jobj);
-    while (i < len && strcmp(
-            json_object_get_string(json_object_object_get(json_object_array_get_idx(jobj, i), "Symbol")), symbol) != 0)
+    while (i < len && !streq(json_object_get_string(json_object_object_get
+    (json_object_array_get_idx(
+            jobj, i), "Symbol")), symbol))
         i++;
 
     if (i == len)
-    GOTO_CLEAN_MSG("Your portfolio does not contain any of this security.")
+        GOTO_CLEAN_MSG("Your portfolio does not contain any of this security.")
 
     Info* info = info_init();
     strcpy(info->symbol, symbol);
@@ -260,9 +261,9 @@ void header_printw(WINDOW* window, const Info* symbol_info) {
 }
 
 void info_print(const Info* symbol_info) {
-    if (strcmp(symbol_info->name, "") != 0)
+    if (streq(symbol_info->name, ""))
         printf("Name: %s\n", symbol_info->name);
-    if (strcmp(symbol_info->symbol, "") != 0)
+    if (streq(symbol_info->symbol, ""))
         printf("Symbol: %s\n", symbol_info->symbol);
     if (symbol_info->price != EMPTY)
         printf("Price: $%lf\n", symbol_info->price);

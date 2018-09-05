@@ -173,7 +173,7 @@ String* api_iex_get_data_string(char** symbol_array, size_t len,
             if (idx == len)
                 break;
 
-            if (strcmp(symbol_array[idx], "USD$") != 0)
+            if (!streq(symbol_array[idx], "USD$"))
                 sprintf(&symbol_list_string[i][strlen(symbol_list_string[i])], "%s,",
                         symbol_array[idx]);
         }
@@ -187,7 +187,7 @@ String* api_iex_get_data_string(char** symbol_array, size_t len,
     }
 
     for (size_t i = 0; i < num_partitions; i++)
-        if (strcmp(symbol_array[i], "USD$") != 0 &&
+        if (!streq(symbol_array[i], "USD$") &&
             pthread_join(threads[i], (void**) &string_array[i]))
             EXIT_MSG("Error joining thread!");
 
@@ -227,7 +227,7 @@ void* api_morningstar_store_info(void* vpInfo) {
     if (pString == NULL)
         return NULL;
 
-    if (strcmp("null", pString->data) == 0) { // Invalid symbol
+    if (streq("null", pString->data)) { // Invalid symbol
         string_destroy(&pString);
         return NULL;
     }
@@ -348,7 +348,7 @@ void api_store_info_array(Info_Array* pInfo_Array, Data_Level data_level) {
     memset(open_threads, 0, pInfo_Array->length * sizeof(int));
     for (size_t i = 0; i < pInfo_Array->length; i++) {
         pInfo = pInfo_Array->array[i];
-        if (pInfo->api_provider == EMPTY && strcmp(pInfo->symbol, "USD$") != 0) {
+        if (pInfo->api_provider == EMPTY && !streq(pInfo->symbol, "USD$")) {
             open_threads[i] = 1;
             if (strlen(pInfo->symbol) > 5 && pthread_create(&threads[i], NULL,
                                                             api_coinmarketcap_store_info, pInfo)) { // Crypto
@@ -370,7 +370,7 @@ void api_store_info_array(Info_Array* pInfo_Array, Data_Level data_level) {
         }
 
         // Crypto with 5 char or less name
-        if (pInfo->api_provider == EMPTY && strcmp(pInfo->symbol, "USD$") != 0 &&
+        if (pInfo->api_provider == EMPTY && !streq(pInfo->symbol, "USD$") &&
                 pthread_create(&threads[i], NULL, api_coinmarketcap_store_info, pInfo))
             EXIT_MSG("Error creating thread!");
     }
@@ -399,7 +399,7 @@ void api_store_info(Info* pInfo, Data_Level data_level) {
 }
 
 void info_store_portfolio_data(Info* pInfo) {
-    if (strcmp(pInfo->symbol, "USD$") != 0) {
+    if (!streq(pInfo->symbol, "USD$")) {
         if (pInfo->amount != EMPTY) {
             pInfo->current_value = pInfo->amount * pInfo->price;
             pInfo->profit_total = pInfo->current_value - pInfo->total_spent;
@@ -620,7 +620,7 @@ void info_store_news_json(Info* pInfo, const Json* jnews) {
          * happen if there are not enough articles supplied by API.
          */
         if (i > 0 && headline != NULL &&
-            strcmp(json_object_get_string(headline), pInfo->articles[i - 1]->headline) == 0) {
+                streq(json_object_get_string(headline), pInfo->articles[i - 1]->headline)) {
             pInfo->num_articles = i;
             break;
         }
@@ -677,7 +677,7 @@ void info_store_earnings_json(Info* pInfo, const Json* jearnings) {
 
 Info* info_array_find_symbol(const Info_Array* pInfo_Array, const char* symbol) {
     for (size_t i = 0; i < pInfo_Array->length; i++)
-        if (strcmp(symbol, pInfo_Array->array[i]->symbol) == 0)
+        if (streq(symbol, pInfo_Array->array[i]->symbol))
             return pInfo_Array->array[i];
 
     return NULL;

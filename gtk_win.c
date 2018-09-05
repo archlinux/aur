@@ -84,7 +84,7 @@ void on_load_button_clicked(GtkButton* button) {
     if (difftime(now, app.last_reload) <= 60)
         return;
 
-    if (strcmp(gtk_button_get_label(button), "Reload") == 0) { // Reload portfolio
+    if (streq(gtk_button_get_label(button), "Reload")) { // Reload portfolio
         list_store_update();
         return;
     }
@@ -159,7 +159,7 @@ void on_load_button_clicked(GtkButton* button) {
 }
 
 void on_lock_button_clicked(GtkButton* button) {
-    if (strcmp(gtk_button_get_label(button), "Encrypt") == 0) {
+    if (streq(gtk_button_get_label(button), "Encrypt")) {
         // Reset entries
         gtk_entry_set_text(GTK_ENTRY(GET_OBJECT("set_password_entry1")), "");
         gtk_entry_set_text(GTK_ENTRY(GET_OBJECT("set_password_entry2")), "");
@@ -192,7 +192,7 @@ void on_set_password_entry_activate(GtkEntry* entry) {
 
     if (strlen(pass_str) < 6 || strlen(pass_str) > 30) // Too short or too long password
         show_generic_message_dialog("Your password must be between 6 and 30 characters.", FALSE);
-    else if (strcmp(pass_str, pass_check_str) != 0) // Passwords not matching
+    else if (!streq(pass_str, pass_check_str)) // Passwords not matching
         show_generic_message_dialog("Your passwords did not match.", FALSE);
     else { // If passwords match
         sprintf(app.password, "%s\n", pass_str);
@@ -218,7 +218,7 @@ void on_decrypt_password_entry_activate(GtkEntry* entry) {
 
     gchar mod_pass[strlen(pass) + 2];
     sprintf(mod_pass, "%s\n", pass);
-    if (strcmp(app.password, mod_pass) == 0) { // Success
+    if (streq(app.password, mod_pass)) { // Success
         memset(app.password, '\0', PASS_MAX); // Overwrite password with null chars
         // Change button label to Encrypt
         gtk_button_set_label(GTK_BUTTON(GET_OBJECT("lock_button")), "Encrypt");
@@ -271,9 +271,9 @@ void on_modify_entry_activate(GtkEntry* entry) {
     // Get text from dialog to determine whether adding, removing, or setting
     const gchar* text = g_value_get_string(&gtext);
     int modop;
-    if (strcmp(text, "Add") == 0)
+    if (streq(text, "Add"))
         modop = ADD;
-    else if (strcmp(text, "Remove") == 0)
+    else if (streq(text, "Remove"))
         modop = REMOVE;
     else modop = SET;
 
@@ -292,7 +292,7 @@ void on_portfolio_modify_dialog_response(GtkDialog* dialog, gint response_id) {
 
 void on_password_entry_activate(GtkEntry* entry) {
     const gchar* password = gtk_entry_get_text(GTK_ENTRY(GET_OBJECT("password_entry")));
-    if (strcmp(password, "") == 0) // Return if NULL or empty entry text
+    if (streq(password, "")) // Return if NULL or empty entry text
         return;
 
     gtk_widget_hide(GTK_WIDGET(GET_OBJECT("get_password_dialog")));
@@ -339,7 +339,7 @@ void on_check_window_destroy(void) {
 void on_column_clicked(GtkTreeViewColumn* column, GtkListStore* list_store) {
     Col_Index idx = SYMBOL;
     for (Col_Index i = AMOUNT; i < NUM_COLS; i++) // Determine which column was clicked
-        if (strcmp(gtk_tree_view_column_get_title(column), column_names[i]) == 0)
+        if (streq(gtk_tree_view_column_get_title(column), column_names[i]))
             idx = i;
 
     // Sort based on the column
@@ -472,7 +472,7 @@ void list_store_sort(GtkListStore* list_store, Col_Index idx) {
             gtk_tree_model_get(model, &iter2, SYMBOL, &sym2, -1);
 
             // Don't sort TOTALS
-            if (strcmp(sym1, "TOTALS") != 0 && strcmp(sym2, "TOTALS") != 0) {
+            if (!streq(sym1, "TOTALS") && !streq(sym2, "TOTALS")) {
                 // Get the value from idx
                 gtk_tree_model_get(model, &iter1, idx, &str1, -1);
                 gtk_tree_model_get(model, &iter2, idx, &str2, -1);
