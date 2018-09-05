@@ -3,9 +3,9 @@
 _pkgname=SimpleITK
 pkgname=simpleitk
 pkgver=1.1.0
-pkgrel=2
-pkgdesc="A simplified layer built on top of ITK, intended to facilitate its use in rapid prototyping, education, interpreted languages."
-arch=('i686' 'x86_64')
+pkgrel=3
+pkgdesc="A simplified layer built on top of ITK"
+arch=('x86_64')
 url="http://www.simpleitk.org/"
 license=('Apache')
 depends=('gcc-libs' 'insight-toolkit>=4.13')
