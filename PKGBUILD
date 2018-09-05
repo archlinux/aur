@@ -8,7 +8,7 @@
 
 pkgname=wine-staging-pba
 pkgver=3.15
-pkgrel=1
+pkgrel=2
 
 _pkgbasever=${pkgver/rc/-rc}
 
@@ -18,6 +18,7 @@ source=(https://dl.winehq.org/wine/source/3.x/wine-$_pkgbasever.tar.xz{,.sign}
         30-win32-aliases.conf
         wine-binfmt.conf
         steam.patch
+        poe-fix.patch
         "pba-patches::git+https://github.com/Firerat/wine-pba.git")
 sha512sums=('3fb3f6a896eae53ef75a751e72f7431f9b6986b56738dc314bca9eff9d078e65d865ebb28cbb7a63aa571eb11cdaed20c21c36cec565f81610e348fd165e0f2a'
             'SKIP'
@@ -26,6 +27,7 @@ sha512sums=('3fb3f6a896eae53ef75a751e72f7431f9b6986b56738dc314bca9eff9d078e65d86
             '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
             'bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285'
             'f3e42a0720777256ca583f96044f6482aae8f4c707189104216f86f6c7a1b68a186c5124c72866229d46eb66c20c555ba9f32a230ec50f968faa8a12b8372b0a'
+            '7d2bb6d6be62405111e7a573471edb3d8114b12844cdd2581af1a6c87940cf62104156d9c80090fb980f9009a0903d25fbe3cdb9a7efbe81c0ad64fe24937112'
             'SKIP')
 validpgpkeys=(5AC1A08B03BD7A313E0A955AF5E6E9EEB9461DD7
               DA23579A74D4AD9AF9D3F945CEFAC8EAAF17519D)
@@ -128,6 +130,7 @@ prepare() {
   export LDFLAGS="${LDFLAGS/,-z,now/}"
 
   patch -d $pkgname -Np1 < harmony-fix.diff
+  patch -d $pkgname -Np1 < poe-fix.patch
 
   # steam fix
   pushd $pkgname

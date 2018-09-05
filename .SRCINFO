@@ -1,7 +1,7 @@
 pkgbase = wine-staging-pba
 	pkgdesc = A compatibility layer for running Windows programs - Staging branch with PBA patches
 	pkgver = 3.15
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.wine-staging.com
 	install = wine.install
 	arch = x86_64
@@ -149,6 +149,7 @@ pkgbase = wine-staging-pba
 	source = 30-win32-aliases.conf
 	source = wine-binfmt.conf
 	source = steam.patch
+	source = poe-fix.patch
 	source = pba-patches::git+https://github.com/Firerat/wine-pba.git
 	validpgpkeys = 5AC1A08B03BD7A313E0A955AF5E6E9EEB9461DD7
 	validpgpkeys = DA23579A74D4AD9AF9D3F945CEFAC8EAAF17519D
@@ -159,6 +160,7 @@ pkgbase = wine-staging-pba
 	sha512sums = 6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb
 	sha512sums = bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285
 	sha512sums = f3e42a0720777256ca583f96044f6482aae8f4c707189104216f86f6c7a1b68a186c5124c72866229d46eb66c20c555ba9f32a230ec50f968faa8a12b8372b0a
+	sha512sums = 7d2bb6d6be62405111e7a573471edb3d8114b12844cdd2581af1a6c87940cf62104156d9c80090fb980f9009a0903d25fbe3cdb9a7efbe81c0ad64fe24937112
 	sha512sums = SKIP
 
 pkgname = wine-staging-pba
