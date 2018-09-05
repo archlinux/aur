@@ -4,7 +4,7 @@
 _author=B/BD/BDFOY
 _perlmod=Module-Release
 pkgname=perl-module-release
-pkgver=2.11
+pkgver=2.125
 pkgrel=1
 pkgdesc="Module::Releases - automate software releases"
 arch=('any')
@@ -41,7 +41,7 @@ options=(!emptydirs)
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz"
 #encoding.patch
 )
-sha256sums=('e76ab4dcf80ac202b41073604d531855c6b7e9b014b2b44fd22b7f50680b7eb9')
+sha256sums=('0295da0f2141c50726886111006946a00c3ef2b1ec4aec5531b2c78bc119cb15')
 build(){
   cd "$srcdir"/$_perlmod-$pkgver
 
