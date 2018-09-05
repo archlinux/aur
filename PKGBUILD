@@ -5,7 +5,7 @@
 pkgname=tracktion-7-free-daw
 _pkgname=tracktion-7
 pkgver=7.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="The world's best, fully featured, completely unlimited free daw for all music creators."
 arch=('x86_64')
 url="https://www.tracktion.com/products/t7-daw"
@@ -29,7 +29,7 @@ package() {
   tar -x --lzma -f data.tar.lzma -C "${pkgdir}/opt/${_pkgname}/"
   
   cd "$pkgdir"
-  install -dm0755 opt/$_pkgname usr/bin usr/share/applications/ usr/share/doc usr/share/mime/packages usr/share/mime/pixmaps
+  install -dm0755 opt/$_pkgname usr/bin usr/share/applications/ usr/share/doc usr/share/mime/packages usr/share/pixmaps
 
   ln -sf /opt/$_pkgname/usr/bin/Tracktion7 usr/bin/Tracktion7
   ln -sf /opt/$_pkgname/usr/bin/Tracktion7 usr/bin/tracktion7
