@@ -1,7 +1,7 @@
-From 4e09b725c6fa6530385d97363346e72a26d418be Mon Sep 17 00:00:00 2001
+From 01d91bc0dac1c22f60fb6d225dcacc7fa9ae2d56 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Fredrik=20Sch=C3=B6n?= <fredrikschon@gmail.com>
 Date: Fri, 17 Aug 2018 22:07:28 +0200
-Subject: [PATCH 2/2] drm/i915: Increase LSPCON timeout
+Subject: [PATCH 2/3] drm/i915: Increase LSPCON timeout
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -33,7 +33,7 @@ Reviewed-by: Shashank Sharma <shashank.sharma@intel.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/i915/intel_lspcon.c b/drivers/gpu/drm/i915/intel_lspcon.c
-index 8ae8f42f430a1..6b6758419fb34 100644
+index 8ae8f42f430a..6b6758419fb3 100644
 --- a/drivers/gpu/drm/i915/intel_lspcon.c
 +++ b/drivers/gpu/drm/i915/intel_lspcon.c
 @@ -74,7 +74,7 @@ static enum drm_lspcon_mode lspcon_wait_mode(struct intel_lspcon *lspcon,
@@ -45,3 +45,6 @@ index 8ae8f42f430a1..6b6758419fb34 100644
  	if (current_mode != mode)
  		DRM_ERROR("LSPCON mode hasn't settled\n");
  
+-- 
+2.19.0.rc1
+
