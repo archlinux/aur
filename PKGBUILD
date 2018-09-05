@@ -1,6 +1,6 @@
 pkgname=pycharm-community-eap
-_buildver=182.4323.5
-_pkgver=2018.2.3
+_buildver=183.2153.9
+_pkgver=2018.3
 pkgver=$_pkgver.$_buildver
 pkgrel=1
 epoch=1
@@ -35,7 +35,7 @@ build() {
 package() {
 	cd "$srcdir"
 	mkdir -p "$pkgdir/opt/$pkgname"
-	cp -R "$srcdir/pycharm-community-$_pkgver/"* "$pkgdir/opt/$pkgname"
+	cp -R "$srcdir/pycharm-community-$_buildver/"* "$pkgdir/opt/$pkgname"
 	
 	local vmoptfile=pycharm64
 	if [[ $CARCH = 'i686' ]]; then
