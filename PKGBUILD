@@ -21,16 +21,16 @@ license=('custom')
 makedepends=('jdk7-openjdk' 'ccache' 'cpio' 'unzip' 'zip' 'gcc7'
              'libxrender' 'libxtst' 'fontconfig' 'libcups' 'alsa-lib')
 _url_src=http://hg.openjdk.java.net/shenandoah/jdk8u
-_last_update=20180725
+_last_update=20180905
 declare -g -A _repo_versions=(
-    [jdk8u]=90b7e0f4f9a4
-    [corba]=53cca1228345
-    [hotspot]=90ead13709c0
-    [jdk]=e9cec57ebc22
-    [jaxws]=9b184a26e260
-    [jaxp]=d9feb209c2c2
-    [langtools]=237e527ccd62
-    [nashorn]=66f1a77ea0a1
+    [jdk8u]=abfdf545dc36
+    [corba]=79a3151ebf00
+    [hotspot]=4f75ec139b16
+    [jdk]=2a6d6dfe0a5f
+    [jaxws]=987a27eef8e6
+    [jaxp]=34889baf492b
+    [langtools]=da3019ae4eed
+    [nashorn]=67f49e0ffa83
 )
 pkgver=${_java_ver}.u${_jdk_update}_${_last_update}_hotspot${_repo_versions[hotspot]}
 source=("jdk8u-${_repo_versions[jdk8u]}.tar.gz::${_url_src}/archive/${_repo_versions[jdk8u]}.tar.gz"
@@ -42,14 +42,14 @@ source=("jdk8u-${_repo_versions[jdk8u]}.tar.gz::${_url_src}/archive/${_repo_vers
         "langtools-${_repo_versions[langtools]}.tar.gz::${_url_src}/langtools/archive/${_repo_versions[langtools]}.tar.gz"
         "nashorn-${_repo_versions[nashorn]}.tar.gz::${_url_src}/nashorn/archive/${_repo_versions[nashorn]}.tar.gz")
 
-sha256sums=('d2fb1fc814536dd77b4fee6730382656ce6fedf78d536306109e1e257a2c3799'
-            '69265d60d74eace306140718a2b2bbad59ed0dcbec8bb3b129f20f50301453ac'
-            '95f99ceea6edf543e7d7483bb81405561624632e27223f0fb9f4cae243f1087b'
-            '1f394de0df11fc403dad489f2bfe626ab62fd8f0e4023441f93633d3183a7497'
-            'ca2bee1afee5770bb932f65d1c47bb965b4f755771ed7dd90b2330d8a57c0296'
-            'e72a301bad45899a4f62800f5af556272e54069ae2ecca8fd60f569dd8abbc76'
-            '7b59da48906fed5ff96c72b1925c218b6908d9bb50e57164a6a7c18b174a79b3'
-            '7b3a5476637e4cd3ff1b65e40a948951d676a51f4b4498ec8f727aa263d7882a')
+sha256sums=('9c9309a92f603eba3b638baa8dcbdc66666565b131e377b0be5540ecd330a9af'
+            '67ac5b1049249af5c8caafbe4ab0e415650fccdca9f05dffdb83f735be4ec6c9'
+            'aab5837c1dd47909dc3ae71e7ef2112ea433fa0c7d71ad4062df3d30d93d8b82'
+            '95eba6158e909edee8f49a8cb79db3c3b4807402acd35a01a15bf6d508959d55'
+            '172ac7cf908de094ab6eeda11c26e5c20fca6b909cbe81c2b141968b990b6a55'
+            'd096661e36ea4bdc1dac008330955774ef76aa8c90002eef465cfd686edd1c22'
+            '007372f11297b99f90b1a1928e12f728e0d6549ac5fdb1f46496b9bb840841a2'
+            '5e6030ad51e4afa155c72da399cf3c785744b32150eb5c91e6cc7b557c11f551')
 
 case "${CARCH}" in
   'x86_64') _JARCH=amd64 ; _DOC_ARCH=x86_64 ;;
