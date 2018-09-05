@@ -5,7 +5,7 @@ Wants=systemd-network-wait-online.service
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/addrwatch -o /var/lib/addrwatch/%i.dat %i
+ExecStart=/usr/bin/addrwatch -q -o /var/lib/addrwatch/%i.dat %i
 
 [Install]
 WantedBy=multi-user.target
