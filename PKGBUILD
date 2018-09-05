@@ -14,13 +14,12 @@ depends=('gnunet' 'nodejs')
 makedepends=('npm')
 options=('!strip')
 source=("git+https://gnunet.org/git/${_appname}.git"
-	"${_appname}.desktop"
 	"${_appname}.sh"
 	"${_appname}.service")
 md5sums=('SKIP'
-	'b40bd45fc9487145b06d50d2bf075ef0'
 	'e936e4485fc403707a7f9a8ec003221c'
 	'7da568705f440c4a3022bf5e18d31349')
+install="${_appname}.install"
 
 pkgver() {
 
@@ -60,7 +59,6 @@ package() {
 	cp -r "${srcdir}/${_appname}/"* "${pkgdir}/usr/share/${_appname}/"
 	install -Dm755 "${srcdir}/${_appname}.sh" "${pkgdir}/usr/bin/${_appname}"
 	install -Dm0644 "${srcdir}/${_appname}.service" "${pkgdir}/usr/lib/systemd/system/${_appname}.service"
-	install -Dm644 "${srcdir}/${_appname}.desktop" "${pkgdir}/usr/share/applications/${_appname}.desktop"
 
 }
 

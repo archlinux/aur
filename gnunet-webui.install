@@ -1,0 +1,9 @@
+post_install() {
+
+	echo
+	echo 'In order to use GNUnet WebUI, start or enable gnunet-webui.service, then open'
+	echo 'your browser and go to http://localhost:4200.'
+	echo
+
+}
+
