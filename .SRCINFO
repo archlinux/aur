@@ -1,7 +1,7 @@
 pkgbase = python-niftynet
-	pkgdesc = An open-source CNNs platform for research in medical image analysis and image-guided therapy
+	pkgdesc = An open-source CNNs platform for research in medical image analysis
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://niftynet.io/
 	arch = x86_64
 	license = apache

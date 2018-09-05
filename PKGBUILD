@@ -2,8 +2,8 @@
 _pkgname=NiftyNet
 pkgname=python-niftynet
 pkgver=0.2.2
-pkgrel=1
-pkgdesc='An open-source CNNs platform for research in medical image analysis and image-guided therapy'
+pkgrel=2
+pkgdesc='An open-source CNNs platform for research in medical image analysis'
 arch=('x86_64')
 url='http://niftynet.io/'
 license=('apache')
