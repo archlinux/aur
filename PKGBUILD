@@ -3,7 +3,7 @@
 # Maintainer: Steven Allen <steven@stebalien.com>
 
 pkgname=rust-nightly-bin
-pkgver=1.28.0_2018.06.10
+pkgver=1.30.0_2018.09.04
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Fast, concurrent, safe. The Rust programming language and its package manager, Cargo.'
@@ -11,7 +11,7 @@ url='https://www.rust-lang.org/'
 license=('MIT' 'Apache' 'custom')
 provides=('rust' 'rust-nightly' 'cargo' 'cargo-nightly' 'rust-docs')
 conflicts=('rust' 'rust-git' 'rust-nightly' 'cargo-nightly-bin' 'cargo' 'cargo-git' 'cargo-nightly' 'cargo-nightly-bin' 'rust-docs')
-depends=('gcc-libs' 'zlib' 'sh')
+depends=('gcc-libs' 'llvm-svn' 'zlib' 'sh')
 source=("rust-nightly-${pkgver}-${CARCH}-unknown-linux-gnu.tar.gz::https://static.rust-lang.org/dist/rust-nightly-${CARCH}-unknown-linux-gnu.tar.gz"
 )
 
@@ -31,7 +31,9 @@ package() {
     ./install.sh \
         --disable-ldconfig \
         --destdir="${pkgdir}" \
-        --prefix=/usr/
+        --prefix=/usr/ \
+        --components=rustc,cargo,rls-preview,clippy-preview,rustfmt-preview,rust-std-x86_64-unknown-linux-gnu,rust-docs,rust-analysis-x86_64-unknown-linux-gnu
+
 
     install -dm755 "${pkgdir}/usr/share/bash-completion/"
     mv "${pkgdir}/usr/etc/bash_completion.d/" "${pkgdir}/usr/share/bash-completion/completions/"
@@ -44,7 +46,8 @@ package() {
 
     # Remove cruft.
     rm "${pkgdir}/usr/lib/rustlib/"{manifest-*,install.log,uninstall.sh,components,rust-installer-version}
-
+    #This is where the dependency on llvm svn pops up
+    rm  $pkgdir/usr/lib/libLLVM-8svn.so
     # Remove duplicate .so libraries and symlink to them.
     # https://github.com/rust-lang/rust/issues/37971
     find "${pkgdir}/usr/lib/rustlib/" -name "*.so" -exec ln -rfs -t "${pkgdir}/usr/lib/" {} +
