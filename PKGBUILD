@@ -1,6 +1,6 @@
-# Maintainer: Daniël de Kok <me@danieldk.eu>
+# Maintainer: Daniel Biehl <dbiehl@live.de>
+# Contributor: Daniël de Kok <me@danieldk.eu>
 # Contributor: Brendan Abolivier <brendan@cozycloud.cc>
-# Contributor: Daniel Biehl <dbiehl@live.de>
 pkgname=xqilla
 pkgver=2.3.4
 pkgrel=3
