@@ -1,0 +1,10 @@
+[Unit]
+Description=Java-based Web interface for GNUnet
+
+[Service]
+User=gnunet
+Type=simple
+ExecStart=/usr/bin/gnunet-webui
+
+[Install]
+WantedBy=multi-user.target

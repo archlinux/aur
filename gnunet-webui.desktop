@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=GNUnet WebUI
+Comment=Java-based Web interface for GNUnet
+Exec=gnunet-webui
+Icon=server
+Categories=AudioVideo;Video;Network;P2P;
+Type=Application

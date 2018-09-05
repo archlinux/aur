@@ -1,0 +1,67 @@
+# Maintainer: grufo <madmurphy333 AT gmail DOT com>
+
+pkgname='gnunet-webui-git'
+_appname='gnunet-webui'
+pkgver='r18.560b397'
+pkgrel=1
+pkgdesc="Java-based Web interface for GNUnet"
+arch=('x86_64')
+url="https://gnunet.org/gnunetwebui"
+license=('GPL')
+provides=("${_appname}")
+conflicts=("${_appname}")
+depends=('gnunet' 'nodejs')
+makedepends=('npm')
+options=('!strip')
+source=("git+https://gnunet.org/git/${_appname}.git"
+	"${_appname}.desktop"
+	"${_appname}.sh"
+	"${_appname}.service")
+md5sums=('SKIP'
+	'b40bd45fc9487145b06d50d2bf075ef0'
+	'e936e4485fc403707a7f9a8ec003221c'
+	'7da568705f440c4a3022bf5e18d31349')
+
+pkgver() {
+
+	cd "${_appname}"
+
+	printf "'r%s.%s'" \
+		"$(git rev-list --count HEAD)" \
+		"$(git rev-parse --short HEAD)"
+
+}
+
+prepare() {
+
+	cd "${srcdir}/${_appname}"
+
+	npm install --user root
+
+	# Remove all references to `${srcdir}`
+	msg 'Removing all references to $srcdir...'
+	find "${srcdir}/${_appname}" -type f -print0 | xargs -0 sed -i "s|${srcdir}/${_appname}|/usr/share/${_appname}|g"
+
+}
+
+build() {
+
+	cd "${srcdir}/${_appname}"
+
+	"${srcdir}/${_appname}/node_modules/.bin/ng" build
+
+}
+
+package() {
+
+	cd "${srcdir}/${_appname}"
+
+	install -dm755 "${pkgdir}/usr/share/${_appname}"
+	cp -r "${srcdir}/${_appname}/"* "${pkgdir}/usr/share/${_appname}/"
+	install -Dm755 "${srcdir}/${_appname}.sh" "${pkgdir}/usr/bin/${_appname}"
+	install -Dm0644 "${srcdir}/${_appname}.service" "${pkgdir}/usr/lib/systemd/system/${_appname}.service"
+	install -Dm644 "${srcdir}/${_appname}.desktop" "${pkgdir}/usr/share/applications/${_appname}.desktop"
+
+}
+
+

@@ -1,0 +1,24 @@
+pkgbase = gnunet-webui-git
+	pkgdesc = Java-based Web interface for GNUnet
+	pkgver = r18.560b397
+	pkgrel = 1
+	url = https://gnunet.org/gnunetwebui
+	arch = x86_64
+	license = GPL
+	makedepends = npm
+	depends = gnunet
+	depends = nodejs
+	provides = gnunet-webui
+	conflicts = gnunet-webui
+	options = !strip
+	source = git+https://gnunet.org/git/gnunet-webui.git
+	source = gnunet-webui.desktop
+	source = gnunet-webui.sh
+	source = gnunet-webui.service
+	md5sums = SKIP
+	md5sums = b40bd45fc9487145b06d50d2bf075ef0
+	md5sums = e936e4485fc403707a7f9a8ec003221c
+	md5sums = 7da568705f440c4a3022bf5e18d31349
+
+pkgname = gnunet-webui-git
+
