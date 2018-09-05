@@ -3,6 +3,7 @@ pkgbase = scite
 	pkgver = 4.1.0
 	pkgrel = 1
 	url = http://www.scintilla.org/SciTE.html
+	arch = i686
 	arch = x86_64
 	license = custom:scite
 	depends = gtk3
