@@ -2,7 +2,7 @@
 pkgbase=lyluatex-git
 pkgname=$pkgbase
 pkgver=r654.1008ec7
-pkgrel=2
+pkgrel=3
 pkgdesc="Include lilypond scores in LuaLaTeX files."
 url=https://github.com/jperon/lyluatex
 arch=("any")
@@ -10,7 +10,6 @@ license=("MIT")
 makedepends=("git")
 depends=("texlive-core" "texlive-fontsextra" "texlive-bin" "texlive-formatsextra" "texlive-latexextra" "lilypond")
 conflicts=("texlive-music")
-install=lyluatex.install
 source=("$pkgbase::git+https://github.com/jperon/lyluatex.git")
 sha256sums=("SKIP")
 
