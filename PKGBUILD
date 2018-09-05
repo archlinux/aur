@@ -5,7 +5,7 @@
 # Contributor: Roberto Alsina <ralsina@kde.org>
 
 pkgname=afnix
-pkgver=2.8.2
+pkgver=2.8.3
 pkgrel=1
 pkgdesc='Multi-threaded functional programming language'
 arch=('x86_64')
@@ -13,12 +13,11 @@ url='http://www.afnix.org'
 license=('custom')
 depends=('ncurses' 'gcc-libs')
 source=("${url}/ftp/afnix-src-${pkgver}.tgz")
-sha256sums=('95d9cec042b6803ca4ce08508998c7dcd7a06e713666b99555e4d52b194a6f6e')
+sha256sums=('a038260b8a2e1bd4eb8cf97510a04f483fa037465eec974ee6a035d46b380f21')
 
 build() {
   cd "${pkgname}-src-${pkgver}"
 
-  sed -i 's/-Werror//' cnf/mak/afnix-gcc8.mak
   ./cnf/bin/afnix-setup -o --prefix="${pkgdir}/usr"
   make
 }
