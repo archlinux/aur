@@ -1,0 +1,16 @@
+pkgbase = emacs-flyspell-correct-git
+	pkgdesc = Correcting words with flyspell via custom interface.
+	pkgver = r70.0486912
+	pkgrel = 1
+	url = https://github.com/d12frosted/flyspell-correct
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	provides = emacs-flyspell-correct
+	conflicts = emacs-flyspell-correct
+	source = git+https://github.com/d12frosted/flyspell-correct.git
+	sha256sums = SKIP
+
+pkgname = emacs-flyspell-correct-git
+
