@@ -1,11 +1,12 @@
-# Maintainer: Filipe Laíns (FFY00) <filipe.lains@gmail.com>
+# Maintainer: Filipe Laíns (FFY00) <lains@archlinux.org>
 # Contributor: Iru Cai <mytbk920423@gmail.com>
 # Contributor: Alexander Hunziker <alex.hunziker@gmail.com>
 # Contributor: Alessio Biancalana <dottorblaster@gmail.com>
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=gegl-git
-pkgver=0.4.4.177
+_pkgname=${pkgname%-git}
+pkgver=0.4.9.d77fd17e0
 pkgrel=1
 pkgdesc="Graph based image processing framework"
 arch=('i686' 'x86_64')
@@ -23,37 +24,44 @@ optdepends=('openexr: for using the openexr plugin'
             'libraw: raw plugin'
             'suitesparse: matting-levin plugin'
             'lua: lua plugin')
-provides=("gegl=${pkgver}")
+provides=("gegl=$pkgver")
 conflicts=('gegl')
 options=(!libtool)
-source=(git+https://gitlab.gnome.org/GNOME/gegl.git)
-md5sums=('SKIP')
+source=('git+https://gitlab.gnome.org/GNOME/gegl.git')
+sha512sums=('SKIP')
 
-_gitroot=GITURL
-_gitname=gegl
+pkgver() {
+  cd $_pkgname
+
+  echo $(cat configure.ac | grep '^m4_define(\[gegl_.*_version\], \[[0-9]\])' | tr -d '\n' | sed -e 's|^m4_define(\[gegl_major_version\], \[||' -e 's|\])m4_define(\[gegl_minor_version\], \[|.|' -e 's|\])m4_define(\[gegl_micro_version\], \[|.|' -e 's|\])|\n|').$(git log --pretty=format:'%h' -n 1)
+}
 
 prepare() {
-	cd "$srcdir"/$_gitname
+  cd $_pkgname
 
-	autoreconf -if
-	./configure --prefix=/usr --with-sdl --with-openexr --with-librsvg \
-		--with-libavformat --with-jasper --disable-docs \
-		--enable-workshop \
-		--enable-introspection=yes
+  autoreconf -if
+
+  ./configure \
+  	--prefix=/usr \
+  	--with-sdl \
+  	--with-openexr \
+  	--with-librsvg \
+  	--with-libavformat \
+  	--with-jasper \
+  	--disable-docs \
+  	--enable-workshop \
+  	--enable-introspection=yes
 }
 
 build() {
-	cd "$srcdir"/$_gitname
+  cd $_pkgname
 
-	make
+  make
 }
 
 package() {
-	cd "$srcdir"/$_gitname
-	make DESTDIR="$pkgdir" install
+  cd $_pkgname
+
+  make DESTDIR="$pkgdir" install
 }
 
-pkgver() {
-	cd "$srcdir"/$_gitname
-	git describe --always | sed -e 's/GEGL_//' -e 's/-g.*$//' -e 's/[_-]/./g'
-}
