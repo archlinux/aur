@@ -8,7 +8,7 @@ arch=("any")
 url="https://github.com/GetWellNetwork/bjarkan"
 license=("BSD")
 makedepends=("python-setuptools")
-depends=("python" "python-systemd" "python-dbus")
+depends=("python" "python-systemd" "python-dbus" "python-gobject")
 source=("https://github.com/GetWellNetwork/bjarkan/archive/v${pkgver}.tar.gz")
 
 build() {
