@@ -1,0 +1,16 @@
+pkgbase = emacs-tablist-git
+	pkgdesc = Extended tabulated-list-mode
+	pkgver = r42.c834a84
+	pkgrel = 1
+	url = https://github.com/politza/tablist
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	provides = emacs-tablist
+	conflicts = emacs-tablist
+	source = git+https://github.com/politza/tablist.git
+	sha256sums = SKIP
+
+pkgname = emacs-tablist-git
+
