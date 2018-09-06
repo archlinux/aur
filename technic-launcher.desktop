@@ -6,4 +6,4 @@ Exec=technic-launcher
 Icon=technic-launcher
 Terminal=false
 Type=Application
-Categories=Game;AudioVideo;
+Categories=Game

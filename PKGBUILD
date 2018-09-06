@@ -3,7 +3,7 @@
 
 pkgname=minecraft-technic-launcher
 pkgver=4.360
-pkgrel=2
+pkgrel=3
 pkgdesc='Choose from thousands of community-made Minecraft modpacks available on the Technic Platform.'
 arch=('any')
 license=('custom')
