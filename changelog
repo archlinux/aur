@@ -1,3 +1,12 @@
+2018-09-06 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 3.3.0.6-1:
+    Added games cache to owns command in order to speed up consecutive checks. Cache is transparent and automatically invalidated on new licenses added to the account.
+    AcceptGifts setting now also handles steam wallet gift cards (ref: #885)
+    Temporarily removed UDP protocol from default SteamProtocols due to issue #882.
+    Fixed POST /Api/Bot IPC API endpoint with non-default PasswordFormat that could emit wrong SteamPassword field in generated config.
+    Fixed ASF still replying to commands when being run with OnlineStatus of 0 due to wrong logic of Steam network.
+    IPC GUI bugfixes, new features and other improvements.
+    Usual amount of other code improvements, optimizations and bugfixes.
 2018-08-12 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 3.3.0.3-1:
   [!] Added support for new Steam chat.
