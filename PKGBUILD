@@ -7,12 +7,12 @@
 _pkgname=slic3r-prusa3d
 pkgname=${_pkgname}
 pkgver=1.41.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Updated Slic3r by Prusa3D with many bugfixes and new features"
 arch=('i686' 'x86_64')
 url="http://www.prusa3d.com/"
 license=('AGPL3')
-depends=('boost-libs' 'curl' 'glew' 'intel-tbb' 'perl' 'perl-class-accessor' 'perl-libwww' 'perl-encode-locale'
+depends=('boost-libs' 'curl' 'glew' 'intel-tbb' 'nlopt' 'perl' 'perl-class-accessor' 'perl-libwww' 'perl-encode-locale'
          'perl-moo' 'perl-opengl' 'perl-sub-quote' 'perl-wx-glcanvas')
 makedepends=('boost' 'cmake' 'eigen' 'expat' 'git' 'gtest' 'leatherman' 'perl-alien-wxwidgets' 'perl-devel-checklib' 'perl-extutils-cppguess'
              'perl-extutils-typemaps-default' 'perl-module-build-withxspp' 'qhull')
