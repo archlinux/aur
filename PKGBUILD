@@ -2,7 +2,7 @@
 
 pkgname=python2-pyscard
 pkgver=1.9.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Smartcard module for Python."
 arch=('i686' 'x86_64')
 url="http://www.gemalto.com/"
