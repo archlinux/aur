@@ -1,7 +1,8 @@
 # Maintainer: Filipe Laíns (FFY00) <filipe.lains@gmail.com>
 # Contributor: mawcomw <mawcomw@gmail.com>
+
 pkgname=redmine
-pkgver=3.4.5
+pkgver=3.4.6
 pkgrel=0
 pkgdesc="A flexible project management web application. Written using the Ruby on Rails, it is cross-platform and cross-database."
 arch=('any')
