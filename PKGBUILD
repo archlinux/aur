@@ -33,7 +33,7 @@ sha512sums=('SKIP')
 pkgver() {
   cd $_pkgname
 
-  echo $(cat configure.ac | grep '^m4_define(\[gegl_.*_version\], \[[0-9]\])' | tr -d '\n' | sed -e 's|^m4_define(\[gegl_major_version\], \[||' -e 's|\])m4_define(\[gegl_minor_version\], \[|.|' -e 's|\])m4_define(\[gegl_micro_version\], \[|.|' -e 's|\])|\n|').$(git log --pretty=format:'%h' -n 1)
+  echo $(cat configure.ac | grep '^m4_define(\[gegl_.*_version\], \[[0-9]*\])' | tr -d '\n' | sed -e 's|^m4_define(\[gegl_major_version\], \[||' -e 's|\])m4_define(\[gegl_minor_version\], \[|.|' -e 's|\])m4_define(\[gegl_micro_version\], \[|.|' -e 's|\])|\n|').$(git log --pretty=format:'%h' -n 1)
 }
 
 prepare() {
