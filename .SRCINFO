@@ -11,6 +11,8 @@ pkgbase = arcint-gtk-theme-git
 	makedepends = optipng
 	makedepends = inkscape
 	optdepends = gnome-themes-standard: for gtk2 themes
+	provides = arcint-gtk-theme
+	conflicts = arcint-gtk-theme
 
 pkgname = arcint-gtk-theme-git
 
