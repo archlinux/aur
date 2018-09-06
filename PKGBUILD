@@ -7,17 +7,15 @@
 pkgname=libcurl-openssl-1.0
 pkgver=7.60.0
 pkgrel=1
-pkgdesc='An URL retrieval library (without versioned symbols, built against openssl-1.0)'
-arch=('i686' 'x86_64')
-url='https://curl.haxx.se'
+pkgdesc="An URL retrieval library (without versioned symbols, built against openssl-1.0)"
+arch=('x86_64')
+url="https://curl.haxx.se"
 license=('MIT')
-depends=('curl' 'glibc' 'krb5' 'openssl-1.0' 'libpsl' 'zlib' 'libssh2.so')
+depends=('ca-certificates' 'curl' 'krb5' 'libssh2' 'openssl-1.0' 'zlib' 'libpsl')
 provides=('libcurl-openssl-1.0.so')
 options=('strip')
-source=("https://curl.haxx.se/download/curl-${pkgver}.tar.gz"{,.asc})
-validpgpkeys=('27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2') # Daniel Stenberg
-sha512sums=('f25c8d79be87bfbcae93cd200b319f664efd62aea8f1a94bb441407a9e1489bd935943cfd1347f3b252f94b9a0286da8aeb04b407a2ba95ebfa717dff80e891b'
-            'SKIP')
+source=("https://curl.haxx.se/download/curl-${pkgver}.tar.gz")
+sha512sums=('f25c8d79be87bfbcae93cd200b319f664efd62aea8f1a94bb441407a9e1489bd935943cfd1347f3b252f94b9a0286da8aeb04b407a2ba95ebfa717dff80e891b')
 
 build() {
   cd curl-${pkgver}
@@ -25,7 +23,7 @@ build() {
   export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
 
   ./configure \
-    --prefix='/usr' \
+    --prefix=/usr \
     --disable-ldap \
     --disable-ldaps \
     --disable-manual \
@@ -33,8 +31,8 @@ build() {
     --enable-ipv6 \
     --enable-threaded-resolver \
     --with-gssapi \
-    --with-random='/dev/urandom' \
-    --with-ca-bundle='/etc/ssl/certs/ca-certificates.crt'
+    --with-random=/dev/urandom \
+    --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt
 
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make -C lib

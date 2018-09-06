@@ -3,23 +3,19 @@ pkgbase = libcurl-openssl-1.0
 	pkgver = 7.60.0
 	pkgrel = 1
 	url = https://curl.haxx.se
-	arch = i686
 	arch = x86_64
 	license = MIT
+	depends = ca-certificates
 	depends = curl
-	depends = glibc
 	depends = krb5
+	depends = libssh2
 	depends = openssl-1.0
-	depends = libpsl
 	depends = zlib
-	depends = libssh2.so
+	depends = libpsl
 	provides = libcurl-openssl-1.0.so
 	options = strip
 	source = https://curl.haxx.se/download/curl-7.60.0.tar.gz
-	source = https://curl.haxx.se/download/curl-7.60.0.tar.gz.asc
-	validpgpkeys = 27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2
 	sha512sums = f25c8d79be87bfbcae93cd200b319f664efd62aea8f1a94bb441407a9e1489bd935943cfd1347f3b252f94b9a0286da8aeb04b407a2ba95ebfa717dff80e891b
-	sha512sums = SKIP
 
 pkgname = libcurl-openssl-1.0
 
