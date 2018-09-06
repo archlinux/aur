@@ -28,6 +28,11 @@ build() {
   make
 }
 
+check () {
+  cd "${srcdir}/${_realname}-${pkgver}"
+  make test
+}
+
 package() {
   cd "${srcdir}${_realname}-${pkgver}"
 
