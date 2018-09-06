@@ -1,0 +1,28 @@
+pkgbase = ros-melodic-moveit-ros-planning
+	pkgdesc = ROS - Planning components of MoveIt that use ROS.
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = http://moveit.ros.org
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-moveit-core
+	makedepends = ros-melodic-pluginlib
+	makedepends = ros-melodic-dynamic-reconfigure
+	makedepends = ros-melodic-moveit-ros-perception
+	makedepends = ros-melodic-actionlib
+	makedepends = ros-melodic-angles
+	makedepends = ros-melodic-catkin
+	makedepends = eigen
+	depends = ros-melodic-moveit-core
+	depends = ros-melodic-pluginlib
+	depends = ros-melodic-dynamic-reconfigure
+	depends = ros-melodic-moveit-ros-perception
+	depends = ros-melodic-actionlib
+	depends = ros-melodic-angles
+	source = ros-melodic-moveit-ros-planning-0.10.1-0.tar.gz::https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_ros_planning/0.10.1-0.tar.gz
+	sha256sums = e818d70a2dc0efa4a8c36a7ad51fe1046ece6d95392fca9090432c49454e264b
+
+pkgname = ros-melodic-moveit-ros-planning
+
