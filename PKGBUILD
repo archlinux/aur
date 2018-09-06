@@ -19,7 +19,7 @@ export ANDROID_MINIMUM_PLATFORM
 _pkgname=android-qt5
 pkgname=${_pkgname}-${android_arch}
 pkgver=5.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt 5 for Android"
 arch=('x86_64')
 url='https://www.qt.io'
@@ -63,13 +63,18 @@ options=('!strip'
          'staticlibs'
          '!emptydirs')
 _pkgfqn="qt-everywhere-src-${pkgver}"
-source=("http://download.qt-project.org/official_releases/qt/${pkgver:0:4}/${pkgver}/single/${_pkgfqn}.tar.xz")
-md5sums=('c6f0854d7de7bde80cfd8cc85bb7152b')
+source=("http://download.qt-project.org/official_releases/qt/${pkgver:0:4}/${pkgver}/single/${_pkgfqn}.tar.xz"
+        "0034-Fix-build-error-related-to-glibc-2.28-and-stat.patch")
+md5sums=('c6f0854d7de7bde80cfd8cc85bb7152b'
+         'SKIP')
 
 prepare() {
     cd ${_pkgfqn}
 
     # Platform specific patches.
+
+    # Apply patch for glibc 2.28
+    patch -Np1 -i "../0034-Fix-build-error-related-to-glibc-2.28-and-stat.patch"
 }
 
 get_last() {
