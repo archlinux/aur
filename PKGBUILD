@@ -3,7 +3,7 @@
 
 pkgname=scudcloud
 pkgver=1.65
-pkgrel=2
+pkgrel=3
 epoch=2
 pkgdesc="A Slack client for Linux"
 arch=('any')
@@ -16,10 +16,18 @@ groups=('messaging')
 source=("https://github.com/raelgc/scudcloud/archive/v${pkgver}.tar.gz")
 sha256sums=('1b5420a868a37e181655e9799a3d1fcbbc0b0112349c44ac3d7936b626334791')
 
+prepare() {
+    # We don't need the Ubuntu-specific icons
+    sed -i "s;'ubuntu-mono-.*light', ;;g" "$pkgname-$pkgver"/setup.py
+}
+
+build() {
+    cd "$pkgname-$pkgver"
+    python setup.py build
+}
+
 package() {
-    cd "${pkgname}-${pkgver}"
-    python setup.py install --prefix=/usr --root="${pkgdir}"
-    mkdir -p "$pkgdir"/usr/share/licenses/scudcloud
-    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/scudcloud/LICENSE
-    rm -rf "${pkgdir}/usr/share/icons/ubuntu"**
+    cd "$pkgname-$pkgver"
+    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
