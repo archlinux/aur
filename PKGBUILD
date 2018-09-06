@@ -37,6 +37,7 @@ package() {
   install -Dm644 "$srcdir"/$pkgname/libexec/* -t "$pkgdir/opt/um/libexec"
   install -Dm644 "$srcdir"/$pkgname/doc/man1/*.gz -t "$pkgdir/usr/share/man/man1"
   install -Dm644 "$srcdir"/$pkgname/templates/* -t "$pkgdir/opt/um/templates"
+  install -Dm644 "$srcdir"/$pkgname/LICENSE -t "$pkgdir/usr/share/licenses/um-git"
 
   mkdir -p "$pkgdir/usr/bin"
   cd "$pkgdir/usr/bin/"
