@@ -1,0 +1,18 @@
+pkgbase = ros-melodic-moveit-plugins
+	pkgdesc = ROS - Metapackage for moveit plugins.
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = http://moveit.ros.org
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	depends = ros-melodic-moveit-ros-control-interface
+	depends = ros-melodic-moveit-fake-controller-manager
+	depends = ros-melodic-moveit-simple-controller-manager
+	source = ros-melodic-moveit-plugins-0.10.1-0.tar.gz::https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_plugins/0.10.1-0.tar.gz
+	sha256sums = ca58e6aae3bfc106a0b0490d71509a9646b5888ab790a60fb7d282a9938de108
+
+pkgname = ros-melodic-moveit-plugins
+
