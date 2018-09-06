@@ -2,14 +2,14 @@
 
 _name=certainly
 pkgname="$_name-bin"
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="The easiest way to create self-signed certificates. Ever."
 url='https://github.com/passcod/certainly'
 arch=('x86_64')
 license=('Artistic-2.0')
 source=("$url/releases/download/v$pkgver/$_name-v$pkgver-x86_64-unknown-linux-gnu.tar.xz")
-sha512sums=('69adffeb1d01c2239e8c10eb284d807ba21bfe3ea527aebae9675cf52ea3a61966a41ad4fa0d9ceb1c46603236fcf44e2b5c1440be0b010b9faf06a9d5edd1f8')
+sha512sums=('6d8f5ebe5d989f3a3885fb846eafb0e83dd08704ec8738c66ba497463cc72fee2ce29f123026adbeaa400c68dabd0d298d4f2e62ee8291b6c8e721d8b15a83ad')
 
 package() {
   cd "$_name-v$pkgver-x86_64-unknown-linux-gnu"
