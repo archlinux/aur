@@ -1,0 +1,31 @@
+pkgbase = ros-melodic-moveit-planners-ompl
+	pkgdesc = ROS - MoveIt interface to OMPL.
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = http://moveit.ros.org
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-moveit-core
+	makedepends = ros-melodic-ompl
+	makedepends = ros-melodic-tf
+	makedepends = ros-melodic-pluginlib
+	makedepends = ros-melodic-roscpp
+	makedepends = ros-melodic-dynamic-reconfigure
+	makedepends = ros-melodic-moveit-ros-planning
+	makedepends = ros-melodic-eigen-conversions
+	makedepends = ros-melodic-catkin
+	depends = ros-melodic-moveit-core
+	depends = ros-melodic-ompl
+	depends = ros-melodic-tf
+	depends = ros-melodic-pluginlib
+	depends = ros-melodic-roscpp
+	depends = ros-melodic-dynamic-reconfigure
+	depends = ros-melodic-moveit-ros-planning
+	depends = ros-melodic-eigen-conversions
+	source = ros-melodic-moveit-planners-ompl-0.10.1-0.tar.gz::https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_planners_ompl/0.10.1-0.tar.gz
+	sha256sums = d7e52fb1629e821e88592fcc549c93cc2d18ff66f94e561ac8bc5b7d7d75b810
+
+pkgname = ros-melodic-moveit-planners-ompl
+
