@@ -5,7 +5,7 @@
 
 pkgname=fsharp
 pkgver=4.5_pre
-pkgrel=1
+pkgrel=2
 pkgdesc="The F# Compiler, Core Library & Tools (F# Software Foundation Repository)"
 arch=('any')
 url="http://fsharp.org/"
