@@ -1,41 +1,45 @@
-# Maintainer: Filipe Laíns (FFY00) <filipe.lains@gmail.com>
+# Maintainer: Filipe Laíns (FFY00) <lains@archlinux.org>
 # Contributor: Alexander Hunziker <alex.hunziker@gmail.com>
 # Contributor: Alessio Biancalana <dottorblaster@gmail.com>
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
+
 pkgname=babl-git
-pkgver=0.1.52.23.ga0dba44
+pkgver=0.1.57.ed42383
 pkgrel=1
 pkgdesc="Dynamic, any to any, pixel format translation library."
 arch=('i686' 'x86_64')
-url="http://www.gegl.org/babl"
+url="http://www.babl.org/babl"
 license=('LGPL3')
 depends=('glibc')
-makedepends=('git') # meson
+makedepends=('git')
 provides=("babl=${pkgver}")
 conflicts=('babl')
-source=(git+https://gitlab.gnome.org/GNOME/babl)
-md5sums=('SKIP')
+source=('git+https://gitlab.gnome.org/GNOME/babl')
+sha512sums=('SKIP')
 
-_gitroot=GITURL
-_gitname=babl
+pkgver() {
+  cd $_pkgname
+
+  echo $(cat configure.ac | grep '^m4_define(\[babl_.*_version\], \[[0-9]*\])' | tr -d '\n' | sed -e 's|^m4_define(\[babl_major_version\], \[||' -e 's|\])m4_define(\[babl_minor_version\], \[|.|' -e 's|\])m4_define(\[babl_micro_version\], \[|.|' -e 's|\])|\n|').$(git log --pretty=format:'%h' -n 1)
+}
 
 prepare() {
-	cd "$srcdir"/$_gitname
-	autoreconf -fi
-	./configure --prefix=/usr
+  cd $_pkgname
+
+  autoreconf -fi
+
+  ./configure --prefix=/usr
 }
 
 build() {
-	cd "$srcdir"/$_gitname
-	make
+  cd $_pkgname
+
+  make
 }
 
 package() {
-	cd "$srcdir"/$_gitname
-	make DESTDIR="$pkgdir" install
+  cd $_pkgname
+
+  make DESTDIR="$pkgdir" install
 }
 
-pkgver() {
-	cd "$srcdir"/babl
-	git describe --always | sed -e 's/BABL_//g' -e 's/[_-]/./g'
-}
