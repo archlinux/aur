@@ -1,0 +1,25 @@
+pkgbase = fediplay-git
+	pkgdesc = A Mastodon client that automatically plays your friends' music (Git version)
+	pkgver = r56.1f18295
+	pkgrel = 1
+	url = https://github.com/zigg/fediplay
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = ffmpeg
+	depends = python
+	depends = python-appdirs
+	depends = python-click
+	depends = python-cssselect
+	depends = python-dotenv
+	depends = python-lxml
+	depends = python-mastodon
+	depends = youtube-dl
+	source = git+https://github.com/zigg/fediplay
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = 37598db0448cfa858461cfa4d36a17b39dcb45ea7957e4dc81cdbddd0ef6cdc3
+
+pkgname = fediplay-git
+
