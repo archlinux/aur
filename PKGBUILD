@@ -3,7 +3,7 @@
 
 pkgname=creeper-world3
 pkgver=212
-pkgrel=2
+pkgrel=3
 pkgdesc="This is what happens when cellular automata takes over a strategy simulation."
 arch=('x86_64')
 url="http://knucklecracker.com/creeperworld3/cw3.php"
@@ -29,11 +29,9 @@ package() {
     find "${pkgdir}/opt/${pkgname}/CW3_Data" -type f -exec chmod 644 {} \;
 
     # Install Binaries/Launchers
-    install -dm755 "$pkgdir/usr/bin"
     install -Dm755 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
 
     # Desktop Integration
-    install -dm755 "$pkgdir/usr/share/pixmaps/"
     install -Dm644 CW3_Data/Resources/UnityPlayer.png \
         "$pkgdir/usr/share/pixmaps/$pkgname.png"
     install -Dm644 "$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
