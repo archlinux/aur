@@ -3,12 +3,13 @@
 pkgname=lib32-libcap-ng
 _pkgbasename=libcap-ng
 pkgver=0.7.9
-pkgrel=2
-pkgdesc='Library making programming with POSIX capabilities easier than traditional libcap'
+pkgrel=3
+pkgdesc='Library making programming with POSIX capabilities easier than traditional libcap (32-bit)'
 url='http://people.redhat.com/sgrubb/libcap-ng/'
 arch=('x86_64')
 license=('LGPL2.1')
-depends=('lib32-glibc' 'lib32-gcc-libs' 'libcap-ng')
+depends=('lib32-glibc' 'libcap-ng')
+makedepends=('lib32-gcc-libs')
 source=(${_pkgbasename}-${pkgver}.tar.gz::https://github.com/stevegrubb/libcap-ng/archive/v${pkgver}.tar.gz)
 sha512sums=('eae256b57af37c1170ee372ab9a6af927826a7b7b92f00c68010afbb32893fc265414ecf28f52e912a41609b4ca5e1295363db88dac9c60ea04bd20a1dfeef83')
 
