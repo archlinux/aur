@@ -1,0 +1,90 @@
+--- a/adapter.c
++++ b/adapter.c
+@@ -1562,6 +1562,7 @@ void set_adapters_delsys(char *o)
+ 
+ }
+ 
++#ifdef DMX_SET_SOURCE
+ void set_adapter_dmxsource(char *o)
+ {
+ 	int i, j, la, st, end, fd;
+@@ -1601,6 +1602,7 @@ void set_adapter_dmxsource(char *o)
+ 	}
+ 
+ }
++#endif
+ 
+ int delsys_match(adapter *ad, int del_sys)
+ {
+--- a/adapter.h
++++ b/adapter.h
+@@ -136,7 +136,9 @@ void set_diseqc_adapters(char *o);
+ void set_diseqc_timing(char *o);
+ void set_slave_adapters(char *o);
+ void set_nopm_adapters(char *o);
++#ifdef DMX_SET_SOURCE
+ void set_adapter_dmxsource(char *o);
++#endif
+ void reset_pids_type(int aid, int clear_pat);
+ void reset_ecm_type_for_key(int aid, int key);
+ int delsys_match(adapter *ad, int del_sys);
+--- a/dvb.c
++++ b/dvb.c
+@@ -353,6 +353,7 @@ int dvb_open_device(adapter *ad)
+ 	else
+ 		LOG("DVR buffer set to %d bytes", opts.dvr_buffer);
+ 
++#ifdef DMX_SET_SOURCE
+ 	if (ad->dmx_source >= 0)
+ 	{
+ 		sprintf(buf, "/dev/dvb/adapter%d/demux%d", ad->pa, ad->fn);
+@@ -370,6 +371,7 @@ int dvb_open_device(adapter *ad)
+ 		close(ad->dmx);
+ 		ad->dmx = -1;	
+ 	}
++#endif
+ 
+ 	return 0;
+ }
+--- a/minisatip.c
++++ b/minisatip.c
+@@ -123,7 +123,9 @@ static const struct option long_options[] =
+ #define DOCUMENTROOT_OPT 'R'
+ #define XML_OPT 'X'
+ #define THREADS_OPT 'T'
++#ifdef DMX_SET_SOURCE
+ #define DMXSOURCE_OPT '9'
++#endif
+ #define LNB_OPT 'L'
+ #define DROP_ENCRYPTED_OPT 'E'
+ #define UDPPORT_OPT 'P'
+@@ -243,9 +245,15 @@ Help\n\
+ 	* eg: --delsys 1:dvbt,2:dvbs\n\
+ 	- specifies adapter 1 as a DVBT device, adapter 2 as DVB-S, which overrides the system detection of the adapter\n\
+ \n\
++"
++#ifdef DMX_SET_SOURCE
++			"\
+ * --dmx-source ADAPTER1:FRONTENDX - specifies the frontend number specified as argument for DMX_SET_SOURCE \n\
+ 	* eg: --dmx-source 0:1 - enables DMX_SET_SOURCE ioctl call with parameter 1 for adapter 0\n\
+ \n\
++"
++#endif
++			"\
+ * -e --enable-adapters list_of_enabled adapters: enable only specified adapters\n\
+ 	* eg: -e 0-2,5,7 (no spaces between parameters)\n\
+ 	- keep in mind that the first adapters are the local ones starting with 0 after that are the satip adapters \n\
+@@ -538,11 +546,13 @@ void set_options(int argc, char *argv[])
+ 			break;
+ 		}
+ 
++#ifdef DMX_SET_SOURCE
+ 		case DMXSOURCE_OPT:
+ 		{
+ 			set_adapter_dmxsource(optarg);
+ 			break;
+ 		}
++#endif
+ 
+ 		case UNICABLE_OPT:
+ 		{
