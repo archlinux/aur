@@ -1,12 +1,14 @@
 # Maintainer: bb010g <me@bb010g.com>
 pkgname=fediplay-git
 pkgver=r56.1f18295
-pkgrel=1
+pkgrel=2
 pkgdesc="A Mastodon client that automatically plays your friends' music (Git version)"
 arch=(any)
 url="https://github.com/zigg/${pkgname%-git}"
 license=('MIT')
-depends=(ffmpeg python python-{appdirs,click,cssselect,dotenv,lxml,mastodon} youtube-dl)
+depends=(ffmpeg python
+         python-{appdirs,click,cssselect,dotenv,keyring,lxml,mastodon}
+         youtube-dl)
 makedepends=(git python-setuptools)
 source=("git+https://github.com/zigg/${pkgname%-git}"
         "LICENSE")
