@@ -4,6 +4,7 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=babl-git
+_pkgname=${pkgname%-git}
 pkgver=0.1.57.ed42383
 pkgrel=1
 pkgdesc="Dynamic, any to any, pixel format translation library."
