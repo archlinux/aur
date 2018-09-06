@@ -1,0 +1,16 @@
+pkgbase = emacs-auto-dictionary-git
+	pkgdesc = Emacs: automatic dictionary switcher for flyspell
+	pkgver = r49.b364e08
+	pkgrel = 1
+	url = https://github.com/nschum/auto-dictionary-mode
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	provides = emacs-auto-dictionary
+	conflicts = emacs-auto-dictionary
+	source = git+https://github.com/nschum/auto-dictionary-mode.git
+	sha256sums = SKIP
+
+pkgname = emacs-auto-dictionary-git
+
