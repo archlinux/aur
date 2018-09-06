@@ -2,7 +2,7 @@
 
 pkgname=bjarkan
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A bluez 5 compatible command line utility and python 3 library "
 arch=("any")
 url="https://github.com/GetWellNetwork/bjarkan"
