@@ -16,9 +16,9 @@ license=('GPL')
 depends=('glibc')
 makedepends=('mercurial')
 source=("hg+https://linuxtv.org/hg/dvb-apps/#revision=${_hgrev}"
-        "https://gitweb.gentoo.org/repo/gentoo.git/plain/media-tv/linuxtv-dvb-apps/files/linuxtv-dvb-apps-1.1.1.20100223-perl526.patch"
-        "https://git.busybox.net/buildroot/plain/package/dvb-apps/0003-handle-static-shared-only-build.patch"
-        "https://git.busybox.net/buildroot/plain/package/dvb-apps/0005-utils-fix-build-with-kernel-headers-4.14.patch")
+        'https://gitweb.gentoo.org/repo/gentoo.git/plain/media-tv/linuxtv-dvb-apps/files/linuxtv-dvb-apps-1.1.1.20100223-perl526.patch'
+        'https://git.busybox.net/buildroot/plain/package/dvb-apps/0003-handle-static-shared-only-build.patch'
+        'https://git.busybox.net/buildroot/plain/package/dvb-apps/0005-utils-fix-build-with-kernel-headers-4.14.patch')
 sha256sums=('SKIP'
             '4460c9c8f4474fcc776b8d02d1c527584a81dbc84b69db9ed9a8b43ca24d49c5'
             'ea5915194b00b7275eaac6902f9a4aa07a61c17e14010b9ea453c0e53c57612a'
