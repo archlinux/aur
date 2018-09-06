@@ -1,0 +1,13 @@
+pkgbase = rapl-read-ryzen-git
+	pkgdesc = Quick & dirty hack to read AMD Ryzen rapl counters
+	pkgver = r5.30636f0
+	pkgrel = 1
+	url = https://github.com/djselbeck/rapl-read-ryzen
+	arch = any
+	license = GPL
+	makedepends = git
+	source = rapl-read-ryzen-git::git+https://github.com/djselbeck/rapl-read-ryzen
+	md5sums = SKIP
+
+pkgname = rapl-read-ryzen-git
+
