@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=FAForever ICE Beta
+Comment=Supreme Commander Forged Alliance game lobby
+Exec=python /usr/lib/python3.7/site-packages/fafclientice/src
+Icon=/usr/lib/python3.7/site-packages/fafclientice/res/window_icon.png
+Terminal=false
+Categories=Game;
+Path=/usr/lib/python3.7/site-packages/fafclientice
