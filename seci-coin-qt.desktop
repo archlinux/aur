@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Seci
+Comment=Seci P2P Cryptocurrency
+Exec=/usr/bin/seci-coin-qt
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/seci-coin128.png
+MimeType=x-scheme-handler/seci-coin;
+Categories=Office;
+Name[en_US]=seci-coin-qt.desktop

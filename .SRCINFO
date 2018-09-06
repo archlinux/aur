@@ -1,0 +1,27 @@
+pkgbase = seci-coin-qt
+	pkgdesc = Cryptocurrency wallet(QT)
+	pkgver = 1.15.1.1
+	pkgrel = 1
+	url = https://seci.io/
+	install = seci-coin-qt.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	makedepends = qt5-tools
+	depends = boost-libs
+	depends = qt5-base
+	depends = qrencode
+	depends = miniupnpc
+	depends = db4.8
+	depends = zeromq
+	depends = protobuf
+	depends = libevent
+	conflicts = seci-coin
+	source = seci-coin-qt::git+https://github.com/Seci-Coin/Seci.git#tag=1.15.1.1
+	source = seci-coin-qt.desktop
+	sha256sums = SKIP
+	sha256sums = 11458f169fb1a43c20b998fa3cfce49519721e8cfe0b1d4976870326a594e8cf
+
+pkgname = seci-coin-qt
+
