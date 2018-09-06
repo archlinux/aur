@@ -1,0 +1,16 @@
+pkgbase = ros-melodic-moveit-planners
+	pkgdesc = ROS - Metapacakge that installs all available planners for MoveIt.
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = http://moveit.ros.org
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	depends = ros-melodic-moveit-planners-ompl
+	source = ros-melodic-moveit-planners-0.10.1-0.tar.gz::https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_planners/0.10.1-0.tar.gz
+	sha256sums = 23a6025381b6179c67946565ce8332f2d442aa36c83273799c5df82350fb8978
+
+pkgname = ros-melodic-moveit-planners
+
