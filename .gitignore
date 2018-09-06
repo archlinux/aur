@@ -1,0 +1,4 @@
+pkg/
+build/
+rpmlint-git/
+*.pkg.tar.xz
