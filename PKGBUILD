@@ -3,7 +3,7 @@
 
 pkgname=clickhouse
 pkgver=18.10.3
-pkgrel=1
+pkgrel=2
 pkgdesc='An open-source column-oriented database management system that allows generating analytical data reports in real time'
 arch=('i686' 'x86_64')
 url='https://clickhouse.yandex/'
@@ -71,6 +71,7 @@ package() {
   cp dbms/programs/clickhouse $pkgdir/usr/bin/clickhouse-client
   cp dbms/programs/client/clickhouse-client.xml $pkgdir/etc/clickhouse-client/config.xml
   cp dbms/libclickhouse.so.18 $pkgdir/usr/lib/libclickhouse.so.$pkgver
+  cp contrib/zlib-ng/libz-ng.so.1 $pkgdir/usr/lib/libz-ng.so.1
   sed -e 's:/opt/clickhouse:/var/lib/clickhouse:g' -i $pkgdir/etc/clickhouse-server/config.xml
   sed -e '/listen_host/s%::<%::1<%' -i $pkgdir/etc/clickhouse-server/config.xml
   cp debian/clickhouse-server.service $pkgdir/usr/lib/systemd/system
