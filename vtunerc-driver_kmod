@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 load() {
-	if [ `lsmod | grep -c vtunerc` -eq 0 ]; then
+	if [ $(lsmod | grep -c vtunerc) -eq 0 ]; then
 		modprobe vtunerc
 	fi
 }
@@ -14,9 +14,9 @@ unload() {
 
 case "$1" in
 	load)
-	load
+		load
 	;;
 	unload)
-	unload
+		unload
 	;;
 esac

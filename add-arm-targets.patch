@@ -1,0 +1,170 @@
+--- a/Make.config.sample
++++ b/Make.config.sample
+@@ -27,4 +27,16 @@ CC-sh4=/opt/STM/STLinux-2.3/devkit/sh4/bin/sh4-linux-gcc
+ # define the CC for target arm
+ CC-arm=arm-none-linux-gnueabi-gcc
+ STRIP-arm=arm-none-linux-gnueabi-strip
+-INCLUDE-arm=-I/home/hop/nessie/2.6.22/include
++INCLUDE-arm=
++
++CC-armv6h=arm-unknown-linux-gnueabihf-gcc
++STRIP-armv6h=arm-unknown-linux-gnueabihf-strip
++INCLUDE-armv6h=
++
++CC-armv7h=arm-unknown-linux-gnueabihf-gcc
++STRIP-armv7h=arm-unknown-linux-gnueabihf-strip
++INCLUDE-armv7h=
++
++CC-aarch64=aarch64-unknown-linux-gnu-gcc
++STRIP-aarch64=aarch64-unknown-linux-gnu-strip
++INCLUDE-aarch64=
+--- a/Makefile
++++ b/Makefile
+@@ -1,35 +1,43 @@
+ -include ../../Make.config
+ 
+-all: i686 x86_64 mipsel ppc db2 sh4 mipsel15 ipkg
++all: i686 x86_64 mipsel ppc db2 sh4 mipsel15 ipkg arm armv6h armv7h aarch64
+ 
+ i686:
+ 	$(MAKE) -C build/i686 all
+-	
++
+ x86_64:
+ 	$(MAKE) -C build/x86_64 all
+-	
+-ppc: 	
++
++ppc:
+ 	$(MAKE) -C build/ppc
+ 
+-db2: 	
++db2:
+ 	$(MAKE) -C build/db2
+ 
+-mipsel: 	
++mipsel:
+ 	$(MAKE) -C build/mipsel all
+ 
+-mipsel15:         
++mipsel15:
+ 	$(MAKE) -C build/mipsel15
+-	
+-sh4:         
++
++sh4:
+ 	$(MAKE) -C build/sh4 all
+ 
+ ipkg:   mipsel
+ 	$(MAKE) -C pkgs ipkg
+-    	
+-arm:         
+-	$(MAKE) -C build/arm
+ 
+-	
++arm:
++	$(MAKE) -C build/arm all
++
++armv6h:
++	$(MAKE) -C build/armv6h all
++
++armv7h:
++	$(MAKE) -C build/armv7h all
++
++aarch64:
++	$(MAKE) -C build/aarch64 all
++
+ clean:
+ 	$(MAKE) -C build/i686 clean
+ 	$(MAKE) -C build/x86_64 clean
+@@ -40,3 +48,6 @@ clean:
+ 	$(MAKE) -C build/mipsel15 clean
+ 	$(MAKE) -C pkgs clean
+ 	$(MAKE) -C build/arm clean
++	$(MAKE) -C build/armv6h clean
++	$(MAKE) -C build/armv7h clean
++	$(MAKE) -C build/aarch64 clean
+--- /dev/null
++++ b/build/aarch64/Makefile
+@@ -0,0 +1,18 @@
++ARCH=aarch64
++-include ../../Make.config
++
++CC=$(CC-$(ARCH))
++CXX=$(CXX-$(ARCH))
++CFLAGS=-fpic -DHAVE_DVB_API_VERSION=5
++LDFLAGS=-lpthread -lrt
++DRIVER=vtuner-dvb-3
++STRIP=$(STRIP-$(ARCH))
++
++all: ../../dist/$(ARCH)/vtunerd.$(ARCH) ../../dist/$(ARCH)/vtunerc.$(ARCH)
++	$(STRIP) ../../dist/$(ARCH)/vtunerd.$(ARCH)
++	$(STRIP) ../../dist/$(ARCH)/vtunerc.$(ARCH)
++
++-include ../../Make.rules
++
++vtuner-dvb-3.o: ../../vtuner-dvb-3.c ../../vtuner-dvb-3.h
++	$(CC) $(CFLAGS) -c -o vtuner-dvb-3.o ../../vtuner-dvb-3.c
+--- a/build/arm/Makefile
++++ b/build/arm/Makefile
+@@ -8,11 +8,11 @@ LDFLAGS=-lpthread -lrt
+ DRIVER=vtuner-dvb-3
+ STRIP=$(STRIP-$(ARCH))
+ 
+-all: ../../dist/$(ARCH)/vtunerd.$(ARCH) 
+-	$(STRIP) ../../dist/$(ARCH)/vtunerd.$(ARCH) 
+-	
++all: ../../dist/$(ARCH)/vtunerd.$(ARCH) ../../dist/$(ARCH)/vtunerc.$(ARCH)
++	$(STRIP) ../../dist/$(ARCH)/vtunerd.$(ARCH)
++	$(STRIP) ../../dist/$(ARCH)/vtunerc.$(ARCH)
++
+ -include ../../Make.rules
+-	
+-vtuner-dvb-3.o: ../../vtuner-dvb-3.c ../../vtuner-dvb-3.h 
+-	$(CC) $(CFLAGS) -c -o vtuner-dvb-3.o ../../vtuner-dvb-3.c
+ 
++vtuner-dvb-3.o: ../../vtuner-dvb-3.c ../../vtuner-dvb-3.h
++	$(CC) $(CFLAGS) -c -o vtuner-dvb-3.o ../../vtuner-dvb-3.c
+--- /dev/null
++++ b/build/armv6h/Makefile
+@@ -0,0 +1,18 @@
++ARCH=armv6h
++-include ../../Make.config
++
++CC=$(CC-$(ARCH))
++CXX=$(CXX-$(ARCH))
++CFLAGS=-fpic -DHAVE_DVB_API_VERSION=5
++LDFLAGS=-lpthread -lrt
++DRIVER=vtuner-dvb-3
++STRIP=$(STRIP-$(ARCH))
++
++all: ../../dist/$(ARCH)/vtunerd.$(ARCH) ../../dist/$(ARCH)/vtunerc.$(ARCH)
++	$(STRIP) ../../dist/$(ARCH)/vtunerd.$(ARCH)
++	$(STRIP) ../../dist/$(ARCH)/vtunerc.$(ARCH)
++
++-include ../../Make.rules
++
++vtuner-dvb-3.o: ../../vtuner-dvb-3.c ../../vtuner-dvb-3.h
++	$(CC) $(CFLAGS) -c -o vtuner-dvb-3.o ../../vtuner-dvb-3.c
+--- /dev/null
++++ b/build/armv7h/Makefile
+@@ -0,0 +1,19 @@
++ARCH=armv7h
++-include ../../Make.config
++
++CC=$(CC-$(ARCH))
++CXX=$(CXX-$(ARCH))
++CFLAGS=-fpic -DHAVE_DVB_API_VERSION=5
++LDFLAGS=-lpthread -lrt
++DRIVER=vtuner-dvb-3
++STRIP=$(STRIP-$(ARCH))
++
++all: ../../dist/$(ARCH)/vtunerd.$(ARCH) ../../dist/$(ARCH)/vtunerc.$(ARCH)
++	$(STRIP) ../../dist/$(ARCH)/vtunerd.$(ARCH)
++	$(STRIP) ../../dist/$(ARCH)/vtunerc.$(ARCH)
++
++-include ../../Make.rules
++
++vtuner-dvb-3.o: ../../vtuner-dvb-3.c ../../vtuner-dvb-3.h
++	$(CC) $(CFLAGS) -c -o vtuner-dvb-3.o ../../vtuner-dvb-3.c
++

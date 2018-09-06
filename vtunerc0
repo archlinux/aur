@@ -1,1 +1,16 @@
+# Required:
+#  -f dvb_type[:tuner_mask] : tuner type to ask (dvb_type=S,S2,T,C) and optional
+#                             tuner group mask (every bit represents one tuner
+#                             group)
+# Optional:
+#  -n hostname[:port]       : do direct request for tuner (multicast by default)
+#  -r rbuf_size             : receive buffer size
+#  -x max_delay             : max delay or 0
+#  -v level                 : verbosity level (1:err,2:warn,3:info,4:debug)
+#
+# Please omit (this option is set from this file sufix number in service unit,
+# mentioned only as reference):
+#  -d dev_name              : path to controlling device (usually /dev/vtunerc0)
+#
+
 CLIENT_ARGS=""

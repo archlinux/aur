@@ -1,1 +1,10 @@
+# Optional:
+#  -d devs_list             : adapter[:frontend[:demux[:dvr]]] (default is 0:0:0:0)
+#  -g group_mask            : listen for group members requests only
+#  -l ip_address            : listen on local ip address (default is on ALL)
+#  -p port_number           : listen on local port (default is 39305)
+#  -u ip_address:port_number: send message log to udp://ip_address:port_number
+#  -v level                 : verbosity level (1:err,2:warn,3:info,4:debug)
+#
+
 SERVER_ARGS=""
