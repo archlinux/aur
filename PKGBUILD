@@ -5,7 +5,7 @@
 pkgbase=linux-bld
 pkgname=(linux-bld linux-bld-headers)
 _kernelname=-bld
-pkgver=4.18.5
+pkgver=4.18.6
 archlinux_linux_version=$pkgver-arch1
 _srcname=linux-4.18
 _pkgver2=${_srcname#*-}.0
@@ -16,7 +16,7 @@ license=('GPL2')
 makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 _BLDpatch="BLD-${_srcname#*-}.patch"
-arch_config_trunk=1b6a5cb5698273f17644c79b1298512deb6b6b68
+arch_config_trunk=dc17ca9fd5727da8cd0e448207dbdba6d472f3ff
 
 # Arch additional patches
 #arch_patches=(
@@ -33,11 +33,11 @@ source=("https://git.archlinux.org/linux.git/snapshot/linux-${archlinux_linux_ve
         )
 for _patch in ${arch_patches[@]} ; do source+=("${_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${_patch}?h=packages/linux&id=${arch_config_trunk}") ; done
 
-sha256sums=('df2af506692641488fdb1189d08d66f24104764d97455735358a9909ea9e44e6'
+sha256sums=('ea34220ce07b2038e48b1e0a77286db475745a2638f62f7587b2a490aae61606'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             '5b51a1eacb3e00b304ca54d31f467ec1fb15fdfce93f1c62963d087bf753e812'
-            'bb700544d499a92dab141a218cc1eac62fdff0b67682748cb827035269c02a55'
+            '83d768f19193f6795b8159d81c6775b9f62f4994f2a0d8371ac243e7b0890db8'
             '53c93e1b5c05a749a976ed4702daeab5524326d779c157f8878308125de2e68b')
 
 validpgpkeys=(
