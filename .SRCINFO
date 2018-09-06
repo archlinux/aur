@@ -1,0 +1,16 @@
+pkgbase = ros-melodic-fcl
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/flexible-collision-library
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = boost
+	depends = libccd
+	depends = ros-melodic-octomap
+	source = https://github.com/flexible-collision-library/fcl/archive/0.5.0.tar.gz
+	sha256sums = 8e6c19720e77024c1fbff5a912d81e8f28004208864607447bc90a31f18fb41a
+
+pkgname = ros-melodic-fcl
+
