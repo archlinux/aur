@@ -1,0 +1,25 @@
+pkgbase = ros-melodic-moveit-ros-warehouse
+	pkgdesc = ROS - Components of MoveIt connecting to MongoDB.
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = http://moveit.ros.org
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-tf
+	makedepends = ros-melodic-warehouse-ros
+	makedepends = ros-melodic-roscpp
+	makedepends = ros-melodic-moveit-ros-planning
+	makedepends = ros-melodic-rosconsole
+	makedepends = ros-melodic-catkin
+	depends = ros-melodic-warehouse-ros
+	depends = ros-melodic-roscpp
+	depends = ros-melodic-moveit-ros-planning
+	depends = ros-melodic-rosconsole
+	depends = ros-melodic-tf
+	source = ros-melodic-moveit-ros-warehouse-0.10.1-0.tar.gz::https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_ros_warehouse/0.10.1-0.tar.gz
+	sha256sums = e30186d8deb48b4a5b6b2a533dc29c8210c24f4f8d346f09fb5fe35f5587b5e3
+
+pkgname = ros-melodic-moveit-ros-warehouse
+
