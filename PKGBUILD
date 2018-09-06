@@ -8,10 +8,10 @@ pkgrel=2
 pkgdesc="Generic interface to CRC algorithms"
 arch=('i686' 'x86_64')
 license=('PerlArtistic')
-url="http://search.cpan.org/dist/Digest-CRC/"
+url="https://metacpan.org/release/Digest-CRC"
 depends=('perl>=5.10.0')
 options=(!emptydirs)
-source=("http://search.cpan.org/CPAN/authors/id/O/OL/OLIMAUL/$_realname-${pkgver}.tar.gz")
+source=("https://cpan.metacpan.org/authors/id/O/OL/OLIMAUL/$_realname-${pkgver}.tar.gz")
 sha256sums=('5c5329f37c46eb79835169508583da8767d9839350b69bb2b48ac6f594f70374')
 
 build() {
