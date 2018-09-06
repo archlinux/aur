@@ -17,6 +17,9 @@ sha256sums=('5c5329f37c46eb79835169508583da8767d9839350b69bb2b48ac6f594f70374')
 build() {
   cd $_realname-$pkgver
 
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT='1' PERL_AUTOINSTALL='--skipdeps'
+
   perl Makefile.PL INSTALLDIRS=vendor
 
   make
@@ -24,6 +27,8 @@ build() {
 
 package() {
   cd $_realname-$pkgver
+
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
 
   make install DESTDIR="$pkgdir"
 
