@@ -1,0 +1,19 @@
+pkgbase = saba-git
+	pkgdesc = OpenGL Viewer (OBJ PMD PMX)
+	pkgver = r339.21d1805
+	pkgrel = 1
+	url = https://github.com/benikabocha/saba
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = glfw
+	depends = bullet
+	provides = saba
+	conflicts = saba
+	source = saba::git+https://github.com/benikabocha/saba.git
+	source = saba.patch
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = saba-git
+
