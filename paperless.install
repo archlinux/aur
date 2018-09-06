@@ -1,0 +1,29 @@
+post_install() {
+    echo "Initialize your database by executing"
+    echo "  sudo -u http python /usr/share/webapps/paperless/src/manage.py migrate"
+    echo "Create a super user for your paperless installation"
+    echo "  sudo -u http python /usr/share/webapps/paperless/src/manage.py createsuperuser"
+    echo "Customize the default language that tesseract will attempt to use when parsing documents by setting"
+    echo "  PAPERLESS_OCR_LANGUAGE=TLA-of-your-language"
+    echo "  in /etc/paperless.conf"
+    echo "Install the tesseract language date packages at least for your default language"
+    echo "  pacman -S tesseract-data-TLA-of-your-language"
+    echo "Start/enable paperless webserver and file consumer"
+    echo "  systemctl start paperless-webserver.service"
+    echo "  systemctl start paperless-consumer.service"
+}
+
+post_upgrade() {
+    echo "You should upgrade your database:"
+    echo "  sudo -u http python /usr/share/webapps/paperless/src/manage.py migrate"
+    echo
+    echo "Migration from version 1.x"
+    echo "Copy from the papeless release notes"
+    echo "Encryption isn’t gone, it’s just off for new users. So long as you have PAPERLESS_PASSPHRASE set in"
+    echo "your config or your environment, Paperless should continue to operate as it always has. If"
+    echo "however, you want to drop encryption too, you only need to do two things:"
+    echo "  1: Run ./manage.py migrate && ./manage.py change_storage_type gpg unencrypted. This will go"
+    echo "     through your entire database and Decrypt All The Things."
+    echo "  2: Remove PAPERLESS_PASSPHRASE from your paperless.conf file, or simply stop declaring it in"
+    echo "     your environment."
+}
