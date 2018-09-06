@@ -1,0 +1,17 @@
+pkgbase = qchdman
+	pkgdesc = QMC2's Qt chdman interface. A Qt interface for chdman utility.
+	pkgver = 0.195
+	pkgrel = 1
+	url = http://qmc2.batcom-it.net
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = qt4>=4.8.0
+	depends = mame-tools
+	source = http://www.deb-multimedia.org/pool/main/q/qmc2-dmo/qchdman_0.195-dmo1_amd64.deb
+	source = http://svn.code.sf.net/p/qmc2/code/trunk/tools/qchdman/images/qchdman.png
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = qchdman
+
