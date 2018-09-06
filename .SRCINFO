@@ -1,0 +1,24 @@
+pkgbase = ros-melodic-moveit-ros
+	pkgdesc = ROS - Components of MoveIt that use ROS.
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = http://moveit.ros.org
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	depends = ros-melodic-moveit-ros-planning
+	depends = ros-melodic-moveit-ros-move-group
+	depends = ros-melodic-moveit-ros-warehouse
+	depends = ros-melodic-moveit-ros-planning-interface
+	depends = ros-melodic-moveit-ros-visualization
+	depends = ros-melodic-moveit-ros-robot-interaction
+	depends = ros-melodic-moveit-ros-benchmarks
+	depends = ros-melodic-moveit-ros-manipulation
+	depends = ros-melodic-moveit-ros-perception
+	source = ros-melodic-moveit-ros-0.10.1-0.tar.gz::https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_ros/0.10.1-0.tar.gz
+	sha256sums = 36917ca707e328ec01272a522b9f543c684a1657c5aacebdc5a10453b54442de
+
+pkgname = ros-melodic-moveit-ros
+
