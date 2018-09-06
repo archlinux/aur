@@ -14,8 +14,7 @@ url="http://qmc2.batcom-it.net"
 license=('GPL2')
 depends=('qt4>=4.8.0' 'mame-tools')
 source=("http://www.deb-multimedia.org/pool/main/q/qmc2-dmo/${pkgname}_${pkgver}-dmo1_${_ARCH_}.deb" "http://svn.code.sf.net/p/qmc2/code/trunk/tools/qchdman/images/qchdman.png")
-sha512sums=('SKIP' 
-			'SKIP')
+sha512sums=('SKIP' 'SKIP')
 			
 package(){
 
