@@ -12,7 +12,7 @@ url="http://fsharp.org/"
 license=('MIT')
 depends=('mono' 'msbuild-stable')
 makedepends=(git)
-_commit=32505e2035ebf3ae3267c1eb2afad8800a7106f8  # tags/4.1.35
+_commit=32505e2035ebf3ae3267c1eb2afad8800a7106f8  # tags/4.5_pre
 source=("git+https://github.com/fsharp/fsharp/#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
-  #./autogen.sh --prefix=/usr
+  ../autogen.sh --prefix=/usr
   make
 }
 
