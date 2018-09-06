@@ -1,6 +1,6 @@
 pkgbase = asterisk
 	pkgdesc = A complete PBX solution
-	pkgver = 15.5.0
+	pkgver = 15.6.0
 	pkgrel = 1
 	url = http://www.asterisk.org
 	install = asterisk.install
@@ -141,7 +141,7 @@ pkgbase = asterisk
 	backup = etc/asterisk/voicemail.conf
 	backup = etc/asterisk/vpb.conf
 	backup = etc/asterisk/xmpp.conf
-	source = http://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-15.5.0.tar.gz
+	source = http://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-15.6.0.tar.gz
 	source = asterisk.service
 	source = asterisk.logrotated
 	source = asterisk.tmpfile
