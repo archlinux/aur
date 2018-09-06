@@ -1,12 +1,12 @@
 pkgbase = certainly-bin
 	pkgdesc = The easiest way to create self-signed certificates. Ever.
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/passcod/certainly
 	arch = x86_64
 	license = Artistic-2.0
-	source = https://github.com/passcod/certainly/releases/download/v1.1.0/certainly-v1.1.0-x86_64-unknown-linux-gnu.tar.xz
-	sha512sums = 6d910c3f4fad9ad9cc223e34a27c97b75a53c46ec9ad59f6b4f7ca8eb36afa66b252fc3711b5ccbd85dba08b8702fbe7d4c2f5234ee925764e4ba251e5d3c4d0
+	source = https://github.com/passcod/certainly/releases/download/v1.1.1/certainly-v1.1.1-x86_64-unknown-linux-gnu.tar.xz
+	sha512sums = 69adffeb1d01c2239e8c10eb284d807ba21bfe3ea527aebae9675cf52ea3a61966a41ad4fa0d9ceb1c46603236fcf44e2b5c1440be0b010b9faf06a9d5edd1f8
 
 pkgname = certainly-bin
 
