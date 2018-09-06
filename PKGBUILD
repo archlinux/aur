@@ -14,12 +14,10 @@ provides=(python-pykeepass)
 conflicts=(python-pykeepass)
 source=("git+https://github.com/pschmitt/pykeepass.git"
         "0001-Include-all-package-data.patch"
-        "0001-Add-egg-info.patch"
-        "0001-Strip-out-non-ASCII-characters-on-decrypt.patch")
+        "0001-Add-egg-info.patch")
 sha512sums=('SKIP'
             '01f89906a5350b314f5141c2590bd2d58d48fd4e714bc5c6f9f439be32180e0a20c49516a8c6cee5f56bef1d60187f26c5dca06b668e4b41392a25a523713447'
-            '14eace890f4a1747600fcdad790aa719d908b9b64e8a49368fd5ebca348ad22d8ca8c5b80defd3664cc46e9c25000c984cd506445ed0df0125cc57a4b36fc81e'
-            'bd4501a4c1d420479d289da53f997a496dbe7132e5125526167cdd23d0d606bbecf429cb40bb177b317bb315332f575bcbf2fe47287715e515f4132ac167810f')
+            '14eace890f4a1747600fcdad790aa719d908b9b64e8a49368fd5ebca348ad22d8ca8c5b80defd3664cc46e9c25000c984cd506445ed0df0125cc57a4b36fc81e')
 
 pkgver() {
 	cd "${srcdir}/${_gitname}/"
@@ -31,8 +29,6 @@ prepare() {
         # Don't miss package data
         patch -Np1 -i ../0001-Include-all-package-data.patch
         patch -Np1 -i ../0001-Add-egg-info.patch
-        # XML builder fix
-        patch -Np1 -i ../0001-Strip-out-non-ASCII-characters-on-decrypt.patch
 }
 
 package() {
