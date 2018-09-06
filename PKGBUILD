@@ -1,7 +1,7 @@
 #Maintainer: Dimitris Pappas <mitsakosgr@gmail.com>
 pkgname=minizinc-ide
-pkgver=2.2.0
-pkgrel=2
+pkgver=2.2.1
+pkgrel=1
 pkgdesc="Simple IDE for writing and running MiniZinc models"
 arch=('x86_64')
 url="http://www.minizinc.org/ide/"
@@ -21,8 +21,7 @@ depends=('libpng12'
 
 sha256sums=('b86ef15b8ee1014342a2f38358d7f806a58b900bf1150101b535aecddaa122d1'
             '1b9fa21e25c48e1080eaea2348eb98a45242e045b7ba94fe4723a9b01cbcdb2a'
-	    '822d22dff9946e20aa430704a718067e5e8d634965b21c02f174001984ab7c16')
-
+            'b67678d3c468998e20f080572b39e6140bb73c0671d5fb9be1d969067d28b59b')
 
 package() {
     if [ "${CARCH}" == "i686" ]; then
