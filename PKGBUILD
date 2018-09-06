@@ -3,7 +3,7 @@
 
 pkgname=nextcloud-app-twofactor-gateway
 _pkgname=twofactor_gateway
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Second factor provider using an external messaging gateway (SMS, Telegram, Signal)"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('nextcloud')
 makedepends=()
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nextcloud/twofactor_gateway/archive/v${pkgver}.tar.gz")
-sha512sums=("13a5aff4fcd8c93a270e31a14b46a47c010f35c3b72cfcad6c4b57bf0d322ab62f2bf245aead3acdffc928e3f1b97156d7c721e5d8e1afc8b554681a7fbccf7f")
+sha512sums=("a1d08aabea29403ccc1525c3d38b86609c5fe58976c1f189b61f2710c120dbe628f02fa54cfe6f9e9b72510e73d1a34dc2ae5c40a43c222d0cfbb1fa5b3d7c18")
 
 package() {
   install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
