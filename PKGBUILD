@@ -13,6 +13,11 @@ source=("git+https://github.com/zigg/${pkgname%-git}"
 sha256sums=('SKIP'
             '37598db0448cfa858461cfa4d36a17b39dcb45ea7957e4dc81cdbddd0ef6cdc3')
 
+prepare() {
+    cd "$srcdir/${pkgname%-git}"
+    sed -i 's/py_modules=/packages=/' setup.py
+}
+
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
