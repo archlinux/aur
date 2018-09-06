@@ -1,7 +1,7 @@
 pkgbase = vv-git
 	pkgdesc = Image viewer for 2D, 2D+t, 3D and 3D+t (or 4D) images
 	pkgver = 1.4.0.r271.g24b75af3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.creatis.insa-lyon.fr/rio/vv/
 	arch = x86_64
 	license = BSD
@@ -9,6 +9,8 @@ pkgbase = vv-git
 	depends = insight-toolkit
 	depends = vtk
 	depends = qt5-base
+	depends = gdal
+	depends = unixodbc
 	provides = vv
 	conflicts = vv
 	conflicts = vv-bin

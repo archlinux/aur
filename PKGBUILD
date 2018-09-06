@@ -2,12 +2,12 @@
 _pkgname=vv
 pkgname=${_pkgname}-git
 pkgver=1.4.0.r271.g24b75af3
-pkgrel=2
+pkgrel=3
 pkgdesc='Image viewer for 2D, 2D+t, 3D and 3D+t (or 4D) images'
 arch=('x86_64')
 url='https://www.creatis.insa-lyon.fr/rio/vv/'
 license=('BSD')
-depends=('insight-toolkit' 'vtk' 'qt5-base')
+depends=('insight-toolkit' 'vtk' 'qt5-base' 'gdal' 'unixodbc')
 provides=('vv')
 conflicts=('vv' 'vv-bin')
 makedepends=('cmake')
