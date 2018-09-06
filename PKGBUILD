@@ -22,7 +22,7 @@ optdepends=('sabnzbd: usenet downloader'
 provides=('sonarr')
 conflicts=('sonarr' 'sonarr-develop')
 
-source=("http://download.sonarr.tv/v3/phantom/${pkgver}/Sonarr.phantom.${pkgver}.linux.tar.gz"
+source=("https://download.sonarr.tv/v3/phantom/${pkgver}/Sonarr.phantom.${pkgver}.linux.tar.gz"
         "sonarr.service"
         "sonarr.sysusers"
         "sonarr.tmpfiles")
