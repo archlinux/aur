@@ -1,6 +1,6 @@
 pkgbase = python-graph-tool-git
 	pkgdesc = A Python module for manipulation and statistical analysis of graphs
-	pkgver = release.2.27.r7.g41bae98c
+	pkgver = 2.27.r7.g41bae98c
 	pkgrel = 1
 	url = https://graph-tool.skewed.de
 	arch = i686

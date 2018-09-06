@@ -3,7 +3,7 @@
 
 _pkgname=python-graph-tool
 pkgname=python-graph-tool-git
-pkgver=release.2.27.r7.g41bae98c
+pkgver=2.27.r7.g41bae98c
 pkgrel=1
 pkgdesc='A Python module for manipulation and statistical analysis of graphs'
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/release\.//'
 }
 
 build() {
