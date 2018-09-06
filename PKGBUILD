@@ -38,6 +38,8 @@ prepare() {
     cd "${srcdir}/${_realname}"
     # disable log in file
     sed -i "s/logfile_log_level:.*/logfile_log_level: 'Off'/g" config.yaml
+    # disable progress
+    sed -i "s/show_progress:.*/show_progress: false/g" config.yaml
 }
 
 package() {
