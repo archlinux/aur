@@ -4,7 +4,7 @@
 # Contributor: Renato Silva <br.renatosilva@gmail.com>
 pkgname=mingw-w64-glib2
 pkgver=2.58.0
-pkgrel=2
+pkgrel=3
 _commit=c138b98e363df8b95c2ee3eac214649b2908ad68 # tags/2.58.0^0
 arch=(any)
 pkgdesc="Low level core library (mingw-w64)"
@@ -57,6 +57,9 @@ build() {
 package() {
   for _arch in ${_architectures}; do
     DESTDIR="${pkgdir}" ninja -C "${srcdir}/glib/build-${_arch}" install
+    
+    #FIXME: Ranlib (isn't meson supposed to do this?)
+    ${_arch}-gcc-ranlib ${pkgdir}/usr/${_arch}/lib/*.a
   done
 }
 
