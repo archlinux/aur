@@ -1,7 +1,7 @@
 # Maintainer: Ruben De Smet <me at rubdos dot be>
 
 pkgname=python2-pyscard
-pkgver=1.9.5
+pkgver=1.9.7
 pkgrel=1
 pkgdesc="Smartcard module for Python."
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="http://www.gemalto.com/"
 license=('LGPL2+')
 depends=('python2')
 source=("pyscard-${pkgver}.tar.gz::http://sourceforge.net/projects/pyscard/files/pyscard/pyscard%20${pkgver}/pyscard-${pkgver}.tar.gz/download")
-sha512sums=('a0c5cd4ccbe8437ffd37afcf95c71f7d1d6c3ae364063cf81907095625d2062da8e7335ebfd15d1f952e8a8d9395e990b351b1308ab07fa456a7ee10658db4f9')
+sha512sums=('339d6efd5fcaa361e30029e736d4e2e98e05acd701c39574b40960b4bcec4782ca9c1d6927cea0b3641c5e6a137d0b9fbd961b58422a4151cfbdfa067dcd4b4a')
 
 build() {
     cd "$srcdir"/pyscard-$pkgver
