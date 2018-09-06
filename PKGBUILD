@@ -3,6 +3,7 @@
 # Contributor: Alexander Hunziker <alex.hunziker@gmail.com>
 # Contributor: Alessio Biancalana <dottorblaster@gmail.com>
 pkgname=gimp-git
+_pkgname=${pkgname%-git}
 epoch=1
 pkgver=2.10.2.1075.gb4c244b839
 pkgrel=1
@@ -14,7 +15,7 @@ depends=('pygtk' 'lcms2>=2.2' 'libwmf>=0.2.8' 'icu' 'enchant'
 	 'libgexiv2' 'librsvg>=2.16.1' 'desktop-file-utils'
 	 'libexif>=0.6.15' 'libart-lgpl>=2.3.19' 'dbus-glib' 'gtk-doc'
 	 'poppler-glib' 'poppler-data' 'openexr>=1.6.1' 'mypaint-brushes>=1.3.0'
-	 'babl>=0.1.47' 'gegl-git>0.4.9' 'cairo>=1.14' 'appstream-glib>=0.7.7')
+	 'babl>=0.1.47' 'gegl>0.4.9' 'cairo>=1.14' 'appstream-glib>=0.7.7')
 makedepends=('git' 'gutenprint>=5.0.0' 'intltool>=0.40.1'
 	     'gnome-python>=2.16.2'
 	     'alsa-lib>=1.0.0' 'libxslt' 'glib-networking')
@@ -27,18 +28,17 @@ provides=('gimp')
 conflicts=('gimp')
 source=('git+https://gitlab.gnome.org/GNOME/gimp.git'
 	'linux.gpl')
-sha256sums=('SKIP'
-	    '1003bbf5fc292d0d63be44562f46506f7b2ca5729770da9d38d3bb2e8a2f36b3')
-
-_gitname=gimp
+sha512sums=('SKIP'
+            '6f33d57f242fa8ce04b65e06a712bd54677306a45b22cb853fbe348089cd4673bd4ed91073074fe067166fe8951c370f8bbbc386783e3ed5170d52e9062666fe')
 
 pkgver() {
-    cd $_gitname
-    git describe --always | sed -e 's/GIMP_//' -e 's/[_-]/./g'
+  cd $_pkgname
+
+  grep '^m4_define(\[gimp_api_version\], \[.*\])' | sed -e 's|m4_define(\[gimp_api_version\], \[||' -e 's|\])||'
 }
 
 prepare() {
-  cd "$srcdir"/$_gitname
+  cd $_pkgname
 
   if [ -f /usr/lib/pkgconfig/libmypaint-1.3.pc ]; then
     sed -i 's/libmypaint /libmypaint-1.3 /g' configure.ac
@@ -46,22 +46,32 @@ prepare() {
 
   PYTHON=/usr/bin/python2 autoreconf -if
 
-  ./configure --prefix=/usr --sysconfdir=/etc \
-		--enable-mp --enable-gimp-console --enable-gimp-remote \
-		--enable-python --with-gif-compression=lzw --with-libcurl \
-		--without-aa --without-hal --without-gvfs --without-gnomevfs
+  ./configure \
+  	--prefix=/usr \
+  	--sysconfdir=/etc \
+  	--enable-mp \
+  	--enable-gimp-console \
+  	--enable-gimp-remote \
+  	--enable-python \
+  	--with-gif-compression=lzw \
+  	--with-libcurl \
+  	--without-aa \
+  	--without-hal \
+  	--without-gvfs \
+  	--without-gnomevfs
 }
 
 build() {
-  cd "$srcdir"/$_gitname
+  cd $_pkgname
 
   PYTHONPATH=/usr/share/glib-2.0:$PYTHONPATH make
 }
 
 package() {
-  cd "$srcdir"/$_gitname
+  cd $_gitname
+
   make DESTDIR="$pkgdir" install
-#  sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|' "$pkgdir"/usr/lib/gimp/2.0/plug-ins/*.py
-  install -D -m644 "$srcdir"/linux.gpl "$pkgdir"/usr/share/gimp/2.0/palettes/Linux.gpl
+
+  install -Dm 644 "$srcdir"/linux.gpl "$pkgdir"/usr/share/gimp/2.0/palettes/Linux.gpl
 }
 
