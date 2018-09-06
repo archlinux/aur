@@ -1,0 +1,28 @@
+pkgbase = ros-melodic-moveit-ros-move-group
+	pkgdesc = ROS - The move_group node for MoveIt.
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = http://moveit.ros.org
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-moveit-core
+	makedepends = ros-melodic-tf
+	makedepends = ros-melodic-pluginlib
+	makedepends = ros-melodic-moveit-ros-planning
+	makedepends = ros-melodic-std-srvs
+	makedepends = ros-melodic-actionlib
+	makedepends = ros-melodic-catkin
+	depends = ros-melodic-moveit-core
+	depends = ros-melodic-tf
+	depends = ros-melodic-pluginlib
+	depends = ros-melodic-moveit-kinematics
+	depends = ros-melodic-moveit-ros-planning
+	depends = ros-melodic-std-srvs
+	depends = ros-melodic-actionlib
+	source = ros-melodic-moveit-ros-move-group-0.10.1-0.tar.gz::https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_ros_move_group/0.10.1-0.tar.gz
+	sha256sums = d2e097c72ac551709740be2db48a7d05200e00dafe36d7380b15031919f1fbed
+
+pkgname = ros-melodic-moveit-ros-move-group
+
