@@ -5,7 +5,7 @@ _pkgver_year=2016
 _pkgver_month=06
 _pkgver_day=27
 pkgver="${_pkgver_year}${_pkgver_month}${_pkgver_day}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Maps for widelands by user 'einstein'."
 arch=('any')
 url="http://wuatek.no-ip.org/~rak/widelands/?page=2"
@@ -30,7 +30,7 @@ build() {
   # Set permissions:
   chmod 644 "${srcdir}/build"/*.wmf
 
-  # Remove maps which are already present in the official stable widelands build:
+  # Remove maps which are already present in the official stable widelands build -- do avoid duplication:
   rm -fv "${srcdir}/build"/{Calvisson,Impact,Wideworld}.wmf
 }
 
@@ -38,8 +38,8 @@ package() {
     cd "${srcdir}/PackageXL"
 
     # Create target directory:
-    install -v -d -m755 "${pkgdir}/usr/share/widelands/maps/"
+    install -v -d -m755 "${pkgdir}/usr/share/widelands/maps/einstein"
 
     # Copy maps to target directory:
-    cp -v "${srcdir}/build"/*.wmf "${pkgdir}/usr/share/widelands/maps"/
+    cp -v "${srcdir}/build"/*.wmf "${pkgdir}/usr/share/widelands/maps/einstein"/
 }

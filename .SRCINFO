@@ -1,7 +1,7 @@
 pkgbase = widelands-maps-einstein
 	pkgdesc = Maps for widelands by user 'einstein'.
 	pkgver = 20160627
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wuatek.no-ip.org/~rak/widelands/?page=2
 	arch = any
 	license = GPL2
