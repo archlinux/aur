@@ -1,0 +1,18 @@
+pkgbase = partytube-git
+	pkgdesc = An internet video jukebox
+	pkgver = r3.b26a3dc
+	pkgrel = 1
+	url = https://github.com/oatberry/partytube
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = go
+	depends = mpv
+	depends = youtube-dl
+	options = !strip
+	options = !emptydirs
+	source = partytube-git::git+https://github.com/oatberry/partytube
+	md5sums = SKIP
+
+pkgname = partytube-git
+
