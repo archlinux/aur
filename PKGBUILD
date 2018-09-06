@@ -5,7 +5,7 @@
 # Contributor: Piotr Balcerowski <piotr@balcerowski.org>
 
 pkgname=libcurl-openssl-1.0
-pkgver=7.60.0
+pkgver=7.61.1
 pkgrel=1
 pkgdesc="An URL retrieval library (without versioned symbols, built against openssl-1.0)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('ca-certificates' 'curl' 'krb5' 'libssh2' 'openssl-1.0' 'zlib' 'libpsl'
 provides=('libcurl-openssl-1.0.so')
 options=('strip')
 source=("https://curl.haxx.se/download/curl-${pkgver}.tar.gz")
-sha512sums=('f25c8d79be87bfbcae93cd200b319f664efd62aea8f1a94bb441407a9e1489bd935943cfd1347f3b252f94b9a0286da8aeb04b407a2ba95ebfa717dff80e891b')
+sha512sums=('6469a3ff27623826bf29a9256ba730ae0a5135c20b27377027554e19ed26be6d0225db0101b60e7f12aa22d55eccaa53f4015414ef5736ee6002c6d780ed513f')
 
 build() {
   cd curl-${pkgver}
