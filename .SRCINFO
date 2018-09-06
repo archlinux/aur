@@ -13,6 +13,7 @@ pkgbase = keepassgtk
 	depends = python-pykeepass-git
 	depends = python-construct
 	depends = gobject-introspection
+	depends = libhandy-git
 	source = git+https://gitlab.gnome.org/World/PasswordSafe.git
 	md5sums = SKIP
 
