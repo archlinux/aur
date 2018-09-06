@@ -3,13 +3,13 @@
 
 pkgname=betaflight-configurator
 pkgver=10.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Crossplatform configuration tool for the Betaflight flight control system"
 arch=('x86_64')
 url="https://github.com/betaflight/betaflight-configurator"
 license=('GPL3')
-depends=('nwjs-bin')
-makedepends=('yarn' 'npm')
+depends=('nwjs>=0.31.0')
+makedepends=('yarn' 'npm' 'git')
 source=("https://github.com/betaflight/betaflight-configurator/archive/$pkgver.zip"
         "$pkgname.sh"
         "$pkgname.desktop")
@@ -21,6 +21,9 @@ install=$pkgname.install
 
 build() {
 	cd $pkgname-$pkgver
+	#The build process saves the git commit hash for analytics
+        git init && git add -A && git commit -m 'Gitinfo workaround'
+        
 	yarn install
 	./node_modules/.bin/gulp dist --linux64
 }

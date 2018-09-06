@@ -1,13 +1,14 @@
 pkgbase = betaflight-configurator
 	pkgdesc = Crossplatform configuration tool for the Betaflight flight control system
 	pkgver = 10.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/betaflight/betaflight-configurator
 	install = betaflight-configurator.install
 	arch = x86_64
 	license = GPL3
 	makedepends = yarn
 	makedepends = npm
+	makedepends = git
 	depends = nwjs-bin
 	options = !strip
 	source = https://github.com/betaflight/betaflight-configurator/archive/10.4.0.zip
