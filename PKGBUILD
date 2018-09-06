@@ -1,9 +1,9 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgbase=yaru
 pkgname=('yaru-sound-theme' 'yaru-gtk-theme' 'yaru-gnome-shell-theme' 'yaru-icon-theme')
-pkgver=18.10.2
-pkgrel=2
-_tag=r18
+pkgver=18.10.3
+pkgrel=1
+_tag=18.10.3
 pkgdesc="Yaru default ubuntu theme"
 arch=(any)
 url="https://github.com/ubuntu/yaru"
