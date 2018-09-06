@@ -1,7 +1,7 @@
 pkgbase = ocaml-base
 	pkgdesc = Full standard library replacement for OCaml
-	pkgver = 0.11.0
-	pkgrel = 3
+	pkgver = 0.11.1
+	pkgrel = 1
 	url = https://github.com/janestreet/base
 	arch = x86_64
 	license = Apache
@@ -9,8 +9,8 @@ pkgbase = ocaml-base
 	depends = ocaml
 	depends = ocaml-sexplib0
 	options = !strip
-	source = https://ocaml.janestreet.com/ocaml-core/v0.11/files/base-v0.11.0.tar.gz
-	md5sums = 787aaa04b25eca106ebb9380a32bad66
+	source = https://github.com/janestreet/base/releases/download/v0.11.1/base-v0.11.1.tbz
+	md5sums = e7e7dc5db3f1fea19d74a31bbd4ac621
 
 pkgname = ocaml-base
 
