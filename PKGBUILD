@@ -5,7 +5,7 @@
 
 pkgname=fsharp
 pkgver=4.5_pre
-pkgrel=2
+pkgrel=3
 pkgdesc="The F# Compiler, Core Library & Tools (F# Software Foundation Repository)"
 arch=('any')
 url="http://fsharp.org/"
@@ -23,11 +23,11 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
-  ../autogen.sh --prefix=/usr
+  prefix=/usr
   make
 }
 
 package() {
   cd "$srcdir/$pkgname"
-  make DESTDIR="$pkgdir" install
+  make prefix="/usr" DESTDIR="$pkgdir" install
 }
