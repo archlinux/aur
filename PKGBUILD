@@ -1,31 +1,40 @@
 # Maintainer: Ainola
 
-pkgname=python-vipaccess
-pkgver=0.3.0
-pkgrel=2
+pkgbase=python-vipaccess
+pkgname=('python-vipaccess' 'python2-vipaccess')
+pkgver=0.9.0
+pkgrel=1
 pkgdesc="A free software implementation of Symantec's VIP Access application and protocol."
 arch=('any')
-url="https://github.com/cyrozap/python-vipaccess"
-license=('apache')
-makedepends=('python-setuptools')
-depends=('python' 'python-crypto' 'python-image-git' 'python-lxml'
-         'python-oath' 'python-qrcode' 'python-requests')
-source=("https://github.com/cyrozap/python-vipaccess/archive/v$pkgver.tar.gz"
-        "check_token.patch")
-sha256sums=('6d1d9a8fe632e2de7213aad5d881d32dd367cac450cdc907e8d0f77589c9c23a'
-            '02bcef0ee35f72da56ac89ce7cc447039d306a564a6551a3f66928066bac66a3')
+url="https://github.com/dlenski/python-vipaccess"
+license=('Apache')
+makedepends=('python-setuptools' 'python-nose' 'python2-setuptools' 'python2-nose')
+source=("https://github.com/dlenski/python-vipaccess/archive/v$pkgver.tar.gz")
+sha256sums=('0a432d5f8bc8920a7adb9624f40ff8bd25a9f326bb1264462ad048faa6758c88')
 
 prepare() {
-  # https://github.com/zecoj/python-vipaccess/commit/34b6ce697429892141ad511d5e8e4b95e40abb98
-  patch -d "python-vipaccess-$pkgver" -p1 < check_token.patch
+    cp -a "$pkgname-$pkgver"{,-py2}
 }
 
 build() {
-  cd "$srcdir/python-vipaccess-$pkgver"
-  python setup.py build
+    cd "$srcdir/python-vipaccess-$pkgver"     && python setup.py build
+    cd "$srcdir/python-vipaccess-$pkgver-py2" && python2 setup.py build
 }
 
-package() {
-  cd "$srcdir/python-vipaccess-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+check() {
+    cd "python-vipaccess-$pkgver"        && python setup.py test
+    cd "../python-vipaccess-$pkgver-py2" && python2 setup.py test
+}
+
+package_python-vipaccess() {
+    depends=('python-pycryptodome' 'python-lxml' 'python-oath' 'python-requests')
+    cd "python-vipaccess-$pkgver"
+    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+}
+package_python2-vipaccess() {
+    depends=('python2-pycryptodome' 'python2-lxml' 'python2-oath' 'python2-requests')
+    cd "python-vipaccess-$pkgver-py2"
+    python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
