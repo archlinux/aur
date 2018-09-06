@@ -1,0 +1,27 @@
+pkgbase = ros-melodic-moveit-ros-robot-interaction
+	pkgdesc = ROS - Components of MoveIt that offer interaction via interactive markers.
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = http://moveit.ros.org
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-tf
+	makedepends = ros-melodic-pluginlib
+	makedepends = ros-melodic-interactive-markers
+	makedepends = ros-melodic-roscpp
+	makedepends = ros-melodic-moveit-ros-planning
+	makedepends = ros-melodic-eigen-conversions
+	makedepends = ros-melodic-catkin
+	depends = ros-melodic-tf
+	depends = ros-melodic-pluginlib
+	depends = ros-melodic-interactive-markers
+	depends = ros-melodic-roscpp
+	depends = ros-melodic-moveit-ros-planning
+	depends = ros-melodic-eigen-conversions
+	source = ros-melodic-moveit-ros-robot-interaction-0.10.1-0.tar.gz::https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_ros_robot_interaction/0.10.1-0.tar.gz
+	sha256sums = 5722b28af2e472cfec2c5093f19ba7c0aab1f41e1e233c8562f9580d1566612b
+
+pkgname = ros-melodic-moveit-ros-robot-interaction
+
