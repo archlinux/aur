@@ -8,7 +8,7 @@
 pkgname=r5u87x
 pkgver=64
 pkgrel=1
-pkgdesc='Userspace module for Ricoh R5U870 OEM cameras.'
+pkgdesc='Userspace module for Ricoh R5U870 OEM cameras'
 arch=('i686' 'x86_64')
 url='https://bitbucket.org/ahixon/r5u87x'
 license=('GPL2')
