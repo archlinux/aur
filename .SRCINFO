@@ -1,6 +1,6 @@
 pkgbase = random
 	pkgdesc = Random number generator.
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://gitlab.com/fakeDeathBRX/random
 	arch = any

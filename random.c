@@ -72,7 +72,6 @@ OPTIONS:\n\
             else printf("%.*f\n", dec,(float)r);
         }
     }
-    printf("min %d | max %d\n",min,max);
     return 0;
 }
 

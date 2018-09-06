@@ -1,7 +1,7 @@
 # Maintainer: fakeD <jose-henrique-ivan@hotmail.com>
 
 pkgname=random
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Random number generator."
 arch=("any")
