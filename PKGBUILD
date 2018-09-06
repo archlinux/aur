@@ -3,11 +3,11 @@
 # All my PKGBUILDs are managed at https://github.com/tmn505/AUR
 
 pkgname='vtunerc-dkms'
-pkgdesc="VTuner client kernel module for virtual DVB's"
+pkgdesc='Kernel module to create virtual DVB devices'
 pkgver=1.4
 pkgrel=5
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
-url="http://code.google.com/p/vtuner"
+url='http://code.google.com/p/vtuner'
 license=('GPL2')
 depends=('linux>=3.3' 'dkms')
 conflicts=('vtuner-module' 'vtuner-module-lts')

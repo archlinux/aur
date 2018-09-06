@@ -1,5 +1,5 @@
 pkgbase = vtunerc-dkms
-	pkgdesc = VTuner client kernel module for virtual DVB's
+	pkgdesc = Kernel module to create virtual DVB devices
 	pkgver = 1.4
 	pkgrel = 5
 	url = http://code.google.com/p/vtuner
