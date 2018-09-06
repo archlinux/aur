@@ -1,0 +1,26 @@
+pkgbase = ros-melodic-moveit-setup-assistant
+	pkgdesc = ROS - Generates a configuration package that makes it easy to use MoveIt!.
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = http://moveit.ros.org
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-srdfdom
+	makedepends = ros-melodic-moveit-core
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-moveit-ros-planning
+	makedepends = ros-melodic-moveit-ros-visualization
+	makedepends = yaml-cpp
+	depends = ros-melodic-srdfdom
+	depends = ros-melodic-xacro
+	depends = ros-melodic-moveit-core
+	depends = ros-melodic-moveit-ros-planning
+	depends = ros-melodic-moveit-ros-visualization
+	depends = yaml-cpp
+	source = ros-melodic-moveit-setup-assistant-0.10.1-0.tar.gz::https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_setup_assistant/0.10.1-0.tar.gz
+	sha256sums = 2742d674768256fdd2a2d8dac0cc17687e070a465dfb88950ca3401c5429b2be
+
+pkgname = ros-melodic-moveit-setup-assistant
+
