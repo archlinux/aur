@@ -1,7 +1,7 @@
 pkgbase = yle-dl
 	pkgdesc = Download video and audio from YLE Areena.
-	pkgver = 2.35
-	pkgrel = 2
+	pkgver = 2.36
+	pkgrel = 1
 	url = http://aajanki.github.io/yle-dl/
 	arch = any
 	license = GPL3
@@ -20,10 +20,10 @@ pkgbase = yle-dl
 	optdepends = php: for downloading live TV and certain news broadcasts
 	optdepends = rtmpdump: for downloading Areena audio streams
 	optdepends = youtube-dl: an alternative downloader backend to AdobeHDS.php
-	provides = yle-dl=2.35
+	provides = yle-dl=2.36
 	conflicts = yle-dl
-	source = yle-dl-2.35.tar.gz::https://github.com/aajanki/yle-dl/archive/2.35.tar.gz
-	md5sums = 56a35002413d3fb8050e7ef94d693c5a
+	source = yle-dl-2.36.tar.gz::https://github.com/aajanki/yle-dl/archive/2.36.tar.gz
+	md5sums = 746caa1b09b1f54c82d49bd2e79aa239
 
 pkgname = yle-dl
 
