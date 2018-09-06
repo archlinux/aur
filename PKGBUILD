@@ -3,7 +3,7 @@
 
 pkgname=scavenger-git
 _realname=scavenger
-pkgver=1.0.0.r80.g2c3f081
+pkgver=1.2.0.r0.ga125c6e
 pkgrel=1
 pkgdesc="Burstcoin Rust miner"
 arch=('x86_64')
@@ -26,7 +26,7 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_realname}"
-    cargo build --release
+    cargo build --release # --features opencl
 }
 
 check() {
