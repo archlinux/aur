@@ -1,0 +1,16 @@
+pkgbase = um-git
+	pkgdesc = utility to create and maintain your own man pages so you can remember how to do stuff
+	pkgver = 3.1.0.r0.g5cfe9f5
+	pkgrel = 1
+	url = https://github.com/sinclairtarget/um
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = ruby-rake
+	depends = ruby
+	depends = pandoc
+	source = um-git::git+https://github.com/sinclairtarget/um
+	md5sums = SKIP
+
+pkgname = um-git
+
