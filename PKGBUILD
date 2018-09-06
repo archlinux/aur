@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Morr <sebastian@morr.cc>
 
 pkgname=timelens-git
-pkgver=.r0.53e84f4
+pkgver=0.1.0.r0.d6e4026
 pkgrel=1
 pkgdesc="Creates visual timelines from video files, to visualize color development. Inspired by the moviebarcode tumblr."
 arch=('i686' 'x86_64')
