@@ -1,15 +1,15 @@
 pkgbase = perl-digest-crc
 	pkgdesc = Generic interface to CRC algorithms
-	pkgver = 0.18
-	pkgrel = 2
+	pkgver = 0.22
+	pkgrel = 1
 	url = https://metacpan.org/release/Digest-CRC
 	arch = i686
 	arch = x86_64
 	license = PerlArtistic
 	depends = perl>=5.10.0
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/O/OL/OLIMAUL/Digest-CRC-0.18.tar.gz
-	sha256sums = 5c5329f37c46eb79835169508583da8767d9839350b69bb2b48ac6f594f70374
+	source = https://cpan.metacpan.org/authors/id/O/OL/OLIMAUL/Digest-CRC-0.22.2.tar.gz
+	sha512sums = 983dfb3a39ca054819906bd67251f0e275a55d4ab1873146a8bbe36dee3d979e67a36f3fc53ce18608873a1c68ba30d6de8c59b58ae57a7e36e6816551752875
 
 pkgname = perl-digest-crc
 
