@@ -7,8 +7,9 @@ pkgname='ros-melodic-octomap'
 pkgver='1.9.0'
 _pkgver_patch=1
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
+options=('staticlibs')
 
 ros_makedepends=()
 makedepends=('cmake' 'ros-build-tools'
