@@ -1,0 +1,16 @@
+pkgbase = emacs-solaire-mode-git
+	pkgdesc = If only certain buffers could be so grossly incandescent.
+	pkgver = r46.abf2ce4
+	pkgrel = 1
+	url = https://github.com/hlissner/emacs-solaire-mode
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	provides = emacs-solaire-mode
+	conflicts = emacs-solaire-mode
+	source = git+https://github.com/hlissner/emacs-solaire-mode.git
+	sha256sums = SKIP
+
+pkgname = emacs-solaire-mode-git
+
