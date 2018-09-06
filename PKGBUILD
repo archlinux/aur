@@ -1,4 +1,5 @@
-#  Maintainer: sudokode <sudokode@gmail.com>
+# Maintainer: Damien Molinier <damien-43\N{COMMERCIAL AT}gmx.fr>
+# Contributor: sudokode <sudokode@gmail.com>
 # Contributor: Daniel Golle
 
 pkgname=perl-digest-crc
