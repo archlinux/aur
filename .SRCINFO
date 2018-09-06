@@ -1,0 +1,24 @@
+pkgbase = open-numismat-git
+	pkgdesc = Application to create, organize and manage coin catalogue
+	pkgver = 1.7.3.r0.g89ebda1
+	pkgrel = 1
+	url = https://opennumismat.github.io/open-numismat/
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pyqt5
+	depends = python-xlrd
+	depends = python-numpy
+	depends = python-matplotlib
+	depends = python-jinja
+	depends = python-lxml
+	depends = python-dateutil
+	optdepends = python-xlwt: export to excel
+	optdepends = python-pyodbc: import from CoinManage and Numizmatik_Ru
+	source = open-numismat-git::git+https://github.com/OpenNumismat/open-numismat.git#branch=master
+	sha256sums = SKIP
+
+pkgname = open-numismat-git
+
