@@ -1,0 +1,17 @@
+pkgbase = emacs-flyspell-correct-ivy-git
+	pkgdesc = This package provides ivy interface for flyspell-correct package.
+	pkgver = r70.0486912
+	pkgrel = 1
+	url = https://github.com/d12frosted/flyspell-correct
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	depends = emacs-flyspell-correct
+	provides = emacs-flyspell-correct-ivy
+	conflicts = emacs-flyspell-correct-ivy
+	source = git+https://github.com/d12frosted/flyspell-correct.git
+	sha256sums = SKIP
+
+pkgname = emacs-flyspell-correct-ivy-git
+
