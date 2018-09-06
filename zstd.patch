@@ -1,0 +1,90 @@
+diff '--color=auto' -Nura vertical-qt.orig/configure.ac vertical-qt.new/configure.ac
+--- vertical-qt.orig/configure.ac	2018-09-06 08:16:47.039559887 -0400
++++ vertical-qt.new/configure.ac	2018-09-06 08:24:19.717296853 -0400
+@@ -787,8 +787,10 @@
+     [PKG_CHECK_MODULES],
+     [
+       PKG_CHECK_MODULES([SSL], [libssl],, [AC_MSG_ERROR(openssl  not found.)])
+-      PKG_CHECK_MODULES([CRYPTO], [libcrypto],,[AC_MSG_ERROR(libcrypto  not found.)])
+-      PKG_CHECK_MODULES(ZLIB, [zlib], [], [AC_MSG_ERROR([zlib not found])])
++      PKG_CHECK_MODULES([CRYPTO], [libcrypto],, [AC_MSG_ERROR(libcrypto  not found.)])
++      PKG_CHECK_MODULES([ZLIB], [zlib],, [AC_MSG_ERROR([zlib not found])])
++      PKG_CHECK_MODULES([ZSTD], [libzstd >= 1.1],, [ZSTD_LIBS=])
++
+       BITCOIN_QT_CHECK([PKG_CHECK_MODULES([PROTOBUF], [protobuf], [have_protobuf=yes], [BITCOIN_QT_FAIL(libprotobuf not found)])])
+       if test x$use_qr != xno; then
+         BITCOIN_QT_CHECK([PKG_CHECK_MODULES([QR], [libqrencode], [have_qrencode=yes], [have_qrencode=no])])
+@@ -812,12 +814,15 @@
+     ]
+   )
+ else
+-  AC_CHECK_HEADER([openssl/crypto.h],,AC_MSG_ERROR(libcrypto headers missing))
+-  AC_CHECK_LIB([crypto],      [main],CRYPTO_LIBS=-lcrypto, AC_MSG_ERROR(libcrypto missing))
+-
+-  AC_CHECK_HEADER([openssl/ssl.h],, AC_MSG_ERROR(libssl headers missing),)
+-  AC_CHECK_LIB([ssl],         [main],SSL_LIBS=-lssl, AC_MSG_ERROR(libssl missing))
++  AC_CHECK_HEADER([openssl/ssl.h],, [AC_MSG_ERROR(libssl headers missing)])
++  AC_CHECK_LIB([ssl], [main], [SSL_LIBS=-lssl], [AC_MSG_ERROR(libssl missing)])
++  AC_CHECK_HEADER([openssl/crypto.h],, [AC_MSG_ERROR(libcrypto headers missing)])
++  AC_CHECK_LIB([crypto], [main], [CRYPTO_LIBS=-lcrypto], [AC_MSG_ERROR(libcrypto missing)])
++  AC_CHECK_HEADER([zlib.h],, [AC_MSG_ERROR(zlib headers missing)])
++  AC_CHECK_LIB([z], [main], [ZLIB_LIBS=-lz], [AC_MSG_ERROR(zlib missing)])
+ 
++  AC_CHECK_LIB([zstd], [main], [ZSTD_LIBS=-lzstd], [ZSTD_LIBS=])
++  
+   if test x$build_bitcoin_utils$build_bitcoind$bitcoin_enable_qt$use_tests != xnononono; then
+     AC_CHECK_HEADER([event2/event.h],, AC_MSG_ERROR(libevent headers missing),)
+     AC_CHECK_LIB([event],[main],EVENT_LIBS=-levent,AC_MSG_ERROR(libevent missing))
+diff '--color=auto' -Nura vertical-qt.orig/src/Makefile.am vertical-qt.new/src/Makefile.am
+--- vertical-qt.orig/src/Makefile.am	2018-09-06 08:16:47.459567299 -0400
++++ vertical-qt.new/src/Makefile.am	2018-09-06 08:25:18.291600153 -0400
+@@ -460,7 +460,18 @@
+   $(LIBSECP256K1)
+ 
+ 
+-verticalcoind_LDADD += $(TOR_LIBS) $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS) -lz
++verticalcoind_LDADD += \
++  $(TOR_LIBS) \
++  $(BOOST_LIBS) \
++  $(BDB_LIBS) \
++  $(SSL_LIBS) \
++  $(CRYPTO_LIBS) \
++  $(MINIUPNPC_LIBS) \
++  $(EVENT_PTHREADS_LIBS) \
++  $(EVENT_LIBS) \
++  $(ZMQ_LIBS) \
++  $(ZSTD_LIBS) \
++  $(ZLIB_LIBS)
+ 
+ # bitcoin-cli binary #
+ verticalcoin_cli_SOURCES = bitcoin-cli.cpp
+diff '--color=auto' -Nura vertical-qt.orig/src/Makefile.qt.include vertical-qt.new/src/Makefile.qt.include
+--- vertical-qt.orig/src/Makefile.qt.include	2018-09-06 08:16:47.462900691 -0400
++++ vertical-qt.new/src/Makefile.qt.include	2018-09-06 08:26:18.265920525 -0400
+@@ -426,7 +426,7 @@
+ 	tor/src/ext/keccak-tiny/libkeccak-tiny.a
+ qt_verticalcoin_qt_LDADD += $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CONSENSUS) $(LIBBITCOIN_CRYPTO) $(LIBUNIVALUE) $(LIBLEVELDB) $(LIBMEMENV) \
+   $(BOOST_LIBS) $(QT_LIBS) $(QT_DBUS_LIBS) $(QR_LIBS) $(PROTOBUF_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(LIBSECP256K1) $(ZLIB_LIBS) \
+-  $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
++  $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)  $(ZSTD_LIBS)
+ qt_verticalcoin_qt_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(QT_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+ qt_verticalcoin_qt_LIBTOOLFLAGS = --tag CXX
+ 
+diff '--color=auto' -Nura vertical-qt.orig/src/Makefile.test.include vertical-qt.new/src/Makefile.test.include
+--- vertical-qt.orig/src/Makefile.test.include	2018-09-06 08:16:47.462900691 -0400
++++ vertical-qt.new/src/Makefile.test.include	2018-09-06 08:27:55.494196336 -0400
+@@ -108,13 +108,12 @@
+ test_test_bitcoin_SOURCES = $(BITCOIN_TESTS) $(JSON_TEST_FILES) $(RAW_TEST_FILES)
+ test_test_bitcoin_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) -I$(builddir)/test/ $(TESTDEFS)
+ test_test_bitcoin_LDADD = $(LIBBITCOIN_SERVER) $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CONSENSUS) $(LIBBITCOIN_CRYPTO) $(LIBUNIVALUE) $(LIBLEVELDB) $(LIBMEMENV) \
+-  $(BOOST_LIBS) $(BOOST_UNIT_TEST_FRAMEWORK_LIB) $(LIBSECP256K1)
++  $(BOOST_LIBS) $(BOOST_UNIT_TEST_FRAMEWORK_LIB) $(LIBSECP256K1) $(ZSTD_LIBS)
+ test_test_bitcoin_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+ if ENABLE_WALLET
+ test_test_bitcoin_LDADD += $(LIBBITCOIN_WALLET)
+ endif
+ 
+-test_test_bitcoin_LDADD += $(LIBBITCOIN_CONSENSUS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS)
+ test_test_bitcoin_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) -static
+ 
+ if ENABLE_ZMQ

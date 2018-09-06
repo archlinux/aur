@@ -1,0 +1,29 @@
+pkgbase = verticalcoin-qt
+	pkgdesc = Cryptocurrency wallet(QT)
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = http://www.verticalcoin.io/
+	install = verticalcoin-qt.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	makedepends = qt5-tools
+	depends = boost-libs
+	depends = qt5-base
+	depends = qrencode
+	depends = miniupnpc
+	depends = db4.8
+	depends = zeromq
+	depends = protobuf
+	depends = libevent
+	conflicts = verticalcoin
+	source = verticalcoin-qt::git+https://github.com/verticalcoin/verticalcoin.git
+	source = verticalcoin-qt.desktop
+	source = zstd.patch
+	sha256sums = SKIP
+	sha256sums = bb085a9d4679e338f577c45c154a2fed656fe1339f44894376117bcfbec238ba
+	sha256sums = 0d355f8baea6d09bffd673a0fdcb761cc5b4747464285ba97e638545dff8a237
+
+pkgname = verticalcoin-qt
+
