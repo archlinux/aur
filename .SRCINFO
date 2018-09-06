@@ -1,0 +1,18 @@
+pkgbase = torphantom
+	pkgdesc = A fork of TorGhost, a little utilitly used to route all traffic through TOR. This script spoofs your mac address, and then routes all traffic through the TOR network. It is currently a WIP..
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://github.com/3ndG4me/torphantom
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = GPL3
+	depends = macchanger
+	depends = tor
+	source = git+https://github.com/3ndG4me/torphantom.git
+	md5sums = SKIP
+
+pkgname = torphantom
+
