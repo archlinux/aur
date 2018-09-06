@@ -11,7 +11,7 @@
 
 pkgname=chromium-vaapi
 pkgver=69.0.3497.81
-pkgrel=1
+pkgrel=2
 _launcher_ver=6
 pkgdesc="Chromium compiled with VA-API support for Intel Graphics"
 arch=('x86_64')
@@ -32,16 +32,18 @@ optdepends=('pepper-flash: support for Flash content'
 install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
-        # fix-cfi-icall-failure-with-use_system_libjpeg-true.patch
-        # only-disable-cfi-icall-when-use_system_libjpeg-true.patch
+        cfi-issues-fix.patch
+        fix-cfi-icall-failure-with-use_system_libjpeg-true.patch
+        only-disable-cfi-icall-when-use_system_libjpeg-true.patch
         chromium-widevine-r2.patch
         chromium-system-icu.patch
         chromium-skia-harmony.patch
         chromium-vaapi-r20.patch)
 sha256sums=('165ac7d0d4588e6b4a16331e0a9906ed013f2d29a96b54f0ea78fa0298f97144'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
-            # '97b421bc60a4abdf37de2d88a51b973e9f68fb44d1eccd464adfb3d9f5d71478'
-            # '9cae9ded6497afd15ad72d963897425ab6c7f28941bb3c3948e7996610a0d180'
+            'adf301b50b5a03c98b7602c17e1f34e37260c07c88bcb7e1661122af61f50e23'
+            '97b421bc60a4abdf37de2d88a51b973e9f68fb44d1eccd464adfb3d9f5d71478'
+            '9cae9ded6497afd15ad72d963897425ab6c7f28941bb3c3948e7996610a0d180'
             '02c69bb3954087db599def7f5b6d65cf8f7cf2ed81dfbdaa4bb7b51863b4df15'
             'c4f2d1bed9034c02b8806f00c2e8165df24de467803855904bff709ceaf11af5'
             'feca54ab09ac0fc9d0626770a6b899a6ac5a12173c7d0c1005bc3964ec83e7b3'
@@ -89,9 +91,10 @@ prepare() {
   sed -i 's/OFFICIAL_BUILD/GOOGLE_CHROME_BUILD/' \
     tools/generate_shim_headers/generate_shim_headers.py
 
-  # # https://crbug.com/866290
-  # patch -Np1 -i ../fix-cfi-icall-failure-with-use_system_libjpeg-true.patch
-  # patch -Np1 -i ../only-disable-cfi-icall-when-use_system_libjpeg-true.patch
+  # https://crbug.com/866290
+  patch -Np1 -i ../cfi-issues-fix.patch # Fixes VA-API when used with patches below
+  patch -Np1 -i ../fix-cfi-icall-failure-with-use_system_libjpeg-true.patch
+  patch -Np1 -i ../only-disable-cfi-icall-when-use_system_libjpeg-true.patch
 
   # https://crbug.com/skia/6663#c10
   patch -Np4 -i ../chromium-skia-harmony.patch
@@ -154,7 +157,6 @@ build() {
     'host_toolchain="//build/toolchain/linux/unbundle:default"'
     'clang_use_chrome_plugins=false'
     'is_official_build=true' # implies is_cfi=true on x86_64
-    'use_cfi_icall=false' # https://crbug.com/866290
     'is_debug=false'
     'treat_warnings_as_errors=false'
     'fieldtrial_testing_like_official_build=true'
