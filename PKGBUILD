@@ -63,7 +63,7 @@ _major=4.18
 pkgver=4.18.6
 _srcpatch="${pkgver}"
 _srcname="linux-${pkgver}"
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -76,7 +76,7 @@ _gcc_path="https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+.patch"
 _bfq_sq_mq_path="bfq-sq-mq"
 _bfq_sq_mq_ver='v8r12'
-_bfq_sq_mq_rel='2K180824'
+_bfq_sq_mq_rel='2K180906'
 _bfq_sq_mq_patch="${_major}-bfq-sq-mq-${_bfq_sq_mq_ver}-${_bfq_sq_mq_rel}.patch"
 
 source=(# mainline kernel patches
@@ -104,7 +104,7 @@ source=(# mainline kernel patches
 sha256sums=('05db97fd6891217af6d4203bdc442ef2af78d7902b6a8e9bd348682704c22894'
             'SKIP'
             '9f7177679c8d3f8d699ef0566a51349d828436dba04603bc2223f98c60d2d178'
-            'e59ba36db652bb1d19adaa8984410cf75411863bcdedaa4c486a58cfaa194ad3'
+            '44d385f508b77af1a5b2254f724f87b14d2234af865039f41ee604ed3efd33b5'
             'eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531'
             '5dae2fe1b63aa235ff11a75868198777f0363a6d76fd1e7e282739be992a3c0d'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
