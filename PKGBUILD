@@ -8,7 +8,7 @@ pkgdesc="Crossplatform configuration tool for the Betaflight flight control syst
 arch=('x86_64')
 url="https://github.com/betaflight/betaflight-configurator"
 license=('GPL3')
-depends=('nwjs>=0.31.0')
+depends=('nwjs-bin')
 makedepends=('yarn' 'npm' 'git')
 source=("https://github.com/betaflight/betaflight-configurator/archive/$pkgver.zip"
         "$pkgname.sh"

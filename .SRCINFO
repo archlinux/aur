@@ -9,7 +9,7 @@ pkgbase = betaflight-configurator
 	makedepends = yarn
 	makedepends = npm
 	makedepends = git
-	depends = nwjs>=0.31.0
+	depends = nwjs-bin
 	options = !strip
 	source = https://github.com/betaflight/betaflight-configurator/archive/10.4.0.zip
 	source = betaflight-configurator.sh
