@@ -34,7 +34,7 @@ sha512sums=('SKIP'
 pkgver() {
   cd $_pkgname
 
-  echo $(grep '^m4_define(\[gimp_api_version\], \[.*\])' | sed -e 's|m4_define(\[gimp_api_version\], \[||' -e 's|\])||').$(git log --pretty=format:'%h' -n 1)
+  echo $(cat configure.ac | grep '^m4_define(\[gimp_api_version\], \[.*\])' | sed -e 's|m4_define(\[gimp_api_version\], \[||' -e 's|\])||').$(git log --pretty=format:'%h' -n 1)
 }
 
 prepare() {
