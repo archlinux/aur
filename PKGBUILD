@@ -2,7 +2,7 @@
 _lang=eng-deu
 pkgname=dict-freedict-${_lang}
 pkgver=0.3.7
-pkgrel=2
+pkgrel=3
 pkgdesc="English -> German dictionary for dictd et al. from Freedict.org"
 arch=('any')
 url="http://www.freedict.org/"
@@ -11,7 +11,7 @@ optdepends=('dictd: dict client and server')
 makedepends=('dictd' 'freedict-tools')
 install=${pkgname}.install
 source=("https://download.freedict.org/dictionaries/${_lang}/${pkgver}/freedict-${_lang}-${pkgver}.src.tar.xz")
-sha512sums=('671687a683eaecc23c2fc7f7d327d88989918cef25e19ef541a0828d5915d3f675927660a8c175dc6e74751de31e7abe21108ec8c9f354250d42f02336540e1f')
+sha512sums=('4608ee6a985ec3151037c35bc8016b6262bde86d881af6d4f36b387d8116344a6fabb79b7cf192b7eedb412c70abc216df38549e7bf2c35355b0005db992ca96')
 
 build()
 {
