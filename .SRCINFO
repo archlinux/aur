@@ -1,0 +1,15 @@
+pkgbase = tuimoji
+	pkgdesc = A terminal based emoji browser
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Fingel/tuimoji
+	arch = any
+	license = GPLV3
+	depends = python-setuptools
+	depends = python-urwid
+	depends = xclip
+	source = https://files.pythonhosted.org/packages/source/t/tuimoji/tuimoji-1.0.0.tar.gz
+	md5sums = 29990d30146387781643fc409865d687
+
+pkgname = tuimoji
+
