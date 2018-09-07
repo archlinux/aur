@@ -2,7 +2,7 @@
 pkgname=browser360-beta
 pkgver=10.0.1004.0
 pkgrel=1
-pkgdesc="A chromium based web broswer from Qihoo 360"
+pkgdesc="A chromium based web browser from Qihoo 360"
 arch=('x86_64')
 url="https://browser.360.cn/se/"
 license=('custom')
