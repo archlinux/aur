@@ -1,0 +1,13 @@
+pkgbase = numix-cursor-maia
+	pkgdesc = Numix cursor theme for ArchLinux
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://numixproject.org/
+	arch = any
+	license = GPLv3
+	makedepends = git
+	source = Numix-Cursor-Maia.tar.xz
+	sha256sums = 91e24b6b6d1395b50d99735527d9508ef0a0d2c64c0a20c8f9e870515a3ab004
+
+pkgname = numix-cursor-maia
+
