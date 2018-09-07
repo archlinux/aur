@@ -3,5 +3,5 @@ Description=Daily manpage database update
 
 [Timer]
 OnCalendar=daily
-AccuracySec=1d
+AccuracySec=12h
 Persistent=true

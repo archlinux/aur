@@ -1,9 +1,8 @@
-# Maintainer: Erin Kinsley <ybden@ybden.com>
 # Contributor: Matheus de Alcantara <matheus.de.alcantara@gmail.com>
 
 pkgname=mandoc
-pkgver=1.14.3
-pkgrel=2
+pkgver=1.14.4
+pkgrel=1
 pkgdesc='A suite of tools compiling mdoc from the OpenBSD project'
 arch=('i686' 'x86_64')
 url='http://mdocml.bsd.lv/'
@@ -15,10 +14,10 @@ source=("http://mdocml.bsd.lv/snapshots/$pkgname-$pkgver.tar.gz"
         'configure.local'
         'mandoc.service'
         'mandoc.timer')
-sha256sums=('0b0c8f67958c1569ead4b690680c337984b879dfd2ad4648d96924332fd99528'
+sha256sums=('24eb72103768987dcc63b53d27fdc085796330782f44b3b40c4660b1e1ee9b9c'
             'f0e8ddb61d063bec02a6a1f73f5d979bb548e7aabcf0a27c0d5c29c4194bfc8e'
             '2091411d5f87a3c371a5ba74b4773d1e454046446fa2cb045485979e52419bb6'
-            '79d4e73b6c8cab7e12d11f8b4574790938064b42effbb02afadc1548dfcf5cc4')
+            '74d6a02b97a17fffddcc0a3dc830e811348b1f6c6b84f867882c776d50f00ea4')
 
 prepare() {
 	cp "$srcdir"/configure.local $pkgname-$pkgver
@@ -34,4 +33,9 @@ package() {
 	cd $pkgname-$pkgver
 	DESTDIR="$pkgdir" make install
 	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+
+	install -Dm644 "$srcdir"/mandoc.timer "$pkgdir"/usr/lib/systemd/system/mandoc.timer
+	install -Dm644 "$srcdir"/mandoc.service "$pkgdir"/usr/lib/systemd/system/mandoc.service
+	install -dm755 "$pkgdir"/usr/lib/systemd/system/multi-user.target.wants
+	ln -s ../mandoc.timer "$pkgdir"/usr/lib/systemd/system/multi-user.target.wants/mandoc.timer
 }
