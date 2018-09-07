@@ -1,20 +1,15 @@
 pkgbase = python-lemonsqueezer
 	pkgdesc = An fast and lightweight wrapper for lemonbar
-	pkgver = 0.1.1
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://gitlab.com/michalis_pardalos/lemonsqueezer
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	depends = lemonbar
-	optdepends = acpi: For Battery module
-	optdepends = bspwm: For BSPWMDesktops module
-	optdepends = dbus: For MediaControls module
-	source = https://files.pythonhosted.org/packages/source/l/lemonsqueezer/lemonsqueezer-0.1.1.tar.gz
-	md5sums = d267b2a5ebc0f4ea01bf866355299912
+	source = https://files.pythonhosted.org/packages/source/l/lemonsqueezer/lemonsqueezer-0.1.3.tar.gz
+	md5sums = c85976b86539d616c521d5e72534ce73
 
 pkgname = python-lemonsqueezer
 	depends = python
-	depends = lemonbar
 
