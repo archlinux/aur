@@ -1,13 +1,14 @@
 # Maintainer: Baron Hou <houbaron@gmail.com>
 pkgname=picgo-appimage
 pkgver=1.6.2
-pkgrel=6
+pkgrel=7
 
 pkgdesc="A simple & beautiful tool for pictures uploading built by electron-vue"
 arch=('x86_64')
 url="https://molunerfinn.com/PicGo/"
 license=('MIT')
 noextract=("picgo-${pkgver}-${arch}.AppImage")
+options=("!strip")
 source=(
     "https://github.com/Molunerfinn/PicGo/releases/download/v${pkgver}/picgo-${pkgver}-${arch}.AppImage"
     "picgo.png"
@@ -20,9 +21,7 @@ sha256sums=(
 )
 
 package() {
-    mkdir   -p                                      ${pkgdir}/opt/appimages/
-    cp             picgo-${pkgver}-${arch}.AppImage ${pkgdir}/opt/appimages/picgo.AppImage
-    chmod      755                                  ${pkgdir}/opt/appimages/picgo.AppImage
-    install -Dm644 picgo.desktop                    ${pkgdir}/usr/share/applications/picgo.desktop
-    install -Dm644 picgo.png                        ${pkgdir}/usr/share/icons/hicolor/256x256/apps/picgo.png
+    install -Dm755 "picgo-${pkgver}-${arch}.AppImage" "${pkgdir}/opt/appimages/picgo.AppImage"
+    install -Dm644 "picgo.desktop"                    "${pkgdir}/usr/share/applications/picgo.desktop"
+    install -Dm644 "picgo.png"                        "${pkgdir}/usr/share/icons/hicolor/256x256/apps/picgo.png"
 }
