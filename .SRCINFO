@@ -1,6 +1,6 @@
 pkgbase = firefox-wayland
 	pkgdesc = Standalone web browser from mozilla.org with Wayland support enabled
-	pkgver = 59.0.2
+	pkgver = 62.0
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = x86_64
@@ -24,6 +24,7 @@ pkgbase = firefox-wayland
 	makedepends = llvm
 	makedepends = jack
 	makedepends = gtk2
+	makedepends = python
 	depends = gtk3
 	depends = mozilla-common
 	depends = libxt
@@ -32,7 +33,7 @@ pkgbase = firefox-wayland
 	depends = dbus-glib
 	depends = ffmpeg
 	depends = nss
-	depends = hunspell
+	depends = hunspell-en_US
 	depends = sqlite
 	depends = ttf-font
 	depends = libpulse
@@ -47,14 +48,12 @@ pkgbase = firefox-wayland
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
-	source = hg+https://hg.mozilla.org/mozilla-unified#tag=FIREFOX_59_0_2_RELEASE
+	source = hg+https://hg.mozilla.org/mozilla-unified#tag=FIREFOX_62_0_RELEASE
 	source = firefox.desktop
 	source = firefox-symbolic.svg
-	source = no-crmf.diff
 	sha256sums = SKIP
 	sha256sums = 677e1bde4c6b3cff114345c211805c7c43085038ca0505718a11e96432e9811a
 	sha256sums = 9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797
-	sha256sums = 02000d185e647aa20ca336e595b4004bb29cdae9d8f317f90078bdcc7a36e873
 
 pkgname = firefox-wayland
 
