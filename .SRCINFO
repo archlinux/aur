@@ -1,0 +1,24 @@
+pkgbase = emacs-pdf-tools-git
+	pkgdesc = Emacs support library for PDF files.
+	pkgver = r841.8aa7aec
+	pkgrel = 1
+	url = https://github.com/politza/pdf-tools
+	arch = any
+	license = GPL3
+	checkdepends = git
+	checkdepends = cask
+	makedepends = git
+	makedepends = cask
+	depends = emacs
+	depends = emacs-tablist
+	depends = libpng
+	depends = zlib
+	depends = poppler-glib
+	optdepends = imagemagick: following links of a PDF document by plain keystrokes
+	provides = emacs-pdf-tools
+	conflicts = emacs-pdf-tools
+	source = git+https://github.com/politza/pdf-tools.git
+	sha256sums = SKIP
+
+pkgname = emacs-pdf-tools-git
+
