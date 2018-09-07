@@ -4,8 +4,8 @@
 
 pkgbase=python-btchip
 pkgname=('python-btchip' "python2-btchip")
-pkgver=0.1.27
-pkgrel=2
+pkgver=0.1.28
+pkgrel=1
 pkgdesc="Python library to communicate with BTChip dongle"
 arch=('any')
 makedepends=('python-setuptools' 'python2-setuptools')
@@ -13,7 +13,7 @@ optdepends=('btchip-udev: access BTChip as non-root user')
 url="https://github.com/LedgerHQ/btchip-python"
 license=('Apache')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/LedgerHQ/btchip-python/archive/v$pkgver.tar.gz")
-sha256sums=('1114b90f0fd56138dd320b94083ad05c5032a01d6008344479268b8f8e4e9110')
+sha256sums=('b257357321afc641c15deb7b7cc5f6c54a060739dfb4acddc55fdbd18ba17917')
 
 prepare() {
   cp -r "btchip-python-$pkgver" "btchip-python2-$pkgver"
