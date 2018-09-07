@@ -1,7 +1,7 @@
 pkgbase = titania-git
 	pkgdesc = Use Titania to create standard complient X3D/VRML worlds for publishing on the World Wide Web and for creating stand alone applications
 	pkgver = 3997
-	pkgrel = 1
+	pkgrel = 2
 	url = http://titania.create3000.de
 	arch = i686
 	arch = x86_64
