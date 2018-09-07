@@ -2,15 +2,15 @@
 
 pkgname=mandoc
 pkgver=1.14.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A suite of tools compiling mdoc from the OpenBSD project'
 arch=('i686' 'x86_64')
-url='http://mdocml.bsd.lv/'
+url='https://mdocml.bsd.lv/'
 license=('custom: ISC')
 depends=('zlib')
 provides=('man')
 conflicts=('man')
-source=("http://mdocml.bsd.lv/snapshots/$pkgname-$pkgver.tar.gz"
+source=("https://mdocml.bsd.lv/snapshots/$pkgname-$pkgver.tar.gz"
         'configure.local'
         'mandoc.service'
         'mandoc.timer')
