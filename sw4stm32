@@ -1,5 +1,5 @@
 #!/bin/sh
 
 export ECLIPSE_HOME=/usr/lib/sw4stm32
-export PATH=/usr/lib/sw4stm32/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.15.0.201708311556/tools/st-gnu-arm-gcc-6-2017-q2-update_gdb-5_4-2016q3/bin:$PATH
-exec $ECLIPSE_HOME/eclipse "$@"
+export PATH=/usr/lib/sw4stm32/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/st-gnu-arm-gcc-7-2017-q4-major_gdb-5_4-2016q3/bin:$PATH
+exec $ECLIPSE_HOME/eclipse -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel "$@"

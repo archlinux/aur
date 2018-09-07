@@ -3,8 +3,8 @@
 # Contributor: Romain Porte <microjoe@microjoe.org>
 
 pkgname=sw4stm32
-pkgver=2.4
-pkgrel=2
+pkgver=2.5
+pkgrel=1
 pkgdesc="SystemWorkbench for STM32"
 arch=('x86_64')
 url="http://www.openstm32.org/System+Workbench+for+STM32"
@@ -16,9 +16,8 @@ source=("http://www.ac6-tools.com/downloads/SW4STM32/install_sw4stm32_linux_64bi
 	$pkgname.png
 $pkgname.desktop)
 
-noextract=(install_sw4stm32_linux_64bits-v$pkgver.run)
-
 package() {
+	unset LD_PRELOAD
 	HOME="usr/lib/sw4stm32"
 	mkdir -p $pkgdir/$HOME/dropins
 	touch $pkgdir/$HOME/dropins/.keep
@@ -37,13 +36,13 @@ package() {
 	install -Dm755 sw4stm32 "$pkgdir/usr/bin/sw4stm32"
 
 	# Copy udev rule manually
-	for i in $(seq 1 3); do
-		install -Dm644 "$pkgdir/$HOME/.installation/49-stlinkv$i.rules" \
-			"$pkgdir/etc/udev/rules.d/49-stlinkv$i.rules"
-	done
+	#for i in $(seq 1 3); do
+	#	install -Dm644 "$pkgdir/$HOME/.installation/49-stlinkv$i.rules" \
+	#		"$pkgdir/etc/udev/rules.d/49-stlinkv$i.rules"
+	#done
 
 	# Extracting arm cross-compiler
-	CROSSPATH="$pkgdir/$HOME/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.15.0.201708311556/tools/st-gnu-arm-gcc-6-2017-q2-update_gdb-5_4-2016q3-20160926-linux.tar.bz2"
+	CROSSPATH="$pkgdir/$HOME/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/st-gnu-arm-gcc-7-2017-q4-major_gdb-5_4-2016q3-linux.tar.bz2"
 	CROSSDEST=$(dirname $CROSSPATH)
 	tar -xf $CROSSPATH -C $(dirname $CROSSPATH)
 	rm $CROSSPATH
@@ -56,7 +55,7 @@ package() {
 	echo "-Dosgi.configuration.area=@user.home/.sw4stm32" >> $pkgdir/$HOME/eclipse.bin.ini
 }
 
-md5sums=('e3d18ed7c5efd5aec32be55a6eccff55'
-	'4bebd032d4833a94731324e44b31ea53'
+md5sums=('af19b6b43535d9af5999344782b14f0b'
+	'd1dfe6479d10bbfd07b17a289aa1ae32'
 	'1abad981624008108a0651b9847e183e'
 'ff9b48b50dc8a1845d002bc1f1ddb50a')
