@@ -21,7 +21,7 @@
 
 pkgname=retroshare
 pkgver=0.6.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://retroshare.sourceforge.net/"
@@ -34,9 +34,11 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 
 source=("https://github.com/RetroShare/RetroShare/archive/v${pkgver}.tar.gz"
-	"https://github.com/RetroShare/RetroShare/commit/4d287d68bc9725f403dc7d952a927d401c5d6c97.patch")
+	'https://github.com/RetroShare/RetroShare/commit/4d287d68bc9725f403dc7d952a927d401c5d6c97.patch'
+	'https://github.com/RetroShare/RetroShare/commit/428b331d8efede1e2f39f2fc49216c675d081030.patch')
 sha256sums=('84355c0f3be5ec1dfa7253e327ea1254f76f47739c233cfb8d0983ebd1a61f4a'
-            'd5b775333a351068711dc12bb50d92fde4966fcaaf393039c324b46e2f03f986')
+            'd5b775333a351068711dc12bb50d92fde4966fcaaf393039c324b46e2f03f986'
+            'eb2586311e56f2cf3ce42eccc3b1647e4a06cba8042e867f379e7d4601ab5172')
 
 # Add missing dependencies if needed
 [[ "$_plugin_voip" == 'true' ]] && depends=(${depends[@]} 'ffmpeg' 'opencv')
@@ -61,6 +63,7 @@ fi
 prepare() {
 	cd "${srcdir}/RetroShare-${pkgver}"
 	git apply ../4d287d68bc9725f403dc7d952a927d401c5d6c97.patch
+	git apply ../428b331d8efede1e2f39f2fc49216c675d081030.patch
 }
 
 build() {
