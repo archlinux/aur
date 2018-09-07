@@ -1,6 +1,6 @@
 pkgbase = random-seed-git
 	pkgdesc = random seed manager
-	pkgver = 0.0.1.r16.cba728f
+	pkgver = 0.0.1.r20.9e7848f
 	pkgrel = 1
 	arch = x86_64
 	license = BSD
