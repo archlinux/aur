@@ -1,6 +1,6 @@
 pkgbase = mistserver
 	pkgdesc = The MistServer media server toolkit, open source edition
-	pkgver = 2.12
+	pkgver = 2.14
 	pkgrel = 1
 	url = https://mistserver.org
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = mistserver
 	arch = aarch64
 	license = AGPL3
 	makedepends = cmake
-	source = https://github.com/DDVTECH/mistserver/archive/2.12.tar.gz
-	md5sums = 1895eebb1c72eda590f60cd7ff70cebe
+	source = https://github.com/DDVTECH/mistserver/archive/2.14.tar.gz
+	md5sums = 1e78ce73ffd5a7c0bc36e1cdd674e387
 
 pkgname = mistserver
 
