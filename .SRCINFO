@@ -1,13 +1,14 @@
 pkgbase = tuimoji
 	pkgdesc = A terminal based emoji browser
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Fingel/tuimoji
 	arch = any
 	license = GPLV3
 	depends = python-setuptools
 	depends = python-urwid
 	depends = xclip
+	optdepends = noto-fonts-emoji: Google font providing full color emojis
 	source = https://files.pythonhosted.org/packages/source/t/tuimoji/tuimoji-1.0.0.tar.gz
 	md5sums = 29990d30146387781643fc409865d687
 
