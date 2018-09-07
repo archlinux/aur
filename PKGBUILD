@@ -1,7 +1,7 @@
 # Maintainer: Baron Hou <houbaron@gmail.com>
 pkgname=picgo-appimage
 pkgver=1.6.2
-pkgrel=3
+pkgrel=4
 
 pkgdesc="A simple & beautiful tool for pictures uploading built by electron-vue"
 arch=('x86_64')
@@ -15,8 +15,8 @@ source=(
 )
 sha256sums=(
     '9dc232e25855b05de43332e795aa141652dd0bf3ced2f9948636c46a2822aed2'
-    '6cfaad3bb0ecfa6fc44645de29a17aeb1d7492c3b267ac2f87006205b2baec8c'
-    '345d8c118aa8fdc84c1db8c37842f90f68333ca33e8c1b249abbbd58fde1f1a9'
+    'SKIP'
+    'SKIP'
 )
 
 package() {
