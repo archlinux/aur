@@ -1,0 +1,16 @@
+pkgbase = emacs-writegood-mode-git
+	pkgdesc = Polish up poor writing on the fly
+	pkgver = r42.b71757e
+	pkgrel = 1
+	url = https://github.com/bnbeckwith/writegood-mode
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	provides = emacs-writegood-mode
+	conflicts = emacs-writegood-mode
+	source = git+https://github.com/bnbeckwith/writegood-mode.git
+	sha256sums = SKIP
+
+pkgname = emacs-writegood-mode-git
+
