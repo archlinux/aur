@@ -1,7 +1,7 @@
 pkgbase = tuimoji
 	pkgdesc = A terminal based emoji browser
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Fingel/tuimoji
 	arch = any
 	license = GPLV3

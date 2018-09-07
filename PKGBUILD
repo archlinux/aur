@@ -1,7 +1,7 @@
-# Maintainer: Austin Riba <ausin@m51.io>
+# Maintainer: Austin Riba <austin@m51.io>
 pkgname=tuimoji
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A terminal based emoji browser"
 arch=('any')
 url="https://github.com/Fingel/tuimoji"
