@@ -1,5 +1,5 @@
 pkgbase = notmuch-git
-	pkgver = 0.26.1.14.g9f1c7c2
+	pkgver = 0.27.1.28.g87934c43
 	pkgrel = 1
 	epoch = 3
 	url = https://notmuchmail.org/
@@ -10,6 +10,7 @@ pkgbase = notmuch-git
 	makedepends = python
 	makedepends = python-sphinx
 	makedepends = emacs
+	makedepends = git
 	makedepends = gnupg
 	makedepends = ruby
 	makedepends = pkgconfig
@@ -30,7 +31,6 @@ pkgname = notmuch-emacs-git
 	optdepends = gnupg: for email encryption
 	provides = notmuch
 	conflicts = notmuch
-	replaces = notmuch-git
 
 pkgname = notmuch-runtime-git
 	pkgdesc = Runtime for notmuch and notmuch-mutt
