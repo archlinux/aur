@@ -5,7 +5,7 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=reactotron
-pkgver=2.0.0
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Package archlinux for Reactotron"
 arch=('x86_64')
@@ -26,7 +26,7 @@ changelog=
 source=("https://github.com/infinitered/reactotron/releases/download/v$pkgver/Reactotron-linux-x64.zip"
 	"reactotron.png"
 	"reactotron.desktop")
-sha256sums=('5cce17742efba51c74f77ec578ee76f4002bf4edd39d94422fd0860d26291cc0'
+sha256sums=('9e51df8abcf37d412b439224e441c432214e851bbea2b4a8bc1495c936e90281'
 	    "d933e27778d417a633975f22b2cdc2b6d8d922bffab916c92fc08062a7621896"
 	    "67142bd7f88c8484713ac13cd552d0018068a817e6b467a6eaa4a2fa0cbed514")
 
