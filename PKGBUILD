@@ -2,13 +2,13 @@
 
 _pkgname=avogadrolibs
 pkgname="${_pkgname}-git"
-pkgver=1.90.0.r1455.65b22f8
+pkgver=1.91.0.r1674.207b959f
 pkgrel=1
 pkgdesc="Avogadro 2: libraries"
 url="http://openchemistry.org/projects/avogadro2"
-arch=("i686" "x86_64")
+arch=("x86_64")
 license=("Kitware")
-depends=("libarchive" "glew" "hdf5" "vtk" "libmsym" "spglib" "qt5-webview" "qt5-x11extras" "molequeue" "python" "pybind11")
+depends=("libarchive" "glew" "hdf5" "vtk" "libmsym-git" "spglib" "qt5-webview" "qt5-x11extras" "molequeue" "python" "pybind11")
 # gdal is for proj, which is optional for VTK but required here? same for openmpi
 makedepends=("git" "cmake" "eigen" "gtest" "gdal" "openmpi")
 conflicts=("${_pkgname}")
@@ -32,14 +32,9 @@ build() {
       -DCMAKE_INSTALL_LIBDIR:PATH=lib \
       -DBUILD_SHARED_LIBS:BOOL=ON \
       -DENABLE_TESTING:BOOL=ON \
-      -DUSE_OPENGL:BOOL=ON \
       -DUSE_HDF5:BOOL=ON \
-      -DUSE_QT:BOOL=ON \
       -DUSE_VTK:BOOL=ON \
-      -DUSE_LIBMSYM:BOOL=ON \
-      -DUSE_LIBSPG:BOOL=ON \
-      -DUSE_PROTOCALL:BOOL=OFF \
-      -DUSE_MOLEQUEUE:BOOL=ON \
+      -DUSE_MMTF:BOOK=OFF \
       -DUSE_PYTHON:BOOL=ON \
       -DPYTHON_EXECUTABLE:PATH=/usr/bin/python \
       .
@@ -55,6 +50,4 @@ package() {
   cd "${srcdir}/${_pkgname}"
   make DESTDIR="${pkgdir}" install
   install -D -m 644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-  # Don't install bundled jsoncpp
-  rm "${pkgdir}/usr/lib/libjsoncpp.a"
 }
