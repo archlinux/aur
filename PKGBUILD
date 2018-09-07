@@ -1,6 +1,7 @@
-# Maintainer: palmtree5
+# Maintainer: nslxndr
+# Contributor: palmtree5
 pkgname=android-bash-completion
-pkgver=20131016
+pkgver=r43.c1b0656
 pkgrel=1
 pkgdesc="Bash completion for android, adb, emulator, fastboot, and repo"
 arch=(any)
@@ -10,6 +11,11 @@ depends=('android-sdk-platform-tools' 'bash' 'bash-completion')
 makedepends=('git')
 source=('android-completion::git+https://github.com/mbrubeck/android-completion.git')
 md5sums=('SKIP')
+
+pkgver() {
+  cd "android-completion"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 package() {
   mkdir -p $pkgdir/usr/share/licenses/android-bash-completion/
