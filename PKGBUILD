@@ -2,7 +2,7 @@
 
 pkgname='compute-runtime'
 pkgdesc="Intel(R) Graphics Compute Runtime for OpenCL(TM). Replaces Beignet for Gen8 (Broadwell) and beyond. Weekly build version."
-pkgver='18.33.11309'
+pkgver='18.34.11354'
 pkgrel=1
 arch=('x86_64')
 url='https://01.org/compute-runtime'
@@ -17,10 +17,10 @@ provides=('opencl-driver')
 source=("neo::git+https://github.com/intel/compute-runtime#tag=$pkgver"
         "clang_source::git+https://github.com/llvm-mirror/clang#branch=release_40"
         "common_clang::git+https://github.com/intel/opencl-clang#commit=8248120"
-        "llvm_patches::git+https://github.com/intel/llvm-patches#commit=b2572b9"
+        "llvm_patches::git+https://github.com/intel/llvm-patches#commit=96d382b"
         "llvm_source::git+https://github.com/llvm-mirror/llvm#branch=release_40"
-        "gmmlib::git+https://github.com/intel/gmmlib#commit=375036a"
-        "igc::git+https://github.com/intel/intel-graphics-compiler#commit=30580c6")
+        "gmmlib::git+https://github.com/intel/gmmlib#commit=941eda5"
+        "igc::git+https://github.com/intel/intel-graphics-compiler#commit=d1dff9b")
 
 sha256sums=('SKIP'
             'SKIP'
