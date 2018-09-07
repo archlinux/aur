@@ -1,33 +1,36 @@
 pkgbase = python-git
 	pkgdesc = Next generation of the python high-level scripting language
-	pkgver = 3.8.0a0.r101996.2ebd3813af
+	pkgver = 3.8.0a0.r102146.593bb30e82
 	pkgrel = 1
 	url = https://www.python.org/
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = tk>=8.6.0
+	makedepends = tk
 	makedepends = sqlite
 	makedepends = valgrind
 	makedepends = bluez-libs
+	makedepends = mpdecimal
 	makedepends = xz
 	makedepends = git
-	makedepends = libnsl
+	makedepends = llvm
+	makedepends = gdb
+	makedepends = xorg-server-xvfb
 	depends = expat
 	depends = bzip2
 	depends = gdbm
 	depends = openssl
 	depends = libffi
 	depends = zlib
-	optdepends = tk: for tkinter
+	depends = libnsl
 	optdepends = sqlite
+	optdepends = mpdecimal: for decimal
 	optdepends = xz: for lzma
-	optdepends = libnsl: for nis
-	options = debug
-	options = !strip
-	options = !makeflags
+	optdepends = tk: for tkinter
 	source = git+https://github.com/python/cpython#branch=master
-	sha256sums = SKIP
+	source = dont-make-libpython-readonly.patch
+	sha512sums = SKIP
+	sha512sums = 2ef96708d5b13ae2a3d2cc62c87b4780e60ecfce914e190564492def3a11d5e56977659f41c7f9d12266e58050c766bce4e2b5d50b708eb792794fa8357920c4
 
 pkgname = python-git
 
