@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://www.suspectclass.com/sgifford/interceptty/"
 license=('GPL')
 depends=('perl')
-source=("https://repo.j5lx.eu/archive/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+source=("https://archive.org/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('915244f09601e3c71209e444f2d3194f')
 
 build() {
