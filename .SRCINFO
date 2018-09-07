@@ -1,0 +1,21 @@
+pkgbase = media-control-indicator-git
+	pkgdesc = A script written in python that uses AppIndicator3 to display an applet to control media using Playerctl and Gtk.
+	pkgver = r18.779fc73
+	pkgrel = 1
+	url = https://github.com/Xaymup/media-control-indicator
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python-gobject
+	depends = libappindicator-gtk3
+	depends = playerctl
+	depends = python-urllib3
+	depends = adwaita-icon-theme
+	depends = python-colorthief
+	provides = media-control-indicator
+	conflicts = media-control-indicator
+	source = git://github.com/Xaymup/media-control-indicator.git
+	md5sums = SKIP
+
+pkgname = media-control-indicator-git
+
