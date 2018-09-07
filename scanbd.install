@@ -1,10 +1,4 @@
 post_install() {
-  echo "Read the Arch Linux Wiki on how to set up and run scanbd:"
-  echo "https://wiki.archlinux.org/index.php/Scanner_Button_Daemon"
-}
-
-pre_remove() {
-  systemctl stop scanbd.service 2>&1 > /dev/null
-  systemctl stop scanbm.socket 2>&1 > /dev/null
-  systemctl disable scanbd.service 2>&1 > /dev/null
+    echo "Read the Arch Linux Wiki on how to set up and run scanbd:"
+    echo "https://wiki.archlinux.org/index.php/Scanner_Button_Daemon"
 }
