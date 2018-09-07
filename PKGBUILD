@@ -1,11 +1,11 @@
 pkgname=dnf-plugins-core
-pkgver=3.0.2
+pkgver=3.0.3
 pkgrel=1
 pkgdesc="Core DNF Plugins"
 arch=('any')
 url="https://github.com/rpm-software-management/$pkgname"
 license=('GPL2')
-depends=('dnf>=3.0.1' 'python')
+depends=('dnf>=3.5.0' 'python')
 makedepends=('cmake' 'python-sphinx')
 checkdepends=('python-nose')
 optdepends=('createrepo_c: for local plugin')
@@ -15,7 +15,7 @@ backup=('etc/dnf/plugins/debuginfo-install.conf'
         'etc/dnf/plugins/versionlock.list')
 options=(!emptydirs)
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('853bf27ff05bbba4c15bdb37dff1487b')
+md5sums=('d4bca99b558444da2a7159dbb4948284')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -41,6 +41,20 @@ check() {
 package() {
 	cd "$pkgname-$pkgver"/build
 	make DESTDIR="$pkgdir/" install
+
+	rm "$pkgdir/usr/share/man/man1/debuginfo-install.1" \
+	   "$pkgdir/usr/share/man/man1/needs-restarting.1" \
+	   "$pkgdir/usr/share/man/man1/repo-graph.1" \
+	   "$pkgdir/usr/share/man/man1/repoclosure.1" \
+	   "$pkgdir/usr/share/man/man1/repomanage.1" \
+	   "$pkgdir/usr/share/man/man1/reposync.1" \
+	   "$pkgdir/usr/share/man/man1/yum-builddep.1" \
+	   "$pkgdir/usr/share/man/man1/yum-config-manager.1" \
+	   "$pkgdir/usr/share/man/man1/yum-debug-dump.1" \
+	   "$pkgdir/usr/share/man/man1/yum-debug-restore.1" \
+	   "$pkgdir/usr/share/man/man5/yum-versionlock.conf.5" \
+	   "$pkgdir/usr/share/man/man8/yum-copr.8" \
+	   "$pkgdir/usr/share/man/man8/yum-versionlock.8"
 
 	install -Dp -m644 ../README.rst "$pkgdir/usr/share/doc/$pkgname/README.rst"
 }
