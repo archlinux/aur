@@ -1,7 +1,7 @@
 # Maintainer: Thulinma <jaron@vietors.com>
 pkgname=mistserver-git
 pkgdesc="The MistServer media server toolkit, open source edition, unstable development branch"
-pkgver=2.12
+pkgver=2.14
 pkgver() {
   cd "$srcdir/$pkgname"
   git describe --tags
