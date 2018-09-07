@@ -1,53 +1,46 @@
 # Contributor: Rod Kay   <charlie5 on #ada at freenode.net>
 
 pkgname=libadalang
-pkgver=1
-pkgrel=3
+pkgver=2018
+pkgrel=1
 pkgdesc="A high performance semantic engine for the Ada programming language."
 
 arch=('i686' 'x86_64')
 url="https://github.com/AdaCore/libadalang"
 license=('GPL')
 
-depends=("gcc-ada" "gnatcoll"
+depends=("gcc-ada" "gnatcoll-core"
          "quex-for_libadalang" "python2-funcy" "python2-mako" "python-yaml" "python-sphinx" "python-coverage" "python2-enum34"
          "python-psutil" "python2-docutils" "autopep8" "yapf")
 
-makedepends=("git")
+makedepends=("gprbuild")
 
+provides=('libadalang')
+conflicts=('libadalang-git')
 
-source=(http://mirrors.cdn.adacore.com/art/591c45e2c7a447af2deed042
-        http://mirrors.cdn.adacore.com/art/591c45e2c7a447af2deed044
-        use_fpic_for_libadalang.patch)
-
-sha1sums=('08a43b26a2f3469c1255c642db105aba023e9f78'
-          '4b36153f8610dd7b62b41938d020eaed39e20842'
-          '6d1f238567e1a8ec4aff81a7f62f10ef048a7b28')
-
+source=('http://mirrors.cdn.adacore.com/art/5b0cf9adc7a4475263382c18'
+        'http://mirrors.cdn.adacore.com/art/5b0cfbefc7a4475263382c2a')
+sha1sums=('7e9f90eb9bcdd2877b7da1aca1c2f88ff90c3dcc'
+          '0f6ea268a81371a880122cbdd3b2493ae91d0811')
 
 build() 
 {
-  cd $srcdir/libadalang-gps-src
+  cd $srcdir/libadalang-gpl-2018-src
 
   # Ensure that QUEX_PATH is set.
   #
   source /etc/profile.d/quex.sh
 
-  export PYTHONPATH=$srcdir/langkit-gps-src:$PYTHONPATH
+  export PYTHONPATH=$srcdir/langkit-gpl-2018-src:$PYTHONPATH
 
   python2 ada/manage.py generate
-
-  # Add -fPIC where needed.
-  #
-  patch -Np0 -i "$srcdir"/use_fpic_for_libadalang.patch
-
   python2 ada/manage.py build
 }
 
 
 package()
 {
-  cd $srcdir/libadalang-gps-src
+  cd $srcdir/libadalang-gpl-2018-src
 
   # Ensure that QUEX_PATH is set.
   #
