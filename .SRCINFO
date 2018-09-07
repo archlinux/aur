@@ -1,0 +1,15 @@
+pkgbase = ros-melodic-libviso2
+	pkgdesc = Library for visual odometry
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = http://moveit.ros.org
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = gcc-libs
+	depends = gcc-libs
+	source = viso2::git+https://github.com/srv/viso2.git
+	sha256sums = SKIP
+
+pkgname = ros-melodic-libviso2
+
