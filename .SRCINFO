@@ -1,6 +1,6 @@
 pkgbase = hitch-git
 	pkgdesc = Hitch is a libev-based high performance SSL/TLS proxy.
-	pkgver = 1.4.7.r5.8d80aa9
+	pkgver = 1.4.8.r9.beff3d4
 	pkgrel = 1
 	url = https://hitch-tls.org/
 	arch = x86_64
@@ -10,9 +10,12 @@ pkgbase = hitch-git
 	makedepends = lsof
 	depends = libev
 	depends = openssl
+	depends = python-docutils
 	provides = hitch
 	conflicts = hitch
+	source = git+http://git.1wt.eu/git/ebtree.git/
 	source = git+https://github.com/varnish/hitch.git
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = hitch-git
