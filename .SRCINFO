@@ -1,11 +1,9 @@
 pkgbase = pentmenu
-	pkgdesc = A bash script inspired by pentbox.
-	pkgver = 1.4
+	pkgdesc = A bash select menu for quick and easy network recon and DOS attacks
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = https://github.com/GinjaChris/pentmenu
 	arch = any
-	groups = archstrike
-	groups = archstrike-misc
 	license = GPL3
 	depends = bash
 	depends = hping
@@ -14,8 +12,8 @@ pkgbase = pentmenu
 	depends = stunnel
 	depends = nmap
 	depends = whois
-	source = https://github.com/GinjaChris/pentmenu/archive/1.4.tar.gz
-	sha512sums = eff5a021c229a6f575e3054c135afa3e008da62648dcb78fca792f5bbd8f5f04acdb3a1185d78275cff7cde1b73edd17449a476a895cf22d19fd3a7768254a16
+	source = https://github.com/GinjaChris/pentmenu/archive/1.7.2.tar.gz
+	sha512sums = 7ad8b03a3b7bf35632629723fc0ec7fccf61862ba37ca3bacac0285ae791b9e8f7029fbf05f0d5f7b109856c15a797dcd37c4dbbfb9b4f1fccf25f727725824b
 
 pkgname = pentmenu
 
