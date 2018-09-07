@@ -1,0 +1,16 @@
+post_install() {
+  echo "====> Please note:"
+  echo "      In case you have purchased a local license (and not a network"
+  echo "      license), the license is only accepted if the software is run"
+  echo "      from a place which is via wine configured as a local hard disk,"
+  echo "      and not as a network drive."
+  echo "<==== If you want to check or change, run winecfg."
+}
+
+post_upgrade() {
+  post_install "$@"
+}
+
+post_remove() {
+  true
+}
