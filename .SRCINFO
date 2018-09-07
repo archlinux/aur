@@ -1,6 +1,6 @@
 pkgbase = xde-ctools-git
 	pkgdesc = X Desktop Environment C-language tools
-	pkgver = 1.7.0.g9725667
+	pkgver = 1.7.38.g5f44a35
 	pkgrel = 1
 	url = https://github.com/bbidulock/xde-ctools
 	arch = i686
