@@ -6,7 +6,7 @@ arch=('x86_64')
 url="http://ab-initio.mit.edu/wiki/index.php/NLopt"
 license=('LGPL')
 depends=('gcc-libs')
-makedepends=('python-numpy' 'octave' 'guile' 'swig' 'cmake')
+makedepends=('python-numpy' 'octave' 'guile' 'swig' 'cmake' 'wget')
 optdepends=('octave: to use with octave',
             'python: to use with python',
             'guile: to use with guile')

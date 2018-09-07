@@ -10,6 +10,7 @@ pkgbase = nlopt
 	makedepends = guile
 	makedepends = swig
 	makedepends = cmake
+	makedepends = wget
 	depends = gcc-libs
 	optdepends = octave: to use with octave,
 	optdepends = python: to use with python,
