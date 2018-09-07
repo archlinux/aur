@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=PicGo
 Comment=Easy to upload your pic & copy to write
-Exec="/opt/appimages/picgo.AppImage" %U
+Exec=env DESKTOPINTEGRATION=no "/opt/appimages/picgo.AppImage" %U
 Terminal=false
 Type=Application
 Icon=picgo
