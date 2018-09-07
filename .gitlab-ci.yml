@@ -1,0 +1,11 @@
+image: gcc
+
+build:
+    stage: build
+    script: gcc random.c -o random
+    
+test:
+    stage: test
+    script:
+        - random
+        - random 10 100 -f -d 10 -g 10
