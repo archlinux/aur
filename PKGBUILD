@@ -1,7 +1,7 @@
 # Maintainer: Infernio <infernio at icloud dot com>
 pkgname=air-for-steam
 pkgver=2018_0805
-pkgrel=1
+pkgrel=2
 pkgdesc="An elegant and customizable skin for Steam"
 arch=('any')
 url="https://github.com/Outsetini/Air-for-Steam"
@@ -13,7 +13,7 @@ sha256sums=('838df672cdc28ba8491a7bea033807384bf360f8f3873db383a3c1c12b82e3ab')
 
 package() {
     cd "${srcdir}"
-    DESTDIR="${pkgdir}/usr/lib/steam/skins/${pkgname}"
+    DESTDIR="${pkgdir}/usr/share/steam/skins/${pkgname}"
     LIBDIR="${pkgdir}/usr/share/licenses/${pkgname}"
 
     mkdir -p "${DESTDIR}"
