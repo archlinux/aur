@@ -2,8 +2,8 @@
 
 pkgname=ttf-sbl-biblit
 pkgver=1.0_Build001
-pkgrel=1
-pkgdesc="SBL biblical font"
+pkgrel=2
+pkgdesc="SBL biblical font, including SBL Greek, SBL Hebrew, and transliteration glyphs"
 arch=('any')
 url="https://www.sbl-site.org/educational/BiblicalFonts_SBLBibLit.aspx"
 license=('custom')
