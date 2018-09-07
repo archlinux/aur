@@ -1,7 +1,7 @@
 pkgbase = landeseternelles
 	pkgdesc = Landes Eternelles is a french role playing game (mmorpg), forked from Eternal Lands.
 	pkgver = 1.9.0
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.landes-eternelles.com
 	install = landeseternelles.install
 	arch = i686
@@ -20,7 +20,7 @@ pkgbase = landeseternelles
 	source = http://landes-eternelles.com/client/1900/linux/LandesEternellesLinux-1.9.0.tar.bz2
 	source = landeseternelles.desktop
 	source = landeseternelles.png
-	sha256sums = 49914957704e043dc38b9b18d5b4a027ef061aafb2d068c7d4f6d3ce421e52a3
+	sha256sums = e00b6b1771698cbac22502afab17b4bd8a0ece8268ec80ee7ba137236ba60010
 	sha256sums = 8cf98ab4d27fa847bc81b371fd29959b1e73e91e29ea5ed080cda0d20007e55b
 	sha256sums = 55aa2a48188fcc38d47dab3c2021439913b0ae716f9c54fb67c48e22e50700b4
 	sha256sums = 1357259d4232d8533d3acdf22c63a9b650472f0ca2cf9841eb03ebd6a514e3f7
