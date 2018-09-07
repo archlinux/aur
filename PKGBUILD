@@ -4,7 +4,7 @@
 # Contributor: Philipp 'TamCore' B. <philipp [at] tamcore [dot] eu>
 
 pkgname=ghostwriter
-pkgver=1.7.1
+pkgver=1.7.3
 pkgrel=1
 pkgdesc="A cross-platform, aesthetic, distraction-free Markdown editor"
 arch=('i686' 'x86_64')
@@ -15,16 +15,8 @@ makedepends=('qt5-tools')
 optdepends=('multimarkdown: For alternative converter, superset of Markdown with various output formats'
             'pandoc: For Pandoc supported Markdown flavors and export to various formats'
             'cmark: For processing and rendering CommonMark')
-source=("https://github.com/wereturtle/ghostwriter/archive/v${pkgver}.tar.gz"
-        "https://github.com/wereturtle/ghostwriter/compare/v1.7.1...c2d24150aec2890c42a0f5274a1bf941ee997175.patch")
-md5sums=('34122f91be26462048b6afb54cebef41'
-         'a940d931e1b44afe4c6e07eb136d9021')
-
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-
-  patch -Np1 < "${srcdir}/v1.7.1...c2d24150aec2890c42a0f5274a1bf941ee997175.patch"
-}
+source=("https://github.com/wereturtle/ghostwriter/archive/v${pkgver}.tar.gz")
+sha512sums=('a6f7e64078bdb3ecd9ea48ead8e96811e62215292a1c4a269f23efb6c0403c62fb0aab3e1303397b08036a7f3507d04a8eb8c14baafd78f64fea20805bb24a5a')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
