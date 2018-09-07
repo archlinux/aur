@@ -1,15 +1,15 @@
 # Maintainer: Scott Hansen <firecat4153@gmail.com>
 pkgname=python-pykeepass
-pkgver=2.8.2
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="Low-level library to interact with keepass databases"
 arch=("any")
 url="https://github.com/pschmitt/pykeepass"
 license=("GPL")
-depends=("python" "python-crypto" "python-lxml" "python-libkeepass" "python-nose" "python-dateutil")
+depends=("python" "python-argon2_cffi" "python-construct" "python-dateutil" "python-lxml" "python-pycryptodome")
 makedepends=("python-setuptools")
 source=("$url/archive/$pkgver.tar.gz")
-sha512sums=('0f9c18d459abaf4b485a14806808aee5bc19521527ee0a296502bad61ba0ade4b82430eeecfeeeadd40ce743d7ad0c88c6b085f7a1e7009380196269c62362f1')
+sha512sums=('9a29a68790ff0c724d04a4bfd66103f0a10607fdcec4b74b0943ad843775804f607a60bd35cdd910541f6610745a0a77e62e69a55303d3785ef5ec64c6bf9780')
 
 package() {
     cd "$srcdir/pykeepass-$pkgver"

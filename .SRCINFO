@@ -1,19 +1,19 @@
 pkgbase = python-pykeepass
 	pkgdesc = Low-level library to interact with keepass databases
-	pkgver = 2.8.2
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = https://github.com/pschmitt/pykeepass
 	arch = any
 	license = GPL
 	makedepends = python-setuptools
 	depends = python
-	depends = python-crypto
-	depends = python-lxml
-	depends = python-libkeepass
-	depends = python-nose
+	depends = python-argon2_cffi
+	depends = python-construct
 	depends = python-dateutil
-	source = https://github.com/pschmitt/pykeepass/archive/2.8.2.tar.gz
-	sha512sums = 56b38e10cc44966bffb2ee827a43ef5af525f7cd5bf4c8c2bbbfff510e41d7d30af36a4286221ee8a52556cd3bc42e5e469af470e9e18e10d7095ec1938d048c
+	depends = python-lxml
+	depends = python-pycryptodome
+	source = https://github.com/pschmitt/pykeepass/archive/3.0.2.tar.gz
+	sha512sums = 9a29a68790ff0c724d04a4bfd66103f0a10607fdcec4b74b0943ad843775804f607a60bd35cdd910541f6610745a0a77e62e69a55303d3785ef5ec64c6bf9780
 
 pkgname = python-pykeepass
 
