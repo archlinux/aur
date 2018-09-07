@@ -2,13 +2,13 @@
 
 pkgname=ocaml-ppxfind-git
 pkgver=20171213
-pkgrel=2
+pkgrel=3
 pkgdesc="ocamlfind ppx tool"
 arch=('x86_64')
 url='https://github.com/diml/ppxfind'
 license=('BSD')
 provides=('ocaml-ppxfind')
-makedepends=('ocamlbuild' 'ocaml-findlib')
+makedepends=('ocamlbuild' 'ocaml-findlib' 'ocaml-migrate-parsetree')
 source=("${pkgname}::git://github.com/diml/ppxfind.git")
 md5sums=('SKIP')
 
