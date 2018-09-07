@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=PicGo
+Comment=Easy to upload your pic & copy to write
+Exec="/opt/appimages/picgo.AppImage" %U
+Terminal=false
+Type=Application
+Icon=picgo
+X-AppImage-Version=1.6.2.28
+X-AppImage-BuildId=fc9b38b0-9ad6-11a8-00b8-c7a86f31b32d
+Categories=Utility;
+Name[zh_CN.utf8]=picgo.desktop
