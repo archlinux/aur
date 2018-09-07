@@ -1,0 +1,23 @@
+pkgbase = browser360-beta
+	pkgdesc = A chromium based web broswer from Qihoo 360
+	pkgver = 10.0.1004.0
+	pkgrel = 1
+	url = https://browser.360.cn/se/
+	arch = x86_64
+	license = custom
+	depends = ca-certificates
+	depends = ttf-liberation
+	depends = gconf
+	depends = libappindicator-gtk3
+	depends = gconf
+	depends = gtk2
+	depends = nss
+	depends = libxss
+	depends = lsb-release
+	depends = wget
+	depends = xdg-utils
+	source = browser360-beta_10.0.1004.0-1_amd64.deb::file://browser360-beta_10.0.1004.0-1_amd64.deb
+	sha1sums = 20080fab88301810eeeaaa7580b73efaccd4933d
+
+pkgname = browser360-beta
+
