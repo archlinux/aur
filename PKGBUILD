@@ -1,6 +1,6 @@
 # Maintainer: Infernio <infernio at icloud dot com>
 pkgname=sssm
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Simple Steam Skin Manager"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/Infernio/sssm"
 license=('MIT')
 depends=('bash' 'steam')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/Infernio/sssm/archive/${pkgver}.tar.gz")
-sha256sums=('245509e209c0d16ab29a60c3b921409cdcbc6a91cf6412d8d129438d4808f8fd')
+sha256sums=('75a2354dbb0a490ac4bd86262ee5bb21bf399cbcd2b51ba441207931fccdfd7c')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
