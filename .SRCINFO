@@ -1,0 +1,22 @@
+pkgbase = java-openjfx-devel
+	pkgdesc = Java OpenJFX 11 Early-Access Build from Oracle.
+	pkgver = 11b25
+	pkgrel = 1
+	url = http://jdk.java.net/openjfx/
+	arch = x86_64
+	license = GPL2
+	depends = java-environment-openjdk=11
+	depends = gstreamer
+	depends = libxtst
+	depends = webkit2gtk
+	depends = ffmpeg
+	depends = qt5-base
+	source = https://download.java.net/java/early_access/openjfx11/25/binaries/openjfx-11-ea+25_linux-x64_bin-sdk.zip
+	source = https://download.java.net/java/early_access/openjfx11/25/binaries/openjfx-11-ea+25_linux-x64_bin-jmods.zip
+	source = https://download.java.net/java/early_access/openjfx11/25/binaries/openjfx-11-ea+25_doc-api.zip
+	sha256sums = c149c4e346377fca1e474a915479d60774cad00b05048397dd2c62675a4f68ea
+	sha256sums = a0147e4c919cecc89479a387a47ec289c2fd909d8278a3e379a6bef53a9e0e6c
+	sha256sums = 52e38f360fd0e5665e858ac4681164c0162338a17f1ed1a4b3b91111cfe8be80
+
+pkgname = java-openjfx-devel
+
