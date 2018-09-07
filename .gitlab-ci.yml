@@ -7,5 +7,5 @@ build:
 test:
     stage: test
     script:
-        - random
-        - random 10 100 -f -d 10 -g 10
+        - ./random
+        - ./random 10 100 -f -d 10 -g 10
