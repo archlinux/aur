@@ -1,7 +1,7 @@
 pkgbase = firefox-esr
 	pkgdesc = Standalone web browser from mozilla.org, Extended Support Release
 	pkgver = 60.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mozilla.org/en-US/firefox/organizations/
 	arch = i686
 	arch = x86_64
@@ -24,6 +24,7 @@ pkgbase = firefox-esr
 	makedepends = llvm
 	makedepends = jack
 	makedepends = gtk2
+	makedepends = clang
 	depends = gtk3
 	depends = mozilla-common
 	depends = libxt

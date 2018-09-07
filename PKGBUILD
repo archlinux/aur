@@ -5,7 +5,7 @@
 
 pkgname=firefox-esr
 pkgver=60.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -13,7 +13,7 @@ url="https://www.mozilla.org/en-US/firefox/organizations/"
 depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib ffmpeg
          nss hunspell sqlite ttf-font libpulse libvpx icu)
 makedepends=(unzip zip diffutils python2 yasm mesa imake gconf inetutils xorg-server-xvfb
-             autoconf2.13 rust clang llvm jack gtk2)
+             autoconf2.13 rust clang llvm jack gtk2 clang)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
@@ -99,6 +99,10 @@ build() {
   #CPPFLAGS+=" -O2"
 
 #  export PATH="$srcdir/path:$PATH"
+
+  # Build with clang
+  export CC=clang
+  export CXX=clang++
 
   # Do PGO
   #xvfb-run -a -n 95 -s "-extension GLX -screen 0 1280x1024x24" \
