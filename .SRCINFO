@@ -6,7 +6,6 @@ pkgbase = light
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = help2man
 	source = light-1.1.2.tar.gz::https://github.com/haikarainen/light/archive/1.1.2.tar.gz
 	sha256sums = 291ef234929adb20fe96359724c5ccad36cf396dd110f7001654c21e17800032
 
