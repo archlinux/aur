@@ -20,9 +20,11 @@ source=("neo::git+https://github.com/intel/compute-runtime#tag=$pkgver"
         "llvm_patches::git+https://github.com/intel/llvm-patches#commit=96d382b"
         "llvm_source::git+https://github.com/llvm-mirror/llvm#branch=release_40"
         "gmmlib::git+https://github.com/intel/gmmlib#commit=941eda5"
+        "opencl_headers::git+https://github.com/KhronosGroup/OpenCL-Headers#commit=f039db6"
         "igc::git+https://github.com/intel/intel-graphics-compiler#commit=d1dff9b")
 
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
