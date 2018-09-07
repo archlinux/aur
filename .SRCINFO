@@ -1,6 +1,6 @@
 pkgbase = xde-session-git
 	pkgdesc = X Desktop Environment Display and Session Management
-	pkgver = 1.6.0.g9bc23b1
+	pkgver = 1.6.19.gcc20df0
 	pkgrel = 1
 	url = https://github.com/bbidulock/xde-session
 	arch = i686

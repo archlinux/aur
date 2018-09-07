@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=xde-session-git
-pkgver=1.6.0.g9bc23b1
+pkgver=1.6.19.gcc20df0
 pkgrel=1
 pkgdesc="X Desktop Environment Display and Session Management"
 groups=('xde-git')
