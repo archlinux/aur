@@ -1,0 +1,26 @@
+pkgbase = athenaeum-git
+	pkgdesc = A libre replacement for Steam
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://gitlab.com/librebob/athenaeum
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = flatpak
+	depends = python3
+	depends = pyqt5-common
+	depends = python-pyqt5
+	depends = python-sip-pyqt5
+	depends = python-peewee
+	depends = python-xdg
+	depends = python-dateutil
+	depends = qt5-base
+	depends = qt5-svg
+	depends = qt5-quickcontrols2
+	depends = qt5-declarative
+	depends = sqlite
+	source = git+https://gitlab.com/librebob/athenaeum.git
+	md5sums = SKIP
+
+pkgname = athenaeum-git
+
