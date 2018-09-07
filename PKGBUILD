@@ -21,7 +21,7 @@
 
 pkgname=retroshare
 pkgver=0.6.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://retroshare.sourceforge.net/"
@@ -62,8 +62,8 @@ fi
 
 prepare() {
 	cd "${srcdir}/RetroShare-${pkgver}"
-	git apply ../4d287d68bc9725f403dc7d952a927d401c5d6c97.patch
-	git apply ../428b331d8efede1e2f39f2fc49216c675d081030.patch
+	patch -p1 -i "${srcdir}"/4d287d68bc9725f403dc7d952a927d401c5d6c97.patch
+	patch -p1 -i "${srcdir}"/428b331d8efede1e2f39f2fc49216c675d081030.patch
 }
 
 build() {
