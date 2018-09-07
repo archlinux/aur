@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=2.0.0
+Type=Application
+Name=kubernetic
+Exec=/opt/kubernetic/kubernetic %f
+Icon=kubernetic
+Comment=kubernetic
+Categories=cluster;kubernetes;ui
+Terminal=false
