@@ -1,6 +1,6 @@
-pkgbase = kotlin
-	pkgdesc = Statically typed programming language that can interoperate with Java
-	pkgver = 1.2.60
+pkgbase = kotlin-eap
+	pkgdesc = EAP - Statically typed programming language that can interoperate with Java
+	pkgver = 1.3_M2
 	pkgrel = 1
 	url = https://kotlinlang.org/
 	arch = any
@@ -8,8 +8,10 @@ pkgbase = kotlin
 	license = custom
 	makedepends = setconf
 	depends = java-environment>=8
-	source = https://github.com/JetBrains/kotlin/releases/download/v1.2.60/kotlin-compiler-1.2.60.zip
-	sha256sums = ff79f695c9be0a500d4b56a69d0b8657b3d106d78a35101e792248af904a623d
+	provides = kotlin
+	conflicts = kotlin
+	source = https://github.com/JetBrains/kotlin/releases/download/v1.3-M2/kotlin-compiler-1.3-M2.zip
+	sha256sums = a39ae5aec9101c5078eeff1e1f49293036eb602585c9bc9d4b4d3c90a059aff6
 
-pkgname = kotlin
+pkgname = kotlin-eap
 
