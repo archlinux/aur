@@ -23,7 +23,7 @@ pkgname=retroshare
 pkgver=0.6.4
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://retroshare.sourceforge.net/"
 license=('GPL' 'LGPL')
 depends=('qt5-multimedia' 'qt5-x11extras' 'libupnp' 'libxss' 'libmicrohttpd' 'sqlcipher')
@@ -33,8 +33,10 @@ optdepends=('tor: tor hidden node support'
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 
-source=("https://github.com/RetroShare/RetroShare/archive/v${pkgver}.tar.gz")
-sha256sums=('84355c0f3be5ec1dfa7253e327ea1254f76f47739c233cfb8d0983ebd1a61f4a')
+source=("https://github.com/RetroShare/RetroShare/archive/v${pkgver}.tar.gz"
+	"https://github.com/RetroShare/RetroShare/commit/4d287d68bc9725f403dc7d952a927d401c5d6c97.patch")
+sha256sums=('84355c0f3be5ec1dfa7253e327ea1254f76f47739c233cfb8d0983ebd1a61f4a'
+            'd5b775333a351068711dc12bb50d92fde4966fcaaf393039c324b46e2f03f986')
 
 # Add missing dependencies if needed
 [[ "$_plugin_voip" == 'true' ]] && depends=(${depends[@]} 'ffmpeg' 'opencv')
@@ -55,6 +57,11 @@ if [[ "$_plugin_lua4rs" == 'true' ]] ; then
 	depends=(${depends[@]} 'lua')
         source=(${source[@]} 'Lua4RS::git+https://github.com/RetroShare/Lua4RS.git')
 fi
+
+prepare() {
+	cd "${srcdir}/RetroShare-${pkgver}"
+	git apply ../4d287d68bc9725f403dc7d952a927d401c5d6c97.patch
+}
 
 build() {
 	cd "${srcdir}/RetroShare-${pkgver}"
