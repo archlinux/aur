@@ -1,6 +1,6 @@
 # Maintainer: jtmb <packaging at technologicalwizardry dot com>
 pkgname=msbuild-stable
-_pkgver=15.6+xamarinxplat.2018.01.17.14.14-0xamarin1+ubuntu1404b1
+_pkgver=15.8+xamarinxplat.2018.07.31.22.43-0xamarin5+ubuntu1404b1
 pkgver=${_pkgver//[+-]/_}
 pkgrel=3
 pkgdesc="Xamarin implementation of the Microsoft build system"
@@ -11,7 +11,7 @@ conflicts=('msbuild')
 url="https://github.com/mono/msbuild"
 license=('MIT')
 source=("msbuild-amd64-v${_pkgver}.deb::http://download.mono-project.com/repo/ubuntu/pool/main/m/msbuild/msbuild_${_pkgver}_all.deb")
-sha256sums=('262519a70e62b62861339ceddb5654cce24652a1919cbcd25094bbaac41a7c72')
+sha256sums=('93e71f85c16c896ce6f459fb1d61e16d90db725d288bc6635332ac50e9886ced')
 
 package() {
     cd "${srcdir}"
