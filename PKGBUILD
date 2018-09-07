@@ -1,7 +1,7 @@
 # Maintainer: Infernio <infernio at icloud dot com>
 pkgname=air-for-steam
 pkgver=2018_0805
-pkgrel=3
+pkgrel=4
 pkgdesc="An elegant and customizable skin for Steam"
 arch=('any')
 url="https://github.com/Outsetini/Air-for-Steam"
@@ -14,10 +14,13 @@ sha256sums=('838df672cdc28ba8491a7bea033807384bf360f8f3873db383a3c1c12b82e3ab')
 package() {
     cd "${srcdir}"
     DESTDIR="${pkgdir}/usr/share/steam/skins/${pkgname}"
-    LIBDIR="${pkgdir}/usr/share/licenses/${pkgname}"
+    LCNSDIR="${pkgdir}/usr/share/licenses/${pkgname}"
+    FONTDIR="${pkgdir}/usr/share/fonts/${pkgname}"
 
     mkdir -p "${DESTDIR}"
-    mkdir -p "${LIBDIR}"
+    mkdir -p "${LCNSDIR}"
+    mkdir -p "${FONTDIR}"
     cp -r "Air-for-Steam-${pkgver//_/-}/." "${DESTDIR}"
-    cp "${DESTDIR}/LICENSE.txt" "${LIBDIR}"
+    cp "${DESTDIR}/LICENSE.txt" "${LCNSDIR}"
+    cp "${DESTDIR}/+Extras/Fonts"/* "${FONTDIR}"
 }

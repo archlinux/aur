@@ -1,7 +1,7 @@
 pkgbase = air-for-steam
 	pkgdesc = An elegant and customizable skin for Steam
 	pkgver = 2018_0805
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Outsetini/Air-for-Steam
 	install = air-for-steam.install
 	arch = any
