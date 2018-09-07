@@ -22,5 +22,8 @@ package() {
   cp -r "${srcdir}"/usr "${pkgdir}"/usr
 }
 
+# Update md5sum
+# makepkg --geninteg
+
 ## Update .SRCINFO
 # makepkg --printsrcinfo | tee .SRCINFO
