@@ -15,6 +15,7 @@ source=("http://www.ac6-tools.com/downloads/SW4STM32/install_sw4stm32_linux_64bi
 	$pkgname
 	$pkgname.png
 $pkgname.desktop)
+noextract=(install_sw4stm32_linux_64bits-v$pkgver.run)
 
 package() {
 	unset LD_PRELOAD
