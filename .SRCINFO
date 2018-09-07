@@ -1,0 +1,28 @@
+pkgbase = ros-melodic-map-server
+	pkgdesc = ROS - map_server provides the map_server ROS Node, which offers map data as a ROS Service.
+	pkgver = 1.16.2
+	pkgrel = 1
+	url = http://wiki.ros.org/map_server
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-rostest
+	makedepends = ros-melodic-tf
+	makedepends = ros-melodic-nav-msgs
+	makedepends = ros-melodic-roscpp
+	makedepends = ros-melodic-catkin
+	makedepends = sdl_image
+	makedepends = yaml-cpp
+	makedepends = bullet
+	depends = ros-melodic-rostest
+	depends = ros-melodic-tf
+	depends = ros-melodic-nav-msgs
+	depends = ros-melodic-roscpp
+	depends = sdl_image
+	depends = yaml-cpp
+	source = ros-melodic-map-server-1.16.2-0.tar.gz::https://github.com/ros-gbp/navigation-release/archive/release/melodic/map_server/1.16.2-0.tar.gz
+	sha256sums = bfa8523b9c697f97956d24e89857dcccc5b4cc09844b42adb0ce066c6df28972
+
+pkgname = ros-melodic-map-server
+
