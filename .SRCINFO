@@ -1,7 +1,7 @@
 pkgbase = titania-git
 	pkgdesc = Use Titania to create standard complient X3D/VRML worlds for publishing on the World Wide Web and for creating stand alone applications
-	pkgver = 3741
-	pkgrel = 2
+	pkgver = 3997
+	pkgrel = 1
 	url = http://titania.create3000.de
 	arch = i686
 	arch = x86_64
@@ -20,6 +20,7 @@ pkgbase = titania-git
 	depends = js185
 	depends = fontconfig
 	depends = imagemagick
+	depends = libmagick
 	depends = curl
 	depends = openssl
 	depends = sqlite
@@ -36,6 +37,7 @@ pkgbase = titania-git
 	depends = mpfr
 	depends = ttf-ubuntu-font-family
 	depends = libxml++2.6
+	depends = bullet
 	source = git+https://github.com/create3000/titania.git
 	md5sums = SKIP
 
