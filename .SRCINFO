@@ -1,6 +1,6 @@
 pkgbase = platformsh-cli
 	pkgdesc = Platform.sh CLI
-	pkgver = 3.34.1
+	pkgver = 3.34.2
 	pkgrel = 1
 	url = https://github.com/platformsh/platformsh-cli
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = platformsh-cli
 	depends = php>=5.5.9
 	provides = platformsh-cli
 	noextract = platform.phar
-	source = https://github.com/platformsh/platformsh-cli/releases/download/v3.34.1/platform.phar
-	sha256sums = 53cfbd8255270f9f12b2e5cf9882ea3a9094866bcde19de406ddf676c114d1fa
+	source = https://github.com/platformsh/platformsh-cli/releases/download/v3.34.2/platform.phar
+	sha256sums = 11b35014067a096b65f73ee506eb8d40f8baca9cb9dc23e73c3b7d0b512182bb
 
 pkgname = platformsh-cli
 
