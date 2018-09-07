@@ -10,7 +10,7 @@ url="http://www.enlightenment.org"
 license=('BSD')
 depends=('efl')
 options=('!emptydirs')
-source=("http://download.enlightenment.org/releases/${pkgname}-${pkgver}.tar.bz2")
+source=("http://download.enlightenment.org/att/releases/${pkgname}-${pkgver}.tar.bz2")
 sha256sums=('4d9c2f2deb017d67909d88718f1a97e80ab611538491956995377189f780ca0d')
 
 build() {
