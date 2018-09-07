@@ -9,8 +9,8 @@ pkgdesc="Intel® RealSense™ SDK 2.0 is a cross-platform library for Intel® Re
 arch=('x86_64')
 url="https://github.com/IntelRealSense/librealsense"
 license=('Apache')
-makedepends=('cmake' 'linux-lts-headers')
-depends=('glfw-x11' 'gtk3' 'libusb' 'linux-lts')
+makedepends=('cmake')
+depends=('glfw-x11' 'gtk3' 'libusb')
 source=("git+https://github.com/IntelRealSense/librealsense#commit=${_commit}")
 sha256sums=(SKIP)
 

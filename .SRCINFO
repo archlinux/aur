@@ -6,11 +6,9 @@ pkgbase = librealsense
 	arch = x86_64
 	license = Apache
 	makedepends = cmake
-	makedepends = linux-lts-headers
 	depends = glfw-x11
 	depends = gtk3
 	depends = libusb
-	depends = linux-lts
 	source = git+https://github.com/IntelRealSense/librealsense#commit=b55069d177f69daea3b9437532f4b98fbe97a718
 	sha256sums = SKIP
 
