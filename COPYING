@@ -1,0 +1,9 @@
+Digest::CRC version 0.22
+========================
+
+COPYRIGHT AND LICENCE
+   CRC algorithm code taken from "A PAINLESS GUIDE TO CRC ERROR DETECTION
+   ALGORITHMS".
+
+   The author of this package disclaims all copyrights and releases it
+   into the public domain.
