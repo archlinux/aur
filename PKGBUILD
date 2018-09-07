@@ -4,14 +4,14 @@
 
 _pkgname=FanFicFare
 pkgname=fanficfare-git
-pkgver=2.28.0.r0.g1194be86
-pkgrel=1
+pkgver=2.28.0.r167.g09fd06cd
+pkgrel=2
 pkgdesc="A tool for downloading fanfiction to eBook formats"
 arch=('any')
 url="https://github.com/JimmXinu/${_pkgname}"
 license=('Apache')
-depends=('python2' 'python2-beautifulsoup4' 'python2-chardet' 'python2-html5lib'
-         'python2-html2text')
+depends=('python' 'python-beautifulsoup4' 'python-chardet' 'python-html5lib'
+         'python-html2text')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -25,16 +25,16 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_pkgname}"
-    python2 setup.py build
+    python setup.py build
 
-    if [[ -x /usr/bin/calibre-customize ]]; then
+    if command -v calibre-customize > /dev/null; then
         msg2 "Creating and installing FanFicFare calibre plugin..."
-        python2 makeplugin.py
+        python makeplugin.py
         calibre-customize -a FanFicFare.zip || true
     fi
 }
 
 package() {
     cd "${srcdir}/${_pkgname}"
-    python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
