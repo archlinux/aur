@@ -1,0 +1,13 @@
+pkgbase = sssm
+	pkgdesc = Simple Steam Skin Manager
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Infernio/sssm
+	arch = any
+	license = MIT
+	depends = steam
+	source = sssm_1.0.0::https://github.com/Infernio/sssm/archive/1.0.0.tar.gz
+	sha256sums = 0973827df85736a4f77e32a5724d4cc4171b471f118ec3c19af0750c12067f82
+
+pkgname = sssm
+
