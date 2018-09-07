@@ -4,23 +4,24 @@
 
 pkgname=avogadro
 pkgver=1.2.0
-pkgrel=5
+pkgrel=6
 pkgdesc="An advanced molecular editor based on Qt"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://avogadro.openmolecules.net/wiki/Main_Page"
 license=('GPL2')
 depends=('openbabel' 'python2-pyqt4' 'boost-libs' 'glew' 'python2-numpy')
-makedepends=('cmake' 'boost' 'doxygen' 'libgl' 'eigen2')
+makedepends=('cmake' 'boost' 'doxygen' 'libgl' 'eigen2' 'libmsym-git')
+options=('!emptydirs')
 source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         'boost153.patch'
         'avogadro-glibc2.23.patch'
         'avogadro-fix-linking.patch'
         'avogadro-force-eigen2.patch')
-md5sums=('3206068fc27bd3b717c568ee72f1e5ec'
-         'aa2573f78d5dbd85b3cb79e08acde8ab'
-         '83990ecbb4c076fddda3eaca2c2975ed'
-         'e333f624d5649c6d3a7cfd14a778bc73'
-         'b05434bbf62570f72e0b0c7335cd44c3')
+sha256sums=('6453e36e8ae3e61655cbe062df6d6fa6b2409122c7b5abc0a6f1d410a181640b'
+            '0aaddbac2ed6e9688d7923a303b68c229f435068372f3665d731b1b9fa1d8cfb'
+            '8ea373a31466fba7442e57616e0f9031ba22f530c5b5481bf0027b38438e6b2d'
+            '3f7a236ec59684762514e81f8211cee625a44af843c8ce401e1ee002786e9d31'
+            '9619aaf87f7d8be838a421b380e2a468473e15e119bc1a14dba85681e58c1700')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"  
@@ -53,4 +54,7 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}/build"
 
   make DESTDIR="${pkgdir}" install
+
+  # The packaged libmsym conflicts with the system version.
+  find ${pkgdir} -type d -name "*msym*" -exec rm -r '{}' +
 }
