@@ -1,14 +1,14 @@
 pkgbase = gmsh-docs
 	pkgdesc = TXT, HMTL and PDF doc for Gmsh
-	pkgver = 4.0.0
+	pkgver = 4.0.1
 	pkgrel = 1
 	url = http://gmsh.info/
 	arch = any
 	license = GPL2
 	makedepends = cmake
 	makedepends = texlive-core
-	source = http://gmsh.info/src/gmsh-4.0.0-source.tgz
-	sha256sums = fb0c8afa37425c6f4315ab3b3124e9e102fcf270a35198423a4002796f04155f
+	source = http://gmsh.info/src/gmsh-4.0.1-source.tgz
+	sha256sums = 3f9fad36b016d69d2eb256b6783f7230c261054ceed2363a1e20b22986573769
 
 pkgname = gmsh-docs
 
