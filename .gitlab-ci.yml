@@ -2,10 +2,14 @@ image: gcc
 
 build:
     stage: build
-    script: gcc random.c -o random
+    script:
+        - gcc random.c -o random
+    artifacts:
+        paths:
+            - random
     
 test:
     stage: test
     script:
-        - ./random
-        - ./random 10 100 -f -d 10 -g 10
+        - random
+        - random 10 100 -f -d 10 -g 10
