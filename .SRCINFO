@@ -1,8 +1,8 @@
 pkgbase = hideit.sh-git
 	pkgdesc = Automagically hide/show a window
-	pkgver = r38.0538cb3
+	pkgver = r41.8fd7476
 	pkgrel = 1
-	url = https://github.com/Tadly/hideIt.sh
+	url = https://github.com/tadly/hideIt.sh
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -10,7 +10,7 @@ pkgbase = hideit.sh-git
 	depends = xorg-xwininfo
 	depends = xorg-xev
 	provides = hideIt.sh
-	source = hideIt.sh::git+https://github.com/Tadly/hideIt.sh.git
+	source = hideIt.sh::git+https://github.com/tadly/hideIt.sh.git
 	md5sums = SKIP
 
 pkgname = hideit.sh-git
