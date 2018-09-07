@@ -2,7 +2,7 @@
 
 pkgname=mastodon
 pkgver=2.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Free software social-network server based on ActivityPub and OStatus'
 arch=(i686 x86_64)
 url=https://joinmastodon.org
@@ -12,7 +12,7 @@ depends=(ffmpeg
          libpqxx
          libxml2
          libxslt
-         nodejs-lts-boron
+         nodejs-lts-carbon
          postgresql
          redis
          ruby-bundler
