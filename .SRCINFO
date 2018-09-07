@@ -1,5 +1,4 @@
 pkgbase = mkdocs-material
-	pkgdesc = Material design theme for MkDocs
 	pkgver = 3.0.4
 	pkgrel = 1
 	url = http://squidfunk.github.io/mkdocs-material/
