@@ -24,7 +24,9 @@ pkgbase = compute-runtime-git
 	source = llvm_patches::git+https://github.com/intel/llvm-patches
 	source = llvm_source::git+https://github.com/llvm-mirror/llvm#branch=release_40
 	source = gmmlib::git+https://github.com/intel/gmmlib
+	source = opencl_headers::git+https://github.com/KhronosGroup/OpenCL-Headers
 	source = igc::git+https://github.com/intel/intel-graphics-compiler
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
