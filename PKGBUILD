@@ -2,7 +2,7 @@
 
 pkgname=landeseternelles
 pkgver=1.9.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Landes Eternelles is a french role playing game (mmorpg), forked from Eternal Lands."
 arch=('i686' 'x86_64')
 url="http://www.landes-eternelles.com"
@@ -23,6 +23,8 @@ build() {
 
     sed -i -r "s/__inline__//g" $srcdir/client_sources/minimap.c
     sed -i -r "s/__inline__//g" $srcdir/client_sources/weather.c
+    sed -i -r "s/abs\(last_mod_time - SDL_GetTicks\(\)\)/abs\(\(long int\) SDL_GetTicks\(\) - last_mod_time\)/" $srcdir/client_sources/item_lists.cpp
+    sed -i -r "s/abs\(SDL_GetTicks\(\) - last_flash_change\)/abs\(\(long int\) SDL_GetTicks\(\) - last_flash_change\)/" $srcdir/client_sources/icon_window.cpp
 
     make -f Makefile.linux || return 1
 
@@ -56,7 +58,7 @@ package() {
     mv -f * $pkgdir/usr/share/$pkgname/
 }
 
-sha256sums=('49914957704e043dc38b9b18d5b4a027ef061aafb2d068c7d4f6d3ce421e52a3'
+sha256sums=('e00b6b1771698cbac22502afab17b4bd8a0ece8268ec80ee7ba137236ba60010'
             '8cf98ab4d27fa847bc81b371fd29959b1e73e91e29ea5ed080cda0d20007e55b'
             '55aa2a48188fcc38d47dab3c2021439913b0ae716f9c54fb67c48e22e50700b4'
             '1357259d4232d8533d3acdf22c63a9b650472f0ca2cf9841eb03ebd6a514e3f7'
