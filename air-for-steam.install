@@ -1,0 +1,11 @@
+post_install() {
+    /usr/bin/sssm sync air-for-steam
+}
+
+post_upgrade() {
+    /usr/bin/sssm sync air-for-steam
+}
+
+post_remove() {
+    /usr/bin/sssm remove air-for-steam
+}
