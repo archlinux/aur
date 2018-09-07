@@ -1,0 +1,17 @@
+pkgbase = python-chump-git
+	pkgdesc = The Best API Wrapper for Pushover.
+	pkgver = r98.f89e93c
+	pkgrel = 1
+	url = http://chump.readthedocs.org/
+	arch = any
+	license = Apache License, Version 2.0
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	provides = python-chump
+	conflicts = python-chump
+	source = python-chump::git+https://github.com/karanlyons/chump.git
+	md5sums = SKIP
+
+pkgname = python-chump-git
+
