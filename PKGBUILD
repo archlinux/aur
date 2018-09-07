@@ -8,7 +8,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=8.4.beta2.r0.g8b4f9a0885
+pkgver=8.4.beta4.r0.gfc36a57a38
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -51,7 +51,7 @@ sha256sums=('SKIP'
             '960afe4fcbffe2762b66119b8f14355386ced0d8ee52b535d0dac1dba90d365b'
             'ef265f88ceb6caf4aac2d86ea74850861d99a63d11c94fc52b2ce88053c26d1e'
             'fc393ee5fbf507dfb76d6ad0e9193d74a954acb13f35a371bf91e11bbcb08244'
-            'e57c9bb3abc37684c8630076c0c7c838eca918dc0e8acd7006797ca438839e0b'
+            '18edeafb01cc1ed7270c2dfb41a58717918680c98e8eada1858736acd65d92ba'
             '7fcb52e96935dccb0f958d37c2f4e3918392480b9af53e08562f6cba6c68cb94'
             '4722f9257f7b58a5dc8be2e9163ebba6d7b3ee011ff1ab9c0dbfb1330d367261'
             '7efb38ba511037feb3abbd88576323320555ba50235ddc7e3d423ca294dd42ed'
@@ -121,14 +121,13 @@ package_sagemath-git() {
   python2 setup.py install --root="$pkgdir" --optimize=1
 
   mkdir -p "$pkgdir"/usr/bin
-  cp bin/sage "$pkgdir"/usr/bin
+  cp bin/{sage,math-readline} "$pkgdir"/usr/bin
   for _i in cachegrind callgrind cleaner coverage coverageall cython env eval grep grepdoc inline-fortran ipynb2rst \
     ipython massif maxima.lisp native-execute notebook num-threads.py omega open preparse python rst2sws rst2txt run \
     run-cython runtests startuptime.py sws2rst valgrind version.sh
   do
     cp bin/sage-$_i "$pkgdir"/usr/bin
   done
-  cp bin/math-readline "$pkgdir"/usr/bin
   
   mkdir -p "$pkgdir"/usr/share/sage
   cp -r ext "$pkgdir"/usr/share/sage
