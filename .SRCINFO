@@ -1,12 +1,11 @@
 pkgbase = aur-pkg-status
 	pkgdesc = A small utility to check the status of the AUR packages installed on your ArchLinux machine
 	pkgver = 0.1.0
-	pkgrel = 3
+	pkgrel = 5
 	url = https://github.com/tinhtruong/aur-pkg-status/
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = go
 	depends = pacman
 	source = https://github.com/tinhtruong/aur-pkg-status/archive/v0.1.0.tar.gz
 	sha256sums = 3c2eb8ec02036cbbefd1540227a01638ee1fe942b126fab67b877f78ecf5b09b
