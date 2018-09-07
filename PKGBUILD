@@ -1,7 +1,7 @@
 # Maintainer: Baron Hou <houbaron@gmail.com>
 pkgname=picgo-appimage
 pkgver=1.6.2
-pkgrel=1
+pkgrel=2
 
 pkgdesc="A simple & beautiful tool for pictures uploading built by electron-vue"
 arch=('x86_64')
@@ -20,7 +20,7 @@ sha256sums=(
 )
 
 package() {
-    install -Dc picgo-${pkgver}-${arch}.AppImage ${pkgdir}/opt/appimages/picgo.AppImage
-    install -Dc picgo.desktop                    ${pkgdir}/usr/share/applications/picgo.desktop
-    install -Dc picgo.png                        ${pkgdir}/usr/share/icons/hicolor/256x256/apps/picgo.png
+    install -Dm755 picgo-${pkgver}-${arch}.AppImage ${pkgdir}/opt/appimages/picgo.AppImage
+    install -Dm644 picgo.desktop                    ${pkgdir}/usr/share/applications/picgo.desktop
+    install -Dm644 picgo.png                        ${pkgdir}/usr/share/icons/hicolor/256x256/apps/picgo.png
 }
