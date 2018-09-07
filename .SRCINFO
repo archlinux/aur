@@ -1,6 +1,6 @@
 pkgbase = ddnet-git
 	pkgdesc = DDraceNetwork, a mod of Teeworlds
-	pkgver = 11.3.1.r11.g0b539df74
+	pkgver = 11.4.2.r21.g714ed770e
 	pkgrel = 1
 	url = https://ddnet.tw
 	arch = x86_64
