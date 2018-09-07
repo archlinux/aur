@@ -1,31 +1,26 @@
-# Maintainer: Storm Dragon <stormdragon2976@gmail.com>
+# Maintainer: Doron Behar <doron.behar@gmail.com>
+# Contributer: Storm Dragon <stormdragon2976@gmail.com>
 # Contributer: OK100 <ok100 at lavabit dot com>
 
-pkgname=python-glyr-git
-_gitname=python-glyr
-pkgver=2014.06.22.g890e877
-pkgrel=2
+pkgname=python-glyr
+pkgver=1.0.6
+pkgrel=1
 pkgdesc="Python bindings to libglyr"
 url="https://github.com/sahib/python-glyr"
 license=('GPL3')
 arch=(any)
-depends=('python' 'glyr-git')
+depends=('python' 'glyr')
 makedepends=('git' 'cython')
-source=('git://github.com/sahib/python-glyr.git')
-md5sums=('SKIP')
-
-pkgver() {
-  cd "$srcdir"/$_gitname
-  git log -1 --format="%cd.g%h" --date=short | sed 's/-/./g'
-}
+source=("https://github.com/sahib/${pkgname}/archive/${pkgver}.tar.gz")
+md5sums=('fc6c1df7359055a013ca4575e10775be')
 
 build() {
-  cd "$srcdir/$_gitname"
+  cd "$srcdir/$pkgname-$pkgver"
   python setup.py build
 }
 
 package() {
-  cd "$srcdir/$_gitname"
+  cd "$srcdir/$pkgname-$pkgver"
   python setup.py install --root=$pkgdir
 }
 
