@@ -1,20 +1,14 @@
 pkgbase = indent
 	pkgdesc = C language source code formatting program
-	pkgver = 2.2.11
-	pkgrel = 4
+	pkgver = 2.2.12
+	pkgrel = 1
 	url = https://www.gnu.org/software/indent/
 	arch = x86_64
 	license = GPL3
 	makedepends = texi2html
 	depends = glibc
-	source = http://ftp.de.debian.org/debian/pool/main/i/indent/indent_2.2.11.orig.tar.gz
-	source = indent-2.2.11-segfault.patch
-	source = indent-2.2.11-LC_ALL.patch
-	source = indent-2.2.11-decimal_format.patch
-	sha1sums = 9b242528bbc4914464117c69ffae9df24d3fa4a7
-	sha1sums = 31a6dcd5edcac4decac81dbb52bc9415b8b148e4
-	sha1sums = 91b210b666de59ca44524288a4c1ebd213570daa
-	sha1sums = 2b7d5a725fe307ce81565f920a0a66b319b50c91
+	source = https://ftp-stud.hs-esslingen.de/pub/Mirrors/ftp.gnu.org/indent/indent-2.2.12.tar.xz
+	sha1sums = eecb3d7e78516d846af70e7bc86aabac9b92399c
 
 pkgname = indent
 
