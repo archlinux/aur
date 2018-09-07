@@ -1,4 +1,4 @@
-# Maintainer: Sándor Nagy <sanya868 at gmail dot com>
+# Maintainer: Sandor Nagy <sandor dot nagy at kdemail dot net>
 # Contributor: Alessio Sergi <asergi at archlinux dot us>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Vinay S Shastry <vinayshastry@gmail.com>
@@ -13,7 +13,7 @@ license=('LGPL2.1' 'GPL3')
 depends=('qt4')
 options=('docs')
 _pkgfqn="qt-everywhere-opensource-src-$pkgver"
-source=("http://download.qt-project.org/official_releases/qt/${pkgver%.*}/$pkgver/${_pkgfqn}.tar.gz")
+source=("https://download.qt.io/archive/qt/${pkgver%.*}/$pkgver/${_pkgfqn}.tar.gz")
 md5sums=('d990ee66bf7ab0c785589776f35ba6ad')
 
 package() {
