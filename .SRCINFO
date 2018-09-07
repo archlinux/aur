@@ -27,7 +27,7 @@ pkgbase = redmine
 	backup = usr/share/webapps/redmine/config/additional_environment.rb
 	backup = usr/share/webapps/redmine/config/database.yml
 	source = https://www.redmine.org/releases/redmine-3.4.6.tar.gz
-	sha256sums = 53612ab3fa4eb1e4da6343e3dcb72c3f4f1b2cb55ed51dd8a6b89d9675714a6d
+	sha512sums = ba94cc74620d56faaf9bf211d0f289152df043e4350a93e3f1b29528c053baa1cd36f605fa32c90224cdc62c98b7cfb24cd8cb6a2f988596406993ce86d5aff0
 
 pkgname = redmine
 
