@@ -1,5 +1,5 @@
 pkgbase = java-openjfx-ea-bin
-	pkgdesc = Java OpenJFX ${_majorver} Early-Access Build from Oracle.
+	pkgdesc = Java OpenJFX 11 Early-Access Build from Oracle.
 	pkgver = 11b25
 	pkgrel = 1
 	url = http://jdk.java.net/openjfx/
