@@ -1,46 +1,42 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Maintainer: Moritz Bunkus <moritz@bunkus.org>
 
 pkgname='perl-class-std'
-pkgver='0.011'
+pkgver='0.013'
 pkgrel='1'
 pkgdesc="Support for creating standard \"inside-out\" classes"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
-makedepends=()
-url='http://search.cpan.org/dist/Class-Std'
-source=('http://search.cpan.org/CPAN/authors/id/D/DC/DCONWAY/Class-Std-0.011.tar.gz')
-md5sums=('de8ad4f39cc9984595bc219df01ee23b')
-sha512sums=('b2387a2873257dcd5cec71850193fe8eee655bc669a951bd87b011cc8ef5637caad8cdc34f2e1daf85f3231905545e68b112380f006a75f9f97f58ef3f8860ec')
-_distdir="Class-Std-0.011"
+makedepends=('perl-module-build')
+url='https://metacpan.org/release/Class-Std'
+source=("https://cpan.metacpan.org/authors/id/C/CH/CHORNY/Class-Std-${pkgver}.tar.gz")
+sha512sums=('10e0c23866753a82fc981931053fa786ba8c4fa6d90b18788220d7bb414886c567545b13a2e6a4db565b0a2be67ff6524bc1f22154a2fa1223dc0cdb5e05f109')
+
+_prepare_environment() {
+  export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
+    PERL_AUTOINSTALL=--skipdeps                            \
+    PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
+    PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+    MODULEBUILDRC=/dev/null
+  cd "${srcdir}/Class-Std-${pkgver}"
+}
 
 build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
-
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
-    make
-  )
+  _prepare_environment
+  /usr/bin/perl Makefile.PL
+  make
 }
 
 check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
-  )
+  _prepare_environment
+  make test
 }
 
 package() {
-  cd "$srcdir/$_distdir"
+  _prepare_environment
   make install
-
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:
