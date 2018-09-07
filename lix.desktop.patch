@@ -5,7 +5,7 @@
  Name=Lix
  Comment=Lix E-Reader for Linux
 -Exec=AppRun
-+Exec=/opt/lix/lix
++Exec=/opt/lix-ereader/lix
  Terminal=false
  Type=Application
 -Icon=lix

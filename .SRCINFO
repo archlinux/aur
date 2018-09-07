@@ -1,7 +1,7 @@
 pkgbase = lix-ereader
 	pkgdesc = A proprietary e-reader
 	pkgver = 1.0.19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.lix.com/
 	arch = x86_64
 	license = unknown

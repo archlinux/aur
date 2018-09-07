@@ -2,7 +2,7 @@
 
 pkgname=lix-ereader
 pkgver=1.0.19
-pkgrel=1
+pkgrel=2
 pkgdesc="A proprietary e-reader"
 arch=('x86_64')
 url='https://www.lix.com/'
@@ -24,16 +24,16 @@ prepare() {
     rm -r usr/lib
 
     # Desktop Entry
-	patch -uN lix.desktop ../lix.desktop.patch || return 1
+    patch -uN lix.desktop ../lix.desktop.patch || return 1
     mkdir -p usr/share/applications
-    mv lix.desktop usr/share/applications
+    mv lix.desktop usr/share/applications/lix-ereader.desktop
 
     # Move the main chunk of it into opt
-    mkdir -p opt/lix
-    mv usr/bin/* opt/lix
+    mkdir -p opt/lix-ereader
+    mv usr/bin/* opt/lix-ereader
 
     # Add a symlink for the executable
-    ln -s /opt/lix/lix usr/bin/lix
+    ln -s /opt/lix-ereader/lix usr/bin/lix-ereader
 
     # Make the usr/share/icons have the world executable bit set
     chmod -R a+xr usr/share/icons
