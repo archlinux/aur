@@ -4,30 +4,25 @@
 # Contributor: Xavier Devlamynck <magicrhesus@ouranos.be>
 
 _pkgname=libxfce4ui
-pkgbase="${_pkgname}"-devel
-pkgname=("${pkgbase}")
+pkgname="${_pkgname}"-devel
 pkgver=4.13.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Commonly used Xfce widgets among Xfce applications (Development version)"
 arch=('i686' 'x86_64')
 url="https://git.xfce.org/xfce/libxfce4ui/tree/README"
 license=('GPL2')
-# libxfce4ui-devel depends
-makedepends=('libxfce4util>=4.12.0' 'gtk2' 'xfconf' 'libsm' 'startup-notification'
+depends=('libxfce4util>=4.12.0' 'gtk2' 'xfconf' 'libsm' 'startup-notification'
          'hicolor-icon-theme' 'gtk3')
-# build depends
-makedepends+=('intltool' 'gtk-doc' 'xfce4-dev-tools' 'gobject-introspection' 'git' 'vala')
-_commit='a663a5344d405eb93192ada5e0990ee9a5269b4c'
-source=("${_pkgname}"::git://git.xfce.org/xfce/libxfce4ui#commit="${_commit}")
-sha256sums=('SKIP')
-
-if [[ "`pkg-config --modversion gladeui-2.0 2>/dev/null`" != '' ]] ; then makedepends+=('glade') ; pkgname+=('glade-plugin-libxfce4ui-devel') ; fi
-if [[ "`pkg-config --modversion gladeui-1.0 2>/dev/null`" != '' ]] ; then makedepends+=('glade-gtk2') ; pkgname+=('glade-gtk2-plugin-libxfce4ui-devel') ; fi
+makedepends=('intltool' 'gtk-doc' 'xfce4-dev-tools' 'gobject-introspection' 'git' 'vala' 'glade')
+optdepends=('glade: Glade designer plugin')
+provides=("${_pkgname}=${pkgver}")
+conflicts=("${_pkgname}")
+source=("http://archive.xfce.org/src/xfce/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2")
+sha256sums=('d63fcdb8e5acb6f0d26075ea17d320dbfbec2058567cd67cb99824c7402a1f79')
 
 build() {
-  cd "${_pkgname}"
+  cd "${_pkgname}-${pkgver}"
 
-  NOCONFIGURE=1 ./autogen.sh
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
@@ -42,49 +37,8 @@ build() {
   make
 }
 
-package_libxfce4ui-devel() {
-  depends=('libxfce4util>=4.12.0' 'gtk2' 'xfconf' 'libsm' 'startup-notification'
-           'hicolor-icon-theme' 'gtk3')
-  provides=("${_pkgname}=${pkgver%%.r*}")
-  conflicts=("${_pkgname}")
-  
-  cd "${_pkgname}"
+package() {
+  cd "${_pkgname}-${pkgver}"
 
-  make DESTDIR="$pkgdir" install
-  rm -fr "${pkgdir}"/usr/{lib,share}/glade{,3}
-}
-
-package_glade-plugin-libxfce4ui-devel() {
-  pkgdesc='Glade GTK3 interface designer plugin for libxfce4ui'
-  depends=('glade' "${_pkgname}>=${pkgver%.r*}")
-  provides=("glade-plugin-libxfce4ui=${pkgver}")
-  conflicts=('glade-plugin-libxfce4ui')
-  
-  cd "${_pkgname}"/glade
-
-  make DESTDIR="$pkgdir" install
-}
-
-package_glade-gtk2-plugin-libxfce4ui-devel() {
-  pkgdesc='Glade GTK2 interface designer plugin for libxfce4ui'
-  depends=('glade-gtk2' "${_pkgname}>=${pkgver%.r*}")
-  provides=("glade-gtk2-plugin-libxfce4ui=${pkgver}")
-  conflicts=('glade-gtk2-plugin-libxfce4ui')
-
-  cd "${_pkgname}"
-  ./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --libexecdir=/usr/lib \
-    --localstatedir=/var \
-    --disable-static \
-    --enable-gtk-doc \
-    --disable-debug \
-    --enable-maintainer-mode \
-    --disable-gladeui2 \
-    --with-vendor-info='Arch Linux'
-
-  cd glade
-  make
   make DESTDIR="$pkgdir" install
 }
