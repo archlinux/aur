@@ -1,9 +1,9 @@
 pkgname=mroonga
-pkgver=8.03
+pkgver=8.06
 pkgrel=1
 pkgdesc="Fast fulltext search on MySQL(MariaDB and groonga bundled package)."
-mariadbver=10.1.33
-groongaver=8.0.3
+mariadbver=10.3.9
+groongaver=8.0.6
 arch=('i686' 'x86_64')
 url="http://mroonga.org/"
 license=('LGPL2')
@@ -11,25 +11,16 @@ provides=("groonga=$groongaver" "mysql-clients=$mariadbver" "mysql=$mariadbver" 
 source=(http://packages.groonga.org/source/mroonga/mariadb-$mariadbver-with-$pkgname-$pkgver.tar.gz
         mariadb.service
         mariadb-post.sh
-        mariadb-tmpfile.conf
-        0001-openssl-1-1-0.patch)
+        mariadb-tmpfile.conf)
 makedepends=('cmake' 'openssl' 'zlib' 'libaio' 'libxml2' 'pcre' 'jemalloc' 'lz4')
 conflicts=('libmariadbclient' 'mariadb-clients' 'mytop' 'mariadb' 'mysql' 'libmysqlclient' 'mysql-clients' 'groonga')
 depends=('perl' 'inetutils' 'libaio' 'libxml2' 'pcre')
 optdepends=('cutter-test_framework' 'ruby' 'snowball-c')
 
-prepare() {
-    cd mariadb-$mariadbver-with-$pkgname-$pkgver
-
-    # openssl 1.1.0
-    patch -Np1 < "${srcdir}"/0001-openssl-1-1-0.patch
-}
-
 build() {
-    mkdir build
-    cd build
+    cd $srcdir/mariadb-$mariadbver-with-$pkgname-$pkgver
 
-    cmake ../mariadb-$mariadbver-with-$pkgname-$pkgver \
+    cmake . \
     -DCMAKE_AR=/usr/bin/gcc-ar \
     -DCMAKE_RANLIB=/usr/bin/gcc-ranlib \
     -DBUILD_CONFIG=mysql_release \
@@ -81,7 +72,7 @@ build() {
 package() {
     backup=('etc/mysql/my.cnf')
     install=mariadb.install
-    cd build
+    cd $srcdir/mariadb-$mariadbver-with-$pkgname-$pkgver
 
     make DESTDIR="$pkgdir" install
 
@@ -93,8 +84,7 @@ package() {
     install -Dm644 ../mariadb.service "$pkgdir"/usr/lib/systemd/system/mysqld.service
     install -Dm644 ../mariadb-tmpfile.conf "$pkgdir"/usr/lib/tmpfiles.d/mysql.conf
 }
-sha1sums=('44484dbc9e5b405e416af47a386bd029e36ec592'
+sha1sums=('9706a2edf39b3fd245ec7e833070057beb718e6c'
           '4bc34244fc4b578c155c8cd569d952a97a476f10'
           '206e9f7ba5357027becc2491e0987442f684d63e'
-          'c2a86c745002923234f9d6d79b3b462d5ab55e8d'
-          '10bd43cb8743fb188699c8b79970f837cd96695f')
+          'c2a86c745002923234f9d6d79b3b462d5ab55e8d')
