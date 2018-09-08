@@ -5,8 +5,8 @@
 pkgbase=linux-rc
 pkgrel=1
 _srcname=linux-4.18
-_stable=4.18.5
-_patchver=4.18.6
+_stable=4.18.6
+_patchver=4.18.7
 _rcver=1
 pkgver=${_patchver}rc${_rcver}
 _rcpatch=patch-${_patchver}-rc${_rcver}
@@ -23,22 +23,24 @@ source=(
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  0002-Increase-timeout-in-lspcon_wait_mode.patch
+  0002-drm-i915-Increase-LSPCON-timeout.patch
+  0003-HID-core-fix-grouping-by-application.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('fb090a3680eddf6f10bf895bc3075bd3f830e3d2429ce469982db5a28df647bd'
+sha256sums=('05db97fd6891217af6d4203bdc442ef2af78d7902b6a8e9bd348682704c22894'
             'SKIP'
-            '5c3bb17a2b78e6001e3745b9174f6ebffaa5945a4814ee39fd9baf19e4165028'
+            '270e6a2e468d334cf635eb1411659bf7a642a4437466dadf95a61de206958553'
             'SKIP'
             '83d768f19193f6795b8159d81c6775b9f62f4994f2a0d8371ac243e7b0890db8'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '30449a2f7f18eae3bb62e956595c0b8a584d6b998ed7539bde995d6df45c7c4e'
-            'fddc020ad516100fabc0aa16538d81d5156de377c7a0fbd2dc23b284b9e36cbe')
+            '88ebd373a61446b0b157d8493807ee7058d288cd480a48fbc156ca5c5422d203'
+            '656da605ca5dad52dcf638d6d2c79d9bdaa48a3e3ea984dc6025da7bac8ded1d'
+            '19a3463bce0e0bf23bdd890deffe35bab8e0ce1eb999e23fe6f756ebc87b5059')
 
 _kernelname=${pkgbase#linux}
 
