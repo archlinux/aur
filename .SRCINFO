@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-rosmaster
 	pkgdesc = ROS - ROS Master implementation.
-	pkgver = 1.14.2
+	pkgver = 1.14.3
 	pkgrel = 1
 	url = http://ros.org/wiki/rosmaster
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = ros-melodic-rosmaster
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
 	depends = ros-melodic-rosgraph
-	depends = python2-defusedxml
-	source = ros-melodic-rosmaster-1.14.2-0.tar.gz::https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rosmaster/1.14.2-0.tar.gz
-	sha256sums = c9f77088cdb60d9f70456b39bdd8366e85cab6659e2e6c792d4159c5adda52e9
+	depends = python-defusedxml
+	source = ros-melodic-rosmaster::git+https://github.com/ros-gbp/ros_comm-release.git
+	sha256sums = SKIP
 
 pkgname = ros-melodic-rosmaster
 
