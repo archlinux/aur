@@ -6,7 +6,7 @@
 pkgname=home-assistant
 pkgdesc='Open-source home automation platform running on Python 3'
 pkgver=0.77.3
-pkgrel=1
+pkgrel=2
 url="https://home-assistant.io/"
 license=('APACHE')
 arch=('any')
@@ -22,6 +22,7 @@ depends=('python'
          'python-bcrypt>=3.1.4'
          'python-certifi>=2018.04.16'
          'python-chardet>=3.0.4'
+         'python-cryptography>=2.3.1'
          'python-distro>=1.3.0'
          'python-jinja>=2.10'
          'python-pyjwt>=1.6.4'
