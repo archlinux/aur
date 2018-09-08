@@ -1,20 +1,16 @@
 # Maintainer: Maxime "pep" Buquet <archlinux@bouah.net>
 
 _pkgname=python-x3dh
-pkgname=${_pkgname}-git
-pkgver=r15.d85bedd
-pkgrel=1
+_pkgname2=python2-x3dh
+pkgbase=${_pkgname}-git
+pkgname=("${_pkgname}-git" "${_pkgname2}-git")
+pkgver=r38.8fe3233
+pkgrel=2
 pkgdesc="A python implementation of the Extended Triple Diffie-Hellman key agreement protocol"
 url="https://github.com/Syndace/${_pkgname}"
 license=('MIT')
 arch=('any')
-depends=('python-hkdf'
-         'python-scci-git'
-         'python-xeddsa-git'
-         )
-makedepends=('python-setuptools')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+makedepends=('python-setuptools' 'python2-setuptools')
 source=("${_pkgname}::git+https://github.com/Syndace/${_pkgname}.git")
 sha256sums=('SKIP')
 
@@ -23,7 +19,22 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-package() {
+package_python-x3dh-git() {
+    depends=('python-hkdf'
+             'python-xeddsa-git')
+    provides=("${_pkgname}")
+    conflicts=("${_pkgname}")
+
     cd ${_pkgname}
     python3 setup.py install --root="${pkgdir}" --optimize=1
+}
+
+package_python2-x3dh-git() {
+    depends=('python2-hkdf'
+             'python2-xeddsa-git')
+    provides=("${_pkgname}")
+    conflicts=("${_pkgname}")
+
+    cd ${_pkgname}
+    python2 setup.py install --root="${pkgdir}" --optimize=1
 }
