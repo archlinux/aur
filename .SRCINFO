@@ -1,14 +1,14 @@
 pkgbase = emacs-org-mode
 	pkgdesc = Emacs Org Mode
-	pkgver = 9.1.13
-	pkgrel = 2
+	pkgver = 9.1.14
+	pkgrel = 1
 	url = http://orgmode.org/
 	install = emacs-org-mode.install
 	arch = any
 	license = GPL
 	depends = emacs
-	source = http://orgmode.org/org-9.1.13.tar.gz
-	sha256sums = 95751f0070209d6cec30caab130124858d1bfd60679103e4f4499e4cd62bec5d
+	source = http://orgmode.org/org-9.1.14.tar.gz
+	sha256sums = 2acfc6658477085401d9add8b734eee4ed4f404da165cddb43a7ad97625c38d5
 
 pkgname = emacs-org-mode
 
