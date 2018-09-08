@@ -1,0 +1,19 @@
+pkgbase = ros-melodic-ecl-errors
+	pkgdesc = ROS - This library provides lean and mean error mechanisms.
+	pkgver = 0.61.6
+	pkgrel = 1
+	url = http://wiki.ros.org/ecl_errors
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-ecl-license
+	makedepends = ros-melodic-ecl-config
+	makedepends = ros-melodic-catkin
+	depends = ros-melodic-ecl-license
+	depends = ros-melodic-ecl-config
+	source = ros-melodic-ecl-errors-0.61.6-0.tar.gz::https://github.com/yujinrobot-release/ecl_lite-release/archive/release/melodic/ecl_errors/0.61.6-0.tar.gz
+	sha256sums = e41cdee101ab35c2963fc8e080294f597646006e246cae31242898b1b69e4eb9
+
+pkgname = ros-melodic-ecl-errors
+
