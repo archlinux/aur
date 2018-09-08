@@ -1,4 +1,4 @@
-# Maintainer: Filipe Laíns (FFY00) <lains@archlinux.org>
+# Maintainer: Filipe Laíns (FFY-01) <lains@archlinux.org>
 # Maintainer: Daniel Kozak (kozzi) <kozzi11@gmail.com>
 # Contributor: Mihails Strasuns <public@dicebot.lv>
 # Contributor: Moritz Maxeiner <moritz@ucworks.org>
@@ -8,20 +8,20 @@
 # Contributor: Elijah Stone <elronnd@elronnd.net>
 
 pkgbase=gdc-git
-pkgname=('gdc-git' 'libgphobos-git')
-pkgver=8.2.0+2.081.2
+pkgname=(gdc-git libgphobos-git)
+pkgver=8.2.1+2.081.2
 _branch=gdc-8 # Change here! pkgver/_gccver/_d_ver will be automatically updated.
-_islver=0.19 # Change here!
-_gccver=$(curl https://raw.githubusercontent.com/D-Programming-GDC/GDC/$_branch/gcc.version)
+_islver=0.20 # Change here!
+_gccver=8-20180831 # Change here! Should match Arch's GCC version
 _d_ver=''
-pkgrel=3
+pkgrel=1
 arch=('x86_64' 'i686')
 license=('GPL3')
 url="https://github.com/D-Programming-GDC/GDC"
 pkgdesc="GCC based D compiler"
 groups=('dlang')
 makedepends=('git' 'gdc')
-source=("https://ftp.gnu.org/gnu/gcc/$_gccver/$_gccver.tar.xz"
+source=("ftp://gcc.gnu.org/pub/gcc/releases/$_gccver/gcc-$_gccver.tar.xz"
         "http://isl.gforge.inria.fr/isl-$_islver.tar.bz2"
         "gdc::git+https://github.com/D-Programming-GDC/GDC.git#branch=$_branch"
         'git+https://github.com/D-Programming-GDC/GDMD.git'
@@ -39,7 +39,7 @@ pkgver() {
     _d_ver="+$(cat gdc/gcc/d/VERSION | sed 's|\"||g')"
   fi
 
-  echo "$(cat gdc/gcc.version | sed -e 's|gcc-||' -e 's|-.*||')$_d_ver"
+  echo "$(cat gcc/gcc/BASE-VER)$_d_ver"
 }
 
 prepare() {
@@ -90,6 +90,7 @@ build() {
                           --disable-libssp \
                           --enable-gnu-unique-object \
                           --enable-linker-build-id \
+                          --enable-lto \
                           --enable-plugin \
                           --enable-install-libiberty \
                           --with-linker-hash-style=gnu \
@@ -102,9 +103,6 @@ build() {
                           --with-bugurl=https://bugzilla.gdcproject.org/ \
                           --with-pkgversion="GDC ${pkgver%+*} based on D v${pkgver#*+} built with ISL $_islver for Arch Linux" \
                           gdc_include_dir=/usr/include/dlang/gdc
-
-                          #--enable-gold \
-
 
   make
 }
