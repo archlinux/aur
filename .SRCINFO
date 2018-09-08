@@ -1,0 +1,17 @@
+pkgbase = ros-melodic-ecl-mpl
+	pkgdesc = ROS - Metaprogramming tools move alot of runtime calculations to be shifted to compile time.
+	pkgver = 0.62.1
+	pkgrel = 1
+	url = http://wiki.ros.org/ecl_mpl
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-ecl-license
+	makedepends = ros-melodic-catkin
+	depends = ros-melodic-ecl-license
+	source = ros-melodic-ecl-mpl-0.62.1-0.tar.gz::https://github.com/yujinrobot-release/ecl_core-release/archive/release/melodic/ecl_mpl/0.62.1-0.tar.gz
+	sha256sums = b4835b28011cc0926a627d34c5af42265611ae10fc3306066ebffa9ef2475417
+
+pkgname = ros-melodic-ecl-mpl
+
