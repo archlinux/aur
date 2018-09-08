@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 url="http://libre.adacore.com/libre/tools/gps"
 license=('GPL')
 
-depends=("clang" "libadalang" "gnatcoll-core" "gnatcoll-db2ada" "gtkada"
+depends=("clang" "libadalang" "gnatcoll-core" "gnatcoll-sqlite" "gnatcoll-xref" "gnatcoll-python" "gnatcoll-db2ada" "gtkada"
          "gnome-icon-theme" "gnome-icon-theme-extras" "gnome-icon-theme-symbolic")
 
 source=(http://mirrors.cdn.adacore.com/art/5b0cf627c7a4475261f97ceb
