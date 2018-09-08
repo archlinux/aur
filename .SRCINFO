@@ -1,0 +1,18 @@
+pkgbase = nftables-openrc
+	pkgdesc = OpenRC init scripts for nftables
+	pkgver = 1
+	pkgrel = 1
+	url = https://gitweb.gentoo.org/repo/gentoo.git/tree/net-firewall/nftables
+	install = nftables-openrc.install
+	arch = any
+	license = GPL2
+	depends = nftables
+	depends = openrc
+	backup = etc/conf.d/nftables
+	source = nftables.confd
+	source = nftables.initd
+	md5sums = fb03adecedabb52a059479e3c912785f
+	md5sums = 93bbfe082acb899ec1f4d8af1b6634e0
+
+pkgname = nftables-openrc
+

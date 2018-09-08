@@ -1,0 +1,10 @@
+service=nftables
+post_install() {
+    echo "Installed service $service"
+    echo "Enable it by running:"
+    echo "rc-update add $service"
+}
+
+pre_remove() {
+    sudo rc-update del $service
+}

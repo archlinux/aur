@@ -1,0 +1,19 @@
+# File to load from and save rules into
+NFTABLES_CONFIG="/etc/nftables.conf"
+
+# Options to pass to 'nft list ruleset' when saving
+AVE_OPTIONS="-n"
+
+# Save current ruleset when the service is stopped, overwriting the config file
+SAVE_ON_STOP="no"
+
+# If a ruleset can't be loaded, create one that drops all packets
+PANIC_ON_FAIL="yes"
+
+# If you need to log nftables messages as soon as nftables starts,
+# AND your logger does NOT depend on the network, then you may wish
+# to uncomment the next line.
+# If your logger depends on the network, and you uncomment this line
+# you will create an unresolvable circular dependency during startup.
+# After commenting or uncommenting this line, you must run 'rc-update -u'.
+#rc_use="logger"
