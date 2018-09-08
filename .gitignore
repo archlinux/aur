@@ -1,0 +1,17 @@
+~
+linux-?.*.tar.xz
+linux-?.*.tar.sign
+patch-?.*.*.xz
+patch-?.*.*.sign
+
+patch-?.*-ck?.xz
+
+uksm-?.*.patch
+
+linux-cjktty-?.*.patch
+
+pkg/*
+src/*
+linux-shmilee-*.src.tar.gz
+linux-shmilee-*.pkg.tar.xz
+linux.install.pkg
