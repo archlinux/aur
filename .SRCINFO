@@ -1,16 +1,14 @@
 pkgbase = deadbeef-bs2b
 	pkgdesc = bs2b plugin for the DeaDBeeF music player
-	pkgver = 8.cc336f1
+	pkgver = 10.224c2cf
 	pkgrel = 1
-	url = https://github.com/Alexey-Yakovenko/bs2b
+	url = https://github.com/DeaDBeeF-Player/bs2b
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = deadbeef
 	depends = libbs2b
-	source = git+https://github.com/Alexey-Yakovenko/bs2b.git
-	source = bs2b.diff
-	md5sums = SKIP
+	source = git+https://github.com/DeaDBeeF-Player/bs2b.git
 	md5sums = SKIP
 
 pkgname = deadbeef-bs2b
