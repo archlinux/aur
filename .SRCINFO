@@ -1,0 +1,21 @@
+pkgbase = ros-melodic-ecl-concepts
+	pkgdesc = ROS - Introduces a compile time concept checking mechanism that can be used most commonly to check for required functionality when passing template arguments.
+	pkgver = 0.62.1
+	pkgrel = 1
+	url = http://wiki.ros.org/ecl_concepts
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-ecl-license
+	makedepends = ros-melodic-ecl-config
+	makedepends = ros-melodic-ecl-type-traits
+	makedepends = ros-melodic-catkin
+	depends = ros-melodic-ecl-license
+	depends = ros-melodic-ecl-config
+	depends = ros-melodic-ecl-type-traits
+	source = ros-melodic-ecl-concepts-0.62.1-0.tar.gz::https://github.com/yujinrobot-release/ecl_core-release/archive/release/melodic/ecl_concepts/0.62.1-0.tar.gz
+	sha256sums = 2e11e1f6ba9b05bf369d2a94b640c844f7e15f74ede5f825476de8f30f2c9c24
+
+pkgname = ros-melodic-ecl-concepts
+
