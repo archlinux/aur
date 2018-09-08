@@ -7,22 +7,22 @@
 #
 pkgname="zfs-utils-common"
 
-pkgver=0.7.9
-pkgrel=2
+pkgver=0.7.10
+pkgrel=1
 pkgdesc="Kernel module support files for the Zettabyte File System."
 depends=()
 makedepends=()
 arch=("x86_64")
 url="http://zfsonlinux.org/"
-source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.9/zfs-0.7.9.tar.gz"
+source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${pkgver}/zfs-${pkgver}.tar.gz"
         "zfs-utils.bash-completion-r1"
         "zfs-utils.initcpio.install"
         "zfs-utils.initcpio.hook"
         "zfs-utils.initcpio.zfsencryptssh.install")
-sha256sums=("f50ca2441c6abde4fe6b9f54d5583a45813031d6bb72b0011b00fc2683cd9f7a"
+sha256sums=("9343650175ccba2f61379c7dbc66ecbda1059e1ff95bc1fe6be4f33628cce477"
             "b60214f70ffffb62ffe489cbfabd2e069d14ed2a391fac0e36f914238394b540"
-            "335e309ebf5b74fd8956f5e8805939c37d4008b0bcc3b00be6e7ef1d5b7c1669"
-            "60ca3ce382c404c1c97873d6a352d0e99b28e948fde4e3f67d92e05f6eb216f0"
+            "6e5e905a322d0426acdcbc05c5651ec78ee7b874b96d3c429c80f68b061170c5"
+            "ae1cda85de0ad8b9ec8158a66d02485f3d09c37fb13b1567367220a720bcc9a5"
             "29080a84e5d7e36e63c4412b98646043724621245b36e5288f5fed6914da5b68")
 license=("CDDL")
 groups=("archzfs-linux")
@@ -33,17 +33,17 @@ replaces=("zfs-utils-linux", "zfs-utils-linux-lts")
 backup=('etc/zfs/zed.d/zed.rc' 'etc/default/zfs')
 
 build() {
-    cd "${srcdir}/zfs-0.7.9"
+    cd "${srcdir}/zfs-${pkgver}"
     ./autogen.sh
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --with-mounthelperdir=/usr/bin \
                 --libdir=/usr/lib --datadir=/usr/share --includedir=/usr/include \
-                --with-udevdir=/lib/udev --libexecdir=/usr/lib/zfs-0.7.9 \
+                --with-udevdir=/lib/udev --libexecdir=/usr/lib/zfs-${pkgver} \
                 --with-config=user --enable-systemd
     make
 }
 
 package() {
-    cd "${srcdir}/zfs-0.7.9"
+    cd "${srcdir}/zfs-${pkgver}"
     make DESTDIR="${pkgdir}" install
     # Remove uneeded files
     rm -r "${pkgdir}"/etc/init.d
