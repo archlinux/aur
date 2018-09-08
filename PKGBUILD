@@ -3,8 +3,8 @@
 
 pkgname=liferea-git
 _gitname=liferea
-pkgver=v1.12.4.r38.gd7819557
-pkgrel=2
+pkgver=v1.12.5.r1.gb6841265
+pkgrel=1
 pkgdesc="A news aggregator for GTK, git version."
 arch=('i686' 'x86_64')
 url="https://lzone.de/liferea/"

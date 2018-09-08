@@ -1,7 +1,7 @@
 pkgbase = liferea-git
 	pkgdesc = A news aggregator for GTK, git version.
-	pkgver = v1.12.4.r38.gd7819557
-	pkgrel = 2
+	pkgver = v1.12.5.r1.gb6841265
+	pkgrel = 1
 	url = https://lzone.de/liferea/
 	arch = i686
 	arch = x86_64
