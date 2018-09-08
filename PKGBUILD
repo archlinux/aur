@@ -3,8 +3,8 @@
 _pkgname=python-xeddsa
 _pkgname2=python2-xeddsa
 pkgbase=${_pkgname}-git
-pkgname=("${_pkgname}-git" "${_pkgname2}-git")
-pkgver=r19.4872d92
+pkgname=("${_pkgname}-git" "${_pkgname2}-git" "${_pkgname}-ref10-git")
+pkgver=r37.d0f7eef
 pkgrel=2
 pkgdesc="A python implementation of the XEdDSA signature scheme"
 url='https://github.com/Syndace/python-xeddsa'
@@ -29,26 +29,29 @@ build() {
     make
 }
 
+package_python-xeddsa-ref10-git() {
+    cd ${_pkgname}
+    install -m755 -d "${pkgdir}/usr/lib"
+    install -Dm 644 ref10/bin/crypto_scalarmult.so ref10/bin/crypto_sign.so \
+      "${pkgdir}/usr/lib"
+}
+
 package_python-xeddsa-git() {
-    depends=('python-pynacl')
+    depends=('python-pynacl' 'python-xeddsa-ref10-git')
     provides=("${_pkgname}")
     conflicts=("${_pkgname}")
 
     cd ${_pkgname}
 
     python3 setup.py install --root="${pkgdir}" --optimize=1
-    install -Dm 644 ref10/bin/crypto_scalarmult.so ref10/bin/crypto_sign.so \
-      "${pkgdir}/usr/lib"
 }
 
 package_python2-xeddsa-git() {
-    depends=('python2-pynacl')
+    depends=('python2-pynacl' 'python-xeddsa-ref10-git')
     provides=("${_pkgname2}")
     conflicts=("${_pkgname2}")
 
     cd ${_pkgname}
 
     python2 setup.py install --root="${pkgdir}" --optimize=1
-    install -Dm 644 ref10/bin/crypto_scalarmult.so ref10/bin/crypto_sign.so \
-      "${pkgdir}/usr/lib"
 }

@@ -1,6 +1,6 @@
 pkgbase = python-xeddsa-git
 	pkgdesc = A python implementation of the XEdDSA signature scheme
-	pkgver = r19.4872d92
+	pkgver = r37.d0f7eef
 	pkgrel = 2
 	url = https://github.com/Syndace/python-xeddsa
 	arch = any
@@ -13,11 +13,15 @@ pkgbase = python-xeddsa-git
 
 pkgname = python-xeddsa-git
 	depends = python-pynacl
+	depends = python-xeddsa-ref10-git
 	provides = python-xeddsa
 	conflicts = python-xeddsa
 
 pkgname = python2-xeddsa-git
 	depends = python2-pynacl
+	depends = python-xeddsa-ref10-git
 	provides = python2-xeddsa
 	conflicts = python2-xeddsa
+
+pkgname = python-xeddsa-ref10-git
 
