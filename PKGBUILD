@@ -5,7 +5,7 @@
 # Contributor: Vladimir Ermakov <vooon341@gmail.com>
 
 pkgname=gazebo
-pkgver=9.3.0
+pkgver=9.3.1
 pkgrel=1
 pkgdesc="A multi-robot simulator for outdoor environments"
 arch=('i686' 'x86_64')
@@ -28,17 +28,18 @@ optdepends=('bullet: Bullet support'
             'urdfdom: Load URDF files')
 makedepends=('cmake' 'doxygen')
 install="${pkgname}.install"
-source=("https://bitbucket.org/osrf/gazebo/get/gazebo9_9.3.0.tar.bz2" "ogre-1.11.patch")
-sha256sums=('ba1acb778b3360af883b5331ab639ebfea395ebceb9d1cd0aaed2bced041a0a5'
-            '0544018a614fe6a4caf7554cb6c751fc1e1c82e8035a0c3ddb0178786955ce9a')
+source=("https://bitbucket.org/osrf/gazebo/get/gazebo9_9.3.1.tar.bz2")
+# source=("https://bitbucket.org/osrf/gazebo/get/gazebo9_9.3.1.tar.bz2" "ogre-1.11.patch")
+sha256sums=('33c970576d36a5db1b84f3e01e49dcb5976d4013d58f6308d32ca8e819fba975')
+# '0544018a614fe6a4caf7554cb6c751fc1e1c82e8035a0c3ddb0178786955ce9a')
 
- prepare() {
-   cd "${srcdir}/osrf-${pkgname}-33c8adccf084"
-   patch -Np2 -i "${srcdir}/ogre-1.11.patch"
- }
+#  prepare() {
+#    cd "${srcdir}/osrf-${pkgname}-5714795a2e79"
+#    patch -Np2 -i "${srcdir}/ogre-1.11.patch"
+#  }
 
 build() {
-  cd "${srcdir}/osrf-${pkgname}-33c8adccf084"
+  cd "${srcdir}/osrf-${pkgname}-5714795a2e79"
 
   # sed -i -e 's/CODEC_CAP_TRUNCATED/AV_CODEC_CAP_TRUNCATED/g' gazebo/common/AudioDecoder.cc
   # sed -i -e 's/CODEC_FLAG_TRUNCATED/AV_CODEC_FLAG_TRUNCATED/g' gazebo/common/AudioDecoder.cc
@@ -55,7 +56,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/osrf-${pkgname}-33c8adccf084/build"
+  cd "${srcdir}/osrf-${pkgname}-5714795a2e79/build"
   make DESTDIR="${pkgdir}" install
 }
 
