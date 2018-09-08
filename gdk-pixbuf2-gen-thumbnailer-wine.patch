@@ -1,0 +1,14 @@
+diff --git a/build-aux/gen-thumbnailer.py b/build-aux/gen-thumbnailer.py
+index 05ac821..5db039f 100644
+--- a/build-aux/gen-thumbnailer.py
++++ b/build-aux/gen-thumbnailer.py
+@@ -29,6 +29,9 @@ if os.name == 'nt':
+ 
+ cmd = args.printer
+ 
++if os.environ.get('NEED_WINE', ''):
++    cmd = [os.environ['WINE'], cmd]
++
+ mimetypes_out = subprocess.Popen(cmd, env=newenv, stdout=subprocess.PIPE).communicate()[0]
+ if not mimetypes_out:
+     sys.exit(1)
