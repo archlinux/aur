@@ -1,14 +1,14 @@
 pkgbase = vim-undotree
 	pkgdesc = Display your undo history in a graph.
-	pkgver = 5.0
+	pkgver = 6.0
 	pkgrel = 1
 	url = https://github.com/mbbill/undotree
 	arch = any
 	groups = vim-plugins
 	license = BSD
 	depends = vim
-	source = vim-undotree.tar.gz::https://github.com/mbbill/undotree/archive/rel_5.0.tar.gz
-	sha256sums = 57e49c1c819e53e340b9f76c639c4148ddaec88e050eb22095373dd051151cc7
+	source = vim-undotree.tar.gz::https://github.com/mbbill/undotree/archive/rel_6.0.tar.gz
+	sha256sums = 27f11e6ea1760957352dd3d4b79e9da7b5a61a4ffe0680c1700a8016a8ee4534
 
 pkgname = vim-undotree
 
