@@ -3,31 +3,20 @@
 # Contributor: elsixdiab
 
 pkgname=congruity
-pkgver=18
-pkgrel=3
+pkgver=20
+pkgrel=1
 pkgdesc='A GUI application for programming Logitech(R) Harmony(TM) remote controls.'
 arch=('any')
 url='http://congruity.sourceforge.net/'
 license=('GPL3')
-depends=('desktop-file-utils' 'python2-suds' 'python-libconcord>=1.1' 'wxpython2.8')
+depends=('python-libconcord>=1.1' 'python-six' 'python-suds' 'python-wxpython')
 install="$pkgname.install"
-source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname-$pkgver.tar.bz2"
-        "0001-Fix-mhgui-for-SupportedCapabilities-change-in-web-se.patch")
-sha256sums=('16cee522b3e0b2c76ae4527110cb517af015aa8d56b1e72b7cbfa9df06739878'
-            'fea8bbb603929afb743beb695de73809e606fa9d24e5810ae34ee72117317245')
+source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname-$pkgver.tar.bz2")
+sha256sums=('50f28e584ba6710cc803a6a27b103f65cca83f0a130165154597e5322c6790c1')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-
-  msg "Patching..."
-  for i in $srcdir/*.patch; do
-    patch -Np1 -i "$i"
-  done
-
-  sed -i 's@wxversion.ensureMinimal@wxversion.select@g' congruity mhgui
-  sed -i 's@#!/usr/bin/env python@#!/usr/bin/env python2@g' congruity mhgui
-  sed -i 's@#!/usr/bin/python@#!/usr/bin/env python2@g' mhmanager.py
-  make DESTDIR="$pkgdir" PREFIX=/usr install
+  python setup.py install --root="$pkgdir/" --optimize=1
 }
 
 # vim:set ts=2 sw=2 et:

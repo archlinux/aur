@@ -1,19 +1,17 @@
 pkgbase = congruity
 	pkgdesc = A GUI application for programming Logitech(R) Harmony(TM) remote controls.
-	pkgver = 18
-	pkgrel = 3
+	pkgver = 20
+	pkgrel = 1
 	url = http://congruity.sourceforge.net/
 	install = congruity.install
 	arch = any
 	license = GPL3
-	depends = desktop-file-utils
-	depends = python2-suds
 	depends = python-libconcord>=1.1
-	depends = wxpython2.8
-	source = http://downloads.sourceforge.net/project/congruity/congruity/18/congruity-18.tar.bz2
-	source = 0001-Fix-mhgui-for-SupportedCapabilities-change-in-web-se.patch
-	sha256sums = 16cee522b3e0b2c76ae4527110cb517af015aa8d56b1e72b7cbfa9df06739878
-	sha256sums = fea8bbb603929afb743beb695de73809e606fa9d24e5810ae34ee72117317245
+	depends = python-six
+	depends = python-suds
+	depends = python-wxpython
+	source = http://downloads.sourceforge.net/project/congruity/congruity/20/congruity-20.tar.bz2
+	sha256sums = 50f28e584ba6710cc803a6a27b103f65cca83f0a130165154597e5322c6790c1
 
 pkgname = congruity
 
