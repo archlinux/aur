@@ -8,8 +8,7 @@ pkgbase = ros-melodic-gazebo-dev
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
-	depends = gazebo9
-	depends = libgazebo9-dev
+	depends = gazebo
 	source = ros-melodic-gazebo-dev::git+https://github.com/ros-gbp/gazebo_ros_pkgs-release.git
 	sha256sums = SKIP
 

@@ -25,8 +25,7 @@ ros_depends=(
 
 depends=(
 	${ros_depends[@]}
-	gazebo9
-	libgazebo9-dev
+	gazebo
 )
 
 _dir=${pkgname}
