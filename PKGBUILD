@@ -2,9 +2,9 @@
 
 _target=riscv64-unknown-elf
 pkgname=$_target-gcc
-pkgver=7.3.0
-_islver=0.18
-_newlibver=3.0.0
+pkgver=8.2.0
+_islver=0.19
+_newlibver=3.0.0.20180831
 pkgrel=1
 #_snapshot=7-20170504
 pkgdesc='The GNU Compiler Collection - cross compiler for 32bit and 64bit RISC-V bare-metal'
@@ -15,12 +15,10 @@ depends=("$_target-binutils" 'zlib' 'libmpc')
 options=(!emptydirs !strip)
 source=("https://gcc.gnu.org/pub/gcc/releases/gcc-$pkgver/gcc-$pkgver.tar.xz"
         "http://isl.gforge.inria.fr/isl-$_islver.tar.bz2"
-        "https://sourceware.org/pub/newlib/newlib-$_newlibver.tar.gz"
-        'newlib.patch')
-sha256sums=('832ca6ae04636adbb430e865a1451adf6979ab44ca1c8374f61fba65645ce15c'
-            '6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b'
-            'c8566335ee74e5fcaeb8595b4ebd0400c4b043d6acb3263ecb1314f8f5501332'
-            '13533973c4604d7d51f056432b6d967b116214999d81899f93e6e1472d754e44')
+        "https://sourceware.org/pub/newlib/newlib-$_newlibver.tar.gz")
+sha256sums=('196c3c04ba2613f893283977e6011b2345d1cd1af9abeac58e916b1aab3e0080'
+            'd59726f34f7852a081fbd3defd1ab2136f174110fc2e0c8d10bb122173fa9ed8'
+            '3ad3664f227357df15ff34e954bfd9f501009a647667cd307bf0658aefd6eb5b')
 
 if [[ -n "$_snapshot" ]]; then
   _basedir=gcc-$_snapshot
@@ -29,10 +27,6 @@ else
 fi
 
 prepare() {
-  cd newlib-$_newlibver
-  patch -Np1 -i "$srcdir/newlib.patch"
-  cd ..
-
   cd $_basedir
 
   # link isl for in-tree builds

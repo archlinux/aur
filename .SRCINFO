@@ -1,6 +1,6 @@
 pkgbase = riscv64-unknown-elf-gcc
 	pkgdesc = The GNU Compiler Collection - cross compiler for 32bit and 64bit RISC-V bare-metal
-	pkgver = 7.3.0
+	pkgver = 8.2.0
 	pkgrel = 1
 	url = http://gcc.gnu.org/
 	arch = i686
@@ -13,14 +13,12 @@ pkgbase = riscv64-unknown-elf-gcc
 	depends = libmpc
 	options = !emptydirs
 	options = !strip
-	source = https://gcc.gnu.org/pub/gcc/releases/gcc-7.3.0/gcc-7.3.0.tar.xz
-	source = http://isl.gforge.inria.fr/isl-0.18.tar.bz2
-	source = https://sourceware.org/pub/newlib/newlib-3.0.0.tar.gz
-	source = newlib.patch
-	sha256sums = 832ca6ae04636adbb430e865a1451adf6979ab44ca1c8374f61fba65645ce15c
-	sha256sums = 6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b
-	sha256sums = c8566335ee74e5fcaeb8595b4ebd0400c4b043d6acb3263ecb1314f8f5501332
-	sha256sums = 13533973c4604d7d51f056432b6d967b116214999d81899f93e6e1472d754e44
+	source = https://gcc.gnu.org/pub/gcc/releases/gcc-8.2.0/gcc-8.2.0.tar.xz
+	source = http://isl.gforge.inria.fr/isl-0.19.tar.bz2
+	source = https://sourceware.org/pub/newlib/newlib-3.0.0.20180831.tar.gz
+	sha256sums = 196c3c04ba2613f893283977e6011b2345d1cd1af9abeac58e916b1aab3e0080
+	sha256sums = d59726f34f7852a081fbd3defd1ab2136f174110fc2e0c8d10bb122173fa9ed8
+	sha256sums = 3ad3664f227357df15ff34e954bfd9f501009a647667cd307bf0658aefd6eb5b
 
 pkgname = riscv64-unknown-elf-gcc
 
