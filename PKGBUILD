@@ -1,21 +1,22 @@
+# Maintainer: Thiago L. A. Miller <thiago_leisrael@hotmail.com>
 # Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.28
-
-pkgname='perl-dist-zilla-plugin-test-distmanifest'
-pkgver='2.000004'
-pkgrel='8675309'
+_distname=Dist-Zilla-Plugin-Test-DistManifest
+pkgname=perl-dist-zilla-plugin-test-distmanifest
+pkgver=2.000005
+pkgrel=1
 pkgdesc="Release tests for the manifest"
 arch=('any')
+url="https://metacpan.org/release/$_distname"
 license=('PerlArtistic' 'GPL')
-options=('!emptydirs')
-depends=('perl-capture-tiny' 'perl-dist-zilla' 'perl-moose' 'perl-moose-autobox')
+depends=('perl>=5.008'
+         'perl-dist-zilla>=0'
+         'perl-moose>=0'
+         'perl-test-distmanifest>=0')
 makedepends=()
-checkdepends=('perl-test-distmanifest' 'perl-test-output')
-url='http://search.mcpan.org/dist/Dist-Zilla-Plugin-Test-DistManifest'
-source=('http://search.mcpan.org/CPAN/authors/id/D/DO/DOHERTY/Dist-Zilla-Plugin-Test-DistManifest-2.000004.tar.gz')
-md5sums=('3d95933daec49549f4f2089612385e79')
-sha512sums=('32029bb3dc94ddb44aeea908162063872bc60504d55b3c53e3fb20c81a993d37fed9aed7f0208431b627a27aea8a7668969e34ecd1190f0ea5d681f13ac308b4')
-_distdir="Dist-Zilla-Plugin-Test-DistManifest-2.000004"
+checkdepends=('perl-test-output>=0')
+options=('!emptydirs')
+source=("http://search.cpan.org/CPAN/authors/id/D/DO/DOHERTY/$_distname-$pkgver.tar.gz")
+md5sums=('3e3e7b799c71179d1dd6cc691a47a604')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -24,23 +25,22 @@ build() {
       PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
       MODULEBUILDRC=/dev/null
 
-    cd "$srcdir/$_distdir"
+    cd "$_distname-$pkgver"
     /usr/bin/perl Makefile.PL
     make
   )
 }
 
 check() {
-  cd "$srcdir/$_distdir"
+  cd "$_distname-$pkgver"
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
     make test
   )
 }
 
 package() {
-  cd "$srcdir/$_distdir"
+  cd "$_distname-$pkgver"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
