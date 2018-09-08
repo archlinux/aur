@@ -1,0 +1,754 @@
+diff -pNaru5 printer.old/Lexmark-E260dn.xml printer/Lexmark-E260dn.xml
+--- printer.old/Lexmark-E260dn.xml	2018-06-05 11:09:27.000000000 -0400
++++ printer/Lexmark-E260dn.xml	2018-06-12 20:48:12.192271723 -0400
+@@ -10,10 +10,11 @@
+       </dpi>
+     </resolution>
+   </mechanism>
+   <lang>
+     <postscript level="3" />
++    <pcl level="6" />
+   </lang>
+   <autodetect>
+     <general>
+       <ieee1284>MFG: Lexmark International ;MDL: Lexmark E260d</ieee1284>
+       <manufacturer>Lexmark International </manufacturer>
+@@ -28,10 +29,13 @@
+     </driver>
+     <driver>
+       <id>Postscript-Lexmark</id>
+       <ppd>PPD/Lexmark/Lexmark_E260dn.ppd</ppd>
+     </driver>
++    <driver>
++      <id>pxlmono</id>
++    </driver>
+   </drivers>
+   <comments>
+     <en>
+       This database entry was automatically generated
+       from the PPD file for this printer.&lt;p&gt;
+diff -pNaru5 printer.old/Lexmark-E260d.xml printer/Lexmark-E260d.xml
+--- printer.old/Lexmark-E260d.xml	2018-06-05 11:09:27.000000000 -0400
++++ printer/Lexmark-E260d.xml	2018-06-12 20:48:12.192271723 -0400
+@@ -10,10 +10,11 @@
+       </dpi>
+     </resolution>
+   </mechanism>
+   <lang>
+     <postscript level="3" />
++    <pcl level="6" />
+   </lang>
+   <autodetect>
+     <general>
+       <ieee1284>MFG: Lexmark International ;MDL: Lexmark E260d</ieee1284>
+       <manufacturer>Lexmark International </manufacturer>
+@@ -28,10 +29,13 @@
+     </driver>
+     <driver>
+       <id>Postscript-Lexmark</id>
+       <ppd>PPD/Lexmark/Lexmark_E260d.ppd</ppd>
+     </driver>
++    <driver>
++      <id>pxlmono</id>
++    </driver>
+   </drivers>
+   <comments>
+     <en>
+       This database entry was automatically generated
+       from the PPD file for this printer.&lt;p&gt;
+diff -pNaru5 printer.old/Lexmark-E260.xml printer/Lexmark-E260.xml
+--- printer.old/Lexmark-E260.xml	2018-06-05 11:09:27.000000000 -0400
++++ printer/Lexmark-E260.xml	2018-06-12 20:48:12.192271723 -0400
+@@ -10,10 +10,11 @@
+       </dpi>
+     </resolution>
+   </mechanism>
+   <lang>
+     <postscript level="3" />
++    <pcl level="6" />
+   </lang>
+   <autodetect>
+     <general>
+       <ieee1284>MFG: Lexmark International ;MDL: Lexmark E260d</ieee1284>
+       <manufacturer>Lexmark International </manufacturer>
+@@ -28,10 +29,13 @@
+     </driver>
+     <driver>
+       <id>Postscript-Lexmark</id>
+       <ppd>PPD/Lexmark/Lexmark_E260.ppd</ppd>
+     </driver>
++    <driver>
++      <id>pxlmono</id>
++    </driver>
+   </drivers>
+   <comments>
+     <en>
+       This database entry was automatically generated
+       from the PPD file for this printer.&lt;p&gt;
+diff -pNaru5 printer.old/Lexmark-E360dn.xml printer/Lexmark-E360dn.xml
+--- printer.old/Lexmark-E360dn.xml	2018-06-05 11:09:27.000000000 -0400
++++ printer/Lexmark-E360dn.xml	2018-06-12 20:48:12.192271723 -0400
+@@ -10,10 +10,11 @@
+       </dpi>
+     </resolution>
+   </mechanism>
+   <lang>
+     <postscript level="3" />
++    <pcl level="6" />
+   </lang>
+   <autodetect>
+     <general>
+       <ieee1284>MFG: Lexmark International ;MDL: Lexmark E360dn</ieee1284>
+       <manufacturer>Lexmark International </manufacturer>
+@@ -28,10 +29,13 @@
+     </driver>
+     <driver>
+       <id>Postscript-Lexmark</id>
+       <ppd>PPD/Lexmark/Lexmark_E360dn.ppd</ppd>
+     </driver>
++    <driver>
++      <id>pxlmono</id>
++    </driver>
+   </drivers>
+   <comments>
+     <en>
+       This database entry was automatically generated
+       from the PPD file for this printer.&lt;p&gt;
+diff -pNaru5 printer.old/Lexmark-E360d.xml printer/Lexmark-E360d.xml
+--- printer.old/Lexmark-E360d.xml	2018-06-05 11:09:27.000000000 -0400
++++ printer/Lexmark-E360d.xml	2018-06-12 20:48:12.192271723 -0400
+@@ -10,10 +10,11 @@
+       </dpi>
+     </resolution>
+   </mechanism>
+   <lang>
+     <postscript level="3" />
++    <pcl level="6" />
+   </lang>
+   <autodetect>
+     <general>
+       <ieee1284>MFG: Lexmark International ;MDL: Lexmark E360dn</ieee1284>
+       <manufacturer>Lexmark International </manufacturer>
+@@ -28,10 +29,13 @@
+     </driver>
+     <driver>
+       <id>Postscript-Lexmark</id>
+       <ppd>PPD/Lexmark/Lexmark_E360d.ppd</ppd>
+     </driver>
++    <driver>
++      <id>pxlmono</id>
++    </driver>
+   </drivers>
+   <comments>
+     <en>
+       This database entry was automatically generated
+       from the PPD file for this printer.&lt;p&gt;
+diff -pNaru5 printer.old/Lexmark-E460dn.xml printer/Lexmark-E460dn.xml
+--- printer.old/Lexmark-E460dn.xml	2018-06-05 11:09:27.000000000 -0400
++++ printer/Lexmark-E460dn.xml	2018-06-12 20:48:52.512542965 -0400
+@@ -10,10 +10,11 @@
+       </dpi>
+     </resolution>
+   </mechanism>
+   <lang>
+     <postscript level="3" />
++    <pcl level="6" />
+   </lang>
+   <autodetect>
+     <general>
+       <ieee1284>MFG: Lexmark International ;MDL: Lexmark E460dn</ieee1284>
+       <manufacturer>Lexmark International </manufacturer>
+@@ -28,10 +29,13 @@
+     </driver>
+     <driver>
+       <id>Postscript-Lexmark</id>
+       <ppd>PPD/Lexmark/Lexmark_E460dn.ppd</ppd>
+     </driver>
++    <driver>
++      <id>pxlmono</id>
++    </driver>
+   </drivers>
+   <comments>
+     <en>
+       This database entry was automatically generated
+       from the PPD file for this printer.&lt;p&gt;
+diff -pNaru5 printer.old/Lexmark-E460dw.xml printer/Lexmark-E460dw.xml
+--- printer.old/Lexmark-E460dw.xml	2018-06-05 11:09:27.000000000 -0400
++++ printer/Lexmark-E460dw.xml	2018-06-12 20:49:16.732705930 -0400
+@@ -10,10 +10,11 @@
+       </dpi>
+     </resolution>
+   </mechanism>
+   <lang>
+     <postscript level="3" />
++    <pcl level="6" />
+   </lang>
+   <autodetect>
+     <general>
+       <ieee1284>MFG: Lexmark International ;MDL: Lexmark E460dn</ieee1284>
+       <manufacturer>Lexmark International </manufacturer>
+@@ -28,10 +29,13 @@
+     </driver>
+     <driver>
+       <id>Postscript-Lexmark</id>
+       <ppd>PPD/Lexmark/Lexmark_E460dw.ppd</ppd>
+     </driver>
++    <driver>
++      <id>pxlmono</id>
++    </driver>
+   </drivers>
+   <comments>
+     <en>
+       This database entry was automatically generated
+       from the PPD file for this printer.&lt;p&gt;
+diff -pNaru5 printer.old/Lexmark-E462dtn.xml printer/Lexmark-E462dtn.xml
+--- printer.old/Lexmark-E462dtn.xml	2018-06-05 11:09:27.000000000 -0400
++++ printer/Lexmark-E462dtn.xml	2018-06-12 20:50:23.083152478 -0400
+@@ -10,10 +10,11 @@
+       </dpi>
+     </resolution>
+   </mechanism>
+   <lang>
+     <postscript level="3" />
++    <pcl level="6" />
+   </lang>
+   <autodetect>
+     <general>
+       <ieee1284>MFG: Lexmark International ;MDL: Lexmark E460dn</ieee1284>
+       <manufacturer>Lexmark International </manufacturer>
+@@ -28,10 +29,13 @@
+     </driver>
+     <driver>
+       <id>Postscript-Lexmark</id>
+       <ppd>PPD/Lexmark/Lexmark_E462dtn.ppd</ppd>
+     </driver>
++    <driver>
++      <id>pxlmono</id>
++    </driver>
+   </drivers>
+   <comments>
+     <en>
+       This database entry was automatically generated
+       from the PPD file for this printer.&lt;p&gt;
+diff -pNaru5 printer.old/Lexmark-MS310d.xml printer/Lexmark-MS310d.xml
+--- printer.old/Lexmark-MS310d.xml	2018-06-05 11:09:27.000000000 -0400
++++ printer/Lexmark-MS310d.xml	2018-06-12 20:52:48.764133502 -0400
+@@ -9,10 +9,11 @@
+       </dpi>
+     </resolution>
+   </mechanism>
+   <lang>
+     <postscript level="3" />
++    <pcl level="6" />
+     <pjl />
+   </lang>
+   <autodetect>
+     <general>
+       <ieee1284>MFG:Lexmark;MDL:Lexmark MS310d;</ieee1284>
+@@ -28,10 +29,13 @@
+     </driver>
+     <driver>
+       <id>Postscript-Lexmark</id>
+       <ppd>PPD/Lexmark/Lexmark_MS310_Series.ppd</ppd>
+     </driver>
++    <driver>
++      <id>pxlmono</id>
++    </driver>
+   </drivers>
+   <comments>
+     <en>
+       This database entry was automatically generated
+       from the PPD file for this printer.&lt;p&gt;
+diff -pNaru5 printer.old/Lexmark-MS310.xml printer/Lexmark-MS310.xml
+--- printer.old/Lexmark-MS310.xml	2018-06-05 11:09:27.000000000 -0400
++++ printer/Lexmark-MS310.xml	2018-06-12 20:52:26.483983415 -0400
+@@ -9,10 +9,11 @@
+       </dpi>
+     </resolution>
+   </mechanism>
+   <lang>
+     <postscript level="3" />
++    <pcl level="6" />
+     <pjl />
+   </lang>
+   <autodetect>
+     <general>
+       <ieee1284>MFG:Lexmark;MDL:Lexmark MS310 Series;</ieee1284>
+@@ -28,10 +29,13 @@
+     </driver>
+     <driver>
+       <id>Postscript-Lexmark</id>
+       <ppd>PPD/Lexmark/Lexmark_MS310_Series.ppd</ppd>
+     </driver>
++    <driver>
++      <id>pxlmono</id>
++    </driver>
+   </drivers>
+   <comments>
+     <en>
+       This database entry was automatically generated
+       from the PPD file for this printer.&lt;p&gt;
+diff -pNaru5 printer.old/Lexmark-MS312dn.xml printer/Lexmark-MS312dn.xml
+--- printer.old/Lexmark-MS312dn.xml	2018-06-05 11:09:27.000000000 -0400
++++ printer/Lexmark-MS312dn.xml	2018-06-12 20:53:02.284224583 -0400
+@@ -9,10 +9,11 @@
+       </dpi>
+     </resolution>
+   </mechanism>
+   <lang>
+     <postscript level="3" />
++    <pcl level="6" />
+     <pjl />
+   </lang>
+   <autodetect>
+     <general>
+       <ieee1284>MFG:Lexmark;MDL:Lexmark MS312dn;</ieee1284>
+@@ -28,10 +29,13 @@
+     </driver>
+     <driver>
+       <id>Postscript-Lexmark</id>
+       <ppd>PPD/Lexmark/Lexmark_MS310_Series.ppd</ppd>
+     </driver>
++    <driver>
++      <id>pxlmono</id>
++    </driver>
+   </drivers>
+   <comments>
+     <en>
+       This database entry was automatically generated
+       from the PPD file for this printer.&lt;p&gt;
+diff -pNaru5 printer.old/Lexmark-MS315dn.xml printer/Lexmark-MS315dn.xml
+--- printer.old/Lexmark-MS315dn.xml	2018-06-05 11:09:27.000000000 -0400
++++ printer/Lexmark-MS315dn.xml	2018-06-12 20:53:09.594273836 -0400
+@@ -9,10 +9,11 @@
+       </dpi>
+     </resolution>
+   </mechanism>
+   <lang>
+     <postscript level="3" />
++    <pcl level="6" />
+     <pjl />
+   </lang>
+   <autodetect>
+     <general>
+       <ieee1284>MFG:Lexmark;MDL:Lexmark MS315dn;</ieee1284>
+@@ -28,10 +29,13 @@
+     </driver>
+     <driver>
+       <id>Postscript-Lexmark</id>
+       <ppd>PPD/Lexmark/Lexmark_MS310_Series.ppd</ppd>
+     </driver>
++    <driver>
++      <id>pxlmono</id>
++    </driver>
+   </drivers>
+   <comments>
+     <en>
+       This database entry was automatically generated
+       from the PPD file for this printer.&lt;p&gt;
+diff -pNaru5 printer.old/Lexmark-MS410dn.xml printer/Lexmark-MS410dn.xml
+--- printer.old/Lexmark-MS410dn.xml	2018-06-05 11:09:27.000000000 -0400
++++ printer/Lexmark-MS410dn.xml	2018-06-12 20:53:48.284534535 -0400
+@@ -9,10 +9,11 @@
+       </dpi>
+     </resolution>
+   </mechanism>
+   <lang>
+     <postscript level="3" />
++    <pcl level="6" />
+     <pjl />
+   </lang>
+   <autodetect>
+     <general>
+       <ieee1284>MFG:Lexmark;MDL:Lexmark MS410dn;</ieee1284>
+@@ -28,10 +29,13 @@
+     </driver>
+     <driver>
+       <id>Postscript-Lexmark</id>
+       <ppd>PPD/Lexmark/Lexmark_MS410_Series.ppd</ppd>
+     </driver>
++    <driver>
++      <id>pxlmono</id>
++    </driver>
+   </drivers>
+   <comments>
+     <en>
+       This database entry was automatically generated
+       from the PPD file for this printer.&lt;p&gt;
+diff -pNaru5 printer.old/Lexmark-MS410d.xml printer/Lexmark-MS410d.xml
+--- printer.old/Lexmark-MS410d.xml	2018-06-05 11:09:27.000000000 -0400
++++ printer/Lexmark-MS410d.xml	2018-06-12 20:53:37.834464117 -0400
+@@ -9,10 +9,11 @@
+       </dpi>
+     </resolution>
+   </mechanism>
+   <lang>
+     <postscript level="3" />
++    <pcl level="6" />
+     <pjl />
+   </lang>
+   <autodetect>
+     <general>
+       <ieee1284>MFG:Lexmark;MDL:Lexmark MS410d;</ieee1284>
+@@ -28,10 +29,13 @@
+     </driver>
+     <driver>
+       <id>Postscript-Lexmark</id>
+       <ppd>PPD/Lexmark/Lexmark_MS410_Series.ppd</ppd>
+     </driver>
++    <driver>
++      <id>pxlmono</id>
++    </driver>
+   </drivers>
+   <comments>
+     <en>
+       This database entry was automatically generated
+       from the PPD file for this printer.&lt;p&gt;
+diff -pNaru5 printer.old/Lexmark-MS410.xml printer/Lexmark-MS410.xml
+--- printer.old/Lexmark-MS410.xml	2018-06-05 11:09:27.000000000 -0400
++++ printer/Lexmark-MS410.xml	2018-06-12 20:53:24.624375103 -0400
+@@ -9,10 +9,11 @@
+       </dpi>
+     </resolution>
+   </mechanism>
+   <lang>
+     <postscript level="3" />
++    <pcl level="6" />
+     <pjl />
+   </lang>
+   <autodetect>
+     <general>
+       <ieee1284>MFG:Lexmark;MDL:Lexmark MS410 Series;</ieee1284>
+@@ -28,10 +29,13 @@
+     </driver>
+     <driver>
+       <id>Postscript-Lexmark</id>
+       <ppd>PPD/Lexmark/Lexmark_MS410_Series.ppd</ppd>
+     </driver>
++    <driver>
++      <id>pxlmono</id>
++    </driver>
+   </drivers>
+   <comments>
+     <en>
+       This database entry was automatically generated
+       from the PPD file for this printer.&lt;p&gt;
+diff -pNaru5 printer.old/Lexmark-MS415dn.xml printer/Lexmark-MS415dn.xml
+--- printer.old/Lexmark-MS415dn.xml	2018-06-05 11:09:27.000000000 -0400
++++ printer/Lexmark-MS415dn.xml	2018-06-12 20:53:56.904592625 -0400
+@@ -9,10 +9,11 @@
+       </dpi>
+     </resolution>
+   </mechanism>
+   <lang>
+     <postscript level="3" />
++    <pcl level="6" />
+     <pjl />
+   </lang>
+   <autodetect>
+     <general>
+       <ieee1284>MFG:Lexmark;MDL:Lexmark MS415dn;</ieee1284>
+@@ -28,10 +29,13 @@
+     </driver>
+     <driver>
+       <id>Postscript-Lexmark</id>
+       <ppd>PPD/Lexmark/Lexmark_MS410_Series.ppd</ppd>
+     </driver>
++    <driver>
++      <id>pxlmono</id>
++    </driver>
+   </drivers>
+   <comments>
+     <en>
+       This database entry was automatically generated
+       from the PPD file for this printer.&lt;p&gt;
+diff -pNaru5 printer.old/Lexmark-MS510dn.xml printer/Lexmark-MS510dn.xml
+--- printer.old/Lexmark-MS510dn.xml	2018-06-05 11:09:27.000000000 -0400
++++ printer/Lexmark-MS510dn.xml	2018-06-12 20:54:18.944741165 -0400
+@@ -9,10 +9,11 @@
+       </dpi>
+     </resolution>
+   </mechanism>
+   <lang>
+     <postscript level="3" />
++    <pcl level="6" />
+     <pjl />
+   </lang>
+   <autodetect>
+     <general>
+       <ieee1284>MFG:Lexmark;MDL:Lexmark MS510dn;</ieee1284>
+@@ -28,10 +29,13 @@
+     </driver>
+     <driver>
+       <id>Postscript-Lexmark</id>
+       <ppd>PPD/Lexmark/Lexmark_MS510_Series.ppd</ppd>
+     </driver>
++    <driver>
++      <id>pxlmono</id>
++    </driver>
+   </drivers>
+   <comments>
+     <en>
+       This database entry was automatically generated
+       from the PPD file for this printer.&lt;p&gt;
+diff -pNaru5 printer.old/Lexmark-MS510.xml printer/Lexmark-MS510.xml
+--- printer.old/Lexmark-MS510.xml	2018-06-05 11:09:27.000000000 -0400
++++ printer/Lexmark-MS510.xml	2018-06-12 20:54:11.754692705 -0400
+@@ -9,10 +9,11 @@
+       </dpi>
+     </resolution>
+   </mechanism>
+   <lang>
+     <postscript level="3" />
++    <pcl level="6" />
+     <pjl />
+   </lang>
+   <autodetect>
+     <general>
+       <ieee1284>MFG:Lexmark;MDL:Lexmark MS510 Series;</ieee1284>
+@@ -28,10 +29,13 @@
+     </driver>
+     <driver>
+       <id>Postscript-Lexmark</id>
+       <ppd>PPD/Lexmark/Lexmark_MS510_Series.ppd</ppd>
+     </driver>
++    <driver>
++      <id>pxlmono</id>
++    </driver>
+   </drivers>
+   <comments>
+     <en>
+       This database entry was automatically generated
+       from the PPD file for this printer.&lt;p&gt;
+diff -pNaru5 printer.old/Lexmark-MS610de.xml printer/Lexmark-MS610de.xml
+--- printer.old/Lexmark-MS610de.xml	2018-06-05 11:09:27.000000000 -0400
++++ printer/Lexmark-MS610de.xml	2018-06-12 20:54:40.154884126 -0400
+@@ -9,10 +9,11 @@
+       </dpi>
+     </resolution>
+   </mechanism>
+   <lang>
+     <postscript level="3" />
++    <pcl level="6" />
+     <pjl />
+   </lang>
+   <autodetect>
+     <general>
+       <ieee1284>MFG:Lexmark;MDL:Lexmark MS610de;</ieee1284>
+@@ -28,10 +29,13 @@
+     </driver>
+     <driver>
+       <id>Postscript-Lexmark</id>
+       <ppd>PPD/Lexmark/Lexmark_MS610_Series.ppd</ppd>
+     </driver>
++    <driver>
++      <id>pxlmono</id>
++    </driver>
+   </drivers>
+   <comments>
+     <en>
+       This database entry was automatically generated
+       from the PPD file for this printer.&lt;p&gt;
+diff -pNaru5 printer.old/Lexmark-MS610dn.xml printer/Lexmark-MS610dn.xml
+--- printer.old/Lexmark-MS610dn.xml	2018-06-05 11:09:27.000000000 -0400
++++ printer/Lexmark-MS610dn.xml	2018-06-12 20:54:53.964977219 -0400
+@@ -9,10 +9,11 @@
+       </dpi>
+     </resolution>
+   </mechanism>
+   <lang>
+     <postscript level="3" />
++    <pcl level="6" />
+     <pjl />
+   </lang>
+   <autodetect>
+     <general>
+       <ieee1284>MFG:Lexmark;MDL:Lexmark MS610dn;</ieee1284>
+@@ -28,10 +29,13 @@
+     </driver>
+     <driver>
+       <id>Postscript-Lexmark</id>
+       <ppd>PPD/Lexmark/Lexmark_MS610_Series.ppd</ppd>
+     </driver>
++    <driver>
++      <id>pxlmono</id>
++    </driver>
+   </drivers>
+   <comments>
+     <en>
+       This database entry was automatically generated
+       from the PPD file for this printer.&lt;p&gt;
+diff -pNaru5 printer.old/Lexmark-MS610.xml printer/Lexmark-MS610.xml
+--- printer.old/Lexmark-MS610.xml	2018-06-05 11:09:27.000000000 -0400
++++ printer/Lexmark-MS610.xml	2018-06-12 20:54:30.714820496 -0400
+@@ -9,10 +9,11 @@
+       </dpi>
+     </resolution>
+   </mechanism>
+   <lang>
+     <postscript level="3" />
++    <pcl level="6" />
+     <pjl />
+   </lang>
+   <autodetect>
+     <general>
+       <ieee1284>MFG:Lexmark;MDL:Lexmark MS610 Series;</ieee1284>
+@@ -28,10 +29,13 @@
+     </driver>
+     <driver>
+       <id>Postscript-Lexmark</id>
+       <ppd>PPD/Lexmark/Lexmark_MS610_Series.ppd</ppd>
+     </driver>
++    <driver>
++      <id>pxlmono</id>
++    </driver>
+   </drivers>
+   <comments>
+     <en>
+       This database entry was automatically generated
+       from the PPD file for this printer.&lt;p&gt;
+diff -pNaru5 printer.old/Lexmark-MS710.xml printer/Lexmark-MS710.xml
+--- printer.old/Lexmark-MS710.xml	2018-06-05 11:09:27.000000000 -0400
++++ printer/Lexmark-MS710.xml	2018-06-12 20:55:10.475088519 -0400
+@@ -9,10 +9,11 @@
+       </dpi>
+     </resolution>
+   </mechanism>
+   <lang>
+     <postscript level="3" />
++    <pcl level="6" />
+     <pjl />
+   </lang>
+   <autodetect>
+     <general>
+       <ieee1284>MFG:Lexmark;MDL:Lexmark MS710;</ieee1284>
+@@ -28,10 +29,13 @@
+     </driver>
+     <driver>
+       <id>Postscript-Lexmark</id>
+       <ppd>PPD/Lexmark/Lexmark_MS710_Series.ppd</ppd>
+     </driver>
++    <driver>
++      <id>pxlmono</id>
++    </driver>
+   </drivers>
+   <comments>
+     <en>
+       This database entry was automatically generated
+       from the PPD file for this printer.&lt;p&gt;
+diff -pNaru5 printer.old/Lexmark-MS711.xml printer/Lexmark-MS711.xml
+--- printer.old/Lexmark-MS711.xml	2018-06-05 11:09:27.000000000 -0400
++++ printer/Lexmark-MS711.xml	2018-06-12 20:55:19.405148726 -0400
+@@ -9,10 +9,11 @@
+       </dpi>
+     </resolution>
+   </mechanism>
+   <lang>
+     <postscript level="3" />
++    <pcl level="6" />
+     <pjl />
+   </lang>
+   <autodetect>
+     <general>
+       <ieee1284>MFG:Lexmark;MDL:Lexmark MS711;</ieee1284>
+@@ -28,10 +29,13 @@
+     </driver>
+     <driver>
+       <id>Postscript-Lexmark</id>
+       <ppd>PPD/Lexmark/Lexmark_MS710_Series.ppd</ppd>
+     </driver>
++    <driver>
++      <id>pxlmono</id>
++    </driver>
+   </drivers>
+   <comments>
+     <en>
+       This database entry was automatically generated
+       from the PPD file for this printer.&lt;p&gt;
+diff -pNaru5 printer.old/Lexmark-MS810.xml printer/Lexmark-MS810.xml
+--- printer.old/Lexmark-MS810.xml	2018-06-05 11:09:27.000000000 -0400
++++ printer/Lexmark-MS810.xml	2018-06-12 20:55:34.495250464 -0400
+@@ -9,10 +9,11 @@
+       </dpi>
+     </resolution>
+   </mechanism>
+   <lang>
+     <postscript level="3" />
++    <pcl level="6" />
+     <pjl />
+   </lang>
+   <autodetect>
+     <general>
+       <ieee1284>MFG:Lexmark;MDL:Lexmark MS810;</ieee1284>
+@@ -28,10 +29,13 @@
+     </driver>
+     <driver>
+       <id>Postscript-Lexmark</id>
+       <ppd>PPD/Lexmark/Lexmark_MS810_Series.ppd</ppd>
+     </driver>
++    <driver>
++      <id>pxlmono</id>
++    </driver>
+   </drivers>
+   <comments>
+     <en>
+       This database entry was automatically generated
+       from the PPD file for this printer.&lt;p&gt;
+diff -pNaru5 printer.old/Lexmark-MS811.xml printer/Lexmark-MS811.xml
+--- printer.old/Lexmark-MS811.xml	2018-06-05 11:09:27.000000000 -0400
++++ printer/Lexmark-MS811.xml	2018-06-12 20:55:45.445324300 -0400
+@@ -9,10 +9,11 @@
+       </dpi>
+     </resolution>
+   </mechanism>
+   <lang>
+     <postscript level="3" />
++    <pcl level="6" />
+     <pjl />
+   </lang>
+   <autodetect>
+     <general>
+       <ieee1284>MFG:Lexmark;MDL:Lexmark MS811;</ieee1284>
+@@ -28,10 +29,13 @@
+     </driver>
+     <driver>
+       <id>Postscript-Lexmark</id>
+       <ppd>PPD/Lexmark/Lexmark_MS810_Series.ppd</ppd>
+     </driver>
++    <driver>
++      <id>pxlmono</id>
++    </driver>
+   </drivers>
+   <comments>
+     <en>
+       This database entry was automatically generated
+       from the PPD file for this printer.&lt;p&gt;
+diff -pNaru5 printer.old/Lexmark-MS812.xml printer/Lexmark-MS812.xml
+--- printer.old/Lexmark-MS812.xml	2018-06-05 11:09:27.000000000 -0400
++++ printer/Lexmark-MS812.xml	2018-06-12 20:55:51.395364418 -0400
+@@ -9,10 +9,11 @@
+       </dpi>
+     </resolution>
+   </mechanism>
+   <lang>
+     <postscript level="3" />
++    <pcl level="6" />
+     <pjl />
+   </lang>
+   <autodetect>
+     <general>
+       <ieee1284>MFG:Lexmark;MDL:Lexmark MS812;</ieee1284>
+@@ -28,10 +29,13 @@
+     </driver>
+     <driver>
+       <id>Postscript-Lexmark</id>
+       <ppd>PPD/Lexmark/Lexmark_MS810_Series.ppd</ppd>
+     </driver>
++    <driver>
++      <id>pxlmono</id>
++    </driver>
+   </drivers>
+   <comments>
+     <en>
+       This database entry was automatically generated
+       from the PPD file for this printer.&lt;p&gt;
