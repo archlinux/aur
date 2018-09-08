@@ -10,8 +10,7 @@ license=('MIT')
 arch=('any')
 depends=('python-pynacl'
          'python-cryptography'
-         'python-hkdf'
-         'python-scci-git')
+         'python-hkdf')
 makedepends=('python-setuptools')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
