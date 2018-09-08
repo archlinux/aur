@@ -5,7 +5,7 @@
 # Contributor: Link Dupont <link@subpop.net>
 #
 pkgname=dbus-nosystemd
-pkgver=1.12.8
+pkgver=1.12.10
 pkgrel=1
 pkgdesc="Freedesktop.org message bus system"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
@@ -22,7 +22,7 @@ provides=('dbus-core' "dbus=${pkgver}" "libdbus=${pkgver}")
 conflicts=('dbus-core' 'dbus' 'libdbus' 'dbus-eudev' 'dbus-x11')
 replaces=('dbus-core' 'dbus' 'libdbus' 'dbus-eudev' 'dbus-x11')
 install=dbus-nosystemd.install
-_commit=f8902fa1c840e3fab807016e6a00647b6ef9dd41  # tags/dbus-1.12.8^0
+_commit=f98e784bb6f18b4c28feca6a6e9d12b7bf021a00  # tags/dbus-1.12.10^0
 source=("git+https://anongit.freedesktop.org/git/dbus/dbus#commit=$_commit"
 	30-dbus.sh dbus.rc)
 md5sums=('SKIP'
@@ -42,9 +42,9 @@ build() {
       --prefix=/usr \
       --sysconfdir=/etc \
       --localstatedir=/var \
+      runstatedir=/run \
       --libexecdir=/usr/lib/dbus-1.0 \
       --with-dbus-user=dbus \
-      --with-system-pid-file=/run/dbus/pid \
       --with-system-socket=/run/dbus/system_bus_socket \
       --with-console-auth-dir=/run/console/ \
       --enable-inotify \
