@@ -42,7 +42,12 @@ package() {
     cp -r "Resources"/* "$pkgdir/usr/share/renoise-$pkgver"
 
     install -Dm 755 "renoise" "$pkgdir/usr/bin/renoise3"
-    install -Dm 644 "Installer/renoise.png" "$pkgdir/usr/share/icons/hicolor/48x48/apps/renoise3.png"
+    install -Dm 644 "Resources/Skin/Icons/WindowIcon16.png" "$pkgdir/usr/share/icons/hicolor/16x16/apps/renoise3.png"
+    install -Dm 644 "Resources/Skin/Icons/WindowIcon32.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/renoise3.png"
+    install -Dm 644 "Resources/Skin/Icons/WindowIcon48.png" "$pkgdir/usr/share/icons/hicolor/48x48/apps/renoise3.png"
+    install -Dm 644 "Resources/Skin/Icons/WindowIcon128.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/renoise3.png"
+    install -Dm 644 "Resources/Skin/Icons/WindowIcon256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/renoise3.png"
+
     install -Dm 644 "Installer/renoise.desktop" "$pkgdir/usr/share/applications/renoise3.desktop"
     sed -i 's/=renoise/=renoise3/g' "$pkgdir/usr/share/applications/renoise3.desktop"
     install -Dm 644 "Installer/renoise.1.gz" "$pkgdir/usr/share/man/man1/renoise3.1.gz"
