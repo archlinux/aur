@@ -1,7 +1,7 @@
 # Maintainer: Ward Segers <w@rdsegers.be>
 
 pkgname=nordselect
-pkgver=0.3.2
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Select the ideal NordVPN server"
 arch=('any')
@@ -11,17 +11,12 @@ depends=('curl')
 makedepends=('cargo')
 provides=('nordselect')
 source=("https://github.com/editicalu/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=("800c34b334821f3a1c0c22e9ffb2f94a26aa7dad6ca7bf182b6644b85c80fe3e163111fdc5025d111e08a29a13d136d5d98a05688162212006b45902cb5081aa")
+sha512sums=("1bba9ed4d52069d497402e886d44f04984e158bfe6d16e4536ce77417aba8d0f9af46cc95d5f951fd4c6e833e6de55da4a358c83c2cf382cff9e7054c4d4686e")
 validpgpkeys=("CC0B7CE9604A8A91F0D70B778489DB248465FDD7")
 
 build() {
 	cd "$pkgname-$pkgver"
-	cargo build --release
-}
-
-check() {
-	cd "$pkgname-$pkgver"
-	cargo test
+	BIN_LOCATION='/usr/bin/nordselect' cargo build --release
 }
 
 package() {
