@@ -1,0 +1,12 @@
+diff -aur --no-dereference package.pristine/src/plugins/jack/Makefile.am package.new/src/plugins/jack/Makefile.am
+--- package.pristine/src/plugins/jack/Makefile.am	2014-09-30 22:00:40.000000000 +0200
++++ package.new/src/plugins/jack/Makefile.am	2018-09-08 13:45:25.808256834 +0200
+@@ -21,7 +21,7 @@
+ 
+ libjack_la_CFLAGS = @JACK_CFLAGS@
+ libjack_la_LDFLAGS = @PLUGIN_LDFLAGS@ @JACK_LDFLAGS@
+-libjack_la_LIBADD = @JACK_LIBS@ ../../libao.la
++libjack_la_LIBADD = @JACK_LIBS@
+ libjack_la_SOURCES = $(jacksources)
+ 
+ EXTRA_DIST = ao_jack.c
