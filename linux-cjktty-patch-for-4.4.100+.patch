@@ -1,0 +1,20 @@
+--- cjktty-4.4.patch	2018-03-05 15:21:22.000000000 +0800
++++ cjktty-4.4.100+.patch	2018-03-05 16:34:11.000000000 +0800
+@@ -148,7 +148,7 @@
+  	unsigned int new_cols, new_rows, new_row_size, new_screen_size;
+  	unsigned int user;
+  	unsigned short *newscreen;
+-@@ -867,11 +893,12 @@ static int vc_do_resize(struct tty_struct *tty, struct vc_data *vc,
++@@ -894,13 +894,14 @@ static int vc_do_resize(struct tty_struct *tty, struct vc_data *vc,
+  	new_rows = (lines ? lines : vc->vc_rows);
+  	new_row_size = new_cols << 1;
+  	new_screen_size = new_row_size * new_rows;
+@@ -157,6 +157,8 @@
+  	if (new_cols == vc->vc_cols && new_rows == vc->vc_rows)
+  		return 0;
+  
++ 	if (new_screen_size > (4 << 20))
++ 		return -EINVAL;
+ -	newscreen = kmalloc(new_screen_size, GFP_USER);
+ +	newscreen = kmalloc(new_screen_size * 2, GFP_USER);
+  	if (!newscreen)

@@ -1,0 +1,11 @@
+--- uksm-4.4.patch	2018-03-05 14:24:36.000000000 +0800
++++ uksm-4.4.74+.patch	2018-03-05 14:34:44.000000000 +0800
+@@ -1223,7 +1223,7 @@
+  			vma_gap_update(next);
+ -		else
+ +		} else {
+- 			mm->highest_vm_end = end;
++ 			VM_WARN_ON(mm->highest_vm_end != vm_end_gap(vma));
+ +		}
+ +	} else {
+ +		if (next && !insert)
