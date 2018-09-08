@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-rosout
 	pkgdesc = ROS - System-wide logging mechanism for messages sent to the /rosout topic.
-	pkgver = 1.14.2
+	pkgver = 1.14.3
 	pkgrel = 1
 	url = http://ros.org/wiki/rosout
 	arch = any
@@ -8,12 +8,12 @@ pkgbase = ros-melodic-rosout
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-rosgraph-msgs
-	makedepends = ros-melodic-roscpp
 	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-roscpp
 	depends = ros-melodic-rosgraph-msgs
 	depends = ros-melodic-roscpp
-	source = ros-melodic-rosout-1.14.2-0.tar.gz::https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rosout/1.14.2-0.tar.gz
-	sha256sums = c4080999cd791a1286b17039b9ed60db4e92ff87b3c66164a35bd6bc2e51d58a
+	source = ros-melodic-rosout::git+https://github.com/ros-gbp/ros_comm-release.git
+	sha256sums = SKIP
 
 pkgname = ros-melodic-rosout
 
