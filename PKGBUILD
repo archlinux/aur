@@ -2,7 +2,7 @@
 #
 pkgname=cycle-git
 pkgver=r3.354bc6e
-pkgrel=1
+pkgrel=2
 pkgdesc="Cycle is a calendar program for women (git)"
 arch=('any')
 url="https://github.com/jose1711/cycle"
@@ -25,8 +25,9 @@ package() {
   mkdir -p ${pkgdir}/usr/share/{cycle,man/man1}
   cp -pR * ${pkgdir}/usr/share/cycle
   mv cycle.1 ${pkgdir}/usr/share/man/man1
-  install -D -m644 icons/cycle.xpm $pkgdir/usr/share/pixmaps/cycle.xpm
-  install -D -m644 $srcdir/cycle.desktop $pkgdir/usr/share/applications/cycle.desktop
+  install -Dm644 README*.html -t $pkgdir/usr/share/doc/cycle
+  install -Dm644 icons/cycle.xpm $pkgdir/usr/share/pixmaps/cycle.xpm
+  install -Dm644 $srcdir/cycle.desktop $pkgdir/usr/share/applications/cycle.desktop
   cat >./cycle <<EOF
 #!/bin/bash
 test -d ~/.cycle || mkdir ~/.cycle
