@@ -3,12 +3,12 @@
 
 pkgname=abinit
 pkgver=8.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Full-featured atomic-scale first-principles simulation software."
 arch=('i686' 'x86_64')
 url="https://www.abinit.org/"
 license=('GPLv3')
-depends=('lapack' 'blas' 'openmpi' 'atompaw')
+depends=('lapack' 'blas' 'openmpi')
 makedepends=('gcc-fortran' 'perl')
 source=(
   "https://www.abinit.org/sites/default/files/packages/$pkgname-$pkgver.tar.gz"
