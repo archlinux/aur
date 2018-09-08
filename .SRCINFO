@@ -1,0 +1,17 @@
+pkgbase = ros-melodic-ecl-build
+	pkgdesc = ROS - Collection of cmake/make build tools primarily for ecl development itself, but also contains a few cmake modules useful outside of the ecl.
+	pkgver = 0.61.7
+	pkgrel = 1
+	url = http://wiki.ros.org/ecl_build
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-ecl-license
+	makedepends = ros-melodic-catkin
+	depends = ros-melodic-ecl-license
+	source = ros-melodic-ecl-build-0.61.7-0.tar.gz::https://github.com/yujinrobot-release/ecl_tools-release/archive/release/melodic/ecl_build/0.61.7-0.tar.gz
+	sha256sums = 6133fdac73fbedffae19ec5ec6b203225f7e8db9ac1d88fca425d95dc97beae4
+
+pkgname = ros-melodic-ecl-build
+
