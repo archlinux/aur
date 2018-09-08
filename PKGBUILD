@@ -15,40 +15,30 @@
 # packages for your favorite kernel package built using the archzfs build tools, submit a request in the Issue tracker on the
 # archzfs github page.
 #
-#
 pkgbase="zfs-linux"
 pkgname=("zfs-linux" "zfs-linux-headers")
+_zfsver="0.7.10"
+_kernelver="4.18.6.arch1-1"
+_extramodules="${_kernelver/.arch/-arch}-ARCH"
 
-pkgver=0.7.9.4.18.5.arch1.1
-pkgrel=2
-makedepends=("linux-headers=4.18.5.arch1-1" "spl-linux-headers")
+pkgver="${_zfsver}_$(echo ${_kernelver} | sed s/-/./g)"
+pkgrel=1
+makedepends=("linux-headers=${_kernelver}" "spl-linux-headers")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
-source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.9/zfs-0.7.9.tar.gz"
-        "upstream-ac09630-Fix-zpl_mount-deadlock.patch"
-        "upstream-9f64c1e-Linux-4.18-compat-inode-timespec_timespec64.patch"
-        "upstream-9161ace-Linux-compat-4.18-check_disk_size_change.patch")
-sha256sums=("f50ca2441c6abde4fe6b9f54d5583a45813031d6bb72b0011b00fc2683cd9f7a" 
-            "1799f6f7b2a60a23b66106c9470414628398f6bfc10da3d0f41c548bba6130e8"
-            "03ed45af40850c3a51a6fd14f36c1adc06501c688a67afb13db4fded6ec9db1d"
-            "afbde4a2507dff989404665dbbdfe18eecf5aba716a6513902affa0e4cb033fe")
+source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${_zfsver}/zfs-${_zfsver}.tar.gz")
+sha256sums=("9343650175ccba2f61379c7dbc66ecbda1059e1ff95bc1fe6be4f33628cce477")
 license=("CDDL")
-depends=("kmod" 'spl-linux' "zfs-utils-common=0.7.9" "linux=4.18.5.arch1-1")
-prepare() {
-    cd "${srcdir}/zfs-0.7.9"
-    patch -Np1 -i ${srcdir}/upstream-ac09630-Fix-zpl_mount-deadlock.patch
-    patch -Np1 -i ${srcdir}/upstream-9f64c1e-Linux-4.18-compat-inode-timespec_timespec64.patch
-    patch -Np1 -i ${srcdir}/upstream-9161ace-Linux-compat-4.18-check_disk_size_change.patch
-}
+depends=("kmod" 'spl-linux' "zfs-utils-common=${_zfsver}" "linux=${_kernelver}")
 
 build() {
-    cd "${srcdir}/zfs-0.7.9"
+    cd "${srcdir}/zfs-${_zfsver}"
     ./autogen.sh
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
                 --datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
-                --libexecdir=/usr/lib/zfs-0.7.9 --with-config=kernel \
-                --with-linux=/usr/lib/modules/4.18.5-arch1-1-ARCH/build \
-                --with-linux-obj=/usr/lib/modules/4.18.5-arch1-1-ARCH/build
+                --libexecdir=/usr/lib/zfs-${zfsver} --with-config=kernel \
+                --with-linux=/usr/lib/modules/${_extramodules}/build \
+                --with-linux-obj=/usr/lib/modules/${_extramodules}/build
     make
 }
 
@@ -59,7 +49,7 @@ package_zfs-linux() {
     groups=("archzfs-linux")
     conflicts=('zfs-linux-git')
     replaces=("zfs-git")
-    cd "${srcdir}/zfs-0.7.9"
+    cd "${srcdir}/zfs-${_zfsver}"
     make DESTDIR="${pkgdir}" install
     cp -r "${pkgdir}"/{lib,usr}
     rm -r "${pkgdir}"/lib
@@ -70,9 +60,9 @@ package_zfs-linux() {
 package_zfs-linux-headers() {
     pkgdesc="Kernel headers for the Zettabyte File System."
     conflicts=('zfs-archiso-linux-headers' 'zfs-archiso-linux-git-headers' 'zfs-linux-hardened-headers' 'zfs-linux-hardened-git-headers' 'zfs-linux-lts-headers' 'zfs-linux-lts-git-headers'  'zfs-linux-git-headers' 'zfs-linux-vfio-headers' 'zfs-linux-vfio-git-headers' 'zfs-linux-zen-headers' 'zfs-linux-zen-git-headers' )
-    cd "${srcdir}/zfs-0.7.9"
+    cd "${srcdir}/zfs-${_zfsver}"
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.18.5-arch1-1-ARCH/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/${_extramodules}/Module.symvers
 }
