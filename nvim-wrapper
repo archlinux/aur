@@ -16,6 +16,7 @@ NAME = 'Neovim'
 def find_terminal_server():
     candidates = list(filter(os.path.exists, \
                             ('/usr/lib/gnome-terminal/gnome-terminal-server', # arch et al
+                             '/usr/lib/gnome-terminal-server',
                              '/usr/libexec/gnome-terminal-server')))          # fedora 22
     if len(candidates) > 0:
         return candidates[0]
