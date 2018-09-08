@@ -1,7 +1,7 @@
 # Maintainer: Charlotte Van Petegem <charlotte at vanpetegem dot me>
 # Maintainer: jpate <jkpate@jkpate.net>
 pkgname=praat
-pkgver=6.0.42
+pkgver=6.0.43
 pkgrel=1
 pkgdesc="A tool for 'Doing Phonetics by computer'"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=( 'ttf-sil-fonts' )
 
 source=("https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz")
 
-md5sums=('4f239697138f71dfe2f6c04b9cf68a40')
+md5sums=('e66aaec26a7753430e933834c5795595')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
