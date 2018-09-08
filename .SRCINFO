@@ -1,16 +1,14 @@
 pkgbase = libenglab
 	pkgdesc = Main library for Englab, a mathematical platform
 	pkgver = 0.3.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.englab.org
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = gsl
 	source = http://downloads.sourceforge.net/englab/libenglab-0.3.0.tar.gz
-	source = gsltest.patch
-	md5sums = f8b9f9ec9c825210d6abe3d63b42291f
-	md5sums = bb6c817dd436bbd7607542021eb68d08
+	sha256sums = 5b17c104f59981e4de768e1c384c43ea10780208643e7ea5c8ea9d6e049ab16a
 
 pkgname = libenglab
 

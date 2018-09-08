@@ -3,30 +3,22 @@
 
 pkgname=libenglab
 pkgver=0.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Main library for Englab, a mathematical platform" 
 url="http://www.englab.org"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('gsl')
-source=(http://downloads.sourceforge.net/englab/$pkgname-$pkgver.tar.gz gsltest.patch)
-md5sums=('f8b9f9ec9c825210d6abe3d63b42291f'
-         'bb6c817dd436bbd7607542021eb68d08')
-
-prepare() {
-  cd $srcdir/$pkgname-$pkgver
-  patch -p1 < "$srcdir"/gsltest.patch
-}
+source=(http://downloads.sourceforge.net/englab/$pkgname-$pkgver.tar.gz)
+sha256sums=('5b17c104f59981e4de768e1c384c43ea10780208643e7ea5c8ea9d6e049ab16a')
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $pkgname-$pkgver
   ./configure --sysconfdir=/etc --prefix=/usr 
   make
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
-  make DESTDIR=$pkgdir install
-  cd "$pkgdir"/usr/lib
-  ln ${pkgname}.so.${pkgver} ${pkgname}.so.1
+  cd $pkgname-$pkgver
+  make DESTDIR="$pkgdir" install
 }
