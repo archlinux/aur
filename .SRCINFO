@@ -1,0 +1,14 @@
+pkgbase = irony-mode
+	pkgdesc = A C/C++ minor mode for Emacs powered by libclang
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/Sarcasm/irony-mode
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = clang
+	source = irony-mode-v1.2.0.tar.gz::https://github.com/Sarcasm/irony-mode/archive/v1.2.0.tar.gz
+	sha256sums = 294dea9b524bad66a0005675fb436c102cc047cf0768633c55e24dfa40fcc8b8
+
+pkgname = irony-mode
+
