@@ -2,15 +2,16 @@
 # Original Theme by: Andrés Rodríguez <https://gitlab.com/mixedCase>
 
 pkgname=sddm-lain-wired-theme
-pkgver=0.1
-pkgrel=2
+pkgver=0.9
+pkgrel=1
 pkgdesc='A sddm theme inspired by Serial experiments lain'
 arch=('any')
 url='https://github.com/lll2yu/sddm-lain-wired-theme'
 license=('CCPL:cc-by-sa 4.0')
 
 depends=('sddm' 'qt5-multimedia' 'qt5-quickcontrols')
-
+optdepends=('gst-plugins-good: For audio playback'
+	    'gst-plugins-bad: For audio playback')
 source=(
 	"${pkgname}-${pkgver}.tar.gz::https://github.com/lll2yu/${pkgname}/archive/${pkgver}.tar.gz"
 )
