@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-rosservice
 	pkgdesc = ROS - rosservice contains the rosservice command-line tool for listing and querying ROS Services.
-	pkgver = 1.14.2
+	pkgver = 1.14.3
 	pkgrel = 1
 	url = http://ros.org/wiki/rosservice
 	arch = any
@@ -8,13 +8,13 @@ pkgbase = ros-melodic-rosservice
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
-	depends = ros-melodic-rosgraph
-	depends = ros-melodic-rosmsg
 	depends = ros-melodic-genpy
-	depends = ros-melodic-roslib
+	depends = ros-melodic-rosgraph
 	depends = ros-melodic-rospy
-	source = ros-melodic-rosservice-1.14.2-0.tar.gz::https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rosservice/1.14.2-0.tar.gz
-	sha256sums = 2599808bdbe5f6bfe41fe43e186bd009c626f50d1ae64c77d08eb6a0c5021bc4
+	depends = ros-melodic-roslib
+	depends = ros-melodic-rosmsg
+	source = ros-melodic-rosservice::git+https://github.com/ros-gbp/ros_comm-release.git
+	sha256sums = SKIP
 
 pkgname = ros-melodic-rosservice
 
