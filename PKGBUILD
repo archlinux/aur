@@ -1,20 +1,23 @@
+# Maintainer: Thiago L. A. Miller <thiago_leisrael@hotmail.com>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.30
-
-pkgname='perl-cpan-uploader'
-pkgver='0.103010'
-pkgrel='1'
+_distname=CPAN-Uploader
+pkgname=perl-cpan-uploader
+pkgver=0.103013
+pkgrel=1
 pkgdesc="upload things to the CPAN"
 arch=('any')
+url="https://metacpan.org/release/$_distname"
 license=('PerlArtistic' 'GPL')
-options=('!emptydirs')
-depends=('perl-file-homedir' 'perl-getopt-long-descriptive>=0.084' 'perl-http-message' 'perl-lwp-protocol-https' 'perl-term-readkey' 'perl-libwww')
+depends=('perl-file-homedir>=0'
+         'perl-getopt-long-descriptive>=0.084'
+         'perl-http-message>=0'
+         'perl-lwp-protocol-https>=1'
+         'perl-term-readkey>=0'
+         'perl-libwww>=0')
 makedepends=()
-url='https://metacpan.org/release/CPAN-Uploader'
-source=('http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/CPAN-Uploader-0.103010.tar.gz')
-md5sums=('2dc364564c832d286ef324456e9e186c')
-sha512sums=('b808a6010f83afec464217df97d8d913033fb52513d7499473e2f850dbc6cd6f89e17d0b5ceb7c753b3eb64222563497e5dd25c7cb4e51d5fc4c4964a9ef9b4d')
-_distdir="CPAN-Uploader-0.103010"
+options=('!emptydirs')
+source=("http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/$_distname-$pkgver.tar.gz")
+md5sums=('7130a775e6fee61a09d76f66d6c78012')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -23,23 +26,22 @@ build() {
       PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
       MODULEBUILDRC=/dev/null
 
-    cd "$srcdir/$_distdir"
+    cd "$_distname-$pkgver"
     /usr/bin/perl Makefile.PL
     make
   )
 }
 
 check() {
-  cd "$srcdir/$_distdir"
+  cd "$_distname-$pkgver"
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
     make test
   )
 }
 
 package() {
-  cd "$srcdir/$_distdir"
+  cd "$_distname-$pkgver"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 

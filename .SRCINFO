@@ -1,21 +1,20 @@
 pkgbase = perl-cpan-uploader
 	pkgdesc = upload things to the CPAN
-	pkgver = 0.103010
+	pkgver = 0.103013
 	pkgrel = 1
 	url = https://metacpan.org/release/CPAN-Uploader
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	depends = perl-file-homedir
+	depends = perl-file-homedir>=0
 	depends = perl-getopt-long-descriptive>=0.084
-	depends = perl-http-message
-	depends = perl-lwp-protocol-https
-	depends = perl-term-readkey
-	depends = perl-libwww
+	depends = perl-http-message>=0
+	depends = perl-lwp-protocol-https>=1
+	depends = perl-term-readkey>=0
+	depends = perl-libwww>=0
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/CPAN-Uploader-0.103010.tar.gz
-	md5sums = 2dc364564c832d286ef324456e9e186c
-	sha512sums = b808a6010f83afec464217df97d8d913033fb52513d7499473e2f850dbc6cd6f89e17d0b5ceb7c753b3eb64222563497e5dd25c7cb4e51d5fc4c4964a9ef9b4d
+	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/CPAN-Uploader-0.103013.tar.gz
+	md5sums = 7130a775e6fee61a09d76f66d6c78012
 
 pkgname = perl-cpan-uploader
 
