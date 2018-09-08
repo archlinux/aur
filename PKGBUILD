@@ -31,7 +31,7 @@ gimp-script-white-balance-puzzle
 gimp-script-vintage-look
 gimp-script-split-tone
 )
-pkgver=r7.b3f4e3e
+pkgver=r29.9a34874
 pkgrel=1
 pkgdesc='Varoius Gimp scripts made by elsamuko'
 arch=(any)
@@ -172,8 +172,8 @@ package_gimp-script-national-geographic (){
   eval $_scriptsdir_eval
   cd "$srcdir"/gimp-elsamuko/scripts
   install -Dm644 elsamuko-national-geographic.scm $_scriptsdir/elsamuko-national-geographic.scm
-  install -Dm644 elsamuko-national-geographic-batch.scm \
-    $_scriptsdir/elsamuko-national-geographic-batch.scm
+#   install -Dm644 elsamuko-national-geographic-batch.scm \
+#     $_scriptsdir/elsamuko-national-geographic-batch.scm
 }
 package_gimp-script-obama-hope (){
   true && pkgdesc='Generates a poster like the famous Obama "HOPE"'
@@ -198,8 +198,8 @@ package_gimp-script-photochrom (){
   eval $_scriptsdir_eval
   cd "$srcdir"/gimp-elsamuko/scripts
   install -Dm644 elsamuko-photochrom.scm $_scriptsdir/elsamuko-photochrom.scm
-  install -Dm644 elsamuko-photochrom-batch.scm \
-    $_scriptsdir/elsamuko-photochrom-batch.scm
+#   install -Dm644 elsamuko-photochrom-batch.scm \
+#     $_scriptsdir/elsamuko-photochrom-batch.scm
 }
 package_gimp-script-rainy-landscape (){
   true && pkgdesc='Changes a dry landscape to a wet one'
@@ -233,7 +233,7 @@ package_gimp-script-technicolor-2-color (){
   eval $_scriptsdir_eval
   cd "$srcdir"/gimp-elsamuko/scripts
   install -Dm644 elsamuko-technicolor-2-color.scm $_scriptsdir/elsamuko-technicolor-2-color.scm
-  install -Dm644 elsamuko-technicolor-2-color-batch.scm $_scriptsdir/elsamuko-technicolor-2-color-batch.scm
+#   install -Dm644 elsamuko-technicolor-2-color-batch.scm $_scriptsdir/elsamuko-technicolor-2-color-batch.scm
 }
 package_gimp-script-technicolor-3-color (){
   true && pkgdesc='Simulates the 3 Color Technicolor effect'
