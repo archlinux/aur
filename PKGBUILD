@@ -1,11 +1,11 @@
 # Maintainer: Milk Brewster <milk on freenode>
 _pkgname=patroneo
 pkgname=${_pkgname}-git
-pkgver=r64.8714769
+pkgver=r91.0ed1640
 pkgrel=1
 pkgdesc="Easy Pattern Sequencer - Utilizing Jack Midi and the Non Session Manager"
 arch=(x86_64)
-url=""
+url="https://github.com/diovudau/Patroneo"
 license=('GPL')
 groups=()
 depends=('python' 'calfbox-git' 'python-pyqt5')
