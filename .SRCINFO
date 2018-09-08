@@ -1,13 +1,13 @@
 pkgbase = crudini
 	pkgdesc = A utility for manipulating ini files
 	pkgver = 0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.pixelbeat.org/programs/crudini/
 	arch = any
 	license = GPL2
 	depends = python2-iniparse
-	source = https://github.com/pixelb/crudini/archive/master.zip
-	sha512sums = 461a3d4cf7fdeb8c948c4ad27605949b6b76c4379442d46a0e1eceb57e3164a03f4152c3c2f2da20b43e42ff5ee7653e9d9eec7c2519123f2049442313b2155a
+	source = https://github.com/pixelb/crudini/archive/0.9.tar.gz
+	sha512sums = 52cbfa0ec5edf68bc066bec68977d09937816fcf07ec71ab1fbe16eb8b667177e163325f67a3ca973e6ec00eb0d1a6f7c4e622ff8af38473651096325f832383
 
 pkgname = crudini
 
