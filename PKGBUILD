@@ -1,7 +1,7 @@
 # Maintainer: Daniel Appelt <daniel.appelt@gmail.com>
 _pkgbasename=rtmidi
 pkgname=python-py${_pkgbasename}
-pkgver=2.3.2
+pkgver=2.3.4
 pkgrel=1
 pkgdesc="Realtime MIDI I/O for python"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('python' 'jack')
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgbasename::1}/${_pkgbasename}/${_pkgbasename}-${pkgver}.tar.gz")
-sha256sums=('5a23ad612d998a7201d9a64abbf65a48917e5f00710ad8185e9498dad3f7f151')
+sha256sums=('f1ffd73d6571e6ce2769d77e247523738605a71c32d8f60b56a3b41002d0d54c')
 
 package() {
   cd "${srcdir}/${_pkgbasename}-${pkgver}"
