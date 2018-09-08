@@ -1,21 +1,18 @@
 pkgbase = spl-linux
-	pkgver = 0.7.9.4.18.5.arch1.1
-	pkgrel = 2
+	pkgver = 0.7.10_4.18.6.arch1.1
+	pkgrel = 1
 	url = http://zfsonlinux.org/
 	arch = x86_64
 	license = GPL
-	makedepends = linux-headers=4.18.5.arch1-1
-	depends = spl-utils-common=0.7.9
+	makedepends = linux-headers=4.18.6.arch1-1
+	depends = spl-utils-common=0.7.10
 	depends = kmod
-	depends = linux=4.18.5.arch1-1
-	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.9/spl-0.7.9.tar.gz
-	source = upstream-eb1f893-Linux-4.18-compat-inode-timespec_timespec64.patch
-	sha256sums = 49832e446a5abce0b55ba245c9b5f94959604d44378320fdffae0233bf1e8c00
-	sha256sums = 72d1b4103c0b52e0fc2b7135485e346c898289ab42f7bc1ae2748d072a360f66
+	depends = linux=4.18.6.arch1-1
+	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.10/spl-0.7.10.tar.gz
+	sha256sums = 9647e0fe9f19cd99746da3cc48b8de8903a66dacdccc82b45dbbb516606f4ff8
 
 pkgname = spl-linux
 	pkgdesc = Solaris Porting Layer kernel modules.
-	install = spl.install
 	groups = archzfs-linux
 	provides = spl
 	conflicts = spl-linux-git
