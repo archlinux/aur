@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-rostopic
 	pkgdesc = ROS - rostopic contains the rostopic command-line tool for displaying debug information about ROS Topics, including publishers, subscribers, publishing rate, and ROS Messages.
-	pkgver = 1.14.2
+	pkgver = 1.14.3
 	pkgrel = 1
 	url = http://ros.org/wiki/rostopic
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = ros-melodic-rostopic
 	depends = ros-melodic-rosbag
 	depends = ros-melodic-genpy
 	depends = ros-melodic-rospy
-	source = ros-melodic-rostopic-1.14.2-0.tar.gz::https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rostopic/1.14.2-0.tar.gz
-	sha256sums = 7bb66e8cbee54e173e6757c3f1d78b54927ef11e3441db7299b3a7f79ccc8b82
+	source = ros-melodic-rostopic::git+https://github.com/ros-gbp/ros_comm-release.git
+	sha256sums = SKIP
 
 pkgname = ros-melodic-rostopic
 
