@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-rosnode
 	pkgdesc = ROS - rosnode is a command-line tool for displaying debug information about ROS Nodes, including publications, subscriptions and connections.
-	pkgver = 1.14.2
+	pkgver = 1.14.3
 	pkgrel = 1
 	url = http://ros.org/wiki/rosnode
 	arch = any
@@ -9,10 +9,10 @@ pkgbase = ros-melodic-rosnode
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-rostest
 	makedepends = ros-melodic-catkin
-	depends = ros-melodic-rostopic
 	depends = ros-melodic-rosgraph
-	source = ros-melodic-rosnode-1.14.2-0.tar.gz::https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rosnode/1.14.2-0.tar.gz
-	sha256sums = 451accc6f60d9864b35e439c3da80c24346a10c334224d006c07b262e5edcc79
+	depends = ros-melodic-rostopic
+	source = ros-melodic-rosnode::git+https://github.com/ros-gbp/ros_comm-release.git
+	sha256sums = SKIP
 
 pkgname = ros-melodic-rosnode
 
