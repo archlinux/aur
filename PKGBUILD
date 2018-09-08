@@ -1,9 +1,10 @@
 # Maintainer: Michael Gerdau <mgd@qata.de>
-# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Maintainer: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Contributor: Caleb Cushing AKA xenoterracide <xenoterracide@gmail.com>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-cpanplus-dist-build'
-pkgver='0.88'
+pkgver='0.90'
 pkgrel='1'
 pkgdesc="CPANPLUS plugin to install packages that use Build.PL"
 arch=('any')
@@ -12,10 +13,10 @@ options=('!emptydirs')
 depends=('perl-cpanplus>=0.84' 'perl-module-build>=0.32' 'perl>=5.006')
 makedepends=()
 url='https://metacpan.org/release/CPANPLUS-Dist-Build'
-source=('http://search.cpan.org/CPAN/authors/id/B/BI/BINGOS/CPANPLUS-Dist-Build-0.88.tar.gz')
-md5sums=('ce4cfe7da5100dbdeb346845dfba9982')
-sha512sums=('af19985ded89e3a82b616ca82aa476bc623ef1038b5ceb2d97997830041b18aaf3ec7779121cc088e8e35b6c82ea7918fc1a62402f63be753c7466a522149a12')
-_distdir="CPANPLUS-Dist-Build-0.88"
+source=("http://search.cpan.org/CPAN/authors/id/B/BI/BINGOS/CPANPLUS-Dist-Build-${pkgver}.tar.gz")
+md5sums=('1fbf2c087bbe10a4c1536b415e45c960')
+sha512sums=('5dece7c1ac988fdaf20ce796baf1707be9a653a93822987803f58eee534b8dfafe52152b0236d26c0f7162f61e0348f0fb0a59f76cf3873b01059b12a8a89913')
+_distdir="CPANPLUS-Dist-Build-${pkgver}"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
