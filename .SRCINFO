@@ -1,7 +1,7 @@
 pkgbase = casync
 	pkgdesc = Content-Addressable Data Synchronization Tool
 	pkgver = 2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/systemd/casync
 	arch = x86
 	arch = x86_64
@@ -18,7 +18,9 @@ pkgbase = casync
 	depends = zlib
 	depends = zstd
 	source = casync-2.tar.gz::https://github.com/systemd/casync/archive/v2.tar.gz
+	source = renameat2-test-fix.patch
 	sha256sums = a5f79ee3ccae2df42cce662c36edc7047aebacd3a9c029ee9a859adfa7a68d00
+	sha256sums = 3fb0fc4965039d0fc5b51c8fe49bb7ad74108324ff921c6f5b74127036c28d51
 
 pkgname = casync
 
