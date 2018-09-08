@@ -9,6 +9,7 @@ pkgbase = gnatcoll-db2ada
 	makedepends = gprbuild
 	depends = gcc-ada
 	depends = gnatcoll-core
+	depends = gnatcoll-sql
 	provides = gnatcoll-db2ada
 	conflicts = gnatcoll-db2ada
 	source = http://mirrors.cdn.adacore.com/art/5b0ce9cbc7a4475263382be6
