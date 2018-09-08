@@ -1,15 +1,16 @@
-# Maintainer: kozec <kozec at kozec.com>
+# Maintainer: William Vigolo da Silva <w.vigolodasilva@gmail.com>
+# Contributor: kozec <kozec at kozec.com>
 # Contributor: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=polkit-consolekit
-pkgver=0.113
-pkgrel=3
+pkgver=0.115
+pkgrel=1
 pkgdesc="PolicyKit with ConsoleKit support for non-systemd systems"
 arch=('i686' 'x86_64')
 license=('LGPL')
 url="http://www.freedesktop.org/wiki/Software/polkit"
-depends=('glib2' 'pam' 'expat' 'js')
+depends=('glib2' 'pam' 'expat' 'js52')
 makedepends=('intltool' 'gtk-doc' 'gobject-introspection')
 provides=("polkit=$pkgver")
 conflicts=('polkit')
@@ -25,6 +26,7 @@ build() {
       --localstatedir=/var --libexecdir=/usr/lib/polkit-1 \
       --with-systemdsystemunitdir=/usr/lib/systemd/system \
       --enable-libsystemd-login=no \
+      --enable-libelogind=no \
       --disable-static --enable-gtk-doc
   make
 }
@@ -39,5 +41,5 @@ package() {
   install -m644 "$srcdir/polkit.pam" "$pkgdir/etc/pam.d/polkit-1"
 }
 
-md5sums=('4b77776c9e4f897dcfe03b2c34198edf'
+md5sums=('f03b055d6ae5fc8eac76838c7d83d082'
          '6564f95878297b954f0572bc1610dd15')
