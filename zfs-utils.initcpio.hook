@@ -60,7 +60,8 @@ zfs_mount_handler () {
             # Lets import everything and try again
             zpool import ${ZPOOL_IMPORT_FLAGS} -N -a ${ZPOOL_FORCE}
             if ! zfs_get_bootfs ; then
-                die "ZFS: Cannot find bootfs."
+                err "ZFS: Cannot find bootfs."
+                exit 1
             fi
         fi
     fi
@@ -77,7 +78,8 @@ zfs_mount_handler () {
         fi
 
         if ! zpool import ${ZPOOL_IMPORT_FLAGS} -N "${pool}" ${ZPOOL_FORCE} ; then
-            die "ZFS: Unable to import pool ${pool}."
+            err "ZFS: Unable to import pool ${pool}."
+            exit 1
         fi
     fi
 
@@ -117,7 +119,7 @@ set_flags() {
 
     # Add import directory to import command flags
     [ ! "${zfs_import_dir}" = "" ] && ZPOOL_IMPORT_FLAGS="${ZPOOL_IMPORT_FLAGS} -d ${zfs_import_dir}"
-    [ "${zfs_import_dir}" = "" ] && [ -f /etc/zfs/zpool.cache ] && ZPOOL_IMPORT_FLAGS="${ZPOOL_IMPORT_FLAGS} -c /etc/zfs/zpool.cache"
+    [ "${zfs_import_dir}" = "" ] && [ -f /etc/zfs/zpool.cache.org ] && ZPOOL_IMPORT_FLAGS="${ZPOOL_IMPORT_FLAGS} -c /etc/zfs/zpool.cache.org"
 }
 
 run_hook() {

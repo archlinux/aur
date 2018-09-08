@@ -6,23 +6,24 @@
 # http://github.com/archzfs/archzfs
 #
 pkgname="zfs-utils-common-git"
+_commit='b8a90418f3a9c23b89c5d2c729a4dd0fea644508'
 
-pkgver=2018.08.23.r4692.g55972a672
+pkgver=2018.09.07.r4720.gb8a90418f
 pkgrel=1
 pkgdesc="Kernel module support files for the Zettabyte File System."
 depends=("python2")
 makedepends=("git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
-source=("git+https://github.com/zfsonlinux/zfs.git#commit=55972a6724ca49d98d67a47fe0f0b28ad21260d5"
+source=("git+https://github.com/zfsonlinux/zfs.git#commit=${_commit}"
         "zfs-utils.bash-completion-r1"
         "zfs-utils.initcpio.install"
         "zfs-utils.initcpio.hook"
         "zfs-utils.initcpio.zfsencryptssh.install")
 sha256sums=("SKIP"
             "b60214f70ffffb62ffe489cbfabd2e069d14ed2a391fac0e36f914238394b540"
-            "335e309ebf5b74fd8956f5e8805939c37d4008b0bcc3b00be6e7ef1d5b7c1669"
-            "60ca3ce382c404c1c97873d6a352d0e99b28e948fde4e3f67d92e05f6eb216f0"
+            "6e5e905a322d0426acdcbc05c5651ec78ee7b874b96d3c429c80f68b061170c5"
+            "ae1cda85de0ad8b9ec8158a66d02485f3d09c37fb13b1567367220a720bcc9a5"
             "29080a84e5d7e36e63c4412b98646043724621245b36e5288f5fed6914da5b68")
 license=("CDDL")
 groups=("archzfs-linux-git")
@@ -37,7 +38,7 @@ build() {
     ./autogen.sh
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --with-mounthelperdir=/usr/bin \
                 --libdir=/usr/lib --datadir=/usr/share --includedir=/usr/include \
-                --with-udevdir=/lib/udev --libexecdir=/usr/lib/zfs-0.7.9 \
+                --with-udevdir=/lib/udev --libexecdir=/usr/lib/zfs-${pkgver} \
                 --with-config=user --enable-systemd
     make
 }
