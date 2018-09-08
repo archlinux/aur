@@ -5,14 +5,12 @@
 pkgname=qt5-location
 _qtver=5.11.1
 pkgver=${_qtver/-/}
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url='http://qt-project.org/'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
 pkgdesc='Provides access to position, satellite and area monitoring classes'
 depends=('qt5-declarative')
-makedepends=('gypsy' 'gconf')
-optdepends=('gypsy: Gypsy geolocation plugin')
 groups=('qt' 'qt5')
 _pkgfqn="${pkgname/5-/}-everywhere-src-${_qtver}"
 source=("http://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
