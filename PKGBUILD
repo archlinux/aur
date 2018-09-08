@@ -11,7 +11,6 @@ arch=('any')
 depends=('python-pynacl'
          'python-cryptography'
          'python-hkdf'
-         'python-scci-git'
          'python-xeddsa-git'
          'python-doubleratchet-git'
          'python-x3dh-git'
