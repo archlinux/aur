@@ -1,21 +1,23 @@
+# Maintainer: Thiago L. A. Miller <thiago_leisrael@hotmail.com>
 # Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.30
-
-pkgname='perl-dist-zilla-plugin-installguide'
-pkgver='1.200006'
-pkgrel='1'
+_distname=Dist-Zilla-Plugin-InstallGuide
+pkgname=perl-dist-zilla-plugin-installguide
+pkgver=1.200011
+pkgrel=1
 pkgdesc="Build an INSTALL file"
 arch=('any')
+url="https://metacpan.org/release/$_distname"
 license=('PerlArtistic' 'GPL')
-options=('!emptydirs')
-depends=('perl-dist-zilla' 'perl-moose' 'perl-path-tiny' 'perl')
+depends=('perl>=5.008'
+         'perl-dist-zilla>=0'
+         'perl-moose>=0'
+         'perl-path-tiny>=0'
+         'perl-namespace-autoclean>=0')
 makedepends=()
-checkdepends=('perl-test-fatal')
-url='https://metacpan.org/release/Dist-Zilla-Plugin-InstallGuide'
-source=('http://search.cpan.org/CPAN/authors/id/D/DO/DOHERTY/Dist-Zilla-Plugin-InstallGuide-1.200006.tar.gz')
-md5sums=('801443d28f1795868d1b541bfc28f622')
-sha512sums=('cae2e5d62b525f3a68b6dbe7addcef14f8779229dd53774e9b691826fff5983f267bda349820292a97959c29a19666e46286992eea87396807c3cce235c6e39d')
-_distdir="Dist-Zilla-Plugin-InstallGuide-1.200006"
+checkdepends=('perl-test-fatal>=0')
+options=('!emptydirs')
+source=("http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/$_distname-$pkgver.tar.gz")
+md5sums=('d35b0a5c62b6cb7e86eb32620953cc54')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -24,23 +26,22 @@ build() {
       PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
       MODULEBUILDRC=/dev/null
 
-    cd "$srcdir/$_distdir"
+    cd "$_distname-$pkgver"
     /usr/bin/perl Makefile.PL
     make
   )
 }
 
 check() {
-  cd "$srcdir/$_distdir"
+  cd "$_distname-$pkgver"
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
     make test
   )
 }
 
 package() {
-  cd "$srcdir/$_distdir"
+  cd "$_distname-$pkgver"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
