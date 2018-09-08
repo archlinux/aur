@@ -2,39 +2,39 @@
 # Contributor: <nontlikeuname at tuta dot io>
 
 pkgname=mingw-w64-atk
-pkgver=2.28.1
+pkgver=2.30.0
 pkgrel=1
 pkgdesc="A library providing a set of interfaces for accessibility (mingw-w64)"
 arch=('any')
 url="https://developer.gnome.org/atk/"
 license=('LGPL2')
-makedepends=('mingw-w64-gcc' 'mingw-w64-configure' 'python')
+makedepends=('mingw-w64-gcc' 'mingw-w64-meson' 'python')
 depends=('mingw-w64-crt' 'mingw-w64-glib2')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("http://ftp.gnome.org/pub/gnome/sources/atk/${pkgver%.*}/atk-${pkgver}.tar.xz")
-md5sums=('dfb5e7474220afa3f4ca7e45af9f3a11')
+md5sums=('769c85005d392ad17ffbc063f2d26454')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
-    cd "${srcdir}/atk-${pkgver}/"
-    for _arch in ${_architectures}; do
-        mkdir -p build-${_arch} && pushd build-${_arch}
-        ${_arch}-configure \
-          --disable-introspection \
-         --without-libintl-prefix \
-         --without-libiconv-prefix
-        make
-        popd
-    done
+  cd "${srcdir}/atk-${pkgver}/"
+  for _arch in ${_architectures}; do
+    mkdir -p build-${_arch} && pushd build-${_arch}
+    ${_arch}-meson .. -Ddocs=false -Dintrospection=false
+    ninja
+    popd
+  done
 }
 
 package() {
-    for _arch in ${_architectures}; do
-        cd ${srcdir}/atk-${pkgver}/build-${_arch}
-        make DESTDIR="${pkgdir}" install
-        ${_arch}-strip --strip-unneeded ${pkgdir}/usr/${_arch}/bin/*.dll
-        ${_arch}-strip -g ${pkgdir}/usr/${_arch}/lib/*.a
-        rm -r ${pkgdir}/usr/${_arch}/share
-    done
+  for _arch in ${_architectures}; do
+    DESTDIR="${pkgdir}" meson install -C ${srcdir}/atk-${pkgver}/build-${_arch}
+    
+    rm -r ${pkgdir}/usr/${_arch}/share
+
+    #FIXME: Ranlib (isn't meson supposed to do this?)
+    ${_arch}-ranlib ${pkgdir}/usr/${_arch}/lib/*.a
+
+    ${_arch}-strip -x -g ${pkgdir}/usr/${_arch}/bin/*.dll
+  done
 }
