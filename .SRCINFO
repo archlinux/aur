@@ -1,6 +1,6 @@
 pkgbase = libws2801
 	pkgdesc = C/C++ libaries for the ws2801 led strip using spidev
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://gitlab.com/nexadn/libws2801
 	arch = i686
@@ -13,6 +13,7 @@ pkgbase = libws2801
 	makedepends = cmake
 	makedepends = boost
 	depends = boost-libs
+	depends = qt5-base
 	source = git+https://gitlab.com/nexadn/libws2801.git
 	sha512sums = SKIP
 
