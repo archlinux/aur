@@ -8,4 +8,4 @@ Exec=greenfoot
 Icon=greenfoot
 Terminal=false
 Type=Application
-StartupWMClass=bluej-runtime-ExecServer
+StartupWMClass=bluej.Boot$App
