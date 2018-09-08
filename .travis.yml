@@ -1,0 +1,15 @@
+language: c
+compiler: gcc
+
+stages:
+    - compile
+    - test
+
+compile:
+    - gcc random.c -o random
+    - echo "Build Success"
+
+test:
+    - ./random
+    - ./random -f -d 4 -g 10
+    - echo "Test Success"
