@@ -1,7 +1,7 @@
 pkgbase = lxqt-archiver-git
 	pkgdesc = A simple & lightweight desktop-agnostic Qt file archiver
-	pkgver = r4.ef82069
-	pkgrel = 1
+	pkgver = 0.0.96.r23.gf1f2d16
+	pkgrel = 2
 	url = https://lxqt.org
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = lxqt-archiver-git
 	depends = qt5-x11extras
 	depends = glib2
 	depends = json-glib
-	provides = lxqt-archiver=r4.ef82069
+	provides = lxqt-archiver=0.0.96.r23.gf1f2d16
 	conflicts = lxqt-archiver
 	source = git+https://github.com/lxqt/lxqt-archiver.git
 	sha256sums = SKIP
