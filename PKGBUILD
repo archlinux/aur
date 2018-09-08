@@ -5,13 +5,12 @@ set -u
 pkgbase="linux-lts49"
 #pkgbase=linux-lts-custom
 _srcname="linux-4.9"
-pkgver="4.9.124"
+pkgver="4.9.125"
 pkgrel='1'
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf' 'git')
-provides=("linux=${pkgver}")
 options=('!strip')
 _verwatch=('https://mirrors.edge.kernel.org/pub/linux/kernel/v4.x/' '.*"patch-\(4\.9\.[0-9]\+\)\.xz.*' 'f')
 source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz
@@ -28,7 +27,7 @@ validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds <torva
              )
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
-            '27d1ec15759e47fd3b12a57c84c87d8f0d0c57dcdd01ad4f982a2610c0e43146'
+            '32d94daf7f01d43a4774d6c4045b89655e6e975ddd6f6792553173c675aef299'
             'db821fe07d5870e1f690ece2c26ca3d5f01a5637653962fddfc34e1a1a5bd86a'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             '1f036f7464da54ae510630f0edb69faa115287f86d9f17641197ffda8cfd49e0'
@@ -118,6 +117,7 @@ _package() {
   optdepends=('crda: to set the correct wireless channels of your country')
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux-lts.install
+  provides=("linux=${pkgver}")
 
   cd "${srcdir}/${_srcname}"
 
@@ -178,6 +178,7 @@ _package() {
 _package-headers() {
   set -u
   pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
+  provides=("linux-headers=${pkgver}")
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
