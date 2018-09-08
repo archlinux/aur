@@ -1,0 +1,17 @@
+pkgbase = ros-melodic-voxel-grid
+	pkgdesc = ROS - voxel_grid provides an implementation of an efficient 3D voxel grid.
+	pkgver = 1.16.2
+	pkgrel = 1
+	url = http://wiki.ros.org/voxel_grid
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-roscpp
+	makedepends = ros-melodic-catkin
+	depends = ros-melodic-roscpp
+	source = ros-melodic-voxel-grid-1.16.2-0.tar.gz::https://github.com/ros-gbp/navigation-release/archive/release/melodic/voxel_grid/1.16.2-0.tar.gz
+	sha256sums = 8102b9aae0f9856c35f38841945094d77eec895fea6d8caaac479cfa162a56d4
+
+pkgname = ros-melodic-voxel-grid
+
