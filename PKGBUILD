@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kinit
-pkgver=5.49.0
+pkgver=5.50.0
 pkgrel=1
 pkgdesc='Process launcher to speed up launching KDE applications'
 arch=(x86_64)
@@ -13,7 +13,7 @@ depends=(kio)
 makedepends=(extra-cmake-modules kdoctools)
 groups=(kf5)
 source=("https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz"{,.sig})
-sha256sums=('25b5e07c2dd651a96f79ea58e0a76a172aac4b818892641adf97bdf6525909e7'
+sha256sums=('912c278141c30b4123c39773117971a4f8bdc1b3fc82061bb36dea80daa6ead1'
             'SKIP')
 validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
 
