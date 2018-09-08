@@ -5,10 +5,10 @@ pkgver=1.2
 pkgrel=1
 pkgdesc="Random number generator."
 arch=("any")
-url="https://gitlab.com/fakeDeathBRX/random"
+url="https://github.com/fakeDeathBRX/random"
 license=('MIT')
 depends=('gcc')
-source=("${pkgname}::git+https://gitlab.com/fakeDeathBRX/random")
+source=("${pkgname}::git+https://github.com/fakeDeathBRX/random")
 sha1sums=('SKIP')
 
 package(){
