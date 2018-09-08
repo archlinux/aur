@@ -13,6 +13,7 @@ pkgbase = gnat-gps
 	depends = gnatcoll-xref
 	depends = gnatcoll-python
 	depends = gnatcoll-db2ada
+	depends = gnatcoll-gnatinspect
 	depends = gtkada
 	depends = gnome-icon-theme
 	depends = gnome-icon-theme-extras
