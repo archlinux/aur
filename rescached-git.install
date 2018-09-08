@@ -1,14 +1,6 @@
 post_upgrade() {
-	## Remove old ads file
-	[[ -f /etc/rescached/hosts.ads ]] \
-		&& rm -f /etc/rescached/hosts.ads
-
-	## Fix wrong systemd service
-	[[ -f /etc/systemd/system/rescached.service ]] \
-		&& rm -f /etc/systemd/system/rescached.service
-
-	systemctl daemon-reload
-
-	echo ':: rescached service now installed in /usr/lib/systemd/system'
-	echo ':: Please reenable the service if you want to start it at boot'
+	## Remove old config
+	[[ -f /etc/rescached/rescached.cfg ]] && rm -f /etc/rescached/rescached.cfg
+	## Remove old cache
+	[[ -f /var/cache/rescached/rescached.vos ]] && rm -f /var/cache/rescached/rescached.vos
 }

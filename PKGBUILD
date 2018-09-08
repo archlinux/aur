@@ -1,23 +1,22 @@
-# Maintainer: sulhan <ms@kilabit.info>
+# Maintainer: shulhan <ms@kilabit.info>
 pkgname=rescached-git
-pkgver=1.7.0.r6.gddf766f
+pkgver=2.0.0rc1.64.d7a4ca4
+_pkgver=2.0.0rc1
 pkgrel=1
 pkgdesc="Resolver/DNS cache daemon"
 arch=('i686' 'x86_64' 'armv7h')
-url="https://github.com/shuLhan/rescached"
+url="https://github.com/shuLhan/rescached-go"
 license=('custom:BSD')
 
-depends=('gcc-libs')
+depends=('bash')
 provides=('rescached')
-conflicts=('bind' 'nsd' 'pdnsd' 'powerdns' 'unbound')
+conflicts=('bind' 'nsd' 'pdnsd' 'powerdns' 'unbound' 'dnsmasq')
 
-makedepends=('gcc' 'make' 'fakeroot' 'git')
+makedepends=('git' 'go-pie>=1.11' 'asciidoc')
 source=(
-	"$pkgname::git+https://github.com/shuLhan/rescached.git"
-	"libvos::git+https://github.com/shuLhan/libvos.git"
+	"$pkgname::git+https://github.com/shuLhan/rescached-go.git"
 )
 sha1sums=(
-	'SKIP'
 	'SKIP'
 )
 
@@ -29,32 +28,23 @@ backup=(
 
 pkgver() {
 	cd "$pkgname"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
-}
-
-prepare() {
-	cd "$pkgname"
-	git submodule init
-	git config submodule.libvos.url $srcdir/libvos
-	git submodule update
-	cd "src"
+	printf "%s.%s.%s" "$_pkgver" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "$pkgname/src"
+	cd "$pkgname"
 	echo ">>"
 	echo ">> cleaning ..."
 	echo ">>"
-	make distclean
+	make clean
 	echo ">>"
 	echo ">> make ..."
 	echo ">>"
-	unset CXXFLAGS
 	make || return 1
 }
 
 package() {
-	cd "$pkgname/src"
-	make DESTDIR="$pkgdir/" install
-	install -Dm644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	cd "$pkgname"
+	make PREFIX="$pkgdir" install
+	install -Dm644 $srcdir/$pkgname/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
