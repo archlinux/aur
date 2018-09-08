@@ -9,6 +9,7 @@ pkgbase = libadalang
 	makedepends = gprbuild
 	depends = gcc-ada
 	depends = gnatcoll-core
+	depends = gnatcoll-iconv
 	depends = quex-for_libadalang
 	depends = python2-funcy
 	depends = python2-mako
