@@ -1,0 +1,23 @@
+pkgbase = ros-melodic-nav-core
+	pkgdesc = ROS - This package provides common interfaces for navigation specific robot actions.
+	pkgver = 1.16.2
+	pkgrel = 1
+	url = http://wiki.ros.org/nav_core
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-std-msgs
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-costmap-2d
+	makedepends = ros-melodic-tf
+	makedepends = ros-melodic-geometry-msgs
+	depends = ros-melodic-std-msgs
+	depends = ros-melodic-costmap-2d
+	depends = ros-melodic-tf
+	depends = ros-melodic-geometry-msgs
+	source = ros-melodic-nav-core-1.16.2-0.tar.gz::https://github.com/ros-gbp/navigation-release/archive/release/melodic/nav_core/1.16.2-0.tar.gz
+	sha256sums = d598327496621c871e857d4fb92da871e9a7227397d849c94a7e49f993a239c3
+
+pkgname = ros-melodic-nav-core
+
