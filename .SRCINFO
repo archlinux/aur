@@ -1,0 +1,15 @@
+pkgbase = ros-melodic-ecl-license
+	pkgdesc = ROS - Maintains the ecl licenses and also provides an install target for deploying licenses with the ecl libraries.
+	pkgver = 0.61.7
+	pkgrel = 1
+	url = http://wiki.ros.org/ecl_license
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	source = ros-melodic-ecl-license-0.61.7-0.tar.gz::https://github.com/yujinrobot-release/ecl_tools-release/archive/release/melodic/ecl_license/0.61.7-0.tar.gz
+	sha256sums = ed382fc26835b422b7315c1162c6fcf591b8243be2822b44eaf9a55ffc6529e0
+
+pkgname = ros-melodic-ecl-license
+
