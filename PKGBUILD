@@ -1,21 +1,70 @@
+# Maintainer: Thiago L. A. Miller <thiago_leisrael@hotmail.com>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.32
-
-pkgname='perl-dist-zilla'
-pkgver='6.009'
-pkgrel='1'
+_distname=Dist-Zilla
+pkgname=perl-dist-zilla
+pkgver=6.012
+pkgrel=1
 pkgdesc="distribution builder; installer not included!"
 arch=('any')
+url="https://metacpan.org/release/$_distname"
 license=('PerlArtistic' 'GPL')
-options=('!emptydirs')
-depends=('perl-app-cmd' 'perl-cpan-meta-check>=0.011' 'perl-cpan-uploader>=0.103004' 'perl-class-load>=0.17' 'perl-config-ini' 'perl-config-mvp' 'perl-config-mvp-reader-ini>=2.101461' 'perl-data-section>=0.200002' 'perl-datetime>=0.44' 'perl-file-copy-recursive' 'perl-file-find-rule' 'perl-file-homedir' 'perl-file-sharedir' 'perl-file-sharedir-install>=0.03' 'perl-file-pushd' 'perl-json-maybexs' 'perl-log-dispatchouli>=1.102220' 'perl-mixin-linewise' 'perl-module-runtime' 'perl-moose>=0.92' 'perl-moosex-lazyrequire' 'perl-moosex-role-parameterized>=1.01' 'perl-moosex-setonce' 'perl-moosex-types' 'perl-moosex-types-perl' 'perl-ppi' 'perl-params-util' 'perl-path-tiny>=0.052' 'perl-perl-prereqscanner>=1.016' 'perl-pod-eventual>=0.091480' 'perl-scalar-list-utils' 'perl-software-license>=0.101370' 'perl-string-formatter>=0.100680' 'perl-string-rewriteprefix>=0.006' 'perl-sub-exporter' 'perl-sub-exporter-formethods' 'perl-term-encoding' 'perl-term-ui' 'perl-term-readkey' 'perl-text-glob>=0.08' 'perl-text-template' 'perl-try-tiny' 'perl-yaml-tiny' 'perl-namespace-autoclean' 'perl>=5.14.0')
+depends=('perl>=5.14.0'
+         'perl-app-cmd>=0'
+         'perl-cpan-meta-check>=0.011'
+         'perl-cpan-uploader>=0.103004'
+         'perl-class-load>=0.17'
+         'perl-config-ini>=0'
+         'perl-config-mvp>=2.200011'
+         'perl-config-mvp-reader-ini>=2.101461'
+         'perl-data-section>=0.200002'
+         'perl-datetime>=0.44'
+         'perl-file-copy-recursive>=0'
+         'perl-file-find-rule>=0'
+         'perl-file-homedir>=0'
+         'perl-file-sharedir>=0'
+         'perl-file-sharedir-install>=0.03'
+         'perl-file-pushd>=0'
+         'perl-json-maybexs>=0'
+         'perl-log-dispatchouli>=1.102220'
+         'perl-mixin-linewise>=0'
+         'perl-module-runtime>=0'
+         'perl-moose>=0.92'
+         'perl-moosex-lazyrequire>=0'
+         'perl-moosex-role-parameterized>=1.01'
+         'perl-moosex-setonce>=0'
+         'perl-moosex-types>=0'
+         'perl-moosex-types-perl>=0'
+         'perl-ppi>=0'
+         'perl-params-util>=0'
+         'perl-path-tiny>=0.052'
+         'perl-perl-prereqscanner>=1.016'
+         'perl-pod-eventual>=0.091480'
+         'perl-scalar-list-utils>=0'
+         'perl-software-license>=0.101370'
+         'perl-string-formatter>=0.100680'
+         'perl-string-rewriteprefix>=0.006'
+         'perl-sub-exporter>=0'
+         'perl-sub-exporter-formethods>=0'
+         'perl-term-encoding>=0'
+         'perl-term-ui>=0'
+         'perl-term-readkey>=0'
+         'perl-text-glob>=0.08'
+         'perl-text-template>=0'
+         'perl-try-tiny>=0'
+         'perl-yaml-tiny>=0'
+         'perl-namespace-autoclean>=0')
 makedepends=()
-checkdepends=('perl-test-deep' 'perl-test-failwarnings' 'perl-test-fatal' 'perl-test-file-sharedir')
-url='https://metacpan.org/release/Dist-Zilla'
-source=('http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Dist-Zilla-6.009.tar.gz')
-md5sums=('f7219dc8748f407c435a5bcab254a030')
-sha512sums=('1bf33138838b8b718fdf0710c36d5106c29ff8dd775d10dc2aa96d3e628f3b889e3eb909cd5766f01709449b3f02e7f32b6222935a86ba7403eaa0d8d4071d9d')
-_distdir="Dist-Zilla-6.009"
+checkdepends=('perl-test-deep>=0'
+              'perl-test-failwarnings>=0'
+              'perl-test-fatal>=0'
+              'perl-test-file-sharedir>=0')
+optdepends=('perl-archive-tar-wrapper>=0.15: API wrapper around the tar utility'
+            'perl-data-optlist>=0.110: Parse and validate simple name/value option pairs'
+            'perl-ppi-xs>=0: Minor XS acceleration for PPI'
+            'perl-term-readline-gnu>=0: GNU Readline XS library wrapper')
+options=('!emptydirs')
+source=("http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/$_distname-$pkgver.tar.gz")
+md5sums=('b09b7a57f5fcb6513a8e4d290602da25')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -24,23 +73,22 @@ build() {
       PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
       MODULEBUILDRC=/dev/null
 
-    cd "$srcdir/$_distdir"
+    cd "$_distname-$pkgver"
     /usr/bin/perl Makefile.PL
     make
   )
 }
 
 check() {
-  cd "$srcdir/$_distdir"
+  cd "$_distname-$pkgver"
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
     make test
   )
 }
 
 package() {
-  cd "$srcdir/$_distdir"
+  cd "$_distname-$pkgver"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
