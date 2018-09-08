@@ -1,0 +1,13 @@
+pkgbase = pax-rs
+	pkgdesc = The fastest JavaScript bundler in the galaxy.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/nathan/pax
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = https://github.com/nathan/pax/archive/pax-v0.4.0.tar.gz
+	sha512sums = a9e32539ab661f93772a5c5c9a07c90cc23097fa119f88c909cc4b2288b95f910ed94c9af35365c44a5c2be79ca1674d81f96abf8d0cbddaf615e7654928c5e5
+
+pkgname = pax-rs
+
