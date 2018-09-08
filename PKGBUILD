@@ -1,23 +1,16 @@
 # Maintainer: Maxime "pep" Buquet <archlinux@bouah.net>
 
 _pkgname=python-omemo
-pkgname=python-omemo-syndace-git
-pkgver=r24.5147b85
-pkgrel=1
+_pkgname2=python2-omemo
+pkgbase=python-omemo-syndace-git
+pkgname=("python-omemo-syndace-git" "python2-omemo-syndace-git")
+pkgver=r32.26e16c6
+pkgrel=2
 pkgdesc="An open python implementation of the OMEMO Multi-End Message and Object Encryption protocol"
 url="https://github.com/Syndace/${_pkgname}"
 license=('MIT')
 arch=('any')
-depends=('python-pynacl'
-         'python-cryptography'
-         'python-hkdf'
-         'python-xeddsa-git'
-         'python-doubleratchet-git'
-         'python-x3dh-git'
-         'python-protobuf')
-makedepends=('python-setuptools')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+makedepends=('python-setuptools' 'python2-setuptools')
 source=("${_pkgname}::git+https://github.com/Syndace/${_pkgname}.git")
 sha256sums=('SKIP')
 
@@ -26,7 +19,32 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-package() {
+package_python-omemo-syndace-git() {
+    depends=('python-pynacl'
+             'python-cryptography'
+             'python-hkdf'
+             'python-xeddsa-git'
+             'python-doubleratchet-git'
+             'python-x3dh-git'
+             'python-protobuf')
+    provides=("${_pkgname}")
+    conflicts=("${_pkgname}")
+
     cd ${_pkgname}
     python3 setup.py install --root="${pkgdir}" --optimize=1
+}
+
+package_python2-omemo-syndace-git() {
+    depends=('python2-pynacl'
+             'python2-cryptography'
+             'python2-hkdf'
+             'python2-xeddsa-git'
+             'python2-doubleratchet-git'
+             'python2-x3dh-git'
+             'python2-protobuf')
+    provides=("${_pkgname2}")
+    conflicts=("${_pkgname2}")
+
+    cd ${_pkgname}
+    python2 setup.py install --root="${pkgdir}" --optimize=1
 }
