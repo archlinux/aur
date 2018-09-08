@@ -9,6 +9,7 @@ pkgbase = gnat-gps
 	depends = clang
 	depends = libadalang
 	depends = gnatcoll-core
+	depends = gnatcoll_db2ada
 	depends = gtkada
 	depends = gnome-icon-theme
 	depends = gnome-icon-theme-extras
