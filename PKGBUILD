@@ -1,16 +1,16 @@
 # Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=emulationstation-autoscraper
-pkgver=1.4.5
-pkgrel=2
+pkgver=1.4.6
+pkgrel=1
 pkgdesc="An auto-scraper for EmulationStation written in Go using hashes"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/sselph/scraper"
 license=('custom')
 makedepends=('git' 'go')
 
-source=("https://github.com/sselph/scraper/archive/v${pkgver}.tar.gz")
-sha256sums=('5e7496b7634126f5be81fdd88a20fe108f40d4a8a0089b2d07ae82ea2cea812c')
+source=($pkgname-$pkgver.tar.gz::https://github.com/sselph/scraper/archive/v${pkgver}.tar.gz)
+sha256sums=('898d13a94f630bcb2e78b144fb06c106a6f29a316ab1d63f9b702719cf98e0cd')
 
 scraperdir="scraper-${pkgver}"
 
