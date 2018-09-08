@@ -1,0 +1,30 @@
+pkgbase = ros-melodic-yocs-velocity-smoother
+	pkgdesc = ROS - Bound incoming velocity messages according to robot velocity and acceleration limits.
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = http://ros.org/wiki/yocs_velocity_smoother
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-roscpp
+	makedepends = ros-melodic-ecl-threads
+	makedepends = ros-melodic-geometry-msgs
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-dynamic-reconfigure
+	makedepends = ros-melodic-nav-msgs
+	makedepends = ros-melodic-pluginlib
+	makedepends = ros-melodic-nodelet
+	depends = ros-melodic-roscpp
+	depends = ros-melodic-ecl-threads
+	depends = ros-melodic-geometry-msgs
+	depends = ros-melodic-dynamic-reconfigure
+	depends = ros-melodic-nav-msgs
+	depends = ros-melodic-pluginlib
+	depends = ros-melodic-nodelet
+	source = 0.8.2-0.tar.gz::https://github.com/yujinrobot-release/yujin_ocs-release/archive/release/kinetic/yocs_velocity_smoother/0.8.2-0.tar.gz
+	sha256sums = 301ea3851f8e6b544e903177b47025430d8345efde31afbd883754e4c0763b83
+
+pkgname = ros-melodic-yocs-velocity-smoother
+
