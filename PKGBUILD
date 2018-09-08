@@ -1,5 +1,5 @@
 pkgname=plex-media-player-git
-pkgver=r1176.9fb08e6
+pkgver=r1178.48795f2
 pkgrel=2
 pkgdesc='Next generation Plex Desktop Client'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('cmake' 'git')
 source=('git+https://github.com/plexinc/plex-media-player.git'
         'plex-media-player.desktop')
 sha256sums=('SKIP'
-            '49f0e74c477faa73a6c7cbda11ba43a6708ac8a37d274482cc828252ec8aee71')
+            'c27195e85aa8e93675bb876244e0e4034d44e0f3437ceb939be0101dc27ead47')
 
 pkgver() {
   cd plex-media-player
