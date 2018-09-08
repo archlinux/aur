@@ -3,7 +3,7 @@
 
 pkgname=firefox-bin
 _pkgname=firefox
-pkgver=61.0.1
+pkgver=62.0
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 pkgrel=1
@@ -28,7 +28,7 @@ source_i686=("https://ftp.mozilla.org/pub/firefox/releases/$pkgver/linux-i686/en
 source_x86_64=("https://ftp.mozilla.org/pub/firefox/releases/$pkgver/linux-i686/en-US/firefox-$pkgver.tar.bz2")
 sha256sums=('fb7ffa69b4a7b133caec527d2ff5059280be8f4e6c6554a29cab1803761467df'
             '6ff746b8e6d642accc64cb31f173d75b5d069167c0511aa1ff5010540a6e1310')
-sha256sums_i686=('3fcd3faf06280dc54bc4544a13d10d40f81d6ef5235624116e846c65000aad13')
+sha256sums_i686=('ab4e848172223c746e4070afce15a000b890c5fa9321895a3858a4775a1c9f89')
 sha256sums_x86_64=('3fcd3faf06280dc54bc4544a13d10d40f81d6ef5235624116e846c65000aad13')
 
 package() {
@@ -58,7 +58,7 @@ package() {
   done
 
   # Use system-provided dictionaries
-  rm -r "$pkgdir"/opt/$_pkgname/dictionaries
+  #rm -r "$pkgdir"/opt/$_pkgname/dictionaries
   ln -Ts /usr/share/hunspell "$pkgdir"/opt/$_pkgname/dictionaries
   ln -Ts /usr/share/hyphen "$pkgdir"/opt/$_pkgname/hyphenation
 
