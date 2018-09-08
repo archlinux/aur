@@ -2,7 +2,7 @@
 
 pkgname=luvcview
 pkgver=0.2.6
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc='Viewer for usb-uvc-cameras'
 arch=('i686' 'x86_64')
@@ -13,8 +13,8 @@ source=("http://ftp.debian.org/debian/pool/main/l/$pkgname/${pkgname}_$pkgver.or
         'uvcvideo.h'
         '03-libv4l-fix.patch'
         'dynctrl-logitech.h'
-        'http://patch-tracker.debian.org/patch/series/dl/luvcview/1:0.2.6-5/02-v4l2.patch'
-        'http://patch-tracker.debian.org/patch/series/dl/luvcview/1:0.2.6-5/03-libv4l.patch')
+        'https://sources.debian.org/data/main/l/luvcview/1:0.2.6-6/debian/patches/02-v4l2.patch'
+        'https://sources.debian.org/data/main/l/luvcview/1:0.2.6-6/debian/patches/03-libv4l.patch')
 sha256sums=('73c37160efaf62b896009d5686e7b21e37c1860a75e0454e8e5dbdded8a4e2d0'
             '13dae5a8aca572c52bbb22f41c48dc486090e0c51b228b368d47f3a7d589c43a'
             '57a42405e96be49c3c06a18b8f7edb5cfe146bdac7c4e315842adc953d56aece'
