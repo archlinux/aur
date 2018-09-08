@@ -1,0 +1,18 @@
+pkgbase = loggedfs-git
+	pkgdesc = Filesystem monitoring with Fuse
+	pkgver = 0.9.r1.gd1fcf7a
+	pkgrel = 1
+	url = https://rflament.github.io/loggedfs/
+	arch = i686
+	arch = x86_64
+	license = Apache
+	depends = fuse3
+	provides = loggedfs
+	conflicts = loggedfs
+	source = loggedfs::git+https://github.com/rflament/loggedfs.git
+	source = 0001-Remove-absolute-paths-make-non-interactive.patch
+	sha256sums = SKIP
+	sha256sums = ddf9dab7f60b08eb9606563158b9d538b8d8b79f78cd5e4c9e0498139d37c44c
+
+pkgname = loggedfs-git
+
