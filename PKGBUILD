@@ -1,7 +1,7 @@
 # Maintainer: Daniel Moch <daniel@danielmoch.com>
 _name=nncli
 pkgname=nncli-git
-pkgver=v0.2.0.r8.gccbf6c7
+pkgver=v0.3.0.r3.g4bc50a2
 pkgrel=1
 pkgdesc="NextCloud Notes Command Line Interface"
 arch=('any')
@@ -9,7 +9,11 @@ url="https://github.com/djmoch/${_name}"
 provides=('nncli')
 conflicts=('nncli')
 license=('MIT')
-depends=('python' 'python-urwid' 'python-requests' 'python-appdirs')
+depends=('python'
+  'python-urwid'
+  'python-requests'
+  'python-appdirs'
+  'python-click')
 makedepends=('flit' 'git' 'python-pip' 'sed' 'grep' 'python-sphinx' 'gzip')
 source=("git+${url}.git")
 sha256sums=('SKIP')
@@ -32,7 +36,7 @@ build()
 package()
 {
   cd "${srcdir}/${_name}"
-  _ver=$(echo ${pkgver} | grep -Eo '[0-9]+\.[0-9]+\.[0-9]')
+  _ver=$(cat ${_name}/__init__.py | grep -Eo '[0-9]+\.[0-9]+\.[0-9]+(\.dev[0-9]+)?')
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 docs/build/man/nncli.1.gz "${pkgdir}/usr/share/man/man1/nncli.1.gz"
   pip install -I --no-warn-script-location --isolated --no-deps --compile --root="${pkgdir}" dist/${_name}-${_ver}-py3-none-any.whl
