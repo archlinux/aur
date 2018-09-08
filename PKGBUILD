@@ -1,15 +1,19 @@
 # Maintainer: Daniel Moch <daniel@danielmoch.com>
 pkgname=nncli
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="NextCloud Notes Command Line Interface"
 arch=('any')
 url="https://github.com/djmoch/${pkgname}"
 license=('MIT')
-depends=('python' 'python-urwid' 'python-requests' 'python-appdirs')
+depends=('python'
+  'python-urwid'
+  'python-requests'
+  'python-appdirs'
+  'python-click')
 makedepends=('python-pip' 'flit' 'python-sphinx' 'gzip')
 source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('f6264b49937eeaf8861829dd8b071c73923066b5ecff9cfb29f3784ed9524667')
+sha256sums=('78d2130395c34877fbae5cf133d588bfaa0b4d03f56935253ea950f1f9aa1190')
 
 build()
 {
