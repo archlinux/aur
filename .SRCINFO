@@ -1,22 +1,23 @@
 pkgbase = perl-dist-zilla-plugin-checkchangeshascontent
 	pkgdesc = Ensure Changes has content before releasing
-	pkgver = 0.006
+	pkgver = 0.011
 	pkgrel = 1
 	url = http://search.cpan.org/dist/Dist-Zilla-Plugin-CheckChangesHasContent
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	depends = perl-capture-tiny
-	depends = perl-dist-zilla>=2.100950
-	depends = perl-file-pushd
-	depends = perl-moose>=0.99
-	depends = perl-namespace-autoclean>=0.09
-	depends = perl-path-class
-	depends = perl-try-tiny
+	checkdepends = perl-test-fatal>=0
+	depends = perl>=5.006
+	depends = perl-capture-tiny>=0
+	depends = perl-data-section>=0.200002
+	depends = perl-dist-zilla>=6
+	depends = perl-moose>=2
+	depends = perl-path-tiny>=0
+	depends = perl-sub-exporter-formethods>=0
+	depends = perl-namespace-autoclean>=0.28
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/D/DA/DAGOLDEN/Dist-Zilla-Plugin-CheckChangesHasContent-0.006.tar.gz
-	md5sums = 3b38207e57f91a1b2d51cc890cc2fa6c
-	sha512sums = 48be216ca008333fd4ade7f1aae2292c7ee73ec245e661bd6dfb98006b1ba290106bee8f36a2e66b41bc5aff87110d084853f7e9d6e9dfe82c2c5fa7d9aa230a
+	source = http://search.cpan.org/CPAN/authors/id/D/DA/DAGOLDEN/Dist-Zilla-Plugin-CheckChangesHasContent-0.011.tar.gz
+	md5sums = 9d9c660042b546304486f77121df339a
 
 pkgname = perl-dist-zilla-plugin-checkchangeshascontent
 
