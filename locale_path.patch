@@ -1,0 +1,20 @@
+--- logintop10.c.orig	2018-09-08 23:01:33.311690501 +0200
++++ logintop10.c	2018-09-08 23:34:35.585773279 +0200
+@@ -591,7 +591,7 @@
+ 	}
+ 
+ 	setlocale(LC_ALL, l);
+-	bindtextdomain("logintop10", "/usr/local/share/locale");
++	bindtextdomain("logintop10", "/usr/share/locale");
+ 	textdomain("logintop10");
+ 
+ 	printf(_("logintop10, (c) 2003 by folkert@vanheusden.com\n"));
+@@ -605,7 +605,7 @@
+ 	if (help)
+ 	{
+ 		printf(_("Usage: %s -i wtmp -o fileout.html [-l locale] [-r]\n"), argv[0]);
+-		printf(_("Example: logintop10 -i /var/log/wtmp -o ~/www/logintop10.html -l nl_NL\n"));
++		printf(_("Example: logintop10 -i /var/log/wtmp -o ~/www/logintop10.html -l nl_NL.utf8\n"));
+ 		return 1;
+ 	}
+ 

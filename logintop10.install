@@ -1,0 +1,17 @@
+post_install() {
+  echo "If you intend to use lang (-l) switch, make sure you have locales generated for the desired language."
+  /bin/true
+}
+
+post_upgrade() {
+  /bin/true
+}
+
+pre_remove() {
+  /bin/true
+}
+
+op=$1
+shift
+
+$op "$@"
