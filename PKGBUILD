@@ -15,8 +15,9 @@ optdepends=('lsof: device processes'
             'gksu: perform as root functionality'
             'udevil: mount as non-root user and mount networks'
             'udisks2: mount as non-root user')
-source=("git+https://github.com/Teklad/${pkgname%-git}")
-md5sums=('SKIP')
+source=("git+https://github.com/Teklad/${pkgname%-git}" suppress_warnings.patch)
+md5sums=('SKIP'
+         '02027f4d447ff2318afbce87490df382')
 provides=('spacefm')
 conflicts=('spacefm')
 
@@ -25,9 +26,14 @@ pkgver() {
   printf "%s" $(git describe --tags|tr - .)
 }
 
+prepare() {
+  cd ${pkgname%-git}
+  git apply "$srcdir"/suppress_warnings.patch
+}
+
 build() {
   cd ${pkgname%-git}
-  ./autogen.sh --with-gtk3 --prefix=/usr
+  CPPFLAGS="" ./autogen.sh --with-gtk3 --prefix=/usr
   make
 }
 
