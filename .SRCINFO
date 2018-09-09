@@ -1,18 +1,18 @@
 pkgbase = xenlism-wildfire-icon-theme-git
 	pkgdesc = Minimalism And Realism Mix and match, Meego And iOS icon Style
-	pkgver = 146.39d6443
+	pkgver = 2018.05beta1.r26.g77c43c2
 	pkgrel = 1
 	url = https://xenlism.github.io/wildfire
 	install = xenlism-wildfire.install
 	arch = any
-	license = GPL
+	license = GPL3
 	makedepends = git
 	depends = gtk-update-icon-cache
-	provides = xenlism-wildfire-icon-theme
-	conflicts = xenlism-wildfire-icon-theme
-	replaces = xenlism-wildfire-icon-theme
-	source = xenlism-wildfire-icon-theme::git+https://github.com/xenlism/wildfire.git
-	sha256sums = SKIP
+	provides = xenlism-wildfire-icon-theme-git
+	conflicts = xenlism-wildfire-icon-theme-git
+	replaces = xenlism-wildfire-icon-theme-git
+	source = xenlism-wildfire-icon-theme-git::git+https://github.com/xenlism/wildfire.git
+	md5sums = SKIP
 
 pkgname = xenlism-wildfire-icon-theme-git
 
