@@ -4,14 +4,13 @@
 
 pkgname=xf86-video-intel-git
 _pkgname=xf86-video-intel
-_branch=master
 pkgver=2.99.917+847+g25c9a2fc
-pkgrel=1
+pkgrel=2
 epoch=1
 arch=(x86_64)
 url="https://01.org/linuxgraphics"
 license=('custom')
-install=$pkgname.install
+install="${_pkgname}.install"
 pkgdesc="X.org Intel i810/i830/i915/945G/G965+ video drivers"
 depends=('mesa' 'libxvmc' 'pixman' 'xcb-util>=0.3.9' 'libsystemd')
 makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=24.0' 'libx11' 'libxrender'
@@ -32,8 +31,9 @@ conflicts=('xorg-server<1.20' 'X-ABI-VIDEODRV_VERSION<24' 'X-ABI-VIDEODRV_VERSIO
            'xf86-video-intel-sna' 'xf86-video-intel-uxa' 'xf86-video-i810' 'xf86-video-intel-legacy'
            "${_pkgname}")
 groups=('xorg-drivers')
-source=("$pkgname::git+https://gitlab.freedesktop.org/xorg/driver/${_pkgname}.git#branch=${_branch}"
+source=("$pkgname::git+https://gitlab.freedesktop.org/xorg/driver/${_pkgname}.git"
         0001-SNA-fix-PRIME-output-support-since-xserver-1.20.patch)
+
 sha256sums=('SKIP'
             '7cdc310953379ede9693a387ecac6c803cc4c4461df5ad9ab875b35e90a552f5')
 
