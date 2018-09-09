@@ -1,25 +1,22 @@
 pkgbase = splunkforwarder
 	pkgdesc = Splunk Universal Forwarder
-	pkgver = 7.1.2_a0c72a66db66
+	pkgver = 7.1.3_51d9cac7b837
 	pkgrel = 1
 	url = https://www.splunk.com/
 	install = splunkforwarder.install
 	arch = x86_64
-	arch = i686
 	arch = armv6h
 	arch = armv7h
 	license = custom
 	conflicts = splunk
 	source = splunkforwarder.service
 	sha256sums = 8bd6b2bcf9e9d89d3ab2160c409687313bbee00b7e44b3df3266b44d15a5c152
-	source_x86_64 = https://download.splunk.com/products/universalforwarder/releases/7.1.2/linux/splunkforwarder-7.1.2-a0c72a66db66-Linux-x86_64.tgz
-	sha256sums_x86_64 = 2ea92984f6ae7af7fcd0780d1f1767bf00000223b9d8af9915e6ee1d3d2494d5
-	source_i686 = https://download.splunk.com/products/universalforwarder/releases/7.1.2/linux/splunkforwarder-7.1.2-a0c72a66db66-Linux-i686.tgz
-	sha256sums_i686 = edc7b9ed041e9bfca34c2d4119c674319aa4ebe76dfe6447ac8a5b7035cd924b
-	source_armv6h = https://download.splunk.com/products/universalforwarder/releases/7.1.2/linux/splunkforwarder-7.1.2-a0c72a66db66-Linux-arm.tgz
-	sha256sums_armv6h = d8f0b767baad8597b4b10793d14478073b606ffe7aee6d330baf1f64520869e5
-	source_armv7h = https://download.splunk.com/products/universalforwarder/releases/7.1.2/linux/splunkforwarder-7.1.2-a0c72a66db66-Linux-arm.tgz
-	sha256sums_armv7h = d8f0b767baad8597b4b10793d14478073b606ffe7aee6d330baf1f64520869e5
+	source_x86_64 = https://download.splunk.com/products/universalforwarder/releases/7.1.3/linux/splunkforwarder-7.1.3-51d9cac7b837-Linux-x86_64.tgz
+	sha256sums_x86_64 = 8fa13ac0e7a33429f7c5f21e82bbafa065f6dbf61a70e71051eb37bbd5c1687b
+	source_armv6h = https://download.splunk.com/products/universalforwarder/releases/7.1.3/linux/splunkforwarder-7.1.3-51d9cac7b837-Linux-arm.tgz
+	sha256sums_armv6h = 6f7d48735e5cb65e6d894cb188c0e6d6c071e70378f0798fe3c04bb03f877ee7
+	source_armv7h = https://download.splunk.com/products/universalforwarder/releases/7.1.3/linux/splunkforwarder-7.1.3-51d9cac7b837-Linux-arm.tgz
+	sha256sums_armv7h = 6f7d48735e5cb65e6d894cb188c0e6d6c071e70378f0798fe3c04bb03f877ee7
 
 pkgname = splunkforwarder
 
