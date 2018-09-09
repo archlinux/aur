@@ -2,7 +2,7 @@
 # Maintainer: Daniel Nagy <danielnagy at gmx de>
 
 pkgname=urbit-git
-pkgver=0.4.5.r384.gd7a9744ce
+pkgver=0.6.0.r11.gd7a9744ce
 pkgrel=1
 pkgdesc="An Operating Function"
 url="http://www.urbit.org"
@@ -18,7 +18,7 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd ${pkgname/-git}
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^urbit-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
