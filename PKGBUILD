@@ -12,7 +12,7 @@ license=('GPL3' 'custom')
 depends=('gcc-ada')
 makedepends=('gcc-ada' 'gprbuild-bootstrap')
 provides=("$pkgname")
-conflicts=("$pkgname")
+conflicts=("$pkgname-git")
 
 source=('http://mirrors.cdn.adacore.com/art/5b0819dec7a447df26c27a40'
         'expose-cargs-and-largs-makefile.patch')
