@@ -1,7 +1,7 @@
 pkgbase = npapi-vlc
-	pkgdesc = The modern VLC Mozilla (NPAPI) plugin
-	pkgver = 2.2.5
-	pkgrel = 2
+	pkgdesc = The modern VLC Mozilla (NPAPI) plugin.
+	pkgver = 2.2.6
+	pkgrel = 1
 	url = https://code.videolan.org/videolan/npapi-vlc
 	arch = x86_64
 	license = GPL
@@ -9,7 +9,7 @@ pkgbase = npapi-vlc
 	makedepends = npapi-sdk
 	depends = gtk2
 	depends = vlc
-	source = git+https://code.videolan.org/videolan/npapi-vlc.git#tag=2.2.5
+	source = git+https://code.videolan.org/videolan/npapi-vlc.git#tag=2.2.6
 	source = git+https://code.videolan.org/videolan/libvlcpp.git
 	md5sums = SKIP
 	md5sums = SKIP

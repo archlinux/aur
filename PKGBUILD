@@ -1,13 +1,13 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
 
-# Maintainer: Timothy Redaelli <timothy.redaelli@gmail.com>
+# Maintainer: LightDot <lightdot -a-t- g m a i l>
+# Contributor: Timothy Redaelli <timothy.redaelli@gmail.com>
 # Contributor: Det <nimetonmaili g-mail>
 # Contributor: Hugo Osvaldo Barrera <hugo@barrera.io>
 
 pkgname=npapi-vlc
-pkgver=2.2.5
-pkgrel=2
-pkgdesc="The modern VLC Mozilla (NPAPI) plugin"
+pkgver=2.2.6
+pkgrel=1
+pkgdesc="The modern VLC Mozilla (NPAPI) plugin."
 arch=('x86_64')
 url="https://code.videolan.org/videolan/npapi-vlc"
 license=('GPL')
