@@ -1,7 +1,7 @@
 pkgbase = dbus-cpp
 	pkgdesc = A header-only dbus-binding leveraging C++-11
 	pkgver = 5.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://code.launchpad.net/dbus-cpp
 	arch = x86_64
 	license = LGPL3
@@ -14,8 +14,8 @@ pkgbase = dbus-cpp
 	depends = libxml2
 	source = https://launchpad.net/ubuntu/+archive/primary/+files/dbus-cpp_5.0.0+18.04.20171031.orig.tar.gz
 	source = boost-asio-1-66.patch
-	md5sums = 61e9568f3c799214c5bc8b5e3a498496
-	md5sums = 127dde628ffb8296516090228975cfc2
+	sha256sums = e0d426027acd65f7e568c53e974ae3e666f0af2e75b2d2afed3dae721a6e9e38
+	sha256sums = 7e7b83516ddbcad675ed63dc950ecdd35cecf73efad63fac675931e4b3795269
 
 pkgname = dbus-cpp
 
