@@ -1,4 +1,4 @@
-# Maintainer: Cyril Levis <levis dot cyril at gmail dot com>
+# Maintainer: Cyril Levis <pkgbuilds AT levis DOT name>
 
 pkgname=python-chump-git
 pkgver=r98.f89e93c
