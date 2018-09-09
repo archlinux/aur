@@ -1,7 +1,7 @@
 # Maintainer: Carson Black <uhhadd@gmail.com>
 pkgname=puyo
-pkgver=0.3
-pkgrel=2
+pkgver=0.4
+pkgrel=1
 pkgdesc="A frontend for pacman."
 arch=('any')
 url=""
