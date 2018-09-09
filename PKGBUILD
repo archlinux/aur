@@ -3,7 +3,7 @@ _lang=deu-fra
 pkgname=dict-freedict-${_lang}
 pkgver=2018_06_06
 _pkgver=${pkgver//_/-}
-pkgrel=1
+pkgrel=2
 pkgdesc="German -> French dictionary for dictd et al. from Freedict.org"
 arch=('any')
 url="http://www.freedict.org/"
@@ -12,7 +12,7 @@ optdepends=('dictd: dict client and server')
 makedepends=('dictd' 'freedict-tools')
 install=${pkgname}.install
 source=("https://download.freedict.org/dictionaries/${_lang}/${_pkgver}/freedict-${_lang}-${_pkgver}.src.tar.xz")
-sha512sums=('dd1465b5146a65f9b48bd27d2be72dd07376102882103db6fe36bad670d1b4c81658ab6ff8e05dd7eacc80a4cf254bdc05f85f1490902f6c3528e77b50a36553')
+sha512sums=('ca9ca6bfbc8e7a6c98635a16c861fc61bc080b816590f45151d9de4526b90edab66557b85703ef593c80c5fe573faac48914a39beb9c2886c33c0e20ef01deac')
 
 prepare()
 {
