@@ -7,7 +7,7 @@
 __color__="1,.5,0"
 
 pkgname=stl-thumbnailer
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc="Allow file managers (nautilus,caja etc) to geterate thumbnails for stl files using openscad"
 arch=('any')
@@ -18,7 +18,7 @@ depends=(openscad python2)
 makedepends=(sed)
 source=("stl.thumbnailer"
         "stl.thumbnailer.py")
-md5sums=('2e86d05c56f013b5030caf6e5b03a856'
+md5sums=('9c7df1b5640440193408b21620c1f91f'
          '8ab41a0aa264ecdeff07d427d35a21e1')
 
 prepare() {

@@ -1,4 +1,4 @@
 [Thumbnailer Entry]
 TryExec=/usr/bin/stl.thumbnailer.py
 Exec=/usr/bin/stl.thumbnailer.py %i %o %s
-MimeType=application/sla;
+MimeType=application/stl;model/x.stl-binary;model/x.stl-ascii
