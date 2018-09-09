@@ -3,7 +3,7 @@
 # Maintainer: Zachary Matthews <zacharymatt5@gmail.com>
 
 pkgname=titan
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc='Command line password manager.'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('openssl' 'sqlite')
 makedepends=('gcc')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nrosvall/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('1d87fac29da00ebb5c9432d3a2007837818b06c653a8559c43112e322a94823b')
+sha256sums=('85425b60ee9f20d88a2d9e87c3f5db39dcfa00025793027f4d8868588f47cc9a')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
