@@ -3,7 +3,7 @@
 
 pkgname=spacefm-ng-git
 pkgver=1.0.6.18.g49f49f0
-pkgrel=1
+pkgrel=2
 pkgdesc='A fork of spacefm multi-panel tabbed file manager pulled from git repo'
 arch=('i686' 'x86_64')
 url='https://github.com/Teklad/spacefm-ng'
