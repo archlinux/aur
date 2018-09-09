@@ -1,0 +1,23 @@
+pkgbase = python-pymp4
+	pkgdesc = A Python MP4 Parser and toolkit
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/beardypig/pymp4
+	arch = any
+	license = Apache
+	checkdepends = python-pytest
+	checkdepends = python2-pytest
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = pymp4::git+https://github.com/beardypig/pymp4.git#tag=1.1.0
+	md5sums = SKIP
+
+pkgname = python-pymp4
+	depends = python
+	depends = python-construct
+
+pkgname = python2-pymp4
+	depends = python2
+	depends = python2-construct
+	optdepends = 
+
