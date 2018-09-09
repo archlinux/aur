@@ -4,7 +4,7 @@
 
 pkgname=netdata-git
 _gitname=netdata
-pkgver=v1.9.0.r709.g8476fa89
+pkgver=v1.10.0.r593.g5b106041
 pkgrel=1
 pkgdesc="Real-time performance monitoring, in the greatest possible detail, over the web"
 url="https://github.com/firehol/netdata/wiki"
@@ -38,7 +38,8 @@ pkgver() {
 build() {
   cd "$_gitname"
 
-  ./autogen.sh
+  autoreconf -ivf
+
   ./configure \
     --prefix="/usr" \
     --sbindir="/usr/bin" \
