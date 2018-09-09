@@ -1,15 +1,16 @@
 pkgbase = lib32-lapack
 	pkgdesc = Linear Algebra PACKage (32-bit)
-	pkgver = 3.7.0
+	pkgver = 3.8.0
 	pkgrel = 1
 	url = http://www.netlib.org/lapack
 	arch = x86_64
 	license = custom
-	makedepends = gcc-fortran-multilib
+	makedepends = gcc-fortran
+	makedepends = lib32-gcc-libs
 	makedepends = cmake
 	makedepends = python
-	source = http://www.netlib.org/lapack/lapack-3.7.0.tgz
-	sha1sums = 27dbd06bedc76619150f8e28de6412f7df0c649a
+	source = http://www.netlib.org/lapack/lapack-3.8.0.tar.gz
+	sha1sums = 55ac9d6be510883c5442c8aca967722cdf58fb29
 
 pkgname = lib32-lapack
 	depends = lib32-blas
@@ -17,7 +18,7 @@ pkgname = lib32-lapack
 
 pkgname = lib32-blas
 	pkgdesc = Basic Linear Algebra Subprograms (32-bit)
-	depends = gcc-libs-multilib
+	depends = lib32-gcc-libs
 	depends = blas
 
 pkgname = lib32-cblas
@@ -26,7 +27,7 @@ pkgname = lib32-cblas
 	depends = cblas
 
 pkgname = lib32-lapacke
-	pkgdesc = C interface to LAPACK
+	pkgdesc = C interface to LAPACK (32-bit)
 	depends = lib32-lapack
 	depends = lapacke
 

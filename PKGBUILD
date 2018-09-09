@@ -1,29 +1,29 @@
-# Maintainer: orumin <dev at orum.in>
+# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Contributor: orumin <dev at orum.in>
 
 pkgbase=lib32-lapack
 _basename=lapack
 pkgname=('lib32-lapack' 'lib32-blas' 'lib32-cblas' 'lib32-lapacke')
-pkgver=3.7.0
+pkgver=3.8.0
 pkgrel=1
 url="http://www.netlib.org/lapack"
 pkgdesc="Linear Algebra PACKage (32-bit)"
-makedepends=('gcc-fortran-multilib' 'cmake' 'python')
+makedepends=('gcc-fortran' 'lib32-gcc-libs' 'cmake' 'python')
 arch=('x86_64')
 license=("custom")
-source=(http://www.netlib.org/${_basename}/${_basename}-${pkgver}.tgz)
-sha1sums=('27dbd06bedc76619150f8e28de6412f7df0c649a')
+source=("http://www.netlib.org/${_basename}/${_basename}-${pkgver}.tar.gz")
+sha1sums=('55ac9d6be510883c5442c8aca967722cdf58fb29')
 
 build() {
-  _pkg_basename=$(echo ${pkgname} | cut -d- -f2)
-  install -d build
-  cd build
+  install -d ${srcdir}/build
+  cd ${srcdir}/build
 
   export FFLAGS='-m32'
   export CC='gcc -m32'
   export CXX='g++ -m32'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
-  cmake ../${_pkg_basename}-${pkgver} \
+  cmake ../${_basename}-${pkgver} \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_SKIP_RPATH=ON \
     -DBUILD_SHARED_LIBS=ON \
@@ -31,7 +31,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib32 \
     -DCMAKE_Fortran_COMPILER=gfortran \
-    -DLAPACKE=ON \
+    -DLAPACKE_WITH_TMG=ON \
     -DCBLAS=ON \
     -DBUILD_DEPRECATED=ON
   make
@@ -51,7 +51,7 @@ package_lib32-lapack() {
 
 package_lib32-blas() {
   pkgdesc="Basic Linear Algebra Subprograms (32-bit)"
-  depends=('gcc-libs-multilib' 'blas')
+  depends=('lib32-gcc-libs' 'blas')
 
   cd build/BLAS
   make DESTDIR="$pkgdir" install
@@ -68,7 +68,7 @@ package_lib32-cblas() {
 }
 
 package_lib32-lapacke() {
-  pkgdesc="C interface to LAPACK"
+  pkgdesc="C interface to LAPACK (32-bit)"
   depends=('lib32-lapack' 'lapacke')
 
   cd build/LAPACKE
