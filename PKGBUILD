@@ -1,46 +1,43 @@
-# $Id$
-# Maintainer: Ronald van Haren <ronald@archlinux.org>
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: Fredy García <frealgagu at gmail dot com>
+# Contributor: Ronald van Haren <ronald@archlinux.org>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: damir <damir@archlinux.org>
 
 pkgname=amarok
-pkgver=2.9.0
-pkgrel=2
+pkgver=2.9.0.r245.68a1f0ecdd
+_commit=68a1f0ecdd16d2d85bfad0963a3abf98b486547d
+pkgrel=1
 pkgdesc="The powerful music player for KDE"
 arch=(x86_64)
 url="http://amarok.kde.org/"
-license=(GPL2 LGPL2.1 FDL)
-depends=(kdebase-runtime mariadb taglib-extras liblastfm ffmpeg libofa qjson qtscriptgenerator)
-makedepends=('automoc4' 'cmake' 'libgpod' 'libmtp' 'loudmouth' 'libmygpo-qt' 'qca-qt4')
-optdepends=('libgpod: support for Apple iPod audio devices'
-            'libmtp: support for portable media devices'
-            'loudmouth: backend needed by mp3tunes for syncing'
-            'ifuse: support for Apple iPod Touch and iPhone'
-            'libmygpo-qt: gpodder.net Internet Service'
-            'gst-libav: MP3 codecs'
-            'qca-qt4: Ampache support')
-source=("http://download.kde.org/stable/$pkgname/$pkgver/src/$pkgname-$pkgver.tar.xz"{,.sig})
-sha256sums=('e3678de79db36956bc8588b9905726ace1b9188e7fdf89eaea265f1cb03116fd'
-            'SKIP')
-validpgpkeys=(D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heirecka@exherbo.org>
+license=("GPL2" "LGPL2.1" "FDL")
+depends=("kcmutils" "kdnssd" "kirigami2" "knewstuff" "ktexteditor" "liblastfm-qt5" "libofa" "mariadb" "qt5-webengine" "taglib-extras" "threadweaver")
+makedepends=("extra-cmake-modules" "gdk-pixbuf2" "git" "knotifyconfig" "libgpod" "libmtp" "libmygpo-qt5" "loudmouth")
+optdepends=("ifuse: support for Apple iPod Touch and iPhone"
+            "libgpod: support for Apple iPod audio devices"
+            "libmtp: support for portable media devices"
+            "libmygpo-qt5: gpodder.net Internet Service"
+            "loudmouth: backend needed by mp3tunes for syncing")
+#source=("http://download.kde.org/stable/$pkgname/$pkgver/src/$pkgname-$pkgver.tar.xz"{,.sig})
+source=("git://git.kde.org/amarok.git#commit=$_commit")
+sha256sums=("SKIP")
+validpgpkeys=("D81C0CB38EB725EF6691C385BB463350D6EF31EF") # Heiko Becker <heirecka@exherbo.org>
 
 prepare() {
-  mkdir -p build
+  mkdir -p "${srcdir}/build"
 }
 
 build() {
-  cd build
-  cmake ../$pkgname-$pkgver \
-    -DKDE4_BUILD_TESTS=OFF \
+  cd "${srcdir}/build"
+  cmake "../${pkgname}" \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DWITH_NepomukCore=OFF \
-    -DWITH_Soprano=OFF \
-    -DWITH_QTWEBKIT=OFF
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DBUILD_TESTING=OFF
   make
 }
 
 package() {
-  cd build
+  cd "${srcdir}/build"
   make DESTDIR="$pkgdir" install
 }
