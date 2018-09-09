@@ -3,7 +3,7 @@ _lang=eng-spa
 _pkgname=dict-freedict-${_lang}
 pkgname=${_pkgname}-bin
 pkgver=0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="English -> Spanish dictionary for dictd et al. from Freedict.org"
 arch=('any')
 url="http://www.freedict.org/"
@@ -13,7 +13,7 @@ provides=(${_pkgname})
 conflicts=(${_pkgname})
 install=${pkgname}.install
 source=("https://download.freedict.org/dictionaries/${_lang}/${pkgver}/freedict-${_lang}-${pkgver}.dictd.tar.xz")
-sha512sums=('1ccf9b4aa09a826a4a56830fcf416b00250e2919ec6e0ce83e3fafb17e21e94e3a7e262699e6616287cef6f25c1c18994efd663fd0ae46bca5bec405fd769d2a')
+sha512sums=('9b853d260d9002338b4654562c7f111019d1d8f1f628ec1b2f19ea18b0501af90081c3e9ccaf38446d8987255408bb9cf3f42bcd1a1dcff84763c4004f520eb0')
 
 package()
 {
