@@ -1,6 +1,6 @@
-diff --no-dereference -aur radium-5.8.1.pristine/check_dependencies.sh radium-5.8.1.new/check_dependencies.sh
---- radium-5.8.1.pristine/check_dependencies.sh	2018-06-29 09:21:44.000000000 +0100
-+++ radium-5.8.1.new/check_dependencies.sh	2018-06-29 11:12:34.629717738 +0100
+diff -aur --no-dereference radium-5.8.6.pristine/check_dependencies.sh radium-5.8.6.new/check_dependencies.sh
+--- radium-5.8.6.pristine/check_dependencies.sh	2018-09-08 10:49:44.000000000 +0100
++++ radium-5.8.6.new/check_dependencies.sh	2018-09-08 12:56:23.433056983 +0100
 @@ -181,8 +181,8 @@
      exit 5
  fi
@@ -12,21 +12,21 @@ diff --no-dereference -aur radium-5.8.1.pristine/check_dependencies.sh radium-5.
      echo 'You should find these files in the "VST Audio Plug-Ins SDK" from http://www.steinberg.net/en/company/developers.html . Unless Steinberg have changed the directory structure again, it should enough to unzip the file into your ~/SDKs directory.'
      exit 5
  fi
-diff --no-dereference -aur radium-5.8.1.pristine/Makefile.Qt radium-5.8.1.new/Makefile.Qt
---- radium-5.8.1.pristine/Makefile.Qt	2018-06-29 09:21:44.000000000 +0100
-+++ radium-5.8.1.new/Makefile.Qt	2018-06-29 11:14:23.153047364 +0100
+diff -aur --no-dereference radium-5.8.6.pristine/Makefile.Qt radium-5.8.6.new/Makefile.Qt
+--- radium-5.8.6.pristine/Makefile.Qt	2018-09-08 10:49:44.000000000 +0100
++++ radium-5.8.6.new/Makefile.Qt	2018-09-08 12:57:44.603057081 +0100
 @@ -235,7 +235,7 @@
  
  FLAGOPTS = $(DEFINES) -DGUIISQT -DUSE_GFX_OP_QUEUE -DFULL_VERSION=$(FULL_VERSION) -DIS_LITTLE_ENDIAN=1 -DUSE_OPENGL=1 $(VISUAL) $(REQTYPE_TYPE) $(MENU_TYPE)
  
--COMMONOPT = -c $(RADIUM_BFD_CFLAGS) `cat buildtype.opt` -I$(GCDIR)/include -I$(P) -I$(PYPATH) `cat flagopts.opt` $(MIDIINC) $(OS_OPTS) $(VST_OPTS) -I${HOME}/boost_1_63_0 -I ~/SDKs/VST_SDK/VST2_SDK/ -I ~/SDKs/VST3\ SDK -I ~/SDKs/vstsdk2.4/ -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -Wno-unknown-pragmas -fno-strict-aliasing -Wmissing-field-initializers
-+COMMONOPT = -c $(RADIUM_BFD_CFLAGS) `cat buildtype.opt` -I$(GCDIR)/include -I$(P) -I$(PYPATH) `cat flagopts.opt` $(MIDIINC) $(OS_OPTS) $(VST_OPTS) -I${HOME}/boost_1_63_0 -I /usr/include/vst36 -I ~/SDKs/VST_SDK/VST2_SDK/ -I ~/SDKs/VST3\ SDK -I ~/SDKs/vstsdk2.4/ -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -Wno-unknown-pragmas -fno-strict-aliasing -Wmissing-field-initializers
+-COMMONOPT = -c $(RADIUM_BFD_CFLAGS) `cat buildtype.opt` -I$(GCDIR)/include -I$(P) -I$(PYPATH) `cat flagopts.opt` $(MIDIINC) $(OS_OPTS) $(VST_OPTS) -I${HOME}/boost_1_63_0 -I${HOME}/boost_1_67_0 -I ~/SDKs/VST_SDK/VST2_SDK/ -I ~/SDKs/VST3\ SDK -I ~/SDKs/vstsdk2.4/ -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -Wno-unknown-pragmas -fno-strict-aliasing -Wmissing-field-initializers
++COMMONOPT = -c $(RADIUM_BFD_CFLAGS) `cat buildtype.opt` -I$(GCDIR)/include -I$(P) -I$(PYPATH) `cat flagopts.opt` $(MIDIINC) $(OS_OPTS) $(VST_OPTS) -I${HOME}/boost_1_63_0 -I /usr/include/vst36 -I${HOME}/boost_1_67_0 -I ~/SDKs/VST_SDK/VST2_SDK/ -I ~/SDKs/VST3\ SDK -I ~/SDKs/vstsdk2.4/ -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -Wno-unknown-pragmas -fno-strict-aliasing -Wmissing-field-initializers
  #-Wstrict-overflow=4 -Wsuggest-attribute=format -Wstringop-overflow=4
  #-Wsuggest-final-types -Wsuggest-final-methods
  
-diff --no-dereference -aur radium-5.8.1.pristine/pluginhost/Builds/Linux/Makefile radium-5.8.1.new/pluginhost/Builds/Linux/Makefile
---- radium-5.8.1.pristine/pluginhost/Builds/Linux/Makefile	2018-06-29 09:21:44.000000000 +0100
-+++ radium-5.8.1.new/pluginhost/Builds/Linux/Makefile	2018-06-29 11:15:16.553045538 +0100
+diff -aur --no-dereference radium-5.8.6.pristine/pluginhost/Builds/Linux/Makefile radium-5.8.6.new/pluginhost/Builds/Linux/Makefile
+--- radium-5.8.6.pristine/pluginhost/Builds/Linux/Makefile	2018-09-08 10:49:44.000000000 +0100
++++ radium-5.8.6.new/pluginhost/Builds/Linux/Makefile	2018-09-08 12:56:23.433056983 +0100
 @@ -8,7 +8,7 @@
    CONFIG=Debug
  endif
