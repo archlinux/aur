@@ -1,6 +1,6 @@
 pkgbase = linux-bfq-mq
-	pkgver = 4.18.6
-	pkgrel = 2
+	pkgver = 4.18.7
+	pkgrel = 1
 	url = https://github.com/Algodev-github/bfq-mq/
 	arch = x86_64
 	license = GPL2
@@ -11,8 +11,8 @@ pkgbase = linux-bfq-mq
 	makedepends = python-sphinx
 	makedepends = graphviz
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.18.6.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.18.6.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.18.7.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.18.7.tar.sign
 	source = https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master/enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+.patch
 	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.18/bfq-sq-mq/4.18-bfq-sq-mq-v8r12-2K180906.patch
 	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.18/0100-Check-presence-on-tree-of-every-entity-after-every-a.patch
@@ -25,7 +25,7 @@ pkgbase = linux-bfq-mq
 	source = 0002-drm-i915-Increase-LSPCON-timeout.patch
 	source = 0003-HID-core-fix-grouping-by-application.patch
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = 05db97fd6891217af6d4203bdc442ef2af78d7902b6a8e9bd348682704c22894
+	sha256sums = f03b425e262a71e5079736706233a4e9afaf77c8462b552b4d6db2d33f5af731
 	sha256sums = SKIP
 	sha256sums = 9f7177679c8d3f8d699ef0566a51349d828436dba04603bc2223f98c60d2d178
 	sha256sums = 44d385f508b77af1a5b2254f724f87b14d2234af865039f41ee604ed3efd33b5
@@ -48,19 +48,19 @@ pkgname = linux-bfq-mq
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
-	provides = linux-bfq-mq=4.18.6
-	provides = linux=4.18.6
+	provides = linux-bfq-mq=4.18.7
+	provides = linux=4.18.7
 	backup = etc/mkinitcpio.d/linux-bfq-mq.preset
 
 pkgname = linux-bfq-mq-headers
 	pkgdesc = Header files and scripts for building modules for Linux-bfq-mq kernel
-	depends = linux-bfq-mq=4.18.6
-	provides = linux-bfq-mq-headers=4.18.6
-	provides = linux-headers=4.18.6
+	depends = linux-bfq-mq=4.18.7
+	provides = linux-bfq-mq-headers=4.18.7
+	provides = linux-headers=4.18.7
 
 pkgname = linux-bfq-mq-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-bfq-mq kernel
-	depends = linux-bfq-mq=4.18.6
-	provides = linux-bfq-mq-docs=4.18.6
-	provides = linux-docs=4.18.6
+	depends = linux-bfq-mq=4.18.7
+	provides = linux-bfq-mq-docs=4.18.7
+	provides = linux-docs=4.18.7
 

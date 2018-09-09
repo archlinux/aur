@@ -60,10 +60,10 @@ _1k_HZ_ticks=
 pkgbase=linux-bfq-mq
 #pkgbase=linux-custom       # Build kernel with a different name
 _major=4.18
-pkgver=4.18.6
+pkgver=4.18.7
 _srcpatch="${pkgver}"
 _srcname="linux-${pkgver}"
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -101,7 +101,7 @@ source=(# mainline kernel patches
         '0002-drm-i915-Increase-LSPCON-timeout.patch'
         '0003-HID-core-fix-grouping-by-application.patch')
 
-sha256sums=('05db97fd6891217af6d4203bdc442ef2af78d7902b6a8e9bd348682704c22894'
+sha256sums=('f03b425e262a71e5079736706233a4e9afaf77c8462b552b4d6db2d33f5af731'
             'SKIP'
             '9f7177679c8d3f8d699ef0566a51349d828436dba04603bc2223f98c60d2d178'
             '44d385f508b77af1a5b2254f724f87b14d2234af865039f41ee604ed3efd33b5'
