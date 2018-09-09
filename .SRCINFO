@@ -1,11 +1,11 @@
 pkgbase = puyo
 	pkgdesc = A frontend for pacman.
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = GPL
-	source = https://github.com/Appadeia/puyo/archive/0.3.tar.gz
-	md5sums = 2ea19b01ea20d38c32bd468aac2c1526
+	source = https://github.com/Appadeia/puyo/archive/0.4.tar.gz
+	md5sums = 2a2d33f2a7d3c114ec81df7321558521
 
 pkgname = puyo
 

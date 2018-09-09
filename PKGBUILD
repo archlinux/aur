@@ -1,7 +1,7 @@
 # Maintainer: Carson Black <uhhadd@gmail.com>
 pkgname=puyo
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A frontend for pacman."
 arch=('any')
 url=""
@@ -12,9 +12,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/Appadeia/puyo/archive/0.3.tar.gz")
+source=("https://github.com/Appadeia/puyo/archive/0.4.tar.gz")
 noextract=()
-md5sums=('2ea19b01ea20d38c32bd468aac2c1526')
+md5sums=('2a2d33f2a7d3c114ec81df7321558521')
 
 package() {
   cd $pkgname-$pkgver
