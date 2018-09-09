@@ -1,0 +1,20 @@
+pkgbase = perl-webservice-gyazo-b
+	pkgdesc = WebService::Gyazo::B - Perl image upload library for gyazo.com
+	pkgver = 0.0405
+	pkgrel = 1
+	url = https://metacpan.org/pod/WebService::Gyazo::B
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	depends = perl-lwp-protocol-socks
+	depends = perl-lwp-protocol-https
+	depends = perl-http-message
+	depends = perl-libwww
+	depends = perl-uri-simple
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/S/SH/SHLOMIF/WebService-Gyazo-B-0.0405.tar.gz
+	md5sums = a3d2563d78d484d0a026751a43703f53
+	sha1sums = b7b2321d10bc13a8c2453ee16e193bca79f4878b
+
+pkgname = perl-webservice-gyazo-b
+
