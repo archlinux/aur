@@ -1,5 +1,5 @@
 pkgname=pgroonga
-pkgver=2.0.7
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Fast fulltext search on PostgreSQL."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -28,6 +28,7 @@ package() {
 	echo "You need to upgrade EXTENSION pgroonga CASCADE, "
 	echo "In more detail, please refer to the PGroonga site's upgrading instructions:"
 	echo "http://pgroonga.github.io/upgrade/"
-
+        # Remove needless dotfiles
+        rm -rf "$pkgdir/.*"
 }
-sha1sums=('4247aa73715f7fcc2529983b5a0a03438c28a865')
+sha1sums=('595d20d62e1939032b84af2ffc6f31a9cccd87ee')
