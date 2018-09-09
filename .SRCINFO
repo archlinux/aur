@@ -1,0 +1,17 @@
+pkgbase = cirnosay-git
+	pkgdesc = Baka for terminal
+	pkgver = r13.f2a2732
+	pkgrel = 2
+	url = https://github.com/yuzurufag/cirnosay
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = cmake
+	makedepends = imagemagick
+	depends = imlib2
+	source = git+https://github.com/yuzurufag/cirnosay.git
+	md5sums = SKIP
+
+pkgname = cirnosay-git
+
