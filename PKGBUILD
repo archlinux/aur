@@ -10,7 +10,7 @@ depends=('mingw-w64-blas')
 makedepends=('mingw-w64-configure')
 options=('staticlibs' '!buildflags' '!strip')
 source=("${url}/downloads/optpp-${pkgver}.tar.gz")
-sha1sums=('089fb515f2f2e8632d603f2d1306d39aa355e9f0')
+sha256sums=('b452cdf8aa770088e26b49e07b5cf13ae5972832c032abcad07a56baa2a588ef')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 

@@ -11,7 +11,7 @@ pkgbase = mingw-w64-optpp
 	options = !buildflags
 	options = !strip
 	source = https://software.sandia.gov/opt++//downloads/optpp-2.4.tar.gz
-	sha1sums = 089fb515f2f2e8632d603f2d1306d39aa355e9f0
+	sha256sums = b452cdf8aa770088e26b49e07b5cf13ae5972832c032abcad07a56baa2a588ef
 
 pkgname = mingw-w64-optpp
 
