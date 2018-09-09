@@ -1,0 +1,21 @@
+pkgbase = swayblocks
+	pkgdesc = another block manager for i3bar/swaybar
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/rei2hu/swayblocks
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = elixir
+	depends = elixir
+	optdepends = acpi: for battery script,
+	optdepends = brightnessctl: for brightness script,
+	optdepends = cmus: for cmus script,
+	optdepends = alsa-utils: for volume script
+	provides = swayblocks
+	conflicts = swayblocks
+	source = git+https://github.com/rei2hu/swayblocks
+	md5sums = SKIP
+
+pkgname = swayblocks
+
