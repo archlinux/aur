@@ -1,0 +1,12 @@
+pkgbase = pixbuf-webp-thumbnailer
+	pkgdesc = WebP image thumbnailer for gdk-pixbuf2
+	pkgver = 1.0.0
+	pkgrel = 1
+	epoch = 1
+	arch = x86_64
+	license = custom:CC0
+	depends = gdk-pixbuf2
+	depends = webp-pixbuf-loader
+
+pkgname = pixbuf-webp-thumbnailer
+
