@@ -1,8 +1,8 @@
 # Maintainer: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
 
 pkgname=devpi-server
-pkgver=4.2.0
-pkgrel=2
+pkgver=4.7.0
+pkgrel=1
 pkgdesc="reliable private and pypi.python.org caching server"
 arch=(any)
 url="http://doc.devpi.net/"
@@ -12,11 +12,11 @@ depends=('python' 'python-py' 'python-itsdangerous' 'python-execnet'
          'python-pluggy' 'python-pastedeploy' 'python-passlib'
          'python-argon2_cffi' 'devpi-common')
 makedepends=('python-setuptools')
-source=("https://pypi.io/packages/source/d/${pkgname}/${pkgname}-${pkgver}.tar.gz"
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         'devpi-server.service'
         'devpi-server.install')
 install='devpi-server.install'
-sha256sums=('bfdc5811b468dcfb08177780ea84ff58c31cc54bc28d8698befd8d989d13062a'
+sha256sums=('8ff87486f5a2f347687909ba562a7601c183108b2ce1558c5396326a413b4097'
             '538aa64a3c88e55b971e4d249159228fb919802433191bbbd13e73c5e537c0b7'
             '16c075687426589b69da252f04ee1a2ff0f8e73526eb773c53475d82e827f199')
 
