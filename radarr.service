@@ -1,6 +1,7 @@
 [Unit]
 Description=Radarr Service
-After=syslog.target network.target
+Wants=network-online.target
+After=syslog.target network-online.target
 
 [Service]
 User=radarr
