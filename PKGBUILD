@@ -3,7 +3,7 @@
 
 pkgname=residualvm
 pkgver=0.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross-platform 3D game interpreter for LucasArts LUA-based 3D adventures."
 arch=('x86_64')
 license=('LGPL')
@@ -11,11 +11,11 @@ url="http://www.residualvm.org/"
 depends=('sdl2' 'libmad' 'libmpeg2' 'libvorbis' 'hicolor-icon-theme'
          'libjpeg-turbo' 'alsa-lib' 'glew' 'freetype2')
 optdepends=('fluidsynth: for MIDI SoundFont2 support')
-source=("https://github.com/residualvm/residualvm/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver::https://github.com/residualvm/residualvm/archive/$pkgver.tar.gz")
 sha256sums=('515b02129dd374bc9c0b732ddeaaaa3a342cc25ea0ea3c4ccf19141b5d362e1d')
 
 build() {
-    cd "${pkgname}-${pkgver}"
+    cd "$pkgname-$pkgver"
     ./configure --disable-debug \
                 --enable-release \
                 --prefix=/usr
@@ -23,12 +23,9 @@ build() {
 }
 
 package() {
-    cd "${pkgname}-${pkgver}"
+    cd "$pkgname-$pkgver"
     make DESTDIR="$pkgdir" install
-    install -Dm644 "dists/${pkgname}.desktop" \
-        "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    install -Dm644 "icons/${pkgname}.png" \
-        "${pkgdir}/usr/share/icons/hicolor/256x256/residualvm.png"
-    install -Dm644 "icons/${pkgname}-big.png" \
-        "${pkgdir}/usr/share/icons/hicolor/512x512/residualvm.png"
+    install -Dm644 "dists/$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
+    install -Dm644 "icons/$pkgname.png" -t "$pkgdir/usr/share/icons/hicolor/256x256/"
+    install -Dm644 "icons/$pkgname-big.png" "$pkgdir/usr/share/icons/hicolor/512x512/residualvm.png"
 }
