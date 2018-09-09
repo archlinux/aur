@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Converse.js
+Exec=/usr/bin/conversejs
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Network;InstantMessaging;
+Icon=/usr/share/webapps/converse.js/css/images/favicon.ico
+StartupWMClass=epiphany-conversejs
