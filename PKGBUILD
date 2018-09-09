@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-double-conversion
 _pkgname=double-conversion
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Binary-decimal and decimal-binary routines for IEEE doubles (mingw-w64)"
 arch=(any)
@@ -11,17 +11,10 @@ license=(BSD)
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=('!strip' '!buildflags' 'staticlibs')
-source=("double-conversion-${pkgver}.tar.gz::https://github.com/google/double-conversion/archive/v${pkgver}.tar.gz"
-        "fix-cmake-directory.patch")
-sha256sums=('152f15355242b6b1fbb4098fcd825bf08527eda0c65e8446939222a13f0b3915'
-            'a50cc9179d64abf081016b48100cd5dacb01b9fe1fe6b2765d25a8076a203b71')
+source=("double-conversion-${pkgver}.tar.gz::https://github.com/google/double-conversion/archive/${pkgver}.tar.gz")
+sha256sums=('aef5f528dab826b269b54766a4c2d179e361866c75717af529f91c56b4034665')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
-
-prepare() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  patch -Np1 -i "${srcdir}/fix-cmake-directory.patch"
-}
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"

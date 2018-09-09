@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-double-conversion
 	pkgdesc = Binary-decimal and decimal-binary routines for IEEE doubles (mingw-w64)
-	pkgver = 3.0.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/google/double-conversion
 	arch = any
@@ -10,10 +10,8 @@ pkgbase = mingw-w64-double-conversion
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = double-conversion-3.0.0.tar.gz::https://github.com/google/double-conversion/archive/v3.0.0.tar.gz
-	source = fix-cmake-directory.patch
-	sha256sums = 152f15355242b6b1fbb4098fcd825bf08527eda0c65e8446939222a13f0b3915
-	sha256sums = a50cc9179d64abf081016b48100cd5dacb01b9fe1fe6b2765d25a8076a203b71
+	source = double-conversion-3.1.0.tar.gz::https://github.com/google/double-conversion/archive/3.1.0.tar.gz
+	sha256sums = aef5f528dab826b269b54766a4c2d179e361866c75717af529f91c56b4034665
 
 pkgname = mingw-w64-double-conversion
 
