@@ -3,7 +3,7 @@
 _pkgbase=python-dbussy
 # _name=${_pkgbase#python-}
 pkgname="${_pkgbase}-git"
-pkgver=r447.cc89ae8
+pkgver=1.1.r3.g3a7ae2f
 pkgrel=1
 pkgdesc="Python binding for D-Bus using asyncio"
 arch=(any)
@@ -13,7 +13,7 @@ depends=('python')
 makedepends=('git' 'python-setuptools')
 provides=("${_pkgbase}")
 conflicts=("${_pkgbase}")
-source=("${_pkgbase}::git+https://github.com/ldo/dbussy")
+source=("${_pkgbase}::git+https://github.com/ldo/dbussy.git")
 sha256sums=('SKIP')
 
 pkgver() {
