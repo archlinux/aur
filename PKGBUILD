@@ -1,4 +1,4 @@
-# Maintainer: Cyril Levis <cyril at levis dot name>
+# Maintainer: Cyril Levis <pkgbuilds AT levis DOT name>
 
 pkgname=websocat-bin
 pkgver=1.1.0
