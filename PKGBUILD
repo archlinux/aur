@@ -4,7 +4,7 @@
 #
 _pkgname="ws4py"
 pkgname="python-${_pkgname}"
-pkgver=0.4.3
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="WebSocket client and server library for Python."
 url="https://github.com/Lawouach/WebSocket-for-Python"
@@ -13,12 +13,17 @@ arch=('any')
 depends=('python')
 makedepends=('python-setuptools')
 provides=("${_pkgname}")
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/Lawouach/WebSocket-for-Python/archive/${pkgver}.tar.gz")
-sha256sums=('5eeb2937648c81eb0d503fce84a46cfec8665afaf9ab487219796e9ee3057872')
+source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+sha256sums=('3fb493bd1af767a46cd6cb9db4c7d7b8db5eac3466f7513aa9cd20385e4740d4')
 
 package() {
 	cd "${srcdir}/WebSocket-for-Python-${pkgver}"
-	python setup.py install --root=${pkgdir} --optimize=1
+	python setup.py install --optimize=1 \
+	    --prefix=/usr \
+	    --root="${pkgdir}"
+	install -vDm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -vDm 644 {CHANGELOG,README}.md \
+    -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
 
-# vim:set ts=4 sw=2 ft=sh et:
+# vim:set ts=4 sw=4 ft=sh et:
