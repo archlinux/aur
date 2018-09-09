@@ -3,7 +3,7 @@
 
 _pkgname=tree_style_tab
 pkgname=firefox-tree-style-tab
-pkgver=2.5.3
+pkgver=2.5.4
 pkgrel=1
 pkgdesc='Firefox extension to show tabs like a tree'
 arch=('any')
@@ -13,7 +13,7 @@ url=http://piro.sakura.ne.jp/xul/_treestyletab.html.en
 conflicts=('firefox-extension-tree-style-tab')
 source=("https://addons.cdn.mozilla.net/user-media/addons/5890/$_pkgname-$pkgver-an+fx-linux.xpi")
 noextract=("${source##*/}")
-sha256sums=('e7f221db4d53b8405458f4c9540810c9ce21dc676e2ff830ba937b80def16696')
+sha256sums=('b37e2e9b234c6a7f11ea4443c61994280a54848b79d0580188c3b8a80663d336')
 
 package() {
   install -Dm644 "${source##*/}" "$pkgdir"/usr/lib/firefox/browser/extensions/treestyletab@piro.sakura.ne.jp.xpi
