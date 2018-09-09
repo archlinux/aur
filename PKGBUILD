@@ -3,7 +3,7 @@
 # Contributor: Earnestly <zibeon AT googlemail.com>
 
 pkgname=xmlada
-pkgver=18.0w
+pkgver=2018
 pkgrel=1
 pkgdesc="An XML parser for Ada95"
 arch=('i686' 'x86_64')
