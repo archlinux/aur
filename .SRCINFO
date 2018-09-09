@@ -1,7 +1,7 @@
 pkgbase = fsharp
 	pkgdesc = The F# Compiler, Core Library & Tools (F# Software Foundation Repository)
 	pkgver = 4.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://fsharp.org/
 	arch = any
 	license = MIT

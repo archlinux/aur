@@ -5,7 +5,7 @@
 
 pkgname=fsharp
 pkgver=4.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The F# Compiler, Core Library & Tools (F# Software Foundation Repository)"
 arch=('any')
 url="http://fsharp.org/"
@@ -17,7 +17,7 @@ sha256sums=('71be24bd4bac47fcad3f9e544c17f23fea9ebce3b47082720804f3f9f1b08f16')
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   prefix=/usr
-#  make
+  make
 }
 
 package() {
