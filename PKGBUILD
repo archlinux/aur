@@ -3,13 +3,13 @@
 
 pkgname=vivaldi-snapshot
 pkgver=2.0.1296.4
-pkgrel=1
+pkgrel=2
 pkgdesc='An advanced browser made with the power user in mind. (weekly snapshot)'
 url="https://vivaldi.com"
 options=(!strip !zipman)
 license=('custom')
 arch=('x86_64')
-depends=('gtk3' 'libcups' 'nss' 'gconf' 'alsa-lib' 'libxss' 'ttf-font' 'desktop-file-utils' 'shared-mime-info' 'hicolor-icon-theme')
+depends=('gtk3' 'libcups' 'nss' 'alsa-lib' 'libxss' 'ttf-font' 'desktop-file-utils' 'shared-mime-info' 'hicolor-icon-theme')
 makedepends=('w3m' 'imagemagick')
 optdepends=(
     'vivaldi-snapshot-ffmpeg-codecs: playback of proprietary video/audio'
@@ -19,7 +19,7 @@ optdepends=(
     'libnotify: native notifications'
 )
 source=("https://downloads.vivaldi.com/snapshot/vivaldi-snapshot-${pkgver}-1.x86_64.rpm")
-sha512sums=('5fa1db40663c84de63b1821e2a9050f34a9a0680f867ab699111031a7156746171a9813beb2430a79fc193cfe53f5d25d487c1ad768b7af8835ceb8a00d34fc2')
+sha512sums=('7bc796ffe2535376329f57d1edff8cf81935c202ec97deac66954db734a8ed6fc797e0a22de4a75f181083b3da2fcbc926639d333bbb802cd198cc18e5e1de5c')
 
 package() {
     cp -a {opt,usr} "$pkgdir"
