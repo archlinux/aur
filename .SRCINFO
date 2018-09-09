@@ -1,13 +1,14 @@
 pkgbase = nmtrust-git
-	pkgdesc = A simple framework for determining network trust with NetworkMananger
-	pkgver = r24.1dc724e
-	pkgrel = 1
+	pkgdesc = A simple framework for determining network trust with NetworkManager
+	pkgver = r25.79bbcf5
+	pkgrel = 2
 	url = https://github.com/pigmonkey/nmtrust
 	arch = any
 	license = GPL
 	makedepends = git
 	depends = systemd
 	depends = networkmanager
+	conflicts = nmtrust
 	source = git://github.com/pigmonkey/nmtrust.git
 	sha512sums = SKIP
 
