@@ -1,4 +1,4 @@
-From 4e09b725c6fa6530385d97363346e72a26d418be Mon Sep 17 00:00:00 2001
+From 0f3ee1f4f0aaa3d2b5baf18e2932c21065f86845 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Fredrik=20Sch=C3=B6n?= <fredrikschon@gmail.com>
 Date: Fri, 17 Aug 2018 22:07:28 +0200
 Subject: [PATCH 2/3] drm/i915: Increase LSPCON timeout
