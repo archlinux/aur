@@ -1,0 +1,17 @@
+pkgbase = emacs-projectile-git
+	pkgdesc = Project Interaction Library for Emacs
+	pkgver = r1591.62ef2ae
+	pkgrel = 1
+	url = https://github.com/bbatsov/projectile
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	depends = emacs-pkg-info
+	provides = emacs-projectile
+	conflicts = emacs-projectile
+	source = git+https://github.com/bbatsov/projectile.git
+	sha256sums = SKIP
+
+pkgname = emacs-projectile-git
+
