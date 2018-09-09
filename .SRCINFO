@@ -9,6 +9,7 @@ pkgbase = gnatcoll-sqlite
 	makedepends = gprbuild
 	depends = gcc-ada
 	depends = gnatcoll-core
+	depends = gnatcoll-sql
 	depends = sqlite3
 	provides = gnatcoll-sqlite
 	conflicts = gnatcoll-sqlite
