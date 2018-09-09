@@ -1,14 +1,14 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=phonon-qt4
 pkgver=4.10.1
-pkgrel=2
+pkgrel=3
 pkgdesc="The multimedia framework for KDE4"
 arch=(x86_64)
 optdepends=('pulseaudio: PulseAudio support')
 makedepends=(extra-cmake-modules libpulse qt4)
 url='http://phonon.kde.org/'
 license=(LGPL)
-source=("http://download.kde.org/stable/${pkgname%-qt4}/$pkgver/${pkgname%-qt4}-$pkgver.tar.xz"{,.sig})
+source=("https://download.kde.org/stable/${pkgname%-qt4}/$pkgver/${pkgname%-qt4}-$pkgver.tar.xz"{,.sig})
 sha256sums=('e5a98df31aeffc22493afc8d6adbca5d6f0c27cc2eed73b3be05195321e08db7'
             'SKIP')
 validpgpkeys=(CB9387521E1EE0127DA804843FDBB55084CC5D84) # Harald Sitter <sitter@kde.org>
