@@ -1,0 +1,7 @@
+To generate the PKGBUILD:
+
+$ git clone git://git.kde.org/kdesdk-devenv-dependencies
+$ cd kdesdk-devenv-dependencies
+$ pacman -Fy
+$ make arch
+
