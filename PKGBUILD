@@ -1,6 +1,6 @@
 # Maintainer: reimu <r2hkri@gmail.com>
 pkgname=swayblocks
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="another block manager for i3bar/swaybar"
 arch=("i686" "x86_64")
