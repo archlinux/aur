@@ -1,0 +1,15 @@
+pkgbase = perl-uri-simple
+	pkgdesc = URI::Simple - Simple way to parse uri
+	pkgver = 1.00
+	pkgrel = 1
+	url = https://metacpan.org/pod/URI::Simple
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/M/MA/MAMOD/URI-Simple-1.00.tar.gz
+	md5sums = 94eddcb8bad3afe78f9dbde08cfeadb9
+	sha1sums = 4b5ce470445e82e1500f2f5d6ccaa1459269507d
+
+pkgname = perl-uri-simple
+
