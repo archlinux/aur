@@ -1,15 +1,15 @@
 #Maintainer: jnanar <info [at] agayon [dot] be>
 
 pkgname=sat-cagou-hg
-pkgver=r233.ba8f3a4a5ac7
+pkgver=r238.7918a5668304
 VERSION=0.7
 pkgrel=1
 pkgdesc=""
 arch=(any)
 url=""
 license=('AGPL3')
-depends=('python2' 'python2-kivy' 'sat-xmpp-hg' 'sat-templates-hg' 'sat-tmp-hg' 'xsel' 'python2-kivy-garden')
-makedepends=('mercurial')
+depends=('python2' 'python2-kivy' 'sat-xmpp-hg' 'sat-templates-hg' 'sat-tmp-hg' 'xsel' 'python2-kivy-garden' 'sat-media-hg')
+makedepends=('mercurial' 'python2-requests')
 options=(!emptydirs)
 #optdepends=('')
 source=('hg+'https://repos.goffi.org/cagou)
