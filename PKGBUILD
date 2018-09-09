@@ -22,6 +22,9 @@ sha1sums=('f2cfc62fc05ae510e7e3aa7138d27ccb38096bdd'
           '4aaab0df8b611750d2cb35973ed28823fb233989'
           'db88bcb65d1a5f41c5b30e0c3dea996c47c4f5b9')
 
+# Remove '-fvar-tracking-assignments' from DEBUG_CFLAGS since clang does not understand it.
+DEBUG_CFLAGS="-g"
+
 prepare() {
     cd "$srcdir/gprbuild-gpl-2018-src"
     patch -Np1 -i "$srcdir/relocatable-build.patch"
