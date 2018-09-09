@@ -1,6 +1,6 @@
 pkgbase = mcrl2
 	pkgdesc = A formal specification language with an associated toolset.
-	pkgver = 201707.1
+	pkgver = 201808.0
 	pkgrel = 1
 	url = http://www.mcrl2.org
 	install = mcrl2.install
@@ -12,8 +12,8 @@ pkgbase = mcrl2
 	depends = boost
 	depends = qt5-base
 	depends = glu
-	source = http://mcrl2.org/download/release/mcrl2-201707.1.tar.gz
-	sha256sums = 9504efd8fa4fe60b4072c709b14da3f776ba9eb48fe51f0cbce188a3244910b1
+	source = http://mcrl2.org/download/release/mcrl2-201808.0.tar.gz
+	sha256sums = cf5d75f512a92d3f56b5899f4f226f9225404452afba88e838c660c7e14a8018
 
 pkgname = mcrl2
 
