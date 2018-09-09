@@ -1,7 +1,7 @@
 # Maintainer: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
 
 pkgname=devpi-common
-pkgver=3.0.1
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="utilities jointly used by devpi-server and devpi-client"
 arch=(any)
@@ -9,8 +9,8 @@ url="http://doc.devpi.net/"
 license=('MIT')
 depends=('python' 'python-py' 'python-requests')
 makedepends=('python-setuptools')
-source=("https://pypi.io/packages/source/d/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('7288df8367ff84e28cc58e0094bfc62280f83f25c09cf7f735dda4327d3c6a50')
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('728651b805864bc5ea6bfd9cda49f33a91c9a13091ce31aeb2c9de9dfee7e22f')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
