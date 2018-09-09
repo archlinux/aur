@@ -4,7 +4,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=abiword-git
-pkgver=20474.39873476b
+pkgver=20486.d95b8e71c
 pkgrel=1
 pkgdesc="Fully-featured word processor from official gnome gitlab mirror"
 arch=('i686' 'x86_64')
@@ -28,12 +28,12 @@ sha256sums=('SKIP'
             '379908e0a2d9fd58fe7529283378079c79da6a519d99dc59a2e774f2f045a8e4')
 
 pkgver() {
-  cd ${pkgname}
+  cd ${pkgname%-git}
   printf "%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
 prepare() {
-  cd ${pkgname}
+  cd ${pkgname%-git}
   # Install missing m4 files
   install -m644 ../aiksaurus-plugin.m4 plugins/aiksaurus/plugin.m4
   install -m644 ../command-plugin.m4 .
@@ -45,7 +45,7 @@ prepare() {
 }
 
 build() {
-  cd ${pkgname}
+  cd ${pkgname%-git}
   LANG=C
   export CXXFLAGS+=" -O3"
   NOCONFIGURE=1 ./autogen.sh
@@ -67,6 +67,6 @@ build() {
 }
 
 package() {
-  cd ${pkgname}
+  cd ${pkgname%-git}
   make DESTDIR="$pkgdir/" install
 }
