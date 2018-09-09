@@ -3,7 +3,7 @@
 # shellcheck disable=2148
 
 pkgname=strace-analyzer
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="analyzes strace output"
 arch=('x86_64' 'i686')
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/wookietreiber/strace-analyzer/archive/v$pkgver.tar.gz")
-md5sums=('ae58b7f163b7d6797d25eaeb6cedc7a8')
+md5sums=('de73539c159499e2312945d06a9d0478')
 
 build() {
   # shellcheck disable=2154
