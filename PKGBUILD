@@ -32,8 +32,10 @@ package() {
   cd "$srcdir/$_pkgname/build"
   make DESTDIR="$pkgdir" install
 
+  mv "$pkgdir"/usr/lib64/* "$pkgdir"/usr/lib
+  rm -r "$pkgdir"/usr/lib64
+
   # install license files
   install -Dm644 "$srcdir/$_pkgname/COPYING" \
         "$pkgdir/usr/share/licenses/$_pkgname/COPYING"
-
 }
