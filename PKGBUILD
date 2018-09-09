@@ -1,8 +1,8 @@
 # Maintainer: Julian Hornich <vivaeltopo@googlemail.com>
 
 pkgname=gnome-shell-theme-viva-git
-_pkgver=3.24.0
-pkgver=3.24.0.139.4031368
+_pkgver=3.30.0
+pkgver=3.30.0.154.e5263fb
 pkgrel=1
 pkgdesc="A custom gnome-shell theme named viva (blue and orange version)"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/vivaeltopo/gnome-shell-theme-viva"
 groups=('gnome-shell-extensions')
 license=('GPL3')
 depends=('gnome-shell>=3.18' 'adobe-source-sans-pro-fonts' 'ttf-impallari-raleway-family')
-makedepends=('ruby-sass')
+makedepends=('sassc')
 source=('git+https://github.com/vivaeltopo/gnome-shell-theme-viva.git')
 md5sums=('SKIP')
 
