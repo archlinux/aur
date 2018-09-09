@@ -34,7 +34,7 @@ source=("https://github.com/${_gitauthor}/${_gitname}/archive/v${pkgver}.tar.gz"
 
 md5sums=('7dbcdd743100ca33b31e3e444bc23209'
          '2438a763cb60aa1e507d60de802ac7f2'
-         '376fc90d3855b4bbc00da9a81273d410')
+         '188855fff23f878fcd9f8e5b498e0dd3')
 
 package() {
   install -Dm644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
