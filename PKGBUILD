@@ -4,8 +4,11 @@
 _orgname=tumic0
 _pkgname=GPXSee
 _branch=master
+wl_project=${_pkgname}
+wl_component=Translations
+wl_dl="https://hosted.weblate.org/download/${wl_project}/${wl_component}"
 pkgname=${_pkgname,,}-git
-pkgver=5.17.r1097.d4b46a4
+pkgver=5.17.r1115.2501f83
 pkgrel=1
 pkgdesc='GPS log file viewer and analyzer'
 arch=('i686' 'x86_64')
@@ -45,6 +48,10 @@ prepare() {
   cd ${_pkgname}-${_branch}
 
   sed -i "s/\(VERSION = \).*/\1${pkgver}/" gpxsee.pro
+
+  find lang -name *.ts | \
+    xargs basename -s .ts | \
+    xargs -P 7 -I{} sh -c "curl -so lang/\$1.ts $wl_dl/\${1#${_pkgname,,}_}/" -- {}
 }
 
 build() {
