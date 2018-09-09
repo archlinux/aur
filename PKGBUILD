@@ -6,11 +6,13 @@
 pkgname=emacs-org-mode
 _srcname=org
 pkgver=9.1.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Emacs Org Mode"
 arch=('any')
 url="http://orgmode.org/"
 depends=('emacs')
+optdepends=('java-runtime: For using ditaa.jar in the contrib directory'
+	    'zsh: for using dir2org.zsh in the contrib directory')
 license=('GPL')
 install=emacs-org-mode.install
 source=("http://orgmode.org/$_srcname-$pkgver.tar.gz")
@@ -23,7 +25,7 @@ build() {
 
 package() {
   cd "$_srcname-$pkgver"
-  make prefix="$pkgdir"/usr/share install
+  make DESTDIR="$pkgdir" install
 
   ## by default now we install also the contrib directory
   install -d -m755 "$pkgdir"/usr/share/emacs/site-lisp/org_contrib
