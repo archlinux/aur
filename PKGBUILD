@@ -1,14 +1,15 @@
+# Maintainer: futpib <futpib@gmail.com>
 # Maintainer: Daniel Nagy <danielnagy at gmx de>
 
 pkgname=urbit-git
-pkgver=0.4.r100.g83d0f8871
+pkgver=0.4.5.r384.gd7a9744ce
 pkgrel=1
 pkgdesc="An Operating Function"
 url="http://www.urbit.org"
 arch=('i686' 'x86_64')
 license=('MIT')
-depends=('libsigsegv' 'libuv' 'curl')
-makedepends=('git' 'cmake' 'python' 'ragel' 're2c')
+depends=(libsigsegv libuv libtool curl openssl)
+makedepends=(autoconf automake cmake gcc git gmp ncurses ninja python ragel re2c meson)
 conflicts=('urbit')
 provides=('urbit')
 options=('!makeflags')
@@ -22,11 +23,12 @@ pkgver() {
 
 build() {
   cd ${pkgname/-git}
-  make
+  ./scripts/bootstrap
+  ./scripts/build
 }
 
 package() {
   cd ${pkgname/-git}
-  install -Dm755 bin/urbit "$pkgdir"/usr/bin/urbit
+  install -Dm755 build/urbit "$pkgdir"/usr/bin/urbit
   install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
