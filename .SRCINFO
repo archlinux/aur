@@ -1,7 +1,7 @@
 pkgbase = shutter
 	pkgdesc = A featureful screenshot tool (formerly gscrot)
-	pkgver = 0.94
-	pkgrel = 2
+	pkgver = 0.94.1
+	pkgrel = 1
 	url = http://shutter-project.org/
 	arch = any
 	license = GPL3
@@ -21,7 +21,7 @@ pkgbase = shutter
 	depends = perl-net-dbus
 	depends = perl-sort-naturally
 	depends = perl-json
-	depends = perl-json-xs
+	depends = perl-json-maybexs
 	depends = perl-xml-simple
 	depends = perl-www-mechanize
 	depends = perl-locale-gettext
@@ -38,8 +38,9 @@ pkgbase = shutter
 	optdepends = perl-lwp-protocol-https: Imgur and Dropbox upload support
 	optdepends = perl-net-oauth: Imgur and Dropbox upload support
 	optdepends = bc: 3D Rotate and 3D Reflection plugins support
-	source = https://launchpad.net/shutter/0.9x/0.94/+download/shutter-0.94.tar.gz
-	sha512sums = 7eb097523f0a696d7c1d5dfe236b0ef8c8e5f26477df688be786f2a4ef0121b64acc5d9abf96a4cab08bbae6b9c441f309aa30dd92eaea4ed64a9ebef09e6d39
+	optdepends = perl-webservice-gyazo-b: Gyazo upload support
+	source = https://launchpad.net/shutter/0.9x/0.94.1/+download/shutter-0.94.1.tar.gz
+	sha512sums = 6637219d5d0d8ef856fface3cc0e7fa9f7a46cc4c03ec9270b00f3f764c2b9a361a05ca7ac013f78dd02d257e1c3d7232f309eb53dc0bc28d99eb6ad5e81fd99
 
 pkgname = shutter
 

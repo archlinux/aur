@@ -7,8 +7,8 @@
 # Contributor: TDY <tdy@gmx.com>
 
 pkgname=shutter
-pkgver=0.94
-pkgrel=2
+pkgver=0.94.1
+pkgrel=1
 pkgdesc="A featureful screenshot tool (formerly gscrot)"
 arch=('any')
 url="http://shutter-project.org/"
@@ -16,7 +16,7 @@ license=('GPL3')
 depends=(xdg-utils imagemagick procps librsvg gnome-perl gtk2-perl desktop-file-utils
          perl-{gnome2-wnck,gtk2-{imageview,unique},x11-protocol}
          perl-{proc-{simple,processtable},net-dbus}
-         perl-{sort-naturally,json,json-xs,xml-simple,www-mechanize,locale-gettext}
+         perl-{sort-naturally,json,json-maybexs,xml-simple,www-mechanize,locale-gettext}
          perl-{file-{which,basedir,copy-recursive},xml-simple})
 optdepends=('gnome-web-photo: web screenshot support'
 		'perl-image-exiftool: read and write EXIF data'
@@ -26,10 +26,10 @@ optdepends=('gnome-web-photo: web screenshot support'
 		'perl-path-class: Imgur and Dropbox upload support'
 		'perl-lwp-protocol-https: Imgur and Dropbox upload support'
 		'perl-net-oauth: Imgur and Dropbox upload support'
-		'bc: 3D Rotate and 3D Reflection plugins support')
+		'bc: 3D Rotate and 3D Reflection plugins support'
+		'perl-webservice-gyazo-b: Gyazo upload support')
 source=("https://launchpad.net/shutter/0.9x/$pkgver/+download/shutter-$pkgver.tar.gz")
-sha512sums=('7eb097523f0a696d7c1d5dfe236b0ef8c8e5f26477df688be786f2a4ef0121b64acc5d9abf96a4cab08bbae6b9c441f309aa30dd92eaea4ed64a9ebef09e6d39')
-
+sha512sums=('6637219d5d0d8ef856fface3cc0e7fa9f7a46cc4c03ec9270b00f3f764c2b9a361a05ca7ac013f78dd02d257e1c3d7232f309eb53dc0bc28d99eb6ad5e81fd99')
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
 
