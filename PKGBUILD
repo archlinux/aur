@@ -3,7 +3,7 @@
 
 pkgname=scudcloud
 pkgver=1.65
-pkgrel=3
+pkgrel=4
 epoch=2
 pkgdesc="A Slack client for Linux"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('libnotify' 'python-setuptools' 'python-dbus' 'python-gobject'
          'python-pyqt5' 'qt5-webkit')
 makedepends=('python-jsmin')
 groups=('messaging')
-source=("https://github.com/raelgc/scudcloud/archive/v${pkgver}.tar.gz")
+source=("$pkgname-$pkgver::https://github.com/raelgc/scudcloud/archive/v$pkgver.tar.gz")
 sha256sums=('1b5420a868a37e181655e9799a3d1fcbbc0b0112349c44ac3d7936b626334791')
 
 prepare() {
