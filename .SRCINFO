@@ -1,0 +1,24 @@
+pkgbase = ark-desktop-v2
+	pkgdesc = Multi Platform Ark Lite Client for core V2 devnet
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = https://github.com/ArkEcosystem/ark-desktop
+	arch = x86_64
+	license = MIT
+	depends = gtk2
+	depends = alsa-lib
+	depends = nss
+	depends = libxtst
+	depends = gconf
+	depends = libxss
+	source = https://github.com/ArkEcosystem/ark-desktop/releases/download/1.6.1/ArkClient-V2-Linux-1.6.1.tar.xz
+	source = https://raw.githubusercontent.com/ArkEcosystem/ark-desktop/1.6.1/LICENSE
+	source = arkclientv2.desktop
+	source = arkclientv2.svg
+	sha256sums = d3ea9e286fdf28759d302d91e21b42c23ccdc2d7bb6633b1f3c785421d04ec65
+	sha256sums = c051061bad8e5d6783a5d631cd3efa47cc13883b97e5651be185e30fa93dcfe6
+	sha256sums = b167d2faf16aa10d9bdeaafd2a397b6022a10a06ede0f76f1525142451f708d0
+	sha256sums = 8ca038afc96c8d1604711fd22f7fc3f75bb7004eac1090e109af843554c9a31e
+
+pkgname = ark-desktop-v2
+

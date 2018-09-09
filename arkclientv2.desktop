@@ -1,0 +1,16 @@
+[Desktop Entry]
+Version=1.0
+Name=Ark Desktop V2
+Comment=Ark Wallet Lite Client
+TryExec=/usr/bin/arkclientv2
+Exec=/usr/bin/arkclientv2
+Terminal=false
+Type=Application
+Icon=arkclientv2
+Categories=Office;Finance;
+MimeType=x-scheme-handler/ark;
+Actions=Explorer;
+
+[Desktop Action Explorer]
+Exec=xdg-open https://explorer.ark.io
+Name=Ark Blockchain Explorer
