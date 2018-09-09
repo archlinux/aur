@@ -6,17 +6,17 @@
 
 
 pkgname=namecoin-core-wallet
-pkgver=v0.16.1
+pkgver=v0.16.2
 pkgrel=1
 
 
 # Epoch is always set to the most recent PKGBUILD update time.
 # This allows for a forced downgrade without messing up versioning.
-epoch=1532723354
+epoch=1536522646
 
 
-# Release commit for 0.16.1
-_commit=4359f75d752487e7d82bfc83382c57ef6f8106df
+# Release commit for 0.16.2
+_commit=5b502c3fa2cfe6af392d03ac41ffe34baea7c473
 
 
 pkgdesc='This package provides the Namecoin Core GUI client and CLI daemon.'
