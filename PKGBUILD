@@ -2,34 +2,58 @@
 
 _pkgname=cni
 pkgname=${_pkgname}-git
-pkgver=r551.21d9639
-pkgrel=2
+pkgver=r730.47cf2da
+pkgrel=1
 pkgdesc="Specification and libraries for writing plugins to configure network interfaces in Linux containers"
+conflicts=('cni')
 arch=('i686' 'x86_64')
 url="https://github.com/containernetworking/cni"
 license=('apache')
 makedepends=('git' 'go')
 depends=('glibc')
-source=("${pkgname}::git+https://github.com/containernetworking/${_pkgname}.git#branch=master")
+options=('!strip' '!emptydirs')
+source=("${_pkgname}::git+https://github.com/containernetworking/${_pkgname}.git#branch=master")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${_pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
-  ./build.sh
+  cd "$srcdir/$_pkgname"
+
+  if [ -L "$srcdir/$_pkgname" ]; then
+    rm "$srcdir/$_pkgname" -rf
+    mv "$srcdir/go/src/$_pkgname/" "$srcdir/$_pkgname"
+  fi
+
+  rm -rf "$srcdir/go/src"
+
+  mkdir -p "$srcdir/go/src"
+
+  export GOPATH="$srcdir/go"
+
+  mv "$srcdir/$_pkgname" "$srcdir/go/src/"
+
+  cd "$srcdir/go/src/$_pkgname/"
+  ln -sf "$srcdir/go/src/$_pkgname/" "$srcdir/$_pkgname"
+
+  echo ":: Building binary"
+  go get -v -gcflags "-trimpath $GOPATH/src" ./...
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
-  mkdir -p "${pkgdir}/opt/${_pkgname}/"
-  cp -dr --no-preserve=ownership bin "${pkgdir}/opt/${_pkgname}/"
+  find "$srcdir/go/bin/" -type f -executable | while read filename; do
+    install -DT "$filename" "$pkgdir/usr/bin/$(basename $filename)"
+  done
+
+  find "${srcdir}/${_pkgname}/scripts/" -type f -executable | while read filename; do
+    install -DT "${filename}" "${pkgdir}/opt/cni/$(basename $filename)"
+  done
 
   mkdir -p ${pkgdir}/usr/share/licenses/${_pkgname}
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
