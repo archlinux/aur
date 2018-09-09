@@ -1,0 +1,18 @@
+pkgbase = emacs-counsel-projectile-git
+	pkgdesc = Ivy UI for Projectile
+	pkgver = r170.878f95c
+	pkgrel = 1
+	url = https://github.com/ericdanan/counsel-projectile
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	depends = emacs-swiper
+	depends = emacs-projectile
+	provides = emacs-counsel-projectile
+	conflicts = emacs-counsel-projectile
+	source = git+https://github.com/ericdanan/counsel-projectile.git
+	sha256sums = SKIP
+
+pkgname = emacs-counsel-projectile-git
+
