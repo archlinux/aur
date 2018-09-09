@@ -1,7 +1,7 @@
 pkgbase = klatexformula
 	pkgdesc = Provides GUI for generating images from LaTeX equations
 	pkgver = 4.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = http://klatexformula.sourceforge.net
 	install = klatexformula.install
 	arch = i686
