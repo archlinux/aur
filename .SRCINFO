@@ -1,6 +1,6 @@
 pkgbase = openmsx-git
 	pkgdesc = The MSX emulator that aims for perfection.
-	pkgver = 13344.a61252c61
+	pkgver = 13346.240b1fc02
 	pkgrel = 1
 	url = http://openmsx.org/
 	install = openmsx.install
