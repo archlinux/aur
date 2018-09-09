@@ -1,6 +1,7 @@
 [Unit]
 Description=Sonarr Service
-After=network.target
+Wants=network-online.target
+After=network-online.target
 
 [Service]
 User=sonarr
