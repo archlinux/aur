@@ -1,6 +1,6 @@
 pkgbase = xf86-video-intel-git
 	pkgdesc = X.org Intel i810/i830/i915/945G/G965+ video drivers
-	pkgver = 2.99.917+842+g3d395062
+	pkgver = 2.99.917+847+g25c9a2fc
 	pkgrel = 1
 	epoch = 1
 	url = https://01.org/linuxgraphics
@@ -42,8 +42,10 @@ pkgbase = xf86-video-intel-git
 	replaces = xf86-video-intel-uxa
 	replaces = xf86-video-intel-sna
 	replaces = xf86-video-intel
-	source = xf86-video-intel-git::git://anongit.freedesktop.org/xorg/driver/xf86-video-intel#branch=master
+	source = xf86-video-intel-git::git+https://gitlab.freedesktop.org/xorg/driver/xf86-video-intel.git#branch=master
+	source = 0001-SNA-fix-PRIME-output-support-since-xserver-1.20.patch
 	sha256sums = SKIP
+	sha256sums = 7cdc310953379ede9693a387ecac6c803cc4c4461df5ad9ab875b35e90a552f5
 
 pkgname = xf86-video-intel-git
 
