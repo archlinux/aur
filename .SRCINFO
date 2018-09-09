@@ -9,6 +9,7 @@ pkgbase = ombi
 	license = GPL2
 	depends = libunwind
 	depends = openssl-1.0
+	depends = icu
 	optdepends = sonarr: TV daemon for usenet & torrents
 	optdepends = radarr: Movie daemon for usenet & torrents (sonarr fork)
 	optdepends = sickrage: TV daemon for usenet & torrents (sickbeard fork)
