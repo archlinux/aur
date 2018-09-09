@@ -1,0 +1,19 @@
+pkgbase = python-libseccomp-git
+	pkgdesc = Python bindings for libseccomp
+	pkgver = 2.3.3.r121.g8ad3638
+	pkgrel = 1
+	url = https://github.com/seccomp/libseccomp
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = cython
+	depends = glibc
+	depends = libseccomp
+	provides = python-libseccomp
+	conflicts = python-libseccomp
+	source = git+https://github.com/seccomp/libseccomp.git
+	sha256sums = SKIP
+
+pkgname = python-libseccomp-git
+
