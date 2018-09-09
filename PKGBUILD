@@ -3,13 +3,13 @@
 pkgbase=python-vipaccess
 pkgname=('python-vipaccess' 'python2-vipaccess')
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A free software implementation of Symantec's VIP Access application and protocol."
 arch=('any')
 url="https://github.com/dlenski/python-vipaccess"
 license=('Apache')
 makedepends=('python-setuptools' 'python-nose' 'python2-setuptools' 'python2-nose')
-source=("https://github.com/dlenski/python-vipaccess/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver::https://github.com/dlenski/python-vipaccess/archive/v$pkgver.tar.gz")
 sha256sums=('0a432d5f8bc8920a7adb9624f40ff8bd25a9f326bb1264462ad048faa6758c88')
 
 prepare() {
@@ -17,8 +17,8 @@ prepare() {
 }
 
 build() {
-    cd "$srcdir/python-vipaccess-$pkgver"     && python setup.py build
-    cd "$srcdir/python-vipaccess-$pkgver-py2" && python2 setup.py build
+    cd "python-vipaccess-$pkgver"     && python setup.py build
+    cd "../python-vipaccess-$pkgver-py2" && python2 setup.py build
 }
 
 check() {
