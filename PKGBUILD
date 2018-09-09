@@ -1,4 +1,4 @@
-# Maintainer: Cyrinux <levis dot cyril at gmail dot com>
+# Maintainer: Cyrinux <pkgbuilds AT levis DOT name>
 pkgname=nmtrust-git
 pkgver=r24.1dc724e
 pkgrel=1
