@@ -1,6 +1,6 @@
 pkgbase = abiword-git
 	pkgdesc = Fully-featured word processor from official gnome gitlab mirror
-	pkgver = 20478.6df5d7ec6
+	pkgver = 20479.66bb85744
 	pkgrel = 1
 	url = http://www.abisource.com
 	arch = i686
@@ -32,8 +32,7 @@ pkgbase = abiword-git
 	provides = abiword-plugins
 	conflicts = abiword
 	conflicts = abiword-plugins
-	options = !makeflags
-	source = abiword::git+https://gitlab.gnome.org/World/AbiWord.git#commit=6df5d7ec
+	source = abiword::git+https://gitlab.gnome.org/World/AbiWord.git#commit=66bb8574
 	source = enchant-2.1.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/enchant-2.1.patch?h=packages/abiword
 	source = aiksaurus-plugin.m4::https://git.archlinux.org/svntogit/packages.git/plain/trunk/aiksaurus-plugin.m4?h=packages/abiword
 	source = command-plugin.m4::https://git.archlinux.org/svntogit/packages.git/plain/trunk/command-plugin.m4?h=packages/abiword
