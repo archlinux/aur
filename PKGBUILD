@@ -5,29 +5,22 @@
 
 pkgname=fsharp
 pkgver=4.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The F# Compiler, Core Library & Tools (F# Software Foundation Repository)"
 arch=('any')
 url="http://fsharp.org/"
 license=('MIT')
 depends=('mono' 'msbuild-stable')
-makedepends=(git)
-_commit=3de387432de8d11a89f99d1af87aa9ce194fe21b  # tags/4.5.0
-source=("git+https://github.com/fsharp/fsharp/#commit=$_commit")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd $pkgname
-  git describe --tags | sed 's/-/+/g'
-}
+source=("$pkgname-$pkgver.tar.gz::https://github.com/fsharp/fsharp/archive/$pkgver.tar.gz")
+sha256sums=('71be24bd4bac47fcad3f9e544c17f23fea9ebce3b47082720804f3f9f1b08f16')
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
   prefix=/usr
-  make
+#  make
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
   make prefix="/usr" DESTDIR="$pkgdir" install
 }
