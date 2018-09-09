@@ -12,8 +12,8 @@ license=('GPL')
 depends=('gcc-ada' 'libgpr')
 makedepends=('gprbuild')
 
-provides=('gnatcoll')
-conflicts=('gnatcoll')
+provides=('gnatcoll-core')
+conflicts=('gnatcoll' 'gnatcoll-core-git')
 
 source=('http://mirrors.cdn.adacore.com/art/5b0819dfc7a447df26c27a99')
 sha1sums=('213105933eb2deb4d08f6b5beab518ad6c70fbac')
