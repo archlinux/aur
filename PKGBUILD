@@ -3,7 +3,7 @@
 
 pkgname=gam
 pkgver=4.61
-pkgrel=2
+pkgrel=3
 pkgdesc="Command-line tool for Google GSuite admins to manage settings quickly and easily."
 arch=('any')
 url="https://github.com/jay0lee/GAM"
@@ -17,7 +17,6 @@ depends=(
     'python2-gdata'
     'python2-google-auth'
     'python2-passlib'
-    'perl-mozilla-ca'
 )
 
 source=(
@@ -38,13 +37,9 @@ prepare() {
 
 package() {
     install -m755 -d "$pkgdir/etc/$pkgname/"
-    install -m755 -d "$pkgdir/usr/share/$pkgname"
     touch "$pkgdir/etc/$pkgname/noupdatecheck.txt"
     touch "$pkgdir/etc/$pkgname/nobrowser.txt"
     install -Dm755 "$pkgname-$pkgver/src/gam.py" -t "$pkgdir/usr/share/$pkgname/"
     install -Dm644 "$pkgname-$pkgver"/src/{var,utils}.py -t "$pkgdir/usr/share/$pkgname/"
     install -Dm755 gam.sh "$pkgdir/usr/bin/gam"
-
-    ln -s /usr/share/perl5/vendor_perl/Mozilla/CA/cacert.pem \
-        "$pkgdir/usr/share/$pkgname/cacert.pem"
 }
