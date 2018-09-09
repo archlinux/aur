@@ -9,6 +9,7 @@ pkgbase = gnatcoll-postgres
 	makedepends = gprbuild
 	depends = gcc-ada
 	depends = gnatcoll-core
+	depends = gnatcoll-sql
 	depends = postgresql
 	provides = gnatcoll-postgres
 	conflicts = gnatcoll-postgres

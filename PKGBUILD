@@ -9,7 +9,7 @@ url='https://github.com/AdaCore/gnatcoll-db/'
 arch=('i686' 'x86_64')
 license=('GPL')
 
-depends=('gcc-ada' 'gnatcoll-core' 'postgresql')
+depends=('gcc-ada' 'gnatcoll-core' 'gnatcoll-sql' 'postgresql')
 makedepends=('gprbuild')
 
 provides=('gnatcoll-postgres')
