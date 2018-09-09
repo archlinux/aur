@@ -9,7 +9,7 @@ pkgbase = hexa-git
 	makedepends = git
 	depends = node
 	provides = hexa
-	source = haxe::git+https://github.com/hexalang/hexa
+	source = hexa::git+https://github.com/hexalang/hexa
 	md5sums = SKIP
 
 pkgname = hexa-git
