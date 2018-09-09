@@ -45,7 +45,7 @@ package_conversejs-git() {
 }
 
 package_conversejs-epiphany-git() {
-  depends=('epiphany' 'conversejs-git')
+  depends=('epiphany' 'conversejs-git' 'python')
   pkgdesc='Desktop launcher for Converse.js'
 
   install -Dm755 ../launcher.sh "$pkgdir"/usr/bin/conversejs
