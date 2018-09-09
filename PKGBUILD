@@ -2,7 +2,7 @@
 
 pkgname=etime
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="A UTC based universal time system. Explained at etime.neocities.org"
 arch=('x86_64' 'i686')
 url="http://github.com/LaPingvino/$pkgname/"
@@ -14,7 +14,7 @@ sha256sums=('78367c8e010f3b23d5479bf28a96426e4d1e94b8f7c30a507b4eaeeac731e17b')
 
 build() {
 	  cd "$pkgname-$pkgver/cmd/etime"
-
+      sed -i 's@github.com/lapingvino/etime@../..@' *.go
 	    go build
     }
 

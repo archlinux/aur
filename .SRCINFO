@@ -1,7 +1,7 @@
 pkgbase = etime
 	pkgdesc = A UTC based universal time system. Explained at etime.neocities.org
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/LaPingvino/etime/
 	arch = x86_64
 	arch = i686
