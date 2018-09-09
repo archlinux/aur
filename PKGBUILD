@@ -3,13 +3,13 @@
 pkgbase=python-oath
 pkgname=('python-oath' 'python2-oath')
 pkgver=1.4.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Python implementation of HOTP, TOTP and OCRA algorithms from OATH."
 arch=('any')
 url="https://github.com/bdauvergne/python-oath"
 license=('BSD')
 makedepends=('python-setuptools' 'python2-setuptools')
-source=("https://github.com/bdauvergne/python-oath/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver::https://github.com/bdauvergne/python-oath/archive/v$pkgver.tar.gz")
 sha256sums=('3e485d0fc4a6c077cb75841cba6512c1ab1b11d766969a24b199586e04e7c58f')
 
 prepare() {
@@ -17,8 +17,8 @@ prepare() {
 }
 
 build() {
-    cd "$srcdir/python-oath-$pkgver"     && python setup.py build
-    cd "$srcdir/python-oath-$pkgver-py2" && python2 setup.py build
+    cd "python-oath-$pkgver"     && python setup.py build
+    cd "../python-oath-$pkgver-py2" && python2 setup.py build
 }
 
 package_python-oath() {
