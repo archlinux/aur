@@ -7,7 +7,7 @@ set -u
 _cvs='-git'
 pkgbase="ghostscript${_cvs}"
 pkgname=("ghostscript${_cvs}" "ghostxps${_cvs}" "ghostpcl${_cvs}")
-pkgver=9.25.r6004.g0da9680ca
+pkgver=9.25.r6012.g95281026d
 _pkgver="${pkgver%%.r*}"
 _pkgverm="${_pkgver%.*}"
 pkgrel=1
@@ -101,7 +101,7 @@ package_ghostscript() {
   # remove unwanted localized manpages
   rm -r "${pkgdir}"/usr/share/man/de
 
-  install -Dt "${pkgdir}"/usr/share/licenses/${pkgbase} -m644 LICENSE
+  install -Dt "${pkgdir}"/usr/share/licenses/${pkgname} -m644 LICENSE
   set +u
 }
 
@@ -120,7 +120,7 @@ package_ghostxps() {
   install -Dt "${pkgdir}"/usr/lib sobin/libgxps.so.${_pkgver}
   ln -s libgxps.so.${_pkgver} "${pkgdir}"/usr/lib/libgxps.so.${_pkgverm}
 
-  install -Dt "${pkgdir}"/usr/share/licenses/${pkgbase} -m644 LICENSE
+  install -Dt "${pkgdir}"/usr/share/licenses/${pkgname} -m644 LICENSE
   set +u
 }
 
@@ -139,7 +139,7 @@ package_ghostpcl() {
   install -Dt "${pkgdir}"/usr/lib sobin/libgpcl6.so.${_pkgver}
   ln -s libgpcl6.so.${_pkgver} "${pkgdir}"/usr/lib/libgpcl6.so.${_pkgverm}
 
-  install -Dt "${pkgdir}"/usr/share/licenses/${pkgbase} -m644 LICENSE
+  install -Dt "${pkgdir}"/usr/share/licenses/${pkgname} -m644 LICENSE
   set +u
 }
 set +u
