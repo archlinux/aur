@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
  
 pkgname=emacs-org-mode-git
-pkgver=9.1.13.726.g1dbc50608
+pkgver=9.1.14.911.g98755f629
 pkgrel=1
 pkgdesc="Emacs Org Mode from git"
 arch=('any')
@@ -30,8 +30,8 @@ pkgver() {
 
 package () {
   cd ${pkgname%-git}
- # sed -i '30s+autoloads++' mk/targets.mk
-  make prefix="$pkgdir"/usr/share install
+
+  make DESTDIR="$pkgdir" install
   mv "$pkgdir"/usr/share/info/org "$pkgdir"/usr/share/info/orgmode
   install -d "$pkgdir"/usr/share/emacs/site-lisp/org_contrib
   cp -r contrib/{lisp,scripts} "$pkgdir"/usr/share/emacs/site-lisp/org_contrib
