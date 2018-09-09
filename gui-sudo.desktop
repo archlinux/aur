@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=GUI Sudo
+Comment=Graphical user inerface for sudo
+Keywords=sudo;root;gui
+Exec=gui-sudo %F
+Icon=/opt/GUI-Sudo/icon.png
+Terminal=false
+Type=Application
+NoDisplay=true
+Name[en_US]=GUI-Sudo
