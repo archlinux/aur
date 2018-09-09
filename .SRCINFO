@@ -1,7 +1,7 @@
 pkgbase = paredit
 	pkgdesc = Emacs minor mode for pseudo-structurally editing Lisp code
 	pkgver = 24
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.emacswiki.org/emacs/ParEdit
 	install = paredit.install
 	arch = any

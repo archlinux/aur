@@ -1,8 +1,10 @@
-# Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
+# Contributor: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+
 pkgname=paredit
 pkgver=24
 _pkgver=$pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc="Emacs minor mode for pseudo-structurally editing Lisp code"
 arch=('any')
 url="http://www.emacswiki.org/emacs/ParEdit"
@@ -21,8 +23,8 @@ package() {
   cd "$srcdir"
 
   install -D -m644 paredit-${_pkgver}.elc \
-    "$pkgdir/usr/share/emacs/site-lisp/paredit.elc" || return 1
+    "$pkgdir"/usr/share/emacs/site-lisp/paredit.elc
   install -D -m644 paredit-${_pkgver}.el \
-    "$pkgdir/usr/share/emacs/site-lisp/paredit.el" || return 1
+    "$pkgdir"/usr/share/emacs/site-lisp/paredit.el
 }
 
