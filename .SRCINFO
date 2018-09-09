@@ -1,0 +1,16 @@
+pkgbase = emacs-diminish-git
+	pkgdesc = Diminished modes are minor modes with no modeline display
+	pkgver = r14.565a983
+	pkgrel = 1
+	url = https://github.com/myrjola/diminish.el
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	provides = emacs-diminish
+	conflicts = emacs-diminish
+	source = git+https://github.com/myrjola/diminish.el.git
+	sha256sums = SKIP
+
+pkgname = emacs-diminish-git
+
