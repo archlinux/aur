@@ -2,7 +2,7 @@
 
 pkgname=wg++
 pkgver=2.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc='WebGrab+Plus is a free multi-site incremental XMLTV EPG grabber.'
 arch=('any')
 url='http://webgrabplus.com/'
@@ -27,10 +27,10 @@ package() {
 	ln -s "/opt/wg++/siteini.pack" "${pkgdir}/usr/share/wg++/siteini.pack"
 
 	cp -R "${srcdir}/.wg++/mdb" "${pkgdir}/usr/share/wg++/"
-	cp "${pkgdir}/usr/share/wg++/mdb/mdb.config.example.xml" "${pkgdir}/usr/share/wg++/mdb/mdb.config.xml"
+	mv "${pkgdir}/usr/share/wg++/mdb/mdb.config.example.xml" "${pkgdir}/usr/share/wg++/mdb/mdb.config.xml"
 
 	cp -R "${srcdir}/.wg++/rex" "${pkgdir}/usr/share/wg++/"
-	cp "${pkgdir}/usr/share/wg++/rex/rex.config.example.xml" "${pkgdir}/usr/share/wg++/rex/rex.config.xml"
+	mv "${pkgdir}/usr/share/wg++/rex/rex.config.example.xml" "${pkgdir}/usr/share/wg++/rex/rex.config.xml"
 
 	cp -R "${srcdir}/.wg++/siteini.user" "${pkgdir}/usr/share/wg++/"
 
