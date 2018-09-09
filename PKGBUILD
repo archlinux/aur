@@ -8,7 +8,7 @@ pkgdesc="Configuration tool for per-key RGB keyboards on MSI laptops"
 arch=(any)
 url="https://github.com/Askannz/msi-perkeyrgb"
 license=(MIT)
-depends=(python)
+depends=('python', 'hidapi')
 makedepends=(python-setuptools)
 source=("msi-perkeyrgb::git+https://github.com/Askannz/msi-perkeyrgb.git#branch=master")
 sha256sums=('SKIP')
