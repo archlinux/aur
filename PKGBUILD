@@ -5,7 +5,7 @@ pkgname="${_jdkname}-bin"
 _java_ver=10
 _zulu_build=10.3+5
 pkgver=10.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Zulu is a certified build of OpenJDK that is fully compliant with the Java SE standard.'
 arch=('x86_64')
 url='https://www.azul.com/zulu'
@@ -40,15 +40,15 @@ package() {
 
   # Conf
   install -dm 755 "${pkgdir}/etc"
-  cp -r conf "${pkgdir}/etc/${_pkgbase}"
+  cp -r conf "${pkgdir}/etc/${_jdkname}"
   rm -rf "${pkgdir}/${_jvmdir}/conf"
-  ln -s "/etc/${_pkgbase}" "${pkgdir}/${_jvmdir}/conf"
+  ln -s "/etc/${_jdkname}" "${pkgdir}/${_jvmdir}/conf"
 
   # Legal
   install -dm 755 "${pkgdir}/usr/share/licenses"
-  cp -r legal "${pkgdir}/usr/share/licenses/${_pkgbase}"
+  cp -r legal "${pkgdir}/usr/share/licenses/${_jdkname}"
   rm -rf "${pkgdir}/${_jvmdir}/legal"
-  ln -s "/usr/share/licenses/${_pkgbase}" "${pkgdir}/${_jvmdir}/legal"
+  ln -s "/usr/share/licenses/${_jdkname}" "${pkgdir}/${_jvmdir}/legal"
 
   # Man pages
   for f in man/man1/* man/ja/man1/*; do

@@ -1,7 +1,7 @@
 pkgbase = zulu-10-bin
 	pkgdesc = Zulu is a certified build of OpenJDK that is fully compliant with the Java SE standard.
 	pkgver = 10.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.azul.com/zulu
 	install = zulu-10-bin.install
 	arch = x86_64
