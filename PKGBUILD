@@ -2,8 +2,8 @@
 # Credit: Laurent Carlier <lordheavym@gmail.com>
 
 pkgname=xf86-video-amdgpu-git
-_pkgbase=xf86-video-amdgpu
-pkgver=18.0.1.59
+_pkgname=xf86-video-amdgpu
+pkgver=18.0.1.61
 pkgrel=1
 pkgdesc="X.org amdgpu video driver (git version)"
 arch=('x86_64')
@@ -14,20 +14,12 @@ makedepends=('xorg-server-devel' 'systemd')
 conflicts=('xf86-video-amdgpu' 'xorg-server<1.20.0')
 provides=('xf86-video-amdgpu')
 groups=('xorg-drivers')
-source=('xf86-video-amdgpu::git://anongit.freedesktop.org/xorg/driver/xf86-video-amdgpu#branch=master')
+source=("${pkgname}::git+https://gitlab.freedesktop.org/xorg/driver/${_pkgname}.git")
 sha256sums=('SKIP')
-
-# pkgver() {
-#   cd "${_pkgbase}"
-#   ( set -o pipefail
-#   git describe --long | sed 's/^xf86-video-amdgpu-//;s/\([^-]*-g\)/r\1/;s/-/./g'
-#   )
-# }
-
 pkgver() {
   local version count
 
-  cd "$_pkgbase"
+  cd "${pkgname}"
 
   version="$(git describe --abbrev=0 --tags)"
   count="$(git rev-list --count ${version}..)"
@@ -35,7 +27,7 @@ pkgver() {
 }
 
 build() {
-  cd "${_pkgbase}"
+  cd "${pkgname}"
 
   # Since pacman 5.0.2-2, hardened flags are now enabled in makepkg.conf
   # With them, module fail to load with undefined symbol.
@@ -50,14 +42,14 @@ build() {
 }
 
 check() {
-  cd "${_pkgbase}"
+  cd "${pkgname}"
   make check
 }
 
 package() {
-  cd "${_pkgbase}"
+  cd "${pkgname}"
 
   make "DESTDIR=${pkgdir}" install
-  install -m0755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -m0644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
