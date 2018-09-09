@@ -3,7 +3,7 @@
 # Contributor: Lubomir Krajcovic <lubomir.krajcovic(AT)gmail(DOT)com>
 # Contributor: Vladimir Kutyavin <vlkut(AT)bk(DOT)ru>
 pkgname=xtables-addons-dkms
-pkgver=3.1
+pkgver=3.2
 pkgrel=1
 pkgdesc="Successor to patch-o-matic(-ng). Contains extensions that were not accepted in the main Xtables. DKMS flavor for kernels >= 4.15."
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ replaces=(xtables-addons xtables-addons-git xtables-addons-multikernel)
 source=(dkms.conf
         https://sourceforge.net/projects/${pkgname%-dkms}/files/Xtables-addons/${pkgname%-dkms}-${pkgver}.tar.xz)
 sha256sums=('4183417465250d1f2b78cf347f36f2d52ca089f6b2f489f9ea9de36a736d8fc4'
-            'df54ce9e681749f8b2a725489af61b2fbc3ac2153710a73b78751fd7ed79e354')
+            '006f4e38bbf4b9a9069b90ca78c93b65800e9ebfd17332b713f1f80292420aaa')
 
 prepare() {
 	# go to builddir
