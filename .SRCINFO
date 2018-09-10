@@ -1,29 +1,31 @@
 pkgbase = gns3-server-git
-	pkgdesc = GNS3 network simulator. Server package.
-	pkgver = v2.1.9.r0.g689a82a1
+	pkgdesc = GNS3 network simulator, Server package
+	pkgver = v2.1.9.r24.g0aa9ab53
 	pkgrel = 1
 	url = https://github.com/GNS3/gns3-server
 	install = gns3-server.install
-	arch = any
+	arch = x86_64
 	groups = gns3
 	license = GPL3
 	makedepends = git
 	makedepends = python-setuptools
-	depends = python-jsonschema>=2.4.0
-	depends = python-jinja>=2.7.3
-	depends = python-raven>=5.23.0
-	depends = python-psutil>=3.0.0
-	depends = python-zipstream-gns3
-	depends = python-yarl-gns3
+	depends = python-jsonschema
 	depends = python-aiohttp-gns3
 	depends = python-aiohttp-cors-gns3
-	depends = python-prompt_toolkit-gns3
+	depends = python-yarl-gns3
+	depends = python-jinja
+	depends = python-raven
+	depends = python-psutil
+	depends = python-zipstream-gns3
+	depends = python-prompt_toolkit
 	depends = python-async-timeout-gns3
+	depends = busybox
 	optdepends = dynamips: Cisco router emulator.
+	optdepends = gns3-gui: graphical user interface for GNS3 server.
+	optdepends = iouyap: Bridge IOU to UDP, TAP and Ethernet.
 	optdepends = qemu: Used by GNS3 to run Cisco ASA, PIX and IDS.
 	optdepends = vpcs: Simple PC emulation for basic network operations.
 	optdepends = ubridge: Bridge for UDP tunnels, Ethernet, TAP and VMnet interfaces.
-	optdepends = gns3-gui: graphical user interface for GNS3 server.
 	provides = gns3-server
 	conflicts = gns3-server
 	source = gns3-server::git+git://github.com/GNS3/gns3-server.git#branch=2.1
