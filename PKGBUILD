@@ -1,7 +1,7 @@
 # Maintainer: Matthias Lisin <ml@visu.li>
 # Contributor: sum01 <sum01@protonmail.com>
 pkgname=rocketchat-desktop
-pkgver=2.13.1
+pkgver=2.13.2
 _srcname="Rocket.Chat.Electron-$pkgver"
 pkgrel=1
 pkgdesc='Rocket.Chat Native Cross-Platform Desktop Application via Electron.'
@@ -12,11 +12,13 @@ depends=('nss' 'libxss' 'gconf' 'gtk3' 'glibc')
 makedepends=('sed' 'yarn>=0.21.3' 'nodejs>=7.0.0' 'node-gyp' 'python2')
 conflicts=('rocketchat-client-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/RocketChat/Rocket.Chat.Electron/archive/$pkgver.tar.gz"
-        fix-icon-name_use_target_dir.patch
-        fix-gulp-release.patch)
-sha512sums=('7493c0c71e5e854f5b6385c465277f7dde3b208d4b40a12cf978f4c893d808a4a0134c6dbc1fa8a7958a922a657247582b7d9e5529bd3ad372629247e30fd87a'
-            '5fab6bf05f1ee924e2a79cc133908c043d72d119a299c38badeb793bf12f1a328eac98e8ed1afabcf8cd3c06aeea7265421d6350e0094d2c55bf64cc30501a88'
-            'e6b1a943d755abf5b4bfbf7602af21d09ff4960d28356834c38b9ba62c583b05a608726442b28c4e79e6eb73c777e6423ed754308f6b70fc8b9bfddf980cba1d')
+        fix-linux-target.patch
+        fix-gulp-release.patch
+        rocketchat-desktop.desktop)
+sha512sums=('a3428bb6abe83ad5db6d549734e75efc354b8725423ba0ba92f309406233e29f5f3f92d5e8dbcd8f4e73901e3f4e8db0443476b1fa68315b6cbb406cf968fbce'
+            '8a2753f6cffa7779cc9c008c872d24c8c6c20307886ec62f124a26249c1e96d0dcf1fd2529c6a335b2f1eea533cf24c9a2ca486794452b0190e14b5d47c8c0b5'
+            '043a9b4ed2eddbb93404eab70cc2238bde5930d97c1bf88c1e49eddf61e960db19b996e5ffd9fd65062041fc0726d8ca5f9a4d5436e753260fda482a9544bbf3'
+            'd87664b9bdf30eac3011393d094962e0d568a94b5eaf4c8e5f17529442dcba905cea7341527066102a97a07a981acd6ce045b8737eb78a7d81a2a2d05023fe26')
 if [[ $CARCH == "i686" ]]; then
     _releasename="release:linux-ia32"
     _distname="linux-ia32-unpacked"
@@ -26,7 +28,7 @@ else
 fi
 
 prepare() {
-    patch -p1 -d "$_srcname" < fix-icon-name_use_target_dir.patch
+    patch -p1 -d "$_srcname" < fix-linux-target.patch
     patch -p1 -d "$_srcname" < fix-gulp-release.patch
 }
 
@@ -38,9 +40,9 @@ build() {
 
 package() {
     install -d "$pkgdir"/{usr/bin,opt}
-    install -Dm644 "$srcdir/$_srcname/snap/gui/icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
-    install -Dm644 "$srcdir/$_srcname/snap/gui/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+    install -Dm644 "$srcdir/$_srcname/build/icons/512x512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
+    install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
     install -Dm644 "$srcdir/$_srcname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     cp -r "$srcdir/$_srcname/dist/$_distname" "$pkgdir/opt/$pkgname"
-    ln -sf /opt/$pkgname/rocketchat "$pkgdir/usr/bin/$pkgname"
+    ln -sf "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
