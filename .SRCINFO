@@ -1,6 +1,6 @@
 pkgbase = simulide
 	pkgdesc = Real time electronic circuit simulator (supports PIC, AVR and Arduino microcontrollers)
-	pkgver = 0.1.7
+	pkgver = 0.2.8.SR1
 	pkgrel = 1
 	url = http://simulide.blogspot.com/
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = simulide
 	depends = qt5-multimedia
 	depends = qt5-serialport
 	depends = qt5-svg
-	source = https://sourceforge.net/projects/simulide/files/SimulIDE_0.1.7/simulide_0.1.7-Sources.tar.gz
-	md5sums = 61c260374ae0e7733f867349b7990acf
+	source = https://sourceforge.net/projects/simulide/files/SimulIDE_0.2.8/SimulIDE_0.2.8-SR1-Sources.tar.gz
+	md5sums = f7c360c5fdac7a694022602c06937cba
 
 pkgname = simulide
 
