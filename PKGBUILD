@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://www.mixxx.org/"
 license=('GPL2')
 groups=('pro-audio')
-depends=('libmad' 'faad2' 'qt5-base' 'qt5-script' 'qt5-svg' 'taglib' 'libmp4v2' 'rubberband' 'portaudio' 'portmidi' 'protobuf' 'libshout' 'libid3tag' 'opusfile' 'chromaprint' 'lilv')
+depends=('libmad' 'faad2' 'qt5-script' 'qt5-svg' 'taglib' 'libmp4v2' 'rubberband' 'portaudio' 'portmidi' 'protobuf' 'libshout' 'libid3tag' 'opusfile' 'chromaprint' 'lilv' 'upower')
 makedepends=('git' 'scons' 'pkgconfig' 'glu' 'qt5-tools')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
@@ -22,7 +22,8 @@ pkgver() {
 
 build() {
   cd "$srcdir/${pkgname%-*}"
-  scons qtdir=/usr/lib/qt prefix=/usr install_root="$pkgdir/usr" -j2 virtualize=0 localecompare=1 qt_sqlite_plugin=0 opus=1 optimize=native build=release battery=0 faad=1 modplug=1 vamp=0
+  export SCONSFLAGS="-j $(nproc)"
+  scons qtdir=/usr/lib/qt prefix=/usr install_root="$pkgdir/usr" virtualize=0 opus=1 optimize=native build=release faad=1 modplug=1
 }
 
 package() {
