@@ -1,0 +1,16 @@
+pkgbase = ruby-jekyll-data
+	pkgdesc = A plugin to read _config.yml and data files within Jekyll theme-gems
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ashmaroli/jekyll-data
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = jekyll
+	noextract = jekyll-data-1.0.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/jekyll-data-1.0.0.gem
+	sha256sums = 7cc7d79ef804afff77cc5c35c30173a80cf4ff543480c8195ce6ba8ce983e747
+
+pkgname = ruby-jekyll-data
+
