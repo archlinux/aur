@@ -1,7 +1,7 @@
 pkgbase = commander-genius-git
 	pkgdesc = A modern implementation of the classic game Commander Keen
-	pkgver = v200Release
-	pkgrel = 1
+	pkgver = v2.2.3
+	pkgrel = 2
 	url = http://clonekeenplus.sourceforge.net
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = commander-genius-git
 	depends = sdl2_image
 	depends = boost
 	depends = python
-	source = git+https://github.com/gerstrong/Commander-Genius.git
+	source = git+https://gitlab.com/Dringgstein/Commander-Genius.git
 	md5sums = SKIP
 
 pkgname = commander-genius-git
