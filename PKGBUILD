@@ -3,7 +3,7 @@
 
 pkgname=thunderbird-conversations-git
 pkgver=r1802.fd13cf9
-pkgrel=1
+pkgrel=2
 pkgdesc="GMail-like conversation view for Thunderbird"
 arch=('any')
 url="https://github.com/protz/GMail-Conversation-View"
