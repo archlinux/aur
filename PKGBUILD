@@ -1,4 +1,5 @@
 # Maintainer:  jyantis <yantis@yantis.net>
+# Maintainer:  Matthew McGinn <mamcgi@gmail.com>
 
 pkgname=geeknote-improved-git
 pkgver=0.2a.r682.b541ef6
@@ -15,6 +16,7 @@ depends=('python2'
          'python2-thrift'
          'python2-beautifulsoup4'
          'python2-oauth2'
+         'python2-lxml'
          'python2-proxyenv-git')
 source=('git+https://github.com/jeffkowalski/geeknote.git')
 sha256sums=('SKIP')
