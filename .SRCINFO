@@ -1,7 +1,7 @@
 pkgbase = commander-genius-git
 	pkgdesc = A modern implementation of the classic game Commander Keen
 	pkgver = v2.2.3
-	pkgrel = 3
+	pkgrel = 4
 	url = http://clonekeenplus.sourceforge.net
 	arch = i686
 	arch = x86_64
