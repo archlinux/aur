@@ -1,0 +1,19 @@
+pkgbase = libxdgmime-git
+	pkgdesc = Reference implementation of the shared-mime-info spec
+	pkgver = r113.db79e7c
+	pkgrel = 1
+	url = https://github.com/pcercuei/libxdgmime
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = custom:AFLv2
+	makedepends = git
+	depends = shared-mime-info
+	provides = libxdgmime
+	source = libxdgmime::git+https://github.com/pcercuei/libxdgmime/
+	source = afl-2.0.txt
+	sha256sums = SKIP
+	sha256sums = 67e76faa7e0ea9460b92194e1c58290e90b08791a102fb95fcdc2282d5170dfe
+
+pkgname = libxdgmime-git
+
