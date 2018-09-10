@@ -1,0 +1,2 @@
+#!/bin/sh
+WEB_UI_FOLDER=/usr/lib/node_modules/nni/webui python -m nnicmd.nnictl $@

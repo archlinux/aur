@@ -1,0 +1,2 @@
+#!/bin/sh
+cd /usr/lib/node_modules/nni/nni_manager && node main.js $@

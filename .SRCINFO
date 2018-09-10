@@ -1,0 +1,29 @@
+pkgbase = microsoft-nni-git
+	pkgdesc = An open source toolkit for neural architecture search, hyper-parameter optimization and optimizer design
+	pkgver = 0.1.0.r28.f1c2b70
+	pkgrel = 1
+	url = https://github.com/microsoft/nni
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = yarn
+	makedepends = typescript
+	makedepends = python-setuptools
+	depends = nodejs-serve
+	depends = python-astor
+	depends = python-json-tricks
+	depends = python-psutil
+	depends = python-yaml
+	depends = python-requests
+	depends = python-scipy
+	provides = microsoft-nni
+	conflicts = microsoft-nni
+	source = git://github.com/microsoft/nni.git
+	source = nnimanager
+	source = nnictl
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+
+pkgname = microsoft-nni-git
+
