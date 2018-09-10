@@ -1,18 +1,18 @@
 # Maintainer: Andrew Crerar <andrew (at) crerar (dot) io>
 
 pkgname=(gtk4-git)
-pkgver=3.94.0.r206.gcb247276f5
+pkgver=3.94.0.r400.g0edec9bcae
 pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit (GIT Version)"
 arch=('x86_64')
 url="https://www.gtk.org/"
 license=('LGPL')
-depends=('at-spi2-atk' 'cairo' 'atk-git>=2.15.1' 'dconf' 'glib2-git>=2.55.0' 'libepoxy>=1.4'
+depends=('at-spi2-atk' 'cairo' 'atk' 'dconf' 'glib2' 'libepoxy'
          'libxcomposite' 'libxcursor' 'libxinerama' 'libxkbcommon' 'libxrandr' 'mesa'
-         'pango-git>=1.41.0' 'wayland' 'graphene>=1.5.1' 'json-glib'
+         'pango' 'wayland' 'graphene' 'json-glib'
          'gdk-pixbuf2' 'wayland-protocols'
          'colord' 'libcups' 'rest' 'vulkan-icd-loader' 'gst-plugins-bad')
-makedepends=('gobject-introspection-git' 'gtk-doc' 'git' 'meson' 'ninja')
+makedepends=('gobject-introspection' 'gtk-doc' 'git' 'meson' 'ninja' 'vulkan-headers')
 optdepends=('gnome-icon-theme: Default icon theme'
             'gnome-themes-standard: Default widget theme'
             'hicolor-icon-theme: Freedesktop.org Hicolor icon theme'
@@ -62,7 +62,7 @@ package() {
 
   install -Dm 644 "../../settings.ini" "$pkgdir"/usr/share/gtk-4.0/settings.ini
   install -Dm 644 "../../gtk4-query-immodules.hook" "$pkgdir"/usr/share/libalpm/hooks/gtk4-query-immodules.hook
-  install -D "gtk/gtk4-update-icon-cache" "$pkgdir"/usr/bin/gtk4-update-icon-cache
+  install -D "gtk/tools/gtk4-update-icon-cache" "$pkgdir"/usr/bin/gtk4-update-icon-cache
   install -Dm 644 "../../gtk4-update-icon-cache.hook" "$pkgdir"/usr/share/libalpm/hooks/gtk4-update-icon-cache.hook
   install -Dm 755 "../../gtk4-update-icon-cache.script" "$pkgdir"/usr/share/libalpm/scripts/gtk4-update-icon-cache
 

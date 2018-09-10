@@ -1,4 +1,6 @@
-*.tar
+gtk/
 pkg/
 src/
-gtk/
+*.tar
+*.log
+*.xz
