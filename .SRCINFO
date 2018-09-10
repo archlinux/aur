@@ -1,7 +1,7 @@
 pkgbase = rocketchat-desktop
 	pkgdesc = Rocket.Chat Native Cross-Platform Desktop Application via Electron.
 	pkgver = 2.13.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RocketChat/Rocket.Chat.Electron
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = rocketchat-desktop
 	depends = gtk3
 	depends = glibc
 	conflicts = rocketchat-client-bin
-	source = rocketchat-desktop-2.13.0.tar.gz::https://github.com/RocketChat/Rocket.Chat.Electron/archive/2.13.0.tar.gz
+	source = rocketchat-desktop-2.13.2.tar.gz::https://github.com/RocketChat/Rocket.Chat.Electron/archive/2.13.2.tar.gz
 	source = fix-linux-target.patch
 	source = fix-gulp-release.patch
 	source = rocketchat-desktop.desktop
