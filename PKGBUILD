@@ -11,6 +11,8 @@ arch=(x86_64)
 url=https://github.com/intel/mkl-dnn
 license=('APACHE')
 makedepends=('cmake>=2.8' 'doxygen>=1.8.5' 'graphviz')
+optdepends=('intel-mkl: Intel MKL small library for Intel OpenMP linking'
+            'intel-compiler-base: Intel OpenMP runtime linking')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/intel/$pkgname/archive/v$pkgver.tar.gz"
         "https://github.com/intel/$pkgname/releases/download/v$pkgver/mklml_lnx_$_mklmlver.tgz")
 sha256sums=('7557f820d6801dbe7741627199c0165fe9e651245b9c1c744d615f576da1098a'
