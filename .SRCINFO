@@ -1,6 +1,6 @@
 pkgbase = tlowscript
 	pkgdesc = TLOWScript and variants
-	pkgver = 0.0.1a
+	pkgver = 0.0.1
 	pkgrel = 1
 	url = https://github.com/hanss314/TLOWScript
 	arch = any
