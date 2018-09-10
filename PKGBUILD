@@ -1,4 +1,5 @@
-# Maintainer: Carsten Feuls <archlinux@carstenfeuls.de>
+# Maintainer: Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+# Contributor: Carsten Feuls <archlinux@carstenfeuls.de>
 
 _gemname=sawyer
 pkgname=ruby-$_gemname
