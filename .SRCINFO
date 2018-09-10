@@ -1,14 +1,14 @@
 pkgbase = caja-mediainfo-tab
 	pkgdesc = View media information from the properties tab
-	pkgver = 0.1
-	pkgrel = 2
+	pkgver = 0.2
+	pkgrel = 1
 	url = https://github.com/linux-man/caja-mediainfo-tab
 	arch = any
 	license = GPL3
 	depends = python2-mediainfodll
 	depends = python2-caja
-	source = caja-mediainfo-tab-0.1.tar.gz::https://github.com/linux-man/caja-mediainfo-tab/archive/v0.1.tar.gz
-	md5sums = 82926eed7dbbfb6f0eb137c8a2cab9e3
+	source = caja-mediainfo-tab-0.2.tar.gz::https://github.com/linux-man/caja-mediainfo-tab/archive/v0.2.tar.gz
+	md5sums = 974d6325685c626b82b2e2768bedc37a
 
 pkgname = caja-mediainfo-tab
 
