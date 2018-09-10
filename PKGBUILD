@@ -1,4 +1,5 @@
 # Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
+# Co-Maintainer: Maxime "pep" Buquet <archlinux@bouah.net>
 
 pkgname=(conversejs-git conversejs-epiphany-git)
 pkgver=4.0.0.r2.gdbe88535f
