@@ -1,7 +1,7 @@
 pkgname=('python-gpapi' 'python2-gpapi')
 pkgbase=python-gpapi
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Google Play Unofficial Python API "
 url="https://github.com/NoMore201/googleplay-api"
 arch=('any')
@@ -11,13 +11,13 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/NoMore201/googleplay-api/ar
 md5sums=('c9dc7e1c38656e4117c5970773331279')
  
 package_python-gpapi() {
-    depends=("python" "python-crypto" "python-protobuf" "python-clint" "python-requests")
+    depends=("python" "python-cryptography" "python-protobuf" "python-requests")
     cd googleplay-api-$pkgver
     python setup.py install --root="${pkgdir}/" --optimize=1
 }
 
 package_python2-gpapi() {
-    depends=("python2" "python2-crypto" "python2-protobuf" "python2-clint" "python2-requests")
+    depends=("python2" "python2-cryptography" "python2-protobuf" "python2-requests")
     cd googleplay-api-$pkgver
     python2 setup.py install --root="${pkgdir}/" --optimize=1
     find "$pkgdir" -name '*.py' -exec sed -i 's|#!/usr/bin/python$|#!/usr/bin/python2|g' {} \;
