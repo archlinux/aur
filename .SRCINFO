@@ -19,7 +19,7 @@ pkgbase = saga-gis-ltr
 	optdepends = libharu
 	provides = saga-gis
 	conflicts = saga-gis
-	source = https://pilotfiber.dl.sourceforge.net/project/saga-gis/SAGA%20-%202/SAGA%202.3.1/saga_2.3.1.tar.gz
+	source = https://sourceforge.net/projects/saga-gis/files/SAGA%20-%202/SAGA%202.3.1/saga_2.3.1.tar.gz/download
 	md5sums = 035b2054790721028b97766e025bb340
 
 pkgname = saga-gis-ltr

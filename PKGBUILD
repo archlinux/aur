@@ -1,5 +1,6 @@
-# Maintainer: Samuel Fernando Mesa Giraldo <samuelmesa@linuxmail.org>
-# Maintainer: SaultDon <sault.don gmail>
+# Maintainer: Patrick Schratz <patrick.schratz@gmail.com>
+# Contributor: Samuel Fernando Mesa Giraldo <samuelmesa@linuxmail.org>
+# Contributor: SaultDon <sault.don gmail>
 # Contributor: Luigi Ranghetti <luigi.ranghetti@gmail.com>
 # Contributor: Dominik Fuchs <dominik.fuchs@wur.nl>
 # Contributor: Marcelo Avalos Tejeda <marcelo.avalos@gmail.com>
@@ -25,7 +26,7 @@ optdepends=('opencv2'
             'vigra'
             'liblas'
             'libharu')
-source=("https://pilotfiber.dl.sourceforge.net/project/saga-gis/SAGA%20-%202/SAGA%202.3.1/saga_2.3.1.tar.gz")
+source=("https://sourceforge.net/projects/saga-gis/files/SAGA%20-%202/SAGA%202.3.1/saga_2.3.1.tar.gz/download")
 md5sums=('035b2054790721028b97766e025bb340')
 
 build() {
