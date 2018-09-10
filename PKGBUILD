@@ -13,7 +13,7 @@ depends=('ruby' 'ruby-addressable<2.5>=2.3.5' 'ruby-faraday-0.9')
 makedepends=(rubygems)
 source=(http://gems.rubyforge.org/gems/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha512sums=('d057c34e1ee1bfc5939cfc002118fcc31579846814caa668e3633d5c04dd2437aa71b417626f669aca3a082481bf493682720260592072367af104c20fd34783')
+sha256sums=('6d37c1db3673607bb9de868d1d9c363be753cd68b5e1dc48df1faf938721616b')
 
 package() {
   cd "$srcdir"
