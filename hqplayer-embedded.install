@@ -1,6 +1,6 @@
 post_install() {
 echo "
-To enable upnp functionality add <upnp interface="auto /> to hqplayerd.xml configuration file. For further documentation, consult hqplayerd manual"
+To enable upnp functionality add <upnp interface="auto" /> to hqplayerd.xml configuration file. For further documentation, consult hqplayerd manual"
 }
 
 post_upgrade() {
