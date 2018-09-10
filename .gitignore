@@ -1,0 +1,4 @@
+docker-py/
+src/
+pkg/
+*.tar.xz
