@@ -10,7 +10,7 @@
 
 pkgname=vlc-git
 pkgver=4.0.0.r4632.g809c7741f7
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (GIT Version)"
 url='https://www.videolan.org/vlc/'
 arch=('i686' 'x86_64')
@@ -134,7 +134,7 @@ build() {
 
   ./configure --prefix=/usr \
               --sysconfdir=/etc \
-              --libexecdir=/usr/lib \
+              --with-kde-solid=/usr/share/solid/actions/ \
               --disable-rpath \
               --enable-nls \
               --enable-archive \

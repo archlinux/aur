@@ -1,7 +1,7 @@
 pkgbase = vlc-git
 	pkgdesc = A multi-platform MPEG, VCD/DVD, and DivX player (GIT Version)
 	pkgver = 4.0.0.r4632.g809c7741f7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.videolan.org/vlc/
 	arch = i686
 	arch = x86_64
