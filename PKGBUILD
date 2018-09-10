@@ -1,23 +1,21 @@
-# Maintainer: Shengyu Zhang <arch at srain.im>
+# Maintainer: Shengyu Zhang <la@archlinuxcn.org>
 
 pkgname=srain-dev
-pkgver=0.861.57b757b
+pkgver=1.0.0rc1.1066.a64d636
+_pkgver=1.0.0rc1
 pkgrel=1
-pkgdesc="Modern, beautiful IRC client written in GTK+ 3, develop and debug version"
+pkgdesc="Modern IRC client, develop and debug version"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="https://srain.im"
-makedepends=('git' 'make' 'gcc' 'pkg-config' 'gettext' 'imagemagick')
-depends=('gtk3' 'python' 'curl' 'libnotify' 'libconfig' 'gdb' 'libsoup')
+makedepends=('git' 'make' 'gcc' 'pkg-config' 'gettext' 'python-sphinx')
+depends=('glib2' 'gtk3' 'libconfig' 'libsoup' 'gdb')
 optdepends=(
     'glib-networking: TLS connection support'
-    'python-sphinx: for generating documentation'
-    'python-urllib3: avatar and pastebin support'
-    'python-requests: avatar and pastebin support'
     )
 conflicts=('srain')
 provides=('srain')
-source=("git+https://github.com/SilverRainZ/srain.git#branch=dev")
+source=("git+https://github.com/SilverRainZ/srain.git#branch=dev/1.0")
 sha256sums=('SKIP')
 options=('!strip')
 
@@ -25,13 +23,17 @@ _prefix='/usr'
 
 pkgver() {
     cd ${pkgname%-dev}
-    echo "0.$(git rev-list --count HEAD).$(git describe --always)"
+    echo "${_pkgver}.$(git rev-list --count HEAD).$(git describe --always)"
 }
 
 build() {
     cd ${pkgname%-dev}
 
-    ./configure --prefix=${_prefix} --config-dir=/etc --enable-debug
+    ./configure                     \
+        --prefix=${_prefix}         \
+        --datadir=${_prefix}/share  \
+        --sysconfdir=/etc           \
+        --enable-debug
     make
     make doc
 }
