@@ -1,20 +1,21 @@
+# Maintainer : <michael dot kogan at gmx dot net>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-json-maybexs'
-pkgver='1.003008'
+pkgver='1.004000'
 pkgrel='1'
 pkgdesc="Use Cpanel::JSON::XS with a fallback to JSON::XS and JSON::PP"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-cpanel-json-xs>=2.3310' 'perl>=5.006')
+depends=('perl-cpanel-json-xs' 'perl>=5.006')
 makedepends=()
 url='https://metacpan.org/release/JSON-MaybeXS'
-source=('http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/JSON-MaybeXS-1.003008.tar.gz')
-md5sums=('5fc1cd29d699dbad7f41e05ccd14118d')
-sha512sums=('dd556082ea97cf2b7f492f4e0782b80b9d2810b3b5c13ca06958b8b0eaddd1ba34ea8047cbb332e56716ff4346a2044369386c331efe61830fa4e14075173eb9')
-_distdir="JSON-MaybeXS-1.003008"
+source=("https://cpan.metacpan.org/authors/id/H/HA/HAARG/JSON-MaybeXS-$pkgver.tar.gz")
+md5sums=('db61fb5515f8e2f19709a317e26dde42')
+sha512sums=('caebd00e49f4bd79f9a9a748077d58d963f53b656e4f48f9577a14fb36a80e956ff393f0ccdf7066129bcd7ebcec73a201c1c6fc778ce2488522b4e3886d2bbb')
+_distdir="JSON-MaybeXS-$pkgver"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
