@@ -4,7 +4,7 @@
 _gemname=jekyll-gist
 pkgname=ruby-$_gemname
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Liquid tag for displaying GitHub Gists in Jekyll sites.'
 arch=(any)
 url='https://github.com/jekyll/jekyll-gist'
