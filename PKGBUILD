@@ -13,7 +13,7 @@ depends=('ruby' 'ruby-sawyer>=0.5.3')
 makedepends=('rubygems')
 source=(http://gems.rubyforge.org/gems/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha512sums=('18c529108315b4b1b02cb5db373aba7b2cb524e04a951563c0df12b978e97c836216582c7f2126f0079b3dccbe20dcd249438a21eafde8a8daa4c5a7addaa421')
+sha256sums=('52056b01c81c98b18b11f3259f3624e54c0812e87a73247112e9ccec21b80b84')
 
 package() {
   local _gemdir="$(ruby -rubygems -e'puts Gem.default_dir')"
