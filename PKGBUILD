@@ -6,7 +6,7 @@
 
 pkgname=asterisk
 pkgver=15.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A complete PBX solution"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 backup=('etc/asterisk/acl.conf'
@@ -120,24 +120,22 @@ backup=('etc/asterisk/acl.conf'
         'etc/asterisk/xmpp.conf')
 url='http://www.asterisk.org'
 license=('GPL')
-depends=('alsa-lib' 'speex' 'popt' 'libvorbis' 'curl' 'libxml2' 'jansson' 'libxslt' 'opus' 'termcap' 'pjproject')
+depends=('alsa-lib' 'speex' 'popt' 'libvorbis' 'curl' 'libxml2' 'jansson' 'libxslt' 'opus')
 makedepends=('sqlite3' 'gsm')
 optdepends=('lua51' 'libsrtp' 'postgresql' 'unixodbc' 'libpri' 'libss7' 'openr2' 'iksemel' 'radiusclient-ng' 'dahdi')
-source=("http://downloads.asterisk.org/pub/telephony/asterisk/releases/${pkgname}-${pkgver}.tar.gz"
-        "${pkgname}.service"
+install=${pkgname}.install
+source=("https://downloads.asterisk.org/pub/telephony/asterisk/releases/${pkgname}-${pkgver}.tar.gz"
+        "${pkgname}.sysusers"
         "${pkgname}.logrotated"
         "${pkgname}.tmpfile")
-install=${pkgname}.install
 sha256sums=('6620af9749524152a793ecc4ade4604064254cb46e642d50d280d56f6b7eed3e'
-            '94acb6e68424195a12fd9d406b3fb586f264a550e75801f6e020a86e800dd42c'
+            'fc2e42f79e1672cc25b9b8ad2ba99616fbba0047641c986d30718655d0e7d4d8'
             'caa24cfec5c6b4f8cea385269e39557362acad7e2a552994c3bc24080e3bdd4e'
             '673c0c55bce8068c297f9cdd389402c2d5d5a25e2cf84732cb071198bd6fa78a')
 
 build() {
   cd ${pkgname}-${pkgver}
-  #./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin --with-libedit=internal
-  # ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin --without-pjproject-bundled
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin
   make
 }
 
@@ -153,7 +151,15 @@ package(){
 
   mv ${pkgdir}/var/run ${pkgdir}
 
+  install -D -m 644 ${srcdir}/${pkgname}.sysusers ${pkgdir}/usr/lib/sysusers.d/asterisk.conf
   install -D -m 644 ${srcdir}/${pkgname}.logrotated ${pkgdir}/etc/logrotate.d/asterisk
-  install -D -m 644 ${srcdir}/${pkgname}.service ${pkgdir}/usr/lib/systemd/system/asterisk.service
   install -D -m 644 ${srcdir}/${pkgname}.tmpfile ${pkgdir}/usr/lib/tmpfiles.d/asterisk.conf
+
+  install -D -m 644 ${srcdir}/${pkgname}-${pkgver}/contrib/systemd/asterisk.service ${pkgdir}/usr/lib/systemd/system/asterisk.service
+  install -D -m 644 ${srcdir}/${pkgname}-${pkgver}/contrib/systemd/asterisk.socket ${pkgdir}/usr/lib/systemd/system/asterisk.socket
+  install -D -m 644 ${srcdir}/${pkgname}-${pkgver}/contrib/systemd/asterisk-ami.socket ${pkgdir}/usr/lib/systemd/system/asterisk-ami.socket
+  install -D -m 644 ${srcdir}/${pkgname}-${pkgver}/contrib/systemd/asterisk-amis.socket ${pkgdir}/usr/lib/systemd/system/asterisk-amis.socket
+  install -D -m 644 ${srcdir}/${pkgname}-${pkgver}/contrib/systemd/asterisk-cli.socket ${pkgdir}/usr/lib/systemd/system/asterisk-cli.socket
+  install -D -m 644 ${srcdir}/${pkgname}-${pkgver}/contrib/systemd/asterisk-http.socket ${pkgdir}/usr/lib/systemd/system/asterisk-http.socket
+  install -D -m 644 ${srcdir}/${pkgname}-${pkgver}/contrib/systemd/asterisk-https.socket ${pkgdir}/usr/lib/systemd/system/asterisk-https.socket
  }
