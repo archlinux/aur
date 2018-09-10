@@ -1,10 +1,11 @@
-# Maintainer: Scott Linder <scott.linder18@gmail.com>
+# Maintainer:  Giovanni 'ItachiSan' Santini <giovannisantini93@yahoo.it>
+# Contributer: Scott Linder <scott.linder18@gmail.com>
 # Contributer: Jorge Araya Navarro <elcorreo@deshackra.com>
 # Contributer: Mikhail Burakov <mikhail.burakov@gmail.com>
 
 pkgname=cockatrice-client
-pkgver=2.5.0
-_reldate=2018-03-02
+pkgver=2.6.1
+_reldate=2018-07-17
 pkgrel=1
 pkgdesc='Open-source multiplatform supported program for playing tabletop card games over a network.'
 arch=('i686' 'x86_64')
@@ -16,7 +17,7 @@ provides=('cockatrice-client')
 conflicts=('cockatrice-client')
 _relname="$_reldate-Release-$pkgver"
 source=("https://github.com/Cockatrice/Cockatrice/archive/$_relname.tar.gz")
-sha256sums=('4fbec9054ad0c64382e484ff42b9166676b4be3110e48bb3819a6f45316d9fd2')
+sha512sums=('4e9ed87114a3f62fe1e65342eedfdedeb6039e21e3f86a6d9d1100a89e52f78b47e9531125633ac7b0f14055a658eaee853600a3402ba7a8244d6b37ebb3888e')
 
 build() {
   cd "$srcdir/Cockatrice-$_relname"
