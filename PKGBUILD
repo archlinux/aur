@@ -2,7 +2,7 @@
 
 pkgname=sound-theme-smooth
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Complete system sound theme with 58 event sounds."
 arch=("any")
 url="https://www.xfce-look.org/p/1187979/"
