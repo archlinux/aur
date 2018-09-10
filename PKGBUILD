@@ -10,15 +10,14 @@ arch=(any)
 url="https://github.com/octokit/octokit.rb"
 license=('MIT')
 depends=('ruby' 'ruby-sawyer')
-makedepends=('rubygems')
-source=(http://gems.rubyforge.org/gems/$_gemname-$pkgver.gem)
+options=(!emptydirs)
+source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
 sha256sums=('52056b01c81c98b18b11f3259f3624e54c0812e87a73247112e9ccec21b80b84')
 
 package() {
-  local _gemdir="$(ruby -rubygems -e'puts Gem.default_dir')"
-  gem install --no-user-install --ignore-dependencies -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" \
-    "$_gemname-$pkgver.gem"
+  local _gemdir="$(ruby -e'puts Gem.default_dir')"
+  gem install --ignore-dependencies --no-user-install --no-document -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }
-
-# vim:set ts=2 sw=2 et:
