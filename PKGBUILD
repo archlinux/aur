@@ -9,7 +9,7 @@ pkgdesc="Secret User Agent of HTTP."
 arch=(any)
 url="https://github.com/lostisland/sawyer"
 license=('MIT')
-depends=('ruby' 'ruby-addressable<2.5>=2.3.5' 'ruby-faraday-0.9')
+depends=('ruby' 'ruby-addressable' 'ruby-faraday')
 makedepends=(rubygems)
 source=(http://gems.rubyforge.org/gems/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)

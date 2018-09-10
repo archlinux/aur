@@ -7,8 +7,8 @@ pkgbase = ruby-sawyer
 	license = MIT
 	makedepends = rubygems
 	depends = ruby
-	depends = ruby-addressable<2.5>=2.3.5
-	depends = ruby-faraday-0.9
+	depends = ruby-addressable
+	depends = ruby-faraday
 	noextract = sawyer-0.8.1.gem
 	source = http://gems.rubyforge.org/gems/sawyer-0.8.1.gem
 	sha256sums = 6d37c1db3673607bb9de868d1d9c363be753cd68b5e1dc48df1faf938721616b
