@@ -1,7 +1,7 @@
 pkgbase = inboxer
 	pkgdesc = Unofficial, free and open-source Google Inbox desktop app
 	pkgver = 1.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://denysdovhan.com/inboxer/
 	arch = any
 	license = MIT
@@ -11,9 +11,11 @@ pkgbase = inboxer
 	source = inboxer-1.1.5.tar.gz::https://github.com/denysdovhan/inboxer/archive/v1.1.5.tar.gz
 	source = inboxer.sh
 	source = inboxer.desktop
+	source = use-insight-0.8.4.patch
 	sha256sums = 75041e1d60823ff2b2213a0ac129f694acbd939b5b1a14e4a6bf2044cea99162
 	sha256sums = d8519d50a0becf00d2cd0809e4363087949fdc3d43c315ce26f87235e9ae6b27
 	sha256sums = 3048bb5c4d50269d27a46db7ff550f226881bd77ac6672573a0075b3b75ce2a0
+	sha256sums = 00e5c532adc0e1ab992075aa6fae2025cbc015d07847393a3cc7135f7f30eb6c
 
 pkgname = inboxer
 
