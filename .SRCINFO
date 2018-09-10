@@ -1,7 +1,7 @@
 pkgbase = armadillo
 	pkgdesc = C++ linear algebra library
 	pkgver = 9.100.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://arma.sourceforge.net/
 	install = armadillo.install
 	arch = i686
