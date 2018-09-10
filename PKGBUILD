@@ -2,7 +2,7 @@
 # Maintainer: Liqueur Librazy <im@librazy.org>
 # Contributor: Jian Zeng <anonymousknight96@gmail.com>
 pkgbase=tidb-bin
-_basever=2.0.6
+_basever=2.0.7
 #_relver=-prega
 #pkgver=$_basever.$_relver
 pkgver=$_basever
@@ -19,7 +19,7 @@ source=("https://download.pingcap.org/tidb-v$_basever$_relver-linux-amd64.tar.gz
         "tidb.sysusers"
 	"tidb.tmpfiles"
 	)
-sha256sums=('68fb6c3d112f497c5c0c90c94d68cf85f26312a9a1334598659e35fd7dcc94b1'
+sha256sums=('d96a207ac7e2171a3b33f3a00c60a94a5f203a051778f049a9078b39b3e4778c'
             '6fb6ae67a53c6cd054643542e76da6f16e000b029a98b34172972fcb505fc299'
             '15f285782938b3ebbb8be60cc962a2cbf5ca349527c39d3a1138be1bf976feb9')
 
@@ -42,7 +42,6 @@ _package-utils() {
     install -Dm755 *-ctl "$pkgdir"/usr/bin
     install -Dm755 pd-recover "$pkgdir"/usr/bin
     install -Dm755 pd-tso-bench "$pkgdir"/usr/bin
-    install -Dm755 tikv-fail "$pkgdir"/usr/bin
     install -Dm755 tikv-importer "$pkgdir"/usr/bin
 }
 
