@@ -1,4 +1,6 @@
 *~
 *.pkg.tar.*
+/client.sh
+/LICENSE
 /src
 /pkg
