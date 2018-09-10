@@ -6,6 +6,7 @@ pkgbase = mingw-w64-libgit2
 	arch = any
 	license = GPL
 	makedepends = mingw-w64-cmake
+	makedepends = gcc-libs
 	depends = mingw-w64-crt
 	depends = mingw-w64-curl
 	depends = mingw-w64-libssh2
