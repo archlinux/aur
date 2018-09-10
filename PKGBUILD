@@ -8,7 +8,7 @@ pkgdesc="Service and tools for management of snap packages."
 depends=('squashfs-tools' 'libseccomp' 'libsystemd')
 optdepends=('bash-completion: bash completion support')
 pkgver=2.35.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/snapcore/snapd"
 license=('GPL3')
@@ -32,9 +32,6 @@ prepare() {
   # above describes.
   mkdir -p "$(dirname "$GOPATH/src/${_gourl}")"
   ln --no-target-directory -fs "$srcdir/$pkgname-$pkgver" "$GOPATH/src/${_gourl}"
-
-  # Do not trigger snapd.failure.service
-  sed -i -e '/OnFailure=snapd.failure.service/d' data/systemd/snapd.service.in
 }
 
 build() {
@@ -56,6 +53,7 @@ build() {
   $gobuild -o $GOPATH/bin/snapctl "${_gourl}/cmd/snapctl"
   $gobuild -o $GOPATH/bin/snapd "${_gourl}/cmd/snapd"
   $gobuild -o $GOPATH/bin/snap-seccomp "${_gourl}/cmd/snap-seccomp"
+  $gobuild -o $GOPATH/bin/snap-failure "${_gourl}/cmd/snap-failure"
   # build snap-exec and snap-update-ns completely static for base snaps
   $gobuild_static -o $GOPATH/bin/snap-update-ns "${_gourl}/cmd/snap-update-ns"
   $gobuild_static -o $GOPATH/bin/snap-exec "${_gourl}/cmd/snap-exec"
@@ -102,9 +100,6 @@ package() {
      SNAP_MOUNT_DIR=/var/lib/snapd/snap \
      DESTDIR="$pkgdir"
 
-  # Do not ship the snapd.failure.service
-  rm -f "$pkgdir/usr/lib/systemd/system/snapd.failure.service"
-
   # Install polkit policy
   install -Dm644 data/polkit/io.snapcraft.snapd.policy \
     "$pkgdir/usr/share/polkit-1/actions/io.snapcraft.snapd.policy"
@@ -114,6 +109,7 @@ package() {
   install -Dm755 "$GOPATH/bin/snapctl" "$pkgdir/usr/bin/snapctl"
   install -Dm755 "$GOPATH/bin/snapd" "$pkgdir/usr/lib/snapd/snapd"
   install -Dm755 "$GOPATH/bin/snap-seccomp" "$pkgdir/usr/lib/snapd/snap-seccomp"
+  install -Dm755 "$GOPATH/bin/snap-failure" "$pkgdir/usr/lib/snapd/snap-failure"
   install -Dm755 "$GOPATH/bin/snap-update-ns" "$pkgdir/usr/lib/snapd/snap-update-ns"
   install -Dm755 "$GOPATH/bin/snap-exec" "$pkgdir/usr/lib/snapd/snap-exec"
 
