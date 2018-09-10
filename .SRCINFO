@@ -1,7 +1,7 @@
 pkgbase = ruby-sawyer
 	pkgdesc = Secret User Agent of HTTP.
 	pkgver = 0.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lostisland/sawyer
 	arch = any
 	license = MIT

@@ -4,7 +4,7 @@
 _gemname=sawyer
 pkgname=ruby-$_gemname
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Secret User Agent of HTTP."
 arch=(any)
 url="https://github.com/lostisland/sawyer"
