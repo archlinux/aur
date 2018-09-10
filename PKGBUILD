@@ -1,7 +1,7 @@
 # Maintainer: Carson Black <uhhadd@gmail.com>
 # Thanks to simonizor, e5ten, and greyfade for helping with bash scripting and packaging.
 pkgname=puyo
-pkgver=0.6
+pkgver=0.7
 pkgrel=1
 pkgdesc="A frontend for pacman and yay."
 arch=('any')
@@ -13,9 +13,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/Appadeia/puyo/archive/0.6.tar.gz")
+source=("https://github.com/Appadeia/puyo/archive/0.7.tar.gz")
 noextract=()
-md5sums=('bb3620d88a436a99c38791bdbe4c9555')
+md5sums=('688e2b33cc36b7e1d9408ab252444b8a')
 
 package() {
   cd $pkgname-$pkgver

@@ -1,6 +1,6 @@
 pkgbase = puyo
 	pkgdesc = A frontend for pacman and yay.
-	pkgver = 0.6
+	pkgver = 0.7
 	pkgrel = 1
 	url = https://github.com/Appadeia/puyo
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = puyo
 	depends = bash
 	depends = pacman
 	depends = yay
-	source = https://github.com/Appadeia/puyo/archive/0.6.tar.gz
-	md5sums = bb3620d88a436a99c38791bdbe4c9555
+	source = https://github.com/Appadeia/puyo/archive/0.7.tar.gz
+	md5sums = 688e2b33cc36b7e1d9408ab252444b8a
 
 pkgname = puyo
 
