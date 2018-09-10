@@ -3,7 +3,7 @@
 _pkgname=gopherus
 _pkgver=1.1
 pkgname=$_pkgname-svn
-pkgver=1.1.r37
+pkgver=1.1.r48
 pkgrel=1
 pkgdesc="Gopher client"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ provides=('gopherus')
 source=("$_pkgname::svn://svn.code.sf.net/p/gopherus/code"
         'gopherus.desktop')
 sha256sums=('SKIP'
-            'dfce631c4c60761a5324e90dbe9938f9f74b21b68ee4e8c1bf8dc36018ad32cb')
+            'b01f1fa220cb788edf5c743a35aeff169f62eefee19d5f6dee96274e8c8cfd21')
 
 pkgver() {
   cd "${_pkgname}"
