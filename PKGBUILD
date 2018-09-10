@@ -19,9 +19,9 @@
 
 pkgbase=kodi-pre-release
 pkgname=("kodi-${pkgbase#kodi-*}" "kodi-eventclients-${pkgbase#kodi-*}" "kodi-tools-texturepacker-${pkgbase#kodi-*}" "kodi-dev-${pkgbase#kodi-*}")
-pkgver=18.0b1v2
-pkgrel=2
-_commit=f21b477993cae9f59f77b8798a1390159863f3f7
+pkgver=18.0b2
+pkgrel=1
+_commit=7868a27c6a83eafd3bf505172b59481868d940fb
 _short=${_commit::+7}
 arch=('x86_64')
 url="http://kodi.tv"
@@ -80,7 +80,7 @@ noextract=(
   "fstrcmp-$_fstrcmp_version.tar.gz"
   "flatbuffers-$_flatbuffers_version.tar.gz"
 )
-sha256sums=('be2ccdfd2e9d360893a81ca49580d786d78219e764ddb6d65865eb10806c6f38'
+sha256sums=('fd36de783dbf37fa21714ec9d080cc0495eff5018f3d37cf376131a6cd0cf767'
             '0e4980abac7b886e0eb5f4157941947be3c10d616a19bd311dc2f9fd2eb6a631'
             '6af3d4f60e5af2c11ebe402b530c07c8878df1a6cf19372e16c92848d69419a5'
             '071e414e61b795f2ff9015b21a85fc009dde967f27780d23092643916538a57a'
