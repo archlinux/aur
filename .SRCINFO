@@ -1,7 +1,7 @@
 pkgbase = doitlive
 	pkgdesc = Because sometimes you need to do it live.
 	pkgver = 4.0.1
-	pkgrel = 00
+	pkgrel = 1
 	url = https://github.com/sloria/doitlive
 	arch = any
 	license = MIT
@@ -18,5 +18,5 @@ pkgbase = doitlive
 	md5sums = 1b2c6244bf980db44719b6a982330fc0
 	md5sums = 193aac7b283148548bee1c1ef13752fe
 
-pkgname = python-doitlive
+pkgname = doitlive
 
