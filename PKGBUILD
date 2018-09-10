@@ -3,7 +3,7 @@
 
 pkgname=icdiff
 pkgver=1.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Improved colored diff"
 arch=('any')
 depends=('python')
@@ -11,6 +11,11 @@ url="https://github.com/jeffkaufman/icdiff"
 license=('PSF')
 source=($pkgname-$pkgver.tar.gz::https://github.com/jeffkaufman/icdiff/archive/release-$pkgver.tar.gz)
 sha256sums=('090b0f96c5df5ae5d71f6e5325bca566dd47e8b61ec4b59d4e40acb9ffcb878f')
+
+prepare() {
+  cd $pkgname-release-$pkgver
+  sed 's/ICDIFF_OPTIONS $\*"/ICDIFF_OPTIONS" $*/' -i git-icdiff
+}
 
 package() {
   cd $pkgname-release-$pkgver
