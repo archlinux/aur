@@ -6,50 +6,53 @@ pkgname='ros-melodic-base-local-planner'
 pkgver='1.16.2'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
-ros_makedepends=(ros-melodic-nav-core
-  ros-melodic-dynamic-reconfigure
-  ros-melodic-pcl-ros
-  ros-melodic-roscpp
-  ros-melodic-geometry-msgs
-  ros-melodic-std-msgs
-  ros-melodic-rospy
-  ros-melodic-costmap-2d
-  ros-melodic-message-generation
-  ros-melodic-rosconsole
-  ros-melodic-pcl-conversions
-  ros-melodic-voxel-grid
-  ros-melodic-visualization-msgs
+ros_makedepends=(ros-melodic-angles
+  ros-melodic-angles
   ros-melodic-catkin
-  ros-melodic-angles
   ros-melodic-cmake-modules
-  ros-melodic-tf
-  ros-melodic-nav-msgs
-  ros-melodic-pluginlib)
-makedepends=('cmake' 'ros-build-tools'
-  ${ros_makedepends[@]}
-  eigen3)
-
-ros_depends=(ros-melodic-nav-core
-  ros-melodic-dynamic-reconfigure
-  ros-melodic-pcl-ros
-  ros-melodic-roscpp
-  ros-melodic-geometry-msgs
-  ros-melodic-std-msgs
-  ros-melodic-rospy
   ros-melodic-costmap-2d
+  ros-melodic-dynamic-reconfigure
+  ros-melodic-geometry-msgs
   ros-melodic-message-generation
-  ros-melodic-rosconsole
-  ros-melodic-voxel-grid
-  ros-melodic-visualization-msgs
-  ros-melodic-angles
-  ros-melodic-tf
+  ros-melodic-nav-core
   ros-melodic-nav-msgs
-  ros-melodic-pluginlib)
-depends=(${ros_depends[@]}
-  eigen3)
+  ros-melodic-pluginlib
+  ros-melodic-rosconsole
+  ros-melodic-roscpp
+  ros-melodic-rospy
+  ros-melodic-sensor-msgs
+  ros-melodic-std-msgs
+  ros-melodic-tf2
+  ros-melodic-tf2-geometry-msgs
+  ros-melodic-tf2-ros
+  ros-melodic-visualization-msgs
+  ros-melodic-voxel-grid)
+makedepends=('cmake' 'ros-build-tools' 'eigen3'
+  ${ros_makedepends[@]})
+
+ros_depends=(ros-melodic-angles
+  ros-melodic-angles
+  ros-melodic-catkin
+  ros-melodic-costmap-2d
+  ros-melodic-dynamic-reconfigure
+  ros-melodic-geometry-msgs
+  ros-melodic-message-generation
+  ros-melodic-nav-core
+  ros-melodic-nav-msgs
+  ros-melodic-pluginlib
+  ros-melodic-rosconsole
+  ros-melodic-roscpp
+  ros-melodic-rospy
+  ros-melodic-sensor-msgs
+  ros-melodic-std-msgs
+  ros-melodic-tf2
+  ros-melodic-tf2-ros
+  ros-melodic-visualization-msgs
+  ros-melodic-voxel-grid)
+depends=(${ros_depends[@]} 'eigen3')
 
 # Git version (e.g. for debugging)
 # _tag=release/melodic/base_local_planner/${pkgver}-${_pkgver_patch}
