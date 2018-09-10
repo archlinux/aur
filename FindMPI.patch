@@ -1,0 +1,12 @@
+diff -ura coolfluid/cmake/FindMPI.cmake coolfluid-new/cmake/FindMPI.cmake
+--- coolfluid/cmake/FindMPI.cmake	2018-08-29 20:09:23.323939730 -0400
++++ coolfluid-new/cmake/FindMPI.cmake	2018-08-30 11:48:01.777201807 -0400
+@@ -35,6 +35,8 @@
+ ENDIF()
+ 
+ ADD_TRIAL_LIBRARY_PATH(${MPI_HOME}/lib )
++ADD_TRIAL_LIBRARY_PATH(${MPI_HOME}/lib/openmpi)
++ADD_TRIAL_LIBRARY_PATH(${MPI_HOME}/lib/impi)
+ ADD_TRIAL_LIBRARY_PATH($ENV{MPI_HOME}/lib )
+ 
+ IF( CF_ENABLE_STATIC )

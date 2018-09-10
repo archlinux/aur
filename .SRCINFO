@@ -1,0 +1,25 @@
+pkgbase = coolfluid-svn
+	pkgdesc = Computational Object-Oriented Libraries for Fluid Dynamics
+	pkgver = r1387
+	pkgrel = 1
+	url = https://github.com/andrealani/COOLFluiD
+	arch = x86_64
+	license = LGPL3
+	makedepends = svn
+	makedepends = gcc
+	makedepends = cmake
+	depends = petsc
+	depends = parmetis
+	depends = mutationpp
+	depends = boost
+	depends = boost-libs
+	optdepends = cgns: cgns support
+	optdepends = python: run script in /opt/coolfluid/tools/Python
+	provides = coolfluid
+	source = coolfluid::svn+https://github.com/andrealani/COOLFluiD/trunk
+	source = FindMPI.patch
+	sha256sums = SKIP
+	sha256sums = 2e95d3cc346e403437ce67f03e9c73bf01a6a7e9f701cf4c895e9597a09fc9e1
+
+pkgname = coolfluid-svn
+
