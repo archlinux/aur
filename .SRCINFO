@@ -10,8 +10,8 @@ pkgbase = python-zipstream-gns3
 	depends = python
 	provides = python-zipstream
 	conflicts = python-zipstream
-	source = https://files.pythonhosted.org/packages/source/z/zipstream/zipstream-1.1.4.tar.gz
-	md5sums = 9d3755748c15eb622604e99dddac3652
+	source = https://files.pythonhosted.org/packages/1a/a4/58f0709cef999db1539960aa2ae77100dc800ebb8abb7afc97a1398dfb2f/zipstream-1.1.4.tar.gz
+	sha256sums = 2ef24b9150c93429b172750c4890b5ab28c1317892e11727afeff986ad2a3506
 
 pkgname = python-zipstream-gns3
 
