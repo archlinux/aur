@@ -1,0 +1,11 @@
+--- a/cli.c
++++ b/cli.c
+@@ -152,7 +152,7 @@ static void uci_usage(void)
+ 		"\treorder    <config>.<section>=<position>\n"
+ 		"\n"
+ 		"Options:\n"
+-		"\t-c <path>  set the search path for config files (default: /etc/config)\n"
++		"\t-c <path>  set the search path for config files (default: /opt/archwrt/etc/config)\n"
+ 		"\t-d <str>   set the delimiter for list values in uci show\n"
+ 		"\t-f <file>  use <file> as input instead of stdin\n"
+ 		"\t-m         when importing, merge data into an existing package\n"

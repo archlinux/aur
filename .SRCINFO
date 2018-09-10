@@ -1,0 +1,34 @@
+pkgbase = uci-lua-archwrt
+	pkgdesc = C library for the Unified Configuration Interface (UCI)
+	pkgver = r509.4c8b4d6
+	pkgrel = 1
+	url = http://git.openwrt.org/?p=project/uci.git
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = LGPLv2.1 GPLv2
+	makedepends = git
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = make
+	makedepends = patch
+	makedepends = pkg-config
+	depends = libubox-lua-archwrt
+	depends = lua51
+	provides = uci
+	conflicts = uci
+	conflicts = uci-git
+	conflicts = uci-lua-git
+	source = git://git.openwrt.org/project/uci.git
+	source = 001-lua-version.patch
+	source = 002-uci.c.patch
+	source = 003-uci.h.patch
+	source = 004-cli.c.patch
+	md5sums = SKIP
+	md5sums = 34e0767e6d1df56d188b1e18d91ef46f
+	md5sums = 3349bdf9478ce8659775c801e1c72d4b
+	md5sums = b07dbead8c9c88de0cd7de9c1bd6941e
+	md5sums = ed844618ae971ca78ebdc91a4c8f36a1
+
+pkgname = uci-lua-archwrt
+

@@ -1,0 +1,12 @@
+--- a/lua/uci.c
++++ b/lua/uci.c
+@@ -21,7 +21,7 @@
+ #include <stdio.h>
+ #include <errno.h>
+ 
+-#include <lauxlib.h>
++#include <lua5.1/lauxlib.h>
+ #include <uci.h>
+ 
+ #define MODNAME        "uci"
+
