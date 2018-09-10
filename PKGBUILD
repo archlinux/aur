@@ -2,7 +2,7 @@
 
 pkgname_=fastr
 pkgname=${pkgname_}-bin
-pkgver_=1.0.0-rc5
+pkgver_=1.0.0-rc6
 pkgver=${pkgver_/-/_}
 pkgrel=1
 pkgdesc='Graal based, high-performance implementation of the R language'
@@ -15,7 +15,7 @@ optdepends=()
 provides=("$pkgname_")
 conflicts=("$pkgname_")
 source=("https://github.com/oracle/$pkgname_/releases/download/vm-${pkgver_}/r-installable-ce-${pkgver_}-linux-amd64.jar")
-sha256sums=('3dc5ab0dded5cfe2847df9c0e571c95b87f2978bb21ad58858e3657def927f37')
+sha256sums=('0bb7b12f90de5de336a858f23e079440b01a4d4e5011ccb0a18b4f5e3f228cb0')
 
 package() {
     local file eq permissions mode name target
@@ -51,7 +51,8 @@ package() {
             return 1
         fi
         mkdir -p -- "$pkgdir/usr/lib/jvm/java-8-graal/$(dirname -- "$name")"
-        ln -s -- "$target" "$pkgdir/usr/lib/jvm/java-8-graal/$name"
+        # the -f is a temporary workaround for oracle/fastr#24: $name may already exist as a regular file, force its creation nevertheless
+        ln -f -s -- "$target" "$pkgdir/usr/lib/jvm/java-8-graal/$name"
     done < META-INF/symlinks
 
     install -DTm644 jre/languages/R/LICENSE_FASTR "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
