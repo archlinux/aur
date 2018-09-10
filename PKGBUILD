@@ -2,7 +2,7 @@
 
 pkgname=gopherus
 pkgver=1.0c
-pkgrel=2
+pkgrel=3
 pkgdesc="Gopher client"
 arch=('i686' 'x86_64')
 url="http://gopherus.sourceforge.net"
@@ -12,7 +12,7 @@ optdepends=('sdl2')
 source=(http://downloads.sourceforge.net/project/${pkgname}/v${pkgver}/${pkgname}-${pkgver}.tar.gz
         gopherus.desktop)
 sha256sums=('84f5192659658bb57f6d77609654e74f9e96f7596c0e3ae10e707877d1cebaf4'
-            'dfce631c4c60761a5324e90dbe9938f9f74b21b68ee4e8c1bf8dc36018ad32cb')
+            'b01f1fa220cb788edf5c743a35aeff169f62eefee19d5f6dee96274e8c8cfd21')
 
 build() {
   cd "${pkgname}-${pkgver}"
