@@ -9,7 +9,7 @@
 # Contributor: MacWolf <macwolf at archlinux dot de>
 
 pkgname=vlc-git
-pkgver=4.0.0.r4248.g0a2332aa8c
+pkgver=4.0.0.r4632.g809c7741f7
 pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (GIT Version)"
 url='https://www.videolan.org/vlc/'
@@ -22,7 +22,7 @@ depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'lua'
          'fribidi' 'harfbuzz' 'fontconfig' 'libxml2' 'gnutls' 'libplacebo'
          'wayland-protocols')
 makedepends=('gst-plugins-base-libs' 'live-media' 'libnotify' 'libbluray'
-             'flac' 'kdelibs' 'libdc1394' 'libavc1394' 'libcaca' 'gtk3'
+             'flac' 'libdc1394' 'libavc1394' 'libcaca' 'gtk3'
              'librsvg' 'libgme' 'xosd' 'twolame' 'aalib' 'avahi' 'libsystemd'
              'libmtp' 'libupnp' 'libmicrodns' 'libdvdcss' 'smbclient'
              'vcdimager' 'libssh2' 'mesa' 'protobuf' 'libnfs' 'mpg123'
@@ -36,7 +36,6 @@ optdepends=('avahi: service discovery using bonjour protocol'
             'libdvdcss: decoding encrypted DVDs'
             'libavc1394: devices using the 1394ta AV/C'
             'libdc1394: IEEE 1394 access plugin'
-            'kdelibs: KDE Solid hardware integration'
             'kwallet: kwallet keystore'
             'libva-vdpau-driver: vdpau backend nvidia'
             'libva-intel-driver: video backend intel'

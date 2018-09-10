@@ -1,4 +1,6 @@
+vlc/
 pkg/
 src/
 *.tar
-vlc/
+*.xz
+*.log
