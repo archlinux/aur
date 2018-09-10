@@ -15,6 +15,7 @@ source=("git+$url.git#branch=develop")
 sha256sums=('SKIP')
 
 pkgver() {
+    cd "$_pkgname"
     git describe --always | sed "s|-|.|g"
 }
 
