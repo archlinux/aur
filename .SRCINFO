@@ -1,16 +1,22 @@
 pkgbase = deepin-crossover
-	pkgdesc = Deepin CrossOver.
-	pkgver = 0.5.14
+	pkgdesc = Run Windows Programs on Linux (contains the Deepin OS license information)
+	pkgver = 16.0.6
 	pkgrel = 1
+	provides = crossover-deepin
+	provides = crossover
+	conflicts = crossover
 	url = https://www.codeweavers.com/
 	arch = i686
 	arch = x86_64
-	license = unknown
+	license = CrossOver Linux License Grant
 	makedepends = tar
-	depends = lib32-libx11
-	noextract = deepin-crossover_0.5.14_i386.deb
-	source = https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/deepin-crossover/deepin-crossover_0.5.14_i386.deb
-	md5sums = c5f59fd1d4ed2b1df597e0d4290fbbaf
+	depends = python2
+	depends = desktop-file-utils
+	depends = pygtk
+	depends = python2-dbus
+	noextract = crossover-deepin_16.0.6-1_i386.deb
+	source = http://mirrors.deepin.com/deepin/pool/non-free/c/crossover-deepin/crossover-deepin_16.0.6-1_i386.deb
+	sha256sums = c5f59fd1d4ed2b1df597e0d4290fbbaf
 
 pkgname = deepin-crossover
 

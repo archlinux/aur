@@ -1,0 +1,67 @@
+post_install() {
+
+echo "Updating wineserver link"
+    
+CX_ROOT="/opt/cxoffice"
+rm "$CX_ROOT/bin/wineserver"
+
+if "$CX_ROOT/bin/wineserver64" -v >/dev/null 2>/dev/null
+  then
+    ln -s wineserver64 "$CX_ROOT/bin/wineserver"
+  else
+    ln -s wineserver32 "$CX_ROOT/bin/wineserver"
+fi
+
+echo "Creating menus and file associations, please wait..."
+
+/opt/cxoffice/bin/cxmenu --crossover --install
+/opt/cxoffice/bin/cxassoc --crossover --install
+
+echo "Applying patches, please wait..."
+
+cd /opt/cxoffice/bin
+
+patch -p0 <<'EOF'
+--- crossover	2018-09-09 19:57:41.000000000 -0300
++++ crossover.edit	2018-09-09 22:35:05.050299884 -0300
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#! /usr/bin/env python2
+ # (c) Copyright 2009-2015. CodeWeavers, Inc.
+ 
+ import os
+@@ -85,17 +85,6 @@
+ import cxopt
+ 
+ def main():
+-    # Popup a warn when the user run CrossOver for Deepin in other distro
+-    result = os.popen("cat /etc/issue | grep Deepin").readlines()
+-    if not result:
+-        # pylint: disable=W0601
+-        global GUI
+-        import crossover_deepin
+-        GUI = crossover_deepin.CrossOverDeepin()
+-        import gtk
+-        gtk.main()
+-        return 0
+-
+     # Parse the command line before we do anything that assumes $DISPLAY is set
+     # so we can handle --help and issue usage errors normally.
+     opt_parser = cxopt.Parser(usage="%prog [--help]",
+EOF
+    echo "Done!"
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    echo "Removing menus and file associations, please wait..."
+
+    /opt/cxoffice/bin/cxmenu --crossover --uninstall
+    /opt/cxoffice/bin/cxassoc --crossover --uninstall
+    rm -f /usr/local/share/icons/hicolor/*x*/apps/cxmenu-*.png
+
+    echo "Done!"
+}
