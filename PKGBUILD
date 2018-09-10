@@ -3,7 +3,7 @@
 
 _name=git
 pkgname=$_name-git
-pkgver=2.17.0.r582.gccdcbd54c4
+pkgver=2.19.0.rc2.r0.gc05048d439
 pkgrel=1
 pkgdesc='A fast distributed version control system'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url='http://git-scm.com/'
 license=('GPL2')
 depends=('curl' 'expat>=2.0' 'perl-error' 'perl>=5.14.0' 'openssl'
          'perl-mailtools' 'pcre2' 'grep' 'shadow')
-makedepends=('python2' 'xmlto' 'asciidoc' 'libgnome-keyring')
+makedepends=('python2' 'xmlto' 'asciidoc' 'libgnome-keyring' 'git')
 optdepends=('tk: gitk and git gui'
             'perl-libwww: git svn'
             'perl-term-readkey: git svn'

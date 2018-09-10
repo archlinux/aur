@@ -2,3 +2,5 @@ git/
 pkg/
 src/
 *.tar
+*.log
+*.xz

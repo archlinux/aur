@@ -1,6 +1,6 @@
 pkgbase = git-git
 	pkgdesc = A fast distributed version control system
-	pkgver = 2.17.0.r582.gccdcbd54c4
+	pkgver = 2.19.0.rc2.r0.gc05048d439
 	pkgrel = 1
 	url = http://git-scm.com/
 	install = git-git.install
@@ -11,6 +11,7 @@ pkgbase = git-git
 	makedepends = xmlto
 	makedepends = asciidoc
 	makedepends = libgnome-keyring
+	makedepends = git
 	depends = curl
 	depends = expat>=2.0
 	depends = perl-error
