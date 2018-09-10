@@ -7,10 +7,10 @@ pkgrel=1
 pkgdesc="pgManage - A fast alternative to PGAdmin"
 arch=('i686' 'x86_64')
 url="https://www.workflowproducts.com/services.html#software"
-license=('custom:postage', 'custom:electron', 'custom:chromium')
+name=pgManage
+license=("custom:${name}", 'custom:electron', 'custom:chromium')
 depends=('alsa-lib' 'gconf' 'gtk2' 'libxss' 'libxtst' 'nss')
 makedepends=('')
-name=pgManage
 source=("LICENSE.${name}.txt::https://raw.githubusercontent.com/${name}/${name}/master/LICENSE"
         "${name}.sh")
 source_i686=("${pkgname}-${pkgver}-i686.rpm::https://github.com/${name}/${name}/releases/download/v${pkgver}/${name}-${pkgver}-ia32.rpm")
