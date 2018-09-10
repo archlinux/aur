@@ -5,7 +5,7 @@
 # Contributor: Thermionix <thermionix at gmail dot com>
 
 pkgname=navit
-pkgver=0.5.1
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="Modular turn-by-turn car navigation system"
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('dbus-glib' 'gpsd' 'gtk2' 'imlib2' 'sdl_image')
 makedepends=('cmake' 'libxslt')
 install=$pkgname.install
 source=($pkgname-$pkgver.tar.gz::https://github.com/navit-gps/navit/archive/v$pkgver.tar.gz)
-sha256sums=('251f17e10509f782798eeb1bb9f8085d4356742d00dde5a354a41a508f54ec27')
+sha256sums=('5dd3c1292cad6d85dfba2d23770bdff70e981937a7c271a54c75395e6dd6019d')
 
 prepare() {
   cd $pkgname-$pkgver
