@@ -1,7 +1,7 @@
 # Maintainer: Microoo <hu@microoo.net>
 pkgname=substratumnode-git
-pkgver=0.4.0.r4.g80869fb
-pkgrel=2
+pkgver=0.4.0.r5.ge71b11b
+pkgrel=1
 pkgdesc="SubstratumNode is the foundation of the decentralized SubstratumNetwork. SubstratumNodes work together to relay CORES packages and content on the network."
 arch=('x86_64')
 url="https://github.com/SubstratumNetwork/SubstratumNode"
@@ -28,9 +28,12 @@ build() {
 
 package() {
 
+    # Get the latest version tag
+    _version=$(git -C "$srcdir/${pkgname}" describe --abbrev=0 --tags | sed 's/^v//')
+
     # Extract deb file
-    bsdtar -xf "$srcdir/${pkgname}/node_ui/dist/SubstratumNode_${pkgver}_amd64.deb"
-    
+    bsdtar -xf "$srcdir/${pkgname}/node_ui/dist/SubstratumNode_${_version}_amd64.deb"
+
     # Extract package data
     tar xf "data.tar.xz" -C "${pkgdir}"
 
