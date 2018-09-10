@@ -4,8 +4,8 @@
 # Contributor: Sebastien Piccand <sebcactus gmail com>
 
 pkgname=('handbrake-fdkaac' 'handbrake-cli-fdkaac')
-pkgver=1.1.1
-pkgrel=2
+pkgver=1.1.2
+pkgrel=1
 arch=('x86_64')
 url="https://handbrake.fr/"
 license=('GPL')
@@ -14,7 +14,7 @@ makedepends=('intltool' 'python2' 'yasm' 'wget' 'cmake' 'bzip2' 'gcc-libs'
              'lame' 'libxml2' 'opus' 'libvorbis' 'libtheora' 'libsamplerate'
              'x264' 'jansson' 'librsvg' 'libgudev')
 source=(https://download.handbrake.fr/releases/$pkgver/HandBrake-$pkgver-source.tar.bz2)
-sha256sums=('e3390c5fd901fb06d72e29c62a63d373d5fb5b3467295d114d815ae7b78a9d7a')
+sha256sums=('ba9a4a90a7657720f04e4ba0a2880ed055be3bd855e99c0c13af944c3904de2e')
 
 build() {
   cd "$srcdir/HandBrake-$pkgver"
