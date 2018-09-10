@@ -1,17 +1,16 @@
 pkgbase = dmg2dir
-	pkgdesc = A shell script which extract OS X application from .dmg file
-	pkgver = 3.0.3
+	pkgdesc = A Bash script which extract macOS application from DMG file
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/X0rg/dmg2dir
 	arch = any
 	license = unknow
 	depends = dmg2img
 	depends = udisks2
-	optdepends = darling-git: to use --run
-	optdepends = cdrtools: to use --iso (if no cdrkit)
-	optdepends = cdrkit: to use --iso (if no cdrtools)
-	source = dmg2dir-3.0.3::https://github.com/X0rg/dmg2dir/archive/v3.0.3.tar.gz
-	sha512sums = 45b84263962ce2f10c75d58cab68347fd95a268cc02fb01e5bbcb38bb35fb60eb47572685649fad5b8d1c5d07a56ff3f9deb9cbb3582ece1d85d30786a21f208
+	optdepends = cdrtools: to use --iso option
+	optdepends = darling-git: to use --run option
+	source = dmg2dir-3.1.0::https://github.com/X0rg/dmg2dir/archive/v3.1.0.tar.gz
+	sha512sums = 9d90041e65cd46cc925f187a792f166db6fd288f99256ba5145f7714d5a232a2908833f3e8c00ae1ffec8fdb60881b070ced435ac855b88435c8a04e25ae2453
 
 pkgname = dmg2dir
 
