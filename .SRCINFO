@@ -1,0 +1,14 @@
+pkgbase = raise-or-run
+	pkgdesc = Linux shell script to raise app window, or run app if window not already open
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/bulletmark/raise-or-run
+	arch = any
+	license = GPL3
+	depends = bash
+	depends = wmctrl
+	source = raise-or-run-1.0.tar.gz::https://github.com/bulletmark/raise-or-run/archive/1.0.tar.gz
+	md5sums = 2aa282e43dce79d666f19b2b5104fa98
+
+pkgname = raise-or-run
+
