@@ -7,7 +7,7 @@
 pkgname=wps-office
 pkgver=10.1.0.6634
 #_pkgver=10.1.0.5707~a21
-pkgrel=3
+pkgrel=4
 pkgdesc="Kingsoft Office (WPS Office) is an office productivity suite"
 arch=('i686' 'x86_64')
 license=("custom")
