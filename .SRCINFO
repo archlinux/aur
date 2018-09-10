@@ -1,0 +1,15 @@
+pkgbase = shmupmametgm-git
+	pkgdesc = Customized MAME for the TGM series. Forked for extra output options and tooling.
+	pkgver = r79.5ac496e
+	pkgrel = 1
+	url = https://github.com/MaryHal/shmupmametgm
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = sdl
+	depends = gconf
+	source = git+https://github.com/MaryHal/shmupmametgm.git
+	sha256sums = SKIP
+
+pkgname = shmupmametgm-git
+
