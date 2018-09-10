@@ -3,8 +3,9 @@
 
 pkgname=retroarch-assets-xmb-git
 _gitname=retroarch-assets
-pkgver=r378.90b882d
+pkgver=r69.51c4addc
 pkgrel=1
+epoch=1
 pkgdesc='XMB menu assets for RetroArch (git-latest)'
 arch=('any')
 url='http://www.libretro.com/'

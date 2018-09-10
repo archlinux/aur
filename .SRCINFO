@@ -2,6 +2,7 @@ pkgbase = retroarch-assets-xmb-git
 	pkgdesc = XMB menu assets for RetroArch (git-latest)
 	pkgver = r378.90b882d
 	pkgrel = 1
+	epoch = 1
 	url = http://www.libretro.com/
 	arch = any
 	groups = libretro
