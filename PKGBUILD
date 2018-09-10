@@ -1,3 +1,4 @@
+# Maintainer: Matthew McGinn <mamcgi@gmail.com>
 pkgname=('python2-docker-py-git')
 _srcname='docker-py'
 pkgver=r2640.1533861202.e78e4e74
