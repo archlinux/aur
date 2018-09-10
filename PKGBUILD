@@ -4,7 +4,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-libvirt
 pkgver=4.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="API for controlling virtualization engines (remote only for windows)"
 arch=('any')
 url="https://libvirt.org/"
@@ -12,7 +12,7 @@ license=('LGPL')
 depends=('mingw-w64-crt' 'mingw-w64-gnutls' 'mingw-w64-libgpg-error' 'mingw-w64-libgcrypt'
          'mingw-w64-gettext' 'mingw-w64-libxml2' 'mingw-w64-portablexdr' 'mingw-w64-libssh2'
          'mingw-w64-curl')
-makedepends=('mingw-w64-configure' 'gettext' 'libxslt' 'python3' 'perl')
+makedepends=('mingw-w64-configure' 'gettext' 'libxslt' 'python' 'perl')
 options=('!strip' 'staticlibs' '!buildflags')
 validpgpkeys=('C74415BA7C9C7F78F02E1DC34606B8A5DE95BC1F')
 source=("https://libvirt.org/sources/libvirt-${pkgver}.tar.xz"{,.asc})

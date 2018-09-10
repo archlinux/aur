@@ -1,14 +1,14 @@
 pkgbase = mingw-w64-libvirt
 	pkgdesc = API for controlling virtualization engines (remote only for windows)
 	pkgver = 4.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://libvirt.org/
 	arch = any
 	license = LGPL
 	makedepends = mingw-w64-configure
 	makedepends = gettext
 	makedepends = libxslt
-	makedepends = python3
+	makedepends = python
 	makedepends = perl
 	depends = mingw-w64-crt
 	depends = mingw-w64-gnutls
