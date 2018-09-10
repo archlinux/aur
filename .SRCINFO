@@ -1,0 +1,32 @@
+pkgbase = sssd-nosmb
+	pkgdesc = System Security Services Daemon
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://pagure.io/SSSD/sssd
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = docbook-xsl
+	makedepends = doxygen
+	makedepends = python
+	makedepends = python2
+	depends = bind
+	depends = c-ares
+	depends = cyrus-sasl-gssapi
+	depends = ding-libs
+	depends = libnl
+	depends = libunistring
+	depends = nss
+	depends = ldb
+	depends = cifs-utils
+	depends = dbus
+	depends = glib2
+	depends = nfsidmap
+	depends = jansson
+	provides = sssd=2.0.0
+	conflicts = sssd
+	source = https://releases.pagure.org/SSSD/sssd/sssd-2.0.0.tar.gz
+	sha512sums = affeb0799d8a4fcbcb4b2ed7925b397ae6ba0e2982c5603e98636b765d3820a3b29ac58b0771e5cc00c752512f091ae4fd271d441544147a0570d3c14b535701
+
+pkgname = sssd-nosmb
+
