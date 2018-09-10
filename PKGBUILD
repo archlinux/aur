@@ -2,7 +2,7 @@
 # Adapted from brother-hl8350cdw by giulio
 pkgname="brother-hl-l8250cdn"
 pkgver="1.1.2"
-pkgrel=1
+pkgrel=2
 pkgdesc="LPR and CUPS driver for the Brother HL-L8250CDN"
 arch=('i686' 'x86_64')
 url="http://solutions.brother.com/linux/en_us/"
@@ -10,12 +10,12 @@ license=('custom:brother commercial license')
 depends=('cups')
 install='brother-hl-l8250cdn.install'
 source=(
-  "http://www.brother.com/pub/bsc/linux/packages/hll8250cdncupswrapper-$pkgver-$pkgrel.i386.rpm"
-  "http://www.brother.com/pub/bsc/linux/packages/hll8250cdnlpr-$pkgver-$pkgrel.i386.rpm"
+  "http://www.brother.com/pub/bsc/linux/packages/hll8250cdncupswrapper-1.1.3-1.i386.rpm"
+  "http://www.brother.com/pub/bsc/linux/packages/hll8250cdnlpr-1.1.2-1.i386.rpm"
   'cupswrapper-license.txt'
   'lpr-license.txt'
 )
-md5sums=('71eb6c22bcfa6d5a466e2cca9bcb1d0d'
+md5sums=('0a4d817b24644338baeb0b739bc4d188'
          '40eaa322ab0f169bea2d6fab6b8a6b13'
          '97ad0cffd216059e9d1d3121899d8646'
          '5e87a3dc0f3e3438c088eda0f3565f0d')
