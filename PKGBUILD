@@ -1,19 +1,18 @@
+# Maintainer: Thiago L. A. Miller <thiago_leisrael@hotmail.com>
 # Contributor: Mateusz Krasowski <matkras@gmail.com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
-
-pkgname='perl-autobox-core'
-pkgver='1.29'
-pkgrel='1'
-pkgdesc="Provide core functions to autoboxed scalars, arrays and hashes."
+_distname=autobox-Core
+pkgname=perl-autobox-core
+pkgver=1.33
+pkgrel=1
+pkgdesc="Provide core functions to autoboxed scalars, arrays and hashes"
 arch=('any')
+url="https://metacpan.org/release/$_distname"
 license=('PerlArtistic' 'GPL')
-options=('!emptydirs')
-depends=('perl-autobox>=2.71')
+depends=('perl-want>=0.26' 'perl-autobox>=2.71')
 makedepends=()
-url='http://search.cpan.org/dist/autobox-Core'
-source=('http://search.cpan.org/CPAN/authors/id/X/XE/XENU/autobox-Core-1.29.tar.gz')
-md5sums=('10b0f4c908542e034a2a423a358ab420')
-_distdir="autobox-Core-1.29"
+options=('!emptydirs')
+source=("http://search.cpan.org/CPAN/authors/id/S/SW/SWALTERS/$_distname-$pkgver.tar.gz")
+md5sums=('a7779011d27b04229ec912841ef40fff')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -22,21 +21,21 @@ build() {
       PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
       MODULEBUILDRC=/dev/null
 
-    cd "$srcdir/$_distdir"
+    cd "$_distname-$pkgver"
     /usr/bin/perl Makefile.PL
     make
   )
 }
 
 check() {
-  cd "$srcdir/$_distdir"
+  cd "$_distname-$pkgver"
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
     make test
   )
 }
 
 package() {
-  cd "$srcdir/$_distdir"
+  cd "$_distname-$pkgver"
   make install
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
