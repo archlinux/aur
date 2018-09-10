@@ -5,10 +5,10 @@ _ndkver=0.3.0
 
 pkgname=nginx-mainline-mod-ndk-set-misc
 pkgver=$_setmiscver+$_ndkver
-pkgrel=16
+pkgrel=17
 
 _modname=set-misc
-_nginxver=1.15.2
+_nginxver=1.15.3
 
 pkgdesc="Various set_xxx directives added to nginx's rewrite + ngx_devel_kit (module for mainline nginx)"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ source=(
 	https://github.com/simpl/ngx_devel_kit/archive/v$_ndkver/ngx_devel_kit-$_ndkver.tar.gz
 )
 
-sha256sums=('eeba09aecfbe8277ac33a5a2486ec2d6731739f3c1c701b42a0c3784af67ad90'
+sha256sums=('9391fb91c3e2ebd040a4e3ac2b2f0893deb6232edc30a8e16fcc9c3fa9d6be85'
             '97946a68937b50ab8637e1a90a13198fe376d801dc3e7447052e43c28e9ee7de'
             '88e05a99a8a7419066f5ae75966fb1efc409bad4522d14986da074554ae61619')
 
