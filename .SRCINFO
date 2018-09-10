@@ -7,7 +7,7 @@ pkgbase = ruby-octokit
 	license = MIT
 	makedepends = rubygems
 	depends = ruby
-	depends = ruby-sawyer>=0.5.3
+	depends = ruby-sawyer
 	noextract = octokit-4.2.0.gem
 	source = http://gems.rubyforge.org/gems/octokit-4.2.0.gem
 	sha256sums = 52056b01c81c98b18b11f3259f3624e54c0812e87a73247112e9ccec21b80b84

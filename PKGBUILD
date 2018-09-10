@@ -9,7 +9,7 @@ pkgdesc="Simple wrapper for the GitHub API."
 arch=(any)
 url="https://github.com/octokit/octokit.rb"
 license=('MIT')
-depends=('ruby' 'ruby-sawyer>=0.5.3')
+depends=('ruby' 'ruby-sawyer')
 makedepends=('rubygems')
 source=(http://gems.rubyforge.org/gems/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
