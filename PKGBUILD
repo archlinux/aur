@@ -20,4 +20,4 @@ package() {
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
   install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 }
-sha512sums=('0ebf8a1fef5649fb85d06b9d62becefeef53b2611621cc2bc9dcceae821a00e5cc86794a603c7971b192ac9efc0e603b32f4a192702d40c05243ff0c3fd8fa98')
+sha256sums=('495b6483552a3e2975a2752964ea7acddd545bc6e13ce2be15a50cec8d4c9f0f')
