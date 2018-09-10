@@ -1,6 +1,6 @@
 pkgbase = microsoft-nni-git
 	pkgdesc = An open source toolkit for neural architecture search, hyper-parameter optimization and optimizer design
-	pkgver = 0.1.0.r28.f1c2b70
+	pkgver = 0.1.r1.g7a7ab75
 	pkgrel = 1
 	url = https://github.com/microsoft/nni
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = microsoft-nni-git
 	depends = python-yaml
 	depends = python-requests
 	depends = python-scipy
+	depends = python-hyperopt
 	provides = microsoft-nni
 	conflicts = microsoft-nni
 	source = git://github.com/microsoft/nni.git

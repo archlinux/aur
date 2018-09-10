@@ -1,13 +1,13 @@
 # Maintainer:  Liu Zhe <cruise.pas@gmail.com>
 
 pkgname=microsoft-nni-git
-pkgver=0.1.0.r28.f1c2b70
+pkgver=0.1.r1.g7a7ab75
 pkgrel=1
 pkgdesc='An open source toolkit for neural architecture search, hyper-parameter optimization and optimizer design'
 arch=('x86_64')
 url='https://github.com/microsoft/nni'
 license=('MIT')
-depends=('nodejs-serve' 'python-astor' 'python-json-tricks' 'python-psutil' 'python-yaml' 'python-requests' 'python-scipy')
+depends=('nodejs-serve' 'python-astor' 'python-json-tricks' 'python-psutil' 'python-yaml' 'python-requests' 'python-scipy' 'python-hyperopt')
 makedepends=('git' 'yarn' 'typescript' 'python-setuptools')
 provides=('microsoft-nni')
 conflicts=('microsoft-nni')
@@ -17,7 +17,7 @@ sha1sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
     cd "$srcdir"/nni
-    echo 0.1.0.r$(git rev-list --count master).$(git rev-parse --short master)
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
