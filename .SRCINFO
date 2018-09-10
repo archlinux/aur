@@ -1,11 +1,10 @@
 pkgbase = stride-desktop
 	pkgdesc = Stride is a cloud-based team business communication and collaboration tool - Desktop client
 	pkgver = 1.22.76
-	pkgrel = 2
+	pkgrel = 3
 	url = www.stride.com
 	arch = x86_64
 	license = GPL
-	makedepends = patchelf
 	depends = alsa-lib
 	depends = atk
 	depends = cairo
@@ -48,13 +47,8 @@ pkgbase = stride-desktop
 	optdepends = libgnome-keyring
 	optdepends = lsb-release
 	optdepends = pulseaudio
-	noextract = glibc-2.27-3-x86_64.pkg.tar.xz
-	options = !strip
-	options = staticlibs
 	source = https://packages.atlassian.com/stride-apt-client/pool/stride_1.22.76_amd64.deb
-	source = https://archive.archlinux.org/packages/g/glibc/glibc-2.27-3-x86_64.pkg.tar.xz
 	sha256sums = ae336753cd845e1981942f148a13e51974b564e88d313e484406b983202f2070
-	sha256sums = a9e1b18d7f613be660556dbd6883781e88a0f5113230147e230d3e2f268792dc
 
 pkgname = stride-desktop
 
