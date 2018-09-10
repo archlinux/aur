@@ -1,0 +1,14 @@
+pkgbase = thunderbird-firetray-57-git
+	pkgdesc = Js-ctypes rewrite of the binary XPCOM version of Firetray
+	pkgver = r601.de3145c
+	pkgrel = 1
+	url = https://github.com/firetray-updates/FireTray
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = zip
+	source = thunderbird-firetray-57-git::git://github.com/firetray-updates/FireTray.git#branch=thunderbird-57
+	md5sums = SKIP
+
+pkgname = thunderbird-firetray-57-git
+
