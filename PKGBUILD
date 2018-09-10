@@ -10,7 +10,7 @@ arch=(any)
 url="https://store.kde.org/p/998469/"
 license=(GPL)
 depends=(dolphin kdialog perl)
-source=("https://dl.opendesktop.org/api/files/download/id/1485341541/s/11c09a3c43844681897dfd319fcf90e1/t/1536522207/u//rootactions_servicemenu_2.9.1.tar.gz")
+source=("https://dl.opendesktop.org/api/files/download/id/1485341541/s/9d2e7244ad83e00fc3367ae99c442200/t/1536580867/u//rootactions_servicemenu_$pkgver.tar.gz")
 sha256sums=('8c02e552d6d18246235e3141eebd02b125fad15717660dfa231b629a14837f65')
 
 package() {
