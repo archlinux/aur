@@ -1,18 +1,18 @@
 pkgbase = perl-autobox
 	pkgdesc = call methods on native types
-	pkgver = 2.83
+	pkgver = 3.0.1
 	pkgrel = 1
-	url = http://search.cpan.org/dist/autobox
-	arch = i686
+	url = https://metacpan.org/release/autobox
 	arch = x86_64
 	license = PerlArtistic
 	license = GPL
-	depends = perl-scope-guard>=0.20
+	checkdepends = perl-test-fatal>=0.014
 	depends = perl>=5.8.0
+	depends = perl-ipc-system-simple>=1.25
+	depends = perl-scope-guard>=0.21
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/C/CH/CHOCOLATE/autobox-2.83.tar.gz
-	md5sums = 7a4b2c4c644e6f02ccb1d964fabebde5
-	sha512sums = 2c347ee61240ba7ba8fdf0bddebceab554c602ce673a524255a73ee7b53a9765f9679bd613f796f74e6588ebfd6beb877fa6f49720fa6da108f91ebb365b1dc6
+	source = http://search.cpan.org/CPAN/authors/id/C/CH/CHOCOLATE/autobox-v3.0.1.tar.gz
+	md5sums = 7b2fce96b3ad20924555130ab9847b95
 
 pkgname = perl-autobox
 
