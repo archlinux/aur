@@ -5,7 +5,7 @@
 pkgbase=linux-bld
 pkgname=(linux-bld linux-bld-headers)
 _kernelname=-bld
-pkgver=4.18.6
+pkgver=4.18.7
 archlinux_linux_version=$pkgver-arch1
 _srcname=linux-4.18
 _pkgver2=${_srcname#*-}.0
@@ -33,7 +33,7 @@ source=("https://git.archlinux.org/linux.git/snapshot/linux-${archlinux_linux_ve
         )
 for _patch in ${arch_patches[@]} ; do source+=("${_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${_patch}?h=packages/linux&id=${arch_config_trunk}") ; done
 
-sha256sums=('ea34220ce07b2038e48b1e0a77286db475745a2638f62f7587b2a490aae61606'
+sha256sums=('a1f22b0ce502b9e12d9537664d4aa6d52cba1f0f16eeb8aeee1a9e17bea12961'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             '5b51a1eacb3e00b304ca54d31f467ec1fb15fdfce93f1c62963d087bf753e812'
