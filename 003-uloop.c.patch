@@ -1,0 +1,16 @@
+--- a/lua/uloop.c
++++ b/lua/uloop.c
+@@ -18,9 +18,9 @@
+ #include <stdlib.h>
+ #include <unistd.h>
+ 
+-#include <lua.h>
+-#include <lualib.h>
+-#include <lauxlib.h>
++#include <lua5.1/lua.h>
++#include <lua5.1/lualib.h>
++#include <lua5.1/lauxlib.h>
+ 
+ #include "../uloop.h"
+ #include "../list.h"
+
