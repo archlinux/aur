@@ -1,0 +1,17 @@
+pkgbase = python-json-tricks
+	pkgdesc = Extra features for Python's JSON
+	pkgver = 3.12.2
+	pkgrel = 1
+	url = https://github.com/mverleg/pyjson_tricks
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	optdepends = python-numpy
+	optdepends = python-pytz
+	optdepends = python-pandas
+	source = pyjson_tricks-3.12.2.tar.gz::https://github.com/mverleg/pyjson_tricks/archive/v3.12.2.tar.gz
+	sha1sums = 29537cb4a210dcbb6f6c130994b39730b64d831c
+
+pkgname = python-json-tricks
+
