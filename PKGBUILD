@@ -6,24 +6,33 @@ pkgname='ros-melodic-amcl'
 pkgver='1.16.2'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('LGPL')
 
-ros_makedepends=(ros-melodic-tf
-  ros-melodic-roscpp
-  ros-melodic-rostest
-  ros-melodic-std-srvs
-  ros-melodic-nav-msgs
-  ros-melodic-catkin
+ros_makedepends=(ros-melodic-catkin
   ros-melodic-dynamic-reconfigure
-  ros-melodic-message-filters)
+  ros-melodic-geometry-msgs
+  ros-melodic-message-filters
+  ros-melodic-nav-msgs
+  ros-melodic-rosbag
+  ros-melodic-roscpp
+  ros-melodic-std-srvs
+  ros-melodic-tf2
+  ros-melodic-tf2-geometry-msgs
+  ros-melodic-tf2-msgs
+  ros-melodic-tf2-ros)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-melodic-dynamic-reconfigure
-  ros-melodic-tf
+  ros-melodic-geometry-msgs
+  ros-melodic-nav-msgs
+  ros-melodic-rosbag
   ros-melodic-roscpp
-  ros-melodic-nav-msgs)
+  ros-melodic-std-srvs
+  ros-melodic-tf2
+  ros-melodic-tf2-msgs
+  ros-melodic-tf2-ros)
 depends=(${ros_depends[@]})
 
 # Git version (e.g. for debugging)
