@@ -3,13 +3,13 @@
 _pkgname=okular
 pkgname=okular-no-purpose
 pkgver=18.08.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Okular, a document viewer, without the dependency on purpose. This disables the share menu'
 arch=(x86_64)
 url="https://kde.org/applications/graphics/okular/"
 license=(GPL LGPL FDL)
 groups=(kde-applications kdegraphics)
-depends=(djvulibre libspectre libkexiv2 poppler-qt5 qca-qt5 kpty kactivities threadweaver kjs kparts discount)
+depends=(djvulibre libspectre libkexiv2 poppler-qt5 qca-qt5 kpty kactivities threadweaver kjs kparts discount phonon-qt5)
 makedepends=(extra-cmake-modules ebook-tools kdegraphics-mobipocket kdoctools khtml chmlib)
 optdepends=('ebook-tools: mobi and epub support'
             'kdegraphics-mobipocket: mobi support' 'kirigami2: mobile UI' 'libzip: CHM support'
