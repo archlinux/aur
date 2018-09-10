@@ -1,0 +1,48 @@
+From 12e9870bf9f41391f8de165d43196cb5b0cd5eee Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Mon, 10 Sep 2018 14:39:26 +0200
+Subject: [PATCH] Use gtk status icon by default
+
+---
+ SparkleShare/Linux/StatusIcon.cs    | 2 +-
+ SparkleShare/Linux/UserInterface.cs | 8 --------
+ 2 files changed, 1 insertion(+), 9 deletions(-)
+
+diff --git a/SparkleShare/Linux/StatusIcon.cs b/SparkleShare/Linux/StatusIcon.cs
+index b64f49e5..113a41c0 100644
+--- a/SparkleShare/Linux/StatusIcon.cs
++++ b/SparkleShare/Linux/StatusIcon.cs
+@@ -31,7 +31,7 @@ namespace SparkleShare {
+     public class StatusIcon {
+ 
+         public StatusIconController Controller = new StatusIconController ();
+-        public static bool use_appindicator = true;
++        public static bool use_appindicator = false;
+ 
+         Gtk.StatusIcon status_icon;
+ 
+diff --git a/SparkleShare/Linux/UserInterface.cs b/SparkleShare/Linux/UserInterface.cs
+index 74fd5559..eac9b4ae 100644
+--- a/SparkleShare/Linux/UserInterface.cs
++++ b/SparkleShare/Linux/UserInterface.cs
+@@ -92,17 +92,9 @@ namespace SparkleShare
+             if (args.Length > 0)
+                 Logger.LogInfo ("Environment", "Arguments: " + string.Join (" ", args));
+ 
+-            if (Array.IndexOf (args, "--status-icon=gtk") > -1)
+-                StatusIcon.use_appindicator = false;
+-
+             #if HAVE_APP_INDICATOR
+             if (Array.IndexOf (args, "--status-icon=appindicator") > -1)
+                 StatusIcon.use_appindicator = true;
+-            #else
+-            if (StatusIcon.use_appindicator) {
+-                Console.WriteLine ("AppIndicator not installed.");
+-                Environment.Exit (-1);
+-            }
+             #endif
+ 
+             if (StatusIcon.use_appindicator)
+-- 
+2.18.0
+
