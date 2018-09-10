@@ -2,10 +2,10 @@
 
 pkgname=nginx-mainline-mod-njs
 pkgver=0.2.3 # http://hg.nginx.org/njs/tags
-pkgrel=1
+pkgrel=2
 
 _modname="${pkgname#nginx-mainline-mod-}"
-_nginxver=1.15.2
+_nginxver=1.15.3
 
 pkgdesc='nginScript module for mainline nginx'
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=(
 	njs-$pkgver.tar.gz::http://hg.nginx.org/njs/archive/$pkgver.tar.gz
 )
 
-sha256sums=('eeba09aecfbe8277ac33a5a2486ec2d6731739f3c1c701b42a0c3784af67ad90'
+sha256sums=('9391fb91c3e2ebd040a4e3ac2b2f0893deb6232edc30a8e16fcc9c3fa9d6be85'
             'cbc7df9ddd7211fe2e252a0394abf26a6d3506a74425362572685aec27a65830')
 
 build() {
