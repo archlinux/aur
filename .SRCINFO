@@ -1,0 +1,14 @@
+pkgbase = lxqt-less-theme-git
+	pkgdesc = A minimal LXQt theme based on adapta
+	pkgver = latest
+	pkgrel = 1
+	url = https://gitlab.com/isseigx/lxqt-less-theme
+	arch = any
+	license = GPL
+	optdepends = kvantum-theme-adapta: recommended kvantum style
+	optdepends = adapta-gtk-theme: recommended GTK theme
+	source = git+https://gitlab.com/isseigx/lxqt-less-theme.git
+	md5sums = SKIP
+
+pkgname = lxqt-less-theme-git
+
