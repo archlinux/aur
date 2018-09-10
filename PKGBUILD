@@ -3,7 +3,7 @@
 pkgname=commander-genius-git
 _pkgname=Commander-Genius
 pkgver=v2.2.3
-pkgrel=1
+pkgrel=3
 pkgdesc="A modern implementation of the classic game Commander Keen"
 arch=('i686' 'x86_64')
 url="http://clonekeenplus.sourceforge.net"
