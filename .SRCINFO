@@ -1,0 +1,22 @@
+pkgbase = aurblobs-git
+	pkgdesc = Automatically build AUR packages and serve them from a repository (git version)
+	pkgver = r80.2dfcc20
+	pkgrel = 1
+	url = https://github.com/aurblobs/aurblobs
+	arch = any
+	license = AGPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-click
+	depends = python-docker
+	depends = python-gitpython
+	depends = git
+	depends = python-pretty_bad_protocol
+	depends = python-xdg
+	source = git+https://github.com/aurblobs/aurblobs.git
+	source = fix-constants.diff
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = aurblobs-git
+
