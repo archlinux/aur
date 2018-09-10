@@ -20,7 +20,6 @@ provides=("java-runtime=$_major" "java-runtime-headless=$_major" "java-web-start
 conflicts=("java-runtime-jre=$_major")
 
 # Variables
-DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
 _jname=${_pkgname}${_major}
 _jvmdir=/usr/lib/jvm/java-$_major-$_pkgname/jre
 
@@ -37,7 +36,7 @@ backup=("etc/java-$_jname/management/jmxremote.access"
         "etc/java-$_jname/sound.properties")
 install=$_pkgname.install
 #source=("http://download.oracle.com/otn/java/jdk/${pkgver}+${_build}/${_hash}/${_pkgname}-${pkgver}_linux-x64_bin.tar.gz"
-source=('http://ftp.osuosl.org/pub/funtoo/distfiles/oracle-java/jre-9.0.4_linux-x64_bin.tar.gz'
+source=('https://build.funtoo.org/distfiles/oracle-java/jre-9.0.4_linux-x64_bin.tar.gz'
         "policytool-$_jname.desktop")
 sha256sums=('331d6560ba0eadd6266e082e1a3ccd26777c48db881be07cb496805cd301d705'
             '82679f86f9ac4502710fd2563d68e28cc23de8a60f19921d4e53e362d798984e')
