@@ -3,29 +3,27 @@
 # Contributor: jjacky
 
 _pkgname=kalu
-pkgname=${_pkgname}-cli
+pkgname=$_pkgname-cli
 pkgver=4.3.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Upgrade notifier w/ AUR support, watched (AUR) packages, news (CLI only)"
 arch=('i686' 'x86_64')
 url="https://jjacky.com/kalu"
 license=('GPL3+')
-depends=('pacman>=5.1' 'pacman<5.2' 'curl')
-makedepends=('perl' 'groff')
+depends=('pacman>=5.1' 'pacman<5.2' 'curl' 'glib2')
 source=(https://jjacky.com/$_pkgname/$_pkgname-$pkgver.tar.xz)
-install=kalu.install
 sha256sums=('83c886e832c29768b0b80e0ee463ca057eae1a3511d2b8babdc8d6347f02cb5a')
 conflicts=("$_pkgname")
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd $_pkgname-$pkgver
   ./configure --prefix=/usr --disable-gui
   make
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  make DESTDIR="$pkgdir/" install
+  cd $_pkgname-$pkgver
+  make DESTDIR="$pkgdir" install
 }
 
 # vim:set ts=2 sw=2 et:
