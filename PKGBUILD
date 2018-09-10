@@ -1,6 +1,6 @@
 pkgname=nodejs-fauna-shell
 _pkgname=${pkgname#nodejs-}
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="faunadb access via the cli"
 arch=(any)
@@ -9,7 +9,7 @@ licence=(MPL2)
 depends=(nodejs)
 makedepends=(npm)
 source=("https://registry.npmjs.org/$_pkgname/_/$_pkgname-$pkgver.tgz")
-sha256sums=('c8d617a00d164a0bce549eaac3fdc0691db9dc610c9e1455f76864bf6055b3fe')
+sha256sums=('b5a545c05362f360dfebdf7c75c309f7e231d9cb90bbd9167f3a44daa59d3373')
 noextract=("$_pkgname-$pkgver.tgz")
 
 package() {
