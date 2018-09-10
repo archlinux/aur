@@ -1,14 +1,14 @@
 pkgbase = lpcli
-	pkgdesc = C implementation of lesspass (version 2) using libcrypto
-	pkgver = 2018.01.29
+	pkgdesc = C implementation of lesspass (version 2) without any external dependencies
+	pkgver = 2018.06.15
 	pkgrel = 1
 	url = https://github.com/monolifed/lpcli
 	arch = any
 	license = Unlicense
-	depends = openssl
+	depends = glibc
 	optdepends = xclip: to copy generated passwords to clipboard
-	source = https://github.com/monolifed/lpcli/archive/c8655b9fe30f3285095097e80b8c9312351ebd2e.tar.gz
-	sha256sums = 3e4339461932b08e3e7714c47554f488381f471bfab94da3175b67493ee8e870
+	source = https://github.com/monolifed/lpcli/archive/7a93ca76badd71cfd7dd19fb3048830f6e29fac7.tar.gz
+	sha256sums = 86e5f3afa575fbf2b947197e95a14b4440e7701620f5de36bee9d1a28b124d35
 
 pkgname = lpcli
 

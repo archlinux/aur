@@ -1,21 +1,21 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
-_commit=c8655b9fe30f3285095097e80b8c9312351ebd2e
+_commit=7a93ca76badd71cfd7dd19fb3048830f6e29fac7
 pkgname=lpcli
-pkgver=2018.01.29
+pkgver=2018.06.15
 pkgrel=1
-pkgdesc='C implementation of lesspass (version 2) using libcrypto'
+pkgdesc='C implementation of lesspass (version 2) without any external dependencies'
 arch=('any')
 url='https://github.com/monolifed/lpcli'
 license=('Unlicense')
-depends=('openssl')
+depends=('glibc')
 optdepends=('xclip: to copy generated passwords to clipboard')
 source=("https://github.com/monolifed/${pkgname}/archive/${_commit}.tar.gz")
-sha256sums=('3e4339461932b08e3e7714c47554f488381f471bfab94da3175b67493ee8e870')
+sha256sums=('86e5f3afa575fbf2b947197e95a14b4440e7701620f5de36bee9d1a28b124d35')
 
 build() {
   cd "${srcdir}/${pkgname}-${_commit}"
-  make -e USE_OSSL_DEV=1
+  make
 }
 
 package() {
