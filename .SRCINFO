@@ -17,9 +17,9 @@ pkgbase = dbeaver-ee
 	sha256sums = 453912912ae8377b16ef74a3e7d93ea588792ee8f7054a573e9fe9b93cd9265f
 	sha256sums = 0c2a75baa39459fa56159e982d9f28c966837561bd52dffd24bac87b8d65555f
 	source_i686 = http://dbeaver.com/files/5.2.0/dbeaver-ee-5.2.0-linux.gtk.x86.tar.gz
-	sha256sums_i686 = 51c15a529ff13e6bd13bdb99f97049e92b04e1b036533554a5714e52ed3eaacd
+	sha256sums_i686 = cfb481645185aeee15c481b6cfb2e45e3d8c8b8116f49c0192b060b7dc1e8e5e
 	source_x86_64 = http://dbeaver.com/files/5.2.0/dbeaver-ee-5.2.0-linux.gtk.x86_64.tar.gz
-	sha256sums_x86_64 = db73df05a8e64ba65a41b7518c7ebd6d6dc32beca97ce1871916899f37903176
+	sha256sums_x86_64 = 8e57261d9a8d44f444c36a6dacfab4640cce446fea86db447f8933b1478515d5
 
 pkgname = dbeaver-ee
 
