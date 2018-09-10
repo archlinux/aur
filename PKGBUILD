@@ -3,7 +3,7 @@
 pkgname=puyo
 pkgver=0.6
 pkgrel=1
-pkgdesc="A frontend for pacman."
+pkgdesc="A frontend for pacman and yay."
 arch=('any')
 url=""
 license=('GPL')

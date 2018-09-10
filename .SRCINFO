@@ -1,5 +1,5 @@
 pkgbase = puyo
-	pkgdesc = A frontend for pacman.
+	pkgdesc = A frontend for pacman and yay.
 	pkgver = 0.6
 	pkgrel = 1
 	arch = any
