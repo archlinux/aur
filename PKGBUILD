@@ -1,6 +1,6 @@
 # Maintainer: hanss314 <hanss314@gmail.com>
 pkgname=tlowscript
-pkgver=0.0.1a
+pkgver=0.0.1
 pkgrel=1
 pkgdesc="TLOWScript and variants"
 arch=('any')
