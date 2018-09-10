@@ -1,6 +1,6 @@
 pkgbase = opencv-java
 	pkgdesc = Open Source Computer Vision Library - Java bindings
-	pkgver = 3.4.0
+	pkgver = 3.4.3
 	pkgrel = 1
 	url = http://opencv.org/
 	arch = i686
@@ -13,13 +13,13 @@ pkgbase = opencv-java
 	makedepends = eigen
 	makedepends = apache-ant
 	makedepends = java-environment
-	depends = opencv>=3.4.0
+	depends = opencv>=3.4.3
 	depends = java-runtime
-	optdepends = opencv-samples
-	source = opencv-3.4.0.tar.gz::https://github.com/opencv/opencv/archive/3.4.0.tar.gz
-	source = opencv_contrib-3.4.0.tar.gz::https://github.com/opencv/opencv_contrib/archive/3.4.0.tar.gz
-	sha256sums = 678cc3d2d1b3464b512b084a8cca1fad7de207c7abdf2caa1fed636c13e916da
-	sha256sums = 699ab3eee7922fbd3e8f98c68e6d16a1d453b20ef364e76172e56466dc9c16cd
+	optdepends = opencv-samples: OpenCV samples
+	source = opencv-3.4.3.tar.gz::https://github.com/opencv/opencv/archive/3.4.3.tar.gz
+	source = opencv_contrib-3.4.3.tar.gz::https://github.com/opencv/opencv_contrib/archive/3.4.3.tar.gz
+	sha256sums = 4eef85759d5450b183459ff216b4c0fa43e87a4f6aa92c8af649f89336f002ec
+	sha256sums = 6dfb51326f3dfeb659128df952edecd45683626a965aa4a8e1e9c970c40fb636
 
 pkgname = opencv-java
 
