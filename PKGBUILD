@@ -2,14 +2,14 @@
 # Forked from palemoon PKGBUILD by WorMzy Tykashi <wormzy.tykashi@gmail.com>
 # Contributor: artiom <a.mv at gmx dot fr>
 pkgname=palemoon-git
-pkgver=27.9.0a1+e9a220677
+pkgver=28.1.0a1+eb2016063
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency (git version)"
 arch=('i686' 'x86_64')
 url="http://www.palemoon.org/"
 license=('MPL' 'GPL' 'LGPL')
 depends=('gtk2' 'dbus-glib' 'libxt' 'alsa-lib')
-makedepends=('git' 'python2' 'autoconf2.13' 'unzip' 'zip' 'yasm' 'ffmpeg' 'libpulse' 'gcc5')
+makedepends=('git' 'python2' 'autoconf2.13' 'unzip' 'zip' 'yasm' 'ffmpeg' 'libpulse' 'gcc54' 'gconf')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libpulse: PulseAudio audio driver'
             'hunspell: spell checker and morphological analyzer'
@@ -17,28 +17,28 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 conflicts=('palemoon')
 provides=('palemoon' 'firefox')
 install=palemoon.install
-source=(git+"https://github.com/MoonchildProductions/Pale-Moon"
+source=(git+"https://github.com/MoonchildProductions/UXP"
         palemoon.desktop
         mozconfig.in)
 md5sums=('SKIP'
          '32231f6e6a532021fd04c6d7b32f4270'
-         '0606604e202ac09797247108582e6a9d')
-         
+         'a52adf42c08aef3e48baa167cc751fe6')
+
 pkgver() {
-	cd Pale-Moon
-	echo $(cat browser/config/version.txt)"+"$(git rev-parse --short HEAD)
+	cd UXP
+	echo $(cat application/palemoon/config/version.txt)"+"$(git rev-parse --short HEAD)
 }
 
 prepare() {
   sed 's#%SRCDIR%#'"$srcdir"'#g' mozconfig.in > mozconfig
-  cd Pale-Moon
+  cd UXP
 
   chmod -R +x build/autoconf/* python/*
   find . -name '*.sh' -exec chmod +x {} \;
 }
-  
+
 build() {
-  cd Pale-Moon
+  cd UXP
 
   export CC=gcc-5
   export CXX=g++-5

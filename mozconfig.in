@@ -1,43 +1,45 @@
-## general build setup
+## General Build Setup
+#
+# Since official branding is enabled, we stick pretty close to the suggested
+# mozconfig file at:
+# http://developer.palemoon.org/Developer_Guide:Build_Instructions/Pale_Moon/Linux#head:Mozconfig_Files
 
+mk_add_options AUTOCLOBBER=1
 mk_add_options MOZ_OBJDIR=%SRCDIR%/pmbuild
+
+ac_add_options --enable-application=palemoon
 
 # number of cores your processor has
 mk_add_options MOZ_MAKE_FLAGS="-j8"
 # let's do some ricing
 ac_add_options --enable-optimize="-O2 -msse2 -mfpmath=sse -march=native -mtune=native"
-# strip debugging symbols
-ac_add_options --enable-strip
-ac_add_options --with-pthreads
 
 
 ac_add_options --enable-official-branding
 export MOZILLA_OFFICIAL=1
 
 
-mk_add_options MOZ_CO_PROJECT=browser
-ac_add_options --enable-application=browser
+ac_add_options --enable-default-toolkit=cairo-gtk2
+ac_add_options --enable-jemalloc
+ac_add_options --enable-strip
+ac_add_options --with-pthreads
 
-
-ac_add_options --disable-installer
-ac_add_options --disable-updater
 
 ac_add_options --disable-tests
-ac_add_options --disable-mochitests
+ac_add_options --disable-parental-controls
+ac_add_options --disable-accessibility
+ac_add_options --disable-webrtc
+ac_add_options --disable-gamepad
+ac_add_options --disable-necko-wifi
+ac_add_options --disable-updater
+
 ac_add_options --disable-debug
 ac_add_options --disable-sandbox
 
 ac_add_options --disable-crashreporter
-ac_add_options --disable-accessibility
-ac_add_options --disable-parental-controls
 ac_add_options --disable-maintenance-service
-ac_add_options --disable-webrtc
-ac_add_options --disable-websms-backend
-ac_add_options --disable-metro
+ac_add_options --disable-elf-hack
 
-
-ac_add_options --enable-jemalloc
-ac_add_options --enable-shared-js
 ac_add_options --enable-release
 ac_add_options --enable-devtools
 
@@ -48,5 +50,5 @@ ac_add_options --x-libraries=/usr/lib
 # Fix GCC Version & Flags
 export CC=gcc-5
 export CXX=g++-5
-export CXXFLAGS="-fPIC"
-export CFLAGS="-fPIC"
+export CXXFLAGS=${CXXFLAGS//-fno-plt/}
+export CFLAGS=${CFLAGS//-fno-plt/}
