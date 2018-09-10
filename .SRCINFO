@@ -1,11 +1,10 @@
 pkgbase = aurblobs-git
-	pkgdesc = Automatically build AUR packages and serve them from a repository (git version)
+	pkgdesc = Automatically create binary repositories from AUR packages
 	pkgver = r80.2dfcc20
 	pkgrel = 1
 	url = https://github.com/aurblobs/aurblobs
 	arch = any
 	license = AGPL3
-	makedepends = git
 	makedepends = python-setuptools
 	depends = python-click
 	depends = python-docker
