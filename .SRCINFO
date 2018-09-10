@@ -1,7 +1,7 @@
 pkgbase = dolphin-meld
 	pkgdesc = KDE File Manager, using Meld rather than Kompare
 	pkgver = 18.08.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kde.org/applications/system/dolphin/
 	arch = x86_64
 	groups = kde-applications
@@ -15,6 +15,7 @@ pkgbase = dolphin-meld
 	depends = kcmutils
 	depends = kparts
 	depends = kinit
+	depends = phonon-qt5
 	optdepends = kde-cli-tools: for editing file type options
 	optdepends = ffmpegthumbs: video thumbnails
 	optdepends = meld: file comparisons

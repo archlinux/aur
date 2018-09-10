@@ -8,14 +8,14 @@
 _pkgname=dolphin
 pkgname=dolphin-meld
 pkgver=18.08.1
-pkgrel=1
+pkgrel=2
 pkgdesc="KDE File Manager, using Meld rather than Kompare"
 arch=(x86_64)
 url="https://kde.org/applications/system/dolphin/"
 license=(LGPL)
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname=$pkgver")
-depends=(baloo-widgets knewstuff kio-extras kcmutils kparts kinit)
+depends=(baloo-widgets knewstuff kio-extras kcmutils kparts kinit phonon-qt5)
 makedepends=(extra-cmake-modules kdoctools)
 optdepends=('kde-cli-tools: for editing file type options' 'ffmpegthumbs: video thumbnails'
             'meld: file comparisons'
