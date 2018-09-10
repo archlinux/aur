@@ -1,0 +1,18 @@
+pkgbase = dart-sass
+	pkgdesc = Sass makes CSS fun again (canonical implementation)
+	pkgver = 1.13.2
+	pkgrel = 1
+	url = http://sass-lang.com/
+	arch = any
+	license = MIT
+	depends = dart
+	depends = bash
+	provides = sass
+	conflicts = ruby-sass
+	source = https://github.com/sass/dart-sass/archive/1.13.2.tar.gz
+	source = sass.sh
+	sha256sums = aa5932532c5f93273a9d6ad4db46a737116f8ba7d3f11646b94db1774e63ce3a
+	sha256sums = 14c6034f43b2577ef4779ed4e8e6c539fb6f8f7ffdb0147bfe9d501e08cf88e7
+
+pkgname = dart-sass
+
