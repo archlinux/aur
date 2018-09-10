@@ -1,6 +1,6 @@
 # Maintainer: Bogdan Danylchenko <exp.wez@gmail.com>
 pkgname=hexa-git
-pkgver=277
+pkgver=289
 pkgrel=1
 pkgdesc="Hexa is a programming language in an early stage of development"
 arch=('x86_64')
@@ -33,7 +33,9 @@ package() {
 	cp -a $srcdir/hexa/library $pkgdir/usr/share/hexa
 	cp $srcdir/hexa/LICENSE $pkgdir/usr/share/licenses/hexa-git/LICENSE
 
+	
 	mkdir -p $srcdir/hexabin
 	cp $srcdir/hexa.sh $srcdir/hexabin/hexa
+
     install --mode=755 "$srcdir/hexabin/hexa" "$pkgdir"/usr/bin/
 }
