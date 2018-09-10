@@ -1,13 +1,13 @@
 pkgbase = python-face_recognition_models
 	pkgdesc = Trained models for the face_recognition python library
-	pkgver = latest
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/ageitgey/face_recognition_models
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	source = https://github.com/ageitgey/face_recognition_models/archive/master.tar.gz
-	sha256sums = SKIP
+	source = https://files.pythonhosted.org/packages/cf/3b/4fd8c534f6c0d1b80ce0973d01331525538045084c73c153ee6df20224cf/face_recognition_models-0.3.0.tar.gz
+	sha256sums = b79bd200a88c87c9a9d446c990ae71c5a626d1f3730174e6d570157ff1d896cf
 
 pkgname = python-face_recognition_models
 
