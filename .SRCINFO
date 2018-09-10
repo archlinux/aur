@@ -1,13 +1,13 @@
 pkgbase = lxqt-arc-dark-theme-git
 	pkgdesc = A dark theme for LXQt based on Arc
 	pkgver = latest
-	pkgrel = 2
-	url = https://github.com/gabretana/lxqt-arc-dark-theme
+	pkgrel = 3
+	url = https://gitlab.com/isseigx/lxqt-arc-dark-theme
 	arch = any
 	license = GPL
 	optdepends = kvantum-theme-arc: recommended kvantum style
 	optdepends = arc-gtk-theme: GTK theme
-	source = git+https://github.com/gabretana/lxqt-arc-dark-theme.git
+	source = git+https://gitlab.com/isseigx/lxqt-arc-dark-theme.git
 	md5sums = SKIP
 
 pkgname = lxqt-arc-dark-theme-git
