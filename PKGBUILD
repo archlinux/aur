@@ -6,27 +6,25 @@ pkgname='ros-melodic-clear-costmap-recovery'
 pkgver='1.16.2'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
-ros_makedepends=(ros-melodic-nav-core
-  ros-melodic-roscpp
-  ros-melodic-costmap-2d
-  ros-melodic-catkin
+ros_makedepends=(ros-melodic-catkin
   ros-melodic-cmake-modules
-  ros-melodic-tf
-  ros-melodic-pluginlib)
-makedepends=('cmake' 'ros-build-tools'
-  ${ros_makedepends[@]}
-  eigen3)
-
-ros_depends=(ros-melodic-nav-core
-  ros-melodic-tf
+  ros-melodic-costmap-2d
+  ros-melodic-nav-core
   ros-melodic-pluginlib
   ros-melodic-roscpp
-  ros-melodic-costmap-2d)
-depends=(${ros_depends[@]}
-  eigen3)
+  ros-melodic-tf2-ros)
+makedepends=('cmake' 'ros-build-tools' 'eigen3'
+  ${ros_makedepends[@]})
+
+ros_depends=(ros-melodic-costmap-2d
+  ros-melodic-nav-core
+  ros-melodic-pluginlib
+  ros-melodic-roscpp
+  ros-melodic-tf)
+depends=(${ros_depends[@]} 'eigen3')
 
 # Git version (e.g. for debugging)
 # _tag=release/melodic/clear_costmap_recovery/${pkgver}-${_pkgver_patch}
