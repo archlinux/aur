@@ -1,5 +1,7 @@
 opencv/
 opencv_contrib/
-*.tar
 pkg/
 src/
+*.tar
+*.log
+*.xz
