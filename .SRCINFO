@@ -1,6 +1,6 @@
 pkgbase = fmui-git
 	pkgdesc = fzf mpd user interface
-	pkgver = r9.78596be
+	pkgver = r13.9165181
 	pkgrel = 2
 	url = https://github.com/seebye/fmui
 	arch = x86_64
