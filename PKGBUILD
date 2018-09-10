@@ -1,7 +1,7 @@
 # Maintainer: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
 
 pkgname=devpi-server
-pkgver=4.7.0
+pkgver=4.7.1
 pkgrel=1
 pkgdesc="reliable private and pypi.python.org caching server"
 arch=(any)
@@ -16,7 +16,7 @@ source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}
         'devpi-server.service'
         'devpi-server.install')
 install='devpi-server.install'
-sha256sums=('8ff87486f5a2f347687909ba562a7601c183108b2ce1558c5396326a413b4097'
+sha256sums=('47d4e1610809ed36b024221f1d8d27844e2ae39b4b4b551ec6579392d3737c87'
             '538aa64a3c88e55b971e4d249159228fb919802433191bbbd13e73c5e537c0b7'
             '16c075687426589b69da252f04ee1a2ff0f8e73526eb773c53475d82e827f199')
 
