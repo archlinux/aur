@@ -2,10 +2,10 @@
 
 pkgname=nginx-mainline-mod-geoip2
 pkgver=2.0
-pkgrel=15
+pkgrel=16
 
 _modname="ngx_http_geoip2_module"
-_nginxver=1.15.2
+_nginxver=1.15.3
 
 pkgdesc="GeoIP2 module for mainline nginx"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=(
 	https://github.com/leev/ngx_http_geoip2_module/archive/$pkgver/$_modname-$pkgver.tar.gz
 )
 
-sha256sums=('eeba09aecfbe8277ac33a5a2486ec2d6731739f3c1c701b42a0c3784af67ad90'
+sha256sums=('9391fb91c3e2ebd040a4e3ac2b2f0893deb6232edc30a8e16fcc9c3fa9d6be85'
             'ebb4652c4f9a2e1ee31fddefc4c93ff78e651a4b2727d3453d026bccbd708d99')
 
 build() {
