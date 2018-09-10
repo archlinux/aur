@@ -21,7 +21,7 @@
 
 set -u
 pkgname='openmeetings'
-pkgver='4.0.4'
+pkgver='4.0.5'
 pkgrel='1'
 #pkgdesc='Multi-Language Cross-Platform Customizable Web-Conferencing and Collaboration'
 pkgdesc='provides video conferencing, instant messaging, white board, collaborative document editing and other groupware tools using the Red5 Streaming Server'
@@ -47,9 +47,9 @@ source=("${_closest}/${pkgname}/${pkgver}/bin/${_srczip}"
 )
 _verwatch=("https://archive.apache.org/dist/${pkgname}/" "\([0-9\.]\+\)/" 'l')
 noextract=("${_srczip}")
-sha256sums=('a0c1564f1c867203129b67d403da2378872bbf8ade73bcab8d0627fd4d90a4e8'
+sha256sums=('343b4d8d44900cd5a6b32bb508b19976b7a1cb9e09f09efce0b033147160d9b7'
             'SKIP'
-            'a22001d137e7adf92d9f52985a1497967ada421f14f1d697df1823d74cbbce87')
+            '9cfa4ff392fe48164fe883f10449e45df6ad4dccd5aa94da689e7e5137b043ce')
 
 package() {
   set -u
@@ -64,11 +64,6 @@ package() {
   # Overwrite Apache Derby with MySQL/MariaDB which has been installed by this PKGBUILD.
   # The user can select Derby or any of the others after Install.
   cp -p "${pkgdir}/opt/${pkgname}/webapps/${pkgname}/WEB-INF/classes/META-INF/mysql_persistence.xml" "${pkgdir}/opt/${pkgname}/webapps/${pkgname}/WEB-INF/classes/META-INF/persistence.xml"
-
-  # Ensure there are no forbidden paths (git-aurcheck)
-  ! grep -alqr "/sbin" "${pkgdir}" || echo "${}"
-  ! grep -alqr "/usr/tmp" "${pkgdir}" || echo "${}"
-  ! test -d "${pkgdir}/usr/sbin" || echo "${}"
   set +u
 }
 set +u

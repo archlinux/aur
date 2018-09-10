@@ -10,6 +10,7 @@ After=network.target
 
 [Service]
 Type=simple
+Environment="RED5_HOME=/opt/openmeetings"
 ExecStart=/opt/openmeetings/red5.sh
 ExecStop=/opt/openmeetings/red5-shutdown.sh
 RestartSec=5
