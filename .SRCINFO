@@ -1,0 +1,21 @@
+pkgbase = dn42-peerfinder-client
+	pkgdesc = A probe for the dn42 PeerFinder system
+	pkgver = 1.0.10
+	pkgrel = 1
+	url = https://git.dn42.us/dn42/pingfinder
+	arch = any
+	license = unknown
+	depends = iputils
+	depends = curl
+	backup = etc/dn42-peerfinder-client.conf
+	source = client.sh::https://git.dn42.us/dn42/pingfinder/raw/master/clients/generic-linux-debian-redhat-busybox.sh
+	source = dn42-peerfinder-client.conf
+	source = dn42-peerfinder-client.service
+	source = dn42-peerfinder-client.timer
+	md5sums = 3a736fd810f67468434fdcdaf10d2815
+	md5sums = 9ace51cd9696f22f925860525aac3261
+	md5sums = 6e582d4de4073d5f7b94a56fb639fcf1
+	md5sums = 94048a42d72fe761cf3475feb06fbb31
+
+pkgname = dn42-peerfinder-client
+

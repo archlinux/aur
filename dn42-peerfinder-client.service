@@ -1,0 +1,9 @@
+# To run the probe periodically, enable dn42-peerfinder-client.timer
+
+[Unit]
+Description=dn42 PeerFinder client
+
+[Service]
+Type=oneshot
+ExecStart=/usr/lib/dn42-peerfinder-client/client.sh
+EnvironmentFile=/etc/dn42-peerfinder-client.conf
