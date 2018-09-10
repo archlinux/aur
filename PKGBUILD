@@ -1,11 +1,11 @@
 # Maintainer: jakob <grandchild@gmx.net>
 
 pkgname=mingw-w64-libgit2
-pkgver=0.27.3
+pkgver=0.27.4
 pkgrel=1
 pkgdesc="A portable, pure C implementation of the Git core methods (mingw-w64)"
 arch=(any)
-depends=(mingw-w64-crt)
+depends=(mingw-w64-{crt,curl,libssh2,openssl,zlib})
 makedepends=(mingw-w64-cmake)
 conflicts=(mingw-w64-libgit2)
 provides=(mingw-w64-libgit2)
@@ -13,7 +13,7 @@ options=(staticlibs !buildflags !strip)
 license=(GPL)
 url="https://github.com/libgit2/libgit2"
 source=("https://github.com/libgit2/libgit2/archive/v${pkgver}.tar.gz")
-sha1sums=('0ba7125c547b6538eae7f5117e8d39d9f2a8d5f2')
+sha1sums=('47392972e2c9689dbce0cf68b1e678fcc9915c2a')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -22,8 +22,8 @@ build() {
 	# unset LDFLAGS
 	for _arch in ${_architectures}; do
 		mkdir -p build-${_arch} && pushd build-${_arch}
-		${_arch}-cmake -DTHREADSAFE=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_CLAR=OFF -DSTDCALL=ON ..
-		${_arch}-cmake -DTHREADSAFE=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_CLAR=OFF -DSTDCALL=ON --build .
+		${_arch}-cmake -DTHREADSAFE=ON -DBUILD_CLAR=OFF -DSTDCALL=ON ..
+		${_arch}-cmake -DTHREADSAFE=ON -DBUILD_CLAR=OFF -DSTDCALL=ON --build .
 		popd
 	done
 }
