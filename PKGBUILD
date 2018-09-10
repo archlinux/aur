@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=gambit-c-git
-pkgver=4.8.9.r27.g1bad2439
+pkgver=4.9.0.r3.gcb2f42a7
 pkgrel=1
 pkgdesc="Scheme R5RS interpreter and compiler (via C) - git version"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('git')
 provides=('gambit-c')
 conflicts=('gambit-c')
 options=('!makeflags' 'staticlibs')
-source=(gambit-scheme::git+https://github.com/feeley/gambit.git)
+source=(gambit-scheme::git+https://github.com/gambit/gambit.git)
 md5sums=('SKIP')
 
 pkgver() {
@@ -23,22 +23,17 @@ pkgver() {
 
 build() {
   cd gambit-scheme
-  ./configure
-  make current-gsc-boot
-  
+  CFLAGS=`echo " $CFLAGS " | sed -e "s/ -O1 / /g" -e "s/ -O2 / /g" -e "s/ -O3 / /g"`
+  CXXFLAGS=`echo " $CXXFLAGS " | sed -e "s/ -O1 / /g" -e "s/ -O2 / /g" -e "s/ -O3 / /g"`
   ./configure \
       --prefix=/usr \
       --docdir=/usr/share/gambit-c \
       --infodir=/usr/share/info \
       --libdir=/usr/lib/gambit-c \
-      --enable-c-opt \
-      --enable-gcc-opts \
       --disable-shared \
       --enable-compiler-name=gambitc \
       --enable-interpreter-name=gambiti \
       --enable-single-host
-  make bootstrap
-  make bootclean
   make
   make doc
 }
