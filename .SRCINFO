@@ -1,0 +1,19 @@
+pkgbase = ros-melodic-pr2-common
+	pkgdesc = ROS - Metapackage for various PR2-related ROS packages
+	pkgver = 1.12.3
+	pkgrel = 1
+	url = http://wiki.ros.org/pr2_common
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	depends = ros-melodic-pr2-msgs
+	depends = ros-melodic-pr2-dashboard-aggregator
+	depends = ros-melodic-pr2-description
+	depends = ros-melodic-pr2-machine
+	source = ros-melodic-pr2-common-1.12.3-0.tar.gz::https://github.com/pr2-gbp/pr2_common-release/archive/release/melodic/pr2_common/1.12.3-0.tar.gz
+	sha256sums = 0b6419b86aa4b12d30fa7b1569899a5dc61bcd78a19049a0a7d23e15d1a1a0a9
+
+pkgname = ros-melodic-pr2-common
+
