@@ -1,7 +1,7 @@
 pkgbase = galapix
 	pkgdesc = A zoomable image viewer for large collections of images
 	pkgver = 0.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Galapix/galapix
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = galapix
 	makedepends = gcc7
 	depends = curl
 	depends = glew
-	depends = imagemagick
+	depends = imagemagick6
 	depends = libexif
 	depends = libjpeg
 	depends = libpng

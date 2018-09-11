@@ -2,12 +2,12 @@
 
 pkgname=galapix
 pkgver=0.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A zoomable image viewer for large collections of images"
 arch=('i686' 'x86_64')
 url="https://github.com/Galapix/galapix"
 license=('GPL3')
-depends=('curl' 'glew' 'imagemagick' 'libexif' 'libjpeg' 'libpng' 'mesa' 'sdl' 'sqlite3')
+depends=('curl' 'glew' 'imagemagick6' 'libexif' 'libjpeg' 'libpng' 'mesa' 'sdl' 'sqlite3')
 makedepends=('scons' 'patch' 'gtkglextmm' 'libglademm' 'boost' 'gcc7')
 optdepends=('xcftools: XCF format support'
             'gimp-ufraw: RAW format support')
@@ -21,7 +21,7 @@ prepare() {
   cd $pkgname-$pkgver
   patch -Np0 -i "${srcdir}"/imagemagick_plugin.patch
   patch -Np0 -i "${srcdir}"/png_string_fix.patch
-  sed -ie '1 i#include <functional>' src/galapix/tile_provider.hpp
+  sed -ie '1 i#include <functional>' src/galapix/tile_provider.hpp src/spnav/space_navigator.cpp
 }
 
 build() {
