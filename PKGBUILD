@@ -1,8 +1,8 @@
 # Maintainer: Khorne <khorne@khorne.me>
 
 pkgname=escribe-suite-bin
-pkgver=2_SP15.1
-pkgrel=3
+pkgver=2_SP17
+pkgrel=1
 pkgdesc="Evolv eScribe Suite - DNA Management Suite and Ecigstats - INTL Version"
 arch=('x86_64')
 url="https://forum.evolvapor.com/topic/69197-linux-escribe-suite-beta-thread/"
@@ -13,7 +13,7 @@ source=("https://downloads.evolvapor.com/SetupEScribe${pkgver//./_}_INT.run"
         "escribe-suite-bin.sh"
         "escribe-suite-bin.desktop"
         "ecigstats.desktop")
-md5sums=('9b037ebf0d7268ef66509166e956a931'
+md5sums=('4224afe2bdf28b9efe75c5d7a2e6795e'
          '53880780578d5bed155dbdf19d56fc21'
          'df3dd8faa3a84bdbec2f73b8432d058b'
          'ac196ccd2f6a532056b7f4e5c52f91de')
