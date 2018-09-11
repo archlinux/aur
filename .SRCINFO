@@ -1,0 +1,22 @@
+pkgbase = ros-melodic-pr2-msgs
+	pkgdesc = ROS - Messages for representing PR2 state
+	pkgver = 1.12.3
+	pkgrel = 1
+	url = http://wiki.ros.org/pr2_msgs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-message-generation
+	makedepends = ros-melodic-message-runtime
+	makedepends = ros-melodic-std-msgs
+	makedepends = ros-melodic-geometry-msgs
+	depends = ros-melodic-std-msgs
+	depends = ros-melodic-geometry-msgs
+	depends = ros-melodic-message-runtime
+	source = ros-melodic-pr2-msgs-1.12.3-0.tar.gz::https://github.com/pr2-gbp/pr2_common-release/archive/release/melodic/pr2_msgs/1.12.3-0.tar.gz
+	sha256sums = 9ced0d809f30168f7a97b29da6230c99e19011a5b4416111f02bc62f5e35b8d2
+
+pkgname = ros-melodic-pr2-msgs
+
