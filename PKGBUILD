@@ -16,12 +16,12 @@ depends=("libjpeg")
 makedepends=("gcc" "cmake")
 
 _commit="f387bb44e6c087271b763b27da998bf2e06c4f5d"
-source=("https://github.com/jacksonliam/mjpg-streamer/archive/$_commit.tar.gz")
+source=("https://github.com/jacksonliam/mjpg-streamer/archive/${_commit}.tar.gz")
 sha1sums=("298ad7adebe3876b87d4e19f76e4d2425fd0c9ff")
 
 
 build() {
-	cd "$srcdir/mjpg-streamer-$_commit/mjpg-streamer-experimental"
+	cd "${srcdir}/mjpg-streamer-${_commit}/mjpg-streamer-experimental"
 
 	unset CPPFLAGS
 	unset LDFLAGS
@@ -37,6 +37,6 @@ build() {
 }
 
 package() {
-	cd "$srcdir/mjpg-streamer-$_commit/mjpg-streamer-experimental"
-	make DESTDIR=$pkgdir install
+	cd "${srcdir}/mjpg-streamer-${_commit}/mjpg-streamer-experimental"
+	make DESTDIR="${pkgdir}" install
 }
