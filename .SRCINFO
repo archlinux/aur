@@ -1,16 +1,15 @@
 pkgbase = xmlada
 	pkgdesc = An XML parser for Ada95
 	pkgver = 2018
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AdaCore/xmlada/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	license = custom
-	makedepends = gcc-ada
-	makedepends = gprbuild-bootstrap
-	depends = gcc-ada
-	provides = xmlada
+	makedepends = gprbuild-bootstrap>=2018
+	depends = gcc-ada>=8.2.1
+	depends = gcc-ada<9.0.0
 	conflicts = xmlada-git
 	source = http://mirrors.cdn.adacore.com/art/5b0819dec7a447df26c27a40
 	source = expose-cargs-and-largs-makefile.patch

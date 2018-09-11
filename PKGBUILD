@@ -1,17 +1,16 @@
-# Maintainer: Pierre-Marie de Rodat <pmderodat on #ada at freenode.net>
-# Contributor: Rod Kay <charlie5 on #ada at freenode.net>
+# Maintainer: Rod Kay <charlie5 on #ada at freenode.net>
+# Contributor: Pierre-Marie de Rodat <pmderodat on #ada at freenode.net>
 # Contributor: Earnestly <zibeon AT googlemail.com>
 
 pkgname=xmlada
 pkgver=2018
-pkgrel=1
+pkgrel=2
 pkgdesc="An XML parser for Ada95"
 arch=('i686' 'x86_64')
 url="https://github.com/AdaCore/xmlada/"
 license=('GPL3' 'custom')
-depends=('gcc-ada')
-makedepends=('gcc-ada' 'gprbuild-bootstrap')
-provides=("$pkgname")
+depends=('gcc-ada>=8.2.1' 'gcc-ada<9.0.0')
+makedepends=('gprbuild-bootstrap>=2018')
 conflicts=("$pkgname-git")
 
 source=('http://mirrors.cdn.adacore.com/art/5b0819dec7a447df26c27a40'
@@ -27,7 +26,9 @@ prepare() {
 build() {
     cd "$srcdir/xmlada-gpl-2018-src"
     ./configure --prefix=/usr --libexecdir=/lib --enable-shared
-    make PROCESSORS="$(nproc)" GPRBUILD_OPTIONS=-R
+
+    # Make using a single job (-j1) to avoid the same file being compiled at the same time.
+    make -j1 GPRBUILD_OPTIONS=-R
 }
 
 package() {
@@ -35,5 +36,5 @@ package() {
 
     # Make one install at a time to avoid GPRinstall reading/writing to
     # the same installed project files at the same time.
-    make prefix="$pkgdir/usr" install -j1
+    make -j1 prefix="$pkgdir/usr" install
 }
