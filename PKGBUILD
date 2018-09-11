@@ -1,8 +1,9 @@
-# Maintainer: Javier Tiá <javier dot tia at gmail dot com>
+# Maintainer: sudoBash418 <sudoBash418 at gmail.com>
+# Contributor: Javier Tiá <javier dot tia at gmail dot com>
 
 _pkgbase=fuse
 pkgname=lib32-${_pkgbase}
-pkgver=2.9.7
+pkgver=2.9.8
 pkgrel=1
 pkgdesc="A library that makes it possible to implement a filesystem in a userspace program (32 bit)"
 arch=('x86_64')
@@ -12,7 +13,7 @@ depends=('lib32-glibc' "${_pkgbase}")
 makedepends=('gcc-multilib')
 source=("${url}/releases/download/${_pkgbase}-${pkgver}/${_pkgbase}-${pkgver}.tar.gz")
 options=(!libtool)
-sha256sums=('832432d1ad4f833c20e13b57cf40ce5277a9d33e483205fc63c78111b3358874')
+sha256sums=('5e84f81d8dd527ea74f39b6bc001c874c02bad6871d7a9b0c14efb57430eafe3')
 
 prepare() {
   cd ${_pkgbase}-${pkgver}
