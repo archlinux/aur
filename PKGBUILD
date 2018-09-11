@@ -3,7 +3,7 @@
 pkgname=nextcloud-desktop
 pkgver=2.5.0
 pkgrel=1
-pkgdesc='Nextcloud desktop client'
+pkgdesc='Nextcloud desktop client (work-in-progress)'
 arch=('i686' 'x86_64')
 url='https://nextcloud.com/'
 license=('GPL2')
