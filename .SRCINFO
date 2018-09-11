@@ -6,11 +6,10 @@ pkgbase = gprbuild-bootstrap
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = gcc-ada
 	depends = glibc
-	provides = gprbuild-bootstrap
+	depends = gcc-ada>=8.2.1
+	depends = gcc-ada<9.0.0
 	conflicts = gprbuild
-	conflicts = gprbuild-bootstrap
 	source = http://mirrors.cdn.adacore.com/art/5b0819dfc7a447df26c27a68
 	source = http://mirrors.cdn.adacore.com/art/5b0819dec7a447df26c27a40
 	sha1sums = f2cfc62fc05ae510e7e3aa7138d27ccb38096bdd
