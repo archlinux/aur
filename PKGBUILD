@@ -1,4 +1,3 @@
-#$Id$
 # Maintainer: Florian Pritz <bluewind@xinu.at>
 # Contributor: Hugo Doria <hugo@archlinux.org>
 
