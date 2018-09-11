@@ -6,7 +6,7 @@ pkgbase = gprbuild
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = gprbuild>=2018
+	makedepends = gprbuild-bootstrap>=2018
 	depends = libgpr>=2018
 	conflicts = gprbuild-bootstrap=2018
 	conflicts = gprbuild-bootstrap-git
