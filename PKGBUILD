@@ -1,4 +1,3 @@
-# $Id: PKGBUILD 366114 2018-07-31 19:39:06Z foutrelis $
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 # Contributor: robertfoster <morf3089@gmail.com>
 # Contributor: Håvard Pettersson <mail@haavard.me>
