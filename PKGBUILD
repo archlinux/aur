@@ -6,22 +6,28 @@
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 
 pkgname=lib32-libtirpc
-pkgver=1.0.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc='Transport Independent RPC library (SunRPC replacement)'
 arch=('x86_64')
 url='http://libtirpc.sourceforge.net/'
 license=('BSD')
 depends=('lib32-krb5' 'libtirpc')
-makedepends=('gcc-multilib')
-source=("https://downloads.sourceforge.net/sourceforge/libtirpc/libtirpc-${pkgver}.tar.bz2")
-sha256sums=('86c3a78fc1bddefa96111dd233124c703b22a78884203c55c3e06b3be6a0fd5e')
+makedepends=('git')
+source=("git://git.linux-nfs.org/projects/steved/libtirpc.git#tag=libtirpc-${pkgver//./-}")
+sha256sums=('SKIP')
+
+prepare() {
+  cd libtirpc
+
+  chmod +x autogen.sh
+  ./autogen.sh
+}
 
 build() {
-  cd libtirpc-${pkgver}
+  cd libtirpc
 
   export CC='gcc -m32'
-  export CXX='g++ -m32'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
   ./configure \
@@ -32,7 +38,7 @@ build() {
 }
 
 package() {
-  cd libtirpc-${pkgver}
+  cd libtirpc
 
   make DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir}"/{etc,usr/{include,share}}
