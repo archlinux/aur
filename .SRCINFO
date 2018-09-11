@@ -1,7 +1,7 @@
 pkgbase = unicc
 	pkgdesc = Universal LALR(1) parser generator for C, C++ and Python
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://phorward.info
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = unicc
 	source = https://phorward.info/download/unicc/unicc-1.4.0.tar.gz
 	source = https://phorward.info/download/unicc/unicc.pdf
 	md5sums = 925638bb759020f029e87ebe9f928236
-	md5sums = 9811c687109166f57537177b9da1b31f
+	md5sums = 819ed3c151080f36388e29e216956984
 
 pkgname = unicc
 
