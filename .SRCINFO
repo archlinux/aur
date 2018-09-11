@@ -1,0 +1,17 @@
+pkgbase = shadowsocks-heroku-git
+	pkgdesc = shadowsocks over WebSocket, support Heroku.
+	pkgver = r80.822994e
+	pkgrel = 1
+	url = https://github.com/mrluanma/shadowsocks-heroku
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = nodejs
+	makedepends = npm
+	source = shadowsocks-heroku-git::git+git://github.com/mrluanma/shadowsocks-heroku.git
+	source = shadowsocks-heroku@.service
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = shadowsocks-heroku-git
+
