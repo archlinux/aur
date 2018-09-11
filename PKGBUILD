@@ -1,4 +1,3 @@
-# $Id: PKGBUILD 293803 2017-04-21 11:54:59Z arojas $
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
