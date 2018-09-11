@@ -1,0 +1,15 @@
+pkgbase = tc358743-dkms
+	pkgdesc = TC358743 driver (DKMS)
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://kernel.org
+	arch = any
+	license = GPL
+	depends = dkms
+	source = Makefile
+	source = dkms.conf
+	md5sums = d68fd9e539ac9418ffb134cf9dd041c4
+	md5sums = b1d9ba9a3f66e7c3936bc349deddadf8
+
+pkgname = tc358743-dkms
+
