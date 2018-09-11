@@ -1,5 +1,5 @@
 # Maintainer: Timon Engelke <aur@timonengelke.de>
-pkgdesc="ROS - Messages for robots using FourWheelSteering"
+pkgdesc="ROS - A simple script that aggregates all of the topics that a \"pr2_dashboard\" app might be interested in."
 url='http://wiki.ros.org/pr2_dashboard_aggregator'
 
 pkgname='ros-melodic-pr2-dashboard-aggregator'
