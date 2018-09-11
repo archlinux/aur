@@ -1,4 +1,3 @@
-# $Id: PKGBUILD 68685 2012-03-31 16:54:07Z arodseth $
 # Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: Christian Babeux <christian.babeux@0x80.ca>
 
