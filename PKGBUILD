@@ -2,7 +2,7 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=earthworm-svn
 pkgver=r7559
-pkgrel=1
+pkgrel=2
 pkgdesc="An open architecture, open source public software for seismic data acquisition, processing, archival and distribution."
 arch=('x86_64')
 url="http://www.earthwormcentral.org/"
@@ -12,11 +12,9 @@ provides=("${pkgname%-svn}")
 conflicts=("${pkgname%-svn}")
 install=${pkgname%-svn}.install
 source=("${pkgname%-svn}::svn+svn://svn.isti.com/${pkgname%-svn}/trunk"
-        "profile.d_${pkgname%-svn}.sh"
         "systemd_sysusers.d_${pkgname%-svn}.conf"
         "systemd_tmpfiles.d_${pkgname%-svn}.conf")
 sha256sums=('SKIP'
-            'c83cc383842684fba22a184fcf9be69d7a5e31aa83e3f0bf4b357b65338c2c33'
             '5a75a172f53720ea9fb5bb85e2210788db33f2c3a5c352eed9435378ebc7acbd'
             'aeb2d9caf736a62cb6d7631b589391343d4469e319bae606192bf8c51fccfe0e')
 
@@ -46,8 +44,6 @@ build() {
 package() {
 	install -d "$pkgdir/opt"
 	cp -a ${pkgname%-svn} "${pkgdir}/opt/"
-	install -Dm644 "${srcdir}"/profile.d_${pkgname%-svn}.sh \
-                 "${pkgdir}"/etc/profile.d/${pkgname%-svn}.sh
   install -Dm644 "${srcdir}"/systemd_sysusers.d_${pkgname%-svn}.conf \
                  "${pkgdir}"/usr/lib/sysusers.d/${pkgname%-svn}.conf
   install -Dm644 "${srcdir}"/systemd_tmpfiles.d_${pkgname%-svn}.conf \

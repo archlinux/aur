@@ -1,7 +1,7 @@
 pkgbase = earthworm-svn
 	pkgdesc = An open architecture, open source public software for seismic data acquisition, processing, archival and distribution.
 	pkgver = r7559
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.earthwormcentral.org/
 	install = earthworm.install
 	arch = x86_64
@@ -12,11 +12,9 @@ pkgbase = earthworm-svn
 	provides = earthworm
 	conflicts = earthworm
 	source = earthworm::svn+svn://svn.isti.com/earthworm/trunk
-	source = profile.d_earthworm.sh
 	source = systemd_sysusers.d_earthworm.conf
 	source = systemd_tmpfiles.d_earthworm.conf
 	sha256sums = SKIP
-	sha256sums = c83cc383842684fba22a184fcf9be69d7a5e31aa83e3f0bf4b357b65338c2c33
 	sha256sums = 5a75a172f53720ea9fb5bb85e2210788db33f2c3a5c352eed9435378ebc7acbd
 	sha256sums = aeb2d9caf736a62cb6d7631b589391343d4469e319bae606192bf8c51fccfe0e
 
