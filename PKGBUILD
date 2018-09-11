@@ -1,4 +1,3 @@
-# $Id$
 # Maintainer: Johannes Löthberg <johannes@kyriasis.com>
 # Contributor: Sébastien Luttringer
 # Contributor: Angel Velasquez <angvp@archlinux.org>
