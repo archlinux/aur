@@ -2,7 +2,7 @@
 # Contributor: hexchain <i at hexchain.org>
 
 pkgname=tpm2-abrmd-git
-pkgver=2.0.1.r1.23a59de
+pkgver=2.0.2.r0.d0120ac
 pkgrel=1
 pkgdesc='TPM2 Access Broker & Resource Management Daemon'
 arch=('x86_64')
@@ -27,13 +27,13 @@ pkgver() {
 build() {
 	cd "$srcdir/${pkgname%-git}"
 	./bootstrap
-	./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc
+	./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc GDBUS_CODEGEN=/usr/bin/gdbus-codegen
 	make
 }
 
 check() {
 	cd "$srcdir/${pkgname%-git}"
-	./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --enable-unit --enable-integration
+	./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc GDBUS_CODEGEN=/usr/bin/gdbus-codegen --enable-unit --enable-integration
 	dbus-run-session -- make -k check
 }
 
