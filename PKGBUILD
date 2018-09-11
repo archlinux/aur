@@ -1,20 +1,20 @@
-# Maintainer: Andy Kluger <https://t.me/andykluger>
+# Maintainer: Stefan Agner <stefan@agner.ch>
 # Contributor: Samadi van Koten
 
 pkgname=umoci
-pkgver=0.4.0
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Umoci Modifies Open Container Images"
 arch=('i686' 'x86_64')
 url="https://umo.ci/"
 license=('Apache 2.0')
 depends=()
-makedepends=("go")
+makedepends=('go' 'go-md2man')
 conflicts=()
 provides=()
 options=()
-source=("https://github.com/openSUSE/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('7542c4c1d035a0d50c7de7671cfbee75')
+source=("https://github.com/openSUSE/$pkgname/releases/download/v$pkgver/umoci.tar.xz")
+sha256sums=('98d481d620c3d52b8fe1a2db07515c319fd2688253acd40bf09525ad599705e7')
 
 _repo_name="github.com/openSUSE/$pkgname"
 
