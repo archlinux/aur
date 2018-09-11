@@ -1,15 +1,16 @@
+# Maintainer: Amish <contact at via dot aur>
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
 # Generator  : CPANPLUS::Dist::Arch 1.25
 
-pkgname='perl-encode-detect'
-pkgver='1.01'
-pkgrel='4'
+pkgname=perl-encode-detect
+pkgver=1.01
+pkgrel=4
 pkgdesc="An Encode::Encoding subclass that detects the encoding of data"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
-makedepends=()
+makedepends=('perl-module-build')
 url='http://search.cpan.org/dist/Encode-Detect'
 source=('http://search.cpan.org/CPAN/authors/id/J/JG/JGMYERS/Encode-Detect-1.01.tar.gz')
 md5sums=('ee9faf55d7105c97b02b8ebe590819c7')

@@ -7,6 +7,7 @@ pkgbase = perl-encode-detect
 	arch = x86_64
 	license = PerlArtistic
 	license = GPL
+	makedepends = perl-module-build
 	depends = perl
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/J/JG/JGMYERS/Encode-Detect-1.01.tar.gz
