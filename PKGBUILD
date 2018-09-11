@@ -2,20 +2,19 @@
 
 pkgname=libadalang
 pkgver=2018
-pkgrel=1
+pkgrel=2
 pkgdesc="A high performance semantic engine for the Ada programming language."
 
 arch=('i686' 'x86_64')
 url="https://github.com/AdaCore/libadalang"
 license=('GPL')
 
-depends=("gcc-ada" "gnatcoll-core" "gnatcoll-iconv"
-         "quex-for_libadalang" "python2-funcy" "python2-mako" "python-yaml" "python-sphinx" "python-coverage" "python2-enum34"
-         "python-psutil" "python2-docutils" "autopep8" "yapf")
+depends=("gnatcoll-iconv>=2018"
+         "quex-for_libadalang" "python2-funcy" "python2-mako" "python-yaml" "python-sphinx"
+         "python-coverage" "python2-enum34" "python-psutil" "python2-docutils" "autopep8" "yapf")
 
-makedepends=("gprbuild")
+makedepends=("gprbuild>=2018")
 
-provides=('libadalang')
 conflicts=('libadalang-git')
 
 source=('http://mirrors.cdn.adacore.com/art/5b0cf9adc7a4475263382c18'
