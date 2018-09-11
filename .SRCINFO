@@ -1,0 +1,13 @@
+pkgbase = xfce-terminal-onedark
+	pkgdesc = One Dark theme for XFCE Terminal
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://rizwan-hasan.github.io/MagpieOS-Repository/xfce-terminal-onedark
+	arch = any
+	license = GPL
+	depends = xfce4-terminal
+	source = onedark.theme.gz
+	md5sums = 57c20192cc5d0470dd4b78331a99b5fd
+
+pkgname = xfce-terminal-onedark
+
