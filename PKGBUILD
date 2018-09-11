@@ -1,10 +1,9 @@
 # Maintainer: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=openssl
-_ver=1.1.0i
+_ver=1.1.1
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
-#pkgver=$_ver
 pkgrel=1
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
 arch=('x86_64')
@@ -13,12 +12,11 @@ license=('custom:BSD')
 depends=('perl')
 optdepends=('ca-certificates')
 backup=('etc/ssl/openssl.cnf')
-source=("https://www.openssl.org/source/${pkgname}-${_ver}.tar.gz"
-        "https://www.openssl.org/source/${pkgname}-${_ver}.tar.gz.asc"
+source=("https://www.openssl.org/source/${pkgname}-${_ver}.tar.gz"{,.asc}
         'ca-dir.patch')
-sha256sums=('ebbfc844a8c8cc0ea5dc10b86c9ce97f401837f3fa08c17b2cdadc118253cf99'
+sha256sums=('2836875a0f89c03d0fdf483941512613a50cfb421d6fd94b9f41d7279d586a3d'
             'SKIP'
-            '90c7411fed0157116f2df8f4be755aaf5a26e8484351b4e6a79492805d5f2790')
+            '0938c8d68110768db4f350a7ec641070686904f2fe7ba630ac94399d7dc8cc5e')
 validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491')
 
 prepare() {
@@ -31,18 +29,9 @@ prepare() {
 build() {
 	cd "$srcdir/$pkgname-$_ver"
 
-	if [ "${CARCH}" == 'x86_64' ]; then
-		openssltarget='linux-x86_64'
-		optflags='enable-ec_nistp_64_gcc_128'
-	elif [ "${CARCH}" == 'i686' ]; then
-		openssltarget='linux-elf'
-		optflags=''
-	fi
-
 	# mark stack as non-executable: http://bugs.archlinux.org/task/12434
 	./Configure --prefix=/usr --openssldir=/etc/ssl --libdir=lib \
-		shared no-ssl3-method ${optflags} \
-		"${openssltarget}" \
+		shared no-ssl3-method enable-ec_nistp_64_gcc_128 linux-x86_64 \
 		"-Wa,--noexecstack ${CPPFLAGS} ${CFLAGS} ${LDFLAGS}"
 
 	make depend
