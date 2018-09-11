@@ -3,7 +3,7 @@
 
 _pkgname=asm
 pkgname=java-${_pkgname}
-pkgver=6.2
+pkgver=6.2.1
 pkgrel=1
 pkgdesc="An all purpose Java bytecode manipulation and analysis framework"
 arch=('any')
@@ -34,10 +34,10 @@ package() {
   done
 }
 
-sha256sums=('917bda888bc543187325d5fbc1034207eed152574ef78df1734ca0aee40b7fc8'
-            '62b2c0d818fde5c52cf6404aa10836dbb170a2c3fa8466e656f0f991732fa01f'
-            '15545913db06c987aa404f028e33501d9f27f8ced612f73727e3547ac4de878c'
-            '02317d9ed739dab470a96f44de712fde51a811362ca26852b34324388e61257c'
-            'f2820ea6ef069b83f37d805f5cec58b2872a25650f5f95b4f3cc572156323df0'
-            'b0362758957b49cd68f4f8a22235b0f3de74c1c3a217e9ef5bd42c3ed00e91b4'
+sha256sums=('1460db6c33cc99c84e5cb30e46b017e4d1cc9a7fbc174101d6f84829bb64c085'
+            '4c9342c98e746e9c2d7f2cdc6896f7348317e9b1e5a6c591047fc8969def4b23'
+            '3f578d31ef30f94b6d1f44812f41fe4f98a7cd42af35335f5d4866ab3b901865'
+            'a520b54c7be4e07e533db8420ddf936fe8341ff56a5df255bab584478dd90aab'
+            'f747f70912e918872c0fe07ef227ff03b2b38fde94778502df7af133f8c8fcc6'
+            '361d2018f3262698c94837fcdea91059b2afeba11ecc109f618979561c36ebbf'
             '02f021ae8f8f2f205d36b20790eedd6a871dd3007ddf160c8692b6f3a3284fc7')
