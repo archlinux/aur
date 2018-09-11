@@ -1,4 +1,3 @@
-# $Id: PKGBUILD 112863 2014-06-09 09:56:33Z spupykin $
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Andreas Hauser <andy-aur@splashground.de>
 
