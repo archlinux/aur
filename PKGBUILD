@@ -3,7 +3,7 @@
 
 pkgname='lazygit-git'
 pkgdesc='A simple terminal UI for git commands'
-pkgver=r677.2181a91
+pkgver=r826.7d86278
 pkgrel=1
 _repo_prefix='github.com/jesseduffield'
 _repo_name="${pkgname/-git}"
