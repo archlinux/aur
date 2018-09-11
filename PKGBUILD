@@ -1,10 +1,11 @@
 # Maintainer: Steffen Weber <-boenki-gmx-de->
+# Maintainer: Stephan Springer <buzo+arch@Lini.de>
 # Contributor: Soeren Koerner <nonick at posteo dot de>
 # Contributor: Benedikt 'linopolus' Mueller <benemue at googlemail dot com>
 
 pkgname=mediathek
 _realname=MediathekView
-pkgver=13.2.0
+pkgver=13.2.1
 pkgrel=1
 pkgdesc="Offers access to the Mediathek of different german tv stations (ARD, ZDF, Arte, etc.)"
 arch=('any')
@@ -17,9 +18,10 @@ optdepends=('mplayer: record streams'
 source=(https://download.mediathekview.de/stabil/$_realname-$pkgver.tar.gz
         $pkgname
         $pkgname.desktop)
-md5sums=('6d8c6635daac29c051bd2e9628f02f18'
-         '461b97eecd40ec40e46b66eb219c92b9'
-         'bad6e1fdc948ac0e41b8535509cf944d')
+
+# curl https://download.mediathekview.de/stabil/MediathekView-latest.tar.gz.SHA-512
+sha512sums=('626971a85681461a4d1f83e218fdcb5fee21ebafac28d49571433147ea8c8a07c0476f939f6019d5b49d13dcbedd73944aa317ab54a856279e762707a6007ee9'
+            'SKIP' 'SKIP')
 
 package() {
   cd $_realname-$pkgver
