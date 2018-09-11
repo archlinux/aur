@@ -2,8 +2,8 @@
 _modulename=class
 _python=python
 pkgname=${_python}-$_modulename
-pkgver=2.6.3
-pkgrel=2
+pkgver=2.7.0
+pkgrel=1
 pkgdesc="CLASS: Cosmic Linear Anisotropy Solving System"
 arch=(any)
 url="https://github.com/lesgourg/class_public"
@@ -18,7 +18,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('e0bf856ed51ff93b565bef0d9b4bb2c17f673ee9b8c7b2b8a6fc71a61b4c067e')
+sha256sums=('aad63f9d12e557000ef84f4cc5644b39d056e5a0c639deb1c2682af7f1328d91')
 package() {
   cd "$srcdir/class_public-${pkgver}/"
   make -j libclass.a
