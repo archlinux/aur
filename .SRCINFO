@@ -1,11 +1,12 @@
 pkgbase = theshell-blueprint
 	pkgdesc = Desktop Shell that gets out of your way
-	pkgver = 8.0b
-	pkgrel = 0
+	pkgver = 8.1b
+	pkgrel = 1
 	url = https://github.com/vicr123/theshell
 	arch = x86_64
 	license = GPL3
 	makedepends = git
+	makedepends = qt5-tools
 	depends = kwidgetsaddons
 	depends = xdg-utils
 	depends = wmctrl
