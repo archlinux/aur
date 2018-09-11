@@ -1,7 +1,7 @@
 pkgbase = perl-encode-detect
 	pkgdesc = An Encode::Encoding subclass that detects the encoding of data
 	pkgver = 1.01
-	pkgrel = 1
+	pkgrel = 4
 	url = http://search.cpan.org/dist/Encode-Detect
 	arch = i686
 	arch = x86_64

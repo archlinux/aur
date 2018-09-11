@@ -3,7 +3,7 @@
 
 pkgname='perl-encode-detect'
 pkgver='1.01'
-pkgrel='1'
+pkgrel='4'
 pkgdesc="An Encode::Encoding subclass that detects the encoding of data"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
