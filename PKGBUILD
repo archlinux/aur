@@ -1,20 +1,21 @@
-# Maintainer: Pierre-Marie de Rodat <pmderodat on #ada at freenode.net>
-# Contributor: Rod Kay <charlie5 on #ada at freenode.net>
+# Maintainer: Rod Kay <charlie5 on #ada at freenode.net>
+# Contributor: Pierre-Marie de Rodat <pmderodat on #ada at freenode.net>
 # Contributor: Earnestly <zibeon AT googlemail.com>
 
 pkgname=gprbuild
 pkgver=2018
-pkgrel=1
+pkgrel=2
 pkgdesc="Builder for multi-language systems"
 arch=('i686' 'x86_64')
 url="https://github.com/AdaCore/gprbuild/"
 license=('GPL3')
-depends=('libgpr')
-makedepends=('gprbuild-bootstrap' 'libgpr')
+depends=('libgpr>=2018')
+makedepends=('gprbuild-bootstrap>=2018')
 
-# gprbuild-bootstrap is here only to bootstrap gprbuild and xmlada
-provides=("${pkgname%}" "gprbuild-bootstrap")
-conflicts=("${pkgname%}" "gprbuild-bootstrap")
+# Provides gprbuild-bootstrap to satisfy xmlada & libgpr needs, if they are rebuilt.
+provides=("gprbuild-bootstrap=2018")
+conflicts=("gprbuild-bootstrap-git" "gprbuild-git")
+
 source=('http://mirrors.cdn.adacore.com/art/5b0819dfc7a447df26c27a68'
         'relocatable-build.patch'
         'expose-cargs-and-largs-makefile.patch')
@@ -27,6 +28,7 @@ DEBUG_CFLAGS="-g"
 
 prepare() {
     cd "$srcdir/gprbuild-gpl-2018-src"
+
     patch -Np1 -i "$srcdir/relocatable-build.patch"
     patch -Np1 -i "$srcdir/expose-cargs-and-largs-makefile.patch"
 
@@ -40,8 +42,10 @@ prepare() {
 
 build() {
     cd "$srcdir/gprbuild-gpl-2018-src"
-    make prefix=/usr BUILD=production PROCESSORS="$(nproc)" setup
-    make GPRBUILD_OPTIONS=-R BUILD=production
+
+    # Make using a single job (-j1) to avoid the same file being compiled at the same time.
+    make -j1 prefix=/usr BUILD=production setup
+    make -j1 GPRBUILD_OPTIONS=-R BUILD=production
 }
 
 package() {
