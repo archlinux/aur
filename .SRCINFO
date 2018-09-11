@@ -10,6 +10,7 @@ pkgbase = gnatcoll-iconv
 	depends = gcc-ada
 	depends = libiconv
 	depends = gnatcoll-core
+	depends = python2
 	provides = gnatcoll-iconv
 	conflicts = gnatcoll-iconv
 	source = http://mirrors.cdn.adacore.com/art/5b0ce9cfc7a4475261f97ca5
