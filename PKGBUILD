@@ -1,23 +1,23 @@
-# Maintainer: Kuan-Yen Chou <forendef2846@gmail.com>
+# Maintainer: Kuan-Yen Chou <kuanyenchou@gmail.com>
 
 pkgname=mininet-git
-pkgver=20180418
-pkgrel=2
-pkgdesc="Emulator for rapid prototyping of Software Defined Networks"
-depends=('bash' 'iproute2' 'python2' 'libcgroup' 'net-tools' 'iputils' 'iperf'
-         'inetutils' 'openvswitch')
+pkgver=20180911
+pkgrel=1
+pkgdesc='Emulator for rapid prototyping of Software Defined Networks'
+depends=('python' 'iproute2' 'net-tools' 'iputils' 'inetutils' 'iperf' 'ethtool'
+         'libcgroup' 'openvswitch')
 optdepends=('xorg-xhost' 'xterm' 'openssh' 'oflops')
-makedepends=('gcc' 'make' 'automake' 'autoconf' 'libtool' 'git' 'socat' 'psmisc'
-             'help2man' 'python2-setuptools' 'python2-pyflakes' 'python2-pylint'
-             'python2-autopep8' 'python2-pexpect')
+makedepends=('gcc' 'make' 'socat' 'psmisc' 'automake' 'autoconf' 'libtool' 'git'
+             'help2man' 'python-setuptools' 'python-pyflakes' 'python-pylint'
+             'autopep8' 'python-pexpect')
 arch=('x86_64')
-url="https://github.com/mininet/mininet/"
+url='https://github.com/mininet/mininet'
 license=('custom')
 provides=('mininet')
 conflicts=('mininet')
-install="mininet.install"
-source=("git+https://github.com/mininet/mininet.git"
-        "git+https://github.com/mininet/openflow.git")
+install='mininet.install'
+source=('git+https://github.com/mininet/mininet.git'
+        'git+https://github.com/mininet/openflow.git')
 sha256sums=('SKIP'
             'SKIP')
 
@@ -26,14 +26,8 @@ prepare() {
         sed '/^include debian\/automake.mk/d' -i Makefile.am
 
         cd "$srcdir/mininet"
-        grep -rIil '#!.*python' . | xargs -n1 sed -i 's:#!/usr/bin/env python:#!/usr/bin/env python2:g'
-        grep -rIil '#!.*python' . | xargs -n1 sed -i 's:#!/usr/bin/python:#!/usr/bin/python2:g'
-        sed 's:BINDIR = /usr/bin:BINDIR = $(DESTDIR)/usr/bin:g' -i Makefile
-        sed 's:MANDIR = /usr/share/man/man1:MANDIR = $(DESTDIR)/usr/share/man/man1:g' -i Makefile
-        sed 's:install $(MNEXEC) $(BINDIR):mkdir -p $(BINDIR); install $(MNEXEC) $(BINDIR):g' -i Makefile
-        sed 's:install $(MANPAGES) $(MANDIR):mkdir -p $(MANDIR);install $(MANPAGES) $(MANDIR):g' -i Makefile
-        sed 's:python setup.py:python2 setup.py install --prefix=/usr --root="$(DESTDIR)" --optimize=1:g' -i Makefile
-        sed 's:python :python2 :g' -i Makefile
+        sed 's:PREFIX ?= /usr:PREFIX ?= "$(DESTDIR)"/usr:' -i Makefile
+        sed 's:$(PYTHON) setup.py install:$(PYTHON) setup.py install --prefix=/usr --root="$(DESTDIR)" --optimize=1:' -i Makefile
 }
 
 build() {
