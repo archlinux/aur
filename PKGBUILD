@@ -2,7 +2,7 @@
 # Co-Maintainer: Corax
 pkgname=nemo-mediainfo-tab
 pkgver=0.3
-pkgrel=3
+pkgrel=4
 pkgdesc="View media information from the properties tab"
 arch=('any')
 url="https://github.com/linux-man/nemo-mediainfo-tab"
@@ -17,5 +17,6 @@ prepare() {
 
 package() {
     install -Dm644 ${pkgname}-${pkgver}/nemo-extension/${pkgname}.py ${pkgdir}/usr/share/nemo-python/extensions/${pkgname}.py
+    mkdir ${pkgdir}/usr/share/nemo-python/extensions/${pkgname}
     cp -a ${pkgname}-${pkgver}/nemo-extension/${pkgname}/locale/. ${pkgdir}/usr/share/nemo-python/extensions/${pkgname}/locale
 }
