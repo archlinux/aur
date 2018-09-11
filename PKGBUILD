@@ -3,7 +3,7 @@
 
 pkgname=nextcloud-app-keeweb
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Open Keepass stores inside Nextcloud"
 arch=('any')
 url="https://github.com/jhass/nextcloud-keeweb"
@@ -16,7 +16,7 @@ sha512sums=("827e214622cf08b0af07a91a3764c47486333da2328883f3e4af6758316a8cb6334
 
 prepare() {
   cd "${srcdir}/keeweb"
-  sed -i 's/max-version="12"/max-version="13"/g' "appinfo/info.xml"
+  sed -i 's/max-version="12"/max-version="14"/g' "appinfo/info.xml"
 }
 
 package() {
