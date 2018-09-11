@@ -3,33 +3,30 @@
 
 _basename=libinput
 pkgname="lib32-$_basename"
-pkgver=1.11.3
+pkgver=1.12.0
 pkgrel=1
-pkgdesc="Input device management and event handling library"
+pkgdesc="Input device management and event handling library (32-bit)"
 url="https://www.freedesktop.org/wiki/Software/libinput/"
 arch=(x86_64)
 license=(custom:X11)
 depends=('lib32-mtdev' 'lib32-systemd' 'lib32-libevdev' 'lib32-libwacom' "$_basename")
-makedepends=('doxygen' 'graphviz' 'lib32-gtk3' 'meson')
+# upstream doesn't recommend building docs
+makedepends=('lib32-gtk3' 'meson') # 'doxygen' 'graphviz' 'python-sphinx' 'python-recommonmark'
 source=(https://freedesktop.org/software/$_basename/$_basename-$pkgver.tar.xz{,.sig})
-sha512sums=('5e18daab6202bcbfddeebc35dac4cabb5f726b5b73f5fc87975b58f3019a54a4b1f506a3200e920638ddddfb978a0b96c23c2e90b081942f86d33c16d4836949'
+sha512sums=('4aee877785f9ac080e4f8ee20f3643bc4f3ddbc568aca6c363a962f8c8f76b8db7dc113c8167092f0277d112346a85b9a7e7c3c3f227ed243aaba32c9092c924'
             'SKIP')
-validpgpkeys=('3C2C43D9447D5938EF4551EBE23B7E70B467F0BF') # Peter Hutterer (Who-T) <office@who-t.net>
-
-prepare() {
-  cd $_basename-$pkgver
-  # Reduce docs size
-  printf '%s\n' >>doc/libinput.doxygen.in \
-    HAVE_DOT=yes DOT_IMAGE_FORMAT=svg INTERACTIVE_SVG=yes
-}
-
+validpgpkeys=('3C2C43D9447D5938EF4551EBE23B7E70B467F0BF') # Peter Hutterer (Who-T) <office@who-t.net>0
 
 build() {
   export CC='gcc -m32'
   export CXX='g++ -m32'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
-  arch-meson $_basename-$pkgver build --libdir=/usr/lib32 -Dtests=false
+  arch-meson $_basename-$pkgver build \
+    --libdir=/usr/lib32 \
+    -Dudev-dir=/usr/lib/udev \
+    -Dtests=false \
+    -Ddocumentation=false
   ninja -C build
 }
 
