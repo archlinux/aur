@@ -1,40 +1,40 @@
-# Maintainer: Gergely Imreh <imrehg@gmail.com>
+# Maintainer: Cédric Connes <cedric.connes@gmail.com>
 pkgname=bluemix-cli
-pkgver=0.6.7
-pkgrel=2
+pkgver=0.9.0
+pkgrel=1
 pkgdesc="Interact with your applications, virtual servers, containers, and other components in IBM Bluemix."
 arch=('x86_64' 'i686')
-url="http://clis.ng.bluemix.net/ui/home.html"
+url="https://github.com/IBM-Cloud/ibm-cloud-cli-release/releases"
 license=('CUSTOM')
 depends=()
-source_x86_64=("Bluemix_CLI_${pkgver}_amd64.tar.gz::https://clis.ng.bluemix.net/download/bluemix-cli/${pkgver}/linux64")
-source_i686=("Bluemix_CLI_${pkgver}_386.tar.gz::https://clis.ng.bluemix.net/download/bluemix-cli/${pkgver}/linux32")
-sha256sums_x86_64=('552fdaf4b82bf62281e10b7fbfb8a31251f7f1b86144648cb87625d406b1fd19')
-sha256sums_i686=('74bf687916eef50c7506541dd0765578bbc5a4dab9125ae371e89689e607f81e')
+source_x86_64=("IBM_Cloud_CLI_${pkgver}_linux_amd64.tgz::https://clis.ng.bluemix.net/download/bluemix-cli/${pkgver}/linux64/archive")
+source_i686=("IBM_Cloud_CLI_${pkgver}_linux_386.tgz::https://clis.ng.bluemix.net/download/bluemix-cli/${pkgver}/linux32/archive")
+sha256sums_x86_64=('0de4cf3cea389451f214e2bbb9a887c6a513a88ff80bb069d9630341ccf5011e')
+sha256sums_i686=('21d83297bb0d632402808fcec0d4e980118d3baccd25b4da225e4bf336d54abc')
 
 package() {
-  cd "${srcdir}/Bluemix_CLI/"
+  cd "${srcdir}/IBM_Cloud_CLI/"
 
-  mkdir -p "${pkgdir}/opt/Bluemix/"
-  install -D "bin/NOTICE" "${pkgdir}/opt/Bluemix/bin/NOTICE"
-  install -D "bin/LICENSE" "${pkgdir}/opt/Bluemix/bin/LICENSE"
-  install -D "bin/ibmcloud" "${pkgdir}/opt/Bluemix/bin/ibmcloud"
-  install -D "bin/bluemix-analytics" "${pkgdir}/opt/Bluemix/bin/bluemix-analytics"
-  install -D "bin/cfcli/cf" "${pkgdir}/opt/Bluemix/bin/cfcli/cf"
-  install -D "bx/bash_autocomplete" "${pkgdir}/opt/Bluemix/bx/bash_autocomplete"
-  install -D "bx/zsh_autocomplete" "${pkgdir}/opt/Bluemix/bx/zsh_autocomplete"
+  mkdir -p "${pkgdir}/opt/ibmcloud/"
+  install -D "NOTICE" "${pkgdir}/opt/ibmcloud/bin/NOTICE"
+  install -D "LICENSE" "${pkgdir}/opt/ibmcloud/bin/LICENSE"
+  install -D "ibmcloud" "${pkgdir}/opt/ibmcloud/bin/ibmcloud"
+  install -D "ibmcloud-analytics" "${pkgdir}/opt/ibmcloud/bin/ibmcloud-analytics"
+  install -D "cfcli/cf" "${pkgdir}/opt/ibmcloud/bin/cfcli/cf"
+  install -D "autocomplete/bash_autocomplete" "${pkgdir}/opt/ibmcloud/autocomplete/bash_autocomplete"
+  install -D "autocomplete/zsh_autocomplete" "${pkgdir}/opt/ibmcloud/autocomplete/zsh_autocomplete"
 
   install -d "${pkgdir}/usr/bin"
 
-  ln -sf /opt/Bluemix/bin/ibmcloud "${pkgdir}/opt/Bluemix/bin/bluemix"
-  ln -sf /opt/Bluemix/bin/ibmcloud "${pkgdir}/opt/Bluemix/bin/bx"
-  ln -sf /opt/Bluemix/bin/ibmcloud "${pkgdir}/usr/bin/bluemix"
-  ln -sf /opt/Bluemix/bin/ibmcloud "${pkgdir}/usr/bin/bx"
-  ln -sf /opt/Bluemix/bin/ibmcloud "${pkgdir}/usr/bin/ibmcloud"
-  ln -sf /opt/Bluemix/bin/bluemix-analytics "${pkgdir}/usr/bin/bluemix-analytics"
+  ln -sf /opt/ibmcloud/bin/ibmcloud "${pkgdir}/opt/ibmcloud/bin/bluemix"
+  ln -sf /opt/ibmcloud/bin/ibmcloud "${pkgdir}/opt/ibmcloud/bin/bx"
+  ln -sf /opt/ibmcloud/bin/ibmcloud "${pkgdir}/usr/bin/bluemix"
+  ln -sf /opt/ibmcloud/bin/ibmcloud "${pkgdir}/usr/bin/bx"
+  ln -sf /opt/ibmcloud/bin/ibmcloud "${pkgdir}/usr/bin/ibmcloud"
+  ln -sf /opt/ibmcloud/bin/ibmcloud-analytics "${pkgdir}/usr/bin/ibmcloud-analytics"
 
-  chown -R root:root "${pkgdir}/opt/Bluemix/"
-  chmod -R 755 "${pkgdir}/opt/Bluemix/"
+  chown -R root:root "${pkgdir}/opt/ibmcloud/"
+  chmod -R 755 "${pkgdir}/opt/ibmcloud/"
 
-  install -Dm644 "bin/LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
