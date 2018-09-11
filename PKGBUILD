@@ -2,8 +2,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=pakku-git
-pkgver=0.13.1.gd25443b
-pkgrel=2
+pkgver=0.13r1.gd25443b
+pkgrel=1
 pkgdesc='Pacman wrapper with AUR support with latest changes from github repo'
 arch=('x86_64')
 url="https://github.com/kitsunyan/pakku"
@@ -14,12 +14,12 @@ backup=('etc/pakku.conf')
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 source=("git+https://github.com/kitsunyan/${pkgname%-git}.git")
-backup=(etc/pakku.conf)
+backup=('etc/pakku.conf')
 sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  git describe --tags|sed 's+-+.+g'| cut -c2-
+  git describe --tags|sed 's+-+r+'|sed 's+-+.+g'| cut -c2-
 }
 
 build() {
