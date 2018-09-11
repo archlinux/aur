@@ -3,14 +3,15 @@
 
 pkgname=libadalang-tools
 pkgver=2018
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Libadalang-based tools: gnatpp, gnatmetric and gnatstub"
 url='https://github.com/AdaCore/libadalang-tools'
 arch=('i686' 'x86_64')
 license=('GPL')
 
-depends=('libadalang')
+depends=('libadalang>=2018')
+makedepends=("gprbuild>=2018")
 
 source=('http://mirrors.cdn.adacore.com/art/5b0819dfc7a447df26c27a59'
         'workaround-gnat-bug.patch')
@@ -31,7 +32,7 @@ build()
     # be set.
     source /etc/profile.d/quex.sh
 
-    make BUILD_MODE=prod LIBRARY_TYPE=relocatable PROCESSORS=`nproc`
+    make -j1 BUILD_MODE=prod LIBRARY_TYPE=relocatable
 }
 
 package()
