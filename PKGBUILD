@@ -1,4 +1,3 @@
-# $Id: PKGBUILD 159441 2016-01-30 05:03:01Z fyan $
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Riley Trautman <asonix.dev@gmail.com>
 # Contributor: Michael Spencer <sonrisesoftware@gmail.com>
