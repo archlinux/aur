@@ -4,17 +4,19 @@
 
 pkgname=gnat-gps
 pkgver=2018
-pkgrel=1
+pkgrel=2
 pkgdesc="GNAT Programming Studio for Ada"
 
 arch=('i686' 'x86_64')
 url="http://libre.adacore.com/libre/tools/gps"
 license=('GPL')
 
-depends=("clang" "libadalang"
-         "gnatcoll-core" "gnatcoll-sqlite" "gnatcoll-xref" "gnatcoll-python" "gnatcoll-db2ada" "gnatcoll-gnatinspect" "gtkada"
+depends=("clang" "libadalang>=2018"
+         "gnatcoll-xref>=2018" "gnatcoll-python>=2018" "gnatcoll-db2ada>=2018"
+         "gnatcoll-gnatinspect>=2018" "gtkada>=2018"
          "gnome-icon-theme" "gnome-icon-theme-extras" "gnome-icon-theme-symbolic" 
          "python2-gobject" "python2-jedi" "python-pep8")
+makedepends=("gprbuild>=2018")
 
 source=(http://mirrors.cdn.adacore.com/art/5b0cf627c7a4475261f97ceb
         http://mirrors.cdn.adacore.com/art/5b0819dfc7a447df26c27a59
@@ -55,8 +57,7 @@ build()
   export PATH=$srcdir/gps-gpl-2018-src/temp_bin:$PATH
 	
   ./configure  --prefix=/usr
-
-  PROCESSORS="$(nproc)" make
+  make -j1
 }
 
 

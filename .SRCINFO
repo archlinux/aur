@@ -1,20 +1,19 @@
 pkgbase = gnat-gps
 	pkgdesc = GNAT Programming Studio for Ada
 	pkgver = 2018
-	pkgrel = 1
+	pkgrel = 2
 	url = http://libre.adacore.com/libre/tools/gps
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = gprbuild>=2018
 	depends = clang
-	depends = libadalang
-	depends = gnatcoll-core
-	depends = gnatcoll-sqlite
-	depends = gnatcoll-xref
-	depends = gnatcoll-python
-	depends = gnatcoll-db2ada
-	depends = gnatcoll-gnatinspect
-	depends = gtkada
+	depends = libadalang>=2018
+	depends = gnatcoll-xref>=2018
+	depends = gnatcoll-python>=2018
+	depends = gnatcoll-db2ada>=2018
+	depends = gnatcoll-gnatinspect>=2018
+	depends = gtkada>=2018
 	depends = gnome-icon-theme
 	depends = gnome-icon-theme-extras
 	depends = gnome-icon-theme-symbolic
