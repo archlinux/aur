@@ -17,8 +17,7 @@ prepare () {
   cd "$srcdir/$pkgname-$pkgver"
 
   # fix guile extension
-  curl -L https://github.com/stevengj/nlopt/pull/209.patch --output 209.patch
-  patch -p1 -i 209.patch
+  curl -L https://github.com/stevengj/nlopt/pull/209.patch | patch -p1
 }
 
 build() {
