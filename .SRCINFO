@@ -1,18 +1,14 @@
 pkgbase = libgpr
 	pkgdesc = Ada library to handle GPRbuild project files
 	pkgver = 2018
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AdaCore/gprbuild/
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = git
-	makedepends = gprbuild-bootstrap
-	makedepends = xmlada
-	depends = glibc
-	depends = xmlada
-	provides = libgpr
-	conflicts = libgpr
+	makedepends = gprbuild-bootstrap>=2018
+	depends = xmlada>=2018
+	conflicts = libgpr-git
 	source = http://mirrors.cdn.adacore.com/art/5b0819dfc7a447df26c27a68
 	source = relocatable-build.patch
 	source = expose-cargs-and-largs-makefile.patch

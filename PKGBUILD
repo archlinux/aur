@@ -1,18 +1,17 @@
-# Maintainer: Pierre-Marie de Rodat <pmderodat on #ada at freenode.net>
-# Contributor: Rod Kay <charlie5 on #ada at freenode.net>
+# Maintainer: Rod Kay <charlie5 on #ada at freenode.net>
+# Contributor: Pierre-Marie de Rodat <pmderodat on #ada at freenode.net>
 # Contributor: Earnestly <zibeon AT googlemail.com>
 
 pkgname=libgpr
 pkgver=2018
-pkgrel=1
+pkgrel=2
 pkgdesc="Ada library to handle GPRbuild project files"
 arch=('i686' 'x86_64')
 url="https://github.com/AdaCore/gprbuild/"
 license=('GPL3')
-depends=('glibc' 'xmlada')
-makedepends=('git' 'gprbuild-bootstrap' 'xmlada')
-provides=("${pkgname}")
-conflicts=("${pkgname}")
+depends=('xmlada>=2018')
+makedepends=('gprbuild-bootstrap>=2018')
+conflicts=("${pkgname}-git")
 
 
 source=('http://mirrors.cdn.adacore.com/art/5b0819dfc7a447df26c27a68'
