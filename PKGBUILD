@@ -6,7 +6,7 @@
 
 pkgname=firefox-wayland-hg
 _pkgname=firefox
-pkgver=r433427.e4e2245fc142
+pkgver=r435650.423bdf7a802b
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 arch=(x86_64)
@@ -25,14 +25,10 @@ _repo=https://hg.mozilla.org/mozilla-unified
 conflicts=('firefox')
 provides=('firefox')
 source=('mozilla-unified::hg+https://hg.mozilla.org/mozilla-central/'
-        firefox.desktop firefox-symbolic.svg
-        0001-Bug-1430274-Define-MOZ_ALSA-for-more-source-files.-r.patch
-        firefox-install-dir.patch)
+        firefox.desktop firefox-symbolic.svg)
 sha256sums=('SKIP'
             '677e1bde4c6b3cff114345c211805c7c43085038ca0505718a11e96432e9811a'
-            '9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797'
-            'e8a695bd6a007525390c502739c0f00d5d753a1bde7053c21c712075f2c2994d'
-            'a94f80abe65608cd49054a30acc31e4d0885fe5b2a38cf08ded5e5b51b87c99d')
+            '9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -56,10 +52,6 @@ prepare() {
   ln -sf /usr/bin/python2 path/python
 
   cd mozilla-unified
-  # patch -Np1 -i ../firefox-install-dir.patch
-
-  # https://bugs.archlinux.org/task/57285
-  # patch -Np1 -i ../0001-Bug-1430274-Define-MOZ_ALSA-for-more-source-files.-r.patch
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
@@ -70,7 +62,6 @@ ac_add_options --enable-application=browser
 ac_add_options --prefix=/usr
 ac_add_options --enable-release
 ac_add_options --enable-gold
-ac_add_options --enable-pie
 ac_add_options --enable-optimize="-O2"
 ac_add_options --enable-rust-simd
 
@@ -165,14 +156,6 @@ END
     install -Dm644 browser/branding/official/default$i.png \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png"
   done
-  #install -Dm644 browser/branding/official/content/icon64.png \
-  #  "$pkgdir/usr/share/icons/hicolor/64x64/apps/$_pkgname.png"
-  #install -Dm644 browser/branding/official/mozicon128.png \
-  #  "$pkgdir/usr/share/icons/hicolor/128x128/apps/$_pkgname.png"
-  #install -Dm644 browser/branding/official/content/about-logo.png \
-  #  "$pkgdir/usr/share/icons/hicolor/192x192/apps/$_pkgname.png"
-  #install -Dm644 browser/branding/official/content/about-logo@2x.png \
-  #  "$pkgdir/usr/share/icons/hicolor/384x384/apps/$_pkgname.png"
   install -Dm644 ../firefox-symbolic.svg \
     "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$_pkgname-symbolic.svg"
 
