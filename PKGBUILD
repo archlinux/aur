@@ -1,4 +1,3 @@
-#$Id$
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 # Contributor: Andrea Scarpino <bash.lnx@gmail.com>
 # Contributor: William Rea <sillywilly@gmail.com>
