@@ -1,0 +1,18 @@
+pkgbase = ros-melodic-pr2-dashboard-aggregator
+	pkgdesc = ROS - Messages for robots using FourWheelSteering
+	pkgver = 1.12.3
+	pkgrel = 1
+	url = http://wiki.ros.org/pr2_dashboard_aggregator
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	depends = ros-melodic-std-msgs
+	depends = ros-melodic-pr2-msgs
+	depends = ros-melodic-rospy
+	source = ros-melodic-pr2-dashboard-aggregator-1.12.3-0.tar.gz::https://github.com/pr2-gbp/pr2_common-release/archive/release/melodic/pr2_dashboard_aggregator/1.12.3-0.tar.gz
+	sha256sums = 50c10a982c9d7fe6b1d6f64f73bcdaa207b5a8f76ddd867ff146114e1ba020c4
+
+pkgname = ros-melodic-pr2-dashboard-aggregator
+
