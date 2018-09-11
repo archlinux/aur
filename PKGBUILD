@@ -2,25 +2,24 @@
 # Contributor: Carl George < carl at george dot computer >
 
 pkgname='pop-gtk-theme'
-pkgver='2.2.3'
-_pkgver="${pkgver}-0"
+pkgver=3.1.2
 pkgrel=1
 pkgdesc='Version 2 of the Pop GTK+ Theme'
 arch=('any')
-url='https://github.com/system76/pop-gtk-theme'
+url='https://github.com/pop-os/gtk-theme'
 license=('GPL2' 'CCPL:by-sa')
-makedepends=('sassc' 'optipng' 'parallel')
-source=("${pkgname}-${_pkgver}.tar.gz::${url}/archive/${_pkgver}/${pkgname}-${_pkgver}.tar.gz")
-sha256sums=('910759e857f9bbd376d9db54b9119f49f78af782cb7f75d2df84a3f22a675de8')
+makedepends=('inkscape' 'sassc' 'optipng' 'parallel')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+sha256sums=('0ae1223d88e4b55b5b0410a10676265f805bd74a759c74d0a26cd80b612ef296')
 
 build() {
-  cd "${pkgname/pop-}-${_pkgver}"
+  cd "${pkgname/pop-}-${pkgver}"
 
   make
 }
 
 package() {
-  cd "${pkgname/pop-}-${_pkgver}"
+  cd "${pkgname/pop-}-${pkgver}"
 
   make DESTDIR="${pkgdir}" install
 }
