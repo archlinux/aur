@@ -1,4 +1,3 @@
-# $Id$
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 # Contributor: kappa <kappacurve@gmail.com>
 
