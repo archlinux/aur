@@ -3,25 +3,26 @@
 
 pkgname=trimage
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI based lossless image compressor."
 url="http://trimage.org"
 arch=('any')
-license=('MIT')
-depends=("python2-pyqt" "optipng" "advancecomp" "jpegoptim" "pngcrush")
-source=("https://github.com/Kilian/Trimage/archive/${pkgver}.zip")
+license=('custom:MIT')
+depends=('python2-pyqt4')
+optdepends=('optipng: for crushing png files'
+	    'pngcrush: for crushing png files'
+	    'advancecomp: for crushing png files'
+	    'jpegoptim: for crushing jpeg-files')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Kilian/Trimage/archive/${pkgver}.zip")
 md5sums=('5d596c19c36773d6c94c3633763f603c')
 
-build() {
-  cd "$srcdir/Trimage-$pkgver"
-
-  find ./ -type f -name '*.py' | xargs -n 1 sed -i 's|/usr/bin/env python|/usr/bin/env python2|'
-  sed -i 's|/usr/bin/env python|/usr/bin/env python2|' trimage
-
-  python2 setup.py build
+prepare() {
+  cd Trimage-$pkgver  
+  sed -i '1s|python|python2|g' $pkgname src/$pkgname/$pkgname.py
 }
 
 package() {
-  cd "$srcdir/Trimage-$pkgver"
+  cd Trimage-$pkgver
   python2 setup.py install --root="${pkgdir}"  --optimize=1
+  install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
 }
