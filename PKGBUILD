@@ -1,4 +1,3 @@
-# $Id: PKGBUILD 61589 2012-01-03 23:37:49Z arodseth $
 # Maintainer: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: kappa <kappacurve@gmail.com>
 
