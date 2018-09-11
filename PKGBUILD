@@ -2,15 +2,15 @@
 
 pkgname=gnatcoll-core
 pkgver=2018
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Gnat components collection - Core packages.'
 url='https://github.com/AdaCore/gnatcoll-core/'
 arch=('i686' 'x86_64')
 license=('GPL')
 
-depends=('gcc-ada' 'libgpr')
-makedepends=('gprbuild')
+depends=('libgpr>=2018')
+makedepends=('gprbuild>=2018')
 
 provides=('gnatcoll-core')
 conflicts=('gnatcoll' 'gnatcoll-core-git')
@@ -18,15 +18,13 @@ conflicts=('gnatcoll' 'gnatcoll-core-git')
 source=('http://mirrors.cdn.adacore.com/art/5b0819dfc7a447df26c27a99')
 sha1sums=('213105933eb2deb4d08f6b5beab518ad6c70fbac')
 
-
 build()
 {
     cd gnatcoll-core-gpl-2018-src
 
     make setup BUILD=PROD prefix=/usr
-    make PROCESSORS="$(nproc)" GPRBUILD_OPTIONS=-R
+    make -j1 GPRBUILD_OPTIONS=-R
 }
-
 
 package()
 {
