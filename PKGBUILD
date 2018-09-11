@@ -2,13 +2,13 @@
 # Contributor: farwayer <farwayer@gmail.com>
 
 pkgname=jack2-no-dbus-git
-pkgver=1.9.12.r17.g21f67b38
-pkgrel=3
+pkgver=1.9.12.r18.gcf3f8205
+pkgrel=1
 pkgdesc='Classic jack2 without dbus enabled. For starting as daemon with systemd.'
 arch=('x86_64' 'i686')
 url='http://jackaudio.org/'
 license=('GPL')
-depends=('celt' 'libffado' 'opus')
+depends=('celt' 'opus')
 makedepends=('python2' 'celt' 'opus' 'libsamplerate' 'git')
 optdepends=('a2jmidid: Expose legacy ALSA sequencer applications in JACK MIDI'
                     'realtime-privileges: Acquire realtime privileges'
