@@ -1,4 +1,3 @@
-# $Id: PKGBUILD 373816 2018-08-24 16:31:06Z heftig $
 # Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: M0Rf30
 # Contributor: Samsagax <samsagax@gmail.com>
