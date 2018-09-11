@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/AdaCore/xmlada/"
 license=('GPL3' 'custom')
 depends=('gcc-ada>=8.2.1' 'gcc-ada<9.0.0')
-makedepends=('gprbuild>=2018')
+makedepends=('gprbuild-bootstrap>=2018')
 conflicts=("$pkgname-git")
 
 source=('http://mirrors.cdn.adacore.com/art/5b0819dec7a447df26c27a40'

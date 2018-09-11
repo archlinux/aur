@@ -7,7 +7,7 @@ pkgbase = xmlada
 	arch = x86_64
 	license = GPL3
 	license = custom
-	makedepends = gprbuild>=2018
+	makedepends = gprbuild-bootstrap>=2018
 	depends = gcc-ada>=8.2.1
 	depends = gcc-ada<9.0.0
 	conflicts = xmlada-git
