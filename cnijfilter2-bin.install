@@ -1,0 +1,24 @@
+post_install() {
+    _cups_path1=/usr/share/ppd
+    _cups_path2=/usr/share/cups/model
+    ppd_files="canone480.ppd canonip110.ppd canonmg6600.ppd canonmx490.ppd canone460.ppd canonmg7500.ppd canonmb5300.ppd canonmg5600.ppd canonmb2300.ppd canonmg2900.ppd canonmb5000.ppd canonmb2000.ppd canonib4000.ppd "
+
+    if [ -x /sbin/ldconfig ]; then
+        /sbin/ldconfig
+    fi
+    # make symbolic link for ppd
+    if [ ! -d ${_cups_path2} ]; then
+        mkdir ${_cups_path2}
+    fi
+    for f in ${ppd_files}; do
+        ln -fs ${_cups_path1}/${f} ${_cups_path2}/${f}
+    done
+    systemctl restart org.cups.cupsd.service
+
+    echo "Successfully installed.  Visit http://localhost:631/ to configure printers using CUPS."
+}
+
+post_upgrade() {
+    post_install
+}
+
