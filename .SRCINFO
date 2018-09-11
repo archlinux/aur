@@ -1,0 +1,20 @@
+pkgbase = ros-melodic-four-wheel-steering-msgs
+	pkgdesc = ROS - Messages for robots using FourWheelSteering
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://wiki.ros.org/four_wheel_steering_msgs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-message-generation
+	makedepends = ros-melodic-message-runtime
+	makedepends = ros-melodic-std-msgs
+	depends = ros-melodic-std-msgs
+	depends = ros-melodic-message-runtime
+	source = ros-melodic-four-wheel-steering-msgs-1.0.0-0.tar.gz::https://github.com/ros-drivers-gbp/four_wheel_steering_msgs-release/archive/release/melodic/four_wheel_steering_msgs/1.0.0-0.tar.gz
+	sha256sums = 4089701e5cb0a7f06d6e42aef2863cd985f8e43d46d7aca46f5c0e01caaead86
+
+pkgname = ros-melodic-four-wheel-steering-msgs
+
