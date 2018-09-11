@@ -1,4 +1,3 @@
-#$Id$
 #Maintainer: Jan De Groot <jgc@archlinux.org>
 
 pkgname=libgnome-keyring
