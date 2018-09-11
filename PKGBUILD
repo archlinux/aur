@@ -5,15 +5,15 @@
 # Upstream: https://github.com/lightningnetwork/lnd
 
 pkgname=('lnd-git')
-pkgver=0.5.beta.rc1.22.g4f43c1c9
+pkgver=0.5.beta.rc2.23.gd050cedd
 pkgrel=1
-pkgdesc='The Lighting Network Daemon, for secure off-chain bitcoin transactions.'
+pkgdesc='The Lightning Network Daemon, for secure off-chain bitcoin transactions.'
 arch=('x86_64')
 url='https://github.com/lightningnetwork/lnd'
 license=('MIT')
 depends=('glibc')
 makedepends=('git' 'dep' 'go' 'fakeroot')
-provides=('lnd')
+provides=('lnd' 'lnd-cli')
 conflicts=()
 source=("$pkgname::git+https://github.com/lightningnetwork/lnd.git")
 md5sums=('SKIP')
