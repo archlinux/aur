@@ -1,0 +1,18 @@
+pkgbase = ros-melodic-pr2-description
+	pkgdesc = ROS - This package contains the description (mechanical, kinematic, visual, etc.) of the PR2 robot.
+	pkgver = 1.12.3
+	pkgrel = 1
+	url = http://ros.org/wiki/pr2_description
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-ivcon
+	makedepends = ros-melodic-convex-decomposition
+	makedepends = ros-melodic-catkin
+	depends = ros-melodic-xacro
+	source = ros-melodic-pr2-description-1.12.3-0.tar.gz::https://github.com/pr2-gbp/pr2_common-release/archive/release/melodic/pr2_description/1.12.3-0.tar.gz
+	sha256sums = dd73a6a8dc3713503e0f502a3d1940a80a3b96de75e68197d270bff8f3a30aa1
+
+pkgname = ros-melodic-pr2-description
+
