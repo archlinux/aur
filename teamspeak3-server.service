@@ -1,6 +1,7 @@
 [Unit]
 Description=TeamSpeak3 Server
 After=network-online.target
+Wants=network-online.target
 
 [Service]
 Type=simple
