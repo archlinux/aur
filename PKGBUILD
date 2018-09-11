@@ -2,11 +2,11 @@
 
 pkgname=python-setuptools-rust
 pkgver=0.10.3
-pkgrel=1
-pkgdesc="Sampling profiler for Python programs"
+pkgrel=2
+pkgdesc="Compile and distribute Python extensions written in rust as easily as if they were written in C."
 arch=('any')
 license=('MIT')
-url="https://github.com/benfred/py-spy"
+url="https://github.com/PyO3/setuptools-rust"
 depends=('python' 'python-setuptools' 'python-semantic-version')
 makedepends=('python-setuptools')
 

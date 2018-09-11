@@ -1,8 +1,8 @@
 pkgbase = python-setuptools-rust
-	pkgdesc = Sampling profiler for Python programs
+	pkgdesc = Compile and distribute Python extensions written in rust as easily as if they were written in C.
 	pkgver = 0.10.3
-	pkgrel = 1
-	url = https://github.com/benfred/py-spy
+	pkgrel = 2
+	url = https://github.com/PyO3/setuptools-rust
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
