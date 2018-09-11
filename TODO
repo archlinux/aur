@@ -1,0 +1,4 @@
+KDE ECM deprecations
+man pages fail to build
+-pie for shared libraries
+Don't install intermediate Latex files
