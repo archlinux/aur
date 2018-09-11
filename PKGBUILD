@@ -1,4 +1,3 @@
-# $Id$
 # Maintainer: Johannes Löthberg <johannes@kyriasis.com>
 # Contributor: Jonathan Steel <jsteel at archlinux.org>
 # Contributor: Abhishek Dasgupta <abhidg@gmail.com>
