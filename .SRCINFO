@@ -9,10 +9,12 @@ pkgbase = moonlight-qt-git
 	depends = qt5-base
 	depends = qt5-quickcontrols
 	depends = qt5-quickcontrols2
+	depends = qt5-svg
+	depends = ffmpeg
 	optdepends = libva-intel-driver: hardware acceleration for Intel GPUs
 	provides = moonlight-qt
 	conflicts = moonlight-qt
-	source = moonlight-qt::git+https://github.com/moonlight-stream/moonlight-qt.git
+	source = moonlight-qt-git::git+https://github.com/moonlight-stream/moonlight-qt.git
 	md5sums = SKIP
 
 pkgname = moonlight-qt-git
