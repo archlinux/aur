@@ -1,6 +1,6 @@
 pkgbase = variety-git
 	pkgdesc = Variety wallpaper changer (git version)
-	pkgver = 1
+	pkgver = 0.1
 	pkgrel = 1
 	url = https://github.com/varietywalls/variety
 	arch = any
