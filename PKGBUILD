@@ -1,4 +1,3 @@
-# $Id: PKGBUILD 155944 2016-01-11 06:44:32Z fyan $
 # Maintainer: Jiachen Yang <farseerfc@gmail.com>
 # AUR Maintainer: Phil Schaf <flying-sheep@web.de>
 
