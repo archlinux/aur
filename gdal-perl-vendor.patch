@@ -20,7 +20,7 @@ Last-Update: 2014-07-08
 @@ -30,7 +30,7 @@ build: gdal_wrap.cc Makefile_Geo__GDAL
  gdal_wrap.cc: generate
  
- Makefile_Geo__GDAL:
+ Makefile_Geo__GDAL: gdal_wrap.cc
 -	perl Makefile.PL INSTALL_BASE=$(INST_PREFIX)
 +	perl Makefile.PL INSTALLDIRS=vendor
  

@@ -1,7 +1,7 @@
 pkgbase = gdal-hdf4
 	pkgdesc = A translator library for raster geospatial data formats, with support to HDF4 format (required to use MODIStsp tool: http://github.com/lbusett/MODIStsp)
-	pkgver = 2.2.4
-	pkgrel = 4
+	pkgver = 2.3.1
+	pkgrel = 5
 	url = http://www.gdal.org/
 	changelog = gdal.changelog
 	arch = x86_64
@@ -23,6 +23,7 @@ pkgbase = gdal-hdf4
 	depends = libtiff
 	depends = netcdf
 	depends = hdf4-nonetcdf
+	depends = hdf4-nonetcdf
 	depends = openjpeg2
 	depends = poppler
 	depends = cfitsio
@@ -35,12 +36,10 @@ pkgbase = gdal-hdf4
 	optdepends = mariadb: mariadb database support
 	optdepends = perl: perl binding support
 	options = !emptydirs
-	source = https://download.osgeo.org/gdal/2.2.4/gdal-2.2.4.tar.xz
+	source = https://download.osgeo.org/gdal/2.3.1/gdal-2.3.1.tar.xz
 	source = gdal-perl-vendor.patch
-	source = gdal-poppler-0.64.patch
-	sha256sums = 441eb1d1acb35238ca43a1a0a649493fc91fdcbab231d0747e9d462eea192278
-	sha256sums = 20989e5fa499206b42c92280ce084fdf7b2f661a4233fc349611cc57102fe114
-	sha256sums = 34d7909e1375aa407936374d65a561a6803b59b1280be7f878fb45049f629b40
+	sha256sums = 9c4625c45a3ee7e49a604ef221778983dd9fd8104922a87f20b99d9bedb7725a
+	sha256sums = a41a0129a878a0d09b8ecf24b8a0b473856d929d52f535afdf4dca95ddd347d3
 
 pkgname = gdal-hdf4
 	provides = gdal
@@ -48,7 +47,7 @@ pkgname = gdal-hdf4
 
 pkgname = python-gdal-hdf4
 	pkgdesc = Python bindings for GDAL, with support to HDF4 format
-	depends = gdal=2.2.4
+	depends = gdal=2.3.1
 	depends = python-numpy
 	optdepends = 
 	provides = python-gdal
@@ -56,7 +55,7 @@ pkgname = python-gdal-hdf4
 
 pkgname = python2-gdal-hdf4
 	pkgdesc = Python 2 bindings for GDAL, with support to HDF4 format
-	depends = gdal=2.2.4
+	depends = gdal=2.3.1
 	depends = python2-numpy
 	optdepends = 
 	provides = python2-gdal
