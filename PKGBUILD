@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/AdaCore/gprbuild/"
 license=('GPL3')
 depends=('xmlada>=2018')
-makedepends=('gprbuild>=2018')
+makedepends=('gprbuild-bootstrap>=2018')
 conflicts=("${pkgname}-git")
 
 
