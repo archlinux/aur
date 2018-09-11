@@ -12,6 +12,8 @@ pkg/
 *.swp
 cookies
 
+*.log
+
 *.c
 *.cpp
 *.h
