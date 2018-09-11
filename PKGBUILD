@@ -1,7 +1,7 @@
 # Maintainer: pingplug <pingplug@foxmail.com>
 # Contributor: Schala Zeal <schalaalexiazeal@gmail.com>
 
-_commit=63be5dcdde61275822d931b2924425478bc1dac1  # tags/1.8.8^0
+_commit=54d332dd9b0263821376161cdffb60ffb3c7847f  # tags/1.9.0^0
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgbase=mingw-w64-harfbuzz
