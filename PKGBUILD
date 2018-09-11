@@ -1,4 +1,3 @@
-# $Id: PKGBUILD 188929 2016-09-07 12:50:30Z arojas $
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=mustache-d
