@@ -1,16 +1,13 @@
 pkgbase = gnatcoll-sql
 	pkgdesc = GNAT Components Collection - SQL database support
 	pkgver = 2018
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AdaCore/gnatcoll-db/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = gprbuild
-	depends = gcc-ada
-	depends = gnatcoll-core
-	provides = gnatcoll-sql
-	conflicts = gnatcoll-sql
+	makedepends = gprbuild>=2018
+	depends = gnatcoll-core>=2018
 	source = http://mirrors.cdn.adacore.com/art/5b0ce9cbc7a4475263382be6
 	sha1sums = 85c90002bb506e3e72e38d2e6604734402d23a32
 
