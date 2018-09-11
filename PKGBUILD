@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=battery-monitor
 pkgver=0.6
-pkgrel=5
+pkgrel=6
 pkgdesc='A utility tool, notifies user about charging, discharging and not charging state of the battery on Linux.'
 arch=('x86_64')
 url="https://github.com/maateen/battery-monitor"
@@ -19,5 +19,4 @@ package() {
 	install -Dm755 battery-monitor "${pkgdir}/usr/bin"
 	install -Dm755 battery-monitor-autostart.desktop "${pkgdir}/etc/xdg/autostart/battery-monitor-autostart.desktop"
 	install -Dm755 battery-monitor.desktop "${pkgdir}/usr/share/applications/battery-monitor.desktop"
-    echo "The binary has moved from /usr/bin/battery-monitor to /usr/bin. Please run "sudo rm -rf /usr/bin/battery-monitor" to remove the old binary"
 }
