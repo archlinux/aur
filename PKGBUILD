@@ -1,4 +1,3 @@
-# $Id: PKGBUILD 170484 2016-04-11 16:26:46Z arodseth $
 # Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=vim-airline-themes
