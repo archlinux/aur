@@ -1,3 +1,3 @@
 #!/bin/sh
 
-electron /usr/lib/inboxer
+electron /usr/lib/inboxer/inboxer.asar

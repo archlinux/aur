@@ -3,7 +3,7 @@
 
 pkgname=inboxer
 pkgver=1.1.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Unofficial, free and open-source Google Inbox desktop app"
 arch=(any)
 url="https://denysdovhan.com/inboxer/"
@@ -16,7 +16,7 @@ source=($pkgname-$pkgver.tar.gz::https://github.com/denysdovhan/$pkgname/archive
         $pkgname.desktop
         remove-tracking.patch)
 sha256sums=('75041e1d60823ff2b2213a0ac129f694acbd939b5b1a14e4a6bf2044cea99162'
-            'd8519d50a0becf00d2cd0809e4363087949fdc3d43c315ce26f87235e9ae6b27'
+            'd53b45fba512d899c1a37e232d1d5cb4d95435a311f07187f359ed284407c6b6'
             '3048bb5c4d50269d27a46db7ff550f226881bd77ac6672573a0075b3b75ce2a0'
             '71d3fea8d7442ae0435ad4b999a5cd6a43d86277897f2114f8f3fd7836c3faa9')
 
@@ -36,15 +36,11 @@ build() {
 }
 
 package() {
-  mkdir -p "$pkgdir"/usr/{lib,share/pixmaps}
-  cp -r $pkgname-$pkgver "$pkgdir/usr/lib/$pkgname"
-  ln -s ../../lib/$pkgname/app/static/Icon@2x.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
-  install -Dm755 $pkgname.sh "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 $pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
-  install -Dm644 $pkgname-$pkgver/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  mkdir -p "$pkgdir"/usr/{lib/$pkgname,share/pixmaps}
 
-  # Clean up
-  find "$pkgdir/usr/lib/$pkgname/node_modules" \
+  # Copy app to tmp folder, clean it up, and pack it with asar
+  cp -ar $pkgname-$pkgver "$pkgdir/tmp"
+  find "$pkgdir/tmp/node_modules" \
       -name "package.json" \
         -exec sed -e "s|$srcdir/$pkgname|/usr/lib/$pkgname|" \
             -i {} \; \
@@ -63,4 +59,12 @@ package() {
       -or -name "script" -prune -exec rm -r '{}' \; \
       -or -name "test" -prune -exec rm -r '{}' \; \
       -or -name "tmp" -prune -exec rm -r '{}' \;
+
+  "$pkgname-$pkgver/node_modules/asar/bin/asar.js" pack "$pkgdir/tmp/" "$pkgdir/usr/lib/$pkgname/inboxer.asar"
+  rm -r "$pkgdir/tmp"
+
+  install -Dm755 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm644 "$pkgname-$pkgver/app/static/Icon.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+  install -Dm644 "$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
