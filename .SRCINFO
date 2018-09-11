@@ -1,14 +1,14 @@
 pkgbase = gn-bin
 	pkgdesc = Prebuilt binary for GN (Generate Ninja), Chromium's meta-build system
-	pkgver = r533513
+	pkgver = 1463
 	pkgrel = 1
 	url = https://chromium.googlesource.com/chromium/src/tools/gn/
 	arch = x86_64
 	provides = gn
 	conflicts = gn-git
-	noextract = ed8b2bc0617fee4ebd1d1a35e8a5bc168c4ca874
-	source = https://storage.googleapis.com/chromium-gn/ed8b2bc0617fee4ebd1d1a35e8a5bc168c4ca874
-	sha1sums = ed8b2bc0617fee4ebd1d1a35e8a5bc168c4ca874
+	noextract = 1756964fe6b9f0a865accdf577ae46345847de3b
+	source = https://storage.googleapis.com/chromium-gn/1756964fe6b9f0a865accdf577ae46345847de3b
+	sha1sums = 1756964fe6b9f0a865accdf577ae46345847de3b
 
 pkgname = gn-bin
 

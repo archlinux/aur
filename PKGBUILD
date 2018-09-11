@@ -5,7 +5,7 @@
 sha1=$(curl "https://chromium.googlesource.com/chromium/buildtools/+/master/linux64/gn.sha1?format=TEXT" | base64 --decode)
 pkgname='gn-bin'
 pkgdesc="Prebuilt binary for GN (Generate Ninja), Chromium's meta-build system"
-pkgver=r533513
+pkgver=1463
 pkgrel=1
 arch=('x86_64')
 conflicts=('gn-git')
@@ -19,7 +19,8 @@ sha1sums=("$sha1")
 
 pkgver () {
   chmod +x $srcdir/$sha1
-  printf "r$($srcdir/$sha1 --version)"
+  local full_version=($("$srcdir/$sha1" --version))
+  printf "${full_version[0]}"
 }
 
 package () {
