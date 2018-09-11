@@ -15,13 +15,6 @@ source=("${url}/releases/download/${_pkgbase}-${pkgver}/${_pkgbase}-${pkgver}.ta
 options=(!libtool)
 sha256sums=('5e84f81d8dd527ea74f39b6bc001c874c02bad6871d7a9b0c14efb57430eafe3')
 
-prepare() {
-  cd ${_pkgbase}-${pkgver}
-  # fix building with glibc-2.14
-  sed -i '1i#define _GNU_SOURCE' util/fusermount.c
-  sed -i "/MOUNT_FUSE_PATH=/s#/sbin#/usr/bin#" configure
-}
-
 build() {
   export CC="gcc -m32"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
