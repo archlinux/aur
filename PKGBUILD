@@ -1,4 +1,3 @@
-# $Id: PKGBUILD 141579 2015-09-24 15:22:43Z arojas $
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kjots
