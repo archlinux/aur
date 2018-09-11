@@ -2,7 +2,7 @@
 # Co-Maintainer: Corax
 pkgname=nautilus-mediainfo
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="View media information from the properties tab"
 arch=('any')
 url="https://github.com/linux-man/nautilus-mediainfo"
@@ -17,6 +17,5 @@ prepare() {
 
 package() {
     install -Dm644 ${pkgname}-${pkgver}/nautilus-extension/${pkgname}.py ${pkgdir}/usr/share/nautilus-python/extensions/${pkgname}.py
-    mkdir ${pkgdir}/usr/share/${pkgname}
-    cp -a ${pkgname}-${pkgver}/nautilus-extension/${pkgname}/locale/. ${pkgdir}/usr/share/${pkgname}/locale
+    cp -a ${pkgname}-${pkgver}/nautilus-extension/${pkgname}/locale/. ${pkgdir}/usr/share/nautilus-python/extensions/locale
 }
