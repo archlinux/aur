@@ -1,4 +1,3 @@
-# $Id: PKGBUILD 276984 2016-09-26 18:41:01Z arojas $
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kirigami2
