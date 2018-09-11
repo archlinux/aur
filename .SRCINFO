@@ -1,6 +1,6 @@
 pkgbase = aurblobs-git
 	pkgdesc = Automatically create binary repositories from AUR packages
-	pkgver = r80.2dfcc20
+	pkgver = r81.93ec861
 	pkgrel = 1
 	url = https://github.com/aurblobs/aurblobs
 	arch = any
@@ -13,8 +13,6 @@ pkgbase = aurblobs-git
 	depends = python-pretty_bad_protocol
 	depends = python-xdg
 	source = git+https://github.com/aurblobs/aurblobs.git
-	source = fix-constants.diff
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = aurblobs-git

@@ -2,7 +2,7 @@
 
 _pkgname=aurblobs
 pkgname="$_pkgname-git"
-pkgver=r80.2dfcc20
+pkgver=r81.93ec861
 pkgrel=1
 pkgdesc='Automatically create binary repositories from AUR packages'
 arch=('any')
@@ -11,20 +11,14 @@ license=('AGPL3')
 makedepends=('python-setuptools')
 depends=('python-click' 'python-docker' 'python-gitpython' 'git'
          'python-pretty_bad_protocol' 'python-xdg')
-source=("git+https://github.com/$_pkgname/$_pkgname.git"
-        'fix-constants.diff')
-sha256sums=('SKIP' 'SKIP')
+source=("git+https://github.com/$_pkgname/$_pkgname.git")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname"
     printf "r%s.%s" \
            "$(git rev-list --count HEAD)" \
            "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-    cd "$_pkgname"
-    patch -p2 -i "$srcdir"/fix-constants.diff
 }
 
 build() {
