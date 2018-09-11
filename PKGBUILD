@@ -1,9 +1,9 @@
 # Maintainer: Vladimir Tsanev <tsachev@gmail.com>
 pkgname=jtharness
 _version=6.0
-_build=b01
+_build=b03
 pkgver=${_version}_${_build}
-pkgrel=2
+pkgrel=1
 pkgdesc="general purpose, fully-featured, flexible, and configurable test harness very well suited for most types of unit testing"
 arch=('any')
 url="https://wiki.openjdk.java.net/display/CodeTools/JT+Harness"
@@ -20,9 +20,7 @@ _tag=jt${_version}-${_build}
 source=("http://hg.openjdk.java.net/code-tools/jtharness/archive/${_tag}.tar.gz"
 #        "${pkgname}.patch"
 )
-sha256sums=('8b1957a57e9f49bcd081560251ef1a4c4be6414fb62b512802d48a4d99db23c4' 
-#         'b20abde2a7d7920404044d62e732c454'
-)
+sha256sums=('d75778026b2b1edb72f123285ca3ef467aec45e3dea4b2b2316f71b072e38c79')
 _jtdir=${pkgname}-jt${_version}-${_build}
 prepare() {
   cd ${srcdir}/${_jtdir}

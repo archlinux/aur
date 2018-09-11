@@ -1,7 +1,7 @@
 pkgbase = jtharness
 	pkgdesc = general purpose, fully-featured, flexible, and configurable test harness very well suited for most types of unit testing
-	pkgver = 6.0_b01
-	pkgrel = 2
+	pkgver = 6.0_b03
+	pkgrel = 1
 	url = https://wiki.openjdk.java.net/display/CodeTools/JT+Harness
 	arch = any
 	license = GPL2
@@ -11,8 +11,8 @@ pkgbase = jtharness
 	makedepends = java-asm
 	depends = java-runtime>=7
 	optdepends = junit
-	source = http://hg.openjdk.java.net/code-tools/jtharness/archive/jt6.0-b01.tar.gz
-	sha256sums = 8b1957a57e9f49bcd081560251ef1a4c4be6414fb62b512802d48a4d99db23c4
+	source = http://hg.openjdk.java.net/code-tools/jtharness/archive/jt6.0-b03.tar.gz
+	sha256sums = d75778026b2b1edb72f123285ca3ef467aec45e3dea4b2b2316f71b072e38c79
 
 pkgname = jtharness
 
