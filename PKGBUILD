@@ -39,7 +39,7 @@ build() {
   cd ${srcdir}/build
 
   # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
+  /usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
 
   # Build project
   cmake ${srcdir}/${_dir} \
