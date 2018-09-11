@@ -1,4 +1,3 @@
-# $Id: PKGBUILD 310007 2017-11-15 14:11:34Z foutrelis $
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
