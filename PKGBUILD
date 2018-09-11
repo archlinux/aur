@@ -1,4 +1,3 @@
-# $Id$
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Simon 'ALSimon' Gilliot <simon@gilliot.fr>
 # Contributor: Olivier Biesmans <olivier at biesmans dot fr>
