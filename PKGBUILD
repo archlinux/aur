@@ -2,7 +2,7 @@
 # Maintainer: Sapphira Armageddos <shadowkyogre.public@gmail.com>
 
 pkgname=python-textile
-pkgver=2.3.2
+pkgver=3.0.3
 pkgrel=1
 pkgdesc="Python port of Textile, Dean Allen’s humane web text generator"
 arch=('any')
@@ -18,4 +18,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-md5sums=('fcb4662f65135abc7ebdb4cf5d9d44e8')
+md5sums=('3e6a2b775bd66dc585e57ef332f9887b')

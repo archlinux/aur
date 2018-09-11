@@ -14,3 +14,17 @@ pkgbase = python-textile
 
 pkgname = python-textile
 
+pkgbase = python-textile
+	pkgdesc = Python port of Textile, Dean Allen’s humane web text generator
+	pkgver = 3.0.3
+	pkgrel = 1
+	url = https://github.com/textile/python-textile
+	arch = any
+	license = BSD
+	depends = python
+	options = !emptydirs
+	source = python-textile-3.0.3.tar.gz::https://github.com/textile/python-textile/archive/3.0.3.tar.gz
+	md5sums = 3e6a2b775bd66dc585e57ef332f9887b
+
+pkgname = python-textile
+
