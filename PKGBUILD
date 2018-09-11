@@ -2,7 +2,7 @@
 # Co-Maintainer: Corax
 pkgname=caja-mediainfo-tab
 pkgver=0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="View media information from the properties tab"
 arch=('any')
 url="https://github.com/linux-man/caja-mediainfo-tab"
@@ -17,5 +17,5 @@ prepare() {
 
 package() {
     install -Dm644 ${pkgname}-${pkgver}/caja-extension/${pkgname}.py ${pkgdir}/usr/share/caja-python/extensions/${pkgname}.py
-    cp -a ${pkgname}-${pkgver}/caja-extension/${pkgname}/locale/. ${pkgdir}/usr/share/caja-python/extensions/locale
+    cp -a ${pkgname}-${pkgver}/nemo-extension/${pkgname}/locale/. ${pkgdir}/usr/share/nemo-python/extensions/${pkgname}/locale
 }
