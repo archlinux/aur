@@ -1,7 +1,7 @@
 pkgbase = mariadb-jdbc
 	pkgdesc = The official JDBC driver (Java library) for MariaDB
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://downloads.mariadb.org/connector-java/
 	arch = any
 	license = LGPL2.1

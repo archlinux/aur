@@ -2,7 +2,7 @@
 
 pkgname=mariadb-jdbc
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The official JDBC driver (Java library) for MariaDB"
 arch=('any')
 url="https://downloads.mariadb.org/connector-java/"
