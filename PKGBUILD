@@ -1,4 +1,3 @@
-# $Id:
 # Maintainer : Martin Wimpress <code@flexion.org>
 # Contributor: Foster McLane <fkmclane@gmail.com>
 # Contributor: Jonathan Thomas <jonathan@openshot.org>
