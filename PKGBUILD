@@ -2,7 +2,7 @@
 # Maintainer: Bernardo Kuri <aur@bkuri.com>
 
 pkgname=wavebox-bin-beta
-pkgver=3.14.14
+pkgver=3.14.15
 pkgrel=1
 pkgdesc="The next generation of web-desktop communication"
 arch=('x86_64' 'i686')
@@ -20,8 +20,8 @@ source_x86_64=("${_repourl}/releases/download/v${pkgver}/Wavebox_${pkgver//./_}_
 source_i686=("${_repourl}/releases/download/v${pkgver}/Wavebox_${pkgver//./_}_linux_ia32.tar.gz")
 
 sha512sums=('c0859fb30dc9dab6f2584568f7f1012fb5f0b35488b4b7d0fb8034469796a290a6b6c6de9c0bc5d22d3566f444e14fbae593fdef7f725e51b89217a9f62cd407')
-sha512sums_x86_64=('fe3f1aced588ac8b76086f8c99fc52f8f7b5253dddc27718da3381625b75d2b9b5e0519e2164478e0b31e3c6706194aa6dc26ac497eb201c26d7c0b8989024a5')
-sha512sums_i686=('e5de4640cf6b0ff32b5f9ddeb6918ec04a45ea76e1f036d91dfa3a9b8daf074dfe51c15648f8c9b9997301676f1027945c92aec82758e00bee6665a7214ce494')
+sha512sums_x86_64=('ec945060335c8d34e3262b2060a4b136e5c516afa1a547dcb07299b8c82c8c1cfa8c1075da6d778a6969086c3a5a4f18afffff08e228e372d77b647b19976089')
+sha512sums_i686=('33d793197889e2fe057d8b5097a5853cb59dba665cdcae85bc276bdab0a860841349eca25cbdf2eae79490cc4b948a5131ba455112067c4712366a045ba322f3')
 
 package() {
   if [ ${CARCH} == "x86_64" ]; then
