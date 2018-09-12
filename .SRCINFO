@@ -1,0 +1,14 @@
+pkgbase = libnsfb
+	pkgdesc = Framebuffer abstraction library
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = http://www.netsurf-browser.org/projects/libnsfb/
+	arch = x86_64
+	arch = i686
+	license = MIT
+	depends = glibc
+	source = http://source.netsurf-browser.org/libnsfb.git/snapshot/libnsfb-release/0.2.0.tar.bz2
+	sha256sums = a89985aea25ae01f315e3bf55925aa57f8c6d0b6134d0b4bf4efb76ff91c5820
+
+pkgname = libnsfb
+
