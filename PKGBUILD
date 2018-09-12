@@ -1,7 +1,7 @@
 # Maintainer: Adam S Levy <adam@aslevy.com>
 
 pkgname='factomd'
-pkgver='5.4.1'
+pkgver='5.4.3'
 pkgrel='1'
 pkgdesc='Factom Daemon'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -31,7 +31,6 @@ build()
   glide install -v
 
   revision=$(git rev-parse HEAD)
-  echo "Building $pkgname version=$pkgver commit=$revision"
   go install -ldflags "-X github.com/FactomProject/factomd/engine.Build=$revision -X github.com/FactomProject/factomd/engine.FactomdVersion=$pkgver"
 }
 
