@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polycitizen@gmail.com>
 
 pkgname=ttyd
-pkgver=1.4.0
+pkgver=1.4.2
 pkgrel=1
 pkgdesc='Share your terminal over the web'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('json-c' 'libpcap' 'libwebsockets' 'zlib')
 makedepends=('cmake' 'vim') # vim needed for its xxd binary
 source=("ttyd-$pkgver.tar.gz::https://github.com/tsl0922/ttyd/archive/$pkgver.tar.gz")
-sha512sums=('925eddcb1ac290d329480329abd0626837e1c402f257519638c6033dc5998d8e4777218d415fd49d8934c8f47d850eb3ba93406f4d70f841d165312d78016bce')
+sha512sums=('0caff3d3602c5baa7b8f277d4190e1053e66dcfd6b4d62bcfb6fd78522734a4fbc1578cd159bee796c05bf67a4155ab0283ca4e17572e1bc8508b863adc803ed')
 
 build() {
   cd ttyd-$pkgver
