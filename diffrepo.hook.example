@@ -1,0 +1,13 @@
+# Example hook for running diffrepo before each upgrade
+
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = *
+
+[Action]
+Description = Checking package version consistency for XYZ...
+When = PreTransaction
+AbortOnFail
+Depends = pacman-hacks
+Exec = /usr/bin/diffrepo -r -n ABC -s XYZ
