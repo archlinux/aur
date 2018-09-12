@@ -3,12 +3,14 @@
 
 _gitname=dynomite
 pkgname=${_gitname}-git
-pkgver=0.6.9.r8.gf77f217
+pkgver=0.6.9.r12.gd4e5175
 pkgrel=1
 pkgdesc="Dynomite is a thin, distributed dynamo layer for different storage engines and protocols"
 arch=('i686' 'x86_64')
 url="https://github.com/Netflix/dynomite"
 license=('Apache-2.0')
+conflicts=('dynomite')
+provides=('dynomite')
 source=(
   "git+https://github.com/Netflix/dynomite.git"
   "0001-sysconfdir.patch"
@@ -32,7 +34,11 @@ build() {
   patch -p1 < ../0001-sysconfdir.patch
 
   autoreconf -fvi
-  ./configure --exec-prefix=/usr --sysconfdir="/etc/dynomite" --enable-packaging
+  ./configure --prefix=/usr \
+    --sbindir='${exec_prefix}/bin' \
+    --sysconfdir=/etc/dynomite \
+    --datarootdir='${exec_prefix}/share' \
+    --enable-packaging
   make
 }
 
