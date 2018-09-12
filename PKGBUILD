@@ -1,5 +1,5 @@
 pkgname=pdftag
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="A simple metadata editor for PDFs"
 arch=(i686 x86_64)
@@ -7,13 +7,13 @@ url="https://github.com/arrufat/pdftag"
 license=(GPL3)
 depends=(poppler-glib gtk3)
 makedepends=(git vala meson)
-_commit=091fa3fa3e54f82fd770e1b6063127788c0f370e
+_commit=6b3db48f19f91a7f31fa20dc7c14be2a79a721a2
 source=("git://github.com/arrufat/pdftag.git#commit=$_commit")
 md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --tags | sed -e 's/-/+/g'
+  git describe --tags | sed -e 's/-/+/g;s/v//'
 }
 
 build() {
