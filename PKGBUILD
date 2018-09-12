@@ -1,12 +1,10 @@
 # Maintainer: Oscar Morante <spacepluk at gmail dot com>
 
-_version=2018.2.0
-_build=f1
+_version=2018.3.0
+_build=b1
 _buildtag=20180709
-_randomstring=db9a69dc5569
+_randomstring=3f0ac31c6d6f
 _prefix=/opt/UnityBeta
-_unitydownloads="http://beta.unity3d.com/download/${_randomstring}"
-#_keepdownloads=yes
 
 pkgname=unity-editor-beta-android
 pkgver=${_version}${_build}+${_buildtag}
@@ -20,34 +18,16 @@ depends=('unity-editor-beta'
          'android-sdk-build-tools'
          'android-udev')
 optdepends=('android-ndk-13b: needed for IL2CPP builds')
-makedepends=('gtk3' 'libsoup' 'libarchive')
-source=("${_unitydownloads}/UnitySetup-${_version}${_build}")
-sha1sums=('25f558636adc41bc8263dc4976fd9df86d1f9f6d')
+makedepends=('cpio')
+source=("https://beta.unity3d.com/download/${_randomstring}/MacEditorTargetInstaller/UnitySetup-Android-Support-for-Editor-${_version}${_build}.pkg")
+sha1sums=('c91d8ac322184e5e919ab6dac927ad65339ba3ec')
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
-unity-setup() {
-  ./UnitySetup-${_version}${_build} \
-    --download-location="${startdir}" \
-    --install-location="${pkgdir}${_prefix}" \
-    --unattended $@
-}
-
-extract-component() {
-  msg2 "Extracting $1..."
-  yes | unity-setup --components=$1 > "/tmp/$1.log"
-}
-
-prepare() {
-  chmod +x "${srcdir}/UnitySetup-${_version}${_build}"
-}
-
 package() {
-  mkdir -p "${pkgdir}${_prefix}"
-  extract-component Android
-
-  if [ -z "${_keepdownloads}" ]; then
-    rm "${startdir}/UnitySetup-Android-Support-for-Editor-${_version}${_build}.pkg"
-  fi
+  _dest="${pkgdir}/${_prefix}/Editor/Data/PlaybackEngines/AndroidPlayer"
+  install -d "${_dest}"
+  cd "${_dest}"
+  cat "${srcdir}/TargetSupport.pkg.tmp/Payload" | gzip -dc | cpio -i
 }
 
