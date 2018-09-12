@@ -1,6 +1,6 @@
 pkgbase = authenticator-git
 	pkgdesc = 2FA code generator for GNOME
-	pkgver = 0.2.2.1.r5.g2d21e23
+	pkgver = 0.2.4.r15.g7091453
 	pkgrel = 1
 	url = https://github.com/bilelmoussaoui/Authenticator
 	arch = any
@@ -16,6 +16,7 @@ pkgbase = authenticator-git
 	depends = libsecret
 	depends = python-pillow
 	depends = pyzbar
+	depends = python-gnupg
 	provides = authenticator
 	conflicts = authenticator
 	source = authenticator::git+https://github.com/bilelmoussaoui/Authenticator.git
