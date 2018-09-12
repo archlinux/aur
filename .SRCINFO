@@ -1,11 +1,13 @@
 pkgbase = dht
 	pkgdesc = BitTorrent DHT library
 	pkgver = 0.24
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/transmission/dht.git
 	arch = i686
 	arch = x86_64
 	license = MIT
+	makedepends = cmake
+	makedepends = git
 	source = git+https://github.com/transmission/dht.git#branch=post-0.24-transmission
 	sha256sums = SKIP
 
