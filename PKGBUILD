@@ -1,4 +1,3 @@
-# $Id$
 # Maintainer: Joan Figueras <ffigue at gmail dot com>
 # Contributor: Yoshi2889 <rick.2889 at gmail dot com>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
