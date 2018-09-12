@@ -1,0 +1,18 @@
+pkgbase = python-taxi
+	pkgdesc = Timesheeting tool that focuses on simplicity
+	pkgver = 4.4.1
+	pkgrel = 1
+	url = https://github.com/sephii/taxi
+	arch = any
+	license = custom
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python-appdirs
+	depends = python-click
+	depends = python-six
+	optdepends = python-taxi-zebra: Zebra backend for Taxi
+	source = python-taxi-4.4.1.tar.gz::https://github.com/sephii/taxi/archive/4.4.1.tar.gz
+	sha512sums = cc1243c81ed1ea988af759a0c5de376465123e2bcdc8d7a08d80d04c1768aa1a4cccc3e2334e3ab1d449013a1eb5e4593ec6544a15eabc6e3777f136f644fd2a
+
+pkgname = python-taxi
+
