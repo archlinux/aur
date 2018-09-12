@@ -1,7 +1,7 @@
 # Maintainer: Tomas Rychlik <tom@avocode.com>
 
 pkgname=avocode
-pkgrel=1
+pkgrel=3
 pkgver=3.5.0
 pkgdesc="Export code, specs and images from PSD & Sketch designs"
 url="http://avocode.com/"
@@ -14,7 +14,7 @@ makedepends=()
 backup=()
 install=avocode.install
 source=("Avocode.desktop" "avocode-app-icon.png")
-source_x86_64=3.5.0
+source_x86_64=("https://media.avocode.com/download/avocode-app/${pkgver}/avocode-${pkgver}-linux.zip")
 md5sums=('f1a87052b2356b2d4eede22cfc1eb2af'
          '96c2dd65a4a3ac5bcdba7426ade1960e')
 md5sums_x86_64=('aaae7fa8ae88bfc56acf539bbafd98b9')
