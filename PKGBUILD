@@ -17,11 +17,11 @@ source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=('3fb493bd1af767a46cd6cb9db4c7d7b8db5eac3466f7513aa9cd20385e4740d4')
 
 package() {
-	cd "${srcdir}/WebSocket-for-Python-${pkgver}"
-	python setup.py install --optimize=1 \
-	    --prefix=/usr \
-	    --root="${pkgdir}"
-	install -vDm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    cd "${srcdir}/WebSocket-for-Python-${pkgver}"
+    python setup.py install --optimize=1 \
+        --prefix=/usr \
+        --root="${pkgdir}"
+    install -vDm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -vDm 644 {CHANGELOG,README}.md \
     -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
