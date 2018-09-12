@@ -1,0 +1,14 @@
+pkgbase = crumbs
+	pkgdesc = A bookmarking system for the command line
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/fasseg/crumbs
+	arch = any
+	license = WTFPL
+	makedepends = git
+	backup = etc/crumbs.conf
+	source = git://github.com/fasseg/crumbs.git#commit=5182577b6c154a8564fc25c4a8f8f7d5760b3b6a
+	md5sums = SKIP
+
+pkgname = crumbs
+
