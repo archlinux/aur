@@ -1,6 +1,6 @@
 pkgbase = libtransistor-bin
 	pkgdesc = Nintendo Switch homebrew toolchain
-	pkgver = v2.1.0
+	pkgver = v2.1.1
 	pkgrel = 1
 	url = https://github.com/reswitched/libtransistor
 	install = libtransistor-bin.install
@@ -15,8 +15,8 @@ pkgbase = libtransistor-bin
 	provides = libtransistor
 	conflicts = libtransistor-git
 	options = !strip
-	source = https://github.com/reswitched/libtransistor/releases/download/v2.1.0/libtransistor_v2.1.0.tar.gz
-	md5sums = 8327677b8bbf048e79adf8fd7aaeaaca
+	source = https://github.com/reswitched/libtransistor/releases/download/v2.1.1/libtransistor_v2.1.1.tar.gz
+	md5sums = ad490814b14a099cc42c5d6aa4e2110a
 
 pkgname = libtransistor-bin
 
