@@ -21,7 +21,6 @@ prepare() {
 }
 
 package() {
-    cd $srcdir
     install -d ${pkgdir}/opt/${pkgname}
     cp -r ${srcdir}/squashfs-root/app/* ${pkgdir}/opt/${pkgname}
 
