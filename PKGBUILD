@@ -2,7 +2,7 @@
 
 pkgname=porto
 pkgver=4.13.10
-pkgrel=3
+pkgrel=4
 pkgdesc='Yet another Linux container management system'
 arch=('i686' 'x86_64')
 url='https://github.com/yandex/porto'
@@ -30,6 +30,7 @@ prepare() {
 }
 
 build() {
+    cd porto/build/release
     cmake ../.. \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=$pkgdir/usr

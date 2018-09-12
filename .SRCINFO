@@ -1,7 +1,7 @@
 pkgbase = porto
 	pkgdesc = Yet another Linux container management system
 	pkgver = 4.13.10
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/yandex/porto
 	install = porto.install
 	arch = i686
