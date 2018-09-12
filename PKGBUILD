@@ -1,12 +1,12 @@
 # Maintainer: Oscar Morante <spacepluk@gmail.com>
 
-_version=2018.2.6
+_version=2018.2.7
 _build=f1
-_randomstring=c591d9a97a0b
+_randomstring=4ebd28dd9664
 _prefix=/opt/Unity
 
 pkgname=unity-editor-language-ko
-pkgver=${_version}${_build}
+pkgver=${_version}${_build}+${_buildtag}
 pkgrel=1
 pkgdesc="Korean Language Pack (Preview)"
 arch=('x86_64')
