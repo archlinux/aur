@@ -1,11 +1,11 @@
 # Maintainer: Steven Noonan <steven@uplinklabs.net>
 
 pkgbase=linux-ec2
-_branch=4.17
+_branch=4.18
 _build_from=tarball
 #_build_from=git
 #_build_from=git-mirror
-pkgver=4.17.9
+pkgver=4.18.7
 pkgrel=1
 arch=('x86_64')
 url="https://git.uplinklabs.net/steven/projects/archlinux/ec2/ec2-packages.git/tree/linux-ec2"
@@ -17,12 +17,10 @@ case $_build_from in
     _srcname=linux-${_branch}
     source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
             "http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-            "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-            "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign")
-    sha256sums=('9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13'
+            "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz")
+    sha256sums=('19d8bcf49ef530cd4e364a45b4a22fa70714b70349c8100e7308488e26f1eaf1'
                 'SKIP'
-                '52131a497efaed724afaa7f7022249f8f8e6e555cbe407a6619908ed2ebcee89'
-                'SKIP')
+                'bf74eca521d27dca031e70ac24ed0364a96e9750e14cc75de97076d881714e15')
     ;;
   git)
     _srcname=linux
