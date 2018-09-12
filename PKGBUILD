@@ -2,7 +2,7 @@
 # Contributor: Fraser P. Newton <fpnewton90 [at] gmail [dot] com>
 
 pkgname=cloud-print-connector-git
-pkgver=v1.16.r1.ga780351
+pkgver=v1.16.r2.g9386e53
 pkgrel=1
 pkgdesc="Share printers from your Windows, Linux, FreeBSD or OS X computer with ChromeOS and Android devices, using the Cloud Print Connector"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
