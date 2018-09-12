@@ -1,13 +1,13 @@
 # Maintainer: Tab Fitts <tfitts at spryservers dot net>
-# Git: https://github.com/SpryServers/sprycloud-client-arch
+# Git: https://github.com/SpryServers/sprycloud-desktop
 
 # Uncomment, if you want tha last release
 #_version=spry_v2.5.0
-_spryrel=2.5.0.spry.r9
+_spryrel=2.5.0.spry.r10
 pkgname=sprycloud-client-git
 _name=${pkgname/\-git/}
-pkgver=2.5.0.spry.r9.r0.gb9418d01e
-pkgrel=2
+pkgver=2.5.0.spry.r10.r0.ga87024fd9
+pkgrel=1
 pkgdesc="spryCloud client for Linux"
 arch=('i686' 'x86_64')
 url="https://www.spryservers.net/"
@@ -20,7 +20,7 @@ conflicts=('sprycloud-client')
 install=${_name}.install
 options=(!strip)
 backup=('etc/spryCloud/sync-exclude.lst')
-source=("${_name}::git+https://github.com/SpryServers/sprycloud-client-next.git")
+source=("${_name}::git+https://github.com/SpryServers/sprycloud-desktop.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -50,7 +50,7 @@ build() {
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_BUILD_TYPE="Release" \
         -DNO_SHIBBOLETH=1 \
-        -DMIRALL_VERSION_SUFFIX=-spry-r9 \
+        -DMIRALL_VERSION_SUFFIX=-spry-r10 \
         -DMIRALL_VERSION_BUILD=${pkgrel} \
         -DQTKEYCHAIN_LIBRARY=/usr/lib/libqt5keychain.so \
         -DQTKEYCHAIN_INCLUDE_DIR=/usr/include/qt5keychain/ \
