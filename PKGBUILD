@@ -1,7 +1,7 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 
 pkgname=aravis
-pkgver=0.5.13
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A vision library for genicam-based cameras"
 url="https://wiki.gnome.org/Projects/Aravis"
@@ -10,7 +10,7 @@ license=('LGPL')
 depends=('gtk3' 'libnotify' 'gst-plugins-base-libs' 'audit' 'libusb')
 makedepends=('intltool' 'gtk-doc' 'gobject-introspection' 'appstream-glib')
 source=("https://download.gnome.org/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz")
-sha256sums=('0f616938873d9481cfa705b1cfc25493a4f736ca0af7e45125d6838cd8bcbf4f')
+sha256sums=('fdd6fa69fa294a7b264c4d39804e0b874f9dabd93b02d4587ff340b7eb5c87e4')
 
 build() {
   cd $pkgname-$pkgver
