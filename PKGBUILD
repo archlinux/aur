@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=jump-git
-pkgver=r152.ace037d
+pkgver=r303.8252c37
 pkgrel=1
 epoch=
 pkgdesc="Quick and fuzzy directory jumper."
@@ -8,12 +8,12 @@ arch=('i686' 'x86_64')
 url="https://github.com/gsamokovarov/jump"
 license=('MIT')
 groups=()
-depends=('')
+depends=()
 makedepends=('git' 'go')
 optdepends=()
 checkdepends=()
 provides=()
-conflicts=('')
+conflicts=()
 replaces=()
 backup=()
 options=()
