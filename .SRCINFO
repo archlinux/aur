@@ -1,0 +1,16 @@
+pkgbase = emacs-evil-escape-git
+	pkgdesc = Customizable key sequence to escape from insert state and everything else in Emacs.
+	pkgver = r117.f4e9116
+	pkgrel = 1
+	url = https://github.com/syl20bnr/evil-escape
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	provides = emacs-evil-escape
+	conflicts = emacs-evil-escape
+	source = git+https://github.com/syl20bnr/evil-escape.git
+	sha256sums = SKIP
+
+pkgname = emacs-evil-escape-git
+
