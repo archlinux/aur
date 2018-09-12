@@ -5,16 +5,18 @@
 pkgbase=mariadb-10.3
 pkgname=('libmariadbclient-10.3' 'mariadb-clients-10.3' 'mytop-10.3' 'mariadb-10.3')
 pkgver=10.3.9
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('GPL')
 url='http://mariadb.org/'
 makedepends=('boost' 'bzip2' 'cmake' 'jemalloc' 'libaio' 'libxml2' 'lz4' 'lzo'
              'openssl' 'systemd' 'zlib')
 validpgpkeys=('199369E5404BD5FC7D2FE43BCBCB082A1BB943DB') # MariaDB Package Signing Key <package-signing-key@mariadb.org>
-source=("https://ftp.heanet.ie/mirrors/mariadb/mariadb-$pkgver/source/mariadb-$pkgver.tar.gz"{,.asc})
+source=("https://ftp.heanet.ie/mirrors/mariadb/mariadb-$pkgver/source/mariadb-$pkgver.tar.gz"{,.asc}
+        fix_libmariadb_ignored_host.patch)
 sha256sums=('561c6969bbd24dbb22d1d196a6b037665389b91e6dab881f39c5616389f156f4'
-            'SKIP')
+            'SKIP'
+            'fd186c795c393b6898f28d731390bb14ea8444230c8340a5f4cfbccb16ea10e9')
 
 prepare() {
   cd ${pkgbase%-10.3}-$pkgver/
@@ -28,6 +30,10 @@ prepare() {
 
   # let's create the datadir from tmpfiles
   echo 'd @MYSQL_DATADIR@ 0700 @MYSQLD_USER@ @MYSQLD_USER@ -' >> support-files/tmpfiles.conf.in
+
+  # Fix that libmariadb ignores the host from .my.cnf files
+  # More info: https://jira.mariadb.org/browse/CONC-359
+  patch -p0 < ../fix_libmariadb_ignored_host.patch
 }
 
 build() {

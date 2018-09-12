@@ -1,0 +1,11 @@
+--- libmariadb/libmariadb/mariadb_lib.c.orig	2018-08-30 11:28:43.886487068 +0100
++++ libmariadb/libmariadb/mariadb_lib.c	2018-08-30 11:27:58.819551110 +0100
+@@ -1236,6 +1236,8 @@
+ #endif
+ 
+   /* Some empty-string-tests are done because of ODBC */
++  if (!host || !host[0])
++    host=mysql->options.host;
+   if (!user || !user[0])
+     user=mysql->options.user;
+   if (!passwd)

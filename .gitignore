@@ -3,3 +3,4 @@
 !PKGBUILD
 !.SRCINFO
 !mariadb.install
+!fix_libmariadb_ignored_host.patch
