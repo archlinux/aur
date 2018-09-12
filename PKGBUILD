@@ -14,7 +14,7 @@ md5sums=('1973cacc62ac9b0dd12f7262ebf8e8b9')
 build() {
   # TODO: Remove beta string when possible.
   cd IQ-TREE-${pkgver}-beta
-  mkdir build
+  mkdir -p build
   cd build
   cmake -DIQTREE_FLAGS=omp ..
   make
