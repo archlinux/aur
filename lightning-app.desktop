@@ -1,7 +1,0 @@
-[Desktop Entry]
-Name=Lightning Wallet
-Exec=lightning-app
-Icon=lightning-app
-Category=Finance;Network;
-Terminal=false
-Type=Application
