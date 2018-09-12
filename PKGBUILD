@@ -1,12 +1,12 @@
 # Maintainer: Oscar Morante <spacepluk@gmail.com>
 
-_version=2018.2.6
+_version=2018.2.7
 _build=f1
-_randomstring=c591d9a97a0b
+_randomstring=4ebd28dd9664
 _prefix=/opt/Unity
 
 pkgname=unity-editor-facebook
-pkgver=${_version}${_build}
+pkgver=${_version}${_build}+${_buildtag}
 pkgrel=1
 pkgdesc="Allows building your Unity projects for the Facebook-Games platform"
 arch=('x86_64')
@@ -15,7 +15,7 @@ license=('custom')
 depends=('unity-editor')
 makedepends=('cpio')
 source=("https://download.unity3d.com/download_unity/${_randomstring}/MacEditorTargetInstaller/UnitySetup-Facebook-Games-Support-for-Editor-${_version}${_build}.pkg")
-sha1sums=('e2aab1b21c931722d2b4484183771981d77a1f1e')
+sha1sums=('f9e437c2f6fccfa87d31034dfa47e9465005ee64')
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
