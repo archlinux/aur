@@ -1,0 +1,16 @@
+pkgbase = emacs-shackle-git
+	pkgdesc = Enforce rules for popup windows
+	pkgver = r119.4189c1c
+	pkgrel = 1
+	url = https://github.com/wasamasa/shackle
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	provides = emacs-shackle
+	conflicts = emacs-shackle
+	source = git+https://github.com/wasamasa/shackle.git
+	sha256sums = SKIP
+
+pkgname = emacs-shackle-git
+
