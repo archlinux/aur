@@ -1,7 +1,7 @@
 pkgbase = python-prompt_toolkit-gns3
 	pkgdesc = Library for building powerful interactive command lines in Python (GNS3)
 	pkgver = 1.0.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jonathanslenders/python-prompt-toolkit
 	arch = any
 	groups = gns3
@@ -10,11 +10,11 @@ pkgbase = python-prompt_toolkit-gns3
 	depends = python-pygments
 	depends = python-six
 	depends = python-wcwidth
-	provides = python-prompt_toolkit
-	conflicts = python-prompt_toolkit
+	provides = python-python-prompt-toolkit
+	conflicts = python-python-prompt-toolkit
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/p/prompt_toolkit/prompt_toolkit-1.0.15.tar.gz
-	sha256sums = 858588f1983ca497f1cf4ffde01d978a3ea02b01c8a26a8bbc5cd2e66d816917
+	source = python-prompt-toolkit-1.0.15.tar.gz::https://github.com/jonathanslenders/python-prompt-toolkit/archive/1.0.15.tar.gz
+	sha256sums = e2f720a1e8149a2b56b776d68c8fb28c8211546d266301178fb982e69d0c9bed
 
 pkgname = python-prompt_toolkit-gns3
 
