@@ -34,7 +34,7 @@ source_i686=("${_filename}-i686.tar.bz2"::"${_url}/${_src}-i686.tar.bz2"
 source_x86_64=("${_filename}-x86_64.tar.bz2"::"${_url}/${_src}-x86_64.tar.bz2"
                "${_filename}-x86_64.tar.bz2.asc"::"${_url}/${_src}-x86_64.tar.bz2.asc"
                "${_filename}-x86_64.txt"::"${_urlUS}/${_srcUS}-x86_64.txt")
-sha512sums=('252337cd79c4e5b38230523de57b83759d7ebc83e9b17052e2b159174b04121774100ceb5b6099cede910c9df5cc0473589561a73ff55be8535e9a1d0bf3727e'
+sha512sums=('96b390e8857c2bcce077af75473e4fd12ae20e3e1daaec3973fe0371f84c82e23a9e1de24003f3a86a77e76a38979fb7e706ce261498ca48b1f1d4b1fa4a5fd8'
             '5ed67bde39175d4d10d50ba5b12063961e725e94948eadb354c0588b30d3f97d2178b66c1af466a6e7bd208ab694227a1391c4141f88d3da1a1178454eba5308')	
 sha512sums_i686=('SKIP' 'SKIP' 'SKIP')
 sha512sums_x86_64=('SKIP' 'SKIP' 'SKIP')
