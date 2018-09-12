@@ -1,18 +1,20 @@
 pkgbase = freelan-git
 	pkgdesc = Peer-to-peer, secure, easy-to-setup, multi-platform, highly-configurable VPN software
 	pkgver = r3862.1cf517bf
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/freelan-developers/freelan
 	arch = any
 	license = GPL
 	makedepends = git
+	makedepends = help2man
 	makedepends = scons
 	depends = boost
 	depends = curl
 	depends = miniupnpc
 	depends = openssl
-	depends = python
 	source = git+https://github.com/freelan-developers/freelan.git
+	source = fix-build.diff
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = freelan-git
