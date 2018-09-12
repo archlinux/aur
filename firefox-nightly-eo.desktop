@@ -83,14 +83,14 @@ Comment[uk]=Перегляд сторінок Інтернету
 Comment[vi]=Để duyệt các trang web
 Comment[zh_CN]=浏览互联网
 Comment[zh_TW]=瀏覽網際網路
-Exec=firefox-nightly-it --class=FirefoxNightly %u
+Exec=/opt/firefox-nightly-it/firefox %u
 Icon=firefox-nightly-it
 Terminal=false
 X-MultipleArgs=false
 Type=Application
 MimeType=text/html;text/xml;application/xhtml+xml;application/xml;application/vnd.mozilla.xul+xml;application/rss+xml;application/rdf+xml;image/gif;image/jpeg;image/png;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;x-scheme-handler/chrome;video/webm;application/x-xpinstall;text/mml;
 StartupNotify=true
-StartupWMClass=FirefoxNightly
+StartupWMClass=Nightly
 Categories=GNOME;GTK;Network;WebBrowser;
 Keywords=Internet;WWW;Browser;Web;Explorer
 Keywords[eo]=Internet;WWW;Browser;Web;Explorer;Interreto;Retumilo;Fajrfokso;Retumo;TTT;
@@ -102,7 +102,7 @@ Name=Profile Manager
 Name[eo]=Mastrumilo de profiloj
 Name[fr]=Gestionnaire de profil
 Name[it]=Gestore dei profili
-Exec=firefox-nightly-it --class=FirefoxNightly -P
+Exec=/opt/firefox-nightly/firefox -P
 
 [Desktop Action new-window]
 Name=New Window
@@ -210,7 +210,7 @@ Name[wo]=Palanteer bu bees
 Name[xh]=Ifestile entsha
 Name[zh_CN]=新建窗口
 Name[zh_TW]=開新視窗
-Exec=firefox-nightly-it --class=FirefoxNightly --new-window %u
+Exec=/opt/firefox-nightly/firefox --new-window %u
 
 [Desktop Action new-private-window]
 Name=New Private Window
@@ -318,4 +318,4 @@ Name[wo]=Panlanteeru biir bu bees
 Name[xh]=Ifestile yangasese entsha
 Name[zh_CN]=新建隐私浏览窗口
 Name[zh_TW]=新增隱私視窗
-Exec=firefox-nightly-it --class=FirefoxNightly --private-window %u
+Exec=/opt/firefox-nightly/firefox --private-window %u
