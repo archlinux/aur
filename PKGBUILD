@@ -1,27 +1,29 @@
 # Maintainer: LLL2yu <lll2yu@protonmail.com>
  
 pkgname="authenticator"
-fullpkgname="Authenticator"
-pkgver=0.2.1
-pkgrel=2
-pkgdesc="Two-Factor Authentication code generator for Gnome"
-arch=('x86_64' 'i686')
-url="https://github.com/bilelmoussaoui/Authenticator" 
+pkgver=0.2.5
+pkgrel=1
+pkgdesc="2FA code generator for GNOME"
+arch=('any')
+url="https://gitlab.gnome.org/World/Authenticator"
 license=("GPL-2.0")
-depends=('python' 'gtk3' 'python-pyotp' 'python-pillow' 'pyzbar' 'libsecret' 'gnome-screenshot')
-makedepends=('meson' 'ninja' 'gobject-introspection' 'glib2' 'pkg-config' 'desktop-file-utils')
+depends=('python>=3.3.0' 'gtk3>=3.16.0' 'python-pyotp' 'glib2' 'python-pillow' 'libsecret' 'pyzbar' 'python-gnupg') 
+makedepends=('meson>=0.42' 'ninja' 'gobject-introspection' 'gnome-common')
 provides=('authenticator')
-source=("https://github.com/bilelmoussaoui/${fullpkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('251b7b2717b09c2f10eed1e1b6a5ac169c3fe4885e54e5003f8e259e2213448e')
-build() {
-    cd ${fullpkgname}-${pkgver}
+source=("$pkgname::git+https://gitlab.gnome.org/World/Authenticator.git?unsigned#tag=${pkgver}")
+sha256sums=('SKIP')
 
-    meson builddir --prefix=/usr/ -Denable-tests=false
-    ninja -C builddir
+prepare() {
+    cd "$srcdir/$pkgname"
+    meson build --prefix=/usr/ --libdir=lib
+}
+
+build(){
+    cd "$srcdir/$pkgname"
+    ninja -C build
 }
 
 package() {
-    cd ${fullpkgname}-${pkgver}
-
-    DESTDIR="${pkgdir}" ninja -C builddir install
+    cd "$srcdir/$pkgname"
+    DESTDIR="${pkgdir}" ninja -C build install
 }
