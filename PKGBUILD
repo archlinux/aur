@@ -2,7 +2,7 @@
 
 pkgname=lightning-app
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightning Network Desktop Wallet"
 arch=('x86_64')
 url="https://github.com/lightninglabs/lightning-app"
@@ -33,5 +33,5 @@ package() {
     sed -i 's/AppRun/lightning-app/g' ${pkgdir}/usr/share/applications/${pkgname}.desktop
 
     install -Ddm755 ${pkgdir}/usr/bin
-    ln -s ${pkgdir}/opt/${pkgname}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
+    ln -s /opt/${pkgname}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
 }
