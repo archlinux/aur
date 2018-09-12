@@ -71,7 +71,7 @@ _localmodcfg=
 pkgbase=linux-ck
 _srcver=4.18.7-arch1
 pkgver=${_srcver%-*}
-pkgrel=1
+pkgrel=2
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -91,7 +91,8 @@ source=(
   Fix_MuQSS_full_dynticks_build.patch::https://github.com/ckolivas/linux/commit/abb4fd30fa127a0e8178b975343eb01713bc2b18.patch
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-drm-i915-Increase-LSPCON-timeout.patch
-  0003-Arch-Linux-kernel-v4.18.4-arch1.patch
+  0003-HID-core-fix-grouping-by-application.patch
+  0004-Arch-Linux-kernel-v4.18.7-arch1.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -99,16 +100,17 @@ validpgpkeys=(
 )
 sha256sums=('f03b425e262a71e5079736706233a4e9afaf77c8462b552b4d6db2d33f5af731'
             'SKIP'
-            '17addbbf0abc3ffc138592dd7f9eb9db649775f652c29d4891622b9b448da3a1'
+            'a181ab290681e16b329775200357e7c04dcf8d6a5bc787d93feb5d763e892827'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
             '0354083492adb3785dd31d2d4bf7dc805110aceffb369deed6cbded121f8a3d3'
             '6e1f3cc3eb9a1e30a69ef1999f9aa6ad7f2f9fe4af7ba5dabe25d4ff19ee6740'
-            'e8b7b11a0d09e605a914955baa2aad219684a189214ea283393a75b0b62df460'
-            '66502e0ea6c586c15e235771f9e45323f4449140411096a45073bcd4609a82c4'
-            'b59822d76feb68c9c23811e43d03bf5cb71715836730f187ca8a16c5108ba61a')
+            'b014187b6b9d3078c45b7c09b1ba1ccb315d69d73ccd4f59dc26fcbc50155409'
+            '947475d613b9912aec2b7bc600eb5f630e9e34095c8cc43e410a69848cce5a96'
+            'dbd2603d608b74b920350a62279060b77fe6756e3913cec7c739a4106048a1ad'
+            '8ea37744879bc5a3d15ad4f1b267565baf23003e110dd68f0addf861bb2ac9d9')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
