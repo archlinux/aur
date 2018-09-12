@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=notmuchfs-git
-pkgver=0.3.r22.eb06359
+pkgver=0.3.r23.f7ed316
 pkgrel=1
 pkgdesc="A virtual maildir file system for notmuch queries."
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ groups=()
 depends=('notmuch>=0.20' 'fuse2>=2.6')
 makedepends=('git')
 optdepends=('mutt')
-provides=()
+provides=("notmuchfs=${pkgver}")
 conflicts=('notmuchfs')
 replaces=()
 backup=()
