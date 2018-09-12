@@ -3,7 +3,7 @@
 pkgname=jhiccup
 _pkgname=jHiccup
 pkgver=2.0.9
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.azulsystems.com/jHiccup"
 license=('custom:BSD-2-clause')
@@ -15,7 +15,7 @@ sha256sums=('c4dc4b62f6615829c5771dd2649c2440210d905b9252f07baf39de05be74053b'
 
 package() {
   
-  install -d ${pkgdir}/usr/{bin,share/${pkgname},share/java/${pkgname},share/licenes/${pkgname}}
+  install -d ${pkgdir}/usr/{bin,share/${pkgname},share/java/${pkgname},share/licenses/${pkgname}}
   install -D -m 755 ${srcdir}/${_pkgname}.sh ${pkgdir}/usr/bin/${_pkgname}
 
   cd ${srcdir}/${_pkgname}-${pkgver}
@@ -28,6 +28,6 @@ package() {
 
   
   ln -sf /usr/share/${pkgname}/${_pkgname}.jar ${pkgdir}/usr/share/java/${pkgname}/${_pkgname}.jar
-  ln -sf /usr/share/${pkgname}/LICENSE.txt ${pkgdir}/usr/share/licenes/${pkgname}/LICENSE
+  ln -sf /usr/share/${pkgname}/LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
 
