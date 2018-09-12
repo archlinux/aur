@@ -1,0 +1,17 @@
+pkgbase = emacs-evil-anzu-git
+	pkgdesc = anzu for Evil
+	pkgver = r23.9bca6ca
+	pkgrel = 1
+	url = https://github.com/syohex/emacs-evil-anzu
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	depends = emacs-anzu
+	provides = emacs-evil-anzu
+	conflicts = emacs-evil-anzu
+	source = git+https://github.com/syohex/emacs-evil-anzu.git
+	sha256sums = SKIP
+
+pkgname = emacs-evil-anzu-git
+
