@@ -1,6 +1,6 @@
 pkgbase = jtreg
 	pkgdesc = Regression Test Harness for the JDK
-	pkgver = 4.2+b12+7b1496d2790e
+	pkgver = 4.2+b13+47820c88bcda
 	pkgrel = 1
 	url = http://openjdk.java.net/jtreg/
 	arch = any
@@ -14,10 +14,10 @@ pkgbase = jtreg
 	depends = java-runtime>=7
 	depends = jtharness
 	depends = asmtools
-	source = http://hg.openjdk.java.net/code-tools/jtreg/archive/7b1496d2790e.tar.gz
+	source = http://hg.openjdk.java.net/code-tools/jtreg/archive/47820c88bcda.tar.gz
 	source = jtreg.sh
 	source = jtreg.patch
-	sha256sums = adaf360354a6573802cd6c5f46cd6bcd07829e190189044102a03278a3dbad3a
+	sha256sums = a095cf0d4d07d296a922430913f797d8d0909165b83cd327177925ff48d48b2a
 	sha256sums = 49a4a58ff76e2e9989122d0aa0e5064f9797198789a851f21ed0b36484253c9f
 	sha256sums = 84a77930e1bfbd75c9643d78b0b5d60c38693fb9266409e37f50c42d40fecf29
 

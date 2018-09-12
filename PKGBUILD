@@ -1,15 +1,16 @@
 # Maintainer: Vladimir Tsanev <tsachev@gmail.com>
+
 pkgname=jtreg
 # generate version executing on the tip (or latest working build)
 #
 #    hg log --limit=1 --template "{latesttag}.{node|short}" |sed -e "s/^jtreg//" |sed -e "s/-/+/"`
 #
 _version=4.2
-_build=b12
+_build=b13
 _tag=${pkgname}${_version}-${_build}
 #_commit=_tag
 #pkgver=${_version}+${_build}
-_commit=7b1496d2790e
+_commit=47820c88bcda
 pkgver=${_version}+${_build}+${_commit}
 pkgrel=1
 pkgdesc="Regression Test Harness for the JDK"
@@ -25,7 +26,7 @@ provides=()
 conflicts=()
 install=
 source=("http://hg.openjdk.java.net/code-tools/jtreg/archive/${_commit}.tar.gz" "${pkgname}.sh" "${pkgname}.patch")
-sha256sums=('adaf360354a6573802cd6c5f46cd6bcd07829e190189044102a03278a3dbad3a'
+sha256sums=('a095cf0d4d07d296a922430913f797d8d0909165b83cd327177925ff48d48b2a'
             '49a4a58ff76e2e9989122d0aa0e5064f9797198789a851f21ed0b36484253c9f'
             '84a77930e1bfbd75c9643d78b0b5d60c38693fb9266409e37f50c42d40fecf29')
 
@@ -91,5 +92,3 @@ package() {
   # install profile.d script
   install -Dm 755 ${srcdir}/${pkgname}.sh ${pkgdir}/etc/profile.d/${pkgname}.sh
 }
-
-# vim:set ts=2 sw=2 et:
