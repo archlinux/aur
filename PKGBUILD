@@ -13,6 +13,11 @@ sha256sums=('62f870ccb405452ff6037861f466e8c4a02290e7a4560986f79b0a3acb5d13b6')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
+prepare() {
+  cd PEGTL-$pkgver
+  curl -L https://github.com/taocpp/PEGTL/pull/125.patch | patch -p1
+}
+
 build() {
   cd PEGTL-$pkgver
   for _arch in ${_architectures}; do
@@ -29,7 +34,6 @@ package() {
   for _arch in ${_architectures}; do
     cd "$srcdir"/PEGTL-${pkgver}/build-${_arch}
     make install/fast DESTDIR="$pkgdir"
-    rm -r "$pkgdir"/usr/${_arch}/share
   done
 }
 
