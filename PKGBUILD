@@ -34,7 +34,7 @@ build() {
 }
 
 _update_deps() {
-    _ver=`pacman -Q $1 | cut -f2 -d\  | cut -f1 -d-`
+    _ver=`pacman -Q $1 | cut -f2 -d\ `
     for i in `seq 0 $(expr ${#depends[@]} - 1)`; do
         if [ ${depends[$i]} == $1 ]; then
             depends[$i]="$1=${_ver}"
