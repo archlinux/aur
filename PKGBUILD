@@ -3,7 +3,7 @@
 # Contributor: ant32 <antreimer@gmail.com>
 # Contributor: Filip Brcic <brcha@gna.org>
 
-_pkgver=1.1.0i
+_pkgver=1.1.1
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-openssl
@@ -18,17 +18,17 @@ makedepends=('mingw-w64-gcc'
              'perl')
 options=('!strip' 'staticlibs' '!buildflags')
 source=("https://www.openssl.org/source/openssl-${_pkgver}.tar.gz"{,.asc})
-sha256sums=('ebbfc844a8c8cc0ea5dc10b86c9ce97f401837f3fa08c17b2cdadc118253cf99'
+sha256sums=('2836875a0f89c03d0fdf483941512613a50cfb421d6fd94b9f41d7279d586a3d'
             'SKIP')
 validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491') # Matt Caswell <matt@openssl.org>
 
 prepare() {
   cd openssl-${_pkgver}
-  sed -i -e '/^"mingw"/ s/-fomit-frame-pointer -O3 -march=i486 -Wall/-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4/' Configure
-  sed -i -e '/^"mingw64"/ s/-O3 -Wall/-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4/' Configure
 }
 
 build() {
+  export CFLAGS="-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4"
+
   cd "${srcdir}/openssl-${_pkgver}"
   for _arch in ${_architectures}; do
     mkdir -p "${srcdir}/build-${_arch}" && cp -a "${srcdir}/openssl-${_pkgver}/"* "${srcdir}/build-${_arch}" && cd "${srcdir}/build-${_arch}"
@@ -42,7 +42,8 @@ build() {
       threads \
       shared \
       no-ssl3-method \
-      zlib-dynamic
+      zlib-dynamic \
+      "${CFLAGS}"
     make
   done
 }
