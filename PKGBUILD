@@ -4,7 +4,7 @@
 
 pkgname=nvidia-390xx-ck
 pkgver=390.77
-pkgrel=8
+pkgrel=9
 _extramodules=extramodules-ck
 _pkgdesc="NVIDIA drivers for linux-ck, 390xx legacy branch."
 pkgdesc="$_pkgdesc"
@@ -21,7 +21,8 @@ source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Lin
 kernel-4.16.patch
 unfuck.patch)
 sha256sums=('6eb950dc4b59697d12d79a975b2c21a5e3cde49a12b61432d7e836110a06a6ea'
-            '622ac792ec200b2239cb663c0010392118b78c9904973d82cd261165c16d6385')
+            '622ac792ec200b2239cb663c0010392118b78c9904973d82cd261165c16d6385'
+            'fa726a12083bd7415d4f827652caf66030224c8e69925aa9f650766e58790080')
 
 _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 
