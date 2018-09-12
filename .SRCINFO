@@ -1,0 +1,20 @@
+pkgbase = pcsclite-nopy
+	pkgdesc = PC/SC Architecture smartcard middleware library (no python)
+	pkgver = 1.8.23
+	pkgrel = 3
+	url = https://pcsclite.apdu.fr/
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = pkg-config
+	makedepends = python
+	depends = libsystemd
+	optdepends = python: to use pcsc-spy tool
+	provides = pcsclite=1.8.23
+	conflicts = pcsclite
+	options = !docs
+	source = https://pcsclite.apdu.fr/files/pcsc-lite-1.8.23.tar.bz2
+	sha256sums = 5a27262586eff39cfd5c19aadc8891dd71c0818d3d629539bd631b958be689c9
+
+pkgname = pcsclite-nopy
+
