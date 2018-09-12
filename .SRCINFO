@@ -2,6 +2,7 @@ pkgbase = freefem++-git
 	pkgdesc = A PDE oriented language using the finite element method from git
 	pkgver = 3.61.2r20180912
 	pkgrel = 1
+	epoch = 1
 	url = http://www.freefem.org/ff++/index.htm
 	arch = x86_64
 	license = LGPL

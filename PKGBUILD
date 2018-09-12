@@ -2,6 +2,7 @@
 
 pkgname=freefem++-git
 pkgver=3.61.2r20180912
+epoch=1
 pkgrel=1
 pkgdesc='A PDE oriented language using the finite element method from git'
 arch=('x86_64')
