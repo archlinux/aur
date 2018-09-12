@@ -1,0 +1,16 @@
+pkgbase = emacs-evil-nerd-commenter-git
+	pkgdesc = Comment/uncomment lines efficiently. Like Nerd Commenter in Vim
+	pkgver = r172.275c95c
+	pkgrel = 1
+	url = https://github.com/redguardtoo/evil-nerd-commenter
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	provides = emacs-evil-nerd-commenter
+	conflicts = emacs-evil-nerd-commenter
+	source = git+https://github.com/redguardtoo/evil-nerd-commenter.git
+	sha256sums = SKIP
+
+pkgname = emacs-evil-nerd-commenter-git
+
