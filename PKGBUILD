@@ -2,7 +2,7 @@
 
 pkgname=guile-ssh
 pkgver=0.11.3
-pkgrel=1
+pkgrel=2
 pkgdesc='SSH module for Guile based on libssh'
 arch=('x86_64' 'i686' 'armv7h')
 url="https://github.com/artyom-poptsov/guile-ssh"
@@ -15,6 +15,7 @@ sha256sums=('1373bf6f30ba9b4404c044fb00c0509cbd851606264803faccbf881b1efb52bc')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
+	sed -i 's|-lssh_threads||' libguile-ssh/Makefile.am
 	autoreconf -fi
 	./configure --prefix=/usr --disable-rpath
 	make
