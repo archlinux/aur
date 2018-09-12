@@ -22,6 +22,7 @@ build() {
 
 
 package() {
-  cd IQ-TREE-${pkgver}
+  # TODO: Remove beta string when possible.
+  cd IQ-TREE-${pkgver}-beta
   install -D -m 755 build/iqtree ${pkgdir}/usr/bin/iqtree
 }
