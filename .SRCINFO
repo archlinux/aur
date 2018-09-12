@@ -1,0 +1,16 @@
+pkgbase = emacs-evil-exchange-git
+	pkgdesc = Port of vim-exchange
+	pkgver = r41.4769153
+	pkgrel = 1
+	url = https://github.com/Dewdrops/evil-exchange
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	provides = emacs-evil-exchange
+	conflicts = emacs-evil-exchange
+	source = git+https://github.com/Dewdrops/evil-exchange.git
+	sha256sums = SKIP
+
+pkgname = emacs-evil-exchange-git
+
