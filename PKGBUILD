@@ -12,7 +12,8 @@ source=("https://github.com/Cibiv/IQ-TREE/archive/v${pkgver}-beta.tar.gz")
 md5sums=('1973cacc62ac9b0dd12f7262ebf8e8b9')
 
 build() {
-  cd IQ-TREE-${pkgver}
+  # TODO: Remove beta string when possible.
+  cd IQ-TREE-${pkgver}-beta
   mkdir build
   cd build
   cmake -DIQTREE_FLAGS=omp ..
