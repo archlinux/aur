@@ -1,34 +1,38 @@
-# maintainer: thomas berryhill (oats) thomasberryhill@protonmail.ch
-
-_gitname=xbps
+# Contributor: thomas berryhill (oats) thomasberryhill@protonmail.ch
+# Maintainer: aksr <aksr at t-com dot me>
 pkgname=xbps-git
-pkgver=0.51.r111.gf196abb
+pkgver=0.51.r218.ge4702d9d
 pkgrel=1
-pkgdesc="Void Linux's homemade binary package manager"
+pkgdesc="(Void Linux's) The X Binary Package System"
 arch=('i686' 'x86_64')
 url="https://github.com/voidlinux/xbps"
 license=('custom:2-clause-BSD')
 depends=('ca-certificates' 'libarchive')
 makedepends=('zlib' 'openssl' 'git')
-source=('git+https://github.com/voidlinux/xbps.git')
+source=("$pkgname::git+https://github.com/void-linux/xbps.git")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$_gitname"
-    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$srcdir/$pkgname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "$srcdir/$pkgname"
+  export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
+  ./configure --prefix=/usr --sysconfdir=/etc
+  sed -i '/-Werror/d' config.mk
 }
 
 build() {
-	cd "$_gitname"
-	./configure \
-		--prefix=/usr \
-		--sysconfdir=/etc
-	make
+  cd "$srcdir/$pkgname"
+  make
 }
 
 package() {
-	cd "$_gitname"
-	make DESTDIR="$pkgdir/" install
-	install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
-	install -Dm644 COPYING.3RDPARTY "$pkgdir/usr/share/licenses/$pkgname/COPYING.3RDPARTY"
+  cd "$srcdir/$pkgname"
+  make DESTDIR="$pkgdir/" install
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  install -Dm644 COPYING.3RDPARTY "$pkgdir/usr/share/licenses/$pkgname/COPYING.3RDPARTY"
 }
+
