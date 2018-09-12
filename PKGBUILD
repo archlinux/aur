@@ -1,5 +1,5 @@
 pkgname=camunda-modeler
-pkgver=1.16.2
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="An integrated modeling solution for BPMN and DMN based on bpmn.io"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("https://camunda.org/release/$pkgname/$pkgver/$pkgname-$pkgver-linux-x64
         'camunda-modeler48.png'
         'camunda-modeler128.png')
         
-sha256sums=('1f0455107a61fd62517feb887eeabb8ef40bad0c6f56746b2a97ca3448677547'
+sha256sums=('91ddfbba2738e35ff7f6a3bf56e2884cd2ad15b18f33208ac4234a4c92583670'
             '5f2f52b71d0f2e98a3e9d6bc0169cc0bdfd88eb4dd40e6837a54e0cc9275dce7'
             '1a0d59f97fd76d6a1e348170e15a7f7c3b7b85af8a66410e8338db8332971917'
             '2ada416533b6014b23ebca0b9a8615c56f0ffe5f91be798576a1aa71853b96c0'
@@ -25,7 +25,7 @@ depends=('libnotify')
 package() {
   cd "$srcdir"
   install -dm 755 "$pkgdir/opt/$pkgname"
-  cp -rf "$pkgname" "$pkgdir/opt"
+  cp -af "$pkgname-$pkgver-linux-x64/." "$pkgdir/opt/$pkgname"
   install -dm 755 "$pkgdir/usr/bin/"
   install -Dm 775 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
   install -Dm 644 "$srcdir/camunda-modeler.desktop" "$pkgdir/usr/share/applications/camunda-modeler.desktop"
