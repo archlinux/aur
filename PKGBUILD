@@ -1,8 +1,9 @@
 # Contributor: flu
 # Contributor: IgnorantGuru http://igurublog.wordpress.com/contact-ignorantguru/
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=udevil-git
-pkgver=20150504.216
+pkgver=20170628.225
 pkgrel=1
 pkgdesc='Mount without password'
 arch=('i686' 'x86_64')
@@ -27,12 +28,12 @@ conflicts=('udevil' 'devmon' 'devmon-git')
 provides=('udevil' 'devmon')
 backup=('etc/udevil/udevil.conf' 'etc/conf.d/devmon')
 options=(!strip debug)
-source=(git://github.com/IgnorantGuru/udevil.git)
+source=("git://github.com/IgnorantGuru/udevil.git#branch=next")
 md5sums=(SKIP)
 
 pkgver() {
   cd udevil
-  printf "$(git log -1 --format="%cd" --date=short | sed 's|-||g').$(git rev-list --count master)"
+  printf "$(git log -1 --format="%cd" --date=short | sed 's|-||g').$(git rev-list --count HEAD)"
 }
 
 build() {
