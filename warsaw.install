@@ -15,4 +15,16 @@ pre_remove() {
     else
         systemctl stop warsaw
     fi
+
+    for i in ld-linux-x86-64.so.2 libc.so.6 libdl.so.2 libpthread.so.0; do
+        sudo chattr -V -i /usr/local/lib/warsaw/$i
+    done
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_upgrade() {
+    pre_remove
 }
