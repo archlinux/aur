@@ -1,0 +1,52 @@
+diff --git a/configure.ac b/configure.ac
+index c8a9143..938228c 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -194,6 +194,19 @@ AS_IF([test "x$disable_stats" = xyes],
+   [AC_DEFINE([HAVE_STATS], [1], [Define to 1 if stats is not disabled])])
+ AC_MSG_RESULT($disable_stats)
+ 
++AC_ARG_ENABLE([packaging],
++  [AS_HELP_STRING(
++    [--enable-packaging],
++    [apply packaging standarts])
++  ],
++  [enable_packaging=yes],
++  [enable_packaging=no])
++AS_IF(
++  [test "x$enable_packaging" = xyes],
++  [AC_DEFINE([PACKAGING], [1], [Define to 1 if stats is not disabled])],
++  [])
++AC_MSG_RESULT($enable_packaging)
++
+ # Untar the yaml-0.1.4 in contrib/ before config.status is rerun
+ AC_CONFIG_COMMANDS_PRE([tar xvfz contrib/yaml-0.1.4.tar.gz -C contrib])
+ 
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 74c90b7..a8dea61 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -4,6 +4,7 @@ AM_CPPFLAGS =
+ if !OS_SOLARIS
+ AM_CPPFLAGS += -D_GNU_SOURCE
+ endif
++AM_CPPFLAGS += -DSYSCONFDIR="\"$(sysconfdir)\""
+ AM_CPPFLAGS += -I $(top_srcdir)/src/hashkit
+ AM_CPPFLAGS += -I $(top_srcdir)/src/proto
+ AM_CPPFLAGS += -I $(top_srcdir)/src/event
+diff --git a/src/dynomite.c b/src/dynomite.c
+index 17127c4..dd5e8e2 100644
+--- a/src/dynomite.c
++++ b/src/dynomite.c
+@@ -35,7 +35,11 @@
+ #include "dyn_signal.h"
+ #include "dyn_asciilogo.h"
+ 
++#if !defined(PACKAGING)
+ #define DN_CONF_PATH        "conf/dynomite.yml"
++#else
++#define DN_CONF_PATH        SYSCONFDIR "/dynomite.yml"
++#endif
+ 
+ #define DN_LOG_DEFAULT      LOG_NOTICE
+ #define DN_LOG_MIN          LOG_EMERG

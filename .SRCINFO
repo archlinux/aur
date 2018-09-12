@@ -1,0 +1,18 @@
+pkgbase = dynomite
+	pkgdesc = Dynomite is a thin, distributed dynamo layer for different storage engines and protocols
+	pkgver = 0.5.9
+	pkgrel = 1
+	url = https://github.com/Netflix/dynomite
+	arch = i686
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = openssl-1.0
+	provides = dynomite
+	conflicts = dynomyte-git
+	source = https://github.com/Netflix/dynomite/archive/v0.5.9-5_MuslCompatiblity.tar.gz
+	source = 0001-sysconfdir.patch
+	md5sums = 25f14fb09ef6aac6509ec01ffd942f41
+	md5sums = b3b32f150ae8ea024510d112d7ba59d3
+
+pkgname = dynomite
+
