@@ -2,7 +2,7 @@
 
 pkgname=yank
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Copy terminal output to clipboard'
 arch=('i686' 'x86_64')
 url='https://github.com/mptre/yank'
@@ -10,8 +10,9 @@ license=('MIT')
 depends=('xsel')
 provides=("${pkgname}-git")
 conflicts=("${pkgname}-git")
-source=("${url}/archive/v$pkgver.tar.gz")
-sha256sums=('9d0152a2b876a00136d03693d43a9f4363d4901a4a1de4b0aed2cecf38e98ac3')
+# https://github.com/mptre/yank/releases/download/v$%7BV%7D/yank-$%7BV%7D.tar.gz
+source=("${url}/releases/download/v${pkgver}/${pkgname}-$pkgver.tar.gz")
+sha256sums=('20ba1b01a7514f2f670702e83846f42429e2e90491dc1f679c8319a45a0382de')
 
 build() {
   cd "${pkgname}-${pkgver}"
