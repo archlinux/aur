@@ -1,4 +1,11 @@
 # Maintainer: Dominik Schrempf <dominik dot schrempf at gmail dot com>
+
+# XXX: The following warning cannot be removed because CMAKE stores the build
+# directory in the executable 'iqtree'.
+
+# ==> WARNING: Package contains reference to $srcdir
+# usr/bin/iqtree
+
 pkgname=iqtree-latest
 pkgver=1.7
 pkgrel=1
@@ -19,7 +26,6 @@ build() {
   cmake -DIQTREE_FLAGS=omp ..
   make
 }
-
 
 package() {
   # TODO: Remove beta string when possible.
