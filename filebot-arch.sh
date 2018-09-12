@@ -5,7 +5,6 @@ export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
 APP_ROOT=/usr/share/java/filebot
-cd $APP_ROOT
 
 # add APP_ROOT to LD_LIBRARY_PATH
 if [ ! -z "$LD_LIBRARY_PATH" ]; then
