@@ -1,0 +1,16 @@
+#!/bin/bash
+
+URL=https://github.com/intel/compute-runtime
+git clone ${URL}
+pushd compute-runtime
+VER=$(git describe --tags --abbrev=0)
+popd
+rm -rf compute-runtime
+wget ${URL}/releases/download/${VER}/intel-opencl_${VER}_amd64.deb
+LINE=($(sha256sum intel-opencl_${VER}_amd64.deb))
+SUM=${LINE[0]}
+echo "new version: ${VER} with sha256sum=${SUM}"
+rm intel-opencl_${VER}_amd64.deb
+sed -i "s/\(^pkgver=\)\(.*\)/\1${VER}/" PKGBUILD
+sed -i "s/\(sha256sums=('\)\(.*$\)/\1${SUM}')/" PKGBUILD
+makepkg --printsrcinfo > .SRCINFO
