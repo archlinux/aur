@@ -44,7 +44,7 @@ pkgver() {
 	cd "YouCompleteMe" || exit
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgrel=1
+pkgrel=2
 pkgdesc="A code-completion engine for Vim"
 arch=('i686' 'x86_64')
 url='http://valloric.github.com/YouCompleteMe/'
@@ -103,7 +103,7 @@ fi
 
 if [[ "$_tern" == "y" ]]; then
 	# ycmd
-	wakedepends+=('npm')
+	makedepends+=('npm')
 fi
 
 if [[ "$_java" == "y" ]]; then
