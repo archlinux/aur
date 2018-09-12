@@ -29,7 +29,7 @@ prepare() {
 
 build() {
     cd "$srcdir/$_pkgname"
-    scons -j6 apps --mode=release prefix="$pkgdir" bin_prefix="$pkgdir"/usr
+    scons apps --mode=release prefix="$pkgdir" bin_prefix="$pkgdir"/usr
     # scons samples  # build fails currently
 }
 
