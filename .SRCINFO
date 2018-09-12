@@ -1,6 +1,6 @@
 pkgbase = sql-workbench
 	pkgdesc = SQL Workbench/J is a free, DBMS-independent, cross-platform SQL query tool.
-	pkgver = 123
+	pkgver = 124
 	pkgrel = 1
 	url = http://www.sql-workbench.net/
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = sql-workbench
 	depends = java-runtime>=8
 	provides = SQL-Workbench
 	replaces = sqlworkbench
-	noextract = Workbench-Build123.zip
-	source = http://www.sql-workbench.net/Workbench-Build123.zip
-	sha256sums = 93014068baa6efdd44b546c4c1cf3dc1279e0ff51d398bc6d1f304c368dab693
+	noextract = Workbench-Build124.zip
+	source = http://www.sql-workbench.net/Workbench-Build124.zip
+	sha256sums = 3a54f1293524ec792e9abd1c57c7c0509ab42ae914a46bee36d7a1a12abb4603
 
 pkgname = sql-workbench
 
