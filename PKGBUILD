@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=inkscape-git
-pkgver=20180609.20396
+pkgver=20180911.20611
 pkgrel=1
 pkgdesc="An Open Source vector graphics editor, using SVG file format, from git master"
 url="https://launchpad.net/inkscape"
@@ -35,7 +35,6 @@ prepare() {
   find share -type f -name "*.py" -exec \
        sed -i '1s|/usr/bin/env python\>|/usr/bin/env python2|g' {} \;
   sed -i '1s|/usr/bin/env python3\>|/usr/bin/env python2|g' CMakeScripts/cmake_consistency_check.py
-  sed -i 's|/usr/bin/env python\>|/usr/bin/env python2|g' share/*/{test/,}*.py
   sed -i 's|"python" },|"python2" },|g' src/extension/implementation/script.cpp
   sed -i 's|"python"|"python2"|g' src/main.cpp
 }
