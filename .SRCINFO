@@ -1,0 +1,16 @@
+pkgbase = emacs-imenu-list-git
+	pkgdesc = Emacs plugin to show the current buffer's imenu entries in a seperate buffer
+	pkgver = r44.04f0632
+	pkgrel = 1
+	url = https://github.com/bmag/imenu-list
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	provides = emacs-imenu-list
+	conflicts = emacs-imenu-list
+	source = git+https://github.com/bmag/imenu-list.git
+	sha256sums = SKIP
+
+pkgname = emacs-imenu-list-git
+
