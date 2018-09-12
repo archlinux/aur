@@ -1,14 +1,14 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=freefem++-git
-pkgver=20180827
+pkgver=3.61.2r20180912
 pkgrel=1
 pkgdesc='A PDE oriented language using the finite element method from git'
 arch=('x86_64')
 url="http://www.freefem.org/ff++/index.htm"
 license=('LGPL')
 depends=('fftw' 'freeglut' 'glu' 'suitesparse' 'hdf5-openmpi' 'gsl' 'openmpi' 'openblas-lapack' 'arpack' 'parmetis' 'python')
-makedepends=('git' 'flex' 'texlive-core')
+makedepends=('git' 'texlive-core')
 provides=("freefem++=3.61")
 conflicts=('freefem++')
 backup=('etc/freefem++.pref')
@@ -18,10 +18,10 @@ options=('!makeflags')
 
 pkgver() {
   cd FreeFem
-  echo $(git log -1 --format="%cd" --date=short | sed 's|-||g')
+  printf "%sr%s" $(grep AC_INIT configure.ac| cut -d, -f2|tr - .) $(git log -1 --format="%cd" --date=short | sed 's|-||g')
 }
 
-build() {
+prepare() {
   cd FreeFem
   autoreconf -fi 
   perl download/getall -a
@@ -29,8 +29,14 @@ build() {
 	      --prefix=/usr \
 	      --sysconfdir=/etc \
 	      --enable-download \
-	      --disable-mumps 
-  make
+	      --disable-mumps
+  find . -name Makefile -exec sed -i 's+^gcc+gcc =+' {} \;
+  find . -name Makefile -exec sed -i 's+^dir+dir =+' {} \;
+}
+
+build() {
+  cd FreeFem
+  make 
 }
 
 check() {
