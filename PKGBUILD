@@ -7,7 +7,7 @@
 
 pkgname=chromium-gtk2
 _pkgname=chromium
-pkgver=69.0.3497.81
+pkgver=69.0.3497.92
 pkgrel=1
 _launcher_ver=6
 pkgdesc="A web browser built for speed, simplicity, and security (GTK2 version)"
@@ -33,7 +33,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkg
         chromium-widevine-r2.patch
         chromium-system-icu.patch
         chromium-skia-harmony.patch)
-sha256sums=('165ac7d0d4588e6b4a16331e0a9906ed013f2d29a96b54f0ea78fa0298f97144'
+sha256sums=('3bdda20b49953b025a788c5c992accfa43057310afaa02bce67c8d709eb5a019'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             '97b421bc60a4abdf37de2d88a51b973e9f68fb44d1eccd464adfb3d9f5d71478'
             '9cae9ded6497afd15ad72d963897425ab6c7f28941bb3c3948e7996610a0d180'
