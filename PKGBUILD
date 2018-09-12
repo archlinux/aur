@@ -1,7 +1,7 @@
 # Maintainer: Adam S Levy <adam@aslevy.com>
 
 pkgname=factom-walletd
-pkgver=2.2.13
+pkgver=2.2.14
 pkgrel=1
 pkgdesc='Server for the factom wallet web service api'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -36,7 +36,6 @@ build()
   echo "Downloading dependencies"
   glide install --strip-vendor
 
-  echo "Building $pkgname version=$pkgver commit=$revision"
   go install -ldflags "-X github.com/FactomProject/$pkgname/vendor/github.com/FactomProject/factom/wallet.WalletVersion=$pkgver"
 }
 
