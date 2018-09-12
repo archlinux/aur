@@ -1,7 +1,7 @@
 pkgbase = factom-cli
 	pkgdesc = Command line interface for factomd and factom-walletd
-	pkgver = 0.4.2.21
-	pkgrel = 2
+	pkgver = 2.2.11
+	pkgrel = 1
 	url = https://github.com/FactomProject/factom-cli
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = factom-cli
 	license = custom:MIT
 	makedepends = go
 	makedepends = git
-	source = git+https://github.com/FactomProject/factom-cli#tag=v0.4.2.21
+	source = git+https://github.com/FactomProject/factom-cli#tag=v2.2.11
 	sha256sums = SKIP
 
 pkgname = factom-cli

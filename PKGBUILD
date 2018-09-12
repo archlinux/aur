@@ -1,8 +1,8 @@
 # Maintainer: Adam S Levy <adam@aslevy.com>
 
 pkgname='factom-cli'
-pkgver='0.4.2.21'
-pkgrel='2'
+pkgver='2.2.11'
+pkgrel='1'
 pkgdesc='Command line interface for factomd and factom-walletd'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/FactomProject/$pkgname"
@@ -27,7 +27,6 @@ build()
   go install github.com/Masterminds/glide
   glide install -v
 
-  echo "Building $pkgname version=$pkgver commit=$revision"
   go install -ldflags "-X github.com/FactomProject/factom-walletd/vendor/github.com/FactomProject/factom/wallet.WalletVersion=$pkgver"
 }
 
