@@ -1,4 +1,5 @@
-# Maintainer: Joseph Brains <jnbrains@gmail.com>
+# Maintainer: Stephan Springer <buzo+arch@Lini.de>
+# Contributor: Joseph Brains <jnbrains@gmail.com>
 
 _pkgname=python-prompt-toolkit
 _pkgname_=python-prompt_toolkit
