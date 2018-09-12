@@ -1,6 +1,6 @@
 # Contributor: Johannes Dewender   arch at JonnyJD dot net
 pkgname=distro-info-data
-pkgver=0.35
+pkgver=0.36
 pkgrel=1
 pkgdesc="information about the distributions' releases (data files)"
 arch=('any')
@@ -10,7 +10,7 @@ depends=()
 makedepends=('python2')
 options=(!emptydirs)
 source=(http://ftp.debian.org/debian/pool/main/d/$pkgname/${pkgname}_$pkgver.tar.xz)
-sha256sums=('41b59e70f7817bd555dea6f26769e1f3589d12294f1d55da4c2e747e18454577')
+sha256sums=('a1cb1ff9f13da5d06f0c9049d94f5d431c90b5e08cf8c374a77d3a648f37abb0')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
