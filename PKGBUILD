@@ -2,14 +2,14 @@
 
 pkgname=intel-media-stack-bin
 pkgver=2018.Q2.2
-pkgrel=2
-pkgdesc='Tools and libraries for developing media solutions on Intel products. Includes MediaSDK, Media Driver, libva and libdrm.'
+pkgrel=3
+pkgdesc='Tools and libraries for developing media solutions on Intel products. Includes MediaSDK, Media Driver, libva and libva-utils.'
 arch=('x86_64')
 url='https://github.com/Intel-Media-SDK/MediaSDK/'
 license=('MIT')
 depends=('gcc-libs' 'libpciaccess' 'libdrm' 'libx11' 'libxext' 'libxfixes' 'ocl-icd' 'perl')
 makedepends=('lsb-release')
-provides=('intel-media-sdk' 'libmfx' 'intel-media-driver')
+provides=('intel-media-sdk' 'libmfx' 'intel-media-driver' 'libva' 'libva-utils')
 conflicts=('intel-media-sdk' 'intel-media-sdk-git' 'intel-media-server-studio')
 backup=('etc/profile.d/intel-mediasdk-devel.sh'
         'etc/profile.d/intel-mediasdk-devel.csh'
@@ -40,6 +40,10 @@ prepare() {
 package() {
     cd "${pkgname}-${pkgver}"
     
+    local _command
+    local _file
+    local _header
+    
     mkdir -p "$pkgdir"/{etc/{ld.so.conf.d,profile.d},usr/lib}
     
     ./install_media.sh
@@ -52,6 +56,21 @@ package() {
         cd mfx
         ln -sf ../"$_header" "$_header"
         cd ..
+    done
+    
+    # add bin folder to PATH
+    for _file in "${pkgdir}/etc/profile.d/"intel-mediasdk.{,c}sh
+    do
+        if printf '%s' "$_file" | grep -q '\.csh$'
+        then
+            _command='setenv'
+        else
+            _command='export'
+        fi
+        
+        printf '\n' >> "$_file"
+        printf '%s\n' '# add bin folder to PATH' >> "$_file"
+        printf '%s\n' "${_command} PATH=\${PATH:+\${PATH}:}/opt/intel/mediasdk/bin" >> "$_file"
     done
     
     # add symlink for libcttmetrics.so (required by 'metrics_monitor' sample)
