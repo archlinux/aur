@@ -1,0 +1,30 @@
+--- a/ThirdParty/protobuf/vtkprotobuf/src/CMakeLists.txt	2018-06-15 21:09:45.000000000 +0200
++++ b/ThirdParty/protobuf/vtkprotobuf/src/CMakeLists.txt	2018-06-19 21:34:12.346101716 +0200
+@@ -283,7 +283,7 @@
+ 
+ # protoc executable
+ link_directories(${LIBRARY_OUTPUT_PATH})
+-IF(NOT CMAKE_CROSSCOMPILING)
++IF(NOT PARAVIEW_COMPILE_TOOLS_IMPORTED)
+   # We build the protoc executable without any dependencies on libraries built
+   # here viz. protobuf/protoc. This avoids unnecessary build-time
+   # complications when using protoc to generate headers in projects.
+@@ -295,15 +295,15 @@
+                          OUTPUT_NAME     protoc)
+    target_link_libraries(protoc_compiler
+                          ${THREAD_LINK_LIB})
+-ENDIF(NOT CMAKE_CROSSCOMPILING)
++ENDIF(NOT PARAVIEW_COMPILE_TOOLS_IMPORTED)
+ 
+-IF(NOT CMAKE_CROSSCOMPILING)
++IF(NOT PARAVIEW_COMPILE_TOOLS_IMPORTED)
+   export(TARGETS protobuf protobuf-lite protoc_compiler
+          APPEND FILE "${PROTOBUF_EXPORTS_FILE}")
+ ELSE(NOT CMAKE_CROSSCOMPILING)
+   export(TARGETS protobuf protobuf-lite
+          APPEND FILE "${PROTOBUF_EXPORTS_FILE}")
+-ENDIF(NOT CMAKE_CROSSCOMPILING)
++ENDIF(NOT PARAVIEW_COMPILE_TOOLS_IMPORTED)
+ 
+ install (TARGETS protobuf protobuf-lite
+   EXPORT ${PROTOBUF_INSTALL_EXPORT_NAME}
