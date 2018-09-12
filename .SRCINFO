@@ -1,13 +1,13 @@
 pkgbase = watchexec
 	pkgdesc = Executes commands in response to file modifications
-	pkgver = 1.9.0
+	pkgver = 1.9.2
 	pkgrel = 1
 	url = https://github.com/watchexec/watchexec
 	arch = x86_64
 	license = Apache
 	makedepends = cargo
-	source = https://github.com/watchexec/watchexec/archive/1.9.0/watchexec-1.9.0.tar.gz
-	sha256sums = 64a3ade996d83facf5d5aad05667425c3c0293dd7dab82e7675af483f59275fd
+	source = https://github.com/watchexec/watchexec/archive/1.9.2/watchexec-1.9.2.tar.gz
+	sha256sums = dcb41cf075d1f07a7274a3b1138dfc585368d1a55595424290988804b58fdb96
 
 pkgname = watchexec
 
