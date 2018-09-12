@@ -1,10 +1,10 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=algernon
-pkgver=1.10.1
+pkgver=1.11.0
 pkgrel=1
 pkgdesc='Single executable web server with Lua, Markdown, QUIC and Pongo2 support'
-arch=('x86_64' 'i686')
+arch=('x86_64')
 url='https://algernon.roboticoverlords.org/'
 license=('MIT')
 depends=('redis')
