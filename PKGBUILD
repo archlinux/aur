@@ -1,16 +1,17 @@
 # Maintainer: Vladimir Tsanev <tsachev@gmail.com>
+
 pkgname=jtharness
 _version=6.0
 _build=b03
 pkgver=${_version}_${_build}
-pkgrel=1
+pkgrel=2
 pkgdesc="general purpose, fully-featured, flexible, and configurable test harness very well suited for most types of unit testing"
 arch=('any')
 url="https://wiki.openjdk.java.net/display/CodeTools/JT+Harness"
 license=('GPL2')
 groups=()
 depends=('java-runtime>=7')
-makedepends=('apache-ant' 'java-environment-openjdk=7' 'junit' 'java-asm')
+makedepends=('ant' 'java-environment-openjdk=8' 'junit' 'java-asm')
 optdepends=('junit')
 checkdepends=()
 provides=()
@@ -32,13 +33,13 @@ build() {
   ln -sf /usr/share/java/junit.jar build/junit-4.10.jar
   ln -sf /usr/share/java/asm/asm.jar build/asm6.jar
   ln -sf /usr/share/java/asm/asm-commons.jar build/asm-commons6.jar
-  JAVA_HOME=/usr/lib/jvm/java-7-openjdk ant -f build/build.xml
+  JAVA_HOME=/usr/lib/jvm/java-8-openjdk ant -f build/build.xml
 }
 
 check() {
   cd ${srcdir}/${_jtdir}
 # test does not compile
-#  JAVA_HOME=/usr/lib/jvm/java-7-openjdk ant -f build/build.xml test
+#  JAVA_HOME=/usr/lib/jvm/java-8-openjdk ant -f build/build.xml test
 }
 
 package() {
@@ -50,4 +51,3 @@ package() {
   ln -sf /usr/share/java/${pkgname} $pkgdir/usr/share/${pkgname}/lib
 }
 
-# vim:set ts=2 sw=2 et:
