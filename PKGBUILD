@@ -1,13 +1,13 @@
 # Maintainer: Daurnimator <quae@daurnimator.com>
 
 pkgname=(lua-basexx lua51-basexx lua52-basexx)
-pkgver=0.3.0
-pkgrel=0
+pkgver=0.4.0
+pkgrel=1
 arch=('any')
 url='https://github.com/aiq/basexx'
 license=('MIT')
 source=("https://github.com/aiq/basexx/archive/v$pkgver.tar.gz")
-md5sums=('32277d2c4564dabd0c45c9c67ec1e811')
+md5sums=('c931e3abdb788be95c319be4fa0ac79f')
 
 package_lua-basexx() {
 	pkgdesc='A Lua library which provides base2(bitfield), base16(hex), base32(crockford/rfc), base64(rfc/url), base85(z85) decoding and encoding for Lua 5.3'
