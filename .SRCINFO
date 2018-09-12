@@ -3,6 +3,7 @@ pkgbase = cpu-x
 	pkgver = 3.2.3
 	pkgrel = 1
 	url = http://X0rg.github.io/CPU-X/
+	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
