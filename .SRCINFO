@@ -1,0 +1,20 @@
+pkgbase = system76-power-git
+	pkgdesc = System76 Power Management
+	pkgver = 100
+	pkgrel = 1
+	url = https://github.com/pop-os/system76-power
+	install = system76-power-git.install
+	arch = any
+	license = GPL
+	makedepends = rust
+	depends = dbus
+	depends = systemd
+	depends = system76-dkms
+	conflicts = system76-power
+	source = system76::git+https://github.com/pop-os/system76-power.git#branch=master
+	source = graphics.patch
+	sha1sums = SKIP
+	sha1sums = e486644709099b6348dc96d5f468ae289840dade
+
+pkgname = system76-power-git
+
