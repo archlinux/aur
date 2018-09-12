@@ -1,0 +1,17 @@
+pkgbase = emacs-evil-matchit-git
+	pkgdesc = Vim matchit ported into Emacs
+	pkgver = r151.47894a6
+	pkgrel = 1
+	url = https://github.com/redguardtoo/evil-matchit
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	depends = emacs-evil
+	provides = emacs-evil-matchit
+	conflicts = emacs-evil-matchit
+	source = git+https://github.com/redguardtoo/evil-matchit.git
+	sha256sums = SKIP
+
+pkgname = emacs-evil-matchit-git
+
