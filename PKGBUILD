@@ -1,4 +1,4 @@
-# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
+# Maintainer: Netflix, Inc. <netflixoss@netflix.com>
 # Contributor: Mikhail f. Shiryaev <mr<dot>felixoid<at>gmail<dot>com>
 
 _gitname=dynomite
