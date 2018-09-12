@@ -3,7 +3,7 @@ pkgver=9c
 pkgrel=1
 pkgdesc="JPEG image compression (mingw-w64)"
 arch=(any)
-/bin/bash: q: command not found
+url="http://ijg.org/"
 license=("custom")
 makedepends=(mingw-w64-configure)
 depends=(mingw-w64-crt)
