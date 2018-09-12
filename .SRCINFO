@@ -1,15 +1,18 @@
-pkgbase = bluemix-cli
-	pkgdesc = Interact with your applications, virtual servers, containers, and other components in IBM Bluemix.
+pkgbase = ibmcloud-cli
+	pkgdesc = Command line client for IBM Cloud
 	pkgver = 0.9.0
 	pkgrel = 1
-	url = https://github.com/IBM-Cloud/ibm-cloud-cli-release/releases
+	url = https://console.bluemix.net/docs/cli/reference/ibmcloud/all_versions.html
 	arch = x86_64
 	arch = i686
 	license = CUSTOM
+	provides = bluemix-cli
+	conflicts = bluemix-cli
+	replaces = bluemix-cli
 	source_x86_64 = IBM_Cloud_CLI_0.9.0_linux_amd64.tgz::https://clis.ng.bluemix.net/download/bluemix-cli/0.9.0/linux64/archive
 	sha256sums_x86_64 = 0de4cf3cea389451f214e2bbb9a887c6a513a88ff80bb069d9630341ccf5011e
 	source_i686 = IBM_Cloud_CLI_0.9.0_linux_386.tgz::https://clis.ng.bluemix.net/download/bluemix-cli/0.9.0/linux32/archive
 	sha256sums_i686 = 21d83297bb0d632402808fcec0d4e980118d3baccd25b4da225e4bf336d54abc
 
-pkgname = bluemix-cli
+pkgname = ibmcloud-cli
 
