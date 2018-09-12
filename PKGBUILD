@@ -2,7 +2,7 @@
 
 pkgname=avocode
 pkgrel=1
-pkgver=3.4.1
+pkgver=3.5.0
 pkgdesc="Export code, specs and images from PSD & Sketch designs"
 url="http://avocode.com/"
 provides=('avocode')
@@ -14,10 +14,10 @@ makedepends=()
 backup=()
 install=avocode.install
 source=("Avocode.desktop" "avocode-app-icon.png")
-source_x86_64=("https://media.avocode.com/download/avocode-app/${pkgver}/avocode-${pkgver}-linux.zip")
+source_x86_64=3.5.0
 md5sums=('f1a87052b2356b2d4eede22cfc1eb2af'
          '96c2dd65a4a3ac5bcdba7426ade1960e')
-md5sums_x86_64=('08a9ec6bc4aec4e4dc5ea64e638cc61a')
+md5sums_x86_64=(aaae7fa8ae88bfc56acf539bbafd98b9)
 package() {
 	install -d "$pkgdir"/opt
 	
