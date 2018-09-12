@@ -1,0 +1,16 @@
+pkgbase = emacs-imenu-anywhere-git
+	pkgdesc = ido/ivy/helm imenu tag selection across buffers with the same mode/project etc
+	pkgver = r76.fc7f0fd
+	pkgrel = 1
+	url = https://github.com/vspinu/imenu-anywhere
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	provides = emacs-imenu-anywhere
+	conflicts = emacs-imenu-anywhere
+	source = git+https://github.com/vspinu/imenu-anywhere.git
+	sha256sums = SKIP
+
+pkgname = emacs-imenu-anywhere-git
+
