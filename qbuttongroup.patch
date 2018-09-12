@@ -1,0 +1,13 @@
+diff -r -c algobox-1.0.2-orig/algobox.cpp algobox-1.0.2/algobox.cpp
+*** algobox-1.0.2-orig/algobox.cpp	2017-08-08 17:20:13.000000000 +0200
+--- algobox-1.0.2/algobox.cpp	2018-09-12 07:31:31.692412191 +0200
+***************
+*** 67,72 ****
+--- 67,73 ----
+  #include <QTextDocumentWriter>
+  #include <QTextCharFormat>
+  #include <QAbstractItemModel>
++ #include <QButtonGroup>
+  
+  #define STRINGIFY_INTERNAL(x) #x
+  #define STRINGIFY(x) STRINGIFY_INTERNAL(x)
