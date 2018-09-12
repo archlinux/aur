@@ -1,7 +1,7 @@
 pkgbase = postfix-policyd-spf-perl
 	pkgdesc = Postfix SPF policy engine, written in Perl
-	pkgver = 2.010
-	pkgrel = 3
+	pkgver = 2.011
+	pkgrel = 1
 	url = https://launchpad.net/postfix-policyd-spf-perl/
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,11 @@ pkgbase = postfix-policyd-spf-perl
 	depends = perl-mail-spf
 	depends = perl-netaddr-ip
 	depends = perl-sys-hostname-long
-	source = https://launchpad.net/postfix-policyd-spf-perl/trunk/release2.010/+download/postfix-policyd-spf-perl-2.010.tar.gz
-	md5sums = 768f5425db736aedc9c40a68e2d58414
+	source = https://launchpad.net/postfix-policyd-spf-perl/trunk/2.011/+download/postfix-policyd-spf-perl-2.011.tar.gz
+	source = https://launchpad.net/postfix-policyd-spf-perl/trunk/2.011/+download/postfix-policyd-spf-perl-2.011.tar.gz.asc
+	validpgpkeys = E7729BFFBE85400FEEEE23B178D7DEFB9AD59AF1
+	md5sums = f893dbe3ea7f8e49d09fa26350a8e72d
+	md5sums = SKIP
 
 pkgname = postfix-policyd-spf-perl
 
