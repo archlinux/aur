@@ -3,7 +3,7 @@
 _pkgname='linux-gpib'
 pkgname=("$_pkgname-svn")
 pkgver=r1755
-pkgrel=1
+pkgrel=2
 pkgdesc='A support package for GPIB (IEEE 488) hardware -- built from the svn source tree'
 arch=('x86_64')
 url='http://linux-gpib.sourceforge.net/'
@@ -31,7 +31,8 @@ md5sums=('SKIP')
 prepare() {
   cd "${srcdir}/${_kernDir}"
   ./bootstrap
-  ./configure 
+  ./configure
+  make clean 
  
   cd "${srcdir}/${_userDir}"
   ./bootstrap
@@ -44,6 +45,7 @@ prepare() {
     --disable-php-binding \
     --enable-python-binding \
     --disable-tcl-binding
+  make clean
 }
 
 
