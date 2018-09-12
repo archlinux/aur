@@ -5,25 +5,23 @@
 
 # Maintainer: Your Name <jkraehemann@gmail.com>
 pkgname=gsequencer
-pkgver=1.4.35
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Advanced Gtk+ Sequencer"
 arch=('x86_64' 'i686')
 url="https://nongnu.org/gsequencer"
 license=('GPL3')
-depends=('pcre' 'ladspa' 'dssi' 'lv2' 'libsndfile' 'libsamplerate' 'libinstpatch' 'libpulse' 'gtk2')
+depends=('fftw' 'ladspa' 'dssi' 'lv2' 'libsndfile' 'libsamplerate' 'libinstpatch' 'libpulse' 'gtk2')
 checkdepends=() # 'cunit' 'xorg-server-xvfb'
 provides=('gsequencer' 'midi2xml')
 conflicts=('midi2xml')
-source=("https://download.savannah.gnu.org/releases/gsequencer/1.4.x/$pkgname-$pkgver.tar.gz"
-        "https://download.savannah.gnu.org/releases/gsequencer/1.4.x/$pkgname-alsa-default.patch")
+source=("https://download.savannah.gnu.org/releases/gsequencer/2.0.x/$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=('7b5d1c4a18638fbee6283f4609d10d5f' '65ec508f55ffc2fbab3cbe61276a3f8d')
+md5sums=('02ad54ddfa46ccfb8aa742325945298c')
 validpgpkeys=()
 
 prepare() {
 	cd "$pkgname-$pkgver"
-	patch -p0 < "$srcdir/$pkgname-alsa-default.patch"
 }
 
 build() {
