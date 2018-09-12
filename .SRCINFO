@@ -1,13 +1,14 @@
 pkgbase = gprbuild
 	pkgdesc = Builder for multi-language systems
 	pkgver = 2018
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/AdaCore/gprbuild/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = gprbuild-bootstrap>=2018
 	depends = libgpr>=2018
+	provides = gprbuild-bootstrap=2018
 	conflicts = gprbuild-bootstrap=2018
 	conflicts = gprbuild-bootstrap-git
 	conflicts = gprbuild-git
