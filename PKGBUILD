@@ -2,7 +2,7 @@
 # Contributor: Joel Goguen <contact+aur@jgoguen.ca>
 
 pkgname=ruby-jekyll-feed
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="A Jekyll plugin to generate an Atom (RSS-like) feed of your Jekyll posts"
 arch=('any')
@@ -11,7 +11,7 @@ url="https://rubygems.org/gems/jekyll-feed"
 noextract=("jekyll-feed-${pkgver}.gem")
 license=('MIT')
 source=("https://rubygems.org/downloads/jekyll-feed-${pkgver}.gem")
-sha256sums=('1259bae86544a857fda4724e9cc5805473600d80854b3c846156ea66da12bc50')
+sha256sums=('97c52f737f6ff7c442277c1f2e525c6b1c76b699654bd711f4b6b53a17c6b486')
 
 package() {
     local _gemdir="$(ruby -e'puts Gem.default_dir')"
