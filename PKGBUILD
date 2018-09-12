@@ -2,7 +2,7 @@
 
 pkgname=nvtop
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An htop like monitoring tool for NVIDIA GPUs"
 arch=('x86_64')
 url="https://github.com/Syllo/nvtop"

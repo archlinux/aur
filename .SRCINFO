@@ -1,7 +1,7 @@
 pkgbase = nvtop
 	pkgdesc = An htop like monitoring tool for NVIDIA GPUs
 	pkgver = 0.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Syllo/nvtop
 	arch = x86_64
 	license = GPL3
