@@ -3,19 +3,19 @@
 
 _pkgname=gns3-server
 pkgname=$_pkgname-git
-pkgver=v2.1.9.r24.g0aa9ab53
+pkgver=v2.1.9.r26.geb0e26b5
 pkgrel=1
 pkgdesc='GNS3 network simulator, Server package'
 arch=('x86_64')
 url='https://github.com/GNS3/gns3-server'
 license=('GPL3')
 groups=('gns3')
-provides=('gns3-server')
-conflicts=('gns3-server')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 makedepends=('git' 'python-setuptools')
 depends=('python-jsonschema' 'python-aiohttp-gns3' 'python-aiohttp-cors-gns3'
          'python-yarl-gns3' 'python-jinja' 'python-raven' 'python-psutil'
-         'python-zipstream-gns3' 'python-prompt_toolkit' 'python-async-timeout-gns3'
+         'python-zipstream-gns3' 'python-prompt_toolkit-gns3' 'python-async-timeout-gns3'
          'busybox')
 optdepends=('dynamips: Cisco router emulator.'
             'gns3-gui: graphical user interface for GNS3 server.'

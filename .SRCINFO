@@ -1,6 +1,6 @@
 pkgbase = gns3-server-git
 	pkgdesc = GNS3 network simulator, Server package
-	pkgver = v2.1.9.r24.g0aa9ab53
+	pkgver = v2.1.9.r26.geb0e26b5
 	pkgrel = 1
 	url = https://github.com/GNS3/gns3-server
 	install = gns3-server.install
@@ -17,7 +17,7 @@ pkgbase = gns3-server-git
 	depends = python-raven
 	depends = python-psutil
 	depends = python-zipstream-gns3
-	depends = python-prompt_toolkit
+	depends = python-prompt_toolkit-gns3
 	depends = python-async-timeout-gns3
 	depends = busybox
 	optdepends = dynamips: Cisco router emulator.
