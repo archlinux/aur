@@ -1,12 +1,12 @@
 # Maintainer: Oscar Morante <spacepluk@gmail.com>
 
-_version=2018.2.6
+_version=2018.2.7
 _build=f1
-_randomstring=c591d9a97a0b
+_randomstring=4ebd28dd9664
 _prefix=/opt/Unity
 
 pkgname=unity-editor
-pkgver=${_version}${_build}
+pkgver=${_version}${_build}+${_buildtag}
 pkgrel=1
 epoch=1
 pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences."
@@ -40,7 +40,7 @@ source=("https://download.unity3d.com/download_unity/${_randomstring}/LinuxEdito
         'unity-editor.desktop'
         'unity-editor-icon.png'
         'eula.txt')
-sha1sums=('ae0441068e8850fd200493e18126797eefad7abf'
+sha1sums=('4b7e07b42e7d1731692d1103b9e19cf346289626'
           'c3727d6851a3ffd0aef9b380e2485eed9f02ef6b'
           '6ba1a3051bc0d5ed08e2fa4551d0f6c679109176'
           'fddf4861974f88f0565de7f54f7418204e729894'
