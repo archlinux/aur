@@ -1,9 +1,19 @@
 # Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
 # Contributor: Alex Merry <dev@randomguy3.me.uk>
 
+#   systemctl enable ipwatchd.service
+#   systemctl start ipwatchd.service
+# To see syslog notifications:
+#   systemctl status ipwatchd.service
+
+# Test by adding in-use IP to another computer
+#   ip addr add 192.168.1.2/24 dev eno1
+# Then ping to generate traffic from that dup address
+#   ping -I 192.168.1.2 192.168.1.1
+
 set -u
 pkgname='ipwatchd'
-pkgver='1.2.1'
+pkgver='1.3.0'
 pkgrel='1'
 pkgdesc='IP conflict detection daemon'
 arch=('i686' 'x86_64')
@@ -12,35 +22,34 @@ license=('GPL')
 depends=('libpcap' 'libnet')
 optdepends=('ipwatchd-gnotify: provide conflict notifications to the GNOME desktop environment')
 backup=('etc/ipwatchd.conf')
-_verwatch=("http://sourceforge.net/projects/ipwatchd/files/${pkgname}/" '.*href="'"/projects/ipwatchd/files/${pkgname}/\([^/]\+\)/"'".*' 'f')
-source=("http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}.tar.gz"
-        'ipwatchd.service')
-sha256sums=('f20d0f0ee956112a25fc7ecdb10e7b4277d0842b48d194ac8552373e29087646'
-            '2fbf3937bcab45adce253fb5aea31f93064748e9b8b5023e8ec25a6245380fd6')
+_verwatch=("https://sourceforge.net/projects/ipwatchd/rss" "\s\+<title><!\[CDATA[/${pkgname}/[0-9.]\+/${pkgname}-\([0-9\.]\+\)\.tar\.gz\].*" 'f')
+_srcdir="${pkgname}-${pkgver}/src"
+source=("https://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('a8fbdd39f98e652b7ec34a4b6a894bbbcd2b8012cf3c35ef21fa37286fbf8efb')
 
 prepare() {
   set -u
-  cd "${pkgname}-${pkgver}/src"
-  sed -i -e 's:/sbin:/bin:g' 'Makefile' 'ipwatchd.conf' scripts/*
+  cd "${_srcdir}"
+  sed -e 's:/sbin:/bin:g' -i 'Makefile' 'ipwatchd.conf' 'ipwatchd.service' # scripts/*
+  # This should be done with install -Dp ... -t
+  sed -e 's:^\tcp\b:& -p:' \
+      -e '# fix placement of service' \
+      -e 's:(DESTDIR)/lib/systemd:(DESTDIR)/usr/lib/systemd:g' \
+    -i 'Makefile'
   set +u
 }
 
 build() {
   set -u
-  cd "${pkgname}-${pkgver}/src"
-
+  cd "${_srcdir}"
   make
   set +u
 }
 
 package() {
   set -u
-  cd "${pkgname}-${pkgver}/src"
-
+  cd "${_srcdir}"
   make DESTDIR="${pkgdir}/" install
-  rm -rf "${pkgdir}/etc/init.d"
-
-  install -Dpm644 "${srcdir}/ipwatchd.service" -t "${pkgdir}/usr/lib/systemd/system/"
   set +u
 }
 set +u
