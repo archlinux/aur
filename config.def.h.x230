@@ -36,7 +36,7 @@ static const Rule rules[] = {
 	/* class             instance          title                        tags mask     iscentered   isfloating   monitor */
 	/* monitor 0 */
 	{ "Wine",               NULL,           NULL,                        1 << 1,       True,        True,         0 },
-	{ "Remmina",            NULL,           NULL,                        1 << 1,       True,        True,         0 },
+	{ "Remmina",            NULL,           NULL,                        1 << 1,       False,       True,         0 },
 	{ "calibre-gui",        NULL,           NULL,                        1 << 1,       True,        True,         0 },
 	{ "VirtualBox",         NULL,           NULL,                        1 << 1,       True,        True,         0 },
 	{ "Chromium",           NULL,           NULL,                        1 << 1,       False,       False,        0 },
