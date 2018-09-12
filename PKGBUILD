@@ -2,12 +2,13 @@
 
 pkgname=intel-media-stack-bin
 pkgver=2018.Q2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Tools and libraries for developing media solutions on Intel products. Includes MediaSDK, Media Driver, libva and libdrm.'
 arch=('x86_64')
 url='https://github.com/Intel-Media-SDK/MediaSDK/'
 license=('MIT')
-depends=('gcc-libs' 'libpciaccess' 'libdrm' 'libx11' 'libxext' 'libxfixes' 'ocl-icd')
+depends=('gcc-libs' 'libpciaccess' 'libdrm' 'libx11' 'libxext' 'libxfixes' 'ocl-icd' 'perl')
+makedepends=('lsb-release')
 provides=('intel-media-sdk' 'libmfx' 'intel-media-driver')
 conflicts=('intel-media-sdk' 'intel-media-sdk-git' 'intel-media-server-studio')
 backup=('etc/profile.d/intel-mediasdk-devel.sh'
@@ -39,7 +40,7 @@ prepare() {
 package() {
     cd "${pkgname}-${pkgver}"
     
-    mkdir -p "$pkgdir"/etc/{ld.so.conf.d,profile.d}
+    mkdir -p "$pkgdir"/{etc/{ld.so.conf.d,profile.d},usr/lib}
     
     ./install_media.sh
     
@@ -52,6 +53,12 @@ package() {
         ln -sf ../"$_header" "$_header"
         cd ..
     done
+    
+    # add symlink for libcttmetrics.so (required by 'metrics_monitor' sample)
+    ln -s "../../opt/intel/mediasdk/samples/_bin/x64/libcttmetrics.so" "${pkgdir}/usr/lib"
+    
+    # fix libmfx permissions
+    chmod 644 "${pkgdir}/opt/intel/mediasdk/lib/lin_x64/libmfx.a"
     
     # do not force the use of 'iHD' libva driver by default (let user choose)
     local _info='# uncomment the LIBVA_DRIVER_NAME line to use the Intel Media Driver (iHD) for VAAPI'
