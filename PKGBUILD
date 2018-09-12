@@ -54,13 +54,13 @@ _mq_enable=
 pkgbase=linux-rt-bfq
 # pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
 _major=4.18
-_minor=5
-_rtver=3
+_minor=7
+_rtver=5
 pkgver=${_major}.${_minor}.${_rtver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
 _rtpatchver=rt${_rtver}
-pkgrel=4
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -68,7 +68,7 @@ options=('!strip')
 makedepends=('kmod' 'inetutils' 'bc' 'libelf' 'python-sphinx' 'graphviz')
 _bfq_sq_mq_path="bfq-sq-mq"
 _bfq_sq_mq_ver='v8r12'
-_bfq_sq_mq_rel='2K180824'
+_bfq_sq_mq_rel='2K180906'
 _bfq_sq_mq_patch="${_major}-bfq-sq-mq-${_bfq_sq_mq_ver}-${_bfq_sq_mq_rel}.patch"
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
@@ -390,15 +390,15 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('604b334ccd74b230faf21db8887e382c49d4877ec8ce8298c079001a12222a6c7be2542c8f37c025cb3d625905d30e4c8c37267f0285aea25bbbe5aa3457040c'
+sha512sums=('a36c664c7703ffa470e78f7de283030bddc6eb59e77ca847fa53c2841283fd6f43d99ec12451ac9e874bad8fac4d81ec219b5eb12eff2109ef5ac1126b338c19'
             'SKIP'
-            '78ce98933ea463df3dedfca0dd531a736aa8f77ee39e5946785da55639d87c36c3801b77bf80105554845a9a3734c584d80803357e4f4d7ad91f1be2b02482f0'
+            '66b20734a5a78db0b5c9a718030b13ec6c619a92546b3ddfce26850f1bf254750cd463925209cfddf9c1fa90e13dad08e5b2d7efe7cb0a1faa637db3336152ac'
             'SKIP'
-            'a6f15c4ee6dc84a2704405ccfd67004e6ed2b14d1d61baae0b7e14b4a8455c4a70dfe3f9072bc5438a666dd05f82e57a7274412b0d15f442067eb4fb8dab83fd'
+            '24b172a7111569c66d93d8b34bb33e8445bdda1cae243c93c7a69183a16e565c6adbd70a57e3803e63d3a2e601ab8ced5be0bc943c78f7d720c740fdbda04e2f'
             '0f96fa9ad784709973b32eea82075ceb3e9dc2482df6441a4607612806f069254e63508b1b562279622394e4a1fbebef1b87af8401c0b1210d5d0de9954245c8'
             'e62aa377a0acc4f63f394e27a0fb7316583ff1a6a6afdfcc97593ddffd7d2bc224cfd70b552cb3fb9513cf6b8db4c2fd913d21ec2380db8cd642e37d4d67370c'
             '86f717f596c613db3bc40624fd956ed379b8a2a20d1d99e076ae9061251fe9afba39cf536623eccd970258e124b8c2c05643e3d539f37bd910e02dc5dd498749'
-            '35fe57a7e252cfaee2189059cfca6fbb6994c8b13a12c7498b79a7513b506c6e6f414f1b8d67960798117d6a2abe7a1a6e01e20249b923b4d3f15ccaa6ff4193'
+            '88965b423d55a9e1ed8d54f424108c7497f787b471b3bdeecce1f62026675ff0f49995f079e0ceaab7dcb7c2ac512a499cf2e98c5c85341edd02bd8f94005953'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '4a8b324aee4cccf3a512ad04ce1a272d14e5b05c8de90feb82075f55ea3845948d817e1b0c6f298f5816834ddd3e5ce0a0e2619866289f3c1ab8fd2f35f04f44'
             '6346b66f54652256571ef65da8e46db49a95ac5978ecd57a507c6b2a28aee70bb3ff87045ac493f54257c9965da1046a28b72cb5abb0087204d257f14b91fd74'
