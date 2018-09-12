@@ -1,0 +1,16 @@
+pkgbase = emacs-persp-mode-git
+	pkgdesc = named perspectives(set of buffers/window configs) for emacs
+	pkgver = r468.cc1d16a
+	pkgrel = 1
+	url = https://github.com/Bad-ptr/persp-mode.el
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	provides = emacs-persp-mode
+	conflicts = emacs-persp-mode
+	source = git+https://github.com/Bad-ptr/persp-mode.el.git
+	sha256sums = SKIP
+
+pkgname = emacs-persp-mode-git
+
