@@ -1,7 +1,7 @@
 #Maintainer: Dimitris Pappas <mitsakosgr@gmail.com>
 pkgname=minizinc-ide
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple IDE for writing and running MiniZinc models"
 arch=('x86_64')
 url="http://www.minizinc.org/ide/"
@@ -22,6 +22,8 @@ depends=('libpng12'
 sha256sums=('b86ef15b8ee1014342a2f38358d7f806a58b900bf1150101b535aecddaa122d1'
             '1b9fa21e25c48e1080eaea2348eb98a45242e045b7ba94fe4723a9b01cbcdb2a'
             'b67678d3c468998e20f080572b39e6140bb73c0671d5fb9be1d969067d28b59b')
+
+options=(!strip)
 
 package() {
     if [ "${CARCH}" == "i686" ]; then
@@ -48,18 +50,12 @@ package() {
     # Rewrite MiniZincIDE.sh in order to change locations
     cd "$pkgdir"
 
-    cat <<EOT > usr/share/"${pkgname}"/MiniZincIDE.sh
-#!/bin/sh
-export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:/usr/share/$pkgname/lib
-export QT_PLUGIN_PATH=/usr/share/$pkgname/plugins
-exec /usr/share/$pkgname/MiniZincIDE \$@
-EOT
-
     # Create links for minizinc programs.
     mkdir -p usr/bin
-    ln -s /usr/share/${pkgname}/MiniZincIDE.sh usr/bin/minizinc-ide
-    ln -s /usr/share/${pkgname}/{flatzinc,fzn-gecode-gist,minizinc,mzn2doc,mzn-g12fd,mzn-g12mip} usr/bin
-    ln -s /usr/share/${pkgname}/{solns2dzn,fzn-gecode,mzn2fzn,mzn-g12lazy,mzn-gecode,solns2out} usr/bin/
+    #ln -s /usr/share/${pkgname}/MiniZincIDE.sh usr/bin/minizinc-ide
+    ln -s /usr/share/${pkgname}/bin/MiniZincIDE usr/bin/minizinc-ide
+    ln -s /usr/share/${pkgname}/bin/{flatzinc,fzn-gecode-gist,minizinc,mzn2doc,mzn-g12fd,mzn-g12mip} usr/bin
+    ln -s /usr/share/${pkgname}/bin/{solns2dzn,fzn-gecode,mzn2fzn,mzn-g12lazy,mzn-gecode,solns2out} usr/bin/
 
     # Workaround for dependency resolver
     ln -s /usr/lib/libpcre16.so usr/lib/libpcre16.so.3
