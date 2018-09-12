@@ -17,7 +17,7 @@ source=("Avocode.desktop" "avocode-app-icon.png")
 source_x86_64=3.5.0
 md5sums=('f1a87052b2356b2d4eede22cfc1eb2af'
          '96c2dd65a4a3ac5bcdba7426ade1960e')
-md5sums_x86_64=(aaae7fa8ae88bfc56acf539bbafd98b9)
+md5sums_x86_64=('aaae7fa8ae88bfc56acf539bbafd98b9')
 package() {
 	install -d "$pkgdir"/opt
 	
