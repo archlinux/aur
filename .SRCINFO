@@ -1,0 +1,16 @@
+pkgbase = emacs-async-git
+	pkgdesc = Asynchronous processing in Emacs
+	pkgver = r272.d17c11e
+	pkgrel = 1
+	url = https://github.com/jwiegley/emacs-async
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	provides = emacs-async
+	conflicts = emacs-async
+	source = git+https://github.com/jwiegley/emacs-async.git
+	sha256sums = SKIP
+
+pkgname = emacs-async-git
+
