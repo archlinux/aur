@@ -23,8 +23,7 @@ sha256sums=('75041e1d60823ff2b2213a0ac129f694acbd939b5b1a14e4a6bf2044cea99162'
 prepare() {
   cd "$pkgname-$pkgver"
 
-  # remove tracking from source
-  # this eliminates dependencies insight and firstrun. Insight was causing trouble in version 1.1.5
+  # remove tracking (eliminates dependencies insight and firstrun)
   patch -Np1 -i "${srcdir}/remove-tracking.patch"
 
   sed -i '/"postinstall"/d' package.json
@@ -58,8 +57,7 @@ package() {
       -or -name "nan" -prune -exec rm -r '{}' \; \
       -or -name "obj.target" -prune -exec rm -r '{}' \; \
       -or -name "script" -prune -exec rm -r '{}' \; \
-      -or -name "test" -prune -exec rm -r '{}' \; \
-      -or -name "tmp" -prune -exec rm -r '{}' \;
+      -or -name "test" -prune -exec rm -r '{}' \;
 
   "$pkgname-$pkgver/node_modules/asar/bin/asar.js" pack "$pkgdir/tmp/" "$pkgdir/usr/lib/$pkgname/inboxer.asar"
   rm -r "$pkgdir/tmp"
