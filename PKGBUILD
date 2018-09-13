@@ -9,15 +9,24 @@ arch=('x86_64' 'i686')
 url='https://github.com/doitsujin/vk9'
 license=('custom:zlib/libpng')
 options=(!strip)
-source=(setup_vk9-{x86_64,i686}.verb setup_vk9{,-32})
-source_x86_64=("$pkgname-$pkgver-$CARCH.zip::https://github.com/disks86/VK9/releases/download/$pkgver/$pkgver-bin-x86_64-Release.zip")
-source_i686=("$pkgname-$pkgver-$CARCH.zip::https://github.com/disks86/VK9/releases/download/$pkgver/$pkgver-bin-x86-Release.zip")
-md5sums=('6600eabb853962260068f86d9a70aed1'
+source=(
+	"$pkgname-$pkgver-x86_64.zip::https://github.com/disks86/VK9/releases/download/$pkgver/$pkgver-bin-x86_64-Release.zip"
+	"$pkgname-$pkgver-i686.zip::https://github.com/disks86/VK9/releases/download/$pkgver/$pkgver-bin-x86-Release.zip"
+	setup_vk9-{x86_64,i686}.verb
+	setup_vk9{,-32})
+noextract=("$pkgname-$pkgver-i686.zip")
+
+md5sums=('22afc73d4e7d1b3c7d67b1e470a6c5c3'
+         '58340f9b0bd56642b2b6cf9e5721942b'
+         '6600eabb853962260068f86d9a70aed1'
          'aaf4cb6c959a9dfcab2ec8ec8f802909'
          '42de90e0a79a9eef2410799044521f39'
          'c4d6aafd335443ddc5d0cc5495511db3')
-md5sums_x86_64=('22afc73d4e7d1b3c7d67b1e470a6c5c3')
-md5sums_i686=('22afc73d4e7d1b3c7d67b1e470a6c5c3')
+
+prepare() {
+	mkdir -p 32
+	unzip -oj "$pkgname-$pkgver-i686.zip" "d3d9.dll" -d "32"
+}
 
 package_vk9-bin() {
 	arch=('x86_64' 'i686')
@@ -25,7 +34,12 @@ package_vk9-bin() {
 	provides=('vk9')
 	conflicts=('vk9')
 
-	install -Dm644 "d3d9.dll" "$pkgdir/usr/lib/d3d9.dll"
+	if [[ $CARCH == "i686" ]]; then
+		install -Dm644 "32/d3d9.dll" "$pkgdir/usr/lib/d3d9.dll"
+	else
+		install -Dm644 "d3d9.dll" "$pkgdir/usr/lib/d3d9.dll"
+	fi
+
 	install -Dm755 "setup_vk9" "$pkgdir/usr/bin/setup_vk9"
 	install -Dm644 "setup_vk9-$CARCH.verb" "$pkgdir/usr/share/vk9/setup_vk9.verb"
 }
@@ -37,7 +51,7 @@ package_lib32-vk9-bin() {
 	provides=('lib32-vk9')
 	conflicts=('lib32-vk9')
 
-	install -Dm644 "d3d9.dll" "$pkgdir/usr/lib32/d3d9.dll"
+	install -Dm644 "32/d3d9.dll" "$pkgdir/usr/lib32/d3d9.dll"
 	install -Dm755 "setup_vk9-32" "$pkgdir/usr/bin/setup_vk9-32"
 	install -Dm644 "setup_vk9-i686.verb" "$pkgdir/usr/share/lib32-vk9/setup_vk9.verb"
 }
