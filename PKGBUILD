@@ -3,9 +3,10 @@
 pkgname=eventd
 pkgver=0.24.1
 _pkgdir=${pkgname}-${pkgver}
-pkgrel=2
+pkgrel=3
 pkgdesc="A small daemon to act on remote or local events"
 arch=(
+    aarch64
     i686
     x86_64
 )
