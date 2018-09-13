@@ -4,7 +4,7 @@
 _pkgbase=fuse
 pkgname=lib32-${_pkgbase}
 pkgver=2.9.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A library that makes it possible to implement a filesystem in a userspace program (32 bit)"
 arch=('x86_64')
 url="https://github.com/libfuse/libfuse"
@@ -28,7 +28,7 @@ build() {
 
 package() {
   make -C ${_pkgbase}-${pkgver} DESTDIR="${pkgdir}" install
-  rm -r "${pkgdir}"/{dev,etc,usr/{bin,include,share}}
+  rm -r "${pkgdir}"/{dev,etc,sbin,usr/{bin,include,share}}
 }
 
 # vim:set ts=2 sw=2 et:
