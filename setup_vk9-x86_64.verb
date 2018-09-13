@@ -1,0 +1,14 @@
+w_metadata setup_vk9 dlls \
+    title="VK9" \
+    publisher="Christopher Schaefer" \
+    year="2018" \
+    media="manual_download" \
+    file1="d3d9.dll" \
+    installed_file1="$W_SYSTEM64_DLLS_WIN64\\d3d9.dll" \
+    homepage="https://github.com/disks86/VK9" \
+    unattended="yes"
+
+load_setup_vk9() {
+    w_try ln -fs "/usr/lib/$file1" "$W_SYSTEM64_DLLS/$file1"
+    w_override_dlls native d3d9
+}

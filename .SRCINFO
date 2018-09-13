@@ -1,0 +1,44 @@
+pkgbase = vk9-bin
+	pkgdesc = Direct3D 9 compatibility layer using Vulkan
+	pkgver = 0.27.0
+	pkgrel = 1
+	url = https://github.com/doitsujin/vk9
+	arch = x86_64
+	arch = i686
+	license = custom:zlib/libpng
+	options = !strip
+	source = setup_vk9-x86_64.verb
+	source = setup_vk9-i686.verb
+	source = setup_vk9
+	source = setup_vk9-32
+	md5sums = 6600eabb853962260068f86d9a70aed1
+	md5sums = aaf4cb6c959a9dfcab2ec8ec8f802909
+	md5sums = 42de90e0a79a9eef2410799044521f39
+	md5sums = c4d6aafd335443ddc5d0cc5495511db3
+	source_x86_64 = vk9-bin-0.27.0-x86_64.zip::https://github.com/disks86/VK9/releases/download/0.27.0/0.27.0-bin-x86_64-Release.zip
+	md5sums_x86_64 = 22afc73d4e7d1b3c7d67b1e470a6c5c3
+	source_i686 = vk9-bin-0.27.0-x86_64.zip::https://github.com/disks86/VK9/releases/download/0.27.0/0.27.0-bin-x86-Release.zip
+	md5sums_i686 = 22afc73d4e7d1b3c7d67b1e470a6c5c3
+
+pkgname = vk9-bin
+	arch = x86_64
+	arch = i686
+	depends = vk9-data
+	depends = vulkan-icd-loader
+	depends = wine
+	depends = winetricks
+	provides = vk9
+	conflicts = vk9
+
+pkgname = lib32-vk9-bin
+	arch = x86_64
+	depends = vk9-data
+	provides = lib32-vk9
+	conflicts = lib32-vk9
+
+pkgname = vk9-data-bin
+	arch = any
+	provides = vk9-data
+	conflicts = vk9-data
+	backup = etc/VK9.conf
+
