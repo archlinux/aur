@@ -16,17 +16,17 @@ provides=(${pkgname})
 sha256sums=('935524456f2291afa36ef815e68f1ab4a37a4ed6f0f144b7de7fb270733e13af')
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
-    ./configure \
-        --disable-silent-rules \
-        --prefix=/usr
-    make
+  cd "$srcdir/$pkgname-$pkgver"
+  ./configure \
+    --disable-silent-rules \
+    --prefix=/usr
+      make
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
-    make DESTDIR="$pkgdir/" install
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "$srcdir/$pkgname-$pkgver"
+  make DESTDIR="$pkgdir/" install
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
