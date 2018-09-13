@@ -1,0 +1,16 @@
+pkgbase = safesurfer-desktop
+	pkgdesc = Keep safe in the digitial surf with Safe Surfer.
+	pkgver = 1.0.0b1
+	pkgrel = 1
+	url = https://gitlab.com/safesurfer/SafeSurfer-Desktop
+	arch = x86_64
+	license = GPL
+	makedepends = npm
+	makedepends = nodejs
+	depends = polkit
+	depends = curl
+	source = https://gitlab.com/safesurfer/SafeSurfer-Desktop/-/archive/1.0.0b1/SafeSurfer-Desktop-1.0.0b1.zip
+	md5sums = SKIP
+
+pkgname = safesurfer-desktop
+
