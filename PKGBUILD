@@ -1,12 +1,13 @@
 # Maintainer: Quentin Glidic <sardemff7@eventd.org>
 
 pkgname=eventd-git
-pkgver=0.24.1.r0.gec291365
+pkgver=0.24.1.r34.g18ce1fb7
 _gitname=eventd
 _pkgdir=${_gitname}
 pkgrel=1
 pkgdesc="A small daemon to act on remote or local events"
 arch=(
+    aarch64
     i686
     x86_64
 )
