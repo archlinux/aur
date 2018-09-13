@@ -1,8 +1,8 @@
 # Maintainer: Richard Neumann aka. schard <mail at richard dash neumann period de>
 
-_pkgbase='mcipc-git'
-pkgname="python-${_pkgbase}"
-pkgver=r78.42fc903
+_pkgbase='mcipc'
+pkgname="python-${_pkgbase}-git"
+pkgver=r142.30b3b0b
 pkgrel=1
 pkgdesc='Python 3 library and scripts for the RCON and Query protocol'
 arch=('any')
