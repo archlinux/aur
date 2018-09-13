@@ -1,7 +1,7 @@
 pkgbase = obconf-qt-git
 	pkgdesc = Openbox configuration tool. Qt port of ObConf
-	pkgver = 0.13.0.51.ga841915
-	pkgrel = 1
+	pkgver = 0.13.0.80.g110ee85
+	pkgrel = 2
 	url = http://lxqt.org
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = obconf-qt-git
 	depends = hicolor-icon-theme
 	depends = openbox
 	depends = qt5-x11extras
-	provides = obconf-qt
+	provides = obconf-qt=0.13.0.80.g110ee85
 	conflicts = obconf-qt
 	source = git+https://github.com/lxqt/obconf-qt.git
 	sha256sums = SKIP
