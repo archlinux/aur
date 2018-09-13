@@ -1,0 +1,15 @@
+pkgbase = dell-c2660dn
+	pkgdesc = Dell C2660dn Color Laser Printer Cups Driver
+	pkgver = 1.0_1
+	pkgrel = 1
+	url = https://www.dell.com/support/home/de/de/debsdt1/product-support/product/dell-c2660dn/drivers
+	arch = any
+	license = Dell Software License Agreement
+	makedepends = unzip
+	depends = cups
+	noextract = C2660dn-Linux-Driver.zip
+	source = https://downloads.dell.com/FOLDER01820929M/1/C2660dn-Linux-Driver.zip
+	md5sums = da9da0888152c1dab531b60747a6a3c3
+
+pkgname = dell-c2660dn
+
