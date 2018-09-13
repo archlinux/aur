@@ -1,0 +1,15 @@
+pkgbase = cesious-theme
+	pkgdesc = Cesious theme for awesome wm
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://gitlab.com/ThanosApostolou/cesious-theme
+	arch = any
+	license = MIT
+	depends = awesome
+	optdepends = adapta-gtk-theme
+	optdepends = noto-fonts
+	source = https://gitlab.com/ThanosApostolou/cesious-theme/-/archive/1.3/cesious-theme-1.3.tar.gz
+	md5sums = 36fe365ff6c02400d3170718c8a1eb07
+
+pkgname = cesious-theme
+
