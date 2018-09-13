@@ -2,17 +2,18 @@
 # Contributor: Vincent Demeester <vincent@sbr.pm>
 # Contributor: Pat Brisbin <pbrisbin@gmail.com>
 # Contributor: Max Falk <gmdfalk@gmail.com>
+# Contributor: Mikhail f. Shiryaev <mr<dot>felixoid<at>gmail<dot>com>
 pkgname=rcm
-pkgver=1.3.1
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="rc file (dotfiles) management"
 arch=('any')
 url="https://github.com/thoughtbot/$pkgname"
 license=('BSD')
-makedepends=('make' 'ruby-mustache')
 source=("https://thoughtbot.github.io/$pkgname/dist/$pkgname-$pkgver.tar.gz")
 conflicts=(${pkgname}-git)
 provides=(${pkgname})
+sha256sums=('935524456f2291afa36ef815e68f1ab4a37a4ed6f0f144b7de7fb270733e13af')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -29,4 +30,3 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-sha256sums=('9c8f92dba63ab9cb8a6b3d0ccf7ed8edf3f0fb388b044584d74778145fae7f8f')
