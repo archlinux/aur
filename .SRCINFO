@@ -1,27 +1,27 @@
 pkgbase = minecraftsp-anjocaido
 	pkgdesc = Minecraft is a sandbox game which allows players to build constructions out of textured cubes in a 3D world.
 	pkgver = autoupdate
-	pkgrel = 6
+	pkgrel = 7
 	epoch = 1
-	url = http://www.mcalpha.tk/
+	url = https://teamshiginima.com/update/
 	install = minecraft.install
 	arch = any
 	license = unknown
-	depends = java-runtime
+	depends = java-runtime>=8
 	depends = xorg-xrandr
 	depends = openal
 	provides = minecraft
 	replaces = minecraft
 	source = minecraft
-	source = https://github.com/ItachiSan/linux_packaging/raw/master/aur-files/minecraftsp-anjocaido/MinecraftSP.jar
 	source = minecraft.desktop
 	source = minecraft.png
 	source = readme.txt
-	md5sums = be3369716936dab9c441d4eaddbde7a2
-	md5sums = 2570c1a007ed61e7ce5eb0f062c5d0ef
-	md5sums = dad9b69540dac246ced70b98f07e8e08
-	md5sums = b2c25797bf513a5ee215dd90b4b828e3
-	md5sums = 7119963de1fc2ff67f5d576f44559dc0
+	source = https://nofile.io/g/saQYaSojK4EZgdfC224QbvOdOvu0LRt8grlJmUeH8JB900k1qb7ivWE5i23dYEkX/ShiginimaSE_v4100.zip
+	sha256sums = ee83fe03a964489fe201d786dfb10f6a31afdb96b1b7fd983e4c45e9ab8675bf
+	sha256sums = b6a74142c394fe874206d3f5b9cbdc809972f4c39351e2a112cc92e72d3d6181
+	sha256sums = 81dfe3dea0a61bb314dd95271903ded6fff35cec0751794cbd33b3fc838f060e
+	sha256sums = bd086bc827b404cf91a28282fc692cdf8bc97f7488b12d08828913a94d304f22
+	sha256sums = 07a06b69903781949c6eec7e52e5a2c427158a31463f8d8ae37ab46e2519fb51
 
 pkgname = minecraftsp-anjocaido
 
