@@ -46,6 +46,7 @@ package_vk9-bin() {
 
 
 package_lib32-vk9-bin() {
+	pkgdesc+=" (32-bit)"
 	arch=('x86_64')
 	depends=('vk9-data')
 	provides=('lib32-vk9')
@@ -57,6 +58,7 @@ package_lib32-vk9-bin() {
 }
 
 package_vk9-data-bin() {
+	pkgdesc+=" (shaders + config)"
 	arch=('any')
 	provides=('vk9-data')
 	conflicts=('vk9-data')
