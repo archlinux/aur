@@ -1,0 +1,15 @@
+pkgbase = qrtorrent-git
+	pkgdesc = rTorrent remote client written in Qt in C++
+	pkgver = r15.5bbabc8
+	pkgrel = 1
+	url = https://github.com/varyoo/qrtorrent
+	arch = any
+	makedepends = git
+	makedepends = xmlrpc-c
+	depends = xmlrpc-c
+	options = !strip
+	source = git+https://github.com/varyoo/qrtorrent#commit=5bbabc84fe9bfc8e24a6ba7e7ef32835f569c2dd
+	md5sums = SKIP
+
+pkgname = qrtorrent-git
+
