@@ -1,0 +1,16 @@
+pkgbase = run-or-raise
+	pkgdesc = Utility for launching applications or focusing their windows
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/Soft/run-or-raise
+	arch = x86_64
+	license = GPL3
+	makedepends = rust
+	makedepends = cargo
+	makedepends = python
+	depends = libxcb
+	source = https://github.com/Soft/run-or-raise/archive/0.3.1.tar.gz
+	sha256sums = c5e913aa95e30d76eb3c62a1f6b219bac884753a27d5487fbb69fe4d1208b06c
+
+pkgname = run-or-raise
+
