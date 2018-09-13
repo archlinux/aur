@@ -3,7 +3,7 @@
 # Contributor: TDY <tdy@gmx.com>
 
 pkgname=cb2bib
-pkgver=1.9.8
+pkgver=1.9.9
 pkgrel=1
 pkgdesc="A tool for parsing clipboard data into BibTeX bibliographic database files"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ optdepends=('openssl: network reference query support'
             'xpdf: pdftotext support')
 install=cb2bib.install
 source=(http://www.molspaces.com/dl/progs/$pkgname-$pkgver.tar.gz)
-sha256sums=('0eb817138cc0872d635a9b9e962e3581a2b7b0a18011f97eb6602e45ed07ea3a')
+sha256sums=('873c9f7f246469c0367982a7146e6aab301891baa5fbe1aa63466462d2fea78b')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
