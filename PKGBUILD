@@ -1,28 +1,30 @@
-# Maintainer: Leonard de Ruijter <alderuijter@gmail.com>
-# Contributor: Serge Zirukin <ftrvxmtrx@gmail.com>
-# Contributor: Sergei Lebedev <superbobry@gmail.com>
+# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-syslog
 pkgver=1.4
-pkgrel=3
-pkgdesc="syslog protocol implementation for OCaml"
-arch=('i686' 'x86_64')
-url="http://homepage.mac.com/letaris/"
+pkgrel=1
+pkgdesc="syslog(3) routines for OCaml"
+arch=('x86_64')
+url="http://homepage.mac.com/letaris"
 license=('LGPL')
-source=(http://launchpad.net/ubuntu/+archive/primary/+files/syslog-ocaml_$pkgver.orig.tar.gz)
-sha256sums=('2d885a36e2acd32085fffe5396840b0f78704ebc4fdecd1efc6ed86e6809eda8')
+depends=('ocaml')
 makedepends=('ocaml-findlib')
-options=('!strip' '!makeflags' 'staticlibs')
+options=('!strip')
+source=("https://archive.org/download/syslog-${pkgver}/syslog-${pkgver}.tar.gz")
+md5sums=('3042185e6f511aea9956cd8f172b1a84')
 
-build () {
-  cd "$srcdir/${pkgname/ocaml-/}-$pkgver"
+build() {
+  cd "${srcdir}/syslog-${pkgver}"
+
+  # Fix compilation with OCaml>=4.06 by restoring default behaviour of <4.06
+  export OCAMLFLAGS="-unsafe-string"
   make reallyall
 }
 
-package () {
-  cd "$srcdir/${pkgname/ocaml-/}-$pkgver"
-  OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)"
+package() {
+  cd "${srcdir}/syslog-${pkgver}"
 
+  export OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)"
   mkdir -p "${OCAMLFIND_DESTDIR}"
-  OCAMLFIND_DESTDIR=$OCAMLFIND_DESTDIR make install
+  make install
 }
