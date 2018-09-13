@@ -1,7 +1,7 @@
 From 31cca3a47eea50156a5549574d934dd0264cb0f3 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 14:01:14 +0200
-Subject: [PATCH 07/33] Prevent debug library names in pkg-config files
+Subject: [PATCH 07/34] Prevent debug library names in pkg-config files
 
 qmake generates the pkgconfig .pc files two times, once for the
 release build and once for the debug build (which we're not actually

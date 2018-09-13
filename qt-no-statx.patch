@@ -1,24 +1,7 @@
-From b47e6c6fc2f5eaf489458fcf5930015f6baf3281 Mon Sep 17 00:00:00 2001
-From: Martchus <martchus@gmx.net>
-Date: Sat, 9 Dec 2017 00:36:56 +0100
-Subject: [PATCH] Don't use the statx syscall
-
-Otherwise Qt can not be built in a systemd
-container
----
- src/corelib/io/qfilesystemengine_unix.cpp | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/src/corelib/io/qfilesystemengine_unix.cpp b/src/corelib/io/qfilesystemengine_unix.cpp
-index 77d154c6b4..6036bae4f1 100644
---- a/src/corelib/io/qfilesystemengine_unix.cpp.orig	2018-05-28 22:38:37.194020915 +0200
-+++ b/src/corelib/io/qfilesystemengine_unix.cpp	2018-05-28 22:39:00.184051210 +0200
-@@ -111,10 +111,10 @@
- { return syscall(SYS_renameat2, oldfd, oldpath, newfd, newpath, flags); }
- #    endif
- 
--#    if !QT_CONFIG(statx) && defined(SYS_statx)
-+#    if 0
+--- a/src/corelib/io/qfilesystemengine_unix.cpp.orig	2018-09-13 11:11:30.601508754 +0200
++++ b/src/corelib/io/qfilesystemengine_unix.cpp	2018-09-13 11:06:56.148478543 +0200
+@@ -118,7 +118,7 @@
+ #    if 0 && !QT_CONFIG(statx) && defined(SYS_statx)
  static int statx(int dirfd, const char *pathname, int flag, unsigned mask, struct statx *statxbuf)
  { return syscall(SYS_statx, dirfd, pathname, flag, mask, statxbuf); }
 -#    elif !QT_CONFIG(statx) && !defined(SYS_statx)

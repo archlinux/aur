@@ -1,7 +1,7 @@
 From ab966035502f0b14f4e9b037223c9d84646f0bf2 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 14:22:56 +0200
-Subject: [PATCH 12/33] Fix linking against static harfbuzz
+Subject: [PATCH 12/34] Fix linking against static harfbuzz
 
 ---
  src/gui/configure.json | 6 +++++-
