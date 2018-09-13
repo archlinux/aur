@@ -12,6 +12,7 @@ Ref_Data* ref_data_init_length(size_t length) {
         pRef_Data->names[i] = malloc(NAME_MAX_LENGTH);
         pointer_alloc_check(pRef_Data->symbols[i]);
         pointer_alloc_check(pRef_Data->names[i]);
+        memset(pRef_Data->names[i], '\0', NAME_MAX_LENGTH);
     }
     pRef_Data->length = length;
     return pRef_Data;
@@ -526,7 +527,6 @@ void info_store_quote_json(Info* pInfo, const Json* jquote) {
     pInfo->pe_ratio = json_object_get_double(json_object_object_get(jquote, "peRatio"));
 }
 
-
 void info_store_chart_json(Info* pInfo, const Json* jchart) {
     free(pInfo->points);
     size_t len = json_object_array_length(jchart);
@@ -697,22 +697,6 @@ int ref_data_get_index_from_symbol_bsearch(const Ref_Data* pRef_Data, const char
         return ref_data_get_index_from_symbol_bsearch(pRef_Data, symbol, mid + 1, right);
 
     return ref_data_get_index_from_symbol_bsearch(pRef_Data, symbol, left, mid - 1);
-}
-
-int ref_data_get_index_from_name_bsearch(const Ref_Data* pRef_Data, const char* name,
-                                           size_t left, size_t right) {
-    if (right < left)
-        return -1;
-
-    size_t mid = left + (right - left) / 2;
-    int cmp = strcmp(name, pRef_Data->names[mid]);
-    if (cmp == 0)
-        return (int) mid;
-
-    if (cmp > 0)
-        return ref_data_get_index_from_name_bsearch(pRef_Data, name, mid + 1, right);
-
-    return ref_data_get_index_from_name_bsearch(pRef_Data, name, left, mid - 1);
 }
 
 Info* info_array_find_symbol_recursive(const Info_Array* pInfo_Array, const char* symbol) {

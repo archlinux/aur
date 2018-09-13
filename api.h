@@ -35,8 +35,8 @@ typedef enum data_level {
 #include "utils.h"
 
 typedef struct ref_data {
-    char** symbols;
-    char** names;
+    char** symbols;     // Sorted
+    char** names;       // Sorted
     size_t length;
 } Ref_Data;
 
@@ -381,18 +381,6 @@ Info* info_array_find_symbol(const Info_Array* pInfo_Array, const char* symbol);
  */
 int ref_data_get_index_from_symbol_bsearch(const Ref_Data* pRef_Data, const char* symbol,
                                          size_t left, size_t right);
-
-/**
- * Recursive binary search function for Ref_Data. Returns the index of the security with the given
- * name.
- * @param pRef_Data the Ref_Data to search
- * @param name name of the security to find
- * @param left left-most index to start search
- * @param right right-most index to start search
- * @return index of security if found, -1 if not found
- */
-int ref_data_get_index_from_name_bsearch(const Ref_Data* pRef_Data, const char* name,
-        size_t left, size_t right);
 
 /**
  * Recursively searches pInfo_Array and pInfo_Array->peers to find an Info* with the given symbol
