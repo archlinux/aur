@@ -1,46 +1,52 @@
+# Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
+# Contributor: mmirate
 # Contributor: Anonymous
 # Generator  : CPANPLUS::Dist::Arch 1.25
 
-pkgname='perl-data-walk'
-pkgver='1.00'
+set -u
+_perlmod='Data-Walk'
+_modnamespace="${_perlmod%%-*}"
+pkgname="perl-${_perlmod,,}"
+pkgver='2.01'
 pkgrel='1'
-pkgdesc="Traverse Perl data structures."
+pkgdesc="Perl CPAN ${_perlmod//-/::} - Traverse Perl data structures."
 arch=('any')
+url="http://search.cpan.org/dist/${_perlmod}"
 license=('PerlArtistic' 'GPL')
-options=('!emptydirs')
 depends=('perl')
-makedepends=()
-url='http://search.cpan.org/dist/Data-Walk'
-source=('http://search.cpan.org/CPAN/authors/id/G/GU/GUIDO/Data-Walk-1.00.tar.gz')
-md5sums=('868c636781ccd061b0b2a53d4a409e12')
-sha512sums=('0941569dd90d7de62095d4ee1a346035fde284d57fb89863b9bd13cf93855064a875b6f7591908b7af4a8a79210684d4a002bc576e7e1cb299a1c0a268d4f9bf')
-_distdir="Data-Walk-1.00"
+options=('!emptydirs')
+_verwatch=("http://www.cpan.org/modules/by-module/${_modnamespace}/" "${_perlmod}-\([0-9\.]*\)\.tar\.gz" 'l')
+_srcdir="${_perlmod}-${pkgver}"
+source=("${_verwatch[0]}${_perlmod}-${pkgver}.tar.gz")
+md5sums=('d47b791549d4531bc1f2156b0fbeb749')
+sha256sums=('88461561839fcbfebe1121cebee9bade20e609a12f8c7cb386eac22c8c54334a')
+sha512sums=('ae8bd703fe82165ae63d9b3d5ba2044a3b5ef8b911cb60db17d2be12d49fcf218a5f31b11316aab0ec17925a84cc20dab599d4f9757d21ed19797cccbcf4a95a')
 
 build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+  set -u
+  cd "${_srcdir}"
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
-    make
-  )
+  # Install module in vendor directories.
+  PERL_MM_USE_DEFAULT=1 perl 'Makefile.PL' INSTALLDIRS='vendor'
+  make
+  set +u
 }
 
 check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
-  )
+  set -u
+  cd "${_srcdir}"
+  make test
+  set +u
 }
 
 package() {
-  cd "$srcdir/$_distdir"
-  make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  set -u
+  cd "${_srcdir}"
+  make install DESTDIR="${pkgdir}"
+  find "${pkgdir}" '(' -name '.packlist' -o -name 'perllocal.pod' ')' -delete
+  set +u
 }
+set +u
 
 # Local Variables:
 # mode: shell-script
