@@ -1,0 +1,18 @@
+pkgbase = libpwquality-py3
+	pkgdesc = Library for password quality checking and generating random passwords
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/libpwquality/libpwquality
+	arch = x86_64
+	license = GPL
+	makedepends = python
+	makedepends = git
+	depends = cracklib
+	depends = pam
+	optdepends = python: Python bindings
+	backup = etc/security/pwquality.conf
+	source = git+https://github.com/libpwquality/libpwquality.git#commit=ec03e45823965bbcfcbaec7497a1b47033c3b632
+	md5sums = SKIP
+
+pkgname = libpwquality-py3
+
