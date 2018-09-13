@@ -4,7 +4,7 @@ _pkgname="mitsuba"
 _pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
 pkgname="${_pkgname}-git"
 pkgver=v0.5.0.r160.g87efb7d6
-pkgrel=6
+pkgrel=7
 pkgdesc="Mitsuba physically based renderer."
 url="http://mitsuba-renderer.org/"
 license=("GPL3")
@@ -16,11 +16,12 @@ conflicts=("mitsuba" "mitsuba-hg")
 source=("${_pkgname}::git+https://www.mitsuba-renderer.org/repos/mitsuba.git"
         "python3.5.patch"
         "eigen3.3.1.patch"
+        "adt.patch"
         )
 sha256sums=('SKIP'
             '7fe37aa17b35bd5d6b8af5776baa7f6330dc7eaec05195631171c1bfd7694faa'
             '6948f7eede4db6246db8c843e61b37b409d86b56b8f567a770d3431aaa6e4e6d'
-            )
+            '3af1cef63e63092160811cfd37c0bc7ad0020385616f4a78b27b3d15bb19b3c0')
 
 pkgver() {
   cd ${_pkgname}
@@ -51,11 +52,10 @@ prepare() {
     ## fix build error with gcc>5
     ## exclude irawan plugin
     sed -i "/irawan/d" src/bsdfs/SConscript
-    ## exclude ply parser
-    sed -i "/ply.cpp/,+2d" src/shapes/SConscript
 
-    patch -Np1 -i ${srcdir}/python3.5.patch 
-    patch -Np1 -i ${srcdir}/eigen3.3.1.patch
+    git apply ${srcdir}/python3.5.patch
+    git apply ${srcdir}/eigen3.3.1.patch
+    git apply ${srcdir}/adt.patch
 }
 
 build() {
