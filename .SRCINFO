@@ -1,0 +1,20 @@
+pkgbase = pb_cli-git
+	pkgdesc = No bullshit pb client.
+	pkgver = r13.5242382
+	pkgrel = 1
+	url = https://github.com/ptpb/pb_cli
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = curl
+	depends = bash>4
+	depends = jq
+	optdepends = maim: for screenshots
+	optdepends = xclip: for clipboard manipulation
+	provides = pb_cli-git
+	conflicts = pb_cli-git
+	source = pb_cli-git::git+https://github.com/ptpb/pb_cli.git
+	md5sums = SKIP
+
+pkgname = pb_cli-git
+
