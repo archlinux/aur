@@ -1,0 +1,34 @@
+pkgbase = cups-filters-patched
+	pkgdesc = OpenPrinting CUPS Filters
+	pkgver = 1.21.2
+	pkgrel = 1
+	url = https://wiki.linuxfoundation.org/openprinting/cups-filters
+	arch = x86_64
+	license = custom
+	makedepends = ghostscript
+	makedepends = ttf-dejavu
+	makedepends = python
+	makedepends = mupdf-tools
+	depends = lcms2
+	depends = poppler
+	depends = qpdf
+	depends = imagemagick
+	depends = liblouis
+	depends = ijs
+	depends = libcups>=2.2.6-2
+	depends = systemd
+	optdepends = ghostscript: for non-PostScript printers to print with CUPS to convert PostScript to raster images
+	optdepends = foomatic-db: drivers use Ghostscript to convert PostScript to a printable form directly
+	optdepends = foomatic-db-engine: drivers use Ghostscript to convert PostScript to a printable form directly
+	optdepends = foomatic-db-nonfree: drivers use Ghostscript to convert PostScript to a printable form directly
+	optdepends = antiword: needed to convert MS Word documents (requires also docx2txt (AUR)
+	provides = cups-filters=1.21.2
+	conflicts = cups-filters
+	backup = etc/cups/cups-browsed.conf
+	source = https://www.openprinting.org/download/cups-filters/cups-filters-1.21.2.tar.xz
+	source = rewind.patch
+	sha256sums = 2203060fd55406e5454b52a7b4bf8906a29a26fdc5777df75709443a5a78e09b
+	sha256sums = 45e368028d6235979010c48d7ee42422f1827f728d35f8df00a5b5249c250ca8
+
+pkgname = cups-filters-patched
+

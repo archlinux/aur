@@ -1,0 +1,32 @@
+diff -Naur a/filter/foomatic-rip/foomaticrip.c b/filter/foomatic-rip/foomaticrip.c
+--- a/filter/foomatic-rip/foomaticrip.c	2018-08-20 22:48:20.000000000 +0200
++++ b/filter/foomatic-rip/foomaticrip.c	2018-09-12 07:27:39.192764560 +0200
+@@ -585,8 +585,7 @@
+         jobhasjcl = 1;
+         write_output(buf, startpos);
+     }*/
+-    if (file != stdin)
+-        rewind(file);
++    rewind(file);
+ 
+     if (convert) pdfconvertedtops = 0;
+ 
+@@ -659,6 +658,7 @@
+ 
+                 renderer_pid = start_system_process("pdf-to-ps", pdf2ps_cmd, &in, &out);
+ 
++                rewind(stdin);
+                 if (dup2(fileno(out), fileno(stdin)) < 0)
+                     rip_die(EXIT_PRNERR_NORETRY_BAD_SETTINGS,
+                             "Couldn't dup stdout of pdf-to-ps\n");
+diff -Naur a/filter/foomatic-rip/renderer.c b/filter/foomatic-rip/renderer.c
+--- a/filter/foomatic-rip/renderer.c	2018-02-07 23:08:41.000000000 +0100
++++ b/filter/foomatic-rip/renderer.c	2018-09-12 07:26:38.631973662 +0200
+@@ -420,6 +420,7 @@
+         return EXIT_PRNERR_NORETRY_BAD_SETTINGS;
+     }
+ 
++    rewind(stdin);
+     if (in && dup2(fileno(in), fileno(stdin)) < 0) {
+         _log("kid3: Could not dup stdin\n");
+         fclose(kid4in);
