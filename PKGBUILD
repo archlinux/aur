@@ -1,51 +1,70 @@
-# Maintainer: John Jenkins <twodopeshaggy@gmail.com>
+# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Contributor: John Jenkins <twodopeshaggy@gmail.com>
 
 pkgname=flif-git
-_pkgname=FLIF
-pkgver=r792.98e68a8
+pkgver=0.3.r90.gaad2083
 pkgrel=1
-pkgdesc="Free Lossless Image Format"
-arch=("i686" "x86_64")
-url="https://github.com/FLIF-hub/FLIF"
-license=('GPL3')
-conflicts=('flif')
+pkgdesc='Free Lossless Image Format (git version)'
+arch=('i686' 'x86_64')
+url='https://github.com/FLIF-hub/FLIF/'
+license=('LGPL3' 'APACHE')
 provides=('flif')
-depends=('zlib' 'libpng' 'sdl2' 'gdk-pixbuf2')
+conflicts=('flif')
+depends=('gcc-libs' 'libpng' 'sdl2' 'gdk-pixbuf2' 'glib2')
 makedepends=('git')
-source=('git+https://github.com/FLIF-hub/FLIF.git')
+optdepends=(
+    # official repositories:
+        'imagemagick: for gif2flif tool'
+    # AUR:
+        'apng-utils: for apng2flif tool'
+)
+source=("$pkgname"::'git+https://github.com/FLIF-hub/FLIF.git')
 sha256sums=('SKIP')
 
+prepare() {
+    cd "${pkgname}/src"
+    
+    # fix Makefile target install-pixbufloader
+    sed -i 's|/usr/lib|$(PREFIX)/lib|' Makefile
+    sed -i 's|gdk-pixbuf-query-loaders|#&|' Makefile
+    sed -i 's|xdg-mime|#&|' Makefile
+    
+    # remove apt-get references from installed tools
+    cd ../tools
+    sed -i '/apt-get/d' gif2flif apng2flif
+}
 
 pkgver() {
-      cd "$srcdir/${_pkgname}"
-      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$pkgname"
+    
+    # git, tags available
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-  cd "$srcdir/${_pkgname}/src"
-  make all
-  make decoder
-  make viewflif
-  make pixbufloader
+    cd "${pkgname}/src"
+    
+    local _target
+    
+    for _target in all decoder viewflif pixbufloader
+    do
+        msg2 "Building target '${_target}'..."
+        make "$_target"
+    done
+    
 }
 
 package() {
-  cd "$srcdir/${_pkgname}/src"
-  install -dm755 "${pkgdir}/usr/bin"
-  install -dm755 "${pkgdir}/usr/lib/"
-  install -dm755 "${pkgdir}/usr/share/man/man1/"
-  install -dm755 "${pkgdir}/usr/include/${_pkgname}"
-  install -dm755 "${pkgdir}/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders"
-  install -m755 flif viewflif dflif "${pkgdir}/usr/bin"
-  install -m755 libflif_dec.so "${pkgdir}/usr/lib/"
-  install -m755 libflif_dec.so.0 "${pkgdir}/usr/lib/"
-  install -m755 libflif.so "${pkgdir}/usr/lib/"
-  install -m755 libflif.so.0 "${pkgdir}/usr/lib/"
-  install -m755 libpixbufloader-flif.so "${pkgdir}/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders/"
-  install -m 644 library/*.h "${pkgdir}/usr/include/${_pkgname}"
-  install -m 644 ../doc/flif.1 "${pkgdir}/usr/share/man/man1"
-  install -m 755 ../tools/gif2flif "${pkgdir}/usr/bin"
-  install -m 755 ../tools/apng2flif "${pkgdir}/usr/bin"
-  cd "$srcdir/${_pkgname}"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+    cd "${pkgname}/src"
+    
+    local _target
+    
+    for _target in install{,-dev,-decoder,-viewflif,-pixbufloader}
+    do
+        msg2 "Installing target '${_target}'..."
+        make PREFIX="${pkgdir}/usr" "$_target"
+    done
+    
+    # mime type for pixbuf loader
+    install -D -m644 flif-mime.xml -t "${pkgdir}/usr/share/mime/packages"
 }
