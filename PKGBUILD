@@ -13,19 +13,13 @@ makedepends=(npm)
 options=(!strip)
 source=($pkgname-$pkgver.tar.gz::https://github.com/denysdovhan/$pkgname/archive/v$pkgver.tar.gz
         $pkgname.sh
-        $pkgname.desktop
-        remove-tracking.patch)
+        $pkgname.desktop)
 sha256sums=('75041e1d60823ff2b2213a0ac129f694acbd939b5b1a14e4a6bf2044cea99162'
             'd53b45fba512d899c1a37e232d1d5cb4d95435a311f07187f359ed284407c6b6'
-            '3048bb5c4d50269d27a46db7ff550f226881bd77ac6672573a0075b3b75ce2a0'
-            '71d3fea8d7442ae0435ad4b999a5cd6a43d86277897f2114f8f3fd7836c3faa9')
+            '3048bb5c4d50269d27a46db7ff550f226881bd77ac6672573a0075b3b75ce2a0')
 
 prepare() {
   cd "$pkgname-$pkgver"
-
-  # remove tracking (eliminates dependencies insight and firstrun)
-  patch -Np1 -i "${srcdir}/remove-tracking.patch"
-
   sed -i '/"postinstall"/d' package.json
 }
 
