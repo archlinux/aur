@@ -6,8 +6,8 @@ _randomstring=3f0ac31c6d6f
 _prefix=/opt/UnityBeta
 
 pkgname=unity-editor-beta-doc
-pkgver=${_version}${_build}+${_buildtag}
-pkgrel=1
+pkgver=${_version}${_build}
+pkgrel=2
 pkgdesc="Unity User Manual and Scripting API Reference."
 arch=('x86_64')
 url='https://unity3d.com/'
