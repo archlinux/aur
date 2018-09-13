@@ -1,7 +1,7 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-duppy
-pkgver=0.7.0
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="OCaml asynchronous scheduler and monad for server-oriented programming"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('ocaml' 'camlp4' 'ocaml-pcre' 'ocaml-ssl')
 makedepends=('ocaml-findlib')
 options=('!strip')
 source=("https://github.com/savonet/ocaml-duppy/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('609d9116adc8835abb088d7e0bc27ac9')
+md5sums=('e76fa658d5b4ec81fd341d041b9ca9df')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
