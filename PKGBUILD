@@ -6,7 +6,7 @@ _randomstring=4ebd28dd9664
 _prefix=/opt/Unity
 
 pkgname=unity-editor-doc
-pkgver=${_version}${_build}+${_buildtag}
+pkgver=${_version}${_build}
 pkgrel=1
 pkgdesc="Unity User Manual and Scripting API Reference."
 arch=('x86_64')
