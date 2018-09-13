@@ -48,7 +48,7 @@ package_vk9-bin() {
 package_lib32-vk9-bin() {
 	pkgdesc+=" (32-bit)"
 	arch=('x86_64')
-	depends=('vk9-data')
+	depends=('vk9-data' 'lib32-vulkan-icd-loader' 'wine' 'winetricks')
 	provides=('lib32-vk9')
 	conflicts=('lib32-vk9')
 
