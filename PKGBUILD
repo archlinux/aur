@@ -1,10 +1,10 @@
 # Maintainer: Alex Kubica <alexkubicail@gmail.com>
 # Contributor: Manoel Vilela <manoel_vilela@engineer.com>
 _name=mal
-_tag=v0.4.0a0
+_tag=v0.4.0
 pkgname=python-mal-git
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="MyAnimeList command line interface"
 arch=(any)
 url="http://lerax.me/MAL/"
