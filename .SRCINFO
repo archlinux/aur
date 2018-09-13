@@ -8,7 +8,7 @@ pkgbase = egl-man-pages
 	makedepends = libxslt
 	makedepends = docbook-xsl
 	makedepends = subversion
-	source = git+https://github.com/KhronosGroup/EGL-Registry
+	source = https://github.com/KhronosGroup/EGL-Registry
 	md5sums = SKIP
 
 pkgname = egl-man-pages
