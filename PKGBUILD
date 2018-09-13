@@ -1,5 +1,5 @@
 pkgname=pycharm-community-eap
-_buildver=183.2153.9
+_buildver=183.2407.3
 _pkgver=2018.3
 pkgver=$_pkgver.$_buildver
 pkgrel=1
@@ -36,7 +36,7 @@ package() {
 	cd "$srcdir"
 	mkdir -p "$pkgdir/opt/$pkgname"
 	cp -R "$srcdir/pycharm-community-$_buildver/"* "$pkgdir/opt/$pkgname"
-	
+
 	local vmoptfile=pycharm64
 	if [[ $CARCH = 'i686' ]]; then
 		rm -f "$pkgdir/opt/$pkgname/bin/libyjpagent-linux64.so"
@@ -44,7 +44,7 @@ package() {
 		vmoptfile=pycharm
 	fi
 	echo $'-Dawt.useSystemAAFontSettings=on\n-Dswing.aatext=true' >>"$pkgdir/opt/$pkgname/bin/$vmoptfile.vmoptions"
-	
+
 	mkdir -p "$pkgdir/usr/bin/"
 	ln -s "/opt/$pkgname/bin/pycharm.sh" "$pkgdir/usr/bin/pycharm-eap"
 	mkdir -p "$pkgdir/usr/share/pixmaps"
