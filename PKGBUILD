@@ -12,7 +12,7 @@ pkgver='1.133'
 pkgrel='1'
 pkgdesc="Perl CPAN ${_perlmod//-/::} - Organize Data in Tables"
 arch=('any')
-url="http://search.cpan.org/dist/${_perlmod}"
+url="https://metacpan.org/release/${_perlmod}"
 license=('PerlArtistic' 'GPL')
 depends=('perl')
 depends+=('perl-text-aligner>=0.05')
