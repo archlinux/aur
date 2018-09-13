@@ -10,8 +10,7 @@ pkgver='0.11'
 pkgrel='1'
 pkgdesc="${_perlmod//-/::} update file access and modification times, optionally creating files if needed"
 arch=('any')
-#url='http://search.mcpan.org/dist/File-Touch'
-url="http://search.cpan.org/dist/${_perlmod}"
+url="https://metacpan.org/release/${_perlmod}"
 license=('PerlArtistic' 'GPL')
 depends=('perl>=5.006')
 options=('!emptydirs')
