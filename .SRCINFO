@@ -1,0 +1,12 @@
+pkgbase = ftplib
+	pkgdesc = ftplib is a set of routines that implement the FTP protocol. They allow applications to create and access remote files through function calls instead of needing to fork and exec an interactive ftp client program.
+	pkgver = 4.0
+	pkgrel = 1
+	url = https://nbpfaus.net/~pfau/ftplib/
+	arch = any
+	license = Artistic2.0
+	source = http://nbpfaus.net/~pfau/ftplib/ftplib-4.0-1.tar.gz
+	sha256sums = 9b1e8e2aee2f0798c8399378dd6c2f5e9138017259aa18f18070cdf76b191d8e
+
+pkgname = ftplib
+
