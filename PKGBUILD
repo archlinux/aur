@@ -16,7 +16,7 @@ md5sums=('SKIP')
 build() {
   cd "$pkgname"
 
-  cargo build -j1 --release --target=$CARCH-unknown-linux-gnu
+  cargo build --release --target=$CARCH-unknown-linux-gnu
 }
 
 pkgver() {
