@@ -1,7 +1,7 @@
 pkgbase = opensiddur-hebrew-fonts
 	pkgdesc = The Open Siddur Project's open-source Unicode Hebrew font pack. Open-source licensed Unicode fonts in: Hebrew, Latin, Greek, Cyrillic, Arabic, and Amharic.
-	pkgver = 1.18.4
-	pkgrel = 1
+	pkgver = 1.18.5
+	pkgrel = 2
 	url = https://github.com/aharonium/fonts
 	arch = any
 	license = GPL 3.0
