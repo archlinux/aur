@@ -12,7 +12,7 @@ conflicts=('srm')
 license=('GPL')
 arch=('i686' 'x86_64')
 install=${pkgname}.install
-source=(https://github.com/vanhauser-thc/THC-Archive/blob/master/Tools/secure_delete-${pkgver}.tar.gz)
+source=(https://github.com/vanhauser-thc/THC-Archive/blob/master/Tools/secure_delete-${pkgver}.tar.gz?raw=true)
 sha256sums=('a9d846d1dce3f1bdf13bbb306e8596bc1f263198a086f6beecd90ccf7bddf8d5')
 
 build()
