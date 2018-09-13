@@ -1,6 +1,6 @@
 _pkgname=python-dups
 pkgname=python-dups-git
-pkgver=r131.333bd6a
+pkgver=r131.d9aba33
 pkgrel=1
 pkgdesc="It deduplicates things - Backup as simple as possible."
 arch=("x86_64")
