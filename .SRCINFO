@@ -1,5 +1,5 @@
 pkgbase = cups-filters-patched
-	pkgdesc = OpenPrinting CUPS Filters
+	pkgdesc = Patched version of OpenPrinting CUPS Filters for glibc 2.28
 	pkgver = 1.21.2
 	pkgrel = 1
 	url = https://wiki.linuxfoundation.org/openprinting/cups-filters
