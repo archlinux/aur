@@ -2,7 +2,7 @@
 # Maintainer: Corey Hinshaw <coreyhinshaw(at)gmail(dot)com>
 
 pkgname=system76-driver
-pkgver=18.04.27
+pkgver=18.04.29
 pkgrel=1
 pkgdesc="System76 Driver provides drivers, restore, and regression support for System76 computers"
 arch=('any')
@@ -19,6 +19,7 @@ depends=(
 	'python-systemd'
 	'python-xlib'
 	'dmidecode'
+	'at'
 	'system76-dkms'
 	'system76-firmware-daemon')
 makepdepends=(
@@ -36,7 +37,7 @@ source=(
 	'gtk.patch'
 	'cli.patch')
 sha1sums=(
-  '83050ffc2ee8622e16792f32802c4e2bc6872783'
+  '21879845bdebe972795c7053cc4e6512ccd69582'
   'ddc85f9b062eb89c2c6fef0c6d7c68a28f419760'
   '45b4601ed3d9d80a01d5179628b1502caa9d7e6f'
   '916e0eeda26e00bd0372c1ffc7c5368cda9d46a1')
