@@ -13,7 +13,6 @@ pkgbase = mingw-w64-paraview-git
 	depends = mingw-w64-qt5-tools
 	depends = mingw-w64-boost
 	depends = mingw-w64-glew
-	depends = mingw-w64-expat
 	depends = mingw-w64-freetype2
 	depends = mingw-w64-libxml2
 	depends = mingw-w64-libtheora
