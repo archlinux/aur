@@ -51,7 +51,8 @@ package() {
       -or -name "nan" -prune -exec rm -r '{}' \; \
       -or -name "obj.target" -prune -exec rm -r '{}' \; \
       -or -name "script" -prune -exec rm -r '{}' \; \
-      -or -name "test" -prune -exec rm -r '{}' \;
+      -or -name "test" -prune -exec rm -r '{}' \; \
+      -or -name "*.md" -type f -exec rm '{}' \;
 
   "$pkgname-$pkgver/node_modules/asar/bin/asar.js" pack "$pkgdir/tmp/" "$pkgdir/usr/lib/$pkgname/inboxer.asar"
   rm -r "$pkgdir/tmp"
