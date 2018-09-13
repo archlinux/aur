@@ -26,8 +26,11 @@ package() {
 	install -m 644 "libftp.so.${pkgver}" "${pkgdir}/usr/local/lib"
 	install -m 644 ftplib.h "${pkgdir}/usr/local/include"
 
-	ln -s "${pkgdir}/usr/local/lib/libftp.so.${pkgver}" "${pkgdir}/usr/local/lib/libftp.so"
-	for f in ftpdir ftpget ftplist ftprm ftpsend;
-	  do ln -s "${pkgdir}/usr/local/bin/qftp" "${pkgdir}/usr/local/bin/${f}"
+	cd "${pkgdir}/usr/local/lib"
+	ln -s "libftp.so.${pkgver}" libftp.so
+
+	cd "${pkgdir}/usr/local/bin"
+	for ftp_bin in ftpdir ftpget ftplist ftprm ftpsend;
+	  do ln -s qftp ${ftp_bin}
 	done
 }
