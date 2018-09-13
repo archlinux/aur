@@ -32,12 +32,14 @@ pkgname = vk9-bin
 	conflicts = vk9
 
 pkgname = lib32-vk9-bin
+	pkgdesc = Direct3D 9 compatibility layer using Vulkan (32-bit)
 	arch = x86_64
 	depends = vk9-data
 	provides = lib32-vk9
 	conflicts = lib32-vk9
 
 pkgname = vk9-data-bin
+	pkgdesc = Direct3D 9 compatibility layer using Vulkan (shaders + config)
 	arch = any
 	provides = vk9-data
 	conflicts = vk9-data
