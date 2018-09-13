@@ -1,0 +1,15 @@
+pkgbase = openscad-list-compr-demos-git
+	pkgdesc = OpenSCAD utility functions
+	pkgver = r22.dec3fc3
+	pkgrel = 1
+	url = https://github.com/openscad/list-comprehension-demos
+	arch = x86_64
+	arch = i686
+	license = MIT
+	depends = openscad
+	depends = openscad-scad-utils-git
+	source = git+https://github.com/openscad/list-comprehension-demos.git
+	sha512sums = SKIP
+
+pkgname = openscad-list-compr-demos-git
+
