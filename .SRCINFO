@@ -1,6 +1,6 @@
 pkgbase = repos
 	pkgdesc = A simple command tool to manage local repositories
-	pkgver = 0.1.0+1+4987c60
+	pkgver = 0.1.1
 	pkgrel = 2
 	url = https://github.com/zhangkaizhao/repos
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = repos
 	makedepends = cargo
 	optdepends = git: Git support
 	optdepends = mercurial: Mercurial(hg) support
-	source = git+https://github.com/zhangkaizhao/repos.git#commit=4987c60375baaa5424eb5a3ab9856acc1bb8a669
+	source = git+https://github.com/zhangkaizhao/repos.git#tag=v0.1.1
 	sha256sums = SKIP
 
 pkgname = repos

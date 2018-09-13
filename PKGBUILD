@@ -1,9 +1,7 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
-_gitcommit=4987c60375baaa5424eb5a3ab9856acc1bb8a669
-
 pkgname=repos
-pkgver=0.1.0+1+4987c60
+pkgver=0.1.1
 pkgrel=2
 pkgdesc="A simple command tool to manage local repositories"
 url="https://github.com/zhangkaizhao/repos"
@@ -12,7 +10,7 @@ optdepends=('git: Git support'
             'mercurial: Mercurial(hg) support')
 arch=('x86_64')
 license=('MIT' 'Apache')
-source=("git+${url}.git#commit=${_gitcommit}")
+source=("git+${url}.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 build() {
