@@ -37,9 +37,10 @@ build() {
 
 package() {
   mkdir -p "$pkgdir"/usr/{lib/$pkgname,share/pixmaps}
+  mkdir -p "$pkgdir"/tmp
 
   # Copy app to tmp folder, clean it up, and pack it with asar
-  cp -ar $pkgname-$pkgver "$pkgdir/tmp"
+  cp -ar "$pkgname-$pkgver/"{app,node_modules,package.json} "$pkgdir/tmp"
   find "$pkgdir/tmp/node_modules" \
       -name "package.json" \
         -exec sed -e "s|$srcdir/$pkgname|/usr/lib/$pkgname|" \
