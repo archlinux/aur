@@ -1,14 +1,14 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=slibtool
-pkgver=0.5.19
+pkgver=0.5.25
 pkgrel=1
 pkgdesc="Skinny libtool implementation, written in C"
 url='http://git.midipix.org/cgit.cgi/slibtool'
 license=('MIT')
 arch=('x86_64' 'i686')
 source=("http://midipix.org/dl/slibtool/slibtool-$pkgver.tar.xz")
-sha256sums=('13b11ac24accca574a7a43ee5c262e2af4765bfbd44b13667d881bebca54f9d9')
+sha256sums=('6491b20b4fb247ba92c2babf73387f45eeb39a1f0e5f3f273d3359298332ed5c')
 
 build() {
 	cd "$srcdir"/slibtool-$pkgver
