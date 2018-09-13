@@ -6,7 +6,7 @@ _randomstring=4ebd28dd9664
 _prefix=/opt/Unity
 
 pkgname=unity-editor-facebook
-pkgver=${_version}${_build}+${_buildtag}
+pkgver=${_version}${_build}
 pkgrel=1
 pkgdesc="Allows building your Unity projects for the Facebook-Games platform"
 arch=('x86_64')
