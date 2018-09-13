@@ -1,14 +1,14 @@
 pkgbase = ibm-tss
 	pkgdesc = A user space TSS for TPM 2.0 by IBM
-	pkgver = 1234
+	pkgver = 1331
 	pkgrel = 1
 	url = https://sourceforge.net/projects/ibmtpm20tss/
 	arch = i686
 	arch = x86_64
 	license = BSD
 	depends = openssl
-	source = https://downloads.sourceforge.net/project/ibmtpm20tss/ibmtss1234.tar.gz
-	md5sums = 161fabe506526621c2472a769d629747
+	source = https://downloads.sourceforge.net/project/ibmtpm20tss/ibmtss1331.tar.gz
+	md5sums = 95068099d4a3aebd22632a0e8878b1d7
 
 pkgname = ibm-tss
 

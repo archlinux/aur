@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=ibm-tss
-pkgver=1234
+pkgver=1331
 pkgrel=1
 pkgdesc="A user space TSS for TPM 2.0 by IBM"
 arch=(i686 x86_64)
@@ -28,4 +28,4 @@ msg2 "Cleaning up"
 	cp $srcdir/utils/*.so lib/
 }
 
-md5sums=('161fabe506526621c2472a769d629747')
+md5sums=('95068099d4a3aebd22632a0e8878b1d7')
