@@ -1,7 +1,7 @@
 # Contributor: Sebastian Wolf <fatmike303@gmail.com>
 pkgname=advancemame
-pkgver=3.7
-pkgrel=2
+pkgver=3.9
+pkgrel=1
 pkgdesc="Unofficial MAME/MESS version with an advanced video support for use with TVs, Arcade monitors, PC monitors and LCD screens. Also includes AdvanceMENU frontend."
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.advancemame.it"
@@ -18,7 +18,7 @@ source=(
   "${pkgname}.desktop"
 )
 sha256sums=(
-  '36c88305dc485e85ff86854b3d8bb75c4c81fa7356f6dbfcbfd6a5e192199b2c'
+  '3e4628e1577e70a1dbe104f17b1b746745b8eda80837f53fbf7b091c88be8c2b'
   '42c33684c5c6e44269c7102dc404652721e4802bb19a495c264127bfee52a9d0'
   '6633a06a972f69142af5c3ee538b80e0705ef79eed9f5f4097811015be1cfb41'
 )
