@@ -1,5 +1,5 @@
 
-pkgname=mingw-gl2ps
+pkgname=mingw-w64-gl2ps
 pkgver=1.4.0
 pkgrel=1
 pkgdesc="an OpenGL to PostScript printing library (mingw-w64)"
