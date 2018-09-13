@@ -43,7 +43,7 @@ package() {
   cp -ar "$pkgname-$pkgver/"{app,node_modules,package.json} "$pkgdir/tmp"
   find "$pkgdir/tmp/node_modules" \
       -name "package.json" \
-        -exec sed -e "s|$srcdir/$pkgname|/usr/lib/$pkgname|" \
+        -exec sed -e "s|$srcdir/$pkgname-$pkgver|/usr/lib/$pkgname|" \
             -i {} \; \
       -or -name ".*" -prune -exec rm -r '{}' \; \
       -or -name "*.gyp" -prune -exec rm -r '{}' \; \
