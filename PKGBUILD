@@ -1,13 +1,14 @@
 _pkgname=python-dups
 pkgname=python-dups-git
-pkgver=r99.158b91a
+pkgver=r131.333bd6a
 pkgrel=1
 pkgdesc="It deduplicates things - Backup as simple as possible."
 arch=("x86_64")
 url="https://github.com/linuxwhatelse/dups"
 license=('GPL3')
-depends=('python' 'rsync' 'dbus' 'python-gobject' 'python-dbus'
-         'python-paramiko' 'python-ruamel-yaml')
+depends=('python' 'rsync' 'python-paramiko' 'python-ruamel-yaml')
+optdepends=('python-dbus: Daemon support'
+            'python-gobject: Desktop notification support')
 makedepends=('python-setuptools')
 provides=("${_pkgname}")
 source=("${_pkgname}::git+https://github.com/linuxwhatelse/dups.git")
@@ -35,4 +36,3 @@ package() {
 
 
 # vim: set syntax=sh:
-

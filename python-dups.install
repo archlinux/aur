@@ -1,22 +1,27 @@
 post_install() {
     echo "---"
-    echo "Reload user units with:"
+    echo "Start user unit with:"
     echo "  systemctl --user daemon-reload"
-    echo ""
-    echo "Start dups with:"
     echo "  systemctl --user start dups"
+    echo ""
+    echo "Start system unit with:"
+    echo "  sudo systemctl daemon-reload"
+    echo "  sudo systemctl start dups@${USER}"
     echo ""
     echo "To automatically start dups after login:"
     echo "  systemctl --user enable dups"
+    echo "  sudo systemctl enable dups@${USER}"
     echo "---"
 }
 
 post_upgrade() {
     echo "---"
-    echo ""
-    echo "Restart dups with:"
+    echo "Restart user unit with:"
     echo "  systemctl --user daemon-reload"
     echo "  systemctl --user restart dups"
     echo ""
+    echo "Restart system unit with:"
+    echo "  sudo systemctl daemon-reload"
+    echo "  sudo systemctl restart dups@${USER}"
     echo "---"
 }
