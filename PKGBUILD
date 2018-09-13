@@ -4,14 +4,14 @@
 
 _pkgname='github-desktop'
 pkgname="${_pkgname}"
-pkgver=1.3.5_beta0
+pkgver=1.4.1_beta0
 gitname="release-${pkgver//_/-}"
-pkgrel=2
+pkgrel=1
 pkgdesc="GUI for managing Git and GitHub."
 arch=('x86_64')
 url="https://desktop.github.com"
 license=('MIT')
-depends=('gnome-keyring' 'git' 'libcurl-gnutls')
+depends=('gnome-keyring' 'git' 'libcurl-openssl-1.0')
 optdepends=('hub: CLI interface for GitHub.')
 makedepends=('xorg-server-xvfb' 'nodejs-lts-carbon' 'yarn' 'python2')
 DLAGENTS=("http::/usr/bin/git clone --branch ${gitname} --single-branch %u")
@@ -37,5 +37,5 @@ package() {
   install -Dm644 "desktop/app/static/logos/1024x1024.png" "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${_pkgname}.png"
   install -Dm644 "desktop/app/static/logos/512x512.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
   install -Dm644 "desktop/app/static/logos/256x256.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png"
-  printf "#!/bin/sh\n\n/opt/${_pkgname}/desktop \"$@\"\n" | install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${_pkgname}"
+  printf "#!/bin/sh\n\nLD_PRELOAD=/usr/lib/libcurl-openssl-1.0.so /opt/${_pkgname}/desktop \"\$@\"\n" | install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${_pkgname}"
 }
