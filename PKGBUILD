@@ -36,6 +36,7 @@ build() {
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake \
+    -DCMAKE_RULE_MESSAGES=OFF \
     -DPARAVIEW_INSTALL_DEVELOPMENT_FILES=ON \
     -DPARAVIEW_ENABLE_FFMPEG=OFF \
     -DPARAVIEW_ENABLE_PYTHON=OFF \
