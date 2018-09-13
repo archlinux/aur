@@ -6,8 +6,8 @@
 # Contributor: Malte Rabenseifner <malte@zearan.de>
 
 pkgname=murmur-snapshot-ice
-pkgver=1.3.0_2729_g2126495
-pkgrel=3
+pkgver=1.3.0_2868_g44b9004
+pkgrel=1
 pkgdesc="The voice chat application server for Mumble (development snapshot)"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://wiki.mumble.info/wiki/"
@@ -22,7 +22,7 @@ install=murmur.install
 source=("https://mumble.info/snapshot/mumble-${pkgver//_/\~}~snapshot.tar.gz"{,.sig}
 	murmur.tmpfilesd
 	murmur.sysusers)
-sha256sums=('31b199b33329be15b4c385d8a8922ecacd33c55a8e5a56930513937551c17272'
+sha256sums=('28ba96277537376c7eee12a93832ba4a5909ec4833ab648d74de84b778d1275d'
             'SKIP'
             '25bf2dbd7574459724b4621fb93c09484dc7520297fa1d0f247a19b592d8cb8e'
             'ff58059e77eb73a5c9ad8eb4ad8d8d7c865f3ae1fb6cb236a729f742da95d83d')
