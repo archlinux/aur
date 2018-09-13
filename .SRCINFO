@@ -1,0 +1,18 @@
+pkgbase = python-peeweeplus-git
+	pkgdesc = Practical extension of a small, expressive ORM
+	pkgver = latest
+	pkgrel = 1
+	url = https://gitlab.com/HOMEINFO/peeweeplus
+	arch = any
+	license = GPLv3
+	makedepends = git
+	makedepends = python
+	depends = python
+	depends = python-peewee
+	depends = python-argon2_cffi
+	depends = python-timelib-git
+	source = peeweeplus::git+https://gitlab.com/HOMEINFO/peeweeplus.git
+	md5sums = SKIP
+
+pkgname = python-peeweeplus-git
+
