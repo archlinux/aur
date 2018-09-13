@@ -19,4 +19,8 @@ build() {
 package() {
 	cd "$srcdir"/slibtool-$pkgver
 	make DESTDIR="$pkgdir" install
+
+	# This file makes no sense; if used, it would break compilations since
+	# no libslibtool.so exists
+	rm "$pkgdir"/usr/lib/pkgconfig/slibtool.pc
 }
