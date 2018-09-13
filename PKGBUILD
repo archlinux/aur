@@ -20,7 +20,7 @@
 pkgbase=kodi-pre-release
 pkgname=("kodi-${pkgbase#kodi-*}" "kodi-eventclients-${pkgbase#kodi-*}" "kodi-tools-texturepacker-${pkgbase#kodi-*}" "kodi-dev-${pkgbase#kodi-*}")
 pkgver=18.0b2
-pkgrel=1
+pkgrel=2
 _commit=7868a27c6a83eafd3bf505172b59481868d940fb
 _short=${_commit::+7}
 arch=('x86_64')
@@ -50,7 +50,7 @@ makedepends=(
 _codename=Leia
 _rtype=Alpha
 _ffmpeg_version="4.0.2-$_codename-$_rtype"3
-_libdvdcss_version="1.4.1-$_codename-$_rtype"-3
+_libdvdcss_version="1.4.1-$_codename-Beta"-3
 _libdvdnav_version="6.0.0-$_codename-$_rtype"-3
 _libdvdread_version="6.0.0-$_codename-$_rtype"-3
 _fmt_version="3.0.1"
@@ -82,7 +82,7 @@ noextract=(
 )
 sha256sums=('fd36de783dbf37fa21714ec9d080cc0495eff5018f3d37cf376131a6cd0cf767'
             '0e4980abac7b886e0eb5f4157941947be3c10d616a19bd311dc2f9fd2eb6a631'
-            '6af3d4f60e5af2c11ebe402b530c07c8878df1a6cf19372e16c92848d69419a5'
+            '579aa102ac14ff4a21aa4081fe47f8cb3941002a37ee96286d3737afd79e80d9'
             '071e414e61b795f2ff9015b21a85fc009dde967f27780d23092643916538a57a'
             'a30b6aa0aad0f2c505bc77948af2d5531a80b6e68112addb4c123fca24d5d3bf'
             'dce62ab75a161dd4353a98364feb166d35e7eea382169d59d9ce842c49c55bad'
