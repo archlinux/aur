@@ -1,5 +1,5 @@
 pkgbase = mediathek
-	pkgdesc = Offers access to the Mediathek of different german tv stations (ARD, ZDF, Arte, etc.)
+	pkgdesc = Access the Mediathek of many German TV stations
 	pkgver = 13.2.1
 	pkgrel = 1
 	url = https://mediathekview.de
