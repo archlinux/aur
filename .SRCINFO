@@ -1,7 +1,7 @@
 pkgbase = unity-editor-beta-webgl
 	pkgdesc = Allows building your Unity projects for the WebGL platform
-	pkgver = 2018.3.0b1+
-	pkgrel = 1
+	pkgver = 2018.3.0b1
+	pkgrel = 2
 	url = https://unity3d.com/
 	arch = x86_64
 	license = custom
