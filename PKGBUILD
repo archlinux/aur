@@ -26,10 +26,10 @@ sha512sums=('626971a85681461a4d1f83e218fdcb5fee21ebafac28d49571433147ea8c8a07c04
 
 package() {
   cd $_realname-$pkgver
-  install -d $pkgdir/{opt/$pkgname/{lib,bin},usr/{bin,share/{applications,pixmaps}}}
+  install -d "$pkgdir"/{opt/$pkgname/{lib,bin},usr/{bin,share/{applications,pixmaps}}}
   install -m755 ../$pkgname "$pkgdir"/usr/bin/
   install -m644 $_realname.jar "$pkgdir"/opt/$pkgname/
-  install -m644 -t $pkgdir/opt/$pkgname/lib lib/*
+  install -m644 -t "$pkgdir"/opt/$pkgname/lib lib/*
   install -m755 bin/flv.sh "$pkgdir"/opt/$pkgname/bin/
   install -m644 ../$pkgname.desktop "$pkgdir"/usr/share/applications/
   install -m644 Icons/$_realname.svg "$pkgdir"/usr/share/pixmaps/
