@@ -1,7 +1,7 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-lastfm
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="OCaml API to lastfm radio and audioscrobbler"
 arch=('i686' 'x86_64')
@@ -10,16 +10,8 @@ license=('LGPL2.1')
 depends=('ocaml' 'ocaml-pcre' 'ocaml-xmlplaylist' 'ocamlnet')
 makedepends=('ocaml-findlib')
 options=('!strip')
-source=("https://github.com/savonet/ocaml-lastfm/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz"
-        "ocamlnet402.patch::https://github.com/savonet/ocaml-lastfm/commit/c654b1878d31b4af6ea540b85660544772f9c700.patch")
-md5sums=('a36c07e5222cfa2181a321fe6d5a31e7'
-         'c7f449d6eeabb3942eea375c7cc9c6ba')
-
-prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-
-    patch -p1 -i "${srcdir}/ocamlnet402.patch"
-}
+source=("https://github.com/savonet/ocaml-lastfm/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+md5sums=('4750e5b6af1eada76841c89f46427be6')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
