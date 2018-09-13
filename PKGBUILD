@@ -1,7 +1,7 @@
 # Maintainer: Adam Goldsmith <contact@adamgoldsmith.name>
 
 pkgname=cura-git
-pkgver=3.3.1.307.g0c51173be
+pkgver=3.4.1.1045.gc962b519b
 pkgrel=1
 pkgdesc="A full software solution for 3D printing aimed at RepRaps and the Ultimaker."
 arch=('any')
@@ -16,6 +16,7 @@ depends=('python'
          'qt5-quickcontrols'
          'qt5-quickcontrols2'
          'libarcus-git'
+         'libsavitar'
          'uranium-git'
          'curaengine-git')
 makedepends=('git' 'cmake')

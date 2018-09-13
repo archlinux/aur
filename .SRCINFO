@@ -1,6 +1,6 @@
 pkgbase = cura-git
 	pkgdesc = A full software solution for 3D printing aimed at RepRaps and the Ultimaker.
-	pkgver = 3.3.1.307.g0c51173be
+	pkgver = 3.4.1.1045.gc962b519b
 	pkgrel = 1
 	url = https://github.com/Ultimaker/Cura
 	arch = any
@@ -14,6 +14,7 @@ pkgbase = cura-git
 	depends = qt5-quickcontrols
 	depends = qt5-quickcontrols2
 	depends = libarcus-git
+	depends = libsavitar
 	depends = uranium-git
 	depends = curaengine-git
 	optdepends = python-zeroconf: Detecting mDNS printers
