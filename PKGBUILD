@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=obs-service-format_spec_file
-pkgver=20180306
+pkgver=20180820
 pkgrel=1
 _pkgver=1.1
 pkgdesc='An OBS source service: reformats a spec file to SUSE standard'
