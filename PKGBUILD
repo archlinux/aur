@@ -1,7 +1,7 @@
 # Maintainer: Philipp 'TamCore' B. <philipp [at] tamcore [dot] eu>
 pkgname=jmtpfs
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 license=('GPL3')
 pkgdesc="mtpfs with better support for Android"
 arch=('i686' 'x86_64')
@@ -19,4 +19,7 @@ build() {
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     make DESTDIR="${pkgdir}" install
+
+    ln -s jmtpfs "${pkgdir}/usr/bin/mount.jmtpfs"
+    ln -s jmtpfs "${pkgdir}/usr/bin/mount.fuse.jmtpfs"
 }
