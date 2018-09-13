@@ -1,7 +1,7 @@
 pkgbase = vlc-git
 	pkgdesc = A multi-platform MPEG, VCD/DVD, and DivX player (GIT Version)
-	pkgver = 4.0.0.r4632.g809c7741f7
-	pkgrel = 2
+	pkgver = 4.0.0.r4647.gcbe42e44ee
+	pkgrel = 1
 	url = https://www.videolan.org/vlc/
 	arch = i686
 	arch = x86_64
@@ -155,7 +155,7 @@ pkgbase = vlc-git
 	optdepends = libnotify: notification plugin
 	optdepends = gtk3: notification plugin
 	optdepends = aribb24: ARIB Subtitles support
-	provides = vlc=4.0.0.r4632.g809c7741f7
+	provides = vlc=4.0.0.r4647.gcbe42e44ee
 	conflicts = vlc
 	conflicts = vlc-dev
 	conflicts = vlc-plugin
