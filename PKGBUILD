@@ -4,7 +4,7 @@
 
 pkgname='mailto-uri'
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="creates mailto URIs"
 arch=('any')
 url="https://pypi.org/project/mailto-uri/"

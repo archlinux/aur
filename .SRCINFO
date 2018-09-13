@@ -1,7 +1,7 @@
 pkgbase = mailto-uri
 	pkgdesc = creates mailto URIs
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/mailto-uri/
 	arch = any
 	license = GPL3
