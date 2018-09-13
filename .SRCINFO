@@ -1,0 +1,16 @@
+pkgbase = python-httpam-git
+	pkgdesc = Python 3 library and scripts for the RCON and Query protocol
+	pkgver = r9.6c45106
+	pkgrel = 1
+	url = https://gitlab.com/coNQP/httpam
+	arch = any
+	license = GPLv3
+	makedepends = git
+	makedepends = python
+	depends = python
+	depends = python-pam
+	source = httpam::git+https://gitlab.com/coNQP/httpam.git
+	md5sums = SKIP
+
+pkgname = python-httpam-git
+
