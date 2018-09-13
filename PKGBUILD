@@ -4,11 +4,12 @@
 
 pkgname=compton-git
 _gitname=compton
-pkgver=0.1_beta2.87.g316eac0
+epoch=1
+pkgver=1.r1.g265dc67_2018.09.10
 pkgrel=1
 pkgdesc="X Compositor (a fork of xcompmgr-dana) (git-version)"
 arch=(i686 x86_64)
-url="https://github.com/chjj/compton"
+url="https://github.com/yshui/compton"
 license=('MIT')
 depends=('libgl' 'libdbus' 'libxcomposite' 'libxdamage' 'libxrandr' 'pcre' 'libconfig' 'libxinerama' 'hicolor-icon-theme')
 makedepends=('git' 'asciidoc' 'mesa')
@@ -17,12 +18,14 @@ optdepends=('dbus:          To control compton via D-Bus'
             'xorg-xprop:    For compton-trans')
 provides=('compton')
 conflicts=('compton')
-source=(git+"https://github.com/chjj/compton.git")
+source=(git+"https://github.com/yshui/compton.git")
 md5sums=("SKIP")
 
 pkgver() {
     cd "${srcdir}/${_gitname}"
-    git describe --tags | sed -e 's:v::' -e 's/-/./g'
+    _ver=$(git describe --long | sed 's/\([^-]*-g\)/r\1/')
+    _date=$(git log -1 --date=short --pretty=format:%cd)
+    printf "%s_%s\n" "$_ver" "$_date" | sed -e 's:v::' -e 's/-/./g'
 }
 
 build() {
