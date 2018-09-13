@@ -1,0 +1,22 @@
+pkgbase = docker-ls
+	pkgdesc = Tools for browsing and manipulating docker registries
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/mayflower/docker-ls
+	changelog = ChangeLog
+	arch = x86_64
+	license = MIT
+	makedepends = fakeroot
+	makedepends = git
+	makedepends = gcc
+	makedepends = go
+	options = strip
+	options = !staticlibs
+	options = !emptydirs
+	source = https://github.com/mayflower/docker-ls/archive/v0.3.1.tar.gz
+	source = LICENSE
+	sha256sums = da40737b5e8bb5c1d4ee14c90ffa419ac7f9e7687618fe4dc020e786f61ea88a
+	sha256sums = 36f5440582577e61065f48b6fc26e2dd563ef2eb11a04255fed3bf47d138ca9e
+
+pkgname = docker-ls
+
