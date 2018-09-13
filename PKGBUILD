@@ -9,7 +9,7 @@ pkgver='3.0001'
 pkgrel='1'
 pkgdesc="Perl CPAN ${_perlmod//-/::} - Make binary data human-readable"
 arch=('any')
-url="http://search.cpan.org/dist/${_perlmod}"
+url="https://metacpan.org/release/${_perlmod}"
 license=('PerlArtistic')
 depends=('perl')
 checkdepends=()
@@ -45,7 +45,7 @@ package() {
   set -u
   cd "${_srcdir}"
   make install DESTDIR="${pkgdir}"
-  find "${pkgdir}" '(' -name .packlist -o -name '*.pod' ')' -delete
+  find "${pkgdir}" '(' -name '.packlist' -o -name '*.pod' ')' -delete
   set +u
 }
 set +u
