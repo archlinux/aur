@@ -1,5 +1,5 @@
 pkgbase = python-httpam-git
-	pkgdesc = Python 3 library and scripts for the RCON and Query protocol
+	pkgdesc = Python 3 library for web service authentication using PAM
 	pkgver = r9.6c45106
 	pkgrel = 1
 	url = https://gitlab.com/coNQP/httpam
