@@ -1,58 +1,53 @@
-# Contributor: 'viperpaulo'
-# Contributor: 'lazork'
-# Contributor: Anton Bazhenov <anton.bazhenov at gmail>
-# Contributor: Andrea 'dedalus' Turconi <andy.dedalus@gmail.com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=freefem++
-pkgver=3.56
+pkgver=3.61.1
+_pkgver=3.61-1
 pkgrel=1
-pkgdesc="A PDE oriented language using the finite element method"
-arch=('i686' 'x86_64')
+pkgdesc='A PDE oriented language using the finite element method'
+arch=('x86_64')
 url="http://www.freefem.org/ff++/index.htm"
 license=('LGPL')
-depends=('arpack' 'fftw' 'freeglut' 'glu' 'hdf5' 'suitesparse')
-makedepends=('gcc-fortran' 'ed' 'wget')
+depends=('fftw' 'freeglut' 'glu' 'suitesparse' 'hdf5-openmpi' 'gsl' 'openmpi' 'openblas-lapack' 'arpack' 'parmetis' 'python')
+makedepends=('texlive-core')
+source=("http://www.freefem.org/ff++/ftp/$pkgname-${_pkgver}.tar.gz" gcc8.patch)
+sha256sums=('1f225c5b5d3081df157794174a1a31037a622d111051258ad979ec9d52a48c67'
+            '5a80de210d97ce08e97ebda63cda51d74100c8c05a3cc4a7d5b0733f64ab30ed')
 options=('!makeflags')
-source=("http://www.freefem.org/ff++/ftp/$pkgname-${pkgver//+/-}.tar.gz"
-        'disable-doc.patch')
-sha256sums=('0e415c20ce965b2ce58e1ebce0daa8eb53cceec2ee10254e302b68a2ff285484'
-            '0e6a176f38c0d9ec299994d978ae378f71aafe55ef90c1fb5d40e137ba939d70')
 
 prepare() {
-  cd "$pkgname-${pkgver//+/-}"
-
-  ## disable doc
-  patch -p1 < ../disable-doc.patch
-
-  ## fix mumps Makefile includes
-  ed -v download/mumps/Makefile-mumps-5.0.2.inc <<< $',s/^INCS = /& -I. -I\\/usr\\/include /g\nw'
-
-  ## include downloaded headers in ff-c++ jobs
-  # ed -v examples++-load/Makefile.in <<< $',s/^	 .\\/ff-c++/& -I..\\/download\\/include /g\nw'
+  cd ${pkgname}-${_pkgver}
+#  autoreconf -fi 
+  perl download/getall -a
+  ./configure CXXFLAGS=" --std=c++11" \
+	      --prefix=/usr \
+	      --sysconfdir=/etc \
+	      --enable-download \
+	      --disable-mumps
+  
+  find . -name Makefile -exec sed -i 's+^gcc+gcc =+' {} \;
+  find . -name Makefile -exec sed -i 's+^dir+dir =+' {} \;
+  patch -Np1 < "$srcdir"/gcc8.patch
 }
 
 build() {
-  cd "$pkgname-${pkgver//+/-}"
+  cd ${pkgname}-${_pkgver}
+  make 
+}
 
-  ./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --enable-silent-rules \
-    --enable-download \
-    --disable-pdf \
-    --with-umfpack="-lumfpack -lsuitesparseconfig -lcholmod -lcolamd"
-
-  make PREFIX=/usr
+check() {
+  cd ${pkgname}-${_pkgver}
+  make check || true
 }
 
 package() {
-  cd "$pkgname-${pkgver//+/-}"
+  cd ${pkgname}-${_pkgver}
+  make -d DESTDIR="$pkgdir" install||true
 
-  make PREFIX=/usr DESTDIR="$pkgdir" install
-
-  ## remove unneeded stuff
-  rm -f "$pkgdir"/usr/share/"$pkgname/${pkgver//+/-}"/INSTALL*
-  rm -f "$pkgdir"/usr/share/"$pkgname/${pkgver//+/-}"/README_*
-  rm -f "$pkgdir"/usr/share/"$pkgname/${pkgver//+/-}"/mode-mi-edp.zip
-  rm -rf "$pkgdir"/usr/share/"$pkgname/${pkgver//+/-}"/download
+  find "$pkgdir"/usr/lib/ff++/ -name "*.h" -exec chmod o+r {} \;
+  # remove unneeded files
+  rm -f "$pkgdir"/usr/share/${pkgname}/${_pkgver}/INSTALL*
+  rm -f "$pkgdir"/usr/share/${pkgname}/README_*
+  rm -f "$pkgdir"/usr/share/${pkgname}/mode-mi-edp.zip
+  rm -rf "$pkgdir"/usr/share/${pkgname}/download
 }

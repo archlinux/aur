@@ -1,0 +1,25 @@
+diff -Naur freefem++-3.61-1.orig/src/fflib/problem.cpp freefem++-3.61-1.new/src/fflib/problem.cpp
+--- freefem++-3.61-1.orig/src/fflib/problem.cpp	2018-06-20 14:46:49.000000000 +0200
++++ freefem++-3.61-1.new/src/fflib/problem.cpp	2018-09-13 18:58:01.971718975 +0200
+@@ -5810,7 +5810,7 @@
+ 
+ 
+ template<class R,class FESpace,class v_fes>
+-AnyType Problem::eval(Stack stack,Data<FESpace> * data,CountPointer<MatriceCreuse<R> > & dataA, 
++AnyType Problem::eval(Stack stack,Data<FESpace> * data,CountPointer<MatriceCreuse<R> > & dataA,
+       MatriceCreuse< typename CadnaType<R>::Scalaire >   * & cadnamat ) const
+ {  
+     typedef typename  FESpace::Mesh Mesh;
+@@ -6123,7 +6123,11 @@
+   return SetAny<const Problem *>(this);
+ }
+ 
+-
++//   force particular instance
++template AnyType Problem::eval<double,FESpace,v_fes>(Stack stack,Data<FESpace> * data,CountPointer<MatriceCreuse<double> > & dataA,MatriceCreuse< typename CadnaType<double>::Scalaire >  * & dataCadna) const;
++template AnyType Problem::eval<Complex,FESpace,v_fes>(Stack stack,Data<FESpace> * data,CountPointer<MatriceCreuse<Complex> > & dataA,MatriceCreuse< typename CadnaType<Complex>::Scalaire >  * & dataCadna) const;
++template AnyType Problem::eval<double,FESpace3,v_fes3>(Stack stack,Data<FESpace3> * data,CountPointer<MatriceCreuse<double> > & dataA,MatriceCreuse< typename CadnaType<double>::Scalaire >  * & dataCadna) const;
++template AnyType Problem::eval<Complex,FESpace3,v_fes3>(Stack stack,Data<FESpace3> * data,CountPointer<MatriceCreuse<Complex> > & dataA,MatriceCreuse< typename CadnaType<Complex>::Scalaire >  * & dataCadna) const;
+ 
+ int dimProblem(const ListOfId &l)
+ {
