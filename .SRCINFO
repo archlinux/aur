@@ -1,0 +1,26 @@
+pkgbase = fluxion
+	pkgdesc = Fluxion is a security auditing and social-engineering research tool
+	pkgver = r24.75353f7
+	pkgrel = 1
+	url = https://github.com/FluxionNetwork/fluxion
+	arch = any
+	license = GPL3
+	makedepends = binutils
+	makedepends = coreutils
+	makedepends = git
+	depends = aircrack-ng
+	depends = bash>=4.2
+	depends = coreutils
+	depends = awk
+	depends = iw
+	depends = unzip
+	depends = curl
+	depends = bc
+	depends = xterm
+	provides = fluxion
+	conflicts = fluxion
+	source = git://github.com/FluxionNetwork/fluxion.git#branch=master
+	sha256sums = SKIP
+
+pkgname = fluxion
+
