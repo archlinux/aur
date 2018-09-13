@@ -1,46 +1,53 @@
+# Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
+# Contributor: mmirate
+# Contributor: pshevtsov
 # Contributor: Anonymous
 # Generator  : CPANPLUS::Dist::Arch 1.25
 
-pkgname='perl-text-aligner'
-pkgver='0.07'
+set -u
+_perlmod='Text-Aligner'
+_modnamespace="${_perlmod%%-*}"
+pkgname="perl-${_perlmod,,}"
+pkgver='0.13'
 pkgrel='1'
-pkgdesc="Align text in columns"
+pkgdesc="Perl CPAN ${_perlmod//-/::} - Align text in columns"
 arch=('any')
+url="http://search.cpan.org/dist/${_perlmod}"
 license=('PerlArtistic' 'GPL')
-options=('!emptydirs')
 depends=('perl')
-makedepends=()
-url='http://search.cpan.org/dist/Text-Aligner'
-source=('http://search.cpan.org/CPAN/authors/id/A/AN/ANNO/Text-Aligner-0.07.tar.gz')
-md5sums=('73088eaeae1e6c627398db1e7cc76717')
-sha512sums=('f3c161e88b12cd999b55529af8002702d324923fecf986b84bac610c5cfade6e1bf4d34285c00927ace232a9bbff11f2748913d0e6e87f5d27c2d381e64403ac')
-_distdir="Text-Aligner-0.07"
+options=('!emptydirs')
+_verwatch=("http://www.cpan.org/modules/by-module/${_modnamespace}/" "${_perlmod}-\([0-9\.]*\)\.tar\.gz" 'l')
+_srcdir="${_perlmod}-${pkgver}"
+source=("${_verwatch[0]}${_perlmod}-${pkgver}.tar.gz")
+md5sums=('a084016cb3fa9caa858f297d524cc3d7')
+sha256sums=('e61c1c93cdefd9cc2a40f12fa8bfb12e64bb06d2375ba9e61534249865103eef')
+sha512sums=('493ab6b32319e74c4b08b8473a17e69d5ce49d28495c7c759709661863a88613b766c3275035ea43f82448ea4f37a02ae2ab8f7baf68d79388b125dbd440004a')
 
 build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+  set -u
+  cd "${_srcdir}"
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
-    make
-  )
+  # Install module in vendor directories.
+  PERL_MM_USE_DEFAULT=1 perl 'Makefile.PL' INSTALLDIRS='vendor'
+  make
+  set +u
 }
 
 check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
-  )
+  set -u
+  cd "${_srcdir}"
+  make test
+  set +u
 }
 
 package() {
-  cd "$srcdir/$_distdir"
-  make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  set -u
+  cd "${_srcdir}"
+  make install DESTDIR="${pkgdir}"
+  find "${pkgdir}" '(' -name '.packlist' -o -name 'perllocal.pod' ')' -delete
+  set +u
 }
+set +u
 
 # Local Variables:
 # mode: shell-script
