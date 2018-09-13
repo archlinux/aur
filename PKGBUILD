@@ -6,22 +6,29 @@
 
 set -u
 pkgname='redir'
-pkgver='2.2.1'
-pkgrel='5'
+pkgver='3.2'
+pkgrel='1'
 pkgdesc='Redirect TCP connections'
 arch=('i686' 'x86_64')
-url='http://sammy.net/~sammy/hacks/'
+#url='http://sammy.net/~sammy/hacks/'
+url='https://github.com/troglobit/redir'
 license=('GPL')
 # tcp_wrappers is hard to set up and seems to not work right. running tcpdchk produces errors
-#depends=('tcp_wrappers')
-source=("http://sammy.net/~sammy/hacks/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('7ea504f835338e448f674ca8637512f511bf74538418ad43ab39039017090e6c')
+depends=('glibc')
+#depends+=('tcp_wrappers')
+_verwatch=("${url}/releases.atom" "\s\+<title>${pkgname} v\([0-9.]\+\)</title>.*" 'f') # RSS
+#source=("http://sammy.net/~sammy/hacks/${pkgname}-${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/troglobit/redir/archive/v${pkgver}.tar.gz")
+sha256sums=('968eef042ca0fa7a7d6aa0d70da5a5df45d411f239beb8b2a6e9fdaf1da497b1')
 
 build() {
   set -u
   cd "${pkgname}-${pkgver}"
+  [ -s 'configure' ] || sh 'autogen.sh'
+  [ -s 'Makefile' ] || ./configure -prefix='/usr'
   #make clean
-  if [ "${depends:-}" = 'tcp_wrappers' ]; then
+  local _deps="${depends[@]}"
+  if [ "${_deps/tcp_wrappers/}" != "${_deps}" ]; then
     make WRAP_CFLAGS=" -DUSE_TCP_WRAPPERS" WRAP_LIBS=" -lwrap"
   else
     make
@@ -32,8 +39,7 @@ build() {
 package() {
   set -u
   cd "${pkgname}-${pkgver}"
-  install -Dpm644 'redir.man' "${pkgdir}/usr/share/man/man1/redir.1"
-  install -Dpm755 'redir' "${pkgdir}/usr/bin/redir"
+  make install DESTDIR="${pkgdir}"
   set +u
 }
 set +u
