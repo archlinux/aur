@@ -1,6 +1,6 @@
 pkgbase = zasm
 	pkgdesc = A 2-pass assembler for the Zilog 8-bit Z80 CPU
-	pkgver = 4.ba28f3c
+	pkgver = 4.2.1
 	pkgrel = 1
 	url = http://k1.spdns.de/Develop/Projects/zasm/
 	arch = any
