@@ -6,7 +6,7 @@ _randomstring=4ebd28dd9664
 _prefix=/opt/Unity
 
 pkgname=unity-editor
-pkgver=${_version}${_build}+${_buildtag}
+pkgver=${_version}${_build}
 pkgrel=1
 epoch=1
 pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences."
