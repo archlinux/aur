@@ -5,8 +5,8 @@
 pkgbase=linux-rc
 pkgrel=1
 _srcname=linux-4.18
-_stable=4.18.6
-_patchver=4.18.7
+_stable=4.18.7
+_patchver=4.18.8
 _rcver=1
 pkgver=${_patchver}rc${_rcver}
 _rcpatch=patch-${_patchver}-rc${_rcver}
@@ -23,24 +23,23 @@ source=(
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  0002-drm-i915-Increase-LSPCON-timeout.patch
   0003-HID-core-fix-grouping-by-application.patch
+  # the 0004 patch is not needed for rc1 builds
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('05db97fd6891217af6d4203bdc442ef2af78d7902b6a8e9bd348682704c22894'
+sha256sums=('f03b425e262a71e5079736706233a4e9afaf77c8462b552b4d6db2d33f5af731'
             'SKIP'
-            '270e6a2e468d334cf635eb1411659bf7a642a4437466dadf95a61de206958553'
+            '14bcc539c706dcd008cf7b72c6b537d3c63587ce56720692ca15195085f134a5'
             'SKIP'
-            '83d768f19193f6795b8159d81c6775b9f62f4994f2a0d8371ac243e7b0890db8'
+            'da713ca0f1f3b2207e84b3c0ddd1fb00530413dd0987ef5165852b9c889b1024'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '88ebd373a61446b0b157d8493807ee7058d288cd480a48fbc156ca5c5422d203'
-            '656da605ca5dad52dcf638d6d2c79d9bdaa48a3e3ea984dc6025da7bac8ded1d'
-            '19a3463bce0e0bf23bdd890deffe35bab8e0ce1eb999e23fe6f756ebc87b5059')
+            'b014187b6b9d3078c45b7c09b1ba1ccb315d69d73ccd4f59dc26fcbc50155409'
+            'dbd2603d608b74b920350a62279060b77fe6756e3913cec7c739a4106048a1ad')
 
 _kernelname=${pkgbase#linux}
 
@@ -51,6 +50,14 @@ prepare() {
   scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "$_kernelname" > localversion.20-pkgname
+
+  msg2 "Applying rc patches..."
+  # add upstream patch
+  # ONLY comment out for initial rc (ie 4.10 --> 4.10.1rc1) -- needed for all others
+  #patch -p1 -i "$srcdir/patch-${_stable}"
+
+  # add rc patch
+  patch -p1 -i "$srcdir/$_rcpatch"
 
   local src
   for src in "${source[@]}"; do
@@ -63,14 +70,6 @@ prepare() {
 
   msg2 "Setting config..."
   cp ../config .config
-
-  msg2 "Applying rc patches..."
-  # add upstream patch
-  # ONLY comment out for initial rc (ie 4.10 --> 4.10.1rc1) -- needed for all others
-  #patch -p1 -i "$srcdir/patch-${_stable}"
-
-  # add rc patch
-  patch -p1 -i "$srcdir/$_rcpatch"
 
   # get kernel version
   make prepare

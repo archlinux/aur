@@ -1,4 +1,4 @@
-From 20acb01da9443e3ca814bb5d17f01b3fea754010 Mon Sep 17 00:00:00 2001
+From 2f2c07d184241b9f133ebe4498575a9f8cda6d1e Mon Sep 17 00:00:00 2001
 From: Benjamin Tissoires <benjamin.tissoires@redhat.com>
 Date: Tue, 4 Sep 2018 15:31:14 +0200
 Subject: [PATCH 3/4] HID: core: fix grouping by application
@@ -77,5 +77,5 @@ index 773bcb1d4044..5482dd6ae9ef 100644
  
  enum hid_type {
 -- 
-2.18.0
+2.19.0
 
