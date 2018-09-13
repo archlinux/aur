@@ -1,7 +1,7 @@
 # Maintainer: Francesco Zardi <frazar0@hotmail.it>
 pkgname=amber-search-git
 pkgver=v0.5.1.r3.68171b9
-pkgrel=1
+pkgrel=2
 pkgdesc="A code search and replace tool written by Rust, inspired by ack, ag, and other grep-like tools."
 arch=('x86_64' 'i686')
 url="https://github.com/dalance/amber"
