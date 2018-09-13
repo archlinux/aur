@@ -1,42 +1,42 @@
-# $Id$
+# Maintainer: Philip Goto <philip.goto@gmail.com>
+# Contributor: TingPing <tingping@tingping.se>
 # Contributor: Douglas Soares de Andrade <douglas@archlinux.org>
-# Maintainer: TingPing <tingping@tingping.se>
 
 pkgname=glade-git
-_gitname=glade
-pkgver=3.20.0.r217.g7f336d4
+pkgver=latest
 pkgrel=1
 pkgdesc="User interface builder for GTK+ and GNOME."
-provides=('glade')
-conflicts=('glade')
-arch=('i686' 'x86_64')
-license=('GPL' 'LGPL')
-depends=('gtk3' 'libxml2' 'desktop-file-utils' 'hicolor-icon-theme')
-makedepends=('intltool' 'gtk-doc' 'gobject-introspection' 'python2-gobject' 'itstool' 'docbook-xsl'
-			 'gnome-common')
-optdepends=('python2: Python widgets support'
-            'devhelp: help browser')
+provides=(glade)
+conflicts=(glade)
+arch=(i686 x86_64)
+license=(GPL LGPL)
+depends=(gtk3 libxml2)
+makedepends=(intltool gtk-doc gobject-introspection python-gobject itstool docbook-xsl git
+             gnome-common webkit2gtk)
+optdepends=('devhelp: development help')
 url="http://glade.gnome.org/"
-source=("git://git.gnome.org/$_gitname")
+source=("git+https://gitlab.gnome.org/GNOME/glade.git")
 sha256sums=(SKIP)
 
 pkgver() {
-  cd "$_gitname"
+  cd glade
+  git describe --long --tags | sed 's/^GLADE_//;s/_/./g;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
-  _minor_ver=`pcregrep -o1 '^m4_define\(glade_minor_version, (\d+)\)$' ./configure.ac`
-  _micro_ver=`pcregrep -o1 '^m4_define\(glade_micro_version, (\d+)\)$' ./configure.ac`
-  _rev=`git describe | sed 's/^GLADE[^-]*-/r/; s/-/./'`
-  echo "3.$_minor_ver.$_micro_ver.$_rev"
+prepare() {
+  cd glade
+  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd "$_gitname"
-  PYTHON=/usr/bin/python2 ./autogen.sh --prefix=/usr --sysconfdir=/etc \
-      --localstatedir=/var --disable-static
+  cd glade
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+    --disable-static --enable-gtk-doc
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
 
 package() {
-  cd "$_gitname"
+  cd glade
   make DESTDIR="$pkgdir" install
 }
