@@ -1,12 +1,13 @@
 pkgbase = xtables-geoip-db
 	pkgdesc = GeoIP Database for xtables.
 	pkgver = 0.1
-	pkgrel = 7
+	pkgrel = 8
 	url = http://geolite.maxmind.com/download/geoip/database/
 	arch = any
 	license = BSD
 	license = GPL
 	makedepends = perl-text-csv-xs
+	makedepends = perl-net-cidr-lite
 	depends = xtables-addons-dkms
 
 pkgname = xtables-geoip-db
