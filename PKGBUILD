@@ -22,7 +22,7 @@ _opt_defaultmode='660' # default: 620
 set -u
 pkgname='nslink'
 pkgver='7.28'
-pkgrel='4'
+pkgrel='5'
 pkgdesc='tty driver and firmware update for Comtrol DeviceMaster, RTS, LT, PRO, 500, UP, RPSH-SI, RPSH, and Serial port Hub console terminal device server'
 # UP is not explicitly supported by NS-Link, only by the firmware updater.
 _pkgdescshort="Comtrol DeviceMaster ${pkgname} TTY driver"
@@ -45,10 +45,12 @@ source=("http://downloads.comtrol.com/dev_mstr/rts/drivers/linux/devicemaster-li
 source+=('http://downloads.comtrol.com/dev_mstr/rts/utility/linux_firmware_uploader/DM-Firmware-Updater-1.06.tar.gz')
 source+=('dmupdate.py.usage.patch')
 source+=('0000-Invalid-MKDEV-macro.patch')
+source+=('0001-kernel-4.18-proc_fops-to-proc_show.patch') # https://patchwork.kernel.org/patch/10349751/
 sha256sums=('900d0681a86d0732cf3e71e56a013456d5a77a68f7faa2afb955e275f73353fb'
             'd21c5eeefdbf08a202a230454f0bf702221686ba3e663eb41852719bb20b75fb'
             '5a4e2713a8d1fe0eebd94fc843839ce5daa647f9fa7d88f62507e660ae111073'
             '6968b10cd66d783f86f587a03584e78af4a2766d223b8d5c24c3ea4fe79f7230'
+            'a97fba21795f14d3253e9f702279299fcba0522c6a998ac91ae83abfafd955c2'
             '5c00939eb945c98336211cd61408b5a8623b01a7059356e663ccc638b0d159fb')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
@@ -80,6 +82,12 @@ _fn_patch_km() {
 
   #diff -pNau5 nslinkd.c{.orig,} > '0000-Invalid-MKDEV-macro.patch'
   patch -Nbup0 -i "${srcdir}/0000-Invalid-MKDEV-macro.patch"
+
+  #diff -pNau5 nslink.c{.orig,} > '0001-kernel-4.18-proc_fops-to-proc_show.patch'
+  patch -Nbup0 -i "${srcdir}/0001-kernel-4.18-proc_fops-to-proc_show.patch"
+
+  # Fix namespace collision in 4.18
+  sed -e 's:\btcp_data_ready\b:nslink_&:g' -i 'nslink.c'
 
   # Version check
   local _ver

@@ -1,0 +1,42 @@
+--- nslink.c.orig	2018-09-14 14:35:19.112262632 -0400
++++ nslink.c	2018-09-14 14:38:10.124709662 -0400
+@@ -5349,10 +5349,11 @@ static int nrp_proc_show(struct seq_file
+                 }
+         }
+         return 0;
+ }
+ 
++#if LINUX_VERSION_CODE < VERSION_CODE(4,18,0)
+ static int nrp_proc_open(struct inode *inode, struct file *file)
+ {
+         return single_open(file, nrp_proc_show, NULL);
+ }
+ 
+@@ -5361,10 +5362,11 @@ static const struct file_operations nrp_
+         .open		= nrp_proc_open,
+         .read		= seq_read,
+         .llseek		= seq_lseek,
+         .release	= single_release,
+ };
++#endif
+ 
+ static struct tty_operations nslink_ops = {
+         .open = nrp_open,
+         .close = nrp_close,
+         .write = nrp_write,
+@@ -5382,11 +5384,15 @@ static struct tty_operations nslink_ops
+         .break_ctl = nrp_break,
+         .send_xchar = nrp_send_xchar,
+         .wait_until_sent = nrp_wait_until_sent,
+         .tiocmget = nrp_tiocmget,
+         .tiocmset = nrp_tiocmset,
++#if LINUX_VERSION_CODE < VERSION_CODE(4,18,0)
+         .proc_fops = &nrp_proc_fops,
++#else
++        .proc_show = &nrp_proc_show,
++#endif
+ };
+ static const struct tty_port_operations nslink_port_ops = {
+         .carrier_raised = nrp_port_carrier_raised,
+         .dtr_rts = nrp_port_dtr_rts,
+         .activate = nrp_port_activate,
