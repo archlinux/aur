@@ -31,9 +31,9 @@ build() {
     --disable-static \
     --enable-gtk-doc \
     --disable-debug \
-    --enable-maintainer-mode \
     --disable-gladeui \
     --with-vendor-info='Arch Linux'
+#    --enable-maintainer-mode
   make
 }
 
