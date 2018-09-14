@@ -1,14 +1,16 @@
 pkgbase = nextcloud-app-markdown
 	pkgdesc = Extends the Nextcloud text editor with a live preview for markdown files
 	pkgver = 2.0.4
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/icewind1991/files_markdown
 	arch = any
 	license = AGPL
+	makedepends = npm
+	makedepends = rsync
 	depends = nextcloud
 	options = !strip
-	source = files_markdown-2.0.4.tar.gz::https://github.com/icewind1991/files_markdown/releases/download/v2.0.4/files_markdown.tar.gz
-	sha256sums = 78958cd743e101251dea70a262646250ea78318c2546f088f8ea89b586507565
+	source = nextcloud-app-markdown-2.0.4.tar.gz::https://github.com/icewind1991/files_markdown/archive/v2.0.4.tar.gz
+	sha256sums = ea08aed10df31c75755262b55e1606ad210ba12f4e6d6375316ca268ee416ac0
 
 pkgname = nextcloud-app-markdown
 
