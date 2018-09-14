@@ -9,7 +9,7 @@ url='https://github.com/AdaCore/gtkada'
 arch=('i686' 'x86_64')
 license=('GPL')
 
-depends=('gcc-ada>=8.2.1' 'gcc-ada<9.0.0' 'gtk3' 'freetype2')
+depends=('gcc-ada>=8.2.1' 'gcc-ada<9.0.0' 'gtk3')
 makedepends=('gprbuild>=2018')
 
 source=('http://mirrors.cdn.adacore.com/art/5b065d07c7a447497530ba7e')
