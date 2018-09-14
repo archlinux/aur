@@ -1,4 +1,4 @@
-# Maintainer: JoshuaRLi <joshua.r.li.98 at gmail com>
+# Maintainer: Joshua Li <josh@jrl.ninja>
 # Please submit comments/issues here: https://github.com/JoshuaRLi/PKGBUILDs
 
 pkgname=yn
