@@ -1,29 +1,29 @@
 # Maintainer: Michael Hansen <zrax0111 gmail com>
 # Contributor: Francisco Magalhães <franmagneto gmail com>
+# Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
 
 pkgname=code-git
 pkgdesc='Microsoft Code for Linux, Open Source version from git (vscode)'
-pkgver=1.16.0.r14403.gc7ab363b37
+pkgver=1.16.0.r16653.g6bc165d47c
 pkgrel=1
 arch=('i686' 'x86_64' 'armv7h')
 url='https://github.com/Microsoft/vscode'
 license=('MIT')
-makedepends=('npm' 'nodejs-lts-carbon' 'gulp' 'python2' 'git' 'yarn')
-depends=('gtk3' 'gconf' 'libnotify' 'libxss' 'libxtst' 'libxkbfile' 'nss'
-         'alsa-lib')
+makedepends=('npm' 'gulp' 'python2' 'git' 'yarn')
+depends=('electron' 'libsecret' 'libxkbfile' 'alsa-lib')
 conflicts=('visual-studio-code-git')
 provides=('visual-studio-code-git')
 
 source=("git+https://github.com/Microsoft/vscode"
-        "${pkgname}.desktop"
-        "startup_script.patch"
-        "product_json.patch"
-        "code-liveshare.patch")
+        "${pkgname}.js"
+        "${pkgname}.sh"
+        "code-liveshare.patch"
+        "product_json.patch")
 sha256sums=('SKIP'
-            'dd212d343a02466f04bd9def162428ac997b53c4c839cea220ab61382d01f538'
-            '7447807230c09b80529e5cde4a1abfbb687937b16790b77a227ae39ba4c603ce'
-            '9b0629c7fbec7b7769b285694018cbbd8204a27cfaa576d3e7884377441e5743'
-            '90b8915d8195546088e845f3205fb965e941561d309c8b462bb0b22a159e041c')
+            '64aca444a714dd67da6d5b71ab8d0255e767cb265918d556b3bf8194fca0a7ef'
+            'df452e6f64f62081aa4a8da69a071b2c122095eea48dca409a7a851243b9ff36'
+            '90bd7da0af12f1ecd775ebf300350ed67f9ae08e7ea956269629a275ce05835c'
+            'eb639e59c4075220d42390a165e2eef55c3eaa180050989c346ebcec64a0aca4')
 
 case "$CARCH" in
     i686)
@@ -59,6 +59,19 @@ prepare() {
 
     # See https://github.com/MicrosoftDocs/live-share/issues/262 for details
     patch -p1 -i "${srcdir}/code-liveshare.patch"
+
+    # Build native modules for system electron
+    local _target=$(</usr/lib/electron/version)
+    sed -i "s/^target .*/target \"${_target//v/}\"/" .yarnrc
+
+    # Patch appdata and desktop file
+    sed -i 's|/usr/share/@@NAME@@/@@NAME@@|@@NAME@@|g
+            s|@@NAME_SHORT@@|Code - Git|g
+            s|@@NAME_LONG@@|Code - Git|g
+            s|@@NAME@@|code-git|g
+            s|@@ICON@@|code-git|g
+            s|@@LICENSE@@|MIT|g
+            s|inode/directory;||' resources/linux/code.{appdata.xml,desktop}
 }
 
 build() {
@@ -76,38 +89,33 @@ build() {
         echo
         echo "*** NOTE: If the build failed due to running out of file handles (EMFILE),"
         echo "*** you will need to raise your max open file limit."
-        echo "*** This can be done by:"
-        echo "*** 1) Set a higher 'nofile' limit (at least 10000) in either"
-        echo "***    /etc/systemd/system.conf.d/limits.conf (for systemd systems)"
-        echo "***    /etc/security/limits.conf (for non-systemd systems)"
-        echo "*** 2) Reboot (or log out and back in)"
-        echo "*** 3) Run 'ulimit -n' and ensure the value set above is shown before"
-        echo "***    re-attempting to build this package."
-        echo
+        echo "*** You can check this for more information on how to increase this limit:"
+        echo "***    https://ro-che.info/articles/2017-03-26-increase-open-files-limit"
         exit 1
     fi
-
-    # Patch the startup script to know where the app is installed, rather
-    # than guessing...
-    ( cd "${srcdir}/VSCode-linux-${_vscode_arch}" && \
-            patch -p1 -i "${srcdir}/startup_script.patch" )
 }
 
 package() {
-    install -m 0755 -d "${pkgdir}/usr/share/code-git"
-    cp -r "${srcdir}/VSCode-linux-${_vscode_arch}"/* "${pkgdir}/usr/share/code-git"
+    install -dm 755 "${pkgdir}/usr/lib/${pkgname}"
+    cp -r --no-preserve=ownership --preserve=mode \
+        VSCode-linux-${_vscode_arch}/resources/app/* \
+        "${pkgdir}/usr/lib/${pkgname}"
 
     # Put the startup script in /usr/bin
-    mv "${pkgdir}/usr/share/code-git/bin" "${pkgdir}/usr"
+    install -Dm 755 ${pkgname}.sh "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm 755 ${pkgname}.js "${pkgdir}/usr/lib/${pkgname}/${pkgname}.js"
 
-    # Avoid conflicting with the stable OSS build
-    mv "${pkgdir}/usr/bin/code-oss" "${pkgdir}/usr/bin/code-git"
-
-    # Add .desktop file
-    install -D -m644 "${srcdir}/${pkgname}.desktop" \
+    # Install appdata and desktop file
+    install -Dm 644 vscode/resources/linux/code.appdata.xml \
+            "${pkgdir}/usr/share/metainfo/${pkgname}.appdata.xml"
+    install -Dm 644 vscode/resources/linux/code.desktop \
             "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    install -Dm 644 VSCode-linux-${_vscode_arch}/resources/app/resources/linux/code.png \
+            "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 
-    # Install license file
-    install -D -m644 "${srcdir}/VSCode-linux-${_vscode_arch}/resources/app/LICENSE.txt" \
+    # Install license files
+    install -Dm 644 "${srcdir}/VSCode-linux-${_vscode_arch}/resources/app/LICENSE.txt" \
             "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm 644 "${srcdir}/VSCode-linux-${_vscode_arch}/resources/app/ThirdPartyNotices.txt" \
+            "${pkgdir}/usr/share/licenses/${pkgname}/ThirdPartyNotices.txt"
 }
