@@ -2,8 +2,8 @@
 
 pkgname=ttf-marketingscript
 pkgver=1
-pkgrel=1
-pkgdesc="Monospaced font family for user interface and coding environments"
+pkgrel=2
+pkgdesc="Marketing Script Font Family"
 url="https://www.1001fonts.com/marketing-script-font.html"
 arch=(any)
 license=(custom)
