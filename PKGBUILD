@@ -3,13 +3,13 @@
 # Contributor: John K. Luebs <https://github.com/jkl1337>
 
 pkgname=zasm
-pkgver=4.2.2
+pkgver=4.2.3
 pkgrel=1
 pkgdesc="A 2-pass assembler for the Zilog 8-bit Z80 CPU"
 arch=('any')
 url="http://k1.spdns.de/Develop/Projects/zasm/"
 license=('BSD')
-source=("git+https://bitbucket.org/megatokio/zasm.git#commit=0585b102078f235bd11fc0385220a678d9716491"
+source=("git+https://bitbucket.org/megatokio/zasm.git#commit=c6b043ea4018d2d76e35fe00ab345e526a574270"
         "git+https://bitbucket.org/megatokio/libraries.git#commit=a2d8746b559ed7c9e412cb1b5afa684e08e28c8d")
 sha256sums=('SKIP' 'SKIP')
 
