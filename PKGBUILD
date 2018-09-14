@@ -5,14 +5,13 @@
 pkgname=qt5-pmp-location
 _qtver=5.9.5
 pkgver=${_qtver/-/}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='http://qt-project.org/'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
 pkgdesc='Provides access to position, satellite and area monitoring classes (for plex-media-player)'
 depends=('qt5-pmp-declarative')
-makedepends=('gypsy' 'gconf')
-optdepends=('gypsy: Gypsy geolocation plugin')
+makedepends=('gconf')
 groups=('qt5-pmp')
 _pkgfqn="${pkgname/5-pmp-/}-opensource-src-${_qtver}"
 source=("http://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
