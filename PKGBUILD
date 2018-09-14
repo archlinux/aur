@@ -2,11 +2,11 @@
 
 _pkgbase='httpam'
 pkgname="python-${_pkgbase}-git"
-pkgver=r9.6c45106
+pkgver=r15.88f38de
 pkgrel=1
 pkgdesc='Python 3 library for web service authentication using PAM'
 arch=('any')
-url="https://gitlab.com/coNQP/${_pkgbase}"
+url="https://github.com/conqp/${_pkgbase}"
 license=('GPLv3')
 depends=('python' 'python-pam')
 makedepends=('git' 'python')
