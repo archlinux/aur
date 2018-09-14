@@ -3,6 +3,7 @@ pkgbase = phonon-qt4
 	pkgver = 4.10.1
 	pkgrel = 3
 	url = http://phonon.kde.org/
+	install = phonon-qt4.install
 	arch = x86_64
 	license = LGPL
 	makedepends = extra-cmake-modules
@@ -18,5 +19,6 @@ pkgbase = phonon-qt4
 pkgname = phonon-qt4
 	depends = qt4
 	depends = libpulse
-	depends = phonon-qt4-backend
+	optdepends = pulseaudio: PulseAudio support
+	optdepends = phonon-qt4-backend: !!! REQUIRED FOR PHONO TO WORK AT ALL !!!
 
