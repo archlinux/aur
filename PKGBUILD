@@ -1,6 +1,6 @@
 # Maintainer: krypt.co <aur@>
 pkgname=kr
-pkgver=2.4.11
+pkgver=2.4.12
 pkgrel=1
 pkgdesc="SSH using a key stored in Krypton"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ md5sums=('SKIP')
 validpgpkeys=()
 
 pkgver() {
-  echo "2.4.11"
+  echo "2.4.12"
 }
 
 prepare() {
