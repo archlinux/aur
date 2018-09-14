@@ -1,4 +1,18 @@
 
+<a name="2.1.1"></a>
+## [2.1.1](https://gitlab.com/langurmonkey/gaiasky/compare/2.1.0...2.1.1) (2018-09-14)
+
+### Docs
+
+* update changelog
+* mended submodule init and update
+
+### Fix
+
+* crash if no internet connection present
+* fix description of very large catalog
+
+
 <a name="2.1.0"></a>
 ## [2.1.0](https://gitlab.com/langurmonkey/gaiasky/compare/2.0.3...2.1.0) (2018-09-11)
 
