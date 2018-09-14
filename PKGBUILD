@@ -1,28 +1,28 @@
 # Maintainer: Beej <beej@beej.us>
-# Contributor: DOOMer <doomer3d@gmail.com>
+
 pkgname=screengrab
-pkgver=1.2.1
-pkgrel=3
+pkgver=1.99
+pkgrel=1
 pkgdesc="Crossplatform tool for grabbing screenshots of your desktop."
-arch=('i686' 'x86_64')
-url="http://screengrab.doomer.org/"
-license=('GPL2')
-depends=('qt4>=4.6.0')
-makedepends=('cmake>=2.6')
-source=(screengrab-$pkgver.tar.gz::https://github.com/DOOMer/screengrab/archive/${pkgver}.tar.gz)
-sha256sums=('48cdaf66e6eff3ef0db89cb09b7c5757f07b99dd1cd05321e33b04a14c670d3b')
+arch=("i686" "x86_64")
+url="https://github.com/lxqt/screengrab"
+license=("GPL2")
+depends=("qt5-base" "qt5-x11extras" "kwindowsystem" "libqtxdg-git" "libx11" "libxcb" "hicolor-icon-theme")
+makedepends=("cmake" "qt5-tools")
+source=("screengrab-$pkgver.tar.gz::https://github.com/LXQt/screengrab/archive/$pkgver.tar.gz")
+sha256sums=("fa3b047a1063b7738c5a0c8d12d6aaa338590a5e27857d88214d77260f98b799")
+
 
 build() {
-  echo "build"
-  cd $srcdir/screengrab-$pkgver
-  mkdir build
-  cd build
-  cmake "$srcdir/$_gitname" -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib ..
-  make
-} 
+	mkdir -p build
+	cd build
+	cmake "$srcdir/$_pkgname" \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib
+	make
+}
 
 package() {
-  cd $srcdir/screengrab-$pkgver
-  cd build
-  make DESTDIR="${pkgdir}" install
+	cd build
+	make DESTDIR="$pkgdir" install
 }
