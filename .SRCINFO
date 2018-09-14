@@ -1,7 +1,7 @@
 pkgbase = electrumx
 	pkgdesc = Server implementation for the Electrum wallet
 	pkgver = 1.8.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kyuupichan/electrumx
 	install = electrumx.install
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = electrumx
 	source = electrumx.service
 	sha256sums = 4685b867472abe4123889439fdee0b324073d6275efa24236e5c0e025143bbb6
 	sha256sums = f13119ac93e6e05203f9d5dae5e737ec718ca5c829b0b6b73b0761587ae651b7
-	sha256sums = b4e1a9d4341edf1f2022f8c8591d28ef6bd6db38c6f332445ac294b5fc6dae93
+	sha256sums = ece0696dc82e0159d9a266834e6e9e1e518caa68e6f145d262b291e1fc09d67e
 
 pkgname = electrumx
 
