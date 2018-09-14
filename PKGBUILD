@@ -3,10 +3,10 @@
 
 pkgname=rebar3-zsh
 pkgver=3.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="ZSH completion for rebar3."
 arch=('any')
-url="https://github.com/rebar/rebar3"
+url="https://github.com/erlang/rebar3"
 license=('APACHE')
 depends=('zsh' 'rebar3'=$pkgver)
 source=("https://raw.githubusercontent.com/erlang/rebar3/${pkgver}/priv/shell-completion/zsh/_rebar3")
