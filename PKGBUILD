@@ -1,17 +1,17 @@
-# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
+# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 # Contributor: Christian Babeux <christian.babeux@0x80.ca>
 
 pkgname=gambit-c
-pkgver=4.8.9
+pkgver=4.9.0
 pkgrel=1
-pkgdesc='Scheme R5RS interpreter and compiler (via C)'
+pkgdesc='Scheme R5RS interpreter and compiler'
 arch=('x86_64')
 url='http://gambitscheme.org/'
-license=('LGPL2.1' 'Apache')
-depends=('bash')
+license=('LGPL' 'Apache')
 options=('staticlibs')
+makedepends=('git')
 source=("https://www.iro.umontreal.ca/~${pkgname%-c}/download/${pkgname%-c}/v${pkgver%.*}/source/${pkgname/-c/-v}${pkgver//./_}-devel.tgz")
-sha256sums=('b7f86c794711792ca556ce41f8bc7043dffc395c01bb6d8d119bc2f454f89fbf')
+sha256sums=('4e3edc88aaf035c521c7e764f009d27573c55e9b2e271a5b5ef91322b4bcce73')
 
 build() {
   cd "${pkgname/-c/-v}${pkgver//./_}-devel"
