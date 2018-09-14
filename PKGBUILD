@@ -4,8 +4,8 @@
 pkgname=dynomite
 pkgver=0.5.9
 upstream_pkgrel=5_MuslCompatiblity
-pkgrel=1
-pkgdesc="Dynomite is a thin, distributed dynamo layer for different storage engines and protocols"
+pkgrel=2
+pkgdesc="Dynomite is a thin, distributed dynamo layer for different storage engines and protocols. Stable version."
 arch=('i686' 'x86_64')
 url="https://github.com/Netflix/dynomite"
 license=('Apache-2.0')
