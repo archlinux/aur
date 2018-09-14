@@ -2,7 +2,7 @@
 
 pkgname=libosmocore
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="core libs for osmocom"
 arch=('x86_64' 'i686')
 url="http://bb.osmocom.org/trac/wiki/libosmocore"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=()
 provides=()
 depends=('pcsclite')
-makedepends=('autoconf' 'automake' 'make' 'gcc' 'libtool' 'git' 'pkg-config')
+makedepends=('autoconf' 'automake' 'make' 'gcc' 'libtool' 'git' 'pkg-config' 'talloc')
 
 source=("git://git.osmocom.org/libosmocore.git#tag=$pkgver")
 md5sums=('SKIP')
