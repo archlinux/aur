@@ -14,9 +14,11 @@ makedepends=('gprbuild-bootstrap>=2018')
 conflicts=("$pkgname-git")
 
 source=('http://mirrors.cdn.adacore.com/art/5b0819dec7a447df26c27a40'
-        'expose-cargs-and-largs-makefile.patch')
+        'expose-cargs-and-largs-makefile.patch'
+        'COPYING.RUNTIME')
 sha1sums=('6b01f6c7ac9d0766320738bef1d32894b34195e8'
-          '9b65cc99453fd15bdb7c49a32e6f76922ec904bd')
+          '9b65cc99453fd15bdb7c49a32e6f76922ec904bd'
+          '44a4a599d98b4ec6d63051103de2fd177f43f67a')
 
 prepare() {
     cd "$srcdir/xmlada-gpl-2018-src"
@@ -37,4 +39,9 @@ package() {
     # Make one install at a time to avoid GPRinstall reading/writing to
     # the same installed project files at the same time.
     make -j1 prefix="$pkgdir/usr" install
+
+    # Install the custom license.
+    install -D -m644 \
+        "$srcdir/COPYING.RUNTIME" \
+        "$pkgdir/usr/share/licenses/${pkgname}/COPYING.RUNTIME"
 }
