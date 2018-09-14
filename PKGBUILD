@@ -4,7 +4,7 @@ pkgname='openscad-list-compr-demos-git'
 _gitname='list-comprehension-demos'
 pkgver=r22.dec3fc3
 pkgrel=1
-pkgdesc='OpenSCAD utility functions'
+pkgdesc='Provides advanced OpenSCAD functions such as sweep and skin'
 url='https://github.com/openscad/list-comprehension-demos'
 license=(
  'MIT'
