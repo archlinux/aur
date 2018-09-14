@@ -1,15 +1,15 @@
 pkgbase = elementary-xfce-icons
-	pkgdesc = Elementary icon theme with improved XFCE support
-	pkgver = 0.12
+	pkgdesc = Elementary icon theme with improved Xfce support
+	pkgver = 0.13
 	pkgrel = 1
 	url = https://github.com/shimmerproject/elementary-xfce
 	arch = any
 	license = GPL2
+	makedepends = gtk3
 	depends = adwaita-icon-theme
 	conflicts = elementary-xfce-icons-git
-	options = !strip
-	source = https://github.com/shimmerproject/elementary-xfce/archive/elementary-xfce-0.12.tar.gz
-	sha256sums = 928f8e0e76357b94295e0a628b49a19a52bc00641bb06f7504cc68b8bc4d7452
+	source = https://github.com/shimmerproject/elementary-xfce/archive/v0.13.tar.gz
+	sha256sums = b660e5beb56b130df64ac5866bcfe569e43a169c85d7918e8120bbd23b8c4228
 
 pkgname = elementary-xfce-icons
 
