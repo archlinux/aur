@@ -24,7 +24,7 @@ optdepends=('openexr: for using the openexr plugin'
             'libraw: raw plugin'
             'suitesparse: matting-levin plugin'
             'lua: lua plugin')
-provides=('gegl')
+provides=("gegl=$pkgver")
 conflicts=('gegl')
 options=(!libtool)
 source=('git+https://gitlab.gnome.org/GNOME/gegl.git')
