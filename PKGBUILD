@@ -1,18 +1,23 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 _pkgname=remove_empty_subdirs
-_gitcommit=63b467784e2a43c7c55432369702baa3e66cd1b2
 
 pkgname=remove_empty_subdirs-git
-pkgver=0.1.0+1+63b4677
+pkgver=r5.6324b2e
 pkgrel=1
 pkgdesc="Recursively remove empty sub-directories"
 url="https://github.com/zhangkaizhao/remove_empty_subdirs"
 makedepends=('cargo')
 arch=('x86_64')
 license=('MIT' 'Apache')
-source=("git+${url}.git#commit=${_gitcommit}")
+conflicts=('remove_empty_subdirs')
+source=("git+${url}.git")
 sha256sums=('SKIP')
+
+pkgver() {
+  cd "${_pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
   cd "${srcdir}/${_pkgname}"
