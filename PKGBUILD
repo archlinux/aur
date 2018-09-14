@@ -1,7 +1,7 @@
 # Maintainer: Formed <formed@tuta.io>
 pkgname=viper4linux
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Implementation of the libviper library for modern Linux desktops."
 arch=('x86_64')
 url="https://github.com/L3vi47h4N/Viper4Linux"
@@ -41,7 +41,7 @@ package() {
 
     chmod +x $pkgdir/usr/lib/libviperfx.so
 
-    cd $srcdir/Viper4Linux
+    cd $srcdir/$pkgname
     cp -r viper4linux $pkgdir/etc/
     cp viper $pkgdir/usr/local/bin
 }
