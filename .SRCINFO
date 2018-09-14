@@ -1,0 +1,18 @@
+pkgbase = emacs-evil-magit-git
+	pkgdesc = Black magic or evil keys for magit
+	pkgver = r125.9e2275b
+	pkgrel = 1
+	url = https://github.com/emacs-evil/evil-magit
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	depends = emacs-evil
+	depends = emacs-magit
+	provides = emacs-evil-magit
+	conflicts = emacs-evil-magit
+	source = git+https://github.com/emacs-evil/evil-magit.git
+	sha256sums = SKIP
+
+pkgname = emacs-evil-magit-git
+
