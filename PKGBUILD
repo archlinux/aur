@@ -1,16 +1,16 @@
 # Maintainer: Geyslan G. Bem <geyslan@gmail.com>
 
 pkgname=pje-office
-pkgver=1.0.11
+pkgver=1.0.15
 pkgrel=1
 pkgdesc="PJeOffice is a software made available by CNJ for electronic signing PJe system's documents"
 arch=('any')
 url='http://www.cnj.jus.br/wiki/index.php/PJeOffice'
 license=('custom')
-depends=('java-runtime-common' 'bash')
+depends=('java-runtime' 'bash')
 source=(ftp://ftp.cnj.jus.br/pje/programs/${pkgname}-${pkgver}/${pkgname}_${pkgver}_amd64.deb)
 install=${pkgname}.install
-md5sums=('30b6df4d44956e069ebcb502779faca9')
+md5sums=('760226a3fc66282153045c71cc31f042')
 
 _fix() {
 	local _launcher
@@ -23,7 +23,7 @@ _fix() {
 	echo "#!/bin/bash" > ${_launcher}
 	echo -e "# PJeOffice CLEAN script\n" >> ${_launcher}
 	echo -e "echo \"Iniciando o PJeOffice!\"\n" >> ${_launcher}
-	echo -e "$(which java) -jar /usr/share/${pkgname}/pjeOffice.jar" >> ${_launcher}
+	echo -e "java -jar /usr/share/${pkgname}/pjeOffice.jar" >> ${_launcher}
 
 	# load icon from package path
 	sed -i "s/^Icon=.*/Icon=\/usr\/share\/${pkgname}\/shortcuts\/icons\/PJeOffice.png/" usr/share/${pkgname}/shortcuts/${pkgname}.desktop
