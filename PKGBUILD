@@ -25,6 +25,11 @@ sha1sums=(
     'SKIP'
 )
 
+conflicts=(
+    'gst-plugin-viperfx-git'
+    'libviperfx-nonfree-bin'
+)
+
 build() {
     cd "$srcdir/gst-plugin-viperfx"
     ./autogen.sh
