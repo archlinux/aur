@@ -3,18 +3,18 @@
 
 _pkgname=rebar3
 pkgname=${_pkgname}-git
-pkgver=3769.4bac0ed2
+pkgver=4137.221cbf5c
 pkgrel=1
 pkgdesc="A sophisticated build-tool for Erlang projects that follows OTP principles."
 arch=('any')
-url="https://github.com/rebar/rebar3"
+url="https://github.com/erlang/rebar3"
 license=('APACHE')
 depends=('erlang-nox')
 optdepends=('rebar3-zsh: ZSH completion')
 conflicts=('rebar3')
 provides=('rebar3')
 makedepends=('git')
-source=("$_pkgname::git://github.com/rebar/rebar3.git")
+source=("$_pkgname::git://github.com/erlang/rebar3.git")
 sha256sums=('SKIP')
 
 pkgver() {
