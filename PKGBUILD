@@ -6,7 +6,7 @@
 
 pkgname=gegl-git
 _pkgname=${pkgname%-git}
-pkgver=0.4.9.d77fd17e0
+pkgver=0.4.9.r8934.cf7eacb75
 pkgrel=1
 pkgdesc="Graph based image processing framework"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ optdepends=('openexr: for using the openexr plugin'
             'libraw: raw plugin'
             'suitesparse: matting-levin plugin'
             'lua: lua plugin')
-provides=("gegl=$pkgver")
+provides=('gegl')
 conflicts=('gegl')
 options=(!libtool)
 source=('git+https://gitlab.gnome.org/GNOME/gegl.git')
@@ -33,7 +33,10 @@ sha512sums=('SKIP')
 pkgver() {
   cd $_pkgname
 
-  echo $(cat configure.ac | grep '^m4_define(\[gegl_.*_version\], \[[0-9]*\])' | tr -d '\n' | sed -e 's|^m4_define(\[gegl_major_version\], \[||' -e 's|\])m4_define(\[gegl_minor_version\], \[|.|' -e 's|\])m4_define(\[gegl_micro_version\], \[|.|' -e 's|\])|\n|').$(git log --pretty=format:'%h' -n 1)
+  printf "%s.r%s.%s" \
+  	$(cat configure.ac | grep '^m4_define(\[gegl_.*_version\], \[[0-9]*\])' | tr -d '\n' | sed -e 's|^m4_define(\[gegl_major_version\], \[||' -e 's|\])m4_define(\[gegl_minor_version\], \[|.|' -e 's|\])m4_define(\[gegl_micro_version\], \[|.|' -e 's|\])|\n|') \
+  	$(git rev-list --count HEAD) \
+  	$(git rev-parse --short HEAD)
 }
 
 prepare() {
