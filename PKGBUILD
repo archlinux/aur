@@ -1,7 +1,7 @@
 # Maintainer: David Parrish <daveparrish@tutanota.com>
 
 pkgname=zap-desktop-bin
-pkgver=0.2.0_beta
+pkgver=0.2.1_beta
 # Actual version used by project
 _ver=${pkgver//_/-}
 pkgrel=1
@@ -10,8 +10,8 @@ arch=('x86_64')
 url="https://github.com/LN-Zap/zap-desktop"
 license=('MIT')
 depends=('gtk3' 'nss' 'gconf' 'libxss')
-source_x86_64=("https://github.com/LN-Zap/zap-desktop/releases/download/v${_ver}/zap-desktop_${_ver}_amd64.deb")
-sha256sums_x86_64=('be0fe27bf4834bcb69239a796dec5e21a085511231f434ca75839dd77eea4abf')
+source_x86_64=("https://github.com/LN-Zap/zap-desktop/releases/download/v${_ver}/ZapDesktop-linux-amd64-v${_ver}.deb")
+sha256sums_x86_64=('a834f5066dc8ce12e1a2d9dacb3e167f39c92e708ef116a0e2eff66b2d49fa7d')
 conflicts=("zap-desktop-git")
 provides=("zap-desktop")
 
@@ -26,7 +26,7 @@ package() {
 
   # /opt install
   mkdir "$pkgdir/opt/$pkgname"
-  cp -r "$srcdir/opt/Zap/". "$pkgdir/opt/$pkgname"
+  cp -r "$srcdir/opt/ZapDesktop/". "$pkgdir/opt/$pkgname"
 
   # /usr install
 
