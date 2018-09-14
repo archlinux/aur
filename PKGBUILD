@@ -3,7 +3,7 @@
 # Based on firefox-kde Manjaro's PKGBUILD
 
 pkgname=waterfox-kde
-pkgver=56.2.2
+pkgver=56.2.3
 pkgrel=1
 pkgdesc="Free, open and private browser with openSUSE's patches for better integration with KDE"
 arch=('x86_64')
@@ -25,10 +25,9 @@ options=('!emptydirs' '!makeflags' 'zipman')
 _patchrev=7339b115a221
 _patchurl=http://www.rosenauer.org/hg/mozilla/raw-file/$_patchrev
 _commit=f874dbfaac9344f25e2f363dd3064fbac25d1bbf
-source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
+source=("git+https://github.com/MrAlex94/Waterfox.git#tag=$pkgver"
         "waterfox.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/BUILD/waterfox-kde/debian/waterfox.desktop"
         waterfox-install-dir.patch
-        wifi-disentangle_fix-interface.patch
         waterfoxproject-kde-56.2.0.patch
         "firefox-kde-$_patchrev.patch::$_patchurl/firefox-kde.patch"
         fix_waterfox_browser-kde_xul.patch
@@ -44,7 +43,6 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
 sha256sums=('SKIP'
             '2a17f68e86c2c871a1ff32f0a012c7ad20ac542b935044e5ffd9716874641f4d'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
-            '23a0abc2bb28d03cf4e85be2a2ca0ce2c78677e07fd0428c5aa52650784482d7'
             '911e07ecb0095337c580c94f16b5414c243b26b1080cf0bfd2fac7f76c9a6a43'
             'f672e60e22869381e9c4cdd90353a053a0171778eca40d4664bc733822fd535f'
             '33a8e89e504067914665b7858061f34dc81057961f365024c891aa386afc28ce'
@@ -72,9 +70,6 @@ prepare() {
   cd Waterfox
   patch -Np1 -i ../waterfox-install-dir.patch
 
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1314968
-  patch -Np1 -i ../wifi-disentangle_fix-interface.patch
-
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1382942
   patch -Np1 -i ../no-plt.diff
 
@@ -85,7 +80,6 @@ export LDFLAGS="-Wl,-z,norelro,-O3,--sort-common,--as-needed,--relax,-z,combrelo
 
 ac_add_options --enable-optimize="-O3 -msse2 -mfpmath=sse -march=native -mtune=native -fcolor-diagnostics -w"
 ac_add_options --target=x86_64-pc-linux-gnu
-ac_add_options --with-ccache=ccache
 
 ac_add_options --enable-alsa
 ac_add_options --enable-pulseaudio
@@ -161,6 +155,9 @@ ac_add_options --enable-rust-simd # on x86 requires SSE2
 ac_add_options --enable-application=browser
 ac_add_options --enable-eme=widevine
 
+export MOZ_GECKO_PROFILER=
+export MOZ_ENABLE_PROFILER_SPS=
+export MOZ_PROFILING=
 END
 
   msg "Patching for KDE"
