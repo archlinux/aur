@@ -26,13 +26,15 @@ docutils>=0.10
 behave==1.2.5
 -e git://github.com/boto/jmespath.git@develop#egg=jmespath
 jsonschema==2.5.1
+urllib3>=1.20,<1.24
 
 #setup.py
 from setuptools import setup, find_packages
 
 
 requires = ['jmespath>=0.7.1,<1.0.0',
-            'docutils>=0.10']
+            'docutils>=0.10',
+            'urllib3>=1.20,<1.24']
 
 
 if sys.version_info[:2] == (2, 6):
@@ -44,7 +46,7 @@ set -u
 _pyver="python"
 _pybase='botocore'
 pkgname="${_pyver}-${_pybase}-git"
-pkgver=1.10.83.r4874.gb0a53e6d
+pkgver=1.12.4.r5035.gc5ea6f72
 pkgrel=1
 pkgdesc='A low-level interface to a number of Amazon Web Services. This is the foundation for the AWS CLI as well as boto3'
 arch=('any')
@@ -56,21 +58,22 @@ _pydepends=( # See setup.py, README.rst, and requirements.txt for version depend
   "${_pyver}-jmespath"{'>=0.7.1','<1.0.0'} # AUR == is possible for repositories. Makes upgrades impossible in AUR.
   "${_pyver}-jsonschema>=2.5.1"            # COM
   "${_pyver}-tox"{'>=2.5.0','<3.0.0'}      # COM == is possible because this is from a repository. Unfortunatley Arch isn"t the primary dev environment for botocore/aws so our packages are likely to be newer.
-  "${_pyver}-dateutil"{">=2.1","<3.0.0"}   # COM
+  "${_pyver}-dateutil"{'>=2.1','<3.0.0'}   # COM
   "${_pyver}-nose>=1.3.7"     # COM ==
   "${_pyver}-mock>=1.3.0"     # COM ==
   "${_pyver}-docutils>=0.10"  # COM
   "${_pyver}-six>=1.1.0"      # COM This is in the sources but I'm not sure where the version comes from.
   # requirements-docs.txt
   "${_pyver}-sphinx>=1.1.3" #"${_pyver}-sphinx"{>=1.1.3,<1.3}     # COM Arch is already newer. Documentation might not work.
-  "${_pyver}-guzzle-sphinx-theme"{">=0.7.10","<0.8"}
+  "${_pyver}-guzzle-sphinx-theme"{'>=0.7.10','<0.8'}
   "${_pyver}-behave>=1.2.5"
+  "${_pyver}-urllib3"{'>=1.20','<1.24'}
 )
 depends=("${_pyver}" "${_pydepends[@]}")
 makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 options=('!strip')
 source=("${_pybase}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('0249dc7c21759b4686b4ffdfb8302d74a9f2c8ba07c65fd343d2a385b8c7e82a')
+sha256sums=('63f72c5f84529ce1329f3aa93c2ba703f21204122ba1f225213c34b16fd0e1f3')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   _srcdir="${_pybase}"
