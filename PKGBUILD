@@ -1,16 +1,18 @@
-# Maintainer:  John Jenkins <twodopeshaggy@gmail.com>
+# Maintainer: Rellieberman <name AT gmail DOT com>
+# Contributer:  John Jenkins <twodopeshaggy@gmail.com>
 # Contributer:  James Hendrie <hendrie dot james at gmail dot com>
 pkgname=shalarm
-pkgver=1.5
+pkgver=1.65
 pkgrel=1
-pkgdesc="A bash script that acts like an alarm clock."
+pkgdesc="A bash script alarm clock."
 arch=('any')
 url="http://www.someplacedumb.net"
 license=('custom:"FreeBSD"')
 depends=(bash coreutils)
 optdepends=('mplayer')
-source=(http://www.someplacedumb.net/content/progs/shalarm/$pkgname-$pkgver.tar.gz)
-md5sums=('d4e2a8967473240b2ff706182f04c9b4')
+_zipname=master
+source=("$_zipname.zip::https://github.com/jahendrie/shalarm/archive/$_zipname.zip")
+md5sums=('d5ae834b8955396debb8f8cbcc488461')
 
 package()
 {
