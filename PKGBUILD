@@ -1,7 +1,7 @@
 # Maintainer: Raphael Scholer <rascholer@gmail.com>
 _pkgname='elementary-xfce'
 pkgname="${_pkgname}-icons-git"
-pkgver=0.12.r23.gbdebeb85
+pkgver=0.13.r0.g39fd5429
 pkgrel=1
 pkgdesc='Elementary icon-theme with improved Xfce support'
 arch=('any')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
-  git describe --long --tags | sed "s/^${_pkgname}.//;s/\([^-]*-g\)/r\1/;s/-/./g"
+  git describe --long --tags | sed "s/^${_pkgname}.//;s/^v//;s/\([^-]*-g\)/r\1/;s/-/./g"
 }
 
 build() {
