@@ -15,7 +15,7 @@ depends=("clang" "libadalang>=2018"
          "gnatcoll-xref>=2018" "gnatcoll-python>=2018" "gnatcoll-db2ada>=2018"
          "gnatcoll-gnatinspect>=2018" "gtkada>=2018"
          "gnome-icon-theme" "gnome-icon-theme-extras" "gnome-icon-theme-symbolic" 
-         "python2-gobject" "python2-jedi" "python-pep8")
+         "python2-gobject" "python2-jedi")
 makedepends=("gprbuild>=2018")
 
 source=(http://mirrors.cdn.adacore.com/art/5b0cf627c7a4475261f97ceb
