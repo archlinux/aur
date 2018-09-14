@@ -9,7 +9,7 @@ url='https://github.com/AdaCore/gnatcoll-db/'
 arch=('i686' 'x86_64')
 license=('GPL')
 
-depends=('gnatcoll-sql>=2018')
+depends=('gnatcoll-sql>=2018' 'sqlite3')
 makedepends=('gprbuild>=2018')
 
 source=('http://mirrors.cdn.adacore.com/art/5b0ce9cbc7a4475263382be6')
