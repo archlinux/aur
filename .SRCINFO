@@ -1,6 +1,6 @@
 pkgbase = zfs-utils-common-git
 	pkgdesc = Kernel module support files for the Zettabyte File System.
-	pkgver = 2018.09.07.r4720.gb8a90418f
+	pkgver = 2018.09.13.r4723.g5140a58f3
 	pkgrel = 1
 	url = http://zfsonlinux.org/
 	install = zfs-utils.install
@@ -16,15 +16,15 @@ pkgbase = zfs-utils-common-git
 	replaces = spl-utils-common-git
 	backup = etc/zfs/zed.d/zed.rc
 	backup = etc/default/zfs
-	source = git+https://github.com/zfsonlinux/zfs.git#commit=b8a90418f3a9c23b89c5d2c729a4dd0fea644508
+	source = git+https://github.com/zfsonlinux/zfs.git#commit=5140a58f3b2a25ce24ff9ae2b01277cd6c64f5ad
 	source = zfs-utils.bash-completion-r1
 	source = zfs-utils.initcpio.install
 	source = zfs-utils.initcpio.hook
 	source = zfs-utils.initcpio.zfsencryptssh.install
 	sha256sums = SKIP
 	sha256sums = b60214f70ffffb62ffe489cbfabd2e069d14ed2a391fac0e36f914238394b540
-	sha256sums = 335e309ebf5b74fd8956f5e8805939c37d4008b0bcc3b00be6e7ef1d5b7c1669
-	sha256sums = 60ca3ce382c404c1c97873d6a352d0e99b28e948fde4e3f67d92e05f6eb216f0
+	sha256sums = 6e5e905a322d0426acdcbc05c5651ec78ee7b874b96d3c429c80f68b061170c5
+	sha256sums = ae1cda85de0ad8b9ec8158a66d02485f3d09c37fb13b1567367220a720bcc9a5
 	sha256sums = 29080a84e5d7e36e63c4412b98646043724621245b36e5288f5fed6914da5b68
 
 pkgname = zfs-utils-common-git
