@@ -11,7 +11,7 @@ depends=('clang' 'llvm')
 makedepends=("cmake" "git" "llvm")
 conflicts=('ccls-git')
 source=("https://github.com/MaskRay/$pkgname/archive/$pkgver.tar.gz"
-        'git+https://github.com/miloyip/rapidjson'
+        'git+https://github.com/Tencent/rapidjson'
         )
 sha256sums=('SKIP' 'SKIP')
 
