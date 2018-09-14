@@ -5,7 +5,7 @@ _apilevel=28
 _rev=r05
 pkgname=android-google-apis-x86
 pkgver=${_apilevel}_${_rev}
-pkgrel=1
+pkgrel=2
 pkgdesc="Android Google APIs x86 System Image, latest API"
 arch=('any')
 url="https://developer.android.com/studio/index.html"
@@ -17,8 +17,8 @@ conflicts=("${pkgname}-${_apilevel}")
 options=('!strip')
 source=("https://dl-ssl.google.com/android/repository/sys-img/google_apis/x86-${pkgver}.zip"
         "source.properties")
-sha384sums=('1ea7ae43c8a1a32cbaea0ab3edac7add6146da12'
-            '752766f004ad8ba688e95aa86f8d918be53dd792')
+sha384sums=('058d0055478ff9615e0d637b5de1d487fab48755258b38d378231c83a55e92fde25b5cda7ca18f57366989789b62d5c0'
+            '422b6afb7b44297fe0752f0c4008054c2976d0315383aae7277c05216761627209fe953fb1dd3e905b83e94c1138d8da')
 
 package() {
   _destdir="${pkgdir}/opt/android-sdk/system-images/android-${_apilevel}/google_apis/"
