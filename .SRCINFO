@@ -1,6 +1,6 @@
 pkgbase = geary-git
 	pkgdesc = A lightweight email client for the GNOME desktop
-	pkgver = r3681.77ea2898
+	pkgver = r3790.f3ad1fe0
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Geary
 	arch = i686
@@ -26,7 +26,7 @@ pkgbase = geary-git
 	source = git+https://gitlab.gnome.org/GNOME/geary.git
 	source = geary-enchant2.patch
 	sha256sums = SKIP
-	sha256sums = 23261cd5ff7b3a602d6e6e5bbf8cfce05d975026be476cfd120a98000d0aa5c6
+	sha256sums = 35022afaa1b7f4081a2759987de7ec8e7ed74c0837a4d663ead9180ee8d76156
 
 pkgname = geary-git
 
