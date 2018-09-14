@@ -7,6 +7,7 @@ pkgbase = gnatcoll-gmp
 	arch = x86_64
 	license = GPL
 	makedepends = gprbuild>=2018
+	depends = gmp
 	depends = gnatcoll-core>=2018
 	conflicts = gnatcoll-gmp-git
 	source = http://mirrors.cdn.adacore.com/art/5b0ce9cfc7a4475261f97ca5
