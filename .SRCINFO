@@ -1,13 +1,13 @@
 pkgbase = spl-linux
-	pkgver = 0.7.10_4.18.6.arch1.1
+	pkgver = 0.7.10_4.18.7.arch1.1
 	pkgrel = 1
 	url = http://zfsonlinux.org/
 	arch = x86_64
 	license = GPL
-	makedepends = linux-headers=4.18.6.arch1-1
+	makedepends = linux-headers=4.18.7.arch1-1
 	depends = spl-utils-common=0.7.10
 	depends = kmod
-	depends = linux=4.18.6.arch1-1
+	depends = linux=4.18.7.arch1-1
 	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.10/spl-0.7.10.tar.gz
 	sha256sums = 9647e0fe9f19cd99746da3cc48b8de8903a66dacdccc82b45dbbb516606f4ff8
 
