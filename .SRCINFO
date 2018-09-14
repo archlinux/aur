@@ -1,0 +1,19 @@
+pkgbase = emacs-ghub-git
+	pkgdesc = Client libraries for the APIs of various Git forges
+	pkgver = r230.440a563
+	pkgrel = 1
+	url = https://github.com/magit/ghub
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	depends = emacs-dash
+	depends = emacs-graphql
+	depends = emacs-treepy
+	provides = emacs-ghub
+	conflicts = emacs-ghub
+	source = git+https://github.com/magit/ghub.git
+	sha256sums = SKIP
+
+pkgname = emacs-ghub-git
+
