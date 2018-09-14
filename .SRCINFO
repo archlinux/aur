@@ -8,7 +8,6 @@ pkgbase = gnatcoll-sqlite
 	license = GPL
 	makedepends = gprbuild>=2018
 	depends = gnatcoll-sql>=2018
-	depends = sqlite3
 	source = http://mirrors.cdn.adacore.com/art/5b0ce9cbc7a4475263382be6
 	sha1sums = 85c90002bb506e3e72e38d2e6604734402d23a32
 
