@@ -1,6 +1,6 @@
 pkgbase = babl-git
 	pkgdesc = Dynamic, any to any, pixel format translation library.
-	pkgver = 0.1.57.ed42383
+	pkgver = 0.1.57.r1369.2ca9b0c
 	pkgrel = 1
 	url = http://www.babl.org/babl
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = babl-git
 	license = LGPL3
 	makedepends = git
 	depends = glibc
-	provides = babl=0.1.57.ed42383
+	provides = babl=0.1.57.r1369.2ca9b0c
 	conflicts = babl
 	source = git+https://gitlab.gnome.org/GNOME/babl
 	sha512sums = SKIP

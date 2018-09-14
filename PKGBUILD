@@ -5,7 +5,7 @@
 
 pkgname=babl-git
 _pkgname=${pkgname%-git}
-pkgver=0.1.57.ed42383
+pkgver=0.1.57.r1369.2ca9b0c
 pkgrel=1
 pkgdesc="Dynamic, any to any, pixel format translation library."
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ url="http://www.babl.org/babl"
 license=('LGPL3')
 depends=('glibc')
 makedepends=('git')
-provides=("babl=${pkgver}")
+provides=("babl=$pkgver")
 conflicts=('babl')
 source=('git+https://gitlab.gnome.org/GNOME/babl')
 sha512sums=('SKIP')
@@ -21,13 +21,16 @@ sha512sums=('SKIP')
 pkgver() {
   cd $_pkgname
 
-  echo $(cat configure.ac | grep '^m4_define(\[babl_.*_version\], \[[0-9]*\])' | tr -d '\n' | sed -e 's|^m4_define(\[babl_major_version\], \[||' -e 's|\])m4_define(\[babl_minor_version\], \[|.|' -e 's|\])m4_define(\[babl_micro_version\], \[|.|' -e 's|\])|\n|').$(git log --pretty=format:'%h' -n 1)
+  printf "%s.r%s.%s" \
+  	$(cat configure.ac | grep '^m4_define(\[babl_.*_version\], \[[0-9]*\])' | tr -d '\n' | sed -e 's|^m4_define(\[babl_major_version\], \[||' -e 's|\])m4_define(\[babl_minor_version\], \[|.|' -e 's|\])m4_define(\[babl_micro_version\], \[|.|' -e 's|\])|\n|') \
+  	$(git rev-list --count HEAD) \
+  	$(git rev-parse --short HEAD)
 }
 
 prepare() {
   cd $_pkgname
 
-  autoreconf -fi
+  autoreconf -vif
 
   ./configure --prefix=/usr
 }
