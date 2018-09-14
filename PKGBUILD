@@ -10,7 +10,7 @@ url='https://github.com/AdaCore/gnatcoll-bindings/'
 arch=('i686' 'x86_64')
 license=('GPL')
 
-depends=('libiconv' 'gnatcoll-core>=2018')
+depends=('libiconv' 'gnatcoll-core>=2018' 'python2')
 makedepends=('gprbuild>=2018')
 
 conflicts=('gnatcoll-iconv-git')
