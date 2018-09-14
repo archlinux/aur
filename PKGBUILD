@@ -7,7 +7,7 @@ pkgname=snapd-git
 pkgdesc="Service and tools for management of snap packages."
 depends=('squashfs-tools' 'libseccomp' 'libsystemd')
 optdepends=('bash-completion: bash completion support')
-pkgver=2.34.2.r331.gc6ce33127
+pkgver=2.35.2.r963.g10c425400
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/snapcore/snapd"
@@ -70,6 +70,7 @@ build() {
   $gobuild -o $GOPATH/bin/snapctl "${_gourl}/cmd/snapctl"
   $gobuild -o $GOPATH/bin/snapd "${_gourl}/cmd/snapd"
   $gobuild -o $GOPATH/bin/snap-seccomp "${_gourl}/cmd/snap-seccomp"
+  $gobuild -o $GOPATH/bin/snap-failure "${_gourl}/cmd/snap-failure"
   # build snap-exec and snap-update-ns completely static for base snaps
   $gobuild_static -o $GOPATH/bin/snap-update-ns "${_gourl}/cmd/snap-update-ns"
   $gobuild_static -o $GOPATH/bin/snap-exec "${_gourl}/cmd/snap-exec"
@@ -146,6 +147,7 @@ package_snapd-git() {
   install -Dm755 "$GOPATH/bin/snapctl" "$pkgdir/usr/bin/snapctl"
   install -Dm755 "$GOPATH/bin/snapd" "$pkgdir/usr/lib/snapd/snapd"
   install -Dm755 "$GOPATH/bin/snap-seccomp" "$pkgdir/usr/lib/snapd/snap-seccomp"
+  install -Dm755 "$GOPATH/bin/snap-failure" "$pkgdir/usr/lib/snapd/snap-failure"
   install -Dm755 "$GOPATH/bin/snap-update-ns" "$pkgdir/usr/lib/snapd/snap-update-ns"
   install -Dm755 "$GOPATH/bin/snap-exec" "$pkgdir/usr/lib/snapd/snap-exec"
 
@@ -170,9 +172,6 @@ package_snapd-git() {
   install -dm700 "$pkgdir/var/lib/snapd/cache"
 
   make -C cmd install DESTDIR="$pkgdir/"
-  # move snapd-generator to systemd generators
-  install -dm755 "$pkgdir/usr/lib/systemd/system-generators"
-  mv "$pkgdir/usr/lib/snapd/snapd-generator" "$pkgdir/usr/lib/systemd/system-generators/"
 
   # Install man file
   mkdir -p "$pkgdir/usr/share/man/man1"
@@ -191,4 +190,6 @@ package_snapd-git() {
   rm -fv "$pkgdir/usr/lib/snapd/snapd.core-fixup.sh"
   rm -fv "$pkgdir/usr/bin/ubuntu-core-launcher"
   rm -fv "$pkgdir/usr/lib/snapd/system-shutdown"
+  # apparmor bits
+  rm -rfv "$pkgdir"/var/lib/snapd/apparmor
 }
