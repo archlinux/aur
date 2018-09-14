@@ -6,10 +6,12 @@ pkgver=r142.30b3b0b
 pkgrel=1
 pkgdesc='Python 3 library and scripts for the RCON and Query protocol'
 arch=('any')
-url="https://gitlab.com/coNQP/${_pkgbase}"
+url="https://github.com/coNQP/${_pkgbase}"
 license=('GPLv3')
-depends=('python' 'python-docopt' 'python-pyzmq')
+depends=('python' 'python-docopt')
 makedepends=('git' 'python')
+provides=('mcipc-git')
+replaces=('mcipc-git')
 source=("${_pkgbase}::git+${url}.git")
 md5sums=('SKIP')
 pkgdir='pkg'
@@ -17,7 +19,7 @@ srcdir='src'
 
 
 pkgver() {
-  cd "${_pkgbase}" || exit 1
+  cd "${_pkgbase}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
