@@ -3,7 +3,7 @@
 # Contributer:  James Hendrie <hendrie dot james at gmail dot com>
 pkgname=shalarm
 pkgver=1.65
-pkgrel=2
+pkgrel=3
 pkgdesc="A bash script alarm clock."
 arch=('any')
 url="http://www.someplacedumb.net"
@@ -13,6 +13,13 @@ optdepends=('mplayer')
 _zipname=master
 source=("$_zipname.zip::https://github.com/jahendrie/shalarm/archive/$_zipname.zip")
 md5sums=('d5ae834b8955396debb8f8cbcc488461')
+
+prepare()
+{
+    #rename LICENSE.txt to LICENSE to match the way it is called in makefile
+    cd $srcdir/$pkgname-master
+    mv LICENSE.txt LICENSE
+}
 
 package()
 {

@@ -1,7 +1,7 @@
 pkgbase = shalarm
 	pkgdesc = A bash script alarm clock.
 	pkgver = 1.65
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.someplacedumb.net
 	arch = any
 	license = custom:"FreeBSD"
