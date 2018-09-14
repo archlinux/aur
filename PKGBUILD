@@ -16,7 +16,7 @@ install=$pkgname.install
 source=(
     "https://github.com/couchbase/libcouchbase/releases/download/${pkgver}/libcouchbase-${pkgver}.tar.gz"
 )
-sha256sums=('cd3bba99d5e4935240e502535c3275e0756b480c6bc6746a46fb745d5e7066e4')
+sha256sums=('ddde0a98513d20c5c6bda7b35f008f37e740cee45315c352316679001822f883')
 
 build() {
   tar -xzf "libcouchbase-${pkgver}.tar.gz" -C "${srcdir}/libcouchbase-${pkgver}"
