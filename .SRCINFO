@@ -1,0 +1,18 @@
+pkgbase = emacs-magit-popup-git
+	pkgdesc = Define prefix-infix-suffix command combos
+	pkgver = r603.6e07f74
+	pkgrel = 1
+	url = https://github.com/magit/magit-popup
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	depends = emacs-async
+	depends = emacs-dash
+	provides = emacs-magit-popup
+	conflicts = emacs-magit-popup
+	source = git+https://github.com/magit/magit-popup.git
+	sha256sums = SKIP
+
+pkgname = emacs-magit-popup-git
+
