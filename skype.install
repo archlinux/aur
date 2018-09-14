@@ -1,0 +1,13 @@
+post_install() {
+  if [[ -x usr/bin/xdg-icon-resource ]]; then
+    usr/bin/xdg-icon-resource forceupdate &>/dev/null || true
+  fi
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  post_install
+}
