@@ -1,7 +1,7 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-mm
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="OCaml multimedia library"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('ocaml' 'ocaml-alsa' 'ocaml-ao' 'ocaml-pulseaudio' 'ocaml-gstreamer' 'o
 makedepends=('ocaml-findlib')
 options=('!strip')
 source=("https://github.com/savonet/ocaml-mm/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('0f56d0fac3081fe38c832ab50639a309')
+md5sums=('894ea52370fd08569dc905b9a0e8e713')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
