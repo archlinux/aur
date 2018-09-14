@@ -1,0 +1,15 @@
+pkgbase = remove_empty_subdirs
+	pkgdesc = Recursively remove empty sub-directories
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/zhangkaizhao/remove_empty_subdirs
+	arch = x86_64
+	license = MIT
+	license = Apache
+	makedepends = cargo
+	conflicts = remove_empty_subdirs-git
+	source = git+https://github.com/zhangkaizhao/remove_empty_subdirs.git#tag=v0.1.1
+	sha256sums = SKIP
+
+pkgname = remove_empty_subdirs
+
