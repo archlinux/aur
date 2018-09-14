@@ -1,0 +1,16 @@
+pkgbase = emacs-graphql-git
+	pkgdesc = GraphQL utilities
+	pkgver = r53.b64ab8d
+	pkgrel = 1
+	url = https://github.com/vermiculus/graphql.el
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	provides = emacs-graphql
+	conflicts = emacs-graphql
+	source = git+https://github.com/vermiculus/graphql.el.git
+	sha256sums = SKIP
+
+pkgname = emacs-graphql-git
+
