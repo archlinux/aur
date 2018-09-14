@@ -4,7 +4,7 @@ pkgbase=python-pyjade
 pkgname=(python-pyjade python2-pyjade)
 _commit=eb84811fcac898f678652f48b71479d95c3fbff8
 pkgver=4.0.0
-pkgrel=5
+pkgrel=7
 pkgdesc='Jade template system for Jinja2, Mako and Tornado'
 license=('MIT')
 arch=('any')
@@ -29,29 +29,35 @@ prepare() {
     cp -r pyjade{,-py2}
 }
 
-check() {
+build() {
     cd "$srcdir"/pyjade
-    ./test.sh
+    python setup.py build
 
     cd "$srcdir"/pyjade-py2
-    ./test.sh
+    python2 setup.py build
+}
+
+check() {
+    cd "$srcdir"/pyjade
+    PYTHONPATH="$PYTHONPATH:$(pwd)" nosetests -w pyjade/testsuite/ -v
+
+    cd "$srcdir"/pyjade-py2
+    PYTHONPATH="$PYTHONPATH:$(pwd)" nosetests2 -w pyjade/testsuite/ -v
 }
 
 package_python-pyjade() {
     depends=('python-six')
     cd pyjade
-    python setup.py install --root="$pkgdir" --optimize=1
+    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
-    install -Ddm755 "$pkgdir"/usr/share/licenses/$pkgname
-    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/
+    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
 package_python2-pyjade() {
     depends=('python2-six')
     cd pyjade-py2
-    python2 setup.py install --root="$pkgdir" --optimize=1
+    python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
     mv "$pkgdir"/usr/bin/pyjade{,2}
 
-    install -Ddm755 "$pkgdir"/usr/share/licenses/$pkgname
-    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/
+    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }

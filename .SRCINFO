@@ -1,7 +1,7 @@
 pkgbase = python-pyjade
 	pkgdesc = Jade template system for Jinja2, Mako and Tornado
 	pkgver = 4.0.0
-	pkgrel = 5
+	pkgrel = 7
 	url = https://github.com/syrusakbary/pyjade
 	arch = any
 	license = MIT
