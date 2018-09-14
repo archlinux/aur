@@ -1,0 +1,21 @@
+pkgbase = ttf-emojione-alt
+	pkgdesc = Official colorful EmojiOne font, alternative PG version
+	pkgver = 4.0.1
+	pkgrel = 1
+	url = https://github.com/emojione/emojione-assets
+	install = ttf-emojione-alt.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	provides = ttf-emoji
+	provides = ttf-emojione
+	conflicts = ttf-emojione
+	source = emojione-android-alt-4.0.1.ttf::https://github.com/emojione/emojione-assets/releases/download/4.0.1/emojione-android-alt.ttf
+	source = 75-emojione.conf
+	source = license-free.pdf
+	sha256sums = 77f08d736d08d8ff90809df1bf6d1a143d46e1214fcf7de6275a520f7a0057ee
+	sha256sums = ed7cc8c8e8adc03adb7f54211376f2a8e230a2aafe153ef7f9c26e2ea7bb0f63
+	sha256sums = 2898feeb41e03acd1a655ba5ddad0072aac83a014ee184fdcdebc7a66d353650
+
+pkgname = ttf-emojione-alt
+

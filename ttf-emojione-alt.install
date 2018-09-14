@@ -1,0 +1,20 @@
+post_install() {
+    echo
+    echo "  To prevent conflicts with other emoji fonts, 75-emojione.conf is not being automatically installed in /etc/fonts/conf.d/"
+    echo
+    echo "  If you don't use other emoji fonts, simply make a symlink:"
+    echo "  # ln -sf ../conf.avail/75-emojione.conf /etc/fonts/conf.d/75-emojione.conf"
+    echo
+    echo "  If you do use other emoji fonts, copy 75-emojione.conf to /etc/fonts/conf.d/ and remove corresponding aliases."
+    echo
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    echo
+    echo "  Make sure to remove /etc/fonts/conf.d/75-emojione.conf if you created it earlier."
+    echo
+}
