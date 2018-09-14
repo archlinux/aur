@@ -9,8 +9,8 @@ arch=('x86_64')
 url="https://github.com/JoshuaRLi/yn"
 license=('MIT')
 
-source=("${url}/releases/download/${pkgver}/yn-${pkgver}.tar.gz")
-sha512sums=('89106aa5d2b596f93e951196b1db7717e7040aba7b060c509f47b2014f288fad2c7a5a6cadce923be3e1b9fbe5496336d9bf777f9154e49cd2cc0e8303e19978')
+source=("${url}/releases/download/v${pkgver}/yn-${pkgver}.tar.gz")
+sha512sums=('35003a9f7bc5a69b91fa366f636a5f6a42da43c975e323f758b925bdeea575036ae9c2e02a54a669b647af4f4737795225c7b16f00e43fc1bf13ff93ce4bb521')
 
 package () {
   cd "${srcdir}/yn-${pkgver}"
