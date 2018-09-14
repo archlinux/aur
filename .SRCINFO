@@ -1,7 +1,7 @@
 pkgbase = x88000
 	pkgdesc = NEC - PC8801 Emulator on the Linux platform
 	pkgver = 1.5.3
-	pkgrel = 1
+	pkgrel = 3
 	url = http://www.cug.net/~manuke/x88000.html
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = x88000
 	makedepends = pkg-config
 	depends = gtk2
 	depends = libx11
-	source = http://www.cug.net/~manuke/x88_1_5_1_src.tar.gz
-	md5sums = 3dc2bb8c62ddb2a9a453024ac1662035
+	source = http://www.cug.net/~manuke/x88_1_5_3_src.tar.gz
+	md5sums = 5169d560421a082d6d7671b1a3c8c38e
 
 pkgname = x88000
 
