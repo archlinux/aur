@@ -1,7 +1,7 @@
 pkgbase = python-gensim
 	pkgdesc = Library for topic modelling, document indexing and similarity retrieval with large corpora
 	pkgver = 3.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://radimrehurek.com/gensim/
 	arch = i686
 	arch = x86_64
@@ -20,12 +20,12 @@ pkgname = python-gensim
 	depends = python-numpy
 	depends = python-scipy
 	depends = python-six
+	depends = python-smart_open
 	optdepends = python-pyro: Usage in a distributed environment
-	optdepends = python-smart_open: Streaming of large files
 
 pkgname = python2-gensim
 	depends = python2-numpy
 	depends = python2-scipy
 	depends = python2-six
+	depends = python2-smart_open
 	optdepends = python2-pyro: Usage in a distributed environment
-	optdepends = python2-smart_open: Streaming of large files
