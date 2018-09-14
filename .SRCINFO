@@ -11,6 +11,7 @@ pkgbase = kr
 	makedepends = go
 	makedepends = rsync
 	makedepends = nodejs
+	makedepends = git
 	depends = gcc-libs-multilib
 	provides = kr
 	conflicts = kr
