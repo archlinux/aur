@@ -3,7 +3,7 @@
 
 _gitname=dynomite
 pkgname=${_gitname}-git
-pkgver=0.6.9.r12.gd4e5175
+pkgver=0.6.9.r14.g22b5022
 pkgrel=1
 pkgdesc="Dynomite is a thin, distributed dynamo layer for different storage engines and protocols"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ source=(
 )
 md5sums=(
   'SKIP'
-  'b3b32f150ae8ea024510d112d7ba59d3'
+  '5131b6f92effc8274f308221ecdfc207'
 )
 
 pkgver() {

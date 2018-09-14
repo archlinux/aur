@@ -43,10 +43,10 @@ index 17127c4..dd5e8e2 100644
  #include "dyn_asciilogo.h"
  
 +#if !defined(PACKAGING)
- #define DN_CONF_PATH        "conf/dynomite.yml"
+ #define DN_CONF_PATH "conf/dynomite.yml"
 +#else
-+#define DN_CONF_PATH        SYSCONFDIR "/dynomite.yml"
++#define DN_CONF_PATH SYSCONFDIR "/dynomite.yml"
 +#endif
  
- #define DN_LOG_DEFAULT      LOG_NOTICE
- #define DN_LOG_MIN          LOG_EMERG
+ #define DN_LOG_DEFAULT LOG_NOTICE
+ #define DN_LOG_MIN LOG_EMERG
