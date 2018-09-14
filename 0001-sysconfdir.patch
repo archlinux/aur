@@ -1,5 +1,5 @@
 diff --git a/configure.ac b/configure.ac
-index c8a9143..938228c 100644
+index c8a9143..45b653a 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -194,6 +194,19 @@ AS_IF([test "x$disable_stats" = xyes],
@@ -9,19 +9,28 @@ index c8a9143..938228c 100644
 +AC_ARG_ENABLE([packaging],
 +  [AS_HELP_STRING(
 +    [--enable-packaging],
-+    [apply packaging standarts])
++    [apply packaging standards])
 +  ],
 +  [enable_packaging=yes],
 +  [enable_packaging=no])
 +AS_IF(
 +  [test "x$enable_packaging" = xyes],
-+  [AC_DEFINE([PACKAGING], [1], [Define to 1 if stats is not disabled])],
++  [AC_DEFINE([PACKAGING], [1], [Define to 1 if packaging is enabled])],
 +  [])
 +AC_MSG_RESULT($enable_packaging)
 +
  # Untar the yaml-0.1.4 in contrib/ before config.status is rerun
  AC_CONFIG_COMMANDS_PRE([tar xvfz contrib/yaml-0.1.4.tar.gz -C contrib])
  
+@@ -206,7 +219,7 @@ AC_CONFIG_FILES([Makefile
+                  src/Makefile
+                  src/hashkit/Makefile
+                  src/proto/Makefile
+-                 src/entropy/Makefile                 
++                 src/entropy/Makefile
+                  src/seedsprovider/Makefile
+                  src/event/Makefile
+                  src/tools/Makefile])
 diff --git a/src/Makefile.am b/src/Makefile.am
 index 74c90b7..a8dea61 100644
 --- a/src/Makefile.am
@@ -35,12 +44,12 @@ index 74c90b7..a8dea61 100644
  AM_CPPFLAGS += -I $(top_srcdir)/src/proto
  AM_CPPFLAGS += -I $(top_srcdir)/src/event
 diff --git a/src/dynomite.c b/src/dynomite.c
-index 17127c4..dd5e8e2 100644
+index 58bcc1a..7438029 100644
 --- a/src/dynomite.c
 +++ b/src/dynomite.c
 @@ -35,7 +35,11 @@
+ #include "dyn_core.h"
  #include "dyn_signal.h"
- #include "dyn_asciilogo.h"
  
 +#if !defined(PACKAGING)
  #define DN_CONF_PATH "conf/dynomite.yml"

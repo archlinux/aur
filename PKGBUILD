@@ -4,7 +4,7 @@
 _gitname=dynomite
 pkgname=${_gitname}-git
 pkgver=0.6.9.r14.g22b5022
-pkgrel=1
+pkgrel=2
 pkgdesc="Dynomite is a thin, distributed dynamo layer for different storage engines and protocols"
 arch=('i686' 'x86_64')
 url="https://github.com/Netflix/dynomite"
@@ -17,7 +17,7 @@ source=(
 )
 md5sums=(
   'SKIP'
-  '5131b6f92effc8274f308221ecdfc207'
+  '60f6ffd7c66d6827a9cd408fdfa2652b'
 )
 
 pkgver() {
