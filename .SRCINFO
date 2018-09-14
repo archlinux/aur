@@ -1,7 +1,7 @@
 pkgbase = nomad-bin
 	pkgdesc = A distributed, highly available, datacenter-aware scheduler (incl LXC driver)
-	pkgver = 0.8.4
-	pkgrel = 2
+	pkgver = 0.8.5
+	pkgrel = 1
 	url = https://nomadproject.io/
 	arch = x86_64
 	license = MPL2
@@ -12,10 +12,10 @@ pkgbase = nomad-bin
 	optdepends = rkt: enables rkt driver
 	provides = nomad
 	conflicts = nomad
-	source = https://releases.hashicorp.com/nomad/0.8.4/nomad_0.8.4_linux_amd64-lxc.zip
+	source = https://releases.hashicorp.com/nomad/0.8.5/nomad_0.8.5_linux_amd64-lxc.zip
 	source = nomad.service
 	source = example.hcl
-	sha256sums = 43ab76cc7db0e1ba4653946c3dba99c7c6f0f50169299d5184f4fcdca6ef1b69
+	sha256sums = f4bcd6dd699f536ea22b56677b8c46dd3923c2cbb09fc09b510d78deaedfbad4
 	sha256sums = 6f439a69eb112b628cc731f8ab0964ff8f394ade6b61432b31f2b947ae209c11
 	sha256sums = 01f9b4d29c35c0994a24ba91f4fc3df03406ec41cc7264f202eb54814a758c70
 
