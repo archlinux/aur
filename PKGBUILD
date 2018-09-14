@@ -1,8 +1,8 @@
 # Maintainer: Formed <formed@tuta.io>
 pkgname=viper4linux
 pkgver=1
-pkgrel=7
-pkgdesc="Implementation of the libviper library for modern Linux desktops."
+pkgrel=8
+pkgdesc="Implementation of the libviper library for modern Linux desktops. For community audio configs, check out https://github.com/L3vi47h4N/Viper4Linux-Configs"
 arch=('x86_64')
 url="https://github.com/L3vi47h4N/Viper4Linux"
 license=('GPL')
