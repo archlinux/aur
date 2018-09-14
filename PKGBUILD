@@ -2,7 +2,7 @@
 
 pkgname=gajim-plugin-omemo
 _pkgname=omemo
-pkgver=2.6.0
+pkgver=2.6.1
 pkgrel=1
 pkgdesc="Gajim plugin for OMEMO Multi-End Message and Object Encryption."
 arch=(any)
@@ -12,7 +12,7 @@ depends=("gajim>=1.0.0" "python-qrcode" "python-setuptools" "python-cryptography
 provides=('gajim-plugin-omemo')
 conflicts=('gajim-plugin-omemo-git')
 source=("https://ftp.gajim.org/plugins_releases/${_pkgname}_${pkgver}.zip")
-sha512sums=('8ea31a088f58b2db6c6f4293003d31f5231a9f2a60918815d0b1df1ce7dada9db225f1fc3822de0f9589b0b22edbe3c1ecee93555dfd244ff829af4560058058')
+sha512sums=('b39125cd6a20dba0ef5223a734f1d2056b9b135eb4a980d2f117f9acb41c65cfa34ec2fb0a1d654cc9bdeac41b0f678937692de5ea38fc38eb908287246b24e3')
 
 package() {
   cd ${srcdir}/${_pkgname}
