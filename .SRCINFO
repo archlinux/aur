@@ -1,16 +1,16 @@
 pkgbase = fcitx-chewing-git
 	pkgdesc = Fcitx Wrapper for chewing
 	pkgver = 0.2.3.r4.ge4bb273
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.com/fcitx/fcitx-chewing
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL2
 	makedepends = cmake
 	makedepends = git
 	depends = libchewing-git
 	depends = fcitx
-	provides = fcitx-chewing
+	provides = fcitx-chewing=0.2.3.r4.ge4bb273
 	conflicts = fcitx-chewing
 	source = git+https://gitlab.com/fcitx/fcitx-chewing.git
 	md5sums = SKIP
