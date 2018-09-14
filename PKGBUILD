@@ -1,5 +1,5 @@
 #Maintainer: Sanskrit Coders <sanskrit-programmers@googlegroups.com>
-pkgname=fonts-sanskrit
+pkgname=sanskrit-fonts
 pkgver=1.0
 pkgrel=1
 pkgdesc="Various unicode fonts for Sanskrit (with particular emphasis on Devanagari)."
