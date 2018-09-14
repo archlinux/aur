@@ -1,11 +1,12 @@
 # Maintainer: Richard Neumann aka. rne <r dot neumann at homeinfo fullstop de>
 
-pkgname="python-usernotify-git"
-pkgver=latest
+_pkgbase='usernotify'
+pkgname="python-${_pkgbase}-git"
+pkgver=r30.681f135
 pkgrel=1
 pkgdesc="Python 3 library and scripts for notifying desktop users"
 arch=('any')
-url='https://gitlab.com/coNQP/notify-users'
+url="https://github.com/conqp/${_pkgbase}"
 license=('GPLv3')
 depends=('python' 'libnotify')
 optdepends=('python-docopt: scripts')
