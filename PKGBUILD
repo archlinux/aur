@@ -2,7 +2,7 @@
 
 _gemname=video_transcoding
 pkgname=ruby-$_gemname
-pkgver=0.19.0
+pkgver=0.20.0
 pkgrel=1
 pkgdesc='Tools to transcode, inspect and convert videos.'
 arch=(any)
