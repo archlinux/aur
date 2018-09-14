@@ -1,4 +1,4 @@
-# Contributor: Rod Kay   <charlie5 on #ada at freenode.net>
+# Maintainer: Rod Kay   <charlie5 on #ada at freenode.net>
 
 pkgname=libadalang
 pkgver=2018
