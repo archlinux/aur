@@ -1,7 +1,7 @@
 pkgbase = lxqt-powermanagement-git
 	pkgdesc = LXQt power management daemon
-	pkgver = 0.12.0.4.g8e6c820
-	pkgrel = 1
+	pkgver = 0.13.0.131.gaf505c3
+	pkgrel = 2
 	url = https://lxqt.org
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = lxqt-powermanagement-git
 	depends = kidletime
 	depends = solid
 	depends = hicolor-icon-theme
-	provides = lxqt-powermanagement
+	provides = lxqt-powermanagement=0.13.0.131.gaf505c3
 	conflicts = lxqt-powermanagement
 	source = git+https://github.com/lxqt/lxqt-powermanagement.git
 	sha256sums = SKIP
