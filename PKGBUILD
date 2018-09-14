@@ -4,37 +4,46 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: csslayer <wengxt AT gmail com>
 
-pkgname=fcitx5-chewing-git
-pkgver=r101.c0f98be
-pkgrel=3
+_pkgname=fcitx5-chewing
+pkgname=$_pkgname-git
+pkgver=r102.3960e7b
+pkgrel=2
 pkgdesc="Fcitx5 addon for Chewing"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/fcitx/fcitx5-chewing"
-license=('GPL2')
+license=('GPL')
 depends=('libchewing-git' 'fcitx5-git' 'hicolor-icon-theme')
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
 makedepends=('extra-cmake-modules' 'git')
 source=("git+https://gitlab.com/fcitx/fcitx5-chewing.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd fcitx5-chewing
+  cd $_pkgname
 
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build(){
-  cd fcitx5-chewing
+prepare() {
+  cd $_pkgname
 
-  cmake . \
+  mkdir -p build
+}
+
+build(){
+  cd $_pkgname/build
+
+  cmake \
       -DCMAKE_INSTALL_PREFIX=/usr \
-      -DCMAKE_BUILD_TYPE=Release \
-      -DCMAKE_INSTALL_LIBDIR=/usr/lib
+      -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+      ..
 
   make
 }
 
 package() {
-  cd fcitx5-chewing
+  cd $_pkgname/build
 
   make DESTDIR="$pkgdir" install
 }
