@@ -1,14 +1,14 @@
 pkgname=distribution-gpg-keys
-pkgver=1.22
+pkgver=1.23
 _rpmrel=1
 _pkgtag=$pkgname-$pkgver-$_rpmrel
 pkgrel=$_rpmrel.1
 pkgdesc="GPG keys used by various Linux distributions to sign packages"
 arch=('any')
 url="https://github.com/xsuchy/$pkgname"
-license=('CC0')
+license=('custom:CC0')
 source=("$url/archive/$_pkgtag.tar.gz")
-md5sums=('e54c074225a3fa8f6a52337cb4517f82')
+md5sums=('84dc9981f9a5830f21ed60153194fd09')
 
 # Uncomment to include GPG keys used by Copr projects
 #_with_copr=1
