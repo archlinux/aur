@@ -1,7 +1,7 @@
 pkgbase = viper4linux
 	pkgdesc = Implementation of the libviper library for modern Linux desktops.
 	pkgver = 1
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/L3vi47h4N/Viper4Linux
 	install = viper4linux.install
 	arch = x86_64

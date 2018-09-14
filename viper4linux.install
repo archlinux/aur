@@ -1,8 +1,9 @@
 post_install() {
     cd /etc/
     echo -e "\nConfiguration HOW-TO\n"
-    echo "For local configuration, copy with -r /etc/viper4linux ~/.config"
-    echo "Edit the output device location name in /etc/viper4linux/devices.conf or ~/.config/viper4linux/devices.conf for local"
+    echo -e "For local configuration, copy with -r /etc/viper4linux ~/.config\n"
+    echo "To specify a default output device, rename the devices.conf.template to devices.conf"
+    echo "Change the name to the device you wish to use."
     echo "You can find the name with 'pactl list sinks | grep "Name: " -A1'"
     echo "Sound effects can be configured within the audio.conf file."
     echo "Descriptions of the various options can be found with 'gst-inspect-1.0 viperfx'"
