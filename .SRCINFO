@@ -1,13 +1,13 @@
 pkgbase = python-doxyqml
 	pkgdesc = Doxyqml turns .qml into pseudo-C++ which Doxygen can then use to generate documentation.
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/agateau/doxyqml
 	arch = any
 	license = BSD
 	depends = python
 	depends = doxygen
-	source = python-doxyqml-0.3.0::git+https://github.com/agateau/doxyqml.git#tag=0.3.0
+	source = python-doxyqml-0.4.0::git+https://github.com/agateau/doxyqml.git#tag=0.4.0
 	sha256sums = SKIP
 
 pkgname = python-doxyqml

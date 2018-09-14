@@ -1,6 +1,6 @@
 # Maintainer: Felix Barz <skycoder42.de@gmx.de>
 pkgname=python-doxyqml
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Doxyqml turns .qml into pseudo-C++ which Doxygen can then use to generate documentation."
 arch=('any')
