@@ -2,21 +2,19 @@
 
 _pkgname=macports-base
 pkgname=$_pkgname-git
-pkgver=2.4.0.beta1.r200.g9606edb0
-pkgrel=1
+pkgver=2.5.0.beta1.r66.g8434c0ee
+pkgrel=3
 pkgdesc='The MacPorts command-line client'
 url='https://www.macports.org/'
 arch=('i686' 'x86_64')
 license=('BSD')
-# man is used for `port help`
-depends=('curl' 'man' 'nmtree' 'openssl' 'sqlite')
+depends=('curl' 'openssl' 'sqlite')
 # tcl: MacPorts comes with its own vendored tclsh, while a system interpreter
 # is still needed to build tcllib
-# rsync: ./configure checks for `rsync` in $PATH and saves the value in
-# macports_autoconf.tcl, so this should be in makedepends, too
-makedepends=('git' 'tcl' 'rsync')
+makedepends=('git' 'tcl' 'nmtree')
 optdepends=(
-    'rsync: for syncing sources via rsync'
+  'rsync: for syncing sources via rsync'
+  'nmtree: for building ports'
 )
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
@@ -29,24 +27,28 @@ backup=(opt/local/etc/macports/archive_sites.conf
         opt/local/etc/macports/variants.conf)
 
 pkgver() {
-  cd "${_pkgname}"
+  cd $_pkgname
   ( set -o pipefail
-    git describe --long --tag 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tag 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
   )
 }
 
 build() {
-  cd "$_pkgname"
+  cd $_pkgname
 
-  ./configure
+  # provide paths manually so that these packages are not necessray during building
+  MAN=/usr/bin/man \
+  MTREE=/usr/bin/mtree \
+  RSYNC=/usr/bin/rsync \
+  ./configure \
+    --enable-readline
+
   make
 }
 
 package() {
-  cd "$_pkgname"
+  cd $_pkgname
   make DESTDIR="$pkgdir" install
 
-  install -Ddm755 "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

@@ -1,21 +1,20 @@
 pkgbase = macports-base-git
 	pkgdesc = The MacPorts command-line client
-	pkgver = 2.4.0.beta1.r200.g9606edb0
-	pkgrel = 1
+	pkgver = 2.5.0.beta1.r66.g8434c0ee
+	pkgrel = 3
 	url = https://www.macports.org/
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git
 	makedepends = tcl
-	makedepends = rsync
+	makedepends = nmtree
 	depends = curl
-	depends = man
-	depends = nmtree
 	depends = openssl
 	depends = sqlite
 	optdepends = rsync: for syncing sources via rsync
-	provides = macports-base=2.4.0.beta1.r200.g9606edb0
+	optdepends = nmtree: for building ports
+	provides = macports-base=2.5.0.beta1.r66.g8434c0ee
 	conflicts = macports-base
 	backup = opt/local/etc/macports/archive_sites.conf
 	backup = opt/local/etc/macports/macports.conf
