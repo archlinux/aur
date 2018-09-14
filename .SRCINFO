@@ -1,21 +1,18 @@
 pkgbase = ccls
 	pkgdesc = C/C++/ObjC language server supporting cross references, hierarchies, completion and semantic highlighting
-	pkgver = 0.20180513
+	pkgver = 0.20180913
 	pkgrel = 1
 	url = https://github.com/MaskRay/ccls
 	arch = any
-	license = MIT
+	license = Apache
 	makedepends = cmake
 	makedepends = git
+	makedepends = llvm
 	depends = clang
 	depends = llvm
 	conflicts = ccls-git
-	source = https://github.com/MaskRay/ccls/archive/0.20180513.tar.gz
+	source = https://github.com/MaskRay/ccls/archive/0.20180913.tar.gz
 	source = git+https://github.com/miloyip/rapidjson
-	source = git+https://github.com/onqtam/doctest
-	source = git+https://github.com/emilk/loguru
-	sha256sums = SKIP
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
