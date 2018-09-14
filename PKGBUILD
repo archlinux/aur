@@ -313,7 +313,7 @@ patch -Np1 -i ../2ka.patch
 patch -Np1 -i ../2kc.patch
 patch -Np1 -i ../2kd.patch
 patch -Np1 -i ../2ke.patch
-patch -Np1 -i ../2kf.patch
+#patch -Np1 -i ../2kf.patch
 patch -Np1 -i ../2kg.patch
 patch -Np1 -i ../2kh.patch
 patch -Np1 -i ../2ki.patch
