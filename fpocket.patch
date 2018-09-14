@@ -1,0 +1,26 @@
+--- makefile	2018-09-14 16:37:11.552447515 +0300
++++ makefile	2018-09-14 16:35:07.558785168 +0300
+@@ -38,7 +38,7 @@
+ QCFLAGS     = -O -g -pg -ansi
+ 
+ LGSL        = -L$(PATH_GSL)lib -lgsl -lgslcblas 
+-LFLAGS	    = -lm -L$(PLUGINDIR)/$(ARCH)/molfile $(PLUGINDIR)/$(ARCH)/molfile/libmolfile_plugin.a -lnetcdf -lstdc++
++LFLAGS	    = -lm -L$(PLUGINDIR)/$(ARCH)/molfile $(PLUGINDIR)/$(ARCH)/molfile/libmolfile_plugin.a -lstdc++
+ #
+ #------------------------------------------------------------
+ # BINARIES OBJECTS 
+--- src/mdpocket.c	2018-09-14 16:37:31.845834900 +0300
++++ src/mdpocket.c	2018-09-14 16:35:21.485488676 +0300
+@@ -92,10 +92,10 @@
+     char pdb_code[350] = "";
+ 
+ 
+-    if (!strncmp(par->traj_format, "net", 3)) {
++/*    if (!strncmp(par->traj_format, "net", 3)) {
+         molfile_netcdfplugin_init();
+         molfile_netcdfplugin_register(NULL, register_cb);
+-    }
++    }*/
+     if (!strncmp(par->traj_format, "dcd", 3)) {
+         molfile_dcdplugin_init();
+         molfile_dcdplugin_register(NULL, register_cb);
