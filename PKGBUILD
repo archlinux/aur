@@ -3,7 +3,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Bug reports can be filed at https://bugs.square-r00t.net/index.php?project=3
 # News updates for packages can be followed at https://devblog.square-r00t.net
 pkgname=chromedriver-dev
-pkgver=2.41
+pkgver=2.42
 pkgrel=1
 pkgdesc="Standalone server which implements WebDriver's wire protocol (for google-chrome-dev)"
 arch=( 'x86_64' )
@@ -17,7 +17,7 @@ changelog=
 noextract=()
 source=("https://chromedriver.storage.googleapis.com/${pkgver}/${_pkgname}_linux64.zip"
         "${_pkgname}_linux64.zip.sig")
-sha512sums=('328bd82d17f5d4238d3fd18b8848f4edc218014cba515972b75f1e4e866f1d729f6d56463b276f7afaf7965f0d36680c0238ae8ff8f9667bc6631e49ae9e7013'
+sha512sums=('2590ea98217bd92e607e726704c5bcae25cca697a5f6b098aa51cb28964b11f83cd294477911e9b24fed5e63daf96ff5600c8f3ea553e63b3d9826556f34720b'
             'SKIP')
 
 package() {
