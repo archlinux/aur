@@ -1,5 +1,5 @@
---- nslink.c.orig	2018-09-14 14:35:19.112262632 -0400
-+++ nslink.c	2018-09-14 14:38:10.124709662 -0400
+--- nslink.c.orig	2018-01-30 13:52:48.000000000 -0500
++++ nslink.c	2018-09-12 22:01:56.166540521 -0400
 @@ -5349,10 +5349,11 @@ static int nrp_proc_show(struct seq_file
                  }
          }
@@ -33,7 +33,7 @@
 +#if LINUX_VERSION_CODE < VERSION_CODE(4,18,0)
          .proc_fops = &nrp_proc_fops,
 +#else
-+        .proc_show = &nrp_proc_show,
++        .proc_show = nrp_proc_show,
 +#endif
  };
  static const struct tty_port_operations nslink_port_ops = {
