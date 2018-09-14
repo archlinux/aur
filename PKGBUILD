@@ -7,8 +7,8 @@
 pkgname=inox-dev
 pk=dnox
 name=chromium
-pkgver=70.0.3528.4
-pkgrel=2
+pkgver=71.0.3542.0
+pkgrel=1
 _launcher_ver=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
@@ -117,13 +117,13 @@ https://raw.githubusercontent.com/bn0785ac/in-dev/master/desu.patch
 )
 
 
-sha256sums=('ed9795dbfcbc16e020a89122d6fa3595c20280af41734dce70a3047cb33e90a8'
+sha256sums=('db203ce57534f0d7db0eaf58b7b8b716bbad1325074737c0a1b38aa2fe76dec5'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
             'f636b4f57c85634a40f2bdf66bcd7080a730a088a791d8dbf54c7f8c14d6d6af'
             '6e9a345f810d36068ee74ebba4708c70ab30421dad3571b6be5e9db635078ea8'
             '35435e8dae76737baafecdc76d74a1c97281c4179e416556e033a06a31468e6d'
             'd81319f168dad0e411c8e810f73daa2f56ff579578771bd9c9bb1aa2d7c09a8b'
-            'f51c64f334d34a3f498d187b74201f22fe89ad5b8c6fe5883ef52df0b56b7c64'
+            '1d351402281b218029fa06bd309994cc29419cc82707178a5ce6e9c835f7e9a2'
             '12d446a2f50c80168b07506c9c733447651830ad1b7f04f494256ebfdc8e0655'
             '2a584c6e3938ecc14e591369441a7ffdd4988e02336440614a52f2eee615517f'
             '0a6e050f5acbe9b90de88f3f7c3828bc190f5831ed582a8e49005fe999db306c'
@@ -155,7 +155,7 @@ sha256sums=('ed9795dbfcbc16e020a89122d6fa3595c20280af41734dce70a3047cb33e90a8'
             '0a148b0a15a63feb08ed79695a80d09ad39db7a3373b217cd499909218b94fda'
             '9465f89adc5b177050fd154b3be459f167fd3e157a1ebc0537b29070f0dbda5d'
             '5a4ec61000266fd623e0a3377210ed324ed62eeba6c61ecd95ffb49d4d20640f'
-            '4aaeaa4113a7d95816ddf678b36ca2d268e7ff12c52e4702ff30ca794626013f'
+            'a5ca9ae6a17a933cd80ba175843c6374a1e4e5398bb2456ff52372e4f74c8e0d'
             '8aa6928dfeec97b5a2c2b22e1abda42fd0e57b6c480356c12ca4726a59f12fa8'
             '2acda9e5de0efa71c8347eb490bcae7993ae28dceaba406a0dafb50110539ba2'
             '66ff55dce4ebefdf0030c5cccfbf1dc4e269c681ad9e23d7be5df17c0a884858'
@@ -188,7 +188,7 @@ sha256sums=('ed9795dbfcbc16e020a89122d6fa3595c20280af41734dce70a3047cb33e90a8'
             '065a69ca6547e89f84ded7b95e29a7fb3ac762eaac3aa940ab1ec5a3ecbe3a2f'
             'a31bfe021beb091a37252a443c452ba6f3bc50299f237f47880ae5163d014b28'
             'c367599e25bd9d408d52dd26ceec9f0048b0991cc74980c8c40d602e61a2a844'
-            'b54a69d6eeb03bf56e5a6430cbc07fd8d12532709876d38828e4c455eca29e3b'
+            '23f18b961b693cd4fd6f43b78c5a089323c5a3924beb0a9e9838d155e2aa96bd'
             'ee2239fca1a378b5789e764d65f9a82b816fd594eb18c2008d0ad1868517fe03'
             'a0fc68d001dc6bad673997394184112eed59b74b8e6bbcd173db55402c95c121'
             'fb3abae54309adf69b98bd2435fbc23f17bc526dbf1d1e97907da87e7cf0aeed'
@@ -293,7 +293,7 @@ patch -Np1 -i ../030.patch
 patch -Np1 -i ../CP.patch
 patch -Np1 -i ../032.patch
 patch -Np1 -i ../034.patch
-#patch -Np1 -i ../035.patch
+patch -Np1 -i ../035.patch
 patch -Np1 -i ../360.patch
 patch -Np1 -i ../888.patch
 patch -Np1 -i ../meme.patch
