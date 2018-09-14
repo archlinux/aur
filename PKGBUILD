@@ -1,8 +1,9 @@
 # Maintainer: Jerome Leclanche <jerome@leclan.ch>
+# Co-Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
 
 _pkgname=libqtxdg
 pkgname=$_pkgname-git
-pkgver=3.2.0.1.g6ff2412
+pkgver=3.2.0.11.g374f418
 pkgrel=2
 pkgdesc="Library providing freedesktop.org specs implementations for Qt."
 arch=("i686" "x86_64")
@@ -10,7 +11,8 @@ url="https://lxqt.org"
 license=("GPL2")
 depends=("qt5-base" "qt5-svg")
 makedepends=("git" "cmake" "qt5-tools")
-provides=("$_pkgname")
+checkdepends=("xorg-server-xvfb")
+provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname-qt5-git" "$_pkgname")
 replaces=("$_pkgname-qt5-git")
 source=("git+https://github.com/lxqt/$_pkgname.git")
@@ -18,20 +20,27 @@ sha256sums=('SKIP')
 
 
 pkgver() {
-	cd "$srcdir/$_pkgname"
-	git describe --always | sed "s/-/./g"
+  cd "$srcdir/$_pkgname"
+  git describe --always | sed "s/-/./g"
 }
 
 build() {
-	mkdir -p build
-	cd build
-	cmake "$srcdir/$_pkgname" \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_INSTALL_LIBDIR=lib
-	make
+  mkdir -p build
+  cd build
+  cmake "$srcdir/$_pkgname" \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DBUILD_TESTS=ON
+  make
+}
+
+check() {
+  cd build
+
+  xvfb-run make test
 }
 
 package() {
-	cd build
-	make DESTDIR="$pkgdir" install
+  cd build
+  make DESTDIR="$pkgdir" install
 }
