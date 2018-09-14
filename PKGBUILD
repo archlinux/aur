@@ -9,14 +9,18 @@ url="https://github.com/lxqt/screengrab"
 license=("GPL2")
 depends=("qt5-base" "qt5-x11extras" "kwindowsystem" "libqtxdg-git" "libx11" "libxcb" "hicolor-icon-theme")
 makedepends=("cmake" "qt5-tools")
-source=("screengrab-$pkgver.tar.gz::https://github.com/LXQt/screengrab/archive/$pkgver.tar.gz")
-sha256sums=("fa3b047a1063b7738c5a0c8d12d6aaa338590a5e27857d88214d77260f98b799")
+source=(
+	"https://github.com/lxqt/screengrab/releases/download/$pkgname/$pkgname-$pkgver.tar.xz"
+)
+sha256sums=(
+	"fa3b047a1063b7738c5a0c8d12d6aaa338590a5e27857d88214d77260f98b799"
+)
 
 
 build() {
 	mkdir -p build
 	cd build
-	cmake "$srcdir/$_pkgname" \
+	cmake "$srcdir/$pkgname-$pkgver" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib
 	make
