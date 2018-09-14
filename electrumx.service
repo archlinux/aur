@@ -6,8 +6,7 @@ After=network.target bitcoind.service
 [Service]
 EnvironmentFile=/etc/electrumx/electrumx.conf
 ExecStart=/usr/bin/electrumx-server
-ExecReload=/usr/bin/kill -s SIGHUP $MAINPID
-ExecStop=/usr/bin/electrumx-rpc -p 8000 stop
+ExecStop=/usr/bin/electrumx-rpc stop
 User=electrumx
 Group=electrumx
 LimitNOFILE=infinity
