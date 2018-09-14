@@ -21,11 +21,6 @@ build () {
   cargo build --release
 }
 
-check () {
-  cd "$_srcdir_"
-  cargo test --release
-}
-
 package () {
   cd "$_srcdir_"
   install -Dm 755 "target/release/vape" "${pkgdir}/usr/bin/vape"
