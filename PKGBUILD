@@ -1,12 +1,14 @@
-# Contributor: Todd Musall 
+# Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
+# Forked from heimdall-git; original contributors:
+# Contributor: Todd Musall
 # Contributor: dront78 (Ivan)
 # Contributor: Victor Noel
-# Maintainer: Lari Tikkanen
+# Contributor: Lari Tikkanen
 
-pkgname=('heimdall-nogui-git')
-_gitname="heimdall"
-pkgver=1.4.2.r3.g9bcc42d
-pkgrel=1
+pkgname=heimdall-nogui-git
+_pkgname="heimdall"
+pkgver=1.4.2.r7.ga2cfdaa
+pkgrel=2
 pkgdesc="A cross-platform open-source utility to flash firmware (aka ROMs) onto Samsung Galaxy S devices."
 arch=('i686' 'x86_64')
 url="https://glassechidna.com.au/heimdall/"
@@ -14,43 +16,41 @@ license=('MIT')
 depends=('libusb')
 makedepends=('cmake' 'git')
 optdepends=('android-udev: Udev rules to connect Android devices to you linux box')
-conflicts=('heimdall')
-provides=('heimdall')
-source=("$_gitname::git+https://gitlab.com/BenjaminDobell/Heimdall.git"
+conflicts=("$_pkgname")
+provides=("$_pkgname=$pkgver")
+source=("$_pkgname::git+https://gitlab.com/BenjaminDobell/Heimdall.git"
         "BridgeManager.patch")
 md5sums=('SKIP'
          '8fce869eb9539b6b410b1a52370c3824')
 
 pkgver() {
-  cd $_gitname
+  cd $_pkgname
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd ${srcdir}/heimdall/
-  patch -Np1 -i ${srcdir}/BridgeManager.patch
+  cd $_pkgname
+
+  patch -Np1 -i ../BridgeManager.patch
+
+  mkdir -p build
 }
 
 build() {
-  cd ${srcdir}/heimdall/
+  cd $_pkgname/build
 
-  if [ -d build ] ; then
-    rm -rf build
-  fi
+  cmake \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DDISABLE_FRONTEND=ON \
+    ..
 
-  mkdir build
-  cd build
-  
-  cmake -DCMAKE_BUILD_TYPE=Release -DDISABLE_FRONTEND=ON ..
   make
 }
 
 package() {
-  cd ${srcdir}/$_gitname
+  cd $_pkgname/build
 
-  install -m644 -D LICENSE "${pkgdir}/usr/share/licenses/$_gitname/LICENSE"
+  make DESTDIR="$pkgdir" install
 
-  cd build
-
-  install -m755 -D bin/heimdall "${pkgdir}/usr/bin/heimdall"
+  install -m644 -D ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

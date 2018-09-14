@@ -1,7 +1,7 @@
 pkgbase = heimdall-nogui-git
 	pkgdesc = A cross-platform open-source utility to flash firmware (aka ROMs) onto Samsung Galaxy S devices.
-	pkgver = 1.4.2.r3.g9bcc42d
-	pkgrel = 1
+	pkgver = 1.4.2.r7.ga2cfdaa
+	pkgrel = 2
 	url = https://glassechidna.com.au/heimdall/
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = heimdall-nogui-git
 	makedepends = git
 	depends = libusb
 	optdepends = android-udev: Udev rules to connect Android devices to you linux box
-	provides = heimdall
+	provides = heimdall=1.4.2.r7.ga2cfdaa
 	conflicts = heimdall
 	source = heimdall::git+https://gitlab.com/BenjaminDobell/Heimdall.git
 	source = BridgeManager.patch
