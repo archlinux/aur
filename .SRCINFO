@@ -1,0 +1,12 @@
+pkgbase = ttf-marketingscript
+	pkgdesc = Monospaced font family for user interface and coding environments
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.1001fonts.com/marketing-script-font.html
+	arch = any
+	license = custom
+	source = https://dl.1001fonts.com/marketing-script.zip
+	sha256sums = dbb9277578343e3a81ea8368fb7c6402396a85e80ccf1241217a7007581fb16e
+
+pkgname = ttf-marketingscript
+
