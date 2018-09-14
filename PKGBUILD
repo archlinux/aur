@@ -18,7 +18,7 @@ provides=("zap-desktop")
 prepare() {
     tar -Jxvf data.tar.xz
 
-    sed -in 's/\/Zap\//\/${pkgname}\//g' usr/share/applications/zap-desktop.desktop
+    sed -in "s/\\/Zap\\//\\/${pkgname}\\//g" usr/share/applications/zap-desktop.desktop
 }
 
 package() {
