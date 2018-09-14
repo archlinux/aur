@@ -1,7 +1,7 @@
 pkgbase = python-hashpumpy-git
 	pkgdesc = A tool to exploit the hash length extension attack in various hashing algorithms
-	pkgver = v1.2.0.r8.g314268e
-	pkgrel = 2
+	pkgver = 1.2.0.r8.g314268e
+	pkgrel = 1
 	url = https://github.com/bwall/HashPump
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,8 @@ pkgbase = python-hashpumpy-git
 	makedepends = git
 	depends = openssl
 	depends = python
-	provides = python-hashpumpy
+	provides = python-hashpumpy=1.2.0.r8.g314268e
+	conflicts = python-hashpumpy
 	source = python-hashpumpy::git+https://github.com/bwall/HashPump
 	md5sums = SKIP
 
