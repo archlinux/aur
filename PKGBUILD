@@ -1,7 +1,7 @@
 # Maintainer: David Parrish <daveparrish@tutanota.com>
 
 pkgname=zap-desktop-git
-pkgver=0.1.1.beta.513.gf97ffa2
+pkgver=0.2.1.beta.142.g0afe3699
 pkgrel=1
 pkgdesc="Lightning wallet focused on user experience and ease of use"
 arch=('x86_64')
@@ -22,7 +22,7 @@ pkgver() {
 build() {
   cd "$pkgname" || exit
   yarn
-  npm run package-linux
+  npm run package
 }
 
 package() {
@@ -41,5 +41,5 @@ package() {
 
   # Desktop icon
   install -D -m644 "$srcdir/zap-desktop.desktop" "${pkgdir}/usr/share/applications/zap-desktop.desktop"
-  install -D -m644 "$srcdir/$pkgname/resources/icon.png" "${pkgdir}/usr/share/pixmaps/zap-desktop.png"
+  install -D -m644 "$srcdir/$pkgname/resources/icons/icon.png" "${pkgdir}/usr/share/pixmaps/zap-desktop.png"
 }
