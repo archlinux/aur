@@ -3,7 +3,7 @@
 
 pkgname=steam-native-runtime
 pkgver=1.0.0.56
-pkgrel=1
+pkgrel=2
 pkgdesc='Native replacement for the Steam runtime'
 arch=('x86_64')
 url='https://wiki.archlinux.org/index.php/Steam/Troubleshooting#Native_runtime'
@@ -20,7 +20,7 @@ depends=(
   'lib32-libdrm' 'lib32-libgcrypt15' 'lib32-libice' 'lib32-libjpeg6'
   'lib32-libnm-glib' 'lib32-libpng12' 'lib32-libpulse' 'lib32-librtmp0'
   'lib32-libsm' 'lib32-libtheora' 'lib32-libtiff4' 'lib32-libudev0-shim'
-  'lib32-libusb' 'lib32-libva' 'lib32-libvdpau' 'lib32-libvorbis'
+  'lib32-libusb' 'lib32-libva1' 'lib32-libvdpau' 'lib32-libvorbis'
   'lib32-libvpx1.3' 'lib32-libwrap' 'lib32-libxcomposite'
   'lib32-libxcursor' 'lib32-libxft' 'lib32-libxi' 'lib32-libxinerama'
   'lib32-libxmu' 'lib32-libxrandr' 'lib32-libxrender' 'lib32-libxtst'
@@ -30,7 +30,7 @@ depends=(
   'lib32-sdl_ttf' 'libappindicator-gtk2' 'libcaca' 'libcanberra' 'libcups'
   'libcurl-compat' 'libcurl-gnutls' 'dbus' 'libdrm' 'libgcrypt15' 'libice'
   'libjpeg6' 'libnm-glib' 'libpng12' 'libpulse' 'librtmp0' 'libsm' 'libtheora'
-  'libtiff4' 'libudev0-shim' 'libusb' 'libva' 'libvdpau' 'libvorbis'
+  'libtiff4' 'libudev0-shim' 'libusb' 'libva1' 'libvdpau' 'libvorbis'
   'libvpx1.3' 'libwrap' 'libxcomposite' 'libxcursor' 'libxft' 'libxi'
   'libxinerama' 'libxmu' 'libxrandr' 'libxrender' 'libxtst' 'libxxf86vm' 'nspr'
   'nss' 'openal' 'openssl-1.0' 'pango' 'sdl' 'sdl2' 'sdl2_image' 'sdl2_mixer'
