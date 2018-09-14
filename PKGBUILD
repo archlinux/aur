@@ -1,7 +1,7 @@
 # Maintainer: DanManN <dnahimov@gmail.com>
 pkgname=python-qiskit-sdk-git
 pkgver=0.4.8.r484.g23d7ea5
-pkgrel=2
+pkgrel=3
 pkgdesc="Python software development kit for writing quantum computing experiments, programs, and applications."
 arch=('any')
 url="http://www.qiskit.org"
@@ -23,5 +23,5 @@ package() {
   cd qiskit-terra
   cmake .
   python setup.py install --root="$pkgdir/" --optimize=1
-  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -D -m644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
