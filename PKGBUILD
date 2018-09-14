@@ -1,4 +1,4 @@
-# Maintainer: Gimmeapill <gimmeapill at gmail dot com>
+# Maintainer: Gimmeapill <gimmeapill@gmail.com>
 # Contributor: Boohbah <boohbah at gmail.com>
 # Contributor: SpepS <dreamspepser at yahoo.it>
 # Contributor: Bernardo Barros <bernardobarros at gmail.com>
@@ -6,14 +6,16 @@
 # Contributor: Christopher Arndt <chris at chrisarndt.de>
 
 pkgname=ardour-git
-pkgver=6.0.pre0.r501.g6cca669c9a
+pkgver=6.0.pre0.r1003.g556cf7a215
 pkgrel=1
 pkgdesc="A multichannel hard disk recorder and digital audio workstation"
 arch=('i686' 'x86_64')
 url="http://ardour.org/"
 license=('GPL')
-depends=('aubio' 'gtkmm' 'liblo' 'liblrdf' 'lilv' 'suil' 'rubberband' 'taglib' 'libarchive')
-makedepends=('git' 'python2' 'boost' 'cppunit' 'doxygen' 'graphviz' 'itstool')
+groups=('pro-audio')
+depends=('aubio' 'gtkmm' 'liblo' 'liblrdf' 'lilv' 'suil' 'rubberband' 'taglib' 'libarchive' 'python')
+#makedepends=('git' 'python2' 'boost' 'cppunit' 'doxygen' 'graphviz' 'itstool')
+makedepends=('git' 'boost' 'cppunit' 'doxygen' 'graphviz' 'itstool')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=("${pkgname%-*}::git://github.com/Ardour/ardour.git"
@@ -35,8 +37,10 @@ build() {
                         --libjack=weak \
                         --optimize \
                         --cxx11 \
+                        --freedesktop \
                         --ptformat \
-                        --no-phone-home
+                        --no-phone-home \
+                        --beatbox
 
   python2 waf build $MAKEFLAGS
 }
