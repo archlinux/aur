@@ -1,0 +1,16 @@
+pkgbase = emacs-treepy-git
+	pkgdesc = Generic tree traversing tools for Emacs Lisp
+	pkgver = r37.b40e6b0
+	pkgrel = 1
+	url = https://github.com/volrath/treepy.el
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	provides = emacs-treepy
+	conflicts = emacs-treepy
+	source = git+https://github.com/volrath/treepy.el.git
+	sha256sums = SKIP
+
+pkgname = emacs-treepy-git
+
