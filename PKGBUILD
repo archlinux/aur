@@ -2,17 +2,16 @@
 # Maintainer: winlu <derwinlu@gmail.com>
 
 pkgname=rebar3-zsh
-pkgver=3.6.1
+pkgver=3.6.2
 pkgrel=1
 pkgdesc="ZSH completion for rebar3."
 arch=('any')
 url="https://github.com/rebar/rebar3"
 license=('APACHE')
 depends=('zsh' 'rebar3'=$pkgver)
-source=("rebar3-$pkgver.tar.gz::https://github.com/rebar/rebar3/archive/${pkgver}.tar.gz")
-md5sums=('f01f47ad0164161348b5cd15a2231d05')
+source=("https://raw.githubusercontent.com/erlang/rebar3/${pkgver}/priv/shell-completion/zsh/_rebar3")
+md5sums=('9440d530f6bae98adcd0103da3e5a805')
 
 package() {
-  cd "$srcdir/rebar3-$pkgver"
-  install -Dm0644 "priv/shell-completion/zsh/_rebar3" "$pkgdir/usr/share/zsh/site-functions/_rebar3"
+  install -Dm0644 "${srcdir}/_rebar3" "$pkgdir/usr/share/zsh/site-functions/_rebar3"
 }
