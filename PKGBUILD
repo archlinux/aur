@@ -4,7 +4,7 @@ pkgver=1.0
 pkgrel=1
 pkgdesc="Various unicode fonts for Sanskrit (with particular emphasis on Devanagari). Fonts provided include: Siddhanta, Chandas, Uttara, Sanskrit2003, Noto Sans Devanagari."
 url="http://github.com/sanskrit-coders/sanskrit-fonts"
-license=('custom:OFL')
+# license=('custom:OFL')
 arch=(any)
 source=("https://github.com/sanskrit-coders/sanskrit-fonts/archive/v$pkgver.tar.gz")
 sha256sums=('004bcd3ead35844d98f629e9b466044fb91e3983c45e903fd63ef91843cc0c3f')
@@ -35,3 +35,5 @@ package() {
 	install -t "$pkgdir/usr/share/fonts/TTF/malayalam" -m644 *.ttf
 #	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
+# Explicitly calling mkfontscale and mkfontdir with post_install or post_upgrade, as in https://aur.archlinux.org/cgit/aur.git/tree/?h=ttf-siddhanta doesn't seem to be needed as those programs run automatically anyway. Same is assumed to be true of `fc-cache -fs >/dev/null`
