@@ -7,7 +7,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Adapted from https://wiki.zandronum.com/Compiling_Zandronum_on_Linux#Arch_Linux
 pkgname=zandronum-hg
 pkgver=r10074.c11f78a5b028
-pkgrel=1
+pkgrel=2
 _fmod_ver_true="4.24.16"
 _fmod_ver="$(echo ${_fmod_ver_true} | sed -e 's/\.//g')"
 pkgdesc="OpenGL ZDoom port with Client/Server multiplayer. (Development branch checkout)"
@@ -17,6 +17,7 @@ license=('custom')
 depends=('sdl' 'libjpeg6-turbo' 'glu' 'openssl' 'fluidsynth')
 optdepends=('timidity++: midi support'
             'freedoom: free IWAD'
+	    'doomseeker: a GUI server browser'
             'gtk2: for a GUI selection screen')
 makedepends=('zlib' 'sdl' 'libjpeg-turbo' 'nasm' 'gtk2' 'cmake' 'mercurial' 'fluidsynth' 'mesa' 'glu')
 _pkgname=zandronum
