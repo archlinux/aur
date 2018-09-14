@@ -23,8 +23,9 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'pulseaudio: Audio support'
             'speech-dispatcher: Text-to-Speech')
 
-# Set this variable to 1 if you want to build with clang compiler
-_CLANG=1
+## Set this variable to 1 if you want to build with clang compiler ##
+_CLANG=0
+
 if [ "$_CLANG" -eq "1" ]; then
 	optdepends+=(clang)
 fi
