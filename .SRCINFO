@@ -9,7 +9,6 @@ pkgbase = libanimation
 	arch = armv7h
 	license = LGPL
 	makedepends = meson
-	makedepends = ninja
 	depends = glib2
 	conflicts = libanimation-git
 	source = https://github.com/endlessm/libanimation/archive/Version_0.3.2.tar.gz
