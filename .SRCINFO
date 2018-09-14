@@ -1,7 +1,7 @@
 pkgbase = lxqt-qtplugin-git
 	pkgdesc = LXQt platform integration for Qt
-	pkgver = 0.13.0.3.g73d20ab
-	pkgrel = 3
+	pkgver = 0.13.0.4.g7065c43
+	pkgrel = 2
 	url = https://lxqt.org
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = lxqt-qtplugin-git
 	depends = libdbusmenu-qt5
 	depends = libqtxdg-git
 	optdepends = libfm-qt-git: for enhanced file dialog (highly recommended)
-	provides = lxqt-qtplugin
+	provides = lxqt-qtplugin=0.13.0.4.g7065c43
 	conflicts = lxqt-qtplugin
 	source = git+https://github.com/lxqt/lxqt-qtplugin.git
 	sha256sums = SKIP
