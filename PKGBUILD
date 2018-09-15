@@ -5,12 +5,12 @@
 
 pkgname=osu-lazer
 pkgver=2018.915.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Freeware rhythm video game - lazer version $pkgver"
 arch=('x86_64')
 license=('MIT' 'custom:CC-BY-NC 4.0')
 url='https://osu.ppy.sh/'
-depends=(ffmpeg libgl sdl dotnet-runtime)
+depends=(ffmpeg libgl sdl dotnet-runtime shared-mime-info)
 makedepends=(git dotnet-sdk)
 provides=(osu-lazer)
 conflicts=(osu-lazer-git)
@@ -28,9 +28,9 @@ sha256sums=(
     SKIP
     SKIP
     a34d37ed6d35788501985ad3c8f63888849734549113e11f43321917fdfa16bf
-    0b4267361752de1669b92d75b3b8318bda1080d897ab85c1f349b2048ab2a0e1
+    d845256e82c7aa10c317b2e1a7d848eef3bb7ba91412078b421d68c1b4b995ce
     3b3a9075f79ca7f2a4fd34eb182a5c1ada6eb118a95e49c1526df516365bbfe5
-    e05c105bcaa6d5247f27334aa5d45bc405d6fefd17ba76946d395267b7491bf1
+    6aa1721720bbc93b77434475f215c92878369900127a890cd49fce880160e659
 )
 
 prepare()

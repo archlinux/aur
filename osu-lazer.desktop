@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Version=2018.915.0
+Version=1.1
 Name=osu!lazer
 Icon=osu-lazer
 MimeType=application/x-osu-lazer-beatmap;application/zip;application/x-rar;
@@ -11,4 +11,6 @@ Comment[ja]=リズムはクリックするだけです！
 Exec=/usr/bin/osu-lazer
 Terminal=false
 Categories=Game
-X-Desktop-File-Install-Version=0.23
+X-Desktop-File-Install-Version=0.24
+StartupWMClass=osu!
+StartupNotify=true

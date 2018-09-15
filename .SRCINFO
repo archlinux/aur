@@ -1,7 +1,7 @@
 pkgbase = osu-lazer
 	pkgdesc = Freeware rhythm video game - lazer version 2018.915.0
 	pkgver = 2018.915.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://osu.ppy.sh/
 	arch = x86_64
 	license = MIT
@@ -12,6 +12,7 @@ pkgbase = osu-lazer
 	depends = libgl
 	depends = sdl
 	depends = dotnet-runtime
+	depends = shared-mime-info
 	provides = osu-lazer
 	conflicts = osu-lazer-git
 	source = osu-2018.915.0::git://github.com/ppy/osu.git#tag=2018.915.0
@@ -23,9 +24,9 @@ pkgbase = osu-lazer
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = a34d37ed6d35788501985ad3c8f63888849734549113e11f43321917fdfa16bf
-	sha256sums = 0b4267361752de1669b92d75b3b8318bda1080d897ab85c1f349b2048ab2a0e1
+	sha256sums = d845256e82c7aa10c317b2e1a7d848eef3bb7ba91412078b421d68c1b4b995ce
 	sha256sums = 3b3a9075f79ca7f2a4fd34eb182a5c1ada6eb118a95e49c1526df516365bbfe5
-	sha256sums = e05c105bcaa6d5247f27334aa5d45bc405d6fefd17ba76946d395267b7491bf1
+	sha256sums = 6aa1721720bbc93b77434475f215c92878369900127a890cd49fce880160e659
 
 pkgname = osu-lazer
 
