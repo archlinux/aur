@@ -6,7 +6,6 @@ pkgbase = qtemu-git
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	makedepends = cmake
 	depends = qemu
 	depends = qt5-base
 	conflicts = qtemu

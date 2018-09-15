@@ -8,15 +8,14 @@ pkgdesc="Qt5 GUI front-end for QEMU, similar to VirtualBox."
 url="http://qtemu.org"
 license=("GPL2")
 arch=('i686' 'x86_64')
-makedepends=('cmake')
 depends=('qemu' 'qt5-base')
 conflicts=('qtemu')
 source=("git+https://gitlab.com/carlavilla/$_gitname.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/$_gitname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${srcdir}/$_gitname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
