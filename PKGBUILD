@@ -24,7 +24,7 @@ build() {
 package() {
 	cd $srcdir/$pkgname-$pkgver
 
-	if [[ `uname -r` =~ ^([0-9.]+)\.[0-9]+-[0-9]+(-.*)$ ]]
+	if [[ `uname -r` =~ ^([0-9.]+)\.[0-9]+-[0-9zen]+(-.*)$ ]]
 	then
 		install -Dm 0744 module/netatop.ko $pkgdir/usr/lib/modules/extramodules-${BASH_REMATCH[1]}${BASH_REMATCH[2]}/netatop.ko
 	else
