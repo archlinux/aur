@@ -2,7 +2,7 @@
 pkgbase=yaru
 pkgname=('yaru-sound-theme' 'yaru-gtk-theme' 'yaru-gnome-shell-theme' 'yaru-icon-theme')
 pkgver=18.10.4
-pkgrel=1
+pkgrel=2
 _tag=18.10.4
 pkgdesc="Yaru default ubuntu theme"
 arch=(any)
@@ -66,6 +66,7 @@ package_yaru-gnome-shell-theme() {
   rm -r "$pkgdir/usr/share/themes/Yaru/gtk-2.0"
   rm -r "$pkgdir/usr/share/themes/Yaru/gtk-3.0"
   rm -r "$pkgdir/usr/share/themes/Yaru/index.theme"
+  rm -r "$pkgdir/usr/share/themes/Yaru-dark"
 }
 
 package_yaru-icon-theme() {
