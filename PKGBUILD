@@ -1,9 +1,9 @@
-# Maintainer: Jochen Jägers <aur@diezonks.de>
+# Maintainer: Jochen Jägers (JochenJ) <aur@diezonks.de>
 # Contributor: Malte Rabenseifner <mail@malte-rabenseifner.de>
 # Contributor: Patrick Burroughs (Celti) <celti@celti.name>
 
 pkgname=networkmanager-libreswan-git
-pkgver=1.2.7.dev.r78.g94bc845
+pkgver=1.2.7.dev.r79.g94bc845
 pkgrel=1
 pkgdesc="NetworkManager IPSec VPN plugin for Libreswan"
 arch=('i686' 'x86_64')
@@ -18,8 +18,7 @@ sha256sums=('SKIP')
 
 build() {
   cd $srcdir/NetworkManager-libreswan
-  patch -p1 < /home/jochen/Downloads/NetworkManager-libreswan/pfs.patch
-  
+
   ./autogen.sh --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
     --libexecdir=/usr/lib/networkmanager \
     --enable-more-warnings=yes \
