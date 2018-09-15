@@ -2,7 +2,7 @@
 # Contributor: Jan Magnus Brevik <janmbrevik@gmail.com>
 
 pkgname=gpodder-git
-pkgver=3.10.4.r3.ged30e8b9
+pkgver=3.10.5.r0.g56ab5a78
 pkgrel=1
 pkgdesc='A podcast receiver/catcher'
 license=('GPL3')

@@ -1,6 +1,6 @@
 pkgbase = gpodder-git
 	pkgdesc = A podcast receiver/catcher
-	pkgver = 3.10.4.r3.ged30e8b9
+	pkgver = 3.10.5.r0.g56ab5a78
 	pkgrel = 1
 	url = http://gpodder.org/
 	arch = any
