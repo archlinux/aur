@@ -1,7 +1,7 @@
 pkgbase = avdump2-bin
 	pkgdesc = AniDB video/audio codec identification utility (command line version)
 	pkgver = 6714
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.anidb.net/w/Avdump2
 	arch = any
 	license = UNKNOWN

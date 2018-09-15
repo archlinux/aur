@@ -1,7 +1,3 @@
 #!/bin/bash
 AVDUMP2CL="/opt/avdump2/AVDump2CL.exe"
-# Workaround for https://github.com/mono/mono/issues/6752
-if [[ -n "$TERM" ]]; then
-  export TERM=xterm
-fi
 exec mono --desktop "$AVDUMP2CL" "$@"

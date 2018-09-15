@@ -1,7 +1,7 @@
 # Maintainer: 2ion
 pkgname=avdump2-bin
 pkgver=6714
-pkgrel=2
+pkgrel=3
 pkgdesc="AniDB video/audio codec identification utility (command line version)"
 arch=('any')
 url="https://wiki.anidb.net/w/Avdump2"
