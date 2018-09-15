@@ -2,8 +2,8 @@
 
 _pkgbase='mcipc'
 pkgname="python-${_pkgbase}-git"
-pkgver=r145.fbb3c3e
-pkgrel=1
+pkgver=latest
+pkgrel=2
 pkgdesc='Python 3 library and scripts for the RCON and Query protocol'
 arch=('any')
 url="https://github.com/coNQP/${_pkgbase}"
@@ -11,8 +11,8 @@ license=('GPLv3')
 depends=('python' 'python-pyzmq')
 optdepends=('python-docopt: for scripts')
 makedepends=('git' 'python')
-provides=('mcipc-git')
-replaces=('mcipc-git')
+provides=("python-${_pkgbase}")
+conflicts=("python-${_pkgbase}")
 source=("${_pkgbase}::git+${url}.git")
 md5sums=('SKIP')
 pkgdir='pkg'

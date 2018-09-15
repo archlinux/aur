@@ -1,4 +1,4 @@
-src
-pkg
-*.tar.xz*
-mcipc
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
