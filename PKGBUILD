@@ -21,13 +21,13 @@ pkgver() {
 }
 
 build() {
-    mkdir -p "$pkgname"/build
-    cd "$pkgname"/build
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -DEVERYTHING=0 -DMURMUR=0 -DMUCOUS=0 -DMUSEEKD=0 -DMUSETUP=0 -DMUSCAN=0 -DMUSEEQ=1 -DPYTHON_BINDINGS=0 ${srcdir}/${pkgname}
-	make
+  mkdir -p "$pkgname"/build
+  cd "$pkgname"/build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DEVERYTHING=0 -DMURMUR=0 -DMUCOUS=0 -DMUSEEKD=0 -DMUSETUP=0 -DMUSCAN=0 -DMUSEEQ=1 -DPYTHON_BINDINGS=0 "$srcdir"/"$pkgname"
+  make
 }
 
 package() {
-    cd "$pkgname"/build
-	make DESTDIR="$pkgdir" install
+  cd "$pkgname"/build
+  make DESTDIR="$pkgdir" install
 }
