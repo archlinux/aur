@@ -12,6 +12,7 @@ pkgbase = python-peeweeplus-git
 	depends = python-argon2_cffi
 	depends = python-timelib-git
 	depends = python-strflib
+	depends = python-configlib
 	depends = python-functoolsplus
 	provides = python-peeweeplus
 	conflicts = python-peeweeplus
