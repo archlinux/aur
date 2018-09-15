@@ -11,6 +11,8 @@ pkgbase = python-peeweeplus-git
 	depends = python-peewee
 	depends = python-argon2_cffi
 	depends = python-timelib-git
+	depends = python-strflib
+	depends = python-functoolsplus
 	source = peeweeplus::git+https://gitlab.com/HOMEINFO/peeweeplus.git
 	md5sums = SKIP
 
