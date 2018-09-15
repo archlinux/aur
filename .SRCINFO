@@ -1,7 +1,7 @@
 pkgbase = tracktion-waveform-beta
 	pkgdesc = Audio and MIDI Workstation (DAW)
 	pkgver = 9.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.tracktion.com/
 	arch = x86_64
 	license = custom

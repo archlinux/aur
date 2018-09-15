@@ -5,7 +5,7 @@
 
 pkgname=tracktion-waveform-beta
 pkgver=9.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Audio and MIDI Workstation (DAW)"
 arch=('x86_64')
 url="https://www.tracktion.com/"
@@ -24,10 +24,10 @@ md5sums=('bc11e9b350649b5b999a1e6f3c963300')
 
 package() {
     executable=Waveform9
-    tar -x --lzma -f data.tar.lzma -C "${pkgdir}"
+    tar -x --xz -f data.tar.xz -C "${pkgdir}"
     install -D -m 644 "$startdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     sed "s/@executable@/$executable/g" "$startdir/tracktion-waveform" > "$pkgdir/usr/bin/$pkgname"
     chmod 755 "$pkgdir/usr/bin/$pkgname"
-    sed -i "s/Exec=.*/Exec=$pkgname/" "$pkgdir/usr/share/applications/waveform9.desktop"
+    sed -i "s/Exec=.*/Exec=$pkgname/" "$pkgdir/usr/share/applications/Waveform9.desktop"
     mv "$pkgdir/usr/share/doc/waveform9" "$pkgdir/usr/share/doc/$pkgname"
 }
