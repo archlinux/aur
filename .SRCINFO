@@ -1,0 +1,18 @@
+pkgbase = nbuexplorer
+	pkgdesc = Nokia NBU, NBF, NFB, NFC and ARC backup file parser, extractor and viewer.
+	pkgver = 3.3
+	pkgrel = 2
+	url = https://sourceforge.net/projects/nbuexplorer/
+	arch = any
+	license = GPL3
+	makedepends = bash>=4.0
+	makedepends = subversion
+	makedepends = svnwcrev
+	depends = mono
+	source = nbuexplorer::svn+https://svn.code.sf.net/p/nbuexplorer/code/trunk#revision=88
+	source = nbuexplorer.sh
+	sha256sums = SKIP
+	sha256sums = 99c81f346e7c5ecbb1f880d341c775ab27358d9fad9bec76b85be8c2ed30f2d2
+
+pkgname = nbuexplorer
+
