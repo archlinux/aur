@@ -1,4 +1,5 @@
 # Maintainer: gato_lento
+# yaroslav <proninyaroslav@mail.ru>
 # Contributor: Frank Ickstadt (frank dot ickstadt at gmail dot com)
 # adpoted from mOLOk since pkgver=0.7
 
