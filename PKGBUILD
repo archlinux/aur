@@ -4,7 +4,7 @@
 
 pkgname=libreswan
 pkgver=3.25
-pkgrel=1
+pkgrel=2
 pkgdesc="IPsec implementation with IKEv1 and IKEv2 keying protocols"
 arch=('i686' 'x86_64')
 url="https://libreswan.org/"
