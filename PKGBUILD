@@ -1,7 +1,7 @@
-model="9142cdn"
-pkgname="brother-mfc-$model"
+pkgname="brother-mfc-9140cdn"
 pkgver="1.1.3"
 pkgrel=1
+model="9142cdn"
 _cupswrapper_ver=1.1.4
 _revision=0
 pkgdesc="LPR and CUPS driver for the Brother MFC-9140CDN"
