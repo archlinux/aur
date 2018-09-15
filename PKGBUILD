@@ -1,13 +1,13 @@
 # Maintainer: chenjunyu19 <1335546814@qq.com>
 
 pkgname=netease-cloud-music-dl-git
-pkgver=r22.2849de3
+pkgver=r25.5204896
 pkgrel=1
 pkgdesc="Netease cloud music song downloader, with full ID3 metadata, eg: front cover image, artist name, album name, song title and so on."
 arch=('any')
 url="https://github.com/codezjx/netease-cloud-music-dl"
 license=('MIT')
-depends=('python' 'python-requests>=2.17.3' 'python-crypto>=2.6.1' 'python-mutagen>=1.38.0' 'python-pillow>=4.3.0')
+depends=('python' 'python-requests>=2.17.3' 'python-pycryptodomex' 'python-mutagen>=1.38.0' 'python-pillow>=4.3.0')
 makedepends=('git' 'python-setuptools')
 options=(!emptydirs)
 source=("git+https://github.com/codezjx/netease-cloud-music-dl.git")
