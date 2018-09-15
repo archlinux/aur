@@ -37,4 +37,4 @@ package_python2-getdevinfo() {
   cd getdevinfo-$pkgver-py2
   python2 setup.py install --root="$pkgdir"
 }
-md5sums=('4153eeb29eb16ceb511321389957ee55')
+md5sums=('e730b5f09919416634aadf6a2d923cfb')
