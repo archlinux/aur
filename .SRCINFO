@@ -1,6 +1,7 @@
 pkgbase = python-opengl-accelerate
+	pkgdesc = This is the Cython-coded accelerator module for PyOpenGL 3.x
 	pkgver = 3.1.3b1
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = BSD
 	depends = python

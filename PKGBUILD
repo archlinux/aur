@@ -1,8 +1,8 @@
 # Maintainer: Tobias Bachmann <tobachmann@gmx.de>
 pkgname=python-opengl-accelerate
 pkgver=3.1.3b1 # We have to use the beta version for now, as 3.1.0 does not support Python 3.7
-pkgrel=1
-pkgdesc=""
+pkgrel=2
+pkgdesc="This is the Cython-coded accelerator module for PyOpenGL 3.x"
 _name=PyOpenGL-accelerate
 arch=('any')
 url=""
