@@ -41,7 +41,6 @@ pkgbase = icecat
 	optdepends = libnotify: Notification integration
 	optdepends = pulseaudio: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
-	optdepends = clang
 	source = http://alpha.gnu.org/gnu/gnuzilla/60.2.0/icecat-60.2.0-gnu1.tar.bz2
 	source = http://alpha.gnu.org/gnu/gnuzilla/60.2.0/icecat-60.2.0-gnu1.tar.bz2.sig
 	source = icecat.desktop
