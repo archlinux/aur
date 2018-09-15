@@ -1,10 +1,10 @@
 # Maintainer: pingplug <pingplug@foxmail.com>
 
 _pkgname=rust
-_cargo=0.29.0
+_cargo=0.30.0
 
 pkgname=mingw-w64-rust-bin
-pkgver=1.28.0
+pkgver=1.29.0
 pkgrel=1
 pkgdesc="Systems programming language focused on safety, speed and concurrency (official build, mingw-w64)"
 arch=('x86_64')
@@ -25,15 +25,15 @@ source=("https://static.rust-lang.org/dist/cargo-${_cargo}-x86_64-unknown-linux-
         "https://static.rust-lang.org/dist/rust-std-${pkgver}-x86_64-unknown-linux-gnu.tar.xz"{,.asc}
         "https://static.rust-lang.org/dist/rust-std-${pkgver}-i686-pc-windows-gnu.tar.xz"{,.asc}
         "https://static.rust-lang.org/dist/rust-std-${pkgver}-x86_64-pc-windows-gnu.tar.xz"{,.asc})
-sha256sums=('2e62f91aab9ea496209a060e7ec62f088f5081b568a28b88f3c8ea7073db9829'
+sha256sums=('0c615e0b09a38a5e013f74deb09d44771cc7ecfe7e5ba6b77a1007ff994e2738'
             'SKIP'
-            '193f5e18e15152c26d1b09b97ee72f334a0e9ef8f0ba05187a3f20dc02443c4f'
+            '3cb6b99c5d2efae5d005fe9fa75086e2723be2eb46653712c114c792bb7d2625'
             'SKIP'
-            '80aca8c46aa724c91f7cb7fc038c8c94e6648e73156e9f35e1f73bc5dd5b0249'
+            '58e53fc0823b7f5669e3806b3cb87503bca91e815383b37d0fce34a9140bed14'
             'SKIP'
-            '47288679bea8e81c9413fb530378b9f4a9bb47f46de5517de48f0ba210020b9b'
+            '7381631f2eb75b0065c477c3cf8fe04222abd0d8ef1c7aefd909fafeafc0d646'
             'SKIP'
-            '685102a86203938af8935c792fe4818c02ff4705cf76bcaf5abde7da415a04fb'
+            'd2cdf16ca9592430d9884b9799b1879c4e5b30f086403c1a09cf545a2c459f30'
             'SKIP')
 validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE') # Rust Language (Tag and Release Signing Key) <rust-key@rust-lang.org>
 
@@ -95,7 +95,7 @@ package() {
 
   # strip
   strip --strip-all "${pkgdir}/opt/${_pkgname}/bin/"{cargo,rustc,rustdoc}
-  strip --strip-all "${pkgdir}/opt/${_pkgname}/lib/rustlib/x86_64-unknown-linux-gnu/bin/"lld
+  strip --strip-all "${pkgdir}/opt/${_pkgname}/lib/rustlib/x86_64-unknown-linux-gnu/bin/"rust-lld
   strip --strip-unneeded "${pkgdir}/opt/${_pkgname}/lib/rustlib/x86_64-unknown-linux-gnu/lib/"*.so
   strip --strip-unneeded "${pkgdir}/opt/${_pkgname}/lib/rustlib/x86_64-unknown-linux-gnu/codegen-backends/"*.so
   i686-w64-mingw32-strip --strip-unneeded "${pkgdir}/opt/${_pkgname}/lib/rustlib/i686-pc-windows-gnu/lib/"*.dll
