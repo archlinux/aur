@@ -1,14 +1,14 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=rq-git
 pkgver=1.0.1.r4.g5d100b0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Read plain-text files in blazing speed"
 arch=('i686' 'x86_64')
 url="https://github.com/maandree/rq"
 license=('MIT')
 groups=()
-depends=('')
+depends=()
 makedepends=('git')
 optdepends=()
 checkdepends=()
