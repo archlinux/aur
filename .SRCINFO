@@ -1,0 +1,17 @@
+pkgbase = python-configlib-git
+	pkgdesc = An extended configuration parsing library
+	pkgver = latest
+	pkgrel = 1
+	url = https://gitlab.com/HOMEINFO/configlib
+	arch = any
+	license = GPLv3
+	makedepends = git
+	makedepends = python
+	depends = python
+	provides = python-configlib
+	conflicts = python-configlib
+	source = configlib::git+https://gitlab.com/HOMEINFO/configlib.git
+	md5sums = SKIP
+
+pkgname = python-configlib-git
+
