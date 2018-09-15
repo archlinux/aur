@@ -3,10 +3,11 @@
 # Contributor: Leslie P. Polzer <polzer@gnu.org>
 # Contributor: Mark Pustjens <pustjens@dds.nl>
 # Contributor: Tom Tobin <archlinux@tomxtobin.com>
+# Contributor: Jean-Philippe Menil <jpmenil@gmail.com>
 
 _pkgname=isync
 pkgname=$_pkgname-git
-pkgver=r868.4b37688
+pkgver=904.f7cec30
 pkgrel=1
 pkgdesc="IMAP and MailDir mailbox synchronizer"
 url="http://isync.sourceforge.net/"
@@ -16,7 +17,7 @@ depends=('libsasl' 'openssl')
 makedepends=('git')
 conflicts=('isync')
 replaces=('isync')
-source=('git+https://git.code.sf.net/p/isync/isync')
+source=('git+https://git.code.sf.net/p/isync/isync#branch=1.3')
 sha256sums=('SKIP')
 
 pkgver() {
