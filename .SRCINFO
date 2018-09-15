@@ -1,7 +1,7 @@
 pkgbase = icon
 	pkgdesc = The Icon programming language
 	pkgver = 951
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.cs.arizona.edu/icon/
 	arch = i686
 	arch = x86_64
