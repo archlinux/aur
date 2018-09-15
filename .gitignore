@@ -1,4 +1,4 @@
-src
-pkg
-*.tar.xz*
-peeweeplus
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
