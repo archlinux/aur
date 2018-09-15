@@ -3,7 +3,7 @@
 pkgname=arcint-gtk-theme-git
 _pkgname=arcint-theme
 pkgdesc="My own version of horst3180's Arc theme"
-pkgver=1.0
+pkgver=19700101
 pkgrel=1
 provides=("arcint-gtk-theme")
 conflicts=("arcint-gtk-theme")
@@ -18,7 +18,7 @@ pkgver() {
 }
 
 prepare() {
-    git clone --depth 1 ${url}
+    git clone --depth 1 "${url}.git"
 }
 
 build() {
