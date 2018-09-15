@@ -1,12 +1,15 @@
 pkgbase = doctl
-	pkgdesc = A command-line client for DigitalOcean.
-	pkgver = 1.4.0
+	pkgdesc = A command line tool for DigitalOcean services
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://github.com/digitalocean/doctl
+	arch = i686
 	arch = x86_64
-	license = Apache
-	source = https://github.com/digitalocean/doctl/releases/download/v1.4.0/doctl-1.4.0-linux-amd64.tar.gz
-	sha256sums = 97c8cb19bcc66901a7166f4ed471d5fe033c7d445767bfc34a145230048efa6e
+	license = APACHE
+	makedepends = go
+	makedepends = git
+	source = doctl-1.9.0.tar.gz::https://github.com/digitalocean/doctl/archive/v1.9.0.tar.gz
+	sha256sums = 3187f8b989d3e284c90ec1ef5252e8949319835b0e62cafe7b8df41c5ca8f422
 
 pkgname = doctl
 
