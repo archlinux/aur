@@ -1,15 +1,15 @@
 pkgbase = anarchism
 	pkgdesc = Source of information regarding Anarchist (libertarian socialist) theory and practice.
 	pkgver = 15.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.infoshop.org/AnAnarchistFAQ
 	arch = any
 	license = FDL
 	makedepends = librsvg
 	depends = xdg-utils
 	options = docs
-	source = http://ftp.debian.org/debian/pool/main/a/anarchism/anarchism_15.1-5_all.deb
-	sha256sums = 526cf1bc84b6d9a97f6cf7f5d875d5e369194a079324ef6e5463ff378ee07e1b
+	source = http://ftp.debian.org/debian/pool/main/a/anarchism/anarchism_15.1-7_all.deb
+	sha256sums = f61a4d41c37a301c22dd57c8e5ed40695063cbd9d99d122e736e62e8ccd76b97
 
 pkgname = anarchism
 
