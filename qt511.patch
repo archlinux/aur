@@ -1,0 +1,16 @@
+diff --git a/plugins/keybindings/KeysPage.cpp b/plugins/keybindings/KeysPage.cpp
+index 6579e3e..e68b039 100644
+--- a/plugins/keybindings/KeysPage.cpp
++++ b/plugins/keybindings/KeysPage.cpp
+@@ -1,9 +1,10 @@
+ #include "KeysPage.h"
+ 
+-#include <QPushButton>
++#include <QAction>
+ #include <QHeaderView>
+ #include <QKeyEvent>
+ #include <QMessageBox>
++#include <QPushButton>
+ 
+ #include "KeySettings.h"
+ #include "Log.h"
