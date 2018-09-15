@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="A simple GUI frontend to make ddrescue (a command-line data recovery tool) easier to use."
 arch=('any')
 url="https://launchpad.net/ddrescue-gui"
-depends=('python2' 'wxpython' 'ddrescue' 'parted' 'lshw' 'python2-beautifulsoup4')
+depends=('python2' 'python2-requests' 'python2-getdevinfo' 'wxpython' 'ddrescue' 'parted' 'lshw' 'python2-beautifulsoup4')
 license=('GPL3')
 source=(https://launchpad.net/ddrescue-gui/2.x/${pkgver}/+download/ddrescue-gui_${pkgver}%7Eotherdistro-0ubuntu1%7Eppa1.tar.gz)
 provides=('ddrescue-gui')
@@ -22,7 +22,7 @@ package() {
 	cp -r "${srcdir}/${pkgname}-${pkgver}/images" "${pkgdir}/usr/share/${pkgname}"
 	cp -r "${srcdir}/${pkgname}-${pkgver}/other" "${pkgdir}/usr/share/${pkgname}"
 	cp -r "${srcdir}/${pkgname}-${pkgver}/Tools" "${pkgdir}/usr/share/${pkgname}"
-	cp -r "${srcdir}/${pkgname}-${pkgver}/GetDevInfo" "${pkgdir}/usr/share/${pkgname}"
+#	cp -r "${srcdir}/${pkgname}-${pkgver}/GetDevInfo" "${pkgdir}/usr/share/${pkgname}"
 	install -D -m755 ${srcdir}/${pkgname}-${pkgver}/*.py "${pkgdir}/usr/share/${pkgname}"
 	install -D -m644 "${srcdir}/${pkgname}-${pkgver}/ddrescue-gui.desktop" "${pkgdir}/usr/share/applications"
 	install -D -m644 "${srcdir}/${pkgname}-${pkgver}/ddrescue-gui.png" "${pkgdir}/usr/share/pixmaps"
