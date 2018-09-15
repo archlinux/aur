@@ -2,7 +2,7 @@
 
 pkgname=bees-git
 pkgver=v0.5.r160.gbcfc3cf
-pkgrel=1
+pkgrel=2
 pkgdesc="Best-Effort Extent-Same, a btrfs deduplicator daemon"
 arch=('any')
 url="https://github.com/Zygo/bees"
@@ -33,6 +33,8 @@ package() {
 	if [ -f "${pkgdir}/usr/sbin/beesd" ]; then
 		mv -v "${pkgdir}/usr/sbin/beesd" "${pkgdir}/usr/bin/beesd"
 	fi
+
+	sed -i "s/grep -q 'UUID='/grep 'UUID='/g" "${pkgdir}/usr/bin/beesd"
 
 	if grep "$pkgname" "${pkgdir}/usr/bin/beesd"; then
 		exit 1
