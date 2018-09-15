@@ -12,6 +12,7 @@ license=('LGPL')
 depends=('python' 'python-pyudev' 'python-daemonize' 'python-evdev' 'python-dbus' 'python-pyte')
 optdepends=('brltty: For Braille support'
 'gstreamer: for soundicons via gstreamer'
+'socat: Control running Fenrir screenreader'
   'sox: The default sound driver'
   'python-espeak: TTS support'
   'python-pyttsx: TTS support'
