@@ -1,4 +1,16 @@
 # Maintainer: Adam Nielsen <malvineous@shikadi.net>
+#
+# Example use:
+#
+# To try ALL MIBs:
+#   snmpwalk -v1 -c public -m ALL mydrac 1
+#
+# To use just the DRAC MIBs:
+#   snmpwalk -v1 -c public -m +DELLRAC-MIB:IDRAC-MIB-SMIv2 mydrac 1.3.6.1.4.1
+#
+# To get a single value:
+#   snmpget -v1 -c public -m +IDRAC-MIB-SMIv2 mydrac IDRAC-MIB-SMIv2::systemServiceTag.0
+#
 
 pkgname=('dell-drac-mibs')
 pkgver=8.5.A00
