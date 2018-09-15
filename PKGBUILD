@@ -9,9 +9,9 @@ arch=(any)
 url=" https://pypi.python.org/pypi/asgi_ipc"
 license=('BSD')
 makedepends=('python-setuptools')
-depends=('python' 'python-msgpack' 'python-posix_ipc' 'python-asgiref')
+depends=('python' 'python-msgpack' 'python-asgiref')
 source=("https://pypi.io/packages/source/a/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
-md5sums=('b0cb6e35867600acfb4e46405dfa0678')
+sha256sums=('2403f41184405791b05e7aee570bd6ccd47e2d91845d78fe17adcf58ef48c037')
 
 build() {
     cd "${srcdir}/${_pypi_pkgname}-${pkgver}"

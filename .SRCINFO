@@ -8,10 +8,9 @@ pkgbase = python-asgi-ipc
 	makedepends = python-setuptools
 	depends = python
 	depends = python-msgpack
-	depends = python-posix_ipc
 	depends = python-asgiref
 	source = https://pypi.io/packages/source/a/asgi_ipc/asgi_ipc-1.4.2.tar.gz
-	md5sums = b0cb6e35867600acfb4e46405dfa0678
+	sha256sums = 2403f41184405791b05e7aee570bd6ccd47e2d91845d78fe17adcf58ef48c037
 
 pkgname = python-asgi-ipc
 
