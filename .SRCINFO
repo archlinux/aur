@@ -1,8 +1,8 @@
 pkgbase = noad
 	pkgdesc = VDR addon for detecting commercials and setting cutting marks accordingly.
 	pkgver = 0.8.6
-	pkgrel = 2
-	url = http://noad.net23.net
+	pkgrel = 3
+	url = https://github.com/madmartin/noad
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -10,12 +10,10 @@ pkgbase = noad
 	makedepends = ffmpeg
 	depends = libmpeg2
 	depends = ffmpeg
-	source = http://noad.net23.net/noad-0.8.6.tar.bz2
-	source = noad-0.8.6-libav9.diff
-	source = noad-0.8.6-ffmpeg-2.4.patch
-	md5sums = 06b844a347c32b96c5690b0ac32739ac
-	md5sums = 0b85446332f6c1babe960b4fd85f0a19
-	md5sums = 212483f3e6772f1adb5efa48ccf65e95
+	source = https://github.com/madmartin/noad/archive/v0.8.6.tar.gz
+	source = noad-0.8.6-ffmpeg3.4.diff
+	md5sums = 4dedaa1b9a1ef3dcb4830a9f945707a1
+	md5sums = 9e7c3540e0e0e1a1153c9a8b5da93422
 
 pkgname = noad
 

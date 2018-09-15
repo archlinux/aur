@@ -3,24 +3,22 @@
 
 pkgname=noad
 pkgver=0.8.6
-pkgrel=2
+pkgrel=3
 pkgdesc="VDR addon for detecting commercials and setting cutting marks accordingly."
 arch=('i686' 'x86_64')
-url="http://noad.net23.net"
+url="https://github.com/madmartin/noad"
 license=('GPL')
 depends=('libmpeg2' 'ffmpeg')
 makedepends=('libmpeg2' 'ffmpeg')
-source=(${url}/${pkgname}-${pkgver}.tar.bz2
-        noad-0.8.6-libav9.diff
-        noad-0.8.6-ffmpeg-2.4.patch)
-md5sums=('06b844a347c32b96c5690b0ac32739ac'
-         '0b85446332f6c1babe960b4fd85f0a19'
-         '212483f3e6772f1adb5efa48ccf65e95')
+source=(${url}/archive/v${pkgver}.tar.gz
+        'noad-0.8.6-ffmpeg3.4.diff')
+
+md5sums=('4dedaa1b9a1ef3dcb4830a9f945707a1'
+         '9e7c3540e0e0e1a1153c9a8b5da93422')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -Np1 -i "$srcdir/noad-0.8.6-libav9.diff"
-  patch -Np1 -i "$srcdir/noad-0.8.6-ffmpeg-2.4.patch"
+  patch -Np1 -i "$srcdir/noad-0.8.6-ffmpeg3.4.diff"
 }
 
 build() {

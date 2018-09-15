@@ -1,0 +1,692 @@
+diff -Nur noad-0.8.6-org/audiotools.cpp noad-0.8.6-devel/audiotools.cpp
+--- noad-0.8.6-org/audiotools.cpp	2013-03-22 14:36:08.000000000 +0100
++++ noad-0.8.6-devel/audiotools.cpp	2018-03-09 20:00:10.719842249 +0100
+@@ -58,7 +58,11 @@
+ //int64_t audiopts=0;
+ extern uint64_t audiopts;
+ int64_t audiosamples=0;
++#if LIBAVCODEC_VERSION_MAJOR < 57 
+ uint8_t audio_in_buffer[8192];
++#else
++uint8_t audio_in_buffer[8192 + AV_INPUT_BUFFER_PADDING_SIZE];
++#endif
+ int in_buf_count = 0;
+ static bool av_codec_initialised = false;
+ 
+@@ -95,8 +99,12 @@
+   avcodec_register_all();
+     
+   /* find the mpeg audio decoder */
++#if LIBAVCODEC_VERSION_MAJOR < 57 
+   codec = avcodec_find_decoder(CODEC_ID_MP3);
+-  
++#else
++  codec = avcodec_find_decoder(AV_CODEC_ID_MP3);
++#endif
++
+   if (!codec) 
+   {
+     fprintf(stdout, "codec not found\n");
+@@ -120,7 +128,7 @@
+   }
+ 
+   outbuf = (uint8_t *)malloc(AVCODEC_MAX_AUDIO_FRAME_SIZE);
+-
++  
+   av_codec_initialised = true;
+         
+ }
+@@ -182,14 +190,74 @@
+ #if (LIBAVCODEC_VERSION_MAJOR < 53)
+     len = avcodec_decode_audio2(codecContext, (short *)outbuf, &out_size,
+                                   inbuf_ptr, 576/*size*/);
+-#else
++#elseif (LIBAVCODEC_VERSION_MAJOR < 57)
+     AVPacket p;
+     av_init_packet(&p);
+     p.data = inbuf_ptr;
+     p.size = 576;
+     len = avcodec_decode_audio3(codecContext, (short *)outbuf,
+                          &out_size, &p);
++#else
++    AVPacket p;
++    av_init_packet(&p);
++    p.data = inbuf_ptr;
++    p.size = 576;
++    int ret = avcodec_send_packet(codecContext, &p);
++    if (ret != 0 && ret != AVERROR(EAGAIN))
++    {
++        size = 0;
++        break;
++    }
++    len = ret == AVERROR(EAGAIN)? 0 : 576;
++
++    AVFrame *frame = av_frame_alloc();
++    if (!frame)
++    {
++        size = 0;
++        break;
++    }
++
++		do
++		{
++			ret = avcodec_receive_frame(codecContext, frame);
++			if (ret != 0 && ret != AVERROR (EAGAIN))
++			{
++				size = 0;
++				av_frame_free(&frame);
++				out_size = 0;
++				break;
++			}
++			
++			int ch, plane_size;
++			int planar    = av_sample_fmt_is_planar(codecContext->sample_fmt);
++			int data_size = av_samples_get_buffer_size(&plane_size, codecContext->channels,
++                                                 frame->nb_samples,
++                                                 codecContext->sample_fmt, 1);
++			if (out_size < data_size) {
++				av_log(codecContext, AV_LOG_ERROR, "output buffer size is too small for "
++                                    "the current frame (%d < %d)\n", out_size, data_size);
++				av_frame_free(&frame);
++				size = 0;
++				out_size = 0;
++				break;
++			}
++
++			memcpy(outbuf, frame->extended_data[0], plane_size);
++
++			if (planar && codecContext->channels > 1) {
++				uint8_t *out = ((uint8_t *)outbuf) + plane_size;
++				for (ch = 1; ch < codecContext->channels; ch++) {
++					memcpy(out, frame->extended_data[ch], plane_size);
++					out += plane_size;
++				}
++			}
++			out_size = data_size;
++		}
++		while (ret == 0);
++
++		av_frame_free(&frame);
+ #endif
++
+     if (len < 0)
+     {
+       //fprintf(stderr, "Error while decoding audio\n\n");
+@@ -199,7 +267,7 @@
+       break;
+     }
+ //    SDL_PauseAudio(0);
+-    if (out_size > 0) 
++    if (out_size > 0)
+     {
+       audiosamples += out_size/4;
+       //fprintf(stdout,"decode audio out_size=%d\n",out_size);
+diff -Nur noad-0.8.6-org/ffmpeg_decoder.cpp noad-0.8.6-devel/ffmpeg_decoder.cpp
+--- noad-0.8.6-org/ffmpeg_decoder.cpp	2013-03-22 14:52:33.000000000 +0100
++++ noad-0.8.6-devel/ffmpeg_decoder.cpp	2018-03-11 22:22:47.397309637 +0100
+@@ -126,6 +126,9 @@
+ 	pFormatCtx = NULL;
+ 	//i, videoStream;
+ 	pCodecCtx = NULL;
++#if LIBAVCODEC_VERSION_MAJOR > 56
++	pCodecPar = NULL;
++#endif
+ 	pCodec = NULL;
+ 	pFrame = NULL;
+ 	__bufBytes = 0;
+@@ -184,11 +187,16 @@
+ 
+ 	// Retrieve stream information
+ 	resetDecoder();
+-   int openCode2 = av_find_stream_info(pFormatCtx);
++#if LIBAVCODEC_VERSION_MAJOR <57
++	int openCode2 = av_find_stream_info(pFormatCtx);
++#else
++	int openCode2 = avformat_find_stream_info(pFormatCtx, NULL);
++#endif
+ 	if(openCode2<0)
+ 		return -1; // Couldn't find stream information
+ 
+ 	// Find the first video stream
++#if LIBAVCODEC_VERSION_MAJOR <57
+ 	videoStream=-1;
+ 	for(i=0; i < (int)pFormatCtx->nb_streams; i++)
+ 	{
+@@ -198,10 +206,17 @@
+ 			break;
+ 		}
+ 	}
+-	if(videoStream==-1)
+-		return -1; // Didn't find a video stream
++#else
++	videoStream = av_find_best_stream(pFormatCtx, AVMEDIA_TYPE_VIDEO, -1, -1, &pCodec, 0);
++#endif
++	if(videoStream < 0)
++	{
++		esyslog("can't find a video stream!");
++		return -1;
++	}
+ 
+ 	// Get a pointer to the codec context for the video stream
++#if LIBAVCODEC_VERSION_MAJOR <57
+ 	pCodecCtx=pFormatCtx->streams[videoStream]->codec;
+ 	pCodecCtx->flags|=CODEC_FLAG_EMU_EDGE;
+ 
+@@ -210,9 +225,18 @@
+ 		esyslog("can't detect codec for video!");
+ 		return -1;
+ 	}
++#else	
++	pCodecPar=pFormatCtx->streams[videoStream]->codecpar;
++	if( pCodecPar->codec_id == AV_CODEC_ID_PROBE )
++	{
++		esyslog("can't detect codec for video!");
++		return -1;
++	}
++#endif
+ 	//av_close_input_file(pFormatCtx);
+ 
+ 	// Find the decoder for the video stream
++#if LIBAVCODEC_VERSION_MAJOR < 57
+ 	pCodec=avcodec_find_decoder(pCodecCtx->codec_id);
+ 	if(pCodec==NULL)
+ 		return -1; // Codec not found
+@@ -221,23 +245,37 @@
+ 	// bitstreams where frame boundaries can fall in the middle of packets
+ 	if(pCodec->capabilities & CODEC_CAP_TRUNCATED)
+ 		pCodecCtx->flags|=CODEC_FLAG_TRUNCATED;
++#else
++	pCodec=avcodec_find_decoder(pCodecPar->codec_id);
++	if(pCodec==NULL)
++		return -1; // Codec not found
++
++   // Create CodecContext from Codec
++   pCodecCtx= avcodec_alloc_context3(pCodec);
++		
++	// Inform the codec that we can handle truncated bitstreams -- i.e.,
++	// bitstreams where frame boundaries can fall in the middle of packets
++	if(pCodec->capabilities & AV_CODEC_CAP_TRUNCATED)
++		pCodecCtx->flags|=AV_CODEC_FLAG_TRUNCATED;
++#endif
+ 
+-#if LIBAVCODEC_VERSION_MAJOR > 54
+ 	// Open codec
++#if LIBAVCODEC_VERSION_MAJOR > 54
+ 	if(avcodec_open2(pCodecCtx, pCodec,&avDictionary) < 0)
+ #else
+-	// Open codec
+ 	if(avcodec_open(pCodecCtx, pCodec)<0)
+ #endif
+ 		return -1; // Could not open codec
+ 
+-
+-
+ 	// Allocate video frame
+-   pFrame=avcodec_alloc_frame();
++#if LIBAVCODEC_VERSION_MAJOR < 57
++	pFrame=avcodec_alloc_frame();
++#else
++	pFrame=av_frame_alloc();
++#endif
+ 	cont_reading = true;
+-   doSeekPos = false;
+-   dsyslog("init_ffmpeg done" );
++	doSeekPos = false;
++	dsyslog("init_ffmpeg done" );
+ 	return false;
+ }
+ 
+@@ -253,7 +291,11 @@
+ 	// close the file
+ 	if( pFormatCtx )
+ 	{
++#if LIBAVFORMAT_VERSION_MAJOR < 54        
+ 		av_close_input_file(pFormatCtx);
++#else
++		avformat_close_input(&pFormatCtx);
++#endif
+ 		pFormatCtx = NULL;
+ 	}
+ 	// Close the codec
+@@ -285,7 +327,9 @@
+   static bool     fFirstTime=true;
+   int             bytesDecoded;
+   int             frameFinished;
++  int             ret;
+ 
++#if LIBAVCODEC_VERSION_MAJOR < 57
+   if( restart )
+   {
+     bytesRemaining=0;
+@@ -373,6 +417,73 @@
+   ffmpegerror = true;
+ 
+   return frameFinished!=0;
++#else
++	// libavcodec 57+
++	if( restart )
++	{
++		if(packet.data!=NULL)
++			av_packet_unref(&packet);
++		packet.data=NULL;
++		avcodec_flush_buffers(pCodecCtx);
++	}
++	else
++	{
++		ret = avcodec_receive_frame(pCodecCtx, pFrame);
++		if (ret < 0 && ret != AVERROR(EAGAIN))
++		{
++			ffmpegerror = true;
++			return false;
++		}
++	}
++     
++	do
++	{
++		do
++		{
++			// Free packet
++			if(packet.data!=NULL)
++				av_packet_unref(&packet);
++			
++			// Read new packet
++			ret = av_read_frame(pFormatCtx, &packet);
++			if(ret < 0)
++			{
++				if (ret == AVERROR_EOF)
++				{ // create draining packet
++					packet.data = NULL;
++					packet.size = 0;
++				}
++				else
++				{
++					if (packet.data!=NULL)
++						av_packet_unref(&packet);
++					ffmpegerror = true;
++					return false;
++				}
++			}
++		} while(packet.stream_index!=videoStream && ret != AVERROR_EOF);
++		
++		ret = avcodec_send_packet(pCodecCtx, &packet);
++		if (packet.data!=NULL)
++			av_packet_unref(&packet);
++		
++		if (ret < 0 && ret != AVERROR(EAGAIN))
++		{
++			ffmpegerror = true;
++			return false;
++		}
++
++		ret = avcodec_receive_frame(pCodecCtx, pFrame);
++		if (ret < 0 && ret != AVERROR(EAGAIN) && ret != AVERROR_EOF)
++		{
++			ffmpegerror = true;
++			return false;
++		}
++		
++	} while (ret != 0 && ret != AVERROR_EOF);
++	
++	return ret != AVERROR_EOF;
++#endif
+ }
+ 
+ 
+@@ -505,7 +616,11 @@
+ 	}
+ 	if( pFrame )
+ 		av_free(pFrame);
++#if LIBAVCODEC_VERSION_MAJOR < 57
+ 	pFrame=avcodec_alloc_frame();
++#else
++	pFrame=av_frame_alloc();
++#endif
+ 	__bufBytes = 0;
+ }
+ 
+diff -Nur noad-0.8.6-org/ffmpeg_decoder.h noad-0.8.6-devel/ffmpeg_decoder.h
+--- noad-0.8.6-org/ffmpeg_decoder.h	2013-03-22 14:50:24.000000000 +0100
++++ noad-0.8.6-devel/ffmpeg_decoder.h	2018-03-09 19:23:51.483927510 +0100
+@@ -21,6 +21,9 @@
+ 
+ 	int             i, videoStream;
+ 	AVCodecContext  *pCodecCtx;
++#if LIBAVCODEC_VERSION_MAJOR > 56
++	AVCodecParameters *pCodecPar;
++#endif
+ 	AVCodec         *pCodec;
+ #if LIBAVCODEC_VERSION_MAJOR > 54
+    AVDictionary    *avDictionary;
+diff -Nur noad-0.8.6-org/main.cpp noad-0.8.6-devel/main.cpp
+--- noad-0.8.6-org/main.cpp	2013-03-22 13:21:49.000000000 +0100
++++ noad-0.8.6-devel/main.cpp	2018-04-15 18:04:50.896630679 +0200
+@@ -183,7 +183,7 @@
+   bool bImmediateCall = false;
+   bool bAfter = false;
+   bool bBefore = false;
+-  bool bEdited = false;
++  bool bEditedOrStarted = false;
+   bool bDeleted = false;
+   bool bNice = false;
+   bool bOnline = false;
+@@ -221,7 +221,7 @@
+       {"nopid",0,0,5},
+       {"asd",0,0,6},
+       {"pass3only",0,0,7},
+-		{"svdrphost",1,0,8},
++      {"svdrphost",1,0,8},
+       {"svdrpport",1,0,9},      
+       {"decoder",1,0,13},
+       {0, 0, 0, 0}
+@@ -408,7 +408,15 @@
+       }
+       else if(strcmp(argv[optind], "edited" ) == 0 )
+       {
+-        bEdited = true;
++        bEditedOrStarted = true;
++      }
++      else if(strcmp(argv[optind], "editing" ) == 0 )
++      {
++        bEditedOrStarted = true;
++      }
++      else if(strcmp(argv[optind], "started" ) == 0 )
++      {
++        bEditedOrStarted = true;
+       }
+       else if(strcmp(argv[optind], "deleted" ) == 0 )
+       {
+@@ -436,10 +444,10 @@
+ 
+   // we can run, if one of bImmediateCall, bAfter, bBefore or bNice is true
+   // and recDir is given
+-  if( (bImmediateCall || bAfter || bBefore || bEdited || bDeleted || bNice) && recDir )
++  if( (bImmediateCall || bAfter || bBefore || bEditedOrStarted || bDeleted || bNice) && recDir )
+   {
+     // do nothing if called from vdr after the video is cutted
+-    if( bEdited )
++    if( bEditedOrStarted )
+       return 0;
+ 
+     if(bDeleted)
+@@ -636,81 +644,85 @@
+   }
+ 
+   // nothing done, give the user some help
+-  printf("Usage: noad [options] cmd <record>\n"
++  printf("noad %s - no advertising\n", getVersion());
++  printf("Usage: noad [options] cmd <recording>\n"
+          "options:\n"
+-         "-a,             --ac3\n"
++         "-a, --ac3\n"
+          "                  use ac3-detection\n"
+-         "-b,             --background\n"
++         "-b, --background\n"
+          "                  noad runs as a background-process\n"
+          "                  this will be automatic set if called with \"after\" or \"before\"\n"
+-         "-c,             --comments\n"
++         "-c, --comments\n"
+          "                  add comments to the marks\n"
+-         "-j,             --jumplogo\n"
++         "-j, --jumplogo\n"
+          "                  detect jumping logos\n"
+-         "-n              --nelonen\n"
++         "-n, --nelonen\n"
+          "                  special behavior for finish stations\n"
+-         "-o,             --overlap\n"
++         "-o, --overlap\n"
+          "                  detect overlaps\n"
+-         "-p,             --priority\n"
++         "-p, --priority\n"
+          "                  priority-level of noad when running in background\n"
+          "                  [19...-19] default 19\n"
+-         "-s <filename>,  --statisticfile=<file>\n"
++         "-s <filename>, --statisticfile=<file>\n"
+          "                  filename where some statistic datas are stored\n"
+-         "-v,             --verbose\n"
++         "-v, --verbose\n"
+          "                  increments loglevel by one, can be given multiple\n"
+-         "-B              --backupmarks\n"
++         "-B, --backupmarks\n"
+          "                  move the marks.vdr to marks0.vdr\n"
+-         "-O,             --OSD\n"
++         "-O, --OSD\n"
+          "                  noad sends an OSD-Message for start and end \n"
+-         "                  (default: to localhost:2001)\n"         
+-         "-S              --savelogo\n"
++         "                  (default: to localhost:6419)\n"         
++         "-S, --savelogo\n"
+          "                  save the detected logo\n"
+-         "-V              --version\n"
++         "-V, --version\n"
+          "                  print version-info and exits\n"
+          "--svdrphost=<ip-address>\n"
+          "                  set the IP-address used for OSD Messages\n"
+          "                  (default: localhost)\n"
+          "--svdrpport=<tcp-port>\n"
+          "                  set the TCP-Port used for OSD Messages\n"
+-         "                  (default: 2001)\n"
+-		   "--markfile=<markfilename>\n"
+-         "  set a different markfile-name\n"
++         "                  (default: 6419)\n"
++         "--markfile=<markfilename>\n"
++         "                  set a different markfile-name\n"
+          "--online[=1|2] (default is 1)\n"
+-         "  start noad immediately when called with \"before\" as cmd\n"
+-         "  if online is 1, noad starts online for live-recordings\n"
+-         "  only, online=2 starts noad online for every recording\n"
+-         "  live-recordings are identified by having a '@' in the filename\n"
+-         "  so the entry 'Mark instant recording' in the menu 'Setup - Recording'\n"
+-         "  of the vdr should be set to 'yes'\n"
++         "                  start noad immediately when called with \"before\" as cmd\n"
++         "                  if online is 1, noad starts online for live-recordings\n"
++         "                  only, online=2 starts noad online for every recording\n"
++         "                  live-recordings are identified by having a '@' in the filename\n"
++         "                  so the entry 'Mark instant recording' in the menu 'Setup - Recording'\n"
++         "                  of the vdr should be set to 'yes'\n"
+          "--asd\n"
+-         "  use audio silence detection for mark-refinement\n"
+-         "  you need to have noad configured with \"--with-ffmpeg\"\n"
+-         "  to use this parameter\n"
++         "                  use audio silence detection for mark-refinement\n"
++         "                  you need to have noad configured with \"--with-ffmpeg\"\n"
++         "                  to use this parameter\n"
+          "--pass3only\n"
+-         "  this is a parameter for testing only and you need\n"
+-         "  to give \"--asd\" also to let this work\n"
+-         "  if given, only the third pass is done, which\n"
+-         "  is the pass with audio silence detection\n"
+-         "  this parameter is only usefull if there are already\n"
+-         "  some marks in the \"marks.vdr\" for this recording\n");
++         "                  this is a parameter for testing only and you need\n"
++         "                  to give \"--asd\" also to let this work\n"
++         "                  if given, only the third pass is done, which\n"
++         "                  is the pass with audio silence detection\n"
++         "                  this parameter is only usefull if there are already\n"
++         "                  some marks in the \"marks.vdr\" for this recording\n");
+ 
+ printf(  "--decoder[ffmpeg|libmpeg2] (default is ffmpeg)\n"
+          //"-C              --scenechangedetection\n"
+          //"                  use scene-change-detection\n"
+          "\ncmd: one of\n"
+-         "-                            dummy-parameter if called directly\n"
+-         "after                        from vdr if used in the -r option of vdr\n"
+-         "before                       from vdr if used in the -r option of vdr\n"
+-         "                             noad exits immediately if called with \"before\"\n"
+-         "                             and --online is not given\n"
+-         "edited                       from vdr if used in the -r option of vdr\n"
+-         "                             noad exits immediately if called with \"edited\"\n"
+-         "deleted                      from vdr if used in the -r option of vdr\n"
+-         "                             tries to stop a possible running instance of noad\n"
+-         "                             for this recording"
+-         "nice                         runs noad with nice(19)\n"
+-         "\n<record>                     is the name of the directory where the recording\n"
+-         "                             is stored\n\n"
++         "-                 dummy-parameter if called directly\n"
++         "after             from vdr if used in the -r option of vdr\n"
++         "before            from vdr if used in the -r option of vdr\n"
++         "                  noad exits immediately if called with \"before\"\n"
++         "                  and --online is not given\n"
++         "edited|editing|started\n"
++         "                  from vdr if used in the -r option of vdr\n"
++         "                  noad exits immediately if called with \"edited\",\n"
++         "                  \"editing\" or \"started\"\n"
++         "deleted           from vdr if used in the -r option of vdr\n"
++         "                  tries to stop a possible running instance of noad\n"
++         "                  for this recording\n"
++         "nice              runs noad with nice(19)\n"
++         "\n"
++				 "<recording>       is the name of the directory where the recording\n"
++         "                  is stored\n\n"
+          );
+ 	return 0;
+ }
+diff -Nur noad-0.8.6-org/noad.cpp noad-0.8.6-devel/noad.cpp
+--- noad-0.8.6-org/noad.cpp	2013-03-22 13:12:05.000000000 +0100
++++ noad-0.8.6-devel/noad.cpp	2018-03-07 19:37:41.316902869 +0100
+@@ -46,7 +46,7 @@
+ 
+ extern "C"
+ {
+-  static const char *VERSIONSTRING = "0.8.6";
++  static const char *VERSIONSTRING = "0.8.6-libavcodec57";
+ }
+ 
+ #ifdef VNOAD
+diff -Nur noad-0.8.6-org/README noad-0.8.6-devel/README
+--- noad-0.8.6-org/README	2012-10-23 17:01:12.000000000 +0200
++++ noad-0.8.6-devel/README	2018-03-09 10:28:20.316912391 +0100
+@@ -47,10 +47,10 @@
+ -j              --jumplogo
+                 erkennt vertikal verschobene Senderlogos
+ -O              --OSD
+-                sendet eine OSD-Message an VDR(localhost:2001) für Start und Ende
++                sendet eine OSD-Message an VDR(localhost:6419) für Start und Ende
+ -O,             --OSD\n"
+                   sendet eine OSD-Message für Start und Ende
+-                  (default: to localhost:2001)
++                  (default: to localhost:6419)
+ -S              --savelogo
+                 speichert das erkannte Logo
+ -B              --backupmarks
+@@ -65,7 +65,7 @@
+                 (default: localhost)
+                 --svdrpport=<tcp-port>
+                 setzt den TCP-Port für OSD-Nachrichten
+-                (default: 2001)
++                (default: 6419)
+                 
+                 --markfile=<markfilename>
+                 set a different markfile-name
+diff -Nur noad-0.8.6-org/README.en noad-0.8.6-devel/README.en
+--- noad-0.8.6-org/README.en	2012-10-23 16:56:22.000000000 +0200
++++ noad-0.8.6-devel/README.en	2018-03-09 10:28:28.592903409 +0100
+@@ -50,7 +50,7 @@
+ -j              --jumplogo
+                 looks for vertikac drifted logos
+ -O              --OSD
+-                sends an OSD-Message to the running VDR-instance(localhost:2001) for Start and End
++                sends an OSD-Message to the running VDR-instance(localhost:6419) for Start and End
+ -S              --savelogo
+                 saves the detected logo for later usage
+ -B              --backupmarks
+@@ -65,7 +65,7 @@
+                  (default: localhost)
+                --svdrpport=<tcp-port>
+                  set the TCP-Port used for OSD Messages
+-                 (default: 2001)\n"
++                 (default: 6419)\n"
+ 
+                 --markfile=<markfilename>
+                 set a different markfile-name
+diff -Nur noad-0.8.6-org/svdrpc.cpp noad-0.8.6-devel/svdrpc.cpp
+--- noad-0.8.6-org/svdrpc.cpp	2010-03-23 19:33:05.000000000 +0100
++++ noad-0.8.6-devel/svdrpc.cpp	2018-03-03 21:55:12.416300721 +0100
+@@ -17,8 +17,8 @@
+ //#define _GNU_SOURCE
+ 
+ #include "svdrpc.h"
+-int SVDRPPort = 2001;
+-char *SVDRPHost = "127.0.0.1";
++int SVDRPPort = 6419;
++char const *SVDRPHost = "127.0.0.1";
+ 
+ 
+ #include <arpa/inet.h>
+@@ -86,7 +86,7 @@
+   return true;
+ }
+ 
+-int cSocket::Connect(char *Host)
++int cSocket::Connect(char const *Host)
+ {
+   dsyslog("cSocket::Connect to %s", Host );
+   if (Open(port)) 
+@@ -125,7 +125,7 @@
+   Close();
+ }
+ 
+-void cSVDRPC::Open(char *Host ,int Port)
++void cSVDRPC::Open(char const *Host ,int Port)
+ {
+   dsyslog("cSVDRPC::Open port is %d",Port );
+   name[0]=0;
+diff -Nur noad-0.8.6-org/svdrpc.h noad-0.8.6-devel/svdrpc.h
+--- noad-0.8.6-org/svdrpc.h	2010-03-18 07:35:14.000000000 +0100
++++ noad-0.8.6-devel/svdrpc.h	2018-03-03 21:55:24.816244067 +0100
+@@ -31,7 +31,7 @@
+ public:
+   ~cSocket();
+   bool Open(int Port);
+-  int Connect(char *Host);
++  int Connect(char const *Host);
+   void Close(void);
+ };
+ 
+@@ -41,7 +41,7 @@
+   bool Connected();
+   bool CmdQuit();
+   char name[22];
+-  void Open(char *Host, int Port);
++  void Open(char const *Host, int Port);
+   void Close(void);
+   bool Send(const char *s, int length = -1);
+   bool ReadReply();
+@@ -53,8 +53,8 @@
+   char buf[MAXCMDBUFFER];
+ };
+ 
+-extern int SVDRPPort;
+-extern char *SVDRPHost;
++extern int SVDRPPort;
++extern char const *SVDRPHost;
+ 
+ void VDRMessage(const char *s);
+ void noadStartMessage( const char *s );
+diff -Nur noad-0.8.6-org/vdr_cl.cpp noad-0.8.6-devel/vdr_cl.cpp
+--- noad-0.8.6-org/vdr_cl.cpp	2012-10-23 10:48:13.000000000 +0200
++++ noad-0.8.6-devel/vdr_cl.cpp	2018-03-06 10:40:27.721629853 +0100
+@@ -1114,7 +1114,7 @@
+ {
+   static char buffer[16];
+   double Seconds;
+-  int f = int(modf((Index + 0.5) / FramesPerSecond, &Seconds) * FramesPerSecond + 1);
++  int f = int(modf((Index + 0.5) / FramesPerSecond, &Seconds) * FramesPerSecond);
+   int s = int(Seconds);
+   int m = s / 60 % 60;
+   int h = s / 3600;
+@@ -1125,12 +1125,12 @@
+ 
+ int HMSFToIndex(const char *HMSF, double FramesPerSecond)
+ {
+-  int h, m, s, f = 1;
++  int h, m, s, f = 0;
+   int n = sscanf(HMSF, "%d:%d:%d.%d", &h, &m, &s, &f);
+   if (n == 1)
+-     return h - 1; // plain frame number
++     return h; // plain frame number
+   if (n >= 3)
+-     return int( round( (h * 3600 + m * 60 + s) * FramesPerSecond) ) + f - 1;
++     return int( round( (h * 3600 + m * 60 + s) * FramesPerSecond) ) + f;
+   return 0;
+ }
+ 
