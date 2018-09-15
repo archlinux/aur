@@ -2,7 +2,7 @@
 
 _pkgname=trizen
 pkgname=trizen-git
-pkgver=1.51
+pkgver=1.52
 pkgrel=1
 pkgdesc="Trizen AUR Package Manager: A lightweight wrapper for AUR (-git version)."
 arch=('any')
@@ -26,6 +26,7 @@ depends=(
         )
 
 optdepends=(
+            'highlight: for syntax highlighting'
             'perl-json-xs: faster JSON deserialization'
             #'perl-term-readline-gnu: better STDIN support'
            )
