@@ -3,7 +3,7 @@
 
 pkgname=sddm-lain-wired-theme
 pkgver=0.9
-pkgrel=1
+pkgrel=2
 pkgdesc='A sddm theme inspired by Serial experiments lain'
 arch=('any')
 url='https://github.com/lll2yu/sddm-lain-wired-theme'
@@ -17,7 +17,7 @@ source=(
 )
 
 sha512sums=(
-	'ed9228e7bb42ac4d405dfbbc9755e9b999a0f9af362e2068c2c69451fd8986af6359b759c6e1bcbf0cf67da84dc75d3a6fbc28dddb2e674b9d24b4e684497259'
+	'66f07cd8f087d97bb4c0edfadd4b9a92d4e4d8249d7b4ef06dfe2ff0c142c1f8757d18a88f9686f3b09d273a4d0df69a6b868292593182bd865b63c68726c79a'
 )
 
 package() {

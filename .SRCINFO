@@ -1,7 +1,7 @@
 pkgbase = sddm-lain-wired-theme
 	pkgdesc = A sddm theme inspired by Serial experiments lain
 	pkgver = 0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lll2yu/sddm-lain-wired-theme
 	arch = any
 	license = CCPL:cc-by-sa 4.0
@@ -11,7 +11,7 @@ pkgbase = sddm-lain-wired-theme
 	optdepends = gst-plugins-good: For audio playback
 	optdepends = gst-plugins-bad: For audio playback
 	source = sddm-lain-wired-theme-0.9.tar.gz::https://github.com/lll2yu/sddm-lain-wired-theme/archive/0.9.tar.gz
-	sha512sums = ed9228e7bb42ac4d405dfbbc9755e9b999a0f9af362e2068c2c69451fd8986af6359b759c6e1bcbf0cf67da84dc75d3a6fbc28dddb2e674b9d24b4e684497259
+	sha512sums = 66f07cd8f087d97bb4c0edfadd4b9a92d4e4d8249d7b4ef06dfe2ff0c142c1f8757d18a88f9686f3b09d273a4d0df69a6b868292593182bd865b63c68726c79a
 
 pkgname = sddm-lain-wired-theme
 
