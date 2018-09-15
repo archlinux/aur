@@ -3,7 +3,7 @@
 # adpoted from mOLOk since pkgver=0.7
 
 pkgname=xcalib
-pkgver=0.9
+pkgver=0.10
 pkgrel=1
 pkgdesc="A tiny monitor calibration loader for X.org"
 arch=('i686' 'x86_64')
@@ -21,7 +21,8 @@ build() {
 
 package() {
     cd ${pkgname}
-    install -d ${pkgdir}/usr/{share/xcalib,bin}
+    install -d ${pkgdir}/usr/{share/xcalib,share/man/man1,bin}
     install -m755 xcalib "${pkgdir}/usr/bin"
     install -m644 *.icc *.icm "${pkgdir}/usr/share/xcalib/"
+    install -m644 *.1 "${pkgdir}/usr/share/man/man1/"
 }
