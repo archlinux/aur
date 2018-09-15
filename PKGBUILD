@@ -1,10 +1,11 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
 _pkgname="mitsuba"
+_pkgver="0.6.0"
 _pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
 pkgname="${_pkgname}-git"
-pkgver=v0.5.0.r160.g87efb7d6
-pkgrel=8
+pkgver=0.6.0.r2170.450a2b8a
+pkgrel=1
 pkgdesc="Mitsuba physically based renderer."
 url="http://mitsuba-renderer.org/"
 license=("GPL3")
@@ -13,28 +14,25 @@ depends=("python" "xerces-c" "glew-1.13.0" "openexr" "libpng" "libjpeg" "qt4" "f
 makedepends=("eigen" "scons" "git" "boost")
 provides=("mitsuba")
 conflicts=("mitsuba" "mitsuba-hg")
-source=("${_pkgname}::git+https://www.mitsuba-renderer.org/repos/mitsuba.git"
+source=("${_pkgname}::git+https://github.com/mitsuba-renderer/mitsuba.git"
         "python3.5.patch"
-        "eigen3.3.1.patch"
-        "gcc8.patch"
         )
 sha256sums=('SKIP'
-            '7fe37aa17b35bd5d6b8af5776baa7f6330dc7eaec05195631171c1bfd7694faa'
+            '0591c38be9343db62d4f8294116f38cc836d170a5504cf2d70e472c48e290121'
             '6948f7eede4db6246db8c843e61b37b409d86b56b8f567a770d3431aaa6e4e6d'
             '8834347d276dcbf64793eb8fbbae7395bc79d53621aa402ed293f514ebc21ca9')
 
 pkgver() {
   cd ${_pkgname}
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+#  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+#  git describe --long --tags | sed        's/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "${_pkgver}.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 
 prepare() {
     cd "${_pkgname}"
     cp build/config-linux-gcc.py config.py
-
-    ## use gcc5 as gcc6 is not supported at this time
-    #sed -i -e "s:g++:g++-5:g" -e "s:gcc:gcc-5:g" config.py
 
     ## use collada-dom-mitsuba
     sed -i -e "s:collada-dom:collada-dom-mitsuba:g" config.py
@@ -44,14 +42,15 @@ prepare() {
     ## update GLINCLUDE path to refere to glew-1.13.0 as mitsuba wont build with glew 2.0.0
     sed -i "/XERCESLIB/aGLINCLUDE      = ['/usr/include/glew-1.13.0']" config.py
 
-    ## fix xerces build with gcc5
-    #sed -i "s:\(CXXFLAGS       = \[\):\1 '-std=gnu++11',:" config.py
-    ## revert prev fix for irawan plugin (remove -std=gnu++11)
-    #sed -i "/irawanEnv = env.Clone()/a irawanEnv.RemoveFlags(['-std=gnu\+\+11'])" src/bsdfs/SConscript
+    ## fix qt5-base on archlinux provides QtWidgets pkg-config as Qt5Widgets
+    sed -i -E "s/('Qt)([a-zA-Z]+')/\15\2/g" src/mtsgui/SConscript data/scons/qt5.py
+    ## fix:
+    # "You must build your code with position independent code
+    #  if Qt was built with -reduce-relocations.
+    # "Compile your code with -fPIC (-fPIE is not enough)."
+    sed -i "s/CXXFLAGS[ ]*= \[/&'-fPIC', /g" config.py
 
     git apply ${srcdir}/python3.5.patch
-    git apply ${srcdir}/eigen3.3.1.patch
-    git apply ${srcdir}/gcc8.patch
 }
 
 build() {
