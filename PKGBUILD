@@ -3,7 +3,7 @@
 # Contributor: boosterdev@linuxmail.org
 
 pkgname=flashplayer-standalone
-pkgver=30.0.0.154
+pkgver=31.0.0.108
 pkgrel=1
 pkgdesc="Adobe Flash Player Standalone (A.K.A. Adobe Flash Player Projector)"
 arch=("x86_64")
@@ -14,7 +14,7 @@ optdepends=('alsa-lib: for sound through alsa')
 makedepends=("gendesk")
 options=(!strip)
 source=("${pkgname}-${pkgver}.tar.gz::https://fpdownload.macromedia.com/pub/${pkgname%-standalone}/updaters/${pkgver%%.*}/flash_player_sa_linux.${arch}.tar.gz")
-sha256sums=("b9b2ef564ef8474aad6379bcc9f48894d5ec2ae479564201a40aaa0f70a1e1f7")
+sha256sums=("a3d68ebc138323ba82b7b2ad2f61f25396588d8d4d7846a2f3a7f4280ad18ea7")
 
 prepare() {
   cd "${srcdir}"
