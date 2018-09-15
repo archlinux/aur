@@ -10,6 +10,6 @@
         <icon name="osu-lazer"/>
         <glob-deleteall/>
         <glob pattern="*.osz"/>
-        <glob pattern="*.zip"/>
+        <!--glob pattern="*.zip"/-->
     </mime-type>
 </mime-info>

@@ -1,32 +1,31 @@
 pkgbase = osu-lazer
-	pkgdesc = Freeware rhythm video game - lazer version 2018.616.0, which is the last version where mono works
-	pkgver = 2018.616.0
-	pkgrel = 5
+	pkgdesc = Freeware rhythm video game - lazer version 2018.915.0
+	pkgver = 2018.915.0
+	pkgrel = 1
 	url = https://osu.ppy.sh/
 	arch = x86_64
 	license = MIT
 	license = custom:CC-BY-NC 4.0
 	makedepends = git
-	makedepends = msbuild
 	makedepends = dotnet-sdk
 	depends = ffmpeg
-	depends = libbass
 	depends = libgl
-	depends = mono
+	depends = sdl
+	depends = dotnet-runtime
 	provides = osu-lazer
 	conflicts = osu-lazer-git
-	source = osu-2018.616.0::git://github.com/ppy/osu.git#tag=2018.616.0
+	source = osu-2018.915.0::git://github.com/ppy/osu.git#tag=2018.915.0
 	source = git://github.com/ppy/osu-resources.git
 	source = osu-launcher
 	source = osu-lazer.desktop
 	source = osu-lazer.png
 	source = x-osu-lazer.xml
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = bc8596bd5c4e0bef53272d3bc583ab28b820d7e539d74923c22cdf79c7b5946bb71a18fcce2a368db89f6dc16e8015d4196d3347b997e23ba523449e88579c59
-	sha512sums = 6565bd871ff336acc35b001ac22077b58bebdf3dd64dbdbb2b210771466753afb650062320394cb2e7f3283aa658a6891904befb3833babeeb5afe65f14f9b34
-	sha512sums = 2e855797c904f39b4dd81cee2022305dce95310f14a37d2ec7b22673a6f26be2782ea6370836ccbdebe8ffc46ecd5b11d44d77a81db19e0d7c26aa40343ff300
-	sha512sums = a243b0e00c2ae22b23fc57ba6eb355d2d51005bc77461ff91af1719aa704c940a95ad4ae435339868f6177c8743e5f02522c377e7a20730d2773a11d39ef89ee
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = a34d37ed6d35788501985ad3c8f63888849734549113e11f43321917fdfa16bf
+	sha256sums = 0b4267361752de1669b92d75b3b8318bda1080d897ab85c1f349b2048ab2a0e1
+	sha256sums = 3b3a9075f79ca7f2a4fd34eb182a5c1ada6eb118a95e49c1526df516365bbfe5
+	sha256sums = e05c105bcaa6d5247f27334aa5d45bc405d6fefd17ba76946d395267b7491bf1
 
 pkgname = osu-lazer
 
