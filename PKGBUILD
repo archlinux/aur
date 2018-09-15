@@ -2,7 +2,7 @@
 pkgname=tealdeer-git
 _name=tealdeer
 pkgver=r135.278a2bb
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast TLDR client written in Rust."
 arch=('x86_64' 'i686')
 url="https://github.com/dbrgn/tealdeer"
@@ -18,6 +18,7 @@ md5sums=('SKIP')
 
 build() {
   cd "$srcdir/$_name"
+  sed -i 's/^version = "\(.*\)"/version = "\1-aur-'${pkgver}'"/' Cargo.toml
   cargo build --release
 }
 
