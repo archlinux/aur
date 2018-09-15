@@ -7,7 +7,7 @@ _gitname=Shades-of-gray-theme
 pkgname=gtk-theme-shades-of-gray
 pkgbase=${pkgname}
 
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='A dark GTK-theme (GNOME, Cinnamon, Xfce, Openbox) in 7 color variants with themes for Firefox and Thunderbird.'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=('gtk-engine-murrine: for gtk2 themes'
 makedepends=('git')
 
 source=("https://github.com/$_gituser/$_gitname/archive/$pkgver.tar.gz")
-md5sums=('32102eccfcec09d94d65a39657c3e3de')
+md5sums=('ba0ecaf24267d7d4f357abbe897318ba')
 
 package() {
   cd "$srcdir/$_gitname-$pkgver"
