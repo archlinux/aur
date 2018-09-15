@@ -2,7 +2,7 @@
 
 pkgname=('python2-django-constance' 'python-django-constance')
 pkgbase='python-django-constance'
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc='Dynamic Django settings'
 arch=('any')
@@ -10,7 +10,7 @@ url='https://github.com/jazzband/django-constance'
 license=('BSD')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://github.com/jazzband/django-constance/archive/$pkgver.tar.gz")
-sha256sums=('4e2bb9a19cbc91eccda13464e2f9db810eadb42672bb4eb1c2160e1fe5ede45f')
+sha256sums=('2a2eab901cf8d1c40032759b5764504e44c0f84c70c3b014639263a6cbc31063')
 
 package_python-django-constance() {
     depends=('python-django')
