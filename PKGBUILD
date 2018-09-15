@@ -1,13 +1,13 @@
 # Maintainer: Danilo Bargen <aur at dbrgn dot ch>
 pkgname=tealdeer-git
 _name=tealdeer
-pkgver=r111.db361e6
+pkgver=r135.278a2bb
 pkgrel=1
 pkgdesc="A fast TLDR client written in Rust."
 arch=('x86_64' 'i686')
 url="https://github.com/dbrgn/tealdeer"
 license=('MIT' 'Apache')
-depends=('')
+depends=()
 makedepends=('git' 'rust' 'cargo')
 provides=('tldr')
 conflicts=('nodejs-tldr' 'nodejs-tldr-git' 'tealdeer' 'tldr-bash-git' 'tldr-cpp-client'
