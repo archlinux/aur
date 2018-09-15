@@ -1,0 +1,17 @@
+pkgbase = cracker
+	pkgdesc = Auto-completion client/server for the Crystal language
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/TechMagister/cracker
+	arch = x86_64
+	license = MIT
+	makedepends = crystal
+	makedepends = shards
+	depends = pcre
+	depends = gc
+	depends = libevent
+	source = https://github.com/TechMagister/cracker/archive/v0.1.1.tar.gz
+	md5sums = a9b542bc81e24bb98873c9485629e0c6
+
+pkgname = cracker
+
