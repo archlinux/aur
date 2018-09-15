@@ -1,0 +1,17 @@
+pkgbase = python-functoolsplus-git
+	pkgdesc = Even higher-order functions and operations on callable objects
+	pkgver = latest
+	pkgrel = 1
+	url = https://gitlab.com/HOMEINFO/functoolsplus
+	arch = any
+	license = GPLv3
+	makedepends = git
+	makedepends = python
+	depends = python
+	provides = python-functoolsplus
+	conflicts = python-functoolsplus
+	source = functoolsplus::git+https://gitlab.com/HOMEINFO/functoolsplus.git
+	md5sums = SKIP
+
+pkgname = python-functoolsplus-git
+
