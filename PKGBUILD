@@ -1,7 +1,7 @@
 # Contributor: Zeph <zeph33@gmail.com>
 # Maintainer: Zeph <zeph33@gmail.com>
 pkgname=codelite-bin
-pkgver=11.0.0
+pkgver=12.0
 pkgrel=1
 _pkgname=codelite
 _pkgrel=1
@@ -9,8 +9,7 @@ pkgdesc="A cross platform C/C++/PHP and Node.js IDE written in C++"
 arch=('x86_64')
 url="http://www.codelite.org/"
 license=('GPL')
-depends=('wxgtk3'
-          'webkit2gtk' 'ffmpeg' 'libx264'
+depends=('wxgtk3' 'webkit2gtk'
           'clang' 'lldb'
           'libedit' 
           'libssh'
@@ -26,20 +25,18 @@ optdepends=( 'graphviz: callgraph visualization'
              'gdb: debugger'
              'valgrind: debugger'
             )
-install=codelite.install
+
 replaces=('codelite' 'codelite-svn')
 provides=('codelite')
 
 source=("http://download.opensuse.org/repositories/home:/zeph33:/archlinux/Arch_Extra/${CARCH}/${_pkgname}-${pkgver}-${_pkgrel}-${CARCH}.pkg.tar.xz")
 md5sums=('SKIP')
-
-build() {
-   cd $srcdir/
-}
+noextract=(${_pkgname}-${pkgver}-${_pkgrel}-${CARCH}.pkg.tar.xz)
 
 package() {
-	find "${srcdir}/usr" -type d -exec chmod 755 '{}' \;
-  cp -r "${srcdir}/usr" "${pkgdir}"
-	mkdir -p "${pkgdir}/usr/lib"
-#	ln -s /usr/lib/libclang.so "${pkgdir}/usr/lib/libclang.so.3.8"
+  tar xf "${srcdir}/${_pkgname}-${pkgver}-${_pkgrel}-${CARCH}.pkg.tar.xz" -C "${pkgdir}"
+  rm -f "${pkgdir}/.BUILDINFO"
+  rm -f "${pkgdir}/.MTREE"
+  rm -f "${pkgdir}/.PKGINFO"
+# 	find "${pkgdir}/usr/bin" -type d -exec chmod 755 '{}' \;
 }
