@@ -1,6 +1,6 @@
 pkgbase = arcint-gtk-theme
 	pkgdesc = My own version of horst3180's Arc theme
-	pkgver = 1.0
+	pkgver = 20180915
 	pkgrel = 1
 	url = https://gitgud.io/popcorns/arcint-theme
 	arch = any
