@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=icon-git
-pkgver=28.g069f714
+pkgver=29.gdaad78e
 pkgrel=2
 pkgdesc="The Icon programming language"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ pkgver() {
 build() {
   cd "$_gitname"
   make X-Configure name=linux
-  make -j1
+  make CFLAGS+=" -D_STDIO_USES_IOSTREAM" -j1
 }
 
 package() {
