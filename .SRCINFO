@@ -1,20 +1,14 @@
 pkgbase = museeq-git
-	pkgdesc = A Qt4 interface to the museekd daemon.
-	pkgver = 20150216
-	pkgrel = 2
+	pkgdesc = A Qt5 interface to the museekd daemon.
+	pkgver = r757.7992c04
+	pkgrel = 1
 	url = http://www.museek-plus.org/
-	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = git
 	makedepends = cmake
-	depends = qt4
-	provides = museeq
-	conflicts = museeq
-	conflicts = museekplus-svn
-	conflicts = museek-plus
-	conflicts = museeq-svn
-	replaces = museeq-svn
+	depends = qt5-script
+	depends = qt5-tools
 	source = museeq-git::git+https://github.com/eLvErDe/museek-plus
 	md5sums = SKIP
 

@@ -1,38 +1,33 @@
 # Maintainer: Michael Gwin <oksijun+arch at gmail dot com>
 # Contributor: Karol "Kenji Takahashi" Woźniak <kenji.sx>
-
 pkgname=museeq-git
-pkgver=20150216
-pkgrel=2
-pkgdesc="A Qt4 interface to the museekd daemon."
+pkgver=r757.7992c04
+pkgrel=1
+pkgdesc="A Qt5 interface to the museekd daemon."
+arch=('x86_64')
 url="http://www.museek-plus.org/"
-depends=('qt4')
-makedepends=('git' 'cmake')
 license=('GPL2')
-arch=('i686' 'x86_64')
-conflicts=('museeq' 'museekplus-svn' 'museek-plus' 'museeq-svn')
-provides=('museeq')
-replaces=('museeq-svn')
-source=("${pkgname}::git+https://github.com/eLvErDe/museek-plus")
+depends=('qt5-script' 'qt5-tools')
+makedepends=('git' 'cmake')
+source=("$pkgname::git+https://github.com/eLvErDe/museek-plus")
 md5sums=('SKIP')
 
 pkgver() {
-    cd ${srcdir}/${pkgname}
-    git log -1 --format="%cd" --date=short | tr -d '-'
+  cd "$pkgname"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 build() {
-    mkdir -p ${srcdir}/${pkgname}/build
-    cd ${srcdir}/${pkgname}/build
-
-	cmake -DNO_MUSEEKD=1 -DNO_MUSCAN=1 -DNO_SETUP=1 -DNO_PYMUCIPHER=1 \
-        -DPREFIX=/usr -DMANDIR=/usr/share -DQT_QMAKE_EXECUTABLE=qmake-qt4 ${srcdir}/${pkgname}
+    mkdir -p "$pkgname"/build
+    cd "$pkgname"/build
+    cmake -DCMAKE_INSTALL_PREFIX=/usr -DEVERYTHING=0 -DMURMUR=0 -DMUCOUS=0 -DMUSEEKD=0 -DMUSETUP=0 -DMUSCAN=0 -DMUSEEQ=1 -DPYTHON_BINDINGS=0 ${srcdir}/${pkgname}
 	make
 }
 
 package() {
-    cd ${srcdir}/${pkgname}/build
-	make DESTDIR="${pkgdir}" install
+    cd "$pkgname"/build
+	make DESTDIR="$pkgdir" install
 }
-
-# vim:set ts=4 sw=4 et:
