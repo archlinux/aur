@@ -1,5 +1,6 @@
 # Maintainer: Ammon Smith <ammon.i.smith@gmail.com>
 # Contributor: Nicole Fontenot <nfontenot27@gmail.com>
+# Contributor: "Roliga" [AUR]
 # Contributor: "donaldtrump" [AUR]
 
 pkgname=osu-lazer-git
@@ -10,7 +11,6 @@ arch=('x86_64')
 url='https://osu.ppy.sh'
 license=('MIT')
 makedepends=('mono'
-             'msbuild-stable'
              'git')
 depends=('dotnet-sdk'
          'ffmpeg'
@@ -21,7 +21,6 @@ options=()
 provides=('osu-lazer')
 conflicts=('osu-lazer')
 source=('git+https://github.com/ppy/osu.git'
-        'git+https://github.com/ppy/osu-framework'
         'git+https://github.com/ppy/osu-resources'
         'osu-launcher'
         'osu-lazer.desktop'
@@ -30,8 +29,7 @@ source=('git+https://github.com/ppy/osu.git'
 
 sha256sums=('SKIP'
             'SKIP'
-            'SKIP'
-            '09c1cd74f65806aa3064d9eabee440e2d205d8b50cf12bafc41cb338681ba3e9'
+            '5e7620261f978a583a86c586754fcee0b6d0e5c12fbbfa939a38175ddaeca141'
             '2665c47e522ec7762a2a8ff3dcf32f254fd9e5eceac33a162c638f06b0fcb44e'
             '3b3a9075f79ca7f2a4fd34eb182a5c1ada6eb118a95e49c1526df516365bbfe5'
             'd22f0d922856639c7cc5f71bdd620cc8b3eb54af923b1a43703faac217b8b13b')
@@ -46,7 +44,6 @@ prepare() {
 
 	# Prepare submodules
 	git submodule init
-	git config submodule.osu-framework.url "$srcdir/osu-framework"
 	git config submodule.osu-resources.url "$srcdir/osu-resources"
 	git submodule update --recursive
 
@@ -61,7 +58,7 @@ build() {
 	# Build
 	export MONO_IOMAP='case'
 	export TERM='xterm'
-	msbuild /property:Configuration=Release
+	dotnet msbuild /property:Configuration=Release
 }
 
 package() {
