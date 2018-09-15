@@ -1,0 +1,15 @@
+pkgbase = dell-drac-mibs
+	pkgdesc = SNMP MIBs for Dell iDRAC remote management controllers
+	pkgver = 8.5.A00
+	pkgrel = 1
+	url = https://www.dell.com/support/home/au/en/audhs1/drivers/driversdetails?driverId=YKG8D
+	arch = any
+	license = custom:dell
+	makedepends = unzip
+	depends = net-snmp
+	source = https://downloads.dell.com/FOLDER04163334M/1/Dell-OM-MIBS-850_A00.zip
+	md5sums = 42b0e80220fc7ffb5d6d5e711cb54268
+	sha256sums = 557a853bd63436bb1391d7626092ea05c1b9f30cc45687e287412b198b58b6d4
+
+pkgname = dell-drac-mibs
+
