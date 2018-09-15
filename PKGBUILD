@@ -17,7 +17,7 @@
 #
 pkgbase="spl-linux-zen"
 pkgname=("spl-linux-zen" "spl-linux-zen-headers")
-_splver="0.7.10"
+_splver="0.7.11"
 _kernelver="4.18.7.zen1-1"
 _extramodules="${_kernelver/.zen/-zen}-zen"
 
@@ -27,7 +27,7 @@ makedepends=("linux-zen-headers=${_kernelver}")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${_splver}/spl-${_splver}.tar.gz")
-sha256sums=("9647e0fe9f19cd99746da3cc48b8de8903a66dacdccc82b45dbbb516606f4ff8")
+sha256sums=("d6ddd225e7f464007c960f10134c8a48fb0de525f75ad05d5ddf36685b1ced67")
 license=("GPL")
 depends=("spl-utils-common=${_splver}" "kmod" "linux-zen=${_kernelver}")
 
