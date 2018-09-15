@@ -1,0 +1,14 @@
+pkgbase = svnwcrev
+	pkgdesc = Incorporate Subversion repository information into your source
+	pkgver = r18
+	pkgrel = 1
+	url = http://svnwcrev.tigris.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = subversion
+	source = fix-ldflags.patch
+	sha256sums = 91b77d5cc64899382953100fd223d0c23c9f241f7ef41079570372b71a764334
+
+pkgname = svnwcrev
+
