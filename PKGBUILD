@@ -1,8 +1,8 @@
 # Maintainer: Joe Davison <joe@warhaggis.com>
 
 pkgname=lgogdownloader
-pkgver=3.3
-pkgrel=5
+pkgver=3.4
+pkgrel=1
 pkgdesc="An open source downloader for GOG.com games, uses the GOG.com API"
 url="https://sites.google.com/site/gogdownloader/"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=(WTFPL)
 depends=('boost' 'jsoncpp' 'liboauth' 'rhash' 'tinyxml2' 'htmlcxx' 'curl')
 makedepends=('help2man' 'cmake')
 source=("http://sites.google.com/site/gogdownloader/$pkgname-$pkgver.tar.gz")
-sha256sums=('8bb7a37b48f558bddeb662ebac32796b0ae11fa2cc57a03d48b3944198e800ce')
+sha256sums=('1ac33dc6678d2d40ecd3c042f0514ca905d2949c91240bda4d9e17d3ff433903')
 
 prepare() {
 	cd $srcdir/$pkgname-$pkgver
