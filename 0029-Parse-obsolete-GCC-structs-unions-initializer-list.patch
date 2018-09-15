@@ -1,0 +1,136 @@
+From 0a22a85f7712b645bfc0ccab8d8c970081bb8152 Mon Sep 17 00:00:00 2001
+From: Sergei Litvin <litvindev@gmail.com>
+Date: Thu, 16 Nov 2017 04:33:47 +0000
+Subject: [PATCH 29/33] Parse obsolete GCC structs/unions initializer-list
+ syntax
+
+---
+ src/cgram.y    | 27 ++++++++++++++++-----------
+ src/yaccgram.y | 27 ++++++++++++++++-----------
+ 2 files changed, 32 insertions(+), 22 deletions(-)
+
+diff --git a/src/cgram.y b/src/cgram.y
+index 1ef4600..ea4c6ba 100644
+--- a/src/cgram.y
++++ b/src/cgram.y
+@@ -255,7 +255,7 @@
+ %type <bbidIdent> str_rec_identifier STRUCT UNION struct_or_union
+ %type <bbidIdent> user_defined_type TYPE_NAME
+ %type <bbidIdent> designator designator_list
+-%type <bbidlist> designation_opt initializer initializer_list initializer_list_opt eq_initializer_opt
++%type <bbidlist> initializer initializer0 initializer_list initializer_list_opt eq_initializer_opt
+ %type <bbinteger> assignment_operator
+ %type <bbinteger> pointer CONSTANT _ncounter_ _nlabel_ _ngoto_ _nfork_
+ %type <bbunsign> storage_class_specifier type_specifier1
+@@ -1412,24 +1412,28 @@ initializer_list_opt:		{
+ 	;
+ 
+ initializer_list
+-	: Sv_tmp designation_opt initializer	{
++	: Sv_tmp initializer0							{
+ 		$$.d = $2.d;
+-		if ($$.d!=NULL)	$$.d->down = $3.d;
+ 		tmpWorkMemoryi = $1.d;
+ 	}
+-	| initializer_list ',' Sv_tmp designation_opt initializer	{
+-		LIST_APPEND(S_idIdentList, $1.d, $4.d);
+-		if ($4.d!=NULL) $4.d->down = $5.d;
++	| initializer_list ',' Sv_tmp initializer0		{
++		$$.d = $1.d;
++		LIST_APPEND(S_idIdentList, $$.d, $4.d);
+ 		tmpWorkMemoryi = $3.d;
+ 	}
+ 	;
+ 
+-designation_opt:				{
+-		$$.d = NULL;
++initializer0
++	: initializer								{
++		$$.d = $1.d;
+ 	}
+-	| designator_list '='		{
++	| designator_list '=' initializer			{
+ 		$$.d = StackMemAlloc(S_idIdentList);
+-		FILL_idIdentList($$.d, *$1.d, $1.d->name, TypeDefault, NULL,NULL);
++		FILL_idIdentList($$.d, *$1.d, $1.d->name, TypeDefault, $3.d,NULL);
++	}
++	| str_rec_identifier ':' initializer		{ /* GNU-extension*/
++		$$.d = StackMemAlloc(S_idIdentList);
++		FILL_idIdentList($$.d, *$1.d, $1.d->name, TypeDefault, $3.d,NULL);
+ 	}
+ 	;
+ 
+@@ -1438,7 +1442,8 @@ designator_list
+ 		$$.d = $1.d;
+ 	}
+ 	| designator_list designator	{
+-		LIST_APPEND(S_idIdent, $1.d, $2.d);
++		$$.d = $1.d;
++		LIST_APPEND(S_idIdent, $$.d, $2.d);
+ 	}
+ 	;
+ 
+diff --git a/src/yaccgram.y b/src/yaccgram.y
+index 35a51f9..d5f0da6 100644
+--- a/src/yaccgram.y
++++ b/src/yaccgram.y
+@@ -262,7 +262,7 @@ static void addYaccSymbolReference C_ARG((S_idIdent *name, int usage));
+ %type <bbidIdent> user_defined_type TYPE_NAME lexem
+ %type <bbinteger> pointer CONSTANT rule_body
+ %type <bbidIdent> designator designator_list
+-%type <bbidlist> designation_opt initializer initializer_list initializer_list_opt eq_initializer_opt
++%type <bbidlist> initializer initializer0 initializer_list initializer_list_opt eq_initializer_opt
+ %type <bbinteger> assignment_operator
+ %type <bbinteger> pointer CONSTANT _ncounter_ _nlabel_ _ngoto_ _nfork_
+ %type <bbunsign> storage_class_specifier type_specifier1
+@@ -1622,24 +1622,28 @@ initializer_list_opt:		{
+ 	;
+ 
+ initializer_list
+-	: Sv_tmp designation_opt initializer	{
++	: Sv_tmp initializer0							{
+ 		$$.d = $2.d;
+-		if ($$.d!=NULL)	$$.d->down = $3.d;
+ 		tmpWorkMemoryi = $1.d;
+ 	}
+-	| initializer_list ',' Sv_tmp designation_opt initializer	{
+-		LIST_APPEND(S_idIdentList, $1.d, $4.d);
+-		if ($4.d!=NULL) $4.d->down = $5.d;
++	| initializer_list ',' Sv_tmp initializer0		{
++		$$.d = $1.d;
++		LIST_APPEND(S_idIdentList, $$.d, $4.d);
+ 		tmpWorkMemoryi = $3.d;
+ 	}
+ 	;
+ 
+-designation_opt:				{
+-		$$.d = NULL;
++initializer0
++	: initializer								{
++		$$.d = $1.d;
+ 	}
+-	| designator_list '='		{
++	| designator_list '=' initializer			{
+ 		$$.d = StackMemAlloc(S_idIdentList);
+-		FILL_idIdentList($$.d, *$1.d, $1.d->name, TypeDefault, NULL,NULL);
++		FILL_idIdentList($$.d, *$1.d, $1.d->name, TypeDefault, $3.d,NULL);
++	}
++	| str_rec_identifier ':' initializer		{ /* GNU-extension*/
++		$$.d = StackMemAlloc(S_idIdentList);
++		FILL_idIdentList($$.d, *$1.d, $1.d->name, TypeDefault, $3.d,NULL);
+ 	}
+ 	;
+ 
+@@ -1648,7 +1652,8 @@ designator_list
+ 		$$.d = $1.d;
+ 	}
+ 	| designator_list designator	{
+-		LIST_APPEND(S_idIdent, $1.d, $2.d);
++		$$.d = $1.d;
++		LIST_APPEND(S_idIdent, $$.d, $2.d);
+ 	}
+ 	;
+ 
+-- 
+2.18.0
+

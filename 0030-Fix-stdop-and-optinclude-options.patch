@@ -1,0 +1,198 @@
+From 5a547726aa5d145fd160035bedba1b51041a9534 Mon Sep 17 00:00:00 2001
+From: Sergei Litvin <litvindev@gmail.com>
+Date: Mon, 12 Feb 2018 00:07:19 +0000
+Subject: [PATCH] Fix -stdop and -optinclude options
+
+---
+ src/head2.h   |  2 +-
+ src/main.c    | 27 ++++++++++++++++-----------
+ src/options.c | 24 ++++++++++++++++++++----
+ doc/xref.man  |  7 ++++++-
+ 4 files changed, 42 insertions(+), 16 deletions(-)
+
+diff --git a/src/head2.h b/src/head2.h
+index 4a620a1..0ab24b7 100644
+--- a/src/head2.h
++++ b/src/head2.h
+@@ -22,7 +22,7 @@
+ 
+ #define SIZE_ppMemory 	  	      20000	/* macro args name in define */
+ #define SIZE_mbMemory 		    2000000	/* pending macro expansions */
+-#define SIZE_opiMemory		     150000	/* memory used to store options strings */
++#define SIZE_opiMemory		     300000	/* memory used to store options strings */
+ #define SIZE_workMemory        10000000	/* parsing stack memory */
+ #define SIZE_tmpWorkMemory       400000	/* additional tmp parsing stack memory */
+ #define SIZE_ftMemory 		    8000000	/* memory for file (and class) table */
+diff --git a/src/main.c b/src/main.c
+index 3f49131..5a8fef5 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -63,7 +63,7 @@
+ 	fprintf(stdout,"\t-filescaseunsensitive - file names are case unsensitive\n");
+ 	fprintf(stdout,"\t-csuffixes=<paths>    - list of C files suffixes separated by : (or ;)");
+ 	fprintf(stdout,"\t-javasuffixes=<paths> - list of Java files suffixes separated by : (or ;)\n");
+-	fprintf(stdout,"\t-stdop <file>         - read options from <file>\n");
++	fprintf(stdout,"\t-optinclude <file> (or -stdop <file>) - read options from <file>\n");
+ 	fprintf(stdout,"\t-no_cpp_comment       - C++ like comments // not admitted\n");
+ 	fprintf(stdout,"\t-license=<string>     - license string\n");
+ #if 0
+@@ -356,7 +356,6 @@ void xrefSetenv(char *name, char *val) {
+ 	if (j==n) sge->num ++;
+ }
+ 
+-
+ int mainHandleSetOption( int argc, char **argv, int i ) {
+ 	S_setGetEnv *sge;
+ 	char *name, *val;
+@@ -370,13 +369,19 @@ int mainHandleSetOption( int argc, char **argv, int i ) {
+ 	return(i);
+ }
+ 
+-static int mainHandleIncludeOption(int argc, char **argv, int i) {
++static int mainHandleIncludeOption(int argc, char **argv, int i, int infilesFlag) {
+ 	int nargc,aaa; 
+ 	char **nargv;
++	FILE *ff;
++	char realSection[MAX_FILE_NAME_SIZE];
+ 	NEXT_FILE_ARG();
+ 	s_opt.stdopFlag = 1;
+-	readOptionFile(argv[i],&nargc,&nargv,"",NULL);
+-	processOptions(nargc, nargv, INFILES_DISABLED);
++	ff = fopen(argv[i],"r");
++	if (ff==NULL) fatalError(ERR_CANT_OPEN,argv[i], XREF_EXIT_ERR);
++	readOptionFromFile(ff,&nargc,&nargv,MEM_ALLOC_ON_PP,s_input_file_name,s_opt.project,realSection);
++	fclose(ff);
++	processOptions(nargc, nargv, infilesFlag);
++	reInitCwd("",realSection);
+ 	s_opt.stdopFlag = 0;
+ 	return(i);
+ }
+@@ -887,7 +892,7 @@ static int processNOption(int *ii, int argc, char **argv) {
+ 	return(1);
+ }
+ 
+-static int processOOption(int *ii, int argc, char **argv) {
++static int processOOption(int *ii, int argc, char **argv, int infilesFlag) {
+ 	int i = * ii;
+ 	if (0) {}
+ 	else if (strncmp(argv[i],"-oocheckbits=",13)==0)	{
+@@ -1177,4 +1182,7 @@ static int processOOption(int *ii, int argc, char **argv) {
+ 		sscanf(argv[i]+16,"%d",&s_opt.filterValue);
+ 	}
++ 	else if (strcmp(argv[i],"-optinclude")==0) {
++		i = mainHandleIncludeOption(argc, argv, i, infilesFlag);
++ 	}
+ 	else if (strcmp(argv[i],"-o")==0) {
+ 		NEXT_FILE_ARG();
+@@ -1383,7 +1388,7 @@ static int processROption(int *ii, int argc, char **argv, int infilesFlag) {
+ 	return(1);
+ }
+ 
+-static int processSOption(int *ii, int argc, char **argv) {
++static int processSOption(int *ii, int argc, char **argv, int infilesFlag) {
+ 	int i = * ii;
+ 	char *name, *val;
+ 	if (0) {}
+@@ -1408,7 +1413,7 @@ static int processSOption(int *ii, int argc, char **argv) {
+ 		xrefSetenv("-sourcepath", s_opt.sourcePath);
+ 	}
+ 	else if (strcmp(argv[i],"-stdop")==0) {
+-		i = mainHandleIncludeOption(argc, argv, i);
++		i = mainHandleIncludeOption(argc, argv, i, infilesFlag);
+ 	}
+ 	else if (strcmp(argv[i],"-set")==0) {
+ 		i = mainHandleSetOption(argc, argv, i);
+@@ -1650,7 +1655,7 @@ void processOptions(int argc, char **argv, int infilesFlag) {
+ 				break;
+ 			case 'n': case 'N': processed = processNOption(&i, argc, argv);
+ 				break;
+-			case 'o': case 'O': processed = processOOption(&i, argc, argv);
++			case 'o': case 'O': processed = processOOption(&i, argc, argv, infilesFlag);
+ 				break;
+ 			case 'p': case 'P': processed = processPOption(&i, argc, argv);
+ 				break;
+@@ -1658,7 +1663,7 @@ void processOptions(int argc, char **argv, int infilesFlag) {
+ 				break;
+ 			case 'r': case 'R': processed = processROption(&i, argc, argv, infilesFlag);
+ 				break;
+-			case 's': case 'S': processed = processSOption(&i, argc, argv);
++			case 's': case 'S': processed = processSOption(&i, argc, argv, infilesFlag);
+ 				break;
+ 			case 't': case 'T': processed = processTOption(&i, argc, argv);
+ 				break;
+diff --git a/src/options.c b/src/options.c
+index b02f578..36987cb 100644
+--- a/src/options.c
++++ b/src/options.c
+@@ -560,8 +560,9 @@ static void processSectionMarker(char *ttt,int i,char *project,char *section,
+ int readOptionFromFile(FILE *ff, int *nargc, char ***nargv, int memFl, 
+ 						char *sectionFile,char *project, char *resSection) {
+ 	char tt[MAX_OPTION_LEN];
+-	int len,argc,i,c,isActiveSect,isActivePass,res,sl,passn=0;
+-	char **aargv,*argv[MAX_STD_ARGS];
++	int len,argc,dfargc,i,c,isActiveSect,isActivePass,res,sl,passn=0;
++	char **aargv,**dfargv,*argv[MAX_STD_ARGS],dffsect[MAX_FILE_NAME_SIZE];
++	FILE *ff2;
+ 	argc = 1; res = 0; isActiveSect = isActivePass = 1; aargv=NULL;
+ 	resSection[0]=0;
+ 	if (memFl==MEM_ALLOC_ON_SM) SM_INIT(optMemory);
+@@ -573,7 +574,22 @@ int readOptionFromFile(FILE *ff, int *nargc, char ***nargv, int memFl,
+ 			expandEnvironmentVariables(tt+1,MAX_OPTION_LEN,&len,GLOBAL_ENV_ONLY);
+ 			//&fprintf(dumpOut,"expanded '%s'\n", tt);
+ 			processSectionMarker(tt,len+1,project,sectionFile,&isActiveSect,resSection);
+-		} else if (isActiveSect && strncmp(tt,"-pass",5)==0) {
++		} else if (isActiveSect && (strncmp(tt,"-optinclude",11)==0 || strncmp(tt, "-stdop",6)==0)) {
++			c = getOptionFromFile(ff,tt,MAX_OPTION_LEN,&len);
++			expandEnvironmentVariables(tt,MAX_OPTION_LEN,&len,DEFAULT_VALUE);
++			ff2 = fopen(tt, "r");
++			if (ff2==NULL) fatalError(ERR_CANT_OPEN,tt, XREF_EXIT_ERR);
++			if (readOptionFromFile(ff2,&dfargc,&dfargv,memFl,sectionFile,project,dffsect)) {
++			  res = 1;
++			}
++			fclose(ff2);
++			for(i=1; i<dfargc; i++) {
++				argv[argc] = dfargv[i];
++				if (argc < MAX_STD_ARGS-1) argc++;
++			}
++			if (dffsect[0]!=0) strcpy(resSection,dffsect);
++		}
++		else if (isActiveSect && strncmp(tt,"-pass",5)==0) {
+ 			sscanf(tt+5, "%d", &passn);
+ 			if (passn==s_currCppPass || s_currCppPass==ANY_CPP_PASS) {
+ 				isActivePass = 1;
+@@ -584,7 +600,7 @@ int readOptionFromFile(FILE *ff, int *nargc, char ***nargv, int memFl,
+ 		} else if (strncmp(tt,"-license=",9)==0) {
+ 			// special care is given to the -license option
+ 			strcpy(s_opt.licenseString, tt+9);
+-//&			strcpy(s_initOpt.licenseString, tt+9);  // why not ?
++//&			strcpy(s_initOpt.licenseString, tt+9);	// why not ?
+ 			s_expTime = 0;			// reinitialize it to be reloaded
+ 		} else if (strcmp(tt,"-set")==0 && ACTIVE_OPTION() 
+ 				   && memFl!=MEM_NO_ALLOC) {
+diff -u a/doc/xref.man b/doc/xref.man
+--- a/doc/xref.man
++++ b/doc/xref.man
+@@ -144,6 +144,11 @@
+ using relative path, it is considered relative to the currently
+ parsed file directory.
+ .TP
++.B \-include file
++Process file
++.I file
++as input before processing the regular input file.
++.TP
+ .BI "\-D" "name"\c
+ \&
+ Predefine \c
+@@ -523,7 +528,7 @@
+ that all generated HTML files will be compressed and the links are
+ correctly generated to those compressed files.
+ .TP
+-.B \-include file (or \-stdop file)
++.B \-optinclude file (or \-stdop file)
+ This option causes that the file `\|\c
+ .I file\c
+ \&\|' is read and scanned for further options. When used in an .xrefrc file
+-- 
+2.18.0
+

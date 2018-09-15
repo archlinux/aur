@@ -1,0 +1,39 @@
+From b31854f0fe28337462ba4078ed5d769247a82930 Mon Sep 17 00:00:00 2001
+From: Sergei Litvin <litvindev@gmail.com>
+Date: Mon, 5 Jun 2017 17:44:09 +0300
+Subject: [PATCH 18/33] Parse ranges in case labeled statement
+
+---
+ src/cgram.y    | 3 +++
+ src/yaccgram.y | 1 +
+ 2 files changed, 4 insertions(+)
+
+diff --git a/src/cgram.y b/src/cgram.y
+index 3660987..bf44655 100644
+--- a/src/cgram.y
++++ b/src/cgram.y
+@@ -1457,6 +1457,9 @@ label:
+ 	|	CASE constant_expr ':' {
+ 			GenSwitchCaseFork(0);
+ 	}
++	|	CASE constant_expr ELIPSIS constant_expr ':' {
++			GenSwitchCaseFork(0);
++	}
+ 	|	DEFAULT ':' {
+ 			GenSwitchCaseFork(0);
+ 	}
+diff --git a/src/yaccgram.y b/src/yaccgram.y
+index a6ca5d6..a374355 100644
+--- a/src/yaccgram.y
++++ b/src/yaccgram.y
+@@ -1535,6 +1535,7 @@ statement
+ labeled_statement
+ 	: label_def_name ':' statement 
+ 	| CASE constant_expr ':' statement
++	| CASE constant_expr ELIPSIS constant_expr ':' statement
+ 	| DEFAULT ':' statement
+ 	;
+ 
+-- 
+2.18.0
+

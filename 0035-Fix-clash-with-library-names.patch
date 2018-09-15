@@ -1,0 +1,154 @@
+diff -u a/env/emacs/xref.el b/env/emacs/xref.el
+--- a/env/emacs/xref.el
++++ b/env/emacs/xref.el
+@@ -29,7 +29,7 @@
+ ;; profit from  Xrefactory's project  management.  Of course,  we also
+ ;; acknowledge the developers and maintainers of GNU Emacs and XEmacs.
+ 
+-(provide 'xref)
++(provide 'xrefactory2)
+ 
+ (load "xrefprotocol")
+
+diff -u a/env/emacs/xrefactory.el b/env/emacs/xrefactory.el
+--- a/env/emacs/xrefactory.el
++++ b/env/emacs/xrefactory.el
+@@ -1127,72 +1127,72 @@
+ (defvar xref-default-documentation-string "Documentation not yet available, please invoke an Xrefactory function first.")
+ 
+ 
+-(autoload 'xref-global-options "xref" xref-default-documentation-string t)
+-(autoload 'xref-project-new "xref" xref-default-documentation-string t)
+-(autoload 'xref-project-delete "xref" xref-default-documentation-string t)
+-(autoload 'xref-project-set-active "xref" xref-default-documentation-string t)
+-(autoload 'xref-project-active "xref" xref-default-documentation-string t)
+-(autoload 'xref-project-edit-options "xref" xref-default-documentation-string t)
+-
+-(autoload 'xref-ide-compile-file "xref" xref-default-documentation-string t)
+-(autoload 'xref-ide-compile-dir "xref" xref-default-documentation-string t)
+-(autoload 'xref-ide-compile-project "xref" xref-default-documentation-string t)
+-(autoload 'xref-ide-compile "xref" xref-default-documentation-string t)
+-(autoload 'xref-ide-previous-error "xref" xref-default-documentation-string t)
+-(autoload 'xref-ide-run "xref" xref-default-documentation-string t)
+-(autoload 'xref-ide-run-this "xref" xref-default-documentation-string t)
+-(autoload 'xref-ide-run1 "xref" xref-default-documentation-string t)
+-(autoload 'xref-ide-run2 "xref" xref-default-documentation-string t)
+-(autoload 'xref-ide-run3 "xref" xref-default-documentation-string t)
+-(autoload 'xref-ide-run4 "xref" xref-default-documentation-string t)
+-(autoload 'xref-ide-run5 "xref" xref-default-documentation-string t)
+-(autoload 'xref-ide-compile-run "xref" xref-default-documentation-string t)
+-
+-(autoload 'xref-create-refs "xref" xref-default-documentation-string t)
+-(autoload 'xref-fast-update-refs "xref" xref-default-documentation-string t)
+-(autoload 'xref-update-refs "xref" xref-default-documentation-string t)
+-(autoload 'xref-gen-html-documentation "xref" xref-default-documentation-string t)
+-
+-(autoload 'xref-alternative-previous-reference "xref" xref-default-documentation-string t)
+-(autoload 'xref-alternative-next-reference "xref" xref-default-documentation-string t)
+-
+-(autoload 'xref-push-references "xref" xref-default-documentation-string t)
+-(autoload 'xref-push-and-goto-definition "xref" xref-default-documentation-string t)
+-(autoload 'xref-browse-symbol "xref" xref-default-documentation-string t)
+-(autoload 'xref-push-name "xref" xref-default-documentation-string t)
+-(autoload 'xref-push-and-apply-macro "xref" xref-default-documentation-string t)
+-(autoload 'xref-next-reference "xref" xref-default-documentation-string t)
+-(autoload 'xref-previous-reference "xref" xref-default-documentation-string t)
+-(autoload 'xref-pop-and-return "xref" xref-default-documentation-string t)
+-(autoload 'xref-pop-only "xref" xref-default-documentation-string t)
+-(autoload 'xref-show-browser "xref" xref-default-documentation-string t)
+-(autoload 'xref-re-push "xref" xref-default-documentation-string t)
+-
+-(autoload 'xref-search-in-tag-file "xref" xref-default-documentation-string t)
+-(autoload 'xref-search-definition-in-tag-file "xref" xref-default-documentation-string t)
+-
+-(autoload 'xref-push-this-file-unused-symbols "xref" xref-default-documentation-string t)
+-(autoload 'xref-push-global-unused-symbols "xref" xref-default-documentation-string t)
+-
+-(autoload 'xref-delete-window "xref" xref-default-documentation-string t)
+-
+-(autoload 'xref-set-moving-target-position "xref" xref-default-documentation-string t)
+-(autoload 'xref-refactor "xref" xref-default-documentation-string t)
+-(autoload 'xref-undo-last-refactoring "xref" xref-default-documentation-string t)
+-
+-(autoload 'xref-completion "xref" xref-default-documentation-string t)
+-
+-(autoload 'xref-class-tree-show "xref" xref-default-documentation-string t)
+-
+-(autoload 'xref-help "xref" xref-default-documentation-string t)
+-(autoload 'xref-about "xref" xref-default-documentation-string t)
+-(autoload 'xref-kill-xref-process "xref" xref-default-documentation-string t)
+-(autoload 'xref-registration "xref" xref-default-documentation-string t)
++(autoload 'xref-global-options "xrefactory2" xref-default-documentation-string t)
++(autoload 'xref-project-new "xrefactory2" xref-default-documentation-string t)
++(autoload 'xref-project-delete "xrefactory2" xref-default-documentation-string t)
++(autoload 'xref-project-set-active "xrefactory2" xref-default-documentation-string t)
++(autoload 'xref-project-active "xrefactory2" xref-default-documentation-string t)
++(autoload 'xref-project-edit-options "xrefactory2" xref-default-documentation-string t)
++
++(autoload 'xref-ide-compile-file "xrefactory2" xref-default-documentation-string t)
++(autoload 'xref-ide-compile-dir "xrefactory2" xref-default-documentation-string t)
++(autoload 'xref-ide-compile-project "xrefactory2" xref-default-documentation-string t)
++(autoload 'xref-ide-compile "xrefactory2" xref-default-documentation-string t)
++(autoload 'xref-ide-previous-error "xrefactory2" xref-default-documentation-string t)
++(autoload 'xref-ide-run "xrefactory2" xref-default-documentation-string t)
++(autoload 'xref-ide-run-this "xrefactory2" xref-default-documentation-string t)
++(autoload 'xref-ide-run1 "xrefactory2" xref-default-documentation-string t)
++(autoload 'xref-ide-run2 "xrefactory2" xref-default-documentation-string t)
++(autoload 'xref-ide-run3 "xrefactory2" xref-default-documentation-string t)
++(autoload 'xref-ide-run4 "xrefactory2" xref-default-documentation-string t)
++(autoload 'xref-ide-run5 "xrefactory2" xref-default-documentation-string t)
++(autoload 'xref-ide-compile-run "xrefactory2" xref-default-documentation-string t)
++
++(autoload 'xref-create-refs "xrefactory2" xref-default-documentation-string t)
++(autoload 'xref-fast-update-refs "xrefactory2" xref-default-documentation-string t)
++(autoload 'xref-update-refs "xrefactory2" xref-default-documentation-string t)
++(autoload 'xref-gen-html-documentation "xrefactory2" xref-default-documentation-string t)
++
++(autoload 'xref-alternative-previous-reference "xrefactory2" xref-default-documentation-string t)
++(autoload 'xref-alternative-next-reference "xrefactory2" xref-default-documentation-string t)
++
++(autoload 'xref-push-references "xrefactory2" xref-default-documentation-string t)
++(autoload 'xref-push-and-goto-definition "xrefactory2" xref-default-documentation-string t)
++(autoload 'xref-browse-symbol "xrefactory2" xref-default-documentation-string t)
++(autoload 'xref-push-name "xrefactory2" xref-default-documentation-string t)
++(autoload 'xref-push-and-apply-macro "xrefactory2" xref-default-documentation-string t)
++(autoload 'xref-next-reference "xrefactory2" xref-default-documentation-string t)
++(autoload 'xref-previous-reference "xrefactory2" xref-default-documentation-string t)
++(autoload 'xref-pop-and-return "xrefactory2" xref-default-documentation-string t)
++(autoload 'xref-pop-only "xrefactory2" xref-default-documentation-string t)
++(autoload 'xref-show-browser "xrefactory2" xref-default-documentation-string t)
++(autoload 'xref-re-push "xrefactory2" xref-default-documentation-string t)
++
++(autoload 'xref-search-in-tag-file "xrefactory2" xref-default-documentation-string t)
++(autoload 'xref-search-definition-in-tag-file "xrefactory2" xref-default-documentation-string t)
++
++(autoload 'xref-push-this-file-unused-symbols "xrefactory2" xref-default-documentation-string t)
++(autoload 'xref-push-global-unused-symbols "xrefactory2" xref-default-documentation-string t)
++
++(autoload 'xref-delete-window "xrefactory2" xref-default-documentation-string t)
++
++(autoload 'xref-set-moving-target-position "xrefactory2" xref-default-documentation-string t)
++(autoload 'xref-refactor "xrefactory2" xref-default-documentation-string t)
++(autoload 'xref-undo-last-refactoring "xrefactory2" xref-default-documentation-string t)
++
++(autoload 'xref-completion "xrefactory2" xref-default-documentation-string t)
++
++(autoload 'xref-class-tree-show "xrefactory2" xref-default-documentation-string t)
++
++(autoload 'xref-help "xrefactory2" xref-default-documentation-string t)
++(autoload 'xref-about "xrefactory2" xref-default-documentation-string t)
++(autoload 'xref-kill-xref-process "xrefactory2" xref-default-documentation-string t)
++(autoload 'xref-registration "xrefactory2" xref-default-documentation-string t)
+ 
+-(autoload 'xref-find-file-on-mouse "xref" xref-default-documentation-string t)
++(autoload 'xref-find-file-on-mouse "xrefactory2" xref-default-documentation-string t)
+ 
+ ;; this has to be kept, because of options
+-(autoload 'xref-soft-select-dispach-data-caller-window "xref" xref-default-documentation-string t)
++(autoload 'xref-soft-select-dispach-data-caller-window "xrefactory2" xref-default-documentation-string t)
+ 
+ 
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+diff --git a/env/emacs/xref.el b/env/emacs/xrefactory2.el
+rename from env/emacs/xref.el
+rename to env/emacs/xrefactory2.el

@@ -1,0 +1,206 @@
+From f8596af0668246ccbd26ed4289565abf9c5cd266 Mon Sep 17 00:00:00 2001
+From: litvin <litvindev@gmail.com>
+Date: Sun, 18 Jun 2017 13:17:25 +0300
+Subject: [PATCH 10/33] Parse "#include_next" directive
+
+---
+ src/cgram.y    |  2 +-
+ src/globals.c  |  7 ++++---
+ src/javagram.y |  2 +-
+ src/lex.c      |  9 +++++----
+ src/proto.h    |  1 +
+ src/yaccgram.y |  2 +-
+ src/yylex.c    | 27 ++++++++++++++++-----------
+ 7 files changed, 29 insertions(+), 21 deletions(-)
+
+diff --git a/src/cgram.y b/src/cgram.y
+index af77376..e4c2474 100644
+--- a/src/cgram.y
++++ b/src/cgram.y
+@@ -162,7 +162,7 @@
+ /* ************************** CPP-TOKENS ****************************** */
+ /* c-only */
+ %token CPP_TOKENS_START
+-%token CPP_INCLUDE CPP_DEFINE CPP_IFDEF CPP_IFNDEF CPP_IF CPP_ELSE CPP_ENDIF
++%token CPP_INCLUDE CPP_INCLUDENEXT CPP_DEFINE CPP_IFDEF CPP_IFNDEF CPP_IF CPP_ELSE CPP_ENDIF
+ %token CPP_ELIF CPP_UNDEF
+ %token CPP_PRAGMA CPP_LINE 
+ %token CPP_DEFINE0      /* macro with no argument */
+diff --git a/src/globals.c b/src/globals.c
+index 5d331c7..777ba1e 100644
+--- a/src/globals.c
++++ b/src/globals.c
+@@ -682,9 +682,10 @@ S_tokenNameIni s_tokenNameIniTab[] = {
+ 	{"'STRING_LITERAL'", 		STRING_LITERAL		,LAN_C},
+ #ifdef DEBUG
+ 	{"'IDENTIFIER'",			IDENTIFIER			,LAN_C},
+-	{"'LINE_TOK'", 				LINE_TOK			,LAN_C},
+-	{"'BLOCK_MARKER'", 			OL_MARKER_TOKEN		,LAN_C},
+-	{"#INCLUDE", 				CPP_INCLUDE		,LAN_C},
++	{"'LINE_TOK'",				LINE_TOK			,LAN_C},
++	{"'BLOCK_MARKER'",			OL_MARKER_TOKEN		,LAN_C},
++	{"#INCLUDE",				CPP_INCLUDE			,LAN_C},
++	{"#INCLUDENEXT",			CPP_INCLUDENEXT	,LAN_C},
+ 	{"#DEFINE0",				CPP_DEFINE0		,LAN_C},
+ 	{"#DEFINE", 				CPP_DEFINE		,LAN_C},
+ 	{"#IFDEF", 					CPP_IFDEF		,LAN_C},
+diff --git a/src/javagram.y b/src/javagram.y
+index ef94800..60d79b6 100644
+--- a/src/javagram.y
++++ b/src/javagram.y
+@@ -210,7 +210,7 @@
+ /* ************************** CPP-TOKENS ****************************** */
+ /* c-only */
+ %token CPP_TOKENS_START
+-%token CPP_INCLUDE CPP_DEFINE CPP_IFDEF CPP_IFNDEF CPP_IF CPP_ELSE CPP_ENDIF
++%token CPP_INCLUDE CPP_INCLUDENEXT CPP_DEFINE CPP_IFDEF CPP_IFNDEF CPP_IF CPP_ELSE CPP_ENDIF
+ %token CPP_ELIF CPP_UNDEF
+ %token CPP_PRAGMA CPP_LINE 
+ %token CPP_DEFINE0      /* macro with no argument */
+diff --git a/src/lex.c b/src/lex.c
+index 25bcd19..a656fc0 100644
+--- a/src/lex.c
++++ b/src/lex.c
+@@ -322,12 +322,12 @@ identEnd##lab:;\
+ }
+ 
+ #define HandleCppToken(ch,ccc,cfin,cb,dd, cfile, cline, clb, clo) {\
+-	char *ddd,tt[10];\
++	char *ddd,tt[20];\
+ 	int i,lcoll,scol;\
+ 	lcoll = COLUMN_POS(ccc,clb,clo);\
+ 	GetChar(ch,ccc,cfin,cb, clb, clo);\
+ 	DeleteBlank(ch,ccc,cfin,cb, clb, clo);\
+-	for(i=0; i<9 && (isalpha(ch) || isdigit(ch) || ch=='_') ; i++) {\
++	for(i=0; i<19 && (isalpha(ch) || isdigit(ch) || ch=='_') ; i++) {\
+ 		tt[i] = ch;\
+ 		GetChar(ch,ccc,cfin,cb, clb, clo);\
+ 	}\
+@@ -346,9 +346,10 @@ identEnd##lab:;\
+ 		PutLexToken(CPP_ELSE,dd); PutLexPosition(cfile,cline,lcoll,dd);\
+ 	} else if (! strcmp(tt,"endif")) {\
+ 		PutLexToken(CPP_ENDIF,dd); PutLexPosition(cfile,cline,lcoll,dd);\
+-	} else if (! strcmp(tt,"include")) { \
++	} else if (! strcmp(tt,"include") || ! strcmp(tt,"include_next")) { \
+ 		char endCh;\
+-		PutLexToken(CPP_INCLUDE,dd); \
++		if (! strcmp(tt,"include"))	PutLexToken(CPP_INCLUDE,dd)\
++		else PutLexToken(CPP_INCLUDENEXT,dd);\
+ 		PutLexPosition(cfile,cline,lcoll,dd);\
+ 		DeleteBlank(ch,ccc,cfin,cb, clb, clo);\
+ 		if (ch == '\"' || ch == '<') {\
+diff --git a/src/proto.h b/src/proto.h
+index ad93574..c050502 100644
+--- a/src/proto.h
++++ b/src/proto.h
+@@ -2569,6 +2569,7 @@ void addIncludeReference C_ARG((int filenum, S_position *pos));
+ void addThisFileDefineIncludeReference C_ARG((int filenum));
+ void pushNewInclude C_ARG((FILE *f, S_editorBuffer *buff, char *name, char *prepend));
+ void popInclude C_ARG(());
++FILE *openInclude(char pchar, char *name, int nextFlag);
+ void copyDir C_ARG((char *dest, char *s, int *i));
+ char *normalizeFileName C_ARG((char *name, char *relativeto));
+ int addFileTabItem C_ARG((char *name, int *fileNumber));
+diff --git a/src/yaccgram.y b/src/yaccgram.y
+index 4d8a34e..7e73ef2 100644
+--- a/src/yaccgram.y
++++ b/src/yaccgram.y
+@@ -172,7 +172,7 @@ static void addYaccSymbolReference C_ARG((S_idIdent *name, int usage));
+ /* ************************** CPP-TOKENS ****************************** */
+ /* c-only */
+ %token CPP_TOKENS_START
+-%token CPP_INCLUDE CPP_DEFINE CPP_IFDEF CPP_IFNDEF CPP_IF CPP_ELSE CPP_ENDIF
++%token CPP_INCLUDE CPP_INCLUDENEXT CPP_DEFINE CPP_IFDEF CPP_IFNDEF CPP_IF CPP_ELSE CPP_ENDIF
+ %token CPP_ELIF CPP_UNDEF
+ %token CPP_PRAGMA CPP_LINE 
+ %token CPP_DEFINE0      /* macro with no argument */
+diff --git a/src/yylex.c b/src/yylex.c
+index 3a4c128..2431e75 100644
+--- a/src/yylex.c
++++ b/src/yylex.c
+@@ -473,7 +473,7 @@ void popInclude() {
+ 	}
+ }
+ 
+-static FILE *openInclude(char pchar, char *name, char **fileName) {
++FILE *openInclude(char pchar, char *name, int nextFlag) {
+ 	S_editorBuffer 	*er;
+ 	FILE			*r;
+ 	S_stringList 	*ll;
+@@ -505,10 +505,13 @@ static FILE *openInclude(char pchar, char *name, char **fileName) {
+ 			strcpy(nn+dlen, name);
+ 			nnlen = dlen+nmlen;
+ 			nn[nnlen]=0;
++			nnn = normalizeFileName(nn, s_cwd);
++			if (! nextFlag || strcmp(nnn, cFile.fileName) != 0) {
+ //&fprintf(dumpOut, "try to open <%s>\n",nn);
+-			er = editorFindFile(nn);
+-			if (er==NULL) r = fopen(nn,"r");
+-			if (er!=NULL || r!=NULL) goto found;
++				er = editorFindFile(nn);
++				if (er==NULL) r = fopen(nn,"r");
++				if (er!=NULL || r!=NULL) goto found;
++			}
+ 		});
+ 	}
+ 	if (er==NULL && r==NULL) return(NULL);
+@@ -521,8 +524,7 @@ static FILE *openInclude(char pchar, char *name, char **fileName) {
+ 	return(stdin);  // NOT NULL
+ }
+ 
+-static void processInclude2(S_position *ipos, char pchar, char *iname) {
+-	char *fname;
++static void processInclude2(S_position *ipos, char pchar, char *iname, int nextFlag) {
+ 	FILE *nyyin;
+ 	S_symbol ss,*memb;
+ 	int ii;
+@@ -530,7 +532,7 @@ static void processInclude2(S_position *ipos, char pchar, char *iname) {
+ 	FILL_symbolBits(&ss.b,0,0,0,0,0,TypeMacro,StorageNone,0);
+ 	FILL_symbol(&ss,tmpBuff,tmpBuff,s_noPos,ss.b,mbody,NULL,NULL);
+ 	if (symTabIsMember(s_symTab, &ss, &ii, &memb)) return;
+-	nyyin = openInclude(pchar, iname, &fname);
++	nyyin = openInclude(pchar, iname, nextFlag);
+ 	if (nyyin == NULL) {
+ 		assert(s_opt.taskRegime);
+ 		if (s_opt.taskRegime!=RegimeEditServer) warning(ERR_CANT_OPEN, iname);
+@@ -540,7 +542,7 @@ static void processInclude2(S_position *ipos, char pchar, char *iname) {
+ }
+ 
+ 
+-static void processInclude(S_position *ipos) {
++static void processInclude(S_position *ipos, int nextFlag) {
+ 	FILE *nyyin;
+ 	char *fname;
+ 	char *ccc, *cc2;
+@@ -556,14 +558,14 @@ assert(0);
+ 			cInput = macStack[0];
+ 			macStacki = 0;
+ 		}
+-		processInclude2(ipos, *ccc, ccc+1);
++		processInclude2(ipos, *ccc, ccc+1, nextFlag);
+ 	} else {
+ 		cInput.cc = cc2;		/* unget lexem */
+ 		lex = yylex();
+ 		if (lex == STRING_LITERAL) {
+ 			cInput = macStack[0];		// hack, cut everything pending
+ 			macStacki = 0;
+-			processInclude2(ipos, '\"', yytext);
++			processInclude2(ipos, '\"', yytext, nextFlag);
+ 		} else if (lex == '<') {
+ 			// TODO!!!!
+ 			warning(ERR_ST,"Include <> after macro expansion not yet implemented, sorry\n\tuse \"\" instead");
+@@ -1098,7 +1100,10 @@ static int processCppConstruct(int lex) {
+ /*	if (s_opt.debug) fprintf(dumpOut,"%s ",s_tokenName[lex]); */
+ 	switch (lex) {
+ 	case CPP_INCLUDE:
+-		processInclude(&pos);
++		processInclude(&pos, 0);
++		break;
++	case CPP_INCLUDENEXT:
++		processInclude(&pos, 1);
+ 		break;
+ 	case CPP_DEFINE0:
+ 		AddHtmlCppReference(pos);
+-- 
+2.18.0
+

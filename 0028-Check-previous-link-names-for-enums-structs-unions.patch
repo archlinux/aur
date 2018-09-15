@@ -1,0 +1,204 @@
+From b357126abc7baaa25f261cb84b926e3cd93a09ab Mon Sep 17 00:00:00 2001
+From: litvin <litvindev@gmail.com>
+Date: Fri, 29 Sep 2017 19:58:47 +0300
+Subject: [PATCH 28/33] Check previous link names for enums/structs/unions
+
+---
+ src/cxfile.c | 25 +++++++++++++++++++++++--
+ src/cxref.c  | 49 +++++++++++++++++++++++++++++++++++++++++++++++++
+ src/proto.h  |  4 ++++
+ src/semact.c |  4 ++++
+ 4 files changed, 80 insertions(+), 2 deletions(-)
+
+diff --git a/src/cxfile.c b/src/cxfile.c
+index 2eca78a..9c6b0b5 100644
+--- a/src/cxfile.c
++++ b/src/cxfile.c
+@@ -1189,7 +1189,8 @@ static void cxrfSymbolName(		int size,
+ 			}
+ 			s_inLastInfos.onLineRefMenuItem = cms;
+ //&fprintf(dumpOut,"check (%s) %s ols==%d\n", miscellaneousName[additionalArg], ddd->name, ols);
+-			if (ols || (additionalArg==CX_BY_PASS&&byPassAcceptableSymbol(ddd))
++			if (ols || (additionalArg==CX_BY_PASS&&byPassAcceptableSymbol(ddd)
++				|| (additionalArg==CX_BY_PASS2&&byPassAcceptableSymbol2(ddd)))
+ 				) {
+ 				s_inLastInfos.onLineReferencedSym = si;
+ 				s_inLastInfos.onLineRefIsBestMatchFlag = (ols == 2);
+@@ -1250,7 +1251,8 @@ static void cxrfReference(		int size,
+ 	S_symbolRefItem 	*memb;
+ 	S_usageBits			usageBits;
+ 	int 				ii,file,line,coll,usage,sym,addfl,reqAcc;
+-	int 				copyrefFl;
++	int 				copyrefFl,nlen;
++	char 				*nn;
+ 	assert(ri == CXFI_REFERENCE);
+ 	usage = s_inLastInfos.counter[CXFI_USAGE];
+ 	reqAcc = s_inLastInfos.counter[CXFI_REQ_ACCESS];
+@@ -1352,6 +1354,13 @@ static void cxrfReference(		int size,
+ 											   &s_olcxCurrentUser->browserStack.top->hkSelectedSym,
+ 											   1, 1, 0, usage,0,&s_noPos, UsageNone);
+ 						}
++					} else if (additionalArg == CX_BY_PASS2) {
++						if (POSITION_EQ(s_cxRefPos, pos)) {
++							nlen = strlen(s_inLastInfos.symbolTab[sym]->name);
++							OLCX_ALLOCC(nn, nlen+1, char);
++							strcpy(nn, s_inLastInfos.symbolTab[sym]->name);
++							s_olcxCurrentUser->browserStack.top->hkSelectedSym->s.name = nn;
++						}
+ 					} else if (1 
+ 							   /*& 
+ 								 s_opt.keep_old 
+@@ -1622,6 +1631,18 @@ S_cxScanFileFunctionLink s_cxByPassFunTab[]={
+ 	{-1,NULL, 0},
+ };
+ 
++S_cxScanFileFunctionLink s_cxByPassFunTab2[]={
++	{CXFI_SINGLE_RECORDS,cxrfSetSingleRecords, 0},
++	{CXFI_VERSION, cxrfVersionCheck, 0},
++	{CXFI_FILE_NAME,cxrfFileName, CX_JUST_READ},
++	{CXFI_SOURCE_INDEX, cxrfSourceIndex, CX_JUST_READ},
++	{CXFI_SYM_NAME,cxrfSymbolName, CX_BY_PASS2},
++	{CXFI_REFERENCE,cxrfReference, CX_BY_PASS2},
++	{CXFI_CLASS_EXT,cxrfSubClass, CX_JUST_READ},
++	{CXFI_REFNUM,cxrfRefNum, 0},
++	{-1,NULL, 0},
++};
++
+ S_cxScanFileFunctionLink s_cxSymbolLoadMenuRefs[]={
+ 	{CXFI_SINGLE_RECORDS,cxrfSetSingleRecords, 0},
+ 	{CXFI_VERSION, cxrfVersionCheck, 0},
+diff --git a/src/cxref.c b/src/cxref.c
+index 2e91f37..6042d8a 100644
+--- a/src/cxref.c
++++ b/src/cxref.c
+@@ -849,6 +849,44 @@ S_reference * addCxReference(S_symbol *p, S_position *pos, int usage, int vFunCl
+ 	return(addCxReferenceNew(p, pos, &ub, vFunCl, vApplCl));
+ }
+ 
++void checkPreviousCxLinkNames(S_symbol *p, S_position *pos)
++{
++	int				ii,category,scope,storage,deleted;
++	char			*ss;
++	S_symbolRefItem	*memb,*memb2,ri,ri2;
++	S_reference		*rr,**rrplace;
++	S_olSymbolsMenu *mm,**mmplace,ddd;
++	getSymbolCxrefCategories(p, &category, &scope, &storage);
++	FILL_symbolRefItemBits(&ri.b,p->b.symType,storage,scope,
++						   p->b.accessFlags,category,0);
++	FILL_symbolRefItem(&ri,p->linkName,
++					   0,				   // cxFileHashNumber(p->linkName),
++					   s_noneFileIndex,s_noneFileIndex,ri.b,NULL,NULL);
++	p->pos = *pos;
++	setGlobalFileDepNames(p->name, p, MEM_XX);
++	if (refTabIsMember(&s_cxrefTab, &ri, &ii, &memb)) {
++		deleted = refTabDeleteExact(&s_cxrefTab, memb);
++		assert(deleted);
++		ri2 = ri; ri2.name = p->linkName;
++		if (!refTabIsMember(&s_cxrefTab, &ri2, &ii, &memb2)) {
++			CX_ALLOCC(ss, strlen(p->linkName)+1, char);
++			strcpy(ss, p->linkName);
++			memb2 = memb;
++			memb2->name = ss;
++			refTabSet(&s_cxrefTab, memb2, ii);
++		}
++		else {
++			while (memb->refs != NULL) {
++				rr = memb->refs; memb->refs = memb->refs->next;
++				SORTED_LIST_PLACE2(rrplace, S_reference, *rr, &memb2->refs);
++				if (*rrplace == NULL || SORTED_LIST_NEQ((*rrplace), *rr)) {
++					LIST_CONS(rr,(*rrplace));
++				}
++			}
++		}
++	}
++}
++
+ void addTrivialCxReference(char *name,int symType,int storage,S_position *pos,int usage) {
+ 	S_symbol 		ss;
+ 	S_symbolBits	bb;
+@@ -3634,6 +3672,7 @@ void olCreateSelectionMenu(int command) {
+ 	LIST_SORT(S_olSymbolsMenu, rstack->hkSelectedSym, olMenuHashFileNumLess);
+ 	ss = rstack->hkSelectedSym;
+ 	while (ss!=NULL) {
++		readOneAppropReferenceFile(ss->s.name, s_cxByPassFunTab2);
+ 		readOneAppropReferenceFile(ss->s.name, s_cxSymbolMenuCreationTab);
+ 		fnum = cxFileHashNumber(ss->s.name);
+ //&fprintf(dumpOut,"file %d readed\n", fnum);
+@@ -5177,6 +5216,16 @@ int byPassAcceptableSymbol(S_symbolRefItem *p) {
+ 	return(1);
+ }
+ 
++int byPassAcceptableSymbol2(S_symbolRefItem *p) {
++	int nlen,len;
++	char *nn, *nnn;
++	GET_NUDE_NAME(p->name, nn, len);
++	GET_NUDE_NAME(s_olcxCurrentUser->browserStack.top->hkSelectedSym->s.name, nnn, nlen);
++	if (len != nlen) return(0);
++	if (strncmp(nn, nnn, len)) return(0);
++	return(1);
++}
++
+ // DOES NOT WORK!!! because it is not loading references from current file
+ // because cxfile does not know I am in s_opt.cxrefs==OLO_PUSH_NAME
+ static void oloPushByNameIfNothingPushed() {
+diff --git a/src/proto.h b/src/proto.h
+index 0a8cb38..de83530 100644
+--- a/src/proto.h
++++ b/src/proto.h
+@@ -37,6 +37,7 @@ enum miscellaneous {						/* misc. constants */
+ 	CX_HTML_SECOND_PASS,
+ 	CX_MENU_CREATION,
+ 	CX_BY_PASS,
++	CX_BY_PASS2,
+ 	HTML_GEN,
+ 	HTML_NO_GEN,
+ 	MEM_ALLOC_ON_SM,
+@@ -2121,6 +2122,7 @@ S_reference *duplicateReference C_ARG((S_reference *r));
+ S_reference * addCxReferenceNew C_ARG((S_symbol *p, S_position *pos, S_usageBits *ub, int vFunCl, int vApplCl));
+ S_reference * addCxReference C_ARG((S_symbol *p, S_position *pos, int usage, int vFunClass,int vApplClass));
+ S_reference *addSpecialFieldReference C_ARG((char *name, int storage, int fnum, S_position *p, int usage));
++void checkPreviousCxLinkNames(S_symbol *p, S_position *pos);
+ void addClassTreeHierarchyReference C_ARG((int fnum, S_position *p, int usage));
+ void addCfClassTreeHierarchyRef C_ARG((int fnum, int usage));
+ void addTrivialCxReference  C_ARG((char *name, int symType, int storage, S_position *pos, int usage));
+@@ -2156,6 +2158,7 @@ int isInRefList C_ARG((S_reference *list,
+ 				));
+ char *getXrefEnvironmentValue C_ARG(( char *name ));
+ int byPassAcceptableSymbol C_ARG((S_symbolRefItem *p));
++int byPassAcceptableSymbol2 C_ARG((S_symbolRefItem *p));
+ int itIsSymbolToPushOlRefences C_ARG((S_symbolRefItem *p, S_olcxReferences *rstack, S_olSymbolsMenu **rss, int checkSelFlag));
+ void olcxAddReferenceToOlSymbolsMenu C_ARG((S_olSymbolsMenu  *cms, S_reference *rr, 
+ 						  int bestFitTlag));
+@@ -2225,6 +2228,7 @@ void scanReferenceFiles C_ARG((char *fname, S_cxScanFileFunctionLink *scanFunTab
+ extern S_cxScanFileFunctionLink s_cxScanFileTab[];
+ extern S_cxScanFileFunctionLink s_cxFullScanFunTab[];
+ extern S_cxScanFileFunctionLink s_cxByPassFunTab[];
++extern S_cxScanFileFunctionLink s_cxByPassFunTab2[];
+ extern S_cxScanFileFunctionLink s_cxSymbolMenuCreationTab[];
+ extern S_cxScanFileFunctionLink s_cxSymbolLoadMenuRefs[];
+ extern S_cxScanFileFunctionLink s_cxScanFunTabFor2PassMacroUsage[];
+diff --git a/src/semact.c b/src/semact.c
+index cb3f623..9b3bc09 100644
+--- a/src/semact.c
++++ b/src/semact.c
+@@ -924,6 +924,8 @@ S_typeModifiers *simpleStrUnionSpecifier(	S_idIdent *typeName,
+ 		pp->u.s->stype.u.t = pp;
+ 		setGlobalFileDepNames(id->name, pp, MEM_XX);
+ 		addSymbol(pp, s_symTab);
++	} else if (IS_DEFINITION_USAGE(usage)) {
++		checkPreviousCxLinkNames(pp, &id->p);
+ 	}
+ 	addCxReference(pp, &id->p, usage,s_noneFileIndex, s_noneFileIndex);
+ 	return(&pp->u.s->stype);
+@@ -1078,6 +1080,8 @@ S_typeModifiers *simpleEnumSpecifier(S_idIdent *id, int usage) {
+ 		*pp = p;
+ 		setGlobalFileDepNames(id->name, pp, MEM_XX);
+ 		addSymbol(pp, s_symTab);
++	} else if (IS_DEFINITION_USAGE(usage)) {
++		checkPreviousCxLinkNames(pp, &id->p);
+ 	}
+ 	addCxReference(pp, &id->p, usage,s_noneFileIndex, s_noneFileIndex);
+ 	return(crSimpleEnumType(pp,TypeEnum));
+-- 
+2.18.0
+

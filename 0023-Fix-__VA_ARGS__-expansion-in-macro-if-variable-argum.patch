@@ -1,0 +1,28 @@
+From 3274f5bae444c2bc62011598a85edeecaad979b9 Mon Sep 17 00:00:00 2001
+From: Sergei Litvin <litvindev@gmail.com>
+Date: Thu, 22 Jun 2017 20:38:52 +0300
+Subject: [PATCH 23/33] Fix ##__VA_ARGS__ expansion in macro if variable
+ arguments are omitted
+
+---
+ src/yylex.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/yylex.c b/src/yylex.c
+index 0af4dcc..5cb5ff5 100644
+--- a/src/yylex.c
++++ b/src/yylex.c
+@@ -1327,6 +1327,10 @@ static void collate(char **albcc, char **abcc, char *buf, int *absize,
+ 		GetLexToken(lex, ncc);
+ 		PassLex(ncc, lex, line, val, hash, pos, len, 0);
+ 		cc = actArgs[val].a; ccfin = actArgs[val].fin;
++		if (! (cc < ccfin) && NextLexToken(lbcc) == ',') {
++			bcc = lbcc;
++			lbcc = NULL;
++		}
+ 	} else {
+ 		cc = ncc; 
+ 		GetLexToken(lex, ncc);
+-- 
+2.18.0
+

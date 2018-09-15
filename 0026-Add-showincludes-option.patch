@@ -1,0 +1,98 @@
+From e0ddf603d23c41301a844a803a11d6d75e9150e4 Mon Sep 17 00:00:00 2001
+From: litvin <litvindev@gmail.com>
+Date: Tue, 1 Aug 2017 02:01:13 +0300
+Subject: [PATCH 26/33] Add -showincludes option
+
+---
+ src/globals.c |  1 +
+ src/main.c    |  2 ++
+ src/proto.h   |  1 +
+ src/yylex.c   | 17 +++++++++++++++--
+ 4 files changed, 19 insertions(+), 2 deletions(-)
+
+diff --git a/src/globals.c b/src/globals.c
+index 66ba837..6cce897 100644
+--- a/src/globals.c
++++ b/src/globals.c
+@@ -433,6 +433,7 @@ S_options s_initOpt = {
+ 	RegimeXref,
+ 	"nouser",			// -user
+ 	0,
++	0,
+ 	1,
+ 	0,
+ 	0,
+diff --git a/src/main.c b/src/main.c
+index 3ef299d..3f49131 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -91,6 +91,7 @@ static void usage(char *s) {
+ #	ifdef DEBUG
+ 	fprintf(stdout,"\t-debug                - produce debug trace of the execution\n");
+ #	endif
++	fprintf(stdout,"\t-showincludes         - produce trace of include files\n");
+ #if 0
+ 	fprintf(stdout,"\t-typedefs        - generate structure/enums typedefs\n");
+ 	fprintf(stdout,"\t-str_fill        - generate structure fills\n");
+@@ -1386,6 +1387,7 @@ static int processSOption(int *ii, int argc, char **argv) {
+ 	int i = * ii;
+ 	char *name, *val;
+ 	if (0) {}
++	else if (strcmp(argv[i],"-showincludes")==0) s_opt.showIncludes = 1;
+ 	else if (strcmp(argv[i],"-strict")==0)		s_opt.strictAnsi = 1;
+ 	else if (strcmp(argv[i],"-str_fill")==0) 	s_opt.str_fill = 1;
+ 	else if (strcmp(argv[i],"-str_copy")==0) 	s_opt.str_copy = 1;
+diff --git a/src/proto.h b/src/proto.h
+index 02b08e6..0a8cb38 100644
+--- a/src/proto.h
++++ b/src/proto.h
+@@ -1740,6 +1740,7 @@ struct options {
+ 	int taskRegime;
+ 	char *user;
+ 	int debug;
++	int showIncludes;
+ 	int cpp_comment;
+ 	int c_struct_scope;
+ 	int cxrefs;
+diff --git a/src/yylex.c b/src/yylex.c
+index 5cb5ff5..ae00881 100644
+--- a/src/yylex.c
++++ b/src/yylex.c
+@@ -481,12 +481,12 @@ FILE *openInclude(char pchar, char *name, int nextFlag) {
+ 	char 			nn[MAX_FILE_NAME_SIZE];
+ 	char 			rdir[MAX_FILE_NAME_SIZE];
+ 	char 			*nnn;
+-	int 			nnlen,dlen,fdlen,nmlen,len,ii;
++	int 			nnlen,dlen,fdlen,nmlen,i;
+ 	er = NULL; r = NULL;
+ 	nmlen = strlen(name);
+ 	copyDir(rdir, cFile.fileName, &fdlen);
+ 	if (pchar!='<') {
+-/*fprintf(dumpOut, "dlen == %d\n",dlen);*/
++/*&fprintf(dumpOut, "dlen == %d\n",dlen);&*/
+ 		strcpy(nn,normalizeFileName(name, rdir));
+ /*&fprintf(dumpOut, "try to open %s\n",nn);&*/
+ 		er = editorFindFile(nn);
+@@ -518,6 +518,19 @@ FILE *openInclude(char pchar, char *name, int nextFlag) {
+  found:
+ 	nnn = normalizeFileName(nn, s_cwd);
+ 	strcpy(nn,nnn);
++	if (	(s_opt.taskRegime==RegimeXref
++			 || s_opt.taskRegime==RegimeHtmlGenerate)
++			&& s_opt.showIncludes) {
++		sprintf(tmpBuff, "  ");
++		for(i=0; i<inStacki; i++) sprintf(tmpBuff+strlen(tmpBuff), "  ");
++		sprintf(tmpBuff+strlen(tmpBuff),"%s", nn);
++		if (s_opt.xref2) {
++			ppcGenRecord(PPC_INFORMATION, tmpBuff, "\n");
++		} else {
++			fprintf(dumpOut,"'%s'\n", tmpBuff);
++		}
++		fflush(dumpOut);
++	}
+ //&fprintf(dumpOut, "file %s opened\n",nn);
+ //&fprintf(dumpOut, "checking to  %s \n",s_fileTab.tab[s_olOriginalFileNumber]->name);
+ 	pushNewInclude(r, er, nn, "\n");
+-- 
+2.18.0
+

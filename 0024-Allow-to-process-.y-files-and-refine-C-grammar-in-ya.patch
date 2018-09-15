@@ -1,0 +1,1007 @@
+From d4d10f7cd73657b161a2c5344c6295e9e9e9d634 Mon Sep 17 00:00:00 2001
+From: Sergei Litvin <litvindev@gmail.com>
+Date: Wed, 15 Mar 2017 13:45:37 +0300
+Subject: [PATCH 24/33] Allow to process .y files and refine C grammar in
+ yaccgram.y
+
+---
+ src/Makefile   |   2 +-
+ src/cgram.y    |   2 -
+ src/yaccgram.y | 568 ++++++++++++++++++++++++++++++++++++-------------
+ 3 files changed, 426 insertions(+), 146 deletions(-)
+
+diff --git a/src/Makefile b/src/Makefile
+index f0b6977..9d6ebb0 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -1,7 +1,7 @@
+ #########################################################################
+ CC= gcc
+ COMCFLAGS= $(INCLUDES) -DDEBUG $(ZLIB_OPT) \
+-			-DBIN_RELEASE -DPRESERVE_C_ARGS -D__mygnulinux__
++			-DBIN_RELEASE -DPRESERVE_C_ARGS -D__mygnulinux__ -DYACC_ALLOWED
+ CFLAGS= -c -O $(COMCFLAGS)
+ EDGCFLAGS= -O
+ LDFLAGS=
+diff --git a/src/cgram.y b/src/cgram.y
+index 58020dd..a0559f7 100644
+--- a/src/cgram.y
++++ b/src/cgram.y
+@@ -59,8 +59,6 @@
+ 
+ #define CrTypeModifier(xxx,ttt) {\
+ 		xxx = crSimpleTypeMofifier(ttt);\
+-		xxx = StackMemAlloc(S_typeModifiers);\
+-		FILLF_typeModifiers(xxx, ttt,f,( NULL,NULL) ,NULL,NULL);\
+ }
+ 
+ #define AddComposedType(ddd, ttt) appendComposedType(&ddd->u.type, ttt)
+diff --git a/src/yaccgram.y b/src/yaccgram.y
+index 0bca507..8773040 100644
+--- a/src/yaccgram.y
++++ b/src/yaccgram.y
+@@ -33,19 +33,6 @@
+ #define yyerror styyerror
+ #define yyErrorRecovery styyErrorRecovery
+ 
+-
+-#define CrTypeModifier(xxx,ttt) {\
+-		xxx = StackMemAlloc(S_typeModifiers);\
+-		FILLF_typeModifiers(xxx, ttt,f,( NULL,NULL) ,NULL,NULL);\
+-}
+-
+-#define PrependModifier(xxx,ttt) {\
+-		S_typeModifiers *p;\
+-		p = StackMemAlloc(S_typeModifiers);\
+-		FILLF_typeModifiers(p, ttt, NULL,NULL,NULL,xxx);\
+-		xxx = p;\
+-}
+-
+ #define SetStrCompl1(xxx) {\
+ 	assert(s_opt.taskRegime);\
+ 	if (s_opt.taskRegime == RegimeEditServer) {\
+@@ -61,6 +48,10 @@
+ 	}\
+ }
+ 
++#define CrTypeModifier(xxx,ttt) {\
++		xxx = crSimpleTypeMofifier(ttt);\
++}
++
+ #define AddComposedType(ddd, ttt) appendComposedType(&ddd->u.type, ttt)
+ 
+ #define AddHtmlTrivialReference(pos) {\
+@@ -263,12 +254,15 @@ static void addYaccSymbolReference C_ARG((S_idIdent *name, int usage));
+ 	S_bb_nestedConstrTokenType				bbnestedConstrTokenType;
+ }
+ 
++
+ %type <bbidIdent> IDENTIFIER identifier struct_identifier enum_identifier
+ %type <bbidIdent> str_rec_identifier STRUCT UNION struct_or_union
+ %type <bbidIdent> user_defined_type TYPE_NAME lexem
+ %type <bbinteger> pointer CONSTANT rule_body
+ %type <bbidIdent> designator designator_list
+ %type <bbidlist> designation_opt initializer initializer_list initializer_list_opt eq_initializer_opt
++%type <bbinteger> assignment_operator
++%type <bbinteger> pointer CONSTANT _ncounter_ _nlabel_ _ngoto_ _nfork_
+ %type <bbunsign> storage_class_specifier type_specifier1
+ %type <bbunsign> type_modality_specifier Sv_tmp
+ %type <bbsymbol> init_declarator declarator declarator2 struct_declarator
+@@ -285,7 +279,7 @@ static void addYaccSymbolReference C_ARG((S_idIdent *name, int usage));
+ %type <bbsymbol> fun_arg_init_declarations fun_arg_declaration
+ %type <bbsymbolPositionLstPair> parameter_list parameter_type_list 
+ %type <bbsymbolPositionLstPair> parameter_identifier_list identifier_list
+-%type <bbpositionLst> argument_expr_list
++%type <bbpositionLst> argument_expr_list argument_expr_list_opt
+ 
+ %type <bbtypeModif> type_specifier2 
+ %type <bbtypeModif> struct_or_union_specifier struct_or_union_define_specifier
+@@ -296,7 +290,7 @@ static void addYaccSymbolReference C_ARG((S_idIdent *name, int usage));
+ %type <bbexprType> multiplicative_expr additive_expr shift_expr
+ %type <bbexprType> relational_expr equality_expr and_expr exclusive_or_expr
+ %type <bbexprType> inclusive_or_expr logical_and_expr logical_or_expr
+-%type <bbexprType> conditional_expr assignment_expr expr
++%type <bbexprType> conditional_expr assignment_expr expr maybe_expr
+ 
+ %type <bbposition> STRING_LITERAL '(' ',' ')'
+ 
+@@ -519,6 +513,8 @@ primary_expr
+ 			assert(s_opt.taskRegime);
+ 			if (CX_REGIME()) {
+ 				$$.d.r = addCxReference(p, &$1.d->p, UsageUsed,s_noneFileIndex, s_noneFileIndex);
++			} else {
++				$$.d.r = NULL;
+ 			}
+ 		} else {
+ 			/* implicit function declaration */
+@@ -529,11 +525,15 @@ primary_expr
+ 			$$.d.t = StackMemAlloc(S_typeModifiers);
+ 			FILLF_typeModifiers($$.d.t, TypeFunction,f,( NULL,NULL) ,NULL,p);
+ 			d = StackMemAlloc(S_symbol);
+-			FILL_symbolBits(&d->b,0,0,0,0,0,TypeDefault, StorageExtern,0);
++			FILL_symbolBits(&d->b,0,0,0,0,0,TypeDefault, StorageExtern, 0);
+ 			FILL_symbol(d,$1.d->name,$1.d->name,$1.d->p,d->b,type,$$.d.t,NULL);
+ 			d->u.type = $$.d.t;
+ 			dd = addNewSymbolDef(d, StorageExtern, s_symTab, UsageUsed);
+-			$$.d.r = NULL;
++			if (CX_REGIME()) {
++				$$.d.r = addCxReference(dd, &$1.d->p, UsageUsed, s_noneFileIndex, s_noneFileIndex);
++			} else {
++				$$.d.r = NULL;
++			}
+ 		} 
+ 	}
+ 	| CHAR_LITERAL			{ CrTypeModifier($$.d.t, TypeInt); $$.d.r = NULL;}
+@@ -541,7 +541,7 @@ primary_expr
+ 	| LONG_CONSTANT			{ CrTypeModifier($$.d.t, TypeLong); $$.d.r = NULL;}
+ 	| FLOAT_CONSTANT		{ CrTypeModifier($$.d.t, TypeFloat); $$.d.r = NULL;}
+ 	| DOUBLE_CONSTANT		{ CrTypeModifier($$.d.t, TypeDouble); $$.d.r = NULL;}
+-	| STRING_LITERAL		{
++	| string_literales		{
+ 		S_typeModifiers *p;
+ 		CrTypeModifier(p, TypeChar);
+ 		$$.d.t = StackMemAlloc(S_typeModifiers);
+@@ -558,6 +558,11 @@ primary_expr
+ 	| COMPL_OTHER_NAME		{ assert(0); /* token never used */ }
+ 	;
+ 
++string_literales:
++		STRING_LITERAL
++	|	STRING_LITERAL string_literales
++	;
++
+ postfix_expr
+ 	: primary_expr								/* { $$.d = $1.d; } */
+ 	| postfix_expr '[' expr ']'					{
+@@ -567,6 +572,7 @@ postfix_expr
+ 		$$.d.r = NULL;
+ 		assert($$.d.t);
+ 	}
++/*
+ 	| postfix_expr '(' ')'						{
+ 		if ($1.d.t->m==TypeFunction) {
+ 			$$.d.t=$1.d.t->next;
+@@ -577,10 +583,21 @@ postfix_expr
+ 		$$.d.r = NULL;
+ 		assert($$.d.t);		
+ 	}
+-	| postfix_expr '(' argument_expr_list ')'	{
++*/
++	| postfix_expr 
++			{
++				$<typeModif>$ = s_upLevelFunctionCompletionType;
++			 	s_upLevelFunctionCompletionType = $1.d.t;
++			}
++	  '(' argument_expr_list_opt ')'	{
++		s_upLevelFunctionCompletionType = $<typeModif>2;
+ 		if ($1.d.t->m==TypeFunction) {
+ 			$$.d.t=$1.d.t->next;
+-			handleInvocationParamPositions($1.d.r, &$2.d, $3.d, &$4.d, 1);
++			if ($4.d==NULL) {
++				handleInvocationParamPositions($1.d.r, &$3.d, NULL, &$5.d, 0);
++			} else {
++				handleInvocationParamPositions($1.d.r, &$3.d, $4.d->next, &$5.d, 1);
++			}
+ 		} else {
+ 			$$.d.t = &s_errorModifier;
+ 		}
+@@ -605,8 +622,14 @@ postfix_expr
+ 		} else $$.d.t = &s_errorModifier;
+ 		assert($$.d.t);
+ 	}
+-	| postfix_expr INC_OP						{ $$.d.t = $1.d.t; $$.d.r = NULL;}
+-	| postfix_expr DEC_OP						{ $$.d.t = $1.d.t; $$.d.r = NULL;}
++	| postfix_expr INC_OP						{
++		$$.d.t = $1.d.t;
++		RESET_REFERENCE_USAGE($1.d.r, UsageAddrUsed);
++	}
++	| postfix_expr DEC_OP						{
++		$$.d.t = $1.d.t;
++		RESET_REFERENCE_USAGE($1.d.r, UsageAddrUsed);
++	}
+ 	;
+ 
+ str_rec_identifier
+@@ -614,20 +637,37 @@ str_rec_identifier
+ 	| COMPL_STRUCT_REC_NAME		{ assert(0); /* token never used */ }
+ 	;
+ 
++argument_expr_list_opt:				{
++			$$.d = NULL;
++		}
++	|	argument_expr_list			{
++			XX_ALLOC($$.d, S_positionLst);
++			FILL_positionLst($$.d, s_noPos, $1.d);
++		}
++	;
++
+ argument_expr_list
+-	: assignment_expr							{
+-		$$.d = NULL;
++	: assignment_expr							{ 
++		$$.d = NULL; 
+ 	}
+ 	| argument_expr_list ',' assignment_expr	{
+ 		$$.d = $1.d;
+ 		appendPositionToList(&$$.d, &$2.d);
+ 	}
++	| COMPL_UP_FUN_PROFILE							{/* never used */}
++	| argument_expr_list ',' COMPL_UP_FUN_PROFILE	{/* never used */}
+ 	;
+ 
+ unary_expr
+ 	: postfix_expr					/* { $$.d = $1.d; } */
+-	| INC_OP unary_expr				{ $$.d.t = $2.d.t; $$.d.r = NULL;}
+-	| DEC_OP unary_expr				{ $$.d.t = $2.d.t; $$.d.r = NULL;}
++	| INC_OP unary_expr				{ 
++		$$.d.t = $2.d.t;
++		RESET_REFERENCE_USAGE($2.d.r, UsageAddrUsed);
++	}
++	| DEC_OP unary_expr				{
++		$$.d.t = $2.d.t;
++		RESET_REFERENCE_USAGE($2.d.r, UsageAddrUsed);
++	}
+ 	| unary_operator cast_expr		{ $$.d.t = $2.d.t; $$.d.r = NULL;}
+ 	| '&' cast_expr					{
+ 		$$.d.t = StackMemAlloc(S_typeModifiers);
+@@ -649,6 +689,10 @@ unary_expr
+ 		CrTypeModifier($$.d.t, TypeInt);
+ 		$$.d.r = NULL;
+ 	}
++	/* yet another GCC ext. */
++	| AND_OP identifier		{
++		labelReference($2.d, UsageLvalUsed);
++	}
+ 	;
+ 
+ unary_operator
+@@ -796,29 +840,48 @@ conditional_expr
+ 		$$.d.t = $3.d.t; 
+ 		$$.d.r = NULL;
+ 	}
++/* other GCC improvement, grrr */
++	| logical_or_expr '?' ':' conditional_expr	{ 
++		$$.d.t = $4.d.t; 
++		$$.d.r = NULL;
++	}
+ 	;
+ 
+ assignment_expr
+ 	: conditional_expr									/* { $$.d = $1.d; } */
+-	| unary_expr assignment_operator assignment_expr	{ 
+-		RESET_REFERENCE_USAGE($1.d.r, UsageLvalUsed);
+-		$$.d.t = $1.d.t; 
+-		$$.d.r = NULL;
++	| unary_expr assignment_operator assignment_expr	{
++		if ($1.d.r != NULL && s_opt.cxrefs == OLO_EXTRACT) {
++			S_reference *rr;
++			rr = duplicateReference($1.d.r);
++			$1.d.r->usg = s_noUsage;
++			if ($2.d == '=') {
++				RESET_REFERENCE_USAGE(rr, UsageLvalUsed);
++			} else {
++				RESET_REFERENCE_USAGE(rr, UsageAddrUsed);
++			}
++		} else {
++			if ($2.d == '=') {
++				RESET_REFERENCE_USAGE($1.d.r, UsageLvalUsed);
++			} else {
++				RESET_REFERENCE_USAGE($1.d.r, UsageAddrUsed);
++			}
++		}
++		$$.d = $1.d; 	/* $$.d.r will be used for FOR completions ! */
+ 	}
+ 	;
+ 
+ assignment_operator
+-	: '='
+-	| MUL_ASSIGN
+-	| DIV_ASSIGN
+-	| MOD_ASSIGN
+-	| ADD_ASSIGN
+-	| SUB_ASSIGN
+-	| LEFT_ASSIGN
+-	| RIGHT_ASSIGN
+-	| AND_ASSIGN
+-	| XOR_ASSIGN
+-	| OR_ASSIGN
++	: '='					{$$.d = '=';}
++	| MUL_ASSIGN			{$$.d = MUL_ASSIGN;}
++	| DIV_ASSIGN			{$$.d = DIV_ASSIGN;}
++	| MOD_ASSIGN			{$$.d = MOD_ASSIGN;}
++	| ADD_ASSIGN			{$$.d = ADD_ASSIGN;}
++	| SUB_ASSIGN			{$$.d = SUB_ASSIGN;}
++	| LEFT_ASSIGN			{$$.d = LEFT_ASSIGN;}
++	| RIGHT_ASSIGN			{$$.d = RIGHT_ASSIGN;}
++	| AND_ASSIGN			{$$.d = AND_ASSIGN;}
++	| XOR_ASSIGN			{$$.d = XOR_ASSIGN;}
++	| OR_ASSIGN				{$$.d = OR_ASSIGN;}
+ 	;
+ 
+ expr
+@@ -846,34 +909,36 @@ declaration
+ 	;
+ 
+ init_declarations
+-	: declaration_specifiers init_declarator			{		
++	: declaration_specifiers init_declarator eq_initializer_opt	{
+ 		$$.d = $1.d;
+-		addNewDeclaration($1.d, $2.d, NULL, StorageAuto,s_symTab);
++		addNewDeclaration($1.d, $2.d, $3.d, StorageAuto, s_symTab);
+ 	}
+-	| init_declarations ',' init_declarator				{
++	| init_declarations ',' init_declarator eq_initializer_opt	{
+ 		$$.d = $1.d;
+-		addNewDeclaration($1.d, $3.d, NULL, StorageAuto,s_symTab);
++		addNewDeclaration($1.d, $3.d, $4.d, StorageAuto, s_symTab);
+ 	}
+-	| error												{
+-		/*$$.d = &s_errorSymbol;*/
+-		XX_ALLOC($$.d, S_symbol);
+-		*$$.d = s_errorSymbol;
++	| error								{
++		/* $$.d = &s_errorSymbol; */
++		$$.d = typeSpecifier2(&s_errorModifier);
+ 	}
+ 	;
+ 
+ declaration_specifiers
+-	: declaration_modality_specifiers						/* { $$.d = $1.d; } */
+-	| declaration_specifiers0								/* { $$.d = $1.d; } */
++	: declaration_modality_specifiers
++	| declaration_specifiers0
+ 	;
+ 
+ user_defined_type
+ 	: TYPE_NAME												{
++		int usage;
+ 		$$.d = $1.d;
+ 		assert(s_opt.taskRegime);
+ 		if (CX_REGIME()) {
+ 			assert($1.d);
+ 			assert($1.d->sd);
+-			addCxReference($1.d->sd, &$1.d->p, UsageUsed,s_noneFileIndex, s_noneFileIndex);
++			if (WORK_NEST_LEVEL1()) usage = USAGE_TOP_LEVEL_USED;
++			else usage = UsageUsed;
++			addCxReference($1.d->sd,&$1.d->p,usage,s_noneFileIndex,s_noneFileIndex);
+ 		}
+ 	}
+ 	;
+@@ -882,7 +947,6 @@ declaration_specifiers0
+ 	: user_defined_type										{ 
+ 		assert($1.d);
+ 		assert($1.d->sd);
+-		assert($1.d->sd);
+ 		$$.d = typeSpecifier2($1.d->sd->u.type);
+ 	}
+ 	| type_specifier1										{
+@@ -894,7 +958,6 @@ declaration_specifiers0
+ 	| declaration_modality_specifiers  user_defined_type	{ 
+ 		assert($2.d);
+ 		assert($2.d->sd);
+-		assert($2.d->sd);
+ 		$$.d = $1.d;
+ 		declTypeSpecifier2($1.d,$2.d->sd->u.type);
+ 	}
+@@ -935,13 +998,8 @@ declaration_specifiers0
+ 
+ declaration_modality_specifiers
+ 	: storage_class_specifier								{
+-		S_typeModifiers *p;
+-		p = StackMemAlloc(S_typeModifiers);
+-		FILLF_typeModifiers(p,TypeDefault,f,(NULL,NULL) ,NULL,NULL);
+-		$$.d = StackMemAlloc(S_symbol);
+-		FILL_symbolBits(&$$.d->b,0,0,0,0,0,TypeDefault,$1.d,0);
+-		FILL_symbol($$.d,NULL,NULL,s_noPos,$$.d->b,type,p,NULL);
+-		$$.d->u.type = p;
++		$$.d  = typeSpecifier1(TypeDefault);
++		$$.d->b.storage = $1.d; 
+ 	}
+ 	| declaration_modality_specifiers storage_class_specifier 		{
+ 		$$.d = $1.d;
+@@ -961,11 +1019,51 @@ declaration_modality_specifiers
+ 	}
+ 	;
+ 
++/*& // an experiment
++declaration_specifier0:
++		storage_class_specifier
++	|	type_modality_specifier
++	;
++
++declaration_specifiers0:
++		declaration_specifier0
++	|	declaration_specifiers0 declaration_specifier0
++	;
++
++declaration_specifiers:
++		user_defined_type
++	|	declaration_specifiers0 user_defined_type
++	|	declaration_specifiers0 type_specifier1
++	|	declaration_specifiers0 type_specifier2
++	|	declaration_specifiers declaration_specifier0
++	|	declaration_specifiers type_specifier1
++	|	declaration_specifiers type_specifier2
++	;
++&*/
++
++/* a gcc extensions ? */
++asm_opt:
++	|	ASM_KEYWORD '(' string_literales ')'
++	;
++
++eq_initializer_opt:		{
++		$$.d = NULL;
++	}
++	| '=' initializer	{
++		$$.d = $2.d;
++	}
++	;
++
+ init_declarator
+-	: declarator					/* { $$.d = $1.d; } */
+-	| declarator '=' initializer	/* { $$.d = $1.d; } */
++	: declarator asm_opt /* eq_initializer_opt	 { $$.d = $1.d; } */
+ 	;
+ 
++/* the original 
++	: declarator
++	| declarator '=' initializer
++	;
++*/
++
+ storage_class_specifier
+ 	: TYPEDEF		{ $$.d = StorageTypedef; }
+ 	| EXTERN		{ $$.d = StorageExtern; }
+@@ -983,6 +1081,10 @@ type_modality_specifier
+ 	| ANONYME_MOD	{ $$.d = TypeDefault; }
+ 	;
+ 
++type_modality_specifier_opt:
++	| type_modality_specifier
++	;
++
+ type_specifier1
+ 	: CHAR		{ $$.d = TypeChar; }
+ 	| SHORT		{ $$.d = TmodShort; }
+@@ -1008,13 +1110,19 @@ function_specifier
+ 
+ struct_or_union_specifier
+ 	: struct_or_union struct_identifier								{
+-		$$.d = simpleStrUnionSpecifier($1.d, $2.d, UsageUsed);
++		int usage;
++		if (WORK_NEST_LEVEL1()) usage = USAGE_TOP_LEVEL_USED;
++		else usage = UsageUsed;
++		$$.d = simpleStrUnionSpecifier($1.d, $2.d, usage);
+ 	}
+ 	| struct_or_union_define_specifier '{' struct_declaration_list '}'{
+ 		assert($1.d && $1.d->u.t);
+ 		$$.d = $1.d;
+ 		specializeStrUnionDef($$.d->u.t, $3.d);
+ 	}
++	| struct_or_union_define_specifier '{' '}' 						{
++		$$.d = $1.d;
++	}
+ 	;
+ 
+ struct_or_union_define_specifier
+@@ -1041,7 +1149,7 @@ struct_declaration_list
+ 	| struct_declaration_list struct_declaration		{
+ 		if ($1.d == &s_errorSymbol || $1.d->b.symType==TypeError) {
+ 			$$.d = $2.d;
+-		} else if ($2.d == &s_errorSymbol || $1.d->b.symType==TypeError) {
++		} else if ($2.d == &s_errorSymbol || $1.d->b.symType==TypeError)  {
+ 			$$.d = $1.d;
+ 		} else {
+ 			$$.d = $1.d;
+@@ -1061,7 +1169,7 @@ struct_declaration
+ 		tmpWorkMemoryi = $1.d;
+ 	}
+ 	| error												{
+-		/*$$.d = &s_errorSymbol;*/
++		/* $$.d = &s_errorSymbol; */
+ 		XX_ALLOC($$.d, S_symbol);
+ 		*$$.d = s_errorSymbol;
+ 	}
+@@ -1079,23 +1187,22 @@ struct_declarator_list
+ 	}
+ 	;
+ 
+-struct_declarator
+-	: declarator					/* { $$.d = $1.d; } */
++struct_declarator:					{ /* gcc extension allow empty field */
++		$$.d = crEmptyField();	
++	}
+ 	| ':' constant_expr				{
+-		S_typeModifiers *p;
+-		p = StackMemAlloc(S_typeModifiers);
+-		FILLF_typeModifiers(p,TypeAnonymeField,f,( NULL,NULL) ,NULL,NULL);
+-		$$.d = StackMemAlloc(S_symbol);
+-		FILL_symbolBits(&$$.d->b,0,0,0,0,0,TypeDefault,StorageDefault,0);
+-		FILL_symbol($$.d, NULL, NULL, s_noPos,$$.d->b,type,p,NULL);
+-		$$.d->u.type = p;
++		$$.d = crEmptyField();
+ 	}
++	| declarator					/* { $$.d = $1.d; } */
+ 	| declarator ':' constant_expr	/* { $$.d = $1.d; } */
+ 	;
+ 
+ enum_specifier
+ 	: ENUM enum_identifier									{
+-		$$.d = simpleEnumSpecifier($2.d, UsageUsed);
++		int usage;
++		if (WORK_NEST_LEVEL1()) usage = USAGE_TOP_LEVEL_USED;
++		else usage = UsageUsed;
++		$$.d = simpleEnumSpecifier($2.d, usage);
+ 	}
+ 	| enum_define_specifier '{' enumerator_list_comma '}'		{
+ 		assert($1.d && $1.d->m == TypeEnum && $1.d->u.t);
+@@ -1146,7 +1253,7 @@ enumerator
+ 		addNewSymbolDef($$.d,StorageConstant, s_symTab, UsageDefined);
+ 	}
+ 	| error									{
+-		/*$$.d = &s_errorSymbol;*/
++		/* $$.d = &s_errorSymbol; */
+ 		XX_ALLOC($$.d, S_symbol);
+ 		*$$.d = s_errorSymbol;
+ 	}
+@@ -1156,15 +1263,14 @@ enumerator
+ declarator
+ 	: declarator2										/* { $$.d = $1.d; } */
+ 	| pointer declarator2								{
+-		S_typeModifiers *p;
+-		int i;
+ 		$$.d = $2.d;
+-		for (i=0; i<$1.d; i++) AddComposedType($$.d,TypePointer);
++		assert($$.d->b.npointers == 0);
++		$$.d->b.npointers = $1.d;
+ 	}
+ 	;
+ 
+ declarator2
+-	: IDENTIFIER										{ 
++	: identifier										{ 
+ 		$$.d = StackMemAlloc(S_symbol);
+ 		FILL_symbolBits(&$$.d->b,0,0,0,0,0,TypeDefault,StorageDefault,0);
+ 		FILL_symbol($$.d,$1.d->name,$1.d->name,$1.d->p,$$.d->b,type,NULL,NULL);
+@@ -1172,6 +1278,7 @@ declarator2
+ 	}
+ 	| '(' declarator ')'								{ 
+ 		$$.d = $2.d;
++		unpackPointers($$.d);
+ 	}
+ 	| declarator2 '[' ']'								{ 
+ 		assert($1.d);
+@@ -1189,6 +1296,7 @@ declarator2
+ 		$$.d = $1.d; 
+ 		p = AddComposedType($$.d, TypeFunction);
+ 		FILL_funTypeModif(&p->u.f , NULL, NULL);
++		handleDeclaratorParamPositions($1.d, &$2.d, NULL, &$3.d, 0);
+ 	}
+ 	| declarator2 '(' parameter_type_list ')'			{ 
+ 		S_typeModifiers *p;
+@@ -1370,6 +1478,7 @@ parameter_list
+ 	}
+ 	;
+ 
++
+ parameter_declaration
+ 	: declaration_specifiers declarator			{ 
+ 		completeDeclarator($1.d, $2.d);
+@@ -1379,9 +1488,16 @@ parameter_declaration
+ 		$$.d = StackMemAlloc(S_symbol);
+ 		FILL_symbolBits(&$$.d->b,0,0,0,0,0,TypeDefault, StorageDefault,0);
+ 		FILL_symbol($$.d, NULL, NULL, s_noPos,$$.d->b,type,$1.d,NULL);
++		$$.d->u.type = $1.d;
+ 	}
+ 	| error										{
+-		/*$$.d = &s_errorSymbol;*/
++		/*
++		   	this was commented out, because of excess of tmpWorkMemory 
++			but I am putting it in, because in many cases, this helps
++			to index a function with wrong typedefed parameters, like:
++			void toto(Mistype arg) {}
++			In case of problems rather increase the tmpWorkMemory !!!
++		*/
+ 		XX_ALLOC($$.d, S_symbol);
+ 		*$$.d = s_errorSymbol;
+ 	}
+@@ -1449,9 +1565,10 @@ abstract_declarator2
+ 		S_typeModifiers *p;
+ 		$$.d = $1.d;
+ 		p = appendComposedType(&($$.d), TypeFunction);
+-		// why there was the following ?????
+-		// FILL_funTypeModif(&p->u.f , NULL, NULL);
+-		FILL_funTypeModif(&p->u.f , $3.d.s, NULL);
++		// I think there should be the following, but in abstract 
++		// declarator it does not matter
++		//& FILL_funTypeModif(&p->u.f , $3.d.s, NULL);
++		FILL_funTypeModif(&p->u.f , NULL, NULL);
+ 	}
+ 	;
+ 
+@@ -1544,14 +1661,29 @@ statement
+ 	| Sv_tmp jump_statement		{
+ 		tmpWorkMemoryi = $1.d;
+ 	}
+-	| error
++	| Sv_tmp asm_statement		{
++		tmpWorkMemoryi = $1.d;
++	}
++	| Sv_tmp error	{
++		tmpWorkMemoryi = $1.d;
++	}
++	;
++
++label:
++		label_def_name ':'
++	|	CASE constant_expr ':' {
++			GenSwitchCaseFork(0);
++	}
++	|	CASE constant_expr ELIPSIS constant_expr ':' {
++			GenSwitchCaseFork(0);
++	}
++	|	DEFAULT ':' {
++			GenSwitchCaseFork(0);
++	}
+ 	;
+ 
+ labeled_statement
+-	: label_def_name ':' statement 
+-	| CASE constant_expr ':' statement
+-	| CASE constant_expr ELIPSIS constant_expr ':' statement
+-	| DEFAULT ':' statement
++	: label statement 
+ 	;
+ 
+ label_def_name
+@@ -1570,69 +1702,211 @@ label_name
+ 
+ compound_statement
+ 	: '{' '}'
+-	| '{' Start_block statement_list Stop_block '}'
+-	| '{' Start_block declaration_list Stop_block '}'
+-	| '{' Start_block declaration_list statement_list Stop_block '}'
++	| '{' Start_block label_decls_opt statement_list Stop_block '}'
++/*&
++	| '{' Start_block label_decls_opt declaration_list Stop_block '}'
++	| '{' Start_block label_decls_opt declaration_list statement_list Stop_block '}'
++&*/
+ 	;
+ 
++label_decls_opt:
++	|	label_decls
++	;
++
++label_decls:
++		LABEL identifier {
++		labelReference($2.d,UsageDeclared);
++	}
++	|	label_decls LABEL identifier {
++		labelReference($3.d,UsageDeclared);
++	}
++	;
++
++/*&
+ declaration_list
+ 	: declaration
+ 	| declaration_list declaration
+ 	;
++&*/
++
++/* allowing declarations inside statements makes better error recovery.
++   If an error occurs in one of early declarations, this worked only
++   because of some strange recovering
++ */
+ 
+ statement_list
+ 	: statement
+ 	| statement_list statement
+-/*
+ 	| declaration
+ 	| statement_list declaration
+-*/
+ 	;
+ 
+ maybe_expr
+-	:
+-	| expr
++	:					{ $$.d.t = NULL; $$.d.r = NULL; }
++	| expr				{ $$.d = $1.d; }
+ 	;
+ 
+ expression_statement
+ 	: maybe_expr ';'
+ 	;
+ 
++
++_ncounter_:	 {EXTRACT_COUNTER_SEMACT($$.d);}
++	;
++
++_nlabel_:	{EXTRACT_LABEL_SEMACT($$.d);}
++	;
++
++_ngoto_:	{EXTRACT_GOTO_SEMACT($$.d);}
++	;
++
++_nfork_:	{EXTRACT_FORK_SEMACT($$.d);}
++	;
++
+ selection_statement
+-	: IF '(' expr ')' statement
+-	| IF '(' expr ')' statement ELSE statement
+-	| SWITCH '(' expr ')' statement
++	: IF '(' expr ')' _nfork_ statement						{
++		GenInternalLabelReference($5.d, UsageDefined);
++	}
++	| IF '(' expr ')' _nfork_ statement ELSE _ngoto_ {
++		GenInternalLabelReference($5.d, UsageDefined);
++	}	statement								{
++		GenInternalLabelReference($8.d, UsageDefined);
++	}
++	| SWITCH '(' expr ')' /*5*/ _ncounter_ 	{/*6*/
++		AddContinueBreakLabelSymbol(1000*$5.d, SWITCH_LABEL_NAME, $<symbol>$);
++	} {/*7*/
++		AddContinueBreakLabelSymbol($5.d, BREAK_LABEL_NAME, $<symbol>$);
++		GenInternalLabelReference($5.d, UsageFork);
++	} statement					{
++		GenSwitchCaseFork(1);
++		ExtrDeleteContBreakSym($<symbol>7);
++		ExtrDeleteContBreakSym($<symbol>6);
++		GenInternalLabelReference($5.d, UsageDefined);
++	}
++	;
++
++for1maybe_expr:
++		maybe_expr			{s_forCompletionType=$1.d;}
+ 	;
+ 
+ iteration_statement
+-	: WHILE '(' expr ')' statement
+-	| DO statement WHILE '(' expr ')' ';'
+-	| FOR '(' maybe_expr ';' maybe_expr ';' maybe_expr ')' statement
++	: WHILE _nlabel_ '(' expr ')' /*6*/ _nfork_ 
++	{/*7*/
++		AddContinueBreakLabelSymbol($2.d, CONTINUE_LABEL_NAME, $<symbol>$);
++	} {/*8*/
++		AddContinueBreakLabelSymbol($6.d, BREAK_LABEL_NAME, $<symbol>$);
++	} statement					{
++		ExtrDeleteContBreakSym($<symbol>8);
++		ExtrDeleteContBreakSym($<symbol>7);
++		GenInternalLabelReference($2.d, UsageUsed);
++		GenInternalLabelReference($6.d, UsageDefined);
++	}
++
++	| DO _nlabel_ _ncounter_ _ncounter_ { /*5*/
++		AddContinueBreakLabelSymbol($3.d, CONTINUE_LABEL_NAME, $<symbol>$);
++	} {/*6*/
++		AddContinueBreakLabelSymbol($4.d, BREAK_LABEL_NAME, $<symbol>$);
++	} statement WHILE {
++		ExtrDeleteContBreakSym($<symbol>6);
++		ExtrDeleteContBreakSym($<symbol>5);
++		GenInternalLabelReference($3.d, UsageDefined);
++	} '(' expr ')' ';'			{
++		GenInternalLabelReference($2.d, UsageFork);
++		GenInternalLabelReference($4.d, UsageDefined);
++	}
++
++	| FOR '(' for1maybe_expr ';' 
++			/*5*/ _nlabel_  maybe_expr ';'  /*8*/_ngoto_
++			/*9*/ _nlabel_  maybe_expr ')' /*12*/ _nfork_
++		{
++		/*13*/
++		GenInternalLabelReference($5.d, UsageUsed);
++		GenInternalLabelReference($8.d, UsageDefined);
++		AddContinueBreakLabelSymbol($9.d, CONTINUE_LABEL_NAME, $<symbol>$);
++		}
++		{/*14*/
++		AddContinueBreakLabelSymbol($12.d, BREAK_LABEL_NAME, $<symbol>$);		
++		} 
++			statement
++		{ 
++		ExtrDeleteContBreakSym($<symbol>14);
++		ExtrDeleteContBreakSym($<symbol>13);
++		GenInternalLabelReference($9.d, UsageUsed);
++		GenInternalLabelReference($12.d, UsageDefined);
++		}		
++	| FOR '(' for1maybe_expr ';' COMPL_FOR_SPECIAL1
++	| FOR '(' for1maybe_expr ';' _nlabel_  maybe_expr ';' COMPL_FOR_SPECIAL2
+ 	;
+ 
+ jump_statement
+ 	: GOTO label_name ';' 
+-	| CONTINUE ';'
+-	| BREAK ';'
+-	| RETURN ';'
+-	| RETURN expr ';'
++	| CONTINUE ';'			{
++		GenContBreakReference(CONTINUE_LABEL_NAME);
++	}
++	| BREAK ';'				{
++		GenContBreakReference(BREAK_LABEL_NAME);
++	}
++	| RETURN ';'			{
++		GenInternalLabelReference(-1, UsageUsed);
++	}
++	| RETURN expr ';'		{
++		GenInternalLabelReference(-1, UsageUsed);
++	}
++	;
++
++_bef_:			{
++		actionsBeforeAfterExternalDefinition();
++	}
++	;
++
++/* ****************** following is some gcc asm support ************ */
++/* it is not exactly as in gcc, but I hope it is suf. general */
++
++gcc_asm_symbolic_name_opt:
++	|	'[' IDENTIFIER ']'
+ 	;
+ 
++gcc_asm_item_opt:
++	|	gcc_asm_symbolic_name_opt IDENTIFIER
++	|	gcc_asm_symbolic_name_opt IDENTIFIER '(' expr ')'
++	|	gcc_asm_symbolic_name_opt string_literales
++	|	gcc_asm_symbolic_name_opt string_literales '(' expr ')'
++	;
++
++gcc_asm_item_list:
++		gcc_asm_item_opt
++	|	gcc_asm_item_list ',' gcc_asm_item_opt
++	;
++
++gcc_asm_oper:
++		':' gcc_asm_item_list
++	|	gcc_asm_oper ':' gcc_asm_item_list
++	;
++
++asm_statement:
++		ASM_KEYWORD type_modality_specifier_opt '(' expr ')' ';'
++	|	ASM_KEYWORD type_modality_specifier_opt '(' expr gcc_asm_oper ')' ';'
++	;
++
++/* *********************************************************************** */
++
+ file
+-	: cached_external_definition_list
+-	| 
+-	| cached_external_definition_list EOI_TOKEN 
+-		Start_block statement_list Stop_block
+-	| EOI_TOKEN Start_block statement_list Stop_block
++	: _bef_
++	| _bef_ cached_external_definition_list _bef_
+ 	;
+ 
+ cached_external_definition_list
+-	: external_definition		{
+-		/* poseCachePoint(1); no caching in yacc files */
++	: external_definition				{
++		if (inStacki == 0) {
++			poseCachePoint(1);
++		}
+ 	}
+-	| cached_external_definition_list external_definition {
+-		/* poseCachePoint(1); no caching in yacc files */
++	| cached_external_definition_list _bef_ external_definition {
++		if (inStacki == 0) {
++			poseCachePoint(1);
++		}
+ 	}
++	| error
+ 	;
+ 
+ external_definition
+@@ -1643,34 +1917,33 @@ external_definition
+ 		tmpWorkMemoryi = $1.d;
+ 	}
+ 	| Sv_tmp function_definition_head {
+-		S_symbol *p,*pa;
++		S_symbol *p,*pa,*pp;
+ 		int i;
+ 		assert($2.d);
+-		//&if ($2.d->b.storage == StorageDefault) $2.d->b.storage = StorageExtern;
++		// I think that due to the following line sometimes 
++		// storage was not extern, see 'addNewSymbolDef'
++		//& if ($2.d->b.storage == StorageDefault) $2.d->b.storage = StorageExtern;
++		// TODO!!!, here you should check if there is previous declaration of
++		// the function, if yes and is declared static, make it static!
+ 		addNewSymbolDef($2.d, StorageExtern, s_symTab, UsageDefined);
+ 		tmpWorkMemoryi = $1.d;
+ 		stackMemoryBlockStart();
++		s_count.localVar = 0;
+ 		assert($2.d->u.type && $2.d->u.type->m == TypeFunction);
+ 		s_cp.function = $2.d;
++		GenInternalLabelReference(-1, UsageDefined);
+ 		for(p=$2.d->u.type->u.f.args,i=1; p!=NULL; p=p->next,i++) {
+ 			if (p->b.symType == TypeElipsis) continue;
+ 			if (p->u.type == NULL) p->u.type = &s_defaultIntModifier;
+-			if (p->name != NULL) {
+-				XX_ALLOC(pa,S_symbol);
+-				*pa = *p;
+-				addNewSymbolDef(pa, StorageAuto, s_symTab, UsageDefined);
+-			}
+-			if (s_opt.cxrefs == OLO_GOTO_PARAM_NAME 
+-				&& i == s_opt.olcxGotoVal
+-				&& POSITION_EQ($2.d->pos, s_cxRefPos)) {
+-				s_paramPosition = p->pos;
+-			}
+-
++			addFunctionParameterToSymTable($2.d, p, i, s_symTab);
+ 		}
+ 	} compound_statement {
+ 		stackMemoryBlockFree();
+ 		s_cp.function = NULL;
+ 		LICENSE_CHECK();
++		if (s_opt.taskRegime == RegimeHtmlGenerate) {
++			htmlAddFunctionSeparatorReference();
++		}
+ 	}
+ 	| Sv_tmp EXTERN STRING_LITERAL 	external_definition	{
+ 		tmpWorkMemoryi = $1.d;
+@@ -1678,27 +1951,36 @@ external_definition
+ 	| Sv_tmp EXTERN STRING_LITERAL 	'{' cached_external_definition_list	'}' {
+ 		tmpWorkMemoryi = $1.d;
+ 	}
+-	| error compound_statement
+-	| error ';'
++	| Sv_tmp ASM_KEYWORD '(' expr ')' ';' 		{
++		tmpWorkMemoryi = $1.d;
++	}
++	| Sv_tmp error compound_statement 		{
++		tmpWorkMemoryi = $1.d;
++	}
++	| Sv_tmp error 		{
++		tmpWorkMemoryi = $1.d;
++	}
++	| Sv_tmp ';'	 	{  /* empty external definition */
++		tmpWorkMemoryi = $1.d;
++	}
+ 	;
+ 
+ top_init_declarations
+-	: declaration_specifiers init_declarator			{		
++	: declaration_specifiers init_declarator eq_initializer_opt			{		
+ 		$$.d = $1.d;
+-		addNewDeclaration($1.d, $2.d, NULL, StorageExtern,s_symTab);
++		addNewDeclaration($1.d, $2.d, $3.d, StorageExtern,s_symTab);
+ 	}
+-	| init_declarator									{
++	| init_declarator eq_initializer_opt						{
+ 		$$.d = & s_defaultIntDefinition;
+-		addNewDeclaration($$.d, $1.d, NULL, StorageExtern,s_symTab);
++		addNewDeclaration($$.d, $1.d, $2.d, StorageExtern,s_symTab);
+ 	}
+-	| top_init_declarations ',' init_declarator			{
++	| top_init_declarations ',' init_declarator eq_initializer_opt			{
+ 		$$.d = $1.d;
+-		addNewDeclaration($1.d, $3.d, NULL, StorageExtern,s_symTab);
++		addNewDeclaration($1.d, $3.d, $4.d, StorageExtern,s_symTab);
+ 	}
+-	| error												{
+-		/*$$.d = &s_errorSymbol;*/
+-		XX_ALLOC($$.d, S_symbol);
+-		*$$.d = s_errorSymbol;
++	| error										{
++		/* $$.d = &s_errorSymbol; */
++		$$.d = typeSpecifier2(&s_errorModifier);
+ 	}
+ 	;
+ 
+@@ -1728,10 +2010,10 @@ fun_arg_declaration
+ 	;
+ 
+ fun_arg_init_declarations
+-	: init_declarator			{		
++	: init_declarator eq_initializer_opt			{		
+ 		$$.d = $1.d;
+ 	}
+-	| fun_arg_init_declarations ',' init_declarator				{
++	| fun_arg_init_declarations ',' init_declarator eq_initializer_opt				{
+ 		$$.d = $1.d;
+ 		LIST_APPEND(S_symbol, $$.d, $3.d);
+ 	}
+-- 
+2.18.0
+

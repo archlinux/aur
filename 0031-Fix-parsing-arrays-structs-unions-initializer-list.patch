@@ -1,0 +1,405 @@
+From 8896bc79d312a078287ad3b661152d99c55bdb37 Mon Sep 17 00:00:00 2001
+From: litvin <litvindev@gmail.com>
+Date: Thu, 31 May 2018 18:32:40 +0300
+Subject: [PATCH 31/33] Fix parsing arrays/structs/unions initializer-list
+
+---
+ src/cgram.y    | 12 ++++++------
+ src/complet.c  |  6 +++---
+ src/javagram.y |  8 ++++----
+ src/jsemact.c  | 16 ++++++++--------
+ src/proto.h    |  5 +++++
+ src/semact.c   | 45 ++++++++++++++++++++++++++++-----------------
+ src/yaccgram.y | 12 ++++++------
+ 7 files changed, 60 insertions(+), 44 deletions(-)
+
+diff --git a/src/cgram.y b/src/cgram.y
+index ea4c6ba..298c9e4 100644
+--- a/src/cgram.y
++++ b/src/cgram.y
+@@ -398,7 +398,7 @@ postfix_expr
+ 	}
+ 	| postfix_expr {SetStrCompl1($1.d.t);} '.' str_rec_identifier		{
+ 		S_symbol *rec=NULL;
+-		$$.d.r = findStrRecordFromType($1.d.t, $4.d, &rec, CLASS_TO_ANY);
++		$$.d.r = findStrRecordFromType($1.d.t, $4.d, &rec, SEARCH_IN_MEMBERS_NO, CLASS_TO_ANY);
+ 		assert(rec);
+ 		$$.d.t = rec->u.type;
+ 		assert($$.d.t);
+@@ -408,7 +408,7 @@ postfix_expr
+ 		S_symbol *rec=NULL;
+ 		$$.d.r = NULL;
+ 		if ($1.d.t->m==TypePointer || $1.d.t->m==TypeArray) {
+-			$$.d.r = findStrRecordFromType($1.d.t->next, $4.d, &rec, CLASS_TO_ANY);
++			$$.d.r = findStrRecordFromType($1.d.t->next, $4.d, &rec, SEARCH_IN_MEMBERS_NO, CLASS_TO_ANY);
+ 			assert(rec);
+ 			$$.d.t = rec->u.type;
+ 		} else $$.d.t = &s_errorModifier;
+@@ -1429,11 +1429,11 @@ initializer0
+ 	}
+ 	| designator_list '=' initializer			{
+ 		$$.d = StackMemAlloc(S_idIdentList);
+-		FILL_idIdentList($$.d, *$1.d, $1.d->name, TypeDefault, $3.d,NULL);
++		FILL_idIdentList($$.d, *$1.d, NULL, TypeDefault, $3.d,NULL);
+ 	}
+ 	| str_rec_identifier ':' initializer		{ /* GNU-extension*/
+ 		$$.d = StackMemAlloc(S_idIdentList);
+-		FILL_idIdentList($$.d, *$1.d, $1.d->name, TypeDefault, $3.d,NULL);
++		FILL_idIdentList($$.d, *$1.d, NULL, TypeDefault, $3.d,NULL);
+ 	}
+ 	;
+ 
+@@ -1450,11 +1450,11 @@ designator_list
+ designator
+ 	: '[' constant_expr ']'							{
+ 		$$.d = StackMemAlloc(S_idIdent);
+-		FILL_idIdent($$.d, "", NULL, s_noPos, NULL);
++		FILL_idIdent($$.d, NULL, NULL, s_noPos, NULL);
+ 	}
+ 	| '[' constant_expr ELIPSIS constant_expr ']'	{
+ 		$$.d = StackMemAlloc(S_idIdent);
+-		FILL_idIdent($$.d, "", NULL, s_noPos, NULL);
++		FILL_idIdent($$.d, NULL, NULL, s_noPos, NULL);
+ 	}
+ 	| '.' str_rec_identifier						{
+ 		$$.d = StackMemAlloc(S_idIdent);
+diff --git a/src/complet.c b/src/complet.c
+index dd1f09d..d10edee 100644
+--- a/src/complet.c
++++ b/src/complet.c
+@@ -924,7 +924,7 @@ static void completeRecordsNames(
+ 		//&} else {
+ 		//&	visibCheck = VISIB_CHECK_NO;
+ 		//&}
+-		rr = findStrRecordSym(&rfs, NULL, &r, classification, accCheck, visibCheck);
++		rr = findStrRecordSym(&rfs, NULL, &r, SEARCH_IN_MEMBERS_NO, classification, accCheck, visibCheck);
+ 		if (rr != RETURN_OK) break;
+ 		if (constructorOpt==StorageConstructor && rfs.currClass!=s) break;
+ 		/* because constructors are not inherited */
+@@ -1104,7 +1104,7 @@ static char *spComplFindNextRecord(S_exprTokenType *tok) {
+ 	assert(s->u.s);
+ 	iniFind(s, &rfs);
+ 	for(;;) {
+-		rr = findStrRecordSym(&rfs, NULL, &r, CLASS_TO_ANY, ACC_CHECK_YES, VISIB_CHECK_YES);
++		rr = findStrRecordSym(&rfs, NULL, &r, SEARCH_IN_MEMBERS_NO, CLASS_TO_ANY, ACC_CHECK_YES, VISIB_CHECK_YES);
+ 		if (rr != RETURN_OK) break;
+ 		assert(r);
+ 		cname = r->name;
+@@ -1416,7 +1416,7 @@ void javaHintCompleteMethodParameters(S_completions *c) {
+ 					   vlevel,0,NULL,vFunCl);
+ 			processName(r->name, &compLine, 0, (void*) c);
+ 		}		
+-		rr = findStrRecordSym(rfs, mname, &r, CLASS_TO_METHOD, accCheck, visibCheck);
++		rr = findStrRecordSym(rfs, mname, &r, SEARCH_IN_MEMBERS_NO, CLASS_TO_METHOD, accCheck, visibCheck);
+ 	} while (rr == RETURN_OK);
+ 	if (c->ai != 0) {
+ 		c->comPrefix[0]=0;
+diff --git a/src/javagram.y b/src/javagram.y
+index 0f8ba9d..de5dc0c 100644
+--- a/src/javagram.y
++++ b/src/javagram.y
+@@ -1521,7 +1521,7 @@ FieldDeclaration:
+ 						}
+ 						//&javaSetFieldLinkName(p);
+ 						iniFind(clas, &rfs);				
+-						if (findStrRecordSym(&rfs, p->name, &memb, CLASS_TO_ANY,
++						if (findStrRecordSym(&rfs, p->name, &memb, SEARCH_IN_MEMBERS_NO, CLASS_TO_ANY,
+ 											 ACC_CHECK_NO,VISIB_CHECK_NO) == RETURN_NOT_FOUND) {
+ 							assert(clas->u.s);
+ 							LIST_APPEND(S_symbol, clas->u.s->records, p);
+@@ -3517,7 +3517,7 @@ FieldAccess:
+ 					$$.d.pp = $1.d.pp;
+ 					if ($1.d.t->m == TypeStruct) {
+ 						javaLoadClassSymbolsFromFile($1.d.t->u.t);
+-						$$.d.r = findStrRecordFromType($1.d.t, $3.d, &rec, CLASS_TO_EXPR);
++						$$.d.r = findStrRecordFromType($1.d.t, $3.d, &rec, SEARCH_IN_MEMBERS_NO, CLASS_TO_EXPR);
+ 						assert(rec);
+ 						$$.d.t = rec->u.type;
+ 					} else if (s_language == LAN_JAVA) {
+@@ -3543,7 +3543,7 @@ FieldAccess:
+ 					ss = javaCurrentSuperClass();
+ 					if (ss != &s_errorSymbol && ss->b.symType!=TypeError) {
+ 						javaLoadClassSymbolsFromFile(ss);
+-						$$.d.r = findStrRecordFromSymbol(ss, $3.d, &rec, CLASS_TO_EXPR, $1.d);
++						$$.d.r = findStrRecordFromSymbol(ss, $3.d, &rec, SEARCH_IN_MEMBERS_NO, CLASS_TO_EXPR, $1.d);
+ 						assert(rec);
+ 						$$.d.t = rec->u.type;
+ 					} else {
+@@ -3567,7 +3567,7 @@ FieldAccess:
+ 					if (ss != &s_errorSymbol && ss->b.symType!=TypeError) {
+ 						javaLoadClassSymbolsFromFile(ss);
+ 						ss = javaGetSuperClass(ss);
+-						$$.d.r = findStrRecordFromSymbol(ss, $5.d, &rec, CLASS_TO_EXPR, NULL);
++						$$.d.r = findStrRecordFromSymbol(ss, $5.d, &rec, SEARCH_IN_MEMBERS_NO, CLASS_TO_EXPR, NULL);
+ 						assert(rec);
+ 						$$.d.t = rec->u.type;
+ 					} else {
+diff --git a/src/jsemact.c b/src/jsemact.c
+index 43e4ff9..334dda4 100644
+--- a/src/jsemact.c
++++ b/src/jsemact.c
+@@ -923,7 +923,7 @@ static int findTopLevelNameInternal(
+ 			*rscope = cscope;
+ 		}
+ //&fprintf(dumpOut," %s %s\n", miscellaneousName[classif], miscellaneousName[accCheck]);
+-		res = findStrRecordSym(resRfs, name, resMemb, classif, accCheck, visibCheck);
++		res = findStrRecordSym(resRfs, name, resMemb, SEARCH_IN_MEMBERS_NO, classif, accCheck, visibCheck);
+ 	}
+ 	return(res);
+ }
+@@ -1452,7 +1452,7 @@ int javaClassifyAmbiguousName(
+ 			} else {
+ 				javaLoadClassSymbolsFromFile(pstr);
+ 				rf = findStrRecordSym(iniFind(pstr,rfs), name->idi.name, str,
+-									  classif, ACC_CHECK_NO, VISIB_CHECK_NO);
++									  SEARCH_IN_MEMBERS_NO, classif, ACC_CHECK_NO, VISIB_CHECK_NO);
+ 				*expr = (*str)->u.type;
+ 				if (rf == RETURN_OK) {
+ 					name->nameType = TypeExpression;
+@@ -1486,7 +1486,7 @@ int javaClassifyAmbiguousName(
+ 			} else {
+ 				javaLoadClassSymbolsFromFile(pexpr->u.t);
+ 				rr = findStrRecordSym(iniFind(pexpr->u.t,rfs), name->idi.name,
+-									  str, classif, ACC_CHECK_NO, VISIB_CHECK_NO);
++									  str, SEARCH_IN_MEMBERS_NO, classif, ACC_CHECK_NO, VISIB_CHECK_NO);
+ 				if (rr == RESULT_OK) {
+ 					if ((s_opt.ooChecksBits & OOC_ALL_CHECKS)==0
+ 						|| javaRecordVisibleAndAccessible(rfs, rfs->baseClass, rfs->currClass, *str)) {
+@@ -2237,7 +2237,7 @@ static S_typeModifiers *javaMethodInvocation(
+ //&sprintf(tmpBuff,"applicable: %s of %s\n",memb->linkName,rfs->currClass->linkName);ppcGenTmpBuff();
+ 		}
+ 		rr = findStrRecordSym(rfs, name->name, &memb, 
+-							  CLASS_TO_METHOD, ACC_CHECK_NO, VISIB_CHECK_NO);
++							  SEARCH_IN_MEMBERS_NO, CLASS_TO_METHOD, ACC_CHECK_NO, VISIB_CHECK_NO);
+ 		if(invocationType==CONSTRUCTOR_INVOCATION&&rfs->baseClass!=rfs->currClass){
+ 			// constructors are not inherited
+ 			rr = RETURN_NOT_FOUND;
+@@ -2329,7 +2329,7 @@ S_extRecFindStr *javaCrErfsForMethodInvocationT(S_typeModifiers *tt,
+ 	erfs->params = NULL;
+ 	javaLoadClassSymbolsFromFile(tt->u.t);
+ 	rr = findStrRecordSym(iniFind(tt->u.t,&erfs->s), name->name, &erfs->memb, 
+-						CLASS_TO_METHOD, ACC_CHECK_NO,VISIB_CHECK_NO);
++						SEARCH_IN_MEMBERS_NO,CLASS_TO_METHOD,ACC_CHECK_NO,VISIB_CHECK_NO);
+ 	if (rr != RETURN_OK) {
+ 		noSuchRecordError(name->name);
+ 		return(NULL);
+@@ -2368,7 +2368,7 @@ S_extRecFindStr *javaCrErfsForMethodInvocationS(S_idIdent *super,
+ 	}
+ */
+ 	rr = findStrRecordSym(iniFind(ss, &erfs->s), name->name, &erfs->memb, 
+-						CLASS_TO_METHOD,ACC_CHECK_NO,VISIB_CHECK_NO);
++						SEARCH_IN_MEMBERS_NO,CLASS_TO_METHOD,ACC_CHECK_NO,VISIB_CHECK_NO);
+ 	if (rr != RETURN_OK) return(NULL);
+ 	return(erfs);
+ }
+@@ -2400,7 +2400,7 @@ S_extRecFindStr *javaCrErfsForConstructorInvocation(S_symbol *clas,
+ 	erfs->params = NULL;
+ 	assert(clas->b.javaFileLoaded);
+ 	rr = findStrRecordSym(iniFind(clas, &erfs->s), clas->name, &erfs->memb, 
+-						CLASS_TO_METHOD,ACC_CHECK_NO,VISIB_CHECK_NO);
++						SEARCH_IN_MEMBERS_NO,CLASS_TO_METHOD,ACC_CHECK_NO,VISIB_CHECK_NO);
+ 	if (rr != RETURN_OK) return(NULL);
+ 	return(erfs);
+ }
+@@ -2733,7 +2733,7 @@ void javaInitArrayObject() {
+ 
+ S_typeModifiers *javaArrayFieldAccess(S_idIdent *id) {
+ 	S_symbol *rec=NULL;
+-	findStrRecordFromType(&s_javaArrayObjectSymbol.u.s->stype, id, &rec, CLASS_TO_EXPR);
++	findStrRecordFromType(&s_javaArrayObjectSymbol.u.s->stype, id, &rec, SEARCH_IN_MEMBERS_NO, CLASS_TO_EXPR);
+ 	assert(rec);
+ 	return(rec->u.type);
+ }
+diff --git a/src/proto.h b/src/proto.h
+index de83530..6521fa1 100644
+--- a/src/proto.h
++++ b/src/proto.h
+@@ -27,6 +27,8 @@ enum miscellaneous {						/* misc. constants */
+ 	ACC_CHECK_NO,
+ 	VISIB_CHECK_YES,
+ 	VISIB_CHECK_NO,
++	SEARCH_IN_MEMBERS_YES,
++	SEARCH_IN_MEMBERS_NO,
+ 	CUT_OVERRIDEN_YES,
+ 	CUT_OVERRIDEN_NO,
+ 	CX_FILE_ITEM_GEN,
+@@ -2274,6 +2276,7 @@ int javaGetMinimalAccessibility C_ARG((S_recFindStr *rfs, S_symbol *r));
+ int findStrRecordSym C_ARG((	S_recFindStr *ss,
+ 								char *recname,
+ 								S_symbol **res,
++								int searchInMembers,
+ 								int javaClassif,
+ 								int accessCheck,
+ 								int visibilityCheck
+@@ -2307,12 +2310,14 @@ int findStrRecord C_ARG((	S_symbol		*s,
+ S_reference * findStrRecordFromSymbol C_ARG((	S_symbol *str, 
+ 												S_idIdent *record,
+ 												S_symbol **res,
++												int searchInMembers,
+ 												int javaClassif,
+ 												S_idIdent *super
+ 						));
+ S_reference * findStrRecordFromType C_ARG((	S_typeModifiers *str, 
+ 							S_idIdent *record,
+ 							S_symbol **res,
++							int searchInMembers,
+ 							int javaClassif
+ 						));
+ int mergeArguments C_ARG((S_symbol *id, S_symbol *ty));
+diff --git a/src/semact.c b/src/semact.c
+index 9b3bc09..676981c 100644
+--- a/src/semact.c
++++ b/src/semact.c
+@@ -268,11 +268,12 @@ int javaGetMinimalAccessibility(S_recFindStr *rfs, S_symbol *r) {
+ }
+ 
+ int findStrRecordSym(	S_recFindStr	*ss,
+-						char 			*recname,	 /* can be NULL */
+-						S_symbol 		**res,
+-						int 			javaClassif, /* classify to method/field*/
+-						int				accCheck,    /* java check accessibility */
+-						int 			visibilityCheck /* redundant, always equal to accCheck? */
++						char			*recname,	 /* can be NULL */
++						S_symbol		**res,
++						int				searchInMembers, /* search im member structs/unions */
++						int				javaClassif, /* classify to method/field*/
++						int				accCheck,	 /* java check accessibility */
++						int				visibilityCheck /* redundant, always equal to accCheck? */
+ 	) {
+ 	S_symbol 			*s,*r,*cclass;
+ 	S_symbolList 		*sss;
+@@ -334,6 +335,16 @@ int findStrRecordSym(	S_recFindStr	*ss,
+ 				}
+ 				FSRS_RETURN_WITH_SUCCESS(ss, res, r);
+ 			}
++			if (searchInMembers == SEARCH_IN_MEMBERS_YES
++				&& r->name!=NULL && r->b.symType==TypeDefault) {
++				S_typeModifiers *type = r->u.type;
++				if (type->m == TypeArray) type = type->next;
++				if (type->m==TypeUnion || type->m==TypeStruct) {
++					if (ss->aui+1 < MAX_ANONYMOUS_FIELDS) {
++						ss->au[ss->aui++] = type->u.t;
++					}
++				}
++			}
+ 		nextRecord:;
+ 		}
+ 	nextClass:
+@@ -366,15 +377,16 @@ int findStrRecord(	S_symbol		*s,
+ 					int 			javaClassif
+ 				) {
+ 	S_recFindStr rfs;
+-	return(findStrRecordSym(iniFind(s,&rfs),recname,res,javaClassif,
+-							ACC_CHECK_YES,VISIB_CHECK_YES));
++	return(findStrRecordSym(iniFind(s,&rfs),recname,res,SEARCH_IN_MEMBERS_NO,
++							javaClassif,ACC_CHECK_YES,VISIB_CHECK_YES));
+ }
+ 
+ /* and push reference */
+ // this should be split into two copies, different for C and Java.
+ S_reference *findStrRecordFromSymbol( S_symbol *sym, 
+ 									  S_idIdent *record, 
+-									  S_symbol **res, 
++									  S_symbol **res,
++									  int searchInMembers,
+ 									  int javaClassif,
+ 									  S_idIdent *super /* covering special case when invoked
+ 														  as SUPER.sym, berk */
+@@ -386,7 +398,7 @@ S_reference *findStrRecordFromSymbol( S_symbol *sym,
+ 	ref = NULL;
+ 	// when in java, then always in qualified name, so access and visibility checks
+ 	// are useless.
+-	rr = findStrRecordSym(iniFind(sym,&rfs),record->name,res,
++	rr = findStrRecordSym(iniFind(sym,&rfs),record->name,res,searchInMembers,
+ 						  javaClassif, ACC_CHECK_NO, VISIB_CHECK_NO);
+ 	if (rr == RESULT_OK && rfs.currClass!=NULL &&
+ 		((*res)->b.storage==StorageField 
+@@ -415,6 +427,7 @@ S_reference *findStrRecordFromSymbol( S_symbol *sym,
+ S_reference * findStrRecordFromType(	S_typeModifiers *str,
+ 										S_idIdent *record,
+ 										S_symbol **res,
++										int searchInMembers,
+ 										int javaClassif
+ 									) {
+ 	S_reference *ref;
+@@ -425,7 +438,7 @@ S_reference * findStrRecordFromType(	S_typeModifiers *str,
+ 		*res = &s_errorSymbol;
+ 		goto fini;
+ 	}
+-	ref = findStrRecordFromSymbol( str->u.t, record, res, javaClassif, NULL);
++	ref = findStrRecordFromSymbol( str->u.t, record, res, searchInMembers, javaClassif, NULL);
+ fini:
+ 	return(ref);
+ }
+@@ -601,13 +614,11 @@ void addInitializerRefs(
+ 		tt = t;
+ 		rec = NULL;
+ 		for (id = &ll->idi; id!=NULL; id=id->next) {
+-			if (tt->m == TypeArray) {
+-				tt = tt->next;
+-				continue;
+-			}
+-			if (tt->m != TypeStruct && tt->m != TypeUnion) return;
+-			ref = findStrRecordFromType(tt, id, &rec, CLASS_TO_ANY);
+-			if (NULL == ref) return;
++		    if (id->name == NULL) continue;
++			if (tt->m == TypeArray) tt = tt->next;
++			if (tt->m != TypeStruct && tt->m != TypeUnion) break;
++			ref = findStrRecordFromType(tt, id, &rec, SEARCH_IN_MEMBERS_YES, CLASS_TO_ANY);
++			if (NULL == ref) break;
+ 			assert(rec);
+ 			tt = rec->u.type;
+ 		}
+diff --git a/src/yaccgram.y b/src/yaccgram.y
+index d5f0da6..ed2fde7 100644
+--- a/src/yaccgram.y
++++ b/src/yaccgram.y
+@@ -608,7 +608,7 @@ postfix_expr
+ 	}
+ 	| postfix_expr {SetStrCompl1($1.d.t);} '.' str_rec_identifier		{
+ 		S_symbol *rec=NULL;
+-		$$.d.r = findStrRecordFromType($1.d.t, $4.d, &rec, CLASS_TO_ANY);
++		$$.d.r = findStrRecordFromType($1.d.t, $4.d, &rec, SEARCH_IN_MEMBERS_NO, CLASS_TO_ANY);
+ 		assert(rec);
+ 		$$.d.t = rec->u.type;
+ 		assert($$.d.t);
+@@ -618,7 +618,7 @@ postfix_expr
+ 		S_symbol *rec=NULL;
+ 		$$.d.r = NULL;
+ 		if ($1.d.t->m==TypePointer || $1.d.t->m==TypeArray) {
+-			$$.d.r = findStrRecordFromType($1.d.t->next, $4.d, &rec, CLASS_TO_ANY);
++			$$.d.r = findStrRecordFromType($1.d.t->next, $4.d, &rec, SEARCH_IN_MEMBERS_NO, CLASS_TO_ANY);
+ 			assert(rec);
+ 			$$.d.t = rec->u.type;
+ 		} else $$.d.t = &s_errorModifier;
+@@ -1639,11 +1639,11 @@ initializer0
+ 	}
+ 	| designator_list '=' initializer			{
+ 		$$.d = StackMemAlloc(S_idIdentList);
+-		FILL_idIdentList($$.d, *$1.d, $1.d->name, TypeDefault, $3.d,NULL);
++		FILL_idIdentList($$.d, *$1.d, NULL, TypeDefault, $3.d,NULL);
+ 	}
+ 	| str_rec_identifier ':' initializer		{ /* GNU-extension*/
+ 		$$.d = StackMemAlloc(S_idIdentList);
+-		FILL_idIdentList($$.d, *$1.d, $1.d->name, TypeDefault, $3.d,NULL);
++		FILL_idIdentList($$.d, *$1.d, NULL, TypeDefault, $3.d,NULL);
+ 	}
+ 	;
+ 
+@@ -1660,11 +1660,11 @@ designator_list
+ designator
+ 	: '[' constant_expr ']'							{
+ 		$$.d = StackMemAlloc(S_idIdent);
+-		FILL_idIdent($$.d, "", NULL, s_noPos, NULL);
++		FILL_idIdent($$.d, NULL, NULL, s_noPos, NULL);
+ 	}
+ 	| '[' constant_expr ELIPSIS constant_expr ']'	{
+ 		$$.d = StackMemAlloc(S_idIdent);
+-		FILL_idIdent($$.d, "", NULL, s_noPos, NULL);
++		FILL_idIdent($$.d, NULL, NULL, s_noPos, NULL);
+ 	}
+ 	| '.' str_rec_identifier						{
+ 		$$.d = StackMemAlloc(S_idIdent);
+-- 
+2.18.0
+

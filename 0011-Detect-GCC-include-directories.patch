@@ -1,0 +1,104 @@
+From bb148b21408cea86a506d39bbd6bf094496f631b Mon Sep 17 00:00:00 2001
+From: Sergei Litvin <litvindev@gmail.com>
+Date: Fri, 20 Jan 2017 19:16:13 +0300
+Subject: [PATCH 11/33] Detect GCC include directories
+
+---
+ src/main.c | 66 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 66 insertions(+)
+
+diff --git a/src/main.c b/src/main.c
+index 2c4b27b..e18721a 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -2141,6 +2141,67 @@ void mainSetLanguage(char *inFileName, int *outLanguage) {
+ 	}
+ }
+ 
++
++static int getLineFromFile(FILE *ff, char *tt, int ttsize, int *outI) {
++	int i,c,res;
++	i = 0;
++	c = getc(ff);
++	while ((c>=0 && c<=' ') || c=='\n' || c=='\t') c=getc(ff);
++	if (c==EOF) {
++	  res = EOF;
++	  goto fini;
++	}
++	while (c!=EOF && c!='\n') {
++	  if (i < ttsize-1)	  tt[i++]=c;
++	  c=getc(ff);
++	}
++	res = 'A';
++ fini:
++	tt[i] = 0;
++	*outI  = i;
++	return(res);
++}
++
++static void getAndProcessGccOptions() {
++	char tt[MAX_OPTION_LEN];
++	int len,c,isActiveSect;
++	char *ttt, *lang;
++	FILE *ff;
++	struct stat stt;
++	if (LANGUAGE(LAN_C) || LANGUAGE(LAN_YACC)) {
++	  lang = "c";
++	}
++	else if (LANGUAGE(LAN_CCC)) {
++	  lang = "c++";
++	}
++	else {
++	  return;
++	}
++	isActiveSect = 0;
++	ttt = crTmpFileName_st();
++	assert(strlen(ttt)+1 < MAX_FILE_NAME_SIZE);
++	sprintf(tmpBuff, "LANG=C cpp -v -x %s -o /dev/null /dev/null >%s 2>&1", lang, ttt);
++	system(tmpBuff);
++	ff = fopen(ttt,"r");
++	if (ff==NULL) return;
++	while (getLineFromFile(ff,tt,MAX_OPTION_LEN,&len) != EOF) {
++		if (strncmp(tt,"#include <...> search starts here:",34)==0) {
++			isActiveSect = 1;
++		}
++		else if (strncmp(tt,"End of search list.",19)==0) {
++			isActiveSect = 0;
++			break;
++		}
++		else if (	 isActiveSect
++					 && statb(tt,&stt) == 0
++					 && (stt.st_mode & S_IFMT) == S_IFDIR) {
++			mainAddStringListOption(&s_opt.includeDirs, tt);
++		}
++	}
++	fclose(ff);
++	removeFile(ttt);
++}
++
+ void getAndProcessXrefrcOptions(char *dffname, char *dffsect,char *project) {
+ 	int dfargc; 
+ 	char **dfargv;
+@@ -2232,6 +2293,7 @@ static void mainFileProcessingInitialisations(
+ 	struct stat 	dffstat;
+ 	char 			*fileName;
+ 	int				lc;
++	S_stringList	*tmpIncludeDirs;
+ 
+ 	fileName = s_input_file_name;
+ 	mainSetLanguage(fileName,  outLanguage);
+@@ -2287,7 +2349,11 @@ static void mainFileProcessingInitialisations(
+ 		}
+ 		//& setPredefinedFileEnvVariables(fileName);
+ 		reInitCwd(dffname, dffsect);
++		tmpIncludeDirs = s_opt.includeDirs;
++		s_opt.includeDirs = NULL;
+ 		getAndProcessXrefrcOptions(dffname, dffsect, dffsect);
++		getAndProcessGccOptions();
++		LIST_APPEND(S_stringList, s_opt.includeDirs, tmpIncludeDirs);
+ 		if (s_opt.taskRegime != RegimeEditServer && s_input_file_name == NULL) {
+ 			*outInputIn = 0;
+ 			goto fini;
+-- 
+2.18.0
+

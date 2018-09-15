@@ -1,0 +1,319 @@
+From 9aeae94b69b08c076f3d3ff37835e1fba7214a59 Mon Sep 17 00:00:00 2001
+From: litvin <litvindev@gmail.com>
+Date: Fri, 5 May 2017 22:56:33 +0300
+Subject: [PATCH 19/33] Add missed C keywords
+
+squash! Add missed C keywords
+
+squash! Add missed C keywords
+
+squash! Add missed C keywords
+---
+ src/cgram.y    | 33 ++++++++++++++++++++++++---------
+ src/cxref.c    |  1 +
+ src/globals.c  | 14 +++++++++-----
+ src/javagram.y |  2 +-
+ src/proto.h    |  3 ++-
+ src/yaccgram.y | 35 +++++++++++++++++++++++++----------
+ 6 files changed, 62 insertions(+), 26 deletions(-)
+
+diff --git a/src/cgram.y b/src/cgram.y
+index bf44655..58020dd 100644
+--- a/src/cgram.y
++++ b/src/cgram.y
+@@ -108,7 +108,7 @@
+ 
+ /* c-special */
+ %token TYPEDEF EXTERN AUTO REGISTER SIGNED UNSIGNED STRUCT UNION ENUM
+-%token SIZEOF
++%token SIZEOF RESTRICT _ATOMIC _BOOL _THREADLOCAL _NORETURN
+ /* hmm */
+ %token ANONYME_MOD
+ 
+@@ -783,6 +783,9 @@ declaration_specifiers0
+ 		$$.d = $1.d;
+ 		$$.d->b.storage = $2.d; 
+ 	}
++	| declaration_specifiers0 function_specifier			{
++		$$.d = $1.d;
++	}
+ 	| COMPL_TYPE_NAME										{ 
+ 		assert(0);
+ 	}
+@@ -806,6 +809,12 @@ declaration_modality_specifiers
+ 	| declaration_modality_specifiers type_modality_specifier		{
+ 		declTypeSpecifier1($1.d, $2.d);
+ 	}
++	| function_specifier									{
++		$$.d = typeSpecifier1(TypeDefault);
++	}
++	| declaration_modality_specifiers function_specifier			{
++		$$.d = $1.d;
++	}
+ 	;
+ 
+ /*& // an experiment
+@@ -854,19 +863,19 @@ init_declarator
+ */
+ 
+ storage_class_specifier
+-	: TYPEDEF	{ $$.d = StorageTypedef; }
+-	| EXTERN	{ $$.d = StorageExtern; }
+-	| STATIC	{ $$.d = StorageStatic; }
+-	| AUTO		{ $$.d = StorageAuto; }
+-	| REGISTER	{ $$.d = StorageAuto; }
+-/*
+-	| INLINE	{ $$.d = StorageStatic; }
+-*/
++	: TYPEDEF		{ $$.d = StorageTypedef; }
++	| EXTERN		{ $$.d = StorageExtern; }
++	| STATIC		{ $$.d = StorageStatic; }
++	| _THREADLOCAL	{ $$.d = StorageThreadLocal; }
++	| AUTO			{ $$.d = StorageAuto; }
++	| REGISTER		{ $$.d = StorageAuto; }
+ 	;
+ 
+ type_modality_specifier
+ 	: CONST			{ $$.d = TypeDefault; }
++	| RESTRICT		{ $$.d = TypeDefault; }
+ 	| VOLATILE		{ $$.d = TypeDefault; }
++	| _ATOMIC		{ $$.d = TypeDefault; }
+ 	| ANONYME_MOD	{ $$.d = TypeDefault; }
+ 	;
+ 
+@@ -884,6 +893,7 @@ type_specifier1
+ 	| FLOAT		{ $$.d = TypeFloat; }
+ 	| DOUBLE	{ $$.d = TypeDouble; }
+ 	| VOID		{ $$.d = TypeVoid; }
++	| _BOOL		{ $$.d = TypeBoolean; }
+ 	;
+ 
+ type_specifier2
+@@ -891,6 +901,11 @@ type_specifier2
+ 	| enum_specifier				/* { $$.d = $1.d; } */
+ 	;
+ 
++function_specifier
++	: INLINE
++	| _NORETURN
++	;
++
+ struct_or_union_specifier
+ 	: struct_or_union struct_identifier								{
+ 		int usage;
+diff --git a/src/cxref.c b/src/cxref.c
+index de9c634..2e91f37 100644
+--- a/src/cxref.c
++++ b/src/cxref.c
+@@ -300,6 +300,7 @@ static void getSymbolCxrefCategories(
+ 			|| 	p->b.storage==StorageMethod
+ 			|| 	p->b.storage==StorageConstructor
+ 			||	p->b.storage==StorageStatic
++				||  p->b.storage==StorageThreadLocal
+ 			) { 
+ 				if (p->linkName[0]==' ' && p->linkName[1]==' ') {
+ 					// a special symbol local linkname
+diff --git a/src/globals.c b/src/globals.c
+index 94b2c21..4df9006 100644
+--- a/src/globals.c
++++ b/src/globals.c
+@@ -527,10 +527,11 @@ S_typeModificationsInit s_typeModificationsInit[] = {
+ };
+ 
+ S_tokenNameIni s_tokenNameIniTab[] = {
+-	{"asm",			ASM_KEYWORD		,LAN_CCC},
++	{"asm",			ASM_KEYWORD		,LAN_C | LAN_YACC | LAN_CCC},
+ 	{"auto", 		AUTO			,LAN_C | LAN_YACC | LAN_CCC},
+ 	{"enum", 		ENUM			,LAN_C | LAN_YACC | LAN_CCC},
+ 	{"extern",		EXTERN			,LAN_C | LAN_YACC | LAN_CCC},
++	{"inline",		INLINE			,LAN_C | LAN_YACC | LAN_CCC},
+ 	{"register",	REGISTER		,LAN_C | LAN_YACC | LAN_CCC},
+ 	{"signed",		SIGNED			,LAN_C | LAN_YACC | LAN_CCC},
+ 	{"sizeof",		SIZEOF			,LAN_C | LAN_YACC | LAN_CCC},
+@@ -578,7 +579,6 @@ S_tokenNameIni s_tokenNameIniTab[] = {
+ 	{"dynamic_cast",		DYNAMIC_CAST	,LAN_CCC},
+ 	{"explicit",			EXPLICIT		,LAN_CCC},
+ 	{"friend",				FRIEND			,LAN_CCC},
+-	{"inline",				INLINE			,LAN_CCC},
+ 	{"mutable",				MUTABLE			,LAN_CCC},
+ 	{"namespace",			NAMESPACE		,LAN_CCC},
+ 	{"operator",			OPERATOR		,LAN_CCC},
+@@ -614,6 +614,12 @@ S_tokenNameIni s_tokenNameIniTab[] = {
+ 	{"volatile",	VOLATILE		,LAN_C | LAN_YACC | LAN_CCC | LAN_JAVA},
+ 	{"while", 		WHILE			,LAN_C | LAN_YACC | LAN_CCC | LAN_JAVA},
+ 
++	{"restrict",		RESTRICT		,LAN_C},
++	{"_Atomic",			_ATOMIC			,LAN_C},
++	{"_Bool",			_BOOL			,LAN_C},
++	{"_Noreturn",		_NORETURN		,LAN_C},
++	{"_Thread_local",	_THREADLOCAL	,LAN_C},
++
+ /*
+ 	{"token", 		TOKEN			,LAN_YACC},
+ 	{"type", 		TYPE			,LAN_YACC},
+@@ -707,12 +713,10 @@ S_tokenNameIni s_tokenNameIniTab2[] = {
+ 	{"__const__",		CONST			,LAN_C | LAN_YACC | LAN_CCC},
+ 	{"__signed",		SIGNED			,LAN_C | LAN_YACC | LAN_CCC},
+ 	{"__signed__",		SIGNED			,LAN_C | LAN_YACC | LAN_CCC},
+-//&	{"inline",			ANONYME_MOD		,LAN_C | LAN_YACC },
+ 	{"__inline",		ANONYME_MOD		,LAN_C | LAN_YACC | LAN_CCC},
+ 	{"__inline__",		ANONYME_MOD		,LAN_C | LAN_YACC | LAN_CCC},
+ 	{"__volatile",		VOLATILE		,LAN_C | LAN_YACC | LAN_CCC},
+ 	{"__volatile__",	VOLATILE		,LAN_C | LAN_YACC | LAN_CCC},
+-//&	{"asm",				ASM_KEYWORD		,LAN_C },
+ 	{"__asm",			ASM_KEYWORD		,LAN_C | LAN_CCC},
+ 	{"__asm__",			ASM_KEYWORD		,LAN_C | LAN_CCC},
+ 	{"__label__",		LABEL			,LAN_C | LAN_CCC},
+@@ -858,6 +862,7 @@ int s_preCrTypesIniTab[] = {
+ 	TypeLongSignedInt ,
+ 	TypeFloat ,
+ 	TypeDouble ,
++	TypeBoolean ,
+ 	TypeVoid ,
+ 	TypeError ,
+ 	TypeAnonymeField ,
+@@ -874,7 +879,6 @@ int s_preCrTypesIniTab[] = {
+ 	TypeByte,
+ 	TypeShort,
+ 	TypeLong,
+-	TypeBoolean,
+ 	TypeNull,
+ 	/* C++ */
+ 	TypeWchar_t,
+diff --git a/src/javagram.y b/src/javagram.y
+index 6a15c75..4dcf023 100644
+--- a/src/javagram.y
++++ b/src/javagram.y
+@@ -156,7 +156,7 @@
+ 
+ /* c-special */
+ %token TYPEDEF EXTERN AUTO REGISTER SIGNED UNSIGNED STRUCT UNION ENUM
+-%token SIZEOF
++%token SIZEOF RESTRICT _ATOMIC _BOOL _THREADLOCAL _NORETURN
+ /* hmm */
+ %token ANONYME_MOD
+ 
+diff --git a/src/proto.h b/src/proto.h
+index 0d52b1c..02b08e6 100644
+--- a/src/proto.h
++++ b/src/proto.h
+@@ -501,6 +501,7 @@ enum storages {
+ 	StorageExtern,
+ 	StorageConstant,		/* enumerator definition */
+ 	StorageStatic,
++	StorageThreadLocal,
+ 	StorageTypedef,
+ 	StorageMutable,
+ 	StorageRegister,
+@@ -530,6 +531,7 @@ enum types {
+ 	TypeLongSignedInt ,
+ 	TypeFloat ,
+ 	TypeDouble ,
++	TypeBoolean,
+ 	TypeStruct,
+ 	TypeUnion,
+ 	TypeEnum ,
+@@ -558,7 +560,6 @@ enum types {
+ 	TypeByte,
+ 	TypeShort,
+ 	TypeLong,
+-	TypeBoolean,
+ 	TypeNull,
+ 	TypeOverloadedFunction,
+ 	TypeReserve7,
+diff --git a/src/yaccgram.y b/src/yaccgram.y
+index a374355..0bca507 100644
+--- a/src/yaccgram.y
++++ b/src/yaccgram.y
+@@ -118,7 +118,7 @@ static void addYaccSymbolReference C_ARG((S_idIdent *name, int usage));
+ 
+ /* c-special */
+ %token TYPEDEF EXTERN AUTO REGISTER SIGNED UNSIGNED STRUCT UNION ENUM
+-%token SIZEOF
++%token SIZEOF RESTRICT _ATOMIC _BOOL _THREADLOCAL _NORETURN
+ /* hmm */
+ %token ANONYME_MOD
+ 
+@@ -482,7 +482,7 @@ any_token_not_perc_par:
+ 	| DOUBLE | ELSE | FLOAT | FOR | GOTO | IF | INT | LONG | RETURN | SHORT
+ 	| SWITCH | VOID | VOLATILE | WHILE
+ 	| TYPEDEF | EXTERN | AUTO | REGISTER | SIGNED | UNSIGNED | STRUCT | UNION 
+-	| ENUM | SIZEOF
++	| ENUM | SIZEOF | RESTRICT | _ATOMIC | _BOOL | _THREADLOCAL | _NORETURN
+ 	| ANONYME_MOD | TOKEN
+ 	| ABSTRACT | BOOLEAN | BYTE | CATCH | CLASS | EXTENDS | FINAL | FINALLY 
+ 	| IMPLEMENTS | IMPORT | INSTANCEOF | INTERFACE | NATIVE | NEW
+@@ -922,6 +922,9 @@ declaration_specifiers0
+ 		$$.d = $1.d;
+ 		$$.d->b.storage = $2.d; 
+ 	}
++	| declaration_specifiers0 function_specifier			{
++		$$.d = $1.d;
++	}
+ 	| COMPL_TYPE_NAME										{ 
+ 		assert(0);
+ 	}
+@@ -950,6 +953,12 @@ declaration_modality_specifiers
+ 	| declaration_modality_specifiers type_modality_specifier		{
+ 		declTypeSpecifier1($1.d, $2.d);
+ 	}
++	| function_specifier									{
++		$$.d = typeSpecifier1(TypeDefault);
++	}
++	| declaration_modality_specifiers function_specifier			{
++		$$.d = $1.d;
++	}
+ 	;
+ 
+ init_declarator
+@@ -958,19 +967,19 @@ init_declarator
+ 	;
+ 
+ storage_class_specifier
+-	: TYPEDEF	{ $$.d = StorageTypedef; }
+-	| EXTERN	{ $$.d = StorageExtern; }
+-	| STATIC	{ $$.d = StorageStatic; }
+-	| AUTO		{ $$.d = StorageAuto; }
+-	| REGISTER	{ $$.d = StorageAuto; }
+-/*
+-	| INLINE	{ $$.d = StorageStatic; }
+-*/
++	: TYPEDEF		{ $$.d = StorageTypedef; }
++	| EXTERN		{ $$.d = StorageExtern; }
++	| STATIC		{ $$.d = StorageStatic; }
++	| _THREADLOCAL	{ $$.d = StorageThreadLocal; }
++	| AUTO			{ $$.d = StorageAuto; }
++	| REGISTER		{ $$.d = StorageAuto; }
+ 	;
+ 
+ type_modality_specifier
+ 	: CONST			{ $$.d = TypeDefault; }
++	| RESTRICT		{ $$.d = TypeDefault; }
+ 	| VOLATILE		{ $$.d = TypeDefault; }
++	| _ATOMIC		{ $$.d = TypeDefault; }
+ 	| ANONYME_MOD	{ $$.d = TypeDefault; }
+ 	;
+ 
+@@ -984,6 +993,7 @@ type_specifier1
+ 	| FLOAT		{ $$.d = TypeFloat; }
+ 	| DOUBLE	{ $$.d = TypeDouble; }
+ 	| VOID		{ $$.d = TypeVoid; }
++	| _BOOL		{ $$.d = TypeBoolean; }
+ 	;
+ 
+ type_specifier2
+@@ -991,6 +1001,11 @@ type_specifier2
+ 	| enum_specifier				/* { $$.d = $1.d; } */
+ 	;
+ 
++function_specifier
++	: INLINE
++	| _NORETURN
++	;
++
+ struct_or_union_specifier
+ 	: struct_or_union struct_identifier								{
+ 		$$.d = simpleStrUnionSpecifier($1.d, $2.d, UsageUsed);
+-- 
+2.18.0
+

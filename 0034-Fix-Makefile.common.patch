@@ -1,0 +1,36 @@
+diff -u a/src/Makefile.common b/src/Makefile.common.new
+--- a/src/Makefile.common
++++ b/src/Makefile.common.new
+@@ -68,18 +68,18 @@
+ 	mv y.tab.c cexp.c
+ 
+ strFill.h: proto.h strTdef.h
+-	xref.bs -task_regime_generate $(COMCFLAGS) proto.h \
++	./xref.bs -task_regime_generate $(COMCFLAGS) proto.h \
+ 		-str_fill -header \
+ 		> tmpStrFill.h
+ 	mv -f tmpStrFill.h strFill.h
+ 
+ strTdef.h: proto.h
+ 	echo > strTdef.h
+-	xref.bs -task_regime_generate $(COMCFLAGS) proto.h \
++	./xref.bs -task_regime_generate $(COMCFLAGS) proto.h \
+ 		-typedefs -enum_name -header \
+ 		> tmpStrTdef.h
+ 	mv -f tmpStrTdef.h strTdef.h
+-	xref.bs -task_regime_generate $(COMCFLAGS) proto.h \
++	./xref.bs -task_regime_generate $(COMCFLAGS) proto.h \
+ 		-typedefs -enum_name -header \
+ 		> tmpStrTdef.h
+ 	mv -f tmpStrTdef.h strTdef.h
+@@ -87,7 +87,7 @@
+ enumTxt.c: proto.h strFill.h strTdef.h ../doc/_xrefrc
+ 	echo "#include \"stdinc.h\"" > enumTxt.c
+ 	echo "#include \"proto.h\"  /*SBD*/" >> enumTxt.c
+-	xref.bs -task_regime_generate $(COMCFLAGS) proto.h \
++	./xref.bs -task_regime_generate $(COMCFLAGS) proto.h \
+ 		-enum_name -body >> enumTxt.c
+ 
+ #########################################################################
+
+Diff finished.  Sat Sep 15 02:01:11 2018

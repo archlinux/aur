@@ -1,0 +1,160 @@
+From 4a56986beb1657328ba8cbe15b7ee88046dd191e Mon Sep 17 00:00:00 2001
+From: litvin <litvindev@gmail.com>
+Date: Sat, 6 May 2017 02:53:50 +0300
+Subject: [PATCH 12/33] Detect GCC Predefined Macros
+
+---
+ src/main.c    | 33 ++++++++++++++++++++++++++++++--
+ src/options.c | 52 ++++++---------------------------------------------
+ 2 files changed, 37 insertions(+), 48 deletions(-)
+
+diff --git a/src/main.c b/src/main.c
+index e18721a..46d0d29 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -2162,7 +2162,7 @@ static int getLineFromFile(FILE *ff, char *tt, int ttsize, int *outI) {
+ 	return(res);
+ }
+ 
+-static void getAndProcessGccOptions() {
++static void getAndProcessGccIncludeOptions() {
+ 	char tt[MAX_OPTION_LEN];
+ 	int len,c,isActiveSect;
+ 	char *ttt, *lang;
+@@ -2202,6 +2202,34 @@ static void getAndProcessGccOptions() {
+ 	removeFile(ttt);
+ }
+ 
++static void getAndProcessGccDefineOptions() {
++	char tt[MAX_OPTION_LEN];
++	int len,c;
++	char *ttt, *lang;
++	FILE *ff;
++	struct stat stt;
++	if (LANGUAGE(LAN_C) || LANGUAGE(LAN_YACC)) {
++	  lang = "c";
++	}
++	else if (LANGUAGE(LAN_CCC)) {
++	  lang = "c++";
++	}
++	else {
++	  return;
++	}
++	ttt = crTmpFileName_st();
++	assert(strlen(ttt)+1 < MAX_FILE_NAME_SIZE);
++	sprintf(tmpBuff, "LANG=C cpp -dM -x %s -o %s /dev/null 1>/dev/null 2>&1", lang, ttt);
++	system(tmpBuff);
++	ff = fopen(ttt,"r");
++	if (ff==NULL) return;
++	while (getLineFromFile(ff,tt,MAX_OPTION_LEN,&len) != EOF) {
++	  if (strncmp(tt,"#define",7)==0) addMacroDefinedByOption(tt+7);
++	}
++	fclose(ff);
++	removeFile(ttt);
++}
++
+ void getAndProcessXrefrcOptions(char *dffname, char *dffsect,char *project) {
+ 	int dfargc; 
+ 	char **dfargv;
+@@ -2352,7 +2380,8 @@ static void mainFileProcessingInitialisations(
+ 		tmpIncludeDirs = s_opt.includeDirs;
+ 		s_opt.includeDirs = NULL;
+ 		getAndProcessXrefrcOptions(dffname, dffsect, dffsect);
+-		getAndProcessGccOptions();
++		getAndProcessGccIncludeOptions();
++		getAndProcessGccDefineOptions();
+ 		LIST_APPEND(S_stringList, s_opt.includeDirs, tmpIncludeDirs);
+ 		if (s_opt.taskRegime != RegimeEditServer && s_input_file_name == NULL) {
+ 			*outInputIn = 0;
+diff --git a/src/options.c b/src/options.c
+index ba40798..555e59e 100644
+--- a/src/options.c
++++ b/src/options.c
+@@ -29,10 +29,7 @@ static char *s_standardCOptions[] = {
+ 	"-D__LINE__=0",
+ 	"-D__DATE__=\"__DATE__\"",
+ 	"-D__TIME__=\"__TIME__\"",
+-	"-D__STDC__=1",
+-	"-D__ptr_t=void*",
+-	"-D__wchar_t=int",
+-
++	"-I", "/usr/include/",
+ #if defined (__WIN32__) || defined (__OS2__)			/*SBD*/
+ 	"-D_based(xxx)=",
+ 	"-D__based(xxx)=",
+@@ -40,33 +37,13 @@ static char *s_standardCOptions[] = {
+ 	"-I", "\\Program Files\\DevStudio\\VC\\include\\",
+ 	"-I", "C:\\Program Files\\DevStudio\\VC\\include\\",
+ 	"-I", "D:\\Program Files\\DevStudio\\VC\\include\\",
+-#else													/*SBD*/
+-	"-I", "/usr/include/",
+ #endif													/*SBD*/
+ #ifdef __mygnulinux__	/*SBD*/
+-	"-Dlinux=1",
+-	"-D__linux=1",
+-	"-D__linux__=1",
+-	"-Dunix=1",
+-	"-D__unix=1",
+-	"-D__unix__=1",
+-/*
+-	"-Di386=1",
+-	"-D__i386=1",
+-	"-D__i386__=1",
+-	"-D__i486__=1",
+-*/
+-	"-D__GNUC__=2",
+-	"-D__GNUC_MINOR__=7",
+-	"-D__ELF__=1",
+ 	"-D__attribute__(xxx) ",
+-	"-D__alignof__(xxx) 8", 
++	"-D__alignof__(xxx) 8",
++	"-Dtypeof(xxx) int",
+ 	"-D__typeof__(xxx) int",
+ 	"-D__gnuc_va_list void",
+-	"-I", "/usr/lib/g++-include/",
+-	"-I", "/usr/lib/gcc-lib/*/*/include/",
+-	"-I", "/usr/include/g++/",
+-	"-I", "/usr/include/g++/std/",
+ #endif			/*SBD*/
+ 
+ };
+@@ -79,33 +56,16 @@ static char *s_standardCccOptions[] = {
+ 	"-set", "dq", "\"",
+ 	"-set", "pc", "%",
+ 	"-set", "dl", "$",
+-	"-D__cplusplus__",
+-	"-D__cplusplus",
+ 	"-D__FILE__=\"__FILE__\"",
+ 	"-D__LINE__=0",
+ 	"-D__DATE__=\"__DATE__\"",
+ 	"-D__TIME__=\"__TIME__\"",
+-	"-D__STDC__=1",
+ 	"-I", "/usr/include/",
+-
+ #ifdef __mygnulinux__	/*SBD*/
+-	"-Dlinux=1",
+-	"-D__linux=1",
+-	"-D__linux__=1",
+-	"-Dunix=1",
+-	"-D__unix=1",
+-	"-D__unix__=1",
+-	"-D__GNUC__=2",
+-	"-D__GNUC_MINOR__=7",
+-	"-D__ELF__=1",
+ 	"-D__attribute__(xxx) ",
+-	"-D__alignof__(xxx) 8", 
+-/*	"-D__typeof__(xxx) ", */
+-	"-D__asm__(xxx) {}",
+-	"-I", "/usr/lib/g++-include/",
+-	"-I", "/usr/lib/gcc-lib/*/*/include/",
+-	"-I", "/usr/include/g++/",
+-	"-I", "/usr/include/g++/std",
++	"-D__alignof__(xxx) 8",
++	"-Dtypeof(xxx) int",
++	"-D__typeof__(xxx) int",
+ #endif			/*SBD*/
+ 
+ };
+-- 
+2.18.0
+

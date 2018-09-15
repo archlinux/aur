@@ -1,0 +1,245 @@
+From 609affa722a34959eebae4cebabbaa6853621044 Mon Sep 17 00:00:00 2001
+From: Sergei Litvin <litvindev@gmail.com>
+Date: Sat, 30 Jun 2018 18:15:28 +0300
+Subject: [PATCH 33/33] Fix Elisp obsolete functions
+
+---
+ env/emacs/xref.el | 56 ++++++++++++++++++++++-----------------------
+ 1 file changed, 28 insertions(+), 28 deletions(-)
+
+diff --git a/env/emacs/xref.el b/env/emacs/xref.el
+index 1215007..f31523b 100644
+--- a/env/emacs/xref.el
++++ b/env/emacs/xref.el
+@@ -1782,7 +1782,7 @@ tries to delete xrefactory windows first.
+ 		  (forward-char 1)
+ 		  (search-forward-regexp "[^0-9]" (point-max) 0)
+ 		  (setq ne (point))
+-		  (setq line (string-to-int (buffer-substring e (- ne 1))))
++		  (setq line (string-to-number (buffer-substring e (- ne 1))))
+ 		  )
+ 	  )
+ 	(goto-char p)
+@@ -2410,7 +2410,7 @@ tries to delete xrefactory windows first.
+ 					)
+ 		  (setq i (+ i 1))
+ 		  )
+-		(setq pn (string-to-int (substring ss j i)))
++		(setq pn (string-to-number (substring ss j i)))
+ 		(message "progress %s%%" pn)
+ 		(setq i (xref-server-dispatch-skip-blank ss i len))
+ 		))
+@@ -2685,7 +2685,7 @@ tries to delete xrefactory windows first.
+ 	(setq opts (append (list "-refactory" 
+ 							 "-xrefrc" xref-options-file
+ 							 "-p" xref-active-project
+-							 "-user" (int-to-string frame-id)
++							 "-user" (number-to-string frame-id)
+ 							)
+ 					  opts))
+ 	(setq enc (xref-encoding-option))
+@@ -2721,7 +2721,7 @@ tries to delete xrefactory windows first.
+ 	(setq opts (append opts (list "-errors" 
+ 								  "-xrefrc" xref-options-file
+ 								  "-p" xref-active-project
+-								  "-user" (int-to-string (xref-get-this-frame-id))
++								  "-user" (number-to-string (xref-get-this-frame-id))
+ 								  )))
+ 	(setq enc (xref-encoding-option))
+ 	(if (not (equal enc ""))
+@@ -2925,7 +2925,7 @@ on active project selection).
+ 	(setq res 0)
+ 	(setq as (assoc attr xref-server-ctag-attributes))
+ 	(if as
+-		(setq res (string-to-int (cdr as)))
++		(setq res (string-to-number (cdr as)))
+ 	  )
+ 	res
+ ))
+@@ -3027,8 +3027,8 @@ on active project selection).
+ 	(xref-server-dispatch-require-end-ctag tag)
+ 	(xref-select-dispach-data-caller-window dispatch-data)
+ 	(xref-display-and-set-new-dialog-window xref-error-modal-buffer nil t)
+-	(insert-string "[error] : ")
+-	(insert-string cc)
++	(insert "[error] : ")
++	(insert cc)
+ 	(goto-char (point-min))
+ 	(xref-appropriate-window-height nil t)
+ 	(beep t)
+@@ -3053,8 +3053,8 @@ on active project selection).
+ 		() ;; do nothing if debug information and mode is off
+ 	  (xref-select-dispach-data-caller-window dispatch-data)
+ 	  (setq dw (xref-display-and-set-new-dialog-window xref-info-modal-buffer nil t))
+-	  ;;(insert-string "[info] : ")
+-	  (insert-string cc)
++	  ;;(insert "[info] : ")
++	  (insert cc)
+ 	  (goto-char (point-min))
+ 	  (xref-appropriate-window-height nil t)
+ 	  (xref-read-key-sequence "Press a key to continue")
+@@ -3326,7 +3326,7 @@ No.
+ 		   "-olcxtrivialprecheck -getlastimportline" 
+ 		   dispatch-data)
+ 		  (setq iline (cdr (assoc 'info dispatch-data)))
+-		  (setq iline-val (string-to-int iline))
++		  (setq iline-val (string-to-number iline))
+ 		  (save-excursion
+ 			(goto-line (+ iline-val 1))
+ 			(beginning-of-line)
+@@ -3522,7 +3522,7 @@ Special hotkeys available:
+ 	  (setq tlen (xref-server-dispatch-get-int-attr PPCA_LEN))
+ 	  (setq cc (xref-char-list-substring ss i (+ i tlen)))
+ 	  (setq i (+ i tlen))
+-	  (insert-string cc)
++	  (insert cc)
+ 	  (newline)
+ 	  (setq i (xref-server-parse-xml-tag ss i len))
+ 	  (xref-server-dispatch-require-end-ctag PPC_MULTIPLE_COMPLETION_LINE)
+@@ -3546,7 +3546,7 @@ Special hotkeys available:
+ 	(setq tlen (xref-server-dispatch-get-int-attr PPCA_LEN))
+ 	(setq cc (xref-char-list-substring ss i (+ i tlen)))
+ 	(setq i (+ i tlen))
+-	(insert-string cc)
++	(insert cc)
+ 	(setq i (xref-server-parse-xml-tag ss i len))
+ 	(xref-server-dispatch-require-end-ctag PPC_ALL_COMPLETIONS)
+ 	(xref-line-hightlight 0 (point-max) nil 1 xref-font-lock-compl-keywords t)
+@@ -3649,7 +3649,7 @@ Special hotkeys available:
+ ))
+ 
+ (defun xref-server-dispatch-refactoring-paste-block (ss i len dispatch-data)
+-  (insert-string xref-refactoring-block)
++  (insert xref-refactoring-block)
+   (setq i (xref-server-parse-xml-tag ss i len))
+   (xref-server-dispatch-require-end-ctag PPC_REFACTORING_PASTE_BLOCK)
+   i
+@@ -3864,8 +3864,8 @@ Special hotkeys available:
+ 	(setq winconfig (current-window-configuration))
+ 	  (delete-other-windows)
+ 	  (setq messagewin (xref-display-and-set-new-dialog-window xref-browser-info-buffer nil t))
+-	  (insert-string mess)
+-	  (insert-string xref-resolution-dialog-explication)
++	  (insert mess)
++	  (insert xref-resolution-dialog-explication)
+ 	  (goto-char (point-min))
+ 	  (xref-create-browser-windows t dispatch-data)
+ 	  (xref-browser-dialog-set-new-filter dispatch-data)
+@@ -4390,7 +4390,7 @@ Special hotkeys available:
+   (let ((key) (res) (win) (owin))
+ 	(setq owin (selected-window))
+ 	(setq win (xref-display-and-set-new-dialog-window title nil t))
+-	(insert-string text)
++	(insert text)
+ 	(xref-use-local-map keymap)
+ 	(goto-line line)
+ 	(xref-appropriate-window-height nil t)
+@@ -5189,7 +5189,7 @@ belonging to this project.
+ 					   "Do you compile sources several times with different macro settings [yn]? " "n"))
+ 			(if (or (equal aaa "y") (equal aaa "Y"))
+ 				(progn
+-				  (setq pasn (string-to-int 
++				  (setq pasn (string-to-number 
+ 							  (read-from-minibuffer 
+ 							   "How many compilations with different initial macro settings: " "2")))
+ 				  (setq aaa (read-from-minibuffer 
+@@ -5797,7 +5797,7 @@ is successful.  See also `xref-ide-compile' and `xref-ide-run'.
+ 		  (insert (substring cc (+ j tlen 4)))
+ 		  (put-text-property bp (point) 'mouse-face 'highlight)
+ 		  )
+-	  (insert-string cc)
++	  (insert cc)
+ 	  )
+ 	i
+ ))
+@@ -5810,7 +5810,7 @@ is successful.  See also `xref-ide-compile' and `xref-ide-run'.
+ 	(setq i (+ i tlen))
+ 	(setq i (xref-server-parse-xml-tag ss i len))
+ 	(xref-server-dispatch-require-end-ctag tag)
+-	(insert-string cc)
++	(insert cc)
+ 	(newline)
+ 	i
+ ))
+@@ -5883,7 +5883,7 @@ is successful.  See also `xref-ide-compile' and `xref-ide-run'.
+ 			)
+ 		  (if (eq di 0) (setq di i))
+ 		  (setq file (substring line b di))
+-		  (setq ln (string-to-int (substring line (+ di 1) i)))
++		  (setq ln (string-to-number (substring line (+ di 1) i)))
+ 		  (xref-show-file-line-in-caller-window file ln)
+ 		  )
+ 	  (xref-find-file-on-point)
+@@ -6193,7 +6193,7 @@ file.
+ 	(forward-char i)
+ 	(xref-delete-pending-ident-after-completion)
+ 	(setq ccc (substring cc i))
+-	(if (not (equal ccc "")) (insert-string ccc))
++	(if (not (equal ccc "")) (insert ccc))
+ ))
+ 
+ (defun xref-insert-completion (completion)
+@@ -7478,7 +7478,7 @@ symbol name (the identifier) is checked against the given string(s).
+ (defun xref-interactive-browser-dialog-set-filter (event)
+   (interactive "i")
+   (let ((level))
+-	(setq level (string-to-int (char-to-string last-input-char)))
++	(setq level (string-to-number (char-to-string last-input-char)))
+ 	(xref-browser-or-refs-set-filter level)
+ ))
+ 
+@@ -8199,7 +8199,7 @@ files after each important refactoring.
+ 	(get-buffer-create xref-vc-log-buffer)
+ 	(set-buffer xref-vc-log-buffer)
+ 	(goto-char (point-max))
+-	(insert-string (format "%s: %s" 
++	(insert (format "%s: %s" 
+ 						   (current-time-string)
+ 						   description))
+ 	(newline)
+@@ -8280,7 +8280,7 @@ files after each important refactoring.
+ 				  "Insert parameter at position [ 1 - arity('%s') ] : " name)
+ 				 "1"
+ 				 ))
+-	(setq arg (string-to-int argns))
++	(setq arg (string-to-number argns))
+ 	(if (and rd (equal (car (cdr rd)) "macro"))
+ 		(setq default "ARG")
+ 	  (setq default "int arg")
+@@ -8312,7 +8312,7 @@ files after each important refactoring.
+ 				  "Delete parameter from position [ 1 - arity('%s') ] : " name) 
+ 				 "1"
+ 				 ))
+-	(setq arg (string-to-int argns))
++	(setq arg (string-to-number argns))
+ 	(xref-non-interactive-del-parameter name arg)
+ ))
+ 
+@@ -8335,13 +8335,13 @@ files after each important refactoring.
+ 				  "Position of parameter to move [ 1 - arity('%s') ] : " name) 
+ 				 "1"
+ 				 ))
+-	(setq arg1 (string-to-int argns))
++	(setq arg1 (string-to-number argns))
+ 	(setq argns (read-from-minibuffer 
+ 				 (format 
+ 				  "Move to position [ 1 - arity('%s') ] : " name) 
+ 				 "2"
+ 				 ))
+-	(setq arg2 (string-to-int argns))
++	(setq arg2 (string-to-number argns))
+ 	(xref-non-interactive-move-parameter name arg1 arg2)
+ ))
+ 
+@@ -8546,7 +8546,7 @@ files after each important refactoring.
+ 				 ))
+ 	(setq field (read-from-minibuffer
+ 				 "Optionally the field getting method's object from the argument [\"\"] "))
+-	(setq arg (string-to-int argns))
++	(setq arg (string-to-number argns))
+ 	(xref-refactoring-init-actions (format "making %s virtual" name))
+ 	(xref-server-call-refactoring-task 
+ 	 (list
+-- 
+2.18.0
+

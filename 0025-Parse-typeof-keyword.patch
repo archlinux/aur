@@ -1,0 +1,319 @@
+From 40cea5e11ba6c7f36903b96c934eaa461064f790 Mon Sep 17 00:00:00 2001
+From: Sergei Litvin <litvindev@gmail.com>
+Date: Fri, 23 Jun 2017 22:47:27 +0300
+Subject: [PATCH 25/33] Parse typeof keyword
+
+squash! Parse typeof keyword
+---
+ src/cgram.y    | 38 +++++++++++++++++++++++++++-----------
+ src/globals.c  |  4 +++-
+ src/javagram.y |  2 +-
+ src/options.c  |  6 ++----
+ src/yaccgram.y | 35 ++++++++++++++++++++++++++++++-----
+ 5 files changed, 63 insertions(+), 22 deletions(-)
+
+diff --git a/src/cgram.y b/src/cgram.y
+index a0559f7..1ef4600 100644
+--- a/src/cgram.y
++++ b/src/cgram.y
+@@ -35,7 +35,6 @@
+ #include "head.h"
+ #include "proto.h"      /*SBD*/
+ 
+-
+ #define YYDEBUG 0
+ #define yyerror styyerror
+ #define yyErrorRecovery styyErrorRecovery
+@@ -106,7 +105,7 @@
+ 
+ /* c-special */
+ %token TYPEDEF EXTERN AUTO REGISTER SIGNED UNSIGNED STRUCT UNION ENUM
+-%token SIZEOF RESTRICT _ATOMIC _BOOL _THREADLOCAL _NORETURN
++%token SIZEOF TYPEOF RESTRICT _ATOMIC _BOOL _THREADLOCAL _NORETURN
+ /* hmm */
+ %token ANONYME_MOD
+ 
+@@ -190,7 +189,6 @@
+ /* commons */
+ %token IDENTIFIER CONSTANT LONG_CONSTANT
+ %token FLOAT_CONSTANT DOUBLE_CONSTANT
+-
+ %token STRING_LITERAL 
+ %token LINE_TOK
+ %token IDENT_TO_COMPLETE		/* identifier under cursor */
+@@ -207,8 +205,6 @@
+ 
+ %token LAST_TOKEN
+ 
+-
+-
+ /* *************************************************************** */
+ 
+ %union {
+@@ -280,7 +276,7 @@
+ %type <bbsymbolPositionLstPair> parameter_identifier_list identifier_list
+ %type <bbpositionLst> argument_expr_list argument_expr_list_opt
+ 
+-%type <bbtypeModif> type_specifier2 
++%type <bbtypeModif> type_specifier2 typeof_specifier
+ %type <bbtypeModif> struct_or_union_specifier struct_or_union_define_specifier
+ %type <bbtypeModif> enum_specifier enum_define_specifier
+ %type <bbtypeModif> type_name abstract_declarator abstract_declarator2
+@@ -751,6 +747,9 @@ declaration_specifiers0
+ 	| type_specifier2										{
+ 		$$.d  = typeSpecifier2($1.d);
+ 	}
++	| typeof_specifier										{
++		$$.d = typeSpecifier2($1.d);
++	}
+ 	| declaration_modality_specifiers  user_defined_type	{ 
+ 		assert($2.d);
+ 		assert($2.d->sd);
+@@ -765,9 +764,9 @@ declaration_specifiers0
+ 		$$.d = $1.d;
+ 		declTypeSpecifier2($1.d,$2.d);
+ 	}
+-	| declaration_specifiers0 type_modality_specifier		{
++	| declaration_modality_specifiers typeof_specifier		{
+ 		$$.d = $1.d;
+-		declTypeSpecifier1($1.d,$2.d);
++		declTypeSpecifier2($1.d,$2.d);
+ 	}
+ 	| declaration_specifiers0 type_specifier1				{
+ 		$$.d = $1.d;
+@@ -781,6 +780,10 @@ declaration_specifiers0
+ 		$$.d = $1.d;
+ 		$$.d->b.storage = $2.d; 
+ 	}
++	| declaration_specifiers0 type_modality_specifier		{
++		$$.d = $1.d;
++		declTypeSpecifier1($1.d,$2.d);
++	}
+ 	| declaration_specifiers0 function_specifier			{
+ 		$$.d = $1.d;
+ 	}
+@@ -899,6 +902,15 @@ type_specifier2
+ 	| enum_specifier				/* { $$.d = $1.d; } */
+ 	;
+ 
++typeof_specifier
++	: TYPEOF '(' type_name ')'								{
++		$$.d  = $3.d;
++	}
++	| TYPEOF '(' expr ')'									{
++		$$.d = $3.d.t;
++	}
++	;
++
+ function_specifier
+ 	: INLINE
+ 	| _NORETURN
+@@ -1174,6 +1186,9 @@ type_specifier_list0
+ 	| type_specifier2										{
+ 		$$.d  = typeSpecifier2($1.d);
+ 	}
++	| typeof_specifier										{
++		$$.d  = typeSpecifier2($1.d);
++	}
+ 	| type_mod_specifier_list user_defined_type				{ 
+ 		assert($2.d);
+ 		assert($2.d->sd);
+@@ -1189,6 +1204,10 @@ type_specifier_list0
+ 		$$.d = $1.d;
+ 		declTypeSpecifier2($1.d,$2.d);
+ 	}
++	| type_mod_specifier_list typeof_specifier		{
++		$$.d = $1.d;
++		declTypeSpecifier2($1.d,$2.d);
++	}
+ 	| type_specifier_list0 type_modality_specifier		{
+ 		$$.d = $1.d;
+ 		declTypeSpecifier1($1.d,$2.d);
+@@ -1919,6 +1938,3 @@ void makeCCompletions(char *s, int len, S_position *pos) {
+ 
+ 	LICENSE_CHECK();
+ }
+-
+-
+-
+diff --git a/src/globals.c b/src/globals.c
+index ade4b4b..66ba837 100644
+--- a/src/globals.c
++++ b/src/globals.c
+@@ -535,6 +535,7 @@ S_tokenNameIni s_tokenNameIniTab[] = {
+ 	{"register",	REGISTER		,LAN_C | LAN_YACC | LAN_CCC},
+ 	{"signed",		SIGNED			,LAN_C | LAN_YACC | LAN_CCC},
+ 	{"sizeof",		SIZEOF			,LAN_C | LAN_YACC | LAN_CCC},
++	{"typeof",		TYPEOF			,LAN_C | LAN_YACC | LAN_CCC},
+ 	{"struct",		STRUCT			,LAN_C | LAN_YACC | LAN_CCC},
+ 	{"typedef",		TYPEDEF			,LAN_C | LAN_YACC | LAN_CCC},
+ 	{"union", 		UNION			,LAN_C | LAN_YACC | LAN_CCC},
+@@ -723,7 +724,8 @@ S_tokenNameIni s_tokenNameIniTab2[] = {
+ 	{"__threadd",		_THREADLOCAL	,LAN_C | LAN_YACC | LAN_CCC},
+ 	{"__restrict",		RESTRICT		,LAN_C | LAN_YACC | LAN_CCC},
+ 	{"__restrict__",	RESTRICT		,LAN_C | LAN_YACC | LAN_CCC},
+-	{"__extension__",	ANONYME_MOD		,LAN_C | LAN_YACC | LAN_CCC},
++	{"__typeof",		TYPEOF			,LAN_C | LAN_YACC | LAN_CCC},
++	{"__typeof__",		TYPEOF			,LAN_C | LAN_YACC | LAN_CCC},
+ 	{"__near",			ANONYME_MOD		,LAN_C | LAN_YACC | LAN_CCC},
+ 	{"__far",			ANONYME_MOD		,LAN_C | LAN_YACC | LAN_CCC},
+ 	{"__pascal",		ANONYME_MOD		,LAN_C | LAN_YACC | LAN_CCC},
+diff --git a/src/javagram.y b/src/javagram.y
+index 4dcf023..0f8ba9d 100644
+--- a/src/javagram.y
++++ b/src/javagram.y
+@@ -156,7 +156,7 @@
+ 
+ /* c-special */
+ %token TYPEDEF EXTERN AUTO REGISTER SIGNED UNSIGNED STRUCT UNION ENUM
+-%token SIZEOF RESTRICT _ATOMIC _BOOL _THREADLOCAL _NORETURN
++%token SIZEOF TYPEOF RESTRICT _ATOMIC _BOOL _THREADLOCAL _NORETURN
+ /* hmm */
+ %token ANONYME_MOD
+ 
+diff --git a/src/options.c b/src/options.c
+index 2c40574..b02f578 100644
+--- a/src/options.c
++++ b/src/options.c
+@@ -40,9 +40,8 @@ static char *s_standardCOptions[] = {
+ #endif													/*SBD*/
+ #ifdef __mygnulinux__	/*SBD*/
+ 	"-D__attribute__(xxx) ",
++	"-D__extension__ ",
+ 	"-D__alignof__(xxx) 8",
+-	"-Dtypeof(xxx) int",
+-	"-D__typeof__(xxx) int",
+ 	"-D__gnuc_va_list void",
+ 	"-D__builtin_va_list void",
+ 	"-D__builtin_va_start(v, l) ",
+@@ -138,9 +137,8 @@ static char *s_standardCccOptions[] = {
+ 	"-I", "/usr/include/",
+ #ifdef __mygnulinux__	/*SBD*/
+ 	"-D__attribute__(xxx) ",
++	"-D__extension__ ",
+ 	"-D__alignof__(xxx) 8",
+-	"-Dtypeof(xxx) int",
+-	"-D__typeof__(xxx) int",
+ 	"-D__gnuc_va_list void",
+ 	"-D__builtin_va_list void",
+ 	"-D__builtin_va_start(v, l) ",
+diff --git a/src/yaccgram.y b/src/yaccgram.y
+index 8773040..35a51f9 100644
+--- a/src/yaccgram.y
++++ b/src/yaccgram.y
+@@ -37,6 +37,7 @@
+ 	assert(s_opt.taskRegime);\
+ 	if (s_opt.taskRegime == RegimeEditServer) {\
+ 		s_structRecordCompletionType = xxx;\
++		assert(s_structRecordCompletionType);\
+ 	}\
+ }
+ #define SetStrCompl2(xxx) {\
+@@ -44,6 +45,7 @@
+ 	if (s_opt.taskRegime == RegimeEditServer) {\
+ 		if (xxx->m==TypePointer || xxx->m==TypeArray) {\
+ 			s_structRecordCompletionType = xxx->next;\
++			assert(s_structRecordCompletionType);\
+ 		} else s_structRecordCompletionType = &s_errorModifier;\
+ 	}\
+ }
+@@ -109,7 +111,7 @@ static void addYaccSymbolReference C_ARG((S_idIdent *name, int usage));
+ 
+ /* c-special */
+ %token TYPEDEF EXTERN AUTO REGISTER SIGNED UNSIGNED STRUCT UNION ENUM
+-%token SIZEOF RESTRICT _ATOMIC _BOOL _THREADLOCAL _NORETURN
++%token SIZEOF TYPEOF RESTRICT _ATOMIC _BOOL _THREADLOCAL _NORETURN
+ /* hmm */
+ %token ANONYME_MOD
+ 
+@@ -281,7 +283,7 @@ static void addYaccSymbolReference C_ARG((S_idIdent *name, int usage));
+ %type <bbsymbolPositionLstPair> parameter_identifier_list identifier_list
+ %type <bbpositionLst> argument_expr_list argument_expr_list_opt
+ 
+-%type <bbtypeModif> type_specifier2 
++%type <bbtypeModif> type_specifier2 typeof_specifier
+ %type <bbtypeModif> struct_or_union_specifier struct_or_union_define_specifier
+ %type <bbtypeModif> enum_specifier enum_define_specifier
+ %type <bbtypeModif> type_name abstract_declarator abstract_declarator2
+@@ -476,7 +478,7 @@ any_token_not_perc_par:
+ 	| DOUBLE | ELSE | FLOAT | FOR | GOTO | IF | INT | LONG | RETURN | SHORT
+ 	| SWITCH | VOID | VOLATILE | WHILE
+ 	| TYPEDEF | EXTERN | AUTO | REGISTER | SIGNED | UNSIGNED | STRUCT | UNION 
+-	| ENUM | SIZEOF | RESTRICT | _ATOMIC | _BOOL | _THREADLOCAL | _NORETURN
++	| ENUM | SIZEOF | TYPEOF | RESTRICT | _ATOMIC | _BOOL | _THREADLOCAL | _NORETURN
+ 	| ANONYME_MOD | TOKEN
+ 	| ABSTRACT | BOOLEAN | BYTE | CATCH | CLASS | EXTENDS | FINAL | FINALLY 
+ 	| IMPLEMENTS | IMPORT | INSTANCEOF | INTERFACE | NATIVE | NEW
+@@ -955,6 +957,9 @@ declaration_specifiers0
+ 	| type_specifier2										{
+ 		$$.d  = typeSpecifier2($1.d);
+ 	}
++	| typeof_specifier										{
++		$$.d = typeSpecifier2($1.d);
++	}
+ 	| declaration_modality_specifiers  user_defined_type	{ 
+ 		assert($2.d);
+ 		assert($2.d->sd);
+@@ -969,9 +974,9 @@ declaration_specifiers0
+ 		$$.d = $1.d;
+ 		declTypeSpecifier2($1.d,$2.d);
+ 	}
+-	| declaration_specifiers0 type_modality_specifier		{
++	| declaration_modality_specifiers typeof_specifier		{
+ 		$$.d = $1.d;
+-		declTypeSpecifier1($1.d,$2.d);
++		declTypeSpecifier2($1.d,$2.d);
+ 	}
+ 	| declaration_specifiers0 type_specifier1				{
+ 		$$.d = $1.d;
+@@ -985,6 +990,10 @@ declaration_specifiers0
+ 		$$.d = $1.d;
+ 		$$.d->b.storage = $2.d; 
+ 	}
++	| declaration_specifiers0 type_modality_specifier		{
++		$$.d = $1.d;
++		declTypeSpecifier1($1.d,$2.d);
++	}
+ 	| declaration_specifiers0 function_specifier			{
+ 		$$.d = $1.d;
+ 	}
+@@ -1103,6 +1112,15 @@ type_specifier2
+ 	| enum_specifier				/* { $$.d = $1.d; } */
+ 	;
+ 
++typeof_specifier
++	: TYPEOF '(' type_name ')'								{
++		$$.d  = $3.d;
++	}
++	| TYPEOF '(' expr ')'									{
++		$$.d = $3.d.t;
++	}
++	;
++
+ function_specifier
+ 	: INLINE
+ 	| _NORETURN
+@@ -1378,6 +1396,9 @@ type_specifier_list0
+ 	| type_specifier2										{
+ 		$$.d  = typeSpecifier2($1.d);
+ 	}
++	| typeof_specifier										{
++		$$.d  = typeSpecifier2($1.d);
++	}
+ 	| type_mod_specifier_list user_defined_type				{ 
+ 		assert($2.d);
+ 		assert($2.d->sd);
+@@ -1393,6 +1414,10 @@ type_specifier_list0
+ 		$$.d = $1.d;
+ 		declTypeSpecifier2($1.d,$2.d);
+ 	}
++	| type_mod_specifier_list typeof_specifier		{
++		$$.d = $1.d;
++		declTypeSpecifier2($1.d,$2.d);
++	}
+ 	| type_specifier_list0 type_modality_specifier		{
+ 		$$.d = $1.d;
+ 		declTypeSpecifier1($1.d,$2.d);
+-- 
+2.18.0
+

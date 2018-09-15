@@ -1,0 +1,36 @@
+From 52ef15b2c7b4052ca5de1f338e83a79b884a5f9b Mon Sep 17 00:00:00 2001
+From: Sergei Litvin <litvindev@gmail.com>
+Date: Mon, 5 Jun 2017 17:24:08 +0300
+Subject: [PATCH 17/33] Parse asm statement
+
+---
+ src/cgram.y | 12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
+
+diff --git a/src/cgram.y b/src/cgram.y
+index 601df1e..3660987 100644
+--- a/src/cgram.y
++++ b/src/cgram.y
+@@ -1642,11 +1642,15 @@ _bef_:			{
+ /* ****************** following is some gcc asm support ************ */
+ /* it is not exactly as in gcc, but I hope it is suf. general */
+ 
++gcc_asm_symbolic_name_opt:
++	|	'[' IDENTIFIER ']'
++	;
++
+ gcc_asm_item_opt:
+-	|	IDENTIFIER
+-	|	string_literales
+-	|	IDENTIFIER '(' expr ')'
+-	|	string_literales '(' expr ')'
++	|	gcc_asm_symbolic_name_opt IDENTIFIER
++	|	gcc_asm_symbolic_name_opt IDENTIFIER '(' expr ')'
++	|	gcc_asm_symbolic_name_opt string_literales
++	|	gcc_asm_symbolic_name_opt string_literales '(' expr ')'
+ 	;
+ 
+ gcc_asm_item_list:
+-- 
+2.18.0
+

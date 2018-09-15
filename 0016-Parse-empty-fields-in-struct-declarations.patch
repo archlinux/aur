@@ -1,0 +1,47 @@
+From 83d15c9bebf3c95cd817015f74f2e9fc96b6d0ec Mon Sep 17 00:00:00 2001
+From: litvin <litvindev@gmail.com>
+Date: Sun, 18 Jun 2017 18:47:25 +0300
+Subject: [PATCH 16/33] Parse empty fields in struct declarations
+
+---
+ src/cgram.y    | 6 ++++--
+ src/yaccgram.y | 6 ++++--
+ 2 files changed, 8 insertions(+), 4 deletions(-)
+
+diff --git a/src/cgram.y b/src/cgram.y
+index d8e5ba9..601df1e 100644
+--- a/src/cgram.y
++++ b/src/cgram.y
+@@ -1141,8 +1141,10 @@ type_specifier_list
+ 	;
+ */
+ 
+-type_specifier_list
+-	: type_mod_specifier_list						/* { $$.d = $1.d; } */
++type_specifier_list:				{ /* gcc extension allow empty field */
++		$$.d = crEmptyField();
++	}
++	| type_mod_specifier_list						/* { $$.d = $1.d; } */
+ 	| type_specifier_list0							/* { $$.d = $1.d; } */
+ 	;
+ 
+diff --git a/src/yaccgram.y b/src/yaccgram.y
+index 87b406c..a6ca5d6 100644
+--- a/src/yaccgram.y
++++ b/src/yaccgram.y
+@@ -1235,8 +1235,10 @@ type_specifier_list
+ 	;
+ */
+ 
+-type_specifier_list
+-	: type_mod_specifier_list						/* { $$.d = $1.d; } */
++type_specifier_list:				{ /* gcc extension allow empty field */
++		$$.d = crEmptyField();
++	}
++	| type_mod_specifier_list						/* { $$.d = $1.d; } */
+ 	| type_specifier_list0							/* { $$.d = $1.d; } */
+ 	;
+ 
+-- 
+2.18.0
+

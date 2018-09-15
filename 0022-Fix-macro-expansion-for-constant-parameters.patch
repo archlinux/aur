@@ -1,0 +1,49 @@
+From ec2300f18c2296b29a7c559ca4ab4dc20d7c06b2 Mon Sep 17 00:00:00 2001
+From: litvin <litvindev@gmail.com>
+Date: Thu, 15 Jun 2017 03:46:56 +0300
+Subject: [PATCH 22/33] Fix ## macro expansion for constant parameters
+
+---
+ src/yylex.c | 19 ++++++++++++++++++-
+ 1 file changed, 18 insertions(+), 1 deletion(-)
+
+diff --git a/src/yylex.c b/src/yylex.c
+index 2431e75..0af4dcc 100644
+--- a/src/yylex.c
++++ b/src/yylex.c
+@@ -1297,7 +1297,7 @@ static void cxAddCollateReference( char *sym, char *cs, S_position *pos ) {
+ static void collate(char **albcc, char **abcc, char *buf, int *absize, 
+ 					char **ancc, S_lexInput *actArgs) {
+ 	char *lbcc,*bcc,*cc,*ccfin,*cc0,*ncc,*cc1,*occ;
+-	int line, val, lex, nlex, len1, bsize, nlt,len;
++	int line, val, lex, nlex, len1, bsize, nlt, len, cch;
+ 	S_position pos,respos;
+ 	unsigned hash;
+ 	ncc = *ancc;
+@@ -1367,6 +1367,23 @@ static void collate(char **albcc, char **abcc, char *buf, int *absize,
+ 			PutLexPosition(respos.file,respos.line,respos.coll,bcc);
+ 		}
+ 	}
++	if (lbcc!=NULL && cc < ccfin && NextLexToken(lbcc) == CONSTANT) {
++		nlex = NextLexToken(cc);
++		if (IS_IDENTIFIER_LEXEM(nlex) || nlex == CONSTANT
++					|| nlex == LONG_CONSTANT || nlex == FLOAT_CONSTANT
++					|| nlex == DOUBLE_CONSTANT ) {
++			GetLexToken(lex, cc);
++			occ = cc;
++			PassLex(cc, lex, line, val, hash, respos, len, 0);
++			if (IS_IDENTIFIER_LEXEM(lex)) {
++				GetLexChar(cch, occ);
++				for(; cch=='l'||cch=='L'||cch=='u'||cch=='U'; ) {
++					if (cch=='l' || cch=='L') PutLexToken(LONG_CONSTANT, lbcc);
++					GetLexChar(cch, occ);
++				}
++			}
++		}
++	}
+ 	TestPPBufOverflow(bcc,buf,bsize);
+ 	while (cc<ccfin) {
+ 		cc0 = cc;
+-- 
+2.18.0
+

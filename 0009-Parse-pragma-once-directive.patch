@@ -1,0 +1,73 @@
+From e3c4518ee1864a38c13283e14737c4f4c23d3601 Mon Sep 17 00:00:00 2001
+From: litvin <litvindev@gmail.com>
+Date: Thu, 22 Dec 2016 04:00:34 +0300
+Subject: [PATCH 09/33] Parse "#pragma once" directive
+
+---
+ src/yylex.c | 36 +++++++++++++++++++++++++++++++++---
+ 1 file changed, 33 insertions(+), 3 deletions(-)
+
+diff --git a/src/yylex.c b/src/yylex.c
+index b25a666..3a4c128 100644
+--- a/src/yylex.c
++++ b/src/yylex.c
+@@ -524,6 +524,12 @@ static FILE *openInclude(char pchar, char *name, char **fileName) {
+ static void processInclude2(S_position *ipos, char pchar, char *iname) {
+ 	char *fname;
+ 	FILE *nyyin;
++	S_symbol ss,*memb;
++	int ii;
++	sprintf(tmpBuff, "PragmaOnce-%s", iname);
++	FILL_symbolBits(&ss.b,0,0,0,0,0,TypeMacro,StorageNone,0);
++	FILL_symbol(&ss,tmpBuff,tmpBuff,s_noPos,ss.b,mbody,NULL,NULL);
++	if (symTabIsMember(s_symTab, &ss, &ii, &memb)) return;
+ 	nyyin = openInclude(pchar, iname, &fname);
+ 	if (nyyin == NULL) {
+ 		assert(s_opt.taskRegime);
+@@ -1047,6 +1053,32 @@ endOfMacArg:	assert(0);
+ endOfFile:;
+ }
+ 
++static void processPragma() {
++	int lex,l,v,len,ii;
++	unsigned h;
++	char *mname, *fname;
++	S_position pos;
++	S_symbol *pp;
++
++	GetLex(lex);
++	if (lex == IDENTIFIER && !strcmp(cInput.cc, "once")) {
++		PassLex(cInput.cc,lex,l,v,h,pos, len,1);
++		fname = simpleFileName(s_fileTab.tab[pos.file]->name);
++		sprintf(tmpBuff, "PragmaOnce-%s", fname);
++		PP_ALLOCC(mname, strlen(tmpBuff)+1, char);
++		strcpy(mname, tmpBuff);
++		PP_ALLOC(pp, S_symbol);
++		FILL_symbolBits(&pp->b,0,0,0,0,0,TypeMacro,StorageNone,0);
++		FILL_symbol(pp,mname,mname,pos,pp->b,mbody,NULL,NULL);
++		symTabAdd(s_symTab,pp,&ii);
++	}
++	while (lex != '\n') {PassLex(cInput.cc,lex,l,v,h,pos, len,1); GetLex(lex);}
++	PassLex(cInput.cc,lex,l,v,h,pos, len,1);
++	return;
++endOfMacArg:	assert(0);
++endOfFile:;
++}
++
+ /* ***************************************************************** */
+ /*                                 CPP                               */
+ /* ***************************************************************** */
+@@ -1124,9 +1156,7 @@ static int processCppConstruct(int lex) {
+ 	case CPP_PRAGMA:
+ 		DPRINTF1("#pragma\n");
+ 		AddHtmlCppReference(pos);
+-		GetLex(lex);
+-		while (lex != '\n') {PassLex(cInput.cc,lex,l,v,h,pos, len,1); GetLex(lex);}
+-		PassLex(cInput.cc,lex,l,v,h,pos, len,1);
++		processPragma();
+ 		break;
+ 	case CPP_LINE:
+ 		AddHtmlCppReference(pos);
+-- 
+2.18.0
+

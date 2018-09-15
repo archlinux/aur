@@ -1,0 +1,33 @@
+From ec1f9bc97176b5e707673d5a49601c833df3f825 Mon Sep 17 00:00:00 2001
+From: Sergei Litvin <litvindev@gmail.com>
+Date: Tue, 13 Jun 2017 15:04:51 +0300
+Subject: [PATCH 20/33] Add GCC keyword extensions
+
+---
+ src/globals.c | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/src/globals.c b/src/globals.c
+index 4df9006..ade4b4b 100644
+--- a/src/globals.c
++++ b/src/globals.c
+@@ -717,9 +717,13 @@ S_tokenNameIni s_tokenNameIniTab2[] = {
+ 	{"__inline__",		ANONYME_MOD		,LAN_C | LAN_YACC | LAN_CCC},
+ 	{"__volatile",		VOLATILE		,LAN_C | LAN_YACC | LAN_CCC},
+ 	{"__volatile__",	VOLATILE		,LAN_C | LAN_YACC | LAN_CCC},
+-	{"__asm",			ASM_KEYWORD		,LAN_C | LAN_CCC},
+-	{"__asm__",			ASM_KEYWORD		,LAN_C | LAN_CCC},
+-	{"__label__",		LABEL			,LAN_C | LAN_CCC},
++	{"__asm",			ASM_KEYWORD		,LAN_C | LAN_YACC | LAN_CCC},
++	{"__asm__",			ASM_KEYWORD		,LAN_C | LAN_YACC | LAN_CCC},
++	{"__label__",		LABEL			,LAN_C | LAN_YACC | LAN_CCC},
++	{"__threadd",		_THREADLOCAL	,LAN_C | LAN_YACC | LAN_CCC},
++	{"__restrict",		RESTRICT		,LAN_C | LAN_YACC | LAN_CCC},
++	{"__restrict__",	RESTRICT		,LAN_C | LAN_YACC | LAN_CCC},
++	{"__extension__",	ANONYME_MOD		,LAN_C | LAN_YACC | LAN_CCC},
+ 	{"__near",			ANONYME_MOD		,LAN_C | LAN_YACC | LAN_CCC},
+ 	{"__far",			ANONYME_MOD		,LAN_C | LAN_YACC | LAN_CCC},
+ 	{"__pascal",		ANONYME_MOD		,LAN_C | LAN_YACC | LAN_CCC},
+-- 
+2.18.0
+

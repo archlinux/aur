@@ -1,0 +1,759 @@
+From e068b65efabb3d78b88936cf660393f42b6f5c80 Mon Sep 17 00:00:00 2001
+From: litvin <litvindev@gmail.com>
+Date: Mon, 10 Apr 2017 09:30:05 +0300
+Subject: [PATCH 15/33] Parse initializer-list for arrays/structs/unions
+
+---
+ src/cgram.y     | 113 +++++++++++++++++++++++++++++++++++++-----------
+ src/extract.c   |   2 +-
+ src/globals.c   |  36 +++++++--------
+ src/head.h      |   2 +-
+ src/javagram.y  |  10 ++---
+ src/jsemact.c   |  24 +++++-----
+ src/jslsemact.c |  20 ++++-----
+ src/proto.h     |   7 ++-
+ src/semact.c    |  33 +++++++++++++-
+ src/yaccgram.y  |  94 ++++++++++++++++++++++++++++++++--------
+ 10 files changed, 247 insertions(+), 94 deletions(-)
+
+diff --git a/src/cgram.y b/src/cgram.y
+index e4c2474..d8e5ba9 100644
+--- a/src/cgram.y
++++ b/src/cgram.y
+@@ -260,6 +260,8 @@
+ %type <bbidIdent> IDENTIFIER identifier struct_identifier enum_identifier
+ %type <bbidIdent> str_rec_identifier STRUCT UNION struct_or_union
+ %type <bbidIdent> user_defined_type TYPE_NAME
++%type <bbidIdent> designator designator_list
++%type <bbidlist> designation_opt initializer initializer_list initializer_list_opt eq_initializer_opt
+ %type <bbinteger> assignment_operator
+ %type <bbinteger> pointer CONSTANT _ncounter_ _nlabel_ _ngoto_ _nfork_
+ %type <bbunsign> storage_class_specifier type_specifier1
+@@ -500,17 +502,19 @@ unary_operator
+ 
+ cast_expr
+ 	: unary_expr						/* { $$.d = $1.d; } */
+-	| '(' type_name ')' cast_expr		{ 
+-		$$.d.t = $2.d; 
++	| '(' type_name ')' cast_expr		{
++		$$.d.t = $2.d;
+ 		$$.d.r = $4.d.r;
+ 	}
+-	| '(' type_name ')' '{' initializer_list '}'		{ /* GNU-extension*/
+-		$$.d.t = $2.d; 
++	| '(' type_name ')' '{' initializer_list_opt '}'		{ /* GNU-extension*/
++		$$.d.t = $2.d;
+ 		$$.d.r = NULL;
++		addInitializerRefs($2.d, $5.d);
+ 	}
+ 	| '(' type_name ')' '{' initializer_list ',' '}'	{ /* GNU-extension*/
+-		$$.d.t = $2.d; 
++		$$.d.t = $2.d;
+ 		$$.d.r = NULL;
++		addInitializerRefs($2.d, $5.d);
+ 	}
+ 	;
+ 
+@@ -703,15 +707,15 @@ declaration
+ 	;
+ 
+ init_declarations
+-	: declaration_specifiers init_declarator			{		
++	: declaration_specifiers init_declarator eq_initializer_opt	{
+ 		$$.d = $1.d;
+-		addNewDeclaration($1.d, $2.d, StorageAuto,s_symTab);
+-	} eq_initializer_opt
+-	| init_declarations ',' init_declarator 			{
++		addNewDeclaration($1.d, $2.d, $3.d, StorageAuto, s_symTab);
++	}
++	| init_declarations ',' init_declarator eq_initializer_opt	{
+ 		$$.d = $1.d;
+-		addNewDeclaration($1.d, $3.d, StorageAuto,s_symTab);
+-	} eq_initializer_opt
+-	| error												{
++		addNewDeclaration($1.d, $3.d, $4.d, StorageAuto, s_symTab);
++	}
++	| error								{
+ 		/* $$.d = &s_errorSymbol; */
+ 		$$.d = typeSpecifier2(&s_errorModifier);
+ 	}
+@@ -831,8 +835,12 @@ asm_opt:
+ 	|	ASM_KEYWORD '(' string_literales ')'
+ 	;
+ 
+-eq_initializer_opt:
+-	| '=' initializer
++eq_initializer_opt:		{
++		$$.d = NULL;
++	}
++	| '=' initializer	{
++		$$.d = $2.d;
++	}
+ 	;
+ 
+ init_declarator
+@@ -1346,22 +1354,75 @@ abstract_declarator2
+ 	;
+ 
+ initializer
+-	: assignment_expr
+-      /* it is enclosed because on linux kernel it overflows memory */
+-	| '{' initializer_list '}'
+-	| '{' initializer_list ',' '}'
+-	| error
++	: assignment_expr		{
++		$$.d = NULL;
++	}
++	  /* it is enclosed because on linux kernel it overflows memory */
++	| '{' initializer_list_opt '}'	{
++		$$.d = $2.d;
++	}
++	| '{' initializer_list ',' '}'	{
++		$$.d = $2.d;
++	}
++	| error				{
++		$$.d = NULL;
++	}
++	;
++
++initializer_list_opt:		{
++		$$.d = NULL;
++	}
++	| initializer_list		{
++		$$.d = $1.d;
++	}
+ 	;
+ 
+ initializer_list
+-	: Sv_tmp Start_block initializer Stop_block	{
++	: Sv_tmp designation_opt initializer	{
++		$$.d = $2.d;
++		if ($$.d!=NULL)	$$.d->down = $3.d;
+ 		tmpWorkMemoryi = $1.d;
+ 	}
+-	| initializer_list ',' Sv_tmp Start_block initializer Stop_block	{
++	| initializer_list ',' Sv_tmp designation_opt initializer	{
++		LIST_APPEND(S_idIdentList, $1.d, $4.d);
++		if ($4.d!=NULL) $4.d->down = $5.d;
+ 		tmpWorkMemoryi = $3.d;
+ 	}
+ 	;
+ 
++designation_opt:				{
++		$$.d = NULL;
++	}
++	| designator_list '='		{
++		$$.d = StackMemAlloc(S_idIdentList);
++		FILL_idIdentList($$.d, *$1.d, $1.d->name, TypeDefault, NULL,NULL);
++	}
++	;
++
++designator_list
++	: designator					{
++		$$.d = $1.d;
++	}
++	| designator_list designator	{
++		LIST_APPEND(S_idIdent, $1.d, $2.d);
++	}
++	;
++
++designator
++	: '[' constant_expr ']'							{
++		$$.d = StackMemAlloc(S_idIdent);
++		FILL_idIdent($$.d, "", NULL, s_noPos, NULL);
++	}
++	| '[' constant_expr ELIPSIS constant_expr ']'	{
++		$$.d = StackMemAlloc(S_idIdent);
++		FILL_idIdent($$.d, "", NULL, s_noPos, NULL);
++	}
++	| '.' str_rec_identifier						{
++		$$.d = StackMemAlloc(S_idIdent);
++		*($$.d) = *($2.d);
++	}
++	;
++
+ statement
+ 	: Sv_tmp labeled_statement		{
+ 		tmpWorkMemoryi = $1.d;
+@@ -1681,17 +1742,17 @@ external_definition
+ top_init_declarations
+ 	: declaration_specifiers init_declarator eq_initializer_opt			{		
+ 		$$.d = $1.d;
+-		addNewDeclaration($1.d, $2.d, StorageExtern,s_symTab);
++		addNewDeclaration($1.d, $2.d, $3.d, StorageExtern,s_symTab);
+ 	}
+-	| init_declarator eq_initializer_opt									{
++	| init_declarator eq_initializer_opt						{
+ 		$$.d = & s_defaultIntDefinition;
+-		addNewDeclaration($$.d, $1.d, StorageExtern,s_symTab);
++		addNewDeclaration($$.d, $1.d, $2.d, StorageExtern,s_symTab);
+ 	}
+ 	| top_init_declarations ',' init_declarator eq_initializer_opt			{
+ 		$$.d = $1.d;
+-		addNewDeclaration($1.d, $3.d, StorageExtern,s_symTab);
++		addNewDeclaration($1.d, $3.d, $4.d, StorageExtern,s_symTab);
+ 	}
+-	| error												{
++	| error										{
+ 		/* $$.d = &s_errorSymbol; */
+ 		$$.d = typeSpecifier2(&s_errorModifier);
+ 	}
+diff --git a/src/extract.c b/src/extract.c
+index 86bc8a9..8037f22 100644
+--- a/src/extract.c
++++ b/src/extract.c
+@@ -41,7 +41,7 @@ void genInternalLabelReference(int counter, int usage) {
+ 	char ttt[TMP_STRING_SIZE];
+ 	S_idIdent ll;
+ 	LOCAL_LABEL_NAME(ttt,counter);
+-	FILLF_idIdent(&ll, ttt, NULL, cFile.lb.cb.fileNumber, 0,0);
++	FILLF_idIdent(&ll, ttt, NULL, cFile.lb.cb.fileNumber, 0,0,NULL);
+ 	if (usage != UsageDefined) ll.p.line++; 
+ 	// line == 0 or 1 , (hack to get definition first)
+ 	labelReference(&ll, usage);
+diff --git a/src/globals.c b/src/globals.c
+index b87dac0..94b2c21 100644
+--- a/src/globals.c
++++ b/src/globals.c
+@@ -174,48 +174,48 @@ S_idIdent s_javaAnonymousClassName = {"{Anonymous}", NULL, -1,0,0};
+ S_idIdent s_javaConstructorName = {"<init>", NULL, -1,0,0};
+ 
+ static S_idIdentList s_javaDefaultPackageNameBody[] = {
+-	{"", NULL, -1,0,0, "", TypePackage, NULL},
++	{"", NULL, -1,0,0,NULL,	 "", TypePackage, NULL},
+ };
+ S_idIdentList *s_javaDefaultPackageName = s_javaDefaultPackageNameBody;
+ 
+ static S_idIdentList s_javaLangNameBody[] = {
+-	{"lang", NULL, -1,0,0, "lang", TypePackage, &s_javaLangNameBody[1]},
+-	{"java", NULL, -1,0,0, "java", TypePackage, NULL},
++	{"lang", NULL, -1,0,0,NULL, "lang", TypePackage, &s_javaLangNameBody[1]},
++	{"java", NULL, -1,0,0,NULL, "java", TypePackage, NULL},
+ };
+ S_idIdentList *s_javaLangName = s_javaLangNameBody;
+ 
+ static S_idIdentList s_javaLangStringNameBody[] = {
+-	{"String", NULL, -1,0,0, "String", TypeStruct, &s_javaLangStringNameBody[1]},
+-	{"lang",   NULL, -1,0,0, "lang", TypePackage, &s_javaLangStringNameBody[2]},
+-	{"java",   NULL, -1,0,0, "java", TypePackage, NULL},
++	{"String", NULL, -1,0,0,NULL, "String", TypeStruct, &s_javaLangStringNameBody[1]},
++	{"lang",   NULL, -1,0,0,NULL, "lang", TypePackage, &s_javaLangStringNameBody[2]},
++	{"java",   NULL, -1,0,0,NULL, "java", TypePackage, NULL},
+ };
+ S_idIdentList *s_javaLangStringName = s_javaLangStringNameBody;
+ 
+ static S_idIdentList s_javaLangCloneableNameBody[] = {
+-	{"Cloneable", NULL, -1,0,0, "Cloneable", TypeStruct, &s_javaLangCloneableNameBody[1]},
+-	{"lang",   NULL, -1,0,0, "lang", TypePackage, &s_javaLangCloneableNameBody[2]},
+-	{"java",   NULL, -1,0,0, "java", TypePackage, NULL},
++	{"Cloneable", NULL, -1,0,0,NULL, "Cloneable", TypeStruct, &s_javaLangCloneableNameBody[1]},
++	{"lang",   NULL, -1,0,0,NULL, "lang", TypePackage, &s_javaLangCloneableNameBody[2]},
++	{"java",   NULL, -1,0,0,NULL, "java", TypePackage, NULL},
+ };
+ S_idIdentList *s_javaLangCloneableName = s_javaLangCloneableNameBody;
+ 
+ static S_idIdentList s_javaIoSerializableNameBody[] = {
+-	{"Serializable", NULL, -1,0,0, "Serializable", TypeStruct, &s_javaIoSerializableNameBody[1]},
+-	{"io",   NULL, -1,0,0, "io", TypePackage, &s_javaIoSerializableNameBody[2]},
+-	{"java",   NULL, -1,0,0, "java", TypePackage, NULL},
++	{"Serializable", NULL, -1,0,0,NULL, "Serializable", TypeStruct, &s_javaIoSerializableNameBody[1]},
++	{"io",	 NULL, -1,0,0,NULL, "io", TypePackage, &s_javaIoSerializableNameBody[2]},
++	{"java",   NULL, -1,0,0,NULL, "java", TypePackage, NULL},
+ };
+ S_idIdentList *s_javaIoSerializableName = s_javaIoSerializableNameBody;
+ 
+ static S_idIdentList s_javaLangClassNameBody[] = {
+-	{"Class", NULL, -1,0,0, "Class", TypeStruct, &s_javaLangClassNameBody[1]},
+-	{"lang",   NULL, -1,0,0, "lang", TypePackage, &s_javaLangClassNameBody[2]},
+-	{"java",   NULL, -1,0,0, "java", TypePackage, NULL},
++	{"Class", NULL, -1,0,0,NULL, "Class", TypeStruct, &s_javaLangClassNameBody[1]},
++	{"lang",   NULL, -1,0,0,NULL, "lang", TypePackage, &s_javaLangClassNameBody[2]},
++	{"java",   NULL, -1,0,0,NULL, "java", TypePackage, NULL},
+ };
+ S_idIdentList *s_javaLangClassName = s_javaLangClassNameBody;
+ 
+ static S_idIdentList s_javaLangObjectNameBody[] = {
+-	{"Object", NULL, -1,0,0, "Object", TypeStruct, &s_javaLangObjectNameBody[1]},
+-	{"lang",   NULL, -1,0,0, "lang", TypePackage, &s_javaLangObjectNameBody[2]},
+-	{"java",   NULL, -1,0,0, "java", TypePackage, NULL},
++	{"Object", NULL, -1,0,0,NULL, "Object", TypeStruct, &s_javaLangObjectNameBody[1]},
++	{"lang",   NULL, -1,0,0,NULL, "lang", TypePackage, &s_javaLangObjectNameBody[2]},
++	{"java",   NULL, -1,0,0,NULL, "java", TypePackage, NULL},
+ };
+ S_idIdentList *s_javaLangObjectName = s_javaLangObjectNameBody;
+ char *s_javaLangObjectLinkName="java/lang/Object";
+diff --git a/src/head.h b/src/head.h
+index 4b6848c..62176a6 100644
+--- a/src/head.h
++++ b/src/head.h
+@@ -467,7 +467,7 @@
+ #define SET_IDENTIFIER_YYLVAL(name, symb, pos) {\
+ 	uniyylval->bbidIdent.d = &s_yyIdentBuf[s_yyIdentBufi];\
+ 	s_yyIdentBufi ++; s_yyIdentBufi %= (YYBUFFERED_ID_INDEX);\
+-	FILL_idIdent(uniyylval->bbidIdent.d, name, symb, pos);\
++	FILL_idIdent(uniyylval->bbidIdent.d, name, symb, pos, NULL);\
+ 	yytext = name;\
+ 	uniyylval->bbidIdent.b = pos;\
+ 	uniyylval->bbidIdent.e = pos;\
+diff --git a/src/javagram.y b/src/javagram.y
+index 60d79b6..6a15c75 100644
+--- a/src/javagram.y
++++ b/src/javagram.y
+@@ -762,7 +762,7 @@ Name:
+ SimpleName:
+ 		IDENTIFIER				{
+ 			$$.d = StackMemAlloc(S_idIdentList);
+-			FILL_idIdentList($$.d, *$1.d, $1.d->name, TypeDefault, NULL);
++			FILL_idIdentList($$.d, *$1.d, $1.d->name, TypeDefault, NULL,NULL);
+ 			PropagateBornsIfRegularSyntaxPass($$, $1, $1);
+ 		}
+ 	;
+@@ -770,7 +770,7 @@ SimpleName:
+ QualifiedName:
+ 		Name '.' IDENTIFIER		{
+ 			$$.d = StackMemAlloc(S_idIdentList);
+-			FILL_idIdentList($$.d, *$3.d, $3.d->name, TypeDefault, $1.d);
++			FILL_idIdentList($$.d, *$3.d, $3.d->name, TypeDefault, NULL,$1.d);
+ 			PropagateBornsIfRegularSyntaxPass($$, $1, $3);
+ 		}
+ 	;
+@@ -2336,7 +2336,7 @@ LocalVarDeclUntilInit:
+ 		Type VariableDeclaratorId							{
+ 			if (RegularPass()) {
+ 				if (! SyntaxPassOnly()) {
+-					addNewDeclaration($1.d,$2.d,StorageAuto,s_javaStat->locals);
++					addNewDeclaration($1.d,$2.d,NULL,StorageAuto,s_javaStat->locals);
+ 					$$.d = $1.d;
+ 				} else {
+ 					PropagateBorns($$, $1, $2);
+@@ -2346,7 +2346,7 @@ LocalVarDeclUntilInit:
+ 	|	FINAL Type VariableDeclaratorId						{
+ 			if (RegularPass()) {
+ 				if (! SyntaxPassOnly()) {
+-					addNewDeclaration($2.d,$3.d,StorageAuto,s_javaStat->locals);
++					addNewDeclaration($2.d,$3.d,NULL,StorageAuto,s_javaStat->locals);
+ 					$$.d = $2.d;
+ 				} else {
+ 					PropagateBorns($$, $1, $3);
+@@ -2357,7 +2357,7 @@ LocalVarDeclUntilInit:
+ 			if (RegularPass()) {
+ 				if (! SyntaxPassOnly()) {
+ 					if ($1.d->b.symType != TypeError) {
+-						addNewDeclaration($1.d,$3.d,StorageAuto,s_javaStat->locals);
++						addNewDeclaration($1.d,$3.d,NULL,StorageAuto,s_javaStat->locals);
+ 					}
+ 					$$.d = $1.d;
+ 				} else {
+diff --git a/src/jsemact.c b/src/jsemact.c
+index f488e56..43e4ff9 100644
+--- a/src/jsemact.c
++++ b/src/jsemact.c
+@@ -164,8 +164,8 @@ void javaAddNestedClassesAsTypeDefs(S_symbol *cc, S_idIdentList *oclassname,
+ 			nn = ss->nest[i].cl;
+ 			assert(nn);
+ //& XX_ALLOC(ll, S_idIdentList);
+-			FILL_idIdent(&ll.idi, nn->name, cc, s_noPos);
+-			FILL_idIdentList(&ll, ll.idi, nn->name,TypeStruct,oclassname);
++			FILL_idIdent(&ll.idi, nn->name, cc, s_noPos, NULL);
++			FILL_idIdentList(&ll, ll.idi, nn->name,TypeStruct,NULL,oclassname);
+ 			javaTypeSymbolDefinition(&ll, accessFlags, TYPE_ADD_YES);
+ 		}
+ 	}
+@@ -1240,8 +1240,8 @@ static int javaNotFqtUsageCorrection(S_symbol *sym, int usage) {
+ 	packname[pplen] = 0;
+ 
+ 	FILLF_idIdentList(&sname, packname, NULL, 
+-					  s_noPos.file, s_noPos.line, s_noPos.coll,
+-					  packname, TypeExpression, NULL)
++					  s_noPos.file, s_noPos.line, s_noPos.coll, NULL,
++					  packname, TypeExpression, NULL, NULL)
+ 	rr = javaClassifySingleAmbigName(&sname,&localRfs,&str,&expr,&loref,
+ 									  CLASS_TO_EXPR, UsageNone, NO_CX_REFS);
+ 	if (rr!=TypePackage) {
+@@ -1936,7 +1936,7 @@ void javaAddMapedTypeName(
+ 	strncpy(ttt2, file, len2);
+ 	InternalCheck(len2+1 < MAX_FILE_NAME_SIZE);
+ 	ttt2[len2] = 0;
+-	FILLF_idIdentList(&dd2, ttt2,NULL,-1,0,0, ttt2,TypeStruct,packid);
++	FILLF_idIdentList(&dd2, ttt2,NULL,-1,0,0,NULL, ttt2,TypeStruct,NULL,packid);
+ 	memb = javaTypeSymbolDefinition(&dd2,ACC_DEFAULT, TYPE_ADD_YES);
+ 	DPRINTF3(":import type %s == %s\n", memb->name, memb->linkName);
+ }
+@@ -1964,8 +1964,8 @@ S_typeModifiers *javaNestedNewType(S_symbol *sym, S_idIdent *thenew,
+ 		id = &idl->idi;
+ 		assert(sym && sym->linkName);
+ 		id2 = sym->linkName;
+-		FILLF_idIdentList(&d2, id2, sym, -1,0,0, id2, TypeStruct, NULL);
+-		FILL_idIdentList(&d1, *id, id->name, TypeStruct, &d2);
++		FILLF_idIdentList(&d2, id2, sym, -1,0,0,NULL, id2, TypeStruct, NULL, NULL);
++		FILL_idIdentList(&d1, *id, id->name, TypeStruct, NULL, &d2);
+ 		javaClassifyNameToNestedType(&d1, sym, UsageUsed, &str, &rr);
+ 		res = javaClassNameType(&d1);
+ 	} else {
+@@ -2415,7 +2415,7 @@ S_typeModifiers *javaConstructorInvocation(S_symbol *clas,
+ 	erfs = javaCrErfsForConstructorInvocation(clas, pos);
+ 	if (erfs == NULL) return(&s_errorModifier);
+ 	if (erfs->s.baseClass != erfs->s.currClass) return(&s_errorModifier);
+-	FILL_idIdent(&name, clas->name, NULL, *pos);
++	FILL_idIdent(&name, clas->name, NULL, *pos, NULL);
+ 	res = javaMethodInvocation(&erfs->s, erfs->memb, &name, args,CONSTRUCTOR_INVOCATION,&s_noPos);
+ 	return(res);
+ }
+@@ -2652,9 +2652,9 @@ struct freeTrail * newClassDefinitionBegin(	S_idIdent *name,
+ //&		innerNamesCorrect = (strcmp(nn->cl->name, name->name)==0);
+ //&		assert(innerNamesCorrect);
+ 		dd = nn->cl;
+-		FILL_idIdent(&idi,dd->linkName, NULL, name->p);
++		FILL_idIdent(&idi,dd->linkName, NULL, name->p, NULL);
+ 		XX_ALLOC(p, S_idIdentList);
+-		FILL_idIdentList(p, idi, dd->linkName, TypeStruct, NULL);
++		FILL_idIdentList(p, idi, dd->linkName, TypeStruct, NULL,NULL);
+ 		ddd = javaAddType(p, accessFlags, & name->p);
+ 		assert(dd==ddd);
+ 		res = s_topBlock->trail;
+@@ -2662,7 +2662,7 @@ struct freeTrail * newClassDefinitionBegin(	S_idIdent *name,
+ 	} else {
+ 		/* probably base class */
+ 		XX_ALLOC(p,S_idIdentList);
+-		FILL_idIdentList(p,*name,name->name,TypeStruct,s_javaStat->className);
++		FILL_idIdentList(p,*name,name->name,TypeStruct,NULL,s_javaStat->className);
+ 		dd = javaAddType(p, accessFlags, & name->p);
+ 		res = s_topBlock->trail;
+ 		assert(dd->b.symType == TypeStruct);
+@@ -2684,7 +2684,7 @@ struct freeTrail * newAnonClassDefinitionBegin(S_idIdent *interfName) {
+ 	S_idIdentList	*ll;
+ 	S_symbol		*interf, *str;
+ 	XX_ALLOC(ll, S_idIdentList);
+-	FILL_idIdentList(ll, *interfName, interfName->name, TypeDefault, NULL);
++	FILL_idIdentList(ll, *interfName, interfName->name, TypeDefault, NULL,NULL);
+ 	javaClassifyToTypeName(ll,UsageUsed,&str, USELESS_FQT_REFS_ALLOWED);
+ 	interf = javaTypeNameDefinition(ll);
+ 	res = newClassDefinitionBegin(&s_javaAnonymousClassName, ACC_DEFAULT, 
+diff --git a/src/jslsemact.c b/src/jslsemact.c
+index df1d0e1..6434f47 100644
+--- a/src/jslsemact.c
++++ b/src/jslsemact.c
+@@ -91,7 +91,7 @@ S_symbol *jslTypeSymbolDefinition(char *ttt2, S_idIdentList *packid,
+ 	S_position			*importPos;
+ 
+ 	jslFillTypeSymbolItem( &sd, &ss, ttt2);
+-	FILLF_idIdentList(&dd2, ttt2,NULL,-1,0,0, ttt2,TypeStruct,packid);
++	FILLF_idIdentList(&dd2, ttt2,NULL,-1,0,0,NULL, ttt2,TypeStruct,NULL,packid);
+ 	javaCreateComposedName(NULL,&dd2,'/',NULL,fqtName,MAX_FILE_NAME_SIZE);
+ 	smemb = javaFQTypeSymbolDefinition(ttt2, fqtName);
+ //&fprintf(ccOut, "[jsl] jslTypeSymbolDefinition %s, %s, %s, %s\n", ttt2, fqtName, smemb->name, smemb->linkName);
+@@ -130,7 +130,7 @@ S_symbol *jslTypeSymbolUsage(char *ttt2, S_idIdentList *packid) {
+ 		smemb = memb->d;
+ 		return(smemb);
+ 	}
+-	FILLF_idIdentList(&dd2, ttt2,NULL,-1,0,0, ttt2,TypeStruct,packid);
++	FILLF_idIdentList(&dd2, ttt2,NULL,-1,0,0,NULL, ttt2,TypeStruct,NULL,packid);
+ 	javaCreateComposedName(NULL,&dd2,'/',NULL,fqtName,MAX_FILE_NAME_SIZE);
+ 	smemb = javaFQTypeSymbolDefinition(ttt2, fqtName);
+ 	return(smemb);
+@@ -440,9 +440,9 @@ void jslAddNestedClassesToJslTypeTab( S_symbol *str, int order) {
+ 	for(i=0; i<ss->nnested; i++) {
+ //&fprintf(dumpOut,"checking %s %s %d %d\n", ss->nest[i].cl->name, ss->nest[i].cl->linkName,ss->nest[i].membFlag, jslRecordAccessible(str, ss->nest[i].cl, ss->nest[i].accFlags));
+ 		if (ss->nest[i].membFlag && jslRecordAccessible(str, ss->nest[i].cl, ss->nest[i].accFlags)) {
+-			FILL_idIdent(&ocid, str->linkName, NULL, s_noPos);
++			FILL_idIdent(&ocid, str->linkName, NULL, s_noPos, NULL);
+ 			FILL_idIdentList(&oclassid, ocid, str->linkName, 
+-								 TypeStruct, NULL);
++								 TypeStruct, NULL,NULL);
+ //&fprintf(dumpOut,"adding %s %s\n", ss->nest[i].cl->name, ss->nest[i].cl->linkName);
+ 			jslTypeSymbolDefinition(ss->nest[i].cl->name, &oclassid,
+ 									TYPE_ADD_YES, order, 0);
+@@ -488,9 +488,9 @@ void jslNewClassDefinitionBegin(S_idIdent *name,
+ 			sprintf(tttn, "%d", s_jsl->classStat->functionInnerCounter);
+ 			sprintf(ttt, "%s", inname->name);
+ 			FILLF_idIdentList(&mntmp, tttn, NULL, 
+-							  s_noPos.file, s_noPos.line, s_noPos.coll, 
++							  s_noPos.file, s_noPos.line, s_noPos.coll, NULL,
+ 							  tttn, 
+-							  TypeStruct, s_jsl->classStat->className);
++							  TypeStruct, NULL, s_jsl->classStat->className);
+ 			// this is a very special reason why to do TYPE_ADD_YES here,
+ 			// because method nested class will not be added as class nested
+ 			// at the end of this function
+@@ -569,9 +569,9 @@ void jslNewClassDefinitionBegin(S_idIdent *name,
+ 	stackMemoryBlockStart();
+ 	XX_ALLOC(ill, S_idIdentList);
+ 	FILLF_idIdentList(ill, cc->name, inname->sd,
+-					  inname->p.file, inname->p.line, inname->p.coll,
+-					  cc->name,TypeStruct,
+-					  s_jsl->classStat->className);
++					  inname->p.file, inname->p.line, inname->p.coll, NULL,
++					  cc->name, TypeStruct,
++					  NULL, s_jsl->classStat->className);
+ 	XX_ALLOC(nss, S_jslClassStat);
+ 	FILL_jslClassStat(nss, ill, cc, s_jsl->classStat->thisPackage, 
+ 					  0, 0, s_jsl->classStat);
+@@ -620,7 +620,7 @@ void jslNewAnonClassDefinitionBegin(S_idIdent *interfName) {
+ 	S_idIdentList	ll;
+ 	S_symbol		*interf,*str;
+ 	//& XX_ALLOC(ll, S_idIdentList);
+-	FILL_idIdentList(&ll, *interfName, interfName->name, TypeDefault, NULL);
++	FILL_idIdentList(&ll, *interfName, interfName->name, TypeDefault, NULL,NULL);
+ 	jslClassifyAmbiguousTypeName(&ll, &str);
+ 	interf = jslTypeNameDefinition(&ll);
+ 	jslNewClassDefinitionBegin(&s_javaAnonymousClassName, ACC_DEFAULT, 
+diff --git a/src/proto.h b/src/proto.h
+index 94488b1..0d52b1c 100644
+--- a/src/proto.h
++++ b/src/proto.h
+@@ -698,6 +698,7 @@ struct idIdent {
+ 	char 		*name;
+ 	S_symbol	*sd;		/* if yet in symbol table */
+ 	S_position	p;			/* position */
++	S_idIdent   *next;
+ };
+ 
+ struct freeTrail {
+@@ -1134,9 +1135,10 @@ struct javaStat {
+ /* java composed names */
+ 
+ struct idIdentList {
+-	S_idIdent 		idi;
++	S_idIdent		idi;
+ 	char			*fname;			/* fqt name for java */
+ 	uchar			nameType;		/* type of name segment for java */
++	S_idIdentList	*down;
+ 	S_idIdentList	*next;
+ };
+ 
+@@ -2272,8 +2274,9 @@ int findStrRecordSym C_ARG((	S_recFindStr *ss,
+ 					));
+ S_symbol *addNewSymbolDef C_ARG((S_symbol *p, unsigned storage, S_symTab *tab, int usage));
+ S_symbol *addNewCopyOfSymbolDef C_ARG((S_symbol *def, unsigned defaultStorage));
+-S_symbol *addNewDeclaration C_ARG((S_symbol *btype, S_symbol *decl, 
++S_symbol *addNewDeclaration C_ARG((S_symbol *btype, S_symbol *decl, S_idIdentList *idl,
+ 							unsigned storage, S_symTab *tab));
++void addInitializerRefs(S_typeModifiers *t,	S_idIdentList *idl);
+ int styyerror C_ARG((char *s));
+ int styyErrorRecovery C_ARG(());
+ void setToNull C_ARG((void *p));
+diff --git a/src/semact.c b/src/semact.c
+index b406879..cb3f623 100644
+--- a/src/semact.c
++++ b/src/semact.c
+@@ -588,9 +588,39 @@ S_symbol *addNewCopyOfSymbolDef(S_symbol *def, unsigned storage) {
+ 	return(p);
+ }
+ 
++void addInitializerRefs(
++						S_typeModifiers *t,
++						S_idIdentList *idl
++						) {
++	S_idIdentList *ll;
++	S_idIdent* id;
++	S_typeModifiers *tt;
++	S_reference *ref;
++	S_symbol *rec;
++	for(ll=idl; ll!=NULL; ll=ll->next) {
++		tt = t;
++		rec = NULL;
++		for (id = &ll->idi; id!=NULL; id=id->next) {
++			if (tt->m == TypeArray) {
++				tt = tt->next;
++				continue;
++			}
++			if (tt->m != TypeStruct && tt->m != TypeUnion) return;
++			ref = findStrRecordFromType(tt, id, &rec, CLASS_TO_ANY);
++			if (NULL == ref) return;
++			assert(rec);
++			tt = rec->u.type;
++		}
++		if (ll->down!=NULL && rec!=NULL) {
++			addInitializerRefs(rec->u.type, ll->down);
++		}
++	}
++}
++
+ S_symbol *addNewDeclaration(
+ 							S_symbol *btype,
+-							S_symbol *decl, 
++							S_symbol *decl,
++							S_idIdentList *idl,
+ 							unsigned storage,
+ 							S_symTab *tab
+ 							) {
+@@ -605,6 +635,7 @@ S_symbol *addNewDeclaration(
+ 	if (decl->u.type->m == TypeFunction) usage = UsageDeclared;
+ 	else if (decl->b.storage == StorageExtern) usage = UsageDeclared;
+ 	addNewSymbolDef(decl, storage, tab, usage);
++	addInitializerRefs(decl->u.type, idl);
+ 	return(decl);
+ }
+ 
+diff --git a/src/yaccgram.y b/src/yaccgram.y
+index 7e73ef2..87b406c 100644
+--- a/src/yaccgram.y
++++ b/src/yaccgram.y
+@@ -267,6 +267,8 @@ static void addYaccSymbolReference C_ARG((S_idIdent *name, int usage));
+ %type <bbidIdent> str_rec_identifier STRUCT UNION struct_or_union
+ %type <bbidIdent> user_defined_type TYPE_NAME lexem
+ %type <bbinteger> pointer CONSTANT rule_body
++%type <bbidIdent> designator designator_list
++%type <bbidlist> designation_opt initializer initializer_list initializer_list_opt eq_initializer_opt
+ %type <bbunsign> storage_class_specifier type_specifier1
+ %type <bbunsign> type_modality_specifier Sv_tmp
+ %type <bbsymbol> init_declarator declarator declarator2 struct_declarator
+@@ -364,7 +366,7 @@ symbol_to_type_seq:
+ 			ss->u.type = NULL;
+ 			addYaccSymbolReference($2.d,UsageDeclared);
+ 			if (l_currentType!=NULL) {
+-				addNewDeclaration(l_currentType, ss, StorageAuto,s_symTab);
++				addNewDeclaration(l_currentType, ss, NULL, StorageAuto, s_symTab);
+ 			}
+ 		}
+ 	;
+@@ -658,17 +660,19 @@ unary_operator
+ 
+ cast_expr
+ 	: unary_expr						/* { $$.d = $1.d; } */
+-	| '(' type_name ')' cast_expr		{ 
+-		$$.d.t = $2.d; 
++	| '(' type_name ')' cast_expr		{
++		$$.d.t = $2.d;
+ 		$$.d.r = $4.d.r;
+ 	}
+-	| '(' type_name ')' '{' initializer_list '}'		{ /* GNU-extension*/
+-		$$.d.t = $2.d; 
++	| '(' type_name ')' '{' initializer_list_opt '}'		{ /* GNU-extension*/
++		$$.d.t = $2.d;
+ 		$$.d.r = NULL;
++		addInitializerRefs($2.d, $5.d);
+ 	}
+ 	| '(' type_name ')' '{' initializer_list ',' '}'	{ /* GNU-extension*/
+-		$$.d.t = $2.d; 
++		$$.d.t = $2.d;
+ 		$$.d.r = NULL;
++		addInitializerRefs($2.d, $5.d);
+ 	}
+ 	;
+ 
+@@ -844,11 +848,11 @@ declaration
+ init_declarations
+ 	: declaration_specifiers init_declarator			{		
+ 		$$.d = $1.d;
+-		addNewDeclaration($1.d, $2.d, StorageAuto,s_symTab);
++		addNewDeclaration($1.d, $2.d, NULL, StorageAuto,s_symTab);
+ 	}
+ 	| init_declarations ',' init_declarator				{
+ 		$$.d = $1.d;
+-		addNewDeclaration($1.d, $3.d, StorageAuto,s_symTab);
++		addNewDeclaration($1.d, $3.d, NULL, StorageAuto,s_symTab);
+ 	}
+ 	| error												{
+ 		/*$$.d = &s_errorSymbol;*/
+@@ -1435,19 +1439,73 @@ abstract_declarator2
+ 	;
+ 
+ initializer
+-	: assignment_expr
+-	| '{' Start_block initializer_list Stop_block '}'
+-	| '{' Start_block initializer_list ',' Stop_block '}'
++	: assignment_expr		{
++		$$.d = NULL;
++	}
++	  /* it is enclosed because on linux kernel it overflows memory */
++	| '{' initializer_list_opt '}'	{
++		$$.d = $2.d;
++	}
++	| '{' initializer_list ',' '}'	{
++		$$.d = $2.d;
++	}
++	| error				{
++		$$.d = NULL;
++	}
++	;
++
++initializer_list_opt:		{
++		$$.d = NULL;
++	}
++	| initializer_list		{
++		$$.d = $1.d;
++	}
+ 	;
+ 
+ initializer_list
+-	: Sv_tmp initializer	{
++	: Sv_tmp designation_opt initializer	{
++		$$.d = $2.d;
++		if ($$.d!=NULL)	$$.d->down = $3.d;
+ 		tmpWorkMemoryi = $1.d;
+ 	}
+-	| initializer_list ',' Sv_tmp initializer	{
++	| initializer_list ',' Sv_tmp designation_opt initializer	{
++		LIST_APPEND(S_idIdentList, $1.d, $4.d);
++		if ($4.d!=NULL) $4.d->down = $5.d;
+ 		tmpWorkMemoryi = $3.d;
+ 	}
+-	| error
++	;
++
++designation_opt:				{
++		$$.d = NULL;
++	}
++	| designator_list '='		{
++		$$.d = StackMemAlloc(S_idIdentList);
++		FILL_idIdentList($$.d, *$1.d, $1.d->name, TypeDefault, NULL,NULL);
++	}
++	;
++
++designator_list
++	: designator					{
++		$$.d = $1.d;
++	}
++	| designator_list designator	{
++		LIST_APPEND(S_idIdent, $1.d, $2.d);
++	}
++	;
++
++designator
++	: '[' constant_expr ']'							{
++		$$.d = StackMemAlloc(S_idIdent);
++		FILL_idIdent($$.d, "", NULL, s_noPos, NULL);
++	}
++	| '[' constant_expr ELIPSIS constant_expr ']'	{
++		$$.d = StackMemAlloc(S_idIdent);
++		FILL_idIdent($$.d, "", NULL, s_noPos, NULL);
++	}
++	| '.' str_rec_identifier						{
++		$$.d = StackMemAlloc(S_idIdent);
++		*($$.d) = *($2.d);
++	}
+ 	;
+ 
+ statement
+@@ -1609,15 +1667,15 @@ external_definition
+ top_init_declarations
+ 	: declaration_specifiers init_declarator			{		
+ 		$$.d = $1.d;
+-		addNewDeclaration($1.d, $2.d, StorageExtern,s_symTab);
++		addNewDeclaration($1.d, $2.d, NULL, StorageExtern,s_symTab);
+ 	}
+ 	| init_declarator									{
+ 		$$.d = & s_defaultIntDefinition;
+-		addNewDeclaration($$.d, $1.d, StorageExtern,s_symTab);
++		addNewDeclaration($$.d, $1.d, NULL, StorageExtern,s_symTab);
+ 	}
+ 	| top_init_declarations ',' init_declarator			{
+ 		$$.d = $1.d;
+-		addNewDeclaration($1.d, $3.d, StorageExtern,s_symTab);
++		addNewDeclaration($1.d, $3.d, NULL, StorageExtern,s_symTab);
+ 	}
+ 	| error												{
+ 		/*$$.d = &s_errorSymbol;*/
+@@ -1730,7 +1788,7 @@ static void addRuleLocalVariable(S_idIdent *name, int order) {
+ 			FILL_symbolBits(&ss->b,0,0,0,0,0,TypeDefault,StorageAuto,0);
+ 			FILL_symbol(ss,nn,nn,name->p,ss->b,type,NULL,NULL);
+ 			ss->pos.coll ++ ; // to avoid ambiguity of NonTerminal <-> $$.d
+-			addNewDeclaration(p, ss, StorageAuto, s_symTab);
++			addNewDeclaration(p, ss, NULL, StorageAuto, s_symTab);
+ 		}
+ 	}
+ }
+-- 
+2.18.0
+

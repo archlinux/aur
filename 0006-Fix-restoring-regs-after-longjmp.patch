@@ -1,0 +1,29 @@
+From 9b7ee75fa095fa0bc9408a9929a1a980fb878cae Mon Sep 17 00:00:00 2001
+From: litvin <litvindev@gmail.com>
+Date: Fri, 23 Dec 2016 05:21:37 +0300
+Subject: [PATCH 06/33] Fix restoring regs after longjmp (causes infinite loop)
+
+---
+ src/main.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/main.c b/src/main.c
+index 3c53e6c..2c4b27b 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -3189,9 +3189,9 @@ void mainCallXref(int argc, char **argv) {
+ 	static int 		fc,pfc;
+ 	static int 		inputIn;
+ 	static int 		firstPassing,mess,atLeastOneProcessed;
+-	S_fileItem		*ffc, *pffc;
+-	int				messagePrinted = 0;
+-	int				numberOfInputs, inputCounter, pinputCounter;
++	static S_fileItem	*ffc, *pffc;
++	static int		messagePrinted = 0;
++	static int		numberOfInputs, inputCounter, pinputCounter;
+ 
+ 	/* some compilers have problems with restoring regs after longjmp */
+ 	dummy(&cxFreeBase0, &cxFreeBase, &ffc, &pffc, &inputIn, &firstPassing);
+-- 
+2.18.0
+

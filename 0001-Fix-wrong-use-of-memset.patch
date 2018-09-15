@@ -1,0 +1,25 @@
+From 3018e408a0255633997c800e111e70e65b11e1ee Mon Sep 17 00:00:00 2001
+From: Thomas Nilefalk <thomas@junovagen.se>
+Date: Fri, 23 Dec 2016 08:04:55 +0100
+Subject: [PATCH 01/33] Fix wrong use of memset (#5)
+
+---
+ src/main.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/main.c b/src/main.c
+index 0c32b8b..3c53e6c 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -2489,7 +2489,7 @@ void mainTaskEntryInitialisations(int argc, char **argv) {
+ 	javaFqtTabInit( &s_javaFqtTab, FQT_CLASS_TAB_SIZE);
+ 	// initialize recursive java parsing
+ 	XX_ALLOC(s_yygstate, struct yyGlobalState);
+-	memset(s_yygstate, sizeof(struct yyGlobalState), 0);
++	memset(s_yygstate, 0, sizeof(struct yyGlobalState));
+ 	s_initYygstate = s_yygstate;
+ 
+ 	initAllInputs();
+-- 
+2.18.0
+

@@ -1,0 +1,45 @@
+From 66f90bf0038486121a3f96c56dfa27bb6247afdc Mon Sep 17 00:00:00 2001
+From: litvin <litvindev@gmail.com>
+Date: Sun, 8 Jan 2017 03:03:18 +0300
+Subject: [PATCH 08/33] The variable xref-set-this-frame-dispatch-data stores
+ data to is not frame-local.
+
+---
+ env/emacs/xref.el | 11 +++--------
+ 1 file changed, 3 insertions(+), 8 deletions(-)
+
+diff --git a/env/emacs/xref.el b/env/emacs/xref.el
+index 83bc4e7..1215007 100644
+--- a/env/emacs/xref.el
++++ b/env/emacs/xref.el
+@@ -258,16 +258,10 @@
+ ;; frame locals
+ ;;
+ 
+-(if (eq xref-running-under 'emacs)
+-	(progn
+-	  (defvar xref-this-frame-dispatch-data nil)
+-	  (make-variable-frame-local 'xref-this-frame-dispatch-data)
+-	  ))
+-
+ (defun xref-get-this-frame-dispatch-data ()
+   (let ((res))
+ 	(if (eq xref-running-under 'emacs)
+-		(setq res xref-this-frame-dispatch-data)
++		(setq res (cdr (assoc 'xref-this-frame-dispatch-data (frame-parameters (selected-frame)))))
+ 	  (setq res (frame-property (selected-frame) 'xref-this-frame-dispatch-data nil))
+ 	  )
+ 	res
+@@ -275,7 +269,8 @@
+ 
+ (defun xref-set-this-frame-dispatch-data (dispatch-data)
+   (if (eq xref-running-under 'emacs)
+-	  (setq xref-this-frame-dispatch-data dispatch-data)
++	  (modify-frame-parameters (selected-frame) 
++						(list (cons 'xref-this-frame-dispatch-data dispatch-data)))
+ 	(set-frame-property (selected-frame) 
+ 						'xref-this-frame-dispatch-data 
+ 						dispatch-data)
+-- 
+2.18.0
+

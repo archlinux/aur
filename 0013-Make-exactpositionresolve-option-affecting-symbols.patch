@@ -1,0 +1,140 @@
+From 176accf46ad27a7f51c9f2f4a072f33d3f632d16 Mon Sep 17 00:00:00 2001
+From: litvin <litvindev@gmail.com>
+Date: Wed, 15 Mar 2017 11:51:48 +0300
+Subject: [PATCH 13/33] Make -exactpositionresolve option affecting symbols of
+ TypeDefault and TypeEnum symbol type
+
+---
+ src/head.h   |  2 ++
+ src/semact.c | 52 +++++++++++++++++++++++++++++++++++++++-------------
+ 2 files changed, 41 insertions(+), 13 deletions(-)
+
+diff --git a/src/head.h b/src/head.h
+index 1e4ab77..4b6848c 100644
+--- a/src/head.h
++++ b/src/head.h
+@@ -137,6 +137,8 @@
+ #define ABS(xxx) ((xxx>0)?(xxx):(-(xxx)))
+ #define CX_REGIME() (s_opt.taskRegime!=RegimeGenerate)
+ #define WORK_NEST_LEVEL0() 	(s_topBlock->previousTopBlock == NULL)
++#define WORK_NEST_LEVEL1()	(s_topBlock->previousTopBlock != NULL && \
++							 s_topBlock->previousTopBlock->previousTopBlock == NULL)
+ #define CLASS_NAME_FROM_NUM(cnum) (s_fileTab.tab[cnum]->name+1)
+ 
+ /* *************************************************************** */
+diff --git a/src/semact.c b/src/semact.c
+index 6f1f1fe..b406879 100644
+--- a/src/semact.c
++++ b/src/semact.c
+@@ -475,9 +475,7 @@ void setLocalVariableLinkName(struct symbol *p) {
+ 		sprintf(ttt+tti+len,"%c%x-%x-%x-%x", LINK_NAME_CUT_SYMBOL,
+ 			p->pos.file,p->pos.line,p->pos.coll, s_count.localVar++);
+ 	} else {
+-		if (		p->b.storage==StorageExtern 
+-				|| 	p->b.storage==StorageTypedef
+-				||	p->b.storage==StorageConstant ) {
++		if (p->b.storage==StorageExtern && ! s_opt.exactPositionResolve) {
+ 			sprintf(ttt,"%s", p->name);
+ 		} else {
+ 			// it is now better to have name allways accessible
+@@ -525,9 +523,17 @@ static void setStaticFunctionLinkName( S_symbol *p, int usage ) {
+ //&	}
+ }
+ 
++#define MEM_FROM_PREVIOUS_BLOCK(ppp) (											\
++									  s_topBlock->previousTopBlock != NULL &&	\
++									  ((char*)ppp) > memory &&					\
++									  ((char*)ppp) < memory+s_topBlock->previousTopBlock->firstFreeIndex \
++									  )
++
+ S_symbol *addNewSymbolDef(S_symbol *p, unsigned theDefaultStorage, S_symTab *tab,
+ 						  int usage) {
+ 	S_typeModifiers *tt;
++	S_symbol *pp;
++	int ii;
+ 	if (p == &s_errorSymbol || p->b.symType==TypeError) return(p);
+ 	if (p->b.symType == TypeError) return(p);
+ 	assert(p && p->b.symType == TypeDefault && p->u.type);
+@@ -545,16 +551,32 @@ S_symbol *addNewSymbolDef(S_symbol *p, unsigned theDefaultStorage, S_symTab *tab
+ 		tt->typedefin = p;
+ 	}
+ 	// special care is given to linkNames for local variable 
+-	if (! WORK_NEST_LEVEL0()) {
++	if (! WORK_NEST_LEVEL0() && LANGUAGE(LAN_C)
++		|| ! WORK_NEST_LEVEL1() && LANGUAGE(LAN_YACC)) {
+ 		// local scope symbol
+-		setLocalVariableLinkName(p);
++		if (! symTabIsMember(s_symTab,p,&ii,&pp)
++			|| MEM_FROM_PREVIOUS_BLOCK(pp) && IS_DEFINITION_OR_DECL_USAGE(usage)) {
++			pp = p;
++			setLocalVariableLinkName(pp);
++			addSymbol(pp, tab);
++		}
+ 	} else if (p->b.symType==TypeDefault && p->b.storage==StorageStatic) {
+-		setStaticFunctionLinkName(p, usage);
++		if (! symTabIsMember(s_symTab,p,&ii,&pp)) {
++			pp = p;
++			setStaticFunctionLinkName(pp, usage);
++			addSymbol(pp, tab);
++		}
++	} else {
++		if (! symTabIsMember(s_symTab,p,&ii,&pp)) {
++			pp = p;
++			if (s_opt.exactPositionResolve) {
++				setGlobalFileDepNames(pp->name, pp, MEM_XX);
++			}
++			addSymbol(pp, tab);
++		}
+ 	}
+-	//& if (IS_DEFINITION_OR_DECL_USAGE(usage)) addSymbol(p, tab); // maybe this is better
+-	addSymbol(p, tab);
+-	addCxReference(p, &p->pos, usage,s_noneFileIndex, s_noneFileIndex);
+-	return(p);
++	addCxReference(pp, &p->pos, usage,s_noneFileIndex, s_noneFileIndex);
++	return(pp);
+ }
+ 
+ /* this function is dead man, nowhere used */
+@@ -857,7 +879,8 @@ S_typeModifiers *simpleStrUnionSpecifier(	S_idIdent *typeName,
+ 	FILL_symbolBits(&p.b,0,0, 0,0,0, type, StorageNone,0);
+ 	FILL_symbol(&p, id->name, id->name, id->p,p.b,s,NULL, NULL);
+ 	p.u.s = NULL;
+-	if (! symTabIsMember(s_symTab,&p,&ii,&pp)){
++	if (! symTabIsMember(s_symTab,&p,&ii,&pp)
++		|| MEM_FROM_PREVIOUS_BLOCK(pp) && IS_DEFINITION_OR_DECL_USAGE(usage)) {
+ //{static int c=0;fprintf(dumpOut,"str#%d\n",c++);}
+ 		XX_ALLOC(pp, S_symbol);
+ 		*pp = p;
+@@ -894,7 +917,7 @@ void setGlobalFileDepNames(char *iname, S_symbol *pp, int memory) {
+ 				fname, pp->pos.line, pp->pos.coll, 
+ 				LINK_NAME_CUT_SYMBOL);
+ 	} else if (iname[0]==0) {
+-		// anonymous structure/union ...
++		// anonymous enum/structure/union ...
+ 		filen = pp->pos.file;
+ 		pp->name=iname; pp->linkName=iname;
+ 		order = 0;
+@@ -1018,9 +1041,11 @@ S_typeModifiers *simpleEnumSpecifier(S_idIdent *id, int usage) {
+ 	FILL_symbolBits(&p.b,0,0, 0,0,0, TypeEnum, StorageNone,0);
+ 	FILL_symbol(&p, id->name, id->name, id->p,p.b,enums,NULL, NULL);
+ 	p.u.enums = NULL;
+-	if (! symTabIsMember(s_symTab,&p,&ii,&pp)) {
++	if (! symTabIsMember(s_symTab,&p,&ii,&pp)
++		|| MEM_FROM_PREVIOUS_BLOCK(pp) && IS_DEFINITION_OR_DECL_USAGE(usage)) {
+ 		pp = StackMemAlloc(S_symbol);
+ 		*pp = p;
++		setGlobalFileDepNames(id->name, pp, MEM_XX);
+ 		addSymbol(pp, s_symTab);
+ 	}
+ 	addCxReference(pp, &id->p, usage,s_noneFileIndex, s_noneFileIndex);
+@@ -1032,6 +1057,7 @@ S_typeModifiers *crNewAnnonymeEnum(S_symbolList *enums) {
+ 	pp = StackMemAlloc(S_symbol);
+ 	FILL_symbolBits(&pp->b,0,0, 0,0,0, TypeEnum, StorageNone,0);
+ 	FILL_symbol(pp, "", "", s_noPos,pp->b,enums,enums, NULL);
++	setGlobalFileDepNames("", pp, MEM_XX);
+ 	pp->u.enums = enums;
+ 	return(crSimpleEnumType(pp,TypeEnum));
+ }
+-- 
+2.18.0
+
