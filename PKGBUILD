@@ -2,8 +2,8 @@
 
 pkgbase='hunspell-fr'
 pkgname=($pkgbase-{'classical','comprehensive','modern','revised'})
-pkgver=6.2
-pkgrel=2
+pkgver=6.3
+pkgrel=1
 pkgdesc="French Hunspell dictionary"
 arch=(any)
 _base_url="https://dicollecte.org/"
@@ -12,7 +12,7 @@ license=('MPL2')
 conflicts=('hunspell-fr')
 provides=('hunspell-fr')
 source=("${_base_url}download/fr/hunspell-french-dictionaries-v${pkgver}.zip")
-sha256sums=('c98147b99518a5aa51d51db58d6a153377bb9f366ebe8a21a2faa05b6c76308d')
+sha256sums=('cc6c2d15073659d221487b45245e9eee9a4ed66c30c6dcf784326bab063c5266')
 
 package_hunspell-fr-classical() {
   pkgdesc+=" (classical variant)"
