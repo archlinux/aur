@@ -13,6 +13,7 @@ pkgbase = python-macreg-git
 	depends = python-flask
 	depends = python-httpam
 	depends = uwsgi-plugin-python
+	depends = python-pymysql
 	provides = python-macreg
 	conflicts = python-macreg
 	source = macreg::git+https://github.com/coNQP/macreg.git
