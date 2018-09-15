@@ -4,6 +4,7 @@ pkgbase = noson-app
 	pkgrel = 1
 	url = https://janbar.github.io/noson-app
 	arch = x86_64
+	arch = armv7h
 	groups = base-devel
 	license = GPL3
 	makedepends = cmake
