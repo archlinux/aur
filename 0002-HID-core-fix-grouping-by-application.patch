@@ -1,7 +1,7 @@
 From 2f2c07d184241b9f133ebe4498575a9f8cda6d1e Mon Sep 17 00:00:00 2001
 From: Benjamin Tissoires <benjamin.tissoires@redhat.com>
 Date: Tue, 4 Sep 2018 15:31:14 +0200
-Subject: [PATCH 3/4] HID: core: fix grouping by application
+Subject: [PATCH 2/3] HID: core: fix grouping by application
 
 commit f07b3c1da92d ("HID: generic: create one input report per
 application type") was effectively the same as MULTI_INPUT:

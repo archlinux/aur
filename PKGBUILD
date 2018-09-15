@@ -69,9 +69,9 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-_srcver=4.18.7-arch1
+_srcver=4.18.8-arch1
 pkgver=${_srcver%-*}
-pkgrel=2
+pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -90,15 +90,14 @@ source=(
   "http://ck.kolivas.org/patches/4.0/4.18/4.18-ck${_ckpatchversion}/${_ckpatchname}.xz"
   Fix_MuQSS_full_dynticks_build.patch::https://github.com/ckolivas/linux/commit/abb4fd30fa127a0e8178b975343eb01713bc2b18.patch
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  0002-drm-i915-Increase-LSPCON-timeout.patch
-  0003-HID-core-fix-grouping-by-application.patch
-  0004-Arch-Linux-kernel-v4.18.7-arch1.patch
+  0002-HID-core-fix-grouping-by-application.patch
+  0003-Arch-Linux-kernel-v4.18.7-arch1.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('f03b425e262a71e5079736706233a4e9afaf77c8462b552b4d6db2d33f5af731'
+sha256sums=('f1551bad69ab617708fa8cf3f94545ae03dd350bdeb3065fbcf39c1a7df85494'
             'SKIP'
             'a181ab290681e16b329775200357e7c04dcf8d6a5bc787d93feb5d763e892827'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
@@ -107,10 +106,9 @@ sha256sums=('f03b425e262a71e5079736706233a4e9afaf77c8462b552b4d6db2d33f5af731'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
             '0354083492adb3785dd31d2d4bf7dc805110aceffb369deed6cbded121f8a3d3'
             '6e1f3cc3eb9a1e30a69ef1999f9aa6ad7f2f9fe4af7ba5dabe25d4ff19ee6740'
-            'b014187b6b9d3078c45b7c09b1ba1ccb315d69d73ccd4f59dc26fcbc50155409'
-            '947475d613b9912aec2b7bc600eb5f630e9e34095c8cc43e410a69848cce5a96'
-            'dbd2603d608b74b920350a62279060b77fe6756e3913cec7c739a4106048a1ad'
-            '8ea37744879bc5a3d15ad4f1b267565baf23003e110dd68f0addf861bb2ac9d9')
+            '8291c64db3068010b9663a343cccf1cd5ddb4db9eba481de7869d367cb06d93c'
+            'f2c3aafcd932f39d94b4b840158f9d01f6da6c2fbaca6b1ec055fb4e332c70bc'
+            'b625af571c7416e557831c425a754eb4bc1752b6ee253124be2c92f271ffc57f')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
