@@ -9,7 +9,6 @@ arch=('any')
 url="https://github.com/coNQP/${_pkgbase}"
 license=('GPLv3')
 depends=('python' 'python-peewee' 'python-peeweeplus' 'python-flask' 'python-httpam' 'uwsgi-plugin-python')
-optdepends=('python-docopt: for scripts')
 makedepends=('git' 'python')
 provides=("python-${_pkgbase}")
 conflicts=("python-${_pkgbase}")
