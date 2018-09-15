@@ -1,0 +1,18 @@
+pkgbase = cpptoml
+	pkgdesc = A header-only library for parsing TOML configuration files.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/skystrife/cpptoml
+	arch = any
+	license = MIT
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = git
+	makedepends = graphviz
+	source = https://github.com/skystrife/cpptoml/archive/v0.1.0.tar.gz
+	sha256sums = 11b1c07132d23e85071cef3d0fe9bc605de731fcd1b1c3f3d43ed09a6fd7a850
+
+pkgname = cpptoml
+
+pkgname = cpptoml-doc
+
