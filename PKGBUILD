@@ -1,7 +1,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+
 pkgname=ttm
 pkgver=4.04
-pkgrel=3
+pkgrel=4
 pkgdesc="TeX to MathML translator"
 url="http://hutchinson.belmont.ma.us/tth/"
 arch=('i686' 'x86_64')
@@ -11,14 +12,14 @@ source=(http://hutchinson.belmont.ma.us/tth/mml/ttmC.tar.gz)
 md5sums=('491aefd525efa804c5a203c5a8c4a281')
 
 build() {
-  cd "$srcdir/ttmC"
+  cd ttmC
   gcc -o ttm ttm.c 
 }
 
 package() {
-  cd "$srcdir/ttmC"
-  install -D -m755 ttm $pkgdir/usr/bin/ttm
+  cd ttmC
+  install -D -m755 ttm "$pkgdir"/usr/bin/ttm
   install -D -m644 ttm_manual.html \
-    $pkgdir/usr/share/doc/ttm/ttm_manual.html 
-  install -D -m644 README $pkgdir/usr/share/doc/ttm/README
+    "$pkgdir"/usr/share/doc/ttm/ttm_manual.html 
+  install -D -m644 README "$pkgdir"/usr/share/doc/ttm/README
 }

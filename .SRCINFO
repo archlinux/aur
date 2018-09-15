@@ -1,7 +1,7 @@
 pkgbase = ttm
 	pkgdesc = TeX to MathML translator
 	pkgver = 4.04
-	pkgrel = 3
+	pkgrel = 4
 	url = http://hutchinson.belmont.ma.us/tth/
 	arch = i686
 	arch = x86_64
