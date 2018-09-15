@@ -1,7 +1,7 @@
 pkgbase = python-httpam-git
 	pkgdesc = Python 3 library for web service authentication using PAM
-	pkgver = r15.88f38de
-	pkgrel = 1
+	pkgver = latest
+	pkgrel = 2
 	url = https://github.com/conqp/httpam
 	arch = any
 	license = GPLv3
@@ -9,6 +9,8 @@ pkgbase = python-httpam-git
 	makedepends = python
 	depends = python
 	depends = python-pam
+	provides = python-httpam
+	conflicts = python-httpam
 	source = httpam::git+https://github.com/conqp/httpam.git
 	md5sums = SKIP
 
