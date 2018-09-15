@@ -1,0 +1,14 @@
+pkgbase = firefox-extension-multi-account-containers
+	pkgdesc = Browser extension that separates website storage into tab-specific Containers
+	pkgver = 6.0.0
+	pkgrel = 1
+	url = https://github.com/mozilla/multi-account-containers
+	arch = any
+	license = MPL2
+	depends = firefox
+	noextract = firefox_multi_account_containers-6.0.0-an+fx-linux.xpi
+	source = https://addons.cdn.mozilla.net/user-media/addons/782160/firefox_multi_account_containers-6.0.0-an+fx-linux.xpi
+	sha256sums = 229efbbfbb2d1894c6f09b6a86939226021e82cff8759229e42263b42a635dbe
+
+pkgname = firefox-extension-multi-account-containers
+
