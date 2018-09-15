@@ -1,13 +1,13 @@
 # Maintainer: Marco Scarpetta <marcoscarpetta02@gmail.com>
 
 pkgname=pdfmixtool-git
-pkgver=r116.c32ccdd
+pkgver=r143.0435334
 pkgrel=1
 pkgdesc='An application to split, merge, rotate and mix PDF files'
 arch=('i686' 'x86_64')
 url='https://www.scarpetta.eu/pdfmixtool'
 license=('GPL')
-depends=('qt5-base' 'podofo-git')
+depends=('qt5-base' 'podofo')
 makedepends=('git' 'cmake' 'qt5-tools')
 conflicts=(pdfmixtool)
 provides=(pdfmixtool)
