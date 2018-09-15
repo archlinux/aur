@@ -1,0 +1,17 @@
+pkgbase = python-strflib-git
+	pkgdesc = A string formatting library
+	pkgver = latest
+	pkgrel = 1
+	url = https://gitlab.com/HOMEINFO/strflib
+	arch = any
+	license = GPLv3
+	makedepends = git
+	makedepends = python
+	depends = python
+	provides = python-strflib
+	conflicts = python-strflib
+	source = strflib::git+https://gitlab.com/HOMEINFO/strflib.git
+	md5sums = SKIP
+
+pkgname = python-strflib-git
+
