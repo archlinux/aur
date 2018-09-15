@@ -10,6 +10,7 @@ url="https://gitlab.com/HOMEINFO/${_pkgbase}"
 license=('GPLv3')
 depends=('python' 'python-peewee' 'python-argon2_cffi' 'python-timelib-git' 'python-strflib' 'python-functoolsplus')
 makedepends=('git' 'python')
+provides=("python-${_pkgbase}")
 source=("${_pkgbase}::git+${url}.git")
 md5sums=('SKIP')
 pkgdir='pkg'
