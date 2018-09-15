@@ -1,7 +1,8 @@
-# Maintainer: Gimmeapill <gimmeapill at gmail dot com>
+# Maintainer: Gimmeapill <gimmeapill@gmail.com>
+# Contributor: regreddit <nik.martin@gmail.com>
 
 pkgname=mixxx-git
-pkgver=release.2.1.3.r459.g7db928dd27
+pkgver=release.2.1.4.r495.gbc69f995ae
 pkgrel=1
 pkgdesc="Digital DJ mixing software. Development branch from git."
 arch=('i686' 'x86_64')
