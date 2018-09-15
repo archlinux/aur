@@ -1,0 +1,13 @@
+pkgbase = ardublock
+	pkgdesc = Physical computing with Arduino as easy as drag-and-drop
+	pkgver = Update1026
+	pkgrel = 1
+	url = https://github.com/Elecrow-keen/Ardublock
+	arch = any
+	license = GPL3
+	depends = arduino
+	source = https://github.com/Elecrow-keen/Ardublock/raw/8104ca2f7a0c585649d646bfa4d82773404bb184/target/ardublock-all.jar
+	md5sums = 2c93ac0c28c7a978a1bd0c9e60f1debe
+
+pkgname = ardublock
+
