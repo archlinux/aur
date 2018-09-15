@@ -1,0 +1,18 @@
+pkgbase = python-getdevinfo
+	pkgdesc = A device information gatherer for Linux and macOS.
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://www.hamishmb.com/html/downloads.php?program_name=getdevinfo
+	arch = any
+	license = PSF
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://www.hamishmb.com/files/Downloads/getdevinfo/1.0.3/Python/getdevinfo-1.0.3.tar.gz
+	md5sums = 4153eeb29eb16ceb511321389957ee55
+
+pkgname = python-getdevinfo
+	depends = python
+
+pkgname = python2-getdevinfo
+	depends = python2
+
