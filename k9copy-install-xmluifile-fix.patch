@@ -1,0 +1,12 @@
+diff -Naur ./k9copy.orig/CMakeLists.txt ./k9copy/CMakeLists.txt
+--- ./k9copy.orig/CMakeLists.txt	2018-09-15 09:44:40.515572351 -0400
++++ ./k9copy/CMakeLists.txt	2018-09-15 09:46:35.369915488 -0400
+@@ -569,7 +569,7 @@
+ 
+ install( FILES k9copy.desktop k9copy_assistant.desktop DESTINATION  ${XDG_APPS_INSTALL_DIR} )
+ #install( FILES k9copy.kcfg  DESTINATION  ${KCFG_INSTALL_DIR} )
+-install( FILES k9copyui.rc  DESTINATION  ${DATA_INSTALL_DIR}/k9copy )
++install( FILES k9copyui.rc  DESTINATION  ${KXMLGUI_INSTALL_DIR}/k9copy )
+ 
+ install(FILES k9copy_open.desktop DESTINATION ${DATA_INSTALL_DIR}/solid/actions)
+ install(FILES k9copy_assistant_open.desktop DESTINATION ${DATA_INSTALL_DIR}/solid/actions)

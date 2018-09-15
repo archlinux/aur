@@ -2,7 +2,7 @@
 
 pkgname=k9copy
 pkgver=3.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A small utility to copy DVD"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/k9copy-reloaded/"
@@ -19,7 +19,8 @@ source=("http://sourceforge.net/projects/k9copy-reloaded/files/$pkgname-$pkgver.
         'k9copy-qt5.patch'
         'k9copy-tempdir.patch'
         'unbundled_dvdread_dvdnav.patch'
-        'set_cancel_button_fix.patch')
+        'set_cancel_button_fix.patch'
+        'k9copy-install-xmluifile-fix.patch')
 
 sha256sums=('4f1f8bc1ed22464a72382924aa23420c0bb94c2360af750a03454f187936e036'
             'e6ea13c74b39e160d5eee7c106b2122f4a289aae37981ee176bc74ed8c959812'
@@ -28,7 +29,8 @@ sha256sums=('4f1f8bc1ed22464a72382924aa23420c0bb94c2360af750a03454f187936e036'
             'e16536294c41446dc141572f52cc5efd67fcb4fb99e082804786c64fe2fa4729'
             '4eaabf10b3bfd3cce0b1ac176a2e4e038f03d0ca4d0f96b67897c20cdfc756f9'
             '6c3c72b03a4d4ff1c961416ad8030977e6f41d2d3304f8be181866ee546b5439'
-            'f03945f611650f2cfb76e479ce49aeb0b1815634025e35585d805f0ae5dcbdb5')
+            'f03945f611650f2cfb76e479ce49aeb0b1815634025e35585d805f0ae5dcbdb5'
+            '624041e871bcc57b000be0eb4dbea6dc176bb05650ebb7f7f7e318ac6e312e36')
 
 prepare() {
 	# Apply Fedora patches (https://github.com/rpmfusion/k9copy)
@@ -54,6 +56,9 @@ prepare() {
 
 	msg "Applying patch unbundled_dvdread_dvdnav.patch"
 	patch -uNp2 -r- -i ../set_cancel_button_fix.patch
+	
+	msg "Applying patch k9copy-install-xmluifile-fix.patch"
+	patch -uNp2 -r- -i ../k9copy-install-xmluifile-fix.patch
 }
 
 build(){
