@@ -14,6 +14,7 @@ pkgbase = python-peeweeplus-git
 	depends = python-strflib
 	depends = python-functoolsplus
 	provides = python-peeweeplus
+	conflicts = python-peeweeplus
 	source = peeweeplus::git+https://gitlab.com/HOMEINFO/peeweeplus.git
 	md5sums = SKIP
 
