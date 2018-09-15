@@ -1,6 +1,6 @@
 pkgbase = seahub
 	pkgdesc = The web frontend for seafile server
-	pkgver = 6.3.2
+	pkgver = 6.3.4
 	pkgrel = 1
 	url = https://github.com/haiwen/seahub
 	changelog = ChangeLog
@@ -10,7 +10,7 @@ pkgbase = seahub
 	arch = armv6h
 	arch = aarch64
 	license = Apache
-	depends = seafile-server>=6.3.2
+	depends = seafile-server>=6.3.4
 	depends = python2-dateutil
 	depends = python2-memcached
 	depends = python2-chardet
@@ -39,8 +39,8 @@ pkgbase = seahub
 	optdepends = python2-django-pylibmc: Memcached support
 	optdepends = ffmpeg: For video thumbnails
 	options = !strip
-	source = seahub-6.3.2-server.tar.gz::https://github.com/haiwen/seahub/archive/v6.3.2-server.tar.gz
-	sha256sums = 2a003b41e7bd3c2e35e4d5b49a82e8c848a77d58fb9932dab76ec28bdf5c6ae9
+	source = seahub-6.3.4-server.tar.gz::https://github.com/haiwen/seahub/archive/v6.3.4-server.tar.gz
+	sha256sums = 53a9efdb6791fd3a2a191e89cb0f133632056046ec08adbb2ad72088e6161430
 
 pkgname = seahub
 

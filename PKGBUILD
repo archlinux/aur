@@ -4,7 +4,7 @@
 # Contributor: Aaron Lindsay <aaron@aclindsay.com>
 
 pkgname='seahub'
-pkgver='6.3.2'
+pkgver='6.3.4'
 pkgrel=1
 pkgdesc='The web frontend for seafile server'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -44,7 +44,7 @@ optdepends=(
 )
 changelog="ChangeLog"
 source=("$pkgname-$pkgver-server.tar.gz::$url/archive/v$pkgver-server.tar.gz")
-sha256sums=('2a003b41e7bd3c2e35e4d5b49a82e8c848a77d58fb9932dab76ec28bdf5c6ae9')
+sha256sums=('53a9efdb6791fd3a2a191e89cb0f133632056046ec08adbb2ad72088e6161430')
 options=('!strip')
 
 prepare() {
