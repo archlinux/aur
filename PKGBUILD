@@ -10,16 +10,16 @@
 # Contributor: Chris Cromer <chris@cromer.cl>
 
 pkgname=networkmanager-consolekit
-pkgver=1.12.3dev+1+g0a3755c17
+pkgver=1.14.0
 pkgrel=1
 _pppver=2.4.7
 pkgdesc="NetworkManager with ConsoleKit support for non-systemd systems and user applications"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL2.1')
 url="https://wiki.gnome.org/Projects/NetworkManager"
-depends=("libnm-glib>=$pkgver" 'iproute2' 'polkit-consolekit' 'consolekit'
-         'wpa_supplicant' 'libmm-glib' 'libnewt' 'libndp' 'libteam'
-         'bluez-libs' 'curl' 'libpsl')
+depends=("libnm>=$pkgver" "libnm-glib>=$pkgver" 'iproute2' 'polkit-consolekit'
+         'consolekit' 'wpa_supplicant' 'libmm-glib' 'libnewt' 'libndp' 'libteam'
+         'bluez-libs' 'curl' 'libpsl' 'audit')
 makedepends=('intltool' 'dhclient' 'iptables' 'gobject-introspection' 'gtk-doc'
              "ppp=$_pppver" 'modemmanager' 'vala' 'perl-yaml' 'python-gobject'
              'git' 'jansson' 'glib2-docs' 'dhcpcd' 'iwd' 'dnsmasq')
@@ -37,9 +37,9 @@ conflicts=('networkmanager')
 backup=('etc/NetworkManager/NetworkManager.conf')
 groups=('gnome')
 install=networkmanager.install
-_commit=0a3755c1799d3a4dc1875d4c59c7c568a64c8456  # nm-1-12
+_commit=2979c891c4af7584780924e92b6d448b7d6cd328  # tags/1.14.0^0
 source=(#https://download.gnome.org/sources/NetworkManager/${pkgver:0:3}/NetworkManager-$pkgver.tar.xz
-        "git+https://anongit.freedesktop.org/git/NetworkManager/NetworkManager#commit=$_commit"
+        "git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#commit=$_commit"
         NetworkManager.conf
         networkmanager.rc
         20-connectivity.conf
@@ -101,6 +101,7 @@ build() {
     --with-iptables=/usr/bin/iptables \
     --with-iwd \
     --with-kernel-firmware-dir=/usr/lib/firmware \
+    --with-libaudit=yes \
     --with-libnm-glib \
     --with-libpsl \
     --with-modem-manager-1 \
@@ -116,7 +117,6 @@ build() {
     --with-udev-dir=/usr/lib/udev \
     --with-wext \
     --without-dhcpcanon \
-    --without-libaudit \
     --without-more-asserts \
     --without-netconfig \
     --without-ofono \
