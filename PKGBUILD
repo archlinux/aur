@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-double-conversion
 _pkgname=double-conversion
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="Binary-decimal and decimal-binary routines for IEEE doubles (mingw-w64)"
 arch=(any)
@@ -11,8 +11,8 @@ license=(BSD)
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=('!strip' '!buildflags' 'staticlibs')
-source=("double-conversion-${pkgver}.tar.gz::https://github.com/google/double-conversion/archive/${pkgver}.tar.gz")
-sha256sums=('aef5f528dab826b269b54766a4c2d179e361866c75717af529f91c56b4034665')
+source=("double-conversion-${pkgver}.tar.gz::https://github.com/google/double-conversion/archive/v${pkgver}.tar.gz")
+sha256sums=('c49a6b3fa9c917f827b156c8e0799ece88ae50440487a99fc2f284cfd357a5b9')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
