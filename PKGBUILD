@@ -2,8 +2,8 @@
 # Maintainer: Chrys <chrys@linux-a11y.org>
 
 pkgname='fenrir'
-pkgver=1.9.2.post1
-pkgrel=3
+pkgver=1.9.3.post1
+pkgrel=1
 pkgdesc='A user space console screen reader written in python3'
 arch=('any')
 url="https://linux-a11y.org/index.php?page=fenrir-screenreader"
@@ -11,6 +11,7 @@ license=('LGPL')
 depends=('python' 'python-pyudev' 'python-daemonize' 'python-evdev' 'python-dbus' 'python-pyte')
 optdepends=('brltty: For Braille support'
 'gstreamer: for soundicons via gstreamer'
+'socat: Control running Fenrir screenreader'
   'sox: The default sound driver'
   'python-espeak: TTS support'
   'python-pyenchant: for spell check functionality'
@@ -24,7 +25,7 @@ install="$pkgname".install
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}-screenreader/${pkgname}-screenreader-${pkgver}.tar.gz"
   'fenrir.install'
   'fenrirscreenreader.service')
-md5sums=('60b2aca05b8a787e0e70768826694618'
+md5sums=('5852a79aa71a3ef4e86448878743d299'
          'c6a68679e6f1a23d4054d0209ba5210a'
          '0c2d1bd344b53d1fa5de6c49455b5a4f')
 
