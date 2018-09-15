@@ -1,0 +1,16 @@
+pkgbase = ksplice-git
+	pkgdesc = Patch kernel without rebooting
+	pkgver = v0.9.9.1.r34.g8a03c0e
+	pkgrel = 1
+	url = https://ksplice.com
+	arch = x86_64
+	license = GPL
+	provides = ksplice=v0.9.9.1.r34.g8a03c0e
+	conflicts = ksplice
+	source = ksplice::git+https://github.com/jirislaby/ksplice.git
+	source = python2.patch
+	md5sums = SKIP
+	md5sums = 25e8103b65ccfd3af8f29e850fdfce80
+
+pkgname = ksplice-git
+

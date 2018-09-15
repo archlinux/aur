@@ -1,0 +1,23 @@
+diff --git a/Makefile.in b/Makefile.in
+index 4f42371..1321146 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -82,7 +82,7 @@ kmodsrcfiles = \
+ 	kmodsrc/x86/libudis86/types.h
+ 
+ $(itab): kmodsrc/x86/libudis86/x86optable.xml kmodsrc/x86/libudis86/opgen.py
+-	cd kmodsrc/x86/libudis86 && python opgen.py x86optable.xml
++	cd kmodsrc/x86/libudis86 && python2 opgen.py x86optable.xml
+ 
+ $(addprefix install-,$(kmodsrcfiles)): install-%: %
+ 	install -m644 -D $< $(DESTDIR)$(datadir)/ksplice/$<
+diff --git a/kmodsrc/x86/libudis86/opgen.py b/kmodsrc/x86/libudis86/opgen.py
+index bab7406..a859bc2 100644
+--- a/kmodsrc/x86/libudis86/opgen.py
++++ b/kmodsrc/x86/libudis86/opgen.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ import os
+ import sys
