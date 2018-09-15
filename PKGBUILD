@@ -1,3 +1,4 @@
+# Maintainer: Christian Hesse <mail@eworm.de>
 # Maintainer: Dave Reisner <dreisner@archlinux.org>
 # Maintainer: Tom Gundersen <teg@jklm.no>
 # SELinux Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
@@ -10,17 +11,18 @@
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'libsystemd-selinux' 'systemd-resolvconf-selinux' 'systemd-sysvcompat-selinux')
 # Can be from either systemd or systemd-stable
-_commit='de7436b02badc82200dc127ff190b8155769b8e7'
-pkgver=239.0
-pkgrel=2
+_commit='c38499d476026d999558a7eee9c95ca2fa41e115'
+pkgver=239.2
+pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
 groups=('selinux')
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam-selinux' 'libelf'
-             'intltool' 'iptables' 'kmod' 'libcap' 'libidn' 'libgcrypt'
+             'intltool' 'iptables' 'kmod' 'libcap' 'libidn2' 'libgcrypt'
              'libmicrohttpd' 'libxslt' 'util-linux' 'linux-api-headers'
              'python-lxml' 'quota-tools' 'shadow-selinux' 'gnu-efi-libs' 'git'
-             'meson' 'libseccomp' 'pcre2' 'libselinux')
+             'meson' 'libseccomp' 'pcre2' 'audit' 'kexec-tools' 'libxkbcommon'
+             'bash-completion' 'libselinux')
 options=('strip')
 validpgpkeys=('63CDA1E5D3FC22B998D20DD6327F26951A015CC4'  # Lennart Poettering <lennart@poettering.net>
               '5C251B5FC54EB2F80F407AAAC54CA336CFEB557E') # Zbigniew Jędrzejewski-Szmek <zbyszek@in.waw.pl>
@@ -81,11 +83,9 @@ _backports=(
     # https://github.com/systemd/systemd/issues/9585
     # https://sourceware.org/bugzilla/show_bug.cgi?id=23410
     06202b9e659e5cc72aeecc5200155b7c012fccbc
-    # build-sys: Detect whether struct statx is defined in sys/stat.h
-    # glibc 2.28 now defines struct statx
-    # https://github.com/systemd/systemd/commit/75720bff62a84896e9a0654afc7cf9408cf89a38
-    # https://sourceware.org/git/?p=glibc.git;a=commitdiff;h=fd70af45528d59a00eb3190ef6706cb299488fcd
-    75720bff62a84896e9a0654afc7cf9408cf89a38
+  # statx fixes
+  '75720bff62a84896e9a0654afc7cf9408cf89a38'
+  '9c869d08d82c73f62ab3527567858ce4b0cf1257'
 )
 
 _reverts=(
@@ -100,12 +100,12 @@ prepare() {
   # the verified tag is in)
   git merge --ff-only "${_commit}"
 
-  local c
-  for c in "${_backports[@]}"; do
-    git cherry-pick -n "$c"
+  local _c
+  for _c in "${_backports[@]}"; do
+    git cherry-pick -n "${_c}"
   done
-  for c in "${_reverts[@]}"; do
-    git revert -n "$c"
+  for _c in "${_reverts[@]}"; do
+    git revert -n "${_c}"
   done
 
   # Replace cdrom/dialout/tape groups with optical/uucp/storage
@@ -113,32 +113,45 @@ prepare() {
 }
 
 pkgver() {
-  local version count
-
   cd "${pkgbase/-selinux}-stable"
 
-  version="$(git describe --abbrev=0 --tags)"
-  count="$(git rev-list --count ${version}..)"
-  printf '%s.%s' "${version#v}" "${count}"
+  local _version _count
+  _version="$(git describe --abbrev=0 --tags)"
+  _count="$(git rev-list --count ${_version}..)"
+  printf '%s.%s' "${_version#v}" "${_count}"
 }
 
 build() {
-  local timeservers=({0..3}.arch.pool.ntp.org)
+  local _timeservers=({0..3}.arch.pool.ntp.org)
+  local _nameservers=(
+    # We use these public name services, ordered by their
+    # privacy policy (hopefully):
+    #  * Cloudflare (https://1.1.1.1/)
+    #  * Quad9 without filtering (https://www.quad9.net/)
+    #  * Google (https://developers.google.com/speed/public-dns/)
+    1.1.1.1
+    9.9.9.10
+    8.8.8.8
+    2606:4700:4700::1111
+    2620:fe::10
+    2001:4860:4860::8888
+  )
 
-  local meson_options=(
+  local _meson_options=(
     -Daudit=true
-    -Dgnuefi=true
+    -Dgnu-efi=true
     -Dima=false
+    -Dlibidn2=true
     -Dlz4=true
     -Dselinux=true
 
     -Ddbuspolicydir=/usr/share/dbus-1/system.d
-    -Ddefault-dnssec=no
     # TODO(dreisner): consider changing this to unified
     -Ddefault-hierarchy=hybrid
     -Ddefault-kill-user-processes=false
     -Dfallback-hostname='archlinux'
-    -Dntp-servers="${timeservers[*]}"
+    -Dntp-servers="${_timeservers[*]}"
+    -Ddns-servers="${_nameservers[*]}"
     -Drpmmacrosdir=no
     -Dsysvinit-path=
     -Dsysvrcnd-path=
@@ -157,20 +170,20 @@ build() {
     fi
   fi
 
-  arch-meson "${pkgbase/-selinux}-stable" build "${meson_options[@]}"
+  arch-meson "${pkgbase/-selinux}-stable" build "${_meson_options[@]}"
+
   ninja -C build
 }
 
 check() {
-  cd build
-  meson test
+  meson test -C build
 }
 
 package_systemd-selinux() {
   pkgdesc='system and service manager with SELinux support'
   license=('GPL2' 'LGPL2.1')
   depends=('acl' 'bash' 'cryptsetup' 'dbus' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
-           'libgcrypt' 'libsystemd-selinux' 'libidn' 'lz4' 'pam-selinux' 'libelf' 'libseccomp'
+           'libgcrypt' 'libsystemd-selinux' 'libidn2' 'lz4' 'pam-selinux' 'libelf' 'libseccomp'
            'util-linux-selinux' 'xz' 'pcre2' 'audit')
   provides=('nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver"
             "${pkgname/-selinux}=${pkgver}-${pkgrel}")
@@ -179,7 +192,8 @@ package_systemd-selinux() {
   optdepends=('libmicrohttpd: remote journald capabilities'
               'quota-tools: kernel-level quota management'
               'systemd-sysvcompat: symlink package to provide sysvinit binaries'
-              'polkit: allow administration as unprivileged user')
+              'polkit: allow administration as unprivileged user'
+              'curl: machinectl pull-tar and pull-raw')
   backup=(etc/pam.d/systemd-user
           etc/systemd/coredump.conf
           etc/systemd/journald.conf
@@ -193,7 +207,7 @@ package_systemd-selinux() {
           etc/udev/udev.conf)
   install=systemd.install
 
-  DESTDIR="$pkgdir" ninja -C build install
+  DESTDIR="$pkgdir" meson install -C build
 
   # don't write units to /etc by default. some of these will be re-enabled on
   # post_install.
@@ -268,7 +282,7 @@ package_systemd-resolvconf-selinux() {
   pkgdesc='systemd resolvconf replacement with SELinux support'
   license=('GPL2')
   depends=('systemd-selinux')
-  provides=('openresolv' "${pkgname/-selinux}=${pkgver}-${pkgrel}")
+  provides=('openresolv' 'resolvconf' "${pkgname/-selinux}=${pkgver}-${pkgrel}")
   conflicts=('openresolv' "${pkgname/-selinux}=${pkgver}-${pkgrel}")
 
   install -d -m0755 "$pkgdir"/usr/bin
@@ -296,4 +310,4 @@ package_systemd-sysvcompat-selinux() {
   done
 }
 
-# vim: ft=sh syn=sh et
+# vim:ft=sh syn=sh et sw=2:
