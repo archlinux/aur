@@ -1,0 +1,14 @@
+pkgbase = firefox-extension-undo-close-tab-button
+	pkgdesc = Browser extension that adds toolbar buttons for quick access to undo the closing of tabs
+	pkgver = 1.7
+	pkgrel = 1
+	url = https://codefisher.org/toolbar_button/button/undo-close-tab/
+	arch = any
+	license = GPL3
+	depends = firefox
+	noextract = undo_close_tab_button-1.7-an+fx.xpi
+	source = https://addons.cdn.mozilla.net/user-media/addons/630686/undo_close_tab_button-1.7-an+fx.xpi
+	sha256sums = 9ff039eafcafc9590bf2b615917347e3fc42be814ed0fbbd01216ca257b166c2
+
+pkgname = firefox-extension-undo-close-tab-button
+
