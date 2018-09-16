@@ -3,8 +3,8 @@
 # Contributor: Franco Iacomella <yaco@gnu.org>
 
 pkgname=synfigstudio
-pkgver=1.2.1
-pkgrel=4
+pkgver=1.2.2
+pkgrel=1
 pkgdesc="Professional vector animation program (GUI)"
 arch=(x86_64)
 url="https://synfig.org"
@@ -13,21 +13,11 @@ depends=('gtkmm3' 'synfig' 'sdl_image')
 makedepends=('openexr' 'libmagick6' 'xorg-fonts-100dpi' 'xorg-fonts-75dpi'
              'xorg-fonts-misc' 'xorg-fonts-type1' 'intltool' 'imagemagick')
 source=(
-    "https://github.com/synfig/synfig/releases/download/v$pkgver/ETL-$pkgver.tar.gz"
-    "https://github.com/synfig/synfig/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"
-    'ETL-1.2.1.patch')
+    "https://github.com/synfig/synfig/releases/download/v$pkgver/source-ETL-$pkgver.tar.gz"
+    "https://github.com/synfig/synfig/releases/download/v$pkgver/source-$pkgname-$pkgver.tar.gz")
 sha256sums=(
-    '754d88c5ddfdef54f27d1e17f62a902eb9f09fbe7ef9aebded34541b4c1700e6'
-    '1a97875e0039895604085649bcd30cf0d6165f4c865299ca13d45d2dfbfab05d'
-    '35e218317050430ebae667d26269903ad1c377407b9a75feb48a9138af131cb0')
-
-prepare() {
-    # Fix const-invalid method in ETL 1.2.1 using the patch which is included
-    # in ETL ≥ 1.3.9. This makes building with GCC possible.
-    # (see <https://github.com/synfig/synfig/commit/cb05b072>)
-    cd "$srcdir"/ETL-$pkgver
-    patch -p1 -i "$srcdir"/ETL-1.2.1.patch
-}
+    '0dc19c5a6c9e964054ca3af6dacd6ab0c198d78071cfab2aebac178afe454d8b'
+    '76fa37998af634cf694f9b5bdfcb90220bc88f8527df117d9282a39fe01489e2')
 
 build() {
     # Build a local ETL version
