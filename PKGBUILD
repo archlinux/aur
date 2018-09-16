@@ -2,7 +2,7 @@
 #			Jake <aur@ja-ke.tech>
 
 pkgname=next
-pkgver=1.520
+pkgver=1.534
 pkgrel=1
 pkgdesc="CGM rc Heli Flight Simulator"
 arch=('i686' 'x86_64')
@@ -17,14 +17,14 @@ source=("http://www.cgm-online.com/secure_rc-heli-simulator/cgm-rc-heli-simulato
         "next.desktop"
         "next.sh")
 
-sha512sums=('ede0b86f24302a58c61867c47d811e9f4c5040baa5e44f793b99227fc3506be41475e260cdf41bde765457f79e62954fb396532ae894bd9cd84875294910a8c6'
+sha512sums=('5f6ff0ca74940166eb646f4fa7536a550ec82583fa6ea8e103b4a066f0e3a079f0b949cc119d2cacf57b4dabf63495f3f921d47dd23edaf5ccf6f61ba14d884a'
             '73fa793d92ef60e052b82776e89316024fbe46634a695516820b0f2740727c92e94da72f318bb22817686e53f827106ce3048126852c23608295464d90ee4b6d'
             '0012ea26bb1bd1c929d7957515bc0a7217d2beb8018507260b62e0754ecef7cfa198d1a35de904aa8e966bf18a851f0baf0631d6c17e1abde4cb579522d48496')
 
 
 prepare() {
   # rename the original directory to something sane and remove an OSX directory
-  mv "Linux x86+64bit" "${pkgname}"
+  mv "neXt" "${pkgname}"
   rm -r "__MACOSX"
 
   cd "${srcdir}/${pkgname}"
@@ -34,15 +34,24 @@ prepare() {
   find . -name '.DS_Store' -exec rm {} \;
 
   if [ "${CARCH}" == 'i686' ]; then
+    msg2 "Removing 64 bit files..."
     rm -r ./neXt_Data/Mono/x86_64
     rm -r ./neXt_Data/Plugins/x86_64
     rm ./neXt.x86_64
+    rm ./run_neXt_x64
+    rm ./joystick_config_x64
   fi
   if [ "${CARCH}" == "x86_64" ]; then
+    msg2 "Removing 32 bit files..."
     rm -r ./neXt_Data/Mono/x86
     rm -r ./neXt_Data/Plugins/x86
     rm ./neXt.x86
+    rm ./run_neXt
+    rm ./joystick_config
+    
   fi
+  
+  tail -n 2 ReadMe.txt > License.txt
 }
 
 package() {
@@ -62,5 +71,5 @@ package() {
   install -Dm775 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
 
   msg2 "Installing LICENSE file..."
-  install -Dm644 ${srcdir}/${pkgname}/ReadMe.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 ${srcdir}/${pkgname}/License.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
