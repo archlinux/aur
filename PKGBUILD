@@ -2,7 +2,7 @@
 
 pkgname=calendar
 pkgver=1.9
-pkgrel=2
+pkgrel=3
 pkgdesc="Reminder utility (OpenBSD)"
 url="http://www.openbsd.org/cgi-bin/cvsweb/src/usr.bin/calendar"
 arch=('x86_64')
@@ -18,7 +18,7 @@ TAG="OPENBSD_6_3"
 
 pkgver(){
     cd ${pkgname}
-    cvs -q status -R . | grep 'Working revision:' | awk '/Working revision:/ { if ($3 > n) n = $3;} END { print n; }'
+    cvs -q status -R . | awk '/Working revision:/ { if ($3 > n) n = $3;} END { print n; }'
 }
 
 prepare() {
