@@ -1,7 +1,7 @@
 # Maintainer: Jason Gonzalez <jason at jasong-designs dot com>
 
 pkgname=jgd-cobaltblue
-pkgver=09_19_17
+pkgver=09_15_18
 pkgrel=1
 pkgdesc="Cobalt Blue colored themes for GTK 3.20+ and Openbox."
 arch=('i686' 'x86_64')
@@ -14,8 +14,9 @@ source=("https://github.com/jgpws/jgd-cobalt-blue/raw/master/downloads/$pkgname-
 
 package() {
 	cd "${srcdir}"
-	tar -xzvf jgd-cobaltblue-09-19-17.tar.gz
+	tar -xzvf jgd-cobaltblue-09-15-18.tar.gz
 	sudo cp -R JGD-CobaltBlue /usr/share/themes
 }
 
-md5sums=('84bce512be5f49c958c3051a752446e0')
+
+md5sums=('6a8d30855511d1d22222ebcb1e228969')
