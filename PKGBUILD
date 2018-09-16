@@ -13,7 +13,7 @@
 pkgbase=bcompare
 pkgname=('bcompare' 'bcompare-kde5' 'bcompare-kde4' 'bcompare-nautilus' 'bcompare-thunar' 'bcompare-cinnamon' 'bcompare-mate')
 pkgver=4.2.6.23150
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url='http://www.scootersoftware.com'
 license=('custom')
@@ -97,7 +97,6 @@ package_bcompare() {
   rm -rf "${pkgdir}/usr/lib/caja"
   rm -rf "${pkgdir}/usr/lib/nemo"
 
-
   #Clean unneded files
   pushd usr/lib/beyondcompare/ > /dev/null
   rm -f uninstall.sh RPM-GPG-KEY-scootersoftware scootersoftware.repo kde_context_menu
@@ -105,6 +104,9 @@ package_bcompare() {
   mv README "${pkgdir}/usr/share/doc/beyondcompare/"
   rm -rf ext
   popd > /dev/null
+
+  # Link help where Help -> Contents option is expecting to find it
+  ln -sf "/usr/share/doc/beyondcompare" "${pkgdir}/usr/lib/beyondcompare/help"
 
   # Clean some mime files
   pushd usr/share > /dev/null
