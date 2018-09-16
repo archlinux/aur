@@ -1,7 +1,7 @@
 # Maintainer: Daniel Moch <daniel@danielmoch.com>
 pkgname=python-hookmeup
 _name=${pkgname#python-}
-pkgver=0.2.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='A Git hook to automate your Pipenv and Django workflow'
 provides=('python-hookmeup')
@@ -11,17 +11,20 @@ url='https://github.com/djmoch/hookmeup'
 license=('MIT')
 depends=('python')
 makedepends=('python-pip')
-source=("${_name}-${pkgver}-py3-none-any.whl::https://files.pythonhosted.org/packages/py3/${_name::1}/${_name}/${_name}-${pkgver}-py3-none-any.whl"
-        "https://raw.githubusercontent.com/djmoch/hookmeup/master/LICENSE")
-sha256sums=('d74becee145c0ad2d862f06cc74926382065f65616c51a52c60f29abfbb4c5d5'
-            '04ce4be582df887dfa8ad52cf5cacf543a5e0e49dce9be518114fc676c409a09')
-noextract=("${pkgname}-${pkgver}-py3-none-any.whl")
+source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
+sha256sums=('8499238460da0b33e263be039343016ef55be1dc4d815f87c3bc24ea924f03fc')
+
+build()
+{
+  cd "${srcdir}/${_name}-${pkgver}"
+  flit build --format wheel
+}
 
 package()
 {
-  cd "${srcdir}"
+  cd "${srcdir}/${_name}-${pkgver}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  pip install -I --no-warn-script-location --isolated --no-deps --compile --root="${pkgdir}" ${_name}-${pkgver}-py3-none-any.whl
+  pip install -I --no-warn-script-location --isolated --no-deps --compile --root="${pkgdir}" dist/${_name}-${pkgver}-py2.py3-none-any.whl
 }
 
 # vim: ft=PKGBUILD sts=2 sw=2 et
