@@ -3,7 +3,7 @@
 _pkgname=nfancurve
 pkgname=${_pkgname}-git
 pkgver=v016.r12.gea6fcf8
-pkgrel=1
+pkgrel=2
 pkgdesc="A small and lightweight Bash script for using a custom fan curve in Linux for NVIDIA GPUs"
 arch=("any")
 
@@ -12,7 +12,7 @@ license=("GPL3")
 
 depends=("bash" "nvidia" "nvidia-settings" "procps")
 makedepends=("git")
-conflicts=("${_pkgname}-git")
+conflicts=("${_pkgname}")
 
 install=${_pkgname}.install
 
