@@ -58,7 +58,7 @@ package() {
   install -m 755 -d "$pkgdir/usr/share/applications/"
   install -m 644 sviewgl.desktop "$pkgdir/usr/share/applications/"
   install -m 755 -d "$pkgdir/usr/share/icons/"
-  install -m 644 sviewgl.png "$pkgdir/usr/share/icons/"
+  install -m 644 src/Icon-1024.png "$pkgdir/usr/share/icons/sviewgl.png"
 }
 
 # vim:set ts=2 sw=2 et:
