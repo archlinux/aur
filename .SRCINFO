@@ -1,7 +1,7 @@
 pkgbase = shalarm
 	pkgdesc = A bash script alarm clock.
 	pkgver = 1.7
-	pkgrel = 5
+	pkgrel = 1
 	url = http://www.someplacedumb.net
 	arch = any
 	license = custom:"FreeBSD"
@@ -9,7 +9,7 @@ pkgbase = shalarm
 	depends = coreutils
 	optdepends = mplayer
 	source = master.zip::https://github.com/jahendrie/shalarm/archive/master.zip
-	md5sums = skip
+	md5sums = SKIP
 
 pkgname = shalarm
 
