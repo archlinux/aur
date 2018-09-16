@@ -1,6 +1,6 @@
 pkgbase = sh-elf-newlib
-	pkgdesc = A C standard library implementation intended for use on embedded systems (sh-elf target)
-	pkgver = 3.0.0
+	pkgdesc = A C standard library implementation intended for use on embedded systems (SuperH)
+	pkgver = 3.0.0.20180226
 	pkgrel = 1
 	url = http://www.sourceware.org/newlib/
 	arch = any
@@ -8,12 +8,8 @@ pkgbase = sh-elf-newlib
 	makedepends = sh-elf-gcc
 	options = !emptydirs
 	options = !strip
-	source = ftp://sourceware.org/pub/newlib/newlib-3.0.0.tar.gz
-	source = fix_build1.patch::https://www.sourceware.org/git/gitweb.cgi?p=newlib-cygwin.git;a=patch;h=b8272e3b8df8337744423e4dd23e727cf963d528
-	source = fix_build2.patch::https://www.sourceware.org/git/gitweb.cgi?p=newlib-cygwin.git;a=patch;h=b7e0f286a2ecab3b687ec9b3f95f5a88b9f85310
-	sha256sums = c8566335ee74e5fcaeb8595b4ebd0400c4b043d6acb3263ecb1314f8f5501332
-	sha256sums = 2be98412600b8d62b4f1456e95ae4bc3b7a6810981d3fde49fad1f42df0c49da
-	sha256sums = 641978987fcfc9fc5c529192f34771db44d3257f95bc682da16e8351356177cf
+	source = ftp://sourceware.org/pub/newlib/newlib-3.0.0.20180226.tar.gz
+	sha256sums = d0b40c874c3047eccbf06fe916d3fc746bd94e8a4cd14c54381b2f72f68c5665
 
 pkgname = sh-elf-newlib
 
