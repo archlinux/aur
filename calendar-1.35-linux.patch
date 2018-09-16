@@ -1,0 +1,202 @@
+diff -up calendar-1.35-20180719cvs/calendar.c.orig calendar-1.35-20180719cvs/calendar.c
+--- calendar-1.35-20180719cvs/calendar.c.orig	2015-12-07 13:46:35.000000000 -0500
++++ calendar-1.35-20180719cvs/calendar.c	2018-07-19 17:03:48.564840708 -0400
+@@ -35,7 +35,6 @@
+ #include <err.h>
+ #include <errno.h>
+ #include <locale.h>
+-#include <login_cap.h>
+ #include <pwd.h>
+ #include <signal.h>
+ #include <stdio.h>
+@@ -98,16 +97,20 @@ main(int argc, char *argv[])
+ 			break;
+ 
+ 		case 'A': /* days after current date */
+-			f_dayAfter = strtonum(optarg, 0, INT_MAX, &errstr);
+-			if (errstr)
+-				errx(1, "-A %s: %s", optarg, errstr);
++			f_dayAfter = strtoll(optarg, NULL, 10);
++			if (errno == ERANGE && (f_dayAfter == LLONG_MIN || f_dayBefore == LLONG_MAX))
++				errx(1, "-A %s: %s", optarg, strerror(errno));
++			else if (f_dayAfter < 0 || f_dayAfter > INT_MAX)
++				errx(1, "-A %s: %s out of range", optarg);
+ 			f_SetdayAfter = 1;
+ 			break;
+ 
+ 		case 'B': /* days before current date */
+-			f_dayBefore = strtonum(optarg, 0, INT_MAX, &errstr);
+-			if (errstr)
+-				errx(1, "-B %s: %s", optarg, errstr);
++			f_dayBefore = strtoll(optarg, NULL, 10);
++			if (errno == ERANGE && (f_dayBefore == LLONG_MIN || f_dayBefore == LLONG_MAX))
++				errx(1, "-B %s: %s", optarg, strerror(errno));
++			else if (f_dayBefore < 0 || f_dayBefore > INT_MAX)
++				errx(1, "-B %s: %s out of range", optarg);
+ 			break;
+ 
+ 		case 'w':
+@@ -123,15 +126,6 @@ main(int argc, char *argv[])
+ 	if (argc)
+ 		usage();
+ 
+-	if (doall) {
+-		if (pledge("stdio rpath tmppath fattr getpw id proc exec", NULL)
+-		    == -1)
+-			err(1, "pledge");
+-	} else {
+-		if (pledge("stdio rpath proc exec", NULL) == -1)
+-			err(1, "pledge");
+-	}
+-
+ 	/* use current time */
+ 	if (f_time <= 0)
+ 	    (void)time(&f_time);
+@@ -190,10 +184,6 @@ main(int argc, char *argv[])
+ 			case 0:	/* child */
+ 				(void)setpgid(getpid(), getpid());
+ 				(void)setlocale(LC_ALL, "");
+-				if (setusercontext(NULL, pw, pw->pw_uid,
+-				    LOGIN_SETALL ^ LOGIN_SETLOGIN))
+-					err(1, "unable to set user context (uid %u)",
+-					    pw->pw_uid);
+ 				if (acstat) {
+ 					if (chdir(pw->pw_dir) ||
+ 					    stat(calendarFile, &sbuf) != 0 ||
+diff -up calendar-1.35-20180719cvs/calendar.h.orig calendar-1.35-20180719cvs/calendar.h
+--- calendar-1.35-20180719cvs/calendar.h.orig	2015-12-07 13:46:35.000000000 -0500
++++ calendar-1.35-20180719cvs/calendar.h	2018-07-19 16:51:12.156275891 -0400
+@@ -29,6 +29,7 @@
+  * SUCH DAMAGE.
+  */
+ 
++#include <sys/types.h>
+ 
+ extern struct passwd *pw;
+ extern int doall;
+@@ -116,7 +117,7 @@ extern int f_SetdayAfter; /* calendar in
+ 
+ /* calendars */
+ extern enum calendars { GREGORIAN = 0, JULIAN, LUNAR } calendar;
+-extern u_long julian;
++extern unsigned long julian;
+ 
+ #define NUMEV 3	/* Total number of such special events */
+ extern struct specialev spev[NUMEV];
+diff -up calendar-1.35-20180719cvs/day.c.orig calendar-1.35-20180719cvs/day.c
+--- calendar-1.35-20180719cvs/day.c.orig	2016-09-14 11:09:46.000000000 -0400
++++ calendar-1.35-20180719cvs/day.c	2018-07-19 16:51:00.669312872 -0400
+@@ -160,7 +160,7 @@ settime(time_t *now)
+ 	tp->tm_isdst = 0;
+ 	tp->tm_hour = 12;
+ 	*now = mktime(tp);
+-	if (isleap(tp->tm_year + 1900))
++	if (__isleap(tp->tm_year + 1900))
+ 		cumdays = daytab[1];
+ 	else
+ 		cumdays = daytab[0];
+@@ -288,8 +288,10 @@ isnow(char *endp, int bodun)
+ 		return (NULL);
+ 
+ 	/* adjust bodun rate */
+-	if (bodun && !bodun_always)
+-		bodun = !arc4random_uniform(3);
++	if (bodun && !bodun_always) {
++		srandom(3);
++		bodun = random();
++	}
+ 
+ 	/* Easter or Easter depending days */
+ 	if (flags & F_SPECIAL)
+@@ -440,7 +442,7 @@ isnow(char *endp, int bodun)
+ 			}
+ 			v2 = day - tp->tm_yday;
+ 			if ((v2 > v1) || (v2 < 0)) {
+-				if ((v2 += isleap(tp->tm_year + 1900) ? 366 : 365)
++				if ((v2 += __isleap(tp->tm_year + 1900) ? 366 : 365)
+ 				    <= v1)
+ 					tmtmp.tm_year++;
+ 				else if(!bodun || (day - tp->tm_yday) != -1)
+@@ -670,7 +672,7 @@ variable_weekday(int *day, int month, in
+ 	int *cumdays;
+ 	int day1;
+ 
+-	if (isleap(year))
++	if (__isleap(year))
+ 		cumdays = daytab[1];
+ 	else
+ 		cumdays = daytab[0];
+diff -up calendar-1.35-20180719cvs/io.c.orig calendar-1.35-20180719cvs/io.c
+--- calendar-1.35-20180719cvs/io.c.orig	2017-09-25 15:13:56.000000000 -0400
++++ calendar-1.35-20180719cvs/io.c	2018-07-19 16:58:19.641899643 -0400
+@@ -67,7 +67,7 @@ void
+ cal(void)
+ {
+ 	int ch, l, i, bodun = 0, bodun_maybe = 0, var, printing;
+-	struct event *events, *cur_evt, *ev1, *tmp;
++	struct event *events = NULL, *cur_evt = NULL, *ev1 = NULL, *tmp = NULL;
+ 	char buf[2048 + 1], *prefix = NULL, *p;
+ 	struct match *m;
+ 	FILE *fp;
+@@ -282,8 +282,9 @@ getfield(char *p, char **endp, int *flag
+ 			switch (*start) {
+ 			case '-':
+ 			case '+':
+-				var = strtonum(start + 1, 0, 365, &errstr);
+-				if (errstr)
++				var = strtoll(start + 1, NULL, 10);
++				if ((errno == ERANGE && (var == LLONG_MIN || var == LLONG_MAX)) ||
++				    (var < 0 || var > 365))
+ 					return (0); /* Someone is just being silly */
+ 				if (*start == '-')
+ 					var = -var;
+diff -up calendar-1.35-20180719cvs/ostern.c.orig calendar-1.35-20180719cvs/ostern.c
+--- calendar-1.35-20180719cvs/ostern.c.orig	2015-03-14 20:41:28.000000000 -0400
++++ calendar-1.35-20180719cvs/ostern.c	2018-07-19 16:51:00.670312869 -0400
+@@ -60,7 +60,7 @@ easter(int year)	/* 0 ... abcd, NOT sinc
+ 	e_p = e_p + 1;
+ 
+ 	e_q = 31 + 28 + e_p;
+-	if (isleap(year))
++	if (__isleap(year))
+ 		e_q++;
+ 
+ 	if (e_n == 4)
+diff -up calendar-1.35-20180719cvs/paskha.c.orig calendar-1.35-20180719cvs/paskha.c
+--- calendar-1.35-20180719cvs/paskha.c.orig	2015-03-14 20:41:28.000000000 -0400
++++ calendar-1.35-20180719cvs/paskha.c	2018-07-19 16:51:00.670312869 -0400
+@@ -27,6 +27,7 @@
+  */
+ 
+ #include <stdio.h>
++#include <time.h>
+ 
+ #include "calendar.h"
+ 
+@@ -47,7 +48,7 @@ paskha(int R)  /*year*/
+ 	d = (19*a + x) % 30;
+ 	e = (2*b + 4*c + 6*d + y) % 7;
+ 	cumdays = 31 + 28;
+-	if (isleap(R))
++	if (__isleap(R))
+ 		cumdays++;
+ 	return ((cumdays + 22) + (d + e) + 13);
+ }
+diff -up calendar-1.35-20180719cvs/pesach.c.orig calendar-1.35-20180719cvs/pesach.c
+--- calendar-1.35-20180719cvs/pesach.c.orig	2015-03-14 20:41:28.000000000 -0400
++++ calendar-1.35-20180719cvs/pesach.c	2018-07-19 16:51:00.670312869 -0400
+@@ -18,6 +18,7 @@
+  */
+ 
+ #include <stdio.h>
++#include <time.h>
+ 
+ #include "calendar.h"
+ 
+@@ -61,5 +62,5 @@ pesach(int R)
+ 	if (R > 1582)
+ 		cumdays += R / 100 - R /400 - 2;
+ 
+-	return (31 + 28 + cumdays + (isleap(R)? 1 : 0));
++	return (31 + 28 + cumdays + (__isleap(R)? 1 : 0));
+ }
