@@ -1,12 +1,13 @@
 pkgbase = archlinux32-keyring
 	pkgdesc = Arch Linux 32 PGP keyring
-	pkgver = 20171113
+	pkgver = 20180606
 	pkgrel = 1
 	url = https://github.com/archlinux32/archlinux32-keyring.git/
 	install = archlinux32-keyring.install
 	arch = any
 	license = GPL
-	source = git+https://github.com/archlinux32/archlinux32-keyring.git
+	makedepends = git
+	source = git+https://git.archlinux32.org/archlinux32/archlinux32-keyring.git
 	sha256sums = SKIP
 
 pkgname = archlinux32-keyring
