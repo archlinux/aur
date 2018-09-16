@@ -1,7 +1,7 @@
 pkgbase = gcc49
 	pkgdesc = The GNU Compiler Collection
 	pkgver = 4.9.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://gcc.gnu.org
 	arch = i686
 	arch = x86_64
@@ -21,12 +21,14 @@ pkgbase = gcc49
 	source = 0000-gcc-4.9.ucontext.patch
 	source = 0001-gcc-4.9-SIGSEGV.patch
 	source = 0002-gcc-4.9-__res_state.patch
+	source = 0003-gcc-4.9-ustate.patch
 	md5sums = 87c24a4090c1577ba817ec6882602491
 	md5sums = e039bfcfb6c2ab039b8ee69bf883e824
 	md5sums = e34fca0540d840e5d0f6427e98c92252
 	md5sums = 4a0dc704f1d92ceb4dd8608811241cec
 	md5sums = e787a03f0c38434490515a5823eca0b8
 	md5sums = c64d1e20274ff4fbfacdd11bef2e1273
+	md5sums = b27134678242f358c9b81cd73a1bcba1
 
 pkgname = gcc49
 
