@@ -2,7 +2,7 @@
 
 pkgname=fotoxx
 pkgver=19.0
-pkgrel=3
+pkgrel=5
 pkgdesc="A program for improving image files made with a digital camera"
 url="http://www.kornelix.net/fotoxx/fotoxx.html"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ optdepends=('rawtherapee: for raw image processing'
 	    'dvd+rw-tools: for burning CDs,DVDs or BlueRays'
 	    'hugin: for panorama photos')
 source=("http://www.kornelix.net/downloads/tarballs/$pkgname-$pkgver.tar.gz")
-sha512sums=('bf593a09ddb4b0d2fa5ad5be78a4a770f7ecc3cf3d5dacf516e7c53583e3034aee7a1ec8ffdcfbcae10fc9fd2f9e68fad2b5d67af8692c225071ef99bb6f6bcd')
+sha512sums=('45642b85c4bbdcb8b3eb2f39c99bb58a9650790aead6fe2ec18a5b2ee86a7f3d044826100a8caefa7cf539ae9ad2833a5facf2a18f90e15eadaaffbacf0edb45')
 options=('!makeflags')
 
 build() {
@@ -22,6 +22,6 @@ build() {
 
 package() {
   cd $pkgname-$pkgver
-  make DESTDIR=$pkgdir PREFIX=/usr install
+  make DESTDIR="$pkgdir" PREFIX=/usr install
   rm -r "$pkgdir"/usr/share/appdata
 }
