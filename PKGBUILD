@@ -1,0 +1,34 @@
+# Maintainer: Finn Behrens <finn@dsgvo.fail>
+pkgname=rifo-git 
+pkgver=0.0.1.r0.9f39ada
+pkgrel=1
+pkgdesc="rifo sripts"
+arch=('any')
+url="https://git.kloenk.de/finn/Rifo"
+license=('GPL3')
+groups=()
+depends=(fzf jq pass)
+optdepends=('xdotool: add support for inserting password')
+makedepends=('git') # 'bzr', 'git', 'mercurial' or 'subversion'
+provides=("${pkgname%-VCS}" 'rifopass')
+conflicts=("${pkgname%-VCS}")
+replaces=()
+backup=()
+options=()
+source=('rifo::git+https://git.kloenk.de/finn/Rifo.git')
+noextract=()
+md5sums=('SKIP')
+
+pkgver() {
+	cd "$srcdir/rifo"
+	
+	# Git, unannotated tags available
+	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+}
+
+package() {
+	cd "$srcdir/rifo"
+	install -Dm0755 rifopass.sh "$pkgdir/usr/bin/rifopass"
+	install -Dm0755 passlistgen.sh "$pkgdir/usr/bin/passlistgen.sh"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

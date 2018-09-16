@@ -1,0 +1,20 @@
+pkgbase = rifo-git
+	pkgdesc = rifo sripts
+	pkgver = 0.0.1.r0.9f39ada
+	pkgrel = 1
+	url = https://git.kloenk.de/finn/Rifo
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = fzf
+	depends = jq
+	depends = pass
+	optdepends = xdotool: add support for inserting password
+	provides = rifo-git
+	provides = rifopass
+	conflicts = rifo-git
+	source = rifo::git+https://git.kloenk.de/finn/Rifo.git
+	md5sums = SKIP
+
+pkgname = rifo-git
+
