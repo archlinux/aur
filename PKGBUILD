@@ -3,7 +3,7 @@
 
 pkgname=gromacs
 pkgver=2018.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.'
 url='http://www.gromacs.org/'
 license=("LGPL")
@@ -14,16 +14,16 @@ optdepends=('cuda: Nvidia GPU support'
             'perl: needed for demux.pl and xplor2gmx.pl'
 	    'opencl-mesa: OpenCL support for AMD GPU'
 	    'opencl-nvidia: OpenCL support for Nvidia GPU')
-makedepends=('cmake' 'libxml2' 'hwloc' 'gcc6')
+makedepends=('cmake' 'libxml2' 'hwloc' 'gcc7')
 options=('!libtool')
 source=(http://ftp.gromacs.org/pub/gromacs/gromacs-${pkgver}.tar.gz)
 sha1sums=('f17d57b031d37f69981573dd4c70203d52863b61')
 
-#With gcc6 currently there are less errors in the tests
+#With gcc7 currently there are less errors in the tests
 # also the compilation is possible in cuda capable machines
-export CC=gcc-6
-export CXX=g++-6
-export CFLAGS="-march=native -O2 -pipe -fstack-protector-strong"
+export CC=gcc-7
+export CXX=g++-7
+export CFLAGS="-march=native -O2 -pipe -fstack-protector-strong -fno-plt"
 export CXXFLAGS="${CFLAGS}"
 
 export VMDDIR=/usr/lib/vmd/ #If vmd is available at compilation time
