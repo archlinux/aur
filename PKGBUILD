@@ -1,15 +1,14 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
-_pkgname=cros-adapta
-pkgname=${_pkgname}-gtk-theme
-pkgver=69
+pkgname=cros-adapta-gtk-theme
+pkgver=70
 pkgrel=1
 pkgdesc="Adapta crostini theme, the Chrome OS GTK+ theme"
 url="https://chromium.googlesource.com/chromiumos/third_party/cros-adapta/"
 arch=(any)
 license=(GPL2)
 
-conflicts=(${_pkgname}-gtk-theme-git)
+conflicts=(cros-adapta-gtk-theme-git)
 makedepends=("autoconf"
              "automake"
              "inkscape>=0.91"
@@ -18,22 +17,18 @@ makedepends=("autoconf"
              "libsass>=3.3"
              "libxml2"
              "pkgconf"
-             "sassc>=3.3"
-             "git")
+             "sassc>=3.3")
 depends=(gtk-engine-murrine
          gtk3)
 
-source=("git+https://chromium.googlesource.com/chromiumos/third_party/${_pkgname}#branch=release-R69-10895.B")
-sha256sums=('SKIP')
+source=("https://chromium.googlesource.com/chromiumos/third_party/cros-adapta/+archive/release-R70-11021.B.tar.gz")
+sha256sums=(SKIP)
 
 build() {
-    cd ${_pkgname}
-    tools/extract_adapta.sh
+    yes | tools/extract_adapta.sh
 }
 
 package() {
-    cd ${_pkgname}
-
     install -dm 755 "${pkgdir}"/usr/share/themes/cros-adapta
   
     cp -r gtk-2.0 "${pkgdir}"/usr/share/themes/cros-adapta/

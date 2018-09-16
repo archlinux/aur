@@ -1,6 +1,6 @@
 pkgbase = cros-adapta-gtk-theme
 	pkgdesc = Adapta crostini theme, the Chrome OS GTK+ theme
-	pkgver = 69
+	pkgver = 70
 	pkgrel = 1
 	url = https://chromium.googlesource.com/chromiumos/third_party/cros-adapta/
 	arch = any
@@ -14,11 +14,10 @@ pkgbase = cros-adapta-gtk-theme
 	makedepends = libxml2
 	makedepends = pkgconf
 	makedepends = sassc>=3.3
-	makedepends = git
 	depends = gtk-engine-murrine
 	depends = gtk3
 	conflicts = cros-adapta-gtk-theme-git
-	source = git+https://chromium.googlesource.com/chromiumos/third_party/cros-adapta#branch=release-R69-10895.B
+	source = https://chromium.googlesource.com/chromiumos/third_party/cros-adapta/+archive/release-R70-11021.B.tar.gz
 	sha256sums = SKIP
 
 pkgname = cros-adapta-gtk-theme
