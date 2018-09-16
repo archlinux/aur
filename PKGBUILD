@@ -1,6 +1,6 @@
 # Maintainer: Julien Hartmann <juli1.hartmann@gmail.com>
 pkgname=keyleds
-pkgver=0.7.6
+pkgver=0.7.8
 pkgrel=1
 pkgdesc="➤ Advanced RGB LED driver/controller for G410, G610, G810, G910 and GPro"
 arch=('i686' 'x86_64')
@@ -46,4 +46,4 @@ package() {
   install -m 644 -D build/keyledsctl.1.gz "$pkgdir/usr/share/man/man1/keyledsctl.1"
 }
 
-md5sums=('f71e9b6e20acfb9497a298d15122ae13')
+md5sums=('3d343ebc4393839dadac2b75f4dd51eb')
