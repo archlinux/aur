@@ -1,6 +1,6 @@
 # Maintainer: Joseph Lansdowne <J49137@gmail.com>
 pkgname=cosmic-express
-pkgver=1.0.2
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="A puzzle game about planning the train route for the world's most awkward space colony"
 arch=(i686 x86_64)
@@ -17,7 +17,7 @@ md5sums=('a30146524ba85b90273f4266e6b8ba06'
 PKGEXT=.pkg.tar
 
 _archive="cosmic-express-linux.zip"
-_archive_md5='828e973b512c3e2c31c610d0ebceaa6b'
+_archive_md5='145789ba0550e5a7e440577f0aec7963'
 
 build () {
     echo "$_archive_md5 $startdir/$_archive" | md5sum -c || {
