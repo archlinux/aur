@@ -9,6 +9,7 @@ pkgbase = rifo-git
 	depends = fzf
 	depends = jq
 	depends = pass
+	depends = termite
 	optdepends = xdotool: add support for inserting password
 	provides = rifo-git
 	provides = rifopass

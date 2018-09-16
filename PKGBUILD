@@ -1,5 +1,5 @@
 # Maintainer: Finn Behrens <finn@dsgvo.fail>
-pkgname=rifo-git 
+pkgname=rifo-git
 pkgver=0.0.1.r0.9f39ada
 pkgrel=1
 pkgdesc="rifo sripts"
@@ -7,7 +7,7 @@ arch=('any')
 url="https://git.kloenk.de/finn/Rifo"
 license=('GPL3')
 groups=()
-depends=(fzf jq pass)
+depends=(fzf jq pass termite)
 optdepends=('xdotool: add support for inserting password')
 makedepends=('git') # 'bzr', 'git', 'mercurial' or 'subversion'
 provides=("${pkgname%-VCS}" 'rifopass')
@@ -21,7 +21,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/rifo"
-	
+
 	# Git, unannotated tags available
 	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
