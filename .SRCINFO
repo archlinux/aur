@@ -1,6 +1,6 @@
 pkgbase = rkward-frameworks-git
 	pkgdesc = An Easy to use, transparent frontend to the R-language (kf5 frameworks-edition)
-	pkgver = v0.7.0b.r291.g2b96b459
+	pkgver = v0.7.0b.r335.g7801fec6
 	pkgrel = 1
 	url = https://rkward.kde.org/
 	arch = i686

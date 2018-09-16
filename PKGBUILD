@@ -1,7 +1,7 @@
 # Contributer: SolarAquarion (Shlomo Choina  at gmail dot com)
 
 pkgname=rkward-frameworks-git
-pkgver=v0.7.0b.r291.g2b96b459
+pkgver=v0.7.0b.r335.g7801fec6
 pkgrel=1
 pkgdesc="An Easy to use, transparent frontend to the R-language (kf5 frameworks-edition)"
 arch=('i686' 'x86_64')
@@ -30,6 +30,6 @@ package(){
 	cd $srcdir/rkward
 	make DESTDIR="$pkgdir" install
 
-	# Some cleanup
+	 rm $pkgdir/usr/share/org.kde.syntax-highlighting/syntax/r.xml
 }
 md5sums=('SKIP')
