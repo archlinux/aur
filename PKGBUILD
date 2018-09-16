@@ -1,36 +1,37 @@
 # Maintainer: Jerome Leclanche <jerome@leclan.ch>
+# Co-Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
 
 _pkgname=pcmanfm-qt
 pkgname=$_pkgname-git
-pkgver=0.12.0.33.g87fb0e2
-pkgrel=1
+pkgver=0.13.0.191.g150d8fb
+pkgrel=2
 pkgdesc="The LXQt file manager, Qt port of PCManFM"
 arch=("i686" "x86_64")
 url="https://lxqt.org"
 license=("GPL2")
-depends=("liblxqt-git" "libfm-qt-git" "lxmenu-data" "qt5-x11extras")
+depends=("libfm-qt-git" "lxmenu-data" "qt5-x11extras")
 makedepends=("git" "cmake" "qt5-tools" "lxqt-build-tools-git")
-provides=("$_pkgname")
+provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("git+https://github.com/lxqt/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$_pkgname"
-	git describe --always | sed "s/-/./g"
+  cd "$srcdir/$_pkgname"
+  git describe --always | sed "s/-/./g"
 }
 
 build() {
-	mkdir -p build
-	cd build
+  mkdir -p build
+  cd build
 
-	cmake "$srcdir/$_pkgname" \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_INSTALL_LIBDIR=lib
-	make
+  cmake "$srcdir/$_pkgname" \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib
+  make
 }
 
 package() {
-	cd build
-	make DESTDIR="$pkgdir" install
+  cd build
+  make DESTDIR="$pkgdir" install
 }
