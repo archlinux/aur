@@ -1,7 +1,7 @@
-diff --no-dereference -aur radium-5.7.6.pristine/bin/packages/build.sh radium-5.7.6.new/bin/packages/build.sh
---- radium-5.7.6.pristine/bin/packages/build.sh	2018-06-16 09:43:05.000000000 +0100
-+++ radium-5.7.6.new/bin/packages/build.sh	2018-06-17 07:54:17.473316625 +0100
-@@ -168,29 +168,6 @@
+diff -aur --no-dereference radium-5.9.0.pristine/bin/packages/build.sh radium-5.9.0.new/bin/packages/build.sh
+--- radium-5.9.0.pristine/bin/packages/build.sh	2018-09-16 16:43:47.000000000 +0100
++++ radium-5.9.0.new/bin/packages/build.sh	2018-09-16 16:57:25.576723176 +0100
+@@ -171,28 +171,6 @@
      cd ../
  fi
  
@@ -27,29 +27,61 @@ diff --no-dereference -aur radium-5.7.6.pristine/bin/packages/build.sh radium-5.
 -    cd ..
 -    
 -fi
--
+ 
  
  # Build faust last since we reset the build flags.
+diff -aur --no-dereference radium-5.9.0.pristine/bin/run_radium_linux.sh radium-5.9.0.new/bin/run_radium_linux.sh
+--- radium-5.9.0.pristine/bin/run_radium_linux.sh	2018-09-16 16:43:47.000000000 +0100
++++ radium-5.9.0.new/bin/run_radium_linux.sh	2018-09-16 16:57:25.576723176 +0100
+@@ -4,14 +4,14 @@
  
-diff --no-dereference -aur radium-5.7.6.pristine/Qt/Qt_Main.cpp radium-5.7.6.new/Qt/Qt_Main.cpp
---- radium-5.7.6.pristine/Qt/Qt_Main.cpp	2018-06-16 09:43:05.000000000 +0100
-+++ radium-5.7.6.new/Qt/Qt_Main.cpp	2018-06-17 07:58:40.783307624 +0100
-@@ -3444,18 +3444,6 @@
-   
- #endif // !defined(RELEASE)
  
--#if defined(FOR_LINUX)
--  {
--    QString name(dlpi_name);
+ THIS_DIR="$(dirname "$(readlink -f "$0")")"
+-XCB_LIB_DIR="$THIS_DIR"/packages/libxcb-1.13/src/.libs
++#XCB_LIB_DIR="$THIS_DIR"/packages/libxcb-1.13/src/.libs
+ 
+-if ! file "$XCB_LIB_DIR" ; then
+-    echo "Unable to find directory $XCB_LIB_DIR"
+-    exit -1
+-fi
++#if ! file "$XCB_LIB_DIR" ; then
++#    echo "Unable to find directory $XCB_LIB_DIR"
++#    exit -1
++#fi
+ 
+-export LD_LIBRARY_PATH="$XCB_LIB_DIR"${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
++#export LD_LIBRARY_PATH="$XCB_LIB_DIR"${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
+ 
+  # To avoid buggy qt plugins from crashing radium (very common).
+ unset QT_QPA_PLATFORMTHEME
+diff -aur --no-dereference radium-5.9.0.pristine/install.sh radium-5.9.0.new/install.sh
+--- radium-5.9.0.pristine/install.sh	2018-09-16 16:43:47.000000000 +0100
++++ radium-5.9.0.new/install.sh	2018-09-16 16:58:34.036723259 +0100
+@@ -79,7 +79,7 @@
+ cd "$THIS_DIR/bin"
+ 
+ # libxcb
+-cp -a packages/libxcb-1.13 "$TARGET/packages/"
+-cd "$TARGET/packages/libxcb-1.13/src"
+-rm -f *.o
+-cd "$THIS_DIR/bin"
++#cp -a packages/libxcb-1.13 "$TARGET/packages/"
++#cd "$TARGET/packages/libxcb-1.13/src"
++#rm -f *.o
++#cd "$THIS_DIR/bin"
+diff -aur --no-dereference radium-5.9.0.pristine/Qt/Qt_Main.cpp radium-5.9.0.new/Qt/Qt_Main.cpp
+--- radium-5.9.0.pristine/Qt/Qt_Main.cpp	2018-09-16 16:43:47.000000000 +0100
++++ radium-5.9.0.new/Qt/Qt_Main.cpp	2018-09-16 16:57:25.586723176 +0100
+@@ -3449,12 +3449,6 @@
+ #if defined(FOR_LINUX)
+   {
+     QString name(dlpi_name);
 -    if (name.contains("libxcb.so")){
 -      if (!name.contains("bin/packages/libxcb-1.13/src/.libs/")){
 -        fprintf(stderr,"\n\n%c[31mError. A version of libxcb not included with Radium has been dynamically linked into the program. Something is wrong the installation of Radium.\nOlder versions of libxcb (probably before 1.11.1) are unstable with Radium.%c[0m\n\n", 0x1b, 0x1b);
 -        abort();
 -      }
 -    }
--  }
--#endif
-- 
+   }
+ #endif
   
- 
-   if (is_main_root)

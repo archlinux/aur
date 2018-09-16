@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-QT_QPA_PLATFORM_PLUGIN_PATH=`qmake-qt5 -query QT_INSTALL_PLUGINS` /opt/radium/radium_linux.bin "$@"

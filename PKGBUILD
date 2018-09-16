@@ -1,145 +1,104 @@
 # Maintainer: Karol "Kenji Takahashi" Woźniak <kenji.sx>
-# Contributor: Jakob Gahde <j5lx@fmail.co.uk>
-# Contributor: Teteros <teteros at teknik dot io>
+# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
+# Maintainer: Teteros <teteros at teknik dot io>
 
 pkgname=radium
-pkgver=5.8.9
+pkgver=5.9.0
 pkgrel=1
 pkgdesc="A graphical music editor. A next generation tracker."
 arch=('i686' 'x86_64')
-url="https://users.notam02.no/~kjetism/radium/"
+url="https://users.notam02.no/~kjetism/radium"
 license=('GPL')
 depends=(
-    'fftw'
-    'glu'
-    'hicolor-icon-theme'
-    'jack'
-    'liblrdf'
-    'libmpc'
-    'libsamplerate'
-    'libxaw'
-    'libxcursor'
-    'libxinerama'
-    'libxkbfile'
-    'python2'
-    'qt5-webkit'
-    'qt5-x11extras'
-    'speex'
-    'libmpc'
+  'desktop-file-utils'
+  'fftw'
+  'glu'
+  'hicolor-icon-theme'
+  'jack'
+  'liblrdf'
+  'libmpc'
+  'libsamplerate'
+  'python2'
+  'qt5-webkit'
+  'qt5-x11extras'
+  'speex'
 )
-optdepends=('calf-ladspa' 'ladspa-plugins' 'tcl')
 makedepends=(
-    'boost'
-    'cmake'
-    'libxrandr'
-    'lld'
-    'llvm40'
-    'qt5-tools'
-    'steinberg-vst36'
+  'boost'
+  'cmake'
+  'libxcursor'
+  'libxinerama'
+  'libxkbfile'
+  'libxrandr'
+  'llvm40'
+  'qt5-tools'
+  'steinberg-vst36'
 )
-options=(!strip)
+optdepends=(
+  'calf-ladspa: Default chorus plugin'
+  'ladspa-plugins: Package group for default radium plugins incl in binary releases'
+)
+options=(!strip) # https://github.com/kmatheussen/radium/issues/1153#issuecomment-421543245
 source=("https://github.com/kmatheussen/${pkgname}/archive/${pkgver}.tar.gz"
-        "include-glibc-rpc.patch"
-        "radium"
-        "use-llvm40-static-libs.patch"
+        "use-libtirpc-headers.patch"
         "use-system-libxcb.patch"
         "use-system-vstsdk.patch"
-)
-sha256sums=('cc24db8a42bb0d757bff06e2ab7ad34df5fc32214a3819533dace4aace71882c'
-            '3436c478637fd1c8f7ff4089c30ba7f2048a71de8243756893df35cdb25be893'
-            '6ea834fbf695187c244bbb1dacc1d462ded807ee4997761fdaa60d5373b386cd'
-            '4155b427be299ba74c1d9278bcf2b72f720f55c814e01ca38f6f0afbda282890'
-            'ac41c94513ca615a71198a91160b2d605ea73c8a97a0192d275105248669df8d'
-            '7cfc4d4d5b40055a6f11c304cfc3a64f491880f9028197573090d67d6fd6ddc2')
+        "use-static-llvm40.patch")
+sha256sums=('44f67ea67a05f66090920ed4e68fe30b5ed7ab9dd3249b556ed07611a58e65ba'
+            'f2596261f9ebd859f9850cbfc97edb7fd5d45cf8768ce47d0721cbf4b2d80c7e'
+            '94de9befbe6530c721917445ee3a0c0202371e1b2229784b2ea6e0c0efaf7808'
+            '75c606ed2c0f1f42449b2b2a7f6936c37be7a78e658ef4306f21edcd16eb2304'
+            '413523f60ae7dea7aa2e223fc035f57b05693eea17ba3889eafaca9173fe5f3d')
 
 prepare() {
-    cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
 
-    # glibc legacy rpc includes were moved to libtirpc, this patches radium's libpd to locate them
-    msg2 "Patching libpd to use legacy rpc includes in libtirpc"
-    patch -Nsp1 < "${srcdir}/include-glibc-rpc.patch"
+  # glibc-2.27 deprecated legacy rpc, header files for libpd are in libtirpc
+  patch -p1 < "${srcdir}/use-libtirpc-headers.patch"
 
-    # LLVM5 is not currently supported by Radium's faust fork so we need to
-    # link llvm40 statically to avoid conflicts with newer system llvm
-    # See https://github.com/kmatheussen/radium/issues/1068
-    # and https://users.notam02.no/~kjetism/radium/forum/viewtopic.php?f=7&t=39
-    msg2 "Patching faust to link with llvm40-libs statically"
-    patch -Nsp1 < "${srcdir}/use-llvm40-static-libs.patch"
+  # Use system libxcb 1.13 instead of radium's to reduce build time
+  patch -p1 < "${srcdir}/use-system-libxcb.patch"
 
-    # Radium bundles libxcb 1.13+ as F22 has an older version available in repos
-    # We can use libxcb from extra repo instead
-    msg2 "Switching to system-wide libxcb"
-    patch -Nsp1 < "${srcdir}/use-system-libxcb.patch"
+  # JUCE expects the VST SDK in home directory, this adds paths for SDK in steinberg-vst36
+  patch -p1 < "${srcdir}/use-system-vstsdk.patch"
 
-    # Patch paths to use VST SDK from steinberg-vst36 AUR package as
-    # JUCE expects the SDK in the users home directory
-    msg2 "Using VST SDK from steinberg-vst36 package"
-    patch -Nsp1 < "${srcdir}/use-system-vstsdk.patch"
-
-    # s7 scheme tarball seems to not unpack for some users during make,
-    # extracting it here is a workaround until someone with that issue can debug it
-    msg2 "Extracting s7.tar.gz"
-    tar xvzf bin/packages/s7.tar.gz -C bin/packages
+  # FAUST package is not compatible with LLVM<4.0.1
+  # Link llvm40 statically in radium and faust binaries to avoid conflicts with system llvm
+  # https://github.com/kmatheussen/radium/issues/1068
+  # https://users.notam02.no/~kjetism/radium/forum/viewtopic.php?f=7&t=39
+  patch -p1 < "${srcdir}/use-static-llvm40.patch"
 }
 
 build() {
-    cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
 
-    msg2 "Building packages"
-    RADIUM_QT_VERSION=5 make packages
-
-    msg2 "Building Radium"
-    RADIUM_QT_VERSION=5 BUILDTYPE=RELEASE ./build_linux.sh
+  RADIUM_QT_VERSION=5 make packages
+  RADIUM_QT_VERSION=5 BUILDTYPE=RELEASE ./build_linux.sh
 }
 
 package() {
-    cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
 
-    msg2 "Installing Radium core files"
-    install -dm755 "${pkgdir}/opt/radium"
-    # Copy everything from bin except packages
-    find "bin" -mindepth 1 -maxdepth 1 -name packages -o -exec cp -a "{}" "${pkgdir}/opt/radium/" \;
+  # Install radium and its packages to /opt
+  ./install.sh "${pkgdir}/opt"
 
-    msg2 "Installing Radium binary wrapper"
-    install -Dm755 "${srcdir}/radium" "${pkgdir}/usr/bin/radium"
+  # Create startup script according to bin/packages/README
+  mkdir -p "${pkgdir}/usr/bin"
+  echo '#!/bin/sh' > "${pkgdir}/usr/bin/radium"
+  echo QT_QPA_PLATFORM_PLUGIN_PATH="$($(RADIUM_QT_VERSION=5 ./find_moc_and_uic_paths.sh qmake) -query QT_INSTALL_PLUGINS)" \
+    /opt/radium/radium >> "${pkgdir}/usr/bin/radium"
+  chmod +x "${pkgdir}/usr/bin/radium"
 
-    # Needed to make the Scheme parts of Radium work
-    msg2 "Installing s7 sources"
-    install -dm755 "${pkgdir}/opt/radium/packages"
-    tar -xf "bin/packages/s7.tar.gz" -C "${pkgdir}/opt/radium/packages" \
-        --no-same-owner --no-same-permissions --wildcards '*.scm'
-
-    msg2 "Installing libpd-master pure-data"
-    install -dm755 "${pkgdir}/opt/radium/packages/libpd-master/"
-    cp -a "bin/packages/libpd-master/pure-data/" \
-        "${pkgdir}/opt/radium/packages/libpd-master/"
-
-    msg2 "Installing FAUST libraries and GUI styles"
-    install -dm755 "${pkgdir}/opt/radium/packages/faust2/architecture/faust/gui/Styles"
-    cp -a "bin/packages/faust2/architecture/faust/gui/Styles" \
-        "${pkgdir}/opt/radium/packages/faust2/architecture/faust/gui"
-    # Copy faust's *.lib files to be able to import them in faustdev
-    cp -a "bin/packages/faust2/architecture/"*".lib" \
-        "${pkgdir}/opt/radium/packages/faust2/architecture/"
-
-    msg2 "Installing .desktop, icon and mimetype files"
-    install -dm755 "${pkgdir}/usr/share/applications"
-    ln -s "/opt/radium/radium.desktop" \
-        "${pkgdir}/usr/share/applications/radium.desktop"
-
-    install -dm755 "${pkgdir}/usr/share/icons/hicolor/"{256x256,128x128,32x32,16x16}"/apps"
-    ln -s "/opt/radium/radium_256x256x32.png" \
-        "${pkgdir}/usr/share/icons/hicolor/256x256/apps/radium.png"
-    ln -s "/opt/radium/radium_128x128x32.png" \
-        "${pkgdir}/usr/share/icons/hicolor/128x128/apps/radium.png"
-    ln -s "/opt/radium/radium_32x32x24.png" \
-        "${pkgdir}/usr/share/icons/hicolor/32x32/apps/radium.png"
-    ln -s "/opt/radium/radium_16x16x8.png" \
-        "${pkgdir}/usr/share/icons/hicolor/16x16/apps/radium.png"
-
-    install -dm755 "${pkgdir}/usr/share/mime/packages"
-    ln -s "/opt/radium/radium-mimetype.xml" \
-        "${pkgdir}/usr/share/mime/packages/radium.xml"
+  # Icons, .desktop and mimetype files
+  mkdir -p "${pkgdir}/usr/share/icons/hicolor/"{16x16,32x32,128x128,256x256}"/apps" \
+    "${pkgdir}/usr/share/applications" \
+    "${pkgdir}/usr/share/mime/packages"
+  ln -s "/opt/radium/radium_16x16x8.png" "${pkgdir}/usr/share/icons/hicolor/16x16/apps/radium.png"
+  ln -s "/opt/radium/radium_32x32x24.png" "${pkgdir}/usr/share/icons/hicolor/32x32/apps/radium.png"
+  ln -s "/opt/radium/radium_128x128x32.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/radium.png"
+  ln -s "/opt/radium/radium_256x256x32.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/radium.png"
+  ln -s "/opt/radium/radium.desktop" "${pkgdir}/usr/share/applications/radium.desktop"
+  ln -s "/opt/radium/radium-mimetype.xml" "${pkgdir}/usr/share/mime/packages/radium.xml"
 }
 
-# vim:set ts=4 sw=4 et:
+# vim:set sw=2 ts=2 indentexpr=GetShIndent() et:
