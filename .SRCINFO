@@ -1,41 +1,32 @@
 pkgbase = sublime-text-dev-imfix
-	pkgdesc = Sophisticated text editor for code, HTML and prose, development build with Fcitx input method support
-	pkgver = 3.3126
+	pkgdesc = Sophisticated text editor for code, markup and prose - Dev build with input method support for CJK users
+	pkgver = 3.3175
 	pkgrel = 1
-	url = http://www.sublimetext.com/3
-	install = sublime_text_3_imfix.install
-	changelog = README.md
+	url = https://www.sublimetext.com/3dev
 	arch = i686
 	arch = x86_64
 	license = custom
-	depends = desktop-file-utils
-	depends = gtk2
 	depends = libpng
-	optdepends = gksu: sudo-save support
-	provides = sublime-text-dev=3.3126
+	depends = gtk2
+	provides = sublime-text
+	provides = sublime-text-dev
 	provides = sublime-text-nightly
+	conflicts = sublime-text
 	conflicts = sublime-text-dev
 	conflicts = sublime-text-nightly
-	options = !strip
-	source = SublimeText-i18n-zh-master.zip::https://github.com/farseerfc/SublimeText-i18n-zh/archive/master.zip
-	source = LICENSE
-	source = sublime_text_3.sh
-	source = sublime_text_3_imfix.sh
-	sha512sums = dcdbe5c4aeea56c66f284ca0bd7bc9ff1b31e3e5f63cdc5ae694b90252a6606564e7defa5ad317025b11faa59f962a4d9cc2b3d4355ebd02edbced715892d6f4
-	sha512sums = 54b356867e6699fe88130c183ec76ea631f4afeab1a15f37e9ecd460f726bc7c80f056fd57637c24a67b865522e9d3bb5156414fe3cc5d091be9e1f21ef0f31f
-	sha512sums = 32023ae446a981cbf22c1e7c056d1bec76b1a8c4cba1a625d8314331c947ff3d12adaa24f267794f270de76a1170d19405a57100db1054760bfeeb29950bb5a0
-	sha512sums = 3ed8d47663d6e825ff3321155a65e1afa691fea541b96500d11ac763c55741db5712a307f6695fdf5f6d09a71d195efea494736026612bac5d0e410bc1e43c1f
-	source_i686 = https://download.sublimetext.com/sublime_text_3_build_3126_x32.tar.bz2
-	sha512sums_i686 = f8377adbad072577995918c7c8311ae63c7290581b00200e698ded18722893edf0baa7227480c8fc6143be30d695fae1e7312f7a9ac6728b8a397ea814a829fa
-	source_x86_64 = http://download.sublimetext.com/sublime_text_3_build_3126_x64.tar.bz2
-	sha512sums_x86_64 = a0a683b3cef45fba2a294cb044e5dc24ed3ea8d8a669321ee15844a48b88fbd345d50f499a9feb865735b15b44ff99d6b5f8aaee453245b9fd61e9e3d1c69f26
+	source = subl
+	source = sublime_imfix.c
+	validpgpkeys = 1EDDE2CDFC025D17F6DA9EC0ADAE6AD28A8F901A
+	sha256sums = 1ec8b8212e70cbe8612048ec039402cee044527507e72d8020c551ebbd5b2789
+	sha256sums = 5903b47f7dfbf079987c566361c5735a002dcbf25d0f86de86b7dce424f36700
+	source_i686 = https://download.sublimetext.com/sublime_text_3_build_3175_x32.tar.bz2.asc
+	source_i686 = https://download.sublimetext.com/sublime_text_3_build_3175_x32.tar.bz2
+	sha256sums_i686 = SKIP
+	sha256sums_i686 = SKIP
+	source_x86_64 = https://download.sublimetext.com/sublime_text_3_build_3175_x64.tar.bz2.asc
+	source_x86_64 = https://download.sublimetext.com/sublime_text_3_build_3175_x64.tar.bz2
+	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = SKIP
 
 pkgname = sublime-text-dev-imfix
-	pkgdesc = Sophisticated text editor for code, HTML and prose, development build with Fcitx input method support
-
-pkgname = sublime-text-dev-zh-cn
-	pkgdesc = Sophisticated text editor for code, HTML and prose, development build with Simplified Chinese translation and Fcitx input method support
-
-pkgname = sublime-text-dev-zh-tw
-	pkgdesc = Sophisticated text editor for code, HTML and prose, development build with Traditional Chinese translation and Fcitx input method support
 
