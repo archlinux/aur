@@ -1,0 +1,20 @@
+pkgbase = gr-soapy-git
+	pkgdesc = gr-soapy from librespacefoundation
+	pkgver = r26.946f950
+	pkgrel = 1
+	url = https://gitlab.com/librespacefoundation/gr-soapy.git
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = swig
+	depends = gnuradio
+	depends = boost
+	provides = gr-soapy
+	conflicts = gr-soapy
+	source = git+https://gitlab.com/librespacefoundation/gr-soapy.git
+	sha256sums = SKIP
+
+pkgname = gr-soapy-git
+
