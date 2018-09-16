@@ -350,11 +350,18 @@ wasm-syscall = false
 # rustc to execute.
 lld = true
 
+# Indicates whether some LLVM tools, like llvm-objdump, will be made available in the
+# sysroot.
+llvm-tools = false
+
 # Whether to deny warnings in crates
 deny-warnings = false
 
 # Print backtrace on internal compiler errors during bootstrap
 backtrace-on-ice = false
+
+# Whether to verify generated LLVM IR
+verify-llvm-ir = false
 
 # =============================================================================
 # Options for specific targets
