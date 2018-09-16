@@ -34,7 +34,7 @@ pkgver() {
 
 build() {
     cd ${_pkgname}
-    tools/extract_adapta.sh
+    yes | tools/extract_adapta.sh
 }
 
 package() {
