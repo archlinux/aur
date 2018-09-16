@@ -1,7 +1,7 @@
 pkgbase = lxqt-session-git
 	pkgdesc = LXQt session
-	pkgver = 0.12.0.9.ga9fd906
-	pkgrel = 1
+	pkgver = 0.13.0.172.gd41de44
+	pkgrel = 2
 	url = https://lxqt.org
 	arch = i686
 	arch = x86_64
@@ -12,8 +12,11 @@ pkgbase = lxqt-session-git
 	makedepends = lxqt-build-tools-git
 	depends = liblxqt-git
 	depends = xdg-user-dirs
+	depends = libx11
+	depends = udev
+	depends = kwindowsystem
 	optdepends = sddm: The recommended LXQt display manager
-	provides = lxqt-session
+	provides = lxqt-session=0.13.0.172.gd41de44
 	conflicts = lxqt-session
 	source = git+https://github.com/lxqt/lxqt-session.git
 	sha256sums = SKIP
