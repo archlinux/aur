@@ -1,7 +1,7 @@
 pkgbase = spim-svn
 	pkgdesc = A MIPS32 simulator (SVN version)
-	pkgver = 715
-	pkgrel = 2
+	pkgver = 717
+	pkgrel = 1
 	url = https://sourceforge.net/projects/spimsimulator/
 	arch = i686
 	arch = x86_64
@@ -9,16 +9,14 @@ pkgbase = spim-svn
 	license = custom:BSD
 	makedepends = subversion
 	depends = glibc
-	provides = spim=715
+	provides = spim=717
 	conflicts = spim
 	source = svn+https://svn.code.sf.net/p/spimsimulator/code/spim
 	source = svn+https://svn.code.sf.net/p/spimsimulator/code/CPU
 	source = svn+https://svn.code.sf.net/p/spimsimulator/code/Tests
-	source = fix-install.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 36db36d77c49ae082c0cdf9c7dc46a3dd7a144747cecb60c2b149daa59a20af1
 
 pkgname = spim-svn
 
