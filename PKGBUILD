@@ -12,14 +12,12 @@ depends=('dkms')
 conflicts=("${_pkgname}")
 makedepends=('git')
 options=(!strip)
-source=("$_pkgname::git+https://github.com/lwfinger/rtl8723au_bt.git"
-        "void_cast.patch")
-sha256sums=('SKIP' 'SKIP')
+source=("$_pkgname::git+https://github.com/lwfinger/rtl8723au_bt.git")
+sha256sums=('SKIP')
 
 build() {
     cd "${srcdir}/${_pkgname}/"
     git checkout kernel
-    patch -p1 < "${srcdir}/void_cast.patch"
     rm -fr .git* readme.txt
 }
 

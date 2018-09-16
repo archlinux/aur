@@ -10,8 +10,6 @@ pkgbase = rtl8723au_bt-dkms
 	conflicts = rtl8723au_bt
 	options = !strip
 	source = rtl8723au_bt::git+https://github.com/lwfinger/rtl8723au_bt.git
-	source = void_cast.patch
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = rtl8723au_bt-dkms
