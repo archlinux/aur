@@ -3,8 +3,8 @@
 # Contributor: pressh <pressh funnysymbol gmail dot com>
 
 pkgname=convertall
-pkgver=0.7.4
-pkgrel=2
+pkgver=0.7.5
+pkgrel=1
 pkgdesc="Unit conversion program (Qt)"
 arch=('any')
 url="http://convertall.bellz.org/"
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('python-pyqt5' 'desktop-file-utils')
 source=("http://download.sourceforge.net/project/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz" 
         'convertall.desktop')
-sha256sums=('7f11d4db064c3980b25bd1b5b785ed334fa5e3067e8d9ef437bbcb96e2408d04'
+sha256sums=('97944dba0d5a2cc023fada8120b4712272e2a9fc535d92210dd7e01acf413565'
             '4f7ac9402580e866b360e07e07bfe1d05311f64f996dcf647094db6de9455212')
 
 package() {
