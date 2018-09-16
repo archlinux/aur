@@ -1,9 +1,9 @@
 # Maintainer Cookie Engineer <cookiengineer@protonmail.ch>
 
 _npmname=mdncomp
-_npmver=2.2.6
+_npmver=2.2.9
 pkgname=nodejs-mdncomp # All lowercase
-pkgver=2.2.6
+pkgver=2.2.9
 pkgrel=1
 pkgdesc="MDN Browser Compatibility Data (BCD) on the command line"
 arch=(any)
@@ -12,7 +12,7 @@ license=( "MIT" )
 depends=('nodejs')
 options=('!emptydirs')
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
-sha256sums=('3c69f1d3a6da0266ae766fcdea002552f9ab918dfd20e60a50f5869b1bfba1c4')
+sha256sums=('16aa9eee5bfda6ecf5f4b966018eb6cfe724d7503d02ca1d95cec323704d518a')
 noextract=($_npmname-$_npmver.tgz)
 
 package() {
