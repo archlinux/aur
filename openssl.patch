@@ -1,40 +1,65 @@
---- a/src/makefiles/linux_32bit.mak	2016-04-17 23:59:46.000000000 +1000
-+++ b/src/makefiles/linux_32bit.mak	2017-05-02 10:41:47.582983436 +1000
-@@ -25,13 +25,13 @@
+From 1fad008e1adba5cb596da6f9ec6a244d49a585cf Mon Sep 17 00:00:00 2001
+From: Davide Beatrici <davidebeatrici@gmail.com>
+Date: Mon, 9 Apr 2018 22:02:34 +0200
+Subject: [PATCH] Encrypt: set default RSA key size to 1024 everywhere, using
+ the RSA_KEY_SIZE macro
+
+This commit also fixes the problem described in #31, which was caused by the test key generated in RsaCheck() being too small for newer OpenSSL versions.
+---
+ src/Mayaqua/Encrypt.c | 8 ++++----
+ src/Mayaqua/Encrypt.h | 2 +-
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/Mayaqua/Encrypt.c b/src/Mayaqua/Encrypt.c
+index 381d1c57..a5570520 100644
+--- a/src/Mayaqua/Encrypt.c
++++ b/src/Mayaqua/Encrypt.c
+@@ -2194,7 +2194,7 @@ bool RsaVerifyEx(void *data, UINT data_size, void *sign, K *k, UINT bits)
+ 	}
+ 	if (bits == 0)
+ 	{
+-		bits = 1024;
++		bits = RSA_KEY_SIZE;
+ 	}
  
- #CC=gcc
+ 	// Hash the data
+@@ -2233,7 +2233,7 @@ bool RsaSignEx(void *dst, void *src, UINT size, K *k, UINT bits)
+ 	}
+ 	if (bits == 0)
+ 	{
+-		bits = 1024;
++		bits = RSA_KEY_SIZE;
+ 	}
  
--OPTIONS_COMPILE_DEBUG=-D_DEBUG -DDEBUG -DUNIX -DUNIX_LINUX -D_REENTRANT -DREENTRANT -D_THREAD_SAFE -D_THREADSAFE -DTHREAD_SAFE -DTHREADSAFE -D_FILE_OFFSET_BITS=64 -I./src/ -I./src/Cedar/ -I./src/Mayaqua/ -g -fsigned-char
-+OPTIONS_COMPILE_DEBUG=-D_DEBUG -DDEBUG -DUNIX -DUNIX_LINUX -D_REENTRANT -DREENTRANT -D_THREAD_SAFE -D_THREADSAFE -DTHREAD_SAFE -DTHREADSAFE -D_FILE_OFFSET_BITS=64 -I/usr/include/openssl-1.0 -I./src/ -I./src/Cedar/ -I./src/Mayaqua/ -g -fsigned-char
+ 	Zero(dst, bits / 8);
+@@ -2302,7 +2302,7 @@ bool RsaCheck()
+ 	BIO *bio;
+ 	char errbuf[MAX_SIZE];
+ 	UINT size = 0;
+-	UINT bit = 32;
++	UINT bit = RSA_KEY_SIZE;
+ 	// Validate arguments
  
--OPTIONS_LINK_DEBUG=-g -fsigned-char -lm -ldl -lrt -lpthread -lssl -lcrypto -lreadline -lncurses -lz
-+OPTIONS_LINK_DEBUG=-g -fsigned-char -L/usr/lib/openssl-1.0 -lm -ldl -lrt -lpthread -lssl -lcrypto -lreadline -lncurses -lz
+ 	// Key generation
+@@ -2372,7 +2372,7 @@ bool RsaGen(K **priv, K **pub, UINT bit)
+ 	}
+ 	if (bit == 0)
+ 	{
+-		bit = 1024;
++		bit = RSA_KEY_SIZE;
+ 	}
  
--OPTIONS_COMPILE_RELEASE=-DNDEBUG -DVPN_SPEED -DUNIX -DUNIX_LINUX -D_REENTRANT -DREENTRANT -D_THREAD_SAFE -D_THREADSAFE -DTHREAD_SAFE -DTHREADSAFE -D_FILE_OFFSET_BITS=64 -I./src/ -I./src/Cedar/ -I./src/Mayaqua/ -O2 -fsigned-char
-+OPTIONS_COMPILE_RELEASE=-DNDEBUG -DVPN_SPEED -DUNIX -DUNIX_LINUX -D_REENTRANT -DREENTRANT -D_THREAD_SAFE -D_THREADSAFE -DTHREAD_SAFE -DTHREADSAFE -D_FILE_OFFSET_BITS=64 -I/usr/include/openssl-1.0 -I./src/ -I./src/Cedar/ -I./src/Mayaqua/ -O2 -fsigned-char
- 
--OPTIONS_LINK_RELEASE=-O2 -fsigned-char -lm -ldl -lrt -lpthread -lssl -lcrypto -lreadline -lncurses -lz
-+OPTIONS_LINK_RELEASE=-O2 -fsigned-char -L/usr/lib/openssl-1.0 -lm -ldl -lrt -lpthread -lssl -lcrypto -lreadline -lncurses -lz
- 
- INSTALL_BINDIR=/usr/bin/
- INSTALL_VPNSERVER_DIR=/usr/vpnserver/
---- a/src/makefiles/linux_64bit.mak	2016-04-17 23:59:46.000000000 +1000
-+++ b/src/makefiles/linux_64bit.mak	2017-05-02 10:40:56.609323070 +1000
-@@ -25,13 +25,13 @@
- 
- #CC=gcc
- 
--OPTIONS_COMPILE_DEBUG=-D_DEBUG -DDEBUG -DUNIX -DUNIX_LINUX -DCPU_64 -D_REENTRANT -DREENTRANT -D_THREAD_SAFE -D_THREADSAFE -DTHREAD_SAFE -DTHREADSAFE -D_FILE_OFFSET_BITS=64 -I./src/ -I./src/Cedar/ -I./src/Mayaqua/ -g -fsigned-char -m64
-+OPTIONS_COMPILE_DEBUG=-D_DEBUG -DDEBUG -DUNIX -DUNIX_LINUX -DCPU_64 -D_REENTRANT -DREENTRANT -D_THREAD_SAFE -D_THREADSAFE -DTHREAD_SAFE -DTHREADSAFE -D_FILE_OFFSET_BITS=64 -I/usr/include/openssl-1.0 -I./src/ -I./src/Cedar/ -I./src/Mayaqua/ -g -fsigned-char -m64
- 
--OPTIONS_LINK_DEBUG=-g -fsigned-char -m64 -lm -ldl -lrt -lpthread -lssl -lcrypto -lreadline -lncurses -lz
-+OPTIONS_LINK_DEBUG=-g -fsigned-char -m64 -L/usr/lib/openssl-1.0 -lm -ldl -lrt -lpthread -lssl -lcrypto -lreadline -lncurses -lz
- 
--OPTIONS_COMPILE_RELEASE=-DNDEBUG -DVPN_SPEED -DUNIX -DUNIX_LINUX -DCPU_64 -D_REENTRANT -DREENTRANT -D_THREAD_SAFE -D_THREADSAFE -DTHREAD_SAFE -DTHREADSAFE -D_FILE_OFFSET_BITS=64 -I./src/ -I./src/Cedar/ -I./src/Mayaqua/ -O2 -fsigned-char -m64
-+OPTIONS_COMPILE_RELEASE=-DNDEBUG -DVPN_SPEED -DUNIX -DUNIX_LINUX -DCPU_64 -D_REENTRANT -DREENTRANT -D_THREAD_SAFE -D_THREADSAFE -DTHREAD_SAFE -DTHREADSAFE -D_FILE_OFFSET_BITS=64 -I/usr/include/openssl-1.0 -I./src/ -I./src/Cedar/ -I./src/Mayaqua/ -O2 -fsigned-char -m64
- 
--OPTIONS_LINK_RELEASE=-O2 -fsigned-char -m64 -lm -ldl -lrt -lpthread -lssl -lcrypto -lreadline -lncurses -lz
-+OPTIONS_LINK_RELEASE=-O2 -fsigned-char -m64 -L/usr/lib/openssl-1.0 -lm -ldl -lrt -lpthread -lssl -lcrypto -lreadline -lncurses -lz
- 
- INSTALL_BINDIR=/usr/bin/
- INSTALL_VPNSERVER_DIR=/usr/vpnserver/
+ 	// Key generation
+diff --git a/src/Mayaqua/Encrypt.h b/src/Mayaqua/Encrypt.h
+index d795d2d6..0c481610 100644
+--- a/src/Mayaqua/Encrypt.h
++++ b/src/Mayaqua/Encrypt.h
+@@ -128,7 +128,7 @@ void RAND_Free_For_SoftEther();
+ #define	DES_IV_SIZE					8			// DES IV size
+ #define DES_BLOCK_SIZE				8			// DES block size
+ #define DES3_KEY_SIZE				(8 * 3)		// 3DES key size
+-#define RSA_KEY_SIZE				128			// RSA key size
++#define RSA_KEY_SIZE				1024		// RSA key size
+ #define DH_KEY_SIZE					128			// DH key size
+ #define	RSA_MIN_SIGN_HASH_SIZE		(15 + SHA1_HASH_SIZE)	// Minimum RSA hash size
+ #define	RSA_SIGN_HASH_SIZE			(RSA_MIN_SIGN_HASH_SIZE)	// RSA hash size

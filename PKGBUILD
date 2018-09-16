@@ -2,16 +2,18 @@
 # Maintainer: Jonathan Liu <net147@gmail.com>
 pkgname=softethervpn
 pkgver=v4.25_9656
-pkgrel=4
+pkgrel=5
 pkgdesc="Multi-protocol VPN Program from University of Tsukuba"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 source=('http://www.softether-download.com/files/softether/v4.25-9656-rtm-2018.01.15-tree/Source_Code/softether-src-v4.25-9656-rtm.tar.gz'
         'aarch64.patch'
+	'openssl.patch'
         'softethervpn-bridge.service'
         'softethervpn-client.service'
         'softethervpn-server.service')
 sha1sums=('5ceb11866af212278c8a151bb40a2a048bdd7fea'
           '75d351833c41ee4c54d4ad18dde678e6df47e220'
+          '59565cedebeb65452aed776b582bc3b833872686'
           '12a3919aabcdd7531320056a4b43072892232925'
           'ba594c7defb52548369726c56e2cad633019abef'
           '06cd320553daf0dffdf6a81a22d630fbe211fc33')
@@ -22,6 +24,7 @@ url="http://www.softether.org/"
 build(){
   cd "${srcdir}/${pkgver//_/-}"
   patch -Np1 -i "${srcdir}/aarch64.patch"
+  patch -Np1 -i "${srcdir}/openssl.patch"
 
   if [ "${CARCH}" == "i686" ]; then
     cp src/makefiles/linux_32bit.mak Makefile
