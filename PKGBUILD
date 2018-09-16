@@ -1,36 +1,41 @@
-# Maintainer: Marcin Mikołajczak <me@m4sk.in>
-# Previous maintainer: Jerome Leclanche <jerome@leclan.ch>
+# Maintainer: Chih-Hsuan Yan <yan12125@gmail.com>
+# Contributor: Marcin Mikołajczak <me@m4sk.in>
+# Contributor: Jerome Leclanche <jerome@leclan.ch>
 
 _pkgname=lximage-qt
 pkgname=$_pkgname-git
-pkgver=0.7.0.79.g875346e
+pkgver=0.7.0.134.gbb3d595
 pkgrel=2
 pkgdesc="The LXQt image viewer"
 arch=("i686" "x86_64")
 url="https://lxqt.org"
 license=("GPL2")
-depends=("libfm-qt-git" "qt5-x11extras" "qt5-svg" "hicolor-icon-theme")
+depends=("libfm-qt-git" "qt5-x11extras" "qt5-svg" "hicolor-icon-theme" "libexif")
 makedepends=("git" "cmake" "qt5-tools" "lxqt-build-tools-git")
-provides=("$_pkgname")
+provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("git+https://github.com/lxqt/$_pkgname.git")
 sha256sums=('SKIP')
 
-
 pkgver() {
-	cd "$srcdir/$_pkgname"
-	git describe --always | sed "s/-/./g"
+  cd $_pkgname
+  git describe --always | sed "s/-/./g"
+}
+
+prepare() {
+  cd $_pkgname
+  mkdir -p build
 }
 
 build() {
-	mkdir -p build
-	cd build
-	cmake "$srcdir/$_pkgname" \
-		-DCMAKE_INSTALL_PREFIX=/usr
-	make
+  cd $_pkgname/build
+  cmake \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    ..
+  make
 }
 
 package() {
-	cd build
-	make DESTDIR="$pkgdir" install
+  cd build
+  make DESTDIR="$pkgdir" install
 }
