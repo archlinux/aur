@@ -5,17 +5,15 @@
 
 pkgname=shadow-beta
 pkgver=0.7.6
-pkgrel=5
+pkgrel=6
 pkgdesc="Shadow launcher"
 arch=('x86_64')
 url="http://shadow.tech"
 license=('unknown')
-depends=('desktop-file-utils' 'freetype2' 'gcc54' 'gconf' 'hicolor-icon-theme' 'json-c' 'libappindicator-gtk2' 'libbsd' 'libcurl-gnutls' 'libdrm' 'libnotify' 'libva' 'libxtst' 'nss' 'opus' 'qt5-base' 'qt5-svg' 'sdl2' 'libappindicator' 'libcurl-compat' 'sdl' 'gcc7-libs' 'ttf-dejavu')
+depends=('desktop-file-utils' 'freetype2' 'gcc5' 'gconf' 'hicolor-icon-theme' 'json-c' 'libappindicator-gtk2' 'libbsd' 'libcurl-gnutls' 'libdrm' 'libnotify' 'libva' 'libxtst' 'nss' 'opus' 'qt5-base' 'qt5-svg' 'sdl2' 'libappindicator' 'libcurl-compat' 'sdl' 'gcc7-libs' 'ttf-dejavu')
 provides=(shadow-beta)
-source=('https://macosx.update.blade-group.fr/mpl/linux/beta/bionic/shadowbeta.deb' 'https://raw.githubusercontent.com/NicolasGuilloux/blade-shadow-beta/master/AppImage/wrapper.pl' 'https://raw.githubusercontent.com/NicolasGuilloux/blade-shadow-beta/master/AppImage/report.pl')
-md5sums=('6fc188e0e818c9d3af6dbb2d51a88f91'
-         '7d2a0f006a6089ea5a46512b8eadda92'
-         '1ba5f5e8f5abc8568ab16bcee852bf86')
+source=('https://macosx.update.blade-group.fr/mpl/linux/beta/bionic/shadowbeta.deb')
+md5sums=('6fc188e0e818c9d3af6dbb2d51a88f91')
 install=INSTALL
 
 # Get the version as a datetime
