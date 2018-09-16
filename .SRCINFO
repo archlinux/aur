@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-ncurses
 	pkgdesc = System V Release 4.0 curses emulation library (mingw-w64)
-	pkgver = 6.1.20180526
+	pkgver = 6.1.20180908
 	pkgrel = 1
 	url = https://www.gnu.org/software/ncurses/
 	arch = any
@@ -13,9 +13,9 @@ pkgbase = mingw-w64-ncurses
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = ncurses-6.1.20180526.tar.gz::https://invisible-mirror.net/archives/ncurses/current/ncurses-6.1-20180526.tgz
+	source = ncurses-6.1.20180908.tar.gz::https://invisible-mirror.net/archives/ncurses/current/ncurses-6.1-20180908.tgz
 	source = 001-use-libsystre.patch
-	md5sums = 350deaa0dc32c30a791ec315851cb519
+	md5sums = 3b3bbfadd7ef719a0082788132cff8cb
 	md5sums = b669861903d0699b6535b7c6e028880d
 
 pkgname = mingw-w64-ncurses
