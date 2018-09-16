@@ -28,6 +28,12 @@ pkgver() {
   printf "%s.r%s" "${RELEASE#?}" "${REVISION}"
 }
 
+prepare() {
+  cd ${_pkgname}-${_branch}
+
+  sed -i "s/\(VERSION = \).*/\1${pkgver}/" GPXLab/GPXLab.pro
+}
+
 build() {
   cd ${_pkgname}-${_branch}
 
