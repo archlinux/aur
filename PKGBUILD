@@ -109,14 +109,15 @@ build() {
 
 package () {
   _version="${pkgver%.*}"
+  _ff_path=/opt/firefox-nightly/browser/
   cd ${srcdir}
-  install -d ${pkgdir}/opt/firefox-${_version}/browser/extensions/
-  install -d ${pkgdir}/opt/firefox-${_version}/defaults/pref
-  echo 'pref("intl.locale.matchOS", true);' >> ${pkgdir}/opt/firefox-${_version}/defaults/pref/lang-pref.js
+  install -d ${pkgdir}/${_ff_path}/browser/extensions/
+  install -d ${pkgdir}/${_ff_path}/defaults/pref
+  echo 'pref("intl.locale.matchOS", true);' >> ${pkgdir}/${_ff_path}/defaults/pref/lang-pref.js
   for item in ${srcdir}/*.xpi; do
     iitem=$(basename $item)
     iitem=${iitem/.langpack.xpi/@firefox.mozilla.org.xpi}
     iitem=${iitem/firefox-${_version}./langpack-}
-    install -m644 $item ${pkgdir}/opt/firefox-${_version}/browser/extensions/$iitem
+    install -Dm644 $item ${pkgdir}/${_ff_path}/browser/extensions/$iitem
   done
 }
