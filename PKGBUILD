@@ -2,6 +2,9 @@
 # Contributor: Timothée Ravier <tim@siosm.fr>
 # Contributor: Nicky726 <Nicky726 [at] gmail [dot] com>
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+#
+# This PKGBUILD is maintained on https://github.com/archlinuxhardened/selinux.
+# If you want to help keep it up to date, please open a Pull Request there.
 
 # /!\ Important note /!\
 # When upgrading with policycoreutils 2.5-3, pacman fails with:
@@ -20,7 +23,7 @@ pkgrel=3
 pkgdesc="Policy analysis tools for SELinux"
 groups=('selinux')
 arch=('i686' 'x86_64')
-url="https://github.com/TresysTechnology/setools/wiki"
+url="https://github.com/SELinuxProject/setools/wiki"
 license=('GPL' 'LGPL')
 depends=('libselinux>=2.7' 'python' 'python-networkx>=2.0')
 optdepends=('python-pyqt5: needed for graphical tools'
@@ -34,7 +37,7 @@ makedepends=('bison' 'flex' 'swig'
 checkdepends=('checkpolicy' 'python2-enum34')
 conflicts=("selinux-${pkgname}")
 provides=("selinux-${pkgname}=${pkgver}-${pkgrel}")
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/TresysTechnology/setools/archive/${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/SELinuxProject/setools/archive/${pkgver}.tar.gz"
         '0001-Update-NetworkX-support-to-2.0.-NetworkX-2.0-has-API.patch')
 sha256sums=('46a927ea2b163cbe1d35cc35da43e45853e13720c7e02d4cf75a498783c19610'
             '4ff4c3e33de6fddcf42b766904a65926f5d4a2bc543a66e8c1e1f24c71350176')
