@@ -2,7 +2,7 @@
 
 _pkgname=kvdo
 pkgname=kvdo-dkms
-pkgrel=1
+pkgrel=2
 pkgver=6.2.0.219
 pkgdesc='A pair of kernel modules which provide pools of deduplicated and/or compressed block storage'
 arch=('x86_64')
