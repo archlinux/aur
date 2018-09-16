@@ -1,8 +1,8 @@
 # Maintainer: asermax <asermax@gmail.com>
-_branch='dddae1ea3911f7ecbda99ad21dbead0397a2d289'
+_branch='ac5c8f091559dac465f50abad942d50ac43e74e4'
 
 pkgname=kaggle-api
-pkgver=3.12
+pkgver=1.4.7.1
 pkgrel=1
 pkgdesc='Kaggle API CLI'
 
@@ -18,6 +18,7 @@ depends=(
   'python-dateutil'
   'python-requests'
   'python-tqdm'
+  'python-slugify'
 )
 makedepends=(
   'python-setuptools'
@@ -27,7 +28,7 @@ source=(
   "https://github.com/Kaggle/kaggle-api/archive/${_branch}.tar.gz"
 )
 
-md5sums=('80a2b9bb912f445b8319ab17b7146dcc')
+md5sums=('d1e4d3291f62f2fb71d441240ac45894')
 
 prepare() {
   cd "$srcdir"/kaggle-api-$_branch
