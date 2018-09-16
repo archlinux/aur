@@ -1,0 +1,13 @@
+--- GUI_Main.cpp
++++ GUI_Main.cpp
+@@ -85,9 +85,9 @@
+     //Defaults
+     Menu_View_Sheet->Enable(false); //Not yet available
+     Menu_View_Tree->Enable (false); //Not yet available
+-    Menu_View_Easy->Check(); //Default to HTML with GUI.
++    Menu_View_HTML->Check(); //Default to HTML with GUI.
+     wxCommandEvent* EventTemp=new wxCommandEvent();
+-    OnMenu_View_Easy(*EventTemp);
++    OnMenu_View_HTML(*EventTemp);
+     delete EventTemp; //This is done to be GCC-compatible...
+     Menu_Debug_Demux_None->Check(); //Default to no Debug Demux
