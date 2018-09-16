@@ -1,0 +1,19 @@
+pkgbase = vk-music-fs-git
+	pkgdesc = FUSE virtual file system for VK (VKontakte) audios
+	pkgver = r86.3b26469
+	pkgrel = 1
+	url = https://github.com/vodka2/vk-music-fs
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	depends = fuse
+	depends = boost-libs
+	depends = zlib
+	depends = openssl
+	source = vk-music-fs-git::git+https://github.com/vodka2/vk-music-fs.git#branch=master
+	md5sums = SKIP
+
+pkgname = vk-music-fs-git
+
