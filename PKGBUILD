@@ -3,7 +3,7 @@
 # Contributor: Gour-Gadadhara Dasa <gour@atmarama.net>
 pkgname=xfce4-kbdleds-plugin
 pkgver=0.0.6
-pkgrel=8
+pkgrel=9
 pkgdesc="Xfce keyboard LEDs panel plugin"
 arch=('i686' 'x86_64')
 url="http://goodies.xfce.org/projects/panel-plugins/xfce4-kbdleds-plugin"
