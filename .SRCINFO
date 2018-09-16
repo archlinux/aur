@@ -6,7 +6,6 @@ pkgbase = nfancurve
 	install = nfancurve.install
 	arch = any
 	license = GPL3
-	makedepends = git
 	depends = bash
 	depends = nvidia
 	depends = nvidia-settings

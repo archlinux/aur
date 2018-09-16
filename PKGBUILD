@@ -11,7 +11,6 @@ url="https://github.com/nan0s7/nfancurve"
 license=("GPL3")
 
 depends=("bash" "nvidia" "nvidia-settings" "procps")
-makedepends=("git")
 conflicts=("${_pkgname}-git")
 
 install=${_pkgname}.install
