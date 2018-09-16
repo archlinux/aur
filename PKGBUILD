@@ -14,7 +14,7 @@ license=('MPL')
 depends=('firefox-nightly')
 
 pkgver() {
-  _installed_ver="$(sed -n  '/%VERSION%/{n;p;}' /var/lib/pacman/local/firefox-nightly-64.0a1.20180915-1/desc)"
+  _installed_ver="$(sed -n  '/%VERSION%/{n;p;}' /var/lib/pacman/local/firefox-nightly-??.?a?.????????-*/desc)"
   if [ -n "$_installed_ver" ] && [ "${_installed_ver%%.*}"  -gt "${_version%%.*}" ]; then
     msg2 "Installed firefox-nightly is newer than $_version. Bumping to $_installed_ver"
     echo "${_installed_ver%-*}"
