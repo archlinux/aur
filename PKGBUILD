@@ -1,4 +1,5 @@
-# Maintainer: Bruno Pagani (a.k.a. ArchangeGabriel) <bruno.n.pagani@gmail.com>
+# Maintainer: José Augusto ( a.k.a starlord ) <joseaugusto.881@outlook.com>
+# Contributor: Bruno Pagani (a.k.a. ArchangeGabriel) <bruno.n.pagani@gmail.com>
 # Contributor: Kazuo Teramoto <kaz.rag@gmail.com>
 
 # Configure what to build. Use "yes" or "no".
@@ -16,7 +17,7 @@ _nautilus="no"    # GNOME Files support
 
 _pkgname=evince
 pkgname=${_pkgname}-light
-pkgver=3.28.2
+pkgver=3.30.0
 pkgrel=1
 pkgdesc="GNOME document viewer, built with minimal dependencies by default but configurable."
 url="https://wiki.gnome.org/Apps/Evince"
@@ -33,7 +34,7 @@ depends=('gtk3' 'libsm')
 [[ "${_comics}"     == "yes" ]] && depends+=('libarchive')
 [[ "${_nautilus}"   == "yes" ]] && depends+=('libnautilus-extension')
 
-makedepends=('itstool' 'intltool' 'python' 'gobject-introspection' 'gtk-doc')
+makedepends=('itstool' 'intltool' 'python' 'gobject-introspection' 'gtk-doc' 'gspell')
 
 [[ "${_nautilus}"   == "yes" ]] && makedepends+=('libnautilus-extension' 'gnome-common')
 
@@ -41,7 +42,7 @@ optdepends=('gvfs: bookmark support and session saving')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("https://download.gnome.org/sources/${_pkgname}/${pkgver:0:4}/${_pkgname}-${pkgver}.tar.xz")
-sha256sums=('0955d22d85c9f6d322b6cbb464f1cc4c352db619017ec95dad4cc5c3440f73e1')
+sha256sums=('cbd02d1c515fd7f17af1c96935e456d6ccba4d612d2d972a12079cc6b24e8cb9')
 
 build() {
     cd ${_pkgname}-${pkgver}
