@@ -4,6 +4,7 @@
 
 pkgname=firefox-nightly-i18n
 _version=64.0a1
+#_version="${pkgver%.*}"
 pkgver=64.0a1.20180916
 pkgrel=1
 pkgdesc='Universal i18n for firefox-nightly - xpi version'
@@ -13,7 +14,13 @@ license=('MPL')
 depends=('firefox-nightly')
 
 pkgver() {
-  echo "${_version}.$(date +%Y%m%d)"
+  _installed_ver="$(sed -n  '/%VERSION%/{n;p;}' /var/lib/pacman/local/firefox-nightly-64.0a1.20180915-1/desc)"
+  if [ -n "$_installed_ver" ] && [ "${_installed_ver%%.*}"  -gt "${_version%%.*}" ]; then
+    msg2 "Installed firefox-nightly is newer than $_version. Bumping to $_installed_ver"
+    echo "${_installed_ver%-*}"
+  else
+    echo "${_version}.$(date +%Y%m%d)"
+  fi
 }
 
 countdown() {
@@ -41,7 +48,8 @@ ls_lang () {
   curl "http://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-$CARCH/xpi/" | tr '"' '\n' | grep xpi$ |  sed -e 's/\.langpack\.xpi//g' -e "s#/pub/firefox/nightly/latest-mozilla-central-l10n/linux-$CARCH/xpi/firefox-[0-9.]*a1\.##"
 }
 
-prepare() {
+build() {
+  _version="${pkgver%.*}"
   cd "${srcdir}"
   msg "Getting LANG-packs list from ftp.mozilla.com…"
   srv_lang_list=($(ls_lang))
@@ -100,6 +108,7 @@ prepare() {
 }
 
 package () {
+  _version="${pkgver%.*}"
   cd ${srcdir}
   install -d ${pkgdir}/opt/firefox-${_version}/browser/extensions/
   install -d ${pkgdir}/opt/firefox-${_version}/defaults/pref
