@@ -1,6 +1,6 @@
 #Maintainer: Plague-doctor <plague at privacyrequired dot com >
 
-pkgver=1.2.3
+pkgver=1.4.1
 pkgrel=1
 PN="pcloud"
 pkgname=pcloud-drive
@@ -10,12 +10,12 @@ source_x86_64=("https://www.pcloud.com/pcloud") # Placeholder
 arch=('x86_64')
 url="https://www.pcloud.com"
 _api_url="https://api.pcloud.com/getpublinkdownload?code="
-_api_code="XZw8VD7Zk5qOwzwnYqVyB1eGyTB9i4KVIhMy"
+_api_code="XZNN917ZMWeEAFyuVz8aAsjvfVATw5DMaQ6X"
 makedepends=('jq' 'sed')
 conflicts=('pcloud-git' 'pcloud')
-depends=('gconf')
+depends=('gconf' 'fuse2')
 
-md5sums_x86_64=('7eaf260ca0f80776a058cf6e7ed78a5b')
+md5sums_x86_64=('57d7f3e241d39a3bc2e42bba15bf2f8b')
 validpgpkeys=('A8F7858263C1E39480B731DCEAD4F103068DF8E5')
 
 prepare() {
@@ -26,7 +26,7 @@ prepare() {
 
 package() {
   install -d "$pkgdir"/{/usr/bin,opt}
-  cp -r "${srcdir}/squashfs-root/app" "${pkgdir}/opt/${PN}"
+  cp -r "${srcdir}/squashfs-root" "${pkgdir}/opt/${PN}"
   mkdir -p "${pkgdir}/usr/share/icons/hicolor"
   cp -r "${srcdir}/squashfs-root/usr/share/icons/" "${pkgdir}/usr/share/"
   ln -s "/opt/${PN}/${PN}" "${pkgdir}/usr/bin/${PN}"
