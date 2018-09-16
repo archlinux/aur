@@ -1,0 +1,16 @@
+pkgbase = zerotwo-bin
+	pkgdesc = AniList Anime Tracker - built with Electron & Vue.js
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/NicoAiko/zerotwo
+	arch = x86_64
+	license = MIT
+	depends = nodejs
+	depends = electron
+	provides = zerotwo
+	conflicts = zerotwo
+	source = https://github.com/NicoAiko/zerotwo/releases/download/v0.6.1-beta/zerotwo-ui_0.6.1_amd64.deb
+	sha256sums = a1d2ac2efd2d37a6f2ce15ac662bb1dee7738a4f53845516381783bce370462c
+
+pkgname = zerotwo-bin
+
