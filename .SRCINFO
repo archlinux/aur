@@ -1,6 +1,6 @@
 pkgbase = wine-staging-pba-git
 	pkgdesc = Wine staging branch with PBA patches for increased D3D performance. Git versions. (Also includes Path of Exile DX11 patch!)
-	pkgver = 3.15.r2.gb9ae1089+wine.3.15.r27.gc4131f69d3
+	pkgver = 3.16.r0.g7cfceb78+wine.3.16.r0.g64d9f309b7
 	pkgrel = 1
 	url = https://github.com/Firerat/wine-pba
 	install = wine.install
@@ -164,10 +164,10 @@ pkgbase = wine-staging-pba-git
 	optdepends = lib32-vulkan-icd-loader
 	optdepends = cups
 	optdepends = samba
-	provides = wine=3.15.r27.gc4131f69d3
-	provides = wine-wow64=3.15.r27.gc4131f69d3
-	provides = wine-git=3.15.r27.gc4131f69d3
-	provides = wine-staging=3.15.r2.gb9ae1089
+	provides = wine=3.16.r0.g64d9f309b7
+	provides = wine-wow64=3.16.r0.g64d9f309b7
+	provides = wine-git=3.16.r0.g64d9f309b7
+	provides = wine-staging=3.16.r0.g7cfceb78
 	conflicts = wine
 	conflicts = wine-wow64
 	conflicts = wine-staging
