@@ -6,7 +6,7 @@
 # Contributor: koral <koral at mailoo dot org>
 
 pkgname=nix
-pkgver=2.0.4
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="A purely functional package manager"
 arch=('i686' 'x86_64' 'armv7h')
@@ -16,7 +16,7 @@ depends=('gc' 'libsodium')
 makedepends=('bzip2' 'gc' 'openssl')
 install=nix.install
 source=("https://nixos.org/releases/nix/nix-$pkgver/nix-$pkgver.tar.xz")
-sha256sums=('166540ff7b8bb41449586b67e5fc6ab9e25525f6724b6c6bcbfb0648fbd6496b')
+sha256sums=('63b1d49ea678162ada6996e42abb62cbc6e65cfefa4faa5436ae37100504720b')
 
 
 prepare() {
