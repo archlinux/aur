@@ -1,6 +1,6 @@
 pkgbase = calendar
 	pkgdesc = Reminder utility (OpenBSD)
-	pkgver = 1.35
+	pkgver = 1.9
 	pkgrel = 1
 	url = http://www.openbsd.org/cgi-bin/cvsweb/src/usr.bin/calendar
 	arch = x86_64
@@ -9,8 +9,10 @@ pkgbase = calendar
 	makedepends = openssh
 	source = calendar-1.35-linux.patch
 	source = Makefile.linux
+	source = LICENSE
 	sha256sums = 792b22f398ccf78364c1eb45cb0353599e126b6028b9afa7117e8114444b6f69
 	sha256sums = a6f24859c760608b5d4f671968abb867bcfab46aa6b8b3f187d19a60b280de5e
+	sha256sums = 95112fa05d9b7204808ede37b1c77469826c8c3875e4b1523307b5050d966564
 
 pkgname = calendar
 
