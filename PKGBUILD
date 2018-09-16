@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=gtk-theme-elementary-git
-pkgver=5.1.1.r92.92aee75
+pkgver=5.1.1.r95.b350fa0
 pkgrel=1
 pkgdesc='elementary GTK theme'
 arch=('any')
@@ -9,10 +9,9 @@ url='https://github.com/elementary/stylesheet'
 license=('GPL3')
 groups=('pantheon-unstable')
 optdepends=('gtk-engine-murrine: GTK2 theme')
-makedepends=('git')
+makedepends=('git' 'meson')
 provides=('gtk-theme-elementary')
 conflicts=('gtk-theme-elementary')
-replaces=('gtk-theme-elementary-bzr')
 source=('gtk-theme-elementary::git+https://github.com/elementary/stylesheet.git')
 sha256sums=('SKIP')
 
@@ -22,10 +21,13 @@ pkgver() {
   git describe --tags | sed 's/-/.r/; s/-g/./'
 }
 
+build() {
+  arch-meson gtk-theme-elementary build
+  ninja -C build
+}
+
 package() {
-  install -dm 755 "${pkgdir}"/usr/share/themes
-  cp -dr --no-preserve='ownership' gtk-theme-elementary "${pkgdir}"/usr/share/themes/elementary
-  rm -rf "${pkgdir}"/usr/share/themes/elementary/{.git,.gitignore,.stylelintrc.json,.travis.yml}
+  DESTDIR="${pkgdir}" ninja -C build install
 }
 
 # vim: ts=2 sw=2 et:
