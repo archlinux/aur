@@ -3,26 +3,39 @@ read -r -d '' msg << TIPS
 \e[1;33m====================================\e[0m\n
 -----------更新开发者工具-----------
 \n
+当提示有更新时，可以使用以下方法更新：
 \n
-    当提示有更新时可进入/opt/wechat_web_devtools/执行\e[1m./bin/update_package_nw.sh\e[0m更新，或者等待该软件包维护者更新版本。也可以点击安装，安装需要注意：
 \n
-    1. 确认安装到$HOME/.wine/drive_c/Program Files (x86)/Tencent/微信web开发者工具路径下；
+- 进入/opt/wechat_web_devtools/执行\e[1m./bin/update_package_nw.sh\e[0m
+\n
+\n
+- 等待该软件包维护者更新版本。可到以下地址反馈：
+\n
+---github    https://github.com/levinit/aur-pkgbuilds
+\n
+---AURsite  https://aur.archlinux.org/packages/wechat_web_devtools
+\n
+\n
+- 直接点击安装，但安装需要注意：
+\n
+    1. 确认安装到~/.wine/drive_c/Program Files (x86)/Tencent/微信web开发者工具路径下；
 \n
     2. 安装完成时去掉打开开发者工具项前面的勾。
 \n
 \n
 -----------wcc和wcsc编译问题-----------
 \n
+进入/opt/wechat_web_devtools/，执行以下命令，让工具重新生成wcc和wcsc。
 \n
-    进入/opt/wechat_web_devtools/，执行以下命令，让工具重新生成wcc和wcsc（会删除开发者工具配置文件,所有工程和登录信息会消失）
+提示：该操作将删除开发者工具的配置文件，所有工程和登录信息会消失。
 \n
-    \e[1m./bin/wxdt uninstall \e[0m
+\e[1m  ./bin/wxdt uninstall  \e[0m
 \n
-    \e[1m./bin/wxdt install \e[0m
+\e[1m  ./bin/wxdt install  \e[0m
 \n
 \n
 -----------更多内容-----------
-\n访问\e[1m https://github.com/cytle/wechat_web_devtools \e[0m
+\n向项目维护者反馈：\e[1m https://github.com/cytle/wechat_web_devtools \e[0m
 \n
 \e[1;33m====================================\e[0m
 TIPS
