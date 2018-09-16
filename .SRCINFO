@@ -1,14 +1,14 @@
 pkgbase = air-for-steam
 	pkgdesc = An elegant and customizable skin for Steam
 	pkgver = 2018_0805
-	pkgrel = 4
-	url = https://github.com/Outsetini/Air-for-Steam
+	pkgrel = 5
+	url = https://github.com/airforsteam/Air-for-Steam
 	install = air-for-steam.install
 	arch = any
 	license = custom:cc-by-nc-4.0
 	depends = steam
 	depends = sssm>=1.2.0
-	source = https://github.com/Outsetini/Air-for-Steam/archive/2018-0805.tar.gz
+	source = air-for-steam_2018_0805.tar.gz::https://github.com/airforsteam/Air-for-Steam/archive/2018-0805.tar.gz
 	sha256sums = 838df672cdc28ba8491a7bea033807384bf360f8f3873db383a3c1c12b82e3ab
 
 pkgname = air-for-steam
