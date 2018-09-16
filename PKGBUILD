@@ -18,7 +18,7 @@ TAG="OPENBSD_6_3"
 
 pkgver(){
     cd ${pkgname}
-    cvs -q status -R . | grep 'Working revision:' | awk '{ print $3; }' | sort -u | tail -n 1
+    cvs -q status -R . | grep 'Working revision:' | awk '/Working revision:/ { if ($3 > n) n = $3;} END { print n; }'
 }
 
 prepare() {
