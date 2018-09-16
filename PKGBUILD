@@ -1,8 +1,9 @@
 # Maintainer: Miguel Useche <migueluseche@skatox.com>
 # Contributor: mncarbone <mncarbone@gmail.com>
+# Contributor: Cristophero <cristophero.alvarado@gmail.com>
 pkgname=pseint
-pkgver=20180202
-pkgrel=2
+pkgver=20180801
+pkgrel=1
 pkgdesc="A tool for learning programming basis with a simple spanish pseudocode"
 arch=('i686' 'x86_64')
 url="http://pseint.sourceforge.net"
@@ -13,12 +14,12 @@ makedepends=()
 optdepends=()
 if [ "${CARCH}" = 'x86_64' ]; then
     _pkgarch="l64"
-    _sha256sum="7f5faa531670999e6ca37c039c0f133398e2ba1ef5215272c93ce815d358be57"
+    _sha256sum="a2918fc88621b33c48fa895816e509f252aa849a49ace6173c22b098a32618cc"
 elif [ "${CARCH}" = 'i686' ]; then
     _pkgarch="l32"
-    _sha256sum="da8656142c4ef5179a2b3c874ca1c6dec6b37bd784abd41cead1c13a550e7351"
+    _sha256sum="67e225ae81c2a2a5d88db374bfe81de8bdb880f5e3452e6ca3796d7b6ef0f8f2"
 fi
-source=(http://downloads.sourceforge.net/project/${pkgname}/${pkgver}/$pkgname-${_pkgarch}-${pkgver}.tgz)
+source=(https://razaoinfo.dl.sourceforge.net/project/${pkgname}/${pkgver}/$pkgname-${_pkgarch}-${pkgver}.tgz)
 noextract=()
 sha256sums=("${_sha256sum}")
 
