@@ -2,11 +2,11 @@
 
 _target=xtensa-elf
 pkgname=$_target-gcc
-_pkgver=8.1.0
-pkgver=$_pkgver+20180427
+_pkgver=8.2.0
+#_snapshot=8-20180824
+pkgver=$_pkgver${_snapshot/*-/+}
 _islver=0.19
 pkgrel=1
-_snapshot=${pkgver:0:1}-${pkgver##$_pkgver+}
 pkgdesc="The GNU Compiler Collection - cross compiler for Xtensa target"
 arch=('x86_64' 'i686' 'armv7h')
 url='http://gcc.gnu.org/'
@@ -14,11 +14,11 @@ license=(GPL LGPL FDL)
 depends=($_target-binutils libmpc zlib)
 makedepends=(gmp mpfr)
 options=(!emptydirs !strip)
-source=(#https://gcc.gnu.org/pub/gcc/releases/gcc-$_pkgver/gcc-$_pkgver.tar.bz2
-        https://gcc.gnu.org/pub/gcc/snapshots/$_snapshot/gcc-$_snapshot.tar.xz
+source=(https://gcc.gnu.org/pub/gcc/releases/gcc-$_pkgver/gcc-$_pkgver.tar.xz
+        #https://gcc.gnu.org/pub/gcc/snapshots/$_snapshot/gcc-$_snapshot.tar.xz
         http://isl.gforge.inria.fr/isl-$_islver.tar.bz2
         https://raw.githubusercontent.com/qca/open-ath9k-htc-firmware/master/local/patches/gcc.patch)
-sha512sums=('c38c382f2246e2164d5f8d0402c4cfad7de0084f0d63d2ef9b489b7fa1695b157a2983f282811b6089dcb447432866d80dae4e84561c7f41395558cd96901d67'
+sha512sums=('64898a165f67e136d802a92e7633bf1b06c85266027e52127ea025bf5fc2291b5e858288aac0bdba246e6cdf7c6ec88bc8e0e7f3f6f1985f4297710cafde56ed'
             '08f4db964d9e02ec8aa9779378ed76e0ddf1d56f81f87664dbf787555ce496cdc87e836f8a51ae137f45e648c604870cce07ee45919eafb549e404afb8f27083'
             '7637408259cef4b14a2f41690bbc769ad0dc6cf4d1c782405526aeb58f68193269af6882b23fb57c3521174e45709ed2d54f0af1f835646e70a3bfd9f626aad9')
 
