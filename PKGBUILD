@@ -2,7 +2,7 @@
 
 pkgname=devtools32-git
 _pkgname=devtools
-pkgver=20180523
+pkgver=20180914
 pkgrel=1
 pkgdesc='Tools for Arch Linux package maintainers'
 arch=('any')
@@ -14,6 +14,7 @@ provides=($_pkgname=$pkgver)
 conflicts=($_pkgname)
 source=("https://sources.archlinux.org/other/$pkgname/$pkgname-$pkgver.tar.gz"{,.sig})
 source=("$pkgname::git+https://github.com/bbidulock/devtools32.git")
+source=("$pkgname::git+https://git.archlinux32.org/archlinux32/devtools32.git")
 validpgpkeys=('487EACC08557AD082088DABA1EB2638FF56C0C53'
               '4AA4767BBC9C4B1D18AE28B77F2D434B9741E8AC'
               '86CFFCA918CF3AF47147588051E8B148A9999C34'
@@ -22,6 +23,7 @@ validpgpkeys=('487EACC08557AD082088DABA1EB2638FF56C0C53'
               'B81B051F2D7FC867AAFF35A58DBD63B82072D77A')
 md5sums=('45d4334ed90d9c41adc8c34eea93dcfa'
          'SKIP')
+md5sums=('SKIP')
 md5sums=('SKIP')
 
 pkgver() {
