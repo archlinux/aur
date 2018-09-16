@@ -27,7 +27,7 @@
 
 _pkgname=retroshare
 pkgname=${_pkgname}-git
-pkgver=v0.6.4.r464.g68e130a1f
+pkgver=v0.6.4.r545.gac9350d37
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -88,15 +88,6 @@ build() {
 	# remove unwanted plugins
 	[[ "$_plugin_voip" != 'true' ]] && sed -i '/VOIP \\/d' plugins/plugins.pro
 	[[ "$_plugin_feedreader" != 'true' ]] && sed -i '/FeedReader/d' plugins/plugins.pro
-
-	# call version scripts
-	cd libretroshare/src
-	LANG=C ./version_detail.sh
-	cd ../..
-
-	cd retroshare-gui/src
-	LANG=C ./version_detail.sh
-	cd ../..
 
 	qmake   CONFIG-=debug CONFIG+=release \
 		${_optJsonapi} ${_optAutol} ${_optClang} \
