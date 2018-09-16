@@ -2,7 +2,7 @@
 
 pkgname=fluxctl-bin
 pkgdesc="CLI client for Flux, the GitOps Kubernetes operator"
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/weaveworks/flux"
