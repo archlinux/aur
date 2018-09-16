@@ -4,9 +4,9 @@
 # Contributor: tty0 <vt.tty0[d0t]gmail.com>
 
 pkgname=teensyduino
-pkgver=1.41
-_pkgver=1.41
-_arduino=1.8.5
+pkgver=1.43
+_pkgver=1.43
+_arduino=1.8.6
 pkgrel=1
 pkgdesc="Arduino SDK with Teensyduino"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ install="teensyduino.install"
 source=('arduino.xml'
         'teensyduino.sh'
         'teensy-loader.desktop'
-        "git+https://github.com/PaulStoffregen/teensy_loader_cli.git#commit=ee411ad7caa2b40751f1b776c3311320777a9609"
+        "git+https://github.com/PaulStoffregen/teensy_loader_cli.git#commit=d239f76f01f922e115c2661a6a3855dfc660a69c"
         "http://www.pjrc.com/teensy/49-teensy.rules"
         'LICENSE')
 source_i686+=("http://downloads.arduino.cc/arduino-${_arduino}-linux32.tar.xz"
@@ -35,10 +35,10 @@ sha256sums=('473b82156505e9bd903e4d8484e8d183f2e3bf3c1f7e29940b815929ae597b68'
             'SKIP'
             '031de0b26991b5a3b19c497d9c0a17f86c40c55d925b9d07d19ab89f2286469d'
             '25980feb5927b8bea8b8e999f5002e110825b1bc3d546fa902c2db5c824d33f3')
-sha256sums_i686=('9c0e41d45d8b5d9c87e021fad6ed3c740002cb74f1a9c79b007717ac125539e5'
-                 'a8e3dac44b387784a038e6f4e3b4c898ad3c4abf7783943dbd12a36a158e360d')
-sha256sums_x86_64=('bdf985da7289c02f8b7761a9a524921f6535fe4cec27a5fc57ce305afc1a1ab9'
-                   'caedbfe8253768d99cdc44389a919c361952c4a33b8dbbd4bf4be4b7ebe142ce')
+sha256sums_i686=('a7416d456a61c576bf51b3189e035ac9d6476605624080d03ccaa3371b31db0a'
+                 'df403cb4926af50e41e1e21f07bc4d9584cf06598ef581f6d00d090dcf0444eb')
+sha256sums_x86_64=('9a97b402b6bcd1070da33fe81eae5bbcced048246f3bf390ea613d90c800682d'
+                   'fb4fbf0b0cc129a4eff63d467d4e6ce971c8763f59c43b64625166fbe8861f0c')
 
 if [ "$CARCH" == 'x86_64' ]; then
   _bits=64
