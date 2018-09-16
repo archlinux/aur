@@ -1,13 +1,13 @@
 # Maintainer: Felix Kauselmann <licorn at gmail dot com>
 
 pkgname=libpdfium-nojs
-pkgver=3440.r7.a1c1c63d34
-pkgrel=2
+pkgver=3497.r2.139f7fbf60
+pkgrel=1
 pkgdesc="Open-source PDF rendering engine."
 arch=('x86_64')
 url="https://pdfium.googlesource.com/pdfium/"
 license=('BSD')
-depends=('freetype2' 'lcms2' 'libjpeg' 'openjpeg2')
+depends=('freetype2' 'lcms2' 'libjpeg' 'openjpeg2' 'icu')
 conflicts=('libpdfium-bin')
 provides=('libpdfium')
 makedepends=('git' 'python2' 'gn' 'ninja')
@@ -23,7 +23,7 @@ md5sums=('SKIP'
          'SKIP'
          'SKIP'
          '7fbbe2baf9a1fed80ad74278e901fa0e'
-         '18cb7ae314a40fec21949a5f87bb80d3')
+         'bbab1612841a1b2b0802ef75f02b9daf')
 
 pkgver() {
 
