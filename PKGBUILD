@@ -11,9 +11,9 @@ license=('GPL2')
 conflicts=("xfce4-kbdleds-plugin-git")
 depends=('xfce4-panel')
 makedepends=('intltool')
-source=("http://git.xfce.org/panel-plugins/${pkgname}/snapshot/${pkgname}-${pkgver}.tar.bz2")
+source=("https://git.xfce.org/panel-plugins/${pkgname}/snapshot/${pkgname}-${pkgver}.tar.gz")
 install="${pkgname}.install"
-sha256sums=('2c36c6ac5ef2bd564058e6040888b21a67939ba79041249d10a9ccc2b6b6bca2')
+sha256sums=('21e8e37cd55c38d0e29cd9a0396b030926b86d4790dfbb1727818cd0da8ee888')
 
 build() {
 	cd "${pkgname}-${pkgver}"

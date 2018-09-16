@@ -10,8 +10,8 @@ pkgbase = xfce4-kbdleds-plugin
 	makedepends = intltool
 	depends = xfce4-panel
 	conflicts = xfce4-kbdleds-plugin-git
-	source = http://git.xfce.org/panel-plugins/xfce4-kbdleds-plugin/snapshot/xfce4-kbdleds-plugin-0.0.6.tar.bz2
-	sha256sums = 2c36c6ac5ef2bd564058e6040888b21a67939ba79041249d10a9ccc2b6b6bca2
+	source = https://git.xfce.org/panel-plugins/xfce4-kbdleds-plugin/snapshot/xfce4-kbdleds-plugin-0.0.6.tar.gz
+	sha256sums = 21e8e37cd55c38d0e29cd9a0396b030926b86d4790dfbb1727818cd0da8ee888
 
 pkgname = xfce4-kbdleds-plugin
 
