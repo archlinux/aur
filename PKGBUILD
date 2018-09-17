@@ -4,7 +4,7 @@
 
 pkgname=gscreenshot
 pkgver=2.10.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A simple screenshot tool supporting multiple backends"
 arch=('any')
@@ -49,6 +49,6 @@ check() {
 package() {
         echo $pkgdir
         cd $srcdir/gscreenshot-$pkgver
-        python setup.py install --root="$pkgdir/" --optimize=1
+        python setup.py install --root="$pkgdir/" --optimize=1 --force
         chmod +x "$pkgdir/usr/bin/gscreenshot"
 }

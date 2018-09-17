@@ -1,7 +1,7 @@
 pkgbase = gscreenshot
 	pkgdesc = A simple screenshot tool supporting multiple backends
 	pkgver = 2.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/thenaterhood/gscreenshot
 	arch = any
 	license = GPL
