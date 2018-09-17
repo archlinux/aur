@@ -23,7 +23,7 @@ pkgdesc="GNOME document viewer, built with minimal dependencies by default but c
 url="https://wiki.gnome.org/Apps/Evince"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('gtk3' 'libsm')
+depends=('gtk3' 'libsm' 'gspell')
 
 [[ "${_pdf}"        == "yes" ]] && depends+=('poppler-glib')
 [[ "${_multimedia}" == "yes" ]] && depends+=('gst-plugins-base-libs')
@@ -34,7 +34,7 @@ depends=('gtk3' 'libsm')
 [[ "${_comics}"     == "yes" ]] && depends+=('libarchive')
 [[ "${_nautilus}"   == "yes" ]] && depends+=('libnautilus-extension')
 
-makedepends=('itstool' 'intltool' 'python' 'gobject-introspection' 'gtk-doc' 'gspell')
+makedepends=('itstool' 'intltool' 'python' 'gobject-introspection' 'gtk-doc')
 
 [[ "${_nautilus}"   == "yes" ]] && makedepends+=('libnautilus-extension' 'gnome-common')
 
