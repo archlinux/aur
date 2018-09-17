@@ -9,10 +9,10 @@ pkgdesc="OCaml SSL Library"
 arch=('i686' 'x86_64')
 url="http://savonet.sourceforge.net/"
 license=('custom')
-depends=('ocaml' 'openssl')
-makedepends=('ocaml-findlib' 'dune')
-source=("https://github.com/savonet/$pkgname/archive/v$pkgver.tar.gz")
-options=('!strip' 'staticlibs')
+depends=('openssl')
+makedepends=('ocaml' 'ocaml-findlib' 'autoconf')
+source=("https://github.com/savonet/ocaml-ssl/archive/v$pkgver.tar.gz")
+options=(!libtool !strip zipman !makeflags staticlibs)
 
 build() {
 	cd $pkgname-$pkgver
@@ -28,7 +28,6 @@ package() {
 
 	# Work around the install command
 	make OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)" install
-
 	# Install LICENSE
 	mkdir -p $pkgdir/usr/share/licenses/$pkgname/
 	awk 'BEGIN{P=0} /License/ {P = 1;} {if (P) print}' README.md > $pkgdir/usr/share/licenses/$pkgname/license
