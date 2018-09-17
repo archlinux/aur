@@ -1,4 +1,6 @@
 # Maintainer: Conor Anderson <conor@conr.ca>
+# Maintainer: Maxim Baz <$_pkgname at maximbaz dot com>
+
 pkgname=wire-desktop-beta
 _pkgname=${pkgname%-beta}
 pkgver=3.3.2872
