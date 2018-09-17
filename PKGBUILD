@@ -5,7 +5,7 @@
 # Contributor: Andreas Schönfelder <passtschu at freenet dot de>
 
 pkgname=phoronix-test-suite
-pkgver=8.0.1
+pkgver=8.2.0
 pkgrel=2
 pkgdesc="The most comprehensive testing and benchmarking platform available for Linux"
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=('php-gd'
             'openmpi: required for universe-cli test suite')
 install=${pkgname}.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/phoronix-test-suite/phoronix-test-suite/archive/v${pkgver}.tar.gz")
-sha256sums=('8bfe972c601884f2bbbf4d5069c7691637e8a30af55d2a9597dbe53911b49081')
+sha256sums=('cb92231040fd09a98a97d6620bc98758774731372f8a41b58b85357c0449904c')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
