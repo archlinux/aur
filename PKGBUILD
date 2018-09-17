@@ -36,7 +36,7 @@ prepare() {
     patch -p1 < ../calendar-1.35-linux.patch
     
     for c in calendars/*.*/* ; do
-        if [ ${c: -3} == "CVS" ]; then
+        if [ "${c: -3}" == "CVS" ]; then
             continue
         fi
         fromcode="$(grep '^LANG=' "${c}" | sed 's/^LANG=\(.*\)\.\(.*\)\(@.*\)\{0,1\}/\2/')"
