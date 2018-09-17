@@ -1,7 +1,7 @@
 # Maintainer: David Parrish <daveparrish@tutanota.com>
 
 pkgname=zap-desktop-git
-pkgver=0.2.1.beta.142.g0afe3699
+pkgver=0.2.1.beta.160.gcf53d926
 pkgrel=1
 pkgdesc="Lightning wallet focused on user experience and ease of use"
 arch=('x86_64')
