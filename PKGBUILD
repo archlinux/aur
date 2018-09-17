@@ -31,6 +31,6 @@ package() {
 	install -Dm0755 rifopass.sh "$pkgdir/usr/bin/rifopass"
 	install -Dm0755 passlistgen.sh "$pkgdir/usr/bin/passlistgen.sh"
 	install -Dm0755 rifo.sh "$pkgdir/usr/bin/rifo"
-	install -Dm0755 init-rifo.sh "$pkgdir/usr/bin/init-rifo.sh"
+	install -Dm0755 rifo-init.sh "$pkgdir/usr/bin/rifo-init.sh"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
