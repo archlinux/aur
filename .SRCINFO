@@ -1,7 +1,7 @@
 pkgbase = burstcoin-wallet
 	pkgdesc = The world's first HDD-mined cryptocurrency using an energy efficient and fair Proof-of-Capacity (PoC) consensus algorithm.
-	pkgver = 2.2.2
-	pkgrel = 4
+	pkgver = 2.2.3
+	pkgrel = 1
 	url = https://github.com/PoC-Consortium/burstcoin
 	install = burstcoin-wallet.install
 	arch = i686
@@ -14,10 +14,10 @@ pkgbase = burstcoin-wallet
 	options = !emptydirs
 	backup = opt/burstcoin-wallet/conf/logging-default.properties
 	backup = opt/burstcoin-wallet/conf/brs-default.properties
-	source = https://github.com/PoC-Consortium/burstcoin/releases/download/2.2.2/burstcoin-2.2.2.zip
+	source = https://github.com/PoC-Consortium/burstcoin/releases/download/2.2.3/burstcoin-2.2.3.zip
 	source = burstcoin-wallet.service
 	source = burstcoin-wallet.desktop
-	sha256sums = a7f672cf15cb9a99c22fae473b91bfed9caf45395fb83f3c61c0fa297daff2ac
+	sha256sums = 2657a6e607d4322e43d502df6b4b733166d12b333e93b3d4228a71a1c81eb69b
 	sha256sums = ffb9c5431f65485b2c08b4ca6c2b68b3c2001961b22ed4a66c528ed26bcb2dae
 	sha256sums = 44b494c86b4f8d7eeba365e83586e129543ceb67bc92a7b19df00918a8505865
 
