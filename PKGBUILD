@@ -7,7 +7,7 @@ _pkgname=jitsi
 # pkgvermajor needs manual increment
 _pkgvermajor=2.11
 # pkgver is determined automatically
-pkgver=2.11.20180809
+pkgver=2.11.20180917
 pkgrel=1
 pkgdesc="An audio/video SIP VoIP phone and instant messenger written in Java (formerly SIP-Communicator)"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ license=('Apache')
 provides=(jitsi)
 conflicts=(jitsi jitsi-stable)
 depends=('java-environment=8' 'bash' 'gtk2' 'libxv' 'alsa-lib' 'libxss')
-makedepends=('apache-ant')
+makedepends=('ant')
 optdepends=(
   'libpulse: PulseAudio support'
 )
@@ -42,7 +42,6 @@ build() {
 
   # append the build revision to the jitsi version
   sed -i "s/BUILD_ID="\"".*"\""/BUILD_ID="\"$(date +%Y%m%d)\""/" src/net/java/sip/communicator/impl/version/NightlyBuildID.java
-  . /etc/profile.d/apache-ant.sh
 
   # Force to compile with Java 8, since Java 10 does return compile errors as of 09-08-2018
   export PATH=/usr/lib/jvm/java-8-openjdk/bin/:$PATH
