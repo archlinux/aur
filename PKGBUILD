@@ -1,17 +1,19 @@
-# Maintainer: Lubosz Sarnecki <lubosz@gmail.com>
-# Original Package: Vítor Ferreira <vitor.dominor@gmail.com>
+# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org>
+# Contributor: Lubosz Sarnecki <lubosz@gmail.com>
+# Contributor: Vítor Ferreira <vitor.dominor@gmail.com>
+
 pkgname=xboxdrv-git
-pkgver=0.8.8.1185.3362c1a
+pkgver=0.8.4.r410.g1aebab2
 pkgrel=1
 pkgdesc="An XBox/XBox 360 gamepad driver - as alternative to the xpad-kernel module - with more configurability, runs in userspace and supports a multitude of controllers"
-arch=('i686' 'x86_64')
-url="http://pingus.seul.org/~grumbel/xboxdrv/"
-license=('GPL3')
-depends=('libx11' 'dbus-glib' 'libusbx')
-makedepends=('git' 'scons' 'boost' 'pkg-config' 'libx11' 'dbus-glib' 'libusb')
-provides=('xboxdrv='$pkgver)
-conflicts=('xboxdrv')
-source=("${pkgname}::git://github.com/Grumbel/xboxdrv.git"
+arch=(x86_64 i686 arm armv6h armv7h aarch64)
+url="https://xboxdrv.gitlab.io/"
+license=(GPL3)
+depends=(libx11 dbus-glib libusb)
+makedepends=(git cmake  boost)
+provides=(xboxdrv)
+conflicts=(xboxdrv)
+source=("${pkgname}::git+https://gitlab.com/xboxdrv/xboxdrv.git"
          "xboxdrv.service"
          "xboxdrv.conf")
 md5sums=('SKIP'
@@ -19,24 +21,25 @@ md5sums=('SKIP'
          'c73bb9cf8ff763e7c477366472d19813')
 
 pkgver() {
-    cd ${srcdir}/${pkgname}
-    ver=$(cat VERSION)
-    revision=$(git rev-list --count HEAD)
-    hash=$(git log --pretty=format:'%h' -n 1)
-    echo $ver.$revision.$hash
+  cd "$pkgname"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "$pkgname"
+  mkdir build
 }
 
 build() {
-    cd ${srcdir}/${pkgname}
-    make PREFIX=/usr
+  cd "$pkgname/build"
+  cmake .. -DCMAKE_INSTALL_PREFIX:PATH=/usr
+  make
 }
 
 package() {
-    cd ${srcdir}/${pkgname}
-    make PREFIX=/usr DESTDIR="$pkgdir/" install
+  cd "$pkgname/build"
+  make install DESTDIR="$pkgdir"
   
-    install -D -m755 "$srcdir/xboxdrv.service" "$pkgdir/usr/lib/systemd/system/xboxdrv.service"
-    install -D -m644 "$srcdir/xboxdrv.conf" "$pkgdir/etc/conf.d/xboxdrv"
+  install -D -m755 "$srcdir/xboxdrv.service" "$pkgdir/usr/lib/systemd/system/xboxdrv.service"
+  install -D -m644 "$srcdir/xboxdrv.conf" "$pkgdir/etc/conf.d/xboxdrv"
 }
-
-# vim:set ts=2 sw=2 et:
