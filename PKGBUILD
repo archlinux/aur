@@ -5,7 +5,7 @@
 
 pkgname=softmaker-office-2016-bin
 pkgver=2016.765
-pkgrel=1
+pkgrel=2
 pkgdesc="Softmaker Office 2016, proprietary office suite; word processing, spreadsheets, presentations"
 url="http://softmaker.com"
 arch=('x86_64' 'i686')
