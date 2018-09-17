@@ -1,0 +1,20 @@
+pkgbase = emacs-lsp-ui-git
+	pkgdesc = UI modules for lsp-mode
+	pkgver = r255.35caa39
+	pkgrel = 1
+	url = https://github.com/emacs-lsp/lsp-ui
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	depends = emacs-dash
+	depends = emacs-flycheck
+	depends = emacs-lsp-mode
+	depends = emacs-markdown-mode
+	provides = emacs-lsp-ui
+	conflicts = emacs-lsp-ui
+	source = git+https://github.com/emacs-lsp/lsp-ui.git
+	sha256sums = SKIP
+
+pkgname = emacs-lsp-ui-git
+
