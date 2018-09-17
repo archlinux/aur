@@ -1,7 +1,7 @@
 pkgbase = nix
 	pkgdesc = A purely functional package manager
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nixos.org/nix
 	install = nix.install
 	arch = i686
@@ -13,6 +13,8 @@ pkgbase = nix
 	makedepends = openssl
 	depends = gc
 	depends = libsodium
+	depends = boost
+	depends = brotli
 	source = https://nixos.org/releases/nix/nix-2.1.1/nix-2.1.1.tar.xz
 	sha256sums = 63b1d49ea678162ada6996e42abb62cbc6e65cfefa4faa5436ae37100504720b
 
