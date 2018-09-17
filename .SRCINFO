@@ -17,6 +17,7 @@ pkgbase = liquidsoap
 	depends = gst-plugins-bad
 	depends = gst-plugins-good
 	depends = gst-plugins-ugly
+	depends = ocaml-alsa
 	depends = ocaml-ao
 	depends = ocaml-bjack
 	depends = ocaml-camomile

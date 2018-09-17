@@ -8,6 +8,7 @@ arch=('i686' 'x86_64')
 url="http://savonet.sourceforge.net/"
 license=('GPL')
 depends=('fluidsynth' 'giflib' 'gst-plugins-bad' 'gst-plugins-good' 'gst-plugins-ugly'
+	'ocaml-alsa'
 	'ocaml-ao'
 	'ocaml-bjack'
 	'ocaml-camomile'
