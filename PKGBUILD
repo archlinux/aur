@@ -7,7 +7,7 @@ pkgdesc="A swiss-army knife for multimedia streaming, notably used for netradios
 arch=('i686' 'x86_64')
 url="http://savonet.sourceforge.net/"
 license=('GPL')
-depends=('dssi' 'fluidsynth' 'giflib' 'gst-plugins-bad' 'gst-plugins-good' 'gst-plugins-ugly'
+depends=('fluidsynth' 'giflib' 'gst-plugins-bad' 'gst-plugins-good' 'gst-plugins-ugly'
 	'ocaml-ao'
 	'ocaml-bjack'
 	'ocaml-camomile'

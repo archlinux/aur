@@ -12,7 +12,6 @@ pkgbase = liquidsoap
 	makedepends = ocaml-findlib
 	makedepends = ocaml-pcre
 	makedepends = perl-xml-dom
-	depends = dssi
 	depends = fluidsynth
 	depends = giflib
 	depends = gst-plugins-bad
