@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=hdhomerun-firmware-bin
-pkgver=20180327
+pkgver=20180817
 pkgrel=1
 pkgdesc="Firmwares for hdhomerun devices put into /opt/hdhomerun/firmware/"
 arch=('any')
@@ -17,8 +17,8 @@ _HDHR_EU=${legacyver}
 _HDHR3_US=${legacyver}
 _HDHR3_DT=${legacyver}
 _HDHR3_EU=${legacyver}
-_HDHR3_CC=${legacyver}
-_HDHR3_4DC=${legacyver}
+_HDHR3_CC=${pkgver}
+_HDHR3_4DC=${pkgver}
 _HDHR4_2US=${pkgver}
 _HDHR4_2DT=${pkgver}
 _HDHR4_2IS=${pkgver}
@@ -44,14 +44,14 @@ sha256sums=('5b0a2324536fe1149c5d1f3cbc27c2e8bb90840114ea55764c97053543d94bd5'
             'c9b1fda0b7765883b718298a7302b9c527559ceb97315e22087dfeeaa16625ef'
             '46167b04e5f7d94c0f16d17cf37c10be6ddb4f7f45b5b061b7943592038e021b'
             '732a808ad9997994db7c72344f1731099bdd85b29c8709235bb50b0b2188fe54'
-            'a1744a73fa6ccbffc67bb20774259fdf81727a145d5c60877e4ec0a4cff29bce'
-            'b213b05c7caee7f6042746791cfc4cb944cd1b1adaaa9b67ded60a7c2b457cce'
-            'a3d5b9554a568b0eefedeaf13b3c5256c6a1c83e057750c60c43dafe63cb9b71'
-            'cdc134bc1eb21e32ed3b1cb9765a965743f5b8296368be1b61f4fff74402d32f'
-            '90b5f86b989e0877446a8019cb06f426a94b21c724766325c0675b84433aed3c'
-            '3cb04de815c2b64ea9b60baaf531e2ba8b44025a0101d256793331b114a7da50'
-            '152b7457e643c41d49b6faeb919efe077672821ec96cc1fb6be0a37b342980d2'
-            '3ef820ad9e549499205147233e8c4c93fb292d7904ed2c0eafa40661063fad8a')
+            'd2c614d0d016dae5f2392a0aad4af22e3b20763fb15ae7d684e1e885d1ec432b'
+            'e39f5f792adcd717cfd22d0c25558cf7218add6c208862f322a87f99f743f734'
+            'a0d875fb7f5d610078915487330b0aff1d5002beb7367038f8520a4463063903'
+            '2d5a933578cf68b2cd3e263e0c564e26d8be38c8746f90ff8cc7d7f376821f8a'
+            '349e475717d0339f7af16fcba70ee2b58910d73295556a3bd6d1fc08cc48bdf7'
+            'bf7f0b41f332a423c03e6f8d317d55ea24e19485b682fd705dfc0a178b56fea1'
+            'c92cbd39e89686cbb0eaff5fbe15012ad865f81707fb8fef59252a3cd9725911'
+            'f7c69d536f8585334e64dff7fbe7d630d628730b94d143f3f682e14bef20d780')
 
 package() {
   cd "$srcdir/"
