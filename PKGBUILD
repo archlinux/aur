@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=hdhomerun_config_gui
-pkgver=20180327
+pkgver=20180817
 pkgrel=1
 pkgdesc="GUI for configuring a HDHomeRun device"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('vlc: stream live channels directly from HDHomeRun'
             'mythtv: use HDHomeRun as PVR source'
             'hdhomerun-firmware-bin: firmware files for hdhomerun devices')
 source=("http://download.silicondust.com/hdhomerun/${pkgname}_${pkgver}.tgz")
-sha256sums=('212ccc853a6a80bc2cbb956dca56c73b0cb60089e1c930b3add8eca26b48529b')
+sha256sums=('f0f84fd01d9329575bc563d8ba6373097eae4baf8f70bc8e7db8615077dd5b71')
 
 build() {
   cd $srcdir/$pkgname
