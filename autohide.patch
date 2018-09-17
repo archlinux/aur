@@ -52,17 +52,6 @@ index c48b5ea..81ec2f2 100644
  
      public PanelWindow (Gtk.Application application) {
          Object (
-@@ -52,6 +58,10 @@ public class Wingpanel.PanelWindow : Gtk.Window {
-         this.screen.size_changed.connect (update_panel_dimensions);
-         this.screen.monitors_changed.connect (update_panel_dimensions);
-         this.screen_changed.connect (update_visual);
-+        wnck_screen.active_window_changed.connect (active_window_changed);
-+        this.enter_notify_event.connect (show_panel);
-+        this.motion_notify_event.connect (show_panel);
-+        this.leave_notify_event.connect (hide_panel);
- 
-         update_visual ();
- 
 @@ -71,17 +79,40 @@ public class Wingpanel.PanelWindow : Gtk.Window {
          application.add_accelerator ("<Control>Tab", "app.cycle", null);
          application.add_accelerator ("<Control><Shift>Tab", "app.cycle-back", null);
@@ -109,7 +98,7 @@ index c48b5ea..81ec2f2 100644
  
          return true;
      }
-@@ -91,7 +115,151 @@ public class Wingpanel.PanelWindow : Gtk.Window {
+@@ -91,7 +115,173 @@ public class Wingpanel.PanelWindow : Gtk.Window {
  
          Services.BackgroundManager.initialize (this.monitor_number, panel_height);
  
@@ -126,6 +115,18 @@ index c48b5ea..81ec2f2 100644
 +            prev_active_window.state_changed.disconnect (active_window_state_changed);
 +        if (active_window != null)
 +            active_window.state_changed.connect (active_window_state_changed);
++    }
++
++    private void active_workspace_changed (Wnck.Workspace? prev_active_workspace) {
++        unowned Wnck.Window? active_window = wnck_screen.get_active_window();
++        if (autohide == "Dodge" || autohide == "Dodge-Float")
++            update_visibility_active_change (active_window);
++    }
++
++    private void viewports_changed (Wnck.Screen? screen) {
++        unowned Wnck.Window? active_window = wnck_screen.get_active_window();
++        if (autohide == "Dodge" || autohide == "Dodge-Float")
++            update_visibility_active_change (active_window);
 +    }
 +
 +    private void active_window_state_changed (Wnck.Window? window,
@@ -145,10 +146,11 @@ index c48b5ea..81ec2f2 100644
 +    private bool should_hide_active_change (Wnck.Window? active_window) {
 +        unowned Wnck.Workspace active_workspace = wnck_screen.get_active_workspace ();
 +
-+        return ((active_window != null) && !active_window.is_minimized () && right_type (active_window) 
-+                && active_window.is_visible_on_workspace (active_workspace) 
-+                && (active_window.get_window_type () == Wnck.WindowType.DIALOG) ? 
-+                    would_intersect_shown_panel (active_window) : 
++        return ((active_window != null) && !active_window.is_minimized () && right_type (active_window)
++                && active_window.is_visible_on_workspace (active_workspace)
++                && active_window.is_in_viewport (active_workspace)
++                && (active_window.get_window_type () == Wnck.WindowType.DIALOG) ?
++                    would_intersect_shown_panel (active_window) :
 +                    (in_panel_x_range (active_window) && is_maximized_at_all (active_window)));
 +    }
 +
@@ -243,6 +245,9 @@ index c48b5ea..81ec2f2 100644
 +                this.enter_notify_event.disconnect (show_panel);
 +                this.motion_notify_event.disconnect (show_panel);
 +                this.leave_notify_event.disconnect (hide_panel);
++                wnck_screen.active_window_changed.disconnect (active_window_changed);
++                wnck_screen.active_workspace_changed.disconnect (active_workspace_changed);
++                wnck_screen.viewports_changed.disconnect (viewports_changed);
 +                show_panel ();
 +                break;
 +            case "Dodge":
@@ -250,12 +255,18 @@ index c48b5ea..81ec2f2 100644
 +                this.enter_notify_event.connect (show_panel);
 +                this.motion_notify_event.connect (show_panel);
 +                this.leave_notify_event.connect (hide_panel);
++                wnck_screen.active_window_changed.connect (active_window_changed);
++                wnck_screen.active_workspace_changed.connect (active_workspace_changed);
++                wnck_screen.viewports_changed.connect (viewports_changed);
 +                show_panel ();
 +                break;
 +            default:
 +                this.enter_notify_event.connect (show_panel);
 +                this.motion_notify_event.connect (show_panel);
 +                this.leave_notify_event.connect (hide_panel);
++                wnck_screen.active_window_changed.disconnect (active_window_changed);
++                wnck_screen.active_workspace_changed.disconnect (active_workspace_changed);
++                wnck_screen.viewports_changed.disconnect (viewports_changed);
 +                hide_panel ();
 +                break;
 +        }
