@@ -1,7 +1,7 @@
 pkgbase = openvpn-update-resolv-conf-git
 	pkgdesc = OpenVPN Update resolvconf
 	pkgver = r42.43093c2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/masterkorp/openvpn-update-resolv-conf
 	arch = any
 	license = GPL
