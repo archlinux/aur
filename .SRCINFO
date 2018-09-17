@@ -1,0 +1,17 @@
+pkgbase = libblockdev-lean
+	pkgdesc = A library for manipulating block devices
+	pkgver = 2.19
+	pkgrel = 1
+	url = https://github.com/rhinstaller/libblockdev
+	arch = x86_64
+	license = LGPL
+	makedepends = gobject-introspection
+	makedepends = systemd
+	makedepends = python
+	provides = libblockdev
+	conflicts = libblockdev
+	source = libblockdev-lean-2.19.tar.gz::https://github.com/storaged-project/libblockdev/archive/2.19-1.tar.gz
+	sha512sums = 945671600036c8d923a2af9a2044535c78d6e887c3a02b0f7ce782cf9deff7f962b7a96fd092cd408aa48717665afa1db7b8d3f7b33e572fd2beb13df98f5c7d
+
+pkgname = libblockdev-lean
+
