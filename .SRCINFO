@@ -1,0 +1,18 @@
+pkgbase = libotr-ng-git
+	pkgdesc = A new implementation of OTR with support for version 4.
+	pkgver = 2270.2d718c6
+	pkgrel = 1
+	url = https://github.com/otrv4/libotr-ng
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = glib2
+	depends = libgoldilocks-git
+	depends = libsodium
+	depends = libotr
+	depends = libgcrypt
+	source = git+https://github.com/otrv4/libotr-ng.git
+	sha256sums = SKIP
+
+pkgname = libotr-ng-git
+
