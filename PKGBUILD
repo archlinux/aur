@@ -2,8 +2,8 @@
 # Contributor: ValdikSS <iam@valdikss.org.ru>
 
 pkgname=osu
-pkgver=20170118
-pkgrel=2
+pkgver=20180917
+pkgrel=1
 
 source=("http://m1.ppy.sh/r/osu!install.exe"
 	"directsound-latency.reg"
@@ -13,7 +13,7 @@ source=("http://m1.ppy.sh/r/osu!install.exe"
 
 md5sums=('SKIP'
          '1d285eb3a5bdb6a70da89116dec18441'
-         '3cb400cea5e9bff628f89c17a5f33f99'
+         '45db3339a3f2203418aa6c4f8b5ec838'
          '60ee5829b38c43bc30eba7805764f71f'
          'a0289f4f499640bfb3b39bf393140b03')
 

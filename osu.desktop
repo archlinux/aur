@@ -8,4 +8,4 @@ Exec=/opt/osu/osulauncher %F
 Icon=/opt/osu/osu.png
 Terminal=true
 Categories=Game;
-MimeType=application/x-wine-extension-osz;application/x-wine-extension-osk;application/x-wine-extension-osr;application/x-wine-extension-osz2;
+MimeType=application/x-wine-extension-osz;application/x-wine-extension-osk;application/x-wine-extension-osr;application/x-wine-extension-osz2;x-scheme-handler/osu;
