@@ -3,25 +3,30 @@
 _pkgname=python-buildbot-pkg
 pkgname=python-buildbot-pkg-git
 pkgdesc="Utilities and common code for building and testing www plugins."
-pkgver=1.2.0.r43.g55fc75395
+pkgver=1.3.0.r158.ge79ef99b4
 pkgrel=2
 arch=('any')
 url="https://buildbot.net"
-license=("GPL")
-depends=('python-setuptools')
+license=("GPL2")
+depends=('python-setuptools' 'npm' 'yarn' 'python2')
 makedepends=('git')
 checkdepends=('python-twisted')
 provides=("$_pkgname=$pkgver")
-conflicts=($_pkgname)
+conflicts=("$_pkgname")
 source=(git+https://github.com/buildbot/buildbot.git)
 sha256sums=('SKIP')
 
 pkgver() {
   cd buildbot
   ( set -o pipefail
-    git describe --long --tag 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tag 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
   )
+}
+
+build() {
+  cd buildbot/pkg
+
+  python setup.py build
 }
 
 check() {
@@ -32,5 +37,6 @@ check() {
 
 package() {
   cd buildbot/pkg
-  python setup.py install --root="$pkgdir" --optimize=1
+
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
