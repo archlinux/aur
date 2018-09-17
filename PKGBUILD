@@ -2,8 +2,8 @@
 
 _pkgname=git-bug
 pkgname=git-bug-bin
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="Distributed bug tracker embedded in Git"
 arch=('x86_64' 'i686')
 url='https://github.com/MichaelMure/git-bug'
@@ -11,9 +11,9 @@ license=('GPLv3')
 source_x86_64=("$url/releases/download/$pkgver/git-bug_linux_amd64")
 source_i686=("$url/releases/download/$pkgver/git-bug_linux_386")
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums_x86_64=('5d85c2b9f54fd2cbc119bbb7bf9f597bd7648a8608c53b58e93da43f1c1e55c9')
-sha256sums_i686=('8521897cbb03e4514f27c6b27eb9dd3ec1408692ef9ca4b4b72dc7db73112dd4')
-sha256sums=('56b05fb8c456973871863138ac5eb2a871654e7a504605970cbe9a08b6ce0b19')
+sha256sums=('75dce65b4f85b7e81712065a0342d824c1960c074f860025e50c0fface800b47')
+sha256sums_x86_64=('549f13f0596961441cfc8fd934fd5f298fca967e58069fdc0e6806cf09976f83')
+sha256sums_i686=('50484b0988a2a7ebaa1e13cd8e6cc0aabfde750dcb8d9db7704fb47276dc6db6')
 
 package() {
   local _source_bin=source_$CARCH
