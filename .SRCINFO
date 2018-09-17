@@ -1,0 +1,22 @@
+pkgbase = google-compute-engine-oslogin-git
+	pkgdesc = Google Cloud OS Login support for Google Compute Engine instances.
+	pkgver = e725e85
+	pkgrel = 1
+	url = https://github.com/GoogleCloudPlatform/compute-image-packages
+	install = google-compute-engine-oslogin-git.install
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = make
+	depends = pam
+	depends = curl
+	depends = json-c
+	source = git://github.com/GoogleCloudPlatform/compute-image-packages.git
+	source = google_oslogin_control.patch
+	source = Makefile.patch
+	sha256sums = SKIP
+	sha256sums = 969587d7876624cfd1256ad31481dccbc3e78446249d06c88927fc7f88798b86
+	sha256sums = d9b73fb7044ed0d6b8a8b0711a6aefa9139221067de3b1d9534afc577b29243e
+
+pkgname = google-compute-engine-oslogin-git
+

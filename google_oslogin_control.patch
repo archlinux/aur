@@ -1,0 +1,17 @@
+--- bin/google_oslogin_control.orig	2018-09-16 14:44:41.663018937 -0700
++++ bin/google_oslogin_control	2018-09-16 15:25:33.539576737 -0700
+@@ -15,7 +15,7 @@
+ 
+ script_name=$(basename "$0")
+ nss_config="/etc/nsswitch.conf"
+-pam_config="/etc/pam.d/sshd"
++pam_config="/etc/pam.d/system-login"
+ sshd_config="/etc/ssh/sshd_config"
+ el_release_file="/etc/redhat-release"
+ sudoers_dir="/var/google-sudoers.d"
+@@ -241,3 +241,5 @@
+ if [ $# -lt 2 ] || [ "$2" != "--norestartsshd" ]; then
+   restart_sshd
+ fi
++
++exit 0

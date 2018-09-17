@@ -1,0 +1,13 @@
+--- Makefile.orig	2018-09-16 15:04:26.659632933 -0700
++++ Makefile	2018-09-16 15:06:07.499628438 -0700
+@@ -11,8 +11,8 @@
+ LIBNSS_CACHE_OSLOGIN_SONAME = $(LIBNSS_CACHE_OSLOGIN).so.2
+ NSS_LIBRARY_NAME = libnss_$(NAME)-$(MAJOR).$(MINOR).$(REVISION).so
+ NSS_LIBRARY_SONAME = libnss_$(BASENAME).so.2
+-NSS_INSTALL_PATH = /lib
+-PAM_INSTALL_PATH = /lib/security
++NSS_INSTALL_PATH = /usr/lib
++PAM_INSTALL_PATH = /usr/lib/security
+ AUTHKEYS_INSTALL_PATH = /usr/bin
+ 
+ JSON_INCLUDE_PATH = /usr/include/json-c

@@ -1,0 +1,7 @@
+post_install() {
+  /usr/bin/google_oslogin_control activate
+}
+
+pre_remove() {
+  /usr/bin/google_oslogin_control deactivate
+}
