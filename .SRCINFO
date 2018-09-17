@@ -1,0 +1,18 @@
+pkgbase = emacs-yasnippet-snippets-git
+	pkgdesc = a collection of yasnippet snippets for many languages
+	pkgver = r661.ef6eae6
+	pkgrel = 1
+	url = https://github.com/AndreaCrotti/yasnippet-snippets
+	install = emacs-yasnippet-snippets.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	depends = emacs-yasnippet
+	provides = emacs-yasnippet-snippets
+	conflicts = emacs-yasnippet-snippets
+	source = git+https://github.com/AndreaCrotti/yasnippet-snippets.git
+	sha256sums = SKIP
+
+pkgname = emacs-yasnippet-snippets-git
+
