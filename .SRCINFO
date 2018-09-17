@@ -1,22 +1,19 @@
 pkgbase = ocaml-ssl
 	pkgdesc = OCaml SSL Library
-	pkgver = 0.5.5
-	pkgrel = 2
+	pkgver = 0.5.6
+	pkgrel = 1
 	url = http://savonet.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = ocaml
 	makedepends = ocaml-findlib
-	makedepends = autoconf
+	makedepends = dune
+	depends = ocaml
 	depends = openssl
-	options = !libtool
 	options = !strip
-	options = zipman
-	options = !makeflags
 	options = staticlibs
-	source = https://github.com/savonet/ocaml-ssl/releases/download/0.5.5/ocaml-ssl-0.5.5.tar.gz
-	md5sums = cdb1cdf9ee8c582165d4d11f35e53c4d
+	source = https://github.com/savonet/ocaml-ssl/archive/v0.5.6.tar.gz
+	md5sums = 500b0bb7af4a736255ce706cc8e26762
 
 pkgname = ocaml-ssl
 

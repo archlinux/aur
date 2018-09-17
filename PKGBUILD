@@ -3,32 +3,35 @@
 # Contributor: Denis Wernert <denis@wernert.info>
 
 pkgname=ocaml-ssl
-pkgver=0.5.5
-pkgrel=2
+pkgver=0.5.6
+pkgrel=1
 pkgdesc="OCaml SSL Library"
 arch=('i686' 'x86_64')
 url="http://savonet.sourceforge.net/"
 license=('custom')
-depends=('openssl')
-makedepends=('ocaml' 'ocaml-findlib' 'autoconf')
-source=(https://github.com/savonet/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz)
-options=(!libtool !strip zipman !makeflags staticlibs)
+depends=('ocaml' 'openssl')
+makedepends=('ocaml-findlib' 'dune')
+source=("https://github.com/savonet/$pkgname/archive/v$pkgver.tar.gz")
+options=('!strip' 'staticlibs')
 
 build() {
 	cd $pkgname-$pkgver
-	autoconf
-	./configure --prefix /usr
 	make
 }
 
 package() {
-	OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)"
-	cd $pkgname-$pkgver
-	mkdir -p $OCAMLFIND_DESTDIR/stublibs
-	OCAMLFIND_INSTFLAGS="-destdir $OCAMLFIND_DESTDIR -ldconf /dev/null" make install
+	cd ${pkgname}-${pkgver}
 
+	# Initialize OPAM, this should be removed once opam is “removed” from dune
+	export OPAMROOT="${srcdir}"/opam
+	opam init -n
+
+	# Work around the install command
+	make OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)" install
+
+	# Install LICENSE
 	mkdir -p $pkgdir/usr/share/licenses/$pkgname/
 	awk 'BEGIN{P=0} /License/ {P = 1;} {if (P) print}' README.md > $pkgdir/usr/share/licenses/$pkgname/license
 }
 
-md5sums=('cdb1cdf9ee8c582165d4d11f35e53c4d')
+md5sums=('500b0bb7af4a736255ce706cc8e26762')
