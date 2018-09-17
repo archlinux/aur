@@ -2,7 +2,7 @@
 # Contributor: Firmy <firmianay@gmail.com>
 pkgname=python2-pwntools
 pkgver=3.13.0beta0
-pkgrel=1
+pkgrel=2
 pkgdesc='A CTF framework and exploit development library.'
 arch=('any')
 url='https://github.com/Gallopsled/pwntools'
@@ -12,7 +12,7 @@ makedepends=('lib32-glibc'
 depends=('python2>=2.7'
          'python2-mako'
          'python2-paramiko'
-         'python2-pyelftools'
+         'python2-pyelftools<0.25'
          'python2-capstone'
          'python2-pyserial'
          'python2-requests'
