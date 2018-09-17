@@ -1,6 +1,6 @@
 pkgname=groonga-normalizer-mysql
-pkgver=1.1.1
-pkgrel=2
+pkgver=1.1.3
+pkgrel=1
 pkgdesc="A MySQL compatible normalizer plugin for groonga."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="http://mroonga.org/"
@@ -21,4 +21,4 @@ package() {
     make DESTDIR="$pkgdir" install
 }
 
-sha1sums=('0898744c8e0811494a081448ea00ca009be0e572')
+sha1sums=('54578549baf1cc23511330f2e9ba57d0e25b572a')
