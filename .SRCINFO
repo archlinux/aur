@@ -8,9 +8,9 @@ pkgbase = chromium-widevine
 	license = custom
 	options = !strip
 	source = chrome-eula_text-20180913.html::https://www.google.com/intl/en/chrome/privacy/eula_text.html
-	source = https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_69.0.3497.92-1_amd64.deb
+	source = https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_69.0.3497.100-1_amd64.deb
 	sha256sums = 656506e67bdff435a959aeeb8aec3d3471cee4779e1a8f892355718162ea3a89
-	sha256sums = 712ca1a49b326cf164ade448ec5e13408f601875da3558338941fe1f3c0aab69
+	sha256sums = 180cbc8dc9f36bc3022556c046c5ac723607beaf6d1ec395b433c556e199a670
 
 pkgname = chromium-widevine
 	depends = chromium
