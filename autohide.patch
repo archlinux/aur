@@ -109,7 +109,7 @@ index c48b5ea..81ec2f2 100644
  
          return true;
      }
-@@ -91,7 +115,147 @@ public class Wingpanel.PanelWindow : Gtk.Window {
+@@ -91,7 +115,151 @@ public class Wingpanel.PanelWindow : Gtk.Window {
  
          Services.BackgroundManager.initialize (this.monitor_number, panel_height);
  
@@ -220,7 +220,7 @@ index c48b5ea..81ec2f2 100644
 +        if (timeout > 0) {
 +            Source.remove (timeout);
 +        }
-+        if (popover_manager.current_indicator == null) {
++        if (popover_manager.current_indicator == null && autohide != "Disabled") {
 +            Thread.usleep (autohide_delay * 1000);
 +        }
 +        if (autohide == "Dodge-Float" || autohide == "Float") {
@@ -229,7 +229,11 @@ index c48b5ea..81ec2f2 100644
 +            strut = true;
 +        }
 +        hiding = false;
-+        timeout = Timeout.add (100 / panel_height, animation_step);
++        if (autohide == "Disabled") {
++            timeout = Timeout.add (300 / panel_height, animation_step);
++        } else {
++            timeout = Timeout.add (100 / panel_height, animation_step);
++        }
 +        return true;
 +    }
 +
@@ -308,7 +312,7 @@ index 3bcd0a7..eeecbb8 100644
  )
  
  set (LIB_PKG
-@@ -84,11 +85,14 @@
+@@ -84,11 +85,15 @@
    gee-0.8
    gmodule-2.0
    gtk+-3.0>=3.22
@@ -318,8 +322,22 @@ index 3bcd0a7..eeecbb8 100644
  
  pkg_check_modules (LIB REQUIRED ${LIB_PKG})
  
-+add_definitions (-DWNCK_I_KNOW_THIS_IS_UNSTABLE)
++add_definitions (-DWNCK_I_KNOW_THIS_IS_UNSTABLE ${WNCK_CFLAGS})
++link_libraries (${WNCK_LIBRARIES})
 +
  set (GLOBAL_VALAC_OPTIONS
    --vapidir=${CMAKE_BINARY_DIR}/lib
    --vapidir=vapi
+diff --git a/.travis.yml b/.travis.yml
+index dddddf1..4efb6c0 100644
+--- src/wingpanel/.travis.yml
++++ src/wingpanel/.travis.yml
+@@ -4,7 +4,7 @@ services:
+  - docker
+ 
+ env:
+- - DEPENDENCY_PACKAGES="cmake libgala-dev libgee-0.8-dev libgirepository1.0-dev libglib2.0-dev libgranite-dev libgtk-3-dev valac"
++ - DEPENDENCY_PACKAGES="cmake libgala-dev libgee-0.8-dev libgirepository1.0-dev libglib2.0-dev libgranite-dev libgtk-3-dev libwnck-3-dev valac"
+ 
+ install:
+  - docker pull elementary/docker:juno-unstable

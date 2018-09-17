@@ -32,9 +32,9 @@ source=('git+https://github.com/elementary/wingpanel.git'
 sha256sums=('SKIP'
             '67ffdac17cd4f46fb866eb8d33dd06db918bca16ae8ed4b2a2a00c3112f87a2b'
             '7f972d79b4d72f7b274a96e1a5150cba0e3869ad85215ae01ad2bc19802cdbb9'
-            '21e95aec3fbb920f3b8ef34b00bf4fc99f431e1837f84f020d5d00c4e3aaca0b'
+            '20ec1d51a6610bf0105c772e4d1d4ac8f35ea0ee33b066981db57dc19fe3bdc6'
             'b1902c1d44ac546df63cd0224a7d2ef2cb6394ca556512c30c370d387db7bbab'
-            '244b035630316c1f1a091dde16936f411600fdc68bd0dab9735f335fce3eeccc'
+            'd14dcf9e151f3cf920ea589c4fc935387ce74b83c5c72c162911516a62b4c5eb'
             '53bfa2220d14065ca848c36217abe812685c7d6e0d42251423d0faa2a0ac5394')
 
 pkgver() {
@@ -52,7 +52,7 @@ prepare() {
 
   #Autohide
   msg2 "Autohide"
-  patch -Np2 < ../autohide-dodge.patch
+  patch -Np2 < ../autohide.patch
   #patch -Np2 < ../autohide-testing.patch
 
   #Standalone patches
