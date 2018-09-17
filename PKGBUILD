@@ -5,9 +5,9 @@
 # NOTE: requires rebuilt with each new gcc version
 
 pkgname=libtool-git
-pkgver=2.4.6+40.g6ca5e224
-pkgrel=2
-_gccver=7.1.1
+pkgver=2.4.6+42.gb88cebd5
+pkgrel=1
+_gccver=8.2.1+20180831
 pkgdesc="A generic library support script (git version)"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/libtool"
@@ -23,7 +23,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd ${srcdir}/libtool
-  git describe --long | sed 's/^v//; s/-/+/; s/-/\./'
+  git describe --long --abbrev=8 | sed 's/^v//; s/-/+/; s/-/\./'
 }
 
 build() {
