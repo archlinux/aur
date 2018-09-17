@@ -1,0 +1,17 @@
+pkgbase = fakeaur
+	pkgdesc = Edit names and descriptions of AUR packages. Meme mates with nani or btwiusearch
+	pkgver = r3.2410402
+	pkgrel = 1
+	url = https://github.com/schrmh/fakeAUR
+	arch = any
+	license = unknown
+	makedepends = git
+	makedepends = bash
+	depends = bash
+	provides = fakeaur
+	conflicts = fakeaur
+	source = fakeaur::git+https://github.com/schrmh/fakeAUR.git
+	md5sums = SKIP
+
+pkgname = fakeaur
+
