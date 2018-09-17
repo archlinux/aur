@@ -1,11 +1,11 @@
 # Maintainer: Trougnouf (Benoit Brummer) <trougnouf at gmail dot com>
 pkgname='darktable-plugin-dtmediawiki-git'
 _name='dtMediaWiki'
-pkgver=r8.fcb01c8
+pkgver=r21.2096c91
 pkgrel=1
 pkgdesc='MediaWiki export plugin for darktable '
 url="https://github.com/trougnouf/${_name}"
-depends=('darktable' 'lua-luajson' 'lua-sec')
+depends=('darktable' 'lua-luajson' 'lua-sec' 'lua-multipart-post')
 makedepends=()
 license=('GPL3')
 arch=('x86_64')
