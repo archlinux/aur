@@ -2,7 +2,7 @@
 
 pkgname=softmaker-office-2018-bin
 pkgver=2018.933
-pkgrel=1
+pkgrel=2
 pkgdesc="Softmaker Office 2018, proprietary office suite; word processing, spreadsheets, presentations"
 url="http://softmaker.com"
 arch=('x86_64' 'i686')

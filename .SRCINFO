@@ -1,7 +1,7 @@
 pkgbase = softmaker-office-2018-bin
 	pkgdesc = Softmaker Office 2018, proprietary office suite; word processing, spreadsheets, presentations
 	pkgver = 2018.933
-	pkgrel = 1
+	pkgrel = 2
 	url = http://softmaker.com
 	arch = x86_64
 	arch = i686
