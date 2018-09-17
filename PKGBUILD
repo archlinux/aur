@@ -13,7 +13,7 @@ pkgdesc="State-of-the-art solver for mathematical programming"
 arch=('x86_64')
 url="http://www.gurobi.com/products/gurobi-optimizer"
 license=('custom')
-depends=('python>=3.6.0' 'python<=3.7' 'python2>=2.7.0')
+depends=('python>=3.6.0' 'python<3.7' 'python2>=2.7.0')
 optdepends=(
   'gcc: C/C++ programming interfaces support'
   'java-environment: Java programming interface support'
