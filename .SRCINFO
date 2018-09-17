@@ -1,0 +1,20 @@
+pkgbase = emacs-company-lsp-git
+	pkgdesc = Company completion backend for lsp-mod
+	pkgver = r48.82c3f1a
+	pkgrel = 1
+	url = https://github.com/tigersoldier/company-lsp
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	depends = emacs-company-mode
+	depends = emacs-dash
+	depends = emacs-lsp-mode
+	depends = emacs-s
+	provides = emacs-company-lsp
+	conflicts = emacs-company-lsp
+	source = git+https://github.com/tigersoldier/company-lsp.git
+	sha256sums = SKIP
+
+pkgname = emacs-company-lsp-git
+
