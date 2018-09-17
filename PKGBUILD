@@ -58,4 +58,6 @@ package_python2-prance() {
   cd prance-$pkgver-py2
   python2 setup.py install --root="$pkgdir" --optimize=1
   install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
+
+  mv "$pkgdir"/usr/bin/prance{,2}
 }
