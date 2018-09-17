@@ -6,6 +6,7 @@ pkgbase = obs-v4l2sink
 	arch = x86_64
 	license = GPL
 	makedepends = obs-studio
+	makedepends = cmake
 	depends = obs-studio
 	source = https://github.com/CatxFish/obs-v4l2sink/archive/0.1.0.tar.gz
 	source = https://github.com/obsproject/obs-studio/archive/22.0.2.tar.gz
