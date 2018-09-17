@@ -1,7 +1,7 @@
 pkgbase = gurobi
 	pkgdesc = State-of-the-art solver for mathematical programming
 	pkgver = 8.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.gurobi.com/products/gurobi-optimizer/gurobi-overview
 	install = gurobi.install
 	arch = x86_64
