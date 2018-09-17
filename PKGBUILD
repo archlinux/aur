@@ -3,50 +3,39 @@
 # Contributor: Pascal Groschwitz <p.groschwitz@googlemail.com>
 
 pkgname=simgear-git
-pkgver=20170102
+pkgver=2018.3.0r5096.f4cad429
+_pkgver=2018.3.0
 pkgrel=1
-_gitname=simgear
 pkgdesc="A set of open-source libraries designed to be used as building blocks for quickly assembling 3d simulations, games, and visualization applications."
-arch=('i686' 'x86_64')
-url="http://simgear.sourceforge.net/"
+arch=('x86_64')
+url="http://home.flightgear.org/"
 license=('GPL')
 depends=('glu' 'glut' 'freealut' 'plib' 'openscenegraph')
 makedepends=('boost' 'cmake' 'mesa')
-provides=('simgear-git' 'simgear')
+provides=('simgear=2018.3.0')
 conflicts=('simgear')
 options=('staticlibs')
-source=(git://git.code.sf.net/p/flightgear/simgear
-        getKern.patch)
-md5sums=('SKIP'
-         'b4ab9878bbb07555d7fef68b592fb2de')
+source=("simgear::git+https://git.code.sf.net/p/flightgear/simgear#branch=next")
+md5sums=('SKIP')
 
 pkgver() {
-  echo "$(date +"%Y%m%d")"
+  cd "${srcdir}/${pkgname%-git}"
+  printf "%sr%s.%s" "${_pkgver}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-# To be used with OpenSceneGraph-git
-# prepare() {
-#   cd ${srcdir}
-#   patch -p0 -i getKern.patch
-# }
-
 build() {
-  cd ${srcdir}/${_gitname}
-  git checkout next
-  mkdir ${srcdir}/${_gitname}-build/
-  cd "${srcdir}/${_gitname}-build/"
+  cd "${srcdir}/${pkgname%-git}"
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+    -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_BUILD_TYPE=Release \
-    -DENABLE_DNS:BOOL="ON" \
     -DSIMGEAR_SHARED:BOOL="ON" \
-    ../${_gitname}
-  make || return 1
+    .
+  make
 }
 
 package(){
-  cd "${srcdir}/${_gitname}-build"
+  cd "${srcdir}/${pkgname%-git}"
   make DESTDIR="${pkgdir}/" install
 }
 
