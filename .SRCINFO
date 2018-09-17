@@ -4,6 +4,7 @@ pkgbase = libidn-133-compat
 	pkgrel = 1
 	url = https://www.gnu.org/software/libidn/
 	arch = x86_64
+	arch = i686
 	license = GPL3
 	license = LGPL
 	depends = glibc
