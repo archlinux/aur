@@ -24,6 +24,8 @@ sha512sums=('83d2d3bc59202f1e5f3e76eeb6810e575e24c6f392f20c25732a6881a0a0a9f7245
             '7edb1d2dd41b135fa489de1802ea9b4079e9cb6556fa6457924bf7363bef7375987b9e4bb6507730ad906199ba55a44103d0655ad1f517b0426083be5b3e218c'
             'ac4ce13fe88a383382abb92cb34ab231467cbc9dcb8ac8780480d467f295ddf65e217b6415bbadabd8c7ac9832b0fd9058b837946aa2d5dcfd9f3bb81cff6b31')
 validpgpkeys=('DA3FDF774CC70FA64729EC4505D9B371477C7528')
+backup=('etc/ntp.d/default.conf'
+        'etc/ntp.d/use-pool')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -63,6 +65,10 @@ package() {
   install -Dm 644 etc/ntpd.service "$pkgdir/usr/lib/systemd/system/ntpd.service"
   install -Dm 644 docs/copyright.text "$pkgdir/usr/share/licenses/$pkgname/COPYING"
   install -Dm 644 ../ntpsec.sysusers "$pkgdir/usr/lib/sysusers.d/ntpsec.conf"
+
+  for configfile in etc/ntp.d/*; do
+     install -Dm 644 "$configfile" "$pkgdir/$configfile"
+  done
 
   install -dm 700 -g 212 -o 212 "$pkgdir/var/lib/ntp"
 }
