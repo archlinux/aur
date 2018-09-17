@@ -1,0 +1,17 @@
+pkgbase = emacs-lsp-python-git
+	pkgdesc = Python support for lsp-mode
+	pkgver = r17.b97688a
+	pkgrel = 1
+	url = https://github.com/emacs-lsp/lsp-python
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	depends = emacs-lsp-mode
+	provides = emacs-lsp-python
+	conflicts = emacs-lsp-python
+	source = git+https://github.com/emacs-lsp/lsp-python.git
+	sha256sums = SKIP
+
+pkgname = emacs-lsp-python-git
+
