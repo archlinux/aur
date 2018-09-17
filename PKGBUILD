@@ -14,7 +14,7 @@ depends=(gtk3 libxml2)
 makedepends=(intltool gtk-doc gobject-introspection python-gobject itstool docbook-xsl git
              gnome-common webkit2gtk)
 optdepends=('devhelp: development help')
-url="http://glade.gnome.org/"
+url="https://glade.gnome.org/"
 source=("git+https://gitlab.gnome.org/GNOME/glade.git")
 sha256sums=(SKIP)
 
