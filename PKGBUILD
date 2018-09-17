@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=xde-session
-pkgver=1.7
+pkgver=1.8
 pkgrel=1
 pkgdesc="X Desktop Environment Display and Session Management"
 groups=('xde')
@@ -12,7 +12,7 @@ depends=('m4' 'libunique' 'libxss' 'libxvnc' 'xde-theme' 'xde-ctools'
 	 'xde-helpers' 'xde-menu' 'xdg-launch')
 optdepends=('xorg-xdm-xlogin-git: to use xde-xlogin and xde-xchooser')
 source=("https://github.com/bbidulock/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.xz")
-md5sums=('f874b792cc2cc0a28afb9ea1719f566f')
+md5sums=('91b4e9c810f8f6751676792a63c5908a')
 
 build() {
   cd $pkgname-$pkgver
