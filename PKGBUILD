@@ -2,12 +2,12 @@
 
 pkgname=liquidsoap
 pkgver=1.3.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A swiss-army knife for multimedia streaming, notably used for netradios and webtvs"
 arch=('i686' 'x86_64')
 url="http://savonet.sourceforge.net/"
 license=('GPL')
-depends=('dssi' 'faad2' 'ffmpeg' 'fluidsynth' 'gavl' 'gd' 'giflib' 'gst-plugins-bad' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-ugly' 'ladspa' 'libao' 'libfdk-aac' 'liblo' 'libmad' 'libxpm'
+depends=('dssi' 'fluidsynth' 'giflib' 'gst-plugins-bad' 'gst-plugins-good' 'gst-plugins-ugly'
 	'ocaml-ao'
 	'ocaml-bjack'
 	'ocaml-camomile'
@@ -25,31 +25,27 @@ depends=('dssi' 'faad2' 'ffmpeg' 'fluidsynth' 'gavl' 'gd' 'giflib' 'gst-plugins-
 	'ocaml-gstreamer'
 	'ocaml-inotify'
 	'ocaml-yojson'
-	'ocaml-ladspa'
 	'ocaml-lame'
 	'ocaml-lastfm'
 	'ocaml-lo'
 	'ocaml-mad'
 	'ocaml-magic'
 	'ocaml-mm'
+	'ocaml-ocamlsdl'
 	'ocaml-ogg'
 	'ocaml-opus'
 	'ocaml-pulseaudio'
 	'ocaml-samplerate'
+	'ocaml-shine'
 	'ocaml-soundtouch'
 	'ocaml-speex'
 	'ocaml-taglib'
 	'ocaml-theora'
 	'ocaml-vorbis'
 	'ocaml-xmlplaylist'
-	'openssl'
-	'sdl_image'
-	'sdl_ttf'
-	'soundtouch'
-	'taglib'
 )
 
-makedepends=('camlp4' 'libxml-perl' 'ocaml-findlib' 'ocaml-ocamlsdl' 'ocaml-pcre' 'ocaml-ssl' 'ocaml-xmlm'  'perl-xml-dom')
+makedepends=('camlp4' 'libxml-perl' 'ocaml-findlib' 'ocaml-pcre' 'perl-xml-dom')
 optdepends=('curl')
 source=("https://github.com/savonet/liquidsoap/releases/download/$pkgver/$pkgname-$pkgver.tar.bz2"
 	$pkgname.service
