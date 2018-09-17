@@ -1,10 +1,11 @@
-# Maintainer: Johnathan Jenkins twodopeshaggy@gmail.com
+# Maintainer: Philipp Claßen <philipp.classen@posteo.de>
+# Original maintainer: Johnathan Jenkins twodopeshaggy@gmail.com
 # Contributor: Mark Cornick <mcornick@mcornick.com>
 # Contributor: Patrick Palka <patrick@parcs.ath.cx>
 
 _pkgname=z
 pkgname=z-git
-pkgver=1.8.39.g9dafe44
+pkgver=1.11.7.g9d5a3fe
 pkgrel=1
 pkgdesc="z keeps track of where you've been and provides a convenient \
 way to jump to directory that you actually use (git version)"
