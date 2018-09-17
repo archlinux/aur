@@ -9,7 +9,7 @@ pkgdesc="Mini version of Anaconda Python distribution."
 arch=('x86_64')
 url="https://conda.io/miniconda"
 license=("custom")
-source=("http://repo.continuum.io/miniconda/Miniconda3-${pkgver}-Linux-x86_64.sh"
+source=("https://repo.continuum.io/miniconda/Miniconda3-${pkgver}-Linux-x86_64.sh"
         "$pkgname.install")
 options=(!strip libtool staticlibs)
 sha256sums=('ea4594241e13a2671c5b158b3b813f0794fe58d514795fbf72a1aad24db918cf'
