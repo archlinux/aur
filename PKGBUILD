@@ -6,7 +6,7 @@
 
 _pkgname=get_iplayer
 pkgname=$_pkgname-git
-pkgver=3.04
+pkgver=3.17
 pkgrel=1
 pkgdesc="Download TV and radio programmes from BBC iPlayer"
 arch=('any')
@@ -21,7 +21,6 @@ depends=('perl-json-pp'
 
 optdepends=(
   'atomicparsley: metadata tagging for MP4 and M4A files'
-  'atomicparsley-largefile-hg: metadata tagging for MP4 and M4A files (preferred)'
   'ffmpeg: convert DASH audio/video, MPEG-TS, FLV files to MP4 and M4A'
   'perl-mojolicious: reduce cache update time')
 
