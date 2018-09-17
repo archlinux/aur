@@ -1,6 +1,6 @@
 # Maintainer: Wouter Haffmans <wouter@simply-life.net>
 pkgname=tomtomsportsconnect
-pkgver=3.3.8
+pkgver=3.3.9
 pkgrel=1
 pkgdesc="TomTom Sports Connect"
 arch=(x86_64)
@@ -15,11 +15,11 @@ provides=()
 conflicts=()
 replaces=()
 source=(
-    https://sports.tomtom-static.com/downloads/desktop/mysportsconnect/latest/tomtomsportsconnect.x86_64.deb
+    https://sports.tomtom-static.com/downloads/desktop/mysportsconnect/latest/tomtomsportsconnect-${pkgver}.x86_64.deb
     fix-desktop-file.patch
     90-tomtomsports.rules)
 noextract=()
-md5sums=('f44be07342acaf9714652c9734e27a9e'
+md5sums=('e50e37598ac9e1dce213d24747c5cbc0'
          '23de8b949214475945e4aa6537e26319'
          '9176bd3daa77589fea115735fadee288')
 

@@ -1,15 +1,15 @@
 pkgbase = tomtomsportsconnect
 	pkgdesc = TomTom Sports Connect
-	pkgver = 3.3.8
+	pkgver = 3.3.9
 	pkgrel = 1
 	url = http://us.support.tomtom.com/app/answers/detail/a_id/24742/~/linux-version-of-tomtom-sports-connect
 	arch = x86_64
 	license = custom
 	depends = gstreamer0.10-base
-	source = https://sports.tomtom-static.com/downloads/desktop/mysportsconnect/latest/tomtomsportsconnect.x86_64.deb
+	source = https://sports.tomtom-static.com/downloads/desktop/mysportsconnect/latest/tomtomsportsconnect-3.3.9.x86_64.deb
 	source = fix-desktop-file.patch
 	source = 90-tomtomsports.rules
-	md5sums = f44be07342acaf9714652c9734e27a9e
+	md5sums = e50e37598ac9e1dce213d24747c5cbc0
 	md5sums = 23de8b949214475945e4aa6537e26319
 	md5sums = 9176bd3daa77589fea115735fadee288
 
