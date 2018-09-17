@@ -1,7 +1,7 @@
 # Maintainer: pappy <pappy _AT_ a s c e l i o n _DOT_ com>
 
 pkgname=gitbucket
-pkgver=4.27.0
+pkgver=4.28.0
 pkgrel=1
 pkgdesc="A Git platform powered by Scala with easy installation, high extensibility & GitHub API compatibility"
 arch=(any)
@@ -20,7 +20,7 @@ source=($pkgname-$pkgver.war::https://github.com/gitbucket/gitbucket/releases/do
 		$pkgname.service
 		)
 noextract=($pkgname-$pkgver.war)
-sha256sums=('394e8d6932c37c17ee12b05af2b9072006f97b2db84ff25e6e58fef8379f4b17'
+sha256sums=('a92a24a8367e92791eecd4f384bbf28c2fc61b7382d34abf8cc12236ae64766c'
             '9e676104c506cfcf1c8e7db79fe0331b55726a0530f8ad6ccc33013190535982'
             '860d2afa0dae857f8ddd3c8de2911a60032e51aa3981b4282d525ec8cbe73638'
             '7839b30fafa179d3712ec4246450fbf56a70130de198da2265d872b76ac0ee0e'
@@ -28,7 +28,6 @@ sha256sums=('394e8d6932c37c17ee12b05af2b9072006f97b2db84ff25e6e58fef8379f4b17'
             '7ca63d855fedfe91078844f3a7d518631b17a9916ba1fbc585c3a4d345aed7ea')
 
 package() {
-
 	install -Dm755 $pkgname.sh $pkgdir/usr/lib/$pkgname/$pkgname
 	install -Dm644 $pkgname-$pkgver.war $pkgdir/usr/lib/$pkgname/$pkgname.war
 	install -Dm644 $pkgname.opts $pkgdir/etc/$pkgname/$pkgname.opts
