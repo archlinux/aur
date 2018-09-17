@@ -1,7 +1,7 @@
 pkgbase = gpu-viewer
 	pkgdesc = A frontend to glxinfo and vulkaninfo.
 	pkgver = 1.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/arunsivaramanneo/GPU-Viewer/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = gpu-viewer
 	depends = gtk3
 	depends = python
 	depends = python-gobject
-	depends = vulkan-validation-layers
+	depends = vulkan-tools
 	depends = clinfo
 	optdepends = nvidia: Vulkan nvidia driver
 	optdepends = mesa
