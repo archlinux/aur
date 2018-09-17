@@ -1,7 +1,7 @@
 # Maintainer: Jose Riha <jose1711 gmail com>
 
 pkgname=nmonvisualizer
-pkgver=2016_02_29
+pkgver=2018_04_10
 _jarname=NMONVisualizer_${pkgver//_/-}.jar
 pkgrel=1
 pkgdesc="Java GUI tool for analyzing nmon system files from both AIX and Linux"
@@ -9,8 +9,8 @@ arch=('any')
 url="https://nmonvisualizer.github.io/nmonvisualizer/"
 license=('GPL')
 depends=('java-runtime')
-source=('http://dl.bintray.com/nmonvisualizer/NMONVisualizer/NMONVisualizer_2016-02-29.jar'
-        'nmonvisualizer.desktop')
+source=("http://dl.bintray.com/nmonvisualizer/NMONVisualizer/NMONVisualizer_${pkgver//_/-}.jar"
+        "nmonvisualizer.desktop")
 noextract=(${_jarname})
 
 package() {
@@ -27,5 +27,5 @@ java -jar /usr/share/java/nmonvisualizer/nmonvisualizer.jar
 EOF
   chmod 755 "${pkgdir}"/usr/bin/$pkgname
 }
-md5sums=('232477f6733298f953276fa447e173f3'
+md5sums=('1486dce60e199ca4a551900e865362c3'
          '5d73f2bfea723aa172e688b0b2d1dae8')
