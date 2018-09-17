@@ -1,6 +1,6 @@
 # Maintainer: Finn Behrens <finn@dsgvo.fail>
 pkgname=rifo-git 
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="rifo sripts"
 arch=('any')
@@ -31,5 +31,6 @@ package() {
 	install -Dm0755 rifopass.sh "$pkgdir/usr/bin/rifopass"
 	install -Dm0755 passlistgen.sh "$pkgdir/usr/bin/passlistgen.sh"
 	install -Dm0755 rifo.sh "$pkgdir/usr/bin/rifo"
+	install -Dm0755 init-rifo.sh "$pkgdir/usr/bin/init-rifo.sh"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
