@@ -5,10 +5,10 @@
 
 _realname=mutter
 pkgname=$_realname-catalyst
-pkgver=3.28.3+8+gd0d807801
+pkgver=3.30.0
 pkgrel=1
 pkgdesc="A window manager for GNOME with patches for catalyst compatibility"
-url="https://git.gnome.org/browse/mutter"
+url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
 license=('GPL')
 depends=('dconf'
@@ -25,6 +25,7 @@ depends=('dconf'
   'libgudev'
   'libinput'
   'pipewire'
+  'egl-wayland'
 )
 makedepends=('intltool'
   'gobject-introspection'
@@ -33,7 +34,7 @@ makedepends=('intltool'
 conflicts=('mutter' "gnome-shell>${pkgver:0:6}+999")
 provides=("mutter=${pkgver}")
 groups=('gnome')
-_commit=d0d8078013749bb84dc611dfdf6b317512c8559e  # gnome-3-28
+_commit=34f5be726dbd90ad6c494cda5eeff7bd68fd83a1  # tags/3.30.0^0
 source=("git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
   "startup-notification.patch"
   "catalyst-workaround-v2.patch"
@@ -50,10 +51,6 @@ pkgver() {
 
 prepare() {
   cd "$_realname"
-
-  # Port to pipewire 0.2
-  git cherry-pick -n 0407a8b33d8c3503fba63ad260984bb08bd6e0dc
-  sed -i 's/pipewire-0.1/pipewire-0.2/g' configure.ac
 
   # https://bugs.archlinux.org/task/51940
   # As of 2018-05-08: Still needed, according to fmuellner
