@@ -1,15 +1,16 @@
 # Maintainer: Matej Grabovsky <matej.grabovsky at gmail>
+# Contributor: Edward W Ayers <ewa21 at cam.ac.uk>
 
 pkgname=lean-git
 _pkgver=3.3.0
-pkgver=3.3.0.r54.g393008586
+pkgver=3.3.0.r668.gb13ac127f
 pkgrel=1
 pkgdesc='Lean Theorem Prover'
 arch=('x86_64' 'i386')
 url="http://leanprover.github.io/"
 license=('Apache')
 depends=('gmp' 'mpfr' 'lua>=5.2')
-makedepends=('git' 'cmake' 'python' 'gperftools')
+makedepends=('git' 'cmake' 'python' 'gperftools' 'gcc7')
 optdepends=('emacs: emacs mode')
 conflicts=('lean-bin')
 source=("$pkgname::git+https://github.com/leanprover/lean.git")
@@ -24,6 +25,7 @@ build() {
   cd "$pkgname"
   cmake -G 'Unix Makefiles' -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr src/ \
+    -DCMAKE_CXX_COMPILER=g++-7 \
     -DTCMALLOC=OFF # temporary workaround for a tcmalloc bug
   make
 }
