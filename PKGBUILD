@@ -36,6 +36,9 @@ prepare() {
     patch -p1 < ../calendar-1.35-linux.patch
     
     for c in calendars/*.*/* ; do
+        if [ ${c: -3} == "CVS" ]; then
+            continue
+        fi
         fromcode="$(grep '^LANG=' "${c}" | sed 's/^LANG=\(.*\)\.\(.*\)\(@.*\)\{0,1\}/\2/')"
         if [ ! -z "${fromcode}" ]; then
             iconv -f "${fromcode}" -t "UTF-8" "${c}" > "${c}.conv"
