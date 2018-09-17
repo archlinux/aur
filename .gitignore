@@ -1,0 +1,4 @@
+compute-image-packages/
+pkg/
+src/
+*pkg.tar*

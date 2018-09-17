@@ -1,0 +1,15 @@
+pkgbase = python2-google-compute-engine-git
+	pkgdesc = Linux Guest Environment for Google Compute Engine - Python 2
+	pkgver = e725e85
+	pkgrel = 1
+	url = https://github.com/GoogleCloudPlatform/compute-image-packages
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	depends = python2-boto
+	depends = python2-setuptools
+	source = git://github.com/GoogleCloudPlatform/compute-image-packages.git
+	sha512sums = SKIP
+
+pkgname = python2-google-compute-engine-git
+
