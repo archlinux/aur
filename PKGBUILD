@@ -4,18 +4,12 @@
 
 pkgname=google-musicmanager
 pkgver=1.0.467.4929_r0
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple application for adding the music files on your computer to your Google Music library"
 arch=('x86_64')
 url="http://music.google.com"
 license=('custom:musicmanager')
 depends=('flac'
-         'fontconfig'
-         'libogg'
-         'freetype2'
-         'libvorbis'
-         'xdg-utils'
-         'libidn'
          'qt5-webkit'
          'libid3tag'
          'hicolor-icon-theme'
