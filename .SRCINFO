@@ -1,7 +1,7 @@
 pkgbase = gr-satellites-git
 	pkgdesc = gr-satellites decoder blocks for GNURadio
 	pkgver = r221.c3f8728
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/daniestevez/gr-satellites
 	arch = x86_64
 	arch = aarch64
@@ -10,8 +10,9 @@ pkgbase = gr-satellites-git
 	makedepends = cmake
 	makedepends = libfec
 	makedepends = swig
+	makedepends = boost
 	depends = gnuradio
-	depends = boost
+	depends = boost-libs
 	depends = python2-construct>=2.8
 	optdepends = feh: For realtime image decoders
 	optdepends = doxygen: For document generation
