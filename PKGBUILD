@@ -2,12 +2,12 @@
 
 pkgname=gimp-nufraw
 pkgver=0.42
-pkgrel=2
+pkgrel=3
 pkgdesc='Converter for raw files; utility and GIMP plugin'
 url='https://sourceforge.net/projects/nufraw/'
 arch=('x86_64')
 license=('GPL')
-depends=('gtkimageview' 'exiv2' 'lcms' 'desktop-file-utils' 'cfitsio' 'lensfun')
+depends=('cfitsio' 'exiv2' 'gtkimageview' 'lcms2' 'lensfun' 'libjpeg-turbo')
 makedepends=('gimp')
 conflicts=('gimp-ufraw')
 replaces=('gimp-ufraw')
