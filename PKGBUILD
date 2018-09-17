@@ -44,7 +44,8 @@ build() {
 
   ./waf configure --prefix=/usr --sbindir=/usr/bin \
         --enable-debug-gdb --enable-seccomp --refclock=all \
-        --enable-doc --htmldir=/usr/share/doc/ntpsec
+        --enable-doc --htmldir=/usr/share/doc/ntpsec \
+        --enable-leap-smear
   ./waf build
 
   a2x -f text docs/copyright.txt
