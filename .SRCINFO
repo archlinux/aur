@@ -1,0 +1,26 @@
+pkgbase = alacritty
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/jwilm/alacritty
+	arch = x86_64
+	arch = i686
+	license = Apache-2.0
+	makedepends = rust
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = fontconfig
+	makedepends = freetype2
+	makedepends = ncurses
+	makedepends = desktop-file-utils
+	source = alacritty-0.2.0.tar.gz::https://github.com/jwilm/alacritty/archive/v0.2.0.tar.gz
+	sha256sums = b45c3cb26b529b381593ca99712e31b4cf88f438c2435434062408462611e501
+
+pkgname = alacritty
+	pkgdesc = A cross-platform, GPU-accelerated terminal emulator
+	depends = freetype2
+	depends = fontconfig
+	depends = xclip
+
+pkgname = alacritty-terminfo
+	pkgdesc = Terminfo files for the alacritty terminal emulator
+
