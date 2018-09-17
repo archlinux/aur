@@ -15,7 +15,9 @@ pkgbase = macreg-git
 	depends = uwsgi-plugin-python
 	depends = python-pymysql
 	provides = python-macreg
+	provides = macreg
 	conflicts = python-macreg
+	conflicts = macreg
 	source = macreg::git+https://github.com/coNQP/macreg.git
 	md5sums = SKIP
 

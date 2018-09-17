@@ -17,8 +17,8 @@ depends=(
     'uwsgi-plugin-python'
     'python-pymysql')
 makedepends=('git' 'python')
-provides=("python-${_pkgbase}")
-conflicts=("python-${_pkgbase}")
+provides=("python-${_pkgbase}" "${_pkgbase}")
+conflicts=("python-${_pkgbase}" "${_pkgbase}")
 source=("${_pkgbase}::git+${url}.git")
 md5sums=('SKIP')
 pkgdir='pkg'
