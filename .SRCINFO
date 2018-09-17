@@ -9,8 +9,6 @@ pkgbase = osu
 	license = custom
 	depends = wine
 	depends = winetricks
-	depends = lib32-alsa-lib
-	depends = lib32-gnutls
 	source = http://m1.ppy.sh/r/osu!install.exe
 	source = directsound-latency.reg
 	source = osu.desktop
@@ -19,8 +17,10 @@ pkgbase = osu
 	md5sums = SKIP
 	md5sums = 1d285eb3a5bdb6a70da89116dec18441
 	md5sums = 3cb400cea5e9bff628f89c17a5f33f99
-	md5sums = 96c8752ee88bc458180899a15d8b4309
+	md5sums = 60ee5829b38c43bc30eba7805764f71f
 	md5sums = a0289f4f499640bfb3b39bf393140b03
+	depends_x86_64 = lib32-alsa-lib
+	depends_x86_64 = lib32-gnutls
 
 pkgname = osu
 

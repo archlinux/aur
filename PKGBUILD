@@ -14,7 +14,7 @@ source=("http://m1.ppy.sh/r/osu!install.exe"
 md5sums=('SKIP'
          '1d285eb3a5bdb6a70da89116dec18441'
          '3cb400cea5e9bff628f89c17a5f33f99'
-         '96c8752ee88bc458180899a15d8b4309'
+         '60ee5829b38c43bc30eba7805764f71f'
          'a0289f4f499640bfb3b39bf393140b03')
 
 pkgdesc="Freeware rhythm video game"
