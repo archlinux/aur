@@ -2,7 +2,7 @@
 # Maintainer: Dmitry Bilunov <kmeaw@yandex-team.ru>
 
 pkgname=clickhouse
-pkgver=18.12.14
+pkgver=18.12.17
 pkgrel=1
 pkgdesc='An open-source column-oriented database management system that allows generating analytical data reports in real time'
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ source=(https://github.com/yandex/ClickHouse/archive/v$pkgver-stable.tar.gz
         https://github.com/ClickHouse-Extras/ssl/archive/de02224.tar.gz
         https://github.com/jemalloc/jemalloc/archive/41b7372.tar.gz
         libunwind.patch)
-md5sums=('8fcb870311fe94365556213666c74f7a'
+md5sums=('56f77959e1ec5d8b2c5914203d46ad4f'
          '5323f7ba2565a84a80a93edde95eb4fe'
          '7d9c187a8afedde260fadf2f1d5f46a2'
          '7b92f0554687e6a8949adc5c10aeff78'
@@ -57,9 +57,8 @@ prepare() {
 
 build() {
   cd ClickHouse-$pkgver-stable
-  rm -f PreLoad.cmake
-  cmake -G 'Unix Makefiles' -D CMAKE_BUILD_TYPE:STRING=Release -D USE_STATIC_LIBRARIES:BOOL=False -D ENABLE_TESTS:BOOL=False -D UNBUNDLED:BOOL=False -D USE_INTERNAL_DOUBLE_CONVERSION_LIBRARY:BOOL=False -D USE_INTERNAL_CAPNP_LIBRARY:BOOL=False -D USE_INTERNAL_POCO_LIBRARY:BOOL=True -D POCO_STATIC:BOOL=True -D USE_INTERNAL_RE2_LIBRARY:BOOL=False -D NO_WERROR=1 .
-  make clickhouse
+  cmake -D CMAKE_BUILD_TYPE:STRING=Release -D USE_STATIC_LIBRARIES:BOOL=False -D ENABLE_TESTS:BOOL=False -D UNBUNDLED:BOOL=False -D USE_INTERNAL_DOUBLE_CONVERSION_LIBRARY:BOOL=False -D USE_INTERNAL_CAPNP_LIBRARY:BOOL=False -D USE_INTERNAL_POCO_LIBRARY:BOOL=True -D POCO_STATIC:BOOL=True -D USE_INTERNAL_RE2_LIBRARY:BOOL=False -D NO_WERROR=1 .
+  cmake --build . --target clickhouse
 }
 
 package() {
