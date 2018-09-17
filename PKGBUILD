@@ -1,40 +1,45 @@
 # Maintainer: Glen Dsouza <gdsouza@linuxmail.org>
 # Contributor: jmf <jmf at mesecons dot net>
+
 pkgname=openscenegraph-git
-pkgver=20160415
+pkgver=3.7.0r15866.198592733
+_pkgver=3.7.0
 pkgrel=1
-_gitname=OpenSceneGraph
-pkgdesc="An open source, high performance real-time graphics toolkit - git mirror"
-arch=('i686' 'x86_64')
-url="http://www.openscenegraph.org/"
-license=('GPL')
+pkgdesc="An open source, high performance real-time graphics toolkit"
+arch=('x86_64')
+url="http://www.openscenegraph.org"
+license=('custom:OSGPL')
 depends=('giflib' 'jasper' 'librsvg' 'xine-lib' 'curl' 'pth')
 makedepends=('cmake' 'libvncserver' 'qt5-base' 'ffmpeg' 'mesa')
 optdepends=('libvncserver' 'gdal' 'openexr' 'poppler-glib' 'qt5-base' 'ffmpeg')
-provides=('openscenegraph-git' 'openscenegraph' 'openthreads')
-conflicts=('openscenegraph' 'openscenegraph-svn' 'openthreads')
-source=(git://github.com/openscenegraph/OpenSceneGraph.git)
+provides=('openscenegraph' 'openthreads')
+conflicts=('openscenegraph' 'openthreads')
+source=("openscenegraph::git+https://github.com/openscenegraph/OpenSceneGraph.git#branch=master")
 md5sums=('SKIP')
 
 pkgver() {
-  echo "$(date +"%Y%m%d")"
+  cd "${srcdir}/${pkgname%-git}"
+  printf "%sr%s.%s" "${_pkgver}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  mkdir -p "${srcdir}/${pkgname%-git}/build"
 }
 
 build() {
-  mkdir ${srcdir}/${_gitname}-build/
-  cd "${srcdir}/${_gitname}-build/"
-  cmake ../${_gitname} \
+  cd "${srcdir}/${pkgname%-git}/build"
+  cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DLIBRARY_OUTPUT_PATH=/usr/lib \
-    -DCMAKE_BUILD_TYPE=Release
-
-  make || return 1
+    -DCMAKE_BUILD_TYPE=Release \
+    ..
+  make
 }
 
 package(){
-  cd "${srcdir}/${_gitname}-build"
-  make DESTDIR="${pkgdir}/" install
-  install -D -m644 "${srcdir}/${_gitname}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  [ -d "$pkgdir/usr/lib64" ] && mv "$pkgdir/usr/lib64" "$pkgdir/usr/lib" || true
+  cd "${srcdir}/${pkgname%-git}/build"
+  make DESTDIR="$pkgdir" install
+  install -Dm 644 "../LICENSE.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  mv "${pkgdir}/usr/lib64" "${pkgdir}/usr/lib"
 }
 
