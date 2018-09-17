@@ -1,7 +1,7 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=bgrep-git
 pkgver=0.2.r86.g4401646
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Binary Grep"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/rsharo/bgrep"
 license=('BSD')
 categories=()
 groups=()
-depends=('')
+depends=()
 makedepends=('git')
 optdepends=()
 checkdepends=()
