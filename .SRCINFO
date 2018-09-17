@@ -1,7 +1,7 @@
 pkgbase = galleon-prod
 	pkgdesc = A wallet for the Tezos blockchain
-	pkgver = 0.1.0b
-	pkgrel = 1
+	pkgver = 0.2.0b
+	pkgrel = 2
 	url = https://github.com/Cryptonomic/Tezori
 	arch = x86_64
 	license = GPL3
@@ -9,9 +9,9 @@ pkgbase = galleon-prod
 	depends = gtk3
 	depends = nss
 	depends = gconf
-	noextract = galleon-prod_0.1.0-b_amd64.deb
-	source = https://cryptonomic-wallet.nyc3.digitaloceanspaces.com/release_0.1.0b/galleon-prod_0.1.0-b_amd64.deb
-	md5sums = bc9c53e9349a98e784e72768b1b7e7f2
+	noextract = galleon-prod_0.2.0-b_amd64.deb
+	source = https://cryptonomic-wallet.nyc3.digitaloceanspaces.com/release_0.2.0b/galleon-prod_0.2.0-b_amd64.deb
+	md5sums = 9773063b915b9ba865a0f83297472e2e
 
 pkgname = galleon-prod
 
