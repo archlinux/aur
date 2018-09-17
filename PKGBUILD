@@ -1,7 +1,7 @@
 # Maintainer: aimileus <me at aimileus dot nl>
 # Contributor: Salvador Pardiñas <darkfm@vera.com.uy>
 pkgname=woeusb
-pkgver=3.2.2
+pkgver=3.2.9
 pkgrel=1
 pkgdesc="A Linux program to create Windows USB stick installer from a real Windows DVD or an image"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('git')
 conflicts=('woeusb-git')
 provides=('woeusb-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/slacka/WoeUSB/archive/v$pkgver.tar.gz")
-sha256sums=('472746470e7874c81a72d5189f3d1fa9004ba1ea1d3c9715e78b64cbf8fc0948')
+sha256sums=('85b338f097f4049c119f75e83e601948451619c5506d50daa4967bdc4ad1eafd')
 
 prepare() {
 	cd "WoeUSB-$pkgver"
