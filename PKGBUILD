@@ -1,6 +1,6 @@
 # former Maintainer: Bjoern Franke <bjo@nord-west.org>
 pkgname=jameica
-pkgver=2.8.1
+pkgver=2.8.2
 _pkgver=2.8
 pkgrel=2
 pkgdesc="free runtime environment for java applications"
@@ -17,8 +17,10 @@ validpgpkeys=("7314FBDE7D38EE5610D291B65A8ED9CFC0DB6C70") # Olaf Willuhn <info@w
 sha1sums=('57c7077ddbcf1bc9c970eb0c00da56a46c246e20'
           '0664650342635fa5b0a9413dc8c22a65053ef234'
           '39c008050c7f90f3fde05b849cba80559207bdb5')
-sha1sums_i686=('e8d9f1e9d11ee1097ae1870769439026f8fc641a' 'SKIP')
-sha1sums_x86_64=('ff4ed6ccb96679e8cb930151f34d1e75d2a06e32' 'SKIP')
+sha1sums_i686=('6e4d7c92d34e5f4962f8edecb6ea685443943e27'
+               'SKIP')
+sha1sums_x86_64=('bb1f7494ae8f2d0c5fc3ea85b6714667df9b55f7'
+                 'SKIP')
 source_x86_64=("https://www.willuhn.de/products/jameica/releases/current/jameica/jameica-linux64-${pkgver}.zip"
 "https://www.willuhn.de/products/jameica/releases/current/jameica/jameica-linux64-${pkgver}.zip.asc")
 source=("jameica-start-script.patch"
