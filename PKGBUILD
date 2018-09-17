@@ -12,6 +12,8 @@ source=("$pkgname::git+https://github.com/LN-Zap/zap-desktop.git"
         "zap-desktop.desktop")
 sha256sums=('SKIP'
             '8c7a0940cced4e02b9d4dc1e2ca98f546117a079f37b91739ef70a321f86d5ee')
+conflicts=("zap-desktop-bin")
+provides=("zap-desktop")
 
 pkgver() {
   cd "$pkgname" || exit
