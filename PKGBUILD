@@ -2,8 +2,8 @@
 # Contributor: Myles English <myles at rockhead dot biz>
 # Contributor: Lucas H. Gabrielli <heitzmann at gmail dot com>
 pkgname=petsc
-pkgver=3.9.3
-pkgrel=3
+pkgver=3.10.0
+pkgrel=1
 _config=linux-c-opt
 # if --with-debugging=yes is set then PETSC_ARCH is automatically set to
 #"linux-c-debug" for some things, so the _config should be changed too
@@ -30,7 +30,7 @@ optdepends=('trilinos: support for trilinos'
 install=petsc.install
 source=(http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/${pkgname}-${pkgver/_/-}.tar.gz
         test_optdepends.sh)
-sha256sums=('6c7f2c7a28433385d74d647b4934aaeea3c1b3053b207973c9497639b6ebf7c8'
+sha256sums=('6ebacc010397ea47649495e8363cd7d7d86b876e6df07c6f6ccfa48b22fa555c'
             'b737cc58ffb581c68072cf978bf4de3eaff8318c7a1e65c174d7ffe802ed427b')
 
 _install_dir=/opt/petsc/${_config}
@@ -108,8 +108,7 @@ package() {
   cp -r ${_build_dir}/include/*.html ${pkgdir}/usr/share/doc/$pkgname/include/
 
   # install licence (even though there is no such word as licenses)
-  mkdir -p ${pkgdir}/usr/share/licenses/petsc
-  cp ${_build_dir}/docs/copyright.html ${pkgdir}/usr/share/licenses/$pkgname/
+  install -Dm 644 ${_build_dir}/docs/copyright.html ${pkgdir}/usr/share/licenses/$pkgname/copyright.html
 
   mkdir -p ${pkgdir}/etc/profile.d
   echo "export PETSC_DIR=${_install_dir}" > ${pkgdir}/etc/profile.d/petsc.sh
@@ -117,11 +116,11 @@ package() {
   chmod +x ${pkgdir}/etc/profile.d/petsc.sh
 
   # show where the shared libraries are
-  install -d -m755 "${pkgdir}"/etc/ld.so.conf.d/
+  install -dm 755 "${pkgdir}"/etc/ld.so.conf.d/
   echo "${_install_dir}/lib" > "${pkgdir}"/etc/ld.so.conf.d/petsc.conf
 
   # install pkgconfig settings
-  mkdir -p "${pkgdir}"/usr/share/pkgconfig
-  ln -s "${pkgdir}${_install_dir}"/lib/pkgconfig/PETSc.pc "${pkgdir}"/usr/share/pkgconfig/PETSc.pc
-  #cp "${_build_dir}/${_petsc_arch}"/lib/pkgconfig/PETSc.pc "${pkgdir}"/usr/share/pkgconfig/
+  #mkdir -p "${pkgdir}"/usr/share/pkgconfig
+  #ln -s "${pkgdir}${_install_dir}"/lib/pkgconfig/PETSc.pc "${pkgdir}"/usr/share/pkgconfig/PETSc.pc
+  install -Dm 644 "${_build_dir}/${_petsc_arch}"/lib/pkgconfig/PETSc.pc "${pkgdir}"/usr/share/pkgconfig/PETSc.pc
 }
