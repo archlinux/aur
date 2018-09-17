@@ -22,10 +22,10 @@ optdepends=('sabnzbd: usenet downloader'
 provides=('radarr')
 conflicts=('radarr')
 
-source=("https://ci.appveyor.com/api/buildjobs/${_pkghash}/artifacts/_artifacts/Radarr.develop.${pkgver}.linux.tar.gz"
-        "radarr.service"
-        "radarr.tmpfiles"
-        "radarr.sysusers")
+source=("Radarr.develop.${pkgver}.linux.tar.gz::https://radarr.aeonlucid.com/v1/download/nightly/linux/${pkgver}"
+        'radarr.service'
+        'radarr.tmpfiles'
+        'radarr.sysusers')
 
 sha512sums=('80d57190030b7c1a8eb0b3e079fe7cb944f8c82c8c6ce61d01bfff0512a66c5de6986d8930d698096308502001c81752aa31e22ee5d76d316ee8e5b34ae08dc4'
             '4c064051c7592529a7ed41c4fdd6381b5e9ace938608f9e271aa4126194db456e85b7602d8e13718efcc4c40d66f82a338199cb6fd924177ad23154090e48da3'
