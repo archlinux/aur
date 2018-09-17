@@ -2,7 +2,7 @@
 # Mon Jun  6 15:44:34 UTC 2016
 pkgbase = lucidor
 	pkgdesc = A program for reading and handling EPUB e-books and OPDS catalogs
-	pkgver = 0.9.13
+	pkgver = 0.9.14
 	pkgrel = 1
 	url = http://lucidor.org/lucidor/
 	install = lucidor.install
@@ -11,8 +11,8 @@ pkgbase = lucidor
 	license = GPL3
 	depends = xulrunner
 	depends = desktop-file-utils
-	source = lucidor_0.9.13.tar.gz::http://lucidor.org/get.php?id=lucidor_0.9.13.tar.gz
-	md5sums = f0377c1c504227fe83e4db1fc56cc6ad
+	source = lucidor_0.9.14.tar.gz::http://lucidor.org/get.php?id=lucidor_0.9.14.tar.gz
+	md5sums = b5cd1d6b39fa8fb8c83c51ff53acba36
 
 pkgname = lucidor
 
