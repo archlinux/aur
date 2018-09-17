@@ -1,7 +1,7 @@
 # Maintainer: Conor Anderson <conor@conr.ca>
 pkgname=wire-desktop-beta
 _pkgname=${pkgname%-beta}
-pkgver=3.2.2860
+pkgver=3.3.2872
 pkgrel=1
 pkgdesc='Modern, private messenger. Based on Electron.'
 arch=('x86_64' 'i686')
@@ -9,18 +9,21 @@ url='https://wire.com/'
 license=('GPL3')
 conflicts=('wire-desktop-bin' 'wire-desktop' 'wire-desktop-git')
 depends=('alsa-lib' 'gconf' 'gtk2' 'libxss' 'libxtst' 'nss' 'xdg-utils')
-makedepends=('cargo' 'npm' 'python2' 'git')
+makedepends=('cargo' 'npm' 'patch' 'python2' 'git')
 optdepends=('hunspell-en: for English spellcheck support'
             'noto-fonts-emoji: for colorful emoji made by Google'
             'ttf-emojione: for colorful emoji made by EmojiOne')
 provides=('wire-desktop')
 source=("${pkgver}.tar.gz::https://github.com/wireapp/wire-desktop/archive/release/${pkgver}.tar.gz"
-        "${_pkgname}.desktop")
-sha256sums=('2a0344735e118eb74a53aed153ec1b40d1af2368cc6cf639a81ac275fda126ee'
-            'cc9056cecff2aa49a9ce9c8376d57ec8c7c2cb8174f7966b5cdccbeb2e3751ea')
+        "${_pkgname}.desktop"
+        Gruntfile.patch)
+sha256sums=('35949658604dbd400f3d86925b5ef3754c1ead285324dd94d2d0ed1e2d485bc4'
+            'cc9056cecff2aa49a9ce9c8376d57ec8c7c2cb8174f7966b5cdccbeb2e3751ea'
+            '0ab8a14a961502b1333d62e3cb0444e04d1b54c7ca1b36820c1d1d9dba0474a3')
 
 build() {
   cd "${srcdir}/${_pkgname}-release-${pkgver}"
+  patch -p0 < $startdir/Gruntfile.patch
   npm install
   $(npm bin)/grunt 'linux-other-internal'
 }
