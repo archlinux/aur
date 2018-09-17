@@ -1,7 +1,7 @@
 # Maintainer: Daniel Moch <daniel@danielmoch.com>
 pkgname=nncli
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="NextCloud Notes Command Line Interface"
 arch=('any')
 url="https://github.com/djmoch/${pkgname}"
@@ -11,7 +11,7 @@ depends=('python'
   'python-requests'
   'python-appdirs'
   'python-click')
-makedepends=('python-pip' 'flit' 'python-sphinx' 'gzip')
+makedepends=('python-pip' 'flit' 'python-sphinx')
 source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('78d2130395c34877fbae5cf133d588bfaa0b4d03f56935253ea950f1f9aa1190')
 
@@ -21,14 +21,13 @@ build()
   flit build --format wheel
   cd "${srcdir}/${pkgname}-${pkgver}/docs"
   sphinx-build -M man source build
-  gzip build/man/nncli.1
 }
 
 package()
 {
   cd "${srcdir}/${pkgname}-${pkgver}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 docs/build/man/nncli.1.gz "${pkgdir}/usr/share/man/man1/nncli.1.gz"
+  install -Dm644 docs/build/man/nncli.1 "${pkgdir}/usr/share/man/man1/nncli.1"
   pip install -I --no-warn-script-location --isolated --no-deps --compile --root="${pkgdir}" dist/${pkgname}-${pkgver}-py3-none-any.whl
 }
 
