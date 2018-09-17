@@ -7,6 +7,7 @@ pkgdesc="Lightning wallet focused on user experience and ease of use"
 arch=('x86_64')
 url="https://github.com/LN-Zap/zap-desktop"
 license=('MIT')
+makedepends=('npm' 'yarn')
 install="$pkgname.install"
 source=("$pkgname::git+https://github.com/LN-Zap/zap-desktop.git"
         "zap-desktop.desktop")
