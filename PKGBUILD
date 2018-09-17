@@ -27,7 +27,7 @@ build () {
 	CXXFLAGS="${CFLAGS/-fno-plt/}"
 
 	cd "${pkgname}"
-	cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
+	cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_C_COMPILER=gcc-7 -DCMAKE_BUILD_TYPE=Release
 	make
 }
 
