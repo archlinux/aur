@@ -1,0 +1,20 @@
+pkgbase = libidn-133-compat
+	pkgdesc = Compatibility package for libidn, providing libidn.so.11
+	pkgver = 1.33
+	pkgrel = 1
+	url = https://www.gnu.org/software/libidn/
+	arch = x86_64
+	license = GPL3
+	license = LGPL
+	depends = glibc
+	source = https://ftp.gnu.org/gnu/libidn/libidn-1.33.tar.gz
+	source = https://ftp.gnu.org/gnu/libidn/libidn-1.33.tar.gz.sig
+	source = gcc7_buildfix.diff
+	validpgpkeys = 9AA9BDB11BB1B99A21285A330664A76954265E8C
+	validpgpkeys = 1CB27DBC98614B2D5841646D08302DB6A2670428
+	sha256sums = 44a7aab635bb721ceef6beecc4d49dfd19478325e1b47f3196f7d2acc4930e19
+	sha256sums = SKIP
+	sha256sums = 1b539ba3916fe8982d596f4de9a65138ae9a35a042e1673328a092a478b7fb33
+
+pkgname = libidn-133-compat
+
