@@ -1,6 +1,6 @@
 pkgbase = calendar
 	pkgdesc = Reminder utility (OpenBSD)
-	pkgver = 1.80
+	pkgver = 6.3_20180603
 	pkgrel = 1
 	url = http://www.openbsd.org/cgi-bin/cvsweb/src/usr.bin/calendar
 	arch = x86_64
