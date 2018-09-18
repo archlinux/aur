@@ -1,26 +1,21 @@
 # Maintainer: Alex Branham <branham@utexas.edu>
-_cranname=magic
-_cranver=1.5-8
-_pkgtar=${_cranname}_${_cranver}.tar.gz
+_cranver=1.5-9
 pkgname=r-magic
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc="Create and Investigate Magic Squares"
+pkgdesc='Create and Investigate Magic Squares'
 arch=('any')
-url="https://cran.r-project.org/package=${_cranname}"
+url='https://cran.r-project.org/package=magic'
 license=('GPL2')
 depends=('r' 'r-abind')
-
-
-
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('5a9e810f65e62e734879bdafd9754029')
+source=("https://cran.r-project.org/src/contrib/magic_"$_cranver".tar.gz")
+md5sums=('646462b59a5118860f2109685ca84509')
 
 build(){
-    R CMD INSTALL ${_pkgtar} -l $srcdir
+    R CMD INSTALL magic_"$_cranver".tar.gz -l "$srcdir"
 }
 package() {
-    install -d "$pkgdir/usr/lib/R/library"
-    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
+    install -dm0755 "$pkgdir"/usr/lib/R/library
+    cp -a --no-preserve=ownership magic "$pkgdir"/usr/lib/R/library
 }
 
