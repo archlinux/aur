@@ -1,0 +1,20 @@
+pkgbase = python-pycrate-git
+	pkgdesc = Python library for manipulating various digital formats in an easy way.
+	pkgver = r222.ee66b19
+	pkgrel = 1
+	url = https://github.com/P1sec/pycrate
+	arch = any
+	license = LGPL2.1
+	makedepends = git
+	conflicts = pycrate
+	source = pycrate::git+https://github.com/P1sec/pycrate#branch=master
+	md5sums = SKIP
+
+pkgname = python2-pycrate-git
+	depends = python2
+	conflicts = python-pycrate-git
+
+pkgname = python-pycrate-git
+	depends = python
+	conflicts = python2-pycrate-git
+
