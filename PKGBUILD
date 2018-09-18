@@ -6,7 +6,7 @@
 pkgname=octave-nogui
 _name=octave
 provides=(octave)
-pkgver=4.4.0
+pkgver=4.4.1
 pkgrel=1
 pkgdesc="A high-level language, primarily intended for numerical computations."
 arch=('x86_64')
@@ -20,18 +20,11 @@ optdepends=('texinfo: for help-support in octave'
             'portaudio: audio support'
             'java-runtime: java support'
             'fltk: FLTK GUI')
-source=(ftp://ftp.gnu.org/gnu/octave/octave-$pkgver.tar.gz{,.sig}
-        octave-qt5.11.patch::"https://hg.savannah.gnu.org/hgweb/octave/raw-rev/cdaa884568b1")
+source=(ftp://ftp.gnu.org/gnu/octave/octave-$pkgver.tar.gz{,.sig})
 options=('!emptydirs')
 validpgpkeys=('DBD9C84E39FE1AAE99F04446B05F05B75D36644B')  # John W. Eaton
-sha512sums=('6a167a4a6a2f6ae70511f13b14feea0ce3efcc964227c93f3195adb3a1f1f28dda56f86a2e1c7c5e9f54891d2846fb96972092387e3da41f2e04cb700606ffc2'
-            'SKIP'
-            '5bbd5e54ac94ce57407714593aed0b65befa823be914376944f400c7dc18692d679df87ac90867c7adc8bd91c73855a13066e4b197e78fd89cb060d50dede69f')
-
-prepare() {
-  cd $_name-$pkgver
-  patch -p1 -i ../octave-qt5.11.patch # Fix build with Qt 5.11
-}
+sha512sums=('21a1f13e2145fa530f2169254d19442b572745d65b91453ba1f552f6eda6aecfead57dbe0260b3293a29db0aa0f27cfd4f26df332e6d640848a822b20c1232f8'
+            'SKIP')
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
