@@ -173,7 +173,7 @@ _opt_pagesize="Letter" # A4, Letter, Legal
 set -u
 pkgname='hylafaxplus'
 _pkgnick='hylafax'
-pkgver='5.6.0'
+pkgver='5.6.1'
 pkgrel='1'
 _sendfaxvsicommit='18fabc74490362cd26690331d546d727c727db25'
 pkgdesc='Enterprise Fax Server'
@@ -214,7 +214,7 @@ source=(
   '0004a-hylafaxplus-systemd.patch'
   '0005-hylafaxplus-faxsetup.patch'
 )
-sha256sums=('d905b4c70ed22d765427bd67cc16e9fed6a0e33bffa06aff6665cdc427090589'
+sha256sums=('419b8376f36a0a7bc685f083cd5230d4cc28581c4a8c035d2ae611e2a6651280'
             '0aed186ab30fdb7cf36895a0ff50b03bd4a68db63cf4f19763995dabd9caffb0'
             '466ab17cdaa1eb1f1f0b5bdc444a90df5835a1896b1363584264920bbc3929f2'
             '80d2e28ee7a7d8f93501e32c96e9895e242409da1326761d36dbf28e5a0e3677'
