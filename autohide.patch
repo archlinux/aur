@@ -98,7 +98,7 @@ index c48b5ea..81ec2f2 100644
  
          return true;
      }
-@@ -91,7 +115,173 @@ public class Wingpanel.PanelWindow : Gtk.Window {
+@@ -91,7 +115,174 @@ public class Wingpanel.PanelWindow : Gtk.Window {
  
          Services.BackgroundManager.initialize (this.monitor_number, panel_height);
  
@@ -197,7 +197,8 @@ index c48b5ea..81ec2f2 100644
 +
 +    private bool is_maximized_at_all (Wnck.Window window) {
 +        return (window.is_maximized_horizontally ()
-+                || window.is_maximized_vertically ());
++                || window.is_maximized_vertically ()
++                || window.is_fullscreen ());
 +    }
 +
 +    private bool hide_panel () {
