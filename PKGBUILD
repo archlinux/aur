@@ -1,13 +1,13 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-gst-plugins-base
-pkgver=1.14.2
-pkgrel=2
+pkgver=1.14.3
+pkgrel=1
 pkgdesc="GStreamer Multimedia Framework Base Plugins (mingw-w64)"
 arch=(any)
 url="http://gstreamer.freedesktop.org/"
 license=('LGPL')
 depends=('mingw-w64-gstreamer' 'mingw-w64-orc')
-makedepends=('mingw-w64-configure' 'mingw-w64-opus' 'mingw-w64-libvorbis' 'mingw-w64-pango' 'mingw-w64-libtheora' 'mingw-w64-libvisual')
+makedepends=('mingw-w64-configure' 'mingw-w64-opus' 'mingw-w64-libvorbis' 'mingw-w64-pango' 'mingw-w64-libtheora' 'mingw-w64-libvisual' 'mingw-w64-libjpeg-turbo' 'mingw-w64-libpng')
 optdepends=(
   "mingw-w64-libvisual: libvisual audio visualization plugin"
   "mingw-w64-opus: OPUS audio codec plugin"
@@ -18,7 +18,7 @@ optdepends=(
 options=('!strip' '!buildflags' 'staticlibs')
 
 source=("${url}/src/gst-plugins-base/gst-plugins-base-${pkgver}.tar.xz")
-sha256sums=('a4b7e80ba869f599307449b17c9e00b5d1e94d3ba1d8a1a386b8770b2ef01c7c')
+sha256sums=('f0b319c36be0ffc2a00380c77ba269cdf04e2b39bbc49d30b641fc35aa0b7952')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
