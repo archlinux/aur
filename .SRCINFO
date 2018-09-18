@@ -1,0 +1,16 @@
+pkgbase = emacs-password-store-otp-git
+	pkgdesc = Emacs functions to interact with the pass-otp extension for pass
+	pkgver = r29.1819cd8
+	pkgrel = 1
+	url = https://github.com/volrath/password-store-otp.el
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	provides = emacs-password-store-otp
+	conflicts = emacs-password-store-otp
+	source = git+https://github.com/volrath/password-store-otp.el.git
+	sha256sums = SKIP
+
+pkgname = emacs-password-store-otp-git
+
