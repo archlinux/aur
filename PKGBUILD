@@ -9,7 +9,7 @@ arch=("i686" "x86_64")
 url="https://github.com/mujx/nheko"
 license=("GPL3")
 
-depends=("qt5-base" "lmdb" "qt5-multimedia" "qt5-svg" "boost" "libsodium" "openssl")
+depends=("qt5-base" "lmdb" "qt5-multimedia" "qt5-svg" "boost" "libsodium" "openssl" "cmark")
 makedepends=("git" "cmake" "gcc" "fontconfig" "qt5-tools")
 
 provides=("nheko")
@@ -24,7 +24,7 @@ prepare() {
 
 pkgver() {
     cd "$pkgname"
-    printf "0.5.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "0.5.5.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -32,7 +32,7 @@ build() {
 
     rm -f cmake/FindOlm.cmake
 
-    cmake -Hdeps -B.deps -DUSE_BUNDLED_BOOST=OFF
+    cmake -Hdeps -B.deps -DUSE_BUNDLED_BOOST=OFF -DUSE_BUNDLED_CMARK=OFF
     cmake --build .deps
 
     cmake -H. -Bbuild -DCMAKE_BUILD_TYPE=Release \

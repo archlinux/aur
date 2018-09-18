@@ -18,6 +18,7 @@ pkgbase = nheko-git
 	depends = boost
 	depends = libsodium
 	depends = openssl
+	depends = cmark
 	provides = nheko
 	conflicts = nheko
 	source = nheko-git::git://github.com/mujx/nheko.git
