@@ -26,10 +26,7 @@ package() {
 msg2 "Extracting the data.tar.xz..."
 bsdtar -xf data.tar.xz -C "$pkgdir/"
 
-# Use system-provided dictionaries. Hunspell symlink is in deb.
-msg2 "Creating symlink to hyphen..."
-ln -Ts /usr/share/hyphen "$pkgdir/opt/waterfox/hyphenation"
-
+# Settings file for language packs
 _settings=/opt/waterfox/.installer/settings
 
 if [ -f "$_settings" ]; then
