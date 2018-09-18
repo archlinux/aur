@@ -12,6 +12,7 @@ depends=(curl
          gtk3
          libb64
          libevent
+         libhandy
          libnatpmp
          miniupnpc)
 makedepends=(git

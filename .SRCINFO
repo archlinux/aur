@@ -18,6 +18,7 @@ pkgbase = fragments-git
 	depends = gtk3
 	depends = libb64
 	depends = libevent
+	depends = libhandy
 	depends = libnatpmp
 	depends = miniupnpc
 	provides = fragments
