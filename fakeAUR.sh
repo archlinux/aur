@@ -13,7 +13,7 @@ function show_help () {
     echo "3) Copy a screnshoot to clipboard"
     echo "4) Fix formatted output for trizen.."
     echo "5) A config file that allows custom shortcuts that are like -btw or -nani"
-    echo "DEBUG"
+    echo "DEBUG2"
 }
 if [ $# -eq 0 ] 
 then
@@ -32,8 +32,15 @@ for i in "$@"
                 processes=$(> >(ps -f))
                 echo $processes
                 echo "and now reduced"
-                pac=$(echo $processes | grep -o -P '(?<=CM).*(?=fakeAUR)' | grep -o -P '(?<=D).*(?=fakeAUR)' | grep -o -P "(?<=00:00:00).*(?=$USER)")
+                pac=$(echo $processes | grep -o -P "(?<=00:00:00).*(?=$USER)" | grep -o -P "(?<=00:00:00).*(?=00:00:00)")
                 echo $pac
+                one=$(echo $pac | cut -d' ' -f1)
+                two=$(echo $pac | cut -d' ' -f2)
+                pac=$one" "$two
+                echo concat
+                echo $pac
+                echo concat end
+                
                 if [[ $pac = *"00"* ]]; then
                     delete=$(echo $pac | grep -oP "(?<=$USER\s)\w+")
                     pac=$(echo $pac | grep -o -P '(?<=00:00:00).*(?=)')
