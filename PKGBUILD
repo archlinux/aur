@@ -2,7 +2,7 @@
 
 pkgname=ixxat-socketcan
 pkgver=1.1.148.0
-pkgrel=1
+pkgrel=2
 pkgdesc="SocketCAN driver for IXXAT USB-to-CAN v2"
 arch=('i686' 'x86_64')
 url="https://www.ixxat.com/products/products-industrial/pc-interfaces/pc-can-interfaces/socketcan"
