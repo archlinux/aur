@@ -2,32 +2,26 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=lf
-pkgver=r7
+pkgver=8
 pkgrel=1
 license=('MIT')
 pkgdesc='lf is a terminal file manager written in Go'
 depends=("glibc")
-makedepends=("git" "go>=1.6")
-arch=("i686" "x86_64")
+makedepends=('git' 'go-pie')
+arch=('i686' 'x86_64')
 _gourl='github.com/gokcehan/lf'
 url="https://${_gourl}"
-source=("git+https://github.com/gokcehan/lf.git#commit=ffa913d9431574da81bd90fb6fb9e8566823dbe")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd "${srcdir}/${pkgname}"
-  git describe --tags |tr - .
-}
+source=("$pkgname-r$pkgver.tar.gz::https://github.com/gokcehan/$pkgname/archive/r$pkgver.tar.gz")
+sha256sums=('b92bfba41cc1b4054c44bf615907380482c66694fc9eaf4affe185b39cb9bb26')
 
 build() {
-  cd "${srcdir}/${pkgname}"
-  GOPATH="${srcdir}/go" go get -u "${_gourl}"
-  GOPATH="${srcdir}/go" go build
+  cd ${pkgname}-r$pkgver
+  go build
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
-  install -Dm755 ./lf "${pkgdir}"/usr/bin/lf
+  cd ${pkgname}-r$pkgver
+  install -Dm755 lf-r$pkgver "${pkgdir}"/usr/bin/lf
   install -Dm644 ./LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
   install -Dm644 ./README.md "${pkgdir}"/usr/share/doc/${pkgname}/README.md
 }

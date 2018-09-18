@@ -1,16 +1,16 @@
 pkgbase = lf
 	pkgdesc = lf is a terminal file manager written in Go
-	pkgver = r7
+	pkgver = 8
 	pkgrel = 1
 	url = https://github.com/gokcehan/lf
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = go>=1.6
+	makedepends = go-pie
 	depends = glibc
-	source = git+https://github.com/gokcehan/lf.git#commit=ffa913d9431574da81bd90fb6fb9e8566823dbe
-	sha256sums = SKIP
+	source = lf-r8.tar.gz::https://github.com/gokcehan/lf/archive/r8.tar.gz
+	sha256sums = b92bfba41cc1b4054c44bf615907380482c66694fc9eaf4affe185b39cb9bb26
 
 pkgname = lf
 
