@@ -14,7 +14,7 @@ _EXTRAMODULES=$(readlink -f /usr/lib/modules/"$_cur_kernel/extramodules")
 
 pkgname=synaptics-led
 pkgver=$_kver
-pkgrel=2
+pkgrel=3
 arch=(i686 x86_64)
 license=(GPL2)
 url="https://github.com/mmonaco/PKGBUILDs"
@@ -37,12 +37,12 @@ build() {
 	msg2 "Module will be installed to: $_EXTRAMODULES"
 
 	msg2 "Getting source from $_gitroot"
-	cd "$srcdir"
+	cd "${srcdir}"
 	git archive --remote="$_gitroot" "$_gitcommit" drivers/input/mouse | tar -x
 
 	msg2 "Performing Integrity Check"
 	cd "drivers/input/mouse"
-	sha256sum --quiet -c "$srcdir/SHA256SUMS"
+	sha256sum --quiet -c "${srcdir}/SHA256SUMS"
 
 	msg2 "Patching source"
     cd "${srcdir}"
@@ -60,7 +60,7 @@ build() {
 }
 
 package() {
-	cd "$srcdir/drivers/input/mouse"
+	cd "${srcdir}/drivers/input/mouse"
 
 	install -D -m 0644 psmouse.ko.gz "${pkgdir}/${_EXTRAMODULES}/psmouse.ko.gz"
 
