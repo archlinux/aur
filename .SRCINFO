@@ -1,0 +1,17 @@
+pkgbase = emacs-password-store
+	pkgdesc = Password store (pass) support
+	pkgver = 1.7.3
+	pkgrel = 1
+	url = https://www.passwordstore.org/
+	arch = any
+	license = GPL2
+	depends = emacs
+	depends = pass
+	depends = emacs-f
+	depends = emacs-s
+	depends = emacs-with-editor
+	source = https://git.zx2c4.com/password-store/snapshot/password-store-1.7.3.tar.xz
+	sha256sums = 2b6c65846ebace9a15a118503dcd31b6440949a30d3b5291dfb5b1615b99a3f4
+
+pkgname = emacs-password-store
+
