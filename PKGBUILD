@@ -4,7 +4,7 @@ pkgver=20180913.350_e9c10b9
 pkgrel=1
 pkgbase=opensnitch-git
 _pkgbase=opensnitch
-pkgname=("${_pkgbase}d-git" "${_pkgbase}-ui-git")
+pkgname=("${_pkgbase}-git" "${_pkgbase}-ui-git")
 arch=('i686' 'x86_64')
 license=('GPL')
 makedepends=('git' 'go-pie' 'dep' 'libpcap' 'protobuf'
@@ -14,7 +14,7 @@ makedepends=('git' 'go-pie' 'dep' 'libpcap' 'protobuf'
              'python-pyinotify' 'python-pyqt5'
              'python-unicode-slugify')
 
-source=("opensnitch::git://github.com/evilsocket/opensnitch#branch=${BRANCH:-master}"
+source=("git://github.com/evilsocket/opensnitch.git"
         'nosudo.patch'
         'pwuid.patch')
 
@@ -59,7 +59,7 @@ build() {
         make
 }
 
-package_opensnitchd-git() {
+package_opensnitch-git() {
         pkgdesc="A GNU/Linux port of the Little Snitch application firewall."
         optdepends=('opensnitch-ui')
         depends=('libnetfilter_queue')
@@ -74,7 +74,7 @@ package_opensnitchd-git() {
 package_opensnitch-ui-git() {
         pkgdesc="UI for opensnitch."
         depends=('python-grpcio' 'python-grpcio-tools' 'python-pyinotify'
-                 'python-pyqt5' 'python-unicode-slugify' 'opensnitchd'
+                 'python-pyqt5' 'python-unicode-slugify' 'opensnitch'
                  'desktop-file-utils')
 
         export GOPATH="$srcdir/.go"
