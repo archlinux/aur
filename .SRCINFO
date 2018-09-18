@@ -1,0 +1,15 @@
+pkgbase = lib32-lcms
+	pkgdesc = Lightweight color management development library/engine (32-bit)
+	pkgver = 1.19
+	pkgrel = 6
+	url = http://www.littlecms.com
+	arch = x86_64
+	license = custom
+	makedepends = gcc-multilib
+	depends = lib32-libtiff>=3.9.4
+	depends = lcms
+	source = http://downloads.sourceforge.net/sourceforge/lcms/lcms-1.19.tar.gz
+	sha512sums = 85a55ad0673f0df2aaa80d18caa50314319f8da5ee4d84eed919059d0dad9861d684ef6353ce0ec6f9892a4603ce8e8e12f84d46858e23f52846b8aefd3cf449
+
+pkgname = lib32-lcms
+
