@@ -1,5 +1,5 @@
 pkgbase = lf
-	pkgdesc = lf is a terminal file manager written in Go
+	pkgdesc = A terminal file manager inspred by ranger written in Go
 	pkgver = 8
 	pkgrel = 1
 	url = https://github.com/gokcehan/lf
