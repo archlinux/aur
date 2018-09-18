@@ -1,6 +1,6 @@
 pkgbase = r-reprex
 	pkgdesc = Prepare Reproducible Example Code via the Clipboard
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=reprex
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = r-reprex
 	depends = r
 	depends = r-callr>=2.0.0
 	depends = r-clipr>=0.4.0
+	depends = r-fs
 	depends = r-rlang
 	depends = r-rmarkdown
 	depends = r-whisker
@@ -23,8 +24,8 @@ pkgbase = r-reprex
 	optdepends = r-shiny
 	optdepends = r-styler
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/reprex_0.2.0.tar.gz
-	md5sums = 52894c182b7937aa219afa75d2046d7c
+	source = https://cran.r-project.org/src/contrib/reprex_0.2.1.tar.gz
+	md5sums = c0afa805a5f5b7350d637463edff517e
 
 pkgname = r-reprex
 
