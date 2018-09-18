@@ -4,7 +4,7 @@
 
 pkgname=mikutter
 pkgver=3.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="a moest twitter client"
 arch=('i686' 'x86_64')
 url="http://mikutter.hachune.net/"
@@ -34,8 +34,11 @@ build() {
   gem install --no-document --no-user-install -i $_gemdir rake
   bundle install --path vendor/bundle --without test
 
-  _version=`bundle exec gem q -q twitter-text | sed -r 's/^.*\((.*)\)$/\1/'`
-  ln -s "/opt/$pkgname/$_gemdir/gems/twitter-text-$_version/config" .
+  tt_ver=`bundle exec gem q -q twitter-text | sed -r 's/^.*\((.*)\)$/\1/'`
+  ln -s "/opt/$pkgname/$_gemdir/gems/twitter-text-$tt_ver/config" .
+
+  idn_ver=`bundle exec gem q -q idn-ruby | sed -r 's/^.*\((.*)\)$/\1/'`
+  ln -sf "/opt/$pkgname/$_gemdir/gems/idn-ruby-$idn_ver/lib/idn.so" "vendor/idn.so"
 
   rm -rf $_gemdir/{build_info,cache,doc}
 }
