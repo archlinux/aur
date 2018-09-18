@@ -1,7 +1,7 @@
 # Maintainer: Anatoly Rugalev <anatoly.rugalev gmail com>
 
 pkgname=kubernetes-helmfile-bin
-pkgver=0.25.0
+pkgver=0.35.0
 pkgrel=3
 pkgdesc="Helmfile is declarative spec for deploying helm charts"
 url="https://github.com/roboll/helmfile"
