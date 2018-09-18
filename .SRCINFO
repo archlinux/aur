@@ -1,0 +1,19 @@
+pkgbase = r-fs
+	pkgdesc = Cross-Platform File System Operations Based on libuv
+	pkgver = 1.2.6
+	pkgrel = 1
+	url = https://cran.r-project.org/package=fs
+	arch = x86_64
+	license = GPL3
+	depends = r
+	depends = r-rcpp
+	optdepends = r-testthat
+	optdepends = r-covr
+	optdepends = r-pillar
+	optdepends = r-crayon
+	optdepends = r-withr
+	source = https://cran.r-project.org/src/contrib/fs_1.2.6.tar.gz
+	md5sums = c0569bf79573d09daedfb363e17f4a78
+
+pkgname = r-fs
+
