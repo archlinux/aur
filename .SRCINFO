@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-dash-to-panel
 	pkgdesc = Extension for GNOME shell to combine the dash and main panel
-	pkgver = 15
+	pkgver = 16
 	pkgrel = 1
 	url = https://github.com/jderose9/dash-to-panel
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = gnome-shell-extension-dash-to-panel
 	makedepends = gnome-common
 	makedepends = intltool
 	makedepends = make
-	source = https://github.com/jderose9/dash-to-panel/archive/v15.tar.gz
-	sha256sums = 6082bba7cf98d21c409a497de909279f80395669536927029b79220801454e74
+	source = https://github.com/jderose9/dash-to-panel/archive/v16.tar.gz
+	sha256sums = 72e41fdfab020e0e54a7e6b02b44d505d9090829cb11b153ef7a654d05965261
 
 pkgname = gnome-shell-extension-dash-to-panel
 	depends = gnome-shell
