@@ -1,0 +1,4 @@
+calendar/
+src/
+pkg/
+*.pkg.*
