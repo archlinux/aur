@@ -1,7 +1,7 @@
-From 288a921a8658bb478fe3c16120529fcd20f6d5d0 Mon Sep 17 00:00:00 2001
+From 771e964ed3199a0d98bdd644b22039f5b957ddb1 Mon Sep 17 00:00:00 2001
 From: Serge Hallyn <serge.hallyn@canonical.com>
 Date: Fri, 31 May 2013 19:12:12 +0100
-Subject: [PATCH 1/4] add sysctl to disallow unprivileged CLONE_NEWUSER by
+Subject: [PATCH 1/1] add sysctl to disallow unprivileged CLONE_NEWUSER by
  default
 
 Signed-off-by: Serge Hallyn <serge.hallyn@ubuntu.com>
@@ -14,7 +14,7 @@ Signed-off-by: Daniel Micay <danielmicay@gmail.com>
  3 files changed, 30 insertions(+)
 
 diff --git a/kernel/fork.c b/kernel/fork.c
-index 1b27babc4c78..a88dd3ccd31c 100644
+index 8ed48ca2cc43..e02823819ab7 100644
 --- a/kernel/fork.c
 +++ b/kernel/fork.c
 @@ -103,6 +103,11 @@
@@ -29,7 +29,7 @@ index 1b27babc4c78..a88dd3ccd31c 100644
  
  /*
   * Minimum number of threads to boot the kernel
-@@ -1624,6 +1629,10 @@ static __latent_entropy struct task_struct *copy_process(
+@@ -1625,6 +1630,10 @@ static __latent_entropy struct task_struct *copy_process(
  	if ((clone_flags & (CLONE_NEWUSER|CLONE_FS)) == (CLONE_NEWUSER|CLONE_FS))
  		return ERR_PTR(-EINVAL);
  
@@ -40,7 +40,7 @@ index 1b27babc4c78..a88dd3ccd31c 100644
  	/*
  	 * Thread groups must share signals as well, and detached threads
  	 * can only be started up within the thread group.
-@@ -2420,6 +2429,12 @@ int ksys_unshare(unsigned long unshare_flags)
+@@ -2421,6 +2430,12 @@ int ksys_unshare(unsigned long unshare_flags)
  	if (unshare_flags & CLONE_NEWNS)
  		unshare_flags |= CLONE_FS;
  
