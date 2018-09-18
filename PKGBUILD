@@ -3,11 +3,11 @@
 
 pkgname=mir-git
 _pkgname=mir
-pkgver=0.32.1+309+gf8425b27d9
+pkgver=0.32.1+460+gddb262d9ec
 pkgrel=1
 pkgdesc="Canonical's display server"
 url='https://mir-server.io'
-arch=(x86_64 i686)
+arch=(x86_64 i686 armv7h aarch64)
 license=(GPL LGPL)
 conflicts=(mir)
 provides=(mir)
@@ -19,9 +19,11 @@ optdepends=('qterminal: required for miral demos'
             'xcursor-dmz: opt requirement for miral demos'
             'qtubuntu: opt requirement for miral demos')
 source=('git+https://github.com/MirServer/mir.git'
-        'https://raw.githubusercontent.com/capnproto/capnproto/04fd66e2992a3ed38d686642a3c479a7f3e131c9/c%2B%2B/cmake/FindCapnProto.cmake')
+        'https://raw.githubusercontent.com/capnproto/capnproto/04fd66e2992a3ed38d686642a3c479a7f3e131c9/c%2B%2B/cmake/FindCapnProto.cmake'
+        'protobufHeaders.patch')
 sha256sums=('SKIP'
-            '83153402ea0220a9ed3f9d2c2c157eb49fedf340f368cd8173f0966b3fbf2647')
+            '83153402ea0220a9ed3f9d2c2c157eb49fedf340f368cd8173f0966b3fbf2647'
+            '88c025b35f4182fef7eed67db903e2580f69272cfaf38b7078fd571d8762a055')
 
 BUILD_DIR=build
 
@@ -30,6 +32,8 @@ prepare() {
   git submodule init
   git submodule update
   cp ../FindCapnProto.cmake cmake/
+
+  patch -Np1 -i "${srcdir}/protobufHeaders.patch"
 }
 
 pkgver() {
