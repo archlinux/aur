@@ -1,0 +1,38 @@
+EVOUSER=evostreamd
+EVOGROUP=evostreamd
+
+testError ()
+{
+	if [ "$?" -ne "0" ]
+	then
+		echo $1
+		exit 1
+	fi
+}
+
+
+createUserAndGroup ()
+{
+	if ! getent group $EVOGROUP >/dev/null
+	then
+		echo adding group $EVOGROUP
+		groupadd $EVOGROUP
+		testError "Unable to create group $EVOGROUP"
+	fi
+
+	if ! getent passwd $EVOUSER >/dev/null
+	then
+		echo adding user $EVOUSER
+		useradd -c "EvoStream Media Server Daemon" -g $EVOGROUP -r -N -s /usr/sbin/nologin $EVOUSER
+	fi
+}
+
+applyPermissions ()
+{
+	chown -R $EVOUSER:$EVOGROUP /var/evo-webroot
+}
+
+post_install() {
+	createUserAndGroup
+	applyPermissions  
+}

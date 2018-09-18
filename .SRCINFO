@@ -1,0 +1,17 @@
+pkgbase = evostream-web
+	pkgdesc = EvoStream web services and web user interface
+	pkgver = 2.0.1.5649
+	pkgrel = 1
+	url = https://evostream.com/
+	install = evostream-web.install
+	arch = any
+	license = custom
+	makedepends = poppler
+	noextract = Evostream-Media-Server-EULA-v2.pdf
+	source = http://apt.evostream.com/release/debian/9.4/pool/main/e/evostream-web/evostream-web_2.0.1.5649-1_all.deb
+	source = https://evostream.com/public/files/Evostream-Media-Server-EULA-v2.pdf
+	md5sums = 6ab8c9a2b6f20629a011c8a9a8b12e48
+	md5sums = ee93910c6589b26c8eb056921f1944f8
+
+pkgname = evostream-web
+
