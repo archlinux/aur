@@ -1,6 +1,6 @@
 pkgbase = gnome-terminal-csd1
 	pkgdesc = The GNOME Terminal Emulator with CSD support
-	pkgver = 3.30.1
+	pkgver = 3.30.0
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Terminal
 	arch = x86_64
