@@ -1,6 +1,6 @@
 pkgbase = r-xmlparsedata
 	pkgdesc = Parse Data of R Code as an XML Tree
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=xmlparsedata
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = r-xmlparsedata
 	optdepends = r-covr
 	optdepends = r-testthat
 	optdepends = r-xml2
-	source = https://cran.r-project.org/src/contrib/xmlparsedata_1.0.1.tar.gz
-	md5sums = 0b3c62ea33d4dac5ce28aa98e05effb2
+	source = https://cran.r-project.org/src/contrib/xmlparsedata_1.0.2.tar.gz
+	md5sums = e33ffa10cbcbc592a6ba683e233e1631
 
 pkgname = r-xmlparsedata
 
