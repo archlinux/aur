@@ -1,0 +1,20 @@
+pkgbase = lcms
+	pkgdesc = Lightweight color management development library/engine
+	pkgver = 1.19
+	pkgrel = 7
+	url = http://www.littlecms.com
+	arch = x86_64
+	license = custom
+	makedepends = python2
+	depends = libtiff
+	source = https://downloads.sourceforge.net/sourceforge/lcms/lcms-1.19.tar.gz
+	source = cve-2013-4276.patch
+	sha256sums = 80ae32cb9f568af4dc7ee4d3c05a4c31fc513fc3e31730fed0ce7378237273a9
+	sha256sums = cd10cc5ce791ae782b1257e6181a71cbdb685b705779c9ef2ceffc7fb2021bd0
+
+pkgname = lcms
+
+pkgname = python2-lcms
+	pkgdesc = LittleCMS Python bindings
+	depends = lcms
+
