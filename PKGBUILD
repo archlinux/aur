@@ -3,7 +3,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=glib2-patched-thumbnailer
-pkgver=2.56.1
+pkgver=2.58.0+31+g2a7d4d2dc
 pkgrel=1
 pkgdesc="GLib2 patched with ahodesuka's thumbnailer patch."
 url="https://gist.github.com/Dudemanguy911/d199759b46a79782cc1b301649dec8a5"
@@ -11,13 +11,13 @@ arch=(x86_64)
 provides=("glib2=$pkgver")
 conflicts=('glib2')
 depends=(pcre libffi libutil-linux zlib tumbler)
-makedepends=(gettext gtk-doc shared-mime-info python libelf git util-linux dbus)
+makedepends=(gettext gtk-doc shared-mime-info python libelf git util-linux meson dbus)
 checkdepends=(desktop-file-utils)
 optdepends=('python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-report'
             'libelf: gresource inspection tool')
 options=('!docs' '!emptydirs')
 license=(LGPL2.1)
-_commit=d0364b443805dcb832c200fcf8bf58a64fdf3e7d # tags/2.56.1^0
+_commit=2a7d4d2dcb1f2fc018a433b039e4aaca91b4f0a6  # glib-2-58
 source=("git+https://gitlab.gnome.org/GNOME/glib.git#commit=$_commit"
         noisy-glib-compile-schemas.diff
         glib-compile-schemas.hook
@@ -42,37 +42,28 @@ prepare() {
 
   # Apply patch to generate thumbnails
   patch -Np1 -i ../glib-thumbnailer.patch
-
-  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  local debug=minimum
-  check_option debug y && debug=yes
-
-  cd glib
-  ./configure \
-    --prefix=/usr \
-    --libdir=/usr/lib \
-    --sysconfdir=/etc \
-    --with-pcre=system \
-    --enable-debug=$debug \
-    --enable-gtk-doc \
-    --disable-fam
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-  make
+  arch-meson glib build \
+    -D selinux=false \
+    -D man=true \
+    -D gtk_doc=true
+  ninja -C build
 }
 
 #skip this; test fails
-# check() {
-#   cd glib
-#   make check
-# }
+#check() {
+#  meson test -C build -t 2
+#}
 
 package() {
-  cd glib
-  make DESTDIR="$pkgdir" install
-  mv "$pkgdir/usr/share/gtk-doc" "$srcdir"
+  DESTDIR="$pkgdir" meson install -C build
+  install -Dt "$pkgdir/usr/share/libalpm/hooks" -m644 *.hook
 
-  install -Dt "$pkgdir/usr/share/libalpm/hooks" -m644 ../*.hook
+  python -m compileall -d /usr/share/glib-2.0/codegen "$pkgdir/usr/share/glib-2.0/codegen"
+  python -O -m compileall -d /usr/share/glib-2.0/codegen "$pkgdir/usr/share/glib-2.0/codegen"
+
+  # Split docs
+  mv "$pkgdir/usr/share/gtk-doc" "$srcdir"
 }
