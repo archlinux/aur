@@ -1,8 +1,8 @@
 # Maintainer: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 
 pkgname=bazarr
-pkgver=0.6.3
-pkgrel=2
+pkgver=0.6.4
+pkgrel=1
 pkgdesc="Manage and download subtitles for Sonarr and Radarr."
 arch=('any')
 url="https://github.com/morpheus65535/bazarr"
@@ -33,7 +33,7 @@ source=("bazarr-${pkgver}.tar.gz::https://github.com/morpheus65535/bazarr/archiv
         'bazarr.sysusers'
         'bazarr.tmpfiles')
 
-sha256sums=('fb9800f632265ec54892ba20b3f2690cc23b801e2d2bf977eec272e19bdd6486'
+sha256sums=('7e453eb6c9deba707333f00ae73647f923d1204f8c2d5a6440994e2c64926551'
             'e3c57f1a1d9ddd87d097efe2df5148f10de79c445fe6eee158f64b4335f3e174'
             '92fd48cbd7e5fe3a0388bbe756a52098fc461ef2dc87d9e886452e4f15acdcdc'
             '7f75f2c2634524e90b1dea7649fceceb57949efa9db365cfa9e29e58690def4e')
