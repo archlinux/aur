@@ -11,7 +11,7 @@
 
 pkgname=strongswan-pkcs11
 pkgver=5.6.3
-pkgrel=1
+pkgrel=2
 provides=("${pkgname/-pkcs11}=${pkgver}-${pkgrel}")
 pkgdesc="The best OpenSource IPsec implementation with PKCS11 support"
 url='http://www.strongswan.org'
