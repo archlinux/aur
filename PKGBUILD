@@ -7,15 +7,16 @@ pkgbase=systemd-git
 _pkgbase=systemd
 pkgname=('systemd-git' 'libsystemd-git' 'systemd-resolvconf-git' 'systemd-sysvcompat-git')
 pkgdesc="systemd (git version)"
-pkgver=239.857
+pkgver=239.860
 pkgrel=1
 arch=('x86_64')
-url="https://www.github.com/systemd/systemd"
+url='https://www.github.com/systemd/systemd'
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
-             'intltool' 'iptables' 'kmod' 'libcap' 'libidn' 'libgcrypt'
+             'intltool' 'iptables' 'kmod' 'libcap' 'libidn2' 'libgcrypt'
              'libmicrohttpd' 'libxslt' 'util-linux' 'linux-api-headers'
              'python-lxml' 'quota-tools' 'shadow' 'gnu-efi-libs' 'git'
-             'meson' 'libseccomp' 'pcre2')
+             'meson' 'libseccomp' 'pcre2' 'audit' 'kexec-tools' 'libxkbcommon'
+             'bash-completion')
 options=('strip' '!distcc' '!ccache')
 source=('git+https://github.com/systemd/systemd'
         '0001-Use-Arch-Linux-device-access-groups.patch'
@@ -89,9 +90,9 @@ build() {
   )
 
   local _meson_options=(
-    -Daudit=false
-    -Dgnuefi=true
+    -Dgnu-efi=true
     -Dima=false
+    -Dlibidn2=true
     -Dlz4=true
 
     -Ddbuspolicydir=/usr/share/dbus-1/system.d
@@ -121,15 +122,16 @@ package_systemd-git() {
   license=('GPL2' 'LGPL2.1')
   groups=('base-devel')
   depends=('acl' 'bash' 'cryptsetup' 'dbus' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
-           'libgcrypt' 'libsystemd' 'libidn' 'lz4' 'pam' 'libelf' 'libseccomp'
-           'util-linux' 'xz' 'pcre2')
-  provides=('nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver" "systemd=$pkgver")
-  replaces=('nss-myhostname' 'systemd-tools' 'udev' 'systemd')
-  conflicts=('nss-myhostname' 'systemd-tools' 'udev' 'systemd')
+           'libgcrypt' 'libsystemd' 'libidn2' 'lz4' 'pam' 'libelf' 'libseccomp'
+           'util-linux' 'xz' 'pcre2' 'audit')
+  provides=( "systemd=$pkgver" 'nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver")
+  replaces=('systemd' 'nss-myhostname' 'systemd-tools' 'udev')
+  conflicts=('systemd' 'nss-myhostname' 'systemd-tools' 'udev')
   optdepends=('libmicrohttpd: remote journald capabilities'
               'quota-tools: kernel-level quota management'
               'systemd-sysvcompat-git: symlink package to provide sysvinit binaries'
-              'polkit: allow administration as unprivileged user')
+              'polkit: allow administration as unprivileged user'
+              'curl: machinectl pull-tar and pull-raw')
   backup=(etc/pam.d/systemd-user
           etc/systemd/coredump.conf
           etc/systemd/journald.conf
@@ -143,7 +145,7 @@ package_systemd-git() {
           etc/udev/udev.conf)
   install=systemd.install
 
-  DESTDIR="$pkgdir" ninja -C build install
+  DESTDIR="$pkgdir" meson install -C build
 
   # don't write units to /etc by default. some of these will be re-enabled on
   # post_install.

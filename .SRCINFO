@@ -1,6 +1,6 @@
 pkgbase = systemd-git
 	pkgdesc = systemd (git version)
-	pkgver = 239.857
+	pkgver = 239.860
 	pkgrel = 1
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = systemd-git
 	makedepends = iptables
 	makedepends = kmod
 	makedepends = libcap
-	makedepends = libidn
+	makedepends = libidn2
 	makedepends = libgcrypt
 	makedepends = libmicrohttpd
 	makedepends = libxslt
@@ -30,6 +30,10 @@ pkgbase = systemd-git
 	makedepends = meson
 	makedepends = libseccomp
 	makedepends = pcre2
+	makedepends = audit
+	makedepends = kexec-tools
+	makedepends = libxkbcommon
+	makedepends = bash-completion
 	options = strip
 	options = !distcc
 	options = !ccache
@@ -89,7 +93,7 @@ pkgname = systemd-git
 	depends = libcap
 	depends = libgcrypt
 	depends = libsystemd
-	depends = libidn
+	depends = libidn2
 	depends = lz4
 	depends = pam
 	depends = libelf
@@ -97,22 +101,24 @@ pkgname = systemd-git
 	depends = util-linux
 	depends = xz
 	depends = pcre2
+	depends = audit
 	optdepends = libmicrohttpd: remote journald capabilities
 	optdepends = quota-tools: kernel-level quota management
 	optdepends = systemd-sysvcompat-git: symlink package to provide sysvinit binaries
 	optdepends = polkit: allow administration as unprivileged user
+	optdepends = curl: machinectl pull-tar and pull-raw
+	provides = systemd=239.860
 	provides = nss-myhostname
-	provides = systemd-tools=239.857
-	provides = udev=239.857
-	provides = systemd=239.857
+	provides = systemd-tools=239.860
+	provides = udev=239.860
+	conflicts = systemd
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
-	conflicts = systemd
+	replaces = systemd
 	replaces = nss-myhostname
 	replaces = systemd-tools
 	replaces = udev
-	replaces = systemd
 	backup = etc/pam.d/systemd-user
 	backup = etc/systemd/coredump.conf
 	backup = etc/systemd/journald.conf
