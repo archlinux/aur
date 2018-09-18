@@ -1,4 +1,19 @@
 
+<a name="2.1.2"></a>
+## [2.1.2](https://gitlab.com/langurmonkey/gaiasky/compare/2.1.1...2.1.2) (2018-09-18)
+
+### Feat
+
+* add quit confirmation dialog
+* add new key bindings for simple actions
+
+### Fix
+
+* fix for windows paths
+* fix run script and play camera windows
+* update changelog
+
+
 <a name="2.1.1"></a>
 ## [2.1.1](https://gitlab.com/langurmonkey/gaiasky/compare/2.1.0...2.1.1) (2018-09-14)
 
