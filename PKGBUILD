@@ -3,7 +3,7 @@
 # Contributor: Aaron Lindsay <aaron@aclindsay.com>
 
 pkgname=seafile
-pkgver=6.2.4
+pkgver=6.2.5
 pkgrel=1
 pkgdesc="Seafile is an online file storage and collaboration tool"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -16,7 +16,7 @@ conflicts=("seafile-server")
 source=("seafile-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "libseafile.in.patch"
         "seaf-cli@.service")
-sha256sums=('3972073608692de6c0b254a6d5fa711ac3697174be0a06d1930b3830e643f711'
+sha256sums=('0899981d43db96b465b3b945c160b62fc658556f90c8d426f6b8a4ea9edb2da8'
             'a2d7f7cf0c59aba97650af62b3cefd0ceb71a1007c34d9369a88e5769c7f6076'
             'c37510109c1de64c774896df39aece240c056b54414d2119fca01860211156ba')
 provides=('seafile-client-cli')
