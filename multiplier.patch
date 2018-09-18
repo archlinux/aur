@@ -1,0 +1,77 @@
+diff --git a/.gitignore b/.gitignore
+index a4d1f1f6..af036939 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -10,3 +10,4 @@
+ *.gcno
+ tags
+ *.gnuplot
++/build/
+\ No newline at end of file
+diff --git a/src/evdev.c b/src/evdev.c
+index 7c6e921d..446a5cd6 100644
+--- a/src/evdev.c
++++ b/src/evdev.c
+@@ -38,6 +38,7 @@
+ #include <assert.h>
+ #include <time.h>
+ #include <math.h>
++#include <limits.h>
+ 
+ #include "libinput.h"
+ #include "evdev.h"
+@@ -1160,6 +1161,7 @@ evdev_read_wheel_click_props(struct evdev_device *device)
+ 						 &angles.x))
+ 			angles.x = angles.y;
+ 	}
++	angles.y=INT_MAX;
+ 
+ 	return angles;
+ }
+diff --git a/src/libinput.c b/src/libinput.c
+index 01f53974..2ee9e1dc 100644
+--- a/src/libinput.c
++++ b/src/libinput.c
+@@ -33,6 +33,8 @@
+ #include <sys/epoll.h>
+ #include <unistd.h>
+ #include <assert.h>
++#include <fcntl.h>
++#include <sys/mman.h>
+ 
+ #include "libinput.h"
+ #include "libinput-private.h"
+@@ -720,6 +722,16 @@ libinput_event_pointer_get_axis_value(struct libinput_event_pointer *event,
+ 	return value;
+ }
+ 
++static char *multiplier;
++static void libinput_discrete_deltay_multiplier(void) {
++  int fd;
++  char *file = "/tmp/libinput_discrete_deltay_multiplier";
++  if ((fd = open(file, O_RDWR | O_CREAT, 0666)) == -1) exit(1);
++  if (write(fd, "1", sizeof(char)) == -1) exit(1);
++  if ((multiplier = mmap(NULL, 1024, PROT_READ, MAP_SHARED, fd, 0)) ==
++      MAP_FAILED) exit(1);
++}
++
+ LIBINPUT_EXPORT double
+ libinput_event_pointer_get_axis_value_discrete(struct libinput_event_pointer *event,
+ 					       enum libinput_pointer_axis axis)
+@@ -740,7 +752,7 @@ libinput_event_pointer_get_axis_value_discrete(struct libinput_event_pointer *ev
+ 			value = event->discrete.x;
+ 			break;
+ 		case LIBINPUT_POINTER_AXIS_SCROLL_VERTICAL:
+-			value = event->discrete.y;
++			value = event->discrete.y * atoi(multiplier);
+ 			break;
+ 		}
+ 	}
+@@ -1717,6 +1729,7 @@ libinput_init(struct libinput *libinput,
+ 		close(libinput->epoll_fd);
+ 		return -1;
+ 	}
++	libinput_discrete_deltay_multiplier();
+ 
+ 	return 0;
+ }

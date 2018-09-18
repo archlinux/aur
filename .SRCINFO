@@ -1,0 +1,28 @@
+pkgbase = libinput-multiplier
+	pkgdesc = scroll patch, discrete deltay multiplier
+	pkgver = 1.12.0
+	pkgrel = 1
+	url = http://freedesktop.org/wiki/Software/libinput/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = doxygen
+	makedepends = graphviz
+	makedepends = gtk3
+	makedepends = python-recommonmark
+	depends = mtdev
+	depends = systemd
+	depends = libevdev
+	depends = libwacom
+	provides = libinput=1.12.0
+	conflicts = libinput
+	source = https://gitlab.freedesktop.org/libinput/libinput/-/archive/1.12.0/libinput-1.12.0.tar.gz
+	source = multiplier.patch
+	md5sums = 5863fb1a6ed5131b2dd8c3bffe43c644
+	md5sums = 71b3ecaf21c5ec18e0b82ff341da3fc7
+	sha1sums = b773b0201c502f1f49b07769e396e13f7ae380dd
+	sha1sums = 155b915b68867fe9ef610c47a3d79d5f1490ecb1
+
+pkgname = libinput-multiplier
+
