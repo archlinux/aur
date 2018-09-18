@@ -8,7 +8,7 @@ CFLAGS  = $(RPM_OPT_FLAGS) -D_GNU_SOURCE -DTM_YEAR_BASE=1900
 
 SRCS    = calendar.c io.c day.c pesach.c ostern.c paskha.c
 OBJS    = $(SRCS:.c=.o)
-INTER   = de_DE.ISO_8859-1 hr_HR.ISO_8859-2 ru_RU.KOI8-R fr_FR.ISO8859-1
+INTER   = de_DE.UTF-8 hr_HR.UTF-8 ru_RU.UTF-8 fr_FR.UTF-8
 
 all: calendar
 
