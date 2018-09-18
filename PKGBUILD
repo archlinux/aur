@@ -1,6 +1,6 @@
 # Maintainer: Johannes Wienke <languitar@semipol.de>
 pkgname=xsecurelock
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="X11 screen lock utility with security in mind"
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=('mplayer: for the saver_mplayer module'\
             'xorg-xset: for the saver_blank module'\
             'xscreensaver: for the saver_xscreensaver module')
 source=("https://github.com/google/xsecurelock/archive/v${pkgver}.tar.gz")
-md5sums=('2e2d4697b52ecbd88131092088485513')
+md5sums=('8b4ec8d8f6445db68a8c176927c547c6')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
