@@ -1,0 +1,16 @@
+diff -Nupr FusionInventory-Agent-2.4.1.orig/lib/setup.pm FusionInventory-Agent-2.4.1.patched/lib/setup.pm
+--- FusionInventory-Agent-2.4.1.orig/lib/setup.pm	2018-06-29 11:17:46.000000000 +0200
++++ FusionInventory-Agent-2.4.1.patched/lib/setup.pm	2018-09-18 16:01:16.999963130 +0200
+@@ -11,9 +11,9 @@ use Cwd qw(abs_path);
+ our @EXPORT = ('%setup');
+ 
+ our %setup = (
+-    datadir => './share',
+-    libdir  => './lib',
+-    vardir  => './var',
++    datadir => '/usr/share/fusioninventory',
++    libdir  => '/usr/share/fusioninventory/lib',
++    vardir  => '/var/lib/fusioninventory-agent',
+ );
+ 
+ # Compute directly libdir from this setup file as it should be installed

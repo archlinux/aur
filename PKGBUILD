@@ -4,12 +4,12 @@
 # Contributor: Alex 'AdUser' Z
 pkgname=fusioninventory-agent
 _pkgname="FusionInventory-Agent"
-pkgver=2.3.21
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="An application for keeping track of the hardware and software"
 arch=(any)
 url="http://fusioninventory.org"
-_watch="https://github.com/fusinv/fusioninventory-agent/releases"
+_watch="https://github.com/fusinventory/fusioninventory-agent/releases"
 license=('GPL')
 depends=(
   'perl>=5.8'
@@ -20,7 +20,8 @@ depends=(
   'perl-text-template'
   'perl-universal-require'
   'perl-xml-treepp>=0.26'
-  'perl-data-structure-util'
+  # Daemon mode is required for systemd
+  'perl-proc-daemon'
 )
 makedepends=(
   'perl-http-proxy'
@@ -30,37 +31,37 @@ makedepends=(
   # Provides IO::Capture::Stderr
   'perl-io-capture'
   'perl-ipc-run'
+  'perl-lwp-protocol-https'
+  # Provided by Perl
+  #'perl-json-pp'
+  'perl-net-snmp'
   'perl-test-compile'
   'perl-test-deep'
   'perl-test-exception'
   'perl-test-mockmodule'
+  'perl-test-mockobject'
   # Provided by 'perl-test-most'
   # 'perl-test-more>=0.93'
   'perl-test-most'
   'perl-test-nowarnings'
-  'perl-lwp-protocol-https'
-  'perl-test-mockobject'
-  'perl-json-pp'
-  'perl-net-snmp'
 )
-
 optdepends=(
 # Global
-  # FIXME: Doesn't build from AUR anymore. Needs a patch:
-  #-use private::MakeUtil;
-  #+require './private/MakeUtil.pm';
+  # FIXME: Not available in the AUR anymore. Provided by perl?
   'perl-compress-zlib: message compression'
   'perl-http-daemon: web interface'
-  'perl-io-socket-ssl>=1.14: HTTPS support'
+  # >=1.14
+  'perl-io-socket-ssl: HTTPS support'
   'perl-lwp-protocol-https: HTTPS support'
+  # Required for Systemd. Added to depends.
   'perl-proc-daemon: daemon mode'
-  'perl-proc-pid-file: daemon mode'
 
 # Inventory
+  'perl-datetime'
+  # >=0.60
+  'perl-net-cups: Inventory printers detection'
   # FIXME: Not available in the AUR anymore
   'perl-parse-edid: Inventory EDID data parsing'
-  'perl-net-cups>=0.60: Inventory printers detection'
-  'perl-datetime'
   'dmidecode: Inventory DMI data retrieval'
   # Provides lspci
   'pciutils: Inventory PCI bus scanning (lspci)'
@@ -74,18 +75,20 @@ optdepends=(
   # Provided by Perl
   # 'perl-digest-sha: Deploy'
   'perl-file-copy-recursive: Deploy'
-  'perl-json-pp: Deploy'
+  # Provided by Perl
+  #'perl-json-pp: Deploy'
+  # Provided by Perl
+  #'perl-net-ping: Deploy'
+  'perl-parallel-forkmanager: Deploy'
   # Provided by perl-uri
   # 'perl-uri-escape: Deploy'
   'perl-uri: Deploy'
-  'perl-net-ping: Deploy'
-  'perl-parallel-forkmanager: Deploy'
 
 # Network
+  # FIXME: not in AUR yet
+  'perl-net-nbname: Network'
   'perl-net-snmp: Network inventory'
-  # FIXME: not in AUR
-  # 'perl-net-nbname: Network'
-  # provided by perl
+  # provided by Perl
   # 'perl-thread-queue>=2.0.1'
   'perl-crypt-des: Network inventory SNMPv3 support'
   'nmap: Network discovery'
@@ -96,17 +99,22 @@ optdepends=(
   'perl-net-write: Wake on Lan ethernet method support'
 )
 checkdepends=(
+    'perl-file-copy-recursive'
     # Needed for perl-http-server-simple to work properly
     'perl-cgi'
     'perl-http-proxy'
     'perl-http-server-simple'
-    # TESTME: is it provided by perl-http-server-simple?
-    # 'perl-http-server-simple-authen'
+    'perl-http-server-simple-authen'
     'perl-io-socket-ssl'
     # Provided by perl-io-capture
-    #'perl-io-capture-sderr'
+    #'perl-io-capture-stderr'
     'perl-io-capture'
     'perl-ipc-run'
+    # Provided by Perl
+    #'perl-json-pp'
+    'perl-net-snmp'
+    'perl-lwp-protocol-https'
+    'perl-parallel-forkmanager'
     'perl-test-compile'
     'perl-test-deep'
     'perl-test-exception'
@@ -115,18 +123,19 @@ checkdepends=(
     # 'perl-test-more'
     'perl-test-most'
     'perl-test-nowarnings'
-    'perl-lwp-protocol-https'
     'perl-test-mockobject'
-    'perl-json-pp'
-    'perl-net-snmp'
-    'perl-parallel-forkmanager'
 )
 source=("https://github.com/fusioninventory/fusioninventory-agent/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
-  'fusioninventory-agent.service'
-  'fusioninventory-agent.config')
-md5sums=('0f47d238b82c2ea7c02a6309e1d9ed87'
-         'cd0d59b266a41977f51d9e99ecca8cd5'
-         '7cce12647a737aadcdd79dee4575aff3')
+        "setup.patch")
+md5sums=('417fd23dd681f615055b65cd4e414187'
+         '51f15a7346dda3d3337b514e73a00132')
+backup=('etc/fusioninventory/agent.cfg')
+
+prepare() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  # Fixes setup paths. See: https://github.com/fusioninventory/fusioninventory-agent/issues/451#issuecomment-361326178
+  patch -Np1 -i "${srcdir}/setup.patch"
+}
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -139,20 +148,22 @@ build() {
   make
 }
 
-check() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-
-  make test
-}
+# FIXME: stalls at t/agent/http/client/connection.t .................... 7/36
+#check() {
+#  cd "${srcdir}/${_pkgname}-${pkgver}"
+#
+#  make test
+#}
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
+
   make install DESTDIR="${pkgdir}/"
-  install -D -m644 ${srcdir}/fusioninventory-agent.service \
+
+  install -D -m644 contrib/unix/fusioninventory-agent.service \
     ${pkgdir}/usr/lib/systemd/system/fusioninventory-agent.service
-  mv ${pkgdir}/etc/fusioninventory/agent.cfg \
-     ${pkgdir}/etc/fusioninventory/agent.cfg.default
-  install -D -m644 ${srcdir}/fusioninventory-agent.config \
-    ${pkgdir}/etc/conf.d/fusioninventory-agent
+  install -D -m644  etc/agent.cfg \
+     ${pkgdir}/etc/agent.cfg
+
   mkdir -p "${pkgdir}/var/lib/fusioninventory-agent"
 }
