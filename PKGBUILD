@@ -3,7 +3,7 @@
 pkgname=lf-bin
 pkgver=8
 pkgrel=1
-pkgdesc='lf: A terminal file manager, heavily inspired by ranger (Precompiled binary from official repository)'
+pkgdesc='A terminal file manager inspired by ranger (Precompiled binary from official repository)'
 arch=('i686' 'x86_64' 'armv7h')
 url='https://github.com/gokcehan/lf'
 license=('MIT') # https://github.com/gokcehan/lf/blob/master/LICENSE

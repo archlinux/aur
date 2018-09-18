@@ -1,5 +1,5 @@
 pkgbase = lf-bin
-	pkgdesc = lf: A terminal file manager, heavily inspired by ranger (Precompiled binary from official repository)
+	pkgdesc = A terminal file manager inspired by ranger (Precompiled binary from official repository)
 	pkgver = 8
 	pkgrel = 1
 	url = https://github.com/gokcehan/lf
