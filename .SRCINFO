@@ -1,0 +1,23 @@
+pkgbase = theft-git
+	pkgdesc = property-based testing for C
+	pkgver = 0.4.3.r25.g0619c2a
+	pkgrel = 1
+	url = https://github.com/silentbicycle/theft
+	arch = i686
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	provides = theft
+	conflicts = theft
+	source = theft-git::git+https://github.com/silentbicycle/theft.git#branch=develop
+	source = file://0001-make-support-DESTDIR-setting-for-packaging.patch
+	source = file://0001-make-set-permisions.patch
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+
+pkgname = theft-git
+
