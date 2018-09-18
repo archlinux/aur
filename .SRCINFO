@@ -1,7 +1,7 @@
 pkgbase = gnome-games-libretro
 	pkgdesc = Libretro definitions for gnome-games
 	pkgver = 3.30.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/Apps/Games
 	arch = any
 	license = GPL3
