@@ -2,8 +2,8 @@
 # Fri Sep  1 20:52:50 UTC 2017
 pkgbase = strongswan-pkcs11
 	pkgdesc = The best OpenSource IPsec implementation with PKCS11 support
-	pkgver = 5.6.0
-	pkgrel = 3
+	pkgver = 5.6.3
+	pkgrel = 1
 	url = http://www.strongswan.org
 	arch = i686
 	arch = x86_64
@@ -26,8 +26,8 @@ pkgbase = strongswan-pkcs11
 	depends = libcap
 	depends = libsystemd
 	depends = pam
-	provides = strongswan=5.6.0-2
-	conflicts = openswan,
+	provides = strongswan=5.6.3-1
+	conflicts = openswan
 	conflicts = strongswan
 	options = !libtool
 	backup = etc/ipsec.conf
@@ -103,7 +103,7 @@ pkgbase = strongswan-pkcs11
 	backup = etc/strongswan.d/charon/pkcs11.conf
 	source = https://download.strongswan.org/strongswan-5.6.0.tar.bz2
 	source = configure_ac.patch
-	sha256sums = a14dc0d92634ed52730bfc76a76db30943a28ed3c65a560066e1e9f785827b13
+	sha256sums = c3c7dc8201f40625bba92ffd32eb602a8909210d8b3fac4d214c737ce079bf24
 	sha256sums = 003750d77fa501075f1fdb6f55926dc544407c5dd26e2fd8d5eb4917ddf0b3f7
 
 pkgname = strongswan-pkcs11
