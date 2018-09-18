@@ -1,15 +1,15 @@
 pkgbase = micropad
 	pkgdesc = A powerful notepad app that respects your freedoms and runs on everything.
-	pkgver = 3.11.0
+	pkgver = 3.11.2
 	pkgrel = 1
 	url = https://getmicropad.com
 	install = micropad.install
 	arch = x86_64
 	license = MPL2
 	depends = electron<3.0.0
-	source = https://github.com/MicroPad/Electron/releases/download/v3.11.0/micropad-3.11.0.pacman
+	source = https://github.com/MicroPad/Electron/releases/download/v3.11.2/micropad-3.11.2.pacman
 	source = micropad-bin
-	md5sums = 52749ca35fa37898a7c304d0ff8d60a3
+	md5sums = 7ff672fed95e1ee50a8cb71d4f3f6318
 	md5sums = fb88bf75df0f836b4a6da178be1cb6c2
 
 pkgname = micropad
