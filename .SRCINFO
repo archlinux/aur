@@ -11,6 +11,7 @@ pkgbase = fragments
 	makedepends = git
 	makedepends = gobject-introspection
 	makedepends = libdazzle
+	makedepends = libhandy
 	makedepends = meson
 	makedepends = vala
 	depends = curl

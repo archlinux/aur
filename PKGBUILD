@@ -16,6 +16,7 @@ depends=(curl
 makedepends=(git
              gobject-introspection
              libdazzle
+             libhandy
              meson
              vala)
 conflicts=("$pkgname-git")
