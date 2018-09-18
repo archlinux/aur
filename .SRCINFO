@@ -1,7 +1,7 @@
 pkgbase = courier-imap
 	pkgdesc = IMAP(s)/POP3(s) Server
-	pkgver = 4.18.2
-	pkgrel = 2
+	pkgver = 5.0.0
+	pkgrel = 1
 	url = http://www.courier-mta.org/imap/
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,8 @@ pkgbase = courier-imap
 	depends = gamin
 	depends = gdbm
 	depends = openssl
-	depends = courier-unicode>=2.0
+	depends = courier-unicode>=2.1
+	depends = courier-authlib>=0.69.0
 	provides = imap-server
 	provides = pop3-server
 	conflicts = courier-mta
@@ -24,12 +25,12 @@ pkgbase = courier-imap
 	backup = etc/courier-imap/imapd-ssl
 	backup = etc/courier-imap/pop3d
 	backup = etc/courier-imap/pop3d-ssl
-	source = http://downloads.sourceforge.net/project/courier/imap/4.18.2/courier-imap-4.18.2.tar.bz2
+	source = http://downloads.sourceforge.net/project/courier/imap/5.0.0/courier-imap-5.0.0.tar.bz2
 	source = courier-imapd-ssl.service
 	source = courier-imapd.service
 	source = courier-pop3d.service
 	source = courier-pop3d-ssl.service
-	sha512sums = 821f0151012f1a357faf705d938d8498a939cc994957398c0d5e2b7a619eabe202549f174e625161545ba6a94b753072458e9f0edc30cbb2443b15405740347e
+	sha512sums = 67cbf69dcf393ed70c26f624a7fcd3702781327ec0a4683314c30a42fd7c3ee4ffdb5c32a69c3e269e2055617fb26290d9a399898997f442dff9996f9eb90224
 	sha512sums = dfb4caa92e5033fbd5396df2e1718ae1f18d63d41f61e14014edee31f823d0fe49a151af570546767a7bafa31e0517717c1aef82896ff6741696a35bba397925
 	sha512sums = 7cd18dc9449255ab7fc945ceb836e470afcfa2e722bd20c19d46a88082eee61d9136a4cbccc082625ba1f0c97d70c287d2b98718694613c32a180decce5f3051
 	sha512sums = 419014a8956bb82de36f29afe859b6b2b57818fc7456a734c3447b389ff606c2bfe400506a2c33d4cec005583081e4cb78c38230d126aadc1f62b9ce0ec1e4d0
