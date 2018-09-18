@@ -10,6 +10,7 @@ pkgbase = libhandy-git
 	license = LGPL2.1
 	makedepends = pkg-config
 	makedepends = meson
+	makedepends = gobject-introspection
 	depends = gtk3
 	provides = libhandy
 	conflicts = libhandy
