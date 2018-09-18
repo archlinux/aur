@@ -1,13 +1,13 @@
 pkgbase = cura-lulzbot
 	pkgdesc = Cura LulzBot Edition for LulzBot 3D Printers by Aleph Objects, Inc.
-	pkgver = 3.2.23
+	pkgver = 3.2.27
 	pkgrel = 1
 	url = https://www.lulzbot.com/cura
 	arch = x86_64
 	license = AGPLv3
 	depends = gcc6-fortran
-	source = http://download.alephobjects.com/ao/aodeb/dists/stretch/main/binary-amd64/cura-lulzbot_3.2.23_amd64.deb
-	md5sums = f7d72032890f5479b7cc7d650ca13600
+	source = http://download.alephobjects.com/ao/aodeb/dists/stretch/main/binary-amd64/cura-lulzbot_3.2.27_amd64.deb
+	md5sums = 68db39aad99e047c20fc47ba48d72034
 
 pkgname = cura-lulzbot
 
