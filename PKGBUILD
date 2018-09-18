@@ -53,7 +53,6 @@ prepare() {
     cp ../bsdmainutils/debian/calendars/calendar.kazakhstan calendars/
     cp ../bsdmainutils/debian/calendars/calendar.thai calendars/
     cp ../bsdmainutils/debian/calendars/calendar.ubuntu calendars/
-    cp ../bsdmainutils/debian/calendars/calendar.thai calendars/
 }
 
 build() {
