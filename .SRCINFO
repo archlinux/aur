@@ -1,6 +1,6 @@
 pkgbase = substratumnode-git
 	pkgdesc = SubstratumNode is the foundation of the decentralized SubstratumNetwork. SubstratumNodes work together to relay CORES packages and content on the network.
-	pkgver = 0.4.0.r6.g41086fc
+	pkgver = 0.4.0.r10.gbb7f3a4
 	pkgrel = 1
 	url = https://github.com/SubstratumNetwork/SubstratumNode
 	install = substratumnode-git.install
