@@ -5,7 +5,7 @@ pkgbase=canta-theme-git
 _pkgname=canta-theme
 pkgname=('canta-gtk-theme-git' 'canta-icon-theme-git')
 pkgdesc="Flat Material Design theme for GTK 3, GTK 2 and Gnome-Shell"
-pkgver=2018_05_15.r4.153786a
+pkgver=2018_05_15.r6.9dfb4bb
 pkgrel=1
 arch=('any')
 url="https://github.com/vinceliuice/Canta-theme"
@@ -37,7 +37,7 @@ build() {
         -e "/DEST_DIR=\"\/usr\/share\/themes\"/d" \
         -e "/else/d" \
         -e "/DEST_DIR=\"\$HOME\/.themes\"/d" \
-        -e "/fi/d" -i $srcdir/canta-theme/install.sh
+        -e "0,/fi/d" -i $srcdir/canta-theme/install.sh
 
     rm -rf build
     mkdir build
