@@ -1,9 +1,9 @@
 # Maintainer: Matthias Lisin <ml@visu.li>
 # Contributor: sum01 <sum01@protonmail.com>
 pkgname=rocketchat-desktop
-pkgver=2.13.2
+pkgver=2.13.3
 _srcname="Rocket.Chat.Electron-$pkgver"
-pkgrel=2
+pkgrel=1
 pkgdesc='Rocket.Chat Native Cross-Platform Desktop Application via Electron.'
 arch=('i686' 'x86_64')
 url="https://github.com/RocketChat/Rocket.Chat.Electron"
@@ -15,7 +15,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/RocketChat/Rocket.Chat.Elec
         fix-linux-target.patch
         fix-gulp-release.patch
         rocketchat-desktop.desktop)
-sha512sums=('a3428bb6abe83ad5db6d549734e75efc354b8725423ba0ba92f309406233e29f5f3f92d5e8dbcd8f4e73901e3f4e8db0443476b1fa68315b6cbb406cf968fbce'
+sha512sums=('1d63816c8667b27ab90f336dc67ad352b26c0dd3a419e82a3a169e5d3a38fcc58ac91bd3b3e1ecbb5611c49493fd86972a8bd59c9a858ba2bd1e36b751edbbaf'
             '8a2753f6cffa7779cc9c008c872d24c8c6c20307886ec62f124a26249c1e96d0dcf1fd2529c6a335b2f1eea533cf24c9a2ca486794452b0190e14b5d47c8c0b5'
             '043a9b4ed2eddbb93404eab70cc2238bde5930d97c1bf88c1e49eddf61e960db19b996e5ffd9fd65062041fc0726d8ca5f9a4d5436e753260fda482a9544bbf3'
             'd87664b9bdf30eac3011393d094962e0d568a94b5eaf4c8e5f17529442dcba905cea7341527066102a97a07a981acd6ce045b8737eb78a7d81a2a2d05023fe26')
