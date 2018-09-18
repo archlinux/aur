@@ -2,3 +2,4 @@ calendar/
 src/
 pkg/
 *.pkg.*
+*.tar.gz
