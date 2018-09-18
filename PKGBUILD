@@ -1,8 +1,9 @@
-# Maintainer: Brice Waegeneire <brice.wge@gmail.com>
+# Maintainer: Dario Pellegrini <pellegrini.dario@gmail.com>
+# Contributor: Brice Waegeneire <brice.wge@gmail.com>
 # Contributor: moeb, https://github.com/moeb
 
 pkgname=freecad-cadquery-git
-pkgver=1.0.0.1.r5.g456f520
+pkgver=1.2.0.r32.g8062976
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="CadQuery module for freecad"
@@ -18,7 +19,7 @@ _pkgname=cadquery-freecad-module
 
 pkgver() {
   cd ${_pkgname}
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
