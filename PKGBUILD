@@ -7,7 +7,7 @@
 
 pkgname=murmur-snapshot-ice
 pkgver=1.3.0_2868_g44b9004
-pkgrel=1
+pkgrel=2
 pkgdesc="The voice chat application server for Mumble (development snapshot)"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://wiki.mumble.info/wiki/"

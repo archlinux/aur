@@ -1,7 +1,7 @@
 pkgbase = murmur-snapshot-ice
 	pkgdesc = The voice chat application server for Mumble (development snapshot)
 	pkgver = 1.3.0_2868_g44b9004
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.mumble.info/wiki/
 	install = murmur.install
 	arch = i686
