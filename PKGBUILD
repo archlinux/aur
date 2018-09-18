@@ -1,6 +1,6 @@
 # Maintainer: Microoo <hu@microoo.net>
 pkgname=substratumnode-cli-git
-pkgver=0.4.0.r10.gbb7f3a4
+pkgver=0.4.1.r0.gbb7f3a4
 pkgrel=1
 pkgdesc="Command line binary of SubstratumNode. SubstratumNode is the foundation of the decentralized SubstratumNetwork. SubstratumNodes work together to relay CORES packages and content on the network."
 arch=('x86_64')
