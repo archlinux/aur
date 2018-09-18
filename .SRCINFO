@@ -10,6 +10,7 @@ pkgbase = cliqr
 	license = Creative Commons Attribution-ShareAlike 4.0 International Public License
 	makedepends = clang
 	makedepends = qrencode
+	depends = qrencode
 	provides = cliqr
 	source = https://github.com/flipflop97/cliqr/archive/v1.0.0.zip
 	sha256sums = 914982a5a60ccb96b3b4bec039b91f5f3074fd74e1ae01f14304a8dfba2c7fc2

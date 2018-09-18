@@ -6,6 +6,7 @@ pkgdesc="Command line QR code generator"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/flipflop97/cliqr"
 license=('Creative Commons Attribution-ShareAlike 4.0 International Public License')
+depends=('qrencode')
 makedepends=('clang' 'qrencode')
 provides=('cliqr')
 source=("https://github.com/flipflop97/cliqr/archive/v1.0.0.zip")
