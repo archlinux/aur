@@ -1,8 +1,8 @@
 # Maintainer: surefire@cryptomile.net
 
 pkgname=gnome-shell-extension-quake-mode-git
-pkgver=1+0+g51411cd
-pkgrel=2
+pkgver=2+0+g6cc6ca7
+pkgrel=1
 pkgdesc='Adds support quake-mode for any application'
 arch=('any')
 url='https://github.com/repsac-by/gnome-shell-extension-quake-mode'
