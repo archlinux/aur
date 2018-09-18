@@ -1,6 +1,6 @@
 pkgbase = tortoisehg
 	pkgdesc = Graphical tools for Mercurial
-	pkgver = 4.7
+	pkgver = 4.7.1
 	pkgrel = 1
 	url = https://tortoisehg.bitbucket.io
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = tortoisehg
 	depends = qt5-svg
 	optdepends = python2-pygments: syntax highlighting
 	optdepends = python2-nautilus: Python binding for Nautilus components
-	source = http://bitbucket.org/tortoisehg/targz/downloads/tortoisehg-4.7.tar.gz
-	sha256sums = 152fb92aa6787da73c0f75646432155921ae554b9d627b6b915eff887e6d29e9
+	source = http://bitbucket.org/tortoisehg/targz/downloads/tortoisehg-4.7.1.tar.gz
+	sha256sums = 0d9464192ec0ddd72f8a55fe40f3a01ccf8067b3cb0d324716be0b8436f9f074
 
 pkgname = tortoisehg
 
