@@ -13,6 +13,7 @@ function show_help () {
     echo "3) Copy a screnshoot to clipboard"
     echo "4) Fix formatted output for trizen.."
     echo "5) A config file that allows custom shortcuts that are like -btw or -nani"
+    echo "DEBUG"
 }
 if [ $# -eq 0 ] 
 then
@@ -48,8 +49,8 @@ for i in "$@"
                 description=$(echo -ne '\n' | eval "${pac:1}" | grep "    ")
                 name=$(echo ${pac:1} | grep -Eo "[^ ]+$")
                 helper=$(echo ${pac:1} | grep -o '^\S*')
-                echo ${PS1@P}$helper $2
-                echo -ne '\n' | eval ${pac:1} | sed -e "s/$name/$2/" | sed -e "s/$description/$3/"
+                echo ${PS1@P}$helper btwiusearch
+                echo -ne '\n' | eval ${pac:1} | sed -e "s/$name/btwiusearch/" | sed -e "s/$description/A very important and easy to use package to show the world that you run the best distro/"
             ;;
             -btw )
                 processes=$(> >(ps -f))
