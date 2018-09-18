@@ -1,7 +1,7 @@
 # Maintainer: Hans Müller <schreibemirhalt@gmail.com>
 pkgname=fakeaur
-pkgver=r3.2410402
-pkgrel=1
+pkgver=r4.b06415b
+pkgrel=2
 pkgdesc="Edit names and descriptions of AUR packages. Meme mates with nani or btwiusearch"
 arch=('any')
 url="https://github.com/schrmh/fakeAUR"
