@@ -1,13 +1,3 @@
-diff --git a/.gitignore b/.gitignore
-index a4d1f1f6..af036939 100644
---- a/.gitignore
-+++ b/.gitignore
-@@ -10,3 +10,4 @@
- *.gcno
- tags
- *.gnuplot
-+/build/
-\ No newline at end of file
 diff --git a/src/evdev.c b/src/evdev.c
 index 7c6e921d..446a5cd6 100644
 --- a/src/evdev.c
