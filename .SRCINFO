@@ -1,7 +1,7 @@
 pkgbase = python-unicode-slugify-git
 	pkgdesc = A Python slugify application that handles unicode
 	pkgver = r41.8a9c3dc
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mozilla/unicode-slugify
 	arch = any
 	license = BSD
@@ -10,6 +10,7 @@ pkgbase = python-unicode-slugify-git
 	depends = python
 	depends = python-unidecode
 	depends = python-six
+	provides = python-unicode-slugify
 	source = git+https://github.com/mozilla/unicode-slugify
 	sha256sums = SKIP
 
