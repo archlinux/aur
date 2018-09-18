@@ -5,7 +5,7 @@
 pkgname=xf86-video-intel-git
 _pkgname=xf86-video-intel
 pkgver=2.99.917+847+g25c9a2fc
-pkgrel=2
+pkgrel=3
 epoch=1
 arch=(x86_64)
 url="https://01.org/linuxgraphics"
@@ -23,13 +23,10 @@ optdepends=('libxrandr: for intel-virtual-output'
             'libxcursor: for intel-virtual-output'
             'libxtst: for intel-virtual-output'
             'libxss: for intel-virtual-output')
-replaces=('xf86-video-intel-uxa' 'xf86-video-intel-sna'
-          "${_pkgname}")
-provides=('xf86-video-intel-uxa' 'xf86-video-intel-sna'
-          "${_pkgname}")
-conflicts=('xorg-server<1.20' 'X-ABI-VIDEODRV_VERSION<24' 'X-ABI-VIDEODRV_VERSION>=25'
-           'xf86-video-intel-sna' 'xf86-video-intel-uxa' 'xf86-video-i810' 'xf86-video-intel-legacy'
-           "${_pkgname}")
+replaces=("${_pkgname}" 'xf86-video-intel-uxa' 'xf86-video-intel-sna')
+provides=("${_pkgname}" 'xf86-video-intel-uxa' 'xf86-video-intel-sna')
+conflicts=("${_pkgname}" 'xorg-server<1.20' 'xf86-video-intel-sna'
+           'xf86-video-intel-uxa' 'xf86-video-i810' 'xf86-video-intel-legacy')
 groups=('xorg-drivers')
 source=("$pkgname::git+https://gitlab.freedesktop.org/xorg/driver/${_pkgname}.git"
         0001-SNA-fix-PRIME-output-support-since-xserver-1.20.patch)
