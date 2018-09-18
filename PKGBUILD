@@ -36,11 +36,12 @@ build() {
   cd $_qpm_dir
   local git_sha1=$(git rev-parse HEAD | cut -c1-8)
 
-  cd ${startdir}
-  export GOPATH="$startdir"
+  cd $srcdir
+  export GOPATH="$srcdir/.."
   go build -ldflags "-X qpm.io/qpm/core.Version=${pkgver} -X qpm.io/qpm/core.Build=${git_sha1}" qpm.io/qpm
 }
 
 package() {
-  install -Dm755 "${startdir}/qpm" "${pkgdir}/usr/bin/${pkgname}"
+  cd $srcdir
+  install -Dm755 qpm "${pkgdir}/usr/bin/${pkgname}"
 }
