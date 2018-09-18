@@ -1,5 +1,5 @@
 pkgbase = lib32-libidn-133-compat
-	pkgdesc = Compatibility package for libidn, providing libidn.so.11
+	pkgdesc = Compatibility package for libidn, providing libidn.so.11 (32-bit)
 	pkgver = 1.33
 	pkgrel = 1
 	url = https://www.gnu.org/software/libidn/
