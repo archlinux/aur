@@ -2,8 +2,8 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='xtables-addons'
-pkgver='3.0'
-pkgrel='2'
+pkgver='3.2'
+pkgrel='1'
 pkgdesc='Xtables-addons is a set of additional extensions for the Xtables packet filter that is present in the Linux kernel'
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -14,7 +14,7 @@ conflicts=('xtables-addons-dkms')
 replaces=('xtables-addons-dkms')
 install="${pkgname}.install"
 source=("https://sourceforge.net/projects/${pkgname}/files/Xtables-addons//${pkgname}-${pkgver}.tar.xz")
-sha256sums=('95580b851c79c0bbc484e0d0ea23f53e5c7f439ad73d509e426598565392690d')
+sha256sums=('006f4e38bbf4b9a9069b90ca78c93b65800e9ebfd17332b713f1f80292420aaa')
 # define 'lts' for linux-lts package
 _linux_custom="ARCH"
 # define '-lts' for linux-lts package
