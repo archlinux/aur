@@ -13,7 +13,7 @@ makedepends=('git')
 conflicts=('gnome-shell-extension-topicons-plus')
 provides=('gnome-shell-extension-topicons-plus')
 groups=('gnome-shell-extensions')
-source=("git+https://github.com/phocean/TopIcons-plus.git")
+source=("git+https://github.com/jwrdegoede/TopIcons-plus.git")
 sha256sums=('SKIP')
 
 pkgver() {
