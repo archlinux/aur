@@ -1,7 +1,7 @@
 # Maintainer: Xaver Hellauer <software@hellauer.bayern>
 # Contributor: Stephen Lester <stephen@lester.codes>
 pkgname=wire-desktop-bin
-pkgver=3.2.2840
+pkgver=3.3.2872
 pkgrel=1
 pkgdesc='Modern communication, full privacy.'
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ depends=('alsa-lib' 'gconf' 'gtk2' 'libxss' 'libxtst' 'nss')
 # https://wire-app.wire.com/linux/debian/pool/main/wire_2.15.2751_amd64.deb
 source_i686=("https://wire-app.wire.com/linux/debian/pool/main/wire_${pkgver}_i386.deb")
 source_x86_64=("https://wire-app.wire.com/linux/debian/pool/main/wire_${pkgver}_amd64.deb")
-sha256sums_i686=('782ffff428260c414816ef6007282a437e61d249cb73a7f8f2b172d4046c2d1c')
-sha256sums_x86_64=('79702ccdcaf051c39cb6d1c322e43b2b54bb7f93c08275c83cd5564d92aee962')
+sha256sums_i686=('0ba392aca71d85cce5465e1431eb6c35c8f0609e598c485cc67177a99827bc99')
+sha256sums_x86_64=('fca2cabdd934dca956525b60f97dd2712120499c7f10b10259fe4701439ada13')
 options=(!strip)
 
 package() {
@@ -34,5 +34,5 @@ package() {
   # Add wire symlink to a directory in the $PATH
   path_dir="${pkgdir}/usr/bin"
   install -d "${path_dir}"
-  ln -s "/opt/wire-desktop/wire-desktop" "${path_dir}"
+  ln -s "/opt/Wire/wire-desktop" "${path_dir}"
 }
