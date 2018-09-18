@@ -1,6 +1,6 @@
 # Maintainer: YOUNG HO CHA <ganadist@gmail.com>
 pkgname=uftrace
-pkgver=0.8.3
+pkgver=0.9
 pkgrel=1
 pkgdesc="Tool to trace and analyze execution of a program written in C/C++"
 arch=(armv6h armv7h aarch64 x86_64)
