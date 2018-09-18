@@ -14,12 +14,12 @@ provides=('qpm')
 conflicts=('qpm')
 license=('LGPL')
 source=("https://www.qpm.io/download/${pkgver}/linux_386/qpm")
-sha256sums=('fa5a485a287c3fc6ed8aadc6a4eed31f0d197df45d88bda1691029d020c01f6c')
+sha256sums=('d6ad272a5c251c33a8c5fa96906cf66084b2b6eb33abc5589de87c4dddececaa')
 
 package() {
   local installdir=${pkgdir}/usr/bin
 
-  cd ${startdir}
+  cd ${srcdir}/../
   chmod +x qpm
   mkdir -p ${installdir}
   mv qpm ${installdir}
