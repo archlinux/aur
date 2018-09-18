@@ -2,7 +2,7 @@
 _application=slinger
 pkgname=gnome-shell-extension-${_application}-git
 pkgrel=1
-pkgver=r46.67259dd
+pkgver=r48.da9cda1
 license=('unknown')
 pkgdesc="gnome-shell extension for throwing windows around efficiently."
 url="https://github.com/timbertson/slinger"
