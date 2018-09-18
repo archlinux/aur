@@ -14,7 +14,7 @@ _EXTRAMODULES=$(readlink -f /usr/lib/modules/"$_cur_kernel/extramodules")
 
 pkgname=synaptics-led
 pkgver=$_kver
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64)
 license=(GPL2)
 url="https://github.com/mmonaco/PKGBUILDs"
@@ -62,9 +62,9 @@ build() {
 package() {
 	cd "$srcdir/drivers/input/mouse"
 
-	install -D -m 0644 psmouse.ko.gz "$pkgdir/${_EXTRAMODULES}/psmouse.ko.gz"
+	install -D -m 0644 psmouse.ko.gz "${pkgdir}/${_EXTRAMODULES}/psmouse.ko.gz"
 
 	# if you have not one kernel installed and _EXTRAMODULES not proper detected:
 	# you should change install string for EXTRAMODULES manualy:
-	# install -D -m 0644 psmouse.ko.gz "$pkgdir/usr/lib/modules/{YOUR_EXTRAMODULES_DIR}/psmouse.ko.gz"
+	# install -D -m 0644 psmouse.ko.gz "${pkgdir}/usr/lib/modules/{YOUR_EXTRAMODULES_DIR}/psmouse.ko.gz"
 }
