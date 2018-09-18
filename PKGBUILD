@@ -1,14 +1,14 @@
 # Maintainer: twilinx <twilinx@mesecons.net>
 
 pkgname=gtk3-typeahead
-pkgver=3.22.29+60+ge42d8598ca
+pkgver=3.24.0+33+g8fd2d461fc
 pkgrel=1
 conflicts=(gtk3)
 provides=("gtk3=$pkgver" gtk3-print-backends)
 replaces=("gtk3-print-backends<=3.22.26-1")
 pkgdesc="GTK+ 3 with typeahead feature enabled for the file chooser widget"
 arch=(x86_64)
-url="http://www.gtk.org/"
+url="https://www.gtk.org/"
 install=gtk3.install
 depends=(atk cairo libxcursor libxinerama libxrandr libxi libepoxy gdk-pixbuf2 dconf
          libxcomposite libxdamage pango shared-mime-info at-spi2-atk wayland libxkbcommon
@@ -16,7 +16,7 @@ depends=(atk cairo libxcursor libxinerama libxrandr libxi libepoxy gdk-pixbuf2 d
          cantarell-fonts colord rest libcups libcanberra)
 makedepends=(gobject-introspection gtk-doc git glib2-docs sassc)
 license=(LGPL)
-_commit=e42d8598ca892587a1029c458a19c86fd4867877  # gtk-3-22
+_commit=8fd2d461fce6da655060880fdb183a9f1e0b957c  # gtk-3-24
 source=("git+https://gitlab.gnome.org/GNOME/gtk.git#commit=$_commit"
         settings.ini
         gtk-query-immodules-3.0.hook
@@ -24,7 +24,7 @@ source=("git+https://gitlab.gnome.org/GNOME/gtk.git#commit=$_commit"
 sha256sums=('SKIP'
             '01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202'
             'de46e5514ff39a7a65e01e485e874775ab1c0ad20b8e94ada43f4a6af1370845'
-            '5006fa1dcea9aa74766196ec5c18e5172d7287195c2a49ffcd0adc13bc6e62c1')
+            '3b94b53ee720e24e999e6fe40de269ec5b6ddfcbab64fb1a14e7d89256651607')
 
 prepare() {
     cd gtk
@@ -56,10 +56,9 @@ build() {
 package() {
     install=gtk3.install
 
-    cd gtk
-    make DESTDIR="$pkgdir" install
-    install -Dm644 ../settings.ini "$pkgdir/usr/share/gtk-3.0/settings.ini"
-    install -Dm644 ../gtk-query-immodules-3.0.hook "$pkgdir/usr/share/libalpm/hooks/gtk-query-immodules-3.0.hook"
+    DESTDIR="$pkgdir" make -C gtk install
+    install -Dt "$pkgdir/usr/share/gtk-3.0" -m644 settings.ini
+    install -Dt "$pkgdir/usr/share/libalpm/hooks" -m644 gtk-query-immodules-3.0.hook
 
     # gtk-update-icon-cache will be provided in a separate package
     rm "$pkgdir/usr/bin/gtk-update-icon-cache"

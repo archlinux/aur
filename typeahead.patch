@@ -1,4 +1,4 @@
-@@ -1391,6 +1391,12 @@
+@@ -1390,6 +1390,12 @@
    GtkFileChooserWidget *impl = (GtkFileChooserWidget *) widget;
    GtkFileChooserWidgetPrivate *priv = impl->priv;
  
@@ -11,7 +11,7 @@
    if (should_trigger_location_entry (impl, event))
      {
        if (priv->action == GTK_FILE_CHOOSER_ACTION_OPEN ||
-@@ -1400,12 +1406,6 @@
+@@ -1399,12 +1405,6 @@
            return TRUE;
          }
      }
@@ -24,7 +24,7 @@
  
    if (GTK_WIDGET_CLASS (gtk_file_chooser_widget_parent_class)->key_press_event (widget, event))
      return TRUE;
-@@ -2477,7 +2477,7 @@
+@@ -2427,7 +2427,7 @@
  {
    GtkFileChooserWidgetPrivate *priv = impl->priv;
  
@@ -33,7 +33,7 @@
  
    gtk_tree_view_column_set_sort_column_id (priv->list_name_column, MODEL_COL_NAME);
    gtk_tree_view_column_set_sort_column_id (priv->list_time_column, MODEL_COL_TIME);
-@@ -4391,6 +4391,7 @@
+@@ -4338,6 +4338,7 @@
    gtk_tree_view_set_model (GTK_TREE_VIEW (priv->browse_files_tree_view),
                             GTK_TREE_MODEL (priv->browse_files_model));
    update_columns (impl, FALSE, _("Modified"));
@@ -41,7 +41,7 @@
    file_list_set_sort_column_ids (impl);
    set_sort_column (impl);
    profile_msg ("    gtk_tree_view_set_model end", NULL);
-@@ -7151,10 +7152,6 @@
+@@ -7098,10 +7099,6 @@
  {
    GList *l, *files, *files_with_info, *infos;
    GFile *file;
@@ -52,7 +52,7 @@
  
    files = NULL;
    files_with_info = NULL;
-@@ -7182,8 +7179,6 @@
+@@ -7129,8 +7126,6 @@
    g_list_free_full (infos, g_object_unref);
  
    gtk_stack_set_visible_child_name (GTK_STACK (impl->priv->browse_files_stack), "list");
@@ -61,7 +61,7 @@
  }
  
  /* Callback used from GtkSearchEngine when the query is done running */
-@@ -7480,6 +7475,7 @@
+@@ -7427,6 +7422,7 @@
    gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (priv->recent_model),
                                          GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID,
                                          GTK_SORT_DESCENDING);
@@ -69,7 +69,7 @@
  }
  
  typedef struct
-@@ -7497,7 +7493,7 @@
+@@ -7444,7 +7440,7 @@
  
    gtk_tree_view_set_model (GTK_TREE_VIEW (priv->browse_files_tree_view),
                             GTK_TREE_MODEL (priv->recent_model));
