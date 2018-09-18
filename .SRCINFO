@@ -1,0 +1,19 @@
+pkgbase = emacs-pass-git
+	pkgdesc = A major mode for password-store
+	pkgver = r81.da08fed
+	pkgrel = 1
+	url = https://github.com/NicolasPetton/pass
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	depends = emacs-password-store
+	depends = emacs-f
+	depends = emacs-password-store-otp
+	provides = emacs-pass
+	conflicts = emacs-pass
+	source = git+https://github.com/NicolasPetton/pass.git
+	sha256sums = SKIP
+
+pkgname = emacs-pass-git
+
