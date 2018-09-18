@@ -1,6 +1,6 @@
 pkgbase = firefox-extension-textern-native-git
 	pkgdesc = Native component of Textern Firefox extension
-	pkgver = 0.4.2bb962d
+	pkgver = 0.5.2b9415a
 	pkgrel = 1
 	url = https://github.com/jlebon/textern
 	arch = any
