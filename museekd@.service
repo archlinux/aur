@@ -1,0 +1,10 @@
+[Unit]
+Description=Museek daemon for %i
+
+[Service]
+User=%i
+Environment=VAR=/home/%i/.museekd/config.xml
+ExecStart=/usr/bin/museekd --config $VAR
+
+[Install]
+WantedBy=multi-user.target
