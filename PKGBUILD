@@ -3,7 +3,7 @@
 
 pkgname=mumble-snapshot
 pkgver=1.3.0_2868_g44b9004
-pkgrel=1
+pkgrel=2
 pkgdesc="A high quality voice chat program."
 arch=('i686' 'x86_64')
 url="https://www.mumble.info/"
