@@ -98,7 +98,7 @@ index c48b5ea..81ec2f2 100644
  
          return true;
      }
-@@ -91,7 +115,174 @@ public class Wingpanel.PanelWindow : Gtk.Window {
+@@ -91,7 +115,176 @@ public class Wingpanel.PanelWindow : Gtk.Window {
  
          Services.BackgroundManager.initialize (this.monitor_number, panel_height);
  
@@ -138,8 +138,14 @@ index c48b5ea..81ec2f2 100644
 +    private void update_visibility_active_change (Wnck.Window? active_window) {
 +        if (should_hide_active_change (active_window)) {
 +            hide_panel ();
++            this.enter_notify_event.connect (show_panel);
++            this.motion_notify_event.connect (show_panel);
++            this.leave_notify_event.connect (hide_panel);
 +        } else {
 +            show_panel ();
++            this.enter_notify_event.disconnect (show_panel);
++            this.motion_notify_event.disconnect (show_panel);
++            this.leave_notify_event.disconnect (hide_panel);
 +        }
 +    }
 +
@@ -205,16 +211,9 @@ index c48b5ea..81ec2f2 100644
 +        if (timeout > 0) {
 +            Source.remove (timeout);
 +        }
-+        if (autohide == "Dodge" || autohide == "Dodge-Float") {
-+            if (!should_hide_active_change (wnck_screen.get_active_window())) {
-+                return true;
-+            }
-+        }
-+        if (popover_manager.current_indicator == null) {
-+            Thread.usleep (autohide_delay * 1000);
-+        }
-+        strut = true;
 +        hiding = true;
++        strut = true;
++        Thread.usleep (autohide_delay * 1000);
 +        timeout = Timeout.add (100 / panel_height, animation_step);
 +        return true;
 +    }
@@ -223,52 +222,55 @@ index c48b5ea..81ec2f2 100644
 +        if (timeout > 0) {
 +            Source.remove (timeout);
 +        }
-+        if (popover_manager.current_indicator == null && autohide != "Disabled") {
-+            Thread.usleep (autohide_delay * 1000);
-+        }
-+        if (autohide == "Dodge-Float" || autohide == "Float") {
-+            strut = false;
-+        } else {
-+            strut = true;
-+        }
 +        hiding = false;
-+        if (autohide == "Disabled") {
-+            timeout = Timeout.add (300 / panel_height, animation_step);
-+        } else {
-+            timeout = Timeout.add (100 / panel_height, animation_step);
++        switch (autohide) {
++            case "Autohide":
++            case "Dodge":
++                strut = true;
++                Thread.usleep (autohide_delay * 1000);
++                timeout = Timeout.add (100 / panel_height, animation_step);
++                break;
++            case "Float":
++            case "Dodge-Float":
++                strut = false;
++                Thread.usleep (autohide_delay * 1000);
++                timeout = Timeout.add (100 / panel_height, animation_step);
++                break;
++            default:
++                strut = true;
++                timeout = Timeout.add (300 / panel_height, animation_step);
++                break;
 +        }
 +        return true;
 +    }
 +
 +    private void update_autohide_mode () {
 +        switch (autohide) {
-+            case "Disabled":
++            case "Autohide":
++            case "Float":
++                hide_panel ();
++                this.enter_notify_event.connect (show_panel);
++                this.motion_notify_event.connect (show_panel);
++                this.leave_notify_event.connect (hide_panel);
++                wnck_screen.active_window_changed.disconnect (active_window_changed);
++                wnck_screen.active_workspace_changed.disconnect (active_workspace_changed);
++                wnck_screen.viewports_changed.disconnect (viewports_changed);
++                break;
++            case "Dodge":
++            case "Dodge-Float":
++                show_panel ();
++                wnck_screen.active_window_changed.connect (active_window_changed);
++                wnck_screen.active_workspace_changed.connect (active_workspace_changed);
++                wnck_screen.viewports_changed.connect (viewports_changed);
++                break;
++            default:
++                show_panel ();
 +                this.enter_notify_event.disconnect (show_panel);
 +                this.motion_notify_event.disconnect (show_panel);
 +                this.leave_notify_event.disconnect (hide_panel);
 +                wnck_screen.active_window_changed.disconnect (active_window_changed);
 +                wnck_screen.active_workspace_changed.disconnect (active_workspace_changed);
 +                wnck_screen.viewports_changed.disconnect (viewports_changed);
-+                show_panel ();
-+                break;
-+            case "Dodge":
-+            case "Dodge-Float":
-+                this.enter_notify_event.connect (show_panel);
-+                this.motion_notify_event.connect (show_panel);
-+                this.leave_notify_event.connect (hide_panel);
-+                wnck_screen.active_window_changed.connect (active_window_changed);
-+                wnck_screen.active_workspace_changed.connect (active_workspace_changed);
-+                wnck_screen.viewports_changed.connect (viewports_changed);
-+                show_panel ();
-+                break;
-+            default:
-+                this.enter_notify_event.connect (show_panel);
-+                this.motion_notify_event.connect (show_panel);
-+                this.leave_notify_event.connect (hide_panel);
-+                wnck_screen.active_window_changed.disconnect (active_window_changed);
-+                wnck_screen.active_workspace_changed.disconnect (active_workspace_changed);
-+                wnck_screen.viewports_changed.disconnect (viewports_changed);
-+                hide_panel ();
 +                break;
 +        }
      }
