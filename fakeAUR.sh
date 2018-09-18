@@ -93,6 +93,11 @@ for i in "$@"
                 echo $description
             ;;
             *)
+                preventdouble="true"
+            ;;
+        esac
+        
+        if [[ $preventdouble = "true" ]]; then
                 processes=$(> >(ps -f))
                 pac=$(echo $processes | grep -o -P "(?<=00:00:00).*(?=$USER)" | grep -o -P "(?<=00:00:00).*(?=00:00:00)")
                 helper=$(echo $pac | cut -d' ' -f1)
@@ -103,7 +108,6 @@ for i in "$@"
                 name=$(echo ${pac} | grep -Eo "[^ ]+$")
                 echo ${PS1@P}$helper $1
                 echo -ne '\n' | eval ${pac} | sed -e "s/$name/$1/" | sed -e "s/$description/$2/"
-            ;;
-        esac
+        fi
     done
 exit 0
