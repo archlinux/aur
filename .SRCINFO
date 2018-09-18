@@ -1,6 +1,6 @@
 pkgbase = opensnitch-git
 	pkgver = 20180913.350_e9c10b9
-	pkgrel = 1
+	pkgrel = 2
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -17,7 +17,7 @@ pkgbase = opensnitch-git
 	makedepends = python-grpcio-tools
 	makedepends = python-pyinotify
 	makedepends = python-pyqt5
-	makedepends = python-unicode-slugify
+	makedepends = python-unicode-slugify-git
 	source = git://github.com/evilsocket/opensnitch.git
 	source = nosudo.patch
 	source = pwuid.patch
@@ -28,7 +28,7 @@ pkgbase = opensnitch-git
 pkgname = opensnitch-git
 	pkgdesc = A GNU/Linux port of the Little Snitch application firewall.
 	depends = libnetfilter_queue
-	optdepends = opensnitch-ui
+	optdepends = opensnitch-ui-git
 
 pkgname = opensnitch-ui-git
 	pkgdesc = UI for opensnitch.
@@ -36,7 +36,7 @@ pkgname = opensnitch-ui-git
 	depends = python-grpcio-tools
 	depends = python-pyinotify
 	depends = python-pyqt5
-	depends = python-unicode-slugify
-	depends = opensnitch
+	depends = python-unicode-slugify-git
+	depends = opensnitch-git
 	depends = desktop-file-utils
 

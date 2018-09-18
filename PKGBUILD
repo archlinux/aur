@@ -1,7 +1,7 @@
 # Maintainer: lsf
 # Maintainer: Adam Hose <adis@blad.is>
 pkgver=20180913.350_e9c10b9
-pkgrel=1
+pkgrel=2
 pkgbase=opensnitch-git
 _pkgbase=opensnitch
 pkgname=("${_pkgbase}-git" "${_pkgbase}-ui-git")
@@ -12,7 +12,7 @@ makedepends=('git' 'go-pie' 'dep' 'libpcap' 'protobuf'
              'python-setuptools' 'python-pip'
              'python-grpcio' 'python-grpcio-tools'
              'python-pyinotify' 'python-pyqt5'
-             'python-unicode-slugify')
+             'python-unicode-slugify-git')
 
 source=("git://github.com/evilsocket/opensnitch.git"
         'nosudo.patch'
@@ -61,7 +61,7 @@ build() {
 
 package_opensnitch-git() {
         pkgdesc="A GNU/Linux port of the Little Snitch application firewall."
-        optdepends=('opensnitch-ui')
+        optdepends=('opensnitch-ui-git')
         depends=('libnetfilter_queue')
 
         export GOPATH="$srcdir/.go"
@@ -74,7 +74,7 @@ package_opensnitch-git() {
 package_opensnitch-ui-git() {
         pkgdesc="UI for opensnitch."
         depends=('python-grpcio' 'python-grpcio-tools' 'python-pyinotify'
-                 'python-pyqt5' 'python-unicode-slugify' 'opensnitch'
+                 'python-pyqt5' 'python-unicode-slugify-git' 'opensnitch-git'
                  'desktop-file-utils')
 
         export GOPATH="$srcdir/.go"
