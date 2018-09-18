@@ -35,7 +35,6 @@ build() {
   make
 }
 
- Disabled Tests due to infinite loop bug
 check() {
   cd "${pkgname}-${pkgver}"
 
