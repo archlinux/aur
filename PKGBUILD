@@ -1,7 +1,7 @@
 # Maintainer: Pieter Goetschalckx <3.14.e.ter at gmail dot com>
 
 pkgname=gnome-shell-extension-put-window-git
-pkgver=r292.7aa49dc
+pkgver=r336.787100c
 pkgrel=1
 pkgdesc="Makes window movement a lot easier. Can be compared with a basic version of the compiz grid plugin."
 arch=('any')
@@ -38,3 +38,4 @@ package() {
   install -Dm644 "schemas/org.gnome.shell.extensions.org-lab21-putwindow.gschema.xml" \
     "${pkgdir}/usr/share/glib-2.0/schemas/org.gnome.shell.extensions.org-lab21-putwindow.gschema.xml"
 }
+
