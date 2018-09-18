@@ -1,6 +1,6 @@
 pkgbase = datagrip
 	pkgdesc = Smart SQL Editor and Advanced Database Client Packed Together for Optimum Productivity
-	pkgver = 2018.2.3
+	pkgver = 2018.2.4
 	pkgrel = 1
 	url = http://www.jetbrains.com/datagrip/
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = datagrip
 	conflicts = 0xdbe
 	conflicts = 0xdbe-eap
 	options = !strip
-	source = https://download.jetbrains.com/datagrip/datagrip-2018.2.3.tar.gz
+	source = https://download.jetbrains.com/datagrip/datagrip-2018.2.4.tar.gz
 	source = jetbrains-datagrip.desktop
-	sha512sums = 1cf3cac0ad5a288021b0a1a6da8de4d5f04f38701e921be99a6916fbbf35967bbeb261d67be01c49514b3d27c154e5d9c9980a7779d9901314ccafd1832c7e59
+	sha512sums = b310feded85883489dd859b7ee4eebf37d8c46ead0baff5f27e86860fab65f54d8fe0a103ed1499e37b701bfee1b3997c0ac2e1756a6d142a8d82fcd8dcaa9d5
 	sha512sums = 6fa0fb2eba7017f2818a5e9d8e44d43a050fdb5b13c7dd1650fae472191f892424f904009e2ba675d5f75200e7e2f42dad95741e94b16355a8ce9eb07bd8660b
 
 pkgname = datagrip
