@@ -1,0 +1,18 @@
+pkgbase = emacs-ivy-pass-git
+	pkgdesc = ivy interface for pass
+	pkgver = r13.5b523de
+	pkgrel = 1
+	url = https://github.com/ecraven/ivy-pass
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	depends = emacs-swiper
+	depends = emacs-password-store
+	provides = emacs-ivy-pass
+	conflicts = emacs-ivy-pass
+	source = git+https://github.com/ecraven/ivy-pass.git
+	sha256sums = SKIP
+
+pkgname = emacs-ivy-pass-git
+
