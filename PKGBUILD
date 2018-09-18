@@ -1,5 +1,5 @@
 # Maintainer: Alex Branham <branham@utexas.edu>
-_cranver=1.0.0
+_cranver=1.0.1
 pkgname=r-pkgbuild
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('r' 'r-callr>=2.0.0' 'r-crayon' 'r-desc' 'r-r6' 'r-rprojroot' 'r-withr>=2.1.2')
 optdepends=('r-rcpp' 'r-testthat' 'r-covr')
 source=("https://cran.r-project.org/src/contrib/pkgbuild_"$_cranver".tar.gz")
-md5sums=('068b4f21f69a309a386bf6f1dacb3bf6')
+md5sums=('12811109c3980b66fad51e5028c68498')
 
 build(){
     R CMD INSTALL pkgbuild_"$_cranver".tar.gz -l "$srcdir"
