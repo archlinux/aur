@@ -27,21 +27,36 @@ for i in "$@"
                 show_help
                 exit 1
             ;;
-            -btw )
+            -debug )
                 processes=$(> >(ps -f))
                 pac=$(echo $processes | grep -o -P '(?<=CM).*(?=fakeAUR)' | grep -o -P '(?<=D).*(?=fakeAUR)' | grep -o -P "(?<=00:00:00).*(?=$USER)")
-                #echo $pac
+                echo $pac
                 if [[ $pac = *"00"* ]]; then
                     delete=$(echo $pac | grep -oP "(?<=$USER\s)\w+")
                     pac=$(echo $pac | grep -o -P '(?<=00:00:00).*(?=)')
-                    #echo lol
-                    #echo $pac
-                    #echo rid off me
-                    #echo $delete
-                    #echo now
+                    echo lol
+                    echo $pac
+                    echo rid off me
+                    echo $delete
+                    echo now
                     kill -9 $delete
                 fi
-                #echo $pac
+                echo $pac
+            
+                description=$(echo -ne '\n' | eval "${pac:1}" | grep "    ")
+                name=$(echo ${pac:1} | grep -Eo "[^ ]+$")
+                helper=$(echo ${pac:1} | grep -o '^\S*')
+                echo ${PS1@P}$helper $1
+                echo -ne '\n' | eval ${pac:1} | sed -e "s/$name/$1/" | sed -e "s/$description/$2/"
+            ;;
+            -btw )
+                processes=$(> >(ps -f))
+                pac=$(echo $processes | grep -o -P '(?<=CM).*(?=fakeAUR)' | grep -o -P '(?<=D).*(?=fakeAUR)' | grep -o -P "(?<=00:00:00).*(?=$USER)")
+                if [[ $pac = *"00"* ]]; then
+                    delete=$(echo $pac | grep -oP "(?<=$USER\s)\w+")
+                    pac=$(echo $pac | grep -o -P '(?<=00:00:00).*(?=)')
+                    kill -9 $delete
+                fi
             
                 description=$(echo -ne '\n' | eval "${pac:1}" | grep "    ")
                 name=$(echo ${pac:1} | grep -Eo "[^ ]+$")
