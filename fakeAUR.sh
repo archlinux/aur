@@ -21,7 +21,7 @@ then
     exit 1
 fi
 
-first=1
+first="enabled"
 for i in "$@"
     do 
         case $i in
@@ -94,18 +94,19 @@ for i in "$@"
                 echo $description
             ;;
             *)
-            if [ "$first" ] then
-                processes=$(> >(ps -f))
-                pac=$(echo $processes | grep -o -P "(?<=00:00:00).*(?=$USER)" | grep -o -P "(?<=00:00:00).*(?=00:00:00)")
-                helper=$(echo $pac | cut -d' ' -f1)
-                two=$(echo $pac | cut -d' ' -f2)
-                pac=$helper" "$two
-            
-                description=$(echo -ne '\n' | eval "${pac}" | grep "    ")
-                name=$(echo ${pac} | grep -Eo "[^ ]+$")
-                echo ${PS1@P}$helper $1
-                echo -ne '\n' | eval ${pac} | sed -e "s/$name/$1/" | sed -e "s/$description/$2/"
-            fi
+                if [[ $first = "enabled" ]]; then
+                    first="disabled"
+                    processes=$(> >(ps -f))
+                    pac=$(echo $processes | grep -o -P "(?<=00:00:00).*(?=$USER)" | grep -o -P "(?<=00:00:00).*(?=00:00:00)")
+                    helper=$(echo $pac | cut -d' ' -f1)
+                    two=$(echo $pac | cut -d' ' -f2)
+                    pac=$helper" "$two
+                
+                    description=$(echo -ne '\n' | eval "${pac}" | grep "    ")
+                    name=$(echo ${pac} | grep -Eo "[^ ]+$")
+                    echo ${PS1@P}$helper $1
+                    echo -ne '\n' | eval ${pac} | sed -e "s/$name/$1/" | sed -e "s/$description/$2/"
+                fi
             ;;
         esac
     done
