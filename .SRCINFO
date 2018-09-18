@@ -1,7 +1,7 @@
 pkgbase = perl-rpc-xml
 	pkgdesc = A set of classes for core data, message and XML handling
 	pkgver = 0.80
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/RPC-XML
 	arch = any
 	license = PerlArtistic
@@ -9,6 +9,9 @@ pkgbase = perl-rpc-xml
 	depends = perl-xml-parser>=2.31
 	depends = perl-libwww
 	depends = perl>=5.8.8
+	optdepends = perl-xml-libxml: XML::LibXML support
+	optdepends = perl-datetime-format-iso8601: DateTime::Format::ISO8601 support
+	optdepends = perl-net-server: Net::Server support
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJRAY/RPC-XML-0.80.tar.gz
 	sha512sums = a91586ea903b3e633f85ca8d9048181a7c3aedcff6788c7ae5fb4971e8552c421c86f30254517c25caa35f1991146dcceb34301bb49002e4ec75a2ee9c195992
