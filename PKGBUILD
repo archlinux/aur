@@ -2,7 +2,7 @@
 # Contributor: Karol "Kenji Takahashi" Woźniak <kenji.sx>
 pkgname=museekd-git
 pkgver=r757.7992c04
-pkgrel=1
+pkgrel=2
 pkgdesc="A replacement for Museek (daemon component)."
 arch=('x86_64')
 url="http://www.museek-plus.org/"
@@ -31,5 +31,5 @@ build() {
 package() {
     cd "$pkgname"/build
     make DESTDIR="$pkgdir" install
-    install -Dm755 ${srcdir}/museekd@.service ${pkgdir}/usr/lib/systemd/system/museekd@.service
+    install -Dm644 ${srcdir}/museekd@.service ${pkgdir}/usr/lib/systemd/system/museekd@.service
 }
