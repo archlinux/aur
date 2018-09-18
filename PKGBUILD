@@ -2,7 +2,7 @@
 
 _pkgname=fragments
 pkgname=$_pkgname-git
-pkgver=latest
+pkgver=1.1.r36.gf8e71b9
 pkgrel=1
 pkgdesc="A GTK3 BitTorrent client following the GNOME Human Interface Guidelines"
 arch=(i686 x86_64 armv6h armv7h)
@@ -17,6 +17,7 @@ depends=(curl
 makedepends=(git
              gobject-introspection
              libdazzle
+             libhandy
              meson
              vala)
 provides=("$_pkgname")
