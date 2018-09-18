@@ -1,7 +1,7 @@
 # Maintainer: Tinu Weber <http://ayekat.ch>
 
 pkgname=remakepkg
-pkgver=0.7
+pkgver=0.7.1
 pkgrel=1
 arch=(any)
 
