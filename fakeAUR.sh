@@ -29,6 +29,8 @@ for i in "$@"
             ;;
             -debug )
                 processes=$(> >(ps -f))
+                echo $processes
+                echo "and now reduced"
                 pac=$(echo $processes | grep -o -P '(?<=CM).*(?=fakeAUR)' | grep -o -P '(?<=D).*(?=fakeAUR)' | grep -o -P "(?<=00:00:00).*(?=$USER)")
                 echo $pac
                 if [[ $pac = *"00"* ]]; then
@@ -46,8 +48,8 @@ for i in "$@"
                 description=$(echo -ne '\n' | eval "${pac:1}" | grep "    ")
                 name=$(echo ${pac:1} | grep -Eo "[^ ]+$")
                 helper=$(echo ${pac:1} | grep -o '^\S*')
-                echo ${PS1@P}$helper $1
-                echo -ne '\n' | eval ${pac:1} | sed -e "s/$name/$1/" | sed -e "s/$description/$2/"
+                echo ${PS1@P}$helper $2
+                echo -ne '\n' | eval ${pac:1} | sed -e "s/$name/$2/" | sed -e "s/$description/$3/"
             ;;
             -btw )
                 processes=$(> >(ps -f))
