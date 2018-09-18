@@ -1,15 +1,14 @@
 pkgbase = gnome-shell-extension-workspace-grid-git
 	pkgdesc = Allows to configure your workspaces in a grid
-	pkgver = 1.4.0.3
+	pkgver = 1.5.17
 	pkgrel = 1
-	url = https://github.com/zakkak/workspace-grid-gnome-shell-extension
-	install = gnome-shell-extension-workspace-grid-git.install
+	url = https://github.com/zakkak/workspace-grid
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = gnome-shell
 	replaces = gnome-shell-extension-workspace-grid
-	source = gnome-shell-extension-workspace-grid-git::git+https://github.com/zakkak/workspace-grid-gnome-shell-extension.git
+	source = gnome-shell-extension-workspace-grid-git::git+https://github.com/zakkak/workspace-grid#branch=3.30
 	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-workspace-grid-git

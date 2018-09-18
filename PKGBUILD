@@ -2,22 +2,21 @@
 # Contributor: Foivos S. Zakkak <foivos at zakkak dot net>
 
 pkgname=gnome-shell-extension-workspace-grid-git
-pkgver=1.4.0.3
+pkgver=1.5.17
 pkgrel=1
 pkgdesc="Allows to configure your workspaces in a grid"
 arch=(any)
-url="https://github.com/zakkak/workspace-grid-gnome-shell-extension"
+url="https://github.com/zakkak/workspace-grid"
 license=('GPL3')
 depends=('gnome-shell')
 replaces=('gnome-shell-extension-workspace-grid')
 makedepends=('git')
-install=gnome-shell-extension-workspace-grid-git.install
-source=("$pkgname::git+https://github.com/zakkak/workspace-grid-gnome-shell-extension.git")
+source=("$pkgname::git+https://github.com/zakkak/workspace-grid#branch=3.30")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  git describe --long | sed -r 's/^v//;s/([^-]*)-g.*$/\1/;s/-/./g'
+  git describe --long --tags | sed -r 's/^v//;s/([^-]*)-g.*$/\1/;s/-/./g'
 }
 
 package() {
@@ -28,6 +27,8 @@ package() {
     "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/metadata.json"
   install -m644 "${_uuid}/extension.js" \
     "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/extension.js"
+  install -m644 "${_uuid}/utils.js" \
+    "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/utils.js"
   install -m644 "${_uuid}/convenience.js" \
     "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/convenience.js"
   install -m644 "${_uuid}/prefs.js" \
