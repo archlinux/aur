@@ -8,7 +8,7 @@ arch=(any)
 url="https://github.com/P1sec/pycrate"
 license=('LGPL2.1')
 makedepends=('git')
-conflicts=("pycrate")
+conflicts=("python-pycrate", "python2-pycrate")
 source=('pycrate::git+https://github.com/P1sec/pycrate#branch=master')
 md5sums=('SKIP')
 
