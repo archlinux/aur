@@ -1,29 +1,31 @@
 # Contributor: eagleeyetom <eagleeyetom@gmail.com>
 # Maintainer: raininja <dandenkijin@gmail.com>
-
-pkgname=slimjet
-pkgver=19.0.9.0
-pkgrel=1
+pkgname=slimjet-bin
+_pkgname=slimjet
+pkgver=20.0.4.0
+pkgrel=3
 pkgdesc="Fast, smart and powerful browser based on Blink"
 arch=('i686' 'x86_64')
 url="http://www.slimjet.com"
-license=('custom:slimjet')
+license=('custom:freeware')
 depends=('alsa-lib' 'desktop-file-utils' 'flac' 'gconf' 'gtk2' 'harfbuzz' 'harfbuzz-icu' 'hicolor-icon-theme'
          'icu' 'libpng' 'libxss' 'libxtst' 'nss' 'openssl' 'nspr' 'opus' 'snappy' 'speech-dispatcher' 'ttf-font' 'xdg-utils')
 optdepends=('kdebase-kdialog: needed for file dialogs in KDE' 'ttf-liberation: fix fonts for some PDFs')
 makedepends=('pacman>=4.2.0')
-provides=('slimjet' 'pepper-flash')
+provides=('slimjet')
 options=('!emptydirs' '!strip')
+replaces=('slimjet')
 _channel=release
-source_i686=("${pkgname}-${pkgver}_i386.deb::http://www.slimjet.com/${_channel}/${pkgname}_i386.deb")
-source_x86_64=("${pkgname}-${pkgver}_amd64.deb::http://www.slimjet.com/${_channel}/${pkgname}_amd64.deb")
-
-md5sums_i686=('28c8e757d30b7084a51f2171c47d64ac')
-md5sums_x86_64=('fdc9596b5695ad6a8df21299efa366cf')
+source_i686=("${_pkgname}-${pkgver}_i386.deb::http://www.slimjet.com/${_channel}/${_pkgname}_i386.deb")
+source_x86_64=("${_pkgname}-${pkgver}_amd64.deb::http://www.slimjet.com/${_channel}/${_pkgname}_amd64.deb")
+source=('LICENSE')
+md5sums=('e2f3d75bbf4ea8cef106adb30c6b4c83')
+md5sums_i686=('c76b4c42dbff1a3a379baf20ef3e2e3c')
+md5sums_x86_64=('c7330b402e5a184f39dd030173ac1430')
 
 
 package() {
-    msg2 "Extracting the data.tar.lzma..."
+    msg2 "Extracting the data tarball..."
     bsdtar -xf data.tar.xz -C "$pkgdir/"
 
     msg2 "Correcting permissions..."
@@ -44,6 +46,11 @@ package() {
         done
     }
 
+    add_license_note() {
+    mkdir "$pkgdir/usr/share/licenses/"
+    install  "/$srcdir/LICENSE" "$pkgdir/usr/share/licenses/${pkgname}"
+    }
+
     # Arch has  libudev.so.1, slimjet wants .0
     _libudev_0=libudev.so.0
     _libudev_1=libudev.so.1
@@ -52,9 +59,10 @@ package() {
     ln -snf "/$_libdir/$_libudev_1" "$pkgdir/opt/slimjet/$_libudev_0"
     }
 
-    msg2 "Adding udev and crypto symlinks..."
+    msg2 "Adding udev and crypto symlinks, and a LICENSE ..."
     add_udev_symlinks
     add_crypto_symlinks
+    add_license_note
 
     msg2 "Adding Icons..."
     for i in 16x16 22x22 24x24 32x32 48x48 64x64 128x128 256x256; do
