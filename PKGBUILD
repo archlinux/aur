@@ -3,7 +3,7 @@
 _name=poetry
 pkgbase='python-poetry'
 pkgname=('python-poetry' 'python2-poetry')
-pkgver=0.11.4
+pkgver=0.11.5
 pkgrel=2
 pkgdesc="Python dependency management and packaging made easy"
 arch=('any')
@@ -19,7 +19,7 @@ source=(
   poetry2.sh
 )
 sha256sums=(
-  '78d0514fb91fa0ed90f9d7228c2fd0aa3d94fe7961f7dd00013c691fc47164d1'
+  '6bb73a26117575cbf5533070045ed378b07b4e18cfcf20ca8cd33d94b10ab0b1'
   '2d86ca07e5cc944c717c7ef8f38332d6d3a3feb0a99bb7dabe0e9deff11e994e'
   'b890851b5cb53d1c437a051f79a024857e12b5e6ec0089dddb07a94d09d45af8'
 )
