@@ -1,6 +1,6 @@
 # Maintainer: Raphael Scholer <rascholer@gmail.com>
 pkgname=desktoggle
-pkgver=1.6
+pkgver=1.7
 pkgrel=1
 pkgdesc='Hide all windows and show the desktop.'
 arch=('i686' 'x86_64')
@@ -8,9 +8,9 @@ conflicts=("desktoggle-git")
 url='https://github.com/rscholer/desktoggle'
 license=('GPL3')
 depends=('libx11')
-makedepends=('meson')
+makedepends=('asciidoc' 'meson')
 source=("${pkgname}-${pkgver}.tar.gz"::"${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('ae4772c894b82f36cf3f4e72816193942c2d004ba7f69e323585ef814f946cb3')
+sha256sums=('1ee192cdf6c65d256a4f931c75028c4fb4bbf896f491336b06d80c084be817fc')
 
 build() {
   cd "${pkgname}-${pkgver}"
