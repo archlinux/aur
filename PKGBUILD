@@ -2,7 +2,7 @@
 # Contributor: Mikhail felixoid Shiryaev <mr dot felixoid na gmail com>
 
 pkgname=vim-python-mode-git
-pkgver=0.8.1.r136.g2f850dc
+pkgver=0.9.2.r3.gf94b0d7
 pkgrel=1
 pkgdesc='Python-mode is a vim plugin that allows you to use the pylint, rope, pydoc library in vim to provide features like python code looking for bugs, refactoring and some other useful things.'
 arch=('any')
@@ -17,7 +17,7 @@ sha256sums=(SKIP)
 pkgver() {
   cd "$pkgname"
   ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
