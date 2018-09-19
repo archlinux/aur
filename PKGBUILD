@@ -2,9 +2,9 @@
 
 pkgname=fluent-bit
 
-pkgmaj=0.13
-pkgver=$pkgmaj.7
-pkgrel=5
+pkgmaj=0.14
+pkgver=0.14.2
+pkgrel=1
 epoch=
 
 pkgdesc='Collect data/logs from different sources, unify and send them to multiple destinations.'
@@ -29,7 +29,6 @@ install=
 changelog=
 source=("https://fluentbit.io/releases/$pkgmaj/$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=(9c592bda1ba6fcee2d62f0e2737ab71d)
 validpgpkeys=()
 
 build() {
@@ -44,3 +43,5 @@ package() {
     mv $pkgdir/lib/* $pkgdir/usr/lib
     rmdir $pkgdir/lib
 }
+
+md5sums=('e3a882f572cc797b64bc176cb83973f0')
