@@ -3,8 +3,8 @@
 _pkgbase=monero
 pkgname=monero-gui-bin
 pkgver=0.12.3.0
-pkgrel=1
-pkgdesc="Monero: the secure, private, untraceable currency - release version (Helium Hydra, Point Release 1. Includes daemon, wallet and miner)"
+pkgrel=2
+pkgdesc="Monero: the secure, private, untraceable currency - release version (Includes daemon, wallet and miner)"
 arch=("x86_64")
 conflicts=("${_pkgbase}")
 url="https://getmonero.org/"
@@ -50,7 +50,7 @@ package() {
 
     # Install icons
     for i in 16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256; do
-        curl "https://raw.githubusercontent.com/monero-project/monero-gui/release-v${pkgver}/images/appicons/$i.png" --silent --create-dirs -o "${srcdir}/icons/${i}/monero-wallet-gui.png"
+        curl "https://raw.githubusercontent.com/monero-project/monero-gui/v${pkgver}/images/appicons/$i.png" --silent --create-dirs -o "${srcdir}/icons/${i}/monero-wallet-gui.png"
         install -Dm644 "${srcdir}/icons/${i}/monero-wallet-gui.png" "${pkgdir}/usr/share/icons/hicolor/${i}/apps/monero-wallet-gui.png"
     done
 

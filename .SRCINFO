@@ -1,7 +1,7 @@
 pkgbase = monero-gui-bin
-	pkgdesc = Monero: the secure, private, untraceable currency - release version (Helium Hydra, Point Release 1. Includes daemon, wallet and miner)
+	pkgdesc = Monero: the secure, private, untraceable currency - release version (Includes daemon, wallet and miner)
 	pkgver = 0.12.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://getmonero.org/
 	arch = x86_64
 	license = BSD
