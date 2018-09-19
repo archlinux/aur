@@ -3,7 +3,7 @@
 
 pkgname=vidyodesktop
 pkgver=3.6.3.017
-pkgrel=5
+pkgrel=6
 pkgdesc="VidyoDesktop(TM) video conferencing client"
 arch=('i686' 'x86_64')
 url="http://www.vidyo.com"
@@ -33,5 +33,8 @@ package() {
   install -dm1777 "${pkgdir}/opt/vidyo/VidyoDesktop/lic"
   install -Dm0644 "${pkgdir}/opt/vidyo/VidyoDesktop/license.txt" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  mkdir "${pkgdir}/opt/vidyo/VidyoDesktop/lib"
+  ln -s '/usr/lib/libidn.so' "${pkgdir}/opt/vidyo/VidyoDesktop/lib/libidn.so.11"
+  sed -i 's#/opt/vidyo/VidyoDesktop/$EXEC#LD_LIBRARY_PATH=/opt/vidyo/VidyoDesktop/lib /opt/vidyo/VidyoDesktop/$EXEC#g' "${pkgdir}/usr/bin/VidyoDesktop"
 }
 
