@@ -1,0 +1,15 @@
+pkgbase = krakenx
+	pkgdesc = Python script to control NZXT Kraken X52/X62/X72 coolers
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/KsenijaS/krakenx.git
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pyusb
+	source = https://github.com/KsenijaS/krakenx/archive/v0.0.3.tar.gz
+	md5sums = 1a40dae234e209aabb27cbf536232c91
+
+pkgname = krakenx
+
