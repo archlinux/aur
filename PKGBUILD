@@ -2,16 +2,16 @@
 # Contributor: Myles English <myles at rockhead dot biz>
 # Contributor: Lucas H. Gabrielli <heitzmann at gmail dot com>
 pkgname=slepc
-pkgver=3.9.2
+pkgver=3.10.0
 pkgrel=1
 pkgdesc="Scalable library for Eigenvalue problem computations"
 arch=('i686' 'x86_64')
 url="http://www.grycap.upv.es/slepc"
 license=('BSD')
-depends=('python2' 'gcc' 'gcc-fortran' 'petsc>=3.9')
+depends=('petsc>=3.10')
 install=slepc.install
 source=(http://www.grycap.upv.es/slepc/download/distrib/${pkgname}-${pkgver/_/-}.tar.gz)
-sha256sums=('247585b3f8c10bf50b9464cb8ef7b5f22bead6f96524384897a37ec4146eb03e')
+sha256sums=('069d7a579995e0be1567c5bc869251e29c00044369a786933ca3040149d0412a')
 
 export MAKEFLAGS="-j1"
 
