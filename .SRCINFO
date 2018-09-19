@@ -1,0 +1,13 @@
+pkgbase = python2-insane
+	pkgdesc = Tool for constructing MARTINI coarse grained lipid bilayers in python
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://cgmartini.nl/index.php/tools2/proteins-and-bilayers
+	arch = any
+	license = unknown
+	depends = python2
+	source = insane.py:http://cgmartini.nl/images/tools/insane/insane.py
+	md5sums = 2e2404990022ba15bf32097d5b5800f4
+
+pkgname = python2-insane
+
