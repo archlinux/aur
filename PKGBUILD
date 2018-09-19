@@ -2,17 +2,17 @@
 # Maintainer: Malte Veerman <maldela@halloarsch.de>
 
 pkgname=fancontrol-common
-_srcname=fancontrol-gui
-pkgver=v0.4.1
-pkgrel=2
+_srcname=fancontrol-gui-0.6
+pkgver=v0.6
+pkgrel=1
 pkgdesc="Common resources used by fancontrol-gui and fancontrol-kcm"
 arch=('i686' 'x86_64')
 url="https://github.com/Maldela/Fancontrol-GUI"
 license=('GPL2')
-depends=('qt5-declarative' 'qt5-quickcontrols' 'hicolor-icon-theme' 'lm_sensors' 'kauth' 'kpackage')
+depends=('qt5-declarative' 'qt5-quickcontrols' 'kirigami2' 'hicolor-icon-theme' 'lm_sensors' 'kauth' 'kpackage')
 makedepends=('git' 'extra-cmake-modules')
-source=('fancontrol-gui::git+https://github.com/Maldela/fancontrol-gui.git#branch=0.4')
-md5sums=('SKIP')
+source=('https://github.com/Maldela/fancontrol-gui/archive/v0.6.tar.gz')
+md5sums=('5088db3b423c098b56d2b0bc73f27aa1')
 
 
 
