@@ -34,7 +34,7 @@ sha256sums=('SKIP'
             '7f972d79b4d72f7b274a96e1a5150cba0e3869ad85215ae01ad2bc19802cdbb9'
             '20ec1d51a6610bf0105c772e4d1d4ac8f35ea0ee33b066981db57dc19fe3bdc6'
             'b1902c1d44ac546df63cd0224a7d2ef2cb6394ca556512c30c370d387db7bbab'
-            '259ff69bd7be5b0a3d8fe437f9313b7dda2636286ce8828e0d2ea51081bbf6ea'
+            '33ab0e02839c31850437994d4f6a636890f758d78ebd592552b9372200669e96'
             '53bfa2220d14065ca848c36217abe812685c7d6e0d42251423d0faa2a0ac5394')
 
 pkgver() {
@@ -46,14 +46,14 @@ pkgver() {
 prepare() {
   cd wingpanel
 
-  #Reverse 105c1d0
-  msg2 "Reverse commit 105c1d0"
-  patch -Np1 < ../reverse-105c1d0.patch
-
   #Autohide
   msg2 "Autohide"
   patch -Np2 < ../autohide.patch
   #patch -Np2 < ../autohide-testing.patch
+
+  #Reverse 105c1d0
+  msg2 "Reverse commit 105c1d0"
+  patch -Np1 < ../reverse-105c1d0.patch
 
   #Standalone patches
   msg2 "Remove Gala dependecies"
