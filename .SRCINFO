@@ -1,0 +1,18 @@
+pkgbase = emacs-evil-smartparens-git
+	pkgdesc = Evil integration for Smartparens
+	pkgver = r96.026d4a3
+	pkgrel = 1
+	url = https://github.com/expez/evil-smartparens
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	depends = emacs-evil
+	depends = emacs-smartparens
+	provides = emacs-evil-smartparens
+	conflicts = emacs-evil-smartparens
+	source = git+https://github.com/expez/evil-smartparens.git
+	sha256sums = SKIP
+
+pkgname = emacs-evil-smartparens-git
+
