@@ -2,7 +2,7 @@
 #contributer: Storm Dragon <stormdragon2976@gmail.com>
 _pkgbase=opusfile
 pkgname=lib32-$_pkgbase
-pkgver=0.10
+pkgver=0.11
 pkgrel=1
 pkgdesc='Library for opening, seeking, and decoding .opus files - 32 bit version'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('BSD')
 depends=('lib32-libogg' 'lib32-openssl' 'lib32-opus' 'opusfile' 'lib32-glibc')
 makedepends=('gcc' 'lib32-gcc-libs')
 source=("http://downloads.xiph.org/releases/opus/$_pkgbase-$pkgver.tar.gz")
-sha256sums=('48e03526ba87ef9cf5f1c47b5ebe3aa195bd89b912a57060c36184a6cd19412f')
+sha256sums=('74ce9b6cf4da103133e7b5c95df810ceb7195471e1162ed57af415fabf5603bf')
 
 build() {
   export CC='gcc -m32'
