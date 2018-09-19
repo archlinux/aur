@@ -3,13 +3,13 @@
 # Contributor: Ciarán Coffey <ciaran@ccoffey.ie>
 # Contributor: Matthew Gyurgyik <matthew@pyther.net>
 pkgname=icaclient
-pkgver=13.10
+pkgver=18.09
 pkgrel=1
-pkgdesc="Citrix Receiver for x86_64 (64bit) Linux (ICAClient)"
+pkgdesc="Citrix Workspace App for x86_64 (64bit) Linux (ICAClient, Citrix Receiver)"
 arch=('x86_64' 'i686' 'armv7h')
 url="https://www.citrix.com/products/receiver/"
 license=('custom:Citrix')
-depends=('alsa-lib' 'libvorbis' 'curl' 'gtk2' 'libpng12' 'libxaw' 'libxp' 'speex' 'libjpeg6-turbo' 'libsoup' 'gst-plugins-base-libs')
+depends=('alsa-lib' 'libvorbis' 'curl' 'gtk2' 'libpng12' 'libxaw' 'libxp' 'speex' 'libjpeg6-turbo' 'libsoup' 'gst-plugins-base-libs' 'libidn-133-compat')
 makedepends=('automake' 'autoconf' 'wget')
 optdepends=(
   'xerces-c: gtk2 configuration manager'
@@ -17,9 +17,9 @@ optdepends=(
 conflicts=('bin32-citrix-client' 'citrix-client')
 options=(!strip)
 backup=("opt/Citrix/ICAClient/config/appsrv.ini" "opt/Citrix/ICAClient/config/wfclient.ini" "opt/Citrix/ICAClient/config/module.ini")
-source_url32="http:$(curl -L -silent 'http://www.citrix.com/downloads/citrix-receiver/linux/receiver-for-linux-latest.html' | awk -F 'rel=\"' '/linuxx86-/ {print $2}'| awk -F'"' '{print $1}'| sed '/^$/d' |uniq)"
-source_url64="http:$(curl -L -silent 'http://www.citrix.com/downloads/citrix-receiver/linux/receiver-for-linux-latest.html' | awk -F 'rel=\"' '/linuxx64-/ {print $2}'| awk -F'"' '{print $1}'| sed '/^$/d' |uniq)"
-source_urlarmhf="http:$(curl -L -silent 'http://www.citrix.com/downloads/citrix-receiver/linux/receiver-for-linux-latest.html' | awk -F 'rel=\"' '/linuxarmhf-/ {print $2}'| awk -F'"' '{print $1}'| sed '/^$/d' |uniq)"
+source_url32="http:$(curl -L -silent 'https://www.citrix.com/downloads/workspace-app/linux/workspace-app-for-linux-latest.html' | awk -F 'rel=\"' '/linuxx86-/ {print $2}'| awk -F'"' '{print $1}'| sed '/^$/d' |uniq)"
+source_url64="http:$(curl -L -silent 'https://www.citrix.com/downloads/workspace-app/linux/workspace-app-for-linux-latest.html' | awk -F 'rel=\"' '/linuxx64-/ {print $2}'| awk -F'"' '{print $1}'| sed '/^$/d' |uniq)"
+source_urlarmhf="http:$(curl -L -silent 'https://www.citrix.com/downloads/workspace-app/linux/workspace-app-for-linux-latest.html' | awk -F 'rel=\"' '/linuxarmhf-/ {print $2}'| awk -F'"' '{print $1}'| sed '/^$/d' |uniq)"
 source=('configmgr.desktop'  'conncenter.desktop'  'selfservice.desktop' 'wfica.desktop' 'wfica.sh' 'wfica_assoc.sh')
 source_i686=($pkgname-x86-$pkgver.tar.gz::$source_url32)
 source_x86_64=($pkgname-x64-$pkgver.tar.gz::$source_url64)
@@ -30,9 +30,9 @@ md5sums=('71aca6257f259996ac59729604f32978'
          '1f214f6f456f59afd1a3275580f4240e'
          '59f8e50cc0e0c399d47eb7ace1df5a32'
          'dca5a1f51449ef35f1441b900d622276')
-sha256sums_x86_64=('7025688C7891374CDA11C92FC0BA2FA8151AEB4C4D31589AD18747FAE943F6EA')
-sha256sums_i686=('2DCA3C8EDED11C5D824D579BC3A6B7D531EAEDDCBFB16E91B5702C72CAE9DEE4')
-sha256sums_armv7h=('F543C7A956AFC4AD38577DCF1F2FE697AF3244F80EE4FF1C5B95391FC4C232C5')
+sha256sums_x86_64=('BAA1F4EECC1612D734D1ECB876BE09416E66BD551B4197A416370392E0310525')
+sha256sums_i686=('296BE348E047D8DE0863DBE4ED29EE2C5C06A63E048575AB3436C4BC8C822042')
+sha256sums_armv7h=('01D926CC29D0F4A1735E9ECE3E752C33AE68DFA5B96719C5563C97CAB232C0D9')
 install=citrix-client.install
 
 package() {
