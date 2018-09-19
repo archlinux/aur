@@ -1,0 +1,23 @@
+## arg 1:  the new package version
+post_install() {
+  echo "
+If you want to control the LEDs of your CoolerMaster keyboard as regular
+user, you need to install the appropriate udev rules. You can use the
+default rule file from the repository or provide your own. To use the
+default one, run this as root:
+
+  cp /usr/share/doc/libcmmk/20-coolermaster.rules /etc/udev/rules.d/
+  udevadm control --reload-rules && udevadm trigger
+"
+}
+
+## arg 1:  the old package version
+post_remove() {
+  echo "
+If you installed an udev rule file to control your CoolerMaster keyboard
+as regular user, don't forget to remove it:
+
+  rm /etc/udev/rules.d/20-coolermaster.rules
+"
+}
+# vim: set ts=2 sw=2 et:
