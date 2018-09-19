@@ -3,8 +3,8 @@
 pkgname=xnviewmp-system-libs
 _pkgname=xnviewmp
 pkgver=0.91
-srcrel=1 # Incremented when there is a new release for the same version number
-pkgrel=1
+srcrel=2 # Incremented when there is a new release for the same version number
+pkgrel=2
 pkgdesc="An efficient multimedia viewer, browser and converter (using system libraries)."
 url="http://www.xnview.com/en/xnviewmp/"
 
@@ -18,7 +18,7 @@ source=('xnviewmp.desktop')
 source_x86_64=("XnViewMP-linux-x64_${pkgver}-rel${srcrel}.tgz::http://download.xnview.com/XnViewMP-linux-x64.tgz")
 source_i686=("XnViewMP-linux_${pkgver}-rel${srcrel}.tgz::http://download.xnview.com/XnViewMP-linux.tgz")
 md5sums=('24f44d5a881b94daf48775213a57e4ec')
-md5sums_x86_64=('6c765ae82a12b8e2ae69db4ea6febea1')
+md5sums_x86_64=('4b636f75b99f31c2c8a46c00704f4d36')
 md5sums_i686=('17e8ab2a1de48c8d9bd5f4a42bfac83e')
 
 package() {
