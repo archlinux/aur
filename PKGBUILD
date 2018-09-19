@@ -1,9 +1,9 @@
-# Maintainer: bennya
+# Maintainer: Radek Podgorny <radek@podgorny.cz>
 
 pkgname='planck'
 conflicts=('planck-git')
-pkgver=2.11.0
-pkgrel=2
+pkgver=2.17.0
+pkgrel=1
 _pkgnamever=${pkgname}-${pkgver}
 pkgdesc="A stand-alone ClojureScript REPL"
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('EPL-1.0')
 source=(
   https://github.com/mfikes/${pkgname}/archive/${pkgver}.tar.gz
 )
-sha256sums=('5eb997639d5303c51ab45c7b23c2db7f5a5bafffe5a5b17803521528bef7e92b')
+sha256sums=('c7907add05bc552fc2c298c27b53978ecd1f656c89bdfbe3c7569b9afc7e6377')
 
 build() {
   cd "$srcdir/${_pkgnamever}"
