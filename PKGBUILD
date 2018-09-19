@@ -4,13 +4,14 @@
 
 pkgname=kopete
 pkgver=18.08.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Instant Messenger'
 url='https://kde.org/applications/internet/kopete/'
 arch=(x86_64)
 license=(GPL LGPL FDL)
 groups=(kde-applications kdenetwork)
-depends=(knotifyconfig kcmutils ktexteditor kcontacts kidentitymanagement libkleo qca kdelibs4support khtml libotr)
+depends=(knotifyconfig kcmutils ktexteditor kcontacts kidentitymanagement libkleo qca kdelibs4support khtml
+         libidn libotr)
 makedepends=(extra-cmake-modules mediastreamer libgadu jsoncpp kdoctools kdesignerplugin kdnssd libkleo ktexteditor)
 optdepends=('mediastreamer: jingle support' 'libgadu: Gadu-Gadu protocol' 'kdnssd: bonjour protocol')
 conflicts=(kdenetwork-kopete)
