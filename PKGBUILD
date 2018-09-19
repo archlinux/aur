@@ -1,28 +1,22 @@
-# Maintainer: Guillaume Brogi <gui-gui at netcourrier dot com>
-pkgname=python-pybitbucket_fork-git
-pkgver=r378.6a2fba5
-pkgrel=2
-provides=('python-pybitbucket' 'python-pybitbucket_fork')
-conflicts=('python-pybitbucket' 'python-pybitbucket_fork')
-pkgdesc="Tool for managing remote repositories from your git CLI!"
+# Maintainer: Doron Behar <doron.behar@gmail.com>
+# Contributer: Guillaume Brogi <gui-gui at netcourrier dot com>
+
+pkgname=python-pybitbucket_fork
+_name=pybitbucket_fork
+pkgver=0.12.2
+pkgrel=1
+provides=('python-pybitbucket')
+conflicts=('python-pybitbucket')
+pkgdesc="Tool for managing remote repositories from your git CLI"
 arch=('any')
 url="https://github.com/guyzmo/pybitbucket"
 license=('GPL2')
 depends=('python' 'python-future' 'python-six' 'python-requests' 'python-requests-oauthlib' 'python-oauthlib' 'python-uritemplate' 'python-simplejson' 'python-voluptuous')
 makedepends=('python-setuptools' 'python-pip')
-source=("${pkgname}::git+${url}")
-sha256sums=(SKIP)
-
-pkgver() {
-	cd "$pkgname"
-	( set -o pipefail
-	git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
-}
+source=(https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz)
+md5sums=('902a9d41ae86ec1dde0f21f082991edf')
 
 package() {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir/$_name-${pkgver}"
 	python setup.py install --root="${pkgdir}" --optimize=1
 }
-
