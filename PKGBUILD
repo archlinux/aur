@@ -6,7 +6,7 @@
 
 pkgname=flexget
 _pkgname=Flexget
-pkgver=2.14.16
+pkgver=2.14.21
 pkgrel=1
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
@@ -100,8 +100,7 @@ package() {
   install -Dm644 ../flexget.service "${pkgdir}"/usr/lib/systemd/user/flexget.service
 }
 
-sha256sums=('0827f68a9baf0207cb8f036dc8e51e786a4e36b87d947924f1f4a433ae03722c'
+sha256sums=('a4c5497278d48bc99d3bb545de6ef34d52491ecc2aa2cd37610a1b21badcebd7'
             'e2c3a958ed0c286337cd37fba1d6cbdf4306c57fcddf2b9cc43615ce80ae83aa'
             'dcc1bc676b8c2b798fa9a7e0ed2b6853323e9e9d8ff696696dddeaf29cbc13d6')
-
 # vim:set ts=2 sw=2 et:
