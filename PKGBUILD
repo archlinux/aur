@@ -8,8 +8,8 @@
 _pkgname=toxcore
 pkgname=toxcore-toktok-git
 epoch=1
-pkgver=0.2.1.4317
-pkgrel=3
+pkgver=0.2.7.4536
+pkgrel=1
 pkgdesc='Secure, configuration-free, P2P Skype replacement backend'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url='https://tox.chat'
@@ -39,15 +39,14 @@ build() {
 	cmake \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=/usr/lib \
-		-DFORMAT_TEST=OFF \
 		.
 
 	make $MAKEFLAGS
 }
 
 # check() {
-# 	cd $_pkgname
-# 	make test # fails on first test even if it's disabled
+#     cd $_pkgname
+#     make test
 # }
 
 package() {
