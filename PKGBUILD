@@ -35,11 +35,7 @@ prepare() {
     sed -i 's|^.*\(#define VIMRC_FILE.*"\) .*$|\1|' src/feature.h
     cd src
     autoconf
-}
-
-build() {
-    SRC="$srcdir/${_pkgname}-$pkgver"
-    cd $SRC
+    cd ..
     ./configure \
       --enable-fail-if-missing \
       --with-compiledby='Brenton Horne <brentonhorne77 at gmail dot com>' \
@@ -52,37 +48,42 @@ build() {
       --enable-pythoninterp=dynamic \
       --enable-python3interp=dynamic \
       --enable-rubyinterp=dynamic \
-      --enable-luainterp=dynamic
+      --enable-luainterp=dynamic    
+}
+
+build() {
+    SRC="$srcdir/${_pkgname}-$pkgver"
+    cd $SRC
     make
 }
 
 package() {
-  SRC="$srcdir/${_pkgname}-$pkgver"
-  # actual installation
-  cd $SRC
-  make DESTDIR=$pkgdir install
-  cd ..
-  pv="${_pkgname}-$pkgver"
+    SRC="$srcdir/${_pkgname}-$pkgver"
+    # actual installation
+    cd $SRC
+    make DESTDIR=$pkgdir install
+    cd ..
+    pv="${_pkgname}-$pkgver"
 
-  # desktop entry file and corresponding icon
-  install -Dm644 gvim.desktop      $pkgdir/usr/share/applications/gvim.desktop
-  install -Dm644 $pv/runtime/vim48x48.png $pkgdir/usr/share/icons/hicolor/48x48/apps/gvim.png
+    # desktop entry file and corresponding icon
+    install -Dm644 gvim.desktop      $pkgdir/usr/share/applications/gvim.desktop
+    install -Dm644 $pv/runtime/vim48x48.png $pkgdir/usr/share/icons/hicolor/48x48/apps/gvim.png
 
-  # rc files
-  install -Dm644 "${srcdir}"/vimrc "${pkgdir}"/etc/vimrc
-  install -Dm644 "${srcdir}"/archlinux.vim \
-    "${pkgdir}"/usr/share/vim/vimfiles/archlinux.vim
+    # rc files
+    install -Dm644 "${srcdir}"/vimrc "${pkgdir}"/etc/vimrc
+    install -Dm644 "${srcdir}"/archlinux.vim \
+      "${pkgdir}"/usr/share/vim/vimfiles/archlinux.vim
 
-  # remove ex/view and man pages (normally provided by package 'vi' on Arch Linux)
-  cd $pkgdir/usr/bin ; rm ex view
-  find $pkgdir/usr/share/man -type d -name 'man1' 2>/dev/null | \
-    while read _mandir; do
-      cd ${_mandir}
-      rm -f ex.1 view.1
-    done
+    # remove ex/view and man pages (normally provided by package 'vi' on Arch Linux)
+    cd $pkgdir/usr/bin ; rm ex view
+    find $pkgdir/usr/share/man -type d -name 'man1' 2>/dev/null | \
+      while read _mandir; do
+           cd ${_mandir}
+           rm -f ex.1 view.1
+      done
 
-  # add license
-  install -Dm644 $SRC/runtime/doc/uganda.txt \
+    # add license
+    install -Dm644 $SRC/runtime/doc/uganda.txt \
     $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
 
