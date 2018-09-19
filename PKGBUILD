@@ -1,8 +1,8 @@
 # Maintainer: xstaticxgpx (optimum.reflex<at>gmail<dot>com)
 
 pkgname=podman
-pkgver=0.8.5
-pkgrel=2
+pkgver=0.9.2.1
+pkgrel=1
 pkgdesc="Utility for running OCI-based containers."
 arch=('x86_64')
 url="https://github.com/containers/libpod"
@@ -23,13 +23,13 @@ makedepends=(
   'go'
   'go-md2man'
 )
-source=("https://github.com/containers/libpod/archive/v0.8.5.tar.gz"
+source=("https://github.com/containers/libpod/archive/v0.9.2.1.tar.gz"
         "registries.conf"
         "mounts.conf"
         "seccomp.json"
         "policy.json"
 )
-sha256sums=('14a92bf7c6905e8fa042c1b46cd42cc94f2b517dead0ff31c3d2d97ae98ab7ae'
+sha256sums=('0c612a45aec67abd8fd03aa9a735b50f4d6f29c492958f8a03bf67589a0a34c8'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -40,7 +40,7 @@ prepare() {
   export GOPATH="$srcdir/go"
   # prepare go src directories
   mkdir -p "$srcdir/go/src/github.com/containers"
-  mv "libpod-0.8.5" "$srcdir/go/src/github.com/containers/libpod"
+  mv "libpod-${pkgver}" "$srcdir/go/src/github.com/containers/libpod"
 
   go get -d github.com/containernetworking/plugins 2>/dev/null || :
 }
