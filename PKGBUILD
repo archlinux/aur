@@ -3,7 +3,7 @@
 _pkgname=LightGBM
 pkgbase=lightgbm
 pkgname=("${pkgbase}" "python-${pkgbase}")
-pkgver=2.1.2
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Distributed gradient boosting framework based on decision tree algorithms."
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('boost-libs' 'ocl-icd' 'openmpi')
 makedepends=('boost' 'cmake' 'opencl-headers' 'python-setuptools')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('2687a6379f9f438eabb2f460f7302bfeb765ff6f283528b821541d83622e80e6')
+sha256sums=('b96e9f256b596f46d94224bfa3f52fba59e891f86e75d77fff11a66b9570fdca')
 
 build() {
     cd "${_pkgname}-${pkgver}"
@@ -38,10 +38,11 @@ package_lightgbm() {
 
 package_python-lightgbm() {
     depends=('lightgbm' 'python-numpy' 'python-scipy' 'python-scikit-learn')
+    arch=('any')
 
     cd "${_pkgname}-${pkgver}/python-package"
     # use library from /usr/lib instead of making a copy
     sed -i 's/..\/..\/lib\//\/usr\/lib\//' lightgbm/libpath.py
     python setup.py install --root="$pkgdir/" --optimize=1 --gpu --mpi --precompile
-    rm "$pkgdir/usr/lib/python3.6/site-packages/lightgbm/lib_lightgbm.so"
+    rm "$pkgdir/usr/lib/python3.7/site-packages/lightgbm/lib_lightgbm.so"
 }
