@@ -1,7 +1,7 @@
 # Maintainer: Jean Pierre Cimalando <jp-dev@inbox.ru>
 pkgname=opnplug-git
 _pkgname=ADLplug
-pkgver=v1.0.0.alpha.3.r34.2e42c73
+pkgver=v1.0.0.beta.1.r14.03fb745
 pkgrel=1
 pkgdesc="FM synthesizer plugin for OPNMIDI with OPN2 chip emulation"
 arch=('i686' 'x86_64')
@@ -20,9 +20,11 @@ source=('git+https://github.com/jpcima/ADLplug.git'
         'git+https://github.com/Wohlstand/libADLMIDI.git'
         'git+https://github.com/Wohlstand/libOPNMIDI.git'
         'git+https://github.com/jpcima/JUCE.git'
-        'git+https://github.com/fmtlib/fmt.git')
+        'git+https://github.com/fmtlib/fmt.git'
+        'git+https://github.com/brofield/simpleini.git')
 noextract=()
 md5sums=('SKIP'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -38,7 +40,7 @@ prepare() {
   git submodule init
   for submodule in \
     thirdparty/libADLMIDI thirdparty/libOPNMIDI \
-    thirdparty/JUCE thirdparty/fmt
+    thirdparty/JUCE thirdparty/fmt thirdparty/simpleini
   do
     git config "submodule.$submodule.url" "$srcdir/`basename "$submodule"`"
   done
