@@ -1,38 +1,38 @@
-# Maintainer: Auguste Pop <auguste [at] gmail [dot] com>
+# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org>
+# Contributor: Auguste Pop <auguste [at] gmail [dot] com>
 
 pkgname=woff2-git
-pkgver=r99.2855ee7
+pkgver=1.0.2.r4.ga0d0ed7
 pkgrel=1
-pkgdesc="Font compression reference code"
-arch=('i686' 'x86_64')
+pkgdesc="Web Open Font Format 2 reference implementation"
+arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://github.com/google/woff2"
-license=('Apache')
-makedepends=('git')
+license=(custom:MIT)
+depends=(brotli)
+makedepends=(git cmake ninja)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("${pkgname%-git}::git+https://github.com/google/woff2.git")
+source=("${pkgname}::git+https://github.com/google/woff2.git")
 md5sums=('SKIP')
 
-pkgver()
-{
-    cd "$srcdir/${pkgname%-git}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" \
-        "$(git rev-parse --short HEAD)"
+pkgver() {
+  cd "$pkgname"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build()
-{
-    cd "$srcdir/${pkgname%-git}"
-    git submodule init
-    git submodule update
-    make clean all
+prepare() {
+  cd "$pkgname"
+  sed -i 's/NOT BUILD_SHARED_LIBS/TRUE/' CMakeLists.txt
 }
 
-package()
-{
-    cd "$srcdir/${pkgname%-git}"
-    for bin in woff2_compress woff2_decompress
-    do
-        install -m 755 -D "$bin" "${pkgdir}/usr/bin/$bin"
-    done
+build() {
+  cd "$pkgname"
+  cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=/usr/lib .
+  ninja
+}
+
+package() {
+  cd "$pkgname"
+  DESTDIR="$pkgdir" ninja install
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 LICENSE
 }
