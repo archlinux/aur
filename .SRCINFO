@@ -1,0 +1,18 @@
+pkgbase = livecv
+	pkgdesc = Computer vision coding environment that displays results in real time
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/livecv/livecv
+	arch = x86_64
+	license = LGPL3
+	makedepends = qt5-base
+	depends = opencv
+	depends = qt5-quickcontrols
+	provides = livecv
+	source = livecv-1.5.0.tar.gz::https://github.com/livecv/livecv/archive/v1.5.0.tar.gz
+	source = livecv.in.patch
+	sha256sums = c2cdb499c1c65538c049d6e776289b15f82b599f4a551cb4d37013981ffc254b
+	sha256sums = 87993897bb93921053a8fc9e85a11827172f4ca56879c3955b925ef1b59328eb
+
+pkgname = livecv
+

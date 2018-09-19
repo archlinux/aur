@@ -1,0 +1,91 @@
+From 3bac9e9f6db55fd2ed5c37751a5236780fa16d97 Mon Sep 17 00:00:00 2001
+From: neworld <aneworld@gmail.com>
+Date: Tue, 18 Sep 2018 21:29:46 +0300
+Subject: [PATCH] Compiliation error
+
+---
+ lib/lvbase/3rdparty/backward/backward.hpp |  2 +-
+ lib/lvbase/src/libraryloadpath_unix.cpp   |  2 +-
+ lib/lvbase/src/plugincontext.cpp          | 13 +++++++++++--
+ lib/lvbase/src/plugincontext.h            |  1 +
+ 4 files changed, 14 insertions(+), 4 deletions(-)
+
+diff --git a/lib/lvbase/3rdparty/backward/backward.hpp b/lib/lvbase/3rdparty/backward/backward.hpp
+index 782ff90..2d99e3a 100644
+--- a/lib/lvbase/3rdparty/backward/backward.hpp
++++ b/lib/lvbase/3rdparty/backward/backward.hpp
+@@ -1975,7 +1975,7 @@ public:
+                 SIGSEGV,    // Invalid memory reference
+                 SIGSYS,     // Bad argument to routine (SVr4)
+                 SIGTRAP,    // Trace/breakpoint trap
+-                SIGUNUSED,  // Synonymous with SIGSYS
++                SIGSYS,  // Synonymous with SIGSYS
+                 SIGXCPU,    // CPU time limit exceeded (4.2BSD)
+                 SIGXFSZ,    // File size limit exceeded (4.2BSD)
+         };
+diff --git a/lib/lvbase/src/libraryloadpath_unix.cpp b/lib/lvbase/src/libraryloadpath_unix.cpp
+index 9fdba55..db7f055 100644
+--- a/lib/lvbase/src/libraryloadpath_unix.cpp
++++ b/lib/lvbase/src/libraryloadpath_unix.cpp
+@@ -37,7 +37,7 @@ bool assertLinkPathExists(const QString& linkPath){
+ 
+ void LibraryLoadPath::addImpl(const QString& path, const QString& linkPath, bool recursive){
+     if ( !assertLinkPathExists(linkPath) ){
+-        qCritical("Failed to create link directory. Some library dependencies may fail to load.");
++        qCritical("Failed to create link directory (%s -> %s). Some library dependencies may fail to load.", path.toLatin1().constData(), linkPath.toLatin1().constData());
+         return;
+     }
+ 
+diff --git a/lib/lvbase/src/plugincontext.cpp b/lib/lvbase/src/plugincontext.cpp
+index d5a9bff..8313b38 100644
+--- a/lib/lvbase/src/plugincontext.cpp
++++ b/lib/lvbase/src/plugincontext.cpp
+@@ -52,6 +52,15 @@ QString PluginContext::applicationPath(){
+ #endif
+ }
+ 
++QString PluginContext::homePath() {
++    QString homePath = QDir::homePath() + "/.livecv";
++
++    QDir dir = QDir::root();
++    dir.mkpath(homePath);
++
++    return homePath;
++}
++
+ QString PluginContext::applicationFilePath(){
+     if ( m_applicationFilePath.isEmpty() )
+         m_applicationFilePath = applicationFilePathImpl();
+@@ -71,7 +80,7 @@ QString PluginContext::pluginPath(){
+ #ifdef Q_OS_DARWIN
+     return applicationPath() + "/PlugIns";
+ #else
+-    return applicationPath() + "/plugins";
++    return "/usr/lib/livecv/plugins";
+ #endif
+ }
+ 
+@@ -100,7 +109,7 @@ QString PluginContext::developmentPath(){
+ }
+ 
+ QString PluginContext::configPath(){
+-    return applicationPath() + "/config";
++    return homePath() + "/config";
+ }
+ 
+ 
+diff --git a/lib/lvbase/src/plugincontext.h b/lib/lvbase/src/plugincontext.h
+index 26f52b6..184144a 100644
+--- a/lib/lvbase/src/plugincontext.h
++++ b/lib/lvbase/src/plugincontext.h
+@@ -36,6 +36,7 @@ public:
+ 
+     static QString executableDirPath();
+     static QString applicationPath();
++    static QString homePath();
+     static QString applicationFilePath();
+     static QString linkPath();
+     static QString pluginPath();
+-- 
+2.19.0
+
