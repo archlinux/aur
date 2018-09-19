@@ -2,12 +2,12 @@
 
 pkgname=habitat
 pkgver=0.63.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Application automation framework that allows you to build applications that have automation built-in"
 arch=('x86_64')
 url="https://www.habitat.sh/"
 license=('Apache')
-depends=('libarchive' 'libsodium')
+depends=('libarchive' 'libsodium' 'openssl<1.1.1')
 makedepends=('git' 'cargo' 'zeromq')
 provides=('habitat')
 conflicts=('habitat-bin' 'habitat-git')
