@@ -2,7 +2,7 @@
 
 pkgname=ibm-tss
 pkgver=1331
-pkgrel=1
+pkgrel=2
 pkgdesc="A user space TSS for TPM 2.0 by IBM"
 arch=(i686 x86_64)
 url="https://sourceforge.net/projects/ibmtpm20tss/"
@@ -17,15 +17,14 @@ build() {
 
 package() {
 	cd $srcdir/utils
-msg2 "Managing binaries and libs"
+	msg2 "Managing binaries and libs"
 	mkdir -p $pkgdir/usr/bin
-	find . -perm /a+x -type f -exec cp {} $pkgdir/usr/bin \;
-	cd $pkgdir/usr
-	mkdir lib
-        cp $srcdir/utils/*.so lib/
-msg2 "Cleaning up"
-	rm bin/{clear,import,shutdown,*.sh,*.so.0.1}
-	cp $srcdir/utils/*.so lib/
+	mkdir -p $pkgdir/usr/lib
+	mv $srcdir/utils/*.so* $pkgdir/usr/lib/
+        find . -perm /a+x -type f -exec cp {} $pkgdir/usr/bin \;
+
+	msg2 "Cleaning up"
+	rm $pkgdir/usr/bin/{clear,import,shutdown,*.sh}
 }
 
 md5sums=('95068099d4a3aebd22632a0e8878b1d7')
