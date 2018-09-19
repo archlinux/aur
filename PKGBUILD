@@ -3,7 +3,7 @@
 # Contributor: Mikhail felixoid Shiryaev <mr.felixoid na gmail d com>
 
 pkgname=vim-salt-git
-pkgver=r66.5b15d37
+pkgver=r73.6ca9e35
 pkgrel=1
 pkgdesc="Vim files for editing Salt files"
 arch=('any')
