@@ -17,25 +17,29 @@
 #
 pkgbase="zfs-linux-vfio-git"
 pkgname=("zfs-linux-vfio-git" "zfs-linux-vfio-git-headers")
+_commit='145c88fb7bfb7e5941a0994daa3d9f4401a167a1'
+_zfsver="2018.09.18.r4729.g145c88fb7"
+_kernelver="4.18.5.arch1-1"
+_extramodules="${_kernelver/.arch/-arch}-vfio"
 
-pkgver=2018.07.24.r4643.g473c976a0.4.17.3.1
+pkgver="${_zfsver}_$(echo ${_kernelver} | sed s/-/./g)"
 pkgrel=1
-makedepends=("linux-vfio-headers=4.17.3-1" "git")
+makedepends=("linux-vfio-headers=${_kernelver}" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
-source=("git+https://github.com/zfsonlinux/zfs.git#commit=473c976a0c4da84d8b49edaaf3d88a716d8dde2c" "upstream-ac09630-Fix-zpl_mount-deadlock.patch")
-sha256sums=("SKIP" "1799f6f7b2a60a23b66106c9470414628398f6bfc10da3d0f41c548bba6130e8")
+source=("git+https://github.com/zfsonlinux/zfs.git#commit=${_commit}")
+sha256sums=("SKIP")
 license=("CDDL")
-depends=("kmod" "zfs-utils-common-git=2018.07.24.r4643.g473c976a0" "linux-vfio=4.17.3-1")
+depends=("kmod" "zfs-utils-common-git=${_zfsver}" "linux-vfio=${_kernelver}")
 
 build() {
     cd "${srcdir}/zfs"
     ./autogen.sh
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
                 --datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
-                --libexecdir=/usr/lib/zfs-0.7.9 --with-config=kernel \
-                --with-linux=/usr/lib/modules/4.17.3-1-vfio/build \
-                --with-linux-obj=/usr/lib/modules/4.17.3-1-vfio/build
+                --libexecdir=/usr/lib/zfs-${zfsver} --with-config=kernel \
+                --with-linux=/usr/lib/modules/${_extramodules}/build \
+                --with-linux-obj=/usr/lib/modules/${_extramodules}/build
     make
 }
 
@@ -44,7 +48,7 @@ package_zfs-linux-vfio-git() {
     install=zfs.install
     provides=("zfs")
     groups=("archzfs-linux-vfio-git")
-    conflicts=('zfs-linux-vfio' 'spl-linux-vfio-git')
+    conflicts=('zfs-linux-vfio' 'spl-linux-vfio-git' 'spl-linux-vfio')
     replaces=("spl-linux-vfio-git")
     cd "${srcdir}/zfs"
     make DESTDIR="${pkgdir}" install
@@ -61,5 +65,5 @@ package_zfs-linux-vfio-git-headers() {
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.17.3-1-vfio/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/${_extramodules}/Module.symvers
 }
