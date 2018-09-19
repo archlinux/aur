@@ -1,5 +1,5 @@
 pkgname=python-multivault-git
-pkgver=r90.8d38fcb
+pkgver=r93.26c1dc7
 pkgrel=1
 pkgdesc="A CLI to encrypt and decrypt content for ansible"
 url="https://github.com/Selfnet/multivault/"
