@@ -4,14 +4,14 @@
 pkgname=mir-git
 _pkgname=mir
 pkgver=0.32.1+465+ga1dc983fd5
-pkgrel=1
+pkgrel=2
 pkgdesc="Canonical's display server"
 url='https://mir-server.io'
 arch=(x86_64 i686 armv7h aarch64)
 license=(GPL LGPL)
 conflicts=(mir)
 provides=(mir)
-depends=(gtest boost-libs capnproto google-glog gflags libglvnd  liburcu lttng-ust libepoxy libxml++ nettle libinput libxkbcommon python-pillow freetype2 libevdev protobuf python-dbus python-gobject hicolor-icon-theme libxcursor yaml-cpp)
+depends=(gtest boost-libs capnproto google-glog gflags libglvnd  liburcu lttng-ust libepoxy libxml++2.6 nettle libinput libxkbcommon python-pillow freetype2 libevdev protobuf python-dbus python-gobject hicolor-icon-theme libxcursor yaml-cpp)
 makedepends=(git glm doxygen cmake boost gcovr gmock lcov valgrind python-dbusmock umockdev)
 optdepends=('qterminal: required for miral demos'
             'ttf-ubuntu-font-family: required for miral demos'

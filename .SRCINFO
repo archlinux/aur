@@ -1,7 +1,7 @@
 pkgbase = mir-git
 	pkgdesc = Canonical's display server
 	pkgver = 0.32.1+465+ga1dc983fd5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mir-server.io
 	arch = x86_64
 	arch = i686
@@ -29,7 +29,7 @@ pkgbase = mir-git
 	depends = liburcu
 	depends = lttng-ust
 	depends = libepoxy
-	depends = libxml++
+	depends = libxml++2.6
 	depends = nettle
 	depends = libinput
 	depends = libxkbcommon
