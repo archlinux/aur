@@ -5,7 +5,7 @@
 pkgbase=linux-bld
 pkgname=(linux-bld linux-bld-headers)
 _kernelname=-bld
-pkgver=4.18.8
+pkgver=4.18.9
 archlinux_linux_version=$pkgver-arch1
 _srcname=linux-4.18
 _pkgver2=${_srcname#*-}.0
@@ -16,7 +16,7 @@ license=('GPL2')
 makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 _BLDpatch="BLD-${_srcname#*-}.patch"
-arch_config_trunk=2fffeb774d887ae22358f117849404b952d4e55d
+arch_config_trunk=c46609a4b0325c363455264844091b71de01eddc
 
 source=("https://git.archlinux.org/linux.git/snapshot/linux-${archlinux_linux_version}.tar.xz"
         '60-linux.hook'  # pacman hook for depmod
@@ -29,11 +29,11 @@ source=("https://git.archlinux.org/linux.git/snapshot/linux-${archlinux_linux_ve
         "https://raw.githubusercontent.com/rmullick/bld-patches/master/${_BLDpatch}"
         )
 
-sha256sums=('cf222d0653ae97f79340c81c012e228a2ac9226bfce2850f744a92c48422b6da'
+sha256sums=('e94426ba9723ddea0f1a2b38460874d24aab097efcb2f76e51b26c93d447a21a'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             '5b51a1eacb3e00b304ca54d31f467ec1fb15fdfce93f1c62963d087bf753e812'
-            'da713ca0f1f3b2207e84b3c0ddd1fb00530413dd0987ef5165852b9c889b1024'
+            '1fc23bd2613b821d8bdca1a33dc421e21de296221108ce047176d27d37ce397f'
             '53c93e1b5c05a749a976ed4702daeab5524326d779c157f8878308125de2e68b')
 
 validpgpkeys=(
