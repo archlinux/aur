@@ -1,6 +1,6 @@
 pkgbase = python-tabulate-git
 	pkgdesc = Pretty-print tabular data in Python, a library and a command-line utility.
-	pkgver = 0.8.3.r361.159c1fb
+	pkgver = 0.8.3.r367.433dfc6
 	pkgrel = 1
 	url = https://bitbucket.org/astanin/python-tabulate
 	arch = any
