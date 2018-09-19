@@ -1,6 +1,6 @@
 # Maintainer: Alwyn Kik <alwyn@proteon.com>
 pkgname=rundeck-cli
-pkgver=1.0.29
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='CLI tool for Rundeck'
 url="https://github.com/rundeck/rundeck-cli"
@@ -8,7 +8,7 @@ license=('Apache')
 arch=('any')
 depends=('java-runtime-headless')
 source=("$url/releases/download/v$pkgver/rd-$pkgver.zip")
-sha256sums=('ca496e44e4504be072765d4cf63241216929b565ea6d5c52f5f7bb245c6ca42f')
+sha256sums=('f63e4d9eb31daced199bd5178ebde2707f1c93193f09cefc39e7277ab6f834fa')
 
 prepare() {
     cd "$srcdir"
