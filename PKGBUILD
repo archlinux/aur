@@ -1,5 +1,5 @@
 pkgname=python-hkp4py-git
-pkgver=r12.a1fa5d3
+pkgver=r13.bef84af
 pkgrel=1
 pkgdesc="A Library for the hkp|hkps protocol on gpg|pgp keyservers."
 url="https://github.com/Selfnet/hkp4py/"
