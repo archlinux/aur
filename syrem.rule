@@ -1,0 +1,1 @@
+qt5-base{{^(\d+\.\d+\.\d+).*$}} qt5-datasync{{^(\d+\.\d+\.\d+).*$}} qt5-mvvmwidgets{{^(\d+\.\d+\.\d+).*$}} qt5-mvvmdatasyncwidgets{{^(\d+\.\d+\.\d+).*$}} qt5-service{{^(\d+\.\d+\.\d+).*$}} knotifications{{^(\d+\.\d+\.\d+).*$}}
