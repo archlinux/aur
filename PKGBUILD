@@ -1,4 +1,4 @@
-# Maintainer: Cyano Hao < c at cyano dot cn >
+# Contributor: Cyano Hao < c at cyano dot cn >
 # Contributor: kusanaginoturugi <kusanaginoturugi at gmail dot com>
 
 _name=firefox
@@ -9,7 +9,7 @@ pkgname=${_name}-${_channel}-${_lang,,}
 pkgdesc="Standalone Web Browser from Mozilla — Nightly build (${_lang})"
 url="https://www.mozilla.org/${_lang}/${_name}/${_channel}"
 
-_version=63.0a1
+_version=64.0a1
 declare -A _build_id
 _build_id=(
 	[id]="$(curl https://ftp.mozilla.org/pub/${_name}/${_channel}/latest-mozilla-central-l10n/${_name}-${_version}.${_lang}.linux-${CARCH}.checksums | grep '.partial.mar' | cut -d' ' -f4 | grep -E -o '[[:digit:]]{14}' | sort | tail -n1)"
@@ -43,15 +43,13 @@ _url="https://ftp.mozilla.org/pub/${_name}/${_channel}/${_build_id[year]}/${_bui
 _src="${_name}-${_version}.${_lang}.linux-${CARCH}"
 _filename="${_build_id[date]}-${_build_id[time]}-${_src}"
 source=('firefox-nightly.desktop'
-        'vendor.js'
+        'policies.json'
         "${_filename}.tar.bz2"::"${_url}/${_src}.tar.bz2"
         "${_filename}.tar.bz2.asc"::"${_url}/${_src}.tar.bz2.asc")
-sha512sums=(
-    'b514abafc559ec03a4222442fa4306db257c3de9e18ed91a0b37cc9d7058a8e08a241442e54a67659a3ab4512a5dae6a0b94ea7a33d08ef0b8a76a9eac902095'
-    'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010'
-    'SKIP'
-    'SKIP'
-)
+sha512sums=('b514abafc559ec03a4222442fa4306db257c3de9e18ed91a0b37cc9d7058a8e08a241442e54a67659a3ab4512a5dae6a0b94ea7a33d08ef0b8a76a9eac902095'
+            '5ed67bde39175d4d10d50ba5b12063961e725e94948eadb354c0588b30d3f97d2178b66c1af466a6e7bd208ab694227a1391c4141f88d3da1a1178454eba5308'
+            'SKIP'
+            'SKIP')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla’s GnuPG release key
 
 package() {
@@ -74,7 +72,7 @@ package() {
   done
 
   # Disable auto-updates
-  install -Dm644 "${srcdir}"/vendor.js -t "${pkgdir}"/${OPT_PATH}/browser/defaults/preferences
+  install -Dm644 "${srcdir}"/policies.json -t "${pkgdir}"/${OPT_PATH}/distribution
 
   # Use system-provided dictionaries
   rm -rf "${pkgdir}"/${OPT_PATH}/{dictionaries,hyphenation}
