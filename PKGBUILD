@@ -2,17 +2,17 @@
 # Contributor: Vitaliy Berdinskikh ur6lad[at]archlinux.org.ua
 
 pkgname=samsung-ml1660series
-pkgver=3.00.65
-pkgrel=5
+pkgver=1.00.39
+pkgrel=1
+epoch=1
 pkgdesc="CUPS driver for Samsung ML-1660, ML-1661, ML-1665, ML-1666 and ML-1667 printers"
 arch=('i686' 'x86_64')
 url="http://www.samsung.com"
 license=('custom:samsung')
 depends=('cups' 'ghostscript')
 conflicts=('samsung-printers')
-source=("http://org.downloadcenter.samsung.com/content/DR/201311/20131111155959500/uld_v1.00.06.tar.gz")
-md5sums=('94ee35696ddad334a53f76c9606607a5')
-sha256sums=('cc0144ede06710cc4c8c0e1bc6aa00464a4029d8153cff63f63fa1c6eb2b61e7')
+source=("https://ftp.hp.com/pub/softlib/software13/printers/SS/SL-C4010ND/uld_V${pkgver}_01.17.tar.gz")
+md5sums=('1c5a88bc07785b17e8ecc899149327ee')
 
 package() {
 	cd $srcdir
