@@ -1,6 +1,6 @@
 pkgbase = pdfsandwich
 	pkgdesc = Wrapper for tesseract OCR and hocr2pdf to generate pdf files with the recognized text put behind the image (sandwich pdfs).
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = http://sourceforge.net/projects/pdfsandwich/
 	arch = x86_64
@@ -10,12 +10,12 @@ pkgbase = pdfsandwich
 	makedepends = gawk
 	depends = tesseract
 	depends = exact-image
-	depends = ghostscript
 	depends = unpaper
 	depends = imagemagick
 	depends = poppler
-	source = http://downloads.sourceforge.net/sourceforge/pdfsandwich/pdfsandwich-0.1.6.tar.bz2
-	sha512sums = fa122bb2cac678555a7abe9b3c720baf608197d60593b8fdaaf7009837228b30d5ab74fac1c51c68e0e75ae155b0a774077745e5eb157b951c634529fe6146f9
+	optdepends = ghostscript: Ghostscript is only needed for resizing pdf pages, if the respective command line option is given.
+	source = http://downloads.sourceforge.net/sourceforge/pdfsandwich/pdfsandwich-0.1.7.tar.bz2
+	sha512sums = ac315aeba2cc753fddc380e2522d0c41d65ea80372a23c2cd5371ebc239ac104ab5a5a1386378b9e026b2935a767128224f7617a5eb8f5ef9d6874cc18ef83ff
 
 pkgname = pdfsandwich
 
