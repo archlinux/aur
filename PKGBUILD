@@ -15,7 +15,6 @@ source=('https://github.com/Maldela/fancontrol-gui/archive/v0.6.tar.gz')
 md5sums=('5088db3b423c098b56d2b0bc73f27aa1')
 
 
-
 build() {
   msg "Starting build..."
 
