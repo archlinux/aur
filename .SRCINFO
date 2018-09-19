@@ -8,6 +8,7 @@ pkgbase = kicad-footprints
 	makedepends = cmake
 	provides = kicad-footprints
 	conflicts = kicad-footprints-git
+	conflicts = kicad-library-git
 	source = https://github.com/KiCad/kicad-footprints/archive/5.0.0.tar.gz
 	md5sums = e8ce40c47b108280d7878f858899ab10
 
