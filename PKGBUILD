@@ -2,13 +2,13 @@
 # Maintainer: Trevor Bramble <inbox@trevorbramble.com>
 
 pkgname=habitat-git
-pkgver=0.63.0.r7.g372082b71
-pkgrel=1
+pkgver=0.63.0.r68.ga37fae724
+pkgrel=2
 pkgdesc="Application automation framework that allows you to build applications that have automation built-in"
 arch=('x86_64')
 url="https://www.habitat.sh/"
 license=('Apache')
-depends=('libarchive' 'libsodium')
+depends=('libarchive' 'libsodium' 'openssl<1.1.1')
 makedepends=('git' 'cargo' 'zeromq')
 provides=('habitat')
 conflicts=('habitat-bin' 'habitat-git')
