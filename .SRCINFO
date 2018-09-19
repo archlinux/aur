@@ -6,7 +6,7 @@ pkgbase = python2-insane
 	arch = any
 	license = unknown
 	depends = python2
-	source = insane.py:http://cgmartini.nl/images/tools/insane/insane.py
+	source = insane.py::http://cgmartini.nl/images/tools/insane/insane.py
 	md5sums = 2e2404990022ba15bf32097d5b5800f4
 
 pkgname = python2-insane
