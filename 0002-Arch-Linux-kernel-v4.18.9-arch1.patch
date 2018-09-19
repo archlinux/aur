@@ -1,20 +1,20 @@
-From 03875ed006ae4cac7d78a1b3af6d66aba16ebf71 Mon Sep 17 00:00:00 2001
+From 1b198ca523ae628692e547f1022eed6429346f09 Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
-Date: Sun, 9 Sep 2018 13:20:57 +0200
-Subject: [PATCH 3/3] Arch Linux kernel v4.18.8-arch1
+Date: Wed, 19 Sep 2018 23:16:01 +0200
+Subject: [PATCH 2/2] Arch Linux kernel v4.18.9-arch1
 
 ---
  Makefile | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/Makefile b/Makefile
-index 711b04d00e49..52f76fab1dd6 100644
+index 1178348fb9ca..3d3847395282 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -2,7 +2,7 @@
  VERSION = 4
  PATCHLEVEL = 18
- SUBLEVEL = 8
+ SUBLEVEL = 9
 -EXTRAVERSION =
 +EXTRAVERSION = -arch1
  NAME = Merciless Moray
