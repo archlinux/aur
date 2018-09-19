@@ -5,11 +5,11 @@ pkgname=(
   "siedler2-data"
   "siedler2-doc"
 )
-pkgdesc="Game data files and manual of Blue Byte's 'Siedler II'/'Settlers II' to be used with 'Return to the Roots'. Maps also be used with 'widelands'."
+pkgdesc="Game data files and manual of Blue Byte's 'Siedler II'/'Settlers II' to be used with 'Return to the Roots'. Maps can also be played with 'widelands'."
 url='http://archive.org/details/die_siedler_2_151'
 arch=('any')
 pkgver='venividivici_gold'
-pkgrel=6
+pkgrel=7
 license=('unknown: proprietary')
 options+=('emptydirs')
 
@@ -27,7 +27,7 @@ sha256sums=(
 
 
 package_siedler2-data() {
-  pkgdesc="Game data files of Blue Byte's 'Siedler II'/'Settlers II' to be used with 'Return to the Roots'."
+  pkgdesc="Game data files of Blue Byte's 'Siedler II'/'Settlers II' to be used with 'Return to the Roots'. Maps can also be played with 'widelands'."
   optdepends+=(
     "return-to-the-roots: To play the game."
     "widelands: To play the maps with widelands."
