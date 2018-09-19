@@ -1,7 +1,7 @@
 pkgbase = linux-apparmor
-	pkgver = 4.18.4.arch1
+	pkgver = 4.18.5.arch1
 	pkgrel = 1
-	url = https://git.archlinux.org/linux.git/log/?h=v4.18.4-arch1
+	url = https://git.archlinux.org/linux.git/log/?h=v4.18.5-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = xmlto
@@ -13,7 +13,7 @@ pkgbase = linux-apparmor
 	makedepends = python-sphinx
 	makedepends = graphviz
 	options = !strip
-	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v4.18.4-arch1
+	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v4.18.5-arch1
 	source = config
 	source = config.fragment
 	source = 60-linux.hook
