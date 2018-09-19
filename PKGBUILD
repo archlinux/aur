@@ -9,7 +9,7 @@ pkgdesc="Game data files and manual of Blue Byte's 'Siedler II'/'Settlers II' to
 url='http://archive.org/details/die_siedler_2_151'
 arch=('any')
 pkgver='venividivici_gold'
-pkgrel=4
+pkgrel=5
 license=('unknown: proprietary')
 options+=('emptydirs')
 
@@ -42,9 +42,12 @@ package_siedler2-data() {
   cp -av "${srcdir}"/{DATA,GFX} "${pkgdir}/usr/share/s25rttr/S2"/
   chmod -R a+Xr "${pkgdir}/usr/share/s25rttr/S2"/*
 
-  install -v -m755 -d "${pkgdir}/usr/share/widelands/maps/settlers2"
-  cd "${pkgdir}/usr/share/widelands/maps/settlers2"
-  ln -sv /usr/share/s25rttr/S2/DATA/MAPS* .
+  install -v -m755 -d "${pkgdir}/usr/share/widelands/maps/Settlers II-maps"
+  cd "${pkgdir}/usr/share/widelands/maps/Settlers II-maps"
+  ln -sv "/usr/share/s25rttr/S2/DATA/MAPS" "Campaigns"
+  ln -sv "/usr/share/s25rttr/S2/DATA/MAPS2" "Continents"
+  ln -sv "/usr/share/s25rttr/S2/DATA/MAPS3" "Older maps"
+  ln -sv "/usr/share/s25rttr/S2/DATA/MAPS4" "Newer maps"
 
   install -v -D -m644 "${srcdir}/license-note.txt" "${pkgdir}/usr/share/licenses/${pkgname}/license-note.txt"
 }
