@@ -1,7 +1,7 @@
 pkgbase = parsec-bin
 	pkgdesc = Remotely connect to a gaming pc for a low latency remote computing experience
 	pkgver = 147_9
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = http://parsec.tv
 	arch = x86_64
@@ -13,7 +13,9 @@ pkgbase = parsec-bin
 	provides = parsec
 	conflicts = parsec
 	source = https://s3.amazonaws.com/parsec-build/package/parsec-linux.deb
+	source = parsecd.service
 	md5sums = e4baa31eb9a2f5aaad28148014165626
+	md5sums = 5e1c21b8e2d186d137e25dfe7d5c1a6f
 
 pkgname = parsec-bin
 
