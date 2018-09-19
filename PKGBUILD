@@ -1,7 +1,7 @@
 # Maintainer: Felix Barz <skycoder42.de@gmx.de>
 pkgname=syrem
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple reminder application for desktop and mobile, with synchronized reminders"
 arch=('i686' 'x86_64')
 url="https://github.com/Skycoder42/Syrem"
@@ -38,6 +38,8 @@ build() {
 package() {
   cd build
   make INSTALL_ROOT="$pkgdir" install
+  ln -s syrem "$pkgdir/usr/bin/remind-me"
+  ln -s syremd "$pkgdir/usr/bin/remind-med"
 
   # license
   cd "../$_pkgfqn"
