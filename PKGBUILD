@@ -21,8 +21,8 @@ package_python-pycrate-git() {
     depends=('python')
     conflicts=("python2-pycrate-git")
 
-	cd pycrate
-	python setup.py install --root="$pkgdir" --optimize=1
+    cd pycrate
+    python setup.py install --root="$pkgdir" --optimize=1
 }
 
 package_python2-pycrate-git() {
