@@ -1,6 +1,6 @@
 pkgbase = python-multivault-git
 	pkgdesc = A CLI to encrypt and decrypt content for ansible
-	pkgver = r86.7624e4a
+	pkgver = r90.8d38fcb
 	pkgrel = 1
 	url = https://github.com/Selfnet/multivault/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-multivault-git
 	depends = python-yaml
 	depends = python-ldap3
 	depends = python-paramiko
-	depends = python-requests
 	depends = python-voluptuous
+	depends = python-hkp4py-git
 	source = git+https://github.com/Selfnet/multivault.git
 	sha512sums = SKIP
 

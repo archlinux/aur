@@ -1,11 +1,11 @@
 pkgname=python-multivault-git
-pkgver=r86.7624e4a
+pkgver=r90.8d38fcb
 pkgrel=1
 pkgdesc="A CLI to encrypt and decrypt content for ansible"
 url="https://github.com/Selfnet/multivault/"
 license=('MIT')
 arch=('any')
-depends=('python-gpgme' 'python-yaml' 'python-ldap3' 'python-paramiko' 'python-requests' 'python-voluptuous')
+depends=('python-gpgme' 'python-yaml' 'python-ldap3' 'python-paramiko' 'python-voluptuous' 'python-hkp4py-git')
 source=("git+https://github.com/Selfnet/multivault.git")
 sha512sums=('SKIP')
 
@@ -16,7 +16,7 @@ pkgver() {
 
 build() {
   cd "$srcdir"/multivault
-  python setup.py build
+  python3 setup.py build
 }
 
 
