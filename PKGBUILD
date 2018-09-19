@@ -1,13 +1,13 @@
 # Maintainer: EHfive <eh5@sokka.cn>
 
 pkgname=pulseaudio-modules-bt-git
-pkgver=r26.cc65a46
+pkgver=r40.b85507f
 pkgrel=1
 pkgdesc="PulseAudio Bluetooth modules with Sony LDAC Codec(A2DP Source) support"
-arch=("i686" "x86_64" "armv7h")
+arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
 url="https://github.com/EHfive/pulseaudio-modules-bt"
 license=('GPL3')
-depends=("pulseaudio>=12.0" "libpulse>=12.0" "bluez>=5.0" "bluez-libs>=5.0" "sbc")
+depends=("pulseaudio>=12.0" "bluez>=5.0" "bluez-libs>=5.0" "sbc")
 makedepends=("cmake>=3.0" "make" "pkg-config")
 provides=("pulseaudio-bluetooth")
 conflicts=("pulseaudio-bluetooth")
@@ -35,7 +35,7 @@ prepare() {
 
 build() {
     cd "$srcdir/pulseaudio-modules-bt"
-    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr .
+    cmake -DCMAKE_BUILD_TYPE=Release .
     make
 }
 
