@@ -1,6 +1,6 @@
 pkgbase = freetds-krb5
 	pkgdesc = Library for accessing Sybase and MS SQL Server databases with kerberos support.
-	pkgver = 1.00.97
+	pkgver = 1.00.98
 	pkgrel = 1
 	url = http://www.freetds.org
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = freetds-krb5
 	backup = etc/freetds/freetds.conf
 	backup = etc/freetds/locales.conf
 	backup = etc/freetds/pool.conf
-	source = ftp://ftp.freetds.org/pub/freetds/stable/freetds-1.00.97.tar.bz2
-	md5sums = 3fe718318e4194a40b877d771eb9d70c
+	source = ftp://ftp.freetds.org/pub/freetds/stable/freetds-1.00.98.tar.bz2
+	md5sums = 4ed6931b6bb430763db42e9ed5400c55
 
 pkgname = freetds-krb5
 
