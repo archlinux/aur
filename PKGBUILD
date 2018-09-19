@@ -5,11 +5,11 @@ pkgname=(
   "siedler2-data"
   "siedler2-doc"
 )
-pkgdesc="Game data files and manual of Blue Byte's 'Siedler II'/'Settlers II' to be used with 'Return to the Roots'."
+pkgdesc="Game data files and manual of Blue Byte's 'Siedler II'/'Settlers II' to be used with 'Return to the Roots'. Maps also be used with 'widelands'."
 url='http://archive.org/details/die_siedler_2_151'
 arch=('any')
 pkgver='venividivici_gold'
-pkgrel=5
+pkgrel=6
 license=('unknown: proprietary')
 options+=('emptydirs')
 
