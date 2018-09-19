@@ -1,0 +1,16 @@
+pkgbase = emacs-rainbow-delimiters-git
+	pkgdesc = Emacs rainbow delimiters mode
+	pkgver = r180.19b9389
+	pkgrel = 1
+	url = https://github.com/Fanael/rainbow-delimiters
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	provides = emacs-rainbow-delimiters
+	conflicts = emacs-rainbow-delimiters
+	source = git+https://github.com/Fanael/rainbow-delimiters.git
+	sha256sums = SKIP
+
+pkgname = emacs-rainbow-delimiters-git
+
