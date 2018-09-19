@@ -9,7 +9,7 @@ pkgdesc="Game data files and manual of Blue Byte's 'Siedler II'/'Settlers II' to
 url='http://archive.org/details/die_siedler_2_151'
 arch=('any')
 pkgver='venividivici_gold'
-pkgrel=3
+pkgrel=4
 license=('unknown: proprietary')
 options+=('emptydirs')
 
@@ -30,13 +30,21 @@ package_siedler2-data() {
   pkgdesc="Game data files of Blue Byte's 'Siedler II'/'Settlers II' to be used with 'Return to the Roots'."
   optdepends+=(
     "return-to-the-roots: To play the game."
+    "widelands: To play the maps with widelands."
     "siedler2-doc: The original Blue Byte manual."
+  )
+  provides=(
+    "widelands-maps-settlers2"
   )
 
   cd "${srcdir}"
   install -v -m 755 -d "${pkgdir}/usr/share/s25rttr/S2"
   cp -av "${srcdir}"/{DATA,GFX} "${pkgdir}/usr/share/s25rttr/S2"/
   chmod -R a+Xr "${pkgdir}/usr/share/s25rttr/S2"/*
+
+  install -v -m755 -d "${pkgdir}/usr/share/widelands/maps/settlers2"
+  cd "${pkgdir}/usr/share/widelands/maps/settlers2"
+  ln -sv /usr/share/s25rttr/S2/DATA/MAPS* .
 
   install -v -D -m644 "${srcdir}/license-note.txt" "${pkgdir}/usr/share/licenses/${pkgname}/license-note.txt"
 }
