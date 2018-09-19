@@ -7,8 +7,8 @@ url="https://github.com/axiros/terminal_markdown_viewer"
 pkgbase="python-${_name}-git"
 # Waiting for https://github.com/axiros/terminal_markdown_viewer/pull/42
 # pkgname=("python-${_name}-git" "python2-${_name}-git")
-pkgname=python2-${_name}-git
-pkgver=0.3.r110.g38757d5
+pkgname=("python2-${_name}-git" "python-${_name}-git")
+pkgver=1.6.3.r66.gfe06a0f
 pkgrel=1
 arch=('any')
 makedepends=('python-setuptools' 'python2-setuptools')
@@ -20,24 +20,23 @@ pkgver() {
 	cd "${_name}"
 	_version=$(python setup.py -V)
 	( set -o pipefail
-		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+		git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
 		printf "%s.r%s.%s" "${_version}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	)
 }
 
 package_python2-mdv-git() {
 	depends=('python2' 'python2-markdown' 'python2-tabulate' 'python2-pygments' 'python2-docopt')
-	provides=( 'terminal_markdown_viewer' )
 	conflicts=( 'terminal_markdown_viewer' )
 	cd "${srcdir}/${_name}"
 	python2 setup.py install --root="${pkgdir}" --optimize=1
-	# Waiting for https://github.com/axiros/terminal_markdown_viewer/pull/42
-	# mv "${pkgdir}/usr/bin/mdv"  "${pkgdir}/usr/bin/mdv2"
+	mv "${pkgdir}/usr/bin/mdv"  "${pkgdir}/usr/bin/mdv2"
 	install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/"LICENSE
 }
 
 package_python-mdv-git() {
 	depends=('python' 'python-markdown' 'python-tabulate' 'python-pygments' 'python-docopt')
+	conflicts=( 'terminal_markdown_viewer' )
 	cd "${srcdir}/${_name}"
 	python setup.py install --root="${pkgdir}" --optimize=1
 	install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/"LICENSE
