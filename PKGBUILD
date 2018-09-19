@@ -2,7 +2,7 @@
 
 pkgname=mkchromecast-git
 _gitname=mkchromecast
-pkgver=r1116.1999c28f
+pkgver=r1125.40c73f91
 pkgrel=1
 pkgdesc="Cast Audio/Video to your Google Cast and Sonos Devices"
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=('alsa-utils: to cast with ALSA'
 provides=('mkchromecast')
 conflicts=('mkchromecast')
 options=('!emptydirs')
-source=("git+https://github.com/muammar/${_gitname}.git#branch=devel")
+source=("git+https://github.com/muammar/${_gitname}.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -40,7 +40,7 @@ package() {
   install -d "${pkgdir}/usr/share/${_gitname}/nodejs/"
 
   install -D -m755 bin/${_gitname} "${pkgdir}/usr/share/${_gitname}/${_gitname}.py"
-  ln -s "${pkgdir}/usr/share/${_gitname}/${_gitname}.py" "${pkgdir}/usr/bin/${_gitname}"
+  ln -s "/usr/share/${_gitname}/${_gitname}.py" "${pkgdir}/usr/bin/${_gitname}"
 
   install -D -m644 mkchromecast/*.py "${pkgdir}/usr/share/${_gitname}/${_gitname}/"
   install -D -m644 mkchromecast/getch/* "${pkgdir}/usr/share/${_gitname}/${_gitname}/getch/"
