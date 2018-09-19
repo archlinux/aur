@@ -1,10 +1,7 @@
 post_install() {
 	if [[ $(pidof systemd) ]]; then
-		_pkgname="betterlockscreen"
-        _gsloc="/etc/systemd/system/$_pkgname.service"
         echo "Systemd service installed, to enable type:"
-		echo 'sudo sed -i "$(cat '$_gsloc' | grep -ni user | cut -d : -f 1) s/=.*/=$(id -un)/" '$_gsloc
-		echo "sudo systemctl enable $_pkgname"
+		echo 'sudo systemctl enable betterlockscreen@$USER'
 	fi
 }
 
