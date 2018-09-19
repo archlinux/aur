@@ -1,19 +1,19 @@
 pkgbase = mingw-w64-headers-bin
 	pkgdesc = MinGW-w64 headers for Windows (pre-compiled)
-	pkgver = 5.0.4
+	pkgver = 6.0.0
 	pkgrel = 1
 	url = http://mingw-w64.sourceforge.net
 	arch = any
 	groups = mingw-w64-toolchain
 	groups = mingw-w64
 	license = custom
-	provides = mingw-w64-headers=5.0.4
+	provides = mingw-w64-headers=6.0.0
 	conflicts = mingw-w64-headers
 	options = !strip
 	options = !libtool
 	options = !emptydirs
-	source = https://sourceforge.net/projects/mingw-w64-builds/files/mingw-w64-headers/mingw-w64-headers-5.0.4.tar.xz
-	md5sums = fd196dfd9b3da6dc3476d4e7b29c057a
+	source = https://sourceforge.net/projects/mingw-w64-builds/files/mingw-w64-headers/mingw-w64-headers-6.0.0.tar.xz
+	md5sums = d598d2c56ff3ea88b9ad5313418bcc2c
 
 pkgname = mingw-w64-headers-bin
 
