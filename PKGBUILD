@@ -3,13 +3,13 @@
 
 pkgname=nitrokey-app
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 _cppcodecver=61d9b044d6644293f99fb87dfadc15dcab951bd9
 pkgdesc="Nitrokey management application"
 arch=('i686' 'x86_64')
 url="https://www.nitrokey.com"
 license=('GPL3')
-depends=('qt5-base' 'qt5-svg' 'hicolor-icon-theme' 'libnitrokey=3.3')
+depends=('qt5-base' 'qt5-svg' 'hicolor-icon-theme' 'libnitrokey>=3.3')
 makedepends=('cmake' 'qt5-tools')
 install=nitrokey-app.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Nitrokey/nitrokey-app/archive/v$pkgver.tar.gz"
