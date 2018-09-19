@@ -1,6 +1,6 @@
 pkgbase = tika
 	pkgdesc = Apache Tika - a content analysis toolkit
-	pkgver = 1.18
+	pkgver = 1.19
 	pkgrel = 1
 	url = https://tika.apache.org
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = tika
 	makedepends = maven
 	depends = java-runtime-headless
 	optdepends = tesseract: OCR support
-	source = git+https://github.com/apache/tika.git#tag=1.18
+	source = git+https://github.com/apache/tika.git#tag=1.19
 	source = tika-server.service
 	source = tika-server.sysusers
 	sha256sums = SKIP
