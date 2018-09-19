@@ -1,13 +1,14 @@
 # Maintainer: Matthijs Tadema <M dot J dot Tadema at gmail dot com>
+# Co-Maintainer: Lorenzo Gaifas <brisvag at gmail dot com>
 pkgname=python2-insane
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 epoch=
 pkgdesc="Tool for constructing MARTINI coarse grained lipid bilayers in python"
 arch=("any")
-url="http://cgmartini.nl/index.php/tools2/proteins-and-bilayers"
-license=('unknown')
-depends=("python2")
+url="https://github.com/Tsjerk/Insane"
+license=('GPL2')
+depends=("python2" "python2-pip")
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -18,20 +19,13 @@ backup=()
 options=()
 install=
 changelog=
-source=("insane.py::http://cgmartini.nl/images/tools/insane/insane.py")
+source=()
 noextract=()
-md5sums=('2e2404990022ba15bf32097d5b5800f4')
+md5sums=()
 validpgpkeys=()
 
-prepare() {
-	cd "$srcdir"
-	echo -e "
-#!/bin/bash
-python2 /opt/insane/insane.py \$@
-
-" > insane.sh
-}
-
+#prepare() {
+#}
 #build() {
 #}
 #
@@ -39,10 +33,6 @@ python2 /opt/insane/insane.py \$@
 #}
 
 package() {
-	cd "$pkgdir"
-	mkdir -p ./opt/insane/ ./usr/bin
-	cd "$srcdir"
-	cp ./insane.py "$pkgdir"/opt/insane
-	cp ./insane.sh "$pkgdir"/usr/bin/insane
-	chmod +x "$pkgdir"/usr/bin/insane
+	pip2 install --install-option="--prefix=$pkgdir/usr/" insane
 }
+
