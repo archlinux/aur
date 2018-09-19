@@ -4,23 +4,26 @@
 # Contributor: Tobias Kieslich <tobias@justdreams.de>
 
 # -----------  NOTE TO ALL USERS ------------
+
 # Go read http://www.courier-mta.org/install.html b4 running or building courier
 
+# If upgrading, you must read the guidance at http://www.courier-mta.org/maildirmake.html on "Converting pre-unicode format maildirs"
+
 pkgname=courier-mta
-pkgver=0.78.3
-pkgrel=2
+pkgver=1.0
+pkgrel=1
 pkgdesc="IMAP(s)/POP3(s) and SMTP Server with ML-manager, webmail and webconfig"
 arch=(i686 x86_64)
 license=('GPL2')
 url="http://courier-mta.org"
-depends=('courier-authlib>=0.68' 'gamin' 'gcc-libs' 'gdbm' 'pcre' 'mime-types' 'ca-certificates')
+depends=('courier-authlib>=0.68' 'courier-unicode>=2.1' 'gamin' 'gcc-libs' 'gdbm' 'pcre' 'mime-types' 'ca-certificates')
 optdepends=('libldap')
 makedepends=('pam' 'expect' 'gnupg' 'libldap' 'gamin')
 provides=('smtp-server' 'smtp-forwarder' 'imap-server' 'pop3-server' 'courier-imap' 'courier-maildrop')
 conflicts=('courier-imap' 'smtp-forwarder' 'smtp-server' 'imap-server' 'courier-maildrop' 'ucspi-tcp')
 options=(!libtool !staticlibs)
-# Specify some files to backup that aren't managed by sysconftool during an upgrade
-backup=('etc/courier/aliases/system' 'etc/courier/smtpaccess/default' 'etc/courier/webadmin/password' 'etc/courier/imapd.cnf' 'etc/courier/esmtpd.cnf' 'etc/courier/pop3d.conf' 'etc/courier/esmtpauthclient')
+# Specify some package files to backup that aren't managed by sysconftool during an upgrade
+backup=('etc/courier/aliases/system' 'etc/courier/smtpaccess/default' 'etc/courier/webadmin/password' 'etc/courier/imapd.cnf' 'etc/courier/esmtpd.cnf' 'etc/courier/pop3d.cnf' 'etc/courier/esmtpauthclient')
 install=courier-mta.install
 source=(http://downloads.sourceforge.net/project/courier/courier/${pkgver}/courier-${pkgver}.tar.bz2
 	courier-imapd.service
@@ -36,7 +39,7 @@ source=(http://downloads.sourceforge.net/project/courier/courier/${pkgver}/couri
 	webmaild.service
 	courier-courierfilter.service
 	courier-mta.conf)
-sha1sums=('2c4a553462fd982855a1223cd05028c3ccd99779'
+sha1sums=('8d3c76ab586e33f83ab8e4ad5b7aca0e9ed27218'
           '9feaa269795a85c1464c104d9268fb266ad1a666'
           '0344ac948b189cae73d86f4565e40847c44772c9'
           '920bd35afc0bf6e6ba5cf7b309210be4d2c76e18'
@@ -72,7 +75,8 @@ build() {
     --without-ispell \
     --with-mailuser=courier \
     --with-mailgroup=courier \
-    --with-certdb=/etc/ssl/certs/
+    --with-certdb=/etc/ssl/certs/ \
+    --with-notice=unicode
   make
 }
 
@@ -108,9 +112,6 @@ package() {
   install -Dm 644 "${srcdir}/webmaild.service"			"${pkgdir}/usr/lib/systemd/system/webmaild.service"
   install -Dm 644 "${srcdir}/courier-mkdhparams.service"	"${pkgdir}/usr/lib/systemd/system/courier-mkdhparams.service"
   install -Dm 644 "${srcdir}/courier-mkdhparams.timer"		"${pkgdir}/usr/lib/systemd/system/courier-mkdhparams.timer"
-
-  # pacman gives an error for /var/run file conflict. Circumvent this by removing the directory
-  rm -rf "${pkgdir}/var/run"
 
   # Install systemd configuration file which will set up empty /run/courier directory (and clean up after uninstall)
 

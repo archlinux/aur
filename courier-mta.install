@@ -4,8 +4,8 @@ post_install() {
 
   # perform all the tasks required of a standard Courier install
   echo Performing install-configure...
-  /usr/lib/courier/sysconftool /etc/courier/*.dist > /etc/courier/install-$1.log
-  echo "...output saved to /etc/courier/install-$1.log"
+  /usr/lib/courier/sysconftool /etc/courier/*.dist > /etc/courier/install-configure-$1.log
+  echo "...output saved to /etc/courier/install-configure-$1.log"
   echo "Don't forget to configure an account to receive postmaster mail"
   makealiases
   makesmtpaccess
@@ -15,12 +15,12 @@ post_install() {
 pre_upgrade() {
   # the file courier-imapd.conf is renamed to courier-mta.conf from version 0.77.0-2
   [ -f /usr/lib/tmpfiles.d/courier-imapd.conf ] && rm -f /usr/lib/tmpfiles.d/courier-imapd.conf
+  [ "${1%%.*}" = "1" ] && [ "${2%%.*}" != "1" ] && echo "Please make sure you have read the guidance on pre-unicode maildir names."
 }
 
 post_upgrade() {
   echo Performing install-configure...
-  /usr/lib/courier/sysconftool /etc/courier/*.dist > /etc/courier/upgrade-$1.log
-  echo "...output saved to /etc/courier/upgrade-$1.log"
+  /usr/lib/courier/sysconftool /etc/courier/*.dist > /etc/courier/install-configure-$1.log
 }
 
 pre_remove() {
