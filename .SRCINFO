@@ -1,6 +1,6 @@
 pkgbase = smarttrafficmeter
 	pkgdesc = Software for measuring network usage.
-	pkgver = 2.1.1286.7198
+	pkgver = 2.1.1295.7240
 	pkgrel = 1
 	url = https://github.com/rafalfr/smarttrafficmeter
 	install = smarttrafficmeter.install

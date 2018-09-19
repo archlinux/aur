@@ -1,6 +1,6 @@
 # Maintainer: Rafał Frączek <rafalfr@protonmail.ch>
 pkgname=smarttrafficmeter
-pkgver=2.1.1286.7198
+pkgver=2.1.1295.7240
 pkgrel=1
 pkgdesc="Software for measuring network usage."
 arch=('x86_64')
