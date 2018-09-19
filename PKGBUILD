@@ -2,13 +2,13 @@
 pkgbase=python-pycrate-git
 pkgname=('python2-pycrate-git' 'python-pycrate-git')
 pkgver=r222.ee66b19
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library for manipulating various digital formats in an easy way."
 arch=(any)
 url="https://github.com/P1sec/pycrate"
 license=('LGPL2.1')
 makedepends=('git')
-conflicts=("python-pycrate", "python2-pycrate")
+conflicts=("python-pycrate" "python2-pycrate")
 source=('pycrate::git+https://github.com/P1sec/pycrate#branch=master')
 md5sums=('SKIP')
 

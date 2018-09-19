@@ -6,7 +6,8 @@ pkgbase = python-pycrate-git
 	arch = any
 	license = LGPL2.1
 	makedepends = git
-	conflicts = pycrate
+	conflicts = python-pycrate
+	conflicts = python2-pycrate
 	source = pycrate::git+https://github.com/P1sec/pycrate#branch=master
 	md5sums = SKIP
 
