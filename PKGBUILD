@@ -2,12 +2,12 @@
 # Contributor: Christophe Robin <crobin@nekoo.com>
 pkgname=runelite
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source Old School RuneScape client."
 arch=(any)
 license=('BSD')
 url="https://runelite.net/"
-depends=('java-runtime>=8' 'xorg-xrandr' 'ttf-font')
+depends=('java-runtime>=8' 'bash' 'ttf-font')
 noextract=('runelite.jar')
 source=(runelite https://github.com/runelite/launcher/releases/download/${pkgver}/RuneLite.jar
          runelite.desktop runelite.png)

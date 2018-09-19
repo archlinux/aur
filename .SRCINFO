@@ -1,12 +1,12 @@
 pkgbase = runelite
 	pkgdesc = Open source Old School RuneScape client.
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://runelite.net/
 	arch = any
 	license = BSD
 	depends = java-runtime>=8
-	depends = xorg-xrandr
+	depends = bash
 	depends = ttf-font
 	noextract = runelite.jar
 	source = runelite
