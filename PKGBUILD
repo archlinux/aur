@@ -2,7 +2,7 @@
 
 pkgname=podman
 pkgver=0.8.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility for running OCI-based containers."
 arch=('x86_64')
 url="https://github.com/containers/libpod"
@@ -45,6 +45,7 @@ prepare() {
   go get -d github.com/containernetworking/plugins 2>/dev/null || :
 }
 build() {
+  export GOPATH="$srcdir/go"
   cd "$GOPATH/src/github.com/containers/libpod"
   make install.tools
   LDFLAGS= make BUILDTAGS='seccomp apparmor selinux'
@@ -54,6 +55,7 @@ build() {
   ./build.sh
 }
 package() {
+  export GOPATH="$srcdir/go"
   cd "$GOPATH/src/github.com/containers/libpod"
   make install DESTDIR="$pkgdir" PREFIX="$pkgdir/usr"
   install -Dm644 "$srcdir/registries.conf" "$pkgdir/etc/containers/registries.conf"
