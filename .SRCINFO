@@ -1,7 +1,7 @@
 pkgbase = wingpanel-standalone-git
 	pkgdesc = Stylish top panel that holds indicators and spawns an application launcher (without Gala dependencies)
 	pkgver = r367.6284121
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/elementary/wingpanel
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,6 @@ pkgbase = wingpanel-standalone-git
 	depends = glibc
 	depends = gtk3
 	depends = libgee
-	depends = mutter
 	depends = libgranite.so
 	depends = libwnck3
 	optdepends = pantheon-applications-menu-git: Application launcher

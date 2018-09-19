@@ -3,13 +3,13 @@
 
 pkgname=wingpanel-standalone-git
 pkgver=r367.6284121
-pkgrel=2
+pkgrel=3
 pkgdesc='Stylish top panel that holds indicators and spawns an application launcher (without Gala dependencies)'
 arch=('i686' 'x86_64')
 url='https://github.com/elementary/wingpanel'
 license=('GPL3')
 groups=('pantheon-unstable' 'pantheon-qq')
-depends=('glib2' 'glibc' 'gtk3' 'libgee' 'mutter'
+depends=('glib2' 'glibc' 'gtk3' 'libgee'
          'libgranite.so' 'libwnck3')
 makedepends=('cmake' 'git' 'granite-git' 'vala')
 optdepends=("pantheon-applications-menu-git: Application launcher"
