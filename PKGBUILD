@@ -2,23 +2,22 @@
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 
 pkgname=lib32-glib-networking
-pkgver=2.56.1
+pkgver=2.58.0
 pkgrel=1
 pkgdesc='Network-related giomodules for glib'
 arch=('x86_64')
 url='https://git.gnome.org/browse/glib-networking/'
 license=('GPL2')
 depends=('glib-networking' 'lib32-glib2' 'lib32-gnutls' 'lib32-libproxy')
-makedepends=('ca-certificates' 'gcc-multilib' 'intltool' 'meson')
-source=("http://download.gnome.org/sources/glib-networking/${pkgver%.*}/glib-networking-${pkgver}.tar.xz")
-sha256sums=('df47b0e0a037d2dcf6b1846cbdf68dd4b3cc055e026bb40c4a55f19f29f635c8')
+makedepends=('ca-certificates' 'gcc-multilib' 'git' 'intltool' 'meson')
+source=("git+https://gitlab.gnome.org/GNOME/glib-networking.git#tag=${pkgver}")
+sha256sums=('SKIP')
 
 build() {
   export CC='gcc -m32'
-  export CXX='g++ -m32'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
-  arch-meson glib-networking-${pkgver} build \
+  arch-meson glib-networking build \
     --libdir='/usr/lib32' \
     --libexecdir='/usr/lib32/glib-networking'
   ninja -C build
