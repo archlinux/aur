@@ -1,19 +1,18 @@
 pkgbase = spl-linux-vfio
-	pkgver = 0.7.9.4.17.2.1
+	pkgver = 0.7.11_4.18.5.arch1.1
 	pkgrel = 1
 	url = http://zfsonlinux.org/
 	arch = x86_64
 	license = GPL
-	makedepends = linux-vfio-headers=4.17.2-1
-	depends = spl-utils-common=0.7.9
+	makedepends = linux-vfio-headers=4.18.5.arch1-1
+	depends = spl-utils-common=0.7.11
 	depends = kmod
-	depends = linux-vfio=4.17.2-1
-	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.9/spl-0.7.9.tar.gz
-	sha256sums = 49832e446a5abce0b55ba245c9b5f94959604d44378320fdffae0233bf1e8c00
+	depends = linux-vfio=4.18.5.arch1-1
+	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.11/spl-0.7.11.tar.gz
+	sha256sums = d6ddd225e7f464007c960f10134c8a48fb0de525f75ad05d5ddf36685b1ced67
 
 pkgname = spl-linux-vfio
 	pkgdesc = Solaris Porting Layer kernel modules.
-	install = spl.install
 	groups = archzfs-linux-vfio
 	provides = spl
 	conflicts = spl-linux-vfio-git

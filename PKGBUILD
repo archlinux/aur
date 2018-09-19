@@ -17,34 +17,36 @@
 #
 pkgbase="spl-linux-vfio"
 pkgname=("spl-linux-vfio" "spl-linux-vfio-headers")
+_splver="0.7.11"
+_kernelver="4.18.5.arch1-1"
+_extramodules="${_kernelver/.arch/-arch}-vfio"
 
-pkgver=0.7.9.4.17.3.1
+pkgver="${_splver}_$(echo ${_kernelver} | sed s/-/./g)"
 pkgrel=1
-makedepends=("linux-vfio-headers=4.17.3-1")
+makedepends=("linux-vfio-headers=${_kernelver}")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
-source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.9/spl-0.7.9.tar.gz")
-sha256sums=("49832e446a5abce0b55ba245c9b5f94959604d44378320fdffae0233bf1e8c00")
+source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${_splver}/spl-${_splver}.tar.gz")
+sha256sums=("d6ddd225e7f464007c960f10134c8a48fb0de525f75ad05d5ddf36685b1ced67")
 license=("GPL")
-depends=("spl-utils-common=0.7.9" "kmod" "linux-vfio=4.17.3-1")
+depends=("spl-utils-common=${_splver}" "kmod" "linux-vfio=${_kernelver}")
 
 build() {
-    cd "${srcdir}/spl-0.7.9"
+    cd "${srcdir}/spl-${_splver}"
     ./autogen.sh
     ./configure --prefix=/usr --libdir=/usr/lib --sbindir=/usr/bin \
-                --with-linux=/usr/lib/modules/4.17.3-1-vfio/build \
-                --with-linux-obj=/usr/lib/modules/4.17.3-1-vfio/build \
+                --with-linux=/usr/lib/modules/${_extramodules}/build \
+                --with-linux-obj=/usr/lib/modules/${_extramodules}/build \
                 --with-config=kernel
     make
 }
 
 package_spl-linux-vfio() {
     pkgdesc="Solaris Porting Layer kernel modules."
-    install=spl.install
     provides=("spl")
     groups=("archzfs-linux-vfio")
     conflicts=('spl-linux-vfio-git')
-    cd "${srcdir}/spl-0.7.9"
+    cd "${srcdir}/spl-${_splver}"
     make DESTDIR="${pkgdir}" install
     mv "${pkgdir}/lib" "${pkgdir}/usr/"
     # Remove src dir
@@ -54,9 +56,9 @@ package_spl-linux-vfio() {
 package_spl-linux-vfio-headers() {
     pkgdesc="Solaris Porting Layer kernel headers."
     conflicts=('spl-archiso-linux-headers' 'spl-archiso-linux-git-headers' 'spl-linux-hardened-headers' 'spl-linux-hardened-git-headers' 'spl-linux-lts-headers' 'spl-linux-lts-git-headers' 'spl-linux-headers' 'spl-linux-git-headers'  'spl-linux-vfio-git-headers' 'spl-linux-zen-headers' 'spl-linux-zen-git-headers' )
-    cd "${srcdir}/spl-0.7.9"
+    cd "${srcdir}/spl-${_splver}"
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.17.3-1-vfio/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/${_extramodules}/Module.symvers
 }
