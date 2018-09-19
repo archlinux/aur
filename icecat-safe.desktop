@@ -1,6 +1,6 @@
 [Desktop Entry]
 Encoding=UTF-8
-Exec=/usr/bin/icecat-launcher -safe-mode %u
+Exec=/usr/bin/icecat -safe-mode %u
 Icon=icecat
 Type=Application
 Terminal=false

@@ -5,7 +5,7 @@ pkgname=icecat-bin
 _pkgname=icecat
 pkgver=60.2.0
 _pkgver=${pkgver}-gnu1
-pkgrel=1
+pkgrel=2
 pkgdesc="Binary build of the GNU version of the Mozilla Firefox browser"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/gnuzilla/"
@@ -24,8 +24,8 @@ source=($_pkgname.desktop
 	$_pkgname.sh
 	$_pkgname-launcher.sh)
 
-sha256sums=('2ac72dba9c63ad16e33c6907c541b5a7f62148a237d342f7a61a843eceb2f79c'
-            '05f5472a4a845c5fa81f1fb871a6f6dd90923d888f1d68c6789cbbd9537306d6'
+sha256sums=('c44eab35f71dd3028a74632463710d674b2e8a0682e5e887535e3233a3b7bbb3'
+            '190577ad917bccfc89a9bcafbc331521f551b6f54e190bb6216eada48dcb1303'
             'b009bc989a164c8aea7ff6a1920675b74c90d1b38bb1b3b60f96296913a8de27'
             'b49fe5ba063002ad2cbf5e981b98d08e4157e20f5a4f00971a5f73eeca6ddbba')
 sha256sums_i686=('80322696e5da92f619bbed92540ece83a849d0581f2b9d17bf0c4882f1206ddd'
