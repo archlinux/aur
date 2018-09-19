@@ -18,6 +18,7 @@ pkgbase = wingpanel-standalone-git
 	depends = libgee
 	depends = mutter
 	depends = libgranite.so
+	depends = libwnck3
 	optdepends = pantheon-applications-menu-git: Application launcher
 	optdepends = wingpanel-indicator-a11y-git: Tray applet
 	optdepends = wingpanel-indicator-bluetooth-git: Tray applet

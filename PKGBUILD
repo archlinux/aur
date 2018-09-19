@@ -10,7 +10,7 @@ url='https://github.com/elementary/wingpanel'
 license=('GPL3')
 groups=('pantheon-unstable' 'pantheon-qq')
 depends=('glib2' 'glibc' 'gtk3' 'libgee' 'mutter'
-         'libgranite.so')
+         'libgranite.so' 'libwnck3')
 makedepends=('cmake' 'git' 'granite-git' 'vala')
 optdepends=("pantheon-applications-menu-git: Application launcher"
             wingpanel-indicator-{a11y,bluetooth,datetime,keyboard,network,notifications,power,session,sound}-git": Tray applet"
