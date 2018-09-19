@@ -1,0 +1,17 @@
+pkgbase = emacs-smartparens-git
+	pkgdesc = Minor mode for Emacs that deals with parens pairs and tries to be smart about
+	pkgver = r1417.14a4d62
+	pkgrel = 1
+	url = https://github.com/Fuco1/smartparens
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	depends = emacs-dash
+	provides = emacs-smartparens
+	conflicts = emacs-smartparens
+	source = git+https://github.com/Fuco1/smartparens.git
+	sha256sums = SKIP
+
+pkgname = emacs-smartparens-git
+
