@@ -1,7 +1,7 @@
 pkgbase = monodevelop-stable
 	pkgdesc = An IDE primarily designed for C# and other .NET languages
 	pkgver = 7.8.0.338
-	pkgrel = 2
+	pkgrel = 1
 	url = http://www.monodevelop.com
 	arch = x86_64
 	arch = i686
