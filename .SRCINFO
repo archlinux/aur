@@ -1,15 +1,16 @@
 pkgbase = canta-theme-git
 	pkgdesc = Flat Material Design theme for GTK 3, GTK 2 and Gnome-Shell
-	pkgver = 2018_05_15.r6.9dfb4bb
+	pkgver = 2018_05_15.r7.33b242e
 	pkgrel = 1
 	url = https://github.com/vinceliuice/Canta-theme
 	arch = any
 	license = GPL2
 	makedepends = gtk3
 	makedepends = git
-	optdepends = numix-circle-icon-theme-git: recommended base icon theme
-	optdepends = gtk-engine-murrine: needed for gtk2 theme
-	optdepends = gnome-themes-standard: needed for gtk2 theme
+	depends = numix-circle-icon-theme-git
+	depends = gtk-engine-murrine
+	depends = gnome-themes-standard
+	depends = sassc
 	source = canta-theme::git+https://github.com/vinceliuice/Canta-theme.git
 	md5sums = SKIP
 

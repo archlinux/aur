@@ -5,14 +5,15 @@ pkgbase=canta-theme-git
 _pkgname=canta-theme
 pkgname=('canta-gtk-theme-git' 'canta-icon-theme-git')
 pkgdesc="Flat Material Design theme for GTK 3, GTK 2 and Gnome-Shell"
-pkgver=2018_05_15.r6.9dfb4bb
+pkgver=2018_05_15.r7.33b242e
 pkgrel=1
 arch=('any')
 url="https://github.com/vinceliuice/Canta-theme"
 license=('GPL2')
-optdepends=('numix-circle-icon-theme-git: recommended base icon theme'
-            'gtk-engine-murrine: needed for gtk2 theme'
-            'gnome-themes-standard: needed for gtk2 theme')
+depends=('numix-circle-icon-theme-git'
+            'gtk-engine-murrine'
+            'gnome-themes-standard'
+            'sassc')
 makedepends=('gtk3' 'git')
 
 source=("${_pkgname}::git+https://github.com/vinceliuice/Canta-theme.git")
@@ -41,7 +42,8 @@ build() {
 
     rm -rf build
     mkdir build
-    DEST_DIR=build ./install.sh
+    #DEST_DIR=build ./install.sh
+    DEST_DIR=build ./Install_with_background_img
 }
 
 package_canta-gtk-theme-git() {
