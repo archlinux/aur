@@ -1,0 +1,16 @@
+pkgbase = libivykis-git
+	pkgdesc = Library for asynchronous I/O readiness notification
+	pkgver = v0.42.3.trunk.r1.g8f8eb78
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/buytenh/ivykis
+	arch = i686
+	arch = x86_64
+	license = LGPL-2.1
+	provides = libivykis
+	conflicts = libivykis
+	source = git+https://github.com/buytenh/ivykis.git
+	md5sums = SKIP
+
+pkgname = libivykis-git
+
