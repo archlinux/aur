@@ -1,3 +1,6 @@
+v0.7.1-1 (2018-09-19)
+* PKGBUILD: Add provides and conflicts for provided scripts
+
 v0.7.1-1 (2018-09-18)
 * repkg: Properly handle *non*-versioned depends/conflicts/provides/replaces
 

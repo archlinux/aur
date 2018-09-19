@@ -2,7 +2,7 @@
 
 pkgname=remakepkg
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 arch=(any)
 
 pkgdesc='Apply changes to pacman packages'
@@ -11,6 +11,9 @@ license=(GPL3)
 
 depends=(coreutils)
 makedepends=(asciidoc git)
+
+provides=(diffrepo getpkg pkgmirror remakepkg repkg)
+conflicts=(diffrepo getpkg pkgmirror remakepkg repkg)
 
 changelog='changelog'
 
