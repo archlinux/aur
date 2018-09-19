@@ -33,8 +33,18 @@ validpgpkeys=()
 
 build() {
     cd $pkgname-$pkgver/build
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_SYSCONFDIR=/etc ..
+    cmake \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_SYSCONFDIR=/etc \
+        -DFLB_TESTS_INTERNAL=Yes \
+        -DFLB_TESTS_RUTNIME=Yes \
+        ..
     make -j8
+}
+
+check() {
+    cd $pkgname-$pkgver/build
+    make test
 }
 
 package() {
