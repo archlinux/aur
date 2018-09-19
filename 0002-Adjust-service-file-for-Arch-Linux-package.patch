@@ -1,4 +1,4 @@
-From 3d8abcd653f46d72c47687e8b4186157f0526401 Mon Sep 17 00:00:00 2001
+From 4ba92ebea6847998ef6c9183062004ba98b6d945 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 19 Mar 2017 18:04:48 +0100
 Subject: [PATCH 2/2] Adjust service file for Arch Linux package
@@ -8,7 +8,7 @@ Subject: [PATCH 2/2] Adjust service file for Arch Linux package
  1 file changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/scripts/systemd/gogs.service b/scripts/systemd/gogs.service
-index 9f105bf8..99ca11e0 100644
+index 3a89662a8..790a94e80 100644
 --- a/scripts/systemd/gogs.service
 +++ b/scripts/systemd/gogs.service
 @@ -12,12 +12,12 @@ After=mariadb.service mysqld.service postgresql.service memcached.service redis.
@@ -25,10 +25,10 @@ index 9f105bf8..99ca11e0 100644
 +ExecStart=/usr/bin/gogs web --config /etc/gogs/app.ini
  Restart=always
 -Environment=USER=git HOME=/home/git
-+Environment=USER=gogs HOME=/var/lib/gogs
++Environment=USER=gogs HOME=/var/lib/gogs GOGS_CUSTOM=/var/lib/gogs/custom
  
- [Install]
- WantedBy=multi-user.target
+ # Some distributions may not support these hardening directives. If you cannot start the service due
+ # to an unknown option, comment out the ones not supported by your version of systemd.
 -- 
-2.15.0
+2.19.0
 

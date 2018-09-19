@@ -1,17 +1,31 @@
-From 70596ab48d0e1f0f1474bbc60a41b0e3cb5931d6 Mon Sep 17 00:00:00 2001
+From 25d1ec73cde6321e90bb6088fd6409dd95b310fa Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 19 Mar 2017 18:03:36 +0100
 Subject: [PATCH 1/2] Adjust config for Arch Linux package
 
 ---
- conf/app.ini | 24 ++++++++++++------------
- 1 file changed, 12 insertions(+), 12 deletions(-)
+ conf/app.ini | 31 +++++++++++++++++++------------
+ 1 file changed, 19 insertions(+), 12 deletions(-)
 
 diff --git a/conf/app.ini b/conf/app.ini
-index 8049ce3d..a64cd2ff 100644
+index 0c6512b17..42723cfd5 100644
 --- a/conf/app.ini
 +++ b/conf/app.ini
-@@ -5,7 +5,7 @@
+@@ -1,11 +1,18 @@
+-# !!! NEVER EVER MODIFY THIS FILE !!!
+-# !!! PLEASE MAKE CHANGES ON CORRESPONDING CUSTOM CONFIG FILE !!!
+-# !!! IF YOU ARE PACKAGING PROVIDER, PLEASE MAKE OWN COPY OF IT !!!
++# Feel free to modify this file!
++# In case a new version of this file is availabe, pacman will notify automatically when
++# updating and creates the new version as app.ini.pacnew. You can use diff or a similar
++# tool to see the changes between your configuration and the new default configuration.
++
++# There is also a copy of this file under /usr/share/gogs/conf/app.ini in case
++# you need to go back.
++
++# It is also possible to remove all default values and just specify what you want
++# to change because /usr/share/gogs/conf/app.ini also serves as fallback.
+ 
  ; App name that shows on every page title
  APP_NAME = Gogs
  ; The name of the system user that runs Gogs
@@ -20,7 +34,7 @@ index 8049ce3d..a64cd2ff 100644
  ; Either "dev", "prod" or "test"
  RUN_MODE = dev
  
-@@ -54,16 +54,16 @@ DISABLE_ROUTER_LOG = false
+@@ -56,16 +63,16 @@ DISABLE_ROUTER_LOG = false
  ; not forget to export the private key):
  ; $ openssl pkcs12 -in cert.pfx -out cert.pem -nokeys
  ; $ openssl pkcs12 -in cert.pfx -out key.pem -nocerts -nodes
@@ -41,7 +55,7 @@ index 8049ce3d..a64cd2ff 100644
  ; Application level GZIP support
  ENABLE_GZIP = false
  ; Landing page for non-logged users, can be "home" or "explore"
-@@ -71,7 +71,7 @@ LANDING_PAGE = home
+@@ -73,7 +80,7 @@ LANDING_PAGE = home
  
  [repository]
  ; Root path for storing repositories's data, default is "~/<username>/gogs-repositories"
@@ -50,7 +64,7 @@ index 8049ce3d..a64cd2ff 100644
  ; The script type server supports, sometimes could be "sh"
  SCRIPT_TYPE = bash
  ; Default ANSI charset for an unrecognized charset
-@@ -111,7 +111,7 @@ PREVIEWABLE_FILE_MODES = markdown
+@@ -113,7 +120,7 @@ PREVIEWABLE_FILE_MODES = markdown
  ; Enable repository file uploads.
  ENABLED = true
  ; Path to temporarily store uploads (default path gets cleaned by Gogs in every start)
@@ -59,16 +73,7 @@ index 8049ce3d..a64cd2ff 100644
  ; File types that are allowed to be uploaded, e.g. image/jpeg|image/png. Leave empty means allow any file type
  ALLOWED_TYPES =
  ; Maximum size of each file in MB
-@@ -124,7 +124,7 @@ MAX_FILES = 5
- ; Whether attachments are enabled. Defaults to `true`
- ENABLED = true
- ; Path for attachments. Defaults to `data/attachments`
--PATH = data/attachments
-+PATH = /var/lib/gogs/attachments
- ; One or more allowed types, e.g. image/jpeg|image/png
- ALLOWED_TYPES = */*
- ; Max size of each file. Defaults to 32MB
-@@ -170,7 +170,7 @@ PASSWD =
+@@ -172,7 +179,7 @@ PASSWD =
  ; For "postgres" only, either "disable", "require" or "verify-full"
  SSL_MODE = disable
  ; For "sqlite3" and "tidb", use absolute path when you start as service
@@ -77,25 +82,7 @@ index 8049ce3d..a64cd2ff 100644
  
  [admin]
  ; Disable regular (non-admin) users to create organizations
-@@ -283,7 +283,7 @@ CSRF_COOKIE_NAME = _csrf
- 
- [picture]
- ; Path to store user uploaded avatars
--AVATAR_UPLOAD_PATH = data/avatars
-+AVATAR_UPLOAD_PATH = /var/lib/gogs/avatars
- ; Chinese users can choose "duoshuo"
- ; or a custom avatar source, like: http://cn.gravatar.com/avatar/
- GRAVATAR_SOURCE = gravatar
-@@ -299,7 +299,7 @@ ENABLE_FEDERATED_AVATAR = true
- ; Whether attachments are enabled. Defaults to `true`
- ENABLED = true
- ; Path for attachments. Defaults to `data/attachments`
--PATH = data/attachments
-+PATH = /var/lib/gogs/attachments
- ; One or more allowed types, e.g. image/jpeg|image/png
- ALLOWED_TYPES = image/jpeg|image/png
- ; Max size of each file. Defaults to 4MB
-@@ -315,7 +315,7 @@ FORMAT =
+@@ -319,7 +326,7 @@ FORMAT =
  
  ; General settings of loggers
  [log]
@@ -105,5 +92,5 @@ index 8049ce3d..a64cd2ff 100644
  ; Use comma to separate multiple modes, e.g. "console, file"
  MODE = console
 -- 
-2.15.0
+2.19.0
 

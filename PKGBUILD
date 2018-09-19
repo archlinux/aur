@@ -10,8 +10,8 @@ _confdir=conf
 _scriptsdir=scripts
 
 pkgname=$_pkgname
-pkgver=0.11.53
-pkgrel=2
+pkgver=0.11.66
+pkgrel=1
 epoch=1
 pkgdesc='Self Hosted Git Service written in Go'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -31,9 +31,9 @@ backup=("etc/$_pkgname/app.ini")
 source=("$_pkgname-$pkgver::https://github.com/$_orga/$_pkgname/archive/v${pkgver}.tar.gz"
         '0001-Adjust-config-for-Arch-Linux-package.patch'
         '0002-Adjust-service-file-for-Arch-Linux-package.patch')
-sha512sums=('4d34b904a933945faf36f31bb192910cb7ee19cca9a102b4717aafea6d59b8cb7a1a9bc9cac5ff34b371a66056313e6263ac171a46482d65d6216d4b8d4a2b54'
-            '2763e4a2a5c98f3e75a1ddcb7c58012ce1e0fc2ad6b85110d9f28dd6c98d9e84a98529a282ffee8a1a21ef02a92b0538f2c790f62e6159b1f1f478340ddcf68a'
-            '361d318ac3c846eaa6b0260baed8fe21ba5d6b079b0618962e8b67ae91928c61b1296eba2311d6bd032c8bca4a09e51d8fb73e6ff67039b35a5179701a0cd868')
+sha512sums=('51dc88e15e92d4f93e95efe22f57151b9bcede78abf5fab529953f104739f682ac0c6d84939c33a3ae160648cdaa361ac88678697b40c4bb7832ed99338daf76'
+            'b1ae473eba5bfb693e507ce82f2a81beb066ab5869d8d089963f8d4740cc77e203b8653cbeeb196a86e65d04e2a288056fb3196364e247dd11906b77fd7ace8b'
+            '71c38f86b3e351f8f69504835082618cf5f63897246ee0691f1b7d518e164bd68681e14134e97fcfb369c960c6a81da92c86bc40b5c9ee6f171af1f1a1a7e8a4')
 _goroot='/usr/lib/go'
 
 prepare() {
@@ -106,7 +106,7 @@ package() {
   cp -r "$srcdir/build/src/${_gourl}/templates" "$pkgdir/usr/share/${_pkgname}"
 
   mkdir -p "$pkgdir/etc/$_pkgname"
-  install -Dm0664 -g "$_userid" "$pkgdir/usr/share/$_pkgname/conf/app.ini"* "$pkgdir/etc/$_pkgname"
+  install -Dm0664 -g "$_userid" "$pkgdir/usr/share/$_pkgname/conf/app.ini"* "$pkgdir/etc/$_pkgname/app.ini"
   install -Dm0644 "$srcdir/build/src/${_gourl}/${_scriptsdir}/systemd/$_pkgname.service" "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
   install -Dm0644 "$srcdir/build/src/${_gourl}/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname"
   install -Dm0644 "${srcdir}/$_pkgname.sysusers" "${pkgdir}/usr/lib/sysusers.d/$_pkgname.conf"
