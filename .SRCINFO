@@ -1,6 +1,6 @@
 pkgbase = mdn
 	pkgdesc = Tool to manage markdown notes
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/lyneca/mdn
 	arch = any
