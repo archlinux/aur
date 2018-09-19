@@ -4,13 +4,13 @@
 
 pkgname=ocaml-ssl
 pkgver=0.5.6
-pkgrel=1
+pkgrel=2
 pkgdesc="OCaml SSL Library"
 arch=('i686' 'x86_64')
 url="http://savonet.sourceforge.net/"
 license=('custom')
 depends=('ocaml' 'openssl')
-makedepends=('dune' 'ocaml-findlib')
+makedepends=('bubblewrap' 'dune' 'ocaml-findlib')
 source=("https://github.com/savonet/ocaml-ssl/archive/v$pkgver.tar.gz")
 options=(!libtool !strip zipman !makeflags staticlibs)
 
