@@ -2,7 +2,7 @@
 pkgname=libcmmk-git
 _pkgname=libcmmk
 pkgver=r65.9894101
-pkgrel=1
+pkgrel=2
 pkgdesc="An unofficial LED control API for Coolermaster Masterkey keyboards"
 arch=(i686 x86_64)
 url="https://github.com/chmod222/libcmmk"
@@ -29,6 +29,7 @@ build() {
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_BINDIR=bin \
         -DCMAKE_INSTALL_LIBDIR=lib \
+        -DCMAKE_INSTALL_INCLUDEDIR=include/libcmmk \
         ..
   make
 }

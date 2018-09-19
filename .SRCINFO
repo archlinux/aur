@@ -1,8 +1,9 @@
 pkgbase = libcmmk-git
 	pkgdesc = An unofficial LED control API for Coolermaster Masterkey keyboards
 	pkgver = r65.9894101
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/chmod222/libcmmk
+	install = libcmmk-git.install
 	arch = i686
 	arch = x86_64
 	license = GPL
