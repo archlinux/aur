@@ -163,7 +163,7 @@ index dddddf1..4efb6c0 100644
          update_panel_dimensions ();
  
          return true;
-@@ -91,7 +144,126 @@
+@@ -91,7 +144,128 @@
  
          Services.BackgroundManager.initialize (this.monitor_number, panel_height);
  
@@ -198,6 +198,7 @@ index dddddf1..4efb6c0 100644
 +
 +    private void update_visibility_active_change (Wnck.Window? active_window) {
 +        if (should_hide_active_change (active_window)) {
++            this.leave_notify_event.connect (hide_panel);
 +            delay = false;
 +            hide_panel ();
 +        } else {
@@ -263,17 +264,17 @@ index dddddf1..4efb6c0 100644
 +            case "Autohide":
 +            case "Float":
 +                delay = true;
-+                hide_panel ();
 +                wnck_screen.active_window_changed.disconnect (active_window_changed);
 +                wnck_screen.active_workspace_changed.disconnect (active_workspace_changed);
 +                wnck_screen.viewports_changed.disconnect (viewports_changed);
++                hide_panel ();
 +                break;
 +            case "Dodge":
 +            case "Dodge-Float":
 +                delay = false;
 +                if (!should_hide_active_change (wnck_screen.get_active_window())) {
-+                    show_panel ();
 +                    this.leave_notify_event.disconnect (hide_panel);
++                    show_panel ();
 +                } else {
 +                    hide_panel ();
 +                }
@@ -282,10 +283,11 @@ index dddddf1..4efb6c0 100644
 +                wnck_screen.viewports_changed.connect (viewports_changed);
 +                break;
 +            default:
-+                show_panel ();
++                this.leave_notify_event.disconnect (hide_panel);
 +                wnck_screen.active_window_changed.disconnect (active_window_changed);
 +                wnck_screen.active_workspace_changed.disconnect (active_workspace_changed);
 +                wnck_screen.viewports_changed.disconnect (viewports_changed);
++                show_panel ();
 +                break;
 +        }
      }
