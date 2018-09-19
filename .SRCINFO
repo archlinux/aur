@@ -1,7 +1,7 @@
 pkgbase = lib32-gst-plugins-bad
 	pkgdesc = GStreamer Multimedia Framework Bad Plugins (32-bit)
-	pkgver = 1.14.2
-	pkgrel = 6
+	pkgver = 1.14.3
+	pkgrel = 1
 	url = https://gstreamer.freedesktop.org/
 	arch = x86_64
 	license = LGPL
@@ -68,7 +68,7 @@ pkgbase = lib32-gst-plugins-bad
 	depends = lib32-zbar
 	depends = lib32-zvbi
 	depends = gst-plugins-bad
-	source = git+https://anongit.freedesktop.org/git/gstreamer/gst-plugins-bad#commit=513ef5efdf85f9af4a016e8ae69f28cf16c9ec58
+	source = git+https://anongit.freedesktop.org/git/gstreamer/gst-plugins-bad#commit=924b54b1501656a192ff391f0c2fd6cfb9f89aac
 	source = gst-common::git+https://anongit.freedesktop.org/git/gstreamer/common
 	source = missing-includes.diff
 	sha256sums = SKIP
