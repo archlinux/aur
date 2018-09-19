@@ -1,0 +1,5 @@
+kicad-footprints/
+pkg/
+src/
+*.tar.gz
+*.tar.xz

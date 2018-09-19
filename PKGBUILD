@@ -1,16 +1,17 @@
-# Maintainer: Frederic Van Assche <frederic@fredericva.com>
+# Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=kicad-footprints-git
-_pkgname=${pkgname%-*}
-pkgver=r1078.bdb3d3cd
+_pkgname=kicad-footprints
+pkgver=r2391.2d650a05
 pkgrel=1
-pkgdesc="Official KiCad footprint libraries"
+pkgdesc="KiCad footprint libraries from the official git repo"
 arch=('any')
 url="https://github.com/KiCad/kicad-footprints"
 license=('GPL')
-options=('!strip')
 makedepends=('cmake' 'git')
-conflicts=('kicad-library-bzr' 'kicad-library-git' 'kicad-library-3d' 'kicad-library')
+options=('!strip')
+conflicts=('kicad-library-bzr' 'kicad-library-git' 'kicad-library-3d' 'kicad-library' 'kicad-footprints')
+provides=('kicad-footprints')
 source=("git://github.com/KiCad/kicad-footprints.git")
 md5sums=('SKIP')
 
@@ -19,10 +20,15 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-package() {
+build() {
   cd "$srcdir"
+  mkdir -p "$srcdir/build/"
+  cd "$srcdir/build"
+  cmake ../${_pkgname} -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+}
 
-  mkdir -p "$pkgdir/usr/share/kicad/modules/"
+package() {
+  cd "$srcdir/build"
 
-  cp -r "$srcdir/$_pkgname"/* "$pkgdir/usr/share/kicad/modules/"
+  make DESTDIR="$pkgdir" install
 }
