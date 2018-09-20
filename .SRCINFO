@@ -1,7 +1,7 @@
 pkgbase = yaup-git
 	pkgdesc = Yet Another UPnP Portmapper - A GTK frontend for miniupnpc
 	pkgver = 0.1.r2.gdabd262
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Holarse-Linuxgaming/yaup
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = yaup-git
 	makedepends = libtool
 	depends = miniupnpc
 	depends = gtk3
+	depends = hicolor-icon-theme
 	provides = yaup
 	conflicts = yaup
 	source = yaup::git+https://github.com/Holarse-Linuxgaming/yaup.git
