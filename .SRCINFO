@@ -1,12 +1,14 @@
 pkgbase = uploadnewip
 	pkgdesc = Upload new dynamic public IP address of a GNU/Linux server to Dropbox every time it changes.
-	pkgver = 2.2
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://gitlab.com/BobyMCbobs/uploadnewip
 	arch = any
 	license = GPL
 	depends = curl
 	depends = bash
+	depends = nano
+	depends = iputils
 	source = https://gitlab.com/BobyMCbobs/uploadnewip/-/archive/2.2/uploadnewip-2.2.zip
 	md5sums = f00265468b323a417ca3766c07f9ff3b
 
