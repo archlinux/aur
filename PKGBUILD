@@ -3,7 +3,7 @@
 # Upstream: https://github.com/anaseto/boohu
 
 pkgname=('boohu-git')
-pkgver=0.7.1
+pkgver=0.9.0.48.gee52056
 pkgrel=1
 pkgdesc="Break Out Of Hareka's Underground, a roguelike game."
 arch=('i686' 'x86_64')
