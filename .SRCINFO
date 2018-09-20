@@ -1,6 +1,6 @@
 pkgbase = gnome-usage-git
 	pkgdesc = GNOME application to view information about use of system resources
-	pkgver = 3.28.0.26.g3e1b5bf
+	pkgver = 3.28.0.28.gf6ae59a
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Usage
 	arch = i686
@@ -17,9 +17,7 @@ pkgbase = gnome-usage-git
 	provides = gnome-usage
 	conflicts = gnome-usage
 	source = git+https://gitlab.gnome.org/GNOME/gnome-usage.git
-	source = 0001-Fix-build-with-vala-0.42.patch
 	sha256sums = SKIP
-	sha256sums = 9ffe8de8386f5f4aaadea3bca74509b38649ff98124e0f9b7dd37580c854ec34
 
 pkgname = gnome-usage-git
 
