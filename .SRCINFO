@@ -1,6 +1,6 @@
 pkgbase = mato-icons-git
 	pkgdesc = Mato is a Material Design inspired icon theme for Linux. It features simple and modern icons based on the official icons.
-	pkgver = latest
+	pkgver = 1.4.r85.gca1fb9a
 	pkgrel = 1
 	url = https://flipflop97.github.io/Mato/
 	arch = any
