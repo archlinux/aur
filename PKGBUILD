@@ -38,6 +38,7 @@ package() {
   go get github.com/ryanuber/columnize
   go get github.com/dokku/dokku/plugins/config
   env PLUGIN_MAKE_TARGET=build make go-build
+  mkdir -p "${pkgdir}/var/lib/dokku/core-plugins/available"
   cp common.mk "${pkgdir}/var/lib/dokku/core-plugins/common.mk"
   cp -r plugins/* "${pkgdir}/var/lib/dokku/core-plugins/available"
   find plugins/ -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | while read plugin; do cd "${pkgdir}/var/lib/dokku/core-plugins/available/${plugin}" && if [ -e Makefile ]; then make src-clean; fi; done
