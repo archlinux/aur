@@ -4,7 +4,7 @@
 # Upstream: https://github.com/bcoin-org/bcoin
 
 pkgname=bcoin-git
-pkgver=1.0.0.beta.14.202.gc54ba4c5
+pkgver=1.0.2.50.g8630a8ee
 pkgrel=1
 pkgdesc='An alternative implementation of the bitcoin protocol, written in node.js.'
 arch=('i686' 'x86_64')
