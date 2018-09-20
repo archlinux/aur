@@ -1,13 +1,13 @@
 pkgbase = libphutil
 	pkgdesc = A collection of PHP utility classes
-	pkgver = 2018.31
+	pkgver = 2018.37
 	pkgrel = 1
 	url = https://www.phacility.com/phabricator/
 	arch = any
 	license = Apache
 	makedepends = git
 	depends = php
-	source = git://github.com/phacility/libphutil.git#commit=5a1a8323ee8073ccaf8d9ea8120309717d1d5db9
+	source = git://github.com/phacility/libphutil.git#commit=014e3569b2e01056e69e4c51c2c40b14e3059091
 	sha256sums = SKIP
 
 pkgname = libphutil
