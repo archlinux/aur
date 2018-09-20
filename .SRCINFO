@@ -1,6 +1,6 @@
 pkgbase = cbmc-git
 	pkgdesc = Bounded Model Checking for ANSI-C
-	pkgver = 5.8.r4266.g6fd77f4ad
+	pkgver = 5.10.r572.gf9a09d876
 	pkgrel = 1
 	url = http://www.cprover.org/cbmc/
 	arch = i686
@@ -15,7 +15,6 @@ pkgbase = cbmc-git
 	depends = bison
 	provides = cbmc-git
 	conflicts = cbmc
-	conflicts = cbmc-git
 	conflicts = cbmc-bin
 	source = cbmc-git::git+https://github.com/diffblue/cbmc.git
 	md5sums = SKIP
