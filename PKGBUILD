@@ -1,8 +1,8 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=repos
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.1.3
+pkgrel=1
 pkgdesc="A simple command tool to manage local repositories"
 url="https://github.com/zhangkaizhao/repos"
 makedepends=('cargo')
