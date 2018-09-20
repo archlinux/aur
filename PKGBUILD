@@ -19,7 +19,7 @@ pkgname="${_pyver}-${_pybase}"
 _pyverother='' #python-'
 fi
 _pybase="${_pybase//-/}"
-pkgver='3.14.5'
+pkgver='3.14.6'
 pkgrel='1'
 pkgdesc='The API and CLI tools that provide access to Amazon Elastic Beanstalk awsebcli'
 arch=('any')
@@ -32,7 +32,7 @@ _srcdir="${_pybase}-${pkgver}"
 # https://bitbucket.org/pypa/pypi/issues/438/backwards-compatible-un-hashed-package
 # https://bitbucket.org/pypa/pypi/issues/447/direct-links-of-packages-gone
 source=("https://files.pythonhosted.org/packages/source/${_pybase: 0:1}/${_pybase}/${_pybase}-${pkgver}.tar.gz")
-sha256sums=('a6fb67a9f6fc32c3d64af989bf67403d570207db12f012745f5c03bf7e62ee66')
+sha256sums=('b2dff9efbd83979b8050a95803eb88b0902660d926eae31e3a0bfe0836c2d318')
 
 # Convert python requires to PKGBUILD depends
 # $1: prefix python- or python2-
@@ -44,7 +44,7 @@ _fn_pydepends() {
   # Paste in from setup.py. This function does NOT work in zsh.
 local _requires="
 requires = [
-    'botocore<1.12',
+    'botocore>=1.12.1,<1.13',
     'cement==2.8.2',
     'colorama>=0.3.9,<0.4.0',  # use the same range that 'docker-compose' uses
     'pathspec==0.5.5',
@@ -53,8 +53,8 @@ requires = [
     'setuptools >= 20.0',
     'semantic_version == 2.5.0',
     'six == 1.11.0',
-    'tabulate == 0.7.5',
     'termcolor == 1.1.0',
+    'urllib3>=1.21.1,<1.23'
     #found further down in setup.py
     'docker-compose >= 1.21.2, < 1.22.0',
     'blessed>=1.9.5',
