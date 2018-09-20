@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libraw-git
-pkgver=0.18.7.r211.g0df5490
+pkgver=0.19.0_Beta6.r45.g06028d0
 pkgrel=1
 pkgdesc="A library for reading RAW files from digital cameras"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ pkgver() {
   _tag=$(git tag -l --sort -v:refname | head -n1)
   _rev=$(git rev-list --count $_tag..HEAD)
   _hash=$(git rev-parse --short HEAD)
-  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash"
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/-/_/g'
 }
 
 build() {

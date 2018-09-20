@@ -1,6 +1,6 @@
 pkgbase = libraw-git
 	pkgdesc = A library for reading RAW files from digital cameras
-	pkgver = 0.18.7.r211.g0df5490
+	pkgver = 0.19.0_Beta6.r45.g06028d0
 	pkgrel = 1
 	url = https://www.libraw.org/
 	arch = i686
