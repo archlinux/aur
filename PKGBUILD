@@ -3,7 +3,7 @@
 
 pkgname=lanshare
 pkgver=1.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="LAN Share is a cross platform local area network file transfer application, built using Qt GUI framework."
 arch=('x86_64')
 url="https://github.com/abdularis/LAN-Share"
@@ -33,10 +33,10 @@ package() {
 
   mkdir -p "$pkgdir/usr/share/applications"
   sed -i '$ d' LANShare.desktop
-  install -Dm 0755  LANShare.desktop "$pkgdir/usr/share/applications/LANShare.desktop"
+  install -Dm 644  LANShare.desktop "$pkgdir/usr/share/applications/LANShare.desktop"
 
   mkdir -p "$pkgdir/usr/share/pixmaps"
-  install -Dm 0755 lanshare-icon.png "$pkgdir/usr/share/pixmaps/lanshare-icon.png"
+  install -Dm 644 lanshare-icon.png "$pkgdir/usr/share/pixmaps/lanshare-icon.png"
 
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm 644 README  "${pkgdir}/usr/share/doc/${pkgname}/README"

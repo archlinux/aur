@@ -1,7 +1,7 @@
 pkgbase = lanshare
 	pkgdesc = LAN Share is a cross platform local area network file transfer application, built using Qt GUI framework.
 	pkgver = 1.2.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/abdularis/LAN-Share
 	arch = x86_64
 	license = GPL
