@@ -1,5 +1,7 @@
---- .env	2018-07-12 12:10:14.679534090 +0200
-+++ .env	2018-07-12 12:19:46.984580164 +0200
+diff --git a/.env b/.env
+index 475df85..4dfbb0e 100644
+--- a/.env
++++ b/.env
 @@ -12,7 +12,7 @@
  
  ## Web vault settings
@@ -9,3 +11,17 @@
  
  ## Controls if new users can register
  # SIGNUPS_ALLOWED=true
+@@ -42,9 +42,10 @@
+ # ROCKET_PORT=8000
+ # ROCKET_TLS={certs="/path/to/certs.pem",key="/path/to/key.pem"}
+ 
+-## Mail specific settings, if SMTP_HOST is specified, SMTP_USERNAME and SMTP_PASSWORD are mandatory
++## Mail specific settings, if SMTP_HOST is specified, SMTP_FROM, SMTP_USERNAME and SMTP_PASSWORD are mandatory
+ # SMTP_HOST=smtp.domain.tld
+ # SMTP_PORT=587
+ # SMTP_SSL=true
++# SMTP_FROM=email-adress@domain.tld
+ # SMTP_USERNAME=username
+-# SMTP_PASSWORD=password
+\ No newline at end of file
++# SMTP_PASSWORD=password
