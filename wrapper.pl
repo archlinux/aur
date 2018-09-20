@@ -14,8 +14,6 @@ use File::Basename;
 use POSIX qw(locale_h);
 use locale;
 
-use version;
-
 use Cwd 'abs_path';
 use File::Basename;
 
@@ -162,6 +160,34 @@ sub bold {
     return "\033[1m$_[0]\033[0m";
 }
 
+###
+# Transform the version in a integer
+#
+# @param String vA.B.C
+#
+# @return Int   Integer (10000*A + 100 *B + C)
+sub version {
+    # Remove the first character
+    my @tmp = split //, $_[0];
+    shift @tmp;
+    my $ver = join '', @tmp;
+
+    # Parse the 3 values
+    my ($a, $b, $c)= split /\./, $ver;
+    return 10000*$a + 100*$b + $c;
+}
+
+# ----------- Bypass Check priority ------------ #
+for(my $i=0; $i < $#ARGV+1; $i++) {
+    my $arg = $ARGV[$i];
+
+    # Bypass the check and launch
+    if( $arg eq '--bypass-check' ) {
+        push @warnings, $lang{'bypass'};
+        goto START_SHADOW;
+    }
+}
+
 # ----------- Variables ------------ #
 
 # Messages variables
@@ -193,15 +219,29 @@ my @warnings = ();
 
 my $version = 'Standalone wrapper';
 
-# -------- Update -------- #
+# -------- AppImage -------- #
 if( -d 'opt' ) {
     # AppImage detection
     $isAppImg = 1;
     $version = 'Nightly build';
+}
 
+# ----------- Bypass Check priority ------------ #
+for(my $i=0; $i < $#ARGV+1; $i++) {
+    my $arg = $ARGV[$i];
+
+    # Bypass the check and launch
+    if( $arg eq '--bypass-check' ) {
+        push @warnings, $lang{'bypass'};
+        goto START_SHADOW;
+    }
+}
+
+# -------- Update -------- #
+if( $isAppImg ) {
     if( -f 'shadow-appimage-version' ) {
 
-        # Local version
+        Local version
         open(my $fh, '<:encoding(UTF-8)', 'shadow-appimage-version')
           or die "Could not open file 'shadow-appimage-version' $!";
         $version = <$fh>;
@@ -211,11 +251,11 @@ if( -d 'opt' ) {
 
         if( substr($version, 0, 1) eq 'v' ) {
             # Distant version
-            my $distantVersion = `curl https://gitlab.com/api/v4/projects/7962701/repository/tags | jq -r -c 'map(select(.release!=null))|.[0]|.["release"]|.["tag_name"]'`;
+            my $distantVersion = `wget -q -O - https://gitlab.com/api/v4/projects/7962701/repository/tags | jq -r -c 'map(select(.release!=null))|.[0]|.["release"]|.["tag_name"]'`;
             chomp $distantVersion;
 
             # Update available
-            if( version->parse($version) < version->parse($distantVersion) ) {
+            if( version($version) < version($distantVersion) ) {
                 print "\nNEW UPDATE AVAILABLE: $distantVersion\n";
                 alert('New version of the AppImage', "\nA new version of the AppImage is available on the server ($distantVersion)\n");
             }
@@ -238,12 +278,6 @@ for(my $i=0; $i < $#ARGV+1; $i++) {
     if( $arg eq '--version' ) {
         print "$version\n";
         exit;
-    }
-
-    # Bypass the check and launch
-    if( $arg eq '--bypass-check' ) {
-        push @warnings, $lang{'bypass'};
-        goto START_SHADOW;
     }
 
     # Start directly ClientSDL and stops
@@ -306,7 +340,6 @@ for(my $i=0; $i < $#ARGV+1; $i++) {
 
 }
 
-
 # -------- NVIDIA check -------- #
 if( index(`lspci | grep 'VGA'`, 'NVIDIA') != -1 ) {
 
@@ -315,7 +348,7 @@ if( index(`lspci | grep 'VGA'`, 'NVIDIA') != -1 ) {
 
         # Currently on the NVIDIA GPU
         if( index(`nvidia-smi -L`, 'GPU ') != 1 ) {
-            push @errors, $lang{'vainfo-optimus'};
+            push @warnings, $lang{'vainfo-optimus'};
         }
 
     # Only NVIDIA GPU available
@@ -418,11 +451,11 @@ if( scalar @errors > 0 ) {
     if( $strace ) {
         system("$langF strace -f $pathExec &> /var/tmp/strace_shadowbeta");
 
-    	# Create the compressed archive in the user directory
-    	system('tar -zcvf ~/strace_shadowbeta.tar.gz /var/tmp/strace_shadowbeta');
+	# Create the compressed archive in the user directory
+	system('tar -zcvf ~/strace_shadowbeta.tar.gz /var/tmp/strace_shadowbeta');
 
-    	# Remove the uncompressed strace
-    	system('rm /var/tmp/strace_shadowbeta');
+	# Remove the uncompressed strace
+	system('rm /var/tmp/strace_shadowbeta');
 
     # Start Shadow
     } else {

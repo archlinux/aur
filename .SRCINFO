@@ -1,7 +1,7 @@
 pkgbase = shadow-beta
 	pkgdesc = Shadow launcher
 	pkgver = 0.7.6
-	pkgrel = 7
+	pkgrel = 8
 	url = http://shadow.tech
 	install = INSTALL
 	arch = x86_64
