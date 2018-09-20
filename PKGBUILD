@@ -1,11 +1,12 @@
-# Maintainer: Alvie Zhang <alvie.zhang {AT} gmail {DOT} com>
+# Maintainer: caiye <ye.jingchen[at]gmail[dot]com>
+# Contributor: Alvie Zhang <alvie.zhang {AT} gmail {DOT} com>
 pkgname=meow-proxy-git
-pkgver=r1159.9f97da6
+pkgver=r1164.4dc7bec
 pkgrel=1
-pkgdesc="A fork of MEOW that uses whitelist mode with IPv6 support"
+pkgdesc="A fork of MEOW that uses whitelist mode and bypasses IPv6"
 arch=('i686' 'x86_64')
 url="https://github.com/netheril96/MEOW"
-license=('custom')
+license=('BSD')
 depends=()
 makedepends=('go' 'git')
 conflicts=(meow-proxy)
@@ -48,5 +49,5 @@ package() {
     install -Dm755 "$srcdir/MEOW/MEOW" "$pkgdir/usr/bin/meow"
     install -Dm644 meow@.service ${pkgdir}/usr/lib/systemd/system/meow@.service
     install -Dm644 meow_user.service ${pkgdir}/usr/lib/systemd/user/meow.service
-    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+    install -Dm644 "$srcdir/MEOW/LICENSE" "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
