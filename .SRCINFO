@@ -1,0 +1,20 @@
+pkgbase = hnsd-git
+	pkgdesc = SPV resolver daemon for the Handshake network. Written in C for speed/size/embedability.
+	pkgver = 0.0.0.895d89c
+	pkgrel = 1
+	url = http://handshake.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	depends = libuv
+	depends = unbound
+	provides = hnsd
+	conflicts = hnsd
+	source = hnsd-git::git+https://github.com/handshake-org/hnsd.git
+	md5sums = SKIP
+
+pkgname = hnsd-git
+
