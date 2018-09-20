@@ -1,6 +1,6 @@
 pkgbase = aurs
 	pkgdesc = An AUR helper written in Rust
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://gitlab.com/hpdeifel/aurs
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = aurs
 	depends = ranger
 	depends = git
 	depends = pacman
-	source = aurs-0.4.1.tar.gz::https://gitlab.com/hpdeifel/aurs/repository/v0.4.1/archive.tar.gz
-	sha256sums = efd27c456d1517e28d3305c14a5e4ded4e87a9fbb53198f8a51ad82890ef9e33
+	source = aurs-0.4.2.tar.gz::https://gitlab.com/hpdeifel/aurs/repository/v0.4.2/archive.tar.gz
+	sha256sums = 25a3617e7a870ea5ba7e86622391207eb9c9d00618952a100b3520e1bac54e8a
 
 pkgname = aurs
 
