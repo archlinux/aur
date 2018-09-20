@@ -1,7 +1,7 @@
 pkgbase = openxenmanager-git
 	pkgdesc = An opensource multiplatform clone of Citrix XenCenter
-	pkgver = r227.ea4f348
-	pkgrel = 2
+	pkgver = r292.1cb5c1c
+	pkgrel = 1
 	url = https://github.com/OpenXenManager/openxenmanager
 	arch = any
 	license = GPL2
@@ -17,9 +17,7 @@ pkgbase = openxenmanager-git
 	conflicts = python2-gtkchart-git
 	options = !emptydirs
 	source = openxenmanager-git::git+https://github.com/OpenXenManager/openxenmanager.git
-	source = openxenmanager.desktop
 	sha1sums = SKIP
-	sha1sums = b4505449742ddfb2fceacd6c1eca713988c608e9
 
 pkgname = openxenmanager-git
 
