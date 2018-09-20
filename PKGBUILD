@@ -2,7 +2,7 @@
 # Maintainer: Chrys <chrys@linux-a11y.org>
 
 pkgname='fenrir'
-pkgver=1.9.3.post1
+pkgver=1.9.3
 pkgrel=1
 pkgdesc='A user space console screen reader written in python3'
 arch=('any')
@@ -21,18 +21,15 @@ makedepends=('python-setuptools')
 provides=('fenrir')
 conflicts=('fenrir')
 backup=('etc/fenrirscreenreader/settings/settings.conf')
-install="$pkgname".install
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}-screenreader/${pkgname}-screenreader-${pkgver}.tar.gz"
-  'fenrir.install'
+source=("https://github.com/chrys87/${pkgname}/archive/${pkgver}.tar.gz"
   'fenrirscreenreader.service')
-md5sums=('5852a79aa71a3ef4e86448878743d299'
-         'c6a68679e6f1a23d4054d0209ba5210a'
+md5sums=('59aefa92a2f870d6da26024d960f4e53'
          '0c2d1bd344b53d1fa5de6c49455b5a4f')
 
 package() {
   install -d "$pkgdir/usr/lib/systemd/system/"
   install -Dm644 fenrirscreenreader.service "$pkgdir/usr/lib/systemd/system/fenrirscreenreader.service"
-cd "${srcdir}/${pkgname}-screenreader-${pkgver}"
+cd "${srcdir}/${pkgname}-${pkgver}"
   python setup.py install --force-settings --root="${pkgdir}/" --optimize=1
 }
 
