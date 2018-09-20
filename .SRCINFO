@@ -10,7 +10,7 @@ pkgbase = gnome-shell-extension-topicons-plus-git
 	depends = gnome-shell
 	provides = gnome-shell-extension-topicons-plus
 	conflicts = gnome-shell-extension-topicons-plus
-	source = git+https://github.com/jwrdegoede/TopIcons-plus.git
+	source = git+https://github.com/huttli/TopIcons-plus.git
 	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-topicons-plus-git

@@ -2,7 +2,7 @@
 # Contributor: surefire@cryptomile.net
 
 pkgname=gnome-shell-extension-topicons-plus-git
-pkgver=21+1+ga41fad7
+pkgver=21+17+gf9f2ba0
 pkgrel=1
 pkgdesc="Shows legacy tray icons on top."
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('git')
 conflicts=('gnome-shell-extension-topicons-plus')
 provides=('gnome-shell-extension-topicons-plus')
 groups=('gnome-shell-extensions')
-source=("git+https://github.com/jwrdegoede/TopIcons-plus.git")
+source=("git+https://github.com/huttli/TopIcons-plus.git")
 sha256sums=('SKIP')
 
 pkgver() {
