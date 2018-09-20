@@ -1,0 +1,18 @@
+pkgbase = ruby-markdownlint
+	pkgdesc = Style checker/lint tool for markdown files
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/markdownlint/markdownlint
+	arch = any
+	license = Ruby
+	makedepends = ruby-rdoc
+	depends = ruby-kramdown
+	depends = ruby-mixlib-config
+	depends = ruby-mixlib-cli
+	noextract = mdl-0.5.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/mdl-0.5.0.gem
+	sha1sums = a91595da3f7f6f0888f62d8726351f9d0c828726
+
+pkgname = ruby-markdownlint
+
