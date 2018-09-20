@@ -1,6 +1,6 @@
 pkgbase = python-exploitable-git
 	pkgdesc = GDB extension that classifies Linux application bugs by severity
-	pkgver = v1.32.r37.g35b742d
+	pkgver = 1.32.r37.g35b742d
 	pkgrel = 1
 	url = https://github.com/jfoote/exploitable
 	arch = any
