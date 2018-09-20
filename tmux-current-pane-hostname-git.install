@@ -1,0 +1,6 @@
+post_install() {
+  echo
+  echo ">>> Add this line to the bottom of your tmux.conf:"
+  echo "run-shell /usr/share/tmux/current_pane_hostname.tmux"
+  echo
+}

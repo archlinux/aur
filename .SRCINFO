@@ -1,0 +1,14 @@
+pkgbase = tmux-current-pane-hostname-git
+	pkgdesc = Tmux plugin that enables displaying hostname and user of the current pane in your status bar
+	pkgver = r10.845660a
+	pkgrel = 1
+	url = https://github.com/soyuka/tmux-current-pane-hostname
+	install = tmux-current-pane-hostname-git.install
+	arch = x86_64
+	license = MIT
+	depends = tmux
+	source = tmux-current-pane-hostname-git::git+https://github.com/soyuka/tmux-current-pane-hostname.git
+	sha256sums = SKIP
+
+pkgname = tmux-current-pane-hostname-git
+
