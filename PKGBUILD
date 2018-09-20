@@ -4,7 +4,7 @@
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-librsvg
-pkgver=2.44.2
+pkgver=2.44.3
 pkgrel=1
 pkgdesc="A SVG viewing library (mingw-w64)"
 arch=('any')
@@ -23,8 +23,8 @@ makedepends=('mingw-w64-configure'
 options=('!strip' 'staticlibs' '!buildflags')
 source=("https://download.gnome.org/sources/librsvg/${pkgver%.*}/librsvg-${pkgver}.tar.xz"
         "makefile-fix.patch")
-sha256sums=('4eec96cc53ed499417dac3db9b4604f80a76f377f8f791641c458df1d7a3631f'
-            '5f8a6c2ce5e1b22f6f9dd3ff5846daaf7fb0d1682faa035dafcc6b9f044cf256')
+sha256sums=('b147e3ef863030066887ecd303d21fdce2f9b967e253052bbb7b89ae250e928e'
+            'c6d5e1d01fc7ab707e8404bd2af9a8f83742e75a979d6a0c6877501c3228773d')
 
 prepare() {
   cd ${srcdir}
