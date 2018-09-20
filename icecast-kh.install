@@ -8,12 +8,14 @@ post_install() {
   fi
 
   if getent passwd icecast &> /dev/null ; then
-    usermod -s /bin/false -c "icecast user" -d /usr/share/icecast -u 88 -g icecast icecast &> /dev/null
+    usermod -s /bin/false -c "icecast user" -d /var/lib/icecast -u 88 -g icecast icecast &> /dev/null
   else
-    useradd -s /bin/false -c "icecast user" -d /usr/share/icecast -u 88 -g icecast -r icecast &> /dev/null
+    useradd -s /bin/false -c "icecast user" -d /var/lib/icecast -u 88 -g icecast -r icecast &> /dev/null
   fi
   # create the logs folder
   install -do88 -g19 -m0755 /var/log/icecast
+  # create folder in /var/lib/
+  install -do88 -g88 -m0755 /var/lib/icecast
 }
 
 # arg 1:  the new package version
