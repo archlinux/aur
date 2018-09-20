@@ -1,6 +1,6 @@
 # Maintainer:  JP-Ellis <josh@jpellis.me>
 pkgname=papis
-pkgver=0.7.1
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="Papis is a powerful and highly extensible command-line based document and bibliography manager."
 arch=('any')
@@ -26,7 +26,7 @@ depends=('python'
         )
 optdepends=()
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('fd99d085b4dc593b2631e26bfa90c2c9a2fef6a6b3363e4b60c9b0b7704dd28b')
+sha256sums=('e091da32eb004ee1e044d592851a74e1d48980befee9a1480f7c826f06e91e4f')
 noextract=()
 
 build() {
