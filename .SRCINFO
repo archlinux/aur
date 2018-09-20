@@ -1,0 +1,16 @@
+pkgbase = disttask
+	pkgdesc = Provides the ability to distribute a task across a fixed number of processes, for better utilization of multiprocessing
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = http://github.com/kata198/disttask
+	arch = any
+	license = LGPLv2
+	makedepends = python-setuptools
+	makedepends = python
+	depends = python-setuptools
+	depends = python
+	source = https://github.com/kata198/disttask/archive/2.4.0.tar.gz
+	sha512sums = f969304bcdfaeef64a33e736dee9383a3658306d45a234da1b801e1e4434a7a28bb23726fc7390688c1c96336e1fde8d76f0ad65bd1a508257e56cd4260f42df
+
+pkgname = disttask
+
