@@ -2,13 +2,13 @@
 # Contributor: Benjamin Asbach <archlinux-aur.pkgname@impl.it>
 pkgname=apache-netbeans
 pkgver=9.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Apache Netbeans IDE development platform"
 arch=('i686' 'x86_64')
 url="https://netbeans.apache.org"
 license=('Apache')
 options=('!strip')
-depends=('java-runtime>=9')
+depends=('java-runtime>=8')
 provides=('apache-netbeans')
 conflicts=('apache-netbeans')
 source=("http://www-eu.apache.org/dist/incubator/netbeans/incubating-netbeans-java/incubating-9.0/incubating-netbeans-java-9.0-bin.zip"
