@@ -1,19 +1,17 @@
 pkgbase = lci-git
 	pkgdesc = A simple and fast 1.2 lolcode interpreter written in C.
-	pkgver = 0.10.5.r10.g75b2b31
+	pkgver = 0.10.5.r27.g6762b72
 	pkgrel = 1
-	url = http://lolcode.org/
-	changelog = .CHANGELOG
+	url = https://lolcode.org/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = cmake
 	depends = glibc
-	optdepends = gtksourceview3-lolcode: syntax highlight
-	provides = lci
+	optdepends = gtksourceview-lolcode: syntax highlight
 	conflicts = lci
-	source = lci-git::git://github.com/justinmeza/lci.git
+	source = lci::git://github.com/justinmeza/lci.git
 	sha512sums = SKIP
 
 pkgname = lci-git
