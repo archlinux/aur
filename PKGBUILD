@@ -10,7 +10,7 @@ license=(custom)
 depends=(jupyter-notebook)
 makedepends=(python-setuptools)
 source=($pkgname-$pkgver.tar.gz::"https://github.com/jupyterlab/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('563879f5fd5836af5ef41cf252ccab2a5f9cb2291a90372504e2bf33e47d634e')
+sha256sums=('ccd6ac15206822f03d2419d97fa7ed7e89c1a0efbe2351ebb1d5a98985e236d6')
 
 build() {
   cd $pkgname-$pkgver
