@@ -1,6 +1,6 @@
 pkgbase = monacoin-qt
 	pkgdesc = peer-to-peer network based digital currency - Qt GUI
-	pkgver = 0.15.1
+	pkgver = 0.16.3
 	pkgrel = 1
 	url = https://monacoin.org/en/index.html
 	install = monacoin.install
@@ -26,11 +26,9 @@ pkgbase = monacoin-qt
 	provides = monacoin-qt
 	provides = monacoind
 	provides = monacoin-tx
-	source = https://github.com/monacoinproject/monacoin/archive/monacoin-0.15.1.tar.gz
-	source = 0001-rename-libbitcoinconsensus-to-libmonacoinconsensus.patch
+	source = https://github.com/monacoinproject/monacoin/archive/monacoin-0.16.3.tar.gz
 	source = monacoin-qt.desktop
-	sha256sums = ceadfafc4721226521171188d8842858af0ea8527e559182f38a2491e177667b
-	sha256sums = 458444ae19977bacb20842f26a8662a9d80d6aaa52b0df91ecf9bc83dac22ec0
+	sha256sums = 15d81a215b7b42df50ff94353c2617a365797102813bc7812ef03d564e084580
 	sha256sums = 4af25bac0076c6d2060832b66819741d3e049a71d6ad5f1a26a2700415d23cfc
 
 pkgname = monacoin-qt
