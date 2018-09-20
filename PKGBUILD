@@ -3,19 +3,19 @@
 # Upstream: https://github.com/kubernetes/minikube
 
 pkgname=('minikube-git')
-pkgver=v0.25.0.r96.ga000c35e1
+pkgver=0.28.2.r55.gbed9aabaf
 pkgrel=1
 pkgdesc='Minikube is a tool that makes it easy to run Kubernetes locally.'
 arch=('x86_64')
 url='https://github.com/kubernetes/minikube'
 license=('apache')
-depends=('glibc')
+depends=()
 optdepends=(
-    'kubectl-bin: to manage the cluster'
+    'kubectl: to manage the cluster'
     'virtualbox'
     'docker-machine-driver-kvm2'
 )
-makedepends=('git' 'go' 'make')
+makedepends=('git' 'go')
 provides=('minikube')
 conflicts=('minikube')
 source=("$pkgname::git+https://github.com/kubernetes/minikube.git")
@@ -23,7 +23,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
-    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 prepare() {
