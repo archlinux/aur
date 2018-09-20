@@ -1,6 +1,6 @@
 pkgbase = gdm-plymouth
 	pkgdesc = Gnome Display Manager with Plymouth support.
-	pkgver = 3.28.2
+	pkgver = 3.30.0
 	pkgrel = 1
 	url = http://www.gnome.org
 	arch = x86_64
@@ -17,11 +17,13 @@ pkgbase = gdm-plymouth
 	depends = xorg-server
 	depends = xorg-server-xwayland
 	depends = xorg-xhost
-	source = https://gitlab.gnome.org/GNOME/gdm/-/archive/3.28.2/gdm-3.28.2.tar.gz
+	source = https://gitlab.gnome.org/GNOME/gdm/-/archive/3.30.0/gdm-3.30.0.tar.gz
 	source = 0002-Xsession-Don-t-start-ssh-agent-by-default.patch
+	source = 0003-autogoo-make-udev-rules-dir-configurable.patch
 	source = gdm.sysusers
-	sha256sums = 58886a0e544e1b4ecf817ab8a9ab8f12770cfc2408417dbe42b4973a032f4616
+	sha256sums = b2064b9dfb0d55a7a398478a94c9f342e0098340324cddad5beb1aa57a0aa795
 	sha256sums = 63f99db7623f078e390bf755350e5793db8b2c4e06622caf42eddc63cd39ecca
+	sha256sums = 86dd6513fece2daac1d3e89c740162e2046e36be7aae255fa30115cbb6eeda12
 	sha256sums = 6d9c8e38c7de85b6ec75e488585b8c451f5d9b4fabd2a42921dc3bfcc4aa3e13
 
 pkgname = gdm-plymouth
