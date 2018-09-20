@@ -10,7 +10,7 @@ url="https://github.com/KiCad/kicad-symbols"
 license=('GPL')
 makedepends=('cmake' 'git')
 conflicts=('kicad-library-bzr' 'kicad-library-git' 'kicad-library-3d' 'kicad-library' 'kicad-symbols')
-provices=('kicad-symbols')
+provides=('kicad-symbols')
 source=("git://github.com/KiCad/kicad-symbols.git")
 md5sums=('SKIP')
 
