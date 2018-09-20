@@ -1,0 +1,13 @@
+pkgbase = gnome-shell-extension-topicons-plus-huttli-git
+	pkgdesc = Moves legacy tray icons to the top panel(Huttli Fokr)
+	pkgver = v19.r73.gf9f2ba0
+	pkgrel = 1
+	url = https://github.com/huttli/TopIcons-plus
+	arch = any
+	license = GPL2
+	depends = gnome-shell
+	source = gnome-shell-extension-topicons-plus-huttli-git::git+https://github.com/huttli/TopIcons-plus.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-topicons-plus-huttli-git
+
