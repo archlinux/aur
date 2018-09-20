@@ -1,13 +1,11 @@
-# Maintainer: Aaron Miller <aaronm [at] cldtk [dot] com>
-# Contributor: Anthony Boccia <aboccia [at] boccia [dot] me>
-# Contributor: Griffin Smith <wildgriffin [at] gmail [dot] com>
-# Contributor: Bill Durr <billyburly [at] gmail [dot] com>
+# Maintainer: Aaron Miller <aaronm [at] cldtk [dot] com> Contributor: Anthony Boccia <aboccia [at] boccia [dot] me> Contributor: Griffin Smith <wildgriffin [at] gmail [dot] com> Contributor: Bill Durr 
+# <billyburly [at] gmail [dot] com>
 pkgname=crashplan-pro
 _pkgname=crashplan
-pkgver=6.8.2
-_pkgtimestamp=1525200006682
-_pkgbuild=369
-pkgrel=2
+pkgver=6.8.3
+_pkgtimestamp=1525200006683
+_pkgbuild=951
+pkgrel=1
 pkgdesc="An business online/offsite backup solution"
 url="http://www.crashplan.com/business"
 arch=('x86_64')
@@ -19,7 +17,7 @@ install=crashplan-pro.install
 source=(https://web-lbm-msp.crashplanpro.com/client/installers/CrashPlanSmb_${pkgver}_${_pkgtimestamp}_${_pkgbuild}_Linux.tgz
         crashplan-pro
         crashplan-pro.service)
-sha256sums=('54b7c0cdde1db0dc3dbfd76445574119b84a9cfa6eec81054b55ab4f11c29a16'
+sha256sums=('bc942df5ce525984f99e0eb275c8d8e6613c829ab1fded00138b188a6930ab24'
             'b306d7da0dd41341512ce80ddcfb21bff8a9bb73ab5018696e69d08b89f7f1b6'
             'fd4c80dbd2ea3dcfc9966832a599f1bb310f705f813474d1900c1867ea55155c')
 
