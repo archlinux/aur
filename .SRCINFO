@@ -1,0 +1,12 @@
+pkgbase = python-flake8-mypy
+	pkgdesc = A plugin for flake8 integrating mypy.
+	pkgver = 17.8.0
+	pkgrel = 1
+	url = https://github.com/ambv/flake8-mypy
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-pip
+
+pkgname = python-flake8-mypy
+
