@@ -3,7 +3,7 @@
 
 pkgname=resin-cli
 pkgdesc='Resin.io command line interface'
-pkgver=7.9.3
+pkgver=7.10.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://resin.io/'
@@ -15,7 +15,7 @@ noextract=(${pkgname}-${pkgver}.tgz)
 options=(!strip)
 optdepends=('python: resin-preload')
 optdepends_x86_64=('lib32-glibc: emulated builds')
-sha256sums=('0268aa6d5a6b0bc3aab5d0e97687f8292b58e57e814d484896608e021b0a0758')
+sha256sums=('914dbc89490a91127dd2f0b0dd4020ace45620965ec80df100e320ffca2cedc5')
 
 package() {
   npm install --global --only=production --user root --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
