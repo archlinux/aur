@@ -1,12 +1,12 @@
 pkgbase = apache-netbeans
 	pkgdesc = Apache Netbeans IDE development platform
 	pkgver = 9.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://netbeans.apache.org
 	arch = i686
 	arch = x86_64
 	license = Apache
-	depends = java-runtime>=9
+	depends = java-runtime>=8
 	provides = apache-netbeans
 	conflicts = apache-netbeans
 	options = !strip
