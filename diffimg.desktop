@@ -1,10 +1,10 @@
 [Desktop Entry]
 Encoding=UTF-8
 Type=Application
-Name=DiffImg
+Name=Diffimg
 Comment=Simple image comparison tool
-Exec=DiffImg
-Icon=/usr/share/pixmaps/res/diffimg.ico
+Exec=Diffimg
+Icon=/usr/share/pixmaps/Diffimg/Diffimg.ico
 Terminal=false
 StartupNotify=false
 Categories=Application;Graphics
