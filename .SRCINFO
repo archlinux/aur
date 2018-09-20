@@ -1,0 +1,12 @@
+pkgbase = evostream-systemd
+	pkgdesc = EvoStream Media Server SystemD service
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	makedepends = git
+	source = git+https://github.com/tomi77/ems-systemd.git
+	md5sums = SKIP
+
+pkgname = evostream-systemd
+
