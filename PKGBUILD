@@ -9,7 +9,7 @@ pkgdesc="A stand-alone ClojureScript REPL"
 arch=('x86_64')
 url="http://planck-repl.org/"
 depends=('webkit2gtk' 'libzip' 'zlib')
-makedepends=('git' 'java-environment' 'cmake' 'maven' 'leiningen')
+makedepends=('git' 'java-environment' 'cmake' 'maven' 'leiningen' 'vim')
 license=('EPL-1.0')
 source=(
   "$pkgname::git+https://github.com/mfikes/planck"

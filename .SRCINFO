@@ -10,6 +10,7 @@ pkgbase = planck-git
 	makedepends = cmake
 	makedepends = maven
 	makedepends = leiningen
+	makedepends = vim
 	depends = webkit2gtk
 	depends = libzip
 	depends = zlib
