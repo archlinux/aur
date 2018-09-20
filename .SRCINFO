@@ -1,7 +1,7 @@
 pkgbase = opsu-git
 	pkgdesc = An open source osu!-client written in Java.
-	pkgver = 0.16.0.r0.gcf52c2f
-	pkgrel = 2
+	pkgver = 0.16.1.r4.ge9676f81
+	pkgrel = 1
 	url = https://itdelatrisu.github.io/opsu/
 	install = opsu.install
 	arch = any
