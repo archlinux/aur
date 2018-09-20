@@ -2,13 +2,13 @@
 # Contributor: Daniel Plaza <daniel.plaza.espi@gmail.com>
 
 _basepkg=ccid
-pkgname=${_basepkg}-morpho
+pkgname=ccid-morpho
 pkgver=1.4.3
 pkgrel=1
 epoch=1
 pkgdesc="A generic USB Chip/Smart Card Interface Devices driver (SAFRAN MORPHO YpsID Token)"
 arch=('i686' 'x86_64')
-url="http://pcsclite.alioth.debian.org/ccid.html"
+url="https://ccid.apdu.fr/"
 license=('LGPL' 'GPL')
 makedepends=('pkg-config')
 depends=('pcsclite' 'libusb' 'flex')
@@ -16,8 +16,8 @@ optdepends=('pcsc-tools')
 provides=("${_basepkg}=${pkgver}")
 conflicts=(${_basepkg})
 install="$pkgname.install"
-source=("https://alioth.debian.org/frs/download.php/file/3535/ccid-${pkgver}.tar.bz2"
-	"http://ludovic.rousseau.free.fr/softwares/pcsc-lite/ccid-morpho-v7-2.patch")
+source=("https://alioth-archive.debian.org/releases/pcsclite/${_basepkg}/${_basepkg}${pkgver}/${_basepkg}-${pkgver}.tar.bz2"
+        "http://ludovic.rousseau.free.fr/softwares/pcsc-lite/ccid-morpho-v7-2.patch")
 md5sums=('a269baa572be6f93ec57da279c7ec276'
          '70c25b7c28392e2293e472e0fab4d263')
 
