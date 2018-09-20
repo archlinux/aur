@@ -1,7 +1,7 @@
 # Contributor: dorkster <jajdorkster@gmail.com>
 
 pkgname=flare-game-git
-pkgver=v1.07.r0.g34a7b6ed
+pkgver=v1.08.r0.g5b459358
 pkgrel=1
 pkgdesc="Fantasy action RPG using the FLARE engine - Git version"
 url="http://www.flarerpg.org/"
@@ -11,7 +11,7 @@ makedepends=('git>=1.7.10-1' 'cmake')
 depends=('flare-engine-git')
 conflicts=('flare-game')
 replaces=('flare-game')
-source=("git://github.com/clintbellanger/flare-game.git")
+source=("git://github.com/flareteam/flare-game.git")
 sha1sums=('SKIP')
 
 pkgver() {
