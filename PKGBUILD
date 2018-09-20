@@ -1,8 +1,8 @@
 # Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
 
 pkgname=pulse-secure
-pkgver=9.0r1.0_b739
-pkgrel=2
+pkgver=9.0r2.0_b819
+pkgrel=1
 pkgdesc='Pulse Connect Secure (PCS) Client'
 arch=(x86_64)
 license=(custom)
@@ -14,8 +14,8 @@ source=(pulseUi.sh
 source_x86_64=("http://ccnet.ntu.edu.tw/vpn/Download/ps-pulse-linux-${pkgver/_/-}-centos-rhel-64-bit-installer.rpm")
 md5sums=('d81155461e2666c2b9d669c1b76f85fe'
          '261848a28201e5386ec4bf587473a48b'
-         '981766950d049c87bddb16fa5e7cb3b9')
-md5sums_x86_64=('6739ff87ec6948c5dacdbe84971c522b')
+         '0799902854ece4473d2a23c67c089630')
+md5sums_x86_64=('770c52e57bedcfa8139e5f41db47695f')
 optdepends=('webkitgtk: for pulseUi frontend'
             'psmisc: for pulsesvc -K')
 conflicts=(pulse-connect-secure)
