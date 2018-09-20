@@ -1,0 +1,13 @@
+pkgbase = python-autoflake
+	pkgdesc = Removes unused imports and unused variables
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/myint/autoflake
+	arch = any
+	license = Expat
+	license = License
+	makedepends = python
+	makedepends = python-pip
+
+pkgname = python-autoflake
+
