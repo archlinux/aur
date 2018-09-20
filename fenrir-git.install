@@ -1,7 +1,0 @@
-post_upgrade() {
-fold -s << EOF
-The fenrir systemd service file has changed.
-The new systemd service file is called fenrirscreenreader.service. Enable it with the command:
-# systemctl enable fenrirscreenreader.service
-EOF
-}

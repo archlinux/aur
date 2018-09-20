@@ -3,7 +3,7 @@
 
 _gitname='fenrir'
 pkgname="${_gitname}-git"
-pkgver=0.0
+pkgver=2.rge16c9a8e
 pkgrel=1
 pkgdesc='A user space console screen reader written in python3'
 arch=('any')
@@ -23,13 +23,10 @@ makedepends=('git')
 provides=('fenrir')
 conflicts=('fenrir')
 backup=('etc/fenrirscreenreader/settings/settings.conf')
-install="$pkgname".install
 source=("git+https://github.com/chrys87/${_gitname}.git"
-  'fenrirscreenreader.service'
-  'fenrir-git.install')
+  'fenrirscreenreader.service')
 md5sums=('SKIP'
-         '0c2d1bd344b53d1fa5de6c49455b5a4f'
-         'a0ffeb2a5eb3a4569b65e22239063ff7')
+         '0c2d1bd344b53d1fa5de6c49455b5a4f')
 
 pkgver()
 {
