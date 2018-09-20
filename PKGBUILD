@@ -2,15 +2,16 @@
 
 pkgname=kicad-packages3d-git
 _pkgname=kicad-packages3D
-pkgver=r674.4e34135f
+pkgver=r999.da79a97b
 pkgrel=1
-pkgdesc="Official KiCad 3D model libraries for rendering and MCAD integration"
+pkgdesc="KiCad component 3D model libraries from the official git repo"
 arch=('any')
 url="https://github.com/KiCad/kicad-packages3D"
 license=('GPL')
 options=('!strip')
 makedepends=('cmake' 'git')
-conflicts=('kicad-library-bzr' 'kicad-library-git' 'kicad-library-3d' 'kicad-library')
+conflicts=('kicad-library-bzr' 'kicad-library-git' 'kicad-library-3d' 'kicad-library' 'kicad-packages' 'kicad-packages3d')
+provides=('kicad-packages3d')
 source=("git://github.com/KiCad/kicad-packages3D.git")
 md5sums=('SKIP')
 
@@ -19,10 +20,16 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-package() {
+build() {
   cd "$srcdir"
-
-  mkdir -p "$pkgdir/usr/share/kicad/modules/packages3d"
-
-  cp -r "$srcdir/$_pkgname"/* "$pkgdir/usr/share/kicad/modules/packages3d/"
+  mkdir -p "$srcdir/build/"
+  cd "$srcdir/build"
+  cmake ../${_pkgname} -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
 }
+
+package() {
+  cd "$srcdir/build"
+
+  make DESTDIR="$pkgdir" install
+}
+
