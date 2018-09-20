@@ -1,6 +1,6 @@
 pkgbase = neovim-youcompleteme-core-git
 	pkgdesc = A code-completion engine for Vim
-	pkgver = r2365.459b3e62
+	pkgver = r2393.487b8ab2
 	pkgrel = 2
 	url = https://valloric.github.io/YouCompleteMe/
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = neovim-youcompleteme-core-git
 	depends = neovim
 	depends = boost-libs
 	depends = python>=3.2
+	depends = clang>=6.0
 	depends = python-bottle
 	depends = python-waitress
 	depends = python-frozendict
@@ -19,7 +20,6 @@ pkgbase = neovim-youcompleteme-core-git
 	depends = python-future
 	depends = python-neovim
 	depends = python-regex
-	depends = clang>=6.0
 	optdepends = gocode-git: Go semantic completion
 	optdepends = godef-git: Go semantic completion
 	optdepends = nodejs-tern: JavaScript semantic completion
