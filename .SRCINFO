@@ -7,9 +7,6 @@ pkgbase = diffimg
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	makedepends = qt4
-	makedepends = qwt-qt4
-	makedepends = opencv
 	makedepends = cmake
 	depends = qt4
 	depends = qwt-qt4
@@ -21,3 +18,4 @@ pkgbase = diffimg
 	md5sums = 98d6aae50942ef908313515bdd9b02f4
 
 pkgname = diffimg
+
