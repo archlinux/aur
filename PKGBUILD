@@ -1,7 +1,7 @@
 # $Id$
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=fedora-wallpapers
-pkgver=27
+pkgver=29
 pkgrel=1
 pkgdesc="The default Wallpapers for Fedora, from fedora 8 (Werewolf) to fedora 27."
 arch=("any")
@@ -16,6 +16,8 @@ depends=("beefy-miracle-backgrounds"
   "f25-backgrounds"
   "f26-backgrounds"
   "f27-backgrounds"
+  "f28-backgrounds"
+  "f29-backgrounds"
   "fedorainfinity-backgrounds"
   "goddard-backgrounds"
   "heisenbug-backgrounds"
