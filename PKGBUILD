@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=akira-git
-pkgver=latest
+pkgver=r140.770013b
 pkgrel=1
 pkgdesc="Native Linux App for UI and UX Design built in Vala and Gtk"
 arch=(x86_64)
@@ -17,7 +17,7 @@ sha256sums=(SKIP)
 
 pkgver() {
   cd Akira
-  git describe --long --tags --always | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {

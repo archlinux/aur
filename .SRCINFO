@@ -1,6 +1,6 @@
 pkgbase = akira-git
 	pkgdesc = Native Linux App for UI and UX Design built in Vala and Gtk
-	pkgver = latest
+	pkgver = r140.770013b
 	pkgrel = 1
 	url = https://github.com/Alecaddd/Akira
 	arch = x86_64
