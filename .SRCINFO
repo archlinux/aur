@@ -1,7 +1,7 @@
 pkgbase = londonlaw-git
 	pkgdesc = Clone of the famous Scotland Yard board game with network support.
 	pkgver = 0.3.0_pre2.r1.g35d419f
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/anyc/londonlaw
 	changelog = .CHANGELOG
 	arch = any

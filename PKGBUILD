@@ -4,7 +4,7 @@
 pkgname=londonlaw-git
 _pkgname=${pkgname%-git}
 pkgver=0.3.0_pre2.r1.g35d419f
-pkgrel=3
+pkgrel=4
 pkgdesc="Clone of the famous Scotland Yard board game with network support."
 arch=('any')
 url="https://github.com/anyc/londonlaw"
@@ -21,17 +21,17 @@ sha512sums=('SKIP'
 
 pkgver()
 {
-	cd "${srcdir}/${_pkgname}"
+	cd "${srcdir}/${_pkgname}" || exit
 	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package()
 {
-	cd "${srcdir}"
+	cd "${srcdir}" || exit
 	install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 	
-	cd "${_pkgname}"
-	python2 setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
+	cd "${_pkgname}" || exit
+	python2 setup.py install --root="${pkgdir}" --prefix=/usr --optimize=1
 	
 	# https://lists.archlinux.org/pipermail/aur-general/2011-November/016777.html
 	mkdir -p "${pkgdir}/usr/share/doc/${_pkgname}"
