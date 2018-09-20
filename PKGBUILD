@@ -6,7 +6,7 @@
 
 set -u
 pkgname='codeblocks-svn'
-pkgver=11023
+pkgver=17.12.r11472
 pkgrel=1
 pkgdesc='An open source and cross-platform C/C++ IDE'
 arch=('i686' 'x86_64')
@@ -18,13 +18,15 @@ provides=("codeblocks=${pkgver}")
 conflicts=('codeblocks' 'codeblocks-svn-noplugins')
 #install="${pkgname}.install"
 options=('!libtool')
-source=('codeblocks-svn::svn+svn://svn.code.sf.net/p/codeblocks/code/trunk')
+source=('codeblocks-svn::svn://svn.code.sf.net/p/codeblocks/code/trunk')
 sha256sums=('SKIP')
 
 pkgver() {
   set -u
   cd 'codeblocks-svn'
-  svnversion | tr -d '[A-z]'
+  local _ver="$(sed -n -e 's:^.\+ version \(.\+\)$:\1:p' 'README')" # $() trim trailing newline
+  local _rev="$(svnversion | tr -d '[A-z]')"
+  printf '%s.r%s' "${_ver}" "${_rev}"
   set +u
 }
 
