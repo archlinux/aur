@@ -2,14 +2,14 @@
 pkgname=eksctl
 pkgdesc="A simple CLI tool for creating clusters on Amazon's EKS"
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=("APACHE")
 url="https://eksctl.io"
 provides=('eksctl')
 depends=('kubectl')
 source=("https://github.com/weaveworks/eksctl/releases/download/$pkgver/eksctl_Linux_amd64.tar.gz")
-sha256sums=('3dd3db30bee6b29ce6cf914cad78a0ca50dc0de03fd14685138ac011040df8ec')
+sha256sums=('ad45513ce77a5d88a569591679c7fde1a525fd46b4cc7031ac10f3e8bd3cb5d2')
 
 package() {
   mkdir -p "$pkgdir/usr/bin"
