@@ -1,23 +1,29 @@
 pkgbase = gtksourceview-pkgbuild
-	pkgver = 3
-	pkgrel = 3
+	pkgdesc = PKGBUILD syntax highlight support in GtkSourceView
+	pkgver = 4
+	pkgrel = 1
 	url = https://gitlab.com/rafaelff/gtksourceview-pkgbuild
 	arch = any
 	license = LGPL2.1
-	source = https://gitlab.com/rafaelff/gtksourceview-pkgbuild/-/archive/v3/gtksourceview-pkgbuild-v3.tar.bz2
-	md5sums = d229557b5853e6a343fca524d5b00cdc
+	source = https://gitlab.com/rafaelff/gtksourceview-pkgbuild/-/archive/v4/gtksourceview-pkgbuild-v4.tar.bz2
+	md5sums = df256107db86e50149cb686b2728586f
 
 pkgname = mime-pkgbuild
 	pkgdesc = MIME types for PKGBUILD files
 	depends = shared-mime-info
 
 pkgname = gtksourceview2-pkgbuild
-	pkgdesc = PKGBUILD syntax highlight support in gtksourceview2 for Mousepad and others
+	pkgdesc = PKGBUILD syntax highlight support in gtksourceview2-compliant editors
 	depends = gtksourceview2
 	depends = mime-pkgbuild
 
 pkgname = gtksourceview3-pkgbuild
-	pkgdesc = PKGBUILD syntax highlight support in gtksourceview3 for Gedit 3 and others
+	pkgdesc = PKGBUILD syntax highlight support in gtksourceview3-compliant editors
 	depends = gtksourceview3
+	depends = mime-pkgbuild
+
+pkgname = gtksourceview4-pkgbuild
+	pkgdesc = PKGBUILD syntax highlight support in gtksourceview4-compliant editors
+	depends = gtksourceview4
 	depends = mime-pkgbuild
 
