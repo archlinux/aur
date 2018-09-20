@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=libhandy-git
-pkgver=latest
+pkgver=0.0.3.r4.g2a2fc18
 pkgrel=1
 pkgdesc="A library full of GTK+ widgets for mobile phones"
 url="https://source.puri.sm/Librem5/libhandy"
@@ -16,7 +16,7 @@ md5sums=(SKIP)
 
 pkgver() {
     cd libhandy
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
