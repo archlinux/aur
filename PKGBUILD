@@ -50,6 +50,7 @@ pkgver() {
     head="$(git rev-parse --short HEAD)"
   fi
 
+  release=${release//-/.} # pkgver is not allowed to contain hyphens
   printf "%s.r%s.%s" "${release}" "${count}" "${head}"
 }
 
