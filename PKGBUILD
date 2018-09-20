@@ -41,7 +41,8 @@ prepare(){
 build() {
   cd ${_pkgname}-${pkgver}-src/build
   #qmake-qt4 -recursive INSTALL_PREFIX=/usr diffimg.pro
-  cmake -DCMAKE_INSTALL_PREFIX=${pkgdir}/usr .
+  #cmake -DCMAKE_INSTALL_PREFIX=${pkgdir}/usr .
+  cmake -DCMAKE_INSTALL_PREFIX=/usr .
   #cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}" . #for makechrootpkg -r $CHROOT -- ief
   make
 }
@@ -54,20 +55,20 @@ package() {
   #make DESTDIR="${pkgdir}" INSTALL_ROOT="${pkgdir}" install
   #make INSTALL_ROOT="${pkgdir}" install
 
-  make prefix="${pkgdir}" install
+  make DESTDIR="${pkgdir}" prefix="${pkgdir}" install
 
   # remove cmake's generated file
   rm "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
   # fix name conflicts with graphviz/diffimg
-  #install -Dm755 ./usr/bin/${pkgname} "${pkgdir}"/usr/bin/${_pkgname}
+  #install -Dm755 "./usr/bin/${pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
   mv "${pkgdir}/usr/bin/${pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
-  #install -Dm644 "${pkgdir}/usr/share/man/man1/${pkgname}.1.gz" "${pkgdir}"/usr/share/man/man1/${_pkgname}.1.gz
+  #install -Dm644 "./usr/share/man/man1/${pkgname}.1.gz" "${pkgdir}/usr/share/man/man1/${_pkgname}.1.gz"
   mv "${pkgdir}/usr/share/man/man1/${pkgname}.1.gz" "${pkgdir}/usr/share/man/man1/${_pkgname}.1.gz"
 
-  install -Dm644 ../res/diffimg.ico "$pkgdir"/usr/share/pixmaps/${_pkgname}/${_pkgname}.ico
-  install -Dm644 ../res/diffimg.png "${pkgdir}"/usr/share/pixmaps/${_pkgname}/${_pkgname}.png
+  install -Dm644 "../res/diffimg.ico" "${pkgdir}/usr/share/pixmaps/${_pkgname}/${_pkgname}.ico"
+  install -Dm644 "../res/diffimg.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}/${_pkgname}.png"
   mv "${pkgdir}/usr/share/pixmaps/diffimg.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}/${_pkgname}.png"
 
 }
