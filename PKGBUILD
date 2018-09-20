@@ -23,6 +23,7 @@ package() {
   mkdir -p "${pkgdir}/usr/include/${pkgname}"
   mkdir -p "${pkgdir}/usr/lib/${pkgname}"
   mkdir -p "${pkgdir}/etc/udev/rules.d"
+  mkdir -p "${pkgdir}/etc/ld.so.conf.d"
 
   cp "${srcdir}/${_dir}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
   cp -r "${srcdir}/${_dir}/docs" "${pkgdir}/usr/share/${pkgname}/"
@@ -33,6 +34,7 @@ package() {
   cp -a "${srcdir}/${_dir}/java/." "${pkgdir}/usr/lib/${pkgname}/"
 
   cp "${srcdir}/${_dir}/install/orbbec-usb.rules" "${pkgdir}/etc/udev/rules.d/558-orbbec-usb.rules"
+  echo "/usr/lib/astra-sdk" > "${pkgdir}/etc/ld.so.conf.d/astra-sdk.conf"
 }
 
 # vim:set et sw=2 sts=2:
