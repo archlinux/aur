@@ -2,7 +2,7 @@
 # Contributor: Daniel Plaza <daniel.plaza.espi@gmail.com>
 
 _basepkg=ccid
-pkgname=ccid-morpho
+pkgname=${_basepkg}-morpho
 pkgver=1.4.3
 pkgrel=1
 epoch=1

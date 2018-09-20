@@ -3,7 +3,7 @@ pkgbase = ccid-morpho
 	pkgver = 1.4.3
 	pkgrel = 1
 	epoch = 1
-	url = http://pcsclite.alioth.debian.org/ccid.html
+	url = https://ccid.apdu.fr/
 	install = ccid-morpho.install
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = ccid-morpho
 	optdepends = pcsc-tools
 	provides = ccid=1.4.3
 	conflicts = ccid
-	source = https://alioth.debian.org/frs/download.php/file/3535/ccid-1.4.3.tar.bz2
+	source = https://alioth-archive.debian.org/releases/pcsclite/ccid/ccid1.4.3/ccid-1.4.3.tar.bz2
 	source = http://ludovic.rousseau.free.fr/softwares/pcsc-lite/ccid-morpho-v7-2.patch
 	md5sums = a269baa572be6f93ec57da279c7ec276
 	md5sums = 70c25b7c28392e2293e472e0fab4d263
