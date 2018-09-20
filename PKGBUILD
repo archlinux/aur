@@ -1,7 +1,7 @@
 # Maintainer: Ward Segers <w@rdsegers.be>
 
 pkgname=nordselect
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Select the ideal NordVPN server"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('curl')
 makedepends=('cargo')
 provides=('nordselect')
 source=("https://github.com/editicalu/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=("1988746407a9c224390f36385668b0bc02bc58b5c3ce467a32c61a2d82dbcf662489195b9f9e8be477cb39070f91d71238b834050607b33b58085c291163c06e")
+sha512sums=("820610fd2b9063bed3ae5939d1ec1562979c5b7d0bb3f0db30b1d1aba731a3b3e75481fcf9cdbfd70f0ac02f16178454f6633341045eb2eb4b87a36e3a74dc06")
 validpgpkeys=("CC0B7CE9604A8A91F0D70B778489DB248465FDD7")
 
 build() {
