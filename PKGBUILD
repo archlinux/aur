@@ -5,7 +5,7 @@
 
 pkgname=shadow-beta
 pkgver=0.7.6
-pkgrel=7
+pkgrel=8
 pkgdesc="Shadow launcher"
 arch=('x86_64')
 url="http://shadow.tech"
@@ -38,19 +38,21 @@ package() {
 	chmod -R g-w opt
 	mv opt "${pkgdir}"
 
+	# Move the source directory
+	cd ../
+
 	### Move the Wrapper
-	chmod g-w ../wrapper.pl
-	chmod +x ../wrapper.pl
-	mv ../wrapper.pl "${pkgdir}/opt/Shadow Beta/shadow-wrapper.pl"
+	chmod g-w wrapper.pl
+	chmod +x wrapper.pl
+	mv wrapper.pl "${pkgdir}/opt/Shadow Beta/shadow-wrapper.pl"
 
 	### Move the Report.pl
-	chmod g-w ../report.pl
-	chmod +x ../report.pl
-	mv ../report.pl "${pkgdir}/opt/Shadow Beta/report.pl"
+	chmod g-w report.pl
+	chmod +x report.pl
+	mv report.pl "${pkgdir}/opt/Shadow Beta/report.pl"
 
 	### Edit launcher
-	sed '/^Exec/ d' < "${pkgdir}/usr/share/applications/shadow-beta.desktop" > shadow-beta.desktop
-	echo "Exec=\"/opt/Shadow Beta/shadow-wrapper.pl\" %U" >> shadow-beta.desktop
+	sed -e 's/^Exec=.*$/Exec="\/opt\/Shadow Beta\/shadow-wrapper.pl"/g' -e 's/^Categories=.*$/Categories=Games;Utility;Virtualization/g' "${pkgdir}/usr/share/applications/shadow-beta.desktop" > shadow-beta.desktop
 	chmod g-w shadow-beta.desktop
 
 	rm "${pkgdir}/usr/share/applications/shadow-beta.desktop"
