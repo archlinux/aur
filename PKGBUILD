@@ -1,7 +1,7 @@
 # Maintainer: Python Shell <pythonshell@yeah.net>
 
 pkgname=cbmc
-pkgver=5.9
+pkgver=5.10
 pkgrel=1
 pkgdesc="Bounded Model Checking for ANSI-C"
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ license=('custom')
 makedepends=('flex' 'bison' 'make' 'patch' 'perl-libwww')
 provides=('cbmc')
 conflicts=('cbmc' 'cbmc-git' 'cbmc-bin')
-source=("https://github.com/diffblue/cbmc/archive/cbmc-5.9.tar.gz")
-sha256sums=('e57b07036475267bc158694003fb546d128a54b556553e5e129e967972d81fd1')
+source=("https://github.com/diffblue/cbmc/archive/cbmc-5.10.tar.gz")
+sha256sums=('00e4836992e6cc56c5bf1299cc6de1a2eed5d8be9485c2adb52e1e69fb575352')
 
 _pkg_src_root="${pkgname}-${pkgname}-${pkgver}"
 
