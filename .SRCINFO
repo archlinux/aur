@@ -1,11 +1,11 @@
 pkgbase = gtksourceview-lolcode
 	pkgver = 0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://lolcode.org/
 	arch = any
 	license = MIT
 	makedepends = git
-	optdepends = lci: lolcode commandline interpreter
+	optdepends = lci-git: lolcode commandline interpreter
 	source = gtksourceview-lolcode::git+https://github.com/Lucki/gtksourceview3-lolcode.git#commit=f80e35e
 	sha512sums = SKIP
 
