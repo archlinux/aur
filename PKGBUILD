@@ -2,7 +2,7 @@
 
 pkgbase=popsicle-git
 pkgname=(popsicle-cli-git popsicle-gtk-git)
-pkgver=latest
+pkgver=0.1.5.r128.gd6c8f6e
 pkgrel=1
 pkgdesc="Linux utility for flashing multiple USB devices in parallel, written in Rust"
 url="https://github.com/pop-os/popsicle"
