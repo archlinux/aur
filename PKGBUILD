@@ -1,7 +1,7 @@
 # Contributor: dorkster <jajdorkster@gmail.com>
 
 pkgname=flare-engine-git
-pkgver=v1.07.r0.gd9d0f471
+pkgver=v1.08.r0.g29ba6a8a
 pkgrel=1
 pkgdesc="Free/Libre Action Roleplaying Engine - Git version"
 url="http://www.flarerpg.org/"
@@ -12,7 +12,7 @@ depends=('sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'hicolor-icon-theme' 'python')
 conflicts=('flare-engine')
 replaces=('flare-engine')
 install="flare-engine-git.install"
-source=("git://github.com/clintbellanger/flare-engine.git" 'flare-engine-git.install')
+source=("git://github.com/flareteam/flare-engine.git" 'flare-engine-git.install')
 sha1sums=('SKIP' 'f1399479b57f5948fb07b188c7599c1f04d2989b')
 
 pkgver() {
