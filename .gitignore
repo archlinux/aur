@@ -2,4 +2,4 @@
 /src
 *.zip
 *.tar.xz
-theme.x86_64
+theme*
