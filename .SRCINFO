@@ -1,6 +1,6 @@
 pkgbase = glade-git
 	pkgdesc = User interface builder for GTK+ and GNOME.
-	pkgver = latest
+	pkgver = 3.22.0.r115.gdb79d55c
 	pkgrel = 1
 	url = https://glade.gnome.org/
 	arch = i686

@@ -3,7 +3,7 @@
 # Contributor: Douglas Soares de Andrade <douglas@archlinux.org>
 
 pkgname=glade-git
-pkgver=latest
+pkgver=3.22.0.r115.gdb79d55c
 pkgrel=1
 pkgdesc="User interface builder for GTK+ and GNOME."
 provides=(glade)
