@@ -1,0 +1,19 @@
+pkgbase = bcash-git
+	pkgdesc = An alternative implementation of the Bitcoin Cash protocol, written in node.js.
+	pkgver = 1.0.2.4.g28cf1ef8
+	pkgrel = 1
+	url = https://github.com/bcoin-org/bcash
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	makedepends = python2
+	depends = nodejs
+	provides = bcash
+	conflicts = bcash
+	source = bcash-git::git+https://github.com/bcoin-org/bcash.git
+	md5sums = SKIP
+
+pkgname = bcash-git
+
