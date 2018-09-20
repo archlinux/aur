@@ -1,7 +1,7 @@
 # Maintainer: Amish <contact at via dot aur>
 pkgname=c-icap-modules
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Modules for C-ICAP server'
 depends=('c-icap' 'clamav')
 arch=(i686 x86_64)

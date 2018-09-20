@@ -1,7 +1,7 @@
 pkgbase = c-icap-modules
 	pkgdesc = Modules for C-ICAP server
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://c-icap.sourceforge.net/
 	arch = i686
 	arch = x86_64
