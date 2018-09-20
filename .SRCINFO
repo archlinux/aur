@@ -1,7 +1,7 @@
 pkgbase = minishift
 	pkgdesc = Run OpenShift locally
 	pkgver = 1.24.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/minishift/minishift
 	arch = x86_64
 	license = APACHE
