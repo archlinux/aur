@@ -2,7 +2,7 @@
 
 _pkgbase=udmabuf
 pkgname=udmabuf-dkms
-pkgver=1.2.3
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Userspace DMA Buffers"
 arch=('i686' 'x86_64' 'armhf')
@@ -15,7 +15,7 @@ source=(
     "dkms.conf"
 )
 
-sha512sums=('70030eda85285fba56427162feb769a64d46a92acf8e6c77279786264359dfdf7cd9ceeecf6a8e8d24151855c50c3293c42f6b3a4c05fa0d36d7cf1acba79dfc'
+sha512sums=('4385cf2bfcf8dff70222291e7600c73f32a7442fb181e53183601a2962bb978890d6d9f7ed3cc086f9dc247982e4bd2489425af65d65cece780ff9f8c557abb5'
             'cdb79d66b0b9aa32457d6d2c6f1979412348d91bec6def055694595ee3528023b05142c89396b92e3a2e1ece5d69d18c13cece0588067ec401cfb666b03ae739')
 
 prepare() {
