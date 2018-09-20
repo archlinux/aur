@@ -1,5 +1,5 @@
-# Maintainer: Alex Branham <branham@utexas.edu>
-_cranver=0.23-3
+# Maintainer: Alex Branham <alex.branham@gmail.com>
+_cranver=0.23-4
 pkgname=r-ttr
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -11,7 +11,7 @@ depends=('r' 'r-xts>=0.10.0' 'r-zoo' 'r-curl')
 optdepends=('r-runit')
 makedepends=('gcc-fortran')
 source=("https://cran.r-project.org/src/contrib/TTR_"$_cranver".tar.gz")
-md5sums=('e4c98cbec65f559ac3c1b1d168970c50')
+md5sums=('fa8873454a7d9b75ff4040421d4a42a6')
 
 build(){
     R CMD INSTALL TTR_"$_cranver".tar.gz -l "$srcdir"
