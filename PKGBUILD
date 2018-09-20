@@ -4,9 +4,9 @@
 pkgname=smokinguns-git
 _pkgname=${pkgname%-git}
 pkgver=1.1.r859.gf5d9ecf2
-pkgrel=5
+pkgrel=6
 pkgdesc='A semi-realistic simulation of the old west great atmosphere built on id Tech 3.'
-url="http://www.smokin-guns.org"
+url="https://www.smokin-guns.org"
 arch=('i686' 'x86_64')
 license=('GPL2')
 changelog=.CHANGELOG
@@ -15,7 +15,7 @@ makedepends=('git' 'openal' 'glu')
 conflicts=('smokinguns-bin' 'smokinguns' 'smokinguns-data')
 provides=('smokinguns-data' 'smokinguns')
 source=("${_pkgname}::git+https://github.com/smokin-guns/SmokinGuns.git"
-        "${_pkgname}-data::http://www.smokin-guns.org/downloads/Smokin_Guns_1.1.zip"
+        "${_pkgname}-data::https://www.smokin-guns.org/downloads/Smokin_Guns_1.1.zip"
         "${_pkgname}.desktop")
 sha512sums=('SKIP'
             '51954ce00cccd9eb95a10491f0fcdea2d024058da11cbda7ee56c6369e8bc101d89ed95549cf4255393c3e1bec4585be12937e7ed7b20ff4cc0ce96685a5ce72'
@@ -23,50 +23,64 @@ sha512sums=('SKIP'
 
 pkgver()
 {
-  cd "${srcdir}/${_pkgname}"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "${srcdir}/${_pkgname}" || exit
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare()
 {
-  cd "${srcdir}/${_pkgname}"
+	cd "${srcdir}/${_pkgname}" || exit
 
-  # Set basedir
-  echo "DEFAULT_BASEDIR = /usr/share/${_pkgname}" >> "Makefile.local"
-  # Use system libraries
-  echo "USE_INTERNAL_ZLIB=0" >> "Makefile.local"
-  echo "USE_INTERNAL_JPEG=0" >> "Makefile.local"
-  echo "USE_INTERNAL_SPEEX=0" >> "Makefile.local"
-  echo "USE_INTERNAL_OPUS=1" >> "Makefile.local"
-  echo "USE_INTERNAL_OGG=0" >> "Makefile.local"
-  # Use system headers
-  echo "USE_LOCAL_HEADERS=0" >> "Makefile.local"
+	{
+		# Set basedir
+		echo "DEFAULT_BASEDIR = /usr/share/${_pkgname}"
+
+		# Use system libraries
+		echo "USE_INTERNAL_ZLIB=0"
+		echo "USE_INTERNAL_JPEG=0"
+		echo "USE_INTERNAL_SPEEX=0"
+		echo "USE_INTERNAL_OPUS=1"
+		echo "USE_INTERNAL_OGG=0"
+
+		# Use system headers
+		echo "USE_LOCAL_HEADERS=0"
+
+	} >> "Makefile.local"
 }
 
 build()
 {
-  cd "${srcdir}/${_pkgname}"
-  make
+	cd "${srcdir}/${_pkgname}" || exit
+	make
 }
 
 package()
 {
-  cd "${srcdir}/Smokin' Guns 1.1"
-  install -d "${pkgdir}/usr/share/${_pkgname}/baseq3"
-  install -m 644 baseq3/* "${pkgdir}/usr/share/${_pkgname}/baseq3"
-  install -d "${pkgdir}/usr/share/${_pkgname}/${_pkgname}"
-  install -m 644 ${_pkgname}/* "${pkgdir}/usr/share/${_pkgname}/${_pkgname}"
-  
-  cd "${srcdir}/${_pkgname}"
+	cd "${srcdir}/Smokin' Guns 1.1" || exit
+	install -d "${pkgdir}/usr/share/${_pkgname}/baseq3"
+	install -m 644 baseq3/* "${pkgdir}/usr/share/${_pkgname}/baseq3"
+	install -d "${pkgdir}/usr/share/${_pkgname}/${_pkgname}"
+	install -m 644 "${_pkgname}"/* "${pkgdir}/usr/share/${_pkgname}/${_pkgname}"
 
-  SUFFIX=${CARCH//i686/i386}
-  install -Dm 755 "build/release-linux-${SUFFIX}/${_pkgname}.${SUFFIX}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm 755 "build/release-linux-${SUFFIX}/${_pkgname}_dedicated.${SUFFIX}" "${pkgdir}/usr/bin/${_pkgname}_dedicated"
-  install -Dm 644 "build/release-linux-${SUFFIX}/renderer_opengl1_${SUFFIX}.so" "${pkgdir}/usr/share/${_pkgname}"
-  install -Dm 644 "build/release-linux-${SUFFIX}/renderer_opengl2_${SUFFIX}.so" "${pkgdir}/usr/share/${_pkgname}"
+	cd "${srcdir}/${_pkgname}" || exit
 
-  install -Dm 644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-  install -Dm 644 "misc/${_pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png"
+	SUFFIX=${CARCH//i686/i386}
+	install -Dm 755 "build/release-linux-${SUFFIX}/${_pkgname}.${SUFFIX}" \
+		          	"${pkgdir}/usr/bin/${_pkgname}"
+
+	install -Dm 755 "build/release-linux-${SUFFIX}/${_pkgname}_dedicated.${SUFFIX}" \
+		          	"${pkgdir}/usr/bin/${_pkgname}_dedicated"
+
+	install -Dm 644 "build/release-linux-${SUFFIX}/renderer_opengl1_${SUFFIX}.so" \
+		          	"${pkgdir}/usr/share/${_pkgname}"
+
+	install -Dm 644 "build/release-linux-${SUFFIX}/renderer_opengl2_${SUFFIX}.so" \
+		          	"${pkgdir}/usr/share/${_pkgname}"
+
+	install -Dm 644 "${srcdir}/${_pkgname}.desktop" \
+		          	"${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+
+	install -Dm 644	"misc/${_pkgname}.png" \
+		          	"${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png"
 }
 
-# vim:set ts=2 sw=2 et:
