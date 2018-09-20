@@ -2,7 +2,7 @@
 
 pkgname=crystallauncher
 pkgrel=1
-pkgver=1.0.0.0
+pkgver=1.0.0.1
 pkgdesc="Crystal Launcher is a unofficial launcher for Minecraft that has own packages repository. It can also run official launcher packages."
 arch=('any')
 url="https://crystal-launcher.net/"

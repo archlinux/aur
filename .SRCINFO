@@ -1,6 +1,6 @@
 pkgbase = crystallauncher
 	pkgdesc = Crystal Launcher is a unofficial launcher for Minecraft that has own packages repository. It can also run official launcher packages.
-	pkgver = 1.0.0.0
+	pkgver = 1.0.0.1
 	pkgrel = 1
 	url = https://crystal-launcher.net/
 	arch = any

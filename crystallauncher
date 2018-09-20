@@ -10,4 +10,4 @@ if [ ! -f ${HOME}/.local/share/CrystalLauncher/launcher.jar ]; then
     touch ${HOME}/.local/share/CrystalLauncher/launcher.jar
 fi
 
-exec java -jar /usr/share/java/CrystalLauncher/launcher.jar $@ >/dev/null
+exec java -jar /usr/share/java/CrystalLauncher/launcher.jar $@
