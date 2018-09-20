@@ -15,8 +15,6 @@ source=("pyscaffold-${pkgver}::git+https://github.com/blue-yonder/pyscaffold.git
 md5sums=('SKIP')
 
 build() {
-  cp -r "${srcdir}"/pyscaffold-$pkgver
-
   cd "${srcdir}"/pyscaffold-$pkgver
   python setup.py build
 }
