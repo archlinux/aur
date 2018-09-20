@@ -9,7 +9,7 @@ url="https://libspng.org/"
 license=('BSD')
 depends=(zlib)
 makedepends=(meson)
-checkdepends=(libpng)
+#checkdepends=(libpng)
 conflicts=(libspng-git)
 source=("https://gitlab.com/randy408/libspng/-/archive/v${pkgver}/libspng-v${pkgver}.tar.gz")
 md5sums=('8b4ca63f52cfc5034754341d1544b2dd')
@@ -21,11 +21,11 @@ build() {
     ninja -C build
 }
 
-check() {
-    cd libspng-v${pkgver}
-    meson configure -Ddev_build=true build
-    ninja test -C build
-}
+#check() {
+#    cd libspng-v${pkgver}
+#    meson configure -Ddev_build=true build
+#    ninja test -C build
+#}
 
 package() {
     cd libspng-v${pkgver}

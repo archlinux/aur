@@ -8,7 +8,6 @@ pkgbase = libspng
 	arch = armv6h
 	arch = armv7h
 	license = BSD
-	checkdepends = libpng
 	makedepends = meson
 	depends = zlib
 	conflicts = libspng-git
