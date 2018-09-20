@@ -1,27 +1,28 @@
+# Maintainer: gkmcd <g@dramati.cc>
 pkgbase=python-pyscaffold
 pkgname=('python-pyscaffold')
-pkgver=3.0.3
+pkgver=3.1
 pkgrel=1
 pkgdesc="Python project template generator with batteries included"
-url="http://pyscaffold.readthedocs.org/"
+url="https://pyscaffold.org/"
 arch=(any)
 license=('BSD')
-makedepends=('python-setuptools-scm' 'python2-setuptools-scm' 'python-six' 'python2-six' 'python-pbr' 'python2-pbr')
+depends=('python')
+optdepends=('python-django: scaffold django projects'
+            'python-cookiecutter: create custom scaffold templates')
+makedepends=('python-setuptools-scm' 'python-pbr' 'python-wheel')
 source=("pyscaffold-${pkgver}::git+https://github.com/blue-yonder/pyscaffold.git#tag=v${pkgver}")
 md5sums=('SKIP')
 
 build() {
-  cp -r "${srcdir}"/pyscaffold-$pkgver "${srcdir}"/pyscaffold-$pkgver-py2
+  cp -r "${srcdir}"/pyscaffold-$pkgver
 
   cd "${srcdir}"/pyscaffold-$pkgver
   python setup.py build
-
-  cd "${srcdir}"/pyscaffold-$pkgver-py2
-  #python2 setup.py build
 }
 
 package_python-pyscaffold() {
-  depends=('python-six' 'python-pbr')
+  depends=('python-pbr' 'python-wheel')
 
   cd "${srcdir}/pyscaffold-$pkgver"
   python setup.py install --root=${pkgdir}
