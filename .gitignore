@@ -1,0 +1,5 @@
+kicad-symbols/
+pkg/
+src/
+*.tar.gz
+*.tar.xz
