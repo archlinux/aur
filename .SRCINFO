@@ -1,0 +1,15 @@
+pkgbase = astra-sdk
+	pkgdesc = SDK for the Astra Camera from Orbbec
+	pkgver = 2.0.9
+	pkgrel = 1
+	url = https://orbbec3d.com/develop/
+	arch = x86_64
+	license = Apache
+	makedepends = gcc>=4.9,
+	makedepends = clang>=3.5
+	options = !strip
+	source = http://dl.orbbec3d.com/dist/astra/v2.0.9-beta3-d/AstraSDK-v2.0.9-beta3d-dc1f53e9c9-20180623T013908Z-Ubuntu1604.tar.gz
+	sha256sums = c1c8879d1a49847871e6131460ebf71713f5ae0cdc8b075918e165ba358e4ed5
+
+pkgname = astra-sdk
+
