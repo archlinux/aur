@@ -1,13 +1,13 @@
 pkgbase = qtum
 	pkgdesc = Qtum Desktop
-	pkgver = 0.16
+	pkgver = 0.16.1
 	pkgrel = 1
 	url = https://qtum.org
 	arch = x86_64
 	license = GPL-3.0
 	depends = glibc
-	source = http://repo.qtum.org/apt/qtum_0.16_amd64.deb
-	sha256sums = d4d03e3df8f2139f72e22246f24900fe377885502c7ef3ae631bc7b771946e89
+	source = http://repo.qtum.org/apt/qtum_0.16.1_amd64.deb
+	sha256sums = 8c831a7f83d5dd8b2e9cb81dbe5da97ae7e3b86c5c07e8ad3e0df41d256d5c9c
 
 pkgname = qtum
 
