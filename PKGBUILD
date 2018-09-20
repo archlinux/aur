@@ -11,7 +11,7 @@ set -u
 _pkgname='pcre2'
 pkgname="${_pkgname}-svn"
 _srcdir="${pkgname}"
-pkgver=10.31.r914
+pkgver=10.33_RC1.r1015
 pkgrel=1
 pkgdesc='A regex library that implements Perl 5-style regular expressions, 2nd version, includes pcregrep'
 arch=('i686' 'x86_64')
@@ -29,16 +29,15 @@ sha256sums=('SKIP')
 pkgver() {
   set -u
   cd "${_srcdir}/"
-  local _version="$(sed -ne 's:^Version\s\([0-9]\+\.[0-9]\+\)\s.*$:\1:p' 'ChangeLog' | head -n1)"
-  _version="${_version//-/.}.r$(svnversion | tr -d 'a-zA-z')"
-  echo "${_version}"
+  local _ver="$(sed -ne 's:^Version\s\([^\s]\+\)\s.*$:\1:p' 'ChangeLog' | sed -e 's:\.\([A-Z]\):_\1:' -e 's:-:_:' | head -n1)"
+  local _rev="$(svnversion | tr -d 'a-zA-z')"
+  printf '%s.r%s' "${_ver}" "${_rev}"
   set +u
 }
 
 build() {
   set -u
   cd "${_srcdir}"
-  local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
   if [ ! -s 'Makefile' ]; then
     ./autogen.sh
     ./configure \
@@ -50,6 +49,7 @@ build() {
       --enable-pcre2grep-libbz2 \
       --enable-pcre2test-libreadline
   fi
+  local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
   nice make -s -j "${_nproc}"
   set +u
 }
