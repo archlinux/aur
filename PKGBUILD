@@ -5,14 +5,14 @@
 
 _pkgname=entrance
 pkgname=$_pkgname-git
-pkgver=3.0.0_alpha5.r4.g8a92676
+pkgver=3.0.0_alpha5.r10.gb8894ea
 pkgrel=1
 pkgdesc="Enlightenment Display Manager"
 url="http://www.enlightenment.org/"
 license=('GPL3')
 arch=('i686' 'x86_64')
 depends=('efl' 'xorg-xauth' 'sudo')
-makedepends=('git')
+makedepends=('git' 'meson')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 backup=('etc/entrance/entrance.conf')
