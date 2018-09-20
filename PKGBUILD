@@ -2,14 +2,14 @@
 
 pkgname=clonepoint-git
 _pkgname=${pkgname%-git}
-pkgver=r70.9c8a828
-pkgrel=3
+pkgver=r71.b40e812
+pkgrel=1
 pkgdesc="Free software clone of Gunpoint"
 arch=('i686' 'x86_64')
 url="https://rohit.itch.io/clonepoint"
 license=('GPL3')
 backup=("opt/${_pkgname}/config.cfg")
-depends=('openal' 'sdl2')
+depends=('openal' 'sdl2' 'hicolor-icon-theme')
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")

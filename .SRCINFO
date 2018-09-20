@@ -1,7 +1,7 @@
 pkgbase = clonepoint-git
 	pkgdesc = Free software clone of Gunpoint
-	pkgver = r70.9c8a828
-	pkgrel = 3
+	pkgver = r71.b40e812
+	pkgrel = 1
 	url = https://rohit.itch.io/clonepoint
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = clonepoint-git
 	makedepends = git
 	depends = openal
 	depends = sdl2
+	depends = hicolor-icon-theme
 	provides = clonepoint
 	conflicts = clonepoint
 	backup = opt/clonepoint/config.cfg
