@@ -1,7 +1,7 @@
 pkgbase = gmusicproxy
 	pkgdesc = Stream Google Play Music using any media-player
 	pkgver = 1.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/diraimondo/gmusicproxy
 	arch = any
 	license = GPL
@@ -13,7 +13,13 @@ pkgbase = gmusicproxy
 	depends = python2-daemon>=2.0.5
 	optdepends = python2-keyring: keyring support
 	source = https://github.com/diraimondo/gmusicproxy/archive/v1.0.8.tar.gz
+	source = gmusicproxy.cfg.sample
+	source = gmusicproxy.user.service
+	source = gmusicproxy.system.service
 	md5sums = e7eea6f20b26ef64b4f3b5fa9237b3c4
+	md5sums = e03e8f0937997fd8e86f60c3c28d1d26
+	md5sums = f4abb012aabe7eec77f3b7b83a61d404
+	md5sums = 3edc1b7f6e5e47704f35e4cb6237a8be
 
 pkgname = gmusicproxy
 
