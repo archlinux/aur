@@ -2,7 +2,7 @@
 
 _pkgname=cros-adapta
 pkgname=${_pkgname}-gtk-theme-git
-pkgver=latest
+pkgver=r52.f4dee35
 pkgrel=1
 pkgdesc="Adapta crostini theme, the Chrome OS GTK+ theme"
 url="https://chromium.googlesource.com/chromiumos/third_party/cros-adapta/"
