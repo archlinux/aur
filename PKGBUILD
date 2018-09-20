@@ -4,7 +4,7 @@ _pkgname=GPXLab
 _branch=master
 _use_gh_api=true
 pkgname=${_pkgname,,}-git
-pkgver=0.4.0.r17.6c69ea7b
+pkgver=0.4.0.r20.f7d79ed0
 pkgrel=1
 pkgdesc='Program to show and manipulate GPS tracks'
 arch=('i686' 'x86_64')
@@ -24,11 +24,7 @@ if [ "${_use_gh_api}" = true ]; then
 else
   source=("${_pkgname}-${_branch}::git://github.com/${_orgname}/${_pkgname}.git#branch=${_branch}")
 fi
-source+=("gpxlab.desktop"
-         "gpxlab.xml")
-sha256sums=('SKIP'
-            'df674c3baa689b5441c81447fa999f418029c1edc5ac1933cdb26202049d2b58'
-            '5e35029c0cf26cbe82c3fbe1f839688f99406c2e054b1311e7912d0468df7c38')
+sha256sums=('SKIP')
 
 pkgver() {
   cd ${_pkgname}-${_branch}
@@ -75,6 +71,6 @@ package() {
 
   install -m 755 bin/GPXLab ${pkgdir}/usr/bin/${pkgname//-git}
   install -m 644 doc/gpxlab.png ${pkgdir}/usr/share/pixmaps/${pkgname//-git}.png
-  install -m 644 ../gpxlab.desktop ${pkgdir}/usr/share/applications/${pkgname//-git}.desktop
-  install -m 644 ../gpxlab.xml ${pkgdir}/usr/share/mime/packages/${pkgname//-git}.xml
+  install -m 644 pkg/gpxlab.desktop ${pkgdir}/usr/share/applications/${pkgname//-git}.desktop
+  install -m 644 pkg/gpxlab.xml ${pkgdir}/usr/share/mime/packages/${pkgname//-git}.xml
 }

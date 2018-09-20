@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=GPXLab
-Comment=Program to show and manipulate GPS tracks
-Exec=gpxlab %F
-Icon=gpxlab
-Terminal=false
-Type=Application
-Categories=Graphics;Viewer;Maps;Qt;
-MimeType=application/gpx+xml;application/vnd.nmea.nmea;
