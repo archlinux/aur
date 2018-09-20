@@ -11,6 +11,7 @@ url="https://github.com/Maldela/Fancontrol-GUI"
 license=('GPL2')
 depends=('qt5-declarative' 'qt5-quickcontrols' 'kirigami2' 'hicolor-icon-theme' 'lm_sensors' 'kauth' 'kpackage' 'kdeclarative')
 makedepends=('git' 'extra-cmake-modules')
+conflicts=('fancontrol-common')
 source=('https://github.com/Maldela/fancontrol-gui/archive/v0.6.tar.gz')
 md5sums=('5088db3b423c098b56d2b0bc73f27aa1')
 
