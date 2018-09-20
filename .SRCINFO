@@ -1,6 +1,6 @@
 pkgbase = marcfs-git
 	pkgdesc = FUSE-based file system backed by Mail.ru Cloud storage
-	pkgver = 0.4.r1.033bf1a
+	pkgver = 0.6.0.r0.801e616
 	pkgrel = 1
 	url = https://gitlab.com/Kanedias/MARC-FS
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = marcfs-git
 	makedepends = make
 	makedepends = cmake
 	makedepends = gcc
-	depends = fuse2
+	depends = fuse3
 	depends = curl
 	depends = jsoncpp
 	optdepends = jemalloc: to reduce memory pressure
