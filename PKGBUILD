@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=libspng-git
-pkgver=v0.3.1.r2.gf77e500
+pkgver=0.3.1.r2.gf77e500
 pkgrel=1
 pkgdesc="C library for reading and writing PNG format files with a focus on security and ease of use"
 arch=(i686 x86_64 armv6h armv7h)
@@ -17,7 +17,7 @@ md5sums=(SKIP)
 
 pkgver() {
     cd libspng
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
