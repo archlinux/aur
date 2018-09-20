@@ -1,7 +1,7 @@
-pkgbase = s4cmd
+pkgbase = s4cmd-python3-git
 	pkgdesc = Super S3 command line tool (git) for Python 3
 	pkgver = 132.80059bf
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bloomreach/s4cmd
 	arch = any
 	license = GPL

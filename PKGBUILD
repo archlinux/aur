@@ -1,13 +1,13 @@
 # Maintainer: apetresc <apetresc at gmail dot com>
 # Contributor: realitygaps <realitygaps at yahoo dot com>
 
-pkgbase=s4cmd
+_pkgname=s4cmd
 pkgname=s4cmd-python3-git
 pkgver=132.80059bf
-pkgrel=1
+pkgrel=2
 pkgdesc="Super S3 command line tool (git) for Python 3"
 arch=('any')
-url="https://github.com/bloomreach/${pkgbase}"
+url="https://github.com/bloomreach/${_pkgname}"
 license=('GPL')
 depends=('python' 'python-dateutil' 'python-boto3')
 makedepends=(git python-setuptools)
@@ -18,12 +18,12 @@ source=("git+${url}.git")
 md5sums=('SKIP')
 
 pkgver() {
-	 cd "${srcdir}/${pkgbase}"
+	 cd "${srcdir}/${_pkgname}"
 	 local ver="$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 	 printf "%s" "${ver//-/.}"
 }
 
 package() {
-  cd "${srcdir}/${pkgbase}"
+  cd "${srcdir}/${_pkgname}"
   python setup.py install --root="$pkgdir"
 }
