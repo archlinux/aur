@@ -1,8 +1,9 @@
 # Maintainer: apetresc <apetresc at gmail dot com>
 # Contributor: realitygaps <realitygaps at yahoo dot com>
 
+pkgbase=s4cmd
 pkgname=s4cmd-python3-git
-pkgver=66.f5f5ff0
+pkgver=132.80059bf
 pkgrel=1
 pkgdesc="Super S3 command line tool (git) for Python 3"
 arch=('any')
@@ -13,13 +14,8 @@ makedepends=(git python-setuptools)
 optdepends=('gnupg: encrypted file storage')
 provides=('s4cmd')
 conflicts=('s4cmd')
-source=("git+${url}.git" "setup.py.patch")
-md5sums=('SKIP'
-         'ed8297a6a6b3c727e435ad9385eed02a')
-
-prepare() {
-  patch -uN "${srcdir}/${pkgbase}/setup.py" "${srcdir}/setup.py.patch"
-}
+source=("git+${url}.git")
+md5sums=('SKIP')
 
 pkgver() {
 	 cd "${srcdir}/${pkgbase}"
