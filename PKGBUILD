@@ -2,8 +2,8 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=azcopy-10
-pkgver=10.0.0
-pkgrel=3
+pkgver=10.0.1
+pkgrel=1
 pkgdesc="A command-line utility designed for copying data to/from Microsoft Azure"
 arch=('x86_64')
 url="https://github.com/Azure/azure-storage-azcopy"
@@ -15,10 +15,6 @@ _gourl=github.com/Azure/azure-storage-azcopy
 build() {
   GOPATH="$srcdir" go get -v ${_gourl}/... # -fix -x
 }
-
-#check() {
-#  GOPATH="$GOPATH:$srcdir" go test -v -x ${_gourl}/...
-#}
 
 package() {
   install -Dm755 "$srcdir/bin/azure-storage-azcopy" "$pkgdir/usr/bin/azcopy"
