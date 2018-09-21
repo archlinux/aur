@@ -1,0 +1,29 @@
+pkgbase = freecad-linkstage3-git
+	pkgdesc = A general purpose 3D CAD modeler - LinkStage3 dev branch, git checkout
+	pkgver = asm3.0.5.3.r1537.g234333df9
+	pkgrel = 1
+	url = http://www.freecadweb.org/
+	arch = any
+	license = LGPL
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = gcc-fortran
+	makedepends = desktop-file-utils
+	makedepends = python-pyside-tools
+	makedepends = swig
+	makedepends = boost
+	makedepends = eigen
+	depends = python-pyside
+	depends = boost-libs
+	depends = calculix
+	depends = coin
+	depends = gmsh
+	depends = med
+	depends = netgen-git
+	depends = opencascade
+	depends = vtk
+	source = git+https://github.com/realthunder/FreeCAD.git#branch=LinkStage3
+	sha256sums = SKIP
+
+pkgname = freecad-linkstage3-git
+
