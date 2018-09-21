@@ -14,7 +14,7 @@ md5sums=('SKIP')
 
 pkgver() {
   mkdir -p $srcdir/src/github.com/coreos
-  ln -sf $srcdir/$pkgname $srcdir/src/$_goname
+  ln -sf $srcdir/$pkgname $srcdir/src/github.com/coreos
 
   cd $pkgname
   git describe --tags | sed 's/^v//;s/-/+/g'
