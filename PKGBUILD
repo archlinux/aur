@@ -26,7 +26,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 ## Set this variable to 1 if you want to build with clang compiler ##
 #_CLANG=0
 
-[ "$_CLANG" ] && [ "$_CLANG" -eq "1" ] && optdepends+=(clang)
+[ "$_CLANG" ] && [ "$_CLANG" -eq "1" ] && makedepends+=(clang)
 
 #source=(http://ftpmirror.gnu.org/gnuzilla/${pkgver}/${pkgname}-${_pkgver}.tar.bz2{,.sig}
 #source=(https://ftp.gnu.org/gnu/gnuzilla/${pkgver}/${pkgname}-${_pkgver}.tar.bz2{,.sig}      ## Main upstream download site
