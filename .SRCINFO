@@ -1,0 +1,24 @@
+pkgbase = veloren-git
+	pkgdesc = An open-world, open-source multiplayer voxel RPG
+	pkgver = 0.1.0.r149.4e9bc27
+	pkgrel = 1
+	url = veloren.net
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	makedepends = rust-nightly
+	makedepends = cargo-nightly
+	depends = bash
+	provides = veloren-git
+	conflicts = veloren-git
+	noextract = veloren-voxygen
+	source = veloren-git::git+https://gitlab.com/veloren/game.git
+	source = git+https://gitlab.com/veloren/assets.git
+	source = veloren-voxygen
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = veloren-git
+
