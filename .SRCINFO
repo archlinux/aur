@@ -1,6 +1,6 @@
 pkgbase = davinci-resolve
 	pkgdesc = Professional A/V post-production software suite
-	pkgver = 15.0.1
+	pkgver = 15.1
 	pkgrel = 0
 	url = https://www.blackmagicdesign.com/
 	arch = x86_64
@@ -24,8 +24,8 @@ pkgbase = davinci-resolve
 	conflicts = davinci-resolve-studio
 	conflicts = davinci-resolve-studio-beta
 	options = !strip
-	source = local://DaVinci_Resolve_15.0.1_Linux.zip
-	sha256sums = 8f9d921a0173dc8feeb6228acdd494cdb46ce4f3013dfc76d21303d25e25c7e4
+	source = local://DaVinci_Resolve_15.1_Linux.zip
+	sha256sums = 93377973d9d327e13d935765f9dbd020cc1567a8d17bc1cd38429c74946a9810
 
 pkgname = davinci-resolve
 
