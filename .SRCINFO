@@ -1,0 +1,16 @@
+pkgbase = rkdeveloptool
+	pkgdesc = Development tool for Rockchip SOC
+	pkgver = 52
+	pkgrel = 1
+	url = https://github.com/rockchip-linux/rkdeveloptool
+	install = rkdeveloptool.install
+	arch = x86_64
+	license = GPL2
+	makedepends = autoconf
+	makedepends = git
+	depends = libusb
+	source = git+https://github.com/rockchip-linux/rkdeveloptool.git
+	sha256sums = SKIP
+
+pkgname = rkdeveloptool
+
