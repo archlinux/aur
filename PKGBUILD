@@ -28,7 +28,7 @@ sha256sums=('SKIP'
             '2445f754a044dd1ccb8c948b5d5b43248b61ec3570fc76416f74148abc5abf4d')
 
 pkgver() {
-  cd $pkgname
+  cd $_pkgname
   git describe --tags | sed 's/-/+/g'
 }
 
