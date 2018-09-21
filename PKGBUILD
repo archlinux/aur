@@ -2,8 +2,7 @@
 # Contributor: Edward W Ayers <ewa21 at cam.ac.uk>
 
 pkgname=lean-git
-_pkgver=3.3.0
-pkgver=3.3.0.r668.gb13ac127f
+pkgver=3.4.1.r4.gb13ac127f
 pkgrel=1
 pkgdesc='Lean Theorem Prover'
 arch=('x86_64' 'i386')
@@ -18,7 +17,7 @@ md5sums=(SKIP)
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
