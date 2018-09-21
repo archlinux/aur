@@ -1,7 +1,7 @@
 pkgbase = matchbox
 	pkgdesc = Network boot and provision Container Linux clusters
 	pkgver = 0.7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://coreos.com/matchbox/docs/latest/
 	arch = x86_64
 	arch = i686
@@ -13,7 +13,11 @@ pkgbase = matchbox
 	makedepends = go
 	makedepends = git
 	source = git+https://github.com/coreos/matchbox.git#commit=08f4e9908b167fba608e60169ec6a803df9db37f
-	md5sums = SKIP
+	source = matchbox.sysusers
+	source = matchbox.tmpfiles
+	sha256sums = SKIP
+	sha256sums = b5a40ff91c6b14fcfc6261a64a1221bc2dd20403ab5727fa8c3719fe4e3a36ea
+	sha256sums = d3fc3cd0261959e76c692a5511f7fbb0f297c62e9a2664eb0e9735cb17adc455
 
 pkgname = matchbox
 

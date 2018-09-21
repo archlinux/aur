@@ -1,0 +1,3 @@
+d /var/lib/matchbox        0755 matchbox matchbox
+d /var/lib/matchbox/assets 0755 matchbox matchbox
+
