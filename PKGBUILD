@@ -13,7 +13,7 @@ optdepends=(
   'sshfs: Browse remote files'
   'folks: Contacts integration (Evolution)'
   'libgdata: Contacts integration (GNOME Online Accounts)'
-  'python2-nautilus: Nautilus integration'
+  'python-nautilus: Nautilus integration'
   'gsound: Themed sound effects'
 )
 makedepends=('git' 'meson')
