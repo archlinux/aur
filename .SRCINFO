@@ -1,13 +1,13 @@
 pkgbase = f26-backgrounds
 	pkgdesc = Fedora 26 backgrounds.
 	pkgver = 26.2.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://fedoraproject.org/wiki/F26_Artwork
 	arch = i686
 	arch = x86_64
 	license = CC-BY-SA
-	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/f/f26-backgrounds-26.2.7-2.fc27.src.rpm
-	sha256sums = fb93a8d53fd8d02ce6bd379ae52e4ec59b3aaf0ec1f6145d7da33ba4d4cdd733
+	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/f/f26-backgrounds-26.2.7-4.fc29.src.rpm
+	sha256sums = 935ff38c22dd8ee0acc0dafc8c4b914fddd183c19bfa91597d0f798aee3a29ce
 
 pkgname = f26-backgrounds
 
