@@ -1,15 +1,15 @@
 pkgbase = fedorainfinity-backgrounds
 	pkgdesc = Fedora 8 (Werewolf) infinity backgrounds.
 	pkgver = 0.0.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://fedoraproject.org/wiki/Wallpapers#Fedora_8
 	arch = i686
 	arch = x86_64
 	license = GPL
 	provides = infinity-background
 	conflicts = infinity-background
-	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/f/fedorainfinity-backgrounds-0.0.5-15.fc27.src.rpm
-	sha1sums = 17784678100bca575c0e14d18b90185433dd581f
+	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/f/fedorainfinity-backgrounds-0.0.5-17.fc29.src.rpm
+	sha256sums = 439369685631921331682c2306e78d4658428f9f8dbedf7b13d7fa168cdc9c07
 
 pkgname = fedorainfinity-backgrounds
 
