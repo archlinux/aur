@@ -13,7 +13,7 @@ url="https://www.mozilla.org/en-US/firefox/organizations/"
 depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib ffmpeg
          nss hunspell sqlite ttf-font libpulse libvpx icu)
 makedepends=(unzip zip diffutils python2 yasm mesa imake gconf inetutils xorg-server-xvfb
-             autoconf2.13 rust clang llvm jack gtk2 clang)
+             autoconf2.13 rust clang llvm jack gtk2)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
@@ -31,7 +31,7 @@ validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
 
 ## Set this variable to 1 if you want to build with clang compiler ##
 #_CLANG=0
-[ "$_CLANG" ] && [ "$_CLANG" -eq "1" ] && optdepends+=(clang)
+[ "$_CLANG" ] && [ "$_CLANG" -eq "1" ] && makedepends+=(clang)
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
