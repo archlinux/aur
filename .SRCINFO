@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-glib2
 	pkgdesc = Low level core library (mingw-w64)
 	pkgver = 2.58.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wiki.gnome.org/Projects/GLib
 	arch = any
 	license = LGPL2.1
