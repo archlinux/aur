@@ -1,11 +1,11 @@
 pkgbase = flightgear-data-git
 	pkgdesc = Base data for the flightgear flight simulator.
-	pkgver = 2018.3.0r8687.4208e699c
+	pkgver = 2018.4.0r8691.67bf0c8e1
 	pkgrel = 1
 	url = https://home.flightgear.org
 	arch = x86_64
 	license = GPL
-	provides = flightgear-data=2018.3.0
+	provides = flightgear-data=2018.4.0
 	conflicts = flightgear-data
 	replaces = fgdata-git
 	options = !strip
