@@ -3,7 +3,7 @@
 pkgname='freecad-assembly3-git'
 pkgver=r247.f8dfcd6
 pkgrel=1
-pkgdesc="Assembly workbench for FreeCAD v0.15"
+pkgdesc="Assembly3 workbench for FreeCAD v0.18"
 arch=('x86_64')
 license=('GPL3')
 url="https://github.com/realthunder/FreeCAD_assembly3"
@@ -14,7 +14,7 @@ sha256sums=(
   'SKIP'
 )
 depends=(
-  # 'freecad-linkstage3-git'
+  'freecad-linkstage3-git'
   'python'
 )
 
