@@ -1,7 +1,7 @@
 pkgbase = gnome-settings-daemon-elementary
 	pkgdesc = GNOME Settings Daemon (with elementary OS patch)
 	pkgver = 3.28.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.gnome.org/GNOME/gnome-settings-daemon
 	arch = i686
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = gnome-settings-daemon-elementary
 	makedepends = libxslt
 	makedepends = python
 	makedepends = xf86-input-wacom
+	makedepends = meson
 	depends = dconf
 	depends = geoclue2
 	depends = geocode-glib
