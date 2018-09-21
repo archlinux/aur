@@ -2,9 +2,10 @@
 # Contributor: TZ86
 
 pkgname=vivaldi-snapshot
+_rpmversion=2.0.1309.3-2
 pkgver=2.0.1309.3
-pkgrel=1
-pkgdesc='An advanced browser made with the power user in mind. (weekly snapshot)'
+pkgrel=2
+pkgdesc='An advanced browser made with the power user in mind. Snapshot'
 url="https://vivaldi.com"
 options=(!strip !zipman)
 license=('custom')
@@ -18,7 +19,7 @@ optdepends=(
     'vivaldi-widevine: Widevine DRM Plugin'
     'libnotify: native notifications'
 )
-source=("https://downloads.vivaldi.com/snapshot/vivaldi-snapshot-${pkgver}-2.x86_64.rpm")
+source=("https://downloads.vivaldi.com/snapshot/vivaldi-snapshot-${_rpmversion}.x86_64.rpm")
 sha512sums=('3a6f165491b0b3c1212ae10da1adbbd425fa238b58d0d6f75dd4c85d9e9d5b19e35f15dbdcf63f7ffff8df1faadc6bbcec6e0333ded4231e2f8691296dc05ec5')
 
 package() {

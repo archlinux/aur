@@ -1,1 +1,3 @@
-update_pkgver=$(wget -q "https://vivaldi.com/blog/" -O- | grep 'Snapshot\ .*<\/a>' | sed -rne 's/.*([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+).*/\1/p' | head -n1)
+packagesfile=$(curl -m 10 -s https://repo.vivaldi.com/snapshot/rpm/x86_64/repodata/repomd.xml | grep 'other.xml' | sed 's/.*\/\(.*other\.xml\.gz\).*/\1/')
+update__rpmversion=$(curl -m 10 -s https://repo.vivaldi.com/snapshot/rpm/x86_64/repodata/$packagesfile | zcat | grep '<version' | sed -re 's/.*ver="([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)".*rel="([0-9]+)".*/\1-\2/' | sort -V | tail -n1)
+update_pkgver=${update__rpmversion/-*/}
