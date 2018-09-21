@@ -1,6 +1,6 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 pkgname=bst-external
-pkgver=0.5
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A collection of extra plugins for BuildStream"
 arch=(any)
@@ -9,7 +9,7 @@ license=(LGPL2.1)
 depends=(buildstream python-requests)
 makedepends=(python-setuptools python-pytest-runner)
 source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.bz2")
-sha256sums=('aa9bff79320eb054361388c2ff4d15dde33925ba9c2c951bef0ee324def29f54')
+sha256sums=('54bddc43c30f746bbee11d8eb4905f4c5bf0ce42a8d10032aa073f50c5b2e2e4')
 
 build() {
 	cd $pkgname-$pkgver
