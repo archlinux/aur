@@ -1,16 +1,16 @@
 # $Id$
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=waves-backgrounds
-pkgver=27.0.0
+pkgver=29.0.0
 pkgrel=1
-_rhver="${pkgver}-1.fc28"
+_rhver="${pkgver}-1.fc30"
 pkgdesc="Fedora 9 (Sulphur) waves backgrounds."
 arch=("i686" "x86_64")
 url="https://fedoraproject.org/wiki/Wallpapers#Fedora_9"
 license=("CC-BY-SA")
 _rhlink="https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages"
 source=("${_rhlink}/d/desktop-backgrounds-${_rhver}.src.rpm")
-sha256sums=('30f358a2a35a70630798f568c4c4cffffbacc606db9e540319feffd9af2e9062')
+sha256sums=('24ac316bfb51c69a24a70de5fc136e7a0ee276992171b3728bfabf64f8e34f56')
 
 prepare()  {
   tar -xvjf ./waves-0.1.2.tar.bz2
