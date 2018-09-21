@@ -1,14 +1,14 @@
 pkgbase = lattice-diamond
 	pkgdesc = Lattice Diamond design software
 	pkgver = 3.10.2.115.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.latticesemi.com/
 	install = lattice-diamond.install
 	arch = x86_64
 	license = custom
 	options = !strip
 	source = http://files.latticesemi.com/Diamond/3.10/diamond_3_10-base_x64-111-2-x86_64-linux.rpm
-	source = http://files.latticesemi.com/Diamond/3.10/diamond_3_10-sp2_x64-115-1-x86_64-linux.rpm
+	source = http://files.latticesemi.com/Diamond/3.10.2/diamond_3_10-sp2_x64-115-1-x86_64-linux.rpm
 	source = lattice-diamond.png
 	source = lattice-diamond.desktop
 	source = lattice-diamond.install

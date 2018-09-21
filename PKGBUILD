@@ -15,11 +15,11 @@ pkgdesc='Lattice Diamond design software'
 url=http://www.latticesemi.com/
 license=('custom')
 pkgver=${_version}.${_sp}.${_build}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 install=$pkgname.install
 source=("http://files.latticesemi.com/Diamond/${_version}/diamond_${_version/"."/"_"}-base_x64-${_base}-${arch}-linux.rpm"
-        "http://files.latticesemi.com/Diamond/${_version}/diamond_${_version/"."/"_"}-sp${_sp}_x64-${_build/"."/"-"}-${arch}-linux.rpm"
+        "http://files.latticesemi.com/Diamond/${_version}.${_sp}/diamond_${_version/"."/"_"}-sp${_sp}_x64-${_build/"."/"-"}-${arch}-linux.rpm"
 		"${pkgname}.png"
 		"${pkgname}.desktop"
         "${pkgname}.install")
