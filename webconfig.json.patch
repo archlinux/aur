@@ -1,0 +1,18 @@
+14c14
+< 			"dirname": "../logs",
+---
+> 			"dirname": "/var/log/evostreamms",
+29,32c29,32
+< 	"whitelistFile": "../config/whitelist.txt",
+< 	"blacklistFile": "../config/blacklist.txt",
+< 	"sslKeyFile": "../config/server.key",
+< 	"sslCertFile": "../config/server.cert",
+---
+> 	"whitelistFile": "/etc/evostreamms/whitelist.txt",
+> 	"blacklistFile": "/etc/evostreamms/blacklist.txt",
+> 	"sslKeyFile": "/etc/evostreamms/server.key",
+> 	"sslCertFile": "/etc/evostreamms/server.cert",
+34c34
+< 	"webRootFolder": "../evo-webroot",
+---
+> 	"webRootFolder": "/var/evo-webroot",

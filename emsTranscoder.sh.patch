@@ -1,0 +1,8 @@
+7c7
+< TRANSCODER_BIN=./evo-avconv
+---
+> TRANSCODER_BIN=/usr/bin/evo-avconv
+15c15
+< export AVCONV_DATADIR=../evo-avconv-presets
+---
+> export AVCONV_DATADIR=/usr/share/evo-avconv/presets

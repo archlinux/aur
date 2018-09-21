@@ -1,0 +1,23 @@
+pkgbase = evostreamms
+	pkgdesc = EvoStream Media Server
+	pkgver = 2.0.1.5649
+	pkgrel = 1
+	url = https://evostream.com/
+	install = evostreamms.install
+	arch = x86_64
+	license = custom
+	makedepends = poppler
+	provides = evostreamms-web
+	provides = evostreamms-libavbin
+	source = http://tarballs.evostream.com/release/5649/evostreamms-2.0.1.5649-x86_64-Debian_9.tar.gz
+	source = config.lua.patch
+	source = webconfig.json.patch
+	source = emsTranscoder.sh.patch
+	md5sums = d6878fb8b9513bfaa4f70e75ef24a38e
+	md5sums = dcf7277c169c9a16710e6ca18c6b48ff
+	md5sums = 26433b7ca2ea5409f07bdbae57155c38
+	md5sums = 408c5188a5e3ae37e7efad2545eca4ed
+
+pkgname = evostreamms
+	depends = evostream-systemd
+

@@ -1,0 +1,90 @@
+17c17
+< 			fileName="../logs/evostream",
+---
+> 			fileName="/var/log/evostreamms/evostream",
+33,37c33,37
+< 			pushPullPersistenceFile="../config/pushPullSetup.xml",
+< 			authPersistenceFile="../config/auth.xml",
+< 			connectionsLimitPersistenceFile="../config/connlimits.xml",
+< 			bandwidthLimitPersistenceFile="../config/bandwidthlimits.xml",
+< 			ingestPointsPersistenceFile="../config/ingestpoints.xml",
+---
+> 			pushPullPersistenceFile="/var/evostreamms/xml/pushPullSetup.xml",
+> 			authPersistenceFile="/var/evostreamms/xml/auth.xml",
+> 			connectionsLimitPersistenceFile="/var/evostreamms/xml/connlimits.xml",
+> 			bandwidthLimitPersistenceFile="/var/evostreamms/xml/bandwidthlimits.xml",
+> 			ingestPointsPersistenceFile="/var/evostreamms/xml/ingestpoints.xml",
+56c56
+< 				recordedStreamsStorage="../media",
+---
+> 				recordedStreamsStorage="/var/evostreamms/media",
+59c59
+< 					mediaFolder="../media",
+---
+> 					mediaFolder="/var/evostreamms/media",
+64,65c64,65
+< 					mediaFolder="../media",
+< 					metaFolder="../media",
+---
+> 					mediaFolder="/var/evostreamms/media",
+> 					metaFolder="/var/evostreamms/media",
+166,167c166,167
+< 					sslKey="../config/server.key",
+< 					sslCert="../config/server.cert",
+---
+> 					sslKey="/etc/evostreamms/server.key",
+> 					sslCert="/etc/evostreamms/server.cert",
+190,191c190,191
+< 					sslKey="../config/server.key",
+< 					sslCert="../config/server.cert",
+---
+> 					sslKey="/etc/evostreamms/server.key",
+> 					sslCert="/etc/evostreamms/server.cert",
+205,206c205,206
+< 					sslKey="../config/server.key",
+< 					sslCert="../config/server.cert",
+---
+> 					sslKey="/etc/evostreamms/server.key",
+> 					sslCert="/etc/evostreamms/server.cert",
+229c229
+< 				targetFolder="../evo-webroot",
+---
+> 				targetFolder="/var/evo-webroot",
+233c233
+< 				targetFolder="../evo-webroot",
+---
+> 				targetFolder="/var/evo-webroot",
+237c237
+< 				targetFolder="../evo-webroot",
+---
+> 				targetFolder="/var/evo-webroot",
+241c241
+< 				targetFolder="../evo-webroot",
+---
+> 				targetFolder="/var/evo-webroot",
+256c256
+< 					usersFile="../config/users.lua"
+---
+> 					usersFile="/etc/evostreamms/users.lua"
+262c262
+< 					usersFile="../config/users.lua",
+---
+> 					usersFile="/etc/evostreamms/users.lua",
+287c287
+< 						filename="../logs/events.txt",
+---
+> 						filename="/var/log/evostreamms/events.txt",
+415c415
+< 				scriptPath="./emsTranscoder.sh",
+---
+> 				scriptPath="/usr/bin/emsTranscoder.sh",
+419c419
+< 			mp4BinPath="./evo-mp4writer",
+---
+> 			mp4BinPath="/usr/bin/evo-mp4writer",
+421,422c421,422
+< 				sslKey="../config/server.key",
+< 				sslCert="../config/server.cert",
+---
+> 				sslKey="/etc/evostreamms/server.key",
+> 				sslCert="/etc/evostreamms/server.cert",
