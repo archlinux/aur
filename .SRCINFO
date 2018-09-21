@@ -1,6 +1,6 @@
 pkgbase = pywws
 	pkgdesc = Python software for USB Wireless WeatherStations
-	pkgver = 18.6.3
+	pkgver = 18.9.0
 	pkgrel = 1
 	url = https://github.com/jim-easterbrook/pywws
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = pywws
 	makedepends = python2-pip
 	depends = python2-tzlocal
 	options = !emptydirs
-	source = https://pypi.io/packages/source/p/pywws/pywws-18.6.3.tar.gz
+	source = https://pypi.io/packages/source/p/pywws/pywws-18.9.0.tar.gz
 	source = service
-	md5sums = 696887bfd0dd1190e76859dadfa51b76
+	md5sums = 45ed23a7237966c2f5b8b60864b7d533
 	md5sums = 7eda2524060c6fc0d4dcf3e10be9b7ee
 
 pkgname = pywws
