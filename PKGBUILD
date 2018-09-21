@@ -2,15 +2,15 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=solar-backgrounds
 pkgver=0.92.0
-pkgrel=3
-_rhver="${pkgver}-14.fc27"
+pkgrel=4
+_rhver="${pkgver}-16.fc29"
 pkgdesc="Fedora 10 (Cambridge) solar backgrounds."
 arch=("i686" "x86_64")
 url="https://fedoraproject.org/wiki/Wallpapers#Fedora_10"
 license=("CC-BY-SA")
 _rhlink="https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages"
 source=("${_rhlink}/s/${pkgname}-${_rhver}.src.rpm")
-sha256sums=('28be7ae5dd37007543170311850cbb0d0ab36dc90bababb63872f0e4e7a41f04')
+sha256sums=('6419ea3971d1340ede13c3ed139f8e636cb3913249adbfc8d611b3d429319aa1')
 
 prepare()  {
   tar -xvzf ./solar-${pkgver}.tar.gz
