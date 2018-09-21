@@ -4,7 +4,7 @@
 _launcher_ver=6
 pkgname=ungoogled-chromium-bin
 pkgver=69.0.3497.100
-pkgrel=1
+pkgrel=2
 pkgdesc="Modifications to Google Chromium for removing Google integration and enhancing privacy, control, and transparency (binary version)"
 arch=("x86_64")
 url="https://github.com/Eloston/ungoogled-chromium"
@@ -18,7 +18,7 @@ optdepends=("gnome-keyring: for storing passwords in GNOME keyring"
             "kdialog: needed for file dialogs in KDE"
             "kwallet: for storing passwords in KWallet"
             "pepper-flash: support for Flash content")
-source=("https://github.com/Eloston/ungoogled-chromium-binaries/releases/download/${pkgver}-1/ungoogled-chromium_${pkgver}-1_linux.tar.xz"
+source=("https://github.com/intika/ungoogled-chromium-binaries/releases/download/${pkgver}-1/ungoogled-chromium_${pkgver}-1_linux.tar.xz"
         "chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz"
         "chromium.desktop")
 sha256sums=("6c60b387ce1f64a4daa98d57690314eb53d2a5a22cf2058f78be989c8387bbd2"
