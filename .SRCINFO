@@ -35,7 +35,9 @@ pkgbase = freecad-linkstage3-git
 	depends = python2-shiboken2
 	conflicts = freecad
 	source = git+https://github.com/realthunder/FreeCAD.git#branch=LinkStage3
+	source = temporary_fixes.patch
 	sha256sums = SKIP
+	sha256sums = e6f374849dd96ac198c92ca33082ede99d35d516a1986b09fdbaaa9b4d663e2a
 
 pkgname = freecad-linkstage3-git
 

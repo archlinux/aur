@@ -1,0 +1,26 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 439c581f4..87c6308be 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -734,7 +734,7 @@ endif()
+                 add_compile_options(${OPENMPI_CFLAGS})
+                 link_directories(${OPENMPI_LIBRARY_DIRS})
+                 link_libraries(${OPENMPI_LIBRARIES})
+-                find_file(MpidotH mpi.h PATHS ${OPENMPI_INCLUDE_DIRS} NO_DEFAULT_PATH)
++                find_file(MpidotH mpi.h PATHS ${OPENMPI_INCLUDE_DIRS})
+                 if(NOT MpidotH)
+                     message( WARNING "mpi.h was not found. Check for error above.")
+                 endif()
+diff --git a/src/Gui/View3DInventorViewer.cpp b/src/Gui/View3DInventorViewer.cpp
+index 515857fe7..02ad4d891 100644
+--- a/src/Gui/View3DInventorViewer.cpp
++++ b/src/Gui/View3DInventorViewer.cpp
+@@ -2822,7 +2822,7 @@ void View3DInventorViewer::viewSelection()
+             default:
+                 break;
+         }
+-        cam->viewBoundingBox(box,aspectratio,1.0);
++        // cam->viewBoundingBox(box,aspectratio,1.0);
+     }
+ 
+     root->unref();

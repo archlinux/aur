@@ -67,15 +67,22 @@ optdepends=(
 _gitname='FreeCAD'
 source=(
   "git+https://github.com/realthunder/FreeCAD.git#branch=LinkStage3"
+  'temporary_fixes.patch'
 )
 sha256sums=(
   'SKIP'
+  'e6f374849dd96ac198c92ca33082ede99d35d516a1986b09fdbaaa9b4d663e2a'
 )
 
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/_//'
+}
+
+prepare() {
+  cd "${srcdir}/${_gitname}"
+  patch -Np1 -i "${srcdir}/temporary_fixes.patch"
 }
 
 build() {
