@@ -2,8 +2,8 @@
 
 _pkgname=LoopTools
 pkgname=looptools
-pkgver=2.14
-pkgrel=3
+pkgver=2.15
+pkgrel=1
 pkgdesc="package for evaluation of scalar and tensor one-loop integrals"
 url="http://www.feynarts.de/looptools"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('gcc-fortran')
 options=('staticlibs')
 source=("http://www.feynarts.de/looptools/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('753bba9d5dfbe4ef452e2b75307f47a8')
+md5sums=('6aedb3ac4dc97eb57311332741bffbd6')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
