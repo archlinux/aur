@@ -1,13 +1,13 @@
 pkgbase = leonidas-backgrounds
 	pkgdesc = Fedora 11 (Leonidas) backgrounds.
 	pkgver = 11.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://fedoraproject.org/wiki/Wallpapers#Fedora_11
 	arch = i686
 	arch = x86_64
 	license = CC-BY-SA
-	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/l/leonidas-backgrounds-11.0.0-13.fc27.src.rpm
-	sha256sums = e16fa63402c8808df3741352fe3b51f30c1e80b967bb034ffade844fd8fd94ae
+	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/l/leonidas-backgrounds-11.0.0-15.fc29.src.rpm
+	sha256sums = df6c3c6bf692fea4ab74a481d09b8dfb8b299216e38260c06f1936fed826bbf0
 
 pkgname = leonidas-backgrounds
 
