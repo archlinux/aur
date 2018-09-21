@@ -1,4 +1,5 @@
-# Maintainer: Det <nimetonmaili g-mail>
+# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Contributor: Det <nimetonmaili g-mail>
 # Based on nvidia-beta: https://aur.archlinux.org/packages/nvidia-beta/,
 #          nvidia-utils-beta: https://aur.archlinux.org/packages/nvidia-utils-beta/ and
 #          lib32-nvidia-utils-beta: https://aur.archlinux.org/packages/lib32-nvidia-utils-beta/
@@ -8,7 +9,7 @@
 _lib32=0
 
 pkgname=('nvidia-full-beta' 'nvidia-utils-full-beta' 'nvidia-egl-wayland-full-beta' 'nvidia-libgl-full-beta' 'opencl-nvidia-full-beta')
-pkgver=396.54
+pkgver=410.57
 pkgrel=1
 arch=('x86_64')
 url="http://www.nvidia.com/"
@@ -27,23 +28,25 @@ fi
 source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/$_pkg.run"
         '10-nvidia-drm-outputclass.conf'
         '20-nvidia.conf')
-md5sums=('710acf72a2d8dde844dd2638e0782819'
-         '4f5562ee8f3171769e4638b35396c55d'
-         '2640eac092c220073f0668a7aaff61f7')
-[[ $_pkg = NVIDIA-Linux-x86_64-$pkgver ]] && md5sums[0]='195afa93d400bdbb9361ede6cef95143'
+sha256sums=('1ad40d83ec712843c1b5593949abefc9093399fb26a418ae9a571fbd1d9b228e'
+            '3a5f66620501d8dd85085a35c2f9e85a2e0d56a1b565b2df1e9fabc40e643363'
+            '444c6cfceac08a52d0873a1f5146fea2eeb44e7952ca1cc08629786b691e92b4')
+[[ $_pkg = NVIDIA-Linux-x86_64-$pkgver ]] && sha256sums[0]='5c3c2e1fef0615c0002946c586c815a77676f4683304cc17d5bf323e7626a320'
 
 _extramodules=extramodules-ARCH
 
-# Patch
-#source+=('linux-4.11.patch')
-#md5sums+=('cc8941b6898d9daa0fb67371f57a56b6')
+# Patches
+## restore phys_to_dma support
+## https://bugs.archlinux.org/task/58074
+source+=('linux-4.16.patch')
+sha256sums+=('622ac792ec200b2239cb663c0010392118b78c9904973d82cd261165c16d6385')
 
 # Auto-add *.patch files from $startdir to source=()
 for _patch in $(find "$startdir" -maxdepth 1 -name '*.patch' -printf "%f\n"); do
   # Don't duplicate already listed ones
   if [[ ! " ${source[@]} " =~ " $_patch " ]]; then  # https://stackoverflow.com/a/15394738/1821548
     source+=("$_patch")
-    md5sums+=('SKIP')
+    sha256sums+=('SKIP')
   fi
 done
 
@@ -150,14 +153,17 @@ package_nvidia-libgl-full-beta() {
 }
 
 package_nvidia-egl-wayland-full-beta() {
-  pkgdesc="NVIDIA EGL Wayland library (libnvidia-egl-wayland.so.1.0.3) for 'nvidia-utils-full-beta'"
+  local _eglver='1.1.0'
+  
+  pkgdesc="NVIDIA EGL Wayland library (libnvidia-egl-wayland.so.${_eglver}) for 'nvidia-utils-beta'"
   depends=('nvidia-utils-full-beta')
   provides=('egl-wayland')
   conflicts=('egl-wayland')
   cd $_pkg
 
-  install -Dm755 libnvidia-egl-wayland.so.1.0.3 "$pkgdir"/usr/lib/libnvidia-egl-wayland.so.1.0.3
-  ln -s libnvidia-egl-wayland.so.1.0.3 "$pkgdir"/usr/lib/libnvidia-egl-wayland.so.1
+  install -D -m755 "libnvidia-egl-wayland.so.${_eglver}" -t "$pkgdir"/usr/lib
+  ln -s "libnvidia-egl-wayland.so.${_eglver}" "${pkgdir}/usr/lib/libnvidia-egl-wayland.so"
+  ln -s "libnvidia-egl-wayland.so.${_eglver}" "${pkgdir}/usr/lib/libnvidia-egl-wayland.so.1"
 }
 
 package_nvidia-utils-full-beta() {
@@ -178,9 +184,9 @@ package_nvidia-utils-full-beta() {
   install -Dm755 nvidia_drv.so "$pkgdir"/usr/lib/xorg/modules/drivers/nvidia_drv.so
 
   # GLX extension for X
-  install -Dm755 libglx.so.$pkgver "$pkgdir"/usr/lib/nvidia/xorg/libglx.so.$pkgver
-  ln -s libglx.so.$pkgver "$pkgdir"/usr/lib/nvidia/xorg/libglx.so.1   # X doesn't find glx otherwise
-  ln -s libglx.so.$pkgver "$pkgdir"/usr/lib/nvidia/xorg/libglx.so     # X doesn't find glx otherwise
+  install -D -m755 "libglxserver_nvidia.so.${pkgver}" -t "${pkgdir}/usr/lib/nvidia/xorg"
+  ln -s "libglxserver_nvidia.so.${pkgver}" "${pkgdir}/usr/lib/nvidia/xorg/libglxserver_nvidia.so.1"  # X doesn't find glx otherwise
+  ln -s "libglxserver_nvidia.so.${pkgver}" "${pkgdir}/usr/lib/nvidia/xorg/libglxserver_nvidia.so"    # X doesn't find glx otherwise
 
   # libGL & OpenGL
   install -Dm755 libGL.so.1.7.0 "$pkgdir"/usr/lib/nvidia/libGL.so.1.7.0
