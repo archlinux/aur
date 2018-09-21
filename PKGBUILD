@@ -1,7 +1,7 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 pkgname=cliqz
 _pkgname=browser-f
-pkgver=1.21.3
+pkgver=1.22.0
 pkgrel=1
 _cqzbuildid=$(curl "http://repository.cliqz.com.s3.amazonaws.com/dist/release/$pkgver/lastbuildid")
 pkgdesc="Firefox-based privacy aware web browser, build from sources"
@@ -13,8 +13,10 @@ depends=(gtk2 gtk3 libxt startup-notification dbus-glib nss libvpx libevent
 makedepends=(unzip zip diffutils python2 yasm mesa imake gconf inetutils xorg-server-xvfb
              autoconf2.13 rust clang llvm libnotify gtk2 gtk3 wget pulseaudio)
 conflicts=(cliqz-bin)
-source=("https://github.com/cliqz-oss/browser-f/archive/$pkgver.tar.gz")
-sha256sums=('d8f574f61e854c218f102c16764d64701d5a8c947a52f50ea85f7895455e5b54')
+source=("https://github.com/cliqz-oss/browser-f/archive/$pkgver.tar.gz"
+        init.configure.patch)
+sha256sums=('bcb598df874ba5c3fd904ea4f33b05600037062eed33a12899af1f96bda1245f'
+            '531ced6caeb57877e2b39d7aeb2eba3c03e15a1aaa5a27df3391e59b7d592549')
 options=(!emptydirs !makeflags !strip)
 
 prepare() {
@@ -26,6 +28,9 @@ prepare() {
   sed -i "s/@MOZ_APP_DISPLAYNAME@/$pkgname/g" toolkit/mozapps/installer/linux/rpm/mozilla.desktop
   sed -i "s/@MOZ_APP_NAME@/$pkgname/g" toolkit/mozapps/installer/linux/rpm/mozilla.desktop
   sed -i "s|^Exec=${pkgname}$|Exec=/usr/lib/${pkgname}/${pkgname} %u|" toolkit/mozapps/installer/linux/rpm/mozilla.desktop
+
+  # rust.configure problem
+  patch build/moz.configure/init.configure ../../init.configure.patch
 
   cat >> toolkit/mozapps/installer/linux/rpm/mozilla.desktop <<END
 Actions=new-forget-window;
@@ -83,7 +88,6 @@ ac_add_options --with-system-nss
 ac_add_options --with-system-libevent
 ac_add_options --with-system-png
 ac_add_options --enable-pulseaudio
-ac_add_options --enable-system-hunspell
 ac_add_options --enable-system-sqlite
 ac_add_options --enable-system-ffi
 
