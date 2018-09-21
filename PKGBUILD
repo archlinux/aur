@@ -1,13 +1,13 @@
 # Maintainer: Michal Ulianko <michal (dot) ulianko (at) gmail (dot) com>
 
 pkgname=coin-hg
-pkgver=r11806.e3c366fe1863
+pkgver=r11844.cf2a467adeca
 pkgrel=1
 pkgdesc="A high-level, retained-mode 3D graphics toolkit compatible with Open Inventor 2.1"
 arch=('x86_64')
 url="https://bitbucket.org/Coin3D/coin"
 license=('BSD')
-depends=('libgl')
+depends=('glu')
 makedepends=('mercurial' 'cmake' 'doxygen')
 provides=("${pkgname%-hg}")
 conflicts=("${pkgname%-hg}")
@@ -24,14 +24,16 @@ pkgver() {
 }
 
 build() {
-    cd "$srcdir/coin"
+    mkdir "$srcdir/build"
+    cd "$srcdir/build"
     cmake -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_INSTALL_PREFIX="/usr" \
-          -DCMAKE_INSTALL_LIBDIR="/usr/lib"
+          -DCMAKE_INSTALL_LIBDIR="/usr/lib" \
+          ../coin
     make
 }
 
 package() {
-    cd "$srcdir/coin"
+    cd "$srcdir/build"
     make DESTDIR="$pkgdir/" install
 }
