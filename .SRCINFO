@@ -1,0 +1,14 @@
+pkgbase = blackwallet
+	pkgdesc = Gerenciador de carteira de renda variável para ativos da Bovespa.
+	pkgver = rolling
+	pkgrel = 1
+	url = https://www.blackwallet.com.br
+	arch = x86_64
+	license = custom:blackwallet
+	options = !emptydirs
+	options = !strip
+	source = https://blackwallet.com.br/BlackWallet.tar.gz
+	sha256sums = 3d8c98af2f754fc4c91f15c7ccbad513feaf73565d198a7d6ee2da07e78ad48d
+
+pkgname = blackwallet
+
