@@ -1,14 +1,14 @@
 pkgbase = desktoggle-git
 	pkgdesc = Hide all windows and show the desktop.
-	pkgver = 1.6.r2.gbad6e2f
+	pkgver = 1.7.1.r15.g9aa9ddc
 	pkgrel = 1
 	url = https://github.com/rscholer/desktoggle
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = asciidoc
 	makedepends = git
 	makedepends = meson
+	makedepends = python-docutils
 	depends = libx11
 	provides = desktoggle
 	conflicts = desktoggle
