@@ -1,9 +1,12 @@
-# Maintainer: Det <nimetonmaili g-mail>
-# Contributors: Ng Oon-Ee, Dan Vratil
+# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Contributor: Det <nimetonmaili g-mail>
+# Contributor: Ng Oon-Ee
+# Contributor: Dan
+# Contributor: Vratil
 # Based on [extra]'s nvidia-utils: https://www.archlinux.org/packages/extra/x86_64/nvidia-utils/
 
 pkgname=('nvidia-utils-beta' 'nvidia-egl-wayland-beta' 'nvidia-libgl-beta' 'opencl-nvidia-beta')
-pkgver=396.54
+pkgver=410.57
 pkgrel=1
 arch=('x86_64')
 url="http://www.nvidia.com/"
@@ -13,9 +16,9 @@ _pkg="NVIDIA-Linux-x86_64-$pkgver-no-compat32"
 source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/$_pkg.run"
         '10-nvidia-drm-outputclass.conf'
         '20-nvidia.conf')
-md5sums=('710acf72a2d8dde844dd2638e0782819'
-         '4f5562ee8f3171769e4638b35396c55d'
-         '2640eac092c220073f0668a7aaff61f7')
+sha256sums=('1ad40d83ec712843c1b5593949abefc9093399fb26a418ae9a571fbd1d9b228e'
+            '3a5f66620501d8dd85085a35c2f9e85a2e0d56a1b565b2df1e9fabc40e643363'
+            '444c6cfceac08a52d0873a1f5146fea2eeb44e7952ca1cc08629786b691e92b4')
 
 _create_links() {
   # create missing soname links
@@ -95,14 +98,17 @@ package_nvidia-libgl-beta() {
 }
 
 package_nvidia-egl-wayland-beta() {
-  pkgdesc="NVIDIA EGL Wayland library (libnvidia-egl-wayland.so.1.0.3) for 'nvidia-utils-beta'"
+  local _eglver='1.1.0'
+  
+  pkgdesc="NVIDIA EGL Wayland library (libnvidia-egl-wayland.so.${_eglver}) for 'nvidia-utils-beta'"
   depends=('nvidia-utils-beta')
   provides=('egl-wayland')
   conflicts=('egl-wayland')
   cd $_pkg
 
-  install -Dm755 libnvidia-egl-wayland.so.1.0.3 "$pkgdir"/usr/lib/libnvidia-egl-wayland.so.1.0.3
-  ln -s libnvidia-egl-wayland.so.1.0.3 "$pkgdir"/usr/lib/libnvidia-egl-wayland.so.1
+  install -D -m755 "libnvidia-egl-wayland.so.${_eglver}" -t "$pkgdir"/usr/lib
+  ln -s "libnvidia-egl-wayland.so.${_eglver}" "${pkgdir}/usr/lib/libnvidia-egl-wayland.so"
+  ln -s "libnvidia-egl-wayland.so.${_eglver}" "${pkgdir}/usr/lib/libnvidia-egl-wayland.so.1"
 }
 
 package_nvidia-utils-beta() {
@@ -123,9 +129,9 @@ package_nvidia-utils-beta() {
   install -Dm755 nvidia_drv.so "$pkgdir"/usr/lib/xorg/modules/drivers/nvidia_drv.so
 
   # GLX extension for X
-  install -Dm755 libglx.so.$pkgver "$pkgdir"/usr/lib/nvidia/xorg/libglx.so.$pkgver
-  ln -s libglx.so.$pkgver "$pkgdir"/usr/lib/nvidia/xorg/libglx.so.1   # X doesn't find glx otherwise
-  ln -s libglx.so.$pkgver "$pkgdir"/usr/lib/nvidia/xorg/libglx.so     # X doesn't find glx otherwise
+  install -D -m755 "libglxserver_nvidia.so.${pkgver}" -t "${pkgdir}/usr/lib/nvidia/xorg"
+  ln -s "libglxserver_nvidia.so.${pkgver}" "${pkgdir}/usr/lib/nvidia/xorg/libglxserver_nvidia.so.1"  # X doesn't find glx otherwise
+  ln -s "libglxserver_nvidia.so.${pkgver}" "${pkgdir}/usr/lib/nvidia/xorg/libglxserver_nvidia.so"    # X doesn't find glx otherwise
 
   # libGL & OpenGL
   install -Dm755 libGL.so.1.7.0 "$pkgdir"/usr/lib/nvidia/libGL.so.1.7.0

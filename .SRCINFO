@@ -1,16 +1,16 @@
 pkgbase = nvidia-utils-beta
-	pkgver = 396.54
+	pkgver = 410.57
 	pkgrel = 1
 	url = http://www.nvidia.com/
 	arch = x86_64
 	license = custom:NVIDIA
 	options = !strip
-	source = http://us.download.nvidia.com/XFree86/Linux-x86_64/396.54/NVIDIA-Linux-x86_64-396.54-no-compat32.run
+	source = http://us.download.nvidia.com/XFree86/Linux-x86_64/410.57/NVIDIA-Linux-x86_64-410.57-no-compat32.run
 	source = 10-nvidia-drm-outputclass.conf
 	source = 20-nvidia.conf
-	md5sums = 710acf72a2d8dde844dd2638e0782819
-	md5sums = 4f5562ee8f3171769e4638b35396c55d
-	md5sums = 2640eac092c220073f0668a7aaff61f7
+	sha256sums = 1ad40d83ec712843c1b5593949abefc9093399fb26a418ae9a571fbd1d9b228e
+	sha256sums = 3a5f66620501d8dd85085a35c2f9e85a2e0d56a1b565b2df1e9fabc40e643363
+	sha256sums = 444c6cfceac08a52d0873a1f5146fea2eeb44e7952ca1cc08629786b691e92b4
 
 pkgname = nvidia-utils-beta
 	pkgdesc = NVIDIA driver utilities and libraries (beta version)
@@ -22,8 +22,8 @@ pkgname = nvidia-utils-beta
 	optdepends = opencl-nvidia-beta: OpenCL support
 	optdepends = xorg-server-devel: nvidia-xconfig
 	optdepends = egl-wayland-git: for alternative, more advanced Wayland library (libnvidia-egl-wayland.so.1.0.3)
-	provides = nvidia-utils=396.54
-	provides = nvidia-settings=396.54
+	provides = nvidia-utils=410.57
+	provides = nvidia-settings=410.57
 	provides = libglvnd
 	provides = vulkan-driver
 	conflicts = nvidia-utils
@@ -32,7 +32,7 @@ pkgname = nvidia-utils-beta
 	backup = etc/X11/xorg.conf.d/20-nvidia.conf
 
 pkgname = nvidia-egl-wayland-beta
-	pkgdesc = NVIDIA EGL Wayland library (libnvidia-egl-wayland.so.1.0.3) for 'nvidia-utils-beta'
+	pkgdesc = NVIDIA EGL Wayland library (libnvidia-egl-wayland.so.) for 'nvidia-utils-beta'
 	depends = nvidia-utils-beta
 	provides = egl-wayland
 	conflicts = egl-wayland
@@ -40,7 +40,7 @@ pkgname = nvidia-egl-wayland-beta
 pkgname = nvidia-libgl-beta
 	pkgdesc = NVIDIA driver library symlinks for 'nvidia-utils-beta'
 	depends = nvidia-utils-beta
-	provides = nvidia-libgl=396.54
+	provides = nvidia-libgl=410.57
 	provides = libgl
 	provides = libegl
 	provides = libgles
@@ -53,7 +53,7 @@ pkgname = opencl-nvidia-beta
 	pkgdesc = NVIDIA's OpenCL implemention for 'nvidia-utils-beta'
 	depends = zlib
 	optdepends = opencl-headers: headers necessary for OpenCL development
-	provides = opencl-nvidia=396.54
+	provides = opencl-nvidia=410.57
 	provides = opencl-driver
 	conflicts = opencl-nvidia
 
