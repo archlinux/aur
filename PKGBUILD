@@ -1,9 +1,9 @@
-# Maintainer: Carmeo <carmelo at cock dot li>
+# Maintainer: Drym <drym at airmail.cc>
 # Contributors: Det, Achilleas Pipinellis, speed145a, Schnouki
 
 _launcher_ver=6
 pkgname=ungoogled-chromium-bin
-pkgver=67.0.3396.87
+pkgver=69.0.3497.100
 pkgrel=1
 pkgdesc="Modifications to Google Chromium for removing Google integration and enhancing privacy, control, and transparency (binary version)"
 arch=("x86_64")
@@ -18,10 +18,10 @@ optdepends=("gnome-keyring: for storing passwords in GNOME keyring"
             "kdialog: needed for file dialogs in KDE"
             "kwallet: for storing passwords in KWallet"
             "pepper-flash: support for Flash content")
-source=("https://github.com/Eloston/ungoogled-chromium-binaries/releases/download/${pkgver}-2/ungoogled-chromium_${pkgver}-2_linux.tar.xz"
+source=("https://github.com/Eloston/ungoogled-chromium-binaries/releases/download/${pkgver}-1/ungoogled-chromium_${pkgver}-1_linux.tar.xz"
         "chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz"
         "chromium.desktop")
-sha256sums=("8057d74354f0a133052e994459e795171707d6c7f391c9596dd4f2d20d78aa62"
+sha256sums=("6c60b387ce1f64a4daa98d57690314eb53d2a5a22cf2058f78be989c8387bbd2"
             "04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1"
             "15898507b5bda1e56e303c7e7f54b80d6363e8f77321d29067eef15f4c5deeb5")
 
