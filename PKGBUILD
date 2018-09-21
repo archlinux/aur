@@ -6,8 +6,8 @@ pkgdesc="Hitch is a libev-based high performance SSL/TLS proxy."
 arch=('x86_64' 'i686')
 url="https://hitch-tls.org/"
 license=('GPL')
-depends=('libev' 'openssl' 'python-docutils')
-makedepends=('git' 'lsof')
+depends=('libev' 'openssl')
+makedepends=('git' 'lsof' 'python-docutils')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(
@@ -34,7 +34,7 @@ build() {
         --prefix=/usr \
         --sbindir=/usr/bin \
         --enable-sessioncache
-	make
+    make CFLAGS=-Wno-error=discarded-qualifiers 
 }
 
 check() {
