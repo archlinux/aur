@@ -1,4 +1,8 @@
+pre_install() {
+    echo 'WARNING: By installing this package, you agree to its license terms!'
+}
+
 post_upgrade() {
-	echo 'Warning: If you had a license file in /usr/local/diamond/<version>/license/license.dat, it will not be automatically removed.'
+	echo 'WARNING: If you had a license file in /usr/local/diamond/<version>/license/license.dat, it will not be automatically removed.'
 	echo 'You can manually delete or move it to the new install directory.'
 }
