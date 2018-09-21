@@ -1,13 +1,13 @@
 pkgbase = f22-backgrounds
 	pkgdesc = Fedora 22 backgrounds.
 	pkgver = 22.1.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://fedoraproject.org/wiki/Wallpapers#Fedora_22
 	arch = i686
 	arch = x86_64
 	license = CC-BY-SA
-	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/f/f22-backgrounds-22.1.1-3.fc27.src.rpm
-	sha256sums = 7914adbdb36d64cc2f1b7bf52cd1bd5a6e8a333cacd90369e5c4f7da8494ecf0
+	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/f/f22-backgrounds-22.1.1-5.fc29.src.rpm
+	sha256sums = 2aa721a08dce57c5de9132d758c3ae43f90a5d6be76a65bb93aa29d28267fc2a
 
 pkgname = f22-backgrounds
 

@@ -2,15 +2,15 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=f22-backgrounds
 pkgver=22.1.1
-pkgrel=4
-_rhver="${pkgver}-3.fc27"
+pkgrel=5
+_rhver="${pkgver}-5.fc29"
 pkgdesc="Fedora 22 backgrounds."
 arch=("i686" "x86_64")
 url="https://fedoraproject.org/wiki/Wallpapers#Fedora_22"
 license=("CC-BY-SA")
 _rhlink="https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages"
 source=("${_rhlink}/f/${pkgname}-${_rhver}.src.rpm")
-sha256sums=('7914adbdb36d64cc2f1b7bf52cd1bd5a6e8a333cacd90369e5c4f7da8494ecf0')
+sha256sums=('2aa721a08dce57c5de9132d758c3ae43f90a5d6be76a65bb93aa29d28267fc2a')
 
 prepare()  {
   tar -xvJf ./${pkgname}-${pkgver}.tar.xz
