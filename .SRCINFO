@@ -1,14 +1,14 @@
 pkgbase = latex-beamer
 	pkgdesc = Beamer is a LaTeX class for creating slides for presentations.
-	pkgver = 3.53
+	pkgver = 3.54
 	pkgrel = 1
 	url = https://github.com/josephwright/beamer
 	install = latex-beamer.install
 	arch = any
 	license = GPL2
 	depends = texlive-core
-	source = latex-beamer-3.53::https://github.com/josephwright/beamer/archive/v3.53.tar.gz
-	sha256sums = 4647112e54c405a07d1eb0dc2b69a3ae27dc2ea2d7e42c81bc215a523ec25302
+	source = latex-beamer-3.54::https://github.com/josephwright/beamer/archive/v3.54.tar.gz
+	sha256sums = 39949b28c6ed995ecbd1cd2e18b2b22f0197538f6b8e9740425115f17e99a091
 
 pkgname = latex-beamer
 
