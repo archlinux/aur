@@ -1,35 +1,38 @@
+# Maintainer: Fanch
+# Maintainer: Alexandre Teles (afterSt0rm) <ateles.1@gmail.com>
 
 _pkgname=dontpanic
 pkgname=${_pkgname}-latest
 pkgver=2.0
 pkgrel=2
-#epoch=1
-pkgdesc="Dontpanic is a python app to look for any movie or serie and watch them in 'streaming'. It looks like popcorntime, but doesn't depend of a centralized api."
-arch=(any)
-#url=http://3hg.toile-libre.org/dontpanic/index.html
-url=https://3hg.fr/dontpanic/index.html
-license=(GPL3)
 
-depends=('python-bottle' 'python-requests' 'python-beautifulsoup4' 'sqlite' 'libtorrent-rasterbar')
+pkgdesc="Dontpanic is a free (as in "freedom") python application to look for any movie or serie and watch them in "streaming". It looks like popcorntime or torrent time, but doesn't depend of a centralized api."
+
+arch=(any)
+url=https://3hg.fr/Bonus/dontpanic/index.html
+license=(MIT)
+
+depends=('python-bottle' 'python-requests' 'python-beautifulsoup4' 'sqlite' 'libtorrent-rasterbar' 'xdg-utils')
 optdepends=('python-cherrypy: for server mode')
 makedepends=('git')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
-#source=("${_pkgname}::http://3hg.toile-libre.org/dontpanic/downloads/dontpanic-latest.tgz")
-source=("${_pkgname}::https://3hg.fr/dontpanic/downloads/dontpanic-latest.tgz")
+source=("https://framagit.org/Thuban/dontpanic/repository/master/archive.tar.gz")
+noextract=("archive.tar.gz")
 
-sha256sums=('a79fc5d008cfc1f46da430ea56c19c39ab4128a8c93d95554b77b395dede54c3')
+sha256sums=('7eee2a596f75d69f5be09870722fe0f2ee7a0270ab39dfa943426a6f964ed493')
 
 pkgver() {
-	 #wget -qO- http://3hg.toile-libre.org/dontpanic/version
-	 #curl -s http://3hg.toile-libre.org/dontpanic/version
-         curl -s https://3hg.fr/dontpanic/version
+    curl -s https://3hg.fr/Bonus/dontpanic/version
+}
+
+prepare() {
+    mkdir dontpanic && tar zxvf archive.tar.gz -C dontpanic --strip-components 1
 }
 
 package() {
-    
     install -dm755 "${pkgdir}/usr/bin"
     install -dm755 "${pkgdir}/usr/share"
     install -dm755 "${pkgdir}/usr/share/${_pkgname}/"
@@ -68,8 +71,7 @@ package() {
     
     install -Dm644 "${srcdir}/${_pkgname}/dontpanic.desktop" "${pkgdir}/usr/share/applications/dontpanic.desktop"
 
-    install  -Dm644 "${srcdir}/${_pkgname}/dontpanic.1.gz" "${pkgdir}/usr/share/man/man1/"
-    
+    install  -Dm644 "${srcdir}/${_pkgname}/dontpanic.1.gz" "${pkgdir}/usr/share/man/man1/"    
 }
 
 
