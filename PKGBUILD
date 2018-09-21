@@ -4,7 +4,7 @@ _pkgname2=spyder
 _pkgname3=spyder3
 pkgbase=$_pkgname2-git
 pkgname=($_pkgname2-git $_pkgname3-git)
-pkgver=3.3.0.r1455.g678cedc97
+pkgver=4.0.0b1.r843.g603b4cf80
 pkgrel=1
 arch=('any')
 url="https://www.spyder-ide.org/"
@@ -71,7 +71,7 @@ package_spyder-git() {
   python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
   # Install a scalable icon for the spyder.desktop file
   install -Dm644 spyder/images/spyder.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/spyder.svg"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname2/LICENSE"
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$_pkgname2/LICENSE.txt"
   rm -f "$pkgdir/usr/bin/spyder_win_post_install.py"
 }
 
@@ -111,7 +111,7 @@ package_spyder3-git() {
   python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
   # Install a scalable icon for the spyder3.desktop file
   install -Dm644 spyder/images/spyder.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/spyder3.svg"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname3/LICENSE"
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$_pkgname3/LICENSE.txt"
   rm -f "$pkgdir/usr/bin/spyder_win_post_install.py"
 }
 
