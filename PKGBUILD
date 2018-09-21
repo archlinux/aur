@@ -3,7 +3,7 @@
 _pkgname=simavr
 pkgbase=$_pkgname-git
 pkgname=($pkgbase $pkgbase-examples)
-pkgver=1.6.0.20
+pkgver=1.6.0.30
 pkgrel=1
 pkgdesc='A lean, mean and hackable AVR simulator'
 arch=('x86_64')
@@ -14,9 +14,6 @@ makedepends=('avr-libc' 'git' 'freeglut' 'glu')
 source=("$pkgbase::git+https://github.com/buserror/simavr.git")
 options=(!strip)
 md5sums=('SKIP')
-provides=(simavr)
-conflicts=(simavr)
-replaces=(simavr)
 
 pkgver()
 {
@@ -48,6 +45,8 @@ build() {
 
 eval 'package_'$pkgbase'() {
 	cd $srcdir/$pkgbase
+	provides=($_pkgname)
+	conflicts=($_pkgname)
 
 	make PREFIX="/usr" DESTDIR="$pkgdir/usr" RELEASE=1 install
 }
