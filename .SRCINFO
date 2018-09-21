@@ -1,7 +1,7 @@
 pkgbase = intel-media-sdk-git
 	pkgdesc = API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics (git version)
 	pkgver = 2018.3.pre1.r64.g7557124
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Intel-Media-SDK/MediaSDK/
 	arch = x86_64
 	license = MIT
