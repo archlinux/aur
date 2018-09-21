@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=dns-lexicon
-pkgver=2.7.6
+pkgver=2.7.7
 pkgrel=1
 pkgdesc="Manipulate DNS records on various DNS providers in a standardized/agnostic way"
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=('python-softlayer: for SoftLayer support'
 checkdepends=('python-pytest-runner' 'python-vcrpy' 'python-softlayer' 'python-boto3'
               'python-pynamecheap' 'python-zeep' 'python-xmltodict')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/AnalogJ/lexicon/archive/v$pkgver.tar.gz")
-sha512sums=('a1a1f77e7f9cf409b9cb8f9005dcff1eee24eee5a08a6f83c692ddfdd9876ef88a9174c6bb935340fa8f80ec9cd07eede709fbee2d7ccbaa1cc9e4c26c3be7d9')
+sha512sums=('cf89806d7441e5a78fb35c274c4292d8d2489c7e80450b6b9f958d851bd467cff8e9d24372f990ba3449c619932c5ca5de789ba8b3d0884b2e36e683e785c34a')
 
 build() {
   cd lexicon-$pkgver
