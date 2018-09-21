@@ -1,13 +1,13 @@
 pkgbase = verne-backgrounds
 	pkgdesc = Fedora 16 (Verne) backgrounds.
 	pkgver = 15.92.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://fedoraproject.org/wiki/Wallpapers#Fedora_16
 	arch = i686
 	arch = x86_64
 	license = CC-BY-SA
-	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/v/verne-backgrounds-15.92.1-12.fc27.src.rpm
-	sha256sums = b2008401317356d3e0704690e6fb346ad9d11989e35ac16a9e6a523b6d8d006f
+	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/v/verne-backgrounds-15.92.1-14.fc29.src.rpm
+	sha256sums = 0cb3b02078388b214e40837883dd98d90da13da3bcb30e002a394c986077c620
 
 pkgname = verne-backgrounds
 
