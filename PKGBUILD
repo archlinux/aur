@@ -3,7 +3,7 @@
 
 pkgname=freecad-linkstage3-git
 pkgver=asm3.0.5.3.r1537.g234333df9
-pkgrel=1
+pkgrel=2
 pkgdesc='A general purpose 3D CAD modeler - LinkStage3 dev branch, git checkout'
 arch=('x86_64')
 url='http://www.freecadweb.org/'
@@ -112,5 +112,5 @@ package() {
   cd "${srcdir}/${_gitname}/build"
 
   DESTDIR="${pkgdir}" ninja install
-  # ln -sf /opt/FreeCAD/bin/FreeCAD /usr/bin/freecad-git
+  ln -s /usr/lib/freecad/bin/FreeCAD /usr/bin/freecad
 }
