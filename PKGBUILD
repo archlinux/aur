@@ -1,9 +1,9 @@
 # Maintainer: Jean-Michaël Celerier <jeanmichael.celerier at gmail dot com>
 pkgname=ossia-score
-pkgver=2.0.0a17
-release_tag=v2.0.0-a17
+pkgver=2.0.0a19
+release_tag=v2.0.0-a19
 pkgrel=1
-pkgdesc="Ossia Score, an interactive sequencer for the intermedia arts"
+pkgdesc="ossia score, an interactive sequencer for the intermedia arts"
 arch=('x86_64')
 url="http://ossia.io"
 license=('GPLv3')
