@@ -3,14 +3,14 @@
 
 pkgname=tome4-git
 _pkgname=tome4
-pkgver=tome.1.3.0.r534.g63b5c91
+pkgver=1.5.0.r476.g304327e08
 pkgrel=1
 pkgdesc="An open-source, single-player, role-playing roguelike game set in the world of Eyal."
 arch=('i686' 'x86_64')
 url="http://tome.te4.org/"
 license=('custom' 'GPL3')
 depends=('glu' 'openal' 'libvorbis' 'sdl2_ttf>=2.0.12' 'sdl2_image>=2.0.0' )
-makedepends=('premake' 'zip' 'unzip')
+makedepends=('git' 'premake' 'zip' 'unzip')
 options=(!makeflags emptydirs)
 source=("git+http://git.net-core.org/tome/t-engine4.git"
 	aur-${_pkgname}.patch
@@ -26,7 +26,7 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "${srcdir}/t-engine4"
-    git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+    git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/tome.//g'
 }
 
 ###############################################################################
@@ -44,7 +44,7 @@ prepare() {
 build() {
 	cd t-engine4
 	premake4 gmake
-	make config=release
+	make config=debug
 }
 
 ###############################################################################
