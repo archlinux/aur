@@ -1,7 +1,7 @@
 # Maintainer: Florian Pritz <bluewind@xinu.at>
 
 pkgname=perl-app-borgrestore
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc='Restore paths from borg backups'
 arch=(any)
@@ -10,7 +10,7 @@ options=(!emptydirs)
 depends=('perl>=5.14.0' perl-dbd-sqlite perl-dbi perl-file-pushd
          perl-function-parameters perl-ipc-run perl-json perl-log-any
          perl-log-any-adapter-log4perl perl-log-log4perl
-         perl-number-bytes-human perl-path-tiny perl-timedate
+         perl-number-bytes-human perl-path-tiny perl-strictures perl-timedate
          perl-version-compare borg)
 makedepends=(perl-devel-checkbin 'perl-module-build-tiny>=0.035')
 checkdepends=(perl-log-any-adapter-tap perl-software-license
@@ -18,8 +18,8 @@ checkdepends=(perl-log-any-adapter-tap perl-software-license
               perl-test-pod perl-test-pod-coverage)
 url=https://metacpan.org/release/App-BorgRestore
 source=("http://search.cpan.org/CPAN/authors/id/B/BL/BLUEWIND/App-BorgRestore-$pkgver.tar.gz")
-md5sums=(94ac6d7ca0d502c8144c5a19266ffb32)
-sha512sums=(831efbbc32e6dad3b9250cc2e62f515e0d2c84e91640335bb12f495952ec972a621ae8977943b3caad890d3b2087465e9efef4dd596c54ea3bfb654bbd7e96f5)
+md5sums=(ecd4714c44bfd7f703bfc90b9e37ff23)
+sha512sums=(89262c08f0d7a780c26614ae77c80e6946aa38327ebfc32e526c549a60efa466b94ee65769475c7a2923ea2be75d326432048394b6a18739a79c5ca5a05079b1)
 _ddir="App-BorgRestore-$pkgver"
 
 build()
