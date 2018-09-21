@@ -1,7 +1,7 @@
 pkgbase = matchbox
 	pkgdesc = Network boot and provision Container Linux clusters
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://coreos.com/matchbox/docs/latest/
 	arch = x86_64
 	arch = i686

@@ -1,7 +1,7 @@
 # Maintainer: Sergey Shatunov <me@prok.pw>
 pkgname=matchbox
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Network boot and provision Container Linux clusters"
 arch=("x86_64" "i686" "arm" "armv6h" "armv7h" "aarch64")
 url="https://coreos.com/matchbox/docs/latest/"
@@ -29,5 +29,7 @@ package() {
   cd $pkgname
   install -Dm755 bin/$pkgname "$pkgdir/usr/bin/$pkgname"
   objcopy --remove-section .note.go.buildid "$pkgdir/usr/bin/$pkgname"
-  install -Dm544 contrib/systemd/$pkgname.service "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+  install -Dm644 contrib/systemd/$pkgname.service "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+  install -dm755 "$pkgdir/var/lib/matchbox{,/assets}"
+  install -dm755 "$pkgdir/etc/matchbox"
 }
