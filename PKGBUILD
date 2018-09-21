@@ -2,15 +2,15 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=lovelock-backgrounds
 pkgver=14.91.1
-pkgrel=3
-_rhver="${pkgver}-12.fc27"
+pkgrel=4
+_rhver="${pkgver}-14.fc29"
 pkgdesc="Fedora 15 (Lovelock) backgrounds."
 arch=("i686" "x86_64")
 url="https://fedoraproject.org/wiki/Wallpapers#Fedora_15"
 license=("CC-BY-SA")
 _rhlink="https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages"
 source=("${_rhlink}/l/${pkgname}-${_rhver}.src.rpm")
-sha256sums=('2af7eabb4102c23fa592e3401fb0706a0672b1865e65af6af525c904ed4cb287')
+sha256sums=('8e0483f864d9b055b854895431185513a98b4d150444700e0ad114627e508537')
 
 prepare()  {
   tar -xvJf ./${pkgname}-${pkgver}.tar.xz
