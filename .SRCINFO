@@ -1,7 +1,8 @@
 pkgbase = evostream-systemd
 	pkgdesc = EvoStream Media Server SystemD service
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
+	install = evostream-systemd.install
 	arch = any
 	license = MIT
 	makedepends = git
@@ -9,4 +10,5 @@ pkgbase = evostream-systemd
 	md5sums = SKIP
 
 pkgname = evostream-systemd
+	depends = evostreamms
 

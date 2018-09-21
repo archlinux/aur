@@ -1,0 +1,13 @@
+post_install() {
+	systemctl daemon-reload
+}
+
+pre_remove() {
+	systemctl stop evostreamms evostreamms-webui evostreamms-webservices
+	systemctl disable evostreamms evostreamms-webui evostreamms-webservices
+}
+
+post_remove() {
+	systemctl daemon-reload
+	systemctl reset-failed
+}
