@@ -1,9 +1,14 @@
-# Maintainer: Det <nimetonmaili g-mail>
-# Contributors: Ng Oon-Ee, Dan Vratil, Jeremy Sands, Erik Hardesty, josephgbr
+# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Contributor: Det <nimetonmaili g-mail>
+# Contributor: Ng Oon-Ee
+# Contributor: Dan Vratil
+# Contributor: Jeremy Sands
+# Contributor: Erik Hardesty
+# Contributor: josephgbr
 # Based on [multilib]'s lib32-nvidia-utils: https://www.archlinux.org/packages/multilib/x86_64/lib32-nvidia-utils/
 
 pkgname=('lib32-nvidia-utils-beta' 'lib32-nvidia-libgl-beta' 'lib32-opencl-nvidia-beta')
-pkgver=396.54
+pkgver=410.57
 pkgrel=1
 arch=('x86_64')
 url="http://www.nvidia.com/"
@@ -12,7 +17,7 @@ license=('custom:NVIDIA')
 options=('!strip')
 _pkg="NVIDIA-Linux-x86_64-$pkgver"
 source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/$_pkg.run")
-md5sums=('195afa93d400bdbb9361ede6cef95143')
+sha256sums=('5c3c2e1fef0615c0002946c586c815a77676f4683304cc17d5bf323e7626a320')
 
 _create_links() {
   # create missing soname links
