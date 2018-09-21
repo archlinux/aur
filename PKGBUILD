@@ -2,7 +2,7 @@
 # Contributor: Konstantinos Sideris <siderisk at auth dot gr>
 
 pkgname=nheko
-pkgver=0.5.4
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Desktop client for the Matrix protocol"
 arch=("i686" "x86_64")
@@ -10,11 +10,11 @@ arch=("i686" "x86_64")
 url="https://github.com/mujx/nheko"
 license=("GPL3")
 
-depends=("lmdb" "qt5-multimedia" "qt5-svg" "libsodium" "boost-libs" "hicolor-icon-theme")
+depends=("lmdb" "qt5-multimedia" "qt5-svg" "libsodium" "boost-libs" "hicolor-icon-theme" "cmark")
 makedepends=("cmake" "fontconfig" "qt5-tools" "git" "boost")
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mujx/nheko/archive/v$pkgver.tar.gz")
-sha512sums=('7452233a36db2d517abf4873e60f506e64f84d2cca79e1c7a137e01131ec6304605f86e7b36c6b712218231adbe866e6d36b0801303420d4921635615a36b7cc')
+sha512sums=('ebdbb74e1ab57dc8cdb350b01fcf1869a0bf8394eddd565cb89adcb24140d0bb4dddc486fc3d49e22522fd465f952eb027b4c104282955acea270257f246c7a1')
 
 prepare() {
     rm -f "$pkgname-$pkgver"/cmake/FindOlm.cmake
@@ -22,7 +22,7 @@ prepare() {
 
 build() {
     cd "$pkgname-$pkgver"
-    cmake -Hdeps -B.deps -DUSE_BUNDLED_BOOST=OFF
+    cmake -Hdeps -B.deps -DUSE_BUNDLED_BOOST=OFF -DUSE_BUNDLED_CMARK=OFF
     cmake --build .deps
 
     cmake -H. -Bbuild -DCMAKE_BUILD_TYPE=Release \

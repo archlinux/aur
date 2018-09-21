@@ -1,6 +1,6 @@
 pkgbase = nheko
 	pkgdesc = Desktop client for the Matrix protocol
-	pkgver = 0.5.4
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/mujx/nheko
 	arch = i686
@@ -17,8 +17,9 @@ pkgbase = nheko
 	depends = libsodium
 	depends = boost-libs
 	depends = hicolor-icon-theme
-	source = nheko-0.5.4.tar.gz::https://github.com/mujx/nheko/archive/v0.5.4.tar.gz
-	sha512sums = 7452233a36db2d517abf4873e60f506e64f84d2cca79e1c7a137e01131ec6304605f86e7b36c6b712218231adbe866e6d36b0801303420d4921635615a36b7cc
+	depends = cmark
+	source = nheko-0.6.0.tar.gz::https://github.com/mujx/nheko/archive/v0.6.0.tar.gz
+	sha512sums = ebdbb74e1ab57dc8cdb350b01fcf1869a0bf8394eddd565cb89adcb24140d0bb4dddc486fc3d49e22522fd465f952eb027b4c104282955acea270257f246c7a1
 
 pkgname = nheko
 
