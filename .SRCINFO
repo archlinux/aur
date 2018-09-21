@@ -1,6 +1,6 @@
 pkgbase = raven-qt
 	pkgdesc = Cryptocurrency wallet(QT)
-	pkgver = 2.0.4
+	pkgver = 2.0.4.1
 	pkgrel = 1
 	url = https://ravencoin.org/
 	install = raven-qt.install
@@ -9,16 +9,20 @@ pkgbase = raven-qt
 	license = MIT
 	makedepends = boost
 	makedepends = qt5-tools
+	depends = openssl-1.0
 	depends = boost-libs
-	depends = qt5-base
-	depends = qrencode
-	depends = miniupnpc
-	depends = db4.8
-	depends = zeromq
-	depends = protobuf
 	depends = libevent
+	depends = db4.8
+	depends = qt5-base
+	depends = protobuf
+	optdepends = miniupnpc: Automatic UPnP port mapping
+	optdepends = qrencode: For generating QR codes within the GUI
+	optdepends = zeromq: Send notifications via zeromq
+	provides = raven-qt
+	provides = ravencoind
+	provides = ravencoin-tx
 	conflicts = raven
-	source = raven-qt::git+http://github.com/RavenProject/Ravencoin.git#tag=v2.0.4
+	source = raven-qt::git+http://github.com/RavenProject/Ravencoin.git#tag=v2.0.4.1
 	source = raven-qt.desktop
 	sha256sums = SKIP
 	sha256sums = e318e3c5a9fbdbcf5836f9ceee76f4a73acdcb47c535cb7beb1c19937b8540df
