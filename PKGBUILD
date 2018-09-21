@@ -32,7 +32,6 @@ pkgver() {
 
 prepare() {
   cd seahorse/
-  #patch -Np1 -i ../0001-LDAP-source-Fix-non-debug-build.patch
 }
 
 build() {
@@ -46,5 +45,5 @@ check() {
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja -C build install
+  DESTDIR="$pkgdir" meson install -C build
 }
