@@ -4,9 +4,9 @@
 
 pkgname=('pamac-aur-git' 'pamac-aur-tray-appindicator-git') 
 _pkgname=pamac
-pkgver=7.0.1.r20.g250cad7
+pkgver=7.0.1.r26.g45407a0
 _pkgver=7.0.1
-pkgrel=3
+pkgrel=1
 pkgdesc="A Gtk3 frontend for libalpm - git version"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://gitlab.manjaro.org/applications/pamac"
@@ -36,8 +36,6 @@ prepare() {
   cd "$_pkgname"
   sed -i -e "s|\"$_pkgver\"|\"$pkgver-$pkgrel\"|g" src/manager_window.vala
   # patches here
-  # pamac bug #479 workaround
-  sed -i -e '/launcher.set_child_setup (pty.child_setup);/d' src/transaction-gtk.vala
 }
 
 build() {
