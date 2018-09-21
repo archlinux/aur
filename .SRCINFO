@@ -1,0 +1,17 @@
+pkgbase = nvhda-dkms-git
+	pkgdesc = Kernel driver to dynamically enable/disable NVIDIA HDMI audio output in optimus laptops
+	pkgver = r10.3e13d2e
+	pkgrel = 1
+	url = https://github.com/hhfeuer/nvhda.git
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = nvidia
+	makedepends = linux-headers
+	source = git+https://github.com/hhfeuer/nvhda.git
+	md5sums = SKIP
+
+pkgname = nvhda-dkms-git
+
