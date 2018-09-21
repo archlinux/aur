@@ -1,12 +1,14 @@
 pkgbase = evostream-libavbin
 	pkgdesc = libav project compiled by EvoStream
 	pkgver = 2.0.1.5649
-	pkgrel = 1
+	pkgrel = 2
 	url = https://evostream.com/
 	arch = x86_64
 	arch = i686
 	license = custom
 	makedepends = poppler
+	provides = evostreamms-libavbin
+	conflicts = evostreamms-libavbin
 	noextract = Evostream-Media-Server-EULA-v2.pdf
 	source = http://apt.evostream.com/release/debian/9.4/pool/main/e/evostream-libavbin/evostream-libavbin_2.0.1.5649-1_amd64.deb
 	source = https://evostream.com/public/files/Evostream-Media-Server-EULA-v2.pdf
