@@ -1,14 +1,12 @@
 pkgbase = foldingathome-noroot
 	pkgdesc = Folding@Home client that does not run as the root user.
-	pkgver = 7.4.4
-	pkgrel = 3
-	url = http://folding.stanford.edu/
+	pkgver = 7.5.1
+	pkgrel = 1
+	url = http://foldingathome.org
 	install = foldingathome.install
-	arch = i686
 	arch = x86_64
 	license = CUSTOM
 	depends = zlib
-	depends = bzip2
 	depends = bash
 	optdepends = opencl-nvidia: for folding with an nVidia GPU
 	optdepends = cuda: for folding with an nVidia GPU
@@ -21,13 +19,11 @@ pkgbase = foldingathome-noroot
 	source = foldingathome.service
 	source = fah-config
 	source = foldingathome.install
-	md5sums = 40530df579e406fa29e6535adf2c0c22
-	md5sums = bb0bca34f6f32c8bd46dfcdcd6abe1f6
-	md5sums = 12accb9cd18aaa13d8b2f1ce6fa169d0
-	source_i686 = https://fah.stanford.edu/file-releases/public/release/fahclient/debian-testing-32bit/v7.4/fahclient_7.4.4_i386.deb
-	md5sums_i686 = 4aedf35b0adaaa5c8f5e1ce48d591744
-	source_x86_64 = https://fah.stanford.edu/file-releases/public/release/fahclient/debian-testing-64bit/v7.4/fahclient_7.4.4_amd64.deb
-	md5sums_x86_64 = 10ece2d4a6a4c6a82321683284837b28
+	source = https://download.foldingathome.org/releases/public/release/fahclient/debian-stable-64bit/v7.5/fahclient_7.5.1-64bit-release.tar.bz2
+	md5sums = b508338299defffcbf7d46a02e1e763a
+	md5sums = 0fd798148583d0840c664862116bd366
+	md5sums = 22b156cdf21ccade658836193703b196
+	md5sums = 5353688a1c5cb0a226ce8e24b8ecb771
 
 pkgname = foldingathome-noroot
 

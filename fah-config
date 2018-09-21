@@ -1,4 +1,9 @@
 #!/bin/sh
 
-cd /var/opt/fah/
-su fah -s /bin/sh -c "/opt/fah/FAHClient --configure"
+exec systemd-run \
+    --pty \
+    --property=DynamicUser=yes \
+    --property=User=fah \
+    --property=StateDirectory=fah \
+    --property=WorkingDirectory=/var/lib/fah \
+    /opt/fah/FAHClient --configure
