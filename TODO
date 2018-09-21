@@ -3,3 +3,4 @@ man pages fail to build
 -pie for shared libraries
 Don't install intermediate Latex files
 Examine optional dependencies
+Fix `make doc` for out-of-tree builds

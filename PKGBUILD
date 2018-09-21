@@ -1,24 +1,32 @@
-# Maintainer: Tyler Dence <tyzoid@archlinux32.org>
+# Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
+# Contributor: Tyler Dence <tyzoid@archlinux32.org>
 
 pkgname=nextcloud-desktop
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Nextcloud desktop client (work-in-progress)'
 arch=('i686' 'x86_64')
 url='https://nextcloud.com/'
 license=('GPL2')
 makedepends=('cmake' 'qt5-tools' 'kio' 'doxygen' 'appstream' 'extra-cmake-modules'
-             'python-sphinx' 'texlive-bin' 'texlive-core' 'texlive-latexextra')
+             'python-sphinx' 'texlive-bin' 'texlive-core' 'texlive-latexextra' 'git')
 depends=('qtkeychain' 'qt5-webkit' 'hicolor-icon-theme' 'xdg-utils' 'qt5-webengine' 'qt5-svg' 'glib2' 'sqlite')
 optdepends=(
   'python2-nautilus: integration with Nautilus'
   'nemo-python: integration with Nemo'
   'kio: dolphin plugin'
 )
-_commit=90d391748197777c8b674e6e09cf78e571ce07c0
-source=($pkgname::"git+https://github.com/nextcloud/desktop.git#commit=$_commit?signed")
+_commit=a464ad2c712dfcec70d385b893d109f74fd30787
+source=($pkgname::"git+https://github.com/nextcloud/desktop.git#commit=$_commit")
 md5sums=('SKIP')
-validpgpkeys=(A26B951528EA1BA1678C7AE5D406C75CEE1A36D6)  # Camila Ayres (@camilasan)
+
+prepare() {
+  cd $pkgname
+
+  # https://gitlab.com/yan12125/aur/issues/25
+  mv man/owncloud.1.rst man/nextcloud.1.rst
+  mv man/owncloudcmd.1.rst man/nextcloudcmd.1.rst
+}
 
 build() {
   cd $pkgname
@@ -31,6 +39,7 @@ build() {
 
   make
   make doc
+  make doc-man
 }
 
 package() {
