@@ -1,0 +1,17 @@
+pkgbase = emacs-auth-source-pass-git
+	pkgdesc = Emacs library for outlines
+	pkgver = r123.3de8bbb
+	pkgrel = 1
+	url = https://github.com/DamienCassou/auth-password-store
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	depends = pass
+	provides = emacs-auth-source-pass
+	conflicts = emacs-auth-source-pass
+	source = git+https://github.com/DamienCassou/auth-password-store.git
+	sha256sums = SKIP
+
+pkgname = emacs-auth-source-pass-git
+
