@@ -5,7 +5,7 @@
 
 pkgname=firefox-esr
 pkgver=60.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -22,11 +22,16 @@ provides=(firefox)
 conflicts=(firefox)
 options=(!emptydirs !makeflags !strip)
 source=(https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz
-        firefox.desktop firefox-symbolic.svg)
+        firefox.desktop firefox-symbolic.svg 0000-rust-1.29.patch)
 sha256sums=('795bdc8b5648234ce74322e3e9b219947d984ce3a1e4e09ce1061fafbbe77717'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
-            'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9')
+            'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
+            'ce243b1e835651723d2186709fcd5218ad050ff56550c3ef25e23c718a69497b')
 validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
+
+## Set this variable to 1 if you want to build with clang compiler ##
+#_CLANG=0
+[ "$_CLANG" ] && [ "$_CLANG" -eq "1" ] && optdepends+=(clang)
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -41,10 +46,11 @@ _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 _mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
 
 prepare() {
-#  mkdir -p path
-#  ln -sf /usr/bin/python2 path/python
-
   cd firefox-${pkgver}
+
+  # Bug 1479540 - Accept "triplet" strings with only two parts in moz.configure
+  # https://hg.mozilla.org/mozreview/gecko/rev/e820a3a4ce2284ecd2992dc827fedc357b75eeb7#index_header
+  patch -Np1 -i ../0000-rust-1.29.patch
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
@@ -101,8 +107,10 @@ build() {
 #  export PATH="$srcdir/path:$PATH"
 
   # Build with clang
-  export CC=clang
-  export CXX=clang++
+  if [ "$_CLANG" -eq "1" ]; then
+    export CC=clang
+    export CXX=clang++
+  fi
 
   # Do PGO
   #xvfb-run -a -n 95 -s "-extension GLX -screen 0 1280x1024x24" \
