@@ -8,8 +8,8 @@
 # Currently it will not be a mandatory makedepend.
 
 pkgname=intel-media-sdk-git
-pkgver=2018.3.pre1.r64.g7557124
-pkgrel=3
+pkgver=2018.3.pre2.r76.g954207a
+pkgrel=1
 pkgdesc='API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics (git version)'
 arch=('x86_64')
 url='https://github.com/Intel-Media-SDK/MediaSDK/'
@@ -23,11 +23,11 @@ depends=(
 makedepends=('git' 'git-lfs' 'cmake' 'libpciaccess' 'libx11' 'libxcb' 'gtest')
 provides=('intel-media-sdk' 'libmfx')
 conflicts=('intel-media-sdk' 'intel-media-stack-bin' 'intel-media-server-studio')
-options=('!emptydirs')
+install="${pkgname}.install"
 source=('intel-media-sdk-git.conf'
         'intel-media-sdk-git.sh')
 sha256sums=('63e76d28140486871a3ffc29ce19c84914583bf243201946c76943bf54df374a'
-            'de8c6dd5ac4db49a6d40d94b821bfca4b3480159863b4c1dfa0f21fdd6baeeb0')
+            '315ea6f304cf2b7b6a8aaabb0b8f71fcd480677c7fb9c8cbfa51c7830bb159bc')
 
 prepare() {
     # makepkg does not support cloning git-lfs repositories
@@ -82,11 +82,6 @@ package() {
     cd "${pkgname}/build"
     
     make DESTDIR="$pkgdir" install
-    
-    # tools
-    cd __bin/release
-    install -D -m755 asg-hevc           -t "${pkgdir}/usr/bin"
-    install -D -m755 hevc_fei_extractor -t "${pkgdir}/usr/bin"
     
     # ld.so and profile configuration files
     cd "$srcdir"
