@@ -3,13 +3,13 @@
 pkgname=f27-backgrounds
 pkgver=27.0.1
 pkgrel=2
-_rhver="3.fc28"
+_rhver="4.fc29"
 pkgdesc="Fedora 27 backgrounds."
 arch=("i686" "x86_64")
 url="https://fedoraproject.org/wiki/F27_Artwork"
 license=("CC-BY-SA")
 source=("https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/f/${pkgname}-${pkgver}-${_rhver}.src.rpm")
-sha256sums=('8379ac1fedd9d3dd674708c2baaa6561f4a83bcb71f96cf2535e37e2b9cb20c4')
+sha256sums=('ab74df2f199aacf8993ed1fcabddd3c8addff2908e26e051e2022262e8f3d767')
 
 prepare()  {
     tar -xf ./${pkgname}-${pkgver}.tar.xz
