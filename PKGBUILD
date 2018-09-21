@@ -8,7 +8,7 @@ pkgdesc='SDK for the Astra Camera from Orbbec'
 url="https://orbbec3d.com/develop/"
 arch=('x86_64') 
 license=("Apache")
-depends=()
+depends=('sfml>=2.3' 'sfml<2.4')
 makedepends=('gcc>=4.9', 'clang>=3.5')
 options=('!strip') # Avoid time consuming operations.
 PKGEXT='.pkg.gz.tar' 
