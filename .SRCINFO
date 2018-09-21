@@ -1,13 +1,13 @@
 pkgbase = schroedinger-cat-backgrounds
 	pkgdesc = Fedora 19 (Schroedinger Cat) backgrounds.
 	pkgver = 18.91.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://fedoraproject.org/wiki/Wallpapers#Fedora_19
 	arch = i686
 	arch = x86_64
 	license = CC-BY-SA
-	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/s/schroedinger-cat-backgrounds-18.91.0-7.fc27.src.rpm
-	sha256sums = 8af9f8103a8b08d376c42a137aa46c56995a4f2994e9e03c3d09bb2247f76f9e
+	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/s/schroedinger-cat-backgrounds-18.91.0-9.fc29.src.rpm
+	sha256sums = 6d20715fbc123ac9bce77f9cee18ef1d929f8de9e58112f355ca97272b271bd1
 
 pkgname = schroedinger-cat-backgrounds
 
