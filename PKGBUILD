@@ -2,7 +2,7 @@
 
 pkgname=qt5-mqtt
 _name=qtmqtt
-pkgver=5.11.1
+pkgver=5.11.2
 pkgrel=1
 pkgdesc="Module to implement MQTT protocol v3.1/3.1.1"
 arch=('i386' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -11,7 +11,7 @@ license=('GPL3' 'custom')
 depends=('qt5-base')
 makedepends=('git')
 # All archives from github/code.qt.io do not build properly
-source=("git://code.qt.io/qt/qtmqtt.git#tag=v5.11.1")
+source=("git://code.qt.io/qt/qtmqtt.git#tag=v${pkgver}")
 sha512sums=('SKIP')
 
 prepare() {
