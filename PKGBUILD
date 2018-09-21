@@ -2,7 +2,7 @@
 
 pkgname=python-s3fs
 _pkgname=s3fs
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="A python file interface to S3."
 arch=('any')
@@ -13,7 +13,7 @@ checkdepends=('python-moto')
 optdepends=()
 makedepends=('python-setuptools')
 source=("https://github.com/dask/s3fs/archive/$pkgver.tar.gz")
-sha256sums=('ab9f48b90aaf9bf7be64d829ac54dc1ea48b99955210ebde4cc3c509146db499')
+sha256sums=('39d1788c593a432d5aed35e6c35d82d7dcf533fb8804958f8eec30be0a446f2a')
 
 package(){
   cd "$srcdir/$_pkgname-$pkgver"

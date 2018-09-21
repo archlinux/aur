@@ -1,6 +1,6 @@
 pkgbase = python-s3fs
 	pkgdesc = A python file interface to S3.
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/dask/s3fs
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-s3fs
 	makedepends = python-setuptools
 	depends = python
 	depends = python-boto3
-	source = https://github.com/dask/s3fs/archive/0.1.5.tar.gz
-	sha256sums = ab9f48b90aaf9bf7be64d829ac54dc1ea48b99955210ebde4cc3c509146db499
+	source = https://github.com/dask/s3fs/archive/0.1.6.tar.gz
+	sha256sums = 39d1788c593a432d5aed35e6c35d82d7dcf533fb8804958f8eec30be0a446f2a
 
 pkgname = python-s3fs
 
