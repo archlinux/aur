@@ -5,13 +5,11 @@ pkgname=freecad-linkstage3-git
 pkgver=asm3.0.5.3.r1537.g234333df9
 pkgrel=1
 pkgdesc='A general purpose 3D CAD modeler - LinkStage3 dev branch, git checkout'
-arch=('any')
+arch=('x86_64')
 url='http://www.freecadweb.org/'
 license=('LGPL')
+conflicts=('freecad')
 depends=(
-  # doxygen
-
-  'python-pyside'
 
   'boost-libs'
 
@@ -19,40 +17,46 @@ depends=(
   'coin'
   'gmsh'
   'med'
+  'netcdf'
   'netgen-git'
   'opencascade'
   'vtk'
+  'glew'
+  'xerces-c'
+  'libspnav'
+  'shiboken2'
+  'jsoncpp'
 
+  # Qt5
+  'qt5-base'
+  'qt5-webkit'
+  'qt5-svg'
 
-  # libqtcore4
-  # libshiboken-dev
-  # libxerces-c-dev
   # libxmu-dev
   # libxmu-headers
   # libxmu6
   # libxmuu-dev
   # libxmuu1
-  # libqtwebkit-dev
   # python-pivy
-  # python-matplotlib
-
 
   # automake
   # dictionaries-common
   # tcl8.5-dev
   # tk8.5-dev
-  # libcoin80-dev
   # libhdf5-dev
   # libfreetype6-dev
   # python-dev
-  # qt4-dev-tools
-  # qt4-qmake
+
+  'python2-matplotlib'
+  'python2-pyside2'
+  'pyside2-tools'
+  'python2-shiboken2'
+
 )
 makedepends=(
   'cmake' 'ninja'
   'gcc-fortran'
   'desktop-file-utils'
-  'python-pyside-tools'
   'swig'
   'boost'
   'eigen'
@@ -77,6 +81,7 @@ pkgver() {
 build() {
   cd "${srcdir}/${_gitname}"
 
+  rm build -rf
   mkdir build -p
   pushd build >/dev/null
 
@@ -88,12 +93,17 @@ build() {
     -DFREECAD_USE_OCC_VARIANT="Official Version" \
     -DBUILD_FEM_NETGEN=OFF \
     -DBUILD_QT5=ON \
+    -DCMAKE_INSTALL_PREFIX="/usr/lib/freecad" \
+    -DCMAKE_INSTALL_DOCDIR="/usr/share/freecad/doc" \
+    -DCMAKE_INSTALL_DATADIR="/usr/share/freecad" \
     -G Ninja
 
   ninja
 }
 
 package() {
-  ninja install
-  ln -sf /opt/FreeCAD/bin/FreeCAD /usr/bin/freecad-git
+  cd "${srcdir}/${_gitname}/build"
+
+  DESTDIR="${pkgdir}" ninja install
+  # ln -sf /opt/FreeCAD/bin/FreeCAD /usr/bin/freecad-git
 }
