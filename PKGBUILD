@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=adriconf
-pkgver=1.1
+pkgver=1.3
 pkgrel=1
 pkgdesc='Advanded DRI Configurator for the Mesa drivers'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ conflicts=('adriconf-git')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/jlHertel/adriconf/archive/v${pkgver}.tar.gz"
         'adriconf.desktop'
         'adriconf.png')
-sha256sums=('a2487d9e3c4d7fd7b13da5acca12e1342ec8da2cacd0946389133ccb6ae705f7'
+sha256sums=('564bab30de6f8a4c945ffa5d2fa66fdc9f0cb44608c3eab43df808c6c1332c05'
             'bcdd0e3de71922741b26932b75f050da16bcc966d0256bf32f942ac715987967'
             '7d5d467bafd07a39fe1590ff399a2ef9d4eb973777369b308f87556bc4e3786d')
 
@@ -25,8 +25,6 @@ build() {
     cd build
     
     cmake \
-        -G'CodeBlocks - Unix Makefiles' \
-        -DCMAKE_COLOR_MAKEFILE:BOOL='ON' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -Wno-dev \
         ..
@@ -39,8 +37,6 @@ package() {
     
     make DESTDIR="$pkgdir" install
     
-    install -D -m755 adriconf -t "${pkgdir}/usr/bin"
-
     install -D -m644 "${srcdir}/adriconf.desktop" -t "${pkgdir}/usr/share/applications"
     install -D -m644 "${srcdir}/adriconf.png"     -t "${pkgdir}/usr/share/pixmaps"
 }

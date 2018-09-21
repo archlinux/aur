@@ -1,6 +1,6 @@
 pkgbase = adriconf
 	pkgdesc = Advanded DRI Configurator for the Mesa drivers
-	pkgver = 1.1
+	pkgver = 1.3
 	pkgrel = 1
 	url = https://github.com/jlHertel/adriconf/
 	arch = i686
@@ -24,10 +24,10 @@ pkgbase = adriconf
 	depends = libdrm
 	depends = pciutils
 	conflicts = adriconf-git
-	source = adriconf-1.1.tar.gz::https://github.com/jlHertel/adriconf/archive/v1.1.tar.gz
+	source = adriconf-1.3.tar.gz::https://github.com/jlHertel/adriconf/archive/v1.3.tar.gz
 	source = adriconf.desktop
 	source = adriconf.png
-	sha256sums = a2487d9e3c4d7fd7b13da5acca12e1342ec8da2cacd0946389133ccb6ae705f7
+	sha256sums = 564bab30de6f8a4c945ffa5d2fa66fdc9f0cb44608c3eab43df808c6c1332c05
 	sha256sums = bcdd0e3de71922741b26932b75f050da16bcc966d0256bf32f942ac715987967
 	sha256sums = 7d5d467bafd07a39fe1590ff399a2ef9d4eb973777369b308f87556bc4e3786d
 
