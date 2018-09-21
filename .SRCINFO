@@ -1,14 +1,14 @@
 pkgbase = courier-unicode
 	pkgdesc = Courier Unicode Library
-	pkgver = 2.0
+	pkgver = 2.1
 	pkgrel = 1
 	url = http://www.courier-mta.org/unicode/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = gcc-libs
-	source = https://sourceforge.net/projects/courier/files/courier-unicode/2.0/courier-unicode-2.0.tar.bz2
-	sha256sums = 6b46011d465918af7d0ed41fbf21d918449820bd3ef7e651dbc56eb2933a8711
+	source = https://sourceforge.net/projects/courier/files/courier-unicode/2.1/courier-unicode-2.1.tar.bz2
+	sha256sums = 684cba7fe722b084ae1ffb0a7f71999756409d5ad4c84bce0efeb8887943ea21
 
 pkgname = courier-unicode
 
