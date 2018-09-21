@@ -1,6 +1,6 @@
 pkgbase = bombsquad
 	pkgdesc = An explosive arcade-style party game
-	pkgver = 1.4.144
+	pkgver = 1.4.145
 	pkgrel = 1
 	url = http://www.froemling.net/apps/bombsquad
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = bombsquad
 	source = bombsquad.desktop
 	sha256sums = 850f8a66eb045ce833f8d7dae4533f69b629ac648bd205d98bf5f851339d4515
 	sha256sums = 900ffdf250eb2c59a2944703ccab9b69e58b5cdd7809f8349f6291db0301935c
-	source_x86_64 = http://www.files.froemling.net/bombsquad/builds/BombSquad_Linux_64bit_1.4.144.tar.gz
-	sha256sums_x86_64 = 47969876cd53ce3609a6a56470cfb328961dee360ffd97effef4833dec103f45
-	source_i686 = http://www.files.froemling.net/bombsquad/builds/BombSquad_Linux_32bit_1.4.144.tar.gz
-	sha256sums_i686 = 81183524099867eb6b7c014d25d74a0ceec9f1e55f293700325c50ddca890f15
+	source_x86_64 = http://www.files.froemling.net/bombsquad/builds/BombSquad_Linux_64bit_1.4.145.tar.gz
+	sha256sums_x86_64 = e62147c27cab30e28cfd78cd34fc3718ca7d86bf3df270b1f43085573f613789
+	source_i686 = http://www.files.froemling.net/bombsquad/builds/BombSquad_Linux_32bit_1.4.145.tar.gz
+	sha256sums_i686 = 85214dbc7475143f9707b99ec706afd46bedbf176c328e9d1ef660ee88b5cfb7
 
 pkgname = bombsquad
 
