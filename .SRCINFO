@@ -8,6 +8,7 @@ pkgbase = brother-mfc-7460dn
 	arch = x86_64
 	license = custom:brother commercial license
 	depends = cups
+	depends = lib32-glibc
 	source = http://www.brother.com/pub/bsc/linux/dlf/cupswrapperMFC7460DN-2.0.4-2.i386.rpm
 	source = MFC7460DN.ppd
 	source = brlpdwrapperMFC7460DN
