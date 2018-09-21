@@ -1,12 +1,15 @@
 pkgbase = pokerstove-git
 	pkgdesc = A highly hand optimized C++ poker hand evaluation tool
-	pkgver = r96.0bbd839
+	pkgver = r134.abc20d8
 	pkgrel = 1
 	url = https://github.com/andrewprock/pokerstove
 	arch = any
 	license = custom
 	makedepends = cmake
+	makedepends = gtest
+	makedepends = boost-libs
 	provides = ps-eval
+	provides = ps-colex
 	source = pokerstove-git::git+https://github.com/andrewprock/pokerstove.git
 	sha256sums = SKIP
 
