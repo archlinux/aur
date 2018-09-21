@@ -2,8 +2,8 @@
 
 _pkgname=hexeditor
 pkgname=${_pkgname}-git
-pkgver=1.4.0.0.gc5b7594
-pkgrel=1
+pkgver=1.4.0.4.g9d32ae6
+pkgrel=2
 pkgdesc='A cross-platform Hex Editor. Development version.'
 arch=('i686' 'x86_64')
 url='https://github.com/chipmunk-sm/HexEditor'
@@ -16,11 +16,11 @@ conflicts=("${_pkgname}")
 
 source=(
 	'git+https://github.com/chipmunk-sm/HexEditor.git'
-	'qmake_install.patch'
+	'desktop_logo_cleanup.patch::https://patch-diff.githubusercontent.com/raw/chipmunk-sm/HexEditor/pull/3.patch'
 )
 sha512sums=(
 	'SKIP'
-	'ed0285385abbcabb82b19e9a3971a1836c6d3d8fc42a29baf35e7707f538a9e58b02220267e56a530e6905349c89307b5493f6876470280b2f3d201684b3613f'
+	'2cab6d8792c3076a5abcdb37b5a87b2eb479df86ee6d715312b81ca9f9102fa5fd57fca066dddc291362e90e683b6fed220ab8baf16db4db825c2d0782ba2882'
 )
 
 pkgver() {
@@ -32,7 +32,7 @@ pkgver() {
 prepare() {
 	# QMake install instructions
 	cd "${srcdir}"/HexEditor
-	patch -Np1 < ../qmake_install.patch
+	patch -Np1 < ../desktop_logo_cleanup.patch
 
 	# Create build directory
 	mkdir -p "${srcdir}"/build
