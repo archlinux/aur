@@ -1,6 +1,6 @@
 pkgbase = kadnode
 	pkgdesc = A P2P based DNS resolver
-	pkgver = 2.2.4
+	pkgver = 2.2.5
 	pkgrel = 2
 	url = http://github.com/mwarning/KadNode
 	install = kadnode.install
@@ -10,8 +10,8 @@ pkgbase = kadnode
 	depends = mbedtls
 	backup = etc/kadnode/kadnode.conf
 	backup = etc/kadnode/peers.txt
-	source = https://github.com/mwarning/KadNode/archive/v2.2.4.tar.gz
-	md5sums = 5f23a48cda212f3f45c8021273a4278f
+	source = https://github.com/mwarning/KadNode/archive/v2.2.5.tar.gz
+	md5sums = ef37043dac33334a1c5407aa3a3512da
 
 pkgname = kadnode
 
