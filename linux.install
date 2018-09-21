@@ -1,31 +1,12 @@
-post_install () {
-  # updating module dependencies
-  echo ">>> Updating module dependencies. Please wait ..."
-  depmod %KERNVER%
-  if [ "$(uname -m)" = "armv7l" ]; then
-    echo ">>> WARNING: Using this kernel requires an updated U-Boot!"
-  fi
-}
-
 post_upgrade() {
-  # updating module dependencies
-  echo ">>> Updating module dependencies. Please wait ..."
-  depmod %KERNVER%
   if [ "$(uname -m)" = "x86_64" ] || [ "$(uname -m)" = "i686" ]; then
     if findmnt --fstab -uno SOURCE /boot &>/dev/null && ! mountpoint -q /boot; then
       echo "WARNING: /boot appears to be a separate partition but is not mounted."
-    fi
-
-    if [ $(vercmp $2 3.13) -lt 0 ]; then
-      echo ">>> WARNING: AT keyboard support is no longer built into the kernel."
-      echo ">>>          In order to use your keyboard during early init, you MUST"
-      echo ">>>          include the 'keyboard' hook in your mkinitcpio.conf."
     fi
   fi
 }
 
 post_remove() {
-  # also remove the compat symlinks
   rm -f boot/initramfs-%PKGBASE%.img
   rm -f boot/initramfs-%PKGBASE%-fallback.img
 }
