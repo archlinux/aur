@@ -9,7 +9,7 @@
 
 pkgname=intel-media-sdk-git
 pkgver=2018.3.pre1.r64.g7557124
-pkgrel=2
+pkgrel=3
 pkgdesc='API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics (git version)'
 arch=('x86_64')
 url='https://github.com/Intel-Media-SDK/MediaSDK/'
@@ -47,9 +47,10 @@ prepare() {
 pkgver() {
     cd "$pkgname"
     
-    # git, tags available
     local _prefix='intel-mediasdk-'
-    git describe --long --tags | sed "s/^${_prefix}//;s/^$(date +%y)/$(date +%Y)/;s/\([^-]*-g\)/r\1/;s/-/./g;s/^v//"
+    
+    # git, tags available
+    git describe --long --tags | sed "s/^${_prefix}//;s/^[0-9]\{2\}/20&/;s/\([^-]*-g\)/r\1/;s/-/./g;s/^v//"
 }
 
 build() {
