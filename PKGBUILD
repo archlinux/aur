@@ -3,7 +3,7 @@
 pkgname=srain-git
 pkgver=1.0.0rc1.1067.0542dd1
 _pkgver=1.0.0rc1
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern IRC client, git version"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -28,10 +28,10 @@ pkgver() {
 build() {
     cd ${pkgname%-git}
 
-    ./configure                     \
-        --prefix=${_prefix}         \
-        --datadir=${_prefix}/share  \
-        --sysconfdir=/etc           \
+    ./configure                         \
+        --prefix="${_prefix}"           \
+        --datadir="${_prefix}/share"    \
+        --sysconfdir="/etc"             \
         --disable-debug
     make
     make doc
@@ -40,6 +40,6 @@ build() {
 package() {
     cd ${pkgname%-git}
 
-    make DESTDIR=${pkgdir} install
-    make DESTDIR=${pkgdir} install-doc
+    make DESTDIR="${pkgdir}" install
+    make DESTDIR="${pkgdir}" install-doc
 }
