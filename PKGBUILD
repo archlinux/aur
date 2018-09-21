@@ -1,5 +1,5 @@
 _name="movie-monad"
-_ver="0.0.6.1"
+_ver="0.0.7.0"
 _xrev="0"
 
 pkgname="${_name}"
@@ -13,7 +13,7 @@ makedepends=()
 depends=("gtk3" "gstreamer" "gst-plugins-base-libs" "gst-plugins-base" "gst-plugins-good")
 options=()
 source=("https://www.github.com/lettier/${_name}/releases/download/${_ver}/${_name}-linux-${_ver}.tar.gz")
-md5sums=('0beceb6847555d227693cd65e899e894')
+md5sums=('e7c90e358fb86bc2190f27ba1ac144a0')
 
 package() {
   cd "${srcdir}/${_name}-linux-${_ver}"
