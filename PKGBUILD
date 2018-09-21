@@ -1,9 +1,10 @@
-# Maintainer: Det <nimetonmaili g-mail>
+# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Contributor: Det <nimetonmaili g-mail>
 # Contributor: Ng Oon-Ee
 # Based on nvidia-beta: https://aur.archlinux.org/packages/nvidia-beta/
 
 pkgname=nvidia-beta-all
-pkgver=396.54
+pkgver=410.57
 pkgrel=1
 pkgdesc="NVIDIA drivers for all kernels on the system (beta)"
 arch=('x86_64')
@@ -17,18 +18,20 @@ options=('!strip')
 install=$pkgname.install
 _pkg="NVIDIA-Linux-x86_64-$pkgver-no-compat32"
 source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/$_pkg.run")
-md5sums=('710acf72a2d8dde844dd2638e0782819')
+sha256sums=('1ad40d83ec712843c1b5593949abefc9093399fb26a418ae9a571fbd1d9b228e')
 
-# Patch
-#source+=('linux-4.11.patch')
-#md5sums+=('cc8941b6898d9daa0fb67371f57a56b6')
+# Patches
+## restore phys_to_dma support
+## https://bugs.archlinux.org/task/58074
+source+=('linux-4.16.patch')
+sha256sums+=('622ac792ec200b2239cb663c0010392118b78c9904973d82cd261165c16d6385')
 
 # Auto-add *.patch files from $startdir to source=()
 for _patch in $(find "$startdir" -maxdepth 1 -name '*.patch' -printf "%f\n"); do
   # Don't duplicate already listed ones
   if [[ ! " ${source[@]} " =~ " $_patch " ]]; then  # https://stackoverflow.com/a/15394738/1821548
     source+=("$_patch")
-    md5sums+=('SKIP')
+    sha256sums+=('SKIP')
   fi
 done
 
