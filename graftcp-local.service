@@ -1,0 +1,9 @@
+[Unit]
+Description=A flexible tool for redirecting a given program's TCP traffic to SOCKS5 proxy
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/graftcp-local -config /etc/graftcp-local.conf
+
+[Install]
+WantedBy=multi-user.target
