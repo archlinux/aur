@@ -1,0 +1,18 @@
+pkgbase = libidn11
+	pkgdesc = Provides final version of libidn.so.11
+	pkgver = 1.34
+	pkgrel = 1
+	url = https://www.gnu.org/software/libidn/
+	arch = x86_64
+	license = GPL3
+	license = LGPL
+	depends = glibc
+	source = https://ftp.gnu.org/gnu/libidn/libidn-1.34.tar.gz
+	source = https://ftp.gnu.org/gnu/libidn/libidn-1.34.tar.gz.sig
+	validpgpkeys = 9AA9BDB11BB1B99A21285A330664A76954265E8C
+	validpgpkeys = 1CB27DBC98614B2D5841646D08302DB6A2670428
+	sha256sums = 3719e2975f2fb28605df3479c380af2cf4ab4e919e1506527e4c7670afff6e3c
+	sha256sums = SKIP
+
+pkgname = libidn11
+
