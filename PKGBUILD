@@ -8,9 +8,8 @@
 pkgname="zfs-utils-common"
 
 pkgver=0.7.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel module support files for the Zettabyte File System."
-depends=()
 makedepends=()
 arch=("x86_64")
 url="http://zfsonlinux.org/"
@@ -28,7 +27,7 @@ license=("CDDL")
 groups=("archzfs-linux")
 provides=("zfs-utils")
 install=zfs-utils.install
-conflicts=('zfs-utils-common-git' 'zfs-utils-linux-git' 'zfs-utils-linux' 'zfs-utils-linux-lts' 'zfs-utils-linux-lts-git')
+conflicts=("zfs-utils")
 replaces=("zfs-utils-linux", "zfs-utils-linux-lts")
 backup=('etc/zfs/zed.d/zed.rc' 'etc/default/zfs')
 
