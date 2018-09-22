@@ -1,9 +1,9 @@
 # Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
-pkgname='dav1d-git'
+pkgname=dav1d-git
 pkgver=r6.462204a
 pkgrel=1
-license=('j')
+license=('custom:BSD')
 pkgdesc='AV1 cross-platform Decoder, focused on speed and correctness'
 url='https://code.videolan.org/videolan/dav1d'
 arch=('x86_64')
