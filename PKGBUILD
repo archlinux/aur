@@ -4,7 +4,7 @@ _branch=0.16
 ## Build from latest tag
 #_tag=$(git ls-remote -t --refs https://github.com/bitcoin/bitcoin.git | awk '{print $2}' | LC_ALL=C sort -bfV | sed  '/rc[0-9]/d' | tail -n1 | sed -n -e 's/^.*tags\///p')
 pkgname=bitcoin-gui-git
-pkgver=v0.16.2.r0.g2848aa808f
+pkgver=v0.16.3.r1.gf56c00b234
 pkgrel=1
 pkgdesc='Most recent stable branch, UPNP disabled, w/ Bitcoin binaries, dev tools, GUI, and wallet'
 arch=('i686' 'x86_64')
@@ -17,10 +17,13 @@ provides=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 conflicts=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 install=bitcoin-qt.install
 source=("git+https://github.com/bitcoin/bitcoin.git#branch=${_branch}"
+        "git+https://github.com/bitcoin-core/packaging.git"
 				'bitcoin-qt.install')
 sha256sums=('SKIP'
+            'SKIP'
             'ebf7090ca1202e2c2ccd1aa5bb03e6ac911c458141a1cedda9b41f9c26c2602c')
 sha512sums=('SKIP'
+            'SKIP'
             '67383fa1dd2f9576cc3c282f3a9b8c5f2d3eaa13799a6a7eb9eb2969face0ddaf6bb82c286c928b89397d8d2c9ba2efe9a603442f4bf6ed6d89ae9323c169375')
 
 pkgver() {
@@ -44,8 +47,8 @@ package() {
   install -Dm644 "$srcdir/bitcoin/share/pixmaps/bitcoin128.png"\
 								 "$pkgdir/usr/share/pixmaps/bitcoin128.png"
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
-	cp "$srcdir/bitcoin/contrib/debian/bitcoin-qt.desktop" "$srcdir/bitcoin/bitcoin.desktop"
+	cp "$srcdir/packaging/debian/bitcoin-qt.desktop" "$srcdir/bitcoin/bitcoin.desktop"
 	desktop-file-install -m 644 --dir="$pkgdir/usr/share/applications/" "bitcoin.desktop"
-  install -Dm644 "$srcdir/bitcoin/contrib/debian/examples/bitcoin.conf"\
+  install -Dm644 "$srcdir/packaging/debian/examples/bitcoin.conf"\
 								 "$pkgdir/usr/share/doc/$pkgname/examples/bitcoin.conf"
 }
