@@ -1,7 +1,7 @@
 pkgbase = goodtests
 	pkgdesc = A fast, parallel, featured python unit-testing framework
 	pkgver = 3.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/kata198/GoodTests
 	arch = any
 	license = LGPLv2

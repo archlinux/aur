@@ -3,7 +3,7 @@
 pkgname=goodtests
 _realName=GoodTests
 pkgver=3.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, parallel, featured python unit-testing framework"
 arch=('any')
 license=('LGPLv2')
