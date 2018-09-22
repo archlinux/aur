@@ -44,7 +44,8 @@ sha512sums=('e637d4e211caf1a7ee7bf3e39b7f4cb9c66ba141bc66c6d3b59660a4ab8c1bf9444
             'SKIP')
 sha512sums_x86_64=('a46b1d28e6c40dbe9a86a38794186f2cdf31341fff953eaa5a5fdbb37c27c00ffe14a918b2552df0996d2842f009e6700bf8683e0667fc671dfd5b343251f20e'
                    '76268ab6cc7b5f84ca4595a020fcce609494dadcdc1f58106291ba204a9d5e5d911184c3508f0d216791ef6335158b77603fa1654437616b21c532f967012d70')
-validpgpkeys=('0DF731E45CE24F27EEEB1450EFDC8610341D9410') # Spotify <tux@spotify.com>
+# Old key: 0DF731E45CE24F27EEEB1450EFDC8610341D9410
+validpgpkeys=('931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90') # Spotify <tux@spotify.com>
 
 # Spotify uses different names for the arch
 if [ "${CARCH}" = "i686" ]; then
@@ -82,6 +83,7 @@ package() {
     mkdir -p "${pkgdir}"/opt/spotify
     mv "${pkgdir}/usr/share/spotify" "${pkgdir}/opt/"
     rm "${pkgdir}"/usr/bin/spotify
+    # TODO symlink instead
     install -Dm755 "${srcdir}/spotify.sh" "${pkgdir}/usr/bin/spotify"
 
     # Copy protocol file for KDE
