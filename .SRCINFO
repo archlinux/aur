@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-mpfi
 	pkgdesc = C library for interval arithmetic (mingw-w64)
-	pkgver = 1.5.3
+	pkgver = 1.5.4
 	pkgrel = 1
 	url = http://perso.ens-lyon.fr/nathalie.revol/software.html
 	arch = any
@@ -10,8 +10,10 @@ pkgbase = mingw-w64-mpfi
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://gforge.inria.fr/frs/download.php/file/37332/mpfi-1.5.3.tar.gz
-	sha256sums = beed2003fdbedf590e8dd6edb4f2321e609e329df99ed4139cd66d7ebbc41240
+	source = https://gforge.inria.fr/frs/download.php/latestfile/181/mpfi-1.5.4.tar.gz
+	source = div_ext.c
+	sha256sums = 76b01b9eed7150a44b3f6aea24ad4ac78b0f2078253be87ff6d1903d02dfa434
+	sha256sums = aa280208c1168fbdfdac5cbb3fd8421904bc80d6a323de89a4b6b48a66446b01
 
 pkgname = mingw-w64-mpfi
 
