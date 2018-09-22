@@ -2,7 +2,7 @@
 
 pkgname=python-queryablelist
 pkgver=3.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Python module to add support for ORM-style filtering to any list of items"
 arch=('any')
 license=('LGPLv2')

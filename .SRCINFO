@@ -1,7 +1,7 @@
 pkgbase = python-queryablelist
 	pkgdesc = Python module to add support for ORM-style filtering to any list of items
 	pkgver = 3.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://github.com/kata198/QueryableList
 	arch = any
 	license = LGPLv2
