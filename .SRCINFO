@@ -1,7 +1,7 @@
 pkgbase = python-cllist
 	pkgdesc = C-implemented linked-list module for Python
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/kata198/python-cllist
 	arch = i686
 	arch = x86_64
