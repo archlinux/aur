@@ -1,6 +1,6 @@
 pkgbase = python-transip-api-git
 	pkgdesc = Python implementation of TransIP's API (unofficial)
-	pkgver = 0.3.0.r13.gb58adec
+	pkgver = 0.4.1.r3.g46ef59d
 	pkgrel = 1
 	url = https://github.com/benkonrath/transip-api
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = python-transip-api-git
 	depends = python-rsa
 	depends = python-requests
 	depends = python-suds-jurko
+	optdepends = python-pycrypto: OpenSSH key format support
 	provides = python-transip-api
 	conflicts = python-transip-api
 	source = git+https://github.com/benkonrath/transip-api.git
