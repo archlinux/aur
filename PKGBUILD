@@ -20,7 +20,7 @@ noextract=('jar')
 
 
 md5sums=('SKIP'
-         '76f39999f72ffa964d3ed02d31ba0b06'
+         '39650fe38b376bcd45090640fa867cc3'
          '4724472411e932b005f1b0d66a47f14e'
          '1fc2ef4be5729d96f9928af152fc1763')
 
