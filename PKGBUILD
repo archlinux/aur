@@ -2,7 +2,7 @@
 
 pkgname=8192cu-dkms
 pkgver=v4.0.2_9000
-pkgrel=13
+pkgrel=14
 pkgdesc="Driver for Realtek RTL8188CUS (8188C, 8192C) chipset wireless cards"
 arch=('any')
 url="http://www.realtek.com.tw/"
