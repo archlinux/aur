@@ -1,5 +1,5 @@
 pkgname=pgroonga
-pkgver=2.1.3
+pkgver=2.1.4
 pkgrel=1
 pkgdesc="Fast fulltext search on PostgreSQL."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -31,4 +31,4 @@ package() {
         # Remove needless dotfiles
         rm -rf "$pkgdir/.*"
 }
-sha1sums=('a2f244dd2221ddd263b8fab514655210086a3b8e')
+sha1sums=('787a87e9d22284444fa2d6994e626a5438f01a67')
