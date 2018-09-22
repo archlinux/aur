@@ -1,7 +1,7 @@
 pkgbase = oomox-git
 	pkgdesc = Graphical application for generating different color variations of Oomox(Numix-based), Materia (ex-Flat-Plat) and Arc themes (GTK2, GTK3, Cinnamon, GNOME, Openbox, Xfwm), gnome-colors and ArchDroid icon themes. Have a hack for HiDPI in gtk2.
 	pkgver = 1.7.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/themix-project/oomox
 	arch = x86_64
 	arch = i686
@@ -32,8 +32,8 @@ pkgbase = oomox-git
 	options = !strip
 	source = git+https://github.com/themix-project/oomox.git#branch=master
 	source = git+https://github.com/themix-project/oomox-gtk-theme.git#branch=master
-	source = git+https://github.com/actionless/materia-theme.git#branch=apply-roundness
-	source = git+https://github.com/actionless/arc-theme.git#branch=oomox
+	source = git+https://github.com/nana-4/materia-theme.git#branch=master
+	source = git+https://github.com/NicoHood/arc-theme.git#branch=master
 	source = git+https://github.com/themix-project/archdroid-icon-theme.git#branch=master
 	source = git+https://github.com/themix-project/gnome-colors-icon-theme.git#branch=master
 	source = git+https://github.com/themix-project/oomoxify.git#branch=master
