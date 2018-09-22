@@ -1,5 +1,0 @@
-Version 0.8.15 - 26/10/2016
-
-Issue with 8MB VRAM being less stable has been resolved, code is now correctly allowed in the 2-8MB area.
-ARM SWP instruction correctly handles unaligned access.
-Enhancements to TLB to correctly flush caches on more operations.
