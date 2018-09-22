@@ -30,14 +30,14 @@
 # /usr/lib/purr-data, so that 3rd party externals know where to find these.
 
 pkgname=purr-data
-pkgver=2.5.1.r3970.6624eb54
+pkgver=2.6.0.r4009.22680d90
 pkgrel=1
 pkgdesc="Jonathan Wilkes' nw.js variant of Pd-L2Ork (git version)"
 url="https://agraef.github.io/purr-data/"
 arch=('i686' 'x86_64')
 license=('BSD')
 depends=('bluez-libs' 'desktop-file-utils' 'dssi' 'fftw'
-  'flite' 'fluidsynth' 'freeglut' 'ftgl' 'glew' 'gmerlin'
+  'flite' 'fluidsynth' 'freeglut' 'ftgl' 'glew'
   'gsl' 'gsm' 'hicolor-icon-theme' 'libmagick6' 'jack' 'ladspa' 'lame'
   'libdc1394' 'libdv' 'libgl' 'libiec61883' 'libjpeg' 'libquicktime'
   'libxxf86vm' 'libtiff' 'libiec61883' 'libunicap' 'libraw1394'
