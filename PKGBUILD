@@ -2,7 +2,7 @@
 # Contributor: Nicholas Wang <me@nicho1as.wang>
 
 pkgname=emercoin
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Digital currency and blockchain service platform"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('boost')
 source=("https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}emc.tar.gz"
         "Fix-missing-include.patch"
 )
-sha256sums=('e1ec2ebf0bb5fb0d92ccf99f691118c3eafa0c2a58c9154d6af1eb436a30d590'
+sha256sums=('bcd46d5773431c67d864ccb9fe4ab5757f2f85c142a5f36ded4f95018532922d'
             '75b1e7bebb53a48cf93f2b701bbd8d9a1e7005b45c63a804596b68b0e9343c87')
 prepare() {
 	cd "${pkgname}-${pkgver}emc"

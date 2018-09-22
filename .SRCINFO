@@ -1,6 +1,6 @@
 pkgbase = emercoin
 	pkgdesc = Digital currency and blockchain service platform
-	pkgver = 0.7.1
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://emercoin.com/
 	arch = i686
@@ -12,9 +12,9 @@ pkgbase = emercoin
 	depends = qt5-base
 	depends = protobuf
 	depends = qrencode
-	source = https://github.com/emercoin/emercoin/archive/v0.7.1emc.tar.gz
+	source = https://github.com/emercoin/emercoin/archive/v0.7.2emc.tar.gz
 	source = Fix-missing-include.patch
-	sha256sums = e1ec2ebf0bb5fb0d92ccf99f691118c3eafa0c2a58c9154d6af1eb436a30d590
+	sha256sums = bcd46d5773431c67d864ccb9fe4ab5757f2f85c142a5f36ded4f95018532922d
 	sha256sums = 75b1e7bebb53a48cf93f2b701bbd8d9a1e7005b45c63a804596b68b0e9343c87
 
 pkgname = emercoin
