@@ -1,7 +1,7 @@
 pkgbase = agedu-git
 	pkgdesc = Track down wasted disk space
-	pkgver = r131.8a8299e
-	pkgrel = 2
+	pkgver = r138.80c7beb
+	pkgrel = 1
 	url = http://www.chiark.greenend.org.uk/~sgtatham/agedu/
 	arch = i686
 	arch = x86_64
