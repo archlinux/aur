@@ -1,0 +1,13 @@
+pkgbase = xtrace
+	pkgdesc = trace communication between X client and server
+	pkgver = 1.3.1
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = https://alioth-archive.debian.org/releases/xtrace/xtrace/1.3.1/xtrace_1.3.1.orig.tar.gz
+	sha256sums = b22ca970efe24fcedff44f38075c5f34e0893f66abb419f3180ff92adf9e2a22
+
+pkgname = xtrace
+
