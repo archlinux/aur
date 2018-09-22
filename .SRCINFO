@@ -1,7 +1,7 @@
 pkgbase = python-advancedhtmlparser
 	pkgdesc = Fast Indexed python HTML parser which builds a DOM node tree, providing common getElementsBy* functions for scraping, testing, modification, and formatting
 	pkgver = 8.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/kata198/AdvancedHTMLParser
 	arch = any
 	license = LGPLv3

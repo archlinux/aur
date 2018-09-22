@@ -2,7 +2,7 @@
 
 pkgname=('python-advancedhtmlparser' 'python-advancedhtmlparser-tools')
 pkgver=8.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast Indexed python HTML parser which builds a DOM node tree, providing common getElementsBy* functions for scraping, testing, modification, and formatting"
 arch=('any')
 license=('LGPLv3')
