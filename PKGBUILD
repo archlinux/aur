@@ -4,7 +4,7 @@
 #
 pkgname="multisystem"
 pkgver=1.0424
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI tool to create a usb system that can boot multiple distro's"
 url="http://liveusb.info/dotclear/index.php"
 arch=('i686' 'x86_64')
@@ -26,8 +26,23 @@ _multisystem="#!/usr/bin/sh
 exec /usr/local/share/multisystem/gui_multisystem.sh
 fi"
 
-_update_grub2="#!/bin/sh
+_update_grub2="#!/usr/bin/sh
 grub-mkconfig -o /boot/grub/grub.cfg"
+
+_gvfs_mount="#!/usr/bin/sh
+
+replacement=\"gio mount\"
+help=\"gio help mount\"
+
+>&2 echo \"This tool has been deprecated, use '\$replacement' instead.\"
+>&2 echo \"See '\$help' for more info.\"
+>&2 echo
+
+if [ \"\$1\" = \"--help\" ] || [ \"\$1\" = \"-h\" ]; then
+  exec \$help \"\$@:2\"
+else
+  exec \$replacement \"\$@\"
+fi"
 
 _liveusb_desktop="[Desktop Entry]
 Encoding=UTF-8
@@ -66,6 +81,7 @@ build() {
     cd "${srcdir}"
     echo -e "$_multisystem" | tee multisystem_bin
     echo -e "$_update_grub2" | tee update-grub2
+    echo -e "$_gvfs_mount" | tee gvfs-mount
     echo -e "$_liveusb_desktop" | tee multisystem-liveusb.desktop
     echo -e "$_vbox_desktop" | tee multisystem-vbox.desktop
 
@@ -81,12 +97,14 @@ package() {
     mv * ${pkgdir}/usr/local/share/${pkgname}
     install -d ${pkgdir}/usr/share/applications
     install -d ${pkgdir}/usr/bin
+    install -d ${pkgdir}/usr/local/bin
     install -d ${pkgdir}/usr/local/share/pixmaps
 
     cd "${srcdir}"
     install -m 644 *.desktop ${pkgdir}/usr/share/applications
     install -m 755 multisystem_bin ${pkgdir}/usr/bin/multisystem
     install -m 755 update-grub2 ${pkgdir}/usr/bin
+    install -m 755 gvfs-mount ${pkgdir}/usr/local/bin
 
     cd "${pkgdir}/usr/local/share/${pkgname}"
     install -m 644 img/*.png ${pkgdir}/usr/local/share/pixmaps
@@ -94,4 +112,4 @@ package() {
     install -m 644 pixmaps/multisystem-vbox.png ${pkgdir}/usr/local/share/pixmaps
 }
 
-# vim:set ts=4 sw=2 ft=sh et:
+# vim:set ts=4 sw=4 ft=sh et:
