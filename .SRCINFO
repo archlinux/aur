@@ -15,7 +15,6 @@ pkgbase = firefox-esr
 	makedepends = yasm
 	makedepends = mesa
 	makedepends = imake
-	makedepends = gconf
 	makedepends = inetutils
 	makedepends = xorg-server-xvfb
 	makedepends = autoconf2.13
