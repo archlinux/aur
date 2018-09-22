@@ -18,11 +18,11 @@
 pkgbase="spl-linux-lts"
 pkgname=("spl-linux-lts" "spl-linux-lts-headers")
 _splver="0.7.11"
-_kernelver="4.14.70-1"
-_extramodules="4.14.70-1-lts"
+_kernelver="4.14.71-1"
+_extramodules="4.14.71-1-lts"
 
 pkgver="${_splver}_$(echo ${_kernelver} | sed s/-/./g)"
-pkgrel=1
+pkgrel=2
 makedepends=("linux-lts-headers=${_kernelver}")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
@@ -45,7 +45,7 @@ package_spl-linux-lts() {
     pkgdesc="Solaris Porting Layer kernel modules."
     provides=("spl")
     groups=("archzfs-linux-lts")
-    conflicts=('spl-linux-lts-git')
+    conflicts=("spl-dkms" "spl-dkms-git" 'spl-linux-lts-git')
     cd "${srcdir}/spl-${_splver}"
     make DESTDIR="${pkgdir}" install
     mv "${pkgdir}/lib" "${pkgdir}/usr/"
@@ -55,7 +55,8 @@ package_spl-linux-lts() {
 
 package_spl-linux-lts-headers() {
     pkgdesc="Solaris Porting Layer kernel headers."
-    conflicts=('spl-archiso-linux-headers' 'spl-archiso-linux-git-headers' 'spl-linux-hardened-headers' 'spl-linux-hardened-git-headers'  'spl-linux-lts-git-headers' 'spl-linux-headers' 'spl-linux-git-headers' 'spl-linux-vfio-headers' 'spl-linux-vfio-git-headers' 'spl-linux-zen-headers' 'spl-linux-zen-git-headers' )
+    provides=("spl-headers")
+    conflicts=("spl-dkms" "spl-dkms-git" "spl-headers")
     cd "${srcdir}/spl-${_splver}"
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"

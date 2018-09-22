@@ -1,13 +1,13 @@
 pkgbase = spl-linux-lts
-	pkgver = 0.7.11_4.14.70.1
-	pkgrel = 1
+	pkgver = 0.7.11_4.14.71.1
+	pkgrel = 2
 	url = http://zfsonlinux.org/
 	arch = x86_64
 	license = GPL
-	makedepends = linux-lts-headers=4.14.70-1
+	makedepends = linux-lts-headers=4.14.71-1
 	depends = spl-utils-common=0.7.11
 	depends = kmod
-	depends = linux-lts=4.14.70-1
+	depends = linux-lts=4.14.71-1
 	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.11/spl-0.7.11.tar.gz
 	sha256sums = d6ddd225e7f464007c960f10134c8a48fb0de525f75ad05d5ddf36685b1ced67
 
@@ -15,19 +15,14 @@ pkgname = spl-linux-lts
 	pkgdesc = Solaris Porting Layer kernel modules.
 	groups = archzfs-linux-lts
 	provides = spl
+	conflicts = spl-dkms
+	conflicts = spl-dkms-git
 	conflicts = spl-linux-lts-git
 
 pkgname = spl-linux-lts-headers
 	pkgdesc = Solaris Porting Layer kernel headers.
-	conflicts = spl-archiso-linux-headers
-	conflicts = spl-archiso-linux-git-headers
-	conflicts = spl-linux-hardened-headers
-	conflicts = spl-linux-hardened-git-headers
-	conflicts = spl-linux-lts-git-headers
-	conflicts = spl-linux-headers
-	conflicts = spl-linux-git-headers
-	conflicts = spl-linux-vfio-headers
-	conflicts = spl-linux-vfio-git-headers
-	conflicts = spl-linux-zen-headers
-	conflicts = spl-linux-zen-git-headers
+	provides = spl-headers
+	conflicts = spl-dkms
+	conflicts = spl-dkms-git
+	conflicts = spl-headers
 
