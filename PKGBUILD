@@ -1,5 +1,5 @@
 pkgname=litecoin-bin
-pkgver=0.16.0
+pkgver=0.16.3
 pkgrel=1
 arch=(i686 x86_64)
 url="http://www.litecoin.org/"
@@ -9,10 +9,10 @@ install=litecoin-bin.install
 
 if [ ${CARCH} == 'x86_64' ]; then
   _pkg_arch=x86_64
-  sha256sums=(5a1dfaea8d70f4d0d61190061631d6ad40cb3662e7718660000c43f564c348e6)
+  sha256sums=(686d99d1746528648c2c54a1363d046436fd172beadaceea80bdc93043805994)
 else
   _pkg_arch=i686-pc
-  sha256sums=(edda17bdbcba596149cd94d9aa58e5d7975955a94ca9eac30892cbdeaea40ea8)
+  sha256sums=(eda8cdc0adbc4a0c7030aab9ec0a3d8a7d1837fafb52b6dfd934598ef9b08437)
 fi
 
 source=(
