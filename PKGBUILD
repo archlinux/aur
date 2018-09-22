@@ -1,15 +1,14 @@
-# vim: set ft=sh:
-# Maintainer: Yen Chi Hsuan <yan12125 at gmail dot com>
+# Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
 
 _pkgname=version-control-tools
 pkgname=$_pkgname-hg
-pkgver=r5588.866e7cfd28fe
-pkgrel=2
+pkgver=r6490.e50b99efbc2e
+pkgrel=1
 pkgdesc="Tools, extensions, hooks, etc to support version control at Mozilla"
 url="https://mozilla-version-control-tools.readthedocs.io/en/latest/"
 arch=('any')
 depends=('mercurial' 'python')
-provides=("$_pkgname")
+provides=("$_pkgname=$pkgver")
 license=('MPL2')
 source=("$_pkgname"::"hg+https://hg.mozilla.org/hgcustom/version-control-tools")
 sha512sums=('SKIP')
