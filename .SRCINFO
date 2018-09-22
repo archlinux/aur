@@ -1,7 +1,7 @@
 pkgbase = natron
 	pkgdesc = Open source compositing software. Node-graph based. Similar in functionalities to Adobe After Effects and Nuke by The Foundry.
 	pkgver = 2.3.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NatronGitHub/Natron
 	arch = i686
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = natron
 	makedepends = openmp
 	depends = boost-libs
 	depends = cairo
-	depends = openfx-arena
 	depends = openfx-gmic
 	depends = openfx-io
 	depends = openfx-misc
 	depends = python2-pyside
+	optdepends = openfx-arena
 	optdepends = natron-plugins
 	source = natron::git+https://github.com/NatronGitHub/Natron#tag=2.3.14
 	source = git+https://github.com/NatronGitHub/google-breakpad

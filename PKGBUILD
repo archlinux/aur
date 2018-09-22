@@ -5,14 +5,14 @@
 
 pkgname=natron
 pkgver=2.3.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source compositing software. Node-graph based. Similar in functionalities to Adobe After Effects and Nuke by The Foundry."
 arch=("i686" "x86_64")
 url="https://github.com/NatronGitHub/Natron"
 license=("GPL")
-depends=('boost-libs' 'cairo' 'openfx-arena' 'openfx-gmic' 'openfx-io' 'openfx-misc' 'python2-pyside')
+depends=('boost-libs' 'cairo' 'openfx-gmic' 'openfx-io' 'openfx-misc' 'python2-pyside')
 makedepends=('boost' 'expat' 'git' 'glfw-x11' 'openmp')
-optdepends=('natron-plugins')
+optdepends=('openfx-arena' 'natron-plugins')
 source=("$pkgname::git+https://github.com/NatronGitHub/Natron#tag=$pkgver"
         "git+https://github.com/NatronGitHub/google-breakpad"
         "git+https://github.com/NatronGitHub/google-mock"
