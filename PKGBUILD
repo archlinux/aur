@@ -2,7 +2,7 @@
 
 pkgname=python-virtualenvondemand
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Easily create and use virtualenvs via script and provides the ability for an application to install and use its runtime dependencies on first import"
 arch=('any')
 license=('LGPLv3')
