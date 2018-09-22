@@ -3,6 +3,12 @@
 __APPNAME=$(basename $0)
 __WINEPREFIX="${XDG_DATA_HOME:-$HOME/.local}/wine/${__APPNAME}"
 __APPDIR="${__WINEPREFIX}/dosdevices/c:/${__APPNAME}"
+__APPCFG="${XDG_CONFIG_HOME:-$HOME/.config}/${__APPNAME}"
+__APPLOG="${XDG_CACHE_HOME:-$HOME/.cache}/${__APPNAME}"
+__REGFILE="${__APPDIR}/${__APPNAME}.reg"
+__TMPREGFILE=$(mktemp)
+__DPI=$(xdpyinfo -display $DISPLAY | grep -A 2 "screen #0:" | grep "resolution:" | grep -oE '[0-9]+x[0-9]+' | cut -d 'x' -f 1)
+__DPIX=$(printf %08x ${__DPI})
 
 __symlink() {
 	ln -sf "$1" "${__APPDIR}/${1##*/}"
@@ -24,6 +30,23 @@ __symlink "/usr/lib/${__APPNAME}/avformat-57.dll"
 __symlink "/usr/lib/${__APPNAME}/avutil-55.dll"
 __symlink "/usr/lib/${__APPNAME}/microsip.exe"
 __symlink "/usr/lib/${__APPNAME}/swscale-4.dll"
+
+cp "/usr/share/${__APPNAME}/${__APPNAME}.reg" "${__TMPREGFILE}"
+sed -i "s/{DPI}/${__DPIX}/g" "${__TMPREGFILE}"
+iconv -f utf-8 -t utf-16le "${__TMPREGFILE}" >"${__REGFILE}"
+rm -f "${__TMPREGFILE}"
+WINEPREFIX="${__WINEPREFIX}" regedit "${__REGFILE}"
+rm -f "${__REGFILE}"
+
+mkdir -p "${__APPCFG}"
+touch "${__APPCFG}/Contacts.xml"
+touch "${__APPCFG}/microsip.ini"
+__symlink "${__APPCFG}/Contacts.xml"
+__symlink "${__APPCFG}/microsip.ini"
+
+mkdir -p "${__APPLOG}"
+touch "${__APPLOG}/microsip_log.txt"
+__symlink "${__APPLOG}/microsip_log.txt"
 
 WINEPREFIX="${__WINEPREFIX}" wine "${__APPDIR}/microsip.exe"
 

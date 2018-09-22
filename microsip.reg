@@ -1,0 +1,7 @@
+﻿Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\Control Panel\Desktop]
+"FontSmoothingGamma"=dword:00000578
+"FontSmoothingType"=dword:00000002
+"LogPixels"=dword:{DPI}
+
