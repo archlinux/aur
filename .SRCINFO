@@ -1,6 +1,6 @@
 pkgbase = luacheck
 	pkgdesc = A tool for linting and static analysis of Lua code.
-	pkgver = 0.22.1
+	pkgver = 0.23.0
 	pkgrel = 1
 	url = https://github.com/mpeterv/luacheck
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = luacheck
 	depends = lua
 	depends = lua-filesystem
 	optdepends = lua-lanes: for parallel checking
-	source = https://github.com/mpeterv/luacheck/archive/0.22.1.tar.gz
-	sha256sums = 46fef6860f5cd1c432cb4ae760f231f09aa286193271f0c550d9323e451da3af
+	source = https://github.com/mpeterv/luacheck/archive/0.23.0.tar.gz
+	sha256sums = b4edf3a7702519502696d4ac7372ed1bd6a82ded63bf81f2b1d7e9b37711be2b
 
 pkgname = luacheck
 
