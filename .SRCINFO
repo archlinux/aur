@@ -1,7 +1,7 @@
 pkgbase = python-ichororm
 	pkgdesc = ichorORM - A python library for postgresql focused on performance and supporting ORM and query-building functionality
 	pkgver = 2.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/kata198/ichorORM
 	arch = any
 	license = LGPLv2

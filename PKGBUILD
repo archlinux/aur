@@ -2,7 +2,7 @@
 
 pkgname='python-ichororm'
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="ichorORM - A python library for postgresql focused on performance and supporting ORM and query-building functionality"
 arch=('any')
 license=('LGPLv2')
