@@ -22,7 +22,7 @@ _kernelver="4.18.9.zen1-1"
 _extramodules="${_kernelver/.zen/-zen}-zen"
 
 pkgver="${_splver}_$(echo ${_kernelver} | sed s/-/./g)"
-pkgrel=1
+pkgrel=2
 makedepends=("linux-zen-headers=${_kernelver}")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
@@ -45,7 +45,7 @@ package_spl-linux-zen() {
     pkgdesc="Solaris Porting Layer kernel modules."
     provides=("spl")
     groups=("archzfs-linux-zen")
-    conflicts=('spl-linux-zen-git')
+    conflicts=("spl-dkms" "spl-dkms-git" 'spl-linux-zen-git')
     cd "${srcdir}/spl-${_splver}"
     make DESTDIR="${pkgdir}" install
     mv "${pkgdir}/lib" "${pkgdir}/usr/"
@@ -55,7 +55,8 @@ package_spl-linux-zen() {
 
 package_spl-linux-zen-headers() {
     pkgdesc="Solaris Porting Layer kernel headers."
-    conflicts=('spl-archiso-linux-headers' 'spl-archiso-linux-git-headers' 'spl-linux-hardened-headers' 'spl-linux-hardened-git-headers' 'spl-linux-lts-headers' 'spl-linux-lts-git-headers' 'spl-linux-headers' 'spl-linux-git-headers' 'spl-linux-vfio-headers' 'spl-linux-vfio-git-headers'  'spl-linux-zen-git-headers' )
+    provides=("spl-headers")
+    conflicts=("spl-dkms" "spl-dkms-git" "spl-headers")
     cd "${srcdir}/spl-${_splver}"
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
