@@ -1,0 +1,6 @@
+post_install() {
+    post_upgrade
+}
+post_upgrade() {
+    setcap 'cap_sys_admin,cap_sys_ptrace,cap_sys_tty_config=eip' usr/bin/sway
+}
