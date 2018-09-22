@@ -3,8 +3,6 @@ pkgbase = xmonad-contrib-git
 	pkgver = v0.13.r81.g3044577
 	pkgrel = 1
 	url = http://xmonad.org/
-	install = xmonad-contrib.install
-	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git
@@ -12,14 +10,13 @@ pkgbase = xmonad-contrib-git
 	depends = xmonad-git
 	depends = sh
 	depends = haskell-x11>=1.6.1
-	depends = haskell-x11<1.9
+	depends = haskell-x11<1.10
 	depends = haskell-x11-xft>=0.2
 	depends = haskell-utf8-string
 	depends = haskell-random
 	depends = haskell-old-time
 	provides = xmonad-contrib
 	conflicts = xmonad-contrib
-	options = staticlibs
 	source = git://github.com/xmonad/xmonad-contrib
 	md5sums = SKIP
 
