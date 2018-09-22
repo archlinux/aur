@@ -1,7 +1,7 @@
 pkgbase = qtermwidget-git
 	pkgdesc = A terminal widget for Qt
-	pkgver = 0.9.0.49.g5d789ca
-	pkgrel = 1
+	pkgver = 0.9.0.65.g6d1be93
+	pkgrel = 2
 	url = https://github.com/lxqt/qtermwidget
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = qtermwidget-git
 	makedepends = python-sip
 	makedepends = sip
 	depends = qt5-base
-	provides = qtermwidget
+	provides = qtermwidget=0.9.0.65.g6d1be93
 	conflicts = qtermwidget
 	source = git+https://github.com/lxqt/qtermwidget.git
 	sha256sums = SKIP
