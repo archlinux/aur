@@ -3,7 +3,7 @@
 
 pkgname=agedu-git
 pkgver=r131.8a8299e
-pkgrel=1
+pkgrel=2
 pkgdesc="Track down wasted disk space"
 arch=('i686' 'x86_64')
 url="http://www.chiark.greenend.org.uk/~sgtatham/agedu/"
@@ -14,22 +14,21 @@ provides=('agedu')
 conflicts=('agedu')
 source=("git://git.tartarus.org/simon/agedu.git")
 md5sums=('SKIP')
-_gitname=agedu
 
 pkgver() {
-  cd "$srcdir"/"$_gitname"
+  cd ${pkgname%-git}
   printf "r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
 build() {
-  cd "$srcdir/$_gitname"
+  cd  ${pkgname%-git}
   ./mkauto.sh
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/$_gitname"
+  cd  ${pkgname%-git}
   make DESTDIR="$pkgdir/" install  
   install -Dm644 LICENCE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
