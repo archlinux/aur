@@ -1,6 +1,6 @@
 # Maintainer: Marco Steiger <marco1steiger (at) gmail (dot) com>
 pkgname=rofi-mpc
-pkgver=1.2
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Fast graphical Rofi-Interface for contolling MPD"
 url="https://github.com/Marco98/${pkgname}"
