@@ -6,7 +6,7 @@ pushd compute-runtime
 VER=$(git describe --tags --abbrev=0)
 popd
 rm -rf compute-runtime
-wget ${URL}/releases/download/${VER}/intel-opencl_${VER}_amd64.deb
+curl -gqb "" -fLC - --retry 3 --retry-delay 3 -o intel-opencl_${VER}_amd64.deb ${URL}/releases/download/${VER}/intel-opencl_${VER}_amd64.deb
 LINE=($(sha256sum intel-opencl_${VER}_amd64.deb))
 SUM=${LINE[0]}
 echo "new version: ${VER} with sha256sum=${SUM}"
