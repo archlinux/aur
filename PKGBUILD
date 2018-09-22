@@ -4,7 +4,7 @@
 
 pkgname=maniadrive
 pkgver=1.2
-pkgrel=19
+pkgrel=20
 pkgdesc='Acrobatic racing game'
 arch=('x86_64' 'i686')
 url='http://maniadrive.raydium.org/'
@@ -17,7 +17,7 @@ else
 fi
 makedepends=('gendesk')
 source=("http://prdownloads.sourceforge.net/maniadrive/ManiaDrive-$pkgver-linux-i386.tar.gz"
-        "maniadrive.png::http://framakey.org/uploads/Portables/PortableManiaDrive_128px.png"
+        "maniadrive.png"
         "license.txt")
 sha256sums=('ea524a4613139290b0f85fb6a1a8206d398cba27a2bddb4173ad60b399cbcae4'
             '1c69692578961117af2d17cfdfd9678b458bf7430efa58ed42c2f348e26444f7'
