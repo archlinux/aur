@@ -1,7 +1,7 @@
 pkgbase = poplines
 	pkgdesc = Tools to pop/peek lines from the head/tail or known position within a given file, and output to stdout. Makes files into queues!
 	pkgver = 2.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://github.com/kata198/popLines
 	arch = any
 	license = GPLv2
