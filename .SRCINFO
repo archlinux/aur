@@ -1,6 +1,6 @@
 pkgbase = zfs-linux-vfio
 	pkgver = 0.7.11_4.18.5.arch1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://zfsonlinux.org/
 	arch = x86_64
 	license = CDDL
@@ -18,19 +18,14 @@ pkgname = zfs-linux-vfio
 	install = zfs.install
 	groups = archzfs-linux-vfio
 	provides = zfs
+	conflicts = zfs-dkms
+	conflicts = zfs-dkms-git
 	conflicts = zfs-linux-vfio-git
 
 pkgname = zfs-linux-vfio-headers
 	pkgdesc = Kernel headers for the Zettabyte File System.
-	conflicts = zfs-archiso-linux-headers
-	conflicts = zfs-archiso-linux-git-headers
-	conflicts = zfs-linux-hardened-headers
-	conflicts = zfs-linux-hardened-git-headers
-	conflicts = zfs-linux-lts-headers
-	conflicts = zfs-linux-lts-git-headers
-	conflicts = zfs-linux-headers
-	conflicts = zfs-linux-git-headers
-	conflicts = zfs-linux-vfio-git-headers
-	conflicts = zfs-linux-zen-headers
-	conflicts = zfs-linux-zen-git-headers
+	provides = zfs-headers
+	conflicts = zfs-headers
+	conflicts = zfs-dkms
+	conflicts = zfs-dkms-git
 
