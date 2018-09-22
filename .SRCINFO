@@ -1,7 +1,7 @@
 pkgbase = krita-minimal
 	pkgdesc = Edit and paint images (less KDE dependencies)
 	pkgver = 4.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://krita.org
 	arch = x86_64
 	license = GPL3

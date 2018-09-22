@@ -3,7 +3,7 @@
 _pkgname=krita
 pkgname="${_pkgname}-minimal"
 pkgver=4.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Edit and paint images (less KDE dependencies)'
 arch=(x86_64)
 url='https://krita.org'
