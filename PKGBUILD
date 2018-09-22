@@ -22,7 +22,7 @@ _kernelver="4.18.9.a-1"
 _extramodules="4.18.9.a-1-hardened"
 
 pkgver="${_zfsver}_$(echo ${_kernelver} | sed s/-/./g)"
-pkgrel=1
+pkgrel=2
 makedepends=("linux-hardened-headers=${_kernelver}" "spl-linux-hardened-headers")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
@@ -47,7 +47,7 @@ package_zfs-linux-hardened() {
     install=zfs.install
     provides=("zfs")
     groups=("archzfs-linux-hardened")
-    conflicts=('zfs-linux-hardened-git')
+    conflicts=("zfs-dkms" "zfs-dkms-git" 'zfs-linux-hardened-git')
     cd "${srcdir}/zfs-${_zfsver}"
     make DESTDIR="${pkgdir}" install
     cp -r "${pkgdir}"/{lib,usr}
@@ -58,7 +58,8 @@ package_zfs-linux-hardened() {
 
 package_zfs-linux-hardened-headers() {
     pkgdesc="Kernel headers for the Zettabyte File System."
-    conflicts=('zfs-archiso-linux-headers' 'zfs-archiso-linux-git-headers'  'zfs-linux-hardened-git-headers' 'zfs-linux-lts-headers' 'zfs-linux-lts-git-headers' 'zfs-linux-headers' 'zfs-linux-git-headers' 'zfs-linux-vfio-headers' 'zfs-linux-vfio-git-headers' 'zfs-linux-zen-headers' 'zfs-linux-zen-git-headers' )
+    provides=("zfs-headers")
+    conflicts=("zfs-headers" "zfs-dkms" "zfs-dkms-git")
     cd "${srcdir}/zfs-${_zfsver}"
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
