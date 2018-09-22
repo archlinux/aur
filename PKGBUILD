@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('qt5-base' 'kwidgetsaddons' 'hicolor-icon-theme')
 makedepends=('qt5-tools' 'cmake' 'ninja' 'gettext')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('72d7d726d5fe8e3bc0de83a363b0a813e9e3912fe5440e47e836df3fccee8afe')
+sha256sums=('a971fc83f059bd690269dbf8b6c0e9946b6f0a2a9c984f4b65bbb7363e5f3b07')
 
 prepare() {
     mkdir -p build
