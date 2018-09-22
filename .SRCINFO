@@ -5,11 +5,11 @@ pkgbase = flatplat-blue-theme
 	url = https://github.com/peterychuang/Flat-Plat-Blue
 	arch = any
 	license = GPL2
-	depends = gtk3>=3.22
+	depends = gtk3>=3.18
 	depends = gtk-engine-murrine
 	depends = gnome-themes-standard
 	provides = flatplat-blue-theme
-	source = Flat-Plat-Blue-3.28.1.tar.gz::https://github.com/peterychuang/Flat-Plat-Blue/archive/3.28.1.tar.gz
+	source = Flat-Plat-Blue-3.28.1::https://github.com/peterychuang/Flat-Plat-Blue/archive/3.28.1.tar.gz
 	sha256sums = f9b8e2b7350087891962e3dc694734e4f8742b83dc498ff8ee4c5dee03d84c3b
 
 pkgname = flatplat-blue-theme
