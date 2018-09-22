@@ -1,6 +1,6 @@
 pkgbase = libav-no-libs-git
 	pkgdesc = Open source audio and video processing tools
-	pkgver = v13_dev0.r1546.g4ce701b4e
+	pkgver = 13_dev0.r1579.g2a9e1c122
 	pkgrel = 1
 	url = https://libav.org/
 	arch = i686
@@ -11,9 +11,10 @@ pkgbase = libav-no-libs-git
 	depends = zlib
 	depends = bzip2
 	depends = openssl
-	provides = libav-no-libs
+	provides = libav-no-libs=13_dev0.r1579.g2a9e1c122
 	provides = libav-git-no-libs
-	source = libav::git://git.libav.org/libav.git
+	conflicts = libav-no-libs
+	source = git+https://github.com/libav/libav.git
 	sha256sums = SKIP
 
 pkgname = libav-no-libs-git

@@ -1,6 +1,6 @@
 _pkgname=libav
 pkgname=$_pkgname-no-libs-git
-pkgver=v13_dev0.r1546.g4ce701b4e
+pkgver=13_dev0.r1579.g2a9e1c122
 pkgrel=1
 pkgdesc='Open source audio and video processing tools'
 arch=('i686' 'x86_64')
@@ -8,22 +8,20 @@ url='https://libav.org/'
 license=('LGPL')
 depends=('zlib' 'bzip2' 'openssl')
 makedepends=('git' 'yasm')
-provides=('libav-no-libs' 'libav-git-no-libs')
-# git.libav.org provides https, which is absolutely slow
-# The GitHub mirror is several days late
-source=("$_pkgname"::'git://git.libav.org/libav.git')
+provides=("libav-no-libs=$pkgver" 'libav-git-no-libs')
+conflicts=('libav-no-libs')
+source=('git+https://github.com/libav/libav.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd $_pkgname
   ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
   )
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd $_pkgname
 
   ./configure \
     --prefix=/usr \
@@ -34,7 +32,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd $_pkgname
 
   make DESTDIR="$pkgdir" install
 
