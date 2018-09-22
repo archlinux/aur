@@ -2,7 +2,7 @@
 
 pkgname=usrsvc
 pkgver=1.5.12
-pkgrel=1
+pkgrel=2
 pkgdesc="A service manager for running/managing/monitoring/auto-restarting daemons and services at the user (non-root) level"
 arch=('any')
 license=('GPLv2')

@@ -1,7 +1,7 @@
 pkgbase = usrsvc
 	pkgdesc = A service manager for running/managing/monitoring/auto-restarting daemons and services at the user (non-root) level
 	pkgver = 1.5.12
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/kata198/usrsvc
 	install = install.sh
 	arch = any
