@@ -1,0 +1,4 @@
+brewtarget/
+pkg/
+src/
+*.tar.xz
