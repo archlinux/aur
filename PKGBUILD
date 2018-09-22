@@ -2,7 +2,7 @@
 
 pkgname='python-indexedredis'
 pkgver=6.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A super-fast ORM backed by Redis, supporting models and indexes with O(1) searches, and support for storing native/complex types and objects"
 arch=('any')
 license=('LGPLv2')

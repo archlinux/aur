@@ -1,7 +1,7 @@
 pkgbase = python-indexedredis
 	pkgdesc = A super-fast ORM backed by Redis, supporting models and indexes with O(1) searches, and support for storing native/complex types and objects
 	pkgver = 6.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/kata198/IndexedRedis
 	arch = any
 	license = LGPLv2
