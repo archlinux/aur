@@ -15,7 +15,6 @@ pkgbase = icecat
 	makedepends = yasm
 	makedepends = mesa
 	makedepends = imake
-	makedepends = gconf
 	makedepends = autoconf2.13
 	makedepends = libpulse
 	makedepends = gst-plugins-base-libs
