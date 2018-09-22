@@ -5,7 +5,7 @@
 # Pending work: man & changelog files generated automatically. 
 
 pkgname=eddie-ui-git
-pkgver=2.16.3
+pkgver=2.17.1
 pkgrel=1
 pkgdesc='Eddie - OpenVPN UI - beta version'
 arch=('i686' 'x86_64')
@@ -65,6 +65,7 @@ package() {
   install -Dm644 "common/icon_gray.png"       "$pkgdir/usr/share/eddie-ui/icon_gray.png"
   install -Dm644 "common/icon.png"       "$pkgdir/usr/share/eddie-ui/tray.png"
   install -Dm644 "common/icon_gray.png"       "$pkgdir/usr/share/eddie-ui/tray_gray.png"
+  install -Dm644 "common/iso-3166.json"       "$pkgdir/usr/share/eddie-ui/iso-3166.json"
   # install -Dm644 "resources/arch/usr/share/doc/eddie-ui/changelog.Debian.gz" "$pkgdir/usr/share/doc/eddie-ui/changelog.gz" # TOFIX: Missing changelog generation
   install -Dm644 "resources/arch/usr/share/doc/eddie-ui/copyright"    "$pkgdir/usr/share/doc/eddie-ui/copyright"
   # install -Dm644 "resources/arch/usr/share/man/man8/eddie-ui.8.gz"    "$pkgdir/usr/share/man/man1/eddie-ui.8.gz" # TOFIX: Missing man generation
