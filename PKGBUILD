@@ -1,7 +1,7 @@
 # Maintainer: JP Cimalando <jp-dev inbox.ru>
 pkgname=opl3bankeditor-git
 _pkgname=OPL3BankEditor
-pkgver=1.3.beta.r327.g1add5f4
+pkgver=1.5.beta.r5.ga68a3bb
 pkgrel=1
 epoch=
 pkgdesc="A small cross-platform editor of the OPL3 FM banks of different formats"
@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/Wohlstand/OPL3BankEditor"
 license=('GPL3')
 groups=()
-depends=('qt5-base' 'jack' 'libpulse')
+depends=('qt5-base' 'qwt' 'jack' 'libpulse')
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -20,11 +20,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("git+https://github.com/Wohlstand/${_pkgname}.git"
-        'opl3_bank_editor.desktop')
+source=("git+https://github.com/Wohlstand/${_pkgname}.git")
 noextract=()
-md5sums=('SKIP'
-         "8eddaea4568da3d1b441473951d64116")
+md5sums=('SKIP')
 validpgpkeys=()
 
 pkgver() {
