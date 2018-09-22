@@ -1,7 +1,7 @@
 pkgbase = lightdm-slick-greeter
 	pkgdesc = A slick-looking LightDM greeter
 	pkgver = 1.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/linuxmint/slick-greeter
 	install = slick-greeter.install
 	arch = i686

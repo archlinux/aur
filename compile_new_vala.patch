@@ -1,0 +1,29 @@
+--- src/background.vala
++++ src/background.vala
+@@ -443,8 +443,14 @@
+ 
+     private string _current_background;
+     public string? current_background {
+-        get { return _current_background; }
+-
++        get {
++            if (_current_background == null)
++            {
++                _current_background = fallback_color;
++            }
++
++            return _current_background;
++            }
+         set {
+             if (value == null || value == "")
+             {
+@@ -456,8 +462,6 @@
+ 
+             reload ();
+         }
+-
+-        default = fallback_color;
+     }
+ 
+     public bool draw_grid { get; set; default = true; }
+
