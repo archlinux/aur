@@ -1,6 +1,6 @@
 pkgbase = dosbox-x-git
 	pkgdesc = x86 emulator with builtin DOS, with patches with more features
-	pkgver = 6034.52dd24968
+	pkgver = 6036.24a25c664
 	pkgrel = 1
 	url = http://dosbox.sourceforge.net
 	arch = i686
@@ -9,9 +9,6 @@ pkgbase = dosbox-x-git
 	makedepends = git
 	makedepends = glu
 	depends = fluidsynth
-	depends = sdl2
-	depends = sdl2_net
-	depends = sdl2_mixer
 	depends = libxkbfile
 	depends = libpng
 	depends = libxrandr
