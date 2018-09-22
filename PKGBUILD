@@ -3,7 +3,7 @@
 pkgname=('jsontocsv' 'python-jsontocsv')
 _realName='jsonToCsv'
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Extract data from json and convert to CSV"
 arch=('any')
 license=('LGPLv3')

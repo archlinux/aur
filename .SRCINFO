@@ -1,7 +1,7 @@
 pkgbase = jsontocsv
 	pkgdesc = Extract data from json and convert to CSV
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/kata198/jsonToCsv
 	arch = any
 	license = LGPLv3
