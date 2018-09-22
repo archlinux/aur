@@ -4,7 +4,7 @@
 
 pkgname=google-musicmanager
 pkgver=1.0.467.4929_r0
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple application for adding the music files on your computer to your Google Music library"
 arch=('x86_64')
 url="http://music.google.com"
@@ -13,6 +13,7 @@ depends=('flac'
          'qt5-webkit'
          'libid3tag'
          'hicolor-icon-theme'
+         'libidn11'
 )
 optdepends=('log4cxx')
 options=(!strip)
