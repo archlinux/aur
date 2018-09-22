@@ -29,5 +29,6 @@ build () {
 package () {
     cd dav1d
     DESTDIR="${pkgdir}" ninja -C build install
-    install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+    install -Dm755 build/dav1d "${pkgdir}"/usr/bin/dav1d
+    install -Dm644 COPYING "${pkgdir}"/usr/share/licenses/${pkgname}/COPYING
 }
