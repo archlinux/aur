@@ -4,7 +4,7 @@
 pkgname=pi-hole-server
 _pkgname=pi-hole
 pkgver=4.0
-pkgrel=8
+pkgrel=9
 _wwwpkgname=AdminLTE
 _wwwpkgver=4.0
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
@@ -20,7 +20,7 @@ optdepends=(
 )
 conflicts=('pi-hole-standalone')
 install=$pkgname.install
-backup=('etc/pihole/whitelist.txt' 'etc/pihole/blacklist.txt'
+backup=('etc/pihole/whitelist.txt' 'etc/pihole/blacklist.txt' 'etc/pihole/regex.list'
 'etc/dnsmasq.d/01-pihole.conf' 'etc/pihole/adlists.list' 'etc/dnsmasq.conf')
 
 source=(pihole-$pkgver.tar.gz::https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
@@ -308,6 +308,7 @@ package() {
   install -Dm644 $_pkgname-$pkgver/advanced/Templates/logrotate "$pkgdir"/etc/pihole/logrotate
   install -Dm644 /dev/null "$pkgdir"/etc/pihole/whitelist.txt
   install -Dm644 /dev/null "$pkgdir"/etc/pihole/blacklist.txt
+  install -Dm644 /dev/null "$pkgdir"/etc/pihole/regex.list
 
   install -Dm644 lighttpd.pi-hole.conf "$pkgdir"/usr/share/pihole/configs/lighttpd.example.conf
   install -Dm644 nginx.pi-hole.conf "$pkgdir"/usr/share/pihole/configs/nginx.example.conf
