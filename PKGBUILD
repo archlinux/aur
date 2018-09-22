@@ -1,7 +1,7 @@
 # Maintainer: CyrIng <labs[at]cyring[dot]fr>
 # Contributor: CyrIng <labs[at]cyring[dot]fr>
 pkgname=corefreq-git
-pkgver=1.34.4
+pkgver=1.35.0
 pkgrel=1
 pkgdesc="CoreFreq, a processor monitoring software with a kernel module inside."
 arch=('x86_64')
