@@ -1,6 +1,6 @@
 pkgbase = console-tdm
 	pkgdesc = Console display manager based on CDM
-	pkgver = 1.3.1
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/dopsi/console-tdm
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = console-tdm
 	optdepends = dialog: for curses UI
 	provides = console-tdm
 	conflicts = console-tdm
-	source = console-tdm-v1.3.1.tar.gz::https://github.com/dopsi/console-tdm/archive/v1.3.1.tar.gz
-	sha256sums = 97f2b7c6b06d29718186251a76fec048583a431f3d88742f9f575926cef7a49b
+	source = console-tdm-v1.4.0.tar.gz::https://github.com/dopsi/console-tdm/archive/v1.4.0.tar.gz
+	sha256sums = 29a2db899509e6d7f56cc040e144c8b0f7bf90ff0d296e8da17b002d3e4a2a18
 
 pkgname = console-tdm
 
