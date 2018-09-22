@@ -1,5 +1,5 @@
 # Maintainer: LLL2yu <lll2yu@protonmail.com>
-# Co-Maintainer: Sneljo <jo.snel@hotmail.com>
+# Co-Maintainer: Sneljo <jonas.snellinckx@gmail.com
 
 pkgname="auryo-bin"
 pkgver=2.1.2
