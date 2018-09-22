@@ -2,8 +2,8 @@
 
 _pkgname=transip-api
 pkgname=python-${_pkgname}
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.4.1
+pkgrel=1
 pkgdesc="Python implementation of TransIP's API (unofficial)"
 arch=('any')
 url="https://github.com/benkonrath/transip-api"
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('git' 'python-setuptools')
 depends=('python-rsa' 'python-requests' 'python-suds-jurko')
 source=("https://github.com/benkonrath/${_pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('1a0711dc9eaaf4f9b8fccf77293c56ba37110fe2f9f9335f1438baaa018be562ec7b6b49f521e963227c9a12edf0af1c97fff2ef98743c3875d8a5c7fb731b1f')
+sha512sums=('e3bb49a17be599ec5cce4cbc4046eeedcc4073b50bb11c18e09cc8885a317c4777f9166e48e2ad47efdcee61c6b0c34ce105e1ca7c050963fdd9fc7201514152')
 
 build() {
 	cd "${_pkgname}-${pkgver}"
