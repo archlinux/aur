@@ -1,59 +1,24 @@
-diff --git a/swaybar/i3bar.c b/swaybar/i3bar.c
-index ae37eeb9..fd82ae19 100644
---- a/swaybar/i3bar.c
-+++ b/swaybar/i3bar.c
-@@ -145,6 +145,13 @@ bool i3bar_handle_readable(struct status_line *status) {
- 		} else {
- 			switch (*cur) {
- 			case '[':
-+				if (state->depth == 0) { // ignore infinite array
-+					memmove(state->buffer, cur + 1,
-+							state->buffer_size - (cur + 1 - state->buffer));
-+					cur = state->buffer;
-+					++state->depth;
-+					continue;
-+				}
- 				++state->depth;
- 				if (state->depth >
- 						sizeof(state->nodes) / sizeof(state->nodes[0])) {
-@@ -152,7 +159,7 @@ bool i3bar_handle_readable(struct status_line *status) {
- 					return false;
- 				}
- 				state->nodes[state->depth] = JSON_NODE_ARRAY;
--				if (state->depth == 1) {
-+				if (state->depth == 2) {
- 					state->current_node = cur;
- 				}
- 				break;
-@@ -162,7 +169,7 @@ bool i3bar_handle_readable(struct status_line *status) {
- 					return false;
- 				}
- 				--state->depth;
--				if (state->depth == 0) {
-+				if (state->depth == 1) {
- 					// cur[1] is valid since cur[0] != '\0'
- 					char p = cur[1];
- 					cur[1] = '\0';
 diff --git a/swaybar/status_line.c b/swaybar/status_line.c
-index bc47580b..9ea44c1b 100644
+index 48b43248..796578f8 100644
 --- a/swaybar/status_line.c
 +++ b/swaybar/status_line.c
-@@ -9,12 +9,14 @@
- #include "swaybar/config.h"
+@@ -10,6 +10,7 @@
+ #include "swaybar/event_loop.h"
  #include "swaybar/status_line.h"
  #include "readline.h"
 +#include "swaybar/event_loop.h"
  
- void status_error(struct status_line *status, const char *text) {
- 	close(status->read_fd);
- 	close(status->write_fd);
+ static void status_line_close_fds(struct status_line *status) {
+ 	if (status->read_fd != -1) {
+@@ -27,6 +28,7 @@ void status_error(struct status_line *status, const char *text) {
+ 	status_line_close_fds(status);
  	status->protocol = PROTOCOL_ERROR;
  	status->text = text;
 +	remove_event(status->read_fd);
  }
  
  bool status_handle_readable(struct status_line *status) {
-@@ -118,6 +120,7 @@ struct status_line *status_line_init(char *cmd) {
+@@ -138,6 +140,7 @@ struct status_line *status_line_init(char *cmd) {
  	fcntl(status->write_fd, F_SETFL, O_NONBLOCK);
  
  	status->read = fdopen(status->read_fd, "r");

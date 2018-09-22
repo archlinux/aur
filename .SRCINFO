@@ -34,7 +34,7 @@ pkgbase = sway-wlroots-git
 	source = git+https://github.com/swaywm/sway.git
 	source = swaybar-fix.patch
 	sha1sums = SKIP
-	sha1sums = 11fbebb5c3dc9cbb7278033d023fd3557d2bbbba
+	sha1sums = 1439ccd67866cec5e280a8b552046a9f5a1787f7
 
 pkgname = sway-wlroots-git
 
