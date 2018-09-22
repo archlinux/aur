@@ -1,11 +1,10 @@
 pkgbase = bdf-spleen
 	pkgdesc = Monospaced bitmap fonts
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.cambus.net/spleen-monospaced-bitmap-fonts/
 	arch = any
-	license = custom
-	license = GPL2
+	license = BSD
 	depends = fontconfig
 	depends = xorg-fonts-encodings
 	depends = xorg-font-utils
