@@ -1,13 +1,14 @@
 pkgbase = freedict-tools
 	pkgdesc = Tools to compile the Freedict dictionaries
 	pkgver = 0.5.0_beta.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.freedict.org/
 	arch = any
 	license = GPL
 	license = GPL3
 	license = CC-BY-SA
 	depends = libxslt
+	depends = espeak
 	source = freedict-tools_0.5.0-beta.2.tar.gz::https://github.com/freedict/tools/archive/0.5.0-beta.2.tar.gz
 	sha512sums = c26d3dd6b7502e165ee5eb57f99d89a62a60dd70ebf0fa54830107d6948a373dbaa39672d691b9afd949b0ea543e06edeff4af7472e7e38650e8dc426b8261d3
 
