@@ -2,7 +2,7 @@
 
 pkgname=findprocessesusing
 pkgver=2.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Application which scans running processes on the system for given mappings (shared libraries, executables) or open file descriptors'
 arch=('any')
 license=('GPLv2')
