@@ -17,10 +17,10 @@
 #
 pkgbase="zfs-linux-lts-git"
 pkgname=("zfs-linux-lts-git" "zfs-linux-lts-git-headers")
-_commit='145c88fb7bfb7e5941a0994daa3d9f4401a167a1'
-_zfsver="2018.09.18.r4729.g145c88fb7"
-_kernelver="4.14.70-1"
-_extramodules="4.14.70-1-lts"
+_commit='dda5500853c736aca9ad8c14f7d22cd9d9f9fb36'
+_zfsver="2018.09.21.r4732.gdda550085"
+_kernelver="4.14.71-1"
+_extramodules="4.14.71-1-lts"
 
 pkgver="${_zfsver}_$(echo ${_kernelver} | sed s/-/./g)"
 pkgrel=1
@@ -46,9 +46,9 @@ build() {
 package_zfs-linux-lts-git() {
     pkgdesc="Kernel modules for the Zettabyte File System."
     install=zfs.install
-    provides=("zfs")
+    provides=("zfs" "spl")
     groups=("archzfs-linux-lts-git")
-    conflicts=('zfs-linux-lts' 'spl-linux-lts-git' 'spl-linux-lts')
+    conflicts=("zfs-dkms" "zfs-dkms-git" 'zfs-linux-lts' 'spl-linux-lts-git' 'spl-linux-lts' "spl-dkms" "spl-dkms-git")
     replaces=("spl-linux-lts-git")
     cd "${srcdir}/zfs"
     make DESTDIR="${pkgdir}" install
@@ -60,7 +60,8 @@ package_zfs-linux-lts-git() {
 
 package_zfs-linux-lts-git-headers() {
     pkgdesc="Kernel headers for the Zettabyte File System."
-    conflicts=('zfs-archiso-linux-headers' 'zfs-archiso-linux-git-headers' 'zfs-linux-hardened-headers' 'zfs-linux-hardened-git-headers' 'zfs-linux-lts-headers'  'zfs-linux-headers' 'zfs-linux-git-headers' 'zfs-linux-vfio-headers' 'zfs-linux-vfio-git-headers' 'zfs-linux-zen-headers' 'zfs-linux-zen-git-headers' )
+    provides=("zfs-headers" "spl-headers")
+    conflicts=("zfs-headers" "zfs-dkms" "zfs-dkms-git" "spl-dkms" "spl-dkms-git" "spl-headers")
     cd "${srcdir}/zfs"
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
