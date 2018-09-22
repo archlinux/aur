@@ -1,6 +1,6 @@
 pkgbase = witfocus
 	pkgdesc = CLI tool for simple task management
-	pkgver = 0.9.7
+	pkgver = 0.9.8
 	pkgrel = 1
 	url = https://github.com/arendtio/witfocus
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = witfocus
 	makedepends = automake
 	depends = bash
 	backup = etc/witfocus.conf
-	source = git+https://github.com/arendtio/witfocus.git#tag=0.9.7
+	source = git+https://github.com/arendtio/witfocus.git#tag=0.9.8
 	sha512sums = SKIP
 
 pkgname = witfocus

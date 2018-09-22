@@ -1,6 +1,6 @@
 # Maintainer: Finn Arendt <finn-arendt-aur at ubermail dot me>
 pkgname=witfocus
-pkgver=0.9.7
+pkgver=0.9.8
 pkgrel=1
 pkgdesc="CLI tool for simple task management"
 arch=(any)
