@@ -10,10 +10,10 @@ license=("GPL2")
 depends=("qt5-base" "qt5-x11extras" "kwindowsystem" "libqtxdg-git" "libx11" "libxcb" "hicolor-icon-theme")
 makedepends=("cmake" "qt5-tools")
 source=(
-	"https://github.com/lxqt/screengrab/releases/download/$pkgname/$pkgname-$pkgver.tar.xz"
+	"https://github.com/lxqt/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.xz"
 )
 sha256sums=(
-	"fa3b047a1063b7738c5a0c8d12d6aaa338590a5e27857d88214d77260f98b799"
+	"e3ff978123f79fbf0bf212b903b605c1e71d00330d61bfc4eebb4797bacec89f"
 )
 
 
