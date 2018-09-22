@@ -2,7 +2,7 @@
 
 pkgname=python-namedatomiclock
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Python module for an atomic named interprocess lock which is local to the machine.'
 arch=('any')
 license=('LGPLv3')
