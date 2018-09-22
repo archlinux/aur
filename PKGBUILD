@@ -22,7 +22,7 @@ else
     _commit=5ac1a8240fb784cc92e2b394156153e34e21dab9 # tags/GNOME_SETTINGS_DAEMON_3_28_0^0
 fi
 pkgver=3.28.0
-pkgrel=3
+pkgrel=4
 pkgdesc="GNOME Settings Daemon (with elementary OS patch)"
 url="https://gitlab.gnome.org/GNOME/gnome-settings-daemon"
 arch=(i686 x86_64)
@@ -30,7 +30,7 @@ license=(GPL)
 depends=(dconf geoclue2 geocode-glib gnome-desktop 'gsettings-desktop-schemas-ubuntu>=3.24.0'
 	gtk3-print-backends libcanberra-pulse libgudev libgweather libnotify librsvg 
 	libsystemd libwacom nss pulseaudio pulseaudio-alsa upower)
-makedepends=(docbook-xsl git gnome-common intltool libxslt python xf86-input-wacom meson)
+makedepends=(docbook-xsl git gnome-common intltool libxslt libnm python xf86-input-wacom meson)
 groups=(gnome unity pantheon-qq)
 provides=(gnome-settings-daemon{,-ubuntu}="${pkgver}")
 conflicts=(gnome-settings-daemon{,-ubuntu})
