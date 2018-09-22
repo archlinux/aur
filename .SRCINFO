@@ -1,6 +1,6 @@
 pkgbase = redis-git
 	pkgdesc = Advanced key-value store (git unstable branch)
-	pkgver = r7054.93238575f
+	pkgver = r7362.0d6f11f4d
 	pkgrel = 1
 	url = http://redis.io/
 	install = redis.install
@@ -19,11 +19,11 @@ pkgbase = redis-git
 	source = redis.logrotate
 	source = redis.conf-sane-defaults.patch
 	source = redis-use-system-jemalloc.patch
-	md5sums = SKIP
-	md5sums = afa0f4a9000c26c3323e83fe34883e23
-	md5sums = 9e2d75b7a9dc421122d673fe520ef17f
-	md5sums = 0edaae8f1ada3add150fa02f601184d7
-	md5sums = 396f5543b68f3fe96c90dd9d50202ac0
+	sha1sums = SKIP
+	sha1sums = 285476bd6f92aa3dfba40cea1ad6cabef5a94df7
+	sha1sums = b2a3cdc6ea1b89dc867d6db9ce02571e58e8b645
+	sha1sums = 8d60927802707bc7096f1c815e0e64937fc899ad
+	sha1sums = 46fed06e1b37165e1bfb994aaa367c232b83ee43
 
 pkgname = redis-git
 

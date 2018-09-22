@@ -1,8 +1,6 @@
-diff --git a/src/Makefile b/src/Makefile
-index 2bf3c93..8915b0f 100644
---- a/src/Makefile
-+++ b/src/Makefile
-@@ -104,9 +104,8 @@ ifeq ($(MALLOC),tcmalloc_minimal)
+--- src/Makefile	2018-09-22 13:30:15.580979499 -0400
++++ src/Makefile	2018-09-22 13:30:19.690995581 -0400
+@@ -120,9 +120,8 @@
  endif
  
  ifeq ($(MALLOC),jemalloc)
@@ -10,7 +8,7 @@ index 2bf3c93..8915b0f 100644
 -	FINAL_CFLAGS+= -DUSE_JEMALLOC -I../deps/jemalloc/include
 -	FINAL_LIBS := ../deps/jemalloc/lib/libjemalloc.a $(FINAL_LIBS)
 +	FINAL_CFLAGS+= -DUSE_JEMALLOC -DJEMALLOC_NO_DEMANGLE -I/usr/include/jemalloc
-+	FINAL_LIBS:= -ljemalloc $(FINAL_LIBS)
++	FINAL_LIBS+= -ljemalloc
  endif
  
  REDIS_CC=$(QUIET_CC)$(CC) $(FINAL_CFLAGS)

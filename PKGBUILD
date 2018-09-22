@@ -3,7 +3,7 @@
 pkgname=redis-git
 provides=('redis')
 conflicts=('redis')
-pkgver=r7054.93238575f
+pkgver=r7362.0d6f11f4d
 pkgrel=1
 pkgdesc='Advanced key-value store (git unstable branch)'
 arch=('i686' 'x86_64')
@@ -18,12 +18,11 @@ source=(git+https://github.com/antirez/redis.git#branch=unstable
         redis.logrotate
         redis.conf-sane-defaults.patch
         redis-use-system-jemalloc.patch)
-md5sums=('SKIP'
-         'afa0f4a9000c26c3323e83fe34883e23'
-         '9e2d75b7a9dc421122d673fe520ef17f'
-         '0edaae8f1ada3add150fa02f601184d7'
-         '396f5543b68f3fe96c90dd9d50202ac0')
-
+sha1sums=('SKIP'
+          '285476bd6f92aa3dfba40cea1ad6cabef5a94df7'
+          'b2a3cdc6ea1b89dc867d6db9ce02571e58e8b645'
+          '8d60927802707bc7096f1c815e0e64937fc899ad'
+          '46fed06e1b37165e1bfb994aaa367c232b83ee43')
 
 pkgver() {
   cd redis
@@ -33,7 +32,7 @@ pkgver() {
 prepare() {
   cd redis
   patch -p1 -i ../redis.conf-sane-defaults.patch
-  patch -p1 -i ../redis-use-system-jemalloc.patch
+  patch -p0 -i ../redis-use-system-jemalloc.patch
 }
 
 build() {
