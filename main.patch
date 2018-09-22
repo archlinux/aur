@@ -1,0 +1,38 @@
+--- src/system76/src/main.rs	2018-09-21 21:38:37.639982440 -0700
++++ src/system76/src/main.rs.new	2018-09-21 21:38:34.933315808 -0700
+@@ -110,22 +110,21 @@
+             )
+         )
+         .get_matches();
+-    
+-    if let Err(why) = logging::setup_logging(
+-        if matches.is_present("verbose") {
+-            LevelFilter::Debug
+-        } else if matches.is_present("quiet") {
+-            LevelFilter::Off
+-        } else {
+-            LevelFilter::Info
+-        }
+-    ) {
+-        eprintln!("failed to set up logging: {}", why);
+-        process::exit(1);
+-    }
+ 
+     let res = match matches.subcommand() {
+-        ("daemon", Some(_matches)) => {
++        ("daemon", Some(matches)) => {
++            if let Err(why) = logging::setup_logging(
++                if matches.is_present("verbose") {
++                    LevelFilter::Debug
++                } else if matches.is_present("quiet") {
++                    LevelFilter::Off
++                } else {
++                    LevelFilter::Info
++                }
++            ) {
++                eprintln!("failed to set up logging: {}", why);
++                process::exit(1);
++            }
+             if unsafe { libc::geteuid() } == 0 {
+                 daemon::daemon(matches.is_present("experimental"))
+             } else {

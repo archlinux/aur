@@ -3,8 +3,8 @@
 _pkgname=system76
 _pkgbase=system76-power
 pkgname=system76-power
-pkgver=100
-pkgrel=1
+pkgver=111
+pkgrel=2
 pkgdesc="System76 Power Management"
 arch=('any')
 url="https://github.com/pop-os/system76-power"
@@ -17,12 +17,14 @@ depends=(
 )
 makedepends=('rust')
 source=(
-  'system76::git+https://github.com/pop-os/system76-power.git#commit=ad63c6302c5b5c77a2d9aa2fe4d96f93aac3e563'
+  'system76::git+https://github.com/pop-os/system76-power.git#commit=7f5de18038c1deb40416e365fd2078ca957ca579'
   'graphics.patch'
+  'main.patch'
   )
 sha1sums=(
   'SKIP'
   'e486644709099b6348dc96d5f468ae289840dade'
+  '84d590e0f15ac601a74ab09ac7206a62c81edb84'
 )
 
 pkgver() {
@@ -33,6 +35,7 @@ pkgver() {
 build() {
   cd ${startdir}
   patch -p0 < ${startdir}/graphics.patch
+  patch -p0 < ${startdir}/main.patch
 
   cd ${srcdir}/${_pkgname}
 

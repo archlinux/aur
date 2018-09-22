@@ -1,7 +1,7 @@
 pkgbase = system76-power
 	pkgdesc = System76 Power Management
-	pkgver = 100
-	pkgrel = 1
+	pkgver = 111
+	pkgrel = 2
 	url = https://github.com/pop-os/system76-power
 	install = system76-power.install
 	arch = any
@@ -10,10 +10,12 @@ pkgbase = system76-power
 	depends = dbus
 	depends = systemd
 	depends = system76-dkms
-	source = system76::git+https://github.com/pop-os/system76-power.git#commit=ad63c6302c5b5c77a2d9aa2fe4d96f93aac3e563
+	source = system76::git+https://github.com/pop-os/system76-power.git#commit=7f5de18038c1deb40416e365fd2078ca957ca579
 	source = graphics.patch
+	source = main.patch
 	sha1sums = SKIP
 	sha1sums = e486644709099b6348dc96d5f468ae289840dade
+	sha1sums = 84d590e0f15ac601a74ab09ac7206a62c81edb84
 
 pkgname = system76-power
 
