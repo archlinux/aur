@@ -3,8 +3,8 @@
 # Contributor: janezz55
 
 pkgname=dosbox-binutils
-pkgver=2.30
-pkgrel=3
+pkgver=2.31.1
+pkgrel=1
 pkgdesc="binutils for the djgpp dosbox cross-compiler"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/binutils"

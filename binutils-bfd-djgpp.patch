@@ -2,7 +2,7 @@
 #  by the DJGPP ports of binutils and gdb.
 
 
-2018-01-13  Juan Manuel Guerrero  <juan.guerrero@gmx.de>
+2018-07-22  Juan Manuel Guerrero  <juan.guerrero@gmx.de>
 
 	* bfd/bfd-in.h [__DJGPP__]:  Provide the declaration of
 	coff_64k_relocation_enabled.
@@ -78,11 +78,24 @@
 
 	* include/coff/internal.h:  Pacify compiler.
 
+	* include/simple-object.h:  Pacify compiler.
+
 	* libiberty/config.in [__DJGPP__]:  Added DJGPP specific macros definitions.
 	They are all NO-OPS for other OSes.
 
-	* libiberty/cp-demangle.c (d_demangle_callback, d_print_comp):  Pacify
-	compiler.
+	* libiberty/cp-demangle.c (d_demangle_callback, d_expression_1, d_print_comp):
+	Pacify compiler.  Rename functions and variables that shadow the
+	corresponding libc ones.
+
+	* libiberty/cplus-dem.c (remember_Btype):  Pacify compiler.  Rename
+	functions and variables that shadow the	corresponding libc ones.
+
+	* libiberty/floatformat.c (floatformat_to_double):  Pacify compiler.
+	Rename functions and variables that shadow the corresponding libc ones.
+
+	* libiberty/hashtab.c (find_empty_slot_for_expand, htab_find_with_hash,
+	htab_find_slot_with_hash):  Pacify compiler.  Rename functions and
+	variables that shadow the corresponding libc ones.
 
 	* libiberty/make-relative-prefix.c:  DJGPP specific adjustments.
 	Taken from bnu219s2.zip.
@@ -91,18 +104,40 @@
 	Taken from bnu219s2.zip.
 
 	* libiberty/pex-common.c (temp_file, pex_run_in_environment):  Pacify
-	compiler.
+	compiler.  Rename functions and variables that shadow the corresponding
+	libc ones.
+
+	* libiberty/simple-object.c (simple_object_copy_lto_debug_sections,
+	handle_lto_debug_sections):  Pacify compiler.  Rename functions and
+	variables that shadow the corresponding libc ones.
+
+	* libiberty/simple-object-coff.c (simple_object_coff_write_to_file):
+	Pacify compiler.  Rename functions and variables that shadow the
+	corresponding libc ones.
+
+	* libiberty/simple-object-elf.c (simple_object_elf_write_to_file):
+	Pacify compiler.  Rename functions and variables that shadow the
+	corresponding libc ones.
+
+	* libiberty/simple-object-mach.c (simple_object_mach_o_segment,
+	simple_object_mach_o_write_segment):  Pacify compiler.  Rename
+	functions and variables that shadow the corresponding libc ones.
+
+	* libiberty/simple-object-xcoff.c (simple_object_xcoff_write_to_file):
+	Pacify compiler.  Rename functions and variables that shadow the
+	corresponding libc ones.
 
 	* libiberty/stack-limit.c (stack_limit_increase):  Pacify compiler.
+	Rename functions and variables that shadow the corresponding libc ones.
 
 
 
 
 
-diff -aprNU5 binutils-2.30.orig/bfd/bfd-in.h binutils-2.30/bfd/bfd-in.h
---- binutils-2.30.orig/bfd/bfd-in.h	2018-01-13 13:31:14 +0000
-+++ binutils-2.30/bfd/bfd-in.h	2018-02-13 20:43:30 +0000
-@@ -1047,5 +1047,11 @@ extern bfd_boolean v850_elf_set_note
+diff -aprNU5 binutils-2.31.1.orig/bfd/bfd-in.h binutils-2.31.1/bfd/bfd-in.h
+--- binutils-2.31.1.orig/bfd/bfd-in.h	2018-06-24 18:38:56 +0000
++++ binutils-2.31.1/bfd/bfd-in.h	2018-07-27 20:52:18 +0000
+@@ -1061,5 +1061,11 @@ extern bfd_boolean v850_elf_set_note
    (bfd *, unsigned int, unsigned int);
  
  /* MIPS ABI flags data access.  For the disassembler.  */
@@ -114,9 +149,9 @@ diff -aprNU5 binutils-2.30.orig/bfd/bfd-in.h binutils-2.30/bfd/bfd-in.h
 +#if defined(__DJGPP__) || defined(COFF_GO32_EXE) || defined(COFF_GO32)
 +extern bfd_boolean coff_64k_relocation_enabled;
 +#endif
-diff -aprNU5 binutils-2.30.orig/bfd/cache.c binutils-2.30/bfd/cache.c
---- binutils-2.30.orig/bfd/cache.c	2018-01-13 13:31:14 +0000
-+++ binutils-2.30/bfd/cache.c	2018-02-13 20:35:08 +0000
+diff -aprNU5 binutils-2.31.1.orig/bfd/cache.c binutils-2.31.1/bfd/cache.c
+--- binutils-2.31.1.orig/bfd/cache.c	2018-06-24 18:38:56 +0000
++++ binutils-2.31.1/bfd/cache.c	2018-07-27 20:52:18 +0000
 @@ -76,11 +76,11 @@ static int
  bfd_cache_max_open (void)
  {
@@ -130,9 +165,9 @@ diff -aprNU5 binutils-2.30.orig/bfd/cache.c binutils-2.30/bfd/cache.c
  	 RLIMIT_NOFILE to a value that is not supported by libc, resulting
  	 in "Too many open files" errors.  This can happen here even though
  	 max_open_files is set to rlim.rlim_cur / 8.  For example, if
-diff -aprNU5 binutils-2.30.orig/bfd/coff-go32.c binutils-2.30/bfd/coff-go32.c
---- binutils-2.30.orig/bfd/coff-go32.c	2018-01-13 13:31:14 +0000
-+++ binutils-2.30/bfd/coff-go32.c	2018-02-13 20:43:30 +0000
+diff -aprNU5 binutils-2.31.1.orig/bfd/coff-go32.c binutils-2.31.1/bfd/coff-go32.c
+--- binutils-2.31.1.orig/bfd/coff-go32.c	2018-06-24 18:38:56 +0000
++++ binutils-2.31.1/bfd/coff-go32.c	2018-07-27 20:52:18 +0000
 @@ -20,10 +20,11 @@
     MA 02110-1301, USA.  */
  
@@ -162,9 +197,9 @@ diff -aprNU5 binutils-2.30.orig/bfd/coff-go32.c binutils-2.30/bfd/coff-go32.c
 +#define coff_mkobject  _bfd_go32_mkobject
 +
  #include "coff-i386.c"
-diff -aprNU5 binutils-2.30.orig/bfd/coff-stgo32.c binutils-2.30/bfd/coff-stgo32.c
---- binutils-2.30.orig/bfd/coff-stgo32.c	2018-01-13 13:31:14 +0000
-+++ binutils-2.30/bfd/coff-stgo32.c	2018-02-13 20:43:30 +0000
+diff -aprNU5 binutils-2.31.1.orig/bfd/coff-stgo32.c binutils-2.31.1/bfd/coff-stgo32.c
+--- binutils-2.31.1.orig/bfd/coff-stgo32.c	2018-06-24 18:38:56 +0000
++++ binutils-2.31.1/bfd/coff-stgo32.c	2018-07-27 20:52:18 +0000
 @@ -51,10 +51,13 @@
  { COFF_SECTION_NAME_PARTIAL_MATCH (".debug"), \
    COFF_ALIGNMENT_FIELD_EMPTY, COFF_ALIGNMENT_FIELD_EMPTY, 0 }, \
@@ -226,10 +261,10 @@ diff -aprNU5 binutils-2.30.orig/bfd/coff-stgo32.c binutils-2.30/bfd/coff-stgo32.
 +
 +  return TRUE;
 +}
-diff -aprNU5 binutils-2.30.orig/bfd/coffcode.h binutils-2.30/bfd/coffcode.h
---- binutils-2.30.orig/bfd/coffcode.h	2018-01-23 10:49:40 +0000
-+++ binutils-2.30/bfd/coffcode.h	2018-02-13 21:13:20 +0000
-@@ -376,10 +376,14 @@ CODE_FRAGMENT
+diff -aprNU5 binutils-2.31.1.orig/bfd/coffcode.h binutils-2.31.1/bfd/coffcode.h
+--- binutils-2.31.1.orig/bfd/coffcode.h	2018-06-24 18:38:56 +0000
++++ binutils-2.31.1/bfd/coffcode.h	2018-07-27 20:52:18 +0000
+@@ -362,10 +362,14 @@ CODE_FRAGMENT
  #define DOT_ZDEBUG	".zdebug"
  #define GNU_LINKONCE_WI ".gnu.linkonce.wi."
  #define GNU_LINKONCE_WT ".gnu.linkonce.wt."
@@ -244,7 +279,7 @@ diff -aprNU5 binutils-2.30.orig/bfd/coffcode.h binutils-2.30/bfd/coffcode.h
  #define COFFLONGSECTIONCATHELPER(x,y)    x ## y
  /* If the input macro Y is blank or '1', return an odd number; if it is
     '0', return an even number.  Result undefined in all other cases.  */
-@@ -1983,13 +1987,53 @@ coff_set_alignment_hook (bfd *abfd, asec
+@@ -1950,17 +1954,57 @@ coff_set_alignment_hook (bfd *abfd, asec
      }
  }
  
@@ -289,8 +324,12 @@ diff -aprNU5 binutils-2.30.orig/bfd/coffcode.h binutils-2.30/bfd/coffcode.h
 +
 +#else /* ! COFF_GO32_EXE && ! COFF_GO32 */
 +
- #define coff_set_alignment_hook \
-   ((void (*) (bfd *, asection *, void *)) bfd_void)
+ static void
+ coff_set_alignment_hook (bfd *abfd ATTRIBUTE_UNUSED,
+ 			 asection *section ATTRIBUTE_UNUSED,
+ 			 void *scnhdr ATTRIBUTE_UNUSED)
+ {
+ }
  
 +#endif /* ! COFF_GO32_EXE && ! COFF_GO32 */
  #endif /* ! RS6000COFF_C */
@@ -298,7 +337,7 @@ diff -aprNU5 binutils-2.30.orig/bfd/coffcode.h binutils-2.30/bfd/coffcode.h
  #endif /* ! COFF_ALIGN_IN_SECTION_HEADER */
  
  #ifndef coff_mkobject
-@@ -2698,12 +2742,12 @@ coff_write_relocs (bfd * abfd, int first
+@@ -2513,12 +2557,12 @@ coff_write_relocs (bfd * abfd, int first
  #endif
  
        if (bfd_seek (abfd, s->rel_filepos, SEEK_SET) != 0)
@@ -313,7 +352,7 @@ diff -aprNU5 binutils-2.30.orig/bfd/coffcode.h binutils-2.30/bfd/coffcode.h
  	  struct internal_reloc n;
  
  	  memset (& n, 0, sizeof (n));
-@@ -3611,10 +3655,14 @@ coff_apply_checksum (bfd *abfd)
+@@ -3332,10 +3376,14 @@ coff_apply_checksum (bfd *abfd)
    return TRUE;
  }
  
@@ -328,7 +367,7 @@ diff -aprNU5 binutils-2.30.orig/bfd/coffcode.h binutils-2.30/bfd/coffcode.h
  {
    asection *current;
    bfd_boolean hasrelocs = FALSE;
-@@ -3655,13 +3703,13 @@ coff_write_object_contents (bfd * abfd)
+@@ -3376,13 +3424,13 @@ coff_write_object_contents (bfd * abfd)
    /* Work out the size of the reloc and linno areas.  */
  
    for (current = abfd->sections; current != NULL; current =
@@ -344,7 +383,7 @@ diff -aprNU5 binutils-2.30.orig/bfd/coffcode.h binutils-2.30/bfd/coffcode.h
        reloc_count += current->reloc_count;
      }
  
-@@ -3685,13 +3733,13 @@ coff_write_object_contents (bfd * abfd)
+@@ -3406,13 +3454,13 @@ coff_write_object_contents (bfd * abfd)
  
        if (current->reloc_count)
  	{
@@ -360,7 +399,7 @@ diff -aprNU5 binutils-2.30.orig/bfd/coffcode.h binutils-2.30/bfd/coffcode.h
  	}
        else
  	current->rel_filepos = 0;
-@@ -4027,10 +4075,22 @@ coff_write_object_contents (bfd * abfd)
+@@ -3743,10 +3791,22 @@ coff_write_object_contents (bfd * abfd)
  	}
      }
  #endif
@@ -383,9 +422,9 @@ diff -aprNU5 binutils-2.30.orig/bfd/coffcode.h binutils-2.30/bfd/coffcode.h
    /* Don't include the internal abs section in the section count */
  
    /* We will NOT put a fucking timestamp in the header here. Every time you
-diff -aprNU5 binutils-2.30.orig/bfd/cofflink.c binutils-2.30/bfd/cofflink.c
---- binutils-2.30.orig/bfd/cofflink.c	2018-01-13 13:31:14 +0000
-+++ binutils-2.30/bfd/cofflink.c	2018-02-13 20:37:42 +0000
+diff -aprNU5 binutils-2.31.1.orig/bfd/cofflink.c binutils-2.31.1/bfd/cofflink.c
+--- binutils-2.31.1.orig/bfd/cofflink.c	2018-06-24 18:38:56 +0000
++++ binutils-2.31.1/bfd/cofflink.c	2018-07-27 20:52:18 +0000
 @@ -683,11 +683,11 @@ _bfd_coff_final_link (bfd *abfd,
  	  o->flags |= SEC_RELOC;
  	  o->rel_filepos = rel_filepos;
@@ -412,10 +451,10 @@ diff -aprNU5 binutils-2.30.orig/bfd/cofflink.c binutils-2.30/bfd/cofflink.c
  		 reloc.  The header overflow bit will be set
  		 elsewhere. */
  	      struct internal_reloc incount;
-diff -aprNU5 binutils-2.30.orig/bfd/coffswap.h binutils-2.30/bfd/coffswap.h
---- binutils-2.30.orig/bfd/coffswap.h	2018-01-13 13:31:14 +0000
-+++ binutils-2.30/bfd/coffswap.h	2018-02-13 20:43:30 +0000
-@@ -765,10 +765,23 @@ coff_swap_scnhdr_in (bfd * abfd, void *
+diff -aprNU5 binutils-2.31.1.orig/bfd/coffswap.h binutils-2.31.1/bfd/coffswap.h
+--- binutils-2.31.1.orig/bfd/coffswap.h	2018-06-24 18:38:56 +0000
++++ binutils-2.31.1/bfd/coffswap.h	2018-07-27 20:52:18 +0000
+@@ -750,10 +750,23 @@ coff_swap_scnhdr_in (bfd * abfd, void *
    scnhdr_int->s_relptr = GET_SCNHDR_RELPTR (abfd, scnhdr_ext->s_relptr);
    scnhdr_int->s_lnnoptr = GET_SCNHDR_LNNOPTR (abfd, scnhdr_ext->s_lnnoptr);
    scnhdr_int->s_flags = GET_SCNHDR_FLAGS (abfd, scnhdr_ext->s_flags);
@@ -434,17 +473,17 @@ diff -aprNU5 binutils-2.30.orig/bfd/coffswap.h binutils-2.30/bfd/coffswap.h
 +    scnhdr_int->s_nreloc = 0;
 +  }
 +#endif
- #ifdef I960
-   scnhdr_int->s_align = GET_SCNHDR_ALIGN (abfd, scnhdr_ext->s_align);
- #endif
  #ifdef COFF_ADJUST_SCNHDR_IN_POST
    COFF_ADJUST_SCNHDR_IN_POST (abfd, ext, in);
-@@ -796,10 +809,65 @@ coff_swap_scnhdr_out (bfd * abfd, void *
+ #endif
+ }
+ 
+@@ -774,10 +787,65 @@ coff_swap_scnhdr_out (bfd * abfd, void *
+   PUT_SCNHDR_SIZE (abfd, scnhdr_int->s_size, scnhdr_ext->s_size);
+   PUT_SCNHDR_SCNPTR (abfd, scnhdr_int->s_scnptr, scnhdr_ext->s_scnptr);
+   PUT_SCNHDR_RELPTR (abfd, scnhdr_int->s_relptr, scnhdr_ext->s_relptr);
+   PUT_SCNHDR_LNNOPTR (abfd, scnhdr_int->s_lnnoptr, scnhdr_ext->s_lnnoptr);
    PUT_SCNHDR_FLAGS (abfd, scnhdr_int->s_flags, scnhdr_ext->s_flags);
- #if defined(M88)
-   H_PUT_32 (abfd, scnhdr_int->s_nlnno, scnhdr_ext->s_nlnno);
-   H_PUT_32 (abfd, scnhdr_int->s_nreloc, scnhdr_ext->s_nreloc);
- #else
 +#if defined (COFF_GO32_EXE) || defined(COFF_GO32)
 +  if (coff_64k_relocation_enabled)
 +    {
@@ -505,24 +544,24 @@ diff -aprNU5 binutils-2.30.orig/bfd/coffswap.h binutils-2.30/bfd/coffswap.h
    else
      {
        char buf[sizeof (scnhdr_int->s_name) + 1];
-@@ -828,10 +896,13 @@ coff_swap_scnhdr_out (bfd * abfd, void *
+@@ -805,10 +873,13 @@ coff_swap_scnhdr_out (bfd * abfd, void *
+       bfd_set_error (bfd_error_file_truncated);
        PUT_SCNHDR_NRELOC (abfd, 0xffff, scnhdr_ext->s_nreloc);
        ret = 0;
      }
- #endif
  
 +#if defined (COFF_GO32_EXE) || defined(COFF_GO32)
 +finalization:
 +#endif
- #ifdef I960
-   PUT_SCNHDR_ALIGN (abfd, scnhdr_int->s_align, scnhdr_ext->s_align);
- #endif
  #ifdef COFF_ADJUST_SCNHDR_OUT_POST
    COFF_ADJUST_SCNHDR_OUT_POST (abfd, in, out);
-diff -aprNU5 binutils-2.30.orig/bfd/config.in binutils-2.30/bfd/config.in
---- binutils-2.30.orig/bfd/config.in	2018-01-27 14:58:32 +0000
-+++ binutils-2.30/bfd/config.in	2018-02-13 20:43:30 +0000
-@@ -396,5 +396,39 @@
+ #endif
+   return ret;
+ }
+diff -aprNU5 binutils-2.31.1.orig/bfd/config.in binutils-2.31.1/bfd/config.in
+--- binutils-2.31.1.orig/bfd/config.in	2018-07-18 07:41:16 +0000
++++ binutils-2.31.1/bfd/config.in	2018-07-27 20:52:18 +0000
+@@ -411,5 +411,39 @@
     this defined. */
  #undef _POSIX_1_SOURCE
  
@@ -562,9 +601,9 @@ diff -aprNU5 binutils-2.30.orig/bfd/config.in binutils-2.30/bfd/config.in
 +#else
 +# define STRIP_FULL_PATH_AND_EXTENSION(file_name)  (file_name)
 +#endif
-diff -aprNU5 binutils-2.30.orig/bfd/init.c binutils-2.30/bfd/init.c
---- binutils-2.30.orig/bfd/init.c	2018-01-13 13:31:14 +0000
-+++ binutils-2.30/bfd/init.c	2018-02-13 20:43:30 +0000
+diff -aprNU5 binutils-2.31.1.orig/bfd/init.c binutils-2.31.1/bfd/init.c
+--- binutils-2.31.1.orig/bfd/init.c	2018-06-24 18:38:56 +0000
++++ binutils-2.31.1/bfd/init.c	2018-07-27 20:52:18 +0000
 @@ -21,10 +21,16 @@
  
  #include "sysdep.h"
@@ -595,10 +634,10 @@ diff -aprNU5 binutils-2.30.orig/bfd/init.c binutils-2.30/bfd/init.c
 +                                  disable_64k_reloc_support[1] == '\0') ? TRUE : FALSE;
 +#endif
  }
-diff -aprNU5 binutils-2.30.orig/bfd/libcoff-in.h binutils-2.30/bfd/libcoff-in.h
---- binutils-2.30.orig/bfd/libcoff-in.h	2018-01-13 13:31:14 +0000
-+++ binutils-2.30/bfd/libcoff-in.h	2018-02-13 20:27:44 +0000
-@@ -28,12 +28,13 @@ extern "C" {
+diff -aprNU5 binutils-2.31.1.orig/bfd/libcoff-in.h binutils-2.31.1/bfd/libcoff-in.h
+--- binutils-2.31.1.orig/bfd/libcoff-in.h	2018-06-24 18:38:56 +0000
++++ binutils-2.31.1/bfd/libcoff-in.h	2018-07-27 20:52:18 +0000
+@@ -31,12 +31,13 @@ extern "C" {
  
  /* Object file tdata; access macros.  */
  
@@ -613,7 +652,7 @@ diff -aprNU5 binutils-2.30.orig/bfd/libcoff-in.h binutils-2.30/bfd/libcoff-in.h
  #define obj_raw_syment_count(bfd)     (coff_data (bfd)->raw_syment_count)
  #define obj_convert(bfd)	      (coff_data (bfd)->conversion_table)
  #define obj_conv_table_size(bfd)      (coff_data (bfd)->conv_table_size)
-@@ -109,10 +110,12 @@ typedef struct coff_tdata
+@@ -112,10 +113,12 @@ typedef struct coff_tdata
  
    /* Copy of some of the f_flags bits in the COFF filehdr structure,
       used by ARM code.  */
@@ -626,10 +665,10 @@ diff -aprNU5 binutils-2.30.orig/bfd/libcoff-in.h binutils-2.30/bfd/libcoff-in.h
    char *go32stub;
  } coff_data_type;
  
-diff -aprNU5 binutils-2.30.orig/bfd/Makefile.in binutils-2.30/bfd/Makefile.in
---- binutils-2.30.orig/bfd/Makefile.in	2018-01-27 14:58:28 +0000
-+++ binutils-2.30/bfd/Makefile.in	2018-02-13 20:43:30 +0000
-@@ -2155,11 +2155,11 @@ host-aout.lo: Makefile
+diff -aprNU5 binutils-2.31.1.orig/bfd/Makefile.in binutils-2.31.1/bfd/Makefile.in
+--- binutils-2.31.1.orig/bfd/Makefile.in	2018-07-18 07:41:14 +0000
++++ binutils-2.31.1/bfd/Makefile.in	2018-07-27 20:52:18 +0000
+@@ -2015,11 +2015,11 @@ host-aout.lo: Makefile
  aout-params.h: gen-aout
  	./gen-aout host > aout-params.h
  gen-aout: $(srcdir)/gen-aout.c Makefile
@@ -642,7 +681,7 @@ diff -aprNU5 binutils-2.30.orig/bfd/Makefile.in binutils-2.30/bfd/Makefile.in
  	rm -f bfd-tmp.h
  	cp bfd-in3.h bfd-tmp.h
  	$(SHELL) $(srcdir)/../move-if-change bfd-tmp.h $(BFD_H)
-@@ -2177,11 +2177,11 @@ headers:
+@@ -2037,11 +2037,11 @@ headers:
  	$(SHELL) $(srcdir)/../move-if-change libcoff.h-new $(srcdir)/libcoff.h
  
  # We only rebuild the header files automatically if we have been
@@ -655,9 +694,9 @@ diff -aprNU5 binutils-2.30.orig/bfd/Makefile.in binutils-2.30/bfd/Makefile.in
  	cp $(bfddocdir)/bfd.h bfd-in2.h-new
  	$(SHELL) $(srcdir)/../move-if-change bfd-in2.h-new $(srcdir)/bfd-in2.h
  	touch stmp-bin2-h
-diff -aprNU5 binutils-2.30.orig/include/bfdlink.h binutils-2.30/include/bfdlink.h
---- binutils-2.30.orig/include/bfdlink.h	2018-01-13 13:31:16 +0000
-+++ binutils-2.30/include/bfdlink.h	2018-02-13 20:43:30 +0000
+diff -aprNU5 binutils-2.31.1.orig/include/bfdlink.h binutils-2.31.1/include/bfdlink.h
+--- binutils-2.31.1.orig/include/bfdlink.h	2018-06-24 18:38:56 +0000
++++ binutils-2.31.1/include/bfdlink.h	2018-07-27 20:52:18 +0000
 @@ -291,11 +291,11 @@ struct bfd_elf_version_tree;
  enum output_type
  {
@@ -671,9 +710,9 @@ diff -aprNU5 binutils-2.30.orig/include/bfdlink.h binutils-2.30/include/bfdlink.
  #define bfd_link_pde(info)	   ((info)->type == type_pde)
  #define bfd_link_dll(info)	   ((info)->type == type_dll)
  #define bfd_link_relocatable(info) ((info)->type == type_relocatable)
-diff -aprNU5 binutils-2.30.orig/include/coff/internal.h binutils-2.30/include/coff/internal.h
---- binutils-2.30.orig/include/coff/internal.h	2018-01-23 10:49:40 +0000
-+++ binutils-2.30/include/coff/internal.h	2018-02-13 20:43:30 +0000
+diff -aprNU5 binutils-2.31.1.orig/include/coff/internal.h binutils-2.31.1/include/coff/internal.h
+--- binutils-2.31.1.orig/include/coff/internal.h	2018-06-24 18:38:56 +0000
++++ binutils-2.31.1/include/coff/internal.h	2018-07-27 20:52:18 +0000
 @@ -165,11 +165,11 @@ typedef struct _CODEVIEW_INFO
  {
    unsigned long CVSignature;
@@ -687,20 +726,56 @@ diff -aprNU5 binutils-2.30.orig/include/coff/internal.h binutils-2.30/include/co
  /* Default image base for NT.  */
  #define NT_EXE_IMAGE_BASE 0x400000
  #define NT_DLL_IMAGE_BASE 0x10000000
-diff -aprNU5 binutils-2.30.orig/libiberty/config.in binutils-2.30/libiberty/config.in
---- binutils-2.30.orig/libiberty/config.in	2018-01-13 13:31:16 +0000
-+++ binutils-2.30/libiberty/config.in	2018-02-13 20:43:30 +0000
-@@ -565,5 +565,39 @@
+diff -aprNU5 binutils-2.31.1.orig/include/simple-object.h binutils-2.31.1/include/simple-object.h
+--- binutils-2.31.1.orig/include/simple-object.h	2018-06-24 18:38:56 +0000
++++ binutils-2.31.1/include/simple-object.h	2018-07-27 20:52:18 +0000
+@@ -204,11 +204,11 @@ simple_object_release_write (simple_obje
+    If an error occurs, return the errno value in ERR and an error string.  */
+ 
+ extern const char *
+ simple_object_copy_lto_debug_sections (simple_object_read *src_object,
+ 				       const char *dest,
+-				       int *err, int rename);
++				       int *err, int lib_rename);
+ 
+ #ifdef __cplusplus
+ }
+ #endif
+ 
+diff -aprNU5 binutils-2.31.1.orig/libiberty/config.in binutils-2.31.1/libiberty/config.in
+--- binutils-2.31.1.orig/libiberty/config.in	2018-06-24 18:38:58 +0000
++++ binutils-2.31.1/libiberty/config.in	2018-07-27 21:04:22 +0000
+@@ -570,5 +570,59 @@
     pointer, if such a type exists, and if the system does not define it. */
  #undef uintptr_t
  
  /* Define as `fork' if `vfork' does not work. */
  #undef vfork
++
 +#ifdef __DJGPP__
 +# if defined (__GNUC__) && (__GNUC__ > 2 || (__GNUC__ == 2 && __GNUC_MINOR__ >= 8))
 +#  define __gnuc_extension__  __extension__
 +# else
 +#  define __gnuc_extension__
++# endif
++
++/*
++ *  (ENOTSUP and EOPNOTSUPP have the same value on Linux,
++ *  but according to POSIX.1 these error values should be
++ *  distinct.)
++ */
++
++# if !defined(ENOTSUP) && defined(EOPNOTSUPP)
++#  define ENOTSUP  EOPNOTSUPP
++# endif
++
++/* Values taken from FreeBSD.  */
++# ifndef ENOTSUP
++#  define ENOTSUP  9926  /* Operation not supported (POSIX.1-2001).  */
++# endif
++
++# ifndef EOPNOTSUPP
++#  define EOPNOTSUPP  9929  /* Operation not supported on socket (POSIX.1-2001).  */
 +# endif
 +
 +# undef  IS_SLASH
@@ -727,12 +802,45 @@ diff -aprNU5 binutils-2.30.orig/libiberty/config.in binutils-2.30/libiberty/conf
 +       (file_name);                                 \
 +    })                                              \
 +  )
-+#else
++#else  /* !__DJGPP__ */
 +# define STRIP_FULL_PATH_AND_EXTENSION(file_name)  (file_name)
-+#endif
-diff -aprNU5 binutils-2.30.orig/libiberty/cp-demangle.c binutils-2.30/libiberty/cp-demangle.c
---- binutils-2.30.orig/libiberty/cp-demangle.c	2018-01-13 13:31:16 +0000
-+++ binutils-2.30/libiberty/cp-demangle.c	2018-02-13 20:43:30 +0000
++#endif  /* !__DJGPP__ */
+diff -aprNU5 binutils-2.31.1.orig/libiberty/cp-demangle.c binutils-2.31.1/libiberty/cp-demangle.c
+--- binutils-2.31.1.orig/libiberty/cp-demangle.c	2018-06-24 18:38:58 +0000
++++ binutils-2.31.1/libiberty/cp-demangle.c	2018-07-27 20:52:18 +0000
+@@ -3283,26 +3283,26 @@ d_expression_1 (struct d_info *di)
+ 			  d_expression_1 (di), NULL);
+     }
+   else if (peek == 'f' && d_peek_next_char (di) == 'p')
+     {
+       /* Function parameter used in a late-specified return type.  */
+-      int index;
++      int lib_index;
+       d_advance (di, 2);
+       if (d_peek_char (di) == 'T')
+ 	{
+ 	  /* 'this' parameter.  */
+ 	  d_advance (di, 1);
+-	  index = 0;
++	  lib_index = 0;
+ 	}
+       else
+ 	{
+-	  index = d_compact_number (di);
+-	  if (index == INT_MAX || index == -1)
++	  lib_index = d_compact_number (di);
++	  if (lib_index == INT_MAX || lib_index == -1)
+ 	    return NULL;
+-	  index++;
++	  lib_index++;
+ 	}
+-      return d_make_function_param (di, index);
++      return d_make_function_param (di, lib_index);
+     }
+   else if (IS_DIGIT (peek)
+ 	   || (peek == 'o' && d_peek_next_char (di) == 'n'))
+     {
+       /* We can get an unqualified name as an expression in the case of
 @@ -4625,11 +4625,11 @@ d_print_comp_inner (struct d_print_info
       without needing to modify *dc.  */
    struct demangle_component *mod_inner = NULL;
@@ -759,9 +867,216 @@ diff -aprNU5 binutils-2.30.orig/libiberty/cp-demangle.c binutils-2.30/libiberty/
    if (mangled[0] == '_' && mangled[1] == 'Z')
      type = DCT_MANGLED;
    else if (strncmp (mangled, "_GLOBAL_", 8) == 0
-diff -aprNU5 binutils-2.30.orig/libiberty/make-relative-prefix.c binutils-2.30/libiberty/make-relative-prefix.c
---- binutils-2.30.orig/libiberty/make-relative-prefix.c	2018-01-13 13:31:16 +0000
-+++ binutils-2.30/libiberty/make-relative-prefix.c	2018-02-13 20:43:30 +0000
+diff -aprNU5 binutils-2.31.1.orig/libiberty/cplus-dem.c binutils-2.31.1/libiberty/cplus-dem.c
+--- binutils-2.31.1.orig/libiberty/cplus-dem.c	2018-06-24 18:38:58 +0000
++++ binutils-2.31.1/libiberty/cplus-dem.c	2018-07-27 20:52:18 +0000
+@@ -4464,18 +4464,18 @@ register_Btype (struct work_stuff *work)
+ 
+ /* Store a value into a previously registered B code type. */
+ 
+ static void
+ remember_Btype (struct work_stuff *work, const char *start,
+-                int len, int index)
++                int len, int lib_index)
+ {
+   char *tem;
+ 
+   tem = XNEWVEC (char, len + 1);
+   memcpy (tem, start, len);
+   tem[len] = '\0';
+-  work -> btypevec[index] = tem;
++  work -> btypevec[lib_index] = tem;
+ }
+ 
+ /* Lose all the info related to B and K type codes. */
+ static void
+ forget_B_and_K_types (struct work_stuff *work)
+diff -aprNU5 binutils-2.31.1.orig/libiberty/floatformat.c binutils-2.31.1/libiberty/floatformat.c
+--- binutils-2.31.1.orig/libiberty/floatformat.c	2018-06-24 18:38:58 +0000
++++ binutils-2.31.1/libiberty/floatformat.c	2018-07-27 20:52:18 +0000
+@@ -484,20 +484,20 @@ floatformat_to_double (const struct floa
+   /* If the exponent indicates a NaN, we don't have information to
+      decide what to do.  So we handle it like IEEE, except that we
+      don't try to preserve the type of NaN.  FIXME.  */
+   if ((unsigned long) exponent == fmt->exp_nan)
+     {
+-      int nan = mant_bits_set (fmt, ufrom);
++      int _nan = mant_bits_set (fmt, ufrom);
+ 
+       /* On certain systems (such as GNU/Linux), the use of the
+ 	 INFINITY macro below may generate a warning that can not be
+ 	 silenced due to a bug in GCC (PR preprocessor/11931).  The
+ 	 preprocessor fails to recognise the __extension__ keyword in
+ 	 conjunction with the GNU/C99 extension for hexadecimal
+ 	 floating point constants and will issue a warning when
+ 	 compiling with -pedantic.  */
+-      if (nan)
++      if (_nan)
+ 	dto = NAN;
+       else
+ 	dto = INFINITY;
+ 
+       if (get_field (ufrom, fmt->byteorder, fmt->totalsize, fmt->sign_start, 1))
+diff -aprNU5 binutils-2.31.1.orig/libiberty/hashtab.c binutils-2.31.1/libiberty/hashtab.c
+--- binutils-2.31.1.orig/libiberty/hashtab.c	2018-06-24 18:38:58 +0000
++++ binutils-2.31.1/libiberty/hashtab.c	2018-07-27 20:52:18 +0000
+@@ -478,28 +478,28 @@ htab_empty (htab_t htab)
+    HASH is the hash value for the element to be inserted.  */
+ 
+ static PTR *
+ find_empty_slot_for_expand (htab_t htab, hashval_t hash)
+ {
+-  hashval_t index = htab_mod (hash, htab);
++  hashval_t lib_index = htab_mod (hash, htab);
+   size_t size = htab_size (htab);
+-  PTR *slot = htab->entries + index;
++  PTR *slot = htab->entries + lib_index;
+   hashval_t hash2;
+ 
+   if (*slot == HTAB_EMPTY_ENTRY)
+     return slot;
+   else if (*slot == HTAB_DELETED_ENTRY)
+     abort ();
+ 
+   hash2 = htab_mod_m2 (hash, htab);
+   for (;;)
+     {
+-      index += hash2;
+-      if (index >= size)
+-	index -= size;
++      lib_index += hash2;
++      if (lib_index >= size)
++	lib_index -= size;
+ 
+-      slot = htab->entries + index;
++      slot = htab->entries + lib_index;
+       if (*slot == HTAB_EMPTY_ENTRY)
+ 	return slot;
+       else if (*slot == HTAB_DELETED_ENTRY)
+ 	abort ();
+     }
+@@ -582,32 +582,32 @@ htab_expand (htab_t htab)
+    element.  It cannot be used to insert or delete an element.  */
+ 
+ PTR
+ htab_find_with_hash (htab_t htab, const PTR element, hashval_t hash)
+ {
+-  hashval_t index, hash2;
++  hashval_t lib_index, hash2;
+   size_t size;
+   PTR entry;
+ 
+   htab->searches++;
+   size = htab_size (htab);
+-  index = htab_mod (hash, htab);
++  lib_index = htab_mod (hash, htab);
+ 
+-  entry = htab->entries[index];
++  entry = htab->entries[lib_index];
+   if (entry == HTAB_EMPTY_ENTRY
+       || (entry != HTAB_DELETED_ENTRY && (*htab->eq_f) (entry, element)))
+     return entry;
+ 
+   hash2 = htab_mod_m2 (hash, htab);
+   for (;;)
+     {
+       htab->collisions++;
+-      index += hash2;
+-      if (index >= size)
+-	index -= size;
++      lib_index += hash2;
++      if (lib_index >= size)
++	lib_index -= size;
+ 
+-      entry = htab->entries[index];
++      entry = htab->entries[lib_index];
+       if (entry == HTAB_EMPTY_ENTRY
+ 	  || (entry != HTAB_DELETED_ENTRY && (*htab->eq_f) (entry, element)))
+ 	return entry;
+     }
+ }
+@@ -632,11 +632,11 @@ htab_find (htab_t htab, const PTR elemen
+ PTR *
+ htab_find_slot_with_hash (htab_t htab, const PTR element,
+                           hashval_t hash, enum insert_option insert)
+ {
+   PTR *first_deleted_slot;
+-  hashval_t index, hash2;
++  hashval_t lib_index, hash2;
+   size_t size;
+   PTR entry;
+ 
+   size = htab_size (htab);
+   if (insert == INSERT && size * 3 <= htab->n_elements * 4)
+@@ -644,41 +644,41 @@ htab_find_slot_with_hash (htab_t htab, c
+       if (htab_expand (htab) == 0)
+ 	return NULL;
+       size = htab_size (htab);
+     }
+ 
+-  index = htab_mod (hash, htab);
++  lib_index = htab_mod (hash, htab);
+ 
+   htab->searches++;
+   first_deleted_slot = NULL;
+ 
+-  entry = htab->entries[index];
++  entry = htab->entries[lib_index];
+   if (entry == HTAB_EMPTY_ENTRY)
+     goto empty_entry;
+   else if (entry == HTAB_DELETED_ENTRY)
+-    first_deleted_slot = &htab->entries[index];
++    first_deleted_slot = &htab->entries[lib_index];
+   else if ((*htab->eq_f) (entry, element))
+-    return &htab->entries[index];
+-      
++    return &htab->entries[lib_index];
++
+   hash2 = htab_mod_m2 (hash, htab);
+   for (;;)
+     {
+       htab->collisions++;
+-      index += hash2;
+-      if (index >= size)
+-	index -= size;
++      lib_index += hash2;
++      if (lib_index >= size)
++	lib_index -= size;
+       
+-      entry = htab->entries[index];
++      entry = htab->entries[lib_index];
+       if (entry == HTAB_EMPTY_ENTRY)
+ 	goto empty_entry;
+       else if (entry == HTAB_DELETED_ENTRY)
+ 	{
+ 	  if (!first_deleted_slot)
+-	    first_deleted_slot = &htab->entries[index];
++	    first_deleted_slot = &htab->entries[lib_index];
+ 	}
+       else if ((*htab->eq_f) (entry, element))
+-	return &htab->entries[index];
++	return &htab->entries[lib_index];
+     }
+ 
+  empty_entry:
+   if (insert == NO_INSERT)
+     return NULL;
+@@ -689,11 +689,11 @@ htab_find_slot_with_hash (htab_t htab, c
+       *first_deleted_slot = HTAB_EMPTY_ENTRY;
+       return first_deleted_slot;
+     }
+ 
+   htab->n_elements++;
+-  return &htab->entries[index];
++  return &htab->entries[lib_index];
+ }
+ 
+ /* Like htab_find_slot_with_hash, but compute the hash value from the
+    element.  */
+ 
+diff -aprNU5 binutils-2.31.1.orig/libiberty/make-relative-prefix.c binutils-2.31.1/libiberty/make-relative-prefix.c
+--- binutils-2.31.1.orig/libiberty/make-relative-prefix.c	2018-06-24 18:38:58 +0000
++++ binutils-2.31.1/libiberty/make-relative-prefix.c	2018-07-27 20:52:18 +0000
 @@ -79,10 +79,11 @@ relative prefix can be found, return @co
  #if defined (_WIN32) || defined (__MSDOS__) \
      || defined (__DJGPP__) || defined (__OS2__)
@@ -814,9 +1129,9 @@ diff -aprNU5 binutils-2.30.orig/libiberty/make-relative-prefix.c binutils-2.30/l
  
    /* If there are no common directories, there can be no relative prefix.  */
    if (common == 0)
-diff -aprNU5 binutils-2.30.orig/libiberty/make-temp-file.c binutils-2.30/libiberty/make-temp-file.c
---- binutils-2.30.orig/libiberty/make-temp-file.c	2018-01-13 13:31:16 +0000
-+++ binutils-2.30/libiberty/make-temp-file.c	2018-02-13 20:43:30 +0000
+diff -aprNU5 binutils-2.31.1.orig/libiberty/make-temp-file.c binutils-2.31.1/libiberty/make-temp-file.c
+--- binutils-2.31.1.orig/libiberty/make-temp-file.c	2018-06-24 18:38:58 +0000
++++ binutils-2.31.1/libiberty/make-temp-file.c	2018-07-27 20:52:18 +0000
 @@ -52,16 +52,31 @@ extern int mkstemps (char *, int);
  /* '/' works just fine on MS-DOS based systems.  */
  #ifndef DIR_SEPARATOR
@@ -877,9 +1192,9 @@ diff -aprNU5 binutils-2.30.orig/libiberty/make-temp-file.c binutils-2.30/libiber
  #else /* defined(_WIN32) && !defined(__CYGWIN__) */
        DWORD len;
  
-diff -aprNU5 binutils-2.30.orig/libiberty/pex-common.c binutils-2.30/libiberty/pex-common.c
---- binutils-2.30.orig/libiberty/pex-common.c	2018-01-13 13:31:16 +0000
-+++ binutils-2.30/libiberty/pex-common.c	2018-02-13 20:43:30 +0000
+diff -aprNU5 binutils-2.31.1.orig/libiberty/pex-common.c binutils-2.31.1/libiberty/pex-common.c
+--- binutils-2.31.1.orig/libiberty/pex-common.c	2018-06-24 18:38:58 +0000
++++ binutils-2.31.1/libiberty/pex-common.c	2018-07-27 20:52:18 +0000
 @@ -115,11 +115,11 @@ temp_file (struct pex_obj *obj, int flag
  
            if (len >= 6
@@ -919,9 +1234,438 @@ diff -aprNU5 binutils-2.30.orig/libiberty/pex-common.c binutils-2.30/libiberty/p
        obj->next_input = -1;
      }
    else if ((obj->flags & PEX_USE_PIPES) == 0)
-diff -aprNU5 binutils-2.30.orig/libiberty/stack-limit.c binutils-2.30/libiberty/stack-limit.c
---- binutils-2.30.orig/libiberty/stack-limit.c	2018-01-13 13:31:16 +0000
-+++ binutils-2.30/libiberty/stack-limit.c	2018-02-13 20:43:32 +0000
+diff -aprNU5 binutils-2.31.1.orig/libiberty/simple-object-coff.c binutils-2.31.1/libiberty/simple-object-coff.c
+--- binutils-2.31.1.orig/libiberty/simple-object-coff.c	2018-06-24 18:38:58 +0000
++++ binutils-2.31.1/libiberty/simple-object-coff.c	2018-07-27 20:52:18 +0000
+@@ -649,17 +649,17 @@ simple_object_coff_write_to_file (simple
+       new_offset = offset & mask;
+       new_offset &= ~ mask;
+       while (new_offset > offset)
+ 	{
+ 	  unsigned char zeroes[16];
+-	  size_t write;
++	  size_t lib_write;
+ 
+ 	  memset (zeroes, 0, sizeof zeroes);
+-	  write = new_offset - offset;
+-	  if (write > sizeof zeroes)
+-	    write = sizeof zeroes;
+-	  if (!simple_object_internal_write (descriptor, offset, zeroes, write,
++	  lib_write = new_offset - offset;
++	  if (lib_write > sizeof zeroes)
++	    lib_write = sizeof zeroes;
++	  if (!simple_object_internal_write (descriptor, offset, zeroes, lib_write,
+ 					     &errmsg, err))
+ 	    return errmsg;
+ 	}
+ 
+       scnsize = 0;
+diff -aprNU5 binutils-2.31.1.orig/libiberty/simple-object-elf.c binutils-2.31.1/libiberty/simple-object-elf.c
+--- binutils-2.31.1.orig/libiberty/simple-object-elf.c	2018-06-24 18:38:58 +0000
++++ binutils-2.31.1/libiberty/simple-object-elf.c	2018-07-29 15:26:24 +0000
+@@ -986,20 +986,20 @@ simple_object_elf_write_to_file (simple_
+       new_sh_offset = sh_offset + mask;
+       new_sh_offset &= ~ mask;
+       while (new_sh_offset > sh_offset)
+ 	{
+ 	  unsigned char zeroes[16];
+-	  size_t write;
++	  size_t lib_write;
+ 
+ 	  memset (zeroes, 0, sizeof zeroes);
+-	  write = new_sh_offset - sh_offset;
+-	  if (write > sizeof zeroes)
+-	    write = sizeof zeroes;
++	  lib_write = new_sh_offset - sh_offset;
++	  if (lib_write > sizeof zeroes)
++	    lib_write = sizeof zeroes;
+ 	  if (!simple_object_internal_write (descriptor, sh_offset, zeroes,
+-					     write, &errmsg, err))
++					     lib_write, &errmsg, err))
+ 	    return errmsg;
+-	  sh_offset += write;
++	  sh_offset += lib_write;
+ 	}
+ 
+       sh_size = 0;
+       for (buffer = section->buffers; buffer != NULL; buffer = buffer->next)
+ 	{
+diff -aprNU5 binutils-2.31.1.orig/libiberty/simple-object-mach-o.c binutils-2.31.1/libiberty/simple-object-mach-o.c
+--- binutils-2.31.1.orig/libiberty/simple-object-mach-o.c	2018-06-24 18:38:58 +0000
++++ binutils-2.31.1/libiberty/simple-object-mach-o.c	2018-07-29 16:29:30 +0000
+@@ -424,11 +424,11 @@ simple_object_mach_o_segment (simple_obj
+   unsigned int index_index;
+   unsigned int nametab_index;
+   unsigned int sections_index;
+   char *strtab;
+   char *nametab;
+-  unsigned char *index;
++  unsigned char *lib_index;
+   size_t strtab_size;
+   size_t nametab_size;
+   size_t index_size;
+   unsigned int n_wrapped_sects;
+   size_t wrapper_sect_size;
+@@ -544,17 +544,17 @@ simple_object_mach_o_segment (simple_obj
+       /* Fetch the index.  */
+ 
+       simple_object_mach_o_section_info (omr->is_big_endian, is_32,
+ 					 secdata + index_index * sechdrsize,
+ 					 &index_offset, &index_size);
+-      index = XNEWVEC (unsigned char, index_size);
++      lib_index = XNEWVEC (unsigned char, index_size);
+       if (!simple_object_internal_read (sobj->descriptor,
+ 					sobj->offset + index_offset,
+-					index, index_size,
++					lib_index, index_size,
+ 					errmsg, err))
+ 	{
+-	  XDELETEVEC (index);
++	  XDELETEVEC (lib_index);
+ 	  XDELETEVEC (nametab);
+ 	  XDELETEVEC (secdata);
+ 	  return 0;
+ 	}
+ 
+@@ -570,11 +570,11 @@ simple_object_mach_o_segment (simple_obj
+ 					 &wrapper_sect_offset,
+ 					 &wrapper_sect_size);
+     }
+   else
+     {
+-      index = NULL;
++      lib_index = NULL;
+       index_size = 0;
+       nametab = NULL;
+       nametab_size = 0;
+       n_wrapped_sects = 0;
+     }
+@@ -593,11 +593,11 @@ simple_object_mach_o_segment (simple_obj
+ 					sobj->offset + strtab_offset,
+ 					(unsigned char *) strtab, strtab_size,
+ 					errmsg, err))
+ 	{
+ 	  XDELETEVEC (strtab);
+-	  XDELETEVEC (index);
++	  XDELETEVEC (lib_index);
+ 	  XDELETEVEC (nametab);
+ 	  XDELETEVEC (secdata);
+ 	  return 0;
+ 	}
+     }
+@@ -643,24 +643,24 @@ simple_object_mach_o_segment (simple_obj
+ 	    {
+ 	      unsigned int j;
+ 	      for (j = 0; j < n_wrapped_sects; ++j)
+ 		{
+ 		  unsigned int subsect_offset, subsect_length, name_offset;
+-		  subsect_offset = (*fetch_32) (index + 16 * j);
+-		  subsect_length = (*fetch_32) (index + 16 * j + 4);
+-		  name_offset = (*fetch_32) (index + 16 * j + 8);
++		  subsect_offset = (*fetch_32) (lib_index + 16 * j);
++		  subsect_length = (*fetch_32) (lib_index + 16 * j + 4);
++		  name_offset = (*fetch_32) (lib_index + 16 * j + 8);
+ 		  /* We don't need the name_length yet.  */
+ 
+ 		  secoffset = wrapper_sect_offset + subsect_offset;
+ 		  secsize = subsect_length;
+ 		  name = nametab + name_offset;
+ 
+ 		  if (!(*pfn) (data, name, secoffset, secsize))
+ 		    {
+ 		      *errmsg = NULL;
+ 		      *err = 0;
+-		      XDELETEVEC (index);
++		      XDELETEVEC (lib_index);
+ 		      XDELETEVEC (nametab);
+ 		      XDELETEVEC (strtab);
+ 		      XDELETEVEC (secdata);
+ 		      return 0;
+ 		    }
+@@ -683,11 +683,11 @@ simple_object_mach_o_segment (simple_obj
+ 		{
+ 		  if (stringoffset >= strtab_size)
+ 		    {
+ 		      *errmsg = "section name offset out of range";
+ 		      *err = 0;
+-		      XDELETEVEC (index);
++		      XDELETEVEC (lib_index);
+ 		      XDELETEVEC (nametab);
+ 		      XDELETEVEC (strtab);
+ 		      XDELETEVEC (secdata);
+ 		      return 0;
+ 		    }
+@@ -715,19 +715,19 @@ simple_object_mach_o_segment (simple_obj
+ 
+       if (!(*pfn) (data, name, secoffset, secsize))
+ 	{
+ 	  *errmsg = NULL;
+ 	  *err = 0;
+-	  XDELETEVEC (index);
++	  XDELETEVEC (lib_index);
+ 	  XDELETEVEC (nametab);
+ 	  XDELETEVEC (strtab);
+ 	  XDELETEVEC (secdata);
+ 	  return 0;
+ 	}
+     }
+ 
+-  XDELETEVEC (index);
++  XDELETEVEC (lib_index);
+   XDELETEVEC (nametab);
+   XDELETEVEC (strtab);
+   XDELETEVEC (secdata);
+ 
+   return 1;
+@@ -1043,11 +1043,11 @@ simple_object_mach_o_write_segment (simp
+   unsigned int name_offset;
+   simple_object_write_section *section;
+   unsigned char hdrbuf[sizeof (struct mach_o_segment_command_64)];
+   unsigned char *hdr;
+   size_t nsects_in;
+-  unsigned int *index;
++  unsigned int *lib_index;
+   char *snames;
+   unsigned int sect;
+ 
+   set_32 = (attrs->is_big_endian
+ 	    ? simple_object_set_big_32
+@@ -1088,29 +1088,29 @@ simple_object_mach_o_write_segment (simp
+ 	 sections respectively.
+ 	 The values are stored as 32 bit int for both 32 and 64 bit mach-o
+ 	 since the size of a mach-o MH_OBJECT cannot exceed 4G owing to
+ 	 other constraints.  */
+ 
+-      index = XNEWVEC (unsigned int, nsects_in * 4);
++      lib_index = XNEWVEC (unsigned int, nsects_in * 4);
+ 
+       /* We now need to figure out the size of the names section.  This just
+ 	 stores the names as null-terminated c strings, packed without any
+ 	 alignment padding.  */
+ 
+       for (section = sobj->sections, sect = 0; section != NULL;
+ 	   section = section->next, sect++)
+ 	{
+-	  index[sect*4+2] = name_offset;
+-	  index[sect*4+3] = strlen (section->name) + 1;
++	  lib_index[sect*4+2] = name_offset;
++	  lib_index[sect*4+3] = strlen (section->name) + 1;
+ 	  name_offset += strlen (section->name) + 1;
+ 	}
+       snames = XNEWVEC (char, name_offset);
+     }
+   else
+     {
+       *nsects = nsects_in;
+-      index = NULL;
++      lib_index = NULL;
+       snames = NULL;
+     }
+ 
+   sechdr_offset = hdrsize + seghdrsize;
+   cmdsize = seghdrsize + *nsects * sechdrsize;
+@@ -1129,20 +1129,20 @@ simple_object_mach_o_write_segment (simp
+       new_offset = offset + mask;
+       new_offset &= ~ mask;
+       while (new_offset > offset)
+ 	{
+ 	  unsigned char zeroes[16];
+-	  size_t write;
++	  size_t lib_write;
+ 
+ 	  memset (zeroes, 0, sizeof zeroes);
+-	  write = new_offset - offset;
+-	  if (write > sizeof zeroes)
+-	    write = sizeof zeroes;
+-	  if (!simple_object_internal_write (descriptor, offset, zeroes, write,
++	  lib_write = new_offset - offset;
++	  if (lib_write > sizeof zeroes)
++	    lib_write = sizeof zeroes;
++	  if (!simple_object_internal_write (descriptor, offset, zeroes, lib_write,
+ 					     errmsg, err))
+ 	    return 0;
+-	  offset += write;
++	  offset += lib_write;
+ 	}
+ 
+       secsize = 0;
+       for (buffer = section->buffers; buffer != NULL; buffer = buffer->next)
+ 	{
+@@ -1154,15 +1154,15 @@ simple_object_mach_o_write_segment (simp
+ 	  secsize += buffer->size;
+ 	}
+ 
+       if (sobj->segment_name != NULL)
+ 	{
+-	  index[sect*4+0] = (unsigned int) offset;
+-	  index[sect*4+1] = secsize;
++	  lib_index[sect*4+0] = (unsigned int) offset;
++	  lib_index[sect*4+1] = secsize;
+ 	  /* Stash the section name in our table.  */
+-	  memcpy (snames + index[sect * 4 + 2], section->name,
+-		  index[sect * 4 + 3]);
++	  memcpy (snames + lib_index[sect * 4 + 2], section->name,
++		  lib_index[sect * 4 + 3]);
+ 	}
+       else
+ 	{
+ 	  char namebuf[MACH_O_NAME_LEN + 1];
+ 	  char segnbuf[MACH_O_NAME_LEN + 1];
+@@ -1205,27 +1205,27 @@ simple_object_mach_o_write_segment (simp
+ 
+       /* Write the section header for the wrapper.  */
+       /* Account for any initial aligment - which becomes the alignment for this
+ 	 created section.  */
+ 
+-      secsize = (offset - index[0]);
++      secsize = (offset - lib_index[0]);
+       if (!simple_object_mach_o_write_section_header (sobj, descriptor,
+ 						      sechdr_offset,
+ 						      GNU_WRAPPER_SECTS,
+ 						      sobj->segment_name,
+ 						      0 /*secaddr*/,
+-						      secsize, index[0],
++						      secsize, lib_index[0],
+ 						      sobj->sections->align,
+ 						      errmsg, err))
+ 	return 0;
+ 
+       /* Subtract the wrapper section start from the begining of each sub
+ 	 section.  */
+ 
+       for (i = 1; i < nsects_in; ++i)
+-	index[4 * i] -= index[0];
+-      index[0] = 0;
++	lib_index[4 * i] -= lib_index[0];
++      lib_index[0] = 0;
+ 
+       sechdr_offset += sechdrsize;
+ 
+       /* Write out the section names.
+ 	 ... the header ...
+@@ -1266,15 +1266,15 @@ simple_object_mach_o_write_segment (simp
+ 						      2, errmsg, err))
+ 	return 0;
+ 
+       /* ... and the content.. */
+       if (!simple_object_internal_write (descriptor, offset,
+-					 (const unsigned char *) index,
++					 (const unsigned char *) lib_index,
+ 					 nsects_in*16, errmsg, err))
+ 	return 0;
+ 
+-      XDELETEVEC (index);
++      XDELETEVEC (lib_index);
+       XDELETEVEC (snames);
+     }
+ 
+   /* Write out the segment header.  */
+ 
+diff -aprNU5 binutils-2.31.1.orig/libiberty/simple-object-xcoff.c binutils-2.31.1/libiberty/simple-object-xcoff.c
+--- binutils-2.31.1.orig/libiberty/simple-object-xcoff.c	2018-06-24 18:38:58 +0000
++++ binutils-2.31.1/libiberty/simple-object-xcoff.c	2018-07-29 15:32:32 +0000
+@@ -905,17 +905,17 @@ simple_object_xcoff_write_to_file (simpl
+       new_offset = offset & mask;
+       new_offset &= ~ mask;
+       while (new_offset > offset)
+ 	{
+ 	  unsigned char zeroes[16];
+-	  size_t write;
++	  size_t lib_write;
+ 
+ 	  memset (zeroes, 0, sizeof zeroes);
+-	  write = new_offset - offset;
+-	  if (write > sizeof zeroes)
+-	    write = sizeof zeroes;
+-	  if (!simple_object_internal_write (descriptor, offset, zeroes, write,
++	  lib_write = new_offset - offset;
++	  if (lib_write > sizeof zeroes)
++	    lib_write = sizeof zeroes;
++	  if (!simple_object_internal_write (descriptor, offset, zeroes, lib_write,
+ 					     &errmsg, err))
+ 	    return errmsg;
+ 	}
+ 
+       scnsize = 0;
+diff -aprNU5 binutils-2.31.1.orig/libiberty/simple-object.c binutils-2.31.1/libiberty/simple-object.c
+--- binutils-2.31.1.orig/libiberty/simple-object.c	2018-06-24 18:38:58 +0000
++++ binutils-2.31.1/libiberty/simple-object.c	2018-07-27 20:52:18 +0000
+@@ -254,40 +254,40 @@ simple_object_find_section (simple_objec
+    Returns non-NULL if NAME is a LTO debug section, NULL if not.
+    If RENAME is true it will rename LTO debug sections to non-LTO
+    ones.  */
+ 
+ static char *
+-handle_lto_debug_sections (const char *name, int rename)
++handle_lto_debug_sections (const char *name, int lib_rename)
+ {
+-  char *newname = rename ? XCNEWVEC (char, strlen (name) + 1)
++  char *newname = lib_rename ? XCNEWVEC (char, strlen (name) + 1)
+ 	  	         : xstrdup (name);
+ 
+   /* ???  So we can't use .gnu.lto_ prefixed sections as the assembler
+      complains about bogus section flags.  Which means we need to arrange
+      for that to be fixed or .gnu.debuglto_ marked as SHF_EXCLUDE (to make
+      fat lto object tooling work for the fat part).  */
+   /* Also include corresponding reloc sections.  */
+   if (strncmp (name, ".rela", sizeof (".rela") - 1) == 0)
+     {
+-      if (rename)
++      if (lib_rename)
+         strncpy (newname, name, sizeof (".rela") - 1);
+       name += sizeof (".rela") - 1;
+     }
+   else if (strncmp (name, ".rel", sizeof (".rel") - 1) == 0)
+     {
+-      if (rename)
++      if (lib_rename)
+         strncpy (newname, name, sizeof (".rel") - 1);
+       name += sizeof (".rel") - 1;
+     }
+   /* ???  For now this handles both .gnu.lto_ and .gnu.debuglto_ prefixed
+      sections.  */
+   /* Copy LTO debug sections and rename them to their non-LTO name.  */
+   if (strncmp (name, ".gnu.debuglto_", sizeof (".gnu.debuglto_") - 1) == 0)
+-    return rename ? strcat (newname, name + sizeof (".gnu.debuglto_") - 1) : newname;
++    return lib_rename ? strcat (newname, name + sizeof (".gnu.debuglto_") - 1) : newname;
+   else if (strncmp (name, ".gnu.lto_.debug_",
+ 		    sizeof (".gnu.lto_.debug_") -1) == 0)
+-    return rename ? strcat (newname, name + sizeof (".gnu.lto_") - 1) : newname;
++    return lib_rename ? strcat (newname, name + sizeof (".gnu.lto_") - 1) : newname;
+   /* Copy over .note.GNU-stack section under the same name if present.  */
+   else if (strcmp (name, ".note.GNU-stack") == 0)
+     return strcpy (newname, name);
+   /* Copy over .comment section under the same name if present.  Solaris
+      ld uses them to relax its checking of ELF gABI access rules for
+@@ -316,11 +316,11 @@ handle_lto_debug_sections_norename (cons
+ 
+ /* Copy LTO debug sections.  */
+ 
+ const char *
+ simple_object_copy_lto_debug_sections (simple_object_read *sobj,
+-				       const char *dest, int *err, int rename)
++				       const char *dest, int *err, int lib_rename)
+ {
+   const char *errmsg;
+   simple_object_write *dest_sobj;
+   simple_object_attributes *attrs;
+   int outfd;
+@@ -339,11 +339,11 @@ simple_object_copy_lto_debug_sections (s
+   if (! dest_sobj)
+     return errmsg;
+ 
+   errmsg = sobj->functions->copy_lto_debug_sections
+ 	 	 (sobj, dest_sobj,
+-		  rename ? handle_lto_debug_sections_rename
++		  lib_rename ? handle_lto_debug_sections_rename
+ 			 : handle_lto_debug_sections_norename,  err);
+   if (errmsg)
+     {
+       simple_object_release_write (dest_sobj);
+       return errmsg;
+diff -aprNU5 binutils-2.31.1.orig/libiberty/stack-limit.c binutils-2.31.1/libiberty/stack-limit.c
+--- binutils-2.31.1.orig/libiberty/stack-limit.c	2018-06-24 18:38:58 +0000
++++ binutils-2.31.1/libiberty/stack-limit.c	2018-07-27 20:52:18 +0000
 @@ -49,11 +49,11 @@ stack_limit_increase (unsigned long pref
  #if defined(HAVE_SETRLIMIT) && defined(HAVE_GETRLIMIT) \
      && defined(RLIMIT_STACK) && defined(RLIM_INFINITY)
