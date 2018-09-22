@@ -2,18 +2,18 @@
 
 pkgname=gnome-shell-extension-transmission-daemon-git
 _gitname=gnome-shell-extension-transmission-daemon
-pkgver=r107.d33e4d6
+pkgver=r172.fd98510
 pkgrel=1
 pkgdesc="Gnome Shell indicator for transmission-daemon"
 arch=('any')
-url="https://github.com/eonpatapon/gnome-shell-extension-transmission-daemon"
+url="https://github.com/thekevjames/gnome-shell-extension-transmission-daemon"
 license=('GPL2')
 depends=('gnome-shell')
 makedepends=('git')
 provides=('gnome-shell-extension-transmission-daemon')
 conflicts=('gnome-shell-extension-transmission-daemon')
 install=${pkgname}.install
-source=('git://github.com/eonpatapon/gnome-shell-extension-transmission-daemon.git')
+source=('git://github.com/thekevjames/gnome-shell-extension-transmission-daemon.git')
 sha256sums=('SKIP')
 
 pkgver() {
