@@ -2,14 +2,14 @@
 
 pkgname='mcedit-git'
 reponame='MCEdit-Unified'
-pkgver='20180211'
-pkgrel=1
+pkgver='201800909'
+pkgrel=2
 pkgdesc='Minecraft world editor'
 arch=('any')
 url='https://www.mcedit-unified.net/'
 license=('BSD')
 
-makedepends=('cython2')
+makedepends=('cython2' 'git')
 depends=('python2' 'python2-opengl' 'python2-numpy' 'python2-pygame'
         'python2-yaml' 'python2-pillow' 'python2-ftputil' 'python2-xlib' 'xclip')
 conflicts=('mcedit' 'pymclevel')
@@ -61,7 +61,7 @@ package() {
         cp -R $i "${pkgdir}/usr/share/mcedit/$i"
     done
     ln -s "/usr/share/mcedit/favicon.png" "${pkgdir}/usr/share/pixmaps/MCEdit.png"
-    
+
     # Launcher
     install -D -m755 "${srcdir}/MCEdit" "${pkgdir}/usr/bin/"
     install -D "${srcdir}/MCEdit.desktop" "${pkgdir}/usr/share/applications"

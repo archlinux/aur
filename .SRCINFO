@@ -1,11 +1,12 @@
 pkgbase = mcedit-git
 	pkgdesc = Minecraft world editor
-	pkgver = 20180211
-	pkgrel = 1
+	pkgver = 201800909
+	pkgrel = 2
 	url = https://www.mcedit-unified.net/
 	arch = any
 	license = BSD
 	makedepends = cython2
+	makedepends = git
 	depends = python2
 	depends = python2-opengl
 	depends = python2-numpy
