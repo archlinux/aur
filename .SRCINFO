@@ -1,7 +1,7 @@
 pkgbase = imagescan
 	pkgdesc = EPSON Image Scan v3 front-end for scanners and all-in-ones
 	pkgver = 3.47.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = i686
 	arch = x86_64

@@ -4,7 +4,7 @@ pkgname=imagescan
 _pkgname=utsushi
 pkgver=3.47.0
 _pkgver=0.47.0
-pkgrel=1
+pkgrel=2
 _fedrel=28
 pkgdesc="EPSON Image Scan v3 front-end for scanners and all-in-ones"
 arch=("i686" "x86_64")
@@ -27,8 +27,7 @@ prepare() {
   cd ${_pkgname}-${_pkgver}
   sed -i -e 's/FATAL/DEBUG/' -e 's/NOTHING/ALL/' lib/log.cpp
   sed -i 's/ACTION!="add"/ACTION!="add|bind"/g' drivers/esci/utsushi-esci.rules
-  # Temporarily commented out to keep compatibility with libusb 1.0.21
-  # sed -i 's/libusb_set_debug (ctx_, 3)/libusb_set_option (ctx_, LIBUSB_OPTION_LOG_LEVEL, 3)/g' connexions/usb.cpp
+  sed -i 's/libusb_set_debug (ctx_, 3)/libusb_set_option (ctx_, LIBUSB_OPTION_LOG_LEVEL, 3)/g' connexions/usb.cpp
 }
 
 build() {
