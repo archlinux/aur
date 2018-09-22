@@ -2,7 +2,7 @@
 
 pkgname=('python-cmp_version' 'cmp_version')
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A script and python module to compare version numbers. Use this to compare the version strings of packages, modules, really anything."
 arch=('any')
 license=('LGPLv3')

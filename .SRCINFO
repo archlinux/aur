@@ -1,7 +1,7 @@
 pkgbase = python-cmp_version
 	pkgdesc = A script and python module to compare version numbers. Use this to compare the version strings of packages, modules, really anything.
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/kata198/cmp_version
 	arch = any
 	license = LGPLv3
