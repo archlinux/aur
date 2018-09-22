@@ -11,7 +11,8 @@ pkgdesc="trace communication between X client and server"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('glibc')
-makedepends=()
+makedepends=('autoconf' 'make')
+optdepends=('xorg-xauth')
 source=("https://alioth-archive.debian.org/releases/xtrace/xtrace/1.3.1/xtrace_${pkgver}.orig.tar.gz")
 sha256sums=('b22ca970efe24fcedff44f38075c5f34e0893f66abb419f3180ff92adf9e2a22')
 
