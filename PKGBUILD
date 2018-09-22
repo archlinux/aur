@@ -16,7 +16,7 @@ _use_wayland=0           # Build Wayland NOTE: extremely experimental and don't 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=69.0.3497.12
+pkgver=71.0.3554.4
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -144,6 +144,7 @@ _keeplibs=(
            'net/third_party/nss'
            'net/third_party/quic'
            'net/third_party/spdy'
+           'net/third_party/uri_template'
            'third_party/WebKit'
            'third_party/abseil-cpp'
            'third_party/analytics'
@@ -277,6 +278,13 @@ _keeplibs=(
            'third_party/web-animations-js'
            'third_party/webdriver'
            'third_party/webrtc'
+           'third_party/webrtc/common_audio/third_party/fft4g'
+           'third_party/webrtc/common_audio/third_party/spl_sqrt_floor'
+           'third_party/webrtc/modules/third_party/fft'
+           'third_party/webrtc/modules/third_party/g711'
+           'third_party/webrtc/modules/third_party/g722'
+           'third_party/webrtc/rtc_base/third_party/base64'
+           'third_party/webrtc/rtc_base/third_party/sigslot'
            'third_party/widevine'
            'third_party/woff2'
            'third_party/zlib/google'
@@ -284,7 +292,7 @@ _keeplibs=(
            'v8/src/third_party/valgrind'
            'v8/src/third_party/utf8-decoder'
            'v8/third_party/inspector_protocol'
-           'v8/third_party/antlr4'
+           'v8/third_party/v8'
 
            # gyp -> gn leftovers
            'base/third_party/libevent'
@@ -323,6 +331,8 @@ _flags=(
         'use_jumbo_build=false' # https://chromium.googlesource.com/chromium/src/+/lkcr/docs/jumbo.md
         'enable_vulkan=true'
         'use_vaapi=true'
+        'enable_hevc_demuxing=true'
+        'enable_ac3_eac3_audio_demuxing=true'
         )
 
 if [ "${_wayland}" = "1" ]; then
@@ -397,9 +407,6 @@ elif [ "${_use_bundled_clang}" = "1" ]; then
   _flags+=(
            'clang_use_chrome_plugins=true'
            )
-  # Bundled clang not like this.
-  CXXFLAGS="${CXXFLAGS//-fno-plt/}"
-  CFLAGS="${CFLAGS//-fno-plt/}"
 
   if [ ! -f "${BUILDDIR}/PKGBUILD" ]; then
     _builddir="/${pkgname}"
@@ -525,6 +532,8 @@ build() {
   LC_ALL=C gn gen out/Release -v --args="${_flags[*]}" --script-executable=/usr/bin/python2
 
   # Build all.
+  # Work around broken deps
+  LC_ALL=C ninja -C out/Release gen/ui/accessibility/ax_enums.mojom.h
   LC_ALL=C ninja -C out/Release -v chrome chrome_sandbox chromedriver #widevinecdmadapter
 }
 
@@ -568,7 +577,6 @@ package() {
           'snapshot_blob.bin'
           'v8_context_snapshot.bin'
           'icudtl.dat'
-          'transport_security_state_generator'
           #
           'MEIPreload/manifest.json'
           'MEIPreload/preloaded_data.pb'
