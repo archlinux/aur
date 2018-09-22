@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-gsconnect-git
 	pkgdesc = KDE Connect implementation with GNOME Shell integration
-	pkgver = v13.alpha.r19.ff0328a
-	pkgrel = 2
+	pkgver = 13.alpha2.r9.gbb77316
+	pkgrel = 3
 	url = https://github.com/andyholmes/gnome-shell-extension-gsconnect
 	arch = any
 	license = GPL
