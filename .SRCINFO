@@ -1,7 +1,7 @@
 pkgbase = python-nonblock
 	pkgdesc = Pure-Python non-blocking IO functions
 	pkgver = 4.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://github.com/kata198/python-nonblock
 	arch = any
 	license = LGPLv2
