@@ -1,0 +1,52 @@
+diff --git a/whipper/program/cdparanoia.py b/whipper/program/cdparanoia.py
+index 3163dc7..f3f16ae 100644
+--- a/whipper/program/cdparanoia.py
++++ b/whipper/program/cdparanoia.py
+@@ -280,10 +280,10 @@ class ReadTrackTask(task.Task):
+ 
+         bufsize = 1024
+         if self._overread:
+-            argv = ["cd-paranoia", "--stderr-progress",
++            argv = ["cdparanoia", "--stderr-progress",
+                     "--sample-offset=%d" % self._offset, "--force-overread", ]
+         else:
+-            argv = ["cd-paranoia", "--stderr-progress",
++            argv = ["cdparanoia", "--stderr-progress",
+                     "--sample-offset=%d" % self._offset, ]
+         if self._device:
+             argv.extend(["--force-cdrom-device", self._device, ])
+@@ -302,7 +302,7 @@ class ReadTrackTask(task.Task):
+         except OSError as e:
+             import errno
+             if e.errno == errno.ENOENT:
+-                raise common.MissingDependencyException('cd-paranoia')
++                raise common.MissingDependencyException('cdparanoia')
+ 
+             raise
+ 
+@@ -559,8 +559,8 @@ _VERSION_RE = re.compile(
+ 
+ 
+ def getCdParanoiaVersion():
+-    getter = common.VersionGetter('cd-paranoia',
+-                                  ["cd-paranoia", "-V"],
++    getter = common.VersionGetter('cdparanoia',
++                                  ["cdparanoia", "-V"],
+                                   _VERSION_RE,
+                                   "%(version)s %(release)s")
+ 
+@@ -585,12 +585,12 @@ class AnalyzeTask(ctask.PopenTask):
+     def __init__(self, device=None):
+         # cdparanoia -A *always* writes cdparanoia.log
+         self.cwd = tempfile.mkdtemp(suffix='.whipper.cache')
+-        self.command = ['cd-paranoia', '-A']
++        self.command = ['cdparanoia', '-A']
+         if device:
+             self.command += ['-d', device]
+ 
+     def commandMissing(self):
+-        raise common.MissingDependencyException('cd-paranoia')
++        raise common.MissingDependencyException('cdparanoia')
+ 
+     def readbyteserr(self, bytes):
+         self._output.append(bytes)

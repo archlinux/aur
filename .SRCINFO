@@ -1,0 +1,32 @@
+pkgbase = whipper-cdparanoia-git
+	pkgdesc = A Unix CD ripper aiming for accuracy over speed -- forked from morituri -- uses cdparanoia instead of libcdio-paranoia
+	pkgver = 0.7.0.r27.g542e071
+	pkgrel = 1
+	url = https://github.com/JoeLametta/whipper
+	arch = any
+	license = GPL3
+	checkdepends = python2-twisted
+	makedepends = git
+	makedepends = python2-gobject2
+	depends = accuraterip-checksum
+	depends = cddb-py
+	depends = cdrdao
+	depends = flac
+	depends = cdparanoia
+	depends = libsndfile
+	depends = mutagen
+	depends = python2-musicbrainzngs
+	depends = python2-pycdio
+	depends = python2-requests
+	depends = python2-setuptools
+	depends = sox
+	provides = whipper
+	provides = whipper-git
+	conflicts = whipper-git
+	source = git+https://github.com/JoeLametta/whipper.git
+	source = cdparanoia.diff
+	sha256sums = SKIP
+	sha256sums = 6afe43f2cf6330260291e90e75a89f4e9be9732b85a53543c92052c44cce12c6
+
+pkgname = whipper-cdparanoia-git
+
