@@ -3,7 +3,7 @@
 pkgname='printk-timestamp-formatter'
 pkgdesc="Utilities to view kmsg/printk/dmesg timestamps in local time and date, UTC, or epoch seconds, TAKING INTO ACCOUNT clock drift"
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 license=('LGPLv3')
 url="http://github.com/kata198/printk-timestamp-formatter"
