@@ -4,16 +4,16 @@
 # Contributor: shild <shildv@gmail.com>
 
 pkgname=xmonad-git
-pkgver=v0.13.r7.g12a45b4
+pkgver=v0.14.2.r5.g3d1720c
 pkgrel=1
 pkgdesc="Lightweight X11 tiled window manager written in Haskell"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://xmonad.org/"
 license=('BSD')
 depends=('ghc'
          'sh'
          'gmp'
-         'haskell-x11>=1.8' 'haskell-x11<1.9'
+         'haskell-x11>=1.8' 'haskell-x11<1.10'
          'haskell-mtl'
          'haskell-utf8-string>=0.3' 'haskell-utf8-string<1.1'
          'haskell-extensible-exceptions'
@@ -22,7 +22,6 @@ makedepends=('gendesk' 'git')
 optdepends=('xorg-xmessage: for displaying visual error messages')
 conflicts=('xmonad')
 provides=('xmonad')
-install='xmonad.install'
 source=('git://github.com/xmonad/xmonad.git'
         'dynamic-compilation.patch'
         'xmonad.svg')
@@ -56,17 +55,17 @@ build() {
 
 package() {
   cd "$srcdir"/${pkgname/-git}
-  install -D -m744 register.sh $pkgdir/usr/share/haskell/${pkgname/-git}/register.sh
-  install -m744 unregister.sh $pkgdir/usr/share/haskell/${pkgname/-git}/unregister.sh
-  runhaskell Setup.lhs copy --destdir=$pkgdir
 
-  install -D -m644 man/xmonad.1 $pkgdir/usr/share/man/man1/xmonad.1
-  install -D -m644 LICENSE $pkgdir/usr/share/licenses/xmonad/LICENSE
-  install -D -m644 $srcdir/xmonad.svg $pkgdir/usr/share/pixmaps/xmonad.svg
-  install -D -m644 $srcdir/xmonad.desktop $pkgdir/usr/share/xsessions/xmonad.desktop
+  install -Dm 744 register.sh   "${pkgdir}/usr/share/haskell/register/${pkgname/-git}.sh"
+  install -Dm 744 unregister.sh "${pkgdir}/usr/share/haskell/unregister/${pkgname/-git}.sh"
 
-  install -d -m755 ${pkgdir}/usr/share/doc/ghc/html/libraries
-  ln -s /usr/share/doc/$pkgname/html "$pkgdir/usr/share/doc/ghc/html/libraries/$pkgname"
+  runhaskell Setup.lhs copy --destdir="${pkgdir}"
 
-  find "$pkgdir"/usr/lib -name "*.a" -delete
+  # Requires pandoc, regex-posix, Pretty and cabal
+  #runhaskell util/GenerateManpage.hs
+
+  install -Dm 644 man/xmonad.1 -t "${pkgdir}/usr/share/man/man1"
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/xmonad"
+  install -Dm 644 "$srcdir/xmonad.svg" -t "${pkgdir}/usr/share/pixmaps"
+  install -Dm 644 "$srcdir/xmonad.desktop" -t "${pkgdir}/usr/share/xsessions"
 }
