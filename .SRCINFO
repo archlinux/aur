@@ -1,0 +1,13 @@
+pkgbase = rofi-mpc
+	pkgdesc = Fast graphical Rofi-Interface for contolling MPD
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/Marco98/rofi-mpc
+	arch = any
+	makedepends = git
+	depends = ffmpeg
+	source = git://github.com/Marco98/rofi-mpc#tag=v1.2
+	md5sums = SKIP
+
+pkgname = rofi-mpc
+
