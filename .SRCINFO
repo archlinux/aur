@@ -1,7 +1,7 @@
 pkgbase = gpac-git
 	pkgdesc = A multimedia framework based on the MPEG-4 Systems standard (git version)
-	pkgver = 0.5.2.r3434.g76781df5f
-	pkgrel = 1
+	pkgver = 0.5.2.r3540.g96ec5b596
+	pkgrel = 2
 	epoch = 1
 	url = https://gpac.wp.imt.fr/
 	arch = i686
@@ -24,9 +24,8 @@ pkgbase = gpac-git
 	optdepends = faad2: for AAC support
 	optdepends = libmad: for mp3 support
 	optdepends = sdl2: for sdl support
+	provides = gpac=0.5.2.r3540.g96ec5b596
 	conflicts = gpac
-	options = staticlibs
-	options = !makeflags
 	source = git+https://github.com/gpac/gpac.git
 	sha256sums = SKIP
 
