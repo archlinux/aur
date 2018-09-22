@@ -2,6 +2,7 @@ pkgbase = libav-no-libs-git
 	pkgdesc = Open source audio and video processing tools
 	pkgver = 13_dev0.r1579.g2a9e1c122
 	pkgrel = 1
+	epoch = 1
 	url = https://libav.org/
 	arch = i686
 	arch = x86_64
