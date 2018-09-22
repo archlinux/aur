@@ -2,7 +2,7 @@
 
 pkgname='python-func_timeout'
 pkgver=4.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python module which allows you to specify timeouts when calling any existing function, and support for stoppable threads"
 arch=('any')
 license=('LGPLv3')
