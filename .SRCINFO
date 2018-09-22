@@ -1,17 +1,18 @@
 pkgbase = gnirehtet
 	pkgdesc = Gnirehtet provides reverse tethering for Android
-	pkgver = 2.2.1
+	pkgver = 2.3
 	pkgrel = 0
 	url = https://github.com/Genymobile/gnirehtet
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = rust
+	makedepends = patch
 	depends = android-tools
-	source = https://github.com/Genymobile/gnirehtet/archive/497eb83b4a90c89ed683210524473a2adc84e2cb.tar.gz
-	source = https://github.com/Genymobile/gnirehtet/releases/download/v2.2.1/gnirehtet-rust-linux64-v2.2.1.zip
+	source = https://github.com/Genymobile/gnirehtet/archive/3104563fb915454565ac9c5cf613d7aca5ca5cb0.tar.gz
+	source = https://github.com/Genymobile/gnirehtet/releases/download/v2.3/gnirehtet-rust-linux64-v2.3.zip
 	source = patch.diff
-	sha256sums = decd9be989777859bb4f315169f5d1007bdf5c9f0bb9d6249b955a698ba3d314
-	sha256sums = 7ecb04bc7e2a223773dc9be66efafd39bb6cfb16b5cc4ccbe252f997c003bf6c
+	sha256sums = 6d2036c617d5e0f746ee43a6a7930712ba05613f1c3f2653665b9dc7d39e7b26
+	sha256sums = 561d77e94d65ecf2d919053e5da6109b8cceb73bffedea71cd4e51304ccaa3d3
 	sha256sums = SKIP
 
 pkgname = gnirehtet
