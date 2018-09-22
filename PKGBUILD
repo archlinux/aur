@@ -9,7 +9,7 @@
 
 pkgname=prosody-hg
 pkgrel=1
-pkgver=r9289+.b5fc11475b5d+
+pkgver=r9340+.368b092bf4bf+
 pkgver() {
   cd "$srcdir/$pkgname"
   printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
@@ -99,4 +99,4 @@ package() {
 sha256sums=('SKIP'
             '343d7c61ee1c105d760480e9ba6a0655da6bd1a58335f4264a289ade96cffa4c'
             'e5c30ffbb066f0ed3444475b3313490c535d8c9df018726f6cecf9e3ddfd2e48'
-            'f0a83065a121b4a326a9da75c6684e2dc34ac18e62fea7a078c5e257c894adab')
+            'af4ce76ae0a8773429eac53c72f1b87c8fa59c63acf003450f75dcb73131a21c')

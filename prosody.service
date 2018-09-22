@@ -9,6 +9,7 @@ ExecStart=/usr/bin/prosodyctl start
 ExecStop=/usr/bin/prosodyctl stop
 ExecReload=/bin/kill -HUP $MAINPID
 
+StandardOutput=journal
+
 [Install]
 WantedBy=multi-user.target
-
