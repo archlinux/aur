@@ -8,7 +8,7 @@
 pkgname="spl-utils-common"
 
 pkgver=0.7.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Solaris Porting Layer kernel module support files."
 arch=("x86_64")
 url="http://zfsonlinux.org/"
@@ -18,7 +18,7 @@ groups=("archzfs-linux")
 license=("GPL")
 provides=("spl-utils")
 makedepends=()
-conflicts=('spl-utils-common-git' 'spl-utils-linux-git' 'spl-utils-linux' 'spl-utils-linux-lts' 'spl-utils-linux-lts-git')
+conflicts=("spl-utils")
 replaces=("spl-utils-linux", "spl-utils-linux-lts")
 
 build() {
