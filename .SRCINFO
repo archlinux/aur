@@ -1,6 +1,6 @@
 pkgbase = python-py-spy
 	pkgdesc = Sampling profiler for Python programs
-	pkgver = 0.1.7
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/benfred/py-spy
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-py-spy
 	depends = python
 	depends = python-setuptools-rust
 	depends = rust
-	source = python-py-spy-0.1.7.tar.gz::https://github.com/benfred/py-spy/archive/v0.1.7.tar.gz
-	sha512sums = c47901f9bc2d823099e5c79872684be6ff5b321456c7d996f69099e7a11a371f71aff2d34e4b98bc15460a309039518472e5128ba3f3b8ab91ca99fa9b3c2715
+	source = python-py-spy-0.1.8.tar.gz::https://github.com/benfred/py-spy/archive/v0.1.8.tar.gz
+	sha512sums = 68831d1c066887f3473e9eef1a773c0f9e1eb9252f929b0884b1d04faede90a72d7e3eb949d14e2e75c12e2645bf6b57ea5f94d5514491f46594231ad68ad1d1
 
 pkgname = python-py-spy
 
