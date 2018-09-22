@@ -752,3 +752,12 @@ Sun Aug 12 22:15:42 2018 +0200
      2018-08-12 19e82c1d actionless fix(plugins: arc): fix hdr btn borders' preview
      2018-08-12 1c90a1a9 actionless fix(main): properly handle SIGINT (Ctrl+C)
      2018-08-12 d15897d4 actionless fix(plugins: arc): remove gtk+2 pseudo-hidpi from export options
+
+
+Sat Sep 22 07:12:57 2018 +0200
+-------------------------------------------------
+1.7.0.3         Release 1.7.0.3
+    
+    Notable changes:
+     2018-08-15 e6688017 actionless fix(plugins: arc): export config name
+     2018-08-12 236bd5c4 actionless refactor: import gettext's _ explicitly
