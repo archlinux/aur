@@ -20,6 +20,15 @@ diff -ruN cmocka-1.1.1/example/chef_wrap/CMakeLists.txt patched/example/chef_wra
  
  set_target_properties(waiter_test_wrap
          PROPERTIES
+diff -ruN cmocka-1.1.2/example/uptime/CMakeLists.txt patched/example/uptime/CMakeLists.txt
+--- cmocka-1.1.2/example/uptime/CMakeLists.txt	2018-08-22 13:02:28.000000000 +0200
++++ patched/example/uptime/CMakeLists.txt	2018-09-22 16:33:47.693794439 +0200
+@@ -18,4 +18,4 @@
+     PROPERTIES
+         LINK_FLAGS "-Wl,--wrap=uptime")
+ 
+-add_test(test_uptime ${CMAKE_CURRENT_BINARY_DIR}/test_uptime)
++add_test(test_uptime ${CMAKE_CURRENT_BINARY_DIR}/test_uptime${CMAKE_EXECUTABLE_SUFFIX})
 diff -ruN cmocka-1.1.1/example/CMakeLists.txt patched/example/CMakeLists.txt
 --- cmocka-1.1.1/example/CMakeLists.txt	2016-09-21 15:31:28.000000000 +0200
 +++ patched/example/CMakeLists.txt	2018-08-25 20:04:44.554913232 +0200
