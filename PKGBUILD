@@ -13,7 +13,6 @@ optdepends=('libelogind: systemd logind support')
 makedepends=('git' 'meson' 'ninja' 'scdoc')
 provides=('sway')
 conflicts=('sway' 'sway-git')
-install=sway-wlroots-git.install
 source=('git+https://github.com/swaywm/sway.git'
         'swaybar-fix.patch')
 sha1sums=('SKIP'
