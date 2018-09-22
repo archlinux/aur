@@ -1,7 +1,7 @@
 pkgbase = python-subprocess2
 	pkgdesc = Extensions to the upstream python subprocess module
 	pkgver = 2.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://github.com/kata198/python-subprocess2
 	arch = any
 	license = LGPLv2

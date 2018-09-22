@@ -2,7 +2,7 @@
 
 pkgname='python-subprocess2'
 pkgver=2.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Extensions to the upstream python subprocess module"
 arch=('any')
 license=('LGPLv2')
