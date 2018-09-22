@@ -11,10 +11,11 @@ optdepends=()
 provides=('flatplat-blue-theme')
 conflicts=()
 replaces=()
-source=(Flat-Plat-Blue-3.28.1::"https://github.com/peterychuang/Flat-Plat-Blue/archive/3.28.1.tar.gz")
+source=(Flat-Plat-Blue-3.28.1.tar.gz::"https://github.com/peterychuang/Flat-Plat-Blue/archive/3.28.1.tar.gz")
 sha256sums=('f9b8e2b7350087891962e3dc694734e4f8742b83dc498ff8ee4c5dee03d84c3b')
 
 package() {
   cd "${srcdir}/Flat-Plat-Blue-3.28.1"
-  destdir="${pkgdir}" ./install.sh
+  mkdir -p usr/share/themes
+  destdir="${pkgdir}" ./install.sh -d usr/share/themes
 }
