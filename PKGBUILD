@@ -1,13 +1,12 @@
 # Maintainer : Daniel Bermond < yahoo-com: danielbermond >
 # Contributor: Det <nimetonmaili g-mail>
 # Contributor: Ng Oon-Ee
-# Contributor: Dan
-# Contributor: Vratil
+# Contributor: Dan Vratil
 # Based on [extra]'s nvidia-utils: https://www.archlinux.org/packages/extra/x86_64/nvidia-utils/
 
 pkgname=('nvidia-utils-beta' 'nvidia-egl-wayland-beta' 'nvidia-libgl-beta' 'opencl-nvidia-beta')
 pkgver=410.57
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom:NVIDIA')
@@ -19,6 +18,8 @@ source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/$_pkg.run"
 sha256sums=('1ad40d83ec712843c1b5593949abefc9093399fb26a418ae9a571fbd1d9b228e'
             '3a5f66620501d8dd85085a35c2f9e85a2e0d56a1b565b2df1e9fabc40e643363'
             '444c6cfceac08a52d0873a1f5146fea2eeb44e7952ca1cc08629786b691e92b4')
+
+_eglver='1.1.0'
 
 _create_links() {
   # create missing soname links
@@ -98,8 +99,6 @@ package_nvidia-libgl-beta() {
 }
 
 package_nvidia-egl-wayland-beta() {
-  local _eglver='1.1.0'
-  
   pkgdesc="NVIDIA EGL Wayland library (libnvidia-egl-wayland.so.${_eglver}) for 'nvidia-utils-beta'"
   depends=('nvidia-utils-beta')
   provides=('egl-wayland')
@@ -118,7 +117,7 @@ package_nvidia-utils-beta() {
               'gtk3: nvidia-settings (GTK+ v3)'
               'opencl-nvidia-beta: OpenCL support'
               'xorg-server-devel: nvidia-xconfig'
-              'egl-wayland-git: for alternative, more advanced Wayland library (libnvidia-egl-wayland.so.1.0.3)')
+              "egl-wayland-git: for alternative, more advanced Wayland library (libnvidia-egl-wayland.so.${_eglver})")
   provides=("nvidia-utils=$pkgver" "nvidia-settings=$pkgver" 'libglvnd' 'vulkan-driver')
   conflicts=('nvidia-utils' 'nvidia-settings' 'libglvnd')
   backup=('etc/X11/xorg.conf.d/20-nvidia.conf')
@@ -193,11 +192,18 @@ package_nvidia-utils-beta() {
   # Vulkan icd
   install -Dm644 nvidia_icd.json.template "$pkgdir"/usr/share/vulkan/icd.d/nvidia_icd.json
   sed -i 's/__NV_VK_ICD__/libGLX_nvidia.so.0/' "$pkgdir"/usr/share/vulkan/icd.d/nvidia_icd.json
-
+  
+  # Vulkan real-time ray tracing extensions (VK_NV_raytracing)
+  install -D -m755 "libnvidia-rtcore.so.${pkgver}" -t "${pkgdir}/usr/lib"
+  install -D -m755 "libnvidia-cbl.so.${pkgver}"    -t "${pkgdir}/usr/lib"
+  
   # Helper libs for approved partners' GRID remote apps
   install -Dm755 libnvidia-ifr.so.$pkgver "$pkgdir"/usr/lib/libnvidia-ifr.so.$pkgver
   install -Dm755 libnvidia-fbc.so.$pkgver "$pkgdir"/usr/lib/libnvidia-fbc.so.$pkgver
-
+  
+  # OptiX ray tracing engine
+  install -D -m755 "libnvoptix.so.${pkgver}" -t "${pkgdir}/usr/lib"
+  
   # Not required (https://bugs.archlinux.org/task/38604):
   # - libnvidia-wfb.so.$pkgver (provided by xorg-server: https://www.archlinux.org/packages/extra/x86_64/xorg-server/)
 
