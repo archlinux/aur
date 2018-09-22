@@ -1,4 +1,3 @@
-# $Id$
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
@@ -6,22 +5,22 @@
 
 pkgname=firefox-appmenu
 _pkgname=firefox
-pkgver=61.0.2
+pkgver=62.0.2
 pkgrel=1
-pkgdesc="Firefox from extra with appmenu patch"
+pkgdesc="Standalone web browser from mozilla.org"
 arch=(x86_64)
 license=(MPL GPL LGPL)
-url="https://aur.archlinux.org/packages/firefox-appmenu/"
+url="https://www.mozilla.org/firefox/"
 depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib ffmpeg
          nss hunspell-en_US sqlite ttf-font libpulse libvpx icu)
-makedepends=(unzip zip diffutils python2 yasm mesa imake gconf inetutils xorg-server-xvfb
+makedepends=(unzip zip diffutils python2 yasm mesa imake inetutils xorg-server-xvfb
              autoconf2.13 rust mercurial clang llvm jack gtk2 python)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
             'speech-dispatcher: Text-to-Speech')
 provides=("firefox=$pkgver")          
-conflicts=("firefox")           
+conflicts=("firefox")   
 options=(!emptydirs !makeflags !strip)
 _repo=https://hg.mozilla.org/mozilla-unified
 source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
@@ -30,7 +29,7 @@ source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
 sha256sums=('SKIP'
             '2adca824b52ab5bc6e7e4fa486c1ecb47d283832bd4b75d10494b033f1cab911'
             '9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797'
-			'4465aa66734452597d4d797847de0c34c15bc08f21e9e8b6bf9f6ff270908f6f')
+            '36fa25a8660302d7b8e2eca119e70116470708246a659caebcb1704090d518bf')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -46,8 +45,8 @@ _mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
 
 prepare() {
   cd mozilla-unified
-
-  # actual appmenu patch from ubuntu repos
+  
+    # actual appmenu patch from ubuntu repos
   patch -Np1 -i ../unity-menubar.patch
 
   echo -n "$_google_api_key" >google-api-key
@@ -69,7 +68,6 @@ ac_add_options --enable-update-channel=release
 ac_add_options --with-distribution-id=org.archlinux
 export MOZILLA_OFFICIAL=1
 export MOZ_TELEMETRY_REPORTING=1
-export MOZ_ADDON_SIGNING=1
 export MOZ_REQUIRE_SIGNING=1
 
 # Keys
@@ -92,6 +90,7 @@ ac_add_options --enable-alsa
 ac_add_options --enable-jack
 ac_add_options --enable-startup-notification
 ac_add_options --enable-crashreporter
+ac_add_options --disable-gconf
 ac_add_options --disable-updater
 END
 }
@@ -164,3 +163,5 @@ END
   ln -srf "$pkgdir/usr/bin/$_pkgname" \
     "$pkgdir/usr/lib/$_pkgname/firefox-bin"
 }
+
+# vim:set sw=2 et:

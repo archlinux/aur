@@ -1,8 +1,8 @@
 pkgbase = firefox-appmenu
-	pkgdesc = Firefox from extra with appmenu patch
-	pkgver = 61.0.2
+	pkgdesc = Standalone web browser from mozilla.org
+	pkgver = 62.0.2
 	pkgrel = 1
-	url = https://aur.archlinux.org/packages/firefox-appmenu/
+	url = https://www.mozilla.org/firefox/
 	arch = x86_64
 	license = MPL
 	license = GPL
@@ -14,7 +14,6 @@ pkgbase = firefox-appmenu
 	makedepends = yasm
 	makedepends = mesa
 	makedepends = imake
-	makedepends = gconf
 	makedepends = inetutils
 	makedepends = xorg-server-xvfb
 	makedepends = autoconf2.13
@@ -43,19 +42,19 @@ pkgbase = firefox-appmenu
 	optdepends = libnotify: Notification integration
 	optdepends = pulseaudio: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
-	provides = firefox=61.0.2
+	provides = firefox=62.0.2
 	conflicts = firefox
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
-	source = hg+https://hg.mozilla.org/mozilla-unified#tag=FIREFOX_61_0_2_RELEASE
+	source = hg+https://hg.mozilla.org/mozilla-unified#tag=FIREFOX_62_0_2_RELEASE
 	source = firefox.desktop
 	source = firefox-symbolic.svg
 	source = unity-menubar.patch
 	sha256sums = SKIP
 	sha256sums = 2adca824b52ab5bc6e7e4fa486c1ecb47d283832bd4b75d10494b033f1cab911
 	sha256sums = 9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797
-	sha256sums = 4465aa66734452597d4d797847de0c34c15bc08f21e9e8b6bf9f6ff270908f6f
+	sha256sums = 36fa25a8660302d7b8e2eca119e70116470708246a659caebcb1704090d518bf
 
 pkgname = firefox-appmenu
 
