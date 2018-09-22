@@ -2,7 +2,7 @@
 
 pkgname=rextract
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Powerful commandline tool to extract and manipulate strings using regular exressions"
 arch=('any')
 license=('GPLv3')
