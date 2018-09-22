@@ -1,7 +1,7 @@
 pkgbase = python-processmappingscanner
 	pkgdesc = Python module for scanning information on running processes, including mappings, open file-descriptors, process owner, and other information
 	pkgver = 2.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/kata198/ProcessMappingScanner
 	arch = any
 	license = LGPLv3

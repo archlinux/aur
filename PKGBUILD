@@ -2,7 +2,7 @@
 
 pkgname=python-processmappingscanner
 pkgver=2.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Python module for scanning information on running processes, including mappings, open file-descriptors, process owner, and other information"
 arch=('any')
 license=('LGPLv3')
