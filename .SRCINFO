@@ -1,13 +1,13 @@
 pkgbase = auryo-bin
 	pkgdesc = A SoundCloud client for your desktop.
-	pkgver = 2.1.1
+	pkgver = 2.1.2
 	pkgrel = 2
 	url = http://auryo.com
 	arch = x86_64
 	license = GPL-3.0
 	conflicts = auryo
 	conflicts = auryo-git
-	source = https://github.com/Superjo149/auryo/releases/download/v2.1.1/auryo-2.1.1.pacman
+	source = https://github.com/Superjo149/auryo/releases/download/v2.1.2/auryo-2.1.2.pacman
 	sha256sums = 2568cc173b437810b0729a18efc3e9b1339a15fc572af44749f4aecb2430a1fa
 
 pkgname = auryo-bin
