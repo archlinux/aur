@@ -1,6 +1,6 @@
 pkgbase = xde-menu
 	pkgdesc = XDG compliant menu generator
-	pkgver = 0.7
+	pkgver = 0.8
 	pkgrel = 1
 	url = https://github.com/bbidulock/xde-menu
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = xde-menu
 	optdepends = libwnck+-git: for enhanced functionality
 	optdepends = xdg-launch: for LW WM launch notification
 	optdepends = xde-theme: for LW WM style and theme change support
-	source = https://github.com/bbidulock/xde-menu/releases/download/0.7/xde-menu-0.7.tar.xz
-	md5sums = dfb0fc3bfab9adf07a43219880b3e68b
+	source = https://github.com/bbidulock/xde-menu/releases/download/0.8/xde-menu-0.8.tar.xz
+	md5sums = 0f58b8f53e8b1e9ccbbebd444a936e1e
 
 pkgname = xde-menu
 
