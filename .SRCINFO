@@ -1,6 +1,6 @@
 pkgbase = spl-linux-vfio
 	pkgver = 0.7.11_4.18.5.arch1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://zfsonlinux.org/
 	arch = x86_64
 	license = GPL
@@ -15,19 +15,14 @@ pkgname = spl-linux-vfio
 	pkgdesc = Solaris Porting Layer kernel modules.
 	groups = archzfs-linux-vfio
 	provides = spl
+	conflicts = spl-dkms
+	conflicts = spl-dkms-git
 	conflicts = spl-linux-vfio-git
 
 pkgname = spl-linux-vfio-headers
 	pkgdesc = Solaris Porting Layer kernel headers.
-	conflicts = spl-archiso-linux-headers
-	conflicts = spl-archiso-linux-git-headers
-	conflicts = spl-linux-hardened-headers
-	conflicts = spl-linux-hardened-git-headers
-	conflicts = spl-linux-lts-headers
-	conflicts = spl-linux-lts-git-headers
-	conflicts = spl-linux-headers
-	conflicts = spl-linux-git-headers
-	conflicts = spl-linux-vfio-git-headers
-	conflicts = spl-linux-zen-headers
-	conflicts = spl-linux-zen-git-headers
+	provides = spl-headers
+	conflicts = spl-dkms
+	conflicts = spl-dkms-git
+	conflicts = spl-headers
 
