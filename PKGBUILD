@@ -9,7 +9,7 @@ license=('LGPL2.1' 'LGPL3')
 depends=('gtk3' 'glib2')
 makedepends=('mate-common' 'gtk-doc')
 source=("http://releases.ayatana-indicators.org/source/$pkgname/$pkgname-$pkgver.tar.gz")
-sha512sums=('c64b1d272b778ec0f3de51afa0e3e73765ea2efebd3db9426ee6df0814deffd092a6d82c649a7ee530ae824d7af49bc7fec50b3d0b8725bdeed61c95f77295f9')
+sha512sums=('62f516ada352c864923754fa6fff1573b97543abe317668e35ad51723c36d8bd5c4f58a13ea7fecb741c3527d9211207fa5e08f8b9ae16ca6fbeef3e59f371bb')
 
 build() {
   cd "$pkgname-$pkgver"
