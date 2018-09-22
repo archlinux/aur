@@ -1,0 +1,22 @@
+pkgbase = python-voluptuous-serialize
+	pkgdesc = Convert voluptuous schemas to JSON.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/balloob/voluptuous-serialize
+	arch = any
+	license = LGPL
+	checkdepends = python
+	checkdepends = python2
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://github.com/balloob/voluptuous-serialize/archive/2.0.0.tar.gz
+	sha256sums = e4d3b7a5bc2859e6c566079ecb757fc7332efb805e7bde336a217bfd7064d098
+
+pkgname = python-voluptuous-serialize
+	pkgdesc = Convert voluptuous schemas to JSON. (python3 version)
+	depends = python-voluptuous
+
+pkgname = python2-voluptuous-serialize
+	pkgdesc = Convert voluptuous schemas to JSON. (python2 version)
+	depends = python2-voluptuous
+
