@@ -1,0 +1,17 @@
+pkgbase = qtile-plasma-git
+	pkgdesc = A flexible, tree-based layout for Qtile
+	pkgver = v1.5.3.r0.g3c3106d
+	pkgrel = 1
+	url = https://github.com/numirias/qtile-plasma
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	depends = python-setuptools
+	depends = qtile
+	source = qtile-plasma-git::git://github.com/numirias/qtile-plasma.git
+	sha256sums = SKIP
+
+pkgname = qtile-plasma-git
+
