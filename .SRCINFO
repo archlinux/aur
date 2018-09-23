@@ -1,0 +1,21 @@
+pkgbase = birdtray-git
+	pkgdesc = Run Thunderbird with a system tray icon.
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/gyunaev/birdtray
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = GPL
+	makedepends = git
+	depends = qt5-base
+	depends = sqlite3
+	provides = birdtray
+	conflicts = birdtray
+	source = git+https://github.com/gyunaev/birdtray.git
+	sha1sums = SKIP
+
+pkgname = birdtray-git
+
