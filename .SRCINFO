@@ -8,6 +8,12 @@ pkgbase = r-sp
 	license = GPL2
 	license = GPL3
 	depends = r>=3.0
+	optdepends = r-gdal>=0.8
+	optdepends = r-geos>=0.3
+	optdepends = r-gstat
+	optdepends = r-maptools
+	optdepends = r-deldir
+	optdepends = r-rcolorbrewer
 	provides = r-sp
 	conflicts = r-cran-sp
 	source = https://cran.r-project.org/src/contrib/sp_1.3-1.tar.gz

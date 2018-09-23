@@ -10,6 +10,7 @@ url="https://cran.r-project.org/package=${_cranname}"
 arch=('x86_64' 'i686')
 license=('GPL2' 'GPL3')
 depends=('r>=3.0')
+optdepends=('r-gdal>=0.8' 'r-geos>=0.3' 'r-gstat' 'r-maptools' 'r-deldir' 'r-rcolorbrewer')
 provides=('r-sp')
 conflicts=('r-cran-sp')
 source=(https://cran.r-project.org/src/contrib/${_pkgfile})
