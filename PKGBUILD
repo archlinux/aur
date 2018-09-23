@@ -2,7 +2,7 @@
 pkgname=jetbrains-mps
 _pkgname=mps
 _pkgver=2018.2
-pkgver=${_pkgver}.3
+pkgver=${_pkgver}.4
 pkgrel=1
 pkgdesc="JetBrains Meta Programming System"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('python: support for scripts like restart.py'
             'ffmpeg0.10: Multimedia plugin')
 
 source=("https://download.jetbrains.com/mps/${_pkgver}/MPS-${pkgver}.tar.gz")
-sha256sums=('c1af0c6886d90fbc707dac638d72d284d03f3e8d05bd671a393310849c5abe77')
+sha256sums=('60e9a98f4970d7a2fd985235eec1f21cf3d5e5aedfd84e57e714ba7225f99789')
 
 build() {
   cd "${srcdir}"
