@@ -3,7 +3,7 @@
 
 pkgname=luacheck
 pkgver=0.23.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for linting and static analysis of Lua code."
 arch=('any')
 url="https://github.com/mpeterv/luacheck"
@@ -15,8 +15,9 @@ sha256sums=('b4edf3a7702519502696d4ac7372ed1bd6a82ded63bf81f2b1d7e9b37711be2b')
 
 package() {
   cd "$pkgname-$pkgver"
-  mkdir -p "$pkgdir/usr/share/lua/5.3/luacheck"
-  install -Dm644 $(find "src/luacheck" -type f) "$pkgdir/usr/share/lua/5.3/luacheck"
+  mkdir -p "$pkgdir/usr/share/lua/5.3/luacheck/stages"
+  find src/luacheck -maxdepth 1 -type f -exec install -Dm644 {} "$pkgdir/usr/share/lua/5.3/luacheck" \;
+  find src/luacheck/stages -maxdepth 1 -type f -exec install -Dm644 {} "$pkgdir/usr/share/lua/5.3/luacheck/stages" \;
   install -Dm755 "bin/luacheck.lua" "$pkgdir/usr/bin/luacheck"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
