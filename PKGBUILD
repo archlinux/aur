@@ -2,7 +2,7 @@
 # Contributor: dorkster <jajdorkster@gmail.com>
 
 pkgname=flare-game
-pkgver=1.06
+pkgver=1.08
 pkgrel=1
 pkgdesc="Fantasy action RPG using the FLARE engine - Git version"
 url="http://www.flarerpg.org/"
@@ -11,7 +11,7 @@ arch=(i686 x86_64)
 makedepends=(cmake)
 depends=(flare-engine)
 source=("https://sourceforge.net/projects/flare-game/files/Linux/${pkgname}-v${pkgver}.tar.gz")
-sha1sums=('0d3fed95dd48d4f0c42d44a057fb1f715f72893a')
+sha1sums=('c9400ed0fe1e3677e87d826fb954d02f8ae819ea')
 
 build() {
 	cd "$srcdir/$pkgname-v$pkgver"
