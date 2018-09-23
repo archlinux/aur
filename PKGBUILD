@@ -14,7 +14,7 @@ provides=('scangearmp2')
 source=("http://gdlp01.c-wss.com/gds/3/0100009933/01/scangearmp2-source-3.70-1.tar.gz" \
 	scangearmp2.desktop)
 sha256sums=('6d5c5b72d671bf8014260b060298e66e4b1fd1e1be475b5a7dbf4f9f9fc3edbc'
-            'dd34032c73ab67f738d775727c55e99a6a2fe2383bce767c8b0f44637664c451')
+            'bd600fd9f4e95172f3b0fe343fc10c86e62b51a5b1e69e28d331b8b653baad64')
 
 [[ "$CARCH" == "x86_64" ]] && _arch="64" || _arch="32"
 
