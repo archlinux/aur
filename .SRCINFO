@@ -1,0 +1,21 @@
+pkgbase = talkatu-hg
+	pkgdesc = Gtk+ widgets for chat software
+	pkgver = r191.11dfbe8b2012
+	pkgrel = 1
+	url = https://bitbucket.org/pidgin/talkatu
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = mercurial
+	makedepends = meson
+	makedepends = help2man
+	depends = gtk3>=3.10.0
+	depends = glade>=2.0
+	depends = gumbo-parser>=0.10
+	depends = gspell>=1.2
+	depends = cmark
+	source = talkatu-hg::hg+https://bitbucket.org/pidgin/talkatu
+	sha256sums = SKIP
+
+pkgname = talkatu-hg
+
