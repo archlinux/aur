@@ -4,20 +4,20 @@
 
 pkgname=evince-no-gnome
 _pkgname=evince
-pkgver=3.28.2
+pkgver=3.30.0+8+g238f8ee6
 pkgrel=1
 pkgdesc="GTK3 document viewer, complete features, no gnome dependencies"
 url="https://wiki.gnome.org/Apps/Evince"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('dconf' 'gtk3' 'libgxps' 'libspectre' 'poppler-glib' 'djvulibre' 'gsettings-desktop-schemas' 'libarchive' 'gst-plugins-base-libs')
+depends=('dconf' 'gtk3' 'libgxps' 'libspectre' 'poppler-glib' 'djvulibre' 'gsettings-desktop-schemas' 'gspell' 'libarchive' 'gst-plugins-base-libs')
 makedepends=('itstool' 'texlive-bin' 'gobject-introspection' 'intltool' 'docbook-xsl' 'python' 'gtk-doc' 'gnome-common')
 optdepends=('texlive-bin: DVI support'
 	'gvfs: for session saving and bookmarking')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" "evince-light")
 options=('!emptydirs')
-_commit=dc33abf4cd4c5d7a60d10872116cdc7fff673e9a  # tags/3.28.2^0
+_commit=238f8ee6a00dc8e7a593172d5a1e2f5dd41f09ed # master
 source=("git+https://git.gnome.org/browse/evince#commit=$_commit")
 md5sums=('SKIP')
 
@@ -44,6 +44,7 @@ BROWSER_PLUGIN_DIR=/usr/lib/epiphany/plugins \
   --disable-introspection \
   --disable-nautilus \
   --enable-pdf \
+  --enable-ps \
   --enable-tiff \
   --enable-djvu \
   --enable-dvi \
