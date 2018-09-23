@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/fedora-infra/kitchen"
 license=('LGPL')
 depends=('python2' )
-makedepends=('python2' 'python2-setuptools')
+makedepends=('python2-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/fedora-infra/kitchen/archive/v$pkgver.tar.gz")
 md5sums=('35490785ed23c91bad1c083c7adbc39e')
 
