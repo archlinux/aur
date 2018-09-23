@@ -5,7 +5,7 @@ set -u
 pkgbase="linux-lts49"
 #pkgbase=linux-lts-custom
 _srcname="linux-4.9"
-pkgver="4.9.127"
+pkgver="4.9.128"
 pkgrel='1'
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -27,8 +27,8 @@ validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds <torva
              )
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
-            'c46e37100481a3b0c1af832360b470cd694f5e5b99ac2d0067247c8353331a04'
-            'db821fe07d5870e1f690ece2c26ca3d5f01a5637653962fddfc34e1a1a5bd86a'
+            '429288bb48c12350f885200902f5fd50f0dca5d91ca6e8e86a030ca8ad5f0c1e'
+            '29be352c71ccb7299de96108349efefba3118bb3d2c3cb453d13d5b5be556877'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             '1f036f7464da54ae510630f0edb69faa115287f86d9f17641197ffda8cfd49e0'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
@@ -75,7 +75,7 @@ prepare() {
 
   set +u; msg2 'get kernel version'; set +u
   make -s -j1 prepare "${_CC[@]}"
-  if ! diff "${srcdir}/config.cmp" ./.config; then
+  if ! diff -u5 "${srcdir}/config.cmp" ./.config; then
     set +u
     echo "Some changes were made. Please merge for automation."
     false
