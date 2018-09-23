@@ -2,19 +2,11 @@ diff --git a/src/evdev.c b/src/evdev.c
 index 7c6e921d..446a5cd6 100644
 --- a/src/evdev.c
 +++ b/src/evdev.c
-@@ -38,6 +38,7 @@
- #include <assert.h>
- #include <time.h>
- #include <math.h>
-+#include <limits.h>
- 
- #include "libinput.h"
- #include "evdev.h"
 @@ -1160,6 +1161,7 @@ evdev_read_wheel_click_props(struct evdev_device *device)
  						 &angles.x))
  			angles.x = angles.y;
  	}
-+	angles.y=INT_MAX;
++	angles.y=361;
  
  	return angles;
  }

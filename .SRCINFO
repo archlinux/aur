@@ -1,7 +1,7 @@
 pkgbase = libinput-multiplier
 	pkgdesc = scroll patch, discrete deltay multiplier
 	pkgver = 1.12.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://freedesktop.org/wiki/Software/libinput/
 	arch = i686
 	arch = x86_64
