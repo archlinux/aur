@@ -1,19 +1,18 @@
 # Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=strawberry-git
-pkgver=0.2.1.r39.g1a55b7f
+pkgver=0.3.1.r29.g36563cd
 pkgrel=1
 pkgdesc="Bitperfect audio player and music collection organizer, fork of Clementine. gstreamer engine only"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="http://www.strawbs.org/"
 license=(GPL3)
-depends=(chromaprint protobuf gst-plugins-base boost-libs qt5-base qt5-x11extras
+depends=(chromaprint protobuf gst-plugins-base gst-plugins-good qt5-base qt5-x11extras
          sqlite3 udisks2 pulseaudio dbus alsa-lib
          libcdio taglib)
-#depends+=(xine-lib vlc libmtp phonon-qt5 libgpod libusbmuxd libplist libimobiledevice)
+#depends+=(libimobiledevice libplist libusbmuxd libgpod libmtp phonon-qt5 vlc xine-lib) #customize deps and flags at your needs
 makedepends=(git cmake boost)
-optdepends=(gst-plugins-good
-            gst-plugins-bad
+optdepends=(gst-plugins-bad
             gst-plugins-ugly)
 provides=(strawberry)
 conflicts=(strawberry strawberry-full-git)
@@ -33,7 +32,16 @@ prepare() {
 build() {
   cd "${srcdir}/${pkgname}/strawberry-build"
   cmake .. \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DUSE_SYSTEM_TAGLIB=ON \
+    -DENABLE_IMOBILEDEVICE=OFF \
+    -DENABLE_LIBGPOD=OFF \
+    -DENABLE_LIBMTP=OFF \
+    -DENABLE_LIBLASTFM=OFF \
+    -DENABLE_PHONON=OFF \
+    -DENABLE_SPARKLE=OFF \
+    -DENABLE_VLC=OFF \
+    -DENABLE_XINE=OFF
   make
 }
 
