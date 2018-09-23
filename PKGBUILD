@@ -1,26 +1,24 @@
 # Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=qimgv
-pkgver=0.6.3
+pkgver=0.7
 pkgrel=1
 pkgdesc="Qt5 image viewer with experimental webm playback"
-arch=('x86_64' 'i686')
+arch=(x86_64 i686)
 url="https://github.com/easymodo/qimgv"
 license=(GPL3)
-depends=('qt5-base' 'qt5-imageformats' 'qt5-svg' 'mpv')
-makedepends=('cmake' 'qt5-tools')
-provides=('qimgv')
-conflicts=('qimgv')
-source=("https://github.com/easymodo/qimgv/archive/v${pkgver}.tar.gz")
-md5sums=('ab8056ccefda185f685fecb86d109e59')
+depends=(qt5-base qt5-imageformats qt5-svg mpv)
+makedepends=(cmake qt5-tools)
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/easymodo/qimgv/archive/v${pkgver}.tar.gz")
+md5sums=('f919ba5c0647b62a7e0118746ec846f0')
 
 prepare() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd "${srcdir}/${pkgname}-${pkgver}"
   install -d build
 }
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}/build
+  cd "${srcdir}/${pkgname}-${pkgver}/build"
   cmake .. \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
@@ -28,6 +26,6 @@ build() {
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}/build
+  cd "${srcdir}/${pkgname}-${pkgver}/build"
   make DESTDIR=${pkgdir} install
 }
