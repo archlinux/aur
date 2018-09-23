@@ -4,17 +4,18 @@
 # Credit: Tom Gundersen <teg@jklm.no>
 
 pkgname=lib32-systemd-git
+_pkgname=lib32-systemd
 _pkgbasename=systemd
 pkgver=239.886
-pkgrel=1
+pkgrel=2
 pkgdesc='system and service manager (32-bit, git version)'
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
 license=('GPL2' 'LGPL2.1')
 depends=('lib32-libgcrypt' 'lib32-xz')
-provides=('lib32-systemd')
-replaces=('lib32-systemd')
-conflicts=('lib32-systemd')
+provides=("$_pkgname")
+replaces=("$_pkgname")
+conflicts=("$_pkgname")
 makedepends=('gcc-multilib' 'git' 'gperf' 'intltool' 'lib32-acl' 'lib32-bzip2'
              'lib32-curl' 'lib32-dbus' 'lib32-gcc-libs' 'lib32-glib2'
              'lib32-gnutls' 'lib32-libelf' 'lib32-libidn' 'lib32-pcre2'
