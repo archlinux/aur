@@ -124,9 +124,9 @@ package_systemd-git() {
   depends=('acl' 'bash' 'cryptsetup' 'dbus' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
            'libgcrypt' 'libsystemd' 'libidn2' 'lz4' 'pam' 'libelf' 'libseccomp'
            'util-linux' 'xz' 'pcre2' 'audit')
-  provides=( "systemd=$pkgver" 'nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver")
-  replaces=('systemd' 'nss-myhostname' 'systemd-tools' 'udev')
-  conflicts=('systemd' 'nss-myhostname' 'systemd-tools' 'udev')
+  provides=( "${_pkgbase}=$pkgver" 'nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver")
+  replaces=("${_pkgbase}" 'nss-myhostname' 'systemd-tools' 'udev')
+  conflicts=("${_pkgbase}" 'nss-myhostname' 'systemd-tools' 'udev')
   optdepends=('libmicrohttpd: remote journald capabilities'
               'quota-tools: kernel-level quota management'
               'systemd-sysvcompat-git: symlink package to provide sysvinit binaries'
@@ -218,7 +218,7 @@ package_libsystemd-git() {
 package_systemd-resolvconf-git() {
   pkgdesc='systemd resolvconf replacement (git version)'
   license=('GPL2')
-  depends=('systemd')
+  depends=("${pkgbase}")
   provides=('openresolv' 'resolvconf' 'systemd-resolvconf')
   conflicts=('openresolv' 'systemd-resolvconf')
 
@@ -236,7 +236,7 @@ package_systemd-sysvcompat-git() {
   groups=('base')
   provides=('systemd-sysvcompat')
   conflicts=('sysvinit' 'systemd-sysvcompat')
-  depends=('systemd-git')
+  depends=("${pkgbase}")
 
   install -D -m0644 -t "$pkgdir"/usr/share/man/man8 \
     build/man/{telinit,halt,reboot,poweroff,runlevel,shutdown}.8
