@@ -10,8 +10,7 @@ license=('GPL3')
 depends=('bash')
 makedepends=(
     'git'
-    'rust-nightly'
-    'cargo-nightly'
+    'rustup'
 )
 provides=("$pkgname")
 conflicts=("$pkgname")
@@ -36,6 +35,7 @@ prepare() {
 }
 
 build() {
+    rustup default nightly
     cd "$srcdir/$pkgname/voxygen"
     cargo build --release
     cd "$srcdir/$pkgname/server-cli"
