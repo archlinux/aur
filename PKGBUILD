@@ -6,15 +6,15 @@
 
 pkgname=gimagereader-beta
 pkgver=3.2.99
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical frontend to tesseract-ocr, beta version"
 arch=('i686' 'x86_64')
 url="https://github.com/manisandro/gImageReader/"
 license=('GPL3')
-depends=('gtksourceviewmm' 'libxml++2.6' 'sane' 'podofo' 'tesseract' 'gtkspellmm' 'poppler-glib')
-makedepends=('desktop-file-utils' 'intltool' 'cmake')
-provides=('gimagereader')
-conflicts=('gimagereader')
+depends=(gtksourceviewmm libxml++2.6 sane podofo tesseract gtkspellmm poppler-glib djvulibre libzip libjpeg libxml++ cairomm json-glib libxml2 python-gobject)
+makedepends=(desktop-file-utils intltool cmake)
+provides=(gimagereader)
+conflicts=(gimagereader)
 source=("https://github.com/manisandro/gImageReader/releases/download/v${pkgver}/${pkgname%-*}-${pkgver}.tar.xz")
 sha256sums=('e6a45d1a7a3b83ed7fa8181b886dd28e1bb8c5935cc0ac62f1c4f12cb51b4fc2')
 
