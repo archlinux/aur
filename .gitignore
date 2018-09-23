@@ -1,0 +1,4 @@
+proton-git
+src
+pkg
+*.pkg.*
