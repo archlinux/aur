@@ -1,4 +1,5 @@
-# Maintainer: Doug Newgard <scimmia at archlinux dot info>
+# Maintainer: Stephan Springer <buzo+arch@Lini.de>
+# Contributor: Doug Newgard <scimmia at archlinux dot info>
 # Contributor: SaultDon <sault.don gmail>
 # Contributor: Lantald < lantald at gmx.com >
 # Contributor: Thomas Dziedzic < gostrc at gmail >
@@ -10,9 +11,9 @@
 # Uncomment them in the build() portion if you'd like them enabled.
 # You will also need to install osgearth-qt4 or fcgi, respectively, before building.
 
-pkgname=qgis-ltr
-_pkgname=${pkgname//-ltr}
-pkgver=2.18.23
+_pkgname=qgis
+pkgname="$_pkgname"-ltr
+pkgver=2.18.24
 pkgrel=1
 pkgdesc='Geographic Information System (GIS) that supports vector, raster & database formats; Long Term Release'
 url='https://qgis.org/'
@@ -35,7 +36,8 @@ optdepends=('gpsbabel: GPS Tool plugin'
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("https://qgis.org/downloads/$_pkgname-$pkgver.tar.bz2")
-md5sums=('4005a49989910cb66c28a8786e7ead30')
+# curl -s https://qgis.org/downloads/qgis-latest-ltr.tar.bz2.md5
+md5sums=('7fd6a8e0fcfcb0fc147529e74ef69721')
 
 prepare() {
   cd $_pkgname-$pkgver
