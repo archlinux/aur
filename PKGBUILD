@@ -2,7 +2,7 @@
 # Contributor: dorkster <jajdorkster@gmail.com>
 
 pkgname=flare-engine
-pkgver=1.06
+pkgver=1.08
 pkgrel=1
 pkgdesc="Free/Libre Action Roleplaying Engine - Git version"
 url="http://www.flarerpg.org/"
@@ -11,7 +11,7 @@ arch=(i686 x86_64)
 makedepends=(cmake)
 depends=(sdl2_image sdl2_mixer sdl2_ttf hicolor-icon-theme python)
 source=("https://sourceforge.net/projects/flare-game/files/Linux/${pkgname}-v${pkgver}.tar.gz")
-sha1sums=('249bdaf6141e8814c3cb06810a6a35bd1e25d4f6')
+sha1sums=('e24bd9ab804f99fe6dbde3fd86334261ac665e03')
 
 build() {
 	cd "$srcdir/$pkgname-v$pkgver"
