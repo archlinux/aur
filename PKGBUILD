@@ -1,27 +1,25 @@
 # Maintainer: Oliver Gatti
 # Contributor: Andrew Titmuss <andrew@coffeetocode.me>
 pkgname=scangearmp2
-pkgver=3.50
+pkgver=3.70
 pkgrel=1
 pkgdesc="Canon ScanGear MP v2 scanner driver."
 arch=('i686' 'x86_64')
 url="https://www.canon.co.uk"
 license=('GPL' 'custom:canon')
 depends=('gtk2' 'libusb')
+
 provides=('scangearmp2')
-source=("http://gdlp01.c-wss.com/gds/3/0100009113/01/$pkgname-source-$pkgver-$pkgrel.tar.gz" \
-	initializebuf.patch \
+
+source=("http://gdlp01.c-wss.com/gds/3/0100009933/01/scangearmp2-source-3.70-1.tar.gz" \
 	scangearmp2.desktop)
-sha256sums=('59ce562aee8f079d7d95091a8d51c383f5a7aa88787c5ca8f59adc5640dee278'
-            '6a26310478af47d6753aa251baa40e5469af42504b050818e1c6e1b9febb2e08'
+sha256sums=('6d5c5b72d671bf8014260b060298e66e4b1fd1e1be475b5a7dbf4f9f9fc3edbc'
             'dd34032c73ab67f738d775727c55e99a6a2fe2383bce767c8b0f44637664c451')
 
 [[ "$CARCH" == "x86_64" ]] && _arch="64" || _arch="32"
 
 prepare() {
 	cd "$pkgname-source-$pkgver-$pkgrel"
-
-	patch -Np1 <"${srcdir}/initializebuf.patch"
 }
 
 build() {
