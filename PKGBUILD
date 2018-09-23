@@ -3,7 +3,7 @@
 # Derived from official Chromium and Inox PKGBUILDS and ungoogled-chromium buildkit
 
 pkgname=ungoogled-chromium
-pkgver=67.0.3396.87
+pkgver=69.0.3497.100
 pkgrel=1
 _launcher_ver=6
 pkgdesc="Modifications to Google Chromium for removing Google integration and enhancing privacy, control, and transparency"
@@ -14,7 +14,7 @@ depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-font' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib'
          'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python' 'python2' 'gperf' 'yasm' 'mesa' 'ninja' 'git'
-             'clang' 'lld' 'llvm' 'libva' 'quilt')
+             'clang' 'lld' 'gn' 'llvm' 'libva' 'quilt')
 optdepends=('pepper-flash: support for Flash content'
             'kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
@@ -26,12 +26,10 @@ provides=('chromium')
 conflicts=('chromium')
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
-        chromium-$pkgver.txt::https://chromium.googlesource.com/chromium/src/+/$pkgver?format=TEXT
-        'https://github.com/Eloston/ungoogled-chromium/archive/67.0.3396.87-1.tar.gz')
-sha256sums=('5d27a72f0cb8247343034f63fdd9747ff388c05b9fceb541668dd04fb372db1d'
+        'https://github.com/Eloston/ungoogled-chromium/archive/69.0.3497.100-1.tar.gz')
+sha256sums=('e3391560e73e25fb4afc3f2dd5616607e2dbfc58aa88251a2c5d6b7096fe9e35'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
-            'f8aafb24bc8ef679e16ad4ad0ff4022e4fceb102d38788953ab95f7a3858febb'
-            '3c589087e163aa67a899b7f21b9a658ffed5e5944127b97028f183d677a81233')
+            '9276c225adb8334d858316f0a3668c84e628772b545ac607424b4b62023af2dc')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -48,7 +46,7 @@ declare -gA _system_libs=(
   #[libpng]=libpng            # https://crbug.com/752403#c10
   [libvpx]=libvpx
   [libwebp]=libwebp
-  #[libxml]=libxml2           # https://crbug.com/736026
+  [libxml]=libxml2
   [libxslt]=libxslt
   [opus]=opus
   [re2]=re2
@@ -63,22 +61,17 @@ _unwanted_bundled_libs=(
 depends+=(${_system_libs[@]})
 
 prepare() {
-  local _tree="$srcdir/chromium-$pkgver"
-  local _user_bundle="$srcdir/chromium-$pkgver/ungoogled"
-
-  cd "$srcdir/$pkgname-$pkgver-$pkgrel"
-
-  msg2 'Processing sources'
-  python buildkit-launcher.py genbun -u "$_user_bundle" archlinux
-  python buildkit-launcher.py prubin -u "$_user_bundle" -t "$_tree"
-  python buildkit-launcher.py subdom -u "$_user_bundle" -t "$_tree"
-  ln -s ../patch_order.list "$_user_bundle/patches/series"
+  local _buildkit_cli="$srcdir/$pkgname-$pkgver-$pkgrel/run_buildkit_cli.py"
+  local _config_bundle="$srcdir/$pkgname-$pkgver-$pkgrel/config_bundles/archlinux"
 
   cd "$srcdir/chromium-$pkgver"
 
-  msg2 'Applying build patches'
-  # Apply patches
-  env QUILT_PATCHES="$_user_bundle/patches" quilt push -a
+  msg2 'Pruning binaries'
+  python "$_buildkit_cli" prune -b "$_config_bundle" ./
+  msg2 'Applying patches'
+  python "$_buildkit_cli" patches apply -b "$_config_bundle" ./
+  msg2 'Applying domain substitution'
+  python "$_buildkit_cli" domains apply -b "$_config_bundle" -c domainsubcache.tar.gz ./
 
   # Force script incompatible with Python 3 to use /usr/bin/python2
   sed -i '1s|python$|&2|' third_party/dom_distiller_js/protoc_plugins/*.py
@@ -113,89 +106,26 @@ build() {
     export CCACHE_SLOPPINESS=time_macros
   fi
 
-  mkdir -p out/Default
-
   export CC=clang
   export CXX=clang++
   export AR=llvm-ar
   export NM=llvm-nm
 
-  local _flags=(
-    'blink_symbol_level=0'
-    'clang_use_chrome_plugins=false'
-    'custom_toolchain="//build/toolchain/linux/unbundle:default"'
-    'enable_ac3_eac3_audio_demuxing=true'
-    'enable_google_now=false'
-    'enable_hangout_services_extension=false'
-    'enable_hevc_demuxing=true'
-    'enable_iterator_debugging=false'
-    'enable_mdns=false'
-    'enable_mse_mpeg2ts_stream_parser=true'
-    'enable_nacl=false'
-    'enable_nacl_nonsfi=false'
-    'enable_one_click_signin=false'
-    'enable_reading_list=false'
-    'enable_remoting=false'
-    'enable_reporting=false'
-    'enable_service_discovery=false'
-    'enable_swiftshader=false'
-    'enable_widevine=true'
-    'exclude_unwind_tables=true'
-    'fatal_linker_warnings=false'
-    'ffmpeg_branding="ChromeOS"'
-    'fieldtrial_testing_like_official_build=true'
-    'gold_path=""'
-    'goma_dir=""'
-    'google_api_key=""'
-    'google_default_client_id=""'
-    'google_default_client_secret=""'
-    'host_toolchain="//build/toolchain/linux/unbundle:default"'
-    'is_clang=true'
-    'is_debug=false'
-    'is_official_build=true'
-    'link_pulseaudio=true'
-    'linux_use_bundled_binutils=false'
-    'optimize_for_size=false'
-    'optimize_webui=false'
-    'proprietary_codecs=true'
-    'safe_browsing_mode=0'
-    'symbol_level=0'
-    'treat_warnings_as_errors=false'
-    'use_allocator="none"'
-    'use_cups=true'
-    'use_custom_libcxx=false'
-    'use_gio=true'
-    'use_gnome_keyring=false'
-    'use_gold=true'
-    'use_gtk3=true'
-    'use_jumbo_build=true'
-    'use_kerberos=false'
-    'use_lld=true'
-    'use_official_google_api_keys=false'
-    'use_openh264=false'
-    'use_ozone=false'
-    'use_pulseaudio=true'
-    'use_sysroot=false'
-    'use_system_freetype=true'
-    'use_system_harfbuzz=true'
-    'use_system_lcms2=true'
-    'use_system_libjpeg=true'
-    'use_system_zlib=true'
-    'use_unofficial_version_number=false'
-    'use_vaapi=true'
-  )
+  mkdir -p out/Default
+
+  local _buildkit_cli="$srcdir/$pkgname-$pkgver-$pkgrel/run_buildkit_cli.py"
+  local _config_bundle="$srcdir/$pkgname-$pkgver-$pkgrel/config_bundles/archlinux"
+
+  python "$_buildkit_cli" gnargs print -b "$_config_bundle" \
+    > "$srcdir/chromium-$pkgver/out/Default/args.gn"
 
   # Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn)
   CFLAGS+='   -Wno-builtin-macro-redefined'
   CXXFLAGS+=' -Wno-builtin-macro-redefined'
   CPPFLAGS+=' -D__DATE__=  -D__TIME__=  -D__TIMESTAMP__='
 
-  msg2 'Building GN'
-  python2 tools/gn/bootstrap/bootstrap.py -o out/Default/gn -s --no-clean
   msg2 'Configuring Chromium'
-  out/Default/gn gen out/Default --args="${_flags[*]}" \
-    --script-executable=/usr/bin/python2 --fail-on-unused-args
-
+  gn gen out/Default --script-executable=/usr/bin/python2 --fail-on-unused-args
   msg2 'Building Chromium'
   ninja -C out/Default chrome chrome_sandbox chromedriver
 }

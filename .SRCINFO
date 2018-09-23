@@ -1,6 +1,6 @@
 pkgbase = ungoogled-chromium
 	pkgdesc = Modifications to Google Chromium for removing Google integration and enhancing privacy, control, and transparency
-	pkgver = 67.0.3396.87
+	pkgver = 69.0.3497.100
 	pkgrel = 1
 	url = https://github.com/Eloston/ungoogled-chromium
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = ungoogled-chromium
 	makedepends = git
 	makedepends = clang
 	makedepends = lld
+	makedepends = gn
 	makedepends = llvm
 	makedepends = libva
 	makedepends = quilt
@@ -39,6 +40,7 @@ pkgbase = ungoogled-chromium
 	depends = icu
 	depends = opus
 	depends = minizip
+	depends = libxml2
 	depends = harfbuzz
 	depends = libxslt
 	depends = freetype2
@@ -56,14 +58,12 @@ pkgbase = ungoogled-chromium
 	optdepends = libva-vdpau-driver: for hardware video acceleration with NVIDIA GPUs
 	provides = chromium
 	conflicts = chromium
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-67.0.3396.87.tar.xz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-69.0.3497.100.tar.xz
 	source = chromium-launcher-6.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v6.tar.gz
-	source = chromium-67.0.3396.87.txt::https://chromium.googlesource.com/chromium/src/+/67.0.3396.87?format=TEXT
-	source = https://github.com/Eloston/ungoogled-chromium/archive/67.0.3396.87-1.tar.gz
-	sha256sums = 5d27a72f0cb8247343034f63fdd9747ff388c05b9fceb541668dd04fb372db1d
+	source = https://github.com/Eloston/ungoogled-chromium/archive/69.0.3497.100-1.tar.gz
+	sha256sums = e3391560e73e25fb4afc3f2dd5616607e2dbfc58aa88251a2c5d6b7096fe9e35
 	sha256sums = 04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1
-	sha256sums = f8aafb24bc8ef679e16ad4ad0ff4022e4fceb102d38788953ab95f7a3858febb
-	sha256sums = 3c589087e163aa67a899b7f21b9a658ffed5e5944127b97028f183d677a81233
+	sha256sums = 9276c225adb8334d858316f0a3668c84e628772b545ac607424b4b62023af2dc
 
 pkgname = ungoogled-chromium
 
