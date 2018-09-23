@@ -1,4 +1,4 @@
-# Maintainer: Přemysl Janouch <p.janouch@gmail.com>
+# Maintainer: Přemysl Janouch <p@janouch.name>
 pkgname=sdtui-git
 _pkgname=sdtui
 pkgver=r100.ee9f055
@@ -12,7 +12,7 @@ conflicts=('sdtui')
 provides=('sdtui')
 makedepends=('cmake' 'pkg-config' 'git' 'libxslt')
 depends=('zlib' 'glib2' 'ncurses' 'pango')
-optdepends=('gtk3: clipboard watcher')
+optdepends=('libxcb: X11 selection watcher')
 source=("git+https://git.janouch.name/p/$_pkgname")
 md5sums=('SKIP')
 
