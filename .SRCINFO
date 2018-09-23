@@ -7,7 +7,7 @@ pkgbase = pllua-ng
 	license = MIT
 	depends = lua
 	depends = postgresql
-	source = https://github.com/RhodiumToad/pllua-ng/archive/REL_2_0.tar.gz
+	source = pllua-ng-2.0.tar.gz::https://github.com/RhodiumToad/pllua-ng/archive/REL_2_0.tar.gz
 	md5sums = f4dc3a643513c59a9830ab1ff2e1f07c
 
 pkgname = pllua-ng
