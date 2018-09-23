@@ -1,0 +1,20 @@
+pkgbase = python-boto3-legacy
+	pkgdesc = The AWS SDK for Python (python-moto compatible version)
+	pkgver = 1.7.84
+	pkgrel = 1
+	url = https://github.com/boto/boto3
+	arch = any
+	license = Apache
+	checkdepends = python-nose
+	checkdepends = python-mock
+	makedepends = python-setuptools
+	depends = python-botocore-legacy
+	depends = python-jmespath
+	depends = python-s3transfer
+	provides = python-boto3=1.7.84
+	conflicts = python-boto3
+	source = python-boto3-legacy-1.7.84.tar.gz::https://github.com/boto/boto3/archive/1.7.84.tar.gz
+	sha512sums = 556dc7321477bb60a3e67e2727b8c6dd55de02fed94a0d627a4e0461cf5e5ce4de6ff4aceca742fd139f99f3f118a7f5b6b5c0c146a611e6a9310871cb67d2bc
+
+pkgname = python-boto3-legacy
+
