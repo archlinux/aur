@@ -1,0 +1,18 @@
+pkgbase = dell-bios-fan-control-git
+	pkgdesc = A user space utility to set control of fans by bios on some Dell XPS Laptops.
+	pkgver = r3.a2c81a2
+	pkgrel = 1
+	url = https://github.com/TomFreudenberg/dell-bios-fan-control
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = glibc
+	optdepends = i8kutils: to control Dell laptop system temperature
+	source = git+https://github.com/TomFreudenberg/dell-bios-fan-control.git
+	source = dell-bios-fan-control.service
+	sha256sums = SKIP
+	sha256sums = c090e883d8aa4942cb6f4d9c2aeaa353f7c49ec83a0fa0fc404bceafb42e4ab0
+
+pkgname = dell-bios-fan-control-git
+
