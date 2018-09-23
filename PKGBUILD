@@ -1,7 +1,7 @@
 # Maintainer: gwhite <gwhite@kupulau.com>
 
 pkgbase=postgresql-src-beta
-pkgname=('postgresql-src-libs' 'postgresql-src-docs' 'postgresql-src')
+pkgname=('postgresql-src-beta-libs' 'postgresql-src-beta-docs' 'postgresql-src-beta')
 pkgver=11beta4
 _majorver=11.0
 pkgrel=6
@@ -47,7 +47,7 @@ build() {
   make world -j8
 }
 
-package_postgresql-src-libs() {
+package_postgresql-src-beta-libs() {
   pkgdesc="Libraries for use with PostgreSQL"
   depends=('krb5' 'openssl>=1.0.0' 'readline>=6.0')
   provides=('postgresql-client' 'postgresql-libs')
@@ -87,7 +87,7 @@ package_postgresql-src-libs() {
   install -m644 libpq/pqcomm.h "${pkgdir}/usr/include/postgresql/internal/libpq/"
 }
 
-package_postgresql-src-docs() {
+package_postgresql-src-beta-docs() {
   pkgdesc="HTML documentation for PostgreSQL"
   options=('docs')
   provides=('postgresql-docs')
@@ -106,10 +106,10 @@ package_postgresql-src-docs() {
 #  rmdir "${pkgdir}"/usr/share/man
 }
 
-package_postgresql-src() {
+package_postgresql-src-beta() {
   pkgdesc="A sophisticated object-relational DBMS (from source, LTO enabled)"
   backup=('etc/pam.d/postgresql' 'etc/logrotate.d/postgresql')
-  depends=("postgresql-src-libs>=${pkgver}" 'krb5' 'readline>=6.0' 'openssl>=1.0.0' 'pam' 'llvm' 'clang')
+  depends=("postgresql-src-beta-libs>=${pkgver}" 'krb5' 'readline>=6.0' 'openssl>=1.0.0' 'pam' 'llvm' 'clang')
   optdepends=('python: for PL/Python support'
               'perl: for PL/Perl support'
               'tcl: for PL/Tcl support'
