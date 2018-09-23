@@ -1,10 +1,10 @@
 pkgbase = lua-lpeg-patterns
 	pkgver = 0.5
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/daurnimator/lpeg_patterns
 	arch = any
 	license = MIT
-	source = https://github.com/daurnimator/lpeg_patterns/archive/v0.5.tar.gz
+	source = lua-lpeg-patterns-0.5.tar.gz::https://github.com/daurnimator/lpeg_patterns/archive/v0.5.tar.gz
 	md5sums = c46992342f42ea5dadf26ad28899dfa3
 
 pkgname = lua-lpeg-patterns
