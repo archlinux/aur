@@ -1,7 +1,7 @@
 # Maintainer: Javier Tiá <javier dot tia at gmail dot com>
 
 pkgname=libdill
-_ver=2.10
+_ver=2.11
 _pkgver=${_ver}
 pkgver=${_ver}
 pkgrel=1
@@ -13,7 +13,7 @@ options=('!buildflags')
 makedepends=('gcc')
 license=('MIT')
 source=("https://github.com/sustrik/${pkgname}/archive/${_pkgver}.tar.gz")
-sha256sums=('a332e412b2b2b0b5e656439e299727e91da1753b9e9a08be2176338e624251d9')
+sha256sums=('72529ebb9dd69883d627614e207e2a34971d1162ff86fc8fb03ac8b5208cb4a1')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${_pkgver}"
@@ -37,4 +37,4 @@ package() {
   install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-# vim:set ft=sh ts=2 sw=2 et:
+# vim:set ts=2 sw=2 et:
