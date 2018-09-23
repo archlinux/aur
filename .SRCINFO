@@ -1,15 +1,16 @@
 pkgbase = net-snmp-lmsensors
 	pkgdesc = A suite of applications used to implement SNMP v1, SNMP v2c and SNMP v3 using both IPv4 and IPv6, with lm-sensors support
 	pkgver = 5.7.3
-	pkgrel = 6
+	pkgrel = 7
 	url = http://www.net-snmp.org/
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = python2-setuptools
 	makedepends = lm_sensors
-	depends = openssl
 	depends = libnl
+	depends = libnsl
+	depends = openssl
 	depends = pciutils
 	optdepends = perl-term-readkey: for snmpcheck application
 	optdepends = perl-tk: for snmpcheck and tkmib applications
@@ -34,9 +35,4 @@ pkgbase = net-snmp-lmsensors
 	sha1sums = b329ff700a3e20cdfcab4643a573ef976f9182c0
 
 pkgname = net-snmp-lmsensors
-	depends = openssl
-	depends = libnl
-	depends = pciutils
-	depends = perl>=
-	depends = perl<
 

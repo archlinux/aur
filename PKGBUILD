@@ -1,16 +1,15 @@
-# $Id$
 # Maintainer: Anthony Ruhier <anthony.ruhier@gmail.com>
 # net-snmp with lmsensors compiled
 
 _pkgname=net-snmp
 pkgname=net-snmp-lmsensors
 pkgver=5.7.3
-pkgrel=6
+pkgrel=7
 pkgdesc="A suite of applications used to implement SNMP v1, SNMP v2c and SNMP v3 using both IPv4 and IPv6, with lm-sensors support"
 arch=('i686' 'x86_64')
 url="http://www.net-snmp.org/"
 license=('BSD')
-depends=('openssl' 'libnl' 'pciutils')
+depends=('libnl' 'libnsl' 'openssl' 'pciutils')
 makedepends=('python2-setuptools' 'lm_sensors')
 optdepends=('perl-term-readkey: for snmpcheck application'
             'perl-tk: for snmpcheck and tkmib applications'
@@ -61,12 +60,4 @@ package() {
   install -D -m644 "${srcdir}/snmpd.service" "${pkgdir}/usr/lib/systemd/system/snmpd.service"
   install -D -m644 "${srcdir}/snmptrapd.service" "${pkgdir}/usr/lib/systemd/system/snmptrapd.service"
   install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-
-# template start; name=perl-binary-module-dependency; version=1;
-if [[ $(find "$pkgdir/usr/lib/perl5/" -name "*.so") ]]; then
-	_perlver_min=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]);')
-	_perlver_max=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]+1);')
-	depends+=("perl>=$_perlver_min" "perl<$_perlver_max")
-fi
-# template end;
 }
