@@ -2,7 +2,7 @@
 
 _module='tempest'
 pkgname='python-tempest'
-pkgver='18.0.0'
+pkgver='19.0.0'
 pkgrel='1'
 pkgdesc='OpenStack Integration Testing'
 arch=('any')

@@ -1,13 +1,13 @@
 pkgbase = python-tempest
 	pkgdesc = OpenStack Integration Testing
-	pkgver = 18.0.0
+	pkgver = 19.0.0
 	pkgrel = 1
 	url = http://docs.openstack.org/developer/tempest/
 	arch = any
 	license = Apache
 	makedepends = git
 	makedepends = python-setuptools
-	source = git+https://git.openstack.org/openstack/tempest#tag=18.0.0
+	source = git+https://git.openstack.org/openstack/tempest#tag=19.0.0
 	sha256sums = SKIP
 
 pkgname = python-tempest
