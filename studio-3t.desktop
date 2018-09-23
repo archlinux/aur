@@ -1,9 +1,0 @@
-[Desktop Entry]
-Exec=/usr/bin/studio-3t
-Type=Application
-Terminal=false
-Icon=studio-3t
-Categories=Development;
-
-Name=Studio3T
-GenericName=MongoDB Administration Tool
