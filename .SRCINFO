@@ -1,6 +1,6 @@
 pkgbase = nncli-git
 	pkgdesc = NextCloud Notes Command Line Interface
-	pkgver = v0.3.0.r19.g1d2714d
+	pkgver = 0.3.0.r19.g1d2714d
 	pkgrel = 1
 	url = https://github.com/djmoch/nncli
 	arch = any

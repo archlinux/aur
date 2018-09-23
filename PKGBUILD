@@ -1,7 +1,7 @@
 # Maintainer: Daniel Moch <daniel@danielmoch.com>
 _name=nncli
 pkgname=nncli-git
-pkgver=v0.3.0.r19.g1d2714d
+pkgver=0.3.0.r19.g1d2714d
 pkgrel=1
 pkgdesc="NextCloud Notes Command Line Interface"
 arch=('any')
@@ -21,7 +21,7 @@ sha256sums=('SKIP')
 pkgver()
 {
   cd "${srcdir}/${_name}"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 build()
