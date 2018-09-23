@@ -1,8 +1,8 @@
 pkgname=shotwell-git
 _pkgname=shotwell
-pkgver=0.31.4086
+pkgver=0.31.4088
 _pkgver=0.31
-pkgrel=2
+pkgrel=3
 pkgdesc="A digital photo organizer designed for the GNOME desktop environment"
 arch=('x86_64')
 url="http://yorba.org/shotwell/"
@@ -34,14 +34,18 @@ build() {
 package() {
     cd "$_pkgname/build"
     DESTDIR="$pkgdir" ninja install
+    
     install -d -m755 $pkgdir/usr/bin
-    ln -s $pkgdir/opt/$pkgname/bin/shotwell $pkgdir/usr/bin/shotwell-git
+    ln -s /opt/$pkgname/bin/shotwell $pkgdir/usr/bin/shotwell-git
+    
     install -d -m755 $pkgdir/etc/ld.so.conf.d/
     echo /opt/shotwell-git/lib > $pkgdir/etc/ld.so.conf.d/shotwell-git.conf
+    
     install -d -m755 $pkgdir/usr/share/applications
     sed -e 's/shotwell/shotwell\-git/g' \
   		-i $pkgdir/opt/$pkgname/share/applications/org.gnome.Shotwell.desktop
     cp $pkgdir/opt/$pkgname/share/applications/org.gnome.Shotwell.desktop $pkgdir/usr/share/applications/org.gnome.Shotwell-git.desktop
+    
     for dir in `find /usr/share/icons/hicolor/ -mindepth 1 -maxdepth 1 -type d | sed 's|^/[^/]*||'`; do
     install -d -m755 $pkgdir/usr/$dir/apps
   	if [ -e $pkgdir/opt/$pkgname/$dir/apps/org.gnome.Shotwell.png ]
