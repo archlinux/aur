@@ -1,6 +1,6 @@
 pkgbase = metasploit-git
 	pkgdesc = Advanced open-source platform for developing, testing, and using exploit code
-	pkgver = 4.17.0.47129.88dc4714f0
+	pkgver = 4.17.14.48540.5ddbf6fd11
 	pkgrel = 1
 	epoch = 1
 	url = https://www.metasploit.com/

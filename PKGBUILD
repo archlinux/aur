@@ -7,7 +7,7 @@
 # Contributor: al.janitor <al.janitor [at] sdf [dot] org>
 
 pkgname=metasploit-git
-pkgver=4.17.0.47129.88dc4714f0
+pkgver=4.17.14.48540.5ddbf6fd11
 pkgrel=1
 epoch=1
 pkgdesc='Advanced open-source platform for developing, testing, and using exploit code'
@@ -41,6 +41,7 @@ build() {
   CFLAGS+=" -I/usr/include/libxml2"
   bundle install -j"$(nproc)" --no-cache --deployment
   find vendor/bundle/ruby -exec chmod o+r '{}' \;
+  find vendor/bundle/ruby \( -name gem_make.out -or -name mkmf.log \) -delete
 }
 
 package() {
