@@ -3,8 +3,8 @@
 # Contrubutor: Thomas Baechler <thomas@archlinux.org>
 
 pkgname=nvidia-390xx-ck
-pkgver=390.77
-pkgrel=10
+pkgver=390.87
+pkgrel=1
 _extramodules=extramodules-ck
 _pkgdesc="NVIDIA drivers for linux-ck, 390xx legacy branch."
 pkgdesc="$_pkgdesc"
@@ -20,7 +20,7 @@ options=('!strip')
 source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
 kernel-4.16.patch
 unfuck.patch)
-sha256sums=('6eb950dc4b59697d12d79a975b2c21a5e3cde49a12b61432d7e836110a06a6ea'
+sha256sums=('c7c07151e17f610af11f7870560d96c3a3ee9bb91ba1bb82fcc7b5d473d40b66'
             '622ac792ec200b2239cb663c0010392118b78c9904973d82cd261165c16d6385'
             'fa726a12083bd7415d4f827652caf66030224c8e69925aa9f650766e58790080')
 
