@@ -1,15 +1,15 @@
 pkgbase = imgurbash2
 	pkgdesc = A small shell script that uploads/deletes images to/from imgur.com
-	pkgver = 2.1
-	pkgrel = 3
+	pkgver = 3.0
+	pkgrel = 4
 	url = https://github.com/ram-on/imgurbash2
 	arch = any
 	license = MIT
 	depends = curl
 	optdepends = xsel: automatically putting the URL on the X selection for easy pasting
 	optdepends = xclip: an alternative to xsel
-	source = https://github.com/ram-on/imgurbash2/archive/2.1.tar.gz
-	sha256sums = 6f21ab00d5491cae62fdd3ac0068d344a03d99bd35f688487ae1ec17ff62056f
+	source = https://github.com/ram-on/imgurbash2/archive/3.0.tar.gz
+	sha256sums = 363fbf6e5179dded7504fdc3cc9311e4c9e3e9a91c979fbddba3e4dabd33f6c9
 
 pkgname = imgurbash2
 
