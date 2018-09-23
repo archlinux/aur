@@ -1,8 +1,8 @@
 # Maintainer: Tinu Weber <http://ayekat.ch>
 
 pkgname=remakepkg
-pkgver=0.7.1
-pkgrel=2
+pkgver=0.7.2
+pkgrel=1
 arch=(any)
 
 pkgdesc='Apply changes to pacman packages'
