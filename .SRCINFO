@@ -1,0 +1,21 @@
+pkgbase = python-botocore-legacy
+	pkgdesc = A low-level interface to a growing number of Amazon Web Services (python-moto compatible version)
+	pkgver = 1.10.84
+	pkgrel = 3
+	url = https://github.com/boto/botocore
+	arch = any
+	license = Apache
+	checkdepends = python-nose
+	checkdepends = python-mock
+	checkdepends = python-jsonschema
+	makedepends = python-setuptools
+	depends = python-dateutil
+	depends = python-jmespath
+	depends = python-docutils
+	provides = python-botocore=1.10.84
+	conflicts = python-botocore
+	source = python-botocore-legacy-1.10.84.tar.gz::https://github.com/boto/botocore/archive/1.10.84.tar.gz
+	sha256sums = 842dbbe0f75b13285c97b4204cc82664ce51fc4c7a09a84f78e58a77deb8b494
+
+pkgname = python-botocore-legacy
+
