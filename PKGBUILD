@@ -101,5 +101,5 @@ package() {
   install -Dm 644 "$srcdir/PERMISSION" \
     "$pkgdir/usr/share/licenses/$pkgname/PERMISSION"
     
-  sed -i "s/Name=Skype/Name=Skype Old/g" "$pkgdir/usr/share/applications/skype.desktop"
+  sed -i "s/Name=Skype/Name=Skype Classic/g" "$pkgdir/usr/share/applications/skype.desktop"
 }
