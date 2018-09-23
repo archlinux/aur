@@ -4,7 +4,7 @@ _pkgname=GPXLab
 _branch=master
 _use_gh_api=true
 pkgname=${_pkgname,,}-git
-pkgver=0.4.0.r20.f7d79ed0
+pkgver=0.4.0.r29.7a480e0d
 pkgrel=1
 pkgdesc='Program to show and manipulate GPS tracks'
 arch=('i686' 'x86_64')
@@ -57,6 +57,7 @@ prepare() {
 build() {
   cd ${_pkgname}-${_branch}
 
+  lrelease GPXLab/GPXLab.pro
   qmake GPXLab.pro
   make
 }
@@ -68,8 +69,10 @@ package() {
   install -d 755 ${pkgdir}/usr/share/applications
   install -d 755 ${pkgdir}/usr/share/pixmaps
   install -d 755 ${pkgdir}/usr/share/mime/packages
+  install -d 755 ${pkgdir}/usr/share/${pkgname//-git}/translations
 
   install -m 755 bin/GPXLab ${pkgdir}/usr/bin/${pkgname//-git}
+  install -m 644 GPXLab/locale/*.qm ${pkgdir}/usr/share/${pkgname//-git}/translations
   install -m 644 doc/gpxlab.png ${pkgdir}/usr/share/pixmaps/${pkgname//-git}.png
   install -m 644 pkg/gpxlab.desktop ${pkgdir}/usr/share/applications/${pkgname//-git}.desktop
   install -m 644 pkg/gpxlab.xml ${pkgdir}/usr/share/mime/packages/${pkgname//-git}.xml
