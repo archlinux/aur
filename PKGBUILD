@@ -6,7 +6,7 @@
 
 _pkgname=teamspeak3
 pkgname=$_pkgname-wbundled
-pkgver=3.1.9
+pkgver=3.2.2
 pkgrel=1
 pkgdesc="TeamSpeak is software for quality voice communication via the Internet"
 url="http://www.teamspeak.com"
@@ -27,7 +27,7 @@ source=('teamspeak3.desktop'
 sha512sums=('4cac0b7446dc3e728b232fdd6c6d75be1d2a5530635eab5918a4e7dd6a4a3fc21d6a75055da919b56e5cf849f4c5ba26ece56759a45bc4850eba3eb73853759d'
             'af18ed36a3c8de90b60a7205ebf91a35d4b517f22f97d541c82debdb12697882469d9771fdf3fb8b081aeb74a01237f3afd4732daccf4b374dc6d39e7df5d444'
             'd6d03f1bda86c90390ce0032e4d30e889977f80ff76ba1e5c443109e93cbedbee92c6fc2759f58d23659c15dba4f2ac718861571239ba117dcfe11f136f556dc'
-            '079afb6b624c56916bb87941b44d62a786ba922d9e69df0c19a4f8930f9d67d7ebc752be2d2f83f971b36fd12e2080cdfc3042b654c2beaba93cf4d8fcafa420')
+            '3edc003d721494e914fa74ae3d2666c795c5beb7feae7cc3b379d06447acb3e0941d9c5e2495e8bec8c1c1f5e25b5b31767ea214d198b2e320fc6a7925fdc541')
 
 prepare() {
   mkdir archive && cd archive
