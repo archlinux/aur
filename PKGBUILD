@@ -2,8 +2,11 @@
 # Maintainer: Zeph <zeph33@gmail.com>
 
 pkgname=pamac-tray-appindicator
-_pkgver=7.0.1
+_pkgver=7.1.0
 pkgver=$_pkgver
+#pkgver=7.1.0rc3
+pkgrel=1
+#_commit=250cad77f395b9521c0560edd39328ee99095456
 pkgrel=1
 pkgdesc="Tray icon using appindicator which feets better in KDE"
 depends=('pamac' 'libappindicator-gtk3')
@@ -14,19 +17,22 @@ makedepends=('gettext' 'itstool' 'vala>=0.36.6' 'libappindicator-gtk3' 'meson' '
 options=(!emptydirs)
 
 source=("pamac-$pkgver-$pkgrel.tar.gz::$url/-/archive/v$_pkgver/pamac-v$_pkgver.tar.gz")
-sha256sums=('148a5aa309363841773a752e4584e9588967f344a7dbd30e1b06116cc2aa08fa')
+ #       "pamac-$pkgver-$pkgrel.tar.gz::$url/-/archive/$_commit/pamac-$_commit.tar.gz")
+
+sha256sums=('3e6b922d7cefd2e08719d0d79c6a526bc1854e9b69d4c88cbfa50cafa154171e')
 
 prepare() {
-  cd "$srcdir/pamac-v$pkgver"
+#  mv "$srcdir/pamac-$_commit" "$srcdir/pamac-v$_pkgver"
+  cd "$srcdir/pamac-v$_pkgver"
   # patches here
   #patch -p1 -i "$srcdir/git-$pkgver-$pkgrel.patch"
 
   # adjust version string
-  sed -i -e "s|\"$_pkgver\"|\"$pkgver-$pkgrel\"|g" src/manager_window.vala
+  sed -i -e "s|\"$_pkgver\"|\"$pkgver-$pkgrel\"|g" src/version.vala
 }
 
 build() {
-  cd "$srcdir/pamac-v$pkgver"
+  cd "$srcdir/pamac-v$_pkgver"
   mkdir -p builddir
   cd builddir
   meson --prefix=/usr --sysconfdir=/etc -Denable-appindicator=true
@@ -36,7 +42,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/pamac-v$pkgver"
+  cd "$srcdir/pamac-v$_pkgver"
   install -Dm755 "builddir/src/pamac-tray-appindicator" "$pkgdir/usr/bin/pamac-tray-appindicator"
   install -Dm644 "data/applications/pamac-tray-appindicator.desktop" "$pkgdir/etc/xdg/autostart/pamac-tray-appindicator.desktop"
 }
