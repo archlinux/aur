@@ -4,9 +4,9 @@ pkgbase = python-pyscaffold
 	pkgrel = 1
 	url = https://pyscaffold.org/
 	arch = any
-	license = BSD
+	license = MIT
+	makedepends = git
 	makedepends = python-setuptools-scm
-	makedepends = python-pbr
 	makedepends = python-wheel
 	depends = python
 	optdepends = python-django: scaffold django projects
@@ -15,6 +15,4 @@ pkgbase = python-pyscaffold
 	md5sums = SKIP
 
 pkgname = python-pyscaffold
-	depends = python-pbr
-	depends = python-wheel
 

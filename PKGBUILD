@@ -6,11 +6,12 @@ pkgrel=1
 pkgdesc="Python project template generator with batteries included"
 url="https://pyscaffold.org/"
 arch=(any)
-license=('BSD')
+license=('MIT')
 depends=('python')
 optdepends=('python-django: scaffold django projects'
             'python-cookiecutter: create custom scaffold templates')
-makedepends=('python-setuptools-scm' 'python-pbr' 'python-wheel')
+# makedepends=('python-setuptools-scm' 'python-pbr' 'python-wheel')
+makedepends=('git' 'python-setuptools-scm' 'python-wheel')
 source=("pyscaffold-${pkgver}::git+https://github.com/blue-yonder/pyscaffold.git#tag=v${pkgver}")
 md5sums=('SKIP')
 
@@ -20,9 +21,7 @@ build() {
 }
 
 package_python-pyscaffold() {
-  depends=('python-pbr' 'python-wheel')
-
   cd "${srcdir}/pyscaffold-$pkgver"
   python setup.py install --root=${pkgdir}
-  #rm -r ${pkgdir}/usr/share/pyscaffold/docs
+  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
