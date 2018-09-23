@@ -1,5 +1,5 @@
 pkgbase = linux-mainline-vfio
-	pkgver = 4.19rc3
+	pkgver = 4.19rc5
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = linux-mainline-vfio
 	makedepends = libelf
 	makedepends = git
 	options = !strip
-	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=v4.19-rc3
+	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=v4.19-rc5
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
