@@ -2,7 +2,7 @@ _pkgname=lugaru
 _gitname=lugaru
 
 pkgname=$_pkgname-git
-pkgver=1a6ef83
+pkgver=r968.efdb8d8
 pkgrel=1
 pkgdesc="A third-person action game featuring a unique close-range combat system"
 url="https://osslugaru.gitlab.io"
@@ -10,7 +10,6 @@ license=('GPL')
 arch=('i686' 'x86_64')
 depends=('sdl2' 'glu' 'libjpeg-turbo' 'libpng' 'openal' 'libvorbis' 'zlib')
 makedepends=('cmake')
-options=('!optipng')
 conflicts=('lugaru-hg' 'lugaruhd-hg' 'lugaru')
 source=("git+https://gitlab.com/osslugaru/lugaru.git"
         "${_pkgname}.desktop")
@@ -18,8 +17,8 @@ sha256sums=('SKIP'
             'c97bbd82701c07692f35fd86d0a4b4fdb2d5380a5672dde75617ae15389bfd15')
 
 pkgver() {
-    cd "$srcdir/$_gitname"
-    git describe --always --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$_pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
             
 build() {
