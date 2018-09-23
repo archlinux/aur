@@ -1,7 +1,7 @@
 pkgbase = python-xeddsa-git
 	pkgdesc = A python implementation of the XEdDSA signature scheme
 	pkgver = r37.d0f7eef
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Syndace/python-xeddsa
 	arch = any
 	license = MIT

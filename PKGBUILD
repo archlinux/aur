@@ -5,7 +5,7 @@ _pkgname2=python2-xeddsa
 pkgbase=${_pkgname}-git
 pkgname=("${_pkgname}-git" "${_pkgname2}-git" "${_pkgname}-ref10-git")
 pkgver=r37.d0f7eef
-pkgrel=2
+pkgrel=3
 pkgdesc="A python implementation of the XEdDSA signature scheme"
 url='https://github.com/Syndace/python-xeddsa'
 license=('MIT')
@@ -32,7 +32,9 @@ build() {
 package_python-xeddsa-ref10-git() {
     cd ${_pkgname}
     install -m755 -d "${pkgdir}/usr/lib"
-    install -Dm 644 ref10/bin/crypto_scalarmult.so ref10/bin/crypto_sign.so \
+    install -Dm 644 \
+      ref10/bin/dynamic/libcrypto_scalarmult.so \
+      ref10/bin/dynamic/libcrypto_sign.so \
       "${pkgdir}/usr/lib"
 }
 
