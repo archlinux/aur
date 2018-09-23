@@ -4,13 +4,13 @@ _pkgname=python-xeddsa
 _pkgname2=python2-xeddsa
 pkgbase=${_pkgname}-git
 pkgname=("${_pkgname}-git" "${_pkgname2}-git" "${_pkgname}-ref10-git")
-pkgver=r37.d0f7eef
-pkgrel=3
+pkgver=r55.6206921
+pkgrel=1
 pkgdesc="A python implementation of the XEdDSA signature scheme"
 url='https://github.com/Syndace/python-xeddsa'
 license=('MIT')
 arch=('any')
-makedepends=('python-setuptools' 'python2-setuptools' 'libsodium')
+makedepends=('python-setuptools' 'python2-setuptools' 'cmake' 'libsodium')
 source=("${_pkgname}::git+https://github.com/Syndace/python-xeddsa.git")
 sha256sums=('SKIP')
 
@@ -19,22 +19,18 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-    cd "${_pkgname}/ref10"
-    sed -i -e 's,usr/local/include,usr/include,' Makefile
-}
-
 build() {
     cd "${_pkgname}/ref10"
-    make
+    mkdir -p build && cd build
+    cmake ..
 }
 
 package_python-xeddsa-ref10-git() {
     cd ${_pkgname}
     install -m755 -d "${pkgdir}/usr/lib"
     install -Dm 644 \
-      ref10/bin/dynamic/libcrypto_scalarmult.so \
-      ref10/bin/dynamic/libcrypto_sign.so \
+      ref10/bin/libcrypto_scalarmult_dynamic.so \
+      ref10/bin/libcrypto_sign_dynamic.so \
       "${pkgdir}/usr/lib"
 }
 
