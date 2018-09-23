@@ -1,7 +1,7 @@
 pkgbase = pllua-ng
 	pkgdesc = PL/Lua is a procedural language module for the PostgreSQL database that allows server-side functions to be written in Lua
 	pkgver = 2.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://pllua.github.io/pllua-ng/
 	arch = x86_64
 	license = MIT
