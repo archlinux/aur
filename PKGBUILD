@@ -3,7 +3,7 @@
 pkgname=('lua-psl' 'lua51-psl' 'lua52-psl')
 pkgver=0.3
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://github.com/daurnimator/lua-psl'
 license=('MIT')
 makedepends=('lua' 'lua51' 'lua52')
