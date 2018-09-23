@@ -1,7 +1,7 @@
 pkgbase = plex-media-player-git
 	pkgdesc = Next generation Plex Desktop Client
-	pkgver = r1176.9fb08e6
-	pkgrel = 2
+	pkgver = r1187.f679df4
+	pkgrel = 1
 	url = https://github.com/plexinc/plex-media-player
 	arch = i686
 	arch = x86_64
@@ -13,15 +13,15 @@ pkgbase = plex-media-player-git
 	depends = sdl2
 	depends = p8-platform
 	depends = protobuf
-	depends = qt5-pmp-webengine
-	depends = qt5-pmp-x11extras
-	depends = qt5-pmp-quickcontrols
+	depends = qt5-webengine
+	depends = qt5-x11extras
+	depends = qt5-quickcontrols
 	provides = plex-media-player
 	conflicts = plex-media-player
 	source = git+https://github.com/plexinc/plex-media-player.git
 	source = plex-media-player.desktop
 	sha256sums = SKIP
-	sha256sums = 49f0e74c477faa73a6c7cbda11ba43a6708ac8a37d274482cc828252ec8aee71
+	sha256sums = b03845b761cc18a88252b72d0c83e439006224660444d9174f53cc577f9498b6
 
 pkgname = plex-media-player-git
 
