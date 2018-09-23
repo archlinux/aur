@@ -4,7 +4,7 @@ pkgbase = lua-basexx
 	url = https://github.com/aiq/basexx
 	arch = any
 	license = MIT
-	source = https://github.com/aiq/basexx/archive/v0.4.0.tar.gz
+	source = lua-basexx-0.4.0.tar.gz::https://github.com/aiq/basexx/archive/v0.4.0.tar.gz
 	md5sums = c931e3abdb788be95c319be4fa0ac79f
 
 pkgname = lua-basexx
