@@ -1,0 +1,50 @@
+From 8074631b82be5d695da493059a4f7bba28ce624b Mon Sep 17 00:00:00 2001
+From: FabioLolix <fabio.lolix@gmail.com>
+Date: Mon, 17 Sep 2018 23:31:29 +0200
+Subject: [PATCH] fix-vte-build-error
+
+---
+ src/Widgets/TerminalBox.vala | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/Widgets/TerminalBox.vala b/src/Widgets/TerminalBox.vala
+index c4812e1..8f48f4e 100755
+--- a/src/Widgets/TerminalBox.vala
++++ b/src/Widgets/TerminalBox.vala
+@@ -86,7 +86,7 @@ namespace EasySSH {
+             }
+             var cmd = builder.str;
+             #if UBUNTU_BIONIC_PATCHED_VTE
+-                term.feed_child(cmd, cmd.length);
++                term.feed_child(cmd.to_utf8());
+             #else
+                 term.feed_child(cmd.to_utf8 ());
+             #endif
+@@ -178,7 +178,7 @@ namespace EasySSH {
+         private void term_send_password() {
+             var cmd = dataHost.password + "\n";
+             #if UBUNTU_BIONIC_PATCHED_VTE
+-                term.feed_child(cmd, cmd.length);
++                term.feed_child(cmd.to_utf8());
+             #else
+                 term.feed_child(cmd.to_utf8 ());
+             #endif
+@@ -187,7 +187,7 @@ namespace EasySSH {
+         private void term_send(string cmd) {
+             var n_cmd = cmd + "\n";
+             #if UBUNTU_BIONIC_PATCHED_VTE
+-                term.feed_child(n_cmd, cmd.length);
++                term.feed_child(n_cmd.to_utf8());
+             #else
+                 term.feed_child(n_cmd.to_utf8 ());
+             #endif
+@@ -259,4 +259,4 @@ namespace EasySSH {
+ 
+ 
+     }
+-}
+\ No newline at end of file
++}
+-- 
+2.18.0
+
