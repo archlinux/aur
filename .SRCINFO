@@ -1,5 +1,5 @@
 pkgbase = ly-git
-	pkgdesc = ncurses display manager
+	pkgdesc = TUI display manager
 	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/cylgom/ly

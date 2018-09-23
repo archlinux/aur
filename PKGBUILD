@@ -2,7 +2,7 @@
 pkgname=ly-git
 pkgver=0.2
 pkgrel=1
-pkgdesc="ncurses display manager"
+pkgdesc="TUI display manager"
 arch=('i686' 'x86_64')
 url="https://github.com/cylgom/ly"
 license=('custom:WTFPL')
