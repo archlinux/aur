@@ -5,6 +5,7 @@ pkgbase = factorio-experimental
 	url = http://www.factorio.com/
 	arch = x86_64
 	license = custom: commercial
+	makedepends = jq
 	depends = libxcursor
 	depends = gcc-libs
 	depends = alsa-lib
