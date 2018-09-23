@@ -1,18 +1,16 @@
 pkgbase = adlplug-git
-	pkgdesc = FM synthesizer plugin for ADLMIDI with OPL3 chip emulation
-	pkgver = v1.0.0.beta.1.r14.03fb745
+	pkgver = v1.0.0.beta.2.r1.b5ac366
 	pkgrel = 1
 	url = https://github.com/jpcima/ADLplug
 	arch = i686
 	arch = x86_64
+	groups = pro-audio
 	license = GPL
 	makedepends = git
 	depends = jack
 	depends = alsa-lib
 	depends = freetype2
 	depends = libxext
-	provides = adlplug
-	conflicts = adlplug
 	source = git+https://github.com/jpcima/ADLplug.git
 	source = git+https://github.com/Wohlstand/libADLMIDI.git
 	source = git+https://github.com/Wohlstand/libOPNMIDI.git
@@ -27,4 +25,12 @@ pkgbase = adlplug-git
 	md5sums = SKIP
 
 pkgname = adlplug-git
+	pkgdesc = FM synthesizer for ADLMIDI with OPL3 chip emulation
+	provides = adlplug
+	conflicts = adlplug
+
+pkgname = opnplug-git
+	pkgdesc = FM synthesizer for OPNMIDI with OPN2 chip emulation
+	provides = opnplug
+	conflicts = opnplug
 
