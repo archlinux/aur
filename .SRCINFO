@@ -1,6 +1,6 @@
 pkgbase = pgrouting
 	pkgdesc = Adds routing functionality to PostGIS/PostgreSQL
-	pkgver = 2.6.0
+	pkgver = 2.6.1
 	pkgrel = 1
 	url = http://pgrouting.org/
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = pgrouting
 	depends = postgis>=2.0
 	depends = gcc-libs
 	depends = cgal
-	source = pgrouting-2.6.0.tar.gz::https://github.com/pgRouting/pgrouting/archive/v2.6.0.tar.gz
-	sha512sums = 609f77adac7c38ec184423d1736cf9b422691f1f7a95ac98b963afde6ded44d59d7842ba017e665a5ca67e8b4846fe156a43733a68f6bcdfe93c60d14ccdace4
+	source = pgrouting-2.6.1.tar.gz::https://github.com/pgRouting/pgrouting/archive/v2.6.1.tar.gz
+	sha512sums = c42553fb464955d56041a1c800de74bb7ac577da11f81d58380e4e9139acfe59ea3cf8e93a59a1e8bc399844463bb50bdc9300c195fe36e1864ea508a8ba0164
 
 pkgname = pgrouting
 
