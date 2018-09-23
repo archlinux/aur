@@ -3,7 +3,7 @@
 
 pkgname=tvheadend-git
 _gitname='tvheadend-git'
-pkgver=4.3.r1292.g9b9ee6859
+pkgver=4.3.r1361.ge1c03470d
 pkgrel=1
 pkgdesc="TV streaming server for Linux"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -34,10 +34,12 @@ backup=('etc/conf.d/tvheadend')
 source=(
     "${_gitname}::git+https://github.com/tvheadend/tvheadend.git#branch=master"
     'dvb-scan-tables::git+https://github.com/tvheadend/dtv-scan-tables.git#branch=tvheadend'
+    'ignore-missing-libavresample.patch'
 )
 md5sums=(
     'SKIP'
     'SKIP'
+    '65ff2ee6a7861f295f21d4a2a5aa5ce0'
 )
 
 pkgver() {
@@ -52,6 +54,9 @@ prepare() {
     cp -a "dvb-scan-tables" "${_dvbscan}"
     rm -rf "${_dvbscan}/.git"
     touch "${_dvbscan}/.stamp"
+
+    cd "${_gitname}"
+    patch -p1 -i ../ignore-missing-libavresample.patch
 }
 
 build() {
