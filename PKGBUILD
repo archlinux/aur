@@ -4,7 +4,7 @@
 pkgname=tvheadend-git
 _gitname='tvheadend-git'
 pkgver=4.3.r1361.ge1c03470d
-pkgrel=1
+pkgrel=2
 pkgdesc="TV streaming server for Linux"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://tvheadend.org/"
@@ -61,12 +61,6 @@ prepare() {
 
 build() {
     cd "${srcdir}/${_gitname}"
-
-    # "Fix" build with GCC 8
-    CFLAGS="${CFLAGS} \
-            -Wno-error=stringop-truncation \
-            -Wno-error=stringop-overflow \
-            -Wno-error=discarded-qualifiers"
 
     ./configure --prefix=/usr --mandir=/usr/share/man/man1 --release \
         --python=python3 \
