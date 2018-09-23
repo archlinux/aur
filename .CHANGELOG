@@ -1,6 +1,41 @@
 Version history
 ===============
 
+0.9.20
+------
+
+2018-09-23
+
+Backroute fixes in Continuum Hypothesis and Inside the Fourth Wall.
+Fewer lixes in Undercutting the Competition.
+
+Reshaded rectangular blocks in matt/marble: Shading at the left and top should
+only become lighter towards the outside. Before, the blocks looked flattened.
+Diagonal blocks in matt/marble still have this issue.
+
+Fix #349: Mirror button icon shows horizontal mirroring with two triangles,
+not vertical mirroring with an upside-down tree anymore.
+
+Partially fix #348: Custom grid button shows size of current custom grid.
+
+Center images on BitmapButtons more accurately.
+
+Removed unused UI graphics: Spawn interval graphic, hint selection graphic,
+editor hatch direction graphic that is shown with a unicode arrow instead.
+
+Fix #356: When you specify -w or --resol=XXXxYYY on the command line,
+loading/switching the user configuration will not override the command line's
+resolution in this session.
+
+Reorganized the trophy area of the singleplayer browser: Don't draw last
+game's results over the personal best of lix saved.
+
+dub package Optional: I use Optional 0.6.3 now instead of Optional 0.4.x. This
+requires a recent compiler (I know that 2.082 or newer works) when you build
+Lix yourself.
+
+
+
 0.9.19
 ------
 
