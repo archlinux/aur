@@ -1,6 +1,6 @@
 pkgbase = ly-git
 	pkgdesc = ncurses display manager
-	pkgver = 0.0.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/cylgom/ly
 	arch = i686
@@ -8,11 +8,13 @@ pkgbase = ly-git
 	license = custom:WTFPL
 	makedepends = git
 	depends = pam
-	depends = ncurses
-	depends = libx11
 	depends = xorg-xinit
 	depends = xorg-xauth
 	source = git+https://github.com/cylgom/ly.git
+	source = git+https://github.com/cylgom/termbox-next.git
+	source = git+https://github.com/benhoyt/inih.git
+	md5sums = SKIP
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = ly-git
