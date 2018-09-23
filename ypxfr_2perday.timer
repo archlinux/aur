@@ -1,0 +1,11 @@
+[Unit]
+Description=Update ypxfr maps twice a day
+Documentation=man:ypxfr
+
+[Timer]
+OnCalendar=*-*-* 05,17:00:00
+AccuracySec=1h
+Persistent=true
+
+[Install]
+WantedBy=timers.target
