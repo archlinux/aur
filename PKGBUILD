@@ -2,21 +2,24 @@
 # Contributor: Gui||aume <michaudg@gmail.com>
 
 pkgname=rocketchat-client-bin
-pkgver=2.13.0
+pkgver=2.13.3
 pkgrel=1
 pkgdesc="The Ultimate Open Source Web Chat Platform"
 arch=('x86_64')
-license=('The MIT License (MIT)')
+license=('MIT')
 url='https://rocket.chat'
 depends=('gtk3' 'nss' 'gconf' 'libxss')
 optdepends=('libnotify: For sending desktop notifications')
-source=("https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/${pkgver}/rocketchat_${pkgver}_amd64.deb")
-sha256sums=('002a6f6d45ca55e6bdcec17a8300af1cadb43f8612d749b68b7bd86cd26c3b92')
+source=("https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/${pkgver}/rocketchat_${pkgver}_amd64.deb"
+        'LICENSE')
+sha256sums=('6410468fa36e17b96d69f8e3d71286d87f608188efb25a633864d76945933564'
+            'SKIP')
 
 package() {
-    cd "$srcdir"
-    tar -xf data.tar.xz -C "$pkgdir"
-    chmod -R go-w "$pkgdir"
-    mkdir -m 755 -p "$pkgdir"/usr/bin
-    ln -s /opt/Rocket.Chat/rocketchat "$pkgdir"/usr/bin
+    cd "$pkgdir"
+    tar -xf "$srcdir"/data.tar.xz
+    chmod -R go-w .
+    mkdir -m 755 -p usr/bin
+    ln -s ../../opt/Rocket.Chat/rocketchat-desktop usr/bin
+    install -Dm644 "$srcdir"/LICENSE usr/share/licenses/"$pkgname"/LICENSE
 }
