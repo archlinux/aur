@@ -2,7 +2,7 @@
 # Maintainer: asm0dey <pavel.finkelshtein@gmail.com>
 pkgname=pict-git
 _pkgname=pict
-pkgver=47.36e5774
+pkgver=55.8d9d7d7
 pkgrel=1
 pkgdesc='Tool for pairwise automation: Pairwise Independent Combinatorial Testing'
 arch=('x86_64' 'i686')
