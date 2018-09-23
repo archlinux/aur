@@ -1,10 +1,10 @@
 pkgbase = lua-fifo
 	pkgver = 0.2
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/daurnimator/fifo.lua
 	arch = any
 	license = MIT
-	source = https://github.com/daurnimator/fifo.lua/archive/0.2.tar.gz
+	source = lua-fifo-0.2.tar.gz::https://github.com/daurnimator/fifo.lua/archive/0.2.tar.gz
 	md5sums = 8f2744f6199eaee9676430d1f0136605
 
 pkgname = lua-fifo
