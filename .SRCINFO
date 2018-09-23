@@ -1,22 +1,24 @@
 pkgbase = google-drive-ocamlfuse-git
-	pkgdesc = FUSE filesystem backed by Google Drive, written in OCaml.
-	pkgver = r430.aa926af
+	pkgdesc = FUSE-based file system backed by Google Drive, written in OCaml
+	pkgver = r540.c002e65
 	pkgrel = 1
-	url = http://gdfuse.forge.ocamlcore.org/
+	url = https://astrada.github.io/google-drive-ocamlfuse/
 	arch = x86_64
 	arch = i686
 	license = MIT
-	depends = ocaml>=3.12.0
+	depends = ocaml>=4.02.3
 	depends = ocaml-findlib>=1.2.7
 	depends = ocamlfuse>=2.7.1
-	depends = gapi-ocaml>=0.2.10
+	depends = gapi-ocaml>=0.3.6
 	depends = ocaml-sqlite3>=1.6.1
-	provides = google-drive-ocamlfuse
-	provides = google-drive-ocamlfuse-git
+	makedepends = git
+	makedepends = dune
+	makedepends = ocaml-ounit
 	conflicts = google-drive-ocamlfuse
+	provides = google-drive-ocamlfuse
 	options = staticlibs
-	source = google-drive-ocamlfuse-git::git+https://github.com/astrada/google-drive-ocamlfuse.git
-	md5sums = SKIP
+	source = git+https://github.com/astrada/google-drive-ocamlfuse.git
+	sha256sums = SKIP
 
 pkgname = google-drive-ocamlfuse-git
 

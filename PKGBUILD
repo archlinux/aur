@@ -1,43 +1,62 @@
 # Maintainer: Christopher Price <pricechrispy at gmail dot com>
 # Contributor: Moritz Lipp <mlq@pwmt.org>
+_pkgname=google-drive-ocamlfuse
 pkgname=google-drive-ocamlfuse-git
-pkgver=r430.aa926af
+pkgver=r540.c002e65
 pkgrel=1
-pkgdesc="FUSE filesystem backed by Google Drive, written in OCaml."
+pkgdesc='FUSE-based file system backed by Google Drive, written in OCaml'
 arch=('x86_64' 'i686')
-url="http://gdfuse.forge.ocamlcore.org/"
+url='https://astrada.github.io/google-drive-ocamlfuse/'
 license=('MIT')
-provides=('google-drive-ocamlfuse' 'google-drive-ocamlfuse-git')
-depends=('ocaml>=3.12.0' 'ocaml-findlib>=1.2.7' 'ocamlfuse>=2.7.1'
-'gapi-ocaml>=0.2.10' 'ocaml-sqlite3>=1.6.1')
+depends=(
+'ocaml>=4.02.3'
+'ocaml-findlib>=1.2.7'
+'ocamlfuse>=2.7.1'
+'gapi-ocaml>=0.3.6'
+'ocaml-sqlite3>=1.6.1'
+)
+makedepends=(
+'git'
+'dune'
+'ocaml-ounit'
+)
 conflicts=('google-drive-ocamlfuse')
-source=(google-drive-ocamlfuse-git::git+https://github.com/astrada/google-drive-ocamlfuse.git)
-md5sums=('SKIP')
+provides=('google-drive-ocamlfuse')
 options=('staticlibs')
+source=('git+https://github.com/astrada/google-drive-ocamlfuse.git')
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$srcdir/$_pkgname"
+
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir/$_pkgname"
 
-	ocaml setup.ml -configure --prefix /usr --destdir "$pkgdir" --exec-prefix "$pkgdir/usr"
+	# Old method requires ocamlbuild instead of jbuilder
+	#ocaml setup.ml -configure --prefix /usr --destdir "$pkgdir" --exec-prefix "/usr"
+	#ocaml setup.ml -build
 
-	ocaml setup.ml -build
+	#jbuilder build --debug-backtraces --debug-dependency-path --debug-findlib --no-buffer --verbose @install
+	jbuilder build @install
 }
 
-check() {
-	cd "$srcdir/$pkgname"
-
-	ocaml setup.ml -test
-}
+#check() {
+#	cd "$srcdir/$_pkgname"
+#
+#	ocaml setup.ml -test
+#}
 
 package() {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir/$_pkgname"
 
-	export OCAMLFIND_DESTDIR="$pkgdir/$(ocamlfind printconf destdir)"
+	#export OCAMLFIND_DESTDIR="$pkgdir/$(ocamlfind printconf destdir)"
+	#ocaml setup.ml -install
 
-	ocaml setup.ml -install
+	mkdir -p "$pkgdir/usr"
+	mkdir -p "$pkgdir/$(ocamlfind printconf destdir)"
+    
+	jbuilder install --prefix="$pkgdir/usr" --libdir="$pkgdir/$(ocamlfind printconf destdir)"
 }
