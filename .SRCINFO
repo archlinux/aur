@@ -1,7 +1,7 @@
 pkgbase = python-trio
 	pkgdesc = An async/await-native I/O library for humans and snake people
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/python-trio/trio
 	arch = any
 	license = MIT
@@ -11,6 +11,8 @@ pkgbase = python-trio
 	depends = python-sortedcontainers
 	depends = python-idna
 	depends = python-async_generator
+	depends = python-outcome
+	depends = python-sniffio
 	provides = python-multio-provider
 	source = https://files.pythonhosted.org/packages/e1/ec/cf93ec61713ed046a3122b64dbe2e320c22a285260adab9d37ffee69c5e7/trio-0.7.0.tar.gz
 	md5sums = bc23af948660cf08e08ab093fb271567
