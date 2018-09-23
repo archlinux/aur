@@ -1,0 +1,15 @@
+pkgbase = perl-digest-bcrypt
+	pkgdesc = Perl interface to the bcrypt digest algorithm
+	pkgver = 1.209
+	pkgrel = 1
+	url = https://metacpan.org/release/Digest-Bcrypt
+	arch = any
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/C/CA/CAPOEIRAB/Digest-Bcrypt-1.209.tar.gz
+	md5sums = b03529a1cfc31c04a66d7736b4ca4003
+
+pkgname = perl-digest-bcrypt
+
