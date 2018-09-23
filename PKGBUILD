@@ -4,10 +4,11 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: William Rea <sillywilly@gmail.com>
 
+_pkgname=buildbot
 pkgname=buildbot-git
 pkgdesc="The Continuous Integration Framework"
-pkgver=1.3.0.r53.g36d2e3332
-pkgrel=1
+pkgver=1.4.0.r99.gc8595820f
+pkgrel=2
 arch=('any')
 url="https://buildbot.net"
 license=("GPL2")
@@ -18,9 +19,11 @@ makedepends=('git')
 checkdepends=('python-treq' 'python-boto3' 'python-mock' 'python-moto'
               'python-lz4' 'python-isort' 'python-pylint' 'python-pyenchant'
               'flake8' 'python-txrequests' 'python-setuptools_trial'
-              'python-pyjade'
+              'python-pyjade' 'python-yaml'
               'python-buildbot-pkg-git' 'buildbot-worker-git'
               'openssh')
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
 source=(git+https://github.com/buildbot/buildbot.git
         skip-linux-distro-test.patch)
 sha256sums=('SKIP'
@@ -29,8 +32,7 @@ sha256sums=('SKIP'
 pkgver() {
   cd buildbot
   ( set -o pipefail
-    git describe --long --tag 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tag 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
   )
 }
 
@@ -42,6 +44,11 @@ prepare() {
   patch -Np1 -i ../skip-linux-distro-test.patch
 }
 
+build() {
+  cd buildbot/master
+  python setup.py build
+}
+
 check() {
   cd buildbot/master
   TZ=UTC python setup.py test --rterrors
@@ -49,5 +56,5 @@ check() {
 
 package() {
   cd buildbot/master
-  python setup.py install --root="$pkgdir" --optimize=1
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
