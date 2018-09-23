@@ -1,14 +1,14 @@
 # Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=imageburner-git
-pkgver=0.1.15.r6.gae7a78c
+pkgver=1.0.0.r1.ga4b46fb
 pkgrel=1
 pkgdesc="Image burner for Pantheon, developed by Artem Anufrij"
 arch=('x86_64')
 url='https://artemanufrij.github.io/'
 license=('GPL3')
-depends=('libgranite.so' 'gtk3')
-makedepends=('cmake' 'vala' 'cmake-modules-elementary-git' 'git')
+depends=(libgranite.so gtk3)
+makedepends=(vala meson ninja git)
 provides=(imageburner)
 conflicts=(imageburner)
 source=("${pkgname}::git+https://github.com/artemanufrij/imageburner.git")
@@ -20,19 +20,17 @@ pkgver() {
 }
 
 prepare() {
-  cd "${pkgname}"
+  cd "${srcdir}/${pkgname}"
   install -d build
 }
 
 build() {
-  cd "${pkgname}/build"
-  cmake .. \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr
-  make
+  cd "${srcdir}/${pkgname}"
+  meson build --prefix=/usr
+  ninja -C build
 }
 
 package() {
-  cd "${pkgname}/build"
-  make DESTDIR="${pkgdir}" install
+  cd "${srcdir}/${pkgname}"
+  DESTDIR="${pkgdir}" ninja -C build install
 }
