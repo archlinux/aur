@@ -1,6 +1,6 @@
 pkgbase = lua-psl
 	pkgver = 0.3
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/daurnimator/lua-psl
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = lua-psl
 	makedepends = lua51
 	makedepends = lua52
 	depends = libpsl
-	source = https://github.com/daurnimator/lua-psl/archive/v0.3.tar.gz
+	source = lua-psl-0.3.tar.gz::https://github.com/daurnimator/lua-psl/archive/v0.3.tar.gz
 	md5sums = 9171823dbd4d347a5aa1150710cc991d
 
 pkgname = lua-psl
