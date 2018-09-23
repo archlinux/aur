@@ -1,6 +1,6 @@
 pkgbase = strawberry
 	pkgdesc = Bitperfect audio player and music collection organizer, fork of Clementine. gstreamer engine only
-	pkgver = 0.2.1
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = http://www.strawbs.org/
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = strawberry
 	makedepends = boost
 	depends = chromaprint
 	depends = protobuf
-	depends = gst-plugins-base-libs
-	depends = boost-libs
+	depends = gst-plugins-base
+	depends = gst-plugins-good
 	depends = qt5-base
 	depends = qt5-x11extras
 	depends = sqlite3
@@ -25,13 +25,10 @@ pkgbase = strawberry
 	depends = alsa-lib
 	depends = libcdio
 	depends = taglib
-	optdepends = gst-plugins-good
 	optdepends = gst-plugins-bad
 	optdepends = gst-plugins-ugly
-	provides = strawberry
-	conflicts = strawberry
-	source = strawberry-0.2.1.tar.gz::https://github.com/jonaski/strawberry/archive/0.2.1.tar.gz
-	sha256sums = ebc04e47f2f006092bbae7ecb327576fad34e3d90d911590456adba4439cbb46
+	source = strawberry-0.3.1.tar.gz::https://github.com/jonaski/strawberry/archive/0.3.1.tar.gz
+	sha256sums = 9fe83527d230ffa355af529f0cbfa8359535436f678cb8359d0cf8f6f2595c21
 
 pkgname = strawberry
 
