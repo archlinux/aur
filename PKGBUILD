@@ -10,7 +10,7 @@ url="http://www.factorio.com/"
 license=('custom: commercial')
 conflicts=('factorio-demo' 'factorio-experimental' 'factorio-headless')
 depends=('libxcursor' 'alsa-lib' 'libxrandr' 'libxinerama' 'mesa')
-makedepends=('xz')
+makedepends=('jq')
 source=(factorio.desktop
         LICENSE)
 sha256sums=('5f62aa7763f9ad367a051371bc16f3c174022bb3380eb221ba06bac395bf9815'
@@ -87,7 +87,7 @@ _find_pkgpath_from_dir() {
 
 _find_pkgpath_from_input() {
   # don't interact if standard input isn't a terminal
-  # or if we should download the game using FACTORIO_LOGIN and FACTORIO_PASSWORD
+  # or if we should download the game using FACTORIO_LOGIN and FACTORIO_PASSWORD / FACTORIO_TOKEN
 
   [[ ! -t 0 || -n "$FACTORIO_LOGIN" ]] && return
 
@@ -111,69 +111,113 @@ _find_pkgpath_from_input() {
 }
 
 _find_pkgpath_from_download() {
-  msg "Downloading game using Factorio credentials"
 
-  local cookie=$(mktemp)
+  local file="${SRCDEST}/${_gamepkg}"
+  local token_file="$HOME/.factorio/player-data.json"
+  local use_token=1
+  local used_token=
 
-  while [[ -z "${pkgpath}" ]] ; do
-    local login="$FACTORIO_LOGIN"
-    local password="$FACTORIO_PASSWORD"
-    local file="${SRCDEST}/${_gamepkg}"
+  while [[ -z ${pkgpath} ]] ; do
+    local username=$FACTORIO_LOGIN
+    local password=$FACTORIO_PASSWORD
+    local token=$FACTORIO_TOKEN
 
-    if [[ -z $login || -z $password ]]; then
-      [[ ! -t 0 ]] && return
-      read -rp "Username or email: " login
-      [[ -z "${login}" ]] && break
-      read -rsp "Password: " password ; echo
-      [[ -z "${password}" ]] && break
+    if [[ -n $username && ( -n $password || -n $token) ]]; then
+      msg "Downloading using credentials from environment"
+    elif [[ -n $use_token && -r $token_file && -z $username && -z $token ]]; then
+      username=$(jq -r '."service-username" | strings' "$token_file") || username=
+      token="$(jq -r '."service-token" | strings' "$token_file")" || token=
+
+      if [[ -n $username && -n $token ]]; then
+        msg "Downloading using token from $token_file"
+        used_token=1
+      fi
     fi
 
-    msg2 "Logging in..."
-    local csrf_token=$(
-      curl --silent --fail \
-           --cookie-jar "$cookie" \
-           https://www.factorio.com/login \
-      | grep -Po '(?<=name="csrf_token" type="hidden" value=")[^"]+'
-    )
+    if [[ -z $token ]]; then
+      if [[ -z $username || -z $password ]]; then
+        [[ ! -t 0 ]] && return
 
-    if [[ -z "$csrf_token" ]]; then
-      error "Could not find the CSRF token. This script might be broken."
-      break
+        msg "Downloading using Factorio credentials"
+
+        msg2 "Please provide your Factorio username/email along with your game token or password"
+        msg2 "Your token can be found in your factorio profile and grants limited access to your account."
+
+        read -rp "Username or email: " username
+        [[ -z $username ]] && break
+
+        read -rp "Game token (leave blank for password authentication): " token
+
+        if [[ -z $token ]]; then
+          read -rsp "Password: " password ; echo
+          [[ -z $password ]] && break
+        fi
+      fi
     fi
 
-    local output=$(
-      curl --dump-header - \
-           --silent --fail \
-           --cookie-jar "$cookie" \
-           --cookie "$cookie" \
-           https://www.factorio.com/login \
-           --data-urlencode username_or_email="$login" \
-           --data-urlencode password="$password" \
-           --data-urlencode csrf_token="$csrf_token" \
-    )
+    if [[ -z $token ]]; then
+      msg2 "Logging in..."
 
-    if ! echo "$output" | grep -q '^Location: '; then
-      error "Login failed"
-      read -n1 -p "Retry login? (Y/n) " try_again ; echo
-      if [[ "${try_again,,*}" == "n" ]]; then
-        break
+      local output
+      if output=$(curl --silent \
+                       https://auth.factorio.com/api-login \
+                       --data-urlencode username="$username" \
+                       --data-urlencode password="$password" \
+                       --data-urlencode require_game_ownership=true \
+                       --data-urlencode api_version=2
+      ) && token=$(echo "$output" | jq -r '.token | strings') \
+        && username=$(echo "$output" | jq -r '.username | strings') \
+        && [[ -n $token && -n $username ]]
+      then
+        if [[ -t 0 && (! -e $token_file || -w $token_file) ]]; then
+          read -n1 -p "Store game token in $token_file for in-game authentication? (Y/n) " ; echo
+          if [[ -z $REPLY || $REPLY == [yY] ]]; then
+            local player_data='{}'
+            [[ -r "$token_file" ]] && player_data=$(< "$token_file")
+            if player_data=$(echo "$player_data" |
+                               jq -r '."service-username" = $user | ."service-token" = $token' \
+                                  --arg user "$username" \
+                                  --arg token "$token")
+            then
+              echo "$player_data" > "$token_file"
+            else
+              error "Could not store game token (player-data.json corrupted?)"
+            fi
+          fi
+        fi
       else
-        continue
+        msg=$(echo "$output" | jq -r .message) || msg="unknown error"
+        error "Login failed: $msg"
+
+        [[ ! -t 0 ]] && break
+        read -n1 -p "Retry login? (Y/n) " try_again ; echo
+        if [[ "${try_again,,*}" == "n" ]]; then
+          break
+        else
+          continue
+        fi
       fi
     fi
 
     msg2 "Downloading ${_gamepkg} from ${_url} ..."
 
-    curl --retry 10 --retry-delay 3 \
+    code=$(curl -G --retry 10 --retry-delay 3 \
          --fail --location \
-         --cookie "${cookie}" \
          --continue-at - \
          --output "${file}.part" \
          "${_url}" \
-    || rm -f "${file}.part"
+         --data-urlencode username="$username" \
+         --data-urlencode token="$token" \
+         --write-out '%{http_code}'
+    ) || rm -f "${file}.part"
 
     if [[ ! -f "${file}.part" ]]; then
       error "Download failed"
+      if [[ $code == 403 && -n $used_token ]]; then
+        msg "Trying again without token from player-data.json"
+        use_token=
+        continue
+      fi
       break
     fi
 
@@ -181,6 +225,4 @@ _find_pkgpath_from_download() {
     mv "${file}"{.part,}
     pkgpath="${SRCDEST}"
   done
-
-  rm $cookie
 }
