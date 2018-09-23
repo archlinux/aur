@@ -1,0 +1,37 @@
+pkgbase = lib32-systemd-git
+	pkgdesc = system and service manager (32-bit, git version)
+	pkgver = 239.886
+	pkgrel = 1
+	url = https://www.github.com/systemd/systemd
+	arch = x86_64
+	license = GPL2
+	license = LGPL2.1
+	makedepends = gcc-multilib
+	makedepends = git
+	makedepends = gperf
+	makedepends = intltool
+	makedepends = lib32-acl
+	makedepends = lib32-bzip2
+	makedepends = lib32-curl
+	makedepends = lib32-dbus
+	makedepends = lib32-gcc-libs
+	makedepends = lib32-glib2
+	makedepends = lib32-gnutls
+	makedepends = lib32-libelf
+	makedepends = lib32-libidn
+	makedepends = lib32-pcre2
+	makedepends = libxslt
+	makedepends = meson
+	depends = lib32-libgcrypt
+	depends = lib32-xz
+	provides = lib32-systemd
+	conflicts = lib32-systemd
+	replaces = lib32-systemd
+	options = strip
+	options = !distcc
+	options = !ccache
+	source = git+https://github.com/systemd/systemd
+	sha512sums = SKIP
+
+pkgname = lib32-systemd-git
+
