@@ -2,7 +2,7 @@
 pkgname=python2-internetarchive
 _pkgname=internetarchive
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A python interface to archive.org"
 arch=('any')
 url="https://github.com/jjjake/internetarchive"
@@ -15,7 +15,7 @@ md5sums=('76dc29fdc8cea59d11090a0b7be7eb1f')
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
+  python2 setup.py build
 }
 
 package() {
