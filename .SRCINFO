@@ -1,19 +1,18 @@
 pkgbase = xfce4-alsa-plugin
 	pkgdesc = Simple ALSA volume control for xfce4-panel
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/equeim/xfce4-alsa-plugin
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = vala
-	makedepends = python
-	makedepends = intltool
+	makedepends = gettext
+	makedepends = meson
 	depends = alsa-lib
-	depends = gtk2
 	depends = xfce4-panel
-	source = https://github.com/equeim/xfce4-alsa-plugin/archive/0.1.1.tar.gz
-	sha256sums = 38a6b5aeb1664a0bb7ee49cc8b77070f0219362784281b6b55ec8afdb88a2956
+	source = https://github.com/equeim/xfce4-alsa-plugin/archive/0.1.2.tar.gz
+	sha256sums = 2ae44ad8b94d8a889f7c33d251b9e61bc987cdd857fd140124499b0caf3fb643
 
 pkgname = xfce4-alsa-plugin
 
