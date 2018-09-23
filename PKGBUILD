@@ -9,7 +9,8 @@ pkgdesc="Reading, writing, manipulating, analyzing and modeling of gridded spati
 url="https://cran.r-project.org/package=${_cranname}"
 arch=('x86_64' 'i686')
 license=('GPL3')
-depends=('r>=3.0' 'r-sp>=1.2-0')
+depends=('r>=3.0' 'r-sp>=1.2-0' 'r-rcpp')
+optdepends=('r-gdal>=0.9' 'r-geos>=0.3' 'r-ncdf4' 'r-igraph' 'r-sf')
 provides=('r-raster')
 source=(https://cran.r-project.org/src/contrib/${_pkgfile})
 sha256sums=('fb91804fd465a4a6d9d9858e29fd05f41a99b8efdcc5cf4370ea253b68e42b01')

@@ -8,6 +8,12 @@ pkgbase = r-raster
 	license = GPL3
 	depends = r>=3.0
 	depends = r-sp>=1.2-0
+	depends = r-rcpp
+	optdepends = r-gdal>=0.9
+	optdepends = r-geos>=0.3
+	optdepends = r-ncdf4
+	optdepends = r-igraph
+	optdepends = r-sf
 	provides = r-raster
 	source = https://cran.r-project.org/src/contrib/raster_2.6-7.tar.gz
 	sha256sums = fb91804fd465a4a6d9d9858e29fd05f41a99b8efdcc5cf4370ea253b68e42b01
