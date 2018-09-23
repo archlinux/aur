@@ -1,7 +1,7 @@
 pkgbase = python-pyscaffold
 	pkgdesc = Python project template generator with batteries included
 	pkgver = 3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pyscaffold.org/
 	arch = any
 	license = MIT

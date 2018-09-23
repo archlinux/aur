@@ -2,7 +2,7 @@
 pkgbase=python-pyscaffold
 pkgname=('python-pyscaffold')
 pkgver=3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python project template generator with batteries included"
 url="https://pyscaffold.org/"
 arch=(any)
