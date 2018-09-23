@@ -1,17 +1,17 @@
 pkgbase = hashit
 	pkgdesc = Checksum tool for Pantheon, developed by Artem Anufrij
-	pkgver = 0.1.11
-	pkgrel = 2
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://artemanufrij.github.io/
 	arch = x86_64
 	license = GPL3
 	makedepends = vala
-	makedepends = cmake
-	makedepends = cmake-modules-elementary-git
+	makedepends = meson
+	makedepends = ninja
 	depends = libgranite.so
 	depends = gtk3
-	source = hashit-0.1.11.tar.gz::https://github.com/artemanufrij/hashit/archive/0.1.11.tar.gz
-	sha256sums = f4d550f1e14a283a9078a9358fbd9175a38a5521a567dbe5535f5198adfe2cc4
+	source = hashit-0.2.0.tar.gz::https://github.com/artemanufrij/hashit/archive/0.2.0.tar.gz
+	sha256sums = a7e0459e47936f0fbd5042b161517f6b9b2a65e36945cf260367126b02b7cee7
 
 pkgname = hashit
 
