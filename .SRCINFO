@@ -1,7 +1,7 @@
 pkgbase = veloren-git
 	pkgdesc = An open-world, open-source multiplayer voxel RPG
 	pkgver = 0.1.0.r149.4e9bc27
-	pkgrel = 1
+	pkgrel = 2
 	url = veloren.net
 	arch = x86_64
 	arch = i686

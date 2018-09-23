@@ -1,3 +1,2 @@
 #!/bin/bash
-cd /usr/share/veloren/voxygen
-./voxygen $*
+exec /usr/share/veloren/voxygen/voxygen "$@"
