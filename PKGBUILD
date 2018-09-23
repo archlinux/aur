@@ -2,8 +2,8 @@
 
 _name=etesync
 pkgname=python-etesync
-pkgver=0.5.2
-pkgrel=2
+pkgver=0.5.5
+pkgrel=1
 pkgdesc="Python API to interact with an EteSync server."
 arch=('any')
 url="https://pypi.python.org/pypi/etesync/"
@@ -29,8 +29,8 @@ depends=('python-appdirs'
          'python-vobject')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest')
-source=("https://pypi.io/packages/source/e/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('3fd41cc422f4aad0fc40e06cb7fa25cbf61928343b4c8148d22a91f5cdd57d90efdce3c3522e7dc138cbe4db30197baa27524569a9736699070fe6882d8875f1')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
+sha512sums=('1a05dfb644a97f732617a4f0c97acf7ef549f0f396fb52ea12d5946a5ab68019652f2d8cc86048bf9c46c6ba6ba0b5ced8d8071dff0d7f68d27b05a3f76c6858')
 
 prepare() {
   mv -v "${_name}-${pkgver}" "${pkgname}-${pkgver}"
@@ -55,6 +55,6 @@ package() {
     --prefix=/usr \
     --root="${pkgdir}"
   install -t "${pkgdir}/usr/share/doc/${pkgname}" \
-    -vDm644 {DESCRIPTION.rst,README.md}
+    -vDm 644 {DESCRIPTION.rst,README.md}
 }
 
