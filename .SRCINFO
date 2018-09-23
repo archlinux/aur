@@ -1,14 +1,13 @@
-pkgbase = lua51-compat53
-	pkgver = 0.4
-	pkgrel = 0
+pkgbase = lua-compat53
+	pkgver = 0.7
+	pkgrel = 1
 	url = https://github.com/keplerproject/lua-compat-5.3
-	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = lua51
 	makedepends = lua52
-	source = https://github.com/keplerproject/lua-compat-5.3/archive/v0.4.tar.gz
-	md5sums = 21d27a6edcb677e78cea365ac275bcc9
+	source = lua51-compat53-0.7.tar.gz::https://github.com/keplerproject/lua-compat-5.3/archive/v0.7.tar.gz
+	md5sums = 61c3f1af0d7d587f602ac4a13d77a823
 
 pkgname = lua51-compat53
 	pkgdesc = Compatibility module providing Lua-5.3-style APIs for Lua 5.1
