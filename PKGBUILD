@@ -1,7 +1,7 @@
 # Maintainer: Niels Martignène <niels.martignene@gmail.com>
 
 pkgname=ty
-pkgver=0.8.8
+pkgver=0.8.10
 pkgrel=1
 pkgdesc="Collection of tools to manage Teensy boards"
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ license=('custom:Unlicense')
 depends=('teensyduino' 'libudev.so' 'qt5-base')
 makedepends=('imagemagick')
 source=("https://github.com/Koromix/ty/archive/v${pkgver}.tar.gz")
-sha256sums=('ce9dfc7eb0db2982b3a3de5f3b20851baf107e9c3c139a08e48afd4af123c0ab')
+sha256sums=('4840b64a909fc5b4ee4dca6520c88ab71213e7c338f6cd5ac8ddd8c636d406ea')
 
 build() {
   cd "tytools-${pkgver}"
