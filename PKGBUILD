@@ -4,7 +4,7 @@
 
 pkgname=lib32-openal
 pkgver=1.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform 3D audio library, software implementation (32-bit)"
 arch=(x86_64)
 url="https://github.com/kcat/openal-soft"
@@ -24,6 +24,7 @@ pkgver() {
 prepare() {
   mkdir build
   cd openal-soft
+  git cherry-pick -n 8bacb5dfb8ef910586fcf5b5cd89526ec81061e8
 }
 
 build() {
