@@ -1,19 +1,17 @@
 pkgbase = upplay
 	pkgdesc = A Qt5 based UPnP audio Control point, stable version
-	pkgver = 1.2.12
+	pkgver = 1.2.13
 	pkgrel = 1
 	url = http://www.lesbonscomptes.com/upplay/
 	arch = x86_64
+	arch = i686
 	license = GPL2
 	makedepends = qt5-script
-	depends = libupnpp>=0.16.1
+	depends = libupnpp
 	depends = qt5-webkit
 	depends = hicolor-icon-theme
-	provides = upplay
-	conflicts = upplay
-	conflicts = upplay-git
-	source = https://www.lesbonscomptes.com/upplay/downloads/upplay-1.2.12.tar.gz
-	md5sums = c291b78ac90187016b5294fa546d0d75
+	source = https://www.lesbonscomptes.com/upplay/downloads/upplay-1.2.13.tar.gz
+	md5sums = b61ca8888980d30a8dae814685dbb6da
 
 pkgname = upplay
 
