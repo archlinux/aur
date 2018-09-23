@@ -2,8 +2,8 @@
 
 pkgname=julia-ijulia
 _pkgname=IJulia
-pkgver=1.10.0
-pkgrel=2
+pkgver=1.12.0
+pkgrel=1
 pkgdesc='Julia-language backend combined with the Jupyter interactive environment'
 arch=(any)
 url=https://github.com/JuliaLang/IJulia.jl
@@ -18,10 +18,11 @@ depends=(julia
 )
 makedepends=(
   julia-conda
+  julia-versionparsing
 )
 
 source=($pkgname-$pkgver.tar.gz::https://github.com/JuliaLang/$_pkgname.jl/archive/v$pkgver.tar.gz)
-sha256sums=('2768d2a98c8522b252dac9651863cb06eae48c1509fc9c75d490a1c2c9452f81')
+sha256sums=('03ba7cbd482fc33905968a8aa261e49f235a5031ad165b5aa4e6d8812aed72c8')
 
 prepare() {
 	cd $_pkgname.jl-$pkgver/deps
@@ -40,6 +41,8 @@ build() {
 	# Fix reference to $srcdir
 	sed -i "s|$srcdir/$_pkgname.jl-$pkgver|/usr/share/julia/environments/v1.0/$_pkgname|" \
 	        share/jupyter/kernels/julia-1.0/kernel.json
+
+	msg2 "NOTE: If the Julia kernel fails to run, clear your $HOME/.julia/cache"
 }
 
 check() {

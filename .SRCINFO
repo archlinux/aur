@@ -1,11 +1,12 @@
 pkgbase = julia-ijulia
 	pkgdesc = Julia-language backend combined with the Jupyter interactive environment
-	pkgver = 1.10.0
-	pkgrel = 2
+	pkgver = 1.12.0
+	pkgrel = 1
 	url = https://github.com/JuliaLang/IJulia.jl
 	arch = any
 	license = MIT
 	makedepends = julia-conda
+	makedepends = julia-versionparsing
 	depends = julia
 	depends = julia-compat
 	depends = julia-json
@@ -13,8 +14,8 @@ pkgbase = julia-ijulia
 	depends = julia-softglobalscope
 	depends = julia-zmq
 	depends = jupyter
-	source = julia-ijulia-1.10.0.tar.gz::https://github.com/JuliaLang/IJulia.jl/archive/v1.10.0.tar.gz
-	sha256sums = 2768d2a98c8522b252dac9651863cb06eae48c1509fc9c75d490a1c2c9452f81
+	source = julia-ijulia-1.12.0.tar.gz::https://github.com/JuliaLang/IJulia.jl/archive/v1.12.0.tar.gz
+	sha256sums = 03ba7cbd482fc33905968a8aa261e49f235a5031ad165b5aa4e6d8812aed72c8
 
 pkgname = julia-ijulia
 
