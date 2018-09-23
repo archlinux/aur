@@ -5,7 +5,7 @@
 _pkgname=skype
 pkgname=skype-classic
 pkgver=4.3.0.37
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64)
 pkgdesc="P2P software for high-quality voice communication"
 url="http://www.skype.com/"
