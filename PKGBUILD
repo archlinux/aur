@@ -3,7 +3,7 @@
 pkgname=bitwarden_rs
 _pkgbase=bitwarden_rs
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An unofficial lightweight implementation of the bitwarden-server using rust and sqlite. Does NOT include the web-interface."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/dani-garcia/bitwarden_rs"
@@ -23,13 +23,13 @@ sha512sums=('3b8290b5f5055b48ffd732b823ca9da6d2f78c0511daab8d05490f10d087d001b41
             '399e63002acb764895bbcf3b983642c8858343b36909eeeb73133de1a9740a3d81232bc206ff6bf3daed50f72354c5e6fd5314d0d044acd9f1cb23a933b1dd74'
             '773dc0830b4eaf3a1d4134a52a6157e6a94265c6212ae8cc24b9584f9c444b9a0f822325f487ce9c23c363f743f1f64f269352f030e98e336816aee0a68048f6'
             'cbc151fc41ebffa611e144575bea463ab31a75d55ec1a331795eded3d415db8a221d24c75efe0c97c56fc33b80ffca53683af3d240af547b0d4a222d3095e960'
-            'd66facb9dbe5863443d2b2383646b41fe528cb0ab967c156876852d9c6b8faac05251bdcdf584cff5d7d4d9e8ee162fe32bbfb0873d0fdb7393cf74962cd8c4f')
+            '00876217c628656f52716801d6c888624263dfb726c9cad76fb90860e3648f1cd9b75140b72e847687982ca0001f0407eb41642de4ad88e27448f89fced4f281')
 _src="$pkgname-$pkgver"
 
 build() {
 	#build bitwarden_rs
 	cd "$srcdir/$_src"
-	patch -N -i "$srcdir/0001-Disable-Vault.patch"
+	patch -N -p1 -i "$srcdir/0001-Disable-Vault.patch"
 	patch -N -p1 -i "$srcdir/0002-Fix-OpenSSL.patch"
 	cargo build --release
 }
