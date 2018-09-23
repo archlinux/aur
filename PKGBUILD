@@ -10,6 +10,7 @@ url="https://cran.r-project.org/package=${_cranname}"
 arch=('x86_64' 'i686')
 license=('GPL3')
 depends=('r>=3.0' 'r-sp')
+optdepends=('r-raster')
 provides=('r-geosphere')
 source=(https://cran.r-project.org/src/contrib/${_pkgfile})
 sha256sums=('9d9b555e2d59a5ae174ae654652121f169fbc3e9cf66c2491bfbe0684b6dd8a0')

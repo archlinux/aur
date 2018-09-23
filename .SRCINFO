@@ -8,6 +8,7 @@ pkgbase = r-geosphere
 	license = GPL3
 	depends = r>=3.0
 	depends = r-sp
+	optdepends = r-raster
 	provides = r-geosphere
 	source = https://cran.r-project.org/src/contrib/geosphere_1.5-7.tar.gz
 	sha256sums = 9d9b555e2d59a5ae174ae654652121f169fbc3e9cf66c2491bfbe0684b6dd8a0
