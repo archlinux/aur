@@ -7,6 +7,8 @@ After=network-online.target sound.target
 
 [Service]
 Type=simple
+# The line below add a delay to networkaudiod
+# ExecStartPre=/bin/sleep 30
 ExecStart=/usr/bin/networkaudiod
 Restart=always
 RestartSec=1
