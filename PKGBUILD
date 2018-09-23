@@ -1,6 +1,6 @@
 # Maintainer: Heiko Nickerl <dev at heiko-nickerl dot com>
 pkgname="sodalite"
-pkgver=0.19.1
+pkgver=0.19.2
 pkgrel=1
 pkgdesc="Keyboard-driven terminal file navigator and launcher"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python-binaryornot' 'python-urwid' 'python-yaml'
 'python-pyperclip' 'python-pygments' 'python-watchdog')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hnicke/sodalite/archive/v$pkgver.tar.gz")
 backup=('etc/sodalite.conf')
-sha256sums=('c80fd90f4b29752b7c34484ed62e3e5f76be6e2b0481850c40f4abacc0fe96d1')
+sha256sums=('3c2721d43a81510be1d00274ddb25e48990770be42f6bbc083a0e4e503101044')
 
 _gitroot=https://github.com/hnicke/$pkgname.git
 
