@@ -9,7 +9,6 @@ pkgbase = pdfsandwich
 	makedepends = ocaml
 	makedepends = gawk
 	depends = tesseract
-	depends = exact-image
 	depends = unpaper
 	depends = imagemagick
 	depends = poppler
