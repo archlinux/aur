@@ -1,0 +1,14 @@
+pkgbase = vpp-plugins-bin
+	pkgdesc = FD.io Vector Packet Processing - Plugins
+	pkgver = 18.07.1
+	pkgrel = 1
+	url = https://fd.io/
+	arch = x86_64
+	license = Apache
+	provides = vpp-plugins
+	noextract = download.deb
+	source = https://packagecloud.io/fdio/release/packages/ubuntu/bionic/vpp-plugins_18.07.1-release_amd64.deb/download.deb
+	sha256sums = 55eea27571abd8ec4ab5ab16f80b7556ca5821707774ceb6e800082656266180
+
+pkgname = vpp-plugins-bin
+
