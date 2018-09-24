@@ -1,3 +1,6 @@
+v0.7.3-1 (2018-09-24)
+* Makefile: Fix PREFIX_… variable declarations - more
+
 v0.7.2-1 (2018-09-23)
 * Makefile: Fix PREFIX_… variable declarations
 * Makefile: Force rebuilding files containing software version
