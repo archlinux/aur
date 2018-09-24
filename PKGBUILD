@@ -4,16 +4,16 @@
 pkgname=epiphany-pantheon
 pkgver=3.28.0.1+1ubuntu1+r21.dbc305d50
 pkgrel=1
-pkgdesc="A GNOME web browser based on the WebKit rendering engine, with elementary OS patches"
+pkgdesc="GNOME web browser based on the WebKit rendering engine (with elementary OS patches)"
 url="https://gitlab.gnome.org/GNOME/epiphany/"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('webkit2gtk>=2.19.4' gcr libhttpseverywhere libdazzle gst-libav)
 makedepends=(meson docbook-xml startup-notification lsb-release
-             gobject-introspection yelp-tools autoconf-archive appstream-glib)
-groups=(pantheon-unstable pantheon-qq)
+             gobject-introspection yelp-tools autoconf-archive appstream-glib git)
+groups=(pantheon)
 replaces=(epiphany-pantheon-bzr)
-provides=(epiphany epiphany-sync)
+provides=(epiphany="${pkgver}" epiphany-sync)
 conflicts=(epiphany)
 source=("git+https://github.com/elementary/os-patches.git#branch=epiphany-browser-bionic-patched"
         epiphany-sync{,.service})

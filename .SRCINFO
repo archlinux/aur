@@ -1,12 +1,11 @@
 pkgbase = epiphany-pantheon
-	pkgdesc = A GNOME web browser based on the WebKit rendering engine, with elementary OS patches
+	pkgdesc = GNOME web browser based on the WebKit rendering engine (with elementary OS patches)
 	pkgver = 3.28.0.1+1ubuntu1+r21.dbc305d50
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/epiphany/
 	arch = i686
 	arch = x86_64
-	groups = pantheon-unstable
-	groups = pantheon-qq
+	groups = pantheon
 	license = GPL
 	makedepends = meson
 	makedepends = docbook-xml
@@ -16,12 +15,13 @@ pkgbase = epiphany-pantheon
 	makedepends = yelp-tools
 	makedepends = autoconf-archive
 	makedepends = appstream-glib
+	makedepends = git
 	depends = webkit2gtk>=2.19.4
 	depends = gcr
 	depends = libhttpseverywhere
 	depends = libdazzle
 	depends = gst-libav
-	provides = epiphany
+	provides = epiphany=3.28.0.1+1ubuntu1+r21.dbc305d50
 	provides = epiphany-sync
 	conflicts = epiphany
 	replaces = epiphany-pantheon-bzr
