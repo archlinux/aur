@@ -11,7 +11,7 @@ pkgbase = qwtpolar-qt4
 	depends = qt4
 	depends = qwt-qt4
 	source = https://sourceforge.net/projects/qwtpolar/files/qwtpolar/1.1.1/qwtpolar-1.1.1.tar.bz2
-	sha1sums = 38edf5220c971eef0e88fcc6db7c718e6198ccac
+	sha256sums = 6168baa9dbc8d527ae1ebf2631313291a1d545da268a05f4caa52ceadbe8b295
 
 pkgname = qwtpolar-qt4
 
