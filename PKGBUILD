@@ -17,6 +17,7 @@ md5sums=('84a52e175a87a89929e0f99ca23fef49'
          '741ea171051c5cbac5ff18326c11d65e')
 
 build() {
+  mv "$srcdir/netselect-netselect-0.4" "$srcdir/$pkgname"
   cd "$srcdir/$pkgname"
 
   sed -i '/sudo /d' Makefile
@@ -26,7 +27,7 @@ build() {
 
 package() {
 
-  install -D -m4755 "$srcdir/$pkgname"/netselect "$pkgdir"/usr/bin/netselect
+  install -D -m4755 "$srcdir/$pkgname/netselect" "$pkgdir"/usr/bin/netselect
   install -D -m644  "$srcdir"/license.txt \
     "$pkgdir"/usr/share/licenses/netselect/LICENSE
 }
