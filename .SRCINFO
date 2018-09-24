@@ -1,0 +1,17 @@
+pkgbase = avrm-max7221-git
+	pkgdesc = AVR library for the Maxis7221 LED driver.
+	pkgver = 0.0.3.r3.g987b94d
+	pkgrel = 1
+	url = https://github.com/nixpulvis/max7221
+	arch = any
+	makedepends = git
+	depends = avrm
+	optdepends = avrdude: for flashing code to devices
+	provides = avrm-max7221
+	conflicts = avrm-max7221
+	options = !strip
+	source = git+https://github.com/nixpulvis/max7221
+	md5sums = SKIP
+
+pkgname = avrm-max7221-git
+
