@@ -3,6 +3,7 @@
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: thn81 <root@scrat>
+# Contributor: Adria Arrufat <adria DOT arrufat+aur AT protonmail DOT ch>
 
 pkgname=gnome-settings-daemon-elementary
 pkgver=3.28.1+0ubuntu1+r3.6975d1c25
@@ -14,8 +15,8 @@ license=('GPL')
 depends=(dconf geoclue2 geocode-glib gnome-desktop 'gsettings-desktop-schemas-ubuntu>=3.24.0'
 	gtk3-print-backends libcanberra-pulse libgudev libgweather libnotify librsvg 
 	libsystemd libwacom nss pulseaudio pulseaudio-alsa upower)
-makedepends=(docbook-xsl git gnome-common intltool libxslt libnm python xf86-input-wacom meson)
-groups=(gnome unity pantheon-qq)
+makedepends=(docbook-xsl git gnome-common intltool libxslt libnm python xf86-input-wacom meson git)
+groups=(pantheon)
 provides=(gnome-settings-daemon{,-ubuntu}="${pkgver}")
 conflicts=(gnome-settings-daemon{,-ubuntu})
 source=("git+https://github.com/elementary/os-patches.git#branch=gnome-settings-daemon-bionic-patched"
@@ -38,20 +39,13 @@ prepare() {
 
 build() {
     cd "os-patches"
-
-    meson \
-        --prefix=/usr \
-        --sysconfdir=/etc \
-        --localstatedir=/var \
-        --libexecdir=/usr/lib/gnome-settings-daemon \
-        -Dstatic-false=true \
-        builddir
-
-    ninja -C builddir
+    [ -d build ] && rm -rf build
+    arch-meson build -Dstatic-false=true
+    ninja -C build
 }
 
 package() {
     cd "os-patches"
 
-    DESTDIR="${pkgdir}" ninja -C builddir install
+    DESTDIR="${pkgdir}" ninja -C build install
 }
