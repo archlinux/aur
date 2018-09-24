@@ -1,7 +1,7 @@
 # Maintainer: Brad Erhart <brae.04+aur@gmail.com> 
 pkgname=docker-machine-driver-kvm2
 pkgver=0.28.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Minikube-maintained KVM driver for docker-machine"
 url="https://github.com/kubernetes/minikube"
 license=('Apache')
@@ -9,7 +9,7 @@ arch=('x86_64')
 depends=(
   'docker-machine'
   'libvirt'
-  'ebtables'
+  'iptables'
   'dnsmasq'
 )
 optdepends=(
