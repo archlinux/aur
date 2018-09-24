@@ -1,13 +1,13 @@
 pkgbase = nessus
 	pkgdesc = Nessus vulnerability scanner
-	pkgver = 7.2.0
+	pkgver = 7.2.1
 	pkgrel = 1
 	url = https://www.nessus.org
 	install = nessus.install
 	arch = x86_64
 	license = custom
 	depends = gnupg
-	source = Nessus-7.2.0-fc20.x86_64.rpm::https://gateway.ipfs.io/ipfs/QmbZj2Nkhtug2uhvm1A1KsqvUXqiGQZG7FdHAY1w2ndq29
+	source = Nessus-7.2.1-fc20.x86_64.rpm::https://cloudflare-ipfs.com/ipfs/QmVf2aJEun4ek8y3eKaLVMGciV4q8NphgsD6CcD68kQAWz
 	source = nessus.desktop
 	source = nessus.sh
 	source = LICENSE
