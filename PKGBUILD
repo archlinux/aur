@@ -1,8 +1,9 @@
-# Maintainer: Sirat18 <aur@sirat8.de>
+# Maintainer: Thom Wiggers <pkgbuild@thomwiggers.nl>
+# Contributor: Sirat18 <aur@sirat8.de>
 # Contributor: wodim <neikokz@gmail.com>
 
 pkgname=networkmanager-iodine-git
-pkgver=r78.11317d9
+pkgver=r142.b299fbf
 pkgrel=1
 pkgdesc="Iodine plugin for NetworkManager"
 arch=('i686' 'x86_64')
@@ -11,7 +12,7 @@ license=('GPL')
 depends=('iodine' 'networkmanager' 'libgnome-keyring' 'gtk3' 'libnm-gtk')
 makedepends=('git' 'intltool')
 
-source=("$pkgname"::'git://git.gnome.org/network-manager-iodine')
+source=("$pkgname"::'git+https://gitlab.gnome.org/GNOME/network-manager-iodine.git')
 md5sums=('SKIP')
 
 pkgver() {
