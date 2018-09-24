@@ -1,7 +1,7 @@
 pkgbase = mozart2-bin
 	pkgdesc = Runtime and development environment of Oz
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mozart.github.io/
 	arch = x86_64
 	license = BSD
@@ -9,9 +9,9 @@ pkgbase = mozart2-bin
 	depends = tk
 	conflicts = mozart2
 	conflicts = mozart2-compiler
-	source = mozart2-2.0.1-x86_64-linux.rpm::https://sourceforge.net/projects/mozart-oz/files/v2.0.1/mozart2-2.0.1-x86_64-linux.rpm/download
+	source = mozart2-2.0.1-x86_64-linux.deb::https://sourceforge.net/projects/mozart-oz/files/v2.0.1/mozart2-2.0.1-x86_64-linux.deb/download
 	source = https://raw.githubusercontent.com/mozart/mozart2/master/LICENSE.txt
-	md5sums = 26338db686f62a86a36514c922c1f07b
+	md5sums = f1895fd2ec37a526ef29c278e524da8c
 	md5sums = 761f3c1b5b9987bc87abc4ca8e6440fa
 
 pkgname = mozart2-bin
