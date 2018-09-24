@@ -1,11 +1,9 @@
-# This file is part of BlackArch Linux ( http://blackarch.org ).
-# See COPYING for license details.
+# Maintainer: Chris BECKER <goabonga@protonmail.com>
 
 pkgname=yate-bts
 pkgver=6.0.0
 pkgrel=1
 pkgdesc="YateBTS is an open source GSM Base Station software."
-groups=('blackarch' 'blackarch-radio')
 arch=('x86_64')
 url="https://yatebts.com/"
 license=('GPL')
