@@ -6,6 +6,7 @@ pkgrel=1
 pkgdesc="Efficiently computes derivatives of numpy code"
 url="https://github.com/HIPS/autograd"
 depends=('python'
+    'python-future'
     'python-numpy'
     'python-scipy')
 checkdepends=()

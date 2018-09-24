@@ -7,6 +7,7 @@ pkgbase = python-autograd
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
+	depends = python-future
 	depends = python-numpy
 	depends = python-scipy
 	source = https://pypi.org/packages/source/a/autograd/autograd-1.2.tar.gz
