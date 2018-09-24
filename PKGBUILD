@@ -1,7 +1,7 @@
 # Maintainer: grufo <madmurphy333@gmail.com>
 
 pkgname='notejot'
-pkgver='1.4.3'
+pkgver='1.4.4'
 pkgrel=1
 pkgdesc='A stupidly-simple sticky notes application for any type of short term notes or ideas'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('granite' 'gtk3' 'gtksourceview3' 'json-glib' 'libgee')
 makedepends=('meson')
 conflicts=('notejot-git')
 source=("https://github.com/lainsce/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('de4c61018ffcbf603ba0342e4c445ecf37b92b8bc5e80d3e5f2c28dd85adaf47')
+sha256sums=('d916ef5bd53a5f81cf3706aecd4a7bf67ce3b62f00f13ec65bc95b9b2493d8ac')
 
 build() {
 
