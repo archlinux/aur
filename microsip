@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
+__REV=1
 __APPNAME=$(basename $0)
 __WINEPREFIX="${XDG_DATA_HOME:-$HOME/.local}/wine/${__APPNAME}"
 __APPDIR="${__WINEPREFIX}/dosdevices/c:/${__APPNAME}"
+__INSTALLED="${__APPDIR}/.installed.${__REV}"
 __APPCFG="${XDG_CONFIG_HOME:-$HOME/.config}/${__APPNAME}"
 __APPLOG="${XDG_CACHE_HOME:-$HOME/.cache}/${__APPNAME}"
 __REGFILE="${__APPDIR}/${__APPNAME}.reg"
@@ -14,39 +16,46 @@ __symlink() {
 	ln -sf "$1" "${__APPDIR}/${1##*/}"
 }
 
-mkdir -p "${__APPDIR}"
+if [[ ! -f "${__INSTALLED}" ]]; then
+	mkdir -p "${__WINEPREFIX}"
+	WINEPREFIX="${__WINEPREFIX}" wineboot -u
 
-__symlink "/usr/share/licenses/${__APPNAME}/License.txt"
-__symlink "/usr/share/doc/${__APPNAME}/MicroSIP Website.url"
-__symlink "/usr/share/${__APPNAME}/hangup.wav"
-__symlink "/usr/share/${__APPNAME}/messagein.wav"
-__symlink "/usr/share/${__APPNAME}/messageout.wav"
-__symlink "/usr/share/${__APPNAME}/ringin.wav"
-__symlink "/usr/share/${__APPNAME}/ringin2.wav"
-__symlink "/usr/share/${__APPNAME}/ringout.wav"
-__symlink "/usr/lib/${__APPNAME}/SDL2.dll"
-__symlink "/usr/lib/${__APPNAME}/avcodec-57.dll"
-__symlink "/usr/lib/${__APPNAME}/avformat-57.dll"
-__symlink "/usr/lib/${__APPNAME}/avutil-55.dll"
-__symlink "/usr/lib/${__APPNAME}/microsip.exe"
-__symlink "/usr/lib/${__APPNAME}/swscale-4.dll"
+	mkdir -p "${__APPDIR}"
 
-cp "/usr/share/${__APPNAME}/${__APPNAME}.reg" "${__TMPREGFILE}"
-sed -i "s/{DPI}/${__DPIX}/g" "${__TMPREGFILE}"
-iconv -f utf-8 -t utf-16le "${__TMPREGFILE}" >"${__REGFILE}"
-rm -f "${__TMPREGFILE}"
-WINEPREFIX="${__WINEPREFIX}" regedit "${__REGFILE}"
-rm -f "${__REGFILE}"
+	cp "/usr/share/${__APPNAME}/${__APPNAME}.reg" "${__TMPREGFILE}"
+	sed -i "s/{DPI}/${__DPIX}/g" "${__TMPREGFILE}"
+	iconv -f utf-8 -t utf-16le "${__TMPREGFILE}" >"${__REGFILE}"
+	rm -f "${__TMPREGFILE}"
+	WINEPREFIX="${__WINEPREFIX}" regedit "${__REGFILE}"
+	rm -f "${__REGFILE}"
 
-mkdir -p "${__APPCFG}"
-touch "${__APPCFG}/Contacts.xml"
-touch "${__APPCFG}/microsip.ini"
-__symlink "${__APPCFG}/Contacts.xml"
-__symlink "${__APPCFG}/microsip.ini"
+	__symlink "/usr/share/licenses/${__APPNAME}/License.txt"
+	__symlink "/usr/share/doc/${__APPNAME}/MicroSIP Website.url"
+	__symlink "/usr/share/${__APPNAME}/hangup.wav"
+	__symlink "/usr/share/${__APPNAME}/messagein.wav"
+	__symlink "/usr/share/${__APPNAME}/messageout.wav"
+	__symlink "/usr/share/${__APPNAME}/ringin.wav"
+	__symlink "/usr/share/${__APPNAME}/ringin2.wav"
+	__symlink "/usr/share/${__APPNAME}/ringout.wav"
+	__symlink "/usr/lib/${__APPNAME}/SDL2.dll"
+	__symlink "/usr/lib/${__APPNAME}/avcodec-57.dll"
+	__symlink "/usr/lib/${__APPNAME}/avformat-57.dll"
+	__symlink "/usr/lib/${__APPNAME}/avutil-55.dll"
+	__symlink "/usr/lib/${__APPNAME}/microsip.exe"
+	__symlink "/usr/lib/${__APPNAME}/swscale-4.dll"
 
-mkdir -p "${__APPLOG}"
-touch "${__APPLOG}/microsip_log.txt"
-__symlink "${__APPLOG}/microsip_log.txt"
+	mkdir -p "${__APPCFG}"
+	touch "${__APPCFG}/Contacts.xml"
+	touch "${__APPCFG}/microsip.ini"
+	__symlink "${__APPCFG}/Contacts.xml"
+	__symlink "${__APPCFG}/microsip.ini"
+
+	mkdir -p "${__APPLOG}"
+	touch "${__APPLOG}/microsip_log.txt"
+	__symlink "${__APPLOG}/microsip_log.txt"
+
+	touch "${__INSTALLED}"
+fi
 
 WINEPREFIX="${__WINEPREFIX}" wine "${__APPDIR}/microsip.exe"
 
