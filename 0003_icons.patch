@@ -1,0 +1,11 @@
+diff -ura sqliteman-1.2.2/CMakeLists.txt sqliteman-1.2.2patched/CMakeLists.txt
+--- sqliteman-1.2.2/CMakeLists.txt	2018-09-18 21:32:23.983974807 +0400
++++ sqliteman-1.2.2patched/CMakeLists.txt	2018-09-18 21:46:43.110647913 +0400
+@@ -133,6 +133,6 @@
+     )
+     INSTALL(FILES
+         sqliteman/icons/sqliteman.png
+-        DESTINATION "${CMAKE_INSTALL_PREFIX}/share/icons/hicolor"
++        DESTINATION "${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/32x32/apps"
+     )
+ ENDIF (WIN32)
