@@ -1,7 +1,7 @@
 # Maintainer:  Martin C. Doege <mdoege at compuserve dot com>
 
 pkgname=javacpc
-pkgver=2.9.6f
+pkgver=2.9.7
 pkgrel=1
 pkgdesc="An Amstrad CPC emulator in Java, based on JEMU"
 arch=('i686' 'x86_64')
@@ -13,10 +13,10 @@ source=("http://downloads.sourceforge.net/project/javacpc/JavaCPC%20Desktop/Java
         "javacpc"
         "javacpc.desktop"
         "javacpc_icon.png")
-md5sums=('26af2788407e07d8e4cb1a254652ecb2'
-         '33ea1029c38c0db8d8a6a83da52f6abe'
-         'ad11d7aba73f349177d8cc2014b9b874'
-         'e7711486f5ab6a9c907745f47eef853d')
+sha256sums=('43adde98623c4f9a750b723d324b60952a04b2bd6a9c3e305e6c73153e464946'
+            'ad13382d3394c6e2f6718e4949718288e07f3ce2da32223b424a9c8586687357'
+            '813741da2e0dab0dee069c91fedcce3fc6434e652606c2074cd5f8a171d8ce57'
+            'a843c0c69d7142d72002dd5e7e94fa2e451f5218dc7f3d461edce2c47775f0f3')
 
 package() {
   cd $srcdir
@@ -28,3 +28,4 @@ package() {
   install -D javacpc_icon.png $pkgdir/usr/share/icons/javacpc_icon.png
   install -D javacpc.desktop $pkgdir/usr/share/applications/javacpc.desktop
 }
+
