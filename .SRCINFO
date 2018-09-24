@@ -1,7 +1,7 @@
 pkgbase = evostream-libavbin
 	pkgdesc = libav project compiled by EvoStream
 	pkgver = 2.0.1.5649
-	pkgrel = 2
+	pkgrel = 3
 	url = https://evostream.com/
 	arch = x86_64
 	arch = i686
@@ -16,4 +16,6 @@ pkgbase = evostream-libavbin
 	md5sums = ee93910c6589b26c8eb056921f1944f8
 
 pkgname = evostream-libavbin
+	depends = zlib
+	depends = bash
 

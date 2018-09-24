@@ -1,7 +1,7 @@
 # Maintainer: Tomasz Jakub Rup <tomasz.rup@gmail.com>
 pkgname=evostream-libavbin
 pkgver=2.0.1.5649
-pkgrel=2
+pkgrel=3
 pkgdesc="libav project compiled by EvoStream"
 arch=('x86_64' 'i686')
 url="https://evostream.com/"
@@ -21,6 +21,8 @@ build() {
 }
 
 package() {
+  depends=('zlib' 'bash')
+
   msg2 "Extracting the data.tar.xz..."
   bsdtar -xf data.tar.xz -C "${pkgdir}/"
 
