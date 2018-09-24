@@ -15,7 +15,7 @@ md5sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
 	cd ly
-	git describe --tags
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
