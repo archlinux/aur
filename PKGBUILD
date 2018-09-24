@@ -39,7 +39,7 @@ build() {
 	  -DBUILD_TESTS=False \
 	  -DBUILD_SHARED_LIBS=true \
 	  -DCMAKE_INSTALL_LIBDIR=lib \
-	  -DUSE_PLUSE=true \
+	  -DUSE_PULSE=true \
 	  -DUSE_ALSA=true \
 	  -DUSE_JACK=true \
 	  -DUSE_SNDIO=true \
