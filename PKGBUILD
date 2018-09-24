@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-libsoup
-pkgver=2.64.0
+pkgver=2.64.1
 pkgrel=1
 pkgdesc="HTTP client/server library (mingw-w64)"
 arch=(any)
@@ -10,7 +10,7 @@ depends=('mingw-w64-glib2' 'mingw-w64-glib-networking' 'mingw-w64-sqlite' 'mingw
 makedepends=('mingw-w64-meson')
 options=(!strip !buildflags staticlibs)
 source=("http://ftp.gnome.org/pub/GNOME/sources/libsoup/${pkgver%.*}/libsoup-$pkgver.tar.xz")
-sha256sums=('d95bc9602c97ec805d80e5ddf75605665c4c4d6b2c56893c416e707ef578e727')
+sha256sums=('359bd02a909bfd43f68712146e9c4f4c643bffa84e513d8b0af1be215a92e1f3')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -31,6 +31,9 @@ build() {
 package() {
   for _arch in ${_architectures}; do
     DESTDIR="${pkgdir}" ninja -C "${srcdir}/libsoup-${pkgver}/build-${_arch}" install
+  
+    # see https://github.com/mesonbuild/meson/issues/4138 
+    ${_arch}-gcc-ranlib ${pkgdir}/usr/${_arch}/lib/*.a
   done
 }
 
