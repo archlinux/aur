@@ -1,23 +1,29 @@
 pkgbase = python-uproot
 	pkgdesc = Minimalist CERN ROOT I/O in pure Python and Numpy
-	pkgver = 2.9.0
-	pkgrel = 3
+	pkgver = 3.0.2
+	pkgrel = 1
 	url = https://github.com/scikit-hep/uproot
 	arch = any
 	license = BSD
 	options = !emptydirs
-	source = https://github.com/scikit-hep/uproot/archive/2.9.0.zip
-	sha256sums = 352d21d99e5f469086bbb5a1d516a9ebba5b322abdd5235be42c6d80d650beae
+	source = https://github.com/scikit-hep/uproot/archive/3.0.2.zip
+	sha256sums = 673213b05f116bfd67506c3657a789bdd835086618dce5f265eff9804c064daa
 
 pkgname = python2-uproot
+	depends = python2-awkward-array
+	depends = python2-cachetools
+	depends = python2-lz4
 	depends = python2-numpy
+	depends = python2-uproot-methods
 	optdepends = python2-futures: Python2 parallel processing
-	optdepends = python2-lz4: compression used by some ROOT files
+	optdepends = python2-backports.lzma: LZMA compression used by some ROOT files
 	optdepends = xrootd: access remote files over XRootD
-	optdepends = xz: compression used by some ROOT files
 
 pkgname = python-uproot
+	depends = python-awkward-array
+	depends = python-cachetools
+	depends = python-lz4
 	depends = python-numpy
-	optdepends = python-lz4: compression used by some ROOT files
+	depends = python-uproot-methods
 	optdepends = xrootd: access remote files over XRootD
 
