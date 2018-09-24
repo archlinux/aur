@@ -18,8 +18,8 @@ export ANDROID_MINIMUM_PLATFORM
 
 _pkgname=android-qt5
 pkgname=${_pkgname}-${android_arch}
-pkgver=5.11.1
-pkgrel=2
+pkgver=5.11.2
+pkgrel=1
 pkgdesc="Qt 5 for Android"
 arch=('x86_64')
 url='https://www.qt.io'
@@ -64,17 +64,15 @@ options=('!strip'
          '!emptydirs')
 _pkgfqn="qt-everywhere-src-${pkgver}"
 source=("http://download.qt-project.org/official_releases/qt/${pkgver:0:4}/${pkgver}/single/${_pkgfqn}.tar.xz"
-        "0034-Fix-build-error-related-to-glibc-2.28-and-stat.patch")
-md5sums=('c6f0854d7de7bde80cfd8cc85bb7152b'
-         'SKIP')
+        "0001-Fix-clang-build.patch")
+md5sums=('152a8ade9c11fe33ff5bc95310a1bb64'
+         '511eafcabe9e0c6210f1dc5e26daa5c8')
 
 prepare() {
     cd ${_pkgfqn}
 
     # Platform specific patches.
-
-    # Apply patch for glibc 2.28
-    patch -Np1 -i "../0034-Fix-build-error-related-to-glibc-2.28-and-stat.patch"
+    patch -Np1 -i "../0001-Fix-clang-build.patch"
 }
 
 get_last() {
@@ -111,7 +109,7 @@ build() {
         export ANDROID_NDK_PLATFORM=android-$ANDROID_MINIMUM_PLATFORM
     fi
 
-    _pref=/opt/${_pkgname}/${pkgver}/${android_arch}
+    _pref=/opt/${_pkgname}/${android_arch}
 
     configue_opts="
         -confirm-license
@@ -119,7 +117,7 @@ build() {
         -silent
         -prefix ${_pref}
         -docdir ${_pref}/doc
-        -xplatform android-g++
+        -xplatform android-clang
         -nomake tests
         -nomake examples
         -android-ndk ${ANDROID_NDK_ROOT}
@@ -134,6 +132,11 @@ build() {
         -qt-freetype
         -android-arch ${android_arch}
         -android-ndk-platform ${ANDROID_NDK_PLATFORM}"
+
+    # qtlocation needs mapbox-gl-native, and mapbox-gl-native needs C++17 and
+    # higher so disable it for a while.
+    configue_opts+="
+        -skip qtlocation"
 
     # Platform specific patches
     case "$android_arch" in
@@ -177,7 +180,7 @@ package() {
 
     export ANDROID_NDK_ROOT=/opt/android-ndk
     STRIP=${ANDROID_NDK_ROOT}/toolchains/${toolchain}/prebuilt/linux-x86_64/${stripFolder}/bin/strip
-    find ${pkgdir}/opt/${_pkgname}/${pkgver}/${android_arch}/lib -name 'lib*.so' -exec ${STRIP} {} \;
-    find ${pkgdir}/opt/${_pkgname}/${pkgver}/${android_arch}/lib \( -name 'lib*.a' ! -name 'libQt5Bootstrap.a' ! -name 'libQt5QmlDevTools.a' \) -exec ${STRIP} {} \;
-    find ${pkgdir}/opt/${_pkgname}/${pkgver}/${android_arch}/plugins -name 'lib*.so' -exec ${STRIP} {} \;
+    find ${pkgdir}/opt/${_pkgname}/${android_arch}/lib -name 'lib*.so' -exec ${STRIP} {} \;
+    find ${pkgdir}/opt/${_pkgname}/${android_arch}/lib \( -name 'lib*.a' ! -name 'libQt5Bootstrap.a' ! -name 'libQt5QmlDevTools.a' \) -exec ${STRIP} {} \;
+    find ${pkgdir}/opt/${_pkgname}/${android_arch}/plugins -name 'lib*.so' -exec ${STRIP} {} \;
 }
