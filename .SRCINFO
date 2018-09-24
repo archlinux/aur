@@ -1,6 +1,6 @@
 pkgbase = flatplat-blue-theme
 	pkgdesc = A Material Design-like flat theme for GTK3, GTK2, and GNOME-Shell.
-	pkgver = 3.28.1
+	pkgver = 3.30.0
 	pkgrel = 1
 	url = https://github.com/peterychuang/Flat-Plat-Blue
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = flatplat-blue-theme
 	depends = gtk-engine-murrine
 	depends = gnome-themes-standard
 	provides = flatplat-blue-theme
-	source = Flat-Plat-Blue-3.28.1::https://github.com/peterychuang/Flat-Plat-Blue/archive/3.28.1.tar.gz
-	sha256sums = f9b8e2b7350087891962e3dc694734e4f8742b83dc498ff8ee4c5dee03d84c3b
+	source = Flat-Plat-Blue-3.30.0::https://github.com/peterychuang/Flat-Plat-Blue/archive/3.30.0.tar.gz
+	sha256sums = 27cd96d928ae75b92d730658038a81495e19e823ee60e0bf6a604c96084f8d1b
 
 pkgname = flatplat-blue-theme
 
