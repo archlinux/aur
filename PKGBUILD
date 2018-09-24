@@ -29,4 +29,3 @@ package() {
   make DESTDIR="$pkgdir" install
   install -Dm644 ../$pkgname-$pkgver/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
