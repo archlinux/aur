@@ -2,7 +2,7 @@
 
 pkgname=pantheon-qq-default-settings-git
 pkgver=r340.09ae797
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/elementary/default-settings'
 license=('GPL')
@@ -54,4 +54,5 @@ package() {
     rm $pkgdir/etc/lightdm/lightdm.conf
     install -Dm 644 $pkgdir/etc/gtk-3.0/settings.ini $pkgdir/etc/skel/.config/gtk-3.0/settings.ini
     rm $pkgdir/etc/gtk-3.0/settings.ini
+    rm $pkgdir/usr/share/cups/data/default-testpage.pdf
 }

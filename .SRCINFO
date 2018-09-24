@@ -1,7 +1,7 @@
 pkgbase = pantheon-qq-default-settings-git
 	pkgdesc = Default settings for Pantheon derivatives
 	pkgver = r340.09ae797
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/elementary/default-settings
 	arch = any
 	groups = pantheon-qq
