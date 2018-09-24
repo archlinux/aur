@@ -1,2 +1,3 @@
 #!/bin/bash
+cd /usr/share/veloren/voxygen
 exec /usr/share/veloren/voxygen/voxygen "$@"

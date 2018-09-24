@@ -2,7 +2,7 @@
 
 pkgname=veloren-git 
 pkgver=0.1.0.r149.4e9bc27
-pkgrel=2
+pkgrel=3
 pkgdesc="An open-world, open-source multiplayer voxel RPG"
 arch=('x86_64' 'i686')
 url="veloren.net"
