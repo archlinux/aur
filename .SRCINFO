@@ -1,13 +1,13 @@
 pkgbase = macos11-icon-theme
 	pkgdesc = macOS11 iCons Collection
-	pkgver = 4.5.1
+	pkgver = 4.6
 	pkgrel = 1
 	url = https://www.opendesktop.org/p/1102582/
 	arch = any
 	license = GPL
 	depends = gtk-update-icon-cache
-	source = https://dl.opendesktop.org/api/files/downloadfile/id/1529627496/s/$_s/t/$_t/macos11-icon-theme-4.5.1.tar.xz
-	md5sums = c4e9b1ed1ce6a363b9c3a66b09e63fa7
+	source = https://dl.opendesktop.org/api/files/download/id/1533641153/s/$_s/t/$_t/macos11-icon-theme-4.6.tar.xz
+	md5sums = 69224980e432c65a8e50009033ed66e1
 
 pkgname = macos11-icon-theme
 

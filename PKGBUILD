@@ -1,7 +1,7 @@
 # Maintainer: Chanathip Srithanrat <axesd9@gmail.com>
 
 pkgname=macos11-icon-theme
-pkgver=4.5.1
+pkgver=4.6
 pkgrel=1
 pkgdesc='macOS11 iCons Collection'
 arch=('any')
@@ -13,12 +13,11 @@ depends=('gtk-update-icon-cache')
 _p="var \(hash = '\(.*\)\|timetamp = '\(.*\)\)';"
 read _s _t <<< $(echo -n $(curl -s $url | sed -n "s/$_p/\2\3/p"))
 
-source=("https://dl.opendesktop.org/api/files/downloadfile/id/1529627496/s/$_s/t/$_t/$pkgname-$pkgver.tar.xz")
-md5sums=('c4e9b1ed1ce6a363b9c3a66b09e63fa7')
+source=("https://dl.opendesktop.org/api/files/download/id/1533641153/s/$_s/t/$_t/$pkgname-$pkgver.tar.xz")
+md5sums=('69224980e432c65a8e50009033ed66e1')
 
 prepare() {
     find -name '* *' -delete
-    cp macOS11/apps/128/accessories_calculator.png macOS11/apps/128/gnome-calculator.png
 }
 
 package() {
