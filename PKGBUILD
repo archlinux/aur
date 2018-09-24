@@ -2,13 +2,13 @@
 
 pkgname=alpaca
 pkgver="0.2.8"
-pkgrel=2
+pkgrel=3
 pkgdesc="Functional programming inspired by ML for the Erlang VM"
 arch=('any')
 url="http://alpaca-lang.org/"
 license=('Apache2')
 depends=('erlang-nox')
-makedepends=('rebar3')
+makedepends=('rebar3' 'git')
 checkdepends=()
 optdepends=()
 provides=('alpaca')
@@ -36,15 +36,15 @@ build() {
 }
 
 check() {
-	cd "$pkgname-$pkgver"
-	
+        cd "$pkgname-$pkgver"
+
     ## Currently there are tests failing!
     # rebar3 eunit
     # rebar3 dialyzer
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+        cd "$pkgname-$pkgver"
 
     local basedir="${pkgdir}/usr/local/lib/alpaca"
 

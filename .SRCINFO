@@ -1,11 +1,12 @@
 pkgbase = alpaca
 	pkgdesc = Functional programming inspired by ML for the Erlang VM
 	pkgver = 0.2.8
-	pkgrel = 2
+	pkgrel = 3
 	url = http://alpaca-lang.org/
 	arch = any
 	license = Apache2
 	makedepends = rebar3
+	makedepends = git
 	depends = erlang-nox
 	provides = alpaca
 	options = !strip
