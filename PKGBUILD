@@ -3,7 +3,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Bug reports can be filed at https://bugs.square-r00t.net/index.php?project=3
 # News updates for packages can be followed at https://devblog.square-r00t.net
 pkgname=q2pro-git
-pkgver=r1504
+pkgver=r1713
 pkgrel=1
 pkgdesc="An enhanced Quake 2 client and server (Git/source build)"
 arch=( 'i686' 'x86_64' )
@@ -72,8 +72,8 @@ build() {
 package() {
 	cd "${srcdir}/${_pkgname}"
 	#make DESTDIR="${pkgdir}/" install
-	install -D -m 0644 ${srcdir}/${_pkgname}/README ${pkgdir}/usr/share/doc/${_pkgname}/README
-	install -D -m 0644 ${srcdir}/${_pkgname}/INSTALL ${pkgdir}/usr/share/doc/${_pkgname}/INSTALL
+	install -D -m 0644 ${srcdir}/${_pkgname}/README.md ${pkgdir}/usr/share/doc/${_pkgname}/README.md
+	install -D -m 0644 ${srcdir}/${_pkgname}/INSTALL.md ${pkgdir}/usr/share/doc/${_pkgname}/INSTALL.md
 	cp -a ${srcdir}/${_pkgname}/doc/* ${pkgdir}/usr/share/doc/${_pkgname}/.
 	install -d -m 0755 ${pkgdir}/usr/share/games/${_pkgname}/baseq2
 	install -d -m 0755 ${pkgdir}/usr/lib/${_pkgname}/baseq2
