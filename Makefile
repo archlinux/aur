@@ -11,3 +11,6 @@ srcinfo:
 
 clean:
 	rm -rf pkg/ src/
+
+check:
+	namcap *.pkg.tar.xz
