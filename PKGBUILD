@@ -1,6 +1,6 @@
 # Maintainer: Peter Klotz <peter.klotz99@gmail.com>
 pkgname=uex
-pkgver=18.00.0.34
+pkgver=18.00.0.40
 pkgrel=1
 pkgdesc="UltraEdit is a powerful text editor."
 arch=('i686' 'x86_64')
@@ -9,10 +9,10 @@ license=('custom')
 depends=('desktop-file-utils' 'webkit2gtk' 'libjpeg' 'libpng' 'libsm')
 if [ "${CARCH}" = 'i686' ]; then
   source=(https://downloads.ultraedit.com/main/ue/linux/tar/uex-${pkgver}_i386.tar.gz)
-  sha256sums=('ef7eef70255b402007aff4152d1b8311e5a9c89b3d82925741d95e6065eb4434')
+  sha256sums=('1efd75b42a368d0e4f57c9705c31336c973a5619581a1fc10fba9d40a55aa607')
 else
   source=(https://downloads.ultraedit.com/main/ue/linux/tar/uex-${pkgver}_amd64.tar.gz)
-  sha256sums=('6883a611ff420bc2a1370726896216bd1819ba20ac18be7e33e99077de64688e')
+  sha256sums=('f8287a9bff7d218e74c72bdb237358655a1c2981fa2a64e088e476e7b17fd635')
 fi
 DLAGENTS=('https::/usr/bin/curl -fLC - --user-agent Lynx --retry 3 --retry-delay 3 -o %o %u')
 
