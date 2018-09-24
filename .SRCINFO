@@ -5,7 +5,6 @@ pkgbase = wingpanel-standalone-git
 	url = https://github.com/elementary/wingpanel
 	arch = i686
 	arch = x86_64
-	groups = pantheon-unstable
 	groups = pantheon-qq
 	license = GPL3
 	makedepends = cmake

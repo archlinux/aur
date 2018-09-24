@@ -8,7 +8,7 @@ pkgdesc='Stylish top panel that holds indicators and spawns an application launc
 arch=('i686' 'x86_64')
 url='https://github.com/elementary/wingpanel'
 license=('GPL3')
-groups=('pantheon-unstable' 'pantheon-qq')
+groups=('pantheon-qq')
 depends=('glib2' 'glibc' 'gtk3' 'libgee'
          'libgranite.so' 'libwnck3')
 makedepends=('cmake' 'git' 'granite-git' 'vala')
