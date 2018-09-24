@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Nozbe
+Comment=Tasks, Projects & Team Productivity
+Exec=/opt/Nozbe/Nozbe -c %u
+Icon=/opt/Nozbe/Nozbe.png
+MimeType=x-scheme-handler/nozbe;
+StartupNotify=false
+Categories=Office;

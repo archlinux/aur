@@ -1,0 +1,21 @@
+pkgbase = nozbe
+	pkgdesc = To-do, task, project and time management application.
+	pkgver = 3.8.0
+	pkgrel = 1
+	url = https://nozbe.com
+	arch = x86_64
+	license = custom
+	depends = alsa-lib
+	depends = freetype2
+	depends = gconf
+	depends = gtk2
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	source = https://files.nozbe.com/linux/linux64_newest.tar.gz
+	source = Nozbe.desktop
+	sha256sums = fe34ec7c54a659e9a727ea4ddaf4a378f60e3ffb374b5697bb8b68ba521e2ae0
+	sha256sums = 1d3d5ac6354d705ea467942732f2a60aa7c2eda86cf0d65da7026f98c69e3c63
+
+pkgname = nozbe
+
