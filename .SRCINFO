@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-crt-git
 	pkgdesc = MinGW-w64 CRT for Windows (git version)
-	pkgver = 5.0.4.20180610
+	pkgver = 6.0.0.20180923
 	pkgrel = 1
 	url = https://mingw-w64.org/doku.php
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = mingw-w64-crt-git
 	makedepends = git
 	makedepends = mingw-w64-gcc-base
 	makedepends = mingw-w64-binutils
-	makedepends = mingw-w64-headers-git>=5.0.4.20180610
-	provides = mingw-w64-crt=5.0.4.20180610
+	makedepends = mingw-w64-headers-git>=6.0.0.20180923
+	provides = mingw-w64-crt=6.0.0.20180923
 	conflicts = mingw-w64-crt
 	options = !strip
 	options = staticlibs
