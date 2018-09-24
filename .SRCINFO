@@ -6,6 +6,7 @@ pkgbase = mato-icons-git
 	arch = any
 	license = Creative Commons Attribution-ShareAlike 4.0 International Public License
 	makedepends = git
+	makedepends = xorg-xcursorgen
 	provides = mato-icons
 	conflicts = mato-icons
 	source = mato-icons-git::git+https://github.com/flipflop97/Mato.git
