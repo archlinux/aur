@@ -1,6 +1,6 @@
 pkgbase = clipgrab-qt5
 	pkgdesc = A video downloader and converter for YouTube, Veoh, DailyMotion, MyVideo, ... (Qt5)
-	pkgver = 3.6.9
+	pkgver = 3.7.0
 	pkgrel = 1
 	url = http://clipgrab.org
 	arch = i686
@@ -8,10 +8,10 @@ pkgbase = clipgrab-qt5
 	license = GPL3
 	depends = qt5-webkit
 	optdepends = ffmpeg: for the conversion functionality
-	source = https://download.clipgrab.org/clipgrab-3.6.9.tar.gz
+	source = https://download.clipgrab.org/clipgrab-3.7.0.tar.gz
 	source = clipgrab-qt5.desktop
 	source = https://gitlab.com/kikadf/clipgrab-qt5/raw/patch/patch/clipgrab-qt5-3.6.9.patch
-	md5sums = c11aebd9dfd61465484868566bd3a9e6
+	md5sums = 8f54061684222239c36e8e5fa45e9d00
 	md5sums = 86ec4e7907a20dcae2c0cf6ad2438632
 	md5sums = 849ec64b6f3d5253001e790ba7309577
 
