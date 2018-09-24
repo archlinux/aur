@@ -1,6 +1,6 @@
 # Maintainer: Greizgh <greizgh@ephax.org>
 pkgname=usbautomator
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Execute commands when USB device is un/plugged"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('libsystemd')
 makedepends=('cargo')
 provides=(usbautomator)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/greizgh/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('cfa1f380f75b472923b2e8699a01f5c61ac385f08243307293494e01a611e505')
+sha256sums=('7887dab861595c31930050f28c37848468d0eb51b15b47d2e8d0b2da00a95293')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
