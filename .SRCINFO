@@ -1,0 +1,17 @@
+pkgbase = vpp-lib-bin
+	pkgdesc = FD.io Vector Packet Processing - Libraries
+	pkgver = 18.07.1
+	pkgrel = 1
+	url = https://fd.io/
+	arch = x86_64
+	license = Apache
+	depends = glibc
+	depends = gcc-libs
+	depends = openssl
+	provides = vpp-lib
+	noextract = download.deb
+	source = https://packagecloud.io/fdio/release/packages/ubuntu/bionic/vpp-lib_18.07.1-release_amd64.deb/download.deb
+	sha256sums = fc2938dc7b1a659c8a4c9534e9ff07b3c570d7b239be9459cfcfb5cae77f2b85
+
+pkgname = vpp-lib-bin
+
