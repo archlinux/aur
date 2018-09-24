@@ -2,7 +2,7 @@
 _pkgbase='cubeb'
 pkgbase="$_pkgbase-git"
 pkgname="$_pkgbase-git"
-pkgver=r1194.12b78c0
+pkgver=r1214.b832dae
 pkgrel=1
 pkgdesc="A cross platform audio library"
 arch=('i686' 'x86_64')

@@ -1,6 +1,6 @@
 pkgbase = cubeb-git
 	pkgdesc = A cross platform audio library
-	pkgver = r1194.12b78c0
+	pkgver = r1214.b832dae
 	pkgrel = 1
 	url = https://github.com/kinetiknz/cubeb
 	arch = i686
