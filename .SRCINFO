@@ -1,11 +1,11 @@
 pkgbase = xfce4-xkb-plugin-git
 	pkgdesc = Plugin to switch keyboard layouts for the Xfce4 panel
-	pkgver = 0.8.0.r2.g5691ad6
+	pkgver = 0.8.1.r94.g2d3801f
 	pkgrel = 1
-	url = http://goodies.xfce.org/projects/panel-plugins/xfce4-xkb-plugin
+	url = https://goodies.xfce.org/projects/panel-plugins/xfce4-xkb-plugin
 	arch = i686
 	arch = x86_64
-	license = custom
+	license = GPL2
 	makedepends = xfce4-dev-tools
 	depends = xfce4-panel
 	depends = libxklavier

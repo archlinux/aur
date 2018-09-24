@@ -1,12 +1,13 @@
+# Maintainer: Igor <f2404@yandex.ru>
 # Maintainer: gbr <gbr@protonmail.com>
 pkgname='xfce4-xkb-plugin-git'
 _pkgname='xfce4-xkb-plugin'
-pkgver='0.8.0.r2.g5691ad6'
+pkgver=0.8.1.r94.g2d3801f
 pkgrel=1
 pkgdesc='Plugin to switch keyboard layouts for the Xfce4 panel'
 arch=('i686' 'x86_64')
-url='http://goodies.xfce.org/projects/panel-plugins/xfce4-xkb-plugin'
-license=('custom')
+url='https://goodies.xfce.org/projects/panel-plugins/xfce4-xkb-plugin'
+license=('GPL2')
 depends=('xfce4-panel' 'libxklavier' 'librsvg' 'libwnck3')
 makedepends=('xfce4-dev-tools')
 conflicts=('xfce4-xkb-plugin')
