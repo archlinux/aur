@@ -2,7 +2,7 @@
 
 pkgname=macos-icon-theme
 pkgver=4.6
-pkgrel=1
+pkgrel=2
 pkgdesc='macOS iCons Collection'
 arch=('any')
 url='https://www.opendesktop.org/p/1102582/'
@@ -13,7 +13,7 @@ depends=('gtk-update-icon-cache')
 _p="var \(hash = '\(.*\)\|timetamp = '\(.*\)\)';"
 read _s _t <<< $(echo -n $(curl -s $url | sed -n "s/$_p/\2\3/p"))
 
-source=("https://dl.opendesktop.org/api/files/download/id/1533641078/s/$_s/t/$_t/u//$pkgname-$pkgver.tar.xz")
+source=("https://dl.opendesktop.org/api/files/download/id/1533641078/s/$_s/t/$_t/$pkgname-$pkgver.tar.xz")
 md5sums=('ca465c201306cdaee71e6f2d6588afe8')
 
 prepare() {
