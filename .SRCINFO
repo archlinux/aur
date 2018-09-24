@@ -1,6 +1,6 @@
 pkgbase = notejot-git
 	pkgdesc = A stupidly-simple sticky notes application for any type of short term notes or ideas
-	pkgver = r199.19178e8
+	pkgver = r228.ab12db3
 	pkgrel = 1
 	url = https://github.com/lainsce/notejot
 	arch = i686

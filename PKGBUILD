@@ -2,7 +2,7 @@
 
 pkgname='notejot-git'
 _appname='notejot'
-pkgver='r199.19178e8'
+pkgver='r228.ab12db3'
 pkgrel=1
 pkgdesc='A stupidly-simple sticky notes application for any type of short term notes or ideas'
 arch=('i686' 'x86_64')
