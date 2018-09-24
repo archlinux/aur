@@ -1,14 +1,14 @@
 pkgbase = python-flask-seasurf
 	pkgdesc = Flask extension for preventing cross-site request forgery (CSRF)
-	pkgver = 0.2.1
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = http://flask-seasurf.readthedocs.io
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python-flask
-	source = https://github.com/maxcountryman/flask-seasurf/archive/0.2.1.tar.gz
-	sha256sums = b9e9a6d500cfb6e93b5794e416223f22879d81a467eeb79f44123401b52aeac0
+	source = https://github.com/maxcountryman/flask-seasurf/archive/0.2.3.tar.gz
+	sha256sums = a3af184f32190217704720628e3694ea533004d238b644fe96d0bc7bac5b2d62
 
 pkgname = python-flask-seasurf
 

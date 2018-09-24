@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 _pkgname=flask-seasurf
 pkgname='python-flask-seasurf'
-pkgver='0.2.1'
+pkgver='0.2.3'
 pkgrel='1'
 pkgdesc='Flask extension for preventing cross-site request forgery (CSRF)'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python-flask')
 makedepends=('python-setuptools')
 
 source=("https://github.com/maxcountryman/flask-seasurf/archive/$pkgver.tar.gz")
-sha256sums=('b9e9a6d500cfb6e93b5794e416223f22879d81a467eeb79f44123401b52aeac0')
+sha256sums=('a3af184f32190217704720628e3694ea533004d238b644fe96d0bc7bac5b2d62')
 
 build() {
   cd "${_pkgname}-${pkgver}"
