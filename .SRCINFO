@@ -5,7 +5,6 @@ pkgbase = pantheon-qq-default-settings-git
 	url = https://github.com/elementary/default-settings
 	arch = any
 	groups = pantheon-qq
-	groups = pantheon-unstable
 	license = GPL
 	makedepends = git
 	makedepends = meson
