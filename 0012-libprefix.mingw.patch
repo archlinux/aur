@@ -12,21 +12,7 @@ diff -urN icu.orig/source/config/mh-mingw icu/source/config/mh-mingw
  
  ## Compiler switch to embed a runtime search path
  LD_RPATH=	
-@@ -61,19 +61,19 @@
- endif
- 
- # Static library prefix and file extension
--LIBSICU = lib$(LIBPREFIX)$(STATIC_PREFIX)$(ICUPREFIX)
-+LIBSICU = $(LIBPREFIX)$(STATIC_PREFIX)$(ICUPREFIX)
- A = a
- 
- ## An import library is needed for z/OS and MSVC
- IMPORT_LIB_EXT = .dll.a
- 
--LIBPREFIX=
-+LIBPREFIX=lib
- 
- # Change the stubnames so that poorly working FAT disks and installation programs can work.
+@@ -61,7 +61,7 @@
  # This is also for backwards compatibility.
  DATA_STUBNAME = dt
  I18N_STUBNAME = in
