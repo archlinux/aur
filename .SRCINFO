@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-glib-networking
 	pkgdesc = Network-related GIO modules for glib (mingw-w64)
 	pkgver = 2.58.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.gnome.org/browse/glib-networking
 	arch = any
 	license = LGPL2.1

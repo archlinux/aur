@@ -1,7 +1,7 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-glib-networking
 pkgver=2.58.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Network-related GIO modules for glib (mingw-w64)"
 arch=('any')
 url="https://git.gnome.org/browse/glib-networking"
@@ -31,7 +31,7 @@ package() {
   for _arch in ${_architectures}; do
     DESTDIR="${pkgdir}" ninja -C "${srcdir}/glib-networking-${pkgver}/build-${_arch}" install
 
-    #FIXME: Ranlib (isn't meson supposed to do this?)
+    # see https://github.com/mesonbuild/meson/issues/4138 
     ${_arch}-gcc-ranlib ${pkgdir}/usr/${_arch}/lib/gio/modules/*.a
   done
 }
