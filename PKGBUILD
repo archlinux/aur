@@ -11,7 +11,7 @@ pkgname=('nim-git' 'nimble-git' 'nimsuggest-git' 'nimpretty-git')
 pkgdesc='Nim is a compiled, garbage-collected systems programming language with a design that focuses on efficiency, expressiveness, and elegance (in that order of priority).'
 epoch=1
 pkgver=0.18.0.r1444.g276a05e57
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 groups=('nim')
 makedepends=('git')
@@ -100,11 +100,11 @@ package_nim-git() {
   install -Dm 755 bin/{nim,nimgrep} -t "$pkgdir/usr/bin"
 
   cd "${pkgdir}/nim"
-  install -dm 755 "${pkgdir}"/{etc,usr/lib/nim}
+  install -dm 755 "${pkgdir}"/{etc/nim,usr/lib/nim}
   find lib -mindepth 1 -maxdepth 1 -exec \
     cp -dpr --no-preserve=ownership '{}' -t "$pkgdir/usr/lib/nim" \;
   find config -mindepth 1 -maxdepth 1 -exec \
-    cp -dpr --no-preserve=ownership '{}' -t "$pkgdir/etc/" \;
+    cp -dpr --no-preserve=ownership '{}' -t "$pkgdir/etc/nim" \;
   cp -dpr --no-preserve=ownership \
     "$srcdir/Nim/lib/packages"    \
     -t "$pkgdir/usr/lib/nim"

@@ -1,7 +1,7 @@
 pkgbase = nim-git
 	pkgdesc = Nim is a compiled, garbage-collected systems programming language with a design that focuses on efficiency, expressiveness, and elegance (in that order of priority).
 	pkgver = 0.18.0.r1444.g276a05e57
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	arch = i686
 	arch = x86_64
