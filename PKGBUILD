@@ -1,19 +1,15 @@
 #Contributor: Hector Mtz-Seara <hseara.#at#.gmail*.*com>
 pkgname=pyzo
 pkgver=4.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Pyzo is a cross-platform Python IDE focused on interactivity and introspection, which makes it very suitable for scientific computing."
 url="http://pyzo.org"
 license=("BSD")
 arch=('any')
-#depends=('python-pyzolib')
-#replaces=('iep')
-#conflicts=('iep')
-optdepends=(
-   'python-pyqt4: At least one qt4 python bindings should be installed'
-   'python-pyside: At lease one qt4 python bindings should be installed'
-)
+depends=('python-pyqt5') # At lease one qt5 python bindings should be installed
+#depends=('pyside2') # At lease one qt5 python bindings should be installed
 makedepends=('python-setuptools')
+pyver=3.7 #To be adjusted to the default python version in the system
 
 
 source=("https://github.com/pyzo/pyzo/archive/v${pkgver}.tar.gz")
@@ -39,10 +35,10 @@ package(){
 Version=${pkgver}
 Type=Application
 Encoding=UTF-8
-Name=pyzo
-Comment=Pyzo is a cross-platform Python IDE
+Name=Pyzo
+GenericName=Pyzo is a cross-platform Python IDE
 Exec=/usr/bin/pyzo
-Icon=/usr/lib/python3.6/site-packages/pyzo/resources/appicons/pyzologo.ico
+Icon=/usr/lib/python${pyver}/site-packages/pyzo/resources/appicons/pyzologo.ico
 Categories=Python;Development;IDE;
 EOF
 
