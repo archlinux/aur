@@ -1,12 +1,12 @@
 pkgbase = mcos-shell-theme
 	pkgdesc = McOS Shell Theme
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.opendesktop.org/p/1241688/
 	arch = any
 	license = GPL
 	depends = gnome-shell-extensions
-	source = https://dl.opendesktop.org/api/files/downloadfile/id/1529367872/s/$_s/t/$_t/mcos-shell-theme-1.2.tar.xz
+	source = https://dl.opendesktop.org/api/files/download/id/1529367872/s/$_s/t/$_t/mcos-shell-theme-1.2.tar.xz
 	md5sums = 3e8e2e6d642665b4ad79563dcf7bd6d6
 
 pkgname = mcos-shell-theme
