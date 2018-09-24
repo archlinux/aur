@@ -1,11 +1,11 @@
 # Maintainer: Jean-Luc Tambasco <an.obscurity@gmail.com>
 _srcname=S4
 pkgname=s4-git
-pkgver=r187.1a5bd64
+pkgver=r206.7fd00a2
 pkgrel=1
 pkgdesc="S4 (or simply S4) stands for Stanford Stratified Structure Solver, a frequency domain code to solve the linear Maxwell’s equations in layered periodic structures."
 arch=('i686' 'x86_64')
-url=""
+url="https://web.stanford.edu/group/fan/S4/#"
 license=('GPL')
 groups=()
 depends=('lua>=5.2.0' 'python3' 'openblas' 'fftw' 'suitesparse' 'openmpi')
@@ -18,7 +18,7 @@ backup=()
 options=()
 install=
 changelog=
-source=('S4::git+https://github.com/kwrobert/S4#branch=master')
+source=('S4::git+https://github.com/victorliu/S4#branch=master')
 noextract=()
 md5sums=(SKIP)
 
@@ -29,19 +29,16 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_srcname"
-
-  sed -i '/pip3/d' ./Makefile
-
-  make clean
   make
-  make S4_pyext
-  python setup.py build
 }
 
 package() {
   cd "$srcdir/$_srcname"
 
-  install -Dm644 "build/libS4.a" "$pkgdir/usr/lib/libS4.a"
+  install -d "$pkgdir/usr/lib"
+  install -d "$pkgdir/usr/bin"
 
-  python3 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  install -Dm644 build/*.so "$pkgdir/usr/lib"
+  install -Dm644 build/*.a "$pkgdir/usr/lib"
+  install -Dm755 build/S4 "$pkgdir/usr/bin"
 }
