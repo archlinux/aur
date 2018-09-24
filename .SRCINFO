@@ -1,5 +1,5 @@
 pkgbase = jrommanager
-	pkgdesc = A Rom Manager entirely written in Java and released under GPL v3
+	pkgdesc = A Rom Manager entirely written in Java and released under GPL v2
 	pkgver = 1.9b29
 	pkgrel = 4
 	url = https://github.com/optyfr/JRomManager
