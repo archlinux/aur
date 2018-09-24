@@ -24,6 +24,12 @@ build() {
   ninja
 }
 
+check() {
+  cd $_pkgname-$pkgver/build
+
+  meson test
+}
+
 package() {
   cd $_pkgname-$pkgver/build
 
