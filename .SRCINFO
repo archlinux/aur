@@ -1,19 +1,19 @@
 pkgbase = nqp
 	pkgdesc = High-level environment to create compilers and libraries for virtual machines (MoarVM backend)
-	pkgver = 2018.08
+	pkgver = 2018.09
 	pkgrel = 1
 	url = https://github.com/perl6/nqp#readme
 	arch = any
 	license = PerlArtistic
 	makedepends = perl>=5.8
 	depends = bash
-	depends = moarvm>=2018.08
+	depends = moarvm>=2018.09
 	provides = nqp-moarvm
 	conflicts = nqp-moarvm
 	replaces = nqp-moarvm
 	options = !makeflags
-	source = http://rakudo.org/downloads/nqp/nqp-2018.08.tar.gz
-	sha512sums = 663b52677c49eb4b6c5f4ed68de821d9adbe4e3fbcabf2174227b1d3dfafffa357f720557b18a5fbd121c46704dda117395c996a78af70eb367f1b23d8b2564f
+	source = http://rakudo.org/downloads/nqp/nqp-2018.09.tar.gz
+	sha512sums = 5a673430c2dce5d51f90fd8da18636d1abfd5e841f8530a51020beaffd83635a77090e52968bcbcdee361681a436834490bd2f5c383b21972cf40a9d88b28020
 
 pkgname = nqp
 

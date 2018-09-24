@@ -1,7 +1,7 @@
 # Maintainer: spider-mario <spidermario@free.fr>
 # Contributor: Marcin Karpezo <sirmacik at gmail dot com>
 pkgname=nqp
-pkgver=2018.08
+pkgver=2018.09
 pkgrel=1
 pkgdesc="High-level environment to create compilers and libraries for virtual machines (MoarVM backend)"
 arch=('any')
@@ -14,7 +14,7 @@ replaces=('nqp-moarvm')
 conflicts=('nqp-moarvm')
 options=('!makeflags')
 source=(http://rakudo.org/downloads/$pkgname/$pkgname-$pkgver.tar.gz)
-sha512sums=('663b52677c49eb4b6c5f4ed68de821d9adbe4e3fbcabf2174227b1d3dfafffa357f720557b18a5fbd121c46704dda117395c996a78af70eb367f1b23d8b2564f')
+sha512sums=('5a673430c2dce5d51f90fd8da18636d1abfd5e841f8530a51020beaffd83635a77090e52968bcbcdee361681a436834490bd2f5c383b21972cf40a9d88b28020')
 
 build() {
 	cd "$pkgname-$pkgver"
