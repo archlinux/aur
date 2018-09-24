@@ -1,7 +1,7 @@
 pkgbase = lix-git
 	pkgdesc = An action-puzzle game inspired by Lemmings
-	pkgver = r1115.fce75cef
-	pkgrel = 2
+	pkgver = 0.9.19.r1536359906.8af2dfb3
+	pkgrel = 1
 	url = http://www.lixgame.com/
 	arch = i686
 	arch = x86_64
@@ -11,14 +11,29 @@ pkgbase = lix-git
 	makedepends = dub
 	depends = allegro
 	depends = enet
+	depends = hicolor-icon-theme
 	provides = lix
 	conflicts = lix
 	source = lix::git+https://github.com/SimonN/lix-unstable.git
 	source = lix-music-1.zip::http://www.lixgame.com/dow/lix-music.zip
 	source = lix.desktop
+	source = allegro::git+https://github.com/SiegeLord/DAllegro5.git#tag=v4.0.3+5.2.0
+	source = bolts::git+https://github.com/aliak00/bolts.git#tag=v0.7.1
+	source = derelict-enet::git+https://github.com/DerelictOrg/DerelictENet.git#tag=v2.0.0
+	source = derelict-util::git+https://github.com/DerelictOrg/DerelictUtil.git#tag=v2.1.0
+	source = enumap::git+https://github.com/rcorre/enumap.git#tag=v0.4.2
+	source = optional::git+https://github.com/aliak00/optional.git#tag=v0.6.3
+	source = silly::git+https://github.com/ohdatboi/silly.git#tag=v0.7.0
 	sha512sums = SKIP
 	sha512sums = 37349c98b739ea43c25137dd03865f1c9c41eec91e5edc109afd9d50ce3871bd0c7f63c3f3599a47bb4ef52f5bfd14e034010de0ac2aec5a9c0c83eaf0b89425
 	sha512sums = 52d49562cd9be4eec76b464153af1cce2211fdbd6113a6a60df042f7e8f7e6a8f1942df883dfaaa6c1bbfea004c4154d884dfa767e25fa3fadf9c58be1103fe6
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
 
 pkgname = lix-git
 
