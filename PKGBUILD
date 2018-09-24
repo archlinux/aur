@@ -12,7 +12,7 @@ url="https://www.rust-lang.org"
 license=('MIT' 'Apache' 'custom')
 depends=('gcc-libs'
          'curl'
-         'mingw-w64-crt<5.0.4.20180112'
+         'mingw-w64-crt<6.0.0'
          'libgit2'
          'mingw-w64-gcc')
 optdepends=('mingw-w64-wine: for cargo test support')
