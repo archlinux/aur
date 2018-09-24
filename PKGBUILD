@@ -1,18 +1,19 @@
 # Maintainer: Oleksandr Natalenko <oleksandr@natalenko.name>
 # Former maintainer: Andrew Lewis <nerf@judo.za.org>
 pkgname=rspamd
-pkgver=1.7.9
-pkgrel=2
+pkgver=1.8.0
+pkgrel=1
 epoch=
 pkgdesc="Fast, free and open-source spam filtering system."
-arch=('x86_64' 'i686' 'armv7h')
+arch=(x86_64 i686 armv7h)
 url="https://rspamd.com"
-license=('BSD')
-depends=('file' 'glib2' 'icu' 'libevent' 'luajit' 'sqlite')
-makedepends=('cmake' 'ragel' 'ninja')
+license=(BSD)
+depends=(file glib2 icu libevent luajit sqlite)
+makedepends=(cmake ragel ninja)
 
 backup=('etc/rspamd/2tld.inc'
 		'etc/rspamd/actions.conf'
+		'etc/rspamd/cgp.inc'
 		'etc/rspamd/common.conf'
 		'etc/rspamd/composites.conf'
 		'etc/rspamd/dmarc_whitelist.inc'
@@ -57,6 +58,7 @@ backup=('etc/rspamd/2tld.inc'
 		'etc/rspamd/modules.d/redis.conf'
 		'etc/rspamd/modules.d/regexp.conf'
 		'etc/rspamd/modules.d/replies.conf'
+		'etc/rspamd/modules.d/reputation.conf'
 		'etc/rspamd/modules.d/rspamd_update.conf'
 		'etc/rspamd/modules.d/spamassassin.conf'
 		'etc/rspamd/modules.d/spamtrap.conf'
@@ -81,6 +83,7 @@ backup=('etc/rspamd/2tld.inc'
 		'etc/rspamd/scores.d/statistics_group.conf'
 		'etc/rspamd/scores.d/subject_group.conf'
 		'etc/rspamd/scores.d/surbl_group.conf'
+		'etc/rspamd/settings.conf'
 		'etc/rspamd/spf_dkim_whitelist.inc'
 		'etc/rspamd/statistic.conf'
 		'etc/rspamd/surbl-whitelist.inc'
@@ -89,7 +92,7 @@ backup=('etc/rspamd/2tld.inc'
 		'etc/rspamd/worker-normal.inc'
 		'etc/rspamd/worker-proxy.inc')
 
-install="rspamd.install"
+install=rspamd.install
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vstakhov/${pkgname}/archive/${pkgver}.tar.gz"
 		"${pkgname}.tmpfile"
@@ -97,7 +100,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vstakhov/${pkgname}/arc
 		"fixes-${pkgver}.diff"
 		)
 
-sha256sums=('70941726253c585799e2c4670743650472be13f85e9d31bfe23bdc13c9e9bae4'
+sha256sums=('3d83fbe240c61cf457bbbd74b9fee68c74ed5edd3480e6da358b0db7d4f732be'
             'f89edae5436a3c14e58210fb5c1d5bdd2f8a6f98c03dbc150ea9ff1a3fcfe441'
             '59646874a5036f3f26cac2898a2f60713fe6147b3c60ee964494f07b6acc313f'
             'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
@@ -131,7 +134,7 @@ package() {
 
 	DESTDIR="${pkgdir}/" cmake --build . --target install
 
-	install -Dm0644 "LICENSE" "${pkgdir}/usr/share/${pkgname}/LICENSE"
+	install -Dm0644 "LICENSE.md" -t "${pkgdir}/usr/share/${pkgname}"
 	install -Dm0644 "../${pkgname}.tmpfile" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 	install -Dm0644 "../${pkgname}.sysuser" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
 }
