@@ -1,5 +1,5 @@
 # Maintainer: nosada <ngsksdt@gmail.com>
-# Python2 ver: GI_Jack <iamjacksemail@hackermail.com>
+# Contributor: GI_Jack <iamjacksemail@hackermail.com>
 
 pkgname=python2-ipwhois
 _pkgname=ipwhois
