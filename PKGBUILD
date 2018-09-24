@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-ess-git
-pkgver=17.11.7933.ea451d4c
+pkgver=17.11.8000.820a7c51
 pkgrel=1
 pkgdesc="Emacs Speaks Statistics: A Universal Interface for \
  Statistical Analysis - git-version"
@@ -16,25 +16,24 @@ options=('docs' '!makeflags')
 install=ess.install
 source=("emacs-ess::git://github.com/emacs-ess/ESS.git")
 md5sums=('SKIP')
-_gitname="emacs-ess"
 
 pkgver() {
-  cd $_gitname
+  cd $pkgname%-git
   printf "%s.%s.%s" $(awk '/defvar ess-version/ {print $3}' lisp/ess-custom.el|sed s+-beta++|tr -d \"|tr - .) $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
 prepare() {
-  cd $_gitname/lisp
+  cd $pkgname%-git/lisp
   sed -i 's+obsolete/++' Makefile
 }
 
 build() {
-  cd $_gitname
+  cd $pkgname%-git
   make prefix=/usr
 }
 
 package() {
-  cd $_gitname
+  cd $pkgname%-git
   make DESTDIR="$pkgdir"/usr LISPDIR="$pkgdir"/usr/share/emacs/site-lisp/ess \
        INFODIR="$pkgdir"/usr/share/info/ install 
 }
