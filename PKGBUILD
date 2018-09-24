@@ -32,5 +32,5 @@ cd "$pkgdir"
   cp it.po $pkgdir/usr/share/locale/it/LC_MESSAGES/bash-fuzzy-clock.mo
   cp pt.po $pkgdir/usr/share/locale/pt_BR/LC_MESSAGES/bash-fuzzy-clock.mo
   install -p -D -m 0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -p -D -m 0644 README "${pkgdir}/usr/share/doc/${pkgname}/README"
+  install -p -D -m 0644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README"
 }
