@@ -1,0 +1,17 @@
+pkgbase = avrm-ds1307-git
+	pkgdesc = AVR library for the Maxim Intergrated DS1307.
+	pkgver = 0.0.3.r5.g4d73376
+	pkgrel = 1
+	url = https://github.com/nixpulvis/ds1307
+	arch = any
+	makedepends = git
+	depends = avrm
+	optdepends = avrdude: for flashing code to devices
+	provides = avrm-ds1307
+	conflicts = avrm-ds1307
+	options = !strip
+	source = git+https://github.com/nixpulvis/ds1307
+	md5sums = SKIP
+
+pkgname = avrm-ds1307-git
+
