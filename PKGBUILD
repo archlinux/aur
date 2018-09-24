@@ -3,11 +3,11 @@ pkgname=malbolge-disassembler
 pkgver=0.1
 pkgrel=1
 pkgdesc="transform Malbolge programs into their HeLL representation"
-url="http://www.matthias-ernst.eu/malbolgedisassembler.html"
+url="https://www.matthias-ernst.eu/malbolgedisassembler.html"
 arch=('x86_64' 'i686')
 license=('GPL3')
-source=("http://www.matthias-ernst.eu/malbolge/disassembler.tar.gz")
-md5sums=('f92c8c1459488dcda1f1c53c78f3b440')
+source=("https://www.matthias-ernst.eu/malbolge/disassembler.tar.gz")
+md5sums=('e524dbd6ab84c1c2bbb34554f9d2163a')
 
 build() {
     cd "${srcdir}"
