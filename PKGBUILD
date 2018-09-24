@@ -7,7 +7,7 @@ arch=('any')
 url="http://packages.debian.org/sid/dh-autoreconf"
 license=('GPL')
 depends=('debhelper' 'perl' 'autoconf' 'automake' 'gettext' 'libtool')
-source=(http://ftp.debian.org/debian/pool/main/d/$pkgname/${pkgname}_$pkgver.tar.xz)
+source=(https://deb.debian.org/debian/pool/main/d/$pkgname/${pkgname}_$pkgver.tar.xz)
 sha256sums=('d6d7feb73c9a762a6eb93d407e33cbe056cfcea9aca14bef2121037b1a9e18fb')
 
 package() {
