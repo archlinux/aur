@@ -1,6 +1,6 @@
 pkgbase = xfce-evolution-themes
 	pkgdesc = The Xfce Evolution theme attempts to rid the Xfce desktop of visual distractions by providing a more consistent look (buttons, scrollbars, menus, etc) across older and newer applications.
-	pkgver = 4.19.1
+	pkgver = 4.19.2
 	pkgrel = 1
 	url = http://itgroup.ro/xfce-evolution
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = xfce-evolution-themes
 	optdepends = noto-fonts
 	optdepends = elementary-xfce-icons
 	optdepends = nemo
-	source = https://downloads.sourceforge.net/project/xfce-evolution/xfce-evolution-4.19.1.zip
-	sha512sums = c84ca6552db73d3d1f6b6048577cddf53cc269bfbdc80b3e7f1a88c617d228d32c7ea58e4d33bbab46b7689ea8393cbd36e4cb5051e07fa7133ad79bf08adcf1
+	source = https://downloads.sourceforge.net/project/xfce-evolution/xfce-evolution-4.19.2.zip
+	sha512sums = 158854b86e9e9810cc80db804120acbf3e34bcf75ca6c1fdabd3707fcb89b2a436e3ba794552e3000585c73655e3e4c222cda3bc430c9b2806d9bee2bd1da397
 
 pkgname = xfce-evolution-themes
 
