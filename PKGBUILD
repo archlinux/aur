@@ -1,13 +1,13 @@
 # Maintainer: Iwan Timmer <irtimmer@gmail.com>
 
 pkgname=tpm2-pkcs11-git
-pkgver=r2.48c26c5
+pkgver=r16.2f1283b
 pkgrel=1
 pkgdesc="A PKCS#11 interface for TPM2 hardware"
 arch=('i686' 'x86_64')
 url="https://github.com/tpm2-software/tpm2-pkcs11"
 license=('BSD')
-depends=('tpm2-tools-git' 'python2-werkzeug')
+depends=('tpm2-tools-git' 'python-werkzeug')
 makedepends=('git')
 source=("git+https://github.com/tpm2-software/tpm2-pkcs11.git")
 sha256sums=('SKIP')
@@ -23,8 +23,6 @@ build() {
   ./bootstrap
   ./configure --prefix /usr
   make
-
-  sed -i 's/ python$/ python2/' tools/tpm2_ptool.py
 }
 
 package() {
