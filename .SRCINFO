@@ -1,7 +1,7 @@
 pkgbase = vpp-bin
 	pkgdesc = FD.io Vector Packet Processing - Executables
 	pkgver = 18.07.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fd.io/
 	arch = x86_64
 	license = Apache

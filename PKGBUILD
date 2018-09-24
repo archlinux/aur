@@ -3,7 +3,7 @@
 _pkgname='vpp'
 pkgname="${_pkgname}-bin"
 pkgver=18.07.1
-pkgrel=1
+pkgrel=2
 pkgdesc="FD.io Vector Packet Processing - Executables"
 arch=('x86_64')
 url="https://fd.io/"
@@ -16,4 +16,5 @@ sha256sums=('80655467795e76711d41b46cd5ca50b673d49d56f380ad5ceb9a892e847e2f15')
 
 package() {
     bsdtar -O -xf download.deb data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
+    mv "${pkgdir}/lib" "${pkgdir}/usr"
 }
