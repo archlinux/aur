@@ -1,7 +1,7 @@
 pkgbase = gnome-settings-daemon-elementary
-	pkgdesc = GNOME Settings Daemon (with elementary OS patch)
-	pkgver = 3.28.0
-	pkgrel = 4
+	pkgdesc = GNOME Settings Daemon (with elementary OS patches)
+	pkgver = 3.28.1+0ubuntu1+r3.6975d1c25
+	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/gnome-settings-daemon
 	arch = i686
 	arch = x86_64
@@ -35,18 +35,14 @@ pkgbase = gnome-settings-daemon-elementary
 	depends = pulseaudio
 	depends = pulseaudio-alsa
 	depends = upower
-	provides = gnome-settings-daemon=3.28.0
-	provides = gnome-settings-daemon-ubuntu=3.28.0
+	provides = gnome-settings-daemon=3.28.1+0ubuntu1+r3.6975d1c25
+	provides = gnome-settings-daemon-ubuntu=3.28.1+0ubuntu1+r3.6975d1c25
 	conflicts = gnome-settings-daemon
 	conflicts = gnome-settings-daemon-ubuntu
-	source = git+https://gitlab.gnome.org/GNOME/gnome-settings-daemon.git/#commit=5ac1a8240fb784cc92e2b394156153e34e21dab9
+	source = git+https://github.com/elementary/os-patches.git#branch=gnome-settings-daemon-bionic-patched
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git/
-	source = manage-dpms.patch
-	source = https://launchpad.net/ubuntu/+archive/primary/+files/gnome-settings-daemon_3.28.0-0ubuntu1.debian.tar.xz
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = 08b95b9892ed004c3da1506e272ea895885c47d70632f26edd8e5101bcb5936494b6419f4ea8a56f18964e89918401603188fd1f376795b42b2a1c7107706f2a
-	sha512sums = fdbeef6092a78e56cfa939abc1f107c0ff3aa496e7a0bd8b0b80eb3c5d39f364cbdb145b146f29b9ce5d4e5e4c80c045751e1950932399020ff64fda35560f8c
 
 pkgname = gnome-settings-daemon-elementary
 
