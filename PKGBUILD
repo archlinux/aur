@@ -3,21 +3,21 @@
 
 _basename=imagemagick
 pkgname=lib32-imagemagick
-pkgver=7.0.8.11
-pkgrel=2
+pkgver=7.0.8.12
+pkgrel=1
 pkgdesc="An image viewing/manipulation program (32-bit)"
 url="https://www.imagemagick.org/"
 arch=(x86_64)
 license=(custom)
 depends=(lib32-libheif lib32-liblqr lib32-libltdl lib32-libraqm lib32-libraw lib32-librsvg lib32-libwebp
          lib32-libwmf lib32-openexr lib32-openjpeg2 imagemagick)
-makedepends=(ghostpcl ghostscript ghostxps lib32-glu lib32-ocl-icd opencl-headers)
+makedepends=(ghostpcl ghostscript ghostxps lib32-glu lib32-jbigkit lib32-ocl-icd opencl-headers)
 checkdepends=(ttf-dejavu)
 _relname=ImageMagick-${pkgver%%.*}
 _tarname=ImageMagick-${pkgver%.*}-${pkgver##*.}
 source=(https://www.imagemagick.org/download/releases/$_tarname.tar.xz{,.asc}
         arch-fonts.diff)
-sha256sums=('c15f14c054b4fde417e7b82c23950047203f81e582de7f1270cf3bdfa8a38a03'
+sha256sums=('48df5877fe85603940310fe5c811a89af416882b60379918a95dcd4de6582b55'
             'SKIP'
             'a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73')
 validpgpkeys=(D8272EF51DA223E4D05B466989AB63D48277377A)  # Lexie Parsimoniae
@@ -65,8 +65,7 @@ build() {
         --without-fftw \
         --without-fpx \
         --without-gcc-arch \
-        --without-gvc \
-        --without-jbig
+        --without-gvc
 
     sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 
