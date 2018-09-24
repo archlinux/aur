@@ -1,0 +1,33 @@
+pkgbase = file-roller-pantheon
+	pkgdesc = Archive manipulator for GNOME (with elementary OS patches)
+	pkgver = 3.28.0+1ubuntu1+r4.4ab5e02aa
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/file-roller/
+	arch = i686
+	arch = x86_64
+	groups = pantheon
+	license = GPL
+	makedepends = yelp-tools
+	makedepends = git
+	makedepends = libnautilus-extension
+	makedepends = meson
+	makedepends = appstream-glib
+	depends = gtk3
+	depends = dconf
+	depends = libarchive
+	depends = file
+	depends = json-glib
+	depends = libnotify
+	depends = zip
+	depends = unzip
+	optdepends = p7zip: 7z, arj, exe and encrypted zip files support
+	optdepends = unrar: better RAR archive support
+	optdepends = unace: ACE archive support
+	optdepends = lrzip: lrzip archive support
+	provides = file-roller=3.28.0+1ubuntu1+r4.4ab5e02aa
+	conflicts = file-roller
+	source = git+https://github.com/elementary/os-patches.git#branch=file-roller-bionic-patched
+	sha256sums = SKIP
+
+pkgname = file-roller-pantheon
+
