@@ -6,7 +6,7 @@ pkgbase = mingw-w64-icu
 	arch = any
 	license = custom
 	makedepends = mingw-w64-configure
-	depends = mingw-w64-crt>=5.0.4.20170801
+	depends = mingw-w64-crt>=6.0.0
 	options = !strip
 	options = staticlibs
 	options = !buildflags

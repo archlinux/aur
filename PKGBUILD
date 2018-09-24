@@ -13,7 +13,7 @@ pkgdesc="International Components for Unicode library (mingw-w64)"
 arch=('any')
 url="http://site.icu-project.org"
 license=('custom')
-depends=('mingw-w64-crt>=5.0.4.20170801')
+depends=('mingw-w64-crt>=6.0.0')
 makedepends=('mingw-w64-configure')
 options=('!strip' 'staticlibs' '!buildflags')
 source=("http://download.icu-project.org/files/icu4c/${pkgver}/icu4c-${pkgver//./_}-src.tgz"
