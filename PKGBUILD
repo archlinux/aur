@@ -6,8 +6,8 @@
 pkgname=lib32-systemd-git
 _pkgname=lib32-systemd
 _pkgbasename=systemd
-pkgver=239.886
-pkgrel=2
+pkgver=239.915
+pkgrel=1
 pkgdesc='system and service manager (32-bit, git version)'
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
