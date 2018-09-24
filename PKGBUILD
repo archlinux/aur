@@ -3,13 +3,13 @@ pkgname=lmao
 pkgver=0.5.4
 pkgrel=1
 pkgdesc="Low-level Malbolge Assembler, Ooh! is a tool that builds Malbolge programs from HeLL"
-url="http://www.matthias-ernst.eu/malbolgeassembler.html"
+url="https://www.matthias-ernst.eu/malbolgeassembler.html"
 arch=('x86_64' 'i686')
 license=('GPL3')
 depends=('glibc')
 makedepends=('bison' 'flex' 'make' 'gcc' 'doxygen')
-source=("http://www.matthias-ernst.eu/malbolge/lmao.tar.gz")
-md5sums=('f860b67267a47dfdaaeb582a0caa0120')
+source=("https://www.matthias-ernst.eu/malbolge/lmao.tar.gz")
+md5sums=('05314007cff89a68ff86467ed210f8a8')
  
 build() {
     cd "${srcdir}/${pkgname}"
