@@ -5,8 +5,8 @@
 pkgbase=linux-rc
 pkgrel=1
 _srcname=linux-4.18
-_stable=4.18.8
-_patchver=4.18.9
+_stable=4.18.9
+_patchver=4.18.10
 _rcver=1
 pkgver=${_patchver}rc${_rcver}
 _rcpatch=patch-${_patchver}-rc${_rcver}
@@ -29,9 +29,9 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('f1551bad69ab617708fa8cf3f94545ae03dd350bdeb3065fbcf39c1a7df85494'
+sha256sums=('4c995351e57902a04a94e43796407b4ba295c8eae070c27e99f8f99c321e917a'
             'SKIP'
-            '8e56e93cb2c4aad00528598ba96ba3c2d984fd8329507959b02f3eae1d17219b'
+            '7a231634ec7d9cbee302e4bdddd79421c8ab107de9860bf8821bb51eb6ee02ef'
             'SKIP'
             '1fc23bd2613b821d8bdca1a33dc421e21de296221108ce047176d27d37ce397f'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
