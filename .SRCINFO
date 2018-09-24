@@ -1,12 +1,12 @@
 pkgbase = mcos-mjv-dark-mode-gtk-theme
 	pkgdesc = McOS-MJV-Dark-mode GTK Theme
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.opendesktop.org/p/1241688/
 	arch = any
 	license = GPL
 	depends = gtk-engine-murrine
-	source = https://dl.opendesktop.org/api/files/downloadfile/id/1529367916/s/$_s/t/$_t/mcos-mjv-dark-mode-gtk-theme-1.2.tar.xz
+	source = https://dl.opendesktop.org/api/files/download/id/1529367916/s/$_s/t/$_t/mcos-mjv-dark-mode-gtk-theme-1.2.tar.xz
 	md5sums = 10fde4ece0c846b980c53e9731ed2fbc
 
 pkgname = mcos-mjv-dark-mode-gtk-theme
