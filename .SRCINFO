@@ -1,0 +1,14 @@
+pkgbase = blender-benchmark
+	pkgdesc = Benchmark based on Blender to perform hardware and software performance tests
+	pkgver = 1.0.beta2
+	pkgrel = 1
+	url = https://opendata.blender.org/
+	arch = x86_64
+	license = gnu:gpl
+	options = !emptydirs
+	options = !strip
+	source = blender-benchmark-1.0.beta2-linux-glibc219-x86_64.tar.bz2::https://ftp.nluug.nl/pub/graphics/blender/release/BlenderBenchmark1.0/blender-benchmark-1.0beta2-linux-glibc219-x86_64.tar.bz2
+	sha256sums = df4ca99c4168bba35ec12471214dcdcad901490927f2756775b0d955b4135ddd
+
+pkgname = blender-benchmark
+
