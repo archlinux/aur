@@ -1,0 +1,24 @@
+pkgbase = lib32-nss-pam-ldapd
+	pkgdesc = LDAP module for NSS and PAM (32-bit)
+	pkgver = 0.9.10
+	pkgrel = 1
+	url = https://arthurdejong.org/nss-pam-ldapd/
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = python2-ldap
+	makedepends = python2-daemon
+	makedepends = python2-pylint
+	depends = pam
+	depends = python2
+	depends = nss-pam-ldapd
+	provides = nslcd
+	conflicts = pam_ldap
+	options = !emptydirs
+	source = https://arthurdejong.org/nss-pam-ldapd/nss-pam-ldapd-0.9.10.tar.gz
+	source = https://arthurdejong.org/nss-pam-ldapd/nss-pam-ldapd-0.9.10.tar.gz.sig
+	validpgpkeys = 452EC2CB65CF68C2A1ADBF5F2A8B746810E0AFC1
+	md5sums = 0aeeba1882c5d77108eab24ca6995b8d
+	md5sums = SKIP
+
+pkgname = lib32-nss-pam-ldapd
+
