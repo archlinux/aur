@@ -25,6 +25,13 @@ pkgver() {
   set +u
 }
 
+prepare() {
+  set -u
+  cd "${_pkgname}"
+  sed -e 's:^#include <sys/types.h>$:#include <sys/sysmacros.h>\n&:g' -i 'mt.c'
+  set +u
+}
+
 build() {
   set -u
   cd "${_pkgname}"
@@ -37,19 +44,6 @@ package() {
   cd "${_pkgname}"
   make DESTDIR="${pkgdir}" PREFIX='/usr' SBINDIR='/usr/bin' install
   set +u
-  # Ensure there are no forbidden paths. Place at the end of package() and comment out as you find or need exceptions. (git-aurcheck)
-  ! test -d "${pkgdir}/bin" || { echo "Line ${LINENO} Forbidden: /bin"; false; }
-  ! test -d "${pkgdir}/sbin" || { echo "Line ${LINENO} Forbidden: /sbin"; false; }
-  ! test -d "${pkgdir}/lib" || { echo "Line ${LINENO} Forbidden: /lib"; false; }
-  ! test -d "${pkgdir}/share" || { echo "Line ${LINENO} Forbidden: /share"; false; }
-  ! test -d "${pkgdir}/usr/sbin" || { echo "Line ${LINENO} Forbidden: /usr/sbin"; false; }
-  ! test -d "${pkgdir}/usr/local" || { echo "Line ${LINENO} Forbidden: /usr/local"; false; }
-  ! grep -lr "/sbin" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /sbin"; false; }
-  ! grep -lr "/usr/tmp" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /usr/tmp"; false; }
-  ! grep -lr "/usr/local" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /usr/local"; false; }
-  if command -v 'pcre2grep' >/dev/null 2>&1; then
-    ! pcre2grep -Ilr "(?<!/usr)/bin" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /bin"; false; }
-  fi
 }
 set +u
 
