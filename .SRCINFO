@@ -8,7 +8,7 @@ pkgbase = dh-make
 	depends = dpkg
 	depends = make
 	depends = python
-	source = http://http.debian.net/debian/pool/main/d/dh-make/dh-make_2.201801.tar.xz
+	source = https://deb.debian.org/debian/pool/main/d/dh-make/dh-make_2.201801.tar.xz
 	sha256sums = c94a3de25822007b95b27427dcb95f52631dafb2cb902b615a3417e8f8dcde29
 
 pkgname = dh-make

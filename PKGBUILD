@@ -10,7 +10,7 @@ arch=('any')
 url="http://packages.debian.org/sid/dh-make"
 license=('GPL')
 depends=('dpkg' 'make' 'python')
-source=(http://http.debian.net/debian/pool/main/d/${pkgname}/${pkgname}_${pkgver}.tar.xz)
+source=(https://deb.debian.org/debian/pool/main/d/${pkgname}/${pkgname}_${pkgver}.tar.xz)
 sha256sums=('c94a3de25822007b95b27427dcb95f52631dafb2cb902b615a3417e8f8dcde29')
 
 package() {
