@@ -1,8 +1,8 @@
-pkgbase = epiphany-pantheon-bzr
-	pkgdesc = A GNOME web browser based on the WebKit rendering engine, with Elementary OS patches
-	pkgver = 3.27.90.1ubuntu1.r20
-	pkgrel = 6
-	url = http://www.gnome.org/projects/epiphany/
+pkgbase = epiphany-pantheon
+	pkgdesc = A GNOME web browser based on the WebKit rendering engine, with elementary OS patches
+	pkgver = 3.28.0.1+1ubuntu1+r21.dbc305d50
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/epiphany/
 	arch = i686
 	arch = x86_64
 	groups = pantheon-unstable
@@ -16,7 +16,6 @@ pkgbase = epiphany-pantheon-bzr
 	makedepends = yelp-tools
 	makedepends = autoconf-archive
 	makedepends = appstream-glib
-	makedepends = bzr
 	depends = webkit2gtk>=2.19.4
 	depends = gcr
 	depends = libhttpseverywhere
@@ -25,13 +24,13 @@ pkgbase = epiphany-pantheon-bzr
 	provides = epiphany
 	provides = epiphany-sync
 	conflicts = epiphany
-	replaces = epiphany
-	source = bzr+lp:~elementary-os/elementaryos/os-patch-epiphany-browser-bionic
+	replaces = epiphany-pantheon-bzr
+	source = git+https://github.com/elementary/os-patches.git#branch=epiphany-browser-bionic-patched
 	source = epiphany-sync
 	source = epiphany-sync.service
 	sha256sums = SKIP
 	sha256sums = cf90f3ea93fff8c61f82da40c8d07d5db2f33dc9a0d91408a6ffc4142bbedd20
 	sha256sums = ce1ac321d7bf9d88638634a141dfcb99119fc59ee44c4892e0874608e85006ba
 
-pkgname = epiphany-pantheon-bzr
+pkgname = epiphany-pantheon
 
