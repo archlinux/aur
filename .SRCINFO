@@ -7,7 +7,7 @@ pkgbase = econnman
 	license = LGPL3
 	depends = python-efl
 	depends = connman
-	source = http://download.enlightenment.org/rel/apps/econnman/econnman-1.1.tar.gz
+	source = http://download.enlightenment.org/rel/apps/econnman/econnman-1.1.tar.xz
 	sha256sums = 60f30748b2642b83763fe1e00f6a54ff27425c761633bb8cc0396fba15e7f714
 
 pkgname = econnman
