@@ -2,8 +2,8 @@
 # Submitter:  Corey Mwamba <contact.me@coreymwamba.co.uk>
 pkgname=bash-fuzzy-clock
 pkgver=20181024
-pkgrel=1
-pkgdesc="Script to display the time in natural language. English, French, German, Italian and Spanish"
+pkgrel=2
+pkgdesc="Script to display the time in natural language. Translated to six languages"
 arch=('any')
 url="https://sourceforge.net/projects/bashfuzzyclock/"
 license=('GPL')
