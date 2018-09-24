@@ -1,0 +1,18 @@
+pkgbase = s4-git
+	pkgdesc = S4 (or simply S4) stands for Stanford Stratified Structure Solver, a frequency domain code to solve the linear Maxwell’s equations in layered periodic structures.
+	pkgver = r187.1a5bd64
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = lua>=5.2.0
+	depends = python3
+	depends = openblas
+	depends = fftw
+	depends = suitesparse
+	depends = openmpi
+	source = S4::git+https://github.com/kwrobert/S4#branch=master
+	md5sums = SKIP
+
+pkgname = s4-git
+
