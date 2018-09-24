@@ -1,0 +1,25 @@
+From 36f5830ea50af5c3c21fc0e132d25273c0391879 Mon Sep 17 00:00:00 2001
+From: Dan Beste <dan.ray.beste@gmail.com>
+Date: Mon, 24 Sep 2018 11:19:01 -0500
+Subject: [PATCH] C{,XX}FLAG normalization
+
+---
+ build.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/build.sh b/build.sh
+index 3caee529..b4fdda14 100755
+--- a/build.sh
++++ b/build.sh
+@@ -40,7 +40,7 @@ done
+
+ CC="gcc"
+ LINKER="gcc"
+-COMP_FLAGS="${CPPFLAGS:-} ${CFLAGS:-} -w -O3 -fno-strict-aliasing$extraBuildArgs"
++COMP_FLAGS="${CPPFLAGS:-} ${CFLAGS:-} -w -fno-strict-aliasing"
+ LINK_FLAGS="${LDFLAGS:-} "
+ PS4=""
+ # platform detection
+--
+2.19.0
+

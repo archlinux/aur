@@ -1,0 +1,8 @@
+# Blacklist:
+*
+
+# Whitelist:
+!.SRCINFO
+!.gitignore
+!PKGBUILD
+!makepkg-conf.patch

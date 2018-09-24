@@ -1,6 +1,8 @@
 pkgbase = nim-git
-	pkgver = 20180612
+	pkgdesc = Nim is a compiled, garbage-collected systems programming language with a design that focuses on efficiency, expressiveness, and elegance (in that order of priority).
+	pkgver = 0.18.0.r1444.g276a05e57
 	pkgrel = 1
+	epoch = 1
 	arch = i686
 	arch = x86_64
 	groups = nim
@@ -9,14 +11,15 @@ pkgbase = nim-git
 	source = git+https://github.com/nim-lang/Nim.wiki
 	source = git+https://github.com/nim-lang/csources
 	source = git+https://github.com/nim-lang/nimble
+	source = makepkg-conf.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 9d73290e81a2e2a79f7bb8058d47854d90ba9301dda1bee107294e2d82f631bf
 
 pkgname = nim-git
-	pkgdesc = Compiled, garbage-collected systems programming language which has an excellent productivity/performance ratio
-	url = https://github.com/nim-lang/Nim
+	url = https://nim-lang.org/
 	license = MIT
 	provides = nim
 	conflicts = nim
@@ -30,9 +33,16 @@ pkgname = nimble-git
 	conflicts = nimble
 
 pkgname = nimsuggest-git
-	pkgdesc = Tool for providing auto completion data for Nim source code
+	pkgdesc = Nimsuggest is a tool that helps to give editors IDE like capabilities.
 	url = https://github.com/nim-lang/nimsuggest
 	license = MIT
 	provides = nimsuggest
 	conflicts = nimsuggest
+
+pkgname = nimpretty-git
+	pkgdesc = Standard tool for pretty printing.
+	url = https://github.com/nim-lang/Nim/tree/devel/nimpretty
+	license = MIT
+	provides = nimpretty
+	conflicts = nimpretty
 

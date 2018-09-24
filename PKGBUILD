@@ -1,117 +1,128 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: Dan Beste  <dan.ray.beste+aur@gmail.com>
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
 # Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: Dominik Picheta <morfeusz8@gmail.com>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Jesus Alvarez <jeezusjr@gmail.com>
 # Contributor: Zion Nimchuk <zionnimchuk@gmail.com>
 
-# build PDF documentation
-_pdf=false
-
-pkgbase=nim-git
-pkgname=('nim-git' 'nimble-git' 'nimsuggest-git')
-pkgver=20180612
+pkgbase='nim-git'
+pkgname=('nim-git' 'nimble-git' 'nimsuggest-git' 'nimpretty-git')
+pkgdesc='Nim is a compiled, garbage-collected systems programming language with a design that focuses on efficiency, expressiveness, and elegance (in that order of priority).'
+epoch=1
+pkgver=0.18.0.r1444.g276a05e57
 pkgrel=1
 arch=('i686' 'x86_64')
 groups=('nim')
 makedepends=('git')
-[[ "$_pdf" == true ]] \
-  && makedepends+=('texlive-bin' 'texlive-core' 'texlive-fontsextra')
-source=(git+https://github.com/nim-lang/Nim
-        git+https://github.com/nim-lang/Nim.wiki
-        git+https://github.com/nim-lang/csources
-        git+https://github.com/nim-lang/nimble)
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+source=(
+  'git+https://github.com/nim-lang/Nim'
+  'git+https://github.com/nim-lang/Nim.wiki'
+  'git+https://github.com/nim-lang/csources'
+  'git+https://github.com/nim-lang/nimble'
+  'makepkg-conf.patch'
+)
+sha256sums=(
+  'SKIP' 'SKIP' 'SKIP' 'SKIP'
+  '9d73290e81a2e2a79f7bb8058d47854d90ba9301dda1bee107294e2d82f631bf'
+)
 
 pkgver() {
-  cd "$srcdir/Nim"
-  git log -1 --format="%cd" --date=short --no-show-signature | sed "s|-||g"
+  cd Nim
+
+  git describe --long --tags           \
+    | sed 's/\([^-]*-g\)/r\1/;s/-/./g' \
+    | sed 's/v//'
 }
 
 prepare() {
-  cd "$srcdir/Nim"
+  cd Nim
 
-  msg2 'Cloning csources...'
-  git clone --local "$srcdir/csources"
+  # Prevent the build from failing if it is not cleanbuilt:
+  [[ -d ./csources ]] && rm -rf ./csources
+  cp -r "${srcdir}/csources" .
+  # Remove `-O3` from build.sh's COMP_FLAGS:
+  patch ./csources/build.sh \
+  --strip=1                 \
+  --fuzz 5                  \
+  -N                        \
+  < "${srcdir}/makepkg-conf.patch"
 }
 
 build() {
-  cd "$srcdir/Nim"
+  cd Nim
 
-  msg2 'Building csources...'
-  pushd csources
-  sh build.sh
-  popd
+  # Build the pre-generated C sources of the Nim compiler which aid in
+  # bootstrapping:
+  cd csources
+    ./build.sh
+  cd -
 
-  msg2 'Building Nim...'
+  # Build a release version of the "koch" maintenance program:
   ./bin/nim c -d:release koch
-  ./koch boot -d:release -d:nativeStacktrace -d:useGnuReadline
-
-  if [[ "$_pdf" == true ]]; then
-    msg2 'Building Nim PDF documentation...'
-    ./koch pdf
-  fi
-
-  msg2 'Building Nimble...'
-  ./koch nimble
-
-  msg2 'Building nimgrep and nimsuggest...'
+  # Build a release version of the nim compiler:
+  ./koch boot -d:release -d:nativeStacktrace
+  # Build nimsuggest, nimgrep, and nimpretty:
   ./koch tools
 
-  msg2 'Building libnimrtl...'
-  pushd lib
-  ../bin/nim c --app:lib -d:createNimRtl -d:release nimrtl.nim
-  popd
+  # Build nimrtl.nim:
+  cd lib
+    ../bin/nim c --app:lib -d:createNimRtl -d:release nimrtl.nim
+  cd -
 }
 
 package_nim-git() {
-  pkgdesc="Compiled, garbage-collected systems programming language which has an excellent productivity/performance ratio"
-  url="https://github.com/nim-lang/Nim"
+  url="https://nim-lang.org/"
   license=('MIT')
   options=('!emptydirs')
   provides=('nim')
   conflicts=('nim')
 
-  cd "$srcdir/Nim"
+  cd Nim
 
-  msg2 'Installing Nim license...'
-  install -Dm 644 "copying.txt" -t "$pkgdir/usr/share/licenses/nim"
+  # License
+  install -dm 755 "${pkgdir}/usr/share/licenses/nim"
+  install -m 644 "copying.txt" "${pkgdir}/usr/share/licenses/nim/LICENSE"
 
-  msg2 'Installing Nim documentation...'
-  install -dm 755 "$pkgdir/usr/share/doc/nim"
-  cp -dpr --no-preserve=ownership examples web doc/* "$pkgdir/usr/share/doc/nim"
+  # Docs
+  install -dm 755 "${pkgdir}/usr/share/doc/nim"
+  cp -dpr --no-preserve=ownership \
+    examples web doc/*            \
+    -t "${pkgdir}/usr/share/doc/nim"
 
-  msg2 'Installing Nim wiki...'
-  cp -dpr --no-preserve=ownership "$srcdir/Nim.wiki" \
-    "$pkgdir/usr/share/doc/nim/wiki"
+  # Docs: Wiki
+  cp -dpr --no-preserve=ownership   \
+    "${srcdir}/Nim.wiki"            \
+    "${pkgdir}/usr/share/doc/nim/wiki"
 
-  msg2 'Installing Nim...'
-  ./koch install "$pkgdir"
+  # Nim
+  ./koch install "${pkgdir}"
   install -Dm 755 bin/{nim,nimgrep} -t "$pkgdir/usr/bin"
 
-  cd "$pkgdir/nim"
-  install -dm 755 "$pkgdir/etc" "$pkgdir/usr/lib/nim"
+  cd "${pkgdir}/nim"
+  install -dm 755 "${pkgdir}"/{etc,usr/lib/nim}
   find lib -mindepth 1 -maxdepth 1 -exec \
-    cp -dpr --no-preserve=ownership '{}' "$pkgdir/usr/lib/nim" \;
+    cp -dpr --no-preserve=ownership '{}' -t "$pkgdir/usr/lib/nim" \;
   find config -mindepth 1 -maxdepth 1 -exec \
-    cp -dpr --no-preserve=ownership '{}' "$pkgdir/etc/" \;
-  cp -dpr --no-preserve=ownership "$srcdir/Nim/lib/packages" \
-    "$pkgdir/usr/lib/nim"
+    cp -dpr --no-preserve=ownership '{}' -t "$pkgdir/etc/" \;
+  cp -dpr --no-preserve=ownership \
+    "$srcdir/Nim/lib/packages"    \
+    -t "$pkgdir/usr/lib/nim"
 
-  # https://bugs.archlinux.org/task/50252
-  msg2 'Fixing unusual placement of header files...'
-  install -dm 755 "$pkgdir/usr/include"
+  # Workaround Nim's nonstandard header file placement
+  # (https://bugs.archlinux.org/task/50252):
+  install -dm 755 "${pkgdir}/usr/include"
   for _header in cycle nimbase; do
     ln -s "/usr/lib/nim/${_header}.h" "$pkgdir/usr/include/${_header}.h"
   done
 
-  msg2 'Fixing unusual placement of shared object files...'
+  # Fix unusual placement of shared object files:
   ln -s "/usr/lib/nim/libnimrtl.so" "$pkgdir/usr/lib/libnimrtl.so"
 
-  msg2 'Cleaning up pkgdir...'
+  # Clean up $pkgdir
+  rm -rf "$pkgdir/nim"
   find "$pkgdir" -type d -name .git -exec rm -r '{}' +
   find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
-  rm -rf "$pkgdir/nim"
 }
 
 package_nimble-git() {
@@ -121,15 +132,16 @@ package_nimble-git() {
   provides=('nimble')
   conflicts=('nimble')
 
-  cd "$srcdir/nimble"
+  cd nimble
 
-  msg2 'Installing Nimble license...'
-  install -Dm 644 license.txt -t "$pkgdir/usr/share/licenses/nimble"
+  # License
+  install -dm 755 "${pkgdir}/usr/share/licenses/nimble"
+  install -Dm 644 license.txt "${pkgdir}/usr/share/licenses/nimble/LICENSE"
 
-  msg2 'Installing Nimble documentation...'
+  # Docs
   install -Dm 644 *.markdown -t "$pkgdir/usr/share/doc/nimble"
 
-  msg2 'Installing Nimble...'
+  # Nimble
   install -Dm 755 "$srcdir/Nim/bin/nimble" -t "$pkgdir/usr/bin"
 
   # Nimble looks for nimscriptapi.nim in /usr/bin/nimblepkg/, of all places.
@@ -137,18 +149,32 @@ package_nimble-git() {
   cp -dpr --no-preserve=ownership src/nimblepkg "$pkgdir/usr/share/nimble"
   ln -s "/usr/share/nimble" "$pkgdir/usr/bin/nimblepkg"
 
-  msg2 'Installing Nimble bash completion...'
-  install -Dm 644 nimble.bash-completion \
-    "$pkgdir/usr/share/bash-completion/completions/nimble"
+  # Bash completion
+  install -Dm 644          \
+    nimble.bash-completion \
+    "${pkgdir}/usr/share/bash-completion/completions/nimble"
 }
 
 package_nimsuggest-git() {
-  pkgdesc="Tool for providing auto completion data for Nim source code"
+  pkgdesc="Nimsuggest is a tool that helps to give editors IDE like capabilities."
   url="https://github.com/nim-lang/nimsuggest"
   license=('MIT')
   provides=('nimsuggest')
   conflicts=('nimsuggest')
 
-  msg2 'Installing Nimsuggest...'
-  install -Dm 755 "$srcdir/Nim/bin/nimsuggest" -t "$pkgdir/usr/bin"
+  # Nimsuggest
+  install -Dm 755 "Nim/bin/nimsuggest" -t "${pkgdir}/usr/bin"
 }
+
+package_nimpretty-git() {
+  pkgdesc="Standard tool for pretty printing."
+  url="https://github.com/nim-lang/Nim/tree/devel/nimpretty"
+  license=('MIT')
+  provides=('nimpretty')
+  conflicts=('nimpretty')
+
+  # Nimpretty
+  install -Dm 755 "Nim/bin/nimpretty" -t "${pkgdir}/usr/bin"
+}
+
+# vim: sw=2 ts=2 et:
