@@ -64,9 +64,6 @@ package() {
 
 	chmod +x "${srcdir}/${pkgname}-linux-x64-${pkgver}-0-installer.run"
 
-	# NOTE: Using proot v3.2.1 (instead of the latest version) and passing the
-	# environment variable `PROOT_NO_SECCOMP=1` is only a workaround for this bug:
-	# https://github.com/proot-me/PRoot/issues/106
 	PROOT_NO_SECCOMP=1 proot -0 \
 		-b "${pkgdir}/opt/lampp:/opt/lampp" \
 		"${srcdir}/${pkgname}-linux-x64-${pkgver}-0-installer.run" \
