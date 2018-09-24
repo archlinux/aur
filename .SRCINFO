@@ -1,0 +1,25 @@
+pkgbase = python-awkward-array
+	pkgdesc = Manipulate jagged, chunky, and/or bitmasked arrays as easily as Numpy
+	pkgver = 0.0.9
+	pkgrel = 1
+	url = https://github.com/scikit-hep/awkward-array
+	arch = any
+	license = BSD
+	options = !emptydirs
+	source = https://github.com/scikit-hep/awkward-array/archive/0.0.9.zip
+	sha256sums = a8df2fd1ffaae6baac1b322a7d3891434a11aa394cf8837ced786932eda1e45f
+
+pkgname = python2-awkward-array
+	depends = python2-numpy
+	optdepends = python2-arrow: interoperability with other applications and fast Parquet reading/writing
+	optdepends = python2-bcolz: on-the-fly compression
+	optdepends = python2-dask: distribute work on arrays
+	optdepends = python2-numba: JIT-compile functions
+
+pkgname = python-awkward-array
+	depends = python-numpy
+	optdepends = python-arrow: interoperability with other applications and fast Parquet reading/writing
+	optdepends = python-bcolz: on-the-fly compression
+	optdepends = python-dask: distribute work on arrays
+	optdepends = python-numba: JIT-compile functions
+
