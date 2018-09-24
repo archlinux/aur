@@ -1,4 +1,5 @@
-# Maintainer: Doug Newgard <scimmia at archlinux dot info>
+# Maintainer: Stephan Springer <buzo+arch@Lini.de>
+# Contributor: Doug Newgard <scimmia at archlinux dot info>
 # Contributor: Ronald van Haren <ronald.archlinux.org>
 
 pkgname=qwt-qt4
@@ -11,33 +12,29 @@ url='http://qwt.sourceforge.net/'
 depends=('gcc-libs' 'glibc' 'qt4')
 license=('custom')
 source=("https://downloads.sourceforge.net/$_pkgname/$_pkgname-$pkgver.tar.bz2")
-sha1sums=('90ec21bc42f7fae270482e1a0df3bc79cb10e5c7')
+sha256sums=('f3ecd34e72a9a2b08422fb6c8e909ca76f4ce5fa77acad7a2883b701f4309733')
 
 prepare() {
-  cd $_pkgname-$pkgver
+    cd "$_pkgname-$pkgver"
 
-  sed -e '/^\s*QWT_INSTALL_PREFIX/ s|=.*|= /usr|' \
-      -e '/^QWT_INSTALL_DOCS/ s|^|#|' \
-      -e '/^QWT_INSTALL_HEADERS/ s|include|&/qwt-qt4|' \
-      -e '/^QWT_INSTALL_PLUGINS/ s|plugins/designer|lib/qt4/&|' \
-      -e '/^QWT_INSTALL_FEATURES/ s|features|share/qt4/mkspecs/&|' \
-      -i qwtconfig.pri
+    sed -e '/^\s*QWT_INSTALL_PREFIX/ s|=.*|= /usr|' \
+        -e '/^QWT_INSTALL_DOCS/ s|^|#|' \
+        -e '/^QWT_INSTALL_HEADERS/ s|include|&/qwt-qt4|' \
+        -e '/^QWT_INSTALL_PLUGINS/ s|plugins/designer|lib/qt4/&|' \
+        -e '/^QWT_INSTALL_FEATURES/ s|features|share/qt4/mkspecs/&|' \
+        -i qwtconfig.pri
 
-  sed -i '/^\s*\(LIBRARY_NAME\|LIB_NAME\)/ s/$/-qt4/' qwtfunctions.pri
+    sed -i '/^\s*\(LIBRARY_NAME\|LIB_NAME\)/ s/$/-qt4/' qwtfunctions.pri
 }
 
 build() {
-  cd $_pkgname-$pkgver
-
-  qmake-qt4 qwt.pro
-
-  make
+    cd "$_pkgname-$pkgver"
+    qmake-qt4 qwt.pro
+    make
 }
 
 package() {
-  cd $_pkgname-$pkgver
-
-  make INSTALL_ROOT="$pkgdir" install
-
-  install -Dm644 COPYING -t "$pkgdir/usr/share/licenses/$pkgname/"
+    cd "$_pkgname-$pkgver"
+    make INSTALL_ROOT="$pkgdir" install
+    install -Dm644 COPYING -t "$pkgdir/usr/share/licenses/$pkgname"
 }
