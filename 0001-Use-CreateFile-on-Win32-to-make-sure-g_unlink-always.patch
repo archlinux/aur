@@ -1,27 +1,5 @@
-From 7f4f4354540440c0a8a37beaccbec8bc7fc15ec7 Mon Sep 17 00:00:00 2001
-From: Erik van Pienbroek <epienbro@fedoraproject.org>
-Date: Mon, 27 Aug 2012 23:28:54 +0200
-Subject: [PATCH] Use CreateFile on Win32 to make sure g_unlink always works
-
-The functions g_open(), g_creat() and g_fopen() defer to _wopen(),
-_wcreat() and _wfopen() respectively. This is very similar to
-the corresponding arrangement for Linux. However, those Windows
-functions do not support renaming a file whilst it's open. As a
-result, g_rename() behaves differently on the Windows platform
-compared to its Linux behaviour, where files can be renamed even
-while there are file handles still open. Resolved this by using
-the Win32 API function CreateFile() instead of _wopen(), _wcreat()
-and _wfopen()
-
-Patch initially created by John Emmas
----
- glib/gstdio.c | 259 ++++++++++++++++++++++++++++++++++++++++++++++++++++------
- 1 file changed, 233 insertions(+), 26 deletions(-)
-
-diff --git a/glib/gstdio.c b/glib/gstdio.c
-index 6d763e1..c1d072f 100644
---- a/glib/gstdio.c
-+++ b/glib/gstdio.c
+--- glib-2.57.2/glib/gstdio.c.orig	2018-07-31 20:31:07.000000000 +0200
++++ glib-2.57.2/glib/gstdio.c	2018-08-03 16:32:42.447575300 +0200
 @@ -758,6 +758,11 @@
  	int          mode)
  {
@@ -30,7 +8,7 @@ index 6d763e1..c1d072f 100644
 +  DWORD  dwDesiredAccess       = 0;
 +  DWORD  dwFlagsAndAttributes  = 0;
 +  DWORD  dwDisposition         = OPEN_EXISTING;
-+  DWORD  dwSharedAccess        = FILE_SHARE_READ | FILE_SHARE_DELETE;
++  DWORD  dwSharedAccess        = FILE_SHARE_READ | FILE_SHARE_WRITE | FILE_SHARE_DELETE;
    wchar_t *wfilename = g_utf8_to_utf16 (filename, -1, NULL, NULL, NULL);
    int retval;
    int save_errno;
@@ -50,45 +28,45 @@ index 6d763e1..c1d072f 100644
 +  {
 +    /* Equates to _O_RDONLY */
 +    if (flags & _O_TRUNC)
-+	{
-+	  errno = EINVAL;
-+	  g_free (wfilename);
-+	  return -1;
-+	}
++    {
++      errno = EINVAL;
++      g_free (wfilename);
++      return -1;
++    }
  
 -  g_free (wfilename);
-+	dwDesiredAccess |= GENERIC_READ;
-+	dwSharedAccess  |= FILE_SHARE_WRITE;
++    dwDesiredAccess |= GENERIC_READ;
++    dwSharedAccess  |= FILE_SHARE_WRITE;
 +  }
 +  if (flags & _O_WRONLY)
 +  {
 +    if (flags & _O_RDWR)
-+	{
-+	  errno = EINVAL;
-+	  g_free (wfilename);
-+	  return -1;
-+	}
-+
-+	dwDesiredAccess |= GENERIC_WRITE;
++    {
++      errno = EINVAL;
++      g_free (wfilename);
++      return -1;
++    }
+ 
++    dwDesiredAccess |= GENERIC_WRITE;
 +  }
 +  if (flags & _O_RDWR)
 +  {
-+	dwDesiredAccess |= GENERIC_READ;
-+	dwDesiredAccess |= GENERIC_WRITE;
++    dwDesiredAccess |= GENERIC_READ;
++    dwDesiredAccess |= GENERIC_WRITE;
 +  }
 +  if (flags & _O_TRUNC)
 +  {
 +    if (flags & _O_CREAT)
-+	  dwDisposition = CREATE_ALWAYS;
-+	else
-+	  dwDisposition = TRUNCATE_EXISTING;
++      dwDisposition = CREATE_ALWAYS;
++    else
++      dwDisposition = TRUNCATE_EXISTING;
 +  }
 +  if ((flags & _O_CREAT) && !(flags & _O_TRUNC))
 +  {
 +    if (flags & _O_EXCL)
-+	  dwDisposition = CREATE_NEW;
-+	else
-+	  dwDisposition = OPEN_ALWAYS;
++      dwDisposition = CREATE_NEW;
++    else
++      dwDisposition = OPEN_ALWAYS;
 +  }
 +  if (flags & _O_CREAT)
 +  {
@@ -133,7 +111,7 @@ index 6d763e1..c1d072f 100644
 +  }
 +  else
 +    retval = _open_osfhandle((long)hFile, flags);
- 
++
 +  if ((-1) != retval)
 +  {
 +    /* We have a valid file handle. Set its translation mode to text or binary, as appropriate */
@@ -232,6 +210,12 @@ index 6d763e1..c1d072f 100644
 -      errno = EINVAL;
 -      return NULL;
 -    }
+-
+-  retval = _wfopen (wfilename, wmode);
+-  save_errno = errno;
+-
+-  g_free (wfilename);
+-  g_free (wmode);
 +  int   hFile;
 +  int   flags  = 0;
 +  gchar priv_mode[4];
@@ -244,7 +228,7 @@ index 6d763e1..c1d072f 100644
 +  }
 +  if ((strlen(mode) < 1) || (strlen(mode) > 3))
 +  {
-+    errno - EINVAL;
++    errno = EINVAL;
 +    goto out;
 +  }
 +
@@ -271,10 +255,10 @@ index 6d763e1..c1d072f 100644
 +      else if (0 == strcmp(priv_mode, "w+t"))
 +        flags = _O_RDWR | _O_CREAT |_O_TRUNC | _O_TEXT;
 +      else
-+	  {
-+	    errno = EINVAL;
++      {
++        errno = EINVAL;
 +        goto out;
-+	  }
++      }
 +    }
 +  }
 +  if (2 == strlen(priv_mode))
@@ -298,10 +282,10 @@ index 6d763e1..c1d072f 100644
 +      else if (0 == strcmp(priv_mode, "wt"))
 +        flags = _O_WRONLY | _O_CREAT | _O_TRUNC | _O_TEXT;
 +      else
-+	  {
-+	    errno = EINVAL;
++      {
++        errno = EINVAL;
 +        goto out;
-+	  }
++      }
 +    }
 +  }
 +  if (1 == strlen(priv_mode))
@@ -313,18 +297,14 @@ index 6d763e1..c1d072f 100644
 +    else if (0 == strcmp(priv_mode, "w"))
 +      flags = _O_WRONLY | _O_CREAT | _O_TRUNC;
 +    else if ( !((0 == strcmp(priv_mode, "c")) || (0 == strcmp(priv_mode, "n"))))
-+	{
-+	  errno = EINVAL;
++    {
++      errno = EINVAL;
 +      goto out;
-+	}
++    }
 +  }
- 
--  retval = _wfopen (wfilename, wmode);
--  save_errno = errno;
++
 +  hFile = g_open (filename, flags, (_S_IREAD | _S_IWRITE));
- 
--  g_free (wfilename);
--  g_free (wmode);
++
 +  if (INVALID_HANDLE_VALUE == (HANDLE)hFile)
 +    /* 'errno' will have already been set by 'g_open()' */
 +    retval = NULL;

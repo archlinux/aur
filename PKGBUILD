@@ -2,10 +2,11 @@
 # Contributor: Filip Brcic <brcha@gna.org>
 # Contributor: ant32 <antreimer@gmail.com>
 # Contributor: Renato Silva <br.renatosilva@gmail.com>
+# Contributor: Martchus <martchus@gmx.net>
 pkgname=mingw-w64-glib2
-pkgver=2.58.0
-pkgrel=4
-_commit=c138b98e363df8b95c2ee3eac214649b2908ad68 # tags/2.58.0^0
+pkgver=2.58.1
+pkgrel=2
+_commit=a9f5a6fa2fdd6eb2f754709d7e790d24e3ceaa18  # tags/2.58.1^0
 arch=(any)
 pkgdesc="Low level core library (mingw-w64)"
 depends=(mingw-w64-libffi mingw-w64-pcre mingw-w64-gettext mingw-w64-zlib)
@@ -14,17 +15,11 @@ license=("LGPL2.1")
 options=(!strip !buildflags staticlibs !emptydirs)
 url="https://wiki.gnome.org/Projects/GLib"
 source=("git+https://gitlab.gnome.org/GNOME/glib.git#commit=$_commit"
-  "0001-gsocket-fix-cross-compilation.patch"
   "0001-Use-CreateFile-on-Win32-to-make-sure-g_unlink-always.patch"
-  "glib-formaterror.patch"
-  "glib-include-time-h-for-localtime_r.patch"
-  "glib-prefer-constructors-over-DllMain.patch")
+  "0001-win32-Make-the-static-build-work-with-MinGW-when-pos.patch")
 sha256sums=('SKIP'
-            '44c8c6b4ca376177a8c333a00c3485d638f8641967503e15364606d4c4292ff3'
-            'afd62a852a0b6aed4ce86eb97297e5080b26055cc878413b89d482c184b826b3'
-            'ea529d5cbf8cf7ca66467664a3ead37473a1c009ac973d5694b06cc9d0b23df3'
-            'ac567f7a9cad51ab97dba70bcdd6c0c16f93d2451c43fde380e4fdb20b2d4b31'
-            '8a02502069fa88c667a4fd1599280f927cb1bcf61e9fcd369fec5bdb5440d480')
+            'ff0d3df5d57cf621cac79f5bea8bd175e6c18b3fbf7cdd02df38c1eab9f40ac3'
+            '838abaeab8ca4978770222ef5f88c4b464545dd591b2d532c698caa875b46931')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -35,11 +30,10 @@ pkgver() {
 
 prepare() {
   cd glib
+  # https://gitlab.gnome.org/GNOME/glib/issues/539
   patch -Np1 -i ../0001-Use-CreateFile-on-Win32-to-make-sure-g_unlink-always.patch
-  patch -Np1 -i ../glib-prefer-constructors-over-DllMain.patch
-  patch -Np1 -i ../glib-formaterror.patch
-  patch -Np1 -i ../glib-include-time-h-for-localtime_r.patch
-  patch -Np1 -i ../0001-gsocket-fix-cross-compilation.patch
+  # https://gitlab.gnome.org/GNOME/glib/issues/692
+  patch -Np1 -i ../0001-win32-Make-the-static-build-work-with-MinGW-when-pos.patch
 }
 
 
@@ -56,10 +50,16 @@ build() {
 
 package() {
   for _arch in ${_architectures}; do
-    sed -i "s/-lgnulib//g" ${srcdir}/glib/build-${_arch}/meson-private/glib-2.0.pc 
+    # fix pkg-config files (see https://github.com/mesonbuild/meson/pull/3939)
+    for pc_file in ${srcdir}/glib/build-${_arch}/meson-private/*.pc; do
+      sed -i 's/-lgnulib//g' "$pc_file"
+      sed -i 's/-lcharset//g' "$pc_file"
+      sed -i 's/-lgiowin32//g' "$pc_file"
+    done
+    
     DESTDIR="${pkgdir}" ninja -C "${srcdir}/glib/build-${_arch}" install
     
-    #FIXME: Ranlib (isn't meson supposed to do this?)
+    # see https://github.com/mesonbuild/meson/issues/4138
     ${_arch}-gcc-ranlib ${pkgdir}/usr/${_arch}/lib/*.a
 
   done

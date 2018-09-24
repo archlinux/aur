@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-glib2
 	pkgdesc = Low level core library (mingw-w64)
-	pkgver = 2.58.0
-	pkgrel = 4
+	pkgver = 2.58.1
+	pkgrel = 2
 	url = https://wiki.gnome.org/Projects/GLib
 	arch = any
 	license = LGPL2.1
@@ -15,18 +15,12 @@ pkgbase = mingw-w64-glib2
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = git+https://gitlab.gnome.org/GNOME/glib.git#commit=c138b98e363df8b95c2ee3eac214649b2908ad68
-	source = 0001-gsocket-fix-cross-compilation.patch
+	source = git+https://gitlab.gnome.org/GNOME/glib.git#commit=a9f5a6fa2fdd6eb2f754709d7e790d24e3ceaa18
 	source = 0001-Use-CreateFile-on-Win32-to-make-sure-g_unlink-always.patch
-	source = glib-formaterror.patch
-	source = glib-include-time-h-for-localtime_r.patch
-	source = glib-prefer-constructors-over-DllMain.patch
+	source = 0001-win32-Make-the-static-build-work-with-MinGW-when-pos.patch
 	sha256sums = SKIP
-	sha256sums = 44c8c6b4ca376177a8c333a00c3485d638f8641967503e15364606d4c4292ff3
-	sha256sums = afd62a852a0b6aed4ce86eb97297e5080b26055cc878413b89d482c184b826b3
-	sha256sums = ea529d5cbf8cf7ca66467664a3ead37473a1c009ac973d5694b06cc9d0b23df3
-	sha256sums = ac567f7a9cad51ab97dba70bcdd6c0c16f93d2451c43fde380e4fdb20b2d4b31
-	sha256sums = 8a02502069fa88c667a4fd1599280f927cb1bcf61e9fcd369fec5bdb5440d480
+	sha256sums = ff0d3df5d57cf621cac79f5bea8bd175e6c18b3fbf7cdd02df38c1eab9f40ac3
+	sha256sums = 838abaeab8ca4978770222ef5f88c4b464545dd591b2d532c698caa875b46931
 
 pkgname = mingw-w64-glib2
 
