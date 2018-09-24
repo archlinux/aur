@@ -3,7 +3,7 @@
 # Contributor: Julio González <juliolokoo at gmail dot com>
 # Contributor: Jose Valecillos <valecillosjg (at) gmail (dot) com>
 # Contributor: Thiago Perrotta <echo dGhpYWdvcGVycm90dGE5NUBnbWFpbC5jb20K | base64 -d >
-# Contributor: Alessandro Gottardi <alessandrogottardi00 AT gmail DOT com>
+# Contributor: alegotta <algottardi at disroot dot org>
 
 pkgname='xampp'
 pkgver='7.2.9'
@@ -71,6 +71,7 @@ package() {
 		-b "${pkgdir}/opt/lampp:/opt/lampp" \
 		"${srcdir}/${pkgname}-linux-x64-${pkgver}-0-installer.run" \
 		--mode unattended --disable-components 'xampp_developer_files' --debuglevel 4 --launchapps 0 --debugtrace 'bitrock_debug.log'
+
 
 	msg 'Copying executables and launcher...'
 
