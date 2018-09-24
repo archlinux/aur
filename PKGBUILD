@@ -18,22 +18,22 @@ source=("emacs-ess::git://github.com/emacs-ess/ESS.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd $pkgname%-git
+  cd ${pkgname%-git}
   printf "%s.%s.%s" $(awk '/defvar ess-version/ {print $3}' lisp/ess-custom.el|sed s+-beta++|tr -d \"|tr - .) $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
 prepare() {
-  cd $pkgname%-git/lisp
+  cd ${pkgname%-git}/lisp
   sed -i 's+obsolete/++' Makefile
 }
 
 build() {
-  cd $pkgname%-git
+  cd ${pkgname%-git}
   make prefix=/usr
 }
 
 package() {
-  cd $pkgname%-git
+  cd ${pkgname%-git}
   make DESTDIR="$pkgdir"/usr LISPDIR="$pkgdir"/usr/share/emacs/site-lisp/ess \
        INFODIR="$pkgdir"/usr/share/info/ install 
 }
