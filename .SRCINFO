@@ -1,6 +1,6 @@
 pkgbase = lux-qt
 	pkgdesc = Cryptocurrency wallet(QT)
-	pkgver = 5.2.2
+	pkgver = 5.2.3
 	pkgrel = 1
 	url = https://luxcore.io/
 	install = lux-qt.install
@@ -9,18 +9,21 @@ pkgbase = lux-qt
 	license = MIT
 	makedepends = boost
 	makedepends = qt5-tools
-	makedepends = libevent
-	makedepends = python
 	depends = boost-libs
 	depends = qt5-base
-	depends = qrencode
-	depends = miniupnpc
 	depends = db4.8
-	depends = zeromq
 	depends = protobuf
 	depends = libevent
+	depends = openssl-1.0
+	optdepends = miniupnpc: Automatic UPnP port mapping
+	optdepends = qrencode: For generating QR codes within the GUI
+	optdepends = zeromq: Send notifications via zeromq
+	provides = lux-qt
+	provides = luxd
+	provides = lux-tx
 	conflicts = luxcoin
-	source = lux-qt::git+https://github.com/LUX-Core/lux.git#tag=v5.2.2
+	conflicts = luxcore
+	source = lux-qt::git+https://github.com/LUX-Core/lux.git#tag=v5.2.3
 	source = lux-qt.desktop
 	source = lux.patch
 	sha256sums = SKIP
