@@ -4,7 +4,7 @@ pkgbase=python-uproot-methods
 _pkgbase=uproot-methods
 pkgname=('python2-uproot-methods' 'python-uproot-methods')
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Pythonic mix-ins for ROOT classes"
 arch=('any')
 url="https://github.com/scikit-hep/uproot-methods"
@@ -44,7 +44,8 @@ build_python-uproot-methods() {
 }
 
 package_python2-uproot-methods() {
-  depends=('python2-numpy')
+  depends=('python2-awkward-array'
+           'python2-numpy')
   cd "${srcdir}/${_pkgbase}-py2-${pkgver}"
 
   python2 setup.py install --root="${pkgdir}/" --optimize=1
@@ -59,7 +60,8 @@ package_python2-uproot-methods() {
 }
 
 package_python-uproot-methods() {
-  depends=('python-numpy')
+  depends=('python-awkward-array'
+           'python-numpy')
   cd "${srcdir}/${_pkgbase}-${pkgver}"
 
   python setup.py install --root="${pkgdir}/" --optimize=1
