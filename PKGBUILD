@@ -1,4 +1,4 @@
-# Maintainer: John  Whitehead <littlejay1985 at gmail dot com>
+# Maintainer: John  Whitehead <littlejay19y85 at gmail dot com>
 # Contributor: Doug Newgard <scimmia22 at outlook dot com>
 
 pkgname=econnman
@@ -10,7 +10,7 @@ url="https://phab.enlightenment.org/w/projects/econnman/"
 license=('LGPL3')
 depends=('python-efl' 'connman')
 source=("http://download.enlightenment.org/rel/apps/$pkgname/$pkgname-$pkgver.tar.xz")
-sha256sums=('60f30748b2642b83763fe1e00f6a54ff27425c761633bb8cc0396fba15e7f714')
+sha256sums=('0cce87681fae7ca70f1e63cfe0ae65fdf17bc334727054317e25e3897619ed85')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
