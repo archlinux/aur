@@ -1,0 +1,14 @@
+pkgbase = imgur-downloader-git
+	pkgdesc = Download imgur albums from the command line
+	pkgver = 0.0.1.git
+	pkgrel = 1
+	url = https://github.com/jtara1/imgur_downloader
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	source = git+https://github.com/jtara1/imgur_downloader.git
+	sha1sums = SKIP
+
+pkgname = imgur-downloader-git
+
