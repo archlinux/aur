@@ -15,7 +15,7 @@
 # Maintainer: Aleksey Filippov <sarum9in@gmail.com>
 # Contributor: Lubosz Sarnecki <lubosz@gmail.com>
 pkgname=hotdoc
-pkgver=0.8.92
+pkgver=0.8.101
 pkgrel=2
 epoch=
 pkgdesc="HotDoc: the tastiest API documentation system"
