@@ -1,0 +1,28 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b2fcffb17..b2ecf7dc2 100644
+--- CMakeLists.txt.orig
++++ CMakeLists.txt
+@@ -572,8 +572,9 @@ set(CMAKE_CXX_FLAGS "-std=gnu++11 ${CMAKE_CXX_FLAGS}")  # FIXME: should be -std=
+ 
+ if (UNIX)
+   set( CMAKE_C_FLAGS "-Werror -Wdeclaration-after-statement -Wno-pointer-sign -Wall -Wmissing-prototypes -Wmissing-declarations -Wno-unused ${CMAKE_C_FLAGS}")
+-  set( CMAKE_CXX_FLAGS "-Werror -Wall -Wmissing-declarations -Wno-unused -Wno-error=parentheses ${CMAKE_CXX_FLAGS}")
+   set( CMAKE_C_FLAGS "-Wno-deprecated-declarations -std=gnu11 -Wno-error=parentheses ${CMAKE_C_FLAGS}")
++  set( CMAKE_CXX_FLAGS "-Werror -Wall -Wmissing-declarations -Wno-unused -Wno-error=parentheses ${CMAKE_CXX_FLAGS}")
++  set( CMAKE_CXX_FLAGS "-Wno-deprecated-declarations -Wno-register ${CMAKE_CXX_FLAGS}")
+   set( CMAKE_C_FLAGS_RELEASE "-O3 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2 ${CMAKE_C_FLAGS}")
+ endif (UNIX)
+ if (MINGW)
+--- libgnucash/engine/CMakeLists.txt.orig
++++ libgnucash/engine/CMakeLists.txt
+@@ -235,7 +235,6 @@ add_dependencies (gncmod-engine swig-runtime-h iso-4217-c)
+ target_link_libraries(gncmod-engine gnc-core-utils gnc-module ${Boost_DATE_TIME_LIBRARIES}  ${Boost_REGEX_LIBRARIES} ${REGEX_LDFLAGS} ${GMODULE_LDFLAGS} ${GLIB2_LDFLAGS} ${GOBJECT_LDFLAGS} ${GUILE_LDFLAGS})
+ 
+ target_compile_definitions (gncmod-engine PRIVATE -DG_LOG_DOMAIN=\"gnc.engine\")
+-target_compile_options (gncmod-engine PRIVATE -Wno-deprecated-register)
+ 
+ target_include_directories (gncmod-engine
+     PRIVATE ${CMAKE_CURRENT_BINARY_DIR} # for iso-4217-currencies.c
+-- 
+2.19.0
+

@@ -3,7 +3,7 @@
 pkgname=gnucash-xbt-minimal
 _pkgname=gnucash
 pkgver=3.2
-pkgrel=1
+pkgrel=2
 _sourcerel=
 pkgdesc="A personal and small-business financial-accounting application with Bitcoin but without ofx/qfx import and aqbanking support"
 arch=(x86_64)
@@ -21,13 +21,16 @@ options=(!emptydirs)
 conflicts=(gnucash gnucash-devel gnucash-xbt)
 provides=(gnucash)
 source=("https://github.com/Gnucash/${_pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}${_sourcerel}.tar.bz2"
-        "xbt.patch")
+        "xbt.patch"
+        "0001-Fix-compiler-warning-issues.patch")
 sha1sums=('4ab5baf0d7328e7b6f6a0cb0b4fea3864beb17dd'
-          '52cf6820bf1dd87b5807997e49ec9c861ff516af')
+          '52cf6820bf1dd87b5807997e49ec9c861ff516af'
+          '2a206572b385288fd4a7dd9b2bedb2b793d4ca2b')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   patch -Np0 -i "${srcdir}/xbt.patch"
+  patch -Np0 -i "${srcdir}/0001-Fix-compiler-warning-issues.patch"
 
   cd "${srcdir}"
   mkdir build
@@ -46,7 +49,7 @@ prepare() {
 build() {
   cd "${srcdir}/build"
 
-  make -j6
+  make
 }
 
 package() {

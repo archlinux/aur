@@ -1,7 +1,7 @@
 pkgbase = gnucash-xbt-minimal
 	pkgdesc = A personal and small-business financial-accounting application with Bitcoin but without ofx/qfx import and aqbanking support
 	pkgver = 3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnucash.org
 	arch = x86_64
 	license = GPL
@@ -27,8 +27,10 @@ pkgbase = gnucash-xbt-minimal
 	options = !emptydirs
 	source = https://github.com/Gnucash/gnucash/releases/download/3.2/gnucash-3.2.tar.bz2
 	source = xbt.patch
+	source = 0001-Fix-compiler-warning-issues.patch
 	sha1sums = 4ab5baf0d7328e7b6f6a0cb0b4fea3864beb17dd
 	sha1sums = 52cf6820bf1dd87b5807997e49ec9c861ff516af
+	sha1sums = 2a206572b385288fd4a7dd9b2bedb2b793d4ca2b
 
 pkgname = gnucash-xbt-minimal
 
