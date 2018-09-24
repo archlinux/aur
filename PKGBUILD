@@ -9,8 +9,8 @@
 
 pkgname=freecad
 pkgver=0.17
-_commit=9948ee4
-pkgrel=7
+_commit=549e8ec
+pkgrel=8
 pkgdesc='A general purpose 3D CAD modeler'
 arch=('x86_64')
 url='http://www.freecadweb.org/'

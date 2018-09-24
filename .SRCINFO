@@ -1,7 +1,7 @@
 pkgbase = freecad
 	pkgdesc = A general purpose 3D CAD modeler
 	pkgver = 0.17
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.freecadweb.org/
 	arch = x86_64
 	license = LGPL
@@ -41,7 +41,7 @@ pkgbase = freecad
 	optdepends = python2-pyqt5
 	optdepends = graphviz
 	optdepends = openscad
-	source = git+https://github.com/FreeCAD/FreeCAD.git#commit=9948ee4
+	source = git+https://github.com/FreeCAD/FreeCAD.git#commit=549e8ec
 	source = freecad.desktop
 	source = freecad.xml
 	source = gcc8.patch
