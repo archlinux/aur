@@ -1,8 +1,9 @@
 # Maintainer: phmayo <cmdjackryan+aur@gmail.com>
 # Maintainer: VirtualTam <virtualtam@flibidi.net>
 pkgname=xtrkcad
-pkgver=5.1.0
-_relver=5.1
+pkgver=5.1.1
+_relver=5.1.1
+_upstreamrel="-1"
 _srcname="${pkgname}-source-${pkgver}"
 pkgrel=1
 pkgdesc="CAD program for designing model railroad layouts."
@@ -12,8 +13,8 @@ license=('GPL2')
 makedepends=('cmake' 'gettext')
 conflicts=('xtrkcad')
 provides=('xtrkcad')
-source=("http://sourceforge.net/projects/xtrkcad-fork/files/XTrackCad/Version%20${_relver}/${_srcname}.tar.gz")
-sha256sums=('18a34dc7c1d3fceb9b695c2d742efaec32faeaaea21b934dd782a75db4f1ea04')
+source=("http://sourceforge.net/projects/xtrkcad-fork/files/XTrackCad/Version%20${_relver}/${_srcname}${_upstreamrel}.tar.gz")
+sha256sums=('3295c97b8e6c3db13c97184167891bed41a1751cfba2f2f02b22403f5dca0b13')
  
 build() {
   cd "${_srcname}"
