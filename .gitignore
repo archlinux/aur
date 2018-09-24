@@ -1,0 +1,4 @@
+/pkg
+/src
+/postgrest-v*.tar.xz
+/postgrest-bin-*.tar
