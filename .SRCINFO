@@ -20,7 +20,6 @@ pkgbase = pantheon-workarounds
 	optdepends = pantheon-geoclue2-agent-git: Pantheon Geoclue2 Agent
 	optdepends = xscreensaver-dbus-screenlock: xscreensaver locker for gnome-derivative desktops
 	optdepends = numlockx: Turn on the numlock key in X11
-	optdepends = bamf-ubuntu-bzr: Application matching framework used by plank
 	provides = gala=r1103.3661cbd
 	provides = gala-bzr=r1103.3661cbd
 	provides = gala-git=r1103.3661cbd

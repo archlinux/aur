@@ -17,8 +17,7 @@ optdepends=("pantheon-qq-default-settings-git: Pantheon configuration and themei
             "pantheon-polkit-agent-git: Polkit Authentication Agent"
             "pantheon-geoclue2-agent-git: Pantheon Geoclue2 Agent"
             "xscreensaver-dbus-screenlock: xscreensaver locker for gnome-derivative desktops"
-            "numlockx: Turn on the numlock key in X11"
-            "bamf-ubuntu-bzr: Application matching framework used by plank")
+            "numlockx: Turn on the numlock key in X11")
 makedepends=('git' 'intltool')
 provides=(gala{,-bzr,-git}="${pkgver}")
 conflicts=(gala{,-bzr,-git})
