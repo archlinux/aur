@@ -1,4 +1,4 @@
-# Project Author: Hodong Kim <https://gitlab.com/hodong>
+# Upstream Project Author: Hodong Kim <https://gitlab.com/hodong>
 # PKGBUILD Author: Hodong Kim <https://gitlab.com/hodong>
 # PKGBUILD Maintainer: Bumsik Kim <k.bumsik@gmail.com>
 
@@ -10,7 +10,7 @@
 # this PKGBUILD file is in the public domain.
 
 pkgname=nimf
-pkgver=2018.08.06	# This follows AC_INIT field in configure.ac
+pkgver=2018.08.31	# This follows AC_INIT field in configure.ac
 pkgrel=1
 pkgdesc="Nimf is an input method framework."
 arch=('any')
@@ -24,7 +24,7 @@ depends=('glib2' 'gtk3' 'gtk2' 'qt4' 'qt5-base' 'libappindicator-gtk3'
          'libhangul' 'anthy' 'libchewing' 'librime' 'libxkbcommon' 'wayland')
 optdepends=('brise: Rime schema repository'
             'noto-fonts-cjk: Google Noto CJK fonts')
-source=("nimf-master::git+https://gitlab.com/nimf-i18n/nimf#commit=f806f6da86f8b4cf168983467953c9a3be7595d6")
+source=("nimf-master::git+https://gitlab.com/nimf-i18n/nimf#commit=21b1a2154e4988c6ba6dfc7c6c487aa63506883f")
 md5sums=('SKIP')
 
 build() {
