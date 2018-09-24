@@ -2,7 +2,7 @@
 # Submitter:  Corey Mwamba <contact.me@coreymwamba.co.uk>
 pkgname=bash-fuzzy-clock
 pkgver=20181024
-pkgrel=2
+pkgrel=3
 pkgdesc="Script to display the time in natural language. Translated to six languages"
 arch=('any')
 url="https://sourceforge.net/projects/bashfuzzyclock/"
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('bash')
 provides=("bash-fuzzy-clock")
 source=(https://downloads.sourceforge.net/project/bashfuzzyclock/$pkgname.tar.gz)
-md5sums=('db39dac6248e34d7d00c1b525ee42e72')
+md5sums=('cbc8e57213a9a281c6338b16ffb734c1')
 build() {
   cd "$srcdir"
   msgfmt fr.po -o fr.mo
