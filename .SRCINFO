@@ -9,6 +9,7 @@ pkgbase = tox-node-rs-git
 	makedepends = git
 	makedepends = rust
 	makedepends = cargo
+	depends = libsodium
 	provides = tox-node-rs
 	conflicts = tox-node-rs
 	source = tox-node-rs-git::git+https://github.com/tox-rs/tox-node

@@ -5,6 +5,7 @@ pkgver=v0.0.4.r8.gd24f0ee
 pkgrel=1
 pkgdesc="A server application to run tox node written in pure Rust"
 arch=('i686' 'x86_64')
+depends=('libsodium')
 makedepends=('git' 'rust' 'cargo')
 url="https://github.com/tox-rs/tox-node"
 license=('MIT')
