@@ -16,7 +16,7 @@
 
 _qt_module=qttools
 pkgname="mingw-w64-qt5-tools"
-pkgver=5.11.1
+pkgver=5.11.2
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="A cross-platform application and UI framework (Development Tools, QtHelp; mingw-w64)"
@@ -30,9 +30,9 @@ _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Fix-linguist-macro.patch'
         '0002-Prevent-linking-qhelpconverter-against-static-bearer.patch')
-sha256sums=('b7fb186f92aedb922c4e7f57ff276bbf90caf0087a2a980f704bad9ac44514fe'
-            '834af0d5cc321e0513a856632190a1d96d85452779c2e3e0ead9445d2756e274'
-            '2b66137938499e02398005b70a1af54d43ed6c019ca156b3cdafa4940571038c')
+sha256sums=('f0e8332c771958b4aa373ac643d35e2fabb1a2dcdbaca756ebf3d1ace7c631b8'
+            '5f01a22de256ca8476fdb156f15f28c9199b7b18d4d3749c9d14cd1bcf104830'
+            '75f309093b05283d5bc5edd9c9e340feae05b8b6ebd7c9016b3a688ed419e5cb')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 # can not use static MySQL plugin because mariadb-connector-c comes with its own pthread implementation

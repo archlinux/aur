@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-tools
 	pkgdesc = A cross-platform application and UI framework (Development Tools, QtHelp; mingw-w64)
-	pkgver = 5.11.1
+	pkgver = 5.11.2
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = i686
@@ -20,12 +20,12 @@ pkgbase = mingw-w64-qt5-tools
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://download.qt.io/official_releases/qt/5.11/5.11.1/submodules/qttools-everywhere-src-5.11.1.tar.xz
+	source = https://download.qt.io/official_releases/qt/5.11/5.11.2/submodules/qttools-everywhere-src-5.11.2.tar.xz
 	source = 0001-Fix-linguist-macro.patch
 	source = 0002-Prevent-linking-qhelpconverter-against-static-bearer.patch
-	sha256sums = b7fb186f92aedb922c4e7f57ff276bbf90caf0087a2a980f704bad9ac44514fe
-	sha256sums = 834af0d5cc321e0513a856632190a1d96d85452779c2e3e0ead9445d2756e274
-	sha256sums = 2b66137938499e02398005b70a1af54d43ed6c019ca156b3cdafa4940571038c
+	sha256sums = f0e8332c771958b4aa373ac643d35e2fabb1a2dcdbaca756ebf3d1ace7c631b8
+	sha256sums = 5f01a22de256ca8476fdb156f15f28c9199b7b18d4d3749c9d14cd1bcf104830
+	sha256sums = 75f309093b05283d5bc5edd9c9e340feae05b8b6ebd7c9016b3a688ed419e5cb
 
 pkgname = mingw-w64-qt5-tools
 
