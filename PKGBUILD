@@ -29,6 +29,16 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_srcname"
+
+  # Pthreads
+  sed -i '/^CXXFLAGS/ s@$@ -DHAVE_UNISTD_H -lpthread@' ./Makefile.Linux
+
+  # CHOLDMOD
+  sed -i '/^CXXFLAGS/ s@$@ -DHAVE_LIBCHOLMOD -I/usr/include/suitesparse -lcholmod -lamd -lcolamd -lcamd -lccolamd@' ./Makefile.Linux
+
+  # FFTW3
+  sed -i '/^CXXFLAGS/ s@$@ -DHAVE_FFTW3 -lfftw3@' ./Makefile.Linux
+
   make
 }
 
