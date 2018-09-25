@@ -2,7 +2,7 @@
 
 _pyname=mbed-ls
 pkgname=python-${_pyname}
-pkgver=1.4.2
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="ARM mbed device detection module"
 arch=('any')
@@ -12,11 +12,11 @@ depends=('python2' 'python2-prettytable' 'python2-fasteners' 'python2-appdirs')
 makedepends=('python2-setuptools')
 optdepends=('python2-colorlog')
 options=(!emptydirs)
-source=("https://github.com/ARMmbed/mbed-ls/archive/v$pkgver.tar.gz")
-sha256sums=('a65cfad3e9b0ba33a69da540b4058a96f4079389c351b184e964539ef654640c')
+source=("https://github.com/ARMmbed/mbed-ls/archive/release-version-$pkgver.tar.gz")
+sha256sums=('c12e5bfbe37f5f8e45dbf427c5a16e92d900c3672eb116e586610a93da775d15')
 
 package() {
-  cd "$srcdir/${_pyname}-${pkgver}"
+  cd "$srcdir/${_pyname}-release-version-${pkgver}"
   python2 setup.py install --root="$pkgdir/" --optimize=1
   rm -rf $pkgdir/usr/lib/python2.7/site-packages/test
 }
