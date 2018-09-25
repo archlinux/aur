@@ -1,0 +1,7 @@
+post_install() {
+    setcap 'cap_net_raw+ep' usr/bin/gnethogs
+}
+
+post_upgrade() {
+    post_install "$1"
+}
