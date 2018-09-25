@@ -1,6 +1,6 @@
 # Maintainer: Simon Doppler (dopsi) <dop.simon@gmail.com>
 pkgname=console-tdm
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='Console display manager based on CDM'
 arch=('any')
@@ -11,7 +11,7 @@ conflicts=('console-tdm')
 depends=('xorg-xinit')
 optdepends=('dialog: for curses UI')
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/dopsi/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('29a2db899509e6d7f56cc040e144c8b0f7bf90ff0d296e8da17b002d3e4a2a18')
+sha256sums=('c938a72da22c76d3e388628384005faa43a262f4eca8c2709d65f75e4f136d7c')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
