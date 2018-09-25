@@ -1,0 +1,13 @@
+pkgbase = ory-oathkeeper-bin
+	pkgdesc = A cloud native Identity & Access Proxy (IAP) which authenticates and authorizes incoming HTTP requests.
+	pkgver = 1.0.0_beta.9
+	pkgrel = 1
+	url = https://ory.sh
+	arch = x86_64
+	license = Apache
+	provides = ory-oathkeeper
+	source = https://github.com/ory/oathkeeper/releases/download/v1.0.0-beta.9/oathkeeper-linux-amd64
+	sha256sums = d6abef296f24ff25f50f5ba6cffb3cc73aa00af8e7a724e3652128e65170ee75
+
+pkgname = ory-oathkeeper-bin
+
