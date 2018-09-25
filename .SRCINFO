@@ -1,6 +1,6 @@
 pkgbase = python-mbed-greentea
 	pkgdesc = ARM mbed test automation
-	pkgver = 1.3.3
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://developer.mbed.org
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = python-mbed-greentea
 	depends = python2-six
 	depends = python-mbed-host-tests
 	options = !emptydirs
-	source = https://github.com/ARMmbed/greentea/archive/v1.3.3.tar.gz
-	sha256sums = 376b4f196b9a020e255fc49f06b1981912adde4fa1cfc30f860c552847ec28a3
+	source = https://github.com/ARMmbed/greentea/archive/release-version-1.4.0.tar.gz
+	sha256sums = 6d816e6b6828117397ee9de5ea65bfb42c00f6fa223f6c8cdcc29161374e256c
 
 pkgname = python-mbed-greentea
 
