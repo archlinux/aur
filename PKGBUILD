@@ -3,8 +3,8 @@
 pkgbase=python-identify
 pkgname=('python-identify' 'python2-identify')
 pkgname=python-identify
-pkgver=1.0.5
-pkgrel=2
+pkgver=1.1.6
+pkgrel=1
 pkgdesc="File identification library for Python."
 arch=(any)
 url="https://github.com/chriskuehl/identify"
@@ -12,7 +12,7 @@ license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools')
 options=(!emptydirs)
 source=("https://github.com/chriskuehl/identify/archive/v${pkgver}.tar.gz")
-sha256sums=('cfe1487d9fa28fdb59f52306b8465021864d1bb8b580d63f31e379ded3f2b21c')
+sha256sums=('46df0ea2e747870a605420a68cbec9ec2cdb199af9d00d72d22ca1383215b323')
 
 package_python2-identify() {
   depends=('python2')
