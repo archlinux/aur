@@ -3,13 +3,13 @@
 
 _pyname=mbed-cli
 pkgname=python-${_pyname}
-pkgver=1.5.0
-pkgrel=2
+pkgver=1.8.2
+pkgrel=1
 pkgdesc="ARM mbed Command Line Interface"
 arch=('any')
 url="https://developer.mbed.org"
 license=('Apache')
-depends=('python2' 'python2-colorama' 'python2-pyserial' 'python2-intelhex' 'python2-jinja' 'python2-beautifulsoup4' 'python2-fuzzywuzzy' 'python2-prettytable' 'python2-requests' 'python2-yaml')
+depends=('python2' 'python2-colorama' 'python2-pyserial' 'python2-intelhex' 'python2-jinja' 'python2-beautifulsoup4' 'python2-fuzzywuzzy' 'python2-prettytable' 'python2-requests' 'python2-yaml' 'python2-pyelftools' 'python2-jsonschema')
 optdepends=(
   'git: support git-based mbed projects'
   'mercurial: support mercurial-based mbed projects'
@@ -20,7 +20,7 @@ optdepends=(
 makedepends=('python2-setuptools')
 options=(!emptydirs)
 source=("https://github.com/ARMmbed/mbed-cli/archive/$pkgver.tar.gz")
-sha256sums=('45dbe612b42511ca601ae474b653ef61a80e2f3da4515029fa58b9cd027ef50d')
+sha256sums=('431616c1cfe953bbd15676160cac4196eaa54987adcaa40cd63cc07548dadd16')
 
 package() {
   cd "$srcdir/${_pyname}-${pkgver}"

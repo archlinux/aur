@@ -1,7 +1,7 @@
 pkgbase = python-mbed-cli
 	pkgdesc = ARM mbed Command Line Interface
-	pkgver = 1.5.0
-	pkgrel = 2
+	pkgver = 1.8.2
+	pkgrel = 1
 	url = https://developer.mbed.org
 	arch = any
 	license = Apache
@@ -16,14 +16,16 @@ pkgbase = python-mbed-cli
 	depends = python2-prettytable
 	depends = python2-requests
 	depends = python2-yaml
+	depends = python2-pyelftools
+	depends = python2-jsonschema
 	optdepends = git: support git-based mbed projects
 	optdepends = mercurial: support mercurial-based mbed projects
 	optdepends = python-mbed-host-tests: Flash, reset and supervise tool
 	optdepends = python-mbed-greentea: Test automation
 	optdepends = python-mbed-ls: Automatic device detection
 	options = !emptydirs
-	source = https://github.com/ARMmbed/mbed-cli/archive/1.5.0.tar.gz
-	sha256sums = 45dbe612b42511ca601ae474b653ef61a80e2f3da4515029fa58b9cd027ef50d
+	source = https://github.com/ARMmbed/mbed-cli/archive/1.8.2.tar.gz
+	sha256sums = 431616c1cfe953bbd15676160cac4196eaa54987adcaa40cd63cc07548dadd16
 
 pkgname = python-mbed-cli
 
