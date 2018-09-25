@@ -17,7 +17,7 @@ prepare () {
   cd ${srcdir}/${pkgname}-${pkgver}_SRC
   # https://salsa.debian.org/science-team/med-fichier/tree/master/debian/patches
   patch -p1 -i "${srcdir}"/hdf5-1.10-support.patch
-  autoreconf -vfi
+  autoreconf -i
 }
 
 build() {
@@ -28,7 +28,7 @@ build() {
   export F77=mpif90
   export FC=mpif90
   export PYTHON=/usr/bin/python2
-  ./configure --with-f90=mpif90 --prefix=/usr --datadir=/usr/share/med --with-swig=yes
+  ./configure --with-f90=mpif90 --prefix=/usr --datadir=/usr/share/med --with-swig=yes --disable-dependency-tracking
   make
 }
 
