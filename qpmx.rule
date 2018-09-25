@@ -1,1 +1,1 @@
-qt5-base qt5-jsonserializer
+qt5-base{{^(\d+\.\d+\.\d+).*$}} qt5-jsonserializer{{^(\d+\.\d+\.\d+).*$}}

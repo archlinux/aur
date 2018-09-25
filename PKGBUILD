@@ -2,7 +2,7 @@
 pkgbase=qpmx
 pkgname=(qpmx qpmx-gitsource qpmx-qpmsource)
 group=qpmx-full
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="A frontend for qpm, to provide source and build caching"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ source=("$_pkgfqn::git+https://github.com/Skycoder42/$pkgname.git#tag=$pkgver"
         "$pkgname.rule"
         "plugin.rule")
 sha256sums=('SKIP'
-            '6029d42b05d32d99a6e673e5a7c95ac657e6258f88835f8aff05bde7535e543b'
+            '13f2e499671cb094ff244946b733a8e6898152fe60c77cb93bef1e1a19ffbd0e'
             'a7f6099680d692285332ae7db3cf1414f4d664ceccb701d45ac73ecaa08a65dc')
 
 git_submod_rm() {
@@ -35,15 +35,12 @@ prepare() {
   git_submod_rm submodules/qpmx-sample-package
 
   git submodule update --init --recursive
-
-  # fix install of broken install.pri
-  echo "PREFIX = /usr" >> .qmake.conf
 }
 
 build() {
   cd build
 
-  qmake "../$_pkgfqn/"
+  qmake "PREFIX=/usr" "../$_pkgfqn/"
   make qmake_all
   make
 }
@@ -57,10 +54,12 @@ package_qpmx() {
 
   cd build/qpmx
   make INSTALL_ROOT="$pkgdir" install
+  cd ../lib
+  make INSTALL_ROOT="$pkgdir" install
 
   cd "../../$_pkgfqn"
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -D -m644 "../${pkgname}.rule" "$pkgdir/etc/repkg/rules/${pkgname}.rule"
+  install -D -m644 "../${pkgname}.rule" "$pkgdir/etc/repkg/rules/system/${pkgname}.rule"
 }
 
 package_qpmx-qpmsource() {
