@@ -1,48 +1,36 @@
-# Maintainer: Matti Niemenmaa <matti.niemenmaa+aur ät iki dȯt fi>
-
 pkgname=sc68-svn
-pkgver=r571
+pkgver=r692
 pkgrel=1
-pkgdesc="Atari ST and Amiga music player"
-arch=(i686 x86_64)
-url='http://sc68.atari.org'
-license=(GPL2)
-depends=(curl libao zlib)
-makedepends=(svn)
+pkgdesc='Atari ST and Amiga music player'
+arch=(x86_64)
+license=(GPL3)
+url='https://sourceforge.net/projects/sc68/'
+source=('sc68::svn+https://svn.code.sf.net/p/sc68/code/')
+depends=(curl libao readline zlib)
+makedepends=(subversion)
 conflicts=(sc68)
-source=(${pkgname}::svn+svn://svn.code.sf.net/p/sc68/code/)
-sha256sums=('SKIP')
+provides=(sc68)
+sha512sums=(SKIP)
 
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/sc68"
   local ver="$(svnversion)"
   printf "r%s" "${ver//[[:alpha:]]}"
 }
 
 prepare() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/sc68"
   tools/svn-bootstrap.sh
 }
 
 build() {
-  cd "$srcdir/$pkgname"
-  (cd as68 && ./configure && make as68)
-  export PATH="$PWD/as68:$PATH"
-  for d in unice68 file68 libsc68 sc68; do
-    pushd $d
-    ./configure --prefix=/usr
-    make
-    popd
-  done
+  cd "$srcdir/sc68"
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  for d in unice68 file68 libsc68 sc68; do
-    pushd $d
-    make install DESTDIR="$pkgdir"
-    popd
-  done
+  cd "$srcdir/sc68"
+  make DESTDIR="$pkgdir" install
 }
 
-# vim:set sw=2 et:
