@@ -1,14 +1,12 @@
 pkgbase = sococo
 	pkgdesc = Sococo for Linux
-	pkgver = 0.5.5_14531
-	pkgrel = 2
+	pkgver = 6.4.0_19486
+	pkgrel = 1
 	url = https://app.sococo.com/a/download
 	arch = x86_64
 	license = custom
-	source_x86_64 = https://s.sococo.com/rs/client/linux64/apt/pool/main/sococo-0.5.5-14531_amd64.deb
-	source_x86_64 = sococo.desktop
-	sha256sums_x86_64 = c4439f5046d9268a0b76843fde4a8a76784875940d270c78b9d72661355bac13
-	sha256sums_x86_64 = 63073d8d182b9e24cac305222955aef6976adc4f8cfab98892d776d19fd1b367
+	source_x86_64 = https://s.sococo.com/rs/client/linux64/apt/pool/main/sococo-6.4.0-19486_amd64.deb
+	sha256sums_x86_64 = 0fbb4bda1e8665d82a8da9811dcf9ec875b10125a7e74192e728fd843951dedd
 
 pkgname = sococo
 
