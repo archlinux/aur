@@ -5,13 +5,13 @@ pkgname=powershell
 binaryname=pwsh
 _pkgver=6.1.0
 pkgver=${_pkgver/-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-platform automation and configuration tool/framework (latest release)'
 arch=('x86_64')
 url='https://github.com/PowerShell/PowerShell'
 license=('MIT')
 makedepends=('git' 'cmake' 'dotnet-sdk>=2.0')
-depends=('icu')
+depends=('icu' 'openssl-1.0')
 source=($pkgname::git+https://github.com/PowerShell/PowerShell.git#tag=v$_pkgver
         googletest::git+https://github.com/google/googletest.git
         build.sh
