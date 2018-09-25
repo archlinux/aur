@@ -1,4 +1,5 @@
-# Maintainer: kikadf <kikadf.01@gmail.com>
+# Maintainer: Stephan Springer <buzo+arch@Lini.de>
+# Contributor: kikadf <kikadf.01@gmail.com>
 # Contributor: Jameson Pugh <imntreal@gmail.com>
 
 # Default notifier is use simply qt5
@@ -17,17 +18,17 @@
 # To disable, uncomment line below
 #DISABLE_PIKAUR='1'
 
-
 pkgname=octopi
 pkgver=0.9.0
 pkgrel=1
-pkgdesc="This is Octopi, a powerful Pacman frontend using Qt libs"
+pkgdesc="A powerful Pacman frontend using Qt libs"
 url="http://octopiproject.wordpress.com"
 arch=('x86_64')
 license=('GPL2')
 depends=('qtermwidget' 'pkgfile' 'alpm_octopi_utils' 'qt5-declarative' 'pacman-contrib')
 [[ ${USE_NOTIFIER} == "1" ]] && depends+=('knotifications')
 [[ ${DISABLE_QTERMWIDGET} == "1" ]] && unset depends[0]
+makedepends=('git')
 optdepends=('pikaur: for AUR support'
             'yaourt: for AUR support'
             'pacaur: for AUR support'
@@ -48,18 +49,17 @@ sha256sums=('131f16745df685430db55e54ede6da66aed9b02ca00d6d873a002b2a3e1c90ef'
             '18d3ee70f520045035c5d9ede6dc5e6121f0f258fe4eaa743551aaf6bd9b0181'
             'SKIP')
 if [ "${USE_SOURCE}" = "" ]; then
-	source+=("https://github.com/aarnt/${pkgname}/archive/v${pkgver}.tar.gz")
-	sha256sums+=('f6c7fe6bbcc26a79b1e455a42a8dc906bee4edd1b386b4f76178f006f4d7f822')
-	_cd_path="${pkgname}-${pkgver}"
+    source+=("$pkgname.$pkgver.tar.gz::https://github.com/aarnt/$pkgname/archive/v$pkgver.tar.gz")
+    sha256sums+=('f6c7fe6bbcc26a79b1e455a42a8dc906bee4edd1b386b4f76178f006f4d7f822')
+    _cd_path="${pkgname}-${pkgver}"
 else
-	source+=("${pkgname}-${USE_SOURCE}.tar.gz::https://github.com/aarnt/octopi/archive/${USE_SOURCE}.tar.gz")
-	sha256sums+=('SKIP')
-	_cd_path="${pkgname}-${USE_SOURCE}"
+    source+=("${pkgname}-${USE_SOURCE}.tar.gz::https://github.com/aarnt/octopi/archive/${USE_SOURCE}.tar.gz")
+    sha256sums+=('SKIP')
+    _cd_path="${pkgname}-${USE_SOURCE}"
 fi
 
-
 prepare() {
-    cd ${_cd_path}
+    cd "$_cd_path"
 
     # disable lxqt qtermwidget
     [[ ${DISABLE_QTERMWIDGET} == "1" ]] && patch -Np1 -i ../0001-remove-qtermwidget.patch && rm -rfv src/termwidget.{cpp,h}
@@ -77,59 +77,63 @@ prepare() {
 }
 
 build() {
-    cd ${_cd_path}
-    [[ ${DISABLE_QTERMWIDGET} == "1" ]] && export QTERMWIDGET=off
-    msg "Building octopi..."
-    qmake-qt5 octopi.pro
+    cd "$_cd_path"
+    [[ ${DISABLE_QTERMWIDGET} == '1' ]] && export QTERMWIDGET=off
+    msg 'Building octopi…'
+    qmake-qt5 QMAKE_CFLAGS_RELEASE="$CFLAGS" QMAKE_CXXFLAGS_RELEASE="$CXXFLAGS" \
+              QMAKE_LFLAGS_RELEASE="$LDFLAGS" octopi.pro
     make
 
     cd notifier/pacmanhelper
-    msg "Building pacmanhelper..."
-    qmake-qt5 pacmanhelper.pro
+    msg 'Building pacmanhelper…'
+    qmake-qt5 QMAKE_CFLAGS_RELEASE="$CFLAGS" QMAKE_CXXFLAGS_RELEASE="$CXXFLAGS" \
+              QMAKE_LFLAGS_RELEASE="$LDFLAGS" pacmanhelper.pro
     make
 
     cd ../octopi-notifier
-    msg "Building octopi-notifier..."
-    qmake-qt5 octopi-notifier.pro
+    msg 'Building octopi-notifier…'
+    qmake-qt5 QMAKE_CFLAGS_RELEASE="$CFLAGS" QMAKE_CXXFLAGS_RELEASE="$CXXFLAGS" \
+              QMAKE_LFLAGS_RELEASE="$LDFLAGS" octopi-notifier.pro
     make
 
     cd ../../repoeditor
-    msg "Building octopi-repoeditor..."
-    qmake-qt5 octopi-repoeditor.pro
+    msg 'Building octopi-repoeditor…'
+    qmake-qt5 QMAKE_CFLAGS_RELEASE="$CFLAGS" QMAKE_CXXFLAGS_RELEASE="$CXXFLAGS" \
+              QMAKE_LFLAGS_RELEASE="$LDFLAGS" octopi-repoeditor.pro
     make
 
     cd ../cachecleaner
-    msg "Building octopi-cachecleaner..."
-    qmake-qt5 octopi-cachecleaner.pro
+    msg 'Building octopi-cachecleaner…'
+    qmake-qt5 QMAKE_CFLAGS_RELEASE="$CFLAGS" QMAKE_CXXFLAGS_RELEASE="$CXXFLAGS" \
+              QMAKE_LFLAGS_RELEASE="$LDFLAGS" octopi-cachecleaner.pro
     make
 }
 
 package() {
-    cd ${_cd_path}
-    make INSTALL_ROOT=${pkgdir} install
+    cd "$_cd_path"
+    make INSTALL_ROOT="$pkgdir" install
 
     cd notifier/pacmanhelper
-    make INSTALL_ROOT=${pkgdir} install
+    make INSTALL_ROOT="$pkgdir" install
     cd ../..
 
     cd notifier/octopi-notifier
-    make INSTALL_ROOT=${pkgdir} install
+    make INSTALL_ROOT="$pkgdir" install
     cd ../..
 
     cd repoeditor
-    make INSTALL_ROOT=${pkgdir} install
-    install -D -m644 "${srcdir}/octopi-repoeditor.desktop" "${pkgdir}/usr/share/applications/octopi-repoeditor.desktop"
-    cd ..
+    make INSTALL_ROOT="$pkgdir" install
+    install -D -m644 "$srcdir"/octopi-repoeditor.desktop "$pkgdir"/usr/share/applications/octopi-repoeditor.desktop
 
-    cd cachecleaner
-    make INSTALL_ROOT=${pkgdir} install
+    cd ../cachecleaner
+    make INSTALL_ROOT="$pkgdir" install
     cd ..
 
     #speedup files
-    install -D -m755 "speedup/speedup-octopi.sh" "${pkgdir}/usr/bin/speedup-octopi.sh"
-    install -D -m644 "speedup/octopi.service" "${pkgdir}/usr/lib/systemd/system/octopi.service"
+    install -D -m755 speedup/speedup-octopi.sh "$pkgdir"/usr/bin/speedup-octopi.sh
+    install -D -m644 speedup/octopi.service "$pkgdir"/usr/lib/systemd/system/octopi.service
 
     # Add some icons to customize notifier
-    mkdir -p "${pkgdir}/usr/share/octopi/icons/"
-    cp ../icons/*.png "${pkgdir}/usr/share/octopi/icons/"
+    mkdir -p "$pkgdir"/usr/share/octopi/icons/
+    cp ../icons/*.png "$pkgdir"/usr/share/octopi/icons/
 }
