@@ -1,6 +1,6 @@
 pkgbase = pitrery
 	pkgdesc = Point In Time Recovery tools for PostgreSQL
-	pkgver = 2.1
+	pkgver = 2.2
 	pkgrel = 1
 	url = https://dalibo.github.io/pitrery/
 	arch = any
@@ -9,11 +9,11 @@ pkgbase = pitrery
 	optdepends = openssh: used for remote backups
 	optdepends = rsync: used for network WAL archiving
 	backup = etc/pitrery/pitrery.conf
-	source = https://dl.dalibo.com/public/pitrery/pitrery-2.1.tar.gz
-	source = https://dl.dalibo.com/public/pitrery/pitrery-2.1.tar.gz.asc
+	source = https://dl.dalibo.com/public/pitrery/pitrery-2.2.tar.gz
+	source = https://dl.dalibo.com/public/pitrery/pitrery-2.2.tar.gz.asc
 	validpgpkeys = A9C12688B6D6A1A66A9FE2BC36B6559CD664AA4D
-	sha256sums = 465b8aa803df053d7d8f462625b235b67b537f9cd982059af768e999046d2d73
-	sha256sums = 1d89a75a79fd7b0df933312913bf256a11ac7f6d524eade1ad8ae7609343d36d
+	sha256sums = eb54a2a9e5168067f2e87525ce86ae98b836a9fe7491f15a2bb37964bd2b3470
+	sha256sums = 3143a1535d03267ba8ecc37b72b58683777c185a5bbd58fa3e3cdc4399e68ab8
 
 pkgname = pitrery
 
