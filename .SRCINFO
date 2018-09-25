@@ -1,0 +1,25 @@
+pkgbase = vpp
+	pkgdesc = FD.io Vector Packet Processing
+	pkgver = 18.07.1
+	pkgrel = 1
+	url = https://fd.io/
+	arch = x86_64
+	license = Apache
+	makedepends = patchelf
+	depends = glibc
+	depends = gcc-libs
+	depends = openssl
+	depends = mbedtls
+	depends = numactl
+	depends = python2
+	depends = python2-ply
+	provides = vpp
+	source = git+https://gerrit.fd.io/r/vpp#tag=v18.07.1
+	source = nasmlib.patch
+	source = vpp.sysusers
+	sha256sums = SKIP
+	sha256sums = 832ce99c89109f800eeec911a6a6a7a695cea140d3fe643ddfb32d8a5834325f
+	sha256sums = 5e8a0d05f715816689479c9050bf0505c7a64252d53d16c5d5df5f4787e4295b
+
+pkgname = vpp
+
