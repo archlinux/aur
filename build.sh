@@ -46,6 +46,4 @@ make -j
 popd
 
 ## Build powershell core
-rawRid="$(dotnet --info | grep RID)"
-rid=${rawRid##* } # retain the part after the last space
-dotnet publish --configuration Linux src/powershell-unix/ --output bin --runtime $rid
+dotnet publish --configuration Linux "src/powershell-unix/" --output bin --runtime "linux-x64"

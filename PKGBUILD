@@ -3,9 +3,9 @@
 
 pkgname=powershell
 binaryname=pwsh
-_pkgver=6.0.2
+_pkgver=6.1.0
 pkgver=${_pkgver/-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc='A cross-platform automation and configuration tool/framework (latest release)'
 arch=('x86_64')
 url='https://github.com/PowerShell/PowerShell'
@@ -13,21 +13,18 @@ license=('MIT')
 makedepends=('git' 'cmake' 'dotnet-sdk>=2.0')
 depends=('icu')
 source=($pkgname::git+https://github.com/PowerShell/PowerShell.git#tag=v$_pkgver
-        pester::git+https://github.com/PowerShell/psl-pester.git#branch=develop
         googletest::git+https://github.com/google/googletest.git
         build.sh
         dotnet-version.patch)
 md5sums=('SKIP'
          'SKIP'
-         'SKIP'
-         '477e7fe74b41d814da19ec23db3e620f'
-         '835214e5782a09d6be7796d9da3d42f6')
+         '2ddd2c3b33c7df1c85f49fa6f7763566'
+         '5a1e613f80ee8b50c3650bc823298771')
 install=powershell.install
 
 prepare() {
   cd $pkgname
   git submodule init
-  git config submodule.src/Modules/Pester.url $srcdir/pester
   git config submodule.src/libpsl-native/test/googletest.url $srcdir/googletest
   git submodule update
   git clean -dfx
@@ -40,23 +37,24 @@ build() {
   TERM=xterm $srcdir/build.sh
 }
 
-check() {
-  cd $pkgname/src/libpsl-native
-  make test
-}
+# TODO: pester has moved, and the testing process has changed
+# check() {
+#   cd $pkgname/src/libpsl-native
+#   make test
+# }
 
 package() {
-  cd $pkgname/src/powershell-unix
+  cd "$pkgname/src/powershell-unix"
 
-  mkdir -p $pkgdir/usr/lib/$pkgname
-  cp -a bin/Linux/netcoreapp*/linux-x64 $pkgdir/usr/lib/$pkgname
-  chmod 755 $pkgdir/usr/lib/$pkgname/linux-x64/$binaryname
+  mkdir -p "$pkgdir/usr/lib/$pkgname"
+  cp -a "bin/Linux/netcoreapp2.1/linux-x64" "$pkgdir/usr/lib/$pkgname"
+  chmod 755 "$pkgdir/usr/lib/$pkgname/linux-x64/$binaryname"
 
-  mkdir -p $pkgdir/usr/share/licenses/$pkgname
-  cp ../../LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
+  cp ../../LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  mkdir -p $pkgdir/usr/bin
-  ln -s /usr/lib/$pkgname/linux-x64/$binaryname $pkgdir/usr/bin/$binaryname
+  mkdir -p "$pkgdir/usr/bin"
+  ln -s "/usr/lib/$pkgname/linux-x64/$binaryname" "$pkgdir/usr/bin/$binaryname"
 
   chmod 644 \
     $pkgdir/usr/lib/powershell/linux-x64/libhostfxr.so \
