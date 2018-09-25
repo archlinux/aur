@@ -1,7 +1,7 @@
 # Maintainer: Jimmy Stelzer <jimmy dot stelzer at gmail dot com>
 # Contributor: Mikołaj Chwalisz <chwalisz at tkn.tu-berlin dot de>
 pkgname=uniflash
-pkgver=4.4.0.1922
+pkgver=4.4.0.2009
 pkgrel=1
 pkgdesc="Universal Flash Programmer for Texas Instruments devices. Provides a single interface for programming Flash memory and executing Flash based operations on supported targets."
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ source=(${pkgname}_sl.$pkgver.run::http://software-dl.ti.com/ccs/esd/uniflash/${
 		62-msp430uif.rules)
 noextract=("${pkgname}_sl.$pkgver.run" )
 options=(!strip)
-sha256sums=('8539b38be78e08bdeff7dccd0aa2a448a676e1ac1da0b4215817b92f0bc8b052'
+sha256sums=('9562e333839ad31e634b9f737733f65ac36478534598b128c319ec1feb7e333b'
             'e6fc064be173031f3a845f937b2dd7bd6742125e2bcb18f943968dde27b10cfb')
 DLAGENTS=('http::/usr/bin/curl -fLC - --cookie nada -o %o %u')
 prepare() {

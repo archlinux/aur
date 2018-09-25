@@ -1,6 +1,6 @@
 pkgbase = uniflash
 	pkgdesc = Universal Flash Programmer for Texas Instruments devices. Provides a single interface for programming Flash memory and executing Flash based operations on supported targets.
-	pkgver = 4.4.0.1922
+	pkgver = 4.4.0.2009
 	pkgrel = 1
 	url = http://processors.wiki.ti.com/index.php/Category:CCS_UniFlash
 	arch = i686
@@ -8,11 +8,11 @@ pkgbase = uniflash
 	license = custom:TECHNOLOGY SOFTWARE PUBLICLY AVAILABLE by Texas Instruments Incorporated
 	depends = libudev0-shim
 	depends = libusb-compat
-	noextract = uniflash_sl.4.4.0.1922.run
+	noextract = uniflash_sl.4.4.0.2009.run
 	options = !strip
-	source = uniflash_sl.4.4.0.1922.run::http://software-dl.ti.com/ccs/esd/uniflash/uniflash_sl.4.4.0.1922.run
+	source = uniflash_sl.4.4.0.2009.run::http://software-dl.ti.com/ccs/esd/uniflash/uniflash_sl.4.4.0.2009.run
 	source = 62-msp430uif.rules
-	sha256sums = 8539b38be78e08bdeff7dccd0aa2a448a676e1ac1da0b4215817b92f0bc8b052
+	sha256sums = 9562e333839ad31e634b9f737733f65ac36478534598b128c319ec1feb7e333b
 	sha256sums = e6fc064be173031f3a845f937b2dd7bd6742125e2bcb18f943968dde27b10cfb
 
 pkgname = uniflash
