@@ -1,6 +1,6 @@
 pkgbase = unifi-video
 	pkgdesc = Centralized management system for Ubiquiti UniFi Surveillance Cameras
-	pkgver = 3.9.8
+	pkgver = 3.9.9
 	pkgrel = 1
 	url = https://www.ubnt.com/
 	install = unifi-video.install
@@ -11,7 +11,7 @@ pkgbase = unifi-video
 	depends = java-jsvc
 	depends = lsb-release
 	conflicts = unifi-video-beta
-	source = unifi-video-3.9.8.deb::https://dl.ubnt.com/firmwares/ufv/v3.9.8/unifi-video.Ubuntu16.04_amd64.v3.9.8.deb
+	source = unifi-video-3.9.9.deb::https://dl.ubnt.com/firmwares/ufv/v3.9.9/unifi-video.Ubuntu16.04_amd64.v3.9.9.deb
 	source = unifi-video.service
 	source = unifi-video.sysusers
 	source = unifi-video.tmpfiles

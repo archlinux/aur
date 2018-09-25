@@ -1,7 +1,7 @@
 # Maintainer: Donald Webster (fryfrog@gmail.com)
 
 pkgname=unifi-video
-pkgver=3.9.8
+pkgver=3.9.9
 pkgrel=1
 pkgdesc="Centralized management system for Ubiquiti UniFi Surveillance Cameras"
 arch=('x86_64')
@@ -16,11 +16,11 @@ source=("${pkgname}-${pkgver}.deb::https://dl.ubnt.com/firmwares/ufv/v${pkgver}/
         'unifi-video.tmpfiles'
         'unifi-video.patch')
 
-sha256sums=('a6b5bc6dd3d7c37d868ef712337bb7e45bc178f4eed8aec7f6b7c012d7a6f8e5'
+sha256sums=('fe68cdd49b9d2bd74a930b19e34ad505d56276861333efd1607717c6ed65a2db'
             '9df948b046347c25e7c83e4837284ef63d9f8d3f28daa20a6c36e203e3ebfdb3'
             '90fb2f826a70d3b7815cd6a2253c2af6754c17504be28ef92ee223bd02093730'
             'c31918e3ef0eb55f44639af0ae5db029654230b84d5ae0c55c18fbb2c80dfc70'
-            '6f52396de7f587372c66b4f269fa3ed51c9c230dc4ca1c4c83f56d8cfb714990')
+            '81801f1c75c2a9045129d8f8dba6dbea3eca7a8f312dfc8c48ba7df5dc85bb81')
             
 package() {
     tar xf "${srcdir}/data.tar.gz" -C "${pkgdir}"/
