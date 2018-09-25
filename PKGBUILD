@@ -1,8 +1,8 @@
 # Maintainer: Maxim Baz <$pkgname at maximbaz dot com>
 
 pkgname=i3ipc-python
-pkgver=1.5.1
-pkgrel=2
+pkgver=1.6.0
+pkgrel=1
 pkgdesc="An improved Python library to control i3wm"
 arch=("any")
 url="https://github.com/acrisci/${pkgname}"
@@ -12,7 +12,7 @@ makedepends=("git" "python-setuptools")
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/acrisci/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('aa26ca148a1e745bc0c356f8f04e06e8269a6744d9eb1d6135cfb1adf998bffa')
+sha256sums=('8136db291f004992ef521cf77e9215e37974a768089601db18e642ac01412ca7')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
