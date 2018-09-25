@@ -1,6 +1,6 @@
 pkgbase = r-expm
 	pkgdesc = Matrix Exponential, Log, etc
-	pkgver = 0.999.2
+	pkgver = 0.999.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=expm
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = r-expm
 	optdepends = r-sfsmisc
 	optdepends = r-rmpfr
 	replaces = r-cran-expm
-	source = https://cran.r-project.org/src/contrib/expm_0.999-2.tar.gz
-	md5sums = e05fa3f995754af92bd03227625da984
+	source = https://cran.r-project.org/src/contrib/expm_0.999-3.tar.gz
+	md5sums = 5c0f7500dd129d1a5262eadd92555c7c
 
 pkgname = r-expm
 
