@@ -9,7 +9,7 @@
 
 _qt_module=qtactiveqt
 pkgname=mingw-w64-qt5-activeqt
-pkgver=5.11.1
+pkgver=5.11.2
 pkgrel=1
 arch=('any')
 pkgdesc="ActiveX integration framework (mingw-w64)"
@@ -23,9 +23,9 @@ _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Don-t-require-windows.h-when-using-native-Linux-gcc.patch'
         '0002-Handle-win64-in-dumpcpp-and-MetaObjectGenerator-read.patch')
-sha256sums=('c6ee6c4def84c6a990b7025d8d73374cb08940ba62e90cf13d1f6e2e581b3cb9'
-            '4c5d70a5beec0a81759f9c7374b292c09db482f50011b88c1a53f824e2c52107'
-            '3898d01671d4a926ca6f40a547cc43e7aa8974c984c35069644aaccf5d061b29')
+sha256sums=('b06c634059e2069584dccf331a45074e6a2c63ca6ea5576769c47a985173a041'
+            '608d6905d407c3c6939c00fc2962a906f76086272bbeca811b9f1529b30ed50a'
+            'a04aededab0eb220be9000dafc06ffb9f9541d158e639b58a54eeef922a3c60a')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
