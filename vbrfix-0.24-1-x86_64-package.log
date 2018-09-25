@@ -1,0 +1,33 @@
+Making install in vbrfixc
+make[1]: Entering directory '/build/vbrfix/src/vbrfixc-0.24/vbrfixc'
+Making install in docs
+make[2]: Entering directory '/build/vbrfix/src/vbrfixc-0.24/vbrfixc/docs'
+Making install in en
+make[3]: Entering directory '/build/vbrfix/src/vbrfixc-0.24/vbrfixc/docs/en'
+make[4]: Entering directory '/build/vbrfix/src/vbrfixc-0.24/vbrfixc/docs/en'
+make[4]: Nothing to be done for 'install-exec-am'.
+make[4]: Nothing to be done for 'install-data-am'.
+make[4]: Leaving directory '/build/vbrfix/src/vbrfixc-0.24/vbrfixc/docs/en'
+make[3]: Leaving directory '/build/vbrfix/src/vbrfixc-0.24/vbrfixc/docs/en'
+make[3]: Entering directory '/build/vbrfix/src/vbrfixc-0.24/vbrfixc/docs'
+make[4]: Entering directory '/build/vbrfix/src/vbrfixc-0.24/vbrfixc/docs'
+make[4]: Nothing to be done for 'install-exec-am'.
+make[4]: Nothing to be done for 'install-data-am'.
+make[4]: Leaving directory '/build/vbrfix/src/vbrfixc-0.24/vbrfixc/docs'
+make[3]: Leaving directory '/build/vbrfix/src/vbrfixc-0.24/vbrfixc/docs'
+make[2]: Leaving directory '/build/vbrfix/src/vbrfixc-0.24/vbrfixc/docs'
+make[2]: Entering directory '/build/vbrfix/src/vbrfixc-0.24/vbrfixc'
+make[3]: Entering directory '/build/vbrfix/src/vbrfixc-0.24/vbrfixc'
+/bin/sh ../admin/mkinstalldirs /build/vbrfix/pkg/vbrfix/usr//bin
+make[3]: Nothing to be done for 'install-data-am'.
+mkdir -p -- /build/vbrfix/pkg/vbrfix/usr//bin
+  /bin/sh ../libtool --silent --mode=install /usr/bin/install -c -p  vbrfixc /build/vbrfix/pkg/vbrfix/usr//bin/vbrfixc
+make[3]: Leaving directory '/build/vbrfix/src/vbrfixc-0.24/vbrfixc'
+make[2]: Leaving directory '/build/vbrfix/src/vbrfixc-0.24/vbrfixc'
+make[1]: Leaving directory '/build/vbrfix/src/vbrfixc-0.24/vbrfixc'
+make[1]: Entering directory '/build/vbrfix/src/vbrfixc-0.24'
+make[2]: Entering directory '/build/vbrfix/src/vbrfixc-0.24'
+make[2]: Nothing to be done for 'install-exec-am'.
+make[2]: Nothing to be done for 'install-data-am'.
+make[2]: Leaving directory '/build/vbrfix/src/vbrfixc-0.24'
+make[1]: Leaving directory '/build/vbrfix/src/vbrfixc-0.24'

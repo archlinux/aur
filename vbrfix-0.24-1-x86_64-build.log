@@ -1,0 +1,401 @@
+acinclude.m4
+aclocal.m4
+admin
+AUTHORS
+ChangeLog
+config.h.in
+configure
+configure.files
+configure.in
+configure.in.in
+COPYING
+INSTALL
+Makefile.am
+Makefile.dist
+Makefile.in
+README
+stamp-h.in
+subdirs
+TODO
+vbrfixc
+vbrfixc.kdevprj
+vbrfixc.kdevses
+vbrfixc.lsm
+checking build system type... x86_64-unknown-linux-gnu
+checking host system type... x86_64-unknown-linux-gnu
+checking target system type... x86_64-unknown-linux-gnu
+checking for a BSD-compatible install... /usr/bin/install -c
+checking for -p flag to install... yes
+checking whether build environment is sane... yes
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+checking for style of include used by make... GNU
+checking for gcc... gcc
+checking for C compiler default output... a.out
+checking whether the C compiler works... yes
+checking whether we are cross compiling... no
+checking for suffix of executables... 
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to accept ANSI C... none needed
+checking dependency style of gcc... gcc3
+checking how to run the C preprocessor... gcc -E
+checking for g++... g++
+checking whether we are using the GNU C++ compiler... yes
+checking whether g++ accepts -g... yes
+checking dependency style of g++... gcc3
+checking whether g++ supports -Wundef... yes
+checking whether g++ supports -Wno-long-long... yes
+checking whether g++ supports -Wnon-virtual-dtor... yes
+checking whether g++ supports -fno-exceptions... yes
+checking whether g++ supports -fno-check-new... yes
+checking whether g++ supports -fexceptions... yes
+checking how to run the C++ preprocessor... g++ -E
+checking whether g++ supports -frepo... yes
+using lib directory suffix 64
+checking for ld used by GCC... /usr/bin/ld
+checking if the linker (/usr/bin/ld) is GNU ld... yes
+checking for /usr/bin/ld option to reload object files... -r
+checking for BSD-compatible nm... /usr/bin/nm -B
+checking for a sed that does not truncate output... 
+checking whether ln -s works... yes
+checking how to recognise dependant libraries... pass_all
+checking for egrep... grep -E
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking dlfcn.h usability... yes
+checking dlfcn.h presence... yes
+checking for dlfcn.h... yes
+checking the maximum length of command line arguments... 32768
+checking command to parse /usr/bin/nm -B output from gcc object... ok
+checking for objdir... .libs
+checking for ranlib... ranlib
+checking for strip... strip
+checking if gcc static flag  works... no
+checking if gcc supports -fno-rtti -fno-exceptions... no
+checking for gcc option to produce PIC... -fPIC
+checking if gcc PIC flag -fPIC works... yes
+checking if gcc supports -c -o file.o... yes
+checking whether the gcc linker (/usr/bin/ld) supports shared libraries... yes
+checking whether -lc should be explicitly linked in... no
+checking how to hardcode library paths into programs... immediate
+checking whether stripping libraries is possible... yes
+checking dynamic linker characteristics... GNU/Linux ld.so
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... yes
+checking whether to build static libraries... no
+configure: creating libtool
+appending configuration tag "CXX" to libtool
+checking whether the g++ linker (/usr/bin/ld) supports shared libraries... yes
+checking for g++ option to produce PIC... -fPIC
+checking if g++ PIC flag -fPIC works... no
+checking if g++ supports -c -o file.o... no
+checking whether the g++ linker (/usr/bin/ld) supports shared libraries... yes
+checking whether -lc should be explicitly linked in... yes
+checking how to hardcode library paths into programs... immediate
+checking whether stripping libraries is possible... yes
+checking dynamic linker characteristics... GNU/Linux ld.so
+appending configuration tag "GCJ" to libtool
+checking if gcj supports -fno-rtti -fno-exceptions... (cached) no
+checking for gcj option to produce PIC... -fPIC
+checking if gcj PIC flag -fPIC works... no
+checking if gcj supports -c -o file.o... no
+checking whether the gcj linker (/usr/bin/ld) supports shared libraries... yes
+checking whether -lc should be explicitly linked in... yes
+checking how to hardcode library paths into programs... immediate
+checking whether stripping libraries is possible... yes
+checking dynamic linker characteristics... GNU/Linux ld.so
+checking for extra includes... no
+checking for extra libs... no
+checking if vbrfixc should be compiled... yes
+configure: creating ./config.status
+fast creating Makefile
+fast creating vbrfixc/Makefile
+fast creating vbrfixc/docs/Makefile
+fast creating vbrfixc/docs/en/Makefile
+config.status: creating config.h
+config.status: executing default-1 commands
+
+Good - your configure finished. Start make now
+
+cd . \
+  && CONFIG_FILES= CONFIG_HEADERS=config.h \
+     /bin/sh ./config.status
+config.status: creating config.h
+config.status: config.h is unchanged
+config.status: executing default-1 commands
+make  all-recursive
+make[1]: Entering directory '/build/vbrfix/src/vbrfixc-0.24'
+Making all in vbrfixc
+make[2]: Entering directory '/build/vbrfix/src/vbrfixc-0.24/vbrfixc'
+Making all in docs
+make[3]: Entering directory '/build/vbrfix/src/vbrfixc-0.24/vbrfixc/docs'
+Making all in en
+make[4]: Entering directory '/build/vbrfix/src/vbrfixc-0.24/vbrfixc/docs/en'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/build/vbrfix/src/vbrfixc-0.24/vbrfixc/docs/en'
+make[4]: Entering directory '/build/vbrfix/src/vbrfixc-0.24/vbrfixc/docs'
+make[4]: Nothing to be done for 'all-am'.
+make[4]: Leaving directory '/build/vbrfix/src/vbrfixc-0.24/vbrfixc/docs'
+make[3]: Leaving directory '/build/vbrfix/src/vbrfixc-0.24/vbrfixc/docs'
+make[3]: Entering directory '/build/vbrfix/src/vbrfixc-0.24/vbrfixc'
+source='vbrfix.cpp' object='vbrfix.o' libtool=no \
+depfile='.deps/vbrfix.Po' tmpdepfile='.deps/vbrfix.TPo' \
+depmode=gcc3 /bin/sh ../admin/depcomp \
+g++ -DHAVE_CONFIG_H -I. -I. -I..   -D_FORTIFY_SOURCE=2  -Wnon-virtual-dtor -Wno-long-long -Wundef -Wall -pedantic -W -Wpointer-arith -Wmissing-prototypes -Wwrite-strings -ansi -D_XOPEN_SOURCE=500 -D_BSD_SOURCE -Wcast-align -Wconversion -O2 -march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong -fno-plt -fno-exceptions -fno-check-new -fexceptions  -c -o vbrfix.o `test -f vbrfix.cpp || echo './'`vbrfix.cpp
+source='main.cpp' object='main.o' libtool=no \
+depfile='.deps/main.Po' tmpdepfile='.deps/main.TPo' \
+depmode=gcc3 /bin/sh ../admin/depcomp \
+g++ -DHAVE_CONFIG_H -I. -I. -I..   -D_FORTIFY_SOURCE=2  -Wnon-virtual-dtor -Wno-long-long -Wundef -Wall -pedantic -W -Wpointer-arith -Wmissing-prototypes -Wwrite-strings -ansi -D_XOPEN_SOURCE=500 -D_BSD_SOURCE -Wcast-align -Wconversion -O2 -march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong -fno-plt -fno-exceptions -fno-check-new -fexceptions  -c -o main.o `test -f main.cpp || echo './'`main.cpp
+cc1plus: warning: command line option ‘-Wmissing-prototypes’ is valid for C/ObjC but not for C++
+cc1plus: warning: command line option ‘-Wmissing-prototypes’ is valid for C/ObjC but not for C++
+In file included from /usr/include/c++/8.2.1/x86_64-pc-linux-gnu/bits/os_defines.h:39,
+                 from /usr/include/c++/8.2.1/x86_64-pc-linux-gnu/bits/c++config.h:508,
+                 from /usr/include/c++/8.2.1/iostream:38,
+                 from main.cpp:22:
+/usr/include/features.h:184:3: warning: #warning "_BSD_SOURCE and _SVID_SOURCE are deprecated, use _DEFAULT_SOURCE" [-Wcpp]
+ # warning "_BSD_SOURCE and _SVID_SOURCE are deprecated, use _DEFAULT_SOURCE"
+   ^~~~~~~
+In file included from /usr/include/bits/libc-header-start.h:33,
+                 from /usr/include/stdio.h:27,
+                 from vbrfix.h:19,
+                 from vbrfix.cpp:17:
+/usr/include/features.h:184:3: warning: #warning "_BSD_SOURCE and _SVID_SOURCE are deprecated, use _DEFAULT_SOURCE" [-Wcpp]
+ # warning "_BSD_SOURCE and _SVID_SOURCE are deprecated, use _DEFAULT_SOURCE"
+   ^~~~~~~
+In file included from vbrfix.h:23,
+                 from vbrfix.cpp:17:
+wputil.h: In member function ‘int wps::length()’:
+wputil.h:87:24: warning: conversion from ‘std::__cxx11::basic_string<char>::size_type’ {aka ‘long unsigned int’} to ‘int’ may change value [-Wconversion]
+       return str.length();
+              ~~~~~~~~~~^~
+wputil.h: In static member function ‘static wps wfile::loadSetting(const char*, wps, wps)’:
+wputil.h:211:19: warning: conversion from ‘std::__cxx11::basic_string<char>::size_type’ {aka ‘long unsigned int’} to ‘int’ may change value [-Wconversion]
+       int i=l.find("=");
+             ~~~~~~^~~~~
+wputil.h:217:65: warning: conversion from ‘std::__cxx11::basic_string<char>::size_type’ {aka ‘long unsigned int’} to ‘unsigned int’ may change value [-Wconversion]
+           in.close();return wps(string_trim(right(l,l.length()-i-1)));
+                                                     ~~~~~~~~~~~~^~
+wputil.h: In static member function ‘static void wfile::saveSetting(const char*, wps, wps)’:
+wputil.h:241:19: warning: conversion from ‘std::__cxx11::basic_string<char>::size_type’ {aka ‘long unsigned int’} to ‘int’ may change value [-Wconversion]
+       int i=l.find("=");
+             ~~~~~~^~~~~
+In file included from vbrfix.cpp:17:
+vbrfix.h: In member function ‘int VbrFix::getPercent()’:
+vbrfix.h:46:29: warning: conversion from ‘long unsigned int’ to ‘int’ may change value [-Wconversion]
+     int getPercent(){return per;}
+                             ^~~
+vbrfix.h: In member function ‘void VbrFix::logi(const char*)’:
+vbrfix.h:98:7: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+       if(VBR_OnlyReportErrors & flags)return;fprintf(stdout,"%s\n",s);logf(s);
+       ^~
+vbrfix.h:98:46: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+       if(VBR_OnlyReportErrors & flags)return;fprintf(stdout,"%s\n",s);logf(s);
+                                              ^~~~~~~
+In file included from vbrfix.h:23,
+                 from main.cpp:24:
+wputil.h: In member function ‘int wps::length()’:
+wputil.h:87:24: warning: conversion from ‘std::__cxx11::basic_string<char>::size_type’ {aka ‘long unsigned int’} to ‘int’ may change value [-Wconversion]
+       return str.length();
+              ~~~~~~~~~~^~
+vbrfix.cpp: In member function ‘void VbrFix::startWriting()’:
+vbrfix.cpp:50:28: warning: conversion from ‘long int’ to ‘int’ may change value [-Wconversion]
+   logi(wps("DONE, ABR=") & aBrate & ",Frames=" & frameNo);
+                            ^~~~~~
+vbrfix.cpp:50:50: warning: conversion from ‘long unsigned int’ to ‘int’ may change value [-Wconversion]
+   logi(wps("DONE, ABR=") & aBrate & ",Frames=" & frameNo);
+                                                  ^~~~~~~
+vbrfix.cpp: In member function ‘bool VbrFix::startFix(const char*, const char*)’:
+vbrfix.cpp:63:28: warning: conversion from ‘long unsigned int’ to ‘int’ may change value [-Wconversion]
+     logf(wps("flags = ") & flags);
+                            ^~~~~
+vbrfix.cpp: In member function ‘void VbrFix::openFiles(const char*, const char*)’:
+vbrfix.cpp:127:31: warning: conversion from ‘long unsigned int’ to ‘int’ may change value [-Wconversion]
+   logi(wps("FileLength = ") & mp3length);
+                               ^~~~~~~~~
+vbrfix.cpp: In member function ‘bool VbrFix::checkFrame()’:
+vbrfix.cpp:140:89: warning: conversion from ‘long unsigned int’ to ‘int’ may change value [-Wconversion]
+   logf(wps("FRAME::") & H[0] & ":" & H[1] & ":" & H[2] & ":" & H[3] & "@" & mp3.getpos()-4);
+                                                                             ~~~~~~~~~~~~^~
+wputil.h: In static member function ‘static wps wfile::loadSetting(const char*, wps, wps)’:
+wputil.h:211:19: warning: conversion from ‘std::__cxx11::basic_string<char>::size_type’ {aka ‘long unsigned int’} to ‘int’ may change value [-Wconversion]
+       int i=l.find("=");
+             ~~~~~~^~~~~
+vbrfix.cpp:140:89: warning: suggest parentheses around ‘-’ in operand of ‘&’ [-Wparentheses]
+vbrfix.cpp:142:32: warning: conversion from ‘long unsigned int’ to ‘int’ may change value [-Wconversion]
+   logf(wps("Checking Frame") & frameNo & " at " & mp3.getpos()-4);
+                                ^~~~~~~
+vbrfix.cpp:142:63: warning: conversion from ‘long unsigned int’ to ‘int’ may change value [-Wconversion]
+   logf(wps("Checking Frame") & frameNo & " at " & mp3.getpos()-4);
+                                                   ~~~~~~~~~~~~^~
+vbrfix.cpp:142:63: warning: suggest parentheses around ‘-’ in operand of ‘&’ [-Wparentheses]
+wputil.h:217:65: warning: conversion from ‘std::__cxx11::basic_string<char>::size_type’ {aka ‘long unsigned int’} to ‘unsigned int’ may change value [-Wconversion]
+           in.close();return wps(string_trim(right(l,l.length()-i-1)));
+                                                     ~~~~~~~~~~~~^~
+vbrfix.cpp:156:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   if(B[17])br+=8;if(B[18])br+=4;if(B[19])br+=2;if(B[20])br++;
+   ^~
+vbrfix.cpp:156:18: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   if(B[17])br+=8;if(B[18])br+=4;if(B[19])br+=2;if(B[20])br++;
+                  ^~
+vbrfix.cpp:160:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   if(B[21])sm+=2;if(B[22])sm++;
+   ^~
+vbrfix.cpp:160:18: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   if(B[21])sm+=2;if(B[22])sm++;
+                  ^~
+wputil.h: In static member function ‘static void wfile::saveSetting(const char*, wps, wps)’:
+wputil.h:241:19: warning: conversion from ‘std::__cxx11::basic_string<char>::size_type’ {aka ‘long unsigned int’} to ‘int’ may change value [-Wconversion]
+       int i=l.find("=");
+             ~~~~~~^~~~~
+vbrfix.cpp:201:61: warning: conversion from ‘long unsigned int’ to ‘int’ may change value [-Wconversion]
+       logi(wps("Found [LAME] Xing tag at ") & mp3.getpos()-3-fSize & " with size " & fSize);
+                                               ~~~~~~~~~~~~~~^~~~~~
+vbrfix.cpp:201:61: warning: suggest parentheses around ‘-’ in operand of ‘&’ [-Wparentheses]
+vbrfix.cpp:207:54: warning: conversion from ‘long unsigned int’ to ‘int’ may change value [-Wconversion]
+       logi(wps("Found Xing tag at ") & mp3.getpos()-3-fSize & " with size " & fSize);
+                                        ~~~~~~~~~~~~~~^~~~~~
+vbrfix.cpp:207:54: warning: suggest parentheses around ‘-’ in operand of ‘&’ [-Wparentheses]
+vbrfix.cpp:212:52: warning: conversion from ‘long unsigned int’ to ‘int’ may change value [-Wconversion]
+     logi(wps("Found VBRI tag at ") & mp3.getpos()-3-fSize & " with size " & fSize);
+                                      ~~~~~~~~~~~~~~^~~~~~
+vbrfix.cpp:212:52: warning: suggest parentheses around ‘-’ in operand of ‘&’ [-Wparentheses]
+vbrfix.cpp:219:31: warning: conversion from ‘long unsigned int’ to ‘int’ may change value [-Wconversion]
+     logf(wps("original = ") & frameArraySize);
+                               ^~~~~~~~~~~~~~
+vbrfix.cpp:221:26: warning: conversion from ‘long unsigned int’ to ‘double’ may change value [-Wconversion]
+       frameArraySize=int(frameArraySize*(double(mp3length)/double(mp3.getpos()))+512);
+                          ^~~~~~~~~~~~~~
+vbrfix.cpp:222:34: warning: conversion from ‘long unsigned int’ to ‘int’ may change value [-Wconversion]
+     logf(wps("calculated at ") & frameArraySize);
+                                  ^~~~~~~~~~~~~~
+vbrfix.cpp:224:27: warning: conversion from ‘long unsigned int’ to ‘int’ may change value [-Wconversion]
+     logf(wps("set to=") & frameArraySize);
+                           ^~~~~~~~~~~~~~
+In file included from main.cpp:24:
+vbrfix.h: In member function ‘int VbrFix::getPercent()’:
+vbrfix.h:46:29: warning: conversion from ‘long unsigned int’ to ‘int’ may change value [-Wconversion]
+     int getPercent(){return per;}
+                             ^~~
+vbrfix.cpp:242:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   if(lastver==-1)lastver=ver;if(lastsm==-1)lastsm=sm;if(lastchan<1)lastchan=chan;
+   ^~
+vbrfix.cpp:242:30: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   if(lastver==-1)lastver=ver;if(lastsm==-1)lastsm=sm;if(lastchan<1)lastchan=chan;
+                              ^~
+vbrfix.h: In member function ‘void VbrFix::logi(const char*)’:
+vbrfix.h:98:7: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+       if(VBR_OnlyReportErrors & flags)return;fprintf(stdout,"%s\n",s);logf(s);
+       ^~
+vbrfix.h:98:46: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+       if(VBR_OnlyReportErrors & flags)return;fprintf(stdout,"%s\n",s);logf(s);
+                                              ^~~~~~~
+vbrfix.cpp:243:78: warning: conversion from ‘long unsigned int’ to ‘int’ may change value [-Wconversion]
+   if(lastver!=ver){lastver=ver;logi(wps("WARNING:MPEG VERSION CHANGE at ") & frameNo);}//watch out for XING headers but we ignored them earlier so it doesn't matter in this case
+                                                                              ^~~~~~~
+vbrfix.cpp:244:73: warning: conversion from ‘long unsigned int’ to ‘int’ may change value [-Wconversion]
+   if(lastsm!=sm){lastsm=sm;logi(wps("WARNING:SAMPLE FREQ CHANGE at ") & frameNo);}// "
+                                                                         ^~~~~~~
+vbrfix.cpp:245:82: warning: conversion from ‘long unsigned int’ to ‘int’ may change value [-Wconversion]
+   if(lastchan!=chan){lastchan=chan;logi(wps("WARNING:Channel Mode CHANGE at ") & frameNo);}// "
+                                                                                  ^~~~~~~
+vbrfix.cpp:246:69: warning: conversion from ‘long unsigned int’ to ‘int’ may change value [-Wconversion]
+   logf(wps("got to return") & chan & ",now at position" & mp3.getpos());
+                                                           ~~~~~~~~~~^~
+vbrfix.cpp: In member function ‘bool VbrFix::checkId3v1()’:
+vbrfix.cpp:252:52: warning: conversion from ‘long unsigned int’ to ‘int’ may change value [-Wconversion]
+     logf(wps("checking id3v1 tag at") &mp3.getpos()-4);
+                                        ~~~~~~~~~~~~^~
+vbrfix.cpp:252:52: warning: suggest parentheses around ‘-’ in operand of ‘&’ [-Wparentheses]
+vbrfix.cpp: In member function ‘bool VbrFix::checkAPE()’:
+vbrfix.cpp:277:45: warning: conversion from ‘long int’ to ‘int’ may change value [-Wconversion]
+       logi(wps("Found APE tag with size") & apeSize);
+                                             ^~~~~~~
+vbrfix.cpp: In member function ‘bool VbrFix::checkLyrics3()’:
+vbrfix.cpp:309:49: warning: conversion from ‘long int’ to ‘int’ may change value [-Wconversion]
+       logi(wps("Found Lyrics3 tag with size") & lyrics3Size);
+                                                 ^~~~~~~~~~~
+vbrfix.cpp: In member function ‘bool VbrFix::checkId3v2()’:
+vbrfix.cpp:319:53: warning: conversion from ‘long unsigned int’ to ‘int’ may change value [-Wconversion]
+     logf(wps("checking id3v2 tag at") & mp3.getpos()-4);
+                                         ~~~~~~~~~~~~^~
+vbrfix.cpp:319:53: warning: suggest parentheses around ‘-’ in operand of ‘&’ [-Wparentheses]
+vbrfix.cpp:324:30: warning: conversion from ‘long unsigned int’ to ‘int’ may change value [-Wconversion]
+       logf(wps("id3size=") & id3size);
+                              ^~~~~~~
+vbrfix.cpp:333:32: warning: conversion from ‘long unsigned int’ to ‘int’ may change value [-Wconversion]
+         logf(wps("id3size=") & id3size);
+                                ^~~~~~~
+vbrfix.cpp:335:32: warning: conversion from ‘long unsigned int’ to ‘int’ may change value [-Wconversion]
+         logf(wps("id3size=") & id3size);
+                                ^~~~~~~
+vbrfix.cpp:337:49: warning: conversion from ‘long unsigned int’ to ‘int’ may change value [-Wconversion]
+         logi(wps("Found Id3v2 tag with size") & id3size);
+                                                 ^~~~~~~
+vbrfix.cpp: In member function ‘void VbrFix::writeVbrHeader()’:
+vbrfix.cpp:377:29: warning: conversion from ‘int’ to ‘unsigned char’ may change value [-Wconversion]
+   if (lastver == 1) {XhD[1] += 16 + 8 + 0 + 2 + 1;XhD[2]=128 +  0 + 0 + 16;br=9;}
+                      ~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+vbrfix.cpp:378:29: warning: conversion from ‘int’ to ‘unsigned char’ may change value [-Wconversion]
+   if (lastver == 2) {XhD[1] += 16 + 0 + 0 + 2 + 1;XhD[2]=128 +  0 + 0 +  0;br=8;}
+                      ~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+vbrfix.cpp:379:29: warning: conversion from ‘int’ to ‘unsigned char’ may change value [-Wconversion]
+   if (lastver == 3) {XhD[1] +=  0 + 0 + 0 + 2 + 1;XhD[2]=  0 + 64 + 0 +  0;br=4;}//mpeg 2.5
+                      ~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+vbrfix.cpp:382:23: warning: conversion from ‘int’ to ‘unsigned char’ may change value [-Wconversion]
+   if(lastsm==1){XhD[2]+= 0 + 4;}//was 8+ 0 was it correct to change it?
+                 ~~~~~~^~~~~~~~
+vbrfix.cpp:383:23: warning: conversion from ‘int’ to ‘unsigned char’ may change value [-Wconversion]
+   if(lastsm==2){XhD[2]+= 8 + 0;}// was 8+4 was it correct to change it?
+                 ~~~~~~^~~~~~~~
+vbrfix.cpp:389:23: warning: conversion from ‘long int’ to ‘int’ may change value [-Wconversion]
+   logi(wps("CHAN=") & lastchan);
+                       ^~~~~~~~
+vbrfix.cpp:390:21: warning: conversion from ‘long int’ to ‘int’ may change value [-Wconversion]
+   int xp = getXHpos(lastver,lastchan);//where we would find 'Xing'
+                     ^~~~~~~
+vbrfix.cpp:390:29: warning: conversion from ‘long int’ to ‘int’ may change value [-Wconversion]
+   int xp = getXHpos(lastver,lastchan);//where we would find 'Xing'
+                             ^~~~~~~~
+vbrfix.cpp:391:3: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+   for(int t=0;t<xp;t++)outmp3.fWrite("\0",1);headSize+=xp;
+   ^~~
+vbrfix.cpp:391:46: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+   for(int t=0;t<xp;t++)outmp3.fWrite("\0",1);headSize+=xp;
+                                              ^~~~~~~~
+vbrfix.cpp: In member function ‘void VbrFix::writeId3v2()’:
+vbrfix.cpp:445:17: warning: conversion from ‘long unsigned int’ to ‘unsigned int’ may change value [-Wconversion]
+   mp3.fRead(tmp,id3v2Size);
+                 ^~~~~~~~~
+vbrfix.cpp:446:21: warning: conversion from ‘long unsigned int’ to ‘unsigned int’ may change value [-Wconversion]
+   outmp3.fWrite(tmp,id3v2Size);
+                     ^~~~~~~~~
+vbrfix.cpp: In member function ‘void VbrFix::writeLyrics3()’:
+vbrfix.cpp:457:17: warning: conversion from ‘long int’ to ‘unsigned int’ may change value [-Wconversion]
+   mp3.fRead(tmp,lyrics3Size);
+                 ^~~~~~~~~~~
+vbrfix.cpp:458:21: warning: conversion from ‘long int’ to ‘unsigned int’ may change value [-Wconversion]
+   outmp3.fWrite(tmp,lyrics3Size);
+                     ^~~~~~~~~~~
+vbrfix.cpp: In member function ‘void VbrFix::writeAPE()’:
+vbrfix.cpp:469:17: warning: conversion from ‘long int’ to ‘unsigned int’ may change value [-Wconversion]
+   mp3.fRead(tmp,apeSize);
+                 ^~~~~~~
+vbrfix.cpp:470:21: warning: conversion from ‘long int’ to ‘unsigned int’ may change value [-Wconversion]
+   outmp3.fWrite(tmp,apeSize);
+                     ^~~~~~~
+/bin/sh ../libtool --silent --mode=link --tag=CXX g++  -Wnon-virtual-dtor -Wno-long-long -Wundef -Wall -pedantic -W -Wpointer-arith -Wmissing-prototypes -Wwrite-strings -ansi -D_XOPEN_SOURCE=500 -D_BSD_SOURCE -Wcast-align -Wconversion -O2 -march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong -fno-plt -fno-exceptions -fno-check-new -fexceptions   -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now -o vbrfixc   vbrfix.o main.o  
+make[3]: Leaving directory '/build/vbrfix/src/vbrfixc-0.24/vbrfixc'
+make[2]: Leaving directory '/build/vbrfix/src/vbrfixc-0.24/vbrfixc'
+make[2]: Entering directory '/build/vbrfix/src/vbrfixc-0.24'
+make[2]: Leaving directory '/build/vbrfix/src/vbrfixc-0.24'
+make[1]: Leaving directory '/build/vbrfix/src/vbrfixc-0.24'

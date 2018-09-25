@@ -27,5 +27,6 @@ build() {
 package() {
     cd "vbrfixc-$pkgver" || exit 1
     make prefix="$pkgdir/usr/" install
+    mv "$pkgdir/usr/bin/vbrfixc" "$pkgdir/usr/bin/$pkgname"
 }
 
