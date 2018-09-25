@@ -4,7 +4,7 @@ pkgbase=('nordnm')
 pkgname=('nordnm')
 _module='nordnm'
 provides=('nordnm')
-pkgver='0.5.5'
+pkgver='0.6.0'
 pkgrel=1
 pkgdesc="A CLI tool for automating the importing, securing and usage of NordVPN OpenVPN servers through NetworkManager."
 url="https://github.com/Chadsr/NordVPN-NetworkManager"
@@ -13,7 +13,7 @@ makedepends=('python-setuptools')
 license=('GPL3')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/n/nordnm/nordnm-${pkgver}.tar.gz")
-md5sums=('2213ec06ec0378959594de089831a152')
+md5sums=('e0bc7c3c0f805217929d9cb952c78e62')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
