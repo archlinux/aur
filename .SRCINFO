@@ -1,0 +1,18 @@
+pkgbase = ocean-data
+	pkgdesc = The library data of the Ocean religious writings tool
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://bahai-education.org/ocean
+	arch = any
+	license = custom
+	makedepends = p7zip
+	makedepends = convmv
+	makedepends = perl
+	noextract = Ocean.dmg
+	source = http://bahai-education.org/sites/default/files/uploadfiles/Ocean.dmg
+	source = file-encode.pl
+	md5sums = 54e727a44371f2e33cb945100f11861a
+	md5sums = cc015d746955e6ba574901d40c7be034
+
+pkgname = ocean-data
+
