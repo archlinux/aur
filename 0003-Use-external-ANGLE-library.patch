@@ -1,7 +1,7 @@
-From f17fa5afa2f24bc569eda2bbe35b77a4ab268608 Mon Sep 17 00:00:00 2001
+From b0a8c226931a787ec4214686827bcb9b1d7f873f Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 13:41:38 +0200
-Subject: [PATCH 03/34] Use external ANGLE library
+Subject: [PATCH 03/33] Use external ANGLE library
 
 ---
  src/gui/Qt5GuiConfigExtras.cmake.in       | 4 ++--
@@ -78,10 +78,10 @@ index f4c396f7c5..fc87e810aa 100644
  mingw: LIBS *= -luuid
  # For the dialog helpers:
 diff --git a/src/src.pro b/src/src.pro
-index 1f7c5d99c1..24e24ef7f1 100644
+index 1c76a2e46f..6a5f046b34 100644
 --- a/src/src.pro
 +++ b/src/src.pro
-@@ -189,10 +189,6 @@ qtConfig(gui) {
+@@ -199,10 +199,6 @@ qtConfig(gui) {
          SUBDIRS += src_3rdparty_harfbuzzng
          src_gui.depends += src_3rdparty_harfbuzzng
      }
@@ -93,5 +93,5 @@ index 1f7c5d99c1..24e24ef7f1 100644
          SUBDIRS += src_3rdparty_libpng
          src_3rdparty_freetype.depends += src_3rdparty_libpng
 -- 
-2.18.0
+2.19.0
 

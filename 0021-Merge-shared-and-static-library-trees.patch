@@ -1,7 +1,7 @@
-From 91d94eadf25139197ce3cf74bb75692e9c77db07 Mon Sep 17 00:00:00 2001
+From 12168d6839249e51586f3e63e666bd68e1363905 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:45:08 +0200
-Subject: [PATCH 21/34] Merge shared and static library trees
+Subject: [PATCH 21/33] Merge shared and static library trees
 
 Allow installation of shared and static build in the same prefix
 ---
@@ -13,10 +13,10 @@ Allow installation of shared and static build in the same prefix
  5 files changed, 51 insertions(+), 6 deletions(-)
 
 diff --git a/configure.pri b/configure.pri
-index 0512ef0144..c3ce522e4f 100644
+index 6e7f6b76a4..8d6af2fb81 100644
 --- a/configure.pri
 +++ b/configure.pri
-@@ -1249,3 +1249,12 @@ defineTest(createConfigStatus) {
+@@ -1259,3 +1259,12 @@ defineTest(createConfigStatus) {
  
  QMAKE_POST_CONFIGURE += \
      "createConfigStatus()"
@@ -101,10 +101,10 @@ index 51ea3a8321..275e080ae4 100644
  QMAKE_EXT_YACC          = .y
  
 diff --git a/qmake/generators/makefile.cpp b/qmake/generators/makefile.cpp
-index bd87c5bd6d..736af1c843 100644
+index 412278c8c6..dd86df8b91 100644
 --- a/qmake/generators/makefile.cpp
 +++ b/qmake/generators/makefile.cpp
-@@ -3167,6 +3167,9 @@ MakefileGenerator::pkgConfigFileName(bool fixify, bool onlyPrependDestdir)
+@@ -3200,6 +3200,9 @@ MakefileGenerator::pkgConfigFileName(bool fixify, bool onlyPrependDestdir)
      if (project->isActiveConfig("debug")) {
          ret += "d";
      }
@@ -114,7 +114,7 @@ index bd87c5bd6d..736af1c843 100644
      ret += Option::pkgcfg_ext;
      QString subdir = project->first("QMAKE_PKGCONFIG_DESTDIR").toQString();
      if(!subdir.isEmpty()) {
-@@ -3340,9 +3343,9 @@ MakefileGenerator::writePkgConfigFile()
+@@ -3373,9 +3376,9 @@ MakefileGenerator::writePkgConfigFile()
      t << endl;
  
      // requires
@@ -128,5 +128,5 @@ index bd87c5bd6d..736af1c843 100644
  
      t << endl;
 -- 
-2.18.0
+2.19.0
 

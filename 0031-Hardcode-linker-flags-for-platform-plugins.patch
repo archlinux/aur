@@ -1,17 +1,60 @@
-From 0e3e71c77f1bf23ab20c2c4b3219c371ba94825f Mon Sep 17 00:00:00 2001
+From dacff81f228db7dd158e4f2bdc2dae02175aea5f Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Wed, 25 Jan 2017 23:42:30 +0100
-Subject: [PATCH 31/34] Hardcode linker flags for platform plugins
+Subject: [PATCH 31/33] Hardcode linker flags for platform plugins
 
 Otherwise incorrect order of libs leads to errors
 when building libqminimal.dll, libqoffscreen.dll
 and libqwindows.dll
 ---
+ src/plugins/platforms/direct2d/direct2d.pro   | 30 ++++++++++++++---
  src/plugins/platforms/minimal/minimal.pro     | 15 +++++++--
  src/plugins/platforms/offscreen/offscreen.pro | 14 ++++++--
  src/plugins/platforms/windows/windows.pro     | 32 +++++++++++++------
- 3 files changed, 48 insertions(+), 13 deletions(-)
+ 4 files changed, 73 insertions(+), 18 deletions(-)
 
+diff --git a/src/plugins/platforms/direct2d/direct2d.pro b/src/plugins/platforms/direct2d/direct2d.pro
+index 3bfd02bdc8..4732f89920 100644
+--- a/src/plugins/platforms/direct2d/direct2d.pro
++++ b/src/plugins/platforms/direct2d/direct2d.pro
+@@ -1,12 +1,32 @@
+ TARGET = qdirect2d
+ 
+ QT += \
+-    core-private gui-private \
+-    eventdispatcher_support-private \
+-    fontdatabase_support-private theme_support-private
++    core-private gui-private
+ 
+-qtConfig(accessibility): QT += accessibility_support-private
+-qtConfig(vulkan): QT += vulkan_support-private
++# Fix linker error when building libqdirect2d.dll by specifying linker flags for
++# required modules manually (otherwise order is messed)
++LIBS += \
++    -lQt5EventDispatcherSupport \
++    -lQt5FontDatabaseSupport \
++    -lQt5ThemeSupport \
++    -lfreetype -lole32 -lgdi32 -luuid
++# However, this workaround leads to the necessity of specifying include dirs manually
++INCLUDEPATH += \
++    $$QT_SOURCE_TREE/include/QtEventDispatcherSupport/$${QT_VERSION} \
++    $$QT_SOURCE_TREE/include/QtFontDatabaseSupport/$${QT_VERSION} \
++    $$QT_SOURCE_TREE/include/QtThemeSupport/$${QT_VERSION}
++# Same for private support libs for accessibility and vulkan, if those are enabled
++qtConfig(accessibility) {
++    LIBS += -lQt5AccessibilitySupport
++    INCLUDEPATH += $$QT_SOURCE_TREE/include/QtAccessibilitySupport/$${QT_VERSION}
++}
++qtConfig(vulkan) {
++    LIBS += -lQt5VulkanSupport
++    INCLUDEPATH += $$QT_SOURCE_TREE/include/QtVulkanSupport/$${QT_VERSION}
++}
++# Also add Qt5WindowsUIAutomationSupport - it seems to link against it
++LIBS += -lQt5WindowsUIAutomationSupport
++INCLUDEPATH += $$QT_SOURCE_TREE/include/Qt5WindowsUIAutomationSupport/$${QT_VERSION}
+ 
+ LIBS += -ldwmapi -ld2d1 -ld3d11 -ldwrite -lversion -lgdi32
+ 
 diff --git a/src/plugins/platforms/minimal/minimal.pro b/src/plugins/platforms/minimal/minimal.pro
 index a1a2da547b..7ef91b574d 100644
 --- a/src/plugins/platforms/minimal/minimal.pro
@@ -106,5 +149,5 @@ index 174bc7b609..e66488e364 100644
  include(windows.pri)
  
 -- 
-2.18.0
+2.19.0
 
