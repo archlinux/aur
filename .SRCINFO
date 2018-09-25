@@ -1,13 +1,13 @@
 pkgbase = mcos-mjv-gtk-theme
 	pkgdesc = McOS-MJV GTK Theme
-	pkgver = 1.2
-	pkgrel = 2
+	pkgver = 1.3
+	pkgrel = 1
 	url = https://www.opendesktop.org/p/1241688/
 	arch = any
 	license = GPL
 	depends = gtk-engine-murrine
-	source = https://dl.opendesktop.org/api/files/download/id/1529367928/s/$_s/t/$_t/u//mcos-mjv-gtk-theme-1.2.tar.xz
-	md5sums = f945ed9144d63782006b1dfbe9acc1fd
+	source = https://dl.opendesktop.org/api/files/download/id/1537831784/s/$_s/t/$_t/mcos-mjv-gtk-theme-1.3.tar.xz
+	md5sums = 1aed15c46dd14ef1aac31d16f7b8a048
 
 pkgname = mcos-mjv-gtk-theme
 
