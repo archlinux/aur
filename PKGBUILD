@@ -1,7 +1,7 @@
 # Maintainer: heinrich5991 <heinrich5991@gmail.com>
 pkgname=syobon
 pkgver=rc1
-pkgrel=1
+pkgrel=2
 pkgdesc="A free version of the unforgiving Japanese parody of Super Mario Bros"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/opensyobon/"
@@ -17,7 +17,7 @@ sha256sums=('c749349348357eeca4c9a1e150d5f32a40d5e11517d46840cba0c777fa788885'
 
 build() {
   cd "$srcdir/src/"
-  sed -i 's/gcc/g++/g' "Makefile"
+  sed -i 's/gcc/g++ -Wno-narrowing `sdl-config --cflags`/g' Makefile
   make
 }
 

@@ -1,7 +1,7 @@
 pkgbase = syobon
 	pkgdesc = A free version of the unforgiving Japanese parody of Super Mario Bros
 	pkgver = rc1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceforge.net/projects/opensyobon/
 	arch = i686
 	arch = x86_64
