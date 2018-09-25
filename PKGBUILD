@@ -11,7 +11,7 @@ _cargo=0.29.0
 
 pkgname=mingw-w64-rust
 pkgver=1.29.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Systems programming language focused on safety, speed and concurrency (mingw-w64)"
 arch=('x86_64')
 url="https://www.rust-lang.org"
@@ -147,11 +147,6 @@ EOF
   cat << EOF >> "${pkgdir}/opt/${_pkgname}/cargo/config"
 rustflags = [
 EOF
-  if pacman -T "mingw-w64-crt-git>5.0.4.20171219" ; then
-    cat << EOF >> "${pkgdir}/opt/${_pkgname}/cargo/config"
-             "-C", "link-arg=-lmsvcrt",
-EOF
-  fi
   cat << EOF >> "${pkgdir}/opt/${_pkgname}/cargo/config"
             ]
 
