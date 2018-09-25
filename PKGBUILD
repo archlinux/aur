@@ -15,7 +15,6 @@ optdepends=('python-django: Scaffold Django projects.'
             'python-pytest: Use the integrated unit testing.'
             'python-pytest-runner: Use the integrated unit testing.'
             'python-pytest-cov: Generate a coverage report for your project.')
-# makedepends=('python-setuptools-scm' 'python-pbr' 'python-wheel')
 makedepends=('git' 'python-wheel')
 source=("pyscaffold-${pkgver}::git+https://github.com/blue-yonder/pyscaffold.git#tag=v${pkgver}")
 md5sums=('SKIP')
