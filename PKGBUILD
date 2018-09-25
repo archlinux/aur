@@ -5,8 +5,8 @@
 # Contributor: Maik Broemme <mbroemme@libmpq.org>
 
 pkgname=asterisk
-pkgver=15.6.0
-pkgrel=3
+pkgver=15.6.1
+pkgrel=1
 pkgdesc="A complete PBX solution"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 backup=('etc/asterisk/acl.conf'
@@ -128,7 +128,7 @@ source=("https://downloads.asterisk.org/pub/telephony/asterisk/releases/${pkgnam
         "${pkgname}.sysusers"
         "${pkgname}.logrotated"
         "${pkgname}.tmpfile")
-sha256sums=('6620af9749524152a793ecc4ade4604064254cb46e642d50d280d56f6b7eed3e'
+sha256sums=('9cb86585fb4efcd86423fa7586e55d9d3c74fda43a2e0b1b9c9eb3742df73155'
             'fc2e42f79e1672cc25b9b8ad2ba99616fbba0047641c986d30718655d0e7d4d8'
             'caa24cfec5c6b4f8cea385269e39557362acad7e2a552994c3bc24080e3bdd4e'
             '673c0c55bce8068c297f9cdd389402c2d5d5a25e2cf84732cb071198bd6fa78a')
