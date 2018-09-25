@@ -2,7 +2,7 @@
 
 pkgbase=swift-language
 pkgname=(swift swift-lldb)
-_swiftver=4.1.3-RELEASE
+_swiftver=4.2-RELEASE
 pkgver=${_swiftver//-RELEASE/}
 pkgrel=1
 pkgdesc="The Swift programming language and debugger"
@@ -28,20 +28,22 @@ source=(
     "swift-compiler-rt-${_swiftver}.tar.gz::https://github.com/apple/swift-compiler-rt/archive/swift-${_swiftver}.tar.gz"
     "swift-integration-tests-${_swiftver}.tar.gz::https://github.com/apple/swift-integration-tests/archive/swift-${_swiftver}.tar.gz"
     "0001-sanitizer-Use-pre-computed-size-of-struct-ustat.patch"
+    "glibc-includes.patch"
 )
-sha256sums=('3b1b6666744c5d74c8581820d33a4653f241929e8c42e25a7f4354c4a7ae3b00'
-            '3d51d1b66c5706deb78e394f2751ea0bb1caa1eaf4fda61bacaaae7eafbb79be'
-            '73001677afb29fcac692aa94b1b91ae9c99310df37b84bb00c832da4872617a4'
-            'a2690836e4e9a767fac9fc172693b2ce58f770c4e0b0dc13ae269618e1f057ef'
-            '49a8c9407a0dea12dc5377a79e76f740466b1d69eb31ff6b4979ecf5f515a583'
-            '15c5a8efa87343134cef485f07a9999c8d38cfbdf3cc6bc4fec9f479db5cbb1c'
-            '7b655c994c092bf88245775e77d4c4d39f6d880cab59b67d2290df02505ed355'
-            '9fa49cc67e8d3daef5061a347cbd0ab8ffe30cb05d525341988c517f43b90999'
-            'ca4b76ebfcd9e9c72e08da6c75e0a6b2350ae0961bd89a85e48839dc35ce51ca'
-            'd0afe2441574743687c74a0b5b30090f57af0ab436d5e2e6d19c2dd83363a779'
-            'd0ea7a395137cb488979570deeb63cd767c5da6af63c132f3f8ba623ffc571d3'
-            '74fabb7cd667b4cd64d589fb570fc03aa0a3b0c6835afc0692b29d275fbdbccc'
-            '5cd08c3a83c71e552fa2fd9ec8b076fbd25ba5450b9ecd59a0c877a9c9407b34')
+sha256sums=('c3460029a32826a3c2385f53efc5f8e54f61152fb14951ad2c8a9825d14c8cda'
+            '24034e5bed1c93520a983105fa6be537de27168ba53bd49abfb5780feb80c81d'
+            'c10b9a0a2f93d8c1c213dfdd26333a98fcd2090fc8fa9308dc98b86690dde659'
+            'a81986e08ee275741754ebe1c52b9ff186a558ec41400a18d45578b24ba4a262'
+            '4ba2a83e065728e47ee3859de90f567cefa46be400e870b2d3a3addf04471a5d'
+            'c19ffe8464530d3fc78e9bf2b07ebefa6b266b994200654ed2da04cbc5a070b6'
+            '9b3dd8e22fe97645bdf3050fc6976991e862380febf28eb24955302f905e6e8a'
+            '3d2a8ce08302365e1fe9086d3a778b3a238e027d9c96b17163b8e3fc2d003be0'
+            'f3f6368d5e85fe47a148eb28e675f522e3064c217153ddff1aa82b97696202ef'
+            '3ffbe7b13482d98a073b1de61b7a6b9b04eb6d8f8c841c61c1ed4de85c63403d'
+            '489438f3405835d698b46b35b1210c9312d63c805f888c7b8cf66f1e1d687157'
+            '0dc8c77a7ee285e18886168eb8a7973f7097bf742f3213a2261bbd0b754fa9e7'
+            '5cd08c3a83c71e552fa2fd9ec8b076fbd25ba5450b9ecd59a0c877a9c9407b34'
+            '6a94de9adbdc4182b297e0011a68c9387fd25864dcb4386654218c8c530032c2')
 
 prepare() {
     # Use python2 where appropriate
@@ -55,19 +57,26 @@ prepare() {
          "$srcdir/swift-lldb-swift-${_swiftver}/CMakeLists.txt"
     sed -i 's/\<python\>/&2/' \
          "$srcdir/swift-swift-${_swiftver}/utils/build-script-impl" \
-         "$srcdir/swift-swift-${_swiftver}/test/sil-passpipeline-dump/basic.test-sh"
+         "$srcdir/swift-swift-${_swiftver}/test/sil-passpipeline-dump/basic.test-sh" \
+         "$srcdir/swift-swift-${_swiftver}/test/Driver/response-file.swift"
 
     # Use directory names which build-script expects
     for sdir in llvm clang lldb cmark llbuild compiler-rt; do
-        ln -sf swift-${sdir}-swift-${_swiftver} ${sdir}
+        rm -rf ${sdir}
+        mv swift-${sdir}-swift-${_swiftver} ${sdir}
     done
     for sdir in corelibs-xctest corelibs-foundation corelibs-libdispatch \
                 integration-tests
     do
-        ln -sf swift-${sdir}-swift-${_swiftver} swift-${sdir}
+        rm -rf ${sdir}
+        mv swift-${sdir}-swift-${_swiftver} swift-${sdir}
     done
-    ln -sf swift-swift-${_swiftver} swift
-    ln -sf swift-package-manager-swift-${_swiftver} swiftpm
+    rm -rf swift swiftpm
+    mv swift-swift-${_swiftver} swift
+    mv swift-package-manager-swift-${_swiftver} swiftpm
+
+    # Fix wrong glibc include paths in glibc module map
+    ( cd swift && patch -p1 -i "$srcdir/glibc-includes.patch" )
 
     # Backport compiler-rt SVN r333213
     ( cd compiler-rt && patch -p1 -i "$srcdir/0001-sanitizer-Use-pre-computed-size-of-struct-ustat.patch" )
@@ -84,11 +93,6 @@ _common_build_params=(
 )
 
 _build_script_wrapper() {
-    # Makepkg now adds -fno-plt to C(XX)FLAGS by default, which clang-5.0
-    # (built within swift's sources) doesn't understand
-    export CFLAGS=$(echo "$CFLAGS" | sed -e 's/\(\W\+\|^\)-fno-plt\b//')
-    export CXXFLAGS=$(echo "$CXXFLAGS" | sed -e 's/\(\W\+\|^\)-fno-plt\b//')
-
     export SWIFT_SOURCE_ROOT="$srcdir"
     ./utils/build-script "$@"
 }

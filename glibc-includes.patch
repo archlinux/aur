@@ -1,0 +1,131 @@
+diff -rupN a/stdlib/public/Platform/glibc.modulemap.gyb b/stdlib/public/Platform/glibc.modulemap.gyb
+--- a/stdlib/public/Platform/glibc.modulemap.gyb	2018-09-12 17:46:19.000000000 -0700
++++ b/stdlib/public/Platform/glibc.modulemap.gyb	2018-09-24 10:41:46.699830262 -0700
+@@ -333,7 +333,7 @@ module SwiftGlibc [system] {
+       export *
+     }
+     module ioctl {
+-      header "${GLIBC_ARCH_INCLUDE_PATH}/sys/ioctl.h"
++      header "${GLIBC_INCLUDE_PATH}/sys/ioctl.h"
+       export *
+     }
+     module libgen {
+@@ -392,97 +392,97 @@ module SwiftGlibc [system] {
+ 
+ % if CMAKE_SDK in ["LINUX", "FREEBSD", "CYGWIN", "HAIKU"]:
+       module file {
+-        header "${GLIBC_ARCH_INCLUDE_PATH}/sys/file.h"
++        header "${GLIBC_INCLUDE_PATH}/sys/file.h"
+         export *
+       }
+       module sem {
+-        header "${GLIBC_ARCH_INCLUDE_PATH}/sys/sem.h"
++        header "${GLIBC_INCLUDE_PATH}/sys/sem.h"
+         export *
+       }
+ % if CMAKE_SDK != "HAIKU":
+       module shm {
+-        header "${GLIBC_ARCH_INCLUDE_PATH}/sys/shm.h"
++        header "${GLIBC_INCLUDE_PATH}/sys/shm.h"
+         export *
+       }
+ % end
+       module statvfs {
+-        header "${GLIBC_ARCH_INCLUDE_PATH}/sys/statvfs.h"
++        header "${GLIBC_INCLUDE_PATH}/sys/statvfs.h"
+         export *
+       }
+ % end
+ 
+       module ipc {
+-        header "${GLIBC_ARCH_INCLUDE_PATH}/sys/ipc.h"
++        header "${GLIBC_INCLUDE_PATH}/sys/ipc.h"
+         export *
+       }
+       module mman {
+-        header "${GLIBC_ARCH_INCLUDE_PATH}/sys/mman.h"
++        header "${GLIBC_INCLUDE_PATH}/sys/mman.h"
+         export *
+       }
+       module msg {
+-        header "${GLIBC_ARCH_INCLUDE_PATH}/sys/msg.h"
++        header "${GLIBC_INCLUDE_PATH}/sys/msg.h"
+         export *
+       }
+       module resource {
+-        header "${GLIBC_ARCH_INCLUDE_PATH}/sys/resource.h"
++        header "${GLIBC_INCLUDE_PATH}/sys/resource.h"
+         export *
+       }
+       module select {
+-        header "${GLIBC_ARCH_INCLUDE_PATH}/sys/select.h"
++        header "${GLIBC_INCLUDE_PATH}/sys/select.h"
+         export *
+       }
+ % if CMAKE_SDK != "FREEBSD" and CMAKE_SDK != "HAIKU":
+       module sendfile {
+-        header "${GLIBC_ARCH_INCLUDE_PATH}/sys/sendfile.h"
++        header "${GLIBC_INCLUDE_PATH}/sys/sendfile.h"
+         export *
+       }
+ % end
+       module socket {
+-        header "${GLIBC_ARCH_INCLUDE_PATH}/sys/socket.h"
++        header "${GLIBC_INCLUDE_PATH}/sys/socket.h"
+         export *
+       }
+       module stat {
+-        header "${GLIBC_ARCH_INCLUDE_PATH}/sys/stat.h"
++        header "${GLIBC_INCLUDE_PATH}/sys/stat.h"
+         export *
+       }
+       module time {
+-        header "${GLIBC_ARCH_INCLUDE_PATH}/sys/time.h"
++        header "${GLIBC_INCLUDE_PATH}/sys/time.h"
+         export *
+       }
+       module times {
+-        header "${GLIBC_ARCH_INCLUDE_PATH}/sys/times.h"
++        header "${GLIBC_INCLUDE_PATH}/sys/times.h"
+         export *
+       }
+       module types {
+-        header "${GLIBC_ARCH_INCLUDE_PATH}/sys/types.h"
++        header "${GLIBC_INCLUDE_PATH}/sys/types.h"
+         export *
+       }
+ % if CMAKE_SDK in ["FREEBSD"]:
+       module event {
+-        header "${GLIBC_ARCH_INCLUDE_PATH}/sys/event.h"
++        header "${GLIBC_INCLUDE_PATH}/sys/event.h"
+         export *
+       }
+ % end
+       module uio {
+-        header "${GLIBC_ARCH_INCLUDE_PATH}/sys/uio.h"
++        header "${GLIBC_INCLUDE_PATH}/sys/uio.h"
+         export *
+       }
+       module un {
+-        header "${GLIBC_ARCH_INCLUDE_PATH}/sys/un.h"
++        header "${GLIBC_INCLUDE_PATH}/sys/un.h"
+         export *
+       }
+ % if CMAKE_SDK in ["LINUX"]:
+       module user {
+-        header "${GLIBC_ARCH_INCLUDE_PATH}/sys/user.h"
++        header "${GLIBC_INCLUDE_PATH}/sys/user.h"
+         export *
+       }
+ % end
+       module utsname {
+-        header "${GLIBC_ARCH_INCLUDE_PATH}/sys/utsname.h"
++        header "${GLIBC_INCLUDE_PATH}/sys/utsname.h"
+         export *
+       }
+       module wait {
+-        header "${GLIBC_ARCH_INCLUDE_PATH}/sys/wait.h"
++        header "${GLIBC_INCLUDE_PATH}/sys/wait.h"
+         export *
+       }
+     }
