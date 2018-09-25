@@ -1,7 +1,7 @@
-From 955c44726565654efbf8099a66b1e3b23e2d41df Mon Sep 17 00:00:00 2001
+From 2658fe5a2166aa8893701e65e71dd7bdb16d9180 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 3 Feb 2017 18:30:51 +0100
-Subject: [PATCH 01/34] Adjust win32-g++ profile for cross compilation with
+Subject: [PATCH 01/33] Adjust win32-g++ profile for cross compilation with
  mingw-w64
 
 Adding a new, separate mkspec instead of patching the existing one
@@ -19,7 +19,7 @@ Also see the following issues:
  3 files changed, 40 insertions(+), 21 deletions(-)
 
 diff --git a/mkspecs/common/g++-win32.conf b/mkspecs/common/g++-win32.conf
-index 610503379d..e747ef16af 100644
+index f0df324b64..48d1c49d44 100644
 --- a/mkspecs/common/g++-win32.conf
 +++ b/mkspecs/common/g++-win32.conf
 @@ -8,18 +8,24 @@
@@ -42,10 +42,10 @@ index 610503379d..e747ef16af 100644
  MAKEFILE_GENERATOR      = MINGW
  QMAKE_PLATFORM          = win32 mingw
 -CONFIG                 += debug_and_release debug_and_release_target precompile_header
--DEFINES                += UNICODE _UNICODE WIN32
+-DEFINES                += UNICODE _UNICODE WIN32 MINGW_HAS_SECURE_API=1
 -QMAKE_COMPILER_DEFINES += __GNUC__ _WIN32
 +CONFIG                 += debug_and_release debug_and_release_target precompile_header $${CROSS_COMPILE_CUSTOM_CONFIG}
-+DEFINES                += UNICODE _UNICODE
++DEFINES                += UNICODE _UNICODE MINGW_HAS_SECURE_API=1
 +QMAKE_COMPILER_DEFINES += __GNUC__ _WIN32 WIN32
  # can't add 'DEFINES += WIN64' and 'QMAKE_COMPILER_DEFINES += _WIN64' defines for
  # x86_64 platform similar to 'msvc-desktop.conf' toolchain, because, unlike for MSVC,
@@ -163,5 +163,5 @@ index ed131c6823..b77d86cd6b 100644
  
  QMAKE_LINK              = $${CROSS_COMPILE}g++
 -- 
-2.18.0
+2.19.0
 

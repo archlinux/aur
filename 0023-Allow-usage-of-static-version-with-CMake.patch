@@ -1,7 +1,7 @@
-From 244565bea2e8c84287b0a5dbbacea3db7e186f6d Mon Sep 17 00:00:00 2001
+From 191a510dd089ac2d870e989b44a15af535eacb8a Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 5 Aug 2017 21:14:26 +0200
-Subject: [PATCH 23/34] Allow usage of static version with CMake
+Subject: [PATCH 23/33] Allow usage of static version with CMake
 
 Allow selecting between dynamic and static Qt versions
 installed in the same prefix
@@ -992,5 +992,5 @@ index 2a575958ae..ca0e3be3b5 100644
      INTERFACE_COMPILE_DEFINITIONS QT_TESTCASE_BUILDDIR=\\\"\${CMAKE_BINARY_DIR}\\\"
  )
 -- 
-2.18.0
+2.19.0
 
