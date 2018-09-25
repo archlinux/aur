@@ -9,16 +9,13 @@ pkgbase = python-dask
 	checkdepends = python-bcolz
 	checkdepends = python-cachey
 	checkdepends = python-graphviz
+	checkdepends = python2-graphviz
 	checkdepends = python-sparse
+	checkdepends = python2-sparse
 	checkdepends = python-pytest
+	checkdepends = python2-pytest
 	makedepends = python-setuptools
-	depends = python
-	depends = python-numpy
-	depends = python-scipy
-	depends = python-pandas
-	depends = python-toolz
-	depends = python-cloudpickle
-	depends = python-partd>=0.3.8
+	makedepends = python2-setuptools
 	optdepends = python-bcolz
 	optdepends = python-bokeh
 	optdepends = python-cachey
@@ -33,4 +30,19 @@ pkgbase = python-dask
 	sha256sums = 94f3045e434953602f4712e589da7e49cda610f13d23fd5aa1dd54e608602f00
 
 pkgname = python-dask
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-pandas
+	depends = python-toolz
+	depends = python-cloudpickle
+	depends = python-partd>=0.3.8
+
+pkgname = python2-dask
+	depends = python2-numpy
+	depends = python2-scipy
+	depends = python2-pandas
+	depends = python2-toolz
+	depends = python2-cloudpickle
+	depends = python2-partd>=0.3.8
 
