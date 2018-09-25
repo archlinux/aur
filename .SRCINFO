@@ -1,7 +1,7 @@
 pkgbase = oomox
 	pkgdesc = Graphical application for generating different color variations of Numix/Materia/Arc theme (GTK2, GTK3), gnome-colors and ArchDroid icon themes. Have a hack for HiDPI in gtk2.
 	pkgver = 1.7.0.4
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/themix-project/oomox
 	arch = i686
 	arch = x86_64
