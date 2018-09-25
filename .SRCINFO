@@ -1,12 +1,12 @@
 pkgbase = zafiro-icon-theme
 	pkgdesc = A icon pack flat with light colors.
-	pkgver = 0.4
+	pkgver = 0.5
 	pkgrel = 1
 	url = https://github.com/zayronxio/Zafiro-icons
 	arch = any
 	license = Artistic2.0
-	source = https://github.com/zayronxio/Zafiro-icons/archive/v0.4.tar.gz
-	sha256sums = 7b2f8584f1b00575129c52b981f2cf894ac1c0ce853533c87a9cecc58c7d58fa
+	source = https://github.com/zayronxio/Zafiro-icons/archive/v0.5.tar.gz
+	sha256sums = 5a3efae77b0e9403ff362922c31fba9397c868f59c5b404be2ddbb7214482e1d
 
 pkgname = zafiro-icon-theme
 
