@@ -8,12 +8,13 @@
 pkgname=megasync
 _extname=Linux
 pkgver=3.7.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Sync your files to your Mega account. Official app"
 arch=('i686' 'x86_64')
 url="https://github.com/meganz/MEGAsync"
 license=('custom:MEGA LIMITED CODE REVIEW LICENCE')
-depends=('c-ares' 'crypto++' 'libsodium' 'hicolor-icon-theme' 'libuv' 'qt5-svg' 'libmediainfo')
+depends=('c-ares' 'crypto++' 'libsodium' 'hicolor-icon-theme' 'libuv'
+         'qt5-svg' 'libmediainfo' 'libraw')
 makedepends=('qt5-tools' 'swig' 'doxygen' 'lsb-release' 'git')
 optdepends=('sni-qt: fix systray issue on KDE and LXQt')
 source=("git+https://github.com/meganz/MEGAsync.git#tag=v${pkgver}_${_extname}"
@@ -24,7 +25,7 @@ sha256sums=('SKIP'
 prepare(){
     cd "MEGAsync"
     git submodule init
-    git config submodule.src/MEGASync/mega.url $srcdir/sdk
+    git config submodule.src/MEGASync/mega.url "$srcdir/sdk"
     git submodule update
 }
 
