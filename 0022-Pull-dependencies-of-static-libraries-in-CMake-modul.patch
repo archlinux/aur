@@ -1,7 +1,7 @@
-From 86e3c50a96608acab006e9e525c23e4f420d8b4d Mon Sep 17 00:00:00 2001
+From f02786f7eea8c88f7cd4761638ae53bcf13d94fe Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:32:00 +0200
-Subject: [PATCH 22/34] Pull dependencies of static libraries in CMake modules
+Subject: [PATCH 22/33] Pull dependencies of static libraries in CMake modules
 
 When doing a static build of Qt, the dependencies of the Qt
 libraries and plugins itself must be specified when linking
@@ -251,7 +251,7 @@ index 5baf0fdb10..ec5f3cc437 100644
 +
 +endif()
 diff --git a/qmake/generators/makefile.cpp b/qmake/generators/makefile.cpp
-index 736af1c843..a1972b7eb0 100644
+index dd86df8b91..fc7a0927a9 100644
 --- a/qmake/generators/makefile.cpp
 +++ b/qmake/generators/makefile.cpp
 @@ -994,10 +994,18 @@ MakefileGenerator::writePrlFile(QTextStream &t)
@@ -278,5 +278,5 @@ index 736af1c843..a1972b7eb0 100644
  }
  
 -- 
-2.18.0
+2.19.0
 
