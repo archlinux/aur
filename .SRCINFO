@@ -1,7 +1,7 @@
 pkgbase = mozart2-bin
 	pkgdesc = Runtime and development environment of Oz
 	pkgver = 2.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://mozart.github.io/
 	arch = x86_64
 	license = BSD
