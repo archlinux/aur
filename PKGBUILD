@@ -17,11 +17,13 @@ sha256sums=('SKIP'
             'd3fc3cd0261959e76c692a5511f7fbb0f297c62e9a2664eb0e9735cb17adc455')
 
 pkgver() {
-  mkdir -p $srcdir/src/github.com/coreos
-  ln -sf $srcdir/$pkgname $srcdir/src/github.com/coreos
-
   cd $pkgname
   git describe --tags | sed 's/^v//;s/-/+/g'
+}
+
+prepare() {
+  mkdir -p $srcdir/src/github.com/coreos
+  ln -sf $srcdir/$pkgname $srcdir/src/github.com/coreos
 }
 
 build() {
