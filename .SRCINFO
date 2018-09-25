@@ -1,0 +1,18 @@
+pkgbase = vbrfix
+	pkgdesc = A CLI useful for fixing corrupt mp3 files
+	pkgver = 0.24
+	pkgrel = 1
+	url = https://packages.ubuntu.com/cosmic/vbrfix
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = make
+	source = http://archive.ubuntu.com/ubuntu/pool/universe/v/vbrfix/vbrfix_0.24+dfsg.orig.tar.xz
+	source = cstring.patch
+	md5sums = 27ee9a38a5dac9344b9256bf6d06ab4e
+	md5sums = 11808e35dd062464d7d7a044c43cba09
+	sha256sums = 11c24c246da232a5ad73c37fcfab89dedb820ddc76167395411df4a836ce3a29
+	sha256sums = 81057c6da66649a441b544c75eaf9b8005561a3c3437aebf8bdb2855edc0a7ce
+
+pkgname = vbrfix
+
