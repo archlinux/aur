@@ -9,8 +9,13 @@ pkgbase = python-pyscaffold
 	makedepends = python-wheel
 	depends = python
 	depends = python-setuptools-scm
-	optdepends = python-django: scaffold django projects
-	optdepends = python-cookiecutter: create custom scaffold templates
+	optdepends = python-django: Scaffold Django projects.
+	optdepends = python-cookiecutter: Create custom scaffold templates.
+	optdepends = python-pre-commit: Use Git pre-commit hooks.
+	optdepends = python-sphinx: Support building documentation with Sphinx.
+	optdepends = python-pytest: Use the integrated unit testing.
+	optdepends = python-pytest-runner: Use the integrated unit testing.
+	optdepends = python-pytest-cov: Generate a coverage report for your project.
 	source = pyscaffold-3.1::git+https://github.com/blue-yonder/pyscaffold.git#tag=v3.1
 	md5sums = SKIP
 

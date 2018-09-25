@@ -8,8 +8,13 @@ url="https://pyscaffold.org/"
 arch=('any')
 license=('MIT')
 depends=('python' 'python-setuptools-scm')
-optdepends=('python-django: scaffold django projects'
-            'python-cookiecutter: create custom scaffold templates')
+optdepends=('python-django: Scaffold Django projects.'
+            'python-cookiecutter: Create custom scaffold templates.'
+            'python-pre-commit: Use Git pre-commit hooks.'
+            'python-sphinx: Support building documentation with Sphinx.'
+            'python-pytest: Use the integrated unit testing.'
+            'python-pytest-runner: Use the integrated unit testing.'
+            'python-pytest-cov: Generate a coverage report for your project.')
 # makedepends=('python-setuptools-scm' 'python-pbr' 'python-wheel')
 makedepends=('git' 'python-wheel')
 source=("pyscaffold-${pkgver}::git+https://github.com/blue-yonder/pyscaffold.git#tag=v${pkgver}")
