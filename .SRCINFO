@@ -1,0 +1,13 @@
+pkgbase = ory-keto-bin
+	pkgdesc = A cloud native access control server capable of solving complex use cases (multi-tenant, attribute-based access control, ...) with access control policies (IAM Policies).
+	pkgver = 1.0.0_beta.9
+	pkgrel = 1
+	url = https://ory.sh
+	arch = x86_64
+	license = Apache
+	provides = ory-keto
+	source = https://github.com/ory/keto/releases/download/v1.0.0-beta.9/keto-linux-amd64
+	sha256sums = 5d5805888df10047cccbcd29003f0d626c5dc2d12f981d022cd168840e947cdb
+
+pkgname = ory-keto-bin
+
