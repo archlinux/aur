@@ -1,7 +1,7 @@
 # Maintainer: Andrew Anderson <aanderso@tcd.ie>
 pkgname=pantheon-desktop-git
 pkgver=20180925
-pkgrel=0
+pkgrel=1
 pkgdesc='Meta package for the complete Pantheon desktop & apps'
 arch=(any)
 url='http://elementary.io'
@@ -19,7 +19,6 @@ depends=(granite-git
   pantheon-dpms-helper-git
   pantheon-files-git
   pantheon-geoclue2-agent-git
-  pantheon-mail-git
   pantheon-music-git
   pantheon-photos-git
   pantheon-polkit-agent-git
@@ -68,6 +67,8 @@ depends=(granite-git
   lightdm-settings
   lightdm-pantheon-greeter
   )
+
+#  pantheon-mail-git
 
 package(){
   /bin/true

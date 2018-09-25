@@ -1,7 +1,7 @@
 pkgbase = pantheon-desktop-git
 	pkgdesc = Meta package for the complete Pantheon desktop & apps
 	pkgver = 20180925
-	pkgrel = 0
+	pkgrel = 1
 	url = http://elementary.io
 	arch = any
 	license = LGPL
@@ -18,7 +18,6 @@ pkgbase = pantheon-desktop-git
 	depends = pantheon-dpms-helper-git
 	depends = pantheon-files-git
 	depends = pantheon-geoclue2-agent-git
-	depends = pantheon-mail-git
 	depends = pantheon-music-git
 	depends = pantheon-photos-git
 	depends = pantheon-polkit-agent-git
