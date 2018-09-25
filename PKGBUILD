@@ -1,7 +1,7 @@
 # Maintainer: boltgolt <boltgolt@gmail.com>
 # Maintainer: Kelley McChesney <kelley@kelleymcchesney.us>
 pkgname=howdy
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Windows Hello for Linux"
 arch=('x86_64')
@@ -25,11 +25,11 @@ makedepends=(
 	'python-pip'
 )
 backup=('usr/lib/security/howdy/config.ini')
-source=("https://github.com/boltgolt/howdy/archive/v2.3.0.tar.gz"
+source=("https://github.com/boltgolt/howdy/archive/v2.3.1.tar.gz"
         "https://downloads.sourceforge.net/project/pam-python/pam-python-1.0.6-1/pam-python-1.0.6.tar.gz"
 	"https://sourceforge.net/p/pam-python/tickets/_discuss/thread/5dc8cfd5/5839/attachment/pam-python-1.0.6-fedora.patch"
 	"https://sourceforge.net/p/pam-python/tickets/_discuss/thread/5dc8cfd5/5839/attachment/pam-python-1.0.6-gcc8.patch")
-sha256sums=('3dd45d7a5aaf5af2b27e935374f4f233b41b11379fd6bfad5e93b397689ab57a'
+sha256sums=('d4057fd4f27c1d14e30718e9412eac578b383846d70cbb7a57725d8132c90b1e'
 	    '0ef4dda35da14088afb1640266415730a6e0274bea934917beb5aca90318f853'
 	    'acb9d1b5cf7cad73d5524334b7954431bb9b90f960980378c538907e468c34b5'
 	    '02dd9a4d8ec921ff9a2408183f290f08102e3f9e0151786ae7220a4d550bfe24')
@@ -75,7 +75,7 @@ package() {
 	cd ..
 
 	# Installing the proper license files and the rest of howdy
-	cd howdy-2.3.0
+	cd howdy-2.3.1
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	mkdir -p "$pkgdir/usr/lib/security/howdy"
 	cp -r src/* "$pkgdir/usr/lib/security/howdy"
