@@ -6,9 +6,9 @@ pkgbase = python-pyscaffold
 	arch = any
 	license = MIT
 	makedepends = git
-	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	depends = python
+	depends = python-setuptools-scm
 	optdepends = python-django: scaffold django projects
 	optdepends = python-cookiecutter: create custom scaffold templates
 	source = pyscaffold-3.1::git+https://github.com/blue-yonder/pyscaffold.git#tag=v3.1

@@ -7,11 +7,11 @@ pkgdesc="Python project template generator with batteries included"
 url="https://pyscaffold.org/"
 arch=('any')
 license=('MIT')
-depends=('python')
+depends=('python' 'python-setuptools-scm')
 optdepends=('python-django: scaffold django projects'
             'python-cookiecutter: create custom scaffold templates')
 # makedepends=('python-setuptools-scm' 'python-pbr' 'python-wheel')
-makedepends=('git' 'python-setuptools-scm' 'python-wheel')
+makedepends=('git' 'python-wheel')
 source=("pyscaffold-${pkgver}::git+https://github.com/blue-yonder/pyscaffold.git#tag=v${pkgver}")
 md5sums=('SKIP')
 
