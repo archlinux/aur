@@ -1,10 +1,11 @@
-# Maintainer: Scott Linder <scott.linder18@gmail.com>
-# Contributer: Jorge Araya Navarro <elcorreo@deshackra.com>
-# Contributer: Mikhail Burakov <mikhail.burakov@gmail.com>
+# Maintainer: Ethan Rakoff <ethan@ethanrakoff.com>
+# Contributor: Scott Linder <scott.linder18@gmail.com>
+# Contributor: Jorge Araya Navarro <elcorreo@deshackra.com>
+# Contributor: Mikhail Burakov <mikhail.burakov@gmail.com>
 
 pkgname=cockatrice-client-git
-pkgver=2.3.17
-pkgrel=1
+pkgver=2.6.1
+pkgrel=2
 pkgdesc='Open-source multiplatform supported program for playing tabletop card games over a network.'
 arch=('i686' 'x86_64')
 url='https://cockatrice.github.io/'
