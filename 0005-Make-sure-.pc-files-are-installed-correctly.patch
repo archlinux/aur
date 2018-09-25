@@ -1,7 +1,7 @@
-From ddc22a123829a1d50a82ea62e6b9f1df3496b253 Mon Sep 17 00:00:00 2001
+From 4b8467ce1b3c487b69e9f9016fa26044853fb6aa Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 13:54:12 +0200
-Subject: [PATCH 05/34] Make sure *.pc files are installed correctly
+Subject: [PATCH 05/33] Make sure *.pc files are installed correctly
 
 ---
  qmake/generators/makefile.cpp          | 8 ++++++--
@@ -10,10 +10,10 @@ Subject: [PATCH 05/34] Make sure *.pc files are installed correctly
  3 files changed, 8 insertions(+), 4 deletions(-)
 
 diff --git a/qmake/generators/makefile.cpp b/qmake/generators/makefile.cpp
-index 99aecdd8ce..6c614fd868 100644
+index 73e09a1025..6c977b3e0b 100644
 --- a/qmake/generators/makefile.cpp
 +++ b/qmake/generators/makefile.cpp
-@@ -3150,7 +3150,7 @@ MakefileGenerator::openOutput(QFile &file, const QString &build) const
+@@ -3183,7 +3183,7 @@ MakefileGenerator::openOutput(QFile &file, const QString &build) const
  }
  
  QString
@@ -22,7 +22,7 @@ index 99aecdd8ce..6c614fd868 100644
  {
      QString ret = project->first("QMAKE_PKGCONFIG_FILE").toQString();
      if (ret.isEmpty()) {
-@@ -3175,7 +3175,11 @@ MakefileGenerator::pkgConfigFileName(bool fixify)
+@@ -3208,7 +3208,11 @@ MakefileGenerator::pkgConfigFileName(bool fixify)
      if(fixify) {
          if(QDir::isRelativePath(ret) && !project->isEmpty("DESTDIR"))
              ret.prepend(project->first("DESTDIR").toQString());
@@ -36,7 +36,7 @@ index 99aecdd8ce..6c614fd868 100644
      return ret;
  }
 diff --git a/qmake/generators/makefile.h b/qmake/generators/makefile.h
-index 4ced3bd121..f7cc3b9e9b 100644
+index f32bec650e..17fed7f8c8 100644
 --- a/qmake/generators/makefile.h
 +++ b/qmake/generators/makefile.h
 @@ -89,7 +89,7 @@ protected:
@@ -49,7 +49,7 @@ index 4ced3bd121..f7cc3b9e9b 100644
      void writePkgConfigFile();   // for pkg-config
  
 diff --git a/qmake/generators/win32/winmakefile.cpp b/qmake/generators/win32/winmakefile.cpp
-index 75bb5d236d..737f3abc3a 100644
+index bca27b7044..dec0931bd4 100644
 --- a/qmake/generators/win32/winmakefile.cpp
 +++ b/qmake/generators/win32/winmakefile.cpp
 @@ -726,7 +726,7 @@ QString Win32MakefileGenerator::defaultInstall(const QString &t)
@@ -62,5 +62,5 @@ index 75bb5d236d..737f3abc3a 100644
                      uninst.append("\n\t");
                  uninst.append("-$(DEL_FILE) " + escapeFilePath(dst_pc));
 -- 
-2.18.0
+2.19.0
 

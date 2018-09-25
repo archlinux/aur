@@ -1,7 +1,7 @@
-From c79c2a4f048484d235574a69e6f6ba3dcff23abe Mon Sep 17 00:00:00 2001
+From 337a71fdb496c2228ee5564d5c12498b6b7d498d Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 14:27:28 +0200
-Subject: [PATCH 17/34] Build dynamic host libraries
+Subject: [PATCH 17/33] Build dynamic host libraries
 
 This came initially from Fedora, not sure whether
 it makes sense to keep it. Regular Arch package
@@ -14,10 +14,10 @@ Change-Id: I91a3613955c656fb0d262ccb9b2529350bab032b
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/mkspecs/features/qt_module.prf b/mkspecs/features/qt_module.prf
-index f8729de947..db23f4ad1d 100644
+index 8c7adc45eb..8dd69efee6 100644
 --- a/mkspecs/features/qt_module.prf
 +++ b/mkspecs/features/qt_module.prf
-@@ -24,7 +24,7 @@ requires(!$$skip)
+@@ -25,7 +25,7 @@ requires(!$$skip)
  
  # Compile as shared/DLL or static according to the option given to configure
  # unless overridden. Host builds are always static
@@ -37,5 +37,5 @@ index c3ed27d979..30d2114aa1 100644
 -INSTALLS = lib
 +INSTALLS += lib
 -- 
-2.18.0
+2.19.0
 

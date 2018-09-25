@@ -1,7 +1,7 @@
-From 9a506994e00aa0fb257bfe80458b0543c0e9f8b0 Mon Sep 17 00:00:00 2001
+From 664fce69abcad0d7c10013b51b42a1a34c27f279 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 17:59:27 +0200
-Subject: [PATCH 18/34] Enable rpath for build tools
+Subject: [PATCH 18/33] Enable rpath for build tools
 
 - Required because various tools depend on libQt5Bootstrap.so which resides
   in folder /usr/${_arch}/lib
@@ -33,5 +33,5 @@ index 883f8ca215..786f2e660c 100644
  INSTALLS += target
  
 -- 
-2.18.0
+2.19.0
 
