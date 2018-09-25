@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://web.stanford.edu/group/fan/S4/#"
 license=('GPL')
 groups=()
-depends=('lua>=5.2.0' 'python3' 'openblas' 'fftw' 'suitesparse' 'openmpi')
+depends=('lua>=5.2.0' 'openblas' 'fftw' 'suitesparse' 'openmpi')
 makedepends=()
 optdepends=()
 provides=()
@@ -31,13 +31,13 @@ build() {
   cd "$srcdir/$_srcname"
 
   # Pthreads
-  sed -i '/^CXXFLAGS/ s@$@ -DHAVE_UNISTD_H -lpthread@' ./Makefile.Linux
+  sed -i '/^CPPFLAGS/ s@$@ -DHAVE_UNISTD_H -lpthread@' ./Makefile.common
 
   # CHOLDMOD
-  sed -i '/^CXXFLAGS/ s@$@ -DHAVE_LIBCHOLMOD -I/usr/include/suitesparse -lcholmod -lamd -lcolamd -lcamd -lccolamd@' ./Makefile.Linux
+  #sed -i '/^CPPFLAGS/ s@$@ -DHAVE_LIBCHOLMOD -I/usr/include/SuiteSparseQR -lcholmod -lamd -lcolamd -lcamd -lccolamd@' ./Makefile.common
 
   # FFTW3
-  sed -i '/^CXXFLAGS/ s@$@ -DHAVE_FFTW3 -lfftw3@' ./Makefile.Linux
+  sed -i '/^CPPFLAGS/ s@$@ -DHAVE_FFTW3 -lfftw3@' ./Makefile.common
 
   make
 }
