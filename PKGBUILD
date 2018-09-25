@@ -5,7 +5,7 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=mixxx-qt5
-pkgver=2.1.3
+pkgver=2.1.4
 pkgrel=1
 pkgdesc="free, open source software for digital DJ'ing, Qt5 version"
 arch=('x86_64')
@@ -18,7 +18,7 @@ makedepends=('mesa' 'scons' 'libshout' 'glu')
 provides=('mixxx')
 conflicts=('mixxx')
 source=("https://github.com/${pkgname%-*}dj/${pkgname%-*}/archive/release-${pkgver}.tar.gz")
-md5sums=('237ffa407bfec0cb36c2ed88564fd550')
+md5sums=('305dfb0dde73b9062d1d48f8ae07a370')
 
 build() {
   cd "${srcdir}/${pkgname%-*}-release-${pkgver}"
