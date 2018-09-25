@@ -1,11 +1,11 @@
 # Maintainer: gkmcd <g@dramati.cc>
-pkgbase=python-pyscaffold
+
 pkgname=('python-pyscaffold')
 pkgver=3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Python project template generator with batteries included"
 url="https://pyscaffold.org/"
-arch=(any)
+arch=('any')
 license=('MIT')
 depends=('python')
 optdepends=('python-django: scaffold django projects'
