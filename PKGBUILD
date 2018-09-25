@@ -6,13 +6,13 @@ _cargo=0.30.0
 pkgname=mingw-w64-rust-bin
 pkgver=1.29.0
 pkgrel=1
-pkgdesc="Systems programming language focused on safety, speed and concurrency (official build, mingw-w64)"
+pkgdesc="Systems programming language focused on safety, speed and concurrency (PLEASE READ COMMENTS FIRST) (official build, mingw-w64)"
 arch=('x86_64')
 url="https://www.rust-lang.org"
 license=('MIT' 'Apache' 'custom')
 depends=('gcc-libs'
          'curl'
-         'mingw-w64-crt<6.0.0'
+         'mingw-w64-crt'
          'libgit2'
          'mingw-w64-gcc')
 optdepends=('mingw-w64-wine: for cargo test support')
