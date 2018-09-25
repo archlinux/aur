@@ -6,6 +6,7 @@ pkgver=v1.1.0.r19.gb1b09b5
 pkgrel=1
 pkgdesc='Very low footprint JSON parser written in portable ANSI C'
 arch=('i686' 'x86_64')
+makedepends=('git')
 url='https://github.com/udp/json-parser'
 license=('BSD')
 source=('json-parser-git::git+https://github.com/udp/json-parser')

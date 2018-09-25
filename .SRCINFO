@@ -7,6 +7,7 @@ pkgbase = json-parser-git
 	arch = i686
 	arch = x86_64
 	license = BSD
+	makedepends = git
 	source = json-parser-git::git+https://github.com/udp/json-parser
 	sha512sums = SKIP
 
