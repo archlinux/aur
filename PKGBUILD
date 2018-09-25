@@ -12,7 +12,7 @@
 
 _qt_module=qtdeclarative
 pkgname=mingw-w64-qt5-declarative
-pkgver=5.11.1
+pkgver=5.11.2
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Classes for QML and JavaScript languages (mingw-w64)'
@@ -27,10 +27,10 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/subm
         '0001-Ensure-QML-dev-tools-is-built-as-static-library.patch'
         '0002-Ensure-static-plugins-are-exported.patch'
         '0003-Prevent-exporting-QML-parser-symbols-on-static-build.patch')
-sha256sums=('9ecf5ef6bf618fcb6719a4b22e3d9f9ce7623c2344667038171d5662624c4f3a'
-            '6f7ed7f76de78c1486478fd34830395be5e94f63cfad668187e84d5de8c60073'
-            '5a468edfc4c2af7f239695c793f8400598a6001ece5dbe37835eb55cc7d5661a'
-            '1455bd2f2896aef4f28892f446c25f9724a8c3440cd8829a7e173b3a0b516cb3')
+sha256sums=('220d86f8031e9d45f3c369c3fd517aaa4c5783ad62c843a21fa7cc3c0a36f2cd'
+            '4544a494437fd73a17053738d38bbd857a081846ad2cd4db0047706961aa4cee'
+            '4d5799f9cc322ba5379b3e7ec57ead3001e1dbd2bc6b9d225e6fb1d8a9b4cab6'
+            'e390fc1f78f9e752f6f41bd2f15a7470c6359b21954e08c9bfba89514f7a89d5')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
