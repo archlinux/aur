@@ -1,47 +1,26 @@
 # Maintainer: Joop Kiefte <joop@kiefte.net>
 pkgname=ocean-data
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="The library data of the Ocean religious writings tool"
 arch=('any')
 url="http://bahai-education.org/ocean"
 license=('custom')
-makedepends=('p7zip' 'convmv' 'perl')
-source=('http://bahai-education.org/sites/default/files/uploadfiles/Ocean.dmg' 'file-encode.pl')
+makedepends=('p7zip')
+source=('http://bahai-education.org/sites/default/files/uploadfiles/Ocean.dmg')
 noextract=('Ocean.dmg')
-md5sums=('54e727a44371f2e33cb945100f11861a'
-         'cc015d746955e6ba574901d40c7be034')
-
-sanitize() {
-  shopt -s extglob;
-
-  filename=$(basename "$1")
-  directory=$(dirname "$1")
-
-  filename_clean=$(perl "$builddir/file-encode.pl" "$filename")
-
-  if (test "$filename" != "$filename_clean")
-  then
-    mv -v "$1" "$directory/$filename_clean"
-  fi
-}
-
-export -f sanitize
-
-sanitize_dir() {
-  find "$1" -depth -exec bash -c 'sanitize "$0"' {} \;
-}
+md5sums=('54e727a44371f2e33cb945100f11861a')
 
 build() {
-  export builddir="`pwd`"
   cd "Ocean/Ocean.app/Contents/Resources/drive_c/Ocean/"
-  echo "Sanitize dir"
-  sanitize_dir "Library"
+  echo "Removing problematic elements"
+  rm -r Library/Russian
+  rm -r "Library/English/Baha'i/Authoritative Baha'i/Abdu'l-Baha/Provisional Translations/"
   echo "Done sanitizing"
 }
 
 prepare() {
-	7z -y x Ocean.dmg
+	LANG=C 7z -y -scsUTF-8 x Ocean.dmg
 }
 
 package() {
@@ -51,4 +30,5 @@ package() {
   mkdir -p "$pkgdir/usr/share/ocean/"
   echo "Copy to dir"
   cp -r Library "$pkgdir/usr/share/ocean/"
+  chmod 755 -R "$pkgdir/usr/share/ocean/"
 }
