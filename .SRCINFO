@@ -1,7 +1,7 @@
 pkgbase = vbrfix
 	pkgdesc = A CLI useful for fixing corrupt mp3 files
 	pkgver = 0.24
-	pkgrel = 1
+	pkgrel = 2
 	url = https://packages.ubuntu.com/cosmic/vbrfix
 	arch = i686
 	arch = x86_64
