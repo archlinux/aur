@@ -2,7 +2,7 @@
 
 pkgname=git-sizer-bin
 _pkgname=git-sizer
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Compute various size metrics for a Git repository, flagging those that might cause problems"
 url="https://github.com/github/git-sizer"
@@ -12,7 +12,7 @@ depends=('git')
 conflicts=('git-sizer' 'git-sizer-git') # build with Go from sources
 
 source=(git-sizer_${pkgver}.zip::https://github.com/github/git-sizer/releases/download/v${pkgver}/git-sizer-${pkgver}-linux-amd64.zip)
-sha256sums=('0baf56a3296e86e884da06a9dad98ead48d4186060abeae33f944beca784fe37')
+sha256sums=('d35cb3c365ead5f5ed078a65601bd150c5732f28bcb3c4872a9ee44c5b952b01')
 package() {
   cd "${srcdir}"
   install -Dm755 git-sizer "${pkgdir}"/usr/bin/git-sizer

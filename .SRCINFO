@@ -1,6 +1,6 @@
 pkgbase = git-sizer-bin
 	pkgdesc = Compute various size metrics for a Git repository, flagging those that might cause problems
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/github/git-sizer
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = git-sizer-bin
 	depends = git
 	conflicts = git-sizer
 	conflicts = git-sizer-git
-	source = git-sizer_1.2.0.zip::https://github.com/github/git-sizer/releases/download/v1.2.0/git-sizer-1.2.0-linux-amd64.zip
-	sha256sums = 0baf56a3296e86e884da06a9dad98ead48d4186060abeae33f944beca784fe37
+	source = git-sizer_1.3.0.zip::https://github.com/github/git-sizer/releases/download/v1.3.0/git-sizer-1.3.0-linux-amd64.zip
+	sha256sums = d35cb3c365ead5f5ed078a65601bd150c5732f28bcb3c4872a9ee44c5b952b01
 
 pkgname = git-sizer-bin
 
