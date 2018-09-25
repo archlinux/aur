@@ -1,13 +1,14 @@
 pkgbase = pcl
 	pkgdesc = A comprehensive open source library for n-D Point Clouds and 3D geometry processing
 	pkgver = 1.8.1
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.pointclouds.org
 	arch = x86_64
 	arch = i686
 	license = BSD
 	makedepends = cmake
 	makedepends = gl2ps
+	makedepends = python
 	depends = boost
 	depends = eigen
 	depends = flann
