@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-location
 	pkgdesc = Provides access to position, satellite and area monitoring classes (mingw-w64)
-	pkgver = 5.11.1
+	pkgver = 5.11.2
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = any
@@ -18,10 +18,10 @@ pkgbase = mingw-w64-qt5-location
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://download.qt.io/official_releases/qt/5.11/5.11.1/submodules/qtlocation-everywhere-src-5.11.1.tar.xz
+	source = https://download.qt.io/official_releases/qt/5.11/5.11.2/submodules/qtlocation-everywhere-src-5.11.2.tar.xz
 	source = 0001-Ensure-static-3rdparty-libs-are-linked-correctly.patch
-	sha256sums = 172c9a39e8267739e20d60bda45de3db02b13163245776bdc696d8c5ab5f790f
-	sha256sums = 875bbeb35dbc2cc0b6a3c1fb2677f25f4e1e4f64cb803b03154d7954c4a330f6
+	sha256sums = d698911edfb2d45b7adca6557b3de880e966cb8823a8adf1beb3a3079560024e
+	sha256sums = 0f396229f438d52fc7791a6e90ae8ceca1aff8029547c8af1f36875e06ab089b
 
 pkgname = mingw-w64-qt5-location
 
