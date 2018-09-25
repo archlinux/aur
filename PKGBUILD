@@ -3,7 +3,7 @@
 
 pkgname=pokerth
 pkgver=1.1.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Client to online Poker game written in C++/QT"
 arch=('i686' 'x86_64')
 url="http://www.pokerth.net/"
