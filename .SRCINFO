@@ -1,7 +1,7 @@
 pkgbase = oomox
 	pkgdesc = Graphical application for generating different color variations of Numix/Materia/Arc theme (GTK2, GTK3), gnome-colors and ArchDroid icon themes. Have a hack for HiDPI in gtk2.
 	pkgver = 1.7.0.4
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/themix-project/oomox
 	arch = i686
 	arch = x86_64
@@ -38,7 +38,7 @@ pkgbase = oomox
 	source = arc-theme-e7f9370ebefb60278e9fc90e34a7266a8c4b9dac.tar.gz::https://github.com/NicoHood/arc-theme/archive/e7f9370ebefb60278e9fc90e34a7266a8c4b9dac.tar.gz
 	source = archdroid-icon-theme-1.0.2.tar.gz::https://github.com/themix-project/oomox-archdroid-icon-theme/archive/1.0.2.tar.gz
 	source = gnome-colors-icon-theme-5.5.3.tar.gz::https://github.com/themix-project/oomox-gnome-colors-icon-theme/archive/5.5.3.tar.gz
-	source = oomoxify-1.0.0.1.tar.gz::https://github.com/themix-project/oomoxify/archive/1.0.0.1.tar.gz
+	source = oomoxify-1.0.1.tar.gz::https://github.com/themix-project/oomoxify/archive/1.0.1.tar.gz
 	source = base16-builder-d022b9daa5c233a08a8d3b94fd534a3041e3a8c1.tar.gz::https://github.com/base16-builder/base16-builder/archive/d022b9daa5c233a08a8d3b94fd534a3041e3a8c1.tar.gz
 	md5sums = 8e50aeb8b1826f1e3713938a1f08ae55
 	md5sums = 09106ec3126a0504745c3632268e53b3
@@ -46,7 +46,7 @@ pkgbase = oomox
 	md5sums = f31eec3e8523b4b5962e3f44ba06b960
 	md5sums = cb669130685dcbf03a8f7f5738c71dc6
 	md5sums = ae3250f1dce9505dbaa60d92dcb9a239
-	md5sums = 62be7e51ed58135765c1758a6a1df2d8
+	md5sums = 02f3cefaf6ce3b89b8a5cc6b8a7430b4
 	md5sums = 38fc51a55c798032266c03ee82461119
 
 pkgname = oomox
