@@ -1,19 +1,19 @@
 pkgbase = synology-note-station
 	pkgdesc = Note Station for desktop connects you with Note Station on your Synology NAS. You can manage all the notes/to-do list offline, right from your local computer.
-	pkgver = 2.1.2_241
+	pkgver = 2.1.2_245
 	pkgrel = 1
 	url = https://www.synology.com/support/download/
 	arch = i686
 	arch = x86_64
 	license = (C) Synology: Proprietary
 	makedepends = rpmextract
-	depends = gconf
+	depends = ffmpeg
 	depends = gtk3
 	depends = libxss
 	depends = nss
 	options = emptydirs
-	source = https://global.download.synology.com/download/Tools/NoteStationClient/2.1.2-241/Fedora/x86_64/synology-note-station-2.1.2-241-linux-x86_64.rpm
-	md5sums = 9abb955ab7ab2b31685e59a1fd5a3094
+	source = https://global.download.synology.com/download/Tools/NoteStationClient/2.1.4-245/Fedora/x86_64/synology-note-station-2.1.4-245-linux-x86_64.rpm
+	md5sums = f1a9d10c8a4c5a61782c7fc7f4208ec0
 
 pkgname = synology-note-station
 
