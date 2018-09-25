@@ -1,0 +1,14 @@
+pkgbase = git-secret
+	pkgdesc = A bash-tool to store your private data inside a git repository
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://github.com/sobolevn/git-secret
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = ruby-ronn
+	depends = git
+	depends = gnupg
+
+pkgname = git-secret
+
