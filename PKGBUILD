@@ -3,7 +3,7 @@
 
 pkgname=teiler-git
 _pkgname=teiler
-pkgver=315.9834654
+pkgver=506.a48733a
 pkgrel=1
 conflicts=('teiler')
 provides=('teiler')
@@ -21,7 +21,7 @@ optdepends=('fb-client:         Upload to paste.xinu.at (or selfhosted filebin)'
 options=(!strip)
 install="teiler.install"
 makedepends=('git')
-source=('git+https://git.53280.de/teiler')
+source=('git+https://github.com/carnager/teiler')
 
 pkgver() {
     cd teiler
