@@ -1,0 +1,32 @@
+From da4ad130740aabeeeda441c9eb81d6810d3da582 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Mon, 24 Sep 2018 20:10:19 +0200
+Subject: [PATCH 4/4] Link directshow plugin against libamstrmid
+
+Fixes errors about undefined references to IID_IMFVideoDeviceID,
+IID_IMFVideoPresenter, IID_IMFTopologyServiceLookupClient and
+IID_IMFTopologyServiceLookupClient when building dsengine.dll.
+---
+ src/plugins/directshow/directshow.pro | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/src/plugins/directshow/directshow.pro b/src/plugins/directshow/directshow.pro
+index 54d61716..e097d433 100644
+--- a/src/plugins/directshow/directshow.pro
++++ b/src/plugins/directshow/directshow.pro
+@@ -5,6 +5,12 @@ win32:!qtHaveModule(opengl)|qtConfig(dynamicgl) {
+     LIBS_PRIVATE += -lgdi32 -luser32
+ }
+ 
++# add library containing IID_IMFVideoDeviceID, IID_IMFVideoPresenter, IID_IMFTopologyServiceLookupClient
++# and IID_IMFTopologyServiceLookupClient
++mingw {
++    LIBS_PRIVATE += -lamstrmid
++}
++
+ HEADERS += dsserviceplugin.h
+ SOURCES += dsserviceplugin.cpp
+ 
+-- 
+2.19.0
+

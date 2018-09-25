@@ -1,0 +1,27 @@
+From ca9c6831d839d8b79df6d74c038e32c39e35cc17 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Mon, 24 Sep 2018 19:21:40 +0200
+Subject: [PATCH 3/4] Prevent redefinition of MFVideoNormalizedRect
+
+This establishes compatiblity with MinGW-w64 headers 6.0
+where MFVideoNormalizedRect has been added to evr.h.
+---
+ src/plugins/common/evr/evrdefs.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/plugins/common/evr/evrdefs.h b/src/plugins/common/evr/evrdefs.h
+index f898209b..a8d7f664 100644
+--- a/src/plugins/common/evr/evrdefs.h
++++ b/src/plugins/common/evr/evrdefs.h
+@@ -83,7 +83,7 @@ HRESULT WINAPI Direct3DCreate9Ex(UINT SDKVersion, IDirect3D9Ex**);
+ #define MF_E_TRANSFORM_NEED_MORE_INPUT ((HRESULT)0xC00D6D72L)
+ #endif
+ 
+-#ifdef __GNUC__
++#if defined(__GNUC__) && !defined(_MFVideoNormalizedRect_)
+ typedef struct MFVideoNormalizedRect {
+     float left;
+     float top;
+-- 
+2.19.0
+
