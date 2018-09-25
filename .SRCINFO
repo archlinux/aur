@@ -1,7 +1,7 @@
 pkgbase = email-securely-app-bin
 	pkgdesc = Unofficial desktop app for several E2E encrypted email providers
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vladimiry/email-securely-app
 	install = email-securely-app-bin.install
 	arch = x86_64
