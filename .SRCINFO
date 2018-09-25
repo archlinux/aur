@@ -1,7 +1,7 @@
 pkgbase = qpmx
 	pkgdesc = A frontend for qpm, to provide source and build caching
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Skycoder42/qpmx
 	arch = i686
 	arch = x86_64

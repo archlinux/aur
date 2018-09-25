@@ -3,7 +3,7 @@ pkgbase=qpmx
 pkgname=(qpmx qpmx-gitsource qpmx-qpmsource)
 group=qpmx-full
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A frontend for qpm, to provide source and build caching"
 arch=('i686' 'x86_64')
 url="https://github.com/Skycoder42/$pkgname"
@@ -40,7 +40,7 @@ prepare() {
 build() {
   cd build
 
-  qmake "PREFIX=/usr" "../$_pkgfqn/"
+  qmake "PREFIX=/usr" "INSTALL_PLUGINS=$(qmake -query QT_INSTALL_PLUGINS)" "../$_pkgfqn/"
   make qmake_all
   make
 }
