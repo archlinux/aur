@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc='A cross-platform automation and configuration tool/framework (binary package)'
 arch=('x86_64')
 url='https://github.com/Powershell/Powershell'
-depends=('libunwind' 'icu')
+depends=('libunwind' 'icu' 'openssl')
 provides=('powershell')
 conflicts=('powershell')
 options=(staticlibs !strip)
@@ -26,5 +26,5 @@ package() {
   cp -r usr/local/share usr
   rm -rf usr/local
 
-  chmod 755 opt/microsoft/powershell/$_pkgver/pwsh
+  chmod 755 "opt/microsoft/powershell/$_pkgver/pwsh"
 }
