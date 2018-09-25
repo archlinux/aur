@@ -1,6 +1,6 @@
 # Maintainer: Luigi Guevara <luigi.t.guevara@killua.me>
 pkgname=pomello
-pkgver=0.9.4
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Stay Focused. Accomplish more."
 arch=('x86_64' 'i686')
@@ -12,8 +12,8 @@ install='pomello.install'
 source_i686=("Pomello-${pkgver}.deb::https://pomelloapp.com/download/linux/latest?dist=ubuntu&arch=32")
 source_x86_64=("Pomello-${pkgver}.deb::https://pomelloapp.com/download/linux/latest?dist=ubuntu")
 options=(!strip)
-md5sums_i686=('2aa608af394fbe0303bb0e1411e1708e')
-md5sums_x86_64=('7c999fc6596276f5d32d9f5f356ff27d')
+md5sums_i686=('3ff20fe26a99de678887dda220fed227')
+md5sums_x86_64=('ace930149e7e53fecb5495bf5df0297a')
 
 prepare() {
   cd "$srcdir"

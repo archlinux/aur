@@ -1,6 +1,6 @@
 pkgbase = pomello
 	pkgdesc = Stay Focused. Accomplish more.
-	pkgver = 0.9.4
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://pomelloapp.com/
 	install = pomello.install
@@ -11,10 +11,10 @@ pkgbase = pomello
 	makedepends = binutils
 	depends = libsystemd
 	options = !strip
-	source_x86_64 = Pomello-0.9.4.deb::https://pomelloapp.com/download/linux/latest?dist=ubuntu
-	md5sums_x86_64 = 7c999fc6596276f5d32d9f5f356ff27d
-	source_i686 = Pomello-0.9.4.deb::https://pomelloapp.com/download/linux/latest?dist=ubuntu&arch=32
-	md5sums_i686 = 2aa608af394fbe0303bb0e1411e1708e
+	source_x86_64 = Pomello-0.10.0.deb::https://pomelloapp.com/download/linux/latest?dist=ubuntu
+	md5sums_x86_64 = ace930149e7e53fecb5495bf5df0297a
+	source_i686 = Pomello-0.10.0.deb::https://pomelloapp.com/download/linux/latest?dist=ubuntu&arch=32
+	md5sums_i686 = 3ff20fe26a99de678887dda220fed227
 
 pkgname = pomello
 
