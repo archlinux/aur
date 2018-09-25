@@ -1,0 +1,18 @@
+pkgbase = python-django-celery-beat-git
+	pkgdesc = django-celery-beat enables you to store the periodic task schedule in the django database
+	pkgver = 1.1.99
+	pkgrel = 0
+	url = https://github.com/celery/django-celery-beat
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	depends = python-django
+	depends = python-celery
+	provides = python-django-celery-beat
+	conflicts = python-django-celery-beat
+	source = git://github.com/celery/django-celery-beat
+	md5sums = SKIP
+
+pkgname = python-django-celery-beat-git
+
