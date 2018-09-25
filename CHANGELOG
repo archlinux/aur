@@ -761,3 +761,10 @@ Sat Sep 22 07:12:57 2018 +0200
     Notable changes:
      2018-08-15 e6688017 actionless fix(plugins: arc): export config name
      2018-08-12 236bd5c4 actionless refactor: import gettext's _ explicitly
+
+
+Tue Sep 25 20:50:11 2018 +0200
+-------------------------------------------------
+1.7.0.4         Release 1.7.0.4
+    
+    Update Oomox and Materia plugins.
