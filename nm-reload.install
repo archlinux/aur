@@ -1,0 +1,11 @@
+post_upgrade() {
+	nmcli con reload
+}
+
+post_install() {
+	nmcli con reload
+	echo "> You'll need to change your identity: \$EDITOR /etc/NetworkManager/system-connections/eduroam.ufscar.br"
+	echo "> Then reload it in NetworkManager: nmcli con reload"
+	echo "> To connect you can use: nmcli con up 'eduroam.ufscar.br' --ask"
+	echo "> Or you use a GUI-frontend..."
+}
