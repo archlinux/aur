@@ -2,8 +2,8 @@
 
 _pkgname="elementary-xfce"
 pkgname="${_pkgname}-icons"
-pkgver=0.13
-pkgrel=2
+pkgver=0.13.1
+pkgrel=1
 pkgdesc='Elementary icon theme with improved Xfce support'
 arch=('any')
 url="https://github.com/shimmerproject/${_pkgname}"
@@ -12,7 +12,7 @@ makedepends=('gtk3' 'optipng')
 depends=('adwaita-icon-theme')
 conflicts=("${pkgname}-git")
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('b660e5beb56b130df64ac5866bcfe569e43a169c85d7918e8120bbd23b8c4228')
+sha256sums=('b46402629660908ec1e266b41186ee0e8662bd3a6b537e3ca5c66e5074136c11')
 
 build() {
   cd "${_pkgname}-${pkgver}"
