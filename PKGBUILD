@@ -2,7 +2,7 @@
 # Contributor: Eric Forgeot < http://anamnese.online.fr >
 
 pkgname=pharo
-pkgver=6.0.528
+pkgver=6.0.543
 pkgrel=1
 pkgdesc="a fork of Squeak, an implementation of the object-oriented, dynamically typed, reflective programming language Smalltalk"
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('alsa-lib' 'libvorbis' 'pango' 'mesa' 'nas' 'dbus' 'libxml2')
 
 _imageversion=${pkgver//./}
-_vmversion="201712211450-276a5ff"
+_vmversion="201808291622-d952580"
 
 source=(http://files.pharo.org/vm/pharo-spur64/linux/pharo-linux-x86_64threaded-${_vmversion}.zip \
 	http://files.pharo.org/image/60/${_imageversion}-64.zip\
@@ -20,8 +20,8 @@ source=(http://files.pharo.org/vm/pharo-spur64/linux/pharo-linux-x86_64threaded-
 	$pkgname.sh
 	 $pkgname.desktop)
 
-sha256sums=('6ba3773a0c9b37e57fe7f194012373fa7fe9d76367611e29d8d716751b92ff35'
-            '4a2151af65a05977d16d4ac7e1cbc01e12be1edae2dfb0e65ac507d5a6d21ae0'
+sha256sums=('9212189b822325f801699a878e68c1363dce5e3c6a4f6f251d1fb62429cf289a'
+            '6971b268205a168231c5626bbfc8656ba8577ed06821646963fc600497f076a6'
             '5a6f40722264a2befc9aea1dace399f2491cd45a98987458660f8a39d4e6887e'
             '4a7ca4ecf26fcbff1cc4a38a4457bd405021e0fcc67711c8fb62f99c8e896d75'
             '1cb3cc70da68096fa03e5f261cdfc169b3c97f7d26e17919aed1fef5e07df9fe'
