@@ -9,6 +9,7 @@ pkgbase = python-pyscaffold
 	makedepends = python-wheel
 	depends = python
 	depends = python-setuptools-scm
+	depends = git
 	optdepends = python-django: Scaffold Django projects.
 	optdepends = python-cookiecutter: Create custom scaffold templates.
 	optdepends = python-pre-commit: Use Git pre-commit hooks.

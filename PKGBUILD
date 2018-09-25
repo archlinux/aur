@@ -7,7 +7,7 @@ pkgdesc="Python project template generator with batteries included"
 url="https://pyscaffold.org/"
 arch=('any')
 license=('MIT')
-depends=('python' 'python-setuptools-scm')
+depends=('python' 'python-setuptools-scm' 'git')
 optdepends=('python-django: Scaffold Django projects.'
             'python-cookiecutter: Create custom scaffold templates.'
             'python-pre-commit: Use Git pre-commit hooks.'
