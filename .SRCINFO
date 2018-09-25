@@ -1,6 +1,6 @@
 pkgbase = octave-financial
 	pkgdesc = Financial manipulation, plotting functions and additional date manipulation tools.
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = http://octave.sourceforge.net/financial/
 	install = octave-financial.install
@@ -9,9 +9,9 @@ pkgbase = octave-financial
 	license = GPL3
 	depends = octave>=3.0.1
 	depends = octave-io>=1.0.18
-	noextract = financial-0.5.1.tar.gz
-	source = http://downloads.sourceforge.net/octave/financial-0.5.1.tar.gz
-	md5sums = ad133caebd829da9e63a5fcf73395951
+	noextract = financial-0.5.2.tar.gz
+	source = http://downloads.sourceforge.net/octave/financial-0.5.2.tar.gz
+	md5sums = b59c61d985deb67e044890c27241cd0c
 
 pkgname = octave-financial
 
