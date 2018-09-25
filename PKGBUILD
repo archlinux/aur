@@ -1,3 +1,4 @@
+# Maintainer: Andrew Anderson <aanderso@tcd.ie>
 pkgname=pantheon-desktop-git
 pkgver=20180925
 pkgrel=0
