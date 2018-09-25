@@ -1,7 +1,7 @@
 pkgbase = ory-hydra-bin
 	pkgdesc = ORY Hydra is a hardened, certified OAuth2 and OpenID Connect server optimized for low-latency, high throughput, and low resource consumption.
 	pkgver = 1.0.0_beta.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ory.sh
 	arch = x86_64
 	license = Apache

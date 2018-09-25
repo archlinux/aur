@@ -3,7 +3,7 @@
 _pkgname='ory-hydra'
 pkgname="${_pkgname}-bin"
 pkgver=1.0.0_beta.9
-pkgrel=1
+pkgrel=2
 pkgdesc="ORY Hydra is a hardened, certified OAuth2 and OpenID Connect server optimized for low-latency, high throughput, and low resource consumption."
 arch=('x86_64')
 url="https://ory.sh"
@@ -14,6 +14,6 @@ source=("https://github.com/ory/hydra/releases/download/v${pkgver//_/-}/hydra-li
 sha256sums=('140cc51bd2ef1d41469e5c75d7062daae5558f362d2ffc41e7e43375e2a18085')
 
 package() {
-    mv "${srcdir}/hydra-linux-amd64" "${srcdir}/${_pkgname}"
-    install -m755 -D "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+    mv "${srcdir}/hydra-linux-amd64" "${srcdir}/hydra"
+    install -m755 -D "${srcdir}/hydra" "${pkgdir}/usr/bin/hydra"
 }
