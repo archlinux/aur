@@ -1,8 +1,8 @@
 pkgbase = sqlops
-	pkgdesc = SQL Operations Studio is a data management tool that enables you to work with SQL Server, Azure SQL DB and SQL DW from Windows, macOS and Linux.
-	pkgver = 0.32.9
+	pkgdesc = Azure Data Studio is a data management tool that enables you to work with SQL Server, Azure SQL DB and SQL DW (formerly SQL Operations Studio).
+	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/Microsoft/sqlopsstudio
+	url = https://github.com/Microsoft/azuredatastudio
 	arch = x86_64
 	license = custom: microsoft
 	makedepends = sed
@@ -23,10 +23,10 @@ pkgbase = sqlops
 	depends = curl
 	optdepends = krb5: Windows authentication support
 	options = staticlibs
-	source = https://github.com/Microsoft/sqlopsstudio/releases/download/0.32.9/sqlops-linux-0.32.9.tar.gz
-	source = sqlops.desktop
-	sha256sums = 55e293062a3084c01e8031a9052d4208b80d32255be19e531d61941ca5da8697
-	sha256sums = b14a6335e172e0da67ba777b9cd8ae82c23fc8002dfce8c1f5b0f0388a42d7ee
+	source = https://github.com/Microsoft/azuredatastudio/releases/download/1.0.0/azuredatastudio-linux-1.0.0.tar.gz
+	source = azuredatastudio.desktop
+	sha256sums = d5f1119abc16fa3f6dc50cd804251151a4052f5c8781bd734fe38da8b8007f4a
+	sha256sums = 42299d94a2b355c07a91f3c54bd79f6aa65c69dc1063689caad288be2d6c650b
 
 pkgname = sqlops
 

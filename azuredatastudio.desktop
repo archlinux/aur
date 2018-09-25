@@ -1,12 +1,12 @@
 [Desktop Entry]
-Name=SQL Operations Studio
+Name=Azure Data Studio
 Comment=Data Management Tool that enables you to work with SQL Server, Azure SQL DB and SQL DW from Windows, macOS and Linux.
 GenericName=Text Editor
 Exec=/usr/bin/{pkgname} --unity-launch %F
 Icon=/usr/share/{pkgname}/resources/app/resources/linux/code.png
 Type=Application
 StartupNotify=true
-StartupWMClass=sqlops
+StartupWMClass=azuredatastudio
 Categories=Utility;TextEditor;Development;IDE;
 MimeType=text/plain;inode/directory;
 Actions=new-empty-window;
