@@ -1,7 +1,7 @@
 googletest/
 pester/
 pkg/
-*.xz
+*.pkg.tar
 *.gz
 powershell/
 src/
