@@ -3,7 +3,7 @@
 pkgname=hqplayer-embedded
 _debpkgver=4.4.0-16_amd64
 pkgver=4.4.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Signalyst HQPlayer Embedded
  HQPlayer - the high-end upsampling multichannel software HD-audio player"
 arch=('x86_64')
@@ -13,7 +13,7 @@ install=$pkgname.install
 depends=('alsa-lib' 'glibc' 'flac' 'gcc-libs' 'libgmpris' 'glib2' 'rygel')
 source=("https://www.signalyst.eu/bins/hqplayerd/xenial/hqplayerd_$_debpkgver.deb" 'hqplayerd.service')
 sha256sums=('SKIP'
-'ba3ce43cda349ec5fee4049405554ec076ff56beef5ff575bf79b673ce0de7e4')
+'d96ffe8eeb94a09338cbe3efdfc91f42a116043b24302b113d3fe9cf7ab1a1a4')
 
 package() {
   bsdtar xf data.tar.xz -C "$srcdir"
