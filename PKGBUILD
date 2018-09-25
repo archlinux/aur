@@ -2,9 +2,9 @@
 
 pkgname=lmms-beta
 _basever=1.2.0
-_rc=rc6
+_rc=rc7
 pkgver=${_basever}_${_rc}
-pkgrel=3
+pkgrel=1
 pkgdesc='Beta version of the Linux MultiMedia Studio.'
 arch=('x86_64')
 url='https://lmms.io/'
