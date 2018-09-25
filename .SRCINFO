@@ -1,16 +1,16 @@
 pkgbase = dkopp
 	pkgdesc = A backup program using DVDs
-	pkgver = 7.0
+	pkgver = 7.1
 	pkgrel = 1
-	url = http://www.kornelix.com/dkopp
+	url = https://kornelix.net/dkopp/dkopp.html
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = gtk3
 	depends = xdg-utils
 	options = !emptydirs
-	source = http://www.kornelix.net/downloads/tarballs/dkopp-7.0.tar.gz
-	sha256sums = c3ccb853676f3fc7858522e63321b629b1207f3219018684d8f6a8e626379d30
+	source = http://www.kornelix.net/downloads/tarballs/dkopp-7.1.tar.gz
+	sha256sums = 225e96cedf26459247e03228e3e3bfbccb9cdefd2f31c4652df0b4f8de6c3b5b
 
 pkgname = dkopp
 
