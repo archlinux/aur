@@ -1,7 +1,7 @@
-From cfdde9962386c34c3f2bfe902aa2a522b0530dba Mon Sep 17 00:00:00 2001
+From c4f29e97fd87f1f6790708d21247dd6c333167c9 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Tue, 7 Feb 2017 18:25:28 +0100
-Subject: [PATCH 30/34] Prevent qmake from messing static lib dependencies
+Subject: [PATCH 30/33] Prevent qmake from messing static lib dependencies
 
 In particular, it messes resolving cyclic dependency between
 static freetype2 and harfbuzz
@@ -25,7 +25,7 @@ index 894020d2bd..5f57d6f5cb 100644
      int libidx = 0, fwidx = 0;
      for (const ProString &dlib : project->values("QMAKE_DEFAULT_LIBDIRS"))
 diff --git a/qmake/generators/win32/winmakefile.cpp b/qmake/generators/win32/winmakefile.cpp
-index 2e6d5d94a9..a8320bae09 100644
+index cd64cb0c4f..c63d8b5754 100644
 --- a/qmake/generators/win32/winmakefile.cpp
 +++ b/qmake/generators/win32/winmakefile.cpp
 @@ -87,6 +87,9 @@ Win32MakefileGenerator::findLibraries(bool linkPrl, bool mergeLflags)
@@ -39,5 +39,5 @@ index 2e6d5d94a9..a8320bae09 100644
    static const char * const lflags[] = { "QMAKE_LIBS", "QMAKE_LIBS_PRIVATE", 0 };
    for (int i = 0; lflags[i]; i++) {
 -- 
-2.18.0
+2.19.0
 

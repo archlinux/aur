@@ -1,7 +1,7 @@
-From d3a0f355335aa086e2663d634f2f41766f1bcdd6 Mon Sep 17 00:00:00 2001
+From 75c9cbfab1967e472ced8730e561b062a30c4d9d Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:26:18 +0200
-Subject: [PATCH 20/34] Use *.dll.a as import lib extension
+Subject: [PATCH 20/33] Use *.dll.a as import lib extension
 
 The variables used here are provided by
 mingw-w64 specific mkspec
@@ -27,7 +27,7 @@ index e67917cc96..2a94964b49 100644
      } else {
          CMAKE_WINMAIN_FILE_LOCATION_DEBUG = qtmain$${QT_LIBINFIX}d.lib
 diff --git a/qmake/generators/win32/winmakefile.cpp b/qmake/generators/win32/winmakefile.cpp
-index 737f3abc3a..2e6d5d94a9 100644
+index dec0931bd4..cd64cb0c4f 100644
 --- a/qmake/generators/win32/winmakefile.cpp
 +++ b/qmake/generators/win32/winmakefile.cpp
 @@ -80,10 +80,14 @@ Win32MakefileGenerator::parseLibFlag(const ProString &flag, ProString *arg)
@@ -64,5 +64,5 @@ index 737f3abc3a..2e6d5d94a9 100644
                  + project->first("QMAKE_EXTENSION_SHLIB"));
          project->values("TARGET").first() = project->first("QMAKE_PREFIX_SHLIB") + project->first("TARGET");
 -- 
-2.18.0
+2.19.0
 
