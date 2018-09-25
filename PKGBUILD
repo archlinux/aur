@@ -2,7 +2,7 @@
 # Author: Vladimir Yakovlev <desktop-app@protonmail.ch>
 pkgname=email-securely-app-bin
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial desktop app for several E2E encrypted email providers"
 arch=('x86_64')
 url="https://github.com/vladimiry/email-securely-app"
