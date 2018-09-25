@@ -13,7 +13,7 @@ pkgname=strongswan
 pkgver=5.7.0
 pkgrel=1
 pkgdesc="open source IPsec implementation"
-url='http://www.strongswan.org'
+url='https://www.strongswan.org'
 license=("GPL2")
 arch=('x86_64')
 makedepends=('curl' 'gmp' 'iproute2' 'openssl' 'sqlite' 'libcap' 'libsystemd'
@@ -40,8 +40,7 @@ revocation.conf,sha1.conf,sha2.conf,sha3.conf,socket-default.conf,sql.conf,sqlit
 vici.conf,x509.conf,xauth-eap.conf,xauth-generic.conf,xcbc.conf,unity.conf,curve25519.conf,bypass-lan.conf}
 )
 
-source=("https://download.strongswan.org/strongswan-${pkgver}.tar.bz2"
-    "https://download.strongswan.org/strongswan-${pkgver}.tar.bz2.sig"
+source=("https://download.strongswan.org/strongswan-${pkgver}.tar.bz2{,.sig}"
     'configure_ac.patch'
     )
 
@@ -72,21 +71,56 @@ build() {
         --enable-integrity-test \
         --enable-sqlite \
         --enable-pkcs11 \
-        --enable-openssl --enable-curl \
-        --enable-sql --enable-attr-sql \
-        --enable-farp --enable-dhcp \
-        --enable-eap-sim --enable-eap-sim-file --enable-eap-simaka-pseudonym \
-        --enable-eap-simaka-reauth --enable-eap-identity --enable-eap-md5 \
-        --enable-eap-gtc --enable-eap-aka --enable-eap-aka-3gpp2 \
-        --enable-eap-mschapv2 --enable-eap-radius --enable-xauth-eap \
-        --enable-ha --enable-vici --enable-swanctl --enable-systemd --enable-ext-auth \
-        --enable-mysql --enable-ldap --enable-cmd --enable-forecast --enable-connmark \
-        --enable-aesni --enable-eap-ttls --enable-radattr --enable-xauth-pam --enable-xauth-noauth \
-        --enable-eap-dynamic --enable-eap-peap --enable-eap-tls --enable-chapoly --enable-unity \
-        --with-capabilities=libcap --enable-newhope --enable-ntru --enable-mgf1 --enable-sha3 \
-        --enable-bliss --enable-dnscert \
-        --enable-nm --enable-agent --enable-bypass-lan \
-        --enable-ruby-gems --enable-python-eggs
+        --enable-openssl \
+        --enable-curl \
+        --enable-sql \
+        --enable-attr-sql \
+        --enable-farp \
+        --enable-dhcp \
+        --enable-eap-sim \
+        --enable-eap-sim-file \
+        --enable-eap-simaka-pseudonym \
+        --enable-eap-simaka-reauth \
+        --enable-eap-identity \
+        --enable-eap-md5 \
+        --enable-eap-gtc \
+        --enable-eap-aka \
+        --enable-eap-aka-3gpp2 \
+        --enable-eap-mschapv2 \
+        --enable-eap-radius \
+        --enable-xauth-eap \
+        --enable-ha \
+        --enable-vici \
+        --enable-swanctl \
+        --enable-systemd \
+        --enable-ext-auth \
+        --enable-mysql \
+        --enable-ldap \
+        --enable-cmd \
+        --enable-forecast \
+        --enable-connmark \
+        --enable-aesni \
+        --enable-eap-ttls \
+        --enable-radattr \
+        --enable-xauth-pam \
+        --enable-xauth-noauth \
+        --enable-eap-dynamic \
+        --enable-eap-peap \
+        --enable-eap-tls \
+        --enable-chapoly \
+        --enable-unity \
+        --with-capabilities=libcap \
+        --enable-newhope \
+        --enable-ntru \
+        --enable-mgf1 \
+        --enable-sha3 \
+        --enable-bliss \
+        --enable-dnscert \
+        --enable-nm \
+        --enable-agent \
+        --enable-bypass-lan \
+        --enable-ruby-gems \
+        --enable-python-eggs
   make
 }
 
