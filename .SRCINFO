@@ -1,0 +1,12 @@
+pkgbase = macos11-gtk-theme
+	pkgdesc = macOS11 GTK Theme
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://www.opendesktop.org/p/1220826/
+	arch = any
+	license = GPL
+	source = https://dl.opendesktop.org/api/files/downloadfile/id/1535246761/s/$_s/t/$_t/macos11-gtk-theme-2.1.zip
+	md5sums = 1061de359ad39d731455fe29864da0c3
+
+pkgname = macos11-gtk-theme
+
