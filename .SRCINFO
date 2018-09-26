@@ -9,11 +9,11 @@ pkgbase = ros-melodic-image-common
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
 	depends = ros-melodic-camera-info-manager
-	depends = ros-melodic-polled-camera
 	depends = ros-melodic-camera-calibration-parsers
+	depends = ros-melodic-polled-camera
 	depends = ros-melodic-image-transport
-	source = ros-melodic-image-common::git+https://github.com/ros-gbp/image_common-release.git
-	sha256sums = SKIP
+	source = ros-melodic-image-common-1.11.13-0.tar.gz::https://github.com/ros-gbp/image_common-release/archive/release/melodic/image_common/1.11.13-0.tar.gz
+	sha256sums = 987bdb08a0bf935d3c657331b79564a3e272f6c4538e5be5d893ab6a13865ede
 
 pkgname = ros-melodic-image-common
 
