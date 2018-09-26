@@ -5,8 +5,8 @@
 
 pkgname=home-assistant
 pkgdesc='Open-source home automation platform running on Python 3'
-pkgver=0.77.3
-pkgrel=2
+pkgver=0.78.3
+pkgrel=1
 url="https://home-assistant.io/"
 license=('APACHE')
 arch=('any')
@@ -14,11 +14,11 @@ replaces=('python-home-assistant')
 makedepends=('python-setuptools')
 # NB: this package will install additional python packages in /var/lib/hass/lib depending on components present in the configuration files.
 depends=('python'
-         'python-aiohttp>=3.4.0'
+         'python-aiohttp>=3.4.4'
          'python-aiohttp-cors>=0.5.3'
          'python-astral>=1.6.1'
          'python-async-timeout>=3.0.0'
-         'python-attrs>=18.1.0'
+         'python-attrs>=18.2.0'
          'python-bcrypt>=3.1.4'
          'python-certifi>=2018.04.16'
          'python-chardet>=3.0.4'
@@ -30,9 +30,10 @@ depends=('python'
          'python-pip>=8.0.3'
          'python-pytz>=2018.04'
          'python-requests>=2.19.1'
-         'python-sqlalchemy>=1.2.8'
+         'python-sqlalchemy>=1.2.11'
          'python-vincenty'
          'python-voluptuous>=0.11.5'
+         'python-voluptuous-serialize>=2.0.0'
          'python-webcolors'
          'python-yaml'
          'python-yarl'
@@ -44,7 +45,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/a
         "home-assistant.sysusers"
         "home-assistant-tmpfile.conf"
         "hass.install")
-sha512sums=('40c3046f88101e52e2ea3fe4b258833b5974227cf92b537d595e537dfe0030904ef19826d9f783d4c2c6e8b10bfa9ced97c006baeef28d31409c4c756e957657'
+sha512sums=('50d6ffbc5e369b90445c23cd49934353bfe964adf2da936c0ac44eb1918e73183c68aaa6ed6842aa2cc4222574a8908ce371268a681b29ed7ca53e0978b1accd'
             'fe96bd3df3ba666fd9f127c466d1dd1dd7314db2e57826a2b319c8a0bfad7aedeac398e748f93c6ecd9c2247ebbae196b8b0e7263b8681e2b7aeab6a8bfeab80'
             '100665ac35370c3ccec65d73521568de21cebf9e46af364124778861c94e338e32ad9abb675d3917f97d351dd7867e3ab2e80c26616330ae7cf0d9dc3f13369b'
             '8babcf544c97ec5ad785014f0b0d5dca556a2f5157dadcbe83d49d4669b74f6349e274810ec9a028fcec208c6c8fbbe6b3899d2933b56163b9e506570879a3ad'
