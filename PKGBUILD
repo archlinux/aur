@@ -2,8 +2,9 @@
 # Contributor: TZ86
 
 pkgname=vivaldi
+_rpmversion=2.0.1309.29-2
 pkgver=2.0.1309.29
-pkgrel=2
+pkgrel=3
 pkgdesc='An advanced browser made with the power user in mind.'
 url="https://vivaldi.com"
 options=(!strip !zipman)
@@ -18,14 +19,14 @@ optdepends=(
     'vivaldi-widevine: Widevine DRM Plugin'
     'libnotify: native notifications'
 )
-source_x86_64=("https://downloads.vivaldi.com/stable/vivaldi-stable-${pkgver}-2.x86_64.rpm")
-sha512sums_x86_64=('02917d8d23e0673b7faeb90c039179b6343b46983feb49963d7038104a63ee6c7ecde22ba9104fe86f00b82a476152808a176fda7d08574d17510871bc19abf5')
+source=("https://downloads.vivaldi.com/stable/vivaldi-stable-${_rpmversion}.x86_64.rpm")
+sha512sums=('02917d8d23e0673b7faeb90c039179b6343b46983feb49963d7038104a63ee6c7ecde22ba9104fe86f00b82a476152808a176fda7d08574d17510871bc19abf5')
 
 package() {
     cp -a {opt,usr} "$pkgdir"
 
     # suid sandbox
-    chmod 4755 "$pkgdir/opt/vivaldi/vivaldi-sandbox"
+    chmod 4755 "$pkgdir/opt/$pkgname/vivaldi-sandbox"
 
     # make /usr/bin/vivaldi-stable available
     binf="$pkgdir/usr/bin/vivaldi-stable"
@@ -36,8 +37,8 @@ package() {
 
     # install icons
     for res in 16 22 24 32 48 64 128 256; do
-        install -Dm644 "$pkgdir/opt/vivaldi/product_logo_${res}.png" \
-            "$pkgdir/usr/share/icons/hicolor/${res}x${res}/apps/vivaldi.png"
+        install -Dm644 "$pkgdir/opt/$pkgname/product_logo_${res}.png" \
+            "$pkgdir/usr/share/icons/hicolor/${res}x${res}/apps/$pkgname.png"
     done
 
     # license
