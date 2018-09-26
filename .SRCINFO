@@ -12,8 +12,8 @@ pkgbase = ros-melodic-xmlrpcpp
 	makedepends = ros-melodic-rostime
 	depends = ros-melodic-cpp-common
 	depends = ros-melodic-rostime
-	source = ros-melodic-xmlrpcpp::git+https://github.com/ros-gbp/ros_comm-release.git
-	sha256sums = SKIP
+	source = ros-melodic-xmlrpcpp-1.14.3-0.tar.gz::https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/xmlrpcpp/1.14.3-0.tar.gz
+	sha256sums = d141854dd4371212f6606bfff6f7a44eb1a0292bbcf64cf29f4fed0c0741bc76
 
 pkgname = ros-melodic-xmlrpcpp
 
