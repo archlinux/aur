@@ -7,13 +7,13 @@ pkgbase = ros-melodic-visualization-marker-tutorials
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	makedepends = ros-melodic-roscpp
 	makedepends = ros-melodic-visualization-msgs
-	depends = ros-melodic-roscpp
+	makedepends = ros-melodic-roscpp
+	makedepends = ros-melodic-catkin
 	depends = ros-melodic-visualization-msgs
-	source = ros-melodic-visualization-marker-tutorials::git+https://github.com/ros-gbp/visualization_tutorials-release.git
-	sha256sums = SKIP
+	depends = ros-melodic-roscpp
+	source = ros-melodic-visualization-marker-tutorials-0.10.3-0.tar.gz::https://github.com/ros-gbp/visualization_tutorials-release/archive/release/melodic/visualization_marker_tutorials/0.10.3-0.tar.gz
+	sha256sums = 2e5bc745ab400757dee1666b765a9aef01a4d9b5f062d837827aee336bdbb68d
 
 pkgname = ros-melodic-visualization-marker-tutorials
 
