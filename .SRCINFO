@@ -8,17 +8,17 @@ pkgbase = ros-melodic-rqt-bag
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
-	depends = ros-melodic-rqt-gui-py
-	depends = ros-melodic-python-qt-binding
-	depends = ros-melodic-rospy
-	depends = ros-melodic-rosbag
 	depends = ros-melodic-rosgraph-msgs
 	depends = ros-melodic-roslib
-	depends = ros-melodic-rqt-gui
+	depends = ros-melodic-rosbag
 	depends = ros-melodic-rosnode
+	depends = ros-melodic-rqt-gui-py
+	depends = ros-melodic-rqt-gui
+	depends = ros-melodic-python-qt-binding
+	depends = ros-melodic-rospy
 	depends = python-rospkg
-	source = ros-melodic-rqt-bag::git+https://github.com/ros-gbp/rqt_bag-release.git
-	sha256sums = SKIP
+	source = ros-melodic-rqt-bag-0.4.12-0.tar.gz::https://github.com/ros-gbp/rqt_bag-release/archive/release/melodic/rqt_bag/0.4.12-0.tar.gz
+	sha256sums = 53a48d67f5cedf54b58b26b33350958952bac0c27f38160918c6ba0f4aa5014f
 
 pkgname = ros-melodic-rqt-bag
 
