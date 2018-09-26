@@ -10,8 +10,8 @@ pkgbase = ros-melodic-rosparam
 	makedepends = ros-melodic-catkin
 	depends = ros-melodic-rosgraph
 	depends = python-yaml
-	source = ros-melodic-rosparam::git+https://github.com/ros-gbp/ros_comm-release.git
-	sha256sums = SKIP
+	source = ros-melodic-rosparam-1.14.3-0.tar.gz::https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rosparam/1.14.3-0.tar.gz
+	sha256sums = 343802ed53b75408f174d17ef9ff67a20856b3bc126f85941a3f7cd1882657ce
 
 pkgname = ros-melodic-rosparam
 
