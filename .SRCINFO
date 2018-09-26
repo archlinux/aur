@@ -7,13 +7,13 @@ pkgbase = ros-melodic-rosconsole-bridge
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
 	makedepends = ros-melodic-rosconsole
+	makedepends = ros-melodic-catkin
 	makedepends = console-bridge
 	depends = ros-melodic-rosconsole
 	depends = console-bridge
-	source = ros-melodic-rosconsole-bridge::git+https://github.com/ros-gbp/rosconsole_bridge-release.git
-	sha256sums = SKIP
+	source = ros-melodic-rosconsole-bridge-0.5.2-0.tar.gz::https://github.com/ros-gbp/rosconsole_bridge-release/archive/release/melodic/rosconsole_bridge/0.5.2-0.tar.gz
+	sha256sums = accc196fd9e011032d1fbf8ceba59d779af0f74f7a8dfd92b850050c5b6d283c
 
 pkgname = ros-melodic-rosconsole-bridge
 
