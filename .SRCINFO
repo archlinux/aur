@@ -8,13 +8,13 @@ pkgbase = ros-melodic-rqt-service-caller
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
-	depends = ros-melodic-rqt-gui
-	depends = ros-melodic-rosservice
 	depends = ros-melodic-rqt-py-common
+	depends = ros-melodic-rosservice
 	depends = ros-melodic-rqt-gui-py
+	depends = ros-melodic-rqt-gui
 	depends = python-rospkg
-	source = ros-melodic-rqt-service-caller::git+https://github.com/ros-gbp/rqt_service_caller-release.git
-	sha256sums = SKIP
+	source = ros-melodic-rqt-service-caller-0.4.8-0.tar.gz::https://github.com/ros-gbp/rqt_service_caller-release/archive/release/melodic/rqt_service_caller/0.4.8-0.tar.gz
+	sha256sums = 574aa580c11737fc800b058f7cac63a7a7b75d144525d04e89c538716418c1b3
 
 pkgname = ros-melodic-rqt-service-caller
 
