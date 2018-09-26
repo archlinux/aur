@@ -9,16 +9,16 @@ pkgbase = ros-melodic-smach-ros
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-rostest
 	makedepends = ros-melodic-catkin
-	depends = ros-melodic-actionlib-msgs
-	depends = ros-melodic-std-srvs
 	depends = ros-melodic-rostopic
 	depends = ros-melodic-smach-msgs
-	depends = ros-melodic-rospy
-	depends = ros-melodic-actionlib
-	depends = ros-melodic-smach
 	depends = ros-melodic-std-msgs
-	source = ros-melodic-smach-ros::git+https://github.com/ros-gbp/executive_smach-release.git
-	sha256sums = SKIP
+	depends = ros-melodic-actionlib-msgs
+	depends = ros-melodic-smach
+	depends = ros-melodic-std-srvs
+	depends = ros-melodic-actionlib
+	depends = ros-melodic-rospy
+	source = ros-melodic-smach-ros-2.0.1-0.tar.gz::https://github.com/ros-gbp/executive_smach-release/archive/release/melodic/smach_ros/2.0.1-0.tar.gz
+	sha256sums = 2a6062c9bb60b5cea300784b67e7c977b1cd42bc7117c0d5bea7122eb04d37ed
 
 pkgname = ros-melodic-smach-ros
 
