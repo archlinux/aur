@@ -9,20 +9,20 @@ pkgbase = ros-melodic-rosconsole
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-cpp-common
 	makedepends = ros-melodic-catkin
-	makedepends = ros-melodic-rostime
 	makedepends = ros-melodic-rosunit
-	makedepends = boost
+	makedepends = ros-melodic-rostime
 	makedepends = apr
-	makedepends = log4cxx
 	makedepends = apr-util
+	makedepends = boost
+	makedepends = log4cxx
 	depends = ros-melodic-cpp-common
 	depends = ros-melodic-rosbuild
 	depends = ros-melodic-rostime
 	depends = apr
-	depends = log4cxx
 	depends = apr-util
-	source = ros-melodic-rosconsole::git+https://github.com/ros-gbp/rosconsole-release.git
-	sha256sums = SKIP
+	depends = log4cxx
+	source = ros-melodic-rosconsole-1.13.7-0.tar.gz::https://github.com/ros-gbp/rosconsole-release/archive/release/melodic/rosconsole/1.13.7-0.tar.gz
+	sha256sums = 7e20cf098bb2877ad391638bd729d28612249e02abc7757ee2f4d1c3239e572e
 
 pkgname = ros-melodic-rosconsole
 
