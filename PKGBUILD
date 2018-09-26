@@ -8,6 +8,7 @@ url="https://github.com/cylgom/ly"
 license=('custom:WTFPL')
 makedepends=('git')
 depends=('pam' 'xorg-xinit' 'xorg-xauth')
+conflicts=('ly')
 source=('git+https://github.com/cylgom/ly.git'
 	'git+https://github.com/cylgom/termbox-next.git'
 	'git+https://github.com/benhoyt/inih.git')

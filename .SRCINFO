@@ -10,6 +10,7 @@ pkgbase = ly-git
 	depends = pam
 	depends = xorg-xinit
 	depends = xorg-xauth
+	conflicts = ly
 	source = git+https://github.com/cylgom/ly.git
 	source = git+https://github.com/cylgom/termbox-next.git
 	source = git+https://github.com/benhoyt/inih.git
