@@ -1,6 +1,6 @@
 pkgbase = unity-editor-lts-doc
 	pkgdesc = Unity User Manual and Scripting API Reference.
-	pkgver = 2017.4.10f1
+	pkgver = 2017.4.11f1
 	pkgrel = 1
 	url = https://unity3d.com/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = unity-editor-lts-doc
 	makedepends = cpio
 	depends = unity-editor-lts
 	options = !strip
-	source = https://download.unity3d.com/download_unity/f2cce2a5991f/MacDocumentationInstaller/Documentation.pkg
-	md5sums = 1073f26e599f1868118de94d409c0480
+	source = https://download.unity3d.com/download_unity/8c6b8ef6d111/MacDocumentationInstaller/Documentation.pkg
+	md5sums = 91d9ba555dd75c5d506e2b76e641c389
 
 pkgname = unity-editor-lts-doc
 
