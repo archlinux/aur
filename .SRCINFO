@@ -7,15 +7,15 @@ pkgbase = ros-melodic-roslib
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
 	makedepends = ros-melodic-rospack
+	makedepends = ros-melodic-catkin
 	makedepends = boost
-	depends = ros-melodic-catkin
 	depends = ros-melodic-ros-environment
 	depends = ros-melodic-rospack
+	depends = ros-melodic-catkin
 	depends = python-rospkg
-	source = ros-melodic-roslib::git+https://github.com/ros-gbp/ros-release.git
-	sha256sums = SKIP
+	source = ros-melodic-roslib-1.14.4-0.tar.gz::https://github.com/ros-gbp/ros-release/archive/release/melodic/roslib/1.14.4-0.tar.gz
+	sha256sums = 4514a81bab8572abc1ae0a6e03d70c990f65602a7547916c2cdb81615e06ac95
 
 pkgname = ros-melodic-roslib
 
