@@ -5,36 +5,22 @@ pkgbase=marble-git
 pkgname=('marble-git'
          'libastro-git'
          'marble-data-git')
-pkgver=2.2.20.r12977.d810cfdad
+pkgver=18.07.80.10.g4476573c2
 pkgrel=1
 pkgdesc="Desktop Globe. (GIT version)"
 arch=('i686' 'x86_64')
 url='https://www.kde.org/applications/system/marble'
 license=('GPL')
-makedepends=('git'
-             'gpsd'
-             'quazip'
-             'shapelib'
-             'libwlocate'
-             'phonon-qt5'
-             'extra-cmake-modules'
-             'krunner'
-             'python'
-             'qt5-webkit'
-             'qt5-tools'
-             'qt5-serialport'
-             'kparts'
-             'knewstuff'
-             'opencv'
-             'hicolor-icon-theme'
-             )
+makedepends=('git' 'gpsd' 'quazip' 'shapelib' 'libwlocate' 'phonon-qt5'
+	     'extra-cmake-modules' 'krunner' 'python' 'qt5-webkit'
+	     'qt5-tools' 'qt5-serialport' 'kparts' 'knewstuff' 'opencv'
+	     'hicolor-icon-theme')
 source=('git://anongit.kde.org/marble.git')
 sha256sums=('SKIP')
 
 pkgver() {
   cd marble
-  _ver="$(cat src/apps/marble-ui/ControlView.cpp | grep -m1 'return' | cut -d '"' -f2 | cut -d ' ' -f1)"
-  echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  git describe --tags | cut -c2- |tr - .
 }
 
 prepare() {
@@ -67,9 +53,9 @@ package_libastro-git() {
   pkgdesc='Marble astronomy library'
   depends=('gcc-libs')
   conflicts=('kdeedu-marble<15.07'
-             'marble-qt'
-             'libastro'
-             )
+ 'marble-qt'
+ 'libastro'
+ )
   provides=('libastro')
 
   make -C build/src/lib/astro DESTDIR="${pkgdir}" install
@@ -85,19 +71,16 @@ package_marble-git() {
            'quazip'
            )
   optdepends=('gpsd: position information via gpsd'
-              'shapelib: reading and displaying .shp files'
-              'qt5-serialport: reading from serial port in APRS plugin'
-              'libwlocate: Position information based on neighboring WLAN networks'
-              'krunner: Krunner plugin for marble'
-              )
+  'shapelib: reading and displaying .shp files'
+  'qt5-serialport: reading from serial port in APRS plugin'
+  'libwlocate: Position information based on neighboring WLAN networks'
+  'krunner: Krunner plugin for marble'
+  )
   conflicts=('kdeedu-marble<15.04.3-3'
-             'marble-qt'
-             'marble'
-             )
+ 'marble-qt'
+ 'marble'
+ )
   provides=('marble')
-  replaces=('kdeedu-marble'
-            'marble-qt<15.07'
-            )
   groups=('kde-applications'
           'kdeedu'
           )
@@ -118,11 +101,19 @@ package_marble-data-git() {
   arch=('any')
   depends=('hicolor-icon-theme')
   conflicts=('kdeedu-marble<15.07'
-             'marble<15.07.80-3'
-             'marble-qt'
-             'marble-data'
-             )
+ 'marble<15.07.80-3'
+ 'marble-qt'
+ 'marble-data'
+ )
   provides=('marble-data')
 
   make -C build/data DESTDIR="${pkgdir}" install
+}
+
+package_marble-common-git() {
+  pkgdesc="metapackage providing 'marble-common'-dependency"
+  arch=('any')
+  depends=('libastro-git' 'marble-git' 'marble-data-git')
+  conflicts=("marble-common")
+  provides=("marble-common=${pkgver}")
 }

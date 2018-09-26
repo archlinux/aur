@@ -1,6 +1,6 @@
 pkgbase = marble-git
 	pkgdesc = Desktop Globe. (GIT version)
-	pkgver = 2.2.20.r12977.d810cfdad
+	pkgver = 18.07.80.10.g4476573c2
 	pkgrel = 1
 	url = https://www.kde.org/applications/system/marble
 	arch = i686
@@ -44,8 +44,6 @@ pkgname = marble-git
 	conflicts = kdeedu-marble<15.04.3-3
 	conflicts = marble-qt
 	conflicts = marble
-	replaces = kdeedu-marble
-	replaces = marble-qt<15.07
 
 pkgname = libastro-git
 	pkgdesc = Marble astronomy library
