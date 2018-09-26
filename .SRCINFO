@@ -8,8 +8,8 @@ pkgbase = ros-melodic-rosboost-cfg
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
-	source = ros-melodic-rosboost-cfg::git+https://github.com/ros-gbp/ros-release.git
-	sha256sums = SKIP
+	source = ros-melodic-rosboost-cfg-1.14.4-0.tar.gz::https://github.com/ros-gbp/ros-release/archive/release/melodic/rosboost_cfg/1.14.4-0.tar.gz
+	sha256sums = 48a4149e4ee43077f5b4c5f1d4d4acc3055d1507ccf7e3fe7399cc228fccfc7b
 
 pkgname = ros-melodic-rosboost-cfg
 
