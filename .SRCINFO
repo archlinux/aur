@@ -8,17 +8,17 @@ pkgbase = ros-melodic-rqt-robot-dashboard
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
-	depends = ros-melodic-diagnostic-msgs
+	depends = ros-melodic-rqt-nav-view
 	depends = ros-melodic-rqt-gui-py
+	depends = ros-melodic-rqt-console
+	depends = ros-melodic-diagnostic-msgs
+	depends = ros-melodic-qt-gui
+	depends = ros-melodic-rqt-gui
 	depends = ros-melodic-rqt-robot-monitor
 	depends = ros-melodic-python-qt-binding
-	depends = ros-melodic-rqt-nav-view
 	depends = ros-melodic-rospy
-	depends = ros-melodic-rqt-gui
-	depends = ros-melodic-rqt-console
-	depends = ros-melodic-qt-gui
-	source = ros-melodic-rqt-robot-dashboard::git+https://github.com/ros-gbp/rqt_robot_dashboard-release.git
-	sha256sums = SKIP
+	source = ros-melodic-rqt-robot-dashboard-0.5.7-0.tar.gz::https://github.com/ros-gbp/rqt_robot_dashboard-release/archive/release/melodic/rqt_robot_dashboard/0.5.7-0.tar.gz
+	sha256sums = 19eb8bffb5697ef7e7d7bc23cf7cda4e3446e6415a40e53987095b85bb9b8568
 
 pkgname = ros-melodic-rqt-robot-dashboard
 
