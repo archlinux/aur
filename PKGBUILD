@@ -2,7 +2,7 @@
 # Maintainer: James Zhu <jameszhu@berkeley.edu>
 
 pkgname=python-black
-pkgver=18.6b4
+pkgver=18.9b0
 pkgrel=1
 pkgdesc='Uncompromising Python code formatter'
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python' 'python-appdirs' 'python-attrs' 'python-click' 'python-toml')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/b/black/black-$pkgver.tar.gz")
-sha512sums=('6bacac0de9c8b596b5570d454ace89b1e7a27f6adb8b731e00fe605102067d04ad80db73ed87a8198a219c4ec8a2b2681d088d0b2da71437b817dec13bcaa23e')
+sha512sums=('80f94867220f7511dfc72aa8886586530d33187e10c57a7721cb0c97e906941ef811811ef0b2afa77d5454ce00114f3724063a890c41af4d7b68ec59dee29a48')
 
 build() {
   cd black-$pkgver
