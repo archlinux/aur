@@ -15,6 +15,7 @@ Ref_Data* ref_data_init_length(size_t length) {
         memset(pRef_Data->names[i], '\0', NAME_MAX_LENGTH);
     }
     pRef_Data->length = length;
+    pRef_Data->time_loaded = EMPTY;
     return pRef_Data;
 }
 
@@ -455,25 +456,45 @@ void info_array_store_totals(Info_Array* pInfo_Array) {
                                               pInfo_Array->totals->total_spent;
 }
 
-Ref_Data* api_iex_store_ref_data(void) {
+Ref_Data* api_iex_get_ref_data(void) {
     String* pString = api_curl_url("https://api.iextrading.com/1.0/ref-data/symbols");
     if (pString == NULL)
         return NULL;
 
-    Json* jobj = json_tokener_parse(pString->data), * idx;
+    Json* jobj = json_tokener_parse(pString->data);
     Ref_Data* pRef_Data = ref_data_init_length(json_object_array_length(jobj));
+    ref_data_store_json(pRef_Data, jobj);
+
+    json_object_put(jobj);
+    string_destroy(&pString);
+    return pRef_Data;
+}
+
+void ref_data_store_json(Ref_Data* pRef_Data, const Json* jobj) {
+    Json* idx;
     for (size_t i = 0; i < pRef_Data->length; i++) {
         idx = json_object_array_get_idx(jobj, i);
         strcpy(pRef_Data->symbols[i], json_object_get_string(json_object_object_get(idx,
-                "symbol")));
+                                                                                    "symbol")));
         strncpy(pRef_Data->names[i], json_object_get_string(json_object_object_get(idx, "name")),
                 NAME_MAX_LENGTH -1);
         pRef_Data->names[i][NAME_MAX_LENGTH - 1] = '\0';
     }
 
-    json_object_put(jobj);
-    string_destroy(&pString);
-    return pRef_Data;
+    idx = json_object_array_get_idx(jobj, 1);
+
+    // Date format: yyyy-mm-dd
+    const char* date = json_object_get_string(json_object_object_get(idx, "date"));
+    char year[5] = {0}, month[3] = {0}, day[3] = {0};
+    strncpy(year, date, 4);
+    strncpy(month, &date[5], 2);
+    strncpy(day, &date[8], 2);
+    struct tm time = {
+            .tm_year = atoi(year) - 1900,
+            .tm_mon = atoi(month) - 1,
+            .tm_mday = atoi(day)
+    };
+    pRef_Data->time_loaded = mktime(&time);
 }
 
 void info_array_store_endpoints_json(Info_Array* pInfo_Array, const Json* jobj) {

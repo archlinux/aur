@@ -38,8 +38,9 @@ typedef enum data_level {
 
 typedef struct ref_data {
     char** symbols;     // Sorted
-    char** names;       // Sorted
+    char** names;
     size_t length;
+    int64_t time_loaded;
 } Ref_Data;
 
 typedef struct news_article {
@@ -291,7 +292,9 @@ void info_array_store_totals(Info_Array* pInfo_Array);
  * Returns a pointer to an Info_Array containing a list of all iex listed securities.
  * @return Info_Array*
  */
-Ref_Data* api_iex_store_ref_data(void);
+Ref_Data* api_iex_get_ref_data(void);
+
+void ref_data_store_json(Ref_Data* pRef_Data, const Json* jobj);
 
 /**
  * Stores the data found in IEX formatted jobj in the Info_Array.

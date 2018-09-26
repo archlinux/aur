@@ -367,7 +367,7 @@ void on_search_entry_focus_in_event(GtkWidget* search_entry, GdkEvent* event) {
     if (app.iex_ref_data != NULL) // If ref data has already been loaded return
         return;
 
-    app.iex_ref_data = api_iex_store_ref_data();
+    app.iex_ref_data = api_iex_get_ref_data();
     GtkListStore* list_store = GTK_LIST_STORE(GET_OBJECT("search_entry_completion_store"));
     GtkTreeIter iter;
     for (size_t i = 0; i < app.iex_ref_data->length; i++) {
