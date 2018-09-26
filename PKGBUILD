@@ -1,5 +1,5 @@
-# Script generated with import_catkin_packages.py.
-# For more information: https://github.com/bchretien/arch-ros-stacks.
+# Script generated with import_catkin_packages.py
+# For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - rosservice contains the rosservice command-line tool for listing and querying ROS Services."
 url='http://ros.org/wiki/rosservice'
 
@@ -10,69 +10,54 @@ arch=('any')
 pkgrel=1
 license=('BSD')
 
-ros_makedepends=(
-	ros-melodic-catkin
-)
+ros_makedepends=(ros-melodic-catkin)
+makedepends=('cmake' 'ros-build-tools'
+  ${ros_makedepends[@]})
 
-makedepends=(
-	'cmake'
-	'ros-build-tools'
-	${ros_makedepends[@]}
-)
+ros_depends=(ros-melodic-rosgraph
+  ros-melodic-rosmsg
+  ros-melodic-genpy
+  ros-melodic-roslib
+  ros-melodic-rospy)
+depends=(${ros_depends[@]})
 
-ros_depends=(
-	ros-melodic-genpy
-	ros-melodic-rosgraph
-	ros-melodic-rospy
-	ros-melodic-roslib
-	ros-melodic-rosmsg
-)
+# Git version (e.g. for debugging)
+# _tag=release/melodic/rosservice/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
 
-depends=(
-	${ros_depends[@]}
-)
-
-_dir=${pkgname}
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm-release.git")
-sha256sums=('SKIP')
-
-prepare() {
-	cd ${srcdir}/${_dir}
-	git checkout upstream
-	_pkgname=$(echo ${pkgname} | sed 's/ros-lunar-//' | sed 's/-/_/g')
-
-	if [ -d ${_pkgname} ]; then
-		git subtree split -P ${_pkgname} --branch ${_pkgname}
-		git checkout ${_pkgname}
-	fi
-}
+# Tarball version (faster download)
+_dir="ros_comm-release-release-melodic-rosservice-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rosservice/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('3c702a38cbf823bf15ade07745f11dd6b19af38b936630dbadb3473aea130e36')
 
 build() {
-	# Use ROS environment variables.
-	source /usr/share/ros-build-tools/clear-ros-env.sh
-	[ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+  # Use ROS environment variables
+  source /usr/share/ros-build-tools/clear-ros-env.sh
+  [ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
 
-	# Create the build directory.
-	[ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-	cd ${srcdir}/build
+  # Create build directory
+  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
+  cd ${srcdir}/build
 
-	# Fix Python2/Python3 conflicts.
-	/usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
+  # Fix Python2/Python3 conflicts
+  /usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
 
-	# Build the project.
-	cmake ${srcdir}/${_dir} \
-		-DCMAKE_BUILD_TYPE=Release \
-		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
-		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
-		-DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-		-DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-		-DPYTHON_BASENAME=.cpython-37m \
-		-DSETUPTOOLS_DEB_LAYOUT=OFF
-	make
+  # Build project
+  cmake ${srcdir}/${_dir} \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCATKIN_BUILD_BINARY_PACKAGE=ON \
+        -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
+        -DPYTHON_EXECUTABLE=/usr/bin/python3 \
+        -DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
+        -DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
+        -DPYTHON_BASENAME=.cpython-37m \
+        -DSETUPTOOLS_DEB_LAYOUT=OFF
+  make
 }
 
 package() {
-	cd "${srcdir}/build"
-	make DESTDIR="${pkgdir}/" install
+  cd "${srcdir}/build"
+  make DESTDIR="${pkgdir}/" install
 }
