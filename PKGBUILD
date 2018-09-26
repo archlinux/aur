@@ -1,7 +1,7 @@
 # Maintainer: Doron Behar <doron.behar@gmail.com>
 
 pkgname=find3-server
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="Code indexing and search written in Go"
 arch=('x86_64' 'i686')
