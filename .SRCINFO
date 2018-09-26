@@ -7,11 +7,11 @@ pkgbase = ros-melodic-genlisp
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
 	makedepends = ros-melodic-genmsg
+	makedepends = ros-melodic-catkin
 	depends = ros-melodic-genmsg
-	source = ros-melodic-genlisp::git+https://github.com/ros-gbp/genlisp-release.git
-	sha256sums = SKIP
+	source = ros-melodic-genlisp-0.4.16-0.tar.gz::https://github.com/ros-gbp/genlisp-release/archive/release/melodic/genlisp/0.4.16-0.tar.gz
+	sha256sums = 0da61ebbb633656062ce030fc94b5931bf3cdf3b5cf896116895608a739a520a
 
 pkgname = ros-melodic-genlisp
 
