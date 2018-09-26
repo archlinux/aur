@@ -1,6 +1,6 @@
 pkgbase = electra-desktop-bin
 	pkgdesc = Cross-platform Desktop Wallet for Electra blockchain.
-	pkgver = 1.1.2
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://electraproject.org/
 	install = electra-desktop-bin.install
@@ -14,11 +14,11 @@ pkgbase = electra-desktop-bin
 	depends = nss
 	depends = libxss
 	optdepends = alsa-lib: sound support
-	noextract = electra-desktop_1.1.2_amd64.deb
-	source = https://github.com/Electra-project/electra-desktop/releases/download/v1.1.2/electra-desktop_1.1.2_amd64.deb
+	noextract = electra-desktop_1.3.0_amd64.deb
+	source = https://github.com/Electra-project/electra-desktop/releases/download/1.3.0/electra-desktop_1.3.0_amd64.deb
 	source = Electra.conf
 	source = point-desktop-file-to-correct-bin-location.patch
-	sha256sums = ab602740e4a5da9dfa0c0b65b8ad5d2699cf05ab96c579668f2340a3116cedfb
+	sha256sums = 6f64690a83570875a91f000b79980bed6ffeb690528eb2df75a9f1fc117048d5
 	sha256sums = ed9684c0610e93e4958541994cca12a98a0507896a11e17fbcd29cbe730d370e
 	sha256sums = 267c8aca4f0d3960dd12eb83ef919d339bfb093e77fbc37aa80fe6938ba1bd11
 
