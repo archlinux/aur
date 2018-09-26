@@ -9,11 +9,11 @@ pkgbase = ros-melodic-python-qt-binding
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-rosbuild
 	makedepends = ros-melodic-catkin
-	makedepends = qt5-base
 	makedepends = python-pyqt5
+	makedepends = qt5-base
 	depends = python-pyqt5
-	source = ros-melodic-python-qt-binding::git+https://github.com/ros-gbp/python_qt_binding-release.git
-	sha256sums = SKIP
+	source = ros-melodic-python-qt-binding-0.3.4-0.tar.gz::https://github.com/ros-gbp/python_qt_binding-release/archive/release/melodic/python_qt_binding/0.3.4-0.tar.gz
+	sha256sums = bca9bfa241d85e5720d0c84ec2b44bd2715bfb48d7e4d8ca70c4cad313abddde
 
 pkgname = ros-melodic-python-qt-binding
 
