@@ -7,15 +7,15 @@ pkgbase = ros-melodic-nodelet-tutorial-math
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	makedepends = ros-melodic-roscpp
-	makedepends = ros-melodic-nodelet
 	makedepends = ros-melodic-std-msgs
+	makedepends = ros-melodic-roscpp
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-nodelet
+	depends = ros-melodic-std-msgs
 	depends = ros-melodic-roscpp
 	depends = ros-melodic-nodelet
-	depends = ros-melodic-std-msgs
-	source = ros-melodic-nodelet-tutorial-math::git+https://github.com/ros-gbp/common_tutorials-release.git
-	sha256sums = SKIP
+	source = ros-melodic-nodelet-tutorial-math-0.1.11-0.tar.gz::https://github.com/ros-gbp/common_tutorials-release/archive/release/melodic/nodelet_tutorial_math/0.1.11-0.tar.gz
+	sha256sums = 399778f44a140cd9fd5b0ed41b8c88408803791a64b0c3d006bca4b174b1669f
 
 pkgname = ros-melodic-nodelet-tutorial-math
 
