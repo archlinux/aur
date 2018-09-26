@@ -8,14 +8,14 @@ pkgbase = ros-melodic-python-orocos-kdl
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-orocos-kdl
-	makedepends = python-sip
 	makedepends = sip
-	depends = ros-melodic-catkin
+	makedepends = python-sip
 	depends = ros-melodic-orocos-kdl
-	depends = python-sip
+	depends = ros-melodic-catkin
 	depends = sip
-	source = ros-melodic-python-orocos-kdl::git+https://github.com/orocos/orocos-kdl-release.git
-	sha256sums = SKIP
+	depends = python-sip
+	source = ros-melodic-python-orocos-kdl-1.4.0-0.tar.gz::https://github.com/orocos/orocos-kdl-release/archive/release/melodic/python_orocos_kdl/1.4.0-0.tar.gz
+	sha256sums = e2f7f6fafccaf26d88863ac50b826301c14db71f61e4caff757a482e304a62a0
 
 pkgname = ros-melodic-python-orocos-kdl
 
