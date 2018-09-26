@@ -7,13 +7,13 @@ pkgbase = ros-melodic-tf2-py
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
 	makedepends = ros-melodic-tf2
+	makedepends = ros-melodic-catkin
 	makedepends = ros-melodic-rospy
 	depends = ros-melodic-tf2
 	depends = ros-melodic-rospy
-	source = ros-melodic-tf2-py::git+https://github.com/ros-gbp/geometry2-release.git
-	sha256sums = SKIP
+	source = ros-melodic-tf2-py-0.6.3-0.tar.gz::https://github.com/ros-gbp/geometry2-release/archive/release/melodic/tf2_py/0.6.3-0.tar.gz
+	sha256sums = 8c5739e5bc4494db19282193409ee9a1a73a3a2c4a67bc8785e7c2d79f3468f4
 
 pkgname = ros-melodic-tf2-py
 
