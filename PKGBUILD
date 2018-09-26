@@ -24,20 +24,21 @@ backup=("etc/java-$_jname/management/jmxremote.access"
         "etc/java-$_jname/management/management.properties"
         "etc/java-$_jname/security/java.policy"
         "etc/java-$_jname/security/java.security"
-        "etc/java-$_jname/security/javaws.policy"
         "etc/java-$_jname/logging.properties"
         "etc/java-$_jname/net.properties"
         "etc/java-$_jname/sound.properties")
 options=('!strip') # JDK debug-symbols
 install=$pkgname.install
 source=("http://download.oracle.com/otn-pub/java/jdk/${pkgver}+${_build}/${_hash}/${pkgname}-${pkgver}_linux-x64_bin.tar.gz"
-        "jconsole.desktop"
-        "jmc.desktop"
-        "policytool.desktop")
+        'java.desktop'
+        'jconsole.desktop'
+        'java_16.png'
+        'java_48.png')
 sha256sums=('246a0eba4927bf30180c573b73d55fc10e226c05b3236528c3a721dff3b50d32'
-            '3ea717825268a66837380c9ca2b076f02a3298d2df48c3450152fdaf1d0dbc6e'
-            '365b33b197e6be65ad746e5ed864428e45ae1e24dba53aa7d9c71de0644cf4e2'
-            '5dfde6ee531056571d9601d47fbb4a3e56062e4d611667a56ba7931ec7948b36')
+            'ed7392cbad258da943d39e9a5fab1ee6ab6a287ac0c20172805d5dbfc5accedb'
+            'e8544f5384d541c16973543ace0f812e2dea657eed551a70baebb1a0cd9f3771'
+            'd27fec1d74f7a3081c3d175ed184d15383666dc7f02cc0f7126f11549879c6ed'
+            '7cf8ca096e6d6e425b3434446b0835537d0fc7fe64b3ccba7a55f7bd86c7e176')
             
 DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
 
@@ -46,16 +47,9 @@ package() {
 
   msg2 "Creating directory structure..."
   install -d "$pkgdir"/etc/.java/.systemPrefs
-  install -d "$pkgdir"/usr/lib/jvm/java-$_major-$pkgname/bin
+  install -d "$pkgdir"/usr/lib/jvm/java-$_major-$_pkgname/bin
   install -d "$pkgdir"/usr/lib/mozilla/plugins
-  install -d "$pkgdir"/usr/share/licenses/java$_major-$pkgname
-
-  msg2 "Removing redundancies..."
-  rm -r lib/desktop/icons/HighContrast
-  rm -r lib/desktop/icons/HighContrastInverse
-  rm -r lib/desktop/icons/LowContrast
-  rm  lib/fontconfig.*.bfc
-  rm  lib/fontconfig.*.properties.src
+  install -d "$pkgdir"/usr/share/licenses/java$_major-$_pkgname
 
   msg2 "Moving contents..."
   mv * "$pkgdir"/$_jvmdir
@@ -67,28 +61,18 @@ package() {
   # Create a placeholder 'jre' link
   ln -s . jre
 
-  # Fix bundled .desktops
-  sed -e "s|Exec=|Exec=$_jvmdir/bin/|" \
-      -e "s|.png|-$_jname.png|" \
-      -i lib/desktop/applications/*
+  # Move + suffix .desktops
+  for i in $(printf -- '%s\n' "${source[@]}" | grep desktop | cut -d "." -f1); do
+    install -Dm644 "$srcdir"/$i.desktop "$pkgdir"/usr/share/applications/$i-$_jname.desktop
+  done
 
-  # Move .desktops + icons to /usr/share
-  mv lib/desktop/* "$pkgdir"/usr/share/
-  install -m644 "$srcdir"/*.desktop "$pkgdir"/usr/share/applications/
-
-  # Suffix .desktops + icon (sun-jcontrol.png -> sun-jcontrol-$_jname.png)
-  for i in $(find "$pkgdir"/usr/share/ -type f); do
-    rename -- "." "-$_jname." $i
+  # Move + suffix icons
+  for i in 16 48; do
+    install -Dm644 "$srcdir"/java_$i.png "$pkgdir"/usr/share/icons/hicolor/${i}x$i/apps/java-$_jname.png
   done
 
   # Write versions to .desktops + .install
   sed -i "s/<version>/$_major/" "$pkgdir"/usr/share/applications/* "$startdir"/$pkgname.install
-
-  # Link missing icons
-  for i in $(find "$pkgdir"/usr/share/icons/ -name "sun-jcontrol-$_jname.png" -type f); do
-    ln -s "sun-jcontrol-$_jname.png" "${i/jcontrol/java}"
-    ln -s "sun-jcontrol-$_jname.png" "${i/jcontrol/javaws}"
-  done
 
   # Move confs to /etc and link back to /usr: /usr/lib/jvm/java-$_jname/conf -> /etc
   for sub_path in $(find conf/ -type f); do

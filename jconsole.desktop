@@ -1,7 +1,7 @@
 [Desktop Entry]
+Name=Java <version> Monitoring and Management Console
 Exec=/usr/lib/jvm/java-<version>-jdk/bin/jconsole
-Icon=sun-java-jdk<version>
-Name=Java Monitoring and Management Console
+Icon=java-jdk<version>
 StartupNotify=true
 Terminal=false
 Type=Application
