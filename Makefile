@@ -3,7 +3,7 @@ CFLAGS = -g -Wall --std=c99 -D_FORTIFY_SOURCE=2 -O2 \
 -Wshadow -Wpointer-arith -pedantic -Wold-style-definition \
 -Wno-missing-braces -Wextra -Wno-missing-field-initializers -Wformat=2 \
 -Wswitch-default -Wswitch-enum -Wcast-align -Wpointer-arith \
--Wbad-function-cast -Wstrict-prototypes -Winline \
+-Wbad-function-cast -Wstrict-prototypes -Winline -Wno-format-y2k \
 -Wundef -Wnested-externs -Wcast-qual -Wunreachable-code \
 -ggdb3 -fno-omit-frame-pointer -ffloat-store -fno-common -fstrict-aliasing \
 -Wno-unused-parameter `pkg-config --cflags gtk+-3.0 cairo` -Wl,--export-dynamic
