@@ -8,11 +8,11 @@ pkgbase = ros-melodic-executive-smach
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
-	depends = ros-melodic-smach-ros
 	depends = ros-melodic-smach-msgs
+	depends = ros-melodic-smach-ros
 	depends = ros-melodic-smach
-	source = ros-melodic-executive-smach::git+https://github.com/ros-gbp/executive_smach-release.git
-	sha256sums = SKIP
+	source = ros-melodic-executive-smach-2.0.1-0.tar.gz::https://github.com/ros-gbp/executive_smach-release/archive/release/melodic/executive_smach/2.0.1-0.tar.gz
+	sha256sums = 5266563dc0f5888791fbf077127b3bb5539550c93496a103a4b0f3e1bafef697
 
 pkgname = ros-melodic-executive-smach
 
