@@ -2,15 +2,15 @@
 
 _servicename=download_files
 pkgname=obs-service-$_servicename
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="An OBS source service: download files"
 arch=('any')
 url="https://github.com/openSUSE/obs-service-$_servicename"
 license=('GPL2')
 depends=('bash')
-source=("https://github.com/openSUSE/obs-service-$_servicename/archive/$pkgver.tar.gz")
-sha512sums=('b7adc86a1c136b6a9a59f29b300b9b1b8945347cebed00732143ba9909b900903f606d077c7e866281fa04be79fceae486aa536d6a14dc10934a74274fd104af')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/openSUSE/obs-service-$_servicename/archive/$pkgver.tar.gz")
+sha512sums=('62a19f11769106ab3da8c811c41a17865c74ded1bbba839c391f43313ee2dc8ad3bef5d07a98fb69d681f4fe8936344f0d7025b09f59d3adb588093f10c2ca58')
 
 package() {
     cd "$pkgname-$pkgver"
