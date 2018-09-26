@@ -17,6 +17,10 @@ typedef enum column_index {
     PROFIT_7D_PERCENT, PROFIT_30D, PROFIT_30D_PERCENT, NUM_COLS
 } Col_Index;
 
+typedef enum zoom_level_total_months {
+    FIVE_Y, FOUR_Y, THREE_Y, TWO_Y, ONE_Y, SIX_M, THREE_M, ONE_M, FOURTEEN_D, SEVEN_D
+} Zoom_Months;
+
 typedef struct app_data {
     Info_Array* portfolio_data;
     String* portfolio_string;
@@ -25,6 +29,7 @@ typedef struct app_data {
     Info_Array* info_cache;
     char password[PASS_MAX];
     time_t last_reload;
+    Info* focused;
 } App_Data;
 
 /**
@@ -211,6 +216,8 @@ void info_pane_populate_company(const Info* pInfo);
 void info_pane_populate_peers(const Info* pInfo);
 
 void info_pane_populate_news(const Info* pInfo);
+
+gboolean on_info_graph_drawing_area_draw(GtkWidget* widget, cairo_t* cr);
 
 /**
  * Shows a generic message dialog.

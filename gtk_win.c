@@ -373,8 +373,6 @@ void on_search_entry_focus_in_event(GtkWidget* search_entry, GdkEvent* event) {
     for (size_t i = 0; i < app.iex_ref_data->length; i++) {
         gtk_list_store_append(list_store, &iter);
         gtk_list_store_set(list_store, &iter, 0, app.iex_ref_data->symbols[i], -1);
-        //gtk_list_store_append(list_store, &iter);
-        //gtk_list_store_set(list_store, &iter, 0, app.iex_ref_data->names[i], -1);
     }
 }
 
@@ -386,6 +384,97 @@ void on_search_entry_activate(GtkEntry* entry) {
     if (symbol[0] != '\0' && ref_data_get_index_from_symbol_bsearch(app.iex_ref_data,
             modstr, 0, app.iex_ref_data->length - 1) != -1)
         symbol_show_info(modstr);
+}
+
+gboolean on_info_graph_drawing_area_draw(GtkWidget* widget, cairo_t* cr) {
+    GdkRectangle da;
+    gdouble dx = 2.0, dy = 2.0;
+    gdouble graph_origin_x = 0.0, graph_origin_y = 0.0, graph_max_x = 0.0, graph_max_y = 0.0;
+    gdk_window_get_geometry(gtk_widget_get_window(widget), &da.x, &da.y, &da.width, &da.height);
+
+    cairo_translate(cr, da.width / 10, 9 * da.height / 10);
+    cairo_scale(cr, 1, -1); // Flip to be more intuitive
+
+    cairo_device_to_user_distance(cr, &dx, &dy);
+    cairo_clip_extents(cr, &graph_origin_x, &graph_origin_y, &graph_max_x, &graph_max_y);
+    cairo_set_line_width(cr, 2.0);
+
+    cairo_set_source_rgb(cr, 0.0, 0.0, 0.0);
+    cairo_move_to(cr, 0.0, 0.0);
+    cairo_line_to(cr, graph_max_x, 0.0);
+    cairo_move_to(cr, 0.0, 0.0);
+    cairo_line_to(cr, 0.0, graph_max_y);
+    cairo_stroke(cr);
+
+    time_t now = time(NULL);
+    struct tm today_date = *localtime(&now), start_date = today_date;
+    start_date.tm_year -= 5;
+    double seconds = difftime(mktime(&today_date), mktime(&start_date));
+    int trading_days = (int) ((1.0 / DAYS_TO_BUSINESS_DAYS_RATIO) * seconds / 86400.0);
+    if (trading_days - app.focused->num_points > 0)
+        info_chart_fill_empty(app.focused, trading_days);
+
+    double max = app.focused->points[0], min = app.focused->points[0];
+    for (int i = 1; i < app.focused->num_points; i++) {
+        if (app.focused->points[i] > max)
+            max = app.focused->points[i];
+        if (app.focused->points[i] < min)
+            min = app.focused->points[i];
+    }
+
+    cairo_set_line_width(cr, 1.0);
+    cairo_move_to(cr, 0.0, 0.0);
+
+    double line_diff = (max - min) / graph_max_y, day_close;
+    for (gdouble i = 0, y; i < graph_max_x; i++) {
+        day_close = app.focused->points[(int) ((double) i * app.focused->num_points / graph_max_x)];
+        y = (day_close - min) / line_diff;
+        cairo_line_to(cr, i, y);
+    }
+
+    cairo_stroke(cr);
+
+    cairo_set_line_width(cr, 0.3);
+    int square_side_length = 20;
+    for (gdouble x = 0; x < graph_max_x; x += square_side_length) {
+        cairo_move_to(cr, x, 0.0);
+        cairo_line_to(cr, x, graph_max_y);
+    }
+
+    for (gdouble y = 0; y < graph_max_y; y += square_side_length) {
+        cairo_move_to(cr, 0.0, y);
+        cairo_line_to(cr, graph_max_x, y);
+    }
+
+    cairo_stroke(cr);
+
+    cairo_translate(cr, -da.width / 10, 0);
+    gchar text[16];
+    for (int y = 0; y < graph_max_y; y += square_side_length) {
+        cairo_move_to(cr, 0, y);
+        sprintf(text, "%.2lf", min + line_diff * y);
+        cairo_scale(cr, 1, -1); // Text will print upside down if not scaled back
+        cairo_show_text(cr, text);
+        cairo_scale(cr, 1, -1);
+    }
+
+    cairo_translate(cr, da.width / 10, 0);
+
+    double days_per_col_spacing = (DAYS_TO_BUSINESS_DAYS_RATIO * trading_days) /
+            (graph_max_x / square_side_length);
+    struct tm x_label_time = start_date;
+    for (int i = 0; i < graph_max_x; i += 4 * square_side_length) {
+        if (i != 0)
+            x_label_time.tm_sec += days_per_col_spacing * 4 * 86400.0;
+        mktime(&x_label_time);
+        strftime(text, 16, "%D", &x_label_time);
+        cairo_move_to(cr, i, -10);
+        cairo_scale(cr, 1, -1); // Text will print upside down if not scaled back
+        cairo_show_text(cr, text);
+        cairo_scale(cr, 1, -1);
+    }
+
+    return FALSE;
 }
 
 void symbol_show_info(const char* symbol) {
@@ -411,6 +500,7 @@ void symbol_show_info(const char* symbol) {
     if (pInfo->peers != NULL)
         format_cells(pInfo->peers);
 
+    app.focused = pInfo;
     info_pane_populate_all(pInfo);
     GtkContainer* window = GTK_CONTAINER(GET_OBJECT("check_window"));
     gtk_container_remove(window, GTK_WIDGET(GET_OBJECT("check_pane")));
