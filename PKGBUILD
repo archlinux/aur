@@ -2,12 +2,12 @@
 
 pkgname=mricrogl
 pkgver=1.0.20180623
-pkgrel=1
+pkgrel=2
 pkgdesc="A program designed to display 3D medical imaging."
 arch=('x86_64')
 url="https://github.com/neurolabusc/MRIcroGL"
 license=('BSD')
-provides=('mricrogl')
+provides=('mricrogl' 'dcm2niix')
 source=("mricrogl_linux.zip::https://github.com/neurolabusc/MRIcroGL/releases/download/v1.0.20180623/mricrogl_linux.zip"
 	"mricrogl.desktop")
 sha512sums=('d810b9de5a94c196e8f8638ae456083d4d02f744afe8619ebc11f29ed5b14cd7e29a758f8ed72226d461590474fd718b5531ebf159ba013a50b0ad69181d42ce'
