@@ -11,8 +11,8 @@ pkgbase = ros-melodic-rqt-gui
 	makedepends = ros-melodic-qt-gui
 	depends = ros-melodic-catkin
 	depends = ros-melodic-qt-gui
-	source = ros-melodic-rqt-gui::git+https://github.com/ros-gbp/rqt-release.git
-	sha256sums = SKIP
+	source = ros-melodic-rqt-gui-0.5.0-0.tar.gz::https://github.com/ros-gbp/rqt-release/archive/release/melodic/rqt_gui/0.5.0-0.tar.gz
+	sha256sums = d6a9306b14facf26f432b32e9946daa1aa3c10c6f6d053e3a701bfab10e3200a
 
 pkgname = ros-melodic-rqt-gui
 
