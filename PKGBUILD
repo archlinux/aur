@@ -14,7 +14,7 @@ _json_export=ON
 
 _reponame=tageditor
 pkgname=tageditor
-pkgver=3.1.1
+pkgver=3.1.2
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='A tag editor with Qt GUI and command-line interface supporting MP4/M4A/AAC (iTunes), ID3, Vorbis, Opus, FLAC and Matroska'
@@ -25,12 +25,12 @@ depends=('qtutilities>=5.6.0' 'tagparser>=6.2.0' 'desktop-file-utils' 'xdg-utils
 [[ $_webview_provider == webengine ]] && depends+=('qt5-webengine>=5.6')
 [[ $_js_provider == script ]] && depends+=('qt5-script>=5.6')
 [[ $_js_provider == qml ]] && depends+=('qt5-declarative>=5.6')
-makedepends=('cmake' 'qt5-tools')
+makedepends=('cmake' 'qt5-tools' 'mesa')
 [[ $_json_export == ON ]] && makedepends+=('reflective-rapidjson')
 checkdepends=('cppunit')
 url="https://github.com/Martchus/${_reponame}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('aab080768b3b7074218b0f8278fde4097c6ede29ba591fcd4ca68014af7ad7a5')
+sha256sums=('0bb4092196051d44cd65a34b42186041ca82384ea1b159304ef81851be918e6a')
 
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
