@@ -1,10 +1,10 @@
 # Maintainer: Det <nimetonmaili g-mail>
 
 pkgname=jdk-docs
-pkgver=10.0.2
+pkgver=11
 _major=${pkgver/.*}
-_build=13
-_hash=19aef61b38124481863b1413dce1855f
+_build=28
+_hash=55eed80b163941c8885ad9298e6d786a
 pkgrel=1
 pkgdesc="Documentation for Oracle Java Development Kit"
 arch=('any')
@@ -14,7 +14,7 @@ depends=("java-environment>=$_major")
 options=('!strip')
 source=("http://download.oracle.com/otn-pub/java/jdk/${pkgver}+${_build}/${_hash}/jdk-${pkgver}_doc-all.zip"
         'LICENSE-Oracle-Legal-Notices.txt')
-sha256sums=('cb7b1703e9e1ef8adc2506672e5d6396df2d76a4f9f4dda8e4226b4ae52852a8'
+sha256sums=('97324a58359883a57e5352983b06ab1deedf945df77ad1275afa9795e56c2048 *jdk-11_doc-all.zip'
             'f1c7b95bafa96ddb992e9ef7548e25c49aa98195e4ea37f3d46a93b85d8c9dbd')
 
 DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
