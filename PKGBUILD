@@ -1,7 +1,7 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=mscompress
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Microsoft "compress.exe/expand.exe" compatible (de)compressor'
 arch=("i686" "x86_64")
 url="http://martin.hinner.info/mscompress/"
@@ -15,8 +15,13 @@ build() {
 	./configure --prefix=/usr --sysconfdir=/etc
 	make
 }
+
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
 	make BUILDROOT="$pkgdir" install
+
+	mkdir "$pkgdir"/usr/share
+	mv "$pkgdir"/usr/man "$pkgdir"/usr/share/man
 }
+
 # vim: set ft=sh

@@ -1,7 +1,7 @@
 pkgbase = mscompress
 	pkgdesc = Microsoft "compress.exe/expand.exe" compatible (de)compressor
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://martin.hinner.info/mscompress/
 	arch = i686
 	arch = x86_64
