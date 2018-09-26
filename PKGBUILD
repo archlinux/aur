@@ -9,13 +9,13 @@
 _name=ffmpeg
 pkgname=ffmpeg-libfdk_aac
 pkgver=4.0.2
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)'
 arch=('x86_64')
 url='http://ffmpeg.org/'
 license=('GPL3' 'custom:libfdk-aac')
-depends=('alsa-lib' 'aom' 'bzip2' 'fontconfig' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
+depends=(
   'alsa-lib' 'aom' 'bzip2' 'fontconfig' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
   'jack' 'lame' 'libavc1394' 'libdrm' 'libiec61883' 'libmodplug'
   'libomxil-bellagio' 'libpulse' 'libraw1394' 'libsoxr' 'libssh' 'libtheora'
