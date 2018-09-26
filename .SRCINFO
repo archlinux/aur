@@ -9,10 +9,10 @@ pkgbase = ros-melodic-rosnode
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-rostest
 	makedepends = ros-melodic-catkin
-	depends = ros-melodic-rosgraph
 	depends = ros-melodic-rostopic
-	source = ros-melodic-rosnode::git+https://github.com/ros-gbp/ros_comm-release.git
-	sha256sums = SKIP
+	depends = ros-melodic-rosgraph
+	source = ros-melodic-rosnode-1.14.3-0.tar.gz::https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rosnode/1.14.3-0.tar.gz
+	sha256sums = 9766e0e61bb3e82cab7763af6c0881d2c7cd95cd8a14bcb0538da50124be4d80
 
 pkgname = ros-melodic-rosnode
 
