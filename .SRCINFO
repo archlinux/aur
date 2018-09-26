@@ -7,15 +7,15 @@ pkgbase = ros-melodic-visualization-msgs
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-message-generation
 	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-message-generation
 	makedepends = ros-melodic-geometry-msgs
 	makedepends = ros-melodic-std-msgs
-	depends = ros-melodic-geometry-msgs
 	depends = ros-melodic-message-runtime
+	depends = ros-melodic-geometry-msgs
 	depends = ros-melodic-std-msgs
-	source = ros-melodic-visualization-msgs::git+https://github.com/ros-gbp/common_msgs-release.git
-	sha256sums = SKIP
+	source = ros-melodic-visualization-msgs-1.12.6-0.tar.gz::https://github.com/ros-gbp/common_msgs-release/archive/release/melodic/visualization_msgs/1.12.6-0.tar.gz
+	sha256sums = 8012e60dc75cc0f703d8a6faff3a255b29a320ae636aa4e20099845f780cf016
 
 pkgname = ros-melodic-visualization-msgs
 
