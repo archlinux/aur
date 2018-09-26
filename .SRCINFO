@@ -7,18 +7,18 @@ pkgbase = ros-melodic-filters
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-pluginlib
+	makedepends = ros-melodic-rosconsole
+	makedepends = ros-melodic-rostest
+	makedepends = ros-melodic-roscpp
 	makedepends = ros-melodic-catkin
 	makedepends = ros-melodic-roslib
-	makedepends = ros-melodic-rostest
-	makedepends = ros-melodic-rosconsole
-	makedepends = ros-melodic-roscpp
-	depends = ros-melodic-roslib
+	makedepends = ros-melodic-pluginlib
 	depends = ros-melodic-rosconsole
-	depends = ros-melodic-roscpp
 	depends = ros-melodic-pluginlib
-	source = ros-melodic-filters::git+https://github.com/ros-gbp/filters-release.git
-	sha256sums = SKIP
+	depends = ros-melodic-roscpp
+	depends = ros-melodic-roslib
+	source = ros-melodic-filters-1.8.1-0.tar.gz::https://github.com/ros-gbp/filters-release/archive/release/melodic/filters/1.8.1-0.tar.gz
+	sha256sums = 850380ab0564923c37a6ee93227fe934647a1c4e5dfb4c5d2502f156b6b17d3f
 
 pkgname = ros-melodic-filters
 
