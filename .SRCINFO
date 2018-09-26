@@ -7,19 +7,19 @@ pkgbase = ros-melodic-tf2-geometry-msgs
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-python-orocos-kdl
+	makedepends = ros-melodic-orocos-kdl
 	makedepends = ros-melodic-catkin
 	makedepends = ros-melodic-tf2-ros
+	makedepends = ros-melodic-python-orocos-kdl
 	makedepends = ros-melodic-geometry-msgs
-	makedepends = ros-melodic-orocos-kdl
 	makedepends = ros-melodic-tf2
-	depends = ros-melodic-python-orocos-kdl
-	depends = ros-melodic-tf2-ros
-	depends = ros-melodic-geometry-msgs
-	depends = ros-melodic-orocos-kdl
 	depends = ros-melodic-tf2
-	source = ros-melodic-tf2-geometry-msgs::git+https://github.com/ros-gbp/geometry2-release.git
-	sha256sums = SKIP
+	depends = ros-melodic-python-orocos-kdl
+	depends = ros-melodic-orocos-kdl
+	depends = ros-melodic-geometry-msgs
+	depends = ros-melodic-tf2-ros
+	source = ros-melodic-tf2-geometry-msgs-0.6.3-0.tar.gz::https://github.com/ros-gbp/geometry2-release/archive/release/melodic/tf2_geometry_msgs/0.6.3-0.tar.gz
+	sha256sums = 9dcc1d0b4a7bf711c14767ae61763d11aca347b47bbdbcd6ab0ea7b4abb5a782
 
 pkgname = ros-melodic-tf2-geometry-msgs
 
