@@ -12,8 +12,8 @@ pkgbase = ros-melodic-bond
 	makedepends = ros-melodic-std-msgs
 	depends = ros-melodic-message-runtime
 	depends = ros-melodic-std-msgs
-	source = ros-melodic-bond::git+https://github.com/ros-gbp/bond_core-release.git
-	sha256sums = SKIP
+	source = ros-melodic-bond-1.8.2-0.tar.gz::https://github.com/ros-gbp/bond_core-release/archive/release/melodic/bond/1.8.2-0.tar.gz
+	sha256sums = 202807fe60d259d78b013cea9bbe4f394726f72e4572d226edcde6e53a244ef8
 
 pkgname = ros-melodic-bond
 
