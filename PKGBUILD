@@ -8,12 +8,12 @@ pkgbase=python-click-5.1
 pkgname=("python-click-5.1" "python2-click-5.1")
 _realname=click
 pkgver=5.1
-pkgrel=4
+pkgrel=5
 pkgdesc="A simple wrapper around optparse for powerful command line utilities"
 arch=("any")
 url="http://click.pocoo.org/"
 license=("BSD")
-depends=("python-setuptools")
+makedepends=("python-setuptools")
 source=("https://github.com/pallets/$_realname/archive/$pkgver.tar.gz")
 sha256sums=('56d0ce25248d001b3767fa9c3b357384d484b34bcbde46c69b79cef1f25d5f06')
 

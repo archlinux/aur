@@ -1,11 +1,11 @@
 pkgbase = python-click-5.1
 	pkgdesc = A simple wrapper around optparse for powerful command line utilities
 	pkgver = 5.1
-	pkgrel = 4
+	pkgrel = 5
 	url = http://click.pocoo.org/
 	arch = any
 	license = BSD
-	depends = python-setuptools
+	makedepends = python-setuptools
 	source = https://github.com/pallets/click/archive/5.1.tar.gz
 	sha256sums = 56d0ce25248d001b3767fa9c3b357384d484b34bcbde46c69b79cef1f25d5f06
 
