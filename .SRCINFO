@@ -1,0 +1,29 @@
+pkgbase = cuda-9.1
+	pkgdesc = NVIDIA's GPU programming toolkit. Version 9.1
+	pkgver = 9.1.85
+	pkgrel = 1
+	url = http://www.nvidia.com/object/cuda_home.html
+	install = cuda.install
+	arch = x86_64
+	license = custom:NVIDIA
+	depends = gcc-libs
+	depends = opencl-nvidia
+	depends = gcc6
+	optdepends = gdb: for cuda-gdb
+	provides = cuda-toolkit
+	provides = cuda-sdk
+	replaces = cuda-toolkit
+	replaces = cuda-sdk
+	options = !strip
+	options = staticlibs
+	source = https://developer.download.nvidia.com/compute/cuda/9.1/secure/Prod/local_installers/cuda_9.1.85_387.26_linux.run
+	source = cuda.sh
+	source = cuda.conf
+	source = cuda-findgllib_mk.diff
+	sha512sums = 492a5fa58fc93ac718ca093f24bb5e74dd2586338c42f2e11e328c7f16756e3511a1c555b12cb1990bb782d0d1600976f4c9e5b3d4857e371b0431daf06b2827
+	sha512sums = ce0b8df5d918ec8429da4ab8f9dee463ac04055ee5b0beeb0386b67d765a4c892d314995776a0d695cd06bcfbaf996e4904935ddc898a9d774f6bf965d989dea
+	sha512sums = 66bd93ecab7e1aa07218c3dd1c96e460f63ed4ac47e853ecb313c78a58e5425c8a5772f1c7f73d696bf5f93fc3e556a046a4ed955a53d900976ac525abd1f518
+	sha512sums = 6d67213204809629879e37108af0ba488b47248387b6a862bb2e3e22cd80303685fa0ffc335836eaced5be9b83f6c5f4f10a38c37dfea59a9c26b5ad85b07506
+
+pkgname = cuda-9.1
+
