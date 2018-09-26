@@ -1,7 +1,7 @@
 # Maintainer: Patrick McCarty <pnorcks at gmail dot com>
 
 pkgname='bmap-tools'
-pkgver=3.4
+pkgver=3.5
 pkgrel=1
 pkgdesc="Tool optimized for copying largely sparse files using information from a block map (bmap) file"
 arch=('any')
@@ -9,8 +9,8 @@ url='https://github.com/intel/bmap-tools'
 license=('GPL2')
 depends=('python')
 makedepends=('python-setuptools')
-source=("https://github.com/intel/bmap-tools/releases/download/v$pkgver/$pkgname-$pkgver.tgz")
-sha256sums=('0064891270c180c190f41925b0f6fb9cecac3056f1168d2592dbe90e5f226c0a')
+source=("https://github.com/intel/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('d410e2d97192d0fc2f88ef160a0bb6ed83fce99da97a606d7f6890cc654ec594')
 
 build() {
   cd $pkgname-$pkgver

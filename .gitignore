@@ -3,3 +3,4 @@ bmap-tools/
 pkg/
 src/
 /*.tgz
+/*.tar.gz
