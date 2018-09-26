@@ -1,5 +1,5 @@
 pkgbase = linux-xanmod-lts
-	pkgver = 4.14.70
+	pkgver = 4.14.72
 	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = x86_64
@@ -10,14 +10,14 @@ pkgbase = linux-xanmod-lts
 	makedepends = bc
 	makedepends = libelf
 	options = !strip
-	source = https://github.com/xanmod/linux/archive/4.14.70-xanmod44.tar.gz
+	source = https://github.com/xanmod/linux/archive/4.14.72-xanmod45.tar.gz
 	source = 60-linux.hook
 	source = 90-linux.hook
 	source = linux-xanmod-lts.preset
 	source = choose-gcc-optimization.sh
 	source = 0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch?h=packages/linux-lts&id=fb67d4a886adf352f0f1287a7bf7ba298b1d0606
 	source = 0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch?h=packages/linux-lts&id=fb67d4a886adf352f0f1287a7bf7ba298b1d0606
-	sha256sums = 8590d06775572c6a8ce184c63b445258dbfe64cd97e648ac38b0dd84a5c702db
+	sha256sums = f748b88e2baab17eb025d941cbec8c313265d5ff2de8ddb24a0f1cf3569a4a4a
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = 75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
