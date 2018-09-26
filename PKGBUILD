@@ -1,7 +1,7 @@
 # Maintainer: Dennis Twardowsky <aur@devpty.de>
 _pkgname=noson-app
 pkgname="${_pkgname}-git"
-pkgver=3.8.7.r21.g1a21e63
+pkgver=3.9.0.r0.g2245b7a
 pkgrel=1
 pkgdesc="SONOS controller for Linux platforms"
 arch=('x86_64')
