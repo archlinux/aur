@@ -10,10 +10,10 @@ pkgbase = ros-melodic-desktop-full
 	makedepends = ros-melodic-catkin
 	depends = ros-melodic-desktop
 	depends = ros-melodic-simulators
-	depends = ros-melodic-urdf-sim-tutorial
 	depends = ros-melodic-perception
-	source = ros-melodic-desktop-full::git+https://github.com/ros-gbp/metapackages-release.git
-	sha256sums = SKIP
+	depends = ros-melodic-urdf-sim-tutorial
+	source = ros-melodic-desktop-full-1.4.1-0.tar.gz::https://github.com/ros-gbp/metapackages-release/archive/release/melodic/desktop_full/1.4.1-0.tar.gz
+	sha256sums = 236064fd3c4cccc5327f1ac4c951c70762a1f6c88e9faa521251f78e26ea987b
 
 pkgname = ros-melodic-desktop-full
 
