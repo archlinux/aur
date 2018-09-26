@@ -8,11 +8,11 @@ pkgbase = ros-melodic-laser-pipeline
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
-	depends = ros-melodic-laser-geometry
-	depends = ros-melodic-laser-assembler
 	depends = ros-melodic-laser-filters
-	source = ros-melodic-laser-pipeline::git+https://github.com/ros-gbp/laser_pipeline-release.git
-	sha256sums = SKIP
+	depends = ros-melodic-laser-assembler
+	depends = ros-melodic-laser-geometry
+	source = ros-melodic-laser-pipeline-1.6.3-0.tar.gz::https://github.com/ros-gbp/laser_pipeline-release/archive/release/melodic/laser_pipeline/1.6.3-0.tar.gz
+	sha256sums = 5d831b4e5ff12088b034f71202b7202c5d4fff9717d4a58acd5843e279f242d7
 
 pkgname = ros-melodic-laser-pipeline
 
