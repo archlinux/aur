@@ -7,20 +7,20 @@ pkgbase = ros-melodic-tf-conversions
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-kdl-conversions
-	makedepends = ros-melodic-tf
 	makedepends = ros-melodic-catkin
-	makedepends = ros-melodic-geometry-msgs
+	makedepends = ros-melodic-tf
 	makedepends = ros-melodic-orocos-kdl
+	makedepends = ros-melodic-geometry-msgs
+	makedepends = ros-melodic-kdl-conversions
 	makedepends = eigen3
 	depends = ros-melodic-python-orocos-kdl
-	depends = ros-melodic-kdl-conversions
 	depends = ros-melodic-tf
-	depends = ros-melodic-geometry-msgs
 	depends = ros-melodic-orocos-kdl
+	depends = ros-melodic-geometry-msgs
+	depends = ros-melodic-kdl-conversions
 	depends = eigen3
-	source = ros-melodic-tf-conversions::git+https://github.com/ros-gbp/geometry-release.git
-	sha256sums = SKIP
+	source = ros-melodic-tf-conversions-1.12.0-0.tar.gz::https://github.com/ros-gbp/geometry-release/archive/release/melodic/tf_conversions/1.12.0-0.tar.gz
+	sha256sums = eec87e068f5106c1835fb093d5995ca8c6972e3a5e127038d94c68701ad2029e
 
 pkgname = ros-melodic-tf-conversions
 
