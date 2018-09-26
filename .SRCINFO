@@ -1,13 +1,15 @@
 pkgbase = pyspy
 	pkgdesc = A simple EVE Online character intel tool
 	pkgver = 0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/WhiteRusssian/PySpy
 	arch = any
 	license = MIT
 	depends = python
 	depends = python-wxpython
 	depends = python-pyperclip
+	optdepends = xclip: Command line interface to the X11 clipboard
+	optdepends = xsel: Get or set the contents of the X selection
 	source = https://github.com/WhiteRusssian/PySpy/archive/v0.4.tar.gz
 	source = pyspy.desktop
 	source = pyspy-start.sh

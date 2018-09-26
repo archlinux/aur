@@ -2,14 +2,14 @@
 
 pkgname=pyspy
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 _distname="PySpy-${pkgver}"
 pkgdesc="A simple EVE Online character intel tool"
 arch=('any')
 url="https://github.com/WhiteRusssian/PySpy"
 license=('MIT')
 depends=('python' 'python-wxpython' 'python-pyperclip')
-optdepends=()
+optdepends=('xclip: Command line interface to the X11 clipboard' 'xsel: Get or set the contents of the X selection')
 source=(${url}/archive/v$pkgver.tar.gz pyspy.desktop pyspy-start.sh)
 sha256sums=('e4cf55987c14a61a477c0bc932da858f99976bac16b744782f52242b73d6be04'
             '35dd408ec9b397ca3d024b193e2fe4340b87b56a109d099de966bce1331e0744'
