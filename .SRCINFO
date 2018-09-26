@@ -12,8 +12,8 @@ pkgbase = ros-melodic-controller-manager-msgs
 	makedepends = ros-melodic-std-msgs
 	depends = ros-melodic-message-runtime
 	depends = ros-melodic-std-msgs
-	source = ros-melodic-controller-manager-msgs::git+https://github.com/ros-gbp/ros_control-release.git
-	sha256sums = SKIP
+	source = ros-melodic-controller-manager-msgs-0.15.0-0.tar.gz::https://github.com/ros-gbp/ros_control-release/archive/release/melodic/controller_manager_msgs/0.15.0-0.tar.gz
+	sha256sums = 2f8a9b6a320b9ed9c215a8ac3bf72d3a37426b7c628e0300c3c22185c6d83770
 
 pkgname = ros-melodic-controller-manager-msgs
 
