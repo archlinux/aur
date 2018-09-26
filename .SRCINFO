@@ -1,7 +1,7 @@
 pkgbase = deb2appimage
 	pkgdesc = Build AppImages from deb packages on any distro with simple json configuration
 	pkgver = 0.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.simonizor.net
 	arch = x86_64
 	license = MIT

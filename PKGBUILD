@@ -2,7 +2,7 @@
 
 pkgname=deb2appimage
 pkgver=0.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Build AppImages from deb packages on any distro with simple json configuration"
 arch=('x86_64')
 url='http://www.simonizor.net'
@@ -10,11 +10,6 @@ license=('MIT')
 depends=('jq' 'curl')
 source=("https://github.com/simoniz0r/$pkgname/archive/v$pkgver.tar.gz")
 md5sums=('SKIP')
-
-prepare() {
-    cd $srcdir
-    bsdtar xvf v$pkgver.tar.gz
-}
 
 package() {
     mkdir $pkgdir/opt
