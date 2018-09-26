@@ -10,14 +10,14 @@ pkgbase = ros-melodic-rostest
 	makedepends = ros-melodic-catkin
 	makedepends = ros-melodic-rosunit
 	makedepends = boost
-	depends = ros-melodic-rosmaster
 	depends = ros-melodic-rosgraph
 	depends = ros-melodic-rospy
-	depends = ros-melodic-roslaunch
+	depends = ros-melodic-rosmaster
 	depends = ros-melodic-rosunit
+	depends = ros-melodic-roslaunch
 	depends = boost
-	source = ros-melodic-rostest::git+https://github.com/ros-gbp/ros_comm-release.git
-	sha256sums = SKIP
+	source = ros-melodic-rostest-1.14.3-0.tar.gz::https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rostest/1.14.3-0.tar.gz
+	sha256sums = 90e7b4ba3167ae06f5ad213c193b0c5ab7888b4abd75542a3d7c02592ef9c707
 
 pkgname = ros-melodic-rostest
 
