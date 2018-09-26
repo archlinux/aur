@@ -9,12 +9,12 @@ pkgbase = ros-melodic-visualization-tutorials
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
 	depends = ros-melodic-rviz-python-tutorial
-	depends = ros-melodic-visualization-marker-tutorials
-	depends = ros-melodic-rviz-plugin-tutorials
 	depends = ros-melodic-interactive-marker-tutorials
+	depends = ros-melodic-visualization-marker-tutorials
 	depends = ros-melodic-librviz-tutorial
-	source = ros-melodic-visualization-tutorials::git+https://github.com/ros-gbp/visualization_tutorials-release.git
-	sha256sums = SKIP
+	depends = ros-melodic-rviz-plugin-tutorials
+	source = ros-melodic-visualization-tutorials-0.10.3-0.tar.gz::https://github.com/ros-gbp/visualization_tutorials-release/archive/release/melodic/visualization_tutorials/0.10.3-0.tar.gz
+	sha256sums = 5f67b564a5f87b4d7113b97de74e987a956d3985dac7639204b4ba697a056007
 
 pkgname = ros-melodic-visualization-tutorials
 
