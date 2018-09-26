@@ -7,19 +7,19 @@ pkgbase = ros-melodic-stage
 	license = GPL
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = pkg-config
-	makedepends = mesa
 	makedepends = fltk
 	makedepends = libjpeg-turbo
 	makedepends = gtk2
 	makedepends = libtool
+	makedepends = mesa
+	makedepends = pkg-config
 	depends = ros-melodic-catkin
-	depends = gtk2
-	depends = fltk
 	depends = libjpeg-turbo
 	depends = mesa
-	source = ros-melodic-stage::git+https://github.com/ros-gbp/stage-release.git
-	sha256sums = SKIP
+	depends = fltk
+	depends = gtk2
+	source = ros-melodic-stage-4.3.0-0.tar.gz::https://github.com/ros-gbp/stage-release/archive/release/melodic/stage/4.3.0-0.tar.gz
+	sha256sums = 3c72bba7242ecd98b26f177e4227aef06ec85915f196ee88ec6103be4dfb492d
 
 pkgname = ros-melodic-stage
 
