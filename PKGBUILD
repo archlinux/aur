@@ -18,14 +18,9 @@ build() {
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
-	make BUILDROOT="$pkgdir" install
-
-	mkdir "$pkgdir"/usr/share
-	mv "$pkgdir"/usr/man "$pkgdir"/usr/share/man
-
 	for _app in mscompress msexpand; do
-		mv "$pkgdir"/usr/bin/$_app{,-mh}
-		mv "$pkgdir"/usr/share/man/man1/$_app{,-mh}.1
+		install -Dm 0755 "$_app" "$pkgdir/usr/bin/$_app-mh"
+		install -Dm 0644 "$_app.1" "$pkgdir/usr/share/man/man1/$_app-mh.1"
 	done
 }
 
