@@ -8,17 +8,17 @@ pkgbase = ros-melodic-rqt-robot-plugins
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
-	depends = ros-melodic-rqt-robot-monitor
-	depends = ros-melodic-rqt-moveit
-	depends = ros-melodic-rqt-rviz
-	depends = ros-melodic-rqt-pose-view
-	depends = ros-melodic-rqt-nav-view
-	depends = ros-melodic-rqt-robot-steering
-	depends = ros-melodic-rqt-runtime-monitor
 	depends = ros-melodic-rqt-robot-dashboard
+	depends = ros-melodic-rqt-nav-view
 	depends = ros-melodic-rqt-tf-tree
-	source = ros-melodic-rqt-robot-plugins::git+https://github.com/ros-gbp/rqt_robot_plugins-release.git
-	sha256sums = SKIP
+	depends = ros-melodic-rqt-rviz
+	depends = ros-melodic-rqt-runtime-monitor
+	depends = ros-melodic-rqt-robot-steering
+	depends = ros-melodic-rqt-moveit
+	depends = ros-melodic-rqt-pose-view
+	depends = ros-melodic-rqt-robot-monitor
+	source = ros-melodic-rqt-robot-plugins-0.5.7-0.tar.gz::https://github.com/ros-gbp/rqt_robot_plugins-release/archive/release/melodic/rqt_robot_plugins/0.5.7-0.tar.gz
+	sha256sums = 2fa30a70d1eed9ff4724c1b9d1ef8303066b373bae9abcbf2b8a715a89e515ba
 
 pkgname = ros-melodic-rqt-robot-plugins
 
