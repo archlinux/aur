@@ -7,20 +7,20 @@ pkgbase = ros-melodic-bondcpp
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	makedepends = ros-melodic-cmake-modules
 	makedepends = ros-melodic-bond
 	makedepends = ros-melodic-smclib
 	makedepends = ros-melodic-roscpp
-	makedepends = boost
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-cmake-modules
 	makedepends = util-linux
+	makedepends = boost
 	depends = ros-melodic-bond
-	depends = ros-melodic-roscpp
 	depends = ros-melodic-smclib
-	depends = boost
+	depends = ros-melodic-roscpp
 	depends = util-linux
-	source = ros-melodic-bondcpp::git+https://github.com/ros-gbp/bond_core-release.git
-	sha256sums = SKIP
+	depends = boost
+	source = ros-melodic-bondcpp-1.8.2-0.tar.gz::https://github.com/ros-gbp/bond_core-release/archive/release/melodic/bondcpp/1.8.2-0.tar.gz
+	sha256sums = efddb54b16d5b2a10b7673832c10cc352bb34354666be2d68b2307ecc742d8e9
 
 pkgname = ros-melodic-bondcpp
 
