@@ -1,7 +1,7 @@
 # Maintainer: Ross Chadwick <hello@rchadwick.co.uk>
 
-pkgbase=('nordnm')
-pkgname=('nordnm')
+pkgbase=nordnm
+pkgname=nordnm
 _module='nordnm'
 provides=('nordnm')
 pkgver='0.6.0'
