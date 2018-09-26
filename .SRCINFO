@@ -7,17 +7,17 @@ pkgbase = ros-melodic-controller-manager
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-controller-interface
 	makedepends = ros-melodic-pluginlib
+	makedepends = ros-melodic-controller-manager-msgs
 	makedepends = ros-melodic-catkin
 	makedepends = ros-melodic-hardware-interface
-	makedepends = ros-melodic-controller-manager-msgs
-	depends = ros-melodic-controller-interface
-	depends = ros-melodic-controller-manager-msgs
+	makedepends = ros-melodic-controller-interface
 	depends = ros-melodic-pluginlib
+	depends = ros-melodic-controller-manager-msgs
 	depends = ros-melodic-hardware-interface
-	source = ros-melodic-controller-manager::git+https://github.com/ros-gbp/ros_control-release.git
-	sha256sums = SKIP
+	depends = ros-melodic-controller-interface
+	source = ros-melodic-controller-manager-0.15.0-0.tar.gz::https://github.com/ros-gbp/ros_control-release/archive/release/melodic/controller_manager/0.15.0-0.tar.gz
+	sha256sums = c01dbdf77000cff262257622d6605f1116a086d6f0cce3d1c150aa7dc7a342c2
 
 pkgname = ros-melodic-controller-manager
 
