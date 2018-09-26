@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polycitizen@gmail.com>
 
 pkgname=gitleaks
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Audit Git repos for secrets and keys'
 url=https://github.com/zricethezav/gitleaks
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('glibc')
 makedepends=('go-pie')
 source=("gitleaks-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('3677e565eb897a907e61d21307e7cc5a63be048c749c5d152733b7c7b9acb3815f3b518432e4f0d26c711e08bcc45afae33b5bbd951c2d2cb081b30f48eb1a0d')
+sha512sums=('fdc32376e07925e109beb9941f749a7847920f2fba3b4ed1572aae67b63d486cd89ad01867f2144e7451b58db24bfced49817de02bbb18150f17302a1aae1034')
 
 prepare() {
   mkdir -p src/github.com/zricethezav
