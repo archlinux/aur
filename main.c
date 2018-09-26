@@ -17,8 +17,9 @@ int main(int argc, char* argv[]) {
         strtoupper(sym);
     }
 
-    // Init portfolio path
+    // Init file paths
     portfolio_file_path_init();
+    ref_cache_file_path_init();
 
     // Init cURL
     curl_global_init(CURL_GLOBAL_ALL);
@@ -105,6 +106,7 @@ int main(int argc, char* argv[]) {
         }
     }
     free(portfolio_file_path);
+    free(ref_cache_file_path);
     free(sym);
     free(cmd);
     curl_global_cleanup();

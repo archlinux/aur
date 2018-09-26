@@ -150,6 +150,10 @@ struct info_array {
     Info* totals;
 };
 
+extern char* ref_cache_file_path;
+
+void ref_cache_file_path_init(void);
+
 /**
  * Allocates a Ref_Data struct with length and returns a pointer to it.
  * @param length

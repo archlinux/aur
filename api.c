@@ -1,5 +1,15 @@
 #include "api.h"
 
+char* ref_cache_file_path;
+
+void ref_cache_file_path_init(void) {
+    char* home = getenv("HOME");
+    char* path = malloc(strlen(home) + 32);
+    pointer_alloc_check(path);
+    sprintf(path, "%s/.tick_ref_cache.json", home);
+    ref_cache_file_path = path;
+}
+
 Ref_Data* ref_data_init_length(size_t length) {
     Ref_Data* pRef_Data = malloc(sizeof(Ref_Data));
     pointer_alloc_check(pRef_Data);
