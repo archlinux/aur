@@ -7,15 +7,15 @@ pkgbase = ros-melodic-stereo-msgs
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-sensor-msgs
-	makedepends = ros-melodic-message-generation
 	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-message-generation
+	makedepends = ros-melodic-sensor-msgs
 	makedepends = ros-melodic-std-msgs
-	depends = ros-melodic-sensor-msgs
 	depends = ros-melodic-message-runtime
+	depends = ros-melodic-sensor-msgs
 	depends = ros-melodic-std-msgs
-	source = ros-melodic-stereo-msgs::git+https://github.com/ros-gbp/common_msgs-release.git
-	sha256sums = SKIP
+	source = ros-melodic-stereo-msgs-1.12.6-0.tar.gz::https://github.com/ros-gbp/common_msgs-release/archive/release/melodic/stereo_msgs/1.12.6-0.tar.gz
+	sha256sums = 71d1fdfd5c078a79d4d32570b1158b647929d8780b344867713cf8da43a0bc36
 
 pkgname = ros-melodic-stereo-msgs
 
