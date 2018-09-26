@@ -12,8 +12,8 @@ pkgbase = ros-melodic-geometry-msgs
 	makedepends = ros-melodic-std-msgs
 	depends = ros-melodic-message-runtime
 	depends = ros-melodic-std-msgs
-	source = ros-melodic-geometry-msgs::git+https://github.com/ros-gbp/common_msgs-release.git
-	sha256sums = SKIP
+	source = ros-melodic-geometry-msgs-1.12.6-0.tar.gz::https://github.com/ros-gbp/common_msgs-release/archive/release/melodic/geometry_msgs/1.12.6-0.tar.gz
+	sha256sums = 797d3f77f9265ae2d832e34df4efae1c8f0ada553a7a395ed7969302e405489a
 
 pkgname = ros-melodic-geometry-msgs
 
