@@ -8,8 +8,8 @@ pkgbase = ros-melodic-rosbag-migration-rule
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
-	source = ros-melodic-rosbag-migration-rule::git+https://github.com/ros-gbp/rosbag_migration_rule-release.git
-	sha256sums = SKIP
+	source = ros-melodic-rosbag-migration-rule-1.0.0-0.tar.gz::https://github.com/ros-gbp/rosbag_migration_rule-release/archive/release/melodic/rosbag_migration_rule/1.0.0-0.tar.gz
+	sha256sums = 985744e58043e42585c195d72c7f8c0a265b646ca9dbfdf7d67d4488ed2a2a11
 
 pkgname = ros-melodic-rosbag-migration-rule
 
