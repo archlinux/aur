@@ -7,17 +7,17 @@ pkgbase = ros-melodic-interactive-marker-tutorials
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-interactive-markers
 	makedepends = ros-melodic-visualization-msgs
-	makedepends = ros-melodic-tf
-	makedepends = ros-melodic-catkin
 	makedepends = ros-melodic-roscpp
-	depends = ros-melodic-interactive-markers
-	depends = ros-melodic-roscpp
+	makedepends = ros-melodic-tf
+	makedepends = ros-melodic-interactive-markers
+	makedepends = ros-melodic-catkin
 	depends = ros-melodic-visualization-msgs
+	depends = ros-melodic-roscpp
 	depends = ros-melodic-tf
-	source = ros-melodic-interactive-marker-tutorials::git+https://github.com/ros-gbp/visualization_tutorials-release.git
-	sha256sums = SKIP
+	depends = ros-melodic-interactive-markers
+	source = ros-melodic-interactive-marker-tutorials-0.10.3-0.tar.gz::https://github.com/ros-gbp/visualization_tutorials-release/archive/release/melodic/interactive_marker_tutorials/0.10.3-0.tar.gz
+	sha256sums = 9871ffc4468273f1bd8f38a84e6dafa224057f8ebd89db86e0ab174ab46c06eb
 
 pkgname = ros-melodic-interactive-marker-tutorials
 
