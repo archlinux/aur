@@ -8,11 +8,11 @@ pkgbase = ros-melodic-image-transport-plugins
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
-	depends = ros-melodic-compressed-image-transport
 	depends = ros-melodic-theora-image-transport
+	depends = ros-melodic-compressed-image-transport
 	depends = ros-melodic-compressed-depth-image-transport
-	source = ros-melodic-image-transport-plugins::git+https://github.com/ros-gbp/image_transport_plugins-release.git
-	sha256sums = SKIP
+	source = ros-melodic-image-transport-plugins-1.9.5-0.tar.gz::https://github.com/ros-gbp/image_transport_plugins-release/archive/release/melodic/image_transport_plugins/1.9.5-0.tar.gz
+	sha256sums = 1838bdad50e903b572a00fcb66935326e81c5e706af3356a64c0322927361ecd
 
 pkgname = ros-melodic-image-transport-plugins
 
