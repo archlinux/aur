@@ -8,15 +8,15 @@ pkgbase = ros-melodic-rqt-py-console
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
-	depends = ros-melodic-rqt-gui-py
 	depends = ros-melodic-qt-gui-py-common
-	depends = ros-melodic-python-qt-binding
-	depends = ros-melodic-rospy
+	depends = ros-melodic-rqt-gui-py
 	depends = ros-melodic-rqt-gui
 	depends = ros-melodic-qt-gui
+	depends = ros-melodic-python-qt-binding
+	depends = ros-melodic-rospy
 	depends = python-rospkg
-	source = ros-melodic-rqt-py-console::git+https://github.com/ros-gbp/rqt_py_console-release.git
-	sha256sums = SKIP
+	source = ros-melodic-rqt-py-console-0.4.8-0.tar.gz::https://github.com/ros-gbp/rqt_py_console-release/archive/release/melodic/rqt_py_console/0.4.8-0.tar.gz
+	sha256sums = 0c5714fce4f464fa175e42a7c8fc0ced483fdcfbd90cf4c8584f40b3cf208242
 
 pkgname = ros-melodic-rqt-py-console
 
