@@ -7,12 +7,12 @@ pkgbase = ros-melodic-genpy
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
 	makedepends = ros-melodic-genmsg
+	makedepends = ros-melodic-catkin
 	depends = ros-melodic-genmsg
 	depends = python-yaml
-	source = ros-melodic-genpy::git+https://github.com/ros-gbp/genpy-release.git
-	sha256sums = SKIP
+	source = ros-melodic-genpy-0.6.7-0.tar.gz::https://github.com/ros-gbp/genpy-release/archive/release/melodic/genpy/0.6.7-0.tar.gz
+	sha256sums = ff7ed1300368d850485267c5e25559d2fbb274747def53c9287910b120a652f9
 
 pkgname = ros-melodic-genpy
 
