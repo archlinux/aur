@@ -1,0 +1,21 @@
+pkgbase = hub-kids
+	pkgdesc = La piattaforma facile, gratuita e innovativa per la didattica digitale.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.hubscuola.it/download-app
+	arch = x86_64
+	license = unknown
+	depends = sdl2
+	optdepends = chromium: a modern browser for the application to work
+	optdepends = firefox: a modern browser for the application to work
+	optdepends = google-chrome: a modern browser for the application to work
+	optdepends = evince: a pdf viewer
+	optdepends = epdfview: a pdf viewer
+	optdepends = qpdfview: a pdf viewer
+	optdepends = mupdf: a pdf viewer
+	options = !strip
+	source = http://www.mondadorieducation.it/media/contenuti/appdilettura/kidslinux.zip
+	md5sums = 4497dfe4b6e2516c11e3ae1480a01c25
+
+pkgname = hub-kids
+
