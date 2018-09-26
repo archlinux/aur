@@ -8,17 +8,17 @@ pkgbase = ros-melodic-rqt-msg
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
+	depends = ros-melodic-rosmsg
 	depends = ros-melodic-rqt-console
+	depends = ros-melodic-roslib
+	depends = ros-melodic-rqt-py-common
 	depends = ros-melodic-rqt-gui-py
+	depends = ros-melodic-rqt-gui
 	depends = ros-melodic-python-qt-binding
 	depends = ros-melodic-rospy
-	depends = ros-melodic-roslib
-	depends = ros-melodic-rqt-gui
-	depends = ros-melodic-rqt-py-common
-	depends = ros-melodic-rosmsg
 	depends = python-rospkg
-	source = ros-melodic-rqt-msg::git+https://github.com/ros-gbp/rqt_msg-release.git
-	sha256sums = SKIP
+	source = ros-melodic-rqt-msg-0.4.8-0.tar.gz::https://github.com/ros-gbp/rqt_msg-release/archive/release/melodic/rqt_msg/0.4.8-0.tar.gz
+	sha256sums = ec3e88d3c822856ace98a11ab03950fb0e9390829122b7abfabc863180611630
 
 pkgname = ros-melodic-rqt-msg
 
