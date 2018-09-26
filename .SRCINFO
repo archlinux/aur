@@ -12,8 +12,8 @@ pkgbase = ros-melodic-cpp-common
 	makedepends = console-bridge
 	depends = boost
 	depends = console-bridge
-	source = ros-melodic-cpp-common::git+https://github.com/ros-gbp/roscpp_core-release.git
-	sha256sums = SKIP
+	source = ros-melodic-cpp-common-0.6.11-0.tar.gz::https://github.com/ros-gbp/roscpp_core-release/archive/release/melodic/cpp_common/0.6.11-0.tar.gz
+	sha256sums = 475ea3025290073d5956d8a73e2b8ecb810bb3351b3731df7cbba63324e864af
 
 pkgname = ros-melodic-cpp-common
 
