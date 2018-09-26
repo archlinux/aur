@@ -6,7 +6,7 @@ _major=${pkgver/.*}
 _build=28
 _hash=55eed80b163941c8885ad9298e6d786a
 _jname=${pkgname}${_major}
-pkgrel=1
+pkgrel=2
 pkgdesc="Oracle Java Development Kit"
 arch=('x86_64')
 url="http://www.oracle.com/technetwork/java/javase/downloads/index.html"
@@ -47,9 +47,9 @@ package() {
 
   msg2 "Creating directory structure..."
   install -d "$pkgdir"/etc/.java/.systemPrefs
-  install -d "$pkgdir"/usr/lib/jvm/java-$_major-$_pkgname/bin
+  install -d "$pkgdir"/usr/lib/jvm/java-$_major-$pkgname/bin
   install -d "$pkgdir"/usr/lib/mozilla/plugins
-  install -d "$pkgdir"/usr/share/licenses/java$_major-$_pkgname
+  install -d "$pkgdir"/usr/share/licenses/java$_major-$pkgname
 
   msg2 "Moving contents..."
   mv * "$pkgdir"/$_jvmdir
