@@ -12,8 +12,8 @@ pkgbase = ros-melodic-rosgraph-msgs
 	makedepends = ros-melodic-std-msgs
 	depends = ros-melodic-message-runtime
 	depends = ros-melodic-std-msgs
-	source = ros-melodic-rosgraph-msgs::git+https://github.com/ros-gbp/ros_comm_msgs-release.git
-	sha256sums = SKIP
+	source = ros-melodic-rosgraph-msgs-1.11.2-0.tar.gz::https://github.com/ros-gbp/ros_comm_msgs-release/archive/release/melodic/rosgraph_msgs/1.11.2-0.tar.gz
+	sha256sums = 5aa9e1b1adbf5e86931e771b1a154384485803a73e50804e0c739f83767270c9
 
 pkgname = ros-melodic-rosgraph-msgs
 
