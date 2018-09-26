@@ -7,13 +7,13 @@ pkgbase = ros-melodic-realtime-tools
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
 	makedepends = ros-melodic-roscpp
+	makedepends = ros-melodic-catkin
 	makedepends = ros-melodic-rospy
 	depends = ros-melodic-roscpp
 	depends = ros-melodic-rospy
-	source = ros-melodic-realtime-tools::git+https://github.com/ros-gbp/realtime_tools-release.git
-	sha256sums = SKIP
+	source = ros-melodic-realtime-tools-1.12.0-0.tar.gz::https://github.com/ros-gbp/realtime_tools-release/archive/release/melodic/realtime_tools/1.12.0-0.tar.gz
+	sha256sums = 633f836352c74454431e7ee34347968e25bd26f2d595b5f4ec8f7c99133a360c
 
 pkgname = ros-melodic-realtime-tools
 
