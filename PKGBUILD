@@ -2,11 +2,11 @@
 # Contributor: nfnty <arch at nfnty dot se>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=ranger-git
-pkgver=1.9.1.17.gf8559795
+pkgver=1.9.2.2.g8e9451e6
 pkgrel=1
 pkgdesc="A simple, vim-like file manager."
 arch=('any')
-url="http://savannah.nongnu.org/projects/ranger"
+url="https://ranger.github.io/"
 license=('GPL')
 depends=('python') #python(>=2.6 or >=3.1)
 makedepends=('git')
