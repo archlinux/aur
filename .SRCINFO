@@ -7,19 +7,19 @@ pkgbase = ros-melodic-control-msgs
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
+	makedepends = ros-melodic-std-msgs
 	makedepends = ros-melodic-actionlib-msgs
-	makedepends = ros-melodic-message-generation
+	makedepends = ros-melodic-trajectory-msgs
 	makedepends = ros-melodic-catkin
 	makedepends = ros-melodic-geometry-msgs
-	makedepends = ros-melodic-trajectory-msgs
-	makedepends = ros-melodic-std-msgs
+	makedepends = ros-melodic-message-generation
 	depends = ros-melodic-actionlib-msgs
-	depends = ros-melodic-message-runtime
 	depends = ros-melodic-geometry-msgs
+	depends = ros-melodic-message-runtime
 	depends = ros-melodic-trajectory-msgs
 	depends = ros-melodic-std-msgs
-	source = ros-melodic-control-msgs::git+https://github.com/ros-gbp/control_msgs-release.git
-	sha256sums = SKIP
+	source = ros-melodic-control-msgs-1.4.0-0.tar.gz::https://github.com/ros-gbp/control_msgs-release/archive/release/melodic/control_msgs/1.4.0-0.tar.gz
+	sha256sums = 15aa30c0f9da4249d10a42a57cc840abbad9d6d64d247d089da10b495970aa69
 
 pkgname = ros-melodic-control-msgs
 
