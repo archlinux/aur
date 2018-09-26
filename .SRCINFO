@@ -8,18 +8,18 @@ pkgbase = ros-melodic-rqt-robot-monitor
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
+	depends = ros-melodic-rqt-bag
+	depends = ros-melodic-qt-gui
 	depends = ros-melodic-diagnostic-msgs
+	depends = ros-melodic-rqt-py-common
 	depends = ros-melodic-rqt-gui-py
 	depends = ros-melodic-qt-gui-py-common
+	depends = ros-melodic-rqt-gui
 	depends = ros-melodic-python-qt-binding
 	depends = ros-melodic-rospy
-	depends = ros-melodic-rqt-bag
-	depends = ros-melodic-rqt-gui
-	depends = ros-melodic-rqt-py-common
-	depends = ros-melodic-qt-gui
 	depends = python-rospkg
-	source = ros-melodic-rqt-robot-monitor::git+https://github.com/ros-gbp/rqt_robot_monitor-release.git
-	sha256sums = SKIP
+	source = ros-melodic-rqt-robot-monitor-0.5.8-0.tar.gz::https://github.com/ros-gbp/rqt_robot_monitor-release/archive/release/melodic/rqt_robot_monitor/0.5.8-0.tar.gz
+	sha256sums = 3f1c272f0f73b0c3f1dc3283e233a183f4a0541ee345408fcb6ac83430bb52a8
 
 pkgname = ros-melodic-rqt-robot-monitor
 
