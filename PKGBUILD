@@ -3,7 +3,7 @@
 
 pkgname=vivaldi
 pkgver=2.0.1309.29
-pkgrel=1
+pkgrel=2
 pkgdesc='An advanced browser made with the power user in mind.'
 url="https://vivaldi.com"
 options=(!strip !zipman)
@@ -18,8 +18,8 @@ optdepends=(
     'vivaldi-widevine: Widevine DRM Plugin'
     'libnotify: native notifications'
 )
-source_x86_64=("https://downloads.vivaldi.com/stable/vivaldi-stable-${pkgver}-1.x86_64.rpm")
-sha512sums_x86_64=('2cb309302d12e0b0a4fe87f15b3373870e2ddae1545dea073823f6a7e9cfad334c54325ec4726a5d37e6efa3bcd6892bba2a32aed0327b8d055f1164de10e59b')
+source_x86_64=("https://downloads.vivaldi.com/stable/vivaldi-stable-${pkgver}-2.x86_64.rpm")
+sha512sums_x86_64=('02917d8d23e0673b7faeb90c039179b6343b46983feb49963d7038104a63ee6c7ecde22ba9104fe86f00b82a476152808a176fda7d08574d17510871bc19abf5')
 
 package() {
     cp -a {opt,usr} "$pkgdir"
