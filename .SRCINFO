@@ -10,8 +10,8 @@ pkgbase = ros-melodic-nodelet-core
 	makedepends = ros-melodic-catkin
 	depends = ros-melodic-nodelet-topic-tools
 	depends = ros-melodic-nodelet
-	source = ros-melodic-nodelet-core::git+https://github.com/ros-gbp/nodelet_core-release.git
-	sha256sums = SKIP
+	source = ros-melodic-nodelet-core-1.9.16-0.tar.gz::https://github.com/ros-gbp/nodelet_core-release/archive/release/melodic/nodelet_core/1.9.16-0.tar.gz
+	sha256sums = a0537935c5c1b091cf655f0a31852d72ec54b245b2577d139cd66d33332eea9b
 
 pkgname = ros-melodic-nodelet-core
 
