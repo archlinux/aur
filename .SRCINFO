@@ -8,15 +8,15 @@ pkgbase = ros-melodic-rqt-runtime-monitor
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
+	depends = ros-melodic-qt-gui
 	depends = ros-melodic-diagnostic-msgs
 	depends = ros-melodic-rqt-gui-py
+	depends = ros-melodic-rqt-gui
 	depends = ros-melodic-python-qt-binding
 	depends = ros-melodic-rospy
-	depends = ros-melodic-rqt-gui
-	depends = ros-melodic-qt-gui
 	depends = python-rospkg
-	source = ros-melodic-rqt-runtime-monitor::git+https://github.com/ros-gbp/rqt_runtime_monitor-release.git
-	sha256sums = SKIP
+	source = ros-melodic-rqt-runtime-monitor-0.5.7-0.tar.gz::https://github.com/ros-gbp/rqt_runtime_monitor-release/archive/release/melodic/rqt_runtime_monitor/0.5.7-0.tar.gz
+	sha256sums = f58958b5649d59fca3022a1771e6a457382744c616835cc65980213ab742fd5c
 
 pkgname = ros-melodic-rqt-runtime-monitor
 
