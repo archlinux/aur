@@ -10,14 +10,14 @@ pkgbase = ros-melodic-catkin
 	makedepends = python-catkin_pkg
 	makedepends = python-empy
 	makedepends = python
-	depends = python-empy
-	depends = python
 	depends = python-nose
-	depends = python-catkin_pkg
 	depends = gmock
+	depends = python-empy
 	depends = gtest
-	source = ros-melodic-catkin::git+https://github.com/ros-gbp/catkin-release.git
-	sha256sums = SKIP
+	depends = python-catkin_pkg
+	depends = python
+	source = ros-melodic-catkin-0.7.14-0.tar.gz::https://github.com/ros-gbp/catkin-release/archive/release/melodic/catkin/0.7.14-0.tar.gz
+	sha256sums = 3297a9b5e2afa50c00e87ecc56b181d08fc6a6bbe4e7e71a112402fab03fd445
 
 pkgname = ros-melodic-catkin
 
