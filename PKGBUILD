@@ -16,8 +16,7 @@ makedepends=('cmake' 'ros-build-tools'
 
 ros_depends=()
 depends=(${ros_depends[@]}
-  gazebo9
-  libgazebo9-dev)
+  gazebo)
 
 # Git version (e.g. for debugging)
 # _tag=release/melodic/gazebo_dev/${pkgver}-${_pkgver_patch}
