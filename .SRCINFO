@@ -14,8 +14,8 @@ pkgbase = ros-melodic-librviz-tutorial
 	depends = ros-melodic-rviz
 	depends = ros-melodic-roscpp
 	depends = qt5-base
-	source = ros-melodic-librviz-tutorial::git+https://github.com/ros-gbp/visualization_tutorials-release.git
-	sha256sums = SKIP
+	source = ros-melodic-librviz-tutorial-0.10.3-0.tar.gz::https://github.com/ros-gbp/visualization_tutorials-release/archive/release/melodic/librviz_tutorial/0.10.3-0.tar.gz
+	sha256sums = 65aad5382b304957a927f31695570cc9e8ff720bea22e8ca72bd049a80b54fa0
 
 pkgname = ros-melodic-librviz-tutorial
 
