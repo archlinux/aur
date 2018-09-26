@@ -8,15 +8,15 @@ pkgbase = ros-melodic-image-pipeline
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
-	depends = ros-melodic-image-proc
 	depends = ros-melodic-image-view
 	depends = ros-melodic-image-rotate
 	depends = ros-melodic-image-publisher
-	depends = ros-melodic-stereo-image-proc
 	depends = ros-melodic-camera-calibration
+	depends = ros-melodic-image-proc
+	depends = ros-melodic-stereo-image-proc
 	depends = ros-melodic-depth-image-proc
-	source = ros-melodic-image-pipeline::git+https://github.com/ros-gbp/image_pipeline-release.git
-	sha256sums = SKIP
+	source = ros-melodic-image-pipeline-1.12.23-0.tar.gz::https://github.com/ros-gbp/image_pipeline-release/archive/release/melodic/image_pipeline/1.12.23-0.tar.gz
+	sha256sums = a6e5d39fd81ad438d67124e646c3da415e14afb3d0e59931e0d40433a6c1ea77
 
 pkgname = ros-melodic-image-pipeline
 
