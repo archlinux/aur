@@ -7,15 +7,15 @@ pkgbase = ros-melodic-sensor-msgs
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-message-generation
 	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-message-generation
 	makedepends = ros-melodic-geometry-msgs
 	makedepends = ros-melodic-std-msgs
-	depends = ros-melodic-geometry-msgs
 	depends = ros-melodic-message-runtime
+	depends = ros-melodic-geometry-msgs
 	depends = ros-melodic-std-msgs
-	source = ros-melodic-sensor-msgs::git+https://github.com/ros-gbp/common_msgs-release.git
-	sha256sums = SKIP
+	source = ros-melodic-sensor-msgs-1.12.6-0.tar.gz::https://github.com/ros-gbp/common_msgs-release/archive/release/melodic/sensor_msgs/1.12.6-0.tar.gz
+	sha256sums = 9b8f1e3a1682164fece7f32c145a48aeb66d0f3b56ccd4755b462be2773e94d1
 
 pkgname = ros-melodic-sensor-msgs
 
