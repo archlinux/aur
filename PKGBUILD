@@ -22,6 +22,11 @@ package() {
 
 	mkdir "$pkgdir"/usr/share
 	mv "$pkgdir"/usr/man "$pkgdir"/usr/share/man
+
+	for _app in mscompress msexpand; do
+		mv "$pkgdir"/usr/bin/$_app{,-mh}
+		mv "$pkgdir"/usr/share/man/man1/$_app{,-mh}.1
+	done
 }
 
 # vim: set ft=sh
