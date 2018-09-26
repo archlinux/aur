@@ -8,14 +8,14 @@ pkgbase = ros-melodic-rosmsg
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
-	depends = ros-melodic-genpy
+	depends = ros-melodic-rosbag
 	depends = ros-melodic-genmsg
 	depends = ros-melodic-catkin
-	depends = ros-melodic-rosbag
 	depends = ros-melodic-roslib
+	depends = ros-melodic-genpy
 	depends = python-rospkg
-	source = ros-melodic-rosmsg::git+https://github.com/ros-gbp/ros_comm-release.git
-	sha256sums = SKIP
+	source = ros-melodic-rosmsg-1.14.3-0.tar.gz::https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rosmsg/1.14.3-0.tar.gz
+	sha256sums = d6b76ae3f2df2b92e423f03b57ddd325f928e6d16b1fbcac2939fd173ce3195d
 
 pkgname = ros-melodic-rosmsg
 
