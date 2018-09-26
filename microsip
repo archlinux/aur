@@ -37,12 +37,7 @@ if [[ ! -f "${__INSTALLED}" ]]; then
 	__symlink "/usr/share/${__APPNAME}/ringin.wav"
 	__symlink "/usr/share/${__APPNAME}/ringin2.wav"
 	__symlink "/usr/share/${__APPNAME}/ringout.wav"
-	__symlink "/usr/lib/${__APPNAME}/SDL2.dll"
-	__symlink "/usr/lib/${__APPNAME}/avcodec-57.dll"
-	__symlink "/usr/lib/${__APPNAME}/avformat-57.dll"
-	__symlink "/usr/lib/${__APPNAME}/avutil-55.dll"
 	__symlink "/usr/lib/${__APPNAME}/microsip.exe"
-	__symlink "/usr/lib/${__APPNAME}/swscale-4.dll"
 
 	mkdir -p "${__APPCFG}"
 	touch "${__APPCFG}/Contacts.xml"
