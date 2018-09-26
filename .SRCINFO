@@ -1,6 +1,6 @@
 pkgbase = jdk
 	pkgdesc = Oracle Java Development Kit
-	pkgver = 10.0.2
+	pkgver = 11
 	pkgrel = 1
 	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
 	install = jdk.install
@@ -15,31 +15,31 @@ pkgbase = jdk
 	optdepends = alsa-lib: for basic sound support
 	optdepends = eclipse-java: to use "Oracle Java Mission Control" plugins in Eclipse
 	optdepends = gtk2: for Gtk+ look and feel (desktop)
-	provides = java-runtime=10
-	provides = java-runtime-headless=10
-	provides = java-web-start=10
-	provides = java-environment=10
-	provides = java-runtime-jre=10
-	provides = java-runtime-headless-jre=10
-	provides = java-web-start-jre=10
-	provides = java-environment-jdk=10
-	provides = java-openjfx=10
-	provides = jdk10
-	conflicts = jdk10
+	provides = java-runtime=11
+	provides = java-runtime-headless=11
+	provides = java-web-start=11
+	provides = java-environment=11
+	provides = java-runtime-jre=11
+	provides = java-runtime-headless-jre=11
+	provides = java-web-start-jre=11
+	provides = java-environment-jdk=11
+	provides = java-openjfx=11
+	provides = jdk11
+	conflicts = jdk11
 	options = !strip
-	backup = etc/java-jdk10/management/jmxremote.access
-	backup = etc/java-jdk10/management/management.properties
-	backup = etc/java-jdk10/security/java.policy
-	backup = etc/java-jdk10/security/java.security
-	backup = etc/java-jdk10/security/javaws.policy
-	backup = etc/java-jdk10/logging.properties
-	backup = etc/java-jdk10/net.properties
-	backup = etc/java-jdk10/sound.properties
-	source = http://download.oracle.com/otn-pub/java/jdk/10.0.2+13/19aef61b38124481863b1413dce1855f/jdk-10.0.2_linux-x64_bin.tar.gz
+	backup = etc/java-jdk11/management/jmxremote.access
+	backup = etc/java-jdk11/management/management.properties
+	backup = etc/java-jdk11/security/java.policy
+	backup = etc/java-jdk11/security/java.security
+	backup = etc/java-jdk11/security/javaws.policy
+	backup = etc/java-jdk11/logging.properties
+	backup = etc/java-jdk11/net.properties
+	backup = etc/java-jdk11/sound.properties
+	source = http://download.oracle.com/otn-pub/java/jdk/11+28/55eed80b163941c8885ad9298e6d786a/jdk-11_linux-x64_bin.tar.gz
 	source = jconsole.desktop
 	source = jmc.desktop
 	source = policytool.desktop
-	sha256sums = 6633c20d53c50c20835364d0f3e172e0cbbce78fff81867488f22a6298fa372b
+	sha256sums = 246a0eba4927bf30180c573b73d55fc10e226c05b3236528c3a721dff3b50d32
 	sha256sums = 3ea717825268a66837380c9ca2b076f02a3298d2df48c3450152fdaf1d0dbc6e
 	sha256sums = 365b33b197e6be65ad746e5ed864428e45ae1e24dba53aa7d9c71de0644cf4e2
 	sha256sums = 5dfde6ee531056571d9601d47fbb4a3e56062e4d611667a56ba7931ec7948b36
