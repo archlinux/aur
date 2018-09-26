@@ -9,11 +9,11 @@ pkgbase = ros-melodic-rosbuild
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
 	makedepends = pkg-config
+	depends = ros-melodic-message-runtime
 	depends = ros-melodic-message-generation
 	depends = ros-melodic-catkin
-	depends = ros-melodic-message-runtime
-	source = ros-melodic-rosbuild::git+https://github.com/ros-gbp/ros-release.git
-	sha256sums = SKIP
+	source = ros-melodic-rosbuild-1.14.4-0.tar.gz::https://github.com/ros-gbp/ros-release/archive/release/melodic/rosbuild/1.14.4-0.tar.gz
+	sha256sums = eec79bbf61ec0af498d7227f714d7b96e0be0e65a0c00bdb1b46ba779a1d8eab
 
 pkgname = ros-melodic-rosbuild
 
