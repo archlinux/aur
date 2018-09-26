@@ -1,7 +1,7 @@
 # Maintainer: Tony <tony@criticalstack.com>
 
 pkgname=rocksdb-static
-pkgver=5.14.3
+pkgver=5.15.10
 pkgrel=1
 pkgdesc='Embedded key-value store for fast storage (static library)'
 arch=(i686 x86_64)
@@ -9,9 +9,8 @@ url='http://rocksdb.org'
 license=('Apache')
 depends=(gperftools zlib bzip2 lz4 snappy gcc-libs)
 checkdepends=(python2)
-source=(https://github.com/facebook/rocksdb/archive/v$pkgver.zip
-		fix-compiler-with-gcc-8.1.1.patch)
-sha256sums=('e927efa48b01100bfe7aa43cd0f18c1a3c37afdcdf7337d89cd9ab7541d4f07a'
+source=(https://github.com/facebook/rocksdb/archive/v$pkgver.zip)
+sha256sums=('16356771775376b50e5cd4e7a185e84f398493183d375ff14cd6d396cdae6ea0'
             '079e9b29bc7174d6a6a6dd50602f9d2a561ea55d42328c75576acd666fe92dd5')
 
 prepare() {
@@ -20,7 +19,6 @@ prepare() {
   if [ "$CARCH"  == "armv6h" ]; then
     sed -e 's/-momit-leaf-frame-pointer//' -i Makefile
   fi
-  patch -Np1 -i ../fix-compiler-with-gcc-8.1.1.patch
 }
 
 build() {
