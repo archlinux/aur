@@ -14,10 +14,10 @@ pkgbase = ros-melodic-diagnostic-common-diagnostics
 	depends = ros-melodic-diagnostic-updater
 	depends = ros-melodic-tf
 	depends = ros-melodic-rospy
-	depends = hddtemp
 	depends = python-psutil
-	source = ros-melodic-diagnostic-common-diagnostics::git+https://github.com/ros-gbp/diagnostics-release.git
-	sha256sums = SKIP
+	depends = hddtemp
+	source = ros-melodic-diagnostic-common-diagnostics-1.9.3-0.tar.gz::https://github.com/ros-gbp/diagnostics-release/archive/release/melodic/diagnostic_common_diagnostics/1.9.3-0.tar.gz
+	sha256sums = e9729593c5e73825e769d670d78ba809db061ffb344132201020eae878c1359c
 
 pkgname = ros-melodic-diagnostic-common-diagnostics
 
