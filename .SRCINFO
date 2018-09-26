@@ -10,8 +10,8 @@ pkgbase = ros-melodic-rviz-python-tutorial
 	makedepends = ros-melodic-rviz
 	makedepends = ros-melodic-catkin
 	depends = ros-melodic-rviz
-	source = ros-melodic-rviz-python-tutorial::git+https://github.com/ros-gbp/visualization_tutorials-release.git
-	sha256sums = SKIP
+	source = ros-melodic-rviz-python-tutorial-0.10.3-0.tar.gz::https://github.com/ros-gbp/visualization_tutorials-release/archive/release/melodic/rviz_python_tutorial/0.10.3-0.tar.gz
+	sha256sums = 525f02f83695fda430a40dbb0d980db92744f6782726cc14c1ee731215f6137f
 
 pkgname = ros-melodic-rviz-python-tutorial
 
