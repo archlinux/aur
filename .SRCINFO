@@ -9,11 +9,11 @@ pkgbase = ros-melodic-gazebo-ros-pkgs
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
 	depends = ros-melodic-gazebo-msgs
-	depends = ros-melodic-gazebo-dev
-	depends = ros-melodic-gazebo-plugins
 	depends = ros-melodic-gazebo-ros
-	source = ros-melodic-gazebo-ros-pkgs::git+https://github.com/ros-gbp/gazebo_ros_pkgs-release.git
-	sha256sums = SKIP
+	depends = ros-melodic-gazebo-plugins
+	depends = ros-melodic-gazebo-dev
+	source = ros-melodic-gazebo-ros-pkgs-2.8.4-0.tar.gz::https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/melodic/gazebo_ros_pkgs/2.8.4-0.tar.gz
+	sha256sums = 1a81d17b76e69f4d49adce9d778293f985f7eced56bada30bb6f78832d6a7c29
 
 pkgname = ros-melodic-gazebo-ros-pkgs
 
