@@ -7,15 +7,15 @@ pkgbase = ros-melodic-roscpp-serialization
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-cpp-common
 	makedepends = ros-melodic-roscpp-traits
+	makedepends = ros-melodic-cpp-common
 	makedepends = ros-melodic-catkin
 	makedepends = ros-melodic-rostime
-	depends = ros-melodic-cpp-common
 	depends = ros-melodic-roscpp-traits
+	depends = ros-melodic-cpp-common
 	depends = ros-melodic-rostime
-	source = ros-melodic-roscpp-serialization::git+https://github.com/ros-gbp/roscpp_core-release.git
-	sha256sums = SKIP
+	source = ros-melodic-roscpp-serialization-0.6.11-0.tar.gz::https://github.com/ros-gbp/roscpp_core-release/archive/release/melodic/roscpp_serialization/0.6.11-0.tar.gz
+	sha256sums = 9df0441f142422b87b6fa226c98d08456c26f18f32590d26bbbd417950ada3b5
 
 pkgname = ros-melodic-roscpp-serialization
 
