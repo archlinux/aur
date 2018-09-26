@@ -8,13 +8,13 @@ pkgbase = ros-melodic-ros-base
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
-	depends = ros-melodic-dynamic-reconfigure
-	depends = ros-melodic-ros-core
 	depends = ros-melodic-nodelet-core
-	depends = ros-melodic-actionlib
+	depends = ros-melodic-ros-core
 	depends = ros-melodic-bond-core
-	source = ros-melodic-ros-base::git+https://github.com/ros-gbp/metapackages-release.git
-	sha256sums = SKIP
+	depends = ros-melodic-actionlib
+	depends = ros-melodic-dynamic-reconfigure
+	source = ros-melodic-ros-base-1.4.1-0.tar.gz::https://github.com/ros-gbp/metapackages-release/archive/release/melodic/ros_base/1.4.1-0.tar.gz
+	sha256sums = 0b0cab7cb298a642bd33a0c4d7e17f10ac6533a1a59745a11e96c58d238f47eb
 
 pkgname = ros-melodic-ros-base
 
