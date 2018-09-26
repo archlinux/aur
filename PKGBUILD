@@ -1,13 +1,13 @@
 # Maintainer: Oscar Morante <spacepluk@gmail.com>
 
 _version=2018.3.0
-_build=b1
-_randomstring=3f0ac31c6d6f
+_build=b2
+_randomstring=21e0e8a5466d
 _prefix=/opt/UnityBeta
 
 pkgname=unity-editor-beta-language-ko
 pkgver=${_version}${_build}
-pkgrel=1
+pkgrel=2
 pkgdesc="Korean Language Pack (Preview)"
 arch=('x86_64')
 url='https://unity3d.com/'
