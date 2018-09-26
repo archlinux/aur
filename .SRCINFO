@@ -1,13 +1,11 @@
 pkgbase = wordnet
-	pkgdesc = An Electronic Lexical Database from Princeton University
 	pkgver = 3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://wordnet.princeton.edu/
 	arch = i686
 	arch = x86_64
 	license = custom
-	depends = tk
-	options = staticlibs
+	makedepends = tk
 	source = http://wordnetcode.princeton.edu/3.0/WordNet-3.0.tar.bz2
 	source = http://wordnetcode.princeton.edu/wn3.1.dict.tar.gz
 	source = wordnet.desktop
@@ -17,5 +15,18 @@ pkgbase = wordnet
 	sha256sums = 10a4011b3d9705b2b0a1f496b33d926d4be21439c63f039b871d93f2d143ed0c
 	sha256sums = 9ab9f761a3fabd278fd05d755fec8a403874f899d7e40347f1da48bf93a67e97
 
-pkgname = wordnet
+pkgname = wordnet-common
+	pkgdesc = An Electronic Lexical Database from Princeton University
+	conflicts = wordnet
+
+pkgname = wordnet-tk
+	pkgdesc = A TK frontend for the WordNet Database
+	depends = wordnet-common
+	conflicts = wordnet
+
+pkgname = wordnet-cli
+	pkgdesc = A CLI fontend for the WordNet Database
+	depends = wordnet-common
+	conflicts = wordnet
+	replaces = wordnet
 

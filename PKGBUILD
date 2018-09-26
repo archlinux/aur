@@ -1,16 +1,15 @@
 # Maintainer: Steven Allen <steven {at} stebalien {dot} com>
 # Contributor: Reverie <reverie@takhis.net>
 
-pkgname=wordnet
+pkgbase=wordnet
+pkgname=(wordnet-common wordnet-tk wordnet-cli)
 pkgver=3.1
 _srcver=3.0
-pkgrel=2
-pkgdesc="An Electronic Lexical Database from Princeton University"
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://wordnet.princeton.edu/"
 license=("custom")
-options=(staticlibs)
-depends=('tk')
+makedepends=('tk')
 source=("http://wordnetcode.princeton.edu/${_srcver}/WordNet-${_srcver}.tar.bz2"
         "http://wordnetcode.princeton.edu/wn${pkgver}.dict.tar.gz"
         wordnet.desktop
@@ -30,11 +29,23 @@ build() {
   make
 }
 
-package() {
+package_wordnet-common() {
+  pkgdesc="An Electronic Lexical Database from Princeton University"
+  conflicts=('wordnet')
+
   cd "${srcdir}/WordNet-${_srcver}"
   make DESTDIR="$pkgdir" install
+
+  # Remove "binary" stuff.
+  rm -f "${pkgdir}/usr/doc/"{html/*.1WN.html,pdf/*.1.pdf,ps/*.1.ps}
+  rm -fr "${pkgdir}/usr/share/man/man1"
+  rm -fr "${pkgdir}/usr/bin"
+
+  # Move the documentation into place.
   mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/wordnet"
   mv "${pkgdir}/usr/lib/wnres" "${pkgdir}/usr/share/wordnet/wnres"
+
+  # Remove TK library stuff.
   rm -fr "${pkgdir}/usr/include/tk"
 
   # Replace dictionary files
@@ -42,7 +53,40 @@ package() {
   chmod -R u=rwX,go=rX "${pkgdir}/usr/share/wordnet/dict"
   rm -fr "${pkgdir}/usr/dict"
 
+  install -D -m644 COPYING "${pkgdir}/usr/share/licenses/$pkgname/COPYING"
+}
+
+package_wordnet-tk() {
+  pkgdesc="A TK frontend for the WordNet Database"
+  depends=('tk')
+  conflicts=('wordnet')
+  depends=('wordnet-common')
+
+  cd "${srcdir}/WordNet-${_srcver}"
+
+  # Install the GUI.
+  install -D -m755 -t "${pkgdir}/usr/bin/" src/{wnb,wishwn}
+  install -D -m644 -t "${pkgdir}/usr/share/wordnet/html/" doc/html/wnb.1WN.html
+  install -D -m644 -t "${pkgdir}/usr/share/wordnet/pdf/" doc/pdf/wnb.1.pdf
+  install -D -m644 -t "${pkgdir}/usr/share/wordnet/ps/" doc/ps/wnb.1.ps
+  install -D -m644 -t "${pkgdir}/usr/share/man/man1/" doc/man/wnb.1
+
   install -D -m644 "${srcdir}/wordnet.desktop" "${pkgdir}/usr/share/applications/wordnet.desktop"
   install -D -m644 "${srcdir}/wordnet.png" "${pkgdir}/usr/share/pixmaps/wordnet.png"
-  install -D -m644 COPYING "${pkgdir}/usr/share/licenses/$pkgname/COPYING"
+}
+
+package_wordnet-cli() {
+  pkgdesc="A CLI fontend for the WordNet Database"
+  replaces=('wordnet')
+  conflicts=('wordnet')
+  depends=('wordnet-common')
+
+  cd "${srcdir}/WordNet-${_srcver}"
+
+  # Install the CLI.
+  install -D -m755 -t "${pkgdir}/usr/bin/" src/wn
+  install -D -m644 -t "${pkgdir}/usr/share/wordnet/html/" doc/html/wn.1WN.html
+  install -D -m644 -t "${pkgdir}/usr/share/wordnet/pdf/" doc/pdf/wn.1.pdf
+  install -D -m644 -t "${pkgdir}/usr/share/wordnet/ps/" doc/ps/wn.1.ps
+  install -D -m644 -t "${pkgdir}/usr/share/man/man1/" doc/man/wn.1
 }
