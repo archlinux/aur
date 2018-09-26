@@ -1,7 +1,7 @@
 pkgbase = msl
 	pkgdesc = Shader language based off GLSL that allows compiling multiple shaders into modules.
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/akb825/ModularShaderLanguage
 	arch = i686
 	arch = x86_64

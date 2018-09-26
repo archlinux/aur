@@ -1,7 +1,7 @@
 pkgbase=msl
 pkgname=('msl')
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Shader language based off GLSL that allows compiling multiple shaders into modules.'
 arch=('i686' 'x86_64')
 url="https://github.com/akb825/ModularShaderLanguage"
