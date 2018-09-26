@@ -10,8 +10,8 @@ pkgbase = ros-melodic-roslz4
 	makedepends = ros-melodic-catkin
 	makedepends = lz4
 	depends = lz4
-	source = ros-melodic-roslz4::git+https://github.com/ros-gbp/ros_comm-release.git
-	sha256sums = SKIP
+	source = ros-melodic-roslz4-1.14.3-0.tar.gz::https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/roslz4/1.14.3-0.tar.gz
+	sha256sums = f1cfdca5119fb941e00a174dbd2ad42a577543994efd979e81fd22970ffc7a0e
 
 pkgname = ros-melodic-roslz4
 
