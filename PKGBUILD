@@ -8,7 +8,7 @@ url="https://github.com/cylgom/ly"
 license=('custom:WTFPL')
 makedepends=('unzip')
 depends=('pam' 'xorg-xinit' 'xorg-xauth')
-conflicts=('ly-git')
+conflicts=('ly-git' 'python-ly-git')
 source=('https://github.com/cylgom/ly/releases/download/0.2.1/ly_0.2.1.zip')
 md5sums=('4dcc18944efc71e55a13e0e442d98fbb')
 
