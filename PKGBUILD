@@ -15,7 +15,7 @@ makedepends=(
 )
 
 source=(
-  'git://github.com/aclements/latexrun.git'
+  'git+https://github.com/aclements/latexrun.git'
 )
 sha256sums=(
   'SKIP'
