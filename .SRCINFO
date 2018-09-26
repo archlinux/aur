@@ -7,13 +7,13 @@ pkgbase = ros-melodic-pluginlib-tutorials
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	makedepends = ros-melodic-roscpp
 	makedepends = ros-melodic-pluginlib
-	depends = ros-melodic-roscpp
+	makedepends = ros-melodic-roscpp
+	makedepends = ros-melodic-catkin
 	depends = ros-melodic-pluginlib
-	source = ros-melodic-pluginlib-tutorials::git+https://github.com/ros-gbp/common_tutorials-release.git
-	sha256sums = SKIP
+	depends = ros-melodic-roscpp
+	source = ros-melodic-pluginlib-tutorials-0.1.11-0.tar.gz::https://github.com/ros-gbp/common_tutorials-release/archive/release/melodic/pluginlib_tutorials/0.1.11-0.tar.gz
+	sha256sums = 2a421d7ea4d04ba27c7221abd753f1ebbe040227df1e4c87a3df559064002c17
 
 pkgname = ros-melodic-pluginlib-tutorials
 
