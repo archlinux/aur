@@ -18,7 +18,7 @@ _enable_plasmoid=1
 
 _reponame=syncthingtray
 pkgname=syncthingtray
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Tray application for Syncthing'
@@ -29,13 +29,13 @@ depends=('qtutilities' 'qt5-svg' 'openssl' 'desktop-file-utils' 'xdg-utils')
 [[ $_webview_provider == webengine ]] && depends+=('qt5-webengine')
 [[ $_enable_kio_plugin ]] && optdepends+=('kio: KIO plugin for Syncthing actions in Dolphin')
 [[ $_enable_plasmoid ]] && optdepends+=('plasma-workspace: Plasmoid for Plasma 5 desktop')
-makedepends=('cmake' 'qt5-tools')
+makedepends=('cmake' 'qt5-tools' 'mesa')
 checkdepends=('cppunit' 'syncthing')
 [[ $_enable_kio_plugin ]] && makedepends+=('kio')
 [[ $_enable_plasmoid ]] && makedepends+=('plasma-framework' 'extra-cmake-modules')
 url="https://github.com/Martchus/${_reponame}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('b6ef6d57a6f1945efff379c5936cc3d150c6a3d76584ede21a29669a66b35686')
+sha256sums=('34ebc32c78bfc2c6ebba390e78dafc32e6eddbac7e613ab3b4573f79cb1c01b2')
 
 ephemeral_port() {
   comm -23 <(seq 49152 65535) <(ss -tan | awk '{print $4}' | cut -d':' -f2 | grep "[0-9]\{1,5\}" | sort | uniq) | shuf | head -n 1
@@ -57,7 +57,7 @@ build() {
 
 check() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
-  make SYNCTHING_PORT=$(ephemeral_port) check
+  make SYNCTHING_PORT=$(ephemeral_port) SYNCTHING_TEST_TIMEOUT_FACTOR=3 check
 }
 
 package() {
