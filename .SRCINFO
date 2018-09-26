@@ -8,17 +8,17 @@ pkgbase = ros-melodic-common-msgs
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
-	depends = ros-melodic-sensor-msgs
-	depends = ros-melodic-diagnostic-msgs
 	depends = ros-melodic-actionlib-msgs
-	depends = ros-melodic-shape-msgs
-	depends = ros-melodic-visualization-msgs
-	depends = ros-melodic-geometry-msgs
-	depends = ros-melodic-stereo-msgs
 	depends = ros-melodic-trajectory-msgs
+	depends = ros-melodic-stereo-msgs
+	depends = ros-melodic-diagnostic-msgs
+	depends = ros-melodic-geometry-msgs
+	depends = ros-melodic-shape-msgs
 	depends = ros-melodic-nav-msgs
-	source = ros-melodic-common-msgs::git+https://github.com/ros-gbp/common_msgs-release.git
-	sha256sums = SKIP
+	depends = ros-melodic-visualization-msgs
+	depends = ros-melodic-sensor-msgs
+	source = ros-melodic-common-msgs-1.12.6-0.tar.gz::https://github.com/ros-gbp/common_msgs-release/archive/release/melodic/common_msgs/1.12.6-0.tar.gz
+	sha256sums = 317d4eacc0a2501522c6762100bf258a4c84748bae46781bae7e7af0c9ffb017
 
 pkgname = ros-melodic-common-msgs
 
