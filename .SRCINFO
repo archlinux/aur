@@ -1,17 +1,16 @@
 pkgbase = roboware-studio
 	pkgdesc = IDE for ROS(Robot Operating System) developers based on VSCode
-	pkgver = 1.0.2
-	pkgrel = 1512004582
+	pkgver = 1.2.0
+	pkgrel = 1524709819
 	url = http://www.roboware.me
 	install = roboware-studio.install
-	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = libnotify
 	depends = nss>=3.0.0
 	provides = roboware-studio
-	source = https://github.com/tonyrobotics/RoboWare/raw/master/Studio/roboware-studio_1.0.2-1512004582_amd64.deb
-	md5sums = 12d017bf513bc8d483f0b1246d5d904e
+	source = https://github.com/tonyrobotics/RoboWare/raw/master/Studio/roboware-studio_1.2.0-1524709819_amd64.deb
+	sha256sums = 64366ac8f16b1e87040cc20f6f9f2cefe07b2efa864862f9c9c04c7842133d1d
 
 pkgname = roboware-studio
 
