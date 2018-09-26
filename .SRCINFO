@@ -8,8 +8,8 @@ pkgbase = ros-melodic-angles
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
-	source = ros-melodic-angles::git+https://github.com/ros-gbp/geometry_angles_utils-release.git
-	sha256sums = SKIP
+	source = ros-melodic-angles-1.9.11-0.tar.gz::https://github.com/ros-gbp/geometry_angles_utils-release/archive/release/melodic/angles/1.9.11-0.tar.gz
+	sha256sums = e234fbb316d2e74febab2c47710ecb9c1c7231c439d68a2f8540b416245b2b9a
 
 pkgname = ros-melodic-angles
 
