@@ -9,8 +9,8 @@ pkgbase = ros-melodic-rosclean
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
 	depends = python-rospkg
-	source = ros-melodic-rosclean::git+https://github.com/ros-gbp/ros-release.git
-	sha256sums = SKIP
+	source = ros-melodic-rosclean-1.14.4-0.tar.gz::https://github.com/ros-gbp/ros-release/archive/release/melodic/rosclean/1.14.4-0.tar.gz
+	sha256sums = f2ec9270820dc79f021eb1f85ae0ea197496e4e0b8b67b87cdcf6ed5f1ff891d
 
 pkgname = ros-melodic-rosclean
 
