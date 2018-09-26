@@ -1,9 +1,9 @@
 # Maintainer: trougnouf (Benoit Brummer) <trougnouf at gmail dot com>
-# Last images added on 2018-08-12
+# Last images added on 2018-09-26
 
 pkgname="trougnouf-backgrounds"
-pkgver=1.4
-pkgrel=2
+pkgver=1.5
+pkgrel=1
 pkgdesc='Wallpapers created by User:Trougnouf, with gnome integration and transitions built-in'
 url='https://commons.wikimedia.org/wiki/User:Trougnouf'
 _url='https://commons.wikimedia.org/wiki/Special:Redirect/file/'
@@ -15,7 +15,7 @@ _images=('Inside_an_abandoned_military_building_in_Fort_de_la_Chartreuse,_Liege,
 	'Pears_covered_in_snow_at_Marché_de_Boitsfort_(Belgium).jpg'
 	'Fagne_Tirifaye_with_the_Hill_river_in_Waimes,_Belgium_(DSCF3679).jpg'
 	'View_through_the_shattered_glass_of_a_door_in_the_SNCB_B22490_type-K3_carriage,_looking_at_a_yellow_H._Weyhausen_KG_backhoe_loader_in_As,_Belgium_(DSCF3088-hdr).jpg'
-	'Stawamus Chief Provincial Park, BC (DSCF7828).jpg'
+	'Stawamus_Chief_Provincial_Park,_BC_(DSCF7828).jpg'
 	'Rock_dove_(Columba_livia)_standing_on_place_de_la_Bourse,_Brussels,_Belgium_(DSCF4429).jpg'
 	'Pipes_in_the_water_treatment_plant_of_an_abandoned_steel_factory_in_Oupeye,_Belgium_(DSCF3276).jpg'
 	'Water_treatment_plant_in_an_abandoned_steel_factory_in_Oupeye,_Belgium_(DSCF3285).jpg'
@@ -25,6 +25,7 @@ _images=('Inside_an_abandoned_military_building_in_Fort_de_la_Chartreuse,_Liege,
 	'Container_cranes_at_the_MPET-_MSC_PSA_European_Terminal_in_Port_of_Antwerp_(Kieldrecht,_Belgium)_during_the_sunset_civil_twilight_(DSCF3901).jpg'
 	'Parc_Tenreuken_looking_South_from_the_West_side_during_the_sunset_civil_twilight,_Auderghem,_Belgium_(DSCF3745,DSCF3746-b1).jpg'
 	'Beginning_of_Grande_Randonnée_en_Haute_Ardennes,_BE.jpg'
+	'Garden_of_Kunstberg_viewed_from_Mont_des_Arts_during_nautical_twilight_(DSCF1028).jpg'
 	'Antwerpen-Centraal_railway_station_platform_21,_Belgium_(DSCF4760).jpg'
 	)
 
@@ -42,7 +43,8 @@ _stimes=(
 	1920 # 17h16 to 17h48 = 32 minutes
 	1080 # 17h48 to 18h06 = 18 minutes
 	6540 # 18h06 to 19h55 = 109 minutes
-	10260 # 19h55 to 22h46 = 171 minutes
+	1800 # 19h55 to 20h25 = 30 minutes
+	8460 # 20h25 to 22h46 = 141 minutes
 	41400 # 22h46 to 10h16 = 690 minutes
 )
 	
@@ -60,6 +62,7 @@ sha256sums=('60da898f8fb43491594e7466f44294db43795d61de124f590eb2be2d42ea208a'
 	'21ca6228fa574de64975fb48306d59e98f345fcd75a2c5571d89216fa3ba8aa6'
 	'f8fc6e64a19fab1aa6a7c676ef7eb6978abed3a115e5d3a73bd2a6a583195651'
 	'decdcae46f94604ae65c0cc212e6eddd3eba16ec57613755afe5c75ab833cc1c'
+	'd830798e6d1964924f2384647951a15e7a9996f379675e4f4e738d13eea56648'
 	'3411929c2eb43edbc190dbb694f32b8257b13f953278f39e54a70178ca035e1c')
 
 source=("${_images[@]/#/${_url}}")
