@@ -8,20 +8,20 @@ pkgbase = ros-melodic-turtle-tf
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-tf
+	makedepends = ros-melodic-std-msgs
+	makedepends = ros-melodic-roscpp
 	makedepends = ros-melodic-turtlesim
 	makedepends = ros-melodic-catkin
 	makedepends = ros-melodic-geometry-msgs
 	makedepends = ros-melodic-rospy
-	makedepends = ros-melodic-roscpp
-	makedepends = ros-melodic-std-msgs
 	depends = ros-melodic-tf
+	depends = ros-melodic-std-msgs
+	depends = ros-melodic-roscpp
 	depends = ros-melodic-turtlesim
 	depends = ros-melodic-geometry-msgs
 	depends = ros-melodic-rospy
-	depends = ros-melodic-roscpp
-	depends = ros-melodic-std-msgs
-	source = ros-melodic-turtle-tf::git+https://github.com/ros-gbp/geometry_tutorials-release.git
-	sha256sums = SKIP
+	source = ros-melodic-turtle-tf-0.2.2-0.tar.gz::https://github.com/ros-gbp/geometry_tutorials-release/archive/release/melodic/turtle_tf/0.2.2-0.tar.gz
+	sha256sums = 182947fcfff5ec44a27e343306a78fd488fbcaff6d8ca894ed0646846293f02d
 
 pkgname = ros-melodic-turtle-tf
 
