@@ -1,11 +1,12 @@
-# Maintainer: Guillaume Duboc <guilduboc@gmail.com>
+# Maintainer: Max Zhao <alcasa.mz@gmail.com>
+# Contributor: Guillaume Duboc <guilduboc@gmail.com>
 
-pkgname=jupyterlab_launcher
+pkgname=jupyterlab_server
 pkgver=0.13.1
 pkgrel=1
 pkgdesc="Launch an application built using JupyterLab"
 arch=(any)
-url="https://github.com/jupyterlab/jupyterlab_launcher"
+url="https://github.com/jupyterlab/jupyterlab_server"
 license=(custom)
 depends=(jupyter-notebook)
 makedepends=(python-setuptools)
