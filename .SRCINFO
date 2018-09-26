@@ -8,18 +8,18 @@ pkgbase = ros-melodic-roslaunch
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
-	depends = ros-melodic-rosclean
-	depends = ros-melodic-rosmaster
+	depends = ros-melodic-rosunit
+	depends = ros-melodic-rosgraph-msgs
 	depends = ros-melodic-rosparam
 	depends = ros-melodic-roslib
-	depends = ros-melodic-rosgraph-msgs
+	depends = ros-melodic-rosclean
+	depends = ros-melodic-rosmaster
 	depends = ros-melodic-rosout
-	depends = ros-melodic-rosunit
-	depends = python-yaml
 	depends = python-rospkg
 	depends = python-paramiko
-	source = ros-melodic-roslaunch::git+https://github.com/ros-gbp/ros_comm-release.git
-	sha256sums = SKIP
+	depends = python-yaml
+	source = ros-melodic-roslaunch-1.14.3-0.tar.gz::https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/roslaunch/1.14.3-0.tar.gz
+	sha256sums = 6332d21a5e4ba14d3cdc2d0a0492eb1ba63615e78c63dfbb828df59c93c87e63
 
 pkgname = ros-melodic-roslaunch
 
