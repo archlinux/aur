@@ -1,0 +1,11 @@
+post_install() {
+    /opt/wingide-101/resources/linux/desktop/install-linux-desktop.sh --install
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    /opt/wingide-101/resources/linux/desktop/install-linux-desktop.sh --uninstall
+}
