@@ -7,17 +7,17 @@ pkgbase = ros-melodic-nodelet-topic-tools
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
 	makedepends = ros-melodic-dynamic-reconfigure
+	makedepends = ros-melodic-catkin
 	makedepends = boost
-	depends = ros-melodic-message-filters
 	depends = ros-melodic-pluginlib
-	depends = ros-melodic-dynamic-reconfigure
-	depends = ros-melodic-roscpp
 	depends = ros-melodic-nodelet
+	depends = ros-melodic-roscpp
+	depends = ros-melodic-dynamic-reconfigure
+	depends = ros-melodic-message-filters
 	depends = boost
-	source = ros-melodic-nodelet-topic-tools::git+https://github.com/ros-gbp/nodelet_core-release.git
-	sha256sums = SKIP
+	source = ros-melodic-nodelet-topic-tools-1.9.16-0.tar.gz::https://github.com/ros-gbp/nodelet_core-release/archive/release/melodic/nodelet_topic_tools/1.9.16-0.tar.gz
+	sha256sums = 39f55bdfb39c520b29a3c6004ca8d359a2e2ffc8da9ed254ba38c180bd035ae3
 
 pkgname = ros-melodic-nodelet-topic-tools
 
