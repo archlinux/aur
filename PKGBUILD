@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=lsp-git
-pkgver=0.2.0.r76.g8e31ae4
+pkgver=0.2.0.r80.g83465c0
 pkgrel=1
 epoch=
 pkgdesc="Lists files, like ls command, but more human-friendly."
@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/dborzov/lsp"
 license=('MIT')
 groups=()
-depends=('')
+depends=()
 makedepends=('git' 'go')
 optdepends=()
 checkdepends=()
