@@ -7,7 +7,7 @@ pkgbase = latexrun-git
 	license = MIT
 	makedepends = git
 	depends = python
-	source = git://github.com/aclements/latexrun.git
+	source = git+https://github.com/aclements/latexrun.git
 	sha256sums = SKIP
 
 pkgname = latexrun-git
