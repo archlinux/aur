@@ -9,8 +9,8 @@ pkgbase = ros-melodic-roscreate
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
 	depends = python-rospkg
-	source = ros-melodic-roscreate::git+https://github.com/ros-gbp/ros-release.git
-	sha256sums = SKIP
+	source = ros-melodic-roscreate-1.14.4-0.tar.gz::https://github.com/ros-gbp/ros-release/archive/release/melodic/roscreate/1.14.4-0.tar.gz
+	sha256sums = 2dedabc718b10e2d0cff9d2db00e02efa5deb7ac18514da414ac0da2cc3f7f70
 
 pkgname = ros-melodic-roscreate
 
