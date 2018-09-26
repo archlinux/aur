@@ -1,5 +1,5 @@
 pkgbase = cockatrice-server
-	pkgdesc = Open-source multiplatform supported program for playing tabletop card games over a network.
+	pkgdesc = Open-source multiplatform supported program for playing tabletop card games over a network - server package
 	pkgver = 2.6.1
 	pkgrel = 2
 	url = https://cockatrice.github.io/
@@ -10,8 +10,6 @@ pkgbase = cockatrice-server
 	depends = protobuf
 	depends = qt5-websockets
 	optdepends = mariadb: database support
-	provides = cockatrice-server
-	conflicts = cockatrice-server
 	source = https://github.com/Cockatrice/Cockatrice/archive/2018-07-17-Release-2.6.1.tar.gz
 	sha256sums = 3fbd3d51073f983602a78150e5e05b80e410a840a21e40c394f36d4b6f72b123
 
