@@ -8,15 +8,15 @@ pkgbase = ros-melodic-perception
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
-	depends = ros-melodic-image-common
+	depends = ros-melodic-vision-opencv
+	depends = ros-melodic-ros-base
 	depends = ros-melodic-perception-pcl
 	depends = ros-melodic-laser-pipeline
 	depends = ros-melodic-image-transport-plugins
-	depends = ros-melodic-ros-base
 	depends = ros-melodic-image-pipeline
-	depends = ros-melodic-vision-opencv
-	source = ros-melodic-perception::git+https://github.com/ros-gbp/metapackages-release.git
-	sha256sums = SKIP
+	depends = ros-melodic-image-common
+	source = ros-melodic-perception-1.4.1-0.tar.gz::https://github.com/ros-gbp/metapackages-release/archive/release/melodic/perception/1.4.1-0.tar.gz
+	sha256sums = f6024982eaa029dafbe20bd1e533f46766f9731a485a837e4a450331f5594126
 
 pkgname = ros-melodic-perception
 
