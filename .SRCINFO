@@ -8,10 +8,10 @@ pkgbase = ros-melodic-roslang
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
-	depends = ros-melodic-catkin
 	depends = ros-melodic-genmsg
-	source = ros-melodic-roslang::git+https://github.com/ros-gbp/ros-release.git
-	sha256sums = SKIP
+	depends = ros-melodic-catkin
+	source = ros-melodic-roslang-1.14.4-0.tar.gz::https://github.com/ros-gbp/ros-release/archive/release/melodic/roslang/1.14.4-0.tar.gz
+	sha256sums = cacf725972e3793c6fdd45c07a7bcede67199983256da856a39d60ccf6e55686
 
 pkgname = ros-melodic-roslang
 
