@@ -8,8 +8,8 @@ pkgbase = ros-melodic-qwt-dependency
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
-	source = ros-melodic-qwt-dependency::git+https://github.com/ros-gbp/qwt_dependency-release.git
-	sha256sums = SKIP
+	source = ros-melodic-qwt-dependency-1.1.0-0.tar.gz::https://github.com/ros-gbp/qwt_dependency-release/archive/release/melodic/qwt_dependency/1.1.0-0.tar.gz
+	sha256sums = 7d171d5a7bb5226de322e8146262b5ca73461ec9c71afc3675c5b353e90e42f5
 
 pkgname = ros-melodic-qwt-dependency
 
