@@ -8,14 +8,14 @@ pkgbase = ros-melodic-camera-calibration
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
-	depends = ros-melodic-sensor-msgs
-	depends = ros-melodic-message-filters
-	depends = ros-melodic-std-srvs
 	depends = ros-melodic-image-geometry
-	depends = ros-melodic-rospy
+	depends = ros-melodic-std-srvs
 	depends = ros-melodic-cv-bridge
-	source = ros-melodic-camera-calibration::git+https://github.com/ros-gbp/image_pipeline-release.git
-	sha256sums = SKIP
+	depends = ros-melodic-message-filters
+	depends = ros-melodic-sensor-msgs
+	depends = ros-melodic-rospy
+	source = ros-melodic-camera-calibration-1.12.23-0.tar.gz::https://github.com/ros-gbp/image_pipeline-release/archive/release/melodic/camera_calibration/1.12.23-0.tar.gz
+	sha256sums = 12493d808dd8edcdfa7e569b70cd8be685c22df027f8dc0fabe6d56ed25e2586
 
 pkgname = ros-melodic-camera-calibration
 
