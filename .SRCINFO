@@ -8,14 +8,14 @@ pkgbase = ros-melodic-message-generation
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
-	depends = ros-melodic-genpy
 	depends = ros-melodic-genmsg
-	depends = ros-melodic-geneus
 	depends = ros-melodic-gencpp
-	depends = ros-melodic-genlisp
+	depends = ros-melodic-geneus
 	depends = ros-melodic-gennodejs
-	source = ros-melodic-message-generation::git+https://github.com/ros-gbp/message_generation-release.git
-	sha256sums = SKIP
+	depends = ros-melodic-genlisp
+	depends = ros-melodic-genpy
+	source = ros-melodic-message-generation-0.4.0-0.tar.gz::https://github.com/ros-gbp/message_generation-release/archive/release/melodic/message_generation/0.4.0-0.tar.gz
+	sha256sums = e868cdae2dcb54701e86484cb186fad8814bbd295db8a0224c4c14c3651d9303
 
 pkgname = ros-melodic-message-generation
 
