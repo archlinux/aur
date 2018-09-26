@@ -12,8 +12,8 @@ pkgbase = ros-melodic-smach-msgs
 	makedepends = ros-melodic-std-msgs
 	depends = ros-melodic-message-runtime
 	depends = ros-melodic-std-msgs
-	source = ros-melodic-smach-msgs::git+https://github.com/ros-gbp/executive_smach-release.git
-	sha256sums = SKIP
+	source = ros-melodic-smach-msgs-2.0.1-0.tar.gz::https://github.com/ros-gbp/executive_smach-release/archive/release/melodic/smach_msgs/2.0.1-0.tar.gz
+	sha256sums = b42e7a31e5e9ee3fcec7388566ca1a78d2af773c2e0bc7428d4f2d62ed732bcf
 
 pkgname = ros-melodic-smach-msgs
 
