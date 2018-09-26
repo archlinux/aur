@@ -11,8 +11,8 @@ pkgbase = ros-melodic-orocos-kdl
 	depends = ros-melodic-catkin
 	depends = eigen3
 	depends = pkg-config
-	source = ros-melodic-orocos-kdl::git+https://github.com/orocos/orocos-kdl-release.git
-	sha256sums = SKIP
+	source = ros-melodic-orocos-kdl-1.4.0-0.tar.gz::https://github.com/orocos/orocos-kdl-release/archive/release/melodic/orocos_kdl/1.4.0-0.tar.gz
+	sha256sums = aa01563f804f8c52c6403b872b0a321abd916083757aebf25ac9530c7798830a
 
 pkgname = ros-melodic-orocos-kdl
 
