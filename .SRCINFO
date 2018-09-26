@@ -8,13 +8,13 @@ pkgbase = ros-melodic-diagnostics
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
-	depends = ros-melodic-diagnostic-analysis
 	depends = ros-melodic-diagnostic-common-diagnostics
-	depends = ros-melodic-diagnostic-updater
 	depends = ros-melodic-self-test
+	depends = ros-melodic-diagnostic-updater
 	depends = ros-melodic-diagnostic-aggregator
-	source = ros-melodic-diagnostics::git+https://github.com/ros-gbp/diagnostics-release.git
-	sha256sums = SKIP
+	depends = ros-melodic-diagnostic-analysis
+	source = ros-melodic-diagnostics-1.9.3-0.tar.gz::https://github.com/ros-gbp/diagnostics-release/archive/release/melodic/diagnostics/1.9.3-0.tar.gz
+	sha256sums = dec737018e36952a217efb3fda54489da280470d5230f4a5fa282027317cc03f
 
 pkgname = ros-melodic-diagnostics
 
