@@ -1,6 +1,6 @@
 pkgbase = unity-editor-doc
 	pkgdesc = Unity User Manual and Scripting API Reference.
-	pkgver = 2018.2.7f1
+	pkgver = 2018.2.9f1
 	pkgrel = 1
 	url = https://unity3d.com/
 	arch = x86_64
