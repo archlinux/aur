@@ -7,11 +7,11 @@ pkgbase = ros-melodic-gencpp
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
 	makedepends = ros-melodic-genmsg
+	makedepends = ros-melodic-catkin
 	depends = ros-melodic-genmsg
-	source = ros-melodic-gencpp::git+https://github.com/ros-gbp/gencpp-release.git
-	sha256sums = SKIP
+	source = ros-melodic-gencpp-0.6.0-0.tar.gz::https://github.com/ros-gbp/gencpp-release/archive/release/melodic/gencpp/0.6.0-0.tar.gz
+	sha256sums = 3483272e493d96d2528ddb2970fd2cb8d23f6cea386168d0e8dbd526063ff361
 
 pkgname = ros-melodic-gencpp
 
