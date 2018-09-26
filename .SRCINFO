@@ -9,12 +9,12 @@ pkgbase = ros-melodic-rqt-top
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
 	depends = ros-melodic-rqt-gui
-	depends = ros-melodic-python-qt-binding
 	depends = ros-melodic-rqt-gui-py
+	depends = ros-melodic-python-qt-binding
 	depends = ros-melodic-rospy
 	depends = python-psutil
-	source = ros-melodic-rqt-top::git+https://github.com/ros-gbp/rqt_top-release.git
-	sha256sums = SKIP
+	source = ros-melodic-rqt-top-0.4.8-0.tar.gz::https://github.com/ros-gbp/rqt_top-release/archive/release/melodic/rqt_top/0.4.8-0.tar.gz
+	sha256sums = 06a64dcb66e010ec7fa6e474dcd0b50efac71516ecb6a247c38652d309ee7c8a
 
 pkgname = ros-melodic-rqt-top
 
