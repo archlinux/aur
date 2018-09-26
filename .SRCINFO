@@ -7,16 +7,16 @@ pkgbase = ros-melodic-kdl-parser-py
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	makedepends = ros-melodic-orocos-kdl
 	makedepends = ros-melodic-urdf
+	makedepends = ros-melodic-orocos-kdl
+	makedepends = ros-melodic-catkin
 	makedepends = python-catkin_pkg
-	depends = ros-melodic-python-orocos-kdl
 	depends = ros-melodic-urdfdom-py
-	depends = ros-melodic-urdf
+	depends = ros-melodic-python-orocos-kdl
 	depends = ros-melodic-orocos-kdl
-	source = ros-melodic-kdl-parser-py::git+https://github.com/ros-gbp/kdl_parser-release.git
-	sha256sums = SKIP
+	depends = ros-melodic-urdf
+	source = ros-melodic-kdl-parser-py-1.13.1-0.tar.gz::https://github.com/ros-gbp/kdl_parser-release/archive/release/melodic/kdl_parser_py/1.13.1-0.tar.gz
+	sha256sums = 66da27c1d53a445cc5334768a54a2f792df8c46475fe24a91ff486675082c86a
 
 pkgname = ros-melodic-kdl-parser-py
 
