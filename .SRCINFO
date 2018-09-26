@@ -10,8 +10,8 @@ pkgbase = ros-melodic-vision-opencv
 	makedepends = ros-melodic-catkin
 	depends = ros-melodic-cv-bridge
 	depends = ros-melodic-image-geometry
-	source = ros-melodic-vision-opencv::git+https://github.com/ros-gbp/vision_opencv-release.git
-	sha256sums = SKIP
+	source = ros-melodic-vision-opencv-1.13.0-0.tar.gz::https://github.com/ros-gbp/vision_opencv-release/archive/release/melodic/vision_opencv/1.13.0-0.tar.gz
+	sha256sums = 21275f9903d17bd95c5f01a674548451006a015a2c43b4da143bb7c149667404
 
 pkgname = ros-melodic-vision-opencv
 
