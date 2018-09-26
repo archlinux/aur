@@ -14,7 +14,7 @@ typedef enum api_providers {
 } Api_Provider;
 
 typedef enum data_level {
-    DATA_LEVEL_ALL, DATA_LEVEL_CHECK, DATA_LEVEL_MISC, DATA_LEVEL_NEWS
+    DATA_LEVEL_ALL, DATA_LEVEL_CHECK, DATA_LEVEL_MISC, DATA_LEVEL_NEWS, DATA_LEVEL_GRAPH
 } Data_Level;
 
 #define CELL_MAX_LENGTH 16

@@ -158,6 +158,8 @@ String* api_iex_get_data_string(char** symbol_array, size_t len,
         strcpy(endpoints, "quote,chart,company,stats,peers,news,earnings&range=5y");
     else if (data_level == DATA_LEVEL_CHECK)
         strcpy(endpoints, "quote,chart");
+    else if (data_level == DATA_LEVEL_GRAPH)
+        strcpy(endpoints, "quote,chart&range=5y");
     else if (data_level == DATA_LEVEL_MISC)
         strcpy(endpoints, "company,stats,peers,news,earnings&range=5y");
     else strcpy(endpoints, "news");

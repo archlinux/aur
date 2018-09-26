@@ -399,7 +399,7 @@ void peers_printw(WINDOW* window, const Info* symbol_info) {
 void graph_print(const char* symbol, const char* symbol2) {
     Info* symbol_info = info_init(), * symbol_info2 = NULL;
     strcpy(symbol_info->symbol, symbol);
-    api_store_info(symbol_info, DATA_LEVEL_CHECK);
+    api_store_info(symbol_info, DATA_LEVEL_GRAPH);
     if (symbol_info->api_provider == EMPTY || symbol_info->points == NULL) {
         info_destroy(&symbol_info);
         RET_MSG("Invalid symbol")
@@ -408,7 +408,7 @@ void graph_print(const char* symbol, const char* symbol2) {
     if (symbol2 != NULL) {
         symbol_info2 = info_init();
         strcpy(symbol_info2->symbol, symbol2);
-        api_store_info(symbol_info2, DATA_LEVEL_CHECK);
+        api_store_info(symbol_info2, DATA_LEVEL_GRAPH);
         if (symbol_info2->api_provider ==  EMPTY || symbol_info2->points == NULL) {
             info_destroy(&symbol_info);
             info_destroy(&symbol_info2);
