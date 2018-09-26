@@ -1,6 +1,6 @@
 pkgbase = unity-editor-lts-ios
 	pkgdesc = Allows building your Unity projects for the iOS platform
-	pkgver = 2017.4.10f1
+	pkgver = 2017.4.11f1
 	pkgrel = 1
 	url = https://unity3d.com/
 	arch = x86_64
