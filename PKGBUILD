@@ -1,17 +1,17 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=abduco-git
-pkgver=0.r155.a1db9e2
+pkgver=0.r174.8f80aa8
 pkgrel=1
 pkgdesc="A session management and attach/detach functionality (to use together with dvtm(1))."
 arch=('i686' 'x86_64')
 url="http://www.brain-dump.org/projects/abduco/"
 license=('BSD')
 groups=()
-depends=('')
+depends=()
 makedepends=('git')
 optdepends=('dvtm')
-provides=()
-conflicts=('abduco')
+provides=("${pkgname%-*}")
+conflicts=("${pkgname%-*}")
 replaces=()
 backup=()
 options=()
