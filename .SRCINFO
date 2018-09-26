@@ -8,8 +8,8 @@ pkgbase = ros-melodic-smclib
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
-	source = ros-melodic-smclib::git+https://github.com/ros-gbp/bond_core-release.git
-	sha256sums = SKIP
+	source = ros-melodic-smclib-1.8.2-0.tar.gz::https://github.com/ros-gbp/bond_core-release/archive/release/melodic/smclib/1.8.2-0.tar.gz
+	sha256sums = 044d8721cbfa0c1af2b472716d2082db1c019a51e15dedbed858dc917ec85290
 
 pkgname = ros-melodic-smclib
 
