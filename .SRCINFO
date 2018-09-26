@@ -7,11 +7,11 @@ pkgbase = ros-melodic-geneus
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
 	makedepends = ros-melodic-genmsg
+	makedepends = ros-melodic-catkin
 	depends = ros-melodic-genmsg
-	source = ros-melodic-geneus::git+https://github.com/tork-a/geneus-release.git
-	sha256sums = SKIP
+	source = ros-melodic-geneus-2.2.6-0.tar.gz::https://github.com/tork-a/geneus-release/archive/release/melodic/geneus/2.2.6-0.tar.gz
+	sha256sums = aadb96f7266f5584813ea6033317b1decf6a7358d01cf257239ae4c04ffb67c6
 
 pkgname = ros-melodic-geneus
 
