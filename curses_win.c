@@ -444,19 +444,12 @@ void graph_printw(WINDOW* window, Info* symbol_info, Info* symbol_info2) {
     // Calculate total number of trading days between today and five years ago
     int trading_days = (int) ((1.0 / DAYS_TO_BUSINESS_DAYS_RATIO) * seconds / 86400.0);
 
-    int total_data_points = 0, total_data_points2 = 0;
-    for (int i = 0; symbol_info->points[i] != '\0'; i++) // Calculate total number of data points in the security. This may not
-        total_data_points++;                    // be equal to trading days if the security is younger than 5 years old
+    // If younger than 5 years, realloc with num of trading days and fill with EMPTY
+    if (trading_days - symbol_info->num_points > 0)
+        info_chart_fill_empty(symbol_info, trading_days);
 
-    if (trading_days - total_data_points > 0) // If younger than 5, realloc with num of trading days and fill with EMPTY
-        symbol_info->points = graph_fill_empty(symbol_info->points, total_data_points, trading_days);
-
-    if (symbol_info2 != NULL) {
-        for (int i = 0; symbol_info2->points[i] != '\0'; i++)
-            total_data_points2++;
-        if (trading_days - total_data_points2 > 0)
-            symbol_info2->points = graph_fill_empty(symbol_info2->points, total_data_points2, trading_days);
-    }
+    if (symbol_info2 != NULL && trading_days - symbol_info2->num_points > 0)
+        info_chart_fill_empty(symbol_info2, trading_days);
 
     int ch, zoom = ZOOM_5y;
     graph_draw(window, symbol_info, symbol_info2, &start_date, zoom); // Initial graph of 5 year history
@@ -618,15 +611,4 @@ void graph_draw(WINDOW* window, Info* symbol_info, Info* symbol_info2, struct tm
         wattroff(window, A_STANDOUT);
         waddch(window, ' ');
     }
-}
-
-double* graph_fill_empty(double* points, int size, int trading_days) {
-    int difference = trading_days - size;
-    points = realloc(points, (size_t) sizeof(double) * (trading_days + 1)); // Realloc for number of trading days
-    pointer_alloc_check(points);
-    points[trading_days] = '\0';
-    memmove(&points[difference], points, sizeof(double) * size); // Move points to end
-    for (int i = 0; i < difference; i++) // Initialize newly allocated bytes as EMPTY
-        points[i] = EMPTY;
-    return points;
 }

@@ -391,6 +391,14 @@ int ref_data_get_index_from_symbol_bsearch(const Ref_Data* pRef_Data, const char
 Info* info_array_find_symbol_recursive(const Info_Array* pInfo_Array, const char* symbol);
 
 /**
+ * Reallocates pInfo->points with size trading days. Moves all values to end of the array and sets
+ * values not initialized as EMPTY.
+ * @param pInfo the Info to modify
+ * @param trading_days the size to realloc
+ */
+void info_chart_fill_empty(Info* pInfo, int trading_days);
+
+/**
  * Destroys Ref_Data object and frees memory. Sets the pointer of the Ref_Data to NULL
  * @param phRef_Data the Ref_Data to destroy
  */

@@ -148,14 +148,4 @@ void graph_printw(WINDOW* window, Info* symbol_info, Info* symbol_info2);
  */
 void graph_draw(WINDOW* window, Info* symbol_info, Info* symbol_info2, struct tm* start_time, int zoom);
 
-/**
- * Reallocates the given array with size trading days. Moves all values to end of the array and sets
- * values not initialized as EMPTY.
- * @param points the array to realloc
- * @param size the size of points
- * @param trading_days the size to realloc
- * @return the reallocated array
- */
-double* graph_fill_empty(double* points, int size, int trading_days);
-
 #endif

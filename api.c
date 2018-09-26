@@ -278,28 +278,29 @@ void* api_alphavantage_store_info(void* vpInfo) {
 
     symbol_info->api_provider = API_PROVIDER_ALPHAVANTAGE;
 
-    size_t len = string_get_num_lines(pString) - 1, idx = 0;
-    if (len > 1260) // 5 years
-        len = 1260;
+    symbol_info->num_points = (int) string_get_num_lines(pString) - 1;
+    size_t idx = 0;
+    if (symbol_info->num_points > 1260) // 5 years
+        symbol_info->num_points = 1260;
 
-    symbol_info->points = calloc(len + 1, sizeof(double));
+    symbol_info->points = calloc((size_t) symbol_info->num_points, sizeof(double));
     pointer_alloc_check(symbol_info->points);
 
     csv_goto_next_line(pString, &idx); // skip columns line
-    for (int i = (int) len - 1; i >= 0; i--) {
+    for (int i = symbol_info->num_points - 1; i >= 0; i--) {
         for (size_t j = 0; j < 4; j++)
             csv_goto_next_value(pString, &idx);
 
         symbol_info->points[i] = csv_read_next_double(pString, &idx);
-        if (symbol_info->points[i] == 0 && i < (int) len - 1) // API Error
+        if (symbol_info->points[i] == 0 && i < symbol_info->num_points - 1) // API Error
             symbol_info->points[i] = symbol_info->points[i + 1];
         csv_goto_next_line(pString, &idx);
     }
 
-    symbol_info->price = symbol_info->points[len - 1];
-    symbol_info->price_last_close = symbol_info->points[len - 2];
-    symbol_info->price_7d = symbol_info->points[len - 6];
-    symbol_info->price_30d = symbol_info->points[len - 22];
+    symbol_info->price = symbol_info->points[symbol_info->num_points - 1];
+    symbol_info->price_last_close = symbol_info->points[symbol_info->num_points - 2];
+    symbol_info->price_7d = symbol_info->points[symbol_info->num_points - 6];
+    symbol_info->price_30d = symbol_info->points[symbol_info->num_points - 22];
     string_destroy(&pString);
     return vpInfo;
 }
@@ -529,19 +530,19 @@ void info_store_quote_json(Info* pInfo, const Json* jquote) {
 
 void info_store_chart_json(Info* pInfo, const Json* jchart) {
     free(pInfo->points);
-    size_t len = json_object_array_length(jchart);
-    pInfo->points = calloc(len + 1, sizeof(double));
+    pInfo->num_points = (int) json_object_array_length(jchart);
+    pInfo->points = calloc((size_t) pInfo->num_points, sizeof(double));
     pointer_alloc_check(pInfo->points);
-    for (size_t i = 0; i < len; i++)
+    for (int i = 0; i < pInfo->num_points; i++)
         pInfo->points[i] = json_object_get_double(
                 json_object_object_get(json_object_array_get_idx(jchart, i), "close"));
     if (pInfo->price_last_close == EMPTY) // May be 0 over weekend, so get last close from points array
-        pInfo->price_last_close = pInfo->points[len - 1];
-    if (len > 5)
-        pInfo->price_7d = pInfo->points[len - 5];
-    if (len > 21)
-        pInfo->price_30d = pInfo->points[len - 21];
-    if (len < 25) // 1 month api data
+        pInfo->price_last_close = pInfo->points[pInfo->num_points - 1];
+    if (pInfo->num_points > 5)
+        pInfo->price_7d = pInfo->points[pInfo->num_points - 5];
+    if (pInfo->num_points > 21)
+        pInfo->price_30d = pInfo->points[pInfo->num_points - 21];
+    if (pInfo->num_points < 25) // 1 month api data
         pInfo->price_30d = pInfo->points[0];
 }
 
@@ -714,6 +715,19 @@ Info* info_array_find_symbol_recursive(const Info_Array* pInfo_Array, const char
             return pInfo;
     }
     return NULL;
+}
+
+void info_chart_fill_empty(Info* pInfo, int trading_days) {
+    // Realloc for number of trading days
+    pInfo->points = realloc(pInfo->points, sizeof(double) * trading_days);
+    pointer_alloc_check(pInfo->points);
+    // Move points to end
+    int difference = trading_days - pInfo->num_points;
+    memmove(&pInfo->points[difference], pInfo->points, sizeof(double) * pInfo->num_points);
+    for (int i = 0; i < difference; i++) // Initialize newly allocated bytes as EMPTY
+        pInfo->points[i] = EMPTY;
+
+    pInfo->num_points = trading_days;
 }
 
 void ref_data_destroy(Ref_Data** phRef_Data) {
