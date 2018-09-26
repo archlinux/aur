@@ -7,20 +7,20 @@ pkgbase = ros-melodic-rqt-rviz
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-rviz
 	makedepends = ros-melodic-pluginlib
-	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-rviz
 	makedepends = ros-melodic-rqt-gui-cpp
+	makedepends = ros-melodic-catkin
 	makedepends = ros-melodic-rqt-gui
 	makedepends = boost
 	makedepends = qt5-base
-	depends = ros-melodic-rqt-gui
+	depends = ros-melodic-pluginlib
 	depends = ros-melodic-rviz
 	depends = ros-melodic-rqt-gui-cpp
-	depends = ros-melodic-pluginlib
+	depends = ros-melodic-rqt-gui
 	depends = boost
-	source = ros-melodic-rqt-rviz::git+https://github.com/ros-gbp/rqt_rviz-release.git
-	sha256sums = SKIP
+	source = ros-melodic-rqt-rviz-0.6.0-0.tar.gz::https://github.com/ros-gbp/rqt_rviz-release/archive/release/melodic/rqt_rviz/0.6.0-0.tar.gz
+	sha256sums = 23e3aa89701e33665c95e1bd0f0df853a52a8bfd433c352071ba9ff597b8ecb7
 
 pkgname = ros-melodic-rqt-rviz
 
