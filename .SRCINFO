@@ -1,27 +1,11 @@
 pkgbase = wiking
-	pkgdesc = Next generating wiki software that doesn't suck.
+	pkgdesc = Next generation wiki written in Django with Markdown support
 	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/XenGi/WikiNG
-	install = wiking.install
+	url = https://gitlab.com/XenGi/WikiNG
 	arch = any
 	license = MIT
-	depends = python>=3.4
-	depends = python-django>=1.10
-	source = wiking::git+https://github.com/XenGi/WikiNG/archive/v1.0.0.tar.gz
-	sha256sums = SKIP
-
-pkgname = wiking
-
-pkgbase = wiking
-	pkgdesc = Next generating wiki software that doesn't suck.
-	pkgver = 1.0.0
-	pkgrel = 2
-	url = https://github.com/XenGi/WikiNG
-	arch = any
-	license = MIT
-	makedepends = go
-	source = wiking::git+https://github.com/XenGi/WikiNG.git#tag=1.0.0
+	source = wiking::git+https://gitlab.com/XenGi/WikiNG.git#tag=v1.0.0
 	sha256sums = SKIP
 
 pkgname = wiking
