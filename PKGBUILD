@@ -1,5 +1,5 @@
-# Script generated with import_catkin_packages.py.
-# For more information: https://github.com/bchretien/arch-ros-stacks.
+# Script generated with import_catkin_packages.py
+# For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - This package attempts to show the features of ROS python API step-by-step, including using messages, servers, parameters, etc."
 url='http://www.ros.org/wiki/rospy_tutorials'
 
@@ -10,70 +10,55 @@ arch=('any')
 pkgrel=1
 license=('BSD')
 
-ros_makedepends=(
-	ros-melodic-message-generation
-	ros-melodic-rostest
-	ros-melodic-catkin
-	ros-melodic-std-msgs
-)
+ros_makedepends=(ros-melodic-message-generation
+  ros-melodic-rostest
+  ros-melodic-catkin
+  ros-melodic-std-msgs)
+makedepends=('cmake' 'ros-build-tools'
+  ${ros_makedepends[@]})
 
-makedepends=(
-	'cmake'
-	'ros-build-tools'
-	${ros_makedepends[@]}
-)
+ros_depends=(ros-melodic-message-runtime
+  ros-melodic-std-msgs
+  ros-melodic-rospy)
+depends=(${ros_depends[@]})
 
-ros_depends=(
-	ros-melodic-std-msgs
-	ros-melodic-message-runtime
-	ros-melodic-rospy
-)
+# Git version (e.g. for debugging)
+# _tag=release/melodic/rospy_tutorials/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros_tutorials-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
 
-depends=(
-	${ros_depends[@]}
-)
-
-_dir=${pkgname}
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros_tutorials-release.git")
-sha256sums=('SKIP')
-
-prepare() {
-	cd ${srcdir}/${_dir}
-	git checkout upstream
-	_pkgname=$(echo ${pkgname} | sed 's/ros-lunar-//' | sed 's/-/_/g')
-
-	if [ -d ${_pkgname} ]; then
-		git subtree split -P ${_pkgname} --branch ${_pkgname}
-		git checkout ${_pkgname}
-	fi
-}
+# Tarball version (faster download)
+_dir="ros_tutorials-release-release-melodic-rospy_tutorials-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_tutorials-release/archive/release/melodic/rospy_tutorials/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('ebda2e7d90130d78a2cc812bc4c8e501e2d675930e91a426a99fc43c583dbe2c')
 
 build() {
-	# Use ROS environment variables.
-	source /usr/share/ros-build-tools/clear-ros-env.sh
-	[ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+  # Use ROS environment variables
+  source /usr/share/ros-build-tools/clear-ros-env.sh
+  [ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
 
-	# Create the build directory.
-	[ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-	cd ${srcdir}/build
+  # Create build directory
+  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
+  cd ${srcdir}/build
 
-	# Fix Python2/Python3 conflicts.
-	/usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
+  # Fix Python2/Python3 conflicts
+  /usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
 
-	# Build the project.
-	cmake ${srcdir}/${_dir} \
-		-DCMAKE_BUILD_TYPE=Release \
-		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
-		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
-		-DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-		-DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-		-DPYTHON_BASENAME=.cpython-37m \
-		-DSETUPTOOLS_DEB_LAYOUT=OFF
-	make
+  # Build project
+  cmake ${srcdir}/${_dir} \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCATKIN_BUILD_BINARY_PACKAGE=ON \
+        -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
+        -DPYTHON_EXECUTABLE=/usr/bin/python3 \
+        -DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
+        -DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
+        -DPYTHON_BASENAME=.cpython-37m \
+        -DSETUPTOOLS_DEB_LAYOUT=OFF
+  make
 }
 
 package() {
-	cd "${srcdir}/build"
-	make DESTDIR="${pkgdir}/" install
+  cd "${srcdir}/build"
+  make DESTDIR="${pkgdir}/" install
 }
