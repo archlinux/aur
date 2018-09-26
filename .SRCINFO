@@ -9,8 +9,8 @@ pkgbase = ros-melodic-webkit-dependency
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
 	depends = python-pyqt5
-	source = ros-melodic-webkit-dependency::git+https://github.com/ros-gbp/webkit_dependency-release.git
-	sha256sums = SKIP
+	source = ros-melodic-webkit-dependency-1.1.0-0.tar.gz::https://github.com/ros-gbp/webkit_dependency-release/archive/release/melodic/webkit_dependency/1.1.0-0.tar.gz
+	sha256sums = a187ab79ea2545b2dec0f48d74af9b4f3875f73ac649c8527e54e9ea6cda0e29
 
 pkgname = ros-melodic-webkit-dependency
 
