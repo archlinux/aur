@@ -9,14 +9,14 @@ pkgbase = ros-melodic-tf2-eigen
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
 	makedepends = ros-melodic-tf2
-	makedepends = ros-melodic-cmake-modules
 	makedepends = ros-melodic-geometry-msgs
+	makedepends = ros-melodic-cmake-modules
 	makedepends = eigen3
-	depends = ros-melodic-geometry-msgs
 	depends = ros-melodic-tf2
+	depends = ros-melodic-geometry-msgs
 	depends = eigen3
-	source = ros-melodic-tf2-eigen::git+https://github.com/ros-gbp/geometry2-release.git
-	sha256sums = SKIP
+	source = ros-melodic-tf2-eigen-0.6.3-0.tar.gz::https://github.com/ros-gbp/geometry2-release/archive/release/melodic/tf2_eigen/0.6.3-0.tar.gz
+	sha256sums = a5b888eb955c7663698c4785092512af3e80cb886d10df3ae3ef5ed6598a67f2
 
 pkgname = ros-melodic-tf2-eigen
 
