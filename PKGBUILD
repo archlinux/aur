@@ -4,7 +4,7 @@ pkgdesc="ROS - C++ implementation of bond, a mechanism for checking when another
 url='http://www.ros.org/wiki/bondcpp'
 
 pkgname='ros-melodic-bondcpp'
-pkgver='1.8.2'
+pkgver='1.8.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
