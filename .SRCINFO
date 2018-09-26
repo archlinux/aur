@@ -8,12 +8,12 @@ pkgbase = ros-melodic-roscpp-core
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
-	depends = ros-melodic-roscpp-serialization
-	depends = ros-melodic-cpp-common
 	depends = ros-melodic-roscpp-traits
+	depends = ros-melodic-cpp-common
+	depends = ros-melodic-roscpp-serialization
 	depends = ros-melodic-rostime
-	source = ros-melodic-roscpp-core::git+https://github.com/ros-gbp/roscpp_core-release.git
-	sha256sums = SKIP
+	source = ros-melodic-roscpp-core-0.6.11-0.tar.gz::https://github.com/ros-gbp/roscpp_core-release/archive/release/melodic/roscpp_core/0.6.11-0.tar.gz
+	sha256sums = f195a1b5f4eccdfc3f0ffe2e409fff600f0d65eb9c3c9b158eea1604bbee0e2d
 
 pkgname = ros-melodic-roscpp-core
 
