@@ -9,15 +9,15 @@ pkgbase = ros-melodic-transmission-interface
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-pluginlib
 	makedepends = ros-melodic-catkin
-	makedepends = ros-melodic-cmake-modules
 	makedepends = ros-melodic-roscpp
 	makedepends = ros-melodic-hardware-interface
+	makedepends = ros-melodic-cmake-modules
 	makedepends = tinyxml
-	depends = ros-melodic-roscpp
 	depends = ros-melodic-pluginlib
+	depends = ros-melodic-roscpp
 	depends = tinyxml
-	source = ros-melodic-transmission-interface::git+https://github.com/ros-gbp/ros_control-release.git
-	sha256sums = SKIP
+	source = ros-melodic-transmission-interface-0.15.0-0.tar.gz::https://github.com/ros-gbp/ros_control-release/archive/release/melodic/transmission_interface/0.15.0-0.tar.gz
+	sha256sums = ae0e0282298aee03b57fe7464feba14e12c9f7e4f056c8555e4b80124b50f52b
 
 pkgname = ros-melodic-transmission-interface
 
