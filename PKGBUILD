@@ -1,8 +1,8 @@
 # Maintainer: Oscar Morante <spacepluk@gmail.com>
 
-_version=2018.2.7
+_version=2018.2.9
 _build=f1
-_randomstring=4ebd28dd9664
+_randomstring=2207421190e9
 _prefix=/opt/Unity
 
 pkgname=unity-editor
@@ -40,7 +40,7 @@ source=("https://download.unity3d.com/download_unity/${_randomstring}/LinuxEdito
         'unity-editor.desktop'
         'unity-editor-icon.png'
         'eula.txt')
-sha1sums=('4b7e07b42e7d1731692d1103b9e19cf346289626'
+sha1sums=('6a356d2e199f7ca162c77903e688e2eae6272d32'
           'c3727d6851a3ffd0aef9b380e2485eed9f02ef6b'
           '6ba1a3051bc0d5ed08e2fa4551d0f6c679109176'
           'fddf4861974f88f0565de7f54f7418204e729894'
