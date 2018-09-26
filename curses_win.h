@@ -16,7 +16,6 @@
 
 #define ROWS_SPACING 5
 #define COLS_SPACING 12
-#define DAYS_TO_BUSINESS_DAYS_RATIO (29.0/20.0)
 
 #define RED COLOR_PAIR(1)
 #define BLACK COLOR_PAIR(2)

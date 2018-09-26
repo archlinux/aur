@@ -28,6 +28,8 @@ typedef enum data_level {
 #define QUARTERS 4
 #define EMPTY (-999)
 
+#define DAYS_TO_BUSINESS_DAYS_RATIO (365.25 / 251.89)
+
 #include <stddef.h>
 #include <curl/curl.h>
 #include <json-c/json_tokener.h>
