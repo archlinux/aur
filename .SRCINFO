@@ -1,0 +1,20 @@
+pkgbase = pac-util-git
+	pkgdesc = A pacman maintenance utility
+	pkgver = 1.r6.g6b6aabc
+	pkgrel = 1
+	url = https://github.com/jadenPete/pac
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = expac
+	depends = ncurses
+	depends = pacman-contrib
+	optdepends = trizen: AUR support
+	optdepends = yay: AUR support
+	provides = pac-util
+	conflicts = pac-util
+	source = git+https://github.com/jadenPete/pac.git
+	sha256sums = SKIP
+
+pkgname = pac-util-git
+
