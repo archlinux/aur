@@ -10,15 +10,15 @@ pkgbase = ros-melodic-rqt-nav-view
 	makedepends = ros-melodic-catkin
 	depends = ros-melodic-rqt-gui-py
 	depends = ros-melodic-tf
-	depends = ros-melodic-python-qt-binding
-	depends = ros-melodic-geometry-msgs
-	depends = ros-melodic-rospy
-	depends = ros-melodic-rqt-gui
 	depends = ros-melodic-rqt-py-common
+	depends = ros-melodic-geometry-msgs
 	depends = ros-melodic-qt-gui
+	depends = ros-melodic-rqt-gui
 	depends = ros-melodic-nav-msgs
-	source = ros-melodic-rqt-nav-view::git+https://github.com/ros-gbp/rqt_nav_view-release.git
-	sha256sums = SKIP
+	depends = ros-melodic-python-qt-binding
+	depends = ros-melodic-rospy
+	source = ros-melodic-rqt-nav-view-0.5.7-0.tar.gz::https://github.com/ros-gbp/rqt_nav_view-release/archive/release/melodic/rqt_nav_view/0.5.7-0.tar.gz
+	sha256sums = a531ad91a1753f9dd2b74d56b519c52aebeac013373f76c6e4e6b19c66ca46a0
 
 pkgname = ros-melodic-rqt-nav-view
 
