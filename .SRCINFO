@@ -7,18 +7,18 @@ pkgbase = ros-melodic-qt-gui-cpp
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-python-qt-binding
-	makedepends = ros-melodic-catkin
-	makedepends = ros-melodic-cmake-modules
 	makedepends = ros-melodic-pluginlib
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-python-qt-binding
+	makedepends = ros-melodic-cmake-modules
 	makedepends = tinyxml
-	makedepends = pkg-config
 	makedepends = qt5-base
-	depends = ros-melodic-qt-gui
+	makedepends = pkg-config
 	depends = ros-melodic-pluginlib
+	depends = ros-melodic-qt-gui
 	depends = tinyxml
-	source = ros-melodic-qt-gui-cpp::git+https://github.com/ros-gbp/qt_gui_core-release.git
-	sha256sums = SKIP
+	source = ros-melodic-qt-gui-cpp-0.3.11-0.tar.gz::https://github.com/ros-gbp/qt_gui_core-release/archive/release/melodic/qt_gui_cpp/0.3.11-0.tar.gz
+	sha256sums = fbbba01e82d3c63dfeab0fdc9caac8916de97295a8e8c08e715dc965e69dc545
 
 pkgname = ros-melodic-qt-gui-cpp
 
