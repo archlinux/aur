@@ -8,13 +8,13 @@ pkgbase = ros-melodic-geometry
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
-	depends = ros-melodic-kdl-conversions
-	depends = ros-melodic-tf-conversions
-	depends = ros-melodic-tf
 	depends = ros-melodic-eigen-conversions
 	depends = ros-melodic-angles
-	source = ros-melodic-geometry::git+https://github.com/ros-gbp/geometry-release.git
-	sha256sums = SKIP
+	depends = ros-melodic-tf
+	depends = ros-melodic-tf-conversions
+	depends = ros-melodic-kdl-conversions
+	source = ros-melodic-geometry-1.12.0-0.tar.gz::https://github.com/ros-gbp/geometry-release/archive/release/melodic/geometry/1.12.0-0.tar.gz
+	sha256sums = 6e5e79d8157d16ce6c27bc7b8f1e8411f0fea3a01698f69962746ec4af80e44d
 
 pkgname = ros-melodic-geometry
 
