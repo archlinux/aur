@@ -8,11 +8,11 @@ pkgbase = ros-melodic-ros-tutorials
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
-	depends = ros-melodic-turtlesim
 	depends = ros-melodic-roscpp-tutorials
+	depends = ros-melodic-turtlesim
 	depends = ros-melodic-rospy-tutorials
-	source = ros-melodic-ros-tutorials::git+https://github.com/ros-gbp/ros_tutorials-release.git
-	sha256sums = SKIP
+	source = ros-melodic-ros-tutorials-0.9.0-0.tar.gz::https://github.com/ros-gbp/ros_tutorials-release/archive/release/melodic/ros_tutorials/0.9.0-0.tar.gz
+	sha256sums = a1b47e4bd38407b0714b6598edaaef6d2fc222e123f98c2c12c9d9ee9d9799b8
 
 pkgname = ros-melodic-ros-tutorials
 
