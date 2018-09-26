@@ -35,8 +35,8 @@ source=("http://download.oracle.com/otn-pub/java/jdk/${pkgver}+${_build}/${_hash
         'java_16.png'
         'java_48.png')
 sha256sums=('246a0eba4927bf30180c573b73d55fc10e226c05b3236528c3a721dff3b50d32'
-            'ed7392cbad258da943d39e9a5fab1ee6ab6a287ac0c20172805d5dbfc5accedb'
-            'e8544f5384d541c16973543ace0f812e2dea657eed551a70baebb1a0cd9f3771'
+            'a7514af04107ed225ebafefd9997ee0332e8ecc4ef12a7dec5aaff7e8a2385d1'
+            'f0a863cfdf57e963d74a84b914096c79951e7a6001a35370acf4bebfc5f4a081'
             'd27fec1d74f7a3081c3d175ed184d15383666dc7f02cc0f7126f11549879c6ed'
             '7cf8ca096e6d6e425b3434446b0835537d0fc7fe64b3ccba7a55f7bd86c7e176')
             

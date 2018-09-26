@@ -14,8 +14,8 @@
 #
 [Desktop Entry]
 Encoding=UTF-8
-Name=Java <version>
-Comment=Java <version> Virtual Machine
+Name=Java
+Comment=Java Virtual Machine
 Exec=/usr/lib/jvm/java-<version>-jdk/bin/java -jar
 Icon=java-jdk<version>
 Terminal=false
