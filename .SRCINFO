@@ -12,7 +12,7 @@ pkgbase = dokku
 	depends = docker
 	depends = gliderlabs-sigil
 	depends = go
-	depends = herokuish>=0.4.3
+	depends = herokuish>=0.4.4
 	depends = lsb-release
 	depends = nginx
 	depends = openbsd-netcat

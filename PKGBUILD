@@ -14,7 +14,7 @@ depends=(
   'docker'
   'gliderlabs-sigil'
   'go'
-  'herokuish>=0.4.3'
+  'herokuish>=0.4.4'
   'lsb-release'
   'nginx'
   'openbsd-netcat'
