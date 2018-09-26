@@ -1,0 +1,5 @@
+linux-drm-intel-next-queued-git
+src
+pkg
+*.pkg.*
+*.pkg
