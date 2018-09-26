@@ -8,12 +8,12 @@ pkgbase = ros-melodic-viz
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
-	depends = ros-melodic-rqt-common-plugins
 	depends = ros-melodic-rviz
-	depends = ros-melodic-ros-base
+	depends = ros-melodic-rqt-common-plugins
 	depends = ros-melodic-rqt-robot-plugins
-	source = ros-melodic-viz::git+https://github.com/ros-gbp/metapackages-release.git
-	sha256sums = SKIP
+	depends = ros-melodic-ros-base
+	source = ros-melodic-viz-1.4.1-0.tar.gz::https://github.com/ros-gbp/metapackages-release/archive/release/melodic/viz/1.4.1-0.tar.gz
+	sha256sums = c2cdc23508adf393957c192b8d62b0278260342d34dbcc58a3bac3abbd61dcf4
 
 pkgname = ros-melodic-viz
 
