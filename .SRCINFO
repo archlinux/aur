@@ -8,15 +8,15 @@ pkgbase = ros-melodic-self-test
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-diagnostic-msgs
-	makedepends = ros-melodic-diagnostic-updater
-	makedepends = ros-melodic-catkin
 	makedepends = ros-melodic-rostest
+	makedepends = ros-melodic-diagnostic-updater
 	makedepends = ros-melodic-roscpp
-	depends = ros-melodic-diagnostic-updater
+	makedepends = ros-melodic-catkin
 	depends = ros-melodic-diagnostic-msgs
+	depends = ros-melodic-diagnostic-updater
 	depends = ros-melodic-roscpp
-	source = ros-melodic-self-test::git+https://github.com/ros-gbp/diagnostics-release.git
-	sha256sums = SKIP
+	source = ros-melodic-self-test-1.9.3-0.tar.gz::https://github.com/ros-gbp/diagnostics-release/archive/release/melodic/self_test/1.9.3-0.tar.gz
+	sha256sums = cf23d9e067a2cf40f2264386a257c0059656e83854509ad42c00b4c037a4d5a8
 
 pkgname = ros-melodic-self-test
 
