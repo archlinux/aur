@@ -1,0 +1,5 @@
+linux-drm-intel-testing-git
+src
+pkg
+*.pkg.*
+*.pkg
