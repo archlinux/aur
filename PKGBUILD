@@ -2,7 +2,7 @@
 # Contributor: 3ED_0 <krzysztof1987 at gmail>
 
 pkgname=valentina-studio
-pkgver=8.5.5
+pkgver=8.6
 pkgrel=1
 pkgdesc="Create, administer, query and explore Valentina DB, MySQL, MariaDB, PostgreSQL and SQLite databases for FREE."
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ license=('custom')
 makedepends=('')
 source_i686=("${pkgname}-${pkgver}-${CARCH}.rpm::http://www.valentina-db.com/en/studio/download/current/vstudio_lin_32_rpm?format=raw")
 source_x86_64=("${pkgname}-${pkgver}-${CARCH}.rpm::http://www.valentina-db.com/en/studio/download/current/vstudio_x64_lin-rpm?format=raw")
-sha256sums_i686=('2c495e0aa4062a6b107bed952bb50a99bff52fcc1672e63189ae734d9bffa602')
-sha256sums_x86_64=('54d5474dec7c1cefe1fec92ba7afad214f3ab8e5e874c4c86b9b599fa1ae0005')
+sha256sums_i686=('13907c2471bfe4efe635828150da2b6b9e80ae0f199797024b5c587ad5bf7a8a')
+sha256sums_x86_64=('f33553c807c107783c64f54071e562bceef92d351b5237368fe29894933a4835')
 
 package() {
 	install -d "${pkgdir}"/opt/VStudio
