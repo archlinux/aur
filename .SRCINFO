@@ -1,6 +1,6 @@
 pkgbase = ustreamer
 	pkgdesc = Lightweight and fast MJPG-HTTP streamer
-	pkgver = 0.6
+	pkgver = 0.7
 	pkgrel = 1
 	url = https://github.com/pi-kvm/ustreamer
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = ustreamer
 	makedepends = make
 	depends = libjpeg
 	depends = libevent
-	source = https://github.com/pi-kvm/ustreamer/archive/v0.6.tar.gz
+	source = https://github.com/pi-kvm/ustreamer/archive/v0.7.tar.gz
 	md5sums = SKIP
 
 pkgname = ustreamer
