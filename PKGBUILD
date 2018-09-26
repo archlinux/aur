@@ -20,13 +20,13 @@ depends=(
 	"python-setproctitle"
 )
 makedepends=("python-setuptools")
-source=("$url/archive/v$pkgver.tar.gz")
+source=("${url}/archive/v${pkgver}.tar.gz")
 md5sums=("SKIP")
 
 
 build() {
-	cd $srcdir
-	rm -rf $pkgname-build
+	cd ${srcdir}
+	rm -rf ${pkgname}-build
 	cp -r pi-kvm-$pkgver/kvmd $pkgname-build
 	cd $pkgname-build
 	python setup.py build
