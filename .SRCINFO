@@ -10,8 +10,8 @@ pkgbase = ros-melodic-rosunit
 	makedepends = ros-melodic-catkin
 	depends = ros-melodic-roslib
 	depends = python-rospkg
-	source = ros-melodic-rosunit::git+https://github.com/ros-gbp/ros-release.git
-	sha256sums = SKIP
+	source = ros-melodic-rosunit-1.14.4-0.tar.gz::https://github.com/ros-gbp/ros-release/archive/release/melodic/rosunit/1.14.4-0.tar.gz
+	sha256sums = 4032e544618fa4ffadb344a26d8eec0f1e91f6c5a60d42f13de15579b7be6f3a
 
 pkgname = ros-melodic-rosunit
 
