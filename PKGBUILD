@@ -2,7 +2,7 @@
 # Maintainer: Zeph <zeph33@gmail.com>
 
 pkgname=pamac-tray-appindicator
-_pkgver=7.1.0
+_pkgver=7.1.1
 pkgver=$_pkgver
 #pkgver=7.1.0rc3
 pkgrel=1
@@ -19,7 +19,7 @@ options=(!emptydirs)
 source=("pamac-$pkgver-$pkgrel.tar.gz::$url/-/archive/v$_pkgver/pamac-v$_pkgver.tar.gz")
  #       "pamac-$pkgver-$pkgrel.tar.gz::$url/-/archive/$_commit/pamac-$_commit.tar.gz")
 
-sha256sums=('3e6b922d7cefd2e08719d0d79c6a526bc1854e9b69d4c88cbfa50cafa154171e')
+sha256sums=('0f6a2cdc5f713bdae155936c881e1a85725b754e150da8902712047cfead8619')
 
 prepare() {
 #  mv "$srcdir/pamac-$_commit" "$srcdir/pamac-v$_pkgver"
