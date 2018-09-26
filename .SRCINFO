@@ -11,8 +11,8 @@ pkgbase = ros-melodic-rqt-action
 	depends = ros-melodic-rqt-msg
 	depends = ros-melodic-rqt-py-common
 	depends = ros-melodic-rospy
-	source = ros-melodic-rqt-action::git+https://github.com/ros-gbp/rqt_action-release.git
-	sha256sums = SKIP
+	source = ros-melodic-rqt-action-0.4.9-0.tar.gz::https://github.com/ros-gbp/rqt_action-release/archive/release/melodic/rqt_action/0.4.9-0.tar.gz
+	sha256sums = 5ac33f2d857d43c2c79f82f73070f6dec9bf326ea6bc0b3bce4e49c3d5b8c7d8
 
 pkgname = ros-melodic-rqt-action
 
