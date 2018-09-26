@@ -8,11 +8,11 @@ pkgbase = ros-melodic-perception-pcl
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
-	depends = ros-melodic-pcl-msgs
-	depends = ros-melodic-pcl-ros
 	depends = ros-melodic-pcl-conversions
-	source = ros-melodic-perception-pcl::git+https://github.com/ros-gbp/perception_pcl-release.git
-	sha256sums = SKIP
+	depends = ros-melodic-pcl-ros
+	depends = ros-melodic-pcl-msgs
+	source = ros-melodic-perception-pcl-1.6.2-0.tar.gz::https://github.com/ros-gbp/perception_pcl-release/archive/release/melodic/perception_pcl/1.6.2-0.tar.gz
+	sha256sums = 05249c482602e692fdbcc13a26ed22ac2b0de79d93c08661ec8bcd0b87b6f3ad
 
 pkgname = ros-melodic-perception-pcl
 
