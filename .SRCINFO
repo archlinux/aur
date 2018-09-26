@@ -1,0 +1,19 @@
+pkgbase = garrbox
+	pkgdesc = Synchronization client for GARR's GARRBox cloud service (based on ownCloud). Note: GARR does not provide official support for Arch Linux. Use at your own risk.
+	pkgver = 2.4.1_2374.1
+	pkgrel = 1
+	url = http://gbox.garr.it/
+	arch = x86_64
+	license = GPL
+	depends = neon
+	depends = qt5-webkit
+	depends = qtkeychain
+	provides = ocsync
+	provides = garrboxsync
+	source = https://gbox.garr.it/repos/Fedora_28/x86_64/garrbox-client-2.4.1-2374.1.x86_64.rpm
+	source = https://gbox.garr.it/repos/Fedora_28/x86_64/libgarrboxsync0-2.4.1-2374.1.x86_64.rpm
+	md5sums = 04e7bcb961216b51f1bccca8ac6a3377
+	md5sums = 6c38e7c952b6a1031c235995427fa055
+
+pkgname = garrbox
+
