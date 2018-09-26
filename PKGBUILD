@@ -1,6 +1,6 @@
 # Maintainer: Caleb Woodbine <calebwoodbine.public@gmail.com>
 pkgname=safesurfer-desktop
-pkgver=1.0.0b2
+pkgver=1.0.0b3
 pkgrel=1
 pkgdesc="Keep safe in the digitial surf with Safe Surfer."
 arch=('x86_64')

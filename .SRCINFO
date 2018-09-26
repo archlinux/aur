@@ -1,6 +1,6 @@
 pkgbase = safesurfer-desktop
 	pkgdesc = Keep safe in the digitial surf with Safe Surfer.
-	pkgver = 1.0.0b2
+	pkgver = 1.0.0b3
 	pkgrel = 1
 	url = https://gitlab.com/safesurfer/SafeSurfer-Desktop
 	arch = x86_64
