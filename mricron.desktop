@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=MRIcron
+Comment=Start MRIcron
+Exec=mricron %U
+Type=Application
+StartupNotify=true
+Categories=Graphics;MedicalSoftware;Science;
+X-Desktop-File-Install-Version=
+MimeType=

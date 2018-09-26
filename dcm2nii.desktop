@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=DCM2Nii
+Comment=Start DCM2Nii with gui
+Exec=dcm2niigui
+Type=Application
+StartupNotify=true
+Categories=Graphics;MedicalSoftware;Science;
+X-Desktop-File-Install-Version=
+MimeType=
