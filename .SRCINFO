@@ -7,11 +7,11 @@ pkgbase = ros-melodic-gennodejs
 	license = Apache 2.0
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
 	makedepends = ros-melodic-genmsg
+	makedepends = ros-melodic-catkin
 	depends = ros-melodic-genmsg
-	source = ros-melodic-gennodejs::git+https://github.com/RethinkRobotics-release/gennodejs-release.git
-	sha256sums = SKIP
+	source = ros-melodic-gennodejs-2.0.1-0.tar.gz::https://github.com/RethinkRobotics-release/gennodejs-release/archive/release/melodic/gennodejs/2.0.1-0.tar.gz
+	sha256sums = 09d5f9ee001d83dd19c111dc8c2d995b9e9a90e21df2a379b882ac555b9bc9b1
 
 pkgname = ros-melodic-gennodejs
 
