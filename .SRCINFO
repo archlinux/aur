@@ -13,12 +13,12 @@ pkgbase = ros-melodic-rqt-gui-cpp
 	makedepends = ros-melodic-qt-gui
 	makedepends = ros-melodic-nodelet
 	makedepends = qt5-base
-	depends = ros-melodic-qt-gui-cpp
 	depends = ros-melodic-roscpp
+	depends = ros-melodic-qt-gui-cpp
 	depends = ros-melodic-qt-gui
 	depends = ros-melodic-nodelet
-	source = ros-melodic-rqt-gui-cpp::git+https://github.com/ros-gbp/rqt-release.git
-	sha256sums = SKIP
+	source = ros-melodic-rqt-gui-cpp-0.5.0-0.tar.gz::https://github.com/ros-gbp/rqt-release/archive/release/melodic/rqt_gui_cpp/0.5.0-0.tar.gz
+	sha256sums = 29dd122311b73050bde2957210a6523688298a3c1993833b78ef18b80a671603
 
 pkgname = ros-melodic-rqt-gui-cpp
 
