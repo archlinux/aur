@@ -9,8 +9,8 @@ pkgbase = ros-melodic-gl-dependency
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
 	depends = python-pyqt5
-	source = ros-melodic-gl-dependency::git+https://github.com/ros-gbp/gl_dependency-release.git
-	sha256sums = SKIP
+	source = ros-melodic-gl-dependency-1.1.0-0.tar.gz::https://github.com/ros-gbp/gl_dependency-release/archive/release/melodic/gl_dependency/1.1.0-0.tar.gz
+	sha256sums = 268881107d9d7d88c38530235fe1c38bd6343ffa7d326c451136895e06f3422e
 
 pkgname = ros-melodic-gl-dependency
 
