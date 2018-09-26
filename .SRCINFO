@@ -8,12 +8,12 @@ pkgbase = ros-melodic-bond-core
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
-	depends = ros-melodic-bond
-	depends = ros-melodic-bondcpp
 	depends = ros-melodic-bondpy
+	depends = ros-melodic-bond
 	depends = ros-melodic-smclib
-	source = ros-melodic-bond-core::git+https://github.com/ros-gbp/bond_core-release.git
-	sha256sums = SKIP
+	depends = ros-melodic-bondcpp
+	source = ros-melodic-bond-core-1.8.2-0.tar.gz::https://github.com/ros-gbp/bond_core-release/archive/release/melodic/bond_core/1.8.2-0.tar.gz
+	sha256sums = 4719c67f54cfc4058cda65e676d5558d830f47c394f8c91ab4886e27595d66ff
 
 pkgname = ros-melodic-bond-core
 
