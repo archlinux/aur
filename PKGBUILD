@@ -51,7 +51,7 @@ _1k_HZ_ticks=
 pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
 _major=4.18
-_minor=9
+_minor=10
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
 pkgrel=1
@@ -376,7 +376,7 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('f0b8137a60ea3b7edb257a31d9c2b432db0d9af01f9b45b3ca3d8277f276ec1b8112e2daa744aa8eeee39df1ededed38495b952f22b0387b57822fde31eaa255'
+sha512sums=('bc03409cab11f85ecf0ea7a4b9629bb664c159dc894a433b0493d9be973be3865494aca27aacebb1712f014ccec07b2b6104cccb3a6cfae49a09c02b66d42381'
             'SKIP'
             'e62aa377a0acc4f63f394e27a0fb7316583ff1a6a6afdfcc97593ddffd7d2bc224cfd70b552cb3fb9513cf6b8db4c2fd913d21ec2380db8cd642e37d4d67370c'
             '534610014935cfb6510950bea56003b66fc7015734847756cb2d22a9a0b2cf3604fb33988793aefe56e2840285e4628e990d795e1362f99a3d594e9e756f2ade'
