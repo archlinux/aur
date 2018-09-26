@@ -1,17 +1,16 @@
-# Contributor: orumin <dev@orum.in>
+# Contributor: orumin <dev at orum.in>
 
 pkgname=ttf-koruri
-pkgver=20161105
+pkgver=20180915
 pkgrel=1
 pkgdesc="Japanese TrueType font obtained by mixing M+ and Open Sans"
 arch=('any')
-url="http://osdn.jp/projects/koruri"
+url="https://github.com/Koruri/Koruri"
 license=('APACHE')
 depends=('fontconfig' 'xorg-font-utils')
 install=ttf.install
-_mirror=iij
-source=("Koruri-${pkgver}.tar.xz::http://osdn.jp/frs/redir.php?m=${_mirror}&f=%2Fkoruri%2F66647%2FKoruri-${pkgver}.tar.xz")
-md5sums=('4fa941081153bc1e35b08fea11fe7926')
+source=("https://github.com/Koruri/Koruri/releases/download/Koruri-20180915/Koruri-20180915.tar.xz")
+sha256sums=('9cfd9a867f60b8da8653b87706b9bafc113bb477b5e72d1095f43117f7fb3366')
 
 package() {
     cd "${srcdir}"
