@@ -8,13 +8,13 @@ pkgbase = ros-melodic-roslisp
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
-	depends = ros-melodic-rosgraph-msgs
 	depends = ros-melodic-std-srvs
-	depends = ros-melodic-roslang
+	depends = ros-melodic-rosgraph-msgs
 	depends = ros-melodic-rospack
+	depends = ros-melodic-roslang
 	depends = sbcl
-	source = ros-melodic-roslisp::git+https://github.com/ros-gbp/roslisp-release.git
-	sha256sums = SKIP
+	source = ros-melodic-roslisp-1.9.21-0.tar.gz::https://github.com/ros-gbp/roslisp-release/archive/release/melodic/roslisp/1.9.21-0.tar.gz
+	sha256sums = f75e7abb1e744d5a6703b25356722dbe413f4d8626805aedf61a80ef95036da7
 
 pkgname = ros-melodic-roslisp
 
