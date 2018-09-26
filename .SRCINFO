@@ -8,19 +8,19 @@ pkgbase = ros-melodic-rqt-pose-view
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
-	depends = ros-melodic-rqt-gui-py
+	depends = ros-melodic-rostopic
 	depends = ros-melodic-tf
 	depends = ros-melodic-gl-dependency
-	depends = ros-melodic-python-qt-binding
-	depends = ros-melodic-rostopic
-	depends = ros-melodic-geometry-msgs
-	depends = ros-melodic-rospy
-	depends = ros-melodic-rqt-gui
 	depends = ros-melodic-rqt-py-common
+	depends = ros-melodic-geometry-msgs
+	depends = ros-melodic-rqt-gui-py
+	depends = ros-melodic-rqt-gui
+	depends = ros-melodic-python-qt-binding
+	depends = ros-melodic-rospy
 	depends = python-rospkg
 	depends = python-opengl
-	source = ros-melodic-rqt-pose-view::git+https://github.com/ros-gbp/rqt_pose_view-release.git
-	sha256sums = SKIP
+	source = ros-melodic-rqt-pose-view-0.5.8-0.tar.gz::https://github.com/ros-gbp/rqt_pose_view-release/archive/release/melodic/rqt_pose_view/0.5.8-0.tar.gz
+	sha256sums = 00e9962e4a7132dcb9082692fb49563d309b9e446b5eb17e65354dd7e1e24e4d
 
 pkgname = ros-melodic-rqt-pose-view
 
