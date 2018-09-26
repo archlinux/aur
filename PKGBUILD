@@ -1,6 +1,6 @@
 _pkgname=cros-container-guest-tools
 pkgname=${_pkgname}-git
-pkgver=r86.53b1b97
+pkgver=r95.be94afd
 pkgrel=1
 pkgdesc="Guest tools for the Crostini containers on ChromeOS"
 arch=('any')
@@ -64,6 +64,11 @@ package() {
 
 	### cros-guest-tools -> not applicable
 
+	### cros-notificationd
+
+	install -m644 -D ${srcdir}/${_pkgname}/cros-notificationd/org.freedesktop.Notifications.service \
+					 ${pkgdir}/usr/share/dbus-1/services/org.freedesktop.Notifications.service
+
 	### cros-sftp
 
 	install -m644 -D ${srcdir}/${_pkgname}/cros-sftp/cros-sftp.service \
@@ -89,15 +94,27 @@ package() {
 	sed -i 's|=/usr|=/opt/google/cros-containers|g' ${pkgdir}/usr/lib/systemd/user/sommelier-x@.service
 	ln -sf ../sommelier@.service \
 		   ${pkgdir}/usr/lib/systemd/user/default.target.wants/sommelier@0.service
+	ln -sf ../sommelier@.service \
+		   ${pkgdir}/usr/lib/systemd/user/default.target.wants/sommelier@1.service
 	ln -sf ../sommelier-x@.service \
 		   ${pkgdir}/usr/lib/systemd/user/default.target.wants/sommelier-x@0.service
+	ln -sf ../sommelier-x@.service \
+		   ${pkgdir}/usr/lib/systemd/user/default.target.wants/sommelier-x@1.service
 
 	### cros-sommelier-config
 
 	install -m644 -D ${srcdir}/${_pkgname}/cros-sommelier-config/cros-sommelier-override.conf \
 					 ${pkgdir}/usr/lib/systemd/user/sommelier@0.service.d/cros-sommelier-override.conf
+	install -m644 -D ${srcdir}/${_pkgname}/cros-sommelier-config/cros-sommelier-override.conf \
+					 ${pkgdir}/usr/lib/systemd/user/sommelier@1.service.d/cros-sommelier-override.conf
+	install -m644 -D ${srcdir}/${_pkgname}/cros-sommelier-config/cros-sommelier-low-density-override.conf \
+					 ${pkgdir}/usr/lib/systemd/user/sommelier@1.service.d/cros-sommelier-low-density-override.conf
 	install -m644 -D ${srcdir}/${_pkgname}/cros-sommelier-config/cros-sommelier-x-override.conf \
 					 ${pkgdir}/usr/lib/systemd/user/sommelier-x@0.service.d/cros-sommelier-x-override.conf
+	install -m644 -D ${srcdir}/${_pkgname}/cros-sommelier-config/cros-sommelier-x-override.conf \
+					 ${pkgdir}/usr/lib/systemd/user/sommelier-x@1.service.d/cros-sommelier-x-override.conf
+	install -m644 -D ${srcdir}/${_pkgname}/cros-sommelier-config/cros-sommelier-low-density-override.conf \
+					 ${pkgdir}/usr/lib/systemd/user/sommelier-x@1.service.d/cros-sommelier-low-density-override.conf
 
 	### cros-sudo-config
 
