@@ -11,8 +11,8 @@ pkgbase = ros-melodic-joint-state-publisher
 	depends = ros-melodic-sensor-msgs
 	depends = ros-melodic-python-qt-binding
 	depends = ros-melodic-rospy
-	source = ros-melodic-joint-state-publisher::git+https://github.com/ros-gbp/joint_state_publisher-release.git
-	sha256sums = SKIP
+	source = ros-melodic-joint-state-publisher-1.12.13-0.tar.gz::https://github.com/ros-gbp/joint_state_publisher-release/archive/release/melodic/joint_state_publisher/1.12.13-0.tar.gz
+	sha256sums = 47bcd5c3c46ffd2d73ee0910bf584a3a23be56e2e423f3849b8771e55fe6fe8e
 
 pkgname = ros-melodic-joint-state-publisher
 
