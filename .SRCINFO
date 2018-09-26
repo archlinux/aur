@@ -7,15 +7,15 @@ pkgbase = ros-melodic-rqt-gui-py
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-rqt-gui
+	makedepends = ros-melodic-rospy
 	makedepends = ros-melodic-catkin
 	makedepends = ros-melodic-qt-gui
-	makedepends = ros-melodic-rospy
-	depends = ros-melodic-rqt-gui
-	depends = ros-melodic-qt-gui
+	makedepends = ros-melodic-rqt-gui
 	depends = ros-melodic-rospy
-	source = ros-melodic-rqt-gui-py::git+https://github.com/ros-gbp/rqt-release.git
-	sha256sums = SKIP
+	depends = ros-melodic-qt-gui
+	depends = ros-melodic-rqt-gui
+	source = ros-melodic-rqt-gui-py-0.5.0-0.tar.gz::https://github.com/ros-gbp/rqt-release/archive/release/melodic/rqt_gui_py/0.5.0-0.tar.gz
+	sha256sums = 0ff83fecf2965173c22e185ba5388c38645c281a5aa89dbe3baac46c431eece6
 
 pkgname = ros-melodic-rqt-gui-py
 
