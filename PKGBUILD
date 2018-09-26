@@ -4,7 +4,7 @@ pkgdesc="High performance software library for parallel computing with an easy-t
 url='https://arrayfire.com'
 pkgver=3.6.1
 arch=('x86_64')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 depends=('cblas' 'fftw' 'boost-libs' 'lapacke' 'forge' 'freeimage' 'glfw' 'glew' 'glbinding')
 makedepends=('cmake' 'graphviz' 'doxygen' 'opencl-headers' 'boost' 'python' 'ocl-icd' 'cuda' 'git')
@@ -35,7 +35,7 @@ build() {
       -DAF_BUILD_NONFREE=ON \
       -DAF_BUILD_EXAMPLES=ON \
       -DAF_BUILD_DOCS=ON \
-      -DCUDA_architecture_build_targets="3.0;3.2;3.5;3.7;5.0;5.2;5.3;6.0;6.1;6.2;7.0" \
+      -DCUDA_architecture_build_targets="3.0;3.2;3.5;3.7;5.0;5.2;5.3;6.0;6.1;6.2;7.0;7.2;7.5" \
       -DCMAKE_BUILD_TYPE=Release \
       -DCUDA_HOST_COMPILER=/usr/bin/gcc-7
 
