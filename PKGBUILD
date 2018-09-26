@@ -4,7 +4,8 @@
 pkgbase=marble-git
 pkgname=('marble-git'
          'libastro-git'
-         'marble-data-git')
+         'marble-data-git'
+	 'marble-common-git')
 pkgver=18.07.80.10.g4476573c2
 pkgrel=1
 pkgdesc="Desktop Globe. (GIT version)"
