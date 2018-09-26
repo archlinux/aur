@@ -8,16 +8,16 @@ pkgbase = ros-melodic-rqt-publisher
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
-	depends = ros-melodic-rqt-gui-py
 	depends = ros-melodic-qt-gui-py-common
-	depends = ros-melodic-python-qt-binding
-	depends = ros-melodic-roslib
-	depends = ros-melodic-rqt-gui
-	depends = ros-melodic-rqt-py-common
 	depends = ros-melodic-rosmsg
+	depends = ros-melodic-roslib
+	depends = ros-melodic-rqt-py-common
+	depends = ros-melodic-rqt-gui-py
+	depends = ros-melodic-rqt-gui
+	depends = ros-melodic-python-qt-binding
 	depends = python-rospkg
-	source = ros-melodic-rqt-publisher::git+https://github.com/ros-gbp/rqt_publisher-release.git
-	sha256sums = SKIP
+	source = ros-melodic-rqt-publisher-0.4.8-0.tar.gz::https://github.com/ros-gbp/rqt_publisher-release/archive/release/melodic/rqt_publisher/0.4.8-0.tar.gz
+	sha256sums = 9411fa1eb8fefee5ab7653c83dc2baa44cf352797759436fdfaa48de29e098e3
 
 pkgname = ros-melodic-rqt-publisher
 
