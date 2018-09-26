@@ -1,7 +1,7 @@
 pkgbase = opendm
 	pkgdesc = A simple GUI Display Manager written entirely in bash that uses xinit to start X sessions
 	pkgver = 0.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.simonizor.net
 	install = opendm.install
 	arch = x86_64
