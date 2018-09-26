@@ -7,17 +7,17 @@ pkgbase = ros-melodic-joint-limits-interface
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	makedepends = ros-melodic-roscpp
 	makedepends = ros-melodic-urdf
+	makedepends = ros-melodic-roscpp
 	makedepends = ros-melodic-hardware-interface
+	makedepends = ros-melodic-catkin
 	makedepends = urdfdom
-	depends = ros-melodic-roscpp
 	depends = ros-melodic-urdf
+	depends = ros-melodic-roscpp
 	depends = ros-melodic-hardware-interface
 	depends = urdfdom
-	source = ros-melodic-joint-limits-interface::git+https://github.com/ros-gbp/ros_control-release.git
-	sha256sums = SKIP
+	source = ros-melodic-joint-limits-interface-0.15.0-0.tar.gz::https://github.com/ros-gbp/ros_control-release/archive/release/melodic/joint_limits_interface/0.15.0-0.tar.gz
+	sha256sums = acb637d179314bfb577dfba336c9d4c6020e9a412856fd0acf9f6dddc48fc840
 
 pkgname = ros-melodic-joint-limits-interface
 
