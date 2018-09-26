@@ -8,16 +8,16 @@ pkgbase = ros-melodic-eigen-conversions
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
-	makedepends = ros-melodic-geometry-msgs
 	makedepends = ros-melodic-orocos-kdl
+	makedepends = ros-melodic-geometry-msgs
 	makedepends = ros-melodic-std-msgs
 	makedepends = eigen3
-	depends = ros-melodic-geometry-msgs
 	depends = ros-melodic-orocos-kdl
+	depends = ros-melodic-geometry-msgs
 	depends = ros-melodic-std-msgs
 	depends = eigen3
-	source = ros-melodic-eigen-conversions::git+https://github.com/ros-gbp/geometry-release.git
-	sha256sums = SKIP
+	source = ros-melodic-eigen-conversions-1.12.0-0.tar.gz::https://github.com/ros-gbp/geometry-release/archive/release/melodic/eigen_conversions/1.12.0-0.tar.gz
+	sha256sums = 6485f64dd54db8430e4aacfa15b0d09b575aff8cfcf4ad24f946e090004521ad
 
 pkgname = ros-melodic-eigen-conversions
 
