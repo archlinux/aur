@@ -13,11 +13,11 @@ pkgbase = ros-melodic-nav-msgs
 	makedepends = ros-melodic-geometry-msgs
 	makedepends = ros-melodic-std-msgs
 	depends = ros-melodic-actionlib-msgs
-	depends = ros-melodic-geometry-msgs
 	depends = ros-melodic-message-runtime
+	depends = ros-melodic-geometry-msgs
 	depends = ros-melodic-std-msgs
-	source = ros-melodic-nav-msgs::git+https://github.com/ros-gbp/common_msgs-release.git
-	sha256sums = SKIP
+	source = ros-melodic-nav-msgs-1.12.6-0.tar.gz::https://github.com/ros-gbp/common_msgs-release/archive/release/melodic/nav_msgs/1.12.6-0.tar.gz
+	sha256sums = 96793479de25acdcf228adf9f3662ecf4cc7eb0fcd061d9b27580c7cff2473d3
 
 pkgname = ros-melodic-nav-msgs
 
