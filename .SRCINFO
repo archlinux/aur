@@ -10,8 +10,8 @@ pkgbase = ros-melodic-rosdiagnostic
 	makedepends = ros-melodic-catkin
 	depends = ros-melodic-diagnostic-msgs
 	depends = ros-melodic-rospy
-	source = ros-melodic-rosdiagnostic::git+https://github.com/ros-gbp/diagnostics-release.git
-	sha256sums = SKIP
+	source = ros-melodic-rosdiagnostic-1.9.3-0.tar.gz::https://github.com/ros-gbp/diagnostics-release/archive/release/melodic/rosdiagnostic/1.9.3-0.tar.gz
+	sha256sums = 1244881acaaeb2251f829e4705bbf88e5d1f99d161d24a4ab99bae9a138b85c5
 
 pkgname = ros-melodic-rosdiagnostic
 
