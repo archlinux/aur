@@ -1,6 +1,6 @@
 pkgbase = python-driftdeck
 	pkgdesc = Drift Deck eats markdown files and spits out beautiful slides directly into your browser.
-	pkgver = 0.1.4
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://gitlab.com/xengi/driftdeck
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-driftdeck
 	depends = python-setuptools
 	depends = python-docopt
 	depends = python-markdown
-	source = https://files.pythonhosted.org/packages/source/d/driftdeck/driftdeck-0.1.4.tar.gz
-	sha1sums = 85b01f6aa64058e7fb8605c8a83eff9f2d9cb15e
+	source = https://files.pythonhosted.org/packages/source/d/driftdeck/driftdeck-0.2.0.tar.gz
+	sha1sums = 6ebf6636999ee310b6b8eabbb88c38520905f89d
 
 pkgname = python-driftdeck
 
