@@ -1,0 +1,15 @@
+pkgbase = ovm
+	pkgdesc = OneScript Version Manager
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/silverbulleters/ovm
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = LGPL3
+	depends = mono
+	source = ovm.exe::https://github.com/silverbulleters/ovm/releases/download/v1.0.0-RC6/ovm.exe
+	md5sums = 038d01d2415ecb91a332182711ffa4ab
+
+pkgname = ovm
+
