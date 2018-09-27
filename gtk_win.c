@@ -12,7 +12,6 @@ void window_main(void) {
     app.portfolio_string = NULL;
     app.builder = gtk_builder_new();
     app.info_cache = info_array_init();
-    app.iex_ref_data = NULL;
     app.password[0] = '\0';
     app.last_reload = 0;
 
@@ -332,7 +331,6 @@ void on_check_window_destroy(void) {
     // Destroy String and Info_Array and exit main GTK loop
     string_destroy(&app.portfolio_string);
     info_array_destroy(&app.portfolio_data);
-    ref_data_destroy(&app.iex_ref_data);
     gtk_main_quit();
 }
 
@@ -364,15 +362,15 @@ void on_info_back_button_clicked(GtkButton* button) {
 }
 
 void on_search_entry_focus_in_event(GtkWidget* search_entry, GdkEvent* event) {
-    if (app.iex_ref_data != NULL) // If ref data has already been loaded return
+    if (ref_cache == NULL)
         return;
 
-    app.iex_ref_data = api_iex_get_ref_data();
     GtkListStore* list_store = GTK_LIST_STORE(GET_OBJECT("search_entry_completion_store"));
+    gtk_list_store_clear(list_store);
     GtkTreeIter iter;
-    for (size_t i = 0; i < app.iex_ref_data->length; i++) {
+    for (size_t i = 0; i < ref_cache->length; i++) {
         gtk_list_store_append(list_store, &iter);
-        gtk_list_store_set(list_store, &iter, 0, app.iex_ref_data->symbols[i], -1);
+        gtk_list_store_set(list_store, &iter, 0, ref_cache->symbols[i], -1);
     }
 }
 
@@ -381,8 +379,8 @@ void on_search_entry_activate(GtkEntry* entry) {
     char modstr[strlen(symbol) + 1];
     strcpy(modstr, symbol);
     strtoupper(modstr);
-    if (symbol[0] != '\0' && ref_data_get_index_from_symbol_bsearch(app.iex_ref_data,
-            modstr, 0, app.iex_ref_data->length - 1) != -1)
+    if (symbol[0] != '\0' && ref_data_get_index_from_symbol_bsearch(ref_cache,
+            modstr, 0, ref_cache->length - 1) != -1)
         symbol_show_info(modstr);
 }
 

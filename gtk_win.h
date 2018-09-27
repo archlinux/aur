@@ -25,7 +25,6 @@ typedef struct app_data {
     Info_Array* portfolio_data;
     String* portfolio_string;
     GtkBuilder* builder;
-    Ref_Data* iex_ref_data;
     Info_Array* info_cache;
     char password[PASS_MAX];
     time_t last_reload;
