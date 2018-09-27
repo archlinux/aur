@@ -1,6 +1,6 @@
-pkgbase = thunderbird-cal-i18n-pt-br
+pkgbase = thunderbird-cal-i18n-pt-br-hg
 	pkgdesc = Portuguese (Brazil) language files for Thunderbird Calendar
-	pkgver = 20180921083052+60.0+70.0
+	pkgver = 20180927171435+60.0+70.0
 	pkgrel = 1
 	url = https://hg.mozilla.org/l10n-central/
 	arch = x86_64
@@ -14,5 +14,5 @@ pkgbase = thunderbird-cal-i18n-pt-br
 	sha256sums = 3b371e65e7ae66acda298590c214c1429266f129457164657e263cbed4af1121
 	sha256sums = SKIP
 
-pkgname = thunderbird-cal-i18n-pt-br
+pkgname = thunderbird-cal-i18n-pt-br-hg
 
