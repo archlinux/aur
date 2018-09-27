@@ -4,7 +4,7 @@ _pkgname2=spyder
 _pkgname3=spyder3
 pkgbase=$_pkgname2-git
 pkgname=($_pkgname2-git $_pkgname3-git)
-pkgver=4.0.0b1.r843.g603b4cf80
+pkgver=4.0.0b1.r858.g8a616b1f9
 pkgrel=1
 arch=('any')
 url="https://www.spyder-ide.org/"
@@ -39,7 +39,9 @@ package_spyder-git() {
   pkgdesc="The Scientific Python Development Environment (Python 2 version)"
   # Note: 'ipython2-notebook' nor 'jupyter'/'jupyter-nbconvert' contain a Python 2 version of Nbconvert
   # 'icu'
-  depends=('python2-jedi'
+  depends=('python2-chardet'
+           'python2-jedi'
+           'python2-language-server'
            'python2-pickleshare'
            'python2-psutil'
            'python2-pycodestyle'
@@ -54,10 +56,13 @@ package_spyder-git() {
            'python2-sphinx'
            'python2-spyder-kernels'
 
+           'python2-pathlib2'
+
            'desktop-file-utils'
            'gtk-update-icon-cache')
   #'python2-pyside2: Qt-Python bindings'
-  optdepends=('python2-matplotlib: 2D/3D plotting'
+  optdepends=('cython2: run Cython files'
+              'python2-matplotlib: 2D/3D plotting'
               'python2-numpy: N-dimensional arrays'
               'python2-pandas: DataFrame and Series support'
               'python2-scipy: signal/image processing'
@@ -79,7 +84,9 @@ package_spyder3-git() {
   pkgdesc="The Scientific Python Development Environment (Python 3 version)"
   # 'icu'
   depends=('jupyter-nbconvert'
+           'python-chardet'
            'python-jedi'
+           'python-language-server'
            'python-pickleshare'
            'python-psutil'
            'python-pycodestyle'
@@ -97,7 +104,8 @@ package_spyder3-git() {
            'desktop-file-utils'
            'gtk-update-icon-cache')
   #'pyside2: Qt-Python bindings'
-  optdepends=('python-matplotlib: 2D/3D plotting'
+  optdepends=('cython: run Cython files'
+              'python-matplotlib: 2D/3D plotting'
               'python-numpy: N-dimensional arrays'
               'python-pandas: DataFrame and Series support'
               'python-scipy: signal/image processing'
