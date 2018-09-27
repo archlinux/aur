@@ -1,0 +1,23 @@
+pkgbase = ros-kinetic-view-controller-msgs
+	pkgdesc = ROS - Messages for (camera) view controllers.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = http://ros.org/wiki/view_controller_msgs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-kinetic-genmsg
+	makedepends = ros-kinetic-message-generation
+	makedepends = ros-kinetic-catkin
+	makedepends = ros-kinetic-std-msgs
+	makedepends = ros-kinetic-geometry-msgs
+	depends = ros-kinetic-std-msgs
+	depends = ros-kinetic-message-runtime
+	depends = ros-kinetic-geometry-msgs
+	source = view_controller_msgs::git+https://github.com/ros-gbp/view_controller_msgs-release.git#tag=release/kinetic/view_controller_msgs/0.1.2-0
+	md5sums = SKIP
+
+pkgname = ros-kinetic-view-controller-msgs
+
