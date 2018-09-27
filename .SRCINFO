@@ -1,6 +1,6 @@
 pkgbase = babel-eslint
 	pkgdesc = A wrapper for Babel's parser used for ESLint
-	pkgver = 10.0.0
+	pkgver = 10.0.1
 	pkgrel = 1
 	url = https://github.com/babel/babel-eslint
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = babel-eslint
 	makedepends = npm
 	depends = nodejs
 	depends = eslint>=4.12.1
-	noextract = babel-eslint-10.0.0.tgz
-	source = http://registry.npmjs.org/babel-eslint/-/babel-eslint-10.0.0.tgz
-	md5sums = 1d6d6975e749a0f0876185b31ecc216a
+	noextract = babel-eslint-10.0.1.tgz
+	source = http://registry.npmjs.org/babel-eslint/-/babel-eslint-10.0.1.tgz
+	md5sums = 7dae7c500c41a8e0ff7cb44a2b86cc22
 
 pkgname = babel-eslint
 
