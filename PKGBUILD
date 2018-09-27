@@ -5,37 +5,15 @@
 _pkgbase='citra'
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-git" "$_pkgbase-qt-git")
-pkgver=r6392.edcea9094
+pkgver=r6896.a96f0f516
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
 arch=('i686' 'x86_64')
 url="https://github.com/citra-emu/citra/"
 license=('GPL2')
 makedepends=('git' 'cmake' 'sdl2' 'qt5-base' 'shared-mime-info' 'desktop-file-utils' 'qt5-multimedia')
-source=("$_pkgbase::git+https://github.com/citra-emu/citra"
-        'git+https://github.com/citra-emu/ext-boost'
-        'git+https://github.com/neobrain/nihstro'
-        'git+https://github.com/citra-emu/ext-soundtouch'
-        'git+https://github.com/philsquared/Catch'
-        'git+https://github.com/MerryMage/dynarmic'
-        'git+https://github.com/herumi/xbyak'
-        'git+https://github.com/weidai11/cryptopp'
-        'git+https://github.com/fmtlib/fmt'
-        'git+https://github.com/lsalzman/enet'
-        'git+https://github.com/whoshuu/cpr'
-        'git+https://github.com/benhoyt/inih')
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP')
+source=("$_pkgbase::git+https://github.com/citra-emu/citra")
+md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$_pkgbase"
@@ -47,22 +25,6 @@ prepare() {
 	mkdir -p build
 
 	git submodule init
-	git config submodule.boost.url "$srcdir/ext-boost"
-	git config submodule.nihstro.url "$srcdir/nihstro"
-	git config submodule.soundtouch.url "$srcdir/ext-soundtouch"
-	git config submodule.catch.url "$srcdir/Catch"
-	git config submodule.dynarmic.url "$srcdir/dynarmic"
-	git config submodule.xbyak.url "$srcdir/xbyak"
-	git config submodule.cryptopp.url "$srcdir/cryptopp"
-	git config submodule.fmt.url "$srcdir/fmt"
-	git config submodule.enet.url "$srcdir/enet"
-	git config submodule.cpr.url "$srcdir/cpr"
-	git config submodule.inih.url "$srcdir/inih"
-	git submodule update --init --recursive
-
-	cd externals/dynarmic
-	git config submodule.externals/fmt.url "$srcdir/fmt"
-	git config submodule.externals/xbyak.url "$srcdir/xbyak"
 	git submodule update --init --recursive
 }
 
@@ -71,7 +33,8 @@ build() {
 	cmake .. \
 	  -DCMAKE_INSTALL_PREFIX=/usr \
 	  -DCMAKE_BUILD_TYPE=Release \
-	  -DUSE_SYSTEM_CURL=ON
+	  -DUSE_SYSTEM_CURL=ON \
+	  -DUSE_DISCORD_PRESENCE=ON
 	make
 }
 
@@ -83,7 +46,7 @@ check() {
 package_citra-git() {
 	depends=('sdl2' 'libpng')
 
-	install -Dm755 "$srcdir/$_pkgbase/build/src/citra/citra" "$pkgdir/usr/bin/$_pkgbase"
+	install -Dm755 "$srcdir/$_pkgbase/build/bin/citra" "$pkgdir/usr/bin/citra"
 }
 
 package_citra-qt-git() {
@@ -93,5 +56,5 @@ package_citra-qt-git() {
 
 	cd "$srcdir/$_pkgbase/build"
 	make DESTDIR="$pkgdir/" install
-	rm "$pkgdir/usr/bin/$_pkgbase"
+	rm "$pkgdir/usr/bin/citra"
 }
