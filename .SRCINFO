@@ -1,6 +1,6 @@
 pkgbase = redis-desktop-manager
 	pkgdesc = Open source cross-platform Redis Desktop Manager based on Qt 5
-	pkgver = 0.9.6
+	pkgver = 0.9.7
 	pkgrel = 1
 	url = https://redisdesktop.com/
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = redis-desktop-manager
 	depends = qt5-svg
 	depends = libssh2
 	conflicts = redis-desktop-manager-bin
-	source = rdm::git://github.com/uglide/RedisDesktopManager.git#tag=0.9.6
+	source = rdm::git://github.com/uglide/RedisDesktopManager.git#tag=0.9.7
 	source = rdm.sh
 	source = rdm.desktop
 	sha256sums = SKIP
