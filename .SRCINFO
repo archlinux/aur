@@ -1,6 +1,6 @@
 pkgbase = liveusb-builder-git
 	pkgdesc = A script suite to create multiboot USB stick for GNU/Linux distributions
-	pkgver = 2018.07
+	pkgver = 2018.09.2.g4fad072
 	pkgrel = 1
 	url = https://github.com/mytbk/liveusb-builder
 	arch = any

@@ -1,7 +1,7 @@
 # Maintainer: Iru Cai <mytbk920423@gmail.com>
 
 pkgname=liveusb-builder-git
-pkgver=2018.07
+pkgver=2018.09.2.g4fad072
 pkgrel=1
 pkgdesc='A script suite to create multiboot USB stick for GNU/Linux distributions'
 license=('GPL3')
@@ -23,5 +23,6 @@ package() {
 
 pkgver() {
 	cd "$srcdir/liveusb-builder"
-	git describe --always
+	git describe --always | sed 's/-/./g'
+
 }
