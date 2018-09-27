@@ -2,6 +2,20 @@ Changelog
 =========
 
 
+0.3.1 (2018-09-26)
+------------------
+
+New
+~~~
+- Usr: Added AddressSanitizer to the analysis tools in the README.
+  Listed the analysis tools alphabetically. [Bart Verhagen]
+
+Other
+~~~~~
+- Merge branch 'dev' of gitlab.com:bverhagen/exec-helper into dev. [Bart
+  Verhagen]
+
+
 0.3.0 (2018-07-24)
 ------------------
 
