@@ -1,4 +1,4 @@
-# Maintainer: POPCORNS <archlinux {at} protonmail {dot} com>
+# Maintainer: Popcorn <popcorn-public {at} protonmail {dot} com>
 
 pkgname=arcint-gtk-theme-git
 _pkgname=arcint-theme
@@ -8,7 +8,7 @@ pkgrel=1
 provides=("arcint-gtk-theme")
 conflicts=("arcint-gtk-theme")
 arch=("any")
-url="https://gitgud.io/popcorns/arcint-theme"
+url="https://git.entrenix.xyz/Popcorn/arcint-theme"
 license=("GPL3")
 optdepends=("gnome-themes-standard: for gtk2 themes")
 makedepends=("git" "gtk3" "sassc" "optipng" "inkscape")
