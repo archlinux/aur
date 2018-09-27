@@ -1,0 +1,22 @@
+pkgbase = structorizer
+	pkgdesc = Structorizer is a little tool which you can use to create Nassi-Shneiderman Diagrams (NSD)
+	pkgver = 3.28
+	pkgrel = 1
+	url = https://structorizer.fisch.lu
+	install = structorizer.install
+	arch = x86_64
+	arch = i686
+	license = custom
+	makedepends = unzip
+	depends = java-runtime
+	source = structorizer-3.28.zip::https://www.fisch.lu/Php/download.php?file=structorizer_latest.zip
+	source = structorizer.desktop
+	source = structorizer.png::https://structorizer.fisch.lu/Pictures/structorizer.png
+	source = structorizer
+	sha256sums = aa1bdddadf9dc7be10ee3b108f74a67ba22e7fe3dcd4e9cf8690e481a39b4ca6
+	sha256sums = f0daaecd3bcdee10d6f4d2db9c07c98c921f88e3c09754a7badad402be6b8d1d
+	sha256sums = f03c74f969c100ca843345f9e5ce5de5cfbf8b7a0f05e208f3a17f7ce9b9548b
+	sha256sums = c8a41c80f336ad0052844a54998c0b9bc6ce169ee17908fb0633fadcda7bc9e7
+
+pkgname = structorizer
+

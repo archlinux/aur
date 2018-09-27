@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=3.28
+Name=Structorizer
+Comment=Structorizer is a little tool which you can use to create Nassi-Shneiderman Diagrams (NSD)
+Exec=/usr/bin/structorizer
+Icon=/usr/share/pixmaps/structorizer.png
+Terminal=false
+Categories=Utility
+StartupWMClass=Structorizer
