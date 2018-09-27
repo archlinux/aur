@@ -1,7 +1,7 @@
 pkgbase = rtags
 	pkgdesc = RTags is a client/server application that indexes C/C++ code
-	pkgver = 2.18
-	pkgrel = 3
+	pkgver = 2.20
+	pkgrel = 1
 	url = https://github.com/Andersbakken/rtags
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = rtags
 	optdepends = zlib
 	optdepends = lua: Lua bindings
 	conflicts = rtags-git
-	source = git+https://github.com/Andersbakken/rtags.git#tag=v2.18
+	source = git+https://github.com/Andersbakken/rtags.git#tag=v2.20
 	source = git+https://github.com/Andersbakken/rct.git
 	source = git+https://github.com/jeremyong/Selene.git
 	source = git+https://github.com/LuaDist/lua.git

@@ -2,8 +2,8 @@
 # Contributor: Vladimir Panteleev <arch-pkg at thecybershadow dot net>
 
 pkgname=rtags
-pkgver=2.18
-pkgrel=3
+pkgver=2.20
+pkgrel=1
 pkgdesc='RTags is a client/server application that indexes C/C++ code'
 arch=('i686' 'x86_64')
 _url='https://github.com/Andersbakken'
@@ -57,4 +57,4 @@ package() {
     "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 }
 
-# vim:set ft=sh ts=2 sw=2 et:
+# vim:set ts=2 sw=2 et:
