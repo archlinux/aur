@@ -4,7 +4,7 @@
 
 pkgname=firetable
 pkgver=5.5
-pkgrel=1
+pkgrel=2
 pkgdesc="An iptables firewall script"
 arch=('any')
 url="http://projects.leisink.net/Firetable/"
@@ -18,18 +18,18 @@ backup=(
 )
 install="${pkgname}.install"
 source=(
-  "http://projects.leisink.net/Firetable/$pkgname-$pkgver.tar.gz"
+  "https://gitlab.com/hsleisink/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz"
   "${pkgname}.service"
   "firetable.patch"
 )
 md5sums=(
-  'c619e86b8bd52330595ec4ac84b21b82'
+  '778a59c129c87167a9f30fefb9283098'
   'd5c398f94c2504e9b9fe1dc87f22e93f'
   '0ff6c1ae205fe074ede25fa84ff8c988'
 )
 
 prepare() {
-  cd "$srcdir"/$pkgname-$pkgver
+  cd "$srcdir"/$pkgname-v$pkgver
 
   patch -p0 < "$srcdir"/firetable.patch
 
@@ -38,7 +38,7 @@ prepare() {
 }
 
 package() {
-  cd "$srcdir"/$pkgname-$pkgver
+  cd "$srcdir"/$pkgname-v$pkgver
 
   make DESTDIR="$pkgdir" install
 
