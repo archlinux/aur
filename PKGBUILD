@@ -1,14 +1,14 @@
 # Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 
 pkgname=softmaker-office-2018-bin
-pkgver=2018.933
-pkgrel=2
+pkgver=2018.936
+pkgrel=1
 pkgdesc="Softmaker Office 2018, proprietary office suite; word processing, spreadsheets, presentations"
 url="http://softmaker.com"
 arch=('x86_64' 'i686')
 license=('custom')
 depends=('hicolor-icon-theme' 'shared-mime-info' 'libxmu' 'libidn-133-compat' 'libgl' 'libxrandr' 'libxrender'
-         'libx11' 'libxext' 'libxmu' 'curl')
+         'libx11' 'libxext' 'libxmu' 'curl' 'desktop-file-utils')
 source=('planmaker-2018.desktop'
         'presentations-2018.desktop'
         'textmaker-2018.desktop'
@@ -27,8 +27,8 @@ md5sums=('61a119bf8807977035f28cda48a3e638'
          '494d6d84e3855303c86a93d57bc95788'
          '91a0c79955c9157a195b68295a4cd904'
          'c6d665d62251154b53598482035abf86')
-md5sums_x86_64=('6d367de961408352559a2243f0ce1c5f')
-md5sums_i686=('eb7787f26d6c0eb0c23ac30359e04e70')
+md5sums_x86_64=('a3d73bb3b61ecc238d07df7aec0567f6')
+md5sums_i686=('d7a75122da58a1fa69108d3ccfcaf739')
 sha512sums=('21ac47ca4327abc2cb819b8fc343e7abc8f8d95bc3a88b6745277c1a25045a5ccf420308a08964c199ed341ebd48349781ff5606c538d951aab7634ff3e30d5c'
             '6ba3e74e08af16d5d150fecb6c97c986a94f00e1810a719328e8938981a3af1a6632a0957490bd0dfc41fc787322e047b655db6c6e0187cfe9ecdc1dcd90deac'
             '2ce75892fad29d056537c69e4920093ce615178cc35b47e0492dfda8718ebbc97c4ca027624e1e0d90ec368769da0c56ba1e593c49cebde8c82a8275ce7acf47'
@@ -37,8 +37,8 @@ sha512sums=('21ac47ca4327abc2cb819b8fc343e7abc8f8d95bc3a88b6745277c1a25045a5ccf4
             'c09f7d80c7be33b26c384a18514ddc6f9c9d1b2669037a5921212a1d2b3b316a12524d458872446e1a850f87bec4af4e14d99967713d07d5dd7425b658b900f6'
             '8dcf3caa7273cb3f9f3b8ce08251db420c39b42be2a339d561771e913fae1dda55820403a1f7cd883aa1d361693c1a67fac44f92542872f5f186f66dd1fa45e4'
             'a1050b67e357312286eb87a3aa1b2a25a6edc3c1150871cb3d233152f601a2239c84315309111a496d8f056b4c600f9dee03e0b511e69126093255e971073986')
-sha512sums_x86_64=('cf7e0a0ffc5415a8acce8cc129d1405e475b4ac7f4d862217b40f4b729be79d0db26d07219f21dd68b8dee4ef3b23213072fb8b5013c6c48e19a33358aa2b8c1')
-sha512sums_i686=('6d580e631313ca3f6add434dd9f9b7b3a61394fec39efcb6ce310498f065f4bca904aa572536fd045c095ad605a71427274926897e2ff2a80444ac4e34d91838')
+sha512sums_x86_64=('e580751c61d568003172c9dab7d4ba72be18b33eb029114b2d09db941cd75cffd23b094bd12853ba54d957f10a4091ad80cfa37fa0251616ea5755f73bf77225')
+sha512sums_i686=('60eba0fe280f6293596a84771e13ce16629a2b68bbc6cac618c99cd192bf0d201ed813d29b61b59794dddbf5b9fabdffd8a7d333bccf4bb804033eb490d79a5d')
 
 package() {
   install -dm755 "${pkgdir}/usr/share/smoffice2018"
