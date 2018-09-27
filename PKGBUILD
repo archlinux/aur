@@ -3,7 +3,7 @@
 # Contributor: ValHue <vhuelamo at gmail dot com>
 #
 pkgname="wp-desktop"
-pkgver=3.4.0
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="WordPress.com Desktop client"
 url="https://desktop.wordpress.com/"
@@ -15,8 +15,8 @@ provides=("${pkgname}")
 source_i686=("wp-desktop-linux-i686-$pkgver.tar.gz::https://public-api.wordpress.com/rest/v1.1/desktop/linux/download?ref=getapps")
 source_x86_64=("wp-desktop-linux-x64-$pkgver.tar.gz::https://public-api.wordpress.com/rest/v1.1/desktop/linux/download?ref=getapps")
 
-sha256sums_i686=('d328bd3429a9e472e30c886a4fe4383780a38e7df1dc775d3af3c740c0eb2852')
-sha256sums_x86_64=('d328bd3429a9e472e30c886a4fe4383780a38e7df1dc775d3af3c740c0eb2852')
+sha256sums_i686=('127338b2b634ce0cbf6f2f26bea221f238b56f90b46f840d76f9c326b2eb011d')
+sha256sums_x86_64=('127338b2b634ce0cbf6f2f26bea221f238b56f90b46f840d76f9c326b2eb011d')
 
 _wpcom_desktop="[Desktop Entry]
 Name=WordPress.com
@@ -50,4 +50,4 @@ package() {
     ln -s /usr/share/wpcom/wpcom ${pkgdir}/usr/bin/wpcom
 }
 
-# vim:set ts=4 sw=2 ft=sh et syn=sh ft=sh:
+# vim:set ts=4 sw=4 ft=sh et syn=sh ft=sh:
