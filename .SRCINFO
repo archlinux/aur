@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-socketcan-interface
 	pkgdesc = Generic CAN interface description with helpers for filtering and driver implementation. Further a socketcan implementation based on boost::asio is included.
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wiki.ros.org/socketcan_interface?distro=melodic
 	arch = any
 	license = LGPL3
