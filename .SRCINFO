@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-can-msgs
 	pkgdesc = CAN related message types.
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wiki.ros.org/can_msgs?distro=melodic
 	arch = any
 	license = LGPL3
