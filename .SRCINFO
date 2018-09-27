@@ -1,6 +1,6 @@
 pkgbase = passbook-git
 	pkgdesc = Password manager for GNOME
-	pkgver = 0.1
+	pkgver = 0.1.r73.2554925
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Passbook
 	arch = x86_64
