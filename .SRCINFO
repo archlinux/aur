@@ -1,6 +1,6 @@
 pkgbase = linux-amd-staging-drm-next-git
 	pkgdesc = Linux kernel with AMDGPU DC patches
-	pkgver = 4.20.782091.301b747894cd
+	pkgver = 4.20.782117.2ab7b0ff19f6
 	pkgrel = 1
 	url = https://cgit.freedesktop.org/~agd5f/linux/
 	arch = x86_64
