@@ -1,6 +1,8 @@
 #include "api.h"
 
-char* ref_cache_file_path;
+char* ref_cache_file_path = NULL;
+
+Ref_Data* ref_cache = NULL;
 
 void ref_cache_file_path_init(void) {
     char* home = getenv("HOME");
@@ -466,12 +468,35 @@ void info_array_store_totals(Info_Array* pInfo_Array) {
                                               pInfo_Array->totals->total_spent;
 }
 
-Ref_Data* api_iex_get_ref_data(void) {
+void api_ref_cache_init(void) {
+    Ref_Data* pRef_Data = ref_data_read_cache();
+    if (pRef_Data != NULL && difftime(time(NULL), pRef_Data->time_loaded) < 60 * 60 * 24 * 7) {
+        ref_cache = pRef_Data;
+        return;
+    }
+
+    api_ref_data_write_cache();
+    ref_cache = ref_data_read_cache();
+}
+
+void api_ref_data_write_cache(void) {
     String* pString = api_curl_url("https://api.iextrading.com/1.0/ref-data/symbols");
+    if (pString == NULL)
+        return;
+
+    string_write_file(pString, ref_cache_file_path);
+    string_destroy(&pString);
+}
+
+Ref_Data* ref_data_read_cache(void) {
+    String* pString = file_get_string(ref_cache_file_path);
     if (pString == NULL)
         return NULL;
 
     Json* jobj = json_tokener_parse(pString->data);
+    if (jobj == NULL) // Return NULL if cache file is not JSON formatted
+        return NULL;
+
     Ref_Data* pRef_Data = ref_data_init_length(json_object_array_length(jobj));
     ref_data_store_json(pRef_Data, jobj);
 

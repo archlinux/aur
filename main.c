@@ -21,6 +21,9 @@ int main(int argc, char* argv[]) {
     portfolio_file_path_init();
     ref_cache_file_path_init();
 
+    // Init ref cache
+    api_ref_cache_init();
+
     // Init cURL
     curl_global_init(CURL_GLOBAL_ALL);
 
@@ -107,6 +110,7 @@ int main(int argc, char* argv[]) {
     }
     free(portfolio_file_path);
     free(ref_cache_file_path);
+    ref_data_destroy(&ref_cache);
     free(sym);
     free(cmd);
     curl_global_cleanup();

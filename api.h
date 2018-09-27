@@ -152,6 +152,8 @@ struct info_array {
 
 extern char* ref_cache_file_path;
 
+extern Ref_Data* ref_cache;
+
 void ref_cache_file_path_init(void);
 
 /**
@@ -292,11 +294,11 @@ void info_store_portfolio_data(Info* pInfo);
  */
 void info_array_store_totals(Info_Array* pInfo_Array);
 
-/**
- * Returns a pointer to an Info_Array containing a list of all iex listed securities.
- * @return Info_Array*
- */
-Ref_Data* api_iex_get_ref_data(void);
+void api_ref_cache_init(void);
+
+void api_ref_data_write_cache(void);
+
+Ref_Data* ref_data_read_cache(void);
 
 void ref_data_store_json(Ref_Data* pRef_Data, const Json* jobj);
 
