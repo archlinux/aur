@@ -8,6 +8,7 @@ pkgbase = libblockdev-lean
 	makedepends = gobject-introspection
 	makedepends = systemd
 	makedepends = python
+	depends = parted
 	provides = libblockdev
 	conflicts = libblockdev
 	source = libblockdev-lean-2.19.tar.gz::https://github.com/storaged-project/libblockdev/archive/2.19-1.tar.gz
