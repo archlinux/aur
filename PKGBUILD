@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=neatmkfn-git
-pkgver=r88.6b8e528
+pkgver=r118.dfde766
 pkgrel=1
 epoch=
 pkgdesc="Generate font descriptions for neatroff"
@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://litcave.rudi.ir/"
 license=('ISC')
 groups=()
-depends=('gsfonts')
+depends=('gsfonts-type1')
 makedepends=('git')
 optdepends=()
 checkdepends=()
