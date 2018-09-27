@@ -1,0 +1,15 @@
+pkgbase = atlantic-dkms
+	pkgdesc = aquantia multigigabit nic driver - "development preview"
+	pkgver = 2.0.15.0
+	pkgrel = 1
+	url = https://www.aquantia.com/support/driver-download/
+	arch = x86_64
+	license = GPLv2
+	makedepends = linux-headers
+	depends = dkms
+	conflicts = atlantic
+	source = https://s3-us-west-1.amazonaws.com/aquantia-staging/wp-content/uploads/2018/07/20180706_Linux_2.0.15.0.zip
+	md5sums = 1167bef23129284bf4893c3922257c60
+
+pkgname = atlantic-dkms
+
