@@ -1,18 +1,20 @@
 pkgbase = bbk-cli-bin
 	pkgdesc = Measurement client for Bredbandskollen
-	pkgver = 0.3.8
+	pkgver = 1.0
 	pkgrel = 1
-	url = https://support.bredbandskollen.se/support/solutions/articles/1000245679-bredbandskollen-f%C3%B6r-linux
+	url = https://www.bredbandskollen.se/en/bredbandskollen-cli
 	arch = x86_64
 	arch = armv7h
 	arch = armv8h
-	license = custom: Copyright (c) 2017 Stiftelsen för Internetinfrastruktur <iis.se>
-	source_x86_64 = http://beta1.bredbandskollen.se/download/bbk-cli_0.3.8_amd64.deb
-	sha256sums_x86_64 = 9f205447da6c5c0f114e94e45a88a3e35febc63b8b9002e692414348ee4ce6fb
-	source_armv7h = http://beta1.bredbandskollen.se/download/bbk-cli_0.3.8_armhf.deb
-	sha256sums_armv7h = 1cb2c8cb62787f00defca0667c646c8833045de09c0de8ee5e0a301ba40c0ee8
-	source_armv8h = http://beta1.bredbandskollen.se/download/bbk-cli_0.3.8_armhf.deb
-	sha256sums_armv8h = 1cb2c8cb62787f00defca0667c646c8833045de09c0de8ee5e0a301ba40c0ee8
+	license = custom: Copyright (c) 2018 Stiftelsen för Internetinfrastruktur <iis.se>
+	source = https://frontend.bredbandskollen.se/download/README.txt
+	sha256sums = 525254138b2dd44c810d5d31b1846dd2395eb6353c5f32805079da60a2f36ada
+	source_x86_64 = https://frontend.bredbandskollen.se/download/bbk_cli_linux_amd64-1.0
+	sha256sums_x86_64 = 7768794f5ce2c2605aa34f38010812548e02703444e90f6912387f2f13a1127e
+	source_armv7h = https://frontend.bredbandskollen.se/download/bbk_cli_linux_armhf-1.0
+	sha256sums_armv7h = e68c64273bbf15514e4f9015838432d393df7480b94a3c441b191f8dc8710aca
+	source_armv8h = https://frontend.bredbandskollen.se/download/bbk_cli_linux_armhf-1.0
+	sha256sums_armv8h = e68c64273bbf15514e4f9015838432d393df7480b94a3c441b191f8dc8710aca
 
 pkgname = bbk-cli-bin
 
