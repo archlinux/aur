@@ -16,14 +16,9 @@ conflicts=("$_pkgname")
 provides=("$_pkgname")
 install=pacmon.install
 
-prepare() {
-  mkdir -p "$srcdir/src/github.com/veecue"
-  ln -rTsf "$srcdir/$_pkgname" "$srcdir/src/github.com/veecue/pacmon"
-}
-
 build() {
   cd "$_pkgname"
-  GOPATH="$srcdir" go build -ldflags='-s -w' 
+  go build -ldflags='-s -w' 
 }
 
 package() {
