@@ -14,7 +14,4 @@ pkgbase = python2-deepgaze-git
 	md5sums = SKIP
 
 pkgname = python2-deepgaze-git
-	depends = python2
-	depends = opencv
-	depends = python2-numpy
 

@@ -24,7 +24,6 @@ build() {
 }
 
 package() {
-    depends+=()
     cd "${srcdir}/${_module}"
     python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
     cd "${srcdir}/${_module}"
