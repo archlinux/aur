@@ -1,0 +1,23 @@
+pkgbase = filr-client
+	pkgdesc = Synchronization client for files from the Filr server
+	pkgver = 3.4.0.31
+	pkgrel = 1
+	url = https://www.microfocus.com/de-de/products/filr/
+	arch = any
+	license = custom:MicroFocus
+	makedepends = python2
+	depends = python2-wxpython3
+	depends = python2-watchdog
+	depends = python2-pyopenssl
+	depends = python2-pyasn1
+	depends = python2-keyring
+	depends = python2-suds
+	source = https://your.filr.server/desktopapp/novellfilr/linux/FilrLinuxClient.tar.bz2
+	source = filr.sh
+	source = filr.desktop
+	sha256sums = 9ac2bdfff3213c6fe122dde8bc46f31c3e3e39115f4275e5b66d195aa0158f8b
+	sha256sums = 1a41d3e6563455e00bf0d9a0cc602627a930498d326368edde56d368c9c53d08
+	sha256sums = d985da0af1ef9e67acf3d5dc2849ae75c6a3dbef679b7eaf6196798d65ce40dc
+
+pkgname = filr-client
+

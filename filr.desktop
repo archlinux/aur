@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Micro Focus Filr 
+Exec=/usr/bin/filr
+OnlyShowIn=GNOME;Unity;
+Icon=/usr/share/filr-client/icons/filr/app_48.png
