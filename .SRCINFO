@@ -1,7 +1,7 @@
 pkgbase = linphone-desktop-all-git
 	pkgdesc = A free VoIP and video softphone based on the SIP protocol (Installed in /opt with all deps included).
-	pkgver = 4.1.1.r525.b717d2ed
-	pkgrel = 2
+	pkgver = 4.1.1.r571.da77d41e
+	pkgrel = 1
 	url = https://www.linphone.org/
 	arch = x86_64
 	license = GPL2
@@ -98,7 +98,7 @@ pkgbase = linphone-desktop-all-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 346d983f503873811b3a4f72772e5afe4990275526c9e15c1b5cde2ad69a0544
-	sha256sums = 93f80626cb626c25a5608d9fa53ad5ffcc7aed6b91ef3fc766ddd820e79737d3
+	sha256sums = ba70b6fc29dfea030828eb3011d4caa271737001f808b97d534feffb0d4558ad
 
 pkgname = linphone-desktop-all-git
 
