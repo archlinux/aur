@@ -47,7 +47,7 @@ char* strip_tags(char* string) {
 String* file_get_string(const char* file_name) {
     struct stat file_info;
     if (stat(file_name, &file_info)) // If called from portfolio_modify_string, file should exist (possibly size 0)
-        RETNULL_MSG("File doesn't exist.");
+        return NULL;
 
     if (file_info.st_size == 0) // Return new String if new file
         return string_init();
