@@ -1,6 +1,6 @@
 pkgbase = greenfoot
 	pkgdesc = Allows easy development of two-dimensional graphical applications, such as simulations and interactive games.
-	pkgver = 3.5.0
+	pkgver = 3.5.1
 	pkgrel = 1
 	url = https://www.greenfoot.org
 	arch = any
@@ -15,11 +15,11 @@ pkgbase = greenfoot
 	depends = java-runtime
 	depends = java-environment
 	depends = java-openjfx
-	noextract = Greenfoot-linux-350.deb
-	source = https://www.greenfoot.org/download/files/Greenfoot-linux-350.deb
+	noextract = Greenfoot-linux-351.deb
+	source = https://www.greenfoot.org/download/files/Greenfoot-linux-351.deb
 	source = greenfoot
 	source = greenfoot.desktop
-	sha256sums = d89a16a10e757e22dc38e751e62ffb792df909909895f257ac24b3bde828e44f
+	sha256sums = b4a0fb00ac975a07907e6edd8fb25579687d8284a1032092e46fa044a78c6249
 	sha256sums = 9709e4c1f1f0a65897b79db5ecc5cf2ac91420f7576ce8e3ed3fb4fe8537452e
 	sha256sums = 853d6f283623f1de1f1e353abaf90afb345580b0e67f57b6245ea2e2ad6850f3
 
