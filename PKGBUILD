@@ -5,7 +5,7 @@
 # Original maintainer: Marcin
 
 pkgname=spring-tool-suite
-pkgver=3.9.5
+pkgver=3.9.6
 _pkgver_release=$pkgver.RELEASE
 _eclipse_pkgver=e4.8.0
 _eclipse_pkgver_short=e4.8
@@ -28,10 +28,10 @@ source_i686=(
     "${pkgname}.xpm"
     "${pkgname}.desktop"
 )
-sha256sums_i686=('0b6b8108b5c7f40209af4153ed2be86c0442567ee3381cee72b2d4d8572979b3'
+sha256sums_i686=('8dda2e52d084ddc02f1031a99e47428d6ce625c7b12209a2fe45d596451fcdf8'
                  'befd7eabe15dc90b947c8d878a06649767c4e5a0c5777a1ba4ed297db9bafc1f'
                  'a8f45ab4a86b7ad01b9050be2ebaa44d4be437371ffab2d136c960149aa0b7fd')
-sha256sums_x86_64=('790221e1dee6e40b0fb9d545f6a44a8dd610ec198b17553d780b2d0b8ddcc1ea'
+sha256sums_x86_64=('938e86022d993a94ffc60d5ba69edb7111a75cc92e8e4e184ecd286e984d60b9'
                    'befd7eabe15dc90b947c8d878a06649767c4e5a0c5777a1ba4ed297db9bafc1f'
                    'a8f45ab4a86b7ad01b9050be2ebaa44d4be437371ffab2d136c960149aa0b7fd')
 
