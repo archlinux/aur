@@ -1,5 +1,5 @@
 VERSION='<version>'
-THIS_JAVA='java-${VERSION}-jdk'
+THIS_JAVA="java-${VERSION}-jdk"
 NAME='JDK Devel'
 
 all_off="$(tput sgr0)"
