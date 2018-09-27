@@ -2,7 +2,7 @@
 
 pkgbase=('python-pyscipopt-git')
 pkgname=('python-pyscipopt-git' 'python2-pyscipopt-git')
-pkgver=v1.4.0.r12.ge2eb344
+pkgver=2.0.1.r12.g5b2a21b
 pkgrel=1
 pkgdesc='A Python Interface to the SCIP Optimization Suite.'
 arch=('any')
@@ -17,7 +17,7 @@ source=("${pkgbase}::git+https://github.com/SCIP-Interfaces/PySCIPOpt.git")
 pkgver() {
 	cd "${srcdir}/${pkgbase}"
 
-	git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package_python-pyscipopt-git() {
