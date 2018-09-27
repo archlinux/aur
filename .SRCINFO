@@ -9,7 +9,7 @@ pkgbase = jdk-docs
 	options = !strip
 	source = http://download.oracle.com/otn-pub/java/jdk/11+28/55eed80b163941c8885ad9298e6d786a/jdk-11_doc-all.zip
 	source = LICENSE-Oracle-Legal-Notices.txt
-	sha256sums = 97324a58359883a57e5352983b06ab1deedf945df77ad1275afa9795e56c2048 *jdk-11_doc-all.zip
+	sha256sums = 97324a58359883a57e5352983b06ab1deedf945df77ad1275afa9795e56c2048
 	sha256sums = f1c7b95bafa96ddb992e9ef7548e25c49aa98195e4ea37f3d46a93b85d8c9dbd
 
 pkgname = jdk-docs
