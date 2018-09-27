@@ -183,6 +183,9 @@ void on_search_entry_focus_in_event(GtkWidget* search_entry, GdkEvent* event);
 
 void on_search_entry_activate(GtkEntry* entry);
 
+void on_info_peers_tree_view_row_activated(GtkTreeView* tree_view, GtkTreePath* path,
+        GtkTreeViewColumn* column);
+
 void symbol_show_info(const char* symbol);
 
 /** UTILS **/

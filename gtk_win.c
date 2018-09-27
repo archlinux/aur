@@ -416,19 +416,26 @@ gboolean on_info_graph_drawing_area_draw(GtkWidget* widget, cairo_t* cr) {
     if (trading_days - app.focused->num_points > 0)
         info_chart_fill_empty(app.focused, trading_days);
 
-    double max = app.focused->points[0], min = app.focused->points[0];
-    for (int i = 1; i < app.focused->num_points; i++) {
-        if (app.focused->points[i] > max)
-            max = app.focused->points[i];
-        if (app.focused->points[i] < min)
-            min = app.focused->points[i];
+    double max = EMPTY, min = DBL_MAX;
+    int first_non_empty = EMPTY;
+    for (int i = 0; i < app.focused->num_points; i++) {
+        if (app.focused->points[i] != EMPTY) {
+            if (app.focused->points[i] > max)
+                max = app.focused->points[i];
+            if (app.focused->points[i] < min)
+                min = app.focused->points[i];
+
+            if (first_non_empty == EMPTY)
+                first_non_empty = i;
+        }
     }
 
-    cairo_set_line_width(cr, 1.0);
-    cairo_move_to(cr, 0.0, 0.0);
-
     double line_diff = (max - min) / graph_max_y, day_close;
-    for (gdouble i = 0, y; i < graph_max_x; i++) {
+    cairo_set_line_width(cr, 1.0);
+    cairo_move_to(cr, first_non_empty * (graph_max_x / trading_days),
+                  (app.focused->points[first_non_empty] - min) / line_diff);
+
+    for (gdouble i = first_non_empty * (graph_max_x / trading_days), y; i < graph_max_x; i++) {
         day_close = app.focused->points[(int) ((double) i * app.focused->num_points / graph_max_x)];
         y = (day_close - min) / line_diff;
         cairo_line_to(cr, i, y);
@@ -438,12 +445,12 @@ gboolean on_info_graph_drawing_area_draw(GtkWidget* widget, cairo_t* cr) {
 
     cairo_set_line_width(cr, 0.3);
     int square_side_length = 20;
-    for (gdouble x = 0; x < graph_max_x; x += square_side_length) {
+    for (gdouble x = 0; x < graph_max_x; x += square_side_length) { // Vertical squares
         cairo_move_to(cr, x, 0.0);
         cairo_line_to(cr, x, graph_max_y);
     }
 
-    for (gdouble y = 0; y < graph_max_y; y += square_side_length) {
+    for (gdouble y = 0; y < graph_max_y; y += square_side_length) { // Horizontal squares
         cairo_move_to(cr, 0.0, y);
         cairo_line_to(cr, graph_max_x, y);
     }
@@ -479,6 +486,17 @@ gboolean on_info_graph_drawing_area_draw(GtkWidget* widget, cairo_t* cr) {
     return FALSE;
 }
 
+void on_info_peers_tree_view_row_activated(GtkTreeView* tree_view, GtkTreePath* path,
+                                           GtkTreeViewColumn* column) {
+    GtkTreeIter iter;
+    GtkTreeModel* model = GTK_TREE_MODEL(GET_OBJECT("peers_list"));
+    gtk_tree_model_get_iter(model, &iter, path);
+    gchar* symbol;
+    gtk_tree_model_get(model, &iter, 0, &symbol, -1);
+    symbol_show_info(symbol);
+    g_free(symbol);
+}
+
 void symbol_show_info(const char* symbol) {
     Info* pInfo = info_array_find_symbol_recursive(app.portfolio_data, symbol);
     if (pInfo == NULL)
@@ -505,7 +523,7 @@ void symbol_show_info(const char* symbol) {
     app.focused = pInfo;
     info_pane_populate_all(pInfo);
     GtkContainer* window = GTK_CONTAINER(GET_OBJECT("check_window"));
-    gtk_container_remove(window, GTK_WIDGET(GET_OBJECT("check_pane")));
+    gtk_container_remove(window, gtk_bin_get_child(GTK_BIN(window))); // Remove child
     gtk_container_add(window, GTK_WIDGET(GET_OBJECT("info_pane")));
 }
 
