@@ -2,7 +2,7 @@
 
 _gonamespc='github.com/schollz/croc'
 pkgname=croc
-pkgver=3.0.6
+pkgver=3.0.7
 pkgrel=1
 pkgdesc="Easily and securely send things from one computer to another."
 arch=('x86_64')
@@ -14,7 +14,6 @@ provides=('croc')
 conflicts=('croc-bin' 'croc-git')
 #options=()
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('2166fbbb3f1bfccc9de7d12ddf90eadb238a1efab70209fecaea1a558799b3d89d0be1e09aad7d4bc946a357926dc71545b75f3dda681838cefdebeb4f0dc14c')
 
 prepare() {
 	if [ ! $(wc -w <<< $srcdir) == 1 ]; then echo srcdir can\'t contain spaces because of trimpath; return 1; fi
@@ -38,3 +37,4 @@ check() {
 package() {
 	install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
+sha512sums=('e85a191a6c8e343cadcb4b98f9c23e4f194446c8efedbe93bc6d2cb103105fd41eb1be748176bce1835671d6b5f93c7f94a9ca674eacffa154c1bf2b05d240c3')
