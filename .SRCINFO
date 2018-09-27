@@ -1,12 +1,15 @@
 pkgbase = python-opentimestamps-git
 	pkgdesc = Python3 library for working with the OpenTimestamps protocol
-	pkgver = r108.a8e9909
+	pkgver = 0.4.0.r0.g881e6d3
 	pkgrel = 1
 	url = https://github.com/opentimestamps/python-opentimestamps
 	arch = any
 	license = LGPL3
-	depends = python-python-bitcoinlib
-	depends = python-git
+	checkdepends = python-gitpython
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-bitcoinlib
+	depends = python-pysha3
 	source = git+https://github.com/opentimestamps/python-opentimestamps
 	md5sums = SKIP
 
