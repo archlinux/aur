@@ -1,0 +1,46 @@
+  hw/xfree86/common/xf86Init.c | 7 ++++++-
+  hw/xfree86/man/Xorg.man      | 4 ++++
+  2 files changed, 10 insertions(+), 1 deletion(-)
+
+ diff --git a/hw/xfree86/common/xf86Init.c b/hw/xfree86/common/xf86Init.c
+ index 1695dbf..c266be3 100644
+ --- a/hw/xfree86/common/xf86Init.c
+ +++ b/hw/xfree86/common/xf86Init.c
+ @@ -93,7 +93,7 @@
+  #ifdef XF86PM
+  void (*xf86OSPMClose) (void) = NULL;
+  #endif
+ -static Bool xorgHWOpenConsole = FALSE;
+ +static Bool xorgHWOpenConsole = TRUE;
+
+  /* Common pixmap formats */
+
+ @@ -1455,6 +1455,11 @@ ddxProcessArgument(int argc, char **argv, int i)
+          return 1;
+      }
+
+ +    if (!strcmp(argv[i], "-notty")) {
+ +        xorgHWOpenConsole = FALSE;
+ +        return 1;
+ +    }
+ +
+      /* OS-specific processing */
+      return xf86ProcessArgument(argc, argv, i);
+  }
+ diff --git a/hw/xfree86/man/Xorg.man b/hw/xfree86/man/Xorg.man
+ index 0cd5a10..7d77afd 100644
+ --- a/hw/xfree86/man/Xorg.man
+ +++ b/hw/xfree86/man/Xorg.man
+ @@ -333,6 +333,10 @@ as root (i.e, with real-uid 0).
+  .TP 8
+  .B \-nosilk
+  Disable Silken Mouse support.
+ +.TP8
+ +.B \-notty
+ +If supported by the driver, do not allocate a VT. If one ore more drivers
+ +require a VT, this flag has no effect.
+  .TP 8
+  .B \-novtswitch
+  Disable the automatic switching on X server reset and shutdown to the
+ --
+ 1.8.1
