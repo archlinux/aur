@@ -2,12 +2,12 @@
 
 pkgname=uhk-agent-appimage
 pkgver=1.2.10
-pkgrel=1
+pkgrel=2
 pkgdesc="The configuration application of the Ultimate Hacking Keyboard."
 arch=('x86_64')
 url="https://github.com/UltimateHackingKeyboard/agent"
 license=('GPL3')
-depends=(libusb)
+depends=(libusb fuse2)
 source=("https://github.com/UltimateHackingKeyboard/agent/releases/download/v${pkgver}/UHK.Agent-${pkgver}-linux-x86_64.AppImage"
         uhk-agent.desktop.patch
         uhk-agent.sh)
