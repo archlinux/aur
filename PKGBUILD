@@ -3,8 +3,8 @@
 # Contributor: ValHue <vhuelamo at gmail dot com>
 #
 pkgname="multisystem"
-pkgver=1.0424
-pkgrel=2
+pkgver=1.0425
+pkgrel=1
 pkgdesc="A GUI tool to create a usb system that can boot multiple distro's"
 url="http://liveusb.info/dotclear/index.php"
 arch=('i686' 'x86_64')
@@ -19,8 +19,8 @@ provides=("${pkgname}")
 source=("http://liveusb.info/${pkgname}/${pkgname}.tar.bz2"
         "http://liveusb.info/${pkgname}/depot/dists/all/main/binary-i386/Packages"
 )
-sha256sums=('2a6058bf4ce13c14b1fba575eb02916835f828329d9a1193d20c32de87bf9fa2'
-            '45042a69300ccc48f89b6050f56b33a9d244d7af51ebf935f00d56c0eaf20c09')
+sha256sums=('70bcd1f6a170e89ffcaae630d1bd8431c62bb4aad1fbfd0969b0b49642a0404d'
+            'df8597aa58ed6fd6e03a87c08729516390a1aa9a07fb858b1210dd2411bf90d5')
 
 _multisystem="#!/usr/bin/sh
 exec /usr/local/share/multisystem/gui_multisystem.sh
