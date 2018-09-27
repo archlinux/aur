@@ -1,0 +1,17 @@
+diff --git a/Makefile b/Makefile
+index 1a7597b..0a22a6a 100644
+--- a/Makefile
++++ b/Makefile
+@@ -7,3 +7,3 @@ make:
+    which gimptool-2.0 && which pcre-config && \
+-	gcc -o ./bin/bimp -Wall -O2 -Wno-unused-variable -Wno-pointer-sign -Wno-parentheses src/*.c src/manipulation-gui/*.c $(GIMPARGS) $(PCREARGS) -lm -DGIMP_DISABLE_DEPRECATED
++	gcc -o ./bin/bimp -Wall -O2 -Wno-unused-variable -Wno-pointer-sign -Wno-parentheses src/*.c src/manipulation-gui/*.c $(GIMPARGS) $(PCREARGS) -lm -UGIMP_DISABLE_DEPRECATED
+
+diff --git a/src/manipulation-gui/gui-fliprotate.c b/src/manipulation-gui/gui-fliprotate.c
+index ac5638b..e29eda4 100644
+--- a/src/manipulation-gui/gui-fliprotate.c
++++ b/src/manipulation-gui/gui-fliprotate.c
+@@ -1,2 +1,3 @@
+ #include <gtk/gtk.h>
++#include <gegl.h>
+ #include <libgimpwidgets/gimpwidgets.h>
