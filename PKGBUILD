@@ -1,33 +1,46 @@
 # Maintainer : Daniel Bermond < yahoo-com: danielbermond >
 
-# NOTE:
-# In order to build the package, you need to manually download the NCCL file
-# from NVIDIA's website (registration required). Place the downloaded file
-# in the PKGBUILD directory and run makepkg.
-# Download website:
-# https://developer.nvidia.com/nccl/
-
-_srcver=2.2.13
-_srcrel=1
-_cudaver=9.2
+_commit='f93fe9bfd94884cec2ba711897222e0df5569a53'
 
 pkgname=nccl
-pkgver="${_srcver}.${_srcrel}"
+pkgver=2.3.5.5
 pkgrel=1
-pkgdesc='Library for NVIDIA Multi-GPU and multi-node collective communication primitives (needs registration at upstream URL and manual download)'
+pkgdesc='Library for NVIDIA multi-GPU and multi-node collective communication primitives'
 arch=('x86_64')
 url='https://developer.nvidia.com/nccl/'
-license=('custom')
-depends=('cuda')
+license=('BSD')
+depends=('glibc')
+makedepends=('git' 'cuda')
 conflicts=('nccl-git')
-options=('!strip')
-source=("file://${pkgname}_${_srcver}-${_srcrel}+cuda${_cudaver}_x86_64.txz")
-sha256sums=('2854bb5989dd5f06553bfd1367e718ce09b435f8758d0bd946b955fd41b6a93e')
+source=("$pkgname"::"git+https://github.com/NVIDIA/nccl.git#commit=${_commit}")
+sha256sums=('SKIP')
+
+prepare() {
+    cd "$pkgname"
+    
+    # rename BUILDDIR Makefile variable to avoid conflict with makepkg's one
+    
+    local _file
+    local _filelist
+    
+    _filelist="$(find . -type f -exec grep 'BUILDDIR' {} + | awk -F':' '{ print $1 }' | uniq)"
+    
+    for _file in $_filelist
+    do
+        sed -i 's/BUILDDIR/_BUILDPATH/g' "$_file"
+    done
+}
+
+build() {
+    cd "$pkgname"
+    
+    make CUDA_HOME='/opt/cuda' src.build
+}
 
 package() {
-    cd "${pkgname}_${_srcver}-${_srcrel}+cuda${_cudaver}_x86_64"
+    cd "${pkgname}/build"
     
-    # include
+    # header
     install -D -m644 include/nccl.h "${pkgdir}/opt/cuda/include/nccl.h"
     
     # libraries
@@ -35,7 +48,6 @@ package() {
     cp    -a lib/* "${pkgdir}/opt/cuda/lib64"
     
     # license
-    install -D -m644 NCCL-SLA.txt          "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -D -m644 COPYRIGHT.txt         "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
-    sed     -i 's/NCCL-SLA\.txt/LICENSE/g' "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
+    cd "${srcdir}/${pkgname}"
+    install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
