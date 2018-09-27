@@ -5,7 +5,7 @@
 pkgname=firetable
 pkgver=5.5
 pkgrel=2
-pkgdesc="An iptables firewall script"
+pkgdesc="Tool written in PHP to maintain IPtables firewalls under Linux"
 arch=('any')
 url="http://projects.leisink.net/Firetable/"
 license=('GPL')
