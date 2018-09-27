@@ -182,7 +182,7 @@ String* api_iex_get_data_string(char** symbol_array, size_t len,
     else if (data_level == DATA_LEVEL_GRAPH)
         strcpy(endpoints, "quote,chart&range=5y");
     else if (data_level == DATA_LEVEL_MISC)
-        strcpy(endpoints, "company,stats,peers,news,earnings&range=5y");
+        strcpy(endpoints, "chart,company,stats,peers,news,earnings&range=5y");
     else strcpy(endpoints, "news");
 
     size_t num_partitions = len / 100 + (len % 100 > 0), idx;
