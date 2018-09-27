@@ -62,7 +62,7 @@ _minor=18
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_basekernel}
 pkgbase=linux-pf
-_pfrel=5
+_pfrel=7
 _kernelname=-pf
 _pfpatchhome="https://github.com/pfactum/pf-kernel/compare"
 _pfpatchname="v$_major.$_minor...v$_major.$_minor-pf$_pfrel.diff"
@@ -81,8 +81,10 @@ license=('GPL2')
 options=('!strip')
 makedepends=('git' 'xmlto' 'docbook-xsl' 'xz' 'bc' 'kmod' 'elfutils')
 source=("https://www.kernel.org/pub/linux/kernel/v${_major}.x/linux-${_basekernel}.tar.xz"
-	      'config.i686' 'config.x86_64'		# the main kernel config files
-	      'linux.preset'			        # standard config files for mkinitcpio ramdisk
+	      'config.x86_64'
+        'config.i686'
+        'pf_defconfig'
+        'linux.preset'			        # standard config files for mkinitcpio ramdisk
 	      "${_pfpatchhome}/${_pfpatchname}"	# the -pf patchset
         "90-linux.hook"
         "60-linux.hook"
@@ -117,6 +119,7 @@ prepare() {
   
   if [ "$CARCH" = "x86_64" ]; then
 	  cat "${startdir}/config.x86_64" >| .config
+    ./scripts/kconfig/merge_config.sh .config "$srcdir"/pf_defconfig
   else
 	  cat "${startdir}/config.i686" >| .config
   fi
@@ -145,7 +148,8 @@ prepare() {
   # If the following is set, stop right there. We only need the headers for
   # dependent drivers' compiling (nvidia, virtualbox etc)
 
-  #./scripts/kconfig/merge_config.sh .config "$srcdir"/gpdpocket.kconfig
+  # merge our changes to arches kernel config
+  ./scripts/kconfig/merge_config.sh .config "$srcdir"/pf_defconfig
 
   # get kernel version
   #make prepare
@@ -642,10 +646,12 @@ eval "package_linux-pf${LCPU+-$LCPU}() {
 
 
 sha256sums=('19d8bcf49ef530cd4e364a45b4a22fa70714b70349c8100e7308488e26f1eaf1'
-            '102d518779dc312af35faf7e07ff01df3c04521d40d8757fc4e8eba9c595c395'
-            '622c9966585723a3a88ccabf83ecb7b64851c6acf9b0dd9862df5885b0d02907'
+            '3daec5ff564fd456e9d32138ab6a6184bb63d5130b94003d4a0b3ccecccd3711'
+            'fc137a9706f7b1e2f9deb49f3a750834320fceee0944ce584e2c4341bb9ca2c6'
+            'cd7b41f16caee2fb1e5c4d55f24d445bd78c8ed5ba8554c5175b47293ee208fd'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
-            'cc086ea76faea1da162328ff8ab7a4cd021707c7c7ccb510904cc014e0f9d7f1'
+            'b46b762c70065ccec992394754c340dda67be95a73f5597d27c6763458c11db9'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
-            'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21')
+            'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
+            'f3743a0a18e53d13922cc21a70d783d875a12560c22ff8d28bda5f5ca9fe05c3')
 # vim:set ts=2 sw=2 tw=0 et:
