@@ -1,7 +1,7 @@
 # Maintainer: Marco Steiger <marco1steiger (at) gmail (dot) com>
 pkgname=thedude
 pkgver=6.43.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Mikrotik The Dude network monitoring client"
 url="http://www.mikrotik.com"
 arch=('x86_64' 'i686')

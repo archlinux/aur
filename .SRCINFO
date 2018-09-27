@@ -1,7 +1,7 @@
 pkgbase = thedude
 	pkgdesc = Mikrotik The Dude network monitoring client
 	pkgver = 6.43.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.mikrotik.com
 	install = thedude.install
 	arch = x86_64
