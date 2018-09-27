@@ -23,7 +23,6 @@ pkgbase = jdk
 	provides = java-runtime-headless-jre=11
 	provides = java-web-start-jre=11
 	provides = java-environment-jdk=11
-	provides = java-openjfx=11
 	provides = jdk11
 	conflicts = jdk11
 	options = !strip

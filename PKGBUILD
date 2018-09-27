@@ -17,7 +17,7 @@ optdepends=('alsa-lib: for basic sound support'
             'gtk2: for Gtk+ look and feel (desktop)')
 provides=("java-runtime=$_major" "java-runtime-headless=$_major" "java-web-start=$_major" "java-environment=$_major"
           "java-runtime-jre=$_major" "java-runtime-headless-jre=$_major" "java-web-start-jre=$_major" "java-environment-jdk=$_major"
-          "java-openjfx=$_major" "$_jname")
+          "$_jname")
 conflicts=("$_jname")
 _jvmdir=/usr/lib/jvm/java-$_major-$pkgname
 backup=("etc/java-$_jname/management/jmxremote.access"
