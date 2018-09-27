@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=neatroff-suite-git
-pkgver=r475.9e504b5
+pkgver=r485.fa4cd6d
 pkgrel=1
 epoch=
 pkgdesc="A complete neatroff typesetting system (neatmkfn, neatroff, neatpost, neateqn, neatrefer and shape)."
@@ -8,17 +8,17 @@ arch=('i686' 'x86_64')
 url="http://litcave.rudi.ir/"
 license=('ISC' 'Lucent Public License')
 groups=()
-depends=('gsfonts<=20150811')
+depends=('gsfonts-type1')
 makedepends=('git')
-optdepends=('troff-git: Port of Plan 9 troff (the preprocessors and the macro packages can be used with neatroff)'
+optdepends=('troff-git: Port of Plan 9 troff (the preprocessors and the macro packages can be used with neatroff'
             'bib2ref: Converts bibtex files to refer databases'
             'ref2bib: Converts refer databases to bibtex files'
             'nref: Manages document references, it can be used as a troff preprocessor')
 checkdepends=()
-provides=('neatmkfn' 'neatroff' 'neatpost' 'neateqn' 'neatrefer')
+provides=('neatmkfn' 'neatroff' 'neatpost' 'neateqn' 'neatrefer' 'shape')
 conflicts=('neatroff' 'neatroff-git' 'neatmkfn' 'neatmkfn-git' 
            'neatpost' 'neatpost-git' 'neateqn' 'neateqn-git'
-           'neatrefer' 'neatrefer-git')
+           'neatrefer' 'neatrefer-git' 'shape')
 replaces=('mktrfn')
 backup=()
 options=()
