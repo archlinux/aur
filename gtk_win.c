@@ -40,7 +40,7 @@ void check_list_create_from_string(void) {
     if (app.portfolio_data == NULL) // Empty JSON array
         return;
 
-    format_cells(app.portfolio_data);
+    info_array_format_cells(app.portfolio_data);
     Info* idx; // Append pListStore store with portfolio data
     GtkTreeIter iter;
     for (size_t i = 0; i < app.portfolio_data->length + 1; i++) { // + 1 for totals
@@ -58,7 +58,7 @@ void check_list_create_from_string(void) {
 
 void check_list_add_api_data(void) {
     GtkListStore* pListStore = GTK_LIST_STORE(GET_OBJECT("check_list"));
-    format_cells(app.portfolio_data);
+    info_array_format_cells(app.portfolio_data);
     Info* idx;
     GtkTreeIter iter;
     for (size_t i = 0; i < app.portfolio_data->length + 1; i++) { // + 1 for totals
@@ -517,8 +517,9 @@ void symbol_show_info(const char* symbol) {
     else if (pInfo->name[0] == '\0')
         api_store_info(pInfo, DATA_LEVEL_MISC);
 
+    info_format_cells(pInfo);
     if (pInfo->peers != NULL)
-        format_cells(pInfo->peers);
+        info_array_format_cells(pInfo->peers);
 
     app.focused = pInfo;
     info_pane_populate_all(pInfo);
@@ -527,37 +528,41 @@ void symbol_show_info(const char* symbol) {
     gtk_container_add(window, GTK_WIDGET(GET_OBJECT("info_pane")));
 }
 
-void format_cells(Info_Array* portfolio_data) {
+void info_array_format_cells(Info_Array* portfolio_data) {
     Info* idx;
     for (size_t i = 0; i < portfolio_data->length + 1; i++) { // +1 for totals
         if (i == portfolio_data->length) // On last iteration, set idx to totals
             idx = portfolio_data->totals;
         else idx = portfolio_data->array[i];
 
-        // Round strings to two decimal places
-        if (idx->amount != EMPTY)
-            sprintf(idx->famount, "%.2lf", idx->amount);
-        if (idx->total_spent != EMPTY)
-            sprintf(idx->ftotal_spent, "%.2lf", idx->total_spent);
-        if (idx->current_value != EMPTY)
-            sprintf(idx->fcurrent_value, "%.2lf", idx->current_value);
-        if (idx->profit_total != EMPTY)
-            sprintf(idx->fprofit_total, "%.2lf", idx->profit_total);
-        if (idx->profit_total_percent != EMPTY)
-            sprintf(idx->fprofit_total_percent, "%.2lf", idx->profit_total_percent);
-        if (idx->profit_last_close != EMPTY)
-            sprintf(idx->fprofit_last_close, "%.2lf", idx->profit_last_close);
-        if (idx->profit_last_close_percent != EMPTY)
-            sprintf(idx->fprofit_last_close_percent, "%.2lf", idx->profit_last_close_percent);
-        if (idx->profit_7d != EMPTY)
-            sprintf(idx->fprofit_7d, "%.2lf", idx->profit_7d);
-        if (idx->profit_7d_percent != EMPTY)
-            sprintf(idx->fprofit_7d_percent, "%.2lf", idx->profit_7d_percent);
-        if (idx->profit_30d != EMPTY)
-            sprintf(idx->fprofit_30d, "%.2lf", idx->profit_30d);
-        if (idx->profit_30d_percent != EMPTY)
-            sprintf(idx->fprofit_30d_percent, "%.2lf", idx->profit_30d_percent);
+        info_format_cells(idx);
     }
+}
+
+void info_format_cells(Info* pInfo) {
+    // Round strings to two decimal places
+    if (pInfo->amount != EMPTY)
+        sprintf(pInfo->famount, "%.2lf", pInfo->amount);
+    if (pInfo->total_spent != EMPTY)
+        sprintf(pInfo->ftotal_spent, "%.2lf", pInfo->total_spent);
+    if (pInfo->current_value != EMPTY)
+        sprintf(pInfo->fcurrent_value, "%.2lf", pInfo->current_value);
+    if (pInfo->profit_total != EMPTY)
+        sprintf(pInfo->fprofit_total, "%.2lf", pInfo->profit_total);
+    if (pInfo->profit_total_percent != EMPTY)
+        sprintf(pInfo->fprofit_total_percent, "%.2lf", pInfo->profit_total_percent);
+    if (pInfo->profit_last_close != EMPTY)
+        sprintf(pInfo->fprofit_last_close, "%.2lf", pInfo->profit_last_close);
+    if (pInfo->profit_last_close_percent != EMPTY)
+        sprintf(pInfo->fprofit_last_close_percent, "%.2lf", pInfo->profit_last_close_percent);
+    if (pInfo->profit_7d != EMPTY)
+        sprintf(pInfo->fprofit_7d, "%.2lf", pInfo->profit_7d);
+    if (pInfo->profit_7d_percent != EMPTY)
+        sprintf(pInfo->fprofit_7d_percent, "%.2lf", pInfo->profit_7d_percent);
+    if (pInfo->profit_30d != EMPTY)
+        sprintf(pInfo->fprofit_30d, "%.2lf", pInfo->profit_30d);
+    if (pInfo->profit_30d_percent != EMPTY)
+        sprintf(pInfo->fprofit_30d_percent, "%.2lf", pInfo->profit_30d_percent);
 }
 
 void list_store_sort(GtkListStore* list_store, Col_Index idx) {

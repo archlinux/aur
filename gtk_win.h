@@ -194,7 +194,9 @@ void symbol_show_info(const char* symbol);
  * Formats text in Info structs for printing to window
  * @param portfolio_data Info_Array* with valid Info data in it.
  */
-void format_cells(Info_Array* portfolio_data);
+void info_array_format_cells(Info_Array* portfolio_data);
+
+void info_format_cells(Info* pInfo);
 
 /**
  * Sorts a ListStore struct according to idx.
