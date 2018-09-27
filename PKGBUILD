@@ -7,7 +7,7 @@
 
 pkgname='xampp'
 pkgver='7.2.9'
-pkgrel=1
+pkgrel=2
 pkgdesc="A free and open source cross-platform web server package (LAMP Stack), consisting mainly of the Apache HTTP Server, MySQL database, and interpreters for scripts written in the PHP and Perl programming languages"
 url="http://www.apachefriends.org/"
 license=('GPL')
@@ -46,6 +46,11 @@ _fakeadd_error() {
 
 prepare() {
 
+	cd "${srcdir}"
+
+	# Against proot error `proot info: pid xxxx: terminated with signal 11`
+	export PROOT_NO_SECCOMP=1
+
 	# Enable fakeadd under fakeroot environment
 	export LD_PRELOAD='/usr/lib/fakeuser/libfakeuser.so'
 
@@ -53,32 +58,33 @@ prepare() {
 
 package() {
 
+	cd "${srcdir}"
+
 	install -dm755 "${pkgdir}/opt/lampp"
 
 	msg 'Creating a temporary mysql user/group with fakeadd...'
 
 	getent group mysql > /dev/null || fakeadd -G -n mysql -g 992 || _fakeadd_error
-	getent passwd mysql > /dev/null || fakeadd -U -n mysql -g 992 -u 992 || _fakeadd_error
+	getent passwd mysql > /dev/null || fakeadd -U -n mysql -g 992 -u 992 -s /bin/false || _fakeadd_error
 
 	msg 'Extracting package (this might take several minutes, don'\''t give up!)...'
 
 	chmod +x "${srcdir}/${pkgname}-linux-x64-${pkgver}-0-installer.run"
 
-	PROOT_NO_SECCOMP=1 proot -0 \
-		-b "${pkgdir}/opt/lampp:/opt/lampp" \
-		"${srcdir}/${pkgname}-linux-x64-${pkgver}-0-installer.run" \
-		--mode unattended --disable-components 'xampp_developer_files' --debuglevel 4 --launchapps 0 --debugtrace 'bitrock_debug.log'
+	proot -0 -b "${pkgdir}/opt/lampp:/opt/lampp" "${srcdir}/${pkgname}-linux-x64-${pkgver}-0-installer.run" \
+		--mode unattended --disable-components 'xampp_developer_files' --debuglevel 4 --launchapps 0 \
+		--debugtrace "${srcdir}/bitrock_debug.log"
 
 
 	msg 'Copying executables and launcher...'
 
-	#chmod g-s -R "${pkgdir}/opt/lampp"
+	chmod g-s -R "${pkgdir}/opt/lampp"
 
 	# Licenses
 	install -dm755 "${pkgdir}/usr/share/licenses/xampp"
 	cp "${pkgdir}/opt/lampp/licenses"/* "${pkgdir}/usr/share/licenses/xampp"
 
-	# /usr/bin executables
+	# Executables
 	install -dm755 "${pkgdir}/usr/bin"
 	ln -sf '/opt/lampp/lampp' "${pkgdir}/usr/bin/xampp"
 	ln -sf '/opt/lampp/lampp' "${pkgdir}/usr/bin/lampp"
