@@ -16,7 +16,7 @@ pkgbase = gitkraken
 	depends = rtmpdump
 	optdepends = git-lfs: git-lfs support
 	provides = gitkraken
-	source = gitkraken-4.0.5.tar.gz::https://release.gitkraken.com/linux/GitKraken-v4.0.5.tar.gz
+	source = gitkraken-4.0.5.tar.gz::https://release.axocdn.com/linux/GitKraken-v4.0.5.tar.gz
 	source = GitKraken.desktop
 	source = gitkraken.png
 	source = eula.html
@@ -28,4 +28,3 @@ pkgbase = gitkraken
 	sha256sums = 0346815a2d43887c2f7715384043ee9674c30eebd2d6cc4d9c788238cb8ce87e
 
 pkgname = gitkraken
-
