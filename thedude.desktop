@@ -1,10 +1,10 @@
 [Desktop Entry]
 Type=Application
-Version=1.0
-Name=Winbox
-Comment=GUI administration for Mikrotik RouterOS
-Exec=/usr/bin/winbox
-Icon=/usr/share/pixmaps/winbox.png
+Version=6.43.2
+Name=The Dude
+Comment=Mikrotik The Dude network monitoring client
+Exec=/usr/bin/thedude
+Icon=/usr/share/pixmaps/thedude.png
 Terminal=false
 Categories=Utility
-StartupWMClass=winbox.exe
+StartupWMClass=dude.exe
