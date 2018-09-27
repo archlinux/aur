@@ -2,7 +2,7 @@
 # Contributor: kkb110
 
 pkgname=jgit
-pkgver=5.0.3.201809091024_r
+pkgver=5.1.1.201809181055_r
 pkgrel=1
 pkgdesc="A 100% pure java implementation of git"
 arch=('any')
@@ -14,12 +14,12 @@ source=("https://repo.eclipse.org/content/groups/releases//org/eclipse/${pkgname
         "jgit")
 noextract=("org.eclipse.${pkgname}.pgm-${pkgver//_/-}.sh")
 
-md5sums=('143389ac868fe851abec405b45aca0d8'
+md5sums=('33b6491ea20ffd70bb65e699205840cb'
          'e67c5b842365a14ff39a3bd4a02842cb'
-         'c9db1ed76424cfd17adeac13590dcadf')
-sha256sums=('6c31d2fc58103a334c06e4ef72d4d3a0cf25f1df8ee13d834769f3fd529558be'
+         '2cdd49e8a4efcf18bf1da529e9f362c0')
+sha256sums=('f987c28162989afb04d9792c81f43102fe13c4762f6892a2fee3a4407907a8ad'
             '7df6bb0c62b53240372c458dc6f88940f5ed81bde82e54403e1826134592dde5'
-            '3e0392b9ee8c77945b9b0e5a0bfaf6b72c612c5d6bb2b3895c96eae5678163bc')
+            '45f20dc09faf16b7592715c1cfaeb37f197f3d841725c894e7756f0086b3397a')
 
 package() {
   install -Dm 755 "${srcdir}/org.eclipse.${pkgname}.pgm-${pkgver//_/-}.sh" "${pkgdir}/usr/share/java/${pkgname}/org.eclipse.${pkgname}.pgm-${pkgver//_/-}.sh"
