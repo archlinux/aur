@@ -1,0 +1,16 @@
+pkgbase = python-ipystata
+	pkgdesc = Enables the use of Stata together with Python via Jupyter (IPython) notebooks
+	pkgver = 0.3.8
+	pkgrel = 1
+	url = https://altair-viz.github.io/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = ipython
+	depends = python-pandas
+	source = ipystata-0.3.8.tar.gz::https://files.pythonhosted.org/packages/87/77/c9bf270e716e619a487c16797d1891bedfed5a274d1f40c9efc309bc9ffd/ipystata-0.3.8.tar.gz
+	sha256sums = 19f4c735052c711ebf7508e177d2c05eaf84f56badbcab732bbf1f293f0b6ed2
+
+pkgname = python-ipystata
+
