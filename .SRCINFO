@@ -1,0 +1,14 @@
+pkgbase = libopenaptx-git
+	pkgdesc = Open Source implementation of Audio Processing Technology codec (aptX)
+	pkgver = r0.0.0eb6ce6
+	pkgrel = 1
+	url = https://github.com/pali/libopenaptx
+	arch = x86_64
+	license = LGPL 2.1
+	makedepends = git
+	provides = libopenaptx
+	source = git://github.com/pali/libopenaptx.git
+	md5sums = SKIP
+
+pkgname = libopenaptx-git
+
