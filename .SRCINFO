@@ -1,7 +1,7 @@
 pkgbase = opentheory
 	pkgdesc = a tool for processing higher-order logic theory packages
-	pkgver = 1.3.20180226
-	pkgrel = 2
+	pkgver = 1.4.20180810
+	pkgrel = 1
 	epoch = 1
 	url = http://www.gilith.com/software/opentheory
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = opentheory
 	license = MIT
 	makedepends = mlton
 	depends = gmp
-	source = https://github.com/gilith/opentheory/releases/download/v1.3.20180226/opentheory.tar.gz
-	sha256sums = 888ad4fa39af1c918e83cb3f6e0efe67662bb6d5a4e967df5292cc338a5e9521
+	source = https://github.com/gilith/opentheory/releases/download/v1.4.20180810/opentheory.tar.gz
+	sha256sums = 1b939736fd2acf543db454fe1fc29cb6759c0bc3b5ccf6c4fbff9d20a05f9088
 
 pkgname = opentheory
 
