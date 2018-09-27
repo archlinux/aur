@@ -21,7 +21,7 @@ md5sums=('038d01d2415ecb91a332182711ffa4ab')
 package() {
   cd $srcdir
   mkdir -p "$pkgdir/usr/bin/"
-  cp -r .  $pkgdir/usr/bin/
+  cp -Lr . $pkgdir/usr/bin/
   install -Dm755 $startdir/ovm "$pkgdir/usr/bin/ovm"
   
 }
