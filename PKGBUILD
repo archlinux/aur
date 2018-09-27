@@ -2,7 +2,7 @@
 
 pkgname="python-pyocr"
 _pkgname="pyocr"
-pkgver="0.5.2"
+pkgver="0.5.3"
 pkgrel="1"
 pkgdesc="A Python wrapper for OCR engines (Tesseract, Cuneiform, etc)"
 url="https://gitlab.gnome.org/World/OpenPaperwork/pyocr"
