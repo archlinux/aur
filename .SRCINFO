@@ -1,6 +1,6 @@
 pkgbase = python-btrfs-backup
 	pkgdesc = incremental atomic backups for btrfs using snapshots with local and/or remote storage.
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/efficiosoft/btrfs-backup
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-btrfs-backup
 	depends = btrfs-progs>=3.12
 	optdepends = pv: displaying progress during backups
 	optdepends = openssh: remote backup storage
-	source = https://github.com/efficiosoft/btrfs-backup/archive/v0.3.0.tar.gz
-	sha512sums = 49d32569a3f7767cb6a6b69cf69bb0518a2c41c775a71d43ebf06ff3ae84a1791663182a6bb81aae3daceebc1af0b1eb6661ec272aad219aeb83edf0550f86be
+	source = https://github.com/efficiosoft/btrfs-backup/archive/v0.3.1.tar.gz
+	sha1sums = baee713913a4e8945101d8f36714b7980e97fb72
 
 pkgname = python-btrfs-backup
 

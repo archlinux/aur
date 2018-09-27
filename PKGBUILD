@@ -1,8 +1,8 @@
 # Maintainer: Ricardo Band <email@ricardo.band>
 
 pkgname=python-btrfs-backup
-_name=btrfs-backup
-pkgver=0.3.0
+_name=${pkgname#python-}
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="incremental atomic backups for btrfs using snapshots with local and/or remote storage."
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('pv: displaying progress during backups'
             'openssh: remote backup storage')
 #source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 source=("https://github.com/efficiosoft/${_name}/archive/v${pkgver}.tar.gz")
-sha512sums=('49d32569a3f7767cb6a6b69cf69bb0518a2c41c775a71d43ebf06ff3ae84a1791663182a6bb81aae3daceebc1af0b1eb6661ec272aad219aeb83edf0550f86be')
+sha1sums=('baee713913a4e8945101d8f36714b7980e97fb72')
 
 package () {
 	cd "${_name}-${pkgver}"
