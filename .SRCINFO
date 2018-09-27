@@ -1,6 +1,6 @@
 pkgbase = birdtray
 	pkgdesc = Run Thunderbird with a system tray icon.
-	pkgver = 0.3
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/gyunaev/birdtray
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = birdtray
 	license = GPL
 	depends = qt5-base
 	depends = sqlite3
-	source = birdtray-0.3.tar.gz::https://github.com/gyunaev/birdtray/archive/0.3.tar.gz
-	sha1sums = 8685f88b277167ea66ae47d81a2694366ad3975a
+	source = birdtray-1.1.tar.gz::https://github.com/gyunaev/birdtray/archive/1.1.tar.gz
+	sha1sums = f9cfd52bff8f84d11d521d144cac54500b5e4299
 
 pkgname = birdtray
 
