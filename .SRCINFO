@@ -34,13 +34,13 @@ pkgbase = pulseaudio-aptx
 	makedepends = autoconf-archive
 	makedepends = git
 	makedepends = libopenaptx
-	conflicts = pulseaudio
-	conflicts = libpulse
-	conflicts = pulseaudio-zeroconf
-	conflicts = pulseaudio-lirc
-	conflicts = pulseaudio-jack
-	conflicts = pulseaudio-bluetooth
-	conflicts = pulseaudio-equalizer
+	provides = pulseaudio=12.2
+	provides = libpulse=12.2
+	provides = pulseaudio-zeroconf=12.2
+	provides = pulseaudio-lirc=12.2
+	provides = pulseaudio-jack=12.2
+	provides = pulseaudio-bluetooth=12.2
+	provides = pulseaudio-equalizer=12.2
 	replaces = pulseaudio
 	replaces = libpulse
 	replaces = pulseaudio-zeroconf
@@ -54,7 +54,7 @@ pkgbase = pulseaudio-aptx
 
 pkgname = pulseaudio-aptx
 	install = pulseaudio.install
-	depends = libpulse=12.2-2
+	depends = libpulse-aptx=12.2-2
 	depends = rtkit
 	depends = libltdl
 	depends = speexdsp

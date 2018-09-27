@@ -8,8 +8,9 @@ pkgbase=pulseaudio-aptx
 pkgname=(pulseaudio-aptx libpulse-aptx pulseaudio-aptx-{zeroconf,lirc,jack,bluetooth,equalizer})
 pkgdesc="A featureful, general-purpose sound server with aptx over a2dp"
 pkgver=12.2
-conflicts=(pulseaudio libpulse pulseaudio-{zeroconf,lirc,jack,bluetooth,equalizer})
+provides=("pulseaudio=${pkgver}" "libpulse=${pkgver}" "pulseaudio-zeroconf=${pkgver}" "pulseaudio-lirc=${pkgver}" "pulseaudio-jack=${pkgver}" "pulseaudio-bluetooth=${pkgver}" "pulseaudio-equalizer=${pkgver}")
 replaces=(pulseaudio libpulse pulseaudio-{zeroconf,lirc,jack,bluetooth,equalizer})
+
 pkgrel=2
 arch=(x86_64)
 url="https://www.freedesktop.org/wiki/Software/PulseAudio/"
@@ -59,7 +60,7 @@ build() {
 }
 
 package_pulseaudio-aptx() {
-  depends=("libpulse=$pkgver-$pkgrel" rtkit libltdl speexdsp tdb orc libsoxr
+  depends=("libpulse-aptx=$pkgver-$pkgrel" rtkit libltdl speexdsp tdb orc libsoxr
            webrtc-audio-processing)
   optdepends=('pulseaudio-alsa: ALSA configuration (recommended)')
   backup=(etc/pulse/{daemon.conf,default.pa,system.pa})
