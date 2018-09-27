@@ -2,7 +2,7 @@
 
 pkgbase=('python-pyscipopt')
 pkgname=('python-pyscipopt' 'python2-pyscipopt')
-pkgver=1.4.0
+pkgver=2.0.1
 pkgrel=2
 pkgdesc='A Python Interface to the SCIP Optimization Suite.'
 arch=('any')
@@ -28,4 +28,4 @@ package_python2-pyscipopt() {
 	python2 setup.py install --root=${pkgdir} --optimize=1
 }
 
-md5sums=('748c62490adc261b73971367e84ba2bc')
+md5sums=('b0ec34e9b8b4f0709aba22cc35a17d5b')
