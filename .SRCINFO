@@ -1,15 +1,15 @@
 pkgbase = nodejs-mdncomp
 	pkgdesc = MDN Browser Compatibility Data (BCD) on the command line
-	pkgver = 2.2.9
+	pkgver = 2.4.2
 	pkgrel = 1
 	url = https://github.com/epistemex/mdncomp
 	arch = any
 	license = MIT
 	depends = nodejs
-	noextract = mdncomp-2.2.9.tgz
+	noextract = mdncomp-2.4.2.tgz
 	options = !emptydirs
-	source = http://registry.npmjs.org/mdncomp/-/mdncomp-2.2.9.tgz
-	sha256sums = 16aa9eee5bfda6ecf5f4b966018eb6cfe724d7503d02ca1d95cec323704d518a
+	source = http://registry.npmjs.org/mdncomp/-/mdncomp-2.4.2.tgz
+	sha256sums = 1a64d5edb724cd6eccf3bea9f9869cd5cdb89221bd88591aeafcf790d0dfa1b2
 
 pkgname = nodejs-mdncomp
 
