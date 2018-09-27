@@ -3,16 +3,19 @@
 _name=readme_renderer
 pkgbase="python-${_name//_/-}"
 pkgname=("python-${_name//_/-}" "python2-${_name//_/-}")
-pkgver=20.0
+pkgver=22.0
 pkgrel=1
 pkgdesc='Python library to safely render arbitrary README files into HTML'
 arch=('any')
 url="https://github.com/pypa/${_name}"
 license=('Apache')
 depends=()
-makedepends=('python-setuptools' 'python2-setuptools')
+makedepends=('python-setuptools' 'python2-setuptools' 'python-bleach' 'python2-bleach'
+             'python-cmarkgfm' 'python2-cmarkgfm' 'python-docutils' 'python2-docutils'
+             'python-future' 'python2-future' 'python-pygments' 'python2-pygments' 'python-six'
+             'python2-six')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('bde909eaa84d65b7942f7e6998c8b427b90b568b2630ff0306f4ca75f6d2a909')
+sha256sums=('237ca8705ffea849870de41101dba41543561da05c0ae45b2f1c547efa9843d2')
 
 
 prepare() {

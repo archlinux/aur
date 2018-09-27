@@ -1,17 +1,28 @@
 pkgbase = python-readme-renderer
 	pkgdesc = Python library to safely render arbitrary README files into HTML
-	pkgver = 20.0
+	pkgver = 22.0
 	pkgrel = 1
 	url = https://github.com/pypa/readme_renderer
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://files.pythonhosted.org/packages/source/r/readme_renderer/readme_renderer-20.0.tar.gz
-	sha256sums = bde909eaa84d65b7942f7e6998c8b427b90b568b2630ff0306f4ca75f6d2a909
+	makedepends = python-bleach
+	makedepends = python2-bleach
+	makedepends = python-cmarkgfm
+	makedepends = python2-cmarkgfm
+	makedepends = python-docutils
+	makedepends = python2-docutils
+	makedepends = python-future
+	makedepends = python2-future
+	makedepends = python-pygments
+	makedepends = python2-pygments
+	makedepends = python-six
+	makedepends = python2-six
+	source = https://files.pythonhosted.org/packages/source/r/readme_renderer/readme_renderer-22.0.tar.gz
+	sha256sums = 237ca8705ffea849870de41101dba41543561da05c0ae45b2f1c547efa9843d2
 
 pkgname = python-readme-renderer
-	depends = 
 	depends = python-bleach>=2.1.0
 	depends = python-cmarkgfm
 	depends = python-docutils
@@ -21,7 +32,6 @@ pkgname = python-readme-renderer
 	conflicts = python-readme
 
 pkgname = python2-readme-renderer
-	depends = 
 	depends = python2-bleach>=2.1.0
 	depends = python2-cmarkgfm
 	depends = python2-docutils
