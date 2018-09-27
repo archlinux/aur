@@ -3,7 +3,7 @@
 _pkgname=system76-firmware
 pkgname=system76-firmware-daemon
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="System76 Firmware Daemon provides a daemon for installing firmware updates."
 arch=('any')
 url="https://github.com/pop-os/system76-firmware"
@@ -12,6 +12,7 @@ install="${pkgname}.install"
 depends=(
   'dbus'
   'systemd'
+  'openssl-1.0'
 )
 makedepends=('rust')
 conflicts=(
@@ -28,7 +29,7 @@ build() {
   ###########
 
   # Build and install base package
-  cargo build --release
+  OPENSSL_LIB_DIR="/usr/lib/openssl-1.0" OPENSSL_INCLUDE_DIR="/usr/include/openssl-1.0" cargo build --release
 }
 
 package() {
