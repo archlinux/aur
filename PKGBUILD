@@ -5,7 +5,7 @@
 
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
-pkgver=3.30.0+21+gb087752b5
+pkgver=3.30.0+39+g18eab9ae4
 pkgrel=1
 pkgdesc="Next generation desktop shell | Attempt to improve the performance by non-upstreamed patches"
 url="https://wiki.gnome.org/Projects/GnomeShell"
@@ -21,7 +21,7 @@ optdepends=('gnome-control-center: System settings'
 groups=(gnome)
 provides=(gnome-shell)
 conflicts=(gnome-shell)
-_commit=b087752b5539a8cbb1d61979cb069aef8a3475be  # master
+_commit=969eecb88e9684ff31d351ead5e1f1686a5be227 # master
 source=("git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git")
 sha256sums=('SKIP'
@@ -35,7 +35,12 @@ pkgver() {
 prepare() {
   cd $_pkgname
 
-  # No patches as of now
+  # st-box-layout: Avoid fullscreen relayout on scroll
+  # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/224/commits 
+  git remote add vanvugt https://gitlab.gnome.org/vanvugt/gnome-shell.git || true
+  git fetch vanvugt
+  git cherry-pick 6a3dd0fa || bash
+  git cherry-pick 5aac3f0a || bash
 
   # Move the plugin to our custom epiphany-only dir
   sed -i "s/'mozilla'/'epiphany'/g" meson.build
