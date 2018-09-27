@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
-pkgname=python-python-bitcoinlib
-pkgver=0.8.0
+pkgname=python-bitcoinlib
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="An easy interface to the Bitcoin protocol and data structures"
 arch=('any')
@@ -10,20 +10,24 @@ makedepends=('python-setuptools')
 url="https://github.com/petertodd/python-bitcoinlib"
 license=('LGPL3')
 options=(!emptydirs)
-source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/petertodd/${pkgname#python-}/tar.gz/${pkgname#python-}-v$pkgver)
-sha256sums=('373c55eb319746b1521b9571d3ae39042e4611109dcc6727aecf23a459703294')
-conflicts=('python-bitcoin' 'python-pybitcointools')
+source=(https://github.com/petertodd/python-bitcoinlib/archive/$pkgname-v$pkgver.tar.gz)
+sha256sums=('6b0688a8c3d4ef4385f269a6ac9163a40a5eab04e3b13114891d76f87c6926dd')
+conflicts=('python-bitcoin' 'python-pybitcointools' 'python-bitcoinlib')
+provides=("python-python-bitcoinlib=$pkgver")
 
 build() {
-  cd "$srcdir/${pkgname#python-}-${pkgname#python-}-v$pkgver"
+  cd "$pkgname-$pkgname-v$pkgver"
 
-  msg2 'Building...'
   python setup.py build
 }
 
-package() {
-  cd "$srcdir/${pkgname#python-}-${pkgname#python-}-v$pkgver"
+check() {
+  cd "$pkgname-$pkgname-v$pkgver"
+  python setup.py test
+}
 
-  msg2 'Installing...'
+package() {
+  cd "$pkgname-$pkgname-v$pkgver"
+
   python setup.py install --root="$pkgdir" --optimize=1
 }
