@@ -1,7 +1,7 @@
 pkgbase = mecab-ipadic-neologd-git
 	pkgdesc = Neologism dictionary for MeCab
 	pkgver = r20180921
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/neologd/mecab-ipadic-neologd
 	arch = any
 	license = Apache

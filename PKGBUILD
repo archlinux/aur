@@ -1,7 +1,7 @@
 # Maintainer: Gimo <self@gimo.me>
 pkgname=mecab-ipadic-neologd-git
 pkgver=r20180921
-pkgrel=1
+pkgrel=2
 pkgdesc="Neologism dictionary for MeCab"
 arch=('any')
 url="https://github.com/neologd/mecab-ipadic-neologd"
@@ -12,11 +12,11 @@ source=("${pkgname%-git}::git+https://github.com/neologd/mecab-ipadic-neologd.gi
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/${pkgname%-git}"
     printf "r%s" "$(git log -1 --format=%cd --date=format:%Y%m%d)"
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-    ./bin/install-mecab-ipadic-neologd -p "$pkgdir$(mecab-config --libexecdir)/dic/${pkgname%-git}" -n -u -y
+    cd "$srcdir/${pkgname%-git}"
+    ./bin/install-mecab-ipadic-neologd -p "$pkgdir$(mecab-config --dicdir)/${pkgname%-git}" -n -u -y
 }
