@@ -1,21 +1,22 @@
 pkgbase = kitematic
 	pkgdesc = Visual Docker Container Management
-	pkgver = 0.17.3
+	pkgver = 0.17.3+10+g26abc33e
 	pkgrel = 1
-	url = https://github.com/docker/kitematic
+	url = https://github.com/docker/kitematic/
 	arch = x86_64
-	license = Apache
+	license = APACHE
 	makedepends = git
 	makedepends = npm
-	makedepends = nodejs-grunt-cli
+	makedepends = grunt-cli
 	depends = docker
-	depends = nodejs
-	conflicts = kitematic
-	source = kitematic::git+https://github.com/docker/kitematic.git
+	depends = nodejs-lts-carbon
+	depends = glib2
+	depends = hicolor-icon-theme
+	source = kitematic::git+https://github.com/docker/kitematic.git#commit=26abc33e61fd1535762c1813d9130e55789dbe85
 	source = kitematic.desktop
 	source = kitematic.svg
 	sha256sums = SKIP
-	sha256sums = 448603660a205037c83125759e523cfec9cf1a93c0b1317482740a04292d5bdc
+	sha256sums = acf85b7e6a94be11c482f6119dcea00cf828d9cd25e0bdea22b844fa5d4c01c0
 	sha256sums = 954d9803f49e475bc3242ad8b5dbfe5f3be9b532434ff260e1cf5c929f018617
 
 pkgname = kitematic
