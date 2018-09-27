@@ -138,6 +138,14 @@ void api_iex_store_info_array(Info_Array* pInfo_Array, Data_Level data_level) {
     }
 
     String* pString = api_iex_get_data_string(symbol_array, pInfo_Array->length, data_level);
+    if (pString == NULL) { // No internet connection
+        for (size_t i = 0; i < pInfo_Array->length; i++)
+            free(symbol_array[i]);
+
+        free(symbol_array);
+        return;
+    }
+
     Json* jobj = json_tokener_parse(pString->data);
     info_array_store_endpoints_json(pInfo_Array, jobj);
 

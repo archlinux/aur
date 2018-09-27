@@ -141,9 +141,13 @@ void on_load_button_clicked(GtkButton* button) {
     app.portfolio_data = portfolio_info_array_init_from_portfolio_string(app.portfolio_string);
     if (app.portfolio_data != NULL) { // If file is not a length 0 JSON array
         check_list_create_from_string();
-        app.last_reload = now;
         api_store_info_array(app.portfolio_data, DATA_LEVEL_CHECK);
-        check_list_add_api_data();
+        app.last_reload = now;
+        if (app.portfolio_data->array[0]->api_provider == EMPTY) {
+            show_generic_message_dialog("No internet connection!", FALSE);
+            app.last_reload = 0;
+        }
+        else check_list_add_api_data();
     }
 
     GtkButton* lock_button = GTK_BUTTON(GET_OBJECT("lock_button"));
@@ -586,7 +590,11 @@ void list_store_update(void) {
     check_list_create_from_string(); // Will set app.portfolio_data if success
     if (app.portfolio_data != NULL) {
         api_store_info_array(app.portfolio_data, DATA_LEVEL_CHECK);
-        check_list_add_api_data();
+        if (app.portfolio_data->array[0]->api_provider == EMPTY) {
+            show_generic_message_dialog("No internet connection!", FALSE);
+            app.last_reload = 0;
+        }
+        else check_list_add_api_data();
     }
 }
 
