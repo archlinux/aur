@@ -1,0 +1,26 @@
+pkgbase = passbook-git
+	pkgdesc = Password manager for GNOME
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Passbook
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = appstream-glib
+	depends = desktop-file-utils
+	depends = gobject-introspection
+	depends = gtk3
+	depends = itstool
+	depends = python-cairo
+	depends = python-gobject
+	provides = passbook
+	conflicts = passbook
+	source = git+https://gitlab.gnome.org/gnumdk/passbook.git
+	source = git+https://gitlab.gnome.org/gnumdk/passbook-po.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = passbook-git
+
