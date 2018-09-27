@@ -11,6 +11,7 @@ pkgbase = libhandy
 	makedepends = pkg-config
 	makedepends = meson
 	makedepends = gobject-introspection
+	makedepends = vala
 	depends = gtk3
 	conflicts = libhandy-git
 	source = https://source.puri.sm/Librem5/libhandy/-/archive/v0.0.3/libhandy-v0.0.3.tar.gz
