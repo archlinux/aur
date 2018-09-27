@@ -8,7 +8,7 @@
 pkgname=mutter-781835-workaround
 _pkgname=mutter
 pkgver=3.30.0+13+g2fb3db765
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager for GNOME. This package reverts a commit which may causes performance problems for nvidia driver users. Some performance patches also included."
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -36,14 +36,33 @@ sha256sums=('SKIP'
 prepare() {
   cd $_pkgname
 
-  ## Unmerged performance bits, enable with own risk and merge conflicts yourself
-  # Multiline comment start, remove the line (and comment end line) below to enable the patches
+  ## Unmerged performance bits
+  # Commented multiline comment start, remove the # below to disable the patches
   # : '
 
-  # Empty as of now
+  git remote add vanvugt https://gitlab.gnome.org/vanvugt/mutter.git || true
+  git fetch vanvugt
+
+  # clutter: Deliver events sooner when possible
+  # https://gitlab.gnome.org/GNOME/mutter/merge_requests/168/commits
+  git cherry-pick 0feecfe8
+
+  # clutter: Fix offscreen-effect painting of clones
+  # https://gitlab.gnome.org/GNOME/mutter/merge_requests/117/commits
+  git cherry-pick cc3f4e4e
+
+  # Geometric (GPU-less) picking
+  # https://gitlab.gnome.org/GNOME/mutter/merge_requests/189
+  git cherry-pick 23435a40
+  git cherry-pick 095d3a7b
+
+  # Sync to the hardware refresh rate, not just 60.00Hz [performance]
+  # https://gitlab.gnome.org/GNOME/mutter/merge_requests/171/commits
+  git cherry-pick ac031043
+  git cherry-pick 177ec12e
 
   # '
-  # Multiline comment end, remove the line above if enabling the patches
+  # Commented multiline comment end, remove the # above if disabling the patches
 
   # Revert offending commit
   patch -Np1 -i ../revert.patch
