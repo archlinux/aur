@@ -1,0 +1,30 @@
+{
+  "languages": {
+    "LANG": {
+      "chrome_resources": {
+        "calendar": "chrome/LANG/locale/LANG/calendar/", 
+        "lightning": "chrome/LANG/locale/LANG/lightning/", 
+        "gdata-provider": "chrome/LANG/locale/LANG/gdata/"
+      }, 
+      "version": "VERSION"
+    }
+  }, 
+  "applications": {
+    "gecko": {
+      "strict_min_version": "MINVER", 
+      "id": "langpack-cal-LANG@archlinux.org.community.xpi", 
+      "strict_max_version": "MAXVER"
+    }
+  }, 
+  "langpack_id": "cal-LANG", 
+  "version": "VERSION", 
+  "name": "LANGUAGE (LANG) Language Pack for Lightning", 
+  "manifest_version": 2, 
+  "sources": {
+    "browser": {
+      "base_path": "browser/"
+    }
+  }, 
+  "author": "PACKAGER", 
+  "description": "Language pack for Thunderbird Lightning for LANG"
+}
