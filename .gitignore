@@ -1,0 +1,4 @@
+/libfido2/
+/*.tar.xz
+/pkg/
+/src/
