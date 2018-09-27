@@ -1,5 +1,5 @@
 pkgname=jupyterlab
-pkgver=0.34.10
+pkgver=0.34.12
 pkgrel=1
 pkgdesc="JupyterLab computational environment"
 arch=(any)
@@ -8,7 +8,7 @@ license=(custom)
 makedepends=('python-setuptools' 'nodejs')
 depends=('jupyterlab_launcher')
 source=($pkgname-$pkgver.tar.gz::"https://github.com/jupyterlab/jupyterlab/archive/v$pkgver.tar.gz")
-sha256sums=('214d909dca98df69baac50bcbbd3491beb4bc4e7bc0aec5a1f36d3a5716e710c')
+sha256sums=('6b2fee04fa8852acf7d2cf20100b4cac4afc50dbaaa92ebb44acf79c353a2bfd')
 
 build() {
   cd $pkgname-$pkgver
