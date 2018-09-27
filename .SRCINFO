@@ -1,0 +1,48 @@
+pkgbase = jdk10
+	pkgdesc = Oracle Java Development Kit
+	pkgver = 10.0.2
+	pkgrel = 1
+	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
+	install = jdk10.install
+	arch = x86_64
+	license = custom:Oracle
+	depends = ca-certificates-java
+	depends = hicolor-icon-theme
+	depends = java-environment-common
+	depends = java-runtime-common
+	depends = nss
+	depends = xdg-utils
+	optdepends = alsa-lib: for basic sound support
+	optdepends = eclipse-java: to use "Oracle Java Mission Control" plugins in Eclipse
+	optdepends = gtk2: for Gtk+ look and feel (desktop)
+	provides = java-runtime=10
+	provides = java-runtime-headless=10
+	provides = java-web-start=10
+	provides = java-environment=10
+	provides = java-runtime-jre=10
+	provides = java-runtime-headless-jre=10
+	provides = java-web-start-jre=10
+	provides = java-environment-jdk=10
+	provides = java-openjfx=10
+	provides = jdk10
+	conflicts = jdk10
+	options = !strip
+	backup = etc/java-jdk10/management/jmxremote.access
+	backup = etc/java-jdk10/management/management.properties
+	backup = etc/java-jdk10/security/java.policy
+	backup = etc/java-jdk10/security/java.security
+	backup = etc/java-jdk10/security/javaws.policy
+	backup = etc/java-jdk10/logging.properties
+	backup = etc/java-jdk10/net.properties
+	backup = etc/java-jdk10/sound.properties
+	source = http://download.oracle.com/otn-pub/java/jdk/10.0.2+13/19aef61b38124481863b1413dce1855f/jdk-10.0.2_linux-x64_bin.tar.gz
+	source = jconsole.desktop
+	source = jmc.desktop
+	source = policytool.desktop
+	sha256sums = 6633c20d53c50c20835364d0f3e172e0cbbce78fff81867488f22a6298fa372b
+	sha256sums = 7fd81eced792aa76dac697b3daaa5d2699b15e8c6768ed4690a331e9f616b034
+	sha256sums = bef07cdacef3e25137ac6ec394f09bb683c3ceb30b894f4b0c5ea40b0f87e4d5
+	sha256sums = 79fdffd1c3d6c0826a95d21e59392213c3a2e32709909629cfb4d222d349f2e1
+
+pkgname = jdk10
+
