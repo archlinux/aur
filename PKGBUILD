@@ -1,7 +1,7 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=diffoscope-git
-pkgver=94
+pkgver=102+2+g89e7e67
 pkgrel=1
 pkgdesc='Tool for in-depth comparison of files, archives, and directories'
 url='https://diffoscope.org/'
@@ -44,7 +44,7 @@ optdepends=(
   'python-jsbeautifier: javascript beautifier support'
   'python-progressbar: show progressbar support'
   'tcpdump: pcap matching support'
-  'tlsh: fuzzy matching supprt'
+  'python-tlsh: fuzzy matching supprt'
   'unzip: zip utilities support'
   'gzip: gzip utilities support'
   'tar: tar utilities support'
@@ -55,7 +55,7 @@ makedepends=('git' 'help2man' 'python-docutils')
 checkdepends=(
   'python-pytest' 'python-jsbeautifier' 'acl' 'binutils' 'bzip2' 'cdrtools' 'cpio' 'diffutils' 'e2fsprogs' 'enjarify' 'imagemagick'
   'java-environment>=8' 'fontforge' 'gettext' 'ghc' 'gnupg' 'mono' 'mono-tools' 'poppler' 'sqlite' 'squashfs-tools'
-  'tlsh' 'unzip' 'gzip' 'tar' 'tcpdump' 'vim' 'xz' 'llvm' 'colord' 'fpc' 'openssh' 'odt2txt' 'docx2txt' 'r' 'dtc' 'giflib'
+  'python-tlsh' 'unzip' 'gzip' 'tar' 'tcpdump' 'vim' 'xz' 'llvm' 'colord' 'fpc' 'openssh' 'odt2txt' 'docx2txt' 'r' 'dtc' 'giflib'
   'gnumeric' 'python-progressbar' 'binwalk' 'python-argcomplete')
 provides=('diffoscope')
 conflicts=('diffoscope')
@@ -81,7 +81,7 @@ build() {
 check() {
   cd ${pkgname}
   PYTHONPATH=".:${PYTHONPATH}" py.test \
-    -k 'not test_rlib and not test_progress and not test_ppu and not test_elf and not test_icc and not test_berkeley_db'
+    -k 'not test_gnumeric and not test_ppu'
 }
 
 package() {
