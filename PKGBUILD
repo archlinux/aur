@@ -6,8 +6,8 @@
 # Contributor: alegotta <algottardi at disroot dot org>
 
 pkgname='xampp'
-pkgver='7.2.9'
-pkgrel=2
+pkgver='7.2.10'
+pkgrel=1
 pkgdesc="A free and open source cross-platform web server package (LAMP Stack), consisting mainly of the Apache HTTP Server, MySQL database, and interpreters for scripts written in the PHP and Perl programming languages"
 url="http://www.apachefriends.org/"
 license=('GPL')
@@ -26,7 +26,7 @@ install='xampp.install'
 sha256sums=('9aa2e9b2ec768b7e0d5394cf27653a7c9d0291a890d058293109f1aeace79150'
             '595de672753af57c4abf1b4549530bba02b004bd45dfa82054d58ea3a174a4e6'
             '3df1d2fa8a8dbba21944045503b94315e5b7bc38b968ca5a816a57b83c6fd77a')
-sha256sums_x86_64=('3ee10a611f2cbb87ed3ccc942dbb9a6ec97bc57327cd2ccd45ff6b9696ccc56d'
+sha256sums_x86_64=('7af597647957b84ba455c7298dc51ced04c713b6e1312d67f951d259e7bc7531'
                    '4092631d86ec1c3a155bfec76ea2c8433426a13f12a7a5866f843a099f1ca418'
                    '210beb9372baf79f01b783db6d93a0f9a07289af64dd72d9e09baecd0799a76b')
 
@@ -48,7 +48,7 @@ prepare() {
 
 	cd "${srcdir}"
 
-	# Against proot error `proot info: pid xxxx: terminated with signal 11`
+	# Against proot error `proot info: pid XXXX: terminated with signal 11`
 	export PROOT_NO_SECCOMP=1
 
 	# Enable fakeadd under fakeroot environment
