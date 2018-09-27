@@ -1,0 +1,114 @@
+pkgbase = pulseaudio-aptx
+	pkgdesc = A featureful, general-purpose sound server with aptx over a2dp
+	pkgver = 12.2
+	pkgrel = 2
+	url = https://www.freedesktop.org/wiki/Software/PulseAudio/
+	arch = x86_64
+	license = GPL
+	makedepends = libasyncns
+	makedepends = libcap
+	makedepends = attr
+	makedepends = libxtst
+	makedepends = libsm
+	makedepends = libsndfile
+	makedepends = libtool
+	makedepends = rtkit
+	makedepends = libsoxr
+	makedepends = speexdsp
+	makedepends = tdb
+	makedepends = systemd
+	makedepends = dbus
+	makedepends = avahi
+	makedepends = bluez
+	makedepends = bluez-libs
+	makedepends = intltool
+	makedepends = jack2-dbus
+	makedepends = sbc
+	makedepends = lirc
+	makedepends = openssl
+	makedepends = fftw
+	makedepends = orc
+	makedepends = gtk3
+	makedepends = webrtc-audio-processing
+	makedepends = check
+	makedepends = autoconf-archive
+	makedepends = git
+	makedepends = libopenaptx
+	conflicts = pulseaudio
+	conflicts = libpulse
+	conflicts = pulseaudio-zeroconf
+	conflicts = pulseaudio-lirc
+	conflicts = pulseaudio-jack
+	conflicts = pulseaudio-bluetooth
+	conflicts = pulseaudio-equalizer
+	replaces = pulseaudio
+	replaces = libpulse
+	replaces = pulseaudio-zeroconf
+	replaces = pulseaudio-lirc
+	replaces = pulseaudio-jack
+	replaces = pulseaudio-bluetooth
+	replaces = pulseaudio-equalizer
+	options = !emptydirs
+	source = git+https://gitlab.freedesktop.org/pulseaudio/pulseaudio.git#commit=ee910cf6daa5120ab534eb2e6c573d94b9b182e7
+	sha256sums = SKIP
+
+pkgname = pulseaudio-aptx
+	install = pulseaudio.install
+	depends = libpulse=12.2-2
+	depends = rtkit
+	depends = libltdl
+	depends = speexdsp
+	depends = tdb
+	depends = orc
+	depends = libsoxr
+	depends = webrtc-audio-processing
+	optdepends = pulseaudio-alsa: ALSA configuration (recommended)
+	replaces = pulseaudio-xen<=9.0
+	replaces = pulseaudio-gconf<=11.1
+	backup = etc/pulse/daemon.conf
+	backup = etc/pulse/default.pa
+	backup = etc/pulse/system.pa
+
+pkgname = libpulse-aptx
+	pkgdesc = A featureful, general-purpose sound server with aptx over a2dp (client library)
+	license = LGPL
+	depends = dbus
+	depends = libasyncns
+	depends = libcap
+	depends = libxtst
+	depends = libsm
+	depends = libsndfile
+	depends = systemd
+	backup = etc/pulse/client.conf
+
+pkgname = pulseaudio-aptx-zeroconf
+	pkgdesc = Zeroconf support for PulseAudio
+	depends = pulseaudio=12.2-2
+	depends = avahi
+	depends = openssl
+
+pkgname = pulseaudio-aptx-lirc
+	pkgdesc = IR (lirc) support for PulseAudio
+	depends = pulseaudio=12.2-2
+	depends = lirc
+
+pkgname = pulseaudio-aptx-jack
+	pkgdesc = Jack support for PulseAudio
+	depends = pulseaudio=12.2-2
+	depends = jack
+
+pkgname = pulseaudio-aptx-bluetooth
+	pkgdesc = Bluetooth support for PulseAudio
+	depends = pulseaudio=12.2-2
+	depends = bluez
+	depends = bluez-libs
+	depends = sbc
+
+pkgname = pulseaudio-aptx-equalizer
+	pkgdesc = Equalizer for PulseAudio
+	depends = pulseaudio=12.2-2
+	depends = python-pyqt5
+	depends = python-dbus
+	depends = python-sip
+	depends = fftw
+
