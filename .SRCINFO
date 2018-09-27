@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-socketcan-bridge
 	pkgdesc = Conversion nodes for messages from SocketCAN to a ROS Topic and vice versa.
 	pkgver = 0.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://wiki.ros.org/socketcan_bridge?distro=melodic
 	arch = any
 	license = LGPL3
