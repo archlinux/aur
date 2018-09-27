@@ -6,11 +6,12 @@ post_install(){
   echo "    Languages available (by default):"
   echo "      af, as, be, bg, bn, ca, cop, cs, cu, cy, da,"
   echo "      de-1901, de-1996, de-ch-1901, el-monoton, el-polyton,"
-  echo "      en-gb, en-us, eo, es, et, eu,"
-  echo "      fi, fr, fur, ga, gl, grc, gu, hi, hr, hsb, hu, hy, ia, id, is, it, ka, kmr, kn,"
-  echo "      la, la-x-classic, la-x-liturgic,"
-  echo "      lt, lv, ml, mn-cyrl, mr, mul-ethi, nb, nl, nn, oc, or, pa, pl, pms, pt, rm,"
-  echo "      ro, ru, sa, sh-cyrl, sh-latn, sk, sl, sr-cyrl, sv, ta, te, th, tk, tr, uk,"
-  echo "      zh-latn-pinyin"
+  echo "      en-gb, en-us, eo, es, et, eu, fi, fr, fur, ga, gl, grc,"
+  echo "      gu, hi, hr, hsb, hu, hy, ia, id, is, it, ka, kmr, kn, la,"
+  echo "      la-x-classic, la-x-liturgic, lt, lv, ml, mn-cyrl, mr, mul-ethi,"
+  echo "      nb, nl, nn, oc, or, pa, pi, pl, pms, pt, rm, ro, ru, sa, sh-cyrl,"
+  echo "      sh-latn, sk, sl, sr-cyrl, sv, ta, te, th, tk, tr, uk, zh-latn-pinyin"
 }
+
+
 

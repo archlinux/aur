@@ -1,4 +1,4 @@
-.\" hyphenation macro
+.\" hyphenation macros
 .de hyph
 .     hpf \n(.D/../hyph/hyph-\\$1.pat.txt \
           \n(.D/../hyph/hyph-\\$1.hyp.txt \
