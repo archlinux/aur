@@ -1,0 +1,18 @@
+pkgbase = obs-glcapture-git
+	pkgdesc = GL capturing for OBS using SSR-GLinject
+	pkgver = r5.79c9ca0
+	pkgrel = 1
+	url = https://github.com/therealfarfetchd/obs-glcapture
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = obs-studio
+	depends = simplescreenrecorder
+	provides = obs-glcapture
+	conflicts = obs-glcapture
+	source = obs-glcapture::git+https://github.com/therealfarfetchd/obs-glcapture.git
+	sha512sums = SKIP
+
+pkgname = obs-glcapture-git
+
