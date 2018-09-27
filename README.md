@@ -129,13 +129,11 @@ the provided license for more information.
 * Zoom in more than one month for ncurses graph
 * Average graph points when skipping indices for greater accuracy
 * Android app?
-* GTK+ graph
 * Implement Coinmarketcap v2
 * Notes for portfolio securities
-* Search for securities
-* History per session
 * Mutex on portfolio
 * Add security without reloading every security
 * Refactoring
-* Cache ref-data
-* streq
+* Default window size
+* Info of related stocks
+* Fix segfault on no inet
