@@ -1,7 +1,7 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=neatmkfn-git
 pkgver=r118.dfde766
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Generate font descriptions for neatroff"
 arch=('i686' 'x86_64')
@@ -29,6 +29,11 @@ FP="/usr/share/fonts/Type1/"
 pkgver() {
   cd "$srcdir/$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "$srcdir/$pkgname"
+  sed -i '78d' gen.sh
 }
 
 build() {
