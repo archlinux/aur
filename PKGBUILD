@@ -7,12 +7,12 @@
 
 pkgname=namecoin-core-wallet
 pkgver=v0.16.3
-pkgrel=1
+pkgrel=2
 
 
 # Epoch is always set to the most recent PKGBUILD update time.
 # This allows for a forced downgrade without messing up versioning.
-epoch=1537619664
+epoch=1538009445
 
 
 # Release commit for 0.16.3
@@ -38,7 +38,7 @@ source=('git://github.com/namecoin/namecoin-core'
 sha256sums=('SKIP'
             '0226f5a570bbbde63f332d43d9d712287b316c726280f2ae9e21b1b365b3f0dc'
             'f1e0593b872e18e0aebbf399bb5d77be255cb0aa160964c0528698a33f89ba04'
-            '64b7d902b422653569917aedac04ea6e7519e81b52dead52fd0f105730c23e66')
+            '59367280936748c3f10fdea0eb7c21e2407b522617a9856dcd43ce7417e8d6a8')
 
 
 prepare() {
@@ -46,8 +46,8 @@ prepare() {
     cd "$srcdir/namecoin-core/"
     git checkout "$_commit"
 
-    # Disable forced upgrade from SSLv3 to TSL, due to upstream Qt5 bug
-    # which causes namecoin-qt to freeze on startup. See comment in build()
+    # Fix Qt GUI start freeze bug
+    # https://bbs.archlinux.org/viewtopic.php?id=240553
     cd "$srcdir"
     patch -p0 -i patch.diff
 }
@@ -58,22 +58,11 @@ build() {
     cd "$srcdir/namecoin-core/"
     ./autogen.sh
 
-
-    # Note: added --disable-bip70 option to disable BIP 70, because the only
-    #       fix for the upstream libQt5Network.so bug is to disable the
-    #       the forced upgrade from SSL to TLS. Therefore, BIP 70 payments
-    #       may be at higher risk due to the SSLv3 POODLE attack. Hence, they
-    #       have been disabled.
-    #
-    # See https://bbs.archlinux.org/viewtopic.php?id=240553
-    # and https://github.com/bitcoin/bitcoin/issues/14273
-
-
     # I have not tested the static build process on 32 bit machines yet,
     # so I'm leaving i686 with the normal dynamic build.
     if [ "$CARCH" == i686 ]; then
         ./configure --prefix=/usr --enable-upnp-default --enable-hardening \
-                    --with-gui=qt5 --disable-tests --disable-bip70
+                    --with-gui=qt5 --disable-tests
 
     # This should produce a static build that doesn't brick every time Arch
     # rolls out updates to the system libraries.
@@ -85,8 +74,7 @@ build() {
                    --enable-upnp-default \
                    --enable-hardening \
                    --with-gui=qt5 \
-                   --disable-tests \
-                   --disable-bip70
+                   --disable-tests
     fi
 
     make DESTDIR="$srcdir/tmp"
@@ -111,4 +99,3 @@ package() {
     ln -s "libnamecoinconsensus.so.0.0.0" "libnamecoinconsensus.so.0"
     ln -s "libnamecoinconsensus.so.0.0.0" "libnamecoinconsensus.so"
 }
-
