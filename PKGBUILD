@@ -4,25 +4,29 @@
 # Contributor: Corrado Primier <bardo@aur.archlinux.org>
 # Contributor: William Rea <sillywilly@gmail.com>
 
-pkgbase=pulseaudio-aptx
-pkgname=(pulseaudio-aptx libpulse-aptx pulseaudio-aptx-{zeroconf,lirc,jack,bluetooth,equalizer})
-pkgdesc="A featureful, general-purpose sound server with aptx over a2dp"
+_pkgbase=pulseaudio
+pkgbase=$_pkgbase-aptx
+pkgname=(pulseaudio-aptx libpulse-aptx pulseaudio-{zeroconf,lirc,jack,bluetooth,equalizer}-aptx)
+pkgdesc="A featureful, general-purpose sound server with aptx over a2dp added"
 pkgver=12.2
-provides=("pulseaudio=${pkgver}" "libpulse=${pkgver}" "pulseaudio-zeroconf=${pkgver}" "pulseaudio-lirc=${pkgver}" "pulseaudio-jack=${pkgver}" "pulseaudio-bluetooth=${pkgver}" "pulseaudio-equalizer=${pkgver}")
-replaces=(pulseaudio libpulse pulseaudio-{zeroconf,lirc,jack,bluetooth,equalizer})
-
 pkgrel=2
 arch=(x86_64)
 url="https://www.freedesktop.org/wiki/Software/PulseAudio/"
-license=(GPL)
+license=(GPL, LGPL)
 makedepends=(libasyncns libcap attr libxtst libsm libsndfile libtool rtkit libsoxr
              speexdsp tdb systemd dbus avahi bluez bluez-libs intltool jack2-dbus sbc
              lirc openssl fftw orc gtk3 webrtc-audio-processing
              check autoconf-archive git libopenaptx)
 options=(!emptydirs)
 _commit=ee910cf6daa5120ab534eb2e6c573d94b9b182e7  # tags/v12.2^0
-source=("git+https://gitlab.freedesktop.org/pulseaudio/pulseaudio.git#commit=$_commit")
-sha256sums=('SKIP')
+source=("git+https://gitlab.freedesktop.org/pulseaudio/pulseaudio.git#commit=$_commit"
+pulseaudio.install
+v2-1-2-Modular-API-for-Bluetooth-A2DP-codec.patch
+v2-2-2-Bluetooth-A2DP-aptX-codec-support.patch)
+sha256sums=('SKIP'
+            '1d4890b10fadb9208c3fefbbed4aca1f22e63a0f102f4c598dc573a55e724cb2'
+            '207a96440ddd1b5c452c6cd009492d218cebf150a1d120bda6a75058214e36ab'
+            '17915d377613a63a1ca5a9df9de0d557e965db9ca414478630a468bc26d55c89')
 
 pkgver() {
   cd pulseaudio
@@ -65,6 +69,8 @@ package_pulseaudio-aptx() {
   optdepends=('pulseaudio-alsa: ALSA configuration (recommended)')
   backup=(etc/pulse/{daemon.conf,default.pa,system.pa})
   install=pulseaudio.install
+  provides=("pulseaudio=$pkgver-$pkgrel")
+  conflicts=(pulseaudio)
   replaces=('pulseaudio-xen<=9.0' 'pulseaudio-gconf<=11.1')
 
   cd pulseaudio
@@ -159,42 +165,54 @@ package_libpulse-aptx() {
   pkgdesc="$pkgdesc (client library)"
   depends=(dbus libasyncns libcap libxtst libsm libsndfile systemd)
   license=(LGPL)
+  provides=("libpulse=$pkgver-$pkgrel")
+  conflicts=(libpulse)
   backup=(etc/pulse/client.conf)
 
   mv "$srcdir"/libpulse/* "$pkgdir"
 }
 
-package_pulseaudio-aptx-zeroconf(){
+package_pulseaudio-zeroconf-aptx(){
   pkgdesc="Zeroconf support for PulseAudio"
   depends=("pulseaudio=$pkgver-$pkgrel" avahi openssl)
+  provides=("pulseaudio-zeroconf=$pkgver-$pkgrel")
+  conflicts=(pulseaudio-zeroconf)
 
   mv "$srcdir"/zeroconf/* "$pkgdir"
 }
 
-package_pulseaudio-aptx-lirc(){
+package_pulseaudio-lirc-aptx(){
   pkgdesc="IR (lirc) support for PulseAudio"
   depends=("pulseaudio=$pkgver-$pkgrel" lirc)
+  provides=("pulseaudio-lirc=$pkgver-$pkgrel")
+  conflicts=(pulseaudio-lirc)
 
   mv "$srcdir"/lirc/* "$pkgdir"
 }
 
-package_pulseaudio-aptx-jack(){
+package_pulseaudio-jack-aptx(){
   pkgdesc="Jack support for PulseAudio"
   depends=("pulseaudio=$pkgver-$pkgrel" jack)
+  provides=("pulseaudio-jack=$pkgver-$pkgrel")
+  conflicts=(pulseaudio-jack)
 
   mv "$srcdir"/jack/* "$pkgdir"
 }
 
-package_pulseaudio-aptx-bluetooth(){
+package_pulseaudio-bluetooth-aptx(){
   pkgdesc="Bluetooth support for PulseAudio"
   depends=("pulseaudio=$pkgver-$pkgrel" bluez bluez-libs sbc)
+  provides=("pulseaudio-bluetooth=$pkgver-$pkgrel")
+  conflicts=(pulseaudio-bluetooth)
 
   mv "$srcdir"/bluetooth/* "$pkgdir"
 }
 
-package_pulseaudio-aptx-equalizer(){
+package_pulseaudio-equalizer-aptx(){
   pkgdesc="Equalizer for PulseAudio"
   depends=("pulseaudio=$pkgver-$pkgrel" python-{pyqt5,dbus,sip} fftw)
+  provides=("pulseaudio-equalizer=$pkgver-$pkgrel")
+  conflicts=(pulseaudio-equalizer)
 
   mv "$srcdir"/equalizer/* "$pkgdir"
 }

@@ -1,10 +1,11 @@
 pkgbase = pulseaudio-aptx
-	pkgdesc = A featureful, general-purpose sound server with aptx over a2dp
+	pkgdesc = A featureful, general-purpose sound server with aptx over a2dp added
 	pkgver = 12.2
 	pkgrel = 2
 	url = https://www.freedesktop.org/wiki/Software/PulseAudio/
 	arch = x86_64
-	license = GPL
+	license = GPL,
+	license = LGPL
 	makedepends = libasyncns
 	makedepends = libcap
 	makedepends = attr
@@ -34,23 +35,15 @@ pkgbase = pulseaudio-aptx
 	makedepends = autoconf-archive
 	makedepends = git
 	makedepends = libopenaptx
-	provides = pulseaudio=12.2
-	provides = libpulse=12.2
-	provides = pulseaudio-zeroconf=12.2
-	provides = pulseaudio-lirc=12.2
-	provides = pulseaudio-jack=12.2
-	provides = pulseaudio-bluetooth=12.2
-	provides = pulseaudio-equalizer=12.2
-	replaces = pulseaudio
-	replaces = libpulse
-	replaces = pulseaudio-zeroconf
-	replaces = pulseaudio-lirc
-	replaces = pulseaudio-jack
-	replaces = pulseaudio-bluetooth
-	replaces = pulseaudio-equalizer
 	options = !emptydirs
 	source = git+https://gitlab.freedesktop.org/pulseaudio/pulseaudio.git#commit=ee910cf6daa5120ab534eb2e6c573d94b9b182e7
+	source = pulseaudio.install
+	source = v2-1-2-Modular-API-for-Bluetooth-A2DP-codec.patch
+	source = v2-2-2-Bluetooth-A2DP-aptX-codec-support.patch
 	sha256sums = SKIP
+	sha256sums = 1d4890b10fadb9208c3fefbbed4aca1f22e63a0f102f4c598dc573a55e724cb2
+	sha256sums = 207a96440ddd1b5c452c6cd009492d218cebf150a1d120bda6a75058214e36ab
+	sha256sums = 17915d377613a63a1ca5a9df9de0d557e965db9ca414478630a468bc26d55c89
 
 pkgname = pulseaudio-aptx
 	install = pulseaudio.install
@@ -63,6 +56,8 @@ pkgname = pulseaudio-aptx
 	depends = libsoxr
 	depends = webrtc-audio-processing
 	optdepends = pulseaudio-alsa: ALSA configuration (recommended)
+	provides = pulseaudio=12.2-2
+	conflicts = pulseaudio
 	replaces = pulseaudio-xen<=9.0
 	replaces = pulseaudio-gconf<=11.1
 	backup = etc/pulse/daemon.conf
@@ -70,7 +65,7 @@ pkgname = pulseaudio-aptx
 	backup = etc/pulse/system.pa
 
 pkgname = libpulse-aptx
-	pkgdesc = A featureful, general-purpose sound server with aptx over a2dp (client library)
+	pkgdesc = A featureful, general-purpose sound server with aptx over a2dp added (client library)
 	license = LGPL
 	depends = dbus
 	depends = libasyncns
@@ -79,36 +74,48 @@ pkgname = libpulse-aptx
 	depends = libsm
 	depends = libsndfile
 	depends = systemd
+	provides = libpulse=12.2-2
+	conflicts = libpulse
 	backup = etc/pulse/client.conf
 
-pkgname = pulseaudio-aptx-zeroconf
+pkgname = pulseaudio-zeroconf-aptx
 	pkgdesc = Zeroconf support for PulseAudio
 	depends = pulseaudio=12.2-2
 	depends = avahi
 	depends = openssl
+	provides = pulseaudio-zeroconf=12.2-2
+	conflicts = pulseaudio-zeroconf
 
-pkgname = pulseaudio-aptx-lirc
+pkgname = pulseaudio-lirc-aptx
 	pkgdesc = IR (lirc) support for PulseAudio
 	depends = pulseaudio=12.2-2
 	depends = lirc
+	provides = pulseaudio-lirc=12.2-2
+	conflicts = pulseaudio-lirc
 
-pkgname = pulseaudio-aptx-jack
+pkgname = pulseaudio-jack-aptx
 	pkgdesc = Jack support for PulseAudio
 	depends = pulseaudio=12.2-2
 	depends = jack
+	provides = pulseaudio-jack=12.2-2
+	conflicts = pulseaudio-jack
 
-pkgname = pulseaudio-aptx-bluetooth
+pkgname = pulseaudio-bluetooth-aptx
 	pkgdesc = Bluetooth support for PulseAudio
 	depends = pulseaudio=12.2-2
 	depends = bluez
 	depends = bluez-libs
 	depends = sbc
+	provides = pulseaudio-bluetooth=12.2-2
+	conflicts = pulseaudio-bluetooth
 
-pkgname = pulseaudio-aptx-equalizer
+pkgname = pulseaudio-equalizer-aptx
 	pkgdesc = Equalizer for PulseAudio
 	depends = pulseaudio=12.2-2
 	depends = python-pyqt5
 	depends = python-dbus
 	depends = python-sip
 	depends = fftw
+	provides = pulseaudio-equalizer=12.2-2
+	conflicts = pulseaudio-equalizer
 
