@@ -18,3 +18,9 @@ pkgname = python-pylzma
 	depends = python
 	conflicts = pylzma
 
+pkgname = python2-pylzma
+	depends = python2
+	provides = pylzma=0.5.0
+	conflicts = pylzma
+	replaces = pylzma
+

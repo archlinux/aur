@@ -3,7 +3,7 @@
 
 _pkgname=pylzma
 pkgbase=python-$_pkgname
-pkgname=(python-$_pkgname)
+pkgname=(python-$_pkgname python2-$_pkgname)
 pkgver=0.5.0
 pkgrel=1
 pkgdesc="Platform independent python bindings for the LZMA compression library"
