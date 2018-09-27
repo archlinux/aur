@@ -4,7 +4,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=nextcloud-app-richdocuments
-pkgver=1.12.35
+pkgver=2.0.13
 pkgrel=1
 pkgdesc="Integrate Collabora Online into NextCloud"
 arch=('any')
@@ -13,9 +13,8 @@ license=('AGPL')
 depends=('nextcloud' 'libreoffice-online')
 makedepends=()
 options=('!strip')
-#source=("richdocuments-${pkgver}.tar.gz::https://github.com/nextcloud/richdocuments/releases/download/$pkgver/richdocuments.tar.gz")
-source=("richdocuments-${pkgver}.tar.gz::https://github.com/nextcloud/richdocuments/files/1054122/richdocuments.tar.gz")
-sha512sums=('3f5029e1bcb342cd2603fb6058cede33bff8c59c4eeeb6fbd31ed84cfca620ed08037c9459c58f6475fde9370637f6e90e5008bdc535813d31c5079e2b66f0c3')
+source=("richdocuments-${pkgver}.tar.gz::https://github.com/nextcloud/richdocuments/releases/download/$pkgver/richdocuments.tar.gz")
+sha512sums=('29d113f836d813937e9ad0bd9093b745b8c9d58a907f99890e94781a8c601ce5527b8fe24a9029a67f2e69d5a935b04b58e655f010a267ea4abbdd1cb6617142')
 
 package() {
   install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
