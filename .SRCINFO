@@ -1,14 +1,14 @@
 pkgbase = warzone2100-sequences
 	pkgdesc = Additional video content for Warzone 2100
 	pkgver = 3.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceforge.net/projects/warzone2100/files/warzone2100/Videos/
 	arch = any
 	license = GPL
 	depends = warzone2100
 	noextract = sequences.wz
 	source = sequences.wz::https://netix.dl.sourceforge.net/project/warzone2100/warzone2100/Videos/standard-quality-en/sequences.wz
-	sha256sums = fcab9e860203e7dacda6ee60384da490a9d44aeafc07aa31ff25f9c548be7582
+	sha256sums = 142ae905be288cca33357a49f42b884c190e828fc0b1b1773ded5dff774f41a3
 
 pkgname = warzone2100-sequences
 

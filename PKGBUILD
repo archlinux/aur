@@ -1,7 +1,7 @@
 # Maintainer: Marco Steiger <marco1steiger (at) gmail (dot) com>
 pkgname=warzone2100-sequences
 pkgver=3.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Additional video content for Warzone 2100"
 url="http://sourceforge.net/projects/warzone2100/files/warzone2100/Videos/"
 arch=('any')
@@ -11,7 +11,7 @@ PKGEXT='.pkg.tar'
 ## You can select the source file of your choice by uncommenting (or leaving uncommented) one of the source-blocks below, keeping/setting all others commented
 ## Standard quality, english
 source=("sequences.wz::https://netix.dl.sourceforge.net/project/warzone2100/warzone2100/Videos/standard-quality-en/sequences.wz")
-sha256sums=('fcab9e860203e7dacda6ee60384da490a9d44aeafc07aa31ff25f9c548be7582')
+sha256sums=('142ae905be288cca33357a49f42b884c190e828fc0b1b1773ded5dff774f41a3')
 ## High quality, english
 #source=("sequences.wz::https://netix.dl.sourceforge.net/project/warzone2100/warzone2100/Videos/high-quality-en/sequences.wz")
 #sha256sums=('90ff552ca4a70e2537e027e22c5098ea4ed1bc11bb7fc94138c6c941a73d29fa')
