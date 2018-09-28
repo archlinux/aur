@@ -1,0 +1,31 @@
+pkgbase = gnutls-next
+	pkgdesc = A library which provides a secure layer over a reliable transport layer (next branch)
+	pkgver = 3.6.4
+	pkgrel = 1
+	url = https://www.gnutls.org/
+	arch = x86_64
+	license = GPL3
+	license = LGPL2.1
+	checkdepends = net-tools
+	makedepends = guile2.0
+	depends = gcc-libs
+	depends = libtasn1
+	depends = readline
+	depends = zlib
+	depends = nettle
+	depends = p11-kit
+	depends = libidn2
+	depends = libunistring
+	optdepends = guile2.0: for use with Guile bindings
+	provides = gnutls=3.6.4
+	conflicts = gnutls
+	options = !zipman
+	source = https://www.gnupg.org/ftp/gcrypt/gnutls/v3.6/gnutls-3.6.4.tar.xz
+	source = https://www.gnupg.org/ftp/gcrypt/gnutls/v3.6/gnutls-3.6.4.tar.xz.sig
+	validpgpkeys = 0424D4EE81A0E3D119C6F835EDA21E94B565716F
+	validpgpkeys = 1F42418905D8206AA754CCDC29EE58B996865171
+	sha256sums = c663a792fbc84349c27c36059181f2ca86c9442e75ee8b0ad72f5f9b35deab3a
+	sha256sums = SKIP
+
+pkgname = gnutls-next
+
