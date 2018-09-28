@@ -1,0 +1,10 @@
+[Unit]
+Description=rsnapshot weekly timer
+
+[Timer]
+OnCalendar=Monday *-*-* 4:30
+Persistent=true
+Unit=rsnapshot@weekly.service
+
+[Install]
+WantedBy=timers.target

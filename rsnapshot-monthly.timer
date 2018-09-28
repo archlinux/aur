@@ -1,0 +1,10 @@
+[Unit]
+Description=rsnapshot monthly timer
+
+[Timer]
+OnCalendar=*-*-1 4:30
+Persistent=true
+Unit=rsnapshot@monthly.service
+
+[Install]
+WantedBy=timers.target
