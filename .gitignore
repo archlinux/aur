@@ -1,12 +1,18 @@
+# Directories
+pkg
+src
+
+# Archives
 *.tar
 *.tar.*
 *.zip
 *.tgz
+*.sig
+*.deb
+
+# Logs
 *.log
 *.log.*
-*.sig
-pkg/
-src/
 
-# atom deb package
-*.deb
+# Misc
+LICENSE
