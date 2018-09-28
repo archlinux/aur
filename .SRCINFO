@@ -1,6 +1,6 @@
 pkgbase = wechat-devtools
 	pkgdesc = WeChat Devtools Linux version.
-	pkgver = 1.02.1808300
+	pkgver = 1.02.1809260
 	pkgrel = 1
 	epoch = 2
 	url = https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/devtools.html
@@ -11,11 +11,11 @@ pkgbase = wechat-devtools
 	depends = wine
 	options = !strip
 	source = nwjs.tar.gz::https://npm.taobao.org/mirrors/nwjs/v0.24.4/nwjs-sdk-v0.24.4-linux-x64.tar.gz
-	source = wechat_devtools.exe::https://dldir1.qq.com/WechatWebDev/1.0.0/201808300/wechat_devtools_1.02.1808300_x64.exe
+	source = wechat_devtools.exe::https://dldir1.qq.com/WechatWebDev/1.0.0/201809260/wechat_devtools_1.02.1809260_x64.exe
 	source = wechat-devtools.desktop
 	source = logo.svg
 	md5sums = 82f20fe9081201db81652eb066c29f9b
-	md5sums = f416ebc2a5232023a0bf9debe87c26dc
+	md5sums = 6d06313c3bdd517467528588ae1a0817
 	md5sums = 8ce0ac4c3dd29535290970145cd919ae
 	md5sums = de6f2f282e6d813100474d75d8abfeb9
 
