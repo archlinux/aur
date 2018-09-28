@@ -8,7 +8,7 @@ arch=('any')
 url="http://www.egregorion.net"
 license=('GPL')
 depends=('dolphin' 'kdialog' 'ghostscript' 'texlive-bin' 'poppler' 'pdftk')
-source=("https://www.egregorion.net/works/kde/servicemenus/pdf/kde-service-menu-pdf_${pkgver}_all.tar.gz")
+source=("http://www.egregorion.net/works/kde/servicemenus/pdf/kde-service-menu-pdf_${pkgver}_all.tar.gz")
 md5sums=('6bbafea44a40a85874fb361c3473ad7e')
 
 package() {
