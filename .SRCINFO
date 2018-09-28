@@ -1,0 +1,31 @@
+pkgbase = brave-beta-bin
+	pkgdesc = Web browser that blocks ads and trackers by default (beta binary release).
+	pkgver = 0.55.10
+	pkgrel = 1
+	url = https://brave.com/download-beta
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = gconf
+	depends = nss
+	depends = alsa-lib
+	depends = libxss
+	depends = libgnome-keyring
+	depends = ttf-font
+	optdepends = cups: Printer support
+	optdepends = pepper-flash: Adobe Flash support
+	provides = brave
+	provides = brave-beta-browser
+	conflicts = brave
+	options = !strip
+	source = brave-beta-bin-0.55.10.zip::https://github.com/brave/brave-browser/releases/download/v0.55.10/brave-v0.55.10-linux-x64.zip
+	source = MPL2::https://raw.githubusercontent.com/brave/browser-laptop/master/LICENSE.txt
+	source = brave-beta-bin.sh
+	source = brave-beta-bin.desktop
+	sha512sums = 7511f60f3c92e25b02d7ce21635010b251358b6da25db2217a063a6b902f945f6b0d21a54cc46c59101d8303a7478ae4c72474ab9439c5641041c20af0e2133a
+	sha512sums = b8823586fead21247c8208bd842fb5cd32d4cb3ca2a02339ce2baf2c9cb938dfcb8eb7b24c95225ae625cd0ee59fbbd8293393f3ed1a4b45d13ba3f9f62a791f
+	sha512sums = 255effaa858fe240d2dfb072ce91a2ae075a6b2401c558c9480ef6cac05df843433a559e924ceabc0890740f217750981f9e8772e9797789fb00804a5a3348e0
+	sha512sums = 44809972e3980856494659b15d033b02c63dd1743293dc079d90d022904160532bbf82e70686dea20a46431981bf147cc5392ecc483c61378908b4a92a3d7515
+
+pkgname = brave-beta-bin
+
