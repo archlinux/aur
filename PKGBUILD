@@ -3,18 +3,18 @@
 
 pkgname=wings3d
 pkgver=2.1.7
-pkgrel=2
-pkgdesc='3D modeling program'
+pkgrel=3
+pkgdesc='3D modeler using the winged edge data structure'
 arch=('x86_64')
 url='http://www.wings3d.com/'
 license=('GPL')
-depends=('desktop-file-utils' 'erlang' 'erlang-cl' 'erlang-sdl')
+depends=('erlang' 'erlang-cl' 'erlang-sdl')
 makedepends=('gendesk' 'imagemagick')
 optdepends=('povray: render scenes with POV-Ray')
 source=("https://downloads.sourceforge.net/project/wings/wings/$pkgver/wings-$pkgver.tar.bz2"
         "$pkgname.sh")
 sha256sums=('c2f4787ac2f8c874cdbb57c87a3e267a54e7f7f90082c9885e96290d1102ff24'
-            'b44102a5c4f9f3cf71c17ef45ce534c5723b3aeb2f78298abdaf77b401982128')
+            '8e5e8f31d47ea55a0e9d311b7cc0eaac4e6050ac40506d3548b6ebae5d3618be')
 _p=${pkgname%3d}-$pkgver
 
 prepare() {
@@ -25,7 +25,7 @@ prepare() {
     --genericname '3D Modeler' \
     --categories 'Graphics;3DGraphics'
 
-  convert "$_p"/win32/wings.ico $pkgname.png
+  convert +set date:create +set date:modify "$_p"/win32/wings.ico $pkgname.png
 
   # Path fix for building wpc_lwo
   ln -s "$_p" "$_p"/plugins_src/import_export/wings

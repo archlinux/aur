@@ -1,13 +1,12 @@
 pkgbase = wings3d
-	pkgdesc = 3D modeling program
+	pkgdesc = 3D modeler using the winged edge data structure
 	pkgver = 2.1.7
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.wings3d.com/
 	arch = x86_64
 	license = GPL
 	makedepends = gendesk
 	makedepends = imagemagick
-	depends = desktop-file-utils
 	depends = erlang
 	depends = erlang-cl
 	depends = erlang-sdl
@@ -15,6 +14,6 @@ pkgbase = wings3d
 	source = https://downloads.sourceforge.net/project/wings/wings/2.1.7/wings-2.1.7.tar.bz2
 	source = wings3d.sh
 	sha256sums = c2f4787ac2f8c874cdbb57c87a3e267a54e7f7f90082c9885e96290d1102ff24
-	sha256sums = b44102a5c4f9f3cf71c17ef45ce534c5723b3aeb2f78298abdaf77b401982128
+	sha256sums = 8e5e8f31d47ea55a0e9d311b7cc0eaac4e6050ac40506d3548b6ebae5d3618be
 
 pkgname = wings3d
