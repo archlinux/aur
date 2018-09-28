@@ -4,7 +4,7 @@ post_install() {
     gtk-update-icon-cache -t /usr/share/icons/
     cat <<-EndOfMessage
 
-==> You have to install your license file to /usr/lib/astah-professional/
+==> You have to install your license file to /usr/lib/astah-uml/
       ( you can get one at http://astah.net/pricing )
 
 EndOfMessage

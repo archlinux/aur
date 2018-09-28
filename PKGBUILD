@@ -3,10 +3,10 @@
 
 pkgname=astah-uml
 _pkgname=${pkgname/-/_}
-pkgver=7.2.0
+pkgver=8.0.0
 _pkgver=${pkgver//./_}
 pkgrel=1
-_pkgrel=1ff236
+_pkgrel=d641d4
 pkgdesc="Lightweight and easy-to-use UML2.x modeler"
 arch=("any")
 license=("custom")
@@ -23,7 +23,7 @@ source=("http://cdn.change-vision.com/files/${pkgname}-${_pkgver}-${_pkgrel}.zip
         "astah_splash_uml.png"
         "LICENSE")
 
-sha256sums=('107f7af228719ea4c14a1a1d3695eeb6d6bbce97b78b32ec455d0e3109c99d41'
+sha256sums=('b57ba78cbfed29940f065ea8acd890c8cad3468581f034e4fdb2cc03093d0bbf'
             '560cdde7f1bb1fde639a8dd82deab6ee3ae6366d8385e485f32c050f4269592d'
             '0f820a854465a84a0ec718108bee8d96b572f1eb4ab4c558d83c13eb5eb03513'
             '5b02d285410a97e29eb0888b1c095d200bbecc14edc2e9129c281691c3021f49'
