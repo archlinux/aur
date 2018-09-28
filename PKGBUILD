@@ -3,7 +3,7 @@
 
 _pkgname=olm
 pkgname=libolm
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc='An implementation of a well known cryptographic ratchet in C++'
 arch=('i686' 'x86_64' 'armv7h')
@@ -11,7 +11,7 @@ url="https://matrix.org/git/olm/"
 license=('Apache')
 depends=('gcc-libs')
 source=("https://matrix.org/git/$_pkgname/snapshot/$_pkgname-$pkgver.tar.bz2")
-sha256sums=('da7203b21dcdaec55db71025c2f4e9b348d3e5188bd0de2714de6a2f5fac1c5f')
+sha256sums=('77d6d3d03c5cb9a866825fee1d684f491d4772835a858cd16e0a8e9f67dfbb8b')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
@@ -19,13 +19,9 @@ build() {
 }
 
 check() {
-  local flags='' minor="${pkgver%.*}"; minor="${minor#*.}"
-  flags+="-O2 -Iinclude -Itests/include -Ilib "
-  flags+="-DOLMLIB_VERSION_MAJOR=${pkgver%%.*} "
-  flags+="-DOLMLIB_VERSION_MINOR=${minor} "
-  flags+="-DOLMLIB_VERSION_PATCH=${pkgver##*.} "
   cd "$srcdir/$_pkgname-$pkgver"
-  make test CPPFLAGS+="$flags" DEBUG_OPTIMIZE_FLAGS=''
+  CPPFLAGS=${CPPFLAGS/-D_FORTIFY_SOURCE=2/}
+  make test
 }
 
 package() {
