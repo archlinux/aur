@@ -2,7 +2,7 @@
 # Contributor: Sean Anderson <seanga2@gamil.com>
 pkgname=proton-git
 _pkgname=proton
-pkgver=20180913.5
+pkgver=20180928b.0
 pkgrel=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components"
 arch=('x86_64')
@@ -24,7 +24,7 @@ pkgver() {
 
   version="$(git describe --abbrev=0 --tags)"
   count="$(git rev-list --count ${version}..)"
-  printf '%s.%s' "${version#proton-3.7-}" "${count}"
+  printf '%s.%s' "${version#proton-3.7*-}" "${count}"
 }
 
 prepare() {
