@@ -1,10 +1,11 @@
 pkgbase = python-tensorboardx
 	pkgdesc = Tensorboard for PyTorch
 	pkgver = 1.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/lanpa/tensorboardX
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
 	depends = python-pytorch
 	depends = python-torchvision
 	depends = tensorboard
