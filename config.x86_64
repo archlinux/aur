@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 4.19.0-rc4 Kernel Configuration
+# Linux/x86 4.19.0-rc5 Kernel Configuration
 #
 
 #
@@ -18,7 +18,7 @@ CONFIG_THREAD_INFO_IN_TASK=y
 #
 CONFIG_INIT_ENV_ARG_LIMIT=32
 # CONFIG_COMPILE_TEST is not set
-CONFIG_LOCALVERSION="-2"
+CONFIG_LOCALVERSION="-576156bb01a6"
 # CONFIG_LOCALVERSION_AUTO is not set
 CONFIG_BUILD_SALT="m"
 CONFIG_HAVE_KERNEL_GZIP=y
