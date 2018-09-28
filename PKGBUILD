@@ -1,17 +1,17 @@
-# Maintainer: Alexander Rødseth <rodseth@gmail.com>
+# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 # Contributor: kappa <kappacurve@gmail.com>
 
 pkgname=erlang-cl
-pkgver=1.2.1
-pkgrel=4
+pkgver=1.2.4
+pkgrel=1
 arch=('x86_64')
 pkgdesc='OpenCL binding for Erlang'
-url='http://github.com/tonyrog/cl'
+url='https://github.com/tonyrog/cl'
 license=('MIT')
-depends=('erlang' 'opencl-icd-loader' 'bash')
+depends=('erlang' 'opencl-icd-loader')
 replaces=('cl')
-makedepends=('opencl-headers' 'rebar' 'git')
-source=("$pkgname::git://github.com/tonyrog/cl.git#tag=cl-1.2.1")
+makedepends=('git' 'opencl-headers' 'rebar')
+source=("$pkgname::git+https://github.com/tonyrog/cl.git#tag=cl-$pkgver")
 md5sums=('SKIP')
 
 build() {
@@ -23,9 +23,9 @@ build() {
 package() {
   cd "$pkgname"
 
-  mkdir -p "$pkgdir/usr/lib/erlang/lib/cl-$pkgver"
+  install -d "$pkgdir/usr/lib/erlang/lib/cl-$pkgver"
   cp -r * "$pkgdir/usr/lib/erlang/lib/cl-$pkgver"
   install -Dm644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-# vim:set ts=2 sw=2 et:
+# vim: ts=2 sw=2 et:
