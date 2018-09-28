@@ -1,10 +1,7 @@
 [Unit]
 Description=HQPlayer Embedded daemon
-# For systemd-networkd you may want to change to
-# Requires=network-online.target sound.target systemd-udev-settle.service
-# After=network-online.target sound.target systemd-udev-settle.service
-Requires=network-online.target sound.target
-After=network-online.target sound.target
+Requires=sound.target
+After=sound.target
 
 [Service]
 Type=simple
@@ -13,7 +10,6 @@ Type=simple
 ExecStart=/usr/bin/hqplayerd
 Restart=always
 RestartSec=2
-#EnvironmentFile=-/etc/default/hqplayerd
 
 [Install]
 WantedBy=default.target
