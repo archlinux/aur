@@ -2,7 +2,7 @@
 # Maintainer: Alexandre Berthaud <alexandre at berthaud dot me>
 pkgname=keystore-explorer
 _pkgname=kse
-pkgver=5.3.2
+pkgver=5.4.0
 _pkgver=${pkgver//./}
 pkgrel=1
 pkgdesc="a free GUI replacement for the Java command-line utilities keytool, jarsigner and jadtool"
@@ -13,7 +13,7 @@ depends=('java-runtime')
 install=${pkgname}.install
 source=("https://github.com/kaikramer/${pkgname}/releases/download/v${pkgver}/${_pkgname}-${_pkgver}.zip"
         "${pkgname}.desktop")
-md5sums=('52a98a347465c193487384bd86ca3c28'
+md5sums=('e78a51ab2c9120560dba8ba1e165954d'
          'dfaa247ab726fe2e44368101399b508d')
 
 package() {
@@ -27,7 +27,7 @@ package() {
 
   install -D -m644 *.jar "${pkgdir}/usr/lib/${pkgname}"
   install -D -m644 readme.txt "${pkgdir}/usr/share/doc/${pkgname}"
-  install -D -m644 licences/license-*.txt "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -D -m644 licenses/license-*.txt "${pkgdir}/usr/share/licenses/${pkgname}"
   install -D -m644 lib/*.jar "${pkgdir}/usr/lib/${pkgname}/lib"
 
   # install wrapper
