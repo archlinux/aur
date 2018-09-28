@@ -8,7 +8,6 @@ pkgbase = orbit2
 	license = LGPL
 	license = GPL
 	makedepends = gtk-doc
-	makedepends = libgnome
 	depends = libidl2
 	options = staticlibs
 	options = !makeflags
