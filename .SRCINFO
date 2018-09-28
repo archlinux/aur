@@ -1,6 +1,6 @@
 pkgbase = phpstorm
 	pkgdesc = Lightweight and Smart PHP IDE
-	pkgver = 2018.2.3
+	pkgver = 2018.2.4
 	pkgrel = 1
 	url = https://www.jetbrains.com/phpstorm/
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = phpstorm
 	license = Commercial
 	makedepends = rsync
 	options = !strip
-	source = https://download.jetbrains.com/webide/PhpStorm-2018.2.3.tar.gz
+	source = https://download.jetbrains.com/webide/PhpStorm-2018.2.4.tar.gz
 	source = jetbrains-phpstorm.desktop
-	sha512sums = a23d5c6bf297e70daa39a9aa44e84bc7f1899d1126e8d5a3eee512e0a519086ddcb219b1f8856617337ffbc0d9627a0d201009a2c6e195ec0e77018a9c5119ba
+	sha512sums = 5fcb239098152a96afbf991eace04d69b6bb6f5147ff80d3c2f3b76c7f670c9aee3b23033006fff6251ac06fef321005fa3a9f3d873f046040424e579cb247e7
 	sha512sums = fe312d7c637ec20bd946f2e22681243a51f29afc1052ae3fe5afd0fe01f77c222bf1e2c98f0afad8d5385466215653b7ffa8718da05b6dac100ba768ff2be1d6
 
 pkgname = phpstorm
