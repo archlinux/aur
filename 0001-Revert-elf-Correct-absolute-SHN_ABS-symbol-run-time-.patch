@@ -1,55 +1,44 @@
-From ef9302f7608a62980ad850596dc8bfd40346a8e7 Mon Sep 17 00:00:00 2001
+From 098e7db144012cbd19d359df3847461dc0c58514 Mon Sep 17 00:00:00 2001
 From: Eli Schwartz <eschwartz@archlinux.org>
-Date: Wed, 8 Aug 2018 21:02:26 +0000
+Date: Fri, 28 Sep 2018 05:19:46 +0000
 Subject: [PATCH] Revert "elf: Correct absolute (SHN_ABS) symbol run-time
  calculation [BZ #19818]"
 
 This reverts commit e7feec374c635b6a29d65c39ae5e1855528fed39.
 ---
- elf/Makefile                 |  8 ++------
+ elf/Makefile                 |  4 ++--
  elf/dl-addr.c                |  2 --
  elf/tst-absolute-sym-lib.c   | 25 ------------------------
  elf/tst-absolute-sym-lib.lds | 19 ------------------
  elf/tst-absolute-sym.c       | 38 ------------------------------------
  sysdeps/generic/ldsodefs.h   |  3 +--
- 6 files changed, 3 insertions(+), 92 deletions(-)
+ 6 files changed, 3 insertions(+), 88 deletions(-)
  delete mode 100644 elf/tst-absolute-sym-lib.c
  delete mode 100644 elf/tst-absolute-sym-lib.lds
  delete mode 100644 elf/tst-absolute-sym.c
 
 diff --git a/elf/Makefile b/elf/Makefile
-index cd0771307f..f7484a81ef 100644
+index 455ec730fc..4560718fe2 100644
 --- a/elf/Makefile
 +++ b/elf/Makefile
 @@ -186,7 +186,7 @@ tests += restest1 preloadtest loadfail multiload origtest resolvfail \
  	 tst-tlsalign tst-tlsalign-extern tst-nodelete-opened \
  	 tst-nodelete2 tst-audit11 tst-audit12 tst-dlsym-error tst-noload \
  	 tst-latepthread tst-tls-manydynamic tst-nodelete-dlclose \
--	 tst-debug1 tst-main1 tst-absolute-sym tst-absolute-zero tst-big-note
-+	 tst-debug1 tst-main1 tst-absolute-zero tst-big-note
+-	 tst-debug1 tst-main1 tst-absolute-sym tst-absolute-zero tst-big-note \
++	 tst-debug1 tst-main1 tst-absolute-zero tst-big-note \
+ 	 tst-unwind-ctor
  #	 reldep9
  tests-internal += loadtest unload unload2 circleload1 \
- 	 neededtest neededtest2 neededtest3 neededtest4 \
-@@ -272,7 +272,7 @@ modules-names = testobj1 testobj2 testobj3 testobj4 testobj5 testobj6 \
+@@ -273,7 +273,7 @@ modules-names = testobj1 testobj2 testobj3 testobj4 testobj5 testobj6 \
  		tst-audit12mod1 tst-audit12mod2 tst-audit12mod3 tst-auditmod12 \
  		tst-latepthreadmod $(tst-tls-many-dynamic-modules) \
  		tst-nodelete-dlclose-dso tst-nodelete-dlclose-plugin \
 -		tst-main1mod tst-libc_dlvsym-dso tst-absolute-sym-lib \
 +		tst-main1mod tst-libc_dlvsym-dso \
- 		tst-absolute-zero-lib tst-big-note-lib
- 
- ifeq (yes,$(have-mtls-dialect-gnu2))
-@@ -1465,10 +1465,6 @@ tst-main1-no-pie = yes
- LDLIBS-tst-main1 = $(libsupport)
- tst-main1mod.so-no-z-defs = yes
- 
--LDLIBS-tst-absolute-sym-lib.so = tst-absolute-sym-lib.lds
--$(objpfx)tst-absolute-sym-lib.so: $(LDLIBS-tst-absolute-sym-lib.so)
--$(objpfx)tst-absolute-sym: $(objpfx)tst-absolute-sym-lib.so
--
- LDLIBS-tst-absolute-zero-lib.so = tst-absolute-zero-lib.lds
- $(objpfx)tst-absolute-zero-lib.so: $(LDLIBS-tst-absolute-zero-lib.so)
- $(objpfx)tst-absolute-zero: $(objpfx)tst-absolute-zero-lib.so
+ 		tst-absolute-zero-lib tst-big-note-lib tst-unwind-ctor-lib
+ # Most modules build with _ISOMAC defined, but those filtered out
+ # depend on internal headers.
 diff --git a/elf/dl-addr.c b/elf/dl-addr.c
 index e6c7d02094..2250617a73 100644
 --- a/elf/dl-addr.c
@@ -185,5 +174,5 @@ index 95dc87519b..3cac4fa362 100644
  /* On some architectures a pointer to a function is not just a pointer
     to the actual code of the function but rather an architecture
 -- 
-2.18.0
+2.19.0
 
