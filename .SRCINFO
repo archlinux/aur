@@ -1,8 +1,8 @@
 pkgbase = ardhue-git
 	pkgdesc = Interface to control ArdHue Arduino based digital RGB system
-	pkgver = c7f02bb
+	pkgver = b1c6819
 	pkgrel = 1
-	url = https://github.com/gabmus/ardhue
+	url = https://gitlab.com/gabmus/ardhue
 	arch = any
 	license = GPL3
 	makedepends = git
@@ -12,7 +12,7 @@ pkgbase = ardhue-git
 	depends = python
 	provides = ardhue
 	conflicts = ardhue
-	source = ardhue::git+https://github.com/gabmus/ardhue
+	source = ardhue::git+https://gitlab.com/gabmus/ardhue
 	sha256sums = SKIP
 
 pkgname = ardhue-git
