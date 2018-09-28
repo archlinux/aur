@@ -1,6 +1,6 @@
 pkgbase = st-anyway-git
 	pkgdesc = Simple virtual terminal emulator for X - solarized patch, inconsolata font, tmux compat
-	pkgver = 0.8.1.7.g29f341d
+	pkgver = 0.8.1.15.g30ec9a3
 	pkgrel = 1
 	epoch = 1
 	url = http://st.suckless.org/

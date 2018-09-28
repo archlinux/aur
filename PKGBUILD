@@ -5,7 +5,7 @@
 
 pkgname=st-anyway-git
 _pkgname=st
-pkgver=0.8.1.7.g29f341d
+pkgver=0.8.1.15.g30ec9a3
 pkgrel=1
 pkgdesc='Simple virtual terminal emulator for X - solarized patch, inconsolata font, tmux compat'
 url='http://st.suckless.org/'
@@ -21,8 +21,8 @@ source=('git+https://git.suckless.org/st'
 'https://st.suckless.org/patches/solarized/st-solarized-dark-20180411-041912a.diff'
 )
 sha256sums=('SKIP'
-'71e1211189d9e11da93ee49388379c5f8469fcd3e1f48bb4d791ddaf161f5845'
-'b2d5e88a2616eafb82b2fefb63eecb0f9d71f839349ef40f9f69c1953444f88c')
+            '71e1211189d9e11da93ee49388379c5f8469fcd3e1f48bb4d791ddaf161f5845'
+            'b2d5e88a2616eafb82b2fefb63eecb0f9d71f839349ef40f9f69c1953444f88c')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
