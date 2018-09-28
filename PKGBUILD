@@ -1,8 +1,8 @@
 pkgname=shotwell-git
 _pkgname=shotwell
-pkgver=0.31.4088
+pkgver=0.31.4094
 _pkgver=0.31
-pkgrel=4
+pkgrel=1
 pkgdesc="A digital photo organizer designed for the GNOME desktop environment"
 arch=('x86_64')
 url="http://yorba.org/shotwell/"
@@ -23,6 +23,8 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/$_pkgname"
+    sed -e 's/org.gnome.Shotwell/shotwell/g' -i data/org.gnome.Shotwell.desktop.in
+    sed -e 's/org.gnome.Shotwell/shotwell/g' -i data/org.gnome.Shotwell-Viewer.desktop.in
     meson build -Dface-detection=true --prefix=/usr
 }
 
