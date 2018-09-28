@@ -1,0 +1,15 @@
+pkgbase = cppurses
+	pkgdesc = Routing engine for OpenStreetMap.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/a-n-t-h-o-n-y/CPPurses
+	arch = x86_64
+	license = custom:MIT
+	makedepends = ncurses
+	makedepends = cmake
+	makedepends = git
+	source = https://github.com/a-n-t-h-o-n-y/CPPurses/archive/v0.1.1.tar.gz
+	sha256sums = f0e087ddd1cf8b8d4eab06efa3c17f560b574b20cbaa5018b337d5eb7dfd9a0d
+
+pkgname = cppurses
+
