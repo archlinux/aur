@@ -2,12 +2,12 @@
 # Maintainer: L.G. Sarmiento <Luis.Sarmiento-ala-nuclear.lu.se>
 pkgname=artha
 pkgver=1.0.3
-pkgrel=6
+pkgrel=7
 pkgdesc='A free cross-platform English thesaurus based on WordNet'
 arch=('i686' 'x86_64')
 url="http://artha.sourceforge.net/wiki/index.php/Home"
 license=('GPL')
-depends=('wordnet' 'gtk2' 'dbus-glib')
+depends=('wordnet-common' 'gtk2' 'dbus-glib')
 optdepends=('enchant: spell checking support'
   'libnotify: notification support'
   'aspell-en: to show suggestion with aspell in English')
