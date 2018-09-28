@@ -18,7 +18,7 @@ prepare() {
         -DCMAKE_C_FLAGS:string="${CFLAGS}" \
         -DCMAKE_CXX_FLAGS:string="${CXXFLAGS}" \
         -DCMAKE_EXE_LINKER_FLAGS:string="${LDFLAGS}" \
-        -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
+        -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
         -DBUILD_TESTS=ON \
         -DBUILD_EXAMPLES=OFF
@@ -36,6 +36,6 @@ check() {
 
 package() {
   cd "$pkgname-$pkgver"
-  cmake --build fizz/build -- install
+  cmake --build fizz/build -- DESTDIR="${pkgdir}" install
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
