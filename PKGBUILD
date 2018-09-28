@@ -4,7 +4,7 @@
 
 _pkgname=gpac
 pkgname=$_pkgname-git
-pkgver=0.5.2.r3540.g96ec5b596
+pkgver=0.5.2.r3552.ge1fa8f051
 pkgrel=2
 epoch=1
 pkgdesc="A multimedia framework based on the MPEG-4 Systems standard (git version)"
@@ -32,11 +32,14 @@ pkgver() {
 
 build() {
   cd $_pkgname
-  ./configure --prefix=/usr --use-js=no
+  ./configure \
+    --prefix=/usr \
+    --mandir=/usr/share/man \
+    --use-js=no
   make
 }
 
 package() {
   cd $_pkgname
-  make DESTDIR="$pkgdir" install install-lib
+  make DESTDIR="$pkgdir" -j1 install install-lib
 }
