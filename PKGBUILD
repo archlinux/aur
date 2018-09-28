@@ -28,5 +28,5 @@ package() {
   cp -dr --no-preserve=ownership ocsms \
     "$pkgdir/usr/share/webapps/nextcloud/apps/ocsms"
 
-  rm -r "$pkgver/usr/share/webapps/nextcloud/apps/ocsms/.git"
+  rm -r "$pkgdir/usr/share/webapps/nextcloud/apps/ocsms/.git"
 }
