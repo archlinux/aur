@@ -1,13 +1,13 @@
 pkgbase = fswatch
 	pkgdesc = A cross-platform file change monitor with multiple backends: Apple OS X File System Events API, *BSD kqueue, Linux inotify, Microsoft Windows and a stat-based backend
-	pkgver = 1.12.0
+	pkgver = 1.13.0
 	pkgrel = 1
 	url = https://emcrisostomo.github.io/fswatch/
 	arch = i686
 	arch = x86_64
 	license = GPLv3
-	source = https://github.com/emcrisostomo/fswatch/releases/download/1.12.0/fswatch-1.12.0.tar.gz
-	sha256sums = 8042da283b34dc383ff6321254163e378d4f3cd5d8df87ff608f811ea33e6a83
+	source = https://github.com/emcrisostomo/fswatch/releases/download/1.13.0/fswatch-1.13.0.tar.gz
+	sha256sums = 90bcf0e02fa586251aa3233cb805ca4087e81de2c5960150a0676cc42f8534bb
 
 pkgname = fswatch
 
