@@ -1,7 +1,7 @@
 pkgbase = eiciel
 	pkgdesc = GNOME file ACL editor
 	pkgver = 0.9.12.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://rofi.roger-ferrer.org/eiciel/
 	arch = i686
 	arch = x86_64
@@ -10,10 +10,15 @@ pkgbase = eiciel
 	depends = gtkmm3
 	depends = nautilus
 	depends = desktop-file-utils
-	depends = gnome-vfs
 	options = !libtool
 	source = http://rofi.roger-ferrer.org/eiciel/files/eiciel-0.9.12.1.tar.bz2
+	source = configure.ac.patch
+	source = configure.patch
+	source = xattr_manager.hpp.patch
 	sha512sums = f54fbb149eed7f8fd534b77ec5e2d0f579c68a39afd7417a2298d75c7e95c459b49fc8ccb66d0188956ffaadf3bcc8a3eb048425cb82fc875573eb131f4b0494
+	sha512sums = 8b20cdd57f73c13c429ba37a1196eae60eae3af64de28687c51ea52ec5a696e32ad045d544db157a810b4ad290b47827a4c81b0201e31ec20508a9dfc78d346b
+	sha512sums = 04daf4f326e51a9013f409064ee00714ecfc5870617b866a094dc33a04d84680d54ada3e8b0df722ca34262a06e5f96ca57f111621592d44b9dc11592cade2c2
+	sha512sums = 926461f759663b3329323665834473a4e3e3a8e64ae9fdf8456d2e972ab33a24f57cb066ca9a8fa2a4bbbafad0e160bb45b06c16179139051bf9bb11384c619a
 
 pkgname = eiciel
 

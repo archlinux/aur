@@ -1,0 +1,11 @@
+--- src/eiciel-0.9.12.1/configure.ac	2018-01-16 19:41:43.000000000 +0000
++++ src2/eiciel-0.9.12.1/configure.ac	2018-09-28 09:20:06.548646722 +0000
+@@ -156,7 +156,7 @@
+ 
+ if test x$enable_eua = xyes;
+ then
+-    AC_CHECK_HEADERS([attr/xattr.h], [], AC_MSG_ERROR([This header is mandatory for extended user attributes support]), [])
++    AC_CHECK_HEADERS([sys/xattr.h], [], AC_MSG_ERROR([This header is mandatory for extended user attributes support]), [])
+     AC_DEFINE([ENABLE_USER_XATTR], [1], [Enables user extended attributes support])
+ fi
+ AM_CONDITIONAL(ENABLE_USER_XATTR, test x$enable_eua = xyes)

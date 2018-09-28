@@ -1,0 +1,14 @@
+--- src/eiciel-0.9.12.1/configure	2018-01-16 19:41:51.000000000 +0000
++++ src2/eiciel-0.9.12.1/configure	2018-09-28 09:00:29.392747415 +0000
+@@ -19169,9 +19169,9 @@
+ if test x$enable_eua = xyes;
+ then
+ 
+-for ac_header in attr/xattr.h
++for ac_header in sys/xattr.h
+ do :
+-  ac_fn_cxx_check_header_mongrel "$LINENO" "attr/xattr.h" "ac_cv_header_attr_xattr_h" "$ac_includes_default"
++  ac_fn_cxx_check_header_mongrel "$LINENO" "sys/xattr.h" "ac_cv_header_attr_xattr_h" "$ac_includes_default"
+ if test "x$ac_cv_header_attr_xattr_h" = xyes; then :
+   cat >>confdefs.h <<_ACEOF
+ #define HAVE_ATTR_XATTR_H 1

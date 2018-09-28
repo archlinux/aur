@@ -1,0 +1,14 @@
+--- src/eiciel-0.9.12.1/src/xattr_manager.hpp	2014-08-20 08:06:00.000000000 +0000
++++ src2/eiciel-0.9.12.1/src/xattr_manager.hpp	2018-09-28 09:12:54.336485500 +0000
+@@ -26,7 +26,10 @@
+ #include <sys/stat.h>
+ #include <unistd.h>
+ 
+-#include <attr/xattr.h>
++#include <sys/xattr.h>
++#ifndef ENOATTR
++#define ENOATTR ENODATA
++#endif
+ 
+ #include <string>
+ #include <cstring>
