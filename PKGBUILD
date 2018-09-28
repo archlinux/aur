@@ -1,4 +1,4 @@
-# Maintainer: Vinícius dos Santos Oliveira <vini.ipsmaker@gmail.com>
+# Maintainer: Pranav Jerry <libreinator@disroot.org>
 
 pkgname=auto-complete-clang-async
 pkgver=0.5
@@ -8,9 +8,9 @@ arch=('i686' 'x86_64')
 url="https://github.com/Golevka/emacs-clang-complete-async"
 license=('GPL')
 install=$pkgname.install
-depends=('emacs' 'auto-complete' 'clang')
+depends=('emacs' 'emacs-auto-complete' 'clang' 'llvm')
 makedepends=('git')
-source=("git+https://github.com/Golevka/emacs-clang-complete-async.git#tag=v${pkgver}")
+source=("git+https://github.com/Golevka/emacs-clang-complete-async.git")
 md5sums=('SKIP')
 
 build() {
