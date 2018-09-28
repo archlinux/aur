@@ -1,6 +1,6 @@
 pkgbase = mypaint-git
 	pkgdesc = Simple drawing & painting program that works well with graphics tablets (git).
-	pkgver = 1.3.0.alpha.r4988.c5fe00ec
+	pkgver = 1.3.0.alpha.r4990.c32bd422
 	pkgrel = 1
 	url = http://mypaint.org/
 	install = mypaint-git.install
@@ -25,10 +25,8 @@ pkgbase = mypaint-git
 	conflicts = mypaint
 	source = git+https://github.com/mypaint/mypaint.git
 	source = mypaint-git.install
-	source = aur.patch
 	sha256sums = SKIP
 	sha256sums = 34dec9df2e005de9fae6c6352f49835a1d41e515c6131ed1df8c9e27ee3c9d1d
-	sha256sums = 90ef2186a70d4396d293abd84d63e23e05375dcd553e03582877880f1819a105
 
 pkgname = mypaint-git
 
