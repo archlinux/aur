@@ -1,7 +1,7 @@
 # Maintainer: Spyhawk
 
 pkgname=zypper-git
-pkgver=1.14.10.84.gf4d7ff44
+pkgver=1.14.12
 pkgrel=1
 pkgdesc="Command line software manager using libzypp"
 arch=('i686' 'x86_64')
