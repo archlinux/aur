@@ -10,8 +10,8 @@ pkgbase = iqtree-latest
 	depends = glibc
 	depends = libstdc++5
 	depends = zlib
-	source = https://github.com/Cibiv/IQ-TREE/archive/v1.7-beta.tar.gz
-	md5sums = 1973cacc62ac9b0dd12f7262ebf8e8b9
+	source = https://github.com/Cibiv/IQ-TREE/archive/v1.7-beta2.tar.gz
+	md5sums = 78f27d31d7a6a7f300793bed13237649
 
 pkgname = iqtree-latest
 

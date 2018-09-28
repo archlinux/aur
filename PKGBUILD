@@ -14,13 +14,13 @@ arch=(x86_64)
 url="http://www.iqtree.org/"
 license=('GPL2')
 depends=('cmake' 'eigen' 'glibc' 'libstdc++5' 'zlib')
-# TODO: Remove beta string when possible.
-source=("https://github.com/Cibiv/IQ-TREE/archive/v${pkgver}-beta.tar.gz")
-md5sums=('1973cacc62ac9b0dd12f7262ebf8e8b9')
+# TODO: Remove beta2 string when possible.
+source=("https://github.com/Cibiv/IQ-TREE/archive/v${pkgver}-beta2.tar.gz")
+md5sums=('78f27d31d7a6a7f300793bed13237649')
 
 build() {
-  # TODO: Remove beta string when possible.
-  cd IQ-TREE-${pkgver}-beta
+  # TODO: Remove beta2 string when possible.
+  cd IQ-TREE-${pkgver}-beta2
   mkdir -p build
   cd build
   cmake -DIQTREE_FLAGS=omp ..
@@ -28,7 +28,7 @@ build() {
 }
 
 package() {
-  # TODO: Remove beta string when possible.
-  cd IQ-TREE-${pkgver}-beta
+  # TODO: Remove beta2 string when possible.
+  cd IQ-TREE-${pkgver}-beta2
   install -D -m 755 build/iqtree ${pkgdir}/usr/bin/iqtree
 }
