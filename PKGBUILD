@@ -12,7 +12,6 @@ url='https://developer.nvidia.com/nccl/'
 license=('BSD')
 depends=('glibc')
 makedepends=('git' 'cuda')
-conflicts=('nccl-git')
 source=("$pkgname"::"git+https://github.com/NVIDIA/nccl.git#commit=${_commit}")
 sha256sums=('SKIP')
 
