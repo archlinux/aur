@@ -4,7 +4,7 @@
 
 _pkgname=pasystray
 pkgname=${_pkgname}-gtk3-git
-pkgver=0.6.0.r24.g2380623
+pkgver=0.7.0.r0.g62a7029
 pkgrel=1
 pkgdesc="PulseAudio system tray (gtk3 version)"
 arch=('x86_64')
