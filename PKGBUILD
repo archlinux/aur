@@ -2,7 +2,7 @@
 
 pkgname=libfvde-git
 _pkgname=${pkgname%-git}
-pkgver=20180108.r0.g3584a32
+pkgver=20180108.r3.g53a2145
 pkgrel=1
 pkgdesc='Library and tools to access FileVault Drive Encryption (FVDE) encrypted volumes'
 arch=('i686' 'x86_64' 'any')
@@ -14,10 +14,8 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 options=()
 install=
-source=("$_pkgname"::"git+https://github.com/libyal/$_pkgname.git"
-        'libfvalue_string.patch')
-md5sums=('SKIP'
-         '7dd39c62a7dc74dc757935c2a669bbb6')
+source=("$_pkgname"::"git+https://github.com/libyal/$_pkgname.git")
+md5sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname"
@@ -32,7 +30,6 @@ prepare() {
   cd "$_pkgname"
 
   ./synclibs.sh
-  patch -p1 < ../libfvalue_string.patch
 }
 
 build() {
