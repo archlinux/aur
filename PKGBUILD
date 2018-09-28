@@ -20,16 +20,7 @@ prepare() {
   mv "gummi" $pkgname
   cd $pkgname
 
-  # TODO: Simplify
-  setconf autogen.sh AM_VERSION ''
   ./autogen.sh
-  setconf Makefile.in PACKAGE_VERSION "'"$pkgver"'"
-  setconf data/misc/Makefile.in PACKAGE_VERSION "'"$pkgver"'"
-  echo $pkgver > dev/latest
-  autoreconf
-  setconf configure PACKAGE_VERSION "'"$pkgver"'"
-  setconf configure PACKAGE_STRING "'""Gummi $pkgver""'"
-  setconf configure PACKAGE_BUGREPORT "'https://bugs.archlinux.org/'"
 }
 
 build() {
