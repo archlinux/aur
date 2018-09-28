@@ -1,7 +1,7 @@
 pkgbase = gcc5
 	pkgdesc = The GNU Compiler Collection (5.x.x)
 	pkgver = 5.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gcc.gnu.org/gcc-5/
 	arch = i686
 	arch = x86_64
@@ -15,8 +15,10 @@ pkgbase = gcc5
 	options = !emptydirs
 	source = https://gcc.gnu.org/pub/gcc/releases/gcc-5.5.0/gcc-5.5.0.tar.xz
 	source = http://isl.gforge.inria.fr/isl-0.18.tar.bz2
+	source = glibc2.28-ustat.patch
 	sha512sums = 670ff52c2ae12c7852c12987e91798c5aa8bd6daf21f0d6e0cd57a4aa59cc4f06a837fe76426eaa1424cfddca937bed377680700eadc04d76b9180d462364fa1
 	sha512sums = 85d0b40f4dbf14cb99d17aa07048cdcab2dc3eb527d2fbb1e84c41b2de5f351025370e57448b63b2b8a8cf8a0843a089c3263f9baee1542d5c2e1cb37ed39d94
+	sha512sums = 633d96bf2d78d3187d8b26dd4c12b1b8fcbe784cbaa6f3b312326dc4ea118b3f0980bfd0e50cd6be79563dd29c296a2fafe056f4dbbb486414331cebcc1109bf
 
 pkgname = gcc5
 
