@@ -1,0 +1,14 @@
+pkgbase = zig-static
+	pkgdesc = robust, optimal, and clear programming language
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://ziglang.org/
+	arch = x86_64
+	license = MIT
+	provides = zig
+	conflicts = zig
+	source = https://ziglang.org/download/0.3.0/zig-linux-x86_64-0.3.0.tar.xz
+	md5sums = 38bc421ef7b6e6966ae67bc3cb01b3c5
+
+pkgname = zig-static
+
