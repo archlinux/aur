@@ -37,7 +37,6 @@ package() {
         kubelet
         kubeadm
         hyperkube
-        kube-aggregator
         kube-scheduler
         kubectl
     )
