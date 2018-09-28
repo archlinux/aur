@@ -1,15 +1,15 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=gnutls-git
-pkgver=3.6.0.1.r11.g2b29963b5
-pkgrel=2
+pkgver=3.6.4.r4.gc9c4523ea
+pkgrel=1
 pkgdesc="A secure communications library implementing the SSL, TLS and DTLS protocols and technologies around them"
 arch=('i686' 'x86_64')
 url="https://www.gnutls.org/"
 license=('LGPL')
 depends=('glibc' 'libidn2' 'libtasn1' 'libunistring' 'nettle' 'p11-kit' 'readline' 'zlib')
 optdepends=('guile: for use with Guile bindings')
-makedepends=('git')
+makedepends=('git' 'autogen' 'gperf' 'rsync' 'wget')
 provides=('gnutls')
 conflicts=('gnutls')
 source=("git+https://gitlab.com/gnutls/gnutls.git")
