@@ -1,7 +1,7 @@
 # Maintainer: Spyhawk
 
 pkgname=libzypp-git
-pkgver=17.7.0.6.g1f286bdf0
+pkgver=17.7.1.2.g92fb3788b
 pkgrel=1
 pkgdesc="Package, Patch, Pattern, and Product Management"
 arch=('i686' 'x86_64')
