@@ -1,9 +1,10 @@
+# Maintainer: Joe Hillenbrand <joehillen@gmail.com>
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 # Contributor: lantw44 (at) gmail (dot) com
 
 pkgname=guix-git
-pkgver=20160111
-pkgrel=1
+pkgver=v0.15.0.r2025.g02817df07
+pkgrel=2
 pkgdesc="A purely functional package manager"
 arch=('i686' 'x86_64')
 depends=('bzip2'
@@ -12,6 +13,9 @@ depends=('bzip2'
          'graphviz'
          'guile'
          'guile-json'
+         'guile-gcrypt'
+         'guile-git-lib'
+         'guile-sqlite3'
          'libgcrypt'
          'patch'
          'sqlite'
@@ -35,13 +39,13 @@ install=guix.install
 
 pkgver() {
   cd ${pkgname%-git}
-  git log -1 --format="%cd" --date=short --no-show-signature | sed "s|-||g"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   cd ${pkgname%-git}
 
-  _compl_dir="$(pkg-config --variable=completionsdir bash-completion)"
+  _compl="--with-bash-completion-dir=\"$(pkg-config --variable=completionsdir bash-completion)\"" || _compl=""
 
   msg2 'Building...'
   ./bootstrap
@@ -52,7 +56,7 @@ build() {
     --sysconfdir=/etc \
     --sharedstatedir=/usr/share/guix \
     --localstatedir=/var/lib/guix \
-    --with-bash-completion-dir="$_compl_dir" \
+    $_compl \
     --disable-rpath \
     --with-gnu-ld
   make
