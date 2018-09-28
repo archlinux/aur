@@ -1,6 +1,6 @@
 pkgbase = kubectl-bin
 	pkgdesc = Kubernetes.io client binary
-	pkgver = 1.11.3
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = http://kubernetes.io
 	arch = i686
@@ -9,10 +9,10 @@ pkgbase = kubectl-bin
 	provides = kubectl=$pkgver
 	conflicts = kubectl
 	conflicts = kubernetes>=1.4.6
-	source_i686 = kubectl-1.11.3::https://storage.googleapis.com/kubernetes-release/release/v1.11.3/bin/linux/386/kubectl
-	sha256sums_i686 = 013b9f4aada8fe3b74f63d16633f81aa083b35810236ff86d3554b4f29b1e3ee
-	source_x86_64 = kubectl-1.11.3::https://storage.googleapis.com/kubernetes-release/release/v1.11.3/bin/linux/amd64/kubectl
-	sha256sums_x86_64 = 0d4c70484e90d4310f03f997b4432e0a97a7f5b5be5c31d281f3d05919f8b46c
+	source_i686 = kubectl-1.12.0::https://storage.googleapis.com/kubernetes-release/release/v1.12.0/bin/linux/386/kubectl
+	sha256sums_i686 = d8e369823c8c0b3944df624010f598919e0b46e34ddd49c74e2aa9677e986411
+	source_x86_64 = kubectl-1.12.0::https://storage.googleapis.com/kubernetes-release/release/v1.12.0/bin/linux/amd64/kubectl
+	sha256sums_x86_64 = ba0f8d5776d84ffef5ce5d5c31f8d892e0c13d073948d5bafbb5341ad68ef463
 
 pkgname = kubectl-bin
 
