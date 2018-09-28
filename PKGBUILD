@@ -1,11 +1,11 @@
-# Maintainer: Rémi BERTHO <remi.bertho@gmail.com>
-# Contributor: Rémi BERTHO <remi.bertho@gmail.com>
+# Maintainer: Rémi BERTHO <remi.bertho@dalan.fr>
+# Contributor: Rémi BERTHO <remi.bertho@dalan.fr>
 pkgname=pdf-presentation
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A GUI of pdfpc"
 arch=(any)
-url="http://www.dalan.rd-h.fr/wordpress"
+url="https://www.dalan.fr"
 license=('GPL')
 depends=('gettext')
 depends+=('gtk3>=3.10')
@@ -13,8 +13,8 @@ depends+=('pdfpc')
 makedepends=('cmake')
 conflicts=('pdf-presentation-pdfpc')
 install="INSTALL"
-source=(https://github.com/Dalan94/pdf-presentation/releases/download/1.0.0/pdf-presentation.tar.gz)
-md5sums=('8e14a9414c9bb20d782b052fd019860f')
+source=(https://www.binaries.dalan.fr/pdf-presentation/pdf-presentation.tar.gz)
+sha256sums=('875a59f33b82cd85e6684a9f3ff4807e92c787417d25683fafdb31a2136ae830')
  
 build()
 {
