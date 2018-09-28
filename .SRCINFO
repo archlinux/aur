@@ -1,12 +1,13 @@
 pkgbase = p7zip-natspec
 	pkgdesc = Command-line file archiver with high compression ratio, based on libnatspec patch from ubuntu zip-i18n PPA (https://launchpad.net/~frol/+archive/zip-i18n).
 	pkgver = 16.02
-	pkgrel = 2
+	pkgrel = 3
 	url = http://p7zip.sourceforge.net/
 	install = p7zip.install
 	arch = x86_64
 	license = LGPL
 	license = custom:unRAR
+	makedepends = yasm
 	depends = gcc-libs
 	depends = sh
 	depends = libnatspec
@@ -24,7 +25,6 @@ pkgbase = p7zip-natspec
 	sha256sums = 9c92b9060fb0ecc3e754e6440d7773d04bc324d0f998ebcebc263264e5a520df
 	sha256sums = c397eb6ad60bfab8d388ea9b39c0c13ae818f86746210c6435e35b35c786607f
 	sha256sums = e98506a3880da2d8b54ccbafbb3acac1bbc6b8f2552de37b658a4bfac7f498ad
-	makedepends_x86_64 = yasm
 
 pkgname = p7zip-natspec
 
