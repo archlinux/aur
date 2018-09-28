@@ -6,7 +6,7 @@ add the following lines to your .emacs
 (require 'auto-complete-clang-async)
 
 (defun ac-cc-mode-setup ()
-  (setq ac-clang-complete-executable "~/.emacs.d/clang-complete")
+  (setq ac-clang-complete-executable "/usr/bin/clang-complete")
   (setq ac-sources '(ac-source-clang-async))
   (ac-clang-launch-completion-process)
 )
