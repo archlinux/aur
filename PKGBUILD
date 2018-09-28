@@ -2,7 +2,7 @@
 
 pkgname=qgis-git
 _pkgname=qgis
-pkgver=3.3.0_master.r49003.7b36737b07
+pkgver=3.3.0_master.r50741.3a70f88fa0
 _pkgver=3.3.0_master
 pkgrel=1
 pkgdesc='Geographic Information System (GIS) that supports vector, raster & database formats - Development master'
@@ -19,8 +19,10 @@ optdepends=('grass: for GRASS providers and plugin (6 or 7)'
             'ocilib: oracle provider')
 
 #install="$_pkgname.install"
-source=("${_pkgname}::git://github.com/qgis/QGIS.git")
-md5sums=('SKIP')
+source=("${_pkgname}::git://github.com/qgis/QGIS.git"
+qgis-3-fix-sip-name.patch)
+md5sums=('SKIP'
+         '4a228a44a93e07a3fda8063022aff8f8')
 #conflicts=('qgis')
 
 pkgver(){
@@ -31,12 +33,17 @@ pkgver(){
 prepare() {
   cd $_pkgname
   
+  # Fix Python SIP PyCapsule_GetPointer error
+  patch -p1 < ../qgis-3-fix-sip-name.patch
+
   # Fix desktop file for /usr/bin/qgis-github
   
-  sed -e 's/\/usr\/bin\/qgis/\/usr\/bin\/qgis-git/g' \
+#  sed -e 's/\/usr\/bin\/qgis/\/usr\/bin\/qgis-git/g' \
+
+   sed -e 's/Exec=qgis/Exec=qgis-git/g' \
   		-e 's/Icon=qgis/Icon=qgis-git/g' \
-  		-i linux/org.qgis.qgis.desktop
-  cp linux/org.qgis.qgis.desktop linux/org.qgis.qgis-git.desktop
+  		-i linux/org.qgis.qgis.desktop.in
+  #cp linux/org.qgis.qgis.desktop.in linux/org.qgis.qgis-git.desktop
 
   # Remove mime types already defined by freedesktop.org
   sed -e '/type="image\/tiff"/,/<\/mime-type>/d' \
@@ -82,7 +89,8 @@ package() {
   ln -s /opt/$pkgname/bin/qgis "$pkgdir/usr/bin/qgis-git"
   
   # install desktop files and icons
-  install -Dm644 linux/org.qgis.qgis-git.desktop -t "$pkgdir/usr/share/applications/"
+#  install -Dm644 linux/org.qgis.qgis-git.desktop -t "$pkgdir/usr/share/applications/"
+  install -Dm644 build/org.qgis.qgis.desktop "$pkgdir/usr/share/applications/org.qgis.qgis-git.desktop"
   for resolution in `ls /usr/share/icons/hicolor/|egrep '[0-9]'`; do
   	if [ -e debian/icons/qgis-icon{$resolution}.png ]
   	then
