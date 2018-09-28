@@ -5,7 +5,7 @@
 # Maintainer: widowild
 
 pkgname=rslsync
-pkgver=2.6.0.1319
+pkgver=2.6.1.1319
 pkgrel=1
 pkgdesc="Resilio Sync (ex:BitTorrent Sync) - automatically sync files via secure, distributed technology"
 license=("custom:resilio")
