@@ -22,13 +22,11 @@ build() {
 }
 
 package() {
-    cd ${srcdir}/HWchart/HWchart/bin/Release
-    sudo mkdir /usr/bin/HWchart
-    sudo cp *.exe /usr/bin/HWchart/
-    sudo cp *.dll /usr/bin/HWchart/
-    cd ${srcdir}/HWchart/linux
-    sudo cp hwchart.desktop /usr/share/applications/
+    sudo mkdir /usr/bin/hwchart
+    sudo cp ${srcdir}/HWchart/HWchart/bin/Release/*.exe /usr/bin/hwchart/
+    sudo cp ${srcdir}/HWchart/HWchart/bin/Release/*.dll /usr/bin/hwchart/
+    sudo cp ${srcdir}/HWchart/linux/hwchart.desktop /usr/share/applications/
     sudo chmod 755 /usr/share/applications/hwchart.desktop
     sudo mkdir /usr/share/hwchart
-    sudo cp hwchart.png /usr/share/
+    sudo cp ${srcdir}/HWchart/linux/hwchart.png /usr/share/
 }
