@@ -2,7 +2,7 @@
 _pkgname=linux_media
 _gitname=media_build
 pkgname="tbs-$_pkgname-git"
-pkgver=r1103.e109755_4.17.14_arch1_1_ARCH
+pkgver=r1127.4735369_4.18.10_arch1_1_ARCH
 _extramodules=extramodules-ARCH
 pkgrel=1
 pkgdesc="TBS linux open source drivers"
@@ -35,7 +35,7 @@ build() {
     cd "$srcdir/$_gitname"
 
     make dir DIR=../media
-    make distclean
+    make allyesconfig
     make
 
 }
