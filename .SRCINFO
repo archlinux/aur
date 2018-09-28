@@ -1,6 +1,6 @@
 pkgbase = amarok
 	pkgdesc = The powerful music player for KDE
-	pkgver = 2.9.0.r246.3ad4286b84
+	pkgver = 2.9.0.r249.67c651bc60
 	pkgrel = 1
 	url = http://amarok.kde.org/
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = amarok
 	optdepends = libmtp: support for portable media devices
 	optdepends = libmygpo-qt5: gpodder.net Internet Service
 	optdepends = loudmouth: backend needed by mp3tunes for syncing
-	source = git://git.kde.org/amarok.git#commit=3ad4286b840fbd3866f956dcf12281190802e9f4
+	source = git://git.kde.org/amarok.git#commit=67c651bc60743bce79aeaf35f3e4d734e26eee62
 	validpgpkeys = D81C0CB38EB725EF6691C385BB463350D6EF31EF
 	sha256sums = SKIP
 
