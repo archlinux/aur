@@ -28,5 +28,5 @@ package() {
     sudo cp ${srcdir}/HWchart/linux/hwchart.desktop /usr/share/applications/
     sudo chmod 755 /usr/share/applications/hwchart.desktop
     sudo mkdir /usr/share/hwchart
-    sudo cp ${srcdir}/HWchart/linux/hwchart.png /usr/share/
+    sudo cp ${srcdir}/HWchart/linux/hwchart.png /usr/share/hwchart/
 }
