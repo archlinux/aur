@@ -1,6 +1,6 @@
 pkgbase = zchunk-git
 	pkgdesc = A file format that allows easy deltas while maintaining good compression (git version)
-	pkgver = 0.9.8.r2.ga1deba7
+	pkgver = 0.9.11
 	pkgrel = 1
 	url = https://github.com/zchunk/zchunk
 	arch = x86
