@@ -1,0 +1,13 @@
+pkgbase = finalcut
+	pkgdesc = A text-based widget toolkit.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/gansm/finalcut
+	arch = x86_64
+	license = GPL3
+	depends = gpm
+	source = https://github.com/gansm/finalcut/archive/0.4.0.tar.gz
+	sha256sums = aca3677effd71381af51ac716e17089b3de9429e62973885669e269bd7a85e0a
+
+pkgname = finalcut
+
