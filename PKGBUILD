@@ -49,5 +49,5 @@ check() {
 package() {
     cd "$_pkgname"
 
-    make DESTDIR="$pkgdir/" install
+    make DESTDIR="$pkgdir" install
 }
