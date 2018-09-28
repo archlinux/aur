@@ -8,7 +8,7 @@
 
 pkgname=iqtree-latest
 pkgver=1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Efficient phylogenomic software by maximum likelihood; multicore version (OMP)"
 arch=(x86_64)
 url="http://www.iqtree.org/"
