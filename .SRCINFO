@@ -1,0 +1,17 @@
+pkgbase = hwchart
+	pkgdesc = a simple application to graph networks
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://github.com/fyr77/HWchart/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = nuget
+	makedepends = git
+	depends = mono
+	provides = hwchart
+	source = git://github.com/fyr77/HWchart.git
+	md5sums = SKIP
+
+pkgname = hwchart
+
