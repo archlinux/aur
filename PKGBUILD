@@ -7,7 +7,7 @@ pkgdesc='Cast Audio/Video to your Google Cast and Sonos Devices'
 arch=('any')
 url=http://mkchromecast.com
 license=('MIT')
-depends=('faac' 'flac' 'gi' 'lame' 'python-flask' 'python-psutil'
+depends=('faac' 'flac' 'lame' 'python-flask' 'python-gobject' 'python-psutil'
          'python-pychromecast' 'sox' 'vorbis-tools')
 makedepends=('python-setuptools')
 optdepends=('alsa-utils: to cast with ALSA'
