@@ -7,13 +7,13 @@ files=(__init__.py operators.py panel.py preferences.py utils.py)
 _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
 
 pkgname=blender-plugin-${name}
-pkgver=1.0_r259.a800d20
-pkgrel=2
+pkgver=1.0_r277.2fd3735
+pkgrel=1
 pkgdesc="This Blender Add-on connect rigid bodies via constraints in a physical plausible way"
 arch=('any')
 url="https://github.com/KaiKostack/bullet-constraints-builder"
 license=('GPL')
-depends=('blender')
+depends=('blender' 'python-sympy')
 makedepends=('git')
 source=("${name}::git+https://github.com/KaiKostack/${name}.git${fragment}")
 md5sums=('SKIP')
