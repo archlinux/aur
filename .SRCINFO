@@ -1,6 +1,6 @@
 pkgbase = mate-control-center-dev
 	pkgdesc = The Control Center for MATE
-	pkgver = 1.19.2
+	pkgver = 1.21.3
 	pkgrel = 5
 	url = http://mate-desktop.org
 	arch = i686
@@ -8,12 +8,12 @@ pkgbase = mate-control-center-dev
 	groups = mate
 	license = GPL
 	makedepends = docbook2x
-	makedepends = mate-common>=1.19
+	makedepends = mate-common>=1.21
 	makedepends = yelp-tools
 	makedepends = libmatekbd
 	makedepends = libunique3
 	makedepends = marco
-	makedepends = mate-desktop>=1.19
+	makedepends = mate-desktop>=1.21
 	makedepends = mate-settings-daemon
 	depends = dbus-glib
 	depends = dconf
@@ -22,12 +22,12 @@ pkgbase = mate-control-center-dev
 	depends = gsettings-desktop-schemas
 	depends = gtk3
 	depends = gtk-update-icon-cache
-	depends = mate-desktop>=1.19
-	depends = mate-menus>=1.19
-	depends = mate-settings-daemon>=1.19
-	depends = marco>=1.19
+	depends = mate-desktop>=1.21
+	depends = mate-menus>=1.21
+	depends = mate-settings-daemon>=1.21
+	depends = marco>=1.21
 	depends = libgtop
-	depends = libmatekbd>=1.19
+	depends = libmatekbd>=1.21
 	depends = libunique3
 	depends = librsvg
 	depends = libxss
@@ -39,8 +39,8 @@ pkgbase = mate-control-center-dev
 	provides = mate-control-center-gtk3
 	conflicts = mate-control-center
 	conflicts = mate-control-center-gtk3
-	source = http://pub.mate-desktop.org/releases/1.19/mate-control-center-1.19.2.tar.xz
-	sha1sums = 493bb007cb475da266f481e2dc506aa8b7629b39
+	source = http://pub.mate-desktop.org/releases/1.21/mate-control-center-1.21.3.tar.xz
+	sha1sums = d767dfcc96aedbce7fa2dae6ec50c1ec60e8e71b
 
 pkgname = mate-control-center-dev
 	pkgdesc = The Control Center for MATE (GTK3 version)
