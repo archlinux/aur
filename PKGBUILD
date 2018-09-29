@@ -3,12 +3,12 @@
 
 pkgname=browserpass
 pkgver=2.0.21
-pkgrel=1
+pkgrel=2
 pkgdesc="Chrome & Firefox browser extension for pass, a UNIX password manager"
 arch=("x86_64")
 url="https://github.com/browserpass/browserpass"
 license=("MIT")
-depends=("pass")
+depends=("gnupg")
 makedepends=("go")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dannyvankooten/browserpass/releases/download/$pkgver/browserpass-src.tar.gz"
         "$pkgname-$pkgver.tar.gz.sig::https://github.com/dannyvankooten/browserpass/releases/download/$pkgver/browserpass-src.tar.gz.sig")
