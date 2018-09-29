@@ -1,0 +1,16 @@
+pkgbase = lrexlib-gnu
+	pkgdesc = Regular expression library for Lua - GNU version
+	pkgver = 2.9.0
+	pkgrel = 2
+	url = https://luarocks.org/modules/rrt/lrexlib-gnu
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = luarocks
+	depends = lua
+	noextract = lrexlib-gnu-2.9.0-1.src.rock
+	source = https://luarocks.org/lrexlib-gnu-2.9.0-1.src.rock
+	md5sums = b8e779e63ec104a979bf284fbb907da6
+
+pkgname = lrexlib-gnu
+
