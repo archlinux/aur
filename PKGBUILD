@@ -2,7 +2,7 @@
 
 pkgname=lbd
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Load Balancer Detector - checks if a given domain uses load balancing'
 arch=('any')
 url='https://tools.kali.org/information-gathering/lbd'
@@ -17,5 +17,5 @@ validpgpkeys=('7A194E3F7A8F867BEA8A5339023F078862ACFE50')
 
 package() {
 	cd "$srcdir"
-	install -Dm 755 lbd "$pkgdir/usr/bin/lbd"
+	install -Dm 755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
 }

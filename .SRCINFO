@@ -1,7 +1,7 @@
 pkgbase = lbd
 	pkgdesc = Load Balancer Detector - checks if a given domain uses load balancing
 	pkgver = 0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tools.kali.org/information-gathering/lbd
 	arch = any
 	license = GPL2
