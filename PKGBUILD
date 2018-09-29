@@ -2,10 +2,10 @@
 # Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
-_ver=1.19
+_ver=1.21
 _pkgbase=mate-panel
 pkgname="${_pkgbase}-dev"
-pkgver=${_ver}.4
+pkgver=${_ver}.6
 pkgrel=5
 pkgdesc="The MATE Panel"
 url="http://mate-desktop.org"
@@ -14,14 +14,14 @@ provides=("${_pkgbase}" "${_pkgbase}-gtk3")
 conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL')
 depends=('dbus-glib' 'dconf' 'glib2' 'gtk3' 'gtk-update-icon-cache' 'libwnck3'
-         'libcanberra' 'libice' 'libmateweather>=1.19' 'librsvg' 'libsm' 'libsoup'
-         'libxau' 'mate-menus>=1.19' 'mate-desktop>=1.19')
-makedepends=('gobject-introspection' 'mate-common>=1.19' 'yelp-tools' 'gtk3'
-             'libmateweather>=1.19' 'libwnck3' 'mate-desktop>=1.19')
+         'libcanberra' 'libice' 'libmateweather>=1.21' 'librsvg' 'libsm' 'libsoup'
+         'libxau' 'mate-menus>=1.21' 'mate-desktop>=1.21')
+makedepends=('gobject-introspection' 'mate-common>=1.21' 'yelp-tools' 'gtk3'
+             'libmateweather>=1.21' 'libwnck3' 'mate-desktop>=1.21')
 optdepends=('yelp: for reading MATE help documents')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
 groups=('mate')
-sha1sums=('7b946c71aa043c633029c6a394ca9378dbae41f5')
+sha1sums=('8d8f8f80adb6ae23f000c4bf1fe39be315faeacd')
 
 prepare() {
     cd "${srcdir}"
