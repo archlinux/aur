@@ -1,7 +1,7 @@
 # Maintainer: Gonçalo Camelo Neves Pereira <goncalo_pereira@outlook.pt>
 pkgname=esp-idf
 pkgver=3.1
-pkgrel=4
+pkgrel=3
 pkgdesc="Espressif IoT Development Framework. Official development framework for ESP32."
 arch=('i686' 'x86_64' 'aarch' 'aarch64' 'armv7h')
 url="https://github.com/espressif/esp-idf"
@@ -16,8 +16,8 @@ build() {
 }
 
 package() {
-  mkdir -p /opt/esp-idf-sdk
+  mkdir -p ${pkgdir}/opt/esp-idf-sdk
   cd "${srcdir}/${pkgname}-v${pkgver}"
-  msg "Installing to /opt/esp-idf-sdk"
-  cp -R . /opt/esp-idf-sdk
+  msg "Installing to ~/.esp-idf"
+  cp -R . ${pkgdir}/opt/esp-idf-sdk
 }
