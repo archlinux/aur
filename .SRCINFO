@@ -1,0 +1,19 @@
+pkgbase = wio
+	pkgdesc = An IoT Development Environment
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/wio/wio
+	arch = x86_64
+	license = MIT
+	options = !strip
+	source = wio-0.4.1.tar.gz::https://github.com/wio/wio/releases/download/v0.4.1/wio_linux_x86_64.tar.gz
+	source = wio-0.4.1.tar.gz::https://github.com/wio/wio/releases/download/v0.4.1/wio_linux_i386.tar.gz
+	source = wio-0.4.1.tar.gz::https://github.com/wio/wio/releases/download/v0.4.1/wio_linux_arm6.tar.gz
+	source = wio-0.4.1.tar.gz::https://github.com/wio/wio/releases/download/v0.4.1/wio_linux_arm64.tar.gz
+	sha256sums = 10233790cf6af5fcd410a026085ce01a7ee5fd6e474ecbd14a12c8a0004b61d6
+	sha256sums = cc2498de41809228e9f847b66cefd6afb4920f41a9dbc79a4f4e12867aa6fd2e
+	sha256sums = 496d2b5646289d77ecd974527ce9569612230fd2795ced889fd896aa663d15c8
+	sha256sums = 8994cc97b649b601a74ef3de89bee213a86981dc3a582d09e6c43009e66faaee 
+
+pkgname = wio
+
