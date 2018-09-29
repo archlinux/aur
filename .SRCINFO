@@ -1,6 +1,6 @@
 pkgbase = mate-power-manager-dev
 	pkgdesc = Power management tool for the MATE desktop
-	pkgver = 1.19.1
+	pkgver = 1.21.1
 	pkgrel = 5
 	url = http://mate-desktop.org
 	arch = i686
@@ -9,13 +9,13 @@ pkgbase = mate-power-manager-dev
 	license = GPL
 	makedepends = docbook2x
 	makedepends = docbook-xml
-	makedepends = mate-common>=1.19
-	makedepends = mate-panel>=1.19
+	makedepends = mate-common>=1.21
+	makedepends = mate-panel>=1.21
 	makedepends = xmlto
 	makedepends = yelp-tools
 	makedepends = gtk3
 	makedepends = libunique3
-	makedepends = mate-desktop>=1.19
+	makedepends = mate-desktop>=1.21
 	depends = dbus-glib
 	depends = dconf
 	depends = glib2
@@ -25,7 +25,7 @@ pkgbase = mate-power-manager-dev
 	depends = libgnome-keyring
 	depends = libnotify
 	depends = libunique3
-	depends = mate-desktop>=1.19
+	depends = mate-desktop>=1.21
 	depends = upower
 	optdepends = mate-panel: Set brightness and inhibit power management from the panel
 	optdepends = yelp: for reading MATE help documents
@@ -33,7 +33,7 @@ pkgbase = mate-power-manager-dev
 	provides = mate-power-manager-gtk3
 	conflicts = mate-power-manager
 	conflicts = mate-power-manager-gtk3
-	source = http://pub.mate-desktop.org/releases/1.19/mate-power-manager-1.19.1.tar.xz
+	source = http://pub.mate-desktop.org/releases/1.21/mate-power-manager-1.21.1.tar.xz
 	sha1sums = 54f196523980196d06316babbdf1993a1dec90d6
 
 pkgname = mate-power-manager-dev
