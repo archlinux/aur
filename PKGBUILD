@@ -3,10 +3,10 @@
 # Maintainer: Netanel Shine <netanel at archlinux.org.il>
 
 pkgname=trace-cmd-git
-pkgver=2.5.r13.g1788a44
+pkgver=2.7.r118.gde3d274
 pkgrel=1
 pkgdesc="user-space front-end command-line tool for Ftrace, inclduing the GUI interface application kernelshark as well as trace-graph and trace-view."
-arch=('i686' 'x86_64')
+arch=('x86_64' 'aarch64')
 url="http://git.kernel.org/?p=linux/kernel/git/rostedt/trace-cmd.git"
 license=('GPL2')
 depends=('python2' 'gtk2')
