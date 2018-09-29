@@ -1,8 +1,9 @@
 [Unit]
-Description=OpenNebula Web Interface
+Description=OpenNebula Web UI Server
 After=syslog.target network.target remote-fs.target opennebula.service opennebula-novnc.service
 BindsTo=opennebula.service
 Wants=opennebula-novnc.service
+AssertFileNotEmpty=/var/lib/one/.one/sunstone_auth
 
 [Service]
 User=oneadmin
