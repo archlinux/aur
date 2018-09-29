@@ -2,7 +2,7 @@
 # Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
-_ver=1.19
+_ver=1.21
 _pkgbase=mate-session-manager
 pkgname="${_pkgbase}-dev"
 pkgver=${_ver}.1
@@ -14,9 +14,9 @@ provides=("${_pkgbase}" "${_pkgbase}-gtk3")
 conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL' 'LGPL')
 depends=('dbus-glib' 'glib2' 'gtk3' 'gtk-update-icon-cache' 'libsm' 'libxtst'
-         'mate-desktop>=1.19' 'mate-polkit>=1.19' 'mate-settings-daemon>=1.19'
+         'mate-desktop>=1.21' 'mate-polkit>=1.21' 'mate-settings-daemon>=1.21'
          'ttf-dejavu' 'xdg-user-dirs')
-makedepends=('mate-common>=1.19' 'xmlto' 'xtrans' 'gtk3' 'mate-desktop>=1.19' 'mate-polkit>=1.19' 'mate-settings-daemon>=1.19')
+makedepends=('mate-common>=1.21' 'xmlto' 'xtrans' 'gtk3' 'mate-desktop>=1.21' 'mate-polkit>=1.21' 'mate-settings-daemon>=1.21')
 optdepends=('lightdm-gtk-greeter: A lightweight display manager'
             'onboard: On-screen keyboard useful for mobility impaired users'
             'orca: Screen reader for blind or visually impaired individuals'
