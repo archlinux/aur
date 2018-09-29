@@ -1,7 +1,7 @@
 pkgbase = reproc
 	pkgdesc = Cross-platform library that simplifies working with external CLI applications from C and C++
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/DaanDeMeyer/reproc
 	arch = x86_64
 	license = MIT

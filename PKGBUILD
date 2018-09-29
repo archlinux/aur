@@ -2,7 +2,7 @@
 
 pkgname=reproc
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross-platform library that simplifies working with external CLI applications from C and C++'
 arch=('x86_64')
 _url='https://github.com/DaanDeMeyer'
@@ -37,6 +37,7 @@ check() {
 package() {
   cmake --build "${pkgname}-${pkgver}/build" --target install
 
+  mv "${pkgdir}"/usr/lib64 "${pkgdir}"/usr/lib
   install -D --mode=644 "${srcdir}/${pkgname}-${pkgver}"/LICENSE \
     "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 }
