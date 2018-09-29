@@ -1,11 +1,10 @@
-# $Id$
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Jeff 'codemac' Mickey <jeff@archlinux.org>
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 
 pkgname=ejabberd
-pkgver=18.06
-pkgrel=3
+pkgver=18.09
+pkgrel=0
 pkgdesc="Jabber server written in Erlang"
 arch=('x86_64')
 url="http://www.ejabberd.im/"
@@ -19,41 +18,41 @@ backup=('etc/ejabberd/ejabberd.yml'
 options=(emptydirs)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/processone/ejabberd/archive/$pkgver.tar.gz"
 	"base64url::git://github.com/dvv/base64url.git#commit=f2c64ed8b9bebc536fad37ad97243452b674b837"
-	"cache_tab::git://github.com/processone/cache_tab#commit=62bdf85216dd39c8082b6e23b95f28068796c813"
-	"eimp::git://github.com/processone/eimp#commit=94b7715d5f9776712f791133cd6389e6c171a997"
+	"cache_tab::git://github.com/processone/cache_tab#commit=204bdd6c1b95b7bdddaa8b7f30ff43b57620b586"
+	"eimp::git://github.com/processone/eimp#commit=d16fd3f050bd1114d72bacbf2029dc6dd5b31da0"
 	"elixir::git://github.com/elixir-lang/elixir#commit=867da6f876c48279823a41a33030c95ef37379b2"
 	"epam::git://github.com/processone/epam#commit=c4940ad96c9e734865d54df45af6f90c1c4ce03b"
 	"eredis::git://github.com/wooga/eredis#commit=cbc013f516e464706493c01662e5e9dd82d1db01"
-	"esip::git://github.com/processone/esip#commit=1c51157360e09cd07d359859b0f9511277afb042"
+	"esip::git://github.com/processone/esip#commit=89fc10d749b2a205a2a099b10f886018dd2c053f"
 	"ezlib::git://github.com/processone/ezlib#commit=ccfb3b25c6476894c3e8d835d35ff258f64e9e14"
-	"fast_tls::git://github.com/processone/fast_tls#commit=4df74a4f55542712f1adbfe980c343460cce6b3a"
-	"fast_xml::git://github.com/processone/fast_xml#commit=532b3ca7675724f82609035b5776351d5d25cb28"
-	"fast_yaml::git://github.com/processone/fast_yaml#commit=50045ece8ab5c038f604ea4bb04fef2b4471973d"
+	"fast_tls::git://github.com/processone/fast_tls#commit=6ec157bcbcb016bb32f7e568094ab22498b56c70"
+	"fast_xml::git://github.com/processone/fast_xml#commit=0e5b0b3d6f1a83f646fa4e01fddda71c3f8f3b8d"
+	"fast_yaml::git://github.com/processone/fast_yaml#commit=697dc776316c4ad48a5a962cf8af13230cb9c1f9"
 	"goldrush::git://github.com/DeadZen/goldrush.git#commit=8f1b715d36b650ec1e1f5612c00e28af6ab0de82"
 	"hamcrest::git://github.com/basho/hamcrest-erlang.git#commit=ad3dbab419762fc2d5821abb88b989da006b85c6"
-	"iconv::git://github.com/processone/iconv#commit=50e79c9baecfb7ab3ca51033c75adec883929942"
+	"iconv::git://github.com/processone/iconv#commit=819125883241205ec196d7965a41594f680bc950"
 	"jiffy::git://github.com/davisp/jiffy#commit=1febce3ca86c5ca5d5a3618ed3d5f125bb99e4c5"
 	"jose::git://github.com/potatosalad/erlang-jose#commit=f8f97fb651202386c951fccfcb61d123518ba05f"
 	"lager::git://github.com/erlang-lager/lager#commit=a10c23c51dea6bbd63e5048c8a5a702169973114"
 	"luerl::git://github.com/rvirding/luerl#commit=01fa43a1a5d68becfe07236a9a71505039474108"
 	"meck::git://github.com/eproxus/meck#commit=70d6a33ce7407029dc59e22a5b3c1c61c1348b23"
 	"moka::git://github.com/processone/moka#commit=6b1ead5821423fa5d465795f99f59f211e708583"
-	"p1_mysql::git://github.com/processone/p1_mysql#commit=72cbfc377dcfee555034e98583e4dc340be5ade5"
+	"p1_mysql::git://github.com/processone/p1_mysql#commit=272f0b4e72b13103dfdef56e370c00a4de882adf"
 	"p1_oauth2::git://github.com/processone/p1_oauth2#commit=ab44e27db49021321e1a5d4dcf65c6c65c088075"
 	"p1_pgsql::git://github.com/processone/p1_pgsql#commit=df6f8819eb46a8c490ba95b1fda66347970111dc"
-	"p1_utils::git://github.com/processone/p1_utils#commit=4916fd9358762e42081bd454df07ee9f1d7b6836"
+	"p1_utils::git://github.com/processone/p1_utils#commit=87336780d6d2b5985aba5b2136903d26d6e26ac0"
 	"rebar_elixir_plugin::git://github.com/processone/rebar_elixir_plugin#commit=10614dfef5d10b7071f7181858149259e50159f6"
 	"riakc::git://github.com/processone/riak-erlang-client#commit=63db9859cf478cc67d4149940a5a9eae8c5ca3bc"
 	"riak_pb::git://github.com/basho/riak_pb#commit=08771aba2ce4935b715d32d1b92555efdc3da994"
 	"samerlib::git://github.com/processone/samerlib#commit=61fdc411c0aa902d63d73ca3410a8d8afcd39283"
 	"sqlite3::git://github.com/processone/erlang-sqlite3#commit=cedc45a668d7630f942cab1c6f695de14b097e05"
-	"stringprep::git://github.com/processone/stringprep#commit=6d4aa85a7a7a98c3239b18c136b75454e716cede"
-	"stun::git://github.com/processone/stun#commit=8a0e7d4ee5930ad27f44c1ce6cc5f695f1f7b9d5"
-	"xmpp::git://github.com/processone/xmpp#commit=0a4397bbf7aeace5b1ae47fb64627edcc8d838e6"
+	"stringprep::git://github.com/processone/stringprep#commit=57e434f92720fcd448f2318bbda10450cb79c2ca"
+	"stun::git://github.com/processone/stun#commit=b5987b787d79dee6b501e209fd5cd61e03d2d6e7"
+	"xmpp::git://github.com/processone/xmpp#commit=0f8042e5d10c325e0043b1c22ba9557888266258"
 	"$pkgname.logrotate"
 	"ejabberd.service"
 	"sysuser.conf")
-sha256sums=('aed37efa45387a4404bd9bcef3072d7490d9b7edf055c993444130b5ab24e529'
+sha256sums=('85c57ba9784f7346f94236c3d1b1dae676f5bb2ee65c6d2204fb4bbcd7582769'
             'SKIP'
             'SKIP'
             'SKIP'
