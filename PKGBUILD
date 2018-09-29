@@ -8,6 +8,11 @@ arch=('x86_64')
 url='https://github.com/wio/wio'
 license=('MIT')
 options=("!strip")
+depends=('make' 'cmake')
+optdepends=('avr-gcc: compiler for AVR'
+            'avr-libc: libc for AVR'
+            'avrdude: for uploading to Arduino based boards'
+            'gcc: for compiling natively')
 
 _pkg_x86_64='x86_64'
 _cs_x86_64='10233790cf6af5fcd410a026085ce01a7ee5fd6e474ecbd14a12c8a0004b61d6'
