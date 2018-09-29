@@ -1,29 +1,26 @@
 # Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
 
-_ver=2.5.3
 pkgname=macports-base
-pkgver=${_ver/-/}
-pkgrel=1
+pkgver=2.5.3
+pkgrel=2
 epoch=1
 pkgdesc='The MacPorts command-line client'
 url='https://www.macports.org/'
 arch=('i686' 'x86_64')
 license=('BSD')
-# man is used for `port help`
-depends=('curl' 'man' 'nmtree' 'openssl' 'sqlite')
+depends=('curl' 'openssl' 'sqlite')
 # tcl: MacPorts comes with its own vendored tclsh, while a system interpreter
 # is still needed to build tcllib
-# rsync: ./configure checks for `rsync` in $PATH and saves the value in
-# macports_autoconf.tcl, so this should be in makedepends, too
-makedepends=('tcl' 'rsync')
+makedepends=('tcl' 'nmtree')
 optdepends=(
-    'rsync: for syncing sources via rsync'
+  'rsync: for syncing sources via rsync'
+  'nmtree: for building ports'
 )
-source=("https://github.com/macports/macports-base/releases/download/v$_ver/MacPorts-$_ver.tar.bz2"{,.asc})
+source=("https://distfiles.macports.org/MacPorts/MacPorts-$pkgver.tar.bz2"{,.asc})
 sha256sums=('5e2b31674f7e0108b63865aeeee4414d793645ee8faef7c9aa23c0ae72ce51d1'
             'SKIP')
 validpgpkeys=(
-    'C403793657236DCF2E580C0201FF673FB4AAE6CD'
+  'C403793657236DCF2E580C0201FF673FB4AAE6CD'  # Joshua Root <jmr@macports.org>
 )
 backup=(opt/local/etc/macports/archive_sites.conf
         opt/local/etc/macports/macports.conf
@@ -32,16 +29,21 @@ backup=(opt/local/etc/macports/archive_sites.conf
         opt/local/etc/macports/variants.conf)
 
 build() {
-  cd "MacPorts-$_ver"
+  cd MacPorts-$pkgver
 
-  ./configure --enable-readline
+  # provide paths manually so that these packages are not necessray during building
+  MAN=/usr/bin/man \
+  MTREE=/usr/bin/mtree \
+  RSYNC=/usr/bin/rsync \
+  ./configure \
+    --enable-readline
+
   make
 }
 
 package() {
-  cd "MacPorts-$_ver"
+  cd MacPorts-$pkgver
   make DESTDIR="$pkgdir" install
 
-  install -Ddm755 "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
