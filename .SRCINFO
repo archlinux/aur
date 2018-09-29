@@ -1,13 +1,13 @@
 pkgbase = mate-notification-daemon-dev
 	pkgdesc = Notification daemon for MATE (GTK3 version)
-	pkgver = 1.19.1
+	pkgver = 1.21.1
 	pkgrel = 5
 	url = http://mate-desktop.org
 	arch = i686
 	arch = x86_64
 	license = GPL
 	license = LGPL
-	makedepends = mate-common>=1.19
+	makedepends = mate-common>=1.21
 	depends = dconf
 	depends = dbus-glib
 	depends = glib2
@@ -22,7 +22,7 @@ pkgbase = mate-notification-daemon-dev
 	provides = mate-notification-daemon-gtk3
 	conflicts = mate-notification-daemon
 	conflicts = mate-notification-daemon-gtk3
-	source = http://pub.mate-desktop.org/releases/1.19/mate-notification-daemon-1.19.1.tar.xz
+	source = http://pub.mate-desktop.org/releases/1.21/mate-notification-daemon-1.21.1.tar.xz
 	sha1sums = dc61258f5ebf0de1f2275a2a0bd3c06323242958
 
 pkgname = mate-notification-daemon-dev
