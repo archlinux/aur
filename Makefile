@@ -1,6 +1,5 @@
 PKG=pkg/p7zip-natspec
 PKGINFO=$(PKG)/.PKGINFO
-TESTFILES_URL="https://www.dropbox.com/sh/hlop0d07h5n2172/AAAcO5crCxqJuVdF_0WLxuTua?dl=0"
 
 .PHONY: all clean test check_upstream _test lint
 
@@ -13,8 +12,7 @@ $(PKGINFO): PKGBUILD
 	makepkg
 
 testfiles/:
-	mkdir -p $@
-	curl -L "$(TESTFILES_URL)" | bsdtar -C $@ -xf -
+	git archive --prefix $@ testfiles | tar xf -
 
 clean:
 	rm -rf testfiles src pkg *.pkg.tar.*
