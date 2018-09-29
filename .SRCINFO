@@ -1,0 +1,16 @@
+pkgbase = n-acd
+	pkgdesc = IPv4 Address Conflict Detection
+	pkgver = v1+12+ga409492
+	pkgrel = 1
+	url = https://github.com/nettools/n-acd
+	arch = x86_64
+	license = LGPL2.1
+	license = Apache
+	makedepends = meson
+	makedepends = pkgconf
+	depends = glibc
+	source = git+https://github.com/nettools/n-acd.git#commit=
+	sha256sums = SKIP
+
+pkgname = n-acd
+
