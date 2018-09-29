@@ -1,16 +1,16 @@
 # Maintainer: Aleksandar Trifunović <akstrfn at gmail dot com>
 
 pkgname=or-tools
-pkgver=6.8
-pkgrel=2
-pkgdesc="Google's Operations Research tools"
-arch=('x86_64' 'i686')
+pkgver=6.9.1
+pkgrel=1
+pkgdesc="Google's Operations Research tools."
+arch=('x86_64')
 url="https://github.com/google/or-tools"
 license=('Apache')
 depends=(gcc-libs)
 makedepends=('cmake')
 source=("https://github.com/google/or-tools/archive/v${pkgver}.tar.gz")
-sha256sums=('69d85f8c4e9bbd8185dd84e34d5d1d7310e12589d1348de0196e22d50ae52adf')
+sha256sums=('c6fa58741addf9fa59dd990fa933a8137eea7e8e2775b09c430cc7f71dbfd564')
 conflicts=('python-or-tools') # because it copies libortools.so to usr/lib
 
 build() {
