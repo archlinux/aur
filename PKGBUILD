@@ -2,7 +2,7 @@
 # Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
-_ver=1.19
+_ver=1.21
 _pkgbase=python-caja
 pkgname="${_pkgbase}-dev"
 pkgver=${_ver}.0
@@ -14,8 +14,8 @@ provides=("${_pkgbase}" "${_pkgbase}-gtk3")
 conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 groups=('mate')
 license=('GPL')
-depends=('caja>=1.19' 'python2-gobject')
-makedepends=('mate-common>=1.19')
+depends=('caja>=1.21' 'python2-gobject')
+makedepends=('mate-common>=1.21')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
 sha1sums=('2643dcd863a8b0e9399b7a63472656f18dcc5fe9')
 
