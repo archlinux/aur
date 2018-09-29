@@ -3,7 +3,7 @@
 # Contributor: Cristophero <cristophero.alvarado@gmail.com>
 pkgname=pseint
 pkgver=20180801
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool for learning programming basis with a simple spanish pseudocode"
 arch=('i686' 'x86_64')
 url="http://pseint.sourceforge.net"
@@ -12,7 +12,7 @@ groups=()
 depends=('libpng12' 'glu')
 makedepends=()
 optdepends=()
-source_x86=(https://razaoinfo.dl.sourceforge.net/project/${pkgname}/${pkgver}/$pkgname-l32-${pkgver}.tgz)
+source_i686=(https://razaoinfo.dl.sourceforge.net/project/${pkgname}/${pkgver}/$pkgname-l32-${pkgver}.tgz)
 source_x86_64=(https://razaoinfo.dl.sourceforge.net/project/${pkgname}/${pkgver}/$pkgname-l64-${pkgver}.tgz)
 noextract=()
 sha256sums_x86=("67e225ae81c2a2a5d88db374bfe81de8bdb880f5e3452e6ca3796d7b6ef0f8f2")
