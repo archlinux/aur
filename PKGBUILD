@@ -3,7 +3,7 @@
 pkgname=caffe-cuda
 _srcname=caffe
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A deep learning framework made with expression, speed, and modularity in mind (with cuda)'
 arch=('x86_64')
 url='http://caffe.berkeleyvision.org/'
@@ -29,7 +29,7 @@ conflicts=('caffe' 'caffe-git' 'caffe-cuda-git' 'caffe-cpu' 'caffe-cpu-git'
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/BVLC/caffe/archive/${pkgver}.tar.gz"
         'Makefile.config')
 sha256sums=('71d3c9eb8a183150f965a465824d01fe82826c22505f7aa314f700ace03fa77f'
-            '9426828e7598bc85ae0ded53779643d99072e4e9c49f8a8b1deab8c166cbc2e7')
+            'c61207ffea4ade927ce66a980f44732c1c2f9b82c500d51e687f5bcf773a4465')
 
 prepare() {
     cd "${_srcname}-${pkgver}"
