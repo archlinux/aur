@@ -2,11 +2,12 @@
 
 pkgname=lbd
 pkgver=0.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Load Balancer Detector - checks if a given domain uses load balancing'
 arch=('any')
 url='https://tools.kali.org/information-gathering/lbd'
 license=('GPL2')
+depends=('bash')
 provides=('lbd')
 options=()
 source=("$pkgname"
