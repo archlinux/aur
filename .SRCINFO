@@ -1,6 +1,6 @@
 pkgbase = mate-system-monitor-dev
 	pkgdesc = A system monitor for MATE (GTK3 version)
-	pkgver = 1.19.1
+	pkgver = 1.21.1
 	pkgrel = 5
 	url = http://mate-desktop.org
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = mate-system-monitor-dev
 	groups = mate-extra
 	license = GPL
 	makedepends = docbook2x
-	makedepends = mate-common>=1.19
+	makedepends = mate-common>=1.21
 	makedepends = yelp-tools
 	depends = dconf
 	depends = dbus-glib
@@ -22,7 +22,7 @@ pkgbase = mate-system-monitor-dev
 	provides = mate-system-monitor-gtk3
 	conflicts = mate-system-monitor
 	conflicts = mate-system-monitor-gtk3
-	source = http://pub.mate-desktop.org/releases/1.19/mate-system-monitor-1.19.1.tar.xz
+	source = http://pub.mate-desktop.org/releases/1.21/mate-system-monitor-1.21.1.tar.xz
 	sha1sums = d92a6a28e5499c5cc0ddd0f95b0caf59ffc2e2c0
 
 pkgname = mate-system-monitor-dev
