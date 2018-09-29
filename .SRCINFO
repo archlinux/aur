@@ -1,6 +1,6 @@
 pkgbase = mate-terminal-dev
 	pkgdesc = The MATE Terminal Emulator
-	pkgver = 1.19.1
+	pkgver = 1.21.1
 	pkgrel = 5
 	url = http://mate-desktop.org
 	arch = i686
@@ -11,19 +11,19 @@ pkgbase = mate-terminal-dev
 	makedepends = intltool>=0.50.1
 	makedepends = yelp-tools
 	makedepends = vte3
-	makedepends = mate-desktop>=1.19
+	makedepends = mate-desktop>=1.21
 	depends = dbus
 	depends = dconf
 	depends = glib2
 	depends = libsm
-	depends = mate-desktop>=1.19
+	depends = mate-desktop>=1.21
 	depends = vte3
 	optdepends = yelp: for reading MATE help documents
 	provides = mate-terminal
 	provides = mate-terminal-gtk3
 	conflicts = mate-terminal
 	conflicts = mate-terminal-gtk3
-	source = http://pub.mate-desktop.org/releases/1.19/mate-terminal-1.19.1.tar.xz
+	source = http://pub.mate-desktop.org/releases/1.21/mate-terminal-1.21.1.tar.xz
 	sha1sums = 252f2da1aa5ae2bfc424ab6fee9885c1381c5109
 
 pkgname = mate-terminal-dev
