@@ -1,20 +1,20 @@
 pkgbase = mozo-dev
 	pkgdesc = MATE menu editing tool (GTK3 version)
-	pkgver = 1.19.0
+	pkgver = 1.21.0
 	pkgrel = 5
 	url = http://mate-desktop.org
 	arch = any
 	groups = mate-extra
 	license = GPL
-	makedepends = mate-common>=1.19
+	makedepends = mate-common>=1.21
 	depends = gtk-update-icon-cache
-	depends = mate-menus>=1.19
+	depends = mate-menus>=1.21
 	depends = python2-gobject
 	provides = mozo
 	provides = mozo-gtk3
 	conflicts = mozo
 	conflicts = mozo-gtk3
-	source = http://pub.mate-desktop.org/releases/1.19/mozo-1.19.0.tar.xz
+	source = http://pub.mate-desktop.org/releases/1.21/mozo-1.21.0.tar.xz
 	sha1sums = be5d7546f49a512117040d0da70c82bfce0e994a
 
 pkgname = mozo-dev
