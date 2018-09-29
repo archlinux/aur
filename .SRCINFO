@@ -1,0 +1,15 @@
+pkgbase = n-ndp
+	pkgdesc = IPv6 Neighbor Discovery Protocol
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/nettools/n-ndp
+	arch = x86_64
+	license = Apache
+	makedepends = meson
+	makedepends = pkgconf
+	depends = glibc
+	source = git+https://github.com/nettools/n-ndp.git#commit=bdf742f6594a8abbcfc96c4e5022262365141fc2
+	sha256sums = SKIP
+
+pkgname = n-ndp
+
