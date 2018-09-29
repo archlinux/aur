@@ -1,14 +1,13 @@
 # Maintainer: archblue <jhswx84@aliyun.com>
 pkgname=proxyee-down
-pkgver=3.02
+pkgver=3.1
 pkgrel=1
 pkgdesc="基于HTTP代理的百度网盘(Baidu)不限速下载，SwitchyOmega设置请参见项目主页说明"
 arch=("any")
 url="https://github.com/monkeyWie/proxyee-down"
 license=('Apache License 2.0')
 depends=('java-openjfx')
-makedepends=('unzip'
-             'binutils')
+makedepends=('binutils')
 source=("https://github.com/monkeyWie/proxyee-down/releases/download/${pkgver}/proxyee-down-main.jar")
 md5sums=('SKIP')
 

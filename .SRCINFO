@@ -1,14 +1,13 @@
 pkgbase = proxyee-down
 	pkgdesc = 基于HTTP代理的百度网盘(Baidu)不限速下载，SwitchyOmega设置请参见项目主页说明
-	pkgver = 3.02
+	pkgver = 3.1
 	pkgrel = 1
 	url = https://github.com/monkeyWie/proxyee-down
 	arch = any
 	license = Apache License 2.0
-	makedepends = unzip
 	makedepends = binutils
 	depends = java-openjfx
-	source = https://github.com/monkeyWie/proxyee-down/releases/download/3.02/proxyee-down-main.jar
+	source = https://github.com/monkeyWie/proxyee-down/releases/download/3.1/proxyee-down-main.jar
 	md5sums = SKIP
 
 pkgname = proxyee-down
