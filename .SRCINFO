@@ -1,13 +1,13 @@
 pkgbase = libmatekbd-dev
 	pkgdesc = MATE keyboard library (GTK3 version)
-	pkgver = 1.17.0
+	pkgver = 1.21.1
 	pkgrel = 5
 	url = http://mate-desktop.org
 	arch = i686
 	arch = x86_64
 	groups = mate
 	license = LGPL
-	makedepends = mate-common-dev
+	makedepends = mate-common>=1.21
 	depends = dconf
 	depends = gtk3
 	depends = iso-codes
@@ -16,8 +16,8 @@ pkgbase = libmatekbd-dev
 	provides = libmatekbd-gtk3
 	conflicts = libmatekbd
 	conflicts = libmatekbd-gtk3
-	source = http://pub.mate-desktop.org/releases/1.17/libmatekbd-1.17.0.tar.xz
-	sha1sums = dadda672fdb78ab1b85cf8d55c91755b3be320ad
+	source = http://pub.mate-desktop.org/releases/1.21/libmatekbd-1.21.1.tar.xz
+	sha1sums = 46592b3f7b34b87623b27a10ec58642aef101676
 
 pkgname = libmatekbd-dev
 
