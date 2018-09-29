@@ -9,7 +9,7 @@ pkgdesc="Generic image manipulation library"
 url="http://www.afterstep.org/afterimage"
 license=('GPL')
 depends=('librsvg')
-arch=('i686' 'x86_64')
+arch=('x86_64')
 source=("https://downloads.sourceforge.net/project/afterstep/libAfterImage/$pkgver/libAfterImage-$pkgver.tar.bz2"
         libafterimage-libpng15.patch)
 md5sums=('17a0ab8a2e6b253f222934418705963e'
