@@ -2,9 +2,9 @@
 
 pkgname=trace-cmd
 pkgver=2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="user-space front-end command-line tool for Ftrace, inclduing the GUI interface application kernelshark as well as trace-graph and trace-view."
-arch=('i686' 'x86_64')
+arch=('x86_64' 'aarch64')
 url="http://git.kernel.org/?p=linux/kernel/git/rostedt/trace-cmd.git"
 license=('GPL2')
 depends=('python2' 'gtk2')
