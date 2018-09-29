@@ -1,6 +1,6 @@
 pkgbase = pianoteq-standard-trial-bin
 	pkgdesc = Virtual piano instrument using physical modelling synthesis. Both standalone and plugin versions.
-	pkgver = 6.2.2
+	pkgver = 6.3.0
 	pkgrel = 1
 	url = https://www.pianoteq.com/home
 	arch = i686
