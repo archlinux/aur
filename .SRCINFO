@@ -1,7 +1,7 @@
 pkgbase = ceiba-dl-git
 	pkgdesc = NTU CEIBA data downloader / NTU CEIBA 資料下載工具
 	pkgver = 0.5.r1.ga977f8d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lantw44/ceiba-dl
 	arch = i686
 	arch = x86_64

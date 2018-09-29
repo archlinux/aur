@@ -3,7 +3,7 @@
 _pkgname=ceiba-dl
 pkgname=$_pkgname-git
 pkgver=0.5.r1.ga977f8d
-pkgrel=1
+pkgrel=2
 pkgdesc='NTU CEIBA data downloader /  NTU CEIBA 資料下載工具'
 arch=(i686 x86_64)
 license=(LGPL3)
