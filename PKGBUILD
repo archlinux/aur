@@ -2,7 +2,7 @@
 # Contributor: Jeff 'codemac' Mickey <jeff@archlinux.org>
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 
-pkgname=ejabberd
+pkgname=ejabberd-current
 pkgver=18.09
 pkgrel=0
 pkgdesc="Jabber server written in Erlang"
@@ -15,6 +15,7 @@ makedepends=('git' 'rebar' 'hevea' 'texlive-bin' 'texlive-core' 'texlive-latexex
 backup=('etc/ejabberd/ejabberd.yml'
 	'etc/ejabberd/ejabberdctl.cfg'
 	'etc/logrotate.d/ejabberd')
+conflicts=('ejabberd')
 options=(emptydirs)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/processone/ejabberd/archive/$pkgver.tar.gz"
 	"base64url::git://github.com/dvv/base64url.git#commit=f2c64ed8b9bebc536fad37ad97243452b674b837"
