@@ -1,0 +1,17 @@
+pkgbase = lrexlib-oniguruma
+	pkgdesc = Regular expression library for Lua - Oniguruma version
+	pkgver = 2.9.0
+	pkgrel = 2
+	url = https://luarocks.org/modules/rrt/lrexlib-oniguruma
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = luarocks
+	depends = lua
+	depends = oniguruma
+	noextract = lrexlib-oniguruma-2.9.0-1.src.rock
+	source = https://luarocks.org/lrexlib-oniguruma-2.9.0-1.src.rock
+	md5sums = 1cadfb28ec6b51f454694c65c50079f0
+
+pkgname = lrexlib-oniguruma
+
