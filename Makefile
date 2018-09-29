@@ -1,7 +1,8 @@
 PKG=pkg/p7zip-natspec
 PKGINFO=$(PKG)/.PKGINFO
+CI_IMAGE=buzztaiki/pkgbuild-p7zip-natspec-buildenv
 
-.PHONY: all clean test check_upstream _test lint
+.PHONY: all clean test check_upstream _test lint ci_test
 
 all: $(PKGINFO) test .SRCINFO
 
@@ -29,3 +30,8 @@ _test:
 
 lint:
 	namcap PKGBUILD
+
+ci_test:
+	git fetch --depth=1 origin testfiles:remotes/origin/testfiles
+	docker pull $(CI_IMAGE)
+	docker run --rm -it -u travis -v $(CURDIR):/mnt $(CI_IMAGE) make lint test
