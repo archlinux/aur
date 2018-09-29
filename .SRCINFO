@@ -1,7 +1,7 @@
 pkgbase = osu-lazer
-	pkgdesc = Freeware rhythm video game - lazer version 2018.920.0
-	pkgver = 2018.920.0
-	pkgrel = 2
+	pkgdesc = Freeware rhythm video game - lazer version 2018.928.0
+	pkgver = 2018.928.0
+	pkgrel = 1
 	url = https://osu.ppy.sh/
 	arch = x86_64
 	license = MIT
@@ -15,7 +15,7 @@ pkgbase = osu-lazer
 	depends = shared-mime-info
 	provides = osu-lazer
 	conflicts = osu-lazer-git
-	source = osu-2018.920.0::git://github.com/ppy/osu.git#tag=2018.920.0
+	source = osu-2018.928.0::git://github.com/ppy/osu.git#tag=2018.928.0
 	source = git://github.com/ppy/osu-resources.git
 	source = osu-launcher
 	source = osu-lazer.desktop
