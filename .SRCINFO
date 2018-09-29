@@ -1,0 +1,24 @@
+pkgbase = dlib-git
+	pkgdesc = General purpose C++ library using contract programming and modern C++ techniques
+	pkgver = r7572.0072afbc
+	pkgrel = 1
+	url = http://www.dlib.net/
+	arch = i686
+	arch = x86_64
+	license = Boost Software License
+	depends = glibc
+	optdepends = cblas: for BLAS support
+	optdepends = cuda: for CUDA support
+	optdepends = giflib: for GIF support
+	optdepends = lapack: for LAPACK support
+	optdepends = libjpeg-turbo: for JPEG support
+	optdepends = libpng: for PNG support
+	optdepends = sqlite: for sqlite support
+	provides = dlib
+	conflicts = dlib
+	replaces = dlib
+	source = git+https://github.com/davisking/dlib
+	sha256sums = SKIP
+
+pkgname = dlib-git
+
