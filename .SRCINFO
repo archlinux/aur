@@ -1,0 +1,17 @@
+pkgbase = lrexlib-tre
+	pkgdesc = Regular expression library for Lua - TRE version
+	pkgver = 2.9.0
+	pkgrel = 2
+	url = https://luarocks.org/modules/rrt/lrexlib-tre
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = luarocks
+	depends = lua
+	depends = tre
+	noextract = lrexlib-tre-2.9.0-1.src.rock
+	source = https://luarocks.org/lrexlib-tre-2.9.0-1.src.rock
+	md5sums = aa4ca6e2dcd9d3661007246899f91a45
+
+pkgname = lrexlib-tre
+
