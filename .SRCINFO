@@ -1,6 +1,6 @@
 pkgbase = mate-common-dev
 	pkgdesc = Common development macros for MATE (GTK3 version)
-	pkgver = 1.19.0
+	pkgver = 1.21.0
 	pkgrel = 5
 	url = http://mate-desktop.org
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = mate-common-dev
 	provides = mate-common-gtk3
 	conflicts = mate-common
 	conflicts = mate-common-gtk3
-	source = http://pub.mate-desktop.org/releases/1.19/mate-common-1.19.0.tar.xz
+	source = http://pub.mate-desktop.org/releases/1.21/mate-common-1.21.0.tar.xz
 	sha1sums = 205a41981a3193ddd34e2e2a8562c939b64b8e51
 
 pkgname = mate-common-dev
