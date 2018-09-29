@@ -1,13 +1,13 @@
 pkgbase = engrampa-dev
 	pkgdesc = Archive manipulator for MATE (GTK3 version)
-	pkgver = 1.19.2
+	pkgver = 1.21.2
 	pkgrel = 5
 	url = http://mate-desktop.org
 	arch = i686
 	arch = x86_64
 	groups = mate-extra
 	license = GPL
-	makedepends = caja>=1.19
+	makedepends = caja>=1.21
 	makedepends = intltool>=0.50.1
 	makedepends = yelp-tools
 	depends = bzip2
@@ -30,7 +30,7 @@ pkgbase = engrampa-dev
 	provides = engrampa-gtk3
 	conflicts = engrampa
 	conflicts = engrampa-gtk3
-	source = http://pub.mate-desktop.org/releases/1.19/engrampa-1.19.2.tar.xz
+	source = http://pub.mate-desktop.org/releases/1.21/engrampa-1.21.2.tar.xz
 	source = fr-rpm-bsdtar.patch
 	sha1sums = 2462542af4ee3054caeb85874e5bea4cc84e685f
 	sha1sums = 219b05a979bf6f249aaae27964f02345fd81168d

@@ -2,7 +2,7 @@
 # Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
-_ver=1.19
+_ver=1.21
 _pkgbase=engrampa
 pkgname="${_pkgbase}-dev"
 pkgver=${_ver}.2
@@ -15,7 +15,7 @@ conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL')
 depends=('bzip2' 'desktop-file-utils' 'glib2' 'gtk3' 'gtk-update-icon-cache' 'gzip'
          'libarchive' 'tar')
-makedepends=('caja>=1.19' 'intltool>=0.50.1' 'yelp-tools')
+makedepends=('caja>=1.21' 'intltool>=0.50.1' 'yelp-tools')
 optdepends=('caja: file archiver extension'
             'unrar: for RAR uncompression'
             'zip: for ZIP archives' 'unzip: for ZIP archives'
