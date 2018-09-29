@@ -8,7 +8,9 @@ pkgbase = thecalculator
 	makedepends = git
 	makedepends = bison
 	makedepends = flex
+	makedepends = qt5-tools
 	depends = qt5-base
+	depends = the-libs
 	source = thecalculator-2.0::git+https://github.com/vicr123/thecalculator#branch=master
 	md5sums = SKIP
 
