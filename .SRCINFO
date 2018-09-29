@@ -1,7 +1,7 @@
 pkgbase = nodejs-budgie-launcher-super
 	pkgdesc = A simple script to switch tasks using "super + 1" number keys, the same feature exists with other desktops like windows and unity, this adds it to budgie desktop.
-	pkgver = 1.0.9
-	pkgrel = 2
+	pkgver = 1.0.10
+	pkgrel = 1
 	url = https://github.com/Lee182/budgie-launcher-super
 	arch = any
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = nodejs-budgie-launcher-super
 	depends = dconf
 	depends = wmctrl
 	depends = xdotool
-	noextract = budgie-launcher-super-1.0.9.tgz
+	noextract = budgie-launcher-super-1.0.10.tgz
 
 pkgname = nodejs-budgie-launcher-super
 
