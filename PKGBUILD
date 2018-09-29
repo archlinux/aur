@@ -1,7 +1,7 @@
 # Maintainer : Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=caffe2-git
-pkgver=0.8.2.r12850.gfbd718994
+pkgver=0.8.2.r13647.ga2ebbccc9f
 pkgrel=1
 epoch=1
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (git version)'
@@ -14,7 +14,7 @@ depends=(
             'google-glog' 'protobuf' 'lapack' 'python' 'python-numpy' 'python-protobuf'
         # not required but enabled in build:
             'gflags' 'gtest' 'openmp' 'leveldb' 'lmdb' 'numactl' 'openmpi' 'snappy'
-            'zeromq' 'hiredis' 'ocl-icd' 'opencv' 'gtk3' 'ffmpeg'
+            'zeromq' 'hiredis' 'opencv' 'gtk3' 'ffmpeg'
         # python:
             'python-flask' 'python-future' 'graphviz' 'python-hypothesis'
             'python-jupyter_core' 'python-matplotlib' 'python-pydot' 'python-yaml'
@@ -37,7 +37,6 @@ source=(
         'pytorch-git'::'git+https://github.com/pytorch/pytorch.git'
     # git submodules:
         'caffe2-submodule-catch'::'git+https://github.com/catchorg/Catch2.git'
-        'caffe2-submodule-nanopb'::'git+https://github.com/nanopb/nanopb.git'
         'caffe2-submodule-pybind11'::'git+https://github.com/pybind/pybind11.git'
         'caffe2-submodule-cub'::'git+https://github.com/NVlabs/cub.git'
         'caffe2-submodule-eigen'::'git+https://github.com/eigenteam/eigen-git-mirror.git'
@@ -90,7 +89,6 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
             'SKIP')
 
 prepare() {
@@ -99,11 +97,11 @@ prepare() {
     local _submodule
     local _submodule_dir
     
-    local _submodule_list="catch nanopb pybind11 cub eigen googletest nervanagpu benchmark \
+    local _submodule_list="catch pybind11 cub eigen googletest nervanagpu benchmark \
                            protobuf ios-cmake NNPACK gloo NNPACK_deps/pthreadpool \
                            NNPACK_deps/FXdiv NNPACK_deps/FP16 NNPACK_deps/psimd zstd \
-                           python-enum python-peachpy python-six ComputeLibrary onnx cereal \
-                           onnx-tensorrt sleef ideep"
+                           python-enum python-peachpy python-six ComputeLibrary onnx
+                           cereal onnx-tensorrt sleef ideep"
                            
     git submodule init
     
@@ -153,9 +151,6 @@ build() {
         \
         -DCMAKE_INSTALL_LIBDIR:PATH='lib' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-        -DCMAKE_SKIP_INSTALL_RPATH:BOOL='NO' \
-        -DCMAKE_SKIP_RPATH:BOOL='NO' \
-        -DCMAKE_VERBOSE_MAKEFILE:BOOL='FALSE' \
         \
         -DGLOO_STATIC_OR_SHARED:STRING='STATIC' \
         \
@@ -167,11 +162,9 @@ build() {
         \
         -DUSE_ACL:BOOL='OFF' \
         -DUSE_ASAN:BOOL='ON' \
-        -DUSE_ATEN:BOOL='OFF' \
         -DUSE_CUDA:BOOL='OFF' \
         -DUSE_CUDNN:BOOL='OFF' \
-        -DUSE_DISTRIBUTED:BOOL='OFF' \
-        -DUSE_DISTRIBUTED_MW:BOOL='OFF' \
+        -DUSE_DISTRIBUTED:BOOL='ON' \
         -DUSE_FFMPEG:BOOL='ON' \
         -DUSE_GFLAGS:BOOL='ON' \
         -DUSE_GLOG:BOOL='ON' \
@@ -202,6 +195,7 @@ build() {
         -DUSE_ROCKSDB:BOOL='OFF' \
         -DUSE_ROCM:BOOL='OFF' \
         -DUSE_SNPE:BOOL='OFF' \
+        -DUSE_SYSTEM_EIGEN_INSTALL:BOOL='OFF' \
         -DUSE_SYSTEM_NCCL:BOOL='OFF' \
         -DUSE_TENSORRT:BOOL='OFF' \
         -DUSE_ZMQ:BOOL='ON' \
@@ -229,7 +223,7 @@ package() {
     rm -rf "$pkgdir"/usr/lib/cmake/protobuf
     rm -f  "$pkgdir"/usr/lib/pkgconfig/{protobuf-lite,protobuf}.pc
     rm -rf "$pkgdir"/usr/share/pkgconfig
-    rm -rf "$pkgdir"/usr/share/{ATen,cmake/ATen}
+    rm -rf "$pkgdir"/usr/share/{ATen,cmake/{ATen,ONNX}}
     rm -f  "$pkgdir"/usr/share/man/man1/{unzstd,zstd{cat,}}.1
     for _entry in ${_exclude_dirs[@]} ${_exclude_libs[@]}
     do
