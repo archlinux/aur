@@ -1,6 +1,6 @@
 pkgbase = mate-meta-dev
 	pkgdesc = Meta package for MATE. This installs all MATE gtk3 packages - through dependencies
-	pkgver = 1.19.0
+	pkgver = 1.21.0
 	pkgrel = 4
 	url = http://mate-desktop.org
 	arch = any
@@ -33,6 +33,7 @@ pkgbase = mate-meta-dev
 	depends = mate-system-monitor-dev
 	depends = mate-terminal-dev
 	depends = mate-user-guide-dev
+	depends = mate-user-share-dev
 	depends = mate-utils-dev
 	depends = mozo-dev
 	depends = pluma-dev
