@@ -1,6 +1,6 @@
 pkgbase = mate-user-guide-dev
 	pkgdesc = MATE User Guide
-	pkgver = 1.19.0
+	pkgver = 1.21.0
 	pkgrel = 5
 	url = http://mate-desktop.org
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = mate-user-guide-dev
 	groups = mate-gtk3
 	license = GPL
 	license = LGPL
-	makedepends = mate-common>=1.19
+	makedepends = mate-common>=1.21
 	makedepends = yelp-tools
 	depends = desktop-file-utils
 	depends = yelp
@@ -16,7 +16,7 @@ pkgbase = mate-user-guide-dev
 	provides = mate-user-guide-gtk3
 	conflicts = mate-user-guide
 	conflicts = mate-user-guide-gtk3
-	source = http://pub.mate-desktop.org/releases/1.19/mate-user-guide-1.19.0.tar.xz
+	source = http://pub.mate-desktop.org/releases/1.21/mate-user-guide-1.21.0.tar.xz
 	sha1sums = 0fb93f0e13b47018c2be789c62337fe69d98ce16
 
 pkgname = mate-user-guide-dev

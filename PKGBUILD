@@ -2,7 +2,7 @@
 # Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
-_ver=1.19
+_ver=1.21
 _pkgbase=mate-user-guide
 pkgname="${_pkgbase}-dev"
 pkgver=${_ver}.0
@@ -15,7 +15,7 @@ provides=("${_pkgbase}" "${_pkgbase}-gtk3")
 conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL' 'LGPL')
 depends=('desktop-file-utils' 'yelp')
-makedepends=('mate-common>=1.19' 'yelp-tools')
+makedepends=('mate-common>=1.21' 'yelp-tools')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
 sha1sums=('0fb93f0e13b47018c2be789c62337fe69d98ce16')
 
