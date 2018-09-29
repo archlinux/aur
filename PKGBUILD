@@ -3,7 +3,7 @@
 pkgname=caffe-cuda
 _srcname=caffe
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A deep learning framework made with expression, speed, and modularity in mind (with cuda)'
 arch=('x86_64')
 url='http://caffe.berkeleyvision.org/'
@@ -11,8 +11,8 @@ license=('BSD')
 depends=(
     # official repositories:
         'openblas' 'lapack' 'boost-libs' 'protobuf' 'google-glog' 'gflags'
-        'hdf5' 'opencv' 'leveldb' 'lmdb' 'cuda' 'cudnn' 'python' 'cython'
-        'python-numpy' 'python-scipy' 'python-matplotlib' 'ipython'
+        'hdf5' 'opencv' 'leveldb' 'lmdb' 'cuda' 'cudnn' 'nccl' 'python'
+        'cython' 'python-numpy' 'python-scipy' 'python-matplotlib' 'ipython'
         'python-h5py' 'python-networkx' 'python-nose' 'python-pandas'
         'python-dateutil' 'python-protobuf' 'python-gflags' 'python-yaml'
         'python-pillow' 'python-six'
@@ -29,7 +29,7 @@ conflicts=('caffe' 'caffe-git' 'caffe-cuda-git' 'caffe-cpu' 'caffe-cpu-git'
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/BVLC/caffe/archive/${pkgver}.tar.gz"
         'Makefile.config')
 sha256sums=('71d3c9eb8a183150f965a465824d01fe82826c22505f7aa314f700ace03fa77f'
-            '2f1b37655332587c599791a4e307321bdce7f6acdbc014ecf28a1f3c9bf0d785')
+            '9426828e7598bc85ae0ded53779643d99072e4e9c49f8a8b1deab8c166cbc2e7')
 
 prepare() {
     cd "${_srcname}-${pkgver}"
