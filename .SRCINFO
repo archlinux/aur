@@ -1,8 +1,8 @@
 pkgbase = jd-gtk3
 	pkgdesc = A 2channel browser written in C++ using gtkmm3 (patched). This is alpha version by experimental support.
-	pkgver = r2365.21c84419
-	pkgrel = 1
-	url = https://github.com/ma8ma/JD/tree/gtk3-idea
+	pkgver = r2355.df584e49
+	pkgrel = 2
+	url = https://github.com/ma8ma/JD/tree/gtk3-idea-r2
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -13,7 +13,7 @@ pkgbase = jd-gtk3
 	depends = autoconf-archive
 	conflicts = jd
 	conflicts = jd-svn
-	source = git://github.com/ma8ma/JD.git#branch=gtk3-idea
+	source = git://github.com/ma8ma/JD.git#branch=gtk3-idea-r2
 	sha256sums = SKIP
 
 pkgname = jd-gtk3
