@@ -1,0 +1,15 @@
+[Unit]
+Description=A distributed, fault-tolerant Jabber/XMPP server
+After=network.target
+
+[Service]
+Type=forking
+User=jabber
+Environment=HOME=/var/lib/ejabberd
+LimitNOFILE=16000
+RestartSec=5
+ExecStart=/usr/bin/ejabberdctl start
+ExecStop=/usr/bin/ejabberdctl stop
+
+[Install]
+WantedBy=multi-user.target
