@@ -2,7 +2,7 @@
 
 pkgname=veloren-git 
 pkgver=0.1.0.r192.a1bd916
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-world, open-source multiplayer voxel RPG"
 arch=('x86_64' 'i686')
 url="https://veloren.net/"
@@ -30,7 +30,7 @@ pkgver() {
 prepare() {
     cd "$srcdir/$pkgname/voxygen"
     git submodule init assets
-    git config submodule.voxygen/legacy_assets.url "$srcdir/assets"
+    git config submodule.voxygen/assets.url "$srcdir/assets"
     git submodule update
 }
 
