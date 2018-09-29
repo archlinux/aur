@@ -1,7 +1,7 @@
 pkgbase = caffe-cuda-git
 	pkgdesc = A deep learning framework made with expression, speed, and modularity in mind (with cuda, git version)
 	pkgver = 1.0.r132.g99bd99795
-	pkgrel = 1
+	pkgrel = 2
 	url = http://caffe.berkeleyvision.org/
 	arch = x86_64
 	license = BSD
@@ -22,6 +22,7 @@ pkgbase = caffe-cuda-git
 	depends = lmdb
 	depends = cuda
 	depends = cudnn
+	depends = nccl
 	depends = python
 	depends = cython
 	depends = python-numpy
@@ -53,7 +54,7 @@ pkgbase = caffe-cuda-git
 	source = caffe-cuda-git::git+https://github.com/BVLC/caffe.git
 	source = Makefile.config
 	sha256sums = SKIP
-	sha256sums = 2f1b37655332587c599791a4e307321bdce7f6acdbc014ecf28a1f3c9bf0d785
+	sha256sums = 9426828e7598bc85ae0ded53779643d99072e4e9c49f8a8b1deab8c166cbc2e7
 
 pkgname = caffe-cuda-git
 
