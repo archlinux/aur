@@ -4,7 +4,7 @@
 pkgbase=('monero-git')
 pkgname=('monero-git' 'libmonero-wallet-git')
 _gitname='monero'
-pkgver=0.12.3.0
+pkgver=0.13.0.1~RC1.r6786.ga8589411
 pkgrel=1
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://getmonero.org/"
@@ -41,13 +41,8 @@ prepare() {
        #git remote add up $_upstream
        #git pull --no-edit up refs/pull/xxxx/head
 
+       git revert --no-edit cd5638f894954a8424af6bd22f4386b121e5dc8f # PR #4417 breaks build
        git pull --no-edit origin refs/pull/4159/head # fixes #4228
-       git pull --no-edit origin refs/pull/4165/head # fixes ringdb test failing
-
-       patch -p1 < ../cmake-libsodium.patch
-
-       cd external/miniupnp
-       git pull --no-edit origin refs/pull/3/head # fixes conflict with system miniupnp upon installation
 }
 
 CMAKE_FLAGS+=" -DCMAKE_BUILD_TYPE=$_buildtype "
@@ -81,19 +76,19 @@ check() {
 	make
 
 	# Run unit_tests test separately to exclude DNS tests which often fail with
-	# DNS nameservers configured on some systems (#2172)
+	# DNS nameservers configured on some systems (#2172). TODO: check if #4464 fixes.
 	EXCLUDED_UNIT_TESTS+='DNSResolver.IPv4Failure'
 	EXCLUDED_UNIT_TESTS+=':DNSResolver.DNSSECSuccess'
 	EXCLUDED_UNIT_TESTS+=':AddressFromURL.Failure'
-	EXCLUDED_UNIT_TESTS+=':ringdb.not_found' # PR #4165
+	EXCLUDED_UNIT_TESTS+=':is_hdd.linux_os_root' # fails on SSD (PR#4474)
 	tests/unit_tests/unit_tests --gtest_filter="-$EXCLUDED_UNIT_TESTS" \
             --data-dir ../tests/data
 
 	# Temporarily disable some a tests:
-	#  * coretests takes too long (~25000s)
+	#  * coretests, hash-variant2-int-sqrt take too long (~25000s, 250s)
 	#  * libwallet_api_tests fail (Issue #895)
 	#  * unit_tests were run separately above
-	CTEST_ARGS+="-E 'core_tests|libwallet_api_tests|unit_tests'"
+	CTEST_ARGS+="-E 'core_tests|hash-variant2-int-sqrt|libwallet_api_tests|unit_tests'"
 	echo ">>> NOTE: some tests excluded: $CTEST_ARGS"
 
 	make ARGS="$CTEST_ARGS" test
