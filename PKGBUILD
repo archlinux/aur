@@ -2,7 +2,7 @@
 
 pkgname=gv
 pkgver=3.7.4
-pkgrel=3
+pkgrel=4
 pkgdesc="A program to view PostScript and PDF documents"
 arch=('x86_64')
 url="http://www.gnu.org/software/gv/"
@@ -10,9 +10,9 @@ license=('GPL3')
 depends=('xaw3d' 'ghostscript' 'desktop-file-utils')
 options=('emptydirs')
 source=(http://ftp.gnu.org/gnu/gv/${pkgname}-${pkgver}.tar.gz{,.sig} gv.desktop)
-sha1sums=('d5bc11a37136dff69248f943a632544a4036b63f'
-          '7d8b7edd60617b189ba39ca982252b0d59c0755d'
-          'b40ccad8a8d837791598075f543edce9aa1f4352')
+sha256sums=('2162b3b3a95481d3855b3c4e28f974617eef67824523e56e20b56f12fe201a61'
+            'SKIP'
+            '9b272fe86a7bdfbb170dfd850ae18204ef1ed0982bd88a8b2b3db7a7f5e87eb7')
 validpgpkeys=('5A15E3DBE8D7DE6F2AC69EB5B1AF90204976D4CD')
 
 prepare() {
