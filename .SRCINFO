@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-arpack
 	pkgdesc = Fortran77 subroutines designed to solve large scale eigenvalue problems (mingw-w64)
-	pkgver = 3.6.2
+	pkgver = 3.6.3
 	pkgrel = 1
 	url = http://forge.scilab.org/index.php/p/arpack-ng/
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = mingw-w64-arpack
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = https://github.com/opencollab/arpack-ng/archive/3.6.2.tar.gz
-	sha256sums = 673c8202de996fd3127350725eb1818e534db4e79de56d5dcee8c00768db599a
+	source = https://github.com/opencollab/arpack-ng/archive/3.6.3.tar.gz
+	sha256sums = 64f3551e5a2f8497399d82af3076b6a33bf1bc95fc46bbcabe66442db366f453
 
 pkgname = mingw-w64-arpack
 
