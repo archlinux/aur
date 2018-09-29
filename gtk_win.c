@@ -630,6 +630,7 @@ void info_pane_populate_all(const Info* pInfo) {
 
 void info_pane_populate_header(const Info* pInfo) {
     GtkLabel* symbol_label = GTK_LABEL(GET_OBJECT("info_header_symbol_label"));
+    GtkLabel* price_label = GTK_LABEL(GET_OBJECT("info_header_price_label"));
     GtkLabel* name_label = GTK_LABEL(GET_OBJECT("info_header_name_label"));
     GtkLabel* date_label = GTK_LABEL(GET_OBJECT("info_header_date_label"));
     GtkLabel* percent_24H_label = GTK_LABEL(GET_OBJECT("info_header_24H_change_label"));
@@ -643,7 +644,11 @@ void info_pane_populate_header(const Info* pInfo) {
         strftime(date_string, DATE_MAX_LENGTH, "%F %T", ts);
     } else date_string[0] = '\0';
 
+    gchar price[16];
+    sprintf(price, "$%.2lf", pInfo->price);
+
     gtk_label_set_label(symbol_label, pInfo->symbol);
+    gtk_label_set_label(price_label, price);
     gtk_label_set_label(name_label, pInfo->name);
     gtk_label_set_label(date_label, date_string);
     gtk_label_set_label(percent_24H_label, pInfo->fprofit_last_close_percent);
