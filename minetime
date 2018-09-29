@@ -1,3 +1,2 @@
 #!/bin/env sh
-
 /opt/MineTime/minetime $@
