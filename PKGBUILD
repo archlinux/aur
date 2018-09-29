@@ -1,7 +1,7 @@
 # Maintainer : Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=caffe2-cuda-git
-pkgver=0.8.2.r12850.gfbd718994
+pkgver=0.8.2.r13647.ga2ebbccc9f
 pkgrel=1
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (with cuda, git version)'
 arch=('x86_64')
@@ -27,7 +27,7 @@ depends=(
             'python-nvd3' 'python-scikit-image' 'python-glog' 'python-leveldb'
             'python-lmdb'
 )
-makedepends=('git' 'cmake' 'gcc54')
+makedepends=('git' 'cmake' 'gcc7')
 provides=('caffe2' 'caffe2-git' 'caffe2-cuda')
 conflicts=('caffe2' 'caffe2-git' 'caffe2-cuda' 'caffe2-cpu' 'caffe2-cpu-git')
 options=('!emptydirs')
@@ -36,7 +36,6 @@ source=(
         'pytorch-git'::'git+https://github.com/pytorch/pytorch.git'
     # git submodules:
         'caffe2-submodule-catch'::'git+https://github.com/catchorg/Catch2.git'
-        'caffe2-submodule-nanopb'::'git+https://github.com/nanopb/nanopb.git'
         'caffe2-submodule-pybind11'::'git+https://github.com/pybind/pybind11.git'
         'caffe2-submodule-cub'::'git+https://github.com/NVlabs/cub.git'
         'caffe2-submodule-eigen'::'git+https://github.com/eigenteam/eigen-git-mirror.git'
@@ -62,8 +61,6 @@ source=(
         'caffe2-submodule-onnx-tensorrt'::'git+https://github.com/onnx/onnx-tensorrt'
         'caffe2-submodule-sleef'::'git+https://github.com/shibatch/sleef'
         'caffe2-submodule-ideep'::'git+https://github.com/intel/ideep'
-    # patches:
-        'caffe2-cuda-git-fix-build-with-eigen.patch'
 )
 sha256sums=('SKIP'
             'SKIP'
@@ -91,9 +88,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            'SKIP'
-            '76e397ff8fccdf9b484ad1b22bf7313e3edaf8a6adbce46458677313eead796a')
+            'SKIP')
 
 prepare() {
     cd pytorch-git
@@ -101,11 +96,11 @@ prepare() {
     local _submodule
     local _submodule_dir
     
-    local _submodule_list="catch nanopb pybind11 cub eigen googletest nervanagpu benchmark \
+    local _submodule_list="catch pybind11 cub eigen googletest nervanagpu benchmark \
                            protobuf ios-cmake NNPACK gloo NNPACK_deps/pthreadpool \
                            NNPACK_deps/FXdiv NNPACK_deps/FP16 NNPACK_deps/psimd zstd \
-                           python-enum python-peachpy python-six ComputeLibrary onnx cereal \
-                           onnx-tensorrt sleef ideep"
+                           python-enum python-peachpy python-six ComputeLibrary onnx
+                           cereal onnx-tensorrt sleef ideep"
                            
     git submodule init
     
@@ -118,9 +113,6 @@ prepare() {
     done
     
     git submodule update
-    
-    # fix build if eigen is installed (use eigen from git submodule)
-    patch -Np1 -i "${srcdir}/caffe2-cuda-git-fix-build-with-eigen.patch"
 }
 
 pkgver() {
@@ -156,31 +148,18 @@ build() {
         \
         -DBUILD_TEST:BOOL='OFF' \
         \
-        -DCMAKE_CXX_COMPILER='/usr/bin/g++-5' \
-        -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS/-fno-plt/}" \
-        -DCMAKE_C_COMPILER='/usr/bin/gcc-5' \
-        -DCMAKE_C_FLAGS:STRING="${CFLAGS/-fno-plt/}" \
+        -DCMAKE_CXX_COMPILER='/usr/bin/g++-7' \
+        -DCMAKE_C_COMPILER='/usr/bin/gcc-7' \
         -DCMAKE_INSTALL_LIBDIR:PATH='lib' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-        -DCMAKE_SKIP_INSTALL_RPATH:BOOL='NO' \
-        -DCMAKE_SKIP_RPATH:BOOL='NO' \
-        -DCMAKE_VERBOSE_MAKEFILE:BOOL='FALSE' \
         \
         -DCUDA_ARCH_NAME:STRING='Auto' \
-        -DCUDA_64_BIT_DEVICE_CODE:BOOL='ON' \
-        -DCUDA_ATTACH_VS_BUILD_RULE_TO_CUDA_FILE:BOOL='ON' \
-        -DCUDA_BUILD_CUBIN:BOOL='OFF' \
-        -DCUDA_BUILD_EMULATION:BOOL='OFF' \
-        -DCUDA_HOST_COMPILATION_CPP:BOOL='ON' \
-        -DCUDA_HOST_COMPILER:FILEPATH='/usr/bin/gcc-5' \
+        -DCUDA_HOST_COMPILER:FILEPATH='/usr/bin/gcc-7' \
         -DCUDA_NVCC_EXECUTABLE:FILEPATH='/opt/cuda/bin/nvcc' \
-        -DCUDA_PROPAGATE_HOST_FLAGS:BOOL='ON' \
         -DCUDA_SDK_ROOT_DIR:PATH='/opt/cuda' \
-        -DCUDA_SEPARABLE_COMPILATION:BOOL='OFF' \
         -DCUDA_TOOLKIT_INCLUDE:PATH='/opt/cuda/include' \
         -DCUDA_TOOLKIT_ROOT_DIR:PATH='/opt/cuda' \
         -DCUDA_USE_STATIC_CUDA_RUNTIME:BOOL='OFF' \
-        -DCUDA_VERBOSE_BUILD:BOOL='OFF' \
         -DCUDNN_INCLUDE_DIR:PATH='/opt/cuda/include' \
         -DCUDNN_LIBRARY:FILEPATH='/opt/cuda/lib64/libcudnn.so' \
         -DCUDNN_ROOT_DIR:PATH='/opt/cuda' \
@@ -195,11 +174,9 @@ build() {
         \
         -DUSE_ACL:BOOL='OFF' \
         -DUSE_ASAN:BOOL='OFF' \
-        -DUSE_ATEN:BOOL='OFF' \
         -DUSE_CUDA:BOOL='ON' \
         -DUSE_CUDNN:BOOL='ON' \
-        -DUSE_DISTRIBUTED:BOOL='OFF' \
-        -DUSE_DISTRIBUTED_MW:BOOL='OFF' \
+        -DUSE_DISTRIBUTED:BOOL='ON' \
         -DUSE_FFMPEG:BOOL='ON' \
         -DUSE_GFLAGS:BOOL='ON' \
         -DUSE_GLOG:BOOL='ON' \
@@ -230,6 +207,7 @@ build() {
         -DUSE_ROCKSDB:BOOL='OFF' \
         -DUSE_ROCM:BOOL='OFF' \
         -DUSE_SNPE:BOOL='OFF' \
+        -DUSE_SYSTEM_EIGEN_INSTALL:BOOL='OFF' \
         -DUSE_SYSTEM_NCCL:BOOL='OFF' \
         -DUSE_TENSORRT:BOOL='OFF' \
         -DUSE_ZMQ:BOOL='ON' \
@@ -263,7 +241,7 @@ package() {
     rm -rf "$pkgdir"/usr/lib/cmake/protobuf
     rm -f  "$pkgdir"/usr/lib/pkgconfig/{protobuf-lite,protobuf}.pc
     rm -rf "$pkgdir"/usr/share/pkgconfig
-    rm -rf "$pkgdir"/usr/share/{ATen,cmake/ATen}
+    rm -rf "$pkgdir"/usr/share/{ATen,cmake/{ATen,ONNX}}
     rm -f  "$pkgdir"/usr/share/man/man1/{unzstd,zstd{cat,}}.1
     for _entry in ${_exclude_dirs[@]} ${_exclude_libs[@]}
     do
