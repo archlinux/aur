@@ -1,6 +1,6 @@
 pkgbase = n-acd
 	pkgdesc = IPv4 Address Conflict Detection
-	pkgver = v1+12+ga409492
+	pkgver = 1+12+ga409492
 	pkgrel = 1
 	url = https://github.com/nettools/n-acd
 	arch = x86_64
