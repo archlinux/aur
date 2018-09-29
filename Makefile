@@ -9,7 +9,7 @@ all: $(PKGINFO) test .SRCINFO
 	makepkg --printsrcinfo > .SRCINFO
 
 $(PKGINFO): PKGBUILD
-	makepkg
+	makepkg -f
 
 testfiles/:
 	git archive --prefix $@ testfiles | tar xf -
