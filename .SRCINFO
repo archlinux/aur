@@ -1,14 +1,14 @@
 pkgbase = mate-utils-dev
 	pkgdesc = Common MATE utilities for viewing disk usage, logs and fonts, taking screenshots, managing dictionaries and searching files
-	pkgver = 1.19.1
+	pkgver = 1.21.1
 	pkgrel = 5
 	url = http://mate-desktop.org
 	arch = i686
 	arch = x86_64
 	groups = mate-extra
 	license = GPL
-	makedepends = mate-common>=1.19
-	makedepends = mate-panel>=1.19
+	makedepends = mate-common>=1.21
+	makedepends = mate-panel>=1.21
 	makedepends = rarian
 	makedepends = yelp-tools
 	makedepends = gtk3
@@ -26,7 +26,7 @@ pkgbase = mate-utils-dev
 	provides = mate-utils-gtk3
 	conflicts = mate-utils
 	conflicts = mate-utils-gtk3
-	source = http://pub.mate-desktop.org/releases/1.19/mate-utils-1.19.1.tar.xz
+	source = http://pub.mate-desktop.org/releases/1.21/mate-utils-1.21.1.tar.xz
 	sha1sums = b4de1279c6d4330379736c63f9212967afcc9df9
 
 pkgname = mate-utils-dev

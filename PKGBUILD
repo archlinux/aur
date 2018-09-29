@@ -2,7 +2,7 @@
 # Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
-_ver=1.19
+_ver=1.21
 _pkgbase=mate-utils
 pkgname="${_pkgbase}-dev"
 pkgver=${_ver}.1
@@ -15,7 +15,7 @@ conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL')
 depends=('desktop-file-utils' 'glib2' 'gtk3' 'gtk-update-icon-cache'
          'libcanberra' 'libgtop' 'libsm' 'zlib')
-makedepends=('mate-common>=1.19' 'mate-panel>=1.19' 'rarian' 'yelp-tools' 'gtk3')
+makedepends=('mate-common>=1.21' 'mate-panel>=1.21' 'rarian' 'yelp-tools' 'gtk3')
 optdepends=('mate-panel: Look up words in dictionaries from the panel'
             'yelp: for reading MATE help documents')
 groups=('mate-extra')
