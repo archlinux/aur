@@ -1,4 +1,5 @@
-# Maintainer: Andreas Schreiner <andreas.schreiner@sonnenmulde.at>
+# Maintainer: Duncan X Simpson <duncan@k7dxs.net>
+# Contributor: Andreas Schreiner <andreas.schreiner@sonnenmulde.at>
 # Contributor: Ruslan Nabioullin <rnabioullin at gmail dot com>
 # Contributor: Gordon JC Pearce <gordon at gjcp dot net>
 pkgname=soundmodem
@@ -10,7 +11,7 @@ license=('GPL2')
 source=('soundmodem.conf'
 	'soundmodem_conf.d'
 	'soundmodem_rc.d'
-  http://download.gna.org/soundmodem/${pkgname}-${pkgver}.tar.gz
+	'https://archive.org/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz'
 	'soundmodem.service')
 sha512sums=('e77bbdd13c0076e9fa9cd27da2313925798087315acaea5778ba37642de9689d68e72e02c114deea6c4ccda390b676127edff3f050a7307761c9bc4c76c01473'
             'ef9bac681e6e33823544092a3d1eb9655211c1d300dc7fbf12f2d46d89ed33c20175cc76bcd2d539ce28308e2837fb11dd3e346bfb894d69a73d3c8b705f68e0'
