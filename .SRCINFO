@@ -1,6 +1,6 @@
 pkgbase = swayblocks
 	pkgdesc = another block manager for i3bar/swaybar
-	pkgver = 0.0.5
+	pkgver = 0.0.6
 	pkgrel = 1
 	url = https://github.com/rei2hu/swayblocks
 	arch = i686
