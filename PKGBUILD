@@ -2,7 +2,7 @@
 # Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
-_ver=1.19
+_ver=1.21
 _pkgbase=mate-screensaver
 pkgname="${_pkgbase}-dev"
 pkgver=${_ver}.1
@@ -13,8 +13,8 @@ arch=('i686' 'x86_64')
 provides=("${_pkgbase}" "${_pkgbase}-gtk3")
 conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL')
-depends=('dbus-glib' 'glib2' 'libmatekbd>=1.19' 'libnotify' 'libxss'
-         'mate-desktop>=1.19' 'mate-menus>=1.19' 'mate-session-manager>=1.19')
+depends=('dbus-glib' 'glib2' 'libmatekbd>=1.21' 'libnotify' 'libxss'
+         'mate-desktop>=1.21' 'mate-menus>=1.21' 'mate-session-manager>=1.21')
 makedepends=('intltool>=0.50.1')
 optdepends=('mate-power-manager: Add power management support.'
             'mate-screensaver-hacks: Additional screensavers.'
