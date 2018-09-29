@@ -1,0 +1,15 @@
+pkgbase = qpasm
+	pkgdesc = pseudo-assembler interpreter
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/synio-wesley/qpasm
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	depends = qt4
+	provides = qpasm
+	source = https://github.com/synio-wesley/qpasm/archive/1.2.tar.gz
+	sha512sums = 8504d51310390a2efb9b7e5d0fd1984b8471beda09ce9c16d0bd3639364ddec0f2e1a74ccec10fff975aa0754ddb77b8b1d33c08f5c3c7f083b20f567cc056cf
+
+pkgname = qpasm
+

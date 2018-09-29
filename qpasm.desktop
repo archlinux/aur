@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=QPasm
+Comment=pseudo-assembler
+Exec=/usr/bin/qpasm %U
+Icon=qpasm
+Terminal=false
+Type=Application
+Categories=Utility;
