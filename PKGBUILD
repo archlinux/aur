@@ -2,8 +2,8 @@
 # Contributor: Giancarlo Bianchi <giancarlobianchi76@gmail.com>
 
 pkgname=realtimeconfigquickscan-git
-pkgver=r26.03e65a4
-pkgrel=2
+pkgver=r30.3cfde30
+pkgrel=1
 pkgdesc="Linux configuration checker for systems to be used for real-time audio."
 arch=('any')
 url="https://github.com/raboof/realtimeconfigquickscan"
