@@ -1,7 +1,7 @@
 pkgbase = epiphany-pantheon
 	pkgdesc = GNOME web browser based on the WebKit rendering engine (with elementary OS patches)
 	pkgver = 3.28.0.1+1ubuntu1+r21.dbc305d50
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/GNOME/epiphany/
 	arch = i686
 	arch = x86_64
@@ -18,7 +18,6 @@ pkgbase = epiphany-pantheon
 	makedepends = git
 	depends = webkit2gtk>=2.19.4
 	depends = gcr
-	depends = libhttpseverywhere
 	depends = libdazzle
 	depends = gst-libav
 	provides = epiphany=3.28.0.1+1ubuntu1+r21.dbc305d50

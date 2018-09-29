@@ -3,12 +3,12 @@
 
 pkgname=epiphany-pantheon
 pkgver=3.28.0.1+1ubuntu1+r21.dbc305d50
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME web browser based on the WebKit rendering engine (with elementary OS patches)"
 url="https://gitlab.gnome.org/GNOME/epiphany/"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('webkit2gtk>=2.19.4' gcr libhttpseverywhere libdazzle gst-libav)
+depends=('webkit2gtk>=2.19.4' gcr libdazzle gst-libav)
 makedepends=(meson docbook-xml startup-notification lsb-release
              gobject-introspection yelp-tools autoconf-archive appstream-glib git)
 groups=(pantheon)
@@ -30,7 +30,7 @@ pkgver() {
 build() {
     cd "os-patches"
     [ -d build ] && rm -rf build
-    arch-meson build -Denable_https_everywhere=true
+    arch-meson build
     ninja -C build
 }
 
