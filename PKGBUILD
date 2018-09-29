@@ -9,8 +9,8 @@ license=('LGPL2.1' 'Apache')
 arch=(x86_64)
 depends=(glibc)
 makedepends=(meson pkgconf)
-_tag=2100b256b3d4e09fbc5d6a3e82f3d986b6bc4081 #20180929
-source=("git+https://github.com/nettools/n-ipv4ll.git#commit=$_commit")
+_tag=v1 #20180929
+source=("git+https://github.com/nettools/n-ipv4ll.git#tag=$_tag")
 sha256sums=('SKIP')
 
 pkgver() {

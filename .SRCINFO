@@ -9,7 +9,7 @@ pkgbase = n-ipv4ll
 	makedepends = meson
 	makedepends = pkgconf
 	depends = glibc
-	source = git+https://github.com/nettools/n-ipv4ll.git#commit=
+	source = git+https://github.com/nettools/n-ipv4ll.git#tag=v1
 	sha256sums = SKIP
 
 pkgname = n-ipv4ll
