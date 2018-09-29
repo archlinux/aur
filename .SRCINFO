@@ -1,5 +1,5 @@
 pkgbase = astah-professional
-	pkgdesc = Leightweight software design tool for creating UML, ERD, DFD, Flowchart...etc. and easy-to-use UML2.x modeler
+	pkgdesc = Lightweight software design tool for creating UML, ERD, DFD, Flowchart...etc. and easy-to-use UML2.x modeler
 	pkgver = 8.0.0
 	pkgrel = 1
 	url = http://astah.net/editions/professional
