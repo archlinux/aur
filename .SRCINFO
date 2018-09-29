@@ -1,6 +1,6 @@
 pkgbase = etcetera
 	pkgdesc = Simple command line tool to keep track of changes to config files of a linux system
-	pkgver = 0.91
+	pkgver = 0.92
 	pkgrel = 1
 	url = https://gitlab.com/jeancf/etcetera
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = etcetera
 	license = GPL3
 	depends = python
 	backup = etc/etcetera.conf
-	source = https://gitlab.com/jeancf/etcetera/-/archive/0.91/etcetera-0.91.tar.gz
-	md5sums = 96e807f0dc905e38340f945268cef550
+	source = https://gitlab.com/jeancf/etcetera/-/archive/0.92/etcetera-0.92.tar.gz
+	md5sums = 57fedaf8650930fa1afd34eb1447dc82
 
 pkgname = etcetera
 
