@@ -1,0 +1,13 @@
+--- src/os-patches/plugins/housekeeping/gsd-disk-space.c~	2018-09-29 16:07:04.972842146 +0900
++++ src/os-patches/plugins/housekeeping/gsd-disk-space.c	2018-09-29 16:09:47.679514729 +0900
+@@ -1017,7 +1017,9 @@
+         g_clear_object (&ldsm_monitor);
+         g_clear_object (&settings);
+         g_clear_object (&privacy_settings);
+-        g_clear_pointer (&notification, notify_notification_close);
++        /* NotifyNotification::closed callback will drop reference */
++        if (notification != NULL)
++                notify_notification_close (notification, NULL);
+         g_slist_free_full (ignore_paths, g_free);
+         ignore_paths = NULL;
+ }

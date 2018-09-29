@@ -1,7 +1,7 @@
 pkgbase = gnome-settings-daemon-elementary
 	pkgdesc = GNOME Settings Daemon (with elementary OS patches)
 	pkgver = 3.28.1+0ubuntu1+r3.6975d1c25
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/GNOME/gnome-settings-daemon
 	arch = i686
 	arch = x86_64
@@ -40,8 +40,10 @@ pkgbase = gnome-settings-daemon-elementary
 	conflicts = gnome-settings-daemon-ubuntu
 	source = git+https://github.com/elementary/os-patches.git#branch=gnome-settings-daemon-bionic-patched
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git/
+	source = notify-notification-close.patch
 	sha512sums = SKIP
 	sha512sums = SKIP
+	sha512sums = c17fefa6e70ffbc901c247013f5296738a227fa192027cd5e7e8e086e6bda04773bcd6b61a06a4d2c1b030385ca91d7d02a7fec89eed64eaab02f62906e6a725
 
 pkgname = gnome-settings-daemon-elementary
 
