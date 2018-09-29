@@ -1,7 +1,7 @@
 # Maintainer: Markus Kalb <mk@filmkreis.tu-darmstadt.de>
 # Contributor: Stefan Karner <stefan.karner@student.tuwien.ac.at>
 pkgname=libsub
-pkgver=1.3.3
+pkgver=1.3.5
 pkgrel=1
 pkgdesc="a small C++ library to read and write subtitles in a few different formats (currently STL, SubRip and DCP)"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('python2' 'boost>=1.66.0')
 provides=('libsub')
 conflicts=('libsub')
 source=("${pkgname}-${pkgver}.tar.bz2::http://carlh.net/downloads/libsub/${pkgname}-${pkgver}.tar.bz2")
-sha512sums=('f3db38bd842c855aea88a556571af46f02a8358f49f49a7c8868755c2d6d43737dd3a33ef23e4957f4a63abac57ab6fb9702813d542b6bf5e23861cebc61e1c3')
+sha512sums=('1991b077dcdcb2e37c9e71359b1a1d091e24062f86b23704279f68f761561f659d8a5fd3e19e5d86ca404385441e7c950f770f8dd1ddc5b808c2061a050724a3')
 
 
 build() {
