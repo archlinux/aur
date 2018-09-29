@@ -12,7 +12,7 @@ $(PKGINFO): PKGBUILD
 	makepkg -f
 
 testfiles/:
-	git archive --prefix $@ testfiles | tar xf -
+	git archive --prefix $@ origin/testfiles | tar xf -
 
 clean:
 	rm -rf testfiles src pkg *.pkg.tar.*
