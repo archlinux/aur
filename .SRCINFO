@@ -1,6 +1,6 @@
 pkgbase = supercollider-git
 	pkgdesc = Environment and programming language for real time audio synthesis and algorithmic composition
-	pkgver = 3.9.3.r783.g88621c5f91
+	pkgver = 3.10.0.beta2.r175.gf5efaffea1
 	pkgrel = 1
 	url = https://supercollider.github.io/
 	arch = i686
@@ -14,30 +14,32 @@ pkgbase = supercollider-git
 	makedepends = git
 	makedepends = qt5-tools
 	depends = boost-libs
+	depends = desktop-file-utils
 	depends = fftw
 	depends = jack
-	depends = qt5-webengine
 	depends = qt5-svg
+	depends = qt5-webengine
+	depends = qt5-websockets
 	depends = yaml-cpp
 	optdepends = emacs: emacs interface
 	optdepends = gedit: gedit interface
 	optdepends = sc3-plugins: additional extension plugins for scsynth
 	provides = supercollider
 	conflicts = supercollider
-	source = git+https://github.com/supercollider/supercollider.git
+	source = git+https://github.com/supercollider/supercollider.git#branch=develop
 	source = git+https://github.com/timblechmann/nova-simd.git
 	source = git+https://github.com/timblechmann/nova-tt.git
 	source = git+https://github.com/supercollider/hidapi.git
 	source = git+https://github.com/supercollider/portaudio.git
 	source = git+https://github.com/supercollider/yaml-cpp.git
-	source = boost-1.67.patch
+	source = boost-1.67.patch::https://github.com/dvzrv/supercollider/commit/bbcd068659ced596402dedc78f49fabfab6470bd.patch
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = 9980d77802f18fd56d2a13f24f070e81768d9111b2cc63e479a0e9b405a04aec28bc523e5d36aab0462af6a3831d64598470cdc6c3266431e2ca64aa427a6bf2
+	sha512sums = 1bb70a544425d9c3a4e650315fea4a0a388214f1e5b1f300c1bd6706d2fab9e4fe103020c279b8b954386d45fcb5bfd64e730dbf158d4e317517fce3bb393a7c
 
 pkgname = supercollider-git
 
