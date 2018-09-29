@@ -2,9 +2,11 @@
 
 . PKGBUILD
 
+set -e
+
 fname=$_pkgname-$pkgver-$_upstream_pkgrel-${arch[0]}.pkg.tar.xz
 url=https://www.archlinux.org/packages/extra/${arch[0]}/$_pkgname/download/
-remote_fname=$(curl -s -I "$url" | tr -d '\r' | awk -F/ '/^location:/ {print $NF}')
+remote_fname=$(curl -s -I "$url" | tr -d '\r' | awk -F/ 'tolower($0) ~ /^location:/ {print $NF}')
 
 if [ "$fname" != "$remote_fname" ]; then
   echo upstream is not "$fname" but "$remote_fname" 1>&2
