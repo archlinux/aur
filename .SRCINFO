@@ -1,6 +1,6 @@
 pkgbase = bees-git
 	pkgdesc = Best-Effort Extent-Same, a btrfs deduplicator daemon
-	pkgver = v0.5.r161.gf053e0e
+	pkgver = v0.6.r0.g3504439
 	pkgrel = 1
 	url = https://github.com/Zygo/bees
 	arch = any
