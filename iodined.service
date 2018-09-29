@@ -1,0 +1,10 @@
+[Unit]
+After=network.target
+Requires=network.target
+
+[Service]
+EnvironmentFile=/etc/conf.d/iodined
+ExecStart=/usr/bin/iodined -f -c -l $IODINE_BIND_ADDRESS -n $IODINE_EXT_IP -p $IODINE_PORT -P $IODINE_PASSWORD -u $IODINE_USER $TUN_IP $TOP_DOMAIN
+
+[Install]
+WantedBy=multi-user.target
