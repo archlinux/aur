@@ -1,5 +1,5 @@
 pkgbase = jdk10
-	pkgdesc = Oracle 10 Java Development Kit
+	pkgdesc = Oracle Java 10 Development Kit
 	pkgver = 10.0.2
 	pkgrel = 1
 	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
