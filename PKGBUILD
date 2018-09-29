@@ -16,7 +16,7 @@ pkgname=vmware-workstation11
 pkgver=11.1.4
 _buildver=3848939
 _pkgver=${pkgver}_${_buildver}
-pkgrel=3
+pkgrel=4
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -78,6 +78,7 @@ source=(
   'datastores.xml'
   'environments.xml'
   'proxy.xml'
+  'vmAutoStart.xml'
 
   'vmware-hostd-certificates.service'
   'vmware-hostd.service'
@@ -104,6 +105,7 @@ sha256sums=(
   '04375658fed0cad4a18d5da1589d4dc1e5171753891ecaadd05f3c3e50c8156f'
   'f8ab8cb8314e2b82e69ea3c571be04540ce613630808d949c20cc2edef27f77d'
   '3c802523606184a5e8ebbe931d9c6c70d83ff8c6833b9f48aa264f0bd5a18a88'
+  'ad522a8cbc6103134ce5e677a01b503cd21875cbceb37bd13fd870ebd9ad0e6d'
 
   'f9440479f3ae5ad0a39bba3150276627878bf83d6879444fb327c53a1dbb5a4d'
   '70301aa4eff4f42d7d39b276445dc7d8f44b8a0e184775e8a9e3055bb9d8590a'
@@ -128,7 +130,6 @@ _vmware_fusion_ver=7.1.3_3204469
 
 makedepends+=(
   python2
-  python2-six
   unzip
 )
 
@@ -138,7 +139,7 @@ source+=(
 )
 sha256sums+=(
   '09711e59f708576d2fb09c464ebbb52806cb7f850cb3d5bbeea634fa58fb6c86'
-  'b739b0c99fb20dc44838ce137e254773b7be051f327eb67fd8cb1342a3ecf344'
+  'cb9ecff2d9210ea0022d5ac1b2c274dba0ec9b79c031386627f2a668913e1a38'
 )
 
 _fusion_isoimages=(darwin)
@@ -291,7 +292,7 @@ package() {
   install -Dm 644 vmware-installer/bootstrap "$pkgdir/etc/vmware-installer/bootstrap"
   install -Dm 644 "$srcdir/vmware-vix-bootstrap" "$pkgdir/etc/vmware-vix/bootstrap"
 
-  for hostd_file in config datastores environments proxy; do
+  for hostd_file in config datastores environments proxy vmAutoStart; do
     install -Dm 644 "$srcdir/$hostd_file.xml" "$pkgdir/etc/vmware/hostd/$hostd_file.xml"
   done
 
