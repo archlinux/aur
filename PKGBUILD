@@ -2,7 +2,7 @@
 # Contributor: Michel Zou <xantares09@hotmail.com>
 
 pkgname=sundials
-pkgver=3.1.2
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Suite of nonlinear differential/algebraic equation solvers"
 arch=('i686' 'x86_64' 'armv7h')
@@ -11,7 +11,7 @@ license=('BSD')
 depends=('gcc-libs' 'gcc-fortran' 'openmpi')
 makedepends=('cmake')
 source=("http://computation.llnl.gov/projects/sundials/download/$pkgname-$pkgver.tar.gz")
-sha256sums=('a8985bb1e851d90e24260450667b134bc13d71f5c6effc9e1d7183bd874fe116')
+sha256sums=('d2b690afecadf8b5a048bb27ab341de591d714605b98d3518985dfc2250e93f9')
 
 build() {
 	rm -rf build
@@ -35,6 +35,7 @@ package() {
 	local doc="$pkgdir"/usr/share/doc/"$pkgname-$pkgver"
 	mkdir -p "$doc"
 	find . -name \*.pdf -exec cp -p {} "$doc" \;
+	chmod 664 "$doc"/*.pdf
 	make -C build DESTDIR="$pkgdir" install
 }
 
