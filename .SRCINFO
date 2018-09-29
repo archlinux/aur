@@ -1,6 +1,6 @@
 pkgbase = eom-dev
 	pkgdesc = An image viewing and cataloging program for MATE
-	pkgver = 1.19.1
+	pkgver = 1.21.1
 	pkgrel = 5
 	url = http://mate-desktop.org
 	arch = i686
@@ -8,10 +8,10 @@ pkgbase = eom-dev
 	groups = mate-extra
 	license = GPL
 	makedepends = gobject-introspection
-	makedepends = mate-common>=1.19
+	makedepends = mate-common>=1.21
 	makedepends = yelp-tools
 	makedepends = gtk3
-	makedepends = mate-desktop>=1.19
+	makedepends = mate-desktop>=1.21
 	depends = dbus-glib
 	depends = desktop-file-utils
 	depends = glib2
@@ -23,7 +23,7 @@ pkgbase = eom-dev
 	depends = libexif
 	depends = libjpeg-turbo
 	depends = librsvg
-	depends = mate-desktop>=1.19
+	depends = mate-desktop>=1.21
 	depends = pygtk
 	depends = python2-gobject2
 	depends = startup-notification
@@ -34,7 +34,7 @@ pkgbase = eom-dev
 	provides = eom-gtk3
 	conflicts = eom
 	conflicts = eom-gtk3
-	source = http://pub.mate-desktop.org/releases/1.19/eom-1.19.1.tar.xz
+	source = http://pub.mate-desktop.org/releases/1.21/eom-1.21.1.tar.xz
 	sha1sums = d58819482f184bc3029e0262ff76d7151a2e83fd
 
 pkgname = eom-dev
