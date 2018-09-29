@@ -1,6 +1,6 @@
 # Maintainer: Gonçalo Camelo Neves Pereira <goncalo_pereira@outlook.pt>
 pkgname=esp-idf
-pkgver=3.0.4
+pkgver=3.1
 pkgrel=1
 pkgdesc="Espressif IoT Development Framework. Official development framework for ESP32."
 arch=('i686' 'x86_64' 'aarch' 'aarch64' 'armv7h')
