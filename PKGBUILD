@@ -1,7 +1,6 @@
 # Maintainer: Gonçalo Camelo Neves Pereira <goncalo_pereira@outlook.pt>
 pkgname=esp-idf
-pkgver=3.0.2
-_pkgver=3.0.2
+pkgver=3.0.4
 pkgrel=1
 pkgdesc="Espressif IoT Development Framework. Official development framework for ESP32."
 arch=('i686' 'x86_64' 'aarch' 'aarch64' 'armv7h')
@@ -12,13 +11,13 @@ source=(https://github.com/espressif/${pkgname}/releases/download/v${_pkgver}/${
 sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir/${pkgname}-v${_pkgver}"
+  cd "$srcdir/${pkgname}-v${pkgver}"
 	git submodule update --init
 }
 
 package() {
   mkdir -p ${pkgdir}/opt/esp-idf-sdk
-  cd "${srcdir}/${pkgname}-v${_pkgver}"
+  cd "${srcdir}/${pkgname}-v${pkgver}"
   msg "Installing to ~/.esp-idf"
   cp -R . ~/.esp-idf
 }
