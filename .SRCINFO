@@ -1,0 +1,14 @@
+pkgbase = python2-czipfile
+	pkgdesc = czipfile is a faster replacement for Python’s builtin “zipfile” module
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/V-E-O/czipfile
+	arch = x86_64
+	license = PSF
+	makedepends = python2-setuptools
+	depends = python2
+	source = git+https://github.com/V-E-O/czipfile.git
+	sha512sums = SKIP
+
+pkgname = python2-czipfile
+
