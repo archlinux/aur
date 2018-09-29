@@ -1,6 +1,6 @@
 pkgbase = pat-bin
 	pkgdesc = A modern Winlink client
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = http://getpat.io
 	arch = i686
@@ -14,11 +14,12 @@ pkgbase = pat-bin
 	conflicts = pat
 	options = !strip
 	options = !emptydirs
-	source_i686 = https://github.com/la5nta/pat/releases/download/v0.6.0/pat_0.6.0_linux_i386.deb
-	sha512sums_i686 = 7fc2f5a5a91b5df2301e499369118093296d6dbe520dc6d98d20077d9f75cbea97f996aee68585f8b0477246ffb848f9c7ce22118e2c423dab4db9b1ae9ef51f
-	source_x86_64 = https://github.com/la5nta/pat/releases/download/v0.6.0/pat_0.6.0_linux_amd64.deb
-	sha512sums_x86_64 = b706a95be9336a5f0e9e23e15ed71ce6117bb0729c2974087ddcf33f69c6461cc8f5a637a2172df86b916f6afa0567e20171e3e7fb3ed18e80c58015f5adb0a6
-	sha512sums_armhf = acd8c1a4923d50c9c3b2d2168b578bd23bdf012ceefbc64ffb1ea2481b24eb97f92f26517dcb93a4ffb79c4999eee4c433f718b591cd29449d685eeea52a2b2a
+	source_i686 = https://github.com/la5nta/pat/releases/download/v0.6.1/pat_0.6.1_linux_i386.deb
+	sha512sums_i686 = 3991c043f13db60da03a9f11e231a0d842e864539c0fd1336b68aa46d05fcc04e55891da99cc4ffd7bfb1f51c1e0f9f383e0912634a8f52cc84cbd5281da0d22
+	source_x86_64 = https://github.com/la5nta/pat/releases/download/v0.6.1/pat_0.6.1_linux_amd64.deb
+	sha512sums_x86_64 = 0047f2c686a1bae00ea013699cf448f1c420906ab6b3a62ddb5148f98098ef65fa8164fe940bc3805e98b96a1ea0a58affffe9d5a0cddbe375c686556ce5c533
+	source_armhf = https://github.com/la5nta/pat/releases/download/v0.6.1/pat_0.6.1_linux_armhf.deb
+	sha512sums_armhf = 5bb062d2cacb40bbb9ad039503314365612b645cecff4ad4880360af203cbe46ebaf1063af5ba664675a810994ad16445ce4e498b0060c987995ed73d1d2ee94
 
 pkgname = pat-bin
 
