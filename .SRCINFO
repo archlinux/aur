@@ -1,7 +1,7 @@
 pkgbase = esp-idf
 	pkgdesc = Espressif IoT Development Framework. Official development framework for ESP32.
 	pkgver = 3.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/espressif/esp-idf
 	arch = i686
 	arch = x86_64
