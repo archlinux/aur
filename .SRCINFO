@@ -1,0 +1,15 @@
+pkgbase = nodejs-solid-server
+	pkgdesc = Solid server on top of the file-system
+	pkgver = 4.1.4
+	pkgrel = 1
+	url = http://github.com/solid/node-solid-server
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = -4.1.4.tgz
+	source = http://registry.npmjs.org/solid-server/-/solid-server-4.1.4.tgz
+	sha512sums = 6277acd05a1133f3998be55c29617dfd86eccb504e1a86b2f3ef09fe6e5c8d2bc71f1824948226a60db569e439d4d9529f0d8becc388ecff129962ea9e1e537d
+
+pkgname = nodejs-solid-server
+
