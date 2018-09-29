@@ -1,10 +1,9 @@
 # Contributor: Chih-Hsuan Yen <yan12125@gmail.com>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
-# Contributor: Jonas Heinrich <onny@project-insanity.org>
 # Contributor: Sergej Pupykin <arch+pub@sergej.pp.ru>
 
 pkgname=nextcloud-app-tasks-git
-pkgver=v0.9.5.r241.gaa07132
+pkgver=0.9.5.r258.g983d725
 pkgrel=1
 pkgdesc="Enhanced task app for NextCloud"
 arch=('any')
@@ -21,7 +20,7 @@ sha512sums=('SKIP')
 pkgver() {
   cd tasks
 
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {

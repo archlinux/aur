@@ -1,6 +1,6 @@
 pkgbase = nextcloud-app-tasks-git
 	pkgdesc = Enhanced task app for NextCloud
-	pkgver = v0.9.5.r241.gaa07132
+	pkgver = 0.9.5.r258.g983d725
 	pkgrel = 1
 	url = https://github.com/nextcloud/tasks
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = nextcloud-app-tasks-git
 	makedepends = phantomjs
 	makedepends = rsync
 	depends = nextcloud
-	provides = nextcloud-app-tasks=v0.9.5.r241.gaa07132
+	provides = nextcloud-app-tasks=0.9.5.r258.g983d725
 	conflicts = nextcloud-app-tasks
 	options = !strip
 	source = git+https://github.com/nextcloud/tasks.git
