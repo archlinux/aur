@@ -2,7 +2,7 @@
 # Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
-_ver=1.19
+_ver=1.21
 _pkgbase=mate-backgrounds
 pkgname="${_pkgbase}-dev"
 pkgver=${_ver}.0
@@ -13,7 +13,7 @@ arch=('any')
 conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 provides=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL')
-makedepends=('mate-common>=1.19')
+makedepends=('mate-common>=1.21')
 groups=('mate' 'mate-gtk3')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
 sha1sums=('c5f2c9c607fca7a0f0c019f9993e8c587d6976b3')
