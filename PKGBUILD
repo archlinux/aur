@@ -5,7 +5,7 @@
 _pkgbase='citra'
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-git" "$_pkgbase-qt-git")
-pkgver=r6896.a96f0f516
+pkgver=r6924.7c97e8df6
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
 arch=('i686' 'x86_64')
@@ -33,8 +33,7 @@ build() {
 	cmake .. \
 	  -DCMAKE_INSTALL_PREFIX=/usr \
 	  -DCMAKE_BUILD_TYPE=Release \
-	  -DUSE_SYSTEM_CURL=ON \
-	  -DUSE_DISCORD_PRESENCE=ON
+	  -DUSE_SYSTEM_CURL=ON
 	make
 }
 
