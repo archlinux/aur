@@ -2,7 +2,7 @@
 # Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
-_ver=1.19
+_ver=1.21
 _pkgbase=libmateweather
 pkgname="${_pkgbase}-dev"
 pkgver=${_ver}.1
@@ -15,7 +15,7 @@ conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('LGPL')
 depends=('dconf' 'gtk3' 'libsoup' 'glib2' 'gtk-update-icon-cache')
 groups=('mate-extra')
-makedepends=('mate-common>=1.19')
+makedepends=('mate-common>=1.21')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
 sha1sums=('c8904ebe570a938180ddab6f0d3eae1fcf376475')
 
