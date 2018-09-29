@@ -25,7 +25,7 @@ test: $(PKGINFO) testfiles/
 	$(MAKE) -s _test LANG=ja_JP.UTF-8 TESTFILE=testfiles/UTF8.zip PATTERN="UTF-8固有文字列_( ◕‿‿◕ ).txt"
 
 _test: 
-	LD_LIBRARY_PATH=$(PKG)/usr/lib $(PKG)/usr/bin/7z l $(TESTFILE) | grep -qe "$(PATTERN)" && echo ok
+	$(PKG)/usr/lib/p7zip/7z l $(TESTFILE) | grep -qe "$(PATTERN)" && echo ok
 
 lint:
 	namcap PKGBUILD
