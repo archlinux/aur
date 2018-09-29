@@ -480,7 +480,7 @@
     <!--
     Check for version mismatches against the vmkernel.
     This is disabled by default for developers but for all other
-    users, they must keep their vmkernels upto date.
+    users, they must keep their vmkernels up to date.
      -->
     <checkVersionMismatch> false </checkVersionMismatch>
          <!-- <vmDirectory> /home/vmware </vmDirectory> -->
@@ -525,12 +525,7 @@
     <!-- or when adding a new disk to a HW7 or newer VM. -->
     <!-- <useChangeTracking> true </useChangeTracking> -->
 
-    <!-- Setting to enable/disable the use of vigorVim to read the -->
-         <!-- vm configuration information -->
-         <useVigorVim> true </useVigorVim>
-
          <requires>vimsvc</requires>
-
       </vmsvc>
       <vcsvc>
          <path>libvcsvc.so</path>

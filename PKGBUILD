@@ -14,10 +14,10 @@
 
 #PKGEXT=.pkg.tar
 pkgname=vmware-workstation
-pkgver=14.1.3
-_buildver=9474260
+pkgver=15.0.0
+_buildver=10134415
 _pkgver=${pkgver}_${_buildver}
-pkgrel=3
+pkgrel=1
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -77,6 +77,7 @@ source=(
   'datastores.xml'
   'environments.xml'
   'proxy.xml'
+  'vmAutoStart.xml'
 
   'vmware-hostd-certificates.service'
   'vmware-hostd.service'
@@ -90,19 +91,20 @@ source=(
   'vmnet.patch'
 )
 sha256sums=(
-  '29d128ad6e1f2fc72414fd80d5bc8f82f186f1e21ab09db44441f1e84b5e0373'
+  '00c50710ef23a88fdff2d6c81554820d45797c62c8d72630cd2c69fd43014d94'
 
   '12e7b16abf8d7e858532edabb8868919c678063c566a6535855b194aac72d55e'
   'da1698bf4e73ae466c1c7fc93891eba4b9c4581856649635e6532275dbfea141'
-  'd9a5f8b919d52aa2f279d8eaf0bb495780eb9fd8bbc2c58bba223cdca78cc991'
+  '53af82a619c8b1bca39bb493beb0ff031c978bb763715ef264b135f4a1d67d1e'
   'd50aa0a3fe94025178965d988e18d41eb60aa1ce2b28ee6e3ca15edeabfa2ca7'
   '8e4d08668a66be79a900521792b39c16a026cc90659241edee80b64e701bfbcd'
-  'de71ada1f5d5132fa75646a4f35cac2e50c54f250c315461633719c4b9cb3614'
+  'b94959a11b28e51b541321be0588190eb10825e9ff55cbd16eb01483a839a69f'
 
-  '9f508d5f7ce4b69d9f40f6fb0ff0fb3d5b26a3c48658da994bf63975d1b589ab'
+  '6873de5bf5a9ebb795101693919ce73b52f65c2f2c232584bb1382dce60f1d51'
   '434cd4aa440d36b75ee20e0b588aaad874bb0d796173990bc4046667c66f5099'
-  '57c7568a89e8af1914cf7aea84d8fefd6e7af4155557081292344326d652ae70'
+  '27a64a3811b864c945fb2de318f4beffabdb59bccd3a77820ec7b547cf5fe430'
   '3c802523606184a5e8ebbe931d9c6c70d83ff8c6833b9f48aa264f0bd5a18a88'
+  'ad522a8cbc6103134ce5e677a01b503cd21875cbceb37bd13fd870ebd9ad0e6d'
 
   'f9440479f3ae5ad0a39bba3150276627878bf83d6879444fb327c53a1dbb5a4d'
   '70301aa4eff4f42d7d39b276445dc7d8f44b8a0e184775e8a9e3055bb9d8590a'
@@ -112,22 +114,22 @@ sha256sums=(
 
   '05e26d8b21d190ebabb7f693998114d9d5991d9dfb71acb4d990293a65b6b487'
   '6ce902b1dab8fc69be253abd8e79017011985eca850ff7acc7282f9ab668e35d'
-  '9f93fa48c658474080482f2714c30bf0a850f40c2d7c739473dc9c489ce3da7b'
+  '687cf3419ef0f01f883724f0b9807cc5613c3fe1b50ca3b653add9ed2283613b'
   'c2e981d5d6a4fab4d33d4e3df394bdb597834fae14ebb535a40271c3f2677f0d'
 )
 options=(!strip emptydirs)
 
 
-_isoimages=(freebsd linux linuxPreGlibc25 netware solaris windows winPre2k winPreVista)
+_isoimages=(linux linuxPreGlibc25 netware solaris windows winPre2k winPreVista)
+_isovirtualprinterimages=(Linux Windows)
 
 if [ -n "$_enable_macOS_guests" ]; then
 
-_vmware_fusion_ver=10.1.3_9472307
+_vmware_fusion_ver=11.0.0_10120384
 # List of VMware Fusion versions: https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/
 
 makedepends+=(
   python2
-  python2-six
   unzip
 )
 
@@ -137,9 +139,9 @@ source+=(
   'unlocker.py'
 )
 sha256sums+=(
-  '87a5356c947af3651c240b5ebf3f1e1bcf2c4bba58c466a23bd1d7f5adba0830'
-  'bcd4fafd41e627c2ab9a86d562f74ef27822b61a346306e848a67161732005aa'
-  'b739b0c99fb20dc44838ce137e254773b7be051f327eb67fd8cb1342a3ecf344'
+  'a5c405eb46d3155b46accfb3e8cc513115937a44e5b02e637f4ee2d71dd6d8ef'
+  '5549df5e55b08d6d36381c812689e15de595225cacc055106705282be88be52f'
+  'cb9ecff2d9210ea0022d5ac1b2c274dba0ec9b79c031386627f2a668913e1a38'
 )
 
 _fusion_isoimages=(darwin darwinPre15)
@@ -216,7 +218,6 @@ package() {
     vmware-vix-core/bin/* \
     vmware-vprobe/bin/* \
     vmware-workstation-server/{vmware-hostd,vmware-vim-cmd,vmware-wssc-adminTool} \
-    vmware-network-editor-ui/bin/* \
     vmware-player-app/bin/* \
     "$pkgdir/usr/bin"
 
@@ -241,10 +242,9 @@ package() {
     "$pkgdir/etc/vmware"
 
   cp -r \
-    vmware-vix-lib-Workstation1400/lib/Workstation-14.0.0 \
+    vmware-vix-lib-Workstation1500/lib/Workstation-15.0.0 \
     vmware-vix-core/{lib/*,vixwrapper-config.txt} \
     "$pkgdir/usr/lib/vmware-vix"
-  cp vmware-vix-core/vix-perl.tar.nogz "$pkgdir/usr/lib/vmware-vix/vix-perl.tar.gz"
 
   cp -r \
     vmware-vix-core/doc/* \
@@ -278,11 +278,17 @@ package() {
     install -Dm 644 "vmware-tools-$isoimage/$isoimage.iso.sig" "$pkgdir/usr/lib/vmware/isoimages/$isoimage.iso.sig"
   done
 
+  for isoimage in ${_isovirtualprinterimages[@]}
+  do
+    install -Dm 644 "vmware-virtual-printer/VirtualPrinter-$isoimage.iso" "$pkgdir/usr/lib/vmware/isoimages/VirtualPrinter-$isoimage.iso"
+  done
+
   install -Dm 644 "vmware-workstation/doc/EULA" "$pkgdir/usr/share/licenses/$pkgname/VMware Workstation - EULA.txt"
   install -Dm 644 "vmware-workstation/doc"/*open_source_licenses.txt "$pkgdir/usr/share/licenses/$pkgname"
   mv "$pkgdir/usr/lib/vmware-ovftool/vmware.eula" "$pkgdir/usr/share/licenses/$pkgname/VMware OVF Tool component for Linux - EULA.txt"
   rm "$pkgdir/usr/lib/vmware-ovftool"/{vmware-eula.rtf,open_source_licenses.txt,manifest.xml}
 
+  install -d -m 755 "$pkgdir/usr/lib/vmware-installer/$vmware_installer_version"/{lib/lib,artwork}
   install -Dm 755 "$srcdir/configure-initscript.sh" "$pkgdir/usr/lib/vmware-installer/$vmware_installer_version/bin/configure-initscript.sh"
 
   install -Dm 644 "vmware-vmx/etc/modprobe.d/modprobe-vmware-fuse.conf" "$pkgdir/etc/modprobe.d/vmware-fuse.conf"
@@ -293,7 +299,7 @@ package() {
   install -Dm 644 vmware-installer/bootstrap "$pkgdir/etc/vmware-installer/bootstrap"
   install -Dm 644 "$srcdir/vmware-vix-bootstrap" "$pkgdir/etc/vmware-vix/bootstrap"
 
-  for hostd_file in config datastores environments proxy; do
+  for hostd_file in config datastores environments proxy vmAutoStart; do
     install -Dm 644 "$srcdir/$hostd_file.xml" "$pkgdir/etc/vmware/hostd/$hostd_file.xml"
   done
 
@@ -348,6 +354,7 @@ package() {
     vmware-modconfig-console \
     vmware-mount \
     vmware-netcfg \
+    vmware-setup-helper \
     vmware-tray \
     vmware-vim-cmd \
     vmware-vmblock-fuse \
@@ -360,7 +367,15 @@ package() {
   done
 
   for link in \
+    vmrest
+  do
+    ln -s /usr/lib/vmware/bin/appLoader "$pkgdir/usr/bin/$link"
+  done
+
+  for link in \
+    vmware-fuseUI \
     vmware-mount \
+    vmware-netcfg \
     vmware-usbarbitrator
   do
     ln -s /usr/lib/vmware/bin/$link "$pkgdir/usr/bin/$link"
@@ -428,7 +443,7 @@ fi
 
   # Define some environment variables for VMware and remove the tests about kernel modules
   install -Dm 644 "$srcdir/vmware-environment.sh" "$pkgdir/etc/conf.d/vmware"
-  for program in vmware vmplayer vmware-netcfg vmware-tray; do
+  for program in vmware vmplayer vmware-tray; do
     sed -e '/export PRODUCT_NAME/asource /etc/conf.d/vmware' \
         -e 's/if "$BINDIR"\/vmware-modconfig --appname=.*/if true ||/' \
         -i "$pkgdir/usr/bin/$program"
@@ -436,4 +451,7 @@ fi
 
   # to solve bugs with incompatibles library versions:
   #ln -sf /usr/lib/libz.so.1 "$pkgdir/usr/lib/vmware/lib/libz.so.1/"
+  
+  # Preview license
+  #install -Dm 644 vmware-workstation/etc/vmware/license-ws-150-e1-201804 "$pkgdir/etc/vmware/license-ws-150-e1-201804"
 }

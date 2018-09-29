@@ -43,4 +43,12 @@
        <Descriptor> /etc/vmware/hostd/env/ws-hw14.xml </Descriptor>
        <Options> /etc/vmware/hostd/env/vmconfigoption-ws-hw14.xml</Options>
    </Cfg>
+   <Cfg id = "12">
+       <Descriptor> /etc/vmware/hostd/env/ws-hw15.xml </Descriptor>
+       <Options> /etc/vmware/hostd/env/vmconfigoption-ws-hw15.xml</Options>
+   </Cfg>
+   <Cfg id = "13">
+       <Descriptor> /etc/vmware/hostd/env/ws-hw16.xml </Descriptor>
+       <Options> /etc/vmware/hostd/env/vmconfigoption-ws-hw16.xml</Options>
+   </Cfg>
 </Environment>

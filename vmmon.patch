@@ -21,7 +21,7 @@ diff --git a/vmmon/common/task.c b/vmmon/common/task.c
 index 98cc74a..400ebfe 100644
 --- a/vmmon/common/task.c
 +++ b/vmmon/common/task.c
-@@ -2203,12 +2203,23 @@ TaskSwitchToMonitor(VMCrossPage *crosspage)
+@@ -2308,12 +2308,23 @@ TaskSwitchToMonitor(VMCrossPage *crosspage)
     {
        uint64 raxGetsWiped, rcxGetsWiped;
  
