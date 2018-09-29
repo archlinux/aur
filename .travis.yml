@@ -5,4 +5,13 @@ sudo: required
 services:
   - docker
 
-script: make ci_test
+jobs:
+  include:
+    - stage: test
+      script: make ci_test
+    - stage: check_upstream
+      script: make check_upstream
+
+stages:
+  - test
+  - check_upstream
