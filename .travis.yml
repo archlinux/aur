@@ -13,5 +13,7 @@ jobs:
       script: make check_upstream
 
 stages:
-  - test
-  - check_upstream
+  - name: test
+    if: type != cron
+  - name: check_upstream
+    if: type = cron
