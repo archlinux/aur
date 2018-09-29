@@ -1,8 +1,8 @@
 # Maintainer: CrocoDuck <crocoduck dot oducks at gmail dot com>
 
 pkgname=speech-denoiser-git
-pkgver=r71.f5c1e2f
-pkgrel=3
+pkgver=r76.97f5fef
+pkgrel=1
 pkgdesc="A speech denoise lv2 plugin based on RNNoise library."
 arch=('i686' 'x86_64')
 url="https://github.com/lucianodato/speech-denoiser"
