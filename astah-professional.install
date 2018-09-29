@@ -1,19 +1,4 @@
-post_install() {
-    if !( test -e /usr/lib/astah-professional/astah_professional_license.xml ); then
-    cat <<-EndOfMessage
-
 ==> You have to install your license file to /usr/lib/astah-professional/
       ( you can get one at http://astah.net/pricing )
-==> You can also use astah-community for free with less functionality
+==> You can also use astah-uml for free with less functionality
 
-EndOfMessage
-    fi
-}
-
-post_upgrade() {
-    post_install
-}
-
-post_remove() {
-    post_install
-}

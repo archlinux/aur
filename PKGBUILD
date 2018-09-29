@@ -5,43 +5,33 @@
 
 pkgname='astah-professional'
 _pkgname=${pkgname//-/_}
-pkgver='7.2.0'
+pkgver='8.0.0'
 _pkgver=${pkgver//./_}
-pkgrel=2
-_pkgrel=1ff236
-pkgdesc='easy-to-use UML2.x modeler'
+pkgrel=1
+_pkgrel=d641d4
+pkgdesc='Total software design tool for creating UML, ERD, DFD, Flowchart...etc. and easy-to-use UML2.x modeler'
 arch=('any')
 url="http://astah.net/editions/professional"
-conflicts=('astah_community')
+conflicts=('astah_community' 'astah-uml')
 license=('custom:none')
-depends=('java-runtime>=8')
-source=("http://cdn.change-vision.com/files/${pkgname}-${_pkgver}-$_pkgrel.zip"
-	"astah-professional.desktop"
-	"astah-professional.png"
-	"astah-professional.xml"
-	"astah-professional-doc.png"
+depends=('java-runtime=8')
+source=("http://cdn.change-vision.com/files/astah-professional_${pkgver}.${_pkgrel}-0_all.deb"
 	"LICENSE")
-
-md5sums=('bda39b1fc3030ce97f31899bd7893be4'
-         '7f85e4ae3c0331d8a7d842a0c17090f9'
-         'df84e754977e1958963779b3a59182e1'
-         '2fbccb662c6435f75c62751437fb3f1e'
-         '4dbc30adaf0a7af35fdf16a04c44b80c'
-         '3b5f3a3c4e453544e9c665c7950960fc')
-
+md5sums=('c1e65102592ad5f000b76c418f328853'
+         '2814d9b8bac8bd6e929292d39b429a69')
 install="astah-professional.install"
 
+
 package() {
-    install -Dm755 $srcdir/$_pkgname/astah $pkgdir/usr/bin/astah || return 1
-    install -Dm755 $srcdir/$_pkgname/astah-command.sh $pkgdir/usr/bin/astah-command || return 1
-    install -Dm644 $srcdir/${pkgname}.desktop $pkgdir/usr/share/applications/${pkgname}.desktop || return 1
-    install -Dm644 $srcdir/${pkgname}.xml $pkgdir/usr/share/mime/packages/${pkgname}.xml || return 1
-    install -Dm644 $srcdir/${pkgname}.png $pkgdir/usr/share/pixmaps/${pkgname}.png || return 1
-    install -Dm644 $srcdir/${pkgname}-doc.png $pkgdir/usr/share/pixmaps/${pkgname}-doc.png || return 1
-    install -Dm644 $srcdir/LICENSE ${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE || return 1
-    install -Dm755 -d ${pkgdir}/usr/lib || return 1
-    cp -rf $srcdir/$_pkgname ${pkgdir}/usr/lib/$pkgname || return 1
-    rm $pkgdir/usr/lib/${pkgname}/astah{,-command.sh}
-    
-    sed -i -r "s|^(ASTAH_HOME=).*|\1/usr/lib/$pkgname|" ${pkgdir}/usr/bin/astah
+  msg2 "Extracting the data.tar.xz..."
+  bsdtar -xf $srcdir/data.tar.gz -C "$pkgdir/"
+
+  rm -r ${pkgdir}/usr/share/doc
+  install -Dm644 $srcdir/LICENSE ${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE || return 1
+
+#  mv ${pkgdir}/usr/lib/astah_professional ${pkgdir}/usr/lib/astah-professional
+#  sed -i -r "s|^(ASTAH_HOME=).*|\1/usr/lib/$pkgname|" ${pkgdir}/usr/lib/astah-professional/astah-pro
+
+#  rm ${pkgdir}/usr/bin/astah-pro
+#  ln -s ${pkgdir}/usr/bin/astah-pro /usr/lib/astah-professional/astah-pro
 }

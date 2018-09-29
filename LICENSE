@@ -1,458 +1,316 @@
-END-USER LICENSE AGREEMENT
-Change Vision, Inc.
-11th Version as of 24th
-June 2015
-Important:
-Please read carefully all of the following terms and conditions.
-THIS END-USER LICENSE AGREEMENT ("this Agreement") is a legal
-agreement between you (either an individual, a firm or a single entity)
-and Change Vision, Inc. (the "Company" or "we") for a software product named
-"Astah" including computer programs, associated media, printed materials and
-online or electronic documentation (collectively the "Product"). The Product
-is licensed to you under the terms and conditions of this Agreement. By installing,
-copying, downloading, accessing, or otherwise using the Product,
-you agree to be bound by the terms and conditions of this Agreement. If you do not
-agree to the terms and conditions of this Agreement, do not download, install or
-use the Product.
-Article 1 Copyright
-1. The Company shall retain copyright and any other proprietary rights in
-and to the Product, and the Product is protected by copyright laws and
-international copyright treaties or by the copyright notice or other
-intellectual property notice.
-2. The Product is licensed, not sold. You do not have any right
-other than the license granted under this Agreement.
-Article 2 Grant of License
+ THIS END-USER LICENSE AGREEMENT ("this Agreement") is a legal agreement between you (either an individual, a firm or a single entity) and Change Vision, Inc. (the "Company" or "we") for a software 
+product named "Astah" including computer programs, associated media, printed materials and online or electronic documentation (collectively the "Product"). The Product is licensed to you under the terms 
+and conditions of this Agreement. By installing, copying, downloading, accessing, or otherwise using the Product, you agree to be bound by the terms and conditions of this Agreement. If you do not agree 
+to the terms and conditions of this Agreement, do not download, install or use the Product. This English version applies to the customers who reside outside of Japan.
+
+Article 1 : Copyright
+
+    All the copyrights and other intellectual property rights in the Product is owned by the Company and its licensor, and remain vested in the Company and such licensor. The Product is protected under 
+the copyright law of Japan and other countries and related Conventions.
+    The Product is licensed, not sold. You do not have any right other than the license granted under this Agreement.
+
+
+Article 2 : Grant of License
+
 The Company shall grant you the following rights:
-1. If you agree to the terms and conditions of this Agreement and
-complete the prescribed user registration and license registration on our
-website, the Company provides you with the license key necessary to use the Pr
-oduct. (The license key includes the user name and the company or
-organization name, etc.)
-2. If you agree to the terms and conditions of this Agreement, purchase more than
-one license and complete the prescribed user registration, you or (in case of our
-customer being an association or corporation) a single individual in
-charge of the Product belonging to such association or corporation,
-may complete license registrations on our
-website, the Company provides you with appropriate limited number
-of license keys necessary to use the Product.
-(The license key includes the user name who registered the licenses and the com
-pany or organization name, etc.)
-3. For the license to be registered, you need the license number and the validation
-code (collectively the "License Authentication Key") notified
-by the Company or its official distributor and partner
-(collectively the "Partner"). (The date on which
-you registered the license is hereinafter referred to as the "Effective Date.")
-4. The Company authorizes only person who has purchased the licensed
-Product through the Company or the Partner to be allowed to use the Product
-under this Agreement.
-5. You may distribute your own copyrighted works based
-upon the Product to others in accordance with this Agreement.
-You may make an appropriate limited number of copies of the Product on a
-backup storage devise such as hard disk, optical media or tape and physical CD
-media solely for the purpose of replacement in the event of destruction
-or loss of an original copy of the Product.
-6. In case our customer is an association or corporation, a single individual in
-charge of the Product belonging to such association or corporation may make an
-appropriate limited number of copies of the Product
-up to the numbers of licenses have been registered completely for the purpose of
-distribution to individuals to use the Product.
-7. In case the association or corporation who purchased the licenses were merged
-and acquired or partially jointed with another association or corporation,
-you may continue to use the licenses within the associated corporation.
-8. In case the Product is used on the virtualized environment such as thin client or
-others, and there is a difference between numbers of computers and
-uses physically and logically. The latter numbers of licenses are required.
-9. The Company shall retain all rights in and to the Product
-except for the license granted to you expressly in this Agreement.
-Article 3 Prohibited Use
+
+    If you agree to the terms and conditions of this Agreement and complete the prescribed user registration and license registration on our website, the Company provides you with the license key 
+necessary to use the Product.
+    If you agree to the terms and conditions of this Agreement, purchase more than one license and complete the prescribed user registration, you or (in case of our customer being an association or 
+corporation) a single individual in charge of the Product belonging to such association or corporation, may complete license registrations on our website, the Company provides you with appropriate 
+limited number of license keys necessary to use the Product.
+    For the license to be registered, you need the license number and the validation code (collectively the "License Authentication Key") notified by the Company or its official distributor and partner 
+(collectively the "Partner"). (The date on which you registered the license is hereinafter referred to as the "Effective Date.")
+    The Company authorizes only person who has purchased the licensed Product through the Company or the Partner to be allowed to use the Product under this Agreement.
+    You may distribute your own copyrighted works based upon the Product to others in accordance with this Agreement. You may make an appropriate limited number of copies of the Product on a backup 
+storage devise such as hard disk, optical media or tape and physical CD media solely for the purpose of replacement in the event of destruction or loss of an original copy of the Product.
+    In case our customer is an association or corporation, a single individual in charge of the Product belonging to such association or corporation may make an appropriate limited number of copies of 
+the Product up to the numbers of licenses have been registered completely for the purpose of distribution to individuals to use the Product.
+    In case the association or corporation who purchased the licenses were merged and acquired or partially jointed with another association or corporation, you may continue to use the licenses within 
+the associated corporation.
+    In case the Product is used on the virtualized environment such as thin client or others, and there is a difference between numbers of computers and uses physically and logically. The latter numbers 
+of licenses are required.
+    The Company shall retain all rights in and to the Product except for the license granted to you expressly in this Agreement. 
+
+
+Article 3 : Prohibited Use
+
 You may not:
-(1) copy the Product except as provided in Article 2 of this Agreement;
-(2) alter, reverse engineer, disassemble or decompile any software included
-in the Product;
-(3) sell, distribute, lease or assign to others the copies of the Product or information
-such
-as the License Authentication Key or license key relating to the license of the P
-roduct; or
-(4) sublicense to any third party to use the Product.
-Article 4 Limited Warranty
-1. The Company warrants that media for the Product will, under normal use,
-be free of defects in materials and workmanship during the first ninety (90)
-days from the Effective Date of this Agreement (the "Warranty Period"). In
-any case, the Company's sole obligation
-under this warranty is to replace the defective media returned to the Company d
-uring the Warranty Period. This warranty shall not
-apply to the damage arising from misuse, abuse or
-carelessness by you. The Warranty Period of the defective media
-is applicable to such replaced media.
-2. Should the Product not be in compliance with the warranty as provided
-in the preceding paragraph, you may notify the Company in
-writing during the Warranty Period and return the defective Product
-and then the Company will provide you with the replacement.
-3. The Company in no way warrants merchantability or fitness of the Product for
-a particular purpose, nor warrants performance, results or other
-contents arising out of or in connection with the Product.
-4. The Company in no way makes any further representation of warranty,
-express or implied, on the Product.
-Article 5 Limitation of Liability
-Except as provided in Article 4, in no event shall the Company be liable to you for
-any special, incidental, indirect or consequential damage or any damage arising out
-or in connection with the use or performance of the Product including any claims for
-such damages by a third party against you, whether the Company is informed
-of the possibility of such
-damages. Should the Company be liable to you, the maximum amount of
-such liability shall not exceed the amount of money actually paid
-by you for the Product.
-Article 6 Support Services
-1. The Company shall provide to the customer who has made a user registration
-and license registration with respect to license for each
-of the Products the following support services related to the Product free of
-charge for the period from the Effective Date of this Agreement to the date prov
-ided separately. Support services shall be provided in English or Japanese:
-(1) provision of
-upgrades including the adjustment to defects and the improvement
-of the Product; and
-(2) response to inquiries relating to the operation of the Product
-(including information of the known problems of the Product).
-(3) Several benefits during your support effective period (Contents of
-benefits are described on our website, and
-are subject to change without notice)
-2. The Company shall discontinue to provide support and download
-of the Product three years after its release date of its first decimal place.
-3. You shall promptly notify the Company upon
-any change to items of the user registration
-with respect to respective licenses for all the Products owned by you.
-4. Our obligation related to the support services shall
-be limited to the reasonable efforts as provided for in paragraph 1
-of this Article. The Company shall not be required to provide the support
+
+    copy the Product except as provided in Article 2 of this Agreement;
+    alter, reverse engineer, disassemble or decompile any software included in the Product;
+    sell, distribute, lease or assign to others the copies of the Product or information such as the License Authentication Key or license key relating to the license of the Product; or
+    sublicense to any third party to use the Product.
+
+
+Article 4 : Limited Warranty
+
+    The Company warrants that media for the Product will, under normal use, be free of defects in materials and workmanship during the first ninety (90) days from the Effective Date of this Agreement 
+(the "Warranty Period"). In any case, the Company’s sole obligation under this warranty is to replace the defective media returned to the Company during the Warranty Period. This warranty shall not apply 
+to the damage arising from misuse, abuse or carelessness by you. The Warranty Period of the defective media is applicable to such replaced media.
+    Should the Product not be in compliance with the warranty as provided in the preceding paragraph, you may notify the Company in writing during the Warranty Period and return the defective Product and 
+then the Company will provide you with the replacement.
+    The Company in no way warrants merchantability or fitness of the Product for a particular purpose, nor warrants performance, results or other contents arising out of or in connection with the 
+Product.
+    The Company in no way makes any further representation of warranty, express or implied, on the Product.
+
+
+Article 5 : Limitation of Liability
+
+Except as provided in Article 4, in no event shall the Company be liable to you for any special, incidental, indirect or consequential damage or any damage arising out or in connection with the use or 
+performance of the Product including any claims for such damages by a third party against you, whether the Company is informed of the possibility of such damages. Should the Company be liable to you, the 
+maximum amount of such liability shall not exceed the amount of money actually paid by you for the Product.
+
+Article 6 : Support Services
+
+    The Company shall provide to the customer who has made a user registration and license registration with respect to license for each of the Products the following support services related to the 
+Product free of charge for the period from the Effective Date of this Agreement to the date prov ided separately. Support services shall be provided in English or Japanese:
+        provision of upgrades including the adjustment to defects and the improvement of the Product; and
+        response to inquiries relating to the operation of the Product (including information of the known problems of the Product).
+        Several benefits during your support effective period (Contents of benefits are described on our website, and are subject to change without notice).
+    The Company shall discontinue to provide support and download of the Product three years after its release date of its first decimal place.
+    You shall promptly notify the Company upon any change to items of the user registration with respect to respective licenses for all the Products owned by you.
+    Our obligation related to the support services shall be limited to the reasonable efforts as provided for in paragraph 1 of this Article. The Company shall not be required to provide the support 
 services to the following persons:
-(1) a person who has not completed the user registration in
-accordance with the procedure set by the Company;
-(2) a person who has not notified us upon
-any change to items of the user registration as provided
-in the preceding paragraph;
-(3) a person whose user registration has been removed at the request of
-such person;
-(4) a person whose support effective period has expired; or
-(5) a person who uses the Product without paying for license of the Product.
-5. The Company may cease to render the support services without prior notice in
-any of the following events:
-(1) when we need emergency maintenance of the computer system;
-(2) when we are unable to operate the computer system by reason
-of force majeure such as fire, electric power outage or interruption
-by any third party;
-(3) when we are unable to operate the computer system by reason of a natural
-disaster or the similar to this; and
-(4) when we deem it necessary to suspend the operation of the computer
-system due to emergencies other than above.
-6. Notwithstanding anything provided
-in the preceding paragraph, the Company may cease to render the support
-services for the Product with one (1) year prior notice, and in such
-event the Company shall have no obligation to provide to you any support
-services related to such Product.
-Article 7 Special Agreement
-The following terms and conditions (the "Special Agreement") shall
-be applicable to the specific edition or special license of the Product and shall
-be added to Articles 2, 3, 4 and 6. When
-any discrepancy arises between the Special Agreement and
-other provisions of this Agreement, the Special Agreement shall prevail.
+        a person who has not completed the user registration in accordance with the procedure set by the Company;
+        a person who has not notified us upon any change to items of the user registration as provided in the preceding paragraph;
+        a person whose user registration has been removed at the request of such person;
+        a person whose support effective period has expired; or
+        a person who uses the Product without paying for license of the Product.
+    The Company may cease to render the support services without prior notice in any of the following events:
+        when we need emergency maintenance of the computer system;
+        when we are unable to operate the computer system by reason of force majeure such as fire, electric power outage or interruption by any third party;
+        when we are unable to operate the computer system by reason of a natural disaster or the similar to this; and
+        when we deem it necessary to suspend the operation of the computer system due to emergencies other than above.
+    Notwithstanding anything provided in the preceding paragraph, the Company may cease to render the support services for the Product with one (1) year prior notice, and in such event the Company shall 
+have no obligation to provide to you any support services related to such Product.
+
+
+Article 7 : Special Agreement
+
+The following terms and conditions (the "Special Agreement") shall be applicable to the specific edition or special license of the Product and shall be added to Articles 2, 3, 4 and 6. When any 
+discrepancy arises between the Special Agreement and other provisions of this Agreement, the Special Agreement shall prevail.
+
 Astah Engineering Pack
-1. You may use the edition of the Product, Astah Professional, Astah SysML
-and Astah GSN under this Agreement.
+
+    You may use the edition of the Product, Astah Professional, Astah SysML and Astah GSN under this Agreement.
+
 Astah Professional
-1. You may use the edition of the Product, Astah Professional
-under this Agreement.
+
+    You may use the edition of the Product, Astah Professional under this Agreement.
+
 Astah UML
-1. You may use the edition of the Product, Astah UML under this Agreement.
+
+    You may use the edition of the Product, Astah UML under this Agreement. 
+
 Astah SysML
-1. You may use the edition of the Product, Astah SysML under this Agreement.
+
+    You may use the edition of the Product, Astah SysML under this Agreement.
+
 Astah GSN
-1. You may use the edition of the Product, Astah GSN under this Agreement.
+
+    You may use the edition of the Product, Astah GSN under this Agreement.
+
+Astah Viewer
+
+    If you agree to the terms and conditions of this Agreement, you may use the edition of the Product, Astah Viewer without a purchase of license.
+    The Company grants you a personal, non-exclusive, non-transferable, limited license to use the Product, and you may install and use the Product on an appropriate limited number of computers.
+    Articles 4 and 6 shall not be applicable to Astah Viewer. The Company shall have no obligation to give warranty or render support services with respect to Astah Viewer.
+    You may not sell, distribute, lease or assign to others the Product and copies of the Product, nor sublicense the use of the Product to any third party.
+    Although the Product may show advertisements through the software on the screen of the computer, we will not inform any specific website of your personal information or other information in your 
+computer.
+
 Astah Community 7.0 or Later
-1. If you agree to the terms and conditions of this Agreement,
-you may use the Product without user registration on our
-website or purchase of license.
-2. The Company grants you a personal, non-exclusive, non-transferable, limited lic
-ense to use the Product, and you may install and use the Product on an
-appropriate limited number of computers.
-3. You may use the edition of the Product, Astah Community version 7.0
-or later for your personal usage only if:
-(1) you do not charge or accept compensation for the use of this software or
-any services that you provide with it;
-(2) you do not generate anything that can be used for commercial with it;
-(3) you do not provide anything related to commercial service with it; and
-(4) you do not use it for any commercial usage, application, research or
-development.
-4. Articles 4 and 6 shall not
-be applicable to Astah Community. The Company shall have no obligation to gi
-ve warranty or render support services with respect to Astah Community.
-5. Without consent of the Company in writing, you may not sell,
-distribute, lease or assign to others copies of the Product, nor
-sublicense the use of the Product to any third party.
-6. Although the Product
-may show advertisements through the software on the screen of the computer,
-we will not inform any specific website of your personal information or other
-information in your computer.
+
+    If you agree to the terms and conditions of this Agreement, you may use the Product without a purchase of license.
+    The Company grants you a personal, non-exclusive, non-transferable, limited license to use the Product, and you may install and use the Product on an appropriate limited number of computers.
+    You may use the edition of the Product, Astah Community version 7.0 or later for your personal usage only if:
+        you do not charge or accept compensation for the use of this software or any services that you provide with it;
+        you do not generate anything that can be used for commercial with it;
+        you do not provide anything related to commercial service with it; and
+        you do not use it for any commercial usage, application, research or development. 
+    Articles 4 and 6 shall not be applicable to Astah Community. The Company shall have no obligation to give warranty or render support services with respect to Astah Community.
+    You may not sell, distribute, lease or assign to others the Product and copies of the Product, nor sublicense the use of the Product to any third party.
+    Although the Product may show advertisements through the software on the screen of the computer, we will not inform any specific website of your personal information or other information in your 
+computer.
+
 Astah Community 6.9 or Older
-1. If you agree to the terms and conditions of this Agreement,
-you may use the Product without user registration on our
-website or purchase of license.
-2. The Company grants you a personal, non-exclusive, non-transferable, limited lic
-ense to use the Product, and you may install and use the Product on an
-appropriate limited number of computers.
-3. Articles 4 and 6 shall not
-be applicable to Astah Community. The Company shall have no obligation to gi
-ve warranty or render support services with respect to Astah Community.
-4. Without consent of the Company in writing, you may not sell,
-distribute, lease or assign to others copies of the Product, nor
-sublicense the use of the Product to any third party.
-5. Although the Product
-may show advertisements through the software on the screen of the computer,
-we will not inform any specific website of your personal information or other
-information in your computer.
+
+    If you agree to the terms and conditions of this Agreement, you may use the Product without a purchase of license.
+    The Company grants you a personal, non-exclusive, non-transferable, limited license to use the Product, and you may install and use the Product on an appropriate limited number of computers.
+    Articles 4 and 6 shall not be applicable to Astah Community. The Company shall have no obligation to give warranty orrender support services with respect to Astah Community.
+    You may not sell, distribute, lease or assign to others the Product and copies of the Product, nor sublicense the use of the Product to any third party.
+    Although the Product may show advertisements through the software on the screen of the computer, we will not inform any specific website of your personal information or other information in your 
+computer.
+
 Astah Plug-In
-1. You may use the Product with Astah Plug-In (the "Plug-In") added.
-2. In order to use the Product with the Plug-In,
-you need required numbers of license for both the Product and Plug-In.
-3. The license required to use the Plug-In is the content specified for the Product
-and License Information on our website and printed materials.
+
+    You may use the Product with Astah Plug-In (the “Plug-In”) added.
+    In order to use the Product with the Plug-In, you need required numbers of license for both the Product and Plug-In.
+    The license required to use the Plug-In is the content specified for the Product and License Information on our website and printed materials.
+
 Trial License (including software for evaluation purposes and beta version)
-1. Provided that you agree to comply with the terms and
-conditions of this Agreement, you may use the Product only for evaluation and
-demonstration purposes pursuant to this Agreement. Unless otherwise specifical
-ly permitted by the Company, you may not use the Product for the commercial,
-business or profit purposes.
-2. During a trial period determined by the Company separately,
-you may use the Product and create derivative works on the basis of the Product
-under the trial license during such trial period (including the data, printed
-materials and computer
-source codes; hereinafter referred to as the "Derivative Works"); provided, ho
-wever, you may not use or
-distribute such Derivative Works other than for the evaluation purpose.
-3. Articles 4 and 6 shall not
-be applicable to the trail license (including software for evaluation purposes and
-beta version). The Company shall have no obligation to give warranty or render
-the support services during the trial period.
-4. Upon termination of the trial period, you may not continue to use the Product
-unless you purchase the license of the Product. If
-you do not purchase the Product at the time of such termination, you must
-delete and destroy completely all copies of the Product, all of its component in
-any form and all of the Derivative Works. If
-you wish to continue use the Product after the trial period,
-you must purchase the license of the Product for
-use of the Product from the Company or any of the Partners.
-5. The stop function is built into the Product so that you may not
-continue to use the Product after the termination of the trial period.
-Limited Time License (Timed License)
-1. The Company grants to you a personal, non-exclusive, non-transferable and limi
-ted license to use the Product and you may install and use the Product for a
-single computer. You may re-install and use it for another single computer
-only if you delete the Product
-completely from the computer that has installed them. A number of qualified
-users may use the Product on the single computer but only one person at a time.
-2. You may use the Product for the period from the date you designated
-at the registration to the end of the period specified for
-each license. The stop function is built into the Product so that you may not
-continue to use the Product after the termination of the period for use.
-3. The Company shall provide you with the support
-services related to the Product for the period set forth in the preceding paragraph.
-You may not extend the period for support services through the support license.
-4. Upon termination of the timed license period,
-your timed license may be extended if you purchase and register
-another timed license.
-5. You may not have your timed license upgraded to the user license.
-User License
-1. The Company grants to our customer who has made a license registration or (in
-case of our customer being an association or corporation) a single individual
-belonging to such association or corporation
-a personal, non-exclusive, non-transferable, limited license to use the Product
-2. If the customer who has made a license registration is a single individual
-who is licensed to use the Product, such user may install and use the Product on
-an appropriate limited number of computers.
-3. The Company shall provide to you who have purchased support license for
-extension of the support effective period with respect to the license for each
-of the Products owned by you, the support services as set forth
-by the Company for a period from the end of the support
-effective period for the license of the Product to the end of the period prescribed
-by the Company separately for the license for each of the Products.
-Node Count License
-1. The Company grants to you, as a single individual belonging to such association
-or corporation purchasing and registering a Node Count License,
-a personal, non-exclusive, non-transferable and limited license to use the Produc
-t for a designated period within limited numbers.
-2. You may install the Product on all the computers prescribed users may use that
-an association or corporation holds, and also make copies of
-distribution to install the Product on them.
-3. Prescribed users may use the Product
-by accessing to the Company's server to activate a license under the Node Coun
-t License's limited numbers during the period this Node Count
-License is designated to run for.
-4. A number of qualified users may use the Product on the single computer.
-5. You may have the third parties (Such your associated partner
-companies) to use the Product only to accomplish your business. In this case,
-you have an obligation
-and responsibility to ensure such third parties comply with the terms and
-conditions of this Agreement.
-6. You may use the Product within the limited number the license grants on
-multiple computers. The stop function is built into the Product so that
-you may not use the Product when the numbers of Product being used
-exceeds the prescribed limit.
-7. You may use the Product for the period the date your administrator designated
-at the registration to the end of the period
-specified for the license. The stop function is built into the Product so that
-you may not continue to use the Product after the termination of the period for
-use.
-8. The Company shall provide you with the support
-services related to the Product for the period set forth in the preceding paragraph.
-You may not extend the period for support services through the support license.
-9. Upon termination of the Node Count License period, your Node Count
-License may be extended if you purchase and register another Node Count
-License.
-10. The Company shall maintain the information such as Activation times, first
-date of Activation, the last check-out date of Node Count
-License for the purpose of the verification
-of license range and providing Support Service.
-11. The Company shall collect the License ID, 1) Machine Information and
-2) Identifier Name and send them to our server that manages all the Product
-information for the purpose of the verification
-of license range and providing Support Service.
-1) Machine Information: A unique code that identifies your computer that
-is obtained through using Product
-2) Identifier Name: A name users set when activating the license per
-computer (The computer name will become the Identifier
-Name as default)
-Corporate License
-1. If you (a single individual in charge of the Product belonging to association or
-corporation) agree to the terms and conditions of this Agreement, and in
-accordance with the special terms and conditions of Corporation
-License, the Company provides you with the license key necessary to use the Pr
-oduct.
-2. You may make copies of the Product for the purpose of
-distribution to prescribed users who are entitled to use the Product in
-accordance with the special terms and conditions of Corporate License.
-3. You may use the Product for the period from the date you designated in
-accordance with Corporate License terms and agreements to the end
-of the period specified. The stop function is built into the Product so that
-you may not continue to use the Product after the termination of the period for
-use.
-4. The Company shall provide you with the support
-services related to the Product for the period set forth in the preceding paragraph.
-You may not extend the period for support services through the support license.
+
+    Provided that you agree to comply with the terms and conditions of this Agreement, you may use the Product only for evaluation and demonstration purposes pursuant to this Agreement. Unless otherwise 
+specifically permitted by the Company, you may not use the Product for the commercial, business or profit purposes.
+    During a trial period determined by the Company separately, you may use the Product and create derivative works on the basis of the Product under the trial license during such trial period (including 
+the data, printed materials and computer source codes; hereinafter referred to as the "Derivative Works"); provided, however, you may not use or distribute such Derivative Works other than for the 
+evaluation purpose.
+    Articles 4 and 6 shall not be applicable to the trail license (including software for evaluation purposes and beta version). The Company shall have no obligation to give warranty or render the 
+support services during the trial period.
+    Upon termination of the trial period, you may not continue to use the Product unless you purchase the license of the Product. If you do not purchase the Product at the time of such termination, you 
+must delete and destroy completely all copies of the Product, all of its component in any form and all of the Derivative Works. If you wish to continue use the Product after the trial period, you must 
+purchase the license of the Product for use of the Product from the Company or any of the Partners.
+    The stop function is built into the Product so that you may not continue to use the Product after the termination of the trial period.
+
+Limited Timed License (Timed License)
+
+    The Company grants to you a personal, non-exclusive, non-transferable and limited license to use the Product and you may install and use the Product for a single computer. You may re-install and use 
+it for another single computer only if you delete the Product completely from the computer that has installed them.
+    A number of qualified users may use the Product on the single computer but only one person at a time.
+    You may use the Product for the period from the date you designated at the registration to the end of the period specified for each license. The stop function is built into the Product so that you 
+may not continue to use the Product after the termination of the period for use.
+    The Company shall provide you with the support services related to the Product for the period set forth in the preceding paragraph. You may not extend the period for support services through the 
+support license.
+    Upon termination of the timed license period, your timed license may be extended if you purchase and register another timed license.
+    You may not have your timed license upgraded to the perpetual license.
+    You may have the contractors working for you based on the temporary employment contract to use the Product only to accomplish your business. In this case, you have an obligation and responsibility to 
+ensure the contractors comply with the terms and conditions of this Agreement.
+
+Perpetual License
+
+    The Company grants to our customer who has made a license registration or (in case of our customer being an association or corporation) a single individual belonging to such association or 
+corporation a personal, non-exclusive, non-transferable, limited license to use the Product.
+    If the customer who has made a license registration is a single individual who is licensed to use the Product, such user may install and use the Product on an appropriate limited number of computers.
+    The Company shall provide to you who have purchased support license for extension of the support effective period with respect to the license for each of the Products owned by you, the support 
+services as set forth by the Company for a period from the end of the support effective period for the license of the Product to the end of the period prescribed by the Company separately for the license 
+for each of the Products.
+    You may have the contractors working for you based on the temporary employment contract to use the Product only to accomplish your business. In this case, you have an obligation and responsibility to 
+ensure the contractors comply with the terms and conditions of this Agreement.
+
+Organizational License
+
+    The Company grants to you, as a single individual belonging to such association or corporation purchasing and registering an Organizational License, a personal, non-exclusive, non-transferable and 
+limited license to use the Product for a designated period within limited numbers.
+    You may install the Product on all the computers you may use that an association or corporation holds, and also make copies of distribution to install the Product on them.
+    Prescribed users may use the Product by accessing to the Company’s server to activate a license under the Organizational License’s limited numbers during the period this Organizational License is 
+designated to run for.
+    A number of qualified users may use the Product on the single computer, but only one person at a time.
+    You may have the third parties (Such your associated partner companies) to use the Product only to accomplish your business. In this case, you have an obligation and responsibility to ensure such 
+third parties comply with the terms and conditions of this Agreement.
+    You may use the Product within the limited number the license grants on multiple computers. The stop function is built into the Product so that you may not use the Product when the numbers of Product 
+being used exceeds the prescribed limit.
+    You may use the Product for the period the date designated at the registration to the end of the period specified for the license. In case you have the Organizational License (Annual), the stop 
+function is built into the Product so that you may not continue to use the Product after the termination of the period for use. In case you have the Organizational License (Perpetual), a number of 
+Individual Perpetual Licenses will be issued and derived to the license administrator for distribution. These licenses will allow for continued use of Astah, but will be un-supported and the clause 
+"Perpetual License" will apply.
+    The Company shall provide you with the support services related to the Product for the period set forth in the preceding paragraph during the support effective period for the license of the Product.
+    Upon termination of the Organizational License period, in case you have an activated Organizational License(Annual), it may be extended if you purchase and register another Organizational License 
+(Annual). In case you have an activated Organizational License (Perpetual), it may be extended if you purchase Organizational License Support Renewal.
+    The Company shall maintain the information such as Activation times, first date of Activation, the last check-out date of Organizational License for the purpose of the verification of license range 
+and providing Support Service.
+    The Company shall collect the License ID, i) Machine Information and ii) Identifier Name and send them to our server that manages all the Product information for the purpose of the verification of 
+license range and providing Support Service.
+        Machine Information: A unique code that identifies your computer that is obtained through using Product
+        Identifier Name: A name users set when activating the license per computer (The computer name will become the Identifier Name as default)
+
+Floating License
+
+    The Company grants to you, a personal, non-exclusive, non-transferable and limited license to use the Product for a designated period.
+    You may install the Product on all the computers users may use, and also make copies of distribution to install the Product on them.
+    You may install the license on a centralized License Server an association or corporation holds that is accessible to others within your organization.
+    A number of qualified users may use the Product on the single computer but only one person at a time.
+    You may have the third parties (Such your associated partner companies) to use the Product only to accomplish your business. In this case, you have an obligation and responsibility to ensure such 
+third parties comply with the terms and conditions of this Agreement.
+    You may use the Product within the limited number the license grants on multiple computers. The stop function is built into the Product so that you may not use the Product when the numbers of Product 
+being used exceeds the prescribed limit.
+    You may use the Product for the period the date designated at the activation of the license. The stop function is built into the Product so that you may not continue to use the Product after the 
+termination of the period for use.
+    The Company shall provide you with the support services related to the Product for the period set forth in the preceding paragraph during the support effective period for the license of the Product.
+
+Faculty Site License
+
+    The Company grants to you, as a single individual belonging to such association purchasing and registering a Faculty Site License as a license administrator, a non-exclusive, non-transferable and 
+limited license to use the Product. The license can be distributed to any faculty and students, for the purpose of academic studies and research, who are members of the department indicated on the 
+application form submitted at the time of purchase. Third parties may only use the license on machines that belong to the indicated department at your academic institution for any seminars or classes 
+your academic institution holds.
+    You may install the Product on computers that licensed users own, as well as make copies of the distribution to install the Product on them.
+    Under this Agreement, the indicated department may use the listed Products: Astah Professional, Astah SysML and Astah GSN.
+    You may use the Product during the Faculty Site License period, the date the license administrator designed during registration to the end of the period specified for each license. A stop function is 
+built into the Product so that you may not continue to use the Product after the termination of the Faculty Site License period, without proper renewal.
+    The Company shall provide you with the support services related to the Product for the period set forth in the preceding paragraph. You may not extend the period for support services through a 
+separate support license.
+    During the Faculty Site License period, any person who resigns from the licensed department, may not to use the Product and must delete the Product from their computers completely.
+    Upon termination of the Faculty Site License period, your Faculty Site License may be extended if you purchase, and register, another Faculty Site License.
+
 Student License
-1. If you agree to the terms and conditions of this Agreement,
-you may use the Product without user registration on our website.
-2. The Company grants you a personal, non-exclusive, non-transferable, limited lic
-ense to use the Product, and you may install and use the Product on an
-appropriate limited number of
-computers as long as you are only one who uses this Product.
-3. Articles 4 and 6 shall not be applicable to Astah Professional Free Student
-License. The Company shall have no obligation to give warranty or render
-support services with respect to Astah Professional Free Student License users.
-4. Without consent of the Company in writing, you may not sell,
-distribute, lease or assign to others copies of the Product, nor
-sublicense the use of the Product to any third party.
-Article 8 Confidentiality
-1. (a) The contents of this Agreement and (b) all information disclosed
-by the Company under this Agreement (such
-as License key of the Product, phone number, fax number, e-mail address, URL,
-all other information disclosed via
-computer network by providing the License Authorization Key and Support Ser
-vices) shall be treated as strictly confidential ("Confidential Information") and
-you may not
-disclose the Confidential Information to any third party without the Company's
-prior written consent, nor abuse the Confidential Information. Especially if
-you disclose or leak the License Information such
-as License Authorization Key or
-License key itself to any third party, the Company grants a right to stop your
-use of the licensed Product. You may disclose the Confidential Information
-only for reasonable cause such as in compliance with judicial or other
-governmental order; provided, however, that in such event you shall
-give a prompt prior notice to the Company.
-2. The obligation under this Article shall not apply if such information
-is any of the followings:
-(1) Information which becomes available to you on an unrestricted
-basis from a third party (Except any License Information of the Product);
-or
-(2) Information which was independently developed by you without
-using any of the Company's confidential Information.
-3. The preceding paragraphs shall survive the expiration or termination
-of this Agreement.
-Article 9 Personal Information
-1. The Company, for the purposes of our provision to you of information provider
-service to members and relating to downloading of software, purchase and
-support of products, management of information on members, announcement of
-event seminars, etc., may collect and use and, unless your request for removal
-is received, keep for three (3) years the following information on
-you ("Personal Information", including any updates),
-with the necessary protective measures taken against divulgence of and
-abuse of the Personal Information:
-(1) your name, company or organization name, address, phone number, e-mail
-address, etc. that we collect under paragraphs 1 and 3 of Article 6;
-(2) products you purchased, user registration date, renewal of contract,
-information disclosed in relation to your payment, etc. and
-items relating to agreements by and between you and the Company, and;
-(3) your inquiries and your answers to questioners, etc.
-2. The Company will
-use the Personal Information for the following purposes. The provision of
-information to you within the purposes mentioned below will
-be made to you by means of e-mail, post, phone or fax.
-(1) to make descriptions in the license key for the purposes of identification
-of the Registered User and the computer in which the Product is installed
-or used;
-(2) to offer the support services set forth in Article 6;
-(3) to notify you of the renewal of the agreements;
-(4) for our business promotion concerning to our products or services.
-3. The Company may entrust our affiliates or distributors with a part or whole of
-our business to the extent that each of the items prescribed
-in the preceding paragraph is carried out. In such event we require such
-affiliates or distributors to maintain
-confidentiality of the Personal Information through confidentiality agreement.
-4. You may make a request to disclose your own Personal Information based
-on the objective facts we hold. However the Company shall have no obligation t
-o disclose information such as (a) any confidential business Information
-or technical know-hows of the Company or the third party's; (b)
-any Information that has elapsed the prescribed holding period and we no longer
-use; (c) any Information related to personal evaluations, categories of our
-customers; and (d) any Information that we record based on our regular
-business and could arise a hindrance to our business by providing them. If
-you think that any Personal Information we hold about you is incorrect or wrong,
-you may request that we adjust or delete such Personal Information.
-5. You may request that the Company stop using your
-Personal Information for the purpose of our business promotion mentioned in
-item 4 of paragraph 2 of this Article.
-6. You agree that after the expiration or termination
-of this Agreement the Company may continue to use your Personal Information
-based on the user registration provided to us pursuant to paragraph 1
-of this Article for a certain period of time should there be reasonable reason.
-7. The Company may disclose your Personal Information
-as appropriate if required to do so by law through governmental agencies or
+
+    If you agree to the terms and conditions of this Agreement, you may use the Product without user registration on our website.
+    The Company grants you a personal, non-exclusive, non-transferable, limited license to use the Product, and you may install and use the Product on an appropriate limited number of computers as long 
+as you are only one who uses this Product.
+    Articles 4 and 6 shall not be applicable to Astah UML Free Student License. The Company shall have no obligation to give warranty or render support services with respect to Astah UML Free Student 
+License users.
+    Without consent of the Company in writing, you may not sell, distribute, lease or assign to others copies of the Product, nor sublicense the use of the Product to any third party. 
+
+
+Article 8 : Confidentiality
+
+    (a) The contents of this Agreement and (b) all information disclosed by the Company under this Agreement (such as License key of the Product, phone number, fax number, e-mail address, URL, all other 
+information disclosed via computer network by providing the License Authorization Key and Support Services) shall be treated as strictly confidential ("Confidential Information") and you may not disclose 
+the Confidential Information to any third party without the Company's prior written consent, nor abuse the Confidential Information. Especially if you disclose or leak the License Information such as 
+License Authorization Key or License key itself to any third party, the Company grants a right to stop your use of the licensed Product. You may disclose the Confidential Information only for reasonable 
+cause such as in compliance with judicial or other governmental order; provided, however, that in such event you shall give a prompt prior notice to the Company.
+    The obligation under this Article shall not apply if such information is any of the followings:
+        Information which becomes available to you on an unrestricted basis from a third party (Except any License Information of the Product); or
+        Information which was independently developed by you without using any of the Company's confidential Information.
+    The preceding paragraphs shall survive the expiration or termination of this Agreement. 
+
+
+Article 9 : Personal Information
+
+    The Company, for the purposes of our provision to you of information provider service to members and relating to downloading of software, purchase and support of products, management of information 
+on members, announcement of event seminars, etc., may collect and use and keep the following information on you ("PersonalInformation", including any updates), with the necessary protective measures 
+taken against divulgence of and abuse of the Personal Information, unless your account is deleted by yourself or your request for removal is received:
+        your name, company or organization name, e-mail address, etc. that we collect under paragraphs 1 and 3 of Article 6;
+        products you purchased, user registration date, renewal of contract, information disclosed in relation to your payment, etc. and items relating to agreements by and between you and the Company, 
+and;
+        your inquiries and your answers to questioners, etc.
+    The Company will use the Personal Information for the followingpurposes.The provision of information to you within the purposes mentioned below will be made to you by means of e-mail or phone.
+        to make descriptions in the license key for the purposes of identification of the Registered User and the computer in which the Product is installed or used;
+        to offer the support services set forth in Article 6;
+        to notify you of the renewal of the agreements;
+        for our business promotion concerning to our products or services.
+    The Company may entrust our affiliates or distributors with a part or whole of our business to the extent that each of the items prescribed in the preceding paragraph is carried out. In such event we 
+require such affiliates or distributors to maintain confidentiality of the Personal Information through confidentiality agreement.
+    You may make a request to disclose your own Personal Information based on the objective facts we hold. However the Company shall have no obligation to disclose information such as (a) any 
+confidential business Information or technical know-hows of the Company or the third party's; (b) any Information that has elapsed the prescribed holding period and we no longer use; (c) any Information 
+related to personal evaluations, categories of our customers; and (d) any Information that we record based on our regular business and could arise a hindrance to our business by providing them. If you 
+think that any Personal Information we hold about you is incorrect or wrong, you may request that we adjust or delete such Personal Information.
+    You may request that the Company stop using your Personal Information for the purpose of our business promotion mentioned in item 4 of paragraph 2 of this Article.
+    You agree that after the expiration or termination of this Agreement the Company may continue to use your Personal Information based on the user registration provided to us pursuant to paragraph 1 of 
+this Article for a certain period of time should there be reasonable reason.
+    The Company may disclose your Personal Information as appropriate if required to do so by law through governmental agencies or any other institution with quasi-authority. 
+
+
+Article 10 : Collecting Information
+
+    For the purposes of the Product’s enhancement, quality improvements and to grasp the user activity on the Product, our main server of the Product is designed to obtain users update information and 
+other specific information from user’s computer.
+    The update information and other specific information from user’s computer mentioned this provision are as below.
+        The Product edition and its version you use;
+        Internet Protocol address information for the connection and
+        Information such as how many times you click on which menu label on the Product's main tool bar only if you agree with the "data collection for Product improvement 
+(http://astah.net/agreements/use-data)" (Any model information you create will not be sent) 
+    The Company will not disclose the information we collected under this clause to the third party without your explicit permission unless required to disclose by law through governmental agencies or 
 any other institution with quasi-authority.
-Article 10 Collecting Information
-1. For the purposes of the Product's enhancement,
-quality improvements and to grasp the user activity on the Product, our main
-server of the Product is designed to obtain users update information and other
-specific information from user's computer.
-2. The update information and other specific information from user's computer
-mentioned this provision are as below.
-(1) The Product edition and its version you use;
-(2) Internet Protocol address information for the connection and
-(3) Information such as how many times you click on which menu label
-on the Product's main tool bar only if you agree with the "data
-collection for Product improvement
-(http://astah.net/privacy-policy/use-data)" (Any model information
-you create will not be sent)
-3. The Company will not disclose the information we collected
-under this clause to the third party without your explicit permission
-unless required to disclose by law through governmental agencies or any other
-institution with quasi-authority.
-Article 11 Termination
-This Agreement shall be immediately terminated if you breach any of the terms and
-conditions of this Agreement, and accordingly the license provided for
-in this Agreement shall also be terminated. In such event, you shall
-immediately stop using the Product you hold and remove all
-of the copies of the Product.
-Article 12 Governing Law
-This Agreement shall be governed by, interpreted and construed in
-accordance with the laws of Japan. The parties herby submit for all purposes of or in
-connection with this Agreement to the exclusive jurisdiction
-of the Tokyo District Court.
-
+
+
+Article 11 : Termination
+
+This Agreement shall be immediately terminated if you breach any of the terms and conditions of this Agreement, and accordingly the license provided for in this Agreement shall also be terminated. In 
+such event, you shall immediately stop using the Product you hold and remove all of the copies of the Product.
+
+Article 12 : Governing Law
+
+This Agreement shall be governed by, interpreted and construed in accordance with the laws of Japan. The parties herby submit for all purposes of or in connection with this Agreement to the exclusive 
+jurisdiction of the Tokyo District Court.
