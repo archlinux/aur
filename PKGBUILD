@@ -2,7 +2,7 @@
 # Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
-_ver=1.19
+_ver=1.21
 _pkgbase=mate-applets
 pkgname="${_pkgbase}-dev"
 pkgver=${_ver}.4
@@ -14,8 +14,8 @@ conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 url="http://mate-desktop.org"
 license=('GPL')
 depends=('glib2' 'gtksourceview2' 'gtk-update-icon-cache' 'libgtop' 'libnotify'
-         'mate-panel>=1.19' 'polkit' 'python2-dbus' 'python2-gobject' 'upower')
-makedepends=('docbook2x' 'docbook-xsl' 'mate-common>=1.19' 'yelp-tools' 'gtksourceview3' 'mate-panel>=1.19')
+         'mate-panel>=1.21' 'polkit' 'python2-dbus' 'python2-gobject' 'upower')
+makedepends=('docbook2x' 'docbook-xsl' 'mate-common>=1.21' 'yelp-tools' 'gtksourceview3' 'mate-panel>=1.21')
 optdepends=('fortune-mod: for displaying fortune cookies in the Wanda the Fish applet'
             'yelp: for reading MATE help documents')
 groups=('mate-extra')
