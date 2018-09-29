@@ -12,7 +12,7 @@ checkdepends=('python-nose')
 license=('MPL2')
 arch=('any')
 source=("https://github.com/stratis-storage/${_pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('8f2db597cc61e45562d7146d7de51360')
+sha256sums=('a2eaab7c0534bfa3a6d85322cda84398daa1435575cdb42039c4648c2acd8076')
 
 check() {
     cd $srcdir/${_pkgname}-${pkgver}
