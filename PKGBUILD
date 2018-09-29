@@ -3,8 +3,8 @@
 pkgname=arcint-gtk-theme
 _pkgname=arcint-theme
 pkgdesc="My own version of horst3180's Arc theme"
-pkgver=20180928
-pkgrel=3
+pkgver=20180930
+pkgrel=1
 provides=("arcint-gtk-theme")
 conflicts=("arcint-gtk-theme-git")
 arch=("any")
@@ -13,7 +13,7 @@ license=("GPL3")
 optdepends=("gnome-themes-standard: for gtk2 themes")
 makedepends=("gtk3" "sassc" "optipng" "inkscape")
 source=("${url}/archive/${pkgver}.tar.gz")
-sha512sums=("f0cdb49ee3014deffd9a941aff2c339d87089c218ac1426e8711d967fb033821b9807ea421542bb7eba6d1c425ca1a7976591efc32bb703d06fd89df53e42dd9")
+sha512sums=("d5d351bfe1d9ba83afd5a63c74c8f9528d4add6bd5c4bc633603faff16ae9e3e6202f21521e182ad0949a463f66b65e7104c460bd2005c51fafa4b26fc9a6694")
 
 build() {
     cd ${_pkgname}
