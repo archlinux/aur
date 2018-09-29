@@ -1,0 +1,13 @@
+language: minimal
+
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - git fetch --depth=1 origin testfiles:remotes/origin/testfiles
+  - docker pull buzztaiki/pkgbuild-p7zip-natspec-buildenv
+
+script:
+  - docker run --rm -it -u travis -v $(pwd):/mnt buzztaiki/pkgbuild-p7zip-natspec-buildenv make test
