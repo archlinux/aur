@@ -1,0 +1,16 @@
+pkgbase = lake
+	pkgdesc = Lua-based Build Tool
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/stevedonovan/Lake
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = lua
+	depends = lua-filesystem
+	depends = lua-posix
+	source = lake-1.4.1.tar.gz::https://github.com/stevedonovan/Lake/archive/1.4.1.tar.gz
+	md5sums = 692ab4b24d307a81f5860b0f1ab681a3
+
+pkgname = lake
+
