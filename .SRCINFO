@@ -1,0 +1,16 @@
+pkgbase = lrexlib-posix
+	pkgdesc = Regular expression library for Lua - POSIX version
+	pkgver = 2.9.0
+	pkgrel = 2
+	url = https://luarocks.org/modules/rrt/lrexlib-posix
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = luarocks
+	depends = lua
+	noextract = lrexlib-posix-2.9.0-1.src.rock
+	source = https://luarocks.org/lrexlib-posix-2.9.0-1.src.rock
+	md5sums = ecfc628336da9445b2282c2de085ad05
+
+pkgname = lrexlib-posix
+
