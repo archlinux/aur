@@ -2,7 +2,7 @@
 # Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
-_ver=1.19
+_ver=1.21
 _pkgbase=caja
 pkgname="${_pkgbase}-dev"
 pkgver=${_ver}.3
@@ -14,9 +14,9 @@ provides=("${_pkgbase}" "${_pkgbase}-gtk3")
 conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL')
 depends=('dbus' 'desktop-file-utils' 'exempi' 'glib2' 'gtk3' 'gtk-update-icon-cache'
-         'gvfs' 'libexif' 'libunique3' 'libxt' 'mate-desktop>=1.19' 'shared-mime-info'
+         'gvfs' 'libexif' 'libunique3' 'libxt' 'mate-desktop>=1.21' 'shared-mime-info'
          'startup-notification')
-makedepends=('gobject-introspection' 'mate-common>=1.19')
+makedepends=('gobject-introspection' 'mate-common>=1.21')
 optdepends=('gstreamer: automatic media playback when mouseover'
             'gvfs-smb: To connect to Samba/Windows shares')
 groups=('mate')
