@@ -1,13 +1,13 @@
 # Maintainer: Johannes Wienke <languitar@semipol.de>
 pkgname=xsecurelock
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="X11 screen lock utility with security in mind"
 arch=('any')
 url="https://github.com/google/xsecurelock"
 license=('APACHE')
 groups=()
-depends=('libx11' 'pam')
+depends=('libx11' 'pam' 'libxcomposite' 'libxmu')
 checkdepends=()
 optdepends=('mplayer: for the saver_mplayer module'\
             'mpv: for the saver_mpv module'\
