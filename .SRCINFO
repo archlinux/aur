@@ -1,6 +1,6 @@
 pkgbase = mate-icon-theme-dev
 	pkgdesc = MATE icon theme
-	pkgver = 1.19.0
+	pkgver = 1.21.0
 	pkgrel = 5
 	url = http://mate-desktop.org
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = mate-icon-theme-dev
 	conflicts = mate-icon-theme-gtk3
 	options = !strip
 	options = !emptydirs
-	source = http://pub.mate-desktop.org/releases/1.19/mate-icon-theme-1.19.0.tar.xz
+	source = http://pub.mate-desktop.org/releases/1.21/mate-icon-theme-1.21.0.tar.xz
 	sha1sums = 8f97f94c50e95a4e68a3448c08a4ddc808170828
 
 pkgname = mate-icon-theme-dev
