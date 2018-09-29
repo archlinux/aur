@@ -1,6 +1,6 @@
 # Maintainer: Duncan X Simpson <virtualdxs@gmail.com>
 pkgname=monit-git
-pkgver=release.5.20.0.r32.070a1ac
+pkgver=release.5.25.2.r9.c16158d
 pkgrel=1
 pkgdesc="Utility for managing and monitoring Unix systems"
 arch=('any')
