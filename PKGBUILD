@@ -2,8 +2,8 @@
 # Contributor: <francois.archlinux.org>
 
 pkgname=culmus
-pkgver=0.132
-pkgrel=2
+pkgver=0.133
+pkgrel=1
 pkgdesc="A collection of Type1 and TrueType Hebrew fonts"
 arch=('any')
 url="http://culmus.sourceforge.net"
@@ -13,7 +13,7 @@ source=(
   "http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz"
   "${pkgname}-0.121-fontconfig_fix.patch"
 )
-sha256sums=('b13e7463ede5e56da79892e6a22eaca8ae3e0fc34a30fcf7417412a45dee072c'
+sha256sums=('c0c6873742d07544f6bacf2ad52eb9cb392974d56427938dc1dfbc8399c64d05'
             '6ba13854700bd9cdf6b8facd920082aed367bedabe10e93bd39cfe6bf8eb76fd')
 
 build() {
