@@ -2,8 +2,8 @@
 # Contributer: Hao Long <aur@esd.cc>
 
 pkgname=go-nebulas
-pkgver=1.0.5
-pkgrel=3
+pkgver=1.0.8.1
+pkgrel=1
 pkgdesc="Official Go implementation of the Nebulas protocol"
 arch=("x86_64")
 url="https://github.com/nebulasio/go-nebulas"
@@ -12,7 +12,7 @@ depends=("icu" "rocksdb")
 makedepends=("dep" "go" "git" "gflags" "snappy")
 provides=("neb" "neb-crashreporter")
 conflicts=("neb" "neb-crashreporter")
-source=("$pkgname.tar.gz::https://github.com/nebulasio/go-nebulas/archive/v$pkgver.tar.gz"
+source=("$pkgname.tar.gz::https://github.com/nebulasio/go-nebulas/archive/v${pkgver}.tar.gz"
         "http://ory7cn4fx.bkt.clouddn.com/vendor.tar.gz"
         "config.conf"
         "genesis.conf"
@@ -20,8 +20,8 @@ source=("$pkgname.tar.gz::https://github.com/nebulasio/go-nebulas/archive/v$pkgv
         "go-nebulas.service"
         "go-nebulas.install")
 
-sha256sums=('9bd23e5b536e66af9c4e8612df04158126f11c8bf278d23b9e45cef3b55c219f'
-            '831ff6b542fa73b39312c00d08a148201f37407fe3144618380983b9c48133bd'
+sha256sums=('a3f8537e65a0fbdfca06a7995ed67417b98714a194c7fb186bbe0bb619b508f9'
+            'a5e8dac26ea77b88034a44d077e05777b079eee3f4755ea19ea67fde5d25724e'
             '47fb517be710ac459c446f34d69728f3416ae51aeccb9045ecdf8443450433ff'
             'f02573abd8979f50f4541b8e2c4b732f8ced823dc105b368d59b09e2591b3071'
             'b6847abcf7e442ccbc82edc560f5702303c9efb43c9cd321fdd81800c206d2c8'
@@ -39,7 +39,7 @@ prepare() {
     bsdtar -zxf vendor.tar.gz
     mv vendor src
     bsdtar -zxf $pkgname.tar.gz -C $_extract_path
-    mv "$_extract_path/$pkgname-$pkgver" "$_extract_path/$pkgname"
+    mv "$_extract_path/go-nebulas-${pkgver}" "$_extract_path/${pkgname}"
 }
 
 build() {
