@@ -6,7 +6,7 @@ _tarname='et'
 pkgbase='eternalterminal'
 pkgname=('eternalterminal-client' 'eternalterminal-server' 'eternalterminal')
 pkgver='5.1.0'
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 depends=(
 	'libsodium' 'gflags' 'protobuf' 'libutempter'
