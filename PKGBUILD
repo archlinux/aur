@@ -1,25 +1,25 @@
 # Maintainer: JC Francois <jc.francois@gmail.com>
 pkgname=tiddlydesktop
 pkgver=0.0.13
-pkgrel=1
+pkgrel=2
 pkgdesc="TiddlyDesktop is a special purpose web browser for working with locally stored TiddlyWikis."
 url="https://github.com/Jermolene/TiddlyDesktop"
 license=('BSD')
 provides=('tiddlydesktop')
 depends=('gconf')
 optdepends=('tiddlywiki: empty tiddlywiki file and utility script')
-
 arch=('x86_64')
+options=(!strip)
 
-source_x86_64=(https://github.com/Jermolene/TiddlyDesktop/releases/download/v${pkgver}/tiddlydesktop-linux64-v${pkgver}.zip)
-source=(tiddlydesktop.sh
+source=(https://github.com/Jermolene/TiddlyDesktop/releases/download/v${pkgver}/tiddlydesktop-linux64-v${pkgver}.zip
+        https://github.com/Jermolene/TiddlyDesktop/archive/v${pkgver}.zip
+        tiddlydesktop.sh
 		tiddlydesktop.desktop)
 
-sha256sums=('ec5826348934f45ba28209f00a96073876910aec3bc1bc5e7c6cc68216099998'
-            'd0d6f6d515940ce2a232e3db07a10fe4bea135287d0f224676fb9d447b7103de')
-sha256sums_x86_64=('91eb42a282ff41c3571661a70cb6b8b0656e50a6bcf9be793ec0861d9435974a')
-
-options=(!strip)
+sha256sums=('91eb42a282ff41c3571661a70cb6b8b0656e50a6bcf9be793ec0861d9435974a'
+            '053c78173ce3af2942160daa414ad411c912f62e17deb02617be70ab3bd34c39'
+            'ec5826348934f45ba28209f00a96073876910aec3bc1bc5e7c6cc68216099998'
+            'a20ee572397a00857ed9f64c2e622f544b097d203add91449a07526deac95099')
 
 package() {
     install -dm755 "${pkgdir}/usr/share/${pkgname}"
@@ -29,6 +29,11 @@ package() {
 
     install -Dm755 "${srcdir}/tiddlydesktop.sh"  "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/tiddlydesktop.desktop"  "${pkgdir}/usr/share/applications/tiddlydesktop.desktop"
-    install -Dm644 "${srcdir}/TiddlyDesktop-linux64-v${pkgver}/images/Motovun Jack.svg"  "${pkgdir}/usr/share/pixmaps/tiddlydesktop.svg"
-
+    install -Dm644 "${srcdir}/TiddlyDesktop-${pkgver}/icons/app-icon32.png"  "${pkgdir}/usr/share/icons/hicolor/32x32/apps/tiddlydesktop.png"
+    install -Dm644 "${srcdir}/TiddlyDesktop-${pkgver}/icons/app-icon48.png"  "${pkgdir}/usr/share/icons/hicolor/48x48/apps/tiddlydesktop.png"
+    install -Dm644 "${srcdir}/TiddlyDesktop-${pkgver}/icons/app-icon64.png"  "${pkgdir}/usr/share/icons/hicolor/64x64/apps/tiddlydesktop.png"
+    install -Dm644 "${srcdir}/TiddlyDesktop-${pkgver}/icons/app-icon128.png"  "${pkgdir}/usr/share/icons/hicolor/128x128/apps/tiddlydesktop.png"
+    install -Dm644 "${srcdir}/TiddlyDesktop-${pkgver}/icons/app-icon256.png"  "${pkgdir}/usr/share/icons/hicolor/256x256/apps/tiddlydesktop.png"
+    install -Dm644 "${srcdir}/TiddlyDesktop-${pkgver}/icons/app-icon512.png"  "${pkgdir}/usr/share/icons/hicolor/512x512/apps/tiddlydesktop.png"
+    install -Dm644 "${srcdir}/TiddlyDesktop-${pkgver}/icons/app-icon1024.png"  "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/tiddlydesktop.png"
 }

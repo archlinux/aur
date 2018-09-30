@@ -1,10 +1,10 @@
 [Desktop Entry]
 Name=TiddlyDesktop
 GenericName=TiddlyDesktop
-Version=0.0.9
+Version=0.0.13
 Comment=TiddlyDesktop is a special purpose web browser for working with locally stored TiddlyWikis.
 Exec=tiddlydesktop
-Icon=/usr/share/pixmaps/tiddlydesktop.svg
+Icon=tiddlydesktop
 Terminal=false
 Type=Application
 Categories=Utility;
