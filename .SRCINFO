@@ -1,6 +1,6 @@
 pkgbase = caffe2-cuda-git
 	pkgdesc = A new lightweight, modular, and scalable deep learning framework (with cuda, git version)
-	pkgver = 0.8.2.r13647.ga2ebbccc9f
+	pkgver = 0.8.2.r13650.g93ecf4d72a
 	pkgrel = 1
 	url = http://caffe2.ai/
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer : Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=caffe2-cuda-git
-pkgver=0.8.2.r13647.ga2ebbccc9f
+pkgver=0.8.2.r13650.g93ecf4d72a
 pkgrel=1
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (with cuda, git version)'
 arch=('x86_64')
@@ -132,6 +132,7 @@ pkgver() {
 build() {
     cd pytorch-git
     
+    export TORCH_CUDA_ARCH_LIST='Auto'
     local _pythonver
     _pythonver="$(python --version | awk '{ print $2 }' | grep -o '^[0-9]*\.[0-9]*')"
     
@@ -153,7 +154,6 @@ build() {
         -DCMAKE_INSTALL_LIBDIR:PATH='lib' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         \
-        -DCUDA_ARCH_NAME:STRING='Auto' \
         -DCUDA_HOST_COMPILER:FILEPATH='/usr/bin/gcc-7' \
         -DCUDA_NVCC_EXECUTABLE:FILEPATH='/opt/cuda/bin/nvcc' \
         -DCUDA_SDK_ROOT_DIR:PATH='/opt/cuda' \
