@@ -1,10 +1,10 @@
 # Maintainer: Chris Magyar <c.magyar.ec@gmail.com>
 
 pkgname=masari
-pkgver=0.2.4.3
+pkgver=0.2.4.5
 _gituser=masari-project
 _gitrepo=masari
-_gitver=v0.2.4.3
+_gitver=v0.2.4.5
 pkgrel=1
 pkgdesc="Masari: cryptonote currency daemon and wallet"
 arch=('x86_64' 'i686')
@@ -19,7 +19,7 @@ optdepends=( 'doxygen: documentation'
     'ldns: SSL toolkit' )
 checkdepends=('gtest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$_gitver.tar.gz")
-md5sums=('5054dc3ff60b0526f9e7f1d3ba28bafd')
+md5sums=('88e405bcfd58c9166cbdd9bbca908a33')
 
 prepare() {
     if [ ! -d "$srcdir/$pkgname-$pkgver" ]; then

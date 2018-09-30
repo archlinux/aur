@@ -1,6 +1,6 @@
 pkgbase = masari
 	pkgdesc = Masari: cryptonote currency daemon, wallet, and miner
-	pkgver = 0.2.4.3
+	pkgver = 0.2.4.5
 	pkgrel = 1
 	url = https://github.com/masari-project/masari
 	arch = x86_64
@@ -21,6 +21,6 @@ pkgbase = masari
     optdepends = graphviz
     optdepends = ldns
     checkdepends = gtest
-	source = https://github.com/masari-project/masari/archive/v0.2.4.3.tar.gz
-	md5sums = 5054dc3ff60b0526f9e7f1d3ba28bafd
+	source = https://github.com/masari-project/masari/archive/v0.2.4.5.tar.gz
+	md5sums = 88e405bcfd58c9166cbdd9bbca908a33
 pkgname = masari
