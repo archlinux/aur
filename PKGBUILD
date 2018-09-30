@@ -2,19 +2,23 @@
 # Contributor: lestb <tkhdlstfl dot l plus aur at gmail dot com>
 # Contributor: Sebastien Binet <binet@lblbox>
 pkgname=python-lineprofiler
-pkgver=2.1
-pkgrel=2
+pkgver=2.1.2
+pkgrel=3
 pkgdesc="Line-by-line profiler"
 url="https://pypi.python.org/pypi/line_profiler"
 arch=('i686' 'x86_64')
 license=('BSD')
 depends=('python-setuptools' 'ipython')
 makedepends=('cython')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/rkern/line_profiler/archive/$pkgver.tar.gz")
-sha256sums=('5625157e76e1f70c237c7df07389b48028aa1b94ec630aaa5f094d5755bcaa76')
+source=(https://files.pythonhosted.org/packages/14/fc/ecf4e238bb601ff829068e5a72cd1bd67b0ee0ae379db172eb6a0779c6b6/line_profiler-${pkgver}.tar.gz line_profiler.patch)
+md5sums=('141cb6996f0e3188ca05bfddcb403e36' 'fd05a4246f3bb741bbf9b51ca3e14d34')
 
 build() {
+  cd "${srcdir}"
+  patch -s -p0 < line_profiler.patch
+
   cd "${srcdir}/line_profiler-${pkgver}"
+  cython _line_profiler.pyx
   python setup.py build
 }
 

@@ -1,0 +1,24 @@
+diff -ruN line_profiler-2.1.2.orig/kernprof.py line_profiler-2.1.2/kernprof.py
+--- line_profiler-2.1.2.orig/kernprof.py	2018-08-30 14:14:52.722665861 +0200
++++ line_profiler-2.1.2/kernprof.py	2018-08-30 14:18:42.516791010 +0200
+@@ -102,6 +102,8 @@
+                 self.enable_by_count()
+                 try:
+                     item = g.send(input)
++                except StopIteration:
++                    return
+                 finally:
+                     self.disable_by_count()
+                 input = (yield item)
+diff -ruN line_profiler-2.1.2.orig/line_profiler.py line_profiler-2.1.2/line_profiler.py
+--- line_profiler-2.1.2.orig/line_profiler.py	2018-08-30 14:14:52.722665861 +0200
++++ line_profiler-2.1.2/line_profiler.py	2018-08-30 14:19:11.210222041 +0200
+@@ -100,6 +100,8 @@
+                 self.enable_by_count()
+                 try:
+                     item = g.send(input)
++                except StopIteration:
++                    return
+                 finally:
+                     self.disable_by_count()
+                 input = (yield item)
