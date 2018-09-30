@@ -134,6 +134,4 @@ the provided license for more information.
 * Mutex on portfolio
 * Add security without reloading every security
 * Refactoring
-* Default window size
-* Info of related stocks
-* Fix segfault on no inet
+* gtk graph zoom
