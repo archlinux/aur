@@ -29,7 +29,7 @@ check() {
 }
 
 package() {
-    cd ${srcdir}/${pkgname}
+    cd "${srcdir}/${pkgname}"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     cd "${srcdir}/${pkgname}/build"
