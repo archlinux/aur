@@ -1,6 +1,6 @@
 pkgbase = telegram-desktop-git
 	pkgdesc = Official desktop version of Telegram messaging app (dev branch)
-	pkgver = 1.3.12.r0.gaeec5d154
+	pkgver = 1.4.0.r1.g81a2cf908
 	pkgrel = 1
 	url = https://desktop.telegram.org/
 	arch = i686
@@ -27,6 +27,7 @@ pkgbase = telegram-desktop-git
 	source = GSL::git+https://github.com/Microsoft/GSL.git
 	source = libtgvoip::git+https://github.com/telegramdesktop/libtgvoip
 	source = variant::git+https://github.com/mapbox/variant
+	source = xxHash::git+https://github.com/Cyan4973/xxHash.git
 	source = CMakeLists.inj::https://git.archlinux.org/svntogit/community.git/plain/trunk/CMakeLists.inj?h=packages/telegram-desktop
 	source = tdesktop.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/tdesktop.patch?h=packages/telegram-desktop
 	source = libtgvoip.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/libtgvoip.patch?h=packages/telegram-desktop
@@ -37,8 +38,9 @@ pkgbase = telegram-desktop-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 28a25d482ae099077ff501d882408afe0aaf6fb45346bc3423c6de7c2ed4c437
-	sha256sums = e92e8bc6c84d783e2a5f8337628cfb345c06aa4e18778a84e29d4d6f8d83246e
+	sha256sums = SKIP
+	sha256sums = a8412a86252bb7857cb2bdbcaebe3029b05f7fec4f9a6f1ee73beff00044876a
+	sha256sums = 78daf4591a0bd0f8e2f0da5e44b08e61849ddb80e96cf327b3661b390b485d89
 	sha256sums = 4dd2b1674b1a5bcfc5b640612278fe3a53b454192fbcc06b7476ff54ed6d2f6d
 	sha256sums = 8d707debe027c7cb658825501dc30fb3beb57ab21b1b6df2f01c5f76ca39a0e6
 
