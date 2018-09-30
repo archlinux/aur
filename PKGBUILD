@@ -3,7 +3,7 @@
 _suffix=-1.12
 pkgname=wesnoth-1.12
 pkgver=1.12.6
-pkgrel=9
+pkgrel=10
 pkgdesc="Turn-based strategy game on a fantasy world (legacy version)"
 arch=('i686' 'x86_64')
 url="https://www.wesnoth.org/"
