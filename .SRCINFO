@@ -1,6 +1,6 @@
 pkgbase = smath
 	pkgdesc = A mathematical program with many features and paper-like interface, similar to Mathcad
-	pkgver = 0_99_6671
+	pkgver = 0_99_6839
 	pkgrel = 1
 	url = http://smath.info
 	install = smath.install
@@ -10,8 +10,8 @@ pkgbase = smath
 	license = CCPL
 	depends = mono
 	backup = opt/smath/settings.inf
-	source = https://smath.info/file/BaH5L/SMathStudioDesktop.0_99_6671.mono.tar.gz
-	md5sums = 225a1910b7cbc89b06ec60469d33bff3
+	source = https://smath.info/file/xy5Xy/SMathStudioDesktop.0_99_6839.mono.tar.gz
+	md5sums = 9c16e1e7b359de274f6592bd85a68508
 
 pkgname = smath
 
