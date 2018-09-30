@@ -1,7 +1,7 @@
 # Maintainer: Gaute Hope <eg@gaute.vetsj.com>
 _pkgname=astroid
 pkgname=$_pkgname-git
-pkgver=v0.13.r24.g20b9171
+pkgver=v0.14.r0.g3e6c863
 pkgrel=1
 epoch=
 pkgdesc="a graphical threads-with-tags style, lightweight and fast, email client for notmuch, inspired by sup and others"
@@ -10,7 +10,7 @@ url="https://github.com/astroidmail/astroid"
 license=('GPL')
 groups=()
 depends=('notmuch' 'boost' 'boost-libs' 'gmime' 'gtkmm3' 'webkit2gtk' 'libsass' 'libpeas' 'gobject-introspection' 'protobuf')
-makedepends=('cmake' 'ninja' 'git' 'pkg-config' 'python-gobject' 'cmark')
+makedepends=('cmake' 'ninja' 'git' 'pkg-config' 'python-gobject' 'cmark' 'ruby-ronn')
 checkdepends=('notmuch-runtime')
 optdepends=('gvim: default editor'
             'emacs: can be used as editor'
@@ -23,10 +23,9 @@ backup=()
 options=()
 install=$_pkgname.install
 changelog=
-source=(astroid::git+https://github.com/astroidmail/astroid.git astroid.1.gz)
+source=(astroid::git+https://github.com/astroidmail/astroid.git)
 noextract=()
-md5sums=('SKIP'
-         '1cae3fa289d3061dd7d1ac2aa1f9c643')
+md5sums=('SKIP')
 
 build() {
   cd "$srcdir/astroid"
@@ -50,10 +49,6 @@ package() {
   cd "$srcdir/astroid"
   cd build
   DESTDIR="$pkgdir" ninja install
-
-  # install manpage
-  mkdir -p "$pkgdir/usr/share/man/man1"
-  cp "$srcdir/astroid.1.gz" "$pkgdir/usr/share/man/man1/"
 }
 
 pkgver() {
