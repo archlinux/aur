@@ -4,7 +4,7 @@ pkgname=wio
 pkgver=0.4.1
 pkgrel=1
 pkgdesc='An IoT Development Environment'
-arch=('x86_64')
+arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/wio/wio'
 license=('MIT')
 options=("!strip")
@@ -20,6 +20,8 @@ _pkg_i686='i386'
 _cs_i686='cc2498de41809228e9f847b66cefd6afb4920f41a9dbc79a4f4e12867aa6fd2e'
 _pkg_armv6h='arm6'
 _cs_armv6h='496d2b5646289d77ecd974527ce9569612230fd2795ced889fd896aa663d15c8'
+_pkg_armv7h='arm6'
+_cs_armv7h='496d2b5646289d77ecd974527ce9569612230fd2795ced889fd896aa663d15c8'
 _pkg_aarch64='arm64'
 _cs_aarch64='8994cc97b649b601a74ef3de89bee213a86981dc3a582d09e6c43009e66faaee'
 
