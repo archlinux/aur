@@ -1,7 +1,7 @@
 # Maintainer: Ward Segers <w@rdsegers.be>
 pkgname=qpasm
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 kgdesc="pseudo-assembler interpreter"
 arch=("x86_64")
 url="https://github.com/synio-wesley/qpasm"
@@ -27,7 +27,7 @@ build() {
 
 package() {
 	# Desktop entry
-	install -Dm 644 ./../qpasm.desktop "$pkgdir"/usr/share/applications/qpas.desktop
+	install -Dm 644 ./../qpasm.desktop "$pkgdir"/usr/share/applications/qpasm.desktop
 
 	cd "$pkgname-$pkgver"
 	# Binary

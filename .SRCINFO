@@ -1,6 +1,6 @@
 pkgbase = qpasm
 	pkgver = 1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/synio-wesley/qpasm
 	arch = x86_64
 	license = LGPL
