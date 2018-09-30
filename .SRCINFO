@@ -1,0 +1,12 @@
+pkgbase = gvm
+	pkgdesc = Go Version Manager
+	pkgver = r617.6ecd46d
+	pkgrel = 1
+	url = https://github.com/moovweb/gvm
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+
+pkgname = gvm
+
