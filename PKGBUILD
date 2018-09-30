@@ -7,8 +7,8 @@ pkgdesc="An open-source, full-blown programming language consisting of emojis"
 arch=('i686' 'x86_64')
 url="https://emojicode.org"
 license=("custom")
-depends=("llvm")
-makedepends=("cmake>=3.5.1" "ninja" "gcc>=7.2" "python>=3.5.2")
+depends=("ncurses")
+makedepends=("llvm" "cmake>=3.5.1" "ninja" "gcc>=7.2" "python>=3.5.2")
 checkdepends=("python>=3.5.2")
 source=("${pkgname}::git+https://github.com/emojicode/emojicode")
 md5sums=("SKIP")

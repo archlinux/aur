@@ -7,11 +7,12 @@ pkgbase = emojicode
 	arch = x86_64
 	license = custom
 	checkdepends = python>=3.5.2
+	makedepends = llvm
 	makedepends = cmake>=3.5.1
 	makedepends = ninja
 	makedepends = gcc>=7.2
 	makedepends = python>=3.5.2
-	depends = llvm
+	depends = ncurses
 	source = emojicode::git+https://github.com/emojicode/emojicode
 	md5sums = SKIP
 
