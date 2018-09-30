@@ -4,10 +4,10 @@
 # Based on [extra]'s thunderbird
 
 pkgname=thunderbird-nightly
-pkgver=63.0a1.20180630
-_version=63.0a1
+pkgver=64.0a1.20180930
+_version=64.0a1
 pkgrel=1
-pkgdesc="Standalone Mail/News reader - Nightly build"
+pkgdesc='Standalone Mail/News reader - Nightly build'
 arch=('i686' 'x86_64')
 url="http://www.mozilla.org/thunderbird"
 license=('MPL' 'GPL' 'LGPL')
