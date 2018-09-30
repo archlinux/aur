@@ -1,6 +1,6 @@
 pkgbase = trezord-go
 	pkgdesc = TREZOR Communication Daemon aka TREZOR Bridge (written in Go)
-	pkgver = 2.0.23
+	pkgver = 2.0.24
 	pkgrel = 1
 	url = https://github.com/trezor/trezord-go
 	install = trezord-go.install
