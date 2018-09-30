@@ -2,7 +2,7 @@
 # Contributor: Ray Hogenson <rayhogenson at gmail dot com>
 pkgname=par
 pkgver=1.52
-pkgrel=5
+pkgrel=6
 pkgdesc='Paragraph reformatter'
 url='http://www.nicemice.net/par/'
 depends=()
@@ -26,7 +26,7 @@ build() {
 
 package() {
 	cd "$_dirname"
-	install --mode=755 -D par "$pkgdir/usr/bin/par"
-	install --mode=644 -D par.1 "$pkgdir/usr/share/man/man1/par.1"
-	install --mode=644 -D par.doc "$pkgdir/usr/share/licenses/$pkgname/par.doc"
+	install -Dm755 -D par		"$pkgdir/usr/bin/par"
+	install -Dm644 -D par.1		"$pkgdir/usr/share/man/man1/par.1"
+	install -Dm644 -D par.doc	"$pkgdir/usr/share/licenses/$pkgname/par.doc"
 }
