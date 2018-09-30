@@ -3,7 +3,7 @@
 
 pkgname=ldap-account-manager
 pkgver=6.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A webfrontend for managing entries stored in an LDAP directory"
 arch=('any')
 url="https://www.ldap-account-manager.org/"
