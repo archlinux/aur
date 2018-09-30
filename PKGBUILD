@@ -1,44 +1,44 @@
-# Maintainer: Adam Harvey <adam@adamharvey.name>
+# Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
+# Contributor: Adam Harvey <adam@adamharvey.name>
+
 pkgname=apfs-fuse-git
-pkgver=r45.7da8083
-pkgrel=1
+pkgver=r61.4a5bb16
+pkgrel=2
 pkgdesc="FUSE driver for APFS (Apple File System)"
 arch=('i686' 'x86_64')
 url="https://github.com/sgan81/apfs-fuse"
-license=('GPL')
-groups=()
-depends=('fuse3')
-makedepends=('git' 'fuse3' 'cmake')
-provides=("${pkgname%-git}")
+license=('GPL2')
+depends=('fuse2' 'bzip2' 'zlib')
+makedepends=('git' 'cmake')
+provides=("${pkgname%-git}=$pkgver")
 conflicts=("${pkgname%-git}")
-replaces=()
-backup=()
-options=()
-install=
-source=('apfs-fuse::git+https://github.com/sgan81/apfs-fuse')
-noextract=()
-md5sums=('SKIP')
+source=('git+https://github.com/sgan81/apfs-fuse'
+        'git+https://github.com/lzfse/lzfse')
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${pkgname%-git}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd "$srcdir/${pkgname%-git}"
-  git submodule update --init
+  cd "${pkgname%-git}"
+  git submodule init
+  git config submodule.3rdparty/lzfse.url "$srcdir/lzfse"
+  git submodule update
+  mkdir -p build
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
-  mkdir -p build
-  cd build
+  cd "${pkgname%-git}/build"
   cmake ..
   make
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-  mkdir -p "$pkgdir/usr/bin"
-  install -Dm755 build/bin/{apfs-dump,apfs-dump-quick,apfs-fuse,lzfse} "$pkgdir/usr/bin"
+  cd "${pkgname%-git}/build"
+  for binary in apfs-dump apfs-dump-quick apfs-fuse ; do
+    install -Dm755 bin/$binary "$pkgdir/usr/bin/$binary"
+  done
 }

@@ -1,19 +1,22 @@
 pkgbase = apfs-fuse-git
 	pkgdesc = FUSE driver for APFS (Apple File System)
-	pkgver = r45.7da8083
-	pkgrel = 1
+	pkgver = r61.4a5bb16
+	pkgrel = 2
 	url = https://github.com/sgan81/apfs-fuse
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL2
 	makedepends = git
-	makedepends = fuse3
 	makedepends = cmake
-	depends = fuse3
-	provides = apfs-fuse
+	depends = fuse2
+	depends = bzip2
+	depends = zlib
+	provides = apfs-fuse=r61.4a5bb16
 	conflicts = apfs-fuse
-	source = apfs-fuse::git+https://github.com/sgan81/apfs-fuse
-	md5sums = SKIP
+	source = git+https://github.com/sgan81/apfs-fuse
+	source = git+https://github.com/lzfse/lzfse
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = apfs-fuse-git
 
