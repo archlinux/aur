@@ -1,0 +1,29 @@
+diff -r -u -N ddb_medialib/main_widget.cpp ddb_medialib-iostream/main_widget.cpp
+--- ddb_medialib/main_widget.cpp	2018-09-30 22:15:22.851442464 +0200
++++ ddb_medialib-iostream/main_widget.cpp	2018-09-30 22:14:59.861088268 +0200
+@@ -3,6 +3,7 @@
+ #include "settings_dlg.hpp"
+ #include "medialib.h"
+ 
++#include <iostream>
+ #include <fstream>
+ 
+ struct ByDirectoryColumns : Gtk::TreeModel::ColumnRecord
+@@ -457,4 +458,4 @@
+     {
+         locked->onChanged(/*restart*/true);
+     }
+-}
+\ No newline at end of file
++}
+diff -r -u -N ddb_medialib/scan_thread.cpp ddb_medialib-iostream/scan_thread.cpp
+--- ddb_medialib/scan_thread.cpp	2018-09-30 22:15:22.851442464 +0200
++++ ddb_medialib-iostream/scan_thread.cpp	2018-09-30 22:14:59.861088268 +0200
+@@ -4,6 +4,7 @@
+ #include <boost/range.hpp>
+ #include <boost/scope_exit.hpp>
+ 
++#include <iostream>
+ #include <thread>
+ 
+ namespace pl = std::placeholders;

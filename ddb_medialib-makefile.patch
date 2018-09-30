@@ -1,0 +1,14 @@
+diff -r -u -N ddb_medialib/Makefile ddb_medialib-makefile/Makefile
+--- ddb_medialib/Makefile	2018-09-30 22:01:37.524776612 +0200
++++ ddb_medialib-makefile/Makefile	2018-09-30 22:03:31.003392745 +0200
+@@ -18,8 +18,8 @@
+     CXXFLAGS += -DDEBUG -ggdb3 -Wall
+     CCFLAGS += -DDEBUG -ggdb3 -Wall
+ else
+-    CXXFLAGS += -DNDEBUG -O3
+-    CCFLAGS += -DNDEBUG -O3
++    CXXFLAGS += -DNDEBUG $(CXXOPT)
++    CCFLAGS += -DNDEBUG $(COPT) 
+ endif
+ 
+ ifdef GTK2
