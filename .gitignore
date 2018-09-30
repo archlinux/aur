@@ -2,7 +2,5 @@
 !.gitignore
 !.SRCINFO
 !PKGBUILD
-!*.desktop
 !*.patch
-!*.png
-!*.sh
+!*.xml

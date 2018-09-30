@@ -1,7 +1,7 @@
 # Maintainer: cyrant <cyrant at tuta dot io>
 
 pkgname=scenarist
-pkgver=0.7.2.beta9
+pkgver=0.7.2.beta9a
 pkgrel=1
 pkgdesc='Screenwriting software, which developed in Russia.'
 url='https://kitscenarist.ru'
@@ -11,17 +11,16 @@ depends=('qt5-multimedia' 'qt5-svg' 'qt5-webengine')
 makedepends=('git')
 source=(
   "${pkgname}::git+https://github.com/dimkanovikov/KITScenarist.git#tag=${pkgver}"
-  "build.patch"
+  'mime.xml'
 )
 md5sums=(
   'SKIP'
-  '5a400771b9a0665aacfc773a18548628'
+  '45018aa6c472835db014c62a80f5b6dc'
 )
 
 prepare() {
   cd "${pkgname}"
   git submodule update --init
-  git apply "${srcdir}/build.patch"
 }
 
 build() {
@@ -36,4 +35,5 @@ package() {
   cd "${pkgname}/build/Ubuntu/scenarist_amd64/usr/share"
   install -Dm644 "applications/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -Dm644 "pixmaps/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+  install -Dm644 "${srcdir}/mime.xml" "${pkgdir}/usr/share/mime/packages/${pkgname}.xml"
 }
