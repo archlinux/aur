@@ -2,13 +2,13 @@
 
 pkgname=wxhexeditor-git
 _pkgbasename=wxhexeditor
-pkgver=r451.8c81439
+pkgver=r663.16f75d1
 pkgrel=1
 pkgdesc="a free hex editor / disk editor for Linux, Windows and MacOSX"
 arch=('i686' 'x86_64')
 url="http://wxhexeditor.sourceforge.net/"
 license=('GPL')
-depends=('wxgtk')
+depends=('wxgtk' 'openmp')
 makedepends=('git')
 provides=('wxhexeditor')
 conflicts=('wxhexeditor')
@@ -24,7 +24,8 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgbasename"
-  make CXXFLAGS="${CXXFLAGS/-fno-rtti/}"
+  export LDFLAGS="${LDFLAGS} -fopenmp"
+  make CXXFLAGS="${CXXFLAGS/-fopenmp/}"
 }
 
 package() {
