@@ -32,8 +32,12 @@ build()
 
   export PYTHONPATH=$srcdir/langkit-gpl-2018-src:$PYTHONPATH
 
+  # Clang has trouble compiling the Quex-generated lexer, so make sure
+  # GPRbuild chooses GCC.
+  gprconfig -o config.cgpr --batch --config=c,,,,GCC --config=ada,,,,
+
   python2 ada/manage.py generate
-  python2 ada/manage.py build
+  python2 ada/manage.py build --gargs="-R --config=$PWD/config.cgpr"
 }
 
 
