@@ -2,7 +2,7 @@
 
 pkgname=emojicode
 pkgver=0.6.0
-pkgrel=1
+pkgrel=3
 pkgdesc="An open-source, full-blown programming language consisting of emojis"
 arch=('i686' 'x86_64')
 url="https://emojicode.org"
