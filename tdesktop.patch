@@ -545,10 +545,10 @@ index 80259c687..5f33ff961 100644
        }]
      ],
 diff --git a/Telegram/gyp/telegram_sources.txt b/Telegram/gyp/telegram_sources.txt
-index dd4f848db..22cf8866c 100644
+index f02296c8a..46bd016dd 100644
 --- a/Telegram/gyp/telegram_sources.txt
 +++ b/Telegram/gyp/telegram_sources.txt
-@@ -765,14 +765,7 @@
+@@ -755,14 +755,7 @@
  <(emoji_suggestions_loc)/emoji_suggestions.cpp
  <(emoji_suggestions_loc)/emoji_suggestions.h
  
