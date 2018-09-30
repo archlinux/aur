@@ -37,8 +37,6 @@ package() {
 
     cd "Emojicode-0.6.0-Linux-${CARCH}"
 
-    pwd
-
     install -Dm755 "emojicodec" "${pkgdir}/usr/bin/emojicodec"
 
     install -Dm644 "include/runtime/Runtime.h" "${pkgdir}/usr/local/include/emojicode/runtime/Runtime.h"
