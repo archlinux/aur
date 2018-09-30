@@ -1,4 +1,3 @@
-# Maintainer: aimileus <me at aimileus dot nl>
 # Contributor: Afri 5chdn <aur@5chdn.co>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
