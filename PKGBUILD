@@ -1,6 +1,6 @@
 # Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
 pkgname=opencollada
-pkgver=1.6.59
+pkgver=1.6.63
 pkgrel=1
 epoch=1
 pkgdesc="Stream based reader and writer library for COLLADA files"
@@ -10,9 +10,17 @@ license=('GPL')
 depends=('libxml2' 'pcre')
 makedepends=('git' 'cmake')
 source=('opencollada.conf'
+        'pcre.patch'
         "git://github.com/KhronosGroup/OpenCOLLADA.git#tag=v${pkgver}")
-md5sums=('5f7e9d79ab86756648b648ee5ed6ce1d'
-         'SKIP')
+sha256sums=('2fc9656a2b881ca4528416daa91fc525adaa97d73e96a18b41aa7856270eba1f'
+            'f37a7cbadcaa06b70133f76c509c61bdcf13715bc13aed11b5db83ef594813b3'
+            'SKIP')
+
+prepare() {
+  cd "$srcdir"/OpenCOLLADA
+
+  patch -Np1 -i "$srcdir"/pcre.patch
+}
 
 build() {
   cd "$srcdir"/OpenCOLLADA
