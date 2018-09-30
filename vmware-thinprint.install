@@ -1,0 +1,7 @@
+post_install() {
+  cat << EOF
+
+In order to use Thinprint functionnality, you need to enable vmware-thinprint.service
+
+EOF
+}
