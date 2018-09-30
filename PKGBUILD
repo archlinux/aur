@@ -3,7 +3,7 @@
 
 pkgname=lxd-lts
 _gitpkgname=lxd
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="REST API, command line tool and OpenStack integration plugin for LXC. (LTS version)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ url="https://github.com/lxc/lxd"
 license=('APACHE')
 conflicts=('lxd')
 provides=('lxd')
-depends=('lxc' 'squashfs-tools' 'dnsmasq' 'sqlite')
+depends=('lxc' 'squashfs-tools' 'dnsmasq' 'dqlite')
 makedepends=('go-pie' 'git')
 options=('!strip' '!emptydirs')
 optdepends=(
@@ -30,7 +30,7 @@ source=(
     "networkmanager-dnsmasq-lxd.conf"
 )
 
-md5sums=('2ed79bc248abd9bf1d1e1aebdc9a1a16'
+md5sums=('cd7a65106aa7205081646bd7cb96610a'
          'a95280cf05920bd561cae451acb5b27d'
          'dfa7033fc39632af0f2c7e26ee966789'
          'b1fd16933c1b24aaa9ccc8f5a0e6478c'
