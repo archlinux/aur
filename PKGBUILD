@@ -3,7 +3,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=udisks2-nosystemd
-pkgver=2.8.0
+pkgver=2.8.1
 pkgrel=1
 pkgdesc="Disk Management Service, version 2"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ replaces=('udisks2' 'udisks2-eudev')
 options=(!libtool)
 source=(https://github.com/storaged-project/udisks/archive/udisks-$pkgver.tar.gz
         disable_logind_support.patch)
-sha512sums=('1b9f0bbf592c768b8b4193704493f188d4a601d203d37712f798403b0054a42a86884491449d0b1040c89782c00f1defbeb375d255047d69506cda6209048008'
+sha512sums=('82b02e8f2635bb921da0fdd0c043903835733fc7bb807c3f3a5a19c7d41af5dd866f0701dd872f9614b3f8ef66b2f26f7e69a489c58630f1b46c614c0f143ce5'
             '379c9600d06a1a6d1a59cc93b2b15fbafc6c756a4dcbcf1b6b7995e991c0758e19db6f08511351b1a764b747d183373423e1bc396147eb8da5b2d85c420c25b4')
 
 prepare() {
