@@ -1,59 +1,47 @@
-# $Id$
 # Maintainer: Pieter Lenaerts <pieter dot aj dot lenaerts at gmail>
+# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-x205ta
-_srcname=linux-4.17
-pkgver=4.17.10
+_srcver=4.18.9-arch1
+pkgver=${_srcver//-/.}
 pkgrel=1
-arch=('x86_64')
-url="https://www.kernel.org/"
-license=('GPL2')
-makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
+arch=(x86_64)
+url="https://git.archlinux.org/linux.git/log/?h=v$_srcver"
+license=(GPL2)
+makedepends=(xmlto kmod inetutils bc libelf git python-sphinx graphviz)
 options=('!strip')
+_srcname=archlinux-linux
 source=(
-  https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
-  https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.{xz,sign}
+  "$_srcname::git+https://git.archlinux.org/linux.git?signed#tag=v$_srcver"
   config         # the main kernel config file
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
-  0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  0002-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
-  0003-ACPI-watchdog-Prefer-iTCO_wdt-always-when-WDAT-table.patch
-  0004-mac80211-disable-BHs-preemption-in-ieee80211_tx_cont.patch
 
+  # TODO: check hans' patches' :-)
   https://raw.githubusercontent.com/harryharryharry/x205ta-iso2usb-files/master/brcmfmac43340-sdio.txt
-  https://raw.githubusercontent.com/harryharryharry/x205ta-patches/master/4.16-patches/i915-pm-Be-less-agressive-with-clockfreq-changes-on-Bay-Trail.patch
-  https://raw.githubusercontent.com/harryharryharry/x205ta-patches/master/4.16-patches/intel_idle-Disable-C6N-and-C6S-on-Bay-Trail.patch
-  https://raw.githubusercontent.com/harryharryharry/x205ta-patches/master/4.16-patches/fix_c-state_patch_v4.16.patch
-  https://raw.githubusercontent.com/harryharryharry/x205ta-patches/master/4.16-patches/brcmfmac-p2p-and-normal-ap-access-are-not-always-possible-at-the-same-time.patch
+  https://raw.githubusercontent.com/harryharryharry/x205ta-patches/master/4.18-patches/i915-pm-Be-less-agressive-with-clockfreq-changes-on-Bay-Trail.patch
+  https://raw.githubusercontent.com/harryharryharry/x205ta-patches/master/4.18-patches/intel_idle-Disable-C6N-and-C6S-on-Bay-Trail.patch
+#  https://raw.githubusercontent.com/harryharryharry/x205ta-patches/master/4.16-patches/fix_c-state_patch_v4.16.patch
+  https://raw.githubusercontent.com/harryharryharry/x205ta-patches/master/4.18-patches/brcmfmac-p2p-and-normal-ap-access-are-not-always-possible-at-the-same-time.patch
+#  https://raw.githubusercontent.com/harryharryharry/x205ta-patches/master/4.16-patches/allow-s0i3-suspend-unified-4.16.patch
 
-# Not sure if we want these... You may want to try Harryharryharrys own patch. If you do then just modify the PKGBUILD
-#  https://github.com/harryharryharry/x205ta-patches/blob/master/4.16-patches/allow-s0i3-suspend-unified-4.16.patch # Patcher calls them dirty hacky.
-#  '9003-brcmfmac-properly-align-buffers-on-certain-platform-swith-64-bit-DMA.patch' # Excluding this patch. Not sure if it helps.
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
+  '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13'
-            'SKIP'
-            '41ad005296c7a1b5245a87881f666b3f4d7aa05a6b9409454b2e473d473c4cee'
-            'SKIP'
-            'de57fb099964ec497c8727ca2fbbcc7319ec241b338bbd89f34ac9f5b5d22b19'
+sha256sums=('SKIP'
+            'b7d80725b510cae0cb1e476eb2ac131bf2971f210951658f50c13c8282c1bf06'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '92f848d0e21fbb2400e50d1c1021514893423641e5450896d7b1d88aa880b2b9'
-            'fc3c50ae6bd905608e0533a883ab569fcf54038fb9d6569b391107d9fd00abbc'
-            'bc50c605bd0e1fa7437c21ddef728b83b6de3322b988e14713032993dfa1fc69'
-            '66284102261c4ed53db050e9045c8672ba0e5171884b46e58f6cd417774d8578'
             'aea75c0b07673f701856e3c2a35db33c041fdaf0bd5ef2927fb25b1bce2c2b62'
             '5ad7e021452deffd387a5b81abcd0f608f8141eaab56fbdd162ca0b7966fc3b4'
             '3845aeb3744372b716c668283b23972d76e482d8c69b107e13a13669e5671d06'
-            '3dc0c5c42fa0957086fc8e5e0076baff7234d5aad73b0c71bcae7119d43f40fa'
             'ad0f318809d074ee387f48fdfcb711b0fa3eb378867ac65c6da3d490834e649d')
 
 
@@ -61,25 +49,25 @@ _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
 
 prepare() {
-  cd ${_srcname}
+  cd $_srcname
 
-  # add upstream patch
-  patch -p1 -i ../patch-${pkgver}
+  msg2 "Setting version..."
+  scripts/setlocalversion --save-scmversion
+  echo "-$pkgrel" > localversion.10-pkgrel
+  echo "$_kernelname" > localversion.20-pkgname
 
-  # add latest fixes from stable queue, if needed
-  # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
+  local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    [[ $src = *.patch ]] || continue
+    msg2 "Applying patch $src..."
+    patch -Np1 < "../$src"
+  done
 
-  # disable USER_NS for non-root users by default
-  patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-
-  # https://bugs.archlinux.org/task/56711
-  patch -Np1 -i ../0002-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
-
-  # https://bugs.archlinux.org/task/56780
-  patch -Np1 -i ../0003-ACPI-watchdog-Prefer-iTCO_wdt-always-when-WDAT-table.patch
-
-  # Fix iwd provoking a BUG
-  patch -Np1 -i ../0004-mac80211-disable-BHs-preemption-in-ieee80211_tx_cont.patch
+  msg2 "Setting config..."
+  cp ../config .config
+  make olddefconfig
 
   # Here start x205ta patches
   # Refer to https://github.com/harryharryharry/x205ta-patches for harryharryharry's gathered patches
@@ -90,22 +78,26 @@ prepare() {
   mkdir -p ${pkgdir}/usr/lib/firmware/brcm/
   cp ${srcdir}/brcmfmac43340-sdio.txt ${pkgdir}/usr/lib/firmware/brcm/
 
+  # Harryharryharry's patch to allow power efficient s0i3 state to be entered during suspend
+  # Refer to https://ubuntuforums.org/showthread.php?t=2254322&page=158&p=13625163#post13625163 for harryharryharry's kernel compile guide
+#  patch -Np1 --verbose -i ../allow-s0i3-suspend-unified-4.16.patch
+
   # patch attempts to prevents baytrail kernel freezes - thanks to jbMacAZ
   # refer to https://bugzilla.kernel.org/show_bug.cgi?id=109051#c829 for statement that this seems the more effective patch.
   # refer to https://drive.google.com/file/d/1uZeTQa6sWdtwXBIa8de5hkwEKeDeUR30/view for the patch, but to
   # https://drive.google.com/drive/folders/0B4s5KNXf2Z36Nkxac245LTBGdjQ for an overview of patches for ASUS T100H, where this
   # patch is published.
-  patch -Np1 -i ../fix_c-state_patch_v4.16.patch
+#  patch --verbose -Np1 -i ../fix_c-state_patch_v4.16.patch
 
   # The next two patches come from Hans De Goede and should bring a lower power suspend.
   # Refer to https://github.com/jwrdegoede/linux-sunxi/commit/2a02df1192d2718ac7eaa871e2941840375f1e8c
   # and https://github.com/jwrdegoede/linux-sunxi/commit/bdb7d50f49e758ce78a59e894f9be98db6e15049
-  patch -Np1 -i ../i915-pm-Be-less-agressive-with-clockfreq-changes-on-Bay-Trail.patch
-  patch -Np1 -i ../intel_idle-Disable-C6N-and-C6S-on-Bay-Trail.patch
+  #patch -Np1 -i ../i915-pm-Be-less-agressive-with-clockfreq-changes-on-Bay-Trail.patch
+  #patch -Np1 -i ../intel_idle-Disable-C6N-and-C6S-on-Bay-Trail.patch
 
   # patch to hide dmesg errors of brcmfmac trying to enable a p2p device
   # refer to https://patchwork.kernel.org/patch/9592913/
-  patch -Np1 -i ../brcmfmac-p2p-and-normal-ap-access-are-not-always-possible-at-the-same-time.patch
+  #patch -Np1 -i ../brcmfmac-p2p-and-normal-ap-access-are-not-always-possible-at-the-same-time.patch
 
   # x205ta patches end here
 
@@ -125,183 +117,187 @@ prepare() {
   # Remove existing LOCALVERSION stuff from .config
 
   # Here ends x205ta stuff.
-  cat ../config - >.config <<END
-CONFIG_LOCALVERSION="${_kernelname}"
-CONFIG_LOCALVERSION_AUTO=n
-END
-
-  # set extraversion to pkgrel and empty localversion
-  sed -e "/^EXTRAVERSION =/s/=.*/= -${pkgrel}/" \
-      -e "/^EXTRAVERSION =/aLOCALVERSION =" \
-      -i Makefile
-
-  # don't run depmod on 'make install'. We'll do this ourselves in packaging
-  sed -i '2iexit 0' scripts/depmod.sh
-
-  # get kernel version
-  make prepare
-
-  # load configuration
-  # Configure the kernel. Replace the line below with one of your choice.
-  #make menuconfig # CLI menu for configuration
-  #make nconfig # new CLI menu for configuration
-  #make xconfig # X-based configuration
-  #make oldconfig # using old config from previous kernel version
-  # ... or manually edit .config
-
-  # rewrite configuration
-  yes "" | make config >/dev/null
+  make -s kernelrelease > ../version
+  msg2 "Prepared %s version %s" "$pkgbase" "$(<../version)"
 }
 
 build() {
-  cd ${_srcname}
-
+  cd $_srcname
+  make bzImage modules htmldocs
   make bzImage modules
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules, with patches and config for ASUS x205ta."
-  [ "${pkgbase}" = "linux" ] && groups=('base')
-  depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
+  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
+  [[ $pkgbase = linux ]] && groups=(base)
+  depends=(coreutils linux-firmware kmod mkinitcpio)
   optdepends=('crda: to set the correct wireless channels of your country')
-  backup=("etc/mkinitcpio.d/${pkgbase}.preset")
+  backup=("etc/mkinitcpio.d/$pkgbase.preset")
   install=linux.install
 
-  cd ${_srcname}
+  local kernver="$(<version)"
 
-  # get kernel version
-  _kernver="$(make kernelrelease)"
-  _basekernel=${_kernver%%-*}
-  _basekernel=${_basekernel%.*}
+  cd $_srcname
 
-  mkdir -p "${pkgdir}"/{boot,usr/lib/modules}
-  make INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
-  cp arch/x86/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
+  msg2 "Installing boot image..."
+  install -Dm644 "$(make -s image_name)" "$pkgdir/boot/vmlinuz-$pkgbase"
 
-  # make room for external modules
-  local _extramodules="extramodules-${_basekernel}${_kernelname}"
-  ln -s "../${_extramodules}" "${pkgdir}/usr/lib/modules/${_kernver}/extramodules"
+  msg2 "Installing modules..."
+  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
+  mkdir -p "$modulesdir"
+  make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
 
-  # add real version for building modules and running depmod from hook
-  echo "${_kernver}" |
-    install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modules/${_extramodules}/version"
+  # a place for external modules,
+  # with version file for building modules and running depmod from hook
+  local extramodules="extramodules$_kernelname"
+  local extradir="$pkgdir/usr/lib/modules/$extramodules"
+  install -Dt "$extradir" -m644 ../version
+  ln -sr "$extradir" "$modulesdir/extramodules"
 
   # remove build and source links
-  rm "${pkgdir}"/usr/lib/modules/${_kernver}/{source,build}
+  rm "$modulesdir"/{source,build}
 
-  # now we call depmod...
-  depmod -b "${pkgdir}/usr" -F System.map "${_kernver}"
-
-  # add vmlinux
-  install -Dt "${pkgdir}/usr/lib/modules/${_kernver}/build" -m644 vmlinux
-
+  msg2 "Installing hooks..."
   # sed expression for following substitutions
-  local _subst="
-    s|%PKGBASE%|${pkgbase}|g
-    s|%KERNVER%|${_kernver}|g
-    s|%EXTRAMODULES%|${_extramodules}|g
+  local subst="
+    s|%PKGBASE%|$pkgbase|g
+    s|%KERNVER%|$kernver|g
+    s|%EXTRAMODULES%|$extramodules|g
   "
 
   # hack to allow specifying an initially nonexisting install file
-  sed "${_subst}" "${startdir}/${install}" > "${startdir}/${install}.pkg"
-  true && install=${install}.pkg
+  sed "$subst" "$startdir/$install" > "$startdir/$install.pkg"
+  true && install=$install.pkg
 
-  # install mkinitcpio preset file
-  sed "${_subst}" ../linux.preset |
-    install -Dm644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+  # fill in mkinitcpio preset and pacman hooks
+  sed "$subst" ../linux.preset | install -Dm644 /dev/stdin \
+    "$pkgdir/etc/mkinitcpio.d/$pkgbase.preset"
+  sed "$subst" ../60-linux.hook | install -Dm644 /dev/stdin \
+    "$pkgdir/usr/share/libalpm/hooks/60-$pkgbase.hook"
+  sed "$subst" ../90-linux.hook | install -Dm644 /dev/stdin \
+    "$pkgdir/usr/share/libalpm/hooks/90-$pkgbase.hook"
 
-  # install pacman hooks
-  sed "${_subst}" ../60-linux.hook |
-    install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/60-${pkgbase}.hook"
-  sed "${_subst}" ../90-linux.hook |
-    install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
+  msg2 "Fixing permissions..."
+  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-headers() {
-  pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel, with patches for ASUS x205ta."
+  pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
 
-  cd ${_srcname}
-  local _builddir="${pkgdir}/usr/lib/modules/${_kernver}/build"
+  local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
-  install -Dt "${_builddir}" -m644 Makefile .config Module.symvers
-  install -Dt "${_builddir}/kernel" -m644 kernel/Makefile
+  cd $_srcname
 
-  mkdir "${_builddir}/.tmp_versions"
-
-  cp -t "${_builddir}" -a include scripts
-
-  install -Dt "${_builddir}/arch/x86" -m644 arch/x86/Makefile
-  install -Dt "${_builddir}/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
-
-  cp -t "${_builddir}/arch/x86" -a arch/x86/include
-
-  install -Dt "${_builddir}/drivers/md" -m644 drivers/md/*.h
-  install -Dt "${_builddir}/net/mac80211" -m644 net/mac80211/*.h
-
-  # http://bugs.archlinux.org/task/13146
-  install -Dt "${_builddir}/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
-
-  # http://bugs.archlinux.org/task/20402
-  install -Dt "${_builddir}/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
-  install -Dt "${_builddir}/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
-  install -Dt "${_builddir}/drivers/media/tuners" -m644 drivers/media/tuners/*.h
-
-  # add xfs and shmem for aufs building
-  mkdir -p "${_builddir}"/{fs/xfs,mm}
-
-  # copy in Kconfig files
-  find . -name Kconfig\* -exec install -Dm644 {} "${_builddir}/{}" \;
+  msg2 "Installing build files..."
+  install -Dt "$builddir" -m644 Makefile .config Module.symvers System.map vmlinux
+  install -Dt "$builddir/kernel" -m644 kernel/Makefile
+  install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
+  cp -t "$builddir" -a scripts
 
   # add objtool for external module building and enabled VALIDATION_STACK option
-  install -Dt "${_builddir}/tools/objtool" tools/objtool/objtool
+  install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
-  # remove unneeded architectures
-  local _arch
-  for _arch in "${_builddir}"/arch/*/; do
-    [[ ${_arch} == */x86/ ]] && continue
-    rm -r "${_arch}"
+  # add xfs and shmem for aufs building
+  mkdir -p "$builddir"/{fs/xfs,mm}
+
+  # ???
+  mkdir "$builddir/.tmp_versions"
+
+  msg2 "Installing headers..."
+  cp -t "$builddir" -a include
+  cp -t "$builddir/arch/x86" -a arch/x86/include
+  install -Dt "$builddir/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
+
+  install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
+  install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
+
+  # http://bugs.archlinux.org/task/13146
+  install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
+
+  # http://bugs.archlinux.org/task/20402
+  install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
+  install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
+  install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
+
+  msg2 "Installing KConfig files..."
+  find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
+
+  msg2 "Removing unneeded architectures..."
+  local arch
+  for arch in "$builddir"/arch/*/; do
+    [[ $arch = */x86/ ]] && continue
+    echo "Removing $(basename "$arch")"
+    rm -r "$arch"
   done
 
-  # remove files already in linux-docs package
-  rm -r "${_builddir}/Documentation"
+  msg2 "Removing documentation..."
+  rm -r "$builddir/Documentation"
 
-  # remove now broken symlinks
-  find -L "${_builddir}" -type l -printf 'Removing %P\n' -delete
+  msg2 "Removing broken symlinks..."
+  find -L "$builddir" -type l -printf 'Removing %P\n' -delete
 
-  # Fix permissions
-  chmod -R u=rwX,go=rX "${_builddir}"
+  msg2 "Removing loose objects..."
+  find "$builddir" -type f -name '*.o' -printf 'Removing %P\n' -delete
 
-  # strip scripts directory
-  local _binary _strip
-  while read -rd '' _binary; do
-    case "$(file -bi "${_binary}")" in
-      *application/x-sharedlib*)  _strip="${STRIP_SHARED}"   ;; # Libraries (.so)
-      *application/x-archive*)    _strip="${STRIP_STATIC}"   ;; # Libraries (.a)
-      *application/x-executable*) _strip="${STRIP_BINARIES}" ;; # Binaries
-      *) continue ;;
+  msg2 "Stripping build tools..."
+  local file
+  while read -rd '' file; do
+    case "$(file -bi "$file")" in
+      application/x-sharedlib\;*)      # Libraries (.so)
+        strip -v $STRIP_SHARED "$file" ;;
+      application/x-archive\;*)        # Libraries (.a)
+        strip -v $STRIP_STATIC "$file" ;;
+      application/x-executable\;*)     # Binaries
+        strip -v $STRIP_BINARIES "$file" ;;
+      application/x-pie-executable\;*) # Relocatable binaries
+        strip -v $STRIP_SHARED "$file" ;;
     esac
-    /usr/bin/strip ${_strip} "${_binary}"
-  done < <(find "${_builddir}/scripts" -type f -perm -u+w -print0 2>/dev/null)
+  done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
+
+  msg2 "Adding symlink..."
+  mkdir -p "$pkgdir/usr/src"
+  ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase-$pkgver"
+
+  msg2 "Fixing permissions..."
+  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-docs() {
-  pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel, with patches for ASUS x205ta."
+  pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
 
-  cd ${_srcname}
-  local _builddir="${pkgdir}/usr/lib/modules/${_kernver}/build"
+  local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
-  mkdir -p "${_builddir}"
-  cp -t "${_builddir}" -a Documentation
+  cd $_srcname
 
-  # Fix permissions
-  chmod -R u=rwX,go=rX "${_builddir}"
+  msg2 "Installing documentation..."
+  mkdir -p "$builddir"
+  cp -t "$builddir" -a Documentation
+
+  msg2 "Removing doctrees..."
+  rm -r "$builddir/Documentation/output/.doctrees"
+
+  msg2 "Moving HTML docs..."
+  local src dst
+  while read -rd '' src; do
+    dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
+    mkdir -p "${dst%/*}"
+    mv "$src" "$dst"
+    rmdir -p --ignore-fail-on-non-empty "${src%/*}"
+  done < <(find "$builddir/Documentation/output" -type f -print0)
+
+  msg2 "Adding symlink..."
+  mkdir -p "$pkgdir/usr/share/doc"
+  ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
+
+  msg2 "Fixing permissions..."
+  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
-pkgname=("${pkgbase}" "${pkgbase}-headers" "${pkgbase}-docs")
-for _p in ${pkgname[@]}; do
-  eval "package_${_p}() {
-    $(declare -f "_package${_p#${pkgbase}}")
-    _package${_p#${pkgbase}}
+pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
+for _p in "${pkgname[@]}"; do
+  eval "package_$_p() {
+    $(declare -f "_package${_p#$pkgbase}")
+    _package${_p#$pkgbase}
   }"
 done
 
