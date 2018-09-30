@@ -1,0 +1,21 @@
+pkgbase = home-assistant-hassio
+	pkgdesc = Open-source home automation platform running on Python 3 within Docker
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://home-assistant.io/
+	install = hassio.install
+	arch = any
+	license = APACHE
+	depends = curl
+	depends = bash
+	depends = docker
+	depends = jq
+	depends = avahi
+	depends = dbus
+	depends = networkmanager
+	depends = systemd
+	replaces = python-home-assistant
+	replaces = home-assistant
+
+pkgname = home-assistant-hassio
+

@@ -1,0 +1,28 @@
+pre_remove() {
+  echo "Stopping and removing hassio supervisor service"
+  systemctl disable hassio-supervisor.service
+  systemctl stop hassio-supervisor.service
+  rm -f /etc/systemd/system/hassio-supervisor.service
+  rm -f /etc/hassio.json
+  echo "Removing docker containers"
+  for container in $(docker ps -a | grep -i "homeassistant" | awk -F" " '{print $1}'); do 
+	docker stop $container
+	docker rm $container
+  done
+  for image in $(docker image ls | grep homeassistant | grep latest | awk -F " " '{ print $3 }'); do
+	docker rmi -f $image
+  done
+}
+
+post_remove() {
+  echo "Home Assistant data directory '/usr/share/hassio' is left untouched. Remove it if you are really sure you won't need your data in the future."
+}
+
+post_install() {
+  systemctl daemon-reload
+  echo "Starting docker (If needed)"
+  systemctl start docker
+  systemctl enable docker
+  echo "Installing Hass.io"
+  curl -sL https://raw.githubusercontent.com/home-assistant/hassio-build/master/install/hassio_install | bash -s
+}
