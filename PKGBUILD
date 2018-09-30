@@ -1,21 +1,21 @@
 # Maintainer: Ward Segers <w@rdsegers.be>
 pkgname=qpasm
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 kgdesc="pseudo-assembler interpreter"
 arch=("x86_64")
 url="https://github.com/synio-wesley/qpasm"
 license=('LGPL')
-depends=("qt4")
+depends=("qt5-base")
 provides=("qpasm")
 source=("https://github.com/synio-wesley/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=("8504d51310390a2efb9b7e5d0fd1984b8471beda09ce9c16d0bd3639364ddec0f2e1a74ccec10fff975aa0754ddb77b8b1d33c08f5c3c7f083b20f567cc056cf")
+sha512sums=("ff1f806f92d87763fd818414f53e981b2f2a1b5b87dd76b152a48d82bf422a0a8501dd622ef140a548fab6de5c98583f0f0046d5848873b6ee8ada0deb8ebccd")
 
 prepare() {
 	cd "$pkgname-$pkgver"
 	cd src
 
-	qmake-qt4
+	qmake
 }
 
 build() {
