@@ -1,16 +1,16 @@
 pkgbase = parcel-bundler
 	pkgdesc = Blazing fast, zero configuration web application bundler
-	pkgver = 1.9.7
+	pkgver = 1.10.1
 	pkgrel = 1
 	url = https://parceljs.org/
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = parcel-bundler-1.9.7.tgz
+	noextract = parcel-bundler-1.10.1.tgz
 	options = !strip
-	source = https://registry.npmjs.org/parcel-bundler/-/parcel-bundler-1.9.7.tgz
-	sha256sums = 62d20dde5bf894b72e67de6ab548d5afd70194eb1087e445c3fc0a9837f24ea6
+	source = https://registry.npmjs.org/parcel-bundler/-/parcel-bundler-1.10.1.tgz
+	sha256sums = 9732fab49e9fba67ddb4ad2478f07c8eaa35cd1bb3dea5d40b3e66a138b91e31
 
 pkgname = parcel-bundler
 
