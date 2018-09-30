@@ -1,0 +1,31 @@
+pkgbase = mame-git
+	pkgdesc = A port of the popular Multiple Arcade Machine Emulator using SDL with OpenGL support (git version)
+	pkgver = 0.202.r95.ge4d039bc077
+	pkgrel = 1
+	url = https://www.mamedev.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = nasm
+	makedepends = python
+	makedepends = asio
+	makedepends = rapidjson
+	makedepends = glm
+	makedepends = libxinerama
+	depends = sdl2_ttf
+	depends = qt5-base
+	depends = lua
+	depends = libutf8proc
+	depends = pugixml
+	depends = portmidi
+	depends = portaudio
+	provides = mame
+	conflicts = mame
+	source = mame-git::git+https://github.com/mamedev/mame.git
+	source = mame.sh
+	sha256sums = SKIP
+	sha256sums = aa90bae40c27a7732a0915b813a7f749ee2a0b95f6fc70128ff666498da58b5c
+
+pkgname = mame-git
+
