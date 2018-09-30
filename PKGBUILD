@@ -4,7 +4,8 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-x205ta
-_srcver=4.18.9-arch1
+
+_srcver=4.18.10-arch1
 pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
@@ -19,15 +20,12 @@ source=(
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
-
-  # TODO: check hans' patches' :-)
+  # Start x205ta sources
   https://raw.githubusercontent.com/harryharryharry/x205ta-iso2usb-files/master/brcmfmac43340-sdio.txt
   https://raw.githubusercontent.com/harryharryharry/x205ta-patches/master/4.18-patches/i915-pm-Be-less-agressive-with-clockfreq-changes-on-Bay-Trail.patch
   https://raw.githubusercontent.com/harryharryharry/x205ta-patches/master/4.18-patches/intel_idle-Disable-C6N-and-C6S-on-Bay-Trail.patch
-#  https://raw.githubusercontent.com/harryharryharry/x205ta-patches/master/4.16-patches/fix_c-state_patch_v4.16.patch
   https://raw.githubusercontent.com/harryharryharry/x205ta-patches/master/4.18-patches/brcmfmac-p2p-and-normal-ap-access-are-not-always-possible-at-the-same-time.patch
-#  https://raw.githubusercontent.com/harryharryharry/x205ta-patches/master/4.16-patches/allow-s0i3-suspend-unified-4.16.patch
-
+  # End x205ta sources
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -35,7 +33,7 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            'b7d80725b510cae0cb1e476eb2ac131bf2971f210951658f50c13c8282c1bf06'
+            'ee43394c56975dafc0c2f2b20c90ea989867a8e30bdb620fb3e29cc84caa3993'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
@@ -78,43 +76,6 @@ prepare() {
   mkdir -p ${pkgdir}/usr/lib/firmware/brcm/
   cp ${srcdir}/brcmfmac43340-sdio.txt ${pkgdir}/usr/lib/firmware/brcm/
 
-  # Harryharryharry's patch to allow power efficient s0i3 state to be entered during suspend
-  # Refer to https://ubuntuforums.org/showthread.php?t=2254322&page=158&p=13625163#post13625163 for harryharryharry's kernel compile guide
-#  patch -Np1 --verbose -i ../allow-s0i3-suspend-unified-4.16.patch
-
-  # patch attempts to prevents baytrail kernel freezes - thanks to jbMacAZ
-  # refer to https://bugzilla.kernel.org/show_bug.cgi?id=109051#c829 for statement that this seems the more effective patch.
-  # refer to https://drive.google.com/file/d/1uZeTQa6sWdtwXBIa8de5hkwEKeDeUR30/view for the patch, but to
-  # https://drive.google.com/drive/folders/0B4s5KNXf2Z36Nkxac245LTBGdjQ for an overview of patches for ASUS T100H, where this
-  # patch is published.
-#  patch --verbose -Np1 -i ../fix_c-state_patch_v4.16.patch
-
-  # The next two patches come from Hans De Goede and should bring a lower power suspend.
-  # Refer to https://github.com/jwrdegoede/linux-sunxi/commit/2a02df1192d2718ac7eaa871e2941840375f1e8c
-  # and https://github.com/jwrdegoede/linux-sunxi/commit/bdb7d50f49e758ce78a59e894f9be98db6e15049
-  #patch -Np1 -i ../i915-pm-Be-less-agressive-with-clockfreq-changes-on-Bay-Trail.patch
-  #patch -Np1 -i ../intel_idle-Disable-C6N-and-C6S-on-Bay-Trail.patch
-
-  # patch to hide dmesg errors of brcmfmac trying to enable a p2p device
-  # refer to https://patchwork.kernel.org/patch/9592913/
-  #patch -Np1 -i ../brcmfmac-p2p-and-normal-ap-access-are-not-always-possible-at-the-same-time.patch
-
-  # x205ta patches end here
-
-  # copying the x205ta config.
-  # harryharryharry's x205ta config file, updated to current package version.
-  # Upstream is not always available and not always at the version of core-x86_64.
-  # Upstream should be at http://x205ta.myftp.org:1337/kernel/.config
-
-  # Config changes required to build more closely to arch.
-
-  # Harryharryharry seems to prefer STACK_VALIDATION and HAVE_STACK_VALIDATION = n , but arch's default kernel wants that to y.
-  # That's related to the unwinder, where arch prefers ORC and not Frame point unwinder like H.
-  # Therefore, don't forget to enable ORC unwinder, which enables STACK_VALIDATION, which provides objtool, which is required later on to package headers.
-  # In menuconfig, kernel hacking, choose kernel unwinder at bottom, ORC
-  #cp -Tf ../config_x205ta .config
-
-  # Remove existing LOCALVERSION stuff from .config
 
   # Here ends x205ta stuff.
   make -s kernelrelease > ../version
@@ -124,7 +85,6 @@ prepare() {
 build() {
   cd $_srcname
   make bzImage modules htmldocs
-  make bzImage modules
 }
 
 _package() {
