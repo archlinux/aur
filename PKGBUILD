@@ -7,8 +7,9 @@
 
 
 pkgbase=acpi_call-ck
-pkgname=(acpi_call-ck-generic)
-# replace -generic with your appropriate optimized ck version
+pkgname=(acpi_call-ck)
+# replace -ck with your appropriate optimized ck version
+         # acpi_call-ck-generic
          # acpi_call-ck-atom
          # acpi_call-ck-silvermont
          # acpi_call-ck-core2
