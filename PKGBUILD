@@ -8,7 +8,7 @@ _prevyear="$(( ${_year} - 1 ))"
 _pkgname="idos-timetable-data-zsr-sk-20${_year}"
 pkgname="${_pkgname}-latest"
 epoch=1
-pkgver=2018_2_8
+pkgver=2018_07_30
 pkgrel=1
 pkgdesc="20${_prevyear}/20${_year} Timetable data for the offline railway and other public transport timetable search engines by CHAPS: Slovak train data, provided by Inprop (Slovakia)."
 arch=(any)
@@ -69,11 +69,11 @@ sha256sums=(
   "14279a732be7d04304ff3860d54e0cf8c1a8ba0a46343eaf9b7ce3a105815946"
 )
 
-pkgver() {
-  _ver="$(wget -nv -O- "${url}" | grep --text -E "Data/Vlak${_year}Sk\.exe" | sed -r 's|[^0-9]([0-9]{1,2}\.[0-9]{1,2}\.[0-9]{4})[^0-9]|\n\1\n|' | grep --text -E '^[0-9]{1,2}\.[0-9]{1,2}\.[0-9]{4}$' | awk -F. '{print $3"_"$2"_"$1}')"
-
-  echo "${_ver}"
-}
+## Commented out since no more updates are expected.
+#pkgver() {
+#  _ver="$(date -r "${srcdir}/${_target0}" +"%Y_%m_%d")"
+#  echo "${_ver}"
+#}
 
 
 package() {
