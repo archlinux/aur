@@ -1,7 +1,7 @@
 pkgbase = scientifica-bdf
 	pkgdesc = Tall and condensed bitmap font for geeks.
 	pkgver = 2.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/NerdyPepper/scientifica
 	arch = any
 	license = SIL

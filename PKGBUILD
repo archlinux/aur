@@ -3,7 +3,7 @@
 pkgname=scientifica-bdf
 _gitname=scientifica
 pkgver=2.4
-pkgrel=3
+pkgrel=4
 pkgdesc='Tall and condensed bitmap font for geeks.'
 arch=('any')
 url="https://github.com/NerdyPepper/scientifica"
