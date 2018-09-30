@@ -4,7 +4,7 @@ pkgname=zap-desktop-bin
 pkgver=0.2.2_beta
 # Actual version used by project
 _ver=${pkgver//_/-}
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightning wallet focused on user experience and ease of use"
 arch=('x86_64')
 url="https://github.com/LN-Zap/zap-desktop"
@@ -18,7 +18,7 @@ provides=("zap-desktop")
 prepare() {
     tar -Jxvf data.tar.xz
 
-    sed -in "s/\\/Zap\\//\\/${pkgname}\\//g" usr/share/applications/zap-desktop.desktop
+    sed -in "s/\\/ZapDesktop\\//\\/${pkgname}\\//g" usr/share/applications/zap-desktop.desktop
 }
 
 package() {
