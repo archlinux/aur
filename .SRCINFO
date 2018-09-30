@@ -1,6 +1,6 @@
 pkgbase = gns3-gui
 	pkgdesc = GNS3 network simulator. Graphical user interface package.
-	pkgver = 2.1.10
+	pkgver = 2.1.11
 	pkgrel = 1
 	url = https://github.com/GNS3/gns3-gui
 	arch = any
@@ -20,9 +20,9 @@ pkgbase = gns3-gui
 	optdepends = dynamips: Cisco router emulator.
 	optdepends = xterm: Default terminal emulator for CLI management of virtual instances.
 	optdepends = wireshark-qt: Live packet capture.
-	source = gns3-gui-2.1.10.tar.gz::https://github.com/GNS3/gns3-gui/archive/v2.1.10.tar.gz
+	source = gns3-gui-2.1.11.tar.gz::https://github.com/GNS3/gns3-gui/archive/v2.1.11.tar.gz
 	source = gns3.desktop
-	sha256sums = 9773bdf1f92c7925ec3241bf8acec014632c4c14211cf2c9bcdacfe1b595144a
+	sha256sums = 8ec9e21de76dc042ed6ee196ab1331b4b07827db641717e44c6a6fb3129120f6
 	sha256sums = 51e6db5b47e6af3d008d85e8c597755369fafb75ddb2af9e79a441f943f4c166
 
 pkgname = gns3-gui
