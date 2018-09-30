@@ -1,0 +1,15 @@
+pkgbase = foxaur
+	pkgdesc = Pacman wrapper and AUR helper to keep it simple.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://gitlab.com/foxaur/foxaur
+	arch = any
+	license = GNU General Public License v3.0
+	depends = python>=3.7
+	depends = pacman>=5.1
+	depends = git>=2.19
+	source = foxaur-0.0.1.tar.gz::https://gitlab.com/foxaur/foxaur/-/archive/0.0.1/foxaur-0.0.1.tar.gz
+	md5sums = SKIP
+
+pkgname = foxaur
+
