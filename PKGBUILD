@@ -1,6 +1,6 @@
 # Maintainer: Kyle MacLeod <aur.kmac5@recursor.net>
 pkgname=mlbv
-pkgver=0.0.6
+pkgver=0.0.8
 pkgrel=1
 pkgdesc='Command-line interface to streaming MLB games (with MLB.tv subscription), game schedule and scores.'
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('python-requests' 'python-lxml' 'python-dateutil' 'streamlink')
 makedepends=('python-setuptools')
 source=("https://github.com/kmac/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('ba552c4e4e7e19d4471863361904e9fd')
+md5sums=('efbc11a457670c738a05d8604f62fe11')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
