@@ -1,7 +1,7 @@
 pkgbase = tea4cups-svn
 	pkgdesc = CUPS backend wrapper which can capture print datas before they are sent to a printer and process, duplicate or dispatch them in a number of ways. Swiss army's knife of the CUPS' Administrator.
-	pkgver = 3.13alpha_unofficial+3574
-	pkgrel = 7
+	pkgver = 3.14alpha_unofficial+3577
+	pkgrel = 1
 	url = http://www.pykota.com/software/tea4cups/
 	install = tea4cups.install
 	arch = any
@@ -10,16 +10,14 @@ pkgbase = tea4cups-svn
 	depends = python2
 	depends = python2-configparser
 	depends = python2-urllib3
-	provides = tea4cups=3.13alpha_unofficial+3574
-	provides = tea4cups-doc=3.13alpha_unofficial+3574
+	provides = tea4cups=3.14alpha_unofficial+3577
+	provides = tea4cups-doc=3.14alpha_unofficial+3577
 	backup = etc/cups/tea4cups.conf
 	source = tea4cups::svn+http://svn.pykota.com/tea4cups/trunk
-	source = fix_TEABILLING_is_int_typeerror.patch::http://gitlab.com/dadosch/tea4cups/commit/1aac1f51ed35300891b3f0f01b34b37b523f1736.patch
 	source = doc_from_website.txt
 	source = doc_debianwiki.html::http://wiki.debian.org/Tea4CUPS
 	source = tea4cups.install
 	sha256sums = SKIP
-	sha256sums = e426e84cbf5f67f262cb311ffd5b8aded826b790c8c29ddc8e9c2095544244e5
 	sha256sums = 6221890bbd1ab3806efeec8624161c80742d1c5fce24c9094e4f8f8466ba2923
 	sha256sums = SKIP
 	sha256sums = 315c82e6e9d352ecb32d511c9290790ac2a52e60e82d4727bff350fcf03aacf0
