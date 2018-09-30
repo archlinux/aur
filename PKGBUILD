@@ -1,8 +1,8 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=python-cligj
 _pyname=cligj
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="Click params for command line interfaces to GeoJSON"
 arch=('any')
 url="https://github.com/mapbox/cligj"
@@ -26,4 +26,4 @@ package() {
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
 
-sha256sums=('12ad07994f5c1173b06087ffbaacec52f9ebe4687926e5aacfc22b6b0c8b3f54')
+sha256sums=('6c7d52d529a78712491974f975c33473f430c0f7beb18c0d7a402a743dcb460a')
