@@ -1,0 +1,23 @@
+pkgbase = citra-valentin-git
+	pkgdesc = An experimental open-source Nintendo 3DS emulator/debugger,valentinvanellslande fork
+	pkgver = r8643.71531b249
+	pkgrel = 1
+	url = https://valentinvanelslande.github.io/citra
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = sdl2
+	makedepends = qt5-base
+	makedepends = shared-mime-info
+	makedepends = desktop-file-utils
+	makedepends = qt5-multimedia
+	makedepends = qt5-wayland
+	source = citra-valentin::git+https://github.com/DraGiuS/citra
+	md5sums = SKIP
+
+pkgname = citra-valentin-git
+	depends = sdl2
+	depends = libpng
+
