@@ -2,7 +2,7 @@
 
 pkgname=emojicode
 pkgver=0.6.0
-pkgrel=4
+pkgrel=5
 pkgdesc="An open-source, full-blown programming language consisting of emojis"
 arch=('i686' 'x86_64')
 url="https://emojicode.org"
@@ -10,7 +10,7 @@ license=("custom")
 depends=("ncurses")
 makedepends=("llvm" "cmake>=3.5.1" "ninja" "gcc>=7.2" "python>=3.5.2")
 checkdepends=("python>=3.5.2")
-source=("${pkgname}::git+https://github.com/emojicode/emojicode")
+source=("${pkgname}::git+https://github.com/emojicode/emojicode#tag=v0.6")
 md5sums=("SKIP")
 
 build() {
