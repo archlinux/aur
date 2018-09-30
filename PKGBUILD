@@ -3,7 +3,7 @@
 
 pkgname=ldap-account-manager
 pkgver=6.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A webfrontend for managing entries stored in an LDAP directory"
 arch=('any')
 url="https://www.ldap-account-manager.org/"
@@ -20,7 +20,7 @@ source=("http://downloads.sourceforge.net/lam/${pkgname}-${pkgver}.tar.bz2"
         "fix-htmldir-and-docdir.patch"
         "apache.example.conf"
         "nginx.example.conf")
-sha256sums=('fe3bff5adf6cae8221ff72c64be5557ce6fc35123ad3294753bab85e302b9cc0'
+sha256sums=('ff20a4ec033169dde69e41c23ff20d6adb0ed2e1136372a8b6d3bcbe40264b29'
             '013dd520a357ce39e9eda5169d26c73b48d05c7e73c7ce4377f31ace8f4c88a1'
             'dc4afc691a53f5ff46eec4ef25cc3d593d7a5a2dcbcde070d54f6554027822b3'
             '229b281a85770f82f449e1e77ebd26b7583b5bc1266b234c653f2778067b1f34'
