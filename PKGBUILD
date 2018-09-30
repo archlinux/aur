@@ -3,21 +3,24 @@
 # Contributor: stef204 <https://aur.archlinux.org/account/stef204>
 
 pkgname='borgmatic'
-pkgver=1.2.2
+pkgver=1.2.4
 pkgrel=1
 pkgdesc='A wrapper script for Borg backup software that creates and prunes backups'
 arch=('any')
 url='https://torsion.org/borgmatic/'
 license=('GPL3')
 depends=('borg' 'python-pykwalify' 'python-ruamel-yaml')
-makedepends=('python-setuptools' 'python-flexmock' 'python-pytest')
+makedepends=('python-setuptools')
+checkdepends=('python-flexmock' 'python-pytest')
 install="${pkgname}.install"
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://projects.torsion.org/witten/borgmatic/archive/${pkgver}.tar.gz"
   "${pkgname}.install"
 )
-sha256sums=('a20d4950bdd9066e2d3be9c80faa80b9597a546bbaedb94382973b6e7a39fa25'
-            '2862763feea83e3ee0fb65c9f3fec648312486cd8ab48cd7cac70a7bb742b55b')
+sha256sums=(
+  '139653a014e39b749234908153ed81a712753e92bd3419ec2f38f7898b452ab3'
+  '2862763feea83e3ee0fb65c9f3fec648312486cd8ab48cd7cac70a7bb742b55b'
+)
 
 prepare() {
   cd "${pkgname}"
