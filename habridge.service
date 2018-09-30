@@ -5,7 +5,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/java -jar -Dconfig.file=/usr/share/habridge/data/habridge.config -Dserver.port=8080 /usr/share/habridge/ha-bridge-4.5.0.jar
+ExecStart=/usr/bin/java -jar -Dconfig.file=/usr/share/habridge/data/habridge.config -Dserver.port=8080 /usr/share/habridge/ha-bridge-5.2.1.jar
 
 [Install]
 WantedBy=multi-user.target
