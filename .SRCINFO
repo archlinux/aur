@@ -1,17 +1,18 @@
 pkgbase = kubernetes-helm
 	pkgdesc = A tool to manage Kubernetes charts
 	pkgver = 2.11.0
-	pkgrel = 1
-	url = https://github.com/kubernetes/helm
+	pkgrel = 2
+	url = https://github.com/helm/helm
 	arch = i686
 	arch = x86_64
 	license = Apache
+	makedepends = go
+	makedepends = glide
 	depends = socat
-	optdepends = kubectl-bin: Check Kubernetes status
-	source_i686 = https://kubernetes-helm.storage.googleapis.com/helm-v2.11.0-linux-386.tar.gz
-	sha512sums_i686 = d245b59c6f8c6a92894f91d01e52a2a22c77eea9ef5bc1729bcd6e34926c1a8ccf0ad2232a6a35c8d4f6f127e0ad7266f98d7d2daf8d37f38c9975f978439d7b
-	source_x86_64 = https://kubernetes-helm.storage.googleapis.com/helm-v2.11.0-linux-amd64.tar.gz
-	sha512sums_x86_64 = 0f3106d9600ffa80dede77616cf94223005ade1026abbedd9affe8544511d49a2a56385f6dfa0dfd0c020d1d682c4959ac81fd2877759f248a2fda4c48527984
+	optdepends = kubectl: check cluster status
+	conflicts = kubernetes-helm-bin
+	source = git+https://github.com/helm/helm#tag=v2.11.0
+	md5sums = SKIP
 
 pkgname = kubernetes-helm
 
