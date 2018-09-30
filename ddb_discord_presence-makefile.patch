@@ -1,0 +1,14 @@
+diff -r -u -N ddb_discord_presence/Makefile ddb_discord_presence-makefile/Makefile
+--- ddb_discord_presence/Makefile	2018-09-30 15:14:26.874053581 +0200
++++ ddb_discord_presence-makefile/Makefile	2018-09-30 15:15:45.258372163 +0200
+@@ -8,8 +8,8 @@
+ CC=gcc
+ CXX=g++
+ STD=gnu99
+-CFLAGS+=-fPIC -I /usr/local/include -I discord-rpc/include -Wall
+-CXXFLAGS+=-fPIC -I /usr/local/include -Wall
++CFLAGS+=$(COPT) -fPIC -I /usr/local/include -I discord-rpc/include -Wall
++CXXFLAGS+=$(CXXOPT) -fPIC -I /usr/local/include -Wall
+ ifeq ($(DEBUG),1)
+ CFLAGS +=-g -O0
+ CXXFLAGS +=-g -O0
