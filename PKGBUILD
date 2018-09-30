@@ -2,7 +2,7 @@
 # Contributor: David McInnis <davidm@eagles.ewu.edu>
 pkgbase='python-pygpu-git'
 pkgname=('python-pygpu-git' 'python2-pygpu-git')
-pkgver=0.6.7
+pkgver=0.7.6
 _gitname="libgpuarray"
 pkgrel=1
 pkgdesc="Python bindings for libgpuarray"
@@ -36,14 +36,14 @@ build() {
 #}
 
 package_python-pygpu-git() {
-	depends+=('python')
+	depends+=('python-mako')
 	cd "$srcdir/${_gitname}"
 	python setup.py install --root="$pkgdir"/ --optimize=1
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
 
 package_python2-pygpu-git() {
-	depends+=('python2')
+	depends+=('python2-mako')
 	cd "$srcdir/${_gitname}"
 	python2 setup.py install --root="$pkgdir"/ --optimize=1
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
