@@ -1,0 +1,12 @@
+pkgbase = python-unqlite
+	pkgdesc = Fast Python bindings for the UnQLite embedded NoSQL database.
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/coleifer/unqlite-python
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-pip
+
+pkgname = python-unqlite
+
