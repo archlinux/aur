@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=strawberry
-pkgver=0.3.1
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Bitperfect audio player and music collection organizer, fork of Clementine. gstreamer engine only"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -15,7 +15,7 @@ makedepends=(cmake boost)
 optdepends=(gst-plugins-bad
             gst-plugins-ugly)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jonaski/strawberry/archive/${pkgver}.tar.gz")
-sha256sums=('9fe83527d230ffa355af529f0cbfa8359535436f678cb8359d0cf8f6f2595c21')
+sha256sums=('0cb6c54cadc732bedeb3bb1afa8cf16398e514afe4373955728b4afa0e2dd828')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
