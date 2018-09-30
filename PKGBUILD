@@ -3,7 +3,7 @@
 pkgname=home-assistant-hassio
 pkgdesc='Open-source home automation platform running on Python 3 within Docker'
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 url="https://home-assistant.io/"
 license=('APACHE')
 arch=('any')

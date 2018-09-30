@@ -2,6 +2,7 @@ pre_remove() {
   echo "Stopping and removing hassio supervisor service"
   systemctl disable hassio-supervisor.service
   systemctl stop hassio-supervisor.service
+  rm -f /usr/sbin/hassio-supervisor
   rm -f /etc/systemd/system/hassio-supervisor.service
   rm -f /etc/hassio.json
   echo "Removing docker containers"
