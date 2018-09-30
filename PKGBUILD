@@ -2,7 +2,7 @@
 # Contributor: Ray Hogenson <rayhogenson at gmail dot com>
 pkgname=par
 pkgver=1.52
-pkgrel=6
+pkgrel=7
 pkgdesc='Paragraph reformatter'
 url='http://www.nicemice.net/par/'
 depends=()
@@ -21,7 +21,7 @@ prepare() {
 
 build() {
 	cd "$_dirname"
-	make -f protoMakefile CC='cc -D_GNU_SOURCE -std=c99 -c'
+	make -f protoMakefile CC="cc $CFLAGS -std=c99 -D_GNU_SOURCE -c" LINK1="cc $LDFLAGS"
 }
 
 package() {
