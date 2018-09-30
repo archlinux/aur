@@ -1,6 +1,6 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=acestream-launcher
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Acestream Launcher allows you to open Acestream links with a Media Player of your choice"
 arch=("any")
@@ -11,7 +11,7 @@ optdepends=("mpv" "libnotify")
 makedepends=("desktop-file-utils")
 provides=("acestream-launcher")
 source=("$pkgname-$pkgver::https://github.com/jonian/acestream-launcher/archive/v$pkgver.tar.gz")
-md5sums=("de43dea785f3f753cbd453a2d6f52440")
+md5sums=("343acc104506dc4d8ce090bd52b2c2eb")
 
 package() {
   mkdir -p "$pkgdir/opt"

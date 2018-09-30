@@ -1,6 +1,6 @@
 pkgbase = acestream-launcher
 	pkgdesc = Acestream Launcher allows you to open Acestream links with a Media Player of your choice
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/jonian/acestream-launcher
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = acestream-launcher
 	optdepends = mpv
 	optdepends = libnotify
 	provides = acestream-launcher
-	source = acestream-launcher-1.1.1::https://github.com/jonian/acestream-launcher/archive/v1.1.1.tar.gz
-	md5sums = de43dea785f3f753cbd453a2d6f52440
+	source = acestream-launcher-1.2.0::https://github.com/jonian/acestream-launcher/archive/v1.2.0.tar.gz
+	md5sums = 343acc104506dc4d8ce090bd52b2c2eb
 
 pkgname = acestream-launcher
 
