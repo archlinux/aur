@@ -23,10 +23,10 @@ build() {
     ninja
 }
 
-#check() {
-#    cd "${srcdir}/${pkgname}/build"
-#    ninja tests
-#}
+check() {
+    cd "${srcdir}/${pkgname}/build"
+    ninja tests
+}
 
 package() {
     cd ${srcdir}/${pkgname}
