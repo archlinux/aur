@@ -57,7 +57,7 @@ build()
   export PATH=$srcdir/gps-gpl-2018-src/temp_bin:$PATH
 	
   ./configure  --prefix=/usr
-  make -j2
+  make
 }
 
 
