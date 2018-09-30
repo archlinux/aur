@@ -18,7 +18,7 @@ _gitname=athenaeum
 package() {
   cd $srcdir/$_pkgname
 
-  for i in 32 64; do
+  for i in 32 48 64 96 128 256 512; do
     install -Dm644 $_pkgname/resources/icons/hicolor/${i}x${i}/athenaeum.png \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png"
   done
