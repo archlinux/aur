@@ -2,7 +2,7 @@
 
 pkgname=emojicode
 pkgver=0.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="An open-source, full-blown programming language consisting of emojis"
 arch=('i686' 'x86_64')
 url="https://emojicode.org"
@@ -24,8 +24,12 @@ build() {
 }
 
 check() {
-    cd "${srcdir}/${pkgname}/build"
-    ninja tests
+    read -p "Do you want to run checks? [y/N] > " runchecks
+
+    if [[ "$runchecks" == y* ]] || [[ "$runchecks" == Y* ]]; then
+        cd "${srcdir}/${pkgname}/build"
+        ninja tests
+    fi
 }
 
 package() {
