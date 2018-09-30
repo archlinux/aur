@@ -1,4 +1,4 @@
-# Mantainer: The_Loko <juliolokoo at gmail dot com>
+# Mantainer: RonaldMcDaddy <wannes.demeyer@protonmail.com>
 # Contributor:  Tinh Truong <xuantinh at gmail dot com>
 # Contributor: Cedric Sougne <cedric@sougne.name>
 # Contributor: untseac
@@ -16,7 +16,7 @@ conflicts=('oracle-xe')
 provides=('oracle-xe')
 options=('!strip')
 depends=('libaio>=0.3.104' 'gcc>=4.1.2' 'binutils>=2.16.91.0.5' 'make>=3.80' 'glibc>=2.3.4-2.41' 'bc' 'net-tools')
-makedepends=('rpmextract')
+makedepends=('')
 install='oracle.install'
 source=('manual://download/file/from/oracle/page/oracle-xe-11.2.0-1.0.x86_64.rpm.zip'
         'oracle_env.csh'
@@ -38,7 +38,7 @@ md5sums=('dd7881a55569d890241f11cd0eeb7d48'
 
 build() {
     cd $srcdir
-    rpmextract.sh Disk1/oracle-xe-11.2.0-1.0.x86_64.rpm
+    bsdtar -xf Disk1/oracle-xe-11.2.0-1.0.x86_64.rpm
 }
 
 package() {
