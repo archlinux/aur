@@ -3,20 +3,20 @@
 # Contributor: TingPing <tingping@tingping.se>
 
 pkgname=plex-media-player
-pkgver=2.18.0
-_gitrev=893
-_gitver=48795f25
+pkgver=2.19.1
+_gitrev=904
+_gitver=f679df4f
 _fullver="$pkgver.$_gitrev-$_gitver"
 _fullname="$pkgname-$_fullver"
-_web_buildid="67-df70e10f20e61c"
-_web_desktop_ver="3.67.1-f20e61c"
-_web_tv_ver="3.68.1-df70e10"
+_web_buildid="73-9cb69aa69c1af1"
+_web_desktop_ver="3.69.0-69c1af1"
+_web_tv_ver="3.70.3-9cb69aa"
 pkgrel=1
 pkgdesc='Next generation Plex Desktop Client'
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
 url='https://github.com/plexinc/plex-media-player'
-depends=('mpv' 'qt5-pmp-webengine' 'libcec' 'sdl2' 'qt5-pmp-x11extras' 'qt5-pmp-quickcontrols' 'p8-platform' 'protobuf')
+depends=('mpv' 'qt5-webengine' 'libcec' 'sdl2' 'qt5-x11extras' 'qt5-quickcontrols' 'p8-platform' 'protobuf')
 makedepends=('cmake')
 source=("$_fullname.tar.gz::https://github.com/plexinc/plex-media-player/archive/v${_fullver}.tar.gz"
         "buildid-${_web_buildid}.cmake::https://artifacts.plex.tv/web-client-pmp/${_web_buildid}/buildid.cmake"
@@ -25,13 +25,13 @@ source=("$_fullname.tar.gz::https://github.com/plexinc/plex-media-player/archive
         'plex-media-player.desktop')
 noextract=("web-client-desktop-${_web_desktop_ver}.tar.xz"
            "web-client-tv-${_web_tv_ver}.tar.xz")
-sha512sums=('43254efaaef0fca36236c7962548081c97dccc47080cbae51ef00deb688aa488ceb280bbd9a73cf0ebb97dad8201fb372de4a680a67222f239d5a0957c22f7a3'
-            'a5478a3cecf3ba2fb2f9b5060eac3319bf00db84f99a5c7c0957d044ed7532d83f88abda4e923754e0d0ddcc1b42954692d2c60f8b5abf2201af49133782a3a3'
-            '8471183722d7ece9e769e0b9a7ec4ab9eae4edce5384b7321e0e4d19a08f35014dd40ea1b2f719d1802f0a1caac154e91bbf8301297b09d46b04a13644707c85'
-            'df1436b3ba31d8b2bda1c39fa4c4464282a91dee358e9bf289e52361a248cf08792dc2cffbbe5349bb9d257415afcc6ae338c052f41e79a0f395e9f65e79099e'
-            '81accda4f0c38d449640a74ab53df232bd2e74fd3ca9d2c24c359caeb2f7c9dc8a01ba755f5eb964d268b279fced6889dcbc5df48c1e14434b63e03a53f26427'
-            '02d7d571598e50eb9108402f9e61386b3bf9663368a1439fdadb3da497efc5c46a3bff6b201fedb7261cd7b5efd75f6644a3d85315d0a23172a771d9662295a2'
-            '892f05cbdb3f3efedf0dfe63ae14f8b009841162eba85f505e371dc55b4240a612706a9ead0e94ed8c1e83f53da0e969f317b1790ef65fd5891863db37a8df54')
+sha512sums=('d1d9079a3decd86c0485bb4e6cc7f7034cb33e825e693c0d8ed199bcee3d10f5f1f33f539cb167f8fa9b3692f8087f11a55b14546ebb5e06b6112038690de53a'
+            'bd5f1f09043c3dde7639da48967087792be78ab5768ce62ea1052026a92aa760c790f5cedc54a3e715d07f3e7fdf580ecf27351cbdadcfcb97879f8cba257b78'
+            'e0255ad3799255c99fe143ce4c447dbb2ebd0fade1d26dece19a8975cc99db2de9bb3f3d40d3abdba3fc75909984c9404cdbb9507edabf2e01a55f4be6318084'
+            'de17990529f91e5cfd89bf9444a27c04608775b2bdb66996078963b445bc8457d46ec824d31c6b781d13160babfa5b3e98ec4a188a33747f7f3f6ec67ff30ea2'
+            '3d41e48fb7cbc5ac3e76396ff7afbfcbc308afe338a0720d87835f705be7cc0d354c29e5a50d5ba4aba7b84c22ec3f41ada849df281dafde81e06ee405b8e4fc'
+            'd77222d7e84a58b5c4c8efd05b211a4d56d53caa86462dacd6ba2024cea9b17e233f8da0eb8949c32a87db6af6b9644d48a6ec3a4b8e169cb2d3059b874e4579'
+            'd3dbd66be744f497e095eb118ea28180769c74b3e8a8d3554b1570a224bdcd66c0c1416a3baaa72e6fff5a63beda30d3ce953cd886a2f313a655fee5d8f26019')
 
 prepare() {
     cd "${srcdir}/$_fullname"
@@ -51,7 +51,7 @@ build() {
     cd "${srcdir}/$_fullname/build"
 
     cmake -DCMAKE_INSTALL_PREFIX='/usr' -DCMAKE_BUILD_TYPE='Release' -DCMAKE_SKIP_RPATH=1 \
-          -DFULL_GIT_REVISION="$_gitver" -DQTROOT='/opt/qt5-pmp/usr' \
+          -DFULL_GIT_REVISION="$_gitver" -DQTROOT='/usr' \
           ..
     make
 }

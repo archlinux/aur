@@ -2,6 +2,6 @@
 Type=Application
 Name=Plex Media Player
 GenericName=Media Player
-Exec=env XDG_CURRENT_DESKTOP=X-Generic LD_LIBRARY_PATH=/opt/qt5-pmp/usr/lib:$LD_LIBRARY_PATH plexmediaplayer
+Exec=/usr/bin/plexmediaplayer
 Icon=plex-media-player
 Categories=AudioVideo;
