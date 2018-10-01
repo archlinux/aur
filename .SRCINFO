@@ -6,7 +6,7 @@ pkgbase = hmcl-git
 	arch = any
 	license = GPL3
 	makedepends = git
-	makedepends = jdk
+	makedepends = jdk8
 	depends = java-openjfx>=8
 	provides = hmcl
 	conflicts = hmcl
