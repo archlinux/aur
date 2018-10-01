@@ -3,7 +3,7 @@
 
 pkgname=gravit-designer-bin
 pkgver=3.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform, free design tool for the 21st century empowering everyone to design"
 arch=('x86_64')
 url="https://designer.io/"
@@ -13,7 +13,7 @@ depends=('libxss' 'gconf' 'nss' 'gtk3' 'libindicator-gtk2' 'libdbusmenu-gtk2')
 source=("${pkgname}-${pkgver}.zip::https://designer.gravit.io/_downloads/linux/GravitDesigner.zip?v=${pkgver}"
         "gravit-designer.png"
         "LICENSE")
-md5sums=('1d43a97953b38f99ceddcd71c08896ac'
+md5sums=('03a8f35697985518f9c57a50d96eef23'
          '17969adf6d872a541772e169658b82d1'
          '021ccafc0993d3c34265ae59048d4bf2')
 PKGEXT='.pkg.tar'
