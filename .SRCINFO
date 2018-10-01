@@ -1,8 +1,8 @@
 pkgbase = arcan
 	pkgdesc = Game Engine meets a Display Server meets a Multimedia Framework
 	pkgver = 0.5.5
-	pkgrel = 1
-	url = http://arcan-fe.com
+	pkgrel = 2
+	url = https://arcan-fe.com
 	arch = x86_64
 	license = GPL
 	license = LGPL
@@ -29,7 +29,7 @@ pkgname = arcan-acfgfs
 	depends = fuse3
 
 pkgname = arcan-aclip
-	pkgdesc = Arcan clipboard integration, similarly to how xclip works for Xorg
+	pkgdesc = Arcan clipboard integration, similarly to how "xclip" works for Xorg
 	depends = arcan
 
 pkgname = arcan-aloadimage

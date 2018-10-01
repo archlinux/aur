@@ -13,10 +13,10 @@ pkgname=('arcan'
          'arcan-shmmon'
          'arcan-vrbridge')
 pkgver=0.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Game Engine meets a Display Server meets a Multimedia Framework'
 arch=('x86_64')
-url='http://arcan-fe.com'
+url='https://arcan-fe.com'
 license=('GPL' 'LGPL' 'BSD')
 makedepends=('cmake'
              'fuse3'
@@ -30,6 +30,10 @@ sha256sums=('578ed860a99a02cf1cf963efac830eb8af08093e4322832b2be6554d8c922ff2')
 build() {
   cd "$pkgbase-$pkgver"
 
+  # Build docs
+  ## Needs to happen before cmake runs
+  ruby -C doc -Ku docgen.rb mangen
+
   # Build main library/application
   mkdir -p build
   env -C build cmake \
@@ -42,9 +46,6 @@ build() {
     -DVIDEO_PLATFORM=sdl \
     ../src
   make -C build
-
-  # Build docs
-  ruby -C doc -Ku docgen.rb mangen
 
   # Build misc utils
   ## waybridge is disabled on VIDEO_PLATFORM=sdl
@@ -87,7 +88,7 @@ package_arcan-acfgfs() {
 }
 
 package_arcan-aclip() {
-  pkgdesc='Arcan clipboard integration, similarly to how 'xclip' works for Xorg'
+  pkgdesc='Arcan clipboard integration, similarly to how "xclip" works for Xorg'
   depends=('arcan')
 
   cd "$pkgbase-$pkgver"
