@@ -9,7 +9,7 @@
 # Maintainer: Jeong Arm <kjwonmail@gmail.com>
 pkgname=libhangul-3beol
 _pkgname=libhangul
-pkgver=libhangul.0.1.0.r45.5244cb3
+pkgver=libhangul.0.1.0.r65.34646b2
 pkgrel=1
 pkgdesc="libhangul alternatives"
 arch=('x86_64')
@@ -24,7 +24,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=('https://gitlab.com/3beol/libhangul.git')
+source=('git+https://gitlab.com/3beol/libhangul.git')
 noextract=()
 md5sums=('SKIP')
 
