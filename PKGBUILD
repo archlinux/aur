@@ -1,4 +1,4 @@
-# Maintainer: Dictator Mei <dctxmei@gmail.com>
+# Maintainer: Dct Mei <dctxmei@gmail.com>
 pkgname=net-speeder-git
 pkgver=20160303
 pkgrel=1
