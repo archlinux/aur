@@ -30,8 +30,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'a8412a86252bb7857cb2bdbcaebe3029b05f7fec4f9a6f1ee73beff00044876a'
-            '78daf4591a0bd0f8e2f0da5e44b08e61849ddb80e96cf327b3661b390b485d89'
+            'f37f7827e10557d1e74b58b81eb0d17102e1c0f193d129e6e8edbbf7284f5867'
+            'fba40197322b166ce5e5b5d569494a37759407e1dd9962aabe60581a9ae4ab56'
             '4dd2b1674b1a5bcfc5b640612278fe3a53b454192fbcc06b7476ff54ed6d2f6d'
             '8d707debe027c7cb658825501dc30fb3beb57ab21b1b6df2f01c5f76ca39a0e6')
 pkgver() {
