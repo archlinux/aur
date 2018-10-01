@@ -1,4 +1,5 @@
 pkgbase = qpasm
+	pkgdesc = pseudo-assembler interpreter
 	pkgver = 1.3
 	pkgrel = 2
 	url = https://github.com/synio-wesley/qpasm

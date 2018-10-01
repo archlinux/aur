@@ -2,7 +2,7 @@
 pkgname=qpasm
 pkgver=1.3
 pkgrel=2
-kgdesc="pseudo-assembler interpreter"
+pkgdesc="pseudo-assembler interpreter"
 arch=("x86_64")
 url="https://github.com/synio-wesley/qpasm"
 license=('LGPL')
