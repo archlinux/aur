@@ -2,7 +2,7 @@
 
 pkgname=adapta-gtk-theme-legacy-git
 pkgver=3.94
-pkgrel=1
+pkgrel=2
 pkgdesc='An adaptive Gtk+ theme based on Material Design Guidelines 
 (Legacy version)'
 arch=('any')
@@ -37,7 +37,6 @@ build() {
     --prefix='/usr' \
     --enable-parallel \
     --enable-chrome \
-    --enable-plank \
     --enable-telegram \
     --disable-unity
   make
@@ -47,8 +46,4 @@ package() {
   cd adapta-gtk-theme-legacy
 
   make DESTDIR="${pkgdir}" install
-
-  install -dm 755 "${pkgdir}"/usr/share/plank/themes
-  ln -s /usr/share/themes/Adapta/plank 
-"${pkgdir}"/usr/share/plank/themes/Adapta
 }
