@@ -1,8 +1,8 @@
 pkgbase = writeas-cli
-	pkgdesc = Write.as GTK desktop app
+	pkgdesc = Write.as command line interface
 	pkgver = 1.2
-	pkgrel = 0
-	url = https://write.as/apps/desktop
+	pkgrel = 1
+	url = https://write.as/apps/cli
 	arch = x86_64
 	license = GPL
 	source = https://github.com/writeas/writeas-cli/releases/download/v1.2/writeas_1.2_linux_amd64.tar.gz
