@@ -1,7 +1,7 @@
 # Maintainer: Drew DeVault <sir@cmpwn.com>
 pkgname=scdoc
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 license=('MIT')
 pkgdesc='tool for generating roff manual pages'
 arch=("any")
