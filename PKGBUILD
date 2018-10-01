@@ -7,7 +7,7 @@ pkgname='ros-lunar-rostime'
 pkgver='0.6.7'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-lunar-catkin)
@@ -54,7 +54,8 @@ build() {
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF \
-        -DCATKIN_ENABLE_TESTING=OFF
+        -DCATKIN_ENABLE_TESTING=OFF \
+        -DCMAKE_CXX_FLAGS="-DBOOST_DATE_TIME_POSIX_TIME_STD_CONFIG"
   make
 }
 
