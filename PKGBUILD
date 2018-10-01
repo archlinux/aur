@@ -1,7 +1,7 @@
 # Maintainer: Andrew Fischer <andrew at apastron dot co>
 pkgname=multichain-alpha
 pkgver=2.0
-pkgrel=2
+pkgrel=4
 pkgdesc="MultiChain open source platform for private blockchains - version 4 alpha"
 arch=('x86_64')
 url="https://github.com/MultiChain/multichain"
