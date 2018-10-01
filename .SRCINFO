@@ -1,6 +1,6 @@
 pkgbase = studip-sync-git
 	pkgdesc = Sync your files from Stud.IP
-	pkgver = r59.0149b8c
+	pkgver = r61.eae5ee9
 	pkgrel = 1
 	url = https://github.com/woefe/studip-sync
 	arch = any
