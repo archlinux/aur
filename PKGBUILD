@@ -1,5 +1,5 @@
 pkgname=goiardi
-pkgver=0.11.5
+pkgver=0.11.8
 pkgrel=1
 pkgdesc="A Chef server written in Go, able to run entirely in memory, with optional persistence with saving the in-memory data to disk or using MySQL or Postgres as the data storage backend"
 arch=('x86_64')
@@ -10,7 +10,7 @@ source=(
 	goiardi.service
 	)
 
-md5sums=('b42020946062c1ecb45c0d3e2f839599'
+md5sums=('0acf4140b0dfc80e7df88181b0c60b30'
 	 'SKIP'
 	)
 

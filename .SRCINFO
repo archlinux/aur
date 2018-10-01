@@ -1,13 +1,13 @@
 pkgbase = goiardi
 	pkgdesc = A Chef server written in Go, able to run entirely in memory, with optional persistence with saving the in-memory data to disk or using MySQL or Postgres as the data storage backend
-	pkgver = 0.11.5
+	pkgver = 0.11.8
 	pkgrel = 1
 	url = http://goiardi.gl/
 	arch = x86_64
 	license = Apache 2.0
-	source = https://github.com/ctdk/goiardi/releases/download/v0.11.5/goiardi-0.11.5-linux-amd64
+	source = https://github.com/ctdk/goiardi/releases/download/v0.11.8/goiardi-0.11.8-linux-amd64
 	source = goiardi.service
-	md5sums = b42020946062c1ecb45c0d3e2f839599
+	md5sums = 0acf4140b0dfc80e7df88181b0c60b30
 	md5sums = SKIP
 
 pkgname = goiardi
