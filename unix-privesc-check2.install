@@ -1,0 +1,8 @@
+post_install() {
+    printf '\n###\nYou have just installed "%s", which is rev. 2_0.\n' "$1"
+    printf 'To run this version, use the following command :\n\n$ upc\n\n'
+    printf 'Note that there is an earlier branch, rev. 1_x ("unix-privesc-check" in AUR),\n'
+    printf 'which is somewhat more mature than this one and maybe worth using additionaly\n'
+    printf 'as recommended by the upstream developer.\n\nFor reference :\n'
+    printf 'https://github.com/pentestmonkey/unix-privesc-check/blob/master/README.md\n###\n'
+}

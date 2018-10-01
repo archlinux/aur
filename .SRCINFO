@@ -1,0 +1,16 @@
+pkgbase = unix-privesc-check2
+	pkgdesc = Rewrite of the script for local vulnerability detection on UNIX(-like) systems
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/pentestmonkey/unix-privesc-check
+	install = unix-privesc-check2.install
+	changelog = CHANGELOG
+	arch = any
+	license = GPL
+	license = custom
+	provides = unix-privesc-check2
+	source = https://github.com/pentestmonkey/unix-privesc-check/archive/r2_0.tar.gz
+	sha256sums = a34c6042119b1e8bfb9543d864f47b8b6ec56ece209811e2506b7c8bc63b3888
+
+pkgname = unix-privesc-check2
+
