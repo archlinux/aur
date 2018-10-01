@@ -5,7 +5,7 @@
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
 
 pkgname=libvirt-git
-pkgver=4.3.0.183.g656151bf5d
+pkgver=4.8.0.rc2.2.g125ac4c0a8
 pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
@@ -112,8 +112,6 @@ build() {
 	--with-init-script=systemd \
 	--with-qemu-user=nobody --with-qemu-group=nobody \
 	--with-netcf --with-interface
-	# --with-numad
-	# --with-audit
   make
 }
 
