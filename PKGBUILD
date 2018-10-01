@@ -1,4 +1,4 @@
-# Maintainer: Dictator Mei <dctxmei@gmail.com>
+# Maintainer: Dct Mei <dctxmei@gmail.com>
 pkgname=libinput-touchpad
 pkgver=1.0
 pkgrel=2
