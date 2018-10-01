@@ -1,8 +1,8 @@
 pkgbase = gestures
 	pkgdesc = A minimal Gtk+ GUI app for libinput-gestures
 	pkgver = 0.2.2
-	pkgrel = 1
-	url = https://github.com/skudriashev/bashlint
+	pkgrel = 2
+	url = https://gitlab.com/cunidev/gestures
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
