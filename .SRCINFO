@@ -1,7 +1,7 @@
 pkgbase = uim-git
 	pkgdesc = Multilingual input method library
 	pkgver = 1.8.0.alpha.r352.gc79432cb
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://github.com/uim/uim/wiki
 	arch = i686
@@ -17,6 +17,7 @@ pkgbase = uim-git
 	makedepends = anthy
 	makedepends = m17n-lib
 	makedepends = qt5-x11extras
+	makedepends = ruby
 	depends = libxft
 	depends = libedit
 	optdepends = qt4: immodule and helper applications
