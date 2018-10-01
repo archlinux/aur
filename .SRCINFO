@@ -1,7 +1,7 @@
 pkgbase = linux-drm-fixes-git
 	pkgdesc = DRM kernel graphics driver development tree
 	pkgver = 4.20.782792.fcb1349a2af5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cgit.freedesktop.org/drm/drm
 	arch = x86_64
 	license = GPL2

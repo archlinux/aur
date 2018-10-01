@@ -1,4 +1,4 @@
-# Maintainer: Yurii Kolesnykov <yurikoles@gmail.com>
+# Maintainer: Yurii Kolesnykov <root@yurikoles.com>
 # Contributor: Boohbah <boohbah at gmail.com>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
@@ -15,7 +15,7 @@ _kernel_rel=4.20
 _branch=drm-fixes
 _kernelname=${pkgbase#linux}
 pkgver=4.20.782792.fcb1349a2af5
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://cgit.freedesktop.org/drm/drm'
 license=('GPL2')
