@@ -1,7 +1,7 @@
 pkgbase = vyprvpn-linux-cli
 	pkgdesc = A simple service and command line interface to manage NetworkManager based connections to VyprVPN.
 	pkgver = 1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.goldenfrog.com
 	install = vyprvpn-linux-cli.install
 	arch = i686
