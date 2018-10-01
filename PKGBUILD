@@ -41,8 +41,9 @@ revocation.conf,sha1.conf,sha2.conf,sha3.conf,socket-default.conf,sql.conf,sqlit
 vici.conf,x509.conf,xauth-eap.conf,xauth-generic.conf,xcbc.conf,unity.conf,curve25519.conf,bypass-lan.conf}
 )
 
-source=(https://download.strongswan.org/strongswan-${pkgver}.tar.bz2{,.sig}
-        configure_ac.patch)
+source=("https://download.strongswan.org/strongswan-${pkgver}.tar.bz2"{,.sig}
+    'configure_ac.patch'
+    )
 
 validpgpkeys=("948F158A4E76A27BF3D07532DF42C170B34DBA77")
 
