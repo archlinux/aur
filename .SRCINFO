@@ -1,0 +1,17 @@
+pkgbase = deadbeef-plugin-lyricsbar-git
+	pkgdesc = DeaDBeeF lyrics bar plugin
+	pkgver = r9.gb6709b7
+	pkgrel = 1
+	url = https://github.com/VolkMilit/deadbeef-lyricsbar
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = deadbeef-git
+	source = deadbeef-lyricsbar::git+https://github.com/VolkMilit/deadbeef-lyricsbar
+	source = deadbeef-lyricsbar-makefile.patch
+	sha256sums = SKIP
+	sha256sums = 5f8367de9b26c02904c7954d317cd167adc8583826178e481aed7c636415631f
+
+pkgname = deadbeef-plugin-lyricsbar-git
+
