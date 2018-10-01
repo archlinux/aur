@@ -1,10 +1,10 @@
-# Maintainer: Yurii Kolesnykov <yurikoles@gmail.com>
+# Maintainer: Yurii Kolesnykov <root@yurikoles.com>
 # Credit: Laurent Carlier <lordheavym@gmail.com>
 
 pkgname=xf86-video-amdgpu-git
 _pkgname=xf86-video-amdgpu
 pkgver=18.1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="X.org amdgpu video driver (git version)"
 arch=('x86_64')
 url="https://xorg.freedesktop.org/"
