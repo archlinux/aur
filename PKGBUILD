@@ -2,8 +2,8 @@
 
 pkgname=gpu-viewer
 _pkgname=GPU-Viewer
-pkgver=1.13
-pkgrel=2
+pkgver=1.14
+pkgrel=1
 pkgdesc="A frontend to glxinfo and vulkaninfo."
 arch=('i686' 'x86_64')
 url="https://github.com/arunsivaramanneo/GPU-Viewer/"
@@ -31,4 +31,4 @@ package() {
 	ln -s "/usr/share/$pkgname/GPUViewer" "$pkgdir/usr/bin/$pkgname"
 }
 
-md5sums=('2304e4b9b0b618860efa50c98a566a51')
+md5sums=('b8e7b384db73b07839319574c19c365c')
