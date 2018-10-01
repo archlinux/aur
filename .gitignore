@@ -1,0 +1,5 @@
+pkg/
+src/
+nudatus-*.tar.gz
+python-nudatus-*.pkg.tar.xz
+.AURINFO

@@ -1,0 +1,14 @@
+pkgbase = python-nudatus
+	pkgdesc = A tool to remove comments from Python scripts
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/zanderbrown/nudatus
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/n/nudatus/nudatus-0.0.3.tar.gz
+	sha256sums = ca2324777a10df8593eacacdd37a00e8fc780d5dc6a78cb02d6e6a5a85337ac9
+
+pkgname = python-nudatus
+
