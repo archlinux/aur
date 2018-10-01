@@ -1,8 +1,8 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
 
 pkgname=zypper-git
-pkgver=1.14.12
-pkgrel=3
+pkgver=1.14.12.16.g3f1ff06f
+pkgrel=1
 pkgdesc="Command line software manager using libzypp"
 arch=('i686' 'x86_64')
 url="https://github.com/openSUSE/zypper"
