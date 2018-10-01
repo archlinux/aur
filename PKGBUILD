@@ -1,7 +1,7 @@
 #Maintainer: Iwan Timmer <irtimmer@gmail.com>
 
 pkgname=kubernetes
-pkgver=1.11.3
+pkgver=1.12.0
 _contribver=f4ce29dd35b68f538a5845d7e294bbf056d5d215
 pkgrel=1
 pkgdesc="Production-Grade Container Scheduling and Management"
@@ -22,7 +22,7 @@ backup=('etc/kubernetes/apiserver'
         'etc/kubernetes/proxy'
         'etc/kubernetes/scheduler')
 install=kubernetes.install
-sha256sums=('bbb1541985eaa3d2ccb5d627196423298e3a2581adb21f0aa3c8650691780e3f'
+sha256sums=('efef673ac47c76799899b1b1a1ff07c3cfa1eb566641453dfca4c87b8dc2b358'
             '4bd2a2f4fc2a17b78dd53a8f7312760b4028d600d14006a3cdf5768b28b44b27'
             'fb6fce3ef4b793863286dafb5856ce28027427005d6c6fd44162844921ab714b')
 
@@ -44,7 +44,7 @@ package() {
     [ "$CARCH" = 'i686' ] && _kubearch=386
     [ "$CARCH" = 'x86_64' ] && _kubearch=amd64
 
-    binaries=(apiextensions-apiserver cloud-controller-manager kube-proxy kube-apiserver kube-controller-manager kubelet kubeadm kubemark hyperkube kube-aggregator kube-scheduler kubectl kubemark)
+    binaries=(apiextensions-apiserver cloud-controller-manager kube-proxy kube-apiserver kube-controller-manager kubelet kubeadm kubemark hyperkube kube-scheduler kubectl kubemark)
     for bin in "${binaries[@]}"; do
         install -Dm755 _output/local/bin/linux/$_kubearch/$bin $pkgdir/usr/bin/$bin
     done
