@@ -1,6 +1,6 @@
 pkgbase = arizen
 	pkgdesc = Arizen is light API wallet for ZenCash with localy stored and encrypted files.
-	pkgver = 1.1.8
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/ZencashOfficial/arizen
 	install = arizen.install
@@ -41,8 +41,8 @@ pkgbase = arizen
 	depends = pango
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/ZencashOfficial/arizen/releases/download/v1.1.8/Arizen_1.1.8_amd64.deb
-	sha256sums = 3e816c70b95bbad0b4a907a6bc028371efa07c044e94c87c975fde51073dc3d3
+	source = https://github.com/ZencashOfficial/arizen/releases/download/v1.2.0/Arizen_1.2.0_amd64.deb
+	sha256sums = 1a60392a0a2d03bd457caa5672a0e771493c55f5f38569fc351b3afc088413db
 
 pkgname = arizen
 
