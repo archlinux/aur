@@ -1,6 +1,6 @@
 pkgbase = hwchart
 	pkgdesc = a simple application to graph networks
-	pkgver = 1.5
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://github.com/fyr77/HWchart/
 	arch = i686
