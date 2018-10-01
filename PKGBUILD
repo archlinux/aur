@@ -5,7 +5,7 @@
 # Contributor: damir <damir@archlinux.org>
 
 pkgname=lib32-fluidsynth
-pkgver=1.1.11
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='A real-time software synthesizer based on the SoundFont 2 specifications'
 arch=('x86_64')
@@ -14,10 +14,10 @@ license=('LGPL')
 depends=('fluidsynth' 'lib32-alsa-lib' 'lib32-glib2' 'lib32-glibc' 'lib32-jack'
          'lib32-dbus' 'lib32-libpulse' 'lib32-libsndfile' 'lib32-portaudio'
          'lib32-readline')
-makedepends=('cmake' 'gcc-multilib' 'lib32-ladspa')
+makedepends=('cmake' 'git' 'lib32-ladspa')
 optdepends=('pulseaudio: PulseAudio sound support')
-source=("fluidsynth-${pkgver}.tar.gz::https://github.com/FluidSynth/fluidsynth/archive/v${pkgver}.tar.gz")
-sha256sums=('da8878ff374d12392eecf87e96bad8711b8e76a154c25a571dd8614d1af80de8')
+source=("git+https://github.com/FluidSynth/fluidsynth.git#tag=v${pkgver}")
+sha256sums=('SKIP')
 
 prepare() {
   if [[ -d build ]]; then
@@ -30,10 +30,9 @@ build() {
   cd build
 
   export CC='gcc -m32'
-  export CXX='g++ -m32'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
-  cmake ../fluidsynth-${pkgver} \
+  cmake ../fluidsynth \
     -DCMAKE_BUILD_TYPE='Release' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DFLUID_DAEMON_ENV_FILE='/etc/conf.d/fluidsynth' \
@@ -45,9 +44,7 @@ build() {
 }
 
 package() {
-  cd build
-
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="${pkgdir}" -C build install
   rm -rf "${pkgdir}"/usr/{include,share,bin}
 }
 
