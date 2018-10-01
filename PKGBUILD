@@ -1,6 +1,6 @@
 # Maintainer: archblue <jhswx84@aliyun.com>
 pkgname=proxyee-down
-pkgver=3.1
+pkgver=3.12
 pkgrel=1
 pkgdesc="基于HTTP代理的百度网盘(Baidu)不限速下载，SwitchyOmega设置请参见项目主页说明"
 arch=("any")
