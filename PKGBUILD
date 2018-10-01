@@ -3,7 +3,7 @@
 
 pkgname=vkquake
 pkgver=1.00.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A modern Quake 1 engine. Forked from Fitzquake. This version contains Vulkan API support."
 arch=('i686' 'x86_64')
 conflicts=('vkquake')
