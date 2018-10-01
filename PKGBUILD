@@ -18,7 +18,7 @@ md5sums_x86_64=('ace930149e7e53fecb5495bf5df0297a')
 prepare() {
   cd "$srcdir"
 
-  ar x "Pomello_${pkgver}.deb"
+  ar x "Pomello-${pkgver}.deb"
 }
 
 package() {
