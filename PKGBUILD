@@ -1,52 +1,33 @@
-# Contributor: Rod Kay               <charlie5 on #ada at freenode.net>
+# Maintainer:  Rod Kay               <charlie5 on #ada at freenode.net>
 # Contributor: Pierre-Marie de Rodat <pmderodat@kawie.fr>
 
 pkgname=gnat_util
-pkgver=2017
-pkgrel=2
-pkgdesc="Provides internal GNAT compiler components in a library which is used by (at least) ASIS and GNATColl."
-
-options=('!emptydirs')
+pkgver=2018
+pkgrel=1
+pkgdesc="Internal GNAT compiler components used by (at least) ASIS."
 
 arch=('i686' 'x86_64')
-url="http://sourceforge.net/projects/gnatutil"
+url="https://libre.adacore.com/"
 license=('GPL V3.0 without any Runtime Exception')
 
-depends=('gcc-ada')
-makedepends=('gcc-ada' 'gprbuild')
+depends=('gcc-ada>=8.2.1' 'gcc-ada<9.0.0')
+makedepends=('gprbuild>=2018')
 
-
-source=('http://mirrors.cdn.adacore.com/art/591c45e2c7a447af2deed037'
-        'targparm.adb-patch')
-sha1sums=('00a231b45e25ea524a144111a524262184ceb876'
-          'fb3d1496b5ea382b6272355a97a31485f1272c36')
-
+source=('http://mirrors.cdn.adacore.com/art/5b0819dfc7a447df26c27a6b')
+sha1sums=('462a1304d1ed1ee5a37bfc6e956fa8b07896b715')
 
 _pkg_src_dir="$pkgname-gpl-$pkgver-src"
-#_make_flags='ENABLE_SHARED=yes'
-
-
-
-prepare()
-{
-  cd "$srcdir/$_pkg_src_dir" 
-
-  patch -p0 -i ../targparm.adb-patch
-}
-
 
 
 build()
 {
   cd "$srcdir/$_pkg_src_dir"
-  make
-#  make $_make_flags
+  make 'ENABLE_SHARED=yes'
 }
 
 
 package()
 {
   cd "$srcdir/$_pkg_src_dir"
-  make prefix="$pkgdir/usr" install
-#  make prefix="$pkgdir/usr" $_make_flags install
+  make 'ENABLE_SHARED=yes' prefix="$pkgdir/usr" install
 }
