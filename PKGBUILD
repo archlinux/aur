@@ -1,9 +1,10 @@
-# Maintainer: Davide Iosca <dvdios [at] aol [dot] com>
+# Maintainer: Yurii Kolesnykov <root@yurikoles.com>
+# Contributor: Davide Iosca <dvdios [at] aol [dot] com>
 
 pkgname='vkcube-git'
 pkgdesc='Demo cube app for Vulkan'
-pkgver=r113.0062eec
-pkgrel=1
+pkgver=r119.0d57034
+pkgrel=2
 url='https://github.com/krh/vkcube'
 arch=('i686' 'x86_64')
 license=('MIT')
