@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=vpointer-desktop
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="An application that simulates a laser pointer on the screen of your computer or on the canvas of the projector."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ source=("http://www.eurograficasrl.it/stefano/vpointer/linux/latest/vPointerDesk
 	 vpointer)
 
 package() {
-  cd ${srcdir}/vPointer*
+  cd "${srcdir}/vPointerDesktop_${pkgver}_linux"
   mkdir -p ${pkgdir}/opt/vpointer-desktop
   mkdir -p ${pkgdir}/usr/bin
   cp -f vPointerDesktop.jar ${pkgdir}/opt/vpointer-desktop/
@@ -20,5 +20,5 @@ package() {
   chmod +x ${pkgdir}/usr/bin/vpointer
 }
 
-md5sums=('da7c2911127fbabf63b089e09dce0d57'
+md5sums=('2c3c46b3bf3988ed7697986999934d0c'
          '3a4e008b25db78a05bbb5c7e9ee7e135')
