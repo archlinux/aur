@@ -6,7 +6,7 @@
 _pkgname=uim
 pkgname=${_pkgname}-git
 pkgver=1.8.0.alpha.r352.gc79432cb
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='Multilingual input method library'
 url='https://github.com/uim/uim/wiki'
@@ -16,9 +16,9 @@ depends=('libxft' 'libedit')
 makedepends=('git' # for cloning
 			 'intltool' 'gettext' # core dependencies
 			 'gtk2' 'gtk3' 'qt4' 'qt5-tools' # frontend plugins
-			 'anthy' 'm17n-lib') # input method plugins
+			 'anthy' 'm17n-lib' # input method plugins
+			 'qt5-x11extras') # platform input context plugin
 optdepends=('qt4: immodule and helper applications'
-			'qt5-base: immodule and helper applications'
 			'qt5-x11extras: platform input context plugin'
             'gtk2: immodule and helper applications'
             'gtk3: immodule and helper applications'
