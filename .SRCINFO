@@ -1,5 +1,5 @@
 pkgbase = spideroak-groups
-	pkgdesc = SpiderOak Groups
+	pkgdesc = Secure file backup, sync and sharing client. This provides the client for SpiderOak Groups / Enterprise
 	pkgver = 7.3.0
 	pkgrel = 4
 	url = https://spideroak.com/

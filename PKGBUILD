@@ -15,7 +15,7 @@
 pkgname=spideroak-groups
 pkgver=7.3.0
 pkgrel=4
-pkgdesc='SpiderOak Groups'
+pkgdesc='Secure file backup, sync and sharing client. This provides the client for SpiderOak Groups / Enterprise'
 arch=(x86_64)
 url='https://spideroak.com/'
 license=('custom')
