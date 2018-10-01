@@ -1,7 +1,7 @@
 pkgbase = toggldesktop-bin
 	pkgdesc = Time Tracking Software.
 	pkgver = 7.4.122
-	pkgrel = 1
+	pkgrel = 2
 	url = https://toggl.com/
 	arch = x86_64
 	depends = libxss
