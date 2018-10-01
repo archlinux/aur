@@ -29,7 +29,7 @@ source=("${pkgbase}::git://anongit.freedesktop.org/drm/drm#branch=${_branch}"
         "${pkgbase}.preset")
 
 sha256sums=('SKIP'
-            'c9ab9676e52a6249a1d3f0382e88d40975fdcb14c78f252d0bf920eb62d8d866'
+            '30e0dc53fe502e732e0c6597f36f82840959b90a76de98553e24c6fe20664102'
             'd590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 pkgver() {
