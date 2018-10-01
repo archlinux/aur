@@ -1,11 +1,11 @@
-# Maintainer: Yurii Kolesnykov <yurikoles@gmail.com>
+# Maintainer: Yurii Kolesnykov <root@yurikoles.com>
 # Contributor: AndyRTR <andyrtr@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=xf86-video-intel-git
 _pkgname=xf86-video-intel
 pkgver=2.99.917+847+g25c9a2fc
-pkgrel=3
+pkgrel=4
 epoch=1
 arch=(x86_64)
 url="https://01.org/linuxgraphics"
