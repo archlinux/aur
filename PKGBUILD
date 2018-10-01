@@ -6,8 +6,8 @@ pkgrel=1
 pkgdesc='MineTime is a modern, intuitive and smart calendar application.'
 arch=('x86_64')
 url='https://github.com/marcoancona/MineTime'
-license=()
-depends=()
+license=('custom')
+depends=('libsecret')
 source=(${url}/releases/download/v${pkgver}/MineTime_${pkgver}_amd64.deb
         minetime)
 sha512sums=('76bdee0e165ce5f115daaca084b4555cfa630536860c6be387affe43a87b4e7e89c1083e93892a1a0bbc6ce5bd986be0bc749716eed725ac81c02cdebab68eaa'
