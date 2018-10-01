@@ -1,7 +1,7 @@
 pkgbase = linux-drm-intel-testing-git
 	pkgdesc = Linux kernel with DRM patches
 	pkgver = 4.19.783643.dee7da58caac
-	pkgrel = 1
+	pkgrel = 2
 	url = https://01.org/linuxgraphics/gfx-docs/maintainer-tools/drm-intel.html
 	arch = x86_64
 	license = GPL2
