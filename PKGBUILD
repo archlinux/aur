@@ -34,12 +34,12 @@ check() {
 
 package() {
     cd "${srcdir}/${pkgname}"
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     cd "${srcdir}/${pkgname}/build"
     ninja dist
 
-    cd "Emojicode-0.6.0-Linux-${CARCH}"
+    cd "Emojicode-${pkgver}-Linux-${CARCH}"
 
     install -Dm755 "emojicodec" "${pkgdir}/usr/bin/emojicodec"
 
