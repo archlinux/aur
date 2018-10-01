@@ -1,7 +1,7 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=java-design-patterns-git
-pkgver=1.19.0.r16.379a8251
+pkgver=1.20.0.r0.26d6d96f
 pkgrel=1
 pkgdesc="Design patterns implemented in Java"
 arch=("any")
@@ -24,14 +24,14 @@ pkgver() {
 }
 
 package() {
-  msg2 "Installing custom license /usr/share/licenses/${pkgname}/"
+  echo "Installing custom license /usr/share/licenses/${pkgname}/"
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm644 "${srcdir}/${pkgname%-git}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/"
   
-  msg2 "Installing ${pkgname%-git} into /opt"
+  echo "Installing ${pkgname%-git} into /opt"
   install -d "${pkgdir}/opt"
   cp -r "${srcdir}/${pkgname%-git}" "${pkgdir}/opt/${pkgname%-git}"
 
-  msg2 "Removing git from package"
+  echo "Removing git from package"
   rm -rf "${pkgdir}/opt/${pkgname%-git}/.git"
 }
