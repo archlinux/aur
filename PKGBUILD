@@ -1,4 +1,4 @@
-# Maintainer: Yurii Kolesnykov <yurikoles@gmail.com>
+# Maintainer: Yurii Kolesnykov <root@yurikoles.com>
 # Contributor: Boohbah <boohbah at gmail.com>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
@@ -15,7 +15,7 @@ _kernel_rel=4.20
 _branch=drm-next-${_kernel_rel}-wip
 _kernelname=${pkgbase#linux}
 pkgver=4.20.783899.c20993e2f3ea
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://cgit.freedesktop.org/~agd5f/linux/'
 license=('GPL2')
