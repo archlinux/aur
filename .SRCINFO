@@ -1,7 +1,7 @@
 pkgbase = linux-drm-intel-next-queued-git
 	pkgdesc = Linux driver for Intel graphics
-	pkgver = 4.19.782919.7769db588384
-	pkgrel = 2
+	pkgver = 4.19.782928.e9eaf82d97a2
+	pkgrel = 1
 	url = https://01.org/linuxgraphics/gfx-docs/maintainer-tools/drm-intel.html
 	arch = x86_64
 	license = GPL2
@@ -18,7 +18,7 @@ pkgbase = linux-drm-intel-next-queued-git
 	source = linux.install
 	source = linux-drm-intel-next-queued-git.preset
 	sha256sums = SKIP
-	sha256sums = 812b02d1c0f7973db927738d2db8e769861860175f5712092dd52c601592b140
+	sha256sums = 7939e36db9d725fef6e219cd8815b3ab0f2b3307738f6c01a11b876ca2b79267
 	sha256sums = d590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 
