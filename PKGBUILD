@@ -8,11 +8,12 @@
 
 # Maintainer: Jeong Arm <kjwonmail@gmail.com>
 pkgname=libhangul-3beol
+_pkgname=libhangul
 pkgver=libhangul.0.1.0.r45.5244cb3
 pkgrel=1
 pkgdesc="libhangul alternatives"
 arch=('x86_64')
-url="https://github.com/3beol/libhangul"
+url="https://gitlab.com/3beol/libhangul.git"
 license=('LGPL')
 groups=()
 depends=()
@@ -23,7 +24,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=('git://github.com/3beol/libhangul')
+source=('https://gitlab.com/3beol/libhangul.git')
 noextract=()
 md5sums=('SKIP')
 
@@ -47,23 +48,23 @@ pkgver() {
 }
 
 prepare() {
-	cd "$srcdir/libhangul"
+	cd "$srcdir/$_pkgname"
+	echo "$pkgdir/"
 }
 
 build() {
-	cd "$srcdir/libhangul"
-	touch config.rpath
+	cd "$srcdir/$_pkgname"
 	./autogen.sh
 	./configure --prefix=/usr
 	make
 }
 
 check() {
-	cd "$srcdir/libhangul"
+	cd "$srcdir/$_pkgname"
 	make -k check
 }
 
 package() {
-	cd "$srcdir/libhangul"
+	cd "$srcdir/$_pkgname"
 	make DESTDIR="$pkgdir/" install
 }
