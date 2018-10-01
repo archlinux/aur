@@ -1,4 +1,4 @@
-# Maintainer: Yurii Kolesnykov <yurikoles@gmai.com>
+# Maintainer: Yurii Kolesnykov <root@yurikoles.com>
 # Credit: Christian Hesse <mail@eworm.de>
 # Credit: Dave Reisner <dreisner@archlinux.org>
 # Credit: Tom Gundersen <teg@jklm.no>
@@ -7,7 +7,7 @@ pkgname=lib32-systemd-git
 _pkgname=lib32-systemd
 _pkgbasename=systemd
 pkgver=239.1014
-pkgrel=1
+pkgrel=2
 pkgdesc='system and service manager (32-bit, git version)'
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
