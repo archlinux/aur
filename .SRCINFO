@@ -6,8 +6,8 @@ pkgbase = minivmac
 	arch = x86_64
 	license = GPL
 	makedepends = tar
-	source = https://www.gryphel.com/d/minivmac/minivmac-3.5.8/minivmac-3.5.8-lx64.bin.tgz
-	md5sums = 68168f06472b8d49c98f561ff72eb250
+	source = https://www.gryphel.com/d/minivmac/minivmac-3.5.8/mnvm0026-3.5.8-lx64.bin.tgz
+	md5sums = e81655df670a0422702006c96da10b75
 
 pkgname = minivmac
 

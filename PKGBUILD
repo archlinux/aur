@@ -4,7 +4,7 @@
 pkgname='mnvm0026'
 pkgver='3.5.8'
 pkgrel=1
-pkgdesc="a miniature early Macintosh emulator"
+pkgdesc="a miniature Macintosh II emulator"
 arch=('x86_64')
 url="http://www.gryphel.com/c/minivmac/"
 license=('GPL')
