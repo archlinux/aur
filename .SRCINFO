@@ -1,7 +1,7 @@
 pkgbase = thue
 	pkgdesc = Thue programming language
 	pkgver = 1.5_2015.0827
-	pkgrel = 1
+	pkgrel = 2
 	url = http://catseye.tc/node/Thue.html
 	arch = x86_64
 	license = custom:PD
