@@ -1,4 +1,4 @@
-# Maintainer: Yurii Kolesnykov <yurikoles@gmail.com>
+# Maintainer: Yurii Kolesnykov <root@yurikoles.com>
 # Contributor: Boohbah <boohbah at gmail.com>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
@@ -15,7 +15,7 @@ _kernel_rel=4.19
 _branch=drm-intel-next
 _kernelname=${pkgbase#linux}
 pkgver=4.19.768656.448626103dad
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://01.org/linuxgraphics/gfx-docs/maintainer-tools/drm-intel.html'
 license=('GPL2')
