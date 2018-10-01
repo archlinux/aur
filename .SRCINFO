@@ -1,6 +1,6 @@
 pkgbase = supercollider-git
 	pkgdesc = Environment and programming language for real time audio synthesis and algorithmic composition
-	pkgver = 3.10.0.beta2.r175.gf5efaffea1
+	pkgver = 3.10.0.beta2.r179.g937a2615bf
 	pkgrel = 1
 	url = https://supercollider.github.io/
 	arch = i686
@@ -32,14 +32,12 @@ pkgbase = supercollider-git
 	source = git+https://github.com/supercollider/hidapi.git
 	source = git+https://github.com/supercollider/portaudio.git
 	source = git+https://github.com/supercollider/yaml-cpp.git
-	source = boost-1.67.patch::https://github.com/dvzrv/supercollider/commit/bbcd068659ced596402dedc78f49fabfab6470bd.patch
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = 1bb70a544425d9c3a4e650315fea4a0a388214f1e5b1f300c1bd6706d2fab9e4fe103020c279b8b954386d45fcb5bfd64e730dbf158d4e317517fce3bb393a7c
 
 pkgname = supercollider-git
 
