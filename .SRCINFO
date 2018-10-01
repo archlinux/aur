@@ -1,7 +1,7 @@
 pkgbase = gimagereader
 	pkgdesc = A graphical frontend to tesseract-ocr
-	pkgver = 3.2.3
-	pkgrel = 4
+	pkgver = 3.3.0
+	pkgrel = 1
 	url = https://github.com/manisandro/gImageReader/
 	arch = i686
 	arch = x86_64
@@ -16,10 +16,13 @@ pkgbase = gimagereader
 	depends = tesseract
 	depends = gtkspellmm
 	depends = poppler-glib
+	depends = djvulibre
+	depends = libzip
+	depends = python-gobject
 	provides = gimagereader
 	conflicts = gimagereader
-	source = https://github.com/manisandro/gImageReader/releases/download/v3.2.3/gimagereader-3.2.3.tar.xz
-	sha256sums = 8ca6b8900671eba7a00fe1f9a728fee6c2ea3ed1ae10cc62dafb0e3f08574420
+	source = https://github.com/manisandro/gImageReader/releases/download/v3.3.0/gimagereader-3.3.0.tar.xz
+	sha256sums = 91615af41e89170aadaae68cb0db94eb62abdd5b308e8a5162477ba9baf6efe9
 
 pkgname = gimagereader
 
