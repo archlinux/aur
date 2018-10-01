@@ -1,7 +1,9 @@
+# Maintainer: Yurii Kolesnykov <root@yurikoles.com>
+
 pkgname=fahclient
 pkgver=7.5.1
 _shortver=7.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A command line client for Folding@Home'
 url="https://foldingathome.org/"
 arch=('x86_64')
