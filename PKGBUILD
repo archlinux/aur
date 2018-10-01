@@ -1,55 +1,45 @@
 # Maintainer: THS <mail@thson.de>
 pkgname=aseba-git
-pkgver=1.5.5
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="A set of tools which allow beginners to program robots easily and efficiently."
 arch=('x86_64')
 url="https://github.com/aseba-community/aseba"
 license=('LGPL3')
 provides=('aseba')
-depends=('boost' 'qt4' 'qt5-tools' 'qwt' 'libgudev' 'libxml2' 'python2' 'sdl2' 'protobuf' 'qtwebkit' 'avahi')
+depends=('boost' 'doxygen' 'qt5-tools' 'python2' 'sdl2' 'qt5-svg' 'avahi')
 install="aseba-git.install"
 source=('dashel::git+https://github.com/aseba-community/dashel.git' 
 	'enki::git+https://github.com/enki-community/enki.git'
-	'aseba::git+https://github.com/aseba-community/aseba.git'
-	'blockly::git+https://github.com/aseba-community/blockly.git')
+	'aseba::git+https://github.com/aseba-community/aseba.git')
 
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
   cd "${srcdir}/aseba"
-  git for-each-ref --format="%(refname:short)" --sort=-authordate --count=1 refs/tags
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+
 }
 
 prepare() {
   msg2 "Adding submodules"
   cd $srcdir/aseba
   git submodule init
-  git config submodule.blockly.url $srcdir/blockly
+  git config submodule.enki.url $srcdir/enki
+  git config submodule.dashel.url $srcdir/dashel
   git submodule update
 }
 
 
 build() {
-mkdir -p build-dashel build-enki build-aseba
-cd build-dashel
-cmake ../dashel -DCMAKE_BUILD_TYPE=RelWithDebInfo -DBUILD_SHARED_LIBS=OFF
-make
-cd ..
-cd build-enki
-export enki_DIR=${srcdir}/build-enki
-cmake ../enki -DPYTHON_EXECUTABLE:FILEPATH=/usr/bin/python2 #Only Python2 works
-make
-cd ..
-cd build-aseba
-export dashel_DIR=../build-dashel
-cmake ../aseba -DCMAKE_BUILD_TYPE=RelWithDebInfo -Ddashel_DIR=../build-dashel -DDASHEL_INCLUDE_DIR=../dashel -DDASHEL_LIBRARY=../build-dashel/libdashel.a -DENKI_INCLUDE_DIR=../enki -DENKI_LIBRARY=../build-enki/enki/libenki.a -DENKI_VIEWER_LIBRARY=../build-enki/viewer/libenkiviewer.a -DCMAKE_INSTALL_PREFIX=/usr
-
-make
+  cd $srcdir/aseba
+  mkdir build && cd build
+  cmake -DBUILD_SHARED_LIBS=OFF -DPYTHON_EXECUTABLE:FILEPATH=/usr/bin/python2.7 -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release .. 
+  make
 }
 
 package() {
-    cd $srcdir/build-aseba
+    cd $srcdir/aseba/build
 
     make DESTDIR=$pkgdir install
 
@@ -62,7 +52,9 @@ package() {
     install -Dm755  "${srcdir}/aseba/menu/freedesktop/thymiovpl.desktop"  "${pkgdir}/usr/share/applications/thymiovpl.desktop"
     install -Dm755  "${srcdir}/aseba/menu/freedesktop/thymiownetconfig.desktop"  "${pkgdir}/usr/share/applications/thymiownetconfig.desktop"
     install -Dm755  ${srcdir}/aseba/menu/freedesktop/48x48/* -t ${pkgdir}/usr/share/pixmaps/
-    install -Dm755  "${srcdir}/aseba/targets/challenge/examples/challenge-goto-energy.aesl"  "${pkgdir}/usr/share/doc/aseba/example-code/challenge-goto-energy.aesl"
-    install -Dm755  "${srcdir}/aseba/targets/playground/examples/unifr.playground"  "${pkgdir}/usr/share/doc/aseba/example-scenarios/unifr.playground"
-
+    install -Dm755  ${srcdir}/aseba/aseba/targets/challenge/examples/*.aesl -t  ${pkgdir}/usr/share/doc/aseba/example-code/
+    install -Dm755  "${srcdir}/aseba/aseba/targets/playground/examples/thymio-default-behaviours.aesl"  "${pkgdir}/usr/share/doc/aseba/example-scenarios/thymio-default-behaviours.aesl"
+    install -Dm755  ${srcdir}/aseba/aseba/targets/playground/examples/*.png -t ${pkgdir}/usr/share/doc/aseba/example-scenarios/
+    install -Dm755  ${srcdir}/aseba/aseba/targets/playground/examples/*.playground -t ${pkgdir}/usr/share/doc/aseba/example-scenarios/
+    install -Dm755  ${srcdir}/aseba/aseba/targets/playground/examples/*.aesl -t ${pkgdir}/usr/share/doc/aseba/example-code/
 }
