@@ -16,8 +16,8 @@ backup=('etc/vyprvpn/vyprvpn_service.conf')
 install=$pkgname.install
 
 source=("$pkgname.install")
-source_i686=("https://support.goldenfrog.biz/hc/article_attachments/212491008/vyprvpn-linux-cli-1.7.i386.deb")
-source_x86_64=("https://support.goldenfrog.biz/hc/article_attachments/212490988/vyprvpn-linux-cli-1.7.amd64.deb")
+source_i686=("https://support.goldenfrog.com/hc/article_attachments/360010579171/vyprvpn-linux-cli-1.7.i386.deb")
+source_x86_64=("https://support.goldenfrog.biz/hc/article_attachments/360010562332/vyprvpn-linux-cli-1.7.amd64.deb")
 
 sha256sums=('310cfdcf3d8b84789923139f3ce918003ad743bddf8bed72bc23bef90a43240b')
 sha256sums_i686=('c475aa3e58a998fa8c837be4be4dd56f86aa7e57578afabaf7079739bc41b5c4')
