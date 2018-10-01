@@ -1,6 +1,6 @@
 pkgbase = simplylock-git
 	pkgdesc = A simple and lightweight Linux console locking tool.
-	pkgver = 0.5.r1.g0775787
+	pkgver = 0.6.r0.g5fab18f
 	pkgrel = 1
 	url = https://github.com/95ulisse/simplylock
 	arch = i686
