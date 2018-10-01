@@ -1,12 +1,12 @@
 # Contributor : Devaev Maxim <mdevaev@gmail.com>
 
 pkgname=cgroupfs-mount-rc
-pkgver=20141214
+pkgver=20170901
 pkgrel=1
 pkgdesc="Simple scripts to properly mount the cgroupfs hierarchy"
 arch=('any')
 url="http://github.com/mdevaev/cgroupfs-mount-rc.git"
-license="GPL"
+license=('GPL')
 makedepends=('git')
 
 _gitroot="git://github.com/mdevaev/cgroupfs-mount-rc.git"
@@ -30,6 +30,9 @@ build() {
 
 	rm -rf $_gitname-build
 	cp -r $_gitname $_gitname-build
+}
+
+package() {
 	cd $_gitname-build
 
     mkdir -p $pkgdir/usr/bin $pkgdir/etc/rc.d
