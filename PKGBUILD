@@ -1,4 +1,4 @@
-# Maintainer: Dictator Mei <dctxmei@gmail.com>
+# Maintainer: Dct Mei <dctxmei@gmail.com>
 # Maintainer: Jeremy Pope <jpope at jpope dot org> PGP-Key: E00B4261
 pkgname=breeze-hacked-cursor-theme-bin
 pkgver=2.0
