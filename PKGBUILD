@@ -1,4 +1,4 @@
-# Maintainer: Lone_Wolf <lonewolf at xs4all dot nl>
+# Maintainer: Yurii Kolesnykov <root@yurikoles.com>
 # Contributor: Lone_Wolf <lonewolf at xs4all dot nl>
 # Contributor: Armin K. <krejzi at email dot com>
 # Contributor: Kristian Klausen <klausenbusk@hotmail.com>
@@ -15,16 +15,16 @@ pkgname="${pkgbase}"
 _branch=iris
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
 pkgver=18.3.0_devel.105175.7452a187a5a
-pkgrel=1
+pkgrel=3
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'llvm-svn' 'clang-svn' 'xorgproto'
-              'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libomxil-bellagio'
+              'libxml2' 'libx11' 'elfutils'
               'ocl-icd' 'vulkan-icd-loader' 'libgcrypt'  'wayland' 'wayland-protocols' 'meson')
 depends=('libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
-         'libomxil-bellagio' 'llvm-libs-svn' 'libunwind' 'libglvnd' 'wayland' 'lm_sensors' 'libclc')
+         'llvm-libs-svn' 'libunwind' 'libglvnd' 'wayland' 'lm_sensors' 'libclc')
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
-provides=('mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau' 'vulkan-driver' 'opencl-mesa' 'opengl-driver' 'opencl-driver')
-conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau')
+provides=('mesa' 'vulkan-intel' 'vulkan-driver' 'opencl-mesa' 'opengl-driver' 'opencl-driver')
+conflicts=('mesa' 'opencl-mesa' 'vulkan-intel')
 url="https://www.mesa3d.org"
 license=('custom')
 source=("mesa::git+https://gitlab.freedesktop.org/kwg/mesa.git#branch=${_branch}"
@@ -51,17 +51,12 @@ build () {
        -D prefix=/usr \
        -D sysconfdir=/etc \
        -D platforms=x11,wayland,drm,surfaceless \
-       -D dri-drivers=i915,i965,r200,r100,nouveau \
-       -D gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl \
-       -D vulkan-drivers=amd,intel \
+       -D dri-drivers= \
+       -D gallium-drivers=iris \
+       -D vulkan-drivers=intel \
        -D dri3=true \
        -D egl=true \
        -D gallium-extra-hud=true \
-       -D gallium-nine=true \
-       -D gallium-omx=bellagio \
-       -D gallium-va=true \
-       -D gallium-vdpau=true \
-       -D gallium-xa=true \
        -D gallium-xvmc=false \
        -D gbm=true \
        -D gles1=true \
@@ -71,7 +66,6 @@ build () {
        -D libunwind=true \
        -D llvm=true \
        -D lmsensors=true \
-       -D osmesa=gallium \
        -D shared-glapi=true \
        -D gallium-opencl=icd \
        -D valgrind=false \
