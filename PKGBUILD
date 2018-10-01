@@ -4,7 +4,7 @@
 # Initial setup thanks to debtap (https://github.com/helixarch/debtap)
 pkgname=vyprvpn-linux-cli
 pkgver=1.7
-pkgrel=1
+pkgrel=3
 pkgdesc="A simple service and command line interface to manage NetworkManager based connections to VyprVPN."
 arch=('i686' 'x86_64')
 url="http://www.goldenfrog.com"

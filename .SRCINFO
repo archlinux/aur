@@ -1,7 +1,7 @@
 pkgbase = vyprvpn-linux-cli
 	pkgdesc = A simple service and command line interface to manage NetworkManager based connections to VyprVPN.
 	pkgver = 1.7
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.goldenfrog.com
 	install = vyprvpn-linux-cli.install
 	arch = i686
@@ -16,9 +16,9 @@ pkgbase = vyprvpn-linux-cli
 	backup = etc/vyprvpn/vyprvpn_service.conf
 	source = vyprvpn-linux-cli.install
 	sha256sums = 310cfdcf3d8b84789923139f3ce918003ad743bddf8bed72bc23bef90a43240b
-	source_i686 = https://support.goldenfrog.biz/hc/article_attachments/212491008/vyprvpn-linux-cli-1.7.i386.deb
+	source_i686 = https://support.goldenfrog.com/hc/article_attachments/360010579171/vyprvpn-linux-cli-1.7.i386.deb
 	sha256sums_i686 = c475aa3e58a998fa8c837be4be4dd56f86aa7e57578afabaf7079739bc41b5c4
-	source_x86_64 = https://support.goldenfrog.biz/hc/article_attachments/212490988/vyprvpn-linux-cli-1.7.amd64.deb
+	source_x86_64 = https://support.goldenfrog.biz/hc/article_attachments/360010562332/vyprvpn-linux-cli-1.7.amd64.deb
 	sha256sums_x86_64 = 3f589a66eddf466ff6600882b10aec55946034106e2b70388042f22919af7d65
 
 pkgname = vyprvpn-linux-cli
