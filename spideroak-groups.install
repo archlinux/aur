@@ -1,0 +1,11 @@
+post_install() {
+  update-desktop-database -q
+  echo "Privacy Policy: https://spideroak.com/privacy_policy"
+  echo "Law Enforcement Policy: https://spideroak.com/about/law-enforcement"
+  echo ""
+  echo "Full changelog is available at https://spideroak.com/release-notes/"
+}
+
+post_upgrade() {
+  post_install
+}
