@@ -3,21 +3,21 @@
 
 pkgname=mu-editor
 epoch=1
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc='A simple Python editor for beginner programmers'
 arch=('any')
 url='https://codewith.mu/'
 license=('GPL3')
-depends=('python-appdirs' 'python-gpiozero' 'python-guizero' 'python-matplotlib' 'python-pigpio'
-         'python-pgzero' 'python-pycodestyle' 'python-pyflakes' 'python-pyqtchart'
+depends=('python-appdirs' 'python-gpiozero' 'python-guizero' 'python-matplotlib' 'python-nudatus'
+         'python-pigpio' 'python-pgzero' 'python-pycodestyle' 'python-pyflakes' 'python-pyqtchart'
          'python-pyserial' 'python-qscintilla-qt5' 'python-qtconsole' 'python-requests'
          'python-semver' 'qt5-serialport')
 makedepends=('gendesk' 'python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/mu-editor/mu/archive/v$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/mu-editor/mu/archive/$pkgver.tar.gz"
         'webbrowser-issue31014.diff')
-sha256sums=('63a69fab2cea892126802904332c85f009eea78e1af982dbdfb54a95051258eb'
-            '0b2896a2e12c672c17088e3648505f0abb732650fa9e7c43a6146d5a2aa79c81')
+sha256sums=('41abc6415ba8c51d62ad6e465dbefec4b0382d586c60d602ebb3d9e373fc5710'
+            'ee2b9210ddb25ccc29ff857e450646d7b3cd7336a8532de29c76cd2176cc980e')
 
 
 prepare() {
@@ -27,7 +27,7 @@ prepare() {
   sed -i -e "s/'pyqt5==[0-9.]*',//" -e "s/'qscintilla==[0-9.]*',//" setup.py
   # Un-pin all other dependencies, so package doesn't break when a dependency is updated
   sed -i -e 's/==/>=/g' setup.py
-  patch -Np0 -i "${srcdir}/webbrowser-issue31014.diff"
+  patch -Np1 -i "${srcdir}/webbrowser-issue31014.diff"
 }
 
 build() {
