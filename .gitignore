@@ -4,3 +4,4 @@ pkg
 *.tar.xz
 *.src.tar.gz
 tresorit_installer*.run
+check_signature.sh
