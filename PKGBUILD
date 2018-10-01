@@ -5,15 +5,16 @@
 
 _pkgname=uim
 pkgname=${_pkgname}-git
-pkgver=1.8.0.alpha.r331.g34cc229d
-pkgrel=1
+pkgver=1.8.0.alpha.r352.gc79432cb
+pkgrel=2
 epoch=1
 pkgdesc='Multilingual input method library'
 url='https://github.com/uim/uim/wiki'
 license=('custom:BSD')
 arch=('i686' 'x86_64')
 depends=('libxft' 'libedit')
-makedepends=('intltool' 'gettext' # core dependencies
+makedepends=('git' # for cloning
+			 'intltool' 'gettext' # core dependencies
 			 'gtk2' 'gtk3' 'qt4' 'qt5-tools' # frontend plugins
 			 'anthy' 'm17n-lib') # input method plugins
 optdepends=('qt4: immodule and helper applications'
@@ -29,7 +30,9 @@ conflicts=('uim' 'uim-svn')
 source=("git+https://github.com/uim/uim.git"
 		"git+https://github.com/uim/sigscheme.git"
 		"git+https://github.com/uim/libgcroots.git")
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
