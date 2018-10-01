@@ -1,0 +1,5 @@
+serverless-*.tgz
+nodejs-serverless-*-any.pkg.tar.xz
+nodejs-serverless-*.src.tar.gz
+pkg
+src
