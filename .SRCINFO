@@ -1,6 +1,6 @@
 pkgbase = telegram-desktop-dev
 	pkgdesc = Official Telegram Desktop client - development release
-	pkgver = 1.3.16
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://desktop.telegram.org/
 	arch = i686
@@ -23,14 +23,15 @@ pkgbase = telegram-desktop-dev
 	optdepends = libnotify: desktop notifications
 	provides = telegram-desktop
 	conflicts = telegram-desktop
-	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v1.3.16
-	source = libtgvoip::git+https://github.com/telegramdesktop/libtgvoip.git
-	source = variant::git+https://github.com/mapbox/variant.git
-	source = GSL::git+https://github.com/Microsoft/GSL.git
+	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v1.4.0
 	source = Catch::git+https://github.com/philsquared/Catch.git
 	source = crl::git+https://github.com/telegramdesktop/crl.git
-	source = CMakeLists_fixed.inj
-	source = tdesktop_fixed.patch
+	source = GSL::git+https://github.com/Microsoft/GSL.git
+	source = libtgvoip::git+https://github.com/telegramdesktop/libtgvoip.git
+	source = variant::git+https://github.com/mapbox/variant.git
+	source = xxHash::git+https://github.com/Cyan4973/xxHash.git
+	source = CMakeLists.inj::https://git.archlinux.org/svntogit/community.git/plain/trunk/CMakeLists.inj?h=packages/telegram-desktop
+	source = tdesktop.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/tdesktop.patch?h=packages/telegram-desktop
 	source = libtgvoip.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/libtgvoip.patch?h=packages/telegram-desktop
 	source = no-gtk2.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/no-gtk2.patch?h=packages/telegram-desktop
 	sha256sums = SKIP
@@ -39,8 +40,9 @@ pkgbase = telegram-desktop-dev
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 053daeedb2f13e42a4cf784084adf2d41666f8fb4ac47e51e61d95263c229aa6
-	sha256sums = 97597dc8cd034e88ec36cda70219a09a003c1b62186d6320bdf611047c75f76c
+	sha256sums = SKIP
+	sha256sums = f37f7827e10557d1e74b58b81eb0d17102e1c0f193d129e6e8edbbf7284f5867
+	sha256sums = fba40197322b166ce5e5b5d569494a37759407e1dd9962aabe60581a9ae4ab56
 	sha256sums = 4dd2b1674b1a5bcfc5b640612278fe3a53b454192fbcc06b7476ff54ed6d2f6d
 	sha256sums = 8d707debe027c7cb658825501dc30fb3beb57ab21b1b6df2f01c5f76ca39a0e6
 
