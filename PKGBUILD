@@ -2,7 +2,7 @@
 # Contributor: drakkan <nicola.murino at gmail dot com>
 
 pkgname='adapta-gtk-theme-bin'
-pkgver='3.94.0.149'
+pkgver='3.95.0.1'
 pkgrel=1
 pkgdesc='An adaptive Gtk+ theme based on Material Design Guidelines'
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('gtk-engine-murrine: for gtk2 themes'
 conflicts=('adapta-gtk-theme' 'adapta-gtk-theme-git')
 provides=('adapta-gtk-theme')
 source=("https://launchpad.net/~tista/+archive/ubuntu/adapta/+files/adapta-gtk-theme_${pkgver}-0ubuntu1~cosmic1_all.deb")
-sha256sums=('ed20a16392f06204d79aa8647c483f2ea47056e43b9012c48bd9b91fb28e8375')
+sha256sums=('45b99655beb64505969d0ce39e48781afb85b5af410877e0bdf8726eae0dcdc0')
 
 package() {
   cd "${srcdir}"
