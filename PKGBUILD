@@ -1,4 +1,4 @@
-# Maintainer: Yurii Kolesnykov <yurikoles@gmail.com>
+# Maintainer: Yurii Kolesnykov <root@yurikoles.com>
 # Contributor: Boohbah <boohbah at gmail.com>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
@@ -15,7 +15,7 @@ _kernel_rel=4.20
 _branch=amd-staging-drm-next
 _kernelname=${pkgbase#linux}
 pkgver=4.20.782127.380d480842d5
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://cgit.freedesktop.org/~agd5f/linux/'
 license=('GPL2')
