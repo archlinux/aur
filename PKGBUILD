@@ -30,7 +30,7 @@
 # /usr/lib/purr-data, so that 3rd party externals know where to find these.
 
 pkgname=purr-data
-pkgver=2.6.0.r4015.ac6d6849
+pkgver=2.6.0.r4017.6206059c
 pkgrel=1
 pkgdesc="Jonathan Wilkes' nw.js variant of Pd-L2Ork (git version)"
 url="https://agraef.github.io/purr-data/"
@@ -60,7 +60,7 @@ options=('!makeflags' '!strip')
 source=("$pkgname::git+https://bitbucket.org/agraef/purr-data.git#branch=release"
 	"gem-magick6-fixes.patch")
 md5sums=('SKIP'
-         '6f9b87db6e73a35ec63327e97ad95d66')
+         'f6ed0798a5afc17e46bc16ef97e647c1')
 # nw.js sdk binaries
 nwjsname=nwjs-sdk
 nwjsver=0.22.1

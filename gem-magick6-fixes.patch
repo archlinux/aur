@@ -1,11 +1,11 @@
 diff --git a/externals/Makefile b/externals/Makefile
-index 414e1e2e..b7cfa952 100644
+index 363736cf..93833acd 100644
 --- a/externals/Makefile
 +++ b/externals/Makefile
-@@ -667,6 +667,10 @@ $(gem_src)/Gem.pd_linux: $(gem_src)/configure
+@@ -675,6 +675,10 @@ $(gem_src)/Gem.pd_linux: $(gem_src)/configure
  	test -s $(gem_src)/Gem.pd_linux || \
  		cd $(gem_src) && ./configure \
- 			CXXFLAGS="-DHAVE_S_STUFF_H" \
+ 			CXXFLAGS="-DHAVE_S_STUFF_H $(CFLAGS_ADD)" \
 +			PKG_IMAGEMAGICK___CFLAGS="$(shell PKG_CONFIG_PATH=/usr/lib/imagemagick6/pkgconfig pkg-config --cflags ImageMagick-6.Q16HDRI)" \
 +			PKG_IMAGEMAGICK___LIBS="$(shell PKG_CONFIG_PATH=/usr/lib/imagemagick6/pkgconfig pkg-config --libs ImageMagick-6.Q16HDRI)" \
 +			PKG_MAGICKCORE_CFLAGS="$(shell PKG_CONFIG_PATH=/usr/lib/imagemagick6/pkgconfig pkg-config --cflags MagickCore-6.Q16HDRI)" \
