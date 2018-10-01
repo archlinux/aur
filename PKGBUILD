@@ -1,4 +1,4 @@
-# Maintainer: Dictator Mei <dctxmei@gmail.com>
+# Maintainer: Dct Mei <dctxmei@gmail.com>
 pkgname=aria2-systemd
 pkgver=1.0
 pkgrel=1
