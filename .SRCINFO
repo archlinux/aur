@@ -1,7 +1,7 @@
 pkgbase = writeas-gtk
 	pkgdesc = Write.as GTK desktop app
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://write.as/apps/desktop
 	arch = x86_64
 	license = GPL3

@@ -2,7 +2,7 @@
 
 pkgname=writeas-gtk
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Write.as GTK desktop app"
 arch=('x86_64')
 url="https://write.as/apps/desktop"
@@ -17,15 +17,19 @@ makedepends=(
 	'ninja'
 	'vala'
 )
-source=(https://code.as/writeas/writeas-gtk/archive/v$pkgver.tar.gz)
+source=(https://code.as/writeas/writeas-gtk/archive/v${pkgver}.tar.gz)
 sha256sums=('c6487821b5fbeef38ee50082d42a89be97b2fdbd5c3205d8a9c961ca0c3c7fbf')
 
+prepare() {
+	mkdir -p build
+}
+
 build() {
-	cd "${srcdir}/${pkgname}"
-	meson build --prefix="${pkgdir}/usr" --reconfigure
-	ninja -C "build"
+	# Temporary workaround for https://github.com/mesonbuild/meson/issues/4247
+	arch-meson "${pkgname}" build || arch-meson "${pkgname}" build --reconfigure
+	ninja -C build
 }
 
 package() {
-	ninja install -C "${srcdir}/${pkgname}/build"
+	DESTDIR="${pkgdir}" ninja install -C build
 }
