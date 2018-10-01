@@ -2,46 +2,42 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=onlyoffice-documentserver
-pkgver=5.1.5
+pkgver=5.2.0
 pkgrel=1
 pkgdesc="Online office suite comprising viewers and editors for texts, spreadsheets and presentations"
 arch=('any')
 url="https://github.com/ONLYOFFICE/DocumentServer"
-makedepends=('npm' 'nodejs' 'grunt-cli' 'qt5-base' 'git' 'wget' 'p7zip' 'clang' 'libtinfo5' 'python2' 'java-runtime' 'ncurses5-compat-libs' 'svn')
-# ncurses5-compat-libs, libtinfo5 required due to bug:
-# svn is required in core/Common/3dParty/icu/fetch.sh script
+makedepends=('npm' 'nodejs' 'grunt-cli' 'qt5-base' 'git' 'wget' 'p7zip' 'clang' 'python2' 'java-runtime' 'svn' 'ncurses5-compat-libs')
 depends=('nodejs<10')
 # required due to bug: https://github.com/ONLYOFFICE/DocumentServer/issues/304
 optdepends=('rabbitmq' 'redis' 'postgresql')
 license=('AGPL')
 source=("https://github.com/ONLYOFFICE/DocumentServer/archive/ONLYOFFICE-DocumentServer-${pkgver}.tar.gz"
-	"core-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/core/archive/94548131a14c93e3aa00d991acf52535db3e5d71.tar.gz"
-	"core-fonts-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/core-fonts/archive/aed4b69cbebfb07134aa9e38e062dd83f4717626.tar.gz"
-	"dictionaries-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/dictionaries/archive/f62ae70eb6d4fedeb676593e2ba22de29239e7e2.tar.gz"
-	"sdkjs-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/sdkjs/archive/f0c5c8444ef993b6ae06f7833fb5e48d93f46044.tar.gz"
-	"sdkjs-plugins-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/sdkjs-plugins/archive/71cff31a270316d9b2155f168f1130fa9f8d50fd.tar.gz"
-	"server-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/server/archive/20a3a973df0cfc82b3bb1c2fe2c39722bdbf36e6.tar.gz"
-	"web-apps-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/web-apps/archive/c4d27ff612306895d7f52987ac7c714a61605f49.tar.gz"
-	"docbuilder_p.patch"
+	"core-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/core/archive/332348ef5b7f3bfb8c2ae972549b2d699e8e3f9e.tar.gz"
+	"core-fonts-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/core-fonts/archive/0d246d12a5cefb9e40f18b9bf4e7f44c75534989.tar.gz"
+	"dictionaries-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/dictionaries/archive/7813f0e788c7e5ec341bdeec78cfea17f7b278e2.tar.gz"
+	"sdkjs-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/sdkjs/archive/c4ffe51d068024d8da9f90645d592527900b439b.tar.gz"
+	"sdkjs-plugins-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/sdkjs-plugins/archive/c0223268a6f292709badddb8e7405cc368fc8226.tar.gz"
+	"server-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/server/archive/b095f3950681898af5f88d5626d6ebce8a37ba80.tar.gz"
+	"web-apps-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/web-apps/archive/e822b938cb59852179dfd96a10e35e40368d4aec.tar.gz"
 	"server_makefile.patch"
 	"onlyoffice-fileconverter.service"
 	"onlyoffice-spellchecker.service"
 	"onlyoffice-docservice.service"
-	"https://github.com/ONLYOFFICE/DocumentServer/releases/download/ONLYOFFICE-DocumentServer-${pkgver}/onlyoffice-documentserver_amd64.deb")
-sha512sums=('7745699a2ee5240faf48ada52e82c2ea1895c04b4f13e40713009c121c1450f2b6d0a8a6bd34dc8a9ec95febf775f73f26c1fb9c7600483913ffe7702f3f6c2f'
-            'c1c77d1726d4a99f54826e28fea4c69f4022284ab852f7b53c4fb5c74eff9b1af6e8017940fe26177f07e854772e8b01db5c0f49e1de6f9195e3b74cf885eab7'
-            '9ecb75a95f29e998b09cff7e98f3fae1408a779f59734fd8f5e1a1ab6e58f191d0c64006a9fa196ba5d932ca4ebcfc80a7fce089adfb5ec639df4646c6411222'
-            '187086bf2c768bdbee7331b23838f161461711cb0d96b0b488a7a72e282778b22ecd2c6810e006ee4e8120686656426c5b5288584aece5b2f29b3f5224bd0092'
-            '30309d33433b9bfe5a774f891c05ff59aa57c8802aecce1b136566bc6d4d1da5b86fa2913c5104e1557c15eb7cb1402a5c2c31a1f0e0767f5f0442d344030718'
-            '0f5681cba03d8a82d9289c76723250735dd34068fa97c848482d678b074757c85dc54141962b76866f661932a0cade64f17748d565843299cacc2c434606759f'
-            'f10fd8a9206e92c240fa362e3f42f780300ab60ae5cc2cfe6b845a1db43ffa95eb9ad96dcc63eedfea040f4f400985fca9123a4616ca1c4569da6e7dd04844b9'
-            '3c6d04efb4f050daff81d76647c8634604add3cf380f21ad665ae68cd9cd378da389bbaf39978d91dff3458adea40214dcc77d92a168545afbd725feee22ff61'
-            '4875f25a76731e43c4a08f7c2b557d337224c34ddf2a9b0348c4bf325bfcfc11c6b4f834d5c7da486957ec0380cfaaf45b83dd920e6e660fb6f4d1f3857fd787'
-            '7d3b1d04f55b93e828b287369b9eb6f5e2511004b7c737dd5d0676d8aca4c87da985b562e89f63a0b16110980719aaec9f127a731b231992e35d457c088dd5f3'
+	"onlyoffice-documentserver-${pkgver}_amd64.deb::https://github.com/ONLYOFFICE/DocumentServer/releases/download/ONLYOFFICE-DocumentServer-${pkgver}/onlyoffice-documentserver_amd64.deb")
+sha512sums=('087f060b7f400d04f718a1d68774df96515d6fc1eb8153acee440c4cf8be20ef185f4efae242846d030b907a2f776be807bf283ff8965cdb15ce72aea936b151'
+            '1a3990ce7a2302c43c79d03342afebeed36f45f8fcb8bb2ff31253b680d475100d05bbedbb3e3078445af466a4d66fc2fec0f0e8d571c18050397ff07a9b7e27'
+            '33e6611cda7ac6616c5cebc5ce35bf1d0c29e2d39a31248e8483bb67ba4f1febb480ccd9d3c617626c85151a5f68584a3e58a7d478f9227d8fcea68cc287ea34'
+            '71909c2cab614b568084450cc2c6e2eed11a995afde428a53a2a6dc74ec18b4cad17e54b65a5d5f9aa2b0b3554f90d83338dffeda931b899844f8720d82d5e78'
+            '9e20754a37748cdcc0984c2cc31b9dd1d349af3f20471fbabf3b6a973a711b573b9e46c42630dfae8f62e583bc01bf6b4b0b15241799e1ca5882ef71a4ac9d1f'
+            '732c3731db50e542440932feb4c33e9d65df58d82552e0aa7fb0a3a2391a8538f5b62824a79d319f0690a7f4b603d89d7bc8778972843c7f43dde700b8d48c34'
+            'a4aae5851fec64347f489acb73d7bb63561958c16a1111375fbb3b68fa0de2b73f534ae4a18f2500758e1222badd4696ced895b535f830b58f561bde3e7c8856'
+            '94664c91b3c2b1c43cbe3fbcaef6c88e070c72201b3d0ee1b9994b962adc4c3eb8cb6e88c63b55a5a23e61ed61789bfde87c3fef81dff55d67f854a101a0eb66'
+            '3ae4fbfdb4b639ce51a25af8a754f081c3f7c1041207199e4d450ccf0301dcdcebaf072a9b1efb3be5f0c45959c88bfeea447e032f313c9c291c15fce3979ac6'
             '5c691e07eccd51f543de92cc7f7fd5a5aac77fa2a6cf786f439a4ea43abc7606180aa5a9dd3762200091a4b3a479860881f94aefd0297d8e7ed955bf25c37417'
             '428e5c3326da53ee993871ab56c3b35c40fea5d5513950bee2a87b158f25cc0ebe76d690e4fa17bceb8583dde2f164fcf0a71a60652da1c67171d215f2528e6a'
             '6f53f9eec783dc00497e2ce495ce92dc1d78824e108ecdd914806fca4948e1748383125e0322a444bf9f8e158eacee06247b4966beb172522e3d176a8bc093a9'
-            '5e30687098ea7e977d9f9fa68f9d72e155c0c63cd11d99db7104d8ebc295f5babfaa089aaacad54445630aadaca0f1b4593a7cac27e855d6c103157909868b2a')	    
+            '8524895730c315a673921f4b95b21cf7a045330fc5b99826a2009bc4174f582eeefca701be7a884bc50ca4ac94f9bfdd4003c90de5c8b4e5cc26c62ad884deea')
 install="onlyoffice-documentserver.install"
 backup=('etc/webapps/onlyoffice/documentserver/production-linux.json'
 	'etc/webapps/onlyoffice/documentserver/default.json')
@@ -71,22 +67,12 @@ prepare() {
   sed -i '13iexport PATH="'${srcdir}'/path:$PATH"' core/Common/3dParty/v8/fetch.sh
   sed -i '29iexport PATH="'${srcdir}'/path:$PATH"' core/Common/3dParty/v8/build.sh
 
-  # patching core/desktopeditor/docbuilder file
-  patch -p0 -i ../docbuilder_p.patch
-
   # Patching Makefile to include DESTDIR variable
   patch -p0 -i ../server_makefile.patch
 
   # Patching configuration file
   sed -i 's/\/var\/www\/onlyoffice/\/usr\/share\/webapps\/onlyoffice/g' server/Common/config/production-linux.json
   sed -i 's/\/etc\/onlyoffice/\/etc\/webapps\/onlyoffice/g' server/Common/config/production-linux.json
-
-  # icu compile error (it's too old, already fixed upstream)
-  sed -i '68ised -i "s/xlocale/locale/" i18n/digitlst.cpp' core/Common/3dParty/icu/fetch.sh
-
-  # allfontsgen segfaults, some error in icu lib. copy compiled version from deb package
-  cd "${srcdir}"
-  tar xf "${srcdir}/data.tar.xz"
 }
 
 build() {

@@ -1,35 +1,36 @@
---- server/Makefile.orig	2018-06-23 08:17:17.514701635 +0000
-+++ server/Makefile	2018-06-23 08:21:32.997947590 +0000
-@@ -145,36 +145,37 @@
+--- server/Makefile.orig	2018-09-27 16:07:47.000000000 +0000
++++ server/Makefile	2018-09-30 15:01:33.499281606 +0000
+@@ -163,37 +163,37 @@
  	rm -rf $(CORE_FONTS) $(OUTPUT) $(GRUNT_FILES) 
  
  install:
--	sudo adduser --quiet --home /var/www/onlyoffice --system --group onlyoffice
-+	#adduser --quiet --home /var/www/onlyoffice --system --group onlyoffice
+-	mkdir -pv /var/www/onlyoffice
+-	if ! id -u onlyoffice > /dev/null 2>&1; then useradd -m -d /var/www/onlyoffice -r -U onlyoffice; fi
++	#mkdir -pv /var/www/onlyoffice
++	#if ! id -u onlyoffice > /dev/null 2>&1; then useradd -m -d /var/www/onlyoffice -r -U onlyoffice; fi
  
--	sudo mkdir -p /var/www/onlyoffice/documentserver
--	sudo mkdir -p /var/www/onlyoffice/documentserver/fonts
--	sudo mkdir -p /var/log/onlyoffice/documentserver
--	sudo mkdir -p /var/lib/onlyoffice/documentserver/App_Data
-+	#sudo mkdir -p /var/www/onlyoffice/documentserver
+-	mkdir -p /var/www/onlyoffice/documentserver
+-	mkdir -p /var/www/onlyoffice/documentserver/fonts
+-	mkdir -p /var/log/onlyoffice/documentserver
+-	mkdir -p /var/lib/onlyoffice/documentserver/App_Data
 +	mkdir -p ${DESTDIR}${DOCUMENT_ROOT}/fonts
 +	mkdir -p ${DESTDIR}/var/log/onlyoffice/documentserver
 +	mkdir -p ${DESTDIR}/var/lib/onlyoffice/documentserver/App_Data
 +	mkdir -p ${DESTDIR}/usr/lib
  	
--	sudo cp -fr -t /var/www/onlyoffice/documentserver build/* ../web-apps/deploy/*
--	sudo mkdir -p /etc/onlyoffice/documentserver
--	sudo mv /var/www/onlyoffice/documentserver/server/Common/config/* /etc/onlyoffice/documentserver
+-	cp -fr -t /var/www/onlyoffice/documentserver build/* ../web-apps/deploy/*
+-	mkdir -p /etc/onlyoffice/documentserver
+-	mv /var/www/onlyoffice/documentserver/server/Common/config/* /etc/onlyoffice/documentserver
 +	cp -fr -t ${DESTDIR}${DOCUMENT_ROOT} build/* ../web-apps/deploy/*
 +	mkdir -p ${DESTDIR}/etc/webapps/onlyoffice/documentserver
 +	mv ${DESTDIR}${DOCUMENT_ROOT}/server/Common/config/* ${DESTDIR}/etc/webapps/onlyoffice/documentserver
  	
--	sudo chown onlyoffice:onlyoffice -R /var/www/onlyoffice
--	sudo chown onlyoffice:onlyoffice -R /var/log/onlyoffice
--	sudo chown onlyoffice:onlyoffice -R /var/lib/onlyoffice
-+	#sudo chown onlyoffice:onlyoffice -R /var/www/onlyoffice
-+	#sudo chown onlyoffice:onlyoffice -R /var/log/onlyoffice
-+	#sudo chown onlyoffice:onlyoffice -R /var/lib/onlyoffice
+-	chown onlyoffice:onlyoffice -R /var/www/onlyoffice
+-	chown onlyoffice:onlyoffice -R /var/log/onlyoffice
+-	chown onlyoffice:onlyoffice -R /var/lib/onlyoffice
++	#chown onlyoffice:onlyoffice -R /var/www/onlyoffice
++	#chown onlyoffice:onlyoffice -R /var/log/onlyoffice
++	#chown onlyoffice:onlyoffice -R /var/lib/onlyoffice
  
  	# Make symlinks for shared libs
  	find \
@@ -58,4 +59,4 @@
 +	#	--use-system="true"
  
  uninstall:
- 	sudo userdel onlyoffice
+ 	userdel onlyoffice
