@@ -23,5 +23,5 @@ build() {
 
 package() {
 	cd ${srcdir}/HWchart
-	make install
+	sudo make install
 }
