@@ -1,6 +1,6 @@
 # Maintainer: Taiki Sugawara <buzz.taiki@gmail.com>
 _npmname=iothub-explorer
-_npmver=1.1.10
+_npmver=1.2.0
 pkgname=nodejs-${_npmname}
 pkgver=${_npmver}
 pkgrel=1
@@ -12,7 +12,7 @@ depends=('nodejs' 'npm' )
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=('4a6c0e55daa55904219f9b0376144881fcfcc786')
+sha1sums=('fd65c9509dd22d6ad57a65aedb5ee8075f010aac')
 
 package() {
   cd $srcdir
@@ -23,4 +23,3 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-

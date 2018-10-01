@@ -1,15 +1,15 @@
 pkgbase = nodejs-iothub-explorer
 	pkgdesc = A CLI tool to manage device identities in your IoT hub registry, send and receive messages and files from your devices, and monitor your IoT hub operations.
-	pkgver = 1.1.10
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/Azure/iothub-explorer
 	arch = any
 	license = MIT
 	depends = nodejs
 	depends = npm
-	noextract = iothub-explorer-1.1.10.tgz
-	source = http://registry.npmjs.org/iothub-explorer/-/iothub-explorer-1.1.10.tgz
-	sha1sums = 4a6c0e55daa55904219f9b0376144881fcfcc786
+	noextract = iothub-explorer-1.2.0.tgz
+	source = http://registry.npmjs.org/iothub-explorer/-/iothub-explorer-1.2.0.tgz
+	sha1sums = fd65c9509dd22d6ad57a65aedb5ee8075f010aac
 
 pkgname = nodejs-iothub-explorer
 
