@@ -7,6 +7,7 @@ pkgdesc="Safecoin daemon & client"
 arch=("x86_64")
 url="https://safecoin.org/"
 license=('MIT')
+depends=("curl")
 makedepends=("git" "wget")
 conflicts=("safecoin")
 provides=("safecoin")
