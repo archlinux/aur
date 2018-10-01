@@ -3,7 +3,7 @@
 
 pkgbase=python-scikit-image
 pkgname=('python2-scikit-image' 'python-scikit-image')
-pkgver=0.14.0
+pkgver=0.14.1
 pkgrel=1
 pkgdesc="Image processing routines for SciPy"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ makedepends=('cython2' 'cython' 'python2-six' 'python-six' 'python2-scipy' 'pyth
             'python2-pillow' 'python-pillow' 'python2-pywavelets' 'python-pywavelets')
 options=('!emptydirs')
 source=(scikit-image-$pkgver.tar.gz::https://github.com/scikit-image/scikit-image/archive/v$pkgver.tar.gz)
-sha256sums=('85e5be914dd5b1e62222dc4f309c51ba4af60baab60a4e21f2d5b4db2964eea9')
+sha256sums=('43aaca33af406a05b0d043f9fbb08d958fe7e8703c247963c04b8e39e177ce86')
 
 prepare() {
   cd "${srcdir}"
