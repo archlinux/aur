@@ -17,7 +17,7 @@ sha512sums=("SKIP"
             "12d1ecf21e68aff07e8b24682476e2935256535a2e35ad31b42b2d2528769b46a9ebb42c62762e8641dbf519d759f0194914141d521d79d3fb1b1be4c76efa37")
 
 pkgver() {
-    git -C HMCL describe --tag | sed 's/^v//'
+    git -C HMCL describe --tag | sed -e 's/^v//' -e 's/-/./g'
 }
 
 build() {
