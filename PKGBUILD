@@ -1,7 +1,7 @@
 # Maintainer: Jakob Senkl <jlp@live.at>
 pkgname=hwchart
 provides=('hwchart')
-pkgver=1.5
+pkgver=1.5.1
 pkgrel=1
 _pkgdebrel=1
 pkgdesc="a simple application to graph networks"
@@ -22,11 +22,10 @@ build() {
 }
 
 package() {
-    sudo mkdir /usr/bin/hwchart
-    sudo cp ${srcdir}/HWchart/HWchart/bin/Release/*.exe /usr/bin/hwchart/
-    sudo cp ${srcdir}/HWchart/HWchart/bin/Release/*.dll /usr/bin/hwchart/
+	sudo mkdir /usr/share/hwchart
+    sudo cp ${srcdir}/HWchart/HWchart/bin/Release/*.exe /usr/share/hwchart/
+    sudo cp ${srcdir}/HWchart/HWchart/bin/Release/*.dll /usr/share/hwchart/
+    sudo cp ${srcdir}/HWchart/linux/hwchart.png /usr/share/hwchart/
     sudo cp ${srcdir}/HWchart/linux/hwchart.desktop /usr/share/applications/
     sudo chmod 755 /usr/share/applications/hwchart.desktop
-    sudo mkdir /usr/share/hwchart
-    sudo cp ${srcdir}/HWchart/linux/hwchart.png /usr/share/hwchart/
 }
