@@ -12,7 +12,7 @@ pkgbase = multichain-alpha
 	source = https://github.com/MultiChain/multichain/archive/2.0-release.tar.gz
 	source = multichain-boost-openssl.patch
 	md5sums = 1c7f36172ffc0a48cf4c4f8740c2efa9
-	md5sums = f3030d087c08bc5b60083faad3284012
+	md5sums = f3655179f4b1778afb367801aca87ae0
 
 pkgname = multichain-alpha
 

@@ -9,7 +9,7 @@ license=('GPLv3')
 depends=('db4.8' 'boost' 'openssl')
 provides=('multichain-alpha')
 source=("https://github.com/MultiChain/multichain/archive/${pkgver}-release.tar.gz" "multichain-boost-openssl.patch")
-md5sums=('1c7f36172ffc0a48cf4c4f8740c2efa9' 'f3030d087c08bc5b60083faad3284012')
+md5sums=('1c7f36172ffc0a48cf4c4f8740c2efa9' 'f3655179f4b1778afb367801aca87ae0')
 
 prepare() {
   cd "${srcdir}/multichain-${pkgver}-release"
