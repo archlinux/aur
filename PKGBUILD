@@ -2,11 +2,11 @@
 
 pkgname=writeas-gtk
 pkgver=1.0.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Write.as GTK desktop app"
 arch=('x86_64')
 url="https://write.as/apps/desktop"
-license=(GPL)
+license=(GPL3)
 depends=(
 	'writeas-cli'
 	'gtksourceview3'
