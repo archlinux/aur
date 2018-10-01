@@ -1,4 +1,4 @@
-# Maintainer: Dictator Mei <dctxmei@gmail.com>
+# Maintainer: Dct Mei <dctxmei@gmail.com>
 _pkgname=filebrowser
 pkgname=filebrowser-git
 pkgver=1.9.0
