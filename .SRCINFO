@@ -1,5 +1,6 @@
 pkgbase = python-plotly
-	pkgver = 2.7.0
+	pkgdesc = An interactive, browser-based graphing library for Python
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://plot.ly/python/
 	arch = any
@@ -8,10 +9,8 @@ pkgbase = python-plotly
 	makedepends = python-setuptools
 	makedepends = python2
 	makedepends = python2-setuptools
-	source = python-plotly-2.7.0.tar.gz::https://pypi.org/packages/source/p/plotly/plotly-2.7.0.tar.gz
-	source = LICENSE
-	sha512sums = 208715263a768948a22bb4380853ea20a75dc46cf43d28cd3a5143f7183ab2155cb51d68e88b8188233aafb151cfe9985437ac08abf4e0866ea13794b1963ac6
-	sha512sums = 1f27d546f594955e443a3d8a72aa4f18afa9d946336a9fd0585de3c8120e3ef262ce109eea0ee8d97510616864b8d01f8e4d48ebc0fc1486fd490bf8ba3a7f89
+	source = python-plotly-3.3.0.tar.gz::https://pypi.org/packages/source/p/plotly/plotly-3.3.0.tar.gz
+	sha512sums = 9198673b268ab4e1fec25b46399e3af59e403a3aa0fb9063330d34e0b3179cedc61351f95f791c72cb80b62e4eb3521f8e7a8e03be7fcc5ae9c343a979468084
 
 pkgname = python-plotly
 	pkgdesc = An interactive, browser-based graphing library for Python3
@@ -20,6 +19,7 @@ pkgname = python-plotly
 	depends = python-pytz
 	depends = python-six
 	depends = python-numpy
+	depends = python-retrying
 
 pkgname = python2-plotly
 	pkgdesc = An interactive, browser-based graphing library for Python2
@@ -28,3 +28,5 @@ pkgname = python2-plotly
 	depends = python2-pytz
 	depends = python2-six
 	depends = python2-numpy
+	depends = python-retrying
+
