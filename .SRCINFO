@@ -1,15 +1,15 @@
 pkgbase = air-for-steam
 	pkgdesc = An elegant and customizable skin for Steam
-	pkgver = 2018_0805
-	pkgrel = 5
+	pkgver = 2018_0928
+	pkgrel = 1
 	url = https://github.com/airforsteam/Air-for-Steam
 	install = air-for-steam.install
 	arch = any
 	license = custom:cc-by-nc-4.0
 	depends = steam
 	depends = sssm>=1.2.0
-	source = air-for-steam_2018_0805.tar.gz::https://github.com/airforsteam/Air-for-Steam/archive/2018-0805.tar.gz
-	sha256sums = 838df672cdc28ba8491a7bea033807384bf360f8f3873db383a3c1c12b82e3ab
+	source = air-for-steam_2018_0928.tar.gz::https://github.com/airforsteam/Air-for-Steam/archive/2018-0928.tar.gz
+	sha256sums = a280da330c7ed2957240b83e3e52a39bf8faa55d90b1cbeaf8d956a70eedabf4
 
 pkgname = air-for-steam
 

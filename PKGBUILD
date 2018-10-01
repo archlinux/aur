@@ -1,7 +1,7 @@
 # Maintainer: Infernio <infernio at icloud dot com>
 pkgname=air-for-steam
-pkgver=2018_0805
-pkgrel=5
+pkgver=2018_0928
+pkgrel=1
 pkgdesc="An elegant and customizable skin for Steam"
 arch=('any')
 url="https://github.com/airforsteam/Air-for-Steam"
@@ -9,7 +9,7 @@ license=('custom:cc-by-nc-4.0')
 depends=('steam' 'sssm>=1.2.0')
 install=air-for-steam.install
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/airforsteam/Air-for-Steam/archive/${pkgver//_/-}.tar.gz")
-sha256sums=('838df672cdc28ba8491a7bea033807384bf360f8f3873db383a3c1c12b82e3ab')
+sha256sums=('a280da330c7ed2957240b83e3e52a39bf8faa55d90b1cbeaf8d956a70eedabf4')
 
 package() {
     cd "${srcdir}"
