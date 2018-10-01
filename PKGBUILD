@@ -1,8 +1,8 @@
-# Maintainer: Spyhawk
+# Maintainer: Yurii Kolesnykov <root@yurikoles.com>
 
 pkgname=zypper-git
 pkgver=1.14.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line software manager using libzypp"
 arch=('i686' 'x86_64')
 url="https://github.com/openSUSE/zypper"
