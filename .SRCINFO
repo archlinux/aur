@@ -1,7 +1,7 @@
 pkgbase = ungoogled-chromium
 	pkgdesc = Modifications to Google Chromium for removing Google integration and enhancing privacy, control, and transparency
 	pkgver = 69.0.3497.100
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Eloston/ungoogled-chromium
 	arch = x86_64
 	license = BSD
@@ -60,10 +60,10 @@ pkgbase = ungoogled-chromium
 	conflicts = chromium
 	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-69.0.3497.100.tar.xz
 	source = chromium-launcher-6.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v6.tar.gz
-	source = https://github.com/Eloston/ungoogled-chromium/archive/69.0.3497.100-1.tar.gz
+	source = https://github.com/Eloston/ungoogled-chromium/archive/69.0.3497.100-2.tar.gz
 	sha256sums = e3391560e73e25fb4afc3f2dd5616607e2dbfc58aa88251a2c5d6b7096fe9e35
 	sha256sums = 04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1
-	sha256sums = 9276c225adb8334d858316f0a3668c84e628772b545ac607424b4b62023af2dc
+	sha256sums = 5aae8b05b8d366afb929627831e4d156a6cad917238c94a2a725b04c6ff59821
 
 pkgname = ungoogled-chromium
 
