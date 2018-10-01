@@ -1,7 +1,7 @@
 pkgbase = gamemode-git
 	pkgdesc = A daemon/lib combo for Linux that allows games to request a set of optimisations be temporarily applied to the host OS.
-	pkgver = 34e6d07
-	pkgrel = 4
+	pkgver = r120.0d179e5
+	pkgrel = 1
 	url = https://github.com/FeralInteractive/gamemode.git
 	arch = x86_64
 	license = BSD 3-Clause License (Revised)
