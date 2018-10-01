@@ -1,21 +1,20 @@
-# Maintainer: Christopher Loen <christopherloen at gmail dot com>
-pkgname='unix-privesc-check'
-pkgver='1.4'
+# Maintainer: Kr1ss <kr1ss.x@yandex.com>
+
+pkgname=unix-privesc-check
+pkgver=1.4
 pkgrel=1
-pkgdesc='A script to find misconfigurations that could allow privilege escalation in UNIX systems'
+pkgdesc='Find misconfigurations on UNIX(-like) systems that allow privilege escalation'
 arch=('any')
 url='http://pentestmonkey.net/tools/audit/unix-privesc-check'
-license=('GPL2')
-source=('http://pentestmonkey.net/tools/unix-privesc-check/unix-privesc-check-1.4.tar.gz')
-md5sums=('b278797b8698160ca2d26425930ad13c')
+license=('GPL' 'custom')
+provides=("$pkgname")
+changelog='CHANGELOG'
+source=("http://pentestmonkey.net/tools/unix-privesc-check/$pkgname-$pkgver.tar.gz")
+sha256sums=('e1f85e7f69fabadd23756a3d76a0e3d864b21e28763b60ce2e6181290d1c1969')
 
 package() {
-        cd "${srcdir}/${pkgname}-${pkgver}/"
-	    install -dm755 "${pkgdir}/usr/share/${pkgname}"
-        cp "${pkgname}" "${pkgdir}/usr/share/${pkgname}/"
-        install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
-        cp COPYING.GPL "${pkgdir}/usr/share/licenses/${pkgname}/"
-        cp COPYING.UNIX-PRIVESC-CHECK "${pkgdir}/usr/share/licenses/${pkgname}/"
-        install -dm755 "${pkgdir}/usr/bin/"
-        ln -s "/usr/share/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+	cd "$pkgname-$pkgver"
+    install -Dm644 COPYING.UNIX-PRIVESC-CHECK "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 CHANGELOG "$pkgdir/usr/share/doc/$pkgname/CHANGELOG"
+    install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
