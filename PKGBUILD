@@ -2,23 +2,21 @@
 
 _realname=FrozenWay
 pkgname=frozenway
-pkgver=1.6.6
+pkgver=1.6.7
 pkgrel=1
 pkgdesc="A project that gives those involved the ability to pass through any firewall or proxy"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.frozendo.com/frozenway"
 license=('custom')
 depends=('openssl' 'lzo' 'qt4' 'net-tools')
 backup=(opt/$pkgname/etc/auth.key
 	opt/$pkgname/etc/frozenway.crt)
 source=('frozenway.desktop'
-	'frozenway.png')
-source_i686=("$pkgname-$pkgver-i686.tar.gz::http://www.frozendo.com/frozenway/download/linux-i386/$pkgver")
-source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::http://www.frozendo.com/frozenway/download/linux-x86_64/$pkgver")
-md5sums=('2f5fafd15a76516f2b7335f9a104f7be'
-         '739255c8a65943dfc4059d809697c3ac')
-md5sums_i686=('0f3f920fa7b54c999f875d39a07010ea')
-md5sums_x86_64=('214fa336ef70b42bfffc8e597af14495')
+	'frozenway.png'
+	"$pkgname-$pkgver-x86_64.tar.gz::http://www.frozendo.com/frozenway/download/linux-x86_64/$pkgver")
+sha512sums=('c2d456ea7acbd830f0e9315a4b2f7782b966706ad3d9b89e5ab4363c595c8b54773c0a2138abadec94db75659797521b3b4e97509abfc68b0c8db31065aa5b9e'
+            '6d7f694eb31bfda193dc4d33ad1e40fec1af0a64988358e7a26f1e80fd201275f0b357d8b7cecaa7961bb6d66502973d31cec7ec43bad2c59982cd8a21a0c09e'
+            '72836acd2b569a34345b7b2789aa75d60eac46956a4e4d68b66f9e344dbe4677ed28b647edff0c0af940159b97eac310cb04a0880869fcf4cb0655860a8d2077')
 
 prepare() {
 	mv -v "$srcdir/$_realname $pkgver" "$srcdir/$pkgname-$pkgver"
