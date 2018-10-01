@@ -1,0 +1,7 @@
+*~
+*.pkg.tar.*
+haas-proxy-*.tar.gz
+/client.sh
+/LICENSE
+/src
+/pkg

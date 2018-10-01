@@ -1,0 +1,19 @@
+pkgbase = python-haas-proxy
+	pkgdesc = A proxy server for the HaaS SSH honeypot service
+	pkgver = 1.9
+	pkgrel = 1
+	url = https://haas.nic.cz/proxy/
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python-cachetools
+	depends = python-twisted
+	depends = python-requests
+	depends = python-cryptography
+	depends = python-pyasn1
+	depends = sshpass
+	source = https://gitlab.labs.nic.cz/haas/proxy/raw/master/release/haas-proxy-1.9.tar.gz
+	md5sums = 087775374888bb932e87dafb220bcf16
+
+pkgname = python-haas-proxy
+
