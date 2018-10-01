@@ -2,7 +2,7 @@
 # Contributor: hexchain <i at hexchain dot org>
 
 pkgname=tpm2-tss
-pkgver=2.0.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='TPM (Trusted Platform Module) 2.0 Software Stack (TSS)'
 arch=('x86_64')
@@ -12,10 +12,9 @@ depends=('libgcrypt')
 checkdepends=('cmocka>=1.0.0' # for unit test suite
               'ibm-sw-tpm2' 'net-tools' 'procps-ng' 'uthash') # for integration test suite
 source=("$url/releases/download/$pkgver/$pkgname-$pkgver.tar.gz"{,.asc})
-sha256sums=('a53b25214375a10d87d0c0b0a702a3402c1f19e218196d4a2a44810516b260e5'
+sha512sums=('2aea80a4cb2be59a87de6eda74a2907a2832aa76c3c208f610172f4c5bd29133b24b0876286c40855a742d6068b8f843e32f6d995b0e51c2d1e0a752b92fff7c'
             'SKIP')
-validpgpkeys=('42007E876F248E04A3F2FE25AE4548D043DEC7C3'  # Philip Tricca
-              'D760B790CCF0A41CBE7B047C316CC1FB24ABDC72') # Tadeusz Struk
+validpgpkeys=('D760B790CCF0A41CBE7B047C316CC1FB24ABDC72') # Tadeusz Struk
 
 build() {
 	cd "$pkgname-$pkgver"
