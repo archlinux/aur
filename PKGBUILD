@@ -1,8 +1,8 @@
-# Maintainer: Spyhawk
+# Maintainer: Yurii Kolesnykov <root@yurikoles.com>
 
 pkgname=libzypp-git
 pkgver=17.7.1.2.g92fb3788b
-pkgrel=1
+pkgrel=2
 pkgdesc="Package, Patch, Pattern, and Product Management"
 arch=('i686' 'x86_64')
 url="https://github.com/openSUSE/libzypp"
