@@ -1,7 +1,7 @@
 pkgbase = disk-test
 	pkgdesc = Block device read-write test utility
-	pkgver = 0.1.0
-	pkgrel = 4
+	pkgver = 0.1.1
+	pkgrel = 1
 	url = http://eomanis.mooo.com/permshare/disk-test/index.xhtml
 	arch = any
 	license = GPL3
@@ -12,8 +12,8 @@ pkgbase = disk-test
 	depends = diffutils
 	depends = grep
 	depends = util-linux
-	source = http://eomanis.mooo.com/permshare/disk-test/disk-test-0.1.0.tar.gz
-	sha256sums = 3470325447ce43492eb8b085e45a4bc5ac6899b76c428922d8379dcb75732117
+	source = http://eomanis.mooo.com/permshare/disk-test/disk-test-0.1.1.tar.gz
+	sha256sums = 2d29fad03449a4df8926bb790641ebb7f3625f9f884b1579365e9eff673e441c
 
 pkgname = disk-test
 

@@ -1,15 +1,15 @@
 # Maintainer: eomanis at web dot de
 
 pkgname='disk-test'
-pkgver=0.1.0
-pkgrel=4
+pkgver=0.1.1
+pkgrel=1
 pkgdesc="Block device read-write test utility"
 arch=('any')
 url='http://eomanis.mooo.com/permshare/disk-test/index.xhtml'
 license=('GPL3')
 depends=('bash' 'coreutils' 'openssl' 'pv' 'diffutils' 'grep' 'util-linux')
 source=("http://eomanis.mooo.com/permshare/disk-test/disk-test-${pkgver}.tar.gz")
-sha256sums=('3470325447ce43492eb8b085e45a4bc5ac6899b76c428922d8379dcb75732117')
+sha256sums=('2d29fad03449a4df8926bb790641ebb7f3625f9f884b1579365e9eff673e441c')
 
 package() {
     
