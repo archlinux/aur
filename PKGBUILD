@@ -2,12 +2,13 @@
 
 pkgname=doctoc
 pkgver=v1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Generates table of contents for markdown files inside local git repository., installed through npm"
 arch=('any')
 url="https://www.npmjs.com/package/doctoc"
 license=('GPLv3')
 depends=('git' 'nodejs')
+conflicts=('doctoc-git')
 makedepends=('npm')
 options=(!emptydirs)
 source=("git+https://github.com/thlorenz/doctoc#tag=${pkgver}")
