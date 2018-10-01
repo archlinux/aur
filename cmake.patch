@@ -1,0 +1,12 @@
+diff -ruN cmocka-1.1.3/src/CMakeLists.txt patched/src/CMakeLists.txt
+--- cmocka-1.1.3/src/CMakeLists.txt	2018-09-27 15:27:59.000000000 +0200
++++ patched/src/CMakeLists.txt	2018-10-01 23:39:21.928642794 +0200
+@@ -74,6 +74,8 @@
+ 
+ install(TARGETS
+             ${CMOCKA_SHARED_LIBRARY}
++        RUNTIME DESTINATION 
++            ${BIN_INSTALL_DIR}
+         ARCHIVE DESTINATION
+             ${CMAKE_INSTALL_LIBDIR}
+         LIBRARY DESTINATION

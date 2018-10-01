@@ -3,7 +3,7 @@
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=mingw-w64-cmocka
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc='Elegant unit testing framework for C with support for mock objects (mingw-w64)'
 url='https://cmocka.org/'
@@ -13,27 +13,28 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-wine')
 options=(!strip !buildflags staticlibs)
 source=(https://cmocka.org/files/1.1/cmocka-${pkgver}.tar.xz{,.asc}
-        exesuffix.patch
-        crosscompilingemulator.patch)
-sha512sums=('84435c97a4002c111672f8e18a9270a61de18343de19587ba59436617e57997050a63aac2242a79ec892474e824ca382f78af3e74dc1919cc50e04fd88d5e8f4'
+            'cmake.patch')
+sha512sums=('b1a2ce72234256d653eebf95f8744a34525b9027e1ecf6552e1620c83a4bdda8b5674b748cc5fd14abada1e374829e2e7f0bcab0b1c8d6c3b7d9b7ec474b6ed3'
             'SKIP'
-            '3fad0674a428311fbb3a3d0809ec385ac788d3ce539f41da671b6db8b7db188866248cf6a57c8d4ab441d930171dd5cb4790d36cde4917da62b3ed0816067a69'
-            '152d4bef0cc0ae08ec0c3163a5ec12742e237c4d3aa50c2bdcabfa37cea2d689a858bc38558b97679622d7b9e4a87773d6362db01fd15e6f9873ab5cf8686162')
+            'a9f959ca9f489c3ca57e7671e249064c28b45a00df95395ac46ba0cea5bfc8760253a708a470e04e6c1f9a6f5a882b75fbceef7933b8e200da3579b1580cd671')
 validpgpkeys=('8DFF53E18F2ABC8D8F3C92237EE0FC4DCC014E3D') # Andreas Schneider <asn@cryptomilk.org>
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "${srcdir}/cmocka-${pkgver}"
-  patch -Np1 -i "${srcdir}"/exesuffix.patch
 
-  patch -Np1 -i "${srcdir}"/crosscompilingemulator.patch
+  patch -Np1 -i "${srcdir}"/cmake.patch
 }
 
 build() {
   for _arch in ${_architectures}; do
     mkdir -p "${srcdir}"/build-${_arch} && cd "${srcdir}"/build-${_arch}
-    ${_arch}-cmake ../cmocka-${pkgver} \
+    WINEPATH="/usr/${_arch}/bin" ${_arch}-cmake ../cmocka-${pkgver} \
       -DCMAKE_CROSSCOMPILING=TRUE \
+      -DBUILD_STATIC_LIB=TRUE \
+      -DWITH_STATIC_LIB=TRUE \
+      -DBIN_INSTALL_DIR="/usr/${_arch}/bin" \
+      -DTARGET_SYSTEM_EMULATOR=${_arch}-wine \
       -DUNIT_TESTING=ON
     make
   done
@@ -42,8 +43,6 @@ build() {
 check() {
   for _arch in ${_architectures}; do
     cd "${srcdir}"/build-${_arch}
-    cp src/cmocka.dll example/
-    cp src/cmocka.dll example/chef_wrap/
     WINEDEBUG=-all make test
   done
 }
@@ -55,7 +54,6 @@ package() {
 
     ${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "${pkgdir}"/usr/${_arch}/lib/*.a
-    rm -r "${pkgdir}"/usr/${_arch}/CMake/
   done
 }
 
