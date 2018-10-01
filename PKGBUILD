@@ -73,6 +73,10 @@ prepare() {
   # Patching configuration file
   sed -i 's/\/var\/www\/onlyoffice/\/usr\/share\/webapps\/onlyoffice/g' server/Common/config/production-linux.json
   sed -i 's/\/etc\/onlyoffice/\/etc\/webapps\/onlyoffice/g' server/Common/config/production-linux.json
+
+  # allfontsgen segfaults, some error in icu lib. copy compiled version from deb package
+  cd "${srcdir}"
+  tar xf "${srcdir}/data.tar.xz"
 }
 
 build() {
