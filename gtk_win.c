@@ -78,9 +78,7 @@ void check_list_add_api_data(void) {
 }
 
 void on_load_button_clicked(GtkButton* button) {
-    time_t now;
-    time(&now);
-    if (difftime(now, app.last_reload) <= 60)
+    if (difftime(time(NULL), app.last_reload) <= 60)
         return;
 
     if (streq(gtk_button_get_label(button), "Reload")) { // Reload portfolio
@@ -142,7 +140,7 @@ void on_load_button_clicked(GtkButton* button) {
     if (app.portfolio_data != NULL) { // If file is not a length 0 JSON array
         check_list_create_from_string();
         api_store_info_array(app.portfolio_data, DATA_LEVEL_CHECK);
-        app.last_reload = now;
+        app.last_reload = time(NULL);
         if (app.portfolio_data->array[0]->api_provider == EMPTY) {
             show_generic_message_dialog("No internet connection!", FALSE);
             app.last_reload = 0;
@@ -366,10 +364,10 @@ void on_info_back_button_clicked(GtkButton* button) {
 }
 
 void on_search_entry_focus_in_event(GtkWidget* search_entry, GdkEvent* event) {
-    if (ref_cache == NULL)
+    GtkListStore* list_store = GTK_LIST_STORE(GET_OBJECT("search_entry_completion_store"));
+    if (ref_cache == NULL || gtk_tree_model_iter_n_children(GTK_TREE_MODEL(list_store), NULL) > 0)
         return;
 
-    GtkListStore* list_store = GTK_LIST_STORE(GET_OBJECT("search_entry_completion_store"));
     gtk_list_store_clear(list_store);
     GtkTreeIter iter;
     for (size_t i = 0; i < ref_cache->length; i++) {
