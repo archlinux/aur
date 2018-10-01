@@ -1,4 +1,4 @@
-# Maintainer: dctxmei <dctxmei@gmail.com>
+# Maintainer: Dct Mei <dctxmei@gmail.com>
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Contributor: pandada8 <pandada8@gmail.com>
 pkgname=v2ray-git
