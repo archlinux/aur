@@ -1,5 +1,6 @@
 # $Id$
-# Maintainer: Felix Schindler <aut at felixschindler dot net>
+# Maintainer: Riad Wahby <kwantam+aur at gmail dot com>
+# Contributor: Felix Schindler <aut at felixschindler dot net>
 # Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 # Contributor: Sebastian Nowicki <sebnow@gmail.com>
@@ -12,7 +13,7 @@
 
 pkgname=('llvm38' 'llvm-libs38' 'llvm-ocaml38' 'lldb38' 'clang38' 'clang-tools-extra38')
 pkgver=3.8.1
-pkgrel=4
+pkgrel=5
 #_ocaml_ver=4.06.0-2
 arch=('i686' 'x86_64')
 url="http://llvm.org/"
@@ -31,6 +32,9 @@ source=(http://releases.llvm.org/$pkgver/llvm-$pkgver.src.tar.xz{,.sig}
         D18035-PR23529-Mangler-part-of-attrbute-abi_tag-support.patch
         D35246-Fix-sanitizer-build-against-latest-glibc.patch
         disable-llvm-symbolizer-test.patch
+        precomputed_ustat_struct_size.patch
+        valuemap_explicit_bool_cast.patch
+        go_test_explicitly_link_libffi.patch
         llvm-Config-llvm-config.h)
 sha256sums=('6e82ce4adb54ff3afc18053d6981b6aed1406751b8742582ed50f04b5ab475f9'
             'SKIP'
@@ -46,6 +50,9 @@ sha256sums=('6e82ce4adb54ff3afc18053d6981b6aed1406751b8742582ed50f04b5ab475f9'
             'd71f8677882c86accddb8a5b720f298a4d7a2ad3bce6091951a46396b8f14da1'
             '0515d1adab68f62de5528ae0c4e4e25811c472d6b4f9bd102a9811cae7ef977e'
             '62e6df669f96ab30e8c235bc6adc465221a0fcb29171edca75bfa4178a81fcd6'
+            '337bd2b895ade2f26cb7fa1c842d2c1e06cb71741cf0603aff27b2769bfd61b8'
+            'cd48bb5498c25fed2c237ab44e3700aa76ae9d8040bffa0e17dfebf2f4243bc1'
+            '039a78549a5fcf6b42acba4d8f05c5593f3adeb38b151b607aa44ceb542562d8'
             '597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48')
 validpgpkeys=('B6C8F98282B944E3B0D5C2530FC3042E345AD05D'
               '11E521D646982372EB577A1F8F0871F202119294')
@@ -68,6 +75,9 @@ prepare() {
   patch -d tools/clang -Np0 <../D18035-PR23529-Mangler-part-of-attrbute-abi_tag-support.patch
   patch -d projects/compiler-rt -Np0 <../D35246-Fix-sanitizer-build-against-latest-glibc.patch
   patch -d . -Np0 <../disable-llvm-symbolizer-test.patch
+  patch -d . -Np0 <../precomputed_ustat_struct_size.patch
+  patch -d . -Np0 <../valuemap_explicit_bool_cast.patch
+  patch -d . -Np0 <../go_test_explicitly_link_libffi.patch
 
   # fix some compile errors
   sed -i 's/#include <cassert>/#include <cassert>\n#include <functional>/' tools/lldb/include/lldb/Utility/TaskPool.h
