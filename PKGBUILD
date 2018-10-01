@@ -1,7 +1,7 @@
 # Maintainer: James R. <justsomejames@gmail.com>
 pkgname=amount
-pkgver=1.3.1
-pkgrel=2
+pkgver=1.4
+pkgrel=3
 pkgdesc="Filesystem mounting utility for ordinary users."
 license=('custom')
 arch=('any')
