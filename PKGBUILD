@@ -2,7 +2,7 @@
 pkgname=aurto
 pkgver=0.7.6
 pkgrel=1
-pkgdesc="A simple aur tool for managing a local 'aurto' repository"
+pkgdesc="An AUR tool for managing an auto-updating local 'aurto' package repository using aurutils."
 arch=('any')
 url="https://github.com/alexheretic/aurto"
 license=('MIT')
