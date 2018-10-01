@@ -1,6 +1,6 @@
 pkgbase = linux-macbook
 	pkgver = 4.18.11.arch1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.archlinux.org/linux.git/log/?h=v4.18.11-arch1
 	arch = x86_64
 	license = GPL2
