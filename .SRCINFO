@@ -1,6 +1,6 @@
 pkgbase = i3status-rust-git
 	pkgdesc = Very resourcefriendly and feature-rich replacement for i3status to use with bar programs (like i3bar and swaybar), written in pure Rust
-	pkgver = 0.9.0.r534.g4c2790c
+	pkgver = 0.9.0.r553.g4d2e595
 	pkgrel = 1
 	url = https://github.com/greshake/i3status-rust
 	install = i3status-rust.install
@@ -16,6 +16,7 @@ pkgbase = i3status-rust-git
 	optdepends = powerline-fonts: For all themes using the powerline arrow char
 	optdepends = speedtest-cli: For the speedtest block
 	optdepends = ttf-font-awesome-4: For the awesome icons
+	optdepends = upower: For the battery block
 	provides = i3status-rust
 	conflicts = i3status-rust
 	source = git+https://github.com/greshake/i3status-rust
