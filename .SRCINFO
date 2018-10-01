@@ -1,7 +1,7 @@
 pkgbase = systemd-git
 	pkgdesc = systemd (git version)
 	pkgver = 239.1014
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
 	makedepends = acl

@@ -1,4 +1,4 @@
-# Maintainer: Yurii Kolesnykov <yurikoles@gmai.com>
+# Maintainer: Yurii Kolesnykov <root@yurikoles.com>
 # Credit: Christian Hesse <mail@eworm.de>
 # Credit: Dave Reisner <dreisner@archlinux.org>
 # Credit: Tom Gundersen <teg@jklm.no>
@@ -8,7 +8,7 @@ _pkgbase=systemd
 pkgname=('systemd-git' 'libsystemd-git' 'systemd-resolvconf-git' 'systemd-sysvcompat-git')
 pkgdesc="systemd (git version)"
 pkgver=239.1014
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
