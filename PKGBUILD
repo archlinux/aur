@@ -1,10 +1,10 @@
 # Maintainer: Waterloop <teamwaterloop@gmail.com>
 
 pkgname=wio
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='An IoT Development Environment'
-arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 url='https://github.com/wio/wio'
 license=('MIT')
 options=("!strip")
@@ -15,15 +15,19 @@ optdepends=('avr-gcc: compiler for AVR'
             'gcc: for compiling natively')
 
 _pkg_x86_64='x86_64'
-_cs_x86_64='10233790cf6af5fcd410a026085ce01a7ee5fd6e474ecbd14a12c8a0004b61d6'
+_cs_x86_64='1a2da7a717eda51254cc391dc07553f1e5a73e553429d6510875f7d2edba18a2'
+
 _pkg_i686='i386'
-_cs_i686='cc2498de41809228e9f847b66cefd6afb4920f41a9dbc79a4f4e12867aa6fd2e'
+_cs_i686='ae905270a05fa9ba0c3ebb637e21c941b4ae1440c0a305d8e5f237c4036d2e42'
+
+_pkg_arm='arm5'
+_cs_arm='c77a0e054fd08c3dccf4fa66d5c2e7eb1a442a4ca5276d1bb287378c4c84b8a4'
+
 _pkg_armv6h='arm6'
-_cs_armv6h='496d2b5646289d77ecd974527ce9569612230fd2795ced889fd896aa663d15c8'
-_pkg_armv7h='arm6'
-_cs_armv7h='496d2b5646289d77ecd974527ce9569612230fd2795ced889fd896aa663d15c8'
-_pkg_aarch64='arm64'
-_cs_aarch64='8994cc97b649b601a74ef3de89bee213a86981dc3a582d09e6c43009e66faaee'
+_cs_armv6h='7d17944714271e8c8655c852d0647845b385d952672095c170180dda7d3ee8f0'
+
+_pkg_armv7h='arm7'
+_cs_armv7h='7df516560a8c1ae386d41bcb37177d934ee8094d2b11f2950f92bc3f1aeaf49e'
 
 _pkg_str="_pkg_${CARCH}"
 _cs_str="_cs_${CARCH}"
@@ -34,7 +38,7 @@ sha256sums=("${!_cs_str}")
 package() {
 	cd "${srcdir}"
 	mkdir -p "${pkgdir}/usr/bin/"
-	cp wio "${pkgdir}/usr/bin/wio"
+	cp "wio_linux_${!_pkg_str}" "${pkgdir}/usr/bin/wio"
 	mkdir -p "${pkgdir}/usr/share/wio"
 	cp -R toolchain "${pkgdir}/usr/share/wio/toolchain"
 }
