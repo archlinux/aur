@@ -1,6 +1,6 @@
 pkgbase = ibus-hangul-3beol
 	pkgdesc = ibus-hangul from createsc/3beol PPA
-	pkgver = 1.5.0+git20161231_2.2~bionic0527~3beol
+	pkgver = 1.5.1_1.0~bionic0801~3beol
 	pkgrel = 1
 	url = https://launchpad.net/~createsc/3beol
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = ibus-hangul-3beol
 	depends = libhangul
 	provides = ibus-hangul
 	conflicts = ibus-hangul
-	source = http://ppa.launchpad.net/createsc/3beol/ubuntu/pool/main/i/ibus-hangul/ibus-hangul_1.5.0+git20161231-2.2~bionic0527~3beol.tar.xz
-	sha256sums = 0e6ccc4f9412f97139ae655ff274e010a8eddd8a4864bc1816f774454ef7f068
+	source = http://ppa.launchpad.net/createsc/3beol/ubuntu/pool/main/i/ibus-hangul/ibus-hangul_1.5.1-1.0~bionic0801~3beol.tar.xz
+	sha256sums = 2453d2dbfbfc14b5d06fa1b71a820b4f877bfcab85f19f1c721eba947ba39aad
 
 pkgname = ibus-hangul-3beol
 
