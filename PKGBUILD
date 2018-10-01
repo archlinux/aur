@@ -3,7 +3,7 @@
 #pkgname=('python-asdf')
 pkgname=python-asdf
 #'python-asdf-doc')
-pkgver=2.0.3
+pkgver=2.1.0
 pkgrel=2
 pkgdesc="A Python tool for reading and writing Advanced Scientific Data Format (ASDF) files"
 arch=('i686' 'x86_64')
@@ -20,14 +20,14 @@ makedepends=('python>=3.3'
 #            'python-sphinx')
 #checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/source/a/asdf/asdf-${pkgver}.tar.gz")
-md5sums=('ea87998c3041e877970b35e1500e76a2')
+md5sums=('3da47607830b7a3f333ca9e82e2437b1')
 
 prepare() {
     cd ${srcdir}/asdf-${pkgver}
     sed -i -e '/auto_use/s/True/False/' setup.cfg
 }
 
-build () {
+build() {
     cd ${srcdir}/asdf-${pkgver}
     python setup.py build --use-system-libraries --offline
 
@@ -35,7 +35,7 @@ build () {
 #   python setup.py build_docs
 }
 
-#check(){
+#check() {
 #    cd ${srcdir}/asdf-${pkgver}
 #    python setup.py test
 #}
