@@ -1,0 +1,19 @@
+pkgbase = pal-git
+	pkgdesc = A command-line calendar program.
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://github.com/MFreeze/palcal
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = pkg-config
+	depends = glib2
+	depends = readline
+	depends = gettext
+	depends = gawk
+	provides = pal
+	source = git+https://github.com/MFreeze/palcal.git
+	sha256sums = SKIP
+
+pkgname = pal-git
+
