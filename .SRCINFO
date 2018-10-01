@@ -1,6 +1,6 @@
 pkgbase = tpm2-tss-git
 	pkgdesc = TPM (Trusted Platform Module) 2.0 Software Stack (TSS)
-	pkgver = 2.0.0.r41.68eb4f15
+	pkgver = 2.0.0.r82.b9f2e4c5
 	pkgrel = 1
 	url = https://github.com/tpm2-software/tpm2-tss
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = tpm2-tss-git
 	provides = tpm2-tss
 	conflicts = tpm2-tss
 	source = git+https://github.com/tpm2-software/tpm2-tss.git
-	md5sums = SKIP
+	sha512sums = SKIP
 
 pkgname = tpm2-tss-git
 
