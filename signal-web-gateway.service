@@ -1,0 +1,15 @@
+[Unit]
+Description=signal-web-gateway daemon
+After=network.target
+
+[Service]
+PIDFile=/var/lib/signal-web-gateway/pid
+User=signal
+Group=signal
+RuntimeDirectory=signal-web-gateway
+WorkingDirectory=/var/lib/signal-web-gateway/
+ExecStart=/usr/bin/signal-web-gateway -gateway
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

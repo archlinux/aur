@@ -10,20 +10,40 @@ arch=('x86_64')
 url="https://gitlab.com/morph027/signal-web-gateway"
 license=('MIT')
 makedepends=('go')
-_gourl=github.com/morph027/textsecure
+source=('git+https://github.com/morph027/textsecure.git'
+	'signal-web-gateway.service')
+sha512sums=('SKIP'
+	    'aa0c5e8eae19bc8da8374827de993b5dace5e9d84a02a51f01903a99a55816eab448905e8d8b552f28b2cfd8e0f2e263839b0b12b58df477c3910d6f73d961a8')
+install="signal-web-gateway.install"
+conflicts=("signal-web-gateway")
+provides=("signal-web-gateway")
+
+#pkgver() {
+#  cd "textsecure"
+#  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+#}
+
+prepare() {
+  export GOPATH="${srcdir}"
+  mkdir -p "${srcdir}/src/github.com/morph027"
+  mv "${srcdir}/textsecure" "${srcdir}/src/github.com/morph027/textsecure"
+  cd "${srcdir}/src/github.com/morph027/textsecure"
+  go get -v
+  go get -v github.com/sirupsen/logrus
+}
 
 build() {
-  GOPATH="$srcdir" go get -v ${_gourl}/... # -fix -x
+  export GOPATH="${srcdir}"
+  cd "${srcdir}/src/github.com/morph027/textsecure/cmd/textsecure"
+  go build -v
 }
 
 package() {
-  install -Dm755 "$srcdir/bin/azure-storage-azcopy" "$pkgdir/usr/bin/azcopy"
-
-  # Package license (if available)
-  for f in LICENSE COPYING LICENSE.* COPYING.*; do
-    if [ -e "$srcdir/src/$_gourl/$f" ]; then
-      install -Dm644 "$srcdir/src/$_gourl/$f" \
-        "$pkgdir/usr/share/licenses/$pkgname/$f"
-    fi
-  done
+  install -Dm755 "${srcdir}/src/github.com/morph027/textsecure/cmd/textsecure/textsecure" "${pkgdir}/usr/bin/signal-web-gateway"
+  install -Dm644 "${srcdir}/signal-web-gateway.service" "${pkgdir}/usr/lib/systemd/system/signal-web-gateway.service"
+  install -D "${srcdir}/src/github.com/morph027/textsecure/COPYING" "${pkgdir}/usr/share/licenses/signal-web-gateway/LICENSE"
+  mkdir -p "${pkgdir}/var/lib/signal-web-gateway"
+  cp -r "${srcdir}/src/github.com/morph027/textsecure/cmd/textsecure/.config" "${pkgdir}/var/lib/signal-web-gateway/.config"
+  mkdir -p "${pkgdir}/etc/webapps/signal-web-gateway"
+  ln -s "/var/lib/signal-web-gateway/.config/config.yml" "${pkgdir}/etc/webapps/signal-web-gateway/"
 }

@@ -1,0 +1,10 @@
+post_install() {
+  getent passwd signal > /dev/null || useradd -d /var/lib/signal-web-gateway signal > /dev/null
+  getent group signal > /dev/null || groupadd -r signal > /dev/null
+  chown -R signal:signal /var/lib/signal-web-gateway
+}
+ 
+post_remove() {
+   userdel -rf signal
+   groupdel signal
+}
