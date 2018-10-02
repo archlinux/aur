@@ -3,7 +3,7 @@
 pkgbase='python-jsonpath-ng'
 _libname=${pkgbase/python-/}
 pkgname=('python-jsonpath-ng' 'python2-jsonpath-ng')
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="JSONPath implementation that aims to be standard compliant"
 arch=(any)
@@ -11,7 +11,7 @@ url="https://github.com/tomas-fp/jsonpath-ng/"
 license=('Apache')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_libname:0:1}/$_libname/$_libname-$pkgver.tar.gz")
-sha256sums=('edd73c2f7576fbb6a80e653afbd2120e49a30505249cdcf4d694a33093c03209')
+sha256sums=('b1fc75b877e9b2f46845a455fbdcfb0f0d9c727c45c19a745d02db620a9ef0be')
 
 prepare() {
   cp -r $_libname-$pkgver $_libname-$pkgver-py2
