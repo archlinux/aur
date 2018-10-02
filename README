@@ -1,0 +1,9 @@
+Linux command-line utilities for show disk partitions as graphs. 
+It uses information from lsblk and fdisk.
+Use parameter -h for help.
+
+Usage examples:
+
+tdisk
+
+tdisk -gcfB -d/dev/sda

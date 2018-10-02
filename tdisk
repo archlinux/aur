@@ -1,0 +1,609 @@
+#!/bin/bash
+# Author: Ivan Kuchukov [ivan.kuchukov@gmail.com]
+# Date: 02 Oct 2018
+
+# Declarations
+declare -A data
+showType='interactive'
+dataFormat='human'
+print=''
+printInfo=false
+
+
+# ********** Usefull Functions **********
+
+# colors for file systems
+#   return color bash-code 
+#   parameter $1 is file system name
+function color {
+	if [ "$noColor" != true ]
+	then
+		# uses only simple colors for all terminals
+		case "$1" in
+			'fon')
+				echo '\e[39;49m'
+				;;
+			'')
+				echo '\e[30;47m'
+				;;
+			'btrfs'|'jfs'|'reiserfs'|'xfs')
+				echo '\e[46;44m'
+				;;
+			'ext2'|'ext3'|'ext4')
+				echo '\e[30;41m'
+				;;
+			'vfat'|'ntfs')
+				echo '\e[30;42m'
+				;;
+			'swap')
+				echo '\e[30;45m'
+				;;
+			'LVM2_member')
+				echo '\e[30;43m'
+				;;
+			*)
+				echo '\e[30;46m'
+				;;
+		esac
+	fi
+}
+
+# format for value
+#   return bytes value in user format (KB,MB,...)
+#   parameter $1 is value in bytes, number or with char B (1024B)
+function format {
+	[ -z "$1" ] && return
+	local var bytes=${1/B/}
+	local var postfix=('B' 'KB' 'MB' 'GB' 'TB')
+	local var p=0
+	case "$dataFormat" in
+		'human')
+			while [[ $bytes -gt 999 ]]
+			do
+				bytes=$[$bytes/1000]
+				((p+=1))
+			done
+			echo "$bytes${postfix[$p]}";
+			;;
+		'B')
+			echo $bytes'B'
+			;;
+		'KB')
+			echo $[$bytes/1000]'KB'
+			;;
+		'MB')
+			echo $[$bytes/1000/1000]'MB'
+			;;
+		'GB')
+			echo $[$bytes/1000/1000/1000]'GB'
+			;;
+		'TB')
+			echo $[$bytes/1000/1000/1000/1000]'TB'
+			;;
+	esac
+}
+
+# length of string (count only visible symbols)
+#   return string length without color bash-codes
+#   parameter $1 is string
+shopt -s extglob # for function length
+function length {
+	local var string
+	string=${1//\\e\[*([[:digit:]]);*([[:digit:]])m} # delete colors codes
+	echo ${#string}
+}
+
+
+# ********** Read Data From Disk **********
+
+# read and parse data from another programm
+#   no return
+#   put all data into assosiate array $data
+function readData {
+	local var disk partition prev noPositionsDrives
+	# parse output of lsblk for drives and partitions
+	readDataFromLsblk
+	# parse output of parted for more information about start and end partition's positions
+	readDataFromFdisk
+	#
+	for disk in $(seq 1 ${data[disks]})
+	do
+		prev=1
+		for partition in $(seq 1 ${data[disk${disk}Partitions]})
+		do
+			if [ -z ${data[disk${disk}Partition${partition}Start]} ]
+			then
+				data[disk${disk}Partition${partition}Start]=$prev
+				data[disk${disk}Partition${partition}End]=$[$prev+${data[disk${disk}Partition${partition}Size]}]
+				prev=$[${data[disk${disk}Partition${partition}End]}+1]
+			fi
+		done
+		[ $prev -ne 1 ] && noPositionsDrives="$noPositionsDrives ${data[disk${disk}Name]}"
+	done
+	[ ! -z "$noPositionsDrives" ] && [ "$noFdisk" != true ] \
+		&& (echo "I can't get partitions positions for$noPositionsDrives. Graph show only partitions sizes."; echo)
+}
+
+# read data from lsblk
+#   no return
+#   put all data into assosiate array $data
+function readDataFromLsblk {
+	# get internal disk number by disk name 
+	#   return internal drive number by its name (number from $data)
+	#   parameter $1 is name of drive (such as /dev/sda)
+	function getDiskNumberByName {
+		local var disk
+		for disk in $(seq 1 ${data[disks]})
+		do
+			if [ "${data[disk${disk}Name]}" == "$1" ]
+			then
+				echo "$disk"
+			fi
+		done
+	}
+	local var disk=0 partition=0
+	local var arr=()
+	local diskData=$(lsblk -ntpbro name,mountpoint,label,size,uuid,parttype,partflags,phy-sec,log-sec,type,fstype,model,serial,pkname,subsystems)
+	# change spaces to semicolon because command "read" incorrect work with delimiter space
+	diskData=${diskData//:/\\x3A}
+	diskData=${diskData// /:}
+	while read -r str
+	do
+		arr=()
+		IFS=':' read -r -a arr <<< "$str"
+		if [ ${arr[9]} == 'disk' ] 
+		then # Type "disk"
+			((disk+=1))
+			data[disks]=${disk}
+			data[disk${disk}Partitions]=0
+			data[disk${disk}Name]=${arr[0]}
+			data[disk${disk}Size]=${arr[3]}
+			data[disk${disk}Phy-sec]=${arr[7]}
+			data[disk${disk}Log-sec]=${arr[8]}
+			local var model=${arr[11]}
+			model=${model%"${model##*[!\\x20]}"}
+			data[disk${disk}Model]=$model
+			data[disk${disk}Serial]=${arr[12]}
+			data[disk${disk}Subsystems]=${arr[14]}
+		elif [ ${arr[9]} == 'part' ] 
+		then # Type "partition"
+			disk=$(getDiskNumberByName ${arr[13]}) # Name of parent drive
+			partition=$[${data[disk${disk}Partitions]}+1]
+			data[disk${disk}Partitions]=${partition}
+			data[disk${disk}Partition${partition}Name]=${arr[0]}
+			data[disk${disk}Partition${partition}Mountpoint]=${arr[1]}
+			data[disk${disk}Partition${partition}Label]=${arr[2]}
+			data[disk${disk}Partition${partition}Size]=${arr[3]}
+			data[disk${disk}Partition${partition}Uuid]=${arr[4]}
+			data[disk${disk}Partition${partition}Parttype]=${arr[5]}
+			[ "${arr[6]}" == '0x80' ] \
+				&& data[disk${disk}Partition${partition}PartFlags]='Boot' \
+				|| data[disk${disk}Partition${partition}PartFlags]=${arr[6]}
+			data[disk${disk}Partition${partition}FSType]=${arr[10]}
+		fi
+	done <<< $diskData
+}
+
+# read data from fdisk
+#   no return
+#   put all data into assosiate array $data
+function readDataFromFdisk {
+	[ "$noFdisk" == true ] && return
+	local var diskData=$(fdisk -lo Device,Start,End 2>/dev/null) tableType
+	# Set variables disk and partition to disk number and partition number by partititon name
+	#   no return
+	#   parameter $1 is name of partition (such as /dev/sda1)
+	function setDiskAndPartitionNumberByPartitionName {
+		disk=0
+		partition=0
+		while [ $disk -lt ${data[disks]} ]
+		do
+			((disk+=1))
+			partition=0
+			while [ $partition -lt ${data[disk${disk}Partitions]} ]
+			do
+				((partition+=1))
+				[ "${data[disk${disk}Partition${partition}Name]}" == "$1" ] \
+					&& return 
+			done
+		done
+		disk=0
+		partition=0
+	}
+	local var disk partition
+	local var arr=()
+	while read str
+	do 
+		if [ "${str:0:1}" == '/' ]
+		then
+			arr=()
+			IFS=' ' read -r -a arr <<< "$str"
+			setDiskAndPartitionNumberByPartitionName "${arr[0]}"
+			data[disk${disk}Partition${partition}Start]=$[${arr[1]}*${data[disk${disk}Log-sec]}]
+			data[disk${disk}Partition${partition}End]=$[${arr[2]}*${data[disk${disk}Log-sec]}]
+			data[disk${disk}TableType]=$tableType
+		fi
+		if [ "${str:0:16}" == 'Disklabel type: ' ]
+		then
+			tableType=${str:16}
+		fi
+	done <<< "$diskData"
+}
+
+
+# ********** Show Information **********
+
+# Display information use special rules
+#   no return
+#   parameter $1 is command (empty, info, newline)
+#			  empty - spaces without informations
+#			  info - information for user
+#			  var - information depends by var (show if var is not empty, use $var forvar value)
+#			  newline - return (data from $1 will be ignored)
+#   parameter $2 is data
+#   parameter $3 is var
+function print {
+	case "$1" in
+		'empty'|'e')
+			print="$print$2"
+			;;
+		'info'|'i')
+			print="$print$2"
+			printInfo=true
+			;;
+		'var'|'v')
+			if [ ! -z $3 ]
+			then
+				print="$print${2//\$var/$3}"
+				printInfo=true
+			fi
+			;;
+		'newline'|'n')
+			if [ "$printInfo" == true ] 
+			then
+				echo -e "$print"
+				printInfo=false
+			fi
+			print=''
+			;;
+	esac
+}
+
+# show disks information as list
+#   no return
+#   parameter $1 is drive (such as /dev/sda), show only this drive if not empty
+function showDisksList {
+	local var disk partition start end
+	for disk in $(seq 1 ${data[disks]})
+	do
+		if ( [ "$1" == '' ] || [ "$1" == "$disk" ] )
+		then
+			print i "${data[disk${disk}Name]} $(format ${data[disk${disk}Size]})"
+			print v " \"\$var\"" "${data[disk${disk}Model]}"
+			print i " [${data[disk${disk}Subsystems]}]"
+			print n
+			print i "Serial: ${data[disk${disk}Serial]}."
+			print i " Sector (log/phys): ${data[disk${disk}Log-sec]}/${data[disk${disk}Phy-sec]}."
+			print n
+			for partition in $(seq 1 ${data[disk${disk}Partitions]})
+			do
+				print i "${data[disk${disk}Partition${partition}Name]}"
+				print i " Size:$(format ${data[disk${disk}Partition${partition}Size]})"
+				print v " FS:\$var" "${data[disk${disk}Partition${partition}FSType]}"
+				print v " type:\$var" "${data[disk${disk}Partition${partition}Parttype]}"
+				print v " \$var" "${data[disk${disk}Partition${partition}PartFlags]}"
+				print v " \"\$var\"" "${data[disk${disk}Partition${partition}Label]}"
+				print n
+				print e "${data[disk${disk}Partition${partition}Name]//?/ }"
+				print v " UUID:\$var" "${data[disk${disk}Partition${partition}Uuid]}"
+				print v " Start:\$var" "$(format ${data[disk${disk}Partition${partition}Start]})"
+				print v " End:\$var" "$(format ${data[disk${disk}Partition${partition}End]})"
+				print n
+				print e "${data[disk${disk}Partition${partition}Name]//?/ }"
+				print v " Mountpoint:\$var" "${data[disk${disk}Partition${partition}Mountpoint]}"
+				print n
+			done
+			echo
+		fi
+	done
+}
+
+# show disks information as graphs
+#   no return
+function showDisksGraphs {
+	local var disk	
+	for disk in $(seq 1 ${data[disks]})
+	do
+		diskGraph $disk $1
+		echo
+	done
+}
+
+# show information about disk and its partitions as graphs
+# no return
+function showDisk {
+	diskGraph $1
+	partitionsGraphs
+}
+
+# show information about disk
+#   no return
+#   parameter $1 - drive
+#   parameter $2 - on/off numbers for drives
+function diskGraph {
+	local var disk=$1 partition partition2 size k delta start end 
+	local var color i flag layer g p graph graphColumns 
+	local var partitionHeaderK=0 partitionHeader=()
+	declare -A layers
+	
+	[ ! -z $2 ] && print i "$disk "
+	
+	print i "${data[disk${disk}Name]} $(format ${data[disk${disk}Size]})"
+	print v " \"\$var\"" "${data[disk${disk}Model]}"
+	print i " ${data[disk${disk}TableType]}"
+	print n
+	
+	# Analyze partitions positions
+	layers=()
+	layers[layers]=1
+	layers[layer1Partitions]=0
+	
+	partitionHeader=()
+	k=$[ ${data[disk${disk}Size]} / ( $terminalCols-1-$[${data[disk${disk}Partitions]}*2] ) ]
+	
+	for partition in $(seq 1 ${data[disk${disk}Partitions]})
+	do
+		[ ! -z ${data[disk${disk}Partition${partition}Start]} ] \
+			&& start=$[${data[disk${disk}Partition${partition}Start]}/$k] \
+			|| start=0
+		((partitionHeader[$start]+=2))
+		
+		layer=1
+		while [ $layer -le 50 ] # protect for incredible situation
+		do
+			flag=false
+			p=1
+			while [ $p -le ${layers[layer${layer}Partitions]} ]
+			do
+				partition2=${layers[layer${layer}p${p}]}
+				[ -z ${data[disk${disk}Partition${partition}Start]} ] && break
+				[ -z ${data[disk${disk}Partition${partition}End]} ] && break
+				[ -z ${data[disk${disk}Partition${partition2}Start]} ] && break
+				[ -z ${data[disk${disk}Partition${partition2}End]} ] && break
+				if ! ( ( [ ${data[disk${disk}Partition${partition}Start]} -gt ${data[disk${disk}Partition${partition2}End]} ] \
+					|| [ ${data[disk${disk}Partition${partition}End]} -lt ${data[disk${disk}Partition${partition2}Start]} ] ) )
+				then
+					flag=true
+					break
+				fi
+				((p+=1))
+			done
+			[ $flag == false ] && break
+			((layer+=1))
+			if [ $layer -gt ${layers[layers]} ]
+			then
+				layers[layers]=$layer
+				layers[layer${layer}Partitions]=0
+			fi
+		done
+		((layers[layer${layer}Partitions]+=1))
+		layers[layer${layer}p${layers[layer${layer}Partitions]}]=${partition}
+	done
+	
+	
+	[ $k -ne 0 ] && for layer in $(seq 1 ${layers[layers]})
+	do
+		graph=()
+		graphColumns=0
+		for p in $(seq 1 ${layers[layer${layer}Partitions]})
+		do
+			partition=${layers[layer${layer}p${p}]}
+			[ ! -z ${data[disk${disk}Partition${partition}Start]} ] \
+				&& start=$[${data[disk${disk}Partition${partition}Start]}/$k] \
+				|| start=1
+			[ ! -z ${data[disk${disk}Partition${partition}End]} ] \
+				&& end=$[${data[disk${disk}Partition${partition}End]}/$k] \
+				|| end=1
+			color=$(color ${data[disk${disk}Partition${partition}FSType]})
+
+			i=$start
+			local var prev
+			if [ $(length "${graph[$i]}") -eq 1 ]
+			then # not good check for end or start partition
+				prev=''
+			else
+				prev=${graph[$i]}
+			fi
+			if [ $partition -lt 10 ]
+			then
+				graph[$i]="$prev$(color 'fon') $color$partition"
+			else
+				graph[$i]="$prev$(color 'fon') $color+"
+			fi
+			((i+=1))
+			while [ $i -lt $end ]
+			do
+				graph[$i]="${graph[$i]}$color$partField"
+				((i+=1))
+			done
+			[ -z "${graph[$end]}" ] && graph[$end]="$color$partField" 
+			[ $i -gt $graphColumns ] && graphColumns=$i
+		done
+		
+		i=0
+		while [ $i -le $graphColumns ]
+		do
+			[ -z "${graph[$i]}" ] && graph[$i]="$(color 'fon') "
+			echo -en "${graph[$i]}"
+			if [ ! -z "${partitionHeader[$i]}" ]
+			then
+				for p in $(seq 1 $[${partitionHeader[$i]}+1-$(length "${graph[$i]}")])
+				do
+					if ( [ "$noColor" == true ] && [ "${graph[$i]:${#graph[$i]}-1:1}" != ' ' ] )
+					then
+						echo -en "#"
+					else
+						echo -en " "
+					fi
+				done
+			fi
+			((i+=1))
+		done
+		echo -e "$(color 'fon')"
+	done
+}
+
+# show partitions for drive as graphs (for global var $drive)
+#   no return
+function partitionsGraphs {
+	local var partition maxSize=0 string
+	for partition in $(seq 1 ${data[disk${drive}Partitions]})
+	do
+		size=$[${data[disk${drive}Partition${partition}Size]}]
+		[ $maxSize -lt $size ] && maxSize=$size
+	done
+	echo
+	for partition in $(seq 1 ${data[disk${drive}Partitions]})
+	do
+		string="$partition ${data[disk${drive}Partition${partition}Name]}"
+		string="$string Size:$(format ${data[disk${drive}Partition${partition}Size]})"
+		[ ! -z "${data[disk${drive}Partition${partition}FSType]}" ] \
+			&& string="$string FS:${data[disk${drive}Partition${partition}FSType]}"
+		[ ! -z "${data[disk${drive}Partition${partition}Parttype]}" ] \
+			&& string="$string type:${data[disk${drive}Partition${partition}Parttype]}"
+		string="$string ${data[disk${drive}Partition${partition}Label]}"
+		[ ! -z "${data[disk${drive}Partition${partition}Uuid]}" ] \
+			&& string="$string UUID:${data[disk${drive}Partition${partition}Uuid]}"
+		[ ! -z "${data[disk${drive}Partition${partition}Mountpoint]}" ] \
+			&& string="$string Mountpoint:${data[disk${drive}Partition${partition}Mountpoint]}"
+		
+		for i in $(seq ${#string} $[terminalCols-3])
+		do
+			string="$string "
+		done
+		size=$[${data[disk${drive}Partition${partition}Size]}*($terminalCols-2)/$maxSize]
+		[ $size -eq 0 ] && size=1
+		echo -n  " "
+		echo -en "$(color ${data[disk${drive}Partition${partition}FSType]})"
+		echo -n  "${string:0:$size}"
+		echo -en "$(color 'fon')"
+		echo     "${string:$size:$[$terminalCols-2-$size]}"
+	done
+	echo
+}
+
+
+# ********** Body **********
+
+terminalCols=$(tput cols)
+
+while getopts "vhlgf:d:cn" opt; do
+	case $opt in
+		v)
+			echo "$0 v0.1b"
+			exit 0
+			;;
+		h)
+			echo "Show information about disk partitions by parse output commands lsblk and fdisk."
+			echo
+			echo "Usage: $0 [OPTION]"
+			echo
+			echo "OPTIONs:"
+			echo "  -h                   displays this help message"
+			echo "  -l                   lists partition layout on all block devices"
+			echo "  -g                   show graph for partition layout on all block devices"
+			echo "  -f [B/KB/MB/GB/TB]   format for output (human format for empty)"
+			echo "  -d                   drive name"
+			echo "  -c                   no color mode"
+			echo
+			echo "Without argument -l or -g run in interactive mode."
+			echo
+			exit 0
+			;;
+		l)
+			showType='list'
+			;;
+		g)
+			showType='graph'
+			;;
+		f)
+			case $OPTARG in
+				'B'|'KB'|'MB'|'GB'|'TB') 
+					dataFormat=$OPTARG 
+					;;
+				*) 
+					echo "$0: illegal argument for option -$opt" 
+					;;
+			esac
+			;;
+		d)
+			driveSelect="$OPTARG"
+			;;
+		c)
+			noColor=true
+			;;
+		n)
+			noFdisk=true
+			;;
+	esac
+done
+
+if [ "$noColor" == true ]
+then
+	partField='#'
+else
+	partField=' '
+fi
+
+message="Searching devices and partitions... "
+echo -n "$message"
+readData
+echo -en "\r${message//?/ }\r" # clear display message 
+
+if [ "$driveSelect" != '' ]
+then
+	for disk in $(seq 1 ${data[disks]})
+	do
+		[ "${data[disk${disk}Name]}" == "$driveSelect" ] \
+			&& drive=$disk
+	done
+	if [ -z $drive ]
+	then
+		echo "Unknown drive $OPTARG."
+		echo
+		exit
+	fi
+fi
+
+case "$showType" in
+	'list')
+		showDisksList $drive
+		;;
+	'graph')
+		[ "$drive" == '' ] \
+			&& showDisksGraphs $drive \
+			|| showDisk $drive
+		;;
+	'interactive')
+		while [ true ]
+		do
+			if [ -z $drive ]
+			then
+				showDisksGraphs showNumbers \
+					&& while ( [ -z ${data[disk${drive}Name]} ] && [ "$drive" != 'q' ] && [ "$drive" != 'Q' ] )
+						do
+							read -rp "Choose drive [1-${data[disks]}] or Q for quit: " drive
+						done
+				echo
+				( [ "$drive" == 'q' ] || [ "$drive" == 'Q' ] ) && exit
+				echo
+			fi
+			showDisk $drive
+			read -rp "Any key for return to menu or Q for quit: " drive
+			echo
+			( [ "$drive" == 'q' ] || [ "$drive" == 'Q' ] ) && exit
+			echo
+			drive=
+		done
+		;;
+esac
