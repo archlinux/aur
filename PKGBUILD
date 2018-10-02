@@ -2,15 +2,15 @@
 # Contributor: sh4nks <sh4nks7@gmail.com
 
 pkgname=lightdm-pantheon-greeter-git
-pkgver=r875.943b40f
+pkgver=3.2.0.r75.bbf2958
 pkgrel=1
 pkgdesc='Pantheon greeter for LightDM'
 arch=('x86_64')
 url='https://github.com/elementary/greeter'
 license=('GPL')
 groups=('pantheon-unstable')
-depends=('cairo' 'clutter' 'clutter-gtk' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3'
-         'libgee' 'libgl' 'libx11' 'lightdm'
+depends=('cairo' 'clutter' 'clutter-gtk' 'gdk-pixbuf2' 'glib2' 'gtk3' 'libgee'
+         'libgl' 'libx11' 'lightdm'
          'libgranite.so' 'libwingpanel-2.0.so')
 makedepends=('meson' 'git' 'granite-git' 'libglvnd' 'libxfixes' 'vala'
              'wingpanel-git')
@@ -25,30 +25,22 @@ sha256sums=('SKIP'
 pkgver() {
   cd lightdm-pantheon-greeter
 
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  git describe --tags | sed 's/-/.r/; s/-g/./'
 }
 
 prepare() {
-  if [[ -d build ]]; then
-    rm -rf build
-  fi
-  mkdir build
-
   cd lightdm-pantheon-greeter
 
   patch -Np1 -i ../0001-bin-not-sbin.patch
 }
 
 build() {
-  cd build
-
-  arch-meson ../lightdm-pantheon-greeter
+  arch-meson lightdm-pantheon-greeter build
+  ninja -C build
 }
 
 package() {
-  build
-
-  DESTDIR="${pkgdir}" ninja install
+  DESTDIR="${pkgdir}" ninja -C build install
 }
 
 # vim: ts=2 sw=2 et:
