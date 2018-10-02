@@ -3,13 +3,16 @@
 
 pkgname=kubernetes-helm
 pkgver=2.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool to manage Kubernetes charts"
 arch=('i686' 'x86_64')
 url="https://github.com/helm/helm"
-makedepends=('go' 'glide')
+makedepends=('git' 'glide' 'go')
 depends=('socat')
-optdepends=('kubectl: check cluster status')
+optdepends=(
+  'kubectl: check cluster status'
+  'kubectl-bin: check cluster status - binary package'
+)
 conflicts=('kubernetes-helm-bin')
 license=('Apache')
 source=("git+https://github.com/helm/helm#tag=v${pkgver}")
