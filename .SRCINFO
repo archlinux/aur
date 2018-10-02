@@ -1,7 +1,7 @@
 pkgbase = deconz
 	pkgdesc = A generic ZigBee monitoring and control tool
 	pkgver = 2.05.39
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.dresden-elektronik.de
 	arch = x86_64
 	arch = armv6h

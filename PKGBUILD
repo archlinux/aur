@@ -3,7 +3,7 @@
 pkgname=deconz
 arch=('x86_64' 'armv6h' 'armv7h')
 pkgver=2.05.39
-pkgrel=3
+pkgrel=4
 pkgdesc="A generic ZigBee monitoring and control tool"
 url="http://www.dresden-elektronik.de"
 license=('custom:"Copyright (c) dresden elektronik ingenieurtechnik GmbH"')
@@ -37,6 +37,7 @@ package() {
 
   tar -xJf data.tar.xz -C "${pkgdir}"
 
+  chown -R root:root "${pkgdir}"
   cp -rfv "${pkgdir}/lib" "${pkgdir}/usr"
   rm -rf "${pkgdir}/lib"
 
