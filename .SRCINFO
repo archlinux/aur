@@ -1,0 +1,17 @@
+pkgbase = python-importlab
+	pkgdesc = A library to calculate python dependency graphs.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/google/importlab
+	arch = any
+	license = APACHE
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python-networkx
+	depends = python-six
+	options = !emptydirs
+	source = https://github.com/google/importlab/archive/0.1.1.tar.gz
+	sha256sums = 04360e2b07b2d26d25710f8b91466554b55ff23a40887658ce5b423cc25053ff
+
+pkgname = python-importlab
+
