@@ -4,8 +4,8 @@
 # by David Runge <dave@sleepmap.de> and contributors Ainola,
 # speps, and Bernardo Barros.
 
-pkgname='csound-git'
-pkgver='6.11.0.r29519.g65c13417e'
+pkgname=csound-git
+pkgver=6.11.0.r366.g58b548c36
 pkgrel=1
 pkgdesc="A programming language for sound rendering and signal processing."
 arch=('x86_64')
