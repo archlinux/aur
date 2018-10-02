@@ -3,7 +3,7 @@
 pkgbase=python-acme-git
 pkgname=("python-acme-git" "python2-acme-git")
 _reponame="certbot"
-pkgver=0.21.0.r18.g4f0aeb12f
+pkgver=0.27.0.r30.g06174bc11
 pkgrel=1
 pkgdesc="ACME protocol implementation for Python"
 arch=('any')
@@ -33,14 +33,12 @@ prepare() {
 	cp -a "${srcdir}/${_reponame}/acme"{,-py2}
 }
 
-build_python-acme-git() {
+build() {
 	cd "${srcdir}/${_reponame}/acme"
 	python setup.py clean
 	rm -rf build dist
 	python setup.py build
-}
 
-build_python2-acme-git() {
 	cd "${srcdir}/${_reponame}/acme-py2"
 	python2 setup.py clean
 	rm -rf build dist

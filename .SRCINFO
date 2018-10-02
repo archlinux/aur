@@ -1,6 +1,6 @@
 pkgbase = python-acme-git
 	pkgdesc = ACME protocol implementation for Python
-	pkgver = 0.21.0.r18.g4f0aeb12f
+	pkgver = 0.27.0.r30.g06174bc11
 	pkgrel = 1
 	url = https://github.com/certbot/certbot
 	arch = any
@@ -44,7 +44,7 @@ pkgname = python-acme-git
 	depends = python-werkzeug
 	depends = python-mock
 	optdepends = python-dnspython: local validation of dns-01 challenges
-	provides = python-acme=0.21.0.r18.g4f0aeb12f
+	provides = python-acme=0.27.0.r30.g06174bc11
 	conflicts = python-acme
 
 pkgname = python2-acme-git
@@ -60,5 +60,5 @@ pkgname = python2-acme-git
 	depends = python2-werkzeug
 	depends = python2-mock
 	optdepends = python2-dnspython: local validation of dns-01 challenges
-	provides = python2-acme=0.21.0.r18.g4f0aeb12f
+	provides = python2-acme=0.27.0.r30.g06174bc11
 	conflicts = python2-acme
