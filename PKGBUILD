@@ -1,7 +1,7 @@
 # Maintainer: Daniel Ruiz de Alegria <daniruizdealegria@gmail.com>
 
 pkgname="flat-remix-git"
-pkgver=r142.5c8f2d1
+pkgver=r186.f65efbf3
 pkgrel=1
 pkgdesc="Flat remix is a pretty simple icon theme inspired on material design."
 arch=('any')
