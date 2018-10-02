@@ -1,22 +1,22 @@
 pkgbase = openjdk-devel
-	pkgdesc = Java OpenJDK 11 Early-Access Build from Oracle.
-	pkgver = 11b28
+	pkgdesc = Java OpenJDK 12 Early-Access Build from Oracle.
+	pkgver = 12b13
 	pkgrel = 1
-	url = http://jdk.java.net/11
+	url = http://jdk.java.net/12
 	arch = x86_64
 	license = GPL2
 	depends = java-environment-common
 	depends = java-runtime-common
 	depends = ca-certificates-utils
 	depends = nss
-	provides = java-environment=11
-	provides = java-environment-openjdk=11
-	provides = java-runtime=11
-	provides = java-runtime-openjdk=11
-	provides = java-runtime-headless=11
-	provides = java-runtime-headless-openjdk=11
-	source = https://download.java.net/java/early_access/jdk11/28/GPL/openjdk-11+28_linux-x64_bin.tar.gz
-	sha256sums = 3784cfc4670f0d4c5482604c7c513beb1a92b005f569df9bf100e8bef6610f2e
+	provides = java-environment=12
+	provides = java-environment-openjdk=12
+	provides = java-runtime=12
+	provides = java-runtime-openjdk=12
+	provides = java-runtime-headless=12
+	provides = java-runtime-headless-openjdk=12
+	source = https://download.java.net/java/early_access/jdk12/13/GPL/openjdk-12-ea+13_linux-x64_bin.tar.gz
+	sha256sums = 555b0518f1ada185f1d1b77c79cb6f7a62ed17722cd754223bf92ad617f3c330
 
 pkgname = openjdk-devel
 
