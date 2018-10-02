@@ -3,7 +3,7 @@
 pkgbase=certbot-plugins-git
 pkgname=("certbot-nginx-git" "certbot-apache-git")
 _reponame="certbot"
-pkgver=0.21.0.r18.g4f0aeb12f
+pkgver=0.27.0.r30.g06174bc11
 pkgrel=1
 pkgdesc="Plugins for Certbot"
 arch=('any')
@@ -27,14 +27,12 @@ pkgver() {
 	)
 }
 
-build_certbot-nginx-git() {
+build() {
 	cd "${srcdir}/${_reponame}/certbot-nginx"
 	python setup.py clean
 	rm -rf build dist
 	python setup.py build
-}
 
-build_certbot-apache-git() {
 	cd "${srcdir}/${_reponame}/certbot-apache"
 	python setup.py clean
 	rm -rf build dist
