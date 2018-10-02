@@ -1,0 +1,33 @@
+pkgbase = spimsuite-svn
+	pkgdesc = spim + xspim + QtSpim
+	pkgver = r717
+	pkgrel = 1
+	url = http://spimsimulator.sourceforge.net/
+	arch = x86_64
+	license = BSD
+	makedepends = subversion
+	makedepends = imake
+	makedepends = qt5-tools
+	makedepends = icu
+	depends = glibc
+	depends = libsm
+	depends = libxaw
+	depends = qt5-base
+	optdepends = qt5-tools: assistant-qt5
+	provides = spim
+	provides = spim-svn
+	provides = xspim
+	provides = xspim-svn
+	provides = qtspim
+	provides = qtspim-svn
+	conflicts = spim
+	conflicts = spim-svn
+	conflicts = xspim
+	conflicts = xspim-svn
+	conflicts = qtspim
+	conflicts = qtspim-svn
+	source = spimsuite::svn://svn.code.sf.net/p/spimsimulator/code
+	md5sums = SKIP
+
+pkgname = spimsuite-svn
+
