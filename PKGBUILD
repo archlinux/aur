@@ -20,6 +20,7 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --prefix=/usr --skip-build --optimize=1
+  chmod -R go+r "${pkgdir}/usr/lib/python3.7/site-packages/pip_autoremove-${pkgver}-py3.7.egg-info"
 }
 
 # vim:set ts=2 sw=2 et:
