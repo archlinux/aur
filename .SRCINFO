@@ -8,6 +8,7 @@ pkgbase = python-dask
 	checkdepends = ipython
 	checkdepends = python-bcolz
 	checkdepends = python-cachey
+	checkdepends = python2-cachey
 	checkdepends = python-graphviz
 	checkdepends = python2-graphviz
 	checkdepends = python-sparse
@@ -37,6 +38,7 @@ pkgname = python-dask
 	depends = python-toolz
 	depends = python-cloudpickle
 	depends = python-partd>=0.3.8
+	depends = python-yaml
 
 pkgname = python2-dask
 	depends = python2-numpy
@@ -45,4 +47,5 @@ pkgname = python2-dask
 	depends = python2-toolz
 	depends = python2-cloudpickle
 	depends = python2-partd>=0.3.8
+	depends = python2-yaml
 

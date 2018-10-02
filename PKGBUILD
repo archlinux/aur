@@ -11,7 +11,7 @@ arch=('any')
 url="https://github.com/dask/dask"
 license=('BSD')
 #checkdepends=('ipython' 'python-bcolz' 'python2-bcolz' 'python-cachey' 'python2-cachey' 'python-graphviz' 'python2-graphviz' 'python-sparse' 'python2-sparse' 'python-pytest' 'python2-pytest')
-checkdepends=('ipython' 'python-bcolz' 'python-cachey' 'python-graphviz' 'python2-graphviz' 'python-sparse' 'python2-sparse' 'python-pytest' 'python2-pytest')
+checkdepends=('ipython' 'python-bcolz' 'python-cachey' 'python2-cachey' 'python-graphviz' 'python2-graphviz' 'python-sparse' 'python2-sparse' 'python-pytest' 'python2-pytest')
 optdepends=('python-bcolz'
   'python-bokeh'
   'python-cachey'
@@ -31,14 +31,14 @@ prepare() {
 }
 
 package_python-dask(){
-  depends=('python' 'python-numpy' 'python-scipy' 'python-pandas' 'python-toolz' 'python-cloudpickle' 'python-partd>=0.3.8' )
+  depends=('python' 'python-numpy' 'python-scipy' 'python-pandas' 'python-toolz' 'python-cloudpickle' 'python-partd>=0.3.8' 'python-yaml')
   cd "$srcdir/$_pkgname-$pkgver"
   install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
 package_python2-dask(){
-  depends=('python2-numpy' 'python2-scipy' 'python2-pandas' 'python2-toolz' 'python2-cloudpickle' 'python2-partd>=0.3.8' )
+  depends=('python2-numpy' 'python2-scipy' 'python2-pandas' 'python2-toolz' 'python2-cloudpickle' 'python2-partd>=0.3.8' 'python2-yaml')
   cd "$srcdir/$_pkgname-$pkgver-py2"
   install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   python2 setup.py install --root="$pkgdir/" --optimize=1
