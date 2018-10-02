@@ -1,14 +1,14 @@
 # Maintainer: Dylan Ferris <dylan@psilly.com>
 
 pkgname='atlas-cpp'
-pkgver=0.6.3
+pkgver=0.6.4
 pkgrel=1
 pkgdesc='The C++ reference implementation of the WorldForge Atlas protocol.'
 arch=('x86_64')
-url='http://www.worldforge.org/index.php/components/atlas-cpp/'
+url='https://www.worldforge.org/index.php/components/atlas-cpp/'
 license=('GPL2')
 source=("https://github.com/worldforge/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('278e8c23e61720b165a62f64e74e9f8b')
+sha256sums=('74debbf2706b8a17bee5c715d026a6a1e51ee315685761fba378ea3564cde481')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
