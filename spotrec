@@ -1,2 +1,2 @@
 #!/bin/bash
-python3 /opt/spotrec/spotrec.cpython-37.opt-2.pyc "$@"
+/opt/spotrec/spotrec.bin "$@"
