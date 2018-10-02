@@ -1,9 +1,9 @@
 # Maintainer: Laurent Treguier <laurent@treguier.org>
 
-_oomox_ver=1.7.0.4
+_oomox_ver=1.7.0.5
 _numix_ver=1.9.0.3
 _materia_ver=20180922
-_arc_cmt=e7f9370ebefb60278e9fc90e34a7266a8c4b9dac
+_arc_cmt=f53f43a8b6faad762b01efe1f9958fd5afcb8dfb
 _archdroid_ver=1.0.2
 _gnome_colors_ver=5.5.3
 _oomoxify_ver=1.0.1
@@ -11,7 +11,7 @@ _base16_cmt=d022b9daa5c233a08a8d3b94fd534a3041e3a8c1
 
 pkgname=oomox
 pkgver=${_oomox_ver}
-pkgrel=10
+pkgrel=1
 pkgdesc='Graphical application for generating different color variations of Numix/Materia/Arc theme (GTK2, GTK3), gnome-colors and ArchDroid icon themes.
 Have a hack for HiDPI in gtk2.'
 arch=('i686' 'x86_64')
@@ -59,10 +59,10 @@ source=(
     "oomoxify-${_oomoxify_ver}.tar.gz::https://github.com/themix-project/oomoxify/archive/${_oomoxify_ver}.tar.gz"
     "base16-builder-${_base16_cmt}.tar.gz::https://github.com/base16-builder/base16-builder/archive/${_base16_cmt}.tar.gz"
 )
-md5sums=('8e50aeb8b1826f1e3713938a1f08ae55'
+md5sums=('52c161b93801870f2787a914222370e1'
          '09106ec3126a0504745c3632268e53b3'
          'fc264476ff1b7a1763698e6c1892ca01'
-         'f31eec3e8523b4b5962e3f44ba06b960'
+         '7aa69026025c86fd3d78265c280943be'
          'cb669130685dcbf03a8f7f5738c71dc6'
          'ae3250f1dce9505dbaa60d92dcb9a239'
          '02f3cefaf6ce3b89b8a5cc6b8a7430b4'
