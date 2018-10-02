@@ -51,6 +51,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname%-ria}-${pkgver}"
+  autoreconf -i
   ./configure --prefix=/usr \
     --without-nss \
     --with-openssl=/usr \
