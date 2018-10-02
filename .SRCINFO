@@ -1,0 +1,18 @@
+pkgbase = xaxaxa-vna-git
+	pkgdesc = a simple and cheap vector network analyzer's support software
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/xaxaxa-dev/vna
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	makedepends = automake
+	makedepends = libtool
+	depends = eigen
+	depends = fftw
+	depends = qt5-charts
+
+pkgname = xaxaxa-vna-git
+
