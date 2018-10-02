@@ -1,0 +1,13 @@
+pkgbase = pip-autoremove
+	pkgdesc = Remove a python package and its unused dependencies.
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/invl/pip-autoremove
+	arch = any
+	license = APACHE
+	depends = python-pip
+	source = https://files.pythonhosted.org/packages/source/p/pip-autoremove/pip-autoremove-0.9.1.tar.gz
+	md5sums = dce79dcf61458b05c99024b5f8f15370
+
+pkgname = pip-autoremove
+
