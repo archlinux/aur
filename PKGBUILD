@@ -2,7 +2,7 @@
 # Maintainer: Zoë Sparks <zoe@milky.flowers>
 pkgname=cabbage-git
 pkgrel=1
-pkgver=2.0.02r1246
+pkgver=2.0.03r1268
 pkgdesc='A framework for audio software development'
 arch=('x86_64')
 url="http://cabbageaudio.com/"
@@ -88,7 +88,7 @@ prepare() {
 
 pkgver() {
 	cd "${srcdir}/cabbage"
-	printf "2.0.02r%s" "$(git rev-list --count HEAD)"
+	printf "2.0.03r%s" "$(git rev-list --count HEAD)"
 }
 
 build() {
