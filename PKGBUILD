@@ -2,7 +2,7 @@
 
 pkgname=luks-tpm2
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility to manage LUKS keys sealed by a TPM 2.0"
 arch=('any')
 url="https://github.com/electrickite/luks-tpm2"
@@ -18,7 +18,7 @@ depends=('tpm2-tools'
 source=("https://github.com/electrickite/${pkgname}/archive/${pkgver}.tar.gz"
         'luks-tpm2.hook')
 sha1sums=('532a01773275c03000f3b5575fd89c2cd4de0128'
-          '3b45f32a95d31bd7e0937ba6ba14b67a144809e9')
+          '3f0f166a469d71441d0a9d20320cea671119ef0b')
 
 
 package() {

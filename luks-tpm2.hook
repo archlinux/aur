@@ -11,4 +11,4 @@ Target = usr/lib/systemd/boot/efi/linux*.efi.stub
 [Action]
 Description = Adding temporary LUKS TPM key...
 When = PostTransaction
-Exec = /usr/bin/luks-tpm temp
+Exec = /usr/bin/luks-tpm2 temp
