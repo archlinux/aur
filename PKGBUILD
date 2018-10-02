@@ -4,10 +4,9 @@
 
 pkgname=bluecurve-icon-theme
 pkgver=8.0.2
-pkgrel=20
-_rhfedver=26
-_rhpkgrel=15
-_rhpkgver=26
+pkgrel=21
+_rhfedver=28
+_rhpkgrel=18
 pkgdesc="Red Hat Icons from Fedora 10"
 arch=('any')
 url="https://fedorahosted.org/bluecurve/"
@@ -16,8 +15,8 @@ groups=('redhat-artwork')
 optdepends=('gnome-icon-theme: for inheriting missing icons')
 options=(!emptydirs)
 
-source=("ftp://rpmfind.net/linux/fedora/linux/releases/${_rhfedver}/Everything/x86_64/os/Packages/b/bluecurve-icon-theme-${pkgver}-${_rhpkgrel}.fc${_rhpkgver}.noarch.rpm")
-sha256sums=('8c51b980aa1baf3239c60fa168acfcd2dca82dcb665f1564c3d42dcb285245f6')
+source=("ftp://rpmfind.net/linux/fedora/linux/releases/${_rhfedver}/Everything/x86_64/os/Packages/b/bluecurve-icon-theme-${pkgver}-${_rhpkgrel}.fc${_rhfedver}.noarch.rpm")
+sha256sums=('471908572f21ce9c2cb82582f29904c1d9e0593ac8ca6cfdf3795a730ab4d936')
 
 build() {
   cd $srcdir/usr/share/icons
