@@ -7,6 +7,7 @@ pkgbase = ubports-installer
 	install = ubports-installer.install
 	arch = x86_64
 	license = GPL3
+	depends = gconf
 	source = https://github.com/ubports/ubports-installer/releases/download/0.1.21-beta/ubports-installer_0.1.21-beta_amd64.deb
 	md5sums = 9f9667278991d35e64cc7286d23b439f
 
