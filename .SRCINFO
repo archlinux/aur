@@ -1,0 +1,16 @@
+pkgbase = glitchlock
+	pkgdesc = a glitch art lockscreen for linux
+	pkgver = 0.31
+	pkgrel = 1
+	url = https://github.com/moolen/glitchlock
+	arch = x86_64
+	license = APACHE
+	makedepends = go>=1.8
+	depends = glibc
+	depends = pam
+	depends = libx11
+	source = glitchlock-0.31.tar.gz::https://github.com/moolen/glitchlock/archive/0.31.tar.gz
+	md5sums = c1e1ab42913024cc543802d3261fe386
+
+pkgname = glitchlock
+
