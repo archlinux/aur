@@ -3,7 +3,7 @@
 
 pkgname='tdisk'
 pkgver=0.1
-pkgrel=3
+pkgrel=4
 pkgdesc='A command-line tool that show partitions as graphs'
 arch=('x86_64')
 url='https://github.com/ivan-kuchukov/tdisk'
@@ -18,5 +18,6 @@ md5sums=('SKIP')
 
 package() {
   cd "${srcdir}/${pkgname}"
+  mkdir -p "${pkgdir}/usr/bin"
   cp tdisk "${pkgdir}/usr/bin"
 }
