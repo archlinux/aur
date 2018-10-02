@@ -2,7 +2,7 @@
 # Maintainer: Corey Richardson <corey at octayn dot net>
 
 pkgname=asciidocfx
-pkgver=1.5.9
+pkgver=1.6.8
 pkgrel=1
 pkgdesc="Asciidoc Editor and Toolchain written with JavaFX 8"
 arch=('any')
@@ -13,14 +13,12 @@ license=('Apache')
 makedepends=('maven>=3.3.9' 'java-environment=8' 'gendesk')
 depends=('java-environment=8' 'java-openjfx>=8.u76')
 
-_commitId='18927ddfde5ac008e5f14320340138786fcdfb0f'
-
 source=(
     "https://github.com/asciidocfx/AsciidocFX/archive/v${pkgver}.tar.gz"
     'asciidocfx'
 )
 sha512sums=(
-    '2e412a8af37deb2d889778f1de4653f79d68c7d1ec9101f11d73ee471411a6f9ca16c6aa18bb862430604b7e7f33283890b1472ac7c6fabe8d8e57e5fa8a3ff5'
+    '3bee4b0b24f8c5bb81007e00ac8c9121ba2c13d96fe249c594fc8294f85c26c085e217a082d78a01d37654589565df921949550b216c89119152195be6b2774f'
     'e37a5331244d2784dabfffe3e360998e69ec0cc84dbd716e98d80de72c80c34e0791772d8277897b2fc479498860ef70293072956f2a991fcb59beec448d689f'
 )
 
