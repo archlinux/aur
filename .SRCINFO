@@ -1,17 +1,17 @@
 pkgbase = openapi-generator-cli
 	pkgdesc = OpenAPI Generator CLI + bash completion
-	pkgver = 3.2.3
-	pkgrel = 2
+	pkgver = 3.3.0
+	pkgrel = 1
 	url = https://openapi-generator.tech/
 	arch = any
 	license = Apache
-	noextract = openapi-generator-cli-3.2.3.jar
-	source = http://central.maven.org/maven2/org/openapitools/openapi-generator-cli/3.2.3/openapi-generator-cli-3.2.3.jar
-	source = https://raw.githubusercontent.com/OpenAPITools/openapi-generator/v3.2.3/scripts/openapi-generator-cli-completion.bash
+	noextract = openapi-generator-cli-3.3.0.jar
+	source = http://central.maven.org/maven2/org/openapitools/openapi-generator-cli/3.3.0/openapi-generator-cli-3.3.0.jar
+	source = https://raw.githubusercontent.com/OpenAPITools/openapi-generator/v3.3.0/scripts/openapi-generator-cli-completion.bash
 	source = openapi-generator-cli
-	md5sums = 975f52f3e9d0f4591c7fef79c2f6f08b
+	md5sums = 1c54b990a8d458aabb98d28c104c53ef
 	md5sums = 64934ddd97afb1b86640ed77f5683a93
-	md5sums = 9c28e1d462511cb76dfafbb5fc00b606
+	md5sums = 0fbb7c3ba30af0103f88dfb32a541cd1
 
 pkgname = openapi-generator-cli
 	depends = java-runtime

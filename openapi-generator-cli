@@ -2,4 +2,4 @@
 
 JAVA_OPTS="-ea ${JAVA_OPTS} -Xmx1024M -server"
 
-exec /usr/bin/java $JAVA_OPTS -jar /usr/share/java/openapi-generator-cli-3.2.3.jar $@
+exec /usr/bin/java $JAVA_OPTS -jar /usr/share/java/openapi-generator-cli-3.3.0.jar $@
