@@ -2,12 +2,10 @@
 Description=Gitea (Git with a cup of tea)
 After=syslog.target
 After=network.target
-
-# Enable these if you plan on using them with Gitea:
-#After=mysqld.service
-#After=postgresql.service
-#After=memcached.service
-#After=redis.service
+After=mysqld.service
+After=postgresql.service
+After=memcached.service
+After=redis.service
 
 [Service]
 # Modify these two values and uncomment them if you have
@@ -16,14 +14,15 @@ After=network.target
 ###
 #LimitMEMLOCK=infinity
 #LimitNOFILE=65535
-RestartSec=2s
+RestartSec=1s
 Type=simple
 User=git
 Group=git
-WorkingDirectory=/var/lib/gitea/
-ExecStart=/usr/bin/gitea web -c /etc/gitea/app.ini
+WorkingDirectory=/var/lib/gitea
+ExecStart=/usr/bin/gitea web --config /etc/gitea/app.ini
 Restart=always
-Environment=USER=git HOME=/home/git GITEA_WORK_DIR=/var/lib/gitea
+Environment=USER=git HOME=/var/lib/gitea/repos GITEA_WORK_DIR=/var/lib/gitea TIDB_PPROF=0
+
 # If you want to bind Gitea to a port below 1024 uncomment
 # the two values below
 ###
@@ -32,4 +31,3 @@ Environment=USER=git HOME=/home/git GITEA_WORK_DIR=/var/lib/gitea
 
 [Install]
 WantedBy=multi-user.target
-

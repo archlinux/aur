@@ -1,16 +1,11 @@
 pre_install() {
   # create the required user account
-  useradd --system -m --shell /bin/bash -c "Account for gitea" --home /home/git git || echo "Git user already exists"
-  install -d "/home/git"
+  useradd --system -m --shell /bin/nologin -c "Account for gitea" --home /var/lib/gitea/repos git || echo "Git user already exists"
 }
 
 post_install() {
-  chown git:git /var/lib/gitea/{data,indexers,log}
-  chmod 750 /var/lib/gitea/{data,indexers,log}
+  chown -R git:git /var/lib/gitea
   chown root:git /etc/gitea
-  chmod 770 /etc/gitea
-  chown git:git /home/git
-  chmod 700 /home/git
   systemctl daemon-reload
 }
 
