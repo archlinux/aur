@@ -3,7 +3,7 @@
 
 pkgname='tdisk'
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A command-line tool that show partitions as graphs'
 arch=('x86_64')
 url='https://github.com/ivan-kuchukov/tdisk'
@@ -16,12 +16,7 @@ provides=()
 source=("${pkgname}::git+https://github.com/ivan-kuchukov/tdisk#branch=master")
 md5sums=('SKIP')
 
-build() {
-  cd "${srcdir}/${pkgname}"
-  make
-}
-
 package() {
   cd "${srcdir}/${pkgname}"
-  install -t "${pkgdir}/usr/bin" tdisk
+  cp tdisk "${pkgdir}/usr/bin"
 }
