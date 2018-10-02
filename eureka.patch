@@ -1,16 +1,8 @@
-diff -ru eureka-1.21-source-orig/Makefile eureka-1.21-source/Makefile
---- eureka-1.21-source-orig/Makefile	2018-01-09 14:05:02.549661357 +0100
-+++ eureka-1.21-source/Makefile	2018-01-09 14:06:03.161776098 +0100
-@@ -22,7 +22,7 @@
- 
- CXXFLAGS=$(OPTIMISE) $(WARNINGS) -D_THREAD_SAFE -D_REENTRANT
- 
--LDFLAGS=-L/usr/X11R6/lib
-+LDFLAGS+=-L/usr/X11R6/lib
- 
- LIBS= \
-      -lfltk_images -lfltk_gl -lfltk  \
-@@ -144,7 +144,8 @@
+diff --git a/Makefile b/Makefile
+index 17088c5..234755b 100644
+--- a/Makefile
++++ b/Makefile
+@@ -140,7 +140,8 @@ stripped: all
  
  INSTALL_DIR=$(DESTDIR)$(PREFIX)/share/eureka
  
