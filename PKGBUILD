@@ -1,7 +1,7 @@
 # Maintainer: Clever Cloud CI <ci@clever-cloud.com>
 
 pkgname=clever-tools-bin-beta
-pkgver=1.0.0_beta.28
+pkgver=1.0.0_beta.29
 pkgrel=1
 pkgdesc="Command Line Interface for Clever Cloud."
 arch=('x86_64')
@@ -9,16 +9,16 @@ url="https://github.com/CleverCloud/clever-tools"
 license=('MIT')
 
 options=('!strip')
-source=("clever-tools-1.0.0-beta.28_linux.tar.gz::https://clever-tools.cellar.services.clever-cloud.com/releases/1.0.0-beta.28/clever-tools-1.0.0-beta.28_linux.tar.gz")
-sha256sums=('6c4883dce7a5ec8e3ca5189fd4d6040dfd5a85e5bf7868161e2fdeaa225f332d')
+source=("clever-tools-1.0.0-beta.29_linux.tar.gz::https://clever-tools.cellar.services.clever-cloud.com/releases/1.0.0-beta.29/clever-tools-1.0.0-beta.29_linux.tar.gz")
+sha256sums=('372f393be74277742f1674d960d1f6b1acec176e0abb95adf9d709a413acc7e9')
 
 package() {
   install -d "${pkgdir}/usr/bin"
   install -d "${pkgdir}/usr/share/bash-completion/completions"
   install -d "${pkgdir}/usr/share/zsh/site-functions"
 
-  install "${srcdir}/clever-tools-1.0.0-beta.28_linux/clever" "${pkgdir}/usr/bin/clever"
+  install "${srcdir}/clever" "${pkgdir}/usr/bin/clever"
 
-  "${srcdir}/clever-tools-1.0.0-beta.28_linux/clever" --bash-autocomplete-script /usr/bin/clever > "${pkgdir}/usr/share/bash-completion/completions/clever"
-  "${srcdir}/clever-tools-1.0.0-beta.28_linux/clever" --zsh-autocomplete-script /usr/bin/clever > "${pkgdir}/usr/share/zsh/site-functions/_clever"
+  "${srcdir}/clever" --bash-autocomplete-script /usr/bin/clever > "${pkgdir}/usr/share/bash-completion/completions/clever"
+  "${srcdir}/clever" --zsh-autocomplete-script /usr/bin/clever > "${pkgdir}/usr/share/zsh/site-functions/_clever"
 }
