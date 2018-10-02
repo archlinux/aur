@@ -29,7 +29,7 @@ validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aac
 prepare() {
   mkdir -p build
   
-  cd $pkgname-$pkgver
+  cd $_pkgname-$pkgver
   patch -p1 -i ../kdebug-393478.patch
 }
 
