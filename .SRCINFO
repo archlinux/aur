@@ -1,0 +1,25 @@
+pkgbase = ts3audiobot
+	pkgdesc = ts3 audio bot by splamy
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/Splamy/TS3AudioBot
+	arch = any
+	license = custom:OSL 3.0
+	makedepends = unzip
+	depends = mono
+	depends = opus
+	depends = ffmpeg
+	optdepends = youtube-dl
+	noextract = ts3audiobot-0.9.1.zip
+	source = ts3audiobot-0.9.1.zip::https://splamy.de/api/nightly/ts3ab/master/download
+	source = ts3audiobot.sh
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = bfa2408c0be947b50d87bae0a9c91be4
+	md5sums = f03380651f2a7879bbf28b1725fd3838
+	sha256sums = SKIP
+	sha256sums = 22105154b20e158bdafcf7884bd9a16df9f9e68b618f62761c1d9c6462f8efa1
+	sha256sums = 34b20c0f1f71a454990c21f34a4016ff35337403dbc2515f0dca9256b7c88093
+
+pkgname = ts3audiobot
+
