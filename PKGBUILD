@@ -1,7 +1,7 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=neatmkfn-git
 pkgver=r118.dfde766
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Generate font descriptions for neatroff"
 arch=('i686' 'x86_64')
@@ -33,7 +33,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$pkgname"
-  sed -i '78d' gen.sh
+  sed -i 's/NimbusSansNarrow-BoldOblique/NimbusSansNarrow-BdOblique/g' gen.sh
 }
 
 build() {
