@@ -4,12 +4,12 @@
 
 pkgname=signal-web-gateway-git
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Use Signal as a web gateway for other apps (reporting, monitoring, etc.)"
 arch=('x86_64')
 url="https://gitlab.com/morph027/signal-web-gateway"
 license=('MIT')
-makedepends=('go' 'mecurial')
+makedepends=('go' 'mercurial')
 source=('git+https://github.com/morph027/textsecure.git'
 	'signal-web-gateway.service')
 sha512sums=('SKIP'
