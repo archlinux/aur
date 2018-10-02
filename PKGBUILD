@@ -21,7 +21,7 @@ backup=('etc/apparmor/easyprof.conf'
         'etc/apparmor/parser.conf'
         'etc/apparmor/subdomain.conf'
         'etc/apparmor/severity.db')
-source=("${pkgname%-git}::git+https://gitlab.com/apparmor/apparmor.git")
+source=('git+https://gitlab.com/apparmor/apparmor.git')
 sha512sums=('SKIP')
 # AppArmor Development Team (AppArmor signing key) <apparmor@lists.ubuntu.com>
 validpgpkeys=('3ECDCBA5FB34D254961CC53F6689E64E3D3664BB')

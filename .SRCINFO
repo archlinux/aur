@@ -29,7 +29,7 @@ pkgbase = apparmor-git
 	backup = etc/apparmor/parser.conf
 	backup = etc/apparmor/subdomain.conf
 	backup = etc/apparmor/severity.db
-	source = apparmor::git+https://gitlab.com/apparmor/apparmor.git
+	source = git+https://gitlab.com/apparmor/apparmor.git
 	validpgpkeys = 3ECDCBA5FB34D254961CC53F6689E64E3D3664BB
 	sha512sums = SKIP
 
