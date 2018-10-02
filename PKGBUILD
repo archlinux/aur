@@ -6,18 +6,20 @@
 set -u
 pkgbase='poppler-git'
 pkgname=('poppler-git' 'poppler-glib-git' 'poppler-qt5-git')
-pkgver=0.68.0.r60.g7c6c1fef
+pkgver=0.69.0.r65.ga6f88881
 pkgrel=1
 arch=(i686 x86_64)
 license=('GPL')
 makedepends=('libjpeg' 'gcc-libs' 'cairo' 'fontconfig' 'openjpeg2' 'gtk3' 'pkgconfig' 'lcms2' 
              'gobject-introspection' 'icu' 'qt5-base' 'git' 'nss' 'gtk-doc' 'curl' 'poppler-data'
              'cmake' 'python') 
+makedepends+=('openjpeg2')
 options=('!emptydirs')
 url="https://poppler.freedesktop.org/"
 source=('git://git.freedesktop.org/git/poppler/poppler'
         'git://git.freedesktop.org/git/poppler/test')
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP'
+            'SKIP')
 
 _pkgver="${pkgver%%.r*}"
 
