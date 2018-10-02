@@ -2,12 +2,13 @@
 
 pkgname=sdsl-lite
 pkgver=v2.1.1.r132.gddb0fbbc
-pkgrel=1
+pkgrel=2
 pkgdesc="Succinct Data Structure Library 2.0"
 arch=('i686' 'x86_64')
 url="https://github.com/simongog/sdsl-lite"
 license=('GPLv3')
 makedepends=('git' 'cmake>=3.2.0')
+depends=('gtest' 'libdivsufsort')
 provides=(sdsl-lite)
 conflicts=(sdsl-lite)
 source=(sdsl-lite::git+https://github.com/simongog/sdsl-lite.git)
@@ -40,4 +41,14 @@ package() {
 
   install -D -m644 "${srcdir}/sdsl-lite/README.md" \
           "${pkgdir}/usr/share/doc/sdsl-lite/README"
+
+  rm -r "${pkgdir}/usr/include/gtest"
+  rm "${pkgdir}/usr/include/divsufsort.h"
+  rm "${pkgdir}/usr/include/divsufsort64.h"
+  rm "${pkgdir}/usr/lib/libgtest.a"
+  rm "${pkgdir}/usr/lib/libgtest_main.a"
+  rm "${pkgdir}/usr/lib/libdivsufsort.a"
+  rm "${pkgdir}/usr/lib/libdivsufsort64.a"
+  rm "${pkgdir}/usr/lib/pkgconfig/libdivsufsort.pc"
+  rm "${pkgdir}/usr/lib/pkgconfig/libdivsufsort64.pc"
 }
