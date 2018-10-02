@@ -5,10 +5,10 @@
 
 pkgname=buku
 pkgver=3.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Powerful command-line bookmark manager."
 arch=('any')
-depends=('python' 'python-beautifulsoup4' 'python-cryptography' 'python-urllib3')
+depends=('python' 'python-beautifulsoup4' 'python-cryptography' 'python-urllib3' 'python-certifi')
 makedepends=('make')
 url="https://github.com/jarun/Buku"
 license=('GPL3')
