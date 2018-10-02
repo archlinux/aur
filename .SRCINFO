@@ -1,16 +1,15 @@
 pkgbase = writeas-gtk
 	pkgdesc = Write.as GTK desktop app
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://write.as/apps/desktop
 	arch = x86_64
 	license = GPL3
 	makedepends = meson
 	makedepends = ninja
 	makedepends = vala
-	depends = writeas-cli
 	depends = gtksourceview3
-	depends = gtk3
+	optdepends = writeas-cli: web publishing support
 	source = https://code.as/writeas/writeas-gtk/archive/v1.0.0.tar.gz
 	sha256sums = c6487821b5fbeef38ee50082d42a89be97b2fdbd5c3205d8a9c961ca0c3c7fbf
 

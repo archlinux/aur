@@ -2,22 +2,23 @@
 
 pkgname=writeas-gtk
 pkgver=1.0.0
-pkgrel=2
-pkgdesc="Write.as GTK desktop app"
+pkgrel=3
+pkgdesc='Write.as GTK desktop app'
 arch=('x86_64')
-url="https://write.as/apps/desktop"
-license=(GPL3)
+url='https://write.as/apps/desktop'
+license=('GPL3')
 depends=(
-	'writeas-cli'
 	'gtksourceview3'
-	'gtk3'
 )
 makedepends=(
 	'meson'
 	'ninja'
 	'vala'
 )
-source=(https://code.as/writeas/writeas-gtk/archive/v${pkgver}.tar.gz)
+optdepends=(
+	'writeas-cli: web publishing support'
+)
+source=("https://code.as/writeas/writeas-gtk/archive/v${pkgver}.tar.gz")
 sha256sums=('c6487821b5fbeef38ee50082d42a89be97b2fdbd5c3205d8a9c961ca0c3c7fbf')
 
 prepare() {
