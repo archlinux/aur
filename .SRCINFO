@@ -1,6 +1,6 @@
 pkgbase = python-opticalmaterialspy
 	pkgdesc = Python library with optical material properties.
-	pkgver = 1
+	pkgver = r25.246a76c
 	pkgrel = 1
 	url = https://github.com/jtambasco/opticalmaterialspy
 	arch = any
