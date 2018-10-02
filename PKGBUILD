@@ -2,7 +2,7 @@
 # Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
 
 pkgname=fbthrift
-pkgver=2018.09.24.00
+pkgver=2018.10.01.00
 pkgrel=1
 pkgdesc="Facebook's branch of Apache Thrift, including a new C++ server."
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ conflicts=('thrift')
 provides=('thrift')
 makedepends=('cmake' 'zstd' 'libunwind')
 source=("$url/archive/v${pkgver}.tar.gz")
-sha256sums=('f5964d4860b83bd3809cf06b4b3b129acddcf8ee13c3c805b6f44c907c3e85e8')
+sha256sums=('ea186d25ae41d9454a4e4d9008503aa04e341d12568ddf9c2b337581a45d0538')
 
 prepare() {
     cd "$pkgname-$pkgver"
