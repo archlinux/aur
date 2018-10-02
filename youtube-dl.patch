@@ -1,0 +1,13 @@
+diff --git a/app/public/js/common/playerService.js b/app/public/js/common/playerService.js
+index 6536a55..df5f27c 100644
+--- a/app/public/js/common/playerService.js
++++ b/app/public/js/common/playerService.js
+@@ -151,7 +151,7 @@ app.factory('playerService', function (
+       trackObj.songThumbnail = 'public/img/song-placeholder.png';
+     }
+ 
+-    trackUrl = trackObj.songUrl + '?client_id=' + window.localStorage.scClientId;
++    trackUrl = require('child_process').execSync(`youtube-dl -g '${trackObj.songUrl}'`).toString();
+ 
+     // check rate limit
+     utilsService.isPlayable(trackUrl).then(function () {

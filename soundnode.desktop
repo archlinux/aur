@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Soundnode
+Comment=Soundcloud for desktop
+Exec=soundnode
+Icon=soundnode
+Terminal=false
+Categories=Audio;Player;
