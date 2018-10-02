@@ -6,14 +6,13 @@ pkgname=insync
 pkgver=1.5.2
 _pkgver=37346
 _dist=artful
-pkgrel=1
+pkgrel=2
 pkgdesc="An unofficial Google Drive client that runs on Linux, with support for various desktops"
 url="https://www.insynchq.com/downloads"
 license=('custom:insync')
 options=(!strip)
 depends=('xdg-utils' 'glibc' 'python2')
 optdepends=(
-    'sni-qt: system tray icon'
 )
 arch=('x86_64')
 source=('insync@.service' 'insync.service')
