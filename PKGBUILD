@@ -1,48 +1,40 @@
-# Maintainer: Michael DeGuzis <mdeguzis@gmail.com>
+# Maintainer: Mike Polvere <mic.tjs@gmail.com>
+# Contributor: Michael DeGuzis <mdeguzis@gmail.com>
 
 pkgname=libretro-picodrive-git
-pkgver=r1029.9ae88ef
+pkgver=1208.25b12c1
 pkgrel=1
-pkgdesc="libretro implementation of PicoDrive. (Sega Megadrive/Genesis/Sega Master System/Sega GameGear/Sega CD/32X)"
+pkgdesc="libretro implementation of PicoDrive (Sega MD/MS/GG/CD/32X)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
-url="https://github.com/libretro/picodrive"
-license=('GPL')
+_libname=picodrive_libretro
+_gitname=picodrive
+url="https://github.com/libretro/${_gitname}"
+license=('custom:Picodrive license')
 groups=('libretro')
 depends=('glibc')
 makedepends=('git')
-
-_gitname=picodrive
-
-source=("git+https://github.com/libretro/picodrive.git"
-        "https://raw.github.com/libretro/libretro-super/master/dist/info/picodrive_libretro.info")
-md5sums=('SKIP'
-         'SKIP')
+source=("git+https://github.com/libretro/${_gitname}.git")
+md5sums=('SKIP')
 
 pkgver() {
-
-  cd $_gitname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-
+    cd "${_gitname}"
+    echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 prepare() {
-  cd "$_gitname"
-  git submodule init
-	  git submodule update
+    cd "${_gitname}"
+    git submodule init
+    git submodule update
 }
 
 build() {
-
-  cd "$_gitname"
-  ./configure  
-  make -f Makefile.libretro
-
+    cd "${_gitname}"
+    ./configure  
+    make -f Makefile.libretro
 }
 
 package()
 {
-
-  install -Dm644 "$srcdir/$_gitname/picodrive_libretro.so" "$pkgdir/usr/lib/libretro/picodrive_libretro.so"
-  install -Dm644 "picodrive_libretro.info" "${pkgdir}/usr/share/libretro/info/picodrive_libretro.info"
-
+    install -Dm644 "${srcdir}/${_gitname}/${_libname}.so" "${pkgdir}/usr/lib/libretro/${_libname}.so"
+    install -Dm644 "${_gitname}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
