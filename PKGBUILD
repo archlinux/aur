@@ -3,7 +3,7 @@
 pkgbase=roger-wallet-git
 _gitname=TheHolyRogerCoin
 pkgname=('theholyroger-daemon-git' 'theholyroger-cli-git' 'theholyroger-qt-git' 'theholyroger-tx-git')
-pkgver=0.16.0rc6+2+g74f38c4d8
+pkgver=0.16.3.rogerv3r-0-g4fee9e4
 pkgrel=1
 pkgdesc="The Holy Roger Coin (ROGER), the leading altcoin derived from Litecoin. ROGER is developed with a focus on outing scams and trolling The Fake Roger."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
