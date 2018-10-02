@@ -2,11 +2,11 @@
 # This particular update is brought to you by gaalcaras (https://keybase.io/gaalcaras)
 pkgname=turtl
 pkgver=0.6.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Turtl lets you take notes, bookmark websites, and store documents for sensitive projects."
 arch=('i686' 'x86_64')
-url="https://turtl.it"
-depends=('gendesk')
+url="https://turtlapp.com/"
+depends=('gconf' 'gendesk' 'libxss')
 license=('GPL3')
 source=("turtl.png")
 source_i686=("https://turtl.it/releases/desktop/$pkgname-linux32-$pkgver.tar.bz2")
