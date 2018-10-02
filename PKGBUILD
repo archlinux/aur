@@ -2,14 +2,14 @@
 
 _pkgname=Cynthiune
 pkgname=cynthiune.app
-pkgrel=2
+pkgrel=3
 pkgver=1.0.0
 pkgdesc='Free software and romantic music player for GNUstep'
 arch=('i686' 'x86_64')
 url='http://gap.nongnu.org/cynthiune/index.html'
 license=('GPL')
 groups=('gnustep-apps')
-depends=('gnustep-base' 'gnustep-gui' 'gnustep-back')
+depends=('gnustep-base' 'gnustep-gui' 'gnustep-back' 'libmad')
 optdepends=('libid3tag' 'libmad' 'libvorbis' 'libogg' 'libmpcdec' 'esound')
 makedepends=('gcc-objc' 'gnustep-make')
 source=("http://savannah.nongnu.org/download/gap/Cynthiune-1.0.0.tar.gz"

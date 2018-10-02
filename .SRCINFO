@@ -1,7 +1,7 @@
 pkgbase = cynthiune.app
 	pkgdesc = Free software and romantic music player for GNUstep
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://gap.nongnu.org/cynthiune/index.html
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = cynthiune.app
 	depends = gnustep-base
 	depends = gnustep-gui
 	depends = gnustep-back
+	depends = libmad
 	optdepends = libid3tag
 	optdepends = libmad
 	optdepends = libvorbis
