@@ -1,0 +1,28 @@
+pkgbase = pytype
+	pkgdesc = Python type inferencer
+	pkgver = 2018.9.19
+	pkgrel = 1
+	url = https://github.com/google/pytype
+	arch = any
+	license = APACHE
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = make
+	makedepends = gcc
+	makedepends = cmake
+	depends = python-importlab
+	depends = python-yaml>=3.11
+	provides = pytype
+	options = !emptydirs
+	source = https://github.com/google/pytype/archive/2018.9.19.tar.gz
+	source = cpython-9734024.zip::https://github.com/python/cpython/archive/9734024ec65311e33936faa83fb1cb249ef0de9d.zip
+	source = googletest-e82d320.zip::https://github.com/google/googletest/archive/e82d320567a45db1a999f9109f2b9a733bc59bb1.zip
+	source = typeshed-4f4a025.zip::https://github.com/python/typeshed/archive/4f4a025409dc4037a35a46c8a57b75a384d05fe5.zip
+	sha256sums = 17ff808c72204745e416c8c5a299cc9e1180c93dc5e80d872369a40d49a3ba52
+	sha256sums = ebc3b63747875586f17b967ad2dae6d2a404adb5814612200217f39074377f9a
+	sha256sums = 891d732c77eec9fb57727cd99990a25455d6d5859b1fde107a332c5e238cc9e7
+	sha256sums = 2d1acebe006efae35141a1ede6411da2e9895c2231eb38ec8cc5b9faefaa38b7
+
+pkgname = pytype
+
