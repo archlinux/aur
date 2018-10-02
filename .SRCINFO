@@ -1,0 +1,15 @@
+pkgbase = python-aioopenssl
+	pkgdesc = A pure python generic asyncio SASL library
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/horazont/aioopenssl
+	arch = any
+	license = LGPL3
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pyopenssl
+	source = https://files.pythonhosted.org/packages/source/a/aioopenssl/aioopenssl-0.4.0.tar.gz
+	sha256sums = baa1e7f6e41882b8b3ea8ead8146352e9c4329accb529125868bd36d61aa7c1f
+
+pkgname = python-aioopenssl
+
