@@ -1,16 +1,16 @@
 # Maintainer: ser nica <swhat at posteo dot eu>
 
 pkgname=veyon
-pkgver=4.0.8
+pkgver=4.1.3
 pkgrel=1
 pkgdesc="Open Source computer monitoring and classroom management"
 arch=('i686' 'x86_64')
 url="https://github.com/veyon"
 license=('GPLv2')
-depends=('qt5-base' 'libxrandr' 'libxtst' 'pam' 'openssl' 'libjpeg-turbo' 'zlib' 'qca-qt5')
+depends=('qt5-base' 'libxrandr' 'libxtst' 'pam' 'pam_ldap' 'openssl' 'libjpeg-turbo' 'zlib' 'qca-qt5' 'libqtxdg')
 optdepends=('kldap: KDE support')
 makedepends=('git' 'cmake' 'qt5-tools')
-source=("git+${url}/veyon#tag=v${pkgver}"
+source=("git+${url}/veyon.git"
     "git+${url}/ultravnc.git"
     "git+${url}/libvncserver.git"
     "git+${url}/x11vnc.git"
@@ -34,22 +34,18 @@ prepare() {
 
 build() {
     cd build
-    cmake ../"${pkgname}" \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+    cmake -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_VEYON_X11VNC_EXTERNAL=ON \
-        -DCMAKE_BUILD_TYPE=Release
+	-DSYSTEMD_SERVICE_INSTALL_DIR=/usr/lib/systemd/system/ \
+        -DCMAKE_BUILD_TYPE=debug \
+	../"${pkgname}"
     make
 }
 
 package_veyon() {
     cd build
     make DESTDIR="${pkgdir}" install
-
-    ### systemd dir manually until upstream offers it in the build
-    #mv ${pkgdir}/lib/systemd ${pkgdir}/usr/lib/systemd
-    #rm -r ${pkgdir}/lib
-    ###
 
     cd ${pkgdir}/usr/lib/${pkgname}
     for lib in $(ls *.so)
