@@ -1,0 +1,28 @@
+pkgbase = r-move
+	pkgdesc = Functions to access movebank movement data and tools to visualise movement data
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=move
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = gcc
+	depends = r>=2.15.0
+	depends = r-rcpp
+	depends = r-httr
+	depends = r-memoise
+	depends = r-xml2
+	optdepends = r-adehabitathr
+	optdepends = r-adehabitatlt
+	optdepends = r-circular
+	optdepends = r-ggmap
+	optdepends = r-mapproj
+	optdepends = r-maptools
+	optdepends = r-testthat
+	provides = r-sp
+	conflicts = r-cran-sp
+	source = https://cran.r-project.org/src/contrib/move_3.1.0.tar.gz
+	sha256sums = 3ffd365a0986fa79f3885a7f929b83751a721da62ece8a94275f5cc8af2ab038
+
+pkgname = r-move
+
