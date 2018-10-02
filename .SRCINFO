@@ -1,7 +1,7 @@
 pkgbase = libdivsufsort64
 	pkgdesc = A lightweight suffix-sorting library
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/y-256/libdivsufsort
 	arch = x86_64
 	license = BSD
