@@ -1,9 +1,10 @@
 pkgbase = deconz
 	pkgdesc = A generic ZigBee monitoring and control tool
 	pkgver = 2.05.39
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.dresden-elektronik.de
 	arch = x86_64
+	arch = armv6h
 	arch = armv7h
 	license = custom:"Copyright (c) dresden elektronik ingenieurtechnik GmbH"
 	makedepends = xz
@@ -16,6 +17,8 @@ pkgbase = deconz
 	depends = sqlite
 	source_x86_64 = https://www.dresden-elektronik.de/deconz/ubuntu/beta/deconz-2.05.39-qt5.deb
 	sha256sums_x86_64 = 702e94adee5e665a0a81a6d4851f7c958eb31465fc98e3e2bee53a6ecf2f6455
+	source_armv6h = http://www.dresden-elektronik.de/rpi/deconz/beta/deconz-2.05.39-qt5.deb
+	sha256sums_armv6h = 0a9c6802a91400af4e7a0b3113811fa28f88b7a91c96b31ca264984cdad949ee
 	source_armv7h = http://www.dresden-elektronik.de/rpi/deconz/beta/deconz-2.05.39-qt5.deb
 	sha256sums_armv7h = 0a9c6802a91400af4e7a0b3113811fa28f88b7a91c96b31ca264984cdad949ee
 
