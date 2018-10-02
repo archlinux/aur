@@ -4,7 +4,7 @@
 # Contributor: Marq Schneider <queueRAM@gmail.com>
 
 pkgname=p4v
-pkgver=2018.2.1687764
+pkgver=2018.3.1706936
 pkgrel=1
 pkgdesc="Perforce Visual Client"
 arch=('x86_64')
@@ -19,7 +19,7 @@ sha256sums=('1fc7ea925fdcb38915f191b6a9c85fb46db9ef501dbaa077e8f38876c5e8fda0'
             '10e470c6099459a072565494c4fd21cc1f4198f1024fe6fdeb6c77ea7e594827'
             '139c5e4951ea9ab040912ef1f9705de16a37d32fdf7b8c7116eb5a785829c634'
             'c4ed3aef62b1bbf2d16ce4cceb65dc49ab9635b38e2fed0a595fe259283a9f32'
-            '9b1da4f908f24b17d3fb4e8aa6ea7ede6fd72f93d6964a8c3e3704e0fd40f114')
+            '5b66c6d5735f69446d842967cef185bc67ba39e948f3413e51a2865a7ecfefe0')
 
 package() {
   cd ${pkgname}-${pkgver}/
