@@ -3,7 +3,7 @@
 pkgname=gnome-passwordsafe-git
 _gitname=PasswordSafe
 pkgver=3.31.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A password manager for GNOME"
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_gitname}/"
-	meson . _build --prefix=/usr
+	meson . _build --prefix=/usr -Dprofile=development
 	ninja -C _build
 }
 
