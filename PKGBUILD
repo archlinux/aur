@@ -3,7 +3,7 @@
 _basename=libdivsufsort
 pkgname=libdivsufsort64
 pkgver=2.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A lightweight suffix-sorting library"
 arch=("x86_64")
 url="https://github.com/y-256/libdivsufsort"
@@ -25,7 +25,7 @@ package() {
     install -D -m0644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
     install -D -m0644 README  "${pkgdir}/usr/share/doc/${pkgname}/README"
     rm -f "${pkgdir}"/usr/lib/*.la
-    rm -f "${pkgdir}"/usr/include/libdivsufsort.h
+    rm -f "${pkgdir}"/usr/include/divsufsort.h
     rm -f "${pkgdir}"/usr/lib/libdivsufsort.so
     rm -f "${pkgdir}"/usr/lib/libdivsufsort.so.3
     rm -f "${pkgdir}"/usr/lib/libdivsufsort.so.3.0.0
