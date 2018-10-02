@@ -1,7 +1,7 @@
 # Maintainer: Robin Lange <robin dot langenc at gmail dot com>
 # Contributor: Robin Lange <robin dot langenc at gmail dot com>
 pkgname=msi-perkeyrgb
-pkgver=1.0
+pkgver=1.2
 pyname=msi-perkeyrgb
 pkgrel=1
 pkgdesc="Configuration tool for SteelSeries per-key RGB keyboards on MSI laptops"
