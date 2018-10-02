@@ -2,7 +2,7 @@
 pkgname=img-bin
 _pkgname=img-linux-amd64
 _binname=img
-pkgver=0.4.3
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Standalone, daemon-less, unprivileged Dockerfile and OCI compatible container image builder"
 arch=('x86_64')
@@ -21,9 +21,9 @@ source=(
   "https://github.com/genuinetools/${_binname}/releases/download/v${pkgver}/${_pkgname}"
   "https://raw.githubusercontent.com/genuinetools/${_binname}/master/LICENSE"
 )
-md5sums=(
-  'b1dec09ce91d27c020a4c62bb511cf6f'
-  '48ef0979a2bcc3fae14ff30b8a7f5dbf'
+sha256sums=(
+  '243a1185e296107009d2c4037186714a8747af27d7242439673b233372063684'
+  'c696614021eafe355c7fb0af3e724fc7fa8729a0c10c27cbed2505bf30a853ce'
 )
 
 build() {
