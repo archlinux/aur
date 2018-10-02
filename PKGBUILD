@@ -21,6 +21,7 @@ source=("${pkgname%-*}::git+https://github.com/swaywm/sway.git")
 sha1sums=("SKIP")
 provides=("sway")
 conflicts=("sway")
+options=(debug !strip)
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"

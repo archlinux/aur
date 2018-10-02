@@ -28,6 +28,8 @@ pkgbase = sway-git
 	optdepends = i3status: To display system information with a bar.
 	provides = sway
 	conflicts = sway
+	options = debug
+	options = !strip
 	source = sway::git+https://github.com/swaywm/sway.git
 	sha1sums = SKIP
 
