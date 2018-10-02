@@ -4,10 +4,10 @@ pkgname=python-aioopenssl
 _name=${pkgname#python-}
 pkgver=0.4.0
 pkgrel=1
-pkgdesc="A pure python generic asyncio SASL library"
+pkgdesc='An asyncio Transport that uses PyOpenSSL instead of the built-in ssl module.'
 arch=('any')
 url='https://github.com/horazont/aioopenssl'
-license=('LGPL3')
+license=('Apache')
 depends=('python'
          'python-pyopenssl')
 makedepends=('python-setuptools')
