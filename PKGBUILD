@@ -1,4 +1,5 @@
 # Maintainer: Sam Whited <sam@samwhited.com>
+# Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 pkgname=python-aioopenssl
 _name=${pkgname#python-}
