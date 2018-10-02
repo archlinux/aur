@@ -3,14 +3,13 @@
 pkgbase=roger-wallet-git
 _gitname=TheHolyRogerCoin
 pkgname=('theholyroger-daemon-git' 'theholyroger-cli-git' 'theholyroger-qt-git' 'theholyroger-tx-git')
-pkgver=0.16.3.rogerv3r+0+g4fee9e4
+pkgver=0.16.3.rogerv3r+2+g21d2fb2c7
 pkgrel=1
 pkgdesc="The Holy Roger Coin (ROGER), the leading altcoin derived from Litecoin. ROGER is developed with a focus on outing scams and trolling The Fake Roger."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://theholyroger.com"
 license=('MIT')
-depends=('qt4' 'miniupnpc' 'openssl' 'protobuf')
-makedepends=('pkg-config' 'boost-libs' 'boost' 'db4.8' 'gcc' 'gcc-libs' 'git' 'qrencode' 'make' 'automoc4' 'automake' 'autoconf' 'libtool' 'zeromq')
+makedepends=('boost' 'libevent' 'qt5-base' 'qt5-tools' 'qrencode' 'miniupnpc' 'protobuf' 'zeromq' 'db4.8')
 provides=('roger-wallet' 'theholyroger' 'theholyroger-qt' 'theholyrogerd' 'theholyroger-cli' 'theholyroger-tx' 'theholyroger-daemon')
 conflicts=('roger-wallet' 'theholyroger' 'theholyroger-qt' 'theholyrogerd' 'theholyroger-cli' 'theholyroger-tx' 'theholyroger-daemon')
 source=(
@@ -34,14 +33,14 @@ pkgver() {
 build() {
   cd "$srcdir/$_gitname"
   ./autogen.sh
-  ./configure
-   make -j$(nproc)
+  ./configure --with-gui=qt5
+   make -j$(nproc) 
 
 }
 
 package_theholyroger-qt-git() {
   pkgdesc="The Holy Roger Coin (ROGER), the leading altcoin derived from Litecoin - Qt"
-  depends=(boost-libs desktop-file-utils libevent qt5-base miniupnpc qrencode protobuf zeromq)
+  depends=(boost-libs libevent qt5-base miniupnpc libminiupnpc.so qrencode protobuf zeromq db4.8)
   conflicts=(theholyroger-qt)
   provides=(theholyroger-qt)
 
@@ -59,7 +58,7 @@ package_theholyroger-qt-git() {
 
 package_theholyroger-daemon-git() {
   pkgdesc="The Holy Roger Coin (ROGER), the leading altcoin derived from Litecoin - daemon"
-  depends=(boost-libs libevent miniupnpc zeromq)
+  depends=(boost-libs libevent miniupnpc libminiupnpc.so zeromq)
   conflicts=(theholyroger-daemon)
   provides=(theholyroger-daemon)
 
