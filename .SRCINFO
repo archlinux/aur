@@ -1,8 +1,8 @@
 pkgbase = adapta-gtk-theme-legacy-git
 	pkgdesc = An adaptive Gtk+ theme based on Material Design Guidelines (Legacy version)
-	pkgver = 3.94
-	pkgrel = 2
-	url = https://github.com/Jacalz/adapta-gtk-theme-legacy
+	pkgver = 3.94.0.149.r1.9abbb7ef
+	pkgrel = 1
+	url = https://github.com/ghuwe/adapta-gtk-theme-legacy
 	arch = any
 	license = GPL2
 	makedepends = git
@@ -21,7 +21,7 @@ pkgbase = adapta-gtk-theme-legacy-git
 	provides = adapta-gtk-theme
 	conflicts = adapta-gtk-theme
 	conflicts = adapta-gtk-theme-git
-	source = git+https://github.com/Jacalz/adapta-gtk-theme-legacy.git
+	source = git+https://github.com/ghuwe/adapta-gtk-theme-legacy.git
 	sha256sums = SKIP
 
 pkgname = adapta-gtk-theme-legacy-git
