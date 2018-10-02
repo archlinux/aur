@@ -2,6 +2,7 @@
 # Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 pkgname=python-aioxmpp-git
+conflicts=('python-aioxmpp')
 provides=('python-aioxmpp')
 pkgver=r1762.b653fb817bd5
 pkgrel=1
