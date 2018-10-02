@@ -1,7 +1,8 @@
 [Unit]
-Description=ZoneMinder CCTV recording and security system
-After=network.target mysqld.service httpd.service
-Requires=mysqld.service httpd.service
+Description=ZoneMinder - CCTV Monitoring and Recording System
+Requires=mariadb.service
+Wants= nginx.service php-fpm.service fcgiwrap.socket
+After=network.target mariadb.service nginx.service
 
 [Service]
 User=http
@@ -10,6 +11,7 @@ ExecStart=/usr/bin/zmpkg.pl start
 ExecReload=/usr/bin/zmpkg.pl restart
 ExecStop=/usr/bin/zmpkg.pl stop
 PIDFile=/run/zoneminder/zm.pid
+Environment=TZ=:/etc/localtime
 
 [Install]
 WantedBy=multi-user.target
