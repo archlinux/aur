@@ -4,7 +4,7 @@
 pkgname=python-aioxmpp-git
 conflicts=('python-aioxmpp')
 provides=('python-aioxmpp')
-pkgver=v0.7.2.r863.gb653fb817bd5
+pkgver=v0.11.0a0.r1762.b653fb817bd5
 pkgrel=1
 pkgdesc='An XMPP library for use with asyncio'
 arch=('any')
@@ -29,7 +29,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "v%s.r%s.%s" "$(python setup.py --version)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {

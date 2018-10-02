@@ -1,6 +1,6 @@
 pkgbase = python-aioxmpp-git
 	pkgdesc = An XMPP library for use with asyncio
-	pkgver = v0.7.2.r863.gb653fb817bd5
+	pkgver = v0.11.0a0.r1762.b653fb817bd5
 	pkgrel = 1
 	url = https://github.com/horazont/aioxmpp
 	arch = any
