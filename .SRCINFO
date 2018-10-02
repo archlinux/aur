@@ -1,6 +1,6 @@
 pkgbase = i3wsr-git
 	pkgdesc = A small program to change the name of an i3 workspace based on its contents.
-	pkgver = 1.1.0.r0.gcc59043
+	pkgver = 1.1.1.r1.ge8cc002
 	pkgrel = 1
 	url = https://github.com/roosta/i3wsr
 	arch = i686
