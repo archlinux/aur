@@ -1,6 +1,6 @@
 # Maintainer: Simon Doppler (dopsi) <dop.simon@gmail.com>
 pkgname=firefly-iii
-pkgver=4.7.3
+pkgver=4.7.5.3
 pkgrel=1
 pkgdesc='PHP personal finances manager'
 arch=('any')
@@ -9,7 +9,7 @@ license=('custom')
 depends=('php-intl')
 makedepends=('composer')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('e78345cddc4cedfccb6f5c3a407cac684f731dba31888be96bcaf0b36cb0b198')
+sha256sums=('c87563b80a6f1d7d81a90e160e868cf94800e2b9d17938c2849ccc3d017372f7')
 
 install=$pkgname.install
 backup=(
@@ -20,8 +20,8 @@ backup=(
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
-    install -d "$pkgdir/usr/share/webapps" "$pkgdir/usr/share/licenses/$pkgname" "$pkgdir/etc/webapps/$pkgname"
-    cp -rv * "$pkgdir/usr/share/webapps"
+    install -d "$pkgdir/usr/share/webapps/$pkgname" "$pkgdir/usr/share/licenses/$pkgname" "$pkgdir/etc/webapps/$pkgname"
+    cp -rv * "$pkgdir/usr/share/webapps/$pkgname"
     install -D "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 
     mv -v '.env.example' '.env'
