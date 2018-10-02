@@ -2,9 +2,9 @@
 # Contributor: Jaroslav Lichtblau <svetlemodry@archlinux.org>
 # Contributor: Martin Wimpress <code@flexion.org>
 
-pkgname=variety-git
 _gitname=variety
-pkgver=0.1
+pkgname=${_gitname}-git
+pkgver=0.7.0.r3.g48adbd5
 pkgrel=1
 pkgdesc="Variety wallpaper changer (git version)"
 arch=('any')
