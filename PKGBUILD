@@ -1,5 +1,5 @@
 pkgname=nanocurrency
-pkgver=15.2
+pkgver=16.1
 _tag="V$pkgver"
 pkgrel=2
 pkgdesc="Nano (formerly RaiBlocks) is a cryptocurrency designed from the ground up for scalable instant transactions and zero transaction fees."
