@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=gmmlib
-pkgver=18.3.pre1
+pkgver=18.3.0
 pkgrel=1
 pkgdesc='Intel Graphics Memory Management Library'
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ depends=('gcc-libs')
 makedepends=('cmake')
 conflicts=('gmmlib-git')
 options=('!emptydirs')
-source=("${pkgname}-${pkgver}.tag.gz"::"https://github.com/intel/gmmlib/archive/intel-gmmlib-${pkgver}.tar.gz")
-sha256sums=('e2b383ad7f39a8e5f4d53b7b7e8b81dc8e9299de6b943a45cb79c6e6e34b4876')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/intel/gmmlib/archive/intel-gmmlib-${pkgver}.tar.gz")
+sha256sums=('e3114d7ddd429f1b9aa43a1b1d0086d881fbf4d90e4a90ab8577c369d2e3a5e1')
 
 build() {
     cd "${pkgname}-intel-${pkgname}-${pkgver}"
