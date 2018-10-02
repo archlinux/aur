@@ -3,7 +3,7 @@
 
 pkgname=teleport
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern SSH server for teams managing distributed infrastructure"
 arch=('x86_64' 'arm')
 url="https://gravitational.com/teleport"
