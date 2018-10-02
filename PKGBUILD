@@ -3,7 +3,7 @@
 # Contributor: Massimiliano Torromeo <massimiliano dot torromeo at gmail dot com>
 
 pkgname=mattermost
-pkgver=5.2.1
+pkgver=5.3.1
 pkgrel=1
 pkgdesc='Open source Slack-alternative in Golang and React'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -28,11 +28,13 @@ source=(
     "${pkgname}.sysusers"
     "${pkgname}.tmpfiles"
 )
-sha512sums=('5f5716d88c5af3db11e6f8be5924450409956577012e555c45542ce06f8cc76f21665e8ba121f58648f0d3cc5193876a8308386ee6148eff664dbf31a280024a'
-            '423a32862fba642bca2d4c50ba60d56e6513374558308bc71ea8b80363dd945f29aabca92b0422b2d93f58132816edd3cbad1ec82175f0093f166e37c0e4e86f'
-            'cd02b3da86869117554c3c53a657a4b46989ea533b7b47c24fb642ffbd182ce6ecfb16a8ddde3af4d5e8cff0ab41a932753129662e126994e1ad5912545e6eb4'
-            'f08d88fd91e91c8b9996cf33699f4a70d69c8c01783cf7add4781ee3c9c6596839e44c5c39f0ff39a836c6d87544eef179f51de0b037ec7f91f86bac8e24d7cc'
-            'e3ffcf4b86e2ecc7166c1abf92cd4de23d81bad405db0121e513a8d81fea05eec9dd508141b14b208c4c13fbc347c56f01ed91326faa01e872ecdedcc18718f9')
+sha512sums=(
+    '8db50c59de4cdf1804f11d345023d76c50e8e208e08cdaf13cc45a81d3e59e32558b55bb2ac811c3fa3c68210415ba19de0a40b471a4f3942a1c0f32a9716965'
+    '6fa6d4c84144c383552fce5b36c634a5302038a765dd793bd1814f297344f15da9d30686773ab142ad40bdf8e00e3182515e89b172dede9514b6d6af57a5bc3b'
+    'cd02b3da86869117554c3c53a657a4b46989ea533b7b47c24fb642ffbd182ce6ecfb16a8ddde3af4d5e8cff0ab41a932753129662e126994e1ad5912545e6eb4'
+    'f08d88fd91e91c8b9996cf33699f4a70d69c8c01783cf7add4781ee3c9c6596839e44c5c39f0ff39a836c6d87544eef179f51de0b037ec7f91f86bac8e24d7cc'
+    'e3ffcf4b86e2ecc7166c1abf92cd4de23d81bad405db0121e513a8d81fea05eec9dd508141b14b208c4c13fbc347c56f01ed91326faa01e872ecdedcc18718f9'
+)
 
 prepare() {
     # cp cannot copy from a symbolic link to the destination link itself
