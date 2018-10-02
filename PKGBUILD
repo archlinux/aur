@@ -5,11 +5,11 @@
 # Maintainer: Uffe Jakobsen <microtop@starion.dk>
 #
 pkgname=asm6f
-pkgver=1.6
-pkgrel=1
+pkgver=1.6_freem02
+pkgrel=2
 epoch=
 _pkgname=asm6f
-_pkgver=${pkgver}_freem01
+_pkgver=${pkgver}
 pkgdesc="A 6502 assembler primarily targeted at NES/Famicom development."
 arch=('i686' 'x86_64')
 url="https://github.com/freem/asm6f"
@@ -29,7 +29,7 @@ changelog=
 noextract=()
 _srcdirname=${_pkgname}-${_pkgver}
 source=("https://github.com/freem/${_pkgname}/archive/v${_pkgver}.tar.gz")
-md5sums=('bfea85be3a91fb651674fb9333fb76b0')
+md5sums=('f87769e3781c8f934bc5159ec663aceb')
 
 #
 #
@@ -50,11 +50,11 @@ check() {
 
 package() {
   cd "${srcdir}/${_srcdirname}"
-  mkdir -p "${pkgdir}/usr/bin"
-  cp asm6f asm6f-unstable asm6f-hunstable "${pkgdir}/usr/bin"
-  ln -s asm6f-hunstable "${pkgdir}/usr/bin/asm6f-highly-unstable"
-  mkdir -p "${pkgdir}/usr/share/doc/${pkgname}"
-  cp readme.txt readme-original.txt "${pkgdir}/usr/share/doc/${pkgname}"
+  install -m755 -D asm6f "${pkgdir}/usr/bin/asm6f"
+  install -m644 -D readme.txt "${pkgdir}/usr/share/doc/${pkgname}/readme.txt"
+  install -m644 -D readme-original.txt "${pkgdir}/usr/share/doc/${pkgname}/readme-original.txt"
 }
 
+#
 # EOF
+#
