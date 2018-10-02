@@ -13,5 +13,5 @@ md5sums=('SKIP')
 
 package() {
   install -Dm 755 "$srcdir/$pkgname/$pkgname.sh" \
-    "$pkgdir/etc/profile.d/$pkgname.sh"
+    "$pkgdir/etc/profile.d/bundlerexec.sh"
 }
