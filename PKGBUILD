@@ -3,11 +3,12 @@
 pkgname=python-justbytes
 _pkgname=justbytes
 pkgver=0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="computing with and displaying bytes"
 url="http://pythonhosted.org/justbytes/"
 depends=('python' 'python-justbases')
 checkdepends=('python-nose' 'python-hypothesis' 'python-pylint')
+makedepends=('python-setuptools')
 license=('GPL2' 'GPL3')
 arch=('any')
 source=("https://github.com/mulkieran/${_pkgname}/archive/v${pkgver}.tar.gz")
