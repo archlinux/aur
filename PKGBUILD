@@ -3,10 +3,10 @@
 pkgname=min-browser-beta-bin
 pkgver=1.8.0beta1
 _pkgver=1.8.0-beta1
-pkgrel=1
+pkgrel=2
 pkgdesc="A faster, smarter web browser."
 arch=('x86_64')
-url="https://palmeral.github.io/min/"
+url="https://minbrowser.github.io/min/"
 license=('Apache')
 depends=('libxtst' 'libxss' 'gconf' 'desktop-file-utils' 'nss' 'gnuplot')
 install=$pkgname.install

@@ -1,8 +1,8 @@
 pkgbase = min-browser-beta-bin
 	pkgdesc = A faster, smarter web browser.
 	pkgver = 1.8.0beta1
-	pkgrel = 1
-	url = https://palmeral.github.io/min/
+	pkgrel = 2
+	url = https://minbrowser.github.io/min/
 	install = min-browser-beta-bin.install
 	arch = x86_64
 	license = Apache
