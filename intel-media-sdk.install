@@ -1,0 +1,4 @@
+post_install() {
+    printf '%s\n' 'The Intel Media SDK executable tools are in /opt/intel/mediasdk/bin'
+    printf '%s\n' 'You need to relogin in order for these files to appear in your PATH'
+}
