@@ -2,9 +2,7 @@
 # Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 pkgname=python-aioxmpp-git
-provides=('aioxmpp'
-          'python-aioxmpp'
-          "${pkgname}")
+provides=('python-aioxmpp')
 pkgver=r1762.b653fb817bd5
 pkgrel=1
 pkgdesc='An XMPP library for use with asyncio'
