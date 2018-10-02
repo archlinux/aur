@@ -1,17 +1,18 @@
 pkgbase = nidhugg-git
 	pkgdesc = A bug-finding tool for concurrency and weak-memory bugs in C and C++ programs
-	pkgver = 0.2.r21.ea22422
-	pkgrel = 1
+	pkgver = 0.2.r152.ea22422
+	pkgrel = 2
 	url = https://github.com/nidhugg/nidhugg
 	arch = x86_64
 	arch = i686
 	license = GPL
+	makedepends = llvm
 	makedepends = boost
 	depends = python
 	depends = clang
-	provides = nidhugg=0.2.r21.ea22422
+	provides = nidhugg=0.2.r152.ea22422
 	conflicts = nidhugg
-	source = git://github.com/nidhugg/nidhugg.git#branch=master
+	source = git://github.com/nidhugg/nidhugg.git
 	sha256sums = SKIP
 
 pkgname = nidhugg-git

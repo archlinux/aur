@@ -1,7 +1,7 @@
 # Maintainer: Magnus Lång <magnus.lang@it.uu.se>
 pkgname=nidhugg-git
-pkgver=0.2.r21.ea22422
-pkgrel=1
+pkgver=0.2.r152.ea22422
+pkgrel=2
 pkgdesc="A bug-finding tool for concurrency and weak-memory bugs in C and C++ programs"
 arch=('x86_64' 'i686')
 url="https://github.com/nidhugg/nidhugg"
@@ -11,7 +11,7 @@ makedepends=('llvm'
              'boost') # For check() only
 provides=("nidhugg=$pkgver")
 conflicts=('nidhugg')
-source=("git://github.com/nidhugg/nidhugg.git#branch=master")
+source=("git://github.com/nidhugg/nidhugg.git")
 sha256sums=('SKIP')
 
 pkgver() {
