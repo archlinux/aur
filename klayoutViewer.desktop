@@ -1,0 +1,13 @@
+[Desktop Entry]
+Comment[de]=Programm zur Betrachten von GDS-Dateien
+Comment=Program to view GDS and CIF files
+Exec=klayout %F
+GenericName[de]=Klayout Viewer
+GenericName=Klayout Viewer
+Icon=/usr/share/icons/hicolor/32x32/apps/klayout.png
+Name[de]=Klayout Viewer
+Name=Klayout Viewer
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Scientific;Development

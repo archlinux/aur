@@ -1,0 +1,13 @@
+[Desktop Entry]
+Comment[de]=Programm zur Bearbeiten von GDS-Dateien
+Comment=Program to edit GDS and CIF files
+Exec=klayout -e %F
+GenericName[de]=Klayout Editor
+GenericName=Klayout Editor
+Icon=/usr/share/icons/hicolor/32x32/apps/klayout.png
+Name[de]=Klayout Editor
+Name=Klayout Editor
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Scientific;Development

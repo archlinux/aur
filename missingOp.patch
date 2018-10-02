@@ -1,0 +1,15 @@
+--- dbCellMapping.cc.o	2018-05-11 11:46:36.416064830 -0400
++++ dbCellMapping.cc	2018-05-11 11:47:02.921846210 -0400
+@@ -75,6 +75,12 @@
+ 	return *this;
+   }
+ 
++  SortedCellIndexIterator &operator--() 
++  {
++    --m_n;
++	return *this;
++  }
++
+   SortedCellIndexIterator &operator+=(size_t n) 
+   {
+     m_n += n;
