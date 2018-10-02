@@ -27,12 +27,12 @@ source=("$pkgname::git+https://github.com/horazont/aioxmpp.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd $pkgname
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd $pkgname
   python setup.py install --root="$pkgdir" --optimize=1
 }
 
