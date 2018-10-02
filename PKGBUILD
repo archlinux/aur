@@ -4,7 +4,7 @@
 pkgname=python-aioxmpp-git
 conflicts=('python-aioxmpp')
 provides=('python-aioxmpp')
-pkgver=r1762.b653fb817bd5
+pkgver=v0.7.2.r863.gb653fb817bd5
 pkgrel=1
 pkgdesc='An XMPP library for use with asyncio'
 arch=('any')
