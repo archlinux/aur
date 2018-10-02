@@ -4,7 +4,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-esr
-pkgver=60.2.1
+pkgver=60.2.2
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(i686 x86_64)
@@ -22,11 +22,10 @@ provides=(firefox)
 conflicts=(firefox)
 options=(!emptydirs !makeflags !strip)
 source=(https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz
-        firefox.desktop firefox-symbolic.svg 0000-rust-1.29.patch)
-sha256sums=('32f22ce32b3d07104f09faf1647a25d4e5222ed2fdd0b90ee070ea672365c07c'
+        firefox.desktop firefox-symbolic.svg)
+sha256sums=('8f27ac9ebf253a87d161147b6ec7a56d486db2428565a2e97324c3bb55f684d2'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
-            'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
-            'ce243b1e835651723d2186709fcd5218ad050ff56550c3ef25e23c718a69497b')
+            'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9')
 validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
 
 ## Set this variable to 1 if you want to build with clang compiler ##
@@ -46,10 +45,6 @@ _mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
 
 prepare() {
   cd firefox-${pkgver}
-
-  # Bug 1479540 - Accept "triplet" strings with only two parts in moz.configure
-  # https://hg.mozilla.org/mozreview/gecko/rev/e820a3a4ce2284ecd2992dc827fedc357b75eeb7#index_header
-  patch -Np1 -i ../0000-rust-1.29.patch
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key

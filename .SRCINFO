@@ -1,6 +1,6 @@
 pkgbase = firefox-esr
 	pkgdesc = Standalone web browser from mozilla.org, Extended Support Release
-	pkgver = 60.2.1
+	pkgver = 60.2.2
 	pkgrel = 1
 	url = https://www.mozilla.org/en-US/firefox/organizations/
 	arch = i686
@@ -46,15 +46,13 @@ pkgbase = firefox-esr
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
-	source = https://ftp.mozilla.org/pub/firefox/releases/60.2.1esr/source/firefox-60.2.1esr.source.tar.xz
+	source = https://ftp.mozilla.org/pub/firefox/releases/60.2.2esr/source/firefox-60.2.2esr.source.tar.xz
 	source = firefox.desktop
 	source = firefox-symbolic.svg
-	source = 0000-rust-1.29.patch
 	validpgpkeys = 2B90598A745E992F315E22C58AB132963A06537A
-	sha256sums = 32f22ce32b3d07104f09faf1647a25d4e5222ed2fdd0b90ee070ea672365c07c
+	sha256sums = 8f27ac9ebf253a87d161147b6ec7a56d486db2428565a2e97324c3bb55f684d2
 	sha256sums = c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826
 	sha256sums = a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9
-	sha256sums = ce243b1e835651723d2186709fcd5218ad050ff56550c3ef25e23c718a69497b
 
 pkgname = firefox-esr
 
