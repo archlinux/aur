@@ -2,7 +2,7 @@
 # Based on PKGBUILD for wire-desktop by Conor Anderson
 
 pkgname=unreel
-pkgver=1.3.1_test
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A GUI to create Reveal presentations"
 arch=('i686' 'x86_64')
@@ -10,8 +10,8 @@ url="https://github.com/linux-man/unreel"
 license=('GPL3')
 depends=('gconf' 'libnotify' 'libappindicator-gtk2' 'libxtst' 'nss')
 makedepends=('npm' 'gendesk')
-source=("https://github.com/Photon89/unreel/archive/v$pkgver.tar.gz" "unreel.xml")
-md5sums=('9089a74fa149a36dfafb251c37ee5bed'
+source=("https://github.com/linux-man/unreel/archive/v$pkgver.tar.gz" "unreel.xml")
+md5sums=('a95b0fdd04dac4723a4f5194adf8b5e8'
          '6aaa81cb3511288c44ffb8e4fe9e2b5f')
 prepare() {
   gendesk -f -n --name=Unreel --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --exec="${pkgname}" --categories="Office" --mimetypes="application/reel"
