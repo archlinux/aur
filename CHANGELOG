@@ -768,3 +768,13 @@ Tue Sep 25 20:50:11 2018 +0200
 1.7.0.4         Release 1.7.0.4
     
     Update Oomox and Materia plugins.
+
+
+Tue Oct 2 15:00:11 2018 +0200
+-------------------------------------------------
+1.7.0.5         Release 1.7.0.5
+    
+    Notable changes:
+     2018-10-02 f12f4bf9 actionless chore(plugins: materia): update submodule
+     2018-10-01 6403f5c7 actionless chore(plugins: arc): update submodule
+     2018-09-26 6a18887a actionless fix(terminal_templates): remove xterm- and urxvt-specific values
