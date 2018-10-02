@@ -12,6 +12,10 @@ pkgbase = r-move
 	depends = r-httr
 	depends = r-memoise
 	depends = r-xml2
+	depends = r-sp
+	depends = r-geosphere
+	depends = r-raster>=2.4
+	depends = r-gdal
 	optdepends = r-adehabitathr
 	optdepends = r-adehabitatlt
 	optdepends = r-circular
@@ -19,8 +23,6 @@ pkgbase = r-move
 	optdepends = r-mapproj
 	optdepends = r-maptools
 	optdepends = r-testthat
-	provides = r-sp
-	conflicts = r-cran-sp
 	source = https://cran.r-project.org/src/contrib/move_3.1.0.tar.gz
 	sha256sums = 3ffd365a0986fa79f3885a7f929b83751a721da62ece8a94275f5cc8af2ab038
 
