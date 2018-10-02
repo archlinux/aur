@@ -3,7 +3,7 @@
 # Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 
 pkgname=howl-git
-pkgver=0.5.1.r110.gccdc46ff
+pkgver=0.5.3.3248
 pkgrel=1
 pkgdesc='General purpose, light-weight customizable editor'
 arch=('i686' 'x86_64')
@@ -14,12 +14,12 @@ makedepends=('git' 'wget')
 optdepends=('ruby: for running some scripts' 'coffee-script: for running some scripts')
 provides=('howl')
 conflicts=('howl')
-source=(git://github.com/howl-editor/howl.git)
+source=(git+https://github.com/howl-editor/howl.git)
 md5sums=('SKIP')
 
 pkgver() {
   cd howl
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  printf %s.%s "$(grep "0\." Changelog.md | head -2|tail -1| cut -d" " -f2)" "$(git rev-list --count HEAD)"
 }
 
 build() {
