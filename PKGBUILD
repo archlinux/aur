@@ -2,30 +2,30 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=networkmanager-openvpn
-pkgver=1.8.4
+pkgver=1.8.6
 pkgrel=1
 pkgdesc="NetworkManager VPN plugin for OpenVPN"
 url="https://wiki.gnome.org/Projects/NetworkManager"
 arch=(x86_64)
 license=(GPL)
 depends=(libnm libsecret openvpn)
-makedepends=(libnm-gtk intltool python git)
-_commit=06fdd06e74b17f90054b09b1623b675993fb2070  # tags/1.8.4^0
-source=("git+https://gitlab.gnome.org/GNOME/network-manager-openvpn.git#commit=$_commit")
+makedepends=(nm-connection-editor intltool python git)
+_commit=0a433147fd2d4e949cbdd2dc7af110ce1dbab71c  # tags/1.8.6^0
+source=("git+https://gitlab.gnome.org/GNOME/NetworkManager-openvpn.git#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd network-manager-openvpn
+  cd NetworkManager-openvpn
   git describe --tags | sed 's/-dev/dev/;s/-/+/g'
 }
 
 prepare() {
-  cd network-manager-openvpn
+  cd NetworkManager-openvpn
   NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd network-manager-openvpn
+  cd NetworkManager-openvpn
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
     --libexecdir=/usr/lib --disable-static
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
@@ -33,7 +33,7 @@ build() {
 }
 
 package() {
-  cd network-manager-openvpn
+  cd NetworkManager-openvpn
   make DESTDIR="$pkgdir" install
   echo 'u nm-openvpn - "NetworkManager OpenVPN"' |
     install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
