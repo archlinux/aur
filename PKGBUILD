@@ -25,17 +25,17 @@ depends=('python'
          'python-sortedcollections'
          'python-tzlocal')
 makedepends=('python-setuptools')
-source=("${pkgname}::git+https://github.com/horazont/aioxmpp.git")
+source=("$pkgname::git+https://github.com/horazont/aioxmpp.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
+  cd "$srcdir/$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
-  python setup.py install --root="${pkgdir}" --optimize=1
+  cd "$srcdir/$pkgname"
+  python setup.py install --root="$pkgdir" --optimize=1
 }
 
 # vim:set ts=2 sw=2 et:
