@@ -28,14 +28,12 @@ prepare() {
 	cp -a "${srcdir}/${_reponame}"{,-py2}
 }
 
-build_python-scikit-surprise-git() {
+build() {
 	cd "${srcdir}/${_reponame}"
 	python setup.py clean
 	rm -rf build dist
 	python setup.py build
-}
 
-build_python2-scikit-surprise-git() {
 	cd "${srcdir}/${_reponame}-py2"
 	python2 setup.py clean
 	rm -rf build dist
@@ -55,7 +53,7 @@ package_python-scikit-surprise-git() {
 
 	cd "${srcdir}/${_reponame}"
 	python setup.py install --root="${pkgdir}" --optimize=1
-	ln -s "${pkgdir}/usr/bin/surprise"{,3}
+	ln -s surprise "${pkgdir}/usr/bin/surprise3"
 
 	install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname/-git//}/LICENSE"
 }
