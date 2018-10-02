@@ -1,7 +1,7 @@
 pkgbase = guix-git
 	pkgdesc = A purely functional package manager
-	pkgver = v0.15.0.r2025.g02817df07
-	pkgrel = 2
+	pkgver = v0.15.0.r2345.gd8d8844ec
+	pkgrel = 1
 	url = https://www.gnu.org/software/guix/
 	install = guix.install
 	arch = i686
@@ -19,16 +19,20 @@ pkgbase = guix-git
 	depends = glibc
 	depends = gnutls
 	depends = graphviz
-	depends = guile
-	depends = guile-json
+	depends = guile>=2.0.9
 	depends = guile-gcrypt
 	depends = guile-git-lib
+	depends = guile-json
 	depends = guile-sqlite3
 	depends = libgcrypt
 	depends = patch
-	depends = sqlite
+	depends = sqlite>=3.6.19
 	depends = xz
+	depends = zlib
+	optdepends = bash-completion
+	optdepends = fish: completions
 	optdepends = emacs: emacs interface
+	optdepends = guile-ssh: to offload builds to other machines
 	provides = guix
 	conflicts = guix
 	source = git://git.sv.gnu.org/guix.git
