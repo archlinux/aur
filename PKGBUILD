@@ -4,7 +4,7 @@ _majorver=2.0.2
 _minorver=1
 pkgname=fakturama
 pkgver=$_majorver.$_minorver
-pkgrel=1
+pkgrel=2
 pkgdesc="Creates invoices with ZUGFeRD support"
 arch=('x86_64')
 url="https://www.fakturama.info"
@@ -25,7 +25,7 @@ options=()
 install=
 changelog=
 source=(
-	"$pkgname-$pkgver.tar.gz::https://files.fakturama.info/release/v$_majorver/Fakturama_linux_x64_$pkgver.tar.gz"
+	"$pkgname-$pkgver.tar.gz::https://files.fakturama.info/release/v$pkgver/Fakturama_linux_x64_$pkgver.tar.gz"
 	"fakturama2.desktop"
 )
 noextract=()
