@@ -1,7 +1,7 @@
 # maintainer: Aleksandar Trifunović <akstrfn at gmail dot com>
 
 pkgname=fizz
-pkgver=2018.09.24.00
+pkgver=2018.10.01.00
 pkgrel=1
 pkgdesc="C++14 implementation of the TLS-1.3 standard."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=()
 makedepends=('folly' 'cmake' 'boost' 'libsodium')
 source=("$url/archive/v${pkgver}.tar.gz")
-sha256sums=('869d3a1e7f178404236f9797d0c0aba0ac0046315290bef5eff15563473ace4f')
+sha256sums=('f137a637a17cb1e15597e5508f8c4a6c9f386eb1382c3453e3231ef7742a6e7a')
 
 prepare() {
     cd "$pkgname-$pkgver/fizz"
