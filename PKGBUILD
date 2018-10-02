@@ -62,7 +62,7 @@ package() {
   mkdir -p $pkgdir/usr/lib
   mkdir -p $pkgdir/usr/bin
 
-  cp libxavna/.libs/libxavna.so.0  $pkgdir/usr/lib/
-  cp libxavna/xavna_mock_ui/libxavna_mock_ui.so.1  $pkgdir/usr/lib/
+  cp libxavna/.libs/libxavna.so*  $pkgdir/usr/lib/
+  cp libxavna/xavna_mock_ui/libxavna_mock_ui.so*  $pkgdir/usr/lib/
   cp vna_qt/vna_qt $pkgdir/usr/bin/
 }
