@@ -21,7 +21,7 @@ pkgdesc='Core compiler tools for the Go programming language'
 arch=(i686 x86_64)
 url='http://golang.org/'
 license=(BSD)
-makedepends=(git)
+makedepends=(git go)
 options=(!strip staticlibs)
 _commit=26957168c4c0cdcc7ca4f0b19d0eb19474d224ac
 source=(git+https://go.googlesource.com/go#commit=$_commit)
