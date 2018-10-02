@@ -1,4 +1,7 @@
 # Maintainer: Darren Wu <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
+# Thanks: Lukas Fleischer (community/qtspim)
+# Thanks: Lukas Jirkovsky (community/qtspim)
+# Thanks: Chih-Hsuan Yen (aur/spim-svn)
 
 pkgname=spimsuite-svn
 pkgver=r717
@@ -15,8 +18,7 @@ makedepends=('subversion'
              'imake' # xspim
              'qt5-tools' 'icu' # QtSpim
             )
-optdepends=('qt5-tools: assistant-qt5' # QtSpim
-           )
+# optdepends=('qt5-tools: assistant-qt5')
 provides=('spim'   'spim-svn'
           'xspim'  'xspim-svn'
           'qtspim' 'qtspim-svn')
