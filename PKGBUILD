@@ -2,7 +2,7 @@
 
 pkgname=letshelp-certbot-git
 _reponame="certbot"
-pkgver=0.21.0.r18.g4f0aeb12f
+pkgver=0.27.0.r30.g06174bc11
 pkgrel=1
 pkgdesc="Let's help Certbot client"
 arch=('any')
