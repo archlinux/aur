@@ -4,13 +4,13 @@ pkgbase=python-scikit-surprise
 pkgname=("python-scikit-surprise" "python2-scikit-surprise")
 _reponame="Surprise"
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Python scikit for building and analyzing recommender systems"
 arch=('any')
 license=('BSD-3-Clause')
 url="https://github.com/NicolasHug/${_reponame}"
 depends=('')
-makedepends=('git' 'python-setuptools' 'python2-setuptools' 'cython' 'cython2' 'python-numpy' 'python2-numpy')
+makedepends=('python-setuptools' 'python2-setuptools' 'cython' 'cython2' 'python-numpy' 'python2-numpy')
 provides=("")
 conflicts=("")
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/NicolasHug/${_reponame}/archive/v${pkgver}.tar.gz")
@@ -20,14 +20,12 @@ prepare() {
 	cp -a "${srcdir}/${_reponame}-${pkgver}"{,-py2}
 }
 
-build_python-scikit-surprise() {
+build() {
 	cd "${srcdir}/${_reponame}-${pkgver}"
 	python setup.py clean
 	rm -rf build dist
 	python setup.py build
-}
 
-build_python2-scikit-surprise() {
 	cd "${srcdir}/${_reponame}-${pkgver}-py2"
 	python2 setup.py clean
 	rm -rf build dist
@@ -42,14 +40,12 @@ package_python-scikit-surprise() {
 		"python-sphinx: documentation generator"
 		"python-sphinx_rtd_theme: Read The Docs theme for documentation generator"
 		"python-sphinxcontrib-spelling: spelling extension for documentation generator")
-	provides=("python-scikit-surprise=${pkgver}")
-	conflicts=("python-scikit-surprise")
 
 	cd "${srcdir}/${_reponame}-${pkgver}"
 	python setup.py install --root="${pkgdir}" --optimize=1
-	ln -s "${pkgdir}/usr/bin/surprise"{,3}
+	ln -s surprise "${pkgdir}/usr/bin/surprise3"
 
-	install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname///}/LICENSE"
+	install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_python2-scikit-surprise() {
@@ -60,12 +56,10 @@ package_python2-scikit-surprise() {
 		"python2-sphinx: documentation generator"
 		"python2-sphinx_rtd_theme: Read The Docs theme for documentation generator"
 		"python2-sphinxcontrib-spelling: spelling extension for documentation generator")
-	provides=("python2-scikit-surprise=${pkgver}")
-	conflicts=("python2-scikit-surprise")
 
 	cd "${srcdir}/${_reponame}-${pkgver}-py2"
 	python2 setup.py install --root="${pkgdir}" --optimize=1
 	mv "${pkgdir}/usr/bin/surprise"{,2}
 
-	install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname///}/LICENSE"
+	install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

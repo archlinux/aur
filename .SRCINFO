@@ -1,11 +1,10 @@
 pkgbase = python-scikit-surprise
 	pkgdesc = Python scikit for building and analyzing recommender systems
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NicolasHug/Surprise
 	arch = any
 	license = BSD-3-Clause
-	makedepends = git
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	makedepends = cython
@@ -26,8 +25,6 @@ pkgname = python-scikit-surprise
 	optdepends = python-sphinx: documentation generator
 	optdepends = python-sphinx_rtd_theme: Read The Docs theme for documentation generator
 	optdepends = python-sphinxcontrib-spelling: spelling extension for documentation generator
-	provides = python-scikit-surprise=1.0.6
-	conflicts = python-scikit-surprise
 
 pkgname = python2-scikit-surprise
 	depends = python2-joblib
@@ -40,5 +37,3 @@ pkgname = python2-scikit-surprise
 	optdepends = python2-sphinx: documentation generator
 	optdepends = python2-sphinx_rtd_theme: Read The Docs theme for documentation generator
 	optdepends = python2-sphinxcontrib-spelling: spelling extension for documentation generator
-	provides = python2-scikit-surprise=1.0.6
-	conflicts = python2-scikit-surprise
