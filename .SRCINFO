@@ -1,4 +1,4 @@
-pkgbase = img
+pkgbase = img-bin
 	pkgdesc = Standalone, daemon-less, unprivileged Dockerfile and OCI compatible container image builder
 	pkgver = 0.4.3
 	pkgrel = 1
@@ -6,10 +6,13 @@ pkgbase = img
 	arch = x86_64
 	license = MIT
 	depends = runc
+	provides = img
+	conflicts = img
+	replaces = img
 	source = https://github.com/genuinetools/img/releases/download/v0.4.3/img-linux-amd64
 	source = https://raw.githubusercontent.com/genuinetools/img/master/LICENSE
 	md5sums = b1dec09ce91d27c020a4c62bb511cf6f
 	md5sums = 48ef0979a2bcc3fae14ff30b8a7f5dbf
 
-pkgname = img
+pkgname = img-bin
 
