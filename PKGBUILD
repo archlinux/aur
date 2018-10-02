@@ -1,7 +1,7 @@
 # Maintainer: Sam Whited <sam@samwhited.com>
 # Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
-pkgname='python-aioxmpp-git'
+pkgname=python-aioxmpp-git
 provides=('aioxmpp'
           'python-aioxmpp'
           "${pkgname}")
