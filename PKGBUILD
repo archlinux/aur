@@ -2,11 +2,11 @@
 
 _pkgbase=gplugin
 pkgname="$_pkgbase-hg"
-pkgver=993.307728b2f727
+pkgver=1251.14d65225b360
 pkgrel=1
 pkgdesc="GObject based library that implements a reusable plugin system"
 arch=('i686' 'x86_64' 'armv7h')
-url="https://guifications.org/"
+url="https://bitbucket.org/gplugin/gplugin"
 license=('GPL')
 depends=('glib2' 'gobject-introspection-runtime')
 makedepends=('mercurial' 'cmake' 'gobject-introspection' 'gtk3'
@@ -16,8 +16,9 @@ optdepends=('gtk3: for GTK+ support'
             'lua-lgi: for Lua support')
 provides=("$_pkgbase=0.0.23")
 conflicts=("$_pkgbase")
-source=("$_pkgbase::hg+https://bitbucket.org/gplugin/main#branch=develop")
+source=("$_pkgbase::hg+https://bitbucket.org/gplugin/gplugin#branch=develop")
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd "$srcdir/$_pkgbase"
@@ -26,20 +27,18 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p "$srcdir/$_pkgbase/build"
-  cd "$srcdir/$_pkgbase/build"
-  cmake .. \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_LIBDIR=lib
+  cd $_pkgbase
+  meson build \
+    --prefix=/usr \
+    --buildtype=release
 }
 
 build() {
-  cd "$srcdir/$_pkgbase/build"
-  make
+  cd $_pkgbase
+  ninja -C build
 }
 
 package() {
-  cd "$srcdir/$_pkgbase/build"
-  make DESTDIR="$pkgdir/" install
+  cd $_pkgbase
+  DESTDIR="$pkgdir" ninja -C build install
 }
