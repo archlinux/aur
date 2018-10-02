@@ -1,0 +1,29 @@
+pkgbase = linux-phicomm-n1-armbian-git
+	pkgver = 4.18.7
+	pkgrel = 1
+	url = https://github.com/150balbes/Amlogic_s905-kernel
+	arch = aarch64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = git
+	makedepends = uboot-tools
+	makedepends = vboot-utils
+	makedepends = dtc
+	options = !strip
+	source = git+https://github.com/150balbes/Amlogic_s905-kernel.git
+	source = config
+	source = linux.preset
+	source = 99-linux.hook
+	md5sums = SKIP
+	md5sums = fb54e7d7a082e7e84ea60dd11b6ae782
+	md5sums = f6ee374f560e1b9df6a7de2399027d1b
+	md5sums = d1c40c7367a7081f3b4c03264780f9d4
+
+pkgname = linux-phicomm-n1-armbian-git
+
+pkgname = linux-phicomm-n1-armbian-git-headers
+
