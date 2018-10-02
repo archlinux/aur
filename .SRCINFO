@@ -13,7 +13,6 @@ pkgbase = spimsuite-svn
 	depends = libsm
 	depends = libxaw
 	depends = qt5-base
-	optdepends = qt5-tools: assistant-qt5
 	provides = spim
 	provides = spim-svn
 	provides = xspim
