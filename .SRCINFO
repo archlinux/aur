@@ -5,12 +5,12 @@ pkgbase = abi-compliance-checker
 	url = https://lvc.github.io/abi-compliance-checker/
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = LGPL
 	depends = gcc
 	depends = binutils
 	depends = perl
 	source = abi-compliance-checker-2.3.tar.gz::https://github.com/lvc/abi-compliance-checker/archive/2.3.tar.gz
-	sha256sums = 9fb7b17e33d49e301d02a6374fbd2596feb53ecc77194879a4e1c2d1e24b4ddb
+	sha256sums = b1e32a484211ec05d7f265ab4d2c1c52dcdb610708cb3f74d8aaeb7fe9685d64
 
 pkgname = abi-compliance-checker
 
