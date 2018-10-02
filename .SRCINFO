@@ -37,8 +37,8 @@ pkgbase = okular-no-purpose
 	provides = okular
 	conflicts = okular
 	replaces = kdegraphics-okular
-	source = https://download.kde.org/stable/applications/18.08.1/src/okular-no-purpose-18.08.1.tar.xz
-	source = https://download.kde.org/stable/applications/18.08.1/src/okular-no-purpose-18.08.1.tar.xz.sig
+	source = https://download.kde.org/stable/applications/18.08.1/src/okular-18.08.1.tar.xz
+	source = https://download.kde.org/stable/applications/18.08.1/src/okular-18.08.1.tar.xz.sig
 	source = kdebug-393478.patch::https://cgit.kde.org/okular.git/patch/?id=fa7a1b3d
 	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
 	validpgpkeys = F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87

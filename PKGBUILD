@@ -18,7 +18,7 @@ conflicts=(kdegraphics-okular)
 conflicts=(okular)
 provides=(okular)
 replaces=(kdegraphics-okular)
-source=("https://download.kde.org/stable/applications/$pkgver/src/$pkgname-$pkgver.tar.xz"{,.sig}
+source=("https://download.kde.org/stable/applications/$pkgver/src/$_pkgname-$pkgver.tar.xz"{,.sig}
         kdebug-393478.patch::"https://cgit.kde.org/okular.git/patch/?id=fa7a1b3d")
 sha256sums=('536aa48e324bbfc6eb8c13988179ab50e43ecd4b66e7a59ce098e438d428c0c6'
             'SKIP'
