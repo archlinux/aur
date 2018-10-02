@@ -2,7 +2,7 @@
 
 pkgname=veyon
 pkgver=4.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source computer monitoring and classroom management"
 arch=('i686' 'x86_64')
 url="https://github.com/veyon"
@@ -38,7 +38,7 @@ build() {
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_VEYON_X11VNC_EXTERNAL=ON \
 	-DSYSTEMD_SERVICE_INSTALL_DIR=/usr/lib/systemd/system/ \
-        -DCMAKE_BUILD_TYPE=debug \
+        -DCMAKE_BUILD_TYPE=release \
 	../"${pkgname}"
     make
 }
