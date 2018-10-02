@@ -3,10 +3,10 @@
 
 _name=exchangecalendar
 pkgname=thunderbird-${_name}
-pkgver=3.9.0
-pkgrel=2
+pkgver=4.0.0
+pkgrel=1
 pkgdesc='Thunderbird Addon/Extension and Provider for Microsoft Exchange 2007/2010/2013 Calendar, Tasks, Contacts and Global Address List (GAL)'
-url='https://github.com/Ericsson/exchangecalendar'
+url='https://github.com/ExchangeCalendar/exchangecalendar'
 arch=('any')
 groups=('office')
 license=('GPL3')
@@ -16,8 +16,9 @@ options=('!strip' '!libtool' '!staticlibs' '!docs')
 conflicts=('thunderbird-exchangecalendar-git' 'thunderbird-exchangecalendar-beta')
 replaces=('thunderbird-exchangecalendar-git' 'thunderbird-exchangecalendar-beta')
 provides=("${_name}=${pkgver}")
+# https://github.com/ExchangeCalendar/exchangecalendar/releases/download/v4.0.0/exchangecalendar-v4.0.0.xpi
 source=("${pkgname}-${pkgver}.xpi::${url}/releases/download/v${pkgver}/${_name}-v${pkgver}.xpi")
-sha256sums=('8d9a64ee6b7f55394c511de26203c8383d9bab59e1ae5fcb5b195466445743c9')
+sha256sums=('e51117aa60b2ea4430ae85271e83d185c5a7ee93d6b87f78d0b6ead494318c8b')
 
 package() {
   _extdir=usr/lib/thunderbird/extensions
@@ -46,4 +47,4 @@ package() {
   chown -R root:root .
 }
 
-# vim:set ft=sh ts=2 sw=2 ft=sh et:
+# vim:set ts=2 sw=2 et:
