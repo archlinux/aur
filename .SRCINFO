@@ -1,0 +1,22 @@
+pkgbase = luks-tpm2
+	pkgdesc = Utility to manage LUKS keys sealed by a TPM 2.0
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/electrickite/luks-tpm2
+	install = luks-tpm2.install
+	arch = any
+	license = GPL3
+	depends = tpm2-tools
+	depends = cryptsetup
+	depends = bash
+	depends = coreutils
+	depends = util-linux
+	depends = grep
+	backup = etc/default/luks-tpm2
+	source = https://github.com/electrickite/luks-tpm2/archive/0.2.0.tar.gz
+	source = luks-tpm2.hook
+	sha1sums = 532a01773275c03000f3b5575fd89c2cd4de0128
+	sha1sums = 3b45f32a95d31bd7e0937ba6ba14b67a144809e9
+
+pkgname = luks-tpm2
+
