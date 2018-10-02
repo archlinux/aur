@@ -1,6 +1,6 @@
 pkgbase = go-git
 	pkgdesc = Core compiler tools for the Go programming language
-	pkgver = 1.11
+	pkgver = 1.11.1
 	pkgrel = 1
 	epoch = 1
 	url = http://golang.org/
@@ -10,7 +10,7 @@ pkgbase = go-git
 	makedepends = git
 	options = !strip
 	options = staticlibs
-	source = git+https://go.googlesource.com/go#commit=41e62b8c49d21659b48a95216e3062032285250f
+	source = git+https://go.googlesource.com/go#commit=26957168c4c0cdcc7ca4f0b19d0eb19474d224ac
 	md5sums = SKIP
 
 pkgname = go-git

@@ -14,7 +14,7 @@
 
 pkgname=go-git
 epoch=1
-pkgver=1.11
+pkgver=1.11.1
 pkgrel=1
 pkgrepo=go
 pkgdesc='Core compiler tools for the Go programming language'
@@ -23,7 +23,7 @@ url='http://golang.org/'
 license=(BSD)
 makedepends=(git)
 options=(!strip staticlibs)
-_commit=41e62b8c49d21659b48a95216e3062032285250f
+_commit=26957168c4c0cdcc7ca4f0b19d0eb19474d224ac
 source=(git+https://go.googlesource.com/go#commit=$_commit)
 md5sums=('SKIP')
 
