@@ -1,0 +1,6 @@
+pkg/
+python-aioxmpp-git/
+src/
+*.tar.gz
+*.tar.xz
+*.zip
