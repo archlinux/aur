@@ -1,6 +1,6 @@
 pkgbase = xde-theme
 	pkgdesc = Theme and style setting utilities for the X Desktop Environment (XDE)
-	pkgver = 1.2.4
+	pkgver = 1.2.26
 	pkgrel = 1
 	url = http://github.com/bbidulock/xde-theme
 	arch = i686
