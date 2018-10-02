@@ -1,6 +1,6 @@
 pkgbase = smartgit
 	pkgdesc = Git client with Hg and SVN support.
-	pkgver = 18.1.4
+	pkgver = 18.1.5
 	pkgrel = 1
 	url = http://www.syntevo.com/smartgit
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = smartgit
 	depends = gtk2
 	optdepends = mercurial: hg repositories support
 	replaces = smartgithg
-	source = https://www.syntevo.com/downloads/smartgit/smartgit-linux-18_1_4.tar.gz
+	source = https://www.syntevo.com/downloads/smartgit/smartgit-linux-18_1_5.tar.gz
 	source = smartgit.desktop
-	sha1sums = e728c7c53b3f84cd345ee7d38ad7746d8f1f339f
+	sha1sums = 0be8b13cabefc226c959ad014841949f748cd24e
 	sha1sums = bafa47c0b43ad89aaa3b34a078771b3cd12bd1f3
 
 pkgname = smartgit
