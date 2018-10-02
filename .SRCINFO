@@ -1,15 +1,15 @@
 pkgbase = fakturama
 	pkgdesc = Creates invoices with ZUGFeRD support
-	pkgver = 2.0.2.1
-	pkgrel = 2
+	pkgver = 2.0.3
+	pkgrel = 1
 	url = https://www.fakturama.info
 	arch = x86_64
 	license = EPL
 	depends = java-runtime=8
 	depends = webkit2gtk
-	source = fakturama-2.0.2.1.tar.gz::https://files.fakturama.info/release/v2.0.2.1/Fakturama_linux_x64_2.0.2.1.tar.gz
+	source = fakturama-2.0.3.tar.gz::https://files.fakturama.info/release/v2.0.3/Fakturama_linux_x64_2.0.3.tar.gz
 	source = fakturama2.desktop
-	sha256sums = cd207611743a1d79841fa835bd598f8cfc29def3d04acd17fd3f0723b51cbb70
+	sha256sums = b6d986ad0de3bf380ef2dbd7813e7c2db7e9691f06e50f451f39cf34f574d093
 	sha256sums = 550964ece2b39f76e4985ecc2203fee63f57ef669d8b1ae170d80b3cfa5cb54c
 
 pkgname = fakturama

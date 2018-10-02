@@ -1,10 +1,8 @@
 # Maintainer: Helloagain <nospamming11+arch at gmail dot com>
 
-_majorver=2.0.2
-_minorver=1
 pkgname=fakturama
-pkgver=$_majorver.$_minorver
-pkgrel=2
+pkgver=2.0.3
+pkgrel=1
 pkgdesc="Creates invoices with ZUGFeRD support"
 arch=('x86_64')
 url="https://www.fakturama.info"
@@ -30,7 +28,7 @@ source=(
 )
 noextract=()
 sha256sums=(
-	"cd207611743a1d79841fa835bd598f8cfc29def3d04acd17fd3f0723b51cbb70"
+	"b6d986ad0de3bf380ef2dbd7813e7c2db7e9691f06e50f451f39cf34f574d093"
 	"550964ece2b39f76e4985ecc2203fee63f57ef669d8b1ae170d80b3cfa5cb54c"
 )
 
