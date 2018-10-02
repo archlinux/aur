@@ -1,0 +1,18 @@
+pkgbase = gnome-shell-extension-netctl-auto-gnome-git
+	pkgdesc = Allows you to switch between netctl profiles using a menu in the GNOME notification area.
+	pkgver = r27.80a54b6
+	pkgrel = 1
+	url = https://github.com/nigeil/netctl-auto-gnome
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = gnome-shell
+	depends = netctl
+	depends = wpa_actiond
+	provides = gnome-shell-extension-netctl-auto-gnome
+	conflicts = gnome-shell-extension-netctl-auto-gnome
+	source = gnome-shell-extension-netctl-auto-gnome::git+https://github.com/nigeil/netctl-auto-gnome.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-netctl-auto-gnome-git
+
