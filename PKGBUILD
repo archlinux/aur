@@ -2,7 +2,7 @@
 # Contributor: Daichi Shinozaki <dsdseg@gmail.com>
 
 pkgname=proxygen
-pkgver=2018.09.24.00
+pkgver=2018.10.01.00
 pkgrel=1
 pkgdesc="A collection of C++ HTTP libraries including an easy to use HTTP server."
 arch=('i686' 'x86_64')
@@ -11,9 +11,8 @@ license=('BSD')
 depends=('folly' 'fbthrift' 'libcap')
 source=("$url/archive/v$pkgver.tar.gz")
 makedepends=('autoconf-archive' 'wget' 'ruby' 'gperf' 'gperftools' 'wangle')
-options=('!makeflags')
 conflicts=('proxygen-git')
-sha256sums=('a081c6415ff9df192d39933134285bce4db54c013e941fc2b8351183ce7e7d70')
+sha256sums=('91f6c41b17e42e6522555a535710062ba5c4538c38297c1161dbccc198c07a18')
 
 prepare() {
     cd "$pkgname-$pkgver/$pkgname"
@@ -27,7 +26,7 @@ build() {
       --with-sysconfdir=/etc \
       --with-sysroot=/usr \
       --with-gnu-ld=yes
-  make -j 4
+  make
 }
 
 check() {
