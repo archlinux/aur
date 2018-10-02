@@ -1,0 +1,20 @@
+pkgbase = linuxprivchecker-git
+	pkgdesc = A Linux privilege escalation check script
+	pkgver = r6.e048a31
+	pkgrel = 1
+	url = https://github.com/sleventyeleven/linuxprivchecker
+	arch = any
+	license = custom
+	makedepends = git
+	depends = python2
+	provides = linuxprivchecker
+	source = linuxprivchecker::git+https://github.com/sleventyeleven/linuxprivchecker.git
+	source = shebang.patch
+	source = shebang.patch.sig
+	validpgpkeys = 7A194E3F7A8F867BEA8A5339023F078862ACFE50
+	sha256sums = SKIP
+	sha256sums = 55d23942e109e1352a51dac0263c728a33b73523b2519b8836b6556b64c56d2d
+	sha256sums = SKIP
+
+pkgname = linuxprivchecker-git
+
