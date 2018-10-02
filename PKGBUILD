@@ -21,14 +21,12 @@ prepare() {
 	cp -a "${srcdir}/${_pkgname}-${pkgver}"{,-py2}
 }
 
-build_python-smart_open() {
+build() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
 	python setup.py clean
 	rm -rf build dist
 	python setup.py build
-}
 
-build_python2-smart_open() {
 	cd "${srcdir}/${_pkgname}-${pkgver}-py2"
 	python2 setup.py clean
 	rm -rf build dist
