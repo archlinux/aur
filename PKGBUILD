@@ -1,11 +1,11 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
-# Contributor : Daniel Bermond < yahoo-com: danielbermond >
+# Contributor: Daniel Bermond < yahoo-com: danielbermond >
 
 _commit='f93fe9bfd94884cec2ba711897222e0df5569a53'
 
 pkgname=nccl
 pkgver=2.3.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for NVIDIA multi-GPU and multi-node collective communication primitives'
 arch=('x86_64')
 url='https://developer.nvidia.com/nccl/'
@@ -37,14 +37,9 @@ build() {
 package() {
   cd "${pkgname}/build"
 
-  # header
-  install -D -m644 include/nccl.h "${pkgdir}/opt/cuda/include/nccl.h"
+  install -Dm644 include/nccl.h "${pkgdir}/usr/include/nccl.h"
+  mkdir -p "${pkgdir}/usr/lib"
+  cp -a lib/* "${pkgdir}/usr/lib"
 
-  # libraries
-  mkdir -p "${pkgdir}/opt/cuda/lib64"
-  cp -a lib/* "${pkgdir}/opt/cuda/lib64"
-
-  # license
-  cd "${srcdir}/${pkgname}"
-  install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644  "${srcdir}/${pkgname}"/LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
