@@ -3,7 +3,7 @@
 _pkgname=okular
 pkgname=okular-no-purpose
 pkgver=18.08.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Okular, a document viewer, without the dependency on purpose. This disables the share menu'
 arch=(x86_64)
 url="https://kde.org/applications/graphics/okular/"
@@ -18,14 +18,19 @@ conflicts=(kdegraphics-okular)
 conflicts=(okular)
 provides=(okular)
 replaces=(kdegraphics-okular)
-source=("https://download.kde.org/stable/applications/$pkgver/src/$_pkgname-$pkgver.tar.xz"{,.sig})
+source=("https://download.kde.org/stable/applications/$pkgver/src/$pkgname-$pkgver.tar.xz"{,.sig}
+        kdebug-393478.patch::"https://cgit.kde.org/okular.git/patch/?id=fa7a1b3d")
 sha256sums=('536aa48e324bbfc6eb8c13988179ab50e43ecd4b66e7a59ce098e438d428c0c6'
-            'SKIP')
+            'SKIP'
+            'be2ca6fd8f0573ff9daad563c68523dbdbfd14e4ced2cf06424bb4444bc016be')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87) # Christoph Feck <cfeck@kde.org>
 
 prepare() {
   mkdir -p build
+  
+  cd $pkgname-$pkgver
+  patch -p1 -i ../kdebug-393478.patch
 }
 
 build() {
