@@ -2,33 +2,35 @@
 # Contributor: speps <speps at aur dot archlinux dot org>
 
 pkgname=meterbridge
-pkgver=0.9.2
-pkgrel=3
+pkgver=0.9.3
+pkgrel=1
 pkgdesc="Collection of Audio meters for the JACK audio server"
 arch=('x86_64')
 url="http://plugin.org.uk/meterbridge/"
-license=('GPL')
+license=('GPL2')
 groups=('pro-audio')
-depends=('jack' 'sdl_image')
+makedepends=('mesa')
+depends=('jack' 'sdl_image' 'libglvnd')
 source=("http://plugin.org.uk/${pkgname}/${pkgname}-${pkgver}.tar.gz"
-        'c99-inline-fix.patch')
-sha512sums=('dec68307430649f3281528b31f20f501df07c4c9841776bac9c532d16a309bc701d39a5f577dc55eccb0edebc514d2eeca45c057a81a5c6c57bd61faae7deff0'
-            '4e76dcb966daa5080ebf85274739e6ac0ef5baf15ef42d4c9d9918f2ed03ce4dae954323f1fc3081360f175d24692f4d8612d39b3def11a480ac10d466f31da6')
+        "${pkgname}-${pkgver}-asneeded.patch"
+        "${pkgname}-${pkgver}-cflags.patch"
+        "${pkgname}-${pkgver}-gcc41.patch"
+        "${pkgname}-${pkgver}-setrgba.patch")
+sha512sums=('19c49a584ab71a4fbe4a0d3f05382ce464c3c5f3e37a6dbd42b4920a18577d66464d8e1277d32c34cf9248a945da05fda17a3ecd35e770fdd8af6e9f691ab52a'
+            'b3877c523b8c4f666fe5435882e6603abe448e53485939048b3f0ae617cae8634218aba553afdc3f97e03406c1a5a924b9a487930dfe62256f9155a26d39cba7'
+            '4a7fe804884feb05fe2af8f0c4cf83b89324ab10e1dad834e3ebcca403223b0c29b8050cbaac3652e64c18f4d1a7b800406431974187839483dbb07f85f9af87'
+            'df259114e25efb486ad980b44449b8c33b3afe87a726a5c40641831810d0de30a56c671bbcc5fdbe2fec05b860a3b2ed1439947240c967f938c6771e91d5907e'
+            '2bb8e4c26d33a0383f3867459dcc15f5d7500adbbb5cdc230d7fba1d45c9ba4f0ba46731770c5ef25f6adc8121efbef9ecd0ecdac53ed3c3ced840010e3164d4')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
-
-  # gcc 4.x fix
-  sed -i "s/ buf_rect.*,//" src/main.h
-
-  # iec scale fix
-  # http://lists.linuxaudio.org/pipermail/linux-audio-dev/2012-June/032475.html
-  sed -i 's/ 5.0/ 2.5/' src/dpm_meters.c
-
-  # fix the changed evaluation of inline functions
-  patch -Np0 -i "${srcdir}/c99-inline-fix.patch"
-
-  autoreconf -vi
+  # patches taken from gentoo ebuild:
+  # https://packages.gentoo.org/packages/media-sound/meterbridge
+  patch -Np1 -i "../${pkgname}-${pkgver}-asneeded.patch"
+  patch -Np1 -i "../${pkgname}-${pkgver}-cflags.patch"
+  patch -Np1 -i "../${pkgname}-${pkgver}-gcc41.patch"
+  patch -Np1 -i "../${pkgname}-${pkgver}-setrgba.patch"
+  autoreconf -vfi
 }
 
 build() {
@@ -40,4 +42,5 @@ build() {
 package() {
   cd "${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}/" install
+  install -vDm 644 {AUTHORS,ChangeLog} -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
