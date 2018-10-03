@@ -33,6 +33,7 @@ ortp/
 pkg/
 soci/
 speex/
+sqlite3/
 src/
 srtp/
 v4l-utils/

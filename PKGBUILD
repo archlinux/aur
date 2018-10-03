@@ -1,7 +1,7 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=linphone-desktop-all-git
-pkgver=4.1.1.r590.38a09dc3
+pkgver=4.1.1.r592.d2634110
 pkgrel=1
 pkgdesc="A free VoIP and video softphone based on the SIP protocol (Installed in /opt with all deps included)."
 arch=("x86_64")
@@ -34,8 +34,9 @@ source=("${pkgname%-all-git}::git+https://gitlab.${pkgname%-desktop-all-git}.org
         "opus::git+https://gitlab.${pkgname%-desktop-all-git}.org/BC/public/external/opus.git"
         "soci::git+https://gitlab.${pkgname%-desktop-all-git}.org/BC/public/external/soci.git"
         "speex::git+https://gitlab.${pkgname%-desktop-all-git}.org/BC/public/external/speex.git"
+        "sqlite3::git+https://gitlab.${pkgname%-desktop-all-git}.org/BC/public/external/sqlite3.git"
         "srtp::git+https://gitlab.${pkgname%-desktop-all-git}.org/BC/public/external/srtp.git"
-        "v4l-utils::git+https://gitlab.linphone.org/BC/public/external/v4l-utils.git"
+        "v4l-utils::git+https://gitlab.${pkgname%-desktop-all-git}.org/BC/public/external/v4l-utils.git"
         "xerces-c::git+https://gitlab.${pkgname%-desktop-all-git}.org/BC/public/external/xerces-c.git"
         "zlib::git+https://gitlab.${pkgname%-desktop-all-git}.org/BC/public/external/zlib.git"
         "${pkgname%-desktop-all-git}::git+https://gitlab.${pkgname%-desktop-all-git}.org/BC/public/${pkgname%-desktop-all-git}.git"
@@ -50,12 +51,9 @@ source=("${pkgname%-all-git}::git+https://gitlab.${pkgname%-desktop-all-git}.org
         "webrtc::git+https://gitlab.${pkgname%-desktop-all-git}.org/BC/public/external/webrtc.git"
         "${pkgname%-desktop-all-git}.desktop"
         "${pkgname%-all-git}-submodules.patch")
-sha256sums=("SKIP"
-            "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" 
-            "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" 
-            "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP"
-            "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP"
-            "SKIP"
+sha256sums=("SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP"
+            "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP"
+            "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" 
             "346d983f503873811b3a4f72772e5afe4990275526c9e15c1b5cde2ad69a0544"
             "ba70b6fc29dfea030828eb3011d4caa271737001f808b97d534feffb0d4558ad")
 
@@ -86,6 +84,7 @@ prepare() {
   git config submodule.submodules/externals/opus.url "${srcdir}/opus"
   git config submodule.submodules/externals/soci.url "${srcdir}/soci"
   git config submodule.submodules/externals/speex.url "${srcdir}/speex"
+  git config submodule.submodules/externals/sqlite3.url "${srcdir}/sqlite3"
   git config submodule.submodules/externals/srtp.url "${srcdir}/srtp"
   git config submodule.submodules/externals/v4l-utils.url "${srcdir}/v4l-utils"
   git config submodule.submodules/externals/xerces-c.url "${srcdir}/xerces-c"
