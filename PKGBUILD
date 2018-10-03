@@ -3,16 +3,17 @@
 
 pkgname=actor-framework
 pkgver=0.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An Open Source Implementation of the Actor Model in C++"
 arch=(i686 x86_64)
 url="http://actor-framework.org"
 license=('custom:"BSD-3-Clause"',
 	 'custom:"Boost Software License"')
-depends=(opencl-driver)
+depends=()
 makedepends=('cmake' 'opencl-headers' 'git' 'python' 'opencl-icd-loader' 'chrpath')
 optdepends=(
-	'python: python binding'
+	'python: caf-python'
+	'ipython: caf-python'
 	'opencl-icd-loader: opencl support'
 	'openssl: openssl support'
 	)
