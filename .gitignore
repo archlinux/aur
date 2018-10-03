@@ -1,0 +1,5 @@
+*.tar.?z
+*.tgz
+pkg
+src
+virtctl*
