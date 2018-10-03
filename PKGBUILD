@@ -42,7 +42,7 @@
 
 pkgbase=ttf-ms-win10
 pkgname=($pkgbase{,-japanese,-korean,-sea,-thai,-zh_cn,-zh_tw,-other})
-pkgver=10.0.17134.167
+pkgver=10.0.17763.1
 pkgrel=1
 arch=(any)
 url='http://www.microsoft.com/typography/fonts/product.aspx?PID=164'
@@ -62,11 +62,13 @@ calibri.ttf    calibrib.ttf   calibrii.ttf   calibriz.ttf   # Calibri
 calibril.ttf                  calibrili.ttf                 # Calibri Light
 cambria.ttc    cambriab.ttf   cambriai.ttf   cambriaz.ttf   # Cambria
 Candara.ttf    Candarab.ttf   Candarai.ttf   Candaraz.ttf   # Candara
+Candaral.ttf                  Candarali.ttf                 # Candara Light
 comic.ttf      comicbd.ttf    comici.ttf     comicz.ttf     # Comic Sans MS
 consola.ttf    consolab.ttf   consolai.ttf   consolaz.ttf   # Consolas
 constan.ttf    constanb.ttf   constani.ttf   constanz.ttf   # Constantia
 cour.ttf       courbd.ttf     couri.ttf      courbi.ttf     # Courier New
 corbel.ttf     corbelb.ttf    corbeli.ttf    corbelz.ttf    # Corbel
+corbell.ttf                   corbelli.ttf                  # Corbel Light
 framd.ttf                     framdit.ttf                   # Franklin Gothic Medium
 Gabriola.ttf                                                # Gabriola
 georgia.ttf    georgiab.ttf   georgiai.ttf   georgiaz.ttf   # Georgia
@@ -187,13 +189,13 @@ sha256sums=('c9b76220a5be42ead4733611e417cd65c5fd8aeaa33eb56576ac378a37d130a1'
             '79a5742b865cf06891d4ae43e42cac0e5169c7b7b06b5b3c24ef8e0966d27b62'
             'e432c1b3568bd207e30e3d52d41e6431ea53a679eb52dd79b1a36aa6a4f3b994'
             '10df702864b1f89cb29ba0d6b97c04228338d16807e13e8d8c74b91aba5e5f23'
-            'f46e2e6fea25d84580a30d45177fd6a03bba296a50812f5494e6ff1500465493'
-            '40062010ae38bf91013ec641c5c6b73d4ca279cfb8e0c5493a3fab6d7143f9bf'
-            '249b5e2cc4b4f9f6a262fc31763494dfb2ce5ce556dd8d59bc1d3d5a21125c34'
-            'd6b0dd74bc325066c82d6e7481ef54ea43af24086229e8546b6c7b48e6a5afb9'
-            'b8bd164f1c7c9606f440087c020de7eaff8dc326b1550f7fddc02301aba8b8ac'
-            '229a2ab8f8daaccdb1360eec1528c7615f241b20af1bee82114643fc61ece5cb'
-            '66b3b69dbc6d19e77d9375dc4e679794a673dd5e7c4bc5babcc9ee6748aaf2ce'
+            '3b5d98707ce72f93c6e8fea694e244cd40d235bd06f246307a31474fba498efd'
+            'f79071c0adb962aeff8aabb1027da58c20432c71a57ca7f8564246130a84913b'
+            'c1bdd0f5b284156fbfae18f20625ebf911e5c80527d8c1ca3e4f54c542f1c4bb'
+            '7881f1df0e8716886edde1e4790aad9e2793905466d7d5f1c8d411a27d90ac2c'
+            '487cded39b062466dd72a13adc2ab6483a934fee649564573d892cda2008448c'
+            'a4676a1dc708b536347f6885a0702b40ad3bce83b65db089a289773f68d09999'
+            'bf2e7a3bdfb51790f0970ea2fc0cd34f5901944736d7ac5721dcf2b9b5c32527'
             '84e70ccc1664482f4a960442c7a166c91a1b2cf98ff88c33cb73f79403f66d7b'
             '6685c657a7e292083e28f19bbf1a1e90509ce3e1130dbc4ed1c62ba3f9140543'
             '6905f0ac846d1ec4326cd14a46cb7379204940aa293b098ee4c1a69723bbd165'
@@ -202,6 +204,8 @@ sha256sums=('c9b76220a5be42ead4733611e417cd65c5fd8aeaa33eb56576ac378a37d130a1'
             '5346840fa85a1969699dc97635e838cd2c42dad7f8a4999d7368eb888fceb04b'
             'fc68cb42582e1207bcc397df7b60870a74ae068b17d7bd79f2e9f63af89796b4'
             '1614c0d3a6751eb46b2c52f09ae23dd61f769beda83058269cb0653c049eae43'
+            '0e14f663fa34460fe9a07bb32d0017a180a4a0c8457d279fbfc5d8452753b477'
+            'e8b17bc645c098bbc5167acfe13f0e3c63f0f417d539aab171db7eea3c40eab2'
             'a7da3ef195158acd8432226a21f2940f1806a9c8d079f18d0a9ab475f50f9659'
             '56567bc71e89fd173674c78f02b474123a02561b246526a22600c3a29b2fdc65'
             '65aece2928246837317e093a11c6df5cbfc67035f1e045c9771f7c408be1faea'
@@ -218,10 +222,12 @@ sha256sums=('c9b76220a5be42ead4733611e417cd65c5fd8aeaa33eb56576ac378a37d130a1'
             '716c08d704f154870bd9fb78b185d0b644912301dfa9c9e6daf45bdb4832a299'
             '5861588608d3a3775d921a7e4acb8362b21630c6b63718bc68adb7137ce53beb'
             '8fdb188252a2db0f020c89831bddb61cadfe290c3616fe534479b4d3b10d09c1'
-            'a4c132ad9d9deb72f6a89b278917aad802b97e605ded5813a1132c97d928178a'
-            'c665aeda6bd8a98731e311963c9f78fc16d98fda6b61190588223034f2602c7d'
-            '639d26aed4a703c68f0e5856152d2f667415db47d632292f8bcb0a1cbfc77ddd'
-            '41fbf89f314e934860eed47237543a24f904645e3165528d0e2748b4b055ae1c'
+            '148049066067bcbddfcc9f84bc74a62eb16a5f8a96cea33cc2116839f402f689'
+            'c21599ea3508203136efb968b3812ec420e798b2df711ebcc42122754efe6ad2'
+            '0cc2cd083a495de28f9a96d2aab2028b8127411f8034978b85dc607a117de6e2'
+            '4c0ab5f7b7852f7ea6eaeac2a96d29d9fcb238ee8edb0c4a1a28b991b2687fa0'
+            'cf2f6de34923f555ab1897c3d7b5c001da87fa04e46129f58d0ec0257b986fe7'
+            '3c99aa248d260920ec1b9e16910dbd31ce6921c933d9480392be98ed1b47a6c6'
             'bac844bd41f847cf138737026d41c983387a1065535c32e78aa22c48708b52ad'
             'df59f9ea915957b22a389d68580bf40dc5bd05822cc65b5fdcc188c706a694e7'
             'ddd852f9e43a5e81af62a3f6654324ba7553d7d66101ab848abc1bd2d626ac4b'
@@ -235,7 +241,7 @@ sha256sums=('c9b76220a5be42ead4733611e417cd65c5fd8aeaa33eb56576ac378a37d130a1'
             '2ca2cfde263fa420e8d39420f075ee9ac80bc0794272c53ac4571a88f8a075a6'
             '97226e81f19eff8c8fb191745748bab920472c005d3ec4e23d9a50a12c471d92'
             'b7397adf2dcc24ca790348a3c26deb2122b45e5728fd25fc588de4cf5a75b469'
-            'fc5744108eb6112844be3ec63c0fd76fe0eb782aea25c6aaa58c151d8dc19055'
+            '3f557479a768a1d9924af0f29d0d842e8c41988738ce891f6be3abb0f008b0d5'
             'e47d594e2e2bc31b28f87b6f66483d32f925843ceb002f919c7a403aca48813d'
             '8e14668bbae03f78ed668dbe3261218881960dcd9fb80ad6c1d1dfb4226a57c3'
             '99f0af2d1941707fecda23da38bafbed5144a73a3720d773c05b9d4c445920ed'
@@ -244,20 +250,20 @@ sha256sums=('c9b76220a5be42ead4733611e417cd65c5fd8aeaa33eb56576ac378a37d130a1'
             '3cced0162ddb9e5f1e63ee1b36fd6e581c090318dce1a0af01b77f5ea9952c80'
             'd0dfad2f6bbe7ff7c0f96a0c80a28bd4f4624f900573a61abd9d29406d3775d7'
             '91283e8af7f9eca8b14b498b484b35d49c3bd3144ab7e25aa4934297138ea28b'
-            '7928686af0148a55f8c804ec682fdfadf2bf5b16944600d903e08b5a6fcf55c9'
-            '20576541e0cbaf7938014888f94fa432383f9efed93015908c2bcd5f6c0f393e'
-            'fb8dcc0d484f3dc1b88fb0fa9f1d72110480d494b3d88b807708de7bae2a3d11'
+            '60735b1825a3c45b857119d70b625dca7968ae1c571eeb201651c718452d5e6f'
+            'da2ba9063090cfcfe387c5ca524f8991554d369582060dfa2dad03c374826fc0'
+            'afd3f88d3844cae61b42c4265e609343369b5c17abecb9287364ccdb802aa203'
             '87dc484ae1c01ce5f69aa5eed43ecaf7f7be5e33b70e6588f73c78bd07dee471'
             '77534a94c5bab472fed075f2a418531a5c5121ce5c855a4b495e1809da745378'
             '4881fcebfb48aedd7433ba75a1d102bff808c80240a7839e526e5a3731346ae0'
             'c59d660de6e83f6a76fe92dd35e124abc5abcf536baaf572d6a4b6f006152fcf'
-            '9e5a8c7e6c1e9096918a490798f4177107f0522870c8ad0227d5f02be407e0ed'
-            '3669c2b6256d3593da2d4d69ca4bb77271f96ce7054fc9e9037bec86f858bf71'
-            'be47c600e10740eb7f7d86ce1979659f63742cf22f7478493fac1978d7af73f0'
+            '245b1e48d00f171c5b4e6b5a61aaa81c13ad4917fbef55d2eff7e1d725b065aa'
+            '1cbe547c648ff673c30ca91c6a4f091addd1a4b605a9798f84089add47e9b884'
+            'c22457517f61903da1262f87d35c785fc013c92d1a0579330d184b2be2f4d458'
             '97afe390ea66c38e3dd59fb10c0248704ebd4d5ba97448184c928f325e5c44e5'
-            'e52ecd76827eb67261a77e1012463884d1310204756460a823a20aebb0c0588e'
+            '249530776b503faf3a4bb5bb866201d0a3b1a9226a6014369e98386fd1ab5dd2'
             '95b430488010a492aab460881dc913f4a61f2c5a54510bbfacc0e1f09a02bffa'
-            '0c95691be503341786035fe13a43436e390b8d09705b59fc8cdda79573d2ee52'
+            'cd4d4b098ecb8e671261d654820c6ba72333093d74fd23a41a630393fc8f380f'
             '921bf07b814733e71f0a59d4d25566f0afa3867ad1bd987ce5b08c54d5918d72'
             'd2f8326a354456d93e78b0537c58793e7072c3617af7d9ee187f10d6d595f510'
             '18f4d0f9de114e04a6f0b21955a96177154ff0f55fb4a94c68af5c51449bf107'
