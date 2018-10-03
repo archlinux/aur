@@ -4,7 +4,7 @@ pkgdesc="ROS - Transmission Interface."
 url='https://github.com/ros-controls/ros_control/wiki'
 
 pkgname='ros-melodic-transmission-interface'
-pkgver='0.15.0'
+pkgver='0.15.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -33,7 +33,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_control-release-release-melodic-transmission_interface-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_control-release/archive/release/melodic/transmission_interface/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('ae0e0282298aee03b57fe7464feba14e12c9f7e4f056c8555e4b80124b50f52b')
+sha256sums=('6b28074919478b6422588385850f0450d788ad06829adca29ae5cf2cac798692')
 
 build() {
   # Use ROS environment variables
