@@ -1,13 +1,13 @@
 pkgbase = caffe2-cuda
 	pkgdesc = A new lightweight, modular, and scalable deep learning framework (with cuda)
-	pkgver = 0.8.2.pytorch.0.4.1
+	pkgver = 0.8.2.pytorch.1.0rc1
 	pkgrel = 1
 	url = http://caffe2.ai/
 	arch = x86_64
 	license = BSD
 	makedepends = git
 	makedepends = cmake
-	makedepends = gcc54
+	makedepends = gcc7
 	depends = google-glog
 	depends = protobuf
 	depends = lapack
@@ -52,57 +52,35 @@ pkgbase = caffe2-cuda
 	conflicts = caffe2
 	conflicts = caffe2-git
 	conflicts = caffe2-cuda-git
-	conflicts = caffe2-cpu
-	conflicts = caffe2-cpu-git
-	conflicts = caffe
-	conflicts = caffe-git
-	conflicts = caffe-cuda
-	conflicts = caffe-cuda-git
-	noextract = caffe2-thirdparty-catch-2.2.1.tar.gz
-	noextract = caffe2-thirdparty-protobuf-3.5.0.tar.gz
-	noextract = caffe2-thirdparty-python-six-1.11.0.tar.gz
-	noextract = caffe2-thirdparty-cereal-1.2.2.tar.gz
-	noextract = caffe2-thirdparty-ideep-2.0.0_b1.tar.gz
 	options = !emptydirs
-	source = pytorch-0.4.1.tar.gz::https://github.com/pytorch/pytorch/archive/v0.4.1.tar.gz
-	source = caffe2-thirdparty-catch-2.2.1.tar.gz::https://github.com/catchorg/Catch2/archive/v2.2.1.tar.gz
-	source = caffe2-thirdparty-nanopb-git::git+https://github.com/nanopb/nanopb.git#commit=14efb1a47a496652ab08b1ebcefb0ea24ae4a5e4
-	source = caffe2-thirdparty-pybind11-git::git+https://github.com/pybind/pybind11.git#commit=add56ccdcac23a6c522a2c1174a866e293c61dab
+	source = pytorch-1.0rc1.tar.gz::https://github.com/pytorch/pytorch/archive/v1.0rc1.tar.gz
+	source = caffe2-thirdparty-catch-git::git+https://github.com/catchorg/Catch2.git#commit=0a34cc201ef28bf25c88b0062f331369596cb7b7
+	source = caffe2-thirdparty-pybind11-git::git+https://github.com/pybind/pybind11.git#commit=5c8746ff135abb390bf95944be593e895a586a50
 	source = caffe2-thirdparty-cub-git::git+https://github.com/NVlabs/cub.git#commit=285aeebaa34b0e8a7670867a2e66c1a52d998d6a
-	source = caffe2-thirdparty-eigen-git::git+https://github.com/eigenteam/eigen-git-mirror.git#commit=e9e95489a0b241412e31f0525e85b2fab386c786
-	source = caffe2-thirdparty-googletest-git::git+https://github.com/google/googletest.git#commit=69e48e92de43960a316a826293510b7b3deb9eca
+	source = caffe2-thirdparty-eigen-git::git+https://github.com/eigenteam/eigen-git-mirror.git#commit=cafae68f33f7f41270b2e8c2dd181f510aa4d918
+	source = caffe2-thirdparty-googletest-git::git+https://github.com/google/googletest.git#commit=2fe3bd994b3189899d93f1d5a881e725e046fdc2
 	source = caffe2-thirdparty-nervanagpu-git::git+https://github.com/NervanaSystems/nervanagpu.git#commit=d4eefd50fbd7d34a17dddbc829888835d67b5f4a
 	source = caffe2-thirdparty-benchmark-git::git+https://github.com/google/benchmark.git#commit=505be96ab23056580a3a2315abba048f4428b04e
-	source = caffe2-thirdparty-protobuf-3.5.0.tar.gz::https://github.com/google/protobuf/archive/v3.5.0.tar.gz
+	source = caffe2-thirdparty-protobuf-git::git+https://github.com/google/protobuf.git#commit=2761122b810fe8861004ae785cc3ab39f384d342
 	source = caffe2-thirdparty-ios-cmake-git::git+https://github.com/Yangqing/ios-cmake.git#commit=8abaed637d56f1337d6e1d2c4026e25c1eade724
-	source = caffe2-thirdparty-NNPACK-git::git+https://github.com/Maratyszcza/NNPACK.git#commit=3eb0d453662d05a708f43b108bed9e17b705383e
-	source = caffe2-thirdparty-gloo-git::git+https://github.com/facebookincubator/gloo.git#commit=69eef748cc1dfbe0fefed69b34e6545495f67ac5
+	source = caffe2-thirdparty-NNPACK-git::git+https://github.com/Maratyszcza/NNPACK.git#commit=af40ea7d12702f8ae55aeb13701c09cad09334c3
+	source = caffe2-thirdparty-gloo-git::git+https://github.com/facebookincubator/gloo.git#commit=aa0d2e3f8aa4f9cee5ffa46070491cf1ed6aae70
 	source = caffe2-thirdparty-NNPACK_deps-pthreadpool-git::git+https://github.com/Maratyszcza/pthreadpool.git#commit=2b06b31f6a315162348e1f3c24325eedaf6cc559
 	source = caffe2-thirdparty-NNPACK_deps-FXdiv-git::git+https://github.com/Maratyszcza/FXdiv.git#commit=811b482bcd9e8d98ad80c6c78d5302bb830184b0
 	source = caffe2-thirdparty-NNPACK_deps-FP16-git::git+https://github.com/Maratyszcza/FP16.git#commit=43d6d17df48ebf622587e7ed9472ea76573799b9
 	source = caffe2-thirdparty-NNPACK_deps-psimd-git::git+https://github.com/Maratyszcza/psimd.git#commit=4ac61b112252778b174575931c641bef661ab3cd
 	source = caffe2-thirdparty-zstd-git::git+https://github.com/facebook/zstd.git#commit=aec56a52fbab207fc639a1937d1e708a282edca8
-	source = caffe2-thirdparty-cpuinfo-git::git+https://github.com/Maratyszcza/cpuinfo.git#commit=1e6c8c99d27f2b5eb9d2e6231055c6a4115b85e5
+	source = caffe2-thirdparty-cpuinfo-git::git+https://github.com/Maratyszcza/cpuinfo.git#commit=4e8f04355892c5deb64a51731a6afdb544a4294d
 	source = caffe2-thirdparty-python-enum-git::git+https://github.com/PeachPy/enum34.git#commit=4cfedc426c4e2fc52e3f5c2b4297e15ed8d6b8c7
 	source = caffe2-thirdparty-python-peachpy-git::git+https://github.com/Maratyszcza/PeachPy.git#commit=07d8fde8ac45d7705129475c0f94ed8925b93473
-	source = caffe2-thirdparty-python-six-1.11.0.tar.gz::https://github.com/benjaminp/six/archive/1.11.0.tar.gz
+	source = caffe2-thirdparty-python-six-git::git+https://github.com/benjaminp/six.git#commit=15e31431af97e5e64b80af0a3f598d382bcdd49a
 	source = caffe2-thirdparty-ComputeLibrary-git::git+https://github.com/ARM-software/ComputeLibrary.git#commit=292227986edb37b01061afcad6df18ba9d6ccbeb
-	source = caffe2-thirdparty-onnx-git::git+https://github.com/onnx/onnx.git#commit=b2817a682f25f960586f06caa539bbbd7a96b859
-	source = caffe2-thirdparty-cereal-1.2.2.tar.gz::https://github.com/USCiLab/cereal/archive/v1.2.2.tar.gz
+	source = caffe2-thirdparty-onnx-git::git+https://github.com/onnx/onnx.git#commit=c4734c6200cb42c1aa36eb1f0160041d2401644d
+	source = caffe2-thirdparty-cereal-git::git+https://github.com/USCiLab/cereal.git#commit=51cbda5f30e56c801c07fe3d3aba5d7fb9e6cca4
 	source = caffe2-thirdparty-onnx-tensorrt-git::git+https://github.com/onnx/onnx-tensorrt.git#commit=fa0964e8477fc004ee2f49ee77ffce0bf7f711a9
 	source = caffe2-thirdparty-sleef-git::git+https://github.com/shibatch/sleef.git#commit=6ff7a135a1e31979d1e1844a2e7171dfbd34f54f
-	source = caffe2-thirdparty-ideep-2.0.0_b1.tar.gz::https://github.com/intel/ideep/archive/v2.0.0_b1.tar.gz
-	source = caffe2-cuda-fix-build-with-eigen.patch
-	sha256sums = 6ab03fa707909e5fb6209a3a98d24c25cd64d9590f3e05d6e8490e4d07b3a765
-	sha256sums = 3938bc896f8de570bc56d25606fc128437ee53590a95cf3e005710176a1a1ce4
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = 0cc6607e2daa675101e9b7398a436f09167dffb8ca0489b0307ff7260498c13c
+	source = caffe2-thirdparty-ideep-git::git+https://github.com/intel/ideep.git#commit=dedff8fb8193fe3a1ea893d4bc852f8ea395b6b3
+	sha256sums = 473cd4af032ddec4279cf3a90dd9508b6fa0be5cd89c842945f88b5a576a4231
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -114,14 +92,21 @@ pkgbase = caffe2-cuda
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 927dc6fcfccd4e32e1ce161a20bf8cda39d8c9d5f7a845774486907178f69bd4
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 1921f26d2e1daf9132da3c432e2fd02093ecaedf846e65d7679ddf868c7289c4
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 9fa1e75035273494d12425194140b3a884b2e70552b4bad3a111e861881876b5
-	sha256sums = 26036766bb543b4316d5ad537a0ad30256149b449c0b0f92741332936c86b05f
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = caffe2-cuda
 
