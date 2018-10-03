@@ -40,12 +40,12 @@ _neovim="$NEOVIM_YOUCOMPLETEME"
 #                                    Default PKGBUILD Configuration                                       #
 #=========================================================================================================#
 pkgname=vim-youcompleteme-git
-pkgver=r2393.487b8ab2
+pkgver=r2399.e37923a7
 pkgver() {
 	cd "YouCompleteMe" || exit
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgrel=3
+pkgrel=1
 pkgdesc="A code-completion engine for Vim"
 arch=('i686' 'x86_64')
 url='http://valloric.github.com/YouCompleteMe/'
@@ -53,7 +53,7 @@ license=('GPL3')
 groups=('vim-plugins')
 depends=('boost' 'boost-libs' 'ncurses5-compat-libs' 'python' 'python2' 'nodejs' 'vim' 'clang')
 makedepends=('cmake' 'git' 'make')
-install=install.sh
+install="install.sh"
 source=(
 'git+https://github.com/Valloric/YouCompleteMe.git' #ycm
 'git+https://github.com/ross/requests-futures.git'  #ycm
@@ -109,7 +109,10 @@ if [[ "$_tern" == "y" ]]; then
 fi
 
 if [[ "$_java" == "y" ]]; then
-	source+=("http://download.eclipse.org/jdtls/milestones/0.18.0/jdt-language-server-0.18.0-201805010001.tar.gz")
+	jdtls_package_name="jdt-language-server"
+	jdtls_milestone="0.18.0"
+	jdtls_build_stamp="201805010001"
+	source+=("http://download.eclipse.org/jdtls/milestones/${jdtls_milestone}/${jdtls_package_name}-${jdtls_milestone}-${jdtls_build_stamp}.tar.gz")
 	sha256sums+=('9253d4222519442b65b4a01516c9496354b59813d906357a5f3f265601cc77db')
 fi
 
@@ -154,6 +157,17 @@ gitprepare() {
 
 
 prepare() {
+	if [[ "$_java" == "y" ]]; then
+		msg2 'Verifying JDTLS package version in PKGBUILD against upstream supported version...'
+			local milestone=`egrep '^JDTLS_MILESTONE' "$srcdir/YouCompleteMe/third_party/ycmd/build.py" | sed -e "s/.* = //g" -e "s/'//g"`
+			local buildstamp=`egrep '^JDTLS_BUILD_STAMP' "$srcdir/YouCompleteMe/third_party/ycmd/build.py" | sed -e "s/.* = //g" -e "s/'//g"`
+			if [[ "$milestone" == "$jdtls_milestone" ]] && [[ "$buildstamp" == "$jdtls_build_stamp" ]]; then
+				msg2 'JDTLS package version matched'
+			else
+				error 'Mismatched JDTLS version'
+			fi
+	fi
+
 	msg2 'Setting up Git submodules...'
 
 	local YouCompleteMe=("requests-futures" "ycmd")
@@ -187,14 +201,16 @@ prepare() {
 
 build() {
 
-	#rm -rf $srcdir/YouCompleteMe/python/ycm/tests
+	msg2 'Purging unneeded files...'
+	rm -rf "$srcdir/YouCompleteMe/python/ycm/tests"
+
 	msg2 'Building ycmd...' # BuildYcmdLibs()
 	mkdir -p "$srcdir/ycmd_build"
 	cd "$srcdir/ycmd_build" || exit
 	cmake -G "Unix Makefiles" -DUSE_SYSTEM_LIBCLANG="$_use_system_clang" . "$srcdir/YouCompleteMe/third_party/ycmd/cpp"
 	make ycm_core
 
-	if [[ "$_omnisharp" = "y" ]]; then
+	if [[ "$_omnisharp" == "y" ]]; then
 		msg2 'Building OmniSharp completer...' # BuildOmniSharp()
 		cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/OmniSharpServer" || exit
 		pwd
@@ -203,7 +219,7 @@ build() {
 		msg2 'Skipping OmniSharp completer...'
 	fi
 
-	if [[ "$_gocode" = "y" ]]; then
+	if [[ "$_gocode" == "y" ]]; then
 		msg2 'Building Gocode completer...' # BuildGoCode()
 		cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/gocode" || exit
 		pwd
@@ -215,7 +231,7 @@ build() {
 		msg2 'Skipping Gocode completer...'
 	fi
 
-	if [[ "$_rust" = "y" ]]; then
+	if [[ "$_rust" == "y" ]]; then
 		msg2 'Building Rust completer...' # BuildRacerd()
 		cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/racerd" || exit
 		pwd
@@ -224,7 +240,7 @@ build() {
 		msg2 'Skipping Rust completer...'
 	fi
 
-	if [[ "$_tern" = "y" ]]; then
+	if [[ "$_tern" == "y" ]]; then
 		msg2 'Building Tern completer...' # SetUpTern()
 		cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/tern_runtime" || exit
 		pwd
@@ -233,7 +249,7 @@ build() {
 		msg2 'Skipping Tern completer...'
 	fi
 
-	if [[ "$_java" = "y" ]]; then
+	if [[ "$_java" == "y" ]]; then
 		# Remove stale java completer data if any
 		rm -rf "$srcdir/YouCompleteMe/third_party/ycmd/third_party/eclipse.jdt.ls/target/repository"
 		mkdir -p "$srcdir/YouCompleteMe/third_party/ycmd/third_party/eclipse.jdt.ls/target/repository"
@@ -260,13 +276,13 @@ package() {
 	cp -r "$srcdir/YouCompleteMe/third_party/ycmd/third_party/"{bottle,parso,frozendict,jedi,python-future,requests,waitress} \
 		"$pkgdir/$vimfiles_dir/third_party/ycmd/third_party"
 
-	if [[ "$_omnisharp" = "y" ]]; then
+	if [[ "$_omnisharp" == "y" ]]; then
 		mkdir -p "$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/OmniSharpServer/OmniSharp/bin/Release"
 		cp -r "$srcdir/YouCompleteMe/third_party/ycmd/third_party/OmniSharpServer/OmniSharp/bin/Release" \
 			"$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/OmniSharpServer/OmniSharp/bin"
 	fi
 
-	if [[ "$_gocode" = "y" ]]; then
+	if [[ "$_gocode" == "y" ]]; then
 		mkdir -p "$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/gocode"
 		mkdir -p "$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/godef"
 		cp    "$srcdir/YouCompleteMe/third_party/ycmd/third_party/gocode/gocode" \
@@ -275,18 +291,18 @@ package() {
 			"$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/godef/godef"
 	fi
 
-	if [[ "$_rust" = "y" ]]; then
+	if [[ "$_rust" == "y" ]]; then
 		mkdir -p "$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/racerd/target/release"
 		cp    "$srcdir/YouCompleteMe/third_party/ycmd/third_party/racerd/target/release/racerd" \
 			"$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/racerd/target/release/racerd"
 	fi
 
-	if [[ "$_tern" = "y" ]]; then
+	if [[ "$_tern" == "y" ]]; then
 		cp -r "$srcdir/YouCompleteMe/third_party/ycmd/third_party/tern_runtime" \
 			"$pkgdir/$vimfiles_dir/third_party/ycmd/third_party"
 	fi
 
-	if [[ "$_java" = "y" ]]; then
+	if [[ "$_java" == "y" ]]; then
 		mv "$srcdir/YouCompleteMe/third_party/ycmd/third_party/eclipse.jdt.ls" "$pkgdir/$vimfiles_dir/third_party/ycmd/third_party"
 		# Force the java completion engine to create its workspace at /tmp instead which is writeable by every user
 		ln -sf /tmp "$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/eclipse.jdt.ls/workspace"
