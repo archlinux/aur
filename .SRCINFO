@@ -1,6 +1,6 @@
 pkgbase = actor-framework
 	pkgdesc = An Open Source Implementation of the Actor Model in C++
-	pkgver = 0.14.4
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = http://actor-framework.org
 	arch = i686
@@ -8,14 +8,19 @@ pkgbase = actor-framework
 	license = custom:"BSD-3-Clause",
 	license = custom:"Boost Software License"
 	makedepends = cmake
-	makedepends = valgrind
-	makedepends = gperftools
-	makedepends = protobuf
 	makedepends = opencl-headers
-	depends = boost
-	depends = libcl
-	source = actor-framework-0.14.4.tar.gz::https://github.com/actor-framework/actor-framework/archive/0.14.4.tar.gz
-	sha256sums = 7e77b1edc708ac66be3ab2ba29506681458422e59a2e1b3cd801152ba345fb00
+	makedepends = git
+	makedepends = python
+	makedepends = opencl-icd-loader
+	makedepends = chrpath
+	depends = opencl-driver
+	optdepends = python: python binding
+	optdepends = opencl-icd-loader: opencl support
+	optdepends = openssl: openssl support
+	source = git+https://github.com/actor-framework/actor-framework#commit=903f801cc479a1dcbc9cc7a0ebdf5f920b981f0c
+	source = git+https://github.com/pybind/pybind11.git
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = actor-framework
 
