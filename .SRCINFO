@@ -1,6 +1,6 @@
 pkgbase = mpv-light
 	pkgdesc = Free, open source, and cross-platform media player – with selection of features.
-	pkgver = 0.29.0
+	pkgver = 0.29.1
 	pkgrel = 1
 	url = https://mpv.io
 	arch = i686
@@ -21,9 +21,9 @@ pkgbase = mpv-light
 	provides = mpv
 	conflicts = mpv
 	options = !emptydirs
-	source = mpv-0.29.0.tar.gz::https://github.com/mpv-player/mpv/archive/v0.29.0.tar.gz
+	source = mpv-0.29.1.tar.gz::https://github.com/mpv-player/mpv/archive/v0.29.1.tar.gz
 	source = https://waf.io/waf-2.0.9
-	sha256sums = 772af878cee5495dcd342788a6d120b90c5b1e677e225c7198f1e76506427319
+	sha256sums = f9f9d461d1990f9728660b4ccb0e8cb5dce29ccaa6af567bec481b79291ca623
 	sha256sums = 2a8e0816f023995e557f79ea8940d322bec18f286917c8f9a6fa2dc3875dfa48
 
 pkgname = mpv-light
