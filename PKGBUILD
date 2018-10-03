@@ -12,7 +12,7 @@ depends=('libgl' 'gcc-libs' 'libxrandr' 'libxinerama' 'fontconfig' 'qt5-declarat
 optdepends=('openal: sound support')
 options=("!strip")
 source=("https://assets.unigine.com/d/${_pkgname}-${pkgver}.run" "Superposition.desktop")
-sha512sums=('1aa51b04381bedb0d3519f1ef90dcc77607b04b124ea3577dcc38eb8e609e5e8c2d21de4b4b19ca5d92542856d152fcec88d19d5b86fca307aa8f7e84f5b28b1'
+sha512sums=('f4fcc04ced770f26a8a1280df1adea1597621bf02dbbc5fc230cf09a11c99e6f9c4b0b912ddd94840bcdb43e601328d677cf7bf9aac0430dc73797d9365191f5'
             'b636d8ad4de15159b6c034f2559dd3b00226f3651e37fecdd2f824a51cbbdbcb05753b8262d79c19f1fd365567d65b5b63fafae7d298ea5e84540de3131427fc')
 PKGEXT=.pkg.tar
 
