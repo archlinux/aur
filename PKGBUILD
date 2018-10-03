@@ -29,9 +29,14 @@ pkgver() {
 build() {
 	cd "$srcdir/klayout"
 
+    # Get thread count to multithread build process.
+    threads="$(grep -c ^processor /proc/cpuinfo)"
+
 	build_opt="-qmake /usr/bin/qmake
 		-ruby /usr/bin/ruby-2.3
-		-python /usr/bin/python3"
+		-python /usr/bin/python3
+        -j${threads}
+        -qt5"
 
    	# apply patch
 	cd ./src/db/db
