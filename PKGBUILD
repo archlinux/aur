@@ -19,6 +19,7 @@ conflicts=('lightdm-pantheon-greeter')
 install='lightdm-pantheon-greeter.install'
 source=('lightdm-pantheon-greeter::git+https://github.com/elementary/greeter.git'
         '0001-bin-not-sbin.patch')
+        '0001-bin-not-sbin.patch')
 sha256sums=('SKIP'
             'f1fd5a443caa80cf95ee36a05421f3418cb1bc86714e47f1314c61128b77054b')
 
