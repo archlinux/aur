@@ -2,7 +2,7 @@
 # Contributor: Alexander Fehr <pizzapunk gmail com>
 
 pkgname=ink
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="Command line tool for checking the ink level of printers"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="http://ink.sourceforge.net/"
 license=('GPL2')
 depends=('libinklevel')
 source=(http://downloads.sourceforge.net/ink/ink-$pkgver.tar.gz)
-md5sums=('9dac3e63797d8b0e53fb57b31e648ae8')
+md5sums=('7ddb245c1b0314a4348f2a43e8d37885')
 
 build() {
   cd "$srcdir/ink-$pkgver"
