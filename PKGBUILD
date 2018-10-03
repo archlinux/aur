@@ -2,7 +2,7 @@
 
 pkgname=terragrunt-bin
 _pkgname=terragrunt
-pkgver=0.14.10
+pkgver=0.16.14
 pkgrel=1
 pkgdesc="A thin wrapper for Terraform that provides extra tools for working with multiple Terraform modules"
 url="https://github.com/gruntwork-io/terragrunt"
@@ -16,7 +16,7 @@ source=(
   "https://raw.githubusercontent.com/gruntwork-io/terragrunt/v${pkgver}/LICENSE.txt"
 )
 sha256sums=(
-  '57fa2ea5870d6e8e79c1f16a53be6a078f37f2c99ada63c1b9182251ea904b3e'
+  'b0496cad5a3d0bec8bfd57aa650344a204fb4ad3a4947b64e5b604882904a0d4'
   'a462de65463e142a430b65770650f5f028d28b60e13a830ac8092506ff2c7146'
 )
 
