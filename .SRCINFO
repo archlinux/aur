@@ -1,16 +1,17 @@
 pkgbase = hdf5-openmpi-java
 	pkgdesc = General purpose library and file format for storing scientific data (openmpi version) (full version including its Java Native Interfaces)
 	pkgver = 1.10.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://portal.hdfgroup.org/display/support
 	arch = x86_64
 	license = custom
+	makedepends = cmake
 	makedepends = time
-	makedepends = gcc-fortran
 	makedepends = java-environment
-	depends = zlib
+	depends = bash
 	depends = libaec
 	depends = openmpi
+	depends = java-runtime
 	provides = hdf5-openmpi
 	provides = hdf5
 	provides = hdf5-cpp-fortran
@@ -18,10 +19,11 @@ pkgbase = hdf5-openmpi-java
 	conflicts = hdf5
 	conflicts = hdf5-openmpi
 	replaces = hdf5-fortran-openmpi
+	options = staticlibs
 	source = https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.10/hdf5-1.10.3/src/hdf5-1.10.3.tar.bz2
 	source = mpi.patch
 	md5sums = 56c5039103c51a40e493b43c504ce982
-	md5sums = dfa8dd50b8a7ebb3ad7249c627156cf9
+	md5sums = 63b43e3d4a5bbea4bcecc84874e08913
 
 pkgname = hdf5-openmpi-java
 
