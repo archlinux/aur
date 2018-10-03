@@ -1,0 +1,9 @@
+post_install() {
+	echo "if you want magnets from others application handle by BMDC++
+	run this command as per user:
+	gconftool-2 --set --type=string /desktop/gnome/url-handlers/magnet/command \"bmdc \'%s\'\";gconftool-2 --set --type=bool /desktop/gnome/url-handlers/magnet/enabled true;gconftool-2 --set --type=bool /desktop/gnome/url-handlers/magnet/need-terminal false;"
+}
+
+post_upgrade() {
+	post_install
+}

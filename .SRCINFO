@@ -1,0 +1,30 @@
+pkgbase = bmdc-git
+	pkgdesc = DC + + client based on the source code FreeDC + + with Ignore Users.
+	pkgver = r946.f249c13b
+	pkgrel = 1
+	url = http://launchpad.net/bmdc++
+	install = bmdc-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	makedepends = git
+	makedepends = scons
+	makedepends = gcc
+	depends = bzip2
+	depends = gtk3>=3.6
+	depends = libnotify
+	depends = openssl
+	depends = libtar
+	depends = libcanberra
+	depends = gettext
+	provides = bmdc
+	conflicts = linuxdcpp
+	conflicts = linuxdcpp-bzr
+	conflicts = linuxdcpp-bzr-i18n
+	conflicts = freedcpp
+	source = git+https://github.com/bmdcpp/bmdc.git
+	md5sums = SKIP
+
+pkgname = bmdc-git
+
