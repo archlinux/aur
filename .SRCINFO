@@ -1,7 +1,7 @@
 pkgbase = powerpill
 	pkgdesc = Pacman wrapper for faster downloads.
 	pkgver = 2018.9.8
-	pkgrel = 1
+	pkgrel = 3
 	url = https://xyne.archlinux.ca/projects/powerpill
 	arch = any
 	license = GPL
