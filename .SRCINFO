@@ -1,7 +1,7 @@
 pkgbase = curv-git
 	pkgdesc = a language for making art using mathematics
 	pkgver = 0.3.r43.g7d922f3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/doug-moen/curv
 	arch = x86_64
 	license = Apache

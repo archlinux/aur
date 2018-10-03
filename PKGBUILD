@@ -3,7 +3,7 @@
 _pkgname=curv
 pkgname="$_pkgname-git"
 pkgver=0.3.r43.g7d922f3
-pkgrel=2
+pkgrel=3
 pkgdesc="a language for making art using mathematics"
 url="https://github.com/doug-moen/curv"
 arch=('x86_64')
@@ -25,6 +25,9 @@ prepare() {
   cd "$_pkgname"
   git submodule update --init
   patch -Np1 -i "${srcdir}/remove_lang_file.patch"
+
+  echo '#define CURV_VERSION "'`git describe --tags --always --dirty`'"' >,v
+  if cmp -s ,v libcurv/version.h; then rm ,v; else mv ,v libcurv/version.h; fi
 
   mkdir -p release
   cd release
