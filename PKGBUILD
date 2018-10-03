@@ -18,8 +18,8 @@ pkgdesc="SCSI Tape Encryption Manager"
 arch=('i686' 'x86_64')
 license=('GPLv2')
 url="http://stenc.sourceforge.net/"
-source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('30a1032cecd1b79a3fa43a297461923a')
+source=("https://github.com/scsitape/${pkgname}/archive/${pkgver}.tar.gz")
+md5sums=('3783cd4e23076b6330e2645b5114e946')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
