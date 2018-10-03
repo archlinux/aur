@@ -3,7 +3,7 @@
 # Contributor: Kevin Piche <kevin@archlinux.org>
 # Contributor: Manolis Tzanidakis
 pkgname=e2guardian
-pkgver=4.1.4
+pkgver=5.1.2
 pkgrel=1
 pkgdesc="Fork of dansguardian, an open source web content filter. It filters the actual content of pages based on many methods including phrase matching, request header and URL filtering, etc. It does not purely filter based on a banned list of sites."
 url="http://e2guardian.org"
@@ -18,7 +18,7 @@ install=${pkgname}.install
 source=(https://github.com/e2guardian/${pkgname}/archive/v${pkgver}.tar.gz
          e2guardian
         e2guardian.service)
-sha1sums=('79d33389b63c94475253f77c8d2979b2fd9fac59'
+sha1sums=('2f616a17fe87f0ee28e7807a9e129a011fbbaf4a'
           '4505b1e66cc1f64b06eacb277de24c453831f215'
           'a4179286aa0d0bf3bb71f5459075a02ceaf0d518')
 
@@ -44,8 +44,6 @@ package() {
 backup=(etc/e2guardian/e2guardian.conf 
 etc/e2guardian/e2guardianf1.conf
 etc/e2guardian/downloadmanagers/default.conf
-etc/e2guardian/downloadmanagers/fancy.conf
-etc/e2guardian/downloadmanagers/trickle.conf
 etc/e2guardian/authplugins/proxy-digest.conf
 etc/e2guardian/authplugins/proxy-basic.conf
 etc/e2guardian/authplugins/ident.conf
@@ -139,11 +137,8 @@ etc/e2guardian/lists/logsitelist
 etc/e2guardian/lists/logregexpurllist
 etc/e2guardian/lists/greysitelist
 etc/e2guardian/lists/filtergroupslist
-etc/e2guardian/lists/downloadmanagers/managedmimetypelist
-etc/e2guardian/lists/downloadmanagers/managedextensionlist
 etc/e2guardian/lists/exceptionfilesitelist
 etc/e2guardian/lists/bannedmimetypelist
-etc/e2guardian/lists/pics
 etc/e2guardian/lists/exceptionurllist
 etc/e2guardian/lists/logurllist
 etc/e2guardian/lists/exceptionphraselist
