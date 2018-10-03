@@ -1,10 +1,11 @@
-# Maintainer: Alex Whitt <alex.joseph.whitt@gmail.com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Alex Whitt <alex.joseph.whitt@gmail.com>
 
 pkgname=emacs-git-timemachine
 pkgver=4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Step through historic versions of git controlled file using everyone's favourite editor"
-arch=(any)
+arch=('any')
 url="https://gitlab.com/pidu/git-timemachine.git"
 license=('GPL3')
 depends=('emacs')

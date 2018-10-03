@@ -1,7 +1,7 @@
 pkgbase = emacs-git-timemachine
 	pkgdesc = Step through historic versions of git controlled file using everyone's favourite editor
 	pkgver = 4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/pidu/git-timemachine.git
 	arch = any
 	license = GPL3
