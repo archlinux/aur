@@ -1,7 +1,7 @@
 # Maintainer : Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=caffe2-git
-pkgver=0.8.2.r13647.ga2ebbccc9f
+pkgver=0.8.2.r13687.gd1ac1eba3b
 pkgrel=1
 epoch=1
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (git version)'
@@ -29,7 +29,7 @@ depends=(
 )
 makedepends=('git' 'cmake')
 provides=('caffe2')
-conflicts=('caffe2' 'caffe2-cuda' 'caffe2-cuda-git' 'caffe2-cpu' 'caffe2-cpu-git')
+conflicts=('caffe2' 'caffe2-cuda' 'caffe2-cuda-git')
 replaces=('caffe2-cpu-git')
 options=('!emptydirs')
 source=(
