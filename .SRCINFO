@@ -1,17 +1,18 @@
 pkgbase = spotifywm-git
 	pkgdesc = Makes Spotify more friendly to window managers by settings a class name before opening the window.
-	pkgver = 0.0.1
-	pkgrel = 2
+	pkgver = 0.0.r1.91dd553
+	pkgrel = 1
 	url = https://github.com/dasJ/spotifywm
 	arch = i686
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	depends = libx11
 	depends = sh
 	source = spotifywm::git+https://github.com/dasJ/spotifywm/
 	source = spotify.sh
 	md5sums = SKIP
-	md5sums = 9d8aa6c940bd70f8f9d74be42c8eb6f0
+	md5sums = 8e9bebb59dc39274f0ceb5340272082a
 
 pkgname = spotifywm-git
 
