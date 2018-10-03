@@ -2,7 +2,7 @@
 
 pkgname=cuteshapes-git
 _pkgname=cuteshapes
-pkgver=3d46f69
+pkgver=r19.be3d485
 pkgrel=1
 pkgdesc='Live wallpapers for KDE Plasma 5 by trueleo'
 url='https://github.com/trueleo/me.trueleo.cuteshapes'
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd me.trueleo.cuteshapes
-  git describe --always
+  echo "r$(git rev-list --count HEAD).$(git describe --always)"
 }
 
 package() {

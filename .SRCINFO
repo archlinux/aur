@@ -1,6 +1,6 @@
 pkgbase = cuteshapes-git
 	pkgdesc = Live wallpapers for KDE Plasma 5 by trueleo
-	pkgver = 3d46f69
+	pkgver = r19.be3d485
 	pkgrel = 1
 	url = https://github.com/trueleo/me.trueleo.cuteshapes
 	arch = any
