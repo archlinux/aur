@@ -1,7 +1,7 @@
 pkgbase = i3lock-fancy-rapid-git
 	pkgdesc = A faster implementation of i3lock-fancy
-	pkgver = r6.e3c0f4a
-	pkgrel = 2
+	pkgver = r7.f055acf
+	pkgrel = 1
 	url = https://github.com/yvbbrjdr/i3lock-fancy-rapid
 	arch = x86_64
 	license = BSD
