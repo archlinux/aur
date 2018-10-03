@@ -8,9 +8,9 @@ pkgdesc="CLI tool for Kubelet Container Runtime Interface (CRI)"
 arch=(x86_64)
 url="https://github.com/kubernetes-incubator/cri-tools/blob/master/docs/crictl.md"
 license=('Apache')
-source=("cri-tools-${pkgver}.tar.gz::https://github.com/kubernetes-incubator/cri-tools/archive/v${pkgver}.tar.gz"
+source=("git+https://github.com/kubernetes-incubator/cri-tools#tag=v${pkgver}"
         "crictl.yaml")
-sha256sums=('a357c67c891896032865f7a34f7ec330e5a00fe7f20b6d8be50399b91c99a4ac'
+sha256sums=('SKIP'
             'd2725490e1fb2e6f565605f09871c1440371b85e04de5d70bbac05954d827f72')
 
 build() {

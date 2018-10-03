@@ -5,9 +5,9 @@ pkgbase = crictl
 	url = https://github.com/kubernetes-incubator/cri-tools/blob/master/docs/crictl.md
 	arch = x86_64
 	license = Apache
-	source = cri-tools-1.11.1.tar.gz::https://github.com/kubernetes-incubator/cri-tools/archive/v1.11.1.tar.gz
+	source = git+https://github.com/kubernetes-incubator/cri-tools#tag=v1.11.1
 	source = crictl.yaml
-	sha256sums = a357c67c891896032865f7a34f7ec330e5a00fe7f20b6d8be50399b91c99a4ac
+	sha256sums = SKIP
 	sha256sums = d2725490e1fb2e6f565605f09871c1440371b85e04de5d70bbac05954d827f72
 
 pkgname = crictl
