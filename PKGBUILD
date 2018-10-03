@@ -6,7 +6,7 @@ pkgdesc="Typora will give you a seamless experience as both a reader and a write
 arch=('x86_64')
 license=('custom:"Copyright (c) 2015 Abner Lee All Rights Reserved."')
 url="https://typora.io/"
-depends=('gconf' 'libxss')
+depends=('gconf' 'libxss' 'electron')
 optdepends=('noto-fonts-emoji: Or some other emoji font to see emojis')
 source=(
 	'typora.js'

@@ -7,6 +7,7 @@ pkgbase = typora
 	license = custom:"Copyright (c) 2015 Abner Lee All Rights Reserved."
 	depends = gconf
 	depends = libxss
+	depends = electron
 	optdepends = noto-fonts-emoji: Or some other emoji font to see emojis
 	source = typora.js
 	source = https://typora.io/./linux/typora_0.9.58_amd64.deb
