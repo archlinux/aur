@@ -1,0 +1,13 @@
+pkgbase = emacs-commander
+	pkgdesc = Command line parsing for emacs
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/rejeep/commander.el.git
+	arch = any
+	license = GPL3
+	depends = emacs
+	source = emacs-commander-0.7.0.tar.gz::https://github.com/rejeep/commander.el/archive/v0.7.0.tar.gz
+	sha256sums = 5eb0f7f016b484ffc91bcd54ced1b0455667e5ee93077a92eafc9d5f4214daa4
+
+pkgname = emacs-commander
+
