@@ -3,13 +3,13 @@
 _pkgname=i3lock-fancy-rapid
 pkgname=$_pkgname-git
 pkgver=r6.e3c0f4a
-pkgrel=1
+pkgrel=2
 pkgdesc="A faster implementation of i3lock-fancy"
 arch=('x86_64')
 url="https://github.com/yvbbrjdr/$_pkgname"
 license=('BSD')
-depends=('i3lock' 'libx11' 'openmp')
-makedepends=('libx11' 'openmp')
+depends=('i3lock' 'libx11')
+makedepends=('libx11')
 source=("$pkgname::git+$url")
 sha512sums=('SKIP')
 
