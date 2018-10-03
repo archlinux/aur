@@ -9,7 +9,7 @@ pkgdesc="High Performance Layout Viewer And Editor. Support of GDS and OASIS fil
 arch=('i686' 'x86_64')
 url="http://www.klayout.org/"
 license=('GPL')
-depends=('qt5-base' 'qt5-tools' 'qt5-multimedia' 'qt5-xmlpatterns' 'qt5-svg' 'ruby2.3' 'python')
+depends=('qt5-base' 'qt5-tools' 'qt5-multimedia' 'qt5-xmlpatterns' 'qt5-svg' 'ruby' 'python')
 source=(
     'klayout::git+https://github.com/klayoutmatthias/klayout#branch=master'
 	klayoutEditor.desktop
@@ -33,7 +33,7 @@ build() {
     threads="$(grep -c ^processor /proc/cpuinfo)"
 
 	build_opt="-qmake /usr/bin/qmake
-		-ruby /usr/bin/ruby-2.3
+		-ruby /usr/bin/ruby
 		-python /usr/bin/python3
         -j${threads}
         -qt5"
