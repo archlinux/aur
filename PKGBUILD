@@ -6,7 +6,7 @@ pkgver=1.4.1.r123.ge927fecbb
 pkgrel=1
 pkgdesc="A keyboard-driven, vim-like browser based on PyQt5"
 arch=(any)
-url="http://www.qutebrowser.org/"
+url="https://www.qutebrowser.org/"
 license=('GPL')
 depends=('python' 'python-setuptools' 'python-pyqt5' 'qt5-base'
          'qt5-webengine' 'qt5-declarative' 'python-pypeg2' 'python-jinja'
