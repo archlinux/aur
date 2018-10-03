@@ -3,13 +3,13 @@
 _pkgname=curv
 pkgname="$_pkgname-git"
 pkgver=0.3.r43.g7d922f3
-pkgrel=1
+pkgrel=2
 pkgdesc="a language for making art using mathematics"
 url="https://github.com/doug-moen/curv"
 arch=('x86_64')
 license=('Apache')
-makedepends=('make' 'cmake' 'git' 'boost' 'glm')
-depends=('boost-libs' 'double-conversion' 'openexr' 'intel-tbb')
+makedepends=('cmake' 'git' 'boost' 'openexr' 'glm')
+depends=('boost-libs' 'double-conversion' 'ilmbase' 'intel-tbb')
 
 source=("git+https://github.com/doug-moen/curv"
         "remove_lang_file.patch")
