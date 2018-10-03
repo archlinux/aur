@@ -19,10 +19,30 @@
 
 pkgbase=kodi-pre-release
 pkgname=("kodi-${pkgbase#kodi-*}" "kodi-eventclients-${pkgbase#kodi-*}" "kodi-tools-texturepacker-${pkgbase#kodi-*}" "kodi-dev-${pkgbase#kodi-*}")
-pkgver=18.0b2
-pkgrel=2
-_commit=7868a27c6a83eafd3bf505172b59481868d940fb
-_short=${_commit::+7}
+pkgver=18.0b3
+pkgrel=1
+_codename=Leia
+_tag="18.0b3-$_codename"
+# Found on their respective github release pages. One can check them against
+# what is pulled down when not specifying them in the cmake step.
+# $CHROOT/build/kodi-pre-release/src/kodi-build/build/download
+#
+# https://github.com/xbmc/FFmpeg/tags
+# https://github.com/xbmc/libdvdcss/tags
+# https://github.com/xbmc/libdvdnav/tags
+# https://github.com/xbmc/libdvdread/tags
+#
+# fmt and crossguid can be found http://mirrors.kodi.tv/build-deps/sources/
+#
+_rtype=Alpha
+_ffmpeg_version="4.0.2-$_codename-$_rtype"3
+_libdvdcss_version="1.4.1-$_codename-Beta"-3
+_libdvdnav_version="6.0.0-$_codename-$_rtype"-3
+_libdvdread_version="6.0.0-$_codename-$_rtype"-3
+_fmt_version="3.0.1"
+_crossguid_version="8f399e8bd4"
+_fstrcmp_version="0.7.D001"
+_flatbuffers_version="1.9.0"
 arch=('x86_64')
 url="http://kodi.tv"
 license=('GPL2')
@@ -36,29 +56,8 @@ makedepends=(
   'shairplay' 'smbclient' 'speex' 'swig' 'taglib' 'tinyxml' 'unzip' 'upower'
   'yajl' 'zip' 'git' 'giflib' 'rapidjson' 'ghostscript'
 )
-# Found on their respective github release pages. One can check them against
-# what is pulled down when not specifying them in the cmake step.
-# $CHROOT/build/kodi-pre-release/src/kodi-build/build/download
-#
-# https://github.com/xbmc/FFmpeg/tags
-# https://github.com/xbmc/libdvdcss/tags
-# https://github.com/xbmc/libdvdnav/tags
-# https://github.com/xbmc/libdvdread/tags
-#
-# fmt and crossguid can be found http://mirrors.kodi.tv/build-deps/sources/
-#
-_codename=Leia
-_rtype=Alpha
-_ffmpeg_version="4.0.2-$_codename-$_rtype"3
-_libdvdcss_version="1.4.1-$_codename-Beta"-3
-_libdvdnav_version="6.0.0-$_codename-$_rtype"-3
-_libdvdread_version="6.0.0-$_codename-$_rtype"-3
-_fmt_version="3.0.1"
-_crossguid_version="8f399e8bd4"
-_fstrcmp_version="0.7.D001"
-_flatbuffers_version="1.9.0"
 source=(
-  "${pkgbase%%-*}-$pkgver-$_codename.tar.gz::https://api.github.com/repos/xbmc/xbmc/tarball/$_commit"
+  "${pkgbase%%-*}-$_tag.tar.gz::https://github.com/xbmc/xbmc/archive/$_tag.tar.gz"
   "ffmpeg-$_ffmpeg_version.tar.gz::https://github.com/xbmc/FFmpeg/archive/$_ffmpeg_version.tar.gz"
   "libdvdcss-$_libdvdcss_version.tar.gz::https://github.com/xbmc/libdvdcss/archive/$_libdvdcss_version.tar.gz"
   "libdvdnav-$_libdvdnav_version.tar.gz::https://github.com/xbmc/libdvdnav/archive/$_libdvdnav_version.tar.gz"
@@ -71,16 +70,16 @@ source=(
   'cpuinfo'
 )
 noextract=(
-  "ffmpeg-$_ffmpeg_version.tar.gz"
   "libdvdcss-$_libdvdcss_version.tar.gz"
   "libdvdnav-$_libdvdnav_version.tar.gz"
   "libdvdread-$_libdvdread_version.tar.gz"
+  "ffmpeg-$_ffmpeg_version.tar.gz"
   "fmt-$_fmt_version.tar.gz"
   "crossguid-$_crossguid_version.tar.gz"
   "fstrcmp-$_fstrcmp_version.tar.gz"
   "flatbuffers-$_flatbuffers_version.tar.gz"
 )
-sha256sums=('fd36de783dbf37fa21714ec9d080cc0495eff5018f3d37cf376131a6cd0cf767'
+sha256sums=('cc5f1a75287438b2336c49a265019a4cab9626235e05a70345d77e4cecd6dce3'
             '0e4980abac7b886e0eb5f4157941947be3c10d616a19bd311dc2f9fd2eb6a631'
             '579aa102ac14ff4a21aa4081fe47f8cb3941002a37ee96286d3737afd79e80d9'
             '071e414e61b795f2ff9015b21a85fc009dde967f27780d23092643916538a57a'
@@ -95,8 +94,9 @@ sha256sums=('fd36de783dbf37fa21714ec9d080cc0495eff5018f3d37cf376131a6cd0cf767'
 prepare() {
   [[ -d kodi-build ]] && rm -rf kodi-build
   mkdir kodi-build
+  
+  cd "xbmc-$_tag"
 
-  cd "xbmc-xbmc-$_short"
   # detect if building in arch chroot
   if [[ "$srcdir" =~ ^\/build.* ]]; then
     patch -Np1 -i "$srcdir/cheat-sse-build.patch"
@@ -113,20 +113,20 @@ build() {
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
     -DENABLE_EVENTCLIENTS=ON \
+    -DENABLE_INTERNAL_FFMPEG=ON \
+    -DENABLE_INTERNAL_FMT=ON \
+    -DENABLE_INTERNAL_CROSSGUID=ON \
+    -DENABLE_INTERNAL_FSTRCMP=ON \
+    -DENABLE_INTERNAL_FLATBUFFERS=ON \
     -Dlibdvdcss_URL="$srcdir/libdvdcss-$_libdvdcss_version.tar.gz" \
     -Dlibdvdnav_URL="$srcdir/libdvdnav-$_libdvdnav_version.tar.gz" \
     -Dlibdvdread_URL="$srcdir/libdvdread-$_libdvdread_version.tar.gz" \
     -DFFMPEG_URL="$srcdir/ffmpeg-$_ffmpeg_version.tar.gz" \
-    -DENABLE_INTERNAL_FFMPEG=ON \
     -DFMT_URL="$srcdir/fmt-$_fmt_version.tar.gz" \
-    -DENABLE_INTERNAL_FMT=ON \
     -DCROSSGUID_URL="$srcdir/crossguid-$_crossguid_version.tar.gz" \
-    -DENABLE_INTERNAL_CROSSGUID=ON \
     -DFSTRCMP_URL="$srcdir/fstrcmp-$_fstrcmp_version.tar.gz" \
-    -DENABLE_INTERNAL_FSTRCMP=ON \
     -DFLATBUFFERS_URL="$srcdir/flatbuffers-$_flatbuffers_version.tar.gz" \
-    -DENABLE_INTERNAL_FLATBUFFERS=ON \
-    ../"xbmc-xbmc-$_short"
+    ../"xbmc-$_tag"
   make
   make preinstall
 }
