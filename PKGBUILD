@@ -2,27 +2,23 @@
 
 pkgname=emojicode
 pkgver=0.6.0
-pkgrel=7
+pkgrel=8
 pkgdesc="An open-source, full-blown programming language consisting of emojis"
 arch=('i686' 'x86_64')
 url="https://emojicode.org"
 license=("custom")
 depends=("ncurses")
-makedepends=("llvm" "cmake>=3.5.1" "ninja" "gcc>=7.2" "python>=3.5.2")
+makedepends=("llvm60" "cmake>=3.5.1" "ninja" "gcc>=7.2" "python>=3.5.2")
 checkdepends=("python>=3.5.2")
 source=("${pkgname}::git+https://github.com/emojicode/emojicode#tag=v0.6")
 md5sums=("SKIP")
-
-prepare() {
-    sed -i "s|/usr/local/EmojicodePackages|/usr/lib/emojicode|" "${srcdir}/${pkgname}/Compiler/CLI/Options.cpp"
-}
 
 build() {
     cd "${srcdir}/${pkgname}"
 
     mkdir -p build
     cd build
-    cmake .. -GNinja
+    cmake -DdefaultPackagesDirectory=/usr/lib/emojicode .. -GNinja
 
     ninja
 }
