@@ -1,8 +1,10 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 _srcname=mpv
+_wafver=2.0.9
+
 pkgname=mpv-full
-pkgver=0.29.0
+pkgver=0.29.1
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (with all possible libs)'
 arch=('i686' 'x86_64')
@@ -27,23 +29,18 @@ provides=('mpv')
 conflicts=('mpv' 'mpv-git' 'mpv-full-git')
 options=('!emptydirs')
 source=("${_srcname}-${pkgver}.tar.gz"::"https://github.com/mpv-player/${_srcname}/archive/v${pkgver}.tar.gz"
-        'mpv-full-fix-manpage-mistaken-function-keys.patch')
-sha256sums=('772af878cee5495dcd342788a6d120b90c5b1e677e225c7198f1e76506427319'
-            '1497b7a66feaf059f97115af528229c7a8d201fe68f0d07861ac556b976c18c7')
+        "https://waf.io/waf-${_wafver}")
+sha256sums=('f9f9d461d1990f9728660b4ccb0e8cb5dce29ccaa6af567bec481b79291ca623'
+            '2a8e0816f023995e557f79ea8940d322bec18f286917c8f9a6fa2dc3875dfa48')
 
 prepare() {
     cd "${_srcname}-${pkgver}"
     
-    # manpage: fixup mistaken show playlist/track-list shortcuts
-    # https://github.com/mpv-player/mpv/commit/45beb7073a1cef89e87a2d562ce8c233fc140dae
-    patch -Np1 -i "${srcdir}/mpv-full-fix-manpage-mistaken-function-keys.patch"
+    install -m755 "${srcdir}/waf-${_wafver}" waf
 }
 
 build() {
     cd "${_srcname}-${pkgver}"
-    
-    msg2 'Running bootstrap. Please wait...'
-    ./bootstrap.py
     
     ./waf configure \
         --color='yes' \
@@ -67,6 +64,7 @@ build() {
         --disable-clang-database \
         \
         --disable-android \
+        --disable-swift \
         --disable-uwp \
         --disable-win32-internal-pthreads \
         --enable-iconv \
@@ -157,7 +155,7 @@ build() {
         --disable-apple-remote \
         --disable-macos-touchbar \
         --disable-macos-cocoa-cb
-    
+        
     ./waf build
 }
 
