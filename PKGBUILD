@@ -2,13 +2,13 @@
 
 pkgname=cozy-desktop
 pkgver=3.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="File synchronisation for Cozy Cloud on Desktop"
 arch=('any')
-url="https://docs.cozy.io/en/sync/desktop/"
+url="https://cozy-labs.github.io/cozy-desktop/"
 license=('AGPL3')
 depends=('electron' 'nodejs-lts-carbon')
-makedepends=('npm' 'git' 'node-gyp' 'python2')
+makedepends=('yarn' 'git' 'node-gyp' 'python2')
 source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/cozy-labs/${pkgname}/archive/v${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.sh"
@@ -20,17 +20,20 @@ sha256sums=('282a22ca9576bbf4d8590a9383f94e3547675f5024217fe3e62f1929ae756365'
 
 prepare() {
     cd ${pkgname}-${pkgver}
-    npm install --cache "${srcdir}"/npm-cache
+    #npm install --cache "${srcdir}"/npm-cache
+    yarn install
 }
 
 build() {
     cd ${pkgname}-${pkgver}
-    npm run build --cache "${srcdir}"/npm-cache
+    #npm run build --cache "${srcdir}"/npm-cache
+    yarn build
 }
 
 package() {
     cd ${pkgname}-${pkgver}
-    npm run dist --dir --cache "${srcdir}"/npm-cache
+    #npm run dist --dir --cache "${srcdir}"/npm-cache
+    yarn dist --dir
 
     install -dm755 "${pkgdir}"/usr/lib/${pkgname}
     cp -r dist/linux-unpacked/resources "${pkgdir}"/usr/lib/${pkgname}/
