@@ -1,7 +1,7 @@
 # Maintainer: alswl <alswlx@gmail.com>
 
 pkgname=foxone
-pkgver=1.8.2
+pkgver=1.8.5
 pkgrel=1
 pkgdesc="Fox.One is a trading app for cryptocurrency users, fusing together every crypto exchange in the world, help them trade smarter, faster, and with more profits and opportunities."
 arch=("x86_64")
@@ -20,10 +20,10 @@ source=(
 )
 noextract=("Fox-${pkgver}.bin")
 sha256sums=(
-    "b89de68bcdf02b90518b369b8b0a9ecbb41c8c5111239352565511bd7d208310"
+    "1ef9ce0265d148e31b9812bd041a2f82605833653c8dfa8b8c1a3cc260c98bdf"
     "dec3e707f36cc4c27916f9eb92ca5c46a5690ab0887256190ed3faa07391fac1"
     "5c3f8bb3ace24a55bd92ea57a6cad93d2ade8e5dd5a363d6a9b114de62c28e07"
-    "f77f7b773fa3274cb779b0daf9da239dcb0eb821e2963bf7a9d0231bbf494a38"
+    "5c3f8bb3ace24a55bd92ea57a6cad93d2ade8e5dd5a363d6a9b114de62c28e07"
 )
 
 package() {
