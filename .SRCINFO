@@ -1,15 +1,15 @@
 pkgbase = atem
 	pkgdesc = A command-line tool to convert MetaStock (DataLink) binary data to ASCII text
-	pkgver = 0.3.5
+	pkgver = 0.4.0
 	pkgrel = 1
-	url = http://freecode.com/projects/atem
+	url = https://github.com/rudimeier/atem
 	arch = i686
 	arch = x86_64
 	license = BSD-3
 	makedepends = help2man
 	options = !emptydirs
-	source = https://bitbucket.org/rudimeier/atem/downloads/atem-0.3.5.tar.gz
-	sha1sums = 0d20551e400e45589785055edb2efc63a1d35a8c
+	source = https://bitbucket.org/rudimeier/atem/downloads/atem-0.4.0.tar.gz
+	sha1sums = df93f0ad837685ff7edad8b7be237d3a81454f13
 
 pkgname = atem
 
