@@ -7,8 +7,8 @@ pkgbase=systemd-git
 _pkgbase=systemd
 pkgname=('systemd-git' 'libsystemd-git' 'systemd-resolvconf-git' 'systemd-sysvcompat-git')
 pkgdesc="systemd (git version)"
-pkgver=239.1014
-pkgrel=2
+pkgver=239.1099
+pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
@@ -107,7 +107,7 @@ build() {
     -Dsysvrcnd-path=
   )
   
-  arch-meson "$_pkgbase" build "${meson_options[@]}"
+  arch-meson "$_pkgbase" build "${_meson_options[@]}"
 
   ninja -C build
 }
@@ -124,7 +124,7 @@ package_systemd-git() {
   depends=('acl' 'bash' 'cryptsetup' 'dbus' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
            'libgcrypt' 'libsystemd' 'libidn2' 'lz4' 'pam' 'libelf' 'libseccomp'
            'util-linux' 'xz' 'pcre2' 'audit')
-  provides=( "${_pkgbase}=$pkgver" 'nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver")
+  provides=("${_pkgbase}=$pkgver" 'nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver")
   replaces=("${_pkgbase}" 'nss-myhostname' 'systemd-tools' 'udev')
   conflicts=("${_pkgbase}" 'nss-myhostname' 'systemd-tools' 'udev')
   optdepends=('libmicrohttpd: remote journald capabilities'
