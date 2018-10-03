@@ -2,7 +2,7 @@
 # Contributor: nfnty <arch at nfnty dot se>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=ranger-git
-pkgver=1.9.2.2.g8e9451e6
+pkgver=1.9.2.4.g036d2f31
 pkgrel=1
 pkgdesc="A simple, vim-like file manager."
 arch=('any')
@@ -17,6 +17,7 @@ optdepends=('atool: for previews of archives'
             'mediainfo: for viewing information about media files'
             'perl-image-exiftool: for viewing information about media files'
             'poppler: for pdf previews'
+            'python-bidi: for bidi algorithm support'
             'python-chardet: in case of encoding detection problems'
             'sudo: to use the "run as root"-feature'
             'transmission-cli: for viewing bittorrent information'
