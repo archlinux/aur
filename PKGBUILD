@@ -9,28 +9,28 @@ url="http://kubernetes.io"
 license=('apache')
 conflicts=('kubernetes')
 source_x86_64=(
-  'https://packages.cloud.google.com/apt/pool/kubelet_1.11.2-00_amd64_7537d39713573280e1cc245915fc7565ac49d041fbd0e0515daa1ea2ac659dbb.deb'
+  'https://packages.cloud.google.com/apt/pool/kubelet_1.12.0-00_amd64_24f580dcc7cb8cb8439da40c2e1488f1851dac9dfaac0b64b94492538e59f948.deb'
 )
 source_armv7l=(
-  'https://packages.cloud.google.com/apt/pool/kubelet_1.11.2-00_armhf_f882dcdfd44ab0a3b8c365fdde3cfd58260e9cc6e6d3530fdae9734416b5ad31.deb'
+  'https://packages.cloud.google.com/apt/pool/kubelet_1.12.0-00_armhf_6ba891878207c8ae0588ff60a0e7ce96654c69817f84b4c99de9a8c285c719f5.deb'
 )
 source_armv7h=(
-  'https://packages.cloud.google.com/apt/pool/kubelet_1.11.2-00_armhf_f882dcdfd44ab0a3b8c365fdde3cfd58260e9cc6e6d3530fdae9734416b5ad31.deb'
+  'https://packages.cloud.google.com/apt/pool/kubelet_1.12.0-00_armhf_6ba891878207c8ae0588ff60a0e7ce96654c69817f84b4c99de9a8c285c719f5.deb'
 )
 source_aarch64=(
-  'https://packages.cloud.google.com/apt/pool/kubelet_1.11.2-00_arm64_8bd7acd0f63d4653994b2e423a847e0838dae823da48a069f48296f63b460b5e.deb'
+  'https://packages.cloud.google.com/apt/pool/kubelet_1.12.0-00_arm64_2dc185a17dabf63928bb6094f4025e5fa8a00da36af7fa9eb98cf0ca3f389df4.deb'
 )
 sha256sums_x86_64=(
-  '7537d39713573280e1cc245915fc7565ac49d041fbd0e0515daa1ea2ac659dbb'
+  '24f580dcc7cb8cb8439da40c2e1488f1851dac9dfaac0b64b94492538e59f948'
 )
 sha256sums_armv7l=(
-  'f882dcdfd44ab0a3b8c365fdde3cfd58260e9cc6e6d3530fdae9734416b5ad31'
+  '6ba891878207c8ae0588ff60a0e7ce96654c69817f84b4c99de9a8c285c719f5'
 )
 sha256sums_armv7h=(
-  'f882dcdfd44ab0a3b8c365fdde3cfd58260e9cc6e6d3530fdae9734416b5ad31'
+  '6ba891878207c8ae0588ff60a0e7ce96654c69817f84b4c99de9a8c285c719f5'
 )
 sha256sums_aarch64=(
-  '8bd7acd0f63d4653994b2e423a847e0838dae823da48a069f48296f63b460b5e'
+  '2dc185a17dabf63928bb6094f4025e5fa8a00da36af7fa9eb98cf0ca3f389df4'
 )
 
 package() {
