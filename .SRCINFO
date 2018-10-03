@@ -1,10 +1,12 @@
 pkgbase = apparmor-git
 	pkgdesc = Mandatory Access Control (MAC) using Linux Security Module (LSM)
-	pkgver = 2.13.r234.g395aed72
+	pkgver = 2.13.r237.g63cb46d2
 	pkgrel = 1
 	url = https://gitlab.com/apparmor/apparmor
 	arch = x86_64
 	license = GPL
+	checkdepends = dejagnu
+	checkdepends = perl-locale-gettext
 	makedepends = git
 	makedepends = swig
 	makedepends = chrpath
@@ -14,7 +16,7 @@ pkgbase = apparmor-git
 	depends = python
 	optdepends = perl: perl bindings
 	optdepends = ruby: ruby bindings
-	provides = apparmor=2.13.r234.g395aed72
+	provides = apparmor=2.13.r237.g63cb46d2
 	provides = libapparmor
 	conflicts = apparmor
 	replaces = apparmor-libapparmor

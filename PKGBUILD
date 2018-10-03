@@ -2,7 +2,7 @@
 # Contributor: David Runge <dave@sleepmap.de>
 
 pkgname=apparmor-git
-pkgver=2.13.r234.g395aed72
+pkgver=2.13.r237.g63cb46d2
 pkgrel=1
 pkgdesc='Mandatory Access Control (MAC) using Linux Security Module (LSM)'
 arch=('x86_64')
@@ -10,6 +10,8 @@ url='https://gitlab.com/apparmor/apparmor'
 license=('GPL')
 depends=('audit' 'pam' 'python')
 makedepends=('git' 'swig' 'chrpath' 'ruby')
+checkdepends=('dejagnu' 'perl-locale-gettext')
+ # 'python-pyflakes'
 optdepends=('perl: perl bindings'
             'ruby: ruby bindings')
 conflicts=("${pkgname%-git}")
@@ -45,7 +47,7 @@ prepare() {
 	# fix default vim syntax file installation path
 	sed -e 's/share\/apparmor/share\/vim\/vimfiles\/syntax/' -i utils/vim/Makefile
 	cd "${srcdir}/${pkgname%-git}/libraries/libapparmor"
-	autoreconf -vfi
+	./autogen.sh
 }
 
 build() {
@@ -59,12 +61,13 @@ build() {
 		--prefix=/usr \
 		--sbindir=/usr/bin \
 		--sysconfdir=/etc \
-		--with-pic=yes \
+		--with-pic \
 		--with-perl \
 		--with-python \
 		--with-ruby
 	make
 	cd "${srcdir}/${pkgname%-git}"
+	make -C binutils
 	make -C parser
 	make -C profiles
 	make -C utils
@@ -72,10 +75,20 @@ build() {
 	make -C utils/vim
 }
 
+check() {
+	cd "${srcdir}/${pkgname%-git}"
+	make -C libraries/libapparmor check
+	make -C binutils check
+	make -C parser check
+	#make -C utils check
+	#make -C profiles check
+}
+
 package() {
 	cd "${srcdir}/${pkgname%-git}"
 	make -C libraries/libapparmor DESTDIR="${pkgdir}" install
 	make -C changehat/pam_apparmor DESTDIR="${pkgdir}/usr" install
+	make -C binutils DESTDIR="${pkgdir}" install
 	make -C parser DESTDIR="${pkgdir}" USR_SBINDIR="${pkgdir}/usr/bin" install
 	make -C parser DESTDIR="${pkgdir}" USR_SBINDIR="${pkgdir}/usr/bin" install-systemd
 	make -C profiles DESTDIR="${pkgdir}" install
