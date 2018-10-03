@@ -3,7 +3,7 @@
 
 pkgname=thunderbird-beta-bin
 _pkgname=thunderbird-beta
-pkgver=60.2.1rc1
+pkgver=60.2.1
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 pkgrel=1
