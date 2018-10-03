@@ -1,7 +1,7 @@
 pkgbase = unity-editor-beta-doc
 	pkgdesc = Unity User Manual and Scripting API Reference.
-	pkgver = 2018.3.0b2
-	pkgrel = 2
+	pkgver = 2018.3.0b3
+	pkgrel = 1
 	url = https://unity3d.com/
 	arch = x86_64
 	license = custom
