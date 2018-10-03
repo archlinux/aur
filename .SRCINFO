@@ -1,0 +1,32 @@
+pkgbase = rmtoo
+	pkgdesc = Free and Open Source Requirements Management Tool
+	pkgver = r1093.7f53e5d
+	pkgrel = 1
+	url = http://www.rmtoo.florath.net
+	arch = any
+	license = GPL3
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = git
+	depends = python
+	depends = texlive-core
+	depends = graphviz
+	depends = python-scipy
+	depends = gnuplot
+	depends = python-odfpy
+	depends = python-numpy
+	depends = python-stevedore
+	depends = python-yaml
+	depends = python-gitpython
+	depends = python-gitdb
+	depends = python-future
+	depends = python-pylint
+	depends = python-jinja
+	provides = rmtoo
+	conflicts = rmtoo
+	source = rmtoo::git+https://github.com/alexbrinister/rmtoo.git
+	md5sums = SKIP
+
+pkgname = rmtoo
+
