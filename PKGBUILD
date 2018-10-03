@@ -4,16 +4,17 @@ pkgdesc="ROS - This unary stack contains the dynamic_reconfigure package which p
 url='http://ros.org/wiki/dynamic_reconfigure'
 
 pkgname='ros-melodic-dynamic-reconfigure'
-pkgver='1.5.49'
+pkgver='1.6.0'
 _pkgver_patch=1
 arch=('any')
 pkgrel=2
 license=('BSD')
 
-ros_makedepends=(ros-melodic-roscpp-serialization
+ros_makedepends=(ros-melodic-cpp-common
+  ros-melodic-roscpp-serialization
   ros-melodic-std-msgs
-  ros-melodic-rostest
   ros-melodic-roscpp
+  ros-melodic-rostest
   ros-melodic-catkin
   ros-melodic-message-generation)
 makedepends=('cmake' 'ros-build-tools'
@@ -38,7 +39,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="dynamic_reconfigure-release-release-melodic-dynamic_reconfigure-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/dynamic_reconfigure-release/archive/release/melodic/dynamic_reconfigure/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('098d99cec81c9f2f2348813e7669374519b6c3ed3af719bf9f449bda3f9e18fc')
+sha256sums=('e711de2645ef008413203415d41b99a6b0209cd658693e40921175b11a84194e')
 
 build() {
   # Use ROS environment variables
