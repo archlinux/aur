@@ -2,7 +2,7 @@
 # vim: set ts=2 sw=2 et ft=sh:
 
 pkgname=qutebrowser-git
-pkgver=1.4.1.r123.ge927fecbb
+pkgver=1.5.0.r1.g7d08714a9
 pkgrel=1
 pkgdesc="A keyboard-driven, vim-like browser based on PyQt5"
 arch=(any)
