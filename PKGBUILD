@@ -2,12 +2,12 @@
 
 pkgname=python2-elasticsearch-curator
 pkgver=5.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Curator: Tending your Elasticsearch indices."
 arch=(i686 x86_64)
 url=https://github.com/elastic/curator
 license=('APACHE')
-depends=('python2' 'python2-elasticsearch>=5.5.2' 'python2-elasticsearch<7.0.0' 'python2-click>=6.7' 'python2-urllib3>=1.20' 'python2-yaml>=3.10', 'python2-voluptuous>=0.9.3' 'python2-certifi>=2018.4.16')
+depends=('python2' 'python2-elasticsearch>=5.5.2' 'python2-elasticsearch<7.0.0' 'python2-boto3>=1.7.24' 'python2-requests-aws4auth>=0.9' 'python2-click>=6.7' 'python2-urllib3>=1.20' 'python2-yaml>=3.10', 'python2-voluptuous>=0.9.3' 'python2-certifi>=2018.4.16')
 source=(https://github.com/elastic/curator/archive/v$pkgver.tar.gz)
 sha512sums=('99ed18592105d19791513ad713115b6e2a6b589ab8b4e3fc4435b2878e25f552e0bda8d63cb6279970afc6ba39d9f3db17af1b4fb44500fe8a14b060e1530258')
 
