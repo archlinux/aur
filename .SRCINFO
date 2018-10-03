@@ -1,6 +1,6 @@
 pkgbase = unity-editor-lts-facebook
 	pkgdesc = Allows building your Unity projects for the Facebook-Games platform
-	pkgver = 2017.4.11f1
+	pkgver = 2017.4.12f1
 	pkgrel = 1
 	url = https://unity3d.com/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = unity-editor-lts-facebook
 	makedepends = cpio
 	depends = unity-editor-lts
 	options = !strip
-	source = https://download.unity3d.com/download_unity/8c6b8ef6d111/MacEditorTargetInstaller/UnitySetup-Facebook-Games-Support-for-Editor-2017.4.11f1.pkg
-	md5sums = ff8dcb8e47fefaf47c602688d5aa473b
+	source = https://download.unity3d.com/download_unity/b582b87345b1/MacEditorTargetInstaller/UnitySetup-Facebook-Games-Support-for-Editor-2017.4.12f1.pkg
+	md5sums = 116e43ae78f5fd3ed9d43ec9969f9a70
 
 pkgname = unity-editor-lts-facebook
 
