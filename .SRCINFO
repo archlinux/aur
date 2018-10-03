@@ -1,7 +1,7 @@
 pkgbase = templight-git
 	pkgdesc = Template Instantiation Profiler and Debugger
-	pkgver = r138.91589f9
-	pkgrel = 2
+	pkgver = r140.9624f09
+	pkgrel = 1
 	url = https://github.com/mikael-s-persson/templight
 	arch = x86_64
 	license = custom:University of Illinois/NCSA Open Source License
@@ -20,11 +20,9 @@ pkgbase = templight-git
 	source = llvm::svn+http://llvm.org/svn/llvm-project/llvm/trunk
 	source = cfe::svn+http://llvm.org/svn/llvm-project/cfe/trunk
 	source = git://github.com/mikael-s-persson/templight.git
-	source = GetArgumentVectorFix.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = dbc8086e8c2f05ddd4128fd3a0d39261eed19ffd0c9509a50ad656a8a5936c1f
 
 pkgname = templight-git
 

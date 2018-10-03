@@ -1,6 +1,6 @@
 pkgname=templight-git
-pkgver=r138.91589f9
-pkgrel=2
+pkgver=r140.9624f09
+pkgrel=1
 pkgdesc="Template Instantiation Profiler and Debugger"
 arch=('x86_64')
 url="https://github.com/mikael-s-persson/templight"
@@ -12,12 +12,10 @@ provides=("templight")
 conflicts=("templight" "clang-trunk")
 source=(llvm::svn+http://llvm.org/svn/llvm-project/llvm/trunk
         cfe::svn+http://llvm.org/svn/llvm-project/cfe/trunk
-        git://github.com/mikael-s-persson/templight.git
-        GetArgumentVectorFix.patch)
+        git://github.com/mikael-s-persson/templight.git)
 sha256sums=('SKIP'
             'SKIP'
-            'SKIP'
-            'dbc8086e8c2f05ddd4128fd3a0d39261eed19ffd0c9509a50ad656a8a5936c1f')
+            'SKIP')
 
 pkgver() {
   cd "$srcdir/templight"
@@ -27,10 +25,6 @@ pkgver() {
 prepare() {
   cd ${srcdir}/templight
 
-  # Patch templight
-  # https://github.com/mikael-s-persson/templight/issues/65
-  patch -p1 -i ${srcdir}/GetArgumentVectorFix.patch
-  
   # Checkout minimal clang and add templight to tools
   cp -r ${srcdir}/cfe                ${srcdir}/llvm/tools/clang
   cp -r ${srcdir}/templight          ${srcdir}/llvm/tools/clang/tools/templight
