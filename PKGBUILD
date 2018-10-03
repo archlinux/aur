@@ -16,7 +16,7 @@ url="https://github.com/filebot/filebot"
 license=('GPL')
 install=$pkgname.install
 depends=('java-runtime>=8' 'fontconfig' 'chromaprint')
-makedepends=('ivy' 'jdk>=8')
+makedepends=('ant' 'ivy' 'jdk>=8')
 
 [[ $CARCH == "i686" ]]   && _intarch=i686
 [[ $CARCH == "x86_64" ]] && _intarch=amd64

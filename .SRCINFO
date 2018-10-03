@@ -10,6 +10,7 @@ pkgbase = filebot
 	arch = armv7l
 	arch = armv7h
 	license = GPL
+	makedepends = ant
 	makedepends = ivy
 	makedepends = jdk>=8
 	depends = java-runtime>=8
