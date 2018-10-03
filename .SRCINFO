@@ -1,0 +1,13 @@
+pkgbase = emacs-shut-up
+	pkgdesc = Elisp library for silencing emacs
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/cask/shut-up.git
+	arch = any
+	license = GPL3
+	depends = emacs
+	source = emacs-shut-up-0.3.2.tar.gz::https://github.com/cask/shut-up/archive/v0.3.2.tar.gz
+	sha256sums = a11df31fe160d2ec7e94874e98dca804414f08e6cd9fe7e38ec994359bcc7f26
+
+pkgname = emacs-shut-up
+
