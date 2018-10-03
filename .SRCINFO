@@ -1,20 +1,20 @@
 pkgbase = ros-melodic-mavlink
 	pkgdesc = ROS - MAVLink message marshaling library.
-	pkgver = 2018.7.18
+	pkgver = 2018.9.17
 	pkgrel = 1
 	url = http://qgroundcontrol.org/mavlink/
 	arch = any
 	license = LGPLv3
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = python2-lxml
-	makedepends = python2-future
-	makedepends = python2-distribute
-	makedepends = python2
+	makedepends = python-lxml
+	makedepends = python-future
+	makedepends = python-distribute
+	makedepends = python
 	depends = ros-melodic-catkin
-	depends = python2
-	source = ros-melodic-mavlink-2018.7.18-0.tar.gz::https://github.com/mavlink/mavlink-gbp-release/archive/release/melodic/mavlink/2018.7.18-0.tar.gz
-	sha256sums = 1c24c4e9e148c5554c7bb9b9d543e89827cc0016c4937befa9eee914b24fbd70
+	depends = python
+	source = ros-melodic-mavlink-2018.9.17-0.tar.gz::https://github.com/mavlink/mavlink-gbp-release/archive/release/melodic/mavlink/2018.9.17-0.tar.gz
+	sha256sums = 1b57a7fe9fa1e0fde0c8c0a849ffaa196a0e258765f175da3a178db114d691c5
 
 pkgname = ros-melodic-mavlink
 
