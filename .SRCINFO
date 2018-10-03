@@ -1,0 +1,19 @@
+pkgbase = nerd-fonts-ubuntu-mono
+	pkgdesc = Patched font UbuntuMono from the nerd-fonts library
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/ryanoasis/nerd-fonts
+	arch = any
+	groups = nerd-fonts
+	license = MIT
+	depends = fontconfig
+	provides = nerd-fonts-inconsolata
+	conflicts = nerd-fonts-git
+	conflicts = nerd-fonts-complete
+	source = https://github.com/ryanoasis/nerd-fonts/releases/download/v2.0.0/UbuntuMono.zip
+	source = https://github.com/ryanoasis/nerd-fonts/raw/v2.0.0/LICENSE
+	sha1sums = 577219591b69ef05e539e19e716a01412a560633
+	sha1sums = 92fdad3c8babc0473da5f03e41fb1151417ab386
+
+pkgname = nerd-fonts-ubuntu-mono
+
