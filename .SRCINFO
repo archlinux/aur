@@ -1,6 +1,6 @@
 pkgbase = nodejs-terminalizer
 	pkgdesc = Record your terminal and generate animated gif images
-	pkgver = 0.2.11
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/faressoft/terminalizer
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = nodejs-terminalizer
 	depends = nodejs
 	depends = npm
 	depends = nss
-	noextract = terminalizer-0.2.11.tgz
-	source = https://registry.npmjs.org/terminalizer/-/terminalizer-0.2.11.tgz
-	sha1sums = f0baaa9c200752d52e1d862f2a2d5d21487cf8ed
+	noextract = terminalizer-0.3.0.tgz
+	source = https://registry.npmjs.org/terminalizer/-/terminalizer-0.3.0.tgz
+	sha1sums = 090345cd0bc42764a499fe4002f4e9707de857cd
 
 pkgname = nodejs-terminalizer
 
