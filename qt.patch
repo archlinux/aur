@@ -1,0 +1,12 @@
+diff --git a/src/qt/bitcoin.cpp b/src/qt/bitcoin.cpp
+index 985ea969c..6a62e7a90 100644
+--- a/src/qt/bitcoin.cpp
++++ b/src/qt/bitcoin.cpp
+@@ -604,6 +604,7 @@ int main(int argc, char *argv[]) {
+ #if QT_VERSION >= 0x050500
+     // Because of the POODLE attack it is recommended to disable SSLv3
+     // (https://disablessl3.com/), so set SSL protocols to TLS1.0+.
++    QSslSocket::sslLibraryVersionString();
+     QSslConfiguration sslconf = QSslConfiguration::defaultConfiguration();
+     sslconf.setProtocol(QSsl::TlsV1_0OrLater);
+     QSslConfiguration::setDefaultConfiguration(sslconf);
