@@ -1,11 +1,11 @@
 pkgbase = crictl
 	pkgdesc = CLI tool for Kubelet Container Runtime Interface (CRI)
-	pkgver = 1.11.1
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://github.com/kubernetes-incubator/cri-tools/blob/master/docs/crictl.md
 	arch = x86_64
 	license = Apache
-	source = git+https://github.com/kubernetes-incubator/cri-tools#tag=v1.11.1
+	source = git+https://github.com/kubernetes-sigs/cri-tools#tag=v1.12.0
 	source = crictl.yaml
 	sha256sums = SKIP
 	sha256sums = d2725490e1fb2e6f565605f09871c1440371b85e04de5d70bbac05954d827f72
