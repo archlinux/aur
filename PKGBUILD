@@ -1,7 +1,7 @@
 _pkgname="kst"
 pkgname="${_pkgname}-git"
 pkgrel=1
-pkgver=2.0.8r3342.39b8a6c3
+pkgver=2.0.8r3357.9db9477d
 pkgdesc="Fast real-time large-dataset viewing and plotting tool for KDE"
 arch=('i686' 'x86_64')
 url="http://kst-plot.kde.org"
@@ -14,7 +14,7 @@ optdepends=(
 makedepends=('cmake')
 #install=$pkgname.install
 source=("git://github.com/Kst-plot/kst.git" "0001-Build-fixes-for-Qt-5.11.patch")
-md5sums=('SKIP' '755de805f90f6e76eddd1f5f59d86a98')
+md5sums=('SKIP' 'b655a89d78c7dc80f7692f5c218e05dc')
 pkgver() {
   cd "${srcdir}/${_pkgname}"
   printf "2.0.8r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"

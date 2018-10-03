@@ -20,7 +20,7 @@ pkgbase = kst-git
 	source = git://github.com/Kst-plot/kst.git
 	source = 0001-Build-fixes-for-Qt-5.11.patch
 	md5sums = SKIP
-	md5sums = 755de805f90f6e76eddd1f5f59d86a98
+	md5sums = b655a89d78c7dc80f7692f5c218e05dc
 
 pkgname = kst-git
 

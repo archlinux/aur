@@ -1,26 +1,12 @@
-From edeb0d979991966b5fc5ee901c9f06065e08a3bc Mon Sep 17 00:00:00 2001
+From 74f022c09d25fbdcf8373bd5a255d7408ef60801 Mon Sep 17 00:00:00 2001
 From: Nicolas Menard <nicolas.menard@wyss.harvard.edu>
-Date: Thu, 21 Jun 2018 09:13:55 -0400
+Date: Wed, 3 Oct 2018 09:14:36 -0400
 Subject: [PATCH] Build fixes for Qt 5.11
 
 ---
- cmake/modules/KstMacros.cmake | 2 +-
- src/libkstapp/view.h          | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ src/libkstapp/view.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/cmake/modules/KstMacros.cmake b/cmake/modules/KstMacros.cmake
-index 676d5731..d340185f 100644
---- a/cmake/modules/KstMacros.cmake
-+++ b/cmake/modules/KstMacros.cmake
-@@ -240,7 +240,7 @@ endmacro()
- macro(kst_link)
- 	target_link_libraries(${kst_name} ${ARGV})
- 	if(kst_qt5)
--                qt5_use_modules(${kst_name} Widgets Xml Network PrintSupport Svg)
-+      target_link_libraries(${kst_name} Qt5::Widgets Qt5::Xml Qt5::Network Qt5::PrintSupport Qt5::Svg)
- 	else()
- 		target_link_libraries(${kst_name}
- 		${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} ${QT_QTXML_LIBRARY} ${QT_QTSVG_LIBRARY} ${QT_QTNETWORK_LIBRARY})
 diff --git a/src/libkstapp/view.h b/src/libkstapp/view.h
 index 95c8c6a5..607991b7 100644
 --- a/src/libkstapp/view.h
@@ -35,5 +21,5 @@ index 95c8c6a5..607991b7 100644
  class QXmlStreamWriter;
  
 -- 
-2.17.1
+2.19.0
 
