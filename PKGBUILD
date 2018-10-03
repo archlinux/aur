@@ -3,7 +3,7 @@
 pkgname=unigine-superposition
 _pkgname=Unigine_Superposition
 pkgver=1.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Interactive Unigine Benchmark: walk through a lab of a lone professor"
 arch=('x86_64')
 url="http://www.unigine.com"
