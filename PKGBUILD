@@ -14,7 +14,7 @@ _srcname=$pkgbase
 _kernel_rel=4.19
 _branch=drm-intel-next-queued
 _kernelname=${pkgbase#linux}
-pkgver=4.19.782928.e9eaf82d97a2
+pkgver=4.19.782938.bc2477f7d3f3
 pkgrel=1
 arch=('x86_64')
 url='https://01.org/linuxgraphics/gfx-docs/maintainer-tools/drm-intel.html'
@@ -29,7 +29,7 @@ source=("${pkgbase}::git://anongit.freedesktop.org/drm/drm-intel#branch=${_branc
         "${pkgbase}.preset")
 
 sha256sums=('SKIP'
-            '7939e36db9d725fef6e219cd8815b3ab0f2b3307738f6c01a11b876ca2b79267'
+            '253ad0f05c29e42bf7854fa3b9622217bce2af9480f365ce3865d97506219990'
             'd590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 pkgver() {
