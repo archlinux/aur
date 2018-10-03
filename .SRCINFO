@@ -1,0 +1,23 @@
+pkgbase = curv-git
+	pkgdesc = a language for making art using mathematics
+	pkgver = 0.3.r43.g7d922f3
+	pkgrel = 1
+	url = https://github.com/doug-moen/curv
+	arch = x86_64
+	license = Apache
+	makedepends = make
+	makedepends = cmake
+	makedepends = git
+	makedepends = boost
+	makedepends = glm
+	depends = boost-libs
+	depends = double-conversion
+	depends = openexr
+	depends = intel-tbb
+	source = git+https://github.com/doug-moen/curv
+	source = remove_lang_file.patch
+	md5sums = SKIP
+	md5sums = 6fd7fe6e81988bd9cd23d85ac920dc3c
+
+pkgname = curv-git
+
