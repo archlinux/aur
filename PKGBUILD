@@ -4,7 +4,7 @@ pkgdesc="ROS - The controller manager."
 url='https://github.com/ros-controls/ros_control/wiki'
 
 pkgname='ros-melodic-controller-manager'
-pkgver='0.15.0'
+pkgver='0.15.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -33,7 +33,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_control-release-release-melodic-controller_manager-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_control-release/archive/release/melodic/controller_manager/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('c01dbdf77000cff262257622d6605f1116a086d6f0cce3d1c150aa7dc7a342c2')
+sha256sums=('23c70277cc132ceacb08eaea3ce9ff79d956458f817b9ab72bcf2713b12e7824')
 
 build() {
   # Use ROS environment variables
