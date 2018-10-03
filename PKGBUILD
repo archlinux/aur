@@ -2,7 +2,7 @@
 pkgbase=qt5-jsonserializer
 pkgname=(qt5-jsonserializer qt5-jsonserializer-doc)
 group=qt5-jsonserializer-full
-pkgver=3.1.2
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="A library to perform generic seralization and deserialization of QObjects"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ _pkgfqn=$pkgname-$pkgver
 source=("$_pkgfqn::git+https://github.com/Skycoder42/QtJsonSerializer.git#tag=$pkgver"
 		"$pkgname.rule")
 sha256sums=('SKIP'
-            '2147916eaeebda7109b04f17e122a873388f42f2015e4b6b9fbf6f98e8e80d15')
+            '6f8340ae787707a42d642841b0ae5e20c42fe51e72e5f1a38c6e655d689bbe47')
 
 prepare() {
   mkdir -p build
@@ -30,6 +30,11 @@ build() {
   make doxygen
 }
 
+check() {
+  cd build
+  make run-tests
+}
+
 package_qt5-jsonserializer() {
   cd build
   cd src/jsonserializer
@@ -41,7 +46,7 @@ package_qt5-jsonserializer() {
     -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
 
   install -D -m644 "../$_pkgfqn/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -D -m644 "../${pkgname}.rule" "$pkgdir/etc/repkg/rules/${pkgname}.rule"
+  install -D -m644 "../${pkgname}.rule" "$pkgdir/etc/repkg/rules/system/${pkgname}.rule"
 }
 
 package_qt5-jsonserializer-doc() {
