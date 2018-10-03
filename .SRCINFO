@@ -1,14 +1,14 @@
 pkgbase = elephant
 	pkgdesc = Notetaker with a classic interface.
-	pkgver = 34
+	pkgver = 49
 	pkgrel = 1
 	url = http://elephant.mine.nu/
 	arch = any
 	license = Apache
 	depends = java-environment
 	depends = bash
-	source = https://github.com/jusu/Elephant/releases/download/v34/elephant34_jar.zip
-	md5sums = f5a7d9a54a70f410f7097a7ac64deb67
+	source = https://github.com/jusu/Elephant/releases/download/v49/elephant49_jar.zip
+	sha256sums = 5a82beef0cf7874ec51bab51922d6c45897b8456cb4d0a1ec051913d87b0574e
 
 pkgname = elephant
 
