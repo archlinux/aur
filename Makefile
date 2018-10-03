@@ -13,7 +13,7 @@ MINOR=0
 
 VPATH=.:tinyxml
 OBJS = bulletmlparser-tinyxml.o bulletmlparser.o bulletmltree.o calc.o \
-	formula-variables.o bulletmlrunner.o bulletmlrunnerimpl.o
+	formula-variables.o bulletmlrunner.o bulletmlrunnerimpl.o bulletml_d.o
 TINYXML = tinyxml.o tinyxmlerror.o tinyxmlparser.o
 
 all:  bulletml.d libbulletml.a libbulletml.so.$(MAJOR).$(MINOR)
