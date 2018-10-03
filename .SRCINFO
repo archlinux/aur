@@ -1,7 +1,7 @@
 pkgbase = mricron
 	pkgdesc = A program designed to display 3D medical imaging.
 	pkgver = 20161012
-	pkgrel = 1
+	pkgrel = 2
 	url = http://people.cas.sc.edu/rorden/mricron/index.html
 	arch = x86_64
 	license = custom

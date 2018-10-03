@@ -2,7 +2,7 @@
 
 pkgname=mricron
 pkgver=20161012
-pkgrel=1
+pkgrel=2
 pkgdesc="A program designed to display 3D medical imaging."
 arch=('x86_64')
 url="http://people.cas.sc.edu/rorden/mricron/index.html"
@@ -28,10 +28,8 @@ package(){
 	ln -s "/usr/share/${pkgname}/dcm2nii" "${pkgdir}"/usr/bin/dcm2nii
 	ln -s "/usr/share/${pkgname}/dcm2niigui" "${pkgdir}"/usr/bin/dcm2niigui
 
-#	chmod 754 "${pkgdir}/usr/share/${pkgname}/lut/"*
-#	chmod 755 "${pkgdir}/usr/share/${pkgname}/script/"*
-#	chmod 754 "${pkgdir}/usr/share/${pkgname}/shaders/"*
-#	chmod 754 "${pkgdir}/usr/share/${pkgname}/shaders/unused"*
+	chmod 754 "${pkgdir}/usr/share/${pkgname}/lut/"*
+	chmod 754 "${pkgdir}/usr/share/${pkgname}/templates/"*
 
 	install -Dm644 "${srcdir}/mricron.desktop" "${pkgdir}/usr/share/applications/mricron.desktop"
 	install -Dm644 "${srcdir}/dcm2nii.desktop" "${pkgdir}/usr/share/applications/dcm2nii.desktop"
