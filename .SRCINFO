@@ -1,6 +1,6 @@
 pkgbase = python-git
 	pkgdesc = Next generation of the python high-level scripting language
-	pkgver = 3.8.0a0.r102162.0afada163c
+	pkgver = 3.8.0a0.r102398.81574b80e9
 	pkgrel = 1
 	url = https://www.python.org/
 	arch = i686
@@ -29,10 +29,10 @@ pkgbase = python-git
 	optdepends = tk: for tkinter
 	source = git+https://github.com/python/cpython#branch=master
 	source = dont-make-libpython-readonly.patch
-	source = no-testCongestion.patch
+	source = 0001-compileall-Fix-ddir-when-recursing.patch
 	sha512sums = SKIP
 	sha512sums = 2ef96708d5b13ae2a3d2cc62c87b4780e60ecfce914e190564492def3a11d5e56977659f41c7f9d12266e58050c766bce4e2b5d50b708eb792794fa8357920c4
-	sha512sums = 1009dd9630ce937a786a7211eb5c68c65b3277994b32fe4d2702e4689baeb0a49db51a593f436e51e32cf7c266b6fbd10785b9089cdf50f123077dbf8365e594
+	sha512sums = ebd04c3b6d41321b1f0d439d356e0ce463760db55dc64109854c70d017cf56608aa19de9fc4a21bf840795ff202b4703444f9af8074b661780798c17e03089ff
 
 pkgname = python-git
 
