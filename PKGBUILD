@@ -4,7 +4,7 @@ pkgdesc="ROS - Python implementation of bond, a mechanism for checking when anot
 url='http://www.ros.org/wiki/bondpy'
 
 pkgname='ros-melodic-bondpy'
-pkgver='1.8.2'
+pkgver='1.8.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -31,7 +31,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="bond_core-release-release-melodic-bondpy-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/bond_core-release/archive/release/melodic/bondpy/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('ff3d3d15b316f8578f76b4104a9a8786b488a5c83490d416c5acef09ad720484')
+sha256sums=('c7dde4bdb17c65092192cf7f2b28294b6271f6d19cf3778a90106b74f0750781')
 
 build() {
   # Use ROS environment variables

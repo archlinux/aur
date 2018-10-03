@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-bondpy
 	pkgdesc = ROS - Python implementation of bond, a mechanism for checking when another process has terminated.
-	pkgver = 1.8.2
+	pkgver = 1.8.3
 	pkgrel = 1
 	url = http://www.ros.org/wiki/bondpy
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = ros-melodic-bondpy
 	depends = ros-melodic-smclib
 	depends = ros-melodic-rospy
 	depends = util-linux
-	source = ros-melodic-bondpy-1.8.2-0.tar.gz::https://github.com/ros-gbp/bond_core-release/archive/release/melodic/bondpy/1.8.2-0.tar.gz
-	sha256sums = ff3d3d15b316f8578f76b4104a9a8786b488a5c83490d416c5acef09ad720484
+	source = ros-melodic-bondpy-1.8.3-0.tar.gz::https://github.com/ros-gbp/bond_core-release/archive/release/melodic/bondpy/1.8.3-0.tar.gz
+	sha256sums = c7dde4bdb17c65092192cf7f2b28294b6271f6d19cf3778a90106b74f0750781
 
 pkgname = ros-melodic-bondpy
 
