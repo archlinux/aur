@@ -1,13 +1,13 @@
 # Maintainer: Oscar Morante <spacepluk at gmail dot com>
 
 _version=2018.3.0
-_build=b2
-_randomstring=21e0e8a5466d
+_build=b3
+_randomstring=cc0086a8e10c
 _prefix=/opt/UnityBeta
 
 pkgname=unity-editor-beta
 pkgver=${_version}${_build}
-pkgrel=2
+pkgrel=1
 pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences."
 arch=('x86_64')
 url='https://unity3d.com/'
@@ -39,7 +39,7 @@ source=("https://beta.unity3d.com/download/${_randomstring}/LinuxEditorInstaller
         'unity-editor-beta.desktop'
         'unity-editor-beta-icon.png'
         'eula.txt')
-sha1sums=('bfc88236a57e4fd2c11b150fa532bd7ace34f919'
+sha1sums=('dcf97c5ce0c74659637001ca4f897b20feb7e124'
           'd61175685d0836a79b2d4582c09ea23ed5ee18e9'
           'c348f141232ec06c6558fd42b5cbf86a75e2d02d'
           'fddf4861974f88f0565de7f54f7418204e729894'
