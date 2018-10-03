@@ -1,6 +1,6 @@
 pkgbase = libretro-bsnes-mercury-git
 	pkgdesc = Super Nintendo Entertainment System cores with various performance improvements
-	pkgver = 209
+	pkgver = 314.4e221df
 	pkgrel = 1
 	url = https://github.com/libretro/bsnes-mercury
 	arch = i686
@@ -10,14 +10,8 @@ pkgbase = libretro-bsnes-mercury-git
 	makedepends = git
 	depends = gcc-libs
 	depends = glibc
-	source = bsnes-mercury::git+https://github.com/libretro/bsnes-mercury
-	source = https://raw.githubusercontent.com/libretro/libretro-super/master/dist/info/bsnes_mercury_accuracy_libretro.info
-	source = https://raw.githubusercontent.com/libretro/libretro-super/master/dist/info/bsnes_mercury_balanced_libretro.info
-	source = https://raw.githubusercontent.com/libretro/libretro-super/master/dist/info/bsnes_mercury_performance_libretro.info
+	source = git+https://github.com/libretro/bsnes-mercury
 	sha256sums = SKIP
-	sha256sums = 9b9b7ab87e79fb9a6c5728bdbe63b9430c1e79af02600cf44fd2cc041e635d72
-	sha256sums = dc5fb75a930e8486771343932761149b96cfdb14e44032c2b5218ecc27595d4f
-	sha256sums = 66a883d21a05f638ee7c345ff58e6eeb39305f7e6959081964786dfac6f3867a
 
 pkgname = libretro-bsnes-mercury-git
 
