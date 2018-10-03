@@ -1,13 +1,13 @@
 pkgbase = hunspell-sv
 	pkgdesc = Swedish dictionaries for Hunspell
-	pkgver = 20160510
-	pkgrel = 3
+	pkgver = 20180717
+	pkgrel = 1
 	url = https://sfol.se/
 	arch = any
 	license = LGPL3
 	depends = hunspell
-	source = https://extensions.libreoffice.org/extensions/swedish-spelling-dictionary-den-stora-svenska-ordlistan/2.40/@@download/file/ooo_swedish_dict_2-40.oxt
-	sha256sums = b982881cc75f5c4af1199535bd4735ee476bdc48edf63e3f05fb4f715654a7bc
+	source = https://extensions.libreoffice.org/extensions/swedish-spelling-dictionary-den-stora-svenska-ordlistan/2.41/@@download/file/ooo_swedish_dict_2-41.oxt
+	sha256sums = 48c8d0d548232215384c47ba18ac03bbef3af4c11ffd5e1057272353ba60225f
 
 pkgname = hunspell-sv
 

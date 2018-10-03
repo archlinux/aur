@@ -3,17 +3,17 @@
 # Contributor: Oscar Carlsson <oscar.carlsson (at) gmail.com>
 
 pkgname=hunspell-sv
-pkgver=20160510
-_pkgver=2.40
-__pkgver=2-40
-pkgrel=3
+pkgver=20180717
+_pkgver=2.41
+__pkgver=2-41
+pkgrel=1
 pkgdesc="Swedish dictionaries for Hunspell"
 arch=('any')
 url="https://sfol.se/"
 license=('LGPL3')
 depends=('hunspell')
 source=("https://extensions.libreoffice.org/extensions/swedish-spelling-dictionary-den-stora-svenska-ordlistan/$_pkgver/@@download/file/ooo_swedish_dict_$__pkgver.oxt")
-sha256sums=('b982881cc75f5c4af1199535bd4735ee476bdc48edf63e3f05fb4f715654a7bc')
+sha256sums=('48c8d0d548232215384c47ba18ac03bbef3af4c11ffd5e1057272353ba60225f')
 
 package() {
   cd $srcdir/dictionaries
