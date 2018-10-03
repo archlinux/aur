@@ -1,8 +1,8 @@
 ## Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
 
 pkgname=hqplayer-embedded
-_debpkgver=4.5.0-18_amd64
-pkgver=4.5.0
+_debpkgver=4.5.1-19_amd64
+pkgver=4.5.1
 pkgrel=1
 pkgdesc="Signalyst HQPlayer Embedded
  HQPlayer - the high-end upsampling multichannel software HD-audio player"
