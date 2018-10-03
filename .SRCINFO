@@ -1,6 +1,6 @@
 pkgbase = python-gevent-eventemitter-git
 	pkgdesc = Implements EventEmitter using gevent
-	pkgver = 659116c
+	pkgver = r16.659116c
 	pkgrel = 1
 	url = https://github.com/rossengeorgiev/gevent-eventemitter
 	arch = any

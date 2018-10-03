@@ -2,7 +2,7 @@
 
 _pkgname=gevent-eventemitter
 pkgname=(python-gevent-eventemitter-git python2-gevent-eventemitter-git)
-pkgver=659116c
+pkgver=r16.659116c
 pkgrel=1
 pkgdesc="Implements EventEmitter using gevent"
 arch=('any')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  echo "$(git describe --always)"
+  echo "r$(git rev-list --count HEAD).$(git describe --always)"
 }
 
 check() {
