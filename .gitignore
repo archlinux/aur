@@ -1,0 +1,17 @@
+### https://raw.github.com/github/gitignore/9d7ff09c7d38dce9ef03e7ea4dc908a622546757/ArchLinuxPackages.gitignore
+
+*.tar
+*.tar.*
+*.jar
+*.exe
+*.msi
+*.zip
+*.tgz
+*.log
+*.log.*
+*.sig
+
+pkg/
+src/
+
+suda-vim/
