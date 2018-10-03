@@ -1,7 +1,7 @@
 pkgbase = macports-base
 	pkgdesc = The MacPorts command-line client
-	pkgver = 2.5.3
-	pkgrel = 2
+	pkgver = 2.5.4
+	pkgrel = 1
 	epoch = 1
 	url = https://www.macports.org/
 	arch = i686
@@ -19,10 +19,10 @@ pkgbase = macports-base
 	backup = opt/local/etc/macports/pubkeys.conf
 	backup = opt/local/etc/macports/sources.conf
 	backup = opt/local/etc/macports/variants.conf
-	source = https://distfiles.macports.org/MacPorts/MacPorts-2.5.3.tar.bz2
-	source = https://distfiles.macports.org/MacPorts/MacPorts-2.5.3.tar.bz2.asc
+	source = https://github.com/macports/macports-base/releases/download/v2.5.4/MacPorts-2.5.4.tar.bz2
+	source = https://github.com/macports/macports-base/releases/download/v2.5.4/MacPorts-2.5.4.tar.bz2.asc
 	validpgpkeys = C403793657236DCF2E580C0201FF673FB4AAE6CD
-	sha256sums = 5e2b31674f7e0108b63865aeeee4414d793645ee8faef7c9aa23c0ae72ce51d1
+	sha256sums = 0276c6cf9a9adbb65743ffcfbb3b0c3425ae22431d58c77e353d35c89e898e8b
 	sha256sums = SKIP
 
 pkgname = macports-base
