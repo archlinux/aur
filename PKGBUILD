@@ -14,7 +14,8 @@ url='https://unity3d.com/'
 license=('custom')
 depends=('unity-editor-beta'
          'ffmpeg'
-         'gzip')
+         'gzip'
+         'ncurses5-compat-libs')
 source=("https://beta.unity3d.com/download/${_randomstring}/LinuxEditorTargetInstaller/UnitySetup-WebGL-Support-for-Editor-${_version}${_build}.tar.xz")
 sha1sums=('a3ec0a1b0656efa64d003d05db6826c6fbeb12f2')
 options=(!strip)
