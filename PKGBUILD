@@ -1,6 +1,6 @@
 # Maintainer: Matej Grabovsky <matej.grabovsky at gmail>
 pkgname=abella
-pkgver=2.0.4
+pkgver=2.0.5
 pkgrel=1
 pkgdesc='Interactive theorem prover'
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ license=('GPL3')
 url='http://abella-prover.org/'
 makedepends=('ocaml')
 source=("${pkgname}::http://abella-prover.org/distributions/abella-${pkgver}.tar.gz")
-sha256sums=('4c70180962f7e56e66ebce3c20755f54554e7ceab593acf13cfff1efa964ccc2')
+sha256sums=('20b23594f66a69ceaddda9a488a1d42d135aadd7b33d9fced3c7a76be4253e2f')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
