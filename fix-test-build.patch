@@ -1,0 +1,77 @@
+From eedc5ba0dbe901574a9031de1d3c43ef0e417c28 Mon Sep 17 00:00:00 2001
+From: Luca Corbatto <luca@corbatto.de>
+Date: Sun, 22 Jul 2018 16:26:30 +0200
+Subject: [PATCH 4/4] Makes tests compilable
+
+---
+ src/test/integtests/CMakeLists.txt            |  2 +-
+ .../integtests/arch/ArchInternetTests.cpp     | 37 -------------------
+ src/test/unittests/CMakeLists.txt             |  2 +-
+ 3 files changed, 2 insertions(+), 39 deletions(-)
+ delete mode 100644 src/test/integtests/arch/ArchInternetTests.cpp
+
+diff --git a/src/test/integtests/CMakeLists.txt b/src/test/integtests/CMakeLists.txt
+index e71499a..24c3891 100644
+--- a/src/test/integtests/CMakeLists.txt
++++ b/src/test/integtests/CMakeLists.txt
+@@ -68,4 +68,4 @@ endif()
+ 
+ add_executable(integtests ${sources})
+ target_link_libraries(integtests
+-    arch base client common io ipc mt net platform server synergy gtest gmock ${libs} ${OPENSSL_LIBS})
++arch base client common io ipc mt net platform server shared gtest gmock ${libs} ${OPENSSL_LIBS})
+diff --git a/src/test/integtests/arch/ArchInternetTests.cpp b/src/test/integtests/arch/ArchInternetTests.cpp
+deleted file mode 100644
+index 95823e9..0000000
+--- a/src/test/integtests/arch/ArchInternetTests.cpp
++++ /dev/null
+@@ -1,37 +0,0 @@
+-/*
+- * synergy -- mouse and keyboard sharing utility
+- * Copyright (C) 2014-2016 Symless Ltd.
+- *
+- * This package is free software; you can redistribute it and/or
+- * modify it under the terms of the GNU General Public License
+- * found in the file LICENSE that should have accompanied this file.
+- *
+- * This package is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+- */
+-
+-#include "arch/Arch.h"
+-
+-#include "test/global/gtest.h"
+-
+-#define TEST_URL "https://symless.com/tests/?testString"
+-//#define TEST_URL "http://localhost/synergy/tests/?testString"
+-
+-TEST(ArchInternetTests, get)
+-{
+-    ARCH_INTERNET internet;
+-    String result = internet.get(TEST_URL);
+-    ASSERT_EQ("Hello world!", result);
+-}
+-
+-TEST(ArchInternetTests, urlEncode)
+-{
+-    ARCH_INTERNET internet;
+-    String result = internet.urlEncode("hello=+&world");
+-    ASSERT_EQ("hello%3D%2B%26world", result);
+-}
+diff --git a/src/test/unittests/CMakeLists.txt b/src/test/unittests/CMakeLists.txt
+index 9806be9..c6958c5 100644
+--- a/src/test/unittests/CMakeLists.txt
++++ b/src/test/unittests/CMakeLists.txt
+@@ -68,4 +68,4 @@ endif()
+ 
+ add_executable(unittests ${sources})
+ target_link_libraries(unittests
+-    arch base client server common io net platform server synergy mt ipc gtest gmock shared ${libs} ${OPENSSL_LIBS})
++arch base client server common io net platform server mt ipc gtest gmock shared ${libs} ${OPENSSL_LIBS})
+-- 
+2.18.0

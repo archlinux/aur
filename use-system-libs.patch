@@ -1,0 +1,98 @@
+From f013182f0bfee54cc1c22740302be84acc380fda Mon Sep 17 00:00:00 2001
+From: Luca Corbatto <luca@corbatto.de>
+Date: Sun, 22 Jul 2018 09:17:58 +0200
+Subject: [PATCH 1/4] Fixes bundled libs
+
+---
+ CMakeLists.txt                     |  4 ++--
+ src/test/CMakeLists.txt            | 18 +++++++++---------
+ src/test/integtests/CMakeLists.txt |  8 ++++----
+ src/test/unittests/CMakeLists.txt  | 10 +++++-----
+ 4 files changed, 20 insertions(+), 20 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 35bbfab..eaf8ab6 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -56,7 +56,7 @@ else()
+ endif()
+ 
+ set (libs)
+-include_directories (BEFORE SYSTEM ./ext/gtest/include)
++include_directories (BEFORE SYSTEM /usr/include/gtest)
+ 
+ if (UNIX)
+     if (NOT APPLE)
+diff --git a/src/test/CMakeLists.txt b/src/test/CMakeLists.txt
+index 1f78ae0..b62f30c 100644
+--- a/src/test/CMakeLists.txt
++++ b/src/test/CMakeLists.txt
+@@ -1,11 +1,11 @@
+ # synergy -- mouse and keyboard sharing utility
+ # Copyright (C) 2012-2016 Symless Ltd.
+ # Copyright (C) 2011 Nick Bolton
+-# 
++#
+ # This package is free software; you can redistribute it and/or
+ # modify it under the terms of the GNU General Public License
+ # found in the file LICENSE that should have accompanied this file.
+-# 
++#
+ # This package is distributed in the hope that it will be useful,
+ # but WITHOUT ANY WARRANTY; without even the implied warranty of
+ # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+@@ -15,13 +15,13 @@
+ # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
+ include_directories(
+-    ../../ext/gtest
+-    ../../ext/gtest/include
+-    ../../ext/gmock
+-    ../../ext/gmock/include)
+-    
+-add_library(gtest STATIC ../../ext/gtest/src/gtest-all.cc)
+-add_library(gmock STATIC ../../ext/gmock/src/gmock-all.cc)
++    /usr/src/gtest
++    /usr/include/gtest
++    /usr/src/gmock
++    /usr/include/gmock)
++
++add_library(gtest STATIC /usr/src/gtest/src/gtest-all.cc)
++add_library(gmock STATIC /usr/src/gmock/gmock-all.cc)
+ 
+ if (UNIX)
+     # ignore warnings in gtest and gmock
+diff --git a/src/test/integtests/CMakeLists.txt b/src/test/integtests/CMakeLists.txt
+index f39968a..e71499a 100644
+--- a/src/test/integtests/CMakeLists.txt
++++ b/src/test/integtests/CMakeLists.txt
+@@ -56,8 +56,8 @@ endif()
+ include_directories(
+     ../../
+     ../../lib/
+-    ../../../ext/gtest/include
+-    ../../../ext/gmock/include
++    /usr/include/gtest
++    /usr/include/gmock
+ )
+ 
+ if (UNIX)
+diff --git a/src/test/unittests/CMakeLists.txt b/src/test/unittests/CMakeLists.txt
+index 54131eb..9806be9 100644
+--- a/src/test/unittests/CMakeLists.txt
++++ b/src/test/unittests/CMakeLists.txt
+@@ -51,9 +51,9 @@ list(APPEND headers ${platform_sources})
+ include_directories(
+     ../../
+     ../../lib/
+-    ../../../ext/gtest/include
+-    ../../../ext/gmock/include
+-    ../../../ext
++    /usr/include/gtest
++    /usr/include/gmock
++    /usr/include
+ )
+ 
+ if (UNIX)
+-- 
+2.18.0

@@ -1,0 +1,36 @@
+From f5a22a4e514c02cdff2f6dd4ad20a7964ea67d0f Mon Sep 17 00:00:00 2001
+From: Luca Corbatto <luca@corbatto.de>
+Date: Sun, 22 Jul 2018 16:03:39 +0200
+Subject: [PATCH 2/4] Fixes build on qt 5.1Fixes build on qt 5.11
+
+---
+ src/gui/src/ActionDialog.h    | 5 +++--
+ src/gui/src/ScreenSetupView.h | 6 +++---
+ 2 files changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/src/gui/src/ActionDialog.h b/src/gui/src/ActionDialog.h
+index 34e4e85..7cd5a1a 100644
+--- a/src/gui/src/ActionDialog.h
++++ b/src/gui/src/ActionDialog.h
+@@ -21,6 +21,7 @@
+ #define ACTIONDIALOG_H
+ 
+ #include <QDialog>
++#include <QButtonGroup>
+ 
+ #include "ui_ActionDialogBase.h"
+ 
+diff --git a/src/gui/src/ScreenSetupView.h b/src/gui/src/ScreenSetupView.h
+index 38eae2a..1a41091 100644
+--- a/src/gui/src/ScreenSetupView.h
++++ b/src/gui/src/ScreenSetupView.h
+@@ -22,6 +22,7 @@
+ 
+ #include <QTableView>
+ #include <QFlags>
++#include <QHeaderView>
+ 
+ #include "Screen.h"
+ 
+-- 
+2.18.0

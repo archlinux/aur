@@ -1,0 +1,20 @@
+From 205c97288e43d9892ed88552862c1160f3a82fa8 Mon Sep 17 00:00:00 2001
+From: Luca Corbatto <luca@corbatto.de>
+Date: Sun, 22 Jul 2018 16:26:05 +0200
+Subject: [PATCH 3/4] Adds tests
+
+---
+ src/CMakeLists.txt | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index ab63a06..014f87b 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -22,3 +22,4 @@ add_subdirectory(cmd)
+ if (SYNERGY_BUILD_LEGACY_GUI)
+ add_subdirectory(gui)
+ endif (SYNERGY_BUILD_LEGACY_GUI)
++add_subdirectory(test)
+-- 
+2.18.0

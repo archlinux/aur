@@ -4,6 +4,7 @@
 # Contributor: Stéphane Gaudreault <stephane@archlinux.org>
 # Contributor: Dale Blount <dale@archlinux.org>
 # Contributor: Michael Düll <mail@akurei.me>
+# Contributor: Luca Corbatto <lucaatcorbatto.de>
 
 # I would just like to take a minute here and state that synergy is
 # some of the worst packaged software ever. They BUNDLE a fucking
@@ -11,8 +12,8 @@
 # installed version of that library. They change around paths every
 # update and just generally don't seem to care much.
 pkgname=synergy
-pkgver=1.8.8
-pkgrel=3
+pkgver=1.10.1
+pkgrel=1
 pkgdesc='Share a single mouse and keyboard between multiple computers'
 url='https://symless.com/synergy/'
 arch=('x86_64')
@@ -21,66 +22,70 @@ depends=('gcc-libs' 'libxtst' 'libxinerama' 'libxkbcommon-x11' 'avahi' 'curl' 'o
 makedepends=('libxt' 'cmake' 'qt5-base' 'gmock' 'gtest')
 optdepends=('qt5-base: gui support')
 source=(synergy-${pkgver}.tar.gz::https://github.com/symless/synergy-core/archive/v${pkgver}-stable.tar.gz
-        openssl11.patch
-        system-gtest.patch
+        use-system-libs.patch
+        fix-qt5_11-compatibility.patch
+        enable-test-build.patch
+        fix-test-build.patch
         synergys.socket
         synergys.service)
-sha512sums=('dafb6c9d8d872dcf17bce6c28674fedd8cb26ed11cbf3fb6992fa5046eebb46af04eeee1861649dec0aa8d7fe3b426bdefb461df44912394ecfdfce9e92fb799'
-            'ba93295d5638581ac0a82c293016563e2faf4228b6c920bfe1df86b254841a88baf55f220574e93af1c718d689a8f8f1ad494c2ca685f8ea01a506a1bc6e1642'
-            '4bef039f59b565d08079a8187df76f9773cfddeb81376ccc42f5570049389f114559721ed7b0464c4a4d1431ba72a736b11755573019583d0075d9da08c03ed2'
+sha512sums=('33b298de3e7dacdd4d5c162840b8d0ddabd4127ed7cb04336f2d8dd1a8a9a69dc70c8959cb9086e56e65035cdacb7c743670479123711321283811eb3a823e6e'
+            '6ed5384ec46e991958f48051c66b87febfb457a748cea48909f87a088c804907f480f123620a0a5921e281ca9871e251de8b7dd5803ffe8566841f68f396c160'
+            'b8347b803a7baaeeab75e55778314298fc69e15ccda154a8622b4697c3a3e7d6ba51cb156f06c6b289c41cb0892be7fed5ce49591531ed1ef18fa3a1ec8a7d6d'
+            '89b29994f238013393b90ad628d781ea6ea1d46c33819be561f031cc0790ef7f3860faaa2803e1459ed3c14affb749ea3bab6b15598c760424c8063195cb56a6'
+            '158d218faa8d8c33cbea935a9dcad4bcf79309eb485bfea107cd160f894d1090db6fea6e60827509b985ff9a7493020fc819e5e150bdac85f5547e755f3ad9ec'
             'f9c124533dfd0bbbb1b5036b7f4b06f7f86f69165e88b9146ff17798377119eb9f1a4666f3b2ee9840bc436558d715cdbfe2fdfd7624348fae64871f785a1a62'
             '9663a11b915e10e60317e732a4d1191e8f8ff19176994c27dd20aa445daab7565bd624e5575c9c639d144293879fbe8376834a076723f778fd322ebd1c9f2029')
 
 prepare() {
   cd synergy-core-${pkgver}-stable
   mkdir build
+
   # get rid of shitty bundled gtest and gmock
-  patch -p1 < "${srcdir}/system-gtest.patch"
-  patch -p1 < "${srcdir}/openssl11.patch"
+  patch -Np1 < "${srcdir}/use-system-libs.patch"
+  # fix the build with qt5.11
+  # this is likely to be obsolete in future versions
+  # see: https://github.com/symless/synergy-core/pull/6359
+  patch -Np1 < "${srcdir}/fix-qt5_11-compatibility.patch"
+  # enable building of test executables
+  patch -Np1 < "${srcdir}/enable-test-build.patch"
+  # fix building of test executables
+  patch -Np1 < "${srcdir}/fix-test-build.patch"
+  # remove tests that need working X
+  rm src/test/integtests/platform/XWindowsScreenTests.cpp \
+    src/test/integtests/platform/XWindowsKeyStateTests.cpp
 }
 
 build() {
-  cd synergy-core-${pkgver}-stable
-
-  msg2 "Building core..."
-  (cd build
-    cmake -DCMAKE_INSTALL_PREFIX=/usr ..
-    # unittests don't pass with optimization (segfault on nullptr)
-    sed 's|\-O2|\-O0|g' -i src/test/unittests/CMakeFiles/unittests.dir/{flags.make,link.txt}
-    make
-  )
-
-  msg2 "Building GUI..."
-  (cd src/gui
-    qmake
-    make
-  )
+  cd synergy-core-${pkgver}-stable/build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  make
 }
 
 check() {
-  cd synergy-core-${pkgver}-stable
+  cd synergy-core-${pkgver}-stable/build
   ./bin/unittests
+  ./bin/integtests
 }
 
 package() {
   cd synergy-core-${pkgver}-stable
 
   # install binary
-  install -Dm 755 bin/{synergy,synergyc,synergyd,synergys,syntool,usynergy} -t "${pkgdir}/usr/bin"
+  install -Dm 755 build/bin/{synergy,synergyc,synergyd,synergys,syntool} -t "${pkgdir}/usr/bin"
 
   # install config
   install -Dm 644 doc/${pkgname}.conf* -t "${pkgdir}/etc"
 
   # install manfiles
-  install -Dm 644 "doc/${pkgname}c.man" "${pkgdir}/usr/share/man/man1/${pkgname}c.1"
-  install -Dm 644 "doc/${pkgname}s.man" "${pkgdir}/usr/share/man/man1/${pkgname}s.1"
+  install -Dm 644 doc/${pkgname}c.man "${pkgdir}/usr/share/man/man1/${pkgname}c.1"
+  install -Dm 644 doc/${pkgname}s.man "${pkgdir}/usr/share/man/man1/${pkgname}s.1"
 
   # install systemd service and socket
   install -Dm 644 "${srcdir}"/synergys.{service,socket} -t "${pkgdir}/usr/lib/systemd/user"
 
   # install desktop/icon stuff
-  install -Dm 644 "res/synergy.ico" -t "${pkgdir}/usr/share/icons"
-  install -Dm 644 "res/synergy.desktop" -t "${pkgdir}/usr/share/applications"
+  install -Dm 644 res/synergy.ico -t "${pkgdir}/usr/share/icons"
+  install -Dm 644 res/synergy.desktop -t "${pkgdir}/usr/share/applications"
 }
 
 # vim:set ts=2 sw=2 et:
