@@ -1,8 +1,8 @@
 # Maintainer: Corey Hinshaw <coreyhinshaw(at)gmail(dot)com>
 
 pkgname=luks-tpm2
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="Utility to manage LUKS keys sealed by a TPM 2.0"
 arch=('any')
 url="https://github.com/electrickite/luks-tpm2"
@@ -17,7 +17,7 @@ depends=('tpm2-tools'
          'grep')
 source=("https://github.com/electrickite/${pkgname}/archive/${pkgver}.tar.gz"
         'luks-tpm2.hook')
-sha1sums=('532a01773275c03000f3b5575fd89c2cd4de0128'
+sha1sums=('97427c3b2b73ab7941039445745ca923a40860ea'
           '3f0f166a469d71441d0a9d20320cea671119ef0b')
 
 
