@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-smclib
 	pkgdesc = ROS - The State Machine Compiler (SMC) from http://smc.sourceforge.net/ converts a language-independent description of a state machine into the source code to support that state machine.
-	pkgver = 1.8.2
+	pkgver = 1.8.3
 	pkgrel = 1
 	url = http://smc.sourceforge.net/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = ros-melodic-smclib
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
-	source = ros-melodic-smclib-1.8.2-0.tar.gz::https://github.com/ros-gbp/bond_core-release/archive/release/melodic/smclib/1.8.2-0.tar.gz
-	sha256sums = 044d8721cbfa0c1af2b472716d2082db1c019a51e15dedbed858dc917ec85290
+	source = ros-melodic-smclib-1.8.3-0.tar.gz::https://github.com/ros-gbp/bond_core-release/archive/release/melodic/smclib/1.8.3-0.tar.gz
+	sha256sums = a367091ee777853d4a769c98d193b054d176ce84d36a628756970d4495e4d1c0
 
 pkgname = ros-melodic-smclib
 

@@ -4,7 +4,7 @@ pkgdesc="ROS - The State Machine Compiler (SMC) from http://smc.sourceforge.net/
 url='http://smc.sourceforge.net/'
 
 pkgname='ros-melodic-smclib'
-pkgver='1.8.2'
+pkgver='1.8.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -26,7 +26,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="bond_core-release-release-melodic-smclib-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/bond_core-release/archive/release/melodic/smclib/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('044d8721cbfa0c1af2b472716d2082db1c019a51e15dedbed858dc917ec85290')
+sha256sums=('a367091ee777853d4a769c98d193b054d176ce84d36a628756970d4495e4d1c0')
 
 build() {
   # Use ROS environment variables
