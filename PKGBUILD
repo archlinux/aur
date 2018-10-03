@@ -4,7 +4,7 @@ pkgdesc="ROS - A bond allows two processes, A and B, to know when the other has 
 url='http://www.ros.org/wiki/bond_core'
 
 pkgname='ros-melodic-bond-core'
-pkgver='1.8.2'
+pkgver='1.8.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="bond_core-release-release-melodic-bond_core-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/bond_core-release/archive/release/melodic/bond_core/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('4719c67f54cfc4058cda65e676d5558d830f47c394f8c91ab4886e27595d66ff')
+sha256sums=('c295706b5def3265868e81d63c1ee31e622e6f286cfde31a8a6c8ce43f9a07b5')
 
 build() {
   # Use ROS environment variables

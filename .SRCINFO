@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-bond-core
 	pkgdesc = ROS - A bond allows two processes, A and B, to know when the other has terminated, either cleanly or by crashing.
-	pkgver = 1.8.2
+	pkgver = 1.8.3
 	pkgrel = 1
 	url = http://www.ros.org/wiki/bond_core
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = ros-melodic-bond-core
 	depends = ros-melodic-bond
 	depends = ros-melodic-smclib
 	depends = ros-melodic-bondcpp
-	source = ros-melodic-bond-core-1.8.2-0.tar.gz::https://github.com/ros-gbp/bond_core-release/archive/release/melodic/bond_core/1.8.2-0.tar.gz
-	sha256sums = 4719c67f54cfc4058cda65e676d5558d830f47c394f8c91ab4886e27595d66ff
+	source = ros-melodic-bond-core-1.8.3-0.tar.gz::https://github.com/ros-gbp/bond_core-release/archive/release/melodic/bond_core/1.8.3-0.tar.gz
+	sha256sums = c295706b5def3265868e81d63c1ee31e622e6f286cfde31a8a6c8ce43f9a07b5
 
 pkgname = ros-melodic-bond-core
 
