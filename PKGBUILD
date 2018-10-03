@@ -38,10 +38,10 @@
 
 pkgname=zoneminder
 pkgver=1.32.1
-pkgrel=1
-pkgdesc='Free and open source CCTV software which supports IP, USB and analog cameras'
+pkgrel=2
+pkgdesc='A full-featured, open source, state-of-the-art video surveillance software system.'
 arch=('x86_64')
-url='http://www.zoneminder.com'
+url='https://zoneminder.com/'
 license=('GPLv2')
 depends=('polkit' 'ffmpeg' 'libmp4v2'
          'mariadb' 'nginx-mainline' 'fcgiwrap' 'php-apcu' 'php-fpm' 'php-gd'
@@ -49,12 +49,12 @@ depends=('polkit' 'ffmpeg' 'libmp4v2'
          'perl-json-any' 'perl-libwww' 'perl-mime-lite' 'perl-mime-tools' 'perl-number-bytes-human' 'perl-sys-meminfo' 'perl-sys-mmap'
          # Needed for ONVIF support
          'perl-class-load' 'perl-data-uuid' 'perl-io-socket-multicast' 'perl-soap-wsdl' 'perl-xml-parser'
-         # Needed for SSL support (otherwise zmupdate.pl complains there is no HTTPS support)
+         # Needed for SSL support
          'perl-lwp-protocol-https'
          # Apparently needed for Telemetry support
          'perl-json-maybexs'
          # Unverified dependencies. So far not installing them hasn't raised any red flags, but I can't be 100% sure whether they're leftovers from previous ZoneMinder incarnations or if they're needed for proper operation during runtime, so for the time being I'm leaving them in.
-         'perl-module-load-conditional' 'perl-net-sftp-foreign' 'perl-php-serialization' 'perl-sys-cpu' 'perl-uri-encode')
+         'perl-net-sftp-foreign' 'perl-php-serialization' 'perl-sys-cpu' 'perl-uri-encode')
 makedepends=('cmake')
 optdepends=('vlc: provides libvlc (may achieve better performance with some cameras)'
             'ffmpeg-full: provides libavresample (dropped from the official ffmpeg package)')
@@ -82,6 +82,9 @@ prepare () {
     # Move extra PHP plugins into place
     cp -R $srcdir/crud-3.2.0/*                          web/api/app/Plugin/Crud
     cp -R $srcdir/CakePHP-Enum-Behavior-1.0-zm/*        web/api/app/Plugin/CakePHP-Enum-Behavior
+    
+    # Fix the launcher
+    sed -i 's|localhost/zm|localhost:8095|g' misc/$pkgname.desktop.in
 }
 
 build() {
@@ -113,14 +116,10 @@ package() {
     chown root:polkitd                  $pkgdir/usr/share/polkit-1/rules.d
     
     # Create ZM_LOGDIR
-    mkdir -p                            $pkgdir/var/log/$pkgname
-    chown -R http:http                  $pkgdir/var/log/$pkgname
-    chmod -R 775                        $pkgdir/var/log/$pkgname
+    install -dm775 -o http -g http      $pkgdir/var/log/$pkgname
     
     # Create ZM_CONTENTDIR and its subfolders
-    mkdir -p                            $pkgdir/var/lib/$pkgname/{cache,events,images,temp}
-    chown -R http:http                  $pkgdir/var/lib/$pkgname
-    chmod -R 775                        $pkgdir/var/lib/$pkgname
+    install -dm775 -o http -g http      $pkgdir/var/lib/$pkgname/{cache,events,images,temp}
     
     # Run script provided by upstream to create and/or link the needed folders with proper permissions
     ./zmlinkcontent.sh -z $pkgdir/etc/$pkgname/zm.conf -w $pkgdir/srv/$pkgname/www -l $pkgdir/var/log/$pkgname -t $pkgdir/var/lib/$pkgname/temp $pkgdir/var/lib/$pkgname
@@ -135,24 +134,24 @@ package() {
     chmod 644                           $pkgdir/etc/$pkgname/zm.conf
     chmod 644                           $pkgdir/etc/$pkgname/conf.d/*
 
-    # Install Nginx configuration
-    mkdir -p                                            $pkgdir/etc/nginx/sites-{available,enabled}
-    install -D -m 644 $srcdir/$pkgname-nginx.conf       $pkgdir/etc/nginx/sites-available/$pkgname.conf
-    ln -s /etc/nginx/sites-available/$pkgname.conf      $pkgdir/etc/nginx/sites-enabled/$pkgname.conf
+    # Setup Nginx
+    install -Dm644 $srcdir/$pkgname-nginx.conf       $pkgdir/etc/nginx/sites-available/$pkgname.conf
+    install -dm755                                   $pkgdir/etc/nginx/sites-enabled
+    ln -s /etc/nginx/sites-available/$pkgname.conf   $pkgdir/etc/nginx/sites-enabled/$pkgname.conf
     
-    # Install PHP-FPM custom .ini file
-    mkdir -p                                            $pkgdir/etc/php/conf.d/
-    install -D -m 644 $srcdir/$pkgname-php.ini          $pkgdir/etc/php/conf.d/$pkgname.ini
+    # Setup PHP-FPM
+    install -Dm644 $srcdir/$pkgname-php.ini          $pkgdir/etc/php/conf.d/$pkgname.ini
     
-    # Install systemd service
-    mkdir -p                                            $pkgdir/usr/lib/systemd/system
-    install -D -m 644 $srcdir/$pkgname.service          $pkgdir/usr/lib/systemd/system/$pkgname.service
+    # Setup systemd service
+    install -Dm644 $srcdir/$pkgname.service          $pkgdir/usr/lib/systemd/system/$pkgname.service
     
-    # Install systemd tmpfile
-    mkdir -p                                            $pkgdir/usr/lib/tmpfiles.d
-    install -D -m 644 $srcdir/$pkgname-tmpfile.conf     $pkgdir/usr/lib/tmpfiles.d/$pkgname.conf
+    # Setup systemd tmpfile
+    install -Dm644 $srcdir/$pkgname-tmpfile.conf     $pkgdir/usr/lib/tmpfiles.d/$pkgname.conf
+    
+    # Setup logrotate
+    install -Dm644 misc/logrotate.conf               $pkgdir/etc/logrotate.d/$pkgname
 
     # Copy license and database schemas
-    install -D -m 644 COPYING                           $pkgdir/usr/share/license/$pkgname
-    install -D -m 644 db/zm*.sql                        $pkgdir/usr/share/$pkgname/db
+    install -Dm644 COPYING                           $pkgdir/usr/share/licenses/$pkgname/LICENSE
+    install -Dm644 db/zm*.sql                        $pkgdir/usr/share/$pkgname/db
 }

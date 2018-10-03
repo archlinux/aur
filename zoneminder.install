@@ -1,53 +1,7 @@
 post_install() {
-    systemctl daemon-reload
     echo
     
-    ### MariaDB ###
-    
-    # Initialize MariaDB's default database if it's not already initialized
-    if [ ! -d /var/lib/mysql/mysql ]
-    then
-        systemctl is-active --quiet mariadb && systemctl stop mariadb
-        # NOTE: This will need to be changed when MariaDB 10.2 hits the repos, as mysql_install_db has been deprecated in favor of mysqld
-        mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql 2> /dev/null
-    fi
-    
-    systemctl is-active --quiet mariadb || systemctl start mariadb
-    
-    # Create ZoneMinder's database & user if they do not exist
-    if [ ! -d /var/lib/mysql/zm ]
-    then
-        # If a database root password is set
-        if [[ "$(mysql -uroot -e "select * from mysql.user;" 2>&1)" = *"Access denied"* ]]
-        then
-            echo \* Secure MariaDB installation found, please enter the database root password when prompted.
-            echo
-            mysql -uroot -p < /usr/share/zoneminder/db/zm_create.sql
-            echo
-            echo \* One more time...
-            echo
-            mysql -uroot -p -e "grant select,insert,update,delete,create,alter,index,lock tables on zm.* to 'zmuser'@localhost identified by 'zmpass';"
-            echo
-        # If a database root password is not set
-        else
-            mysql -uroot < /usr/share/zoneminder/db/zm_create.sql
-            mysql -uroot -e "grant select,insert,update,delete,create,alter,index,lock tables on zm.* to 'zmuser'@localhost identified by 'zmpass';"
-        fi
-    fi
-    
-    
-    ### PHP-FPM ###
-    
-    # Set local timezone in /etc/php/conf.d/zoneminder.ini
-    sed -i 's|PLACEHOLDER|'`timedatectl | grep "Time zone" | tr -s ' ' | cut -f4 -d ' '`'|g' /etc/php/conf.d/zoneminder.ini
-    systemctl is-active --quiet php-fpm && systemctl stop php-fpm
-    systemctl start php-fpm
-    
-    
-    ### fcgiwrap ###
-    
-    systemctl is-active --quiet fcgiwrap.socket && systemctl stop fcgiwrap.socket && systemctl stop fcgiwrap
-    systemctl start fcgiwrap.socket
+    systemctl daemon-reload
     
     
     ### Nginx ###
@@ -64,14 +18,65 @@ post_install() {
     fi
     
     
-    ### ZoneMinder
+    ### PHP-FPM ###
     
-    # Also activate the tmpfile to create runtime directories
+    # Set local timezone in /etc/php/conf.d/zoneminder.ini
+    sed -i 's|PLACEHOLDER|'`timedatectl | grep "Time zone" | tr -s ' ' | cut -f4 -d ' '`'|g' /etc/php/conf.d/zoneminder.ini
+    systemctl is-active --quiet php-fpm && systemctl stop php-fpm
+    systemctl start php-fpm
+    
+    
+    ### fcgiwrap ###
+    
+    systemctl is-active --quiet fcgiwrap.socket && systemctl stop fcgiwrap.socket
+    systemctl is-active --quiet fcgiwrap && systemctl stop fcgiwrap
+    systemctl start fcgiwrap.socket
+    
+    
+    ### MariaDB ###
+    
+    systemctl is-active --quiet mariadb && systemctl stop mariadb
+    
+    # Initialize MariaDB's default database if it's not already initialized
+    if [ ! -d /var/lib/mysql/mysql ]
+    then
+        # NOTE: This will need to be changed when MariaDB 10.2 hits the repos, as mysql_install_db has been deprecated in favor of mysqld
+        mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql 2> /dev/null
+    fi
+    
+    systemctl start mariadb
+    
+    
+    ### ZoneMinder ###
+    
+    # Create ZoneMinder's database & user if they do not exist
+    if [ ! -d /var/lib/mysql/zm ]
+    then
+        # Check for database root password
+        if [[ "$(mysql -uroot -e "select * from mysql.user;" 2>&1)" = *"Access denied"* ]]
+        then
+            # If a database root password is set
+            echo \* Secure MariaDB installation found, please enter the database root password when prompted.
+            echo
+            mysql -uroot -p < /usr/share/zoneminder/db/zm_create.sql
+            echo
+            echo \* One more time...
+            echo
+            mysql -uroot -p -e "grant select,insert,update,delete,create,alter,index,lock tables on zm.* to 'zmuser'@localhost identified by 'zmpass';"
+            echo
+        else
+            # If a database root password is not set
+            mysql -uroot < /usr/share/zoneminder/db/zm_create.sql
+            mysql -uroot -e "grant select,insert,update,delete,create,alter,index,lock tables on zm.* to 'zmuser'@localhost identified by 'zmpass';"
+        fi
+    fi
+    
     systemctl is-active --quiet zoneminder && systemctl stop zoneminder
     systemd-tmpfiles --create
     systemctl start zoneminder
     
-    echo Done!
+    
+    echo ---------------
     echo
     echo ZoneMinder is listening at http://localhost:8095    
     echo
@@ -80,20 +85,23 @@ post_install() {
 post_upgrade() {
     post_install
     
-    # Make sure ZoneMinder is running before we attempt to use its updater
-    if ( systemctl is-active --quiet zoneminder )
-    then
-        /usr/bin/zmupdate.pl -f 1> /dev/null
-    else
-        echo ---------------
-        echo
-        echo Error performing database update, zoneminder.service could not be started. Please fix any issues and manually run \'/usr/bin/zmupdater.pl -f\'
-        echo
-    fi
+    echo ---------------
+    echo
+    echo The ZoneMinder updater will now run.
+    
+    # Make sure ZoneMinder is *not* running before we attempt to use its updater
+    systemctl is-active --quiet zoneminder && systemctl stop zoneminder
+    /usr/bin/zmupdate.pl -f
+    systemctl start zoneminder
+    
+    echo
+    echo Update complete.
+    echo
 }
 
 post_remove() {
     systemctl daemon-reload && systemctl is-active --quiet zoneminder && systemctl stop zoneminder
+    
     echo
     echo ZoneMinder\'s database and user have been left intact. You can remove them by running the following:
     echo
