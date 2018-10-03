@@ -1,12 +1,12 @@
 ##########################################################################
 # Maintainer:   Harsha Kuchampudi <harshakuchampudi AT gmail DOT com>
 # Github:       https://github.com/hkuchampudi/Windscribe
-# Updated:      2018-07-23
+# Updated:      2018-10-03
 ##########################################################################
 
 pkgname=windscribe-cli
-pkgver=1.2
-pkgrel=9
+pkgver=1.3
+pkgrel=19
 pkgdesc="Port of Windscribe's command line interface"
 arch=('x86_64' 'i686' 'armv6h')
 url="https://windscribe.com/"
@@ -18,9 +18,9 @@ install="windscribe-cli.install"
 source_armv6h=("${pkgname}_${pkgver}_${pkgrel}.deb::https://assets.staticnetcontent.com/desktop/linux/windscribe-cli_${pkgver}-${pkgrel}_armhf.deb")
 source_i686=("${pkgname}_${pkgver}_${pkgrel}.deb::https://assets.staticnetcontent.com/desktop/linux/windscribe-cli_${pkgver}-${pkgrel}_i386.deb")
 source_x86_64=("${pkgname}_${pkgver}_${pkgrel}.deb::https://assets.staticnetcontent.com/desktop/linux/windscribe-cli_${pkgver}-${pkgrel}_amd64.deb")
-sha256sums_armv6h=('b1297791abe067410780aca8dcca821fa8a2ea64925c679e3fc50f46eaec2b1c')
-sha256sums_i686=('dacbf7669dee5198e3e20780dec3cad015b70f4c5df120eef88f6d343c42464c')
-sha256sums_x86_64=('d59233c25ab5718f85baab15f65b5d25c8455d7f8ed6596cf2d26845e9925289')
+sha256sums_armv6h=('af8938c03355c7523f3abbe2090cbc43b7f782c3f1caf90c19b91b03173dd524')
+sha256sums_i686=('141d9d229cd94de6d5212f909840682f5bf2d85f0de91407cf7fec28ff79161f')
+sha256sums_x86_64=('2adef3ff36423de681279a7f8ddaac29612779bdbcba9cf24098952646fa0253')
 
 package() {
   # Extract the debian package
