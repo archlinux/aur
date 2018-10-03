@@ -1,7 +1,7 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=pacserve
 pkgver=2018
-pkgrel=9
+pkgrel=11
 pkgdesc='Easily share Pacman packages between computers. A replacement for PkgD.'
 arch=(any)
 license=(GPL)

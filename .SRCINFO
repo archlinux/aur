@@ -1,7 +1,7 @@
 pkgbase = pacserve
 	pkgdesc = Easily share Pacman packages between computers. A replacement for PkgD.
 	pkgver = 2018
-	pkgrel = 9
+	pkgrel = 11
 	url = https://xyne.archlinux.ca/projects/pacserve
 	install = pacserve.install
 	arch = any
