@@ -6,7 +6,7 @@
 pkgbase=qscintilla-qt4
 pkgname=('qscintilla-qt4' 'python-qscintilla-qt4' 'python2-qscintilla-qt4'
          'python-qscintilla-qt4-common')
-pkgver=2.10.7
+pkgver=2.10.8
 pkgrel=4
 license=('GPL')
 arch=('x86_64')
@@ -14,7 +14,7 @@ url="http://www.riverbankcomputing.co.uk/software/qscintilla/intro"
 makedepends=('qt4' 'python-pyqt4' 'python2-pyqt4')
 options=('!buildflags') # Fix Qt Designer plugin
 source=("http://downloads.sourceforge.net/pyqt/QScintilla_gpl-${pkgver}.tar.gz")
-sha256sums=('670458de71dd4205e92d8f3b7bad9f667afece925703cde9df6d04bc23331a1a')
+sha256sums=('46cd5b4e609ca5e13130ba8cc7028d44fd1dc5b037f97c492899006ed0c992eb')
 
 prepare() {
   cp -a QScintilla_gpl-${pkgver}{,-qt4}

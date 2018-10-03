@@ -1,5 +1,5 @@
 pkgbase = qscintilla-qt4
-	pkgver = 2.10.7
+	pkgver = 2.10.8
 	pkgrel = 4
 	url = http://www.riverbankcomputing.co.uk/software/qscintilla/intro
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = qscintilla-qt4
 	makedepends = python-pyqt4
 	makedepends = python2-pyqt4
 	options = !buildflags
-	source = http://downloads.sourceforge.net/pyqt/QScintilla_gpl-2.10.7.tar.gz
-	sha256sums = 670458de71dd4205e92d8f3b7bad9f667afece925703cde9df6d04bc23331a1a
+	source = http://downloads.sourceforge.net/pyqt/QScintilla_gpl-2.10.8.tar.gz
+	sha256sums = 46cd5b4e609ca5e13130ba8cc7028d44fd1dc5b037f97c492899006ed0c992eb
 
 pkgname = qscintilla-qt4
 	pkgdesc = A port to Qt4 of Neil Hodgson's Scintilla C++ editor class
 	depends = qt4
-	provides = qscintilla=2.10.7
+	provides = qscintilla=2.10.8
 	conflicts = qscintilla<2.9.1
 	replaces = qscintilla<2.9.1
 
@@ -22,7 +22,7 @@ pkgname = python-qscintilla-qt4
 	pkgdesc = Python 3.x bindings for QScintilla2
 	depends = python-qscintilla-qt4-common
 	depends = python-pyqt4
-	provides = python-qscintilla=2.10.7
+	provides = python-qscintilla=2.10.8
 	conflicts = python-qscintilla<2.9.1
 	replaces = python-qscintilla<2.9.1
 
@@ -30,14 +30,14 @@ pkgname = python2-qscintilla-qt4
 	pkgdesc = Python 2.x bindings for QScintilla2
 	depends = python-qscintilla-qt4-common
 	depends = python2-pyqt4
-	provides = python2-qscintilla=2.10.7
+	provides = python2-qscintilla=2.10.8
 	conflicts = python2-qscintilla<2.9.1
 	replaces = python2-qscintilla<2.9.1
 
 pkgname = python-qscintilla-qt4-common
 	pkgdesc = Common python qscintilla bindings files shared between python-qscintilla-qt4 and python2-qscintilla-qt4
 	depends = qscintilla-qt4
-	provides = python-qscintilla-common=2.10.7
+	provides = python-qscintilla-common=2.10.8
 	conflicts = python-qscintilla-common<2.9.1
 	replaces = python-qscintilla-common<2.9.1
 
