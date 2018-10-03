@@ -34,7 +34,7 @@ depends=(${ros_depends[@]}
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="bond_core-release-release-melodic-bondcpp"
+_dir="bond_core-release-release-melodic-bondcpp-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/bond_core-release/archive/release/melodic/bondcpp/${pkgver}-${_pkgver_patch}.tar.gz")
 sha256sums=('ff1e93592a4c959b34081449a2398893a25c99e5e49f704a063a3328f75d15a6')
 
