@@ -4,7 +4,7 @@ pkgdesc="ROS - Interface for enforcing joint limits."
 url='https://github.com/ros-controls/ros_control/wiki'
 
 pkgname='ros-melodic-joint-limits-interface'
-pkgver='0.15.0'
+pkgver='0.15.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -33,7 +33,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_control-release-release-melodic-joint_limits_interface-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_control-release/archive/release/melodic/joint_limits_interface/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('acb637d179314bfb577dfba336c9d4c6020e9a412856fd0acf9f6dddc48fc840')
+sha256sums=('c79c7fa6eaa2ccb35ed79b7dc6b125db16a98d298085a1fb1a2ed530e9817a64')
 
 build() {
   # Use ROS environment variables
