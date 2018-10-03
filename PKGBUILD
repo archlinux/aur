@@ -4,7 +4,7 @@ pkgdesc="ROS - Extra nodes and plugins for MAVROS."
 url='http://wiki.ros.org/mavros_extras'
 
 pkgname='ros-melodic-mavros-extras'
-pkgver='0.26.1'
+pkgver='0.26.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -44,7 +44,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="mavros-release-release-melodic-mavros_extras-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/mavlink/mavros-release/archive/release/melodic/mavros_extras/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('3e9fe4d0c912687f17992e7fd092b8b6aebe66ee1b609975679a6bc2f8faa219')
+sha256sums=('74bc1807d8ea3db66f529238cd274f73b03001b8e114dbc024c911993841aad5')
 
 build() {
   # Use ROS environment variables
@@ -56,17 +56,17 @@ build() {
   cd ${srcdir}/build
 
   # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
+  /usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
 
   # Build project
   cmake ${srcdir}/${_dir} \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-        -DPYTHON_EXECUTABLE=/usr/bin/python2 \
-        -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
-        -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
-        -DPYTHON_BASENAME=-python2.7 \
+        -DPYTHON_EXECUTABLE=/usr/bin/python3 \
+        -DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
+        -DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
+        -DPYTHON_BASENAME=.cpython-37m \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
