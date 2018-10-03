@@ -1,6 +1,6 @@
 pkgbase = r-rstudioapi
 	pkgdesc = Safely Access the RStudio API
-	pkgver = 0.7
+	pkgver = 0.8
 	pkgrel = 1
 	url = https://cran.r-project.org/package=rstudioapi
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = r-rstudioapi
 	optdepends = r-testthat
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/rstudioapi_0.7.tar.gz
-	md5sums = ee4ab567a7a9fdfac1a6fd01fe38de4a
+	source = https://cran.r-project.org/src/contrib/rstudioapi_0.8.tar.gz
+	md5sums = 7601abbffcade9bdba3aa982c2c2625a
 
 pkgname = r-rstudioapi
 

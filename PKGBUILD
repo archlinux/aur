@@ -1,26 +1,22 @@
-# Maintainer: Alex Branham <branham@utexas.edu>
-_cranname=rstudioapi
-_cranver=0.7
-_pkgtar=${_cranname}_${_cranver}.tar.gz
+# Maintainer: Alex Branham <alex.branham@gmail.com>
+_cranver=0.8
 pkgname=r-rstudioapi
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc="Safely Access the RStudio API"
+pkgdesc='Safely Access the RStudio API'
 arch=('any')
-url="https://cran.r-project.org/package=${_cranname}"
+url='https://cran.r-project.org/package=rstudioapi'
 license=('MIT')
 depends=('r' )
-
 optdepends=('r-testthat' 'r-knitr' 'r-rmarkdown')
-
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('ee4ab567a7a9fdfac1a6fd01fe38de4a')
+source=("https://cran.r-project.org/src/contrib/rstudioapi_"$_cranver".tar.gz")
+md5sums=('7601abbffcade9bdba3aa982c2c2625a')
 
 build(){
-    R CMD INSTALL ${_pkgtar} -l $srcdir
+    R CMD INSTALL rstudioapi_"$_cranver".tar.gz -l "$srcdir"
 }
 package() {
-    install -d "$pkgdir/usr/lib/R/library"
-    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
+    install -dm0755 "$pkgdir"/usr/lib/R/library
+    cp -a --no-preserve=ownership rstudioapi "$pkgdir"/usr/lib/R/library
 }
 
