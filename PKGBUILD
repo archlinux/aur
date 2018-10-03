@@ -1,14 +1,14 @@
 # Maintainer: Marcel Radzio <info@nordgedanken.de>
 pkgbase=riot-desktop-git
 pkgver=v0.16.5.r26.gf69869ac
-pkgrel=1
+pkgrel=2
 pkgname=riot-desktop-git
 pkgdesc="A glossy Matrix collaboration client for the desktop."
 arch=('any')
 url="https://riot.im"
 license=('Apache')
 depends=('electron')
-makedepends=('git' 'npm')
+makedepends=('git' 'npm' 'jq')
 conflicts=('riot-desktop' 'riot-web')
 provides=('riot-desktop')
 backup=("etc/riot/config.json")
@@ -36,10 +36,18 @@ prepare() {
 
 build() {
 	cd "$srcdir/${pkgname}"
+
+	jq '.dependencies."matrix-react-sdk" = "github:matrix-org/matrix-react-sdk#develop"' "$srcdir/${pkgname}/package.json" > "$srcdir/${pkgname}/package_tmp.json"
+	cp "$srcdir/${pkgname}/package_tmp.json" "$srcdir/${pkgname}/package.json"
+	jq '.dependencies."matrix-js-sdk" = "github:matrix-org/matrix-js-sdk#develop"' "$srcdir/${pkgname}/package.json" > "$srcdir/${pkgname}/package_tmp.json"
+	mv "$srcdir/${pkgname}/package_tmp.json" "$srcdir/${pkgname}/package.json"
+        jq '.scripts."build:react-sdk" = "node scripts/npm-sub.js matrix-react-sdk run build"' "$srcdir/${pkgname}/package.json" > "$srcdir/${pkgname}/package_tmp.json"
+        mv "$srcdir/${pkgname}/package_tmp.json" "$srcdir/${pkgname}/package.json"
+
 	npm install --cache "${srcdir}/npm-cache"
 
-        cd "$srcdir/${pkgname}"
-        npm run build --cache "${srcdir}/npm-cache"
+	npm run build
+
 }
 
 package() {
