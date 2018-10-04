@@ -1,30 +1,31 @@
 # Maintainer: Dmitri Goutnik <dg@syrec.org>
 
 pkgname=pgcenter
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
-pkgdesc='top-like admin tool for PostgreSQL'
+pkgdesc='Command-line admin tool for observing and troubleshooting Postgres'
 arch=('x86_64')
 url='https://github.com/lesovsky/pgcenter'
 license=('custom:BSD3')
-depends=('postgresql-libs')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
-        'pgcenter.patch')
-sha256sums=('325cf9b4e8ee36c6f48f05309c7bcef509f2c4b0bfb1d3b80fa1a9a01b573b16'
-            'f11df193e1d488a0368ae6e6aefbcf714805c1a040828e80a6467569b716d79d')
+depends=('glibc')
+makedepends=('go' 'git')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('e25e6c7f5f608b89fd6fb68dc24896ab489abbf23e56ec7428867286c469d056')
 
 prepare() {
-    cd ${pkgname}-${pkgver}
-    patch -Np1 -i "${srcdir}/pgcenter.patch"
+  mkdir -p src/github.com/lesovsky
+  mv ${pkgname}-${pkgver} src/github.com/lesovsky/pgcenter
+  cd src/github.com/lesovsky/pgcenter
+  env GOPATH="${srcdir}" GO111MODULE=on go mod download
 }
 
 build() {
-  cd ${pkgname}-${pkgver}
-  make
+    cd src/github.com/lesovsky/pgcenter
+    env GOPATH="${srcdir}" GO111MODULE=on go build -o ${pkgname}
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
-  make DESTDIR="${pkgdir}/" install
+  cd src/github.com/lesovsky/pgcenter
+  install -Dm755 pgcenter "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 COPYRIGHT "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
 }
