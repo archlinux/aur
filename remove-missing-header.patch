@@ -1,0 +1,10 @@
+--- tools/cors-trace2tuple.c.old	2018-10-04 15:06:42.729321143 -0400
++++ tools/cors-trace2tuple.c	2018-10-04 15:06:59.982931558 -0400
+@@ -58,7 +58,6 @@
+ #include <signal.h>
+ 
+ #include "libtrace.h"
+-#include "lt_inttypes.h"
+ 
+ struct libtrace_t *trace;
+ 

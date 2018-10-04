@@ -1,0 +1,16 @@
+pkgbase = corsaro
+	pkgdesc = A software suite for performing large-scale analysis of trace data
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://www.caida.org/tools/measurement/corsaro/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = libtrace
+	source = https://www.caida.org/tools/measurement/corsaro/downloads/corsaro-2.1.0.tar.gz
+	source = remove-missing-header.patch
+	md5sums = f4970360525b5d112a1040a27503e87f
+	md5sums = f0b86fa23f427c9a0ba608e7a1b5081d
+
+pkgname = corsaro
+
