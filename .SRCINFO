@@ -1,8 +1,8 @@
 pkgbase = firefox-appmenu
-	pkgdesc = Standalone web browser from mozilla.org
-	pkgver = 62.0.2
+	pkgdesc = Firefox from extra with appemnu patch
+	pkgver = 62.0.3
 	pkgrel = 1
-	url = https://www.mozilla.org/firefox/
+	url = https://aur.archlinux.org/packages/firefox-appmenu/
 	arch = x86_64
 	license = MPL
 	license = GPL
@@ -42,12 +42,12 @@ pkgbase = firefox-appmenu
 	optdepends = libnotify: Notification integration
 	optdepends = pulseaudio: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
-	provides = firefox=62.0.2
+	provides = firefox=62.0.3
 	conflicts = firefox
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
-	source = hg+https://hg.mozilla.org/mozilla-unified#tag=FIREFOX_62_0_2_RELEASE
+	source = hg+https://hg.mozilla.org/mozilla-unified#tag=FIREFOX_62_0_3_RELEASE
 	source = firefox.desktop
 	source = firefox-symbolic.svg
 	source = unity-menubar.patch
