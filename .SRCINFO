@@ -1,7 +1,7 @@
 pkgbase = pgcenter
 	pkgdesc = Command-line admin tool for observing and troubleshooting Postgres
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lesovsky/pgcenter
 	arch = x86_64
 	license = custom:BSD3

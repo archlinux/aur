@@ -2,7 +2,7 @@
 
 pkgname=pgcenter
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Command-line admin tool for observing and troubleshooting Postgres'
 arch=('x86_64')
 url='https://github.com/lesovsky/pgcenter'
@@ -28,4 +28,5 @@ package() {
   cd src/github.com/lesovsky/pgcenter
   install -Dm755 pgcenter "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 COPYRIGHT "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
+  env GOPATH="${srcdir}" GO111MODULE=on go clean -modcache
 }
