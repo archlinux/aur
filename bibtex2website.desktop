@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=BibTeX2Website
+Comment=A program that can generate an ordered website out of BibTeX files
+Comment[de]=Ein Programm, dass eine geordnete Webseite aus BibTeX-Dateien erstellen kann
+Exec=/usr/bin/bibtex2website-gui
+Icon=texstudio
+Keywords=LaTeX;TeX;editor;
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Categories=Office;Publishing
+StartupNotify=false

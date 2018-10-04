@@ -1,0 +1,21 @@
+pkgbase = bibtex2website
+	pkgdesc = A program that can generate an ordered website out of BibTeX files
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/nullptrT/bibtex2website
+	arch = x86_64
+	arch = i686
+	arch = armv6h
+	arch = armv7h
+	license = GPL3
+	makedepends = cmake
+	depends = qt5-base
+	source = bibtex2website-v1.0.1.tar.gz::https://github.com/nullptrT/bibtex2website/archive/v1.0.1.tar.gz
+	source = liblogcpp-v1.9.3.tar.gz::https://github.com/nullptrT/liblogcpp/archive/v1.9.3.tar.gz
+	source = bibtex2website.desktop
+	sha256sums = b2c947bda7e5028d3639a266b653220361f0eb25d5765fe471bedf328de8acb4
+	sha256sums = e0b758cbe3031548f54ab9d9189bf6a67faf54a4a54fa3c608786194cb56c76f
+	sha256sums = 75d71bf43d00dc869d797afeb8e12e94e2a7cddac335c84940f48d7abd91d565
+
+pkgname = bibtex2website
+
