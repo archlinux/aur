@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=ArchiSteamFarm
+Comment="C# application that allows you to farm steam cards using multiple steam accounts simultaneously."
+Exec=/opt/ArchiSteamFarm-bin/ArchiSteamFarm
+Icon=/opt/ArchiSteamFarm-bin/ArchiSteamFarm.ico
+Terminal=true
+Type=Application
+Categories=Game;
