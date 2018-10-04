@@ -1,9 +1,9 @@
 # Maintainer: Gabriele Fulgaro <gabriele.fulgaro@gmail.com>
 # Contributor: Antonio Cardace <antonio@cardace.it>
 
-_pkgname="libs2argv-execs"
+_pkgname="s2argv-execs"
 
-pkgname="$_pkgname-git"
+pkgname="lib$_pkgname-git"
 pkgver=r34.c51c856
 pkgrel=1
 pkgdesc="s2argv converts a command string into an argv array for execv*, execs is like execv taking a string instead of an argv"
