@@ -1,12 +1,12 @@
 pkgbase = spectre-meltdown-checker
-	pkgdesc = Spectre & Meltdown vulnerability/mitigation checker (CVE-2017-5753, CVE-2017-5715, CVE-2017-5754, CVE-2018-3640, CVE-2018-3639)
-	pkgver = 0.39
+	pkgdesc = Spectre & Meltdown vulnerability/mitigation checker (CVE-2017-5753, CVE-2017-5715, CVE-2017-5754, CVE-2018-3640, CVE-2018-3639, CVE-2018-3615, CVE-2018-3620, CVE-2018-3646)
+	pkgver = 0.40
 	pkgrel = 1
 	url = https://github.com/speed47/spectre-meltdown-checker
 	arch = any
 	license = GPL3
-	source = spectre-meltdown-checker-0.39.tar.gz::https://github.com/speed47/spectre-meltdown-checker/archive/v0.39.tar.gz
-	sha256sums = 1e6cac828374404e69cffc40f45642a123f0947c4fd736795d70b1511597dd6f
+	source = spectre-meltdown-checker-0.40.tar.gz::https://github.com/speed47/spectre-meltdown-checker/archive/v0.40.tar.gz
+	sha256sums = 53a597d030e9e3f02e7dd68ddf6c12ddb47ef5ff86ce1b351dd5fb3805114b07
 
 pkgname = spectre-meltdown-checker
 
