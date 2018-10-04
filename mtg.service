@@ -4,7 +4,7 @@ After=network-online.target
 
 [Service]
 User=nobody
-Group=nogroup
+Group=nobody
 EnvironmentFile=/etc/conf.d/mtg
 ExecStart=/usr/bin/mtg $SECRET $ADTAG
 

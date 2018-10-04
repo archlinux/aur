@@ -1,6 +1,6 @@
 pkgname=mtg
 pkgver=0.14
-pkgrel=1
+pkgrel=2
 pkgdesc='Bullshit-free MTProto proxy for Telegram'
 arch=('x86_64')
 url='https://github.com/9seconds/mtg'
@@ -15,7 +15,7 @@ source=(
 )
 sha256sums=(
      'SKIP'
-     'eba87814ee66e23928a123126a67804fa9254c60b27163619b8da3a214d88112'
+     '7590e1d27640e90129d94ef54d7091239fabde93a327717e4d04c6d7eebc0414'     
      '271a8765990b46a305b3aebeb08ee1ef63d22d889190ba2c84b50b35b304f6b5'
 )
 
