@@ -1,4 +1,5 @@
-# Maintainer: Martin Wimpress <code@flexion.org>
+# Maintainer: Silvio Fricke <silvio.fricke@gmail.com>
+# Contributor: Martin Wimpress <code@flexion.org>
 
 _pkgname=blueman
 pkgname=${_pkgname}-git
