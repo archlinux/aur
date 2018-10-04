@@ -5,7 +5,7 @@
 pkgbase=linux-bld
 pkgname=(linux-bld linux-bld-headers)
 _kernelname=-bld
-pkgver=4.18.11
+pkgver=4.18.12
 archlinux_linux_version=$pkgver-arch1
 _srcname=linux-4.18
 _pkgver2=${_srcname#*-}.0
@@ -29,7 +29,7 @@ source=("https://git.archlinux.org/linux.git/snapshot/linux-${archlinux_linux_ve
         "https://raw.githubusercontent.com/rmullick/bld-patches/master/${_BLDpatch}"
         )
 
-sha256sums=('0be7c0731ec64789ab57b6be84eef23a9ff4b3922d66f9447a7c81374b96f181'
+sha256sums=('3b602ebe1df92d14fe50e1b7ba56704d0baf352936fcd597c8eb62305d1ea51d'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             '5b51a1eacb3e00b304ca54d31f467ec1fb15fdfce93f1c62963d087bf753e812'
