@@ -7,8 +7,8 @@ pkgbase = computecpp
 	license = EULA
 	depends = ncurses5-compat-libs
 	options = !strip
-	source = local://ComputeCpp-CE-1.0.0-Ubuntu.16.04-64bit.tar.gz
-	sha256sums = 3761661845195c9e342a406027782247615d399701ddbb7eb76eb95ff43cae94
+	source = https://computecpp.codeplay.com/downloads/computecpp-ce/1.0.1/ubuntu-16.04-64bit.tar.gz
+	sha256sums = 35692ad192644b4ae8a1e0551e36d74014d0232764845b2ac0ea8d72d3d0f6d2
 
 pkgname = computecpp
 
