@@ -1,17 +1,17 @@
 pkgbase = editorconfig-qtcreator
 	pkgdesc = EditorConfig Plugin for QtCreator
-	pkgver = 0.3.0+4.7.0
+	pkgver = 0.3.0+4.7.1
 	pkgrel = 1
 	url = https://github.com/editorconfig/editorconfig-qtcreator
 	arch = i686
 	arch = x86_64
 	license = LGPL
-	depends = qtcreator=4.7.0
+	depends = qtcreator=4.7.1
 	depends = editorconfig-core-c
 	source = https://github.com/editorconfig/editorconfig-qtcreator/archive/0.3.0.tar.gz
-	source = http://download.qt.io/official_releases/qtcreator/4.7/4.7.0/qt-creator-opensource-src-4.7.0.tar.xz
-	md5sums = cb40d30d0e2b703296c2a4fb29796033
-	md5sums = 079ad4826c988081d27c847eb69fe55d
+	source = http://download.qt.io/official_releases/qtcreator/4.7/4.7.1/qt-creator-opensource-src-4.7.1.tar.xz
+	sha512sums = 28f36cd90834d5ebfd004cf708898514c1ed9f5b00f7a9bc08482cbf9b05efa2068ca97d7debc7f4aedbbd7115cd4d96795280c5e726063c0d2bcf3adf4d25f9
+	sha512sums = 839db5409c65b33293fcd21bbf3c6ec1900f640a05451d94d8d6df0421bb56d34f1fd98b9dc5a5f1ab2cb05a65dc2b23532b44c0687c3ca9d310b629474d2461
 
 pkgname = editorconfig-qtcreator
 
