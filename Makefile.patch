@@ -1,0 +1,27 @@
+diff -Naur nim-mode-0.4.1.orig/Makefile nim-mode-0.4.1.new/Makefile
+--- nim-mode-0.4.1.orig/Makefile	2018-10-03 23:47:34.466464558 +0200
++++ nim-mode-0.4.1.new/Makefile	2018-10-04 11:41:31.126154170 +0200
+@@ -3,20 +3,19 @@
+ 
+ cask_dir_exists := $(shell find ./ -type d -name ".cask")
+ 
+-all: test
++all: compile unit
+ 
+ test: clean-elc
+ 	$(if $(cask_dir_exists), $(skip), ${MAKE} install-dependencies)
+ 	${MAKE} unit
+ 	${MAKE} compile
+ 	${MAKE} unit
+-	${MAKE} clean-elc
+ 
+ compile:
+-	${CASK} exec ${EMACS} -Q -batch -L . -f batch-byte-compile *.el
++	${EMACS} -Q -batch -L /usr/share/emacs/site-lisp/flycheck -L /usr/share/emacs/site-lisp/ -L /usr/share/emacs/site-lisp/epc -L . -f batch-byte-compile *.el
+ 
+ unit:
+-	${CASK} exec buttercup -L .
++
+ 
+ install-dependencies:
+ 	${CASK} install
