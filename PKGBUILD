@@ -7,7 +7,7 @@ pkgname='ros-melodic-gazebo-dev'
 pkgver='2.8.4'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('Apache 2.0')
 
 ros_makedepends=(ros-melodic-catkin)
@@ -16,8 +16,7 @@ makedepends=('cmake' 'ros-build-tools'
 
 ros_depends=()
 depends=(${ros_depends[@]}
-  gazebo9
-  libgazebo9-dev)
+  gazebo)
 
 # Git version (e.g. for debugging)
 # _tag=release/melodic/gazebo_dev/${pkgver}-${_pkgver_patch}
