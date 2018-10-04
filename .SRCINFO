@@ -1,6 +1,6 @@
 pkgbase = r-r6
 	pkgdesc = Classes with Reference Semantics
-	pkgver = 2.2.2
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=R6
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = r-r6
 	optdepends = r-testthat
 	optdepends = r-ggplot2
 	optdepends = r-scales
-	source = https://cran.r-project.org/src/contrib/R6_2.2.2.tar.gz
-	md5sums = 635b58c65bff624a1fab69c6b1989801
+	source = https://cran.r-project.org/src/contrib/R6_2.3.0.tar.gz
+	md5sums = 92c91e7bc5c0309108ba9b0f54f9ed9b
 
 pkgname = r-r6
 
