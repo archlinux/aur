@@ -1,3 +1,20 @@
+4.4.1 (2018-10-03 19:28:51)
+
+    Implements most of the ARMv8.1, ARMv8.2 and ARMv8.3 extensions.
+
+4.4.0 (2018-09-28 23:28:17)
+
+    Dark mode support (macOS Mojave),
+    New debugger backend using the LLDB C++ API, instead of the Python API (Xcode 10),
+    New graphic engine (macOS Mojave),
+    Fix an issue in the sample m68k CPU project (SDK).
+
+4.3.31 (2018-09-14 16:51:03)
+
+    Fixes an issue in the Tool SDK when disassembling instructions,
+    Prevents a deadlock with outputting lots of debug messages in the log view,
+    Fixes a memory leak in the hexadecimal mode.
+
 4.3.30 (2018-09-01 16:57:29)
 
     Fixes a bug in the ELF loader regarding ARM relocations,
