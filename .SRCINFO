@@ -1,0 +1,13 @@
+pkgbase = emacs-commenter
+	pkgdesc = Emacs' multiline-comment support package
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://stable.melpa.org/#/commenter
+	arch = any
+	license = GPL3
+	depends = emacs
+	source = https://stable.melpa.org/packages/commenter-0.5.2.el
+	sha256sums = 08ee2de60a52f6ebd9eef6025581a29abdd16b0ce8a3f9ebcc6f911546d5e9fa
+
+pkgname = emacs-commenter
+
