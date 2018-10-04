@@ -1,3 +1,5 @@
+# Maintainer: archlinux.info:ghotrix
+
 pkgname=komodo-9
 pkgver=9
 pkgrel=02
