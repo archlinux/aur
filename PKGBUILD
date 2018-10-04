@@ -10,6 +10,7 @@ url=https://github.com/ambv/black
 license=('MIT')
 depends=('python' 'python-appdirs' 'python-attrs' 'python-click' 'python-toml')
 makedepends=('python-setuptools')
+optdepends=('python-aiohttp: for the blackd HTTP server')
 source=("https://files.pythonhosted.org/packages/source/b/black/black-$pkgver.tar.gz")
 sha512sums=('80f94867220f7511dfc72aa8886586530d33187e10c57a7721cb0c97e906941ef811811ef0b2afa77d5454ce00114f3724063a890c41af4d7b68ec59dee29a48')
 
