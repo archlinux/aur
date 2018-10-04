@@ -1,0 +1,16 @@
+pkgbase = libopnmidi-git
+	pkgdesc = A MIDI play library with OPN2 (YM2612) emulator
+	pkgver = v1.4.0.r5.gc8c4803
+	pkgrel = 1
+	url = https://github.com/Wohlstand/libOPNMIDI
+	arch = x86_64
+	license = LGPL3
+	depends = sdl2
+	provides = libopnmidi
+	conflicts = libopnmidi
+	options = staticlibs
+	source = git+https://github.com/Wohlstand/libOPNMIDI.git
+	md5sums = SKIP
+
+pkgname = libopnmidi-git
+
