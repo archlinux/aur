@@ -1,7 +1,7 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-migrate-parsetree
-pkgver=1.0.11
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Convert OCaml parsetrees between different versions"
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ depends=('ocaml' 'ocaml-result')
 optdepends=('ocamlbuild: For ocamlbuild plugin')
 makedepends=('ocaml-findlib' 'dune' 'ocamlbuild')
 options=('!strip')
-source=("https://github.com/ocaml-ppx/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('f795da10d8c4982f7a48a50b10a99b24')
+source=("https://github.com/ocaml-ppx/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tbz")
+sha512sums=('23c61d1eae05d5090712038d58c807f2959172d37b0eaf0e43ed6f3fe9a7b52390ebace173350abb47bc3be17be5659f9a6d8751ae6e0794f540780a58711d01')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
