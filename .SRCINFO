@@ -1,7 +1,7 @@
 pkgbase = tastyworks
 	pkgdesc = One of the fastest, most reliable, and most secure trading platforms in the world.
 	pkgver = 0.27.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://tastyworks.com/technology.html
 	arch = x86_64
 	license = Other
@@ -17,7 +17,7 @@ pkgbase = tastyworks
 	source = https://download.tastyworks.com/desktop/0.27.0/tastyworks-0.27.0.rpm
 	source = tastyworks.png
 	sha256sums = 1e512ea67dc99f0a1108764c960a47e1f4e97ff51c7a62a386843611c22d1965
-	sha256sums = f47e738b37d5e804ce62581acaabe41efdd8a6f626a396a02b10714ddd1e1f5b
+	sha256sums = 5875675195bb9156c050976e00c98538a6662740f5359e677d26fe5e21560cea
 
 pkgname = tastyworks
 
