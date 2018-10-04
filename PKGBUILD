@@ -1,7 +1,7 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-ppxlib
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Base library and tools for ppx rewriters"
 arch=('x86_64')
@@ -10,8 +10,8 @@ license=('MIT')
 depends=('ocaml' 'ocaml-base' 'ocaml-compiler-libs-repackaged' 'ocaml-migrate-parsetree' 'ocaml-ppx_derivers' 'ocaml-stdio')
 makedepends=('dune')
 options=('!strip')
-source=("https://github.com/ocaml-ppx/ppxlib/archive/${pkgver}.tar.gz")
-md5sums=('e6ff83b1643a44fcb6b0acde4d2aa299')
+source=("https://github.com/ocaml-ppx/ppxlib/releases/download/${pkgver}/ppxlib-${pkgver}.tbz")
+sha512sums=('6fd5fd40a427582d30b83ed5dac8312f442081a52a454b5edd0c6e5f4bc735f3cd5c0712a9f9ad5dacfac5bb8646403baf350f79d2dcb5ad2041282f5b9643a6')
 
 build() {
   cd "${srcdir}/ppxlib-${pkgver}"
