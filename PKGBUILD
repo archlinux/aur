@@ -3,7 +3,7 @@
 
 pkgname=blis
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="BLAS-like Library Instantiation Software framework by the Science of High-Performance Computing Group"
 arch=('x86_64')
 license=('custom:BSD')
@@ -21,8 +21,8 @@ prepare() {
 
 build() {
   cd $pkgname-$pkgver
-  CFLAGS+=" -fPIC" ./configure -p "${pkgdir}"/usr x86_64
-  make BLIS_ENABLE_DYNAMIC_BUILD:=yes
+  CFLAGS+=" -fPIC" ./configure -p "${pkgdir}"/usr auto
+  make 
 }
 
 check() {
