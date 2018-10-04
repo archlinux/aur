@@ -7,7 +7,7 @@ pkgname='ros-melodic-rviz'
 pkgver='1.13.1'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD, Creative Commons')
 
 ros_makedepends=(ros-melodic-map-msgs
@@ -37,7 +37,7 @@ makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   qt5-base
   tinyxml2
-  ogre-1.9
+  ogre
   urdfdom-headers
   assimp
   eigen3
