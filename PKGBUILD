@@ -7,10 +7,10 @@ pkgname=hdfview
 _pkgname=HDFView
 pkgver=3.0
 _pkgver=${pkgver}.0
-pkgrel=1
+pkgrel=2
 pkgdesc="a GUI browser for reading hdf5 files"
 arch=('x86_64')
-url="https://portal.hdfgroup.org/display/support/HDFView%203.0"
+url="https://www.hdfgroup.org/downloads/hdfview/"
 license=('custom')
 depends=('hdf5-openmpi-java' 'hdf4')
 replaces=('hdfview-beta')
@@ -24,7 +24,7 @@ source=("https://support.hdfgroup.org/ftp/HDF5/releases/HDF-JAVA/${pkgname}-${pk
 sha512sums=(
     '8d1c0e4c063153fa4bfac80c6f85e9a6f0e879e706d77ba31db20eca105bc7c72852edd2aa1ada38446b2bd44581291faa0d93c3cc3a4086f153a35dcd619061'
     'd831e3211c67480728488e1e2df2596d41381c5ba7b8451ea0f5174d9a34f224133d9cbaa81728cb68560328054663e8940de86db4777de8b46b65f080de9674'
-    'ee90f96c171a21063418fad3741cc888305c052284bdc0083737060c0682bc92ad55b3e521b8e0a574b69f1a37966dd917c0537879519c33291f6f02b2e9d76d'
+    '42cbf32c91c4bfd3984d2ef130d8357c28269660117ad210039d9599904688853674f6626a7663c17cf0927895e5cbbede719b6766ff19ace43a5447421a4709'
     'bc2bb9ffa22140c1b6b5448ed310a8dbb839ddcf802ec327f32f904f0e77e0034bb26fabeb5d9e4e8ce8d334333327a2bd08b8e07f0313e85ef50afe0be41cfe')
 
 prepare() {
