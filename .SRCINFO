@@ -1,13 +1,11 @@
 pkgbase = emacs-deferred
 	pkgdesc = Simple asynchronous functions for emacs lisp
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kiwanami/emacs-deferred
 	arch = any
 	license = GPL3
-	makedepends = git
 	depends = emacs
-	provides = emacs-deferred
 	source = emacs-deferred-0.5.1.tar.gz::https://github.com/kiwanami/emacs-deferred/archive/v0.5.1.tar.gz
 	sha256sums = 941b49635cc80ff62c5f568f393b4262c8848b4d27bc88ae8da36549f072e168
 

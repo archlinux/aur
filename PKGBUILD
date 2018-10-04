@@ -3,14 +3,12 @@
 
 pkgname=emacs-deferred
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple asynchronous functions for emacs lisp"
 url="https://github.com/kiwanami/emacs-deferred"
 arch=('any')
 license=('GPL3')
 depends=('emacs')
-makedepends=('git')
-provides=('emacs-deferred')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kiwanami/emacs-deferred/archive/v${pkgver}.tar.gz")
 sha256sums=('941b49635cc80ff62c5f568f393b4262c8848b4d27bc88ae8da36549f072e168')
 
@@ -21,6 +19,6 @@ build() {
 
 package() {
   cd emacs-deferred-${pkgver}
-  install -d "$pkgdir"/usr/share/emacs/site-lisp/deferred
-  install -m644 *.el{c,} "$pkgdir"/usr/share/emacs/site-lisp/deferred/
+  install -d "$pkgdir"/usr/share/emacs/site-lisp/
+  install -m644 *.el{c,} "$pkgdir"/usr/share/emacs/site-lisp/
 }
