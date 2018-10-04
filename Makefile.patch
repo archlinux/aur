@@ -1,7 +1,0 @@
-2d1
-< noinst_PROGRAMS = execstest
-13,14d11
-< execstest_SOURCE = exectest.c 
-< execstest_LDADD = -lexecs
-47d43
-< 	ldconfig

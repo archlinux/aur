@@ -1,34 +1,36 @@
-# Mantainer: Antonio Cardace <antonio@cardace.it>
+# Maintainer: Gabriele Fulgaro <gabriele.fulgaro@gmail.com>
+# Contributor: Antonio Cardace <antonio@cardace.it>
 
-pkgname=libs2argv-execs-git
-_gitname=s2argv-execs
-pkgver=0.1
+_pkgname="libs2argv-execs"
+
+pkgname="$_pkgname-git"
+pkgver=r34.c51c856
 pkgrel=1
-
-pkgdesc="s2argv converts a command string into an argv array for execv, execvp, execvpe. execs is like execv taking a string instead of an argv."
-arch=('x86_64' 'i686' 'arm')
-url="https://github.com/rd235/s2argv-execs"
+pkgdesc="s2argv converts a command string into an argv array for execv*, execs is like execv taking a string instead of an argv"
+arch=('any')
+url="https://github.com/rd235/$_pkgname"
 license=('GPL2')
-makedepends=('autoconf' 'git')
-provides=('libs2argv-execs')
-conflicts=('libs2argv-execs')
-source=("git://github.com/rd235/s2argv-execs.git" "Makefile.patch")
-md5sums=('SKIP' 'b03e049f4c84ae941f78affc3373dc6f')
+groups=('view-os')
+#~ depends=('')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+replaces=("$_pkgname")
+source=("git+https://github.com/rd235/$_pkgname.git")
+md5sums=('SKIP')
 
-prepare() {
-  cd "$srcdir/$_gitname"
-  #patch as to not compile test files
-  patch Makefile.am ../../Makefile.patch
+pkgver() {
+	cd "$_pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir/$_gitname"
-  autoreconf -fi
-  ./configure --prefix=/usr
-  make
+	cd "$_pkgname"
+	autoreconf -if
+	./configure --prefix="/usr"
+	make
 }
 
 package() {
-  cd "$srcdir/$_gitname"
-  make DESTDIR="$pkgdir/" install
+	cd "$_pkgname"
+	make DESTDIR="$pkgdir/" install
 }

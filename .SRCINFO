@@ -1,20 +1,16 @@
 pkgbase = libs2argv-execs-git
-	pkgdesc = s2argv converts a command string into an argv array for execv, execvp, execvpe. execs is like execv taking a string instead of an argv.
-	pkgver = 0.1
+	pkgdesc = s2argv converts a command string into an argv array for execv*, execs is like execv taking a string instead of an argv
+	pkgver = r34.c51c856
 	pkgrel = 1
-	url = https://github.com/rd235/s2argv-execs
-	arch = x86_64
-	arch = i686
-	arch = arm
+	url = https://github.com/rd235/libs2argv-execs
+	arch = any
+	groups = view-os
 	license = GPL2
-	makedepends = autoconf
-	makedepends = git
 	provides = libs2argv-execs
 	conflicts = libs2argv-execs
-	source = git://github.com/rd235/s2argv-execs.git
-	source = Makefile.patch
+	replaces = libs2argv-execs
+	source = git+https://github.com/rd235/libs2argv-execs.git
 	md5sums = SKIP
-	md5sums = b03e049f4c84ae941f78affc3373dc6f
 
 pkgname = libs2argv-execs-git
 
