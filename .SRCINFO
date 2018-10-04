@@ -2,13 +2,13 @@ pkgbase = dsremote-git
 	pkgdesc = Operate your Rigol oscilloscope from your Linux desktop.
 	pkgver = r226.a7eb6a1
 	pkgrel = 1
-	url = https://github.com/Teuniz/DSRemote
+	url = https://gitlab.com/Teuniz/DSRemote
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = qt5-base
 	options = !strip
-	source = git://github.com/Teuniz/DSRemote.git
+	source = git+https://gitlab.com/Teuniz/DSRemote.git
 	md5sums = SKIP
 
 pkgname = dsremote-git
