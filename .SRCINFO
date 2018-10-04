@@ -1,6 +1,6 @@
 pkgbase = arm-none-eabi-newlib-linaro-git
 	pkgdesc = A C standard library implementation intended for use on embedded systems (ARM bare metal) Linaro Git Version
-	pkgver = 3.0.0.18286.2ec54fb1d
+	pkgver = 3.0.0.18387.a9cfb33b6
 	pkgrel = 1
 	url = http://www.sourceware.org/newlib/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = arm-none-eabi-newlib-linaro-git
 	provides = arm-none-eabi-newlib
 	options = !emptydirs
 	options = !strip
-	source = git+http://git.linaro.org/toolchain/newlib.git#tag=newlib-snapshot-20180802
+	source = git+http://git.linaro.org/toolchain/newlib.git#tag=newlib-snapshot-20180831
 	sha1sums = SKIP
 
 pkgname = arm-none-eabi-newlib-linaro-git
