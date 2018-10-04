@@ -1,9 +1,10 @@
-# Maintainer: shirokuro <tod dot jackson at gmail dot com>
+# Maintainer: spider-mario <spidermario@free.fr>
+# Contributor: shirokuro <tod dot jackson at gmail dot com>
 # Contributor: giovanni   
 
 pkgname=hd2u
-pkgver=1.0.3
-pkgrel=7
+pkgver=1.0.4
+pkgrel=1
 pkgdesc="Dos2Unix text file converter"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -11,7 +12,7 @@ url="http://hany.sk/~hany/software/hd2u/"
 depends=('popt')
 conflicts=('dos2unix')
 source=("http://hany.sk/~hany/_data/hd2u/$pkgname-$pkgver.tgz" 'always-false.patch')
-sha512sums=('d354964f0ad5392315767b96438d843a5f1d6afe78da5b0c5ea65a3b0b2a61beabff3ecac89df81b9271a14ca443f23dfffeb51815e02b724ad287e42fc2d6cc'
+sha512sums=('ea3d952257b29c5e3540622535ed62b8b17481a50ea3e6ed4a42c40d419b10b6c78c233697e4f1838fc90d5fdab2607bbffa1a2c90f260904c32e321cd42a871'
             'fa27ae64ce75fd73ef18207bc46ca8cbdeea66d0d6f3b342d52dbe14a63c23e2c9839bf026382e0c42084a00835235c49039097843b79c2764fe8889a6090ce9')
 
 prepare() {
