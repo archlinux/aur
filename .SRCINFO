@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rviz
 	pkgdesc = ROS - 3D visualization tool for ROS.
 	pkgver = 1.13.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ros.org/wiki/rviz
 	arch = any
 	license = BSD, Creative Commons
@@ -62,7 +62,7 @@ pkgbase = ros-melodic-rviz
 	depends = ros-melodic-rospy
 	depends = qt5-base
 	depends = tinyxml2
-	depends = ogre-1.9
+	depends = ogre
 	depends = urdfdom-headers
 	depends = assimp
 	depends = eigen3
