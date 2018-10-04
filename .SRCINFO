@@ -1,0 +1,23 @@
+pkgbase = i3lock-script
+	pkgdesc = Fork of i3lock-git, that allows to execute a script if authentication fails
+	pkgver = 2.10.16.gf74c013
+	pkgrel = 1
+	url = https://github.com/jumper149/i3lock-script
+	arch = i686
+	arch = x86_64
+	groups = i3-vcs
+	license = MIT
+	makedepends = git
+	depends = xcb-util-image
+	depends = libev
+	depends = cairo
+	depends = libxkbcommon-x11
+	provides = i3lock
+	conflicts = i3lock
+	options = docs
+	backup = etc/pam.d/i3lock
+	source = git://github.com/jumper149/i3lock-script#branch=master
+	sha1sums = SKIP
+
+pkgname = i3lock-script
+
