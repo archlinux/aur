@@ -1,3 +1,5 @@
+# Maintainer: Mark Weiman <mark.weiman@markzz.com>
+
 pkgname=corsaro
 pkgver=2.1.0
 pkgrel=1
