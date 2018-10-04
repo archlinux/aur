@@ -1,6 +1,6 @@
 pkgbase = alot-git
 	pkgdesc = terminal-based MUA for the notmuch mail system
-	pkgver = r3359.006e2b79
+	pkgver = r3394.4a671186
 	pkgrel = 1
 	url = https://github.com/pazz/alot
 	arch = any
@@ -14,6 +14,7 @@ pkgbase = alot-git
 	depends = python-configobj
 	depends = python-urwid
 	depends = python-urwidtrees
+	depends = python-twisted
 	depends = python-setuptools
 	provides = alot
 	conflicts = alot
@@ -22,7 +23,7 @@ pkgbase = alot-git
 	options = libtool
 	options = staticlibs
 	options = zipman
-	source = git+https://github.com/dcbaker/alot.git#branch=use-asyncio
+	source = git+https://github.com/pazz/alot.git
 	md5sums = SKIP
 
 pkgname = alot-git

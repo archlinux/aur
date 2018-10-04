@@ -8,7 +8,7 @@
 _gitname=alot
 pkgname=alot-git
 pkgrel=1
-pkgver=r3359.006e2b79
+pkgver=r3394.4a671186
 pkgdesc="terminal-based MUA for the notmuch mail system"
 arch=(any)
 url="https://github.com/pazz/alot"
@@ -20,6 +20,7 @@ depends=(notmuch
          python-configobj
          python-urwid
          python-urwidtrees
+         python-twisted
          python-setuptools)
 makedepends=(python-sphinx git)
 provides=(alot)
