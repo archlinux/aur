@@ -3,7 +3,7 @@
 _name=pyBigWig
 pkgbase='python-pybigwig'
 pkgname=('python-pybigwig' 'python2-pybigwig')
-pkgver=0.3.10
+pkgver=0.3.12
 pkgrel=1
 pkgdesc="A Python extension for quick access to bigWig and bigBed files"
 arch=('any')
@@ -13,8 +13,8 @@ makedepends=(
   'python' 'python-setuptools'
   'python2' 'python2-setuptools')
 options=(!emptydirs)
-source=("${pkgname}"-"${pkgver}".tar.gz::https://pypi.python.org/packages/9b/a2/322da414cdff7d3da7084388d2e65c6136722b744290619689d70e625058/pyBigWig-0.3.10.tar.gz)
-sha256sums=('a409d67a744e099260c0d17c7b98a4250f41de0daa9ef32bf7512b0cd35f0039')
+source=("${pkgname}"-"${pkgver}".tar.gz::https://pypi.io/packages/source/"${_name:0:1}"/"${_name}"/"${_name}"-"${pkgver}".tar.gz)
+sha256sums=('e01991790ece496bf6d3f00778dcfb136dd9ca0fd28acc1b3fb43051ad9b8403')
 
 prepare() {
   cp -a "${_name}"-"${pkgver}"{,-py2}
