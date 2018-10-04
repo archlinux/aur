@@ -1,0 +1,17 @@
+pkgbase = komodo-9
+	pkgdesc = Freeware version of the Komodo chess engine (~3310 Elo)
+	pkgver = 9
+	pkgrel = 02
+	url = https://komodochess.com
+	arch = x86_64
+	license = custom
+	conflicts = komodo-engine
+	source = http://komodochess.com/pub/komodo-9.zip
+	source = http://komodochess.com/pub/Komodo3-book.zip
+	source = COPYING
+	sha256sums = 97d0f7c4e5d23f43d3d2cccc6b9bd27cb61fe56b88a57d76fdbefeefad8900ca
+	sha256sums = 3ada9836a4b8a8bdbc362c90bce1b63b9472fc0194e39d9d36119ba102e9e9cd
+	sha256sums = 0d81e7e34a9563047580052052646c5ebb656a39a4575043e0fef6f7704cb18b
+
+pkgname = komodo-9
+
