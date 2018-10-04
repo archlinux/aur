@@ -1,7 +1,7 @@
 pkgbase = brave-beta-bin
 	pkgdesc = Web browser that blocks ads and trackers by default (beta binary release).
 	pkgver = 0.55.10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://brave.com/download-beta
 	arch = x86_64
 	license = custom
@@ -17,6 +17,7 @@ pkgbase = brave-beta-bin
 	provides = brave-beta-bin
 	provides = brave-beta-browser
 	conflicts = brave-beta-bin
+	conflicts = brave-bin
 	noextract = brave-beta-bin-0.55.10.zip
 	options = !strip
 	source = brave-beta-bin-0.55.10.zip::https://github.com/brave/brave-browser/releases/download/v0.55.10/brave-v0.55.10-linux-x64.zip
