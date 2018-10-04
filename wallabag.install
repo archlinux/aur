@@ -3,7 +3,7 @@ post_install() {
     echo ""
     echo "==> Installed in : /usr/share/webapps/wallabag"
     echo ""
-    echo "==> Config is at /etc/webapps/wallabag/config/parameters.yml"
+    echo "==> Config is at /etc/webapps/wallabag/parameters.yml"
     echo ""
     echo -n "Change the configuration to fit to your current setup, and then "
     echo "init wallabag by launching:"
