@@ -1,0 +1,19 @@
+pkgbase = aurblobs
+	pkgdesc = Automatically create binary repositories from AUR packages
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/aurblobs/aurblobs
+	arch = any
+	license = AGPL3
+	makedepends = python-setuptools
+	depends = python-click
+	depends = python-docker
+	depends = python-gitpython
+	depends = git
+	depends = python-pretty_bad_protocol
+	depends = python-xdg
+	source = aurblobs-0.5.2.tar.gz::https://github.com/aurblobs/aurblobs/archive/v0.5.2.tar.gz
+	sha256sums = 956c429ec30e5606fbd94b8b057129c2b6b6b28bd2a722822a61c683c25bcf12
+
+pkgname = aurblobs
+
