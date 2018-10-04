@@ -1,6 +1,6 @@
 pkgbase = egl-man-pages
 	pkgdesc = EGL Man Pages
-	pkgver = 20170107.r10
+	pkgver = 20181004.r116
 	pkgrel = 1
 	url = http://www.opengl.org/wiki/Getting_started/XML_Toolchain_and_Man_Pages
 	arch = any

@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=egl-man-pages
-pkgver=20170107.r10
+pkgver=20181004.r116
 pkgrel=1
 pkgdesc="EGL Man Pages"
 arch=('any')
