@@ -3,7 +3,7 @@
 pkgname=mkcert
 _package="github.com/FiloSottile/${pkgname}"
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple tool for making locally-trusted development certificates"
 arch=('x86_64')
 url="https://github.com/FiloSottile/mkcert"
@@ -16,15 +16,17 @@ prepare() {
   cd "${srcdir}"/${pkgname}-${pkgver}
   export GOPATH="${srcdir}"
   install -d "${GOPATH}/src/github.com/FiloSottile"
-  cp -a "$PWD" "${GOPATH}/src/${_package}"
+  ln -sf "$PWD" "${GOPATH}/src/${_package}"
 }
 
 build() {
+  export GOPATH="${srcdir}"
   cd "${GOPATH}/src/${_package}"
   go build -asmflags "-trimpath $GOPATH/src" -gcflags "-trimpath $GOPATH/src"
 }
 
 package() {
+  export GOPATH="${srcdir}"
   cd "${GOPATH}/src/${_package}"
   install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

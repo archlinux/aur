@@ -1,7 +1,7 @@
 pkgbase = mkcert
 	pkgdesc = A simple tool for making locally-trusted development certificates
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FiloSottile/mkcert
 	arch = x86_64
 	license = BSD
