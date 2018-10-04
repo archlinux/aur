@@ -1,7 +1,7 @@
 pkgbase = amount
 	pkgdesc = Filesystem mounting utility for ordinary users.
-	pkgver = 1.4
-	pkgrel = 3
+	pkgver = 1.5.1
+	pkgrel = 4
 	url = https://www.jameds.org/amount/
 	install = amount.install
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = amount
 	depends = shadow
 	optdepends = systemd: systemd service support
 	provides = amount
-	source = https://www.jameds.org/amount/amount-1.4.tar.gz
+	source = https://www.jameds.org/amount/amount-1.5.1.tar.gz
 	md5sums = 08fb78d224c5d75eeec3ce902c98e625
 
 pkgname = amount
