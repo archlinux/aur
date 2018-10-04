@@ -2,7 +2,7 @@
 # Contributor: quasi <quasi@aur.archlinux.org>
 
 pkgname=protracker-svn
-pkgver=r137
+pkgver=r139
 pkgrel=1
 epoch=1
 pkgdesc="Rewrite of ProTracker v2.3D (Amiga)"
@@ -17,7 +17,7 @@ source=($pkgname::svn://svn.code.sf.net/p/protracker/code/trunk
 )
 md5sums=('SKIP'
          '014452ddc77b8a115bfbcea2286a786c'
-         '17f38359b386a70f57f127ed841bd2b5')
+         '088df5e07ea1524f0be648c20e706f51')
 
 pkgver() {
     cd "$pkgname"
