@@ -21,8 +21,8 @@ _microarchitecture=0
 
 pkgbase=linux-xanmod
 _srcname=linux
-pkgver=4.18.8
-xanmod=5
+pkgver=4.18.12
+xanmod=7
 pkgrel=1
 arch=('x86_64')
 url="http://www.xanmod.org/"
@@ -31,7 +31,7 @@ makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 
 # Arch stock configuration files are directly pulled from a specific trunk
-arch_config_trunk=c46609a4b0325c363455264844091b71de01eddc
+arch_config_trunk=8b59b94fb8ad5063d414519a7a81ea5c2ae7360e
 
 source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
        60-linux.hook  # pacman hook for depmod
@@ -42,13 +42,13 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
 )
 source_x86_64=("config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=${arch_config_trunk}")
 
-sha256sums=('388693aeea1a7ed8fd1685e404432dd9e2ea41bc781041fe0d591303b6fb08de'
+sha256sums=('a678a44c57a3c653717c445f0dc4a95d947462895fc750132213065b90ce2e04'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '9d2623553e79fae8420fff03175614b29dd566e8280b294b53ab318a0eebeb50'
             'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
-sha256sums_x86_64=('1fc23bd2613b821d8bdca1a33dc421e21de296221108ce047176d27d37ce397f')
+sha256sums_x86_64=('321af63cf7dc8e79531ddd8634eddba19e40a18335e7ce61eedd0ad72fef89a5')
 
 _kernelname=${pkgbase#linux}
 
