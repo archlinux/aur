@@ -1,6 +1,6 @@
 pkgbase = icesl
 	pkgdesc = A GPU accelerated modeler and slicer for 3D printing
-	pkgver = 2.1.13
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = http://shapeforge.loria.fr/icesl/
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = icesl
 	depends = freetype2
 	depends = libxext
 	depends = perl
-	source = https://gforge.inria.fr/frs/download.php/file/37508/icesl2.1.13-amd64.zip
-	sha512sums = 1a8adc683a00242a9e26233fc91395a9885d67cbb6809bcac52ccfd8741cf95edb1842e717b7dac277c9dfddc0429e0a011c008bcac7ca5c71df78a1b1e4c8d9
+	source = https://gforge.inria.fr/frs/download.php/file/37649/icesl-2.2.1-amd64.zip
+	sha512sums = cecfb538f1b65bfbe2196b64194ebd833999a6ae02713142226ab6426262be33778a419624d153f4d1ad805dd487a62fec99f961ca2827a0979668b26eec308c
 
 pkgname = icesl
 
