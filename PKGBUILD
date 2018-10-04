@@ -8,12 +8,12 @@ url="https://bitbucket.org/durin42/hgsubversion"
 arch=(any)
 license=('GPL2')
 depends=('mercurial' 'subversion')
-source=("https://bitbucket.org/durin42/$pkgname/get/$pkgver.tar.bz2")
+source=("$pkgname-$pkgver.tar.bz2::https://bitbucket.org/durin42/$pkgname/get/$pkgver.tar.bz2")
 md5sums=('2541d0e5a7babae77001e525d76e4b8d')
 
 prepare() {
-  _dirname=$(tar -tf "${source[0]##*/}" | head -n 1 | cut -d/ -f1)
-  mv $_dirname $pkgname-$pkgver
+  _dirname=$(bsdtar -tf "${source[0]%%::*}" | awk -F / '{print $1; exit}')
+  ln -sfT $_dirname $pkgname-$pkgver
 }
 
 build() {
