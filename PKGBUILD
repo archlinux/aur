@@ -2,7 +2,7 @@
 
 pkgname=archisteamfarm-bin
 pkgver=3.4.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="C# application that allows you to farm steam cards using multiple steam accounts simultaneously."
 arch=('x86_64')
 url="https://github.com/JustArchiNET/ArchiSteamFarm"
@@ -31,6 +31,6 @@ package() {
     install -Dm644 "LICENSE-2.0.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "ArchiSteamFarm-bin.desktop" "${pkgdir}/usr/share/applications/ArchiSteamFarm-bin.desktop"
 
-    mkdir -p "${pkgdir}/opt/ArchiSteamFarm-bin/"
+    install -Dm755 "ArchiSteamFarm" "${pkgdir}/opt/ArchiSteamFarm-bin/ArchiSteamFarm"
     cp -r "${srcdir}"/* "${pkgdir}/opt/ArchiSteamFarm-bin/"
 }
