@@ -1,6 +1,6 @@
 pkgbase = curate-pkg-git
 	pkgdesc = aggregates all package managers under one tool
-	pkgver = 1.82
+	pkgver = 1.84
 	pkgrel = 1
 	url = https://github.com/andrei-pavel/curate-pkg
 	arch = i686
