@@ -1,7 +1,7 @@
 pkgbase = python-ordered-set
 	pkgdesc = Python MutableSet that remembers its order, so that every entry has an index
-	pkgver = 2.0.2
-	pkgrel = 2
+	pkgver = 3.0.2
+	pkgrel = 1
 	url = https://pypi.python.org/pypi/ordered-set
 	arch = any
 	license = MIT
@@ -10,8 +10,8 @@ pkgbase = python-ordered-set
 	makedepends = python2
 	makedepends = python2-setuptools
 	options = !emptydirs
-	source = python-ordered-set-2.0.2.tar.gz::https://pypi.python.org/packages/c3/1c/4ddba479a75369b31655e295463bc37e5f84acb4fa7f34548946ff0160e3/ordered-set-2.0.2.tar.gz
-	sha256sums = 942cad5d7d5b0760d5cbe93dfb385ac2ed402ca1d48c9f4e102d7d5cce3a90eb
+	source = python-ordered-set-3.0.2.tar.gz::https://pypi.io/packages/source/o/ordered-set/ordered-set-3.0.2.tar.gz
+	sha256sums = 7d292b866fa44f339ac6e624e3d338accfb415ce0a8431595d51990fbdf61d3b
 
 pkgname = python-ordered-set
 	depends = python

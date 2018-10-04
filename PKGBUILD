@@ -3,8 +3,8 @@
 _name=ordered-set
 pkgbase='python-ordered-set'
 pkgname=('python-ordered-set' 'python2-ordered-set')
-pkgver=2.0.2
-pkgrel=2
+pkgver=3.0.2
+pkgrel=1
 pkgdesc="Python MutableSet that remembers its order, so that every entry has an index"
 arch=('any')
 url="https://pypi.python.org/pypi/ordered-set"
@@ -13,8 +13,8 @@ makedepends=(
   'python' 'python-setuptools'
   'python2' 'python2-setuptools')
 options=(!emptydirs)
-source=("${pkgname}"-"${pkgver}".tar.gz::https://pypi.python.org/packages/c3/1c/4ddba479a75369b31655e295463bc37e5f84acb4fa7f34548946ff0160e3/ordered-set-2.0.2.tar.gz)
-sha256sums=('942cad5d7d5b0760d5cbe93dfb385ac2ed402ca1d48c9f4e102d7d5cce3a90eb')
+source=("${pkgname}"-"${pkgver}".tar.gz::https://pypi.io/packages/source/"${_name:0:1}"/"${_name}"/"${_name}"-"${pkgver}".tar.gz)
+sha256sums=('7d292b866fa44f339ac6e624e3d338accfb415ce0a8431595d51990fbdf61d3b')
 
 prepare() {
   cp -a "${_name}"-"${pkgver}"{,-py2}
