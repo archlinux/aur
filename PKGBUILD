@@ -2,14 +2,14 @@
 
 pkgname=python-securesystemslib
 pkgver=0.11.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Cryptographic and general-purpose routines for Secure Systems Lab projects at NYU"
 arch=('any')
 license=('MIT')
 url="https://github.com/secure-systems-lab/securesystemslib"
 depends=('python-cryptography' 'python-pynacl' 'python-colorama' 'python-six')
 makedepends=('python-setuptools' 'git')
-source=("git+https://github.com/secure-systems-lab/securesystemslib.git?signed@tag=${pkgver}")
+source=("git+https://github.com/secure-systems-lab/securesystemslib.git?signed#tag=sslibv${pkgver}")
 
 sha512sums=("SKIP")
 
@@ -33,6 +33,6 @@ package_python-securesystemslib() {
 }
 
 check() {
-    cd "securesystemslib"
-    python tests/aggregate_tests.py
+    cd "securesystemslib/tests/"
+    PYTHONPATH=.. python aggregate_tests.py
 }

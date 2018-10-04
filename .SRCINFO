@@ -11,7 +11,7 @@ pkgbase = python-securesystemslib
 	depends = python-pynacl
 	depends = python-colorama
 	depends = python-six
-	source = git+https://github.com/secure-systems-lab/securesystemslib.git?signed@tag=0.11.3
+	source = git+https://github.com/secure-systems-lab/securesystemslib.git?signed#tag=sslibv0.11.3
 	validpgpkeys = 3E87BB339378BC7B3DD0E5B25DEE9B97B0E2289A
 	validpgpkeys = C2FB9C910758B6827BC43233BC0C6DEDD5E5CC03
 	sha512sums = SKIP
