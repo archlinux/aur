@@ -1,0 +1,16 @@
+pkgbase = makeppkg
+	pkgdesc = wrapper for Arch Linux's makepkg, patches source before packages are built
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/ibrokemypie/makeppkg
+	arch = i686
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = rust
+	makedepends = cargo
+	makedepends = gcc-libs
+	source = makeppkg-1.1.0.tar.gz::https://crates.io/api/v1/crates/makeppkg/1.1.0/download
+	sha256sums = 61518d1eb49edf3323d0f3aad931b4d81db70e6d7fc333ee260e1df0bb8108a9
+
+pkgname = makeppkg
+
