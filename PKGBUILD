@@ -4,16 +4,16 @@
 # Contributor: Boyan Ding <stu_dby@126.com>
 
 _realname=bbswitch
-_extramodules=extramodules-4.14-ck # Don't forget to update bbswitch-ck.install
+_extramodules=extramodules-ck # Don't forget to update bbswitch-ck.install
 pkgname=bbswitch-ck
 pkgver=0.8
-pkgrel=25
+pkgrel=26
 pkgdesc="Kernel module allowing to switch dedicated graphics card on Optimus laptops for linux-ck"
 arch=('i686' 'x86_64')
 url="http://github.com/Bumblebee-Project/bbswitch"
 license=('GPL')
-depends=('linux-ck>=4.14' 'linux-ck<=4.15')
-makedepends=('linux-ck-headers>=4.14' 'linux-ck-headers<=4.15')
+depends=('linux-ck>=4.18' 'linux-ck<=4.19')
+makedepends=('linux-ck-headers>=4.18' 'linux-ck-headers<=4.19')
 provides=('bbswitch')
 install=${pkgname}.install
 source=("v${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
