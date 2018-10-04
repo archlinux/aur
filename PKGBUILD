@@ -1,7 +1,7 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname='php-recode'
-pkgver=7.2.9
+pkgver=7.2.10
 pkgrel=1
 pkgdesc="PHP recode extension"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('PHP')
 url='http://www.php.net/recode'
 depends=('php' 'recode')
 source=("https://php.net/distributions/php-${pkgver}.tar.xz")
-sha512sums=('b898e78fcb4aeeb441395dcabe2e7686425487e32dffbf0e99393aedb917da87a744b23f0be557c45e447433c8058df6e53c34869fc2dcf874cc1af97ff8331f')
+sha512sums=('aa90fce17034b2649012d66461626ae74c21ea938b1c71c7eb12419e562c641b432df87a7e900c245ad28df39624cf64a1b2f8ffb123608d94cd35e41f09c0fe')
 
 build() {
     cd "${srcdir}/php-${pkgver}/ext/recode"
