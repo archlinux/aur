@@ -10,15 +10,3 @@ index 1253be14a..fbf0987ee 100644
      libswscale \
      libavformat \
      libavcodec \
-diff --git a/configure b/configure
-index 9f34ac36f..b62bac3e9 100755
---- a/configure
-+++ b/configure
-@@ -599,7 +599,6 @@ else
- 
-     check_pkg libavfilter   ">=6.47.100"  || has_libav=false
-     check_pkg libswresample ">=2.1.100"   || has_libav=false
--    check_pkg libavresample ">=3.0.0"     || has_libav=false
-     check_pkg libswscale    ">=4.1.100"   || has_libav=false
-     check_pkg libavformat   ">=57.41.100" || has_libav=false
-     check_pkg libavcodec    ">=57.48.101" || has_libav=false
