@@ -2,7 +2,7 @@
 # Contributer : Jo De Boeck <deboeck.jo@gmail.com>
 
 pkgname=purple-skypeweb-git
-pkgver=1.4.r20.c442007
+pkgver=1.5.r10.90007bf
 pkgrel=1
 arch=('any')
 license=('GPLv3')
