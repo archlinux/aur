@@ -4,23 +4,38 @@
 # Contributor: Christoph Zeiler <archNOSPAM_at_moonblade.dot.org>
 
 pkgname=pcsxr
-pkgver=1.9.94
-pkgrel=4
+pkgver=1.9.95
+pkgrel=1
 pkgdesc="A Sony PlayStation (PSX) emulator based on the PCSX-df project"
 arch=("i686" "x86_64")
 url="http://${pkgname}.codeplex.com"
 license=("GPL")
-depends=("gtk3" "libarchive" "libcdio" "libpulse" "libxv" "sdl2")
+depends=("gtk3" "libarchive" "libcdio" "libnsl" "libxv" "sdl2")
 makedepends=("cmake" "intltool" "mesa" "nasm" "valgrind")
 conflicts=("pcsx-df")
-source=("http://ftp.debian.org/debian/pool/main/p/${pkgname}/${pkgname}_${pkgver}.orig.tar.xz")
-sha256sums=("8a366b68a7c236443aa75b422bea84b5115f8d8c23e5a78fd6951e643e90f660")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/frealgagu/PCSX-Reloaded/archive/${pkgver}.tar.gz"
+        "${pkgname}-desktop.patch"
+        "${pkgname}-fix-undefined-operations.patch"
+        "${pkgname}-remove-assertion-64bit.patch"
+        "${pkgname}-fix-uncompress2.patch")
+md5sums=("ee0f9dfd003d9a5350aafc8cca0cdeee"
+         "29bc686e8b68d128796deef60ac1efe1"
+         "96a82dcc66851160f452160a538cd6f8"
+         "c3ed7fc2a5e395a11f860c305522cb7b"
+         "19a8be752dceb236a82e24eefd7e03cb")
+
+prepare() {
+  cd "${srcdir}/PCSX-Reloaded-${pkgver}"
+  
+  patch -Np1 -i "${srcdir}/${pkgname}-desktop.patch"
+  patch -Np1 -i "${srcdir}/${pkgname}-fix-undefined-operations.patch"
+  patch -Np1 -i "${srcdir}/${pkgname}-remove-assertion-64bit.patch"
+  patch -Np1 -i "${srcdir}/${pkgname}-fix-uncompress2.patch"
+  mkdir "${srcdir}/PCSX-Reloaded-${pkgver}/${pkgname}/include"
+}
 
 build() {
-  cd "${srcdir}/${pkgname}"
-
-  #zlib >= 1.2.11 has a new function that is called uncompress2 that conflicts with the one in cdriso.c line 916 and line 995
-  sed -i "s/uncompress2/uncompress2_internal/g" "${srcdir}/${pkgname}/libpcsxcore/cdriso.c"
+  cd "${srcdir}/PCSX-Reloaded-${pkgver}/${pkgname}"
 
   autoreconf -f -i
   intltoolize --force
@@ -33,6 +48,6 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/PCSX-Reloaded-${pkgver}/${pkgname}"
   make DESTDIR="${pkgdir}" install
 }

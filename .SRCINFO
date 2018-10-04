@@ -1,7 +1,7 @@
 pkgbase = pcsxr
 	pkgdesc = A Sony PlayStation (PSX) emulator based on the PCSX-df project
-	pkgver = 1.9.94
-	pkgrel = 4
+	pkgver = 1.9.95
+	pkgrel = 1
 	url = http://pcsxr.codeplex.com
 	arch = i686
 	arch = x86_64
@@ -14,12 +14,20 @@ pkgbase = pcsxr
 	depends = gtk3
 	depends = libarchive
 	depends = libcdio
-	depends = libpulse
+	depends = libnsl
 	depends = libxv
 	depends = sdl2
 	conflicts = pcsx-df
-	source = http://ftp.debian.org/debian/pool/main/p/pcsxr/pcsxr_1.9.94.orig.tar.xz
-	sha256sums = 8a366b68a7c236443aa75b422bea84b5115f8d8c23e5a78fd6951e643e90f660
+	source = pcsxr-1.9.95.tar.gz::https://github.com/frealgagu/PCSX-Reloaded/archive/1.9.95.tar.gz
+	source = pcsxr-desktop.patch
+	source = pcsxr-fix-undefined-operations.patch
+	source = pcsxr-remove-assertion-64bit.patch
+	source = pcsxr-fix-uncompress2.patch
+	md5sums = ee0f9dfd003d9a5350aafc8cca0cdeee
+	md5sums = 29bc686e8b68d128796deef60ac1efe1
+	md5sums = 96a82dcc66851160f452160a538cd6f8
+	md5sums = c3ed7fc2a5e395a11f860c305522cb7b
+	md5sums = 19a8be752dceb236a82e24eefd7e03cb
 
 pkgname = pcsxr
 
