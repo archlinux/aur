@@ -1,11 +1,12 @@
 pkgname=electrum-ltc-git
-pkgver=3.2.2.git20180806.b93a9bd2
+pkgver=3.2.3.git20180925.8044dc1
 pkgrel=1
-pkgdesc='Lightweight Litecoin client'
+pkgdesc='Litecoin thin client'
 arch=(any)
 url=https://electrum-ltc.org/
 license=(MIT)
 depends=(desktop-file-utils
+         libsecp256k1
          python-btchip
          python-dnspython
          python-ecdsa
@@ -28,7 +29,13 @@ sha256sums=(SKIP)
 pkgver() {
   cd electrum-ltc
   printf %s.git%s "$(grep -om1 '[0-9.]*' electrum_ltc/version.py)" \
-                  "$(git log -1 --format=%cd.%h --date=short | tr -d -)"
+                  "$(git log -1 --format=%ad.%h --date=format:%Y%m%d --abbrev=7)"
+}
+
+prepare() {
+  sed -e 's/Exec=.*electrum-ltc %u"/Exec=electrum-ltc %u/' \
+      -e 's/Exec=.*electrum-ltc --testnet %u"/Exec=electrum-ltc --testnet %u/' \
+      -i electrum-ltc/electrum-ltc.desktop
 }
 
 build() {
