@@ -41,7 +41,7 @@ pkgbase = vim-youcompleteme-git
 	source = git+https://github.com/icsharpcode/NRefactory.git
 	source = git+https://github.com/jbevain/cecil.git
 	source = git+https://github.com/jwilm/racerd.git
-	source = http://download.eclipse.org/jdtls/milestones/0.18.0/jdt-language-server-0.18.0-201805010001.tar.gz
+	source = http://download.eclipse.org/jdtls/milestones/0.25.0/jdt-language-server-0.25.0-201809172205.tar.gz
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -58,7 +58,7 @@ pkgbase = vim-youcompleteme-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 9253d4222519442b65b4a01516c9496354b59813d906357a5f3f265601cc77db
+	sha256sums = 7eb952056243f8ac7cd43405d8ed29dc111395866fee9fe895a80efcc2a8140c
 
 pkgname = vim-youcompleteme-git
 

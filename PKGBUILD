@@ -110,10 +110,10 @@ fi
 
 if [[ "$_java" == "y" ]]; then
 	jdtls_package_name="jdt-language-server"
-	jdtls_milestone="0.18.0"
-	jdtls_build_stamp="201805010001"
+	jdtls_milestone="0.25.0"
+	jdtls_build_stamp="201809172205"
 	source+=("http://download.eclipse.org/jdtls/milestones/${jdtls_milestone}/${jdtls_package_name}-${jdtls_milestone}-${jdtls_build_stamp}.tar.gz")
-	sha256sums+=('9253d4222519442b65b4a01516c9496354b59813d906357a5f3f265601cc77db')
+	sha256sums+=('7eb952056243f8ac7cd43405d8ed29dc111395866fee9fe895a80efcc2a8140c')
 fi
 
 #=========================================================================================================#
@@ -159,12 +159,13 @@ gitprepare() {
 prepare() {
 	if [[ "$_java" == "y" ]]; then
 		msg2 'Verifying JDTLS package version in PKGBUILD against upstream supported version...'
-			local milestone=`egrep '^JDTLS_MILESTONE' "$srcdir/YouCompleteMe/third_party/ycmd/build.py" | sed -e "s/.* = //g" -e "s/'//g"`
-			local buildstamp=`egrep '^JDTLS_BUILD_STAMP' "$srcdir/YouCompleteMe/third_party/ycmd/build.py" | sed -e "s/.* = //g" -e "s/'//g"`
+			local milestone=`egrep '^JDTLS_MILESTONE' "$srcdir/ycmd/build.py" | sed -e "s/.* = //g" -e "s/'//g"`
+			local buildstamp=`egrep '^JDTLS_BUILD_STAMP' "$srcdir/ycmd/build.py" | sed -e "s/.* = //g" -e "s/'//g"`
 			if [[ "$milestone" == "$jdtls_milestone" ]] && [[ "$buildstamp" == "$jdtls_build_stamp" ]]; then
 				msg2 'JDTLS package version matched'
 			else
 				error 'Mismatched JDTLS version'
+				exit 1
 			fi
 	fi
 
