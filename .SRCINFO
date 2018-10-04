@@ -1,14 +1,14 @@
 pkgbase = helmsman-bin
 	pkgdesc = Helmsman binary distribution
-	pkgver = 1.5.0
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = https://github.com/Praqma/helmsman
 	arch = x86_64
 	license = MIT
 	provides = helmsman
 	conflicts = helmsman
-	source = https://github.com/Praqma/helmsman/releases/download/v1.5.0/Helmsman_1.5.0_linux_amd64.tar.gz
-	sha256sums = 95abbd8875eb47ae3783814032ed8617939fa8134a40bd9079445e4a8f5f0ed6
+	source = https://github.com/Praqma/helmsman/releases/download/v1.6.2/Helmsman_1.6.2_linux_amd64.tar.gz
+	sha256sums = 0554bc6ba7d2a288ecf931a3e56958492371383df204872143d5fccba616b978
 
 pkgname = helmsman-bin
 
