@@ -20,6 +20,7 @@ build() {
 
 check() {
   cd black-$pkgver
+  touch tests/__init__.py
   python -m unittest tests/test_black.py
 }
 
