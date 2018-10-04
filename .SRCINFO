@@ -1,0 +1,26 @@
+pkgbase = ros2-arch-deps
+	pkgdesc = Dependencies for building ROS2 on Arch
+	pkgver = 0.5
+	pkgrel = 1
+	url = http://www.ros.org
+	arch = x86_64
+	arch = i686
+	license = BSD
+	depends = asio
+	depends = cppcheck
+	depends = cmake
+	depends = eigen
+	depends = opencv
+	depends = poco
+	depends = python
+	depends = python-empy
+	depends = python-nose
+	depends = python-pip
+	depends = python-setuptools
+	depends = python-vcstool
+	depends = python-yaml
+	depends = tinyxml
+	depends = tinyxml2
+
+pkgname = ros2-arch-deps
+
