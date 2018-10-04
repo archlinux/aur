@@ -4,7 +4,7 @@
 
 pkgname=lastpass-cli
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="LastPass command line interface tool"
 arch=('x86_64')
 url="https://lastpass.com/"
@@ -26,6 +26,7 @@ package() {
   cd "$srcdir"/$pkgname-$pkgver
   make DESTDIR="$pkgdir" install install-doc
   install -Dm0644 contrib/lpass_zsh_completion "$pkgdir"/usr/share/zsh/site-functions/_lpass
+  install -Dm0644 contrib/completions-lpass.fish "$pkgdir"/usr/share/fish/completions/lpass.fish
 }
 
 # vim:set ts=2 sw=2 et:
