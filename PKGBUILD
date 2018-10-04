@@ -11,7 +11,6 @@ pkgdesc="Fork of i3lock-git, that allows to execute a script if authentication f
 arch=('i686' 'x86_64')
 url="https://github.com/jumper149/i3lock-script"
 license=('MIT')
-groups=('i3-vcs')
 provides=('i3lock')
 conflicts=('i3lock')
 depends=('xcb-util-image' 'libev' 'cairo' 'libxkbcommon-x11')

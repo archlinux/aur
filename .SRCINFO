@@ -5,7 +5,6 @@ pkgbase = i3lock-script
 	url = https://github.com/jumper149/i3lock-script
 	arch = i686
 	arch = x86_64
-	groups = i3-vcs
 	license = MIT
 	makedepends = git
 	depends = xcb-util-image
