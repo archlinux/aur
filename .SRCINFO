@@ -1,0 +1,18 @@
+pkgbase = ttf-pixeloperator
+	pkgdesc = A libre/free raster proportional and monospace sans serif typeface.
+	pkgver = 2018.10.04
+	pkgrel = 1.1
+	url = https://notabug.org/HarvettFox96/ttf-pixeloperator
+	arch = any
+	license = CC0
+	depends = fontconfig
+	depends = xorg-font-utils
+	depends = xorg-fonts-encodings
+	source = https://notabug.org/HarvettFox96/ttf-pixeloperator/archive/2018.10.04-1.tar.gz
+	source = 2018.10.04-1.tar.gz.sig::https://notabug.org/attachments/b1905cb0-37e1-47e7-9eda-1807eca6b4b6
+	validpgpkeys = 925C741082DC0DB32CF8AADFCB73A6EB26948E91
+	sha512sums = 957e6928b81d2e6715416d7f42bc5dc8b7154b3e9cafb76b7f68b9e0857b31a3dd112bb06f2c81b4e9115a05f4428a1e3510e2069c73861f70c8a00dc719b782
+	sha512sums = SKIP
+
+pkgname = ttf-pixeloperator
+
