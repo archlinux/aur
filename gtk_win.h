@@ -9,7 +9,6 @@
 #define PEER_COLUMN_PROFIT_24H_PERCENT 1
 #define PEER_COLUMN_PROFIT_7D_PERCENT 2
 #define PEER_COLUMN_PROFIT_30D_PERCENT 3
-#define PEER_NUM_COLS 4
 #define INFO_ARRAY_CACHE_MAX 128
 
 typedef enum column_index {
@@ -54,8 +53,6 @@ void check_list_create_from_string(void);
  * Api data from app.portfolio_data will be stored in the check list store
  */
 void check_list_add_api_data(void);
-
-/********************* SIGNALS *********************/
 
 /**
  * SIGNAL FOR LOAD BUTTON CLICK
@@ -174,28 +171,69 @@ void on_check_window_destroy(void);
  */
 void on_column_clicked(GtkTreeViewColumn* column, GtkListStore* list_store);
 
+/**
+ * SIGNAL FOR CHECK TREE VIEW ACTIVATE
+ *
+ * Shows info for the security in the column activated.
+ * @param tree_view GtkTreeView*
+ * @param path GtkTreePath*
+ * @param column GtkTreeViewColumn*
+ */
 void on_check_tree_view_row_activated(GtkTreeView* tree_view, GtkTreePath* path,
         GtkTreeViewColumn* column);
 
+/**
+ * SIGNAL FOR BACK BUTTON CLICKED
+ *
+ * Returns to the portfolio view.
+ * @param button
+ */
 void on_info_back_button_clicked(GtkButton* button);
 
+/**
+ * SIGNAL FOR SEARCH ENTRY FOCUS
+ *
+ * On first time focusing, populates the search completion list store with ref symbols.
+ * @param search_entry
+ * @param event
+ */
 void on_search_entry_focus_in_event(GtkWidget* search_entry, GdkEvent* event);
 
+/**
+ * SIGNAL FOR SEARCH ENTRY ACTIVATE
+ *
+ * Shows info for the entered security if available.
+ * @param entry
+ */
 void on_search_entry_activate(GtkEntry* entry);
 
+/**
+ * SIGNAL FOR PEER COLUMN ACTIVATED
+ *
+ * Shows info for the security in the column activated.
+ * @param tree_view
+ * @param path
+ * @param column
+ */
 void on_info_peers_tree_view_row_activated(GtkTreeView* tree_view, GtkTreePath* path,
         GtkTreeViewColumn* column);
 
+/**
+ * Shows info for the given symbol
+ * @param symbol
+ */
 void symbol_show_info(const char* symbol);
 
-/** UTILS **/
-
 /**
- * Formats text in Info structs for printing to window
+ * Formats text in an Info_Array for printing to window
  * @param portfolio_data Info_Array* with valid Info data in it.
  */
 void info_array_format_cells(Info_Array* portfolio_data);
 
+/**
+ * Formats text in pInfo for printing to window
+ * @param pInfo
+ */
 void info_format_cells(Info* pInfo);
 
 /**
@@ -211,16 +249,44 @@ void list_store_sort(GtkListStore* list_store, Col_Index idx);
  */
 void list_store_update(void);
 
+/**
+ * Fills all components of info window with the given pInfo.
+ * @param pInfo
+ */
 void info_pane_populate_all(const Info* pInfo);
 
+/**
+ * Fills header with info from pInfo
+ * @param pInfo
+ */
 void info_pane_populate_header(const Info* pInfo);
 
+/**
+ * Fills company section with info from pInfo
+ * @param pInfo
+ */
 void info_pane_populate_company(const Info* pInfo);
 
+/**
+ * Fills peers section with info from pInfo
+ * @param pInfo
+ */
 void info_pane_populate_peers(const Info* pInfo);
 
+/**
+ * Fills news section with info from pInfo
+ * @param pInfo
+ */
 void info_pane_populate_news(const Info* pInfo);
 
+/**
+ * SIGNAL FOR GRAPH DRAW
+ *
+ * Draws a graph of app.focused
+ * @param widget GtkDrawingArea
+ * @param cr cairo object to draw on
+ * @return FALSE
+ */
 gboolean on_info_graph_drawing_area_draw(GtkWidget* widget, cairo_t* cr);
 
 /**

@@ -294,12 +294,30 @@ void info_store_portfolio_data(Info* pInfo);
  */
 void info_array_store_totals(Info_Array* pInfo_Array);
 
+/**
+ * Sets global variable ref_cache to a valid Ref_Data object or NULL. It will first try reading
+ * the cache file. If it doesn't exist or hasn't been reloaded in a week, calls the api. If it does
+ * exist and has been reloaded in the past week, sets ref_cache to the cache file.
+ */
 void api_ref_cache_init(void);
 
+/**
+ * Calls IEX's ref data api endpoint and writes the data in JSON format to
+ * $HOME/.tick_ref_cache.json
+ */
 void api_ref_data_write_cache(void);
 
+/**
+ * Reads the ref cache file and returns a Ref_Data* containing its data if valid or NULL if not.
+ * @return
+ */
 Ref_Data* ref_data_read_cache(void);
 
+/**
+ * Stores the data found in IEX formatted jobj in the Ref_Data.
+ * @param pRef_Data
+ * @param jobj
+ */
 void ref_data_store_json(Ref_Data* pRef_Data, const Json* jobj);
 
 /**
