@@ -8,8 +8,9 @@ arch=('any')
 license=('BSD')
 
 depends=('asio' 'cppcheck' 'cmake' 'eigen' 'opencv' 'poco' 'python'
-         'python-empy' 'python-nose' 'python-pip' 'python-setuptools'
-         'python-vcstool' 'python-yaml' 'tinyxml' 'tinyxml2')
+         'python-empy' 'python-nose' 'python-pip' 'python-rospkg'
+         'python-setuptools' 'python-vcstool' 'python-yaml' 'tinyxml'
+         'tinyxml2')
 
 md5sums=()
 
