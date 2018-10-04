@@ -1,8 +1,8 @@
 # Maintainer: Marc Tiehuis <marctiehuis@gmail.com>
 
 pkgname=zig
-pkgver=0.2.0
-pkgrel=3
+pkgver=0.3.0
+pkgrel=1
 pkgdesc='a programming language prioritizing robustness, optimality, and clarity'
 arch=('x86_64')
 url='https://ziglang.org/'
@@ -10,8 +10,8 @@ license=('MIT')
 depends=('clang' 'llvm')
 makedepends=('cmake' 'git')
 source=("https://ziglang.org/download/$pkgver/zig-$pkgver.tar.xz" 'force_dynamic_llvm.patch' 'no_stage2_artifacts.patch')
-sha256sums=('29c9beb172737f4d5019b88ceae829ae8bc6512fb4386cfbf895ae2b42aa6965' 'SKIP' 'SKIP')
-md5sums=('SKIP' 'bd2dddcd4131f42c80e6a371cba967d1' 'cb0bbf9c19971a48eff41e8c764ac990')
+sha256sums=('d70af604f3a8622f3393d93abb3e056bf60351e32d121e6fa4fe03d8d41e1f5a' 'SKIP' 'SKIP')
+md5sums=('SKIP' 'f65ba29d9ffe19ff7e3d0f8cf64b0eab' 'cb0bbf9c19971a48eff41e8c764ac990')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -23,13 +23,15 @@ build() {
     cd "$srcdir/$pkgname-$pkgver"
     mkdir -p build
     cd build
-    cmake .. \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DZIG_LIBC_LIB_DIR=$(dirname $(cc -print-file-name=crt1.o)) \
-        -DZIG_LIBC_INCLUDE_DIR=$(echo -n | cc -E -x c - -v 2>&1 | grep -B1 "End of search list." | head -n1 | cut -c 2-) \
-        -DZIG_LIBC_STATIC_LIB_DIR=$(dirname $(cc -print-file-name=crtbegin.o))
+    cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
     make
+}
+
+check() {
+    cd "$srcdir/$pkgname-$pkgver/build"
+
+    # omit full compiler test since it takes ages
+    ./zig version
 }
 
 package() {

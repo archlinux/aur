@@ -1,7 +1,7 @@
 pkgbase = zig
 	pkgdesc = a programming language prioritizing robustness, optimality, and clarity
-	pkgver = 0.2.0
-	pkgrel = 3
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://ziglang.org/
 	arch = x86_64
 	license = MIT
@@ -9,13 +9,13 @@ pkgbase = zig
 	makedepends = git
 	depends = clang
 	depends = llvm
-	source = https://ziglang.org/download/0.2.0/zig-0.2.0.tar.xz
+	source = https://ziglang.org/download/0.3.0/zig-0.3.0.tar.xz
 	source = force_dynamic_llvm.patch
 	source = no_stage2_artifacts.patch
 	md5sums = SKIP
-	md5sums = bd2dddcd4131f42c80e6a371cba967d1
+	md5sums = f65ba29d9ffe19ff7e3d0f8cf64b0eab
 	md5sums = cb0bbf9c19971a48eff41e8c764ac990
-	sha256sums = 29c9beb172737f4d5019b88ceae829ae8bc6512fb4386cfbf895ae2b42aa6965
+	sha256sums = d70af604f3a8622f3393d93abb3e056bf60351e32d121e6fa4fe03d8d41e1f5a
 	sha256sums = SKIP
 	sha256sums = SKIP
 

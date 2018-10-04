@@ -1,12 +1,15 @@
+ cmake/Findllvm.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
 diff --git a/cmake/Findllvm.cmake b/cmake/Findllvm.cmake
-index 296e0a91..82b435af 100644
+index 9a4fa3f3..64e31fc0 100644
 --- a/cmake/Findllvm.cmake
 +++ b/cmake/Findllvm.cmake
 @@ -15,7 +15,7 @@ find_program(LLVM_CONFIG_EXE
          "c:/msys64/mingw64/bin"
-         "C:/Libraries/llvm-6.0.0/bin")
+         "C:/Libraries/llvm-7.0.0/bin")
  
--if(NOT(CMAKE_BUILD_TYPE STREQUAL "Debug"))
+-if(NOT(CMAKE_BUILD_TYPE STREQUAL "Debug") OR ZIG_STATIC)
 +if(false)
    execute_process(
        COMMAND ${LLVM_CONFIG_EXE} --libfiles --link-static
