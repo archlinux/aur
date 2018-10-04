@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=capnet-assist
-pkgver=0.2.2
+pkgver=2.2.1
 pkgrel=1
 pkgdesc='Captive Portal Assistant'
 arch=('x86_64')
