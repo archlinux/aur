@@ -6,6 +6,7 @@ pkgbase = hub-kids
 	arch = x86_64
 	license = unknown
 	depends = sdl2
+	depends = unzip
 	optdepends = chromium: a modern browser for the application to work
 	optdepends = firefox: a modern browser for the application to work
 	optdepends = google-chrome: a modern browser for the application to work

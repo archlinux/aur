@@ -7,7 +7,7 @@ pkgdesc="La piattaforma facile, gratuita e innovativa per la didattica digitale.
 arch=('x86_64')
 url="https://www.hubscuola.it/download-app"
 license=('unknown')
-depends=("sdl2")
+depends=('sdl2' 'unzip')
 optdepends=(
 'chromium: a modern browser for the application to work'
 'firefox: a modern browser for the application to work'
