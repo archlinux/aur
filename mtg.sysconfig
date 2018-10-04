@@ -1,0 +1,8 @@
+# These options are required
+SECRET="00000000000000000000000000000000"
+ADTAG=""
+
+# Other options can be set here as documented at
+# https://github.com/9seconds/mtg#environment-variables
+# MTG_SECURE_ONLY=true
+

@@ -1,0 +1,13 @@
+[Unit]
+Description=Bullshit-free MTProto proxy for Telegram
+After=network-online.target
+
+[Service]
+User=nobody
+Group=nogroup
+EnvironmentFile=/etc/conf.d/mtg
+ExecStart=/usr/bin/mtg $SECRET $ADTAG
+
+[Install]
+WantedBy=multi-user.target
+

@@ -1,0 +1,4 @@
+*.pkg.*
+mtg/
+pkg/
+src/
