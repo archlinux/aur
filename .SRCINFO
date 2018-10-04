@@ -1,14 +1,14 @@
 pkgbase = brillo
-	pkgdesc = Keyboard and Backlight LED Control Tool
-	pkgver = 1.3.0
+	pkgdesc = Backlight and Keyboard LED control tool
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://gitlab.com/cameronnemo/brillo
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = go-md2man
-	source = brillo-1.3.0.tar.gz::https://gitlab.com/cameronnemo/brillo/-/archive/v1.3.0/brillo-v1.3.0.tar.gz
-	sha256sums = daa5a3a18d561b0a150926cb6d2321d3929ad8b6b4dc2bcbd116b98f22b1b876
+	source = brillo-1.3.1.tar.gz::https://gitlab.com/cameronnemo/brillo/-/archive/v1.3.1/brillo-v1.3.1.tar.gz
+	sha256sums = 5dc1ca0b29109daa27759be6aee0dcd05defbf09f4434f0136f13462d5b56792
 
 pkgname = brillo
 
