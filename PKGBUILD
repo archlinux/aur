@@ -1,19 +1,23 @@
-# Maintainer: Stefan Tatschner <rumpelsepp@sevenbyte.org>
+# Maintainer: Rasmus Steinke <rasi at xssn dot at>
 
-pkgname='clerk'
-pkgver=3.2.1
+pkgname=clerk
+pkgver=4.0.5
 pkgrel=1
-pkgdesc="mpd client, based on rofi"
+pkgdesc="rofi/fzf driven mpd client"
 arch=('any')
-url="https://github.com/carnager/clerk"
+url='https://github.com/carnager/clerk'
 license=('MIT')
-depends=('mpc' 'rofi' 'python' 'python-mpd2' 'python-notify2' 'perl')
-optdepends=('mpd-sima: similar artist mode')
-source=("https://github.com/carnager/clerk/archive/${pkgver}.tar.gz")
-sha256sums=('954a388cce5a86c1760e130febc59b533651a01938b0c9a6b1f4941dda83db97')
+depends=('perl' 'perl-data-section-simple' 'fzf' 'rofi' 'tmux' 'perl-net-mpd' 'perl-data-messagepack' 'perl-file-slurper' 'perl-config-simple' 'perl-try-tiny' 'perl-ipc-run' 'perl-http-date')
 install=clerk.install
+makedepends=('git')
+optdepends=('flac: tagging support'
+			'vorbis-tools: tagging support'
+			'mutagen: tagging support')
+source=("https://github.com/carnager/${pkgname}/archive/${pkgver}.tar.gz")
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    make DESTDIR="$pkgdir" PREFIX="/usr" install
+    install -D -m 755 ${srcdir}/${pkgname}-${pkgver}/clerk.pl "${pkgdir}/usr/bin/clerk"
+    install -D -m 755 ${srcdir}/${pkgname}-${pkgver}/clerk_rating_client.service "${pkgdir}/usr/lib/systemd/user/clerk_rating_client.service"
+    install -D -m 755 ${srcdir}/${pkgname}-${pkgver}/clerk_rating_client "${pkgdir}/usr/bin/clerk_rating_client"
 }
+md5sums=('SKIP')
