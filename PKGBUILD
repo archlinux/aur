@@ -7,7 +7,7 @@ pkgname='ros-melodic-rviz'
 pkgver='1.13.1'
 _pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=4
 license=('BSD, Creative Commons')
 
 ros_makedepends=(ros-melodic-map-msgs
@@ -37,7 +37,7 @@ makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   qt5-base
   tinyxml2
-  ogre
+  ogre-1.9
   urdfdom-headers
   assimp
   eigen3
@@ -69,7 +69,7 @@ ros_depends=(ros-melodic-map-msgs
 depends=(${ros_depends[@]}
   qt5-base
   tinyxml2
-  ogre
+  ogre-1.9
   urdfdom-headers
   assimp
   eigen3
@@ -115,4 +115,8 @@ build() {
 package() {
   cd "${srcdir}/build"
   make DESTDIR="${pkgdir}/" install
+}
+
+prepare() {
+  export PKG_CONFIG_PATH=/opt/OGRE-1.9/lib/pkgconfig/
 }
