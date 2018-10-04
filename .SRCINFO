@@ -1,9 +1,9 @@
 pkgbase = emacs-yasnippet-git
 	pkgdesc = Yet another template system for Emacs - git version
-	pkgver = 0.13.0.r3.ge67592c
+	pkgver = 0.13.0.r7.g7a178a2
 	pkgrel = 1
 	epoch = 1
-	url = https://github.com/capitaomorte/yasnippet
+	url = https://github.com/joaotavora/yasnippet
 	install = yasnippet.install
 	arch = any
 	license = GPL
