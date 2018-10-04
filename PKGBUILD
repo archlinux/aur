@@ -7,7 +7,7 @@ pkgname='ros-melodic-dynamic-reconfigure'
 pkgver='1.6.0'
 _pkgver_patch=1
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-melodic-cpp-common
@@ -37,7 +37,7 @@ depends=(${ros_depends[@]}
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="dynamic_reconfigure-release-release-melodic-dynamic_reconfigure-${pkgver}-${_pkgver_patch}"
+_dir="dynamic_reconfigure-release-release-melodic-dynamic_reconfigure"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/dynamic_reconfigure-release/archive/release/melodic/dynamic_reconfigure/${pkgver}-${_pkgver_patch}.tar.gz")
 sha256sums=('e711de2645ef008413203415d41b99a6b0209cd658693e40921175b11a84194e')
 
