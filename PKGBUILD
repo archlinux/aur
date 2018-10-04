@@ -5,12 +5,12 @@
 
 pkgname=firefox-appmenu
 _pkgname=firefox
-pkgver=62.0.2
+pkgver=62.0.3
 pkgrel=1
-pkgdesc="Standalone web browser from mozilla.org"
+pkgdesc="Firefox from extra with appemnu patch"
 arch=(x86_64)
 license=(MPL GPL LGPL)
-url="https://www.mozilla.org/firefox/"
+url="https://aur.archlinux.org/packages/firefox-appmenu/"
 depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib ffmpeg
          nss hunspell-en_US sqlite ttf-font libpulse libvpx icu)
 makedepends=(unzip zip diffutils python2 yasm mesa imake inetutils xorg-server-xvfb
@@ -19,8 +19,8 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
             'speech-dispatcher: Text-to-Speech')
-provides=("firefox=$pkgver")          
-conflicts=("firefox")   
+provides=("firefox=$pkgver")
+conflicts=("firefox")
 options=(!emptydirs !makeflags !strip)
 _repo=https://hg.mozilla.org/mozilla-unified
 source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
@@ -45,7 +45,7 @@ _mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
 
 prepare() {
   cd mozilla-unified
-  
+
     # actual appmenu patch from ubuntu repos
   patch -Np1 -i ../unity-menubar.patch
 
