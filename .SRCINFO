@@ -1,6 +1,6 @@
 pkgbase = ruby-i18n
 	pkgdesc = New wave internationalisation support for Ruby
-	pkgver = 0.9.1
+	pkgver = 1.1.0
 	pkgrel = 3
 	url = http://rubygems.org/gems/i18n
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = ruby-i18n
 	makedepends = ruby-rdoc
 	depends = rubygems
 	depends = ruby-concurrent-ruby
-	noextract = i18n-0.9.1.gem
+	noextract = i18n-1.1.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/i18n-0.9.1.gem
-	sha256sums = 1af5e4f1ed73f2258066503bec3612092c2580d5a58f84d8318a5fd7a35b5c0c
+	source = https://rubygems.org/downloads/i18n-1.1.0.gem
+	sha256sums = b9cadce8a3ceaa1a815ab5e2e4a127b653b2ac13363c545dde5ac32014adfb5e
 
 pkgname = ruby-i18n
 
