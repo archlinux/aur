@@ -1,16 +1,16 @@
 pkgbase = etc-update-nogithub
 	pkgdesc = CLI to interactively merge .pacnew in /etc. I don't trust gentoo's github.
-	pkgver = 2.3.43
+	pkgver = 2.3.50
 	pkgrel = 1
 	url = https://wiki.gentoo.org/wiki/Handbook:X86/Portage/Tools#etc-update
-	arch = any
+	arch = x86_64
 	license = GPL
 	makedepends = git
 	depends = bash
 	provides = etc-update
 	conflicts = etc-update
-	source = https://gitweb.gentoo.org/proj/portage.git/snapshot/portage-2.3.43.tar.gz
-	md5sums = 50a0bc25bfa45f61ed41d65a54fbfbb9
+	source = https://gitweb.gentoo.org/proj/portage.git/snapshot/portage-2.3.50.tar.gz
+	md5sums = 3433879f464267494adf42d99833028c
 
 pkgname = etc-update-nogithub
 
