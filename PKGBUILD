@@ -1,31 +1,31 @@
-# Maintainer: grimi <grimi at poczta dot fm>
 # Maintainer: Fredy García <frealgagu at gmail dot com>
-# Maintainer: Thomas Nordenmark <t.nordenmark@gmail.com>
-# Developer: Travis Nickles <nickles.travis@gmail.com>
+# Contributor: grimi <grimi at poczta dot fm>
+# Contributor: Thomas Nordenmark <t.nordenmark@gmail.com>
+# Contributor: Travis Nickles <nickles.travis@gmail.com>
 
 pkgname=antimicro
-pkgver=2.23
-pkgrel=3
+pkgver=2.24
+pkgrel=1
 pkgdesc="Graphical program used to map keyboard keys and mouse controls to a gamepad"
 arch=("i686" "x86_64")
-url="https://github.com/AntiMicro/${pkgname}"
+url="https://github.com/juliagoda/${pkgname}"
 license=("GPL3")
-depends=("libxtst" "qt5-base" "sdl2")
-makedepends=("cmake" "gettext" "itstool" "qt5-tools")
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AntiMicro/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=("ef309170612da805992f9194f1973bf38a3174a0856856afedab67f9d927a9ef")
+depends=("desktop-file-utils" "libxtst" "qt5-base" "sdl2")
+makedepends=("cmake" "extra-cmake-modules" "gettext" "itstool" "qt5-tools")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/juliagoda/${pkgname}/archive/${pkgver}.tar.gz"
+        "${pkgname}.patch")
+sha256sums=("220edefd7b2f2dadd9f52d8160aae30976d182dd88db7f2a4f751453a1ec85d9"
+            "6609845ef9a2a856be141e9c1bbe4c5adf00e1c9a965f46a765f22b3fc4e231d")
 
 prepare() {
-  #Using fix suggested by rakuco by deleting lines with QT5_WRAP_CPP
-  #https://github.com/AntiMicro/antimicro/pull/207/files
-  sed -i "/QT5_WRAP_CPP/d" "${pkgname}-${pkgver}/CMakeLists.txt"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  patch -Np1 -i "../${pkgname}.patch"
 }
 
 build() {
-  mkdir -p "${pkgname}-${pkgver}/build"
-  cd "${pkgname}-${pkgver}/build"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
-  cmake .. \
+  cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DUSE_SDL_2=ON \
     -DWITH_XTEST=ON \
@@ -35,7 +35,7 @@ build() {
 }
 
 package() {
-  cd "${pkgname}-${pkgver}/build"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 }
 
