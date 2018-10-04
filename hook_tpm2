@@ -1,0 +1,145 @@
+#!/usr/bin/ash
+
+run_hook() {
+    local ckeyfile tpmkeypub tpmkeypriv tpmkeyparent tpmkeyindex tpmkeyoffset tpmkeysize
+    local tkdev tkarg1 tkarg2 tkarg3 resolved
+    local tpmload pcrbank unseal unsealout tpmok
+
+    # This file will be loaded by the encrypt hook
+    ckeyfile="/crypto_keyfile.bin"
+
+    # Rootfs location for sealed key files
+    tpmkeypub="/tpm_keyfile.pub"
+    tpmkeypriv="/tpm_keyfile.priv"
+
+    # Default TPM device
+    [ -z $tpmdev ] && tpmdev="/dev/tpmrm0"
+
+    # Parse tpmkey command line argument
+    if [ -n "$tpmkey" ]; then
+        IFS=: read tkdev tkarg1 tkarg2 tkarg3 <<EOF
+$tpmkey
+EOF
+        unset IFS
+
+        case "$tkdev" in
+        rootfs)
+            # Key is in initcpio root filesystem. Use files in place
+            if [ -z "$tkarg3" ]; then
+                tpmkeypub="${tkarg1}.pub"
+                tpmkeypriv="${tkarg1}.priv"
+                tpmkeyparent="$tkarg2"
+            else
+                tpmkeypub="$tkarg1"
+                tpmkeypriv="$tkarg2"
+                tpmkeyparent="$tkarg3"
+            fi
+            ;;
+        nvram)
+            # Key is in NVRAM. Populate NVRAM variables
+            tpmkeyindex="$tkarg1"
+            tpmkeyoffset="$tkarg2"
+            tpmkeysize="$tkarg3"
+            ;;
+        *)
+            # Key is on block device
+            # Locate, mount, and copy the key files
+            if resolved=$(resolve_device "${tkdev}" ${rootdelay}); then
+                mkdir /tpmkey
+                mount -r -t auto "$resolved" /tpmkey
+
+                if [ -z "$tkarg3" ]; then
+                    dd if="/tpmkey/${tkarg1}.pub" of="$tpmkeypub" >/dev/null 2>&1
+                    dd if="/tpmkey/${tkarg1}.priv" of="$tpmkeypriv" >/dev/null 2>&1
+                    tpmkeyparent="$tkarg2"
+                else
+                    dd if="/tpmkey/${tkarg1}" of="$tpmkeypub" >/dev/null 2>&1
+                    dd if="/tpmkey/${tkarg2}" of="$tpmkeypriv" >/dev/null 2>&1
+                    tpmkeyparent="$tkarg3"
+                fi
+
+                umount /tpmkey
+                rmdir /tpmkey
+            fi
+            ;;
+        esac
+
+        # If there is no NVRAM index and no sealed files, print an error
+        if [ -z "$tpmkeyindex" ] && [ ! -f "$tpmkeypub" -o ! -f "$tpmkeypriv" ]; then
+            err "TPM keyfiles could not be opened"
+        fi
+    fi
+
+    # We must have a PCR list to retrieve a key
+    [ -n "$tpmkey" ] && [ -z "$tpmpcr" ] && err "TPM PCR bank not specified"
+
+
+    # If we have a key and PCR list, decrypt it
+    if [ -n "$tpmpcr" -a -n "$tpmkeyindex" ] || [ -n "$tpmpcr" -a -f "$tpmkeypub" -a -f "$tpmkeypriv" ]; then
+        # Load key object if stored on disk
+        tpmload=0
+        if [ -z "$tpmkeyindex" ]; then
+            tpm2_load -Q -H "$tpmkeyparent" -r "$tpmkeypriv" -u "$tpmkeypub" -C /tpmobject.ctx -T "device:${tpmdev}" 2>&1 >/dev/null
+            tpmload=$?
+        fi
+
+        # Format nvram arguments
+        [ -n "$tpmkeyoffset" ] && tpmkeyoffset="-o ${tpmkeyoffset}"
+        [ -n "$tpmkeysize" ] && tpmkeysize="-s ${tpmkeysize}"
+
+        # Attempt to decrypt key with each PCR bank specified
+        unseal=1
+        if [ $tpmload -eq 0 ]; then
+            IFS="|"
+            for pcrbank in $tpmpcr; do
+                if [ -n "$tpmkeyindex" ]; then
+                    unsealout=$(tpm2_nvread -Q -x "$tpmkeyindex" -a "$tpmkeyindex" $tpmkeyoffset $tpmkeysize -L "$pcrbank" -f $ckeyfile -T "device:${tpmdev}" 2>&1)
+                    unseal=$?
+                else
+                    unsealout=$(tpm2_unseal -Q -c /tpmobject.ctx -L "$pcrbank" -o "$ckeyfile" -T "device:${tpmdev}" 2>&1)
+                    unseal=$?
+                fi
+                if [ $unseal -eq 0 ]; then break; fi
+            done
+            unset IFS
+        fi
+
+        # Check decryption resuts and report
+        tpmok=0
+        if [ $unseal -eq 0 ]; then
+            tpmok=1
+        elif echo "$unsealout" | grep -sqiE 'Could not load tcti'; then
+            err "TPM communication error"
+        elif echo "$unsealout" | grep -sqiE 'Error.*0x99d'; then
+            echo
+            echo "!!! TPM WARNING: PCR VALUES HAVE CHANGED !!!"
+            echo "This is an indication that the boot configuration has been altered since"
+            echo "the TPM key was generated. This is normal after kernel updates or firmware"
+            echo "changes, however this could also indicate a malicious change to your system."
+            echo
+        elif [ -n "$tpmkeyindex" ]; then
+            err "Could not read key from TPM NVRAM"
+        elif [ $tpmload -ne 0 ]; then
+            err "Could not load TPM keyfile"
+        else
+            err "Could not unseal TPM keyfile"
+        fi
+
+        if [ $tpmok -gt 0 ]; then
+            msg ":: LUKS key successfully decrypted by TPM"
+        else
+            rm -f "$ckeyfile"
+            msg ":: TPM Could not decrypt LUKS key"
+        fi
+    fi
+
+    # Cleanup
+    rm -f /tpmobject.ctx "$tpmkeypub" "$tpmkeypriv"
+}
+
+run_cleanuphook() {
+    # Remove key if still present
+    rm -f "$ckeyfile"
+}
+
+# vim: set ft=sh ts=4 sw=4 et:

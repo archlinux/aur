@@ -1,0 +1,47 @@
+#!/bin/bash
+
+build() {
+    add_module "tpm_tis"
+    add_module "tpm_crb"
+
+    add_binary "/usr/bin/tpm2_unseal" "/usr/bin/tpm2_unseal"
+    add_binary "/usr/bin/tpm2_load" "/usr/bin/tpm2_load"
+    add_binary "/usr/bin/tpm2_nvread" "/usr/bin/tpm2_nvread"
+    add_binary "/usr/lib/libtss2-tcti-device.so.0"
+
+    add_runscript
+}
+
+
+help() {
+    cat <<HELPEOF
+This hook allows for an encrypted root device to use a key sealed by a
+TPM 2.0. It should be placed immediately before the 'encrypt' hook. After
+generating a TPM-sealed key, both 'tpmkey' and 'tpmpcr' should be
+specified on the kernel command line.
+
+'tpmkey' has several formats:
+
+  tpmkey=[device]:[path]:[handle]
+  tpmkey=[device]:[publicpath]:[privatepath]:[handle]
+  tpmkey=nvram:[index]
+  tpmkey=nvram:[index]:[offset]:[size]
+
+Where [device] represents the raw block device on which the key exists,
+[path] is the absolute base path of the keyfiles within the device, and
+[handle] is the TPM handle of the key's parent object. If only [path] is
+specified, '.pub' and '.priv' will be appended to the path to locate the
+public and private files, respectively. The absolute [publicpath] and
+[privatepath] can be specified separately if needed.
+
+Setting [device] to 'nvram' indicates that the key is stored in TPM NVRAM.
+In this case [index] is the NVRAM area index, [offset] is the offset of
+the key in bytes and [size] is the size of the key in bytes.
+
+'tpmpcr' should hold the TPM2 PCR bank specification that will unlock the
+sealed key. Multiple specs can be separated by a '|' and key decryption
+will be attempted with each set of banks.
+HELPEOF
+}
+
+# vim: set ft=sh ts=4 sw=4 et:
