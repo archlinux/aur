@@ -1,7 +1,7 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=flutter-dev
-pkgver=0.9.5
+pkgver=0.9.6
 pkgrel=1
 pkgdesc="A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android."
 arch=("x86_64")
@@ -27,7 +27,7 @@ install="${pkgname%-dev}.install"
 source=("${pkgname%-dev}-${pkgver}.tar.xz::https://storage.googleapis.com/flutter_infra/releases/dev/linux/${pkgname%-dev}_linux_v${pkgver}-dev.tar.xz"
         "${pkgname%-dev}.sh"
         "${pkgname%-dev}.csh")
-sha256sums=("c584166e4f814964526ffc25736b52df350bff0f7bb6ffb733606658fd4d70c0"
+sha256sums=("a3f8577e883906255f1e6ac2ea50050fc619bb827eeb985c165e0d1b33f74932"
             "1dea1952d386c43948b9970382c2da5b65b7870684b8ad2ad89124e873aa485a"
             "7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f")
 
