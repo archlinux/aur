@@ -5,7 +5,7 @@
 
 pkgname=stone-soup-tiles-git
 _pkgname=crawl
-pkgver=0.23.a0.r183.gf37f6fb109
+pkgver=0.23.a0.r295.g2e428d4c7a
 pkgrel=1
 pkgdesc="Community maintained variant of Linley's Dungeon Crawl (tiles) - git version"
 arch=('i686' 'x86_64')
