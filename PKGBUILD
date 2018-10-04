@@ -2,13 +2,13 @@
 
 pkgname=games_nebula
 pkgver=20180605
-pkgrel=1
+pkgrel=2
 pkgdesc='Unofficial Linux client for GOG'
 arch=('i686' 'x86_64')
 license=('GPL')
 url='https://github.com/yancharkin/games_nebula'
 install="${pkgname}.install"
-depends=('python2-gobject' 'python2-beautifulsoup4' 'python2-lxml' 'python2-pillow' 'python2-dateutil' 'python2-gobject' 'python2-pytz' 'webkit2gtk' 'innoextract' 'htmlcxx' 'lgogdownloader' 'xorg-xrandr' 'curl' 'p7zip')
+depends=('python-gobject' 'python-beautifulsoup4' 'python-lxml' 'python-pillow' 'python-requests' 'python-pytz' 'webkit2gtk' 'innoextract' 'htmlcxx' 'lgogdownloader' 'xorg-xrandr' 'curl' 'p7zip')
 makedepends=()
 optdepends=('gksu' 'xterm' 'tar' 'cabextract' 'unshield' 'ffmpeg' 'wine' 'winetricks' 'dosbox' 'scummvm' 'megatools')
 provides=('games_nebula')
@@ -22,7 +22,7 @@ package() {
         
         install -dm755 "${pkgdir}/usr/bin"
 	echo '#!/bin/bash
-	python2 "/opt/games_nebula/games_nebula.py"' > "${pkgdir}/usr/bin/${pkgname}"
+	python "/opt/games_nebula/games_nebula.py"' > "${pkgdir}/usr/bin/${pkgname}"
 	chmod 755 "${pkgdir}/usr/bin/${pkgname}"
 	
 	install -dm755 "${pkgdir}/usr/share/applications/"
