@@ -1,16 +1,16 @@
 # Maintainer: Trevor Bramble <inbox@trevorbramble.com>
 
 pkgname=chef-dk
-pkgver=3.2.30
+pkgver=3.3.23
 pkgrel=1
 pkgdesc="The Chef development kit contains all the tools you need to develop and test your infrastructure, built by the awesome Chef community."
 arch=('x86_64')
 url="https://downloads.chef.io/chef-dk/"
 license=('Apache')
 depends=()
-conflicts=( chef chef-solo chef-client chef-workstation )
+conflicts=(chef chef-solo chef-client chef-workstation)
 source=("https://packages.chef.io/files/stable/chefdk/${pkgver}/debian/9/chefdk_${pkgver}-1_amd64.deb")
-sha512sums=('705cd412420ae94434143e1defa0a256facd25317b028bb1d28750614588e86e390475e33476181aeecb8ec13b386a1eb7cafc2737691b7b5223959933070706')
+sha512sums=('c1141ed0182897d4b6c6d3531d46213494103fd60a761598b9b587c0323af751a6ee4b882a01e021005defe07918f02ee180ff43b444610400e8c715a1270c92')
 
 package() {
   cd "$srcdir"
