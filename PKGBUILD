@@ -4,7 +4,7 @@ _name=poetry
 pkgbase='python-poetry'
 pkgname=('python-poetry' 'python2-poetry')
 pkgver=0.11.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Python dependency management and packaging made easy"
 arch=('any')
 url=https://github.com/sdispater/"${_name}"
@@ -20,8 +20,8 @@ source=(
 )
 sha256sums=(
   '6bb73a26117575cbf5533070045ed378b07b4e18cfcf20ca8cd33d94b10ab0b1'
-  '2d86ca07e5cc944c717c7ef8f38332d6d3a3feb0a99bb7dabe0e9deff11e994e'
-  'b890851b5cb53d1c437a051f79a024857e12b5e6ec0089dddb07a94d09d45af8'
+  '7104f3cd6ec4f156a6499e34ed8908c6f2b83b4284ad12703ea91299a9461068'
+  'c974a1a2fadc89fb8e07efd404e06b2d8c8664f26e7b106933426525664ac9d3'
 )
 
 prepare() {
