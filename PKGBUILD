@@ -1,7 +1,7 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-ppx_tools_versioned
-pkgver=5.2
+pkgver=5.2.1
 pkgrel=1
 pkgdesc="Tools for authors of ppx rewriters and other syntactic tools (with ocaml-migrate-parsetree support)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('ocaml' 'ocaml-migrate-parsetree')
 makedepends=('dune')
 options=('!strip')
 source=("https://github.com/ocaml-ppx/ppx_tools_versioned/archive/${pkgver}.tar.gz")
-md5sums=('f2f1a1cd11aeb9f91a92ab691720a401')
+sha512sums=('ef9f7ee1402b07a10057f84f1851120256ddd6bee9feb0a3dd3f350d589c97e90aa8b4023288b697d6c0a7424915707d1cedf815e3e3dfbcfa9f42b10f50efde')
 
 build() {
   cd "${srcdir}/ppx_tools_versioned-${pkgver}"
