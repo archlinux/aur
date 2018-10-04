@@ -117,21 +117,21 @@ build() {
   msg2 "Building without cuda"
   export NO_CUDA=1
   export WITH_CUDNN=0
-  export USE_OPENCV=1
-  export BUILD_BINARY=1
+  # export USE_OPENCV=1
+  # export BUILD_BINARY=1
 
   cd "$srcdir/${_pkgname}-${pkgver}"
   python setup.py build
 
   msg2 "Building with cuda"
-  # export CC=gcc-7
-  # export CXX=g++-7
+  export CC=gcc-7
+  export CXX=g++-7
   export NO_CUDA=0
   export CUDAHOSTCXX=g++-7
   export CUDA_HOME=/opt/cuda
   export CUDNN_LIB_DIR=/opt/cuda/lib64
   export CUDNN_INCLUDE_DIR=/opt/cuda/include
-  export TORCH_CUDA_ARCH_LIST="3.0;3.2;3.5;3.7;5.0;5.2;5.3;6.0;6.1;6.2;7.0;7.2;7.5"
+  # export TORCH_CUDA_ARCH_LIST="3.0;3.2;3.5;3.7;5.0;5.2;5.3;6.0;6.1;6.2;7.0;7.2;7.5"
 
   cd "$srcdir/${_pkgname}-${pkgver}-cuda"
   python setup.py build
