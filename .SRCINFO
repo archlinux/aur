@@ -1,7 +1,7 @@
 pkgbase = ocp-git
 	pkgdesc = Open Cubic Player (GIT Version)
-	pkgver = 0.1.22.r94.835bf80
-	pkgrel = 2
+	pkgver = 0.1.22.r102.864f655
+	pkgrel = 1
 	url = http://stian.cubic.org/project-ocp.php
 	install = ocp-git.install
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = ocp-git
 	optdepends = libsidplay: for SID music support
 	optdepends = libvorbis: for Vorbis audio support
 	optdepends = sdl: for SDL user interface support
-	provides = ocp=0.1.22.r94.835bf80
+	provides = ocp=0.1.22.r102.864f655
 	conflicts = ocp
 	source = ocp::git://git.code.sf.net/p/opencubicplayer/code
 	md5sums = SKIP
