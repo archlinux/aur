@@ -1,0 +1,4 @@
+post_install() {
+  systemd-sysusers vorleser.conf
+  [[ -d /var/lib/vorleser ]] || install -d -m 655 -o vorleser -g vorleser /var/lib/vorleser
+}

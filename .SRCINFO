@@ -1,0 +1,26 @@
+pkgbase = vorleser-git
+	pkgdesc = A server to serve audiobook files and synchronize playback positions.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/hatzel/vorleser-server
+	install = vorleser.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = rustup
+	makedepends = git
+	makedepends = clang
+	depends = systemd
+	depends = ffmpeg
+	depends = sqlite
+	provides = vorleser
+	backup = etc/vorleser.toml
+	source = vorleser-git::git+https://github.com/vorleser/vorleser-server
+	source = vorleser.service
+	source = vorleser.sysuser
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = vorleser-git
+

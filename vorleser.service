@@ -1,0 +1,11 @@
+[Unit]
+Description=Vorleser audiobook server
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/vorleser --config /etc/vorleser.toml serve
+User=vorleser
+Group=vorleser
+
+[Install]
+WantedBy=multi-user.target
