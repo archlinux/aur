@@ -4,7 +4,7 @@
 pkgname=roundcube-rcmcarddav
 _plugin_name=rcmcarddav
 _name=carddav
-pkgver=3.0.2
+pkgver=3.0.3
 pkgrel=1
 pkgdesc="CardDAV plugin for RoundCube Webmailer"
 arch=('any')
@@ -13,7 +13,7 @@ license=('GPL2')
 depends=('roundcubemail')
 backup=("etc/webapps/roundcubemail/plugins/${_name}/config.inc.php")
 source=("https://github.com/blind-coder/${_plugin_name}/releases/download/v${pkgver}/${_name}-${pkgver}.tar.bz2")
-sha512sums=('53e46a70817ccfe3840d7d4c5236d8c93a8c8dbcdfe0fd527ef8d1452c00b65297a3a19ef01799236431e8daf2eea4fd517f3830d347b52b42d6f5be46220291')
+sha512sums=('718ff5c01c03f47c75262a407df1a1a7b73463f19ed89a32762bd16cceccd39247bb9ca03667fc38ab8c514d904550d2ce978f82d541c71b3ef6ffdf07390710')
 
 prepare() {
   mv -v "${_name}" "${pkgname}-${pkgver}"
