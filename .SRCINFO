@@ -1,6 +1,6 @@
 pkgbase = flatbuffers-static
 	pkgdesc = An efficient cross platform serialization library for C++, with support for Java, C# and Go
-	pkgver = 1.9.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = http://google.github.io/flatbuffers/
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = flatbuffers-static
 	provides = flatbuffers
 	conflicts = flatbuffers
 	options = staticlibs
-	source = flatbuffers-static-1.9.0.tar.gz::https://github.com/google/flatbuffers/archive/v1.9.0.tar.gz
-	sha256sums = 5ca5491e4260cacae30f1a5786d109230db3f3a6e5a0eb45d0d0608293d247e3
+	source = flatbuffers-static-1.10.0.tar.gz::https://github.com/google/flatbuffers/archive/v1.10.0.tar.gz
+	sha256sums = 3714e3db8c51e43028e10ad7adffb9a36fc4aa5b1a363c2d0c4303dd1be59a7c
 
 pkgname = flatbuffers-static
 
