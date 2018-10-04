@@ -693,3 +693,16 @@ Thu Sep 6 04:59:18 2018 +0200
      2018-09-05 42ef5d2 actionless fix(main: cache clean): raise SysExit() instead of calling sys.exit()
      2018-09-05 0ef48be actionless fix(main: cache clean): correctly bypass -Scc to pacman
      2018-09-05 8ad1186 鳶一雨音 chore(locale): add Chinese(simplified) translations.  (#284)
+
+
+Thu Oct 4 05:13:45 2018 +0200
+-------------------------------------------------
+1.3.0           Release 1.3.0
+    
+    Notable changes:
+     2018-10-04 72406f8 actionless feat(config): print warning when moving aur_repos from ~/.cache to ~/.local/
+     2018-10-04 cd2077f actionless feat(config): move aur_repos from ~/.cache to ~/.local/share
+     2018-10-04 4565c0b actionless feat(config, core): make sudo loop interval configurable
+     2018-10-03 0d7d149 actionless fix(install cli: manual package selection): bug in lists' diff
+     2018-10-03 3a6e696 Felix Glaser chore(locale): update translation file for german (#301)
+     2018-10-03 7f1958c Felix Glaser doc(readme): Fix the wording in some places of the readme (#300)
