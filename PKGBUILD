@@ -1,9 +1,9 @@
 # Maintainer: Adam S Levy <adam@aslevy.com>
 
 pkgname='factomd'
-pkgver='5.4.3'
+pkgver='6.0.0'
 pkgrel='1'
-pkgdesc='Factom Daemon'
+pkgdesc='Factom Blockchain Daemon'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/FactomProject/$pkgname"
 license=('custom:MIT')

@@ -1,6 +1,6 @@
 pkgbase = factomd
-	pkgdesc = Factom Daemon
-	pkgver = 5.4.3
+	pkgdesc = Factom Blockchain Daemon
+	pkgver = 6.0.0
 	pkgrel = 1
 	url = https://github.com/FactomProject/factomd
 	install = factomd.install
@@ -14,7 +14,7 @@ pkgbase = factomd
 	makedepends = git
 	makedepends = glide
 	backup = var/lib/factomd/m2/factomd.conf
-	source = git+https://github.com/FactomProject/factomd#tag=v5.4.3
+	source = git+https://github.com/FactomProject/factomd#tag=v6.0.0
 	source = factomd.service
 	source = sysusers-factomd.conf
 	source = factomd.conf
