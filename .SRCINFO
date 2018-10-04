@@ -1,0 +1,23 @@
+pkgbase = android-ndk-r17c
+	pkgdesc = Android C/C++ developer kit (r17c)
+	pkgver = r17c
+	pkgrel = 1
+	url = https://developer.android.com/ndk/
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = custom
+	depends = ncurses5-compat-libs
+	provides = android-ndk
+	conflicts = android-ndk
+	replaces = android-ndk64
+	options = !strip
+	options = staticlibs
+	backup = etc/profile.d/android-ndk.sh
+	source = android-ndk.sh
+	source = http://dl.google.com/android/repository/android-ndk-r17c-linux-x86_64.zip
+	sha256sums = 159d3690212bbf9bf01751b682784525326d058da364d6832050645eef30bfec
+	sha256sums = 3f541adbd0330a9205ba12697f6d04ec90752c53d6b622101a2a8a856e816589
+
+pkgname = android-ndk-r17c
+
