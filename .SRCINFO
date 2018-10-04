@@ -1,7 +1,7 @@
 pkgbase = python-securesystemslib
 	pkgdesc = Cryptographic and general-purpose routines for Secure Systems Lab projects at NYU
 	pkgver = 0.11.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/secure-systems-lab/securesystemslib
 	arch = any
 	license = MIT
