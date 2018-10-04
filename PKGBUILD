@@ -7,7 +7,7 @@ pkgname='ros-melodic-rviz'
 pkgver='1.13.1'
 _pkgver_patch=0
 arch=('any')
-pkgrel=4
+pkgrel=5
 license=('BSD, Creative Commons')
 
 ros_makedepends=(ros-melodic-map-msgs
@@ -88,6 +88,8 @@ source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-
 sha256sums=('2c457a91f490ceb954760c23f8cc8d8edab3089cae59fa3b335191d96802ae0d')
 
 build() {
+  export PKG_CONFIG_PATH=/opt/OGRE-1.9/lib/pkgconfig/
+
   # Use ROS environment variables
   source /usr/share/ros-build-tools/clear-ros-env.sh
   [ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
@@ -115,8 +117,4 @@ build() {
 package() {
   cd "${srcdir}/build"
   make DESTDIR="${pkgdir}/" install
-}
-
-prepare() {
-  export PKG_CONFIG_PATH=/opt/OGRE-1.9/lib/pkgconfig/
 }
