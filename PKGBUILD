@@ -18,7 +18,7 @@
 pkgbase="spl-linux"
 pkgname=("spl-linux" "spl-linux-headers")
 _splver="0.7.11"
-_kernelver="4.18.11.arch1-1"
+_kernelver="4.18.12.arch1-1"
 _extramodules="${_kernelver/.arch/-arch}-ARCH"
 
 pkgver="${_splver}_$(echo ${_kernelver} | sed s/-/./g)"
