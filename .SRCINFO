@@ -1,0 +1,27 @@
+pkgbase = lib32-alure
+	pkgdesc = Utility library to help manage common tasks with OpenAL applications (32-bit)
+	pkgver = 1.2
+	pkgrel = 5
+	url = http://kcat.strangesoft.net/alure.html
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = lib32-libsndfile
+	makedepends = lib32-libvorbis
+	makedepends = lib32-flac
+	makedepends = lib32-mpg123
+	makedepends = lib32-fluidsynth
+	depends = lib32-openal
+	depends = alure
+	optdepends = lib32-libsndfile: for uncompressed audio support
+	optdepends = lib32-libvorbis: for OGG Vorbis support
+	optdepends = lib32-flac: for FLAC support
+	optdepends = lib32-mpg123: for MPEG support
+	optdepends = lib32-fluidsynth: for SoundFont 2 support
+	source = http://kcat.strangesoft.net/alure-releases/alure-1.2.tar.bz2
+	source = build.patch
+	md5sums = 3088aba074ad02d95ea51e705053b9f5
+	md5sums = 6a8dfd62ccae920d393b4202736aba46
+
+pkgname = lib32-alure
+
