@@ -1,0 +1,12 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5eb5f73..8fa5678 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -37,7 +37,6 @@ find_package (KF5 REQUIRED COMPONENTS
+     XmlGui
+ )
+ 
+-find_package (ImageMagick COMPONENTS MagickCore Magick++ REQUIRED)
+ find_package (X11 REQUIRED)
+ find_package (Doxygen)
+ find_package (SharedMimeInfo)

@@ -1,7 +1,7 @@
 pkgbase = kxstitch
 	pkgdesc = The program that lets you create cross stitch patterns and charts.
 	pkgver = 2.1.1
-	pkgrel = 6
+	pkgrel = 7
 	url = https://userbase.kde.org/KXStitch
 	install = kxstitch.install
 	arch = i686
@@ -18,9 +18,11 @@ pkgbase = kxstitch
 	source = https://download.kde.org/stable/kxstitch/2.1.1/kxstitch-2.1.1.tar.xz
 	source = kxstitch.install
 	source = qt5.11.patch::https://cgit.kde.org/kxstitch.git/patch/?id=ca0f451dceecadc696ba6777084f22ceb5d372f0
+	source = imagemagick7.patch
 	sha1sums = 6f712bca3173b90149b67640fb1b63d02725c9ef
 	sha1sums = 8e58ce0776eff7ef29394a2f7a089191a4af0b1d
 	sha1sums = d1a904efd34eca16d839d6d54356cb01abaa15a7
+	sha1sums = 59dc498eb3e555b0f85a717f0588b3a217f8cbbb
 
 pkgname = kxstitch
 
