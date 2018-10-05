@@ -1,7 +1,7 @@
 pkgbase = icon-git
 	pkgdesc = The Icon programming language
-	pkgver = 29.gdaad78e
-	pkgrel = 2
+	pkgver = 20181004
+	pkgrel = 1
 	url = http://www.cs.arizona.edu/icon/
 	arch = i686
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = icon-git
 	conflicts = icon
 	source = git://github.com/gtownsend/icon.git
 	source = LICENSE
-	md5sums = SKIP
-	md5sums = 46e837548bf46e5b0db662322650eb4f
+	sha256sums = SKIP
+	sha256sums = 57b2b71129aa652ca63b07d3c23564bc7a45444a274d12e50856b46e4d088e35
 
 pkgname = icon-git
 

@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=icon-git
-pkgver=29.gdaad78e
-pkgrel=2
+pkgver=20181004
+pkgrel=1
 pkgdesc="The Icon programming language"
 arch=('i686' 'x86_64')
 url="http://www.cs.arizona.edu/icon/"
@@ -11,22 +11,22 @@ makedepends=('git' 'libxt')
 provides=('icon=951')
 conflicts=('icon')
 source=("git://github.com/gtownsend/icon.git" LICENSE)
-md5sums=('SKIP' '46e837548bf46e5b0db662322650eb4f')
-_gitname="icon"
+sha256sums=('SKIP'
+            '57b2b71129aa652ca63b07d3c23564bc7a45444a274d12e50856b46e4d088e35')
 
 pkgver() {
-  cd "$_gitname"
-  git describe --tags | sed 's|-|.|g' |cut -c8-
+  cd ${pkgname%-git}
+    git log -1 --format="%cd" --date=short | tr -d '-'
 }
 
 build() {
-  cd "$_gitname"
+  cd ${pkgname%-git}
   make X-Configure name=linux
   make CFLAGS+=" -D_STDIO_USES_IOSTREAM" -j1
 }
 
 package() {
-  cd $_gitname
+  cd ${pkgname%-git}
   install -d "$pkgdir"/usr/share 
   make Install dest="$pkgdir"/usr/share/icon 
   for _i in colrbook colrpick fontpick icont iconx palette vib wevents 
