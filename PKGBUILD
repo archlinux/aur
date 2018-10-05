@@ -1,7 +1,7 @@
 # Maintainer: Niclas Meyer <niclas at countingsort dot com>
 
 pkgname=literate-git
-pkgver=1_737567e
+pkgver=r322.737567e
 pkgrel=1
 pkgdesc="A literate programming tool for any language"
 arch=('i686' 'x86_64')
@@ -15,8 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  echo -n "${pkgrel}_"
-  git describe --always | sed -e 's/-/_/g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {

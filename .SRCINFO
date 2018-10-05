@@ -1,6 +1,6 @@
 pkgbase = literate-git
 	pkgdesc = A literate programming tool for any language
-	pkgver = 1_737567e
+	pkgver = r322.737567e
 	pkgrel = 1
 	url = https://github.com/zyedidia/Literate
 	arch = i686
