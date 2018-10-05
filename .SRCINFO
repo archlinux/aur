@@ -1,7 +1,7 @@
 pkgbase = makeppkg-git
 	pkgdesc = wrapper for Arch Linux's makepkg, patches source before packages are built
 	pkgver = r44.0e23034
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ibrokemypie/makeppkg
 	arch = i686
 	arch = x86_64

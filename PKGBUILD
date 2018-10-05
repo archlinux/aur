@@ -2,7 +2,7 @@
 pkgname=makeppkg-git
 _pkgname=makeppkg
 pkgver=r42.a22848e
-pkgrel=1
+pkgrel=2
 makedepends=('rust' 'cargo' 'gcc-libs')
 arch=('i686' 'x86_64')
 pkgdesc="wrapper for Arch Linux's makepkg, patches source before packages are built"
