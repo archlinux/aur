@@ -1,4 +1,4 @@
-CC = gcc
+CC = cc
 CFLAGS = -g -Wall --std=c99 -D_FORTIFY_SOURCE=2 -O2 \
 -Wshadow -Wpointer-arith -pedantic -Wold-style-definition \
 -Wno-missing-braces -Wextra -Wno-missing-field-initializers -Wformat=2 \
@@ -15,7 +15,7 @@ GLADE_FILES = window_main
 DESTDIR = /usr
 
 $(BIN): $(OBJECTS)
-	$(CC) $(CFLAGS) $(LIBS) -o $(BIN) $(OBJECTS)
+	$(CC) -o $(BIN) $(OBJECTS) $(LIBS) $(CFLAGS)
 	-gzip $(BIN).1
 install: $(BIN)
 	install -Dm755 $(BIN) $(DESTDIR)/bin/$(BIN)
