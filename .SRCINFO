@@ -1,13 +1,13 @@
 pkgbase = rsa-tokenconverter
 	pkgdesc = Converts an RSA SecurID software token into a CTF URL or a QR Code.
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://community.rsa.com/community/products/securid/software-token-converter
 	arch = any
 	license = APACHE
 	depends = bash
 	depends = java-environment
-	source = ftp://ftp.emc.com/pub/agents/tokenconverter310.zip
+	source = https://community.rsa.com/servlet/JiveServlet/download/62014-4-57430/TokenConverter310.zip
 	source = https://community.rsa.com/servlet/JiveServlet/downloadBody/62012-102-1-67234/token_converter310_admin.pdf
 	sha1sums = 0dc18d7ef715c293b008c37f6f6808944b6d2db3
 	sha1sums = 08881e855dea049c85fcf73426aa3d70d704ce12
