@@ -1,6 +1,6 @@
 # Maintainer: Timo Schwichtenberg <therealbassx at yahoo dot de>
 pkgname=forge-gui-desktop
-pkgver=1.6.15
+pkgver=1.6.16
 pkgrel=1
 pkgdesc="Implementation of Magic the Gathering that lets you play against a computer AI"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('jre8-openjdk')
 source=("https://releases.cardforge.org/forge/$pkgname/$pkgver/$pkgname-$pkgver.tar.bz2"
 	"https://git.cardforge.org/core-developers/forge/raw/master/AppIcon.png")
-sha1sums=('e41b42cc47674729eaccd364b02442699b4153c9'
+sha1sums=('9dc557b7754eb0b03ab1ee4e602db8ef1904f985'
 	  '9a957969da65cf281ceb31a3737bb3b8b799f14b')
 
 package() {
