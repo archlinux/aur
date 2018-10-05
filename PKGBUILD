@@ -2,7 +2,7 @@
 
 _pkgname=xfce4-weather-plugin
 pkgname=${_pkgname}-git
-pkgver=0.8.9.r128.g7c97666
+pkgver=0.9.0+20+ga6f06d1
 pkgrel=1
 pkgdesc="A weather plugin for the Xfce4 panel"
 arch=('i686' 'x86_64')
@@ -12,13 +12,13 @@ groups=('xfce4-goodies')
 depends=('xfce4-panel' 'libxml2' 'libsoup' 'hicolor-icon-theme' 'upower')
 makedepends=('intltool' 'xfce4-dev-tools' 'git')
 conflicts=("${_pkgname}")
-provides=("${_pkgname}=${pkgver%.r*}")
+provides=("${_pkgname}=${pkgver%%+*}")
 source=("${_pkgname}::git://git.xfce.org/panel-plugins/${_pkgname}")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  git describe --long --tags | sed -r "s:^${_pkgname}.::;s/^v//;s/([^-]*-g)/r\1/;s/-/./g"
+  git describe --long --tags | sed -r "s:^${_pkgname}.::;s:-:+:g" #s/^v//;s/([^-]*-g)/r\1/;s/-/./g"
 }
 
 build() {
