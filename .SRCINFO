@@ -1,0 +1,18 @@
+pkgbase = literate-git
+	pkgdesc = A literate programming tool for any language
+	pkgver = 1_737567e
+	pkgrel = 1
+	url = https://github.com/zyedidia/Literate
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = dmd
+	makedepends = dub
+	provides = literate
+	conflicts = literate
+	source = literate-git::git+https://github.com/zyedidia/Literate.git
+	sha256sums = SKIP
+
+pkgname = literate-git
+
