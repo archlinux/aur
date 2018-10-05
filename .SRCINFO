@@ -5,6 +5,7 @@ pkgbase = libvolatilestream-git
 	url = https://github.com/rd235/libvolatilestream
 	arch = any
 	license = GPL2
+	provides = libvolatilestream
 	source = git+https://github.com/rd235/libvolatilestream.git
 	md5sums = SKIP
 
