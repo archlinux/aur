@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-gst-libav
 	pkgdesc = GStreamer Multimedia Framework ffmpeg Plugin (mingw-w64)
-	pkgver = 1.14.3
+	pkgver = 1.14.4
 	pkgrel = 1
 	url = http://gstreamer.freedesktop.org/
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = mingw-w64-gst-libav
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = http://gstreamer.freedesktop.org//src/gst-libav/gst-libav-1.14.3.tar.xz
-	sha256sums = 9b03529bb45785ad1b6b1f4856c52a832ad5fc472285ce49174439e8015ab677
+	source = http://gstreamer.freedesktop.org//src/gst-libav/gst-libav-1.14.4.tar.xz
+	sha256sums = dfd78591901df7853eab7e56a86c34a1b03635da0d3d56b89aa577f1897865da
 
 pkgname = mingw-w64-gst-libav
 
