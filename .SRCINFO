@@ -1,6 +1,6 @@
 pkgbase = rtrlib-git
 	pkgdesc = RPKI-RTR client library
-	pkgver = r626.a4f69d6
+	pkgver = r636.ed51444
 	pkgrel = 1
 	url = https://github.com/rtrlib/rtrlib
 	arch = x86_64
@@ -8,7 +8,6 @@ pkgbase = rtrlib-git
 	license = MIT
 	checkdepends = cmocka
 	makedepends = cmake
-	makedepends = chrpath
 	makedepends = git
 	depends = libssh
 	conflicts = rtrlib

@@ -1,14 +1,14 @@
 # Maintainer: Marcel Röthke <marcel.roethke@haw-hamburg.de>
 
 pkgname=rtrlib-git
-pkgver=r626.a4f69d6
+pkgver=r636.ed51444
 pkgrel=1
 pkgdesc="RPKI-RTR client library"
 arch=(x86_64 i686)
 url="https://github.com/rtrlib/rtrlib"
 license=('MIT')
 depends=(libssh)
-makedepends=(cmake chrpath git)
+makedepends=(cmake git)
 conflicts=(rtrlib)
 checkdepends=(cmocka)
 options=()
@@ -56,6 +56,5 @@ check() {
 package() {
     cd ${srcdir}/${pkgname%-git}
     make DESTDIR="${pkgdir}" install
-    chrpath -d ${pkgdir}/usr/bin/{rtrclient,cli-validator}
     install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
