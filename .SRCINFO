@@ -1,7 +1,7 @@
 pkgbase = thundersvm-git
 	pkgdesc = A fast SVM library on GPUs and CPUs
 	pkgver = r779.5f66a3e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Xtra-Computing/thundersvm
 	arch = x86_64
 	license = APL

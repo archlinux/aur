@@ -5,7 +5,7 @@
 
 pkgname=thundersvm-git
 pkgver=r779.5f66a3e
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast SVM library on GPUs and CPUs"
 arch=('x86_64')
 url="https://github.com/Xtra-Computing/thundersvm"
@@ -39,6 +39,9 @@ build() {
 		-DUSE_EIGEN=ON \
 		-DBUILD_TESTS=ON ..
 	make
+	# build python interface
+	cd "$srcdir/thundersvm/python"
+	python setup.py build
 }
 
 check_thundersvm-git() {
@@ -51,7 +54,11 @@ package() {
 	cd "$srcdir/thundersvm/build/bin"
 	install -Dm755 thundersvm-predict "$pkgdir/usr/bin/thundersvm-predict"
 	install -Dm755 thundersvm-train "$pkgdir/usr/bin/thundersvm-train"
+	cd "$srcdir/thundersvm/build/lib"
+	install -Dm755 libthundersvm.so "$pkgdir/usr/lib/libthundersvm.so"
 	cd "$srcdir/thundersvm"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	cd "$srcdir/thundersvm/python"
+	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
