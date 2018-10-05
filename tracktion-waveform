@@ -1,4 +1,0 @@
-#!/bin/sh
-EXECUTABLE=@executable@
-export LD_PRELOAD=/usr/lib/libcurl.so.4.4.0
-exec $EXECUTABLE "$@"
