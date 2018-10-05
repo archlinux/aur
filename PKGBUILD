@@ -11,7 +11,7 @@ depends=('pd' 'pure')
 license=('BSD')
 groups=(pure-complete pure-multimedia)
 source=(https://github.com/agraef/pure-lang/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz)
-md5sums=('1e50a577f2c61345e9031d2fca5a5449')
+md5sums=('30d4a09542cb50e3748f09ae81d3ba79')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
