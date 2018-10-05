@@ -22,7 +22,7 @@
 
 pkgname=matlab-support
 pkgver=9.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Provides dependencies desktop file and common fixes for MATLAB.'
 arch=('x86_64')
 url='http://www.mathworks.com'
@@ -56,7 +56,7 @@ prepare() {
     gendesk -f -n --pkgname 'matlab' \
         --pkgdesc 'A high-level language for numerical computation and visualization.' \
         --categories 'Development;Education;science;Mathematics;IDE' \
-        --exec --exec 'env LD_PRELOAD=/usr/lib/libfreetype.so.6:/usr/lib/libstdc++.so.6 matlab -desktop' \
+        --exec 'env LD_PRELOAD=/usr/lib/libfreetype.so.6:/usr/lib/libstdc++.so.6 matlab -desktop' \
         --mimetypes 'text/x-matlab' \
         "${srcdir}/matlab.desktop" >/dev/null 
 }
