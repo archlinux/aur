@@ -1,7 +1,7 @@
 pkgbase = ixxat-socketcan
 	pkgdesc = SocketCAN driver for IXXAT USB-to-CAN v2
 	pkgver = 1.1.148.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.ixxat.com/products/products-industrial/pc-interfaces/pc-can-interfaces/socketcan
 	install = ixxat-socketcan.install
 	arch = i686
