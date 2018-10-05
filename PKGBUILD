@@ -11,7 +11,7 @@ license=('BSD')
 makedepends=("cvs" "openssh")
 source=("git+https://github.com/ugjka/calendar.latvia.git"
         "${pkgname}-${pkgverbase}-debian.tar.gz::http://ftp.debian.org/debian/pool/main/b/bsdmainutils/bsdmainutils_9.0.14.tar.gz"
-        "calendar-1.35-linux.patch"
+        "calendar-linux.patch"
         "Makefile.linux"
         "LICENSE")
 sha256sums=('SKIP'
@@ -38,7 +38,7 @@ prepare() {
     
     cd "${srcdir}"/${pkgname}-${pkgverbase}
     
-    patch -p1 < ../calendar-1.35-linux.patch
+    patch -p1 < ../calendar-linux.patch
     sed -i 's|/usr/libexec/tradcpp|/usr/bin/cpp|' pathnames.h
     cp ../Makefile.linux Makefile
     
