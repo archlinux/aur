@@ -12,6 +12,7 @@ arch=(any)
 url='https://github.com/ruby-concurrency/thread_safe'
 license=(Apache-2.0)
 depends=(ruby)
+makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
