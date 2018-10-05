@@ -2,7 +2,7 @@
 
 pkgname=liborcania
 _gitname=orcania
-pkgver=1.2.3
+pkgver=1.2.5
 pkgrel=1
 pkgdesc="Potluck with different functions for different purposes that can be shared among C programs"
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=(GPL)
 depends=('jansson')
 makedepends=(git cmake)
 source=("${_gitname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=("c672251879ac1149b8b4271b97b09d6c4127215f3005daf0b6d6a4df7a97cd60")
+sha256sums=("806089484ec94e584f36627adf58661a456aa7c794726aa1ac5a1bef22bd8974")
 
 prepare() {
     cd "${srcdir}/${_gitname}-${pkgver}"
