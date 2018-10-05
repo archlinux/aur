@@ -1,5 +1,5 @@
 pkgname=pegtl
-pkgver=2.7.0
+pkgver=2.7.1
 pkgrel=1
 pkgdesc="Parsing Expression Grammar Template Library"
 license=('MIT')
@@ -8,7 +8,7 @@ url="https://github.com/taocpp/PEGTL"
 depends=()
 makedepends=('cmake')
 source=("https://github.com/taocpp/PEGTL/archive/${pkgver}.tar.gz")
-sha256sums=('62f870ccb405452ff6037861f466e8c4a02290e7a4560986f79b0a3acb5d13b6')
+sha256sums=('af68ee953d4efc48e090722f8cb9ad4ef1140f6a5443581563e003e060376718')
 
 build() {
   cd PEGTL-$pkgver
