@@ -9,6 +9,7 @@ pkgbase = antibody-bin
 	arch = armv7h
 	arch = aarch64
 	license = MIT
+	conflicts = antibody
 	source_i686 = https://github.com/getantibody/antibody/releases/download/v3.7.0/antibody_Linux_i386.tar.gz
 	sha256sums_i686 = 3ac722a545cd32b93f4a790ac8d7764c26f747e49b5ab257a69717797b5db73c
 	source_x86_64 = https://github.com/getantibody/antibody/releases/download/v3.7.0/antibody_Linux_x86_64.tar.gz
