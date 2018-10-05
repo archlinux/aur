@@ -1,20 +1,20 @@
 # Contributor: Rod Kay     <charlie5 on #ada at freenode.net>
 
 pkgname=adacurses
-pkgver=20150808
-pkgrel=3
+pkgver=20180127
+pkgrel=1
 pkgdesc="An Ada binding to the 'ncurses' C library."
 
 arch=('i686' 'x86_64')
 url="http://http://invisible-island.net/ncurses/ncurses-Ada95.html"
 license=('MIT')
 
-depends=('gcc-ada')
+makedepends=('gcc-ada')
 
-source=('ftp://invisible-island.net/AdaCurses/AdaCurses-20150808.tgz'
+source=('ftp://ftp.invisible-island.net/AdaCurses/AdaCurses.tar.gz'
         'adacurses.gpr.in')
 
-md5sums=('dcc55b76341ed52427072d699a64a6bb'
+md5sums=('d7653259eed56ed19b8acfa408b085d4'
          'bcf4fda38d94da5fb04325c51217d790')
 
 PREFIX=/usr
@@ -41,7 +41,7 @@ build()
               --with-ada-objects=${PREFIX}/lib/adacurses     \
               --libdir=${PREFIX}/lib/adacurses               \
               --enable-widec
-  make
+  make -j1
 }
 
 
