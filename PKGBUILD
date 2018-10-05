@@ -4,38 +4,37 @@
 _pkgname=SU2
 pkgname=su2
 pkgver=6.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source collection of software tools written in C++ for performing Partial Differential Equation (PDE) analysis and solving PDE-constrained optimization problems"
 url="https://su2code.github.io"
 license=('LGPL')
-depends=('python' 'python-mpi4py' 'openmpi' 'hdf5-openmpi' 'libaec'
-    'zlib' 'jsoncpp' 'lapacke')
-makedepends=('swig')
+depends=('python' 'openmpi')
+makedepends=('swig' 'hdf5-openmpi' 'libaec-static' 'jsoncpp'
+    'openblas-lapack-static')
 arch=('x86_64')
-source=("https://github.com/su2code/SU2/archive/v${pkgver}.tar.gz")
+source=("https://github.com/su2code/SU2/archive/v${pkgver}.tar.gz"
+        build_system.patch)
 install="${pkgname}".install
-sha512sums=('7765b88d3e01a7ca968d6b19d662ce6952fe7f6a60055297d9f6aa5adb69f6709d5f9ea16c00467f58d43a65aad25fd7f19674517f586bb776c75fa9401612d5')
+sha512sums=(
+    '7765b88d3e01a7ca968d6b19d662ce6952fe7f6a60055297d9f6aa5adb69f6709d5f9ea16c00467f58d43a65aad25fd7f19674517f586bb776c75fa9401612d5'
+    'a311064dcacba95eb81271f99e5f4d178a9d772ebf389d7b678a06bce420691aaf714e8625fb72edf7289ae2976a2d04373f7186cf1331ab68abd3129bde0619')
 
 prepare() {
-    ! [ -d build ] && mkdir build
+    mkdir -p build
 
     echo 'export SU2_RUN="/opt/'"${pkgname}"'/bin"' > su2_env.sh
     echo 'export PATH=${PATH}:${SU2_RUN}' >> su2_env.sh
     echo 'export PYTHONPATH=${PYTHONPATH}:${SU2_RUN}' >> su2_env.sh
 
     cd "${srcdir}/${_pkgname}-${pkgver}"
-    sed -i 's/^LAPACKlib=liblapacke.a$/LAPACKlib=liblapacke.so/' configure.ac
-    sed -i 's/^Jsoncpplib=libjson.a$/Jsoncpplib=libjsoncpp.a/' configure.ac
-    sed -i 's/^ZLIBlib=libz.a$/ZLIBlib=libz.so/' configure.ac
-    sed -i 's/^SZIPlib=libsz.a$/SZIPlib=libsz.so/' configure.ac
-    sed -i 's/^HDF5lib=libhdf5.a$/HDF5lib=libhdf5.so/' configure.ac
+    patch -p1 < "${srcdir}"/build_system.patch
     autoreconf -f -i
 }
 
 build() {
-    cd "${srcdir}/build"
+    cd build
 
-    ../"${_pkgname}-${pkgver}"/configure \
+    "${srcdir}/${_pkgname}-${pkgver}"/configure \
     --prefix="/opt/${pkgname}" \
     --enable-mpi \
     --enable-PY_WRAPPER \

@@ -1,0 +1,121 @@
+diff --git a/Common/lib/Makefile.am b/Common/lib/Makefile.am
+index 2612d0c..a2751f2 100644
+--- a/Common/lib/Makefile.am
++++ b/Common/lib/Makefile.am
+@@ -115,7 +115,7 @@ lib_ldadd += @HDF5_LD@
+ 
+ # if BUILD_SZIP
+ lib_cxxflags += @SZIP_CXX@
+-lib_ldadd += @SZIP_LD@
++lib_ldadd += @SZIP_LD@ @AEC_LD@
+ # endif
+ 
+ # if BUILD_ZLIB
+diff --git a/SU2_CFD/obj/Makefile.am b/SU2_CFD/obj/Makefile.am
+index 4ef4406..5b33693 100644
+--- a/SU2_CFD/obj/Makefile.am
++++ b/SU2_CFD/obj/Makefile.am
+@@ -177,7 +177,7 @@ su2_cfd_ldadd += @HDF5_LD@
+ 
+ # if BUILD_SZIP
+ su2_cfd_cxx_flags += @SZIP_CXX@
+-su2_cfd_ldadd += @SZIP_LD@
++su2_cfd_ldadd += @SZIP_LD@ @AEC_LD@
+ # endif
+ 
+ # if BUILD_ZLIB
+diff --git a/SU2_DEF/obj/Makefile.am b/SU2_DEF/obj/Makefile.am
+index 1f3d52e..62f9d06 100644
+--- a/SU2_DEF/obj/Makefile.am
++++ b/SU2_DEF/obj/Makefile.am
+@@ -69,7 +69,7 @@ ___bin_SU2_DEF_LDADD += @HDF5_LD@
+ 
+ # if BUILD_SZIP
+ ___bin_SU2_DEF_CXXFLAGS += @SZIP_CXX@
+-___bin_SU2_DEF_LDADD += @SZIP_LD@
++___bin_SU2_DEF_LDADD += @SZIP_LD@ @AEC_LD@
+ # endif
+ 
+ # if BUILD_ZLIB
+diff --git a/SU2_DOT/obj/Makefile.am b/SU2_DOT/obj/Makefile.am
+index 929b45b..19f4be7 100644
+--- a/SU2_DOT/obj/Makefile.am
++++ b/SU2_DOT/obj/Makefile.am
+@@ -103,7 +103,7 @@ su2_dot_ldadd += @HDF5_LD@
+ 
+ # if BUILD_SZIP
+ su2_dot_cxx_flags += @SZIP_CXX@
+-su2_dot_ldadd += @SZIP_LD@
++su2_dot_ldadd += @SZIP_LD@ @AEC_LD@
+ # endif
+ 
+ # if BUILD_ZLIB
+diff --git a/SU2_GEO/obj/Makefile.am b/SU2_GEO/obj/Makefile.am
+index acdd2c4..dc220f5 100644
+--- a/SU2_GEO/obj/Makefile.am
++++ b/SU2_GEO/obj/Makefile.am
+@@ -60,7 +60,7 @@ ___bin_SU2_GEO_LDADD += @HDF5_LD@
+ 
+ # if BUILD_SZIP
+ ___bin_SU2_GEO_CXXFLAGS += @SZIP_CXX@
+-___bin_SU2_GEO_LDADD += @SZIP_LD@
++___bin_SU2_GEO_LDADD += @SZIP_LD@ @AEC_LD@
+ # endif
+ 
+ # if BUILD_ZLIB
+diff --git a/SU2_MSH/obj/Makefile.am b/SU2_MSH/obj/Makefile.am
+index e1bda63..b122b10 100644
+--- a/SU2_MSH/obj/Makefile.am
++++ b/SU2_MSH/obj/Makefile.am
+@@ -60,7 +60,7 @@ ___bin_SU2_MSH_LDADD += @HDF5_LD@
+ 
+ # if BUILD_SZIP
+ ___bin_SU2_MSH_CXXFLAGS += @SZIP_CXX@
+-___bin_SU2_MSH_LDADD += @SZIP_LD@
++___bin_SU2_MSH_LDADD += @SZIP_LD@ @AEC_LD@
+ # endif
+ 
+ # if BUILD_ZLIB
+diff --git a/SU2_SOL/obj/Makefile.am b/SU2_SOL/obj/Makefile.am
+index 9b0f0ec..be9e176 100644
+--- a/SU2_SOL/obj/Makefile.am
++++ b/SU2_SOL/obj/Makefile.am
+@@ -69,7 +69,7 @@ ___bin_SU2_SOL_LDADD += @HDF5_LD@
+ 
+ # if BUILD_SZIP
+ ___bin_SU2_SOL_CXXFLAGS += @SZIP_CXX@
+-___bin_SU2_SOL_LDADD += @SZIP_LD@
++___bin_SU2_SOL_LDADD += @SZIP_LD@ @AEC_LD@
+ # endif
+ 
+ # if BUILD_ZLIB
+diff --git a/configure.ac b/configure.ac
+index 9699806..0e70eeb 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -306,13 +306,16 @@ then
+ AM_CONDITIONAL(BUILD_SZIP,true)
+ SZIP_CXX="-DHAVE_SZIP -I"$with_SZIP_include""
+ SZIP_LD="$with_SZIP_lib"/$SZIPlib
++AEC_LD="$with_SZIP_lib"/libaec.a
+ else
+ AM_CONDITIONAL(BUILD_SZIP,false)
+ SZIP_CXX=
+ SZIP_LD=
++AEC_LD=
+ fi
+ AC_SUBST([SZIP_CXX])
+ AC_SUBST([SZIP_LD])
++AC_SUBST([AEC_LD])
+ 
+ ##########################
+ 
+@@ -405,7 +408,7 @@ AC_SUBST([MUTATIONPP_LD])
+ ##########################
+ 
+ # check for lib
+-Jsoncpplib=libjson.a
++Jsoncpplib=libjsoncpp.a
+ Jsoncppheader=json/json.h
+ have_Jsoncpp="no"
+ 
