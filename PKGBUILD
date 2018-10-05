@@ -1,14 +1,14 @@
 # Maintainer : Christian Hofmann <chof@pfho.net>
 
 pkgname=wifite2-git
-pkgver=r190.90c99b1
+pkgver=r279.e190794
 pkgrel=1
 pkgdesc="A tool to attack multiple WEP and WPA encrypted networks at the same time"
 arch=(any)
 url="https://github.com/derv82/wifite2"
 license=('GPL')
-depends=(python2 aircrack-ng python2-pyshark pyrit cowpatty reaver scapy)
-optdepends=(macchanger)
+depends=(python aircrack-ng wireless_tools net-tools)
+optdepends=(macchanger wireshark-cli reaver bully cowpatty pyrit hcxdumptool hcxtools john)
 makedepends=(git)
 source=($pkgname::git+https://github.com/derv82/wifite2.git)
 sha256sums=('SKIP')
@@ -26,7 +26,7 @@ package() {
 
   cat > "$pkgdir/usr/bin/wifite2" << EOF
 #!/bin/sh
-exec python2 /usr/share/wifite2/Wifite.py "\${@}"
+exec python /usr/share/wifite2/Wifite.py "\${@}"
 EOF
 
 chmod a+x "$pkgdir/usr/bin/wifite2"
