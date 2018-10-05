@@ -6,7 +6,7 @@ pkgdesc="Systemd unit setting a random address while preserving the original NIC
 arch=('any')
 depends=('macchanger')
 source=("macspoof.service")
-sha512sums=('f9eac10101d963681ab5ba5a131b9d761ac8714ec140579fc744f2b8dda8e2827f46ef258444bdf590d42cb1a1c5ba36d216f239697dfe948f5d4985fb398f74')
+sha512sums=('042d21487f996875ee4f22a8f7bf84be35159bf3c3db1c18eee4f1a64a5a3a6e641542e8ae84dd3cdb79a2c7f3cabac56bb8fa5586bde104e2ca8417889b885b')
 
 package() {
     install -Dm644 "$srcdir"/macspoof.service "$pkgdir"/usr/lib/systemd/system/macspoof@.service

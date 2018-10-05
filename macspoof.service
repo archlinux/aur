@@ -6,6 +6,7 @@ BindsTo=sys-subsystem-net-devices-%i.device
 After=sys-subsystem-net-devices-%i.device
 
 [Service]
+RemainAfterExit=yes
 ExecStart=/usr/bin/macchanger -r %I
 Type=oneshot
 
