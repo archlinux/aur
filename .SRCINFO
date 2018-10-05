@@ -1,0 +1,20 @@
+pkgbase = sn0int-registry-git
+	pkgdesc = sn0int-registry
+	pkgver = 0.1.0.r1.ga1448ed
+	pkgrel = 1
+	url = https://github.com/kpcyrd/sn0int
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = aarch64
+	license = GPL3
+	makedepends = rustup
+	depends = curl
+	depends = postgresql-libs
+	provides = sn0int-registry
+	conflicts = sn0int-registry
+	source = git+https://github.com/kpcyrd/sn0int.git
+	sha512sums = SKIP
+
+pkgname = sn0int-registry-git
+
