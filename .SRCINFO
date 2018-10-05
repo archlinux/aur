@@ -1,0 +1,17 @@
+pkgbase = ut2004-gog
+	pkgdesc = an easy way to launch and install ut2004 (GOG edition)
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/tim241/ut2004-gog
+	arch = x86_64
+	depends = bash
+	depends = awk
+	depends = sed
+	depends = curl
+	depends = wine
+	depends = winetricks
+	source = git+https://github.com/tim241/ut2004-gog.git
+	sha256sums = SKIP
+
+pkgname = ut2004-gog
+
