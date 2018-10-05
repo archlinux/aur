@@ -3,7 +3,7 @@
 pkgname=usbguard
 _pkgname=usbguard
 pkgver=0.7.4
-pkgrel=2
+pkgrel=3
 license=('GPL2')
 pkgdesc='USBGuard is a software framework for implementing USB device authorization policies'
 makedepends=("git" "libxslt" "asciidoc" "bash-completion")
@@ -34,7 +34,7 @@ prepare() {
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	patch -p1 <../include.patch
-	aclocal
+	autoreconf -f -i
 	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --sys=/etc -sbindir=/usr/bin --libdir=/usr/lib \
 	--enable-systemd \
 	--with-gui-qt=qt5 \
