@@ -3,13 +3,16 @@
 pkgname=python-pypeln
 _name=${pkgname#python-}
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Pypeline is a simple yet powerful python library for creating concurrent data pipelines."
 arch=(any)
 url="https://github.com/cgarciae/pypeln"
 license=('MIT')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 makedepends=('python-setuptools')
+depends=(
+	'python-cytoolz'
+)
 sha256sums=('ac25af7b48516f0adb4653e7d5e2be0e88a9ff4438b33dd51d5d6a970914ac8c')
 
 build() {
