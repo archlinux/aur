@@ -1,8 +1,0 @@
-post_install() {
-cat << EOF
-Note:
-==> If you experience sound problems try setting your SDL_AUDIODRIVER environment variable to "dma"
-==> eg. export SDL_AUDIODRIVER="dma" ; wesnoth-1.12
-==> If "dma" doesn't work,other options are: dsp,alsa,artsc,esd,nas try to find the right output.
-EOF
-}

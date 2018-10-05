@@ -3,15 +3,14 @@
 _suffix=-1.12
 pkgname=wesnoth-1.12
 pkgver=1.12.6
-pkgrel=10
+pkgrel=11
 pkgdesc="Turn-based strategy game on a fantasy world (legacy version)"
 arch=('i686' 'x86_64')
-url="https://www.wesnoth.org/"
+url="https://www.wesnoth.org"
 license=('GPL')
-depends=('sdl' 'sdl_image' 'sdl_mixer' 'sdl_ttf' 'sdl_net' 'boost-libs' 'bzip2' 'zlib' 'libvorbis' 'pango' 'cairo' 'fontconfig' 'dbus' 'readline' 'fribidi')
+depends=('sdl' 'sdl_image' 'sdl_mixer' 'sdl_ttf' 'sdl_net' 'boost-libs' 'bzip2' 'zlib' 'libvorbis' 'pango' 'cairo' 'fontconfig' 'dbus' 'fribidi')
 makedepends=('boost' 'gettext' 'cmake' 'make')
 checkdepends=('desktop-file-utils' 'appstream-glib')
-install=$pkgname.install
 options=('!emptydirs')
 #options=('!emptydirs' '!strip') #use this when building with debugging symbols
 source=("https://downloads.sourceforge.net/sourceforge/wesnoth/wesnoth-$pkgver.tar.bz2"
@@ -19,13 +18,13 @@ source=("https://downloads.sourceforge.net/sourceforge/wesnoth/wesnoth-$pkgver.t
         "wesnothd$_suffix.tmpfiles.conf"
         "wesnothd$_suffix.service"
         "wesnoth$_suffix.appdata.xml"
-        "wesnoth-boost.patch")
+        "wesnoth-boost.patch::https://github.com/wesnoth/wesnoth/commit/789588d11e3512b3494b4aeac11b44f1c38ad86d.patch")
 
 sha256sums=('a50f384cead15f68f31cfa1a311e76a12098428702cb674d3521eb169eb92e4e'
             'f765499315d6650fe91424c0818cc57fc9fd06108c29e78c2db987c148dbf877'
             '4d11e481ad8610bb2ad65290d2b3d1bf2d058485deaa9016325499b113e0f89f'
-            'e7ae24484ac6028ee705ed46b3c37f23f98126575429f415d7f273ff78579dc2'
-            'bb50e9fa9551a0669471921ac57c23ed0ebb4915c0445875223dd71689f9dcda'
+            '1167ff198b639e035769b29767c104753ade870339d4608b198dfdfcfd8a1d03'
+            'd3f031c70e59ac544712c45e6fd9be7cd79f481aad38977e7a129e1bede54840'
             'ccacb1049a71935392b46f919c4045b11936b232522ed2763561fbc0fb1e40b7')
 
 PKGEXT='.pkg.tar'
@@ -42,21 +41,27 @@ prepare() {
 build() {
   cd "$srcdir/wesnoth-$pkgver"
 
-  mkdir build && cd build
+  # As this is an older version and not worked on anymore, it will someday break
+  # If you happen to find a fix, please fill a Pull Request for the 1.12 branch
+  # at bugs.wesnoth.org
+
+  # silence compiler warnings - they are not going to be fixed
+  export CFLAGS="$CFLAGS -w"
+  export CXXFLAGS="$CXXFLAGS -w"
+
+  rm -rf build && mkdir build && cd build
   cmake .. \
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DBINARY_SUFFIX=-1.12 \
       -DDATADIRNAME=wesnoth-1.12 \
-      -DFIFO_DIR=/run/wesnoth-1.12 \
-      -DMANDIR=/usr/share/man/wesnoth-1.12 \
-      -DDOCDIR=/usr/share/doc/wesnoth-1.12 \
+      -DDOCDIR=share/doc/wesnoth-1.12 \
+      -DFIFO_DIR=/run/wesnothd-1.12 \
       -DPREFERENCES_DIR=.local/share/wesnoth/1.12 \
       -DENABLE_OMP=ON \
       -DENABLE_DESKTOP_ENTRY=OFF \
-      -DENABLE_CAMPAIGN_SERVER=OFF \
-      -DENABLE_DISPLAY_REVISION=OFF
+      -DENABLE_DISPLAY_REVISION=NO \
+      -Wno-dev # silence cmake warnings
   make
-  #   -DLOCALEDIR=/usr/share/locale
 }
 
 check() {
@@ -72,14 +77,19 @@ package() {
 
   cd "$srcdir/wesnoth-$pkgver"
 
-  # better use the tools from wesnoth 1.14
+  # better use the tools from a recent version of wesnoth
   rm -r "$pkgdir/usr/share/wesnoth$_suffix/data/tools"
 
-  # these translation files are not needed anymore after building
+  # these translation files are not needed
   find "$pkgdir/usr/share/wesnoth$_suffix/translations" -name wesnoth-manpages.mo -delete
   find "$pkgdir/usr/share/wesnoth$_suffix/translations" -name wesnoth-manual.mo -delete
-  #find "$pkgdir/usr/share/locale" -name wesnoth-manpages.mo -delete
-  #find "$pkgdir/usr/share/locale" -name wesnoth-manual.mo -delete
+
+  # add suffix to manpages
+  cd "$pkgdir/usr/share/man"
+  for filename in man6/*.6 */man6/*.6
+    do
+      mv "$filename" $(dirname $filename)/$(basename $filename .6)-1.12.6
+  done
 
   # INSTALLING of menu entry and icons as well as systemd files and appstream information:
   install -D -m644 "$srcdir/wesnoth$_suffix.desktop" "$pkgdir/usr/share/applications/wesnoth$_suffix.desktop"

@@ -3,7 +3,8 @@ Description=Wesnoth-1.12 Server Daemon
 Documentation=https://www.wesnoth.org/wiki/ServerAdministration
 Documentation=man:/usr/share/man/wesnoth-1.12/man6/wesnothd.6.gz
 After=network.target
-Conflicts=wesnothd.service wesnothd-1.12.service wesnothd-git.service wesnothd-1.10.service
+# They use by default the same port
+Conflicts=wesnothd.service wesnothd-1.8.service wesnothd-1.10.service wesnothd-1.14.service wesnothd-devel.service wesnothd-git.service
 
 [Service]
 ExecStart=/usr/bin/wesnothd-1.12 -t 2 -T 5
@@ -21,7 +22,7 @@ ProtectSystem=yes
 PrivateTmp=yes
 PrivateDevices=yes
 NoNewPrivileges=yes
-RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictAddressFamilies=AF_INET
 RestrictRealtime=yes
 MemoryDenyWriteExecute=yes
 SystemCallArchitectures=native
