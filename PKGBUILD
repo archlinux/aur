@@ -1,23 +1,23 @@
 # Contributor: Rod Kay     <charlie5 on #ada at freenode.net>
 
 pkgname=ini_file_manager
-pkgver=1
-pkgrel=2
+pkgver=8
+pkgrel=1
 pkgdesc="Ini configuration file reader and manipulator package for Ada."
 
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/ini-files"
 license=('MIT')
 
-depends=('gcc-ada' 'zip' 'dos2unix')
+depends=('gcc-ada')
 
-source=('https://sourceforge.net/projects/ini-files/files/ini-files/ini-files-05.zip'
+source=('https://sourceforge.net/projects/ini-files/files/ini-files/ini-files-08.zip'
         'construct.gpr'
         'example.gpr'
         'ini_file_manager.gpr'
         'runme.sh.in')
 
-md5sums=('a43b4f838ebb6cf78a4e7ef10804ed21'
+md5sums=('72f415eedf3c97d8db8df2354ca59b36'
          '46b6eed7c165ec32161fee42c3d61abc'
          'c5cef25a5de24ec035905174b76e0fd1'
          '1940fe0de2234a7b451fa98200f082c7'
