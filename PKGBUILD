@@ -13,6 +13,7 @@ license=('APL')
 depends=('cuda')
 makedepends=('git'
 		'cmake'
+		'chrpath'
 		'eigen'
 		'cuda'
 		'gtest'
@@ -41,7 +42,7 @@ build() {
 	make
 	# build python interface
 	cd "$srcdir/thundersvm/python"
-	python setup.py build
+#	python setup.py build
 }
 
 check_thundersvm-git() {
@@ -52,6 +53,8 @@ check_thundersvm-git() {
 
 package() {
 	cd "$srcdir/thundersvm/build/bin"
+	chrpath -d thundersvm-predict
+	chrpath -d thundersvm-train
 	install -Dm755 thundersvm-predict "$pkgdir/usr/bin/thundersvm-predict"
 	install -Dm755 thundersvm-train "$pkgdir/usr/bin/thundersvm-train"
 	cd "$srcdir/thundersvm/build/lib"
@@ -59,6 +62,6 @@ package() {
 	cd "$srcdir/thundersvm"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	cd "$srcdir/thundersvm/python"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+#python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
