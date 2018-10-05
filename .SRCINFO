@@ -1,6 +1,6 @@
 pkgbase = pcloud-drive
 	pkgdesc = pCloud drive. Electron edition.
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://www.pcloud.com
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = pcloud-drive
 	conflicts = pcloud-git
 	conflicts = pcloud
 	validpgpkeys = A8F7858263C1E39480B731DCEAD4F103068DF8E5
-	source_x86_64 = pcloud-drive-1.4.1-1::http://p-def3.pcloud.com/cBZnKS7TpZOSyJ6pZZZT4R7I7Z2ZZdcLZkZ5tCvXZVkZBkZ57ZJVZakZKVZ40ZfXZz7ZqXZBVZnXZwZVXZNN917Zf8uy8z0kSab5PbbxvYrsTVsGlDmy/pcloud
-	md5sums_x86_64 = 57d7f3e241d39a3bc2e42bba15bf2f8b
+	source_x86_64 = pcloud-drive-1.4.2-1::http://p-def6.pcloud.com/cBZ18FoNpZ8jWLVHZZZ0JVFI7Z2ZZdcLZkZTOovXZ5Zr7Zb0ZskZv0ZOXZLkZOkZn7ZPVZuVZDXZ5XZyVZY7ie7Z3p1ojslfeC8MdJN9qP2hLYPLYP8k/pcloud
+	md5sums_x86_64 = f936d5835ce30bc0ea661c4677bf2077
 
 pkgname = pcloud-drive
 
