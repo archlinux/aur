@@ -1,0 +1,23 @@
+pkgbase = sn0int-git
+	pkgdesc = OSINT framework and package manager
+	pkgver = 0.1.0.r1.ga1448ed
+	pkgrel = 1
+	url = https://github.com/kpcyrd/sn0int
+	install = sn0int.install
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = aarch64
+	license = GPL3
+	makedepends = cargo
+	makedepends = git
+	depends = libcap
+	depends = sqlite
+	depends = libseccomp
+	provides = sn0int
+	conflicts = sn0int
+	source = git+https://github.com/kpcyrd/sn0int.git
+	sha512sums = SKIP
+
+pkgname = sn0int-git
+
