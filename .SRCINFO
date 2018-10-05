@@ -1,0 +1,14 @@
+pkgbase = findent
+	pkgdesc = Indents and beautifies Fortran source.
+	pkgver = 2.8.6
+	pkgrel = 1
+	url = https://sourceforge.net/projects/findent/
+	arch = i686
+	arch = x86_64
+	license = custom:BSD
+	depends = bash
+	source = https://datapacket.dl.sourceforge.net/project/findent/findent-2.8.6.tar.gz
+	sha256sums = 199440c938c64c219cc3296c285e1f5051608254b9977721d965559e56211b3b
+
+pkgname = findent
+
