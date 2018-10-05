@@ -8,6 +8,7 @@ arch=('i686' 'x86_64')
 pkgdesc="wrapper for Arch Linux's makepkg, patches source before packages are built"
 url="https://github.com/ibrokemypie/makeppkg"
 license=('Apache-2.0')
+provides=('makeppkg')
 source=('git+http://github.com/ibrokemypie/makeppkg/')
 sha256sums=('SKIP')
 
