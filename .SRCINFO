@@ -1,6 +1,6 @@
 pkgbase = tick
 	pkgdesc = Command line and GTK stock and cryptocurrency portfolio tracker.
-	pkgver = 3.1.0
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://github.com/aokellermann/tick
 	arch = x86_64
