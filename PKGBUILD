@@ -1,9 +1,9 @@
 # Maintainer: Christer Solskogen <christer.solskogen@gmail.com>
 pkgname=sdl2-nox
-pkgver=2.0.7
+pkgver=2.0.8
 pkgrel=1
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 2) without X11 support"
-arch=('x86_64' 'arm' 'armv6h' 'armv7h')
+arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.libsdl.org"
 license=('MIT')
 depends=('bash')
