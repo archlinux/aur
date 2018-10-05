@@ -3,7 +3,7 @@
 
 pkgname=wireless-regdb-pentest
 _pkgname=wireless-regdb
-pkgver=2018.05.31
+pkgver=2018.09.07
 pkgrel=1
 pkgdesc="Central Regulatory Domain Database with txpower/channels modified for pentesters. please respect the law in your country"
 arch=('any')
@@ -24,7 +24,7 @@ source=(https://www.kernel.org/pub/software/network/wireless-regdb/wireless-regd
 	'0002-fix-gcc6.patch'
 	'https://www.kernel.org/pub/software/network/crda/crda-3.18.tar.xz')
 
-sha256sums=('e1dfbc3b97771373077f430c3c05082fae883145b37db5b2cfd12c56676fbe7b'
+sha256sums=('a36b8147f1a3e98e1fd44321a4b8d7ad2f03cac98cdf527ccb1693342f08d65a'
             '192428fd959806705356107bffc97b8b379854e79bd013c4ee140e5202326e2b'
             '68cec28c36289ff3d04ba1b8ccce38e3b414bece53d7d26390ed6541ccbdb2c1'
             '9c266cb90c9492f617c6b89242723fc81ffa2dc8817d0a6f03dfcffd0d077fbf'
@@ -39,7 +39,7 @@ prepare() {
   cd "${srcdir}"/"${_pkgname}"-"${pkgver}"
   patch -Np1 -i ../db.txt.patch
   patch -Np0 -i ../db.txt2.patch
-  sed -i 's/python/python2/' *.py 
+  sed -i 's/python/python3/' "${srcdir}"/"${_pkgname}"-"${pkgver}"/db2bin.py 
   cd "${srcdir}/crda-3.18"
   patch -Np1 -i ../0002-fix-gcc6.patch
 }
@@ -84,4 +84,6 @@ package() {
   rm "${pkgdir}"/etc/conf.d/wireless-regdom.tmp
 
   install -D -m644 "${srcdir}"/${_pkgname}-${pkgver}/LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -D -m644 "${srcdir}"/${_pkgname}-${pkgver}/regulatory.db "${pkgdir}"/usr/lib/firmware/regulatory.db
+  install -D -m644 "${srcdir}"/${_pkgname}-${pkgver}/regulatory.db.p7s "${pkgdir}"/usr/lib/firmware/regulatory.db.p7s
 }
