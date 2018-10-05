@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Ren'Py
+GenericName=renpy
+Comment=Ren'Py is a visual novel engine that helps you use words, images, and sounds to tell interactive stories that run on computers and mobile devices.
+Icon=renpy
+Exec=renpy
+Categories=Game;AdventureGame;

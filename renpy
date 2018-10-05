@@ -1,0 +1,3 @@
+#!/usr/bin/sh
+
+exec python2 /usr/share/renpy/renpy.py "$@"
