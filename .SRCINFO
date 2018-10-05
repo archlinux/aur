@@ -6,6 +6,7 @@ pkgbase = wireless-regdb-pentest
 	arch = any
 	license = custom
 	makedepends = crda
+	makedepends = python2-m2crypto
 	makedepends = python-m2crypto
 	depends = sh
 	depends = libnl
