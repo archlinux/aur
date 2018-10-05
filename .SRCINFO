@@ -7,6 +7,7 @@ pkgbase = bitlbee-libpurple-git
 	arch = i686
 	arch = x86_64
 	arch = armv7h
+	arch = aarch64
 	license = GPL
 	makedepends = git
 	makedepends = libotr
