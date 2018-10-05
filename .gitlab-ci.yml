@@ -1,0 +1,13 @@
+image: "aisberg/arch-aur-makepkg"
+
+before_script:
+- pacman -Syu --noconfirm
+
+package:
+  script:
+  - makepkg
+  artifacts:
+    paths:
+    - pkg/
+    expire_in: 2 days
+
