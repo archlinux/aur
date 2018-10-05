@@ -6,7 +6,7 @@
 
 pkgname=filebot47
 pkgver=4.7.9
-pkgrel=2
+pkgrel=3
 _jnaver=4.3.0
 pkgdesc="The ultimate tool to rename TV/anime shows, download subtitles, and validate checksums."
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -24,7 +24,7 @@ conflicts=('filebot')
 [[ $CARCH == "armv6h" ]] && _intarch=arm
 [[ $CARCH == "armv7h" ]] && _intarch=arm
 
-source=(http://downloads.sourceforge.net/project/filebot/filebot/FileBot_$pkgver/FileBot_$pkgver-portable.tar.xz
+source=(https://f002.backblazeb2.com/file/AUR-Store/$pkgname/FileBot_$pkgver-portable.tar.xz
         https://github.com/java-native-access/jna/archive/$_jnaver.tar.gz
         filebot-arch.sh filebot.svg filebot.desktop)
 
