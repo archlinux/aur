@@ -1,6 +1,6 @@
 pkgbase = lrz-syncshare
 	pkgdesc = Sync client for the LRZ Sync+Share service
-	pkgver = 11.6.703
+	pkgver = 11.7.754
 	pkgrel = 1
 	url = https://syncandshare.lrz.de/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = lrz-syncshare
 	depends = hicolor-icon-theme
 	depends = jre8
 	depends = xdg-utils
-	source = LRZ_Sync_Share_11.6.703_Linux.tar.gz::https://syncandshare.lrz.de/client_deployment/LRZ_Sync_Share_Latest_Linux.tar.gz
-	sha256sums = 82977cb85d590ffefe16d62cba9a35e631e170c9cf843c71dbc64eebcafc10ba
+	source = LRZ_Sync_Share_11.7.754_Linux.tar.gz::https://syncandshare.lrz.de/client_deployment/LRZ_Sync_Share_Latest_Linux.tar.gz
+	sha256sums = 2f8490ebb07010baa4af9e00cd68276b2ea319eef5643761b91fe78acac287cc
 
 pkgname = lrz-syncshare
 
