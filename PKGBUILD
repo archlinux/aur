@@ -3,12 +3,12 @@
 
 pkgname=katawa-shoujo
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="a bishoujo-style visual novel by Four Leaf Studios built on renpy"
 arch=('any')
 url='http://katawa-shoujo.com/'
 license=('CCPL:BY-NC-ND')
-depends=('renpy')
+depends=('renpy6')
 install="${pkgname}.install"
 source=("[4ls]_katawa_shoujo_${pkgver}-[linux-x86][18161880].tar.bz2::http://dl.katawa-shoujo.com/gold_${pkgver}/%5b4ls%5d_katawa_shoujo_${pkgver}-%5blinux-x86%5d%5b18161880%5d.tar.bz2"
         "${pkgname}"
