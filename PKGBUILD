@@ -2,7 +2,7 @@
 
 pkgbase=('python-picos-git')
 pkgname=('python-picos-git' 'python2-picos-git')
-pkgver=1.1.2.r110.ga27c1f8
+pkgver=1.1.3.r0.g9abcd64
 pkgrel=1
 pkgdesc='A Python interface to conic optimization solvers. Git version.'
 arch=('any')
