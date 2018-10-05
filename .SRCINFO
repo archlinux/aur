@@ -1,0 +1,26 @@
+pkgbase = python-nubia-git
+	pkgdesc = A framework for building beautiful shells.
+	pkgver = r6.5a659f1
+	pkgrel = 1
+	url = https://github.com/facebookincubator/python-nubia
+	arch = any
+	license = BSD
+	checkdepends = python-nose
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-pipenv
+	makedepends = python-wheel
+	depends = python
+	depends = python-termcolor
+	depends = python-levenshtein
+	depends = python-pyparsing
+	depends = python-prettytable
+	depends = python-prompt_toolkit
+	depends = python-pygments
+	provides = python-nubia
+	conflicts = python-nubia
+	source = git+https://github.com/facebookincubator/python-nubia.git
+	md5sums = SKIP
+
+pkgname = python-nubia-git
+
