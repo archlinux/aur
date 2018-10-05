@@ -10,7 +10,7 @@ pkgdesc='Relational Data Browse, Query Builder, SQL Editor, schema deployment an
 arch=('i686' 'x86_64')
 url='http://www.dbschema.com/'
 license=('custom')
-depends=('java-runtime')
+depends=(java-runtime java-openjfx)
 install="dbschema.install"
 source=("https://www.dbschema.com/download/DbSchema_unix_8_0_8.tar.gz"
         "dbschema"

@@ -8,6 +8,7 @@ pkgbase = dbschema
 	arch = x86_64
 	license = custom
 	depends = java-runtime
+	depends = java-openjfx
 	source = https://www.dbschema.com/download/DbSchema_unix_8_0_8.tar.gz
 	source = dbschema
 	source = dbschema.desktop
