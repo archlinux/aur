@@ -1,4 +1,4 @@
-image: "aisberg/arch-aur-makepkg"
+image: "imrehg/archlinux-makepkg"
 
 before_script:
 - pacman -Syu --noconfirm
