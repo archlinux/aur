@@ -1,7 +1,7 @@
 image: "imrehg/archlinux-makepkg"
 
 before_script:
-- pacman -Syu --noconfirm
+- sudo pacman -Syu --noconfirm
 
 package:
   script:
