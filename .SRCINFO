@@ -12,9 +12,7 @@ pkgbase = timemon.app
 	depends = gnustep-base
 	depends = gnustep-gui
 	source = http://savannah.nongnu.org/download/gap/TimeMon-4.2.tar.gz
-	source = TimeMon.desktop
 	sha256sums = 3204e7cc454db233cebb93bb7cc8ad56bf5754063ed7be1a765051615a04ec0f
-	sha256sums = d899dd9da09c11f5a3910b34c1db4df85ae91307e76b12b0e27037ec1ddef314
 
 pkgname = timemon.app
 
