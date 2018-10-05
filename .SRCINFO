@@ -1,0 +1,15 @@
+pkgbase = libaec-static
+	pkgdesc = Adaptive Entropy Coding library
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://gitlab.dkrz.de/k202009/libaec/
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	depends = glibc
+	options = staticlibs
+	source = https://gitlab.dkrz.de/k202009/libaec//uploads/b30adc1abf805d7454896ab83c900eb8/libaec-1.0.2.tar.gz
+	sha256sums = 024722866eb859bf926d6f9cb20edd3f26e80a1bdbea1889e9235d5eca3106d0
+
+pkgname = libaec-static
+
