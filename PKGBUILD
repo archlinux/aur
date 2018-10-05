@@ -1,15 +1,16 @@
-# Maintainer: Michael R. Shannon <mrshannon.aerospace@gmail.com>
+# Maintainer: Ariel Lieberman <rellieberman at gmail dot com>
+# Contributer: Michael R. Shannon <mrshannon.aerospace@gmail.com>
 
 ## This PKGBUILD installs dependencies, provides desktop icons, and patches a
 ## currently installed version MATLAB.  It should be installed after a manual
-## install of MATLAB and will find the location where MATLAB is installed as
+## install of MATLAB and will find the location where MATLAB is installed
 ## assuming the executable is on the PATH.  This package should not be used with
 ## the AUR matlab package by Daniel Shub and Ido Rosen.
 
 ## The version of this package will always match the MATLAB ## version numbers
 ## (of which you can find here
 ## https://en.wikipedia.org/wiki/MATLAB#Release_history) for which this package
-## is intended to support.  Please flag as our of date upon a new MATLAB
+## is intended to support.  Please flag as out of date upon a new MATLAB
 ## release.
 
 ## MATLAB is a commercial product with a paid license, this package does not
@@ -20,22 +21,33 @@
 ## guide when making this one.
 
 pkgname=matlab-support
-pkgver=9.2.0
-pkgrel=4
-pkgdesc='Provides dependencies and common fixes for MATLAB.'
+pkgver=9.5.0
+pkgrel=1
+pkgdesc='Provides dependencies desktop file and common fixes for MATLAB.'
 arch=('x86_64')
 url='http://www.mathworks.com'
 license=(custom)
-depends=('libx11'
-         'libxext'
-         'libxt'
-         'jre7-openjdk'
-         'libselinux')
-optdepends=('gcc49: For MEX support')
+depends=('gconf'
+         'glu'
+         #'gstreamer0.10-base'
+         'gtk2'
+         'libunwind'
+         'libxp'
+         'libxpm'
+         'libxtst'
+         #'ncurses5-compat-libs'
+         'nss'
+         'portaudio'
+         'python2'
+         'qt5-svg'
+         'qt5-webkit'
+         'qt5-websockets'
+         'qt5-x11extras'
+         'xerces-c')
+optdepends=('gcc6: For MEX support')
 makedepends=('gendesk')
 provides=('matlab')
 conflicts=('matlab')
-install=${pkgname}.install
 source=('https://upload.wikimedia.org/wikipedia/commons/2/21/Matlab_Logo.png')
 sha512sums=('ba72458379c89b22a27d1d7e357cefae4437fa28caac47b26ccd4f5b01b8cbc2c000baf38b5a52565f29b14e6da922bc3dc14bc5d47fa682fb6871422a59c397')
 
@@ -44,30 +56,13 @@ prepare() {
     gendesk -f -n --pkgname 'matlab' \
         --pkgdesc 'A high-level language for numerical computation and visualization.' \
         --categories 'Development;Education;science;Mathematics;IDE' \
-        --exec 'matlab -desktop -nosplash' \
+        --exec --exec 'env LD_PRELOAD=/usr/lib/libfreetype.so.6:/usr/lib/libstdc++.so.6 matlab -desktop' \
         --mimetypes 'text/x-matlab' \
         "${srcdir}/matlab.desktop" >/dev/null 
-
-    msg2 'Creating command line executable'
-    echo -e "#!/bin/sh\nmatlab -nodesktop -nosplash" > "${srcdir}/matlab-cli"
-
-    # If you never let MATLAB connect to the internet or run MATLAB on a server
-    # the Java version it includes should be fine but otherwise the outdated
-    # Java that ships with MATLAB is a security risk.
-    msg2 'Creating profile.d files'
-    echo -e "export MATLAB_JAVA=/usr/lib/jvm/java-7-openjdk/jre" > "${srcdir}/matlab.sh"
-    echo -e "setenv MATLAB_JAVA /usr/lib/jvm/java-7-openjdk/jre" > "${srcdir}/matlab.csh"
 }
 
 package() {
     msg2 'Installing desktop files'
     install -D -m644 "matlab.desktop" "${pkgdir}/usr/share/applications/matlab.desktop"
     install -D -m644 "Matlab_Logo.png" "${pkgdir}/usr/share/pixmaps/matlab.png"
-
-    msg2 'Installing command line executable'
-    install -D -m755 'matlab-cli' "${pkgdir}/usr/bin/matlab-cli"
-
-    msg2 'Installing profile.d files'
-    install -D -m644 'matlab.sh' "${pkgdir}/etc/profile.d/matlab.sh"
-    install -D -m644 'matlab.csh' "${pkgdir}/etc/profile.d/matlab.csh"
 }
