@@ -1,7 +1,7 @@
 pkgbase = libvlc
 	pkgdesc = The VLC library not bundled with VLC so one can use things depending on the lib without installing VLC
 	pkgver = 5.6.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.videolan.org/LibVLC/
 	arch = x86_64
 	license = LGPL2.1
