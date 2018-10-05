@@ -2,7 +2,7 @@
 
 pkgname=intel-gmmlib-git
 pkgver=18.3.r1.g859ed24
-pkgrel=1
+pkgrel=2
 pkgdesc='Intel Graphics Memory Management Library (git version)'
 arch=('i686' 'x86_64')
 url='https://github.com/intel/gmmlib/'
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('git' 'cmake')
 provides=('intel-gmmlib')
-conflicts=('intel-gmmlib')
+conflicts=('intel-gmmlib' 'gmmlib' 'gmmlib-git')
 replaces=('gmmlib-git')
 options=('!emptydirs')
 source=("$pkgname"::'git+https://github.com/intel/gmmlib.git')
