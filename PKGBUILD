@@ -1,7 +1,7 @@
 pkgname=ut2004-gog
 pkgver=1
 pkgrel=1
-pkgdesc="an easy way to launch and install ut2004 (GOG edition)"
+pkgdesc="Popular first person shooter, native Linux version, installing data files from Steam (requires you having had purchased the GOG version)."
 arch=('x86_64')
 url="https://github.com/tim241/ut2004-gog"
 
