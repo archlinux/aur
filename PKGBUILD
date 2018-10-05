@@ -1,9 +1,9 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=intel-media-driver-git
-pkgver=2018.3.pre2.r50.g0ed718d8
+pkgver=2018.3.pre3.r106.g9a64b5e4
 pkgrel=1
-pkgdesc='Intel Media Driver for VAAPI (git version)'
+pkgdesc='Intel Media Driver for VAAPI — Broadwell+ iGPUs (git version)'
 arch=('x86_64')
 url='https://github.com/intel/media-driver/'
 license=('MIT' 'BSD')
@@ -11,13 +11,11 @@ depends=(
     # official repositories:
         'gcc-libs' 'libpciaccess'
     # AUR:
-        'gmmlib-git' 'libva-git'
+        'intel-gmmlib-git' 'libva-git'
 )
 makedepends=('git' 'cmake')
 provides=('intel-media-driver')
 conflicts=('intel-media-driver')
-backup=('etc/profile.d/intel-media.sh')
-install="${pkgname}.install"
 source=("$pkgname"::'git+https://github.com/intel/media-driver.git')
 sha256sums=('SKIP')
 
@@ -25,8 +23,7 @@ pkgver() {
     cd "$pkgname"
     
     # git, tags available
-    local _prefix='intel-media-'
-    git describe --long --tags | sed "s/^${_prefix}//;s/\([^-]*-g\)/r\1/;s/-/./g;s/^v//;s/^18\./2018./"
+    git describe --long --tags | sed 's/^intel-media-//;s/^[0-9]\{2\}/20&/;s/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
@@ -36,7 +33,7 @@ build() {
     cmake \
         -DCMAKE_INSTALL_LIBDIR:PATH='lib' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-        -DCMAKE_INSTALL_SYSCONFDIR:PATH='etc' \
+        -DINSTALL_DRIVER_SYSCONF:BOOL='OFF' \
         -Wno-dev \
         ../"$pkgname"
         
@@ -47,11 +44,6 @@ package() {
     cd build
     
     make DESTDIR="$pkgdir" install
-    
-    # do not force the use of 'iHD' libva driver by default (let user choose)
-    local _info='# uncomment the LIBVA_DRIVER_NAME line to use the Intel Media Driver (iHD) for VAAPI'
-    sed -i "2i${_info}" "${pkgdir}/etc/profile.d/intel-media.sh"
-    sed -i '/^export[[:space:]]LIBVA_DRIVER_NAME/s/^/#/' "${pkgdir}/etc/profile.d/intel-media.sh"
     
     # license
     cd "${srcdir}/${pkgname}"
