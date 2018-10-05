@@ -1,6 +1,6 @@
 pkgbase = libstropt-git
 	pkgdesc = Parse options from a string (supports quotation, option arguments, no malloc needed for parsing)
-	pkgver = r106.1736d89
+	pkgver = r2.25f5394
 	pkgrel = 1
 	url = https://github.com/rd235/libstropt
 	arch = any
