@@ -2,7 +2,7 @@
 
 pkgname=antibody-bin
 pkgver=3.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Antibody is a shell plugin manager made from the ground up thinking about performance"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 conflicts=('antibody')
