@@ -9,8 +9,8 @@ arch=('i686' 'x86_64')
 url='http://gap.nongnu.org/cynthiune/index.html'
 license=('GPL')
 groups=('gnustep-apps')
-depends=('gnustep-base' 'gnustep-gui' 'gnustep-back' 'libmad')
-optdepends=('libid3tag' 'libmad' 'libvorbis' 'libogg' 'libmpcdec' 'esound')
+depends=('gnustep-base' 'gnustep-gui' 'gnustep-back' 'libmad' 'pulseaudio-alsa')
+optdepends=('libid3tag' 'libvorbis' 'libogg' 'libmpcdec' 'esound')
 makedepends=('gcc-objc' 'gnustep-make')
 source=("http://savannah.nongnu.org/download/gap/Cynthiune-1.0.0.tar.gz"
         "http://http.debian.net/debian/pool/main/c/cynthiune.app/cynthiune.app_1.0.0-2.debian.tar.xz")
