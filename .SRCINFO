@@ -1,0 +1,21 @@
+pkgbase = thundersvm-git
+	pkgdesc = A fast SVM library on GPUs and CPUs
+	pkgver = r779.5f66a3e
+	pkgrel = 1
+	url = https://github.com/Xtra-Computing/thundersvm
+	arch = x86_64
+	license = APL
+	makedepends = git
+	makedepends = cmake
+	makedepends = eigen
+	makedepends = cuda
+	makedepends = gtest
+	makedepends = gcc7
+	depends = cuda
+	provides = thundersvm
+	conflicts = thundersvm
+	source = thundersvm::git+https://github.com/hubutui/thundersvm.git
+	md5sums = SKIP
+
+pkgname = thundersvm-git
+
