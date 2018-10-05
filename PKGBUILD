@@ -1,7 +1,7 @@
 # Maintainer : Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=ndi-sdk
-pkgver=3.20180920.r97013
+pkgver=3.20181005.r97672
 pkgrel=1
 pkgdesc='NewTek NDI SDK'
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ options=('!strip')
 _srcfile="InstallNDISDK_v${pkgver}_Linux.sh"
 source=("$_srcfile"::"http://514f211588de67e4fdcf-437b8dd50f60b69cf0974b538e50585b.r63.cf1.rackcdn.com/Utilities/SDK/NDI_SDK_Linux_v2/InstallNDISDK_v${pkgver%%.*}_Linux.sh")
 noextract=("$_srcfile")
-sha256sums=('07dcd9772581821ea5b8063e7d5cca5631ce36294ea4b9abad52c40858768b02')
+sha256sums=('f4669d40724af4de2cfe5d0054e8feed5a1c7c308a5266c3280e946daaa38294')
 
 prepare() {
     ! [ -d "${pkgname}-${pkgver}" ] && mkdir -p "${pkgname}-${pkgver}"
