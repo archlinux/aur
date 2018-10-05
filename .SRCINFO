@@ -1,7 +1,7 @@
 pkgbase = matlab-support
 	pkgdesc = Provides dependencies desktop file and common fixes for MATLAB.
 	pkgver = 9.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.mathworks.com
 	arch = x86_64
 	license = custom
@@ -22,6 +22,7 @@ pkgbase = matlab-support
 	depends = qt5-x11extras
 	depends = xerces-c
 	optdepends = gcc6: For MEX support
+	optdepends = libselinux: for Addon manager support
 	provides = matlab
 	conflicts = matlab
 	source = https://upload.wikimedia.org/wikipedia/commons/2/21/Matlab_Logo.png
