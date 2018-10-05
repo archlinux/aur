@@ -1,0 +1,16 @@
+pkgbase = sn0int-registry
+	pkgdesc = sn0int registry
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/kpcyrd/sn0int
+	arch = i686
+	arch = x86_64
+	license = GPL-3
+	makedepends = rustup
+	depends = curl
+	depends = postgresql-libs
+	source = https://github.com/kpcyrd/sn0int/archive/v0.1.0/sn0int-0.1.0.tar.gz
+	sha256sums = 73e81ab111d3c269bc94803da75c5dea7c9e613d584995352e1b8eabc9a372c6
+
+pkgname = sn0int-registry
+
