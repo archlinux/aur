@@ -5,8 +5,8 @@ pkgbase = libvlc
 	url = https://www.videolan.org/LibVLC/
 	arch = x86_64
 	license = LGPL2.1
-	source = https://mex.mirror.pkgbuild.com/extra/os/x86_64/vlc-3.0.3-1-x86_64.pkg.tar.xz
-	md5sums = 9eb50cd8df1341a3a6dbcc2480afc31e
+	source = https://archive.archlinux.org/packages/v/vlc/vlc-3.0.4-4-x86_64.pkg.tar.xz
+	md5sums = db8e24f6792a9e30f85a11e1e6c115f0
 
 pkgname = libvlc
 	depends = libvlccore
