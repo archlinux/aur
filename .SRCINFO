@@ -1,6 +1,6 @@
 pkgbase = libyder
 	pkgdesc = Logging library for C applications
-	pkgver = 1.3.3
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://github.com/babelouest/yder
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = libyder
 	makedepends = git
 	makedepends = cmake
 	depends = liborcania
-	source = yder-1.3.3.tar.gz::https://github.com/babelouest/yder/archive/v1.3.3.tar.gz
-	sha256sums = 1ec13779121bf7ca030be317c0561234cc455bf1a8fef0300e08eef5f95b3324
+	source = yder-1.4.2.tar.gz::https://github.com/babelouest/yder/archive/v1.4.2.tar.gz
+	sha256sums = 302bcd1bec2f9cb14d69c6af412b4d5be88f35d07a81a477ea8b73086699afcc
 
 pkgname = libyder
 

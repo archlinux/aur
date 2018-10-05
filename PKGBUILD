@@ -2,7 +2,7 @@
 
 pkgname=libyder
 _gitname=yder
-pkgver=1.3.3
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Logging library for C applications"
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=(GPL)
 depends=('liborcania')
 makedepends=(git cmake)
 source=("${_gitname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=("1ec13779121bf7ca030be317c0561234cc455bf1a8fef0300e08eef5f95b3324")
+sha256sums=("302bcd1bec2f9cb14d69c6af412b4d5be88f35d07a81a477ea8b73086699afcc")
 
 prepare() {
     cd "${srcdir}/${_gitname}-${pkgver}"
