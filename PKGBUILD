@@ -9,8 +9,8 @@ url="http://www.openbsd.org/cgi-bin/cvsweb/src/usr.bin/calendar"
 arch=('x86_64')
 license=('BSD')
 makedepends=("cvs" "openssh")
-source=("calendar.latvia::git+https://github.com/ugjka/calendar.latvia.git"
-        "debian.tar.gz::http://ftp.debian.org/debian/pool/main/b/bsdmainutils/bsdmainutils_9.0.14.tar.gz"
+source=("git+https://github.com/ugjka/calendar.latvia.git"
+        "${pkgname}-${pkgverbase}-debian.tar.gz::http://ftp.debian.org/debian/pool/main/b/bsdmainutils/bsdmainutils_9.0.14.tar.gz"
         "calendar-1.35-linux.patch"
         "Makefile.linux"
         "LICENSE")
@@ -22,7 +22,7 @@ sha256sums=('SKIP'
 TAG="OPENBSD_${pkgverbase/./_}"
 
 pkgver(){
-    cd "${SRCDEST}"/${pkgname}
+    cd "${SRCDEST}"/${pkgname}-${pkgverbase}
     date=$(cvs -q log -l | awk '/date:/ { gsub("/",""); if ($2 > n) n = $2;} END { print n; }')
     echo "${pkgverbase}_${date}"
 }
@@ -32,11 +32,11 @@ prepare() {
     
     CVS_RSH=ssh ; export CVS_RSH
     cvs -d anoncvs@obsdacvs.cs.toronto.edu:/cvs co \
-    -d ${pkgname} -r ${TAG} src/usr.bin/${pkgname}
+    -d ${pkgname}-${pkgverbase} -r ${TAG} src/usr.bin/${pkgname}
     
-    cp -a ${pkgname} "${srcdir}" 
+    cp -a ${pkgname}-${pkgverbase} "${srcdir}" 
     
-    cd "${srcdir}"/${pkgname}
+    cd "${srcdir}"/${pkgname}-${pkgverbase}
     
     patch -p1 < ../calendar-1.35-linux.patch
     sed -i 's|/usr/libexec/tradcpp|/usr/bin/cpp|' pathnames.h
@@ -61,12 +61,12 @@ prepare() {
 }
 
 build() {
-    cd ${pkgname}
+    cd ${pkgname}-${pkgverbase}
     make
 }
 
 package() {
-    cd ${pkgname}
+    cd ${pkgname}-${pkgverbase}
     make DESTDIR="${pkgdir}" install
     install -Dm644 ../LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
