@@ -2,12 +2,12 @@
 # Contributor: Hunter Jones <hjones2199 at gmail dot com>
 # Maintainer: Thomas Bork <tab dot epic at gmail dot com>
 pkgname=worldpainter
-pkgver=2.5.1
+pkgver=2.5.7
 pkgrel=1
 pkgdesc='An interactive map generator for Minecraft'
 
 url='http://www.worldpainter.net/'
-arch=('any')
+arch=('x86_64')
 license=('GPL')
 
 depends=('java-environment' 'sh' 'lib32-libxi')
@@ -17,7 +17,7 @@ source=("http://www.worldpainter.net/files/${pkgname}_${pkgver}.tar.gz"
 		'worldpainter.png'
 		'worldpainter.desktop'
 		'launch-script')
-sha256sums=('6e8f250f7c1d966923bff3ff841cddd723179fc0d5b074ccbe0f7373dc012176'
+sha256sums=('3eda67a56dc51346f5e249c88d931c76302ec47a324118db4e977ccb897aa6b2'
             'a93cd4af0e8ef470f48a8dd2773fb9d83a5302f1b9bfba67f43b4ec7500a039e'
             '669f78518b75b441f4382cfd14e207dd91ee1dc967383db1771ec202dbb07cb4'
             'fd64d11450f03c8924cbc133a009b3373bc5f80b2589b63391b65db04d82963f')
