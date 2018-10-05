@@ -10,7 +10,7 @@ pkgdesc="A simple script to switch tasks using \"super + 1\" number keys, the sa
 arch=(any)
 url="https://github.com/Lee182/budgie-launcher-super"
 license=('MIT')
-depends=('nodejs>=10.10.0' 'dconf' 'wmctrl' 'xdotool' 'gtk-launch')
+depends=('nodejs>=10.10.0' 'dconf' 'wmctrl' 'xdotool')
 optdepends=()
 noextract=($_npmname-$_npmver.tgz)
 

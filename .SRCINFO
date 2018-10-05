@@ -9,7 +9,6 @@ pkgbase = nodejs-budgie-launcher-super
 	depends = dconf
 	depends = wmctrl
 	depends = xdotool
-	depends = gtk-launch
 	noextract = budgie-launcher-super-1.1.11.tgz
 
 pkgname = nodejs-budgie-launcher-super
