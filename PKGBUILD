@@ -1,7 +1,7 @@
 # Maintainer: Bleuzen <supgesu at gmail dot com>
 
 pkgname=proaudio-meta
-pkgver=2018.09.02
+pkgver=2018.10.05
 pkgrel=1
 pkgdesc="Metapackage for most useful audio production software"
 arch=("x86_64")
@@ -17,6 +17,7 @@ depends=("jack2-dbus"
          "jack_capture"
          "ardour"
          "lmms"
+         "pulseeffects"
          "helm"
          "drumkv1"
          "padthv1"
@@ -29,5 +30,6 @@ depends=("jack2-dbus"
          "caps"
          "tap-plugins"
          "zam-plugins"
+         "mda.lv2"
          "noise-repellent"
          "guitarix2")

@@ -1,6 +1,6 @@
 pkgbase = proaudio-meta
 	pkgdesc = Metapackage for most useful audio production software
-	pkgver = 2018.09.02
+	pkgver = 2018.10.05
 	pkgrel = 1
 	url = https://github.com/Bleuzen/archlinux-packages
 	install = proaudio-meta.install
@@ -15,6 +15,7 @@ pkgbase = proaudio-meta
 	depends = jack_capture
 	depends = ardour
 	depends = lmms
+	depends = pulseeffects
 	depends = helm
 	depends = drumkv1
 	depends = padthv1
@@ -27,6 +28,7 @@ pkgbase = proaudio-meta
 	depends = caps
 	depends = tap-plugins
 	depends = zam-plugins
+	depends = mda.lv2
 	depends = noise-repellent
 	depends = guitarix2
 
