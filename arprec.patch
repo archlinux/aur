@@ -1,9 +1,0 @@
---- a/arprec-2.2.18/src/write.cpp
-+++ b/arprec-2.2.18/src/write.cpp
-@@ -196,6 +196,6 @@ bool mp_real::write(ostream &s, int precision, int width, int expn_width,
- 
-   string str = to_string(precision, width, expn_width, 
-       fmt, showpos, uppercase, fill);
--  return (s << str) != 0;
-+  return static_cast<bool>(s << str);
- }

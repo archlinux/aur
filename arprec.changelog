@@ -1,3 +1,6 @@
+Changes for 2.2.19
+  - Updated with a fix to write.cpp.
+
 Changes for 2.2.18
   - Updated with changes for Intel compiler v15-16.
 
