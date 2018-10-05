@@ -1,8 +1,7 @@
 pkgbase = xxgdb
 	pkgdesc = A simple but powerful graphical interface to gdb
 	pkgver = 1.12
-	pkgrel = 2
-	url = ftp://ftp.x.org/contrib/utilities/
+	pkgrel = 3
 	arch = i686
 	arch = x86_64
 	license = MIT
