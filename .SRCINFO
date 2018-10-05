@@ -8,6 +8,7 @@ pkgbase = vdeplug4-git
 	license = GPL2
 	depends = s2argv-execs
 	provides = vdeplug4
+	conflicts = vde2
 	source = git+https://github.com/rd235/vdeplug4.git
 	md5sums = SKIP
 

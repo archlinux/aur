@@ -12,7 +12,7 @@ license=('GPL2')
 groups=("view-os")
 depends=('s2argv-execs')
 provides=("$_pkgname")
-#~ conflicts=("$_pkgname" 'vde2')
+conflicts=('vde2')
 source=("git+$url.git")
 md5sums=('SKIP')
 
