@@ -1,11 +1,11 @@
 # Maintainer: Amish <contact at via dot aur>
 pkgname=xtables-geoip-db
 pkgver=0.1
-pkgrel=8
+pkgrel=9
 pkgdesc="GeoIP Database for xtables."
 arch=('any')
 license=('BSD' 'GPL')
-url="http://geolite.maxmind.com/download/geoip/database/"
+url="https://dev.maxmind.com/geoip/geoip2/geolite2/"
 depends=('xtables-addons-dkms')
 makedepends=('perl-text-csv-xs' 'perl-net-cidr-lite')
 

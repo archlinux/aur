@@ -1,8 +1,8 @@
 pkgbase = xtables-geoip-db
 	pkgdesc = GeoIP Database for xtables.
 	pkgver = 0.1
-	pkgrel = 8
-	url = http://geolite.maxmind.com/download/geoip/database/
+	pkgrel = 9
+	url = https://dev.maxmind.com/geoip/geoip2/geolite2/
 	arch = any
 	license = BSD
 	license = GPL
