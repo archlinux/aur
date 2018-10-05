@@ -1,6 +1,6 @@
 pkgbase = usbguard-git
 	pkgdesc = USBGuard is a software framework for implementing USB device authorization policies
-	pkgver = 0.7.4.r9.g543537e
+	pkgver = 0.7.4.r39.gbd23790
 	pkgrel = 1
 	url = https://github.com/dkopecek/usbguard
 	arch = i686
