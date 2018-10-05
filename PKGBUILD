@@ -32,4 +32,5 @@ package() {
 
   # Unpack, flag as executable and move to the right directory
   install -Dm755 "antibody" "$pkgdir/usr/bin/antibody"
+  install -Dm644 "LICENSE.md" "$pkgdir/usr/share/licenses/antibody/LICENSE"
 }
