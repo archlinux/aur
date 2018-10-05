@@ -1,26 +1,21 @@
-# Maintainer: Alex Branham <branham@utexas.edu>
-_cranname=mime
-_cranver=0.5
-_pkgtar=${_cranname}_${_cranver}.tar.gz
+# Maintainer: Alex Branham <alex.branham@gmail.com>
+_cranver=0.6
 pkgname=r-mime
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc="Map Filenames to MIME Types"
+pkgdesc='Map Filenames to MIME Types'
 arch=('x86_64')
-url="https://cran.r-project.org/package=${_cranname}"
+url='https://cran.r-project.org/package=mime'
 license=('GPL')
 depends=('r' )
-
-
-
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('87e00b6d57b581465c19ae869a723c4d')
+source=("https://cran.r-project.org/src/contrib/mime_"$_cranver".tar.gz")
+md5sums=('a033d88ac9bc733868d145fdc44f8c96')
 
 build(){
-    R CMD INSTALL ${_pkgtar} -l $srcdir
+    R CMD INSTALL mime_"$_cranver".tar.gz -l "$srcdir"
 }
 package() {
-    install -d "$pkgdir/usr/lib/R/library"
-    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
+    install -dm0755 "$pkgdir"/usr/lib/R/library
+    cp -a --no-preserve=ownership mime "$pkgdir"/usr/lib/R/library
 }
 
