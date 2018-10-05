@@ -3,19 +3,19 @@
 # Contributor: Jon Gjengset <jon@tsp.io>
 
 pkgname=gnuplot-git
-pkgver=5.3r20180504.10411
+pkgver=5.3r20181003.10584
 pkgrel=1
 pkgdesc="A command-line driven interactive function and data plotting utility -- inofficial github fork"
 arch=('i686' 'x86_64')
 url="https://github.com/gnuplot/gnuplot"
 license=('custom')
 depends=('gd' 'lua' 'qt5-svg' 'pango')
-makedepends=('git' 'emacs' 'texlive-core' 'texlive-latexextra' 'qt5-tools')
+makedepends=('git' 'qt5-tools')
 provides=('gnuplot=5.3')
 conflicts=('gnuplot')
 source=('git+https://git.code.sf.net/p/gnuplot/gnuplot-main' lua53_compat.patch)
-md5sums=('SKIP'
-         'c84be2980e0d90037f20a5cf18f9868a')
+sha256sums=('SKIP'
+            'bfd8a61abbf4491c74225cb9fd252619d4fc29751838bcb4c0639ffe05a00695')
 options=('!makeflags')
 _gitname="gnuplot-main"
 
@@ -50,8 +50,6 @@ build() {
 	  --with-qt=qt5 
 	  
   make pkglibexecdir=/usr/bin
-  cd docs
-  make info
 }
 
 package() {
@@ -59,6 +57,4 @@ package() {
   make DESTDIR="$pkgdir" install
 
   install -Dm644 Copyright "$pkgdir"/usr/share/licenses/$pkgname/Copyright
-  rm -f "$pkgdir"/usr/share/texmf-dist/ls-R
-  install -Dm644 docs/gnuplot.info "$pkgdir"/usr/share/info/gnuplot.info
 }
