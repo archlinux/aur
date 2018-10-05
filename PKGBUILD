@@ -1,7 +1,7 @@
 # Maintainer: ibrokemypie <ibrokemypie@bastardi.net>
 pkgname=makeppkg
 _pkgname=makeppkg
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 makedepends=('rust' 'cargo' 'gcc-libs')
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ pkgdesc="wrapper for Arch Linux's makepkg, patches source before packages are bu
 url="https://github.com/ibrokemypie/makeppkg"
 license=('Apache-2.0')
 source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$_pkgname/$pkgver/download")
-sha256sums=('61518d1eb49edf3323d0f3aad931b4d81db70e6d7fc333ee260e1df0bb8108a9')
+sha256sums=('d321622c669dde2e96cadfef81eed36343c0468699a102ca242a4a83423c11e6')
 
 build() {
   cd "$_pkgname-$pkgver"
