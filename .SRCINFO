@@ -1,7 +1,7 @@
 pkgbase = python-pretty_bad_protocol
 	pkgdesc = Another Python 3 wrapper for GnuPG
 	pkgver = 3.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/isislovecruft/python-gnupg
 	arch = any
 	license = GPL3
