@@ -9,7 +9,7 @@ void ref_cache_file_path_init(void) {
     char* path = malloc(strlen(home) + 32);
     pointer_alloc_check(path);
     sprintf(path, "%s/.tick_ref_cache.json", home);
-    ref_cache_file_path = path;
+    ref_cache_file_path = path; // $HOME/.tick_ref_cache.json
 }
 
 Ref_Data* ref_data_init_length(size_t length) {
@@ -375,39 +375,33 @@ void api_store_info_array(Info_Array* pInfo_Array, Data_Level data_level) {
         pInfo = pInfo_Array->array[i];
         if (pInfo->api_provider == EMPTY && !streq(pInfo->symbol, "USD$")) {
             open_threads[i] = 1;
-            if (strlen(pInfo->symbol) > 5 && pthread_create(&threads[i], NULL,
-                                                            api_coinmarketcap_store_info, pInfo)) { // Crypto
+            if (pthread_create(&threads[i], NULL, api_coinmarketcap_store_info, pInfo)) // Crypto
                 EXIT_MSG("Error creating thread!");
-            } else if (pthread_create(&threads[i], NULL, api_alphavantage_store_info, pInfo)) {
-                EXIT_MSG("Error creating thread!");
-            }
         }
     }
 
-    // All IEX and AV are accounted for
+    // All IEX and CMC are accounted for
     for (size_t i = 0; i < pInfo_Array->length; i++) {
         pInfo = pInfo_Array->array[i];
-        if (open_threads[i]) {
+        if (open_threads[i]) { // Join all open threads
             if (pthread_join(threads[i], NULL))
                 EXIT_MSG("Error joining thread!");
 
             open_threads[i] = 0;
         }
 
-        // Crypto with 5 char or less name
-        if (pInfo->api_provider == EMPTY && !streq(pInfo->symbol, "USD$") &&
-                pthread_create(&threads[i], NULL, api_coinmarketcap_store_info, pInfo))
-            EXIT_MSG("Error creating thread!");
+        if (pInfo->api_provider == EMPTY && !streq(pInfo->symbol, "USD$")) {
+            open_threads[i] = 1;
+            if (pthread_create(&threads[i], NULL, api_alphavantage_store_info, pInfo))
+                EXIT_MSG("Error creating thread!");
+        }
     }
 
     // All accounted for
     for (size_t i = 0; i < pInfo_Array->length; i++) {
-        if (open_threads[i]) {
-            if (pthread_join(threads[i], NULL))
-                EXIT_MSG("Error joining thread!");
+        if (open_threads[i] && pthread_join(threads[i], NULL))
+            EXIT_MSG("Error joining thread!");
 
-            open_threads[i] = 0;
-        }
         info_store_portfolio_data(pInfo_Array->array[i]);
     }
     info_array_store_totals(pInfo_Array);
@@ -415,9 +409,8 @@ void api_store_info_array(Info_Array* pInfo_Array, Data_Level data_level) {
 
 void api_store_info(Info* pInfo, Data_Level data_level) {
     api_iex_store_info(pInfo, data_level);
-    if (data_level == DATA_LEVEL_NEWS || (pInfo->api_provider == EMPTY &&
-            api_alphavantage_store_info(pInfo) == NULL &&
-            api_coinmarketcap_store_info(pInfo) == NULL))
+    if (pInfo->api_provider == EMPTY && api_coinmarketcap_store_info(pInfo) == NULL &&
+        api_alphavantage_store_info(pInfo) == NULL)
         return;
 
     info_store_portfolio_data(pInfo);
