@@ -1,7 +1,7 @@
 pkgbase = urssus
 	pkgdesc = Multiplatform PyQt-based RSS news aggregator
 	pkgver = 0.2.13
-	pkgrel = 13
+	pkgrel = 14
 	url = http://urssus.googlecode.com/
 	install = urssus.install
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = urssus
 	depends = python2-processing
 	depends = python2-pyqt
 	depends = python2-simplejson
-	source = http://pypi.python.org/packages/source/u/uRSSus/uRSSus-0.2.13.tar.gz
+	source = https://pypi.python.org/packages/source/u/uRSSus/uRSSus-0.2.13.tar.gz
 	md5sums = 43c49f800c67d5898cea70dc146ca1f7
 
 pkgname = urssus
