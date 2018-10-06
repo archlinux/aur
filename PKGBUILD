@@ -7,7 +7,7 @@ pkgbase=systemd-git
 _pkgbase=systemd
 pkgname=('systemd-git' 'libsystemd-git' 'systemd-resolvconf-git' 'systemd-sysvcompat-git')
 pkgdesc="systemd (git version)"
-pkgver=239.1099
+pkgver=239.1142
 pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
@@ -112,10 +112,9 @@ build() {
   ninja -C build
 }
 
-#check() {
-#  cd build
-#  meson test
-#}
+# check() {
+#   meson test -C build
+# }
 
 package_systemd-git() {
   pkgdesc="system and service manager (git version)"
