@@ -3,7 +3,7 @@
 
 pkgname=jlink-software-and-documentation
 pkgver=6.34g
-pkgrel=0
+pkgrel=1
 epoch=13
 pkgdesc="Segger JLink software & documentation pack for Linux"
 arch=('i686' 'x86_64')
@@ -39,7 +39,7 @@ package(){
             "${pkgdir}/etc/udev/rules.d/" \
             "${pkgdir}/usr/share/doc/${pkgname}/"
 
-    cd ${srcdir}/JLink
+    cd "${srcdir}/JLink"
 
     # Bulk copy everything
     cp --preserve=mode -r J* Doc Samples Devices README.txt GDBServer lib* "${pkgdir}/opt/SEGGER/JLink"
