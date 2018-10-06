@@ -1,0 +1,14 @@
+post_install() {
+    systemd-sysusers elasticsearch5.conf
+    systemd-tmpfiles --create elasticsearch5.conf
+}
+
+post_upgrade(){
+    systemd-tmpfiles --create elasticsearch5.conf
+
+    if [ "$(vercmp "$2" 5.0.0)" -lt 0 ]; then
+        echo " >> "
+        echo " >> Major version update. Please take a look at breaking changes https://www.elastic.co/guide/en/elasticsearch/reference/5.0/breaking-changes-5.0.html and remove incompatible plugins from /usr/share/elasticsearch5/plugins"
+        echo " >> "
+    fi
+}

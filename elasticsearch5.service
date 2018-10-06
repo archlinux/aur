@@ -6,20 +6,20 @@ After=network.target
 
 [Service]
 Type=forking
-RuntimeDirectory=elasticsearch
-PIDFile=/run/elasticsearch/%I.pid
+RuntimeDirectory=elasticsearch5
+PIDFile=/run/elasticsearch5/elasticsearch.pid
 
 Environment=JAVA_HOME=/usr/lib/jvm/default-runtime
-Environment=CONF_DIR=/etc/elasticsearch/%I
-EnvironmentFile=-/etc/default/elasticsearch
+Environment=CONF_DIR=/etc/elasticsearch5
+EnvironmentFile=-/etc/default/elasticsearch5
 
-WorkingDirectory=/usr/share/elasticsearch
+WorkingDirectory=/usr/share/elasticsearch5
 
 User=elasticsearch
 Group=elasticsearch
 
-ExecStart=/usr/bin/elasticsearch -d \
-            -p /run/elasticsearch/%I.pid \
+ExecStart=/usr/bin/elasticsearch5 -d \
+            -p /run/elasticsearch5/elasticsearch.pid \
             -E path.conf=${CONF_DIR}
 
 LimitNOFILE=65536
