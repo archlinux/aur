@@ -3,7 +3,7 @@
 # Contributor: Taylor Venable <taylor@metasyntax.net>
 
 pkgname="ocaml-utop"
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='A toplevel for OCaml that supports completion, colors, and parenthesis matching'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('ocaml' 'ocaml-findlib' 'ocaml-lambda-term' 'ocaml-lwt' 'ocaml-camomile
 makedepends=('dune' 'cppo')
 options=('!strip')
 source=("https://github.com/diml/utop/releases/download/${pkgver}/utop-${pkgver}.tbz")
-md5sums=('6c63a321379069a1b9ecb7899f80087b')
+sha512sums=('edacbd475c452de08e8d7c1697d0b624acc2f4854c200853664e1818ab9f9c26a3edc1c4d0a3b39bfc6f6be31440de6d45db8d342868a61fe36c4cbe4c7b5dab')
 
 build() {
   cd "${srcdir}/utop-${pkgver}"
