@@ -5,7 +5,7 @@ pkgdesc="Popular first person shooter, native Linux version. (GOG version)"
 arch=('x86_64')
 url="https://github.com/tim241/ut2004-gog"
 
-depends=('bash' 'awk' 'sed' 'curl' 'wine' 'winetricks')
+depends=('bash' 'awk' 'sed' 'curl' 'wine' 'winetricks' 'libstdc++5' 'coreutils')
 
 source=("git+https://github.com/tim241/${pkgname}.git")
 

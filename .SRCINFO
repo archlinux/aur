@@ -10,6 +10,8 @@ pkgbase = ut2004-gog
 	depends = curl
 	depends = wine
 	depends = winetricks
+	depends = libstdc++5
+	depends = coreutils
 	source = git+https://github.com/tim241/ut2004-gog.git
 	sha256sums = SKIP
 
