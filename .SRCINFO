@@ -8,7 +8,7 @@ pkgbase = unity-editor-doc
 	depends = unity-editor
 	options = !strip
 	source = https://docs.unity3d.com/2018.2/Documentation/uploads/UnityDocumentation.zip
-	sha1sums = 7005aa2ecc933a7cbccd4477837f7755bf37d045
+	sha1sums = 29489ba7699ca4f9f9c617d81f82f4fd38d54891
 
 pkgname = unity-editor-doc
 
