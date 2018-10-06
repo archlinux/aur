@@ -1,7 +1,7 @@
 pkgbase = curv-git
 	pkgdesc = a language for making art using mathematics
-	pkgver = 0.3.r43.g7d922f3
-	pkgrel = 3
+	pkgver = 0.3.r50.g1bb201b
+	pkgrel = 1
 	url = https://github.com/doug-moen/curv
 	arch = x86_64
 	license = Apache
@@ -15,9 +15,7 @@ pkgbase = curv-git
 	depends = ilmbase
 	depends = intel-tbb
 	source = git+https://github.com/doug-moen/curv
-	source = remove_lang_file.patch
 	md5sums = SKIP
-	md5sums = 6fd7fe6e81988bd9cd23d85ac920dc3c
 
 pkgname = curv-git
 
