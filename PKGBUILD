@@ -74,8 +74,6 @@ build() {
     --with-netfilter-conntrack \
     --with-openssl=/usr/include/openssl \
     --enable-snmp \
-#    --enable-xmalloc-statistics \
-    --enable-inline \
     --enable-linux-netfilter \
     --enable-ident-lookups \
     --enable-useragent-log \
