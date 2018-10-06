@@ -3,27 +3,27 @@
 # Contributor: Taylor Venable <taylor@metasyntax.net>
 
 pkgname=ocaml-re
-pkgver=1.7.3
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Pure OCaml regular expressions, with support for Perl and POSIX-style strings"
 arch=('i686' 'x86_64')
 url="https://github.com/ocaml/ocaml-re"
 license=('custom:LGPL2.1 with linking exception')
-depends=('ocaml')
+depends=('ocaml' 'ocaml-seq')
 makedepends=('dune')
 options=('!strip')
-source=("https://github.com/ocaml/ocaml-re/archive/${pkgver}.tar.gz")
-sha256sums=('ea55060a1c556e3ceea4837af534567b09b7f15656281dadf8911aad6712f6c5')
+source=("https://github.com/ocaml/ocaml-re/releases/download/${pkgver}/re-${pkgver}.tbz")
+sha512sums=('368c43d115b45c80c72770d2a61952f2614f4e4d1fc2a6b63691edda58b3eceac12f69f437b326cdf91b20ee62ce0e25ed3e89909e9e3c79ab56640691772085')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/re-${pkgver}"
 
   jbuilder build
 }
 
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/re-${pkgver}"
 
   install -dm755 "${pkgdir}$(ocamlfind -printconf destdir)" "${pkgdir}/usr/share"
   jbuilder install --prefix "${pkgdir}/usr" --libdir "${pkgdir}$(ocamlfind -printconf destdir)"
