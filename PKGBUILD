@@ -1,8 +1,8 @@
 # Maintainer: Mckol <mckol363@gmail.com>
 
 pkgname=veloren-git 
-pkgver=0.1.0.r192.a1bd916
-pkgrel=2
+pkgver=0.1.0.r259.37af884
+pkgrel=1
 pkgdesc="An open-world, open-source multiplayer voxel RPG"
 arch=('x86_64' 'i686')
 url="https://veloren.net/"
@@ -16,7 +16,7 @@ provides=("$pkgname")
 conflicts=("$pkgname")
 source=(
     "$pkgname::git+https://gitlab.com/veloren/game.git"
-    "assets::git+https://gitlab.com/veloren/assets/legacy_assets.git"
+    "assets::git+https://gitlab.com/veloren/assets/voxygen.git"
     "veloren-voxygen"
 )
 noextract=("veloren-voxygen")
