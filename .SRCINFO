@@ -1,20 +1,20 @@
 pkgbase = calf-ladspa
-	pkgdesc = JACK audio plug-ins for musicians (Legacy LADSPA+RDF version)
-	pkgver = 0.0.19kx
-	pkgrel = 2
-	url = http://calf-studio-gear.org/
+	pkgdesc = JACK audio plug-ins for musicians (LADSPA lmms fork)
+	pkgver = 0.0.90
+	pkgrel = 1
+	url = https://github.com/LMMS/veal
 	arch = i686
 	arch = x86_64
 	license = LGPL
 	makedepends = ladspa
-	depends = fftw
-	depends = fluidsynth
-	provides = calf
-	conflicts = calf
-	source = http://urchlay.naptime.net/~urchlay/src/calf-0.0.19kx.tar.gz
-	source = calf-0.0.19kx-gcc6.patch
-	md5sums = ba2147ddc53022ddf1ffdf28c3340a57
-	md5sums = 66155856ccc4e0358d3bdf703ec0e414
+	makedepends = cmake
+	noextract = ladspa.zip
+	source = https://github.com/LMMS/veal/archive/ladspa.zip
+	source = https://raw.githubusercontent.com/LMMS/lmms/master/plugins/LadspaEffect/calf/CMakeLists.txt
+	source = https://raw.githubusercontent.com/LMMS/lmms/master/plugins/LadspaEffect/calf/config.h.in
+	sha256sums = f422eb41409d2ef5e4bce7a2af44113cfead511b10aed0313bd1dfce595fb611
+	sha256sums = 1a07f90853e3999edf396c720540c3655143ec5ecdef99cb45a1af97e20f5be7
+	sha256sums = 8cd19eb7f19ecdbcbe3b82f91e703981f0c36d348d6a150f640ab2162d8cbad4
 
 pkgname = calf-ladspa
 

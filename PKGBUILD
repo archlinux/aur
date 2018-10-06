@@ -1,44 +1,36 @@
 # Maintainer: Teteros <teteros at teknik dot io>
 
-_pkgname=calf
+_forkname=veal
 pkgname=calf-ladspa
-pkgver=0.0.19kx
-pkgrel=2
-pkgdesc="JACK audio plug-ins for musicians (Legacy LADSPA+RDF version)"
+pkgver=0.0.90
+pkgrel=1
+pkgdesc="JACK audio plug-ins for musicians (LADSPA lmms fork)"
 arch=(i686 x86_64)
-url="http://calf-studio-gear.org/"
+url="https://github.com/LMMS/veal"
 license=(LGPL)
-depends=(fftw fluidsynth)
-makedepends=(ladspa)
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-source=("http://urchlay.naptime.net/~urchlay/src/$_pkgname-$pkgver.tar.gz" "$_pkgname-$pkgver-gcc6.patch")
-md5sums=('ba2147ddc53022ddf1ffdf28c3340a57' '66155856ccc4e0358d3bdf703ec0e414')
+makedepends=(ladspa cmake)
+source=("https://github.com/LMMS/$_forkname/archive/ladspa.zip"
+        "https://raw.githubusercontent.com/LMMS/lmms/master/plugins/LadspaEffect/calf/CMakeLists.txt"
+        "https://raw.githubusercontent.com/LMMS/lmms/master/plugins/LadspaEffect/calf/config.h.in")
+noextract=("ladspa.zip")
+sha256sums=('f422eb41409d2ef5e4bce7a2af44113cfead511b10aed0313bd1dfce595fb611'
+            '1a07f90853e3999edf396c720540c3655143ec5ecdef99cb45a1af97e20f5be7'
+            '8cd19eb7f19ecdbcbe3b82f91e703981f0c36d348d6a150f640ab2162d8cbad4')
 
 prepare(){
-  cd "$_pkgname-$pkgver"
-  patch -p1 < "${srcdir}/$_pkgname-$pkgver-gcc6.patch"
+  mkdir -p "$_forkname/build"
+  bsdtar -xf ladspa.zip --strip-components=1 -C "$_forkname"
 }
 
 build() {
-  cd "$_pkgname-$pkgver"
-  autoreconf -if
-  ./configure \
-    --prefix=/usr \
-    --with-ladspa-dir=/usr/lib/ladspa \
-    --disable-experimental \
-    --enable-sse \
-    --without-dssi \
-    --without-lash \
-    --without-lv2
+  cd "$srcdir/$_forkname/build"
+  cmake -Wno-dev "$srcdir"
   make
 }
 
 package() {
-  cd "$_pkgname-$pkgver/src"
-  install -Dm755 .libs/calf.so "${pkgdir}/usr/lib/ladspa/calf.so"
-  install -dm755 "${pkgdir}/usr/share/ladspa/rdf"
-  ./calfmakerdf > "${pkgdir}/usr/share/ladspa/rdf/calf.rdf"
+  cd "$srcdir/$_forkname/build"
+  make DESTDIR="$pkgdir/usr/lib" install
 }
 
 # vim:set sw=2 ts=2 indentexpr=GetShIndent() et:
