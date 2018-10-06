@@ -1,7 +1,7 @@
 pkgbase = selinux-python
 	pkgdesc = SELinux python tools and libraries
 	pkgver = 2.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SELinuxProject/selinux/wiki
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = selinux-python
 	makedepends = python-ipy
 	makedepends = libsemanage>=2.8
 	makedepends = setools>=4.0.0
-	provides = sepolgen=2.8-1
+	provides = sepolgen=2.8-2
 	conflicts = sepolgen<2.7
 	conflicts = policycoreutils<2.7
 	source = https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20180524/selinux-python-2.8.tar.gz
@@ -20,12 +20,14 @@ pkgbase = selinux-python
 
 pkgname = selinux-python
 	depends = python
+	depends = python-audit
 	depends = python-ipy
-	depends = libsemanage>=2.7
+	depends = libsemanage>=2.8
 	depends = setools>=4.0.0
 
 pkgname = selinux-python2
 	depends = python2
-	depends = libsemanage>=2.7
+	depends = python2-audit
+	depends = libsemanage>=2.8
 	depends = setools>=4.0.0
 

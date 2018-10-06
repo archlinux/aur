@@ -6,7 +6,7 @@
 pkgbase=selinux-python
 pkgname=(selinux-python selinux-python2)
 pkgver=2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="SELinux python tools and libraries"
 groups=('selinux')
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ build() {
 }
 
 package_selinux-python() {
-  depends=('python' 'python-ipy' 'libsemanage>=2.7' 'setools>=4.0.0')
+  depends=('python' 'python-audit' 'python-ipy' 'libsemanage>=2.8' 'setools>=4.0.0')
 
   cd "${pkgbase}-${pkgver}"
   make PYTHON=/usr/bin/python3 DESTDIR="${pkgdir}" SBINDIR=/usr/bin install
@@ -33,7 +33,7 @@ package_selinux-python() {
 }
 
 package_selinux-python2() {
-  depends=('python2' 'libsemanage>=2.7' 'setools>=4.0.0')
+  depends=('python2' 'python2-audit' 'libsemanage>=2.8' 'setools>=4.0.0')
 
   cd "${pkgbase}-${pkgver}"
 
