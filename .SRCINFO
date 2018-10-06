@@ -1,6 +1,6 @@
 pkgbase = redshift-wlr-gamma-control-git
 	pkgdesc = Adjusts the color temperature of your screen according to your surroundings with Wayland wlr-gamma-control protocol support. (development version)
-	pkgver = 1.11.r159.gb980009
+	pkgver = 1.12.r44.ga2177ed
 	pkgrel = 1
 	url = https://github.com/minus7/redshift/tree/wayland
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = redshift-wlr-gamma-control-git
 	optdepends = python-gobject: for redshift-gtk
 	optdepends = python-xdg: for redshift-gtk
 	optdepends = librsvg: for redshift-gtk
-	optdepends = sway-wlroots-git: supporting wayland environment with wlr-gamma-control protocol
+	optdepends = sway-git: supporting wayland environment with wlr-gamma-control protocol
 	provides = redshift
 	conflicts = redshift
 	source = redshift::git+https://github.com/minus7/redshift.git#branch=wayland
