@@ -1,0 +1,4 @@
+#!/bin/bash
+cd -P -- "$(dirname "$0")" || exit 1  # Allow to be called from any directory
+makepkg -ef || makepkg -f && namcap PKGBUILD && namcap ./*.tar.xz
+makepkg --printsrcinfo >| .SRCINFO && echo "Updated .SRCINFO" >&2
