@@ -11,6 +11,8 @@ depends=('bash')
 makedepends=('git')
 provides=('powscript')
 
+sha256sums=('SKIP')
+
 source=(git+https://github.com/coderofsalvation/powscript.git#branch=master)
 
 pkgver() {
