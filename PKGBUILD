@@ -13,7 +13,7 @@ pkgname=chromium-vaapi
 pkgver=69.0.3497.100
 pkgrel=1
 _launcher_ver=6
-pkgdesc="Chromium compiled with VA-API support for Intel Graphics"
+pkgdesc="Chromium with VA-API support to enable hardware acceleration"
 arch=('x86_64')
 url="https://www.chromium.org/Home"
 license=('BSD')
@@ -28,7 +28,8 @@ optdepends=('pepper-flash: support for Flash content'
             'kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
             'kwallet: for storing passwords in KWallet'
-            'libva-intel-driver: Needed to support VA-API for Intel graphics cards')
+            'libva-intel-driver: support HW acceleration on Intel graphics cards'
+            'libva-vdpau-driver-chromium: support HW acceleration on Nvidia graphics cards')
 install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
