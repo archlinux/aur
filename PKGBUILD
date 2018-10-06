@@ -2,7 +2,7 @@
 
 _forkname=veal
 pkgname=calf-ladspa
-pkgver=0.0.90
+pkgver=0.90
 pkgrel=1
 pkgdesc="JACK audio plug-ins for musicians (LADSPA lmms fork)"
 arch=(i686 x86_64)
