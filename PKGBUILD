@@ -1,4 +1,5 @@
-# Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
+# Maintainer: Runnytu < runnytu at gmail dot com >
+# Old Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 # Contributor: korjjj <korjjj+aur[at]gmail[dot]com>
 
 pkgname=dynamips
@@ -27,5 +28,3 @@ package() {
   make DESTDIR=${pkgdir} install
   install -Dm644 ${srcdir}/${pkgname}-${pkgver}/COPYING ${pkgdir}/usr/share/licenses/${pkgname}/COPYING
 }
-
-# vim:set ts=2 sw=2 et:
