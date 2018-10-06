@@ -6,7 +6,7 @@ pkgver=2.5.7
 pkgrel=1
 pkgdesc='An interactive map generator for Minecraft'
 
-url='http://www.worldpainter.net/'
+url='https://www.worldpainter.net/'
 arch=('x86_64')
 license=('GPL')
 
