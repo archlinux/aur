@@ -1,6 +1,6 @@
-diff -ruN librsvg-2.44.5/Makefile.am librsvg-2.44.5-patched/Makefile.am
---- librsvg-2.44.5/Makefile.am	2018-08-31 02:39:42.000000000 +0800
-+++ librsvg-2.44.5-patched/Makefile.am	2018-08-31 14:57:47.170559312 +0800
+diff -ruN librsvg-2.44.6/Makefile.am librsvg-2.44.6-patched/Makefile.am
+--- librsvg-2.44.6/Makefile.am	2018-08-31 02:39:42.000000000 +0800
++++ librsvg-2.44.6-patched/Makefile.am	2018-08-31 14:57:47.170559312 +0800
 @@ -143,6 +143,7 @@
  cargo_verbose_1 = --verbose
  
@@ -27,9 +27,9 @@ diff -ruN librsvg-2.44.5/Makefile.am librsvg-2.44.5-patched/Makefile.am
  	$(LIBRSVG_LIBS) 	\
  	$(LIBM)			\
  	$(DLOPEN_LIBS)
-diff -ruN librsvg-2.44.5/Makefile.in librsvg-2.44.5-patched/Makefile.in
---- librsvg-2.44.5/Makefile.in	2018-08-31 02:39:57.000000000 +0800
-+++ librsvg-2.44.5-patched/Makefile.in	2018-08-31 14:57:47.170559312 +0800
+diff -ruN librsvg-2.44.6/Makefile.in librsvg-2.44.6-patched/Makefile.in
+--- librsvg-2.44.6/Makefile.in	2018-08-31 02:39:57.000000000 +0800
++++ librsvg-2.44.6-patched/Makefile.in	2018-08-31 14:57:47.170559312 +0800
 @@ -224,7 +224,7 @@
    }
  LTLIBRARIES = $(lib_LTLIBRARIES)
