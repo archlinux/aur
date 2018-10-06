@@ -1,7 +1,7 @@
 pkgbase = knightsgame
 	pkgdesc = A free multiplayer competitive game involving knights, dungeons, and quests.
 	pkgver = 025
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.knightsgame.org.uk/
 	arch = x86_64
 	license = GPL3

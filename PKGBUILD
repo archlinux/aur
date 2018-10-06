@@ -2,7 +2,7 @@
 
 pkgname=knightsgame
 pkgver=025
-pkgrel=1
+pkgrel=2
 pkgdesc="A free multiplayer competitive game involving knights, dungeons, and quests."
 arch=('x86_64')
 url="http://www.knightsgame.org.uk/"
@@ -14,6 +14,14 @@ md5sums=('99d55713c2a0ca605252d87641817da4')
 
 build() {
 	cd "$srcdir/knights_${pkgver}_src"
+
+	# apparently freetype-config has been deprecated for a while and
+	# was removed from the freetype2 package in summer 2018
+	sed 's/freetype-config/pkgconf freetype2/' -i Makefile
+
+	# the knights_server binary needs -lpthread but this isn't
+	# passed for some reason
+	sed 's/$^ `curl-config --libs`/$^ `curl-config --libs` -lpthread/' -i Makefile
 
 	prefix=/usr
 	make \
