@@ -1,6 +1,6 @@
 # Maintainer: bar0metr <admin@os-admin.ru>
 pkgname=squid4
-pkgver=4.2
+pkgver=4.3
 pkgrel=4
 pkgdesc='Full-featured Web proxy cache server with the support SSL, eCAP, iCAP-client. Include patches for normal work with cache, long url`s and CDN.'
 arch=('x86_64')
@@ -74,7 +74,7 @@ build() {
     --with-netfilter-conntrack \
     --with-openssl=/usr/include/openssl \
     --enable-snmp \
-    --enable-xmalloc-statistics \
+#    --enable-xmalloc-statistics \
     --enable-inline \
     --enable-linux-netfilter \
     --enable-ident-lookups \
