@@ -21,7 +21,7 @@ source=("git+https://github.com/150balbes/Amlogic_s905-kernel.git"
         'linux.preset'
         '99-linux.hook')
 md5sums=('SKIP'
-         'fb54e7d7a082e7e84ea60dd11b6ae782'
+         '68748ca1c69eedc93eb5109cadd7c5d4'
          'f6ee374f560e1b9df6a7de2399027d1b'
          'd1c40c7367a7081f3b4c03264780f9d4')
 
