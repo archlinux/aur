@@ -1,5 +1,5 @@
 pkgbase = chromium-vaapi-bin
-	pkgdesc = Chromium compiled with VA-API support for Intel Graphics
+	pkgdesc = Chromium with VA-API support to enable hardware acceleration, pre-compiled
 	pkgver = 69.0.3497.100
 	pkgrel = 2
 	url = https://www.chromium.org/Home
@@ -39,7 +39,8 @@ pkgbase = chromium-vaapi-bin
 	optdepends = kdialog: needed for file dialogs in KDE
 	optdepends = gnome-keyring: for storing passwords in GNOME keyring
 	optdepends = kwallet: for storing passwords in KWallet
-	optdepends = libva-intel-driver: Needed to support VA-API for Intel graphics cards
+	optdepends = libva-intel-driver: support HW acceleration on Intel graphics cards
+	optdepends = libva-vdpau-driver-chromium: support HW acceleration on Nvidia graphics cards
 	provides = chromium
 	conflicts = chromium
 	conflicts = chromium-vaapi
