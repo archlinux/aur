@@ -3,7 +3,7 @@
 # Contributor: Stefan Clarke <fm0nk3y@yahoo.co.uk>
 
 pkgname=gnubg
-pkgver=1.06.000
+pkgver=1.06.002
 pkgrel=1
 pkgdesc="World class backgammon application"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('python2' 'gtkglext' 'curl')
 source=($url/media/sources/$pkgname-release-$pkgver-sources.tar.gz
         $pkgname.desktop)
-md5sums=('7fc51dc90f5ca3cba02acbcd2476b1a5'
+md5sums=('d3823526d5c503a961024d761adefd5e'
          '965f5c7c25f60b27d06cc6fef7befd30')
 
 build() {
