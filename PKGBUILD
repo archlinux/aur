@@ -6,18 +6,18 @@
 
 pkgname=('nvidia-utils-beta' 'nvidia-egl-wayland-beta' 'nvidia-libgl-beta' 'opencl-nvidia-beta')
 pkgver=410.57
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom:NVIDIA')
 options=('!strip')
 _pkg="NVIDIA-Linux-x86_64-$pkgver-no-compat32"
-source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/$_pkg.run"
-        '10-nvidia-drm-outputclass.conf'
-        '20-nvidia.conf')
+source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run"
+        'nvidia-drm-outputclass.conf'
+        'nvidia-utils-beta.sysusers')
 sha256sums=('1ad40d83ec712843c1b5593949abefc9093399fb26a418ae9a571fbd1d9b228e'
-            '3a5f66620501d8dd85085a35c2f9e85a2e0d56a1b565b2df1e9fabc40e643363'
-            '444c6cfceac08a52d0873a1f5146fea2eeb44e7952ca1cc08629786b691e92b4')
+            '089d6dc247c9091b320c418b0d91ae6adda65e170934d178cdd4e9bd0785b182'
+            'd8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167')
 
 _eglver='1.1.0'
 
@@ -45,6 +45,8 @@ prepare() {
   sh $_pkg.run -x
   cd $_pkg
   bsdtar -xf nvidia-persistenced-init.tar.bz2
+  
+  sed -i 's/__NV_VK_ICD__/libGLX_nvidia.so.0/' nvidia_icd.json.template
 }
 
 package_opencl-nvidia-beta() {
@@ -120,9 +122,9 @@ package_nvidia-utils-beta() {
               "egl-wayland-git: for alternative, more advanced Wayland library (libnvidia-egl-wayland.so.${_eglver})")
   provides=("nvidia-utils=$pkgver" "nvidia-settings=$pkgver" 'libglvnd' 'vulkan-driver')
   conflicts=('nvidia-utils' 'nvidia-settings' 'libglvnd')
-  backup=('etc/X11/xorg.conf.d/20-nvidia.conf')
-  install=$pkgname.install
-  cd $_pkg
+  install="${pkgname}.install"
+  
+  cd "$_pkg"
 
   # X driver
   install -Dm755 nvidia_drv.so "$pkgdir"/usr/lib/xorg/modules/drivers/nvidia_drv.so
@@ -131,7 +133,10 @@ package_nvidia-utils-beta() {
   install -D -m755 "libglxserver_nvidia.so.${pkgver}" -t "${pkgdir}/usr/lib/nvidia/xorg"
   ln -s "libglxserver_nvidia.so.${pkgver}" "${pkgdir}/usr/lib/nvidia/xorg/libglxserver_nvidia.so.1"  # X doesn't find glx otherwise
   ln -s "libglxserver_nvidia.so.${pkgver}" "${pkgdir}/usr/lib/nvidia/xorg/libglxserver_nvidia.so"    # X doesn't find glx otherwise
-
+  
+  # X wrapped software rendering
+  install -D -m755 "libnvidia-wfb.so.${pkgver}" -t "${pkgdir}/usr/lib"
+  
   # libGL & OpenGL
   install -Dm755 libGL.so.1.7.0 "$pkgdir"/usr/lib/nvidia/libGL.so.1.7.0
   install -Dm755 libGLdispatch.so.0 "$pkgdir"/usr/lib/libGLdispatch.so.0
@@ -191,7 +196,6 @@ package_nvidia-utils-beta() {
 
   # Vulkan icd
   install -Dm644 nvidia_icd.json.template "$pkgdir"/usr/share/vulkan/icd.d/nvidia_icd.json
-  sed -i 's/__NV_VK_ICD__/libGLX_nvidia.so.0/' "$pkgdir"/usr/share/vulkan/icd.d/nvidia_icd.json
   
   # Vulkan real-time ray tracing extensions (VK_NV_raytracing)
   install -D -m755 "libnvidia-rtcore.so.${pkgver}" -t "${pkgdir}/usr/lib"
@@ -204,9 +208,6 @@ package_nvidia-utils-beta() {
   # OptiX ray tracing engine
   install -D -m755 "libnvoptix.so.${pkgver}" -t "${pkgdir}/usr/lib"
   
-  # Not required (https://bugs.archlinux.org/task/38604):
-  # - libnvidia-wfb.so.$pkgver (provided by xorg-server: https://www.archlinux.org/packages/extra/x86_64/xorg-server/)
-
   # create missing soname links
   _create_links
 
@@ -267,9 +268,9 @@ package_nvidia-utils-beta() {
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/nvidia/LICENSE
   ln -s nvidia/ "$pkgdir"/usr/share/licenses/nvidia-utils
 
-  # Disable logo splash
-  install -Dm644 "$srcdir"/20-nvidia.conf "$pkgdir"/etc/X11/xorg.conf.d/20-nvidia.conf
-
   # Distro-specific files must be installed in /usr/share/X11/xorg.conf.d
-  install -Dm644 "$srcdir"/10-nvidia-drm-outputclass.conf "$pkgdir"/usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf
+  install -D -m644 "${srcdir}/nvidia-drm-outputclass.conf" "${pkgdir}/usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf"
+  
+  # sysusers
+  install -D -m644 "${srcdir}/nvidia-utils-beta.sysusers" -t "${pkgdir}/usr/lib/sysusers.d"
 }

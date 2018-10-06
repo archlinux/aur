@@ -1,16 +1,16 @@
 pkgbase = nvidia-utils-beta
 	pkgver = 410.57
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.nvidia.com/
 	arch = x86_64
 	license = custom:NVIDIA
 	options = !strip
 	source = http://us.download.nvidia.com/XFree86/Linux-x86_64/410.57/NVIDIA-Linux-x86_64-410.57-no-compat32.run
-	source = 10-nvidia-drm-outputclass.conf
-	source = 20-nvidia.conf
+	source = nvidia-drm-outputclass.conf
+	source = nvidia-utils-beta.sysusers
 	sha256sums = 1ad40d83ec712843c1b5593949abefc9093399fb26a418ae9a571fbd1d9b228e
-	sha256sums = 3a5f66620501d8dd85085a35c2f9e85a2e0d56a1b565b2df1e9fabc40e643363
-	sha256sums = 444c6cfceac08a52d0873a1f5146fea2eeb44e7952ca1cc08629786b691e92b4
+	sha256sums = 089d6dc247c9091b320c418b0d91ae6adda65e170934d178cdd4e9bd0785b182
+	sha256sums = d8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167
 
 pkgname = nvidia-utils-beta
 	pkgdesc = NVIDIA driver utilities and libraries (beta version)
@@ -29,7 +29,6 @@ pkgname = nvidia-utils-beta
 	conflicts = nvidia-utils
 	conflicts = nvidia-settings
 	conflicts = libglvnd
-	backup = etc/X11/xorg.conf.d/20-nvidia.conf
 
 pkgname = nvidia-egl-wayland-beta
 	pkgdesc = NVIDIA EGL Wayland library (libnvidia-egl-wayland.so.1.1.0) for 'nvidia-utils-beta'
