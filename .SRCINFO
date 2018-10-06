@@ -1,7 +1,7 @@
 pkgbase = aria2-fast
 	pkgdesc = Aria2 Download utility with little patch to maximize aria2 download speed
 	pkgver = 1.34.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://aria2.sourceforge.net/
 	arch = i686
 	arch = x86_64
