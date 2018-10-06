@@ -1,0 +1,16 @@
+pkgbase = breeze-enhanced-git
+	pkgdesc = A fork of KDE Breeze decoration with additional options
+	pkgver = r13.c9f5e8a
+	pkgrel = 1
+	url = https://github.com/tsujan/BreezeEnhanced
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = plasma-desktop
+	source = git+https://github.com/tsujan/BreezeEnhanced.git
+	sha256sums = SKIP
+
+pkgname = breeze-enhanced-git
+
