@@ -1,6 +1,6 @@
 pkgbase = adapta-kde-git
 	pkgdesc = Complete Adapta theme pack for KDE Plasma using Kvantum theme engine (git version)
-	pkgver = r168.1b7b9c1
+	pkgver = r178.2255e46
 	pkgrel = 1
 	url = https://github.com/PapirusDevelopmentTeam/adapta-kde
 	arch = any
