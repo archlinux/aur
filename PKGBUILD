@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
  
 pkgname=emacs-org-mode-git
-pkgver=9.1.14.911.g98755f629
+pkgver=9.1.14.1000.g100541b53
 pkgrel=1
 pkgdesc="Emacs Org Mode from git"
 arch=('any')
@@ -15,7 +15,7 @@ license=('GPL')
 provides=("emacs-org-mode=$pkgver")
 conflicts=('emacs-org-mode')
 install=emacs-org-mode.install
-source=(emacs-org-mode::git+https://code.orgmode.org/bzg/org-mode.git)
+source=(emacs-org-mode::git+https://code.orgmode.org/bzg/org-mode.git#branch=next)
 md5sums=('SKIP')
 
 pkgver() {
