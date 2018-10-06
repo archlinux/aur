@@ -1,6 +1,6 @@
 pkgbase = electron-ssr
 	pkgdesc = Shadowsocksr client using electron.
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/erguotou520/electron-ssr
 	arch = x86_64
@@ -25,8 +25,8 @@ pkgbase = electron-ssr
 	sha256sums = 0d4372037676a0ee8f17f7cb875192923062a80ad61695dbe4548fde609d7698
 	sha256sums = 5adc01a09122a97fec15bce51a6830c210985f05df0c8aa83c7103ab7c0f7fbd
 	sha256sums = c85164668da8cfdecad69e5f5545b433390116eed958c47f611e4b2153992970
-	source_x86_64 = https://github.com/erguotou520/electron-ssr/archive/v0.2.3.tar.gz
-	sha256sums_x86_64 = ad30c5447e685e625ae3ee676f69c2acf79a8248e3edba937c7679cffcabdb2c
+	source_x86_64 = https://github.com/erguotou520/electron-ssr/archive/v0.2.4.tar.gz
+	sha256sums_x86_64 = 749ec7ccfeb6ff161340294e563910bdee481741bfd591e830c5bac8210ef1a9
 
 pkgname = electron-ssr
 

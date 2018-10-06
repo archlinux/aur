@@ -1,7 +1,7 @@
 # Maintainer: Ariel AxionL <axionl@aosc.io>
 
 pkgname=electron-ssr
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc='Shadowsocksr client using electron.'
 arch=('x86_64')
@@ -25,13 +25,18 @@ sha256sums=('87561b47486c2485c76136172c87f0df16ee9dc4cb85be7d77ce274328f92735'
             '0d4372037676a0ee8f17f7cb875192923062a80ad61695dbe4548fde609d7698'
             '5adc01a09122a97fec15bce51a6830c210985f05df0c8aa83c7103ab7c0f7fbd'
             'c85164668da8cfdecad69e5f5545b433390116eed958c47f611e4b2153992970')
-sha256sums_x86_64=('ad30c5447e685e625ae3ee676f69c2acf79a8248e3edba937c7679cffcabdb2c')
+sha256sums_x86_64=('749ec7ccfeb6ff161340294e563910bdee481741bfd591e830c5bac8210ef1a9')
 
-build() {
-    # Remove useless things
+prepare() {
+	# Remove useless things
     dir=$srcdir/$pkgname-$pkgver/
     cd $dir
     patch -Np1 -i "$srcdir/$pkgname.patch"
+}
+
+build() {
+    dir=$srcdir/$pkgname-$pkgver/
+    cd $dir
 
     # Build Package
     yarn
