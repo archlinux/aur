@@ -3,7 +3,7 @@
 
 pkgname=emacs-ctable
 pkgver=0.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Table Component for elisp"
 url="https://github.com/kiwanami/emacs-ctable"
 arch=('any')
@@ -19,6 +19,6 @@ build() {
 
 package() {
   cd emacs-ctable-${pkgver}
-  install -d "$pkgdir"/usr/share/emacs/site-lisp/ctable
-  install -m644 ctable*.el{c,} "$pkgdir"/usr/share/emacs/site-lisp/ctable/
+  install -d "$pkgdir"/usr/share/emacs/site-lisp
+  install -m644 ctable*.el{c,} "$pkgdir"/usr/share/emacs/site-lisp
 }
