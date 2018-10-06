@@ -4,7 +4,7 @@
 
 pkgname=libreswan
 pkgver=3.26
-pkgrel=1
+pkgrel=2
 pkgdesc="IPsec implementation with IKEv1 and IKEv2 keying protocols"
 arch=('i686' 'x86_64')
 url="https://libreswan.org/"
@@ -14,9 +14,17 @@ makedepends=('docbook-xsl' 'xmlto' 'flex' 'bison')
 conflicts=('freeswan' 'openswan' 'strongswan' 'ipsec-tools')
 backup=('etc/ipsec.conf' 'etc/ipsec.secrets' 'etc/pam.d/pluto')
 source=(https://download.libreswan.org/${pkgname}-${pkgver}.tar.gz
-        tmpfiles.conf)
+        tmpfiles.conf
+        910f69119b491c6d7abcc85cf8911d2fa012a135.patch)
 md5sums=('941cdac614cd6450f9e20820fe22c5fc'
-         '77399a739ee99f8bc54837684d7c39d5')
+         '77399a739ee99f8bc54837684d7c39d5'
+         '8b65ded605b3a3839437c65a6302f31a')
+
+prepare() {
+  cd $pkgname-$pkgver
+
+  patch -p1 < $srcdir/910f69119b491c6d7abcc85cf8911d2fa012a135.patch
+}
 
 build() {
   cd $pkgname-$pkgver

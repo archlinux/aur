@@ -1,7 +1,7 @@
 pkgbase = libreswan
 	pkgdesc = IPsec implementation with IKEv1 and IKEv2 keying protocols
 	pkgver = 3.26
-	pkgrel = 1
+	pkgrel = 2
 	url = https://libreswan.org/
 	arch = i686
 	arch = x86_64
@@ -25,8 +25,10 @@ pkgbase = libreswan
 	backup = etc/pam.d/pluto
 	source = https://download.libreswan.org/libreswan-3.26.tar.gz
 	source = tmpfiles.conf
+	source = 910f69119b491c6d7abcc85cf8911d2fa012a135.patch
 	md5sums = 941cdac614cd6450f9e20820fe22c5fc
 	md5sums = 77399a739ee99f8bc54837684d7c39d5
+	md5sums = 8b65ded605b3a3839437c65a6302f31a
 
 pkgname = libreswan
 
