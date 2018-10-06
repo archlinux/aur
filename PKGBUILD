@@ -2,8 +2,8 @@
 # Contributor: Sean Anderson <seanga2@gamil.com>
 pkgname=proton-git
 _pkgname=proton
-pkgver=20180928b.1
-pkgrel=2
+pkgver=20180928b.7
+pkgrel=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components"
 arch=('x86_64')
 url="https://github.com/ValveSoftware/Proton/"

@@ -1,7 +1,7 @@
 pkgbase = proton-git
 	pkgdesc = Compatibility tool for Steam Play based on Wine and additional components
-	pkgver = 20180928b.1
-	pkgrel = 2
+	pkgver = 20180928b.7
+	pkgrel = 1
 	url = https://github.com/ValveSoftware/Proton/
 	arch = x86_64
 	license = BSD
