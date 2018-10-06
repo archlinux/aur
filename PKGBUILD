@@ -1,6 +1,6 @@
 # Maintainer: Nichlas Severinsen <ns@nsz.no>
 pkgname=signet
-pkgver=0.9.10
+pkgver=0.9.11
 pkgrel=1
 pkgdesc="Desktop Client for Signet"
 arch=('x86_64')
@@ -20,8 +20,8 @@ source_x86_64=("https://nthdimtech.com/downloads/signet-releases/${pkgver}/gnu-l
                "https://github.com/nthdimtech/signet-desktop-client/raw/master/client/images/signet.iconset/icon_512x512.png"
                "${pkgname}.desktop")
 validpgpkeys=('D47581AE98C17249915387BE0E47D2FA6E50979D') # Neils Nesse
-sha256sums_x86_64=('ed6e075c7823bda1e9ecba2343b94bc9935a0e4f0d81c58db6ea9844e4e53e75'
-                   '69dd4475c81e66f145ff31a90447047516d1992c5aa8961079ec2c902018d518'
+sha256sums_x86_64=('9ac89cd53f9b2e7c3893b0d1026c0765306e5ce0528e687f92b933fe83d3d083'
+                   'b11f301590b94c53f171acb673d378ea0ef664d7904189e9ee4d0a41e2a924d9'
                    'af34a217fee566de4c149429459e4cd13f38435857ff8c9f5fd7bb0199e86820'
                    '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
                    '420da6b48346cfb2f726722a799c4fad70bdd2fcc0d5cb5753ecd129cf7ee35e'
@@ -30,7 +30,7 @@ sha256sums_x86_64=('ed6e075c7823bda1e9ecba2343b94bc9935a0e4f0d81c58db6ea9844e4e5
                    '9f3e202578c68020b95f34d30d0b783e17d6202041f23590d5adc6a246592d7d'
                    '5e8e5328d0f0955ae59645cb5a3c498f7051e738b96134b7874d4be486be753f'
                    '5e8e5328d0f0955ae59645cb5a3c498f7051e738b96134b7874d4be486be753f'
-                   'f2e8c589df5c7791acad7e686d61cc525cfd4136a06e36b0ed507b22b08561b4')
+                   '67e2de2505f3f4a14b415a13cbda6276c229b5508a89398bacec500fd78bb208')
 
 package() {
   gpg --verify "signet-${pkgver}.sig" "signet-${pkgver}"
