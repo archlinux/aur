@@ -1,0 +1,14 @@
+pkgbase = powscript
+	pkgdesc = Bash dialect transpiler in bash: painless shellscript / indentbased / coffeescript for shellscript / bash for hipsters
+	pkgver = git
+	pkgrel = 1
+	url = https://github.com/coderofsalvation/powscript
+	arch = any
+	license = BSD-2-Clause
+	makedepends = git
+	depends = bash
+	provides = powscript
+	source = git+https://github.com/coderofsalvation/powscript.git#branch=master
+
+pkgname = powscript
+
