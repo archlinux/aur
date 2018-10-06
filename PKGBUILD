@@ -5,7 +5,7 @@
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-poppler
-pkgver=0.68.0
+pkgver=0.69.0
 pkgrel=1
 pkgdesc="PDF rendering library based on xpdf 3.0 (mingw-w64)"
 arch=('any')
@@ -22,7 +22,13 @@ makedepends=('mingw-w64-cmake'
              'python')
 options=('!strip' 'staticlibs' '!buildflags')
 source=("https://poppler.freedesktop.org/poppler-${pkgver}.tar.xz")
-sha256sums=('f90d04f0fb8df6923ecb0f106ae866cf9f8761bb537ddac64dfb5322763d0e58')
+sha256sums=('637ff943f805f304ff1da77ba2e7f1cbd675f474941fd8ae1e0fc01a5b45a3f9')
+
+prepare() {
+  cd "${srcdir}/poppler-${pkgver}/utils"
+  # they moved gstrndup() to copyString() but forgot pdftocairo-win32.cc
+  sed -i 's|gstrndup|copyString|g' pdftocairo-win32.cc
+}
 
 build() {
   cd "${srcdir}/poppler-${pkgver}"
