@@ -6,20 +6,20 @@
 # Contributor: Wael Nasreddine <gandalf@siemens-mobiles.org>
 # Contributor: Tor Krill <tor@krill.nu>
 # Contributor: Will Rea <sillywilly@gmail.com>
+# Additional participation: Nikita Tarasov <nikatar@disroot.org>
 
 pkgbase=network-manager-applet-indicator
 pkgname=(nm-connection-editor-indicator network-manager-applet-indicator)
-pkgdesc="Applet for managing network connections, with AppIndicator"
-url="https://wiki.gnome.org/Projects/NetworkManager/"
-pkgver=1.8.7dev+3+g3d7c0a89
+pkgdesc="Latest nm-applet with Appindicator/StatusNotifierItem support from Gnome GitLab"
+url="https://aur.archlinux.org/packages/network-manager-applet-indicator/"
+pkgver=1.8.19+dev+17+g57ef36bf
 pkgrel=1
 arch=(i686 x86_64)
 license=(GPL2 LGPL2.1)
 depends=(libnm-glib libgudev gtk3 mobile-broadband-provider-info iso-codes libappindicator-gtk3)
 makedepends=(libsecret libnotify libmm-glib intltool gobject-introspection git gtk-doc)
 options=(!emptydirs)
-_commit=3d7c0a89da37074e6986262d4708d4093bf496f2  # master
-source=("git+https://git.gnome.org/browse/network-manager-applet#commit=$_commit")
+source=("git+https://gitlab.gnome.org/GNOME/network-manager-applet.git/")
 sha256sums=('SKIP')
 
 pkgver() {
