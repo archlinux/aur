@@ -3,15 +3,15 @@ pkgbase = osmo-fl2k-git
 	pkgver = 0.1.1.r11.0fb8849
 	pkgrel = 1
 	url = https://osmocom.org/projects/osmo-fl2k/wiki
-	arch = any
-	license = GPL
+	arch = x86_64
+	license = GPL3
 	makedepends = git
 	makedepends = cmake
-	depends = libusb>=1.0
+	depends = libusb
 	provides = osmo-fl2k
 	conflicts = osmo-fl2k
 	source = git+https://git.osmocom.org/osmo-fl2k
-	md5sums = SKIP
+	sha512sums = SKIP
 
 pkgname = osmo-fl2k-git
 
