@@ -3,7 +3,7 @@
 
 _basename=gst-plugins-bad
 pkgname=lib32-gst-plugins-bad
-pkgver=1.14.3
+pkgver=1.14.4
 pkgrel=1
 pkgdesc="GStreamer Multimedia Framework Bad Plugins (32-bit)"
 url="https://gstreamer.freedesktop.org/"
@@ -20,7 +20,7 @@ depends=(lib32-aom lib32-bluez-libs lib32-celt lib32-chromaprint lib32-curl lib3
          lib32-webrtc-audio-processing lib32-wildmidi lib32-x265 lib32-zbar lib32-zvbi gst-plugins-bad)
 makedepends=(autoconf-archive git gobject-introspection lib32-gtk3 lib32-librsvg lib32-libtiger
              python vulkan-headers lib32-vulkan-validation-layers)
-_commit=924b54b1501656a192ff391f0c2fd6cfb9f89aac  # tags/1.14.3^0
+_commit=566e4ecc223b18fce8bd932f5e4885f41f746dd4  # tags/1.14.4^0
 source=("git+https://anongit.freedesktop.org/git/gstreamer/gst-plugins-bad#commit=$_commit"
         "gst-common::git+https://anongit.freedesktop.org/git/gstreamer/common"
         missing-includes.diff)
