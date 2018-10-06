@@ -3,7 +3,7 @@
 
 pkgname=yafaray
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A free open-source montecarlo raytracing engine"
 arch=('i686' 'x86_64')
 url="http://yafaray.org/"
@@ -31,8 +31,8 @@ build() {
 
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
     -DWITH_QT=ON \
-    -DYAF_PY_VERSION=3.6 \
-    -DYAF_BINDINGS_PY_DIR=/usr/lib/python3.6/site-packages \
+    -DYAF_PY_VERSION=3.7 \
+    -DYAF_BINDINGS_PY_DIR=/usr/lib/python3.7/site-packages \
     -DWITH_YAF_RUBY_BINDINGS=ON \
     -DYAF_BINDINGS_RUBY_DIR="$(ruby -e 'print RbConfig::CONFIG["vendorarchdir"]')" ..
   make
