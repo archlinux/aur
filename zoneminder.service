@@ -1,8 +1,7 @@
 [Unit]
 Description=ZoneMinder - CCTV Monitoring and Recording System
-Requires=mariadb.service
-Wants= nginx.service php-fpm.service fcgiwrap.socket
-After=network.target mariadb.service nginx.service
+After=network.target mariadb.service
+Wants=mariadb.service
 
 [Service]
 User=http
