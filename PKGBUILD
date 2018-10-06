@@ -2,19 +2,19 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-www-form-urlencoded'
-pkgver='0.24'
+pkgver='0.25'
 pkgrel='1'
 pkgdesc="parser and builder for application/x-www-form-urlencoded"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-json>=2' 'perl>=5.8.1')
+depends=('perl>=5.8.1')
 makedepends=()
 url='https://metacpan.org/release/WWW-Form-UrlEncoded'
-source=('http://search.cpan.org/CPAN/authors/id/K/KA/KAZEBURO/WWW-Form-UrlEncoded-0.24.tar.gz')
-md5sums=('f586b90fa142741728547dc2ea573f15')
-sha512sums=('57dfcccd059534d3d0cb2b1d8ee826e4a31e77920a43b72c5939a866de9d4b526e2f59411507c3287f8c7ae283f7ebeed07cda543f0d36663e6b155952cec63e')
-_distdir="WWW-Form-UrlEncoded-0.24"
+source=('http://search.cpan.org/CPAN/authors/id/K/KA/KAZEBURO/WWW-Form-UrlEncoded-0.25.tar.gz')
+md5sums=('c7f8fbd616f9a342b5ff726b405d2a96')
+sha512sums=('3d962434e6a104110412956a1523e1ca30462855665ebbfccbcd136f80aa788e835adf1472b5f94c1e6f177758c10bb4b06ea693ffd8ff5f262e731930e5a727')
+_distdir="WWW-Form-UrlEncoded-0.25"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
