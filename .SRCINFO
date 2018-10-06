@@ -1,0 +1,16 @@
+pkgbase = ocaml-seq
+	pkgdesc = Dummy backward-compatibility package for iterators
+	pkgver = base
+	pkgrel = 1
+	url = https://github.com/ocaml/opam-repository
+	arch = any
+	license = unknown
+	makedepends = git
+	makedepends = ocaml-findlib
+	makedepends = opam
+	depends = ocaml
+	source = git+https://github.com/ocaml/opam-repository.git
+	sha512sums = SKIP
+
+pkgname = ocaml-seq
+
