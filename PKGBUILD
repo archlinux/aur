@@ -4,7 +4,7 @@
 # Contributor: Holger Rauch < holger dot rauch at posteo dot de >
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=roxterm
-pkgver=3.6.1
+pkgver=3.7.3
 pkgrel=1
 pkgdesc='Tabbed, VTE-based terminal emulator'
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('dbus-glib' 'vte3' 'hicolor-icon-theme' 'libsm')
 makedepends=('docbook-xsl' 'xmlto' 'po4a' 'cmake'
              'imagemagick' 'librsvg' 'itstool')
 source=("https://github.com/realh/roxterm/archive/${pkgver}.tar.gz")
-sha512sums=('8efb4f6fc007c52768ecbad98cba212a8c84c5e6398bc9d1392f0a841b780c9083ef105da31c739e8c014ff1836ad89fb4c559200e9887914a2538898e9ec1f2')
+sha512sums=('ba9efa41e5079dd495c9a1f4fb67af213f2f6de0d1f97c215c59f89489fab52618fcb084fdd3be0629c6a9d901a79544b88d7c70fda3aab25f265834abd96d27')
 
 build() {
   cd "${srcdir}/roxterm-${pkgver}"
