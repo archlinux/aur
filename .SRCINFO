@@ -1,0 +1,13 @@
+pkgbase = plant-git
+	pkgdesc = tree but for arbitrary data
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/qbe/plant
+	arch = any
+	license = GPL3
+	depends = python
+	source = git+https://github.com/qbe/plant.git
+	md5sums = SKIP
+
+pkgname = plant-git
+
