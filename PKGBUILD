@@ -18,10 +18,12 @@ makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'uboot-tools' '
 options=('!strip')
 source=("git+https://github.com/150balbes/Amlogic_s905-kernel.git"
         'config'
+        'pwm-led.patch'
         'linux.preset'
         '99-linux.hook')
 md5sums=('SKIP'
-         '68748ca1c69eedc93eb5109cadd7c5d4'
+         '44c200b0196238eb258d5fa3822200f8'
+         'ff7f23f1bc3482651a4b7f4a33deb5fd'
          'f6ee374f560e1b9df6a7de2399027d1b'
          'd1c40c7367a7081f3b4c03264780f9d4')
 
@@ -32,6 +34,9 @@ prepare() {
 
   # reset to a certain version
   git reset --hard 0774525e710209a9e99136e5373b955f6c7defba
+
+  # led patch
+  patch -p1 < ../pwm-led.patch
 
   cat "${srcdir}/config" > ./.config
 

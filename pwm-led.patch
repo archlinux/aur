@@ -1,0 +1,37 @@
+diff --git a/arch/arm64/boot/dts/amlogic/meson-gxl-s905d-p230.dts b/arch/arm64/boot/dts/amlogic/meson-gxl-s905d-p230.dts
+index 15014faa2ab2..53b91e600842 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-gxl-s905d-p230.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-gxl-s905d-p230.dts
+@@ -41,6 +41,17 @@
+ 		};
+ 	};
+ 
++	pwmleds {
++		compatible = "pwm-leds";
++
++		power {
++			label = "phicomm:white:carlogo";
++			pwms = <&pwm_AO_ab 1 7812500 0>;
++			max-brightness = <255>;
++			linux,default-trigger = "mmc1";
++		};
++	};
++
+ 	hdmi-connector {
+ 		compatible = "hdmi-connector";
+ 		type = "a";
+@@ -60,6 +71,14 @@
+ 	hdmi-phandle = <&hdmi_tx>;
+ };
+ 
++&pwm_AO_ab {
++        status = "okay";
++        pinctrl-0 = <&pwm_ao_a_3_pins>, <&pwm_ao_b_pins>;
++        pinctrl-names = "default";
++        clocks = <&xtal> , <&xtal>;
++        clock-names = "clkin0", "clkin1" ;
++};
++
+ /* P230 has exclusive choice between internal or external PHY */
+ &ethmac {
+ 	pinctrl-0 = <&eth_pins>;
