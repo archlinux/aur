@@ -24,6 +24,7 @@ prepare() {
   cd $pkgname-$pkgver
 
   patch -p1 < $srcdir/910f69119b491c6d7abcc85cf8911d2fa012a135.patch
+  sed -i "s/-lfreebl //" mk/config.mk
 }
 
 build() {
