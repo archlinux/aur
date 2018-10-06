@@ -1,6 +1,6 @@
 pkgbase = enpass-beta-bin
 	pkgdesc = A multiplatform password manager
-	pkgver = 6.0.0.105
+	pkgver = 6.0.0.149
 	pkgrel = 1
 	url = http://enpass.io/
 	install = enpass-beta-bin.install
@@ -9,8 +9,8 @@ pkgbase = enpass-beta-bin
 	depends = libxss
 	depends = lsof
 	provides = enpass-beta
-	source = http://repo.sinew.in/pool/main/e/enpass-beta/enpass-beta_6.0.0.105_amd64.deb
-	sha256sums = 27cf9fb3acf7ce0f5f2a4887a48ba6cf40f49f34ea732adc5d3e454bce250e76
+	source = http://repo.sinew.in/pool/main/e/enpass-beta/enpass-beta_6.0.0.149_amd64.deb
+	sha256sums = e2712de4ff26ffc20bed7c52fbf3b93b983b495bdaadabeae72a839ce99e6d0b
 
 pkgname = enpass-beta-bin
 
