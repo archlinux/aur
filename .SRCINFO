@@ -8,6 +8,7 @@ pkgbase = calf-ladspa
 	license = LGPL
 	makedepends = ladspa
 	makedepends = cmake
+	conflicts = lmms
 	noextract = ladspa.zip
 	source = https://github.com/LMMS/veal/archive/ladspa.zip
 	source = https://raw.githubusercontent.com/LMMS/lmms/master/plugins/LadspaEffect/calf/CMakeLists.txt

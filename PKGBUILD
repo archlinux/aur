@@ -9,6 +9,7 @@ arch=(i686 x86_64)
 url="https://github.com/LMMS/veal"
 license=(LGPL)
 makedepends=(ladspa cmake)
+conflicts=('lmms')
 source=("https://github.com/LMMS/$_forkname/archive/ladspa.zip"
         "https://raw.githubusercontent.com/LMMS/lmms/master/plugins/LadspaEffect/calf/CMakeLists.txt"
         "https://raw.githubusercontent.com/LMMS/lmms/master/plugins/LadspaEffect/calf/config.h.in")
