@@ -1,6 +1,6 @@
 pkgbase = sniffles
 	pkgdesc = Structural variation caller using third generation sequencing
-	pkgver = 1.0.8
+	pkgver = 1.0.9
 	pkgrel = 1
 	url = https://github.com/fritzsedlazeck/Sniffles
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = sniffles
 	makedepends = cmake
 	depends = gcc-libs
 	options = !emptydirs
-	source = Sniffles-1.0.8.tar.gz::https://github.com/fritzsedlazeck/Sniffles/archive/v1.0.8.tar.gz
-	md5sums = 1ff0b2f4ec8a85d91797590a746703bb
+	source = Sniffles-1.0.9.tar.gz::https://github.com/fritzsedlazeck/Sniffles/archive/v1.0.9.tar.gz
+	md5sums = 7e5a2a43b18ba65803f56d893c59d87b
 
 pkgname = sniffles
 
