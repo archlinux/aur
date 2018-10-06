@@ -1,7 +1,7 @@
 pkgbase = calf-ladspa
 	pkgdesc = JACK audio plug-ins for musicians (Legacy LADSPA+RDF version)
 	pkgver = 0.0.19kx
-	pkgrel = 1
+	pkgrel = 2
 	url = http://calf-studio-gear.org/
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,8 @@ pkgbase = calf-ladspa
 	makedepends = ladspa
 	depends = fftw
 	depends = fluidsynth
+	provides = calf
+	conflicts = calf
 	source = http://urchlay.naptime.net/~urchlay/src/calf-0.0.19kx.tar.gz
 	source = calf-0.0.19kx-gcc6.patch
 	md5sums = ba2147ddc53022ddf1ffdf28c3340a57
