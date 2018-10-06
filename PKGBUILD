@@ -1,20 +1,20 @@
 # Contributor: chrisl echo archlinux@c2h0r1i2s4t5o6p7h8e9r-l3u4n1a.com|sed 's/[0-9]//g'
 
 pkgname=cemu
-pkgver=1.13.1
+pkgver=1.13.2
 pkgrel=1
 pkgdesc="Wii U emulator (via wine). Includes the Cemuhook plugin and graphic packs"
 arch=(x86_64)
 url="http://cemu.info/"
 license=('custom')
 depends=('wine' 'winetricks')
-_graphicpackver=94
+_graphicpackver=95
 _cemuhookver=1131_0566
 source=(
   cemu.sh
   cemu.xpm
   cemu.desktop
-  http://cemu.info/releases/cemu_${pkgver}.zip
+  http://cemu.info/releases/cemu_${pkgver}d.zip
   https://files.sshnuke.net/cemuhook_${_cemuhookver}.zip
   https://github.com/slashiee/cemu_graphic_packs/releases/download/Travis${_graphicpackver}/graphicPacks${_graphicpackver}_Uncommon.zip
 )
@@ -27,10 +27,10 @@ install=${pkgname}.install
 # If you notice this, please mark this package as out-of-date in the aur website and I'll fix it.
 md5sums=('bf4a05c4f1d6063ed6bb90b66b2eca7d'
          '54d70005a8975812ab54fcfef53f7bde'
-         'b81c3aa3b5869800abacc50efd6d33de'
-         'f1ab37900b3e64c879f1f65a39aca542'
+         '9e563b3295d5d12e1634dacddfe1be22'
+         'c51950795c9fba9f8242e62e7d0514cb'
          '23b023c8d79f638b9db1010df9e0e36a'
-         '270c1f9e214b53a0d07501920f140a8a')
+         '5a1c0d53e0fc230c80f8b1f46095c1c9')
 
 options=(!strip)
 

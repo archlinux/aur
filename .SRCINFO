@@ -1,6 +1,6 @@
 pkgbase = cemu
 	pkgdesc = Wii U emulator (via wine). Includes the Cemuhook plugin and graphic packs
-	pkgver = 1.13.1
+	pkgver = 1.13.2
 	pkgrel = 1
 	url = http://cemu.info/
 	install = cemu.install
@@ -9,20 +9,20 @@ pkgbase = cemu
 	depends = wine
 	depends = winetricks
 	noextract = cemuhook_1131_0566.zip
-	noextract = graphicPacks94_Uncommon.zip
+	noextract = graphicPacks95_Uncommon.zip
 	options = !strip
 	source = cemu.sh
 	source = cemu.xpm
 	source = cemu.desktop
-	source = http://cemu.info/releases/cemu_1.13.1.zip
+	source = http://cemu.info/releases/cemu_1.13.2d.zip
 	source = https://files.sshnuke.net/cemuhook_1131_0566.zip
-	source = https://github.com/slashiee/cemu_graphic_packs/releases/download/Travis94/graphicPacks94_Uncommon.zip
+	source = https://github.com/slashiee/cemu_graphic_packs/releases/download/Travis95/graphicPacks95_Uncommon.zip
 	md5sums = bf4a05c4f1d6063ed6bb90b66b2eca7d
 	md5sums = 54d70005a8975812ab54fcfef53f7bde
-	md5sums = b81c3aa3b5869800abacc50efd6d33de
-	md5sums = f1ab37900b3e64c879f1f65a39aca542
+	md5sums = 9e563b3295d5d12e1634dacddfe1be22
+	md5sums = c51950795c9fba9f8242e62e7d0514cb
 	md5sums = 23b023c8d79f638b9db1010df9e0e36a
-	md5sums = 270c1f9e214b53a0d07501920f140a8a
+	md5sums = 5a1c0d53e0fc230c80f8b1f46095c1c9
 
 pkgname = cemu
 
