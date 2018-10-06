@@ -1,6 +1,6 @@
 pkgbase = xde-ctools
 	pkgdesc = X Desktop Environment C-language tools
-	pkgver = 1.7
+	pkgver = 1.8
 	pkgrel = 1
 	url = https://github.com/bbidulock/xde-ctools
 	arch = i686
@@ -13,9 +13,11 @@ pkgbase = xde-ctools
 	depends = libxxf86misc
 	depends = libsm
 	depends = libwnck+
+	depends = libcanberra
+	depends = libnotify
 	optdepends = xdg-launch: launch with recent update and launch notification
-	source = https://github.com/bbidulock/xde-ctools/releases/download/1.7/xde-ctools-1.7.tar.xz
-	md5sums = f023113debbbe9a5a81145e56d9b1e81
+	source = https://github.com/bbidulock/xde-ctools/releases/download/1.8/xde-ctools-1.8.tar.xz
+	md5sums = 9010352ad3ef8c9fd9b5a8f647ec7e1b
 
 pkgname = xde-ctools
 
