@@ -1,7 +1,7 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
 
 pkgname=zypper-git
-pkgver=1.14.12.33.g341bcd23
+pkgver=1.14.12.40.g143e0344
 pkgrel=1
 pkgdesc="Command line software manager using libzypp"
 arch=('i686' 'x86_64')
