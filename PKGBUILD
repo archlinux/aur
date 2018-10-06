@@ -4,21 +4,27 @@
 
 _npmname=nodemon
 pkgname=nodejs-$_npmname
-pkgver=1.11.0
+pkgver=1.18.4
 pkgrel=1
 pkgdesc="Simple monitor script for use during development of a node.js app."
 arch=('any')
-url="http://nodemon.io"
+url="https://nodemon.io"
 license=('MIT')
-depends=('nodejs' 'npm' )
-source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
+depends=(nodejs)
+makedepends=(npm)
+source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz
+        https://rem.mit-license.org/license.txt)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('4db12368131fc3aac29507d80c543c4ac5126e9b9038a76841d3b29433fd6a7f')
+sha256sums=('8d665c1e60e72aa9f96b82ecf74e749e81a0cf9def1dd17e37002784c75f6fcf'
+            '7604b688103461ec6a1d50921c26aa32a2384940ab9f1c1f64963122ecb957ce')
 
 package() {
-  cd "$srcdir"
-  local _npmdir="$pkgdir/usr/lib/node_modules/"
-  mkdir -p "$_npmdir"
-  cd "$_npmdir"
-  npm install -g --user root --prefix "$pkgdir/usr" $_npmname@$pkgver
+  npm install \
+    --user root --global \
+    --prefix "$pkgdir/usr" \
+    "$srcdir"/$_npmname-$pkgver.tgz
+
+  find "$pkgdir/usr" -type d -exec chmod 755 '{}' +
+
+  install -Dm0644 license.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
