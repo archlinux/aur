@@ -1,6 +1,6 @@
 pkgbase = llvm50
 	pkgver = 5.0.2
-	pkgrel = 4
+	pkgrel = 5
 	url = http://llvm.org/
 	arch = i686
 	arch = x86_64
@@ -20,6 +20,7 @@ pkgbase = llvm50
 	source = 0002-Enable-SSP-and-PIE-by-default.patch
 	source = disable-llvm-symbolizer-test.patch
 	source = gcc-build-fix.patch
+	source = glibc.diff
 	sha256sums = d522eda97835a9c75f0b88ddc81437e5edbb87dc2740686cb8647763855c2b3c
 	sha256sums = fa9ce9724abdb68f166deea0af1f71ca0dfa9af8f7e1261f2cae63c280282800
 	sha256sums = 3efe9ddf3f69e0c0a45cde57ee93911f36f3ab5f2a7f6ab8c8efb3db9b24ed46
@@ -27,6 +28,7 @@ pkgbase = llvm50
 	sha256sums = 186f2d10b013395f2dd6e1fd3baf4961a2e40c403f115517c9b253682934f50f
 	sha256sums = 6fff47ab5ede79d45fe64bb4903b7dfc27212a38e6cd5d01e60ebd24b7557359
 	sha256sums = 2e707016fef45434f48c06326c968c11e08445eeb37c53cf55ac592c08262577
+	sha256sums = 4f9e747b4c79f1357ae885f81ef1115e7144ba553dabd0484e87bc5ea69cb0b4
 	makedepends_x86_64 = gcc-multilib
 
 pkgname = llvm50
