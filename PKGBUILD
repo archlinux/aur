@@ -1,9 +1,9 @@
 # Maintainer: Christopher Arndt <chris at chrisarndt.de>
 
-pkgbase=('python-mido')
+pkgbase='python-mido'
 pkgname=('python-mido' 'python2-mido')
 _name='mido'
-pkgver='1.2.8'
+pkgver='1.2.9'
 pkgrel=1
 pkgdesc="A Python library for working with MIDI messages and ports"
 url="https://mido.readthedocs.io/"
@@ -13,7 +13,7 @@ optdepends=('portmidi: for PortMidi support')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-md5sums=('bb7ca6fca48d818dd78a386a7261cb56')
+md5sums=('bec86e55a19f5bfdd5a3546c7cdc418a')
 
 prepare() {
   cp -a "${srcdir}/${_name}-${pkgver}"{,-python2}
