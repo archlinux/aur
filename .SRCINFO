@@ -1,6 +1,6 @@
 pkgbase = lib32-gst-libav
 	pkgdesc = GStreamer Multimedia Framework ffmpeg Plugin (32-bit)
-	pkgver = 1.14.3
+	pkgver = 1.14.4
 	pkgrel = 1
 	url = https://gstreamer.freedesktop.org/
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = lib32-gst-libav
 	makedepends = yasm
 	depends = lib32-gst-plugins-base-libs
 	depends = bzip2
-	provides = lib32-gst-ffmpeg=1.14.3-1
-	source = git+https://anongit.freedesktop.org/git/gstreamer/gst-libav#commit=35290bb8c25b00b80a51d18c88adc9c70aeaebf8
+	provides = lib32-gst-ffmpeg=1.14.4-1
+	source = git+https://anongit.freedesktop.org/git/gstreamer/gst-libav#commit=1c21e61bc18cdbf94ee6510f837a7ddc65c8831e
 	source = gst-common::git+https://anongit.freedesktop.org/git/gstreamer/common
 	source = git+https://git.videolan.org/git/ffmpeg
 	source = git://git.libav.org/gas-preprocessor

@@ -2,7 +2,7 @@
 
 _basename=gst-libav
 pkgname="lib32-$_basename"
-pkgver=1.14.3
+pkgver=1.14.4
 pkgrel=1
 pkgdesc="GStreamer Multimedia Framework ffmpeg Plugin (32-bit)"
 url="https://gstreamer.freedesktop.org/"
@@ -11,7 +11,7 @@ license=(GPL)
 depends=('lib32-gst-plugins-base-libs' 'bzip2')
 makedepends=(python autoconf-archive git valgrind-multilib yasm)
 provides=("lib32-gst-ffmpeg=$pkgver-$pkgrel")
-_commit=35290bb8c25b00b80a51d18c88adc9c70aeaebf8  # tags/1.14.3^0
+_commit=1c21e61bc18cdbf94ee6510f837a7ddc65c8831e  # tags/1.14.4^0
 source=("git+https://anongit.freedesktop.org/git/gstreamer/gst-libav#commit=$_commit"
         "gst-common::git+https://anongit.freedesktop.org/git/gstreamer/common"
         "git+https://git.videolan.org/git/ffmpeg" "git://git.libav.org/gas-preprocessor")
