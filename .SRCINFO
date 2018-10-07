@@ -1,6 +1,6 @@
 pkgbase = wechat_web_devtools
 	pkgdesc = wechat web devtools 微信web开发工具
-	pkgver = 1.02.1809110
+	pkgver = 1.02.1809111
 	pkgrel = 1
 	url = https://github.com/cytle/wechat_web_devtools
 	install = wechat_web_devtools.install
@@ -8,10 +8,9 @@ pkgbase = wechat_web_devtools
 	license = custom
 	depends = wine
 	depends = wine-mono
-	depends = httpie
 	depends = wget
 	depends = wine_gecko
-	source = https://github.com/cytle/wechat_web_devtools/archive/v1.02.1809110.tar.gz
+	source = https://github.com/cytle/wechat_web_devtools/archive/v1.02.1809111.tar.gz
 	sha512sums = SKIP
 
 pkgname = wechat_web_devtools
