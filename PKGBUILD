@@ -1,8 +1,8 @@
 # Maintainer: CrocoDuck <crocoduck dot oducks at gmail dot com>
 
 pkgname=dpf-plugins-git
-pkgver=r88.d3f1a4c
-pkgrel=2
+pkgver=r95.3adff28
+pkgrel=1
 pkgdesc="Collection of DPF-based plugins by DISTRHO. LV2, LADSPA, dssi and VST."
 arch=('i686' 'x86_64')
 url="http://distrho.sourceforge.net/"
@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
     cd "${pkgname%-*}"
-    make BUILD_DSSI=true BUILD_LV2=true BUILD_VST=true BUILD_JACK=true
+    make all && make all -C plugins/ProM
 }
 
 package() {
