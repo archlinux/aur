@@ -46,4 +46,4 @@ package() {
   rm -rf ${pkgdir}/usr/share/doc/aria2/bash_completion
 }
 md5sums=('923b2f6cab7414a8ef0c05a264e070bb'
-         '28bcf743c3c08432f61f74913c0d413f')
+         '3136356aceed1f470016c0f7a94fcb68')
