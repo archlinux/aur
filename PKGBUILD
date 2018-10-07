@@ -1,12 +1,12 @@
 # $Id$
-# Maintainer: Shang Yuanchun <idealities@gmail.com> 
+# Maintainer: Shang Yuanchun <idealities@gmail.com>
 
 pkgname=mirror
 pkgver=0.7.6
 pkgrel=1
 arch=('any')
 license=('GPL')
-url="http://github.com/ideal/mirror/"
+url="http://github.com/ideal/mirror"
 depends=('python2' 'rsync' 'python2-chardet')
 source=(https://github.com/ideal/mirror/archive/$pkgver.tar.gz)
 md5sums=('cdfaae85d21e84dc4077872f85788f93')
