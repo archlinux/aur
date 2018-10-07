@@ -1,8 +1,8 @@
 # Maintainer: Paolo Stivanin <info [at] paolostivanin [DOT] com>
 
 pkgname=libbaseencode
-pkgver=1.0.5
-pkgrel=2
+pkgver=1.0.9
+pkgrel=1
 pkgdesc='Library written in C for encoding and decoding data using base32 or base64 (RFC-4648)'
 arch=('i686' 'x86_64')
 makedepends=('cmake')
@@ -15,7 +15,7 @@ source=("$url/archive/v$pkgver.tar.gz"
 
 validpgpkeys=('060C6B7D3869F148C4C4ACD43C9BE9B64EC1EA64')
 
-sha256sums=("75c887f6790fc6fc83316938421557820bdcec47e4c235c78d9462034eb4943a"
+sha256sums=("a183d7cf30d931b2a078d6f0ef64616b71ab26f9258e5f4e191778c7ace7175d"
             "SKIP")
 
 build() {
