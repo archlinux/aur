@@ -1,7 +1,7 @@
 # Maintainer: LLL2yu <lll2yu@protonmail.com>
  
 pkgname="authenticator"
-pkgver=0.2.5
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="2FA code generator for GNOME"
 arch=('any')
