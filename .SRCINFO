@@ -6,6 +6,7 @@ pkgbase = posterazor-qt5
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = git
 	depends = poppler-qt5
 	conflicts = posterazor
 	source = git+https://github.com/aportale/posterazor.git#commit=899d345281cf4a34ffe97d50ea35da784b0ed4a1
