@@ -22,4 +22,3 @@ depends=('dmd'                # handle D sources
          'ruby'               # handle Ruby sources
          'rust'               # handle Rust sources
          'swi-prolog')        # handle Prolog sources
-
