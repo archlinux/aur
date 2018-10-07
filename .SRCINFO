@@ -1,0 +1,18 @@
+pkgbase = obsuite-git
+	pkgdesc = System monitoring tools for custom desktop environments
+	pkgver = 0
+	pkgrel = 1
+	url = https://gitlab.com/william.belanger/obsuite
+	arch = any
+	license = GPL3
+	depends = python>=3
+	depends = python-pyqt5
+	depends = qt5-svg
+	depends = qt5-multimedia
+	provides = obsuite
+	conflicts = obsuite
+	source = git+https://gitlab.com/william.belanger/obsuite.git
+	md5sums = SKIP
+
+pkgname = obsuite-git
+
