@@ -2,7 +2,7 @@
 #Maintainer: Julian Xhokaxhiu <info at julianxhokaxhiu dot com>
 
 pkgname=aws-ecs-cli
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="The Amazon EC2 Container Service (Amazon ECS) command line interface (CLI) provides high-level commands to simplify creating, updating, and monitoring clusters and tasks from a local development environment."
 depends=('docker')
