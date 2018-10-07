@@ -9,6 +9,7 @@ pkgdesc="PosteRazor cuts a raster image or PDF document into pieces which can be
 arch=('i686' 'x86_64')
 url="https://github.com/aportale/posterazor"
 license=('GPL')
+makedepends=('git')
 depends=('poppler-qt5')
 conflicts=('posterazor')
 _commit=899d345281cf4a34ffe97d50ea35da784b0ed4a1 #1.9.7
