@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034,SC2154
 
 pkgname=pikaur-git
-pkgver=1.3.0.4
+pkgver=1.3.0.5
 pkgrel=1
 pkgdesc="AUR helper which asks all questions before installing/building. Inspired by pacaur, yaourt and yay."
 arch=('any')
@@ -17,6 +17,9 @@ md5sums=(
 depends=(
 	'pyalpm'
 	'git'
+)
+makedepends=(
+	'gettext'
 )
 optdepends=(
 	'asp: for ABS support in -G/--getpkgbuild operation'
