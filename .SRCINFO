@@ -8,6 +8,7 @@ pkgbase = lua-yajl
 	license = GPL
 	makedepends = luarocks5.1
 	depends = lua51
+	depends = yajl
 	source = https://luarocks.org/manifests/brimworks/lua-yajl-2.0-1.src.rock
 	sha256sums = 8e5c5bde4ae4aac336c5ce6da2aef94bf4f69f37e921d718647914bd5328552f
 
