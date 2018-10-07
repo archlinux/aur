@@ -2,14 +2,14 @@
 # Contributor: John Jenkins <twodopeshaggy@gmail.com>
 
 pkgname=bcal
-pkgver=1.9
+pkgver=2.0
 pkgrel=1
 pkgdesc="Storage conversion and expression calculator"
 arch=("i686" "x86_64")
 url="https://github.com/jarun/bcal"
 license=('GPL3')
 source=("https://github.com/jarun/bcal/archive/v${pkgver//_/-}.tar.gz")
-sha256sums=('5d075deaef087680ea4c153ed5f0696f8be149a59ce0e5aaeb3f5b1180b2ec81')
+sha256sums=('7120b25a74b2bec99d75238c235e440f5338d53ad64a4cfe4d05e65814ac91d2')
 conflicts=('bcal-git')
 provides=('bcal')
 
