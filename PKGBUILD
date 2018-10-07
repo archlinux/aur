@@ -1,18 +1,20 @@
 # Maintainer: Sherlock Holo <sherlockya@gmail.com>
 pkgname=camouflage
-pkgver=20180804.98_2c724f8
-pkgrel=1
+_pkgname=camouflage
+pkgver=20181007.99_038476d
+pkgrel=2
 pkgdesc="a mux+websocket+TLS proxy"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('MPL')
-depends=()
+depends=(
+)
 makedepends=(
 	'go'
 	'git'
 )
 
 source=(
-	"camouflage::git://github.com/Sherlock-Holo/camouflage#branch=${BRANCH:-master}"
+	"$_pkgname::git://github.com/Sherlock-Holo/camouflage#branch=${BRANCH:-master}"
     "camouflage.install"
 )
 
@@ -24,7 +26,12 @@ backup=(
 )
 
 pkgver() {
-	cd "$srcdir/$pkgname"
+	if [[ "$PKGVER" ]]; then
+		echo "$PKGVER"
+		return
+	fi
+
+	cd "$srcdir/$_pkgname"
 	local date=$(git log -1 --format="%cd" --date=short | sed s/-//g)
 	local count=$(git rev-list --count HEAD)
 	local commit=$(git rev-parse --short HEAD)
@@ -32,39 +39,47 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir/$_pkgname"
 
-	if [ -L "$srcdir/$pkgname" ]; then
-		rm "$srcdir/$pkgname" -rf
-		mv "$srcdir/.go/src/$pkgname/" "$srcdir/$pkgname"
+	if [ -L "$srcdir/$_pkgname" ]; then
+		rm "$srcdir/$_pkgname" -rf
+		mv "$srcdir/go/src/$_pkgname/" "$srcdir/$_pkgname"
 	fi
 
-	rm -rf "$srcdir/.go/src"
+	rm -rf "$srcdir/go/src"
 
-	mkdir -p "$srcdir/.go/src"
+	mkdir -p "$srcdir/go/src"
 
-	export GOPATH="$srcdir/.go"
+	export GOPATH="$srcdir/go"
 
-	mv "$srcdir/$pkgname" "$srcdir/.go/src/"
+	mv "$srcdir/$_pkgname" "$srcdir/go/src/"
 
-	cd "$srcdir/.go/src/$pkgname/"
-	ln -sf "$srcdir/.go/src/$pkgname/" "$srcdir/$pkgname"
+	cd "$srcdir/go/src/$_pkgname/"
+	ln -sf "$srcdir/go/src/$_pkgname/" "$srcdir/$_pkgname"
 
+	echo ":: Updating git submodules"
 	git submodule update --init
 
+	echo ":: Building binary"
+    export GO111MODULE=on
+    export CGO_ENABLED=0
 	go get -v \
 		-gcflags "-trimpath $GOPATH/src"
+    
+    echo ":: Cleaning residual"
+    chmod 777 -R $GOPATH/pkg/mod
+    rm -rf $GOPATH/pkg/mod
 }
 
 package() {
-	find "$srcdir/.go/bin/" -type f -executable | while read filename; do
+	find "$srcdir/go/bin/" -type f -executable | while read filename; do
 		install -DT "$filename" "$pkgdir/usr/bin/$(basename $filename)"
 	done
 
     mkdir -p $pkgdir/etc/camouflage
-    install -Dm644 $srcdir/.go/src/github.com/Sherlock-Holo/camouflage/config/example.toml $pkgdir/etc/camouflage/
+    install -Dm644 $srcdir/go/src/camouflage/config/example.toml $pkgdir/etc/camouflage/
 
 	mkdir -p $pkgdir/usr/lib/systemd/system
-    	install $srcdir/.go/src/github.com/Sherlock-Holo/camouflage/systemd/camouflage-{client,server}@.service \
-        -Dm644 $pkgdir/usr/lib/systemd/system/
+    install $srcdir/go/src/camouflage/systemd/camouflage-{client,server}@.service \
+    -Dm644 $pkgdir/usr/lib/systemd/system/
 }

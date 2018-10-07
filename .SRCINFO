@@ -1,8 +1,7 @@
 pkgbase = camouflage
 	pkgdesc = a mux+websocket+TLS proxy
-	pkgver = 20180804.98_2c724f8
-	pkgrel = 1
-	arch = i686
+	pkgver = 20181007.99_038476d
+	pkgrel = 2
 	arch = x86_64
 	license = MPL
 	makedepends = go
