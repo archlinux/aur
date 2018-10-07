@@ -1,6 +1,6 @@
 pkgbase = gnuplot-git
-	pkgdesc = A command-line driven interactive function and data plotting utility -- inofficial github fork
-	pkgver = 5.3r20181003.10584
+	pkgdesc = A command-line driven interactive function and data plotting utility - git version
+	pkgver = 5.3r20181007.10587
 	pkgrel = 1
 	url = https://github.com/gnuplot/gnuplot
 	arch = i686
@@ -9,13 +9,16 @@ pkgbase = gnuplot-git
 	makedepends = git
 	makedepends = qt5-tools
 	depends = gd
+	depends = emacs
+	depends = texlive-core
+	depends = texlive-latexextra
 	depends = lua
 	depends = qt5-svg
 	depends = pango
 	provides = gnuplot=5.3
 	conflicts = gnuplot
 	options = !makeflags
-	source = git+https://git.code.sf.net/p/gnuplot/gnuplot-main
+	source = gnuplot::git+https://git.code.sf.net/p/gnuplot/gnuplot-main
 	source = lua53_compat.patch
 	sha256sums = SKIP
 	sha256sums = bfd8a61abbf4491c74225cb9fd252619d4fc29751838bcb4c0639ffe05a00695

@@ -3,30 +3,29 @@
 # Contributor: Jon Gjengset <jon@tsp.io>
 
 pkgname=gnuplot-git
-pkgver=5.3r20181003.10584
+pkgver=5.3r20181007.10587
 pkgrel=1
-pkgdesc="A command-line driven interactive function and data plotting utility -- inofficial github fork"
+pkgdesc="A command-line driven interactive function and data plotting utility - git version"
 arch=('i686' 'x86_64')
 url="https://github.com/gnuplot/gnuplot"
 license=('custom')
-depends=('gd' 'lua' 'qt5-svg' 'pango')
+depends=('gd' 'emacs' 'texlive-core' 'texlive-latexextra' 'lua' 'qt5-svg' 'pango')
 makedepends=('git' 'qt5-tools')
 provides=('gnuplot=5.3')
 conflicts=('gnuplot')
-source=('git+https://git.code.sf.net/p/gnuplot/gnuplot-main' lua53_compat.patch)
+source=("${pkgname%-git}::git+https://git.code.sf.net/p/gnuplot/gnuplot-main" lua53_compat.patch)
 sha256sums=('SKIP'
             'bfd8a61abbf4491c74225cb9fd252619d4fc29751838bcb4c0639ffe05a00695')
 options=('!makeflags')
-_gitname="gnuplot-main"
 
 pkgver() {
-  cd $_gitname
+  cd ${pkgname%-git}
   printf "5.3r%s.%s" $(git log -1 --format="%cd" --date=short | tr -d '-') \
 	 "$(git rev-list --count HEAD)"
 }
 
 prepare() {
-  cd $_gitname
+  cd ${pkgname%-git}
   patch -p1 < "$srcdir"/lua53_compat.patch
   sed -i 's+-fPIE+-fPIC+' configure.ac
   # fix default source location; use the GDFONTPATH variable 
@@ -38,7 +37,7 @@ prepare() {
 }  
 
 build() {
-  cd $_gitname
+  cd ${pkgname%-git}
   ./prepare
   TERMLIBS='-lX11' ./configure --prefix=/usr \
 	  --libexecdir=/usr/lib \
@@ -50,10 +49,12 @@ build() {
 	  --with-qt=qt5 
 	  
   make pkglibexecdir=/usr/bin
+  cd docs
+  make info
 }
 
 package() {
-  cd $_gitname
+  cd ${pkgname%-git}
   make DESTDIR="$pkgdir" install
 
   install -Dm644 Copyright "$pkgdir"/usr/share/licenses/$pkgname/Copyright
