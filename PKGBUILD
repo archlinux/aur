@@ -1,27 +1,27 @@
 # Maintainer: Antony Lee <anntzer dot lee at gmail dot com>
 pkgname=libics
-pkgver=1.5.2
+pkgver=1.6.2
 pkgrel=1
-pkgdesc="the reference library for Image Cytometry Standard, an open standard"
+pkgdesc='Image Cytometry Standard file reading and writing.'
 arch=(i686 x86_64)
-url=http://libics.sourceforge.net/
+url=https://svi-opensource.github.io/libics/
 license=(LGPL2.1)
 depends=(zlib)
-source=(http://sourceforge.net/projects/libics/files/libics/libics-${pkgver}.tar.gz)
-md5sums=(d394225ae454be05c2440641e40d5408)
+source=(https://github.com/svi-opensource/libics/archive/${pkgver}.tar.gz)
+sha256sums=('0dfe1a00579d9e320e2bd81137cee4b534e971c35964ec99656a9410cc45a84a')
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$pkgname-$pkgver"
     ./configure --prefix=/usr
     make
 }
 
 check() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$pkgname-$pkgver"
     make -k check
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$pkgname-$pkgver"
     make DESTDIR="$pkgdir/" install
 }
