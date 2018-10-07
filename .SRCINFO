@@ -1,13 +1,13 @@
 pkgbase = firewarden
 	pkgdesc = Open a file via the specified application within a private Firejail sandbox.
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/pigmonkey/firewarden
 	arch = any
 	license = GPL2
-	depends = firejail>=0.9.46
-	source = firewarden-v1.0.2.tar.gz::https://github.com/pigmonkey/firewarden/archive/v1.0.2.tar.gz
-	md5sums = a9bffdb41719bcdc6958c889831c7daf
+	depends = firejail>=0.9.56
+	source = firewarden-v1.0.3.tar.gz::https://github.com/pigmonkey/firewarden/archive/v1.0.3.tar.gz
+	md5sums = 883613c85f2ae06831c42c15caea0061
 
 pkgname = firewarden
 
