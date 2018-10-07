@@ -18,5 +18,5 @@ pkgver() {
 package() {
     cd "$pkgname"
     install -D ut2004-gog "$pkgdir"/usr/bin/ut2004-gog
-    install -D ut2004-linux.tar.bz2 "$pkgdir"/opt/ut2004-gog/ut2004-linux.tar.bz2
+    install -D ut2004-linux.tar.gz "$pkgdir"/opt/ut2004-gog/ut2004-linux.tar.gz
 }
