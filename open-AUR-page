@@ -1,0 +1,2 @@
+#!/bin/bash
+"$BROWSER" 'https://aur.archlinux.org/packages/nixnote2-git/' 2>/dev/null
