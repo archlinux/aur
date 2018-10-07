@@ -2,7 +2,7 @@
 # Maintainer: Leif Warner <abimelech@gmail.com>
 pkgname=taffybar
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 license=('BSD3')
 pkgdesc="A desktop bar similar to xmobar, but with more GUI"
 url="http://github.com/travitch/taffybar"
