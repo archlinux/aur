@@ -15,7 +15,7 @@ arch=('i686' 'x86_64')
 url='http://root.cern.ch'
 license=('LGPL2.1')
 makedepends=('cmake'
-             'llvm50')
+             'llvm50>=5.0.2-5')
 depends=('cfitsio'
          'cern-vdt'
          'fcgi'
@@ -68,7 +68,6 @@ sha256sums=('463ec20692332a422cfb5f38c78bedab1c40ab4d81be18e99b50cf9f53f596cf'
 prepare() {
     cd "${_pkgname}-${pkgver}"
 
-    msg2 'Adjusting to Python3...'
     2to3 -w etc/dictpch/makepch.py 2>&1 > /dev/null
 
     patch -p1 -i "${srcdir}/exclude_clang_from_install_directive.patch"
@@ -113,11 +112,9 @@ package() {
     install -D -m644 "${srcdir}/${_pkgname}-${pkgver}/build/package/debian/root-system-bin.png" \
         "${pkgdir}/usr/share/icons/hicolor/48x48/apps/root-system-bin.png"
 
-    msg2 'Updating system config...'
     # use a file that pacman can track instead of adding directly to ld.so.conf
     install -d "${pkgdir}/etc/ld.so.conf.d"
     echo '/usr/lib/root' > "${pkgdir}/etc/ld.so.conf.d/root.conf"
 
-    msg2 'Cleaning up...'
     rm -rf "${pkgdir}/etc/root/daemons"
 }

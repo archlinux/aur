@@ -8,7 +8,7 @@ pkgbase = root-extra
 	arch = x86_64
 	license = LGPL2.1
 	makedepends = cmake
-	makedepends = llvm50
+	makedepends = llvm50>=5.0.2-5
 	depends = cfitsio
 	depends = cern-vdt
 	depends = fcgi
