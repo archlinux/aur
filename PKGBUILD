@@ -1,4 +1,4 @@
-# Maintainer: Falk Alexander Seidl <fa@terminal.run>
+# Maintainer: Falk Alexander Seidl <fseidl@gnome.org>
 
 pkgname=gnome-passwordsafe-git
 _gitname=PasswordSafe
@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_gitname}/"
-	meson . _build --prefix=/usr -Dprofile=development
+	arch-meson . _build --prefix=/usr -Dprofile=development
 	ninja -C _build
 }
 
