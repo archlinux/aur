@@ -6,7 +6,7 @@
 
 set -u
 pkgname='networkminer'
-pkgver='2.3.1'
+pkgver='2.3.2'
 pkgrel='1'
 pkgdesc='A Network Forensic Analysis Tool for advanced Network Traffic Analysis, sniffer and packet analyzer'
 arch=('any')
@@ -16,7 +16,7 @@ depends=('mono')
 _verwatch=('http://www.netresec.com/?page=NetworkMiner' '\s\+<[nt][a-z]\+>NetworkMiner\s\([0-9][^<]\+\)</[a-z]\+>.*' 'f')
 _srcname="NetworkMiner_${pkgver//\./-}"
 source=("${_srcname}.zip::https://www.netresec.com/?download=NetworkMiner")
-sha256sums=('b27a2b4f440849a760220d1df6b1c839321f4eb428c673f1f35f3a6e3549504a')
+sha256sums=('a567301040746c7ba48d0ce7c6552475b9c23ca693441089fdb4cd740ae0aa68')
 
 package() {
   set -u
