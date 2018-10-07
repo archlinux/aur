@@ -1,6 +1,6 @@
 pkgbase = wxglterm-git
 	pkgdesc = a cross platform terminal emulator using wxWidgets and python, drawing using OpenGL
-	pkgver = r355.8f49cda
+	pkgver = r381.8df4c6d
 	pkgrel = 1
 	url = https://github.com/stonewell/wxglterm
 	arch = x86_64

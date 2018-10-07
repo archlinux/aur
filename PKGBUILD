@@ -1,7 +1,7 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=wxglterm-git
 _pkgname=wxglterm
-pkgver=r355.8f49cda
+pkgver=r381.8df4c6d
 pkgrel=1
 pkgdesc="a cross platform terminal emulator using wxWidgets and python, drawing using OpenGL"
 arch=('x86_64')
@@ -29,7 +29,7 @@ prepare (){
 
 build() {
   cd "build"
-  cmake ../$_pkgname -DCMAKE_INSTALL_PREFIX=/usr -DPYTHON_INCLUDE_DIR=$(python -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())") -DBUILD_WXWIDGETS_UI=ON -DBUILD_OPENGL_UI=ON -DCMAKE_BUILD_TYPE="RelWithDebInfo" -DBUILD_SCINTILLA_EDITOR=OFF -DCMAKE_C_COMPILER=/usr/bin/gcc-7 -DCMAKE_CXX_COMPILER=/usr/bin/g++-7
+  cmake ../$_pkgname -DCMAKE_INSTALL_PREFIX=/usr -DPYTHON_INCLUDE_DIR=$(python -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())") -DBUILD_WXWIDGETS_UI=ON -DBUILD_OPENGL_UI=ON -DCMAKE_BUILD_TYPE="RelWithDebInfo" -DBUILD_SCINTILLA_EDITOR=OFF
 
   make
 }
