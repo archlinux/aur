@@ -1,7 +1,7 @@
 # Maintainer: neodarz <neodarz@neodarz.net>
 
 pkgname=grv
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="terminal interface for viewing git repositories"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ provides=("$pkgname")
 conflicts=("$pkgname")
 source=("https://github.com/rgburke/grv/releases/download/v$pkgver/${pkgname}_v${pkgver}_linux64")
 noextract=()
-sha512sums=('42a2d4c9f183fae1251100cdf3c0aa1b8b98453b3e9dc1d2278d7f6e91e58983d80f5fc51ae3f2821adb7a8b1d7be804ee013daaef98d248bc6b905a00bb1ffd')
+sha512sums=('af798127246081631f63f43d6e4d796345cdf04af2aa2eaab79b008b8ec914be881b469c99e98abd1cbe21e40ae41f64586d56b6fdea623db90bbb48e638e990')
 
 package() {
     install -Dm755 "$srcdir/${pkgname}_v${pkgver}_linux64" "$pkgdir/usr/bin/$pkgname"
