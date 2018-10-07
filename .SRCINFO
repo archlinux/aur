@@ -1,6 +1,6 @@
 pkgbase = carla-git
 	pkgdesc = Audio Plugin Host
-	pkgver = 1.9.9.r100.g265cd5d9
+	pkgver = 1.9.11.r19.g1ad96dc5
 	pkgrel = 1
 	epoch = 1
 	url = http://kxstudio.sf.net/carla
@@ -17,6 +17,7 @@ pkgbase = carla-git
 	depends = fluidsynth
 	depends = liblo
 	depends = python-pyqt5
+	depends = qt5-svg
 	optdepends = gtk2: LV2 GTK2 UI support
 	optdepends = gtk3: LV2 GTK3 UI support
 	optdepends = python-pyliblo: OSC control support
