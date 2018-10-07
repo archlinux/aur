@@ -1,7 +1,7 @@
 # Maintainer: Nils Czernia <nils[at]czserver[dot]de>
 pkgname=librenms
-pkgver=1.37
-pkgrel=3
+pkgver=1.43
+pkgrel=1
 pkgdesc='Autodiscovering PHP/MySQL-based network monitoring system.'
 arch=('any')
 url='https://www.librenms.org/'
@@ -20,7 +20,7 @@ source=(
     "apache.example.conf"
     "nginx.example.conf"
 )
-sha256sums=('86dbcb2875c7bb4df8e042d9fc08e771cb60f6db55ba59259a14c6a8b6eaa281'
+sha256sums=('6f5fc969eae766d894715f703628534b35420ba3b77cc25988abfd522f14cb6c'
             '4189c171e4edb55ff11c80b313fed6ff4226ddb38f1e7c97e741e59e1c83afb8'
             'ee2a2d465e01b65863a603406d2bee8858ec488546cb84d5c4fdb3166cc062a3'
             'ad83d03b8459e87ecd77f9ffebe56ccb9cc2dff1d52ce1151ef79a1e26653361'
