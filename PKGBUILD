@@ -5,7 +5,7 @@
 # Contributor: Angelo Theodorou <encelo@users.sourceforge.net>
 
 pkgname=eternallands
-pkgver=1.9.4
+pkgver=1.9.5.2
 pkgrel=1
 pkgdesc="A free 3D MMORPG game with thousands of on-line players"
 arch=('i686' 'x86_64')
@@ -16,8 +16,8 @@ makedepends=('gzip' 'git')
 optdepends=('zenity: to use the launch script')
 options=('!emptydirs')
 changelog=eternallands.changelog
-source=('http://www.eternal-lands.com/el_linux_installer_194.sh')
-md5sums=('46962fe07907fd5ebcd030d4ebebbacd')
+source=('https://github.com/raduprv/Eternal-Lands/releases/download/1.9.5.2/el_195_1_data_files.zip')
+md5sums=('e42ebe628e704c8f7e0b21e3340f475d')
 
 build()
 {
@@ -41,14 +41,13 @@ build()
   rm -rf "$srcdir/$_gitname-build"
   git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
   cd "$srcdir/$_gitname-build"
-  git checkout 1.9.4.1
+  git checkout 1.9.5.2
 
-  make -f Makefile.linux gen_git_version
-  sed -i "s|#data_dir = \"c:\\\Program Files\\\Eternal Lands\\\\\"|#data_dir = /usr/share/eternallands|" el.ini 
   sed -i "s|/usr/games/|/usr/bin/|" pkgfiles/eternallands
   sed -i "s|/usr/share/games/EternalLands/|/usr/share/eternallands/|" pkgfiles/eternallands
   sed -i "s|#data_dir = /usr/share/games/EternalLands|#data_dir = /usr/share/eternallands|" pkgfiles/eternallands
   sed -i "s|#data_dir = \\\/usr\\\/share\\\/games\\\/EternalLands|#data_dir = \\\/usr\\\/share\\\/eternallands|" pkgfiles/eternallands
+  rm -f gen_git_version
   make -f Makefile.linux release
 }
 
@@ -61,7 +60,7 @@ package() {
   mkdir -p "${pkgdir}/usr/share/applications"
   mkdir -p "${pkgdir}/usr/share/licenses/eternallands/"
   mkdir -p "${pkgdir}/usr/share/eternallands"
-  
+
   install -m755 elc-build/el.x86.linux.bin "${pkgdir}/usr/bin/"
   install -m755 elc-build/pkgfiles/eternallands "${pkgdir}/usr/bin/"
   install -m644 elc-build/pkgfiles/eternallands.6 "${pkgdir}/usr/share/man/man6"
@@ -71,20 +70,19 @@ package() {
   install -m644 elc-build/pkgfiles/eternallands.desktop "${pkgdir}/usr/share/applications"
   install -m644 elc-build/eternal_lands_license.txt "${pkgdir}/usr/share/licenses/eternallands/"
 
-  sh el_linux_installer_194.sh --noexec --target el_linux_installer_194
-  cd el_linux_installer_194
-  mkdir -p subarch_uncompressed && tar --lzma -xvpf subarch -C subarch_uncompressed
-  cd subarch_uncompressed
-  mkdir -p instarchive_uncompressed && tar --lzma -xvpf instarchive_all -C instarchive_uncompressed
-  cd instarchive_uncompressed
+  unzip -d instarchive_uncompressed el_195_1_data_files.zip
+  cd instarchive_uncompressed/el_data
 
   # Compress textures and maps
   find \( -name *.bmp -or -name *.elm \) -exec gzip -f {} \;
 
   for dir in 2dobjects 3dobjects actor_defs animations languages maps meshes particles shaders skeletons skybox textures; do
-	cp -R ${dir} "${pkgdir}/usr/share/eternallands/"
+    cp -R ${dir} "${pkgdir}/usr/share/eternallands/"
   done
-  
+
+  sed -i "s|^#data_dir = \"c:\\\Program Files\\\Eternal Lands\\\\\"|#data_dir = /usr/share/eternallands|" el.ini
+  sed -i "s|^#use_new_selection.*$|#use_new_selection = 1|g" el.ini
+
   for file in *.ini *.txt *.lst *.xml; do
     install -m644 ${file} "${pkgdir}/usr/share/eternallands/"
   done

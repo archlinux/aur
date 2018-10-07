@@ -1,3 +1,9 @@
+2018-08-05 Paul Broadhead <pjbroad@twinmoons.org.uk>
+
+	* PKGBUILD
+	Updated to client 1.9.5 build 2
+	Modified to use data package included with GitHub release
+
 2015-08-23 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
 
 	* PKGBUILD :
