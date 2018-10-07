@@ -1,7 +1,7 @@
 # Maintainer: Daniel Ruiz de Alegria <daniruizdealegria@gmail.com>
 
 pkgname="flat-remix-gtk-git"
-pkgver=r23.73f5634
+pkgver=r25.318b2b9
 pkgrel=1
 pkgdesc="Flat Remix GTK theme is a pretty simple gtk window theme inspired on material design following a modern design using "flat" colors with high contrasts and sharp borders."
 arch=('any')

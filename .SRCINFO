@@ -1,6 +1,6 @@
 pkgbase = flat-remix-gtk-git
 	pkgdesc = Flat Remix GTK theme is a pretty simple gtk window theme inspired on material design following a modern design using "flat" colors with high contrasts and sharp borders.
-	pkgver = r23.73f5634
+	pkgver = r25.318b2b9
 	pkgrel = 1
 	url = https://drasite.com/flat-remix-gtk
 	arch = any
