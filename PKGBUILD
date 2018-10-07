@@ -2,16 +2,17 @@
 
 pkgname=textosaurus-git
 epoch=1
-pkgver=0.9.7.r2.gb3c03f1
+pkgver=0.9.9.r1.gdc369a4
 pkgrel=1
 pkgdesc="Simple cross-platform text editor based on Qt and Scintilla"
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://github.com/martinrotter/textosaurus"
 license=(GPL3)
-depends=('qt5-base' 'qt5-svg')
-makedepends=('git' 'qt5-tools')
-provides=('textosaurus')
-conflicts=('textosaurus' 'textosaurus-git')
+depends=(qt5-base qt5-svg)
+makedepends=(git qt5-tools)
+provides=(textosaurus)
+conflicts=(textosaurus)
+replaces=(textilosaurus)
 source=("${pkgname}::git+https://github.com/martinrotter/textosaurus.git"
         "git+https://github.com/martinrotter/transka.git"
         "git+https://github.com/martinrotter/7za.git"
@@ -46,7 +47,7 @@ prepare() {
  
 build() { 
   cd "${srcdir}/${pkgname}"
-  qmake build.pro -r CONFIG+=release PREFIX=/usr
+  qmake build.pro -r CONFIG+=release PREFIX=/usr 
   make 
 } 
  
