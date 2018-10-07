@@ -1,7 +1,7 @@
 pkgbase = bower-mail
 	pkgdesc = A curses terminal client for the Notmuch email system
-	pkgver = 0.8.1
-	pkgrel = 2
+	pkgver = 0.9
+	pkgrel = 1
 	url = https://github.com/wangp/bower
 	arch = any
 	license = GPL3
@@ -16,8 +16,8 @@ pkgbase = bower-mail
 	optdepends = lynx: dump HTML emails
 	optdepends = w3m: dump HTML emails
 	conflicts = bower
-	source = https://github.com/wangp/bower/archive/0.8.1.tar.gz
-	md5sums = 7efe17fa39dd9d8e1663e8ca8bdb93d1
+	source = https://github.com/wangp/bower/archive/0.9.tar.gz
+	md5sums = 72ee912f56b529cc7e098b1e13a40d63
 
 pkgname = bower-mail
 

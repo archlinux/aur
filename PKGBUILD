@@ -1,7 +1,7 @@
 # Maintainer: ber532k <ber532k@gmx.de>
 pkgname=bower-mail
-pkgver=0.8.1
-pkgrel=2
+pkgver=0.9
+pkgrel=1
 pkgdesc="A curses terminal client for the Notmuch email system"
 arch=('any')
 url="https://github.com/wangp/bower"
@@ -11,7 +11,7 @@ optdepends=('msmtp: send messages' 'lynx: dump HTML emails' 'w3m: dump HTML emai
 conflicts=('bower')
 license=('GPL3')
 source=("https://github.com/wangp/bower/archive/$pkgver.tar.gz")
-md5sums=('7efe17fa39dd9d8e1663e8ca8bdb93d1')
+md5sums=('72ee912f56b529cc7e098b1e13a40d63')
 
 build() {
     patch "$srcdir/bower-$pkgver/src/Mercury.options" < ../arch.patch
