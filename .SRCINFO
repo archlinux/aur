@@ -1,15 +1,15 @@
 pkgbase = fargate-cli
 	pkgdesc = CLI for AWS Fargate
-	pkgver = 0.3.2
-	pkgrel = 2
+	pkgver = 0.4.0
+	pkgrel = 1
 	url = https://github.com/turnerlabs/fargate
 	arch = i686
 	arch = x86_64
 	license = MIT
-	source_i686 = https://github.com/turnerlabs/fargate/releases/download/v0.3.2/ncd_linux_386
-	md5sums_i686 = 429529bd6b8eed4a61cea473fb8499cb
-	source_x86_64 = https://github.com/turnerlabs/fargate/releases/download/v0.3.2/ncd_linux_amd64
-	md5sums_x86_64 = 9926a733db80ed57b81647a6ccdc03a0
+	source_i686 = https://github.com/turnerlabs/fargate/releases/download/v0.4.0/ncd_linux_386
+	md5sums_i686 = 487e024ae0f8d3f3a6f2ad54dc716a16
+	source_x86_64 = https://github.com/turnerlabs/fargate/releases/download/v0.4.0/ncd_linux_amd64
+	md5sums_x86_64 = 2bbf85a630360cb99b8b9f2aa790dcf7
 
 pkgname = fargate-cli
 
