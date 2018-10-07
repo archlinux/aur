@@ -1,0 +1,8 @@
+Requirements:
+
+  pacaur -S pkgfile pkgbuild-introspection pacman-contrib
+  pkgfile --update
+
+Compile the new PKGBUILD and required files:
+
+  make
