@@ -1,22 +1,22 @@
 # Maintainer: Alex Zose <alexander[dot]zosimidis[at]gmail[dot]com>
 
 pkgname=('pyzbar')
-pkgver=0.1.5
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="A ctypes-based wrapper around the zbar barcode reader"
-arch=('x86_64')
+arch=('any')
 license=('MIT')
-url="https://github.com/NaturalHistoryMuseum/pyzbar/"
-depends=('zbar')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/NaturalHistoryMuseum/pyzbar/archive/v$pkgver.tar.gz")
-sha512sums=('785c3e4cc5b44a1035004e4b4dd2ee538613aa021300b84c6183cc457c751fe4b4a419241608ef0e5e548d312596a0d5f4857a7b1388c6cef77fd021a0e0034a')
+url="https://github.com/NaturalHistoryMuseum/$pkgname/"
+depends=('zbar' 'python-setuptools')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/NaturalHistoryMuseum/$pkgname/archive/v$pkgver.tar.gz")
+sha512sums=('74b56658db7a8dc2d7a716992c001ec52a2befc9e31c41ecf7e5e1f277d4188963ef79a2433fc4befdd15d2f6e3f47c4f064582b530eef028c55e07e2c88dbbe')
 
 package() {
   mkdir -p $pkgdir/usr/share/doc/$pkgname/
   mkdir -p $pkgdir/usr/share/licenses/$pkgname/
 
   cd $srcdir/$pkgname-$pkgver
-  python setup.py install --root=$pkgdir/ --no-compile
+  python setup.py install --root=$pkgdir/
   install -m 644 $srcdir/$pkgname-$pkgver/{CHANGELOG,DEVELOPING,README}.md $pkgdir/usr/share/doc/$pkgname/
   install -m 644 $srcdir/$pkgname-$pkgver/LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/
 }
