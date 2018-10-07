@@ -10,7 +10,7 @@ srcurl='http://nightlies.videolan.org/build/source/'
 srclist=$(curl "$srcurl")
 
 msg 'Find latest nightly'
-fileregex='.*(<a\ +href=\")([^\"]+)(\">)'
+fileregex='(<a\ +href=\")(vlc-([^\"]+)-([^\"]+)-([^\"]+)-([^\"]+))(\">)'
 if ! [[ $srclist =~ $fileregex ]]; then
     echo 'No source found'
     exit -1
