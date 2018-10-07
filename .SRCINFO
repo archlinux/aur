@@ -1,6 +1,6 @@
 pkgbase = wingide
 	pkgdesc = Wing IDE Professional is the full-featured Python IDE for professional programmers.
-	pkgver = 6.1.0.1.2
+	pkgver = 6.1.1.1.1
 	pkgrel = 1
 	url = http://www.wingware.com
 	install = wingide.install
@@ -12,20 +12,8 @@ pkgbase = wingide
 	depends = xdg-utils
 	options = !strip
 	options = !emptydirs
-	source = http://wingware.com/pub/wingide/6.1.0/wingide-6.1.0-1-x86_64-linux.tar.bz2
-	source = http://wingware.com/pub/wingide/6.1.0/patches/fix-pep8-6.1.0p1-all.tar
-	source = http://wingware.com/pub/wingide/6.1.0/patches/fix-pep8-6.1.0p2-all.tar
-	source = http://wingware.com/pub/wingide/6.1.0/patches/fix-pep8-env-6.1.0p3-all.tar
-	source = http://wingware.com/pub/wingide/6.1.0/patches/remote-replace-all-6.1.0p4-all.tar
-	source = http://wingware.com/pub/wingide/6.1.0/patches/fix-sys-exit-reporting-6.1.0p5-all.tar
-	source = http://wingware.com/pub/wingide/6.1.0/patches/fix-pypath-expansion-6.1.0p6-all.tar
-	md5sums = b4e5b7f9ec4be77e5e9e7e249b737b69
-	md5sums = f96618da2fe8a5d12e90e0027a6e23f8
-	md5sums = 45c443b9b1ef24be01139bb9e5610cfa
-	md5sums = 0dca244c6e605d9b4e9cb9fa0eed5b96
-	md5sums = 55b2b6f8ba70e5ee4146c0ec6cdefbe9
-	md5sums = 5b26502347ddbd5d29f356389f848af3
-	md5sums = 3a32eb00924f43f30c22a270e756c56a
+	source = http://wingware.com/pub/wingide/6.1.1/wingide-6.1.1-1-x86_64-linux.tar.bz2
+	md5sums = 44d38552af9d3d50ac6cae42a55426ac
 
 pkgname = wingide
 
