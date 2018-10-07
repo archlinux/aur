@@ -1,7 +1,7 @@
 pkgbase = linux-drm-next-git
 	pkgdesc = Linux kernel with DRM patches
-	pkgver = 4.20.783892.87c2ee740c07
-	pkgrel = 2
+	pkgver = 4.20.784194.c530174b90fa
+	pkgrel = 1
 	url = https://cgit.freedesktop.org/drm/drm
 	arch = x86_64
 	license = GPL2
@@ -18,7 +18,7 @@ pkgbase = linux-drm-next-git
 	source = linux.install
 	source = linux-drm-next-git.preset
 	sha256sums = SKIP
-	sha256sums = 30e0dc53fe502e732e0c6597f36f82840959b90a76de98553e24c6fe20664102
+	sha256sums = d9cae678b6d10df6c808676180156fc8ddc0f2fde5d280cf94e1060ddb088e52
 	sha256sums = d590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 
