@@ -2,7 +2,7 @@
 # Maintainer: Albert Graef <aggraef at gmail.com>
 
 pkgname=pure-docs-git
-pkgver=r90.248a4cd
+pkgver=r91.8aafd20
 pkgrel=1
 pkgdesc="Pure Language and Library Documentation, latest snapshot"
 arch=('any')
