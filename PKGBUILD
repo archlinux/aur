@@ -4,7 +4,7 @@
 # Contributor: Max Liebkies <mail@maxliebkies.de>
 
 pkgname=firefox-wayland
-pkgver=62.0.2
+pkgver=62.0.3
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with Wayland support enabled"
 arch=(x86_64)

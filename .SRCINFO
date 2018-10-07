@@ -1,6 +1,6 @@
 pkgbase = firefox-wayland
 	pkgdesc = Standalone web browser from mozilla.org with Wayland support enabled
-	pkgver = 62.0.2
+	pkgver = 62.0.3
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = x86_64
@@ -47,7 +47,7 @@ pkgbase = firefox-wayland
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
-	source = hg+https://hg.mozilla.org/mozilla-unified#tag=FIREFOX_62_0_2_RELEASE
+	source = hg+https://hg.mozilla.org/mozilla-unified#tag=FIREFOX_62_0_3_RELEASE
 	source = firefox.desktop
 	source = firefox-symbolic.svg
 	sha256sums = SKIP
