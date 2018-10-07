@@ -1,0 +1,16 @@
+pkgbase = mirror
+	pkgdesc = rsync scheduler for open source mirror site
+	pkgver = 0.7.6
+	pkgrel = 1
+	url = https://github.com/ideal/mirror
+	arch = any
+	license = GPL
+	makedepends = python-distribute
+	depends = python2
+	depends = rsync
+	depends = python2-chardet
+	source = https://github.com/ideal/mirror/archive/0.7.6.tar.gz
+	md5sums = cdfaae85d21e84dc4077872f85788f93
+
+pkgname = mirror
+
