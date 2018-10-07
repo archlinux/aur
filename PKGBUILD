@@ -1,7 +1,7 @@
 # Maintainer: eolianoe <eolianoe [at] gmail [DoT] com>
 
 pkgname=coin-or-ipopt
-pkgver=3.12.10
+pkgver=3.12.11
 pkgrel=1
 pkgdesc="Interior Point OPTimizer"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ groups=('coin-or')
 depends=('lapack')
 makedepends=('gcc-fortran' 'wget')
 source=("http://www.coin-or.org/download/source/Ipopt/Ipopt-$pkgver.tgz")
-sha1sums=('5eb1aefb2f9acfd8b1b5838370528ac1d73787d6')
+sha1sums=('cede6497ec8b4c3ccb96256d6430a39ea353af69')
 
 prepare(){
   cd "$srcdir/Ipopt-$pkgver/ThirdParty/ASL" && ./get.ASL
