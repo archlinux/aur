@@ -1,0 +1,33 @@
+%%% This is a preliminary version, barring acceptance from the 
+%%% LaTeX Project Team and other feedback, of the GUST Font Nosource
+%%% License. This license is for use with free fonts distributed 
+%%% without source code, e.g., fonts created with visual tools.
+%%%   
+%%% For the most recent version of this license see
+%%% http://www.gust.org.pl/fonts/licenses/GUST-FONT-NOSOURCE-LICENSE.txt 
+%%% or
+%%% http://tug.org/fonts/licenses/GUST-FONT-NOSOURCE-LICENSE.txt
+%
+% This work may be distributed and/or modified under the conditions 
+% of the LaTeX Project Public License, either version 1.3a of this 
+% license or (at your option) any later version, provided that the 
+% following additional clauses are observed:
+%
+% 1) As there is no universally relevant concept of font source files,
+%    no distinction is made between "Work" and "Compiled Work"; hence, 
+%    the relevant clauses of the LaTeX Project Public License should 
+%    be interpreted accordingly.
+% 2) Due to the nature of fonts, clause 6a of the LaTeX Project Public 
+%    License, version 1.3a, does not apply.  A later version of the 
+%    LaTeX Project Public License may number or word this clause 
+%    differently; it is the substance that is important.
+% 3) It is requested, but not legally required, that derived works be 
+%    distributed only after changing the names of the fonts comprising 
+%    this work and given in the accompanying file MANIFEST.txt, and 
+%    that the files comprising the Work, as listed in MANIFEST.txt also
+%    be given new names. Any exceptions to this request are also given 
+%    in MANIFEST.txt.
+% 
+% The latest version of the LaTeX Project Public License is in
+% http://www.latex-project.org/lppl.txt and version 1.3a or later
+% is part of all distributions of LaTeX version 2004/10/01 or later.

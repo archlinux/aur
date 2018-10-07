@@ -1,0 +1,22 @@
+pkgbase = font-kurier
+	pkgdesc = Font Kurier by Malgorzata Budyta
+	pkgver = 0.995
+	pkgrel = 2
+	url = http://jmn.pl/kurier-i-iwona/
+	arch = any
+	license = custom:GUST
+	depends = fontconfig
+	source = http://jmn.pl/pliki/Kurier-ttf-0_995.zip
+	source = http://jmn.pl/pliki/Kurier-otf-0_995.zip
+	source = LICENSE
+	md5sums = 636124244664ec027493e74a89964745
+	md5sums = d2a927505d0597a251db384e51c7ff22
+	md5sums = 3eb34a8f035799bd0a2beef4626c314e
+	sha256sums = ef51e34af788a03528a982f2493983a468feb714341337fdb38711077becd833
+	sha256sums = 519a8dfec4446337f398646a243ef006c2b53ed9d7493b76e320b4205e1b39d0
+	sha256sums = 4b3359f51f8a203dca048088bc63acbb57f379e83bef9e0b0f294b9a47394725
+
+pkgname = ttf-kurier
+
+pkgname = otf-kurier
+
