@@ -2,7 +2,7 @@
 
 pkgname=aria-ng-deploy
 _pkgname=AriaNg-DailyBuild
-pkgver=20180902
+pkgver=20181006
 pkgrel=1
 pkgdesc="AriaNg, A Better Web Frontend for aria2 (out of box version)"
 arch=('any')
