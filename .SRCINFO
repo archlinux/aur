@@ -1,14 +1,14 @@
 pkgbase = python-pysimplegui
 	pkgdesc = Super-simple to create custom layout GUI
-	pkgver = 3.8.4
+	pkgver = 3.9.0
 	pkgrel = 1
 	url = https://github.com/MikeTheWatchGuy/PySimpleGUI
 	arch = any
 	license = LGPLv3+
 	checkdepends = python-pytest-runner
 	makedepends = python-setuptools
-	source = python-pysimplegui-3.8.4.tar.gz::https://pypi.python.org/packages/source/P/PySimpleGUI/PySimpleGUI-3.8.4.tar.gz
-	sha256sums = 6152c9f3037509f843f862630e1e89d025053f3cc20ab5d0f226076038cc6f9d
+	source = python-pysimplegui-3.9.0.tar.gz::https://pypi.python.org/packages/source/P/PySimpleGUI/PySimpleGUI-3.9.0.tar.gz
+	sha256sums = 67ff775704320abdff8b8a1749424e77f30dc0c551329629afd0894186b29365
 
 pkgname = python-pysimplegui
 	depends = python
