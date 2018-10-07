@@ -2,8 +2,8 @@
 # Contributor: Matthew Ellison <matt+aur@arroyonetworks.com>
 
 pkgname=pybind11
-pkgver=2.2.3
-pkgrel=2
+pkgver=2.2.4
+pkgrel=1
 pkgdesc='A lightweight header-only library that exposes C++ types in Python and vice versa'
 arch=('any')
 url='http://pybind11.readthedocs.org/'
@@ -19,7 +19,7 @@ makedepends=(
 )
 checkdepends=('cmake' 'python-pytest' 'python-numpy')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/pybind/pybind11/archive/v${pkgver}.tar.gz")
-sha256sums=('3a3b7b651afab1c5ba557f4c37d785a522b8030dfc765da26adc2ecd1de940ea')
+sha256sums=('b69e83658513215b8d1443544d0549b7d231b9f201f6fc787a2b2218b408181e')
 
 prepare() {
     cp -a "${pkgname}-${pkgver}" "${pkgname}-${pkgver}-py2"
@@ -55,7 +55,8 @@ build () {
 #}
 
 package() {
-    local _pythonver="$(python --version | sed 's/^Python[[:space:]]//' | grep -o '^[0-9]*\.[0-9]*')"
+    local _pythonver
+    _pythonver="$(python --version | awk '{ print $2 }' | grep -o '^[0-9]*\.[0-9]*')"
     
     # python modules
     cd "${pkgname}-${pkgver}"

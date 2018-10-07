@@ -1,7 +1,7 @@
 pkgbase = pybind11
 	pkgdesc = A lightweight header-only library that exposes C++ types in Python and vice versa
-	pkgver = 2.2.3
-	pkgrel = 2
+	pkgver = 2.2.4
+	pkgrel = 1
 	url = http://pybind11.readthedocs.org/
 	arch = any
 	license = BSD
@@ -19,8 +19,8 @@ pkgbase = pybind11
 	makedepends = python-breathe
 	optdepends = python: to target bindings supporting python 3
 	optdepends = python2: to target bindings supporting python 2
-	source = pybind11-2.2.3.tar.gz::https://github.com/pybind/pybind11/archive/v2.2.3.tar.gz
-	sha256sums = 3a3b7b651afab1c5ba557f4c37d785a522b8030dfc765da26adc2ecd1de940ea
+	source = pybind11-2.2.4.tar.gz::https://github.com/pybind/pybind11/archive/v2.2.4.tar.gz
+	sha256sums = b69e83658513215b8d1443544d0549b7d231b9f201f6fc787a2b2218b408181e
 
 pkgname = pybind11
 
