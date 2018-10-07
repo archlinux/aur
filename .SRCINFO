@@ -1,12 +1,13 @@
 pkgbase = wireless-regdb-pentest
 	pkgdesc = Central Regulatory Domain Database with txpower/channels modified for pentesters. please respect the law in your country
 	pkgver = 2018.09.07
-	pkgrel = 4
+	pkgrel = 5
 	url = http://wireless.kernel.org/en/developers/Regulatory
 	arch = any
 	license = custom
 	makedepends = crda
 	makedepends = python2-m2crypto
+	makedepends = python-attrs
 	makedepends = python-m2crypto
 	depends = sh
 	depends = libnl
