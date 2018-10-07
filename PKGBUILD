@@ -1,14 +1,15 @@
 # Maintainer: Erikas Rudinskas <erikmnkl@gmail.com>
 
 pkgname=nbfc-git
-pkgver=1.5.3.r71.gf45d282
+pkgver=1.61.r0.g69fcc11
 pkgrel=1
 pkgdesc='Cross-platform fan control service for notebooks (Development version)'
 arch=('i686' 'x86_64')
 url='https://github.com/hirschmann/nbfc'
 conflicts=('nbfc-beta' 'nbfc')
-license=('GPL3')
-depends=('mono')
+license=("GPL3")
+install=${pkgname}.install
+depends=("mono")
 makedepends=('ncurses<=6.0-4')
 provides=('nbfc' 'ec-probe')
 makedepends=('nuget')
