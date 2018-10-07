@@ -6,8 +6,8 @@
 _install_old_variants=0
 
 pkgname=moslight-themes-git
-pkgver=r226.fe550c4
-pkgrel=2
+pkgver=r253.94d5a9b
+pkgrel=1
 pkgdesc="Slick GTK 2/3 and GNOME Shell themes resembling the elementary look"
 arch=('any')
 url='https://github.com/dasnoopy/moslight-themes'
@@ -25,7 +25,7 @@ pkgver() {
 package() {
 	cd "${pkgname}"
 	mkdir -p "${pkgdir}/usr/share/themes"
-	local -a variants=( Arc Arc-Dark )
+	local -a variants=( Arc Arc-dark )
 	if [[ -n ${_install_old_variants} && ${_install_old_variants} -ne 0 ]] ; then
 		variants+=( Light Emite Sky Cloud )
 	fi
