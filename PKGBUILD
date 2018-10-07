@@ -5,25 +5,25 @@
 
 _appname_=vlc
 pkgname=${_appname_}-nightly
-pkgver=4.0.0v20180624
+pkgver=4.0.0v20181007
 _pkgver=4.0.0
-_snapshot_=20180624
-_snapver_=0251
+_snapshot_=20181007
+_snapver_=0231
 _suffix_=dev
 _nightly_=${_snapshot_}-${_snapver_}
 pkgrel=1
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player - nightly snapshot'
-url='https://www.videolan.org/vlc/'
+url='https://nightlies.videolan.org/'
 arch=('x86_64')
 license=('LGPL2.1' 'GPL2')
-depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'glibc' 'libtiger' 'lua'
+depends=('aribb25' 'libmfx' 'a52dec' 'libidn' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'glibc' 'libtiger' 'lua'
          'libmatroska' 'taglib' 'libmpcdec' 'ffmpeg' 'faad2' 'libupnp' 'libmad'
          'libmpeg2' 'xcb-util-keysyms' 'mesa' 'libtar' 'libxinerama' 'libxkbcommon' 'libsecret'
          'libarchive' 'qt5-base' 'qt5-x11extras' 'qt5-svg' 'freetype2'
          'fribidi' 'harfbuzz' 'fontconfig' 'libxml2' 'gnutls' 'libplacebo'
          'wayland-protocols')
-makedepends=('gst-plugins-base-libs' 'live-media' 'libnotify' 'glibc' 'libbluray'
-             'flac' 'kdelibs' 'libdc1394' 'libavc1394' 'libcaca' 'gtk3'
+makedepends=('aribb24' 'gst-plugins-base-libs' 'live-media' 'libnotify' 'glibc' 'libbluray'
+             'flac' 'libdc1394' 'libavc1394' 'libcaca' 'gtk3'
              'librsvg' 'libgme' 'xosd' 'twolame' 'aalib' 'avahi' 'libsystemd'
              'libmtp' 'libmicrodns' 'libdvdcss' 'smbclient'
              'vcdimager' 'libssh2' 'mesa' 'protobuf' 'libnfs' 'mpg123'
@@ -40,7 +40,6 @@ optdepends=('avahi: service discovery using bonjour protocol'
             'libdvdcss: decoding encrypted DVDs'
             'libavc1394: devices using the 1394ta AV/C'
             'libdc1394: IEEE 1394 access plugin'
-            'kdelibs: KDE Solid hardware integration'
             'kwallet: kwallet keystore'
             'libva-vdpau-driver: vdpau backend nvidia'
             'libva-intel-driver: video backend intel'
@@ -78,6 +77,7 @@ optdepends=('avahi: service discovery using bonjour protocol'
             'libx264: H264 encoding'
             'x265: HEVC/H.265 encoder'
             'zvbi: VBI/Teletext decoding'
+            'aribb24: ARIB subtitles'
             'libass: Subtitle support'
             'libkate: Kate codec'
             'libtiger: Tiger rendering for Kate streams'
@@ -230,7 +230,9 @@ build() {
               \
               --libexecdir=/usr/lib \
               --disable-daala \
-              --enable-fdkaac
+              --enable-fdkaac \
+              --with-kde-solid=/usr/share/solid/actions/ \
+              --enable-aribsub
   make V=1
 }
 
@@ -254,7 +256,7 @@ package() {
   #  depends=("${_detected_depends[@]}" "${_undetected_depends[@]}")
 }
 
-sha256sums=('ff08f92a87f707e4d85ed8d84c34725ecb3fc48a19b4ef26107578cf7bb571eb'
+sha256sums=('875078ec8a3912a51225701cb29ca7fb75d66a48adf2546ad63930c58569ec5e'
             'c6f60c50375ae688755557dbfc5bd4a90a8998f8cf4d356c10d872a1a0b44f3a'
             '75ad8802bad1a79754e40fd107f5a6922c54f7467dadef8b439b49d410c8f7d2'
             '90b0e34d5772d2307ba07a1c2aa715db7488389003cfe6d3570b2a9c63061db7')
