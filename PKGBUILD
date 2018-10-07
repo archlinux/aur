@@ -1,12 +1,12 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('one-more-cheese')
 pkgver=0.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Arcade-puzzle game"
 arch=('i686' 'x86_64')
 url="http://nwg.pl/cheese"
 license=('freeware')
-depends=('python' 'python-pygame' 'python-requests')
+depends=('python' 'python-pygame' 'python-requests' 'python-setuptools')
 source=("http://nwg.pl/mice/download/one-more-cheese-0.1.7.tar.gz"
 "http://nwg.pl/mice/download/one-more-cheese"
 "http://nwg.pl/mice/download/one-more-cheese.desktop"

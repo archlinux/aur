@@ -1,7 +1,7 @@
 pkgbase = one-more-cheese
 	pkgdesc = Arcade-puzzle game
 	pkgver = 0.1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://nwg.pl/cheese
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = one-more-cheese
 	depends = python
 	depends = python-pygame
 	depends = python-requests
+	depends = python-setuptools
 	source = http://nwg.pl/mice/download/one-more-cheese-0.1.7.tar.gz
 	source = http://nwg.pl/mice/download/one-more-cheese
 	source = http://nwg.pl/mice/download/one-more-cheese.desktop
