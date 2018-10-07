@@ -10,6 +10,7 @@ license=('GPL3')
 url="https://gitlab.gnome.org/World/PasswordSafe"
 depends=('gtk3' 'python-pykeepass' 'python-construct' 'gobject-introspection' 'libhandy')
 makedepends=('git' 'meson' 'ninja')
+conflicts=('gnome-passwordsafe-git')
 source=("git+https://gitlab.gnome.org/World/PasswordSafe.git")
 md5sums=('SKIP')
  
