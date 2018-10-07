@@ -3,8 +3,8 @@
 # Contributor: Preston Carpenter <APragmaticPlace@gmail.com>
 
 pkgname=spotify-adkiller-git
-pkgver=r155.1fa0ff9
-pkgrel=2
+pkgver=r177.2dabf81
+pkgrel=1
 pkgdesc='Your Party with Spotify - without ads!'
 arch=('any')
 url=https://github.com/SecUpwN/Spotify-AdKiller
