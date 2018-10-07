@@ -1,6 +1,6 @@
 pkgbase = python-executor-python37
 	pkgdesc = Programmer friendly subprocess wrapper
-	pkgver = 20.0
+	pkgver = 21.0
 	pkgrel = 1
 	url = https://github.com/xolox/python-executor
 	arch = any
@@ -14,10 +14,8 @@ pkgbase = python-executor-python37
 	depends = python-six
 	provides = python-executor
 	conflicts = python-executor
-	source = https://files.pythonhosted.org/packages/source/e/executor/executor-20.0.tar.gz
-	source = async.patch
-	sha256sums = 454e586bad943b0c12f6b1492a405bc5bd3f22a7fe258bbb67f3898d6a3873b9
-	sha256sums = edb6587fd8eca1d04b9bb5ff0a21e1429dabc32fb67bece42d9b0819434351c2
+	source = https://files.pythonhosted.org/packages/source/e/executor/executor-21.0.tar.gz
+	sha256sums = 462d1b637f1a7a557f86421791eb5cdb25f2811f97dc9b6d9a4bb46419f2793a
 
 pkgname = python-executor-python37
 

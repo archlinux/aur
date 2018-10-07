@@ -1,7 +1,7 @@
 # Maintainer: Ismo Toijala <ismo.toijala@gmail.com>
 pkgname=python-executor-python37
 _name=executor
-pkgver=20.0
+pkgver=21.0
 pkgrel=1
 pkgdesc="Programmer friendly subprocess wrapper"
 arch=(any)
@@ -26,11 +26,9 @@ provides=(
 )
 source=(
 	"https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
-	async.patch
 )
 sha256sums=(
-	454e586bad943b0c12f6b1492a405bc5bd3f22a7fe258bbb67f3898d6a3873b9
-	edb6587fd8eca1d04b9bb5ff0a21e1429dabc32fb67bece42d9b0819434351c2
+	462d1b637f1a7a557f86421791eb5cdb25f2811f97dc9b6d9a4bb46419f2793a
 )
 
 prepare() {
@@ -42,8 +40,6 @@ prepare() {
 find_links = file:///dev/null
 index_url = file:///dev/null
 EOF
-
-	patch -p1 < ../async.patch
 }
 
 build() {
