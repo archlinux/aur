@@ -1,0 +1,6 @@
+gst-common/
+gst-plugins-ugly/
+*.pkg.tar.*
+*.pkg.tar
+pkg/
+src/

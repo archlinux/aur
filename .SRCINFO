@@ -1,6 +1,6 @@
 pkgbase = lib32-gst-plugins-ugly
 	pkgdesc = GStreamer Multimedia Framework Ugly Plugins (32-bit)
-	pkgver = 1.14.3
+	pkgver = 1.14.4
 	pkgrel = 1
 	url = https://gstreamer.freedesktop.org/
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = lib32-gst-plugins-ugly
 	depends = lib32-x264
 	depends = lib32-opencore-amr
 	depends = gst-plugins-ugly
-	source = git+https://anongit.freedesktop.org/git/gstreamer/gst-plugins-ugly#commit=e6e27076d11f763e817cd1f423db423018a48fcb
+	source = git+https://anongit.freedesktop.org/git/gstreamer/gst-plugins-ugly#commit=e1bf2aa184f83ff9fd5b7850c460129100ac6d1a
 	source = gst-common::git+https://anongit.freedesktop.org/git/gstreamer/common
 	sha256sums = SKIP
 	sha256sums = SKIP
