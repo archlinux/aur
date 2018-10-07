@@ -1,15 +1,15 @@
 pkgbase = indicator-sensors
 	pkgdesc = Small application to provide hardware sensor readings using the AppIndicator framework
 	pkgver = 0.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/alexmurray/indicator-sensors
 	install = indicator-sensors.install
-	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = gnome-common
 	makedepends = intltool
 	depends = dconf
+	depends = gobject-introspection
 	depends = libappindicator-gtk3
 	depends = libatasmart
 	depends = libnotify
