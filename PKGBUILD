@@ -1,7 +1,7 @@
 # Maintainer: Robin Broda <robin at broda dot me>
 
 pkgname=glava
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc='OpenGL audio spectrum visualizer'
 arch=('x86_64')
