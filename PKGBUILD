@@ -4,7 +4,7 @@
 
 pkgname=gitea-bin
 pkgver=1.5.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Git with a cup of tea, binary installation"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://gitea.io/'
@@ -37,11 +37,11 @@ sha256sums=('4bcddd5d05ce17968866beb5690517710e040554c9a555a7af06ca549be8c3b0'
             'ed2f10a9d78b8c6c9ef33f1420d0eb266981891caf2f15d630553f02dc60d3ae'
             '2b52802b43fac5c772235670ebc8ca11b538fb6dcc356513bc70d5bf9ddab9a9')
 sha256sums_x86_64=('b8933a2929621857bf1f48d56f2a8cca378c37c9eb9a388c0a743e9f2e626beb')
-sha256sums_i686=('b8933a2929621857bf1f48d56f2a8cca378c37c9eb9a388c0a743e9f2e626beb')
-sha256sums_arm=('b8933a2929621857bf1f48d56f2a8cca378c37c9eb9a388c0a743e9f2e626beb')
-sha256sums_armv6h=('b8933a2929621857bf1f48d56f2a8cca378c37c9eb9a388c0a743e9f2e626beb')
-sha256sums_armv7h=('b8933a2929621857bf1f48d56f2a8cca378c37c9eb9a388c0a743e9f2e626beb')
-sha256sums_aarch64=('b8933a2929621857bf1f48d56f2a8cca378c37c9eb9a388c0a743e9f2e626beb')
+sha256sums_i686=('3bc6433b300905c39562906383f300ec32a1ac10e087440b8ebd946e93b64dac')
+sha256sums_arm=('2570c017ab1c4410f45a8c765a5fd42a2c2d16cf850c31f627900ad50acc0813')
+sha256sums_armv6h=('967b5fc4beea0035a06cb96592d9152c26ce168ff781506bc623a445d126a7ce')
+sha256sums_armv7h=('11402f5aa3d00dc3bf050bc795b78e0035e4c0879dcecd3a23ee0ac52a4a9642')
+sha256sums_aarch64=('1085625eb8e1c1c0fab312104284c97a143302c105e93ceff1d4b371a6eb8a1b')
 
 package() {
   install -Dm755 "${srcdir}/gitea-${pkgver}-${CARCH}" "${pkgdir}"/usr/bin/gitea

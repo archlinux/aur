@@ -1,7 +1,7 @@
 pkgbase = gitea-bin
 	pkgdesc = Git with a cup of tea, binary installation
 	pkgver = 1.5.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitea.io/
 	arch = x86_64
 	arch = i686
@@ -33,15 +33,15 @@ pkgbase = gitea-bin
 	source_x86_64 = gitea-1.5.1-x86_64.xz::https://dl.gitea.io/gitea/1.5.1/gitea-1.5.1-linux-amd64.xz
 	sha256sums_x86_64 = b8933a2929621857bf1f48d56f2a8cca378c37c9eb9a388c0a743e9f2e626beb
 	source_i686 = gitea-1.5.1-x86_64.xz::https://dl.gitea.io/gitea/1.5.1/gitea-1.5.1-linux-386.xz
-	sha256sums_i686 = b8933a2929621857bf1f48d56f2a8cca378c37c9eb9a388c0a743e9f2e626beb
+	sha256sums_i686 = 3bc6433b300905c39562906383f300ec32a1ac10e087440b8ebd946e93b64dac
 	source_arm = gitea-1.5.1-x86_64.xz::https://dl.gitea.io/gitea/1.5.1/gitea-1.5.1-linux-arm-5.xz
-	sha256sums_arm = b8933a2929621857bf1f48d56f2a8cca378c37c9eb9a388c0a743e9f2e626beb
+	sha256sums_arm = 2570c017ab1c4410f45a8c765a5fd42a2c2d16cf850c31f627900ad50acc0813
 	source_armv6h = gitea-1.5.1-x86_64.xz::https://dl.gitea.io/gitea/1.5.1/gitea-1.5.1-linux-arm-6.xz
-	sha256sums_armv6h = b8933a2929621857bf1f48d56f2a8cca378c37c9eb9a388c0a743e9f2e626beb
+	sha256sums_armv6h = 967b5fc4beea0035a06cb96592d9152c26ce168ff781506bc623a445d126a7ce
 	source_armv7h = gitea-1.5.1-x86_64.xz::https://dl.gitea.io/gitea/1.5.1/gitea-1.5.1-linux-arm-7.xz
-	sha256sums_armv7h = b8933a2929621857bf1f48d56f2a8cca378c37c9eb9a388c0a743e9f2e626beb
+	sha256sums_armv7h = 11402f5aa3d00dc3bf050bc795b78e0035e4c0879dcecd3a23ee0ac52a4a9642
 	source_aarch64 = gitea-1.5.1-x86_64.xz::https://dl.gitea.io/gitea/1.5.1/gitea-1.5.1-linux-arm64.xz
-	sha256sums_aarch64 = b8933a2929621857bf1f48d56f2a8cca378c37c9eb9a388c0a743e9f2e626beb
+	sha256sums_aarch64 = 1085625eb8e1c1c0fab312104284c97a143302c105e93ceff1d4b371a6eb8a1b
 
 pkgname = gitea-bin
 
