@@ -4,7 +4,7 @@
 pkgname=wireless-regdb-pentest
 _pkgname=wireless-regdb
 pkgver=2018.09.07
-pkgrel=5
+pkgrel=6
 pkgdesc="Central Regulatory Domain Database with txpower/channels modified for pentesters. please respect the law in your country"
 arch=('any')
 url="http://wireless.kernel.org/en/developers/Regulatory"
@@ -70,7 +70,8 @@ package() {
   # This creates a depend/makedepend loop:
   # crda depends on wireless-regdb (but strictly doesn't makedepend on it)
   # wireless-regdb makedepends on crda
-  install -D -m644 "${srcdir}"/${_pkgname}-${pkgver}/sforshee.key.pub.pem "${pkgdir}"/usr/lib/crda/pubkeys/sforshee.key.pub.pem
+  install -d -m644 "${pkgdir}"/usr/lib/crda/pubkeys
+  install -D -m644 "${srcdir}"/${_pkgname}-${pkgver}/*.pem "${pkgdir}"/usr/lib/crda/pubkeys/
   install -D -m644 "${srcdir}"/${_pkgname}-${pkgver}/LICENSE "${pkgdir}"/usr/share/licenses/wireless-regdb/LICENSE
   install -D -m644 "${srcdir}"/${_pkgname}-${pkgver}/regulatory.bin.5 "${pkgdir}"/usr/share/man/man5/regulatory.bin.5
 
