@@ -5,6 +5,10 @@ pkgbase = pacman-static
 	url = https://www.archlinux.org/pacman/
 	arch = i686
 	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = GPL
 	depends = pacman=5.1.1
 	options = staticlibs

@@ -18,7 +18,7 @@ _gpgmever=1.11.1
 _gnupgver=2.2.10
 pkgrel=4
 pkgdesc="Statically-compiled pacman (to fix or install systems without libc)"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.archlinux.org/pacman/"
 license=('GPL')
 depends=("pacman=${pkgver}")
@@ -93,13 +93,24 @@ build() {
 
     # openssl
     cd "${srcdir}"/openssl-${_sslver}
-    if [[ "${CARCH}" == 'x86_64' ]]; then
-        openssltarget='linux-x86_64'
-        optflags='enable-ec_nistp_64_gcc_128'
-    elif [[ "${CARCH}" == 'i686' ]]; then
-        openssltarget='linux-elf'
-        optflags=''
-    fi
+    case ${CARCH} in
+        x86_64)
+            openssltarget='linux-x86_64'
+            optflags='enable-ec_nistp_64_gcc_128'
+            ;;
+        i686)
+            openssltarget='linux-elf'
+            optflags=''
+            ;;
+        arm|armv6h|armv7h)
+            openssltarget='linux-armv4'
+            optflags=''
+            ;;
+        aarch64)
+            openssltarget='linux-aarch64'
+            optflags='no-afalgeng'
+            ;;
+    esac
     # mark stack as non-executable: http://bugs.archlinux.org/task/12434
     ./Configure --prefix="${srcdir}"/temp/usr \
                 --openssldir=/etc/ssl \
