@@ -3,7 +3,7 @@
 _pkgname=sonarqube
 pkgname=${_pkgname}
 pkgver=7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source platform for continuous inspection of code quality"
 arch=('x86_64')
 url="http://www.sonarqube.org/"
@@ -16,8 +16,8 @@ optdepends=('apache: a fully featured webserver'
             'maven: a java project management and project comprehension tool'
             'postgresql: A sophisticated object-relational DBMS')
 
-backup=("etc/${_pkgname}/sonar.properties"
-        "etc/${_pkgname}/wrapper.conf")
+backup=("etc/webapps/${_pkgname}/sonar.properties"
+        "etc/webapps/${_pkgname}/wrapper.conf")
 
 conflicts=("${_pkgname}-lts")
 provides=("${_pkgname}")
@@ -31,30 +31,30 @@ source=("https://sonarsource.bintray.com/Distribution/${_pkgname}/${_pkgname}-${
         "99-${_pkgname}.conf")
 
 sha256sums=('d9e08960dccf62680d093dcf58d3bac66eda3ec06c95764bb601ae308df4f285'
-            '1aeefc9db232d13a3139a27af308e30df72c8c9fd631f713e317e1ab18a24d77'
-            '6e024de469ebb1bc4083274412f0a5d68d5fa511c2139ce4cb1d243c51ff9535'
+            'c98f317003056a5774b88bf78c05d7606b5506ec7b88a682aff2e1eded50b88b'
+            'e4e44b78abc0b0184f6e00d3c581216f5d3d61f9d10ddf0e8ff61834df4c5cd9'
             '43ff10bbb495827e952225dce79da79bb800627eaa6f1d933f8f7fb408aafe6d'
             '682b3ab19eee18b39453fa2e99af89ba7e4ecb0f63dcebf137e65aa225a42e68')
 
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
 
-    # Copy everything except conf and logs to /usr/share/sonarqube.
-    install -dm755 "${pkgdir}/usr/share/${_pkgname}"
-    cp -dr --no-preserve=ownership {bin,data,elasticsearch,extensions,lib,temp,web} "${pkgdir}/usr/share/${_pkgname}/"
+    # Copy everything except conf and logs to /usr/share/webapps/sonarqube.
+    install -dm755 "${pkgdir}/usr/share/webapps/${_pkgname}"
+    cp -dr --no-preserve=ownership {bin,data,elasticsearch,extensions,lib,temp,web} "${pkgdir}/usr/share/webapps/${_pkgname}/"
     
     # Delete unused files.
-    rm -rf "${pkgdir}/usr/share/${_pkgname}/bin/linux-x86-32"
-    rm -rf "${pkgdir}/usr/share/${_pkgname}/bin/macosx-universal-64"
-    rm -rf "${pkgdir}/usr/share/${_pkgname}/bin/windows-x86-32"
-    rm -rf "${pkgdir}/usr/share/${_pkgname}/bin/windows-x86-64"
+    rm -rf "${pkgdir}/usr/share/webapps/${_pkgname}/bin/linux-x86-32"
+    rm -rf "${pkgdir}/usr/share/webapps/${_pkgname}/bin/macosx-universal-64"
+    rm -rf "${pkgdir}/usr/share/webapps/${_pkgname}/bin/windows-x86-32"
+    rm -rf "${pkgdir}/usr/share/webapps/${_pkgname}/bin/windows-x86-64"
 
     # Install the license.
     install -Dm644 "COPYING" "${pkgdir}/usr/share/doc/${_pkgname}/COPYING"
 
-    # Install the configuration files to /etc/sonarqube.
-    install -Dm644 "conf/sonar.properties" "${pkgdir}/etc/${_pkgname}/sonar.properties"
-    install -Dm644 "conf/wrapper.conf" "${pkgdir}/etc/${_pkgname}/wrapper.conf"
+    # Install the configuration files to /etc/webapps/sonarqube.
+    install -Dm644 "conf/sonar.properties" "${pkgdir}/etc/webapps/${_pkgname}/sonar.properties"
+    install -Dm644 "conf/wrapper.conf" "${pkgdir}/etc/webapps/${_pkgname}/wrapper.conf"
 
     # Install the systemd configuration and service files.
     cd "${srcdir}"
@@ -66,9 +66,9 @@ package() {
     install -Dm644 "99-${_pkgname}.conf" "${pkgdir}/usr/share/doc/${_pkgname}/99-${_pkgname}.conf"
 
     # Create symbolic links because SonarQube expects a specific directory layout.
-    ln -s "/var/log/${_pkgname}" "${pkgdir}/usr/share/${_pkgname}/logs"
-    ln -s "/run/${_pkgname}" "${pkgdir}/usr/share/${_pkgname}/run"
-    ln -s "/etc/${_pkgname}" "${pkgdir}/usr/share/${_pkgname}/conf"
+    ln -s "/var/log/${_pkgname}" "${pkgdir}/usr/share/webapps/${_pkgname}/logs"
+    ln -s "/run/${_pkgname}" "${pkgdir}/usr/share/webapps/${_pkgname}/run"
+    ln -s "/etc/webapps/${_pkgname}" "${pkgdir}/usr/share/webapps/${_pkgname}/conf"
 }
 
 

@@ -14,8 +14,8 @@ SyslogIdentifier=sonarqube
 RuntimeDirectory=sonarqube
 LimitNOFILE=65536
 LimitNPROC=2048
-ExecStart=/usr/share/sonarqube/bin/linux-x86-64/sonar.sh start
-ExecStop=/usr/share/sonarqube/bin/linux-x86-64/sonar.sh stop
+ExecStart=/usr/share/webapps/sonarqube/bin/linux-x86-64/sonar.sh start
+ExecStop=/usr/share/webapps/sonarqube/bin/linux-x86-64/sonar.sh stop
 
 [Install]
 WantedBy=multi-user.target
