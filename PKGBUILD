@@ -36,16 +36,13 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}-bundle-${pkgver}"
-  composer install --no-interaction --prefer-dist --no-scripts && composer dump
+  composer install --no-interaction --prefer-dist --no-scripts --quiet && composer dump --quiet
   php -dphar.readonly=0 utils/make-phar.php wp-cli.phar --quiet
 }
 
 check() {
   cd "${srcdir}/${pkgname}-bundle-${pkgver}"
-  composer phpunit
-
-  echo -n "Binary reporting as "
-  php ./wp-cli.phar --version
+  composer phpunit --quiet
 }
 
 package() {
