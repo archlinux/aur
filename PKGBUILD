@@ -12,6 +12,7 @@ source=("git+https://github.com/tim241/${pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
+    cd "$pkgname"
     git describe --always
 }
 
