@@ -1,6 +1,6 @@
 pkgname=auracle-git
 _pkgname=auracle
-pkgver=r61.1965990
+pkgver=r63.72da2f9
 pkgrel=1
 pkgdesc='A flexible client for the AUR'
 arch=('x86_64' 'i686')
@@ -28,7 +28,7 @@ build () {
 }
 
 check() {
-  meson test -C "$_pkgname/build"
+  meson test -C "$_pkgname/build" --suite=hermetic
 }
 
 package () {
