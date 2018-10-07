@@ -13,7 +13,7 @@ pkgbase = camisole-languages
 	depends = ghc
 	depends = go
 	depends = jdk8-openjdk
-	depends = luajit
+	depends = lua
 	depends = mono
 	depends = nodejs
 	depends = ocaml
@@ -21,6 +21,7 @@ pkgbase = camisole-languages
 	depends = php
 	depends = ruby
 	depends = rust
+	depends = swi-prolog
 
 pkgname = camisole-languages
 

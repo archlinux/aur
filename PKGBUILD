@@ -13,12 +13,13 @@ depends=('dmd'                # handle D sources
          'ghc'                # handle Haskell sources
          'go'                 # handle Go sources
          'jdk8-openjdk'       # handle Java sources
-         'luajit'             # handle Lua sources
+         'lua'                # handle Lua sources
          'mono'               # handle C# sources
          'nodejs'             # handle Javascript sources
          'ocaml'              # handle OCaml sources
          'perl'               # handle Perl sources
          'php'                # handle PHP sources
          'ruby'               # handle Ruby sources
-         'rust')              # handle Rust sources
+         'rust'               # handle Rust sources
+         'swi-prolog')        # handle Prolog sources
 
