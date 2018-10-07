@@ -18,11 +18,13 @@
 
 set -u
 pkgname='bios-lenovo-thinkserver-ts140'
-pkgver='20180221.CVA'
+#pkgver='20180221.CVA'
+#pkgver='20180315.CWA'
+pkgver='20180711.CZA'
 pkgrel='1'
 pkgdesc='BIOS update for Lenovo ThinkServer ts140 ts440' # ts240 ts540 The website claims less models than the enclosed readme
 arch=('i686' 'x86_64')
-url='http://support.lenovo.com/us/en/products/Servers/ThinkServer-tower-servers/ThinkServer-TS140'
+url='https://datacentersupport.lenovo.com/us/en/products/servers/thinkserver/ts140'
 license=('custom')
 
 # As distributed by Lenovo Thinkserver TS140 2016-06-07 BIOS version C3A (and B7A-x86, B3A-x86, A8A-x86, B3A-x64, A8A-x64, 99A-x64)
@@ -35,16 +37,16 @@ license=('custom')
 # //               AMI Firmware Update Utility(APTIO)  v5.05.04
 # MODULE_LICENSE("Proprietary");
 
-depends=('gcc' 'make' 'sudo' 'binutils' 'glibc' 'linux' 'linux-headers')
+depends=('gcc' 'make' 'sudo' 'binutils' 'glibc' 'linux' 'linux-headers' 'dmidecode')
 install="${pkgname}.install"
 _ver="${pkgver##*.}"
 _ver="${_ver,,}"
 source=("https://download.lenovo.com/pccbbs/thinkservers/bios_me_ts140-240-440-540_fbkt${_ver}_bioslinux32.txt")
 source_i686=("https://download.lenovo.com/pccbbs/thinkservers/bios_me_ts140-240-440-540_fbkt${_ver}_bioslinux32.tgz")
 source_x86_64=("https://download.lenovo.com/pccbbs/thinkservers/bios_me_ts140-240-440-540_fbkt${_ver}_bioslinux64.tgz")
-sha256sums=('303e0c1095e985b2548395d686c2a0e9e02af50d6b7e8bcc1a87874c3fe4791c')
-sha256sums_i686=('50f21fb7a34320490959cd9c35ec281422db7055a0dcf2187f523973fc3d4c5a')
-sha256sums_x86_64=('f788b9b867a37503a244786777e9bccacea446276700873da387b3df59c6dc85')
+sha256sums=('dcc2c69afcafb5dab8af3d3b1154f43a165d4b66b3c88342475fcdde9d2aba4b')
+sha256sums_i686=('5aeeb48a01c7bb01a0d9e8f919e24e6bb9746bb5f8b438260c88b9f787d46ba9')
+sha256sums_x86_64=('e1d943157d91548e3165b1230806755286a7748e1d91117b070ccbfce46fc051')
 
 declare -gA _srcdir=(['i686']='BIOSLinux32' ['x86_64']='BIOSLinux64')
 declare -gA _exe=(['i686']='afulnx_26_32' ['x86_64']='afulnx_26_64')
@@ -55,24 +57,36 @@ prepare() {
   cd "${_srcdir[${CARCH}]}"
   # Fix the compile by overwriting useless switches in the makefile. In this binary file the replace string must be exactly the same length
   local _f1='EXTRA_CFLAGS := -Wall -Wstrict-prototypes '
-  local _f2='EXTRA_CFLAGS := -include linux/module.h   '
-  sed -e "s@${_f1}@${_f2}@g" -i "${_exe[${CARCH}]}"
+  local _f2='EXTRA_CFLAGS := -Wall @/tmp/ArchOpts      '
+  #local _f2='EXTRA_CFLAGS := -include linux/module.h   '
+  sed -e "s#${_f1}#${_f2}#g" -i "${_exe[${CARCH}]}"
   # There are other ways to do this...
+  cat >> 'ArchOpts' << EOF
+-Wstrict-prototypes
+-include linux/module.h
+-include linux/uaccess.h
+EOF
+  sed -e '1i #!/usr/bin/sh' \
+      -e "1i cp -p '/usr/lib/${pkgname}/ArchOpts' '/tmp/'" \
+      -e 's:^\(\s\+\)\./afulnx_26_64:\1sync\n&:g' \
+    -i "${_sh[${CARCH}]}"
   set +u
 }
 
 build() {
   set -u
   cd "${_srcdir[${CARCH}]}"
+  cp -p 'ArchOpts' '/tmp/'
   "./${_exe[${CARCH}]}" /MAKEDRV # amifldrv_mod.o
   rm 'amifldrv_mod.o' # All we want to know is if it builds.
+  rm '/tmp/ArchOpts'
   set +u
 }
 
 package() {
   set -u
   cd "${_srcdir[${CARCH}]}"
-  install -Dp "${srcdir}"/bios_*.txt *.txt *.[Rr][Oo][Mm] Linux*.sh afulnx_* -t "${pkgdir}/usr/lib/${pkgname}/"
+  install -Dp "${srcdir}"/bios_*.txt *.txt *.[Rr][Oo][Mm] Linux*.sh afulnx_* 'ArchOpts' -t "${pkgdir}/usr/lib/${pkgname}/"
   cd "${pkgdir}/usr/lib/${pkgname}/"
   chmod 644 *.txt *.[Rr][Oo][Mm]
   chmod 744 *.sh afulnx*
@@ -102,6 +116,7 @@ echo 'runs AFULNX'
 echo ' * rmmod'
 echo ' * then finally deletes the kernel module file.'
 rm -f 'OLDROM.ROM'
+cp -p '/usr/lib/${pkgname}/ArchOpts' '/tmp/'
 ./${_exe[${CARCH}]} 'OLDROM.ROM' /O
 if [ -s 'OLDROM.ROM' ]; then
   ls -l 'OLDROM.ROM'
@@ -109,6 +124,7 @@ if [ -s 'OLDROM.ROM' ]; then
 else
   echo 'Arch Linux test failed!'
 fi
+rm '/tmp/ArchOpts'
 EOF
   ) "${pkgdir}/usr/lib/${pkgname}/romtest.sh"
 
