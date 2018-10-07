@@ -1,5 +1,5 @@
 pkgname='art'
-pkgver=1.2
+pkgver=2.0
 pkgrel=1
 pkgdesc='Builds Arch Linux package repositories'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ optdepends=(
 )
 makedepends=('go')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('4e795cf2102ce0aa329fed288b38b4e3849dd587038fc170c58f717cc00ccc13')
+sha256sums=('527b3acd0e52c846cfbb2275e2c2da4f2a6938904eef379ed8563e01dbcda718')
 
 options=('!strip') # binaries are already stripped inside the Makefile
 
