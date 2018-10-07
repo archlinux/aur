@@ -2,7 +2,7 @@
 # Contributor: cocreature <moritz.kiefer<at>purelyfunctional<dot>org>
 
 pkgname=carla-git
-pkgver=1.9.9.r100.g265cd5d9
+pkgver=1.9.11.r19.g1ad96dc5
 pkgrel=1
 epoch=1
 pkgdesc="Audio Plugin Host"
@@ -17,6 +17,7 @@ depends=(
     'fluidsynth'
     'liblo'
     'python-pyqt5'
+    'qt5-svg'
 )
 makedepends=(
     'git'
