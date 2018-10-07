@@ -1,6 +1,6 @@
 pkgbase = camisole-git
 	pkgdesc = An asyncio-based source compiler and test runner.
-	pkgver = 0.1.r206.g032ca70
+	pkgver = 1.4.r3.g5fcae91
 	pkgrel = 1
 	url = https://github.com/prologin/camisole
 	install = camisole-git.install

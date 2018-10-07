@@ -1,6 +1,6 @@
 _gitname="camisole"
 pkgname=camisole-git
-pkgver=0.1.r206.g032ca70
+pkgver=1.4.r3.g5fcae91
 pkgrel=1
 pkgdesc="An asyncio-based source compiler and test runner."
 arch=('any')
