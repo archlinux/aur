@@ -6,7 +6,7 @@
 
 pkgname=gazebo
 pkgver=9.4.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A multi-robot simulator for outdoor environments"
 arch=('i686' 'x86_64')
 url="http://gazebosim.org/"
@@ -28,8 +28,15 @@ optdepends=('bullet: Bullet support'
             'urdfdom: Load URDF files')
 makedepends=('cmake' 'doxygen')
 install="${pkgname}.install"
-source=("https://bitbucket.org/osrf/gazebo/get/gazebo9_${pkgver}.tar.bz2")
-sha256sums=('8a42cf1e5c9cd358fd03e71cf8e00651af8d0ff15793a6942d387d555525c423')
+source=("https://bitbucket.org/osrf/gazebo/get/gazebo9_${pkgver}.tar.bz2"
+        "ogre-1.11.patch")
+sha256sums=('8a42cf1e5c9cd358fd03e71cf8e00651af8d0ff15793a6942d387d555525c423'
+            '0544018a614fe6a4caf7554cb6c751fc1e1c82e8035a0c3ddb0178786955ce9a')
+
+ prepare() {
+   cd "${srcdir}/osrf-${pkgname}-04a40b564570"
+   patch -Np2 -i "${srcdir}/ogre-1.11.patch"
+ }
 
 build() {
   cd "${srcdir}/osrf-${pkgname}-04a40b564570"
