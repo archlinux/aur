@@ -1,0 +1,12 @@
+diff --color -Naur usb-creator-0.3.5.orig/usbcreator/frontends/gtk/unitysupport.py usb-creator-0.3.5/usbcreator/frontends/gtk/unitysupport.py
+--- usb-creator-0.3.5.orig/usbcreator/frontends/gtk/unitysupport.py	2016-07-26 15:16:32.000000000 +0200
++++ usb-creator-0.3.5/usbcreator/frontends/gtk/unitysupport.py	2018-10-08 11:57:03.886676447 +0200
+@@ -28,7 +28,7 @@
+     gi.require_version('Unity', '7.0')
+     from gi.repository import Unity
+     HAVE_UNITY_SUPPORT=True
+-except ImportError as e:
++except (ImportError, ValueError) as e:
+     logging.warn("can not import unity GI %s" % e)
+ 
+ class IUnitySupport(object):
