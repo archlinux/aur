@@ -1,17 +1,17 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 pkgname=gxplugins-lv2
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="A set of guitar pedal simulation LV2 plugins from the guitarix project."
 arch=('i686' 'x86_64')
 url="https://github.com/brummer10/GxPlugins.lv2"
 license=('GPL3')
 groups=('lv2-plugins')
-depends=('gtk2')
+depends=('gtkmm')
 makedepends=('lv2' 'libxext' 'freetype2')
 source=("https://github.com/brummer10/GxPlugins.lv2/releases/download/v${pkgver}/GxPlugins_v${pkgver}.zip")
-md5sums=('b01802e256893d5e06b61386b0371550')
+md5sums=('a6a1674e62cc0bcbc7d257f96517ce8d')
 
 
 build() {
