@@ -1,7 +1,7 @@
 [Unit]
 Description=Wesnoth-1.10 Server Daemon
 Documentation=https://www.wesnoth.org/wiki/ServerAdministration
-Documentation=man:/usr/share/man/wesnoth-1.10/man6/wesnothd.6.gz
+Documentation=man:wesnothd-1.10(6)
 After=network.target
 # They use by default the same port
 Conflicts=wesnothd.service wesnothd-1.8.service wesnothd-1.12.service wesnothd-1.14.service wesnothd-devel.service wesnothd-git.service
