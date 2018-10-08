@@ -24,12 +24,13 @@ pkgver() {
 
 build() {
   cd cli-visualizer || exit
+  cmake ./
   make
 }
 
 package() {
   cd cli-visualizer || exit
-  install -Dm755 build/vis "$pkgdir/usr/bin/vis"
+  install -Dm755 vis "$pkgdir/usr/bin/vis"
   install -Dm644 examples/blue "$pkgdir"/usr/share/doc/"$pkgname"/blue
   install -Dm644 examples/config "$pkgdir"/usr/share/doc/"$pkgname"/config
   install -Dm644 examples/rainbow "$pkgdir"/usr/share/doc/"$pkgname"/rainbow
