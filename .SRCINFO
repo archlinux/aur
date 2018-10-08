@@ -1,0 +1,17 @@
+pkgbase = python-tensorflow-serving-api
+	pkgdesc = Flexible, high-performance serving system for machine learning models, designed for production environments
+	pkgver = 1.11.0
+	pkgrel = 1
+	url = https://www.tensorflow.org/serving/
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	depends = python-grpcio
+	depends = python-tensorflow
+	depends = python-protobuf
+	source = https://files.pythonhosted.org/packages/py2.py3/t/tensorflow_serving_api/tensorflow_serving_api-1.11.0-py2.py3-none-any.whl
+	sha256sums = eda671e9cd9d7a643a04dc1e62673a1664274a973702500696a14fe5300a4245
+
+pkgname = python-tensorflow-serving-api
+
