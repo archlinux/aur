@@ -10,12 +10,12 @@
 
 pkgname=oracle-sqldeveloper
 pkgver=18.2.0.183.1748
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical tool for database development"
 arch=('any')
 url="http://www.oracle.com/technetwork/developer-tools/sql-developer/downloads/index.html"
 license=('custom:OTN')
-depends=('java-environment' 'bash' 'perl' 'java-openjfx')
+depends=('java-environment=8' 'bash' 'perl' 'java-openjfx')
 optdepends=('ksh')
 source=(manual://sqldeveloper-$pkgver-no-jre.zip
         oracle-sqldeveloper.desktop
