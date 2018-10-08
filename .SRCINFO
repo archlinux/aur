@@ -1,6 +1,6 @@
 pkgbase = swi-prolog-devel
 	pkgdesc = Prolog environment (development version)
-	pkgver = 7.7.18
+	pkgver = 7.7.19
 	pkgrel = 1
 	url = http://www.swi-prolog.org/
 	arch = x86_64
@@ -25,8 +25,8 @@ pkgbase = swi-prolog-devel
 	optdepends = java-environment: for interfacing java with the jpl package
 	provides = swi-prolog
 	conflicts = swi-prolog
-	source = http://swi-prolog.org/download/devel/src/swipl-7.7.18.tar.gz
-	sha256sums = 596f350eb01ae9b7ba1ab394f33ef24d7484d5239e537efee148daad7906b4bd
+	source = http://swi-prolog.org/download/devel/src/swipl-7.7.19.tar.gz
+	sha256sums = a7820510afd89c2d7cad977ff455841350e7163f8c532d25ce94e70336564a82
 
 pkgname = swi-prolog-devel
 
