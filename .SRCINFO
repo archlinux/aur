@@ -1,0 +1,38 @@
+pkgbase = poetry
+	pkgdesc = Python dependency management and packaging made easy.
+	pkgver = 0.11.5
+	pkgrel = 1
+	url = https://github.com/sdispater/poetry
+	arch = any
+	license = MIT
+	depends = python>=3.4
+	depends = python-requests>=2.18
+	depends = python-requests-toolbelt>=0.8.0
+	depends = python-jsonschema>=2.6
+	depends = python-pyrsistent>=0.14.2
+	depends = python-pyparsing>=2.2
+	depends = python-cachecontrol>=0.12.4
+	depends = python-lockfile>=0.9
+	depends = python-pkginfo>=1.4
+	depends = python-html5lib>=1.0
+	conflicts = python-poetry
+	options = !emptydirs
+	source = poetry-0.11.5.tar.gz::https://files.pythonhosted.org/packages/5a/72/8ee113853680e8f64cacc2e14a9b6cbed457ea9237ece9dc441ad0c58f1e/poetry-0.11.5.tar.gz
+	source = cleo-0.6.8.tar.gz::https://files.pythonhosted.org/packages/cb/9f/8dd57785485b2a2746edbe598a31b0852740a1ff91a2739c104b628c8520/cleo-0.6.8.tar.gz
+	source = pylev-1.3.0.tar.gz::https://files.pythonhosted.org/packages/cc/61/dab2081d3d86dcf0b9f5dcfb11b256d76cd14aad7ccdd7c8dd5e7f7e41a0/pylev-1.3.0.tar.gz
+	source = pastel-0.1.0.tar.gz::https://files.pythonhosted.org/packages/bd/13/a68f2e448b471e8c49e9b596d569ae167a5135ac672b1dc5f24f62f9c15f/pastel-0.1.0.tar.gz
+	source = cachy-0.2.0.tar.gz::https://files.pythonhosted.org/packages/68/ef/eabaf6c36bb87e4c1a74790b19e44064df25e09a55f191eb71ccd2b512ad/cachy-0.2.0.tar.gz
+	source = shellingham-1.1.0.tar.gz::https://files.pythonhosted.org/packages/28/44/2da09f0d1f93b69d64183029fb64ee882d29eb430364e189562e0a69e3fc/shellingham-1.1.0.tar.gz
+	source = tomlkit-0.4.4.tar.gz::https://files.pythonhosted.org/packages/d4/de/a9b1089e62b2d9df0ec585e062a22961a3430edae2e87123362d730b234c/tomlkit-0.4.4.tar.gz
+	source = poetry.py
+	sha256sums = 6bb73a26117575cbf5533070045ed378b07b4e18cfcf20ca8cd33d94b10ab0b1
+	sha256sums = 85a63076b72ca376fb06668be1fc7758dc16740b394783d5cc65200c4b32f71b
+	sha256sums = 063910098161199b81e453025653ec53556c1be7165a9b7c50be2f4d57eae1c3
+	sha256sums = 3108af417ec0fa6d0a620e676ec4f02c839ca13e10611586e5d2174b46aa0bc3
+	sha256sums = b71513e5a38ce90c1280c02b7d8d6bb3fdf64666c9cc0584f2479afea097d56c
+	sha256sums = aac73de40225e3d63b4e8f7dc33adae2cae4d10ff0b09a32a0dc45151e34daa2
+	sha256sums = ca181cee7aee805d455628f7c94eb8ae814763769a93e69157f250fe4ebe1926
+	sha256sums = ff0d7afa762c4b5dbaa0f799e7f2f62e0a8fa396fc5e81a62aaf18aa522bf388
+
+pkgname = poetry
+
