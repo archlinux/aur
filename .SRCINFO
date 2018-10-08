@@ -1,15 +1,16 @@
 pkgbase = ucon64-gui
 	pkgdesc = GUI for Ucon64 (UI also known as uf-FOX), a console ROM backup tool and emulator's Swiss Army knife program.
-	pkgver = 1.1
-	pkgrel = 1
+	pkgver = 2.0.0
+	pkgrel = 13
 	url = http://ucon64.sourceforge.net/index.php
-	arch = i686
+	arch = i586
 	arch = x86_64
 	license = GPL
-	depends = lib32-libxext
-	depends = lib32-libstdc++5
+	depends = gcc-libs
+	depends = glibc
+	depends = fox-devel
 	depends = ucon64
-	source = http://downloads.sourceforge.net/ucon64/uf-FOX-1.1-linux-bin.zip
+	source = http://mirror.rosalab.ru/rosa/rosa2016.1/repository/x86_64/contrib/release//ucon64-gui-2.0.0-13-rosa2016.1.x86_64.rpm
 	sha256sums = SKIP
 
 pkgname = ucon64-gui
