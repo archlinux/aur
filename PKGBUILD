@@ -213,7 +213,7 @@ build() {
 }
 
 _package() {
-    pkgdesc='Linux Kernel and modules with the RT patch and the  BFQ scheduler.'
+    pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the RT patch and the BFQ-MQ scheduler."
     depends=('coreutils' 'linux-firmware' 'mkinitcpio>=0.7')
     optdepends=('crda: to set the correct wireless channels of your country' 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
     backup=("etc/mkinitcpio.d/${pkgbase}.preset")
@@ -269,7 +269,7 @@ _package() {
 }
 
 _package-headers() {
-    pkgdesc='Header files and scripts to build modules for linux-rt-bfq.'
+    pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
     depends=('linux-rt-bfq')
 
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
@@ -351,7 +351,7 @@ _package-headers() {
 }
 
 _package-docs() {
-    pkgdesc="Kernel hackers manual - HTML documentation that comes with the linux-rt-bfq kernel"
+    pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
     depends=('linux-rt-bfq')
   
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"

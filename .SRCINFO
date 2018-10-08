@@ -50,7 +50,7 @@ pkgbase = linux-rt-bfq
 	sha512sums = 125bb9b8a9224e4c62c65f0c33312a793093389104d81fd4d596af7044024523686f44d9f5cb8884c5573b95e3cc77632649a5e7327ae21f436e3e5cbb9e6b75
 
 pkgname = linux-rt-bfq
-	pkgdesc = Linux Kernel and modules with the RT patch and the BFQ scheduler.
+	pkgdesc = The Linux-rt-bfq kernel and modules with the RT patch and the BFQ-MQ scheduler.
 	install = linux.install
 	depends = coreutils
 	depends = linux-firmware
@@ -60,10 +60,10 @@ pkgname = linux-rt-bfq
 	backup = etc/mkinitcpio.d/linux-rt-bfq.preset
 
 pkgname = linux-rt-bfq-headers
-	pkgdesc = Header files and scripts to build modules for linux-rt-bfq.
+	pkgdesc = Header files and scripts for building modules for Linux-rt-bfq kernel
 	depends = linux-rt-bfq
 
 pkgname = linux-rt-bfq-docs
-	pkgdesc = Kernel hackers manual - HTML documentation that comes with the linux-rt-bfq kernel
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-rt-bfq kernel
 	depends = linux-rt-bfq
 
