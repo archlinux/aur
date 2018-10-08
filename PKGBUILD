@@ -1,6 +1,6 @@
 # Maintainer: Clemens Brunner <clemens dot brunner at gmail dot com>
 pkgname=libxdf
-pkgver=0.94
+pkgver=0.98
 pkgrel=1
 pkgdesc="A C++ library for loading XDF files"
 arch=('i686' 'x86_64')
@@ -17,9 +17,9 @@ backup=()
 options=()
 install=
 changelog=
-source=(https://github.com/Yida-Lin/libxdf/archive/$pkgver.zip)
+source=(https://github.com/Yida-Lin/libxdf/archive/v$pkgver.zip)
 noextract=()
-sha1sums=('f2953bf5904569a8787e0460fa9d7ff05b385e61')
+sha1sums=('71258ff67dd1da725cc481b5affb786fa9f010a2')
 
 build() {
   cd "$srcdir/libxdf-$pkgver"
