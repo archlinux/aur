@@ -5,7 +5,7 @@ pkgbase="python-pytorch"
 pkgname=("python-pytorch" "python-pytorch-cuda")
 _pkgname="pytorch"
 pkgver=1.0rc1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="https://pytorch.org"
@@ -73,7 +73,6 @@ sha256sums=('SKIP'
 prepare() {
   cd "${_pkgname}-${pkgver}"
 
-  # patch -Np1 -i "${srcdir}"/noplt.patch
   patch -Np1 -i "${srcdir}"/12116.patch
 
   git submodule init
@@ -117,8 +116,8 @@ build() {
   msg2 "Building without cuda"
   export NO_CUDA=1
   export WITH_CUDNN=0
-  # export USE_OPENCV=1
-  # export BUILD_BINARY=1
+  export USE_OPENCV=1
+  export BUILD_BINARY=1
 
   cd "$srcdir/${_pkgname}-${pkgver}"
   python setup.py build
@@ -131,7 +130,7 @@ build() {
   export CUDA_HOME=/opt/cuda
   export CUDNN_LIB_DIR=/opt/cuda/lib64
   export CUDNN_INCLUDE_DIR=/opt/cuda/include
-  # export TORCH_CUDA_ARCH_LIST="3.0;3.2;3.5;3.7;5.0;5.2;5.3;6.0;6.1;6.2;7.0;7.2;7.5"
+  export TORCH_CUDA_ARCH_LIST="3.7;5.0;5.2;5.3;6.0;6.1;6.2;7.0;7.2;7.5"
 
   cd "$srcdir/${_pkgname}-${pkgver}-cuda"
   python setup.py build
