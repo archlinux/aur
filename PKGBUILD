@@ -3,7 +3,7 @@
 
 pkgname=rstudio-desktop-git
 _gitname=rstudio
-pkgver=1.2.679
+pkgver=1.2.679.r1059
 _gwtver=2.8.1
 _ginver=2.1.2
 _qtver=5.10.1
@@ -36,7 +36,7 @@ md5sums=('SKIP'
 
 pkgver() {
     cd "${srcdir}/${_gitname}"
-    git tag --sort=-version:refname | head -n 1 | sed 's/v//'
+     git describe --long --tags | sed 's/^v//;s/\([^-]*\)-g.*/r\1/;s/-/./g'
 }
 
 prepare() {
