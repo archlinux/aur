@@ -1,0 +1,19 @@
+pkgbase = brother-hll6402dw
+	pkgdesc = Brother HL-L6402DW CUPS driver
+	pkgver = 3.2.0_1
+	pkgrel = 1
+	url = http://brother.com
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = cups
+	source = http://download.brother.com/welcome/dlf102572/hll6402dwcupswrapper-3.2.0-1.i386.rpm
+	source = http://download.brother.com/welcome/dlf102571/hll6402dwlpr-3.2.0-1.i386.rpm
+	source = brother-hll6402dw.patch
+	md5sums = 21826a4bf266256afe4e81f83a6ab15c
+	md5sums = 61a40f6ff2a5d2f03875a270e8d18bd5
+	md5sums = 1d5900258fec40a29588d0700dd2a742
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-hll6402dw
+
