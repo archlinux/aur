@@ -9,11 +9,7 @@ url='http://www.usa.canon.com/cusa/support/consumer/printers_multifunction/pixma
 arch=('i686' 'x86_64')
 license=('custom')
 install="${pkgname}.install"
-if [[ ${CARCH} == 'x86_64' ]]; then
-  depends=('popt' 'libpng12' 'libusb-compat' 'libtiff' 'libxml2' 'gtk2')
-elif [[ ${CARCH} == 'i686' ]]; then
-  depends=('popt' 'lib32-libpng12' 'libusb-compat' 'lib32-libtiff' 'lib32-libxml2' 'gtk2')
-fi
+depends=('popt' 'libpng12' 'libusb-compat' 'libtiff' 'libxml2' 'gtk2')
 makedepends=('sed')
 source=('http://gdlp01.c-wss.com/gds/2/0100005502/01/cnijfilter-mg2500series-4.00-1-deb.tar.gz'
         'http://gdlp01.c-wss.com/gds/9/0100005519/01/scangearmp-mg2500series-2.20-1-deb.tar.gz')
