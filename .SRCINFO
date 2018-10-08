@@ -1,6 +1,6 @@
 pkgbase = podman
 	pkgdesc = Utility for running OCI-based containers.
-	pkgver = 0.9.2.1
+	pkgver = 0.9.3.1
 	pkgrel = 1
 	url = https://github.com/containers/libpod
 	arch = x86_64
@@ -13,20 +13,20 @@ pkgbase = podman
 	depends = cri-o
 	depends = device-mapper
 	depends = libseccomp
+	depends = libselinux
 	depends = iptables
 	depends = runc
-	depends = go
 	depends = ostree
-	source = https://github.com/containers/libpod/archive/v0.9.2.1.tar.gz
+	source = https://github.com/containers/libpod/archive/v0.9.3.1.tar.gz
 	source = registries.conf
 	source = mounts.conf
 	source = seccomp.json
 	source = policy.json
-	sha256sums = 0c612a45aec67abd8fd03aa9a735b50f4d6f29c492958f8a03bf67589a0a34c8
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = d7fb65494d76481fd1e6bb17183d5dae3ca0eb56dd956f71fe810acf9439018b
+	sha256sums = bf720633c4c9906e93665813bbf13a73a6cb0df2b412d81228c7673505513d1f
+	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+	sha256sums = cfa7dd2c35c8e9cba74a68810e1f377e448988ccb0a54b98232313967677326e
+	sha256sums = cddfaa8e6a7e5497b67cc0dd8e8517058d0c97de91bf46fff867528415f2d946
 
 pkgname = podman
 
