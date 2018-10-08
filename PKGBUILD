@@ -1,7 +1,7 @@
 # Maintainer: Clemens Brunner <clemens dot brunner at gmail dot com>
 pkgname=sigviewer
-pkgver=0.6.1
-pkgrel=3
+pkgver=0.6.2
+pkgrel=1
 pkgdesc="A viewing application for biosignals"
 arch=('i686' 'x86_64')
 url="https://github.com/cbrnr/sigviewer"
@@ -21,7 +21,7 @@ source=(https://github.com/cbrnr/sigviewer/archive/v$pkgver.zip
         sigviewer.patch
         sigviewer.desktop)
 noextract=()
-sha1sums=('264f3d01da215c7493a566509f05eb7f25e56ee0'
+sha1sums=('1bbedbd2a01e0d728f6f205c2d2c2a341b3fdc86'
           '5d61d2fd18876c4ad8c6b0840a31da01d3f517d6'
           '72fc9741a985ef783c2c3e7ea5b51655ebc94d84')
 
