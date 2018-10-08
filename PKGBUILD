@@ -1,7 +1,7 @@
 # Maintainer: Aetf <aetf at unlimitedcodeworks dor xyz>
 pkgname=libtsm-patched-git
 _gitname=libtsm
-pkgver=3.r26.gea1697e
+pkgver=4.0.0.r18.ga0916ac
 pkgrel=1
 pkgdesc="Terminal-emulator State Machine. Patched flavor (using patches from http://github.com/Aetf/libtsm)"
 arch=('x86_64' 'armv7h')
@@ -23,18 +23,27 @@ pkgver() {
 prepare() {
   cd "$srcdir/$_gitname"
 
-  test -f ./configure || NOCONFIGURE=1 ./autogen.sh
-  ./configure --prefix=/usr
+  mkdir build && cd build
+
+  cmake \
+    -DBUILD_TESTING=OFF \
+    -DBUILD_GTKTSM=OFF \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release \
+    ..
 }
 
 build() {
-  cd "$srcdir/$_gitname"
+  cd "$srcdir/$_gitname/build"
   make
 }
 
 package() {
   cd "$srcdir/$_gitname"
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$_gitname/COPYING"
+
+  cd build
   make DESTDIR="$pkgdir/" install
 }
 

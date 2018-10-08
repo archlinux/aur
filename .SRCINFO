@@ -1,6 +1,6 @@
 pkgbase = libtsm-patched-git
 	pkgdesc = Terminal-emulator State Machine. Patched flavor (using patches from http://github.com/Aetf/libtsm)
-	pkgver = 3.r26.gea1697e
+	pkgver = 4.0.0.r18.ga0916ac
 	pkgrel = 1
 	url = http://www.freedesktop.org/wiki/Software/kmscon/libtsm
 	arch = x86_64
