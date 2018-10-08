@@ -1,4 +1,4 @@
-From b747647bbf295c437fce85d5f26bad7a127a489e Mon Sep 17 00:00:00 2001
+From 87c6890e500d00f605530f842e187a67695f5908 Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Fri, 8 Dec 2017 14:54:15 +0300
 Subject: [PATCH 6/7] Makefile: do not blacklist usblp (seems unnecessary;
@@ -11,7 +11,7 @@ Subject: [PATCH 6/7] Makefile: do not blacklist usblp (seems unnecessary;
  delete mode 100644 usblp.conf
 
 diff --git a/Makefile b/Makefile
-index 0b30c87..dd13c5d 100644
+index 8d112b9..ea75080 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -924,12 +924,10 @@ install-gui:
@@ -44,5 +44,5 @@ index 5a604bf..0000000
 @@ -1 +0,0 @@
 -blacklist usblp
 -- 
-2.17.1
+2.19.0
 

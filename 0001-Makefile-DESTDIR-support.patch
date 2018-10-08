@@ -1,4 +1,4 @@
-From 37a1925c090e6960d2e01e2ebe3c759f3e190ebb Mon Sep 17 00:00:00 2001
+From 130ecd15116cf45d70a88be3870749888a571f8d Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sat, 22 Oct 2016 12:35:14 +0300
 Subject: [PATCH 1/7] Makefile: DESTDIR support
@@ -8,7 +8,7 @@ Subject: [PATCH 1/7] Makefile: DESTDIR support
  1 file changed, 14 insertions(+), 13 deletions(-)
 
 diff --git a/Makefile b/Makefile
-index 6287cbc..e58ce3a 100644
+index 7cc2094..2906fec 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -39,7 +39,7 @@ INSTALL=install
@@ -88,5 +88,5 @@ index 6287cbc..e58ce3a 100644
  LIBUDEVDIR=/lib/udev/rules.d
  RULES=hplj10xx.rules
 -- 
-2.17.1
+2.19.0
 

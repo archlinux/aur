@@ -1,4 +1,4 @@
-From bb8cb495855b1d4fc9ba0037f6298d35ccda6cc1 Mon Sep 17 00:00:00 2001
+From 3a0ebed262a7706faa25697d96f1967b058e8157 Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sun, 23 Oct 2016 01:01:17 +0300
 Subject: [PATCH 4/7] Makefile: fix generating *.ppd in-place
@@ -8,17 +8,17 @@ Subject: [PATCH 4/7] Makefile: fix generating *.ppd in-place
  1 file changed, 1 insertion(+)
 
 diff --git a/Makefile b/Makefile
-index bac37c4..0365139 100644
+index 0956c79..18f9d5f 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -1454,6 +1454,7 @@ ppd:
- 	    *)                  driver=foo2zjs;; \
+@@ -1453,6 +1453,7 @@ ppd:
  	    esac; \
  	    echo $$driver - $$printer; \
-+	    FOOMATICDB=foomatic-db \
- 	    foomatic-ppdfile -d $$driver -p $$printer > PPD/$$printer.ppd; \
- 	    #ENGINE=../foomatic/foomatic-db-engine; \
- 	    #PERL5LIB=$$ENGINE/lib \
+ 	    if true; then \
++		FOOMATICDB=foomatic-db \
+ 		foomatic-ppdfile -d $$driver -p $$printer > PPD/$$printer.ppd; \
+ 	    else \
+ 		# 09/06/18: Use the older foomatic??? \
 -- 
-2.17.1
+2.19.0
 

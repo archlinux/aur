@@ -1,4 +1,4 @@
-From 5d5608db6e5d8999c594f8f955d810755030742c Mon Sep 17 00:00:00 2001
+From 3f9cb399e0c847f7d3a47d8b6a5e2be10950f3a8 Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sun, 23 Oct 2016 01:01:59 +0300
 Subject: [PATCH 5/7] Makefile: leverage default rules as much as possible to
@@ -10,7 +10,7 @@ Subject: [PATCH 5/7] Makefile: leverage default rules as much as possible to
  2 files changed, 33 insertions(+), 80 deletions(-)
 
 diff --git a/Makefile b/Makefile
-index 0365139..0b30c87 100644
+index 18f9d5f..8d112b9 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -466,35 +466,17 @@ all-done:
@@ -165,5 +165,5 @@ index f3abb99..5be5749 100644
  install: all
  	$(INSTALL) -c foo2zjs-icc2ps $(BIN)
 -- 
-2.17.1
+2.19.0
 

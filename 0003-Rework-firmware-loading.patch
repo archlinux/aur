@@ -1,4 +1,4 @@
-From 101a7bea0ebcd50fbf7467128e628fcb24ad0b01 Mon Sep 17 00:00:00 2001
+From fcdfba61f1288bfe15e887a2248380d7f696151f Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sun, 23 Oct 2016 10:18:08 +0300
 Subject: [PATCH 3/7] Rework firmware loading
@@ -15,7 +15,7 @@ Subject: [PATCH 3/7] Rework firmware loading
  create mode 100644 usblp.conf
 
 diff --git a/Makefile b/Makefile
-index c19f0c4..bac37c4 100644
+index f18459f..0956c79 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -173,6 +173,7 @@ FILES	=	\
@@ -392,5 +392,5 @@ index 0000000..5a604bf
 @@ -0,0 +1 @@
 +blacklist usblp
 -- 
-2.17.1
+2.19.0
 

@@ -1,4 +1,4 @@
-From 646853351461539c95cca6b89accc4d06308407e Mon Sep 17 00:00:00 2001
+From a5060279e9f57e0fb6a3d66ff1512c954482c19e Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sun, 3 Jun 2018 00:14:45 +0300
 Subject: [PATCH 7/7] Makefile: create manpages in subdirs via their Makefiles
@@ -12,10 +12,10 @@ subdir Makefile.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/Makefile b/Makefile
-index dd13c5d..5cbbb39 100644
+index ea75080..f4a806b 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -1512,7 +1512,7 @@ install-doc: doc
+@@ -1514,7 +1514,7 @@ install-doc: doc
  
  GROFF=/usr/local/test/bin/groff
  GROFF=groff
@@ -25,5 +25,5 @@ index dd13c5d..5cbbb39 100644
  	    `ls $(MANPAGES) \
  		icc2ps/foo2zjs-icc2ps.1 \
 -- 
-2.17.1
+2.19.0
 

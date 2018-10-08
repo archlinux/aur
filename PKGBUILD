@@ -4,7 +4,7 @@
 # Contributor: Muhammed Uluyol <uluyol0@gmail.com>
 
 pkgname=foo2zjs-nightly
-pkgver=20180519
+pkgver=20180920
 pkgrel=1
 pkgdesc="foo2zjs Printer Drivers (automatically updated). Includes also foo2hp, foo2hbpl, foo2oak, foo2xqx, foo2qpdl, foo2slx, foo2hiperc and foo2lava drivers."
 url="http://foo2zjs.rkkda.com/"
@@ -80,13 +80,13 @@ noextract=(
 	"${_firmware[@]##*/}"
 )
 sha256sums=('SKIP'
-            'd12e2ffea475e5cbebc019069c2702ac8b3b8c91d753798b1c733875c242c7c9'
-            'b087a81daae9ea61c2a6fb82b53e72fe05b0fde6ca5bde490121ef873b3c3205'
-            '572cdc9800e6a66b1e565f727067e7b31c0232385b1986fda7a0cac2303767f5'
-            'b48d2d59a8575ccf1f0c7c53a694ab8a68b0822331a20be3ec8ee5d3712c1684'
-            '131a8f3fab237656fbaadac7ec3aacdc1d118d30b9f6a46bd63b03c2b06e2f49'
-            '6787431ba763653c75cd0e2699cbf6496710fddd0896bfdd60f8fa8d7625c6f4'
-            'c704dc6989a9f005627ee7eca1e60a3cd57ec786e9812972624ddbc56b5cd3ec'
+            'f9b39a2e0d379d631e70e5e7499d310c50151783d1f5fc2ed4af1c68b2d10d15'
+            'e55a9767886f517d794a06a5d272f87b4f26686a6058bc758841e0a13f7ede56'
+            '2e045dd9c7f04f5bf0dca1c8ff538ec52e3902f93e795ca6e4c089dff0dd77f8'
+            'e4eb7d768d6f3c8d7a5387b2e23686b94576027f79912bbfec6db7856a8380a0'
+            '7f6d5e7d3c7631461eaa6b24f632e4ba0bfab11b29bc7ac3b1c0dfae4aa5a510'
+            '91329cb3cb34f72f7b5ea7663e0f421274da4393aaa91e8fa70240846ac7876f'
+            '9db83cb68d9277b6e0b4b607d5b662ac8935e5cee75a65bc7a000242c4528ed9'
             'f2fffb9adb0d3a9be617fb760ee2ad416cf5a0473f8a7637a591355ef50cf029'
             '362017f58a9bde0cb677c363969f8c9694c878fbc883ee20940933d0bc273fd0'
             '5ceaf5e67efdca086c873b570eee1de397e114c1cdcfed1f2c3500c90a9e7608'

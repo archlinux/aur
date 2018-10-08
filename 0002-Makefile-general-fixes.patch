@@ -1,4 +1,4 @@
-From a50b72cf74ed3ea65776be1d25860899809c9950 Mon Sep 17 00:00:00 2001
+From 0f4f8ae377fc6e5f5e92f0e732919a94ea6e6b07 Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sun, 23 Oct 2016 10:21:54 +0300
 Subject: [PATCH 2/7] Makefile: general fixes
@@ -8,7 +8,7 @@ Subject: [PATCH 2/7] Makefile: general fixes
  1 file changed, 29 insertions(+), 29 deletions(-)
 
 diff --git a/Makefile b/Makefile
-index e58ce3a..c19f0c4 100644
+index 2906fec..f18459f 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -43,7 +43,7 @@ FOODB=$(PREFIX)/share/foomatic/db/source
@@ -235,5 +235,5 @@ index e58ce3a..c19f0c4 100644
  
  CUPSDCONF=/etc/cups/cupsd.conf
 -- 
-2.17.1
+2.19.0
 
