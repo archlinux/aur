@@ -2,7 +2,7 @@
 
 pkgname=poetry
 pkgver=0.11.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Python dependency management and packaging made easy."
 arch=('any')
 url="https://github.com/sdispater/poetry"
@@ -75,7 +75,7 @@ sha256sums=(
   # tomlkit-0.4.4.tar.gz
   'ca181cee7aee805d455628f7c94eb8ae814763769a93e69157f250fe4ebe1926'
   # poetry.py
-  'ff0d7afa762c4b5dbaa0f799e7f2f62e0a8fa396fc5e81a62aaf18aa522bf388'
+  'cdf402be1771636f52cae956bd9eeb84684f0d0288d4cb7d96ff744a8c002f48'
 )
 
 build() {

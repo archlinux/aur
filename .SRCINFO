@@ -1,7 +1,7 @@
 pkgbase = poetry
 	pkgdesc = Python dependency management and packaging made easy.
 	pkgver = 0.11.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sdispater/poetry
 	arch = any
 	license = MIT
@@ -32,7 +32,7 @@ pkgbase = poetry
 	sha256sums = b71513e5a38ce90c1280c02b7d8d6bb3fdf64666c9cc0584f2479afea097d56c
 	sha256sums = aac73de40225e3d63b4e8f7dc33adae2cae4d10ff0b09a32a0dc45151e34daa2
 	sha256sums = ca181cee7aee805d455628f7c94eb8ae814763769a93e69157f250fe4ebe1926
-	sha256sums = ff0d7afa762c4b5dbaa0f799e7f2f62e0a8fa396fc5e81a62aaf18aa522bf388
+	sha256sums = cdf402be1771636f52cae956bd9eeb84684f0d0288d4cb7d96ff744a8c002f48
 
 pkgname = poetry
 
