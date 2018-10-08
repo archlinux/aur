@@ -1,0 +1,18 @@
+pkgbase = goldbars
+	pkgdesc = Gold 3-D theme collection for GTK
+	pkgver = 10_08_18
+	pkgrel = 1
+	url = https://www.jasong-designs.com/2018/10/05/goldbars/
+	arch = any
+	license = GPL3
+	depends = gtk3
+	depends = gtk2
+	depends = gtk-engine-murrine
+	optdepends = openbox: optional window manager theme
+	optdepends = metacity: optional window manager theme
+	optdepends = ttf-dejavu: font support
+	source = https://github.com/jgpws/gold-bars/raw/master/downloads/goldbars-10-08-18.tar.gz
+	md5sums = 0c11bb64719be2203e955db18a76a167
+
+pkgname = goldbars
+
