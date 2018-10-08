@@ -1,13 +1,13 @@
 pkgbase = pipdeptree
 	pkgdesc = Command line utility to show dependency tree of Python packages
-	pkgver = 0.13.0
+	pkgver = 0.13.1
 	pkgrel = 1
 	url = https://github.com/naiquevin/pipdeptree
 	arch = any
 	license = MIT
 	depends = python-pip
-	source = https://files.pythonhosted.org/packages/source/p/pipdeptree/pipdeptree-0.13.0.tar.gz
-	md5sums = 1cbdbd185f3e09106930549bbef0a9a1
+	source = https://files.pythonhosted.org/packages/source/p/pipdeptree/pipdeptree-0.13.1.tar.gz
+	md5sums = 3315f0878b3bd75ce9bd46f17418e6dc
 
 pkgname = pipdeptree
 
