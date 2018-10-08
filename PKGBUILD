@@ -6,13 +6,13 @@
 _pkgname=lmms
 pkgname=lmms-qt5-git
 pkgver=1.2.0.rc7.r1.g9799f3ca1
-pkgrel=1
+pkgrel=2
 pkgdesc='The Linux MultiMedia Studio (Qt5 Version).'
 url='http://lmms.io'
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('qt5-base' 'libsamplerate' 'fluidsynth' 'zynaddsubfx' 'libxft' 
-'libxinerama' 'shared-mime-info' 'alsa-lib')
+depends=('qt5-base' 'libsamplerate' 'fluidsynth' 'libxft' 
+'libxinerama' 'shared-mime-info' 'alsa-lib' 'fltk')
 optdepends=('wine: Windows VST support (experimental)'
             'fftw: SpectrumAnalyzer plugin'
             'jack: Optional JACK audio backend'
@@ -22,7 +22,7 @@ optdepends=('wine: Windows VST support (experimental)'
             'oss: Optional OSS backend'
             'libsoundio: For soundio support'
             'lame: For exporting MP3 format')
-makedepends=('qt5-tools' 'git' 'cmake' 'ninja' 'ladspa' 'raptor' 'rasqal' 'libxft' 'freetype2' 'redland' 'gcc-multilib' 'lame' 'perl-list-moreutils')
+makedepends=('qt5-tools' 'git' 'cmake' 'ninja' 'ladspa' 'raptor' 'rasqal' 'libxft' 'freetype2' 'redland' 'gcc-multilib' 'lame' 'perl-list-moreutils' 'zynaddsubfx')
 options=('!strip')
 provides=('lmms')
 conflicts=('lmms' 'lmms-git')
