@@ -11,7 +11,7 @@ depends=("ruby" "ruby-kramdown")
 makedepends=("ruby-rake")
 options=(!emptydirs)
 conflicts=('um-git')
-source=("https://github.com/sinclairtarget/um/archive/4.1.0.tar.gz")
+source=("${url}/archive/${pkgver}.tar.gz")
         
 md5sums=('bba8081d2acdfac150207e211a0252af')
 
