@@ -7,7 +7,7 @@ pkgname=snapd
 pkgdesc="Service and tools for management of snap packages."
 depends=('squashfs-tools' 'libseccomp' 'libsystemd')
 optdepends=('bash-completion: bash completion support')
-pkgver=2.35.2
+pkgver=2.35.4
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/snapcore/snapd"
@@ -17,7 +17,7 @@ conflicts=('snap-confine')
 options=('!strip' 'emptydirs')
 install=snapd.install
 source=("$pkgname-$pkgver.tar.xz::https://github.com/snapcore/${pkgname}/releases/download/${pkgver}/${pkgname}_${pkgver}.vendor.tar.xz")
-sha256sums=('d6ba7733cb0e066dd9943f65c58a582bfc24a76eb6386e6d80e63ba94e7af30a')
+sha256sums=('bd6caaa446f8bc22ebdc80d524704b74bec4f3976034742eaa2f73a6fd8c4713')
 
 _gourl=github.com/snapcore/snapd
 
@@ -46,17 +46,20 @@ build() {
 
   ./mkversion.sh $pkgver-$pkgrel
 
-  gobuild="go build -buildmode=pie"
-  gobuild_static="go build -buildmode=pie -ldflags=-extldflags=-static"
+  # because argument expansion with quoting in bash is hard, and -ldflags=-extldflags='-foo'
+  # is not exactly the same as -ldflags "-extldflags '-foo'" use the array trick
+  # to pass exactly what we want
+  flags=(-buildmode=pie -ldflags "-extldflags '$LDFLAGS'")
+  staticflags=(-buildmode=pie -ldflags "-extldflags '$LDFLAGS -static'")
   # Build/install snap and snapd
-  $gobuild -o $GOPATH/bin/snap "${_gourl}/cmd/snap"
-  $gobuild -o $GOPATH/bin/snapctl "${_gourl}/cmd/snapctl"
-  $gobuild -o $GOPATH/bin/snapd "${_gourl}/cmd/snapd"
-  $gobuild -o $GOPATH/bin/snap-seccomp "${_gourl}/cmd/snap-seccomp"
-  $gobuild -o $GOPATH/bin/snap-failure "${_gourl}/cmd/snap-failure"
+  go build "${flags[@]}" -o "$GOPATH/bin/snap" "${_gourl}/cmd/snap"
+  go build "${flags[@]}" -o "$GOPATH/bin/snapctl" "${_gourl}/cmd/snapctl"
+  go build "${flags[@]}" -o "$GOPATH/bin/snapd" "${_gourl}/cmd/snapd"
+  go build "${flags[@]}" -o "$GOPATH/bin/snap-seccomp" "${_gourl}/cmd/snap-seccomp"
+  go build "${flags[@]}" -o "$GOPATH/bin/snap-failure" "${_gourl}/cmd/snap-failure"
   # build snap-exec and snap-update-ns completely static for base snaps
-  $gobuild_static -o $GOPATH/bin/snap-update-ns "${_gourl}/cmd/snap-update-ns"
-  $gobuild_static -o $GOPATH/bin/snap-exec "${_gourl}/cmd/snap-exec"
+  go build "${staticflags[@]}" -o "$GOPATH/bin/snap-update-ns" "${_gourl}/cmd/snap-update-ns"
+  go build "${staticflags[@]}" -o "$GOPATH/bin/snap-exec" "${_gourl}/cmd/snap-exec"
 
   # Generate data files such as real systemd units, dbus service, environment
   # setup helpers out of the available templates
