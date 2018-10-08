@@ -4,7 +4,7 @@ pkgname=dawn
 _PKGNAME=Dawn
 pkgver=3.90b
 _pkgver=3_90b
-pkgrel=4
+pkgrel=5
 pkgdesc="3D geometrical postscript renderer"
 url="http://geant4.kek.jp/~tanaka/DAWN/About_DAWN.html"
 license=("unknown")
@@ -16,10 +16,9 @@ source=("http://geant4.kek.jp/~tanaka/src/${pkgname}_${_pkgver}.tgz"
 	"${pkgname}-${pkgver}-no-interactive.patch"
 	"make_DESTDIR.patch"
 	)
-md5sums=('3017f35db5c1ba7f7e95bff6f2d8bd46'
-         '7bb06c81f2f1ac5475939a40dd7cbc80'
-         '4128a7eb7ea6395e754cc3a02259425e')
-
+sha256sums=('be9461b490a4acfd87152407adbbe423f3735d9f00a88a9573ecaa9db24ac676'
+            '4265d3109a2802e559194f79960d32326c92cb3ffb9a54a42cb7a13f132f8db4'
+            'f6afa9f21dc27f8d6bb55fa58829f805c082657c9ea7dba8aae1d39a81074ca6')
 
 prepare(){
   cd $srcdir/${pkgname}_${_pkgver}
