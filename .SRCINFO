@@ -1,13 +1,13 @@
 pkgbase = zulip-electron-bin
 	pkgdesc = Desktop client for Zulip. Available for Mac, Linux and Windows.
-	pkgver = 2.3.3
+	pkgver = 2.3.8
 	pkgrel = 1
 	url = https://github.com/zulip/zulip-electron
 	arch = x86_64
 	license = Apache
 	conflicts = zulip-desktop
-	source = https://github.com/zulip/zulip-electron/releases/download/v2.3.3/Zulip-2.3.3-linux-x64.zip
-	sha512sums = 6fe23e0253b5096f1509df5beb95de592bc23c42fd629f67f323f3f7561d0cccba051a23f0df6211cfb448663e2132677d4e47d903fa84dba2fc71b9a6ea648c
+	source = https://github.com/zulip/zulip-electron/releases/download/v2.3.8/Zulip-2.3.8-linux-x64.zip
+	sha512sums = 6caeba482b92d3a498e979830729ec7236f4e1fa44b8c2f7ec4d14c7a49879dad16f0b63146f5b761fc260f9d83982f86446faab6b9c34105a2245f67a176dd9
 
 pkgname = zulip-electron-bin
 
