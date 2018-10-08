@@ -1,13 +1,13 @@
 pkgbase = lib_users
 	pkgdesc = Checks /proc for libraries being mapped but marked as deleted
-	pkgver = 0.9
+	pkgver = 0.12
 	pkgrel = 1
 	url = http://www.schwarzvogel.de/software/lib_users.html
 	arch = any
 	license = GPL2
 	depends = python
-	source = http://schwarzvogel.de/pkgs/lib_users-0.9.tar.gz
-	md5sums = 42cbcae61c57352444fc0711194d2885
+	source = http://schwarzvogel.de/pkgs/lib_users-0.12.tar.gz
+	md5sums = 93729682e6bbf166d7da63122f93fbb3
 
 pkgname = lib_users
 
