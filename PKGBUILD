@@ -5,8 +5,8 @@
 # Contributor: Vladimir Ermakov <vooon341@gmail.com>
 
 pkgname=gazebo
-pkgver=9.4.1
-pkgrel=1
+pkgver=9.3.1
+pkgrel=2
 pkgdesc="A multi-robot simulator for outdoor environments"
 arch=('i686' 'x86_64')
 url="http://gazebosim.org/"
@@ -29,14 +29,12 @@ optdepends=('bullet: Bullet support'
 makedepends=('cmake' 'doxygen')
 install="${pkgname}.install"
 source=("https://bitbucket.org/osrf/gazebo/get/gazebo9_${pkgver}.tar.bz2")
-sha256sums=('8a42cf1e5c9cd358fd03e71cf8e00651af8d0ff15793a6942d387d555525c423')
+sha256sums=('33c970576d36a5db1b84f3e01e49dcb5976d4013d58f6308d32ca8e819fba975')
 
 build() {
-  cd "${srcdir}/osrf-${pkgname}-04a40b564570"
+  cd "${srcdir}/osrf-${pkgname}-5714795a2e79"
 
   mkdir -p build && cd build
-
-  sudo ln -s /usr/include/boost/uuid/detail/sha1.hpp /usr/include/boost/uuid/sha1.hpp
 
   # Note: we skip unit tests (else set to TRUE)
   cmake .. -DCMAKE_BUILD_TYPE="Release" \
@@ -46,6 +44,6 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/osrf-${pkgname}-04a40b564570/build"
+  cd "${srcdir}/osrf-${pkgname}-5714795a2e79/build"
   make DESTDIR="${pkgdir}" install
 }
