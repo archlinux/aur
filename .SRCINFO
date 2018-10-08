@@ -1,7 +1,7 @@
 pkgbase = openssh-hpn-git
 	pkgdesc = A Secure SHell server/client fork with High Performance patches included
-	pkgver = 7.5.P1.r74.ga0c37a72
-	pkgrel = 2
+	pkgver = 7.8.P1.r47.g30ec037c
+	pkgrel = 1
 	url = https://www.psc.edu/index.php/hpn-ssh/
 	install = openssh-hpn-git.install
 	arch = i686
@@ -23,7 +23,7 @@ pkgbase = openssh-hpn-git
 	backup = etc/ssh/ssh_config
 	backup = etc/ssh/sshd_config
 	backup = etc/pam.d/sshd
-	source = git+https://github.com/rapier1/openssh-portable
+	source = git+https://github.com/rapier1/openssh-portable#tag=hpn-7_8_P1
 	source = http://www.eworm.de/download/linux/openssh-tests-scp.patch
 	source = sshdgenkeys.service
 	source = sshd@.service

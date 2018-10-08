@@ -1,13 +1,13 @@
-# Maintainer: Björn Wiedenmann <archlinux@xorxor.de>
-# Contributor: Jonathan Yantis <yantis@yantis.net>
-# Contributor: Christian Hesse <mail@eworm.de>
-# Contributor: Gaetan Bisson <bisson@archlinux.org>
+# Maintainer: Björn Wiedenmann <archlinux cat xorxor dog de>
+# Contributor: Jonathan Yantis <yantis cat yantis dog net>
+# Contributor: Christian Hesse <mail cat eworm dog de>
+# Contributor: Gaetan Bisson <bisson cat archlinux dog org>
 # Contributor: Caspar Verhey <caspar at verhey dot net>
-# Contributor: Seth Fulton  <seth@sysfu.com>
-# Contributor: Aaron Griffin <aaron@archlinux.org>
-# Contributor: judd <jvinet@zeroflux.org>
-# Contributor: benetnash <benetnash@mail.icpnet.pl>
-# Contributor: Thomas Haider <t.haider@vcnc.org>
+# Contributor: Seth Fulton  <seth cat sysfu dog com>
+# Contributor: Aaron Griffin <aaron cat archlinux dog org>
+# Contributor: judd <jvinet cat zeroflux dog org>
+# Contributor: benetnash <benetnash cat mail dog icpnet dog pl>
+# Contributor: Thomas Haider <t.haider cat vcnc dog org>
 
 # Note: The bulk of this PKGBUILD is based off:
 # https://aur.archlinux.org/packages/op/openssh-git/PKGBUILD
@@ -37,8 +37,8 @@
 # please use the official OpenSSH distribution instead.
 
 pkgname=openssh-hpn-git
-pkgver=7.5.P1.r74.ga0c37a72
-pkgrel=2
+pkgver=7.8.P1.r47.g30ec037c
+pkgrel=1
 pkgdesc='A Secure SHell server/client fork with High Performance patches included'
 url='https://www.psc.edu/index.php/hpn-ssh/'
 license=('custom:BSD')
@@ -51,7 +51,7 @@ provides=('openssh'
           'openssh-hpn')
 conflicts=('openssh'
            'openssh-hpn')
-source=('git+https://github.com/rapier1/openssh-portable'
+source=('git+https://github.com/rapier1/openssh-portable#tag=hpn-7_8_P1'
         'http://www.eworm.de/download/linux/openssh-tests-scp.patch'
         'sshdgenkeys.service'
         'sshd@.service'
@@ -73,19 +73,17 @@ sha256sums=('SKIP'
 install=$pkgname.install
 
 prepare() {
-	
-	if ! [ -e openssl-1.0 ] ; then
-		mkdir openssl-1.0
-	fi
-	
-	if ! [ -e openssl-1.0/include ] ; then
-		ln -s /usr/include/openssl-1.0 openssl-1.0/include
-	fi
+   if ! [ -e openssl-1.0 ] ; then
+       mkdir openssl-1.0
+   fi
 
-	if ! [ -e openssl-1.0/lib ] ; then
-		ln -s /usr/lib/openssl-1.0 openssl-1.0/lib
-	fi
-	
+   if ! [ -e openssl-1.0/include ] ; then
+       ln -s /usr/include/openssl-1.0 openssl-1.0/include
+   fi
+
+   if ! [ -e openssl-1.0/lib ] ; then
+       ln -s /usr/lib/openssl-1.0 openssl-1.0/lib
+   fi
 }
 
 pkgver() {
