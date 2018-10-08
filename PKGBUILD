@@ -4,7 +4,7 @@ pkgname=david
 _PKGNAME=David
 pkgver=1.36a
 _pkgver=1_36a
-pkgrel=3
+pkgrel=4
 pkgdesc="DAwn's Visual Intersection Debugger"
 url="http://geant4.kek.jp/~tanaka/DAWN/About_DAVID.html"
 arch=('x86_64' 'i686')
@@ -13,8 +13,8 @@ depends=('dawn')
 source=("http://geant4.kek.jp/~tanaka/src/${pkgname}_${_pkgver}.taz"
 	"make_DESTDIR.patch"
 	)
-md5sums=('520f056cea955295431ed8a1e9268f4b'
-         'b8ce4a6fd298f16468739986e098b25a')
+sha256sums=('61c77a7290a602e97f6664fbc613e3fb834cb87c525b0bc6dc5b1ea060f733ab'
+            '93ef37f00e7a6a4b43a377e48b69bb600ac26e667ab3c8af3d8eaf7a2afc284e')
 
 build() {
   cd "${srcdir}/${pkgname}_${_pkgver}"
