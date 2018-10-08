@@ -1,4 +1,11 @@
 #!/bin/bash
+
+# A convenience script for the package creator.
+# This file is not run on package installation.
+
 cd -P -- "$(dirname "$0")" || exit 1  # Allow to be called from any directory
 makepkg -ef || makepkg -f && namcap PKGBUILD && namcap ./*.tar.xz
 makepkg --printsrcinfo >| .SRCINFO && echo "Updated .SRCINFO" >&2
+
+# Until fixed: https://github.com/robert7/nixnote2/issues/29
+rm src/nixnote2/qmake-build-release/nixnote2  # Save 160MB of disk
