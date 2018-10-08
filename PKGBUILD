@@ -1,6 +1,6 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname=full-offline-backup-for-todoist
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Small, dependency-less Python script to make a backup of all Todoist tasks and attachments that is accessible offline"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPLv3')
 depends=('python')
 makedepends=('python-setuptools')
 source=(https://github.com/joanbm/${pkgname}/archive/${pkgver}.tar.gz)
-sha256sums=('17b2151a278382044de5ddcae3c6e41874395b361c484180564b826e4e18caf9')
+sha256sums=('395d63d5d5d394b0012e6d065fc3709380eb6dbb125936a066812f501066a333')
 
 package() {
   cd "${pkgname}-${pkgver}"
