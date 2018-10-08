@@ -5,14 +5,14 @@
 _pkgbase=snapd
 pkgname=snapd-git
 pkgdesc="Service and tools for management of snap packages."
-depends=('squashfs-tools' 'libseccomp' 'libsystemd')
+depends=('squashfs-tools' 'libseccomp' 'libsystemd' 'apparmor')
 optdepends=('bash-completion: bash completion support')
-pkgver=2.35.2.r963.g10c425400
+pkgver=2.35.4.r1435.g9e7ba8ed9
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/snapcore/snapd"
 license=('GPL3')
-makedepends=('git' 'go' 'go-tools' 'libseccomp' 'libcap' 'systemd' 'xfsprogs' 'python-docutils')
+makedepends=('git' 'go' 'go-tools' 'libseccomp' 'libcap' 'systemd' 'xfsprogs' 'python-docutils' 'apparmor')
 # the following checkdepends are only required for static checks and unit tests,
 # both are currently disabled
 # checkdepends=('python' 'squashfs-tools' 'indent' 'shellcheck')
@@ -63,17 +63,20 @@ build() {
   cd "$GOPATH/src/${_gourl}"
   XDG_CONFIG_HOME="$srcdir" ./get-deps.sh
 
-  gobuild="go build -x -v -buildmode=pie"
-  gobuild_static="go build -x -v -buildmode=pie -ldflags=-extldflags=-static"
+  # because argument expansion with quoting in bash is hard, and -ldflags=-extldflags='-foo'
+  # is not exactly the same as -ldflags "-extldflags '-foo'" use the array trick
+  # to pass exactly what we want
+  flags=(-x -v -buildmode=pie -ldflags "-extldflags '$LDFLAGS'")
+  staticflags=(-x -v -buildmode=pie -ldflags "-extldflags '$LDFLAGS -static'")
   # Build/install snap and snapd
-  $gobuild -o $GOPATH/bin/snap "${_gourl}/cmd/snap"
-  $gobuild -o $GOPATH/bin/snapctl "${_gourl}/cmd/snapctl"
-  $gobuild -o $GOPATH/bin/snapd "${_gourl}/cmd/snapd"
-  $gobuild -o $GOPATH/bin/snap-seccomp "${_gourl}/cmd/snap-seccomp"
-  $gobuild -o $GOPATH/bin/snap-failure "${_gourl}/cmd/snap-failure"
+  go build "${flags[@]}" -o "$GOPATH/bin/snap" "${_gourl}/cmd/snap"
+  go build "${flags[@]}" -o "$GOPATH/bin/snapctl" "${_gourl}/cmd/snapctl"
+  go build "${flags[@]}" -o "$GOPATH/bin/snapd" "${_gourl}/cmd/snapd"
+  go build "${flags[@]}" -o "$GOPATH/bin/snap-seccomp" "${_gourl}/cmd/snap-seccomp"
+  go build "${flags[@]}" -o "$GOPATH/bin/snap-failure" "${_gourl}/cmd/snap-failure"
   # build snap-exec and snap-update-ns completely static for base snaps
-  $gobuild_static -o $GOPATH/bin/snap-update-ns "${_gourl}/cmd/snap-update-ns"
-  $gobuild_static -o $GOPATH/bin/snap-exec "${_gourl}/cmd/snap-exec"
+  go build "${staticflags[@]}" -o "$GOPATH/bin/snap-update-ns" "${_gourl}/cmd/snap-update-ns"
+  go build "${staticflags[@]}" -o "$GOPATH/bin/snap-exec" "${_gourl}/cmd/snap-exec"
 
   # Generate data files such as real systemd units, dbus service, environment
   # setup helpers out of the available templates
@@ -90,7 +93,7 @@ build() {
     --prefix=/usr \
     --libexecdir=/usr/lib/snapd \
     --with-snap-mount-dir=/var/lib/snapd/snap \
-    --disable-apparmor \
+    --enable-apparmor \
     --enable-nvidia-biarch \
     --enable-merged-usr
   make $MAKEFLAGS
@@ -154,6 +157,7 @@ package_snapd-git() {
   # pre-create directories
   install -dm755 "$pkgdir/var/lib/snapd/snap"
   install -dm755 "$pkgdir/var/cache/snapd"
+  install -dm755 "$pkgdir/var/lib/snapd/apparmor"
   install -dm755 "$pkgdir/var/lib/snapd/assertions"
   install -dm755 "$pkgdir/var/lib/snapd/desktop/applications"
   install -dm755 "$pkgdir/var/lib/snapd/device"
@@ -190,6 +194,4 @@ package_snapd-git() {
   rm -fv "$pkgdir/usr/lib/snapd/snapd.core-fixup.sh"
   rm -fv "$pkgdir/usr/bin/ubuntu-core-launcher"
   rm -fv "$pkgdir/usr/lib/snapd/system-shutdown"
-  # apparmor bits
-  rm -rfv "$pkgdir"/var/lib/snapd/apparmor
 }
