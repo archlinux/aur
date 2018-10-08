@@ -1,7 +1,7 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=linphone-desktop-all-git
-pkgver=4.1.1.r592.d2634110
+pkgver=4.1.1.r604.42510df7
 pkgrel=1
 pkgdesc="A free VoIP and video softphone based on the SIP protocol (Installed in /opt with all deps included)."
 arch=("x86_64")
@@ -126,7 +126,6 @@ pkgver() {
 build() {
   cd "${srcdir}/${pkgname%-all-git}"
 
-  export LDFLAGS="-Wl,--no-as-needed -ldl"
   ./prepare.py -c
   ./prepare.py --all-codecs
   make
