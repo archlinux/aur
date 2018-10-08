@@ -2,7 +2,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=onlyoffice-documentserver
-pkgver=5.2.0
+pkgver=5.2.2
 pkgrel=1
 pkgdesc="Online office suite comprising viewers and editors for texts, spreadsheets and presentations"
 arch=('any')
@@ -24,8 +24,8 @@ source=("https://github.com/ONLYOFFICE/DocumentServer/archive/ONLYOFFICE-Documen
 	"onlyoffice-fileconverter.service"
 	"onlyoffice-spellchecker.service"
 	"onlyoffice-docservice.service"
-	"onlyoffice-documentserver-${pkgver}_amd64.deb::https://github.com/ONLYOFFICE/DocumentServer/releases/download/ONLYOFFICE-DocumentServer-${pkgver}/onlyoffice-documentserver_amd64.deb")
-sha512sums=('087f060b7f400d04f718a1d68774df96515d6fc1eb8153acee440c4cf8be20ef185f4efae242846d030b907a2f776be807bf283ff8965cdb15ce72aea936b151'
+	"https://github.com/ONLYOFFICE/DocumentServer/releases/download/ONLYOFFICE-DocumentServer-${pkgver}/onlyoffice-documentserver_amd64.deb")
+sha512sums=('ace6564057f7b7feaef3c6688fb9c8451997a24e0c64d333b785b6c920179dbcb33156aeb08aa5a587403d0aa8428fdafe1b7ed41aed8121540da5ecab1141c2'
             '1a3990ce7a2302c43c79d03342afebeed36f45f8fcb8bb2ff31253b680d475100d05bbedbb3e3078445af466a4d66fc2fec0f0e8d571c18050397ff07a9b7e27'
             '33e6611cda7ac6616c5cebc5ce35bf1d0c29e2d39a31248e8483bb67ba4f1febb480ccd9d3c617626c85151a5f68584a3e58a7d478f9227d8fcea68cc287ea34'
             '71909c2cab614b568084450cc2c6e2eed11a995afde428a53a2a6dc74ec18b4cad17e54b65a5d5f9aa2b0b3554f90d83338dffeda931b899844f8720d82d5e78'
