@@ -6,7 +6,7 @@ pkgbase=webkitgtk
 pkgname=(webkitgtk webkitgtk2)
 epoch=3
 pkgver=2.4.11
-pkgrel=13
+pkgrel=14
 pkgdesc="Legacy Web content engine"
 arch=(i686 x86_64 armv7h)
 url="https://webkitgtk.org/"
@@ -40,6 +40,9 @@ prepare() {
   patch -Np1 -i ../enchant-2.x.patch
   # https://www.archlinux.org/todo/enchant-221-rebuild/
   patch -Np1 -i ../pkgconfig-enchant-2.patch
+
+  # needed as autotools-related files are patched
+  autoreconf -ifv
 }
 
 _build() (

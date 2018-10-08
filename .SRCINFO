@@ -1,7 +1,7 @@
 pkgbase = webkitgtk
 	pkgdesc = Legacy Web content engine
 	pkgver = 2.4.11
-	pkgrel = 13
+	pkgrel = 14
 	epoch = 3
 	url = https://webkitgtk.org/
 	install = webkitgtk.install
