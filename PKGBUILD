@@ -1,5 +1,5 @@
 pkgname=batman-adv-dkms
-pkgver=v2018.1
+pkgver=v2018.3
 pkgrel=1
 pkgdesc='batman kernel module (dkms package)'
 arch=('any')
