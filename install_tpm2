@@ -4,9 +4,16 @@ build() {
     add_module "tpm_tis"
     add_module "tpm_crb"
 
-    add_binary "/usr/bin/tpm2_unseal" "/usr/bin/tpm2_unseal"
-    add_binary "/usr/bin/tpm2_load" "/usr/bin/tpm2_load"
-    add_binary "/usr/bin/tpm2_nvread" "/usr/bin/tpm2_nvread"
+    add_binary "/usr/bin/tpm2_unseal"
+    add_binary "/usr/bin/tpm2_load"
+    add_binary "/usr/bin/tpm2_nvread"
+    add_binary "/usr/bin/tpm2_pcrextend"
+    add_binary "/usr/bin/sha1sum"
+    add_binary "/usr/bin/sha224sum"
+    add_binary "/usr/bin/sha256sum"
+    add_binary "/usr/bin/sha384sum"
+    add_binary "/usr/bin/sha512sum"
+
     add_binary "/usr/lib/libtss2-tcti-device.so.0"
 
     add_runscript
@@ -41,6 +48,9 @@ the key in bytes and [size] is the size of the key in bytes.
 'tpmpcr' should hold the TPM2 PCR bank specification that will unlock the
 sealed key. Multiple specs can be separated by a '|' and key decryption
 will be attempted with each set of banks.
+
+The first PCR bank spec may be used to indicate a PCR to extend after
+unsealing the key.
 HELPEOF
 }
 

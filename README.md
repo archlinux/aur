@@ -42,8 +42,24 @@ this case `[index]` is the NVRAM area index, `[offset]` is the offset of the key
 in bytes and `[size]` is the size of the key in bytes.
 
 The `tpmpcr` parameter should hold the TPM2 PCR bank specification that will
-unlock the sealed key. Multiple specs can be separated by a '|' and key
-decryption will be attempted with each set of banks.
+unlock the sealed key.
+
+    tpmpcr=sha1:0,2,7
+
+Multiple specs can be separated by a '|' and key decryption will be attempted
+with each set of banks.
+
+    tpmpcr=sha1:0,2,4,7|sha1:0,2,7
+
+Instead of a bank specification, the first item in the `tpmpcr` parameter may be
+used to indicate a PCR to extend _after_ the key has been unsealed.
+
+    extend:[pcrnum]:[alg]
+
+Where `[pcrnum]` is the PCR number to extend and `[alg]` is the bank algorithm.
+For example, to extend PCR 8 in the sha1 bank:
+
+    tpmpcr=extend:8:sha1|sha1:0,2,7
 
 You may also need to add the `vfat` file system driver to the `MODULES` array:
 
