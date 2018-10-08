@@ -32,7 +32,7 @@ source=("https://bitbucket.org/osrf/gazebo/get/gazebo9_${pkgver}.tar.bz2")
 sha256sums=('8a42cf1e5c9cd358fd03e71cf8e00651af8d0ff15793a6942d387d555525c423')
 
 build() {
-  cd "${srcdir}/osrf-${pkgname}-5714795a2e79"
+  cd "${srcdir}/osrf-${pkgname}-04a40b564570"
 
   sed -i -e 's|boost/uuid/sha1.hpp|boost/uuid/detail/sha1.hpp|g' gazebo/common/CommonIface.hh
 
@@ -46,6 +46,6 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/osrf-${pkgname}-5714795a2e79/build"
+  cd "${srcdir}/osrf-${pkgname}-04a40b564570/build"
   make DESTDIR="${pkgdir}" install
 }
