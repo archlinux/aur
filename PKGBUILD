@@ -6,15 +6,15 @@
 # https://developer.nvidia.com/nvidia-video-codec-sdk/
 
 pkgname=nvidia-sdk
-pkgver=8.2.15
+pkgver=8.2.16
 pkgrel=1
 pkgdesc='NVIDIA Video Codec SDK (NVDECODE and NVENCODE APIs) (needs registration at upstream URL and manual download)'
 arch=('any')
 url='https://developer.nvidia.com/nvidia-video-codec-sdk/'
 license=('custom')
 makedepends=('poppler')
-source=("file://Video_Codec_SDK_${pkgver}.zip")
-sha256sums=('053cac688be75926e03b81f71e0427f6f466b265b3132eafabac368c2588fe87')
+source=("local://Video_Codec_SDK_${pkgver}.zip")
+sha256sums=('06dbc3a5a350d76ff4b2118b919759ef1cc50f35ff229fad4922b5eeec31b47d')
 
 package() {
     # encoder header
