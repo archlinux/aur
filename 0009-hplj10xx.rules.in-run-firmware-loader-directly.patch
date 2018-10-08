@@ -1,0 +1,26 @@
+From 1f3c60d28f2bbf118843795e4ac0c75e3efcf6b7 Mon Sep 17 00:00:00 2001
+From: Ivan Shapovalov <intelfx@intelfx.name>
+Date: Tue, 9 Oct 2018 00:54:14 +0300
+Subject: [PATCH 9/9] hplj10xx.rules.in: run firmware loader directly
+
+---
+ hplj10xx.rules.in | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/hplj10xx.rules.in b/hplj10xx.rules.in
+index dec1cdd..3f903a6 100644
+--- a/hplj10xx.rules.in
++++ b/hplj10xx.rules.in
+@@ -14,8 +14,6 @@ ATTRS{idVendor}=="03f0", ATTRS{idProduct}=="3f17", ENV{FOO2ZJS_FW_MODEL}="P1505"
+ ATTRS{idVendor}=="03f0", ATTRS{idProduct}=="4017", ENV{FOO2ZJS_FW_MODEL}="P1505n"
+ ENV{FOO2ZJS_FW_MODEL}=="", GOTO="foo2zjs_fw_end"
+ 
+-# Inherit the instance name from the parent unit's instance name (or unit name, if there is no instance name).
+-# In our case -- the printer's full devpath gets passed.
+-TAG+="systemd", ENV{SYSTEMD_WANTS}+="foo2zjs-loadfw@.service"
++RUN+="@PREFIX@/bin/foo2zjs-loadfw %S%p"
+ 
+ LABEL="foo2zjs_fw_end"
+-- 
+2.19.0
+

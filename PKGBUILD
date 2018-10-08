@@ -5,7 +5,7 @@
 
 pkgname=foo2zjs-nightly
 pkgver=20180920
-pkgrel=1
+pkgrel=2
 pkgdesc="foo2zjs Printer Drivers (automatically updated). Includes also foo2hp, foo2hbpl, foo2oak, foo2xqx, foo2qpdl, foo2slx, foo2hiperc and foo2lava drivers."
 url="http://foo2zjs.rkkda.com/"
 license=('GPL' 'custom')
@@ -27,6 +27,8 @@ _patches=(
 	0005-Makefile-leverage-default-rules-as-much-as-possible-.patch
 	0006-Makefile-do-not-blacklist-usblp-seems-unnecessary-co.patch
 	0007-Makefile-create-manpages-in-subdirs-via-their-Makefi.patch
+	0008-hplj10xx.rules-substitute-PREFIX.patch
+	0009-hplj10xx.rules.in-run-firmware-loader-directly.patch
 )
 
 _firmware=(
@@ -80,13 +82,15 @@ noextract=(
 	"${_firmware[@]##*/}"
 )
 sha256sums=('SKIP'
-            'f9b39a2e0d379d631e70e5e7499d310c50151783d1f5fc2ed4af1c68b2d10d15'
-            'e55a9767886f517d794a06a5d272f87b4f26686a6058bc758841e0a13f7ede56'
-            '2e045dd9c7f04f5bf0dca1c8ff538ec52e3902f93e795ca6e4c089dff0dd77f8'
-            'e4eb7d768d6f3c8d7a5387b2e23686b94576027f79912bbfec6db7856a8380a0'
-            '7f6d5e7d3c7631461eaa6b24f632e4ba0bfab11b29bc7ac3b1c0dfae4aa5a510'
-            '91329cb3cb34f72f7b5ea7663e0f421274da4393aaa91e8fa70240846ac7876f'
-            '9db83cb68d9277b6e0b4b607d5b662ac8935e5cee75a65bc7a000242c4528ed9'
+            '430881c9ac27cddf584103445f91741ded6798b8a1e96c94e9153f9af4f70994'
+            'e00c67c20db3e035dbef9561b87289481741c7cc7e7a00594ade2b519f544f95'
+            '60d6752a125e0c886f529514d005af573828c2c4c7781103f5edd1c9f03f040e'
+            'b6ec41a41c7a13223792daf1444803e389127885e5b2bdd932a1cb693143fd8f'
+            '52f149a0e13a6d208fc49b8168a61349989b99ab2b2fdebf3334e23a38ed5c16'
+            '89c929daedb6e7ad610676eabecfb9b1f1f5244ace2c443508c55171be340944'
+            '2dddff7c7994e0a77bf4aace39f03167722a1db58092cd0744f5b9c5aa1bc465'
+            '479156130620348bca6accb83f218563c3835133f179116e1f14adfcee70c997'
+            '4a203e0bd83b184f796ec9f7fcc528d9838012db395d09ddce6da6d551ee8324'
             'f2fffb9adb0d3a9be617fb760ee2ad416cf5a0473f8a7637a591355ef50cf029'
             '362017f58a9bde0cb677c363969f8c9694c878fbc883ee20940933d0bc273fd0'
             '5ceaf5e67efdca086c873b570eee1de397e114c1cdcfed1f2c3500c90a9e7608'

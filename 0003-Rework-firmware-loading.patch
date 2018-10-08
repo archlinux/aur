@@ -1,7 +1,7 @@
 From fcdfba61f1288bfe15e887a2248380d7f696151f Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sun, 23 Oct 2016 10:18:08 +0300
-Subject: [PATCH 3/7] Rework firmware loading
+Subject: [PATCH 3/9] Rework firmware loading
 
 ---
  Makefile                   | 101 ++++++++-------------------

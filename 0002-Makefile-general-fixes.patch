@@ -1,7 +1,7 @@
 From 0f4f8ae377fc6e5f5e92f0e732919a94ea6e6b07 Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sun, 23 Oct 2016 10:21:54 +0300
-Subject: [PATCH 2/7] Makefile: general fixes
+Subject: [PATCH 2/9] Makefile: general fixes
 
 ---
  Makefile | 58 ++++++++++++++++++++++++++++----------------------------

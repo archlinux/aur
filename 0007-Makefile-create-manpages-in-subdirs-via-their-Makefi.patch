@@ -1,7 +1,7 @@
 From a5060279e9f57e0fb6a3d66ff1512c954482c19e Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sun, 3 Jun 2018 00:14:45 +0300
-Subject: [PATCH 7/7] Makefile: create manpages in subdirs via their Makefiles
+Subject: [PATCH 7/9] Makefile: create manpages in subdirs via their Makefiles
 
 Consistently use icc2ps/Makefile and osx-hotplug/Makefile
 to generate respective makefiles. Otherwise subtle races can happen if

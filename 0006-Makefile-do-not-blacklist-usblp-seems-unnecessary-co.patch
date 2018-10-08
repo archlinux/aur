@@ -1,7 +1,7 @@
 From 87c6890e500d00f605530f842e187a67695f5908 Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Fri, 8 Dec 2017 14:54:15 +0300
-Subject: [PATCH 6/7] Makefile: do not blacklist usblp (seems unnecessary;
+Subject: [PATCH 6/9] Makefile: do not blacklist usblp (seems unnecessary;
  collateral damage reported)
 
 ---

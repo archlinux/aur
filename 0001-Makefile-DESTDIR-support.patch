@@ -1,7 +1,7 @@
 From 130ecd15116cf45d70a88be3870749888a571f8d Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sat, 22 Oct 2016 12:35:14 +0300
-Subject: [PATCH 1/7] Makefile: DESTDIR support
+Subject: [PATCH 1/9] Makefile: DESTDIR support
 
 ---
  Makefile | 27 ++++++++++++++-------------

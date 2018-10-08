@@ -1,0 +1,53 @@
+From 95c0e0e37893fe3d3ab4feafb91cf91da9e916ba Mon Sep 17 00:00:00 2001
+From: Ivan Shapovalov <intelfx@intelfx.name>
+Date: Tue, 9 Oct 2018 00:53:44 +0300
+Subject: [PATCH 8/9] hplj10xx.rules: substitute @PREFIX@
+
+---
+ Makefile                            | 10 ++++++++--
+ hplj10xx.rules => hplj10xx.rules.in |  0
+ 2 files changed, 8 insertions(+), 2 deletions(-)
+ rename hplj10xx.rules => hplj10xx.rules.in (100%)
+
+diff --git a/Makefile b/Makefile
+index f4a806b..b7c6d34 100644
+--- a/Makefile
++++ b/Makefile
+@@ -221,7 +221,7 @@ FILES	=	\
+ 		usb_printerid.c \
+ 		usb_printerid.1in \
+ 		hplj1000 \
+-		hplj10xx.rules* \
++		hplj10xx.rules \
+ 		msexpand \
+ 		oak.h \
+ 		foo2oak.c \
+@@ -299,7 +299,7 @@ MANPAGES+=	foo2zjs-pstops.1 arm2hpdl.1 usb_printerid.1
+ MANPAGES+=	printer-profile.1
+ LIBJBG	=	jbig.o jbig_ar.o
+ BINPROGS=
+-MISC=           foo2zjs-loadfw foo2zjs-loadfw@.service
++MISC=           foo2zjs-loadfw foo2zjs-loadfw@.service hplj10xx.rules
+ 
+ # Compiler flags
+ #CFLAGS +=	-O2 -Wall -Wno-unused-but-set-variable
+@@ -491,6 +491,12 @@ foo2zjs-loadfw@.service: foo2zjs-loadfw@.service.in Makefile
+ 	    -e 's:@PREFIX@:$(PREFIX):' || (rm -f $@ && exit 1)
+ 	chmod 444 $@
+ 
++hplj10xx.rules: hplj10xx.rules.in Makefile
++	[ ! -f $@ ] || chmod +w $@
++	sed < $@.in > $@ \
++	    -e 's:@PREFIX@:$(PREFIX):' || (rm -f $@ && exit 1)
++	chmod 444 $@
++
+ foo2ddst-wrapper: foo2ddst-wrapper.in Makefile
+ 	[ ! -f $@ ] || chmod +w $@
+ 	sed < $@.in > $@ \
+diff --git a/hplj10xx.rules b/hplj10xx.rules.in
+similarity index 100%
+rename from hplj10xx.rules
+rename to hplj10xx.rules.in
+-- 
+2.19.0
+
