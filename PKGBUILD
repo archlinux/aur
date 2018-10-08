@@ -10,7 +10,7 @@
 # If upgrading, you must read the guidance at http://www.courier-mta.org/maildirmake.html on "Converting pre-unicode format maildirs"
 
 pkgname=courier-mta
-pkgver=1.0
+pkgver=1.0.0.20180927
 pkgrel=1
 pkgdesc="IMAP(s)/POP3(s) and SMTP Server with ML-manager, webmail and webconfig"
 arch=(i686 x86_64)
@@ -25,7 +25,7 @@ options=(!libtool !staticlibs)
 # Specify some package files to backup that aren't managed by sysconftool during an upgrade
 backup=('etc/courier/aliases/system' 'etc/courier/smtpaccess/default' 'etc/courier/webadmin/password' 'etc/courier/imapd.cnf' 'etc/courier/esmtpd.cnf' 'etc/courier/pop3d.cnf' 'etc/courier/esmtpauthclient')
 install=courier-mta.install
-source=(http://downloads.sourceforge.net/project/courier/courier/${pkgver}/courier-${pkgver}.tar.bz2
+source=(http://downloads.sourceforge.net/project/courier/courier-devel/20180927/courier-${pkgver}.tar.bz2
 	courier-imapd.service
 	courier-imapd-ssl.service
 	courier-pop3d.service
@@ -39,7 +39,7 @@ source=(http://downloads.sourceforge.net/project/courier/courier/${pkgver}/couri
 	webmaild.service
 	courier-courierfilter.service
 	courier-mta.conf)
-sha1sums=('8d3c76ab586e33f83ab8e4ad5b7aca0e9ed27218'
+sha1sums=('48ec68599b1341d17219eb5f686c63ce0a535b0e'
           '9feaa269795a85c1464c104d9268fb266ad1a666'
           '0344ac948b189cae73d86f4565e40847c44772c9'
           '920bd35afc0bf6e6ba5cf7b309210be4d2c76e18'
