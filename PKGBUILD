@@ -2,7 +2,7 @@
 # Contributor: Daichi Shinozaki <dsdseg at gmail dot com>
 
 pkgname=wangle
-pkgver=2018.10.01.00
+pkgver=2018.10.08.00
 pkgrel=1
 pkgdesc="A full featured, high performance C++ futures implementation."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('Apache')
 depends=('folly' 'boost-libs')
 makedepends=('cmake' 'gflags' 'gtest' 'google-glog' 'boost')
 source=("$url/archive/v${pkgver}.tar.gz")
-sha256sums=('76477b101809d8c8c7de3415dc294d99e4b7f8a23cfe063c1030738b2ae3e24f')
+sha256sums=('acdce41248119766af0258c526417f9a3c027184b0a2c715909e947463650774')
 
 prepare() {
     cd "$pkgname-$pkgver/$pkgname"
