@@ -1,0 +1,19 @@
+pkgbase = mingw-w64-libbaseencode
+	pkgdesc = Library written in C for encoding and decoding data using base32 or base64 (RFC-4648) (mingw-w64)
+	pkgver = 1.0.9
+	pkgrel = 1
+	url = https://github.com/paolostivanin/libbaseencode
+	arch = any
+	license = GPL3
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-crt
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = https://github.com/paolostivanin/libbaseencode/archive/v1.0.9.tar.gz
+	source = fix-dll-install.patch
+	sha256sums = a183d7cf30d931b2a078d6f0ef64616b71ab26f9258e5f4e191778c7ace7175d
+	sha256sums = 8249f3fc0c7d66469b84339590eb68ed882a8ed1dc75cbaa62ef1b9e4a6b16aa
+
+pkgname = mingw-w64-libbaseencode
+

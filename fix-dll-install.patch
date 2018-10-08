@@ -1,0 +1,15 @@
+diff -Naur libbaseencode-1.0.9.orig/CMakeLists.txt libbaseencode-1.0.9/CMakeLists.txt
+--- libbaseencode-1.0.9.orig/CMakeLists.txt	2018-10-07 21:52:51.816836185 -0400
++++ libbaseencode-1.0.9/CMakeLists.txt	2018-10-08 08:43:09.988477502 -0400
+@@ -25,9 +25,11 @@
+ 
+ include(GNUInstallDirs)
+ set(LIB_INSTALL_DIR "${CMAKE_INSTALL_LIBDIR}") # "lib" or "lib64"
++set(BIN_INSTALL_DIR "${CMAKE_INSTALL_BINDIR}") # "bin"
+ 
+ install(
+   TARGETS ${PROJECT_NAME}
++  RUNTIME DESTINATION ${BIN_INSTALL_DIR}
+   ARCHIVE DESTINATION ${LIB_INSTALL_DIR}
+   LIBRARY DESTINATION ${LIB_INSTALL_DIR}
+   COMPONENT library
