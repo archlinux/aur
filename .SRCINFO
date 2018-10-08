@@ -34,7 +34,7 @@ pkgbase = linux-uksm
 	sha512sums = 83815065699580831677696b64c542c981f8b916c3abd72d4dcd7e114f98ef4da1fabbcdea32d20ea538f4ce95753aef0c5e8283dfcb11b92c7ad7ad938006e0
 
 pkgname = linux-uksm
-	pkgdesc = Linux Kernel and modules with the UKSM.
+	pkgdesc = The Linux-uksm kernel and modules with the UKSM
 	install = linux.install
 	depends = coreutils
 	depends = linux-firmware
@@ -44,10 +44,10 @@ pkgname = linux-uksm
 	backup = etc/mkinitcpio.d/linux-uksm.preset
 
 pkgname = linux-uksm-headers
-	pkgdesc = Header files and scripts to build modules for linux-uksm
+	pkgdesc = Header files and scripts for building modules for Linux-uksm kernel
 	depends = linux-uksm
 
 pkgname = linux-uksm-docs
-	pkgdesc = Kernel hackers manual - HTML documentation that comes with the linux-uksm.
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-uksm kernel
 	depends = linux-uksm
 
