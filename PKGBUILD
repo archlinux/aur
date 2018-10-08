@@ -1,32 +1,46 @@
-# Maintainer: FFY00 <filipe.lains@gmail.com>
+# Maintainer: Filipe Laíns (FFY00) <lains@archlinux.org>
+
 pkgname=pulseaudio-equalizer-ladspa-git
-_pkgname=${pkgname%-git}
-pkgver=2.7.1.r0.358553c
+pkgver=3.0.0.56.20fb09c
 pkgrel=1
-pkgdesc="A 15-band equalizer for PulseAudio"
+pkgdesc='A 15-band equalizer for PulseAudio'
 arch=('any')
-url="https://github.com/FFY00/pulseaudio-equalizer-ladspa"
+url='https://github.com/pulseaudio-equalizer-ladspa'
 license=('GPL3')
-depends=('pygtk' 'swh-plugins' 'gnome-icon-theme' 'pulseaudio' 'bc' 'python2-gobject')
-makedepends=('git')
-provides=('pulseaudio-equalizer-ladspa')
-conflicts=('pulseaudio-equalizer-ladspa')
-source=("git+$url"
-	'ladspa_lib_path.sh')
-sha256sums=('SKIP'
-	    'cadad5c6257fdd3a91fa2d5caf88d23aa7e59e4cc19f25a39c3bc888994ed950')
+depends=('python-gobject' 'gtk3' 'swh-plugins' 'pulseaudio' 'bc')
+makedepends=('git' 'meson')
+optdepends=('python2-gobject: python2 support')
+source=("git+$url/equalizer")
+sha512sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir"/$_pkgname
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g;s/\.rc./rc/g'
+  cd equalizer
+
+
+  printf "%s.r%s.%s" \
+  	$(git tag | tail -n1 | sed 's|v||') \
+  	$(git rev-list --count HEAD | sed 's|r||') \
+  	$(git rev-parse --short HEAD)
+}
+
+build() {
+  mkdir -p equalizer/build
+  cd equalizer/build
+
+  arch-meson ..
+
+  ninja
 }
 
 package() {
-  install -Dm644 "$srcdir"/$_pkgname/equalizerrc "$pkgdir"/usr/equalizerrc
+  cd equalizer/build
 
-  cp -r "$srcdir"/$_pkgname/share "$pkgdir"/usr/
-  cp -r "$srcdir"/$_pkgname/bin "$pkgdir"/usr/
+  DESTDIR="$pkgdir" meson install
 
-  mkdir -p "$pkgdir"/etc/profile.d
-  cp "$srcdir"/ladspa_lib_path.sh "$pkgdir"/etc/profile.d/ladspa_lib_path.sh
+  python -m compileall -d /usr/lib "$pkgdir/usr/lib"
+  python -O -m compileall -d /usr/lib "$pkgdir/usr/lib"
+
+  # It's GLP3 but has a specific copyright string
+  install -Dm 644 ../LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
+
