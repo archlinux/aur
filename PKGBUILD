@@ -3,14 +3,14 @@
 pkgname=dawncut
 pkgver=1.54a
 _pkgver=1_54a
-pkgrel=3
+pkgrel=4
 pkgdesc="Tool to generate a 3D DAWN scene data clipped with an arbitrary plane."
 url="http://geant4.kek.jp/~tanaka/DAWN/About_DAWNCUT.html"
 arch=('x86_64' 'i686')
 license=('unknown')
 depends=('dawn')
 source=("http://geant4.kek.jp/~tanaka/src/${pkgname}_${_pkgver}.taz")
-md5sums=('0c9f52f80c3fae6c37c58c6fd79bbb6b')
+sha256sums=('531e1f0e2ed35de3e2b1803108c0efb732d83a0c676f14083bd41a71346b4fa9')
 
 build() {
   cd "${srcdir}/${pkgname}_${_pkgver}"
