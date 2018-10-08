@@ -1,0 +1,16 @@
+pkgbase = brother-mfc-l2710dn
+	pkgdesc = LPR and CUPS driver for the Brother MFC-L2710DW
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = http://solutions.brother.com/linux/en_us/
+	install = brother-mfc-l2710dn.install
+	arch = i686
+	arch = x86_64
+	license = custom:Brother commercial license
+	depends = cups
+	source = http://download.brother.com/welcome/dlf103521/mfcl2710dnpdrv-4.0.0-1.i386.rpm
+	sha256sums = ee6630a3f42982273c0479e7dc74c1c397bf41d5c273389391aa8ae7b8516d7a
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-mfc-l2710dn
+
