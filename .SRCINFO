@@ -1,0 +1,22 @@
+pkgbase = gm-companion
+	pkgdesc = A tool for rpg gamemasters.
+	pkgver = 1.0.0.0
+	pkgrel = 1
+	url = https://gm-companion.github.io/
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = gendesk
+	depends = qt5-declarative>=5.10.0,
+	depends = qt5-multimedia>=5.10.0,
+	depends = qt5-networkauth>=5.10.0,
+	depends = qt5-quickcontrols2>=5.10.0,
+	depends = taglib
+	conflicts = gm-companion-git
+	source = https://github.com/PhilInTheGaps/GM-Companion/archive/1.0.0.0.tar.gz
+	source = https://raw.githubusercontent.com/PhilInTheGaps/GM-Companion/ubuntu-build/data/share/gm-companion/icon256.png
+	md5sums = f9c277a3814391ab2fd8b0e4648454d7
+	md5sums = 877a226689a5edaee3ecfdaf767ded9d
+
+pkgname = gm-companion
+
