@@ -1,7 +1,8 @@
 pkgbase = camouflage
 	pkgdesc = a mux+websocket+TLS proxy
-	pkgver = 20181007.99_038476d
-	pkgrel = 2
+	pkgver = 20181007.101_f2bcc44
+	pkgrel = 1
+	url = https://github.com/Sherlock-Holo/camouflage
 	arch = x86_64
 	license = MPL
 	makedepends = go

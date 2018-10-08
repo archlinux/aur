@@ -1,18 +1,14 @@
 # Maintainer: Sherlock Holo <sherlockya@gmail.com>
 pkgname=camouflage
 _pkgname=camouflage
-pkgver=20181007.99_038476d
-pkgrel=2
+pkgver=20181007.101_f2bcc44
+pkgrel=1
 pkgdesc="a mux+websocket+TLS proxy"
 arch=('x86_64')
 license=('MPL')
-depends=(
-)
-makedepends=(
-	'go'
-	'git'
-)
-
+depends=()
+makedepends=('go' 'git')
+url='https://github.com/Sherlock-Holo/camouflage'
 source=(
 	"$_pkgname::git://github.com/Sherlock-Holo/camouflage#branch=${BRANCH:-master}"
     "camouflage.install"
@@ -64,7 +60,7 @@ build() {
     export GO111MODULE=on
     export CGO_ENABLED=0
 	go get -v \
-		-gcflags "-trimpath $GOPATH/src"
+		-gcflags "-trimpath $PWD:$GOPATH/src"
     
     echo ":: Cleaning residual"
     chmod 777 -R $GOPATH/pkg/mod
