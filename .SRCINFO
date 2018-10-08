@@ -1,0 +1,12 @@
+pkgbase = qiniu-qshell-bin
+	pkgdesc = qshell是利用七牛文档上公开的API实现的一个方便开发者测试和使用七牛API服务的命令行工具
+	pkgver = 2.1.8
+	pkgrel = 1
+	url = https://github.com/qiniu/qshell
+	arch = x86_64
+	license = MIT
+	source = http://devtools.qiniu.com/qshell-v2.1.8.zip
+	md5sums = 6dcf0de646582fcbae394ca1979a9bce
+
+pkgname = qiniu-qshell-bin
+
