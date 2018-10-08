@@ -11,22 +11,17 @@ url="https://gitlab.gnome.org/World/PasswordSafe"
 depends=('gtk3' 'python-pykeepass' 'python-construct' 'gobject-introspection' 'libhandy')
 makedepends=('git' 'meson' 'ninja')
 conflicts=('gnome-passwordsafe-git')
-source=("git+https://gitlab.gnome.org/World/PasswordSafe.git")
-md5sums=('SKIP')
- 
-pkgver() {
-	cd "${srcdir}/${_gitname}/"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
+source=('https://gitlab.gnome.org/World/PasswordSafe/-/archive/3.30.1/PasswordSafe-3.30.1.tar.gz')
+sha256sums=('4cc4b0618a33121fe3e4fa396e71ec00b39f034aa1b6a3e07bce5cf303aa1c91')
 
 build() {
-	cd "${srcdir}/${_gitname}/"
+	cd "${srcdir}/${_gitname}-${pkgver}/"
 	arch-meson . _build --prefix=/usr
 	ninja -C _build
 }
 
 package() {
-	cd "${srcdir}/${_gitname}/"
+	cd "${srcdir}/${_gitname}-${pkgver}/"
 	DESTDIR="${pkgdir}" ninja -C _build install
 }
 
