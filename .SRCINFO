@@ -1,4 +1,4 @@
-pkgbase = full-offline-backup-for-todoist
+pkgbase = todoist-full-offline-backup
 	pkgdesc = Small, dependency-less Python script to make a backup of all Todoist tasks and attachments that is accessible offline
 	pkgver = 0.3.3
 	pkgrel = 1
