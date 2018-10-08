@@ -1,7 +1,7 @@
 pkgbase = nixnote2-git
 	pkgdesc = Evernote clone (formerly Nevernote) - git checkout
 	pkgver = 2.1.0.beta3.r95.g8f235769
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/robert7/nixnote2
 	arch = x86_64
 	license = GPL3
@@ -16,7 +16,7 @@ pkgbase = nixnote2-git
 	replaces = nevernote
 	replaces = nixnote
 	replaces = nixnote-beta
-	source = nixnote2::git+https://github.com/robert7/nixnote2.git
+	source = git+https://github.com/robert7/nixnote2.git
 	sha256sums = SKIP
 
 pkgname = nixnote2-git
