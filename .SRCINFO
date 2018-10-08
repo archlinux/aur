@@ -5,6 +5,7 @@ pkgbase = calf-ladspa
 	url = https://github.com/LMMS/veal
 	arch = i686
 	arch = x86_64
+	groups = ladspa-plugins
 	license = LGPL
 	makedepends = ladspa
 	makedepends = cmake
