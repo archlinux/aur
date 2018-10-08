@@ -1,7 +1,7 @@
 # Maintainer: Ilja Kocken <i.j.kocken@uu.nl>
 
 _cranname=fansi
-_cranver=0.3.0
+_cranver=0.4.0
 pkgname="r-${_cranname}"
 pkgver="${_cranver}"
 pkgrel=1
@@ -12,9 +12,9 @@ license=('GPL3')
 conflicts=('r-fansi')
 provides=('r-fansi')
 depends=('r')
-optdepends=('r-unitizer' 'r-knitr' 'r-rmarkdown')
+optdepends=('r-unitizer' 'r-knitr' 'r-rmarkdown' 'r-pillar' 'r-cli')
 source=("http://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('dd6401d5c91ff4c45d752cceddd5379d1ae39a8a1196f236b0bc0ec6d691b88c')
+sha256sums=('e104e9d01c7ff8a847f6b332ef544c0ef912859f9c6a514fe2e6f3b34fcfc209')
 
 package() {
     mkdir -p "${pkgdir}/usr/lib/R/library"
