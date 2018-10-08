@@ -6,7 +6,7 @@
 
 pkgname=gazebo
 pkgver=9.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A multi-robot simulator for outdoor environments"
 arch=('i686' 'x86_64')
 url="http://gazebosim.org/"
@@ -33,6 +33,8 @@ sha256sums=('8a42cf1e5c9cd358fd03e71cf8e00651af8d0ff15793a6942d387d555525c423')
 
 build() {
   cd "${srcdir}/osrf-${pkgname}-5714795a2e79"
+
+  sed -i -e 's|boost/uuid/sha1.hpp|boost/uuid/detail/sha1.hpp|g' gazebo/common/CommonIface.hh
 
   mkdir -p build && cd build
 
