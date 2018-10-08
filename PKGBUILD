@@ -2,27 +2,28 @@
 # Maintainer: dpayne <darby.payne@gmail.com>
 
 pkgname="cli-visualizer"
-pkgver=1.7
-pkgrel=7
+pkgver=1.8
+pkgrel=8
 pkgdesc="A cli visualizer for mpd"
 arch=('i686' 'x86_64')
 url="https://github.com/dpayne/cli-visualizer/"
 license=('MIT')
 depends=('ncurses' 'fftw')
-makedepends=('git' 'fftw')
+makedepends=('git' 'fftw' 'cmake')
 conflicts=('vis')
 install=${pkgname}.install
-source=('https://github.com/dpayne/cli-visualizer/archive/1.7.tar.gz')
-sha256sums=('0445fbfad9707668a70ff146f3f24308f28fa0ae67a7010bfdea0dacba75b75b')
+source=('https://github.com/dpayne/cli-visualizer/archive/v1.8.tar.gz')
+sha256sums=('927e4c18403c7a40397e8698ffefd1b37250be20fa0ec55fda9a82cf9cc8ba51')
 
 build() {
     cd $pkgname-$pkgver
+    cmake ./
     make
 }
 
 package() {
   cd $pkgname-$pkgver
-  install -Dm755 build/vis "$pkgdir/usr/bin/vis"
+  install -Dm755 vis "$pkgdir/usr/bin/vis"
   install -Dm644 examples/blue "$pkgdir"/usr/share/doc/"$pkgname"/blue
   install -Dm644 examples/config "$pkgdir"/usr/share/doc/"$pkgname"/config
   install -Dm644 examples/rainbow "$pkgdir"/usr/share/doc/"$pkgname"/rainbow

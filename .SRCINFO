@@ -1,7 +1,7 @@
 pkgbase = cli-visualizer
 	pkgdesc = A cli visualizer for mpd
-	pkgver = 1.7
-	pkgrel = 7
+	pkgver = 1.8
+	pkgrel = 8
 	url = https://github.com/dpayne/cli-visualizer/
 	install = cli-visualizer.install
 	arch = i686
@@ -9,11 +9,12 @@ pkgbase = cli-visualizer
 	license = MIT
 	makedepends = git
 	makedepends = fftw
+	makedepends = cmake
 	depends = ncurses
 	depends = fftw
 	conflicts = vis
-	source = https://github.com/dpayne/cli-visualizer/archive/1.7.tar.gz
-	sha256sums = 0445fbfad9707668a70ff146f3f24308f28fa0ae67a7010bfdea0dacba75b75b
+	source = https://github.com/dpayne/cli-visualizer/archive/v1.8.tar.gz
+	sha256sums = 927e4c18403c7a40397e8698ffefd1b37250be20fa0ec55fda9a82cf9cc8ba51
 
 pkgname = cli-visualizer
 
