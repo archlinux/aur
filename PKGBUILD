@@ -3,7 +3,7 @@
 pkgname='brother-mfc-l2710dn'
 pkgver='4.0.0'
 pkgrel=1
-pkgdesc='LPR and CUPS driver for the Brother MFC-L2710DW'
+pkgdesc='LPR and CUPS driver for the Brother MFC-L2710DN'
 url='http://solutions.brother.com/linux/en_us/'
 arch=('i686' 'x86_64')
 license=('custom:Brother commercial license')
