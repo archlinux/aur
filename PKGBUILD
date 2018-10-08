@@ -1,10 +1,12 @@
-# $Id: PKGBUILD 294869 2017-04-27 03:06:45Z foutrelis $
+# Maintainer: Chih-Hsuan Yen <yan12125@archlinux.org>
+# Contributor: foutrelis
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=webkitgtk
 pkgname=(webkitgtk webkitgtk2)
+epoch=3
 pkgver=2.4.11
-pkgrel=12
+pkgrel=13
 pkgdesc="Legacy Web content engine"
 arch=(i686 x86_64 armv7h)
 url="https://webkitgtk.org/"
@@ -29,8 +31,8 @@ sha256sums=('588aea051bfbacced27fdfe0335a957dca839ebe36aa548df39c7bbafdb65bf7'
             'df8284004f25d189184aab1009df696c915212e0e439a555dbd0dbec06111e2e')
 
 prepare() {
-  mkdir build-gtk{,2} path
-  ln -s /usr/bin/python2 path/python
+  mkdir -p build-gtk{,2} path
+  ln -s -f /usr/bin/python2 path/python
 
   cd $pkgbase-$pkgver
   patch -Np1 -i ../webkitgtk-2.4.9-abs.patch
@@ -49,8 +51,8 @@ _build() (
   CXXFLAGS+=" -fno-delete-null-pointer-checks"
   CFLAGS+=" -fno-delete-null-pointer-checks"
 
-  CFLAGS+=" -Wno-expansion-to-defined"
-  CXXFLAGS+=" -Wno-expansion-to-defined"
+  CFLAGS+=" -Wno-expansion-to-defined -Wno-class-memaccess"
+  CXXFLAGS+=" -Wno-expansion-to-defined -Wno-class-memaccess"
 
   ../$pkgbase-$pkgver/configure --prefix=/usr \
     --libexecdir=/usr/lib/webkit${_ver} \
