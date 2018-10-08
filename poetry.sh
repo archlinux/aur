@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-/usr/bin/python -m poetry
+/usr/bin/python -m poetry "${@}"

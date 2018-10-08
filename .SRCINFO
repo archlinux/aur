@@ -1,7 +1,7 @@
 pkgbase = python-poetry
 	pkgdesc = Python dependency management and packaging made easy
 	pkgver = 0.11.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/sdispater/poetry
 	arch = any
 	license = MIT
