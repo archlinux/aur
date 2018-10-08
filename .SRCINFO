@@ -1,6 +1,6 @@
 pkgbase = emacs-flycheck-git
 	pkgdesc = On the fly syntax checking for GNU Emacs
-	pkgver = r4529.ef2dcc12
+	pkgver = r4535.253febbd
 	pkgrel = 1
 	url = https://github.com/flycheck/flycheck
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = emacs-flycheck-git
 	depends = emacs
 	depends = emacs-dash
 	depends = emacs-pkg-info
-	provides = emacs-flycheck
-	conflicts = emacs-flycheck
+	provides = flycheck
+	conflicts = flycheck
 	source = git+https://github.com/flycheck/flycheck.git
 	sha256sums = SKIP
 

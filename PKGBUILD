@@ -4,7 +4,7 @@ _gituser="flycheck"
 _gitrepo="flycheck"
 
 pkgname=emacs-flycheck-git
-pkgver=r4529.ef2dcc12
+pkgver=r4535.253febbd
 pkgrel=1
 pkgdesc="On the fly syntax checking for GNU Emacs"
 url="https://github.com/${_gituser}/${_gitrepo}"
@@ -12,8 +12,8 @@ arch=('any')
 license=('GPL3')
 depends=('emacs' 'emacs-dash' 'emacs-pkg-info')
 makedepends=('git')
-provides=('emacs-flycheck')
-conflicts=('emacs-flycheck')
+provides=('flycheck')
+conflicts=('flycheck')
 source=("git+https://github.com/${_gituser}/${_gitrepo}.git")
 sha256sums=('SKIP')
 
