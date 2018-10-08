@@ -1,27 +1,22 @@
-# Maintainer: Alex Branham <branham@utexas.edu>
-_cranname=coda
-_cranver=0.19-1
-_pkgtar=${_cranname}_${_cranver}.tar.gz
+# Maintainer: Alex Branham <alex.branham@gmail.com>
+_cranver=0.19-2
 pkgname=r-coda
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc="Output Analysis and Diagnostics for MCMC"
+pkgdesc='Output Analysis and Diagnostics for MCMC'
 arch=('any')
-url="https://cran.r-project.org/package=${_cranname}"
+url='https://cran.r-project.org/package=coda'
 license=('GPL')
 depends=('r' )
-
-
-
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('0d2aca6a5a3bdae9542708817c1ec001')
 replaces=('r-cran-coda')
+source=("https://cran.r-project.org/src/contrib/coda_"$_cranver".tar.gz")
+md5sums=('0c5d6b732fe5bcb7a8e52ae3ae6a311f')
 
 build(){
-    R CMD INSTALL ${_pkgtar} -l $srcdir
+    R CMD INSTALL coda_"$_cranver".tar.gz -l "$srcdir"
 }
 package() {
-    install -d "$pkgdir/usr/lib/R/library"
-    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
+    install -dm0755 "$pkgdir"/usr/lib/R/library
+    cp -a --no-preserve=ownership coda "$pkgdir"/usr/lib/R/library
 }
 
