@@ -1,13 +1,13 @@
 pkgbase = kubetail
 	pkgdesc = Bash script that enables you to aggregate (tail/follow) logs from multiple pods into one stream
-	pkgver = 1.4.3
+	pkgver = 1.6.4
 	pkgrel = 1
 	url = https://github.com/johanhaleby/kubetail
 	arch = any
 	license = Apache
 	depends = kubectl-bin
-	source = https://github.com/johanhaleby/kubetail/archive/1.4.3.tar.gz
-	md5sums = 300ee2748f06f040522c44fbb2dcc367
+	source = https://github.com/johanhaleby/kubetail/archive/1.6.4.tar.gz
+	md5sums = a9f387533b6e16b8e223e3324aa4ec9b
 
 pkgname = kubetail
 
