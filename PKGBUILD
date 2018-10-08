@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=emacs-mmm-mode-git
-pkgver=20171213
+pkgver=20180621
 pkgrel=1
 pkgdesc="Minor mode for Emacs that allows Multiple Major Modes to coexist in one buffer"
 arch=('any')
@@ -14,12 +14,12 @@ _gitname="mmm-mode"
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir"/$_gitname
+  cd $_gitname
   echo $(git log -1 --format="%cd" --date=short | sed 's|-||g')
 }
 
 build() {
-  cd "$srcdir/$_gitname"
+  cd $_gitname
   mv configure.in configure.ac
   ./autogen.sh
   ./configure --prefix=/usr
@@ -27,6 +27,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_gitname"
+  cd $_gitname
   make DESTDIR="$pkgdir/" install
 }
