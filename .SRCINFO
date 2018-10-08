@@ -1,0 +1,17 @@
+pkgbase = um
+	pkgdesc = utility to create and maintain your own man pages so you can remember how to do stuff
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = https://github.com/sinclairtarget/um
+	arch = any
+	license = MIT
+	makedepends = ruby-rake
+	depends = ruby
+	depends = ruby-kramdown
+	conflicts = um-git
+	options = !emptydirs
+	source = https://github.com/sinclairtarget/um/archive/4.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = um
+
