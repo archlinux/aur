@@ -1,7 +1,7 @@
 # Maintainer: Florent Thiéry <fthiery@gmail.com>
 
 pkgname=cockpit-minimal
-pkgver=177
+pkgver=179
 pkgrel=1
 pkgdesc='A systemd web based user interface for Linux servers (minimal setup with system graphs, journalctl, storage, network, user accounts, systemd services and terminal)'
 arch=(i686 x86_64 armv6h armv7h)
@@ -16,8 +16,8 @@ makedepends=(git intltool python2-pyscss gtk-doc perl-javascript-minifier-xs gob
 source=(https://github.com/cockpit-project/cockpit/releases/download/${pkgver}/cockpit-${pkgver}.tar.xz
 	https://github.com/cockpit-project/cockpit/releases/download/${pkgver}/cockpit-cache-${pkgver}.tar.xz)
 noextract=(cockpit-${pkgver}.tar.xz)
-sha1sums=('6437c6487514b23147ba785c3f4fad67c31afa4a'
-          'f785edbf9c00c10e35c96a09dacdb5ec5a677f84')
+sha1sums=('d00685a01f10c025574da54cd9a1bb686c868dea'
+          '5e72543bdd8c42b3f1f3d8cde6998c33a9712895')
 
 prepare() {
   cd $srcdir
