@@ -1,0 +1,18 @@
+pkgbase = xdpi-git
+	pkgdesc = X11 DPI information retrieval
+	pkgver = r48.924fcc5
+	pkgrel = 1
+	url = https://github.com/Oblomov/xdpi
+	arch = x86_64
+	license = MPL
+	makedepends = git
+	depends = libxinerama
+	depends = xcb-util-xrm
+	depends = libxrandr
+	provides = xdpi
+	conflicts = xdpi
+	source = git+https://github.com/Oblomov/xdpi.git
+	md5sums = SKIP
+
+pkgname = xdpi-git
+
