@@ -1,6 +1,6 @@
 pkgbase = cdogs
 	pkgdesc = Enhanced SDL port of DOS arcade game C-Dogs (aka "Cyberdogs 2")
-	pkgver = 0.6.5
+	pkgver = 0.6.8
 	pkgrel = 1
 	url = http://cxong.github.io/cdogs-sdl/
 	arch = i686
@@ -9,9 +9,8 @@ pkgbase = cdogs
 	makedepends = cmake
 	depends = sdl2_mixer
 	depends = sdl2_image
-	options = !optipng
-	source = cdogs-0.6.5.tar.gz::https://github.com/cxong/cdogs-sdl/archive/0.6.5.tar.gz
-	sha256sums = 73fcba62fe929dc52347c27f715dc3081ea995987d5eb9cf8028f29cdbcd949e
+	source = cdogs-0.6.8.tar.gz::https://github.com/cxong/cdogs-sdl/archive/0.6.8.tar.gz
+	sha256sums = 292091a528203de41d186ed910ef36413a8adb3549c4a864fcb3792b9901a6ff
 
 pkgname = cdogs
 
