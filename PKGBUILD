@@ -7,7 +7,7 @@
 _pkgname=mumble
 pkgname=$_pkgname-minimal
 pkgver=1.2.19
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 pkgdesc="A voice chat application similar to TeamSpeak, bare minimum client"
 license=('BSD')
@@ -35,7 +35,7 @@ build() {
 
   # Building mumble
   qmake-qt4 main.pro \
-    CONFIG+="bundled-celt no-bundled-opus no-bundled-speex no-g15 no-xevie no-server \
+    CONFIG+="c++11 bundled-celt no-bundled-opus no-bundled-speex no-g15 no-xevie no-server \
     no-embed-qt-translations no-update packaged no-speechd no-overlay no-bonjour no-plugins" \
     DEFINES+="PLUGIN_PATH=/usr/lib/mumble"
   make release

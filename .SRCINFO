@@ -1,7 +1,7 @@
 pkgbase = mumble-minimal
 	pkgdesc = A voice chat application similar to TeamSpeak, bare minimum client
 	pkgver = 1.2.19
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.mumble.info/
 	arch = x86_64
 	license = BSD
