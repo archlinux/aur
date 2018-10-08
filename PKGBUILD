@@ -2,7 +2,7 @@
      
 pkgname=nvidia-pf
 pkgver=396.54
-pkgrel=1
+pkgrel=2
 _goodkver=4.17
 _badkver=4.18
 _modver=${_goodkver}-pf
@@ -22,7 +22,7 @@ conflicts=( 'nvidia-96xx' 'nvidia-173xx' 'nvidia-pf-core2' 'nvidia-pf-k8'
 license=('custom')
 options=(!strip)
 source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-md5sums=('d3556202869f629e0c251b59ad4b9bee')
+md5sums=('710acf72a2d8dde844dd2638e0782819')
 
 
 
