@@ -2,17 +2,18 @@
 
 _gemname=guard-nanoc
 pkgname=ruby-$_gemname
-pkgver=2.1.2
+pkgver=2.1.4
 pkgrel=1
 pkgdesc='Guard helper gem for nanoc static site generator'
 arch=('any')
-url='https://github.com/guard/guard-nanoc'
+url='https://github.com/nanoc/nanoc/tree/master/guard-nanoc'
 license=('MIT')
 depends=("ruby-guard" "nanoc")
+makedepends=("ruby-rdoc")
 options=(!emptydirs)
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=("$_gemname-$pkgver.gem")
-sha256sums=('52cb67251ffe74985eaecef8e559378710530729d1dfc5d949c58a4ba5217790')
+sha256sums=('505978cac1c5b9cb814156ef7b1006a2bd07bff6d91819cc4ef80aaaa4db7b11')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
