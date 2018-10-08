@@ -2,7 +2,7 @@
 # Contributor: Emanuele 'Lele aka eldios' Calo' <lele@sshadm.in>
 
 pkgname='python-uflash'
-pkgver=1.2.1
+pkgver=1.2.3
 pkgrel=0
 pkgdesc="A module and utility to flash Python onto the BBC micro:bit"
 url="https://pypi.python.org/pypi/uflash/"
@@ -11,8 +11,8 @@ license=('GPL')
 depends=('python' 'python-click')
 makedepends=('python-setuptools')
 provides=('python-uflash' 'uflash')
-source=("https://files.pythonhosted.org/packages/e9/f1/a41607db0313696581d1bb8af8c3137b2e3806c06cf0c9c5ff2f170a0abb/uflash-${pkgver}.tar.gz")
-sha256sums=('4aa3c7e2d91316e7ad7c1228767f59cf23bdd8180acc3147fbc693dfea349b03')
+source=("https://files.pythonhosted.org/packages/c6/8a/5c007e1403a77385f157bae23e7a42b5a26260321f8ee22a275b23cce7f8/uflash-1.2.3.tar.gz")
+sha256sums=('e8aa905d233711a216955024af926ad629c3d68284f4086f825a3494ed471a9f')
 
 package() {
   cd "${srcdir}/uflash-${pkgver}"
@@ -20,4 +20,3 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-
