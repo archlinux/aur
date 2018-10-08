@@ -1,6 +1,6 @@
 pkgbase = um-git
 	pkgdesc = utility to create and maintain your own man pages so you can remember how to do stuff
-	pkgver = 4.0.0.r0.g549656d
+	pkgver = 4.1.0.r0.g26f2845
 	pkgrel = 1
 	url = https://github.com/sinclairtarget/um
 	arch = any
@@ -9,10 +9,9 @@ pkgbase = um-git
 	makedepends = ruby-rake
 	depends = ruby
 	depends = ruby-kramdown
+	options = !emptydirs
 	source = um-git::git+https://github.com/sinclairtarget/um
-	source = um.sh
 	sha256sums = SKIP
-	sha256sums = 500b716feca004a1f43a3d8c2bc6ec65e409781c882f5a935b726900888fb91f
 
 pkgname = um-git
 
