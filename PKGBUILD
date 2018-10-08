@@ -1,7 +1,7 @@
 # Maintainer: Lukas Hannen <plant dot software dot c at hannen dot at>
 
 pkgname=plant-git
-pkgver=1.0.1
+pkgver=v1.0.3
 pkgrel=1
 pkgdesc="tree but for arbitrary data"
 arch=(any)
@@ -23,4 +23,6 @@ pkgver() {
 package() {
 	cd "$srcdir/${pkgname%-git}"
 	install -Dm 755 plant "$pkgdir/usr/bin/plant"
+	install -Dm 644 MANPAGE "$pkgdir/usr/share/man/man1/plant.1"
+	gzip "$pkgdir/usr/share/man/man1/plant.1"
 }
