@@ -1,4 +1,4 @@
-pkgbase = ttf-fork-awesome
+pkgbase = fork-awesome
 	pkgdesc = A fork of the iconic font and CSS toolkit
 	pkgver = 1.1.3
 	pkgrel = 1
