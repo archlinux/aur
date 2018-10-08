@@ -1,6 +1,6 @@
 # Maintainer: Cody Schafer <aur at codyps.com>
 pkgname=xdpi-git
-pkgver=r48.924fcc5
+pkgver=0.0.0.r48.924fcc5
 pkgrel=1
 pkgdesc="X11 DPI information retrieval"
 arch=(x86_64)
@@ -21,7 +21,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "0.0.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {

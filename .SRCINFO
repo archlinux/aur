@@ -1,6 +1,6 @@
 pkgbase = xdpi-git
 	pkgdesc = X11 DPI information retrieval
-	pkgver = r48.924fcc5
+	pkgver = 0.0.0.r48.924fcc5
 	pkgrel = 1
 	url = https://github.com/Oblomov/xdpi
 	arch = x86_64
