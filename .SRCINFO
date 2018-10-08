@@ -1,7 +1,7 @@
 pkgbase = js8call
 	pkgdesc = Software for ragchewing and message-passing based on WSJT-X
 	pkgver = 0.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://groups.io/g/js8call
 	arch = i686
 	arch = x86_64
