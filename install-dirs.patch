@@ -1,0 +1,41 @@
+--- cmake_install.cmake.orig	2018-10-08 13:41:05.774680056 -0400
++++ cmake_install.cmake	2018-10-08 13:46:04.889736034 -0400
+@@ -91,38 +91,14 @@
+ endif()
+ 
+ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+-  list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
+-   "/usr/share/applications/js8call.desktop")
+-  if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
+-    message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
+-  endif()
+-  if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
+-    message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
+-  endif()
+ file(INSTALL DESTINATION "/usr/share/applications" TYPE FILE FILES "/home/galen/pkgbuilds/js8call/src/js8call-0.7.2/js8call.desktop")
+ endif()
+ 
+ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+-  list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
+-   "/usr/share/pixmaps/js8call_icon.png")
+-  if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
+-    message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
+-  endif()
+-  if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
+-    message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
+-  endif()
+ file(INSTALL DESTINATION "/usr/share/pixmaps" TYPE FILE FILES "/home/galen/pkgbuilds/js8call/src/js8call-0.7.2/icons/Unix/js8call_icon.png")
+ endif()
+ 
+ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+-  list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
+-   "/usr/bin/js8call")
+-  if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
+-    message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
+-  endif()
+-  if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
+-    message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
+-  endif()
+ file(INSTALL DESTINATION "/usr/bin" TYPE FILE RENAME "js8call" FILES "/home/galen/pkgbuilds/js8call/src/build/ljs8call")
+ endif()
+ 
