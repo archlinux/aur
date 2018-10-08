@@ -5,7 +5,7 @@
 # Contributor: Vladimir Ermakov <vooon341@gmail.com>
 
 pkgname=gazebo
-pkgver=9.3.1
+pkgver=9.4.1
 pkgrel=2
 pkgdesc="A multi-robot simulator for outdoor environments"
 arch=('i686' 'x86_64')

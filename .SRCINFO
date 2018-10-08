@@ -1,6 +1,6 @@
 pkgbase = gazebo
 	pkgdesc = A multi-robot simulator for outdoor environments
-	pkgver = 9.3.1
+	pkgver = 9.4.1
 	pkgrel = 2
 	url = http://gazebosim.org/
 	install = gazebo.install
@@ -38,7 +38,7 @@ pkgbase = gazebo
 	optdepends = ruby-ronn: Generate manpages
 	optdepends = simbody: Simbody support
 	optdepends = urdfdom: Load URDF files
-	source = https://bitbucket.org/osrf/gazebo/get/gazebo9_9.3.1.tar.bz2
+	source = https://bitbucket.org/osrf/gazebo/get/gazebo9_9.4.1.tar.bz2
 	sha256sums = 33c970576d36a5db1b84f3e01e49dcb5976d4013d58f6308d32ca8e819fba975
 
 pkgname = gazebo
