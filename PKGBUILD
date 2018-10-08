@@ -1,7 +1,7 @@
 # Maintainer: Emanuele 'Lele aka eldios' Calo' <xeldiosx@gmail.com>
 
 pkgname=kubespy
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Tools for observing Kubernetes resources in real time"
 arch=('x86_64')

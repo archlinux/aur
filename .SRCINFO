@@ -1,13 +1,13 @@
 pkgbase = kubespy
 	pkgdesc = Tools for observing Kubernetes resources in real time
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/pulumi/kubespy
 	arch = x86_64
 	license = Apache
 	depends = glibc
 	options = !strip
-	source_x86_64 = kubespy::https://github.com/pulumi/kubespy/releases/download/v0.3.0/kubespy_linux-amd64
+	source_x86_64 = kubespy::https://github.com/pulumi/kubespy/releases/download/v0.4.0/kubespy_linux-amd64
 	sha256sums_x86_64 = ea9c213760454f374c0c508b1a25cfabaaeca983a000b453cf328ca50ed0e997
 
 pkgname = kubespy
