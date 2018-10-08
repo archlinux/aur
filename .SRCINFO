@@ -1,6 +1,6 @@
 pkgbase = terraform-provider-libvirt
-	pkgdesc = Terraform provider for libvirt
-	pkgver = 0.3
+	pkgdesc = Terraform provider to provision infrastructure with Linux's KVM using libvirt
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://github.com/dmacvicar/terraform-provider-libvirt
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = terraform-provider-libvirt
 	makedepends = git
 	depends = terraform
 	depends = libvirt
-	source = https://github.com/dmacvicar/terraform-provider-libvirt/archive/v0.3.tar.gz
-	sha256sums = 968682b29ea8f9bac3a4316c3034648e2a363d95df648a55c905e96623b758d1
+	source = https://github.com/dmacvicar/terraform-provider-libvirt/archive/v0.4.4.tar.gz
+	sha256sums = 6d54608c29b4d708bd8b145655e26e21af1e43ea12e9c175f5834cc098c7c86b
 
 pkgname = terraform-provider-libvirt
 
