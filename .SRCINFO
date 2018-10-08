@@ -33,8 +33,8 @@ pkgbase = wesnoth-1.8
 	source = wesnoth-1.8.appdata.xml
 	md5sums = 7fa59aab4ec96e6466dd276a76462e78
 	md5sums = a3afc892c43bbff72a9b150de513beaf
-	md5sums = 8f88ebc8879ba6aabf87baeefade4b41
-	md5sums = f11a61e8d08b11a954707a527f113af2
+	md5sums = 2fefdcdb47b94268a8bcaeecd99e61c1
+	md5sums = 46f8e791922b58f4b0cea7bebef511ad
 
 pkgname = wesnoth-1.8
 
