@@ -5,7 +5,7 @@
 
 pkgbase='vte3-notification'
 pkgname=("${pkgbase}" 'vte-notification-common')
-pkgver=0.52.2
+pkgver=0.54.1
 pkgrel=1
 pkgdesc='Virtual Terminal Emulator widget for use with GTK3 with Fedora patches'
 arch=('i686' 'x86_64')
@@ -17,9 +17,9 @@ options=('!emptydirs')
 
 # Fedora patches: https://pkgs.fedoraproject.org/cgit/rpms/vte291.git/tree/
 _frepourl='https://src.fedoraproject.org/rpms/vte291'
-_frepobranch='f28'
+_frepobranch='f29'
 _fpatchfile='vte291-command-notify-scroll-speed.patch'
-_fcommit='31a8d1b3ad4c16edc50b605f7240888de69790ac'
+_fcommit='94ec580d203552c728f6d46ce539fd321d991500'
 
 # VTE source ref
 #_vtecommit='837cce9ced6bfe317cb97aeca171001da92cb3a1'
@@ -32,7 +32,7 @@ source=(
 	'add-zsh-notfication-support.patch'
 )
 sha256sums=('SKIP'
-            'b22e1276202a10007004f19002ceb5eb186f1529e39a6a451e0b82f3d6bce9ee'
+            '5de49179d88acba730e7446913724ca012b4b5aedb6392b2547a11725829180b'
             '150a151404ca565f70259044661b2ef5cda43142ca677e7da324614eef8cf45a')
 
 #pkgver() {
@@ -44,7 +44,7 @@ prepare () {
 	cd "vte"
 
 	patch -p1 -i "../${_fpatchfile}-${_fcommit}"
-	patch -p1 -i '../add-zsh-notfication-support.patch'
+	#patch -p1 -i '../add-zsh-notfication-support.patch'
 
 	NOCONFIGURE=1 ./autogen.sh
 }

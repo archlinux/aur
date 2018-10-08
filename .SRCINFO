@@ -1,6 +1,6 @@
 pkgbase = vte3-notification
 	pkgdesc = Virtual Terminal Emulator widget for use with GTK3 with Fedora patches
-	pkgver = 0.52.2
+	pkgver = 0.54.1
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Terminal/VTE
 	arch = i686
@@ -17,11 +17,11 @@ pkgbase = vte3-notification
 	depends = pcre2
 	depends = gnutls
 	options = !emptydirs
-	source = git+https://git.gnome.org/browse/vte#tag=0.52.2
-	source = vte291-command-notify-scroll-speed.patch-31a8d1b3ad4c16edc50b605f7240888de69790ac::https://src.fedoraproject.org/rpms/vte291/raw/31a8d1b3ad4c16edc50b605f7240888de69790ac/f/vte291-command-notify-scroll-speed.patch
+	source = git+https://git.gnome.org/browse/vte#tag=0.54.1
+	source = vte291-command-notify-scroll-speed.patch-94ec580d203552c728f6d46ce539fd321d991500::https://src.fedoraproject.org/rpms/vte291/raw/94ec580d203552c728f6d46ce539fd321d991500/f/vte291-command-notify-scroll-speed.patch
 	source = add-zsh-notfication-support.patch
 	sha256sums = SKIP
-	sha256sums = b22e1276202a10007004f19002ceb5eb186f1529e39a6a451e0b82f3d6bce9ee
+	sha256sums = 5de49179d88acba730e7446913724ca012b4b5aedb6392b2547a11725829180b
 	sha256sums = 150a151404ca565f70259044661b2ef5cda43142ca677e7da324614eef8cf45a
 
 pkgname = vte3-notification
@@ -29,13 +29,13 @@ pkgname = vte3-notification
 	depends = pcre2
 	depends = gnutls
 	depends = vte-notification-common
-	provides = vte3=0.52.2
+	provides = vte3=0.54.1
 	conflicts = vte3
 
 pkgname = vte-notification-common
 	pkgdesc = Common files used by vte and vte3
 	arch = any
 	depends = sh
-	provides = vte-common=0.52.2
+	provides = vte-common=0.54.1
 	conflicts = vte-common
 
