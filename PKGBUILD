@@ -1,7 +1,7 @@
 # See AUR interface for current maintainer.
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=emacs-mmm-mode  
-pkgver=0.5.5
+pkgver=0.5.7
 pkgrel=1
 pkgdesc="minor mode for Emacs that allows Multiple Major Modes to \
 coexist in one buffer"
@@ -12,7 +12,7 @@ conflicts=('mmm-mode')
 license=('GPL')
 install=mmm-mode.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/purcell/mmm-mode/archive/$pkgver.tar.gz")
-sha256sums=('0c7fec2371c0b84d461732219e1d86c88e6a76e42e430cd199e46406c7b3b130')
+sha256sums=('f9655542cf91ba766d5fbb9a3ada0c62aaadf96b220969d7c4ec2768a0b53e24')
 
 build() {
   cd ${pkgname#emacs-}-$pkgver
@@ -23,5 +23,5 @@ build() {
 }
 package() {
   cd ${pkgname#emacs-}-$pkgver
-  make DESTDIR=$pkgdir install
+  make DESTDIR="$pkgdir" install
 }
