@@ -1,7 +1,7 @@
 # Maintainer: Sergio Conde <skgsergio@gmail.com>
 
 pkgname=mfcuk-git
-pkgver=r54.5acc9f4
+pkgver=r62.b333a79
 pkgrel=1
 pkgdesc="MiFare Classic Universal toolKit (MFCUK)"
 arch=('i686' 'x86_64')
