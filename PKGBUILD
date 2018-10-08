@@ -7,7 +7,7 @@
 _pkgname=mumble
 pkgname=$_pkgname-minimal
 pkgver=1.2.19
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 pkgdesc="A voice chat application similar to TeamSpeak, bare minimum client"
 license=('BSD')
