@@ -1,19 +1,17 @@
 pkgbase = midieditor
 	pkgdesc = Graphical interface to edit, play, and record Midi data
-	pkgver = 3.0.0
+	pkgver = 3.1.1
 	pkgrel = 1
-	url = http://midieditor.sourceforge.net/
+	url = https://midieditor.org
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = subversion
-	makedepends = imagemagick
-	depends = qt4
-	depends = sfml
-	source = midieditor-3.0.0::svn+https://svn.code.sf.net/p/midieditor/code/trunk#revision=66
+	makedepends = qt5-tools
+	depends = qt5-multimedia
+	source = midieditor-3.1.1.tar.gz::https://github.com/markusschwenk/midieditor/archive/3.1.1.tar.gz
 	source = midieditor.sh
 	source = MidiEditor.desktop
-	sha256sums = SKIP
+	sha256sums = b2dbb25a917ab1b66d43570a37671be662f1e2e9fcc2e888f83310b755b41205
 	sha256sums = f7b7668c2a0ead8eb837e0943d494644cc18199af91485bb41a550ac47cc8d73
 	sha256sums = 14fa01e93af2ab167d359c203457f73c3072da7aebea90a4e91cf502e1196ef4
 
