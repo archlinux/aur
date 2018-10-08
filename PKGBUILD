@@ -1,7 +1,7 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=rpg2000-rtp
-pkgver=201803
+pkgver=201804
 pkgrel=1
 pkgdesc="RPG Maker 2000 Runtime Package (Japanese)"
 arch=('any')
@@ -10,10 +10,10 @@ license=('custom: commercial')
 makedepends=('unshield-git' 'convmv' 'glibc')
 optdepends=('easyrpg-player: game engine for using the RTP')
 source=("https://tkool.jp/assets/files/2000rtp.zip"
-        "https://tkool.jp/wp-content/uploads/2018/03/RTP_patchk.zip"
+        "https://tkool.jp/wp-content/uploads/2018/04/RTP_patchk_0420.zip"
         "$pkgname.sh")
 sha256sums=('c130f0078c0d6ecc3404f94af8258e4557ab85c3b204397c7f21dbc57efeef8e'
-            '057b6314c7735e9f9004fb33dd3e157b2899fb5d8dafa173aa98bdbc2b690202'
+            '369f704b24f0a7a9ea058c3b3002c1509f8c8d0a94c5ea7310aa0a40c393a995'
             '1a892b64ea2df5827e560100408d6ff3f8abc9ec008f62bc8167fb91c0c2b5da')
 noextract=('2000rtp.zip')
 
@@ -28,12 +28,12 @@ prepare() {
   convmv -f SHIFT-JIS -t UTF-8 -r --qfrom --notest rtp
   iconv -f SHIFT-JIS -t UTF-8 TOS-sjis.txt > TOS.txt
   mv rtp/"RPGﾂｸｰﾙ2000_ﾗﾝﾀｲﾑﾊﾟｯｹｰｼﾞ" 2000
-  convmv -f SHIFT-JIS -t UTF-8 -r --qfrom --notest RTP_patchk
-  iconv -f SHIFT-JIS -t UTF-8 RTP_patchk/"RTPの修正ファイルについて.txt" > PatchNotes.txt
+  convmv -f SHIFT-JIS -t UTF-8 -r --qfrom --notest RTP_patchk_0420
+  iconv -f SHIFT-JIS -t UTF-8 RTP_patchk_0420/"RTPの修正ファイルについて.txt" > PatchNotes.txt
   # patch
-  mv RTP_patchk/"モンスター.png" 2000/RTP/FaceSet
-  mv RTP_patchk/"主人公3.png" 2000/RTP/CharSet
-  mv RTP_patchk/"基本.png" 2000/RTP/ChipSet
+  mv RTP_patchk_0420/"モンスター.png" 2000/RTP/FaceSet
+  mv RTP_patchk_0420/"主人公3.png" 2000/RTP/CharSet
+  mv RTP_patchk_0420/{"基本","ダンジョン","船","内装"}.png 2000/RTP/ChipSet
 }
 
 package() {
