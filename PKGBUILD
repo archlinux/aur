@@ -3,7 +3,7 @@
 
 pkgname=canon-pixma-mg2500-complete
 pkgver=4.00
-pkgrel=1
+pkgrel=2
 pkgdesc="Complete stand alone driver set (printing and scanning) for Canon Pixma MG2500 series (MG2500, MG2540S etc.)"
 url='http://www.usa.canon.com/cusa/support/consumer/printers_multifunction/pixma_mg_series/pixma_mg2520_w_pp_201'
 arch=('i686' 'x86_64')
