@@ -13,7 +13,7 @@ options=(!emptydirs)
 conflicts=('um-git')
 source=("https://github.com/sinclairtarget/um/archive/4.1.0.tar.gz")
         
-sha256sums=("SKIP")
+md5sums=('bba8081d2acdfac150207e211a0252af')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver/"
