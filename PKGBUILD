@@ -2,7 +2,7 @@
 pkgbase=qt5-mvvm
 pkgname=(qt5-mvvmcore qt5-mvvmwidgets qt5-mvvmquick qt5-mvvmdatasynccore qt5-mvvmdatasyncwidgets qt5-mvvmdatasyncquick qt5-mvvm-doc)
 group=qt5-mvvm
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="A mvvm oriented library for Qt, to create Projects for Widgets and Quick in parallel"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('qt5-base' 'qt5-svg')
 makedepends=('qt5-tools' 'qt5-quickcontrols2' 'qt5-graphicaleffects' 'qt5-datasync' 'git' 'qpmx-qpmsource' 'python' 'doxygen' 'graphviz')
 optdepends=("repkg: Automatically rebuild the package on dependency updates")
 _pkgfqn=$pkgbase-$pkgver
-source=("$_pkgfqn::git+https://github.com/Skycoder42/QtMvvm.git#tag=$pkgver"
+source=("$_pkgfqn::git+https://github.com/Skycoder42/QtMvvm.git#tag=${pkgver}-2"  # TODO remove on next update
 		"${pkgbase}core.rule"
 		"${pkgbase}widgets.rule"
 		"${pkgbase}quick.rule"

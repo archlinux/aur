@@ -1,6 +1,6 @@
 pkgbase = qt5-mvvm
 	pkgdesc = A mvvm oriented library for Qt, to create Projects for Widgets and Quick in parallel
-	pkgver = 1.1.3
+	pkgver = 1.1.4
 	pkgrel = 1
 	url = https://github.com/Skycoder42/QtMvvm
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = qt5-mvvm
 	depends = qt5-base
 	depends = qt5-svg
 	optdepends = repkg: Automatically rebuild the package on dependency updates
-	source = qt5-mvvm-1.1.3::git+https://github.com/Skycoder42/QtMvvm.git#tag=1.1.3
+	source = qt5-mvvm-1.1.4::git+https://github.com/Skycoder42/QtMvvm.git#tag=1.1.4-2
 	source = qt5-mvvmcore.rule
 	source = qt5-mvvmwidgets.rule
 	source = qt5-mvvmquick.rule
