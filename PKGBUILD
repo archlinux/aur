@@ -1,13 +1,15 @@
 # Maintainer: Alex Zose <alexander[dot]zosimidis[at]gmail[dot]com>
 
-pkgname=('python-pyzbar')
+pkgname=python-pyzbar
 pkgver=0.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A ctypes-based wrapper around the zbar barcode reader"
 arch=('x86_64')
 license=('MIT')
 url="https://github.com/NaturalHistoryMuseum/pyzbar/"
 depends=('zbar')
+makedepends=('python-setuptools')
+provides=('pyzbar')
 replaces=('pyzbar')
 conflicts=('pyzbar')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/NaturalHistoryMuseum/${pkgname#*-}/archive/v$pkgver.tar.gz")
