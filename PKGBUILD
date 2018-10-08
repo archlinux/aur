@@ -2,7 +2,7 @@
 
 pkgbase=python-git-up
 pkgname=('python-git-up' 'python2-git-up')
-pkgver=1.5.0
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="A python implementation of git up"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('python-setuptools' 'python-termcolor' 'python-colorama' 'python-docopt' 'python-gitpython'
              'python2-setuptools' 'python2-termcolor' 'python2-colorama' 'python2-docopt' 'python2-gitpython')
 source=($pkgname-$pkgver.tar.gz::https://github.com/msiemens/PyGitUp/archive/v$pkgver.tar.gz)
-sha256sums=('6b4e147b09201f18d5b0313f116081d326f37f1bb19a72abb2d1c0f26a5a0366')
+sha256sums=('c5180093407c8aa93d0db7088b2113eee914b249d92889afc623c07553170fb4')
 
 package_python-git-up() {
   depends=('python-termcolor' 'python-colorama' 'python-docopt' 'python-gitpython')
