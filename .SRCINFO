@@ -1,0 +1,17 @@
+pkgbase = qcheckgmail
+	pkgdesc = Qt/C++ multiple gmail account checker
+	pkgver = 1.2.9
+	pkgrel = 1
+	url = http://mhogomchungu.github.io/qCheckGMail/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = kwallet
+	depends = plasma-workspace
+	source = qCheckGMail-1.2.9.tar.gz::https://github.com/mhogomchungu/qCheckGMail/archive/1.2.9.tar.gz
+	md5sums = cafd6331c72853ea9cba3d49945f6def
+
+pkgname = qcheckgmail
+
