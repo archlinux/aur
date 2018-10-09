@@ -1,7 +1,7 @@
 # Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
 
 pkgname=pulse-secure
-pkgver=9.0r2.0_b819
+pkgver=9.0r2.1_b819
 pkgrel=1
 pkgdesc='Pulse Connect Secure (PCS) Client'
 arch=(x86_64)
