@@ -1,8 +1,8 @@
 # Maintainer: Oscar Morante <spacepluk@gmail.com>
 
-_version=2018.2.10
+_version=2018.2.11
 _build=f1
-_randomstring=674aa5a67ed5
+_randomstring=38bd7dec5000
 _prefix=/opt/Unity
 
 pkgname=unity-editor-language-zh-cn
