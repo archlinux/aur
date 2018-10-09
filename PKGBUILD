@@ -416,6 +416,7 @@ fi
   echo ${_configure_line} > ${_configure_line_fn}
   set &> configure_env
   ${_configure_line} || exit 1
+  sed -i "/\/usr\/include$/d" ${_bindir}/.qmake.stash
   make || exit 1
 }
 
