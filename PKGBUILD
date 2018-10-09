@@ -1,3 +1,4 @@
+# Maintainer: Matthew McGinn <mamcgi@gmail.com>
 # Contributor: Felipe F. Tonello <eu@felipetonello.com>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # TODO: support Toast
@@ -16,7 +17,7 @@ md5sums=('SKIP')
 
 check() {
     cd ${pkgbase}/bin
-    PYTHONPATH="${srcdir}/${pkgbaes}/lib:${srcdir}/${pkgbase}/lib/bb" python ./bitbake-selftest
+    PYTHONPATH="${srcdir}/${pkgbase}/lib:${srcdir}/${pkgbase}/lib/bb" python ./bitbake-selftest
 }
 
 package_bitbake() {
