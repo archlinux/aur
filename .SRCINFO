@@ -1,6 +1,6 @@
 pkgbase = toptracker
 	pkgdesc = Time tracking software for remote teams and individuals
-	pkgver = 1.5.2
+	pkgver = 1.5.6.241
 	pkgrel = 1
 	url = https://www.toptal.com/tracker/
 	arch = x86_64
@@ -8,17 +8,15 @@ pkgbase = toptracker
 	depends = qt5-svg
 	depends = qt5-multimedia
 	depends = libxss
-	depends = gtk2
 	depends = gtk3
-	depends = gcc-libs
 	depends = libappindicator-gtk2
-	noextract = toptracker_1.5.2-198_x86_64.rpm
-	source = https://d101nvfmxunqnl.cloudfront.net/desktop/builds/redhat/toptracker_1.5.2-198_x86_64.rpm
+	noextract = toptracker_1.5.6-241_x86_64.rpm
 	source = toptracker.desktop
-	source = LICENSE
-	md5sums = 11a31218a4a4694f747a6c2ad50d920d
-	md5sums = a58411ebce05fdd699fb70aa53767564
-	md5sums = 0a9b08905e1cc75c6b23e6055efb2881
+	source = toptracker-LICENSE
+	sha256sums = f799b24235e5c784e4d95b7b43cfedb97f97d2756ba197870c0950ad41ba0819
+	sha256sums = 3a12e2c5bd4c992b24320e1e2552476f21d08229417ca298cb39a2512f36162e
+	source_x86_64 = https://d101nvfmxunqnl.cloudfront.net/desktop/builds/redhat/toptracker_1.5.6-241_x86_64.rpm
+	sha256sums_x86_64 = 24a696913f000501db0b27bd368de917f5b8a91dd9711387e19f492719709670
 
 pkgname = toptracker
 
