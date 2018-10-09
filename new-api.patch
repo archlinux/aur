@@ -1,0 +1,62 @@
+diff -urN pyNFFT-1.3.2-orig/pynfft/cnfft3util.pxd pyNFFT-1.3.2/pynfft/cnfft3util.pxd
+--- pyNFFT-1.3.2-orig/pynfft/cnfft3util.pxd	2018-10-09 14:10:26.587955305 -0400
++++ pyNFFT-1.3.2/pynfft/cnfft3util.pxd	2018-10-09 14:11:08.556960303 -0400
+@@ -17,7 +17,7 @@
+ 
+ from cnfft3 cimport fftw_complex
+ 
+-cdef extern from "nfft3util.h":
++cdef extern from "nfft3.h":
+ 
+     void nfft_vrand_unit_complex (fftw_complex *x, int n)
+  	    # Inits a vector of random complex numbers in \
+@@ -25,10 +25,3 @@
+ 
+     void nfft_vrand_shifted_unit_double (double *x, int n)
+         # Inits a vector of random double numbers in $[-1/2,1/2]$ .
+-
+-    void nfft_voronoi_weights_1d (double *w, double *x, int M)
+- 	    # Computes non periodic voronoi weights, \
+-        # assumes ordered nodes $x_j$.
+-
+-    void nfft_voronoi_weights_S2(double *w, double *xi, int M)
+-        # Computes voronoi weights for nodes on the sphere S^2. */
+diff -urN pyNFFT-1.3.2-orig/pynfft/util.pyx pyNFFT-1.3.2/pynfft/util.pyx
+--- pyNFFT-1.3.2-orig/pynfft/util.pyx	2018-10-09 14:10:26.587955305 -0400
++++ pyNFFT-1.3.2/pynfft/util.pyx	2018-10-09 14:10:50.296095301 -0400
+@@ -49,35 +49,3 @@
+     '''
+     nfft_vrand_shifted_unit_double(<double *>&x[0], x.size)
+ 
+-def voronoi_weights_1d (object[np.float64_t, mode='c'] w not None,
+-                        object[np.float64_t, mode='c'] x not None):
+-    '''
+-    Utilitary function for computing density compensation weights from 1D knots.
+-
+-    :param w: pre-allocated array
+-    :type w: ndarray <float64>
+-    :param x: ordered 1D knots
+-    :type x: ndarray <float64>
+-    '''
+-    if x.size != w.size:
+-        raise ValueError('Incompatible size between weights and nodes \
+-                         (%d, %d)'%(w.size, x.size))
+-    nfft_voronoi_weights_1d(<double *>&w[0], <double *>&x[0], w.size)
+-
+-def voronoi_weights_S2 (object[np.float64_t, mode='c'] w not None,
+-                        object[np.float64_t, mode='c'] xi not None):
+-    '''
+-    Utilitary function for computing density compensation weights from knots
+-    located on the surface of a sphere.
+-
+-    Useful for reconstruction of 3D radial data.
+-
+-    :param w: pre-allocated array
+-    :type w: ndarray <float64>
+-    :param xi: angular locations (2D) on the unit sphere
+-    :type xi: ndarray <float64>
+-    '''
+-    if xi.size != 2 * w.size:
+-        raise ValueError('Incompatible size between weights and nodes \
+-                         (%d, %d)'%(w.size, xi.size))
+-    nfft_voronoi_weights_S2(<double *>&w[0], <double *>&xi[0], w.size)

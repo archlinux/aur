@@ -1,0 +1,38 @@
+# Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
+
+pkgname='python-pynfft'
+_pkgname='pyNFFT'
+pkgver=1.3.2
+pkgrel=1
+pkgdesc="Python wrapper to the NFFT library."
+arch=('x86_64')
+url="https://arrow.apache.org"
+license=('GPL3')
+checkdepends=()
+optdepends=()
+makedepends=('cython')
+source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz"
+    "new-api.patch")
+sha256sums=('ae41e720e569d0d99e3a44c82c36b35a49cfc9ecc23a1cd039fe9e2895aada2c'
+            '6eefe82a6e55bf776cd27550cca3317cc55c4062bed97253de192574cbc35dbb')
+
+prepare() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  patch -p1 < ../new-api.patch
+}
+
+build(){
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python setup.py build_ext --inplace
+}
+
+package(){
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python setup.py build_ext install --root=$pkgdir
+}
+
+check(){
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python setup.py test
+}
+# vim:ts=2:sw=2:et:
