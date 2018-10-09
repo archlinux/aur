@@ -1,0 +1,20 @@
+pkgbase = tifig
+	pkgdesc = Swift IDE based on Eclipse
+	pkgver = 0.8.0.2017123002054
+	pkgrel = 1
+	url = https://www.tifig.net/
+	arch = x86_64
+	license = custom:CC-BY-SA-4.0
+	depends = swift
+	depends = java-environment>=8
+	depends = python
+	provides = tifig
+	conflicts = tifig
+	options = emptydirs
+	source = LICENSE
+	source = tifig-0.8.0.2017123002054-x86_64.tar.gz::https://tifig-downloads.s3.amazonaws.com/tifig-0.8.0-201712302054-linux.gtk.x86_64.tar.gz
+	sha512sums = 6395618de74d4d432bb06175ceb8e16382f73613363b9409afebf7c5f59ab3ebd0f668fe0947f3a4b492afa8fa80146ba263470f2e2f4f10d51db328a559b9ac
+	sha512sums = 891de9a900c2f976ce216e8654ce8e9b29d35e1df62eb856b1b06bab2b92e76bc82db41499900b752a67dbe53e818bfb4920f2f101b0caebb43263db43987a77
+
+pkgname = tifig
+

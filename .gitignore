@@ -1,0 +1,8 @@
+# Ignore all
+*
+
+# Allow selcted
+!.gitignore
+!LICENSE
+!.SRCINFO
+!PKGBUILD
