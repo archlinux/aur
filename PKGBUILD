@@ -9,7 +9,7 @@ pkgdesc="Simple and tidy theme for LightDM's webkit2 greeter"
 arch=('any')
 url="https://yeah.nah.nz/programming/petrichor/"
 license=("BSD")
-depends=('lightdm' 'lightdm-webkit-greeter' 'accountsservice')
+depends=('lightdm' 'lightdm-webkit2-greeter' 'accountsservice')
 source=("${pkgname}::git+https://git.nah.nz/${_theme}")
 md5sums=('SKIP')
 
