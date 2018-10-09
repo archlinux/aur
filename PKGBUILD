@@ -1,23 +1,21 @@
 # Maintainer: Hansruedi Patzen <hp@revy.ch>
 
 pkgname=tifig
-_execname=runner
-_basever=0.8.0
-_build=2017123002054
-pkgver=${_basever}.${_build}
-pkgrel=1
+_srctimestamp=201712302054
+pkgver=0.8.0
+pkgrel=2
 provides=('tifig')
 conflicts=('tifig')
 pkgdesc='Swift IDE based on Eclipse'
 arch=('x86_64')
 url='https://www.tifig.net/'
-license=('custom:CC-BY-SA-4.0')
+license=('custom:cc-by-sa-4.0')
 depends=('swift' 'java-environment>=8' 'python')
 options=(emptydirs)
 
 source=(
   LICENSE
-  ${pkgname}-${pkgver}-${CARCH}.tar.gz::'https://tifig-downloads.s3.amazonaws.com/tifig-0.8.0-201712302054-linux.gtk.x86_64.tar.gz'
+  ${pkgname}-${pkgver}-${_srctimestamp}-${CARCH}.tar.gz::"https://tifig-downloads.s3.amazonaws.com/${pkgname}-${pkgver}-${_srctimestamp}-linux.gtk.${CARCH}.tar.gz"
 )
 sha512sums=(
   '6395618de74d4d432bb06175ceb8e16382f73613363b9409afebf7c5f59ab3ebd0f668fe0947f3a4b492afa8fa80146ba263470f2e2f4f10d51db328a559b9ac'
@@ -26,11 +24,12 @@ sha512sums=(
 
 _libdir=/usr/lib/${pkgname}
 _bindir=/usr/bin/${pkgname}
+_execname=runner
 
 package() {
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -d ${pkgdir}/${_libdir}
-  bsdtar cf - --cd ${srcdir}/${pkgname}-${_basever} . | bsdtar xf - --cd ${pkgdir}/${_libdir}
+  bsdtar cf - --cd ${srcdir}/${pkgname}-${pkgver} . | bsdtar xf - --cd ${pkgdir}/${_libdir}
   mv ${pkgdir}/${_libdir}/Tifig.ini ${pkgdir}/${_libdir}/${_execname}.ini
   rm ${pkgdir}/${_libdir}/*.so.* ${pkgdir}/${_libdir}/detect-libc ${pkgdir}/${_libdir}/tifig.sh ${pkgdir}/${_libdir}/tifig.desktop
 
@@ -52,6 +51,6 @@ Categories=Development;IDE;Swift;
 StartupNotify=true
 END
 
-  install -Dm644 "${srcdir}/${pkgname}-${_basever}/icon.xpm" "${pkgdir}/usr/share/pixmaps/${pkgname}.xpm"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/icon.xpm" "${pkgdir}/usr/share/pixmaps/${pkgname}.xpm"
 }
 
