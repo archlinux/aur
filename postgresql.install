@@ -13,6 +13,7 @@ post_install() {
   if [ ! -d '/var/lib/postgres/data' ]; then
     mkdir -p '/var/lib/postgres/data'
     chown postgres:postgres '/var/lib/postgres/data'
+    sudo -u postgres initdb -D '/var/lib/postgres/data'
   fi
 }
 

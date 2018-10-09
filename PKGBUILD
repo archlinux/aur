@@ -4,7 +4,7 @@
 # Ariel Popper <a@arielp.com>
 
 pkgname=postgresql-9.4
-pkgver=9.4.7
+pkgver=9.4.19
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.postgresql.org/"
@@ -23,13 +23,13 @@ source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.ta
         postgresql-run-socket.patch
         postgresql.pam postgresql.logrotate
         postgresql.service postgresql.tmpfiles.conf postgresql-check-db-dir)
-sha256sums=('cc795e6c35b30e697e5891e3056376af685f848a4e67fab1702e74a2385f81e0'
+sha256sums=('03776b036b2a05371083558e10c21cc4b90bde9eb3aff60299c4ce7c084c168b'
             '8538619cb8bea51078b605ad64fe22abd6050373c7ae3ad6595178da52f6a7d9'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
             '6abb842764bbed74ea4a269d24f1e73d1c0b1d8ecd6e2e6fb5fb10590298605e'
             'c69b614731fdd3f4e127540814f5999f423363523c5209e252e19b1d4362ad68'
             '7e086d70e0dcaa6ce45693b4e826ce92d770192b3aff5642319b1ef279d88dc4'
-            'b3ed31e5882e5bdf4515d488d3f2db874ff5561be3091eab29810f831038a888')
+            'f15418433b7d9a153eea22af58cc64fda462144d7039d1083ae1e2e489cc303a')
 
 build() {
   cd "${srcdir}/postgresql-${pkgver}"
@@ -40,7 +40,6 @@ build() {
   --mandir=/usr/share/man \
   --datadir=/usr/share/postgresql \
   --sysconfdir=/etc \
-  --with-krb5 \
   --with-gssapi \
   --with-libxml \
   --with-openssl \
