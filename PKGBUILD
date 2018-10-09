@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://arrow.apache.org"
 license=('GPL3')
 checkdepends=()
-optdepends=()
+depends=('nfft')
 makedepends=('cython')
 source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz"
     "new-api.patch")

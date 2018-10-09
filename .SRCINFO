@@ -6,6 +6,7 @@ pkgbase = python-pynfft
 	arch = x86_64
 	license = GPL3
 	makedepends = cython
+	depends = nfft
 	source = https://pypi.org/packages/source/p/pyNFFT/pyNFFT-1.3.2.tar.gz
 	source = new-api.patch
 	sha256sums = ae41e720e569d0d99e3a44c82c36b35a49cfc9ecc23a1cd039fe9e2895aada2c
