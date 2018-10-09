@@ -2,19 +2,21 @@
 
 pkgbase=python-binary-memcached
 pkgname=('python-binary-memcached' 'python2-binary-memcached')
-pkgver=0.27.0
+pkgver=0.28.0
 pkgrel=1
 arch=('any')
 pkgdesc='A pure python module to access memcached via its binary protocol with SASL auth support'
 url='https://github.com/jaysonsantos/python-binary-memcached'
 license=('MIT')
-makedepends=('python-setuptools' 'python2-setuptools')
+makedepends=('python-setuptools' 'python2-setuptools' 'python-uhashring' 'python2-uhashring'
+             'python2-typing')
 checkdepends=('memcached' 'python-pytest-runner' 'python2-pytest-runner' 'python2-mock')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/jaysonsantos/python-binary-memcached/archive/v$pkgver.tar.gz")
-sha512sums=('379bc876c4834a3c46dbfeada8a6810656eb255f3b26655f058e058c9e571ccd10831d51c19a2c65f1b54d65829c9cadad87ee588a3728e8d37d5835785f97e8')
+sha512sums=('8edd603c8ee67826ab7f2d064d2cad67c2a4b695e09d763cbefc988a0576f6d06730358983f77a903e64b7aec3ac511dbb3e58cfcb51030b604a2524e482d6fa')
 
 prepare() {
   cp -a python-binary-memcached-$pkgver{,-py2}
+  sed -i '/typing/d' python-binary-memcached-$pkgver/setup.py
 }
 
 build() {
@@ -34,7 +36,7 @@ check() {
 }
 
 package_python-binary-memcached() {
-  depends=('python-six')
+  depends=('python-six' 'python-uhashring')
 
   cd python-binary-memcached-$pkgver
   python setup.py install --root "$pkgdir" --optimize=1
@@ -42,7 +44,7 @@ package_python-binary-memcached() {
 }
 
 package_python2-binary-memcached() {
-  depends=('python2-six')
+  depends=('python2-six' 'python2-uhashring' 'python2-typing')
 
   cd python-binary-memcached-$pkgver-py2
   python2 setup.py install --root "$pkgdir" --optimize=1
