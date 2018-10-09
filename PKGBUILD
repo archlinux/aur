@@ -41,7 +41,6 @@ _build_from_head=false
 _patching=true
 _minimal=true
 _uber_minimal=false
-_testing=false
 
 if [[ -z ${startdir} ]]; then
   _building=false;
@@ -56,10 +55,6 @@ if [[ -f static ]]; then
   _static_build=true
   _uber_minimal=true
   #_float=true
-fi
-
-if [[ -f testing ]]; then
-  _testing=true
 fi
 
 if [[ -f full-build ]]; then
@@ -144,9 +139,7 @@ esac
 if $_target_host; then
   _use_mesa=true
 else
-  if ! $_testing; then
-    depends=("qpi${_piver}-toolchain")
-  fi
+  depends=("qpi${_piver}-toolchain")
 fi
 
 if [[ -z "${_dev_suffix}" ]]; then _release_type="official_releases"; fi
