@@ -1,6 +1,6 @@
 # Maintainer: Kartik Mohta <kartikmohta@gmail.com>
 
-pkgbase=('python-rospkg')
+pkgbase='python-rospkg'
 pkgname=('python-rospkg')
 _module='rospkg'
 pkgver='1.1.7'
