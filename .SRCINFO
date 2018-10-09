@@ -1,7 +1,7 @@
 pkgbase = encryptic
 	pkgdesc = An encryption-focused open source note taking application.
 	pkgver = 0.0.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/encryptic-team/encryptic
 	arch = x86_64
 	arch = i686

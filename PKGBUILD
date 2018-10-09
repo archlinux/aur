@@ -3,7 +3,7 @@
 pkgname=encryptic
 upstreamName=Encryptic
 pkgver=0.0.1
-pkgrel=0
+pkgrel=1
 pkgdesc="An encryption-focused open source note taking application."
 arch=("x86_64" "i686")
 
