@@ -1,6 +1,6 @@
 # Maintainer: Kartik Mohta <kartikmohta@gmail.com>
 
-pkgbase=('python2-vcstools')
+pkgbase='python2-vcstools'
 pkgname=('python2-vcstools')
 _module='vcstools'
 pkgver='0.1.40'
