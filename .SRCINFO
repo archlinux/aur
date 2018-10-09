@@ -12,6 +12,7 @@ pkgbase = libretro-picodrive-git
 	license = custom:Picodrive license
 	makedepends = git
 	depends = glibc
+	depends = sdl
 	source = git+https://github.com/libretro/picodrive.git
 	md5sums = SKIP
 
