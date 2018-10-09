@@ -1,7 +1,7 @@
 pkgbase = ungoogled-chromium-bin
 	pkgdesc = Modifications to Google Chromium for removing Google integration and enhancing privacy, control, and transparency (binary version)
 	pkgver = 69.0.3497.100
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Eloston/ungoogled-chromium
 	arch = x86_64
 	license = BSD
@@ -24,14 +24,15 @@ pkgbase = ungoogled-chromium-bin
 	optdepends = kdialog: needed for file dialogs in KDE
 	optdepends = kwallet: for storing passwords in KWallet
 	optdepends = pepper-flash: support for Flash content
+	optdepends = chromium-widevine: for widevine content decryption module
 	provides = chromium
 	conflicts = chromium
 	conflicts = iridium
 	conflicts = ungoogled-chromium
-	source = https://github.com/intika/ungoogled-chromium-binaries/releases/download/69.0.3497.100-1/ungoogled-chromium_69.0.3497.100-1_linux.tar.xz
+	source = https://dl.opendesktop.org/api/files/download/id/1538485969/s/0757d1747db5d3f4f6d6ca61fd4864f8/t/1539061342/u//ungoogled-chromium_69.0.3497.100-2_linux.tar.xz
 	source = chromium-launcher-6.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v6.tar.gz
 	source = chromium.desktop
-	sha256sums = 6c60b387ce1f64a4daa98d57690314eb53d2a5a22cf2058f78be989c8387bbd2
+	sha256sums = da7ed55c0ef7ba74b2d365fc63b92d3eb3e0310b8b9c52855010c6620f9d1cb5
 	sha256sums = 04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1
 	sha256sums = 15898507b5bda1e56e303c7e7f54b80d6363e8f77321d29067eef15f4c5deeb5
 

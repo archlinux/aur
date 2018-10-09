@@ -1,11 +1,13 @@
-# Maintainer: Drym <drym at airmail.cc>
+# Maintainer: SantoZ <santoz28 at mailbox dot org>
 # Contributors: Det, Achilleas Pipinellis, speed145a, Schnouki
 
-_chromium_rel=1
+_chromium_rel=2
 _launcher_ver=6
+_od_id=1538485969
+
 pkgname=ungoogled-chromium-bin
 pkgver=69.0.3497.100
-pkgrel=3
+pkgrel=4
 pkgdesc="Modifications to Google Chromium for removing Google integration and enhancing privacy, control, and transparency (binary version)"
 arch=("x86_64")
 url="https://github.com/Eloston/ungoogled-chromium"
@@ -18,11 +20,12 @@ depends=("gtk3" "nss" "alsa-lib" "xdg-utils" "libxss" "libcups" "libgcrypt"
 optdepends=("gnome-keyring: for storing passwords in GNOME keyring"
             "kdialog: needed for file dialogs in KDE"
             "kwallet: for storing passwords in KWallet"
-            "pepper-flash: support for Flash content")
-source=("https://github.com/intika/ungoogled-chromium-binaries/releases/download/${pkgver}-${_chromium_rel}/ungoogled-chromium_${pkgver}-${_chromium_rel}_linux.tar.xz"
+            "pepper-flash: support for Flash content"
+            "chromium-widevine: for widevine content decryption module")
+source=("https://dl.opendesktop.org/api/files/download/id/${_od_id}/s/0757d1747db5d3f4f6d6ca61fd4864f8/t/1539061342/u//ungoogled-chromium_${pkgver}-${_chromium_rel}_linux.tar.xz"
         "chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz"
         "chromium.desktop")
-sha256sums=("6c60b387ce1f64a4daa98d57690314eb53d2a5a22cf2058f78be989c8387bbd2"
+sha256sums=("da7ed55c0ef7ba74b2d365fc63b92d3eb3e0310b8b9c52855010c6620f9d1cb5"
             "04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1"
             "15898507b5bda1e56e303c7e7f54b80d6363e8f77321d29067eef15f4c5deeb5")
 
