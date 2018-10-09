@@ -1,0 +1,17 @@
+pkgbase = git-open-git
+	pkgdesc = Open a repo website (GitHub, GitLab, Bitbucket) in your browser
+	pkgver = 2.0.0.r34.g4ca1990
+	pkgrel = 1
+	url = https://github.com/paulirish/git-open
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = git
+	depends = xdg-utils
+	conflicts = nodejs-git-open
+	conflicts = git-open
+	source = git://github.com/paulirish/git-open
+	md5sums = SKIP
+
+pkgname = git-open-git
+
