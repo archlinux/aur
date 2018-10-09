@@ -1,12 +1,14 @@
 pkgbase = python-pytorch-ignite-git
 	pkgdesc = High-level library to help with training neural networks in PyTorch
 	pkgver = 0.1.0.r39.g9e9d9b9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pytorch.org/ignite
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python-pytorch
+	provides = python-pytorch-ignite
+	conflicts = python-pytorch-ignite
 	source = git+https://github.com/pytorch/ignite.git
 	sha256sums = SKIP
 
