@@ -1,6 +1,6 @@
 # Maintainer: Kartik Mohta <kartikmohta@gmail.com>
 
-pkgbase=('python2-osrf_pycommon')
+pkgbase='python2-osrf_pycommon'
 pkgname=('python2-osrf_pycommon')
 _module='osrf_pycommon'
 pkgver='0.1.5'
