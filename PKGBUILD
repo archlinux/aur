@@ -2,7 +2,7 @@
 # Contributor: Michael Yang <ohmyarchlinux@pm.me>
 
 pkgname=spdlog
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Very fast, header only, C++ logging library'
 arch=('any')
@@ -10,7 +10,7 @@ url='https://github.com/gabime/spdlog'
 license=('MIT')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/gabime/spdlog/archive/v$pkgver.tar.gz")
-md5sums=('cc8684ba8460ab15dc5f523f6905603d')
+sha256sums=('0ba31b9e7f8e43a7be328ab0236d57810e5d4fc8a1a7842df665ae22d5cbd128')
 
 prepare() {
   mkdir -p build
