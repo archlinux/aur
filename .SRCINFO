@@ -1,7 +1,7 @@
 pkgbase = python-tensorboardx
 	pkgdesc = Tensorboard for PyTorch
 	pkgver = 1.4
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/lanpa/tensorboardX
 	arch = any
 	license = MIT
@@ -11,6 +11,7 @@ pkgbase = python-tensorboardx
 	depends = python-protobuf
 	depends = python-six
 	optdepends = tensorboard: to visualise TensorBoard data
+	conflicts = python-tensorboard-git
 	source = https://files.pythonhosted.org/packages/source/t/tensorboardX/tensorboardX-1.4.tar.gz
 	sha256sums = bacf2825c8fb9c40bea22c50796fc4afe5bf11ff5f5c3b7ad7c933ad034b6fae
 
