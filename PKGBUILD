@@ -2,7 +2,7 @@
 # Contributor: AlmAck
 
 pkgname=plasma5-themes-chakra-heritage
-pkgver=2017.11
+pkgver=r120.cc3cd80
 pkgrel=1
 pkgdesc='Chakra Plasma 5 Look & Feel theme files'
 url='http://www.chakralinux.org'

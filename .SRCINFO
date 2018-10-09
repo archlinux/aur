@@ -1,6 +1,6 @@
 pkgbase = plasma5-themes-chakra-heritage
 	pkgdesc = Chakra Plasma 5 Look & Feel theme files
-	pkgver = 2017.11
+	pkgver = r120.cc3cd80
 	pkgrel = 1
 	url = http://www.chakralinux.org
 	arch = x86_64
