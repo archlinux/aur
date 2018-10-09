@@ -4,13 +4,13 @@ _gituser="emacs-lsp"
 _gitrepo="lsp-ui"
 
 pkgname=emacs-lsp-ui-git
-pkgver=r255.35caa39
+pkgver=r261.d292641
 pkgrel=1
 pkgdesc="UI modules for lsp-mode"
 url="https://github.com/${_gituser}/${_gitrepo}"
 arch=('any')
 license=('GPL3')
-depends=('emacs' 'emacs-dash' 'emacs-flycheck' 'emacs-lsp-mode' 'emacs-markdown-mode')
+depends=('emacs' 'emacs-dash' 'flycheck' 'emacs-lsp-mode' 'emacs-markdown-mode')
 makedepends=('git')
 provides=('emacs-lsp-ui')
 conflicts=('emacs-lsp-ui')
