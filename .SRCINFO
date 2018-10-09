@@ -1,7 +1,7 @@
 pkgbase = python-prompt_toolkit-2
 	pkgdesc = Library for building powerful interactive command line applications in Python
 	pkgver = 2.0.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/jonathanslenders/python-prompt-toolkit
 	arch = any
 	license = BSD
@@ -9,7 +9,7 @@ pkgbase = python-prompt_toolkit-2
 	depends = python
 	depends = python-six>=1.9.0
 	depends = python-wcwidth
-	provides = python-prompt_toolkit
+	provides = python-prompt_toolkit-2
 	conflicts = python-prompt_toolkit
 	source = python-prompt_toolkit-2-2.0.5.zip::https://github.com/jonathanslenders/python-prompt-toolkit/archive/2.0.5.tar.gz
 	md5sums = 162202d940109a2425ea7746b33c7cd4
