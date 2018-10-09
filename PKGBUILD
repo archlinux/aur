@@ -2,7 +2,7 @@
 pkgname=python-dbxfs
 _pkgname=dbxfs
 pkgver=1.0.20
-pkgrel=2
+pkgrel=3
 pkgdesc="User-space file system for Dropbox"
 arch=('i686' 'x86_64')
 url="https://github.com/rianhunter/dbxfs"
@@ -14,7 +14,7 @@ md5sums=('17c4d6ac005ae101b1639a8be55f0380')
 
 prepare() {
 	cd "$_pkgname-$pkgver"
-    sed -e '108d' "$_pkgname/main.py"
+    sed -e '104,110d' "$_pkgname/main.py"
 }
 
 package() {
