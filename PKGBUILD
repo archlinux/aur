@@ -1,14 +1,13 @@
 # Maintainer of this PKGBUILD file: Martino Pilia <martino.pilia@gmail.com>
 _name=tensorboardX
 pkgname=python-tensorboardx-git
-pkgver=1.2.r90.gddca1a9
-pkgrel=1
+pkgver=1.2.r91.g4093ead
+pkgrel=2
 pkgdesc="Tensorboard for PyTorch"
 arch=('any')
 url="https://github.com/lanpa/tensorboardX"
 license=('MIT')
-depends=('python-pytorch' 'python-torchvision' 'python-protobuf' 'python-six')
-optdepends=('tensorboard: to visualise TensorBoard data')
+depends=('python-protobuf' 'python-six')
 provides=('python-tensorboardx')
 conflicts=('python-tensorboardx')
 makedepends=('python-setuptools')
