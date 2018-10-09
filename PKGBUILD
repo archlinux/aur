@@ -3,14 +3,14 @@
 
 pkgname=xcursor-jaguarx
 pkgver=1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="animated OSX-style mouse cursors"
 arch=('any')
 url="https://www.gnome-look.org/p/999877/"
 license=('PerlArtistic')
 groups=()
 depends=()
-source=('https://dl.opendesktop.org/api/files/download/id/1460735153/14775-jaguarx.tar.bz2')
+source=('https://dl.opendesktop.org/api/files/download/id/1460735153/s/f474a6f2fd99b2907aa44ed27e625d8b/t/1539106626/u//14775-jaguarx.tar.bz2')
 md5sums=('bda85cac7a92327086249f3fbc8be08d')
 
 package() {
