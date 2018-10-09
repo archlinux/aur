@@ -1,6 +1,6 @@
 # Maintainer: Kartik Mohta <kartikmohta@gmail.com>
 
-pkgbase=('python2-catkin_pkg')
+pkgbase='python2-catkin_pkg'
 pkgname=('python2-catkin_pkg')
 _module='catkin_pkg'
 pkgver='0.4.8'
