@@ -4,7 +4,7 @@
 # PKGBUILD reference: https://wiki.archlinux.org/index.php/PKGBUILD
 
 pkgname=bash-it-git
-pkgver=r1842.acb98c3
+pkgver=r2279.36345cb
 pkgrel=1
 pkgdesc='A community Bash framework'
 arch=('any')
@@ -110,7 +110,16 @@ package() {
   _factorydir="${pkgdir}/usr/share/${pkgname}/home_factory/.bash_it"
 
   # For aliases, completions, and plugins, create symlinks
-  # to the respective `available` directories
+  # to the respective `${_file_type}/available` directories
+  # because earlier versions of Bash-it used to place enabled
+  # symlinks into `${_file_type}/enabled`, to which the user
+  # would have needed write permissions.
+  # Newer Bash-it installs will place all symlinks into
+  # a common, top-level `enabled` directory, and will no
+  # longer use `${_file_type}/enabled` directories.
+  # We keep the below symlinks around in order to protect
+  # legacy installations, whose users may have non-empty
+  # `${_file_type}/enabled` directories.
   for _file_type in aliases completion plugins; do
     mkdir -p "${_factorydir}/${_file_type}"
     ln -fns "/usr/lib/${pkgname}/${_file_type}/available" \
@@ -130,6 +139,6 @@ package() {
     "/usr/lib/${pkgname}"/{bash_it,install,uninstall}.sh \
     "/usr/lib/${pkgname}"/{lib,themes} \
     "/usr/share/${pkgname}"/{.editorconfig,template} \
-    "/usr/share/doc/${pkgname}"/{CONTRIBUTING,README}.md \
+    "/usr/share/doc/${pkgname}"/{CONTRIBUTING,DEVELOPMENT,README}.md \
     "${_factorydir}/"
 }
