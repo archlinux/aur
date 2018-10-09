@@ -10,14 +10,15 @@ license=("MIT")
 depends=("ruby" "ruby-kramdown")
 makedepends=("ruby-rake")
 options=(!emptydirs)
-conflicts=('um-git')
+conflicts=("um-git")
 source=("${url}/archive/${pkgver}.tar.gz")
         
-md5sums=('bba8081d2acdfac150207e211a0252af')
+sha256sums=('0606cd8da69618d508d06dee859dd1147a4d8846cdff57fb8958c71fe906523f')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver/"
     # Create man pages
+    mkdir -p doc/man1
     rm doc/man1/*
     rake
 
@@ -39,6 +40,8 @@ package() {
     rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
     install -Dm644 "$srcdir/$pkgname-$pkgver/um-completion.sh" \
         "$pkgdir/usr/share/bash-completion/completions/$_gemname"
+    install -Dm644 "$srcdir"/$_gemname-$pkgver/doc/man1/*.gz -t \
+        "$pkgdir/usr/share/man/man1"
 }
 
 # vim:set ts=4 sw=4 et:
