@@ -1,0 +1,15 @@
+pkgbase = python-userspacefs
+	pkgdesc = Cross-platform user-space file systems for Python
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = https://github.com/rianhunter/userspacefs
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python-fusepyng
+	source = python-userspacefs-1.0.7.tar.gz::https://github.com/rianhunter/userspacefs/archive/v1.0.7.tar.gz
+	md5sums = 85095ea790ad7d70f89214289fd7823b
+
+pkgname = python-userspacefs
+
