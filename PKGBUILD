@@ -1,18 +1,19 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
+# Contributor: Federico Giuliani <federico.giuliani86@gmail.com>
 
 pkgname=texlive-europecv
-pkgver=20140627
+pkgver=2018.09.02
 pkgrel=1
 pkgdesc='Unofficial class for European curricula vitæ'
 arch=('any')
 url='http://www.ctan.org/tex-archive/macros/latex/contrib/europecv/'
 license=('GPL')
 depends=('texlive-latexextra')
-source=("europecv-${pkgver}.zip"::"http://mirror.ctan.org/macros/latex/contrib/europecv.zip")
-sha256sums=('8774724fa20744777d2ce7275024f5969b0cdd09684033949b833410c45112d5')
+source=("https://github.com/gsilano/EuropeCV/archive/"$pkgver".zip")
+sha256sums=('b66a3179905100f9395da7d55e8a11c02c6c80d4384b359e18f423e32b595df5')
 
 package() {
   install -d -- "$pkgdir"/usr/share/texmf/tex/latex
-  cp -r europecv -- "$pkgdir"/usr/share/texmf/tex/latex
+  cp -r EuropeCV-"$pkgver" -- "$pkgdir"/usr/share/texmf/tex/latex
 }
