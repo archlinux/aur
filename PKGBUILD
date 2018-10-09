@@ -1,6 +1,6 @@
 # Maintainer: Kartik Mohta <kartikmohta@gmail.com>
 
-pkgbase=('python-rosinstall')
+pkgbase='python-rosinstall'
 pkgname=('python-rosinstall')
 _module='rosinstall'
 pkgver='0.7.8'
