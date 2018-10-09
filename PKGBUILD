@@ -86,10 +86,10 @@ fi
 
 # vars
 _local_qt5_repo="/opt/dev/src/qtproject/qt5"
-_pkgvermajmin="5.11"
-_pkgverpatch=".1"
+_pkgvermajmin="5.12"
+_pkgverpatch=".0"
 # {alpha/beta/beta2/rc}
-_dev_suffix=""
+_dev_suffix="beta1"
 pkgrel=1
 pkgver="${_pkgvermajmin}${_pkgverpatch}"
 $_build_from_head && pkgver=6.6.6
@@ -287,7 +287,7 @@ _core_configure_options=" \
                  -reduce-exports \
         "
 
-_tar_xz_sha256="39602cb08f9c96867910c375d783eed00fc4a244bffaa93b801225d17950fb2b"
+_tar_xz_sha256="fb29a8da4a3a8e265fbc03bad64463fd6b4c338a38e664fe854c66e8661bf5d3"
 
 if ! $_build_from_head; then
   source=("git://github.com/sirspudd/mkspecs.git" "${_provider}/${_release_type}/qt/${_pkgvermajmin}/${_pkgver}/single/${_source_package_name}.tar.xz")
