@@ -2,13 +2,13 @@
 # Contributor: Konstantin Shalygin <k0ste@k0ste.ru>
 
 pkgname='xmrig'
-pkgver='2.6.4'
+pkgver='2.8.1'
 pkgrel='1'
 pkgdesc='High Perf CryptoNote CPU Miner (Monero, Aeon)'
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/${pkgname}/${pkgname}"
-depends=('libuv' 'libmicrohttpd')
-makedepends=('cmake' 'libuv' 'libmicrohttpd')
+depends=('libuv' 'libmicrohttpd' 'openssl')
+makedepends=('cmake')
 conflicts=('xmrig-bin')
 license=('GPL')
 backup=("etc/${pkgname}/${pkgname}.conf")
@@ -17,7 +17,7 @@ source=("${pkgname}.service"
 	"${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('1c4fa2898b1252507e885c4bfa2d8d5b20bce2069cb5f703bb084066d560a770'
             'd8f499302fb2b642fe02586c81c410a299e0a6e133aef1cc1c783bcdcb3f44f6'
-            '94640ba6d3971a6ba91113ce24a5afec95189cf007f8146011f9a3b367011a69')
+            'b5822796e108d9180f9ffbc116ec163af15ee07e38a1b8a5ae4c362222e37c06')
 prepare() {
   cd "${pkgname}-${pkgver}"
   mkdir build
