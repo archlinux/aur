@@ -4,19 +4,18 @@
 _name=exchangecalendar
 pkgname=thunderbird-${_name}
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Thunderbird Addon/Extension and Provider for Microsoft Exchange 2007/2010/2013 Calendar, Tasks, Contacts and Global Address List (GAL)'
 url='https://github.com/ExchangeCalendar/exchangecalendar'
 arch=('any')
 groups=('office')
 license=('GPL3')
-depends=('thunderbird>=52')
+depends=('thunderbird>=52' 'thunderbird<60')
 makedepends=('zip')
 options=('!strip' '!libtool' '!staticlibs' '!docs')
 conflicts=('thunderbird-exchangecalendar-git' 'thunderbird-exchangecalendar-beta')
 replaces=('thunderbird-exchangecalendar-git' 'thunderbird-exchangecalendar-beta')
 provides=("${_name}=${pkgver}")
-# https://github.com/ExchangeCalendar/exchangecalendar/releases/download/v4.0.0/exchangecalendar-v4.0.0.xpi
 source=("${pkgname}-${pkgver}.xpi::${url}/releases/download/v${pkgver}/${_name}-v${pkgver}.xpi")
 sha256sums=('e51117aa60b2ea4430ae85271e83d185c5a7ee93d6b87f78d0b6ead494318c8b')
 
