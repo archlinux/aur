@@ -54,13 +54,13 @@ _mq_enable=
 pkgbase=linux-rt-bfq
 # pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
 _major=4.18
-_minor=7
-_rtver=5
+_minor=12
+_rtver=6
 pkgver=${_major}.${_minor}.${_rtver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
 _rtpatchver=rt${_rtver}
-pkgrel=3
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -93,9 +93,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         '99-linux.hook'
          # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch'
-        '0002-drm-i915-Increase-LSPCON-timeout.patch'
-        '0003-HID-core-fix-grouping-by-application.patch')
+        '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch')
         
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-rt-bfq}
@@ -390,22 +388,20 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('a36c664c7703ffa470e78f7de283030bddc6eb59e77ca847fa53c2841283fd6f43d99ec12451ac9e874bad8fac4d81ec219b5eb12eff2109ef5ac1126b338c19'
+sha512sums=('e4eb62b512d7560cbe15b15aace01576996f5ed3a0b86c37a6a6794812d175aa4eb1568567eb3ed1af054710153f20800745141aafdfab1582ea9fa864fd8120'
             'SKIP'
-            '66b20734a5a78db0b5c9a718030b13ec6c619a92546b3ddfce26850f1bf254750cd463925209cfddf9c1fa90e13dad08e5b2d7efe7cb0a1faa637db3336152ac'
+            'aa27710d4200c51088fab68b79adbc8896a68b3d22008f87ade424a3a5853d7bfb29beb6e2696c03b6af65d06e5fbe38eb15ce803d7eb63d5497f29f3066702e'
             'SKIP'
             '913ddc48ea7b262386eff253a28da200813ed25a4382f0eddc489c60620421c16b12a7f2463bac74fd52f7d75b19342fe06d87168dc1ad808bf65a8233ce971a'
             '0f96fa9ad784709973b32eea82075ceb3e9dc2482df6441a4607612806f069254e63508b1b562279622394e4a1fbebef1b87af8401c0b1210d5d0de9954245c8'
             'e62aa377a0acc4f63f394e27a0fb7316583ff1a6a6afdfcc97593ddffd7d2bc224cfd70b552cb3fb9513cf6b8db4c2fd913d21ec2380db8cd642e37d4d67370c'
             '86f717f596c613db3bc40624fd956ed379b8a2a20d1d99e076ae9061251fe9afba39cf536623eccd970258e124b8c2c05643e3d539f37bd910e02dc5dd498749'
-            '88965b423d55a9e1ed8d54f424108c7497f787b471b3bdeecce1f62026675ff0f49995f079e0ceaab7dcb7c2ac512a499cf2e98c5c85341edd02bd8f94005953'
+            '2402d84be3e109b24f4ecb2cdb72ef408a09b1d0a5c306a81dacf62882c870cd2a6016c640a30c9f42b784c1f1da62f9c034ed507cc6feca1cfe77081c7494a2'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '4a8b324aee4cccf3a512ad04ce1a272d14e5b05c8de90feb82075f55ea3845948d817e1b0c6f298f5816834ddd3e5ce0a0e2619866289f3c1ab8fd2f35f04f44'
             '6346b66f54652256571ef65da8e46db49a95ac5978ecd57a507c6b2a28aee70bb3ff87045ac493f54257c9965da1046a28b72cb5abb0087204d257f14b91fd74'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
-            '32bfd68f7191c70689a36f66b458f41fcc38f86ea2f580dcf656cd128ba4cc0f333fcdead9877bd873dbcb4cbbd26add9a0e21949b2bdd036e413d1236f3d2a1'
-            'c332fb1a77d1ba6aa682a2c958af9634236edd39c50a93dfa08f5ed5572f38effa4e34730e42b83ef24e9b2ffc0da7244facb25eb282ef03ac2369d562a01ca3'
-            '125bb9b8a9224e4c62c65f0c33312a793093389104d81fd4d596af7044024523686f44d9f5cb8884c5573b95e3cc77632649a5e7327ae21f436e3e5cbb9e6b75')
+            '83815065699580831677696b64c542c981f8b916c3abd72d4dcd7e114f98ef4da1fabbcdea32d20ea538f4ce95753aef0c5e8283dfcb11b92c7ad7ad938006e0')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
