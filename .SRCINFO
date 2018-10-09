@@ -1,7 +1,7 @@
 pkgbase = sogo
 	pkgdesc = groupware server built around OpenGroupware.org (OGo) and the SOPE application server
 	pkgver = 4.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.sogo.nu/
 	install = sogo.install
 	arch = x86_64

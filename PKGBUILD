@@ -5,7 +5,7 @@
 pkgname=sogo
 pkgdesc="groupware server built around OpenGroupware.org (OGo) and the SOPE application server"
 pkgver=4.0.2
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.sogo.nu/"
 license=('GPL')
@@ -48,6 +48,8 @@ prepare() {
 build() {
   cd "$srcdir/SOGo-${pkgver}"
   ./configure --prefix=$(gnustep-config --variable=GNUSTEP_SYSTEM_ROOT) --disable-debug
+  # fix ssl error message, this should be harmless
+  sed '/SSL_load_error_strings/d' -i UI/MailPartViewers/UIxMailPartSignedViewer.m
   make
 }
 
