@@ -4,17 +4,18 @@
 
 pkgbase=mariadb-10.3
 pkgname=('libmariadbclient-10.3' 'mariadb-clients-10.3' 'mytop-10.3' 'mariadb-10.3')
-pkgver=10.3.9
-pkgrel=2
+pkgver=10.3.10
+pkgrel=1
 arch=('x86_64')
 license=('GPL')
 url='http://mariadb.org/'
 makedepends=('boost' 'bzip2' 'cmake' 'jemalloc' 'libaio' 'libxml2' 'lz4' 'lzo'
              'openssl' 'systemd' 'zlib')
 validpgpkeys=('199369E5404BD5FC7D2FE43BCBCB082A1BB943DB') # MariaDB Package Signing Key <package-signing-key@mariadb.org>
-source=("https://ftp.heanet.ie/mirrors/mariadb/mariadb-$pkgver/source/mariadb-$pkgver.tar.gz"{,.asc}
+
+source=("https://mirrors.ukfast.co.uk/sites/mariadb/mariadb-$pkgver/source/mariadb-$pkgver.tar.gz"{,.asc}
         fix_libmariadb_ignored_host.patch)
-sha256sums=('561c6969bbd24dbb22d1d196a6b037665389b91e6dab881f39c5616389f156f4'
+sha256sums=('57767c048982811c7ab21d8527f6f36aa897386e8c7235f11b5505a924d68eda'
             'SKIP'
             'fd186c795c393b6898f28d731390bb14ea8444230c8340a5f4cfbccb16ea10e9')
 
