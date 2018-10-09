@@ -1,6 +1,6 @@
 # Maintainer: Kartik Mohta <kartikmohta@gmail.com>
 
-pkgbase=('python-rosdistro')
+pkgbase='python-rosdistro'
 pkgname=('python-rosdistro')
 _module='rosdistro'
 pkgver='0.6.9'
