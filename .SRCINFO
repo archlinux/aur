@@ -1,6 +1,6 @@
 pkgbase = git-open-git
-	pkgdesc = Open a repo website (GitHub, GitLab, Bitbucket) in your browser
-	pkgver = 2.0.0.r34.g4ca1990
+	pkgdesc = Open a repo website in your browser. Development version.
+	pkgver = r200.4ca1990
 	pkgrel = 1
 	url = https://github.com/paulirish/git-open
 	arch = any
