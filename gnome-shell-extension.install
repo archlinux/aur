@@ -1,7 +1,11 @@
 post_install() {
-	echo "==> ****************************************************"
-  	echo "==> Don't forget to Restart GNOME Shell ([Alt]+[F2], r)."
-  	echo "==> ****************************************************"
+	echo ""
+	echo "*********************************************************"
+  	echo "* Don't forget to enable this extension in GNOME Tweaks *"
+  	echo "*                         and                           *"
+  	echo "*         restart GNOME Shell ([Alt]+[F2], r)           *"
+  	echo "*********************************************************"
+  	echo ""
 }
 
 post_upgrade() {

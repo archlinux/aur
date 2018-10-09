@@ -27,7 +27,8 @@ pkgver() {
 
 package() {
   install -d "${pkgdir}/usr/share/gnome-shell/extensions/"
+  rm -rf "${pkgdir}/usr/share/gnome-shell/extensions/PersianCalendar@oxygenws.com"
   cp -a "${pkgname%-git}/PersianCalendar@oxygenws.com" \
-    "${pkgdir}/usr/share/gnome-shell/extensions/PersianCalendar@oxygenws.com"
+    "${pkgdir}/usr/share/gnome-shell/extensions/"
 }
 # vim:set ts=2 sw=2 et:
