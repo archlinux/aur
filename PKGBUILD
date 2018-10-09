@@ -1,7 +1,7 @@
 # Maintainer:  Karl-Felix Glatzer <karl.glatzer@gmx.de>
 
 pkgname=mingw-w64-x265
-pkgver=2.8
+pkgver=2.9
 pkgrel=1
 pkgdesc='Open Source H265/HEVC video encoder (mingw-w64)'
 arch=('any')
@@ -9,15 +9,15 @@ url='https://bitbucket.org/multicoreware/x265'
 license=('GPL')
 depends=('mingw-w64-crt')
 options=(!strip !buildflags staticlibs)
-makedepends=('mingw-w64-cmake' 'nasm')
-source=("https://bitbucket.org/multicoreware/x265/downloads/x265_${pkgver}.tar.gz"
+makedepends=('mingw-w64-cmake' 'mercurial' 'nasm')
+source=("hg+https://bitbucket.org/multicoreware/x265#tag=${pkgver}"
         mingw.patch)
-sha256sums=('6e59f9afc0c2b87a46f98e33b5159d56ffb3558a49d8e3d79cb7fdc6b7aaa863'
+sha256sums=('SKIP'
             'b1953c70b734b91e7916448c4636b70305c1d5bfaf86f17f94b769499635a191')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
-    cd x265_${pkgver}
+    cd x265
     patch -Np1 -i "${srcdir}/mingw.patch"
 }
 
@@ -35,7 +35,7 @@ build() {
          -DEXPORT_C_API='FALSE' \
          -DENABLE_CLI='FALSE' \
          -DENABLE_SHARED='FALSE' \
-         "${srcdir}"/x265_${pkgver}/source
+         "${srcdir}"/x265/source
       make
 
       mkdir -p "${srcdir}"/build-10-${_arch} && cd "${srcdir}"/build-10-${_arch}
@@ -46,7 +46,7 @@ build() {
          -DEXPORT_C_API='FALSE' \
          -DENABLE_CLI='FALSE' \
          -DENABLE_SHARED='FALSE' \
-         "${srcdir}"/x265_${pkgver}/source
+         "${srcdir}"/x265/source
       make
 
       mkdir -p "${srcdir}"/build-8-${_arch} && cd "${srcdir}"/build-8-${_arch}
@@ -63,7 +63,7 @@ build() {
          -DLINKED_10BIT='TRUE' \
          -DLINKED_12BIT='TRUE' \
          -DENABLE_CLI='TRUE' \
-         "${srcdir}"/x265_${pkgver}/source
+         "${srcdir}"/x265/source
       make
     else
       mkdir -p "${srcdir}"/build-8-${_arch} && cd "${srcdir}"/build-8-${_arch}
@@ -71,7 +71,7 @@ build() {
          -DLIB_INSTALL_DIR="lib" \
          -DENABLE_SHARED='TRUE' \
          -DENABLE_CLI='TRUE' \
-         "${srcdir}"/x265_${pkgver}/source
+         "${srcdir}"/x265/source
       make
     fi
   done
