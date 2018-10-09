@@ -3,7 +3,7 @@
 
 pkgname=copyq
 pkgver=3.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Clipboard manager with searchable and editable history"
 url="https://github.com/hluk/${pkgname}"
 depends=('libxtst' 'qt5-script' 'qt5-svg' 'qt5-x11extras')
