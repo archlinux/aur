@@ -1,7 +1,7 @@
 pkgbase = unity-editor-language-zh-cn
-	pkgdesc = Japanese Language Pack (Preview)
+	pkgdesc = Chinese Language Pack (Preview)
 	pkgver = 2018.2.11f1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://unity3d.com/
 	arch = x86_64
 	license = custom

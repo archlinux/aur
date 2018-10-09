@@ -7,8 +7,8 @@ _prefix=/opt/Unity
 
 pkgname=unity-editor-language-zh-cn
 pkgver=${_version}${_build}
-pkgrel=1
-pkgdesc="Japanese Language Pack (Preview)"
+pkgrel=2
+pkgdesc="Chinese Language Pack (Preview)"
 arch=('x86_64')
 url='https://unity3d.com/'
 license=('custom')
