@@ -3,7 +3,7 @@
 pkgname=backup-git
 _gitname=backup
 pkgver=1.2
-pkgrel=0
+pkgrel=1
 pkgdesc='A simple tar based incremental daily backup script based on systemd'
 arch=('x86_64')
 url=https://github.com/dhtseany/backup
