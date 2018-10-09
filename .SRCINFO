@@ -1,0 +1,17 @@
+pkgbase = python-fusepyng
+	pkgdesc = Simple ctypes bindings for FUSE
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/rianhunter/fusepyng
+	arch = i686
+	arch = x86_64
+	license = ISC
+	makedepends = python-setuptools
+	depends = python
+	source = python-fusepyng-1.0.5.tar.gz::https://github.com/rianhunter/fusepyng/archive/v1.0.5.tar.gz
+	source = LICENSE
+	md5sums = 35c87380550d42e8448ea66b44b73e6b
+	md5sums = 62985e35bb52b272658f467939306759
+
+pkgname = python-fusepyng
+
