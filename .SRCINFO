@@ -1,7 +1,7 @@
 pkgbase = sogo
 	pkgdesc = groupware server built around OpenGroupware.org (OGo) and the SOPE application server
 	pkgver = 4.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.sogo.nu/
 	install = sogo.install
 	arch = x86_64
@@ -28,13 +28,15 @@ pkgbase = sogo
 	backup = etc/httpd/conf/extra/SOGo.conf
 	backup = etc/conf.d/sogo
 	source = http://www.sogo.nu/files/downloads/SOGo/Sources/SOGo-4.0.2.tar.gz
-	source = sogo_configure.patch
 	source = sogo.service
 	source = sogo.confd
+	source = sogo_configure.patch
+	source = ssl_load_error.patch
 	sha256sums = 35ef20216ff1758a593bed69d8e8e25d23e982a970bf23a3bb2f856f2e5d2f9f
-	sha256sums = e64ea4aa0ddf29785de8d786ab7ab09f940bfe316b6f1deeb8d04d9d16d35db1
 	sha256sums = 0720b9ad35a05d86d794c7adbf18277ecde57ed147e96f6105acca93f19d3b8c
 	sha256sums = 8ee0d1ad77e998ea801053fce175d8c4a1c55dcc5ee1ff78f0a8e3797187a6a7
+	sha256sums = e64ea4aa0ddf29785de8d786ab7ab09f940bfe316b6f1deeb8d04d9d16d35db1
+	sha256sums = 55934b0763d809b30ac8b597f5c8be32c9226040c5c8d9eff2bb9cc004072c17
 
 pkgname = sogo
 
