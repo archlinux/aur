@@ -283,6 +283,7 @@ _core_configure_options=" \
                  -journald \
                  -make libs \
                  -nomake tools \
+                 -nomake examples \
                  \
                  -reduce-exports \
         "
