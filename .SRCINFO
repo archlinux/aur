@@ -8,7 +8,7 @@ pkgbase = plasma5-themes-chakra-heritage
 	makedepends = extra-cmake-modules
 	depends = plasma-framework
 	optdepends = plasma5-wallpapers-chakra-tulip
-	source = git+https://code.chakralinux.org/tools/heritage.git#commit=0eb77277
+	source = git+https://code.chakralinux.org/tools/heritage.git#commit=cc3cd80e
 	md5sums = SKIP
 
 pkgname = plasma5-themes-chakra-heritage

@@ -12,10 +12,14 @@ license=('LGPL')
 depends=('plasma-framework')
 makedepends=('extra-cmake-modules')
 optdepends=('plasma5-wallpapers-chakra-tulip')
-
-_gitsha='0eb77277'
+_gitsha='cc3cd80e'
 source=("git+https://code.chakralinux.org/tools/heritage.git#commit=${_gitsha}")
 md5sums=('SKIP')
+
+pkgver() {
+    cd $srcdir/heritage
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
     mkdir -p build
