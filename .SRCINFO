@@ -1,0 +1,20 @@
+pkgbase = python-tensorboardx-git
+	pkgdesc = Tensorboard for PyTorch
+	pkgver = 1.2.r90.gddca1a9
+	pkgrel = 1
+	url = https://github.com/lanpa/tensorboardX
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-pytorch
+	depends = python-torchvision
+	depends = python-protobuf
+	depends = python-six
+	optdepends = tensorboard: to visualise TensorBoard data
+	provides = python-tensorboardx
+	conflicts = python-tensorboardx
+	source = git+https://github.com/lanpa/tensorboardX.git
+	sha256sums = SKIP
+
+pkgname = python-tensorboardx-git
+
