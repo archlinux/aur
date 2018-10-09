@@ -12,7 +12,7 @@ makedepends=('cmake' 'qt5-tools')
 license=('GPL3')
 arch=('x86_64')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('8fe56945831377c14bd112399002236e612ea8ee77af662ca3dadcb353c62e2d')
+sha256sums=('79bb76c0afcfd769932a9d3b6cfa985dadc1b71443be2277ef0367fa6a4a658f')
 
 build() {
     cd "CopyQ-${pkgver}"
