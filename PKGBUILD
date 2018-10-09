@@ -1,7 +1,7 @@
 # Maintainer: H. Rosendahl <h [at] ro [dot] sendahl [dot] de>
 pkgname=um-git
 _gemname=um
-pkgver=4.1.0.r0.g26f2845
+pkgver=4.1.0.r1.g9f3e21d
 pkgrel=1
 pkgdesc="utility to create and maintain your own man pages so you can remember how to do stuff"
 arch=("any")
@@ -10,9 +10,10 @@ license=("MIT")
 depends=("ruby" "ruby-kramdown")
 makedepends=("git" "ruby-rake")
 options=(!emptydirs)
+conflicts=("um")
 source=("${pkgname}::git+${url}")
         
-sha256sums=("SKIP")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$pkgname/"
@@ -26,6 +27,7 @@ build() {
     echo $(pkgver) > "version.txt"
 
     # Create man pages
+    mkdir doc/man1
     rm doc/man1/*
     rake
 
@@ -47,6 +49,8 @@ package() {
     rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
     install -Dm644 "$srcdir"/$pkgname/um-completion.sh \
         "$pkgdir/usr/share/bash-completion/completions/$_gemname"
+    install -Dm644 "$srcdir"/$pkgname/doc/man1/*.gz -t \
+        "$pkgdir/usr/share/man/man1"
 }
 
 # vim:set ts=4 sw=4 et:
