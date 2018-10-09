@@ -1,7 +1,7 @@
 # Maintainer: axionl <axionl@aosc.io>
 pkgname=filebrowser-bin
 pkgver=1.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Web File Manager which can be used as a middleware or standalone app."
 arch=('x86_64')
 url="https://github.com/filebrowser/filebrowser"

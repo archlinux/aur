@@ -1,7 +1,7 @@
 pkgbase = filebrowser-bin
 	pkgdesc = Web File Manager which can be used as a middleware or standalone app.
 	pkgver = 1.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/filebrowser/filebrowser
 	install = filebrowser-bin.install
 	arch = x86_64
