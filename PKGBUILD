@@ -3,12 +3,12 @@
 
 pkgname=something-for-reddit
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A Reddit Client For GNOME (with Gtk+ and Python)'
 arch=('i686' 'x86_64')
 license=('GPL3')
 url="https://github.com/samdroid-apps/something-for-reddit"
-depends=('desktop-file-utils' 'gobject-introspection' 'gtk3' 'python-gobject' 'python-arrow' 'python-markdown' 'ruby-sass' 'markdown-urlize-git' 'libsoup' 'webkitgtk2')
+depends=('desktop-file-utils' 'gobject-introspection' 'gtk3' 'python-gobject' 'python-arrow' 'python-markdown' 'ruby-sass' 'markdown-urlize-git' 'libsoup' 'webkit2gtk')
 makedepends=('gnome-common' 'intltool' 'itstool' 'python' 'yelp-tools')
 conflicts=('something-for-reddit-git')
 source=("https://github.com/samdroid-apps/something-for-reddit/archive/v${pkgver}.tar.gz")
