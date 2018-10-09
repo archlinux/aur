@@ -21,6 +21,7 @@ build() {
 	mkdir -p etc/systemd/system
 	mv backup.conf etc/backup.conf
 	mv backup usr/bin/backup/backup
+	mv email.sh usr/bin/backup/email.sh
 	mv backup.service etc/systemd/system/backup.service
 	mv backup.timer etc/systemd/system/backup.timer
 	mv storage-mounts-Public.mount usr/share/backup/storage-mounts-Public.mount.example
