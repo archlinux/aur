@@ -1,6 +1,6 @@
 pkgbase = compute-runtime-bin
 	pkgdesc = Intel(R) Graphics Compute Runtime for OpenCL(TM). Replaces Beignet for Gen8 (Broadwell) and beyond (binary version)
-	pkgver = 18.39.11595
+	pkgver = 18.40.11622
 	pkgrel = 1
 	url = https://github.com/intel/compute-runtime
 	install = compute-runtime-bin.install
@@ -15,8 +15,8 @@ pkgbase = compute-runtime-bin
 	provides = compute-runtime
 	conflicts = beignet
 	conflicts = compute-runtime
-	source = https://github.com/intel/compute-runtime/releases/download/18.39.11595/intel-opencl_18.39.11595_amd64.deb
-	sha256sums = edc3c7a240c30c5a1a14c00ee4178e96d2430d00c1a47e385ddc3a08375d572a
+	source = https://github.com/intel/compute-runtime/releases/download/18.40.11622/intel-opencl_18.40.11622_amd64.deb
+	sha256sums = cf5f68fd052317e17f64011eedf1b7680c9519eb6eee58a2986585c1b6a3a0c2
 
 pkgname = compute-runtime-bin
 
