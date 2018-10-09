@@ -1,11 +1,12 @@
 pkgbase = meta-ugene-external_tools
 	pkgdesc = Metapackage for External Tools in the UGENE bioinformatics suite
-	pkgver = 20180503
+	pkgver = 20181009
 	pkgrel = 1
 	url = http://ugene.net/external.html
 	arch = any
 	license = none
 	depends = ugene-bin
+	depends = java-runtime>=8
 	depends = bedtools
 	depends = blast+
 	depends = bowtie
@@ -16,6 +17,8 @@ pkgbase = meta-ugene-external_tools
 	depends = mafft
 	depends = tcoffee
 	depends = mrbayes
+	depends = phyml
+	depends = kraken
 	depends = cufflinks-bin
 	depends = samtools
 	depends = tophat
@@ -23,9 +26,13 @@ pkgbase = meta-ugene-external_tools
 	depends = python2
 	depends = perl
 	depends = vcftools
+	depends = vcfanno-bin
 	depends = snpeff
 	depends = fastqc
 	depends = python-cutadapt
+	depends = hmmer
+	depends = hmmer2
+	depends = primer3
 	replaces = ugene-external-tools
 
 pkgname = meta-ugene-external_tools
