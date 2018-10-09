@@ -1,7 +1,7 @@
 # Maintainer: David Baum <david.baum@naraesk.eu>
 pkgname=eclipse-installer
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Automates the installation and update of Eclipse development environments"
 arch=('i686' 'x86_64')
 url="https://wiki.eclipse.org/Eclipse_Installer"
@@ -19,7 +19,7 @@ install=()
 changelog=()
 source=('https://mirrors.dotsrc.org/eclipse//oomph/products/eclipse-inst-linux64.tar.gz')
 noextract=()
-md5sums=('')
+md5sums=('SKIP')
 
 package() {
     install -d ${pkgdir}/opt/${pkgname}
