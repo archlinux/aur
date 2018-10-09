@@ -28,7 +28,7 @@ package() {
   # symlink for lpdwrapper so it correctly figures out the printer model from the path
   install -d "$pkgdir/usr/lib/cups/filter/"
   ln -s "/usr/share/brother/Printers/$_model/cupswrapper/lpdwrapper" "$pkgdir/usr/lib/cups/filter/brother_lpdwrapper_$_model"
-  chmod a-w "$pkgdir/usr/lib/cups/filter/"
+  chmod a-w "$pkgdir/usr/share/brother/Printers/$_model/cupswrapper/lpdwrapper"
 
   # symlink for the PPD
   install -d "$pkgdir/usr/share/cups/model/"
