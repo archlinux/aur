@@ -1,6 +1,6 @@
 # Maintainer: Kartik Mohta <kartikmohta@gmail.com>
 
-pkgbase=('python2-rosinstall_generator')
+pkgbase='python2-rosinstall_generator'
 pkgname=('python2-rosinstall_generator')
 _module='rosinstall_generator'
 pkgver='0.1.14'
