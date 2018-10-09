@@ -3,7 +3,7 @@
 _pkgname=sonarqube
 pkgname=${_pkgname}
 pkgver=7.3
-pkgrel=2
+pkgrel=3
 pkgdesc="An open source platform for continuous inspection of code quality"
 arch=('x86_64')
 url="http://www.sonarqube.org/"
@@ -24,7 +24,7 @@ provides=("${_pkgname}")
 options=('!strip')
 
 install=${pkgname}.install
-source=("https://sonarsource.bintray.com/Distribution/${_pkgname}/${_pkgname}-${pkgver}.zip"
+source=("https://binaries.sonarsource.com/Distribution/${_pkgname}/${_pkgname}-${pkgver}.zip"
         "${_pkgname}.service"
         "${_pkgname}-tmpfile.conf"
         "${_pkgname}-user.conf"
