@@ -1,6 +1,6 @@
 # Maintainer: Ariel AxionL <axionl@aosc.io>
 pkgname=gcsf-git
-pkgver=r175.ad5d8bb
+pkgver=r180.3ef78c5
 pkgrel=1
 pkgdesc="a FUSE file system based on Google Drive (Written by Rust)"
 arch=('x86_64')
@@ -26,7 +26,7 @@ pkgver() {
 
 build() {
     cd $pkgname
-    cargo fmt --all -- --write-mode=diff
+    cargo fmt --all -- --check
     cargo build --release
 }
 
