@@ -27,7 +27,7 @@ build() {
     echo $(pkgver) > "version.txt"
 
     # Create man pages
-    mkdir doc/man1
+    mkdir -p doc/man1
     rm doc/man1/*
     rake
 
