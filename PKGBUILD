@@ -1,7 +1,8 @@
+# $Id$
 # Maintainer: Omid Mottaghi Rad <omidmr at gmail dot com>
 # Co-Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=gnome-shell-extension-persian-calendar-git
-pkgver=r136.d4a1101
+pkgver=r147.57bfaaa
 pkgrel=1
 pkgdesc="Persian calendar for Gnome Shell."
 arch=(any)
@@ -25,7 +26,8 @@ pkgver() {
 }
 
 package() {
-  install -d "$pkgdir/usr/share/gnome-shell/extensions/PersianCalendar@oxygenws.com"
-  cp -a $srcdir/${pkgname%-git}/* "$pkgdir/usr/share/gnome-shell/extensions/PersianCalendar@oxygenws.com"
-  rm -rf $pkgdir/usr/share/gnome-shell/extensions/PersianCalendar@oxygenws.com/.git
+  install -d "${pkgdir}/usr/share/gnome-shell/extensions/"
+  cp -a "${pkgname%-git}/PersianCalendar@oxygenws.com" \
+    "${pkgdir}/usr/share/gnome-shell/extensions/PersianCalendar@oxygenws.com"
 }
+# vim:set ts=2 sw=2 et:
