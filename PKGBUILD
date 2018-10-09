@@ -1,7 +1,7 @@
 # Maintainer: Laurent Treguier <laurent@treguier.org>
 
 _oomox_ver=1.7.0.5
-_numix_ver=1.9.0.3
+_numix_ver=1.9.1
 _materia_ver=20180922
 _arc_cmt=f53f43a8b6faad762b01efe1f9958fd5afcb8dfb
 _archdroid_ver=1.0.2
@@ -60,7 +60,7 @@ source=(
     "base16-builder-${_base16_cmt}.tar.gz::https://github.com/base16-builder/base16-builder/archive/${_base16_cmt}.tar.gz"
 )
 md5sums=('52c161b93801870f2787a914222370e1'
-         '09106ec3126a0504745c3632268e53b3'
+         'a9fdfe30b4ef19a591c943dfe5876eec'
          'fc264476ff1b7a1763698e6c1892ca01'
          '7aa69026025c86fd3d78265c280943be'
          'cb669130685dcbf03a8f7f5738c71dc6'
