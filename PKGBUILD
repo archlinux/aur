@@ -2,13 +2,12 @@
 _name=tensorboardX
 pkgname=python-tensorboardx
 pkgver=1.4
-pkgrel=5
+pkgrel=6
 pkgdesc="Tensorboard for PyTorch"
 arch=('any')
 url="https://github.com/lanpa/tensorboardX"
 license=('MIT')
-depends=('python-pytorch' 'python-torchvision' 'python-protobuf' 'python-six')
-optdepends=('tensorboard: to visualise TensorBoard data')
+depends=('python-protobuf' 'python-six')
 makedepends=('python-setuptools')
 conflicts=('python-tensorboard-git')
 source+=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
