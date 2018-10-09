@@ -1,8 +1,8 @@
 # Maintainer: metscoin <mets_coin@outlook.com>
 
 pkgname=pigeon-qt
-pkgver=0.15.99
-pkgrel=6
+pkgver=0.15.99.6
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://pigeoncoin.org/"
 license=('MIT')
@@ -12,7 +12,7 @@ optdepends=('miniupnpc: Automatic UPnP port mapping' 'qrencode: For generating Q
 makedepends=(boost qt5-tools)
 conflicts=('pigeon' 'pigeond')
 install=pigeon-qt.install
-source=("${pkgname%-git}::git+http://github.com/Pigeoncoin/pigeoncoin.git#tag=v0.15.99.3"
+source=("${pkgname%-git}::git+http://github.com/Pigeoncoin/pigeoncoin.git#tag=v${pkgver}"
         "$pkgname.desktop")
 sha256sums=('SKIP'
             '331bd8fb38aae6d94a0e7494ff183f8d918eeb6d143ffcfa8ca61546338f265d')
