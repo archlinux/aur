@@ -1,8 +1,8 @@
 # Maintainer: Oscar Morante <spacepluk@gmail.com>
 
-_version=2018.2.10
+_version=2018.2.11
 _build=f1
-_randomstring=674aa5a67ed5
+_randomstring=38bd7dec5000
 _prefix=/opt/Unity
 
 pkgname=unity-editor-ios
@@ -14,7 +14,7 @@ url='https://unity3d.com/'
 license=('custom')
 depends=('unity-editor')
 source=("https://download.unity3d.com/download_unity/${_randomstring}/LinuxEditorTargetInstaller/UnitySetup-iOS-Support-for-Editor-${_version}${_build}.tar.xz")
-sha1sums=('dbc76cdfaf3c2b02582662b37f5bd652cf9a41d0')
+sha1sums=('98b77d694aae3fc2a7f1d7141d79a43ccaf518a7')
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
