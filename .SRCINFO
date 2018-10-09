@@ -1,6 +1,6 @@
 pkgbase = vim-youcompleteme-git
 	pkgdesc = A code-completion engine for Vim
-	pkgver = r2399.e37923a7
+	pkgver = r2409.a98bc726
 	pkgrel = 1
 	url = http://valloric.github.com/YouCompleteMe/
 	install = install.sh
@@ -41,7 +41,6 @@ pkgbase = vim-youcompleteme-git
 	source = git+https://github.com/icsharpcode/NRefactory.git
 	source = git+https://github.com/jbevain/cecil.git
 	source = git+https://github.com/jwilm/racerd.git
-	source = http://download.eclipse.org/jdtls/milestones/0.25.0/jdt-language-server-0.25.0-201809172205.tar.gz
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -58,7 +57,6 @@ pkgbase = vim-youcompleteme-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 7eb952056243f8ac7cd43405d8ed29dc111395866fee9fe895a80efcc2a8140c
 
 pkgname = vim-youcompleteme-git
 

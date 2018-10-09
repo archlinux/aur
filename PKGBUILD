@@ -17,6 +17,7 @@
 # Contributor: archdria
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 # Contributor: edacval
+# Contributor: MarcelPa
 
 
 
@@ -40,7 +41,7 @@ _neovim="$NEOVIM_YOUCOMPLETEME"
 #                                    Default PKGBUILD Configuration                                       #
 #=========================================================================================================#
 pkgname=vim-youcompleteme-git
-pkgver=r2399.e37923a7
+pkgver=r2409.a98bc726
 pkgver() {
 	cd "YouCompleteMe" || exit
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -108,14 +109,6 @@ if [[ "$_tern" == "y" ]]; then
 	makedepends+=('npm')
 fi
 
-if [[ "$_java" == "y" ]]; then
-	jdtls_package_name="jdt-language-server"
-	jdtls_milestone="0.25.0"
-	jdtls_build_stamp="201809172205"
-	source+=("http://download.eclipse.org/jdtls/milestones/${jdtls_milestone}/${jdtls_package_name}-${jdtls_milestone}-${jdtls_build_stamp}.tar.gz")
-	sha256sums+=('7eb952056243f8ac7cd43405d8ed29dc111395866fee9fe895a80efcc2a8140c')
-fi
-
 #=========================================================================================================#
 #=========================================================================================================#
 
@@ -157,17 +150,24 @@ gitprepare() {
 
 
 prepare() {
+
+	# Add the java completion engine dynamically...
 	if [[ "$_java" == "y" ]]; then
-		msg2 'Verifying JDTLS package version in PKGBUILD against upstream supported version...'
-			local milestone=`egrep '^JDTLS_MILESTONE' "$srcdir/ycmd/build.py" | sed -e "s/.* = //g" -e "s/'//g"`
-			local buildstamp=`egrep '^JDTLS_BUILD_STAMP' "$srcdir/ycmd/build.py" | sed -e "s/.* = //g" -e "s/'//g"`
-			if [[ "$milestone" == "$jdtls_milestone" ]] && [[ "$buildstamp" == "$jdtls_build_stamp" ]]; then
-				msg2 'JDTLS package version matched'
+		msg2 'Parsing out the JDTLS package version from upstream...'
+			local jdtls_package_name="jdt-language-server"
+			local jdtls_milestone=`egrep '^JDTLS_MILESTONE' "$srcdir/ycmd/build.py" | sed -e "s/.* = //g" -e "s/'//g"`
+			local jdtls_buildstamp=`egrep '^JDTLS_BUILD_STAMP' "$srcdir/ycmd/build.py" | sed -e "s/.* = //g" -e "s/'//g"`
+
+			if [[ "$jdtls_milestone" != "" ]] && [[ "$jdtls_buildstamp" != "" ]]; then
+				msg2 'JDTLS package version matched. Downloading...'
+				wget http://download.eclipse.org/jdtls/milestones/${jdtls_milestone}/${jdtls_package_name}-${jdtls_milestone}-${jdtls_buildstamp}.tar.gz
+				tar xf ${jdtls_package_name}-${jdtls_milestone}-${jdtls_buildstamp}.tar.gz
 			else
 				error 'Mismatched JDTLS version'
 				exit 1
 			fi
 	fi
+
 
 	msg2 'Setting up Git submodules...'
 
@@ -201,7 +201,6 @@ prepare() {
 
 
 build() {
-
 	msg2 'Purging unneeded files...'
 	rm -rf "$srcdir/YouCompleteMe/python/ycm/tests"
 
@@ -214,19 +213,17 @@ build() {
 	if [[ "$_omnisharp" == "y" ]]; then
 		msg2 'Building OmniSharp completer...' # BuildOmniSharp()
 		cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/OmniSharpServer" || exit
-		pwd
 		xbuild /property:Configuration=Release
 	else
 		msg2 'Skipping OmniSharp completer...'
 	fi
 
 	if [[ "$_gocode" == "y" ]]; then
+		export GOPATH="$GOPATH:$srcdir/YouCompleteMe/third_party/ycmd/third_party/go" 
 		msg2 'Building Gocode completer...' # BuildGoCode()
-		cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/gocode" || exit
-		pwd
+		cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/go/src/github.com/mdempsky/gocode" || exit
 		go build
-		cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/godef" || exit
-		pwd
+		cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/go/src/github.com/rogpeppe/godef" || exit
 		go build
 	else
 		msg2 'Skipping Gocode completer...'
@@ -235,7 +232,6 @@ build() {
 	if [[ "$_rust" == "y" ]]; then
 		msg2 'Building Rust completer...' # BuildRacerd()
 		cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/racerd" || exit
-		pwd
 		cargo build --release
 	else
 		msg2 'Skipping Rust completer...'
@@ -244,7 +240,6 @@ build() {
 	if [[ "$_tern" == "y" ]]; then
 		msg2 'Building Tern completer...' # SetUpTern()
 		cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/tern_runtime" || exit
-		pwd
 		npm install --production --python=python2
 	else
 		msg2 'Skipping Tern completer...'
@@ -284,12 +279,12 @@ package() {
 	fi
 
 	if [[ "$_gocode" == "y" ]]; then
-		mkdir -p "$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/gocode"
-		mkdir -p "$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/godef"
-		cp    "$srcdir/YouCompleteMe/third_party/ycmd/third_party/gocode/gocode" \
-			"$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/gocode/gocode"
-		cp    "$srcdir/YouCompleteMe/third_party/ycmd/third_party/godef/godef" \
-			"$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/godef/godef"
+		mkdir -p "$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/go/src/github.com/mdempsky/gocode"
+		mkdir -p "$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/go/src/github.com/rogpeppe/godef"
+		cp "$srcdir/YouCompleteMe/third_party/ycmd/third_party/go/src/github.com/mdempsky/gocode/gocode" \
+		"$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/go/src/github.com/mdempsky/gocode/gocode"
+		cp "$srcdir/YouCompleteMe/third_party/ycmd/third_party/go/src/github.com/rogpeppe/godef/godef" \
+		"$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/go/src/github.com/rogpeppe/godef/godef"
 	fi
 
 	if [[ "$_rust" == "y" ]]; then
