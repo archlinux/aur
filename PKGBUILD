@@ -18,8 +18,8 @@ optdepends=('lib2geom: for mesh distortion')
 conflicts=('scribus')
 provides=('scribus')
 source=('scribus::svn://scribus.net/trunk' python2.patch)
-md5sums=('SKIP'
-         '98b93cecd7b87a3b1425d2e483cd0a05')
+sha256sums=('SKIP'
+            'c28a5dd091d8185454166eebbdf0a230dca7ad214742dcf35d7ffaed7a586516')
 _svnmod='scribus'
 
 pkgver() {
