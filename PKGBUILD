@@ -9,9 +9,9 @@ arch=('any')
 url="https://imagej.net"
 license=('Public Domain')
 depends=('java-runtime>=8')
-makedepends=('java-environment=8')
+makedepends=('maven' 'java-environment=8')
 source=("https://github.com/imagej/imagej/archive/imagej-$_ver.tar.gz"
-	    "imagej2.desktop"
+        "imagej2.desktop"
         "fix-launcher.patch")
 md5sums=('8a1ebe7fbe111ad1de3ca8381fb4d259'
          'db18ac6d6ed799e04bc23b635b35e673'
