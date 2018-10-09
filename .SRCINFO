@@ -1,8 +1,9 @@
 pkgbase = laverna
 	pkgdesc = Laverna is a JavaScript note taking application with Markdown editor and encryption support. Consider it like open source alternative to Evernote.
 	pkgver = 0.7.51
-	pkgrel = 10
+	pkgrel = 11
 	url = https://laverna.cc/
+	install = laverna.install
 	arch = x86_64
 	arch = i686
 	license = MPL2

@@ -1,0 +1,23 @@
+pre_install() {
+	echo "$(tput bold)$(tput setaf 1) Laverna IS NOW DEPRECATED and UNMAINTAINED!! $(tput sgr 0)"
+	echo "$(tput bold)$(tput setaf 1) Please report to https://git.io/fxcCE for more information. $(tput sgr 0)"
+	echo "$(tput bold)$(tput setaf 1) We invite you to follow https://git.io/fxcWt instead. $(tput sgr 0)"
+}
+
+post_install() {
+	echo "$(tput bold)$(tput setaf 1) Laverna IS NOW DEPRECATED and UNMAINTAINED!! $(tput sgr 0)"
+	echo "$(tput bold)$(tput setaf 1) Please report to https://git.io/fxcCE for more information. $(tput sgr 0)"
+	echo "$(tput bold)$(tput setaf 1) We invite you to follow https://git.io/fxcWt instead. $(tput sgr 0)"
+}
+
+pre_upgrade() {
+	echo "$(tput bold)$(tput setaf 1) Laverna IS NOW DEPRECATED and UNMAINTAINED!! $(tput sgr 0)"
+	echo "$(tput bold)$(tput setaf 1) Please report to https://git.io/fxcCE for more information. $(tput sgr 0)"
+	echo "$(tput bold)$(tput setaf 1) We invite you to follow https://git.io/fxcWt instead. $(tput sgr 0)"
+}
+
+post_upgrade() {
+	echo "$(tput bold)$(tput setaf 1) Laverna IS NOW DEPRECATED and UNMAINTAINED!! $(tput sgr 0)"
+	echo "$(tput bold)$(tput setaf 1) Please report to https://git.io/fxcCE for more information. $(tput sgr 0)"
+	echo "$(tput bold)$(tput setaf 1) We invite you to follow https://git.io/fxcWt instead. $(tput sgr 0)"
+}
