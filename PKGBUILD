@@ -1,6 +1,6 @@
 # Maintainer: Kartik Mohta <kartikmohta@gmail.com>
 
-pkgbase=('python2-catkin_lint')
+pkgbase='python2-catkin_lint'
 pkgname=('python2-catkin_lint')
 _module='catkin_lint'
 pkgver='1.5.3'
