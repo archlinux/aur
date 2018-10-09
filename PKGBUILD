@@ -1,17 +1,17 @@
 # Maintainer: David Baum <david.baum@naraesk.eu>
 pkgname=eclipse-installer
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Automates the installation and update of Eclipse development environments"
 arch=('i686' 'x86_64')
 url="https://wiki.eclipse.org/Eclipse_Installer"
 license=('EPL')
 groups=()
-depends=('')
-makedepends=('')
+depends=()
+makedepends=()
 optdepends=()
 provides=()
-conflicts=('')
+conflicts=()
 replaces=()
 backup=()
 options=()

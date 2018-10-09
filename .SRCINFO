@@ -1,7 +1,7 @@
 pkgbase = eclipse-installer
 	pkgdesc = Automates the installation and update of Eclipse development environments
 	pkgver = 1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wiki.eclipse.org/Eclipse_Installer
 	arch = i686
 	arch = x86_64
