@@ -1,6 +1,6 @@
 # Maintainer: Kartik Mohta <kartikmohta@gmail.com>
 
-pkgbase=('python-wstool')
+pkgbase='python-wstool'
 pkgname=('python-wstool')
 _module='wstool'
 pkgver='0.1.17'
