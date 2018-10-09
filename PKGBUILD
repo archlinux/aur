@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=libkscreen
-pkgver=5.13.5
+pkgver=5.14.0
 pkgrel=1
 pkgdesc='KDE screen management software'
 arch=(x86_64)
@@ -13,11 +13,11 @@ depends=(qt5-x11extras libxrandr kwayland)
 makedepends=(extra-cmake-modules doxygen qt5-tools)
 groups=(plasma)
 source=("https://download.kde.org/stable/plasma/$pkgver/$pkgname-$pkgver.tar.xz"{,.sig})
-sha256sums=('9330c34ac709968a6b821d5ae616bab0eb98cd466174dc83c5c6c412d44ee110'
+sha256sums=('b13d8e6b9a1f0cee69d58ca2fb4606491c0371a20d184a19c87c1271164b51bb'
             'SKIP')
-validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E'  # Jonathan Riddell
+validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E'  # Jonathan Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
-              'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson
+              'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
               '1FA881591C26B276D7A5518EEAAF29B42A678C20') # Marco Martin <notmart@gmail.com>
 
 prepare() {
