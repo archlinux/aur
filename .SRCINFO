@@ -1,7 +1,7 @@
 pkgbase = python2-catkin_tools
 	pkgdesc = Command line tools for working with catkin.
 	pkgver = 0.4.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://catkin-tools.readthedocs.org/
 	arch = any
 	license = Apache
