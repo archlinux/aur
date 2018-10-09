@@ -1,6 +1,6 @@
 # Maintainer: Kartik Mohta <kartikmohta@gmail.com>
 
-pkgbase=('python-rosdep')
+pkgbase='python-rosdep'
 pkgname=('python-rosdep')
 _module='rosdep'
 pkgver='0.12.2'
