@@ -3,7 +3,7 @@
 _pkgorg=bus1
 _pkgname=dbus-broker
 pkgdesc='Linux D-Bus Message Broker'
-pkgver=r1119.a4cdeeb
+pkgver=r1276.2e58323
 pkgrel=1
 
 pkgname=$_pkgname-git
@@ -51,7 +51,7 @@ build() {
   cd build
   CFLAGS="$CFLAGS -Wno-unused-parameter"
   CFLAGS="$CFLAGS -Wno-maybe-uninitialized"
-  arch-meson ../$pkgname
+  arch-meson -Ddocs=true ../$pkgname
   ninja
 }
 
