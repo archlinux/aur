@@ -1,0 +1,19 @@
+pkgbase = python-pygsp
+	pkgdesc = Graph Signal Processing in Python
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/epfl-lts2/pygsp
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	optdepends = python-matplotlib: plot graphs, signals, and filters
+	optdepends = python-pyqtgraph: interactive graph visualization
+	optdepends = python-opengl: interactive graph visualization in 3d
+	optdepends = python-scikit-image: construct patch graphs from images
+	source = https://files.pythonhosted.org/packages/source/p/pygsp/PyGSP-0.5.1.tar.gz
+	sha256sums = 4874ad88793d622d4f578b40c6617a99b1f02bc6c6c4077f0e48cd71c7275800
+
+pkgname = python-pygsp
+	depends = python-numpy
+	depends = python-scipy
+
