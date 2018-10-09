@@ -14,7 +14,7 @@ makedepends=('cython')
 source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz"
     "new-api.patch")
 sha256sums=('ae41e720e569d0d99e3a44c82c36b35a49cfc9ecc23a1cd039fe9e2895aada2c'
-            '6eefe82a6e55bf776cd27550cca3317cc55c4062bed97253de192574cbc35dbb')
+            'd44f3144cd2ace01f021f67b724cd4036c37c9b1fbcf85521788875216666f0b')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
