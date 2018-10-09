@@ -9,8 +9,8 @@ pkgbase = python-prompt_toolkit-2
 	depends = python
 	depends = python-six>=1.9.0
 	depends = python-wcwidth
-	provides = python-prompt_toolkit
-	conflicts = python-prompt_toolkit
+	provides = python-prompt_toolkit-2
+	conflicts = python-prompt_toolkit-2
 	source = python-prompt_toolkit-2-2.0.5.zip::https://github.com/jonathanslenders/python-prompt-toolkit/archive/2.0.5.tar.gz
 	md5sums = 162202d940109a2425ea7746b33c7cd4
 
