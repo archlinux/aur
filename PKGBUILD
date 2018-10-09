@@ -1,6 +1,6 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgname='dwgrep'
-pkgver='0.2'
+pkgver='0.4'
 pkgrel='1'
 pkgdesc='Tool and library for querying Dwarf (debuginfo) graphs.'
 url='http://pmachata.github.io/dwgrep/'
@@ -9,7 +9,7 @@ makedepends=('cmake' 'flex' 'bison' 'python-sphinx')
 license=('LGPL')
 depends=('elfutils')
 source=("https://github.com/pmachata/dwgrep/archive/${pkgver}.tar.gz")
-sha512sums=('0cef77cded64f437f40e92c87409e43de667f6033dcb7188d9beff97ab3deb1de2ee66043c8a34fac7a9b9a45c325ea92559905a6997c581bdd65099ef052ada')
+sha512sums=('46d1ce472acb40dda46ac7fefcf9ed301f96208ed1eb0403c87793a10575d961772a8920e21bfbc672dc9c834d9c664aa675282f16a9e7a7b4c64fecc0fd855f')
 
 build () {
 	cd "${pkgname}-${pkgver}"
