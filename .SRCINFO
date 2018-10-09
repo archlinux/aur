@@ -1,6 +1,6 @@
 pkgbase = curv-git
 	pkgdesc = a language for making art using mathematics
-	pkgver = 0.3.r50.g1bb201b
+	pkgver = 0.3.r67.g3655a99
 	pkgrel = 1
 	url = https://github.com/doug-moen/curv
 	arch = x86_64
