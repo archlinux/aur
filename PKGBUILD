@@ -1,7 +1,7 @@
 # Maintainer: Light2Yellow <oleksii.vilchanskyi@gmail.com>
 
 pkgname=ckb-next
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Corsair Keyboard and Mouse Input Driver, release version"
 arch=('i686' 'x86_64')
@@ -14,15 +14,16 @@ conflicts=('ckb-git' 'ckb-git-latest' 'ckb-next')
 provides=('ckb-next')
 install=ckb-next.install
 source=("https://github.com/ckb-next/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('2c785df4226c894fe409d911a633897c')
+md5sums=('1692065278a1f41e3ffcd300d6999462')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
 
   cmake -H. -Bbuild \
-    -DCMAKE_INSTALL_PREFIX="/usr" \
-    -DCMAKE_BUILD_TYPE="Release" \
-    -DCMAKE_INSTALL_LIBEXECDIR="lib"
+    -DCMAKE_INSTALL_PREFIX="/usr"    \
+    -DCMAKE_BUILD_TYPE="Release"     \
+    -DCMAKE_INSTALL_LIBEXECDIR="lib" \
+    -DDISABLE_UPDATER=1
   cmake --build build --target all
 }
 
