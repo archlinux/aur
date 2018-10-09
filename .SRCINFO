@@ -1,7 +1,7 @@
 pkgbase = sent
 	pkgdesc = Simple plaintext presentation tool
 	pkgver = 1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://tools.suckless.org/sent
 	arch = i686
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = sent
 	depends = fontconfig
 	depends = libpng
 	optdepends = farbfeld: Image support
-	source = https://git.suckless.org/sent/snapshot/sent-1.tar.gz
+	source = https://dl.suckless.org/tools/sent-1.tar.gz
 	source = config.h
-	sha256sums = 8d88c1d9b0990871c9b02d762ab4f1596e70e97bf228dab99115894133d999ad
+	sha256sums = 7bf3de9311ce291ff36adf5315b78fa72373e3ab80ca71387fb5884bcbd7be33
 	sha256sums = 5b93e790d607389a4966595cb32a818f6f076605aff52d9a87f54b4587e4d79e
 
 pkgname = sent
