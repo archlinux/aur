@@ -49,27 +49,33 @@ _use_current=
 ### Disable MUQSS 
 _muqss_disable=
 
+### Enable htmldocs (increases compile time)
+_htmldocs_enable=
+
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-lqx
 # pkgname=('linux-lqx' 'linux-lqx-headers' 'linux-lqx-docs')
 _major=4.18
-_minor=12
-pkgver=${_major}.${_minor}
+pkgver=4.18.12_2
 _srcname=linux-${_major}
 pkgrel=2
-lqxrel=lqx2
-_lqxpatchname="v${pkgver}-${lqxrel}.patch"
+_lqxpatchname=liquorix-package
+_lqxpatchrel=15
+_lqxpatchver=${_lqxpatchname}-${_major}-${_lqxpatchrel}
 arch=('x86_64')
 url="http://liquorix.net/"
 license=('GPL2')
 options=('!strip')
-makedepends=('kmod' 'inetutils' 'bc' 'libelf' 'python-sphinx' 'graphviz')
+makedepends=('kmod' 'inetutils' 'bc' 'libelf')
+
+if [ -n "$_htmldocs_enable" ]; then
+    makedepends+=('python-sphinx' 'graphviz')
+fi
 
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        "https://liquorix.net/sources/${_lqxpatchname}.gz"
-        "https://liquorix.net/sources/${_major}/config.amd64"
+        "https://github.com/damentz/${_lqxpatchname}/archive/${_major}-${_lqxpatchrel}.tar.gz"
          # pacman hook for depmod
         '60-linux.hook'
          # pacman hook for initramfs regeneration
@@ -82,12 +88,19 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-lqx} 
 
+pkgver() {
+  printf ${_major}.${_minor}_${_patchrel}
+}
+
 prepare() {
     cd ${_srcname}
 
     ### Add Liquorix patches
-        msg2 "Add Liqurix patches"
-        patch -Np1 -i ../$_lqxpatchname
+        _abiname="$(cat ${srcdir}/${_lqxpatchver}/linux-liquorix/debian/config/defines | grep 'abiname:' | sed -r 's/abiname:\s*//')"
+        _minor="$(echo "$_abiname" | cut -f1 -d .)"
+        _patchrel="$(echo "$_abiname" | cut -f2 -d .)"
+        msg2 "Patching sources with ${_lqxpatchname}-${_major}.${_minor}-${_patchrel}.patch"
+        patch -Np1 -i ../${_lqxpatchver}/linux-liquorix/debian/patches/zen/v${_major}.${_minor}-lqx${_patchrel}.patch
     
     ### Setting version
         msg2 "Setting version..."
@@ -107,7 +120,7 @@ prepare() {
 
     ### Setting config
         msg2 "Setting config..."
-        cp ../config.amd64 .config
+        cat ${srcdir}/${_lqxpatchver}/linux-liquorix/debian/config/kernelarch-x86/config-arch-64 >./.config
         make olddefconfig
 
     ### Prepared version
@@ -188,7 +201,12 @@ prepare() {
 build() {
   cd ${_srcname}
 
-  make bzImage modules htmldocs
+  local params=(bzImage modules)
+  if [ -n "$_htmldocs_enable" ]; then
+    params+=(htmldocs)
+  fi
+
+  make ${params[*]}
 }
 
 _package() {
@@ -343,17 +361,19 @@ _package-docs() {
   mkdir -p "$builddir"
   cp -t "$builddir" -a Documentation
 
-  msg2 "Removing doctrees..."
-  rm -r "$builddir/Documentation/output/.doctrees"
+  if [ -n "$_htmldocs_enable" ]; then
+    msg2 "Removing doctrees..."
+    rm -r "$builddir/Documentation/output/.doctrees"
 
-  msg2 "Moving HTML docs..."
-  local src dst
-  while read -rd '' src; do
-    dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
-    mkdir -p "${dst%/*}"
-    mv "$src" "$dst"
-    rmdir -p --ignore-fail-on-non-empty "${src%/*}"
-  done < <(find "$builddir/Documentation/output" -type f -print0)
+    msg2 "Moving HTML docs..."
+    local src dst
+    while read -rd '' src; do
+        dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
+        mkdir -p "${dst%/*}"
+        mv "$src" "$dst"
+        rmdir -p --ignore-fail-on-non-empty "${src%/*}"
+    done < <(find "$builddir/Documentation/output" -type f -print0)
+  fi
 
   msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/share/doc"
@@ -362,7 +382,6 @@ _package-docs() {
   msg2 "Fixing permissions..."
   chmod -Rc u=rwX,go=rX "$pkgdir"
 }
-
 
 pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
 for _p in "${pkgname[@]}"; do
@@ -374,8 +393,7 @@ done
 
 sha512sums=('950eb85ac743b291afe9f21cd174d823e25f11883ee62cecfbfff8fe8c5672aae707654b1b8f29a133b1f2e3529e63b9f7fba4c45d6dacccc8000b3a9a9ae038'
             'SKIP'
-            '76c1b8b8840cc0ef57f30773c15bfe48455e199479610a741e770e48372fb87189e8457a2bdbf0a8559ab91a8f32f93fcd0654de5a53c707181c762cc33688ea'
-            '1d993856fcb7072b9868688acdb7aac621870b4e2d9fd4b88b662640a68684714ad7d9108b0029cfda90e6820f224fba6aa4e53c4129d4a643a0874eececbd88'
+            '7a64d087ba964b01a1da17ad0cecf2ddcb83208454dde4e06fc1aef4fe4f88175bdb34b20fb041815f1c8a1e25e077726afc78bd5277c3334c89060b8852f33b'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '4a8b324aee4cccf3a512ad04ce1a272d14e5b05c8de90feb82075f55ea3845948d817e1b0c6f298f5816834ddd3e5ce0a0e2619866289f3c1ab8fd2f35f04f44'
             '6346b66f54652256571ef65da8e46db49a95ac5978ecd57a507c6b2a28aee70bb3ff87045ac493f54257c9965da1046a28b72cb5abb0087204d257f14b91fd74'
