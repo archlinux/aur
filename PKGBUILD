@@ -24,7 +24,7 @@ pkgver() {
 build() {
   cd "$srcdir/$_pkgname"
   qmake PREFIX=/usr
-  make
+  make -j "$(nproc)"
 }
 
 package() {
