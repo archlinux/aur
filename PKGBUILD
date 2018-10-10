@@ -10,8 +10,8 @@ arch=(i686 x86_64)
 url=http://www.db-main.eu/
 license=(custom)
 depends=(java-runtime libsm libx11 cairo expat gcc-libs gtk2 gdk-pixbuf2 glib2 pango libpng12 zlib)
-source_i686=("http://www.rever.eu/db-main/files/dbm-${pkgver//.}-linux-i386-setup.tar.gz")
-source_x86_64=("http://www.rever.eu/db-main/files/dbm-${pkgver//.}-linux-amd64-setup.tar.gz")
+source_i686=("https://www.rever.eu/db-main/files/dbm-${pkgver//.}-linux-i386-setup.tar.gz")
+source_x86_64=("https://www.rever.eu/db-main/files/dbm-${pkgver//.}-linux-amd64-setup.tar.gz")
 source=(${pkgname}.sh
         ${pkgname}.desktop
         ${pkgname}.png)
