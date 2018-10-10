@@ -1,7 +1,7 @@
 pkgbase = xiphos-git
 	pkgdesc = A Bible study tool -- git version
 	pkgver = r4065
-	pkgrel = 1
+	pkgrel = 3
 	url = http://xiphos.org
 	arch = i686
 	arch = x86_64

@@ -2,7 +2,7 @@
 
 pkgname=xiphos-git
 pkgver=r4065
-pkgrel=1
+pkgrel=3
 pkgdesc="A Bible study tool -- git version"
 arch=('i686' 'x86_64')
 url="http://xiphos.org"
@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
   cd ${pkgname%-git}
-  CXX=g++ python2 ./waf --prefix=/usr --enable-webkit2 configure 
+  python2 ./waf --prefix=/usr --enable-webkit2 configure 
   python2 ./waf --prefix=/usr --enable-webkit2 build 
 }
 
