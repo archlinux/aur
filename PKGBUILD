@@ -3,7 +3,7 @@
 # Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=dbmain
-pkgver=10.0.3
+pkgver=11.0.0
 pkgrel=1
 pkgdesc="A free data-modeling and data-architecture tool"
 arch=(i686 x86_64)
@@ -18,8 +18,8 @@ source=(${pkgname}.sh
 md5sums=('b39e20bbd5360fd70b7b23f0f69689d4'
          '048f1f5f6fe6e5b29d8e7cbeb825103d'
          '6bb248b5807368118996f3f5ad2edb68')
-md5sums_i686=('78073754d91eba040a92def2a53bf3ed')
-md5sums_x86_64=('9b35288aeb5d9c066b82a206b2e7603f')
+md5sums_i686=('132fbf63128dc25e7b2f1c1fa64c5d12')
+md5sums_x86_64=('df0dcf6058f9b051b7b656b9600b98c7')
 
 package(){
   cd "${srcdir}"
