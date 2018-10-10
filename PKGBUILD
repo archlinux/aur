@@ -2,7 +2,7 @@
 
 _pkgname=textadept
 pkgname=textadept-bin
-pkgver=10.0
+pkgver=10.1
 pkgrel=1
 pkgdesc="A fast, minimalist and remarkably extensible text editor (binary version)"
 url="http://foicica.com/textadept"
@@ -18,8 +18,8 @@ _arch=x86_64
 source=(http://foicica.com/textadept/download/${_pkgname}_${pkgver}.${_arch}.tgz
         http://foicica.com/textadept/download/${_pkgname}_${pkgver}.modules.zip
         textadept.install)
-sha256sums=('47f352e86a73e91537e24e40da02dec8a9488581cfe1cf77bc55321fba340c58'
-            '86b45d39d250fd7bcdec69e34fbd802a9b47f107ca24dcf476d59c1976068c70'
+sha256sums=('7e2cd1c297f69ffbd889c78584038389a5a0b430ff293b4841dd4cfdcc8e170e'
+            'f09af942eddeae962f2819c6f6c2aa3dc564dd67eed1c0d753a1d01095b0415c'
             'b2971d4c6743033b16b172c2b208942a4a6082c7bcfb593ae25bff3fbad45b4b')
 [ "$CARCH" = "i686" ] &&
 sha256sums[0]='d2a7021c822aaec243657966f2f7e8dd929afa9dba3182816a8fe35090176964'
