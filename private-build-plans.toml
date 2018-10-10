@@ -19,8 +19,8 @@ design = [                  # Common styles
   "cv24",                   # open double story g
   "cv26",                   # short leg m
   "cv27",                   # tailed l
-  "cv38",                   # open $
   "cv46",                   # flat top 3
+  "cv54",                   # open short $
 
   # "slab",
 
@@ -51,8 +51,8 @@ design = [                       # Common styles
   "cv24",                        # open double story g
   "cv26",                        # short leg m
   "cv27",                        # tailed l
-  "cv38",                        # open $
   "cv46",                        # flat top 3
+  "cv54",                        # open short $
 
   "slab",
 
@@ -83,8 +83,8 @@ design = [                       # Common styles
   "cv24",                        # open double story g
   "cv26",                        # short leg m
   "cv27",                        # tailed l
-  "cv38",                        # open $
   "cv46",                        # flat top 3
+  "cv54",                        # open short $
 
   # "slab",
 
@@ -115,8 +115,8 @@ design = [                          # Common styles
   "cv24",                           # open double story g
   "cv26",                           # short leg m
   "cv27",                           # tailed l
-  "cv38",                           # open $
   "cv46",                           # flat top 3
+  "cv54",                           # open short $
 
   # "slab",
 
@@ -147,8 +147,8 @@ design = [                            # Common styles
   "cv24",                             # open double story g
   "cv26",                             # short leg m
   "cv27",                             # tailed l
-  "cv38",                             # open $
   "cv46",                             # flat top 3
+  "cv54",                             # open short $
 
   "slab",
 
