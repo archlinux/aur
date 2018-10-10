@@ -15,7 +15,7 @@ BUILDENV+=('!check')
 
 pkgname=freenet
 pkgver=0.7.5.1481
-pkgrel=1
+pkgrel=2
 pkgdesc="An encrypted network without censorship"
 url="https://freenetproject.org"
 license=('GPL2')
