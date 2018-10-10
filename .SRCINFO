@@ -1,6 +1,6 @@
 pkgbase = eternalterminal
-	pkgver = 5.1.0
-	pkgrel = 2
+	pkgver = 5.1.5
+	pkgrel = 1
 	url = https://mistertea.github.io/EternalTerminal/
 	arch = x86_64
 	license = Apache
@@ -15,8 +15,8 @@ pkgbase = eternalterminal
 	depends = gflags
 	depends = protobuf
 	depends = libutempter
-	source = https://github.com/MisterTea/EternalTerminal/archive/et-v5.1.0.tar.gz
-	sha256sums = c096e7d7aa37eb7b8606260a322b49a53feb49b1d150cf25669c66bf74be62a6
+	source = https://github.com/MisterTea/EternalTerminal/archive/et-v5.1.5.tar.gz
+	sha256sums = 1611f7a6078e96ac572503f96fbdd673c177e1addd3cf23c28f32cc76ae343f7
 
 pkgname = eternalterminal-client
 	pkgdesc = Re-Connectable Terminal connection. Includes only the client.
