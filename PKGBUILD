@@ -1,8 +1,8 @@
 # Maintainer: ser nica <swhat at posteo dot eu>
 
 pkgname=veyon
-pkgver=4.1.3
-pkgrel=3
+pkgver=4.1.4
+pkgrel=1
 pkgdesc="Open Source computer monitoring and classroom management"
 arch=('i686' 'x86_64')
 url="https://github.com/veyon"
