@@ -1,0 +1,15 @@
+pkgbase = pam_mysql-git
+	pkgdesc = PAM module for mysql from github.
+	pkgver = b8ea8eb
+	pkgrel = 1
+	url = https://github.com/NigelCunningham/pam-MySQL
+	arch = i686
+	arch = x86_64
+	makedepends = make
+	makedepends = autoconf
+	depends = pam
+	source = git+https://github.com/NigelCunningham/pam-MySQL.git
+	md5sums = SKIP
+
+pkgname = pam_mysql-git
+
