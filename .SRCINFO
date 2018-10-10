@@ -1,7 +1,7 @@
 pkgbase = nixnote2-git
 	pkgdesc = Evernote clone (formerly Nevernote) - git checkout
-	pkgver = 2.1.0.beta3.r95.g8f235769
-	pkgrel = 2
+	pkgver = 2.1.0.beta4g.r17.g2065b702
+	pkgrel = 1
 	url = https://github.com/robert7/nixnote2
 	arch = x86_64
 	license = GPL3
@@ -11,8 +11,8 @@ pkgbase = nixnote2-git
 	depends = poppler-qt5
 	depends = tidy
 	depends = qt5-webkit
-	provides = nixnote=2.1.0.beta3
-	provides = nixnote2=2.1.0.beta3
+	provides = nixnote=2.1.0.beta4g
+	provides = nixnote2=2.1.0.beta4g
 	replaces = nevernote
 	replaces = nixnote
 	replaces = nixnote-beta
