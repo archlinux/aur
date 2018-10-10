@@ -1,8 +1,8 @@
 # Maintainer: Carlos Bellino <carlosbellino@gmail.com>
 
 pkgname=sickrage
-_gitname=Sick-Rage
-_gitauthor=Sick-Rage
+_gitname=SickChill
+_gitauthor=SickChill
 _sickrage_dir="/opt/sickrage"
 pkgver=2018.10.10
 pkgrel=2
@@ -33,7 +33,7 @@ source=("https://github.com/${_gitauthor}/${_gitname}/archive/v${pkgver}-${pkgre
         "${pkgname}.service"
         "${pkgname}.install")
 
-md5sums=('024e9edce2dd57aa790cc4fa5a813a70'
+md5sums=('8987a29f22bd85f083b93b70370dc498'
          '18e8ac10a90c7eb3cc596caa02261a3e'
          'ac4c96c5d3b7b4a86c653929c5f4aa60')
 
