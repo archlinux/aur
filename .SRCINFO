@@ -12,6 +12,7 @@ pkgbase = libhandy-git
 	makedepends = meson
 	makedepends = gobject-introspection
 	makedepends = vala
+	makedepends = glade
 	depends = gtk3
 	provides = libhandy
 	conflicts = libhandy
