@@ -1,0 +1,20 @@
+pkgbase = bpftrace-git
+	pkgdesc = High-level tracing language for Linux eBPF
+	pkgver = r417.e1abee5
+	pkgrel = 1
+	url = https://github.com/iovisor/bpftrace
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = git
+	makedepends = llvm6
+	depends = libelf
+	depends = zlib
+	depends = llvm6-libs
+	depends = clang<=6.0.1
+	source = git+https://github.com/iovisor/bpftrace.git
+	sha512sums = SKIP
+
+pkgname = bpftrace-git
+
