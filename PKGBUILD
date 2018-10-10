@@ -1,9 +1,9 @@
-# Maintainer: Grigorii Horos <horosgrisa@gmail.com>
+# Maintainer: Manuel Coenen <manuel.coenen@gmail.com>
 pkgname=timg
 pkgver=0.9.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal Image Viewer"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/hzeller/timg"
 license=('GPL2')
 depends=('graphicsmagick')
