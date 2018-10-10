@@ -2,7 +2,7 @@
 
 pkgname=kubespy
 pkgver=0.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Tools for observing Kubernetes resources in real time"
 arch=('x86_64')
 url="https://github.com/pulumi/kubespy"
@@ -18,6 +18,5 @@ options=(!strip)
 
 package() {
     mkdir -p "${pkgdir}/usr/bin"
-    install -m755 -t "${pkgdir}/usr/bin/" kubespy
+    install -m755 -t "${pkgdir}/usr/bin/" ${srcdir}/releases/kubespy-linux-amd64/kubespy
 }
-
