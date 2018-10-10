@@ -25,5 +25,5 @@ package() {
     install PINCE.sh "$pkgdir/usr/bin/pince"
     install -d "$pkgdir/usr/share/PINCE"
     install PINCE.py COPYING AUTHORS THANKS "$pkgdir/usr/share/PINCE"
-    cp -r GUI libPINCE media pince-non-stop-files "$pkgdir/usr/share/PINCE"
+    cp -r GUI libPINCE media "$pkgdir/usr/share/PINCE"
 }
