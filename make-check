@@ -3,6 +3,9 @@
 # A convenience script for the package creator.
 # This file is not run on package installation.
 
+PACMAN=
+PATH=/usr/bin:$PATH
+
 cd -P -- "$(dirname "$0")" || exit 1  # Allow to be called from any directory
 makepkg -ef || makepkg -f && namcap PKGBUILD && namcap ./*.tar.xz
 makepkg --printsrcinfo >| .SRCINFO && echo "Updated .SRCINFO" >&2
