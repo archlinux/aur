@@ -1,7 +1,7 @@
 # Maintainer: Jian Zeng <anonymousknight96 AT gmail.com>
 
 pkgname=cargo-edit
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='A utility for managing cargo dependencies from the command line.'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('cargo')
 conflicts=('cargo-edit-git')
 provide=('cargo-edit')
 source=("https://github.com/killercup/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('d8fb376fd771dd78121121a1130ef89be5ba62d085a13849352be2917a6224a3')
+sha256sums=('aecab1e2c12062d518d9bd8d95d50a9d81d9cf7444e96f14620b715d094642c9')
 
 build() {
   cd "$pkgname-$pkgver" || exit 1
