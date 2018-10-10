@@ -29,7 +29,7 @@ conflicts=('mapnik')
 provides=('mapnik=3.0.20')
 options=(staticlibs)
 install="mapnik.install"
-source=("git://github.com/mapnik/mapnik.git")
+source=("git+https://github.com/mapnik/mapnik.git")
 md5sums=('SKIP')
 
 pkgver() {
