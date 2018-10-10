@@ -1,23 +1,28 @@
 pkgbase = arrow
 	pkgdesc = A columnar in-memory analytics layer for big data.
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://arrow.apache.org
 	arch = x86_64
 	license = Apache
 	checkdepends = gflags
+	makedepends = apache-orc
 	makedepends = cmake
 	makedepends = boost
 	makedepends = brotli
 	makedepends = flatbuffers-static
+	makedepends = google-glog-static
 	makedepends = lz4-static
+	makedepends = protobuf-static
 	makedepends = zlib-static
 	makedepends = zstd-static
 	makedepends = snappy-static
-	depends = rapidjson
 	depends = boost-libs
-	source = https://github.com/apache/arrow/archive/apache-arrow-0.10.0.tar.gz
-	sha256sums = 2094cc6492e77ede19937375769de105603a50440a6257fefd4038f1176a0626
+	depends = rapidjson
+	provides = parquet-cpp
+	conflicts = parquet-cpp
+	source = https://github.com/apache/arrow/archive/apache-arrow-0.11.0.tar.gz
+	sha256sums = 0ac629a7775d86108e403eb66d9f1a3d3bdd6b3a497a86228aa4e8143364b7cc
 
 pkgname = arrow
 
