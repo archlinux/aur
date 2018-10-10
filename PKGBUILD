@@ -13,20 +13,19 @@ provides=('gnomesword' 'xiphos')
 conflicts=('gnomesword' 'xiphos')
 source=(git+https://github.com/crosswire/xiphos.git)
 md5sums=('SKIP')
-_gitname=xiphos
 
 pkgver() {
-  cd "$_gitname"
+  cd ${pkgname%-git}
   printf "r%s" $(git rev-list --count HEAD)
 }
 
 build() {
-  cd "$_gitname"
+  cd ${pkgname%-git}
   CXX=g++ python2 ./waf --prefix=/usr --enable-webkit2 configure 
   python2 ./waf --prefix=/usr --enable-webkit2 build 
 }
 
 package() {
-  cd "$_gitname"
-  python2 ./waf --destdir=$pkgdir --no-post-install install 
+  cd ${pkgname%-git}
+  python2 ./waf --destdir="$pkgdir" --no-post-install install 
 }
