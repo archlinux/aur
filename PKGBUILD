@@ -1,6 +1,6 @@
-# Maintainer : Johnathan Jenkins <twodopeshaggy@gmail.com>
+# Maintainer : trya <tryagainprod@gmail.com>
+# Contributor : Johnathan Jenkins <twodopeshaggy@gmail.com>
 # Contributor : fredbezies <fredbezies at gmail dot com>
-
 
 pkgname=libpng14
 _realname=libpng
@@ -20,21 +20,16 @@ md5sums=('ce716e09b0ac345f7013023bf7196d8f'
 
 build() {
   cd "${srcdir}/${_realname}-${pkgver}"
-
-patch -p1 -i "${srcdir}/libpng-${_apngver}-apng.patch"
-
+  patch -p1 -i "${srcdir}/libpng-${_apngver}-apng.patch"
   libtoolize --force --copy
 
 # Workaround for Autoconf 1.13.x
-
   sed 's|AM_CONFIG_HEADER(config.h)|AC_CONFIG_HEADERS([config.h])|g' -i configure.ac
 
   aclocal
   autoconf
   automake --add-missing
-
   ./configure --prefix=/usr
-
   make
 }
 
@@ -42,8 +37,6 @@ package() {
   cd "${srcdir}/${_realname}-${pkgver}"
 
   make DESTDIR="${pkgdir}" install
-  
-
   rm -rf "${pkgdir}/usr/share"
   rm -rf "${pkgdir}/usr/bin/libpng-config"
   rm -rf "${pkgdir}/usr/lib/"{libpng.so,libpng.a}
