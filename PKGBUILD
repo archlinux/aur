@@ -4,7 +4,7 @@
 _pkgname=nixnote2
 pkgname=${_pkgname}-git
 pkgver=2.1.0.beta4g.r17.g2065b702
-pkgrel=2
+pkgrel=3
 pkgdesc='Evernote clone (formerly Nevernote) - git checkout'
 url="https://github.com/robert7/$_pkgname"
 arch=(x86_64)
