@@ -7,7 +7,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Also thanks to the creator, Zack Middleton, who provided a lot of good input on packaging. I owe you a case!
 
 pkgname=spearmint
-pkgver=0.6
+pkgver=1.0.0
 pkgrel=1
 _ioq3v1='1.36'
 _ioq3v2='1.32-9'
@@ -36,7 +36,7 @@ source=("git+https://github.com/zturtleman/${pkgname}.git"
 	"${pkgname}.launcher.sig"
 	"${pkgname}-server.launcher.sig")
 sha512sums=('SKIP'
-            '008225a6bf6f4fa2acec7df05e43efc90ce17150d1cd4e00f1f5e96a3d4c5e9857ff855904fe8959da78f9ed8713bc108547e2b4a4ea6eb56923f727ead88998'
+            '1035f7cc1d69921d5af368f9e33ddef90c9f82dbeba1279d1e7f18f3e2fb8637e15ae05049ad351bfea7b38326f12f14b276697cec1fe7a958536da506259057'
             '2ff6eff394119697b1c0a76f9c6d70cec21f90aecd89b72f6459661d04821a799a9c70d80f390b2ae7822d5830e247033a79022cd6d3d1754f7780fadd2d418b'
             '9e70a201f26265e29fb9ce2d198d943de8e12094b9d04b5e2fad630508787f036c0ee318604a2899ad4a74b4cef8ba3bffd1e7817de8bcbd512a6f80783aea1a'
             '84c60900e2db08e2e8dc39236d268fea392fcbc7cb51af051b5981301bfd5d6c10cafd29284096728048ed4b54baa580ee3f9824a2a1435ba42e91d644547cc0'
