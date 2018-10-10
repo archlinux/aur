@@ -2,7 +2,7 @@
 # Contributor: Wyatt J. Brown <sushidudeteam@gmail.com>
 # shellcheck disable=SC2034,SC2148,SC2154
 pkgname=all-repository-fonts
-pkgver=20180722
+pkgver=20181009
 pkgrel=1
 pkgdesc='Meta package for all fonts in the official repositories.'
 arch=('any')
@@ -47,7 +47,6 @@ depends=('adobe-source-code-pro-fonts'
 		 'otf-latinmodern-math'
          'otf-overpass'
          'powerline-fonts'
-         'profont'
          'tamsyn-font'
          'terminus-font'
          'tex-gyre-fonts'
