@@ -4,12 +4,12 @@
 _pkgname=nixnote2
 pkgname=${_pkgname}-git
 pkgver=2.1.0.beta4g.r17.g2065b702
-pkgrel=1
+pkgrel=2
 pkgdesc='Evernote clone (formerly Nevernote) - git checkout'
 url="https://github.com/robert7/$_pkgname"
 arch=(x86_64)
 license=(GPL3)
-depends=(java-runtime hicolor-icon-theme poppler-qt5 tidy qt5-webkit)
+depends=(hunspell java-runtime hicolor-icon-theme poppler-qt5 tidy qt5-webkit)
 makedepends=(git)
 provides=("nixnote=${pkgver%.r*}" "$_pkgname=${pkgver%.r*}")
 replaces=(nevernote nixnote nixnote-beta)
