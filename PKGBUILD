@@ -23,7 +23,7 @@ build() {
   patch -p1 -i "${srcdir}/libpng-${_apngver}-apng.patch"
   libtoolize --force --copy
 
-# Workaround for Autoconf 1.13.x
+  # Workaround for Autoconf 1.13.x
   sed 's|AM_CONFIG_HEADER(config.h)|AC_CONFIG_HEADERS([config.h])|g' -i configure.ac
 
   aclocal
