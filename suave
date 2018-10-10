@@ -1,0 +1,18 @@
+#!/bin/bash
+APPLICATION=suave
+CONFIG_DIR="$HOME/.${APPLICATION}"
+
+export WINEPREFIX="${CONFIG_DIR}"
+export WINEDLLOVERRIDES="mscoree,mshtml,winemp3.acm="
+
+if [ ! -d "${WINEPREFIX}" ] ; then
+  mkdir -p "${WINEPREFIX}/${APPLICATION}/Levels" || exit 1
+  wineboot -u
+  ln -sf "/usr/share/${APPLICATION}/SUAVE.exe" "${CONFIG_DIR}/${APPLICATION}/" || exit 1
+  ln -sf "/usr/share/${APPLICATION}/Data1.pak" "${CONFIG_DIR}/${APPLICATION}/" || exit 1
+  ln -sf "/usr/share/${APPLICATION}/Data2.pak" "${CONFIG_DIR}/${APPLICATION}/" || exit 1
+  cp -rf /usr/share/${APPLICATION}/Levels/* "${WINEPREFIX}/${APPLICATION}/Levels" || exit 1
+fi
+
+wine "${CONFIG_DIR}/${APPLICATION}/SUAVE.exe" "$@"
+

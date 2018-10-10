@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=S.U.A.V.E.
+GenericName=Sport-Utility Assault Vehicle Extreme
+Comment=
+Exec=/usr/bin/suave
+Icon=/usr/share/suave/suave.png
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;Game

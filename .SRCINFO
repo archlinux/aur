@@ -1,0 +1,26 @@
+pkgbase = suave
+	pkgdesc = Sport Utility Assault Vehicle Extreme. Drive very small, but very brave tank.
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://archive.org/details/Sport-Utility_Assault_Vehicle_Extreme
+	arch = i686
+	arch = x86_64
+	license = custom:freeware
+	makedepends = innoextract
+	makedepends = p7zip
+	makedepends = imagemagick
+	depends = wine
+	depends = lib32-libpulse
+	noextract = Suave_Installer_20.exe
+	source = https://archive.org/download/Sport-Utility_Assault_Vehicle_Extreme/Suave_Installer_20.exe
+	source = suave
+	source = suave.desktop
+	md5sums = 4274086d09d0d2fdfc457eec177ab986
+	md5sums = 36c8c49d95b8b40bb1a468807dfbe32d
+	md5sums = 329abcc1e285ccd9c560781d495a1788
+	sha256sums = 1fac1941630f63f9721883cc3b7650ab93666785a2d05e6ad0d5c6396fe29f39
+	sha256sums = c1ef0d28257c3cac0f0c83be6bf0e1becbfcccb3c8b074c551b8b1a986e0ad8b
+	sha256sums = 1fbd25762e6e8cfb400204439c96461dd3daf4f5601994f096999665bfb2ce96
+
+pkgname = suave
+
