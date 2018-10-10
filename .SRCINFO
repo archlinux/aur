@@ -1,14 +1,14 @@
 pkgbase = asco
 	pkgdesc = A SPICE Circuit Optimizer.
-	pkgver = 0.4.9
-	pkgrel = 3
+	pkgver = 0.4.10
+	pkgrel = 1
 	url = http://asco.sourceforge.net
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = glibc
-	source = http://downloads.sourceforge.net/sourceforge/asco/ASCO-0.4.9.tar.gz
-	md5sums = a279c9ba155e66ef8ccaf5f130fa236d
+	source = http://downloads.sourceforge.net/sourceforge/asco/ASCO-0.4.10.tar.gz
+	md5sums = f8832f010f1f0d930878da903a59b028
 
 pkgname = asco
 
