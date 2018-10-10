@@ -1,6 +1,6 @@
-# $Id: pkgbuild-mode.el,v 1.23 2007/10/20 16:02:14 juergen Exp $
-# Maintainer: Alexandre BIQUE <bique.alexandre@gmail.com>
-# (Co-)Maintainer: Patrick Burroughs (Celti) <celti@celti.name>
+# Maintainer: Gomasy <nyan@gomasy.jp>
+# Contributor: Alexandre BIQUE <bique.alexandre@gmail.com>
+# Contributor: Patrick Burroughs (Celti) <celti@celti.name>
 
 pkgname=libreswan
 pkgver=3.27
