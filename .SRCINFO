@@ -1,0 +1,17 @@
+pkgbase = apache-orc
+	pkgdesc = A columnar storage for Hadoop workloads.
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://orc.apache.org
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = lz4-static
+	makedepends = protobuf-static
+	makedepends = snappy-static
+	makedepends = zlib-static
+	source = orc-1.5.1.tar.gz::https://github.com/apache/orc/archive/rel/release-1.5.1.tar.gz
+	sha256sums = 41b4f06ab425c875987b4b6fc9e347b2b434dcc768d0537708a310bb5e6277ce
+
+pkgname = apache-orc
+
