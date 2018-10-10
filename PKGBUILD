@@ -5,8 +5,8 @@
 # Contributor: damir <damir@archlinux.org>
 
 pkgname=amarok
-pkgver=2.9.0.r249.67c651bc60
-_commit=67c651bc60743bce79aeaf35f3e4d734e26eee62
+pkgver=2.9.0.r251.5d463f47d1
+_commit=5d463f47d149391a2303215222105d89528a571a
 pkgrel=1
 pkgdesc="The powerful music player for KDE"
 arch=(x86_64)
