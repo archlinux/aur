@@ -1,0 +1,16 @@
+pkgbase = wee-slack-git
+	pkgdesc = Store work-in-progress commits on the remote without cluttering the commit history
+	pkgver = 2.1.1.r22.fab34dc
+	pkgrel = 1
+	url = https://github.com/wee-slack/wee-slack
+	arch = any
+	license = MIT
+	depends = python-websocket-client
+	depends = weechat
+	provides = wee-slack
+	conflicts = wee-slack
+	source = git+https://github.com/wee-slack/wee-slack.git
+	sha256sums = SKIP
+
+pkgname = wee-slack-git
+
