@@ -1,0 +1,14 @@
+pkgbase = unity-editor-beta-language-zh-cn
+	pkgdesc = Chinese Language Pack (Preview)
+	pkgver = 2018.3.0b4
+	pkgrel = 1
+	url = https://unity3d.com/
+	arch = x86_64
+	license = custom
+	depends = unity-editor-beta
+	options = !strip
+	source = https://new-translate.unity3d.jp/v1/live/54/2018.3/zh-cn
+	sha1sums = a4c1220d7ab8de4f394d352634107098a72d6799
+
+pkgname = unity-editor-beta-language-zh-cn
+
