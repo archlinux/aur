@@ -11,8 +11,9 @@ license=('GPL3')
 depends=('shntool' 'qt4' 'xterm')    # 'cuetools'
 optdepends=('flac: for flac support' 
             'mac: for ape support')
-source=(QShnToolSplit-$pkgver.tar::'https://dl.opendesktop.org/api/files/download/id/1466642797/s/b9cff0ab278a03eb2437961990895a1b/t/1539105735/u//110373-QShnToolSplit-0.0.1.tar.gz'
-	    QShnToolSplit.desktop)
+#source=(QShnToolSplit-$pkgver.tar::'https://dl.opendesktop.org/api/files/download/id/1466642797/s/b9cff0ab278a03eb2437961990895a1b/t/1539105735/u//110373-QShnToolSplit-0.0.1.tar.gz'
+source=(QShnToolSplit-$pkgver.tar
+        QShnToolSplit.desktop)
 md5sums=('c61a3c11bfb6e9fa90d3ca4d761841a3'
          '0126d6608d8c2905873089b1b04eed34')
 
