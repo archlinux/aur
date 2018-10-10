@@ -28,10 +28,10 @@ provides=('kdenlive')
 conflicts=('kdenlive')
 #source=(${pkgname}::git://anongit.kde.org/kdenlive)
 #source=(git://anongit.kde.org/kdenlive) 
-source=('git://anongit.kde.org/kdenlive#branch=Applications/18.04')
+source=('git://anongit.kde.org/kdenlive#branch=Applications/18.08')
 sha1sums=('SKIP')
 install=$pkgname.install
-#options=(debug !strip)
+options=(debug !strip)
 
 pkgver() {
   cd kdenlive
@@ -48,7 +48,7 @@ prepare(){
 build() {
   cd build
   cmake ../kdenlive \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DLIB_INSTALL_DIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \

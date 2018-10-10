@@ -30,7 +30,9 @@ pkgbase = kdenlive-release-git
 	optdepends = oxygen-icons: optional for xfce
 	provides = kdenlive
 	conflicts = kdenlive
-	source = git://anongit.kde.org/kdenlive#branch=Applications/18.04
+	options = debug
+	options = !strip
+	source = git://anongit.kde.org/kdenlive#branch=Applications/18.08
 	sha1sums = SKIP
 
 pkgname = kdenlive-release-git
