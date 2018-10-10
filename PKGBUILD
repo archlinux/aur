@@ -35,7 +35,7 @@ _localmodcfg=
 pkgbase=linux-gc
 _srcver=4.18.12-arch1
 pkgver=${_srcver%-*}
-pkgrel=1
+pkgrel=2
 _pdsversion=099a
 arch=(x86_64)
 url="https://cchalpha.blogspot.co.uk/"
@@ -60,7 +60,7 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('4905637acbeac177143f229309252d0f6bcdcc45db8f9fb8f3b1ef4460fc105d'
-            '1a4ff6cc164b44e0cc6ddaa624907283d2bc8eb7d10eae91eac3c0956cef5468'
+            'd8a4dddc74b82718e81e327caed7769d4dd9abceb6e708012169e657df97f7d8'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
