@@ -2,7 +2,7 @@
 
 # maintenance, tar files
 pkgver="0.0.1"
-pkgrel=1
+pkgrel=2
 md5sums=("1e520fd2a07dabcf40a4cf35be9165ab")
 
 # info
@@ -16,8 +16,7 @@ url="https://cloud.iostud.io/index.php/s/s6wk4mZDZMKZSBr"
 _path="/download?path=%2F&files=paper-linux-x64.tar.gz"
 
 provides=("${_name}")
-#depends=("libsecret")
-#conflicts=("minetime")
+depends=("texlive-core")
 
 source=(
   "${url}${_path}"
