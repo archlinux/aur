@@ -1,7 +1,7 @@
 # Maintainer: Joakim Reinert <mail+aur@jreinert.com>
 
 pkgname=yanc-font-git
-pkgver=1.0
+pkgver=0.r40.b690500
 pkgrel=1
 pkgdesc='yet another neat condensed font. based on gohufont.'
 arch=(any)
