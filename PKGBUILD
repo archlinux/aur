@@ -1,4 +1,5 @@
 # Maintainer: Ethan Rakoff <ethan@ethanrakoff.com>
+
 pkgname=threemawebqt
 pkgver=0.1
 pkgrel=1
@@ -23,5 +24,7 @@ package() {
   cd "${srcdir}/${pkgname}/src"
   make INSTALL_ROOT="${pkgdir}" install 
 
+  install -Dm644 ../threemawebqt.desktop "${pkgdir}/usr/share/applications/threemawebqt.desktop"
+  install -Dm644 ../icon.png "${pkgdir}/usr/share/icons/${pkgname}/icon.png"
   install -Dm644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
