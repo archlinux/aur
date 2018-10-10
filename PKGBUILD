@@ -1,7 +1,7 @@
 # Maintainer: Vojtech Aschenbrenner <v@asch.cz>
 
 pkgname=eprover
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 pkgdesc="E is theorem prover for full first-order logic with equality."
 arch=('i686' 'x86_64')
@@ -11,8 +11,9 @@ depends=()
 makedepends=()
 optdepends=()
 changelog=
-source=(http://wwwlehre.dhbw-stuttgart.de/~sschulz/WORK/E_DOWNLOAD/V_2.0/E.tgz)
-sha256sums=('ebd911cb3a8b43019f666ffde10b28ca8e0871ab401ce88d1b9ba276c5c8bcf6')
+source=(http://wwwlehre.dhbw-stuttgart.de/~sschulz/WORK/E_DOWNLOAD/V_$pkgver/E.tgz)
+md5sums=('48bbc6a020dff3a85ed670ca552476ed')
+
 
 build() {
   cd "$srcdir/E"
