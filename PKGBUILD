@@ -1,4 +1,3 @@
-# $Id$
 # Contributor: Guillaume Horel <guillaume.horel@gmail.com>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Jaroslaw Swierczynski <swiergot@aur.archlinux.org>
@@ -6,10 +5,10 @@
 
 pkgname=ortp-git
 _pkgname=ortp
-pkgver=1.0.2.r29.g4cea5e6
+pkgver=1.0.2.r52.gc11c9f3
 pkgrel=1
 pkgdesc="A Real-time Transport Protocol (RTP) library"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/BelledonneCommunications/ortp"
 license=('GPL3')
 conflicts=('ortp')
