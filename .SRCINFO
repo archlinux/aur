@@ -1,0 +1,19 @@
+pkgbase = arm-linux-gnueabihf-gcc-linaro-bin
+	pkgdesc = The GNU Compiler Collection - cross compiler for ARM EABI hard float target.
+	pkgver = 7.3
+	pkgrel = 1
+	url = http://www.linaro.org/downloads/
+	arch = x86_64
+	groups = arm-linux-gnueabihf-toolchain-linaro-bin
+	license = GPL
+	license = LGPL
+	conflicts = arm-linux-gnueabihf-gcc
+	replaces = arm-linux-gnueabihf-gcc
+	options = !emptydirs
+	options = !strip
+	options = staticlibs
+	source = http://releases.linaro.org/components/toolchain/binaries/7.3-2018.05/arm-linux-gnueabihf/gcc-linaro-7.3.1-2018.05-x86_64_arm-linux-gnueabihf.tar.xz
+	sha512sums = d9ec43d636634394fb4d7651fe6f0df08c53fe374dbb4f7ca9a7b4ba6a3a30d7caa8a3f2116bbec5ba4a0898f623213deca47039423d8e6ef4cc83d065389126
+
+pkgname = arm-linux-gnueabihf-gcc-linaro-bin
+
