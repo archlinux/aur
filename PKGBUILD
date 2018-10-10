@@ -9,14 +9,14 @@ pkgbase=linux-phicomm-n1-armbian-git
 _srcname=linux-4.18
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for Phicomm N1, Armbian source"
-pkgver=4.18.7
+pkgver=4.18.13
 pkgrel=1
 arch=('aarch64')
-url="https://github.com/150balbes/Amlogic_s905-kernel"
+url="https://github.com/Jerry981028/Amlogic_s905-kernel"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'uboot-tools' 'vboot-utils' 'dtc')
 options=('!strip')
-source=("git+https://github.com/150balbes/Amlogic_s905-kernel.git"
+source=("git+https://github.com/Jerry981028/Amlogic_s905-kernel.git"
         'config'
         'pwm-led.patch'
         'linux.preset'
@@ -33,7 +33,7 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # reset to a certain version
-  git reset --hard 0774525e710209a9e99136e5373b955f6c7defba
+  git reset --hard 86728a4c9079e1b8e89f92cede264ff4b942e331
 
   # led patch
   patch -p1 < ../pwm-led.patch

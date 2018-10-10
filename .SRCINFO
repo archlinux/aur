@@ -1,7 +1,7 @@
 pkgbase = linux-phicomm-n1-armbian-git
-	pkgver = 4.18.7
+	pkgver = 4.18.13
 	pkgrel = 1
-	url = https://github.com/150balbes/Amlogic_s905-kernel
+	url = https://github.com/Jerry981028/Amlogic_s905-kernel
 	arch = aarch64
 	license = GPL2
 	makedepends = xmlto
@@ -14,12 +14,14 @@ pkgbase = linux-phicomm-n1-armbian-git
 	makedepends = vboot-utils
 	makedepends = dtc
 	options = !strip
-	source = git+https://github.com/150balbes/Amlogic_s905-kernel.git
+	source = git+https://github.com/Jerry981028/Amlogic_s905-kernel.git
 	source = config
+	source = pwm-led.patch
 	source = linux.preset
 	source = 99-linux.hook
 	md5sums = SKIP
-	md5sums = 68748ca1c69eedc93eb5109cadd7c5d4
+	md5sums = 44c200b0196238eb258d5fa3822200f8
+	md5sums = ff7f23f1bc3482651a4b7f4a33deb5fd
 	md5sums = f6ee374f560e1b9df6a7de2399027d1b
 	md5sums = d1c40c7367a7081f3b4c03264780f9d4
 
