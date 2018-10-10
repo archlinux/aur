@@ -7,7 +7,7 @@
 
 
 pkgname=kdenlive-testing-git
-pkgver=17.11.70.r9579.d19bb34ae
+pkgver=18.11.70.r10139.1c1a142f8
 pkgrel=1
 pkgdesc="A non-linear video editor. Following the refactoring timeline branch in git."
 arch=('i686' 'x86_64')
@@ -31,7 +31,7 @@ conflicts=('kdenlive')
 source=('git://anongit.kde.org/kdenlive#branch=refactoring_timeline')
 sha1sums=('SKIP')
 install=$pkgname.install
-#options=(debug !strip)
+options=(debug !strip)
 
 pkgver() {
   cd kdenlive
@@ -48,7 +48,7 @@ prepare(){
 build() {
   cd build
   cmake ../kdenlive \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DLIB_INSTALL_DIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
