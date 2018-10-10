@@ -1,0 +1,30 @@
+pkgbase = webkitgtk-bin
+	pkgdesc = Legacy Web content engine for GTK+ 3 (precompiled).
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://webkitgtk.org/
+	arch = x86_64
+	license = custom
+	depends = libxt
+	depends = libxslt
+	depends = sqlite
+	depends = libsoup
+	depends = enchant>=2.2
+	depends = libgl
+	depends = geoclue2
+	depends = gst-plugins-base-libs
+	depends = libsecret
+	depends = libwebp
+	depends = harfbuzz-icu
+	depends = icu>=61
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-libav
+	provides = webkitgtk=3:2.4.11
+	provides = webkitgtk2=3:2.4.11
+	options = !emptydirs
+	source = precompiled.tar.gz::https://dl.dropboxusercontent.com/s/aiw75lcurs35e7r/webkitgtk-bin.tar.gz
+	sha256sums = 1aaeee74467d90dfaef57d23a434efd9b9b3f703dc8a689ada888b9e7c0717e0
+
+pkgname = webkitgtk-bin
+
