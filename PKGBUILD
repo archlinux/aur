@@ -6,7 +6,7 @@
 pkgbase=python-powerline-git
 pkgname=('python2-powerline-git' 'python-powerline-git')
 pkgdesc='The ultimate statusline/prompt utility'
-pkgver=2.6+64+g5198b504
+pkgver=2.7+3+gd7a93938
 pkgrel=1
 epoch=1
 url='https://github.com/powerline/powerline'
@@ -42,6 +42,18 @@ package_generic() {
 
 	# Zsh Plugin
 	install -Dm644 "powerline/bindings/zsh/powerline.zsh" "$pkgdir/usr/share/zsh/site-contrib/powerline.zsh"
+
+	# Fish Plugin
+	install -Dm644 "powerline/bindings/fish/powerline-setup.fish" "$pkgdir/usr/share/fish/vendor_functions.d/powerline-setup.fish"
+
+	# Bash Plugin
+	install -Dm644 "powerline/bindings/bash/powerline.sh" "$pkgdir/usr/share/bash/powerline.sh"
+
+	# Rcsh Plugin
+	install -Dm644 "powerline/bindings/rc/powerline.rc" "$pkgdir/usr/share/rc/powerline.rc"
+
+	# Other Shells Plugin
+	install -Dm644 "powerline/bindings/shell/powerline.sh" "$pkgdir/usr/share/shell/powerline.sh"
 
 	# Tmux Configuration
 	install -Dm644 "powerline/bindings/tmux/powerline.conf" "$pkgdir/usr/share/tmux/powerline.conf"
