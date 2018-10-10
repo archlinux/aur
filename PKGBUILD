@@ -1,7 +1,7 @@
 # Maintainer: tequa
 pkgname=eltclsh
-pkgver=1.16
-pkgrel=2
+pkgver=1.17
+pkgrel=1
 epoch=
 pkgdesc="interactive shell for the TCL programming language"
 arch=('i686' 'x86_64' 'armv7h')
@@ -20,18 +20,16 @@ options=()
 install=
 changelog=
 source=(
-    "tools.patch"
     "http://distfiles.openrobots.org/eltclsh/$pkgname-$pkgver.tar.gz"
 )
 noextract=()
-md5sums=('af3e1e0eb06d1cebed7d4c1bdae5ff29'
-         'a13130374265b871ff17fdec357aee60')
+md5sums=('e698f5969970feafeff934b1294a37c0')
 validpgpkeys=()
 
-prepare() {
-	cd "$pkgname-$pkgver"
-    patch -Np1 -i "${srcdir}/tools.patch"
-}
+#prepare() {
+#	cd "$pkgname-$pkgver"
+#    # patch if necessary
+#}
 
 build() {
 	cd "$pkgname-$pkgver"
