@@ -1,4 +1,4 @@
-pkgbase = aur-search
+pkgbase = aur-search-git
 	pkgdesc = Arch Linux search tool for AUR
 	pkgver = 1.0
 	pkgrel = 1
@@ -12,5 +12,5 @@ pkgbase = aur-search
 	source = https://github.com/takiz/aur-search/archive/1.0.tar.gz
 	sha256sums = 362244aebe3a02e978bef3d95d335d19459725770369c9c8a6391a4b32282ffd
 
-pkgname = aur-search
+pkgname = aur-search-git
 
