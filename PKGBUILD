@@ -4,7 +4,7 @@
 
 pkgname=sandy-git
 pkgver=0.5r4.6dcd566
-pkgrel=2
+pkgrel=3
 pkgdesc="An ncurses text editor with an easy-to-read, hackable C source."
 arch=('i686' 'x86_64')
 url="http://tools.suckless.org/sandy"
@@ -13,17 +13,17 @@ depends=('ncurses')
 makedepends=('git')
 provides=('sandy')
 conflicts=('sandy')
-source=("git+http://github.com/antics/sandy.git")
+source=("git+https://github.com/antics/sandy.git")
 md5sums=('SKIP')
 sha1sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
+  cd ${pkgname%-git}
   printf "%sr%s.%s" "$(awk '/VERSION =/ {print $3}' config.mk)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd $pkgname
+  cd ${pkgname%-git}
 
   if [ -e "$srcdir"/config.h ];
   then
@@ -35,7 +35,7 @@ build() {
 }
 
 package() {
-  cd $pkgname
+  cd ${pkgname%-git}
   make PREFIX=/usr DESTDIR="$pkgdir" install
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
