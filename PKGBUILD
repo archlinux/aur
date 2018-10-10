@@ -8,8 +8,8 @@ pkgdesc="Kernel driver to dynamically enable/disable NVIDIA HDMI audio output in
 arch=(i686 x86_64)
 url="https://github.com/hhfeuer/nvhda.git"
 license=(GPL)
-optdepends=('nvidia: NVIDIA kernel driver'
-            ' nvidia-390xx: NVIDIA kernel driver for old devices')
+#optdepends=('nvidia: NVIDIA kernel driver'
+#            ' nvidia-390xx: NVIDIA kernel driver for old devices')
 makedepends=(cmake gcc linux-headers)
 source=("git+https://github.com/hhfeuer/nvhda.git")
 md5sums=('SKIP')

@@ -8,7 +8,6 @@ pkgbase = nvhda-dkms-git
 	license = GPL
 	makedepends = cmake
 	makedepends = gcc
-	makedepends = nvidia
 	makedepends = linux-headers
 	source = git+https://github.com/hhfeuer/nvhda.git
 	md5sums = SKIP
