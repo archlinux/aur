@@ -1,8 +1,8 @@
 # Maintainer: Oscar Morante <spacepluk at gmail dot com>
 
 _version=2018.3.0
-_build=b3
-_randomstring=cc0086a8e10c
+_build=b4
+_randomstring=44012bad7987
 _prefix=/opt/UnityBeta
 
 pkgname=unity-editor-beta-facebook
@@ -15,7 +15,7 @@ license=('custom')
 depends=('unity-editor-beta')
 makedepends=('cpio')
 source=("https://beta.unity3d.com/download/${_randomstring}/MacEditorTargetInstaller/UnitySetup-Facebook-Games-Support-for-Editor-${_version}${_build}.pkg")
-sha1sums=('907edf1dbe115dae096a4b1ae4ee082788c4a3c7')
+sha1sums=('17939ae2c0a9a9c0a89dde6f17ed1143d472706d')
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
