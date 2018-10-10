@@ -1,7 +1,7 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=nodejs-svgo
-pkgver=1.0.5
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Nodejs-based tool for optimizing SVG vector graphics files'
 arch=('any')
@@ -44,3 +44,4 @@ package() {
         -or -name 'test' -prune -exec rm -r '{}' \; \
         -or -name 'tests' -prune -exec rm -r '{}' \;
 }
+
