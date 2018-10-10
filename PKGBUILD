@@ -7,7 +7,7 @@
 # Contributor: dorphell <dorphell@archlinux.org>
 
 pkgname=mythtv-git
-pkgver=29+fixes.20180826.0b689476
+pkgver=29+fixes.20181008.951f1fe7
 pkgrel=1
 pkgdesc="A Homebrew PVR project"
 arch=('x86_64')
@@ -45,8 +45,6 @@ prepare() {
   cd "${srcdir}/mythtv/mythtv"
 
   find 'bindings/python' 'contrib' 'programs/scripts' -type f | xargs sed -i 's@^#!.*python$@#!/usr/bin/python2@'
-
-  find 'external/FFmpeg' -type f | xargs sed -i 's/x264_bit_depth/X264_BIT_DEPTH/'
 }
 
 build() {
