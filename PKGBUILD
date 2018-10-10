@@ -10,7 +10,7 @@ url="https://github.com/robert7/$_pkgname"
 arch=(x86_64)
 license=(GPL3)
 depends=(hunspell java-runtime hicolor-icon-theme poppler-qt5 tidy qt5-webkit)
-makedepends=(git)
+makedepends=(git qt5-base)
 provides=("nixnote=${pkgver%.r*}" "$_pkgname=${pkgver%.r*}")
 replaces=(nevernote nixnote nixnote-beta)
 source=("git+${url}.git")

@@ -6,6 +6,7 @@ pkgbase = nixnote2-git
 	arch = x86_64
 	license = GPL3
 	makedepends = git
+	makedepends = qt5-base
 	depends = hunspell
 	depends = java-runtime
 	depends = hicolor-icon-theme
