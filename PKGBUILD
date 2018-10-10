@@ -1,7 +1,7 @@
 # Maintainer: lsf
-# Maintainer: Adam Hose <adis@blad.is>
-pkgver=20180913.350_e9c10b9
-pkgrel=3
+# Contributor: Adam Hose <adis@blad.is>
+pkgver=20181008.359_c10e7a3
+pkgrel=2
 _pkgname=opensnitch
 pkgname=opensnitch-git
 arch=('i686' 'x86_64')
@@ -16,12 +16,10 @@ depends=('python-grpcio' 'python-grpcio-tools' 'python-pyinotify'
 provides=('opensnitch' 'opensnitch-ui')
 
 source=("git://github.com/evilsocket/opensnitch.git"
-        'nosudo.patch'
-        'pwuid.patch')
+        'nosudo.patch')
 
 md5sums=('SKIP'
-         'eb5a6c83c3816220799e678e32572705'
-         '03a48a1be821e80a64b7d392cc12db4b')
+         'eb5a6c83c3816220799e678e32572705')
 
 pkgver() {
         cd "$srcdir/$_pkgname"
@@ -51,7 +49,6 @@ build() {
         dep ensure
         cd "$GOPATH/src/opensnitch"
         patch -Np1 -i "${srcdir}/nosudo.patch"
-        patch -Np1 -i "${srcdir}/pwuid.patch"
         make
 }
 

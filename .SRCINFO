@@ -1,7 +1,7 @@
 pkgbase = opensnitch-git
 	pkgdesc = A GNU/Linux port of the Little Snitch application firewall.
-	pkgver = 20180913.350_e9c10b9
-	pkgrel = 3
+	pkgver = 20181008.359_c10e7a3
+	pkgrel = 2
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -22,10 +22,8 @@ pkgbase = opensnitch-git
 	provides = opensnitch-ui
 	source = git://github.com/evilsocket/opensnitch.git
 	source = nosudo.patch
-	source = pwuid.patch
 	md5sums = SKIP
 	md5sums = eb5a6c83c3816220799e678e32572705
-	md5sums = 03a48a1be821e80a64b7d392cc12db4b
 
 pkgname = opensnitch-git
 
