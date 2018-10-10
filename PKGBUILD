@@ -1,56 +1,47 @@
-# Maintainer: jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Contributor: josephgbr <rafael.f.f1@gmail.com>
-# Contributor: hwkiller <hwkiller@hotmail.com>
-# Contributor: TryA <tryagainprod@gmail.com>
-# Contributor: Jan de Groot <jgc@archlinux.org>
-# Contributor: dorphell <dorphell@archlinux.org>
-# Contributor: Travis Willard <travis@archlinux.org>
-# Contributor: Douglas Soares de Andrade <douglas@archlinux.org>
+# Maintainer : trya <tryagainprod@gmail.com>
+# Contributor : Johnathan Jenkins <twodopeshaggy@gmail.com>
+# Contributor : fredbezies <fredbezies at gmail dot com>
 
-_pkgbase=libpng
 pkgname=lib32-libpng14
-pkgver=1.4.19
-_apngver=1.4.19
+_realname=libpng
+pkgver=1.4.22
+_apngver=1.4.22
 pkgrel=1
-pkgdesc="A collection of routines used to create PNG format graphics files (32-bit)"
+pkgdesc="A collection of routines used to create PNG format graphics files - 1.4 version (32-bits)"
 arch=('x86_64')
 url="http://www.libpng.org/pub/png/libpng.html"
 license=('custom')
 depends=('lib32-zlib')
 makedepends=('gcc-multilib')
 options=('!libtool')
-source=("http://downloads.sourceforge.net/sourceforge/${_pkgbase}/${_pkgbase}-${pkgver}.tar.xz"
-        "http://downloads.sourceforge.net/sourceforge/libpng-apng/libpng-${_apngver}-apng.patch.gz")
-md5sums=('57f2c94dee3cd425c40f1ef5e82a9e77'
-         '946881077f55c8939ace56346a8538fa')
+source=("http://downloads.sourceforge.net/sourceforge/$_realname/libpng-${pkgver}.tar.xz"
+"http://downloads.sourceforge.net/sourceforge/libpng-apng/libpng14/$pkgver/libpng-${_apngver}-apng.patch.gz")
+md5sums=('ce716e09b0ac345f7013023bf7196d8f'
+         'd4320433418bce7d595765e9828d453f')
 build() {
   export CC="gcc -m32"
   export CXX="g++ -m32"
 
-  cd ${_pkgbase}-${pkgver}
-
-  patch -Np1 -i "${srcdir}/libpng-${_apngver}-apng.patch"
-  sed -i 's/AM_CONFIG_HEADER(config.h)/AC_CONFIG_HEADERS([config.h])/' configure.ac
-  
+  cd "${srcdir}/${_realname}-${pkgver}"
+  patch -p1 -i "${srcdir}/libpng-${_apngver}-apng.patch"
   libtoolize --force --copy
+
+  # Workaround for Autoconf 1.13.x
+  sed 's|AM_CONFIG_HEADER(config.h)|AC_CONFIG_HEADERS([config.h])|g' -i configure.ac
+
   aclocal
   autoconf
   automake --add-missing
-
   ./configure --prefix=/usr --libdir=/usr/lib32
-
-  make ECHO=echo
+  make
 }
 
 package() {
-  cd ${_pkgbase}-${pkgver}
-  make ECHO=echo DESTDIR="${pkgdir}" install
+  cd "${srcdir}/${_realname}-${pkgver}"
 
-  rm -f "${pkgdir}"/usr/lib32/{libpng.so,libpng.a,pkgconfig/libpng.pc}
-  rm -rf "${pkgdir}"/usr/{include,share,bin}
-
-  mkdir -p "${pkgdir}/usr/share/licenses"
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  make DESTDIR="${pkgdir}" install
+  rm -rf "${pkgdir}"/usr/{bin,include,share}
+  rm -rf "${pkgdir}"/usr/lib32/{libpng.so,libpng.a}
+  rm -fr "${pkgdir}"/usr/lib32/pkgconfig/libpng.pc
+  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-
