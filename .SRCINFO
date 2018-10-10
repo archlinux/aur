@@ -11,6 +11,7 @@ pkgbase = vim-youcompleteme-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = make
+	makedepends = curl
 	makedepends = go
 	makedepends = mono
 	makedepends = cargo

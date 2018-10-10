@@ -53,7 +53,7 @@ url='http://valloric.github.com/YouCompleteMe/'
 license=('GPL3')
 groups=('vim-plugins')
 depends=('boost' 'boost-libs' 'ncurses5-compat-libs' 'python' 'python2' 'nodejs' 'vim' 'clang')
-makedepends=('cmake' 'git' 'make')
+makedepends=('cmake' 'git' 'make' 'curl')
 install="install.sh"
 source=(
 'git+https://github.com/Valloric/YouCompleteMe.git' #ycm
@@ -160,7 +160,7 @@ prepare() {
 
 			if [[ "$jdtls_milestone" != "" ]] && [[ "$jdtls_buildstamp" != "" ]]; then
 				msg2 'JDTLS package version matched. Downloading...'
-				wget http://download.eclipse.org/jdtls/milestones/${jdtls_milestone}/${jdtls_package_name}-${jdtls_milestone}-${jdtls_buildstamp}.tar.gz
+				curl -LO http://download.eclipse.org/jdtls/milestones/${jdtls_milestone}/${jdtls_package_name}-${jdtls_milestone}-${jdtls_buildstamp}.tar.gz
 				tar xf ${jdtls_package_name}-${jdtls_milestone}-${jdtls_buildstamp}.tar.gz
 			else
 				error 'Mismatched JDTLS version'
@@ -219,7 +219,7 @@ build() {
 	fi
 
 	if [[ "$_gocode" == "y" ]]; then
-		export GOPATH="$GOPATH:$srcdir/YouCompleteMe/third_party/ycmd/third_party/go" 
+		export GOPATH="$GOPATH:$srcdir/YouCompleteMe/third_party/ycmd/third_party/go"
 		msg2 'Building Gocode completer...' # BuildGoCode()
 		cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/go/src/github.com/mdempsky/gocode" || exit
 		go build
