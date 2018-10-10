@@ -1,7 +1,7 @@
 # Maintainer: Andy Kluger <AndyKluger@gmail.com>
 # Contributor: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-term-custom-git
-pkgver=r1137.ffc50ab3
+pkgver=2018.10.05T06.46.02Z.68b55c13
 pkgrel=1
 pkgdesc='A slender monospace sans-serif and slab-serif typeface inspired by Pragmata Pro, M+ and PF DIN Mono.'
 arch=('any')
@@ -11,21 +11,18 @@ makedepends=('git' 'nodejs' 'npm' 'ttfautohint' 'otfcc')
 depends=('fontconfig' 'xorg-font-utils')
 conflicts=()
 provides=()
-source=(
-  "git+https://github.com/be5invis/Iosevka"
-  "private-build-plans.toml"
-)
-md5sums=(
-  'SKIP'
-  '2f29f9633449e8f381a615e334f67ef9'
-)
+source=("private-build-plans.toml")
+md5sums=('7d6b77730ff5400d69e004cc1921ea19')
 
 pkgver() {
-  cd Iosevka
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  commits=$(curl --silent https://api.github.com/repos/be5invis/Iosevka/commits)
+  tstamp=$(printf "$commits" | grep '\s*"date":' | head -1 | cut -d '"' -f 4 | sed -E 's/-|:/./g')
+  short_sha=$(printf "$commits" | grep '\s*"sha":' | head -1 | cut -d '"' -f 4 | cut -c -8)
+  printf "$tstamp.$short_sha"
 }
 
 prepare() {
+  git clone --depth=1 https://github.com/be5invis/Iosevka
   buildplans="$HOME/.config/iosevka/private-build-plans.toml"
   [[ -f "$buildplans" ]] && cp "$buildplans" ../ || echo "$buildplans not found, using pkgbuild creator's"
   cp ../private-build-plans.toml Iosevka/
