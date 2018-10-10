@@ -1,6 +1,6 @@
 pkgbase = meep-git
 	pkgdesc = Free finite-difference time-domain (FDTD) software for electromagnetic simulations (includes python interface)
-	pkgver = 1.4.3.r81.g856ccafe
+	pkgver = 1.6.0.r35.g3621a79b
 	pkgrel = 1
 	url = https://github.com/stevengj/meep
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = meep-git
 	makedepends = git
 	depends = harminv-git
 	depends = libctl-git
+	depends = mpb-git
 	depends = hdf5
 	depends = gsl
 	depends = fftw
