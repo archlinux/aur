@@ -1,0 +1,13 @@
+[Unit]
+Description=Sickrage service.
+After=network.target
+
+[Service]
+Restart=on-success
+User=sickrage
+Group=sickrage
+
+ExecStart=/usr/bin/env python2 /opt/sickrage/app/SickBeard.py --quiet --nolaunch --datadir /opt/sickrage/data
+
+[Install]
+WantedBy=multi-user.target

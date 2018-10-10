@@ -1,46 +1,45 @@
-# Maintainer: gls < ghostlovescorebg at gmail dot com>
+# Maintainer: Carlos Bellino <carlosbellino@gmail.com>
 
 pkgname=sickrage
-pkgver=4.2.5
-pkgrel=3
-pkgdesc="A PVR application that downloads and manages your TV shows. Echel0n fork of sickbeard, with tvrage, torrents and anime support."
+_gitname=Sick-Rage
+_gitauthor=Sick-Rage
+_sickrage_dir="/opt/sickrage"
+pkgver=2018.10.10
+pkgrel=2
+pkgdesc="Automatic Video Library Manager for TV Shows. It watches for new episodes of your favorite shows, and when they are posted it does its magic."
 arch=('any')
-url="https://github.com/SiCKRAGETV/SickRage"
+url="https://github.com/${_gitauthor}/${_gitname}"
 license=('GPL3')
-depends=('python2-mako' 'python2-cheetah')
-optdepends=('sabnzbd: NZB downloader'
-			'transmission-cli: supported torrent client'
-			'deluge: supported torrent client'
-			'rtorrent: supported torrent client'
-			'qbittorrent: supported torrent client'
-			'python2-notify: desktop notifications (libnotify)'
-			'unrar: rar extraction support'
-			'git: pull new versions from git')
-provides=('sickbeard-tvrage-git')
-conflicts=('sickbeard' 'sickbeard-piratebay-git' 'sickbeard-tvrage-git' 'sickrage-git')
-replaces=('sickbeard-tvrage-git')
-options=('!strip')
-install='sickrage.install'
-source=("https://github.com/SiCKRAGETV/SickRage/archive/${pkgver}.tar.gz"
-		'sickrage-system.service'
-		'sickrage-user.service'
-		'sickrage.tmpfile')
 
-md5sums=('3c13a8468d3dfe3e7ffe2412cfe29692'
-         '518016cf0c33e384b1e0977294fafa17'
-         '9fdba8dda62d8205e2cfc3268f19f32f'
-         'fa9ac7ae0b6c55033ef8fe5b7c83bb0f')
+depends=('nodejs'
+         'python2-babel'
+         'python2-cheetah'
+         'python2-mako')
+
+optdepends=('python2-notify'
+            'unrar')
+
+conflicts=(${_pkgname}
+           'pymedusa'
+           'sickbeard'
+           'sickrage-git'
+           'sickrage2-git'
+           'sickgear-git')
+
+options=('!strip')
+install=${pkgname}.install
+
+source=("https://github.com/${_gitauthor}/${_gitname}/archive/v${pkgver}-${pkgrel}.tar.gz"
+        "${pkgname}.service"
+        "${pkgname}.install")
+
+md5sums=('024e9edce2dd57aa790cc4fa5a813a70'
+         '18e8ac10a90c7eb3cc596caa02261a3e'
+         'ac4c96c5d3b7b4a86c653929c5f4aa60')
 
 package() {
-	mkdir -p "${pkgdir}/opt/sickrage"
-	chmod 775 "${pkgdir}/opt/sickrage"
-	cp -r ${srcdir}/SiCKRAGE-${pkgver}/* ${pkgdir}/opt/sickrage
+  install -Dm644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+  install -dm755 "${pkgdir}${_sickrage_dir}"/{app,data}
 
-	install -D -m644 sickrage-system.service "${pkgdir}/usr/lib/systemd/system/sickrage.service"
-	install -D -m644 sickrage-user.service "${pkgdir}/usr/lib/systemd/user/sickrage.service"
-	install -D -m644 sickrage.tmpfile "${pkgdir}/usr/lib/tmpfiles.d/sickrage.conf"
-
-	find ${pkgdir} -type d -name '.git' -exec rm -r '{}' +
+  cp -rp "${srcdir}/${_gitname}-${pkgver}-${pkgrel}"/* "${pkgdir}${_sickrage_dir}"/app/
 }
-
-# vim: set ts=2 sw=2 ft=sh noet:

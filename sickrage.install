@@ -1,41 +1,18 @@
-SB_USER=sickrage
+SICKRAGE_USER="sickrage"
+SICKRAGE_GROUP="sickrage"
+SICKRAGE_DIR="/opt/sickrage"
 
 post_install() {
-	getent passwd ${SB_USER} > /dev/null || useradd -U -d /opt/sickrage -s /bin/false -r ${SB_USER} > /dev/null
-
-	if grep -qr 'tvrage' /opt/sickbeard 2>/dev/null
-	then
-		echo "A previous installation of sickbeard-tvrage-git has been found."
-		if [[ ! -f /opt/sickrage/sickbeard.db ]]
-		then
-			echo "No sickrage database found; replicating leftover database from previous sickbeard-tvrage-git install."
-			mkdir -p /opt/sickrage/Logs
-			cp /opt/sickbeard/Logs/* /opt/sickrage/Logs/
-			cp /opt/sickbeard/*.db /opt/sickrage/
-			cp /opt/sickbeard/config.ini /opt/sickrage/
-		else
-			echo "A sickrage database was found; Ignoring old sickbeard-tvrage-git database"
-		fi
-		echo "/opt/sickbeard should be safe to remove after testing that sickrage is working as expected"
-	fi
-
-	chown -R ${SB_USER}. /opt/sickrage
-
-	# Create a directory in /run if it does not exist
-	if [ ! -d /run/sickrage ]; then
-		mkdir /run/sickrage
-		chown ${SB_USER}. /run/sickrage
-		chmod 775 /run/sickrage
-	fi
-
+    getent group ${SICKRAGE_GROUP} &> /dev/null || groupadd -r ${SICKRAGE_GROUP} &> /dev/null
+    getent passwd ${SICKRAGE_USER} &> /dev/null || useradd -r -g ${SICKRAGE_GROUP} -d ${SICKRAGE_DIR} -s /usr/bin/nologin ${SICKRAGE_USER} &> /dev/null
+    chown -R ${SICKRAGE_USER}:${SICKRAGE_GROUP} ${SICKRAGE_DIR}
 }
 
 post_upgrade() {
-	post_install
+  chown -R ${SICKRAGE_USER}:${SICKRAGE_GROUP} ${SICKRAGE_DIR}
 }
 
 post_remove() {
-	echo "Some files have not been removed because they are created by sickrage itself, e.g. the show database."
-	userdel -f ${SB_USER}
-	groupdel -f ${SB_USER}
+    userdel ${SICKRAGE_USER} &> /dev/null
+    groupdel ${SICKRAGE_GROUP} &> /dev/null || /bin/true
 }
