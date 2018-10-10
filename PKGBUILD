@@ -2,7 +2,7 @@
 
 pkgname=kubespy
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Tools for observing Kubernetes resources in real time"
 arch=('x86_64')
 url="https://github.com/pulumi/kubespy"
@@ -12,7 +12,7 @@ source_x86_64=(
     "kubespy::https://github.com/pulumi/kubespy/releases/download/v${pkgver}/kubespy-linux-amd64.tar.gz"
     )
 sha256sums_x86_64=(
-    'ea9c213760454f374c0c508b1a25cfabaaeca983a000b453cf328ca50ed0e997'
+    '04e3c2d3583e3817e95dfa5041ad97b9fca9d4349f088c3520a233cca16cac55'
     )
 options=(!strip)
 
