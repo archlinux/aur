@@ -4,7 +4,7 @@
 # CSD Patch: https://github.com/leipero/gnome-terminal-csd-patch
 _pkgname=gnome-terminal
 pkgname=gnome-terminal-csd1
-pkgver=3.30.0
+pkgver=3.30.1
 pkgrel=1
 pkgdesc="The GNOME Terminal Emulator with CSD support"
 url="https://wiki.gnome.org/Apps/Terminal"
@@ -16,7 +16,7 @@ makedepends=(intltool itstool docbook-xsl libnautilus-extension appdata-tools
 conflicts=(gnome-terminal)
 options=(!emptydirs)
 groups=(gnome)
-_commit=4b2638a4c99b991ff8a07dfd52b4397d6636fdd9  # tags/3.30.0^0
+_commit=e6aba82fb4e97fd6edfd2feb1057aeaae7c0ece5  # tags/3.30.1^0
 source=("git+https://git.gnome.org/browse/gnome-terminal#commit=$_commit"
 	"https://raw.githubusercontent.com/leipero/gnome-terminal-csd-patch/master/gnome-terminal-csd.patch")
 sha256sums=('SKIP'
