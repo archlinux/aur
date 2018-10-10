@@ -4,7 +4,7 @@
 pkgname=verifast-bin
 _pkgname=verifast
 pkgver=18.02
-pkgrel=1
+pkgrel=2
 pkgdesc="research prototype of a tool for formal verification of C and Java programs"
 arch=("any")
 url="https://github.com/verifast/verifast"
@@ -21,10 +21,11 @@ package() {
 
 	install -m644 "${srcdir}/LICENSE.md" "${pkgdir}/usr/share/licences/${_pkgname}/LICENSE"
 
-	destdir="${pkgdir}/opt/${_pkgname}"
+	_destdir="/opt/${_pkgname}"
+	destdir="${pkgdir}${_destdir}"
 	cp -r "${srcdir}/${_pkgname}-${pkgver}" "${destdir}"
 
-	ln -s "${destdir}/bin/verifast" "${pkgdir}/usr/bin/verifast"
-	ln -s "${destdir}/bin/vfide" "${pkgdir}/usr/bin/vfide"
-	ln -s "${destdir}/bin/vfide" "${pkgdir}/usr/bin/verifast-ide"
+	ln -s "${_destdir}/bin/verifast" "${pkgdir}/usr/bin/verifast"
+	ln -s "${_destdir}/bin/vfide" "${pkgdir}/usr/bin/vfide"
+	ln -s "${_destdir}/bin/vfide" "${pkgdir}/usr/bin/verifast-ide"
 }
