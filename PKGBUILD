@@ -3,22 +3,25 @@
 # Contributor: Christian Holme <cholme at gmx dot com>
 
 pkgname=idlex
-pkgver=1.13
+pkgver=1.18
 pkgrel=1
 pkgdesc="Extensions to IDLE, the Python IDE"
 arch=('any')
 url="http://idlex.sourceforge.net/"
-license=('custom:NCSA')
+license=('NCSA')
 depends=('python')
 options=(!emptydirs)
-source=("http://downloads.sourceforge.net/project/idlex/$pkgname-$pkgver.zip")
-md5sums=('ddda3e3c36b19aac8a2bf69bf7cbedf1')
+source=("https://downloads.sourceforge.net/project/idlex/$pkgname-$pkgver.zip")
+md5sums=('9efbaa83eebb95a50369028fb00a1ab9')
 
+
+build() {
+    cd "$pkgname-$pkgver"
+    python setup.py build
+}
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
-    python setup.py install --prefix="$pkgdir/usr/"
-
-    install -Dm644 license/* -t "$pkgdir/usr/share/licenses/${pkgname}"
+    cd "$pkgname-$pkgver"
+    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
 
