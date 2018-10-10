@@ -95,12 +95,17 @@ pkgver() {
 prepare() {
     cd ${_srcname}
 
-    ### Add Liquorix patches
+    ### Set package version variables
         _abiname="$(cat ${srcdir}/${_lqxpatchver}/linux-liquorix/debian/config/defines | grep 'abiname:' | sed -r 's/abiname:\s*//')"
         _minor="$(echo "$_abiname" | cut -f1 -d .)"
         _patchrel="$(echo "$_abiname" | cut -f2 -d .)"
-        msg2 "Patching sources with ${_lqxpatchname}-${_major}.${_minor}-${_patchrel}.patch"
-        patch -Np1 -i ../${_lqxpatchver}/linux-liquorix/debian/patches/zen/v${_major}.${_minor}-lqx${_patchrel}.patch
+
+    ### Add Liquorix patches
+        local _patchrx='^zen/v\d+\.\d+\.\d+-lqx\d+.patch$'
+        local _patchfolder="${srcdir}/${_lqxpatchver}/linux-liquorix/debian/patches"
+        local _patchpath="$(grep -P "$_patchrx" "$_patchfolder/series")"
+        msg2 "Patching sources with ${_patchpath#*/}"
+        patch -Np1 -i "$_patchfolder/$_patchpath"
     
     ### Setting version
         msg2 "Setting version..."
