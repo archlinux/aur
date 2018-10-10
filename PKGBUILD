@@ -9,7 +9,7 @@
 ###########################################################
 
 pkgname=i2p
-pkgver=0.9.36
+pkgver=0.9.37
 pkgrel=1
 pkgdesc="A distributed anonymous network"
 url="https://geti2p.net"
@@ -29,12 +29,12 @@ _url="https://launchpad.net/i2p/trunk/${pkgver}/+download"
 source=("${_url}/i2psource_${pkgver}.tar.bz2"{,.sig}
         'i2prouter.service' 'i2prouter.sh' 'wrapper.config' 'router.config')
 
-sha256sums=('148c0f86f000d833901e7182797f6fb6470c1b600344056c710e326789d0fd54'
+sha256sums=('0c3736572182519f4831201c72609f069229a2cc73d29ca135417c143061a18d'
             'SKIP'
             '9bb899ece87099716da29bac8b7da02916fc325699b68989e73c1fe333a6342f'
             'ea8f97e66461d591b1819eab39bbc40056b89ae12f7729b3dd9fd2ce088e5e53'
-            '72c0944cd2b04c747673a534475f2ec42c64d52fdda76714f1165c4655113de2'
-            '1527afbadcf849ef551b3b7b68d1a29eec316ee620f5320f2933f73ee9924978')
+            '315d8128969b372bb553dc2170c3e0709f52e01be77c1db1f071d83569126a70'
+            '7a4688db826c3dddb762976cd8c9a5d465255c3577069243d8e5af941a4126e2')
 
 # https://geti2p.net/en/get-involved/develop/release-signing-key
 validpgpkeys=('2D3D2D03910C6504C1210C65EE60C0C8EE7256A8')
