@@ -3,27 +3,19 @@
 
 _repouser=arkadi
 _reponame=asterisk-g72x
-_rev=3058c45eb60de96e77fec4d168572fd6b9954d7c
+_rev=1710ea938ed0a818747c8d662a3ecef266d170ce
 _shortrev=${_rev:0:12}
 pkgname=asterisk-g729
 pkgdesc="G.729 codec for Asterisk open source PBX"
 epoch=1
-pkgver=1.4.2.r2.${_shortrev}
+pkgver=1.4.2.r3.${_shortrev}
 pkgrel=1
 arch=(x86_64)
 url="http://asterisk.hosting.lv/"
 license=(IPP)
 depends=(asterisk bcg729)
-source=("${_reponame}-${pkgver}.tar.bz2"::"https://bitbucket.org/${_repouser}/${_reponame}/get/${_rev}.tar.bz2"
-		"fixes-16.0.0.diff")
-sha256sums=('81954ec0e4cce2dbe1abb3f3ec74d6ccfb4b087233442a81811029bc64a27987'
-            'd6a30dfa448b389c0015385a6a7a4f5e3a649a0ceda40f1aafca48bf54a310ee')
-
-prepare() {
-	cd "${_repouser}-${_reponame}-${_shortrev}"
-
-	patch -Np1 <../fixes-16.0.0.diff
-}
+source=("${_reponame}-${pkgver}.tar.bz2"::"https://bitbucket.org/${_repouser}/${_reponame}/get/${_rev}.tar.bz2")
+sha256sums=('c3546f416451254ff37df255f3a9412c9fab189dc80b000f7c6c30caf5338e0b')
 
 build() {
 	cd "${_repouser}-${_reponame}-${_shortrev}"
