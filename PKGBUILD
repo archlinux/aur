@@ -91,11 +91,6 @@ prepare() {
   # https://bugs.gentoo.org/661880#c21
   patch -Np1 -i ../chromium-system-icu.patch
 
-  # Remove compiler flags not supported by our system clang
-  sed -i \
-    -e '/"-Wno-ignored-pragma-optimize"/d' \
-    build/config/compiler/BUILD.gn
-
   # Force script incompatible with Python 3 to use /usr/bin/python2
   sed -i '1s|python$|&2|' third_party/dom_distiller_js/protoc_plugins/*.py
 
