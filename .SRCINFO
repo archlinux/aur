@@ -1,6 +1,6 @@
 pkgbase = pacpush
 	pkgdesc = Utility to push an Arch host\'s package and AUR caches to other hosts. Previously named pacsync
-	pkgver = 2.7.3
+	pkgver = 2.7.4
 	pkgrel = 1
 	url = https://github.com/bulletmark/pacpush
 	arch = any
@@ -15,8 +15,8 @@ pkgbase = pacpush
 	conflicts = pacsync
 	replaces = pacsync
 	backup = etc/pacpush.conf
-	source = pacpush-2.7.3.tar.gz::https://github.com/bulletmark/pacpush/archive/2.7.3.tar.gz
-	sha1sums = c6ac8586835a1e9ca8bea0f47ceb5397388d7286
+	source = pacpush-2.7.4.tar.gz::https://github.com/bulletmark/pacpush/archive/2.7.4.tar.gz
+	sha1sums = a4a65d254cd18e6813d1f1af82e452f8d9d43729
 
 pkgname = pacpush
 
