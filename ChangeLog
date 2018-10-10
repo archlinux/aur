@@ -1,3 +1,18 @@
+4.4.4 (2018-10-10 14:37:28)
+
+    Fixes a crash on disassembling files written in Go,
+    Fixes the debugger for 32bits executables.
+
+4.4.3 (2018-10-09 17:42:34)
+
+    Fixes small graphical issues,
+    Added a way to choose between the light or dark interface independently from the system settings,
+    Fixes an issue in the debugger preventing from attaching to the Finder or the Dock.
+
+4.4.2 (2018-10-04 19:41:07)
+
+    Fixes drawing issues introduced in 4.4.0.
+
 4.4.1 (2018-10-03 19:28:51)
 
     Implements most of the ARMv8.1, ARMv8.2 and ARMv8.3 extensions.
