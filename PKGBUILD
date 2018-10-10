@@ -3,7 +3,7 @@
 _llvm_branch='release_40'
 
 pkgname=intel-graphics-compiler-git
-pkgver=r633.a2b38dd
+pkgver=r732.c7dd226
 pkgrel=1
 pkgdesc='Intel Graphics Compiler for OpenCL (git version)'
 arch=('i686' 'x86_64')
@@ -58,7 +58,7 @@ build() {
 package() {
     cd build/_CPack_Packages/Linux/TXZ
     
-    cd "$(find . -maxdepth 1 -type d -name 'IGC-*')"
+    cd "$(find . -maxdepth 1 -type d -name 'intel-*')"
     
     for _dir in igc-*
     do
