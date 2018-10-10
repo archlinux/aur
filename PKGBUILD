@@ -1,8 +1,8 @@
 # Maintainer: Oscar Morante <spacepluk at gmail dot com>
 
 _version=2018.3.0
-_build=b3
-_randomstring=cc0086a8e10c
+_build=b4
+_randomstring=44012bad7987
 _prefix=/opt/UnityBeta
 
 pkgname=unity-editor-beta-doc
