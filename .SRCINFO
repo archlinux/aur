@@ -1,14 +1,14 @@
 pkgbase = googler
 	pkgdesc = Google from the command-line
-	pkgver = 3.7
+	pkgver = 3.7.1
 	pkgrel = 1
 	url = https://github.com/jarun/googler
 	arch = any
 	license = GPL3
 	depends = python
 	conflicts = googler-git
-	source = https://github.com/jarun/googler/archive/v3.7.tar.gz
-	sha256sums = 8210dfcadc6d63f8415f25ff266e4fd437f448c7ce3179a5ec2769195c207bf5
+	source = https://github.com/jarun/googler/archive/v3.7.1.tar.gz
+	sha256sums = 1ceadab40fea49a113f46807a5c7297fcf145eeaa8128e33d53aadb275377f37
 
 pkgname = googler
 
