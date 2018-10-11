@@ -8,6 +8,7 @@ pkgbase = libcd
 	license = MIT
 	makedepends = glu
 	makedepends = lsb-release
+	makedepends = lua
 	makedepends = lua51
 	makedepends = lua52
 	makedepends = lua-im
