@@ -5,7 +5,7 @@
 pkgname=sogo
 pkgdesc="groupware server built around OpenGroupware.org (OGo) and the SOPE application server"
 pkgver=4.0.2
-pkgrel=4
+pkgrel=5
 arch=('x86_64')
 url="http://www.sogo.nu/"
 license=('GPL')
@@ -40,7 +40,7 @@ sha256sums=('35ef20216ff1758a593bed69d8e8e25d23e982a970bf23a3bb2f856f2e5d2f9f'
             '0720b9ad35a05d86d794c7adbf18277ecde57ed147e96f6105acca93f19d3b8c'
             '8ee0d1ad77e998ea801053fce175d8c4a1c55dcc5ee1ff78f0a8e3797187a6a7'
             'e64ea4aa0ddf29785de8d786ab7ab09f940bfe316b6f1deeb8d04d9d16d35db1'
-            '5cdac998f1cca5b7d72aa49c25de465354586dfa53f1036ea75bb00e28eff317')
+            '25fe95cd6e55b8f9d4738e652a7a5a1bee3574de80507e2d08518cc4f74c5009')
 
 prepare() {
   cd "$srcdir/SOGo-${pkgver}"
