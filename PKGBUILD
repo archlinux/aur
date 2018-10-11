@@ -2,7 +2,7 @@
 
 pkgname=openbazaar
 pkgver=2.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Front-end Electron application for talking with the OpenBazaar daemon"
 arch=(i686 x86_64)
 url="https://github.com/OpenBazaar/openbazaar-desktop"
@@ -12,12 +12,19 @@ makedepends=(npm)
 source=("https://github.com/OpenBazaar/openbazaar-desktop/archive/v$pkgver.tar.gz"
     "$pkgname.js"
     "$pkgname.desktop"
+    ef26cd0e8014e09b3671500f92c8f1b0d0ebe340.patch
+    0bf7d134dc13540b277c10fbd1efb8013aae603e.patch
 )
 install=$pkgname.install
 options=('!strip')
 
 build(){
     cd $srcdir/$pkgname-desktop-$pkgver
+
+# Some electron fixes
+    patch -Np1 -i ../ef26cd0e8014e09b3671500f92c8f1b0d0ebe340.patch
+    patch -Np1 -i ../0bf7d134dc13540b277c10fbd1efb8013aae603e.patch
+
     npm install --silent
     npm run build
     npm prune --production
@@ -41,10 +48,11 @@ package(){
         -name "bin" -prune -exec rm -r '{}' \; \
         -or -name "example" -prune -exec rm -r '{}' \; \
         -or -name "examples" -prune -exec rm -r '{}' \; \
-        -or -name "test" -prune -exec rm -r '{}' \; \
-        -or -executable -type f -exec rm -r '{}' \;
+        -or -name "test" -prune -exec rm -r '{}' \;
 }
 
 md5sums=('572a60b5a7b89e87b039e4bea67db990'
          '122a3e23d7ecfef0a82e756cb97c3e98'
-         '2e7c7804b970baa7f9274dae47618a52')
+         '2e7c7804b970baa7f9274dae47618a52'
+         'cc30e1a4742c4e671275842e8b450916'
+         '72266e0d0f3e3137cbea70f0dade7bfc')
