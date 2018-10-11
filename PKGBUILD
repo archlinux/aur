@@ -2,9 +2,9 @@
 
 pkgbase=postgresql-src-beta
 pkgname=('postgresql-src-beta-libs' 'postgresql-src-beta-docs' 'postgresql-src-beta')
-pkgver=11beta4
+pkgver=11rc1
 _majorver=11.0
-pkgrel=6
+pkgrel=8
 CFLAGS=`echo $CFLAGS | sed s/-Ofast/-O3/`
 CFLAGS="${CFLAGS} -flto"
 CXXFLAGS=`echo $CXXFLAGS | sed s/-Ofast/-O3/`
@@ -20,7 +20,7 @@ source=(http://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar
         postgresql.pam postgresql.logrotate
         postgresql.service 
         postgresql-check-db-dir)
-sha256sums=('bb0b21f7f551cf5b3e13c05fdf8266fd0ce14db1f62e9c8d21b395ddbaf68fe4'
+sha256sums=('608c35369b79a40239663c4213267fd08d3184c3a2cd4d6ff71103ca61930609'
             '8538619cb8bea51078b605ad64fe22abd6050373c7ae3ad6595178da52f6a7d9'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
             '6abb842764bbed74ea4a269d24f1e73d1c0b1d8ecd6e2e6fb5fb10590298605e'
