@@ -1,4 +1,5 @@
-# Maintainer: Jian Zeng <anonymousknight96 at gmail dot com>
+# Maintainer: Michael Duell <mail _at_ akurei _._ me>
+# Contributor: Jian Zeng <anonymousknight96 at gmail dot com>
 
 pkgname=python-telegram-send
 _name=telegram-send
