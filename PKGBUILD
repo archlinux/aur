@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Tools to work with signals and files from GOES satellites"
 arch=('x86_64')
 url="https://github.com/pietern/goestools"
-license=('GPL')
+license=('BSD')
 makedepends=(
 'cmake'
 'git'
