@@ -1,4 +1,4 @@
-# Maintainer: kitsunyan <kitsunyan@inbox.ru>
+# Maintainer: kitsunyan <`echo a2l0c3VueWFuQGFpcm1haWwuY2MK | base64 -d`>
 
 pkgname=panasonic-mfp
 _pkgname_print=mccgdi
@@ -6,7 +6,7 @@ _pkgver_print=2.0.10
 _pkgname_scan=panamfs-scan
 _pkgver_scan=1.3.1
 pkgver=3.3.11
-pkgrel=1
+pkgrel=2
 pkgdesc='Minimal drivers pack for Panasonic multi-function printers'
 arch=('x86_64' 'i686')
 url='https://panasonic.net/cns/pcc/support/fax/common/table/linuxdriver.html'
