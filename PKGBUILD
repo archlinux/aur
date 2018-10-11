@@ -54,15 +54,15 @@ _htmldocs_enable=
 
 ### Do not edit below this line unless you know what you're doing
 
-pkgbase=linux-lqx
 # pkgname=('linux-lqx' 'linux-lqx-headers' 'linux-lqx-docs')
 _major=4.18
-pkgver=4.18.13_1
 _srcname=linux-${_major}
-pkgrel=1
 _lqxpatchname=liquorix-package
 _lqxpatchrel=16
 _lqxpatchver=${_lqxpatchname}-${_major}-${_lqxpatchrel}
+pkgbase=linux-lqx
+pkgver=4.18.13_1
+pkgrel=1
 arch=('x86_64')
 url="http://liquorix.net/"
 license=('GPL2')
