@@ -3,7 +3,7 @@
 
 pkgname=bitwarden
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Bitwarden Desktop Application'
 arch=('x86_64')
 url='https://github.com/bitwarden/desktop'
