@@ -1,5 +1,5 @@
-bitwarden/
 pkg/
 src/
-*.pkg.tar.xz
-*.deb
+bitwarden-git-repo/
+jslib-git-repo/
+bitwarden-1.*
