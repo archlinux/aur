@@ -25,7 +25,7 @@ package() {
   cd "${srcdir}/${_gitname}"
   install -Dm755 target/release/crosvm "$pkgdir/usr/bin/crosvm"
   install -d "$pkgdir/usr/share/policy/crosvm/"
-  cp -r seccomp/x86_64 "$pkgdir/usr/share/policy/crosvm/"
+  cp -r seccomp/x86_64/* "$pkgdir/usr/share/policy/crosvm/"
   install -m644 -D LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
   install -m644 -D README.md "$pkgdir"/usr/share/licenses/$pkgname/README.md
 }
