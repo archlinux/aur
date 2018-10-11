@@ -3,7 +3,7 @@
 
 pkgname="trougnouf-backgrounds"
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Wallpapers created by User:Trougnouf, with gnome integration and transitions built-in'
 url='https://commons.wikimedia.org/wiki/User:Trougnouf'
 _url='https://commons.wikimedia.org/wiki/Special:Redirect/file/'
@@ -62,7 +62,7 @@ sha256sums=('60da898f8fb43491594e7466f44294db43795d61de124f590eb2be2d42ea208a'
 	'21ca6228fa574de64975fb48306d59e98f345fcd75a2c5571d89216fa3ba8aa6'
 	'f8fc6e64a19fab1aa6a7c676ef7eb6978abed3a115e5d3a73bd2a6a583195651'
 	'decdcae46f94604ae65c0cc212e6eddd3eba16ec57613755afe5c75ab833cc1c'
-	'd830798e6d1964924f2384647951a15e7a9996f379675e4f4e738d13eea56648'
+	'c609f60318d57135e43314a81ff5a95c9b8290190d18bb5cb0d720f1616b9f4a'
 	'3411929c2eb43edbc190dbb694f32b8257b13f953278f39e54a70178ca035e1c')
 
 source=("${_images[@]/#/${_url}}")
