@@ -1,0 +1,13 @@
+pkgbase = python2-pypar-git
+	pkgdesc = A Python library that provides parallelism using the message passing interface to handle big data and highly computational problems
+	pkgver = 20181011
+	pkgrel = 1
+	url = https://github.com/daleroberts/pypar
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python2-numpy
+	depends = python2
+
+pkgname = python2-pypar-git
+
