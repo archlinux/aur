@@ -5,8 +5,8 @@
 # Contributor:  Farid <farid at archlinux-br dot org>
 
 pkgname=pdfshuffler-git
-pkgver=r100.caec35f
-pkgrel=5
+pkgver=r101.124f8e9
+pkgrel=1
 pkgdesc="Combine and modify PDF documents and thier pages. Python3, GTK3 version."
 arch=('any')
 url="http://sourceforge.net/projects/pdfshuffler/"

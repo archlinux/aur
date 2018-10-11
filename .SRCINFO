@@ -1,7 +1,7 @@
 pkgbase = pdfshuffler-git
 	pkgdesc = Combine and modify PDF documents and thier pages. Python3, GTK3 version.
-	pkgver = r100.caec35f
-	pkgrel = 5
+	pkgver = r101.124f8e9
+	pkgrel = 1
 	url = http://sourceforge.net/projects/pdfshuffler/
 	arch = any
 	license = GPL
