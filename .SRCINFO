@@ -1,0 +1,46 @@
+pkgbase = yaru-git
+	pkgdesc = Yaru default ubuntu theme
+	pkgver = 18.10.6.r7.g8b3f63d6
+	pkgrel = 1
+	url = https://github.com/ubuntu/yaru
+	arch = any
+	license = GPL3
+	makedepends = meson
+	makedepends = sassc
+	makedepends = git
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = git+https://github.com/ubuntu/yaru
+	source = 0001-gnome-shell-fix-install-dir.patch
+	sha256sums = SKIP
+	sha256sums = c84e9720c47fc86eaf89ebc647bb656b13a3e79aa0b01c46734c5db013e42bc5
+
+pkgname = yaru-sound-theme-git
+	pkgdesc = Yaru default ubuntu sound theme
+	provides = yaru-sound-theme
+	conflicts = yaru-sound-theme
+
+pkgname = yaru-gtk-theme-git
+	pkgdesc = Yaru default ubuntu gtk theme
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = gtk-engine-murrine
+	depends = gnome-themes-extra
+	provides = yaru-gtk-theme
+	conflicts = yaru-gtk-theme
+
+pkgname = yaru-gnome-shell-theme-git
+	pkgdesc = Yaru default ubuntu gnome shell theme
+	depends = gnome-shell
+	provides = yaru-gnome-shell-theme
+	conflicts = yaru-gnome-shell-theme
+
+pkgname = yaru-icon-theme-git
+	pkgdesc = Yaru default ubuntu icon theme
+	depends = hicolor-icon-theme
+	depends = gtk-update-icon-cache
+	depends = librsvg
+	provides = yaru-icon-theme
+	conflicts = yaru-icon-theme
+
