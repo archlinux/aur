@@ -1,7 +1,7 @@
 # Maintainer: Zion Nimchuk <zionnimchuk@gmail.com>
 pkgname=jgrasp
-_version=2.0.4
-_version_postfix=04
+_version=2.0.5
+_version_postfix=02
 pkgver=${_version}"_"${_version_postfix}
 pkgrel=1
 pkgdesc="Lightweight development environment written in Java."
@@ -17,7 +17,7 @@ source=(
     "jGRASP.desktop"
     "LICENSE"
 )
-sha512sums=('e7b04f0eebfba598efed6a15e54ce2b564b7b200092159e930ff24311d2017272431617ef98c2e7a887699dea45ca06e1ca237c2b1421828c676b6cf824ad3a5'
+sha512sums=('0b35d6140e3fc8562a54448339a9fab49a3493a1ecabbbd92ed194beeacf6cac28ed007e25107c5faff80767526911fc51d736190493ba57724e3a52b5c5f76e'
                         '5127e410f5123802310c6ea216b8bb82b8d650bd0540188b6d84a9c42d9f3882ce111f3eebdd73340a2c84d6d50c1ce62f947fcb21bd2154c2ddeecf91779918'
                         'c081c3418f476bec578bb01b95ebbf0b06b3c9290b9d60efc5f4b504fc9e5eba8749724ab5bd4ad5f2a4b417b7adcf6feb92ee938aa50c464c3fdcee7d2159d8'
                         'd7cb5729610ae80879d34c1869b6fff7be9e0742165cdf80c44d8e279e4f9676d423104a666625dd43d31263d359c59005d66522916a982156d81537f03e654f'
