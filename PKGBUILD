@@ -41,10 +41,10 @@ validpgpkeys=('2D3D2D03910C6504C1210C65EE60C0C8EE7256A8')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-    source /etc/profile.d/apache-ant.sh
-    source /etc/profile.d/jre.sh
 
+    export ANT_HOME=/usr/share/ant
     export ANT_OPTS="-Dfile.encoding=UTF-8"
+
     ant preppkg-linux-only
 }
 
