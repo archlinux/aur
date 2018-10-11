@@ -7,8 +7,8 @@ pkgdesc="A low-cost VHDL development system designed for the serious hardware de
 arch=('i686' 'x86_64')
 url="http://www.symphonyeda.com/products.htm"
 license=('custom')
-source=(http://www.symphonyeda.com/Downloads/Simili31b16-linux-x86.tar
-	$pkgname.sh
+source=("http://www.symphonyeda.com/Downloads/Simili31b16-linux-x86.tar"
+	"$pkgname.sh"
 )
 depends=('glibc' 'libx11')
 
@@ -29,4 +29,4 @@ package()
 }
 
 md5sums=('SKIP'
-         '1c244349f72fe7abc1574b671dcde0c6')
+'1c244349f72fe7abc1574b671dcde0c6')
