@@ -29,4 +29,7 @@ package() {
   install -Dm644 weemoji.json "${pkgdir}/usr/lib/weechat/weemoji.json"
   msg2 "To enable emoji tab completion, run the following command in weechat:"
   msg2 '    /set weechat.completion.default_template "%%(nicks)|%%(irc_channels)|%%(emoji)"'
+
+  msg2 "Installing license"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
 }
