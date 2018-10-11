@@ -3,7 +3,7 @@
 pkgname=zettlr
 pkgver=0.19.0
 pkgrel=1
-pkgdesc=""
+pkgdesc="A supercharged markdown editor that focuses on researchers in the arts and humanities: Writing academic texts and taking notes is a breeze! "
 arch=('x86_64')
 url="https://www.zettlr.com"
 license=('GPL')
