@@ -14,8 +14,8 @@ _srcname=$pkgbase
 _kernel_rel=4.20
 _branch=drm-next-${_kernel_rel}
 _kernelname=${pkgbase#linux}
-pkgver=4.20.783785.6a9624305621
-pkgrel=2
+pkgver=4.20.784281.df2fc43d09d3
+pkgrel=1
 arch=('x86_64')
 url='https://cgit.freedesktop.org/~agd5f/linux/'
 license=('GPL2')
@@ -29,7 +29,7 @@ source=("${pkgbase}::git://people.freedesktop.org/~agd5f/linux#branch=${_branch}
         "${pkgbase}.preset")
 
 sha256sums=('SKIP'
-            '7bc5fdaca0d9ec548608ac33cc3b1472ac059f5f1a622cb896963686310d1288'
+            'a8fd0cb67aaa5ad2c77a52f2eeebe0d9b610f58fbdbbd29ff1b231fba734ffde'
             'd590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 pkgver() {
