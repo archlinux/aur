@@ -1,0 +1,25 @@
+pkgbase = mingw-w64-libvirt-glib
+	pkgdesc = Glib bindings for libvirt (remote only for windows)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://libvirt.org/
+	arch = any
+	license = LGPL
+	makedepends = mingw-w64-configure
+	makedepends = gettext
+	makedepends = libxslt
+	makedepends = python
+	makedepends = perl
+	depends = mingw-w64-crt
+	depends = mingw-w64-libvirt
+	options = !strip
+	options = staticlibs
+	options = !buildflags
+	source = ftp://libvirt.org/libvirt/glib/libvirt-glib-1.0.0.tar.gz
+	source = ftp://libvirt.org/libvirt/glib/libvirt-glib-1.0.0.tar.gz.asc
+	validpgpkeys = DAF3A6FDB26B62912D0E8E3FBE86EBB415104FDF
+	sha256sums = ca9158d01cc4d9e0218f94f8c9ee04ae367d8c3b4396daaebca2c4b89a2e8a47
+	sha256sums = SKIP
+
+pkgname = mingw-w64-libvirt-glib
+
