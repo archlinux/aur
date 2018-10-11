@@ -2,7 +2,7 @@
 #Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
 pkgbase='python-common-ta-lib'
 pkgname=("python-ta-lib" "python2-ta-lib")
-pkgver=0.4.9
+pkgver=0.4.17
 pkgrel=1
 pkgdesc="Python wrapper for TA-Lib"
 url="http://github.com/mrjbq7/ta-lib"
@@ -14,7 +14,7 @@ optdepends=('cython')
 license=('BSD')
 arch=('any')
 source=("https://pypi.python.org/packages/source/T/TA-Lib/TA-Lib-$pkgver.tar.gz")
-md5sums=('2037a26dcb4d862026e342860148df61')
+md5sums=('6153596d425a5f961fed2861ebc949e0')
 
 build_python() {
     cd $srcdir/TA-Lib-$pkgver
