@@ -3,7 +3,7 @@
 
 pkgname=ebumeter
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Loudness measurement according to EBU-R128."
 arch=('i686' 'x86_64')
 url="http://kokkinizita.linuxaudio.org/linuxaudio"
@@ -14,8 +14,7 @@ md5sums=('3f933357760172bf2febb32dc2f88362')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"/source
-  sed -i "s:PREFIX = /usr/local:PREFIX = /usr:" Makefile  
-  make
+  make PREFIX=/usr
 }
 
 package() {

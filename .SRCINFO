@@ -1,7 +1,7 @@
 pkgbase = ebumeter
 	pkgdesc = Loudness measurement according to EBU-R128.
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://kokkinizita.linuxaudio.org/linuxaudio
 	arch = i686
 	arch = x86_64
