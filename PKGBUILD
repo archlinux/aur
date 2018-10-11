@@ -65,11 +65,11 @@ _rev_override="n"
 
 pkgbase=linux-clear
 _major=4.18
-_minor=12
+_minor=13
 pkgver=${_major}.${_minor}
 _srcname=linux-${_major}
-pkgrel=3
-_clr=643
+pkgrel=1
+_clr=644
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
@@ -329,7 +329,7 @@ done
 
 sha256sums=('19d8bcf49ef530cd4e364a45b4a22fa70714b70349c8100e7308488e26f1eaf1'
             'SKIP'
-            '96bb1298d6644fe48de4a35535eb1280656864fc6e4ef523b3ba29a9bc6aec92'
+            'db9a1dc5cbe0b979f170ae4a28084f6777613cf76079a7e9b62209ca3ec5de30'
             'SKIP'
             '29f9e8dc27e6c9b6488cecd7fe2394030307799e511db2d197d9e6553a7f9e40'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
