@@ -1,7 +1,7 @@
 pkgbase = cpp-coveralls
 	pkgdesc = Upload gcov results to coveralls.io
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eddyxu/cpp-coveralls
 	arch = x86_64
 	license = Apache

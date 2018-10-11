@@ -3,7 +3,7 @@
 
 pkgname=cpp-coveralls
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Upload gcov results to coveralls.io'
 arch=('x86_64')
 url='https://github.com/eddyxu/cpp-coveralls'
@@ -23,7 +23,7 @@ package() {
         cd "${srcdir}/${pkgname}-${pkgver}"
         python setup.py install \
                 -O2 --skip-build --root "${pkgdir}" --prefix=/usr
-        install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgdir}"
+        install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 # vim: set ts=8 sw=8 et:
