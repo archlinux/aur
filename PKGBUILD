@@ -76,7 +76,7 @@ build() {
 }
 
 build_plugins() {
-    source /etc/profile.d/apache-ant.sh
+    export ANT_HOME=/usr/share/ant
     export ANT_OPTS="-Dfile.encoding=UTF-8"
 
     for plugin in ${_plugins[@]}; do
