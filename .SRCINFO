@@ -1,9 +1,8 @@
 pkgbase = crosvm-git
 	pkgdesc = The Chrome OS Virtual Machine Monitor
-	pkgver = r317.10668e63
+	pkgver = r459.9357ceab
 	pkgrel = 1
 	url = https://chromium.googlesource.com/chromiumos/platform/crosvm
-	arch = i686
 	arch = x86_64
 	license = custom:chromiumos
 	makedepends = cargo
