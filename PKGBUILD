@@ -1,6 +1,6 @@
 # Maintainer: reimu <r2hkri at gmail com>
 pkgname=swayblocks
-pkgver=0.0.6
+pkgver=r45.9257a84
 pkgrel=1
 pkgdesc="another block manager for i3bar/swaybar"
 arch=("i686" "x86_64")
@@ -17,6 +17,11 @@ optdepends=(
   "alsa-utils: for volume script")
 source=("git+$url")
 md5sums=("SKIP")
+
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
   cd "$srcdir/$pkgname"
