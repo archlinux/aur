@@ -13,7 +13,7 @@
 
 pkgname=docker-git
 _pkgname=docker
-pkgver=r34007.3a9ab941ad
+pkgver=r35865.1f48759ad1
 pkgrel=1
 epoch=1
 pkgdesc='Pack, ship and run any application as a lightweight container.'
@@ -22,7 +22,7 @@ url="https://github.com/docker/docker"
 license=('Apache License Version 2.0')
 depends=('bridge-utils' 'iproute2' 'sqlite' 'systemd')
 optdepends=('vndr' 'device-mapper')
-makedepends=('glibc' 'git' 'go' 'btrfs-progs' 'go-md2man' 'apparmor-libapparmor' 'cmake' 'device-mapper')
+makedepends=('glibc' 'git' 'go' 'btrfs-progs' 'go-md2man' 'cmake' 'device-mapper')
 provides=('docker')
 conflicts=('docker' 'containerd' 'containerd-git' 'runc' 'runc-git')
 replaces=('docker' 'containerd' 'containerd-git' 'runc' 'runc-git')
@@ -59,26 +59,6 @@ prepare() {
   mkdir -p "$srcdir/go/src/github.com/moby"
   mkdir -p "$srcdir/go/src/github.com/containerd"
   mkdir -p "$srcdir/go/src/github.com/opencontainers"
-
-  # use specific commits for upstream repositories
-  # https://github.com/docker/docker/blob/master/hack/dockerfile/binaries-commits
-  . "$srcdir/moby/hack/dockerfile/binaries-commits"
-  pushd "$srcdir/runc" >/dev/null
-    msg2 "checking out runc ($RUNC_COMMIT)"
-    git checkout -q "$RUNC_COMMIT"
-  popd >/dev/null
-  pushd "$srcdir/containerd" >/dev/null
-    msg2 "checking out containerd ($CONTAINERD_COMMIT)"
-    git checkout -q "$CONTAINERD_COMMIT"
-  popd >/dev/null
-  pushd "$srcdir/libnetwork" >/dev/null
-    msg2 "checking out libnetwork ($LIBNETWORK_COMMIT)"
-    git checkout -q "$LIBNETWORK_COMMIT"
-  popd >/dev/null
-  pushd "$srcdir/tini" >/dev/null
-    msg2 "checking out tini ($TINI_COMMIT)"
-    git checkout -q "$TINI_COMMIT"
-  popd >/dev/null
 
   # apply any patches for runc
   pushd "$srcdir/runc" >/dev/null
@@ -146,7 +126,7 @@ build() {
   pushd tini >/dev/null
     cmake .
     make tini-static
-  popd >/dev/null    
+  popd >/dev/null
 }
 
 # TODO: complete tests for all
@@ -226,4 +206,3 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-
