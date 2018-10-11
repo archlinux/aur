@@ -10,7 +10,7 @@ arch=('any')
 url="https://github.com/wee-slack/${pkgname%-git}"
 license=('MIT')
 depends=(
-  'python-websocket-client'
+  'python2-websocket-client'
   'weechat'
 )
 makedepends=('git')
