@@ -2,7 +2,7 @@
 
 pkgname=minijail-git
 _gitname=minijail
-pkgver=r1039.5423421
+pkgver=r1280.f6423bb
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Tool to run a process in jailed environment'
@@ -12,11 +12,9 @@ depends=('libcap')
 provides=('minijail')
 conflicts=('minijail')
 makedepends=('git' 'make')
-sha256sums=('SKIP'
-            '551be8c810a93273ad47797e74cfe96d6e2338901547d93a14f42e3d238749b1')
+sha256sums=('SKIP')
 
-source=('git+https://android.googlesource.com/platform/external/minijail'
-        'signal_handler.patch')
+source=('git+https://android.googlesource.com/platform/external/minijail')
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
@@ -25,7 +23,6 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_gitname}"
-  patch -p1 < ${srcdir}/signal_handler.patch
   make
 }
 

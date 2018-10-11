@@ -1,6 +1,6 @@
 pkgbase = minijail-git
 	pkgdesc = Tool to run a process in jailed environment
-	pkgver = r1039.5423421
+	pkgver = r1280.f6423bb
 	pkgrel = 1
 	url = https://android.googlesource.com/platform/external/minijail/
 	arch = i686
@@ -12,9 +12,7 @@ pkgbase = minijail-git
 	provides = minijail
 	conflicts = minijail
 	source = git+https://android.googlesource.com/platform/external/minijail
-	source = signal_handler.patch
 	sha256sums = SKIP
-	sha256sums = 551be8c810a93273ad47797e74cfe96d6e2338901547d93a14f42e3d238749b1
 
 pkgname = minijail-git
 
