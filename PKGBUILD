@@ -46,7 +46,7 @@ _localmodcfg=
 # a new kernel is released, but again, convenient for package bumps.
 _use_current=
 
-### Disable MUQSS 
+### Disable MUQSS
 _muqss_disable=
 
 ### Enable htmldocs (increases compile time)
@@ -86,7 +86,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux.preset')
 
 _kernelname=${pkgbase#linux}
-: ${_kernelname:=-lqx} 
+: ${_kernelname:=-lqx}
 
 pkgver() {
   printf ${_major}.${_minor}_${_patchrel}
@@ -106,7 +106,7 @@ prepare() {
         local _patchpath="$(grep -P "$_patchrx" "$_patchfolder/series")"
         msg2 "Patching sources with ${_patchpath#*/}"
         patch -Np1 -i "$_patchfolder/$_patchpath"
-    
+
     ### Setting version
         msg2 "Setting version..."
         scripts/setlocalversion --save-scmversion
@@ -131,7 +131,7 @@ prepare() {
     ### Prepared version
         make -s kernelrelease > ../version
         msg2 "Prepared %s version %s" "$pkgbase" "$(<../version)"
-        
+
     ### Optionally use running kernel's config
 	# code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
 	if [ -n "$_use_current" ]; then
@@ -145,14 +145,14 @@ prepare() {
 			warning "Aborting!"
 			exit
 		fi
-	fi    
+	fi
 
     ### Disable MUQSS
         if [ -n "$_muqss_disable" ]; then
         msg2 "Disabling MUQSS..."
         sed -i -e s'/^CONFIG_SCHED_MUQSS=y/# CONFIG_SCHED_MUQSS is not set/' ./.config	
         fi
-	
+
     ### Optionally disable NUMA for 64-bit kernels only
         # (x86 kernels do not support NUMA)
         if [ -n "$_NUMAdisable" ]; then
@@ -184,19 +184,15 @@ prepare() {
 	fi
 
     ### Running make nconfig
-	
 	[[ -z "$_makenconfig" ]] ||  make nconfig
-	
+
     ### Running make menuconfig
-	
 	[[ -z "$_makemenuconfig" ]] || make menuconfig
-	
+
     ### Running make xconfig
-	
 	[[ -z "$_makexconfig" ]] || make xconfig
-	
+
     ### Running make gconfig
-	
 	[[ -z "$_makegconfig" ]] || make gconfig
 
     ### Save configuration for later reuse
@@ -264,7 +260,7 @@ _package() {
   sed "$subst" ../90-linux.hook | install -Dm644 /dev/stdin \
     "$pkgdir/usr/share/libalpm/hooks/90-${pkgbase}.hook"
   sed "$subst" ../99-linux.hook | install -Dm644 /dev/stdin \
-    "$pkgdir/usr/share/libalpm/hooks/99-${pkgbase}.hook"  
+    "$pkgdir/usr/share/libalpm/hooks/99-${pkgbase}.hook" 
 
   msg2 "Fixing permissions..."
   chmod -Rc u=rwX,go=rX "$pkgdir"
@@ -348,7 +344,7 @@ _package-headers() {
   msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase-$pkgver"
-  
+
   msg2 "Fixing permissions..."
   chmod -Rc u=rwX,go=rX "$pkgdir"
 }
@@ -357,7 +353,7 @@ _package-headers() {
 _package-docs() {
     pkgdesc='Kernel hackers manual - HTML documentation that comes with the linux-lqx.'
     depends=('linux-lqx')
-  
+
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
   cd $_srcname
@@ -396,15 +392,17 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('950eb85ac743b291afe9f21cd174d823e25f11883ee62cecfbfff8fe8c5672aae707654b1b8f29a133b1f2e3529e63b9f7fba4c45d6dacccc8000b3a9a9ae038'
-            'SKIP'
-            '7a64d087ba964b01a1da17ad0cecf2ddcb83208454dde4e06fc1aef4fe4f88175bdb34b20fb041815f1c8a1e25e077726afc78bd5277c3334c89060b8852f33b'
-            '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
-            '4a8b324aee4cccf3a512ad04ce1a272d14e5b05c8de90feb82075f55ea3845948d817e1b0c6f298f5816834ddd3e5ce0a0e2619866289f3c1ab8fd2f35f04f44'
-            '6346b66f54652256571ef65da8e46db49a95ac5978ecd57a507c6b2a28aee70bb3ff87045ac493f54257c9965da1046a28b72cb5abb0087204d257f14b91fd74'
-            '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf')
-            
+sha512sums=(
+    '950eb85ac743b291afe9f21cd174d823e25f11883ee62cecfbfff8fe8c5672aae707654b1b8f29a133b1f2e3529e63b9f7fba4c45d6dacccc8000b3a9a9ae038'
+    'SKIP'
+    '7a64d087ba964b01a1da17ad0cecf2ddcb83208454dde4e06fc1aef4fe4f88175bdb34b20fb041815f1c8a1e25e077726afc78bd5277c3334c89060b8852f33b'
+    '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
+    '4a8b324aee4cccf3a512ad04ce1a272d14e5b05c8de90feb82075f55ea3845948d817e1b0c6f298f5816834ddd3e5ce0a0e2619866289f3c1ab8fd2f35f04f44'
+    '6346b66f54652256571ef65da8e46db49a95ac5978ecd57a507c6b2a28aee70bb3ff87045ac493f54257c9965da1046a28b72cb5abb0087204d257f14b91fd74'
+    '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
+)
+
 validpgpkeys=(
-              'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
-              '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
-             )
+    'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
+    '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
+)
