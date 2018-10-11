@@ -171,8 +171,11 @@ EOF
 }
 
 run_cleanuphook() {
-    # Remove key if still present
-    rm -f "$ckeyfile"
+    # Securely delete key if still present
+    if [ -f "$ckeyfile" ]; then
+        dd if=/dev/urandom of="$ckeyfile" bs=$(stat --printf="%s" "$ckeyfile") count=1 conv=notrunc 2>&1 >/dev/null
+        rm -f "$ckeyfile"
+    fi
 }
 
 # vim: set ft=sh ts=4 sw=4 et:
