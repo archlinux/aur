@@ -1,15 +1,14 @@
 # Maintainer: Drew DeVault <sir@cmpwn.com>
 pkgname=mako
 pkgver=1.1
-pkgrel=5
+pkgrel=6
 license=('MIT')
 pkgdesc='Lightweight notification daemon for Wayland'
-makedepends=("meson" "scdoc")
+makedepends=("meson" "scdoc" "wayland-protocols")
 depends=(
 	"pango"
 	"cairo"
 	"wayland"
-	"wayland-protocols"
 )
 arch=("i686" "x86_64")
 url='http://mako-project.org'
