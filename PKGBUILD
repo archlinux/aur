@@ -2,7 +2,7 @@
 
 _pkgname=yuzu
 pkgname=$_pkgname-canary-git
-pkgver=r8350.8cc4cf99e
+pkgver=r8983.60aadffed
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo Switch emulator/debugger"
 arch=('i686' 'x86_64')
