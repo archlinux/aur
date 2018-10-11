@@ -1,6 +1,6 @@
 pkgbase = elementary-code-git
 	pkgdesc = Code editor designed for elementary OS
-	pkgver = latest
+	pkgver = 2.4.1.r950.gbaf32f3c
 	pkgrel = 1
 	url = https://github.com/elementary/code
 	arch = i686
@@ -9,6 +9,8 @@ pkgbase = elementary-code-git
 	arch = armv7h
 	license = GPL3
 	makedepends = editorconfig-core-c
+	makedepends = git
+	makedepends = libgit2-glib
 	makedepends = meson
 	makedepends = vala
 	depends = gtk3
