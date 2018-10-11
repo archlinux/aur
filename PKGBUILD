@@ -5,7 +5,7 @@
 # Contributor: N. I. - izmntuk
 
 pkgname=dar
-pkgver=2.5.14
+pkgver=2.5.17
 pkgrel=2
 pkgdesc='A full featured command-line backup tool, short for Disk ARchive'
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ depends=('libgcrypt' 'zlib' 'lzo' 'bzip2' 'xz' 'attr')
 optdepends=('perl: for running some samples')
 makedepends=('doxygen')
 source=("http://downloads.sourceforge.net/project/dar/dar/${pkgver}/dar-${pkgver}.tar.gz")
-sha512sums=('035866bd891ff12adbcd18a78fa6f2475c232182b24e35aaf7c3c41c30e6298c4e655ea5a93b9be050c6dee332e2b7913f75e3d399cbee96a1f1d3101d33fbbc')
+sha512sums=('f465669ed80ebd97a59835d64949f5c555c1174b128f037d9daf916ff1f770914627b46d72d350b937d571d2453a622f5b3bd7ea8e1992fa675d0d013df82410')
 backup=('etc/darrc')
 options=('!libtool')
 
