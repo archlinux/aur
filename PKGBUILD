@@ -14,7 +14,7 @@ _srcname=$pkgbase
 _kernel_rel=4.20
 _branch=drm-next
 _kernelname=${pkgbase#linux}
-pkgver=4.20.784270.62e681f7dcab
+pkgver=4.20.784297.66c9e573ea75
 pkgrel=1
 arch=('x86_64')
 url='https://cgit.freedesktop.org/drm/drm'
@@ -29,7 +29,7 @@ source=("${pkgbase}::git://anongit.freedesktop.org/drm/drm#branch=${_branch}"
         "${pkgbase}.preset")
 
 sha256sums=('SKIP'
-            '9113349e2fb194e0557831ec305182d955a254e80b5251d7d526a81c253c3cc6'
+            'fe0f138df3b51216e91c35a7fce1c865303c9b3d8ffd6ae981538c3e14bd9013'
             'd590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 pkgver() {
