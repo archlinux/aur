@@ -1,7 +1,7 @@
 # Maintainer: Antoni Kepinski <a[at]kepinski[dot]me>
 pkgname=archfetch
-pkgver=1.0.7
-pkgrel=5
+pkgver=1.0.8
+pkgrel=6
 pkgdesc="Simple CLI system information tool for Arch Linux."
 url="https://github.com/xxczaki/archfetch/"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ makedepends=('git')
 _gitroot="git://github.com/xxczaki/archfetch.git"
 _gitname="archfetch"
 
-package() {	
+package() {
 	cd "${PKGMK_SOURCE_DIR}"
 
 	if cd "${pkgname}"; then
@@ -21,6 +21,5 @@ package() {
 		cd "${pkgname}"
 	fi
 
-	sudo install -Dm755 archfetch "${PKG}/usr/bin/archfetch"
-	echo 'archfetch successfully installed!'
+	sudo make install
 }

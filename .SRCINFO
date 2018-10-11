@@ -1,7 +1,7 @@
 pkgbase = archfetch
 	pkgdesc = Simple CLI system information tool for Arch Linux.
-	pkgver = 1.0.7
-	pkgrel = 5
+	pkgver = 1.0.8
+	pkgrel = 6
 	url = https://github.com/xxczaki/archfetch/
 	arch = i686
 	arch = x86_64
