@@ -1,7 +1,0 @@
-post_install() {
-  echo "Please launch sonata to execute the software (after logout)"    
-}
-
-
-
-
