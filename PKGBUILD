@@ -98,10 +98,10 @@ package() {
     'ATTRS{idVendor}=="'"${device[0]}"'",' \
     'ATTRS{idProduct}=="'"${device[1]}"'",' \
     'MODE="0664",' \
-    'GROUP="scanner",' \
+    'GROUP="lp",' \
     'ENV{libsane_matched}="yes"'
   done \
-  > "$pkgdir/usr/lib/udev/rules.d/49-sane-panamfs.rules"
+  > "$pkgdir/usr/lib/udev/rules.d/52-sane-panamfs.rules"
 
   install -Dm644 'Version.html' "$pkgdir/usr/share/licenses/$pkgname/LICENSE-${_pkgname_scan}"
 }
