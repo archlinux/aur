@@ -1,0 +1,22 @@
+pkgbase = cpp-coveralls-git
+	pkgdesc = Upload gcov results to coveralls.io
+	pkgver = 20181011
+	pkgrel = 1
+	url = https://github.com/eddyxu/cpp-coveralls
+	arch = x86_64
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	depends = python-future
+	depends = python-certifi
+	depends = python-cryptography
+	depends = python-pyopenssl
+	depends = python-ipaddress
+	provides = cpp-coveralls
+	conflicts = cpp-coveralls
+	source = git+https://github.com/eddyxu/cpp-coveralls.git
+	sha256sums = SKIP
+
+pkgname = cpp-coveralls-git
+
