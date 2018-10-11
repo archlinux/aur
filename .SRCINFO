@@ -1,0 +1,9 @@
+pkgbase = yubikey-manager-completion
+	pkgdesc = bash and zsh completion for ykman
+	pkgver = 0.1.0
+	pkgrel = 1
+	arch = any
+	license = GPL3
+	depends = yubikey-manager
+
+pkgname = yubikey-manager-completion
