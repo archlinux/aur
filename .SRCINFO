@@ -1,0 +1,16 @@
+pkgbase = python-gdf-formatter
+	pkgdesc = A simple and flexible Python library to create and format your graphs in GDF format.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/GabrielTrettel/GDF_Formatter
+	arch = any
+	license = MPL
+	makedepends = python-setuptools
+	depends = python>=3
+	source = https://github.com/GabrielTrettel/GDF_Formatter/archive/v.1.0.1.tar.gz
+	source = READMEPYPI.md
+	sha256sums = 4118cf662a3462120b26220838290ed98ee5686c0aae0ce11ab611aca7a037ba
+	sha256sums = e22e54d86f432183e49148c34774644d347e4a2052b8ba6a9f3d447f05e1ac8c
+
+pkgname = python-gdf-formatter
+
