@@ -1,11 +1,11 @@
 # Maintainer: Drew DeVault <sir@cmpwn.com>
 pkgname=mako-git
 _pkgname=mako
-pkgver=r59.4e4e960
+pkgver=r268.23d9e4a
 pkgrel=1
 license=('MIT')
 pkgdesc='Lightweight notification daemon for Wayland'
-makedepends=("meson" "scdoc")
+makedepends=("meson" "scdoc" "wayland-protocols")
 depends=(
 	"pango"
 	"cairo"
