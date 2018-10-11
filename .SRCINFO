@@ -1,0 +1,19 @@
+pkgbase = python-bcbio-nextgen
+	pkgdesc = Best-practice pipelines for fully automated high throughput sequencing analysis
+	pkgver = 1.1.0
+	pkgrel = 00
+	url = https://github.com/bcbio/bcbio-nextgen
+	arch = any
+	license = custom:MIT
+	makedepends = python-pip
+	makedepends = python-wheel
+	depends = python
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/3a/6b/6b36aeb84776855b491fc09e3c5fe5a6cfcf1473d6b5ef33d298551b434b/bcbio-nextgen-1.1.0.tar.gz
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = fe5a6000df0447f749b7642255a0d1ee
+	md5sums = d6ba2d0d001affb5993dad4206b84d64
+
+pkgname = python-bcbio-nextgen
+
