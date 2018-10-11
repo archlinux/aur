@@ -13,6 +13,7 @@ depends=(
   'python-websocket-client'
   'weechat'
 )
+makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+${url}.git")
