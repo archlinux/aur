@@ -1,6 +1,6 @@
 pkgname=mingw-w64-pkg-config
 pkgver=2
-pkgrel=3
+pkgrel=4
 pkgdesc='Support pkg-config script (does not depend on any particular version of pkg-config). Useful for pkg-config powered cross-compiling with mingw-w64, see http://tinyurl.com/pkg-config-cross for more info'
 arch=('any')
 url='http://pkg-config.freedesktop.org/'
@@ -8,7 +8,7 @@ license=('zlib')
 depends=('pkg-config' 'mingw-w64-crt')
 source=('mingw-pkgconfig.sh')
 install='mingw-w64-pkg-config.install'
-md5sums=('ac8ea293618b2b94d7db14b52db5cf72')
+md5sums=('SKIP')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
