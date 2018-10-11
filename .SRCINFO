@@ -1,6 +1,6 @@
 pkgbase = wine-staging-git
 	pkgdesc = A compatibility layer for running Windows programs (staging branch, git version)
-	pkgver = 3.8.r0.geb684dd9+wine.3.8.r0.g7280f7fb74
+	pkgver = 3.17.r13.g4beed4a3+wine.3.17.r144.g9f05343013
 	pkgrel = 1
 	url = https://www.wine-staging.com/
 	install = wine-staging-git.install
@@ -138,10 +138,10 @@ pkgbase = wine-staging-git
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	provides = wine=3.8.r0.g7280f7fb74
-	provides = wine-wow64=3.8.r0.g7280f7fb74
-	provides = wine-git=3.8.r0.g7280f7fb74
-	provides = wine-staging=3.8.r0.geb684dd9
+	provides = wine=3.17.r144.g9f05343013
+	provides = wine-wow64=3.17.r144.g9f05343013
+	provides = wine-git=3.17.r144.g9f05343013
+	provides = wine-staging=3.17.r13.g4beed4a3
 	conflicts = wine
 	conflicts = wine-wow64
 	conflicts = wine-git
@@ -149,12 +149,10 @@ pkgbase = wine-staging-git
 	options = staticlibs
 	source = wine-git::git://source.winehq.org/git/wine.git
 	source = wine-staging-git::git+https://github.com/wine-staging/wine-staging.git
-	source = harmony-fix.diff
 	source = 30-win32-aliases.conf
 	source = wine-binfmt.conf
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 50ccb5bd2067e5d2739c5f7abcef11ef096aa246f5ceea11d2c3b508fc7f77a1
 	sha256sums = 9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7
 	sha256sums = 6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4
 

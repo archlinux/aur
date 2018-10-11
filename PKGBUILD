@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=wine-staging-git
-pkgver=3.8.r0.geb684dd9+wine.3.8.r0.g7280f7fb74
+pkgver=3.17.r13.g4beed4a3+wine.3.17.r144.g9f05343013
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (staging branch, git version)'
 arch=('i686' 'x86_64')
@@ -83,12 +83,10 @@ options=('staticlibs')
 install="$pkgname".install
 source=('wine-git'::'git://source.winehq.org/git/wine.git'
         "$pkgname"::'git+https://github.com/wine-staging/wine-staging.git'
-        'harmony-fix.diff'
         '30-win32-aliases.conf'
         'wine-binfmt.conf')
 sha256sums=('SKIP'
             'SKIP'
-            '50ccb5bd2067e5d2739c5f7abcef11ef096aa246f5ceea11d2c3b508fc7f77a1'
             '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
             '6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4')
 
@@ -131,9 +129,6 @@ prepare() {
     
     # fix path of opencl headers
     sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
-    
-    # freetype harmony fix
-    patch -Np1 -i "${srcdir}/harmony-fix.diff"
 }
 
 pkgver() {
