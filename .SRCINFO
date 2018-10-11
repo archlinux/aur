@@ -1,0 +1,21 @@
+pkgbase = goestools-git
+	pkgdesc = Tools to work with signals and files from GOES satellites
+	pkgver = r334.bdb9673
+	pkgrel = 1
+	url = https://github.com/pietern/goestools
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	makedepends = opencv
+	makedepends = zlib
+	depends = airspy
+	depends = opencv
+	depends = rtl-sdr
+	provides = goestools-git
+	conflicts = goestools-git
+	source = git+https://github.com/pietern/goestools.git
+	sha1sums = SKIP
+
+pkgname = goestools-git
+
