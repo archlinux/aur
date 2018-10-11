@@ -10,7 +10,6 @@ url='https://github.com/bitwarden/desktop'
 license=('GPL-3.0')
 makedepends=('nodejs' 'npm')
 depends=('alsa-lib' 'electron' 'gconf' 'gtk2' 'libnotify' 'libsecret' 'libxss' 'libxtst' 'nspr' 'nss')
-provides=('bitwarden')
 conflicts=('bitwarden-git' 'bitwarden-bin')
 options=('!strip' '!emptydirs')
 source=("${pkgname}-git-repo::git+https://github.com/bitwarden/desktop.git#tag=v${pkgver}"

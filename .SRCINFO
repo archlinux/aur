@@ -17,7 +17,6 @@ pkgbase = bitwarden
 	depends = libxtst
 	depends = nspr
 	depends = nss
-	provides = bitwarden
 	conflicts = bitwarden-git
 	conflicts = bitwarden-bin
 	options = !strip
