@@ -4,8 +4,8 @@
 
 pkgname=obs-studio-vaapi
 _srcname=obs-studio
-pkgver=21.1.2
-pkgrel=3
+pkgver=22.0.2
+pkgrel=1
 pkgdesc="Free, open source software for live streaming and recording"
 arch=('x86_64')
 url="https://obsproject.com"
@@ -21,15 +21,14 @@ optdepends=('libfdk-aac: FDK AAC codec support'
             'python: scripting support'
             'vlc: VLC Media Source support')
 source=($_srcname-$pkgver.tar.gz::https://github.com/jp9000/obs-studio/archive/$pkgver.tar.gz
-        "https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/1256.patch")
-sha256sums=('d6eb32d4ff65879945fc19a639b3ae14a55e6034a45b036e00e5f3dbce0e3d4d'
-            '2c6f3e8624a05a6f5de1adc2a534ee85d7af6a6d489938702ca141fe1619b0f5')
+        "https://github.com/obsproject/obs-studio/commit/a64ae11bce8ed9a7c8f1deba3338f77595dba903.patch")
+sha256sums=('8712becf41f6e4b801aeaea0ab2c3ec98da3356c60853971d0a9730d3281cebe'
+            '0afe5444e5ab5514905f93b2758d525233e48b80463a51fabf44a5821265a6cd')
 
 prepare() {
   cd $_srcname-$pkgver
 
-  patch -Np1 -i "${srcdir}/1256.patch"
-  sed -i '15i #include <QAction>' UI/frontend-plugins/frontend-tools/scripts.cpp  
+  patch -Np1 -i "${srcdir}/a64ae11bce8ed9a7c8f1deba3338f77595dba903.patch"
 }
 
 build() {
