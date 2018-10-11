@@ -1,6 +1,6 @@
 pkgbase = wine-git
 	pkgdesc = A compatibility layer for running Windows programs (git version)
-	pkgver = 3.8.r0.g7280f7fb74
+	pkgver = 3.17.r156.gecea7a94c9
 	pkgrel = 1
 	url = https://www.winehq.org/
 	install = wine-git.install
@@ -124,9 +124,9 @@ pkgbase = wine-git
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	provides = wine=3.8.r0.g7280f7fb74
-	provides = bin32-wine=3.8.r0.g7280f7fb74
-	provides = wine-wow64=3.8.r0.g7280f7fb74
+	provides = wine=3.17.r156.gecea7a94c9
+	provides = bin32-wine=3.17.r156.gecea7a94c9
+	provides = wine-wow64=3.17.r156.gecea7a94c9
 	conflicts = wine
 	conflicts = wine-staging
 	conflicts = wine-staging-git
@@ -135,11 +135,9 @@ pkgbase = wine-git
 	replaces = bin32-wine
 	options = staticlibs
 	source = wine-git::git://source.winehq.org/git/wine.git
-	source = harmony-fix.diff
 	source = 30-win32-aliases.conf
 	source = wine-binfmt.conf
 	sha256sums = SKIP
-	sha256sums = 50ccb5bd2067e5d2739c5f7abcef11ef096aa246f5ceea11d2c3b508fc7f77a1
 	sha256sums = 9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7
 	sha256sums = 6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4
 
