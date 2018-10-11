@@ -2,7 +2,7 @@
 # This particular update is brought to you by gaalcaras (https://keybase.io/gaalcaras)
 pkgname=turtl
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Turtl lets you take notes, bookmark websites, and store documents for sensitive projects."
 arch=('i686' 'x86_64')
 url="https://turtlapp.com/"
@@ -29,9 +29,5 @@ package() {
   install -Dm644 ../"$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
   ln -s "/opt/turtl/turtl" "${pkgdir}/usr/bin/turtl"
   chmod +r -R "${pkgdir}/opt/turtl/"
-  chmod +rx "${pkgdir}/opt/turtl/turtl" "${pkgdir}/opt/turtl/turtl-bin" \
-    "${pkgdir}/opt/turtl/chromedriver" \
-    "${pkgdir}/opt/turtl/nwjc" ${pkgdir}/opt/turtl/nacl* \
-    "${pkgdir}/opt/turtl/payload" "${pkgdir}/opt/turtl/lib" \
-    "${pkgdir}/opt/turtl/locales" "${pkgdir}/opt/turtl/pnacl"
+  chmod +rx "${pkgdir}/opt/turtl/turtl"
 }
