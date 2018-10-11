@@ -2,7 +2,7 @@
 
 _pkgname=uberwriter
 pkgname=$_pkgname-git
-pkgver=latest
+pkgver=2.1.2.r0.g2b25681
 pkgrel=1
 pkgdesc='A distraction free Markdown editor for GNU/Linux made with GTK+'
 arch=('any')
@@ -20,7 +20,7 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd $_pkgname
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {

@@ -1,6 +1,6 @@
 pkgbase = uberwriter-git
 	pkgdesc = A distraction free Markdown editor for GNU/Linux made with GTK+
-	pkgver = latest
+	pkgver = 2.1.2.r0.g2b25681
 	pkgrel = 1
 	url = http://uberwriter.github.io/uberwriter/
 	arch = any
