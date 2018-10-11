@@ -3,8 +3,8 @@
 
 pkgname='python-dbus-client-gen'
 _srcname='dbus-python-client-gen'
-pkgver=0.6
-pkgrel=8
+pkgver=0.7
+pkgrel=1
 pkgdesc='A Python Library for Generating dbus-python Client Code'
 arch=('any')
 license=('MPL2')
@@ -12,14 +12,10 @@ url='https://stratis-storage.github.io/'
 depends=('python-dbus' 'dbus-client-gen' 'python-into-dbus')
 makedepends=('git' 'python-pylint')
 checkdepends=('python-nose')
-provides=("${pkgname}")
-conflicts=("${pkgname}")
 source=(
   "${_srcname}-${pkgver}.tar.gz::https://github.com/stratis-storage/${_srcname}/archive/v${pkgver}.tar.gz"
 )
-sha256sums=(
-  '6fa334ce36c220f018f89cefa560b43ae7ec36a02bba3ab8bec2e4a4103e35e0'
-)
+sha256sums=('9db0aa6692f5bb1496b5bd436aae1aa2b3f24cad0fb76ceceb5fae6df1594219')
 
 check() {
   cd "${_srcname}-${pkgver}"
