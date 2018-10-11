@@ -72,10 +72,9 @@ fi
 }
 
 build() {
-    source /etc/profile.d/apache-ant.sh
-    source /etc/profile.d/jre.sh
+    export ANT_HOME=/usr/share/ant
+    export ANT_OPTS="-Dfile.encoding=UTF-8"
     export JAVA_HOME="${JAVA_HOME:-/usr/lib/jvm/default}"
-
 
     build_jbigi
     build_jcpuid
