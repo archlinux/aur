@@ -28,5 +28,5 @@ package()
 	ln -sr /usr/bin/firefox $pkgdir/usr/bin/mozilla
 }
 
-md5sums=('b92b4bf72a55845576359f05d8465f12'
+md5sums=('SKIP'
          '1c244349f72fe7abc1574b671dcde0c6')

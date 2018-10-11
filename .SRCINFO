@@ -10,7 +10,7 @@ pkgbase = vhdl-simili
 	depends = lib32-libx11
 	source = http://www.symphonyeda.com/Downloads/Simili31b16-linux-x86.tar
 	source = vhdl-simili.sh
-	md5sums = b92b4bf72a55845576359f05d8465f12
+	md5sums = SKIP
 	md5sums = 1c244349f72fe7abc1574b671dcde0c6
 
 pkgname = vhdl-simili
