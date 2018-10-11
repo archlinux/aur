@@ -7,9 +7,9 @@ pkgdesc='Program that allows to query and change the XKB layout state'
 arch=('i686' 'x86_64')
 url='https://github.com/ierton/xkb-switch'
 license=('GPL3')
-depends=('libx11')
+depends=('libx11' 'libxkbfile')
 makedepends=('git' 'cmake')
-source=("https://github.com/ierton/${pkgname}/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ierton/${pkgname}/archive/${pkgver}.tar.gz")
 sha1sums=('5b9ee5fd2c06360ed1297e4e58dda19ae1336d85')
 
 build() {

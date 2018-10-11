@@ -9,7 +9,8 @@ pkgbase = xkb-switch
 	makedepends = git
 	makedepends = cmake
 	depends = libx11
-	source = https://github.com/ierton/xkb-switch/archive/1.5.0.tar.gz
+	depends = libxkbfile
+	source = xkb-switch-1.5.0.tar.gz::https://github.com/ierton/xkb-switch/archive/1.5.0.tar.gz
 	sha1sums = 5b9ee5fd2c06360ed1297e4e58dda19ae1336d85
 
 pkgname = xkb-switch
