@@ -1,7 +1,7 @@
 # Maintainer: Brad Erhart <brae.04+aur@gmail.com>
-pkgname=eksctl
+pkgname=eksctl-bin
 pkgver=0.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple CLI tool for creating clusters on Amazon's EKS"
 arch=('x86_64')
 license=('Apache')
