@@ -1,6 +1,6 @@
 pkgbase = yaru
 	pkgdesc = Yaru default ubuntu theme
-	pkgver = 18.10.5
+	pkgver = 18.10.6
 	pkgrel = 1
 	url = https://github.com/ubuntu/yaru
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = yaru
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = git+https://github.com/ubuntu/yaru#tag=18.10.5
+	source = git+https://github.com/ubuntu/yaru#tag=18.10.6
 	source = 0001-gnome-shell-fix-install-dir.patch
 	sha256sums = SKIP
 	sha256sums = c84e9720c47fc86eaf89ebc647bb656b13a3e79aa0b01c46734c5db013e42bc5
