@@ -16,27 +16,44 @@ source=("http://geant4.kek.jp/~tanaka/src/${pkgname}_${_pkgver}.taz"
 sha256sums=('61c77a7290a602e97f6664fbc613e3fb834cb87c525b0bc6dc5b1ea060f733ab'
             '93ef37f00e7a6a4b43a377e48b69bb600ac26e667ab3c8af3d8eaf7a2afc284e')
 
+prepare() {
+  cd "${srcdir}/${pkgname}_${_pkgver}"
+  patch -Np2 < ${srcdir}/make_DESTDIR.patch
+
+  msg "Fixing: 'error: ISO C++ forbids comparison between pointer and integer'"
+  sed -i "s/'\\\0'/NULL/g" FRString.h
+}
+
 build() {
   cd "${srcdir}/${pkgname}_${_pkgver}"
   make
 }
 
 package() {
-	  cd "${srcdir}/${pkgname}_${_pkgver}"
-	  patch -Np2 < ${srcdir}/make_DESTDIR.patch
-	  [ -d $pkgdir/usr/bin/ ] || install -d $pkgdir/usr/bin/
-	  make DESTDIR="${pkgdir}" install
+  cd "${srcdir}/${pkgname}_${_pkgver}"
+  [ -d $pkgdir/usr/bin/ ] || install -d $pkgdir/usr/bin/
+  make DESTDIR="${pkgdir}" install
 
-	  echo "
-	  [Desktop Entry]
-	  Name=${_PKGNAME}
-	  Comment=${pkgdesc}
-	  Exec=${pkgname}
-	  Icon=xchm-32
-	  Terminal=false
-	  Type=Application
-	  Categories=Utility;Science;
-	  StartupNotify=false
-	  " > $srcdir/$pkgname.desktop
-	  install -Dm644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
+  echo "
+  [Desktop Entry]
+  Name=${_PKGNAME}
+  Comment=${pkgdesc}
+  Exec=${pkgname}
+  Icon=xchm-32
+  Terminal=false
+  Type=Application
+  Categories=Utility;Science;
+  StartupNotify=false
+  " > $srcdir/$pkgname.desktop
+  install -Dm644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
 }
+
+#FRString.h:140:30: error: ISO C++ forbids comparison between pointer and integer [-fpermissive]
+#  while(  isspace(*p) && p != '\0' ) {p++;}
+#                              ^~~~
+#FRString.h:143:30: error: ISO C++ forbids comparison between pointer and integer [-fpermissive]
+#  while( !isspace(*p) && p != '\0' ) {p++;}
+#                              ^~~~
+#FRString.h:146:30: error: ISO C++ forbids comparison between pointer and integer [-fpermissive]
+#  while(  isspace(*p) && p != '\0' ) {p++;}
+
