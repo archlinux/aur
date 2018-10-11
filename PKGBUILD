@@ -18,7 +18,7 @@ source=(
   "http://downloads.sourceforge.net/project/canvasdraw/${pkgver}/Docs%20and%20Sources/cd-${pkgver}_Docs.pdf"
 )
 md5sums=('939e7b40461cc6da02904ae65aaaccd7'
-         'f8104a4bea1a4c9a77d562293926ad6a'
+         '8086c3a80f80f4937f2e1322f03a4c58'
          '13c527a5bbad9d745bf99dac17239796')
 
 prepare() {

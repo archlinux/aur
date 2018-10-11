@@ -18,7 +18,7 @@ pkgbase = libcd
 	source = http://downloads.sourceforge.net/project/canvasdraw/5.11.1/Docs%20and%20Sources/ftgl-2.1.5_Sources.tar.gz
 	source = http://downloads.sourceforge.net/project/canvasdraw/5.11.1/Docs%20and%20Sources/cd-5.11.1_Docs.pdf
 	md5sums = 939e7b40461cc6da02904ae65aaaccd7
-	md5sums = f8104a4bea1a4c9a77d562293926ad6a
+	md5sums = 8086c3a80f80f4937f2e1322f03a4c58
 	md5sums = 13c527a5bbad9d745bf99dac17239796
 
 pkgname = libcd
