@@ -38,11 +38,11 @@ prepare() {
   patch -p0 -i ${srcdir}/08-vs-compatible.patch
   # prevents "Cannot export rpl_printf: symbol not found"
   patch -p0 -i ${srcdir}/09-gnulib-fix-underscore-cond.patch
+  autoreconf -i
 }
 
 build() {
   cd gettext-${pkgver}
-  unset LDFLAGS
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     # define USER_LABEL_PREFIX_UNDERSCORE to prevent undefined reference to `__imp_exit_failure'
