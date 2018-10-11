@@ -2,7 +2,7 @@
 
 pkgname=iio-sensor-proxy-git
 _pkgname="iio-sensor-proxy"
-pkgver=r264.401d59e
+pkgver=2.5.r2.9e061b9
 pkgrel=1
 pkgdesc="IIO accelerometer sensor to input device proxy"
 arch=('i686' 'x86_64')
@@ -16,18 +16,24 @@ source=("git+https://github.com/hadess/iio-sensor-proxy.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$srcdir/$_pkgname"
+        printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
-  ./autogen.sh
-  ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --disable-Werror
-  make
+	cd "$srcdir/$_pkgname"
+	./autogen.sh
+	./configure \
+		--prefix=/usr \
+		--sysconfdir=/etc \
+		--bindir=/usr/bin \
+		--sbindir=/usr/bin \
+		--libdir=/usr/lib \
+		--libexecdir=/usr/lib \
+		--disable-Werror
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
-  make DESTDIR="${pkgdir}" install
+	cd "$srcdir/$_pkgname"
+	make DESTDIR="${pkgdir}" install
 }
