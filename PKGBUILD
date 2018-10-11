@@ -1,7 +1,7 @@
 # Maintainer: Xiaoxu Guo <ftiasch0@gmail.com>
 # Contributor: Daichi Shinozaki <dsdseg@gmail.com>
 pkgname=folly
-pkgver=2018.08.09.00
+pkgver=2018.10.08.00
 pkgrel=1
 pkgdesc="An open-source C++ library developed and used at Facebook"
 arch=(x86_64)
@@ -11,12 +11,15 @@ depends=('snappy' 'jemalloc' 'double-conversion' 'gflags' 'google-glog' 'libeven
 makedepends=('cmake' 'gcc')
 source=("https://github.com/facebook/$pkgname/archive/v${pkgver}.tar.gz"
 'gtest-1.7.0.zip::https://github.com/google/googletest/archive/release-1.7.0.zip'
+'jemalloc.patch'
 )
-md5sums=('987140793ee1c7706a83b8f314ef1592'
-         'ef5e700c8a0f3ee123e2e0209b8b4961')
+md5sums=('ef6b83f8eb5e9f1333a8c18ae13ead0c'
+         'ef5e700c8a0f3ee123e2e0209b8b4961'
+         '699ebfe2dfa70964bff5f5e461ce4fa9')
 
 prepare() {
   cd "$pkgname-$pkgver"
+  patch folly/experimental/JemallocHugePageAllocator.cpp < $srcdir/jemalloc.patch
   mkdir -p _build
   cd _build
   cmake -DFOLLY_CXX_FLAGS='-Wno-error=class-memaccess' ..
@@ -24,8 +27,8 @@ prepare() {
 }
 
 build() {
-  cd "$pkgname-$pkgver/_build"
-  VERBOSE=1 make -j 4
+  cd "$pkgname-$pkgver"
+  cmake --build _build
 }
 
 check() {
