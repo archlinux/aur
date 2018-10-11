@@ -1,5 +1,5 @@
 pkg/
 src/
-bitwarden-cli-git/
-jslib/
-bitwarden-cli-git-1*
+bitwarden-cli-git-repo/
+jslib-git-repo/
+bitwarden-cli-git-1.*
