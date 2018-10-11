@@ -2,7 +2,7 @@
 pkgname=pbmpi2-git
 _gitname=pbmpi2
 pkgver=1.7.675fab8
-pkgrel=1
+pkgrel=2
 pkgdesc="Efficient phylogenomic tree reconstruction using Bayesian statistics; multicore version (MPI)"
 arch=(x86_64)
 url="http://www.atgc-montpellier.fr/phylobayes/"
