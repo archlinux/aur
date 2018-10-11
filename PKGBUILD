@@ -1,9 +1,8 @@
-# $Id$
-# Maintainer: James Harvey <jamespharvey20@gmail.com>
+# Maintainer: James Harvey <jamespharvey20 at gmail dot com>
 # * No namcap warnings or errors
 
 pkgname=bash-git-prompt
-pkgver=2.6.2
+pkgver=2.6.3
 pkgrel=1
 pkgdesc="Informative git prompt for bash and fish"
 arch=('any')
@@ -12,21 +11,16 @@ depends=('bash')
 optdepends=('fish: git prompt in fish support')
 makedepends=('git')
 license=('custom:BSD 2 Clause (NetBSD)')
-source=("git+https://github.com/magicmonty/${pkgname}"
+source=("https://github.com/magicmonty/${pkgname}/archive/${pkgver}.tar.gz"
         'bash-git-prompt.install'
         'Default_Arch.bgptheme')
-md5sums=('SKIP'
-         '990d3a7ef8a21b83f0d1e90d9ef1a5b7'
+md5sums=('d11c07ef9672e6cb166fc5af55ba4fae'
+         '9024256781844b2af5da4da4882e9160'
          'af064330b3a579ec6efd2e018e6829df')
 install='bash-git-prompt.install'
 
-prepare() {
-  cd ${srcdir}/${pkgname}
-  git checkout tags/${pkgver} 
-}
-
 package() {
-  cd ${srcdir}/${pkgname}
+  cd ${srcdir}/bash-git-prompt-${pkgver}
 
   install -Dm644 LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt
   install -Dm644 README.md ${pkgdir}/usr/lib/bash-git-prompt/README.md
@@ -45,7 +39,11 @@ package() {
   install -Dm644 Default_NoExitState.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Default_NoExitState.bgptheme
   install -Dm644 Evermeet.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Evermeet.bgptheme
   install -Dm644 Evermeet_Lowres.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Evermeet_Lowres.bgptheme
+  install -Dm644 Minimal.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Minimal.bgptheme
+  install -Dm644 Minimal_UserHost.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Minimal_UserHost.bgptheme
+  install -Dm644 Plague_Doctor.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Plague_Doctor.bgptheme
   install -Dm644 Single_line.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Single_line.bgptheme
+  install -Dm644 Single_line_Minimalist.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Single_line_Minimalist.bgptheme
   install -Dm644 Single_line_NoExitState.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Single_line_NoExitState.bgptheme
   install -Dm644 Single_line_Solarized.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Single_line_Solarized.bgptheme
   install -Dm644 Solarized.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Solarized.bgptheme

@@ -4,7 +4,7 @@ post_install() {
    NOTE: To use bash-git-prompt, you should add the following to your
          /etc/bash.bashrc or ~/.bashrc:
 
-            if [ -f %{/usr/lib/bash-git-prompt/gitprompt.sh ]; then
+            if [ -f /usr/lib/bash-git-prompt/gitprompt.sh ]; then
                # To only show the git prompt in or under a repository directory
                # GIT_PROMPT_ONLY_IN_REPO=1
                # To use upstream's default theme
@@ -17,7 +17,7 @@ post_install() {
    NOTE: To have the colors shown by 'git status' match the Default_Arch theme,
          add the following to your ~/.gitconfig:
 
-            [color "status"]
+            [color \"status\"]
                branch = magenta
                untracked = cyan
                unmerged = yellow
@@ -37,7 +37,7 @@ post_remove() {
          by doing one of the following:
 
             * Restarting your shells (relogging in each of them)
-            * Starting new shells (running "bash" in each of them)
+            * Starting new shells (running \"bash\" in each of them)
             * Rebooting
 
    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
