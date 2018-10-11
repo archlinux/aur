@@ -1,0 +1,12 @@
+pkgbase = zettlr
+	pkgver = 0.19.0
+	pkgrel = 1
+	url = https://www.zettlr.com
+	arch = x86_64
+	license = GPL
+	provides = zettlr
+	source = zettlr-0.19.0.rpm::https://github.com/Zettlr/Zettlr/releases/download/v0.19.0/Zettlr-linux-x64-0.19.0.rpm
+	md5sums = f659bba0c7daeb9d6c3e3a51f2244ce0
+
+pkgname = zettlr
+
