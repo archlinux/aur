@@ -1,23 +1,29 @@
-# $Id$
-# Maintainer: Benjamin Chrétien <chretien+aur at lirmm dot fr>
+# Submitter: Benjamin Chrétien <chretien+aur at lirmm dot fr>
+# Maintainer: Kuan-Yen Chou <kuanyenchou at gmail dot com>
 
 pkgname=cpp-coveralls
-pkgver=0.3.10
+pkgver=0.4.0
 pkgrel=1
-pkgdesc="Upload gcov results to coveralls.io"
-arch=('i686' 'x86_64')
+pkgdesc='Upload gcov results to coveralls.io'
+arch=('x86_64')
 url='https://github.com/eddyxu/cpp-coveralls'
 license=('Apache')
-depends=('python' 'python-requests' 'python-setuptools')
+depends=('python' 'python-requests' 'python-future' 'python-certifi'
+         'python-cryptography' 'python-pyopenssl' 'python-ipaddress')
+makedepends=('python-setuptools')
 source=("https://github.com/eddyxu/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('0257f3b879555e94c5197880ae843e1307cb9bda6dfcd0334f0d4787c9c0fa5f')
+sha256sums=('973992c11d6eda3e640cd6e40f6c7b7f73b3739d403e320360a466e46e41a697')
 
 build() {
-  cd ${pkgname}-${pkgver}
-  python3 setup.py build
+        cd "${srcdir}/${pkgname}-${pkgver}"
+        python setup.py build
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
-  python3 setup.py install -O1 --skip-build --root "${pkgdir}" --prefix=/usr
+        cd "${srcdir}/${pkgname}-${pkgver}"
+        python setup.py install \
+                -O2 --skip-build --root "${pkgdir}" --prefix=/usr
+        install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgdir}"
 }
+
+# vim: set ts=8 sw=8 et:
