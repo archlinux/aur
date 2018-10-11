@@ -2,7 +2,7 @@
 
 pkgname=meta-ugene-external_tools
 pkgver=20181009
-pkgrel=1
+pkgrel=2
 pkgdesc='Metapackage for External Tools in the UGENE bioinformatics suite'
 arch=('any')
 license=('none')
@@ -21,7 +21,7 @@ depends=(
   'mafft'
   'tcoffee'
   'mrbayes'
-  'phyml'
+  'phyml-git'
   'kraken'
   #Conduct GO
   #mdseqpos

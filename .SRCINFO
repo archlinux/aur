@@ -1,7 +1,7 @@
 pkgbase = meta-ugene-external_tools
 	pkgdesc = Metapackage for External Tools in the UGENE bioinformatics suite
 	pkgver = 20181009
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ugene.net/external.html
 	arch = any
 	license = none
@@ -17,7 +17,7 @@ pkgbase = meta-ugene-external_tools
 	depends = mafft
 	depends = tcoffee
 	depends = mrbayes
-	depends = phyml
+	depends = phyml-git
 	depends = kraken
 	depends = cufflinks-bin
 	depends = samtools
