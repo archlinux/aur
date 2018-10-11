@@ -2,7 +2,7 @@
 # Contributor: Carl George < arch at cgtx dot us >
 
 pkgname=mkdocs
-pkgver=1.0.1
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Project documentation with Markdown."
 arch=("any")
@@ -19,7 +19,7 @@ depends=(
     )
 source=("https://files.pythonhosted.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz"
         "$pkgname.bash_completion")
-sha256sums=('88aca8afda97535112554ed1baacdd9ca669ce144f028f05cc16b18d6b596491'
+sha256sums=('17d34329aad75d5de604b9ed4e31df3a4d235afefdc46ce7b1964fddb2e1e939'
             '66edd841378428e23fd617ff046fd8ea50b5cc5b70f3f3d50ac29bd5d33fd11f')
 
 build() {
