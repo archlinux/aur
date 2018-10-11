@@ -3,12 +3,11 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=the_platinum_searcher
-pkgver=2.1.6
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='A code search tool similar to ack, the_silver_searcher (ag) and ripgrep (rg).'
 arch=('x86_64')
-makedepends=('git' 'go')
-depends=('glibc')
+makedepends=('git' 'go' 'godep')
 url='https://github.com/monochromegane/the_platinum_searcher'
 license=('MIT')
 provides=('the_platinum_searcher')
@@ -23,20 +22,22 @@ build() {
 	cd "$_repodir/$pkgname"
 	git checkout -q v"$pkgver"
 	unset GOBIN  # prevent bin to end up elsewhere
-	GOPATH="$srcdir" go get -v ...
+	GOPATH="$srcdir" godep restore
+	GOPATH="$srcdir" godep go install -v ./...
 }
 
 check() {
-	GOPATH="$srcdir" go test -v -x github.com/monochromegane/the_platinum_searcher/
+	cd "$_repodir/$pkgname"
+	GOPATH="$srcdir" godep go test -v -x .
 }
 
 package() {
 	msg 'Installing pt binary...'
-	install -Dm 755 "$srcdir/bin/pt" "$pkgdir/usr/bin/pt"
+	install -Dm755 "$srcdir/bin/pt"			"$pkgdir/usr/bin/pt"
 
 	msg 'Installing README...'
-	install -Dm 644 "$_repodir/$pkgname/README.md"  "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -Dm644 "$_repodir/$pkgname/README.md"	"$pkgdir/usr/share/doc/$pkgname/README.md"
 
 	msg 'Installing LICENSE...'
-	install -m 644 -D "$_repodir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "$_repodir/$pkgname/LICENSE"	"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
