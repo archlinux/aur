@@ -2,7 +2,7 @@
 # Contributor: Paul Nicholson <brenix@gmail.com>
 
 pkgname=openpyn-nordvpn
-pkgver=2.2.0.r305.g7f42c3c
+pkgver=2.2.0.r308.gbd993a0
 pkgrel=1
 pkgdesc="Easily connect to and switch between OpenVPN servers hosted by NordVPN"
 provides=('python-openpyn' 'openpyn-nordvpn')
