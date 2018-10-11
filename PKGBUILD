@@ -15,22 +15,22 @@ source=("https://github.com/savonet/ocaml-ssl/archive/v$pkgver.tar.gz")
 options=(!libtool !strip zipman !makeflags staticlibs)
 
 build() {
-	cd $pkgname-$pkgver
-	make
+    cd $pkgname-$pkgver
+    make
 }
 
 package() {
-	cd ${pkgname}-${pkgver}
+    cd ${pkgname}-${pkgver}
 
-	# Initialize OPAM, this should be removed once opam is “removed” from dune
-	export OPAMROOT="${srcdir}"/opam
-	opam init -n
+    # Initialize OPAM, this should be removed once opam is “removed” from dune
+    export OPAMROOT="${srcdir}"/opam
+    opam init -n
 
-	# Work around the install command
-	make OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)" install
-	# Install LICENSE
-	mkdir -p $pkgdir/usr/share/licenses/$pkgname/
-	awk 'BEGIN{P=0} /License/ {P = 1;} {if (P) print}' README.md > $pkgdir/usr/share/licenses/$pkgname/license
+    # Work around the install command
+    OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)" jbuilder install
+    # Install LICENSE
+    mkdir -p $pkgdir/usr/share/licenses/$pkgname/
+    awk 'BEGIN{P=0} /License/ {P = 1;} {if (P) print}' README.md > $pkgdir/usr/share/licenses/$pkgname/license
 }
 
 md5sums=('500b0bb7af4a736255ce706cc8e26762')
