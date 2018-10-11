@@ -18,7 +18,7 @@ conflicts=(kdegraphics-okular)
 conflicts=(okular)
 provides=(okular)
 replaces=(kdegraphics-okular)
-source=("https://download.kde.org/stable/applications/$pkgver/src/$pkgname-$pkgver.tar.xz"{,.sig})
+source=("https://download.kde.org/stable/applications/$pkgver/src/$_pkgname-$pkgver.tar.xz"{,.sig})
 sha256sums=('1bc4e539348053550aa05c7d73465130502b2ee11866cf2d253edde20d1846f9'
             'SKIP')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
