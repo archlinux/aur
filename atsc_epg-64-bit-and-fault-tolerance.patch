@@ -1,0 +1,61 @@
+--- a/util/atsc_epg/atsc_epg.c	2018-10-11 02:56:17.354684264 -0700
++++ b/util/atsc_epg/atsc_epg.c	2018-10-11 13:52:25.086915547 -0700
+@@ -60,8 +60,8 @@
+ void (*old_handler)(int);
+ 
+ struct atsc_string_buffer {
+-	int buf_len;
+-	int buf_pos;
++	size_t buf_len;
++	size_t buf_pos;
+ 	char *string;
+ };
+ 
+@@ -69,10 +69,10 @@
+ 	uint16_t id;
+ 	struct tm start;
+ 	struct tm end;
+-	int title_pos;
+-	int title_len;
+-	int msg_pos;
+-	int msg_len;
++	size_t title_pos;
++	size_t title_len;
++	size_t msg_pos;
++	size_t msg_len;
+ };
+ 
+ struct atsc_eit_section_info {
+@@ -507,8 +507,8 @@
+ 			event->msg_pos = channel->msg_buf.buf_pos;
+ 			if(0 > atsc_text_segment_decode(seg,
+ 				(uint8_t **)&channel->msg_buf.string,
+-				(size_t *)&channel->msg_buf.buf_len,
+-				(size_t *)&channel->msg_buf.buf_pos)) {
++				&channel->msg_buf.buf_len,
++				&channel->msg_buf.buf_pos)) {
+ 				fprintf(stderr, "%s(): error calling "
+ 					"atsc_text_segment_decode()\n",
+ 					__FUNCTION__);
+@@ -653,15 +653,16 @@
+ 				e_info->title_pos = curr_info->title_buf.buf_pos;
+ 				if(0 > atsc_text_segment_decode(seg,
+ 					(uint8_t **)&curr_info->title_buf.string,
+-					(size_t *)&curr_info->title_buf.buf_len,
+-					(size_t *)&curr_info->title_buf.buf_pos)) {
++					&curr_info->title_buf.buf_len,
++					&curr_info->title_buf.buf_pos)) {
+ 					fprintf(stderr, "%s(): error calling "
+ 						"atsc_text_segment_decode()\n",
+ 						__FUNCTION__);
+-					return -1;
++					e_info->title_len = 0;
++				} else {
++				  e_info->title_len = curr_info->title_buf.buf_pos - 
++				    e_info->title_pos + 1;
+ 				}
+-				e_info->title_len = curr_info->title_buf.buf_pos -
+-					e_info->title_pos + 1;
+ 			}
+ 		}
+ 	}
