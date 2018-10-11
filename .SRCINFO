@@ -1,0 +1,20 @@
+pkgbase = sudoku-tk
+	pkgdesc = Sudoku games and puzzle solver written in Python
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/j4321/Sudoku-Tk
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = tk
+	depends = python-pillow
+	depends = python-numpy
+	depends = gettext
+	depends = desktop-file-utils
+	optdepends = python-tkfilebrowser: nicer file browser
+	optdepends = zenity: nicer file browser
+	source = sudoku-tk-1.2.0.tar.gz::https://github.com/j4321/Sudoku-Tk/archive/v1.2.0.tar.gz
+	sha512sums = 66c246219b690ec56c34c663ffef463a4ebe8d273e5309126f337e330a56cf1b63f1e2c7dfb4c2ff5237c1c1a077a80ee379e8a972d3564be497030d14f866a4
+
+pkgname = sudoku-tk
+
