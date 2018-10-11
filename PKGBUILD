@@ -24,14 +24,15 @@ build() {
   cd $pkgname
   mkdir build
   cd sources
-  # TODO: CONSTEXPR required to compile without '-fpermissive'.
+  # XXX: CONSTEXPR required to compile without '-fpermissive'.
   make CPPFLAGS="-w -O3 -c -fpermissive"
 }
 
 
 package() {
   cd "$srcdir/$pkgname"
-  # TODO: Also install other software parts.
+  # XXX: Not all binaries are installed.
   install -D -m755 "data/pb_mpi" "${pkgdir}/usr/bin/pb_mpi"
   install -D -m755 "data/readpb_mpi" "${pkgdir}/usr/bin/readpb_mpi"
+  install -D -m755 "data/tracecomp" "${pkgdir}/usr/bin/tracecomp"
 }
