@@ -1,0 +1,16 @@
+pkgbase = xkbl
+	pkgdesc = Simple utility to get the current X keyboard layout
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/takiz/xkbl
+	arch = any
+	license = GPL
+	makedepends = make
+	makedepends = gcc
+	makedepends = libx11
+	depends = xorg-server
+	source = https://github.com/takiz/xkbl/archive/1.0.tar.gz
+	sha256sums = 07a6c9aef95b2962e9b7a236d530bcab54e19194a5fe6a59c3189bc7a6d910b7
+
+pkgname = xkbl
+
