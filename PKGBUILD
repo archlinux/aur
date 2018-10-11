@@ -5,7 +5,7 @@
 
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
-pkgver=3.30.1+2+ge5ea87340
+pkgver=3.30.1+29+g38c1ebba6
 pkgrel=1
 pkgdesc="Next generation desktop shell | Attempt to improve the performance by non-upstreamed patches"
 url="https://wiki.gnome.org/Projects/GnomeShell"
@@ -21,7 +21,7 @@ optdepends=('gnome-control-center: System settings'
 groups=(gnome)
 provides=(gnome-shell)
 conflicts=(gnome-shell)
-_commit=a3f5354abba4c88ff33ccdd495c4aa87add9a285 # tags/3.30.1^0
+_commit=38c1ebba624c23f13b7db82284b9e309f544e723 # master
 source=("git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git")
 sha256sums=('SKIP'
@@ -35,12 +35,13 @@ pkgver() {
 prepare() {
   cd $_pkgname
 
+  ## Disabled due to conflict with 3.30.1+29+g38c1ebba6
   # st-box-layout: Avoid fullscreen relayout on scroll
   # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/224/commits 
-  git remote add vanvugt https://gitlab.gnome.org/vanvugt/gnome-shell.git || true
-  git fetch vanvugt
-  git cherry-pick 6a3dd0fa || bash
-  git cherry-pick 5aac3f0a || bash
+  # git remote add vanvugt https://gitlab.gnome.org/vanvugt/gnome-shell.git || true
+  # git fetch vanvugt
+  # git cherry-pick 6a3dd0fa || bash
+  # git cherry-pick 5aac3f0a || bash
 
   # Move the plugin to our custom epiphany-only dir
   sed -i "s/'mozilla'/'epiphany'/g" meson.build
