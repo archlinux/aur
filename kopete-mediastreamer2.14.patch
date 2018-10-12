@@ -1,83 +1,281 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -34,6 +34,7 @@
+ 
+ find_package(KF5Contacts ${KCONTACTS_LIB_VERSION} CONFIG REQUIRED)
+ find_package(KF5IdentityManagement ${KCONTACTS_LIB_VERSION} CONFIG REQUIRED)
++find_package(Threads)
+ 
+ include(KDEInstallDirs)
+ include(KDECompilerSettings NO_POLICY_SCOPE)
+diff --git a/cmake/modules/FindLiboRTP.cmake b/cmake/modules/FindLiboRTP.cmake
+--- a/cmake/modules/FindLiboRTP.cmake
++++ b/cmake/modules/FindLiboRTP.cmake
+@@ -11,7 +11,7 @@
+ 
+ SET( LIBORTP_FOUND FALSE )
+ 
+-pkg_check_modules(ortp ortp)
++pkg_check_modules(ORTP ortp)
+ 
+ FIND_PATH( LIBORTP_INCLUDE_DIR
+            ortp/ortp.h
+@@ -40,7 +40,13 @@
+     if ( run_result EQUAL 0 )
+ #     Version OK
+       SET( LIBORTP_FOUND TRUE )
+-      MESSAGE( STATUS "Found libortp: ${LIBORTP_LIBRARY}" )
++      MESSAGE( STATUS "Found libortp: ${LIBORTP_LIBRARY} ${ORTP_VERSION}" )
++      IF (ORTP_VERSION VERSION_LESS 1.0.1)
++          SET(ORTP_LESS_1_0_1 TRUE)
++      ELSE (ORTP_VERSION VERSION_LESS 1.0.1)
++          SET(ORTP_LESS_1_0_1 FALSE)
++      ENDIF (ORTP_VERSION VERSION_LESS 1.0.1)
++
+     endif ( run_result EQUAL 0 )
+   endif( compile_result )
+ ENDIF( LIBORTP_INCLUDE_DIR AND LIBORTP_LIBRARY )
 diff --git a/cmake/modules/FindMediastreamer.cmake b/cmake/modules/FindMediastreamer.cmake
-index 47fe5c3..31802f0 100644
 --- a/cmake/modules/FindMediastreamer.cmake
 +++ b/cmake/modules/FindMediastreamer.cmake
-@@ -24,12 +24,19 @@ IF (MEDIASTREAMER_FOUND)
+@@ -20,17 +20,25 @@
+ 
+ IF (MEDIASTREAMER_FOUND)
+   IF (NOT MEDIASTREAMER_FIND_QUIETLY)
++
+       MESSAGE(STATUS "Found Mediastreamer: ${MEDIASTREAMER_LIBRARIES} (version: ${MEDIASTREAMER_VERSION})")
++
++      SET(MEDIASTREAMER_LESS_2_9 FALSE)
++      SET(MEDIASTREAMER_LESS_2_11 FALSE)
++      SET(MEDIASTREAMER_LESS_2_14 FALSE)
++
        IF (MEDIASTREAMER_VERSION VERSION_LESS 2.9)
            SET(MEDIASTREAMER_LESS_2_9 TRUE)
-           SET(MEDIASTREAMER_LESS_2_11 TRUE)
-+          SET(MEDIASTREAMER_LESS_2_14 TRUE)
-       ELSEIF (MEDIASTREAMER_VERSION VERSION_LESS 2.11)
-           SET(MEDIASTREAMER_LESS_2_9 FALSE)
-           SET(MEDIASTREAMER_LESS_2_11 TRUE)
-+          SET(MEDIASTREAMER_LESS_2_14 TRUE)
-+      ELSEIF (MEDIASTREAMER_VERSION VERSION_LESS 2.14)
-+          SET(MEDIASTREAMER_LESS_2_9 FALSE)
-+          SET(MEDIASTREAMER_LESS_2_11 FALSE)
-+          SET(MEDIASTREAMER_LESS_2_14 TRUE)
-       ELSE (MEDIASTREAMER_VERSION VERSION_LESS 2.9)
-           SET(MEDIASTREAMER_LESS_2_9 FALSE)
-           SET(MEDIASTREAMER_LESS_2_11 FALSE)
-+          SET(MEDIASTREAMER_LESS_2_14 FALSE)
+-          SET(MEDIASTREAMER_LESS_2_11 TRUE)
+-      ELSEIF (MEDIASTREAMER_VERSION VERSION_LESS 2.11)
+-          SET(MEDIASTREAMER_LESS_2_9 FALSE)
+-          SET(MEDIASTREAMER_LESS_2_11 TRUE)
+-      ELSE (MEDIASTREAMER_VERSION VERSION_LESS 2.9)
+-          SET(MEDIASTREAMER_LESS_2_9 FALSE)
+-          SET(MEDIASTREAMER_LESS_2_11 FALSE)
        ENDIF (MEDIASTREAMER_VERSION VERSION_LESS 2.9)
++
++      IF (MEDIASTREAMER_VERSION VERSION_LESS 2.11)
++          SET(MEDIASTREAMER_LESS_2_11 TRUE)
++      ENDIF (MEDIASTREAMER_VERSION VERSION_LESS 2.11)
++
++      IF (MEDIASTREAMER_VERSION VERSION_LESS 2.14)
++          SET(MEDIASTREAMER_LESS_2_14 TRUE)
++      ENDIF (MEDIASTREAMER_VERSION VERSION_LESS 2.14)
++
    ENDIF (NOT MEDIASTREAMER_FIND_QUIETLY)
  ELSE (MEDIASTREAMER_FOUND)
+   IF (MEDIASTREAMER_FIND_REQUIRED)
+diff --git a/protocols/jabber/libjingle/CMakeLists.txt b/protocols/jabber/libjingle/CMakeLists.txt
+--- a/protocols/jabber/libjingle/CMakeLists.txt
++++ b/protocols/jabber/libjingle/CMakeLists.txt
+@@ -51,6 +51,10 @@
+ 	add_definitions ( -DMEDIASTREAMER_LESS_2_11 )
+ endif ( MEDIASTREAMER_LESS_2_11 )
+ 
++if ( MEDIASTREAMER_LESS_2_14 )
++	add_definitions ( -DMEDIASTREAMER_LESS_2_14 )
++endif ( MEDIASTREAMER_LESS_2_14 )
++
+ if ( CMAKE_BUILD_TYPE STREQUAL "Debug" )
+ 	add_definitions ( -D_DEBUG )
+ endif ( CMAKE_BUILD_TYPE STREQUAL "Debug" )
+@@ -284,6 +288,7 @@
+ 	${EXPAT_LIBRARY}
+ 	${MEDIASTREAMER_LIBRARIES}
+ 	${LIBORTP_LIBRARY}
++	${CMAKE_THREAD_LIBS_INIT}
+ 	${CMAKE_DL_LIBS}
+ )
+ 
+diff --git a/protocols/jabber/libjingle/talk/session/phone/linphonemediaengine.h b/protocols/jabber/libjingle/talk/session/phone/linphonemediaengine.h
+--- a/protocols/jabber/libjingle/talk/session/phone/linphonemediaengine.h
++++ b/protocols/jabber/libjingle/talk/session/phone/linphonemediaengine.h
+@@ -53,7 +53,11 @@
+ class LinphoneMediaEngine : public MediaEngineInterface {
+  public:
+   LinphoneMediaEngine(const std::string& ringWav,  const std::string& callWav);
++#ifdef MEDIASTREAMER_LESS_2_14
+   virtual ~LinphoneMediaEngine() {}
++#else
++  ~LinphoneMediaEngine();
++#endif
+ 
+   // Implement pure virtual methods of MediaEngine.
+   virtual bool Init() { return true; }
+@@ -97,6 +101,10 @@
+   bool have_speex;
+   bool have_gsm;
+ 
++#ifndef MEDIASTREAMER_LESS_2_14
++  MSFactory *factory;
++#endif
++
+  private:
+   std::vector<AudioCodec> voice_codecs_;
+   std::vector<VideoCodec> video_codecs_;
+@@ -110,7 +118,11 @@
+ class LinphoneVoiceChannel : public VoiceMediaChannel {
+  public:
+   LinphoneVoiceChannel(LinphoneMediaEngine *eng);
++#ifdef MEDIASTREAMER_LESS_2_14
+   virtual ~LinphoneVoiceChannel();
++#else
++  ~LinphoneVoiceChannel();
++#endif
+ 
+   // Implement pure virtual methods of VoiceMediaChannel.
+   virtual bool SetRecvCodecs(const std::vector<AudioCodec>& codecs);
 diff --git a/protocols/jabber/libjingle/talk/session/phone/linphonemediaengine.cc b/protocols/jabber/libjingle/talk/session/phone/linphonemediaengine.cc
-index bd3de2b..9379226 100644
 --- a/protocols/jabber/libjingle/talk/session/phone/linphonemediaengine.cc
 +++ b/protocols/jabber/libjingle/talk/session/phone/linphonemediaengine.cc
-@@ -151,15 +151,25 @@ LinphoneVoiceChannel::LinphoneVoiceChannel(LinphoneMediaEngine*eng)
+@@ -60,18 +60,34 @@
+ ///////////////////////////////////////////////////////////////////////////
+ LinphoneMediaEngine::LinphoneMediaEngine(const std::string& ringWav,  const std::string& callWav) : ring_wav_(ringWav), call_wav_(callWav) {
+   ortp_init();
++#ifdef MEDIASTREAMER_LESS_2_14
+   ms_init();
++#else
++  factory = ms_factory_new();
++  ms_factory_init_voip(factory);
++  ms_factory_init_plugins(factory);
++#endif
+ 
+ #ifndef WIN32
+   char * path = strdup(MSILBC_LIBRARY);
+   char * dirc = dirname(path);
++#ifdef MEDIASTREAMER_LESS_2_14
+   ms_load_plugins(dirc);
++#else
++  ms_factory_load_plugins(factory, dirc);
++#endif
+   free(path);
+ #endif
+ 
++#ifdef MEDIASTREAMER_LESS_2_14
+   have_ilbc = ms_filter_codec_supported("iLBC");
+   have_speex = ms_filter_codec_supported("speex");
+   have_gsm = ms_filter_codec_supported("gsm");
++#else
++  have_ilbc = ms_factory_codec_supported(factory, "iLBC");
++  have_speex = ms_factory_codec_supported(factory, "speex");
++  have_gsm = ms_factory_codec_supported(factory, "gsm");
++#endif
+ 
+   if (have_speex) {
+     voice_codecs_.push_back(AudioCodec(110, payload_type_speex_wb.mime_type, payload_type_speex_wb.clock_rate, 0, 1, 8));
+@@ -88,6 +104,14 @@
+   voice_codecs_.push_back(AudioCodec(101, payload_type_telephone_event.mime_type, payload_type_telephone_event.clock_rate, 0, 1, 1));
+ }
+ 
++#ifndef MEDIASTREAMER_LESS_2_14
++LinphoneMediaEngine::~LinphoneMediaEngine() {
++  ms_factory_uninit_plugins(factory);
++  ms_factory_uninit_voip(factory);
++  ms_factory_destroy(factory);
++}
++#endif
++
+ void LinphoneMediaEngine::Terminate() {
+   fflush(stdout);
+ }
+@@ -149,15 +173,25 @@
    playport2 = PORT_UNUSED;
  
  #ifdef _DEBUG
 +#ifdef MEDIASTREAMER_LESS_2_14
    ortp_set_log_level_mask(ORTP_DEBUG|ORTP_MESSAGE|ORTP_WARNING|ORTP_ERROR|ORTP_FATAL);
  #else
-+  ortp_set_log_level_mask(NULL, ORTP_DEBUG|ORTP_MESSAGE|ORTP_WARNING|ORTP_ERROR|ORTP_FATAL);
++  ortp_set_log_level_mask(ORTP_LOG_DOMAIN, ORTP_DEBUG|ORTP_MESSAGE|ORTP_WARNING|ORTP_ERROR|ORTP_FATAL);
 +#endif
 +#else
 +#ifdef MEDIASTREAMER_LESS_2_14
    ortp_set_log_level_mask(ORTP_FATAL);
 +#else
-+  ortp_set_log_level_mask(NULL, ORTP_FATAL);
- #endif
--
++  ortp_set_log_level_mask(ORTP_LOG_DOMAIN, ORTP_FATAL);
 +#endif
-+  
+ #endif
+ 
  #ifdef MEDIASTREAMER_LESS_2_9
    audio_stream_ = audio_stream_new(-1, 0); /* -1 means that function will choose some free port */
 -#else
-+#elseif MEDIASTREAMER_LESS_2_14
++#elif MEDIASTREAMER_LESS_2_14
    audio_stream_ = audio_stream_new(-1, -1, 0); /* -1 means that function will choose some free port */
 +#else
-+  audio_stream_ = audio_stream_new(NULL, -1, -1, 0); /* -1 means that function will choose some free port */
++  audio_stream_ = audio_stream_new(engine_->factory, -1, -1, 0); /* -1 means that function will choose some free port */
  #endif
  
  }
-@@ -344,16 +354,24 @@ void LinphoneVoiceChannel::StartRing(bool bIncomingCall)
+@@ -272,11 +306,22 @@
+ {
+   StopRing();
+ 
++#ifdef MEDIASTREAMER_LESS_2_14
++  MSSndCardManager *snd_manager = ms_snd_card_manager_get();
+   MSSndCard *playcard = ms_snd_card_manager_get_default_playback_card(ms_snd_card_manager_get());
++#else
++  MSSndCardManager *snd_manager = ms_factory_get_snd_card_manager(engine_->factory);
++  MSSndCard *playcard = ms_snd_card_manager_get_default_playback_card(snd_manager);
++#endif
++
+   if (!playcard)
+     return false;
+ 
++#ifdef MEDIASTREAMER_LESS_2_14
+   MSSndCard *captcard = ms_snd_card_manager_get_default_capture_card(ms_snd_card_manager_get());
++#else
++  MSSndCard *captcard = ms_snd_card_manager_get_default_capture_card(snd_manager);
++#endif
+   if (!captcard)
+     return false;
+ 
+@@ -333,8 +378,18 @@
+ 
+ void LinphoneVoiceChannel::StartRing(bool bIncomingCall)
+ {
++#ifdef MEDIASTREAMER_LESS_2_14
++  MSSndCardManager *snd_manager = ms_snd_card_manager_get();
++#else
++  MSSndCardManager *snd_manager = ms_factory_get_snd_card_manager(engine_->factory);
++#endif
++
+   MSSndCard *sndcard = NULL;
++#ifdef MEDIASTREAMER_LESS_2_14
+   sndcard=ms_snd_card_manager_get_default_card(ms_snd_card_manager_get());
++#else
++  sndcard=ms_snd_card_manager_get_default_card(snd_manager);
++#endif
+   if (sndcard)
+   {
+     if (bIncomingCall)
+@@ -342,7 +397,11 @@
        if (engine_->GetRingWav().size() > 0)
        {
          LOG(LS_VERBOSE) << "incoming ring. sound file: " << engine_->GetRingWav().c_str() << "\n";
 +#ifdef MEDIASTREAMER_LESS_2_14
          ring_stream_ = ring_start (engine_->GetRingWav().c_str(), 1, sndcard);
--      }
 +#else
-+        ring_stream_ = ring_start (NULL, engine_->GetRingWav().c_str(), 1, sndcard);
++        ring_stream_ = ring_start (engine_->factory, engine_->GetRingWav().c_str(), 1, sndcard);
 +#endif
-+          }
+       }
      }
      else
-     {
+@@ -350,7 +409,11 @@
        if (engine_->GetCallWav().size() > 0)
        {
          LOG(LS_VERBOSE) << "outgoing ring. sound file: " << engine_->GetCallWav().c_str() << "\n";
 +#ifdef MEDIASTREAMER_LESS_2_14
          ring_stream_ = ring_start (engine_->GetCallWav().c_str(), 1, sndcard);
--      }
 +#else
-+        ring_stream_ = ring_start (NULL, engine_->GetCallWav().c_str(), 1, sndcard);
++        ring_stream_ = ring_start (engine_->factory, engine_->GetCallWav().c_str(), 1, sndcard);
 +#endif
-+          }
+       }
      }
    }
- }
+

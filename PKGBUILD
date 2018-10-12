@@ -4,7 +4,7 @@
 
 pkgname=kopete
 pkgver=18.08.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Instant Messenger'
 url='https://kde.org/applications/internet/kopete/'
 arch=(x86_64)
@@ -17,13 +17,12 @@ optdepends=('mediastreamer: jingle support' 'libgadu: Gadu-Gadu protocol' 'kdnss
 conflicts=(kdenetwork-kopete)
 replaces=(kdenetwork-kopete)
 source=("https://download.kde.org/stable/applications/$pkgver/src/$pkgname-$pkgver.tar.xz"{,.sig} 
-        kopete-mediastreamer2.14.patch kopete-srtp2.patch kopete-openssl-1.1.patch kopete-pthread-link.patch kopete-glibc-2.28.patch)
+        kopete-mediastreamer2.14.patch kopete-srtp2.patch kopete-openssl-1.1.patch kopete-glibc-2.28.patch)
 sha256sums=('ec2479eb7be28cf335e2539ffcd0c1bccf47a225242f87f3acfc5077f5cc9b57'
             'SKIP'
-            'c34a268aaa058e563174581dbe37c15fed91e82326ec704d2a872463139865e0'
+            '8b8e7a5d9f17fafdddb402fab22b0b8d9963039ea8ea9fa749cad67aeeb879ac'
             'ceed663f7007654d186d918cf7a0742972ed5bd319879021e9ba80e395177700'
             'a12ea422e5162ef11274a98fd53658d6e780cafbe2e0fac70c8bc7d3291fef8b'
-            'a7ebdd8dd4336b7ec085ef254bf18040f473b73379a8cd84569b28441a6c71df'
             'ba1b830bbd74c3dde8de99d887bd20205b4bbb1e466a41aa2b230404f1959c83')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87) # Christoph Feck <cfeck@kde.org>
@@ -31,13 +30,11 @@ validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aac
 prepare() {
   mkdir -p build
 
-# fix build with mediastreamer 2.14
-  cd kopete-$pkgver
+  cd $pkgname-$pkgver
+# fix build with mediastreamer 2.14 https://phabricator.kde.org/D15956
   patch -p1 -i ../kopete-mediastreamer2.14.patch
 # fix build with OpenSSL 1.1 (Fedora patch)
   patch -p1 -i ../kopete-openssl-1.1.patch
-# fix link to pthread
-  patch -p1 -i ../kopete-pthread-link.patch
 # support SRTP2
   patch -p1 -i ../kopete-srtp2.patch
 # fix build with glibc 2.28
