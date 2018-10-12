@@ -2,7 +2,7 @@
 pkgbase=qt5-service
 pkgname=(qt5-service qt5-service-doc)
 group=qt5-service-full
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A platform independent library to easily create system services and use some of their features"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ _pkgfqn=$pkgname-$pkgver
 source=("$_pkgfqn::git+https://github.com/Skycoder42/QtService.git#tag=$pkgver"
 		"$pkgname.rule")
 sha256sums=('SKIP'
-            'ab5d9d3e9dc4823bfe4c55fb2c91508a0be93fe7155e19a2b36368621739b53a')
+            '4917a8f753880a060abbaa22841b82dbba6d67e0e5177c6e76e643f7ae89d60c')
 
 prepare() {
   mkdir -p build

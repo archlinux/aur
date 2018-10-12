@@ -1,1 +1,1 @@
-qt5-base qt5-declarative libsystemd
+qt5-base{{^(\d+\.\d+\.\d+).*$}} qt5-declarative{{^(\d+\.\d+\.\d+).*$}} libsystemd{{^(\d+\.\d+).*$}}
