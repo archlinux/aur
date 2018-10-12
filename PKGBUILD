@@ -7,7 +7,7 @@
 # Modifications to Use Git Master Source
 # ======================================
 # Maintainer: James Harvey <jamespharvey20 at gmail dot com>
-#    * This PKGFILE as closely as possible matches core's binutils 2.28.0-4
+#    * This PKGFILE as closely as possible matches core's binutils 2.29.0-1
 #    * All namcap warnings and errors are identical, other than:
 #       * Warning zlib is no longer a dependency
 #          * Siding with caution, leaving it as a dependency
@@ -18,20 +18,19 @@
 
 pkgname=binutils-git
 _pkgname=binutils-gdb
-pkgver=2.28.r89982.ad36c6ce7c
+pkgver=2.29.r91268.dd66b39984
 pkgrel=1
-pkgdesc="A set of programs to assemble and manipulate binary and object files (git master developmental version)"
-arch=('i686' 'x86_64')
-url="http://www.gnu.org/software/binutils/"
-license=('GPL')
+pkgdesc='A set of programs to assemble and manipulate binary and object files (git master developmental version)'
+arch=(i686 x86_64)
+url='http://www.gnu.org/software/binutils/'
+license=(GPL)
 groups=('base-devel')
-depends=('glibc>=2.25' 'zlib')
-makedepends=('git')
-checkdepends=('dejagnu' 'bc')
+depends=('glibc>=2.26' zlib)
+makedepends=(git)
+checkdepends=(dejagnu bc)
 provides=('binutils=${pkgver}')
-conflicts=('binutils-multilib' 'binutils')
-replaces=('binutils-multilib')
-options=('staticlibs' '!distcc' '!ccache')
+conflicts=(binutils-multilib binutils)
+options=(staticlibs !distcc !ccache)
 source=(git+https://sourceware.org/git/binutils-gdb.git)
 md5sums=('SKIP')
 
@@ -41,18 +40,18 @@ pkgver() {
 }
 
 prepare() {
+  mkdir -p binutils-build
+
   cd binutils-gdb
 
   # hack! - libiberty configure tests for header files using "$CPP $CPPFLAGS"
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
-
-  mkdir ${srcdir}/binutils-build
 }
 
 build() {
   cd binutils-build
 
-  ../binutils-gdb/configure \
+  "$srcdir/binutils-gdb/configure" \
     --prefix=/usr \
     --with-lib-path=/usr/lib:/usr/local/lib \
     --with-bugurl=https://bugs.archlinux.org/ \
@@ -65,11 +64,10 @@ build() {
     --enable-deterministic-archives \
     --with-pic \
     --disable-werror \
-    --disable-gdb
+    --disable-gdb \
+    --with-system-zlib
 
-  # check the host environment and makes sure all the necessary tools are available
   make configure-host
-
   make tooldir=/usr
 }
 
@@ -83,13 +81,13 @@ check() {
 
 package() {
   cd binutils-build
-  make prefix=${pkgdir}/usr tooldir=${pkgdir}/usr install
+  make prefix="$pkgdir/usr" tooldir="$pkgdir/usr" install
 
   # Remove unwanted files
-  rm ${pkgdir}/usr/share/man/man1/{dlltool,nlmconv,windres,windmc}*
+  rm -f "$pkgdir"/usr/share/man/man1/{dlltool,nlmconv,windres,windmc}*
 
   # No shared linking to these files outside binutils
-  rm ${pkgdir}/usr/lib/lib{bfd,opcodes}.so
-  echo "INPUT ( /usr/lib/libbfd.a -liberty -lz -ldl )" > "$pkgdir"/usr/lib/libbfd.so
-  echo "INPUT ( /usr/lib/libopcodes.a -lbfd )" > "$pkgdir"/usr/lib/libopcodes.so
+  rm -f "$pkgdir"/usr/lib/lib{bfd,opcodes}.so
+  echo "INPUT( /usr/lib/libbfd.a -liberty -lz -ldl )" > "$pkgdir/usr/lib/libbfd.so"
+  echo "INPUT( /usr/lib/libopcodes.a -lbfd )" > "$pkgdir/usr/lib/libopcodes.so"
 }
