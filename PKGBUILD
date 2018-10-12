@@ -2,7 +2,7 @@
 
 pkgname=pext
 _pkgname=Pext
-pkgver=0.19
+pkgver=0.20
 pkgrel=1
 pkgdesc='Python-based extendable tool'
 url='https://pext.io/'
@@ -16,7 +16,7 @@ optdepends=('pass: password manager support'
 provides=(pext)
 conflicts=(pext)
 source=("https://github.com/Pext/Pext/archive/v$pkgver.tar.gz")
-sha256sums=('b4561f3745761a2895b5bc060004676f891ba6b5ce6ed8c7f88557cbe74bd7ee')
+sha256sums=('fffc6fe53f4ff1de0907022b1cbcc49769743e50b677d352a58e27c2034a7daf')
 
 prepare() {
   sed "s/USE_INTERNAL_UPDATER = .*/USE_INTERNAL_UPDATER = False/" -i ${srcdir}/${_pkgname}-${pkgver}/pext/constants.py
