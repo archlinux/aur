@@ -1,0 +1,63 @@
+--- aaa/texmf/tex/latex/tuddesign/thesis/tudthess_title.sty 2014-07-05 13:33:22.000000000 +0200
++++ bbb/texmf/tex/latex/tuddesign/thesis/tudthess_title.sty 2018-10-12 04:51:31.971953963 +0200
+@@ -280,15 +280,16 @@
+     \language=2
+     \@ifundefined{chapter}{
+       \TUD@setbigtitlestyle{\section}{\sectfont\chapterlinesize}{\thesection}{\TUD@secind}{0}
+-      \section*{Er\-kl\char228\-rung \ifTUD@thesis@gender@female zur\else zum\fi\  \TUD@thesis@thesistype}
++      \section*{Er\-kl\char228\-rung zur Abschlussarbeit}
++      \subsection*{gem\char228 \ss\ \S\ 23 Abs. 7 APB der TU Darmstadt}
+     }{
+       \TUD@setbigtitlestyle{\section}{\sectfont\chapterlinesize}{\thechapter}{\TUD@chapind}{-1}
+-      \chapter*{Er\-kl\char228\-rung \ifTUD@thesis@gender@female zur\else zum\fi\  \TUD@thesis@thesistype}
++      \chapter*{Er\-kl\char228\-rung zur Abschlussarbeit}
++      \subsection*{gem\char228 \ss\ \S\ 23 Abs. 7 APB der TU Darmstadt}
+     }
+     \accentfont\large
+     \parindent0em
+-    \vskip4ex
+-      Hiermit versichere ich,
++      Hiermit versichere ich, #2,
+       \ifTUD@thesis@gender@female
+         die vorliegende 
+       \else\ifTUD@thesis@gender@neuter
+@@ -296,11 +297,35 @@
+       \else
+         den vorliegenden 
+       \fi\fi
+-      \TUD@thesis@thesistype ohne Hilfe Dritter nur mit den an\-ge\-ge\-benen Quellen und 
+-      Hilfsmitteln angefertigt zu haben. Alle Stellen, die aus Quellen 
+-      entnommen wurden, sind als solche kenntlich gemacht. Diese Arbeit hat in
++      \TUD@thesis@thesistype ohne Hilfe Dritter und nur mit den an\-ge\-ge\-benen Quellen und 
++      Hilfsmitteln angefertigt zu haben. Alle Stellen, die Quellen 
++      entnommen wurden, sind als solche kenntlich gemacht worden. Diese Arbeit hat in
+       gleicher oder \char228 hn\-lich\-er Form noch keiner
+-      Pr\char252\-fungs\-be\-h\char246 r\-de vorgelegen.
++      Pr\char252\-fungs\-be\-h\char246 r\-de vorgelegen.\\
++      Mir ist bekannt, dass im Falle eines Plagiats (\S 38 Abs.2 APB) ein T\char228 uschungsversuch 
++      vorliegt, der dazu f\char252 hrt, dass die Arbeit mit 5,0 bewertet und damit ein Pr\char252 fungsversuch 
++      verbraucht wird. Abschlussarbeiten d\char252 rfen nur einmal wiederholt werden.\\
++      Bei der abgegebenen Thesis stimmen die schriftliche und die zur Archivierung eingereichte 
++      elektronische Fassung \char252 berein.\\
++      Bei einer Thesis des Fachbereichs Architektur entspricht die eingereichte elektronische 
++      Fassung dem vorgestellten Modell und den vorgelegten Pl\char228 nen.\\
++      \tudrule\\
++    \language=1
++    {\textbf English translation for information purposes only:\\}
++    \section*{Thesis Statement}
++    \subsection*{pursuant to \S 23 paragraph 7 of APB TU Darmstadt}
++    \parindent0em
++      I herewith formally declare that I, #2, have written the submitted thesis independently. I did not use 
++      any outside support except for the quoted literature and other sources mentioned in the paper. I clearly 
++      marked and separately listed all of the literature and all of the other sources which I employed when 
++      producing this academic work, either literally or in content. This thesis has not been handed in or 
++      published before in the same or similar form.\\
++      I am aware, that in case of an attempt at deception based on plagiarism (§38 Abs. 2 APB), the thesis 
++      would be graded with 5,0 and counted as one failed examination attempt. The thesis may only be repeated once.\\
++      In the submitted thesis the written copies and the electronic version for archiving are identical in content.\\
++      For a thesis of the Department of Architecture, the submitted electronic version corresponds to the presented
++      model and the submitted architectural plans.\\
++      \tudrule
+     \vskip5ex
+       Darmstadt, den #1
+     \vskip6ex
