@@ -1,8 +1,8 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-kde-bin
-pkgver=56.2.3
-pkgrel=2
+pkgver=56.2.4
+pkgrel=1
 pkgdesc="Free, open and private browser with openSUSE's patches for better integration with KDE"
 arch=('x86_64')
 url="https://www.waterfoxproject.org/"
@@ -19,7 +19,7 @@ conflicts=('waterfox')
 options=('!emptydirs' '!strip')
 install=$pkgname.install
 source=("waterfox-kde_${pkgver}-${pkgrel}_amd64.deb::https://dl.bintray.com/hawkeye116477/waterfox-deb/pool/w/waterfox/waterfox-kde_${pkgver}-${pkgrel}_amd64.deb")
-sha256sums=('f24f55b3d01b59a06a8ff7008ddebde654443923388f135e878d9309db94ddde')
+sha256sums=('0dcfa89a0f7d2ca615b1c5e25256f528f212e2709ef39af5e57a57ee7abb5205')
 
 package() {
 # Extract Waterfox from .deb package
@@ -29,6 +29,7 @@ bsdtar -xf data.tar.xz -C "$pkgdir/"
 # Settings file for language packs
 _settings=/opt/waterfox/.installer/settings
 
+_locale_ver=56.2.3
 if [ -f "$_settings" ]; then
 echo "Previous settings detected! Do you wish to load them?"
 select yn in "Yes" "No"; do
@@ -36,9 +37,9 @@ select yn in "Yes" "No"; do
                     Yes )
     if grep -q download_language=yes "$_settings"; then
     _chosen_language=$(grep -Po 'chosen_language=\K[^ ]+' $_settings)
-    wget -O $srcdir/waterfox-locale-${_chosen_language}_${pkgver}_amd64.deb https://dl.bintray.com/hawkeye116477/waterfox-deb/pool/w/waterfox/waterfox-locale-${_chosen_language}_${pkgver}_amd64.deb;
+    wget -O $srcdir/waterfox-locale-${_chosen_language}_${_locale_ver}_amd64.deb https://dl.bintray.com/hawkeye116477/waterfox-deb/pool/w/waterfox/waterfox-locale-${_chosen_language}_${_locale_ver}_amd64.deb;
 	msg2 "Extracting locale..."
-    bsdtar -xf $srcdir/waterfox-locale-${_chosen_language}_${pkgver}_amd64.deb
+    bsdtar -xf $srcdir/waterfox-locale-${_chosen_language}_${_locale_ver}_amd64.deb
     bsdtar -xf $srcdir/data.tar.xz -C "$pkgdir/"
     fi
     mkdir $pkgdir/opt/waterfox/.installer/
@@ -84,9 +85,9 @@ printf "Type language code of language you wish to download and install
 for example - for Polish, type pl): "
 read _chosen_language
 
-    wget -O $srcdir/waterfox-locale-${_chosen_language}_${pkgver}_amd64.deb https://dl.bintray.com/hawkeye116477/waterfox-deb/pool/w/waterfox/waterfox-locale-${_chosen_language}_${pkgver}_amd64.deb;
+    wget -O $srcdir/waterfox-locale-${_chosen_language}_${_locale_ver}_amd64.deb https://dl.bintray.com/hawkeye116477/waterfox-deb/pool/w/waterfox/waterfox-locale-${_chosen_language}_${_locale_ver}_amd64.deb;
 	msg2 "Extracting locale..."
-    bsdtar -xf $srcdir/waterfox-locale-${_chosen_language}_${pkgver}_amd64.deb
+    bsdtar -xf $srcdir/waterfox-locale-${_chosen_language}_${_locale_ver}_amd64.deb
     bsdtar -xf $srcdir/data.tar.xz -C "$pkgdir/"
                     break;;
                     No )
