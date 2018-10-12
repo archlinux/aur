@@ -1,0 +1,21 @@
+pkgbase = ossia-score-appimage
+	pkgdesc = an interactive sequencer for the intermedia arts.
+	pkgver = 1.0.0b40
+	pkgrel = 1
+	url = https://ossia.io/
+	arch = x86_64
+	license = custom
+	depends = glib2
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = qt5-quickcontrols2
+	depends = qt5-serialport
+	depends = qt5-svg
+	depends = qt5-websockets
+	source = Score.AppImage::https://github.com/OSSIA/score/releases/download/v1.0.0-b40/Score-v1.0.0-b40-amd64.AppImage
+	source = ossia-score
+	md5sums = c21b30e221d0e13f77f22c80584373af
+	md5sums = da517b82b443be8057ee4fbadb414e43
+
+pkgname = ossia-score-appimage
+
