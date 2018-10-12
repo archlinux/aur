@@ -1,9 +1,8 @@
 # Maintainer: pappy <pappy _AT_ a s c e l i o n _DOT_ com>
 
-_pkgname=OctoPrint
 pkgname=octoprint
 pkgver=1.3.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Responsive web interface for controlling a 3D printer (RepRap, Ultimaker, ...)"
 arch=(x86_64 armv6h armv7h)
 url="http://octoprint.org/"
@@ -51,15 +50,14 @@ provides=(octoprint)
 conflicts=('octoprint-venv')
 install=octoprint.install
 backup=(etc/conf.d/octoprint)
-source=($pkgname-$pkgver.tar.gz::https://github.com/foosel/$_pkgname/archive/$pkgver.tar.gz
-
+source=($pkgname::git+https://github.com/foosel/OctoPrint.git
 		octoprint.sysusers
 		octoprint.service
 		octoprint-serve
 		octoprint.conf
 		)
 
-sha256sums=('f3eaf15784e9eb6ae46266b06cbe09f7ff874fb1bf13b1dd2eaca070718e2a6e'
+sha256sums=('SKIP'
             'bd9b7f989aefb02da1ac414f306861f21f084d886f0283eea11516482b407d65'
             '231685e84b0241a466766c766f8d3ba31efda3238f19e9adedea380e7b861737'
             '08e6ff10fb7f61c40e5770b67e8f7201d02d82d3bd46c5441a7f2b0435fbe9c2'
@@ -67,7 +65,8 @@ sha256sums=('f3eaf15784e9eb6ae46266b06cbe09f7ff874fb1bf13b1dd2eaca070718e2a6e'
 
 prepare()
 {
-	cd $_pkgname-$pkgver
+	cd $srcdir/$pkgname
+	git checkout -q $pkgver
 
 	for s in ${source[@]}; do
 		case $s in
@@ -82,7 +81,7 @@ prepare()
 package() {
 	virtualenv2 --system-site-packages --no-setuptools --no-wheel $pkgdir/usr/lib/$pkgname
 
-	pushd $_pkgname-$pkgver
+	pushd $srcdir/$pkgname
 	$pkgdir/usr/lib/$pkgname/bin/pip install --install-option '--optimize=1' .
 	popd
 
