@@ -1,0 +1,24 @@
+From 546204cc77b7299637ea16ff470921d43e4bc1a5 Mon Sep 17 00:00:00 2001
+From: Mark Weiman <mweiman@merit.edu>
+Date: Fri, 12 Oct 2018 09:45:28 -0400
+Subject: [PATCH 1/2] cors-trace2tuple.c: Remove missing header
+
+---
+ tools/cors-trace2tuple.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/tools/cors-trace2tuple.c b/tools/cors-trace2tuple.c
+index cacae27..ea36c19 100644
+--- a/tools/cors-trace2tuple.c
++++ b/tools/cors-trace2tuple.c
+@@ -58,7 +58,6 @@
+ #include <signal.h>
+ 
+ #include "libtrace.h"
+-#include "lt_inttypes.h"
+ 
+ struct libtrace_t *trace;
+ 
+-- 
+2.19.1
+

@@ -2,22 +2,24 @@
 
 pkgname=corsaro
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A software suite for performing large-scale analysis of trace data"
 arch=('i686' 'x86_64')
 url="https://www.caida.org/tools/measurement/corsaro/"
 depends=('libtrace')
 license=('GPL2')
 source=("https://www.caida.org/tools/measurement/${pkgname}/downloads/${pkgname}-${pkgver}.tar.gz"
-        remove-missing-header.patch)
+        0001-cors-trace2tuple.c-Remove-missing-header.patch
+        0002-Removes-include-to-config.h-in-public-headers.patch)
 md5sums=('f4970360525b5d112a1040a27503e87f'
-         'f0b86fa23f427c9a0ba608e7a1b5081d')
+         '4ea8f2e5a1bd608e8a65e8f7dbd9a2f8'
+         '440716d2539a211ad4105d4ff7bac9b1')
 
 build() {
   cd "${pkgname}-${pkgver}"
 
-  msg "Applying remove-missing-header.patch"
-  patch -Np0 -i ../remove-missing-header.patch
+  patch -p1 -i ../0001-cors-trace2tuple.c-Remove-missing-header.patch
+  patch -p1 -i ../0002-Removes-include-to-config.h-in-public-headers.patch
 
   ./configure --prefix=/usr
   make

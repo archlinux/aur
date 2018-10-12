@@ -1,0 +1,67 @@
+From 40120246db7ab08b34a800234f97a66d42f5c8de Mon Sep 17 00:00:00 2001
+From: Mark Weiman <mweiman@merit.edu>
+Date: Fri, 12 Oct 2018 10:04:52 -0400
+Subject: [PATCH 2/2] Removes include to config.h in public headers
+
+---
+ libcorsaro/corsaro.h      | 2 --
+ libcorsaro/corsaro_io.h   | 2 --
+ libcorsaro/corsaro_log.h  | 2 --
+ tools/cors-ft-aggregate.c | 2 ++
+ 4 files changed, 2 insertions(+), 6 deletions(-)
+
+diff --git a/libcorsaro/corsaro.h b/libcorsaro/corsaro.h
+index 43ee02d..642edb8 100644
+--- a/libcorsaro/corsaro.h
++++ b/libcorsaro/corsaro.h
+@@ -26,8 +26,6 @@
+ #ifndef __CORSARO_H
+ #define __CORSARO_H
+ 
+-#include "config.h"
+-
+ #include "libtrace.h"
+ #include "wandio.h"
+ 
+diff --git a/libcorsaro/corsaro_io.h b/libcorsaro/corsaro_io.h
+index 0984707..bd7a72b 100644
+--- a/libcorsaro/corsaro_io.h
++++ b/libcorsaro/corsaro_io.h
+@@ -26,8 +26,6 @@
+ #ifndef __CORSARO_IO_H
+ #define __CORSARO_IO_H
+ 
+-#include "config.h"
+-
+ #include "corsaro_int.h"
+ 
+ #include "corsaro_file.h"
+diff --git a/libcorsaro/corsaro_log.h b/libcorsaro/corsaro_log.h
+index 6ebc4e3..d3d6d60 100644
+--- a/libcorsaro/corsaro_log.h
++++ b/libcorsaro/corsaro_log.h
+@@ -26,8 +26,6 @@
+ #ifndef __CORSARO_LOG_H
+ #define __CORSARO_LOG_H
+ 
+-#include "config.h"
+-
+ #include <stdarg.h>
+ 
+ #include "corsaro_int.h"
+diff --git a/tools/cors-ft-aggregate.c b/tools/cors-ft-aggregate.c
+index 471b48e..c6f1bd1 100644
+--- a/tools/cors-ft-aggregate.c
++++ b/tools/cors-ft-aggregate.c
+@@ -30,6 +30,8 @@
+ #include <string.h>
+ #include <unistd.h>
+ 
++#include "config.h"
++
+ #include "libtrace.h"
+ 
+ #include "corsaro.h"
+-- 
+2.19.1
+
