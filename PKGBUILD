@@ -2,7 +2,7 @@
 
 pkgname=python-fast-histogram
 _pyname=fast-histogram
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="Fast 1D and 2D histogram functions in Python"
 arch=('i386' 'x86_64')
@@ -10,8 +10,9 @@ url="https://github.com/astrofrog/fast-histogram"
 license=('CUSTOM')
 depends=('python' 'python-numpy')
 makedepends=('python-setuptools')
-source=(https://files.pythonhosted.org/packages/dc/6b/3c796520422f5e5940d608ee0a3fff1ad4aa535132c2331581dab4e9a187/fast-histogram-${pkgver}.tar.gz)
-sha256sums=('8afcea57930c9ede74ce304a45c5374128485e83c4c9ad143a8778c5ed281419')
+        
+source=(https://files.pythonhosted.org/packages/5d/65/d070114edb45e3365768ae43a15ab1491dc8ff06ea57384262c22e742dd1/fast-histogram-${pkgver}.tar.gz)
+sha256sums=('0e3849e244909aa68e58305ed101c19c8576176eaf90fd5d79215d5ade51a6a7')
 
 package() {
   cd "${srcdir}/${_pyname}-${pkgver}"
