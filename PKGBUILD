@@ -9,7 +9,7 @@
 pkgname=acroread
 pkgver=9.5.5
 pkgrel=9
-pkgdesc="Adobe Reader is a PDF file viewer"
+pkgdesc="Adobe Acrobat Reader is a PDF file viewer"
 arch=('i686' 'x86_64')
 url="http://www.adobe.com/products/reader/"
 license=(custom)
