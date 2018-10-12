@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=EVE Configuration
+Icon=winecfg
+Comment=Wine Configuration for EVE
+Exec=/usr/bin/evewinecfg
+NoDisplay=false
+Categories=Utility;Wine;
+StartupNotify=false
+Terminal=false

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=EVE Winetricks
+Icon=winetricks
+Comment=Winetricks for EVE
+Exec=/usr/bin/evewinetricks
+NoDisplay=false
+Categories=Utility;Wine;
+StartupNotify=false
+Terminal=false

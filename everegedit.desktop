@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=EVE Registry Editor
+Icon=regedit
+Comment=Wine Registry Editor for EVE
+Exec=/usr/bin/everegedit
+NoDisplay=false
+Categories=Utility;Wine;
+StartupNotify=false
+Terminal=false
