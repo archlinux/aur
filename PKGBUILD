@@ -14,6 +14,10 @@ provides=(${pkgname/-git/})
 source=("git+https://github.com/gyunaev/${pkgname/-git/}.git")
 sha1sums=(SKIP)
 
+pkgver() {
+  git -C ${pkgname/-git/} describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 build() {
   mkdir -p build && cd build
   qmake-qt5 ../${pkgname/-git/}/src
