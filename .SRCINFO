@@ -1,7 +1,7 @@
 pkgbase = python-glue-core
 	pkgdesc = Linked Data Visualizations Across Multiple Files -- core library
-	pkgver = 0.13.2
-	pkgrel = 2
+	pkgver = 0.13.3
+	pkgrel = 1
 	url = http://glueviz.org/
 	arch = i386
 	arch = x86_64
@@ -19,8 +19,8 @@ pkgbase = python-glue-core
 	depends = python-dill
 	depends = python-h5py
 	depends = python-mpl-scatter-density
-	source = https://files.pythonhosted.org/packages/c1/5b/abcfa7d826d58c1016d51306b11cb994b20dd11ecb1a35f6c80f095758c7/glue-core-0.13.2.tar.gz
-	sha256sums = 9a52bdbfac355579caed2735ba7644113d861ce2c4e084830c99a69374043495
+	source = https://files.pythonhosted.org/packages/80/72/0aa7bb8a99323b5ee0d67c359066188c0e9de1d8f3575b39a3fe5515be50/glue-core-0.13.3.tar.gz
+	sha256sums = da4e3e9c18366c81effb37cbe281fdaa4899e8acb01c47ac0f0f4d5d156677e9
 
 pkgname = python-glue-core
 
