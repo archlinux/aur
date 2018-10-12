@@ -1,10 +1,9 @@
-# $Id$
-# Maintainer: James Harvey <jamespharvey20@gmail.com>
+# Maintainer: James Harvey <jamespharvey20 at gmail dot com>
 # * No namcap warnings or errors
 
 pkgname=bash-git-prompt-git
 _pkgname=bash-git-prompt
-pkgver=2.6.1.r506.9af8824
+pkgver=2.7.1.r584.9c07945
 pkgrel=1
 pkgdesc="Informative git prompt for bash and fish (git version)"
 arch=('any')
@@ -19,7 +18,7 @@ source=("git+https://github.com/magicmonty/${_pkgname}"
         'bash-git-prompt.install'
         'Default_Arch.bgptheme')
 md5sums=('SKIP'
-         '990d3a7ef8a21b83f0d1e90d9ef1a5b7'
+         '9024256781844b2af5da4da4882e9160'
          'af064330b3a579ec6efd2e018e6829df')
 install='bash-git-prompt.install'
 
@@ -48,9 +47,15 @@ package() {
   install -Dm644 Default_NoExitState.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Default_NoExitState.bgptheme
   install -Dm644 Evermeet.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Evermeet.bgptheme
   install -Dm644 Evermeet_Lowres.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Evermeet_Lowres.bgptheme
+  install -Dm644 Minimal.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Minimal.bgptheme
+  install -Dm644 Minimal_UserHost.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Minimal_UserHost.bgptheme
+  install -Dm644 Plague_Doctor.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Plague_Doctor.bgptheme
   install -Dm644 Single_line.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Single_line.bgptheme
+  install -Dm644 Single_line_Dark.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Single_line_Dark.bgptheme
+  install -Dm644 Single_line_Minimalist.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Single_line_Minimalist.bgptheme
   install -Dm644 Single_line_NoExitState.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Single_line_NoExitState.bgptheme
   install -Dm644 Single_line_Solarized.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Single_line_Solarized.bgptheme
+  install -Dm644 Single_line_Solarized_Lamda.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Single_line_Solarized_Lamda.bgptheme
   install -Dm644 Solarized.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Solarized.bgptheme
   install -Dm644 Solarized_Extravagant.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Solarized_Extravagant.bgptheme
   install -Dm644 Solarized_NoExitState.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Solarized_NoExitState.bgptheme
