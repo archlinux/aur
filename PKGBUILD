@@ -28,8 +28,6 @@ conflicts=('evelauncher' 'evesetup_dev')
 source=("evelauncher.desktop"
         "evelauncher.sh"
         "evelauncher.sh.real"
-        "eveoverrides.desktop"
-        "eveoverrides"
         "everegedit.desktop"
         "everegedit"
         "evewine"
@@ -84,8 +82,6 @@ package() {
 sha256sums=('f49b404341e1dd48eaa2504c83f9ff07c9a4c11e1a109c67d04167dc70d65731'
             'a55d3764d7f6783ca3133770ded7bde46c6be4421ab48c63f830aefb5cb07d2f'
             '4e33e44c46e160bdc924d2705be58454bdf67dd945c056b7ab509c90a60c1d9f'
-            '224bbbd2dc6a8dbb4122289344f17b7d5989d42d00501f785dad61bcf030b0ad'
-            'e3790fa24a6a29dae377beaffad10a1089502baaaee2a0b0f9e66e5d278cd70e'
             'f8988be390204ce645ca37f43cdb8e395970f8d6dd36095acf08c5c7cf72833c'
             '3b12085bc5250fde7a1ba6ddb63d77328fec6a3836413ec3cb687622bf962627'
             'b31f607fcb09b4182d1acc08aa4f8e7c2e24ed40f64ede7b08328191481daa60'
