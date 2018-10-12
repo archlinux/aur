@@ -1,6 +1,7 @@
-# Maintainer: Andrew Stubbs <andrew.stubbs@gmail.com>
+# Maintainer: Matthew McGinn <mamcgi@gmail.com>
+# Contributor: Andrew Stubbs <andrew.stubbs@gmail.com>
 pkgname=etcher-cli-bin
-_realver=1.4.4
+_realver=1.4.5
 pkgver=${_realver//-/_}
 pkgrel=1
 pkgdesc="Burn images to SD cards & USB drives, safe & easy"
@@ -13,7 +14,7 @@ depends=('gcc-libs')
 optdepends=()
 source=("https://github.com/resin-io/etcher/releases/download/v${_realver}/Etcher-cli-${_realver}-linux-x64.tar.gz")
 options=("!strip")
-sha256sums=('54709ad34ac304d2686130c7d22a3bc13b4f491387d987274eeca4f6eea34dce')
+sha256sums=('f7f3d63c29f5bf0b494c68efd6cc990e2e571c5f1833ed1c6f773f0f3681eb56')
 
 package() {
     cd "$pkgdir"
