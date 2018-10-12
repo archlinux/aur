@@ -1,0 +1,14 @@
+pkgbase = infnoise-git
+	pkgdesc = The world's easiest TRNG to get right
+	pkgver = 0.2.6.r114.g87bb7af
+	pkgrel = 1
+	url = https://github.com/waywardgeek/infnoise
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = libftdi-compat
+	source = git+https://github.com/13-37-org/infnoise.git
+	sha256sums = SKIP
+
+pkgname = infnoise-git
+
