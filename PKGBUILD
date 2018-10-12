@@ -10,7 +10,8 @@ url=https://github.com/audiohacked/OpenCorsairLink
 license=(GPL2)
 depends=(libusb)
 makedepends=(git libdrm pkg-config)
-conflicts=(opencorsairlink-git opencorsairlink-testing-git)
+provides=(opencorsairlink)
+conflicts=(opencorsairlink opencorsairlink-git opencorsairlink-testing-git)
 source=(git+$url#commit=$_commit)
 sha512sums=(SKIP)
 
