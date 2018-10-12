@@ -2,7 +2,7 @@
 pkgname=caffe-opencl-slim-git
 _srcname=caffe
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A slimmed-down build of Caffe based on caffe-opencl-git"
 arch=('x86_64')
 url="http://caffe.berkeleyvision.org/"
@@ -19,8 +19,10 @@ makedepends=('cmake')
 provides=('caffe')
 conflicts=('caffe' 'caffe-git' 'caffe-cpu-git' 'caffe-dr-git' 'caffe-mnc-dr-git' 'caffe-cpu'
            'caffe2' 'caffe2-git' 'caffe2-cpu' 'caffe2-cpu-git' 'caffe-opencl-git')
-source=("${_srcname}"::"git+https://github.com/BVLC/${_srcname}#branch=opencl")
-sha256sums=('SKIP')
+source=("${_srcname}"::"git+https://github.com/BVLC/${_srcname}#branch=opencl"
+        'dependencies.patch')
+sha256sums=('SKIP'
+            '7ddb59109d7df3889641eaa4769e6b9e82f96f623b200ecfd8ade7ecfe04f95f')
 
 prepare() {
     cd "${_srcname}"
