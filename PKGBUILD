@@ -2,7 +2,7 @@
 
 pkgname=pytype
 pkgver=2018.9.19
-pkgrel=4
+pkgrel=5
 pkgdesc="Python type inferencer"
 arch=('any')
 url="https://github.com/google/pytype"
@@ -13,6 +13,7 @@ depends=('python-importlab>=0.3.1'
 makedepends=('python' 'python-setuptools' 'python-wheel'
              'make' 'gcc' 'cmake' 'ninja'
              'bison>=3.0.2' 'flex>=2.5.35')
+optdepends=('python36: Python versions > 3.6 are not yet supported')
 options=(!emptydirs)
 source=("https://github.com/google/pytype/archive/${pkgver}.tar.gz"
         "cpython-9734024.zip::https://github.com/python/cpython/archive/9734024ec65311e33936faa83fb1cb249ef0de9d.zip"

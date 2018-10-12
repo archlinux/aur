@@ -1,7 +1,7 @@
 pkgbase = pytype
 	pkgdesc = Python type inferencer
 	pkgver = 2018.9.19
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/google/pytype
 	arch = any
 	license = APACHE
@@ -16,6 +16,7 @@ pkgbase = pytype
 	makedepends = flex>=2.5.35
 	depends = python-importlab>=0.3.1
 	depends = python-yaml>=3.11
+	optdepends = python36: Python versions > 3.6 are not yet supported
 	provides = pytype
 	options = !emptydirs
 	source = https://github.com/google/pytype/archive/2018.9.19.tar.gz
