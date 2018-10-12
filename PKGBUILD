@@ -11,9 +11,8 @@ arch=('any')
 url="https://github.com/rd235/$_pkgname"
 license=('GPL2')
 groups=('view-os')
-#~ depends=('')
 provides=("$_pkgname")
-replaces=("lib$_pkgname")
+replaces=("$_pkgname")
 source=("git+https://github.com/rd235/$_pkgname.git")
 md5sums=('SKIP')
 

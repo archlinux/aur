@@ -7,7 +7,7 @@ pkgbase = s2argv-execs-git
 	groups = view-os
 	license = GPL2
 	provides = s2argv-execs
-	replaces = libs2argv-execs
+	replaces = s2argv-execs
 	source = git+https://github.com/rd235/s2argv-execs.git
 	md5sums = SKIP
 
