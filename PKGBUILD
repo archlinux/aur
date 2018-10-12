@@ -3,7 +3,7 @@ pkgbase=qt5-service
 pkgname=(qt5-service qt5-service-doc)
 group=qt5-service-full
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A platform independent library to easily create system services and use some of their features"
 arch=('i686' 'x86_64')
 url="https://github.com/Skycoder42/QtService"
@@ -42,7 +42,7 @@ package_qt5-service() {
     -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
 
   install -D -m644 "../$_pkgfqn/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -D -m644 "../${pkgname}.rule" "$pkgdir/etc/repkg/rules/${pkgname}.rule"
+  install -D -m644 "../${pkgname}.rule" "$pkgdir/etc/repkg/rules/system/${pkgname}.rule"
 }
 
 package_qt5-service-doc() {
