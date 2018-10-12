@@ -3,17 +3,16 @@
 
 pkgname=php-pam
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="This extension provides PAM (Pluggable Authentication Modules) integration in PHP."
 arch=('i686' 'x86_64')
 url="https://github.com/amishmm/php-pam"
 license=('PHP')
 depends=('php>=7.2.0' 'pam' 'php-pear')
 makedepends=('autoconf')
-#install=php-pam.install
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/amishmm/${pkgname}/archive/v${pkgver}.tar.gz" php)
-md5sums=('0182234a17611e79f537c0b16927fe8e'
-         '5fb207f61ff94b0cc7a2dcc1e3c1c388')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/amishmm/${pkgname}/archive/v${pkgver}.tar.gz")
+md5sums=('0182234a17611e79f537c0b16927fe8e')
+backup=('etc/pam.d/php')
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -25,7 +24,20 @@ build() {
 package() {
   cd "${pkgname}-${pkgver}"
   make INSTALL_ROOT="${pkgdir}" install
-  echo -e "extension=pam.so;\npam.servicename=\"php\";" | \
+
+  echo -e "extension=pam.so;\npam.servicename=\"php\";\npam.force_servicename=0;" | \
     install -Dm644 /dev/stdin "${pkgdir}/etc/php/conf.d/pam.ini"
-  install -Dm644 "${srcdir}/php" ${pkgdir}/etc/pam.d/php
+
+  # use archlinux's own system-remote-login as PAM service
+  # because that is expected to be well tested for security
+  # and all future modifications will also automatically apply
+  # NOTE: content copied from /etc/pam.d/sshd
+  install -Dm644 /dev/stdin "${pkgdir}/etc/pam.d/php" << 'EOF'
+#%PAM-1.0
+#auth     required  pam_securetty.so     #disable remote root
+auth      include   system-remote-login
+account   include   system-remote-login
+password  include   system-remote-login
+session   include   system-remote-login
+EOF
 }
