@@ -9,6 +9,7 @@ pkgbase = wmsystemtray
 	depends = libxmu
 	depends = libxfixes
 	depends = libxpm
+	depends = xorg-fonts-misc
 	source = http://downloads.sourceforge.net/wmsystemtray/wmsystemtray-1.4.tar.gz
 	md5sums = 5f04edd3989b5030176492943795b6b0
 
