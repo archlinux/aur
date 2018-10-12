@@ -1,13 +1,13 @@
 pkgbase = lxdm-themes
 	pkgdesc = Archlinux, ArchlinuxFull, ArchlinuxTop, Arch-Dark, Arch-Stripes and IndustrialArch lxdm themes
 	pkgver = 1
-	pkgrel = 6
+	pkgrel = 7
 	url = https://wiki.archlinux.org/index.php/LXDM#Themes
 	install = lxdm-themes.install
 	arch = any
 	license = GPL
 	license = CCPL
-	depends = lxdm
+	makedepends = git
 	conflicts = archlinux-lxdm-theme
 	conflicts = archlinux-lxdm-theme-full
 	conflicts = archlinux-lxdm-theme-top
