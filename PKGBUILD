@@ -1,34 +1,40 @@
-# Maintainer: Albert Graef <aggraef at gmail dot com>
-# Contributor: David Adler <d dot adler aet posteo dot de>
+# Maintainer: David Adler <d.adler@posteo.de>
+# Contributor: Albert Graef <aggraef at gmail dot com>
+# Contributor: David Runge <dave@sleepmap.de>
 
-pkgname=yoshimi-git
-pkgver=785.7927342
+_pkgname=yoshimi
+pkgname=$_pkgname-git
+pkgver=r1777.d790386d
 pkgrel=1
-pkgdesc="ZynAddSubFX fork with improved JACK audio & MIDI IO (git version)"
-arch=('i686' 'x86_64')
-url="http://yoshimi.sourceforge.net/"
+pkgdesc="a fork of the ZynAddSubFX software systhesizer"
+arch=('x86_64')
+url="https://yoshimi.github.io/"
 license=('GPL')
-depends=('jack' 'fltk' 'fftw' 'mxml' 'cairo' 'lv2')
-makedepends=('cmake' 'boost' 'mesa')
-source=("$pkgname::git+git://git.code.sf.net/p/yoshimi/code")
+depends=('alsa-lib' 'jack' 'fltk' 'fftw' 'mxml' 'cairo')
+makedepends=('cmake' 'lv2' 'mesa' 'git')
+provides=('yoshimi')
+conflicts=('yoshimi')
+source=("git+https://github.com/Yoshimi/$_pkgname.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd $srcdir/$pkgname
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+    cd "$_pkgname/src"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+
 build() {
-  cd "$srcdir/$pkgname/src" 
-  cmake -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
-    -DCMAKE_INSTALL_DATAROOTDIR="$pkgdir/usr/share" \
-    -DCMAKE_INSTALL_LIBDIR="$pkgdir/usr/lib" .
-  make
+    cd "$_pkgname/src" 
+    cmake -DCMAKE_INSTALL_PREFIX='/usr' \
+        -DCMAKE_INSTALL_DATAROOTDIR='/usr/share' \
+        -DCMAKE_INSTALL_LIBDIR='/usr/lib' .
+    make
 }
 
 package() {
-  cd "$srcdir/$pkgname/src" 
-  make install
+    cd "$_pkgname/src" 
+    make DESTDIR="$pkgdir" install
+    install -t "${pkgdir}/usr/share/doc/${_pkgname}/" \
+        -vDm 644 ../{Changelog,Dependencies,README.txt,Yoshimi_Helpers}
 }
 
-# vim:set ts=2 sw=2 et:
