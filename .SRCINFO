@@ -1,13 +1,13 @@
 pkgbase = hg-evolve
 	pkgdesc = Flexible evolution of Mercurial history
-	pkgver = 8.2.1
+	pkgver = 8.3.0
 	pkgrel = 1
 	url = https://www.mercurial-scm.org/doc/evolution/
 	arch = any
 	license = GPL2
 	depends = mercurial<4.8
-	source = https://files.pythonhosted.org/packages/source/h/hg-evolve/hg-evolve-8.2.1.tar.gz
-	sha512sums = f9dd2078cfb2de85504747ef48c454fc0ddea3cc36988849e4652451cd18a92044bee4e3eb9866e44df81136c363c60e06777ff95b98a605719a0be824ca3c07
+	source = https://files.pythonhosted.org/packages/source/h/hg-evolve/hg-evolve-8.3.0.tar.gz
+	sha512sums = 2a1861d3a061a2d0574fb0342bc9c6cedf253db8737c2e1a33e2446028746f271a4abbe25b314506a5356c80d67510358f6df207950b2925ff61dc1ae5f5a609
 
 pkgname = hg-evolve
 
