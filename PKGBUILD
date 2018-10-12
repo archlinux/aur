@@ -3,7 +3,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=gdb-mini
-pkgver=8.1
+pkgver=8.2
 pkgrel=1
 pkgdesc='The GNU Debugger without useless dependencies'
 arch=(x86_64)
@@ -11,7 +11,7 @@ url='http://www.gnu.org/software/gdb/'
 license=(GPL3)
 makedepends=(texinfo)
 source=(https://ftp.gnu.org/gnu/gdb/gdb-${pkgver}.tar.xz)
-sha1sums=('641861f7d3f22b6a23bc3e801f0ff29a78375490')
+sha1sums=('ee66294d87a109f88a459d0da5d0bb2da5135f45')
 provides=(gdb)
 conflicts=(gdb)
 
@@ -37,5 +37,6 @@ package() {
   make DESTDIR=$pkgdir install
 
   rm $pkgdir/usr/bin/gcore
+  rm $pkgdir/usr/bin/gdb-add-index
   rm -r $pkgdir/usr/{include,lib,share}
 }
