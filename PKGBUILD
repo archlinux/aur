@@ -76,7 +76,7 @@ package() {
         install -d "${pkgdir}/opt/${pkgname}/lib"
         mv ${srcdir}/launcher-${pkgver}.tar.xz ${pkgdir}/opt/${pkgname}/lib
         install -d ${pkgdir}/usr/share/icons
-        cp -r ${srcdir}/icons ${pkgdir}/usr/share
+        cp -r ${srcdir}/icons ${pkgdir}/usr/share/
 }
 
 sha256sums=('f49b404341e1dd48eaa2504c83f9ff07c9a4c11e1a109c67d04167dc70d65731'
