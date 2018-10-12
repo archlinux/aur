@@ -3,8 +3,8 @@
 # Contributor: Jason Chu <jchu@xentac.net>
 
 pkgname=lib32-openal
-pkgver=1.19.0
-pkgrel=2
+pkgver=1.19.1
+pkgrel=1
 pkgdesc="Cross-platform 3D audio library, software implementation (32-bit)"
 arch=(x86_64)
 url="https://github.com/kcat/openal-soft"
@@ -12,7 +12,7 @@ license=(LGPL)
 depends=(lib32-glibc openal)
 makedepends=(lib32-alsa-lib lib32-libpulse lib32-fluidsynth lib32-portaudio lib32-jack
              git cmake ninja gcc-multilib)
-_commit=96aacac10ca852fc30fd7f72f3e3c6ddbe02858c  # tags/openal-soft-1.19.0
+_commit=6761218e51699f46bf25c377e65b3e9ea5e434b9  # tags/openal-soft-1.19.1
 source=("git+https://github.com/kcat/openal-soft#commit=$_commit")
 sha256sums=('SKIP')
 
