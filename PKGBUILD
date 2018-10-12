@@ -7,7 +7,7 @@
 # Modifications to Use Git Master Source
 # ======================================
 # Maintainer: James Harvey <jamespharvey20 at gmail dot com>
-#    * This PKGFILE as closely as possible matches core's binutils 2.28.0-1
+#    * This PKGFILE as closely as possible matches core's binutils 2.28.0-4
 #    * All namcap warnings and errors are identical, other than:
 #       * Warning zlib is no longer a dependency
 #          * Siding with caution, leaving it as a dependency
@@ -61,6 +61,7 @@ build() {
     --enable-ld=default \
     --enable-gold \
     --enable-plugins \
+    --enable-relro \
     --enable-deterministic-archives \
     --with-pic \
     --disable-werror \
