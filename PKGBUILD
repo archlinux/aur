@@ -1,6 +1,6 @@
 # Maintainer: Caleb Jamison <cbjamo@gmail.com> 
 pkgname=python-skidl
-pkgver=0.0.23
+pkgver=0.0.24
 pkgrel=1
 pkgdesc="A Python package for textually describing electronic circuit schematics."
 arch=(any)
@@ -14,7 +14,7 @@ options=(!emptydirs)
 install=
 _name=${pkgname#python-}
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz)
-sha256sums=('67a887a401f19f182c61d144195280e53d0469efb4e9ae2a1c66f890b76774d4')
+sha256sums=('59c14dc9d1a92ffe6ff456e3e95b53d7d7517ccc4221b6b02de87ce937e97a09')
 
 prepare() {
   cd "$srcdir/$_name-$pkgver"
