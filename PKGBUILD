@@ -5,7 +5,7 @@
 BUILD_SELINUX=false
 
 pkgname=389-ds-base
-pkgver=1.4.0.16
+pkgver=1.4.0.18
 pkgrel=1
 pkgdesc="389 Directory Server (base)"
 arch=(i686 x86_64)
@@ -29,9 +29,8 @@ backup=(etc/default/dirsrv
         etc/dirsrv/config/slapd-collations.conf
         etc/dirsrv/config/template-initconfig)
 options=(!libtool)
-install=${pkgname}.install
 source=("https://releases.pagure.org/389-ds-base/${pkgname}-${pkgver}.tar.bz2")
-sha512sums=('c958ef8fe0329f099f5cc21937fe81cfb78be093093c07d19c87ab32ccfcfbacbe924d9e1705d4f3d5df827e6821fd1917fc8906b3a39feb531aa897269ceab0')
+sha512sums=('ac658801fe3343b48947b1a2599dde173e2850f54873ccb04862c5b166333bcc0967b4e4dde52d94dd1ce216fd81f55ed4505a47799b04d9dadba7d006deffe3')
 
 build() {
   cd "${pkgname}-${pkgver}"
