@@ -1,12 +1,13 @@
 # Maintainer: TC <crt@archlinux.email>
 pkgname=ossec-hids
 pkgver=3.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Open Source Host-based Intrusion Detection System"
 arch=('any')
 url="https://ossec.github.io/"
 license=('GPL2')
 depends=('openssl')
+optdepends=('geoip-database-extra')
 backup=('var/ossec/etc/ossec.conf'
         'var/ossec/etc/client.keys'
         'var/ossec/rules/local_rules.xml')
@@ -25,7 +26,7 @@ _preparevars() {
   export USER_NO_STOP=yes
   export USER_DIR=$_instdir
   export USER_BINARYINSTALL=x
-  export USE_GEOIP=yes
+  export USE_GEOIP=1
 }
 
 build() {
@@ -38,7 +39,7 @@ build() {
   sed -i "s|^OSSEC_INIT.*|OSSEC_INIT=\"$pkgdir/etc/ossec-init.conf\"|" src/init/shared.sh
 
   cd src
-  make TARGET=$USER_INSTALL_TYPE
+  make TARGET=$USER_INSTALL_TYPE USE_GEOIP=$USE_GEOIP
 }
 
 package() {

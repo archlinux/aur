@@ -1,12 +1,13 @@
 pkgbase = ossec-hids
 	pkgdesc = Open Source Host-based Intrusion Detection System
 	pkgver = 3.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://ossec.github.io/
 	install = ossec.install
 	arch = any
 	license = GPL2
 	depends = openssl
+	optdepends = geoip-database-extra
 	options = emptydirs
 	backup = var/ossec/etc/ossec.conf
 	backup = var/ossec/etc/client.keys
