@@ -6,7 +6,7 @@
 # Contributor : ska <skatiger (at} gmail {dot) com> (From sublime-text-imfix)
 
 pkgname=sublime-text-dev-imfix
-pkgver=3.3175
+pkgver=3.3179
 pkgrel=1
 pkgdesc="Sophisticated text editor for code, markup and prose - Dev build with input method support for CJK users"
 arch=('i686' 'x86_64')
