@@ -2,7 +2,7 @@
 # * No namcap warnings or errors
 
 pkgname=bash-git-prompt
-pkgver=2.6.3
+pkgver=2.7.1
 pkgrel=1
 pkgdesc="Informative git prompt for bash and fish"
 arch=('any')
@@ -14,7 +14,7 @@ license=('custom:BSD 2 Clause (NetBSD)')
 source=("https://github.com/magicmonty/${pkgname}/archive/${pkgver}.tar.gz"
         'bash-git-prompt.install'
         'Default_Arch.bgptheme')
-md5sums=('d11c07ef9672e6cb166fc5af55ba4fae'
+md5sums=('a32d4fa3996a81e7b2deb26d80d39b22'
          '9024256781844b2af5da4da4882e9160'
          'af064330b3a579ec6efd2e018e6829df')
 install='bash-git-prompt.install'
@@ -43,9 +43,11 @@ package() {
   install -Dm644 Minimal_UserHost.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Minimal_UserHost.bgptheme
   install -Dm644 Plague_Doctor.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Plague_Doctor.bgptheme
   install -Dm644 Single_line.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Single_line.bgptheme
+  install -Dm644 Single_line_Dark.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Single_line_Dark.bgptheme
   install -Dm644 Single_line_Minimalist.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Single_line_Minimalist.bgptheme
   install -Dm644 Single_line_NoExitState.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Single_line_NoExitState.bgptheme
   install -Dm644 Single_line_Solarized.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Single_line_Solarized.bgptheme
+  install -Dm644 Single_line_Solarized_Lamda.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Single_line_Solarized_Lamda.bgptheme
   install -Dm644 Solarized.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Solarized.bgptheme
   install -Dm644 Solarized_Extravagant.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Solarized_Extravagant.bgptheme
   install -Dm644 Solarized_NoExitState.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Solarized_NoExitState.bgptheme
