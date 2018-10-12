@@ -242,7 +242,7 @@ index a0e1e0489..223113081 100644
          IMPLICIT_DEPENDS CXX "${_pch_header}"
          COMMENT "Precompiling header ${_name} for ${_target} (C++)")
 diff --git a/Telegram/gyp/Telegram.gyp b/Telegram/gyp/Telegram.gyp
-index 1cab5ae29..cc794d341 100644
+index 1cab5ae29..465e8276a 100644
 --- a/Telegram/gyp/Telegram.gyp
 +++ b/Telegram/gyp/Telegram.gyp
 @@ -75,7 +75,6 @@
@@ -261,7 +261,7 @@ index 1cab5ae29..cc794d341 100644
        'AL_ALEXT_PROTOTYPES',
        'TGVOIP_USE_CXX11_LIB',
        'XXH_INLINE_ALL',
-@@ -94,15 +92,7 @@
+@@ -94,16 +92,8 @@
      'include_dirs': [
        '<(src_loc)',
        '<(SHARED_INTERMEDIATE_DIR)',
@@ -274,10 +274,11 @@ index 1cab5ae29..cc794d341 100644
 -      '<(libs_loc)/range-v3/include',
 -      '<(minizip_loc)',
 -      '<(sp_media_key_tap_loc)',
-+      '/usr/include/minizip',
        '<(emoji_suggestions_loc)',
++      '/usr/include/minizip',
        '<(submodules_loc)/GSL/include',
        '<(submodules_loc)/variant/include',
+       '<(submodules_loc)/crl/src',
 diff --git a/Telegram/gyp/qt.gypi b/Telegram/gyp/qt.gypi
 index 0b783ec21..3f917765a 100644
 --- a/Telegram/gyp/qt.gypi
@@ -435,7 +436,7 @@ index f5624a82b..1129a95c5 100644
        '-no-compress',
        '<(RULE_INPUT_PATH)',
 diff --git a/Telegram/gyp/settings_linux.gypi b/Telegram/gyp/settings_linux.gypi
-index 17219fa2c..b00fd50ea 100644
+index 17219fa2c..6853b5c3e 100644
 --- a/Telegram/gyp/settings_linux.gypi
 +++ b/Telegram/gyp/settings_linux.gypi
 @@ -11,7 +11,6 @@
@@ -446,15 +447,6 @@ index 17219fa2c..b00fd50ea 100644
            '-W',
            '-fPIC',
            '-Wno-unused-variable',
-@@ -43,7 +42,7 @@
-               'sources': [ '__Wrong_Official_Build_Target_<(official_build_target)_' ],
-             }],
-           ],
--        }], [ '"<!(uname -p)" == "x86_64"', {
-+        }], [ '"<!(uname -m)" == "x86_64"', {
-           # 32 bit version can't be linked with debug info or LTO,
-           # virtual memory exhausted :(
-           'cflags_c': [ '-g' ],
 @@ -60,7 +59,6 @@
        ],
        'defines': [
@@ -464,7 +456,7 @@ index 17219fa2c..b00fd50ea 100644
        ],
        'cflags_c': [
 diff --git a/Telegram/gyp/telegram_linux.gypi b/Telegram/gyp/telegram_linux.gypi
-index 80259c687..5f33ff961 100644
+index 80259c687..b5e3c18a2 100644
 --- a/Telegram/gyp/telegram_linux.gypi
 +++ b/Telegram/gyp/telegram_linux.gypi
 @@ -23,10 +23,11 @@
@@ -524,14 +516,7 @@ index 80259c687..5f33ff961 100644
  #      '<!(pkg-config 2> /dev/null --libs <@(pkgconfig_libs))',
      ],
      'cflags_cc': [
-@@ -90,16 +83,14 @@
-       },
-     },
-     'conditions': [
--      [ '"<!(uname -p)" != "x86_64"', {
-+      [ '"<!(uname -m)" != "x86_64"', {
-         'ldflags': [
-           '-Wl,-wrap,__divmoddi4',
+@@ -96,10 +89,8 @@
          ],
        }], ['not_need_gtk!="True"', {
          'cflags_cc': [

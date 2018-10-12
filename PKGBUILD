@@ -7,7 +7,7 @@
 
 pkgname=telegram-desktop-systemqt-notoemoji
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Official Telegram Desktop client (with noto emoji)'
 arch=('x86_64')
 url="https://desktop.telegram.org/"
@@ -23,8 +23,8 @@ source=(
     "tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v$pkgver"
     "libtgvoip::git+https://github.com/telegramdesktop/libtgvoip"
     "variant::git+https://github.com/mapbox/variant"
-    "GSL::git+https://github.com/Microsoft/GSL.git"
     "Catch::git+https://github.com/philsquared/Catch"
+    "GSL::git+https://github.com/Microsoft/GSL.git"
     "crl::git+https://github.com/telegramdesktop/crl.git"
     "xxHash::git+https://github.com/Cyan4973/xxHash.git"
     "https://s3.amazonaws.com/aur-telegram-desktop-notoemoji/noto-emoji-${_emojiver}.tar.xz"
@@ -45,17 +45,17 @@ sha512sums=('SKIP'
             '376a4860e37b0f60892f362e954f976a563c632579167003b4aacbb24b6fea6aabb4e6952baf6d1a546b961936935cc49cf0e0ce9570320245b6bb326cb149e5'
             'fa7042f370ae4e2e14d083395743cdee25bfedc39ab5273b5d1ab12fb074757cf76dab065f2abcb44cad018920e711142fbf24a2b9cd30f517c5a5b46d6a6182'
             'b87414ceaae19185a8a5749cea1f6d9f3fc3c69b8dd729e3db8790cde00b987c3c827cd30baf0eac579d1884e34aa2f37bb90778c3c0bc9ca211d75a82891b9d'
-            '95f6fe5e39a8c376280be93c93d92511c2bc5d6172e85059aa2e7e5adce86aa47003c97230f7cfa4076f2189dc0364da2d789d1f02b70824792cc082cfab0175'
-            'aab565816649f0157ff69636fd92ed434f30bd72554fc86db3151855de04e67b2d9ff8ff9735ed50f05510ea16dee79e134c9b26652e89522b4ffa8dddf09bcf'
-            'c05351aa9f6503daa6ef8b01adb73c7e71fd01377d833f47f826e184d78dd79628ce7c686ae23a40b7468adcd5af0af9ebce4783113957b6126892aca83c7712'
+            'b20674f61ff6378749d1f59a6a0da194d33ccc786bd783f6ed62027924a3a8a8d27c9763bf376480432d6536896b0c7eeb8c495c5b8cefff7cf5fe84da50947e'
+            '47c0d1e00401d7899b2ce710c06ceac6caffddbe1a4c85bc407918b43051cba292f6e6131cc0f390a66520e92f0ffa3761f8d973a25986dfe21c54f113062c33'
+            '7a37e0ca582145a56a411585aec0bc94889dc18a80cc038d2efa237e19eebf8b67d56825e068be88f7566b08316ce068d7f20c25729caa33d0e9d6c370325025'
             'd60694dc701aa985b0e82a12c9732b945082470441c687b33167a94f94efcf253baf43bb7280ec160ba338485ee5c62de138e4804cae05f27cc5cf4298166d39')
 
 prepare() {
     cd "$srcdir/tdesktop"
     git submodule init
-    git config submodule.Telegram/ThirdParty/GSL.url "$srcdir/GSL"
-    git config submodule.Telegram/ThirdParty/variant.url "$srcdir/variant"
     git config submodule.Telegram/ThirdParty/libtgvoip.url "$srcdir/libtgvoip"
+    git config submodule.Telegram/ThirdParty/variant.url "$srcdir/variant"
+    git config submodule.Telegram/ThirdParty/GSL.url "$srcdir/GSL"
     git config submodule.Telegram/ThirdParty/Catch.url "$srcdir/Catch"
     git config submodule.Telegram/ThirdParty/crl.url "$srcdir/crl"
     git config submodule.Telegram/ThirdParty/xxHash.url "$srcdir/xxHash"
@@ -79,7 +79,7 @@ prepare() {
 build() {
     cd "$srcdir/tdesktop"
     export LANG=en_US.UTF-8
-    export GYP_DEFINES="TDESKTOP_DISABLE_CRASH_REPORTS,TDESKTOP_DISABLE_AUTOUPDATE,TDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME,TDESKTOP_DISABLE_UNITY_INTEGRATION"
+    export GYP_DEFINES="TDESKTOP_DISABLE_CRASH_REPORTS,TDESKTOP_DISABLE_AUTOUPDATE,TDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME"
     export EXTRA_FLAGS="-Winvalid-pch"
     export CPPFLAGS="$CPPFLAGS $EXTRA_FLAGS"
     export CXXFLAGS="$CXXFLAGS $EXTRA_FLAGS"
