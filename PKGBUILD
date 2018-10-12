@@ -2,7 +2,7 @@
 
 _name=gzdoom
 pkgname=${_name}-git
-pkgver=g3.6pre+125+g605d9ecda
+pkgver=g3.7pre
 pkgrel=1
 pkgdesc='Advanced Doom source port with OpenGL support  (git version)'
 arch=('i686' 'x86_64')
@@ -82,6 +82,10 @@ package() {
     make install DESTDIR="$pkgdir"
     install -D -m644 soundfonts/gzdoom.sf2 \
             "$pkgdir"/usr/share/$_name/soundfonts/gzdoom.sf2
+    install -D -m644 fm_banks/GENMIDI.GS.wopl \
+            "$pkgdir"/usr/share/$_name/fm_banks/GENMIDI.GS.wopl
+    install -D -m644 fm_banks/gs-by-papiezak-and-sneakernets.wopn \
+            "$pkgdir"/usr/share/$_name/fm_banks/gs-by-papiezak-and-sneakernets.wopn
 
     desktop-file-install --dir="$pkgdir"/usr/share/applications \
                          "$srcdir"/${_name}.desktop
