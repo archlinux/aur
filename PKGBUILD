@@ -22,7 +22,7 @@ source=("git+https://github.com/Jerry981028/Amlogic_s905-kernel.git"
         'linux.preset'
         '99-linux.hook')
 md5sums=('SKIP'
-         '44c200b0196238eb258d5fa3822200f8'
+         'e9842a1f55e41066619558a011f1b1bb'
          'ff7f23f1bc3482651a4b7f4a33deb5fd'
          'f6ee374f560e1b9df6a7de2399027d1b'
          'd1c40c7367a7081f3b4c03264780f9d4')
@@ -34,6 +34,9 @@ prepare() {
 
   # reset to a certain version
   git reset --hard 86728a4c9079e1b8e89f92cede264ff4b942e331
+
+  # Dirty hack to git rid of the + in kernel version
+  rm -rf .git
 
   # led patch
   patch -p1 < ../pwm-led.patch
