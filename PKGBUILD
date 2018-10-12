@@ -17,8 +17,6 @@ noextract=("$_pkgname-$pkgver.tgz")
 
 package() {
   npm install -g --user root --prefix "$pkgdir/usr" "$srcdir/$_pkgname-$pkgver.tgz"
-  rm -r "$pkgdir/usr/etc"
-
   mv "$pkgdir/usr/lib/node_modules/$_pkgname" "$pkgdir/usr/lib/node_modules/$pkgname"
   rm "$pkgdir/usr/bin/$_pkgname"
   rm "$pkgdir/usr/bin/multi$_pkgname"
