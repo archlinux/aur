@@ -10,9 +10,11 @@ arch=(any)
 url="https://github.com/rd235/$_pkgname"
 license=('GPL2')
 groups=("view-os")
+makedepends=('s2argv-execs')
 depends=('s2argv-execs')
+replace=("$_pkgname")
 provides=("$_pkgname")
-conflicts=('vde2')
+conflicts=("$_pkgname" 'vde2')
 source=("git+$url.git")
 md5sums=('SKIP')
 
