@@ -1,7 +1,7 @@
 pkgbase = monero-gui-bin
 	pkgdesc = Monero: the secure, private, untraceable currency - release version (Includes daemon, wallet, and miner)
 	pkgver = 0.12.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://getmonero.org/
 	arch = x86_64
 	license = BSD
@@ -20,7 +20,7 @@ pkgbase = monero-gui-bin
 	source = monero-wallet-gui
 	source = monero-wallet-gui.desktop
 	sha256sums = dcf0a103589b8e71cdb8298dec96610f9f50b25e8f48afef5186d4c460a4ecae
-	sha256sums = 8b69aac7caae305676ccebc6dbfa803c9aadf8b82d2ca1ecf2d8302a0d79cfc9
+	sha256sums = 21765940c2fdd504c0550afa96eb4efa896e298c4761c87f52f637eb368f5736
 	sha256sums = 1a88e0dd59687fc19f4ca84b43311c506e04c1723cb9972faf427942723c73d2
 
 pkgname = monero-gui-bin
