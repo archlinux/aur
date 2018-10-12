@@ -1,13 +1,15 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=intel-media-stack-bin
-pkgver=2018.Q2.2
-pkgrel=3
+pkgver=2018.3.0
+_srcver="$(printf '%s' "$pkgver" | sed -E 's/(^[0-9]{2})([0-9]{2})/\2/')"
+pkgrel=1
 pkgdesc='Tools and libraries for developing media solutions on Intel products. Includes MediaSDK, Media Driver, libva and libva-utils.'
 arch=('x86_64')
 url='https://github.com/Intel-Media-SDK/MediaSDK/'
 license=('MIT')
-depends=('gcc-libs' 'libpciaccess' 'libdrm' 'libx11' 'libxext' 'libxfixes' 'ocl-icd' 'perl')
+depends=('gcc-libs' 'libpciaccess' 'intel-gmmlib' 'libdrm' 'libgl' 'libx11'
+         'libxext' 'libxfixes' 'ocl-icd' 'wayland')
 makedepends=('lsb-release')
 provides=('intel-media-sdk' 'libmfx' 'intel-media-driver' 'libva' 'libva-utils')
 conflicts=('intel-media-sdk' 'intel-media-sdk-git' 'intel-media-server-studio')
@@ -15,12 +17,12 @@ backup=('etc/profile.d/intel-mediasdk-devel.sh'
         'etc/profile.d/intel-mediasdk-devel.csh'
         'etc/profile.d/intel-mediasdk.sh'
         'etc/profile.d/intel-mediasdk.csh')
-options=('!strip' 'staticlibs')
+options=('!strip' '!emptydirs')
 install="${pkgname}.install"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/Intel-Media-SDK/MediaSDK/releases/download/MediaSDK-${pkgver/.Q/-Q}/MediaStack.tar.gz"
-        'LICENSE'::"https://raw.githubusercontent.com/Intel-Media-SDK/MediaSDK/MediaSDK-${pkgver/.Q/-Q}/LICENSE")
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/Intel-Media-SDK/MediaSDK/releases/download/intel-mediasdk-${_srcver}/MediaStack.tar.gz"
+        'LICENSE'::"https://raw.githubusercontent.com/Intel-Media-SDK/MediaSDK/intel-mediasdk-${_srcver}/LICENSE")
 noextract=("${pkgname}-${pkgver}.tar.gz")
-sha256sums=('7bc9fe977882fd2285f9d3e12d53424a6513bf3b1dba146b05802bf9bb9afff9'
+sha256sums=('7ceaf70c1a91c29fa9aaaae16a5eca154e9763152a2c84e73d529c17184e122a'
             'dfd67773578903698f9ff4a61eb8f2d84810cbecd56f3f3cee8c649f813b6ea6')
 
 prepare() {
@@ -73,17 +75,23 @@ package() {
         printf '%s\n' "${_command} PATH=\${PATH:+\${PATH}:}/opt/intel/mediasdk/bin" >> "$_file"
     done
     
-    # add symlink for libcttmetrics.so (required by 'metrics_monitor' sample)
-    ln -s "../../opt/intel/mediasdk/samples/_bin/x64/libcttmetrics.so" "${pkgdir}/usr/lib"
+    # move tools to bin folder
+    mv "$pkgdir"/opt/intel/mediasdk/samples/_bin/x64/{asg-hevc,hevc_fei_extractor} "${pkgdir}/opt/intel/mediasdk/bin"
     
-    # fix libmfx permissions
-    chmod 644 "${pkgdir}/opt/intel/mediasdk/lib/lin_x64/libmfx.a"
+    # add symlink for libcttmetrics.so (required by 'metrics_monitor' sample)
+    ln -s ../../opt/intel/mediasdk/samples/_bin/x64/libcttmetrics.so "${pkgdir}/usr/lib"
+    
+    # remove broken binary sample (needs libgtest.so.0 - unavailable)
+    rm "${pkgdir}/opt/intel/mediasdk/samples/_bin/x64/test_monitor"
+    
+    # fix broken symlink for plugins
+    rm "${pkgdir}/opt/intel/mediasdk/lib64/mfx"
+    ln -s ../plugins "${pkgdir}/opt/intel/mediasdk/lib64/mfx"
     
     # do not force the use of 'iHD' libva driver by default (let user choose)
-    local _info='# uncomment the LIBVA_DRIVER_NAME line to use the Intel Media Driver (iHD) for VAAPI'
-    sed -i "2i${_info}" "$pkgdir"/etc/profile.d/intel-mediasdk.*sh
-    sed -i '/^export[[:space:]]LIBVA_DRIVER_NAME/s/^/#/' "${pkgdir}/etc/profile.d/intel-mediasdk.sh"
-    sed -i '/^setenv[[:space:]]LIBVA_DRIVER_NAME/s/^/#/' "${pkgdir}/etc/profile.d/intel-mediasdk.csh"
+    local _info='# uncomment the LIBVA lines bellow to use the Intel Media Driver (iHD) for VAAPI'
+    sed -i "2i${_info}" "$pkgdir"/etc/profile.d/intel-mediasdk.{,c}sh
+    sed -i '3,4s/^/#/'  "$pkgdir"/etc/profile.d/intel-mediasdk.{,c}sh
     
     # license
     cd "$srcdir"
