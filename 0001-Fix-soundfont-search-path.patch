@@ -1,29 +1,33 @@
-From 6147e4496a26f0571a2918bbc82b4b1483df8545 Mon Sep 17 00:00:00 2001
+From c70f3a7973eef99c6709f11be75d7fe1bdc29efd Mon Sep 17 00:00:00 2001
 From: Jan Cholasta <jan@cholasta.net>
 Date: Mon, 5 Mar 2018 16:17:24 +0100
 Subject: [PATCH] Fix soundfont search path
 
 ---
- src/gameconfigfile.cpp | 2 ++
- 1 file changed, 2 insertions(+)
+ src/gameconfigfile.cpp | 3 +++
+ 1 file changed, 3 insertions(+)
 
 diff --git a/src/gameconfigfile.cpp b/src/gameconfigfile.cpp
-index cb47c3597..452fd4160 100644
+index 2979420f9..c8f22895c 100644
 --- a/src/gameconfigfile.cpp
 +++ b/src/gameconfigfile.cpp
-@@ -143,10 +143,12 @@ FGameConfigFile::FGameConfigFile ()
- 		SetValueForKey("Path", "$PROGDIR/soundfonts", true);
+@@ -149,6 +149,8 @@ FGameConfigFile::FGameConfigFile ()
  #else
  		SetValueForKey("Path", "$HOME/" GAME_DIR "/soundfonts", true);
+ 		SetValueForKey("Path", "$HOME/" GAME_DIR "/fm_banks", true);
 +		SetValueForKey("Path", SHARE_DIR "/soundfonts", true);
++		SetValueForKey("Path", SHARE_DIR "/fm_banks", true);
  		SetValueForKey("Path", "/usr/local/share/doom/soundfonts", true);
+ 		SetValueForKey("Path", "/usr/local/share/doom/fm_banks", true);
  		SetValueForKey("Path", "/usr/local/share/games/doom/soundfonts", true);
- 		SetValueForKey("Path", "/usr/share/doom/soundfonts", true);
+@@ -157,6 +159,7 @@ FGameConfigFile::FGameConfigFile ()
+ 		SetValueForKey("Path", "/usr/share/doom/fm_banks", true);
  		SetValueForKey("Path", "/usr/share/games/doom/soundfonts", true);
+ 		SetValueForKey("Path", "/usr/share/games/doom/fm_banks", true);
 +		SetValueForKey("Path", "/usr/share/soundfonts", true);
  #endif
  	}
  
 -- 
-2.18.0
+2.19.0
 
