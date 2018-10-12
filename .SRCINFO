@@ -1,7 +1,7 @@
 pkgbase = dolphin-meld
 	pkgdesc = KDE File Manager, using Meld rather than Kompare
-	pkgver = 18.08.1
-	pkgrel = 2
+	pkgver = 18.08.2
+	pkgrel = 1
 	url = https://kde.org/applications/system/dolphin/
 	arch = x86_64
 	groups = kde-applications
@@ -23,13 +23,13 @@ pkgbase = dolphin-meld
 	optdepends = kdegraphics-thumbnailers: PDF and PS thumbnails
 	optdepends = konsole: terminal panel
 	optdepends = purpose: share context menu
-	provides = dolphin=18.08.1
-	conflicts = dolphin=18.08.1
-	source = https://download.kde.org/stable/applications/18.08.1/src/dolphin-18.08.1.tar.xz
-	source = https://download.kde.org/stable/applications/18.08.1/src/dolphin-18.08.1.tar.xz.sig
+	provides = dolphin=18.08.2
+	conflicts = dolphin=18.08.2
+	source = https://download.kde.org/stable/applications/18.08.2/src/dolphin-18.08.2.tar.xz
+	source = https://download.kde.org/stable/applications/18.08.2/src/dolphin-18.08.2.tar.xz.sig
 	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
 	validpgpkeys = F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87
-	sha256sums = d29f2cb3db040f042d4a0c8fcc6712e55d350bb77e3527c1b7b5bc59c2081cb9
+	sha256sums = 5d79d289735822dfc27917917ee7c92284d1f846696773ed66da2102617e9451
 	sha256sums = SKIP
 
 pkgname = dolphin-meld

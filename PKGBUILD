@@ -1,4 +1,3 @@
-# $Id$
 # Maintainer: Andy Kluger <https://t.me/andykluger>
 # Contributor: Antonio Rojas <arojas@archlinux,org>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
@@ -7,8 +6,8 @@
 
 _pkgname=dolphin
 pkgname=dolphin-meld
-pkgver=18.08.1
-pkgrel=2
+pkgver=18.08.2
+pkgrel=1
 pkgdesc="KDE File Manager, using Meld rather than Kompare"
 arch=(x86_64)
 url="https://kde.org/applications/system/dolphin/"
@@ -23,7 +22,7 @@ optdepends=('kde-cli-tools: for editing file type options' 'ffmpegthumbs: video 
             'konsole: terminal panel' 'purpose: share context menu')
 groups=(kde-applications kdebase)
 source=("https://download.kde.org/stable/applications/$pkgver/src/$_pkgname-$pkgver.tar.xz"{,.sig})
-sha256sums=('d29f2cb3db040f042d4a0c8fcc6712e55d350bb77e3527c1b7b5bc59c2081cb9'
+sha256sums=('5d79d289735822dfc27917917ee7c92284d1f846696773ed66da2102617e9451'
             'SKIP')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87) # Christoph Feck <cfeck@kde.org>
