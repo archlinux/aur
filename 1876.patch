@@ -1,0 +1,168 @@
+From 9e592ec58211b91557f955718a02dc02f90981db Mon Sep 17 00:00:00 2001
+From: psychocrypt <psychocryptHPC@gmail.com>
+Date: Mon, 8 Oct 2018 14:48:22 +0200
+Subject: [PATCH] compatibility and better messages
+
+- add more descriptive messages if memory allocation fails
+- add gnu compiler flags: `noexecstack` to support systemd
+- handle cases where memroy allocation fails
+
+Co-authored-by: Tony Butler <spudz76@gmail.com>
+---
+ CMakeLists.txt                                   | 10 ++++++++--
+ xmrstak/backend/amd/minethd.cpp                  |  5 +++++
+ .../backend/cpu/crypto/cryptonight_common.cpp    | 16 +++++++++-------
+ xmrstak/backend/cpu/minethd.cpp                  |  8 ++++++++
+ xmrstak/cli/cli-miner.cpp                        |  1 +
+ xmrstak/config.tpl                               |  5 ++---
+ 6 files changed, 33 insertions(+), 12 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 712fb429..b714ee0c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -443,6 +443,11 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+     endif()
+ endif()
+ 
++if(${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU")
++    set(CMAKE_CXX_FLAGS "-Wl,-z,noexecstack ${CMAKE_CXX_FLAGS}")
++    set(CMAKE_C_FLAGS "-Wl,-z,noexecstack ${CMAKE_C_FLAGS}")
++endif()
++
+ # activate static libgcc and libstdc++ linking
+ if(CMAKE_LINK_STATIC)
+     set(BUILD_SHARED_LIBRARIES OFF)
+@@ -464,7 +469,8 @@ if(CMAKE_C_COMPILER_ID MATCHES "MSVC")
+ else()
+     # asm optimized monero v8 code
+     enable_language(ASM)
+-    set_property(SOURCE "xmrstak/backend/cpu/crypto/asm/cryptonight_v8_main_loop.S" PROPERTY C)
++    set_property(SOURCE "xmrstak/backend/cpu/crypto/asm/cryptonight_v8_main_loop.S" PROPERTY CPP)
++    set_source_files_properties("xmrstak/backend/cpu/crypto/asm/cryptonight_v8_main_loop.S" PROPERTIES COMPILE_FLAGS "-x assembler-with-cpp")
+     add_library(xmr-stak-asm
+         STATIC
+         "xmrstak/backend/cpu/crypto/asm/cryptonight_v8_main_loop.S"
+@@ -587,4 +593,4 @@ if( NOT CMAKE_INSTALL_PREFIX STREQUAL PROJECT_BINARY_DIR )
+ else()
+     # this rule is used if the install prefix is the build directory
+     install(CODE "MESSAGE(\"xmr-stak installed to folder 'bin'\")")
+-endif()
+\ No newline at end of file
++endif()
+diff --git a/xmrstak/backend/amd/minethd.cpp b/xmrstak/backend/amd/minethd.cpp
+index 45979cbd..5e70f25a 100644
+--- a/xmrstak/backend/amd/minethd.cpp
++++ b/xmrstak/backend/amd/minethd.cpp
+@@ -174,6 +174,11 @@ void minethd::work_main()
+ 	cryptonight_ctx* cpu_ctx;
+ 	cpu_ctx = cpu::minethd::minethd_alloc_ctx();
+ 
++	if(cpu_ctx == nullptr)
++	{
++		printer::inst()->print_msg(L0, "ERROR: miner was not able to allocate memory, miner will be stopped.");
++		win_exit(1);
++	}
+ 	// start with root algorithm and switch later if fork version is reached
+ 	auto miner_algo = ::jconf::inst()->GetCurrentCoinSelection().GetDescription(1).GetMiningAlgoRoot();
+ 	cn_hash_fun hash_fun = cpu::minethd::func_selector(::jconf::inst()->HaveHardwareAes(), true /*bNoPrefetch*/, miner_algo);
+diff --git a/xmrstak/backend/cpu/crypto/cryptonight_common.cpp b/xmrstak/backend/cpu/crypto/cryptonight_common.cpp
+index a478c9b2..a7e4696a 100644
+--- a/xmrstak/backend/cpu/crypto/cryptonight_common.cpp
++++ b/xmrstak/backend/cpu/crypto/cryptonight_common.cpp
+@@ -216,6 +216,8 @@ cryptonight_ctx* cryptonight_alloc_ctx(size_t use_fast_mem, size_t use_mlock, al
+ 		ptr->long_state = (uint8_t*)_mm_malloc(hashMemSize, hashMemSize);
+ 		ptr->ctx_info[0] = 0;
+ 		ptr->ctx_info[1] = 0;
++		if(ptr->long_state == NULL)
++			printer::inst()->print_msg(L0, "MEMORY ALLOC FAILED: _mm_malloc was not able to allocate %s byte",std::to_string(hashMemSize).c_str());
+ 		return ptr;
+ 	}
+ 
+@@ -243,25 +245,25 @@ cryptonight_ctx* cryptonight_alloc_ctx(size_t use_fast_mem, size_t use_mlock, al
+ 		return ptr;
+ 	}
+ #else
+-
++//http://man7.org/linux/man-pages/man2/mmap.2.html
+ #if defined(__APPLE__)
+-	ptr->long_state  = (uint8_t*)mmap(0, hashMemSize, PROT_READ | PROT_WRITE,
++	ptr->long_state  = (uint8_t*)mmap(NULL, hashMemSize, PROT_READ | PROT_WRITE,
+ 		MAP_PRIVATE | MAP_ANON, VM_FLAGS_SUPERPAGE_SIZE_2MB, 0);
+ #elif defined(__FreeBSD__)
+-	ptr->long_state = (uint8_t*)mmap(0, hashMemSize, PROT_READ | PROT_WRITE,
++	ptr->long_state = (uint8_t*)mmap(NULL, hashMemSize, PROT_READ | PROT_WRITE,
+ 		MAP_PRIVATE | MAP_ANONYMOUS | MAP_ALIGNED_SUPER | MAP_PREFAULT_READ, -1, 0);
+ #elif defined(__OpenBSD__)
+-	ptr->long_state = (uint8_t*)mmap(0, hashMemSize, PROT_READ | PROT_WRITE,
++	ptr->long_state = (uint8_t*)mmap(NULL, hashMemSize, PROT_READ | PROT_WRITE,
+ 		MAP_PRIVATE | MAP_ANON, -1, 0);
+ #else
+-	ptr->long_state = (uint8_t*)mmap(0, hashMemSize, PROT_READ | PROT_WRITE,
+-		MAP_PRIVATE | MAP_ANONYMOUS | MAP_HUGETLB | MAP_POPULATE, 0, 0);
++	ptr->long_state = (uint8_t*)mmap(NULL, hashMemSize, PROT_READ | PROT_WRITE,
++		MAP_PRIVATE | MAP_ANONYMOUS | MAP_HUGETLB | MAP_POPULATE, -1, 0);
+ #endif
+ 
+ 	if (ptr->long_state == MAP_FAILED)
+ 	{
+ 		_mm_free(ptr);
+-		msg->warning = "mmap failed";
++		msg->warning = "mmap failed, check attribute 'use_slow_memory' in 'config.txt'";
+ 		return NULL;
+ 	}
+ 
+diff --git a/xmrstak/backend/cpu/minethd.cpp b/xmrstak/backend/cpu/minethd.cpp
+index 912ef48b..3e90159e 100644
+--- a/xmrstak/backend/cpu/minethd.cpp
++++ b/xmrstak/backend/cpu/minethd.cpp
+@@ -226,6 +226,7 @@ bool minethd::self_test()
+ 	{
+ 		if ((ctx[i] = minethd_alloc_ctx()) == nullptr)
+ 		{
++			printer::inst()->print_msg(L0, "ERROR: miner was not able to allocate memory.");
+ 			for (int j = 0; j < i; j++)
+ 				cryptonight_free_ctx(ctx[j]);
+ 			return false;
+@@ -683,6 +684,13 @@ void minethd::multiway_work_main()
+ 	for (size_t i = 0; i < N; i++)
+ 	{
+ 		ctx[i] = minethd_alloc_ctx();
++		if(ctx[i] == nullptr)
++		{
++			printer::inst()->print_msg(L0, "ERROR: miner was not able to allocate memory.");
++			for (int j = 0; j < i; j++)
++				cryptonight_free_ctx(ctx[j]);
++			win_exit(1);
++		}
+ 		piHashVal[i] = (uint64_t*)(bHashOut + 32 * i + 24);
+ 		piNonce[i] = (i == 0) ? (uint32_t*)(bWorkBlob + 39) : nullptr;
+ 	}
+diff --git a/xmrstak/cli/cli-miner.cpp b/xmrstak/cli/cli-miner.cpp
+index ae39d250..428952b1 100644
+--- a/xmrstak/cli/cli-miner.cpp
++++ b/xmrstak/cli/cli-miner.cpp
+@@ -749,6 +749,7 @@ int main(int argc, char *argv[])
+ 
+ 	if (!BackendConnector::self_test())
+ 	{
++		printer::inst()->print_msg(L0, "Self test not passed!");
+ 		win_exit();
+ 		return 1;
+ 	}
+diff --git a/xmrstak/config.tpl b/xmrstak/config.tpl
+index 96f0e9cb..73ae054c 100644
+--- a/xmrstak/config.tpl
++++ b/xmrstak/config.tpl
+@@ -94,9 +94,8 @@ R"===(// generated by XMRSTAK_VERSION
+  * Memory locking means that the kernel can't swap out the page to disk - something that is unlikely to happen on a---LINUX
+  * command line system that isn't starved of memory. I haven't observed any difference on a CLI Linux system between---LINUX
+  * locked and unlocked memory. If that is your setup see option "no_mlck".---LINUX
+- */
+-
+-/*
++ *
++ *
+  * use_slow_memory defines our behaviour with regards to large pages. There are three possible options here:
+  * always  - Don't even try to use large pages. Always use slow memory.
+  * warn    - We will try to use large pages, but fall back to slow memory if that fails.
