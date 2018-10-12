@@ -1,17 +1,3 @@
-update_databases() {
-  # Update mime database
-  type -P update-mime-database &>/dev/null &&
-    update-mime-database /usr/share/mime &>/dev/null
-
-  # Update xdg icon database
-  type -P xdg-icon-resource &>/dev/null &&
-    xdg-icon-resource forceupdate --theme hicolor &>/dev/null
-
-  # Update desktop database
-  type -P update-desktop-database &>/dev/null &&
-    update-desktop-database -q &>/dev/null
-}
-
 # arg 1:  the new package version
 post_install() {
   # Add vboxusers group, GID 108 is reserved (http://wiki.archlinux.org/index.php/UID_and_GID_list),
@@ -20,16 +6,12 @@ post_install() {
   # Load new udev rule for module vboxdrv
   udevadm control --reload-rules
 
-  # Update databases
-  update_databases
-
   # Show warnings
   cat <<EOF
 
 ==> Remember to add allowed users to the vboxusers group:
 ==> # gpasswd -a USERNAME vboxusers
 EOF
-
 }
 
 # arg 1:  the new package version
@@ -60,11 +42,6 @@ post_remove() {
   # Remove any run files
   rm -Rf "/var/run/VirtualBox"
 
-  # Update databases
-  update_databases
-
   # remove vboxusers group
   groupdel vboxusers &>/dev/null || true
 }
-
-# vim:set ts=2 sw=2 ft=sh et:

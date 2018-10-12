@@ -1,7 +1,7 @@
 pkgbase = virtualbox-bin
 	pkgdesc = Oracle VM VirtualBox Binary Edition (Oracle branded non-OSE version)
 	pkgver = 5.2.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.virtualbox.org/
 	install = virtualbox-bin.install
 	arch = i686
@@ -19,15 +19,28 @@ pkgbase = virtualbox-bin
 	depends = python
 	depends = sdl
 	optdepends = virtualbox-ext-oracle: for Oracle extensions
+	optdepends = linux-headers: build the module for Arch kernel
+	optdepends = linux-lts-headers: build the module for LTS Arch kernel
 	provides = virtualbox=5.2.18
+	provides = virtualbox-sdk
+	provides = VIRTUALBOX-HOST-MODULES
+	provides = virtualbox-host-dkms
+	provides = virtualbox-guest-iso
 	conflicts = virtualbox
+	conflicts = virtualbox-sdk
 	conflicts = virtualbox-host-dkms
 	conflicts = virtualbox-host-modules-arch
 	replaces = virtualbox_bin
 	replaces = virtualbox-sun
+	noextract = VirtualBoxSDK-5.2.18-124319.zip
 	options = !strip
+	options = !emptydirs
 	backup = etc/vbox/vbox.cfg
 	backup = etc/conf.d/vboxweb
+	source = https://download.virtualbox.org/virtualbox/5.2.18/VirtualBoxSDK-5.2.18-124319.zip
+	source = VBoxAuth-r73679.h::https://www.virtualbox.org/svn/vbox/trunk/include/VBox/VBoxAuth.h?p=73679
+	source = VBoxAuthPAM-r73679.c::https://www.virtualbox.org/svn/vbox/trunk/src/VBox/HostServices/auth/pam/VBoxAuthPAM.c?p=73679
+	source = VBoxAuthSimple-r73679.cpp::https://www.virtualbox.org/svn/vbox/trunk/src/VBox/HostServices/auth/simple/VBoxAuthSimple.cpp?p=73679
 	source = VBoxFixUSB
 	source = 10-vboxdrv.rules
 	source = vboxweb.rc
@@ -35,6 +48,10 @@ pkgbase = virtualbox-bin
 	source = do_dkms
 	source = dkms.conf
 	source = 009-include-path.patch
+	sha256sums = 7966b311ca62f54cfea2762914bdd0a49d319cc0ca5c34dc755437da936d1581
+	sha256sums = 23e3e0e6abfaa69bf0aa046c0ee070d19435b97cb4bfbb16bba65a2783502154
+	sha256sums = 815f6e2e3ab687356aad0e6f59eef6e266514fb12a6b569d239d834e0a480f37
+	sha256sums = 99deff35d8a600f20223b96ba409451834e58ac21a589a989dd82a2d6fe006ae
 	sha256sums = 0aebe22abab402ea6b6573af637a99d8056a904920a52d84fb97729219219c23
 	sha256sums = 69417a9e8855cab8e4878886abe138f559fd17ae487d4cd19c8a24974a8bbec2
 	sha256sums = 656905de981ffa24f6f921c920538854a235225053f44baedacc07b46ca0cf56

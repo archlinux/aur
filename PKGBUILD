@@ -7,7 +7,8 @@
 pkgname=virtualbox-bin
 pkgver=5.2.18
 _build=124319
-pkgrel=1
+_rev=73679
+pkgrel=2
 pkgdesc='Oracle VM VirtualBox Binary Edition (Oracle branded non-OSE version)'
 arch=('i686' 'x86_64')
 url='https://www.virtualbox.org/'
@@ -15,14 +16,21 @@ license=('GPL2')
 depends=('dkms' 'fontconfig' 'gcc' 'libgl' 'libidl2' 'libxcursor' 'libxinerama'
          'libxmu' 'python' 'sdl')
 makedepends=('linux-headers')
-optdepends=('virtualbox-ext-oracle: for Oracle extensions')
-provides=("virtualbox=${pkgver}")
-conflicts=('virtualbox' 'virtualbox-host-dkms' 'virtualbox-host-modules-arch')
+optdepends=('virtualbox-ext-oracle: for Oracle extensions'
+            'linux-headers: build the module for Arch kernel'
+            'linux-lts-headers: build the module for LTS Arch kernel')
+provides=("virtualbox=${pkgver}" 'virtualbox-sdk' 'VIRTUALBOX-HOST-MODULES'
+          'virtualbox-host-dkms' 'virtualbox-guest-iso')
+conflicts=('virtualbox' 'virtualbox-sdk' 'virtualbox-host-dkms' 'virtualbox-host-modules-arch')
 replaces=('virtualbox_bin' 'virtualbox-sun')
 backup=('etc/vbox/vbox.cfg' 'etc/conf.d/vboxweb')
+options=('!strip' '!emptydirs')
 install="${pkgname}.install"
-options=('!strip')
-source=('VBoxFixUSB'
+source=("https://download.virtualbox.org/virtualbox/${pkgver}/VirtualBoxSDK-${pkgver}-${_build}.zip"
+        "VBoxAuth-r${_rev}.h"::"https://www.virtualbox.org/svn/vbox/trunk/include/VBox/VBoxAuth.h?p=${_rev}"
+        "VBoxAuthPAM-r${_rev}.c"::"https://www.virtualbox.org/svn/vbox/trunk/src/VBox/HostServices/auth/pam/VBoxAuthPAM.c?p=${_rev}"
+        "VBoxAuthSimple-r${_rev}.cpp"::"https://www.virtualbox.org/svn/vbox/trunk/src/VBox/HostServices/auth/simple/VBoxAuthSimple.cpp?p=${_rev}"
+        'VBoxFixUSB'
         '10-vboxdrv.rules'
         'vboxweb.rc'
         'vboxweb.conf'
@@ -31,7 +39,12 @@ source=('VBoxFixUSB'
         '009-include-path.patch')
 source_i686=("http://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${pkgver}-${_build}-Linux_x86.run")
 source_x86_64=("http://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${pkgver}-${_build}-Linux_amd64.run")
-sha256sums=('0aebe22abab402ea6b6573af637a99d8056a904920a52d84fb97729219219c23'
+noextract=("VirtualBoxSDK-${pkgver}-${_build}.zip")
+sha256sums=('7966b311ca62f54cfea2762914bdd0a49d319cc0ca5c34dc755437da936d1581'
+            '23e3e0e6abfaa69bf0aa046c0ee070d19435b97cb4bfbb16bba65a2783502154'
+            '815f6e2e3ab687356aad0e6f59eef6e266514fb12a6b569d239d834e0a480f37'
+            '99deff35d8a600f20223b96ba409451834e58ac21a589a989dd82a2d6fe006ae'
+            '0aebe22abab402ea6b6573af637a99d8056a904920a52d84fb97729219219c23'
             '69417a9e8855cab8e4878886abe138f559fd17ae487d4cd19c8a24974a8bbec2'
             '656905de981ffa24f6f921c920538854a235225053f44baedacc07b46ca0cf56'
             '12dbba3b59991f2b68cddeeeda20236aeff63e11b7e2d1b08d9d6a82225f6651'
@@ -47,12 +60,16 @@ prepare() {
     
     mkdir -p "${pkgname}-${pkgver}"
     
-    # extract the source file
+    # extract the main source file
     yes | sh "VirtualBox-${pkgver}-${_build}-Linux_${_arch}.run" \
               --target "${srcdir}/${pkgname}-${pkgver}" \
               --nox11 \
               --noexec \
               &> /dev/null
+              
+    # extract sdk
+    cd "${pkgname}-${pkgver}"
+    bsdtar -xf "${srcdir}/VirtualBoxSDK-${pkgver}-${_build}.zip"
 }
 
 package() {
@@ -75,19 +92,27 @@ package() {
     chmod 4511 VirtualBox VBox{SDL,Headless,NetDHCP,NetNAT,NetAdpCtl,VolInfo}
     for _lib in VBox{VMM,RT}.so
     do
-        ln -sf "${_installdir}/${_lib}" "components/${_lib}"
+        ln -s "${_installdir}/${_lib}" "components/${_lib}"
     done
     chmod go-w "${pkgdir}/${_installdir}"
     
     # install SDK
     msg2 'Installing SDK...'
+    cd "${srcdir}/${pkgname}-${pkgver}"
     pushd 'sdk/installer' >/dev/null
     VBOX_INSTALL_PATH="$_installdir" python vboxapisetup.py install --root "$pkgdir"
-    rm -rf build
     popd >/dev/null
+    rm -r "${pkgdir}/${_installdir}/sdk"
+    mkdir -p "${pkgdir}/${_installdir}/sdk"
+    cp -a sdk/bindings "${pkgdir}/${_installdir}/sdk"
+    cp -a sdk/docs     "${pkgdir}/${_installdir}"
+    install -D -m644 "${srcdir}/VBoxAuth-r${_rev}.h"         "${pkgdir}/${_installdir}/sdk/bindings/auth/include/VBoxAuth.h"
+    install -D -m644 "${srcdir}/VBoxAuthPAM-r${_rev}.c"      "${pkgdir}/${_installdir}/sdk/bindings/auth/VBoxAuthPAM.cpp"
+    install -D -m644 "${srcdir}/VBoxAuthSimple-r${_rev}.cpp" "${pkgdir}/${_installdir}/sdk/bindings/auth/VBoxAuthSimple.cpp"
     
     # install udev rules
     msg2 'Installing udev rules...'
+    cd "${pkgdir}/${_installdir}"
     install -D -m0644 "${srcdir}/10-vboxdrv.rules" "${pkgdir}/usr/lib/udev/rules.d/10-vboxdrv.rules"
     ## we need to copy and not symlink VBoxCreateUSBNode.sh in /usr/lib/udev to avoid udevd
     ## to look /opt when /opt is not mounted. This can be done until VBoxCreateUSBNode.sh doesn't
@@ -182,4 +207,8 @@ EOF
     printf '%s\n'   'vboxpci'    >>"${pkgdir}/usr/lib/modules-load.d/${pkgname}.conf"
     printf '%s\n'   'vboxnetadp' >>"${pkgdir}/usr/lib/modules-load.d/${pkgname}.conf"
     printf '%s\n'   'vboxnetflt' >>"${pkgdir}/usr/lib/modules-load.d/${pkgname}.conf"
+    
+    # fix permissions (change executables from 4711 to 4755)
+    msg2 'Fixing permissions...'
+    chmod 4755 "${pkgdir}/${_installdir}"/{VBox{Headless,Net{AdpCtl,DHCP,NAT},SDL,VolInfo},VirtualBox}
 }
