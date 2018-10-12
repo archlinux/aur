@@ -8,22 +8,24 @@ pkgdesc='A collection of tools, libraries and tests for shader compilation'
 arch=('x86_64')
 url=https://github.com/google/shaderc
 license=('Apache')
-depends=('gcc-libs')
+depends=('gcc-libs' 'glslang-git' 'spirv-tools')
 makedepends=('asciidoctor' 'cmake' 'ninja' 'python2')
 source=("shaderc-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-        "glslang::git+https://github.com/google/glslang.git"
-        "spirv-tools::git+https://github.com/KhronosGroup/SPIRV-Tools.git"
-        "spirv-headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git")
+        'fix-glslang-link-order.patch::https://github.com/google/shaderc/pull/463/commits/21c8be385b3fab5edcb934a6d99f69fd389c4e67.patch')
 sha512sums=('7a420fde73c9f2aae3f13558d538a1f4ae43bba19e2b4d2da8fbbd017e9e4f328ece5f330f1bbcb9fe84c91b7eb84b9158dc2e3d144c82939090a0fa6f5b4ef0'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+            '94e1fa8d8b5a886efb90b4956a266799af78c6d54ab8cc8f8a89533885e8148ea415dda7faff732fc5ce01015bfa0de9e5ebd35bc503c677769b423a2491f101')
 
+# https://github.com/gentoo/gentoo/blob/c31d001aeedaf97917fa29fa859e16090cc50282/media-libs/shaderc/shaderc-2017.2.ebuild#L35-L65
 prepare() {
   cd shaderc-$pkgver
-  ln -frs ../glslang third_party
-  ln -frs ../spirv-tools third_party
-  ln -frs ../spirv-headers third_party
+  patch -Np1 -i ../fix-glslang-link-order.patch
+  sed -i /examples/d\;/third_party/d CMakeLists.txt
+  sed -i /build-version/d glslc/CMakeLists.txt
+  cat <<- EOF > glslc/src/build-version.inc
+"$pkgver\n"
+"$(pacman -Q spirv-tools | cut -d \  -f 2 | sed 's/-.*//')\n"
+"$(pacman -Q glslang-git | cut -d \  -f 2 | sed 's/-.*//')\n"
+EOF
 }
 
 build() {
@@ -33,9 +35,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX="$pkgdir"/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DSHADERC_SKIP_TESTS=on \
-    -DSKIP_GLSLANG_INSTALL=on \
-    -DSKIP_SPIRV_TOOLS_INSTALL=on \
-    -DPYTHON_EXECUTABLE=/usr/bin/python2 \
+    -DPYTHON_EXE=/usr/bin/python2 \
     -GNinja
   ninja
 
