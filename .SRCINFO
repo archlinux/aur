@@ -11,10 +11,8 @@ pkgbase = php-pam
 	depends = pam
 	depends = php-pear
 	source = php-pam-2.1.0.tar.gz::https://github.com/amishmm/php-pam/archive/v2.1.0.tar.gz
-	source = pam.ini
 	source = php
 	md5sums = 0182234a17611e79f537c0b16927fe8e
-	md5sums = 9582d5f0476e486f2c3084940f1abd86
 	md5sums = 5fb207f61ff94b0cc7a2dcc1e3c1c388
 
 pkgname = php-pam
