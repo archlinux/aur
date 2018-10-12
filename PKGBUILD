@@ -1,7 +1,7 @@
 # Maintainer: kpcyrd <git@rxv.cc>
 
 pkgname=sn0int-registry
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="sn0int registry"
 url="https://github.com/kpcyrd/sn0int"
@@ -10,7 +10,7 @@ makedepends=('rustup')
 arch=('i686' 'x86_64')
 license=('GPL-3')
 source=("https://github.com/kpcyrd/sn0int/archive/v$pkgver/sn0int-$pkgver.tar.gz")
-sha256sums=('73e81ab111d3c269bc94803da75c5dea7c9e613d584995352e1b8eabc9a372c6')
+sha256sums=('15b95b8d92d408043a6fe952aca980c402d253dfd8ab14d835b4242f9c1bc157')
 
 build() {
   cd "sn0int-$pkgver/sn0int-registry"
