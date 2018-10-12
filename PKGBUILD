@@ -3,7 +3,8 @@
 
 pkgname=prettyping
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
+epoch=1 # stuck with this for now
 pkgdesc='A ping wrapper making the output prettier, more colorful, more compact, and easier to read.'
 arch=('any')
 url='https://github.com/denilsonsa/prettyping'

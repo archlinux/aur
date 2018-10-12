@@ -1,7 +1,8 @@
 pkgbase = prettyping
 	pkgdesc = A ping wrapper making the output prettier, more colorful, more compact, and easier to read.
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
+	epoch = 1
 	url = https://github.com/denilsonsa/prettyping
 	arch = any
 	license = MIT
