@@ -1,0 +1,73 @@
+Description: Fix errors with CMake 3.12 for get_target_property commands.
+Author: Bas Couwenberg <sebastic@debian.org>
+Bug: https://github.com/mapserver/mapserver/issues/5646
+Bug-Debian: https://bugs.debian.org/906605
+
+--- a/mapscript/java/CMakeLists.txt
++++ b/mapscript/java/CMakeLists.txt
+@@ -42,6 +42,14 @@ ADD_CUSTOM_COMMAND(TARGET javamapscript
+                       COMMENT "Compiling java source files, creating mapscript.jar"
+                       )
+ 
++# Workaround for CMake 3.12 error:
++#
++# The LOCATION property may not be read from target "foo".  Use
++# the target name directly with add_custom_command, or use the generator
++#  expression $<TARGET_FILE>, as appropriate.
++
++cmake_policy(SET CMP0026 OLD)
++
+ get_target_property(LOC_MAPSCRIPT_LIB ${SWIG_MODULE_javamapscript_REAL_NAME} LOCATION)
+ install(FILES ${LOC_MAPSCRIPT_LIB} DESTINATION lib/jni)
+ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/mapscript.jar DESTINATION share/java)
+--- a/mapscript/perl/CMakeLists.txt
++++ b/mapscript/perl/CMakeLists.txt
+@@ -18,6 +18,14 @@ if(APPLE)
+   set_target_properties(perlmapscript PROPERTIES SUFFIX ".bundle")
+ endif(APPLE)
+ 
++# Workaround for CMake 3.12 error:
++#
++# The LOCATION property may not be read from target "foo".  Use
++# the target name directly with add_custom_command, or use the generator
++#  expression $<TARGET_FILE>, as appropriate.
++
++cmake_policy(SET CMP0026 OLD)
++
+ get_target_property(LOC_MAPSCRIPT_LIB ${SWIG_MODULE_perlmapscript_REAL_NAME} LOCATION)
+ set(mapscript_files ${LOC_MAPSCRIPT_LIB} ${CMAKE_CURRENT_BINARY_DIR}/mapscript.pm)
+ install(FILES ${LOC_MAPSCRIPT_LIB} DESTINATION ${CUSTOM_PERL_VENDOR_ARCH_DIR}/auto/mapscript)
+--- a/mapscript/python/CMakeLists.txt
++++ b/mapscript/python/CMakeLists.txt
+@@ -39,6 +39,14 @@ set_target_properties(${SWIG_MODULE_pyth
+ 
+ execute_process ( COMMAND ${PYTHON_EXECUTABLE} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(True))" OUTPUT_VARIABLE PYTHON_SITE_PACKAGES OUTPUT_STRIP_TRAILING_WHITESPACE)
+ 
++# Workaround for CMake 3.12 error:
++#
++# The LOCATION property may not be read from target "foo".  Use
++# the target name directly with add_custom_command, or use the generator
++#  expression $<TARGET_FILE>, as appropriate.
++
++cmake_policy(SET CMP0026 OLD)
++
+ get_target_property(LOC_MAPSCRIPT_LIB ${SWIG_MODULE_pythonmapscript_REAL_NAME} LOCATION)
+ set(mapscript_files ${LOC_MAPSCRIPT_LIB} ${CMAKE_CURRENT_BINARY_DIR}/mapscript.py)
+ install(FILES ${mapscript_files} DESTINATION ${PYTHON_SITE_PACKAGES})
+--- a/mapscript/ruby/CMakeLists.txt
++++ b/mapscript/ruby/CMakeLists.txt
+@@ -32,6 +32,14 @@ if(APPLE)
+   set_target_properties(${SWIG_MODULE_rubymapscript_REAL_NAME} PROPERTIES SUFFIX ".bundle")
+ endif(APPLE)
+ 
++# Workaround for CMake 3.12 error:
++#
++# The LOCATION property may not be read from target "foo".  Use
++# the target name directly with add_custom_command, or use the generator
++#  expression $<TARGET_FILE>, as appropriate.
++
++cmake_policy(SET CMP0026 OLD)
++
+ get_target_property(LOC_MAPSCRIPT_LIB ${SWIG_MODULE_rubymapscript_REAL_NAME} LOCATION)
+ execute_process(COMMAND ${RUBY_EXECUTABLE} -r rbconfig -e "puts RbConfig::CONFIG['vendorarchdir']" OUTPUT_VARIABLE RUBY_VENDORARCHDIR OUTPUT_STRIP_TRAILING_WHITESPACE)
+ install(FILES ${LOC_MAPSCRIPT_LIB} DESTINATION ${RUBY_VENDORARCHDIR})
