@@ -6,14 +6,14 @@ pkgver=1151.9b61d20
 pkgrel=2
 pkgdesc='This mod adds a whole bunch of new items to minetest suitable for decorating inside and outside a home.'
 arch=('any')
-url="https://github.com/VanessaE/homedecor_modpack"
+url="https://gitlab.com/VanessaE/homedecor_modpack"
 license=('custom')
 depends=()
 optdepends=('minetest-usrdir_patch')
 makedepends=('git')
 provides=("$_gitname")
 install=$pkgname.install
-source=("$_gitname::git+git://github.com/VanessaE/homedecor_modpack.git")
+source=("$_gitname::git+https://gitlab.com/VanessaE/homedecor_modpack.git")
 md5sums=('SKIP')
 
 pkgver() {
