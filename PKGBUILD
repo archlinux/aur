@@ -2,7 +2,7 @@
 # Contributor : enckse <enckse [at] gmail [dot] com>
 pkgname=kxstitch
 pkgver=2.1.1
-pkgrel=7
+pkgrel=8
 pkgdesc="The program that lets you create cross stitch patterns and charts."
 arch=('i686' 'x86_64')
 depends=('plasma-workspace' 'imagemagick>=7.0.0')
@@ -12,11 +12,13 @@ license=('GPL')
 source=("https://download.kde.org/stable/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.xz"
        "${pkgname}.install"
        "qt5.11.patch::https://cgit.kde.org/kxstitch.git/patch/?id=ca0f451dceecadc696ba6777084f22ceb5d372f0"
-       "imagemagick7.patch")
+       "imagemagick7.patch"
+       "0001-Change-nearest-color-lookup-logic-for-finding-floss-.patch")
 sha1sums=('6f712bca3173b90149b67640fb1b63d02725c9ef'
           '8e58ce0776eff7ef29394a2f7a089191a4af0b1d'
           'd1a904efd34eca16d839d6d54356cb01abaa15a7'
-          '59dc498eb3e555b0f85a717f0588b3a217f8cbbb')
+          '59dc498eb3e555b0f85a717f0588b3a217f8cbbb'
+          '5f3f53bbe65adc95a0165142bea45ede7ec71591')
 install=${pkgname}.install
 
 build() {
@@ -24,6 +26,7 @@ build() {
     cp ../*.patch .
     patch -p1 < qt5.11.patch
     patch -p1 < imagemagick7.patch
+    patch -p1 < 0001-Change-nearest-color-lookup-logic-for-finding-floss-.patch
     rm -rf build
     mkdir build
     cd build

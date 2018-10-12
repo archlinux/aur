@@ -1,0 +1,63 @@
+From a7b7789cd0a1837b2eb8545aef8f41fcc16e48af Mon Sep 17 00:00:00 2001
+From: Sean Enck <enckse@voidedtech.com>
+Date: Fri, 12 Oct 2018 15:27:41 -0400
+Subject: [PATCH] Change nearest color lookup logic for finding floss during
+ import
+
+Due to an issue (suspected in ImageMagick 7.0.7.24 -> 25) it appears a nullptr
+is being returned when trying to find a matching color (no match or
+close match found). Increase the tracking of matching colors accordingly
+to find the 'nearest' and return.
+
+Signed-off-by: Sean Enck <enckse@voidedtech.com>
+---
+ src/FlossScheme.cpp | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/src/FlossScheme.cpp b/src/FlossScheme.cpp
+index e4cd117..49b1e48 100644
+--- a/src/FlossScheme.cpp
++++ b/src/FlossScheme.cpp
+@@ -11,7 +11,6 @@
+ 
+ #include "FlossScheme.h"
+ 
+-
+ FlossScheme::FlossScheme()
+     :   m_map(nullptr)
+ {
+@@ -64,22 +63,23 @@ Floss *FlossScheme::find(const QString &name) const
+ Floss *FlossScheme::find(const QColor &color) const
+ {
+     QListIterator<Floss *> flossIterator(m_flosses);
+-
++    Floss *nearest;
++    float near;
++    float closest = 100;
++    nearest = nullptr;
+     while (flossIterator.hasNext()) {
+         Floss *floss = flossIterator.next();
+         QColor c = floss->color();
+-
+         if (c == color) {
+             return floss;
+         }
+-
+-        // the color mapping may not be perfect so search for a near match.
+-        if (abs(color.red()-c.red())<2 && abs(color.green()-c.green())<2 && abs(color.blue()-c.blue())<2) {
+-            return floss;
++        near = abs(color.red()-c.red()) + abs(color.green()-c.green()) + abs(color.blue()-color.blue());
++        if (near < closest) {
++            closest = near;
++            nearest = floss;
+         }
+     }
+-
+-    return nullptr;
++    return nearest;
+ }
+ 
+ 
+-- 
+2.19.1
+
