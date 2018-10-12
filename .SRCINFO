@@ -1,5 +1,5 @@
 pkgbase = drc
-	pkgdesc = Digital Room Correction
+	pkgdesc = Digital Room Correction FIR filter generator
 	pkgver = 3.2.2
 	pkgrel = 1
 	url = http://drc-fir.sourceforge.net/

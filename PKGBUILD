@@ -2,7 +2,7 @@
 pkgname=drc
 pkgver=3.2.2
 pkgrel=1
-pkgdesc="Digital Room Correction"
+pkgdesc="Digital Room Correction FIR filter generator"
 arch=('x86_64' 'i686')
 url="http://drc-fir.sourceforge.net/"
 license=('GPL2')
