@@ -1,6 +1,6 @@
 pkgbase = tegrarcm
 	pkgdesc = Tegra ReCovery Mode tool; communicates with Tegra boot ROM to download code over USB
-	pkgver = 1.7
+	pkgver = 1.8
 	pkgrel = 1
 	url = https://github.com/NVIDIA/tegrarcm
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = tegrarcm
 	license = custom
 	depends = crypto++
 	depends = libusb
-	source = tegrarcm-1.7.zip::https://github.com/NVIDIA/tegrarcm/archive/v1.7.zip
-	sha1sums = 6974155ae41fff352fb8674a28cfe2cebba4730b
+	source = tegrarcm-1.8.zip::https://github.com/NVIDIA/tegrarcm/archive/v1.8.zip
+	sha1sums = d35bfffcb2f28ea585b7d775ced8499e0c1cd7e3
 
 pkgname = tegrarcm
 
