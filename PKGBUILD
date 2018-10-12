@@ -10,8 +10,8 @@ pkgbase='nim-git'
 pkgname=('nim-git' 'nimble-git' 'nimsuggest-git' 'nimpretty-git')
 pkgdesc='Nim is a compiled, garbage-collected systems programming language with a design that focuses on efficiency, expressiveness, and elegance (in that order of priority).'
 epoch=1
-pkgver=0.18.0.r1444.g276a05e57
-pkgrel=2
+pkgver=0.19.0.r145.g14925ee8b
+pkgrel=1
 arch=('i686' 'x86_64')
 groups=('nim')
 makedepends=('git')
@@ -87,7 +87,7 @@ package_nim-git() {
   # Docs
   install -dm 755 "${pkgdir}/usr/share/doc/nim"
   cp -dpr --no-preserve=ownership \
-    examples web doc/*            \
+    examples doc/*                \
     -t "${pkgdir}/usr/share/doc/nim"
 
   # Docs: Wiki
@@ -162,7 +162,6 @@ package_nimsuggest-git() {
   provides=('nimsuggest')
   conflicts=('nimsuggest')
 
-  # Nimsuggest
   install -Dm 755 "Nim/bin/nimsuggest" -t "${pkgdir}/usr/bin"
 }
 
@@ -173,7 +172,6 @@ package_nimpretty-git() {
   provides=('nimpretty')
   conflicts=('nimpretty')
 
-  # Nimpretty
   install -Dm 755 "Nim/bin/nimpretty" -t "${pkgdir}/usr/bin"
 }
 
