@@ -1,0 +1,15 @@
+pkgbase = python-sickle
+	pkgdesc = OAI-PMH for humans
+	pkgver = 0.6.4
+	pkgrel = 1
+	url = https://pypi.org/project/Sickle
+	arch = any
+	license = BSD
+	depends = python>=3.5
+	depends = python-requests
+	depends = python-lxml
+	source = https://github.com/mloesch/sickle/archive/0.6.4.tar.gz
+	md5sums = fe19e2cdc948607f6b5700d370ad7780
+
+pkgname = python-sickle
+
