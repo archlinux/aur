@@ -2,7 +2,7 @@
 
 _pkgname=boolector
 pkgname=boolector-git
-pkgver=r9712.ad03df5c
+pkgver=r9758.df7cc3ac
 pkgrel=1
 pkgdesc="A Satisfiability Modulo Theories (SMT) solver for the theories of fixed-size bit-vectors, arrays and uninterpreted functions"
 arch=('any')
