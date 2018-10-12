@@ -2,7 +2,7 @@
 pkgname=caffe-opencl-slim-git
 _srcname=caffe
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A slimmed-down build of Caffe based on caffe-opencl-git"
 arch=('x86_64')
 url="http://caffe.berkeleyvision.org/"
@@ -26,6 +26,10 @@ sha256sums=('SKIP'
 
 prepare() {
     cd "${_srcname}"
+
+    # This patch makes cmake find libboost_python3 (it normally only looks for libboost_python_py3 etc.)
+    patch cmake/Dependencies.cmake < ../dependencies.patch
+
     mkdir -p build
     cd build
     CMAKE_PARALLEL_LEVEL=`grep processor /proc/cpuinfo | wc -l` cmake -DBUILD_docs=OFF -DUSE_LIBDNN=OFF -DUSE_CUDNN=OFF -DUSE_OPENCV=OFF -DUSE_LEVELDB=OFF -DUSE_LMDB=OFF -DUSE_HDF5=OFF -DBLAS=Open -D python_version=3 -DCMAKE_INSTALL_PREFIX:PATH=${pkgdir}/usr -DCMAKE_INSTALL_LIBDIR=lib ..
