@@ -1,7 +1,7 @@
 pkgbase = pytype
 	pkgdesc = Python type inferencer
 	pkgver = 2018.9.19
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/google/pytype
 	arch = any
 	license = APACHE
@@ -14,7 +14,7 @@ pkgbase = pytype
 	makedepends = ninja
 	makedepends = bison>=3.0.2
 	makedepends = flex>=2.5.35
-	depends = python-importlab
+	depends = python-importlab>=0.3.1
 	depends = python-yaml>=3.11
 	provides = pytype
 	options = !emptydirs

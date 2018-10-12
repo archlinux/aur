@@ -2,13 +2,13 @@
 
 pkgname=pytype
 pkgver=2018.9.19
-pkgrel=3
+pkgrel=4
 pkgdesc="Python type inferencer"
 arch=('any')
 url="https://github.com/google/pytype"
 license=('APACHE')
 provides=('pytype')
-depends=('python-importlab'
+depends=('python-importlab>=0.3.1'
          'python-yaml>=3.11')
 makedepends=('python' 'python-setuptools' 'python-wheel'
              'make' 'gcc' 'cmake' 'ninja'
