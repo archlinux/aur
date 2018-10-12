@@ -1,4 +1,3 @@
-# $Id$
 # Original Core Repo
 # ==================
 # Maintainer: Allan McRae <allan@archlinux.org>
@@ -7,8 +6,8 @@
 
 # Modifications to Use Git Master Source
 # ======================================
-# Maintainer: James Harvey <jamespharvey20@gmail.com>
-#    * This PKGFILE as closely as possible matches core's binutils 2.28-1
+# Maintainer: James Harvey <jamespharvey20 at gmail dot com>
+#    * This PKGFILE as closely as possible matches core's binutils 2.28.0-1
 #    * All namcap warnings and errors are identical, other than:
 #       * Warning zlib is no longer a dependency
 #          * Siding with caution, leaving it as a dependency
@@ -19,31 +18,30 @@
 
 pkgname=binutils-git
 _pkgname=binutils-gdb
-pkgver=2.28.r89848.5f4d108508
+pkgver=2.28.r89982.ad36c6ce7c
 pkgrel=1
 pkgdesc="A set of programs to assemble and manipulate binary and object files (git master developmental version)"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/binutils/"
 license=('GPL')
-provides='binutils=${pkgver}'
 groups=('base-devel')
 depends=('glibc>=2.25' 'zlib')
 makedepends=('git')
 checkdepends=('dejagnu' 'bc')
-provides=('binutils')
+provides=('binutils=${pkgver}')
 conflicts=('binutils-multilib' 'binutils')
 replaces=('binutils-multilib')
 options=('staticlibs' '!distcc' '!ccache')
-source=(git://sourceware.org/git/binutils-gdb.git)
+source=(git+https://sourceware.org/git/binutils-gdb.git)
 md5sums=('SKIP')
 
 pkgver() {
-   cd ${srcdir}/${_pkgname}
-   echo $(cat binutils/configure | grep "PACKAGE_VERSION=" | sed "s|^PACKAGE_VERSION='||" | sed "s|'$||" | sed "s|\.51$||").r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  cd binutils-gdb
+  echo $(cat binutils/configure | grep "PACKAGE_VERSION=" | sed "s|^PACKAGE_VERSION='||" | sed "s|'$||" | sed "s|\.51$||").r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 prepare() {
-  cd ${srcdir}/binutils-gdb
+  cd binutils-gdb
 
   # hack! - libiberty configure tests for header files using "$CPP $CPPFLAGS"
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
@@ -52,9 +50,9 @@ prepare() {
 }
 
 build() {
-  cd ${srcdir}/binutils-build
+  cd binutils-build
 
-  ${srcdir}/binutils-gdb/configure \
+  ../binutils-gdb/configure \
     --prefix=/usr \
     --with-lib-path=/usr/lib:/usr/local/lib \
     --with-bugurl=https://bugs.archlinux.org/ \
@@ -64,6 +62,7 @@ build() {
     --enable-gold \
     --enable-plugins \
     --enable-deterministic-archives \
+    --with-pic \
     --disable-werror \
     --disable-gdb
 
@@ -74,7 +73,7 @@ build() {
 }
 
 check() {
-  cd ${srcdir}/binutils-build
+  cd binutils-build
   
   # unset LDFLAGS as testsuite makes assumptions about which ones are active
   # ignore failures in gold testsuite...
@@ -82,7 +81,7 @@ check() {
 }
 
 package() {
-  cd ${srcdir}/binutils-build
+  cd binutils-build
   make prefix=${pkgdir}/usr tooldir=${pkgdir}/usr install
 
   # Remove unwanted files
