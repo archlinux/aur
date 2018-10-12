@@ -1,5 +1,5 @@
 pkgname=smartscope-beta
-pkgver=2018.0505.0150.00
+pkgver=2018.1005.0150.00
 pkgrel=1
 pkgdesc="SmartScope App (Beta version)"
 arch=('x86_64' 'i686')
@@ -22,6 +22,12 @@ pkgver() {
 package() {
   cd "${srcdir}"
   tar -xJvf data.tar.xz -C "${pkgdir}"
+
+  # Move udev rules from /etc to /usr/lib
+  install -d "${pkgdir}/usr/lib"
+  mv "${pkgdir}/etc/udev" "${pkgdir}/usr/lib/udev"
+
+  # Add launcher script
   install -D -m755 smartscope.sh "${pkgdir}/usr/bin/smartscope"
 }
 
