@@ -1,6 +1,6 @@
 # Maintainer: Aleksandr Matuzok <sherilynhope@gmail.com>
 pkgname=mongo-cxx-driver
-pkgver=r3.3.0
+pkgver=r3.3.1
 pkgrel=2
 pkgdesc="The official MongoDB C++ driver library"
 arch=('i686' 'x86_64')
@@ -27,4 +27,4 @@ package() {
 	cd "$pkgname-$pkgver/build"
     DESTDIR=$pkgdir make install
 }
-md5sums=('00c06c1c49bbd526da9c2fd53a727fa5')
+md5sums=('2577EE351719CA4397C5F91FACE35CF6')
