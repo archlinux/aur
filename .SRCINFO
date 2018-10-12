@@ -1,12 +1,13 @@
 pkgbase = nixnote2-git
 	pkgdesc = Evernote clone (formerly Nevernote) - git checkout
 	pkgver = 2.1.0.beta4g.r17.g2065b702
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/robert7/nixnote2
 	arch = x86_64
 	license = GPL3
+	makedepends = boost
+	makedepends = gcc
 	makedepends = git
-	makedepends = qt5-base
 	makedepends = qt5-tools
 	depends = hunspell
 	depends = java-runtime
