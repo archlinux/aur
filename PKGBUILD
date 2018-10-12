@@ -2,7 +2,7 @@
 pkgname=caffe-opencl-slim-git
 _srcname=caffe
 pkgver=1.0
-pkgrel=5
+pkgrel=6
 pkgdesc="A slimmed-down build of Caffe based on caffe-opencl-git"
 arch=('x86_64')
 url="http://caffe.berkeleyvision.org/"
@@ -32,7 +32,48 @@ prepare() {
 
     mkdir -p build
     cd build
-    CMAKE_PARALLEL_LEVEL=`grep processor /proc/cpuinfo | wc -l` cmake -DBUILD_docs=OFF -DUSE_LIBDNN=OFF -DUSE_CUDNN=OFF -DUSE_OPENCV=OFF -DUSE_LEVELDB=OFF -DUSE_LMDB=OFF -DUSE_HDF5=OFF -DBLAS=Open -D python_version=3 -DCMAKE_INSTALL_PREFIX:PATH=${pkgdir}/usr -DCMAKE_INSTALL_LIBDIR=lib ..
+    CMAKE_PARALLEL_LEVEL=`grep processor /proc/cpuinfo | wc -l` cmake \
+    -DUSE_INDEX_64=OFF
+    -DUSE_HALF=OFF
+    -DUSE_SINGLE=ON
+    -DUSE_DOUBLE=OFF
+    -DUSE_INT_QUANT_8=OFF
+    -DUSE_INT_QUANT_16=OFF
+    -DUSE_INT_QUANT_32=OFF
+    -DUSE_INT_QUANT_64=OFF
+    -DUSE_CUDA=OFF
+    -DUSE_OPENCL=ON
+    -DUSE_HSA=ON
+    -DUSE_HIP=OFF
+    -DFORCE_COMPILE_CU_AS_CPP=OFF
+    -DDISABLE_DEVICE_HOST_UNIFIED_MEMORY=OFF
+    -DUSE_LIBDNN=OFF
+    -DUSE_CLBLAS=OFF
+    -DUSE_CLBLAST=OFF
+    -DUSE_ISAAC=OFF
+    -DUSE_CUDNN=OFF
+    -DUSE_NCCL=OFF
+    -DBUILD_SHARED_LIBS=OFF
+    -DBUILD_python=ON
+    -DBUILD_matlab=OFF
+    -DBUILD_docs=OFF
+    -DBUILD_python_layer=ON
+    -DUSE_OPENCV=OFF
+    -DUSE_LEVELDB=OFF
+    -DUSE_LMDB=OFF
+    -DUSE_HDF5=OFF
+    -DALLOW_LMDB_NOLOCK=OFF
+    -DUSE_OPENMP=OFF
+    -DUSE_FFT=OFF
+    -DUSE_SQLITE=OFF
+    -DUSE_GEMMLOWP=OFF
+    -DUSE_NATIVE_MARCH=ON
+    -DUSE_ARM_CROSS_COMPILE=OFF
+    -DBLAS=Open \
+    -D python_version=3 \
+    -DCMAKE_INSTALL_PREFIX:PATH=${pkgdir}/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    ..
 }
 
 build() {
