@@ -9,6 +9,7 @@ pkgbase = vdeplug4-git
 	makedepends = s2argv-execs
 	depends = s2argv-execs
 	provides = vdeplug4
+	provides = vde2
 	conflicts = vdeplug4
 	conflicts = vde2
 	source = git+https://github.com/rd235/vdeplug4.git
