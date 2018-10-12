@@ -4,7 +4,7 @@ pkgdesc="ROS - MAVLink message marshaling library."
 url='http://qgroundcontrol.org/mavlink/'
 
 pkgname='ros-melodic-mavlink'
-pkgver='2018.9.17'
+pkgver='2018.10.10'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -31,7 +31,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="mavlink-gbp-release-release-melodic-mavlink-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/mavlink/mavlink-gbp-release/archive/release/melodic/mavlink/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('1b57a7fe9fa1e0fde0c8c0a849ffaa196a0e258765f175da3a178db114d691c5')
+sha256sums=('3c9d8e2e27f8b86f4a97beac1ef6c388a8ccdc69c81b456e8254382234dc895d')
 
 build() {
   # Use ROS environment variables
