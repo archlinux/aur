@@ -1,6 +1,6 @@
 # Maintainer: Sammay Sarkar <(my-name-without-vowels)@gmail.com>
 pkgname="openbangla-keyboard"
-pkgver="1.5.0"
+pkgver="1.5.1"
 pkgrel=1
 pkgdesc="An OpenSource, Unicode compliant Bengali Input Method"
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('ttf-indic-otf: fonts for Bangla and other Indic scripts'
             'ttf-freebanglafont: miscellaneous fonts for Bangla script')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/OpenBangla/OpenBangla-Keyboard/archive/$pkgver.tar.gz")
-sha256sums=('863287231c782794a9f0da9c580ef4ff311f46849eb18dbbd1038c2c71e32829')
+sha256sums=('154904f1d081b05dd8921ae6662af2645d0180af4b1b29e588b62d07f05e9d91')
 build() {
     cd "$srcdir/OpenBangla-Keyboard-$pkgver"
     if [[ -d build ]]; then rm -rf build; fi
