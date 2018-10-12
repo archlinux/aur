@@ -1,16 +1,16 @@
 pkgbase = ruby-octokit
 	pkgdesc = Simple wrapper for the GitHub API.
-	pkgver = 4.12.0
+	pkgver = 4.13.0
 	pkgrel = 1
 	url = https://github.com/octokit/octokit.rb
 	arch = any
 	license = MIT
 	depends = ruby
 	depends = ruby-sawyer
-	noextract = octokit-4.12.0.gem
+	noextract = octokit-4.13.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/octokit-4.12.0.gem
-	sha256sums = 904a37a3a0240561d583227510dfac346fcfea4f22ef8615ac4dc6a8e92e71d2
+	source = https://rubygems.org/downloads/octokit-4.13.0.gem
+	sha256sums = a697723eebcb5506db673c38b2c57e023d9556304250e1478fe59487fff700fa
 
 pkgname = ruby-octokit
 
