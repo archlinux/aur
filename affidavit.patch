@@ -21,7 +21,7 @@
        \ifTUD@thesis@gender@female
          die vorliegende 
        \else\ifTUD@thesis@gender@neuter
-@@ -296,11 +297,35 @@
+@@ -296,11 +297,18 @@
        \else
          den vorliegenden 
        \fi\fi
@@ -41,23 +41,6 @@
 +      elektronische Fassung \char252 berein.\\
 +      Bei einer Thesis des Fachbereichs Architektur entspricht die eingereichte elektronische 
 +      Fassung dem vorgestellten Modell und den vorgelegten Pl\char228 nen.\\
-+      \tudrule\\
-+    \language=1
-+    {\textbf English translation for information purposes only:\\}
-+    \section*{Thesis Statement}
-+    \subsection*{pursuant to \S 23 paragraph 7 of APB TU Darmstadt}
-+    \parindent0em
-+      I herewith formally declare that I, #2, have written the submitted thesis independently. I did not use 
-+      any outside support except for the quoted literature and other sources mentioned in the paper. I clearly 
-+      marked and separately listed all of the literature and all of the other sources which I employed when 
-+      producing this academic work, either literally or in content. This thesis has not been handed in or 
-+      published before in the same or similar form.\\
-+      I am aware, that in case of an attempt at deception based on plagiarism (§38 Abs. 2 APB), the thesis 
-+      would be graded with 5,0 and counted as one failed examination attempt. The thesis may only be repeated once.\\
-+      In the submitted thesis the written copies and the electronic version for archiving are identical in content.\\
-+      For a thesis of the Department of Architecture, the submitted electronic version corresponds to the presented
-+      model and the submitted architectural plans.\\
-+      \tudrule
      \vskip5ex
        Darmstadt, den #1
      \vskip6ex
