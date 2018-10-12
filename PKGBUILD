@@ -72,9 +72,9 @@ package() {
         chmod 0644 ${srcdir}/Launcher/*.qm
         cp ${srcdir}/qt.conf ${srcdir}/Launcher
         find ${srcdir}/Launcher -type f -exec strip -s {} 2>/dev/null \;
-        tar cJf ${srcdir}/Launcher-${pkgver}.tar.xz Launcher/
+        tar cJf ${srcdir}/launcher-${pkgver}.tar.xz Launcher/
         install -d "${pkgdir}/opt/${pkgname}/lib"
-        mv ${srcdir}/Launcher-${pkgver}.tar.xz ${pkgdir}/opt/${pkgname}/lib
+        mv ${srcdir}/launcher-${pkgver}.tar.xz ${pkgdir}/opt/${pkgname}/lib
         install -d ${pkgdir}/usr/share/icons
         cp -r ${srcdir}/icons ${pkgdir}/usr/share
 }
