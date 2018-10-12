@@ -1,7 +1,7 @@
 # Maintainer: Ista Zahn <istazahn@gmail.com>
 
 pkgname=glueviz
-pkgver=0.13.2
+pkgver=0.13.3
 pkgrel=2
 pkgdesc="Linked Data Visualizations Across Multiple Files"
 arch=('i386' 'x86_64')
@@ -9,8 +9,8 @@ url="http://glueviz.org/"
 license=('CUSTOM')
 depends=('python' 'python-glue-core' 'python-glue-vispy-viewers')
 makedepends=('python-setuptools')
-source=(https://files.pythonhosted.org/packages/a2/71/f6741c6bc70ff6a2e22a2ab3312940f4a17efcc063c03197c74212596a07/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('0a2b3a827eecd1b013427be925de4e5b15fed0fe26bf55457273f825e6b298b6')
+source=(https://files.pythonhosted.org/packages/f9/57/917928d18cd6d55c8cdb1098aba5d1cb2bc25a4505933f5f83bd51adf423/${pkgname}-${pkgver}.tar.gz)
+sha256sums=('80e617608e5937409a87ffe95285f338eee8824dbff1b3692c9733f7d76d752b')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
