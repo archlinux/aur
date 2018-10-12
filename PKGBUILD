@@ -1,4 +1,5 @@
-# Maintainer:  jyantis <yantis@yantis.net>
+# Maintainer:  Matthew McGinn <mamcgi@gmail.com>
+# Contributor:  jyantis <yantis@yantis.net>
 
 # There is some confusion between this and the community python2-markdown
 # That is a different immlementation. From the readme:
@@ -9,7 +10,7 @@
 # though, so you shouldn't discount Python-markdown from your consideration."
 
 pkgname=python2-markdown2-git
-pkgver=2.3.1.r12.g9b97e84
+pkgver=2.3.6.r21.gdb84b92
 pkgrel=1
 pkgdesc='A fast and complete implementation of Markdown in Python 2'
 arch=('any')
@@ -18,7 +19,7 @@ license=('MIT')
 depends=('python2')
 source=('git+https://github.com/trentm/python-markdown2.git')
 sha256sums=('SKIP')
-makedepends=('git' 'python2-setuptools')
+makedepends=('git' 'python2-setuptools' 'python2-wheel')
 optdepends=('python2-pygments: testing')
 
 # These are the python2 version even though named wrong
@@ -37,24 +38,21 @@ build() {
 
   # Patch any #!/usr/bin/python to #!/usr/bin/python2
   for file in $(find . -name '*.py' -print); do
-    sed -r -i 's_^#!.*/usr/bin/python(\s|$)_#!/usr/bin/python2_' $file
-    sed -r -i 's_^#!.*/usr/bin/env(\s)*python(\s|$)_#!/usr/bin/env python2_' $file
+    sed -r -i 's_^#!.*/usr/bin/python(\s|$)_#!/usr/bin/python2_' ${file}
+    sed -r -i 's_^#!.*/usr/bin/env(\s)*python(\s|$)_#!/usr/bin/env python2_' ${file}
   done
 
   python2 setup.py build
 }
 
-# check() {
-#   cd python-markdown2
-#   cd test
-#   python2 testall.py
-# }
+check() {
+   cd python-markdown2
+   cd test
+   python2 testall.py
+}
 
 package() {
   cd python-markdown2
-
-  # We don't need anything related to git in the package
-  rm -rf .git*
 
   python2 setup.py install --root="${pkgdir}" --optimize=1
 

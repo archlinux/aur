@@ -1,0 +1,5 @@
+pkg
+src
+python-markdown2
+*.tar.xz
+*.tar.gz
