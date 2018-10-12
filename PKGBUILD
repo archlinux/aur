@@ -2,7 +2,7 @@
 
 pkgname=pytype
 pkgver=2018.9.19
-pkgrel=1
+pkgrel=2
 pkgdesc="Python type inferencer"
 arch=('any')
 url="https://github.com/google/pytype"
@@ -11,7 +11,8 @@ provides=('pytype')
 depends=('python-importlab'
          'python-yaml>=3.11')
 makedepends=('python' 'python-setuptools' 'python-wheel'
-             'make' 'gcc' 'cmake')
+             'make' 'gcc' 'cmake'
+             'bison>=3.0.2' 'flex>=2.5.35')
 options=(!emptydirs)
 source=("https://github.com/google/pytype/archive/${pkgver}.tar.gz"
         "cpython-9734024.zip::https://github.com/python/cpython/archive/9734024ec65311e33936faa83fb1cb249ef0de9d.zip"
@@ -24,7 +25,7 @@ sha256sums=('17ff808c72204745e416c8c5a299cc9e1180c93dc5e80d872369a40d49a3ba52'
             '2d1acebe006efae35141a1ede6411da2e9895c2231eb38ec8cc5b9faefaa38b7'
             )
 
-build(){
+build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   rm -rf googletest/
