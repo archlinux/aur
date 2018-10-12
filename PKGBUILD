@@ -1,5 +1,5 @@
-# Maintainer: Alex Branham <branham@utexas.edu>
-_cranver=0.6.17
+# Maintainer: Alex Branham <alex.branham@gmail.com>
+_cranver=0.6.18
 pkgname=r-digest
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('r' )
 optdepends=('r-knitr' 'r-rmarkdown')
 source=("https://cran.r-project.org/src/contrib/digest_"$_cranver".tar.gz")
-md5sums=('e4ce9fcc5b0ae2576df5709b95b1e295')
+md5sums=('bc8081563e49bf85d1b720b21b938af1')
 
 build(){
     R CMD INSTALL digest_"$_cranver".tar.gz -l "$srcdir"
