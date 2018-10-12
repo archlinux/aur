@@ -3,13 +3,13 @@
 # Contributor: Romain Porte <microjoe@microjoe.org>
 
 pkgname=sw4stm32
-pkgver=2.5
+pkgver=2.6
 pkgrel=1
 pkgdesc="SystemWorkbench for STM32"
 arch=('x86_64')
 url="http://www.openstm32.org/System+Workbench+for+STM32"
 license=('CUSTOM')
-depends=("java-environment>=8")
+depends=("java-environment=8")
 options=(!emptydirs !strip)
 source=("http://www.ac6-tools.com/downloads/SW4STM32/install_sw4stm32_linux_64bits-v$pkgver.run"
 	$pkgname
@@ -56,7 +56,7 @@ package() {
 	echo "-Dosgi.configuration.area=@user.home/.sw4stm32" >> $pkgdir/$HOME/eclipse.bin.ini
 }
 
-md5sums=('af19b6b43535d9af5999344782b14f0b'
+md5sums=('abcb78c7f3334d83fadbf5a1021b4f9e'
 	'd1dfe6479d10bbfd07b17a289aa1ae32'
 	'1abad981624008108a0651b9847e183e'
 'ff9b48b50dc8a1845d002bc1f1ddb50a')
