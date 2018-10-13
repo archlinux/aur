@@ -1,6 +1,6 @@
 pkgbase = network-manager-applet-gtk2-jlindgren90-git
 	pkgdesc = GNOME frontends to NetWorkmanager for gtk2 ported by jlindgren90
-	pkgver = 1.8.2.r4116.20180311
+	pkgver = 1.8.2.r4117.20180819
 	pkgrel = 1
 	url = https://github.com/jlindgren90/network-manager-applet-gtk2
 	install = network-manager-applet.install
@@ -16,7 +16,7 @@ pkgbase = network-manager-applet-gtk2-jlindgren90-git
 	depends = libnotify
 	depends = gnome-icon-theme
 	depends = iso-codes
-	provides = network-manager-applet=1.8.2.r4116.20180311
+	provides = network-manager-applet=1.8.2.r4117.20180819
 	conflicts = network-manager-applet
 	conflicts = network-manager-applet-gtk2
 	conflicts = nm-connection-editor

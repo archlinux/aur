@@ -5,7 +5,7 @@
 
 pkgname=network-manager-applet-gtk2-jlindgren90-git
 _pkgname=network-manager-applet
-pkgver=1.8.2.r4116.20180311
+pkgver=1.8.2.r4117.20180819
 pkgrel=1
 pkgdesc="GNOME frontends to NetWorkmanager for gtk2 ported by jlindgren90"
 arch=(i686 x86_64)
