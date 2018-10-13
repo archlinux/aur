@@ -13,7 +13,7 @@ optdepends=('libretro-blastem: Sega Mega Drive support'
             'libretro-bsnes-mercury-git: Alternative Super Nintendo Entertainment System support'
             # TODO: see if renaming module to desmume works
             #'libretro-desmume2015: Nintendo DS support'
-            'libretro-dosbox-git: DOS support'
+            'libretro-dosbox-git: MS-DOS support'
             'libretro-gambatte: Nintendo Game Boy/Game Boy Color support'
             'libretro-handy-git: Atari Lynx support'
             'libretro-mame-git: Arcade support'
