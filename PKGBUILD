@@ -10,7 +10,7 @@ arch=('x86_64')
 license=('BSD')
 makedepends=("cvs" "openssh")
 source=("git+https://github.com/ugjka/calendar.latvia.git"
-        "${pkgname}-${pkgverbase}-debian.tar.gz::http://ftp.debian.org/debian/pool/main/b/bsdmainutils/bsdmainutils_9.0.14.tar.gz"
+        "http://ftp.debian.org/debian/pool/main/b/bsdmainutils/bsdmainutils_9.0.14.tar.gz"
         "calendar-linux.patch"
         "Makefile.linux"
         "LICENSE")
