@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-libnumbertext
 	pkgdesc = Number to number name and money text conversion library (mingw-w64)
-	pkgver = 1.0
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://github.com/Numbertext/libnumbertext
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = mingw-w64-libnumbertext
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://github.com/Numbertext/libnumbertext/archive/1.0.tar.gz
+	source = https://github.com/Numbertext/libnumbertext/archive/1.0.5.tar.gz
 	source = libnumbertext-updateautotools.patch
-	sha256sums = db1864aa672e3d8e094f2cc64db1e1dd280266dd6c76899415adb91012b1da72
+	sha256sums = 508f259325efc25705e27ca1bafe487aa0b8b0f5cc3bf77cb2d53ce7f119c380
 	sha256sums = 4c1be70cbb6c7b5e2f9d3842ad83ea95971d99663768e5df2ac74956fc4555bd
 
 pkgname = mingw-w64-libnumbertext

@@ -2,7 +2,7 @@
 
 _pkgname=libnumbertext
 pkgname=mingw-w64-${_pkgname}
-pkgver=1.0
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Number to number name and money text conversion library (mingw-w64)"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('mingw-w64-configure')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://github.com/Numbertext/libnumbertext/archive/${pkgver}.tar.gz"
         "libnumbertext-updateautotools.patch")
-sha256sums=('db1864aa672e3d8e094f2cc64db1e1dd280266dd6c76899415adb91012b1da72'
+sha256sums=('508f259325efc25705e27ca1bafe487aa0b8b0f5cc3bf77cb2d53ce7f119c380'
             '4c1be70cbb6c7b5e2f9d3842ad83ea95971d99663768e5df2ac74956fc4555bd')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
