@@ -1,20 +1,23 @@
-# Maintainer: Yauheni Kirylau <actionless.loveless@gmail.com>
+# Maintainer: Arvedui <arvedui@posteo.de>
+# Contributor: Yauheni Kirylau <actionless.loveless@gmail.com>
 
 pkgname='pass-extension-tail'
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='A pass extension to avoid printing the password to the console .'
 arch=('any')
 url='https://github.com/palortoff/pass-extension-tail'
 license=('GPL3')
 depends=('pass')
-source=(https://github.com/palortoff/pass-extension-tail/archive/v${pkgver}.tar.gz)
-sha512sums=('f7746da93486be9d30e920cc2f0590d14d7a6126a30737e5973c27db60e1c76f557777f2ed12825f8ee10712b9217dd7c1f408c9a5990edf3daaaa78c754b650')
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/palortoff/pass-extension-tail/archive/v${pkgver}.tar.gz)
+sha512sums=('4ec8ecf64dd8142453066ad07d7743bb03f2040ea2f0c5a9b3e6a5bfdd5318445b0d90509a26324d9095bf7f09cd40927244681dc3bbc352af40a8e5f7a8e0b6')
 
 package() {
-  cd "${srcdir}/pass-extension-tail-${pkgver}/"
-  mkdir -p ${pkgdir}/usr/lib/password-store/extensions/
-  cp src/tail{,edit}.bash ${pkgdir}/usr/lib/password-store/extensions/
-  mkdir -p ${pkgdir}/usr/share/man/man1/
-  cp man/pass-extension-tail.1 ${pkgdir}/usr/share/man/man1/
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  make DESTDIR="${pkgdir}/" install
+
+  mkdir -p "${pkgdir}"/usr/share/bash-completion/completions
+  mv "${pkgdir}"/{etc/bash_completion.d/pass-tail,usr/share/bash-completion/completions/}
+  rm -r "${pkgdir}"/etc
 }

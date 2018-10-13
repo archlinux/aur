@@ -1,13 +1,13 @@
 pkgbase = pass-extension-tail
 	pkgdesc = A pass extension to avoid printing the password to the console .
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/palortoff/pass-extension-tail
 	arch = any
 	license = GPL3
 	depends = pass
-	source = https://github.com/palortoff/pass-extension-tail/archive/v1.1.1.tar.gz
-	sha512sums = f7746da93486be9d30e920cc2f0590d14d7a6126a30737e5973c27db60e1c76f557777f2ed12825f8ee10712b9217dd7c1f408c9a5990edf3daaaa78c754b650
+	source = pass-extension-tail-1.2.0.tar.gz::https://github.com/palortoff/pass-extension-tail/archive/v1.2.0.tar.gz
+	sha512sums = 4ec8ecf64dd8142453066ad07d7743bb03f2040ea2f0c5a9b3e6a5bfdd5318445b0d90509a26324d9095bf7f09cd40927244681dc3bbc352af40a8e5f7a8e0b6
 
 pkgname = pass-extension-tail
 
