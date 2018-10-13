@@ -1,7 +1,7 @@
 pkgbase = neobarok
 	pkgdesc = 3D modeling software aimed at artists and users of all levels
 	pkgver = 1.1.3
-	pkgrel = 4
+	pkgrel = 5
 	url = http://neobarok.com
 	arch = x86_64
 	license = custom
@@ -9,14 +9,14 @@ pkgbase = neobarok
 	depends = qt5-base
 	depends = sfml
 	depends = hicolor-icon-theme
-	source = http://neobarok.com/Neobarok-1.1.3-linux.zip
 	source = neobarok.desktop
 	source = neobarok.svg
-	source = LICENSE
-	md5sums = 3ef845089a3db23791831043b756d1de
-	md5sums = 9f69204a3353d6ca8ab16a0f8df5185e
-	md5sums = 9e447434129fae9d99eeada08ac7d1f3
-	md5sums = 136c9659ff19f3d47b08d8d1d124d370
+	source = neobarok-LICENSE
+	sha256sums = c64183c30d535413bd8200cf531d397a492dd92be51b83f88baebaed7ab04690
+	sha256sums = 98e10205466e493ea7567abd2ca8c7abfe73a4a076dc4b3e69c6a22abfa2297b
+	sha256sums = bb75d084b907f97e4b53d8f9c74e06113d90a67d2c33e8aa3fc7a18efaafe0a5
+	source_x86_64 = http://neobarok.com/Neobarok-1.1.3-linux.zip
+	sha256sums_x86_64 = 3be3f16ac588d8ff7e358c123aad2c22bd3e3a107bda46bcc19ceabda5d0bc97
 
 pkgname = neobarok
 
