@@ -1,0 +1,24 @@
+--- old/setup.py	2018-08-29 01:48:46.000000000 +0800
++++ new/setup.py	2018-10-13 19:38:44.597499786 +0800
+@@ -68,7 +68,7 @@
+ JDK = {
+     'darwin': JAVAHOME or JAVAFRAMEWORKS,
+     'ipod': '/usr/include/gcc',
+-    'linux': '/usr/lib/jvm/java-8-oracle',
++    'linux': '/usr/lib/jvm/default',
+     'sunos5': '/usr/jdk/instances/jdk1.6.0',
+     'win32': JAVAHOME,
+     'mingw32': JAVAHOME,
+@@ -211,7 +211,11 @@
+         from pkg_resources import SetuptoolsVersion
+         with_modern_setuptools = True
+     except ImportError:
+-        with_modern_setuptools = False
++        try:
++            from packaging.version import Version
++            with_modern_setuptools = True
++        except ImportError:
++            with_modern_setuptools = False
+ 
+     enable_shared = False
+ 

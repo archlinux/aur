@@ -1,0 +1,17 @@
+pkgbase = python-jcc
+	pkgdesc = A C++ code generator for calling Java from C++/Python
+	pkgver = 3.2
+	pkgrel = 1
+	url = https://lucene.apache.org/pylucene/jcc/index.html
+	arch = x86_64
+	license = Apache
+	makedepends = python-setuptools
+	depends = java-environment
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/J/JCC/JCC-3.2.tar.gz
+	source = jdk.patch
+	sha256sums = 9f7336c2ea742a8990b193d162a4d029276d0952704702de45d83798309497d4
+	sha256sums = 77a55bd33d0204516492cd78cef41a2686f388df86108cbbae5b3ca67dab8281
+
+pkgname = python-jcc
+
