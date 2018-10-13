@@ -2,7 +2,7 @@
 
 pkgname=osrm-backend
 pkgver=5.18.0
-pkgrel=1
+pkgrel=3
 pkgdesc="High performance routing engine written in C++14 designed to run on OpenStreetMap data."
 url="http://map.project-osrm.org/"
 depends=("expat" "boost-libs" "lua52" "intel-tbb")
