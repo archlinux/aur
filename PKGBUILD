@@ -3,7 +3,7 @@
 # Up to date with fedora's infiniband-diags-1.6.4-4.fc23.src.rpm
 
 pkgname=infiniband-diags
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='OpenFabrics Alliance diagnostic programs and scripts for InfiniBand subnets'
 arch=('x86_64' 'i686')
@@ -14,7 +14,7 @@ conflicts=('libibmad')
 replaces=('libibmad')
 depends=('opensm' 'systemd' 'glib2')
 source=("https://github.com/linux-rdma/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('4357e6563477a693949efa18d5f7d720')
+md5sums=('5960206e41d27737ab13916cfdee2d4e')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -37,7 +37,7 @@ package() {
   # Remove init.d script.  (rdma-ndd and its .service were moved upstream ito rdma-core.)
   rm -rf ${pkgdir}/etc/init.d
 
-  # 1.6.7 - 2.0.0 erroneously makes an empty /var/run directory - remove /var/run and /var with rmdir rather than "rm -r" so it will fail if not empty (future versions)
+  # 1.6.7 - 2.1.0 erroneously makes an empty /var/run directory - remove /var/run and /var with rmdir rather than "rm -r" so it will fail if not empty (future versions)
   rmdir "${pkgdir}/var/run"
   rmdir "${pkgdir}/var"
 }
