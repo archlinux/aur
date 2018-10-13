@@ -1,0 +1,24 @@
+pkgbase = python-pyfunceble-dev
+	pkgdesc = The tool to check the availability of domains, IPv4 or URL.
+	pkgver = 0.112.5
+	pkgrel = 1
+	url = https://funilrys.github.io/PyFunceble/
+	arch = any
+	license = MIT
+	depends = python3
+	depends = python-distribute
+	depends = python-setuptools
+	depends = python-colorama
+	depends = python-pyaml
+	depends = python-urllib3
+	depends = python-requests
+	depends = python-domain2idna
+	provides = pyfunceble
+	conflicts = python-pyfunceble
+	source = https://files.pythonhosted.org/packages/source/p/pyfunceble-dev/PyFunceble-dev-0.112.5.tar.gz
+	source = https://raw.githubusercontent.com/funilrys/PyFunceble/dev/LICENSE
+	sha256sums = b6c030d176e0d4b28536717136af25ac458834a0d98035bb8357dbe5d03bdbcb
+	sha256sums = a6446256d9e2281e96a2279c0cf0d424700a311d9f2ad6e71e1a5bbb9abd5f29
+
+pkgname = python-pyfunceble-dev
+
