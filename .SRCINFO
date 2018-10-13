@@ -1,7 +1,7 @@
 pkgbase = simdock
-	pkgdesc = This is simdock, an eye-candy deskbar for Linux.
-	pkgver = 1.5
-	pkgrel = 2
+	pkgdesc = Small dock with pseudo-transparency and good window handling
+	pkgver = 1.5.3
+	pkgrel = 1
 	url = https://github.com/onli/simdock
 	arch = i686
 	arch = x86_64
@@ -11,8 +11,10 @@ pkgbase = simdock
 	depends = wxsvg
 	provides = simdock
 	conflicts = simdock
-	source = simdock-1.5.tar.gz::https://github.com/onli/simdock/archive/1.5.tar.gz
-	sha256sums = 066eaab92db63a3101a41ed1e52913cb6c366ca48693904d484c985e66c896af
+	source = simdock-1.5.3.tar.gz::https://github.com/onli/simdock/archive/1.5.3.tar.gz
+	source = https://github.com/onli/simdock/raw/210f85511f9f3d198158a676189d72029c4bed2e/simdock.desktop
+	sha256sums = b1c2b8f0f79463b5348781f739896dc89c31ca4fb976fdbdd2b0aaa94324aca3
+	sha256sums = ee32aa3a33601bcaf38d6049daf86df3957cf92985a4edecdabce849ae46ebac
 
 pkgname = simdock
 
