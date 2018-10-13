@@ -1,6 +1,6 @@
 pkgbase = python-tinydb
 	pkgdesc = Lightweight document oriented database optimized for your happiness
-	pkgver = 3.8.1
+	pkgver = 3.11.1
 	pkgrel = 1
 	url = https://github.com/msiemens/tinydb
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-tinydb
 	makedepends = python-setuptools
 	depends = python
 	options = !emptydirs
-	source = https://github.com/msiemens/tinydb/archive/v3.8.1.tar.gz
+	source = https://github.com/msiemens/tinydb/archive/v3.11.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = python-tinydb

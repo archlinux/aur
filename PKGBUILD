@@ -2,7 +2,7 @@
 # previous: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python-tinydb
-pkgver=3.8.1
+pkgver=3.11.1
 pkgrel=1
 pkgdesc="Lightweight document oriented database optimized for your happiness"
 arch=('any')
