@@ -1,7 +1,7 @@
 # Maintainer: elementh <lucasmmarino@icloud.com>
 pkgname=flatplat-blue-theme
 pkgrel=1
-pkgver=3.30.0
+pkgver=3.30.1
 pkgdesc="A Material Design-like flat theme for GTK3, GTK2, and GNOME-Shell."
 arch=('any')
 url="https://github.com/peterychuang/Flat-Plat-Blue"
@@ -12,7 +12,7 @@ provides=('flatplat-blue-theme')
 conflicts=()
 replaces=()
 source=(Flat-Plat-Blue-$pkgver::"https://github.com/peterychuang/Flat-Plat-Blue/archive/$pkgver.tar.gz")
-sha256sums=('27cd96d928ae75b92d730658038a81495e19e823ee60e0bf6a604c96084f8d1b')
+sha256sums=('1a89015d9f64810f8ff1e3a7c23257fd1f6971a9ed738634b2da57dad6e7fe0e')
 
 package() {
   cd "${srcdir}/Flat-Plat-Blue-$pkgver"
