@@ -2,7 +2,7 @@
 
 pkgname=ocaml-ppx_derivers-git
 pkgver=20180224
-pkgrel=1
+pkgrel=2
 pkgdesc="deriving plugin registry"
 arch=('x86_64')
 url='https://github.com/ocaml-ppx/ppx_derivers'
@@ -24,10 +24,14 @@ build() {
 }
 
 package() {
+  set -e
   destdir="$pkgdir/$(ocamlfind printconf destdir)"
 
   cd "$pkgname"
 
-  mkdir -p "$destdir/ppx_derivers" || return 1
-  make DESTDIR="$destdir/" OCAMLFIND_DESTDIR="$destdir/" install || return 1
+  mkdir -p "$destdir/ppx_derivers"
+  export DESTDIR="$destdir/"
+  export OCAMLFIND_DESTDIR="$destdir/"
+  jbuilder build @install
+  jbuilder install -p ppx_derivers --prefix="${destdir}"
 }
