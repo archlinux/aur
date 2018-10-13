@@ -3,8 +3,8 @@ pkgname='thelounge'
 _npmname='thelounge'
 pkgver=2.7.1
 pkgrel=1
-pkgdesc="Web-based IRC client - Official community fork of Shout"
-url='https://thelounge.github.io/'
+pkgdesc="Modern self-hosted web IRC client"
+url='https://thelounge.chat/'
 arch=('any')
 license=('MIT')
 depends=('nodejs')
@@ -12,7 +12,7 @@ makedepends=('npm')
 install=install
 backup=('etc/thelounge/config.js')
 source=(
-	"http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz"
+	"https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz"
 	"system.service"
 	"user.service"
 )
