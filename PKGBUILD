@@ -6,7 +6,7 @@
 
 pkgname=('nvidia-utils-beta' 'nvidia-egl-wayland-beta' 'nvidia-libgl-beta' 'opencl-nvidia-beta')
 pkgver=410.57
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom:NVIDIA')
@@ -65,9 +65,8 @@ package_opencl-nvidia-beta() {
   # create missing soname links
   _create_links
 
-  # License (link)
-  install -d "$pkgdir"/usr/share/licenses/
-  ln -s nvidia/ "$pkgdir"/usr/share/licenses/opencl-nvidia
+  # license
+  install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 package_nvidia-libgl-beta() {
@@ -75,6 +74,7 @@ package_nvidia-libgl-beta() {
   depends=('nvidia-utils-beta')
   provides=("nvidia-libgl=$pkgver" 'libgl' 'libegl' 'libgles')
   conflicts=('nvidia-libgl' 'libgl' 'libegl' 'libgles')
+  
   cd $_pkg
 
   mkdir -p "${pkgdir}/usr/lib/"
@@ -95,9 +95,8 @@ package_nvidia-libgl-beta() {
   ln -s /usr/lib/nvidia/libGLESv2.so.2.1.0 "$pkgdir"/usr/lib/libGLESv2.so.2
   ln -s libGLESv2.so.2 "$pkgdir"/usr/lib/libGLESv2.so
 
-  # License (link)
-  install -d "$pkgdir"/usr/share/licenses/
-  ln -s nvidia/ "$pkgdir"/usr/share/licenses/nvidia-libgl
+  # license
+  install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 package_nvidia-egl-wayland-beta() {
@@ -105,11 +104,15 @@ package_nvidia-egl-wayland-beta() {
   depends=('nvidia-utils-beta')
   provides=('egl-wayland')
   conflicts=('egl-wayland')
+  
   cd $_pkg
 
   install -D -m755 "libnvidia-egl-wayland.so.${_eglver}" -t "$pkgdir"/usr/lib
   ln -s "libnvidia-egl-wayland.so.${_eglver}" "${pkgdir}/usr/lib/libnvidia-egl-wayland.so"
   ln -s "libnvidia-egl-wayland.so.${_eglver}" "${pkgdir}/usr/lib/libnvidia-egl-wayland.so.1"
+  
+  # license
+  install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 package_nvidia-utils-beta() {
@@ -264,9 +267,8 @@ package_nvidia-utils-beta() {
   cp -r html "$pkgdir"/usr/share/doc/nvidia/
   ln -s nvidia/ "$pkgdir"/usr/share/doc/nvidia-utils
 
-  # Licenses
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/nvidia/LICENSE
-  ln -s nvidia/ "$pkgdir"/usr/share/licenses/nvidia-utils
+  # license
+  install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
   # Distro-specific files must be installed in /usr/share/X11/xorg.conf.d
   install -D -m644 "${srcdir}/nvidia-drm-outputclass.conf" "${pkgdir}/usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf"

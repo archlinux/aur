@@ -1,6 +1,6 @@
 pkgbase = nvidia-utils-beta
 	pkgver = 410.57
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.nvidia.com/
 	arch = x86_64
 	license = custom:NVIDIA
