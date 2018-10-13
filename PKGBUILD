@@ -3,7 +3,7 @@
 
 pkgname=papi
 pkgver=5.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Performance Application Programming Interface"
 arch=('x86_64' 'i686')
 url="http://icl.cs.utk.edu/papi/"
@@ -12,6 +12,12 @@ depends=('glibc' 'gcc-fortran')
 source=(http://icl.cs.utk.edu/projects/${pkgname}/downloads/${pkgname}-${pkgver}.tar.gz)
 sha256sums=('49b7293f9ca2d74d6d80bd06b5c4be303663123267b4ac0884cbcae4c914dc47')
 conflicts=('libpfm4')
+
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}/src"
+
+  sed -i 's/-Werror//g' $(grep -rl -- '-Werror')
+}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}/src"
