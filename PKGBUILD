@@ -13,7 +13,6 @@ makedepends=('python-setuptools')
 optdepends=('alsa-utils: to cast with ALSA'
             'ffmpeg: for ffmpeg backend and/or to cast with ALSA'
             'gstreamer: for gstreamer backend'
-            'nodejs: for node backend'
             'pavucontrol: to cast with PulseAudio'
             'pulseaudio: to cast with PulseAudio'
             'python-pyqt5: system tray menu support'
@@ -29,7 +28,7 @@ package() {
   ln -s /usr/share/$pkgname/$pkgname.py "$pkgdir"/usr/bin/$pkgname
 
   install -Dm755 $pkgname.py "$pkgdir"/usr/share/$pkgname/$pkgname.py
-  cp -a --parents images/google* $pkgname nodejs "$pkgdir"/usr/share/$pkgname
+  cp -a --parents images/google* $pkgname "$pkgdir"/usr/share/$pkgname
 
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
   install -Dm644 $pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
