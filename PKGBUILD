@@ -16,7 +16,6 @@ source_x86_64=("https://github.com/Rocket1184/electron-netease-cloud-music/relea
   'electron-netease-cloud-music.sh'
   'electron-netease-cloud-music.png'
 )
-
 md5sums_x86_64=('b0ff8f6edb47ef13d4fa0abee05b1e34'
                 '7f35c2dbfc5cd0fd63cd0be16cf35f3c'
                 '7ecfe9b9b1c98b43cd9d4c1762a9b96d'
