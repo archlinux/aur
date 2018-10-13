@@ -1,8 +1,8 @@
 # Maintainer: chenjunyu19 <1335546814@qq.com>
 
 pkgname=deepin-dock-plugin-cmdu-git
-pkgver=r18.5440386
-pkgrel=2
+pkgver=r23.02c518d
+pkgrel=1
 pkgdesc="A plugin for deepin dock, display uptime, CPU usage, RAM usage and netspeed."
 arch=('x86_64')
 url="https://github.com/sonichy/CMDU_DDE_DOCK"
