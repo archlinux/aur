@@ -6,7 +6,7 @@
 _pkgbase=nautilus
 pkgbase=nautilus-typeahead
 pkgname=(nautilus-typeahead libnautilus-extension-typeahead)
-pkgver=3.30.0
+pkgver=3.30.2
 pkgrel=1
 pkgdesc="Default file manager for GNOME - Patched to bring back the 'typeahead find' feature"
 url="https://wiki.gnome.org/Apps/Nautilus"
@@ -16,7 +16,7 @@ depends=(libgexiv2 gnome-desktop gvfs dconf tracker gnome-autoar)
 makedepends=(gobject-introspection packagekit git gtk-doc appstream-glib 'meson>=0.44.1' ninja)
 optdepends=('nautilus-sendto: right click to send files')
 options=(!emptydirs)
-_commit=fb4fe5c7050c8b6191fe385410f0750aaf4b32de  # tags/3.30.0^0
+_commit=09fd9171dbb3a4ecbac093710411314f83e6322e  # tags/3.30.2
 source=("git+https://gitlab.gnome.org/GNOME/nautilus.git#commit=$_commit"
         nautilus-restore-typeahead.patch)
 sha256sums=('SKIP'
