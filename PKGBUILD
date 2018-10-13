@@ -1,7 +1,7 @@
 # Maintainer: Michal Ulianko <michal (dot) ulianko (at) gmail (dot) com>
 
 pkgname=python-pivy-git
-pkgver=0.6.4.r4.gd828a33
+pkgver=0.6.4.r6.g7af5e02
 pkgrel=1
 pkgdesc="Coin binding for Python"
 arch=('x86_64')
@@ -14,6 +14,11 @@ conflicts=("${pkgname%-git}")
 source=('pivy::git+https://github.com/FreeCAD/pivy.git')
 noextract=()
 md5sums=('SKIP')
+
+prepare() {
+    cd "$srcdir/pivy/fake_headers"
+    touch cstddef cstdarg cassert
+}
 
 pkgver() {
     cd "$srcdir/pivy"
