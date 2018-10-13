@@ -2,7 +2,7 @@
 
 pkgname=simdock
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="This is simdock, an eye-candy deskbar for Linux."
 arch=('i686' 'x86_64')
 url="https://github.com/onli/simdock"
@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('libwnck' 'gconf' 'wxsvg')
 provides=('simdock')
 conflicts=('simdock')
-source=("simdock-${pkgver}.tar.gz https://https://github.com/onli/simdock/archive/${pkgver}.tar.gz")
+source=("simdock-${pkgver}.tar.gz::https://github.com/onli/simdock/archive/${pkgver}.tar.gz")
 sha256sums=('066eaab92db63a3101a41ed1e52913cb6c366ca48693904d484c985e66c896af')
 
 build() {
