@@ -2,7 +2,7 @@
 # * No namcap warnings or errors
 
 pkgname=fabtests
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc='OpenFabrics Alliance high performance fabric library tests using libfabric'
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ url='https://www.openfabrics.org/index.php/overview.html'
 license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
 depends=('libfabric' 'bash' 'ruby')
 source=("https://github.com/ofiwg/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('0441aa0aeda391b1bf1eb71250a4afbc')
+md5sums=('5219fcf3c4af3dfc91dd10639284ef7d')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
