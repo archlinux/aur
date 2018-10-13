@@ -1,8 +1,8 @@
 # Maintainer: James Harvey <jamespharvey20@gmail.com>
 
 pkgname=mstflint
-pkgver=4.10.0.1
-_pkgver=4.10.0-1
+pkgver=4.10.0.2
+_pkgver=4.10.0-2
 pkgrel=1
 pkgdesc='OpenFabrics Alliance firmware burning application for Mellanox HCA/NIC cards'
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ url='https://www.openfabrics.org/index.php/overview.html'
 license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
 depends=('bash' 'zlib' 'python')
 source=("https://github.com/Mellanox/mstflint/archive/v${_pkgver}.tar.gz")
-md5sums=('9ee02fd1ea9684a0f82d8a45e3ef400b')
+md5sums=('378b851f829da9973e0c69a1c8840a77')
 
 build() {
   cd "${srcdir}/${pkgname}-${_pkgver}"
