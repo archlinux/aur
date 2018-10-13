@@ -1,7 +1,7 @@
 pkgbase = hash-checker
 	pkgdesc = A Free tool for checking any file's MD5, SHA256 & SHA512 hash easily
 	pkgver = 2.1
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/Rizwan-Hasan/Hash-Checker/
 	arch = x86_64
 	license = MIT
@@ -16,7 +16,7 @@ pkgbase = hash-checker
 	source = hash-checker.desktop.in
 	source = setup.py
 	md5sums = 66f6ea663a0206e980bfc96cd8c83685
-	md5sums = SKIP
+	md5sums = 8410509a75061eb1532f2b85e6f18e11
 	md5sums = f966222c78f492343e8f336bae1bdbf0
 
 pkgname = hash-checker

@@ -2,7 +2,7 @@
 
 pkgname=hash-checker
 pkgver=2.1
-pkgrel=6
+pkgrel=7
 pkgdesc="A Free tool for checking any file's MD5, SHA256 & SHA512 hash easily"
 arch=('x86_64')
 url="https://github.com/Rizwan-Hasan/Hash-Checker/"
@@ -13,7 +13,7 @@ source=(Hash-Checker.tar.gz::"https://github.com/Rizwan-Hasan/Hash-Checker/archi
                              "hash-checker.desktop.in"
                              "setup.py")
 md5sums=('66f6ea663a0206e980bfc96cd8c83685' 
-		 'SKIP'
+		 '8410509a75061eb1532f2b85e6f18e11'
 		 'f966222c78f492343e8f336bae1bdbf0')
 
 build(){
@@ -24,16 +24,16 @@ build(){
 
 package() {
   cd ${srcdir}/Hash-Checker-${pkgver}
-  install -dm755 ${pkgdir}/opt/Hash-Checker
+  install -dm755 ${pkgdir}/usr/share/Hash-Checker
   install -dm755 ${pkgdir}/usr/share/applications
   install -dm755 ${pkgdir}/usr/bin/
-  cp -avr *.so main.py ui ${pkgdir}/opt/Hash-Checker/
-  cp -v ${srcdir}/Hash-Checker-${pkgver}/icons/icon.png ${pkgdir}/opt/Hash-Checker/
+  cp -avr *.so main.py ui ${pkgdir}/usr/share/Hash-Checker/
+  cp -v ${srcdir}/Hash-Checker-${pkgver}/icons/icon.png ${pkgdir}/usr/share/Hash-Checker/
   cp -v "../hash-checker.desktop.in" ${pkgdir}/usr/share/applications/hash-checker.desktop
   # chmod 777 "${pkgdir}/usr/share/applications/hash-checker.desktop"
   # chmod +x "${pkgdir}/usr/share/applications/hash-checker.desktop"
-  cp -v ${srcdir}/Hash-Checker-${pkgver}/LICENSE ${pkgdir}/opt/Hash-Checker/LICENSE.txt
-  cd ${pkgdir}/opt/Hash-Checker
+  cp -v ${srcdir}/Hash-Checker-${pkgver}/LICENSE ${pkgdir}/usr/share/Hash-Checker/LICENSE.txt
+  cd ${pkgdir}/usr/share/Hash-Checker
   ln -sv main.py hash-checker
-  ln -sv ../../opt/Hash-Checker/main.py ${pkgdir}/usr/bin/hash-checker
+  ln -sv ../../usr/share/Hash-Checker/main.py ${pkgdir}/usr/bin/hash-checker
 }
