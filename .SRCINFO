@@ -9,6 +9,7 @@ pkgbase = slackcat
 	license = GPL
 	makedepends = go
 	makedepends = git
+  url = https://github.com/vektorlab/slackcat
 	source = slackcat::git://github.com/vektorlab/slackcat.git
 	md5sums = SKIP
 
