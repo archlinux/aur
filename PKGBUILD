@@ -1,7 +1,7 @@
 _pkgname="kst"
 pkgname="${_pkgname}-git"
 pkgrel=1
-pkgver=2.0.8r3357.9db9477d
+pkgver=2.0.8r3361.baf3509d
 pkgdesc="Fast real-time large-dataset viewing and plotting tool for KDE"
 arch=('i686' 'x86_64')
 url="http://kst-plot.kde.org"
@@ -13,8 +13,8 @@ optdepends=(
 )
 makedepends=('cmake')
 #install=$pkgname.install
-source=("git://github.com/Kst-plot/kst.git" "0001-Build-fixes-for-Qt-5.11.patch")
-md5sums=('SKIP' 'b655a89d78c7dc80f7692f5c218e05dc')
+source=("git://github.com/Kst-plot/kst.git" "0001-Fixing-missing-QStyle-in-shortcutdialog.cpp.patch")
+md5sums=('SKIP' '2b38f2c30bfbf64bbc392343e0590697')
 pkgver() {
   cd "${srcdir}/${_pkgname}"
   printf "2.0.8r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -35,7 +35,7 @@ build() {
 }
 prepare(){
 	cd "${srcdir}/${_pkgname}"
-	patch -p1 < ../0001-Build-fixes-for-Qt-5.11.patch
+	patch -p1 < ../0001-Fixing-missing-QStyle-in-shortcutdialog.cpp.patch
 }
 package() {
   cd "${srcdir}/${_pkgname}"
