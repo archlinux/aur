@@ -1,7 +1,7 @@
 # Maintainer: Mort Yao <soi@mort.ninja>
 
 pkgname=ocaml-stdint-git
-pkgver=20180226
+pkgver=20180606
 pkgrel=1
 pkgdesc="Various signed and unsigned integers for OCaml"
 arch=('i686' 'x86_64')
@@ -28,5 +28,5 @@ package() {
 
   mkdir -p "${pkgdir}"/usr/lib/ocaml/
 
-  jbuilder install -p stdint --libdir="${pkgdir}"/usr/lib/ocaml/
+  jbuilder install -p stdint --libdir="${pkgdir}"/usr/lib/ocaml/ --prefix="${pkgdir}"
 }
