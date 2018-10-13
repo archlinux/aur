@@ -2,7 +2,7 @@
 # Contributor: Bazon <bazonbloch@arcor.de>
 
 pkgname=activtools
-pkgver=5.16.7
+pkgver=5.17.14
 pkgrel=1
 pkgdesc="Includes activmanager, activcalibrate, activremote and activmonitor.
  You must install activtools if you want to use ActivInspire with Promethean
@@ -17,8 +17,10 @@ optdepends=('activinspire: activboard presentation')
 source_x86_64=(http://activsoftware.co.uk/linux/repos/driver/ubuntu/pool/non-oss/a/activtools/activtools_$pkgver-0~Ubuntu~1604_amd64.deb activinspire-restart.desktop)
 source_i686=(http://activsoftware.co.uk/linux/repos/driver/ubuntu/pool/non-oss/a/activtools/activtools_$pkgver-0~Ubuntu~1604_i386.deb activinspire-restart.desktop)
 
-md5sums_x86_64=('4583a2b4280e267e0ab72bf5c026ac65' 'fe9981eca6b2e3299f3a7ed908a6b83d')
-md5sums_i686=('08ac88e9ceb17f2f4290231f5c2380f5' 'fe9981eca6b2e3299f3a7ed908a6b83d')
+md5sums_i686=('314d782256db4b6090c755d9af720dd4'
+              'fe9981eca6b2e3299f3a7ed908a6b83d')
+md5sums_x86_64=('4d8daf99cbf6aaeaab69009e60b2f230'
+                'fe9981eca6b2e3299f3a7ed908a6b83d')
 
 package() {
 	# extract archive
