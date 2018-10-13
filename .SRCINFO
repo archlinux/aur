@@ -1,0 +1,16 @@
+pkgbase = perl-http-multipartparser
+	pkgdesc = Perl package to parse MultiPart MIME data streams
+	pkgver = 0.02
+	pkgrel = 1
+	url = https://metacpan.org/release/HTTP-MultiPartParser
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-deep
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/C/CH/CHANSEN/HTTP-MultiPartParser-0.02.tar.gz
+	md5sums = 1b07ebac54ce3288c044a23ba60196d2
+
+pkgname = perl-http-multipartparser
+
