@@ -1,6 +1,6 @@
 pkgbase = binutils-git
 	pkgdesc = A set of programs to assemble and manipulate binary and object files (git master developmental version)
-	pkgver = 2.29.r92431.be7f761188
+	pkgver = 2.30.r93845.b6572eb070
 	pkgrel = 1
 	url = http://www.gnu.org/software/binutils/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = binutils-git
 	checkdepends = dejagnu
 	checkdepends = bc
 	makedepends = git
-	depends = glibc>=2.26
+	depends = glibc
 	depends = zlib
 	provides = binutils=${pkgver}
 	conflicts = binutils-multilib

@@ -1,6 +1,7 @@
 # Original Core Repo
 # ==================
-# Maintainer: Allan McRae <allan@archlinux.org>
+# Maintainer:  Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Contributor: Allan McRae <allan@archlinux.org>
 
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 
@@ -18,14 +19,14 @@
 
 pkgname=binutils-git
 _pkgname=binutils-gdb
-pkgver=2.29.r92431.be7f761188
+pkgver=2.30.r93845.b6572eb070
 pkgrel=1
 pkgdesc='A set of programs to assemble and manipulate binary and object files (git master developmental version)'
 arch=(x86_64)
 url='http://www.gnu.org/software/binutils/'
 license=(GPL)
-groups=('base-devel')
-depends=('glibc>=2.26' zlib)
+groups=(base-devel)
+depends=(glibc zlib)
 makedepends=(git)
 checkdepends=(dejagnu bc)
 provides=('binutils=${pkgver}')
@@ -55,16 +56,18 @@ build() {
     --prefix=/usr \
     --with-lib-path=/usr/lib:/usr/local/lib \
     --with-bugurl=https://bugs.archlinux.org/ \
-    --enable-threads \
-    --enable-shared \
-    --enable-ld=default \
+    --enable-deterministic-archives \
     --enable-gold \
+    --enable-ld=default \
+    --enable-lto \
     --enable-plugins \
     --enable-relro \
-    --enable-deterministic-archives \
-    --with-pic \
-    --disable-werror \
+    --enable-shared \
+    --enable-targets=x86_64-pep \
+    --enable-threads \
     --disable-gdb \
+    --disable-werror \
+    --with-pic \
     --with-system-zlib
 
   make configure-host
@@ -88,6 +91,6 @@ package() {
 
   # No shared linking to these files outside binutils
   rm -f "$pkgdir"/usr/lib/lib{bfd,opcodes}.so
-  echo "INPUT( /usr/lib/libbfd.a -liberty -lz -ldl )" > "$pkgdir/usr/lib/libbfd.so"
-  echo "INPUT( /usr/lib/libopcodes.a -lbfd )" > "$pkgdir/usr/lib/libopcodes.so"
+  echo 'INPUT( /usr/lib/libbfd.a -liberty -lz -ldl )' > "$pkgdir/usr/lib/libbfd.so"
+  echo 'INPUT( /usr/lib/libopcodes.a -lbfd )' > "$pkgdir/usr/lib/libopcodes.so"
 }
