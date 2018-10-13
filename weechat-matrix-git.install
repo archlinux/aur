@@ -1,0 +1,6 @@
+post_install () {
+    echo "[weechat-matrix-git] Please run the following to complete installation:"
+    echo "[weechat-matrix-git] mkdir -p ~/.weechat/lua/autoload"
+    echo "[weechat-matrix-git] ln -s /opt/matrix.lua ~/.weechat/lua"
+    echo "[weechat-matrix-git] ln -s ~/.weechat/lua/matrix.lua ~/.weechat/lua/autoload"
+}

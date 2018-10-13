@@ -2,7 +2,7 @@
 
 pkgname=weechat-matrix-git
 pkgver=r348.ace3fef
-pkgrel=1
+pkgrel=2
 pkgdesc="weechat script for matrix"
 arch=('any')
 url='https://github.com/torhve/weechat-matrix-protocol-script'
@@ -11,6 +11,7 @@ depends=('weechat' 'lua' 'lua-cjson')
 makedepends=('git')
 source=("${pkgname}::git+https://github.com/torhve/weechat-matrix-protocol-script")
 md5sums=('SKIP')
+install=weechat-matrix-git.install
 
 pkgver() {
     cd "$pkgname"
@@ -19,8 +20,5 @@ pkgver() {
 
 package() {
     cd "$srcdir/$pkgname"
-    install -d "$pkgdir/$HOME/.weechat/lua/{,autoload}"
-    install -D "matrix.lua" "$HOME/.weechat/lua"
-    [ -h "$HOME/.weechat/lua/autoload/matrix.lua" ] \
-    || ln -s "$HOME/.weechat/lua/matrix.lua" "$HOME/.weechat/lua/autoload/matrix.lua"
+    install -D "matrix.lua" -t "$pkgdir/opt"
 }
