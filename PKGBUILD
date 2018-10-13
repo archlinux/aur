@@ -2,20 +2,20 @@
 # * No namcap warnings or errors
 
 pkgname=perftest
-pkgver=3.4
-_pkgver_subver=0.9
-_pkgver_commit=g98a9a17
-pkgrel=2
+pkgver=4.2.0.7
+_pkgver=4.2-0.7
+pkgrel=1
 pkgdesc='OpenFabrics Alliance Infiniband verbs performance testing and benchmarking tools'
 arch=('x86_64' 'i686')
 url='https://www.openfabrics.org/index.php/overview.html'
 license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
 depends=('librdmacm' 'libibumad' 'bash')
-source=("https://www.openfabrics.org/downloads/${pkgname}/${pkgname}-${pkgver}-${_pkgver_subver}.${_pkgver_commit}.tar.gz")
-md5sums=('6d54c371afa786275b5b3b0676321b02')
+source=("https://github.com/linux-rdma/${pkgname}/archive/V${_pkgver}.tar.gz")
+md5sums=('98b8e4e424b82816f32492d65ffd98c8')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${_pkgver}"
+  ./autogen.sh
   ./configure --prefix=/usr \
               --sbindir=/usr/bin \
               --libexecdir=/usr/lib \
@@ -26,7 +26,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${_pkgver}"
   make DESTDIR="${pkgdir}" install
   install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
   install -Dm755 runme "${pkgdir}/usr/bin/perftest-runme"
