@@ -2,7 +2,7 @@
 
 pkgname=strawberry
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitperfect audio player and music collection organizer, fork of Clementine. gstreamer engine only"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="http://www.strawbs.org/"
