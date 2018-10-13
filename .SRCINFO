@@ -1,6 +1,6 @@
 pkgbase = fabtests
 	pkgdesc = OpenFabrics Alliance high performance fabric library tests using libfabric
-	pkgver = 1.6.1
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = https://www.openfabrics.org/index.php/overview.html
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = fabtests
 	depends = libfabric
 	depends = bash
 	depends = ruby
-	source = https://github.com/ofiwg/fabtests/releases/download/v1.6.1/fabtests-1.6.1.tar.gz
-	md5sums = 5219fcf3c4af3dfc91dd10639284ef7d
+	source = https://github.com/ofiwg/fabtests/releases/download/v1.6.2/fabtests-1.6.2.tar.gz
+	md5sums = e6e9971add04e7e4a3d8776159aed668
 
 pkgname = fabtests
 
