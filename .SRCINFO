@@ -1,7 +1,7 @@
 pkgbase = ocaml-fstar
 	pkgdesc = An ML-like language with a type system for program verification.
 	pkgver = 0.9.6.0
-	pkgrel = 3
+	pkgrel = 4
 	arch = i686
 	arch = x86_64
 	license = Apache
@@ -14,7 +14,7 @@ pkgbase = ocaml-fstar
 	makedepends = ocaml-ppx_deriving_yojson
 	makedepends = ocaml-pprint
 	makedepends = ocaml-fileutils
-	makedepends = ulex
+	makedepends = ulex-git
 	makedepends = ocaml-ppx_deriving
 	makedepends = ocaml-menhir
 	depends = ocaml
