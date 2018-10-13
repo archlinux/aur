@@ -1,10 +1,9 @@
 # $Id$
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Contributor: William Rea <sillywilly@gmail.com>
+# Maintainer: leaeasy <leaeasy@gmail.com>
 
 pkgname=fbreader-qt5
 pkgver=0.99.4
-pkgrel=7
+pkgrel=8
 pkgdesc="An e-book reader for Linux"
 arch=('x86_64')
 url="http://www.fbreader.org/"
@@ -12,7 +11,7 @@ license=('GPL')
 depends=('fribidi' 'bzip2' 'curl' 'qt5-base' 'libunibreak' 'sqlite')
 provides=('fbreader')
 conflicts=('fbreader')
-source=(https://www.fbreader.org/files/desktop/fbreader-sources-$pkgver.tgz
+source=(https://fbreader.org/files/desktop/fbreader-sources-$pkgver.tgz
     "git+https://github.com/lokesh-krishna/FBreader-elementary-theme.git"
     "fbreader-0.99.4.patch"
     "fbreader-narrowing-conversion.patch"
