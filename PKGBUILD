@@ -2,7 +2,7 @@
 
 pkgname=ocaml-ppx_deriving-git
 pkgver=20180318
-pkgrel=1
+pkgrel=2
 pkgdesc="Type-driven code generation for OCaml >=4.02"
 arch=('x86_64')
 url='https://github.com/ocaml-ppx/ppx_deriving'
@@ -31,6 +31,6 @@ package() {
   export OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)"
   mkdir -p "${OCAMLFIND_DESTDIR}"
 
-  make install
+  make install PREFIX="${pkgdir}"
   install -Dm644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
