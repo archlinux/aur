@@ -4,7 +4,7 @@
 
 pkgname=qperf-nordma
 _pkgname=qperf
-pkgver=0.4.10
+pkgver=0.4.11
 pkgrel=1
 pkgdesc='OpenFabrics Alliance InfiniBand performance benchmark for bandwidth and latency'
 #        Works over TCP/IP only - for rdma support, see package qperf
@@ -14,7 +14,7 @@ license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
 depends=('glibc')
 conflicts=('qperf')
 source=("https://github.com/linux-rdma/${_pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('b85c7ebb2e9078442a7de3c530517233')
+md5sums=('8ef6f0c0124a4eee447f39479c62a992')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
