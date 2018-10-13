@@ -1,0 +1,11 @@
+--- gr-mixalot/lib/utils.cc	2018-10-13 23:36:45.179632317 +0100
++++ gr-mixalot/lib/utils.cc	2018-10-12 09:34:58.032752384 +0100
+@@ -41,7 +41,7 @@
+                         throw std::invalid_argument("invalid character in bit vector string: expected 1, 0, or space");
+                 }
+             }
+-            shared_ptr<itpp::bvec> bp(new itpp::bvec(ss.str()));
++            shared_ptr<itpp::bvec> bp(new itpp::bvec(ss.str().c_str()));
+             return bp;
+         }
+ 
