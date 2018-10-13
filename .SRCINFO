@@ -12,7 +12,9 @@ pkgbase = python-pyautogui
 	depends = python-pytweening
 	depends = python-pymsgbox
 	source = https://pypi.io/packages/source/P/PyAutoGUI/PyAutoGUI-0.9.38.tar.gz
-	md5sums = 9e0e167154f9fd2b13c8155a53dc12df
+	sha256sums = 52dae786359a51f6dcd64037fe0d703bb86e881059fe99af1fe4662cdf0d7d9e
 
 pkgname = python-pyautogui
+
+pkgname = python2-pyautogui
 
