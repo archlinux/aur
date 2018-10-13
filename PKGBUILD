@@ -1,7 +1,10 @@
-# Maintainer: Alex Smith <azphreal19@protonmail.com
+# Maintainer: Jonas Heinrich <onny@project-insanity.org>
+# Contributor: Jonas Heinrich <onny@project-insanity.org>
+# Contributor: Alex Smith <azphreal19@protonmail.com
+
 pkgname=koel
-pkgver=3.6.2
-pkgrel=2
+pkgver=3.7.2
+pkgrel=1
 pkgdesc="A personal music streaming server that works."
 arch=('any')
 url="http://koel.phanan.net/"
@@ -15,16 +18,15 @@ optdepends=('php-pgsql: to use the PostGreSQL database backend'
 
 backup=('usr/share/webapps/koel/.env')
 install="${pkgname}.install"
-source=("https://github.com/phanan/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('7fddfa7014b0da2c6bc14f0ce83982dfb23991834dd6c453b07922104687b333')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/phanan/${pkgname}/archive/v${pkgver}.tar.gz")
+sha512sums=('b3ae40db2839f9b411716428203f595ca685ea2d87599c0704fb271446126c998a96cecb21d864d0269f41f23e9b16c0202f95647eee82ecc7d8c16fe49874ed')
 
 build() {
 	cd "$pkgname-$pkgver"
-    COMPOSER_CACHE_DIR="${srcdir/composer}" composer install
+	COMPOSER_CACHE_DIR="${srcdir/composer}" composer install
 }
 
 package() {
-	#cd "$pkgname-$pkgver"
 	mkdir -p "${pkgdir}/usr/share/webapps"
-    cp -r "${pkgname}-${pkgver}" "${pkgdir}/usr/share/webapps/${pkgname}"
+	cp -r "${pkgname}-${pkgver}" "${pkgdir}/usr/share/webapps/${pkgname}"
 }
