@@ -1,0 +1,4 @@
+src
+pkg
+*.tar.xz
+nixnote2*AppImage
