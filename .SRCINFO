@@ -1,7 +1,7 @@
 pkgbase = lxterminal-gtk2
 	pkgdesc = VTE-based terminal emulator for GTK2 (part of LXDE)
-	pkgver = 0.3.1
-	pkgrel = 2
+	pkgver = 0.3.2
+	pkgrel = 1
 	url = https://lxde.org/
 	arch = x86_64
 	groups = lxde
@@ -12,8 +12,8 @@ pkgbase = lxterminal-gtk2
 	conflicts = lxterminal-gtk3
 	conflicts = lxterminal
 	conflicts = lxterminal-git
-	source = https://downloads.sourceforge.net/lxde/lxterminal-0.3.1.tar.xz
-	sha256sums = cd8df387c2dd40e03b48caacf700820f9421b421954a0ed56395f505411d2c4b
+	source = https://downloads.sourceforge.net/lxde/lxterminal-0.3.2.tar.xz
+	sha256sums = 3166b18493a8e55811b02aa0de825cbbea65e2b628e69006c1a65b98e1bb4484
 
 pkgname = lxterminal-gtk2
 
