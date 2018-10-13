@@ -19,7 +19,7 @@ optdepends=('pepper-flash: support for Flash content'
             'libva-intel-driver: support HW acceleration on Intel graphics cards'
             'libva-vdpau-driver-chromium: support HW acceleration on Nvidia graphics cards')
 
-source_x86_64=("https://github.com/maximbaz/$pkgname/raw/master/$arch/chromium-vaapi-$pkgver-$_pkgrel-$arch.pkg.tar.xz")
+source_x86_64=("https://github.com/maximbaz/${pkgname}/releases/download/${pkgver}-${_pkgrel}/chromium-vaapi-${pkgver}-${_pkgrel}-${arch}.pkg.tar.xz")
 sha256sums_x86_64=('3f0076c96f340293e388187d8f965812817358c02f84a0d0c67171cfcf798b60')
 
 # Keep in sync with AUR/chromium-vaapi:

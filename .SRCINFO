@@ -44,7 +44,7 @@ pkgbase = chromium-vaapi-bin
 	provides = chromium
 	conflicts = chromium
 	conflicts = chromium-vaapi
-	source_x86_64 = https://github.com/maximbaz/chromium-vaapi-bin/raw/master/x86_64/chromium-vaapi-69.0.3497.100-2-x86_64.pkg.tar.xz
+	source_x86_64 = https://github.com/maximbaz/chromium-vaapi-bin/releases/download/69.0.3497.100-2/chromium-vaapi-69.0.3497.100-2-x86_64.pkg.tar.xz
 	sha256sums_x86_64 = 3f0076c96f340293e388187d8f965812817358c02f84a0d0c67171cfcf798b60
 
 pkgname = chromium-vaapi-bin
