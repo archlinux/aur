@@ -21,7 +21,7 @@ sha256sums=('65a6ef7984ddedd3af64ea3f9bec44a6d658436f276b4d99ced80382eaef47fb')
 build() {
   cd "$srcdir"/"$_pkgname-$pkgver"/
   ./autogen.sh
-  ./configure --prefix=/usr --enable-intraday --enable-openmp --disable-static --enable-std-pointers --enable-std-unique-ptr
+  ./configure --prefix=/usr --enable-intraday --enable-openmp --disable-static --enable-std-class
   make
 }
 
