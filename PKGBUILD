@@ -5,22 +5,23 @@
 # Up to date with fedora's opensm-3.3.17-5.fc23.src.rpm
 
 pkgname=opensm
-pkgver=3.3.20
+pkgver=3.3.21
 pkgrel=1
 pkgdesc='OpenFabrics Alliance InfiniBand Subnet Manager and Administrator'
 arch=('x86_64' 'i686')
 url='https://www.openfabrics.org/index.php/overview.html'
 license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
 depends=('libibumad' 'rdma')
-source=("https://www.openfabrics.org/downloads/management/${pkgname}-${pkgver}.tar.gz"
+source=("https://github.com/linux-rdma/opensm/archive/${pkgver}.tar.gz"
         'opensm.service'
         'opensm.launch')
-md5sums=('ed615b4681e94ef2e13a5de773ab89a3'
+md5sums=('7149ad46987749ae80a00124dd1e3f9d'
          'f1155dd8fb07ce56c427bceb7ce3fffb'
          '7cd151f96d46ba1bc651fce0e2b7e8dc')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+  ./autogen.sh
   ./configure --prefix=/usr \
               --sbindir=/usr/bin \
               --libexecdir=/usr/lib \
