@@ -13,20 +13,22 @@ license=('PerlArtistic' 'GPL')
 
 depends=(
 	'perl>=5.10.1' # for Pod::Usage >= 1.36
-	'perl-apache-logformat-compiler>=0.12'
-	'perl-cookie-baker>=0.05'
+	'perl-apache-logformat-compiler>=0.33'
+	'perl-cookie-baker>=0.07'
 	'perl-devel-stacktrace>=1.23'
 	'perl-devel-stacktrace-ashtml>=0.11'
 	'perl-file-sharedir>=1.00'
 	'perl-filesys-notify-simple'
-	'perl-http-body>=1.06'
+	'perl-http-entity-parser>=0.17'
 	'perl-http-message>=5.814'
 	'perl-http-headers-fast>=0.18'
 	'perl-http-tiny>=0.034'
 	'perl-hash-multivalue>=0.05'
 	'perl-stream-buffered>=0.02'
+	'perl-test-tcp>=2.15'
 	'perl-try-tiny'
-	'perl-uri>=1.59')
+	'perl-uri>=1.59'
+	'perl-www-form-urlencoded>=0.23')
 makedepends=(
 	'perl-extutils-makemaker>=6.30'
 	'perl-file-sharedir-install>=0.06')
@@ -36,14 +38,11 @@ checkdepends=(
 	'perl-fcgi'
 	'perl-fcgi-procmanager'
 	'perl-http-server-simple-psgi'
-	'perl-log-log4perl'
 	'perl-authen-simple-passwd'
 	'perl-io-handle-util'
 	'perl-log-dispatch-array'
 	'perl-lwp-protocol-http10'
-	'perl-module-refresh'
-	'perl-mime-types'
-	'perl-test-tcp>=2.00')
+	'perl-mime-types')
 source=([% source %])
 options=(!emptydirs)
 md5sums=('[% md5sums %]')
@@ -70,5 +69,5 @@ package() {
 	cd [% distdir %]
 	sanitize
 	make install DESTDIR="$pkgdir"
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
