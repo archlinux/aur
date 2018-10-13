@@ -2,7 +2,7 @@
 
 pkgname=vivaldi-snapshot-ffmpeg-codecs
 pkgver=70.0.3538.58
-pkgrel=1
+pkgrel=2
 pkgdesc="additional support for proprietary codecs for vivaldi"
 arch=('x86_64')
 url="https://ffmpeg.org/"
@@ -17,7 +17,7 @@ source=(
   "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
   'chromium-FORTIFY_SOURCE-r2.patch'
 )
-sha512sums=('e1027ec0ec5c90426bfc21d55788b29b1a544858991f28031d82e35100d088b5d95e6c5773a288511082ff5069a6f2a3c10e0773c83d2d62bdc98ef5401d2e4a'
+sha512sums=('978c1e3ddf9e245bdcde11b3b910a9c492b863a31ba5e801d327ec30a2f208cd7c91d22fbc1265194be587ca43d8c53a3ed6da6094b4d38801c9a7297de7be40'
             '2d78092a700788c74b86db636af303fdb63a28ce5b7b0431dd81f6b7ce501e5d0234a6327a1b49bc23e1c1d00ba98fd5334dd07d9a20bb0d81d1a4ca4487a26c')
 
 prepare() {
