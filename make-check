@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# A convenience script for the package creator.
+# This file is not run on package installation.
+
+PACMAN=
+PATH=/usr/bin:$PATH
+
+pkgdir=${0%%/*}  # dirname $0
+cd -P -- "$pkgdir" || exit 1  # Allow to be called from any directory
+
+if [[ -d src ]]; then
+  makepkg -ef
+else
+  makepkg -f
+fi
+
+namcap PKGBUILD
+namcap ./*.tar.xz
+
+makepkg --printsrcinfo >| .SRCINFO && echo "Updated .SRCINFO" >&2
