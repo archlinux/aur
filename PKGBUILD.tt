@@ -1,0 +1,45 @@
+# CPAN Name  : HTTP::Entity::Parser
+# Contributor: [% packager %]
+# Generator  : CPANPLUS::Dist::Arch [% version %]
+
+pkgname=[% pkgname %]
+pkgver=[% pkgver %]
+pkgrel=[% pkgrel %]
+pkgdesc='PSGI compliant HTTP Entity Parser'
+arch=('any')
+url='[% url %]'
+license=('PerlArtistic' 'GPL')
+
+depends=('perl-http-multipartparser' 'perl-hash-multivalue'
+	'perl-json-maybexs>=1.003007' 'perl-stream-buffered'
+	'perl-www-form-urlencoded>=0.23')
+makedepends=('perl-module-build-tiny>=0.035')
+checkdepends=('perl-http-message>=6.00')
+source=([% source %])
+options=(!emptydirs)
+md5sums=('[% md5sums %]')
+
+sanitize() {
+	unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+	export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" MODULEBUILDRC=/dev/null
+}
+
+build() {
+	cd [% distdir %]
+	sanitize
+	/usr/bin/perl Build.PL --installdirs vendor --destdir "$pkgdir"
+	/usr/bin/perl Build
+}
+
+check() {
+	cd [% distdir %]
+	sanitize
+	/usr/bin/perl Build test
+}
+
+package() {
+	cd [% distdir %]
+	sanitize
+	/usr/bin/perl Build install
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
+}

@@ -1,0 +1,21 @@
+pkgbase = perl-http-entity-parser
+	pkgdesc = PSGI compliant HTTP Entity Parser
+	pkgver = 0.21
+	pkgrel = 1
+	url = https://metacpan.org/release/HTTP-Entity-Parser
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-http-message>=6.00
+	makedepends = perl-module-build-tiny>=0.035
+	depends = perl-http-multipartparser
+	depends = perl-hash-multivalue
+	depends = perl-json-maybexs>=1.003007
+	depends = perl-stream-buffered
+	depends = perl-www-form-urlencoded>=0.23
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/K/KA/KAZEBURO/HTTP-Entity-Parser-0.21.tar.gz
+	md5sums = 50e8418bfe27ab26818ca6e264052c95
+
+pkgname = perl-http-entity-parser
+
