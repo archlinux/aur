@@ -6,7 +6,7 @@
 pkgname=network-manager-applet-gtk2-jlindgren90-git
 _pkgname=network-manager-applet
 pkgver=1.8.2.r4117.20180819
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME frontends to NetWorkmanager for gtk2 ported by jlindgren90"
 arch=(i686 x86_64)
 license=(GPL)
@@ -27,7 +27,7 @@ makedepends=(intltool
 )
 options=('!emptydirs')
 provides=($_pkgname=$pkgver)
-conflicts=($_pkgname $_pkgname-gtk2 nm-connection-editor)
+conflicts=($_pkgname $_pkgname-gtk2 nm-connection-editor libnm-gtk libnma)
 install=network-manager-applet.install
 source=(
 	$pkgname::git+https://github.com/jlindgren90/network-manager-applet-gtk2.git
