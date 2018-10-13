@@ -3,14 +3,14 @@
 
 pkgname=libcelero-headers
 _pkgname=Celero
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc='C++ Benchmark Authoring Library/Framework (Developmental Headers)'
 arch=('any')
 url='https://github.com/DigitalInBlue/Celero'
 license=('custom:"Apache License, Version 2.0"')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/DigitalInBlue/${_pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('41f36d4e43b1e6c0308dedb6c4e605a1')
+md5sums=('00669cabf13a18e4535ea664924331ce')
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
