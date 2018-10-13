@@ -7,7 +7,7 @@ pkgbase = ssimulacra
 	license = Apache
 	makedepends = vtk
 	depends = opencv
-	source = git+https://github.com/cloudinary/ssimulacra.git
+	source = git+https://github.com/cloudinary/ssimulacra.git#commit=589fac281aa4a8ecfb9ce07ec2e6f6dd1e6eccbb
 	sha512sums = SKIP
 
 pkgname = ssimulacra

@@ -8,7 +8,7 @@ url="https://github.com/cloudinary/ssimulacra"
 license=('Apache')
 depends=('opencv')
 makedepends=('vtk')
-source=('git+https://github.com/cloudinary/ssimulacra.git')
+source=('git+https://github.com/cloudinary/ssimulacra.git#commit=589fac281aa4a8ecfb9ce07ec2e6f6dd1e6eccbb')
 sha512sums=('SKIP')
 
 prepare() {
