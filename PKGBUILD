@@ -1,7 +1,7 @@
 # Maintainer: Robin Broda <robin at broda dot me>
 
 pkgname=glava
-pkgver=1.5.3
+pkgver=1.5.5
 pkgrel=1
 pkgdesc='OpenGL audio spectrum visualizer'
 arch=('x86_64')
@@ -9,17 +9,11 @@ url='https://github.com/wacossusca34/glava'
 license=('GPL3')
 depends=('x-server' 'pulseaudio' 'libxext' 'libxcomposite' 'libxrender')
 makedepends=('git' 'python')
-source=("git+https://github.com/wacossusca34/glava#tag=v${pkgver}"
-        'git+https://github.com/Dav1dde/glad')
-md5sums=('SKIP'
-         'SKIP')
+source=("git+https://github.com/wacossusca34/glava#tag=v${pkgver}")
+md5sums=('SKIP')
 
 prepare() {
 	cd "${pkgname}"
-
-	git submodule init
-	git config submodule.glad.url "${srcdir}/glad"
-	git submodule update
 }
 
 build() {
