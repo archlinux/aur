@@ -3,8 +3,8 @@
 
 _pkgname=nixnote2
 pkgname=${_pkgname}-git
-pkgver=2.1.0.beta4g.r17.g2065b702
-pkgrel=5
+pkgver=2.1.0.beta4g.r33.g8e3ec46c
+pkgrel=1
 pkgdesc='Evernote clone (formerly Nevernote) - git checkout'
 url="https://github.com/robert7/$_pkgname"
 arch=(x86_64)
@@ -24,7 +24,7 @@ pkgver() {
 build() {
   cd "$srcdir/$_pkgname"
   qmake PREFIX=/usr
-  make -j "$(nproc)"
+  make -j $(( 1 + ($(nproc)-1) / 2 ))  # Use ceil(#processors / 2) jobs
 }
 
 package() {
