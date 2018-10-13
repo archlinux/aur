@@ -1,8 +1,8 @@
 # Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=strawberry-full-git
-pkgver=0.3.1.r10.gdb5679b
-pkgrel=1
+pkgver=0.3.3.r17.g4aad44c
+pkgrel=2
 pkgdesc="Bitperfect audio player and music collection organizer, fork of Clementine. gstreamer, xine and vlc engines"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="http://www.strawbs.org/"
