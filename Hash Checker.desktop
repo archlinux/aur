@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Categories=Utility
+Terminal=false
+Exec=/opt/Hash-Checker/main.py
+Name=Hash Checker
+Icon=/opt/Hash-Checker/icon.png
+Keywords=hash;md5;sha;
+

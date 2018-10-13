@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=Hash Checker
-Comment=Check any files hash
-Keywords=hash;hash checker;md5;sha;sha256;sha512
-Exec=/usr/bin/hash-checker %F
-Icon=/opt/Hash-Checker/icon.png
-Terminal=false
-Type=Application
-Name[en_US]=Hash Checker
