@@ -119,7 +119,6 @@ build() {
 package_systemd-git() {
   pkgdesc="system and service manager (git version)"
   license=('GPL2' 'LGPL2.1')
-  groups=('base-devel')
   depends=('acl' 'bash' 'cryptsetup' 'dbus' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
            'libgcrypt' 'libsystemd' 'libidn2' 'lz4' 'pam' 'libelf' 'libseccomp'
            'util-linux' 'xz' 'pcre2' 'audit')

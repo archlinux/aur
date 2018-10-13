@@ -79,7 +79,6 @@ pkgbase = systemd-git
 pkgname = systemd-git
 	pkgdesc = system and service manager (git version)
 	install = systemd.install
-	groups = base-devel
 	license = GPL2
 	license = LGPL2.1
 	depends = acl
