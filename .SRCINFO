@@ -1,0 +1,18 @@
+pkgbase = mstflint-inband
+	pkgdesc = OpenFabrics Alliance firmware burning application for Mellanox HCA/NIC cards (with inband support)
+	pkgver = 4.10.0.2
+	pkgrel = 1
+	url = https://www.openfabrics.org/index.php/overview.html
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	license = custom:"Open Fabrics Alliance BSD"
+	depends = bash
+	depends = zlib
+	depends = python
+	depends = libibmad
+	source = https://github.com/Mellanox/mstflint/archive/v4.10.0-2.tar.gz
+	md5sums = 378b851f829da9973e0c69a1c8840a77
+
+pkgname = mstflint-inband
+
