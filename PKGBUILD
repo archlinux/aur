@@ -18,10 +18,10 @@
 
 pkgname=binutils-git
 _pkgname=binutils-gdb
-pkgver=2.29.r91268.dd66b39984
+pkgver=2.29.r92431.be7f761188
 pkgrel=1
 pkgdesc='A set of programs to assemble and manipulate binary and object files (git master developmental version)'
-arch=(i686 x86_64)
+arch=(x86_64)
 url='http://www.gnu.org/software/binutils/'
 license=(GPL)
 groups=('base-devel')
