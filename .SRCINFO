@@ -1,14 +1,14 @@
 pkgbase = libcelero
 	pkgdesc = C++ Benchmark Authoring Library/Framework
-	pkgver = 2.1.1
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/DigitalInBlue/Celero
 	arch = x86_64
 	license = custom:"Apache License, Version 2.0"
 	makedepends = cmake
 	depends = gcc-libs
-	source = Celero-2.1.1.tar.gz::https://github.com/DigitalInBlue/Celero/archive/v2.1.1.tar.gz
-	md5sums = 00669cabf13a18e4535ea664924331ce
+	source = Celero-2.2.0.tar.gz::https://github.com/DigitalInBlue/Celero/archive/v2.2.0.tar.gz
+	md5sums = 00348d461dee15bc69518ee1b4f7a8f6
 
 pkgname = libcelero
 
