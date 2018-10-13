@@ -7,23 +7,22 @@
 # Modifications to Use Git Master Source
 # ======================================
 # Maintainer: James Harvey <jamespharvey20@gmail.com>
-#    * This PKGFILE as closely as possible matches extra's binutils 7.11-1
+#    * This PKGFILE as closely as possible matches extra's binutils 7.11.1-2
 #    * Installs some things to /usr/$CHOST/... {/usr/x86_64-unknown-linux-gnu/...) rather than /usr/...
 #       * Investigating to determine if this is desired, or if they need to be moved
 
-pkgname=gdb-trunk
+pkgbase=gdb-trunk
+# gdb-trunk-common is a package that contains files common for all cross compiled versions
+# of gdb (for arm/avr/...)
+pkgname=(gdb-trunk gdb-trunk-common)
 _pkgname=binutils-gdb
-pkgver=7.11.r87190.94af22593b
+pkgver=7.11.1.r88081.fc177366b0
 pkgrel=1
 pkgdesc='The GNU Debugger'
 arch=(i686 x86_64)
 url='http://www.gnu.org/software/gdb/'
 license=(GPL3)
-depends=(ncurses expat python xz guile)
-makedepends=(texinfo git)
-provides=(gdb)
-conflicts=(gdb)
-backup=(etc/gdb/gdbinit)
+makedepends=(texinfo python guile ncurses expat xz git)
 source=(git+https://sourceware.org/git/binutils-gdb.git)
 sha1sums=('SKIP')
 
@@ -51,11 +50,30 @@ build() {
   make
 }
 
-package() {
+package_gdb-trunk-common() {
+  depends=(python guile)
+  provides=(gdb-common)
+  conflicts=(gdb-common)
+
+  cd $_pkgname
+  make DESTDIR=$pkgdir install
+
+  rm -r $pkgdir/usr/{bin,include,lib,share/info,share/man}
+}
+
+package_gdb-trunk() {
+  depends=(ncurses expat xz gdb-common=$pkgver)
+  backup=(etc/gdb/gdbinit)
+  provides=(gdb)
+  conflicts=(gdb)
+
   cd $_pkgname
   make DESTDIR=$pkgdir install
 
   # install "custom" system gdbinit
   install -dm755 $pkgdir/etc/gdb
   touch $pkgdir/etc/gdb/gdbinit
+
+  # comes from gdb-common
+  rm -r $pkgdir/usr/share/gdb/
 }

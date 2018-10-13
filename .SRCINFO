@@ -1,23 +1,33 @@
 pkgbase = gdb-trunk
 	pkgdesc = The GNU Debugger
-	pkgver = 7.11.r87190.94af22593b
+	pkgver = 7.11.1.r88081.fc177366b0
 	pkgrel = 1
 	url = http://www.gnu.org/software/gdb/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = texinfo
+	makedepends = python
+	makedepends = guile
+	makedepends = ncurses
+	makedepends = expat
+	makedepends = xz
 	makedepends = git
-	depends = ncurses
-	depends = expat
-	depends = python
-	depends = xz
-	depends = guile
-	provides = gdb
-	conflicts = gdb
-	backup = etc/gdb/gdbinit
 	source = git+https://sourceware.org/git/binutils-gdb.git
 	sha1sums = SKIP
 
 pkgname = gdb-trunk
+	depends = ncurses
+	depends = expat
+	depends = xz
+	depends = gdb-common=7.11.1.r88081.fc177366b0
+	provides = gdb
+	conflicts = gdb
+	backup = etc/gdb/gdbinit
+
+pkgname = gdb-trunk-common
+	depends = python
+	depends = guile
+	provides = gdb-common
+	conflicts = gdb-common
 
