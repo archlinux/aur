@@ -7,7 +7,7 @@
 # Modifications to Use Git Master Source
 # ======================================
 # Maintainer: James Harvey <jamespharvey20@gmail.com>
-#    * This PKGFILE as closely as possible matches extra's binutils 8.1-1
+#    * This PKGFILE as closely as possible matches extra's binutils 8.2-2
 #    * Installs some things to /usr/$CHOST/... {/usr/x86_64-unknown-linux-gnu/...) rather than /usr/...
 #       * Investigating to determine if this is desired, or if they need to be moved
 
@@ -16,7 +16,7 @@ pkgbase=gdb-trunk
 # of gdb (for arm/avr/...)
 pkgname=(gdb-trunk gdb-trunk-common)
 _pkgname=binutils-gdb
-pkgver=8.1.r93217.35f48e217a
+pkgver=8.2.r95339.af39b1c216
 pkgrel=1
 pkgdesc='The GNU Debugger'
 arch=(x86_64)
@@ -46,8 +46,7 @@ build() {
     --with-system-readline \
     --with-python=/usr/bin/python3 \
     --with-guile=guile-2.0 \
-    --with-system-gdbinit=/etc/gdb/gdbinit \
-    --disable-binutils
+    --with-system-gdbinit=/etc/gdb/gdbinit
   make
 }
 
@@ -58,6 +57,7 @@ package_gdb-trunk-common() {
 
   cd $_pkgname
   make DESTDIR=$pkgdir install
+  make -C bfd DESTDIR=$pkgdir uninstall # conflicts with binutils
 
   rm -r $pkgdir/usr/{bin,include,lib,share/info,share/man}
 }
@@ -70,6 +70,7 @@ package_gdb-trunk() {
 
   cd $_pkgname
   make DESTDIR=$pkgdir install
+  make -C bfd DESTDIR=$pkgdir uninstall # conflicts with binutils
 
   # install "custom" system gdbinit
   install -dm755 $pkgdir/etc/gdb
