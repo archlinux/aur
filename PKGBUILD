@@ -7,7 +7,7 @@
 # Modifications to Use Git Master Source
 # ======================================
 # Maintainer: James Harvey <jamespharvey20@gmail.com>
-#    * This PKGFILE as closely as possible matches extra's binutils 7.11.1-2
+#    * This PKGFILE as closely as possible matches extra's binutils 7.12.1-2
 #    * Installs some things to /usr/$CHOST/... {/usr/x86_64-unknown-linux-gnu/...) rather than /usr/...
 #       * Investigating to determine if this is desired, or if they need to be moved
 
@@ -16,13 +16,13 @@ pkgbase=gdb-trunk
 # of gdb (for arm/avr/...)
 pkgname=(gdb-trunk gdb-trunk-common)
 _pkgname=binutils-gdb
-pkgver=7.11.1.r88081.fc177366b0
+pkgver=7.12.1.r90031.938ec663b8
 pkgrel=1
 pkgdesc='The GNU Debugger'
 arch=(i686 x86_64)
 url='http://www.gnu.org/software/gdb/'
 license=(GPL3)
-makedepends=(texinfo python guile ncurses expat xz git)
+makedepends=(texinfo python guile2.0 ncurses expat xz git)
 source=(git+https://sourceware.org/git/binutils-gdb.git)
 sha1sums=('SKIP')
 
@@ -45,6 +45,7 @@ build() {
   ./configure --prefix=/usr --disable-nls \
     --with-system-readline \
     --with-python=/usr/bin/python3 \
+    --with-guile=guile-2.0 \
     --with-system-gdbinit=/etc/gdb/gdbinit \
     --disable-binutils
   make

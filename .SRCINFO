@@ -1,6 +1,6 @@
 pkgbase = gdb-trunk
 	pkgdesc = The GNU Debugger
-	pkgver = 7.11.1.r88081.fc177366b0
+	pkgver = 7.12.1.r90031.938ec663b8
 	pkgrel = 1
 	url = http://www.gnu.org/software/gdb/
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = gdb-trunk
 	license = GPL3
 	makedepends = texinfo
 	makedepends = python
-	makedepends = guile
+	makedepends = guile2.0
 	makedepends = ncurses
 	makedepends = expat
 	makedepends = xz
@@ -20,7 +20,7 @@ pkgname = gdb-trunk
 	depends = ncurses
 	depends = expat
 	depends = xz
-	depends = gdb-common=7.11.1.r88081.fc177366b0
+	depends = gdb-common=7.12.1.r90031.938ec663b8
 	provides = gdb
 	conflicts = gdb
 	backup = etc/gdb/gdbinit
