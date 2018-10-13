@@ -1,21 +1,25 @@
 pkgbase = franz-bin
-	pkgdesc = Messaging app for WhatsApp, Slack, Telegram, HipChat, Hangouts and many many more. Binrary from debian package without compiling.
+	pkgdesc = Franz is a free messaging app for services like WhatsApp, Slack, Messenger and many more
 	pkgver = 5.0.0_beta.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://meetfranz.com
-	install = franz-bin.install
 	arch = x86_64
 	license = Apache
+	depends = alsa-lib
 	depends = gconf
-	depends = libnotify
-	depends = libappindicator-gtk2
+	depends = gtk2
+	depends = libsecret
+	depends = libxss
 	depends = libxtst
 	depends = nss
-	depends = libxss
+	optdepends = gnome-keyring
+	conflicts = franz
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/meetfranz/franz/releases/download/v5.0.0-beta.18/franz_5.0.0-beta.18_amd64.deb
-	sha512sums_x86_64 = dcee8ff93392c41f1d5e6d4c058fc5e05b592e6db23589f81207eeee0012d96fa569f0d8a79506e46b1ebd5575c4cb0840eedcc686fd9e4463323a0a29641faf
+	source = https://github.com/meetfranz/franz/releases/download/v5.0.0-beta.18/franz_5.0.0-beta.18_amd64.deb
+	source = franz-bin.patch
+	sha256sums = f5761b4441a02227915d347a56a06944760a50c91ef9e11e28f848fc35622fb9
+	sha256sums = e0d03405a75a0cd4492875b111d4750b8a925b514f3ce9ef47b69b9fcaee2b7f
 
 pkgname = franz-bin
 
