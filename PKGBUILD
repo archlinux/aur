@@ -6,7 +6,7 @@
 
 pkgname=opensm-systemd-multiple-interfaces
 _pkgbase=opensm
-pkgver=3.3.20
+pkgver=3.3.21
 pkgrel=1
 pkgdesc='OpenFabrics Alliance InfiniBand Subnet Manager and Administrator'
 arch=('x86_64' 'i686')
@@ -15,17 +15,18 @@ license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
 provides=('opensm')
 conflicts=('opensm')
 depends=('libibumad' 'rdma')
-source=("https://www.openfabrics.org/downloads/management/${_pkgbase}-${pkgver}.tar.gz"
+source=("https://github.com/linux-rdma/opensm/archive/${pkgver}.tar.gz"
         'opensm.service'
         'opensm.launch'
         'opensm_extra.conf')
-md5sums=('ed615b4681e94ef2e13a5de773ab89a3'
+md5sums=('7149ad46987749ae80a00124dd1e3f9d'
          'd70efe82917527515520aca4fff840e9'
          'b8827f86be787ede5093c7395bb03928'
          '733983c333d652907145a7ae8ab09d85')
 
 build() {
   cd "${srcdir}/${_pkgbase}-${pkgver}"
+  ./autogen.sh
   ./configure --prefix=/usr \
               --sbindir=/usr/bin \
               --libexecdir=/usr/lib \
