@@ -2,12 +2,12 @@
 
 pkgname=simdock
 pkgver=1.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Small dock with pseudo-transparency and good window handling"
 arch=('i686' 'x86_64')
 url="https://github.com/onli/simdock"
 license=('GPL2')
-depends=('libwnck' 'gconf' 'wxsvg')
+depends=('libwnck' 'gconf' 'librsvg')
 provides=('simdock')
 conflicts=('simdock')
 source=("simdock-${pkgver}.tar.gz::https://github.com/onli/simdock/archive/${pkgver}.tar.gz"
