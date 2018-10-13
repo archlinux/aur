@@ -3,6 +3,26 @@
 
 ## This PKGBUILD creates an Arch Linux package for the proprietary MATLAB application.
 ## In order to build the package the user must supply a plain text file installation key as file `matlab.fik`, the license file as `matlab.lic`, the software tarball as `matlab.tar` from MATLAB ISO image.
+## A typical matlab tarball directory structure look like this:
+# matlab
+# ├── activate.ini
+# ├── archives/
+# ├── bin/
+# ├── etc/
+# ├── help/
+# ├── install
+# ├── installer_input.txt
+# ├── install_guide.pdf
+# ├── java/
+# ├── license_agreement.txt
+# ├── licenses/
+# ├── patents.txt
+# ├── readme.txt
+# ├── sys/
+# ├── trademarks.txt
+# ├── ui/
+# └── version.txt
+#
 ## To perform a network install set $_networkinstall to true.
 
 _networkinstall=false
@@ -13,8 +33,8 @@ _partialinstall=false
 pkgname=matlab
 # install dir
 _instdir="/opt/${pkgname}"
-pkgver=9.4.0.813654
-pkgrel=2
+pkgver=9.5.0.944444
+pkgrel=1
 pkgdesc='A high-level language for numerical computation and visualization'
 arch=('x86_64')
 url='http://www.mathworks.com'
@@ -92,17 +112,19 @@ package() {
 	msg2 'Installing desktop files'
 	install -D -m644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 	install -D -m644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+
 }
 
 if ${_partialinstall} && [ -z ${_products+isSet} ]; then
 	_products=(
+		"5G_Toolbox"
 		"Aerospace_Blockset"
 		"Aerospace_Toolbox"
 		"Antenna_Toolbox"
 		"Audio_System_Toolbox"
 		"Automated_Driving_System_Toolbox"
 		"Bioinformatics_Toolbox"
-		"Communications_System_Toolbox"
+		"Communications_Toolbox"
 		"Computer_Vision_System_Toolbox"
 		"Control_System_Toolbox"
 		"Curve_Fitting_Toolbox"
@@ -111,6 +133,7 @@ if ${_partialinstall} && [ -z ${_products+isSet} ]; then
 		"Data_Acquisition_Toolbox"
 		"Database_Toolbox"
 		"Datafeed_Toolbox"
+		"Deep_Learning_Toolbox"
 		"Econometrics_Toolbox"
 		"Embedded_Coder"
 		"Filter_Design_HDL_Coder"
@@ -127,7 +150,7 @@ if ${_partialinstall} && [ -z ${_products+isSet} ]; then
 		"Image_Processing_Toolbox"
 		"Instrument_Control_Toolbox"
 		"LTE_HDL_Toolbox"
-		"LTE_System_Toolbox"
+		"LTE_Toolbox"
 		"MATLAB"
 		"MATLAB_Coder"
 		"MATLAB_Compiler"
@@ -138,7 +161,6 @@ if ${_partialinstall} && [ -z ${_products+isSet} ]; then
 		"Mapping_Toolbox"
 		"Model_Predictive_Control_Toolbox"
 		"Model_Based_Calibration_Toolbox"
-		"Neural_Network_Toolbox"
 		"OPC_Toolbox"
 		"Optimization_Toolbox"
 		"Parallel_Computing_Toolbox"
@@ -153,15 +175,15 @@ if ${_partialinstall} && [ -z ${_products+isSet} ]; then
 		"Risk_Management_Toolbox"
 		"Robotics_System_Toolbox"
 		"Robust_Control_Toolbox"
+		"Sensor_Fusion_and_Tracking_Toolbox"
 		"Signal_Processing_Toolbox"
 		"SimBiology"
 		"SimEvents"
 		"Simscape"
 		"Simscape_Driveline"
-		"Simscape_Electronics"
+		"Simscape_Electrical"
 		"Simscape_Fluids"
 		"Simscape_Multibody"
-		"Simscape_Power_Systems"
 		"Simulink"
 		"Simulink_3D_Animation"
 		"Simulink_Check"
@@ -187,7 +209,7 @@ if ${_partialinstall} && [ -z ${_products+isSet} ]; then
 		"Vehicle_Dynamics_Blockset"
 		"Vehicle_Network_Toolbox"
 		"Vision_HDL_Toolbox"
-		"WLAN_System_Toolbox"
+		"WLAN_Toolbox"
 		"Wavelet_Toolbox"
 		)
 fi
