@@ -1,7 +1,7 @@
 # Maintainer: ngld <ngld@tproxy.de>
 _name=knossos
 pkgname=fs2-knossos
-pkgver=0.12.4
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="A simple mod manager for FreeSpace 2 Open"
 arch=('any')
@@ -10,7 +10,7 @@ license=('Apache')
 groups=()
 depends=(
   'python' 'python-six' 'python-requests' 'python-requests-toolbelt' 'python-ply' 'python-token-bucket' 'python-pyqt5' 'qt5-webengine'
-  'qt5-webchannel' 'python-semantic-version' 'python-raven' 'p7zip' 'openal' 'sdl2'
+  'qt5-webchannel' 'qt5-tools' 'python-semantic-version' 'python-raven' 'p7zip' 'openal' 'sdl2'
 )
 makedepends=('python-setuptools' 'ninja' 'yarn')
 options=(!emptydirs)
@@ -18,14 +18,14 @@ source=(
     "https://github.com/ngld/knossos/archive/v${pkgver}.tar.gz"
     knossos
     knossos.desktop)
-md5sums=('c3da758d4229eda8b3739a78e4e3f174'
+md5sums=('032003c8d6be46b0bb74dd036547ccbc'
          '541dfc75f3aecbe08b843eeec252e4b4'
          'afd34e2bf9b8f74c1fc5785662e1f04a')
 
 package() {
     cd "$srcdir/${_name}-$pkgver"
 
-    yarn
+    yarn install
     python configure.py
     ninja resources
     python setup.py install --root="$pkgdir/" --optimize=1
