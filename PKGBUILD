@@ -10,16 +10,14 @@
 # Maintainer: James Harvey <jamespharvey20 at gmail dot com>
 #    * This PKGFILE as closely as possible matches core's binutils 2.29.0-1
 #    * All namcap warnings and errors are identical, other than:
-#       * Warning zlib is no longer a dependency
-#          * Siding with caution, leaving it as a dependency
 #       * Warning libraries libopcodes and libbfd are uninstalled dependencies
 #          * This is referencing itself, and the -git version is not installed in a chroot build because binutils is already installed, and it defaults to 'no' for the conflict
-#          * It's hardcoded to look for a version in format 2.28.51.20170308.so, rather than 2.28.r89848.5f4d108508
+#          * It's hardcoded to look for a version in format 2.xx.51.yyyymmdd.so, rather than 2.##.r#####.XXXXXXXXXX
 #             * .51 is binutils' designation for their post-release development branch
 
 pkgname=binutils-git
 _pkgname=binutils-gdb
-pkgver=2.30.r93845.b6572eb070
+pkgver=2.31.r95777.8bca297856
 pkgrel=1
 pkgdesc='A set of programs to assemble and manipulate binary and object files (git master developmental version)'
 arch=(x86_64)
@@ -76,7 +74,7 @@ build() {
 
 check() {
   cd binutils-build
-  
+
   # unset LDFLAGS as testsuite makes assumptions about which ones are active
   # ignore failures in gold testsuite...
   make -k LDFLAGS="" check || true
