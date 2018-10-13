@@ -1,0 +1,24 @@
+pkgbase = riscv64-linux-gnu-gdb
+	pkgdesc = The GNU Debugger for for 32bit and 64bit RISC-V bare-metal
+	pkgver = 8.2
+	pkgrel = 2
+	url = http://www.gnu.org/software/gdb/
+	arch = x86_64
+	license = GPL3
+	depends = xz
+	depends = ncurses
+	depends = expat
+	depends = python
+	depends = guile2.0
+	depends = gdb-common
+	depends = mpfr
+	optdepends = riscv-openocd: for on-chip debugging
+	options = !emptydirs
+	source = ftp://ftp.gnu.org/gnu/gdb/gdb-8.2.tar.xz
+	source = ftp://ftp.gnu.org/gnu/gdb/gdb-8.2.tar.xz.sig
+	validpgpkeys = F40ADB902B24264AA42E50BF92EDB04BFF325CF3
+	sha256sums = c3a441a29c7c89720b734e5a9c6289c0a06be7e0c76ef538f7bbcef389347c39
+	sha256sums = SKIP
+
+pkgname = riscv64-linux-gnu-gdb
+
