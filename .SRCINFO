@@ -1,6 +1,6 @@
 pkgbase = gdb-trunk
 	pkgdesc = The GNU Debugger
-	pkgver = 7.12.1.r90031.938ec663b8
+	pkgver = 7.12.1.r90066.4d5efb852b
 	pkgrel = 1
 	url = http://www.gnu.org/software/gdb/
 	arch = i686
@@ -20,14 +20,14 @@ pkgname = gdb-trunk
 	depends = ncurses
 	depends = expat
 	depends = xz
-	depends = gdb-common=7.12.1.r90031.938ec663b8
+	depends = gdb-common=7.12.1.r90066.4d5efb852b
 	provides = gdb
 	conflicts = gdb
 	backup = etc/gdb/gdbinit
 
 pkgname = gdb-trunk-common
 	depends = python
-	depends = guile
+	depends = guile2.0
 	provides = gdb-common
 	conflicts = gdb-common
 
