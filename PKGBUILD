@@ -45,7 +45,6 @@ build() {
         use_llvm=yes \
         builtin_openssl=yes \
         colored=yes \
-        CCFLAGS="-Wno-c++11-narrowing" \
         pulseaudio=no bits=${_arch} -j $((`nproc`+1))
 }
 
