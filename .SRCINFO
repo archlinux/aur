@@ -6,7 +6,6 @@ pkgbase = cash-cli
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = git
 	makedepends = nodejs
 
 pkgname = cash-cli
