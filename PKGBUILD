@@ -1,4 +1,3 @@
-# $Id$
 # Original Extra Repo
 # ===================
 # Maintainer: Allan McRae <allan@archlinux.org>
@@ -16,7 +15,7 @@ pkgbase=gdb-trunk
 # of gdb (for arm/avr/...)
 pkgname=(gdb-trunk gdb-trunk-common)
 _pkgname=binutils-gdb
-pkgver=8.2.r95339.af39b1c216
+pkgver=8.2.r95340.f1628857d7
 pkgrel=1
 pkgdesc='The GNU Debugger'
 arch=(x86_64)
@@ -56,10 +55,7 @@ package_gdb-trunk-common() {
   conflicts=(gdb-common)
 
   cd $_pkgname
-  make DESTDIR=$pkgdir install
-  make -C bfd DESTDIR=$pkgdir uninstall # conflicts with binutils
-
-  rm -r $pkgdir/usr/{bin,include,lib,share/info,share/man}
+  make -C gdb/data-directory DESTDIR=$pkgdir install
 }
 
 package_gdb-trunk() {
@@ -69,8 +65,7 @@ package_gdb-trunk() {
   conflicts=(gdb)
 
   cd $_pkgname
-  make DESTDIR=$pkgdir install
-  make -C bfd DESTDIR=$pkgdir uninstall # conflicts with binutils
+  make -C gdb DESTDIR=$pkgdir install
 
   # install "custom" system gdbinit
   install -dm755 $pkgdir/etc/gdb

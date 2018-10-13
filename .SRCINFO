@@ -1,6 +1,6 @@
 pkgbase = gdb-trunk
 	pkgdesc = The GNU Debugger
-	pkgver = 8.2.r95339.af39b1c216
+	pkgver = 8.2.r95340.f1628857d7
 	pkgrel = 1
 	url = http://www.gnu.org/software/gdb/
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgname = gdb-trunk
 	depends = expat
 	depends = xz
 	depends = mpfr
-	depends = gdb-common=8.2.r95339.af39b1c216
+	depends = gdb-common=8.2.r95340.f1628857d7
 	provides = gdb
 	conflicts = gdb
 	backup = etc/gdb/gdbinit
