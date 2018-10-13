@@ -1,6 +1,6 @@
 # Maintainer: Jenya Sovetkin <e dot sovetkin at gmail dot com>
 pkgname=tudu-git
-pkgver=r268.30923dc
+pkgver=r269.c51f4c2
 pkgrel=1
 pkgdesc="ncurses-based hierarchical todo list manager with vim-like keybindings"
 arch=('i686' 'x86_64')
