@@ -2,7 +2,7 @@
 # Contributor: Noel Kuntze <noel@familie-kuntze.de>
 
 pkgname=pcs
-pkgver=0.9.165
+pkgver=0.9.166
 pkgrel=1
 pkgdesc='pacemaker corosync shell utility for cluster configuration'
 arch=('any')
@@ -31,22 +31,26 @@ depends=('pacemaker'
          'ttf-liberation')
 makedepends=('wget' 'python-setuptools' 'ruby-bundler' 'fontconfig')
 source=("https://github.com/ClusterLabs/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('dd39ce52842ea156cc989218b4d5dfd5a4bd39ef904678d42ad7dffa82cbea1a5887a0087dbe6f2ccb51580bf73cfa05b758f870be983876684c47d60124961b')
+sha512sums=('afb1f6e95154fc0b20515d1317d07738c1fff4c90e32c3baa2b710ee0ba6aa1d01be477eb631bfbc740e2bdfff1535e6048c022ba3333395bc0f23d7d818334b')
 
 prepare() {
   cd $pkgname-$pkgver
+  sed -i -e 's,backports-3.11.3,backports-3.11.4,' pcsd/Makefile
+  sed -i -e 's,backports (3.11.3),backports (3.11.4),' pcsd/Gemfile.lock
   sed -i -e 's,ethon-0.10.1,ethon-0.11.0,' pcsd/Makefile
   sed -i -e 's,ethon (0.10.1),ethon (0.11.0),' pcsd/Gemfile.lock
-  sed -i -e 's,ffi-1.9.18,ffi-1.9.23,' pcsd/Makefile
-  sed -i -e 's,ffi (1.9.18),ffi (1.9.23),' pcsd/Gemfile.lock
-  sed -i -e 's,backports-3.9.1,backports-3.11.1,' pcsd/Makefile
-  sed -i -e 's,backports (3.9.1),backports (3.11.1),' pcsd/Gemfile.lock
+  sed -i -e 's,ffi-1.9.25,ffi-1.9.25,' pcsd/Makefile
+  sed -i -e 's,ffi (1.9.25),ffi (1.9.25),' pcsd/Gemfile.lock
   sed -i -e 's,multi_json-1.12.2,multi_json-1.13.1,' pcsd/Makefile
   sed -i -e 's,multi_json (1.12.2),multi_json (1.13.1),' pcsd/Gemfile.lock
-  sed -i -e 's,rack-1.6.4,rack-2.0.4,' pcsd/Makefile
-  sed -i -e 's,rack (1.6.4),rack (2.0.4),' pcsd/Gemfile.lock
-  sed -i -e 's,rack-protection-1.5.5,rack-protection-2.0.1,' pcsd/Makefile
-  sed -i -e 's,rack-protection (1.5.5),rack-protection (2.0.1),' pcsd/Gemfile.lock
+  sed -i -e 's,rack-1.6.10,rack-2.0.5,' pcsd/Makefile
+  sed -i -e 's,rack (1.6.10),rack (2.0.5),' pcsd/Gemfile.lock
+  sed -i -e 's,rack-protection-1.5.5,rack-protection-2.0.3,' pcsd/Makefile
+  sed -i -e 's,rack-protection (1.5.5),rack-protection (2.0.3),' pcsd/Gemfile.lock
+  sed -i -e 's,rack-test-0.7.0,rack-test-1.0.0,' pcsd/Makefile
+  sed -i -e 's,rack-test (0.7.0),rack-test (1.0.0),' pcsd/Gemfile.lock
+  sed -i -e 's,sinatra-1.4.8,sinatra-2.0.3,' pcsd/Makefile
+  sed -i -e 's,sinatra (1.4.8),sinatra (2.0.3),' pcsd/Gemfile.lock
 }
 
 build() {
