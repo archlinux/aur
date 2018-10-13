@@ -1,0 +1,16 @@
+pkgbase = jacker-hg
+	pkgdesc = a JACK MIDI Tracker
+	pkgver = r210+.8378809cad50+
+	pkgrel = 1
+	url = https://bitbucket.org/paniq/jacker
+	arch = x86_64
+	license = Apache
+	makedepends = mercurial
+	makedepends = scons
+	depends = gtkmm
+	depends = jack
+	source = hg+https://bitbucket.org/paniq/jacker
+	md5sums = SKIP
+
+pkgname = jacker-hg
+
