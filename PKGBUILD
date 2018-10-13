@@ -3,7 +3,7 @@
 pkgname=gnome-games-libretro
 _srcname=gnome-games
 pkgver=3.30.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Libretro definitions for gnome-games'
 arch=('any')
 url='https://wiki.gnome.org/Apps/Games'
@@ -30,7 +30,7 @@ optdepends=('libretro-blastem: Sega Mega Drive support'
             # Missing package
             #'libretro-prboom: Doom support'
             'libretro-prosystem-git: Atari 7800 support'
-            'libretro-stella: Atari 2600 support')
+            'libretro-stella-git: Atari 2600 support')
 # libretro-cores is export-ignore in .gitattributes
 source=("git+https://gitlab.gnome.org/GNOME/$_srcname.git#tag=$pkgver")
 sha256sums=('SKIP')
