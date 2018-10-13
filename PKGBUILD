@@ -2,9 +2,9 @@
 # Contributor: Vladimir Panteleev <arch-pkg at thecybershadow dot net>
 
 pkgname=rtags
-pkgver=2.20
+pkgver=2.21
 pkgrel=1
-pkgdesc='RTags is a client/server application that indexes C/C++ code'
+pkgdesc='A client/server application that indexes C/C++ code'
 arch=('i686' 'x86_64')
 _url='https://github.com/Andersbakken'
 url="${_url}/rtags"
