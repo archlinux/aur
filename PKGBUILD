@@ -2,7 +2,7 @@
 
 pkgbase=dxvk-wine-git
 pkgname=('dxvk-wine64-git' 'dxvk-wine32-git')
-pkgver=0.70_21_g715d257
+pkgver=0.81_18_g8172d34
 pkgrel=1
 pkgdesc="A Vulkan-based compatibility layer for Direct3D 10/11 which allows running 3D applications on Linux using Wine. Winelib version"
 arch=('x86_64')
@@ -60,7 +60,8 @@ _package_dxvk() {
         done
         mkdir -p "$pkgdir/usr/bin"
         cat setup_dxvk_aur.verb | sed s/"DXVK_ARCH=64"/"DXVK_ARCH=$1"/g > "$pkgdir/$_destdir/setup_dxvk_aur.verb"
-	echo "winetricks --force $_destdir/setup_dxvk_aur.verb" > "$pkgdir/usr/bin/setup_dxvk$1"
+	echo "#!/bin/sh" > "$pkgdir/usr/bin/setup_dxvk$1"
+	echo "winetricks --force $_destdir/setup_dxvk_aur.verb" >> "$pkgdir/usr/bin/setup_dxvk$1"
 	chmod +x "$pkgdir/usr/bin/setup_dxvk$1"
 }
 
