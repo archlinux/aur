@@ -6,9 +6,16 @@
 PACMAN=
 PATH=/usr/bin:$PATH
 
-cd -P -- "$(dirname "$0")" || exit 1  # Allow to be called from any directory
-makepkg -ef || makepkg -f && namcap PKGBUILD && namcap ./*.tar.xz
-makepkg --printsrcinfo >| .SRCINFO && echo "Updated .SRCINFO" >&2
+pkgdir=${0%%/*}  # dirname $0
+cd -P -- "$pkgdir" || exit 1  # Allow to be called from any directory
 
-# Until fixed: https://github.com/robert7/nixnote2/issues/29
-rm src/nixnote2/qmake-build-release/nixnote2  # Save 160MB of disk
+if [[ -d src ]]; then
+  makepkg -ef
+else
+  makepkg -f
+fi
+
+namcap PKGBUILD
+namcap ./*.tar.xz
+
+makepkg --printsrcinfo >| .SRCINFO && echo "Updated .SRCINFO" >&2
