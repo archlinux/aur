@@ -4,7 +4,7 @@
 
 pkgbase=('monero')
 pkgname=('monero' 'libmonero-wallet')
-pkgver=0.12.3.0
+pkgver=0.13.0.2
 pkgrel=1
 pkgdesc="Monero: the secure, private, untraceable currency - release version (includes daemon, wallet and miner)"
 license=('custom:Cryptonote')
@@ -15,11 +15,9 @@ makedepends=('git' 'cmake' 'boost' 'gtest' 'qt5-tools')
 provides=('monero' 'libmonero-wallet')
 conflicts=('bitmonero-git' 'libmonero-wallet-git')
 
-source=("${pkgname}"::"git+https://github.com/monero-project/monero#tag=v${pkgver}"
-        "0001-cmake-do-not-install-into-the-system.patch")
+source=("${pkgname}"::"git+https://github.com/monero-project/monero#tag=v${pkgver}")
 
-sha256sums+=('SKIP'
-             '653853f9c0fed231a2cec476703f09198e6a87af12bb0a3bfe98b32e48e7a1c5')
+sha256sums+=('SKIP')
 
 _monero="${pkgbase}"
 _build="build"
@@ -27,9 +25,6 @@ _build="build"
 prepare()
 {
   git -C "${pkgname}" submodule update --init --recursive --force
-
-  cd "${srcdir}/${_monero}"
-  patch -Np1 -i "${srcdir}/0001-cmake-do-not-install-into-the-system.patch" -d "${srcdir}/monero/external/miniupnp"
 }
 
 build() {
@@ -51,7 +46,8 @@ check() {
   #  * coretests takes too long (~25000s)
   #  * libwallet_api_tests fail (Issue #895)
   #  * unit_tests were run separately above
-  CTEST_ARGS+="-E 'core_tests|libwallet_api_tests|unit_tests'"
+  #  * hash-variant2-int-sqrt takes too long
+  CTEST_ARGS+="-E 'core_tests|libwallet_api_tests|unit_tests|hash-variant2-int-sqrt'"
   echo ">>> NOTE: some tests excluded: $CTEST_ARGS"
 
   make ARGS="$CTEST_ARGS" test
@@ -63,13 +59,14 @@ package_monero() {
 
   # Uncomment for a debug build
   # options=(!strip debug)
-
   install -Dm644 "${srcdir}/${_monero}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   install -Dm644 "${srcdir}/${_monero}/utils/conf/monerod.conf" "${pkgdir}/etc/monerod.conf"
   install -Dm644 "${srcdir}/${_monero}/utils/systemd/monerod.service" "${pkgdir}/usr/lib/systemd/system/monerod.service"
 
+  install -Dm755 "${srcdir}/${_monero}/build/bin/monero-blockchain-ancestry" "${pkgdir}/usr/bin/monero-blockchain-ancestry"
   install -Dm755 "${srcdir}/${_monero}/build/bin/monero-blockchain-blackball" "${pkgdir}/usr/bin/monero-blockchain-blackball"
+  install -Dm755 "${srcdir}/${_monero}/build/bin/monero-blockchain-depth" "${pkgdir}/usr/bin/monero-blockchain-depth"
   install -Dm755 "${srcdir}/${_monero}/build/bin/monero-blockchain-export" "${pkgdir}/usr/bin/monero-blockchain-export"
   install -Dm755 "${srcdir}/${_monero}/build/bin/monero-blockchain-import" "${pkgdir}/usr/bin/monero-blockchain-import"
   install -Dm755 "${srcdir}/${_monero}/build/bin/monero-blockchain-usage" "${pkgdir}/usr/bin/monero-blockchain-usage"
