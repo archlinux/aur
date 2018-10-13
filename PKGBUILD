@@ -1,45 +1,27 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.info>
-# Maitnainer: Morten Linderud <morten@linderud.pw>
+# Contributor: Morten Linderud <morten@linderud.pw>
 
-pkgbase=python-pychromecast
-pkgname=('python-pychromecast' 'python2-pychromecast')
-_pkgname=pychromecast
-pkgver=2.1.0
+_name=PyChromecast
+pkgname=python-pychromecast
+pkgver=2.3.0
 pkgrel=1
 pkgdesc='Library for Python 2 and 3 to communicate with the Google Chromecast'
 arch=('any')
 url=https://github.com/balloob/pychromecast
 license=('MIT')
-makedepends=('python' 'python-setuptools'
-             'python2' 'python2-setuptools')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('d532bfe50118c647a69f26c7dffe25dc30ede80253f7eb6d33f67ba5bddaf189608285559a5d3be80110300ca7b217ae384b1ad323a0241bc7756903939e2c0f')
-
-prepare() {
-  cp -a $_pkgname-$pkgver{,-py2}
-}
+depends=('python' 'python-protobuf' 'python-requests' 'python-zeroconf' 'python-six')
+makedepends=('python' 'python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/p/pychromecast/$_name-$pkgver.tar.gz")
+sha512sums=('44a2cb80e5a3a3c8c5ca3dd6cb55bf50c4c536afc4828f9d7c14c9792ec59bf5bb88988448aeaf33b5d5472f60d7f6ca39f0ea5f4f3896d5188654b962065abe')
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd $_name-$pkgver
   python setup.py build
-
-  cd "$srcdir/$_pkgname-$pkgver-py2"
-  python2 setup.py build
 }
 
-package_python-pychromecast() {
-  depends=('python' 'python-protobuf' 'python-requests' 'python-zeroconf' 'python-six')
-  cd $_pkgname-$pkgver
+package() {
+  cd $_name-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm644 -t "$pkgdir"/usr/share/$pkgname/examples examples/*
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-}
-
-package_python2-pychromecast() {
-  depends=('python2' 'python2-protobuf' 'python2-requests' 'python2-zeroconf' 'python2-six')
-  cd $_pkgname-$pkgver-py2
-  python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm644 -t "$pkgdir"/usr/share/$pkgname/examples examples/*
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
