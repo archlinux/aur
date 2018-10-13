@@ -1,23 +1,20 @@
 # CPAN Name  : Apache::LogFormat::Compiler
 # Contributor: Christian Sturm <reezer@reezer.org>
-# Contributor: Anton Leontiev <bunder /at/ t-25.ru>
-# Generator  : CPANPLUS::Dist::Arch 1.28
+# Contributor: Anton Leontiev <scileont /at/ gmail.com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname=perl-apache-logformat-compiler
-pkgver=0.32
+pkgver=0.35
 pkgrel=1
 pkgdesc='Perl module to compile apache log format string to Perl code'
 arch=('any')
-url='http://search.cpan.org/dist/Apache-LogFormat-Compiler'
+url='https://metacpan.org/release/Apache-LogFormat-Compiler'
 license=('PerlArtistic' 'GPL')
 depends=(
 	'perl>=5.8.5'
 	'perl-posix-strftime-compiler>=0.30'
 )
-makedepends=(
-	'perl-module-build>=0.38'
-	'perl-cpan-meta'
-)
+makedepends=('perl-module-build-tiny>=0.035')
 checkdepends=(
 	'perl-http-message'
 	'perl-test-mocktime'
@@ -25,24 +22,31 @@ checkdepends=(
 	'perl-try-tiny>=0.12'
 	'perl-uri>=1.60'
 )
-source=(http://search.cpan.org/CPAN/authors/id/K/KA/KAZEBURO/Apache-LogFormat-Compiler-0.32.tar.gz)
+source=(http://search.cpan.org/CPAN/authors/id/K/KA/KAZEBURO/Apache-LogFormat-Compiler-0.35.tar.gz)
 options=(!emptydirs)
-md5sums=('0abb3275f934c7ac41d7a83c7d0565ad')
+md5sums=('cbb0bf041ade8a39f65eadbdf8a346c1')
+
+sanitize() {
+	unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+	export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" MODULEBUILDRC=/dev/null
+}
 
 build() {
-	cd Apache-LogFormat-Compiler-0.32
-	unset PERL5LIB PERL_MM_OPT PERL_MB_OPT
-	PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null perl Build.PL --installdirs vendor --destdir "$pkgdir"
+	cd Apache-LogFormat-Compiler-0.35
+	sanitize
+	perl Build.PL --installdirs vendor --destdir "$pkgdir"
 	perl Build
 }
 
 check() {
-	cd Apache-LogFormat-Compiler-0.32
+	cd Apache-LogFormat-Compiler-0.35
+	sanitize
 	perl Build test
 }
 
 package() {
-	cd Apache-LogFormat-Compiler-0.32
+	cd Apache-LogFormat-Compiler-0.35
+	sanitize
 	perl Build install
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }

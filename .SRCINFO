@@ -1,8 +1,8 @@
 pkgbase = perl-apache-logformat-compiler
 	pkgdesc = Perl module to compile apache log format string to Perl code
-	pkgver = 0.32
+	pkgver = 0.35
 	pkgrel = 1
-	url = http://search.cpan.org/dist/Apache-LogFormat-Compiler
+	url = https://metacpan.org/release/Apache-LogFormat-Compiler
 	arch = any
 	license = PerlArtistic
 	license = GPL
@@ -11,13 +11,12 @@ pkgbase = perl-apache-logformat-compiler
 	checkdepends = perl-test-requires
 	checkdepends = perl-try-tiny>=0.12
 	checkdepends = perl-uri>=1.60
-	makedepends = perl-module-build>=0.38
-	makedepends = perl-cpan-meta
+	makedepends = perl-module-build-tiny>=0.035
 	depends = perl>=5.8.5
 	depends = perl-posix-strftime-compiler>=0.30
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/K/KA/KAZEBURO/Apache-LogFormat-Compiler-0.32.tar.gz
-	md5sums = 0abb3275f934c7ac41d7a83c7d0565ad
+	source = http://search.cpan.org/CPAN/authors/id/K/KA/KAZEBURO/Apache-LogFormat-Compiler-0.35.tar.gz
+	md5sums = cbb0bf041ade8a39f65eadbdf8a346c1
 
 pkgname = perl-apache-logformat-compiler
 
