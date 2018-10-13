@@ -1,3 +1,5 @@
+# Maintainer: Clemmitt Sigler <cmsigler (dot) online (at) gmail (dot) com>
+
 pkgname=('python-pyautogui' 'python2-pyautogui')
 pkgver=0.9.38
 pkgrel=1
