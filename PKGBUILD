@@ -15,7 +15,7 @@ optdepends=('libretro-blastem: Sega Mega Drive support'
             #'libretro-desmume2015: Nintendo DS support'
             'libretro-dosbox-git: DOS support'
             'libretro-gambatte: Nintendo Game Boy/Game Boy Color support'
-            'libretro-handy-git: Atary Lynx support'
+            'libretro-handy-git: Atari Lynx support'
             'libretro-mame-git: Arcade support'
             # TODO: see if renaming module to beetle works
             #'libretro-mednafen-ngp: Neo Geo Pocket Color'
