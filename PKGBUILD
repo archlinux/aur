@@ -1,19 +1,20 @@
 # Maintainer: James Harvey <jamespharvey20@gmail.com>
 
 pkgname=mstflint-inband
+_pkgname=mstflint
 pkgver=4.10.0.2
 _pkgver=4.10.0-2
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenFabrics Alliance firmware burning application for Mellanox HCA/NIC cards (with inband support)'
 arch=('x86_64' 'i686')
 url='https://www.openfabrics.org/index.php/overview.html'
 license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
-depends=('bash' 'zlib' 'python' 'libibmad')
+depends=('bash' 'zlib' 'python' 'infiniband-diags')
 source=("https://github.com/Mellanox/mstflint/archive/v${_pkgver}.tar.gz")
 md5sums=('378b851f829da9973e0c69a1c8840a77')
 
 build() {
-  cd "${srcdir}/${pkgname}-${_pkgver}"
+  cd "${srcdir}/${_pkgname}-${_pkgver}"
   sed -i 's/Werror/Wno-error/g' cmdif/Makefile.am
   sed -i 's/Werror/Wno-error/g' configure.ac
   sed -i 's/Werror/Wno-error/g' ext_libs/muparser/Makefile.am
@@ -32,7 +33,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${_pkgver}"
+  cd "${srcdir}/${_pkgname}-${_pkgver}"
   make DESTDIR="${pkgdir}" install
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
