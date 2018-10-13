@@ -5,7 +5,7 @@
 pkgbase=('monero')
 pkgname=('monero' 'libmonero-wallet')
 pkgver=0.13.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Monero: the secure, private, untraceable currency - release version (includes daemon, wallet and miner)"
 license=('custom:Cryptonote')
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -39,19 +39,21 @@ build() {
   make
 }
 
-check() {
-  cd "${srcdir}/${_monero}/${_build}"
-
-  # Temporarily disable some a tests:
-  #  * coretests takes too long (~25000s)
-  #  * libwallet_api_tests fail (Issue #895)
-  #  * unit_tests were run separately above
-  #  * hash-variant2-int-sqrt takes too long
-  CTEST_ARGS+="-E 'core_tests|libwallet_api_tests|unit_tests|hash-variant2-int-sqrt'"
-  echo ">>> NOTE: some tests excluded: $CTEST_ARGS"
-
-  make ARGS="$CTEST_ARGS" test
-}
+# Disable running of tests. Tests should not be needed outside of the development environment.
+# Cherry-picking tests that aren't "too long" also defeats the purpose of running tests.
+#check() {
+#  cd "${srcdir}/${_monero}/${_build}"
+#
+#  # Temporarily disable some a tests:
+#  #  * coretests takes too long (~25000s)
+#  #  * libwallet_api_tests fail (Issue #895)
+#  #  * unit_tests were run separately above
+#  #  * hash-variant2-int-sqrt takes too long
+#  CTEST_ARGS+="-E 'core_tests|libwallet_api_tests|unit_tests|hash-variant2-int-sqrt'"
+#  echo ">>> NOTE: some tests excluded: $CTEST_ARGS"
+#
+#  make ARGS="$CTEST_ARGS" test
+#}
 
 package_monero() {
   backup=('etc/monerod.conf')
