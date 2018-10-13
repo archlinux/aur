@@ -3,7 +3,7 @@
 
 pkgname=libcelero
 _pkgname=Celero
-pkgver=2.0.6
+pkgver=2.0.7
 pkgrel=1
 pkgdesc='C++ Benchmark Authoring Library/Framework'
 arch=('x86_64' 'i686')
@@ -12,7 +12,7 @@ license=('custom:"Apache License, Version 2.0"')
 depends=('gcc-libs')
 makedepends=('cmake')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/DigitalInBlue/${_pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('20dd0a21203fad9974a8892a9fa0a698')
+md5sums=('18a3dfded09b51933b48869e21f6c1d7')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
