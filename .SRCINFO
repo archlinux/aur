@@ -1,0 +1,16 @@
+pkgbase = protonfixes
+	pkgdesc = A module for applying fixes at runtime to unsupported games with Steam Proton without changing game installation files
+	pkgver = 1.0.9
+	pkgrel = 1
+	url = https://github.com/simons-public/protonfixes
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	optdepends = wine: win32 proton prefix support
+	optdepends = winetricks: winetricks support
+	optdepends = cefpython3: splash dialog support
+	source = https://github.com/simons-public/protonfixes/archive/1.0.9.tar.gz
+	md5sums = acb0587a3b22f405ec317a1816ab0f9b
+
+pkgname = protonfixes
+
