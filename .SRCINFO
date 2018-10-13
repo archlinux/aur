@@ -1,6 +1,6 @@
 pkgbase = nvidia-vulkan
 	pkgdesc = NVIDIA drivers for linux (vulkan developer branch)
-	pkgver = 396.54.06
+	pkgver = 396.54.09
 	pkgrel = 1
 	url = https://developer.nvidia.com/vulkan-driver
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = nvidia-vulkan
 	makedepends = linux-headers>=4.18
 	makedepends = linux-headers<4.19
 	options = !strip
-	source = NVIDIA-Linux-x86_64-396.54.06.run::https://developer.nvidia.com/linux-3965406
+	source = NVIDIA-Linux-x86_64-396.54.09.run::https://developer.nvidia.com/linux-3965409
 	source = nvidia-drm-outputclass.conf
 	source = nvidia-vulkan-utils.sysusers
 	source = kernel-4.16.patch
-	sha512sums = 809873b8af15c1b5e60c964c52b7972a7552aac0fc4d81ebedae7d3610fbfa14a779460a5fad03f453edb5804c333ee995932befdc6383e9003a75260e33b57e
+	sha512sums = 93a79b2c0432c8d4801162609a404b8eec3115ca1febe772cfea17ebbfb6265d9064c40f40ea8714969953ea7886aba1a5f1ba67e529b254e8ccd810085f1461
 	sha512sums = c49d246a519731bfab9d22afa5c2dd2d366db06d80182738b84881e93cd697c783f16ee04819275c05597bb063451a5d6102fbc562cd078d2a374533a23cea48
 	sha512sums = 4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499
 	sha512sums = ad1185d998adbf89abf7aea300e5b3bbabe2296016f42592fbc232a6c3983f233df1103d37f35a041f12cc1c722d3edce813a4a1b215784a49c7f0e3e652b5af
@@ -23,19 +23,19 @@ pkgname = nvidia-vulkan
 	pkgdesc = NVIDIA drivers for linux (vulkan developer branch)
 	depends = linux>=4.18
 	depends = linux<4.19
-	depends = nvidia-vulkan-utils=396.54.06
+	depends = nvidia-vulkan-utils=396.54.09
 	depends = libglvnd
-	provides = nvidia=396.54.06
+	provides = nvidia=396.54.09
 	conflicts = nvidia
 
 pkgname = nvidia-vulkan-dkms
 	pkgdesc = NVIDIA driver sources for linux (vulkan developer branch)
 	depends = dkms
-	depends = nvidia-vulkan-utils=396.54.06
+	depends = nvidia-vulkan-utils=396.54.09
 	depends = libglvnd
 	optdepends = linux-headers: Build the module for Arch kernel
 	optdepends = linux-lts-headers: Build the module for LTS Arch kernel
-	provides = nvidia=396.54.06
+	provides = nvidia=396.54.09
 	conflicts = nvidia
 
 pkgname = nvidia-vulkan-utils
@@ -48,7 +48,7 @@ pkgname = nvidia-vulkan-utils
 	optdepends = gtk3: nvidia-settings (GTK+ v3)
 	optdepends = xorg-server-devel: nvidia-xconfig
 	optdepends = opencl-nvidia-vulkan: OpenCL support
-	provides = nvidia-utils=396.54.06
+	provides = nvidia-utils=396.54.09
 	provides = vulkan-driver
 	provides = opengl-driver
 	provides = nvidia-libgl
@@ -63,7 +63,7 @@ pkgname = opencl-nvidia-vulkan
 	depends = zlib
 	optdepends = opencl-headers: headers necessary for OpenCL development
 	provides = opencl-driver
-	provides = opencl-nvidia=396.54.06
+	provides = opencl-nvidia=396.54.09
 	conflicts = opencl-nvidia
 
 pkgname = lib32-nvidia-vulkan-utils
@@ -73,7 +73,7 @@ pkgname = lib32-nvidia-vulkan-utils
 	depends = lib32-libglvnd
 	depends = nvidia-vulkan-utils
 	optdepends = lib32-opencl-nvidia-vulkan
-	provides = lib32-nvidia-utils=396.54.06
+	provides = lib32-nvidia-utils=396.54.09
 	provides = lib32-vulkan-driver
 	provides = lib32-opengl-driver
 	provides = lib32-nvidia-libgl
@@ -87,6 +87,6 @@ pkgname = lib32-opencl-nvidia-vulkan
 	depends = lib32-gcc-libs
 	optdepends = opencl-headers: headers necessary for OpenCL development
 	provides = lib32-opencl-driver
-	provides = lib32-opencl-nvidia=396.54.06
+	provides = lib32-opencl-nvidia=396.54.09
 	conflicts = lib32-opencl-nvidia
 
