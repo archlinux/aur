@@ -3,7 +3,7 @@
 # * qperf can be built without librdmacm/libibverbs, but then has no RDMA support, and only works over TCP/IP.  See package qperf-nordma
 
 pkgname=qperf
-pkgver=0.4.10
+pkgver=0.4.11
 pkgrel=1
 pkgdesc='OpenFabrics Alliance InfiniBand performance benchmark for bandwidth and latency'
 #        Works over TCP/IP and RDMA
@@ -13,7 +13,7 @@ license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
 depends=('librdmacm')
 conflicts=('qperf-nordma')
 source=("https://github.com/linux-rdma/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('b85c7ebb2e9078442a7de3c530517233')
+md5sums=('8ef6f0c0124a4eee447f39479c62a992')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
