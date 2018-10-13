@@ -4,12 +4,12 @@
 
 pkgname=koel
 pkgver=3.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A personal music streaming server that works."
 arch=('any')
 url="http://koel.phanan.net/"
 license=('MIT')
-depends=('php' 'python3')
+depends=('php' 'python3' 'yarn')
 makedepends=('php-composer')
 optdepends=('php-pgsql: to use the PostGreSQL database backend'
             'php-sqlsrv: to use the Microsoft SQL database backend'
@@ -24,6 +24,7 @@ sha512sums=('b3ae40db2839f9b411716428203f595ca685ea2d87599c0704fb271446126c998a9
 build() {
 	cd "$pkgname-$pkgver"
 	COMPOSER_CACHE_DIR="${srcdir/composer}" composer install
+	yarn install
 }
 
 package() {
