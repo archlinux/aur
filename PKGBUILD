@@ -7,13 +7,13 @@
 # Modifications to Use Git Master Source
 # ======================================
 # Maintainer: James Harvey <jamespharvey20@gmail.com>
-#    * This PKGFILE as closely as possible matches extra's binutils 7.10.1-1
+#    * This PKGFILE as closely as possible matches extra's binutils 7.11-1
 #    * Installs some things to /usr/$CHOST/... {/usr/x86_64-unknown-linux-gnu/...) rather than /usr/...
 #       * Investigating to determine if this is desired, or if they need to be moved
 
 pkgname=gdb-trunk
 _pkgname=binutils-gdb
-pkgver=7.10.1.r85899.39040bb
+pkgver=7.11.r87190.94af22593b
 pkgrel=1
 pkgdesc='The GNU Debugger'
 arch=(i686 x86_64)
@@ -24,8 +24,7 @@ makedepends=(texinfo git)
 provides=(gdb)
 conflicts=(gdb)
 backup=(etc/gdb/gdbinit)
-install=gdb.install
-source=(git://sourceware.org/git/binutils-gdb.git)
+source=(git+https://sourceware.org/git/binutils-gdb.git)
 sha1sums=('SKIP')
 
 pkgver() {
@@ -54,7 +53,6 @@ build() {
 
 package() {
   cd $_pkgname
-  echo "pkgdir is $pkgdir"
   make DESTDIR=$pkgdir install
 
   # install "custom" system gdbinit
