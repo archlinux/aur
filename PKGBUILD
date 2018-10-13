@@ -1,11 +1,11 @@
 pkgname=squid5
 pkgver=5.0.0
-_pkgver=5.0.0-20180810-rc321737
+_pkgver=5.0.0-20181012-r518c743
 pkgrel=5
 pkgdesc='Full-featured Web proxy cache server with the support SSL, eCAP, iCAP-client. Include patches for normal work with long url`s and CDN.'
 arch=('x86_64')
 url='http://www.squid-cache.org'
-depends=('libecap' 'pam' 'perl' 'libltdl' 'libcap' 'nettle' 'gnutls' 'libnsl')
+depends=('libecap' 'pam' 'perl' 'openssl' 'gperftools' 'libltdl' 'libcap' 'nettle' 'gnutls' 'libnsl')
 makedepends=('krb5')
 conflicts=('squid' 'squid4' 'squid5')
 license=('GPL')
@@ -45,7 +45,7 @@ prepare() {
 build() {
   cd "$srcdir/squid-$_pkgver"
 
-  PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig \
+  PKG_CONFIG_PATH=/usr/lib \
   ./configure \
     --prefix=/usr \
     --sbindir=/usr/bin \
@@ -59,14 +59,16 @@ build() {
     --enable-icap-client \
     --enable-auth \
     --enable-auth-basic \
-    --enable-auth-ntlm \
-    --enable-auth-digest \
+    --disable-auth-ntlm \
+    --disable-auth-digest \
     --enable-auth-negotiate \
     --enable-removal-policies="lru,heap" \
-    --enable-storeio="aufs,ufs,diskd,rock" \
+    --enable-storeio="ufs,aufs,diskd,rock" \
     --enable-delay-pools \
     --enable-arp-acl \
-    --with-openssl \
+    --enable-zph-qos \
+    --with-netfilter-conntrack \
+    --with-openssl=/usr/include/openssl \
     --enable-snmp \
     --enable-linux-netfilter \
     --enable-ident-lookups \
@@ -87,8 +89,16 @@ build() {
     --disable-arch-native \
     --disable-strict-error-checking \
     --enable-wccpv2 \
-    --enable-ssl-crtd 
+    --disable-wccp \
+    --enable-ssl-crtd \
+    --with-build-environment=POSIX_V6_LP64_OFF64 \
+    --enable-build-info="Intercept/WCCPv2/SSL/CRTD/(A)UFS/DISKD/ROCK/eCAP/ICAP/64/GCC Production" \
+    'CFLAGS=-g -O2 -fPIE -fstack-protector-strong -DNDEBUG -Wformat -Werror=format-security -Wall -ltcmalloc_minimal' \
+    'LDFLAGS=-fPIE -pie -Wl,-z,relro -Wl,-z,now' \
+    'CPPFLAGS=-D_FORTIFY_SOURCE=2' \
+    'CXXFLAGS=-g -O2 -fPIE -fstack-protector-strong -DNDEBUG -Wformat -Werror=format-security -ltcmalloc_minimal'
   make -j$(nproc)
+
 }
 
 package() {
