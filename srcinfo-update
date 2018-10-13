@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# A convenience script for the package creator.
+# This file is not run on package installation.
+
+pkgdir=${0%%/*}  # dirname $0
+cd -P -- "$pkgdir" || exit 1  # Allow to be called from any directory
+
+makepkg --printsrcinfo >| .SRCINFO && echo "Updated .SRCINFO" >&2
