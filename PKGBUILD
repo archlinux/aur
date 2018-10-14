@@ -1,6 +1,7 @@
 # Maintainer: Eric DeStefano <eric at ericdestefano dot com>
 # Contributor: Iñigo Alvarez <alvarezviu@gmail.com>
 # Contributor: William Termini <aur@termini.me>
+# Contributor: Phillip Kühne <phillipkhne@gmail.com>
 pkgname='mnvm0026'
 pkgver='3.5.8'
 pkgrel=1
