@@ -1,6 +1,6 @@
 # Maintainer: Graham Bell <graham dot s dot bell at gmail dot com>
 pkgname=fitsverify
-pkgver=4.18
+pkgver=4.19
 pkgrel=1
 pkgdesc="A FITS file format-verification tool"
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ url="http://heasarc.gsfc.nasa.gov/docs/software/ftools/fitsverify/"
 license=('unknown')
 depends=('cfitsio')
 source=("http://heasarc.gsfc.nasa.gov/docs/software/ftools/fitsverify/$pkgname-$pkgver.tar.gz")
-md5sums=('84f2930e802891392043cb8a6cbf4d5d')
+md5sums=('d7d005d675e048f4d8f73dcab20684e0')
 
 build() {
 	cd "$srcdir/$pkgname"
