@@ -2,18 +2,18 @@
 
 pkgname=razercfg-git
 pkgrel=1
-pkgver=0.35.r0.ga116db8
+pkgver=0.39.r16.gd17e48b
 install=razercfg-git.install
 pkgdesc='Configuration utility for Razer devices on Linux systems.'
 arch=('x86_64' 'i686')
-license=('GPLv2')
+license=('GPL')
 source=('razercfg::git+https://github.com/mbuesch/razer.git')
 url='http://bues.ch/cms/hacking/razercfg.html'
 makedepends=('git' 'cmake')
-optdepends=('python-pyside: For the graphical qrazercfg tool only.')
+optdepends=('python-pyqt5: for the graphical qrazercfg tool')
 depends=('libusb' 'python')
-provides=('razercfg' 'razercfg-git')
-conflicts=('razercfg' 'razercfg-git')
+provides=('razercfg')
+conflicts=('razercfg')
 md5sums=('SKIP')
 
 pkgver() {
