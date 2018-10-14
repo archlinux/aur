@@ -2,7 +2,7 @@
 pkgname=swayblocks
 pkgver=r45.9257a84
 pkgrel=1
-pkgdesc="another block manager for i3bar/swaybar"
+pkgdesc="a highly customizable, language agnostic status bar manager for i3 and sway written in elixir"
 arch=("i686" "x86_64")
 url="https://github.com/rei2hu/$pkgname"
 license=("GPL")

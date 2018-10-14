@@ -1,5 +1,5 @@
 pkgbase = swayblocks
-	pkgdesc = another block manager for i3bar/swaybar
+	pkgdesc = a highly customizable, language agnostic status bar manager for i3 and sway written in elixir
 	pkgver = r45.9257a84
 	pkgrel = 1
 	url = https://github.com/rei2hu/swayblocks
