@@ -1,5 +1,6 @@
 # Maintainer : JulioJu  < juanes  0890  at google mail dot com >
 # Contributor: JulioJu  < juanes  0890  at google mail dot com >
+# Contributor: Maks Verver <maksverver at geocities dot com>
 
 pkgname=uml_utilities
 pkgver=20070815
