@@ -1,8 +1,8 @@
 pkgbase = ccemux-git
 	pkgdesc = Graphical ComputerCraft emulator
-	pkgver = bb97056
+	pkgver = 532a5f0
 	pkgrel = 1
-	url = https://github.com/lignumm/ccemux
+	url = https://emux.cc
 	arch = any
 	license = MIT
 	makedepends = java-environment>=8
@@ -10,7 +10,7 @@ pkgbase = ccemux-git
 	makedepends = bash
 	depends = java-runtime>=8
 	optdepends = java-openjfx>=8: javafx renderer support
-	source = git+https://github.com/Lignumm/CCEmuX.git#branch=revival
+	source = git+https://github.com/CCEmuX/CCEmuX.git#branch=revival
 	source = ccemux.desktop
 	source = ccemux
 	source = icon.png

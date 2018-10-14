@@ -1,7 +1,7 @@
 pkgname='ccemux-git'
-pkgver=bb97056
+pkgver=532a5f0
 pkgrel=1
-source=('git+https://github.com/Lignumm/CCEmuX.git#branch=revival'
+source=('git+https://github.com/CCEmuX/CCEmuX.git#branch=revival'
         'ccemux.desktop'
         'ccemux'
         'icon.png')
@@ -11,7 +11,7 @@ md5sums=('SKIP'
          '15875de144d2375766e3cfb2c769c66e')
 pkgdesc="Graphical ComputerCraft emulator"
 arch=('any')
-url="https://github.com/lignumm/ccemux"
+url="https://emux.cc"
 license=('MIT')
 
 depends=('java-runtime>=8')
@@ -36,11 +36,13 @@ package () {
   install -dm755 "${pkgdir}/usr/share/licenses/$pkgname"
   install -dm755 "${pkgdir}/usr/share/pixmaps"
 
-  cp ${srcdir}/CCEmuX/build/libs/CCEmuX*-all.jar "${pkgdir}/usr/share/ccemux.jar"
+  # By default, we use the CC: Tweaked build since it's still actively maintained.
+  # If you want vanilla CC, change "cct" to "cc" instead.
+  cp ${srcdir}/CCEmuX/build/libs/CCEmuX*-cct.jar "${pkgdir}/usr/share/ccemux.jar"
   cp "${srcdir}/ccemux.desktop" "${pkgdir}/usr/share/applications"
   cp "${srcdir}/ccemux" "${pkgdir}/usr/bin/"
   chmod 755 "${pkgdir}/usr/bin/ccemux"
-  cp "${srcdir}/CCEmuX/LICENCE.txt" "${pkgdir}/usr/share/licenses/$pkgname"
+  cp "${srcdir}/CCEmuX/LICENSE.txt" "${pkgdir}/usr/share/licenses/$pkgname"
   cp "${srcdir}/icon.png" "${pkgdir}/usr/share/pixmaps/ccemux.png"
   ls
 }
