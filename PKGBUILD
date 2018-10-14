@@ -28,10 +28,13 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+	cd "${srcdir}/${_pkgname}"
+	meson -Dwerror=false --prefix /usr "$srcdir/build"
+}
+
 build() {
 	cd "${srcdir}/${_pkgname}"
-	rm -rf "$srcdir/build"
-	meson -Dwerror=false --prefix /usr "$srcdir/build"
 	ninja -C "$srcdir/build"
 }
 
