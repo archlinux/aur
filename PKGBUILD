@@ -1,7 +1,7 @@
 # Maintainer: sum01 <sum01@protonmail.com>
 # Contributor: j1simon
 pkgname=buttercup-desktop
-pkgver=1.10.2
+pkgver=1.10.3
 pkgrel=1
 pkgdesc='Javascript Password Vault - Multi-Platform Desktop Application'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('gtk3' 'libxss' 'nss')
 makedepends=('npm' 'sed')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/buttercup/buttercup-desktop/archive/v$pkgver.tar.gz")
-sha512sums=('7fa0f089caa468e1770f2c1a890cff6fe6be94216fa6d1718c52e5bd22fc7f8947b50197bc88e0b0734b9b43b169ef4be0f3cb173ae72c2110c999c0346eb227')
+sha512sums=('3e0452bb2041b64af0befbd20320f9f8d93e49cdf23c1fddc97f641660ff1c0af45e679ac7df5762be9650e1ff0fb05aedf6eacdd6dac1bcfa8ba486a571d219')
 prepare() {
 	sed -i '/"rpm",/d' "$srcdir/$pkgname-$pkgver/package.json"
 	sed -i '/"AppImage",/d' "$srcdir/$pkgname-$pkgver/package.json"
