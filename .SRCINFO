@@ -1,0 +1,31 @@
+pkgbase = cuda-9.2
+	pkgdesc = NVIDIA's GPU programming toolkit. Version 9.2
+	pkgver = 9.2.148.1
+	pkgrel = 1
+	url = http://www.nvidia.com/object/cuda_home.html
+	install = cuda-9.2.install
+	arch = x86_64
+	license = custom:NVIDIA
+	depends = gcc7-libs
+	depends = opencl-nvidia
+	depends = nvidia-utils
+	depends = gcc7
+	optdepends = gdb: for cuda-gdb
+	optdepends = java-runtime: for nsight and nvvp
+	provides = cuda-toolkit
+	provides = cuda-sdk
+	options = !strip
+	options = staticlibs
+	source = https://developer.nvidia.com/compute/cuda/9.2/Prod2/local_installers/cuda_9.2.148_396.37_linux
+	source = https://developer.nvidia.com/compute/cuda/9.2/Prod2/patches/1/cuda_9.2.148.1_linux
+	source = cuda-9.2.sh
+	source = cuda-9.2.conf
+	source = cuda-findgllib_mk.diff
+	sha512sums = 103c59151727b2c14b403799dbde01bbb95e48b95a55050edb4f6786b209876c65a96f8cf5ca7d6b3ac7cd886413b9bf273a7d5afecd8317dcfa49bb63162983
+	sha512sums = 891d1b98c574297702e79f2a73e6315ec7fc193a722622b8455fdc1da48f5132fa762accde5f04a47ad00a833a655fb794f75f1ff691858c8ca8f48c3c87f50a
+	sha512sums = e240ad3b562f07b6eeade135233d9dc2d956bf3648bc07db5f4bd8541d9d01183b945e34aea8463a730a1f021bf61d33859e7fd924e705dcb2a091159d92cd34
+	sha512sums = ff3fbd94e9055aae8d4044ad891c34006c265c704d418125a2abe4427f6c9c2db4995bb87afd1a64ee7e7e1b697981124ed90e26778473e8da2ce67ef1fc12b2
+	sha512sums = 6e9a15c73849e6400b0289ed9d6e9d3b7f100712713efcb7bbf4921f39fe671cd9fd3958e735c0da3a44f9afdd2aca94dbc63b564970a0dcacba599b570aca0f
+
+pkgname = cuda-9.2
+
