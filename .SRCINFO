@@ -1,7 +1,7 @@
 pkgbase = postgresql-9.6
 	pkgdesc = A powerful, open source object-relational database system
 	pkgver = 9.6.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.postgresql.org/
 	install = postgresql.install
 	arch = i686
@@ -21,10 +21,12 @@ pkgbase = postgresql-9.6
 	provides = postgresql=9.6.10
 	provides = postgresql-libs=9.6.10
 	provides = postgresql-client=9.6.10
+	provides = postgresql-docs=9.6.10
 	conflicts = postgresql
 	conflicts = postgresql-libs
 	conflicts = postgresql-testing
 	conflicts = postgresql-client
+	conflicts = postgresql-docs
 	source = https://ftp.postgresql.org/pub/source/v9.6.10/postgresql-9.6.10.tar.bz2
 	source = postgresql-run-socket.patch
 	source = postgresql.pam
