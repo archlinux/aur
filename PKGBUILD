@@ -3,16 +3,18 @@
 pkgbase=python-uproot-methods
 _pkgbase=uproot-methods
 pkgname=('python2-uproot-methods' 'python-uproot-methods')
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.2.5
+pkgrel=1
 pkgdesc="Pythonic mix-ins for ROOT classes"
 arch=('any')
+makedepends=('python2-setuptools' 'python2-numpy'
+             'python-setuptools' 'python-numpy')
 url="https://github.com/scikit-hep/uproot-methods"
 license=('BSD')
 options=(!emptydirs)
 
 source=("https://github.com/scikit-hep/${_pkgbase}/archive/${pkgver}.zip")
-sha256sums=('03bd102a16b1dbfb3fa6883734a1dffaeb2714a343d1bc2aa741d799bb5a5de2')
+sha256sums=('f9ef872fcaf4895e1c3e929101405168987c21530ed4074ae9c9457ea9c4d473')
 
 prepare() {
   cd "${srcdir}"
@@ -27,20 +29,14 @@ prepare() {
           -i '{}' \; -print
 }
 
-build_python2-uproot-methods() {
-  makedepends=('python2-setuptools' 'python2-numpy')
+build() {
+  msg2 "Building Python3"
+  cd "${srcdir}/${_pkgbase}-${pkgver}"
+  python setup.py build
 
   msg2 "Building Python2"
   cd "${srcdir}/${_pkgbase}-py2-${pkgver}"
   python2 setup.py build
-}
-
-build_python-uproot-methods() {
-  makedepends=('python-setuptools' 'python-numpy')
-
-  msg2 "Building Python3"
-  cd "${srcdir}/${_pkgbase}-${pkgver}"
-  python setup.py build
 }
 
 package_python2-uproot-methods() {
@@ -55,6 +51,7 @@ package_python2-uproot-methods() {
   install -D README.rst "${pkgdir}/usr/share/${pkgname}/README.rst"
   rm "${pkgdir}/usr/README.rst"
 
+  # upstream has no docs
   # install -d "${pkgdir}/usr/share/doc/${pkgname}"
   # cp -r docs "${pkgdir}/usr/share/doc/${pkgname}/"
 }
@@ -72,6 +69,7 @@ package_python-uproot-methods() {
   rm "${pkgdir}/usr/README.rst"
 
   # See FS#49651
+  # upstream has no docs
   # install -d "${pkgdir}/usr/share/doc/${pkgname}"
   # cp -r docs "${pkgdir}/usr/share/doc/${pkgname}/"
 }
