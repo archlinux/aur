@@ -4,8 +4,8 @@
 # Maintainer: GordonGR <ntheo1979@gmail.com>
 
 pkgname=opensimulator-osgrid
-pkgver=20181003.v0.9.1.1bcdcc2
-_realpkgver=10032018.v0.9.1.1bcdcc2
+pkgver=20181008.v0.9.1.235dd37
+_realpkgver=10082018.v0.9.1.235dd37
 pkgrel=1
 pkgdesc="OSGrid's distribution of OpenSimulator, preconfigured to connect with OSGrid"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ backup=('opt/opensimulator-osgrid/bin/OpenSim.ini'
 		'opt/opensimulator-osgrid/bin/config-include/GridCommon.ini')
 source=("http://danbanner.onikenkon.com/osgrid//osgrid-opensim-${_realpkgver}.zip" \
 	"osgrid.sh")
-md5sums=('02a74ddc4a9bc9313329ec5684ce4ba6'
+md5sums=('67c907ba23b13f44f6a88176dd660bf1'
          '8ad5aab5c434aef00d12b08343a5da5a')
 
 package() {
