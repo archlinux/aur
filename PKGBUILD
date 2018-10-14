@@ -1,7 +1,7 @@
 # shellcheck disable=2034
 
 pkgname=jrebel
-pkgver=2018.1.4
+pkgver=2018.2.0
 pkgrel=1
 pkgdesc="JRebel is a JVM-plugin that makes it possible for Java developers to instantly see any code change made to an app without redeploying."
 url="http://zeroturnaround.com/software/jrebel/"
@@ -23,7 +23,7 @@ source=("$_pkgfile::$_downloadurl"
 		"$pkgname.install"
 		"$pkgname.sh")
 
-sha256sums=('b15c4956d6dcfe08cdb2c6103b2dbb5113e08e8cc1c194512d34171205eab567'
+sha256sums=('f239f5b5a93041870bda0a7e429b19574156a0fe7eb72d863ed74903dc76c4a1'
 			'7dbc38b6bfc45a037620bd8a21583e00308d53311285c98215b660efdb007431'
 			'7616bc4c74f15c49c25c9db78aa0490a2cb88e37fe848c9e866c11ea16d0ad66'
 			'd1a5193a071eeedb4d5e96a0eb90aaa4f7daad0cdfbe54ff9c89967c50634635')
