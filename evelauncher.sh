@@ -53,6 +53,7 @@ check_wine() {
     if [ "x$WINEDATE" != "x$INSTWINE" ]; then
 	if [ -x "$WINEPATH/wine" ]; then
 	    WINEPREFIX=$EVEDIR/SharedCache/wineenv
+	    launcher_msg "Preparing/Updating wine in $WINEPREFIX"
 	    env WINEARCH=win32 \
 		WINEPREFIX=$WINEPREFIX \
 		WINEDEBUG=-all \
