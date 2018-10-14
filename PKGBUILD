@@ -1,23 +1,24 @@
-# Maintainer: Marcel Krüger <zauguin at gmail dot com>
+# Maintainer: Aleksandar Trifunović <akstrfn at gmail dot com>
+# Contributor: Marcel Krüger <zauguin at gmail dot com>
+
 pkgname=stdman
-pkgver=2017.04.02
+pkgver=2018.03.11
 pkgrel=1
-pkgdesc="Formatted C++11/14 stdlib man pages (cppreference)"
+pkgdesc="Formatted C++11/14 stdlib man pages (cppreference)."
 arch=(any)
 url="https://github.com/jeaye/stdman"
 license=('MIT')
 makedepends=('git')
-source=("https://github.com/jeaye/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('1989e28d1756423a26ed8eb1a4c57fe2')
+source=("$url/archive/$pkgver.tar.gz")
+sha256sums=('d29e6b34cb5ba9905360cee6adcdf8c49e7f11272521bf2e10b42917486840e8')
 
 build() {
-	cd "$srcdir/${pkgname}-${pkgver}"
-	./configure --prefix=/usr
+    cd "${pkgname}-${pkgver}"
+    ./configure --prefix=/usr --mandir=/usr/local/man
 }
 
 package() {
-	cd "$srcdir/${pkgname}-${pkgver}"
-	make DESTDIR="$pkgdir/" install
-  install -d "$pkgdir/usr/share/licenses/${pkgname}"
-  install LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+    cd "${pkgname}-${pkgver}"
+    make DESTDIR="$pkgdir/" install
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname}"
 }

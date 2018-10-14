@@ -1,13 +1,13 @@
 pkgbase = stdman
-	pkgdesc = Formatted C++11/14 stdlib man pages (cppreference)
-	pkgver = 2017.04.02
+	pkgdesc = Formatted C++11/14 stdlib man pages (cppreference).
+	pkgver = 2018.03.11
 	pkgrel = 1
 	url = https://github.com/jeaye/stdman
 	arch = any
 	license = MIT
 	makedepends = git
-	source = https://github.com/jeaye/stdman/archive/2017.04.02.tar.gz
-	md5sums = 1989e28d1756423a26ed8eb1a4c57fe2
+	source = https://github.com/jeaye/stdman/archive/2018.03.11.tar.gz
+	sha256sums = d29e6b34cb5ba9905360cee6adcdf8c49e7f11272521bf2e10b42917486840e8
 
 pkgname = stdman
 
