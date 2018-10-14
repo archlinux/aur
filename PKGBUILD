@@ -2,7 +2,7 @@
 
 pkgname=teaftp
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple, read-only TFTP server'
 arch=('x86_64')
 url='https://github.com/xyproto/teaftp'
@@ -14,7 +14,9 @@ md5sums=('SKIP')
 build() {
   cd "$pkgname"
 
-  GO111MODULE=off go build
+  export GO111MODULE=off
+  go get -d
+  go build -buildmode=pie
 }
 
 package() {
