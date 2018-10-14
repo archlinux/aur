@@ -2,7 +2,7 @@
 
 pkgname=keeweb
 pkgver=1.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop password manager compatible with KeePass databases."
 arch=('any')
 url="https://github.com/keeweb/keeweb"
@@ -15,7 +15,7 @@ source=("https://github.com/keeweb/keeweb/archive/v${pkgver}.tar.gz"
         'keeweb')
 
 sha1sums=('75c054b23aa4f0f6fd067174623549f65ebe740a'
-          '6f73285126a5d6d948712de73053957528aba0cc')
+          'a2ab033d06abfe7616d2615d8edf7931f29efc96')
 
 prepare() {
 
@@ -60,12 +60,19 @@ prepare() {
 	sed -i \
 		-e '/FileSaver.js/ s|eligrey/FileSaver.js|\0#1.3.4|' \
 	bower.json
+
+	# upgrade node-sass
+	sed -i \
+		-e 's/"node-sass": "4.5.3"/"node-sass": "^4.9.3"/' \
+	package.json
 }
 
 build() {
 	cd "${pkgname}-${pkgver}"
 
-	npm install
+	export SKIP_SASS_BINARY_DOWNLOAD_FOR_CI=1
+
+	npm install --no-package-lock
 	node_modules/.bin/grunt --skip-sign build-web-app build-desktop-app-content
 
 	asar p tmp/desktop/app ../keeweb.asar
