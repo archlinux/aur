@@ -8,7 +8,6 @@ pkgdesc="The package of IBM’s typeface, IBM Plex."
 arch=('any')
 url='https://github.com/IBM/plex'
 license=('custom:OFL')
-depends=('fontconfig' 'xorg-font-utils')
 source=("$url/releases/download/v$pkgver/TrueType.zip")
 sha256sums=('ae870b742ec69d6a3423d7b70623863cda146d1b082d6d20b5cf7a140fbb210d')
 
