@@ -9,7 +9,9 @@ pkgbase = uml_utilities
 	depends = fuse
 	depends = readline
 	source = http://user-mode-linux.sourceforge.net/uml_utilities_20070815.tar.bz2
+	source = uml_utilities.patch
 	md5sums = b0468ac8b79cef53f36f5f9517907462
+	md5sums = 8fbcca01953da90c48f5ec06f564480f
 
 pkgname = uml_utilities
 
