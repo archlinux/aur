@@ -3,7 +3,6 @@ pkgbase = aksusbd
 	pkgver = 7.81
 	pkgrel = 1
 	url = https://safenet.gemalto.com/
-	install = aksusbd.install
 	arch = i686
 	arch = x86_64
 	license = custom
@@ -14,12 +13,10 @@ pkgbase = aksusbd
 	source = service-usr-bin-i386.patch
 	source = service-usr-bin-x86_64.patch
 	source = LICENSE
-	source = aksusbd.install
 	sha256sums = 6240ec6b4017def2c1964eca5a505cd682ff680f0a74c1eff7d05f58fb16c1e7
 	sha256sums = 75c02721799e3f2b498d67265201445c963063b331c61402205db2ad91e72ec3
 	sha256sums = d63548bac27eab7cf4a524830643705bafc63349d2e3c5276a37d3382e5598ec
 	sha256sums = c67d1383c94e2fda4c25a70d5a5d4a90d692586ff7977eb5e9e82139f85e22dd
-	sha256sums = db96b8b8f1ae5af6bbe6eaa3b4cf635341b8c07d294442cb3bfb1b78a20a54ec
 
 pkgname = aksusbd
 

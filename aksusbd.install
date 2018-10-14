@@ -1,9 +1,0 @@
-post_install() {
-  echo "Remember to run 'sudo systemctl start aksusbd' to start the service."
-  echo "To make it persist across reboots, run 'sudo systemctl enable aksusbd'."
-}
-
-post_upgrade() {
-  systemctl daemon-reload
-  systemctl try-restart aksusbd hasplmd
-}

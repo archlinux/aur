@@ -7,7 +7,7 @@
 
 pkgname=aksusbd
 pkgver=7.81
-_pkgrel=1
+_pkgrel=2
 _tarballname=Sentinel_LDK_RedHat_and_SuSE_RPM_Run-time_Installer
 pkgrel=1 # ${_pkgrel}
 pkgdesc="SafeNet Sentinel LDK AKSUSB daemon supporting Sentinel HASP, HASP HL, HASP4 and Hardlock keys."
@@ -17,16 +17,13 @@ license=('custom')
 source=("${_tarballname}-${pkgver}.tar.gz::https://fdsext.gemalto.com/filesSN/Index/23fc9210ca3b4639be98601bdf9c8262?sid=6e1156444f28a380873b69d18110c741"
         "service-usr-bin-i386.patch"
         "service-usr-bin-x86_64.patch"
-        "LICENSE"
-        "${pkgname}.install")
+        "LICENSE")
 sha256sums=('6240ec6b4017def2c1964eca5a505cd682ff680f0a74c1eff7d05f58fb16c1e7'
             '75c02721799e3f2b498d67265201445c963063b331c61402205db2ad91e72ec3'
             'd63548bac27eab7cf4a524830643705bafc63349d2e3c5276a37d3382e5598ec'
-            'c67d1383c94e2fda4c25a70d5a5d4a90d692586ff7977eb5e9e82139f85e22dd'
-            'db96b8b8f1ae5af6bbe6eaa3b4cf635341b8c07d294442cb3bfb1b78a20a54ec')
+            'c67d1383c94e2fda4c25a70d5a5d4a90d692586ff7977eb5e9e82139f85e22dd')
 makedepends=('libarchive')
 conflicts=('ehaspd')
-install=$pkgname.install
 options=('!strip')
 
 prepare(){
