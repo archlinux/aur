@@ -1,0 +1,18 @@
+pkgbase = kit-git
+	pkgdesc = A magical, high performance programming language for game development.
+	pkgver = r240.776de76
+	pkgrel = 1
+	url = https://kitlang.org
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	makedepends = stack
+	depends = gmp
+	optdepends = ccache: compilation results caching support
+	provides = kit
+	conflicts = kit
+	source = git+https://github.com/kitlang/kit.git
+	md5sums = SKIP
+
+pkgname = kit-git
+
