@@ -1,29 +1,33 @@
 # Maintainer: SaMaLerO <smlr[at]ukr[dot]net>
+# Co-Maintainer: McModder <aur @ modder.pw>
 pkgname=tlauncher
-pkgver=9999
-pkgrel=3
-pkgdesc="TLauncher is freeware launcher of Minecraft."
-url="https://tlaun.ch"
+pkgver=1.100.0
+pkgrel=1
+epoch=1
+pkgdesc='TLauncher is freeware launcher of Minecraft.'
+url='https://tlaun.ch'
 arch=('x86_64' 'i686')
 license=('GPLv3')
-depends=("java-runtime>=8" "xorg-xrandr")
-makedepends=()
-conflicts=()
-replaces=()
-backup=()
-install='tlauncher.install'
-source=("TLauncher.jar::https://tlaun.ch/download.php?&package=jar"
-        "tlauncher.desktop::https://drive.google.com/uc?export=download&id=0BwXQWEVmNM9ddTlVM1Q0TGJmT0k"
-		"mncrft.png::https://drive.google.com/uc?export=download&id=0BwXQWEVmNM9dWm1sbGtoQ29CVTA")
-noextract=('TLauncher.jar')
-md5sums=('SKIP'
-		'679caa7ce6fd3f3ba1f5e57d71de97e1'
-		'7ad17a837b4a3742a84a34ecd7160665')
+depends=('java-runtime>=8' 'xorg-xrandr')
+makedepends=('jq')
+_checksum=$(curl -sL 'http://cdn.turikhay.ru/tlauncher/legacy_beta/bootstrap.json' | jq -r '.update.bootstrap.downloads.JAR.checksum')
+source=("http://turikhay.ru/tlauncher/legacy_beta/bootstrap/${_checksum}.jar"
+        'tlauncher.desktop'
+        'tlauncher.install')
+noextract=("${_checksum}.jar")
+sha256sums=("${_checksum}"
+            'ab05e25ac610dedf89b9554494eb56d2771789baf405d537f6ae3e2f069a115d'
+            '0346fbc5e81522e498b63d392339024b8617a03de9fdf9126ba6364db94e188b')
+install="${pkgname}.install"
 
+pkgver() {
+  echo $(curl -sL 'http://cdn.turikhay.ru/tlauncher/legacy_beta/bootstrap.json' | jq -r '.update.launcher.version')
+}
+
+# tlauncher.jar needs 666 to launch =(
 package() {
-  mkdir -p $pkgdir/opt/TLauncher
-  desktop-file-install tlauncher.desktop --dir "$pkgdir/usr/share/applications/"
-  install -Dm0644 mncrft.png "$pkgdir/opt/TLauncher/mncrft.png"
-  install -Dm0644 tlauncher.desktop "$pkgdir/usr/share/applications/tlauncher.desktop"
-  install -Dm0666 TLauncher.jar "$pkgdir/opt/TLauncher/TLauncher.jar"
+  mkdir -p "${pkgdir}/opt/tlauncher"
+  mkdir -p "${pkgdir}/usr/share/applications/"
+  install -m0644 "${srcdir}/tlauncher.desktop" "${pkgdir}/usr/share/applications/"
+  install -Dm0666 "${srcdir}/${_checksum}.jar" "${pkgdir}/opt/tlauncher/tlauncher.jar"
 }

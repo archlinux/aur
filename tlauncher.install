@@ -1,0 +1,9 @@
+post_install() {
+    echo !! IMPORTANT !!
+    echo "If you'll expect troubles with launcher self-updating just rebuild this package"
+    echo
+}
+
+post_upgrade() {
+    post_install
+}
