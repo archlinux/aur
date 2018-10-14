@@ -1,7 +1,7 @@
 pkgbase = aksusbd
 	pkgdesc = SafeNet Sentinel LDK AKSUSB daemon supporting Sentinel HASP, HASP HL, HASP4 and Hardlock keys.
 	pkgver = 7.81
-	pkgrel = 1
+	pkgrel = 2
 	url = https://safenet.gemalto.com/
 	arch = i686
 	arch = x86_64
