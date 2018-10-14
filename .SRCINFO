@@ -9,7 +9,7 @@ pkgbase = pulseaudio-modules-bt-git
 	arch = armv6h
 	arch = armv7h
 	arch = aarch64
-	license = GPL3
+	license = LGPL
 	makedepends = cmake>=3.0
 	makedepends = make
 	makedepends = pkg-config
@@ -18,7 +18,7 @@ pkgbase = pulseaudio-modules-bt-git
 	depends = bluez>=5.0
 	depends = bluez-libs>=5.0
 	depends = sbc
-	optdepends = ffmpeg
+	optdepends = ffmpeg>=4.0
 	provides = pulseaudio-bluetooth
 	conflicts = pulseaudio-bluetooth
 	replaces = pulseaudio-bluetooth

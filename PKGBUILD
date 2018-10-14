@@ -6,10 +6,10 @@ pkgrel=1
 pkgdesc="PulseAudio Bluetooth modules with SBC, APTX, APTX-HD, Sony LDAC, A2DP codecs support"
 arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
 url="https://github.com/EHfive/pulseaudio-modules-bt"
-license=('GPL3')
+license=('LGPL')
 depends=("pulseaudio>=12.0" "bluez>=5.0" "bluez-libs>=5.0" "sbc")
 makedepends=("cmake>=3.0" "make" "pkg-config" "ffmpeg>=4.0")
-optdepends=("ffmpeg")
+optdepends=("ffmpeg>=4.0")
 provides=("pulseaudio-bluetooth")
 conflicts=("pulseaudio-bluetooth")
 replaces=("pulseaudio-bluetooth")
