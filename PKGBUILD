@@ -1,7 +1,7 @@
 # Maintainer: Andrew Steinke <rkcf@rkcf.me>
 
 pkgname=eslint-plugin-vue
-pkgver=4.3.0
+pkgver=4.7.1
 pkgrel=1
 pkgdesc='ESLint Plugin for Vue.js'
 arch=('any')
@@ -11,11 +11,10 @@ depends=('nodejs' 'eslint')
 makedepends=('npm')
 source=(http://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz)
 noextract=($pkgname-$pkgver.tgz)
-md5sums=('ce3b968076f310f617d5313e96242517')
+md5sums=('062add1a132d808045a07ce8d5e4815e')
 
 package() {
   	npm install -g --user root --prefix "$pkgdir"/usr "$srcdir"/$pkgname-$pkgver.tgz
-	rm -r "$pkgdir"/usr/etc
 
 	# Fix permissions
 	find "$pkgdir/usr" -type d -exec chmod 755 '{}' +
