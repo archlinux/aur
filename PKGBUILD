@@ -1,7 +1,7 @@
 # Maintainer: Kevin McCormack <HarlemSquirrel@gmail.com>
 
 pkgname=xmr-stak-opencl-amd
-pkgver=2.4.7
+pkgver=2.5.0
 pkgrel=1
 pkgdesc='Unified All-in-one Monero miner (AMD)'
 arch=('x86_64')
@@ -29,6 +29,9 @@ package() {
   install -D -m755 "$srcdir/xmr-stak/bin/xmr-stak" -t "$pkgdir/usr/bin/"
   install -D -m644 "$srcdir/xmr-stak/bin/libxmrstak_opencl_backend.so" -t "$pkgdir/usr/lib"
 }
+
+## Generate integrity checks for source files
+# makepkg --geninteg
 
 ## Update .SRCINFO
 # makepkg --printsrcinfo | tee .SRCINFO
