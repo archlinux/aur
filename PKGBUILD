@@ -10,13 +10,17 @@
 ## Config you want to build kernel:
 ## 1 xanmod's provided (default)
 ## 2 Archlinux stock
-_configuration=1
+if [ -z ${_configuration+x} ]; then
+  _configuration=1
+fi
 ##
 ## Look inside 'choose-gcc-optimization.sh' to choose your microarchitecture
 ## Only valid numbers are: 0 to 25
 ## Default is: 0 => generic
 ## Good option if your package is for one machine: 25 => native
-_microarchitecture=0
+if [ -z ${_microarchitecture+x} ]; then
+  _microarchitecture=0
+fi
 ##
 
 pkgbase=linux-xanmod
@@ -40,7 +44,7 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
        choose-gcc-optimization.sh
        patches-from-archlinux-stable-git.patch
 )
-source_x86_64=("config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=${arch_config_trunk}")
+source_x86_64=("config_$arch_config_trunk::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=${arch_config_trunk}")
 
 sha256sums=('9d3c015a8ca8dd62d7c2bbac1d2af4ea49b19afd1ca65f952a1128954954f9dc'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
@@ -57,7 +61,7 @@ prepare() {
 
   case $_configuration in
     1) true ; answer="Xanmod" ;;
-    2) cat "${srcdir}/config" > ./.config ; answer="Archlinux" ;;
+    2) cat "${srcdir}/config_$arch_config_trunk" > ./.config ; answer="Archlinux" ;;
     *) echo "Variable _configuration should be 1 or 2"; exit 1 ;;
   esac
   warning "This package is now totally non-interactive!!!!!"
