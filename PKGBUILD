@@ -3,14 +3,14 @@
 pkgname=('rdma-core-git')
 _srcname='rdma-core'
 pkgdesc='RDMA core userspace libraries and daemons'
-pkgver='r4246'
+pkgver='r4305'
 pkgrel='1'
 arch=('x86_64')
 url="https://github.com/linux-rdma/${_srcname}"
 license=('GPL2' 'custom:OpenIB.org BSD (MIT variant)')
 
 depends=('libnl')
-makedepends=('git' 'cmake' 'gcc' 'libnl' 'libsystemd' 'systemd' 'pkg-config' 'ninja' 'bash' 'pandoc')
+makedepends=('git' 'cmake' 'gcc' 'libnl' 'libsystemd' 'systemd' 'pkg-config' 'ninja' 'bash' 'pandoc' 'python')
 _provides=("${pkgname[0]%-git}" 'rdma' 'ibacm' 'iwpmd' 'libibcm' 'libibumad' 'libibverbs'
            'librdmacm' 'libcxgb3' 'libcxgb4' 'libmlx4' 'libmlx5' 'libmthca' 'libnes' 'libocrdma'
            'srptools')

@@ -1,6 +1,6 @@
 pkgbase = rdma-core-git
 	pkgdesc = RDMA core userspace libraries and daemons
-	pkgver = r4246
+	pkgver = r4305
 	pkgrel = 1
 	url = https://github.com/linux-rdma/rdma-core
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = rdma-core-git
 	makedepends = ninja
 	makedepends = bash
 	makedepends = pandoc
+	makedepends = python
 	depends = libnl
 	provides = rdma-core
 	provides = rdma
