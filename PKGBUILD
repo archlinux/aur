@@ -2,14 +2,14 @@
 pkgname=standardnotes-desktop
 _pkgname=desktop
 pkgver=2.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A standard notes app with an un-standard focus on longevity, portability, and privacy."
 arch=('x86_64')
 url="https://standardnotes.org/"
 license=('GPL3')
 conflicts=('sn-bin')
 depends=('electron')
-makedepends=('yarn', 'node-gyp')
+makedepends=('yarn' 'node-gyp')
 source=("git://github.com/standardnotes/desktop.git"
         "git://github.com/sn-extensions/extensions-manager.git"
         "git://github.com/sn-extensions/batch-manager.git"
