@@ -1,6 +1,6 @@
 pkgbase = pulseaudio-modules-bt-git
 	pkgdesc = PulseAudio Bluetooth modules with SBC, APTX, APTX-HD, Sony LDAC, A2DP codecs support
-	pkgver = r54.23c708f
+	pkgver = r55.a228264
 	pkgrel = 1
 	url = https://github.com/EHfive/pulseaudio-modules-bt
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = pulseaudio-modules-bt-git
 	makedepends = cmake>=3.0
 	makedepends = make
 	makedepends = pkg-config
-	makedepends = ffmpeg
+	makedepends = ffmpeg>=4.0
 	depends = pulseaudio>=12.0
 	depends = bluez>=5.0
 	depends = bluez-libs>=5.0
