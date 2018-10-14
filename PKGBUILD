@@ -2,7 +2,7 @@
 _modulename=vimteractive
 pkgname=vim-$_modulename
 pkgver=1.1
-pkgrel=1
+pkgrel=3
 pkgdesc="Send commands from text files to interactive programs via vim"
 arch=(any)
 url="https://github.com/williamjameshandley/vimteractive"
