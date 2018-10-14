@@ -1,6 +1,6 @@
 pkgbase = python-dbxfs
 	pkgdesc = User-space file system for Dropbox
-	pkgver = 1.0.22
+	pkgver = 1.0.24
 	pkgrel = 1
 	url = https://github.com/rianhunter/dbxfs
 	arch = i686
@@ -8,17 +8,17 @@ pkgbase = python-dbxfs
 	license = GPL3
 	makedepends = python-setuptools
 	depends = fuse2
-	depends = python-appdirs>=1.4,<2
-	depends = python-block_tracing>=1.0,<2
-	depends = python-dropbox>=3.38
-	depends = python-keyring>=15.1,<16
-	depends = python-privy>=6.0,<7
-	depends = python-sentry_sdk>=0.3,<1
-	depends = python-userspacefs>=1.0.6,<2
-	source = python-dbxfs-1.0.22.tar.gz::https://github.com/rianhunter/dbxfs/archive/v1.0.22.tar.gz
+	depends = python-appdirs
+	depends = python-block_tracing
+	depends = python-dropbox
+	depends = python-keyring
+	depends = python-privy
+	depends = python-sentry_sdk
+	depends = python-userspacefs
+	source = python-dbxfs-1.0.24.tar.gz::https://github.com/rianhunter/dbxfs/archive/v1.0.24.tar.gz
 	source = python-dbxfs.patch
-	md5sums = 098d194c19459e2804d99d03fa94207f
-	md5sums = 577ade35a9be1349b1a6f461245e5597
+	md5sums = 7036bc465a82b1b9e58d8d89311afb2c
+	md5sums = 3bf993bef07b19ff2bafec3eeb4ff72a
 
 pkgname = python-dbxfs
 
