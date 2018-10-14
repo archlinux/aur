@@ -1,0 +1,12 @@
+pkgbase = times-newer-roman
+	pkgdesc = A font that kinda looks like Times New Roman, except each character is 5-10% wider.
+	pkgver = 1
+	pkgrel = 1
+	url = https://timesnewerroman.com/
+	arch = any
+	license = GPL2
+	source = https://timesnewerroman.com/assets/TimesNewerRoman.zip
+	sha256sums = 2f4d66839d5b72105269d3a9d019ec19f0946280b33b2437460364c0d98dadba
+
+pkgname = times-newer-roman
+
