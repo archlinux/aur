@@ -1,7 +1,7 @@
 # Maintainer: Julian Brost <julian@0x4a42.net>
 
 pkgname=icingaweb2-module-grafana
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc='Grafana module for Icinga Web 2 (supports InfluxDB & Graphite)'
 license=('GPL')
@@ -10,7 +10,7 @@ depends=('icingaweb2')
 optdepends=('grafana: rendering of graphs')
 url='https://github.com/Mikesch-mp/icingaweb2-module-grafana'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Mikesch-mp/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('606a9e4a04d6a008204dbd6e33a20d5d72a88154eff2aad0e26b4f1b49043b67')
+sha256sums=('ed96f746c61c725f1516f86352305cc05d6dd59e0ccab8ca0b8b235b49113109')
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
