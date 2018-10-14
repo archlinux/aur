@@ -1,7 +1,7 @@
 # Maintainer: asm0dey <pavel.finkelshtein+AUR@gmail.com>
 pkgname=3proxy
 pkgver=0.8.12
-pkgrel=3
+pkgrel=4
 pkgdesc="A tiny crossplatform proxy server"
 arch=('any')
 url="http://www.3proxy.ru/"
@@ -13,7 +13,7 @@ source=("https://github.com/z3APA3A/3proxy/archive/$pkgver.tar.gz"
         "3proxy.service"
 )
 md5sums=('f8ccbe689ff8da8ff67942fc440187ae'
-         '107033a7d0d3584c72de16f7953b139e'
+         '99fbf305116df79fde910402c1132295'
 )
 _prefix=/usr
 _etcdir=/etc/3proxy
@@ -29,6 +29,7 @@ package() {
     install -D -m644 cfg/3proxy.cfg.sample ${pkgdir}${_etcdir}/3proxy.cfg.sample
     install -D -m644 cfg/counters.sample ${pkgdir}${_etcdir}/counters.sample
     mkdir -p "$pkgdir/usr/lib/systemd/system/"
+    echo 'u     threeproxy    -              "3proxy user"' | install -Dm644 /dev/stdin "$pkgdir"/usr/lib/sysusers.d/$pkgname.conf
     install -D -m644 "$srcdir/3proxy.service" "$pkgdir/usr/lib/systemd/system/"
 }
 

@@ -5,8 +5,8 @@ After=network.target
 [Service]
 Type=simple
 ExecStart=/usr/bin/3proxy /etc/3proxy/3proxy.cfg
-User=3proxy
-Group=3proxy
+User=threeproxy
+Group=threeproxy
 Restart=on-failure
 PrivateUsers=true
 
