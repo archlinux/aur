@@ -3,8 +3,8 @@
 
 _gemname=fastlane
 pkgname=$_gemname
-pkgver=2.102.0
-pkgrel=4
+pkgver=2.106.1
+pkgrel=1
 pkgdesc='The easiest way to automate beta deployments and releases for your iOS and Android apps'
 arch=(any)
 url='https://fastlane.tools'
@@ -36,8 +36,9 @@ depends=(
   'ruby-multipart-post<2.1' 'ruby-multipart-post>=2'
   'ruby-multi_xml<1' 'ruby-multi_xml>=0.5'
   'ruby-plist<4' 'ruby-plist>=3.1'
+  # 'ruby-public_suffix>=2' 'ruby-public_suffix<3'
   ruby-public_suffix-2
-  'ruby-rubyzip<2' 'ruby-rubyzip>=1.2.1'
+  'ruby-rubyzip<2' 'ruby-rubyzip>=1.2.2'
   'ruby-security=0.1.3'
   'ruby-simctl>=1.6.3' 'ruby-simctl<1.7'
   'ruby-slack-notifier<3' 'ruby-slack-notifier>=2'
@@ -47,16 +48,15 @@ depends=(
   'ruby-tty-screen>=0.6.3' 'ruby-tty-screen<1'
   'ruby-tty-spinner>=0.8' 'ruby-tty-spinner<1'
   'ruby-word_wrap<1.1' 'ruby-word_wrap>=1'
-  'ruby-xcodeproj>=1.5.7' 'ruby-xcodeproj<2'
-  # 'ruby-xcpretty<0.3' 'ruby-xcpretty>=0.2.8' 
-  ruby-xcpretty-0.2
+  'ruby-xcodeproj>=1.6.0' 'ruby-xcodeproj<2'
+  'ruby-xcpretty>=0.3' 'ruby-xcpretty<0.4'
   'ruby-xcpretty-travis-formatter>=0.0.3'
 )
 makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('bdb08cca0145f7ed87371893e3e2a64343493864')
+sha1sums=('4f6cc5ea5a4f993256936c84b6a3071949b43361')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
