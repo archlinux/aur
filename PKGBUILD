@@ -18,7 +18,6 @@ pkgver() {
 }
 
 build() {
- :q
   	cd "${srcdir}"/$"{pkgname}"
 	export GOPATH="${srcdir}"/$"{_realname}"
         dep ensure
