@@ -6,8 +6,8 @@
 # https://github.com/mymedia2/tdesktop
 
 pkgname=telegram-desktop-systemqt-notoemoji
-pkgver=1.4.2
-pkgrel=2
+pkgver=1.4.3
+pkgrel=1
 pkgdesc='Official Telegram Desktop client (with noto emoji)'
 arch=('x86_64')
 url="https://desktop.telegram.org/"
@@ -46,8 +46,8 @@ sha512sums=('SKIP'
             'fa7042f370ae4e2e14d083395743cdee25bfedc39ab5273b5d1ab12fb074757cf76dab065f2abcb44cad018920e711142fbf24a2b9cd30f517c5a5b46d6a6182'
             'b87414ceaae19185a8a5749cea1f6d9f3fc3c69b8dd729e3db8790cde00b987c3c827cd30baf0eac579d1884e34aa2f37bb90778c3c0bc9ca211d75a82891b9d'
             'b20674f61ff6378749d1f59a6a0da194d33ccc786bd783f6ed62027924a3a8a8d27c9763bf376480432d6536896b0c7eeb8c495c5b8cefff7cf5fe84da50947e'
-            '47c0d1e00401d7899b2ce710c06ceac6caffddbe1a4c85bc407918b43051cba292f6e6131cc0f390a66520e92f0ffa3761f8d973a25986dfe21c54f113062c33'
-            '7a37e0ca582145a56a411585aec0bc94889dc18a80cc038d2efa237e19eebf8b67d56825e068be88f7566b08316ce068d7f20c25729caa33d0e9d6c370325025'
+            '1bbca36ca1df9e3ef481224b82ccdeb797cf5f8ceb36ea181202c0db342bebcf802d191ee97cf36004ab992f6c23682d56c2c5bf1635ddd0432cd8adce441553'
+            'c05351aa9f6503daa6ef8b01adb73c7e71fd01377d833f47f826e184d78dd79628ce7c686ae23a40b7468adcd5af0af9ebce4783113957b6126892aca83c7712'
             'd60694dc701aa985b0e82a12c9732b945082470441c687b33167a94f94efcf253baf43bb7280ec160ba338485ee5c62de138e4804cae05f27cc5cf4298166d39')
 
 prepare() {
