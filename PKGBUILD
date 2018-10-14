@@ -13,12 +13,12 @@ makedepends=(go dep git go)
 source=("git"+"https://github.com/RokyErickson/aggregator.git")
 sha256sums=('SKIP')
 pkgver() {
-        cd "${srcdir}"/$"{_realname}"
+        cd "${srcdir}"/"${pkgname}"
         git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-   	cd "${srcdir}"/$"{_realname}"
+   	cd "${srcdir}"/$"{pkgname}"
 	export GOPATH="${srcdir}"/$"{_realname}"
         dep ensure
 	go build
@@ -27,7 +27,7 @@ build() {
 package() {
         cd "${srcdir}"/"${_realname}"
         install -Dm755 "${_realname}" "${pkgdir}"$/usr/bin/"${_realname}"
-	cd "${srcdir}/${_realname}"
-        install -Dm755 "${_realname2}" "${pkgdir}"$/usr/bin/$"{_realname2}"
+	cd "${srcdir}"/"${_realname}"
+        install -Dm755 "${_realname2}" "${pkgdir}"$/usr/bin/"${_realname2}"
 }
 
