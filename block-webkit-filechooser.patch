@@ -1,0 +1,87 @@
+--- src/os-patches/embed/ephy-web-view.c~	2018-10-13 04:25:04.320563918 +0900
++++ src/os-patches/embed/ephy-web-view.c	2018-10-14 15:48:39.428728086 +0900
+@@ -31,6 +31,7 @@
+ #include "ephy-embed-utils.h"
+ #include "ephy-embed.h"
+ #include "ephy-favicon-helpers.h"
++#include "ephy-file-chooser.h"
+ #include "ephy-file-helpers.h"
+ #include "ephy-file-monitor.h"
+ #include "ephy-gsb-utils.h"
+@@ -293,6 +294,58 @@
+ }
+ 
+ static void
++open_response_cb (GtkFileChooser* dialog, gint response, WebKitFileChooserRequest* request)
++{
++  if (response == GTK_RESPONSE_ACCEPT) {
++    GSList *filesList = gtk_file_chooser_get_filenames (dialog);
++    GPtrArray *filesArray = g_ptr_array_new ();
++    for (GSList *file = filesList; file; file = g_slist_next (file))
++      g_ptr_array_add (filesArray, file->data);
++    g_ptr_array_add (filesArray, 0);
++    webkit_file_chooser_request_select_files (request, (const gchar * const *)filesArray->pdata);
++    g_slist_free (filesList);
++    g_ptr_array_free (filesArray, FALSE);
++  } else {
++    webkit_file_chooser_request_cancel (request);
++  }
++
++  g_object_unref (request);
++
++  g_object_unref (dialog);
++}
++
++static gboolean
++ephy_web_view_run_file_chooser (WebKitWebView            *web_view,
++                                WebKitFileChooserRequest *request)
++{
++
++  GtkWidget* toplevel = gtk_widget_get_toplevel(GTK_WIDGET(web_view));
++
++  GtkFileChooser *dialog;
++
++  dialog = ephy_create_file_chooser (_("Open"),
++                                     GTK_WIDGET (toplevel),
++                                     GTK_FILE_CHOOSER_ACTION_OPEN,
++                                     EPHY_FILE_FILTER_ALL_SUPPORTED);
++
++  gboolean allowsMultipleSelection = webkit_file_chooser_request_get_select_multiple(request);
++
++  GtkFileFilter* filter = webkit_file_chooser_request_get_mime_types_filter(request);
++
++  if (filter)
++    gtk_file_chooser_set_filter(GTK_FILE_CHOOSER(dialog), filter);
++
++  gtk_file_chooser_set_select_multiple(GTK_FILE_CHOOSER(dialog), allowsMultipleSelection);
++
++  g_signal_connect (dialog, "response",
++                    G_CALLBACK (open_response_cb), g_object_ref(request));
++
++  gtk_native_dialog_show (GTK_NATIVE_DIALOG (dialog));
++
++  return TRUE;
++}
++
++static void
+ ephy_web_view_set_popups_allowed (EphyWebView *view,
+                                   gboolean     allowed)
+ {
+@@ -1057,7 +1104,8 @@
+ ephy_web_view_class_init (EphyWebViewClass *klass)
+ {
+   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
+   GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
++  WebKitWebViewClass *webkit_webview_class = WEBKIT_WEB_VIEW_CLASS (klass);
+ 
+   gobject_class->dispose = ephy_web_view_dispose;
+   gobject_class->finalize = ephy_web_view_finalize;
+@@ -1068,6 +1116,8 @@
+   widget_class->button_press_event = ephy_web_view_button_press_event;
+   widget_class->key_press_event = ephy_web_view_key_press_event;
+ 
++  webkit_webview_class->run_file_chooser = ephy_web_view_run_file_chooser;
++
+ /**
+  * EphyWebView:address:
+  *
