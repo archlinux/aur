@@ -21,13 +21,13 @@ optdepends=('alsa-utils: to cast with ALSA'
             'youtube-dl: YouTube support')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/muammar/$pkgname/archive/$pkgver.tar.gz"
-        'pychromecast-optional.patch::https://github.com/muammar/mkchromecast/commit/0070f9f2b505f1c5a1b6d63324ff337f2de09860.patch')
+        'pychromecast_optional.patch::https://github.com/muammar/mkchromecast/commit/0070f9f2b505f1c5a1b6d63324ff337f2de09860.patch')
 sha512sums=('ee66450768f3221500f198bf618120f02b93108797209ca0d6c2be9f882eee36753d3e1038354e51b5d76d130c12d193c7d152b33f80776cb225347a3743f376'
             '2fa2fa3986075582ed7f1d881ec32660b97278e47afffadecbd7cfc1c58833a734f5a7d442d4699fc99582c00b18e3c43cf87f974c8a8ec3af4b8ebfea40435f')
 
 prepare() {
   cd $pkgname-$pkgver
-  patch -Np1 -i pychromecast-optional.patch
+  patch -Np1 -i ../pychromecast_optional.patch
 }
 
 package() {
