@@ -1,8 +1,8 @@
 # Maintainer: Shane "SajeOne" Brown <contact@shane-brown.ca>
 pkgname=python-spotipy-git
 _pkgname=spotipy
-pkgver=r276.7499d8e
-pkgrel=2
+pkgver=r311.4c2c1d7
+pkgrel=1
 pkgdesc='Simple client for the Spotify Web API'
 arch=('any')
 url="https://github.com/plamere/spotipy"
