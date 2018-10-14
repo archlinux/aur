@@ -3,7 +3,9 @@ Description=Prometheus blackbox Exporter
 After=network.target
 
 [Service]
+User=prometheus
 ExecStart=/usr/bin/prometheus_blackbox_exporter --config.file="/etc/prometheus/blackbox.yml"
+ExecReload=/bin/kill -HUP $MAINPID
 
 [Install]
 WantedBy=multi-user.target

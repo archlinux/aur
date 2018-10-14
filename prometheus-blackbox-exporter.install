@@ -1,0 +1,7 @@
+## arg 1:  the new package version
+post_install() {
+	# do something here
+	setcap cap_net_raw+ep /usr/bin/prometheus_blackbox_exporter
+}
+
+
