@@ -23,6 +23,7 @@ md5sums=('8abb545854998f2253dc9043e7a25f68')
 
 build() {
   cd "${srcdir}/$pkgname-$pkgver"
+  LDFLAGS=""
   make -e VERSION=${pkgver}
 }
 
