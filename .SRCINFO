@@ -1,13 +1,12 @@
 pkgbase = ruby-pry
 	pkgdesc = An IRB alternative and runtime developer console.
 	pkgver = 0.11.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pryrepl.org
 	arch = any
 	license = MIT
 	depends = ruby
 	depends = ruby-coderay
-	depends = ruby-slop-3
 	depends = ruby-method_source
 	noextract = pry-0.11.3.gem
 	options = !emptydirs
