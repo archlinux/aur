@@ -1,7 +1,7 @@
 pkgbase = wildfly-systemd
-	pkgdesc = Wildfly Application Server
+	pkgdesc = Wildfly Application Server with systemd integration
 	pkgver = 14.0.1.Final
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.wildfly.org/
 	install = wildfly.install
 	arch = any
