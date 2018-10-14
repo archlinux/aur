@@ -12,14 +12,14 @@ arch=('i686' 'x86_64')
 pkgdesc='Code generator for serializing/deserializing C++ objects to/from JSON using Clang and RapidJSON'
 license=('GPL')
 depends=('c++utilities' 'rapidjson' "llvm-libs>=${_llvmver}.0.0" "llvm-libs<$((_llvmver + 1)).0.0" 'clang')
-optdepends=("boost: use Boost.Hana instead of code generator")
-optdepends=("$pkgname-doc: API documentation")
-makedepends=('cmake' 'clang-tools-extra' 'boost' 'llvm')
-checkdepends=('cppunit')
+optdepends=("boost: use Boost.Hana instead of code generator"
+            "$pkgname-doc: API documentation")
+makedepends=('cmake' 'clang-tools-extra' 'llvm')
+checkdepends=('cppunit' 'boost')
 url="https://github.com/Martchus/${_reponame}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz"
         'https://github.com/Martchus/reflective-rapidjson/commit/5835cd85a5bbc72f4ac47a81b09e986cc8dee715.patch')
-sha256sums=('7de997399332b723810833756c39b97e2ffa4160d5453ce1e2af6b4f5f4f90a7'
+sha256sums=('3ba7c7f2a73c9ab2afe38cd884b8f1290e770f17c9fd497de5468c7d4a690bdb'
             '958dc1902d9a6d245ce198ccdf02ffd3049404e0a5446892ce55db0108baa888')
 
 prepare() {
