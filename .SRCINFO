@@ -1,6 +1,6 @@
 pkgbase = semantik
 	pkgdesc = mindmapping-like tool for document generation (reports, thesis, etc)
-	pkgver = 1.0.5
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://waf.io/semantik.html
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = semantik
 	depends = python
 	depends = shared-mime-info
 	depends = desktop-file-utils
-	source = https://waf.io/semantik-1.0.5.tar.bz2
-	sha256sums = 6d26f04841a5b105c364074edca2765d5ceab0ad2f7f17614c62ecf65a4d79fe
+	source = https://waf.io/semantik-1.0.6.tar.bz2
+	sha256sums = 2a36def6c63a5e03f66f5d416964f544e7d1e26a794798be492d2b4869657a4a
 
 pkgname = semantik
 
