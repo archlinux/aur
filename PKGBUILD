@@ -3,18 +3,24 @@
 pkgbase=python-hep_ml
 _pkgbase=hep_ml
 pkgname=('python2-hep_ml' 'python-hep_ml')
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="Specific machine learning tools for purposes of high energy physics"
 arch=('any')
 url="https://arogozhnikov.github.io/hep_ml/"
 license=('Apache')
-makedepends=('python2-scipy' 'python-scipy' 'python2-setuptools' 'python-setuptools' 'cython2' 'cython'
-             'python2-pandas' 'python-pandas' 'python2-scikit-learn' 'python-scikit-learn' 'python2-theano' 'python-theano')
+makedepends=('cython2' 'cython'
+             'python2-numpy' 'python-numpy'
+             'python2-scikit-learn' 'python-scikit-learn'
+             'python2-scipy' 'python-scipy'
+             'python2-setuptools' 'python-setuptools'
+             'python2-six' 'python-six'
+             'python2-pandas' 'python-pandas'
+             'python2-theano' 'python-theano')
 options=(!emptydirs)
 
 source=("https://github.com/arogozhnikov/${_pkgbase}/archive/v${pkgver}.zip")
-sha256sums=('e5145fd84b6876941807bb80fde4ff2e38fd16fb76152b83da70338022074821')
+sha256sums=('722cf5249d1c9b027bc8de54d7ffd6b3eb4730985b273cb8dd99753198ea1711')
 
 prepare() {
   cd "${srcdir}"
@@ -40,7 +46,7 @@ build() {
 }
 
 package_python2-hep_ml() {
-  depends=('python2-scipy' 'python2-six' 'python2-pandas' 'python2-theano' 'python2-scikit-learn' 'python2-numpy')
+  depends=('python2-numpy' 'python2-scikit-learn' 'python2-scipy' 'python2-six' 'python2-pandas' 'python2-theano')
   cd "${srcdir}/hep_ml-py2-${pkgver}"
 
   python2 setup.py install --root="${pkgdir}/" --optimize=1
@@ -52,7 +58,7 @@ package_python2-hep_ml() {
 }
 
 package_python-hep_ml() {
-  depends=('python-scipy' 'python-six' 'python-pandas' 'python-theano' 'python-scikit-learn' 'python-numpy')
+  depends=('python-numpy' 'python-scikit-learn' 'python-scipy' 'python-six' 'python-pandas' 'python-theano')
   cd "${srcdir}/hep_ml-${pkgver}"
 
   python setup.py install --root="${pkgdir}/" --optimize=1
