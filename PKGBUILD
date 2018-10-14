@@ -4,7 +4,7 @@
 
 pkgname=wee-slack-git
 pkgver=2.1.1.r22.fab34dc
-pkgrel=1
+pkgrel=2
 pkgdesc="Store work-in-progress commits on the remote without cluttering the commit history"
 arch=('any')
 url="https://github.com/wee-slack/${pkgname%-git}"
@@ -32,4 +32,10 @@ package() {
 
   msg2 "Installing license"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
+
+  msg2 "Since WeeChat does not yet load plugins in the system path, you need to"
+  msg2 "load the script and emoji dictionary from your user path. Use symlnks"
+  msg2 "so that you can benefit from package upgrades via pacman."
+  msg2 "    $ ln -s /usr/lib/weechat/python/wee_slack.py $HOME/.weechat/python/wee_slack.py"
+  msg2 "    $ ln -s /usr/lib/weechat/weemoji.json $HOME/.weechat/weemoji.json"
 }
