@@ -8,6 +8,7 @@ pkgbase = algobox
 	license = GPLv2
 	depends = qt5-base
 	depends = qt5-webkit
+	depends = qt5-webengine
 	source = http://www.xm1math.net/algobox/algobox-1.0.2.tar.bz2
 	md5sums = c89783eaf926e67b570d37f87ab94c05
 
