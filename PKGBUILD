@@ -7,6 +7,8 @@ pkgver=0.0.9
 pkgrel=1
 pkgdesc="Manipulate jagged, chunky, and/or bitmasked arrays as easily as Numpy"
 arch=('any')
+makedepends=('python2-setuptools' 'python2-numpy'
+             'python-setuptools' 'python-numpy')
 url="https://github.com/scikit-hep/awkward-array"
 license=('BSD')
 options=(!emptydirs)
@@ -27,20 +29,14 @@ prepare() {
           -i '{}' \; -print
 }
 
-build_python2-awkward-array() {
-  makedepends=('python2-setuptools' 'python2-numpy')
+build() {
+  msg2 "Building Python3"
+  cd "${srcdir}/${_pkgbase}-${pkgver}"
+  python setup.py build
 
   msg2 "Building Python2"
   cd "${srcdir}/${_pkgbase}-py2-${pkgver}"
   python2 setup.py build
-}
-
-build_python-awkward-array() {
-  makedepends=('python-setuptools' 'python-numpy')
-
-  msg2 "Building Python3"
-  cd "${srcdir}/${_pkgbase}-${pkgver}"
-  python setup.py build
 }
 
 package_python2-awkward-array() {
