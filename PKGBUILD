@@ -1,18 +1,17 @@
 # Maintainer: Konstantin Gizdov < arch at kge dot pw >
 pkgname=vale
-pkgver=0.11.2
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A customizable, syntax-aware linter for prose."
 provides=('vale')
 arch=('i686' 'x86_64')
 url="https://github.com/errata-ai/vale"
 license=('MIT')
-depends=('')
 makedepends=('go' 'ruby' 'python-docutils')
 options=('!emptydirs')
 source=("https://github.com/errata-ai/${pkgname}/archive/v${pkgver}.zip"
         'enable_local_build.patch')
-sha256sums=('53be34227e45e5a1ff34e1becb605ae52efb0b01bf5e383021dc8426fa5183fc'
+sha256sums=('6a6d67dc5926097c49c264620900833d7e476ebc37cb2671c653a62b5823bebe'
             '69f1efbd1f638cd601a0f5583b85a052aa5bbb6433a9d4a24dba11b29f703422')
 
 prepare() {
