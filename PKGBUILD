@@ -1,7 +1,7 @@
 # Maintainer: Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-fuse-git
-pkgver=186.2edf7ac
+pkgver=198.ab0c67e
 pkgrel=1
 pkgdesc="A port of the Fuse Unix Spectrum Emulator to libretro (WIP)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
