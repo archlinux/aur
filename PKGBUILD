@@ -3,16 +3,18 @@
 pkgbase=python-uproot
 _pkgbase=uproot
 pkgname=('python2-uproot' 'python-uproot')
-pkgver=3.0.2
+pkgver=3.2.3
 pkgrel=1
 pkgdesc="Minimalist CERN ROOT I/O in pure Python and Numpy"
 arch=('any')
+makedepends=('python2-setuptools' 'python2-numpy'
+             'python-setuptools' 'python-numpy')
 url="https://github.com/scikit-hep/uproot"
 license=('BSD')
 options=(!emptydirs)
 
 source=("https://github.com/scikit-hep/${_pkgbase}/archive/${pkgver}.zip")
-sha256sums=('673213b05f116bfd67506c3657a789bdd835086618dce5f265eff9804c064daa')
+sha256sums=('451909c19226be2d73e129e6f074c4fee249fdc43603e6ee2f6b015a9ded0b45')
 
 prepare() {
   cd "${srcdir}"
@@ -27,20 +29,14 @@ prepare() {
           -i '{}' \; -print
 }
 
-build_python2-uproot() {
-  makedepends=('python2-setuptools' 'python2-numpy')
+build() {
+  msg2 "Building Python3"
+  cd "${srcdir}/${_pkgbase}-${pkgver}"
+  python setup.py build
 
   msg2 "Building Python2"
   cd "${srcdir}/${_pkgbase}-py2-${pkgver}"
   python2 setup.py build
-}
-
-build_python-uproot() {
-  makedepends=('python-setuptools' 'python-numpy')
-
-  msg2 "Building Python3"
-  cd "${srcdir}/${_pkgbase}-${pkgver}"
-  python setup.py build
 }
 
 package_python2-uproot() {
