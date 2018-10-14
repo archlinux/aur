@@ -1,6 +1,6 @@
 pkgbase = vale-bin
 	pkgdesc = A customizable, syntax-aware linter for prose.
-	pkgver = 0.11.2
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/errata-ai/vale
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = vale-bin
 	provides = vale
 	conflicts = vale
 	options = !emptydirs
-	source = https://github.com/errata-ai/vale/releases/download/v0.11.2/vale_0.11.2_Linux_64-bit.tar.gz
-	md5sums = 76184148555b8f1f2422242fb995e962
-	sha256sums = a69f94c8a61d2837b3460eac608077efcb991f0304862134dd8276c6016cecc4
+	source = https://github.com/errata-ai/vale/releases/download/v1.0.2/vale_1.0.2_Linux_64-bit.tar.gz
+	md5sums = b79aaf021a4785d8f229a473b88a3d43
+	sha256sums = a701d4e8fee80fcccdd1e7c9351178ecfe56e37449cf10431a91c87bdaa60aca
 
 pkgname = vale-bin
 
