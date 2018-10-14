@@ -4,7 +4,7 @@
 
 pkgname=koel
 pkgver=3.7.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A personal music streaming server that works."
 arch=('any')
 url="http://koel.phanan.net/"
@@ -22,7 +22,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/phanan/${pkgname}/archi
 sha512sums=('b3ae40db2839f9b411716428203f595ca685ea2d87599c0704fb271446126c998a96cecb21d864d0269f41f23e9b16c0202f95647eee82ecc7d8c16fe49874ed')
 
 prepare() {
-	sed -i 's|FFMPEG_PATH=/usr/local/bin/ffmpeg|FFMPEG_PATH=/usr/bin/ffmepg/' "${srcdir}/${pkgname}-${pkgver}/.env"
+	sed -i 's|FFMPEG_PATH=/usr/local/bin/ffmpeg|FFMPEG_PATH=/usr/bin/ffmepg|g' "${srcdir}/${pkgname}-${pkgver}/.env"
 }
 
 build() {
