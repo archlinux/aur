@@ -9,7 +9,7 @@ url="https://standardnotes.org/"
 license=('GPL3')
 conflicts=('sn-bin')
 depends=('electron')
-makedepends=('yarn')
+makedepends=('yarn', 'node-gyp')
 source=("git://github.com/standardnotes/desktop.git"
         "git://github.com/sn-extensions/extensions-manager.git"
         "git://github.com/sn-extensions/batch-manager.git"
