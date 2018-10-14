@@ -3,7 +3,7 @@
 
 pkgname=servo-git
 _pkgname=servo
-pkgver=34214.93fbc1575f
+pkgver=34733.d6cb5f8be8
 pkgrel=1
 pkgdesc="Parallel Browser Project: web browser written in Rust"
 arch=('i686' 'x86_64')
@@ -14,26 +14,30 @@ install="$pkgname.install"
 makedepends=('git' 'curl' 'python2' 'python2-virtualenv' 'gperf' 'depot-tools-git' 'cmake' 'rustup' 'clang' 'autoconf2.13')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=('git+https://github.com/servo/servo.git')
+_branch=hyperup
+source=(
+"$_branch::git+https://github.com/Eijebong/servo#branch=$_branch"
+#'git+https://github.com/servo/servo.git'
+)
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname"
+  cd "$_branch"
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {
-  cd "$_pkgname"
+  cd "$_branch"
   
   # fixes build error
   # possibly _FORTIFY_SOURCE? https://bugs.archlinux.org/task/34759
-  unset CPPFLAGS
+  #unset CPPFLAGS
 
   ./mach build --dev
 }
 
 package() {
-  servopath=servo/target/debug
+  servopath=$_branch/target/debug
   install -Dm755 "$servopath/servo" "$pkgdir/opt/servo/servo"
 
   mkdir -p "$pkgdir/usr/lib"
@@ -48,7 +52,7 @@ package() {
   done
 
   mkdir -p "$pkgdir/opt/servo/resources"
-  cp -r servo/resources/* "$pkgdir/opt/servo/resources"
+  cp -r $_branch/resources/* "$pkgdir/opt/servo/resources"
 
   mkdir -p "$pkgdir/etc/profile.d" 
   echo 'export PATH=$PATH:/opt/servo' > "$pkgdir/etc/profile.d/${_pkgname}.sh"
