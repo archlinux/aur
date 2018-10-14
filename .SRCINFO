@@ -1,7 +1,7 @@
 pkgbase = wee-slack-git
 	pkgdesc = Store work-in-progress commits on the remote without cluttering the commit history
 	pkgver = 2.1.1.r22.gfab34dc
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/wee-slack/wee-slack
 	arch = any
 	license = MIT
