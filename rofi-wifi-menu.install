@@ -1,0 +1,7 @@
+post_install() {
+	echo 'To configure rofi-wifi menu copy:'
+	echo '   /usr/share/rofi/wifi.example'
+	echo 'to'
+	echo '   ~/.config/rofi/wifi'
+	echo 'and modify it.'
+}

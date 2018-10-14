@@ -1,0 +1,20 @@
+pkgbase = rofi-wifi-menu-git
+	pkgdesc = bash script providing WiFi menu for rofi
+	pkgver = 25.30e42e6
+	pkgrel = 1
+	url = https://github.com/zbaylin/rofi-wifi-menu
+	install = rofi-wifi-menu.install
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = rofi
+	depends = networkmanager
+	depends = bc
+	depends = wireless_tools
+	provides = rofi-wifi-menu
+	conflicts = rofi-wifi-menu
+	source = git+https://github.com/zbaylin/rofi-wifi-menu
+	sha256sums = SKIP
+
+pkgname = rofi-wifi-menu-git
+
