@@ -1,3 +1,11 @@
+2.10.0-1
+  - New upstream version 2.10.0
+  - Some path constants changed in the config (should be backwards-compatible)
+  - "namespace" and "using" are now reserved keywords in the config
+  - Some configuration errors are now fatal
+  - For details, see
+    https://icinga.com/docs/icinga2/latest/doc/16-upgrading-icinga-2/#upgrading-to-v210
+
 2.9.1-1
   - New upstream version 2.9.1
 
