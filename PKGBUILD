@@ -6,6 +6,7 @@ pkgver=0.3.4
 pkgrel=1
 pkgdesc='Qt-based Discord and Slack client'
 arch=('x86_64')
+depends=('fuse2')
 url='https://cancel.fm/ripcord/'
 license=('custom')
 validpgpkeys=('ABBAD1CB484F53024CF5868B69332F9203F21F5C')
