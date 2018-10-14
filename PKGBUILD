@@ -9,13 +9,13 @@ url="http://arminstraub.com/computer/krop"
 license=('GPL3')
 depends=('python' 'python-poppler-qt5' 'python-pypdf2' 'python-pyqt5')
 install=$pkgname.install
-source=(http://arminstraub.com/downloads/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('ce1f54ac2be97fd48ac3c036b00e0c3f')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/arminstraub/krop/archive/v${pkgver}.tar.gz")
+sha256sums=('25c67095d0416ee1359d16dd106bd828deb01825a9cbe342e89c7e007b7f43a2')
 
 package() {
   cd $pkgname-$pkgver
   python setup.py install --root $pkgdir
 
   # Desktop icon
-  install -Dm644 $pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop  
+  install -Dm644 $pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
 }
