@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.2
+Type=Application
+Name=Divulga
+Exec=java -jar /opt/divulga/divulga.jar '${provedorConfig}'
+Icon=/opt/divulga/icone_divulga.png
+Categories=Network;
+Comment=Divulgação de Resultado das Eleições.
+StartupNotify=true
+Terminal=false 

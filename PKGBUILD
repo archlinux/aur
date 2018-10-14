@@ -1,0 +1,24 @@
+# Maintainer: tioguda <guda.flavio@gmail.com>
+
+pkgname=divulga
+pkgver=18.9.7
+pkgrel=1
+pkgdesc="Divulgação de Resultado das Eleições"
+arch=('any')
+url="http://www.tse.jus.br/eleicoes/eleicoes-2018/votacao-e-resultados/resultados-eleicoes-2018"
+license=(custom)
+depends=('jdk8-openjdk')
+source=("http://divulga.tse.jus.br/downloads/divulga-LINUX.zip"
+         'divulga.desktop')
+md5sums=('2ab5c3c390d5e3fead91b2a7f92e21b4'
+         '616e69af315a54381ec79a6158d63734')
+
+package() {
+  cd ${srcdir}
+  mkdir -p "${pkgdir}/opt/${pkgname}"
+  install -Dm 644 "divulga.desktop" "${pkgdir}/usr/share/applications/divulga.desktop"
+  install -Dm 644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  mv * "${pkgdir}/opt/${pkgname}"
+  rm "${pkgdir}/opt/${pkgname}/divulga-LINUX.zip"
+  rm "${pkgdir}/opt/${pkgname}/divulga.desktop"
+}
