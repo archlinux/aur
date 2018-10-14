@@ -37,9 +37,9 @@ package() {
   cd ${pkgname%-git}
 
   make DESTDIR=$pkgdir install
-  ln -s flex ${pkgdir}/usr/bin/lex
+  ln -s flex "$pkgdir"/usr/bin/lex
 
   install -Dm644 COPYING \
-  	$pkgdir/usr/share/licenses/$pkgname/license.txt
+  	"$pkgdir"/usr/share/licenses/$pkgname/license.txt
 }
 
