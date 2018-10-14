@@ -1,6 +1,6 @@
 pkgbase = nginx-unit
 	pkgdesc = Dynamic web application server, designed to run applications in multiple languages.
-	pkgver = 1.3
+	pkgver = 1.4
 	pkgrel = 1
 	url = https://unit.nginx.org/
 	arch = i686
@@ -10,9 +10,9 @@ pkgbase = nginx-unit
 	makedepends = python
 	makedepends = python2
 	makedepends = go
-	source = https://unit.nginx.org/download/unit-1.3.tar.gz
+	source = https://unit.nginx.org/download/unit-1.4.tar.gz
 	source = unit.service
-	sha256sums = 024465c1a8192e8db7bbd8bed7dbfb8351e620a3b8108a268a968fcab676ac49
+	sha256sums = 86313596e758a33b2afe118458b6c307b8ff7732a3a32fbd04c9050631ba6f3f
 	sha256sums = 8c9b2f732d6e50aa747aa7703303e5fff69f5abc6f5fc1741b774b422e029606
 
 pkgname = nginx-unitd
