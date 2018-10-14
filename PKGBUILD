@@ -21,8 +21,8 @@ _microarchitecture=0
 
 pkgbase=linux-xanmod
 _srcname=linux
-pkgver=4.18.12
-xanmod=7
+pkgver=4.18.14
+xanmod=8
 pkgrel=1
 arch=('x86_64')
 url="http://www.xanmod.org/"
@@ -42,7 +42,7 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
 )
 source_x86_64=("config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=${arch_config_trunk}")
 
-sha256sums=('a678a44c57a3c653717c445f0dc4a95d947462895fc750132213065b90ce2e04'
+sha256sums=('9d3c015a8ca8dd62d7c2bbac1d2af4ea49b19afd1ca65f952a1128954954f9dc'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
