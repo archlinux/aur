@@ -1,0 +1,13 @@
+hints() {
+    echo "--------------------------------------------------------------------------------"
+    echo "Run 'systemctl --user enable cu-notify.service' to autostart cu-notify."
+    echo "--------------------------------------------------------------------------------"
+}
+
+post_install() {
+    hints
+}
+
+post_upgrade() {
+    hints
+}

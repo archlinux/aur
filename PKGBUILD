@@ -1,7 +1,7 @@
 # Maintainer: Weitian Leung <weitianleung[at]gmail[dot]com>
 
 pkgname=cu-notify-git
-pkgver=r9
+pkgver=r10
 pkgrel=1
 pkgdesc="Auto check ArchLinux package updates, popup notification if new updates available"
 arch=(any)
@@ -11,6 +11,7 @@ depends=('python-pyqt5' 'pacman-contrib')
 makedepends=('git')
 source=("$pkgname::git+https://github.com/timxx/cu-notify.git")
 md5sums=('SKIP')
+install=${pkgname}.install
 
 pkgver() {
     cd "$srcdir/$pkgname"
@@ -19,9 +20,6 @@ pkgver() {
 
 package() {
     cd $srcdir/$pkgname
-    install -d "$pkgdir/usr/bin"
-    cp cu-notify "$pkgdir/usr/bin"
-
-    install -d "$pkgdir/etc/xdg/autostart"
-    cp cu-notify-autostart.desktop "$pkgdir/etc/xdg/autostart"
+    install -Dm755 "cu-notify" "$pkgdir/usr/bin/cu-notify"
+    install -Dm644 "cu-notify.service" "$pkgdir/usr/lib/systemd/user/cu-notify.service"
 }
