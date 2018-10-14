@@ -10,13 +10,17 @@ depends=('fuse' 'readline')
 provides=('')
 conflicts=('')
 url="http://user-mode-linux.sourceforge.net/"
-source=( "http://user-mode-linux.sourceforge.net/${pkgname}_${pkgver}.tar.bz2")
+source=(
+    "http://user-mode-linux.sourceforge.net/${pkgname}_${pkgver}.tar.bz2"
+    "uml_utilities.patch")
 license=('GPL2')
-md5sums=('b0468ac8b79cef53f36f5f9517907462')
+md5sums=(
+    'b0468ac8b79cef53f36f5f9517907462'
+    '8fbcca01953da90c48f5ec06f564480f')
 
 prepare() {
   cd "$srcdir/tools-$pkgver"
-  sed 's|lib64|lib|g' -i Makefile || return 3
+  patch -Np1 -i "${srcdir}/uml_utilities.patch"
 }
 
 build() {
