@@ -1,7 +1,7 @@
 pkgbase = opencv-cuda
 	pkgdesc = Open Source Computer Vision Library with CUDA support
 	pkgver = 3.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://opencv.org/
 	arch = x86_64
 	license = BSD
@@ -13,6 +13,7 @@ pkgbase = opencv-cuda
 	makedepends = hdf5
 	makedepends = lapacke
 	makedepends = gtk3
+	makedepends = nvidia-sdk
 	depends = intel-tbb
 	depends = openexr
 	depends = gst-plugins-base

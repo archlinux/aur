@@ -4,7 +4,7 @@
 
 pkgname=opencv-cuda
 pkgver=3.4.3
-pkgrel=1
+pkgrel=2
 provides=(opencv)
 conflicts=(opencv)
 pkgdesc="Open Source Computer Vision Library with CUDA support"
@@ -13,7 +13,7 @@ license=(BSD)
 url="http://opencv.org/"
 options=(staticlibs)
 depends=(intel-tbb openexr gst-plugins-base libdc1394 cblas lapack libgphoto2 jasper cuda)
-makedepends=(cmake python-numpy python2-numpy mesa eigen hdf5 lapacke gtk3)
+makedepends=(cmake python-numpy python2-numpy mesa eigen hdf5 lapacke gtk3 nvidia-sdk)
 optdepends=('opencv-samples: samples'
             'gtk3: for the HighGUI module'
             'hdf5: support for HDF5 format'
@@ -26,6 +26,9 @@ sha256sums=('37c7d8c3b9807902ad11b9181bbde61dcb3898a78a563130494752f46fe8cc5f'
             '6dfb51326f3dfeb659128df952edecd45683626a965aa4a8e1e9c970c40fb636')
 
 prepare() {
+  msg2 "Patching sources for CUDA v10"
+  sed -i 's|dynlink_nvcuvid.h|nvidia-sdk/nvcuvid.h|' opencv-$pkgver/modules/cudacodec/src/*.hpp
+
   mkdir -p build
 }
 
