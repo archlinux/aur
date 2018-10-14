@@ -1,5 +1,5 @@
 # Maintainer: Aanok (aanok.aur@gmail.com)
-# Contributor: Parker Ellertson (rasputin-machine) <parkerllertson airmail cc>
+# Contributor: Parker Ellertson (rasputin-machine) <parker@rasputinmachine.com>
 # Contributor: therealfarfetchd
 pkgname='ripcord'
 pkgver=0.3.4
