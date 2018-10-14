@@ -13,7 +13,7 @@ makedepends=(go dep git go)
 source=("git"+"https://github.com/RokyErickson/aggregator.git")
 sha256sums=('SKIP')
 pkgver() {
-        cd "${srcdir}/${_realname}"
+        cd "${srcdir}"/$"{_realname}"
         git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
