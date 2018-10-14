@@ -7,8 +7,9 @@
 
 pkgname=aksusbd
 pkgver=7.81
-_tarballname=Sentinel_LDK_RedHat_and_SuSE_RPM_Run-time_Installer
 pkgrel=2
+_tarballname=Sentinel_LDK_RedHat_and_SuSE_RPM_Run-time_Installer
+_rpm_pkgrel=1
 pkgdesc="SafeNet Sentinel LDK AKSUSB daemon supporting Sentinel HASP, HASP HL, HASP4 and Hardlock keys."
 arch=('i686' 'x86_64')
 url="https://safenet.gemalto.com/"
@@ -29,7 +30,7 @@ prepare(){
   cd $srcdir
 
   # Extract RPM into $srcdir:
-  bsdtar -xvf ${_tarballname}/${pkgname}-${pkgver}-${pkgrel}.${CARCH}.rpm
+  bsdtar -xvf ${_tarballname}/${pkgname}-${pkgver}-${_rpm_pkgrel}.${CARCH}.rpm
 
   # Change /usr/sbin/ to /usr/bin/
   patch -p1 < service-usr-bin-i386.patch
