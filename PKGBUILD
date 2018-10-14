@@ -8,7 +8,6 @@ pkgdesc="Formatted C++11/14 stdlib man pages (cppreference)."
 arch=(any)
 url="https://github.com/jeaye/stdman"
 license=('MIT')
-makedepends=('git')
 source=("$url/archive/$pkgver.tar.gz")
 sha256sums=('d29e6b34cb5ba9905360cee6adcdf8c49e7f11272521bf2e10b42917486840e8')
 
