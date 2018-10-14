@@ -7,9 +7,9 @@
 _pkg=wildfly
 pkgname="${_pkg}"-systemd
 pkgver=14.0.1.Final
-pkgrel=1
+pkgrel=2
 
-pkgdesc='Wildfly Application Server'
+pkgdesc='Wildfly Application Server with systemd integration'
 arch=('any')
 url='http://www.wildfly.org/'
 license=('LGPL')
