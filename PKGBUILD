@@ -1,8 +1,8 @@
 ## Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
 
 pkgname=hqplayer-embedded
-_debpkgver=4.5.1-19_amd64
-pkgver=4.5.1
+_debpkgver=4.6.0-20
+pkgver=4.6.0
 pkgrel=1
 pkgdesc="Signalyst HQPlayer Embedded
  HQPlayer - the high-end upsampling multichannel software HD-audio player"
@@ -10,7 +10,7 @@ arch=('x86_64')
 url="http://www.signalyst.com/custom.html"
 license=('custom')
 depends=('alsa-lib' 'glibc' 'flac' 'gcc-libs' 'libgmpris' 'glib2' 'rygel')
-source=("https://www.signalyst.eu/bins/hqplayerd/bionic/hqplayerd_$_debpkgver.deb" 'hqplayerd.service')
+source=("https://www.signalyst.eu/bins/hqplayerd/bionic/hqplayerd_"$_debpkgver"_amd64.deb" 'hqplayerd.service')
 sha256sums=('SKIP'
 '5d4194a704979b3ff92482e155769460906745a66e759142eba33a2226f9cb3a')
 
@@ -70,4 +70,16 @@ package() {
     
       install -Dm644 "$srcdir/var/hqplayer/web/stop.svg" \
     "$pkgdir/var/hqplayer/web/stop.svg"
+    
+      install -Dm644 "$srcdir/var/hqplayer/web/config.html" \
+    "$pkgdir/var/hqplayer/web/config.html"
+    
+      install -Dm644 "$srcdir/var/hqplayer/web/convolution.html" \
+    "$pkgdir/var/hqplayer/web/convolution.html"
+    
+      install -Dm644 "$srcdir/var/hqplayer/web/matrix.html" \
+    "$pkgdir/var/hqplayer/web/matrix.html"
+    
+      install -Dm644 "$srcdir/var/hqplayer/web/speakers.html" \
+    "$pkgdir/var/hqplayer/web/speakers.html"
 }
