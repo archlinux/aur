@@ -1,6 +1,6 @@
 pkgbase = aggregator-git
 	pkgdesc = My fork of PoCC's BURST Miner Proxy
-	pkgver = v1.0
+	pkgver = v.1.0
 	pkgrel = 1
 	url = https://github.com/RokyErickson/aggregator
 	arch = x86_64

@@ -3,7 +3,7 @@
 pkgname=aggregator-git
 _realname=aggregator
 _realname2=vendor
-pkgver=v1.0
+pkgver=v.1.0
 pkgrel=1
 pkgdesc="My fork of PoCC's BURST Miner Proxy"
 arch=('x86_64')
@@ -18,7 +18,8 @@ pkgver() {
 }
 
 build() {
-   	cd "${srcdir}"/$"{pkgname}"
+ :q
+  	cd "${srcdir}"/$"{pkgname}"
 	export GOPATH="${srcdir}"/$"{_realname}"
         dep ensure
 	go build
