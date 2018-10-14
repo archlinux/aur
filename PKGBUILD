@@ -19,7 +19,7 @@ pkgver() {
 
 build() {
    	cd "${srcdir}"/$"{_realname}"
-	export GOPATH="${srcdir}/${_realname}"
+	export GOPATH="${srcdir}"/$"{_realname}"
         dep ensure
 	go build
 }
