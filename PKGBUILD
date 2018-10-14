@@ -76,7 +76,6 @@ build() {
   cd "${srcdir}/llvm-${pkgver}.src/build"
 
   make all  # if we want ocaml bindings and docs, we need ocaml-ctypes
-  cd ..
 
   # Disable automatic installation of components that go into subpackages
   sed -i '/clang\/cmake_install.cmake/d' tools/cmake_install.cmake
