@@ -2,7 +2,7 @@
 # Contributor: Daichi Shinozaki <dsdseg@gmail.com>
 pkgname=folly
 pkgver=2018.10.08.00
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source C++ library developed and used at Facebook"
 arch=(x86_64)
 url="https://github.com/facebook/folly"
@@ -22,7 +22,7 @@ prepare() {
   patch folly/experimental/JemallocHugePageAllocator.cpp < $srcdir/jemalloc.patch
   mkdir -p _build
   cd _build
-  cmake -DFOLLY_CXX_FLAGS='-Wno-error=class-memaccess' ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
   ln -sf $srcdir/googletest-release-1.7.0 gtest-1.7.0
 }
 
