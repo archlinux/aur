@@ -1,11 +1,10 @@
 # Maintainer: ValHue <vhuelamo at gmail dot com>
-# https://github.com/ValHue/AUR-PKGBUILDs
 #
 # Contributor: jpatufet <jpatufet86@gmail.com>
 # Contributor: Jorge Barroso <jorge.barroso.11 at gmail dot com>
 
 pkgname=hunspell-ca
-pkgver=3.0.2
+pkgver=3.0.3
 pkgrel=1
 pkgdesc="Catalan hunspell dictionaries. Includes Valencian ca_ES-valencia"
 arch=(any)
@@ -14,7 +13,7 @@ license=('GPL2' 'LGPL2')
 makedepends=('hunspell')
 optdepends=('hunspell:	the spell checking libraries and apps')
 source=("https://github.com/Softcatala/catalan-dict-tools/releases/download/v${pkgver}/ca.${pkgver}-all.zip")
-sha256sums=('b9b462a1bab00f68c28bef773b9957587d01bc0c4dcde756a6fd93799946d328')
+sha256sums=('9fa50313a66d13876a0a1f71de7e59d7b0a5f77b396a0cf1d4aca951a66b957e')
 
 package(){
 
@@ -25,7 +24,7 @@ package(){
     cp -p catalan.dic "${pkgdir}"/usr/share/hunspell/ca_ES.dic
     cp -p catalan-valencia.aff "${pkgdir}"/usr/share/hunspell/ca_ES-valencia.aff
     cp -p catalan-valencia.dic "${pkgdir}"/usr/share/hunspell/ca_ES-valencia.dic
-    
+
     #alias hunspell - comment/delete if you don't want all these alias
     ca_ES_alias="ca_AD ca_FR ca_IT"
     pushd "${pkgdir}"/usr/share/hunspell/
@@ -53,7 +52,7 @@ package(){
         for lang in ${Copyright_ca_alias}; do
             install -D -m644 "${srcdir}"/LICENSE Copyright_${lang}/LLICENCIA
         done
-    popd 
+    popd
 }
 
-# vim:set ts=4 sw=2 ft=sh et:
+# vim:set ts=4 sw=4 ft=sh et:
