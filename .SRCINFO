@@ -1,17 +1,14 @@
 pkgbase = gnuarmeclipse-qemu-bin
-	pkgdesc = Fork, Cortex-M cores support, better integration with the GNU ARM QEMU Debugging plug-in
-	pkgver = 2.7.0_201610290751
+	pkgdesc = The GNU MCU Eclipse QEMU is a fork of the public open-source QEMU project, customised for more support of Cortex-M cores, and a better integration with the GNU ARM QEMU Debugging plug-in.
+	pkgver = 2.8.0_3_20180523
 	pkgrel = 1
 	url = http://gnuarmeclipse.github.io/qemu/
-	arch = i686
 	arch = x86_64
 	license = GPL
-	provides = gnuarmeclipse-qemu
+	provides = qemu-system-gnuarmeclipse
 	options = !strip
-	source_i686 = https://github.com/gnuarmeclipse/qemu/releases/download/gae-2.7.0-20161029/gnuarmeclipse-qemu-debian32-2.7.0-201610290751.tgz
-	md5sums_i686 = b09312cbf97a6907cc618b5ae367232d
-	source_x86_64 = https://github.com/gnuarmeclipse/qemu/releases/download/gae-2.7.0-20161029/gnuarmeclipse-qemu-debian64-2.7.0-201610290751.tgz
-	md5sums_x86_64 = 33f834fc81cebfcee74ff7f1c7b6a3b7
+	source = https://github.com/gnu-mcu-eclipse/qemu/releases/download/v2.8.0-3-20180523/gnu-mcu-eclipse-qemu-2.8.0-3-20180523-0703-centos64.tgz
+	sha256sums = d4260a47b3322bce6d8d74feb2409b04c45f0b18a2958bb04ed2c802abf60793
 
 pkgname = gnuarmeclipse-qemu-bin
 
