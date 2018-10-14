@@ -1,11 +1,11 @@
-# Maintainer: 13thfloorelevators <the13thfloorelevators@protonmail.com>
+# Maintainer: 13thfloorelevators <the13thfloorelevators@protonmail.com> <BURST-737A-XKSG-M424-67UVT>
                                                                                                                       
 pkgname=cloudburstlib-git
 _realname=BurstLib
 _realname2=TestClient
-pkgver=r11.r2.g01fd87f                                 
+pkgver=r16.r0.g83adabc                                
 pkgrel=1                                                  
-pkgdesc="BURST's Cloudburst Dapp and dynamic lib"
+pkgdesc="A cross platform dynamic library for BURST, also gives direct access to BURST Extensions"
 arch=('x86_64')                        
 url="htttps://github.com/CurbShifter/BurstLib"
 license=('GPL3')
