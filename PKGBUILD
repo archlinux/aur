@@ -19,8 +19,8 @@ pkgbase="zfs-linux-lts-git"
 pkgname=("zfs-linux-lts-git" "zfs-linux-lts-git-headers")
 _commit='0aa5916a30745c131c4e19464027ea793e66603d'
 _zfsver="2018.10.12.r4770.g0aa5916a3"
-_kernelver="4.14.75-1"
-_extramodules="4.14.75-1-lts"
+_kernelver="4.14.76-1"
+_extramodules="4.14.76-1-lts"
 
 pkgver="${_zfsver}_$(echo ${_kernelver} | sed s/-/./g)"
 pkgrel=1
