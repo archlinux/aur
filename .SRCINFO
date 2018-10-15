@@ -1,0 +1,15 @@
+pkgbase = rpglelint-git
+	pkgdesc = Create tags files from ILE RPG source files.
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/andlrc/rpglelint
+	arch = any
+	license = PerlArtistic
+	makedepends = git
+	depends = perl>=5.16
+	provides = rpglelint
+	source = rpglelint::git+git://github.com/andlrc/rpglelint#branch=master
+	md5sums = SKIP
+
+pkgname = rpglelint-git
+
