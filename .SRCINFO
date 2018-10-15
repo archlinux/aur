@@ -1,6 +1,6 @@
 pkgbase = threemawebqt-git
 	pkgdesc = Thin client for Threema Web, an E2E encrypted messaging app.
-	pkgver = r3.adbd87f
+	pkgver = r2.079de78
 	pkgrel = 1
 	url = https://github.com/ethanrakoff/threemawebqt
 	arch = i686
