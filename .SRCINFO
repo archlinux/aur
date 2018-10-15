@@ -6,10 +6,12 @@ pkgbase = blink-server
 	license = MIT
 	depends = python2
 	depends = python2-pybluez
-	depends = xdottool
+	depends = xdotool
 	depends = bluez
 	source = file://start_compat_mode.conf
-	source = _zipname.zip::https://github.com/drpain/blink-server/archive/35f63810d600d2363c0c5ee0d375996ac99fdfba.zip
+	source = blink-server-1.0.zip::https://github.com/drpain/blink-server/archive/35f63810d600d2363c0c5ee0d375996ac99fdfba.zip
+	sha256sums = SKIP
+	sha256sums = 606a81dc6cf6f67e9ffbde8008fb798a5edea6ae080a2c4993abcb98c857ece2
 
 pkgname = blink-server
 
