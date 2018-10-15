@@ -2,7 +2,7 @@
 
 pkgname=blackmagic-decklink-sdk
 pkgver=10.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Blackmagic DeckLink SDK'
 arch=('any')
 url='https://www.blackmagicdesign.com/support/family/capture-and-playback'
@@ -20,7 +20,7 @@ _expected_sha256sum='4b312e9f6925e95cba2e5ac597f48eaf09f7534cd29ea2d7a043b299d0a
 
 _useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
                         AppleWebKit/537.36 (KHTML, like Gecko) \
-                        Chrome/68.0.3440.106 \
+                        Chrome/69.0.3497.100 \
                         Safari/537.36"
 _reqjson="{ \
     \"platform\": \"Linux\", \
@@ -47,7 +47,7 @@ prepare() {
     if ! [ -f "../${_srcfile}" ] 
     then
         # download decklink sdk zip file from website
-        msg2 "Downloading ${_srcfile} from website..."
+        printf '%s\n' "  -> Downloading ${_srcfile} from website..."
         curl \
             -o "../${_srcfile}" \
             -H 'Host: sw.blackmagicdesign.com' \
@@ -73,11 +73,11 @@ prepare() {
                 "$_srcurl" \
             )" || _exit_makepkg 'download'
     else
-        msg2 "Found ${_srcfile}"
+        printf '%s\n' "  -> Found ${_srcfile}"
     fi
     
     # check integrity of the decklink sdk zip file (file validation)
-    msg2 "Validating ${_srcfile} with sha256sum..."
+    printf '%s\n' "  -> Validating ${_srcfile} with sha256sum..."
     local _real_sha256sum="$(openssl dgst -sha256 "../${_srcfile}" || _exit_makepkg 'calculate SHA256 of')"
     _real_sha256sum="${_real_sha256sum##* }"
     printf '%s' "       ${_srcfile} ... "
@@ -93,7 +93,7 @@ prepare() {
     ln -sf "../${_srcfile}" "${srcdir}/${_srcfile}" || _exit_makepkg 'create symbolic link of'
     
     # extract decklink sdk zip file
-    msg2 "Extracting ${_srcfile} with bsdtar..."
+    printf '%s\n' "  -> Extracting ${_srcfile} with bsdtar..."
     bsdtar -xf "${_srcfile}" || _exit_makepkg 'extract'
 }
 
