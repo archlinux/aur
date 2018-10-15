@@ -1,0 +1,15 @@
+pkgbase = blink-server
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/drpain/blink-server
+	arch = any
+	license = MIT
+	depends = python2
+	depends = python2-pybluez
+	depends = xdottool
+	depends = bluez
+	source = file://start_compat_mode.conf
+	source = _zipname.zip::https://github.com/drpain/blink-server/archive/35f63810d600d2363c0c5ee0d375996ac99fdfba.zip
+
+pkgname = blink-server
+
