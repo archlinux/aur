@@ -3,14 +3,14 @@
 pkgname=estd
 pkgdesc="Extended C++ library in the style of the standard library"
 url="https://github.com/fizyr/estd"
-pkgver=0.1.11
+pkgver=0.1.12
 pkgrel=1
 makedepends=(cmake)
 arch=(x86_64)
 license=(BSD)
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/fizyr/estd/archive/$pkgver.tar.gz")
-sha512sums=('dd077e05a2540a541d291eee63f78ca8f5cdbf19c7bbf2fc5da3a89739625326c07b811774393ab80d67d79be5cf99be8f9c0b6522b22d80c5a4dff852beacc0')
+sha512sums=('f9c317ec438f2e4d6902f109c17ad46660829b8b5ea1fca8df4209398a27ffe81b179db67ae478cc8bb883777a9a2df31d33590e2294b0929fcf494e899b0017')
 
 prepare() {
 	rm -rf "$srcdir/build"
