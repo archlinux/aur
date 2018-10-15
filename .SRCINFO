@@ -1,6 +1,6 @@
 pkgbase = getgauge
 	pkgdesc = Light weight cross-platform test automation tool for authoring test cases in the business language.
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://getgauge.io
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = getgauge
 	license = GPL3
 	makedepends = go
 	makedepends = godep
-	source = https://github.com/getgauge/gauge/archive/v1.0.1.tar.gz
-	sha256sums = 95b07d160c9271bb6b85a1e0d2b7947b1d3e2cfd27040055223e429f61906b2c
+	source = https://github.com/getgauge/gauge/archive/v1.0.2.tar.gz
+	sha256sums = 27531c545c087d6e9b061bb724ed4d827cb3a3884030d5adbcee090e726b22b8
 
 pkgname = getgauge
 

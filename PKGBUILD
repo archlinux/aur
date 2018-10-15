@@ -10,7 +10,7 @@ license=('GPL3')
 makedepends=('go' "godep")
 
 source=("https://github.com/getgauge/gauge/archive/v$pkgver.tar.gz")
-sha256sums=('95b07d160c9271bb6b85a1e0d2b7947b1d3e2cfd27040055223e429f61906b2c')
+sha256sums=('27531c545c087d6e9b061bb724ed4d827cb3a3884030d5adbcee090e726b22b8')
 
 _gourl="/github.com/getgauge/gauge"
 
