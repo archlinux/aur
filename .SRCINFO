@@ -1,6 +1,6 @@
 pkgbase = unity-editor-beta-windows
 	pkgdesc = Allows building your Unity projects for the Windows platform
-	pkgver = 2018.3.0b4
+	pkgver = 2018.3.0b5
 	pkgrel = 1
 	url = https://unity3d.com/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = unity-editor-beta-windows
 	makedepends = cpio
 	depends = unity-editor-beta
 	options = !strip
-	source = https://beta.unity3d.com/download/44012bad7987/MacEditorTargetInstaller/UnitySetup-Windows-Mono-Support-for-Editor-2018.3.0b4.pkg
-	sha1sums = 2bbf310f15334b8a4e7f12a869a1670f1e5481a3
+	source = https://beta.unity3d.com/download/01088ee0a3a8/MacEditorTargetInstaller/UnitySetup-Windows-Mono-Support-for-Editor-2018.3.0b5.pkg
+	sha1sums = 7d0338964b6e64f5b90cc1083f166c4b6c459870
 
 pkgname = unity-editor-beta-windows
 
