@@ -1,7 +1,7 @@
 # Maintainer: Vaporeon <vaporeon@vaporeon.io>
 
 pkgname=invader-git
-pkgver=1.0.1.r4.159d4e9
+pkgver=0.1.0.r4.159d4e9
 pkgrel=1
 pkgdesc="Open source tag compiler for Halo Custom Edition"
 makedepends=('cmake' 'git')
@@ -13,7 +13,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir"/Invader
-  printf "1.0.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "0.1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
