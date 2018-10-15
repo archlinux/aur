@@ -1,4 +1,3 @@
-# $Id$
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Themaister <maister@archlinux.us>
 # Contributor: lifning <definelightning@gmail.com>
@@ -15,7 +14,7 @@
 buildarch=4
 
 pkgname=retroarch-rbp
-pkgver=1.7.4
+pkgver=1.7.5
 pkgrel=1.1
 pkgdesc='Reference frontend for the libretro API (Raspberry Pi)'
 arch=('armv7h')
