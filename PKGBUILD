@@ -1,7 +1,8 @@
-# Maintainer: kusakata <shohei atmark kusakata period com>
+# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Contributor: kusakata <shohei atmark kusakata period com>
 
 pkgname=libcleri
-pkgver=0.9.4
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="C Left-Right Parser"
 url="https://github.com/transceptor-technology/libcleri"
@@ -9,11 +10,13 @@ license=('MIT')
 arch=('x86_64')
 depends=('pcre2')
 source=("https://github.com/transceptor-technology/libcleri/archive/${pkgver}.tar.gz" "makefile.targets.patch")
+sha256sums=('cbe9cd30188f6fac16a752acc5272f8354d7769cc39737ffaced3501abea7bc0'
+            'c26ad2d1aea5cac6d536a93a55baeeb087c76946ddf549afe4f5e1bbe60388c9')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   
-  patch -N < ../makefile.targets.patch
+  patch -Np1 -i ${srcdir}/makefile.targets.patch
 }
 
 build() {
@@ -34,6 +37,3 @@ package() {
   cd ./Release
   make INSTALL_PATH="${pkgdir}/usr" DESTDIR="/usr" install
 }
-
-md5sums=('6d386bfdc0bd6e312012968819fee66e'
-         '5033c2bd080fd8aed112e66c8ed7fa97')
