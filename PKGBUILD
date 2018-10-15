@@ -1,29 +1,35 @@
 # Maintainer: Ethan Rakoff <ethan@ethanrakoff.com>
 
 pkgname=threemawebqt
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
-pkgdesc="Thin client for Threema Web, the web client for Threema, an E2E encrypted messaging app."
+pkgdesc="Thin client for Threema Web, an E2E encrypted messaging app."
 arch=('i686' 'x86_64')
 url="https://github.com/ethanrakoff/${pkgname}"
 license=('MIT')
 depends=('qt5-base' 'qt5-webengine')
-makedepends=('make')
-source=("git+${url}")
-md5sums=('SKIP')
+makedepends=('git')
+source=("${url}/archive/master-v${pkgver}.tar.gz")
+md5sums=('c19956cb7973581e08e34163bcee44f7')
+
+prepare() {
+  cd "${srcdir}"
+
+  mv ${pkgname}-master-v${pkgver} ${pkgname}
+}
 
 build() {
-  cd "${pkgname}/src"
+  cd "${srcdir}/${pkgname}"
+  ls
 
-  qmake
+  qmake "PREFIX=/usr"
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}/src"
+  cd "${pkgname}"
+
   make INSTALL_ROOT="${pkgdir}" install 
 
-  install -Dm644 icon.png "${pkgdir}/usr/share/icons/${pkgname}/icon.png"
-  install -Dm644 ../threemawebqt.desktop "${pkgdir}/usr/share/applications/threemawebqt.desktop"
-  install -Dm644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
