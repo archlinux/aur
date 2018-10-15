@@ -2,7 +2,7 @@
 # Contributor: Hexchain Tong <i at hexchain dot org>
 
 pkgname=tpm2-tools-git
-pkgver=3.0.2.r654.e761be7
+pkgver=3.0.2.r692.8f14189c
 pkgrel=1
 pkgdesc='TPM (Trusted Platform Module) 2.0 tools based on TPM2.0-TSS'
 arch=('x86_64')
@@ -15,16 +15,20 @@ optdepends=('tpm2-abrmd: user space resource manager to swap objects in and out 
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+$url.git")
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf '%s' "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+}
+
+prepare() {
+	cd "$srcdir/${pkgname%-git}"
+	./bootstrap
 }
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	./bootstrap
 	./configure --prefix=/usr --sysconfdir=/etc
 	make
 }

@@ -1,6 +1,6 @@
 pkgbase = tpm2-tools-git
 	pkgdesc = TPM (Trusted Platform Module) 2.0 tools based on TPM2.0-TSS
-	pkgver = 3.0.2.r654.e761be7
+	pkgver = 3.0.2.r692.8f14189c
 	pkgrel = 1
 	url = https://github.com/tpm2-software/tpm2-tools
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = tpm2-tools-git
 	provides = tpm2-tools
 	conflicts = tpm2-tools
 	source = git+https://github.com/tpm2-software/tpm2-tools.git
-	md5sums = SKIP
+	sha512sums = SKIP
 
 pkgname = tpm2-tools-git
 
