@@ -1,10 +1,10 @@
-# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
 # Contributor: Iacopo Isimbaldi <isiachi@rhye.it>
 
 pkgname=ffmpeg-full
 _srcname=ffmpeg
 pkgver=4.0.2
-pkgrel=4
+pkgrel=5
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
@@ -43,22 +43,18 @@ makedepends_x86_64=(
     # AUR:
         'vmaf'
 )
-provides=(
-    'ffmpeg' 'ffmpeg-full-nvenc' 'ffmpeg-nvenc' 'ffmpeg-libfdk_aac' 'ffmpeg-decklink'
-    'qt-faststart' 'libavutil.so' 'libavcodec.so' 'libavformat.so' 'libavdevice.so'
-    'libavfilter.so' 'libavresample.so' 'libswscale.so' 'libswresample.so'
-    'libpostproc.so'
-)
-conflicts=(
-    'ffmpeg' 'ffmpeg-full-nvenc' 'ffmpeg-nvenc' 'ffmpeg-libfdk_aac' 'ffmpeg-decklink'
-    'ffmpeg-git' 'ffmpeg-full-git' 'ffmpeg-semifull-git' 'ffmpeg-qsv-git'
-)
-source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"
+provides=('ffmpeg' 'libavutil.so' 'libavcodec.so' 'libavformat.so' 'libavdevice.so'
+          'libavfilter.so' 'libavresample.so' 'libswscale.so' 'libswresample.so'
+          'libpostproc.so')
+conflicts=('ffmpeg')
+source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         'LICENSE')
 source_x86_64=('vmaf-1.3.9-fix.patch')
 sha256sums=('a95c0cc9eb990e94031d2183f2e6e444cc61c99f6f182d1575c433d62afb2f97'
+            'SKIP'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 sha256sums_x86_64=('4eab61257adfdae2233cf8e5a12bd4d1e551b69711c8b4d14cffdd0f2c85812b')
+validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 
 prepare() {
     cd "${_srcname}-${pkgver}"
@@ -95,7 +91,7 @@ build() {
         fi
     fi
     
-    msg2 'Running ffmpeg configure script. Please wait...'
+    printf '%s\n' '  -> Running ffmpeg configure script...'
     
     ./configure \
         --prefix='/usr' \
