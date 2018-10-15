@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=checksec-git
-pkgver=1.7.5.r33.g3de323e
-pkgrel=2
+pkgver=1.9.0.r0.g0f897c3
+pkgrel=1
 pkgdesc="A bash script to check the security properties of executables"
 arch=('any')
 url="https://github.com/slimm609/checksec.sh"
@@ -27,6 +27,6 @@ package() {
   install -Dm755 "checksec" "$pkgdir/usr/bin/checksec"
   install -Dm644 "LICENSE.txt" "$pkgdir/usr/share/licenses/checksec/LICENSE.txt"
   install -Dm644 "ChangeLog" "README.md" -t "$pkgdir/usr/share/doc/$pkgname"
-  install -Dm644 "extras/man/checksec.7" -t "$pkgdir/usr/share/man/man7"
+  install -Dm644 "extras/man/checksec.1" -t "$pkgdir/usr/share/man/man1"
   install -Dm644 "extras/zsh/_checksec" -t "$pkgdir/usr/share/zsh/site-functions"
 }

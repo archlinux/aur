@@ -1,7 +1,7 @@
 pkgbase = checksec-git
 	pkgdesc = A bash script to check the security properties of executables
-	pkgver = 1.7.5.r33.g3de323e
-	pkgrel = 2
+	pkgver = 1.9.0.r0.g0f897c3
+	pkgrel = 1
 	url = https://github.com/slimm609/checksec.sh
 	arch = any
 	license = BSD
