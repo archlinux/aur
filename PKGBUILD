@@ -42,8 +42,6 @@ build() {
     -DBUILD_TEMPUS_PLUGINS=TRUE
 
   make
-
-  export TEMPUS_CORE_DIR="$pkgdir/"
 }
 
 package_tempus-core() {
@@ -56,6 +54,7 @@ package_tempus-core() {
     install -m 0644 $file "$pkgdir/usr/share/tempus/test_data/$file"
   done
 
+  export TEMPUS_CORE_DIR="$pkgdir/"
 }  
 
 package_tempus-wps-server() {
@@ -68,7 +67,7 @@ package_tempus-wps-server() {
     -DTEMPUS_INCLUDE_DIR=$TEMPUS_CORE_DIR/usr/include \
     -DTEMPUS_LIBRARY=$TEMPUS_CORE_DIR/usr/lib/libtempus.so \
 
-  make
+  make 
 
   make DESTDIR="$pkgdir" install
 
