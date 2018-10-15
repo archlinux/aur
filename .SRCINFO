@@ -1,7 +1,7 @@
 pkgbase = passbook
 	pkgdesc = A password manager for GNOME
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/gnumdk/passbook
 	arch = any
 	license = GPL
@@ -15,6 +15,7 @@ pkgbase = passbook
 	depends = python-cairo
 	depends = python-dbus
 	depends = python-gobject
+	optdepends = python-pykeepass
 	source = git+https://gitlab.gnome.org/gnumdk/passbook.git#tag=0.2
 	sha256sums = SKIP
 

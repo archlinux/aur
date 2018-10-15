@@ -2,7 +2,7 @@
 
 pkgname=passbook
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A password manager for GNOME'
 arch=('any')
 url='https://gitlab.gnome.org/gnumdk/passbook'
@@ -10,6 +10,9 @@ license=('GPL')
 depends=(
   'gtk3' 'python-cairo'
   'python-dbus' 'python-gobject'
+)
+optdepends=(
+  'python-pykeepass'
 )
 makedepends=(
   'git' 'gobject-introspection' 'intltool' 'itstool' 'meson' 'python'
