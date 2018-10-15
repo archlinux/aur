@@ -1,14 +1,14 @@
 # Maintainer: Jonne Haß <me@jhass.eu>
 _repo="znc-backlog"
 pkgname=znc-backlog-git
-pkgver=r63.42e8f43
+pkgver=r65.44314a6
 pkgrel=1
 pkgdesc="A ZNC module that makes it easy to request backlog"
 arch=('i686' 'x86_64')
 url="https://github.com/FruitieX/znc-backlog"
 license=('Apache')
 depends=('znc')
-makedepends=('git')
+makedepends=('git' 'python' 'cmake')
 source=("git+https://github.com/FruitieX/znc-backlog.git")
 
 pkgver() {

@@ -1,12 +1,14 @@
 pkgbase = znc-backlog-git
 	pkgdesc = A ZNC module that makes it easy to request backlog
-	pkgver = r63.42e8f43
+	pkgver = r65.44314a6
 	pkgrel = 1
 	url = https://github.com/FruitieX/znc-backlog
 	arch = i686
 	arch = x86_64
 	license = Apache
 	makedepends = git
+	makedepends = python
+	makedepends = cmake
 	depends = znc
 	source = git+https://github.com/FruitieX/znc-backlog.git
 	sha256sums = SKIP
