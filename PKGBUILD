@@ -1,4 +1,4 @@
-# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
 # Contributor: Jan Koppe <post@jankoppe.de>
 #
 # This package is a modified version of extra/ffmpeg with --enable-decklink
@@ -6,7 +6,7 @@
 pkgname=ffmpeg-decklink
 _srcname=ffmpeg
 pkgver=4.0.2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (decklink enabled)'
 arch=('i686' 'x86_64')
@@ -29,17 +29,19 @@ makedepends=(
 optdepends=('ladspa: LADSPA filters')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
-          'libswscale.so' 'ffmpeg' 'qt-faststart')
-conflicts=('ffmpeg' 'ffmpeg-git')
-source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"
+          'libswscale.so' 'ffmpeg')
+conflicts=('ffmpeg')
+source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         'LICENSE')
 sha256sums=('a95c0cc9eb990e94031d2183f2e6e444cc61c99f6f182d1575c433d62afb2f97'
+            'SKIP'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
+validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 
 build() {
     cd "${_srcname}-${pkgver}"
     
-    msg2 'Running ffmpeg configure script. Please wait...'
+    printf '%s\n' '  -> Running ffmpeg configure script...'
     
     ./configure \
         --prefix='/usr' \
@@ -98,6 +100,6 @@ package() {
     
     make DESTDIR="$pkgdir" install
     
-    install -D -m755 tools/qt-faststart  "${pkgdir}/usr/bin/qt-faststart"
-    install -D -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m755 tools/qt-faststart  -t "${pkgdir}/usr/bin"
+    install -D -m644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
