@@ -11,6 +11,7 @@ ExecStart=/usr/bin/hqplayerd
 Restart=always
 RestartSec=2
 EnvironmentFile=-/etc/default/hqplayerd
+User=hqplayer
 Nice=-10
 IOSchedulingClass=realtime
 LimitMEMLOCK=1G

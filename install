@@ -1,0 +1,12 @@
+post_install() {
+adduser --system --disabled-login --disabled-password --home /var/hqplayer/home --ingroup audio hqplayer
+usermod -d /var/hqplayer/home hqplayer
+chown -R hqplayer:root /etc/hqplayer
+chown -R hqplayer:root /var/hqplayer/home
+}
+
+post_remove() {
+userdel -r hqplayer
+rm -rf /var/hqplayer
+rm -rf /etc/hqplayer
+}
