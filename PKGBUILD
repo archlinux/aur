@@ -1,11 +1,11 @@
 # Maintainer: Pierre-Alexis Ciavaldini <pierre-alexis@ciavaldini.fr>
 
 # maintenance, tar files
-pkgver="1.4.1"
+pkgver="1.4.5"
 pkgrel=1
 md5sums=(
   # .deb
-  "dd059e57301d0d0dc9cc6135ac00110f"
+  "aae5f63a3741f41fb8a8cf97c7cb45b2"
 )
 
 # info
