@@ -1,3 +1,5 @@
+# Maintainer: Luigi Operoso <brokenpip3[at]gmail[dot]com>
+
 pkgname=apacheconfig
 pkgver=0.2.7
 pkgrel=1
