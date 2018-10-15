@@ -2,8 +2,8 @@
 # Contributor: Thomas Krug <t.krug@elektronenpumpe.de>
 
 pkgname=libsigrok
-pkgver=0.5.0
-pkgrel=5
+pkgver=0.5.1
+pkgrel=1
 pkgdesc='Client software that supports various hardware logic analyzers, core library'
 arch=(x86_64)
 url='https://www.sigrok.org/wiki/Libsigrok'
@@ -12,11 +12,11 @@ depends=(libftdi libserialport glibmm libzip libieee1284)
 makedepends=(cmake doxygen ruby jdk8-openjdk swig python pygobject-devel python-numpy python-setuptools)
 optdepends=('python' 'ruby' 'jdk8-openjdk')
 source=(https://sigrok.org/download/source/libsigrok/libsigrok-$pkgver.tar.gz)
-sha1sums=('51dbf0728804f1df9fd76c6136ee48a157298833')
+sha1sums=('7b4727668153f2f3ea062b0a4cffc7f9c199957a')
 
 prepare() {
   cd libsigrok-$pkgver
-  sed -i 's|, MODE="660", GROUP="plugdev"||' contrib/z60_libsigrok.rules # FS#56059
+  sed -i 's|, MODE="660", GROUP="plugdev"||' contrib/60-libsigrok.rules # FS#56059
 }
 
 build() {
@@ -28,5 +28,5 @@ build() {
 package() {
   cd libsigrok-$pkgver
   make DESTDIR="$pkgdir" PREFIX=/usr install
-  install -m644 -D contrib/z60_libsigrok.rules $pkgdir/usr/lib/udev/rules.d/60-libsigrok.rules
+  install -m644 -D contrib/60-libsigrok.rules $pkgdir/usr/lib/udev/rules.d/60-libsigrok.rules
 }
