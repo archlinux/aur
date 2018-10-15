@@ -1,0 +1,13 @@
+pkgbase = apacheconfig
+	pkgdesc = Apache and Perl Config::General style configuration file parsing library
+	pkgver = 0.2.7
+	pkgrel = 1
+	url = https://github.com/etingof/apacheconfig
+	arch = any
+	license = BSD
+	depends = python-ply
+	source = https://pypi.io/packages/source/a/apacheconfig/apacheconfig-0.2.7.tar.gz
+	sha256sums = 00e39bd2917248a35614dea0b53ebff3a3b51e81ab741e842582bb85e4bf4685
+
+pkgname = apacheconfig
+
