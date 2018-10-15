@@ -1,0 +1,18 @@
+pkgbase = automathemely
+	pkgdesc = Simple, set-and-forget python application for changing between GNOME themes according to light and dark hours.
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/C2N14/AutomaThemely
+	arch = any
+	license = GPL-3.0
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/C2N14/AutomaThemely/archive/v1.2.tar.gz
+	sha256sums = 3616d85cc6d910eda718efa8834f594533d053d6269bc11d01a7bdebe5f07bfc
+
+pkgname = automathemely
+	depends = python
+	depends = python-astral
+	depends = python-tzlocal
+	depends = python-schedule
+
