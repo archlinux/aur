@@ -3,7 +3,7 @@
 
 _pkgname=qterminal
 pkgname=$_pkgname-git
-pkgver=0.9.0.146.gfd00b1f
+pkgver=0.9.0.157.gee250b4
 pkgrel=2
 pkgdesc="Lightweight Qt-based terminal emulator"
 arch=("i686" "x86_64")
@@ -11,7 +11,7 @@ url="https://github.com/lxqt/qterminal"
 license=("GPL2")
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-depends=("qtermwidget-git" "qt5-x11extras")
+depends=("qtermwidget-git" "qt5-x11extras" "qt5-translations")
 makedepends=("cmake" "git" "lxqt-build-tools-git" "qt5-tools")
 source=("git+https://github.com/lxqt/$_pkgname.git")
 sha256sums=('SKIP')
