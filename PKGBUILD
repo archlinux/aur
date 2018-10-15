@@ -2,7 +2,7 @@
 
 pkgname=escribe-suite-bin
 pkgver=2_SP18
-pkgrel=1
+pkgrel=2
 pkgdesc="Evolv eScribe Suite - DNA Management Suite and Ecigstats - INTL Version"
 arch=('x86_64')
 url="https://forum.evolvapor.com/topic/69197-linux-escribe-suite-beta-thread/"
