@@ -1,6 +1,6 @@
 pkgbase = multibootusb-git
 	pkgdesc = Boot multiple live Linux distros from a usb flash drive.
-	pkgver = 20180505.d2099ad
+	pkgver = 20181002.dec46ef
 	pkgrel = 1
 	url = http://multibootusb.org
 	arch = any
@@ -15,6 +15,7 @@ pkgbase = multibootusb-git
 	depends = p7zip
 	depends = python-six
 	depends = python-pyudev
+	depends = lsof
 	provides = multibootusb
 	conflicts = multibootusb
 	source = multibootusb-git::git+git://github.com/mbusb/multibootusb.git
