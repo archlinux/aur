@@ -2,14 +2,14 @@
 
 pkgname=bp-nfoview
 pkgver=0.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A Simple NFO-Viewer by brainpower"
 arch=('i686' 'x86_64')
 url="https://github.com/brainpower/bp-nfoview"
 license=('GPL')
 depends=('qt5-base')
 makedepends=('cmake' 'git')
-source=("https://github.com/brainpower/bp-nfoview/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/brainpower/bp-nfoview/archive/v${pkgver}.tar.gz")
 sha256sums=('b6f67443cafa8cccfc0fe9a172e0067b159d6ba6a4d88bc7b63f317edb702ff3')
 
 build(){
