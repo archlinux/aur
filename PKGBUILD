@@ -1,7 +1,7 @@
 # Contributor: Cédric Bellegarde <cedric.bellegarde@adishatz.org>
 
 pkgname=passbook
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc='A password manager for GNOME'
 arch=('any')
