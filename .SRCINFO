@@ -1,6 +1,6 @@
 pkgbase = compton-git
 	pkgdesc = X Compositor (a fork of xcompmgr-dana) (git-version)
-	pkgver = Next.r558.gde6e2f5_2018.10.10
+	pkgver = 565_3.rc1.2.g93dd2d9_2018.10.15
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/yshui/compton
@@ -11,6 +11,7 @@ pkgbase = compton-git
 	makedepends = git
 	makedepends = asciidoc
 	makedepends = mesa
+	makedepends = meson
 	depends = libgl
 	depends = libev
 	depends = pcre
@@ -26,6 +27,7 @@ pkgbase = compton-git
 	optdepends = dbus: To control compton via D-Bus
 	optdepends = xorg-xwininfo: For compton-trans
 	optdepends = xorg-xprop: For compton-trans
+	optdepends = python: For compton-convgen.py
 	provides = compton
 	conflicts = compton
 	source = git+https://github.com/yshui/compton.git#branch=next
