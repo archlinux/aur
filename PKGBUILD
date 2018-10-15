@@ -1,26 +1,22 @@
-# Maintainer: Alex Branham <branham@utexas.edu>
-_cranname=testthat
-_cranver=2.0.0
-_pkgtar=${_cranname}_${_cranver}.tar.gz
+# Maintainer: Alex Branham <alex.branham@gmail.com>
+_cranver=2.0.1
 pkgname=r-testthat
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc="Unit Testing for R"
+pkgdesc='Unit Testing for R'
 arch=('x86_64')
-url="https://cran.r-project.org/package=${_cranname}"
+url='https://cran.r-project.org/package=testthat'
 license=('MIT')
 depends=('r' 'r-cli' 'r-crayon' 'r-digest' 'r-magrittr' 'r-praise' 'r-r6>=2.2.0' 'r-rlang' 'r-withr>=2.0.0')
-
-optdepends=('r-covr' 'r-devtools' 'r-knitr' 'r-rmarkdown' 'r-xml2')
-
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('36765e0ad2e29b825b4c6088b1a34458')
+optdepends=('r-covr' 'r-devtools' 'r-knitr' 'r-rmarkdown' 'r-usethis' 'r-xml2')
+source=("https://cran.r-project.org/src/contrib/testthat_"$_cranver".tar.gz")
+md5sums=('d35da4e4c876c444058f7d26a10600be')
 
 build(){
-    R CMD INSTALL ${_pkgtar} -l $srcdir
+    R CMD INSTALL testthat_"$_cranver".tar.gz -l "$srcdir"
 }
 package() {
-    install -d "$pkgdir/usr/lib/R/library"
-    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
+    install -dm0755 "$pkgdir"/usr/lib/R/library
+    cp -a --no-preserve=ownership testthat "$pkgdir"/usr/lib/R/library
 }
 
