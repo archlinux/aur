@@ -2,7 +2,7 @@
 # Contributor: Sean Anderson <seanga2@gamil.com>
 pkgname=proton-git
 _pkgname=proton
-pkgver=20180928b.8
+pkgver=20180913.48
 pkgrel=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components"
 arch=('x86_64')
@@ -70,7 +70,7 @@ package() {
 	install -d -m755 $pkgdir/usr/share/licenses/$pkgname
 	install -m644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 	install -m644 LICENSE.proton $pkgdir/usr/share/licenses/$pkgname/LICENSE.proton
-	install -m644 dist.LICENSE.lin $pkgdir/usr/share/licenses/$pkgname/dist.LICENSE.lin
+	install -m644 dist.LICENSE $pkgdir/usr/share/licenses/$pkgname/dist.LICENSE
 
 	install -d -m755 $pkgdir/usr/share/doc/$pkgname
 	install -m644 README.md $pkgdir/usr/share/doc/$pkgname/README.md
