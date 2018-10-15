@@ -1,7 +1,7 @@
 pkgbase = modbus-sma
 	pkgdesc = C++ library for accessing the the modbus interface of SMA inverters
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mensinda/modbusSMA
 	arch = x86_64
 	license = Apache
