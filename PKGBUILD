@@ -3,14 +3,14 @@
 pkgname=ldapxx
 pkgdesc="C++ interface to ldap.h"
 url="https://github.com/de-vri-es/ldapxx"
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 depends=(libldap boost)
 arch=(x86_64 i386)
 license=(BSD)
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/de-vri-es/ldapxx/archive/$pkgver.tar.gz")
-sha512sums=('07dad96d9e71cf342576866ebb3078dec6ad5bc80227918890cfec1f964d88af2baec5b5b3ee95e70313862370dd05343f95e411068ed0b10392320b05b1fb4c')
+sha512sums=('c73e9357a97c24996b814fa25e1dc65b7e098ce947568550a73082ca744e4611f285ed0739e19dac31377d9ccc850682f1af8efcbd04078ea98604864ebdae5a')
 
 prepare() {
 	rm -rf "$srcdir/build"
