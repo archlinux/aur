@@ -1,8 +1,8 @@
 pkgbase = sloc-git
 	pkgdesc = Simply counts source lines of code
-	pkgver = 20140117
+	pkgver = 20180814
 	pkgrel = 1
-	url = http://bytbox.net/hacks/sloc
+	url = http://github.com/bytbox/sloc
 	arch = i686
 	arch = x86_64
 	license = MIT

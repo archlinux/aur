@@ -1,10 +1,10 @@
 # Maintainer: Scott Lawrence <bytbox@gmail.com>
 pkgname=sloc-git
-pkgver=20140117
+pkgver=20180814
 pkgrel=1
 pkgdesc="Simply counts source lines of code"
 arch=('i686' 'x86_64')
-url="http://bytbox.net/hacks/sloc"
+url="https://github.com/bytbox/sloc"
 license=('MIT')
 depends=('go')
 optdepends=('perl-datetime' 'perl-json' 'perl-switch' 'gnuplot')
@@ -19,7 +19,7 @@ source=()
 noextract=()
 md5sums=() #generate with 'makepkg -g'
 
-_gitroot=http://git.bytbox.net/sloc
+_gitroot=https://github.com/bytbox/sloc
 _gitname=sloc
 
 build() {
