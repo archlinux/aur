@@ -1,23 +1,23 @@
 pkgbase = etcher-bin
-	pkgdesc = Burn images to SD cards & USB drives, safe & easy
-	pkgver = 1.4.4
+	pkgdesc = Flash OS images to SD cards & USB drives, safely and easily
+	pkgver = 1.4.5
 	pkgrel = 1
 	url = http://www.etcher.io/
 	arch = x86_64
 	license = apache
-	depends = gtk2
-	depends = libxtst
-	depends = libxss
-	depends = gconf
-	depends = nss
 	depends = alsa-lib
+	depends = gconf
+	depends = gtk2
+	depends = libxss
+	depends = libxtst
+	depends = nss
 	optdepends = libnotify: for notifications
 	optdepends = speech-dispatcher: for text-to-speech
 	provides = etcher
 	conflicts = etcher
 	options = !strip
-	source_x86_64 = https://github.com/resin-io/etcher/releases/download/v1.4.4/etcher-electron_1.4.4_amd64.deb
-	sha256sums_x86_64 = 037b54a352083bab90fc74be91e4d480a7110c248316527bddc9f084cfbfcf4f
+	source = https://github.com/resin-io/etcher/releases/download/v1.4.5/etcher-electron_1.4.5_amd64.deb
+	sha256sums = 8d55cddc740523fc61ee933d912e4277734add4aae55cf92e0265cddd14ae63e
 
 pkgname = etcher-bin
 

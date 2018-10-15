@@ -1,3 +1,7 @@
 /[Ee]tcher-*
 /src/
 /pkg/
+etcher-bin-*.pkg.tar.xz
+etcher-electron_*.deb
+pkg/
+src/
