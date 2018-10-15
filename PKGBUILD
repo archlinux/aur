@@ -15,7 +15,7 @@ prepare() {
 
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	./autogen.sh --noconfigure
-	./configure --prefix=/usr --disable-examples CFLAGS='-pedantic -std=c99 -g -O3'
+	./configure --prefix=/usr CFLAGS='-pedantic -std=c99 -g -O3'
 
 }
 
