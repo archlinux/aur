@@ -1,26 +1,38 @@
-# Maintainer: James Harvey <jamespharvey20@gmail.com>
+# Maintainer: James P. Harvey <jamespharvey20@gmail.com>
 
 pkgname=mstflint
-pkgver=4.10.0.2
-_pkgver=4.10.0-2
+pkgver=4.10.0.3
+_pkgver=4.10.0-3
 pkgrel=1
-pkgdesc='OpenFabrics Alliance firmware burning application for Mellanox HCA/NIC cards'
-arch=('x86_64' 'i686')
+pkgdesc='OpenFabrics Alliance firmware burning application for Mellanox HCA/NIC cards (without inband support)'
+arch=('x86_64')
 url='https://www.openfabrics.org/index.php/overview.html'
 license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
-depends=('bash' 'zlib' 'python')
-source=("https://github.com/Mellanox/mstflint/archive/v${_pkgver}.tar.gz")
-md5sums=('378b851f829da9973e0c69a1c8840a77')
+depends=('python')
+makedepends=('git')
+source=("git+https://github.com/Mellanox/${pkgname}#tag=v${_pkgver}")
+sha256sums=('SKIP')
+
+#The release tarballs cannot be used cleanly on Arch
+#Reported upstream: https://github.com/Mellanox/mstflint/issues/6
+#https://github.com/Mellanox/${pkgname}/archive/v${_pkgver}.tar.gz
+#  autogen.sh (through gitversion.sh) assumes it's running from a git tree, not a source tarball
+#  so, it fails to write common/gitversion.h which causes a compilation failure
+#  (if you run this from within a different git tree (i.e. AUR repo) it will proceed with wrong sha
+#https://github.com/Mellanox/${pkgname}/releases/download/v${_pkgver}/${pkgname}-${_pkgver}.tar.gz
+#  has files created upstream by autogen.sh, which is hard-coded to run with aclocal-1.13
+#  and arch has aclocal-1.16
 
 build() {
-  cd "${srcdir}/${pkgname}-${_pkgver}"
-  sed -i 's/Werror/Wno-error/g' cmdif/Makefile.am
-  sed -i 's/Werror/Wno-error/g' configure.ac
-  sed -i 's/Werror/Wno-error/g' ext_libs/muparser/Makefile.am
-  sed -i 's/Werror/Wno-error/g' ext_libs/sqlite/Makefile.am
-  sed -i 's/Werror/Wno-error/g' mft_utils/Makefile.am
-  sed -i 's/Werror/Wno-error/g' reg_access/Makefile.am
-  sed -i 's/Werror/Wno-error/g' tools_res_mgmt/Makefile.am
+  cd ${pkgname}
+
+  #disable Werror, so can compile with recent gcc
+  for file in cmdif/Makefile.am configure.ac ext_libs/muparser/Makefile.am \
+              ext_libs/sqlite/Makefile.am mft_utils/Makefile.am reg_access/Makefile.am \
+              tools_res_mgmt/Makefile.am; do
+    sed -i 's/Werror/Wno-error/g' $file
+  done
+
   ./autogen.sh
   ./configure --prefix=/usr \
               --sbindir=/usr/bin \
@@ -33,7 +45,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${_pkgver}"
+  cd ${pkgname}
   make DESTDIR="${pkgdir}" install
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
