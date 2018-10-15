@@ -2,7 +2,7 @@
 
 pkgname=swamp
 pkgver=0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Teh AWS profile manager"
 arch=('x86_64'  )
 url="https://github.com/felixb/swamp"
@@ -15,7 +15,15 @@ sha256sums=('199650fc5c0a25907b608d2a0a17086f83b5031bbaea39a729f649d2df422f16')
 build() {
   cd "$pkgname-$pkgver"
 
-  make
+  case "$CARCH" in
+    x86_64)
+      make swamp_amd64
+      ;;
+    *)
+      echo "No suitable build available."
+      exit 127
+      ;;
+  esac
 }
 
 package() {
