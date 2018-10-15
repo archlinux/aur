@@ -1,0 +1,13 @@
+[Unit]
+Description=Sickchill service.
+After=network.target
+
+[Service]
+Restart=on-success
+User=sickchill
+Group=sickchill
+
+ExecStart=/usr/bin/env python2 /opt/sickchill/app/SickBeard.py --quiet --nolaunch --datadir /opt/sickchill/data
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,18 @@
+SICKCHILL_USER="sickchill"
+SICKCHILL_GROUP="sickchill"
+SICKCHILL_DIR="/opt/sickchill"
+
+post_install() {
+    getent group ${SICKCHILL_GROUP} &> /dev/null || groupadd -r ${SICKCHILL_GROUP} &> /dev/null
+    getent passwd ${SICKCHILL_USER} &> /dev/null || useradd -r -g ${SICKCHILL_GROUP} -d ${SICKCHILL_DIR} -s /usr/bin/nologin ${SICKCHILL_USER} &> /dev/null
+    chown -R ${SICKCHILL_USER}:${SICKCHILL_GROUP} ${SICKCHILL_DIR}
+}
+
+post_upgrade() {
+  chown -R ${SICKCHILL_USER}:${SICKCHILL_GROUP} ${SICKCHILL_DIR}
+}
+
+post_remove() {
+    userdel ${SICKCHILL_USER} &> /dev/null
+    groupdel ${SICKCHILL_GROUP} &> /dev/null || /bin/true
+}
