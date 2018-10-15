@@ -1,5 +1,5 @@
 pkgname=mingw-w64-openal
-pkgver=1.18.2
+pkgver=1.19.1
 pkgrel=1
 pkgdesc="Cross-platform 3D audio library, software implementation (mingw-w64)"
 arch=(any)
@@ -8,16 +8,14 @@ license=('LGPL')
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=(!strip !buildflags staticlibs)
-source=(http://kcat.strangesoft.net/openal-releases/openal-soft-$pkgver.tar.bz2
-        fixcmake.patch)
-sha256sums=('9f8ac1e27fba15a59758a13f0c7f6540a0605b6c3a691def9d420570506d7e82'
-            'b6a516e20f5d85e4e94e1f469c23d5f8b5953f7a82c0636b5d68d98e47ce5fd0')
+_commit=6761218e51699f46bf25c377e65b3e9ea5e434b9  # tags/openal-soft-1.19.1
+source=("git+https://github.com/kcat/openal-soft#commit=$_commit")
+sha256sums=('SKIP')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
-  cd "${srcdir}/openal-soft-${pkgver}"
-  patch -Np1 < ${srcdir}/fixcmake.patch
+  cd "${srcdir}/openal-soft"
 
   # static
   for _arch in ${_architectures}; do
@@ -39,7 +37,7 @@ build() {
 package() {
   # static
   for _arch in ${_architectures}; do
-    cd "${srcdir}/openal-soft-${pkgver}/build-static-${_arch}"
+    cd "${srcdir}/openal-soft/build-static-${_arch}"
     make DESTDIR="${pkgdir}" install
     rm -r "$pkgdir"/usr/${_arch}/share
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
@@ -47,7 +45,7 @@ package() {
 
   # shared
   for _arch in ${_architectures}; do
-    cd "${srcdir}/openal-soft-${pkgver}/build-shared-${_arch}"
+    cd "${srcdir}/openal-soft/build-shared-${_arch}"
     make DESTDIR="${pkgdir}" install
     rm -r "$pkgdir"/usr/${_arch}/share
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
