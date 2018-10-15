@@ -8,7 +8,6 @@ pkgbase = bitwarden-cli-git
 	makedepends = nodejs
 	makedepends = npm
 	depends = nodejs
-	provides = bitwarden-cli
 	conflicts = bitwarden-cli
 	options = !strip
 	source = bitwarden-cli-git-repo::git+https://github.com/bitwarden/cli.git

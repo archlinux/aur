@@ -10,7 +10,6 @@ url='https://github.com/bitwarden/cli'
 license=('GPL3')
 makedepends=('nodejs' 'npm')
 depends=('nodejs')
-provides=('bitwarden-cli')
 conflicts=('bitwarden-cli')
 options=('!strip')
 source=("${_pkgname}-git-repo::git+https://github.com/bitwarden/cli.git"
