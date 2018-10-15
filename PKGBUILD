@@ -1,6 +1,6 @@
 # Maintainer: Mr. Outis <mroutis@protonmail.com>
 pkgname=dvc
-pkgver=0.19.7
+pkgver=0.19.11
 pkgrel=1
 pkgdesc="Open-source version control system for data science projects"
 arch=('any')
@@ -21,7 +21,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         'https://files.pythonhosted.org/packages/source/n/networkx/networkx-2.1.zip'
         'https://files.pythonhosted.org/packages/source/c/configparser/configparser-3.5.0.tar.gz')
 
-sha256sums=('a979aee1567093af3d6d8fc9ac94634e78e5769486dd8d019315dcf4024dc24d'
+sha256sums=('f2c3dd624b8d8d5f9b4e91819a7928fab9a8dae10f457f1e493bfc51d1915082'
             '7471db231bd7338bc0035b16edf0dc0c900c82d23060f4b4d0c4304caedda6e4'
             '05c471281c45ae113f6103d1268ec7a4831a2e96aa80de45edc89b11fac4fbec'
             '50c058ce3371a819606ff29e914e6555c4d6c2527bff0cd0ed20af5947703118'
@@ -56,5 +56,7 @@ package() {
   # Package
   cd "${srcdir}/${pkgname}-${pkgver}"
   python3 setup.py install --prefix=/usr --root="${pkgdir}" --optimize=0
-  install -D -m644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  install -Dm644 LICENSE \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
