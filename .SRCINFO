@@ -1,16 +1,16 @@
 pkgbase = threemawebqt
-	pkgdesc = Thin client for Threema Web, the web client for Threema, an E2E encrypted messaging app.
-	pkgver = 0.1
+	pkgdesc = Thin client for Threema Web, an E2E encrypted messaging app.
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/ethanrakoff/threemawebqt
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = make
+	makedepends = git
 	depends = qt5-base
 	depends = qt5-webengine
-	source = git+https://github.com/ethanrakoff/threemawebqt
-	md5sums = SKIP
+	source = https://github.com/ethanrakoff/threemawebqt/archive/master-v0.2.tar.gz
+	md5sums = c19956cb7973581e08e34163bcee44f7
 
 pkgname = threemawebqt
 
