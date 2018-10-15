@@ -1,11 +1,11 @@
 pkgname=dnf-plugins-core
-pkgver=3.0.4
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Core DNF Plugins"
 arch=('any')
 url="https://github.com/rpm-software-management/$pkgname"
 license=('GPL2')
-depends=('dnf>=3.6.1' 'python')
+depends=('dnf>=3.7.0' 'python')
 makedepends=('cmake' 'python-sphinx')
 checkdepends=('python-nose')
 optdepends=('createrepo_c: for local plugin')
@@ -16,7 +16,7 @@ backup=('etc/dnf/plugins/copr.conf'
         'etc/dnf/plugins/versionlock.list')
 options=(!emptydirs)
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('30ecfda26a73acd8561349acf2d1cc15')
+md5sums=('9f3ce79fc486c3393e084a7a4f21596d')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -43,8 +43,10 @@ package() {
 	cd "$pkgname-$pkgver"/build
 	make DESTDIR="$pkgdir/" install
 
+	# Conflict with yum-utils
 	rm "$pkgdir/usr/share/man/man1/debuginfo-install.1" \
 	   "$pkgdir/usr/share/man/man1/needs-restarting.1" \
+	   "$pkgdir/usr/share/man/man1/package-cleanup.1" \
 	   "$pkgdir/usr/share/man/man1/repo-graph.1" \
 	   "$pkgdir/usr/share/man/man1/repoclosure.1" \
 	   "$pkgdir/usr/share/man/man1/repomanage.1" \
@@ -53,6 +55,7 @@ package() {
 	   "$pkgdir/usr/share/man/man1/yum-config-manager.1" \
 	   "$pkgdir/usr/share/man/man1/yum-debug-dump.1" \
 	   "$pkgdir/usr/share/man/man1/yum-debug-restore.1" \
+	   "$pkgdir/usr/share/man/man1/yumdownloader.1" \
 	   "$pkgdir/usr/share/man/man5/yum-versionlock.conf.5" \
 	   "$pkgdir/usr/share/man/man8/yum-copr.8" \
 	   "$pkgdir/usr/share/man/man8/yum-versionlock.8"
