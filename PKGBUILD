@@ -15,7 +15,7 @@ provides=('cuda-toolkit' 'cuda-sdk')
 optdepends=('gdb: for cuda-gdb')
 options=(!strip staticlibs)
 install=cuda.install
-source=(https://developer.download.nvidia.com/compute/cuda/9.1/secure/Prod/local_installers/cuda_${pkgver}_387.26_linux.run
+source=(https://developer.nvidia.com/compute/cuda/9.1/Prod/local_installers/cuda_${pkgver}_387.26_linux
         cuda.sh
         cuda.conf
         cuda-findgllib_mk.diff)
@@ -25,7 +25,7 @@ sha512sums=('492a5fa58fc93ac718ca093f24bb5e74dd2586338c42f2e11e328c7f16756e3511a
             '6d67213204809629879e37108af0ba488b47248387b6a862bb2e3e22cd80303685fa0ffc335836eaced5be9b83f6c5f4f10a38c37dfea59a9c26b5ad85b07506')
 
 prepare() {
-  sh cuda_${pkgver}_387.26_linux.run -extract=${srcdir}
+  sh cuda_${pkgver}_387.26_linux -extract=${srcdir}
   ./cuda-linux.9.1.85-23083092.run --noexec --keep
   ./cuda-samples.9.1.85-23083092-linux.run --noexec --keep
 
