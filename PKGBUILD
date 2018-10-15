@@ -1,7 +1,7 @@
 # Maintainer: André Missaglia <andre.missaglia@gmail.com>
 pkgname=kcompose
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility tool for managing kafka"
 arch=('any')
 url="https://github.com/andremissaglia/kcompose"

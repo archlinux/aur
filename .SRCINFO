@@ -1,7 +1,7 @@
 pkgbase = kcompose
 	pkgdesc = Utility tool for managing kafka
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/andremissaglia/kcompose
 	arch = any
 	license = GPL3
