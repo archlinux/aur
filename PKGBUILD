@@ -13,7 +13,7 @@ license=('custom')
 provides=("quartus" "quartus-free")
 conflicts=("quartus" "quartus-free")
 
-_alteradir="/opt/altera-130"
+_alteradir="/opt/altera130"
 
 if [[ $CARCH = i686 ]]
 then
@@ -45,7 +45,7 @@ md5sums=('ae91ab69beab18da33e9c6d1c780a8f2'
 noextract=("max-${pkgver}.qdz"
 		   "cyclone-${pkgver}.qdz")
 
-options=('!strip' '!upx')
+options=('!strip')
 
 PKGEXT=".pkg.tar"
 
