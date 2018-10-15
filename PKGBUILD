@@ -1,7 +1,7 @@
 # Maintainer: Ethan Rakoff <ethan@ethanrakoff.com>
 
 pkgname=threemawebqt-git
-pkgver=r3.adbd87f
+pkgver=r2.079de78
 pkgrel=1
 pkgdesc="Thin client for Threema Web, an E2E encrypted messaging app."
 arch=('i686' 'x86_64')
