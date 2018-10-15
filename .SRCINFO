@@ -9,6 +9,7 @@ pkgbase = prosody-hg
 	arch = armv7h
 	license = MIT
 	checkdepends = luacheck
+	checkdepends = shellcheck
 	makedepends = mercurial
 	depends = lua51
 	depends = lua51-socket

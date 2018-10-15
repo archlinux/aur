@@ -21,7 +21,7 @@ license=('MIT')
 depends=('lua51' 'lua51-socket' 'lua51-expat' 'lua51-filesystem' 'libidn'
          'openssl')
 makedepends=('mercurial')
-checkdepends=('luacheck')
+checkdepends=('luacheck' 'shellcheck')
 conflicts=('prosody')
 provides=('prosody')
 optdepends=(
