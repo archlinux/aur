@@ -1,0 +1,26 @@
+pkgbase = avrdude-bobdude
+	pkgdesc = Download/upload/manipulate the ROM and EEPROM contents of AVR microcontrollers. Version which is compatible with bobdude
+	pkgver = 6.3
+	pkgrel = 1
+	url = http://www.nongnu.org/avrdude/
+	arch = x86_64
+	license = GPL
+	depends = readline
+	depends = libftdi
+	depends = libusb
+	provides = avrdude
+	conflicts = avrdude
+	conflicts = libftdi-compat
+	conflicts = libusb-compat
+	source = http://download.savannah.gnu.org/releases/avrdude/avrdude-6.3.tar.gz
+	source = http://download.savannah.gnu.org/releases/avrdude/avrdude-6.3.tar.gz.sig
+	source = libavrdude.pc
+	validpgpkeys = EF497ABE47ED91B3FC3D7EA54D902FF7723BDEE9
+	validpgpkeys = 5E84F980C3CAFD4BB5841070F48CA81B69A85873
+	validpgpkeys = F48CA81B69A85873
+	md5sums = 58bb42049122cf80fe4f4d0ce36d92ee
+	md5sums = SKIP
+	md5sums = 5db7bbff83f3b2490e4d3b7c52855071
+
+pkgname = avrdude-bobdude
+

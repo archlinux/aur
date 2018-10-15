@@ -1,0 +1,11 @@
+prefix=/usr
+exec_prefix=/usr/bin
+libdir=/usr/lib
+includedir=/usr/include
+
+Name: libavrdude
+Description: Library to Download/upload/manipulate the ROM and EEPROM contents of AVR microcontrollers
+Requires: libusb-1.0 libftdi1
+Version: 1.4
+Libs: -L${libdir} -lavrdude
+Cflags: -I${includedir}
