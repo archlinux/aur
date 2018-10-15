@@ -21,12 +21,17 @@ build() {
   cd "${srcdir}/${_github_project}-${_pkgver}"
   mkdir -p build
   cd build
-  cmake .. -DCMAKE_BUILD_TYPE=Release \
-	-DCMAKE_INSTALL_PREFIX=/usr \
-	-DCMAKE_INSTALL_LIBDIR=lib \
-	-DUSE_WX_GRAPHICS_CONTEXT=OFF \
-	-DUSE_WX_OVERLAY=OFF \
-	-DKICAD_SCRIPTING_WXPYTHON=OFF
+    cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DKICAD_USE_OCE=OFF \
+    -DKICAD_USE_OCC=ON \
+    -DOCE_DIR=`dirname $(pacman -Ql oce | grep OCEConfig.cmake | awk '{ print $2 }' )` \
+    -DBUILD_GITHUB_PLUGIN=ON \
+    -DKICAD_SCRIPTING=ON \
+    -DKICAD_SCRIPTING_MODULES=ON \
+    -DKICAD_SCRIPTING_WXPYTHON=OFF \
+    -DKICAD_SCRIPTING_ACTION_MENU=ON
 
   make
 }
