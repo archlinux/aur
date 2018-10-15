@@ -1,14 +1,14 @@
 # Maintainer: Scott Lawrence <bytbox@gmail.com>
 pkgname=sloc-git
-pkgver=20180814
+pkgver=20180815
 pkgrel=1
 pkgdesc="Simply counts source lines of code"
 arch=('i686' 'x86_64')
 url="https://github.com/bytbox/sloc"
 license=('MIT')
-depends=('go')
+depends=()
 optdepends=('perl-datetime' 'perl-json' 'perl-switch' 'gnuplot')
-makedepends=()
+makedepends=('go')
 provides=()
 conflicts=()
 replaces=()

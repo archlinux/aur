@@ -1,16 +1,16 @@
 pkgbase = sloc-git
 	pkgdesc = Simply counts source lines of code
-	pkgver = 20180814
+	pkgver = 20180815
 	pkgrel = 1
 	url = http://github.com/bytbox/sloc
 	arch = i686
 	arch = x86_64
 	license = MIT
-	depends = go
 	optdepends = perl-datetime
 	optdepends = perl-json
 	optdepends = perl-switch
 	optdepends = gnuplot
+	makedepends = go
 
 pkgname = sloc-git
 
