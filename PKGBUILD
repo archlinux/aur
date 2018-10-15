@@ -19,7 +19,7 @@
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
 pkgver=4.0.2
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC)"
 arch=('i686' 'x86_64')
@@ -34,7 +34,7 @@ depends=('alsa-lib' 'aom' 'bzip2' 'celt' 'chromaprint-fftw' 'codec2' 'fontconfig
          'libxext' 'libwebp' 'libxml2' 'libxv' 'lilv' 'libgl' 'lv2' 'ndi-sdk' 'openal'
          'opencore-amr' 'opencl-driver' 'opencl-icd-loader' 'openh264'
          'openjpeg2' 'libopenmpt-svn' 'opus' 'rockchip-mpp' 'rubberband'
-         'rtmpdump' 'sdl2' 'smbclient' 'speex' 'srt' 'shine' 'tesseract'
+         'rtmpdump' 'sdl2' 'speex' 'srt' 'shine' 'tesseract'
          'twolame' 'v4l-utils' 'vid.stab' 'vo-amrwbenc' 'xvidcore' 'xz' 'wavpack'
          'zeromq' 'zimg' 'zlib' 'zvbi' 'libvorbisenc.so' 'libvorbis.so' 'libvpx.so'
          'libx264.so' 'libx265.so' 'snappy' 'sndio' 'xavs')
@@ -161,7 +161,6 @@ build() {
     --enable-librubberband \
     --enable-librtmp  \
     --enable-libshine \
-    --enable-libsmbclient \
     --enable-libsnappy \
     --enable-libsoxr \
     --enable-libspeex \
