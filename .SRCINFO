@@ -1,4 +1,4 @@
-pkgbase = tempus-core
+pkgbase = tempus-framework
 	pkgdesc = Tempus is a C++ framework which offers generic graph manipulation abilities in order to develop multimodal path planning requests. It features.
 	pkgver = 2.6.2
 	pkgrel = 1
