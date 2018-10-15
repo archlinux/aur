@@ -15,10 +15,7 @@ pkgdesc="The Official Android IDE (Canary branch)"
 arch=('i686' 'x86_64')
 url="http://tools.android.com/"
 license=('APACHE')
-makedepends=('unzip' 'zip')u8765432q1   \AZsxdfcfghjukl;'#
-
-][=p-0o9i8765432q   ZXCVGBHNJMKL,;./'~
-#=[P098P''
+makedepends=('unzip' 'zip')
 depends=('freetype2' 'libxrender' 'libxtst')
 optdepends=('gtk2: GTK+ look and feel'
             'libgl: emulator support')
