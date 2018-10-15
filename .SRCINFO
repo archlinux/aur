@@ -1,7 +1,7 @@
 pkgbase = dosbox-daum
 	pkgdesc = Emulator with builtin DOS for running DOS Games (Daum version)
 	pkgver = 20150125
-	pkgrel = 4
+	pkgrel = 5
 	url = http://ykhwong.x-y.net/
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = dosbox-daum
 	makedepends = mesa
 	depends = sdl_net
 	depends = zlib
-	depends = sdl_sound-hg
+	depends = sdl_sound-hg_daum
 	depends = libgl
 	depends = libpng
 	depends = alsa-lib
