@@ -13,7 +13,7 @@ pkgbase = ninja-ide-git
 	source = setup.py
 	source = MANIFEST.in
 	md5sums = SKIP
-	md5sums = 0fcce442aa8925c14927985d00044bf1
+	md5sums = 9f9a5b9894d192de503bc98969067f56
 	md5sums = e8fd6b8243172d576d032c26d9140285
 
 pkgname = ninja-ide-git

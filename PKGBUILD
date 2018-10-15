@@ -14,7 +14,7 @@ source=("git+https://github.com/ninja-ide/ninja-ide.git"
         "setup.py"
         "MANIFEST.in")
 md5sums=('SKIP'
-         '0fcce442aa8925c14927985d00044bf1'
+         '9f9a5b9894d192de503bc98969067f56'
          'e8fd6b8243172d576d032c26d9140285')
 
 pkgver() {
