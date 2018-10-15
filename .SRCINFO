@@ -1,5 +1,5 @@
 pkgbase = blink-server
-	pkgdesc = The desktop-side server needed in order to run the Blink Android Application
+	pkgdesc = The desktop-side server needed in order to run the Blink Android mouse application
 	pkgver = 1.0
 	pkgrel = 2
 	url = https://github.com/drpain/blink-server
