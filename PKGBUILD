@@ -99,6 +99,7 @@ build() {
 package() {
   cd "$srcdir/$pkgname"
   make -f Makefile.autotools install DESTDIR="$pkgdir"
+  install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname COPYING
 }
 
 # vim:set sw=2 et:
