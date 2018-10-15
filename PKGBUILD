@@ -54,7 +54,7 @@ makenconfig=
 prepare() {
   cd "${srcdir}/linux-$archlinux_linux_version"
 
-  msg2 "BLD patches"
+  printf '%b' "  \e[1;36m->\e[0m\033[1m BLD patches\n"
   patch -Np1 -i "${srcdir}/${_BLDpatch}"
 
   cp -Tf ../config .config
