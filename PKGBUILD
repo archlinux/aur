@@ -17,6 +17,5 @@ package()
 {
 	cd "$srcdir/${pkgname%-git}"
 	install -D rpglelint $pkgdir/usr/bin/rpglelint
-	install -D RPG/Parser.pm $pkgdir/usr/share/perl5/vendor_perl/RPG/Parser.pm
-	install -D RPG/Linter.pm $pkgdir/usr/share/perl5/vendor_perl/RPG/Linter.pm
+	install -D RPG/ $pkgdir/usr/share/perl5/vendor_perl/RPG/
 }
