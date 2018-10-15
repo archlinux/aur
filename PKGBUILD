@@ -1,7 +1,7 @@
 # Maintainer: Michał Lisowski <lisu@riseup.net>
 
 pkgname=thunderbird-firetray-57-git
-pkgver=r603.15a4d3e
+pkgver=r604.acbfa29
 pkgrel=1
 pkgdesc="Js-ctypes rewrite of the binary XPCOM version of Firetray"
 arch=('any')
@@ -23,12 +23,13 @@ build() {
 }
 
 package() {
+  build=${pkgver##*.}
   cd "$srcdir/$pkgname"
-  cd build-15a4d3e
+  cd build-${build}
   emid="$(sed -n '/.*<em:id>\(.*\)<\/em:id>.*/{s//\1/p;q}' install.rdf)"
 
   install -d -m755 "${pkgdir}/usr/lib/thunderbird/extensions/${emid}"
   cd "${pkgdir}/usr/lib/thunderbird/extensions/${emid}"
 
-  unzip "${srcdir}/${pkgname}/build-15a4d3e/firetray-*.xpi"
+  unzip "${srcdir}/${pkgname}/build-${build}/firetray-*.xpi"
 }

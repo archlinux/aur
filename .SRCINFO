@@ -1,6 +1,6 @@
 pkgbase = thunderbird-firetray-57-git
 	pkgdesc = Js-ctypes rewrite of the binary XPCOM version of Firetray
-	pkgver = r603.15a4d3e
+	pkgver = r604.acbfa29
 	pkgrel = 1
 	url = https://github.com/firetray-updates/FireTray
 	arch = any
