@@ -2,11 +2,11 @@
 
 _pkgname=sickrage2
 pkgname=$_pkgname-git
-pkgver=2018.06.15.1.r1.g807c5ae37
+pkgver=2018.10.16.3.r1.g2a781a035
 pkgrel=1
 pkgdesc="Automatic video library manager for TV shows"
 arch=('any')
-url="https://github.com/SickRage/SickRage"
+url="https://github.com/SickChill/SickChill"
 license=('GPL3')
 #'python2-vcr' 'unrar'
 makedepends=('git')
@@ -22,12 +22,12 @@ provides=($_pkgname 'sickrage')
 conflicts=($_pkgname 'sickrage')
 options=('!strip')
 install=$pkgname.install
-source=("$pkgname::git://github.com/SickRage/SickRage.git"
+source=("$pkgname::git+https://github.com/SickChill/SickChill.git"
         'sickrage.service'
         'sickrage.sysusers'
         'sickrage.tmpfile')
 md5sums=('SKIP'
-         'fe94d9719f0d3a868f62efe9f3763a2d'
+         'daaec89ca6f45338733cad43eae8eb21'
          '6a7db7e14e74072d29e482b06b41dfa7'
          'f7a12df978d649da4e77d88e03f50252')
 
@@ -41,10 +41,10 @@ pkgver() {
 #  sed -i 's/UnRAR2/unrar2/g' lib/unrar2/test_UnRAR2.py
 #}
 
-build() {
-  cd $pkgname
-  python2 setup.py --quiet build
-}
+#build() {
+#  cd $pkgname
+#  python2 setup.py --quiet build
+#}
 
 #check() {
 #  cd $pkgname

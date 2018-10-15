@@ -1,8 +1,8 @@
 pkgbase = sickrage2-git
 	pkgdesc = Automatic video library manager for TV shows
-	pkgver = 2018.06.15.1.r1.g807c5ae37
+	pkgver = 2018.10.16.3.r1.g2a781a035
 	pkgrel = 1
-	url = https://github.com/SickRage/SickRage
+	url = https://github.com/SickChill/SickChill
 	install = sickrage2-git.install
 	arch = any
 	license = GPL3
@@ -18,12 +18,12 @@ pkgbase = sickrage2-git
 	conflicts = sickrage2
 	conflicts = sickrage
 	options = !strip
-	source = sickrage2-git::git://github.com/SickRage/SickRage.git
+	source = sickrage2-git::git+https://github.com/SickChill/SickChill.git
 	source = sickrage.service
 	source = sickrage.sysusers
 	source = sickrage.tmpfile
 	md5sums = SKIP
-	md5sums = fe94d9719f0d3a868f62efe9f3763a2d
+	md5sums = daaec89ca6f45338733cad43eae8eb21
 	md5sums = 6a7db7e14e74072d29e482b06b41dfa7
 	md5sums = f7a12df978d649da4e77d88e03f50252
 
