@@ -1,5 +1,5 @@
 pkgname=0xffff
-pkgver=0.7
+pkgver=0.8
 pkgrel=1
 pkgdesc="Open Free Fiasco Firmware Flasher"
 arch=("x86_64" "i686")
