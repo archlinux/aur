@@ -24,7 +24,7 @@ source_i686=("http://archive.trisquel.info/trisquel/pool/main/f/firefox/${s_pkgn
 
 package() {
   tar xJf ${srcdir}/data.tar.xz -C ${pkgdir}/
-  msg2 "Cleaning up unwanted files..."
+  printf '%b' "  \e[1;36m->\e[0m\033[1m Cleaning up unwanted files...\n"
   rm -rv "${pkgdir}"/{etc/apport,etc/apparmor.d,usr/share/apport,usr/share/lintian}
 }
 
