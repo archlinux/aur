@@ -1,8 +1,8 @@
 # Maintainer: Sean Enck <enckse@gmail.com>
 
 pkgname=oragono
-pkgver=0.11.0
-pkgrel=4
+pkgver=0.12.0
+pkgrel=1
 pkgdesc="A modern IRC server written in Go."
 arch=('x86_64')
 url="https://github.com/oragono/oragono"
@@ -15,15 +15,13 @@ source=("git+$url#tag=v$pkgver"
         "oragono.service"
         "oragono.sysusers"
         "path.patch"
-        "oragono.tmpfiles"
-        "spaces-240.patch")
+        "oragono.tmpfiles")
 sha256sums=('SKIP'
             'SKIP'
             'd35dd5205e3b607ee105a1252677d0607d0c35636ee3e6057275b5f13e555858'
             '7e214caa8bee053adac26a00a17ed732970e86665cbe31553b1d3d609f0a49b4'
             'be7b802fa047c94e4b714a9232cccd2d8f5db356fefd4c01bc970d5be23d4943'
-            'd56a8935891bc421683e48245786c9f8d9d4c449197de5f455ce7d7804907c7a'
-            '21e9280caf4ddd4e940c49921a73b034b87d7c0dbfa4e8172a996df18853f63c')
+            'd56a8935891bc421683e48245786c9f8d9d4c449197de5f455ce7d7804907c7a')
 backup=('etc/oragono.conf')
 build() {
     export GOPATH=$(pwd)/..
@@ -33,7 +31,6 @@ build() {
     git config submodule.vendor.url "$srcdir"/oragono-vendor
     git submodule update
     patch -p1 < ../path.patch
-    patch -p1 < ../spaces-240.patch
     cd vendor/github.com/$pkgname
     rm -rf $pkgname
     mkdir -p $pkgname
