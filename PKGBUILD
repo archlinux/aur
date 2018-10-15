@@ -4,7 +4,7 @@
 
 pkgname=cuda-9.1
 pkgver=9.1.85
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA's GPU programming toolkit. Version 9.1"
 arch=('x86_64')
 url="http://www.nvidia.com/object/cuda_home.html"
