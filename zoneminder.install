@@ -176,7 +176,6 @@ post_upgrade() {
     
     systemctl start zoneminder
     
-    echo
     echo Update complete.
     echo
 }

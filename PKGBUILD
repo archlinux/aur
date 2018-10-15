@@ -38,7 +38,7 @@
 
 pkgname=zoneminder
 pkgver=1.32.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A full-featured, open source, state-of-the-art video surveillance software system'
 arch=('x86_64')
 url='https://zoneminder.com/'
@@ -98,9 +98,6 @@ prepare () {
     
     # Fix the launcher
     sed -i 's|localhost/zm|localhost:8095|g' misc/$pkgname.desktop.in
-    
-    # Temporary fix for Montage Review
-    sed -i 's|/zm/index.php|/index.php|g' web/skins/classic/views/js/montagereview.js
 }
 
 build() {
@@ -144,6 +141,9 @@ package() {
     
     # Link ZM_WEBDIR/api/app/tmp to ZM_TMPDIR
     ln -sf /var/tmp/$pkgname            $pkgdir/srv/$pkgname/www/api/app/tmp
+    
+    # Temporary fix for hardcoded /zm/ links (credit goes to @Kubax on AUR)
+    ln -sf /srv/$pkgname/www            $pkgdir/srv/$pkgname/www/zm
     
     # Set correct permissions for ZM_CONFIG_DIR & ZM_CONFIG_SUBDIR
     chmod -R 755                        $pkgdir/etc/$pkgname

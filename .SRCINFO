@@ -1,7 +1,7 @@
 pkgbase = zoneminder
 	pkgdesc = A full-featured, open source, state-of-the-art video surveillance software system
 	pkgver = 1.32.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zoneminder.com/
 	install = zoneminder.install
 	arch = x86_64
