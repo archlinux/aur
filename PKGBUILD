@@ -1,7 +1,7 @@
 # Maintainer: Dhananjay Balan <mail@dbalan.in>
 
 pkgname=minio-client
-pkgver=2018_06_09T02_18_09Z
+pkgver=2018_09_26T00_42_43Z
 _binname=mcli
 pkgrel=1
 pkgdesc='Replacement for ls, cp, mkdir, diff and rsync commands for filesystems and object storage'
