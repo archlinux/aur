@@ -1,7 +1,7 @@
 # Maintainer: Daniel Mensinger <daniel@mensinger-ka.de>
 pkgname=modbus-sma
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="C++ library for accessing the the modbus interface of SMA inverters"
 arch=('x86_64')
 url="https://github.com/mensinda/modbusSMA"
@@ -14,7 +14,9 @@ sha256sums=('1a1170f7c9db766289f304cab8e65c5421a720fd9ed7fab6ea4f7785625d90fc')
 prepare() {
   cd "modbusSMA"
 
-  [ -d build ] && rm -rf build
+  if [ -d build ]; then
+    rm -rf build;
+  fi
 }
 
 build() {
