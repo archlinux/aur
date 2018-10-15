@@ -7,6 +7,10 @@ post_install() {
 
   sudo -Hu mycroft-core bash -c '/usr/share/mycroft-core/venv_init'
 
+  # Create Log files
+  mkdir -p /var/log/mycroft
+  chown -R mycroft-core:mycroft-core /var/log/mycroft
+  chmod g+w /var/log/mycroft
 
   echo "*** ATTENTION ***"
   echo ""
@@ -29,8 +33,9 @@ post_upgrade() {
 }
 
 post_remove() {
-  groupdel mycroft-core
   userdel mycroft-core
+  groupdel mycroft-core
   rm -rf /usr/share/mycroft-core
   rm -rf /opt/mycroft
+  rm -rf /var/log/mycroft
 }

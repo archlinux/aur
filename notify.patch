@@ -1,12 +1,20 @@
---- start-mycroft.sh	2018-06-08 22:18:28.000000000 +0200
-+++ start_ew	2018-06-12 10:44:11.821082101 +0200
-@@ -128,9 +128,6 @@
- function check-dependencies() {
-   if [ ! -f .installed ] || ! md5sum -c &> /dev/null < .installed; then
-     echo "Please update dependencies by running ./dev_setup.sh again."
--    if command -v notify-send >/dev/null; then
--      notify-send "Mycroft Dependencies Outdated" "Run ./dev_setup.sh again"
--    fi
-   fi
+--- start-mycroft.sh	2018-10-15 15:34:39.869047990 +0200
++++ start_ew	2018-10-15 15:35:34.687065663 +0200
+@@ -150,17 +150,6 @@
+         else
+             auto_update="false"
+         fi
+-
+-        if [ "$auto_update" == "true" ] ; then
+-            bash dev_setup.sh
+-        else
+-            echo "Please update dependencies by running ./dev_setup.sh again."
+-            if command -v notify-send >/dev/null ; then
+-                # Generate a desktop notification (ArchLinux)
+-                notify-send "Mycroft Dependencies Outdated" "Run ./dev_setup.sh again"
+-            fi
+-            exit 1
+-        fi
+     fi
  }
  
