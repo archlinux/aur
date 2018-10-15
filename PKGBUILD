@@ -90,6 +90,18 @@ build() {
       fi
   fi
 
+  # For GSL compatibility we need the full link interface, which includes
+  # libgslcblas, so disable --as-needed with GCC:
+  sed -i '/ENABLE_IF_LINKS(DEAL_II_LINKER_FLAGS "-Wl,--as-needed")/d' \
+      ${srcdir}/${_realname}-$pkgver/cmake/setup_compiler_flags_gnu.cmake
+
+  sed -i '116ifedisableexcept(FE_INVALID);\n' \
+      ${srcdir}/${_realname}-$pkgver/tests/quick_tests/scalapack.cc
+
+
+  # Also remove from LDFLAGS if necessary
+  LDFLAGS=$(echo $LDFLAGS | sed 's/--as-needed,//')
+
   # Skip some warnings that appear if Trilinos uses OpenMP pragmas in headers:
   extra_warning_flags=" -Wno-unknown-pragmas"
 
