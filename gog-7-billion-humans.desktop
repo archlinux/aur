@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Value=1.0
+Type=Application
+Name=7 Billion Humans
+GenericName=7 Billion Humans
+Comment=7 Billion Humans
+Icon=gog-7-billion-humans
+Exec=gog-7-billion-humans
+Categories=Application;Game;
+Terminal=false
+StartupNotify=false

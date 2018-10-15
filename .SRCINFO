@@ -1,0 +1,18 @@
+pkgbase = gog-7-billion-humans
+	pkgdesc = Automate swarms of office workers to solve puzzles inside your very own parallel computer made of people.
+	pkgver = 1.0.32487.23774
+	pkgrel = 1
+	url = https://www.gog.com/game/7_billion_humans
+	arch = x86_64
+	groups = games
+	license = custom
+	makedepends = lgogdownloader>=2.25
+	depends = openal
+	depends = sdl2
+	source = gog_7_billion_humans_1_0_32487_23774.tar.xz::gogdownloader://7_billion_humans/en3installer0
+	source = gog-7-billion-humans.desktop
+	md5sums = 3d42952a6b9329f1c64bda00b05c4afb
+	md5sums = e4fea045bc42fe460f84265499cfa764
+
+pkgname = gog-7-billion-humans
+
