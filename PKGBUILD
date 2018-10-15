@@ -1,6 +1,6 @@
 # Maintainer: Mathias Rav <m@git.strova.dk>
 pkgname=fbspinner
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Show a spinner on the framebuffer during system boot"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('gcc-libs')
 makedepends=('rust' 'cargo')
 source=("https://github.com/Mortal/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('1103f7b75cfac006de5ab8c7ee3fce1d')
+md5sums=('c1b7767b1e8cb5bf776ec6b8b18ca0ae')
 
 build() {
     cd "$pkgname-$pkgver"
