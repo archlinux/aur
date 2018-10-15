@@ -4,7 +4,7 @@
 #in order to run the script run 'bluetooth_server.py' from terminal. note: may need to be run as root.
 pkgname=blink-server
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="The desktop-side server needed in order to run the Blink Android mouse application"
 arch=('any')
 url="https://github.com/drpain/blink-server"
@@ -26,13 +26,6 @@ prepare() {
 }
 
 package() {
-    mkdir ${pkgdir}/usr
-    mkdir ${pkgdir}/usr/bin
-    mkdir ${pkgdir}/etc
-    mkdir ${pkgdir}/etc/systemd
-    mkdir ${pkgdir}/etc/systemd/system
-    mkdir ${pkgdir}/etc/systemd/system/bluetooth.service.d
-    
     
     install -D -m644 "start_compat_mode.conf" "${pkgdir}/etc/systemd/system/bluetooth.service.d/start_compat_mode.conf"
     
