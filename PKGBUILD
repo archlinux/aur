@@ -1,6 +1,6 @@
 # Maintainer: Samuel Mesa <samuelmesa at linuxmail.org>
 
-pkgname=tempus-framework
+pkgbase=tempus-framework
 pkgname=('tempus-core' 'tempus-wps-server')
 _pkgname=Tempus
 pkgver=2.6.2
