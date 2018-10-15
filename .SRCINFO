@@ -1,0 +1,29 @@
+pkgbase = tempus-core
+	pkgdesc = Tempus is a C++ framework which offers generic graph manipulation abilities in order to develop multimodal path planning requests. It features.
+	pkgver = 2.6.2
+	pkgrel = 1
+	url = http://ifsttar.github.io/Tempus/
+	arch = i686
+	arch = x86_64
+	license = GNU LGPLv2+
+	makedepends = cmake
+	makedepends = git
+	depends = gdal
+	depends = boost
+	depends = postgresql
+	depends = openmp
+	depends = fcgi
+	depends = libxml2
+	depends = python-pyqt5
+	optdepends = qgis
+	options = !buildflags
+	options = !makeflags
+	source = Tempus::git://github.com/Ifsttar/Tempus.git#tag=v2.6.2
+	source = fix-pthread-fastcgi.patch
+	md5sums = SKIP
+	md5sums = d56421e9ac5a0be4b6bca99247708c59
+
+pkgname = tempus-core
+
+pkgname = tempus-wps-server
+
