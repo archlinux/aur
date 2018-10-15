@@ -1,8 +1,8 @@
 # Maintainer: Oscar Morante <spacepluk@gmail.com>
 
 _version=2018.3.0
-_build=b4
-_randomstring=44012bad7987
+_build=b5
+_randomstring=01088ee0a3a8
 _prefix=/opt/UnityBeta
 
 pkgname=unity-editor-beta-language-zh-cn
@@ -21,6 +21,6 @@ PKGEXT='.pkg.tar' # Prevent compressing of the final package
 package() {
   _dest="${pkgdir}${_prefix}/Editor/Data/Localization"
   install -d "${_dest}"
-  mv zn-cn "${_dest}/zh-cn.po"
+  mv zh-cn "${_dest}/zh-cn.po"
 }
 
