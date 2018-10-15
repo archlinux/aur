@@ -1,11 +1,11 @@
-# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
 # Contributor: epitron <chris@ill-logic.com>
 # Contributor: Kamran Mackey <kamranm1200@gmail.com>
 # Contributor: richteer <richteer at lastprime.net>
 # Contributor: DrZaius <lou at fakeoutdoorsman.com>
 
 pkgname=ffmpeg-qsv-git
-pkgver=4.1.r91418.g267ba2aa96
+pkgver=4.1.r92189.g41ed2c3849
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (with Intel Quick Sync Video hardware acceleration, git version)'
 arch=('x86_64')
@@ -28,8 +28,8 @@ makedepends=('git' 'ffnvcodec-headers' 'ladspa' 'nasm')
 optdepends=('ladspa: LADSPA filters')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
-          'libswscale.so' 'ffmpeg' 'ffmpeg-git' 'qt-faststart')
-conflicts=('ffmpeg' 'ffmpeg-git')
+          'libswscale.so' 'ffmpeg' 'ffmpeg-qsv' 'ffmpeg-git')
+conflicts=('ffmpeg' 'ffmpeg-qsv' 'ffmpeg-git')
 source=("$pkgname"::'git://source.ffmpeg.org/ffmpeg.git')
 sha256sums=('SKIP')
 
@@ -48,7 +48,7 @@ build() {
     
     export PKG_CONFIG_PATH="${PKG_CONFIG_PATH:+${PKG_CONFIG_PATH}:}/opt/intel/mediasdk/lib64/pkgconfig"
     
-    msg2 'Running ffmpeg configure script. Please wait...'
+    printf '%s\n' '  -> Running ffmpeg configure script...'
     
     ./configure \
         --prefix='/usr' \
@@ -105,5 +105,5 @@ package() {
     
     make DESTDIR="$pkgdir" install
     
-    install -D -m755 tools/qt-faststart "${pkgdir}/usr/bin/qt-faststart"
+    install -D -m755 tools/qt-faststart -t "${pkgdir}/usr/bin"
 }
