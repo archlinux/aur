@@ -1,7 +1,7 @@
 pkgbase = swamp
 	pkgdesc = Teh AWS profile manager
 	pkgver = 0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/felixb/swamp
 	arch = x86_64
 	license = MIT
