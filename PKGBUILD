@@ -9,7 +9,7 @@ _pkgver_blendigo=4.0.16-892ac6c
 #_blender=$(blender -v | head -n1 | cut -f2 -d ' ')
 #_blender=$(expac -S "%v" blender|egrep -o [[:alnum:]]{1}.[[:alnum:]]{2})
 _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
-pkgrel=6
+pkgrel=7
 pkgdesc="Physically-based unbiased render engine"
 arch=('x86_64')
 url="http://www.indigorenderer.com/"
@@ -61,6 +61,15 @@ package() {
   
   # create system wide writable directory for materials cache
   install -d -m777 "${pkgdir}/opt/${pkgname}/materials"
+
+  # create system wide writable directory for opencl shaders cache
+  install -d -m777 ${pkgdir}/opt/${pkgname}/cache/program_cache
+
+  # create system wide writable settings file
+  install -m666 ${_package_src_dir}/default_settings.xml ${pkgdir}/opt/${pkgname}/settings.xml
+
+  # create system wide writable renders folder
+  install -d -m777 ${pkgdir}/opt/${pkgname}/renders
 }
 
 # vim:set ts=2 sw=2 et:

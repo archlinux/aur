@@ -1,7 +1,7 @@
 pkgbase = indigo-renderer
 	pkgdesc = Physically-based unbiased render engine
 	pkgver = 4.0.66
-	pkgrel = 6
+	pkgrel = 7
 	url = http://www.indigorenderer.com/
 	install = indigo.install
 	arch = x86_64
