@@ -1,0 +1,17 @@
+pkgbase = qogir-gtk-theme-git
+	pkgdesc = Qogir is a flat Design theme for GTK
+	pkgver = 2018.10.12.1.gf48955d
+	pkgrel = 1
+	url = https://github.com/vinceliuice/Qogir-theme
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gtk-engine-murrine
+	depends = gtk-engines
+	provides = qogir-gtk-theme
+	conflicts = qogir-gtk-theme
+	source = git+https://github.com/vinceliuice/Qogir-theme
+	sha256sums = SKIP
+
+pkgname = qogir-gtk-theme-git
+
