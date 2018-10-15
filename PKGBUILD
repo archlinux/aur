@@ -23,8 +23,6 @@
 # 2) By default, ZoneMinder now runs at localhost:8095 instead of localhost/zm (this can be changed by editing the provided conf files).
 #
 # 3) Apache was switched out in favor of Nginx, but remains as an optional dependency.
-#
-# 4) Nginx and MariaDB are hard-coded as dependencies, but can be easily removed in order to achieve a web server agnostic and/or database-less PKGBUILD.
 
 
 #######################################################################################################################
@@ -39,12 +37,12 @@
 
 
 pkgname=zoneminder
-pkgver=1.32.1
-pkgrel=3
-pkgdesc='A full-featured, open source, state-of-the-art video surveillance software system.'
+pkgver=1.32.2
+pkgrel=1
+pkgdesc='A full-featured, open source, state-of-the-art video surveillance software system'
 arch=('x86_64')
 url='https://zoneminder.com/'
-license=('GPLv2')
+license=('GPL2')
 depends=('polkit' 'ffmpeg' 'libmp4v2'
          # Remove the following line if you want to install ZoneMinder without a local database server, e.g. as part of a Multi-Server setup
          'mariadb'
@@ -77,11 +75,11 @@ source=("https://github.com/ZoneMinder/ZoneMinder/archive/$pkgver.tar.gz"
         "zoneminder-php.ini"
         "zoneminder.service"
         "zoneminder-tmpfile.conf")
-sha256sums=('a10c0c416e2127111b4d72f0046ed3a1f56708e3f4b48680848d755b01811d3c'
+sha256sums=('cf72cbd45d91ef0232c123dac5f908993f8941a62b9ae96975c4e6043bd4b9a9'
             '55be29e1eccb44d4ad0db8b23c37cec50f5341f8e498583d472ed1f0493876e3'
             'dbd231e97b950c698f0f501d6a53c7291c9985e766b09e3afe00cfe69a969f44'
             # zoneminder-nginx.conf
-            '7b14652fa05ed07043abb082ab699b36ea76c5bfc0fb6fbc4418cbd66e4e3181'
+            'b9d5694e12db2d79701769cb93a178e99d1a4c52c1c98ecdc7edaf8ede4b6820'
             # zoneminder-httpd.conf
             '1944e27db3b17edac152209b2b35e914ed9700a2ffe0255b012661197a328178'
             # zoneminder-php.ini
@@ -89,7 +87,7 @@ sha256sums=('a10c0c416e2127111b4d72f0046ed3a1f56708e3f4b48680848d755b01811d3c'
             # zoneminder.service
             '3e4de227e3154dffa887f2286c339ab3cf456f6d74a400b2786192b7e2b129c0'
             # zoneminder-tmpfile.conf
-            'd1341338538f2ac771e6b1eee9aa48e8b0da4a140024c74bc33a9f6b52443bdd')
+            'b69ac1deaaf3cf84b4ae4dbab794e1b062823de817f1e3a816ccf5438db440c0')
 
 prepare () {
     cd $pkgname-$pkgver
@@ -100,6 +98,9 @@ prepare () {
     
     # Fix the launcher
     sed -i 's|localhost/zm|localhost:8095|g' misc/$pkgname.desktop.in
+    
+    # Temporary fix for Montage Review
+    sed -i 's|/zm/index.php|/index.php|g' web/skins/classic/views/js/montagereview.js
 }
 
 build() {
@@ -111,9 +112,9 @@ build() {
           -DZM_RUNDIR=/run/$pkgname \
           -DZM_SOCKDIR=/run/$pkgname \
           -DZM_LOGDIR=/var/log/$pkgname \
+          -DZM_TMPDIR=/var/tmp/$pkgname \
           -DZM_CONTENTDIR=/var/lib/$pkgname \
           -DZM_CACHEDIR=/var/lib/$pkgname/cache \
-          -DZM_TMPDIR=/var/lib/$pkgname/temp \
           -DZM_WEBDIR=/srv/$pkgname/www \
           -DZM_CGIDIR=/srv/$pkgname/cgi-bin \
           -DZM_WEB_USER=http .
@@ -134,15 +135,15 @@ package() {
     install -dm775 -o http -g http      $pkgdir/var/log/$pkgname
     
     # Create ZM_CONTENTDIR and its subfolders
-    install -dm775 -o http -g http      $pkgdir/var/lib/$pkgname/{cache,events,images,temp}
-    
-    # Run script provided by upstream to create and/or link the needed folders with proper permissions
-    ./zmlinkcontent.sh -z $pkgdir/etc/$pkgname/zm.conf -w $pkgdir/srv/$pkgname/www -l $pkgdir/var/log/$pkgname -t $pkgdir/var/lib/$pkgname/temp $pkgdir/var/lib/$pkgname
+    install -dm775 -o http -g http      $pkgdir/var/lib/$pkgname/{cache,events,images}
     
     # Link ZM_CGIDIR and ZM_CACHEDIR inside ZM_WEBDIR and set correct permissions
-    ln -s /srv/$pkgname/cgi-bin         $pkgdir/srv/$pkgname/www
-    ln -s /var/lib/$pkgname/cache       $pkgdir/srv/$pkgname/www
-    chown -Rh http:http                 $pkgdir/srv/$pkgname
+    ln -sf /srv/$pkgname/cgi-bin         $pkgdir/srv/$pkgname/www
+    ln -sf /var/lib/$pkgname/cache       $pkgdir/srv/$pkgname/www
+    chown -Rh http:http                  $pkgdir/srv/$pkgname
+    
+    # Link ZM_WEBDIR/api/app/tmp to ZM_TMPDIR
+    ln -sf /var/tmp/$pkgname            $pkgdir/srv/$pkgname/www/api/app/tmp
     
     # Set correct permissions for ZM_CONFIG_DIR & ZM_CONFIG_SUBDIR
     chmod -R 755                        $pkgdir/etc/$pkgname
@@ -167,7 +168,6 @@ package() {
     # Install logrotate conf file
     install -Dm644 misc/logrotate.conf               $pkgdir/etc/logrotate.d/$pkgname
 
-    # Copy license and database schemas
-    install -Dm644 COPYING                           $pkgdir/usr/share/licenses/$pkgname/LICENSE
+    # Copy default database schemas
     install -Dm644 db/zm*.sql                        $pkgdir/usr/share/$pkgname/db
 }
