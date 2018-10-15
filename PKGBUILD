@@ -1,7 +1,7 @@
 # Maintainer: Nils Czernia <nils[at]czserver[dot[de>
 
 pkgname=grav-admin
-pkgver=1.5.1
+pkgver=1.5.3
 pkgrel=1
 pkgdesc="Grav is a modern open source flat-file CMS with admin plugin"
 arch=("any")
@@ -9,12 +9,12 @@ url="https://getgrav.org"
 license=("MIT")
 depends=("php")
 source=("https://github.com/getgrav/grav/releases/download/${pkgver}/${pkgname}-v${pkgver}.zip")
-sha256sums=("34f48f984ef734e66ccc1c9fc30f5d5f512ee0febc4576c63b657bf4c5461160")
+sha256sums=("055f6f248aa74c68436b6d639d9340d333136044e5946fc6d62271ad2b3b319b")
 
 package() {
     dirs=("assets" "backup" "cache" "images" "user")
 
-    cd "$pkgdir"
+    cd "${pkgdir}"
     install -dm0755 usr/share/webapps/${pkgname}/
     install -dm0755 var/log/${pkgname}/
     install -dm0755 var/lib/${pkgname}/
