@@ -1,6 +1,6 @@
 pkgbase = z-push
 	pkgdesc = open-source implementation of the ActiveSync protocol
-	pkgver = 2.4.1
+	pkgver = 2.4.4
 	pkgrel = 2
 	url = http://z-push.sf.net/
 	install = install
