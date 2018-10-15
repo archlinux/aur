@@ -1,7 +1,7 @@
 # Maintainer: Tomas Rychlik <tom@avocode.com>
 
 pkgname=avocode
-pkgrel=3
+pkgrel=1
 pkgver=3.5.6
 pkgdesc="Export code, specs and images from PSD & Sketch designs"
 url="http://avocode.com/"

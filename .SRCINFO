@@ -1,7 +1,7 @@
 pkgbase = avocode
 	pkgdesc = Export code, specs and images from PSD & Sketch designs
 	pkgver = 3.5.6
-	pkgrel = 3
+	pkgrel = 1
 	url = http://avocode.com/
 	install = avocode.install
 	arch = x86_64
