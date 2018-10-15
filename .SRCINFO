@@ -1,6 +1,6 @@
 pkgbase = ffmpeg-git
 	pkgdesc = Complete solution to record, convert and stream audio and video (git version)
-	pkgver = 4.1.r91418.g267ba2aa96
+	pkgver = 4.1.r92189.g41ed2c3849
 	pkgrel = 1
 	url = http://www.ffmpeg.org/
 	arch = i686
@@ -69,7 +69,6 @@ pkgbase = ffmpeg-git
 	provides = libswresample.so
 	provides = libswscale.so
 	provides = ffmpeg
-	provides = qt-faststart
 	conflicts = ffmpeg
 	source = ffmpeg-git::git://source.ffmpeg.org/ffmpeg.git
 	sha256sums = SKIP
