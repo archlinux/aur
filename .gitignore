@@ -1,4 +1,6 @@
 pkg/
 src/
+bitwarden-cli-git-repo/
+jslib-git-repo/
 *.tar.xz
 *.zip
