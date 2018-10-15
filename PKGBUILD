@@ -1,6 +1,6 @@
 pkgname=libmesh
 pkgrel=1
-pkgver=1.3.0
+pkgver=1.3.1
 pkgdesc="A C++ Finite Element Library"
 arch=("x86_64")
 url="http://libmesh.github.io/"
@@ -8,7 +8,7 @@ license=('LGPL')
 depends=('eigen' 'hdf5' 'boost-libs' 'intel-tbb' 'vtk' 'glpk' 'netcdf' 'nlopt')
 makedepends=('bison')
 source=("https://github.com/libMesh/libmesh/releases/download/v${pkgver}/libmesh-${pkgver}.tar.bz2")
-sha256sums=('a8cc2cd44f42b960989dba10fa438b04af5798c46db0b4ec3ed29591b8359786')
+sha256sums=('638cf30d05c249315760f16cbae4804964db8857a04d5e640f37617bef17ab0f')
 
 build() {
   cd "${srcdir}/libmesh-${pkgver}"
