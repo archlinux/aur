@@ -56,7 +56,7 @@ prepare() {
   # https://hg.mozilla.org/mozreview/gecko/rev/e820a3a4ce2284ecd2992dc827fedc357b75eeb7#index_header
   patch -Np1 -i ../0000-rust-1.29.patch
 
-  msg2 "Starting build..."
+   printf '%b' "  \e[1;36m->\e[0m\033[1m Starting build...\n"
   
   cat >.mozconfig <<END
 ac_add_options --enable-application=browser
@@ -131,7 +131,7 @@ pref("browser.shell.checkDefaultBrowser", false);
 pref("browser.tabs.remote.autostart", true);
 END
 
-  msg2 "Finishing..."
+  printf '%b' "  \e[1;36m->\e[0m\033[1m Finishing...\n"
   install -m755 -d ${pkgdir}/usr/share/applications
   install -m755 -d ${pkgdir}/usr/share/pixmaps
 
