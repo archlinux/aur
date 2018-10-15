@@ -2,7 +2,7 @@
 # Contributor: Hexchain Tong <i at hexchain dot org>
 
 pkgname=tpm2-tools
-pkgver=3.1.2
+pkgver=3.1.3
 pkgrel=1
 pkgdesc='TPM (Trusted Platform Module) 2.0 tools based on TPM2.0-TSS'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('tpm2-tss>=2.0.0' 'curl')
 checkdepends=('cmocka>=1.0.0')
 optdepends=('tpm2-abrmd: user space resource manager to swap objects in and out of the limited TPM memory')
 source=("$url/releases/download/$pkgver/$pkgname-$pkgver.tar.gz"{,.asc})
-sha256sums=('80136c2b247b4d8cdd34b70960622ba22126150a286e49f3e77cda5fcef36294'
+sha512sums=('37edf59e47168c42ffc66e948722753334ae3e00f3e258d9e801dffd259a763a1bf4f63b3feecf7728b4dade69ca5da15d631e1a606f68e10f7d314a1a757bdc'
             'SKIP')
 validpgpkeys=('5B482B8E3E19DA7C978E1D016DE2E9078E1F50C1'  # William Roberts
               'D75ED7AA24E50CD645C6F457C751E590D63F3D69'  # Javier Martinez Canillas
