@@ -3,7 +3,7 @@
 pkgname=apacheconfig
 pkgver=0.2.7
 pkgrel=1
-pkgdesc="Apache and Perl Config::General style configuration file parsing library"
+pkgdesc="Apache-style config parser"
 arch=('any')
 url="https://github.com/etingof/apacheconfig"
 license=('BSD')
