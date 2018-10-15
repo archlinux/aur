@@ -3,17 +3,17 @@
 # Maintainer: SanskritFritz (gmail)
 
 pkgname=fuse-emulator-sdl
-pkgver=1.5.4
+pkgver=1.5.6
 pkgrel=1
 pkgdesc="The Free Unix Spectrum Emulator (SDL UI)."
 arch=('i686' 'x86_64')
 url="http://fuse-emulator.sourceforge.net/fuse.php"
 license=("GPL2")
-depends=('sdl' "libspectrum>=1.4.3" 'libxml2' 'libpng')
+depends=('sdl' "libspectrum>=1.4.4" 'libxml2' 'libpng')
 conflicts=('fuse-emulator')
 source=("http://downloads.sourceforge.net/sourceforge/fuse-emulator/fuse-$pkgver.tar.gz"
         "fuse-emulator.png" "fuse-emulator.desktop")
-md5sums=('d0c2becb29eb05f1186ba40ac5954caa'
+md5sums=('40de756e7f216b9fd15fbb6025856b8c'
          '8c764eed97b5fc8d555bee1f0abf36f5'
          '883d4f908a2ca6601c5ec3f90c3b5596')
 
