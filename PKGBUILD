@@ -4,8 +4,8 @@
 #in order to run the script run 'bluetooth_server.py' from terminal. note: may need to be run as root.
 pkgname=blink-server
 pkgver=1.0
-pkgrel=1
-pkgdesk="The desktop-side server needed in order to run the Blink Android Application"
+pkgrel=2
+pkgdesc="The desktop-side server needed in order to run the Blink Android Application"
 arch=('any')
 url="https://github.com/drpain/blink-server"
 license=('MIT')

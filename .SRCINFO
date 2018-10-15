@@ -1,6 +1,7 @@
 pkgbase = blink-server
+	pkgdesc = The desktop-side server needed in order to run the Blink Android Application
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/drpain/blink-server
 	arch = any
 	license = MIT
