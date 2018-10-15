@@ -2,8 +2,8 @@
 
 _pkgname=krita
 pkgname="${_pkgname}-minimal"
-pkgver=4.1.1
-pkgrel=3
+pkgver=4.1.5
+pkgrel=1
 pkgdesc='Edit and paint images (less KDE dependencies)'
 arch=(x86_64)
 url='https://krita.org'
@@ -22,18 +22,15 @@ optdepends=('poppler-qt5: PDF filter'
 provides=("${_pkgname}=${pkgver}")
 conflicts=(calligra-krita krita-l10n "${_pkgname}")
 source=("https://download.kde.org/stable/krita/$pkgver/${_pkgname}-$pkgver.tar.gz"{,.sig}
-        'krita-libraw-0.19.patch'
         'replace-code.patch')
-sha256sums=('5cab10343f97a9944a1ab2e137cd0ade6029ce157118009660af286eb75ce9e3'
+sha256sums=('20603393afcb093a4c5fdf4a799d556600195a7b1e3db80a7003dce622bac8af'
             'SKIP'
-            '975b33492764f80f3b462a2bc589996f97ab1d7e667139023345e7eec40762ab'
-            '1e076c7de3ee1bd6622cd40d227d0c687170b410f0e297f78f97e0b7f7270d6d')
+            '3cf0c0b134687e784d66c6103b2bf78a559a0b698e746b5803a6d7419098315f')
 validpgpkeys=('05D00A8B73A686789E0A156858B9596C722EA3BD') # Boudewijn Rempt <foundation@krita.org>
 
 prepare() {
   mkdir -p build
   cd "${_pkgname}-$pkgver"
-  patch -p1 -i ../krita-libraw-0.19.patch # Remove features no longer available in libraw 0.19
   patch -Np1 -i '../replace-code.patch'
 }
 
