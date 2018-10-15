@@ -12,7 +12,9 @@ depends=(gtk3
          python-pyenchant
          webkit2gtk)
 makedepends=(python-setuptools)
-optdepends=('texlive-core: Export as PDF files')
+optdepends=("texlive-core: Export as PDF files"
+            "otf-fira-mono: Recommended font (OTF)"
+            "ttf-fira-mono: Recommended font (TTF)")
 provides=(uberwriter)
 conflicts=(uberwriter)
 source=("git+https://github.com/UberWriter/uberwriter.git"
