@@ -17,6 +17,10 @@ source=("https://github.com/KiCad/${_github_project}/archive/${_pkgver}.tar.gz")
 md5sums=('a0d5b122b82c05047744a011be7de0bd')
 install=kicad.install
 
+prepare() {
+  sed -i -e 's|boost/uuid/sha1.hpp|boost/uuid/detail/sha1.hpp|g' kicad-source-mirror-5.0.0/3d-viewer/3d_cache/3d_cache.cpp
+}
+
 build() {
   cd "${srcdir}/${_github_project}-${_pkgver}"
   mkdir -p build
