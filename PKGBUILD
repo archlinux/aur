@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=vimpager-git
-pkgver=2.06.r349.g897a467
+pkgver=2.06.r358.ge9380d1
 pkgrel=1
 pkgdesc='A vim-based script to use as a PAGER - git checkout'
 arch=('any')
@@ -16,10 +16,8 @@ makedepends=('git' 'pandoc')
 conflicts=('vimpager')
 provides=('vimpager')
 backup=('etc/vimpagerrc')
-source=('git+https://github.com/rkitover/vimpager.git'
-        'pandoc-2.0-fix.patch')
-sha256sums=('SKIP'
-            'cdb1619e958a5872a1cfcb5b861720380bd5ed3102516116958b1eb17fb7dd66')
+source=('git+https://github.com/rkitover/vimpager.git')
+sha256sums=('SKIP')
 
 pkgver() {
 	cd vimpager/
@@ -36,18 +34,11 @@ pkgver() {
 	fi
 }
 
-prepare() {
-  cd vimpager/
-
-  # Fix pandoc build failure
-  patch -Np1 -i "$srcdir/pandoc-2.0-fix.patch"
-}
-
 package() {
 	cd vimpager/
 
 	make PREFIX="/usr" SYSCONFDIR="/etc" DESTDIR="${pkgdir}" install
 
-  install -Dm644 debian/copyright "$pkgdir/usr/share/licenses/vimpager/copyright"
+  install -Dm644 debian/copyright "${pkgdir}/usr/share/licenses/vimpager/copyright"
 }
 

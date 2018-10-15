@@ -1,6 +1,6 @@
 pkgbase = vimpager-git
 	pkgdesc = A vim-based script to use as a PAGER - git checkout
-	pkgver = 2.06.r349.g897a467
+	pkgver = 2.06.r358.ge9380d1
 	pkgrel = 1
 	url = https://github.com/rkitover/vimpager
 	arch = any
@@ -12,9 +12,7 @@ pkgbase = vimpager-git
 	conflicts = vimpager
 	backup = etc/vimpagerrc
 	source = git+https://github.com/rkitover/vimpager.git
-	source = pandoc-2.0-fix.patch
 	sha256sums = SKIP
-	sha256sums = cdb1619e958a5872a1cfcb5b861720380bd5ed3102516116958b1eb17fb7dd66
 
 pkgname = vimpager-git
 
