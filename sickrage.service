@@ -7,10 +7,10 @@ Restart=on-success
 User=sickrage
 Group=sickrage
 
-#Type=forking
-#PIDFile=/run/sickrage/sickrage.pid
-#ExecStart=/usr/bin/env python2 /opt/sickrage/app/SickBeard.py --quiet --daemon --datadir /opt/sickrage/data --pidfile=/run/sickrage/sickrage.pid
-ExecStart=/usr/bin/env python2 /opt/sickrage/app/SickBeard.py --quiet --nolaunch --datadir /opt/sickrage/data
+Type=forking
+GuessMainPID=no
+#ExecStart=/usr/bin/env python2 /opt/sickrage/app/SickBeard.py --quiet --daemon --nolaunch --datadir=/opt/sickrage/data
+ExecStart=/usr/bin/python2 /opt/sickrage/app/SickBeard.py --quiet --daemon --nolaunch --datadir=/opt/sickrage/data
 
 [Install]
 WantedBy=multi-user.target
