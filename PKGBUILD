@@ -1,33 +1,39 @@
 # Maintainer: Piotr Rogoza <piotr dot p dot public at gmail dot com>
 # Contributor: Arnoud Willemsen <mail at lynthium.com>
 
-pkgname=nginx-devel
+pkgbase=nginx-devel
+pkgname=(nginx-devel nginx-devel-mod-naxsi)
 _pkgname=nginx
-pkgver=1.13.6
+pkgver=1.15.5
+_nginxver=$pkgver
 pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server - development version'
 url="http://nginx.org"
 arch=(i686 x86_64 armv6h)
-declare -A _modulesURL
-_configureOptions=()
+declare -A _modules_url
+_common_flags=()
 _add2source() {
   local key=$1 url=$2
   if [ $# -ne 2 ]; then
     return 1
   fi
-  _modulesURL+=([$key]="${url}")
+  _modules_url+=([$key]="${url}")
 }
-# naxsi: Application firewall {{{2
-# @link https://github.com/nbs-system/naxsi/tags
-_naxsi_ver=0.55.3
-#_naxsi_url="http://naxsi.googlecode.com/files/naxsi-core-${_naxsi_ver}.tgz"
+
+# naxsi: NAXSI is an open-source, high performance, low rules maintenance WAF for NGINX {{{2
+# @link: https://github.com/nbs-system/naxsi
+# @link: https://github.com/nbs-system/naxsi/releases
+_naxsi_ver=0.56
 _naxsi_url="naxsi-${_naxsi_ver}.tar.gz::https://github.com/nbs-system/naxsi/archive/${_naxsi_ver}.tar.gz"
-_add2source naxsi $_naxsi_url
+_add2source naxsi-source $_naxsi_url
+_add2source naxsi-rules naxsi.rules
 
 # nchan: a scalable, flexible pub/sub server for the modern web, replacment for push module {{{2
 # @link: https://nchan.io/
-_nchan_ver=1.1.4
+# @link: https://github.com/slact/nchan/releases
+_nchan_ver=1.2.3
 _nchan_url="nchan-${_nchan_ver}.tar.gz::https://github.com/slact/nchan/archive/v${_nchan_ver}.tar.gz"
+_add2source nchan $_nchan_url
 
 # concat: concatenate files in a given context: CSS and JS files usually {{{2
 # @link http://wiki.nginx.org/HttpConcatModule
@@ -37,8 +43,8 @@ _concat_url="concat-${_concat_ver}.tar.gz::https://github.com/alibaba/nginx-http
 _add2source concat $_concat_url
 
 # sflow: Operational performance monitoring with standard sFlow protoco {{{2
-# @link http://nginx-sflow-module.googlecode.com/
-# @link https://github.com/m0zes/nginx-sflow-module
+# @link: https://github.com/m0zes/nginx-sflow-module
+# @link: https://github.com/m0zes/nginx-sflow-module/releases
 _sflow_ver=0.9.10
 _sflow_url="sflow-${_sflow_ver}.tar.gz::https://github.com/m0zes/nginx-sflow-module/archive/release-${_sflow_ver}.tar.gz"
 _add2source sflow $_sflow_url
@@ -52,6 +58,7 @@ _add2source sflow $_sflow_url
 # ngx_http_auth_pam_module: HTTP Basic Authentication using PAM {{{2
 # @link http://web.iti.upv.es/~sto/nginx/
 # @link https://github.com/stogh/ngx_http_auth_pam_module/
+# @link https://github.com/sto/ngx_http_auth_pam_module/releases
 _http_auth_pam_ver=1.5.1
 http_auth_pam_url="http_auth_pam-${_http_auth_pam_ver}.tar.gz::https://github.com/stogh/ngx_http_auth_pam_module/archive/v${_http_auth_pam_ver}.tar.gz"
 _add2source http_auth_pam $_http_auth_pam_url
@@ -59,23 +66,24 @@ _add2source http_auth_pam $_http_auth_pam_url
 # ngx_headers_more: Set and clear input and output headers...more than "add"! {{{2
 # @link http://wiki.nginx.org/HttpHeadersMoreModule
 # @link https://github.com/openresty/headers-more-nginx-module/releases
-_headers_more_ver=0.32
+_headers_more_ver=0.33
 _headers_more_url="headers_more-${_headers_more_ver}.tar.gz::https://github.com/agentzh/headers-more-nginx-module/archive/v${_headers_more_ver}.tar.gz"
 _add2source headers_more $_headers_more_url
 
 # ModSecurity: Web application firewall {{{2
 # @link http://www.modsecurity.org/projects/modsecurity/nginx/index.html
-_modsecurity_ver=2.9.1
+_modsecurity_ver=3.0.0
 _modsecurity_url="http://www.modsecurity.org/tarball/$_modsecurity_ver/modsecurity-apache_${_modsecurity_ver}.tar.gz"
 _add2source modsecurity $_modsecurity_url
 
 # PageSpeed {{{2
 # @link https://developers.google.com/speed/pagespeed/module/build_ngx_pagespeed_from_source
-# @link https://github.com/pagespeed/ngx_pagespeed/releases
-_psol_ver=1.12.34.2-beta
-_psol_url="psol-${_psol_ver}.tar.gz::https://github.com/pagespeed/ngx_pagespeed/archive/v${_psol_ver}.tar.gz"
+# @link https://github.com/apache/incubator-pagespeed-ngx
+# @link https://github.com/apache/incubator-pagespeed-ngx/releases
+_psol_ver=1.13.35.2-stable
+_psol_url="psol-${_psol_ver}.tar.gz::https://github.com/apache/incubator-pagespeed-ngx/archive/v${_psol_ver}.tar.gz"
 _add2source psol $_psol_url
-_psol_name="ngx_pagespeed-${_psol_ver}"
+_psol_name="incubator-pagespeed-ngx-${_psol_ver}"
 
 # echo-nginx-module {{{2
 # @link https://github.com/openresty/echo-nginx-module
@@ -96,6 +104,7 @@ geoip
 gperftools
 libatomic_ops
 subversion
+apr-util
 )
 optdepends=(
 "sflowtool: analyzing sFlow data"
@@ -112,8 +121,6 @@ etc/nginx/nginx.conf
 etc/nginx/scgi_params
 etc/nginx/uwsgi_params
 etc/nginx/win-utf
-etc/nginx/naxsi.rules
-etc/nginx/naxsi_core.rules
 etc/logrotate.d/nginx
 )
 changelog='CHANGES.pkgbuild.md'
@@ -126,6 +133,7 @@ nginx-svn
 nginx-socket
 nginx-development-extra
 nginx-spdy
+nginx-mainline
 )
 provides=('nginx')
 source=(
@@ -133,23 +141,25 @@ http://nginx.org/download/${_pkgname}-${pkgver}.tar.gz
 # http://nginx.org/download/${_pkgname}-${pkgver}.tar.gz.asc
 nginx.service
 nginx.logrotate
-naxsi.rules
 nginx.conf.example
 nginx.socket
-${_modulesURL[*]}
+naxsi.rules
+${_modules_url[*]}
 )
 validpgpkeys=(
 )
-sha256sums=('8512fc6f986a20af293b61f33b0e72f64a72ea5b1acbcc790c4c4e2d6f63f8f8'
+sha256sums=('1a3a889a8f14998286de3b14cc1dd5b2747178e012d6d480a18aa413985dae6f'
             '65f5af0f27ce3c5263d99d70a57fd3b0cb62aa99df786205029e68563e41e1ee'
             '272907d3213d69dac3bd6024d6d150caa23cb67d4f121e4171f34ba5581f9e98'
-            'e299680e919a97c7ec06b62e4fabc3b5ead837fe486a5f87260bd16d0b51e112'
             '9174cfea524ed4839062dc267d1b561db9f512407682982be42979f98cbdfff7'
             '989b76a9157b7d24788f6b56027d1883d69a744e91d517bca290a88919864b63'
-            'c6d9dab8ea1fc997031007e2e8f47cced01417e203cd88d53a9fe9f6ae138720'
-            '600b33ffe3404fec319d119b231453fd45a06953a08edef0cde1360415aa2d89'
-            '958cc5a7a7430f93fac0fd6f8b9aa92fc1801efce0cda797d6029d44080a9b24'
-            '0b3c95d250772dc89ad8b49e47c1e024c5ae2c76c0cffa445e9fe05c4dd13495'
+            'e299680e919a97c7ec06b62e4fabc3b5ead837fe486a5f87260bd16d0b51e112'
+            'a3dcbab117a9c103bc1ea5200fc00a7b7d2af97ff7fd525f16f8ac2632e30fbf'
+            'e299680e919a97c7ec06b62e4fabc3b5ead837fe486a5f87260bd16d0b51e112'
+            '68242a30308b21f13de9a36f2aea5c3e34e8a4c0b7c6a37d3369334f6f847d36'
+            '51e288999c5903f4062afdca37a602c7ba14242120ba54cf22f90650b646d4dc'
+            '0a66dcadd32432460fab180be9f2efe24e911e3798917b2787ee710e02901eb4'
+            'ea44d9f33115db4737abe611e63e3f734fa18cb11d998354b093a40eb7a8e6be'
             '1b7d69a9210cf434804eb574618869fba2ddc95d3b0aea7c57205f7a15e920a4'
             '3b27e9eb0478cbba65ba0beb844c5361e2e2f9c21e5bee8803ea9e707f4bbb47')
 _addModule() {
@@ -169,7 +179,7 @@ _addModule() {
   fi
 
   if [ -d "$src" ]; then
-    _configureOptions+=(--add-module=$src)
+    _common_flags+=(--add-dynamic-module=$src)
   fi
 }
 _addExternalModule() {
@@ -222,6 +232,7 @@ fi
 export _cfgdir=/etc/nginx
 export _tmpdir=/var/lib/nginx
 export _logdir=/var/log/nginx
+
 build() {
   local _piddir=/run
   local _lockdir=/var/lock
@@ -232,7 +243,7 @@ build() {
 #   msg2 "Adding optional systemd socket activation support"
 #   patch -Np1 -i "$srcdir/socket.patch"
 
-  _configureOptions=(
+  _common_flags=(
     --prefix=$_cfgdir
     --sbin-path=/usr/bin/nginx
     --conf-path=$_cfgdir/nginx.conf
@@ -243,8 +254,9 @@ build() {
     --user=$_user
     --group=$_group
 
+    --with-compat
     --with-file-aio
-    --with-ipv6
+#     --with-ipv6
 #     --with-systemd
 
     --http-log-path=$_logdir/access.log
@@ -260,16 +272,17 @@ build() {
     --with-pcre-jit
   )
   # Core modules
-  _configureOptions+=(
+  _common_flags+=(
 #       --with-rtsig_module
     --with-select_module
     --with-poll_module
-#       --with-threads
+    --with-threads
   )
   # Optional HTTP modules
-  _configureOptions+=(
+  _common_flags+=(
     --with-http_addition_module
     --with-http_degradation_module
+    --with-http_slice_module
     --with-http_perl_module
     --with-http_flv_module
     --with-http_gzip_static_module
@@ -293,22 +306,25 @@ build() {
     --with-http_auth_request_module
   )
   # Mail modules
-  _configureOptions+=(
+  _common_flags+=(
     --with-mail
     --with-mail_ssl_module
 #     --with-imap                               # deprecated
 #     --with-imap_ssl_module                    # deprecated
   )
   # Additional modules from various patch
-  _configureOptions+=(
+  _common_flags+=(
 #     --with-http_spdy_module
     --with-http_v2_module
   )
 
   # Stream
-  _configureOptions+=(
+  _common_flags+=(
     --with-stream
+    --with-stream_geoip_module
+    --with-stream_realip_module
     --with-stream_ssl_module
+    --with-stream_ssl_preread_module
   )
 
   _modulesdir="$srcdir/modules"
@@ -318,7 +334,7 @@ build() {
   mkdir -p $_modulesdir
   cd $_modulesdir
 #   _addModule passenger /usr/lib/passenger/ext/nginx
-  _addModule   naxsi-${_naxsi_ver}     $srcdir/naxsi-core-${_naxsi_ver}/naxsi_src
+  _addModule   naxsi-${_naxsi_ver}     $srcdir/naxsi-${_naxsi_ver}/naxsi_src
   _addModule   nchan-${_nchan_ver}     $srcdir/nchan-${_nchan_ver}
   _addModule   concat-${_concat_ver}   $srcdir/nginx-http-concat-${_concat_ver}
   _addModule   ${_psol_name}           $srcdir/$_psol_name}
@@ -326,20 +342,21 @@ build() {
   if [ ! -L "$srcdir/$_psol_name/include" ]; then
     ln -s /usr/lib/psol/include $srcdir/$_psol_name/include
   fi
-  _addModule sflowtool-${_sflow_ver}           $srcdir/nginx-sflow-module-${_sflow_ver}
-  _addModule fancyindex-git                    git@github.com:aperezdc/ngx-fancyindex.git
-  _addModule http_auth_digest-git              git://github.com/samizdatco/nginx-http-auth-digest
-  _addModule http_auth_pam-${_http_auth_pam_ver}    $srcdir/ngx_http_auth_pam_module-${_http_auth_pam_ver}
-  _addModule headers_more-${_headers_more_ver} $srcdir/headers-more-nginx-module-${_headers_more_ver}
-  _addModule modsecurity-$_modsecurity_ver     modsecurity-apache_${_modsecurity_ver}/nginx/modsecurity
-  _addModule echo-nginx-module-git             git://github.com/openresty/echo-nginx-module
-#   _addModule owasp-modsecurity-crs             git://github.com/SpiderLabs/owasp-modsecurity-crs.git
+#   _addModule sflowtool-${_sflow_ver}                $srcdir/nginx-sflow-module-release-${_sflow_ver}
+  _addModule http_auth_pam-${_http_auth_pam_ver}    $srcdir/modules/ngx_http_auth_pam_module-${_http_auth_pam_ver}
+  _addModule headers_more-${_headers_more_ver}      $srcdir/headers-more-nginx-module-${_headers_more_ver}
+  _addModule modsecurity-$_modsecurity_ver          $srcdir/modsecurity-${_modsecurity_ver}/nginx/modsecurity
+  _addModule fancyindex-git                         git://github.com/aperezdc/ngx-fancyindex.git
+  _addModule http_auth_digest-git                   git://github.com/samizdatco/nginx-http-auth-digest
+  _addModule echo-nginx-module-git                  git://github.com/openresty/echo-nginx-module
+#   _addModule owasp-modsecurity-crs                git://github.com/SpiderLabs/owasp-modsecurity-crs.git
 
   cd "$srcdir"/${_pkgname}-$pkgver
-  ./configure ${_configureOptions[*]}
+  ./configure ${_common_flags[*]}
   make
+  make modules
 }
-package() {
+package_nginx-devel() {
   cd $_pkgname-$pkgver
   make DESTDIR="$pkgdir" install
 
@@ -353,7 +370,7 @@ package() {
   install -dm700 "$pkgdir"/$_tmpdir/proxy
 
   chmod 750 "$pkgdir"/$_logdir
-  chown http:log "$pkgdir"/$_logdir
+  chown root:root "$pkgdir"/$_logdir
 
   install -d "$pkgdir"/usr/share/nginx
   mv "$pkgdir"/etc/nginx/html/ "$pkgdir"/usr/share/nginx
@@ -367,10 +384,34 @@ package() {
   # man
   install -Dm644 "$srcdir"/${_pkgname}-$pkgver/man/nginx.8 "$pkgdir"/usr/share/man/man8/nginx.8
 
-  # naxsi
+  install -Dm644 "$srcdir"/nginx.conf.example "$pkgdir"/${_cfgdir}/nginx.conf.example
+
+  for i in ftdetect indent syntax; do
+    install -Dm644 contrib/vim/$i/nginx.vim \
+      "$pkgdir/usr/share/vim/vimfiles/$i/nginx.vim"
+  done
+}
+package_nginx-devel-mod-naxsi() {
+
+  pkgver=0.55.3
+  pkgrel=1
+  pkgdesc='Nginx Anti XSS & SQL Injection'
+  arch=('i686' 'x86_64')
+  depends=("nginx-devel=$_nginxver")
+  url="https://github.com/nbs-system/naxsi"
+  license=('GPL3')
+  backup=(
+    etc/nginx/naxsi.rules
+    etc/nginx/naxsi_core.rules
+  )
+
+  cd "$srcdir"/nginx-$_nginxver/objs
+  ls -la
+  for mod in *.so; do
+    install -Dm755 $mod "$pkgdir"/usr/lib/nginx/modules/$mod
+  done
+
   install -Dm644 "$srcdir"/naxsi-${_naxsi_ver}/naxsi_config/naxsi_core.rules \
     "$pkgdir"/${_cfgdir}/naxsi_core.rules
   install -Dm644 "$srcdir"/naxsi.rules "$pkgdir"/${_cfgdir}/naxsi.rules
-
-  install -Dm644 "$srcdir"/nginx.conf.example "$pkgdir"/${_cfgdir}/nginx.conf.example
 }
