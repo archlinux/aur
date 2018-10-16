@@ -1,7 +1,7 @@
 pkgbase = mesa-transform-feedback-git
 	pkgdesc = mesa with the RADV patches for VK_EXT_transform_feedback.
 	pkgver = 18.3.0_devel.105152.ff281e6204
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mesa3d.org
 	arch = x86_64
 	license = custom
@@ -44,7 +44,6 @@ pkgbase = mesa-transform-feedback-git
 	provides = opencl-mesa
 	provides = opengl-driver
 	provides = opencl-driver
-	conflicts = mesa-git
 	conflicts = mesa
 	conflicts = opencl-mesa
 	conflicts = vulkan-intel

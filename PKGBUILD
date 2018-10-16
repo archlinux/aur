@@ -14,7 +14,7 @@ pkgbase=mesa-transform-feedback-git
 pkgname=('mesa-transform-feedback-git')
 pkgdesc="mesa with the RADV patches for VK_EXT_transform_feedback."
 pkgver=18.3.0_devel.105152.ff281e6204
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'llvm-svn' 'clang-svn' 'xorgproto'
               'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libomxil-bellagio'
@@ -23,7 +23,7 @@ depends=('libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
          'libomxil-bellagio' 'llvm-libs-svn' 'libunwind' 'libglvnd' 'wayland' 'lm_sensors' 'libclc')
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
 provides=('mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau' 'vulkan-driver' 'opencl-mesa' 'opengl-driver' 'opencl-driver')
-conflicts=('mesa-git' 'mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau')
+conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau')
 url="https://www.mesa3d.org"
 license=('custom')
 source=(
