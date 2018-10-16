@@ -1,3 +1,4 @@
+# Upstream doesn't provide a systemd .service file
 # Copied from Fedora's opensm-3.3.17-4.fc22.x86_64.rpm
 # Modified to follow Arch layout
                                                      

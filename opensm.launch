@@ -1,7 +1,11 @@
 #!/bin/bash
+# There is a timing bug that intermittently causes signal 15 failures on start
+# Fedora's workaround is to use a separate script
 # Copied from Fedora's opensm-3.3.17-4.fc22.x86_64.rpm
-# Modified to just launch opensm
-# Will come back to adding multiple OpenSM daemons running at once, which is what the rest of Fedora's version is for
+# Following Arch's philosophy of deviating from upstream as little as possible,
+# modified to just launch opensm.
+# If you need simultaneous multiple interfaces, instead check out the AUR package
+# opensm-systemd-multiple-interfaces
 #
 # Launch the necessary OpenSM daemons for systemd
 
