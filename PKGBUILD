@@ -230,7 +230,6 @@ if $_uber_minimal; then
         -no-mirclient \
         -no-cups \
         -no-iconv \
-        -no-accessibility \
         -no-gif \
         -no-sql-mysql \
         -no-sql-psql \
