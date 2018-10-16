@@ -1,5 +1,5 @@
 pkgbase = jre
-	pkgdesc = Oracle Java Runtime Environment
+	pkgdesc = Oracle Java Runtime Environment (public release - end of support)
 	pkgver = 10.0.2
 	pkgrel = 1
 	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
