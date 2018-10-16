@@ -1,0 +1,34 @@
+pkgbase = phosh-next
+	pkgdesc = Merge requests that are lining up to be merged into the phosh's development branch
+	pkgver = next.20220923.2142.r0.g804f3759
+	pkgrel = 1
+	url = https://source.puri.sm/Librem5/phosh-next
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = GPL3
+	makedepends = meson
+	makedepends = git
+	makedepends = wayland-protocols
+	depends = gtk3
+	depends = libhandy>=1.1.90
+	depends = gnome-desktop
+	depends = gnome-session
+	depends = upower
+	depends = libpulse
+	depends = gcr
+	depends = feedbackd
+	depends = libnm
+	depends = evolution-data-server
+	depends = phoc-embedded-wlroots>=0.21.0
+	depends = gnome-shell
+	depends = callaudiod
+	depends = polkit
+	provides = phosh
+	conflicts = phosh
+	source = git+https://source.puri.sm/Librem5/phosh-next.git
+	source = pam_phosh
+	sha256sums = SKIP
+	sha256sums = b7793f80c533e84ad8adfe8bb46c69f107575e724aa9b53b41f370baa37e4fd5
+
+pkgname = phosh-next
