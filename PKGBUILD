@@ -1,4 +1,4 @@
-# Maintainer: James Harvey <jamespharvey20@gmail.com>
+# Maintainer: James P. Harvey <jamespharvey20 at gmail dot com>
 
 pkgname=libiwpm
 pkgver=1.0.5
@@ -9,7 +9,7 @@ url='https://www.openfabrics.org/downloads/libiwpm/README.html'
 license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
 depends=('libnl')
 source=("https://www.openfabrics.org/downloads/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('946a177c5cc912981ff08d7bca15977a')
+sha256sums=('0771a6de238edccb84a02559664f4fa58ea0e2c87ad1c3174538d84b48691227')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
