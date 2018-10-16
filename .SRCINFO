@@ -1,0 +1,18 @@
+pkgbase = gnucap-python-git
+	pkgdesc = Python bindings for Gnucap
+	pkgver = r113.a04f8b3
+	pkgrel = 1
+	url = https://gitlab.com/gnucap/gnucap-python/blob/master/README
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = gnucap
+	depends = python
+	depends = swig
+	provides = gnucap-python
+	conflicts = gnucap-python
+	source = git+https://gitlab.com/gnucap/gnucap-python.git
+	md5sums = SKIP
+
+pkgname = gnucap-python-git
+
