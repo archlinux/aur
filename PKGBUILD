@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=libkscreen
-pkgver=5.14.0
+pkgver=5.14.1
 pkgrel=1
 pkgdesc='KDE screen management software'
 arch=(x86_64)
@@ -13,7 +13,7 @@ depends=(qt5-x11extras libxrandr kwayland)
 makedepends=(extra-cmake-modules doxygen qt5-tools)
 groups=(plasma)
 source=("https://download.kde.org/stable/plasma/$pkgver/$pkgname-$pkgver.tar.xz"{,.sig})
-sha256sums=('b13d8e6b9a1f0cee69d58ca2fb4606491c0371a20d184a19c87c1271164b51bb'
+sha256sums=('63b3cb6da4731a9cd320b1ab1704b5f136cf9bd837f028ebad3b83d87afb16f1'
             'SKIP')
 validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E'  # Jonathan Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
