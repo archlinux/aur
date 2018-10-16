@@ -2,10 +2,14 @@
 
 _pkgname=jdk
 pkgname=jdk-devel
-_major=11
-_build=28
-_jname=${_pkgname}${_major}
-pkgver=${_major}b${_build}
+#_major=11
+#_build=28
+#_jname=${_pkgname}${_major}
+#pkgver=${_major}b${_build}
+pkgver=11.0.1
+_major=${pkgver/.*}
+_build=13
+_hash=90cf5d8f270a4347a95050320eef3fb7
 pkgrel=1
 pkgdesc="Oracle Java $_major Development Kit Snapshot"
 arch=('x86_64')
@@ -29,18 +33,21 @@ backup=("etc/java-$_jname/management/jmxremote.access"
         "etc/java-$_jname/sound.properties")
 options=('!strip') # JDK debug-symbols
 install=$pkgname.install
-source=("https://download.java.net/java/early_access/jdk${_major}/${_build}/BCL/${_pkgname}-${_major}+${_build}_linux-x64_bin.tar.gz"
+#source=("https://download.java.net/java/early_access/jdk${_major}/${_build}/BCL/${_pkgname}-${_major}+${_build}_linux-x64_bin.tar.gz"
+source=("http://download.oracle.com/otn-pub/java/jdk/${pkgver}+${_build}/${_hash}/${_pkgname}-${pkgver}_linux-x64_bin.tar.gz"
         'java.desktop'
         'jconsole.desktop'
         'java_16.png'
         'java_48.png'
         'LICENSE-Early-Adopter-Development-Agreement.txt')
-sha256sums=('58e7d9d42e5251803773c7b28e67b1848d3fe152cc7f150078285e61856c741f'
+sha256sums=('e7fd856bacad04b6dbf3606094b6a81fa9930d6dbb044bbd787be7ea93abc885'
             'ed7392cbad258da943d39e9a5fab1ee6ab6a287ac0c20172805d5dbfc5accedb'
             'e8544f5384d541c16973543ace0f812e2dea657eed551a70baebb1a0cd9f3771'
             'd27fec1d74f7a3081c3d175ed184d15383666dc7f02cc0f7126f11549879c6ed'
             '7cf8ca096e6d6e425b3434446b0835537d0fc7fe64b3ccba7a55f7bd86c7e176'
             '36d48f14c16f0dcc98a8ce2301fd2a111701e6f59a7da08b0e51fdb3e2f9ca89')
+
+DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
 
 package() {
   cd $_pkgname-$_major
