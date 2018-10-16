@@ -4,9 +4,9 @@
 
 pkgname=jdk8-docs
 _major=8
-_minor=181
-_build=b13
-_hash=96a7b8442fe848ef90c96a2fad6ed6d1
+_minor=192
+_build=b12
+_hash=750e1c8617c5452694857ad95c3ee230
 pkgver=${_major}u${_minor}
 pkgrel=1
 pkgdesc="Documentation for Oracle Java $_major Development Kit"
