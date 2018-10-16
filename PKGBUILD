@@ -2,7 +2,7 @@
 pkgname=caffe-opencl-slim-git
 _srcname=caffe
 pkgver=1.0
-pkgrel=16
+pkgrel=17
 pkgdesc="A slimmed-down build of Caffe based on caffe-opencl-git"
 arch=('x86_64')
 url="http://caffe.berkeleyvision.org/"
@@ -28,7 +28,6 @@ prepare() {
     cd "${_srcname}"
 
     git checkout opencl
-    git checkout 99bd99795dcdf0b1d3086a8d67ab1782a8a08383
 
     # This patch makes cmake find libboost_python3 (it normally only looks for libboost_python_py3 etc.)
     patch cmake/Dependencies.cmake < ../dependencies.patch
