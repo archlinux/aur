@@ -8,10 +8,10 @@ pkgbase = plasma5-applets-todolist
 	makedepends = extra-cmake-modules
 	depends = plasma-workspace
 	depends = qt5-declarative
-	source = https://github.com/Zren/plasma-applet-todolist/archive/v7.tar.gz
-	source = https://gitlab.com/kikadf/patches/raw/master/plasma5-applets-todolist/Add_CMakeLists.patch
-	md5sums = d79af3b345f3e798b0f3e0210c465639
-	md5sums = 3881942579d0e79c4e1e78ae570cbcd9
+	source = plasma5-applets-todolist-7.tar.gz::https://github.com/Zren/plasma-applet-todolist/archive/v7.tar.gz
+	source = CMakeLists.txt
+	sha256sums = e064a4aebd1eca2444b0178b19b55890f6e5eda7dabf55cc4ef099fdc4c0d0e7
+	sha256sums = SKIP
 
 pkgname = plasma5-applets-todolist
 
