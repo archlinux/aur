@@ -14,11 +14,14 @@ makedepends=(sparsehash)
 optdepends=('graphviz: graph layout'
 'python2-matplotlib: graph drawing')
 options=(!libtool)
-source=("http://downloads.skewed.de/graph-tool/graph-tool-$pkgver.tar.bz2")
-sha256sums=('4740c69720dfbebf8fb3e77057b3e6a257ccf0432cdaf7345f873247390e4313')
+source=("http://downloads.skewed.de/graph-tool/graph-tool-$pkgver.tar.bz2"
+        "https://git.skewed.de/count0/graph-tool/commit/aa39e4a6b42d43fac30c841d176c75aff92cc01a.diff")
+sha256sums=('4740c69720dfbebf8fb3e77057b3e6a257ccf0432cdaf7345f873247390e4313'
+            '5a4ea386342c2de9422da5b07dd4272d47d2cdbba99d9b258bff65a69da562c1')
 
 prepare() {
   cd "$srcdir/graph-tool-$pkgver"
+  patch -Np1 -i "${srcdir}/aa39e4a6b42d43fac30c841d176c75aff92cc01a.diff"
   ./configure --enable-openmp --prefix=/usr --docdir="/usr/share/doc/$pkgname" PYTHON=python2
 }
 
