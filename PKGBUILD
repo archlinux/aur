@@ -1,5 +1,4 @@
-# Maintainer: James Harvey <jamespharvey20@gmail.com>
-# * No namcap warnings or errors
+# Maintainer: James P. Harvey <jamespharvey20 at gmail dot com>
 
 pkgname=libfabric
 pkgver=1.6.2
@@ -10,7 +9,7 @@ url='https://www.openfabrics.org/index.php/overview.html'
 license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
 depends=('glibc')
 source=("https://github.com/ofiwg/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('03005866cd776ca9bf62b17bdb2a35cd')
+sha256sums=('b1a9cf8c47189a1c918f8b5710d05cb50df6b47a1c9b2ba51d927e97503b4df0')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
