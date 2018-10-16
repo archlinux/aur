@@ -2,7 +2,7 @@
 pkgname=caffe-opencl-slim-git
 _srcname=caffe
 pkgver=1.0
-pkgrel=17
+pkgrel=18
 pkgdesc="A slimmed-down build of Caffe based on caffe-opencl-git"
 arch=('x86_64')
 url="http://caffe.berkeleyvision.org/"
@@ -66,7 +66,7 @@ prepare() {
     -DUSE_LMDB=OFF \
     -DUSE_HDF5=ON \
     -DALLOW_LMDB_NOLOCK=OFF \
-    -DUSE_OPENMP=OFF \
+    -DUSE_OPENMP=ON \
     -DUSE_FFT=OFF \
     -DUSE_SQLITE=OFF \
     -DUSE_GEMMLOWP=OFF \
