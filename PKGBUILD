@@ -1,13 +1,13 @@
 # Maintainer: Oscar Morante <spacepluk@gmail.com>
 
-_version=2018.2.11
+_version=2018.2.12
 _build=f1
-_randomstring=38bd7dec5000
+_randomstring=0a46ddfcfad4
 _prefix=/opt/Unity
 
 pkgname=unity-editor-language-zh-cn
 pkgver=${_version}${_build}
-pkgrel=2
+pkgrel=1
 pkgdesc="Chinese Language Pack (Preview)"
 arch=('x86_64')
 url='https://unity3d.com/'
@@ -21,6 +21,6 @@ PKGEXT='.pkg.tar' # Prevent compressing of the final package
 package() {
   _dest="${pkgdir}${_prefix}/Editor/Data/Localization"
   install -d "${_dest}"
-  mv zn-cn "${_dest}/zh-cn.po"
+  mv zh-cn "${_dest}/zh-cn.po"
 }
 
