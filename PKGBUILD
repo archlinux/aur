@@ -4,9 +4,9 @@
 _pkgname=jre
 pkgname=bin32-jre
 _major=8
-_minor=181
-_build=b13
-_hash=96a7b8442fe848ef90c96a2fad6ed6d1
+_minor=192
+_build=b12
+_hash=750e1c8617c5452694857ad95c3ee230
 pkgver=${_major}u${_minor}
 pkgrel=1
 pkgdesc="Oracle Java $_major Runtime Enviroment (32-bit)"
@@ -45,7 +45,7 @@ install=$pkgname.install
 source=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_hash/$_pkgname-$pkgver-linux-i586.tar.gz"
         "http://download.oracle.com/otn-pub/java/jce/$_major/jce_policy-$_major.zip"
         "policytool32-$_jname.desktop")
-md5sums=('85b1b4fb8b9ec6c4f7d51f53c31b20e2'
+md5sums=('0798a5661d0d100caeb12b5d5619e90c'
          'b3c7031bc65c28c2340302065e7d00d3'
          '271b97a9b95d809a99999ec5fb74313c')
 
