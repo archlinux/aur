@@ -1,7 +1,7 @@
 pkgbase = vmware-workstation
 	pkgdesc = The industry standard for running multiple operating systems as virtual machines on a single Linux PC.
 	pkgver = 15.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.vmware.com/products/workstation-for-linux.html
 	install = vmware-workstation.install
 	arch = x86_64
@@ -12,11 +12,12 @@ pkgbase = vmware-workstation
 	depends = dkms
 	depends = ncurses5-compat-libs
 	depends = fuse2
-	depends = gtk3
 	depends = gtkmm3
 	depends = libcanberra
 	depends = pcsclite
 	depends = hicolor-icon-theme
+	depends = gtk3
+	depends = gcr
 	optdepends = linux-headers: build modules against Arch kernel
 	provides = vmware-ovftool
 	conflicts = vmware-modules-dkms
@@ -83,7 +84,7 @@ pkgbase = vmware-workstation
 	sha256sums = c2e981d5d6a4fab4d33d4e3df394bdb597834fae14ebb535a40271c3f2677f0d
 	sha256sums = a5c405eb46d3155b46accfb3e8cc513115937a44e5b02e637f4ee2d71dd6d8ef
 	sha256sums = 5549df5e55b08d6d36381c812689e15de595225cacc055106705282be88be52f
-	sha256sums = cb9ecff2d9210ea0022d5ac1b2c274dba0ec9b79c031386627f2a668913e1a38
+	sha256sums = 29e0b0db9c0296ab81eee543803c4bd430e2c69c76e33492910e17280da1c05c
 
 pkgname = vmware-workstation
 
