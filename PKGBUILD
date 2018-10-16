@@ -3,7 +3,7 @@
 _pkgbase=monero
 pkgname=monero-gui-bin
 pkgver=0.13.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Monero: the secure, private, untraceable currency - release version (Includes daemon, wallet, and miner)"
 arch=("x86_64")
 conflicts=("${_pkgbase}")
@@ -13,6 +13,7 @@ depends=("qt5-declarative"
 	"qt5-svg"
 	"desktop-file-utils"
 	"pcsclite"
+	"hidapi"
 )
 provides=("monerod=${pkgver}"
           "monero-blockchain-export=${pkgver}"

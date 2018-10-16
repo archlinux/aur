@@ -1,7 +1,7 @@
 pkgbase = monero-gui-bin
 	pkgdesc = Monero: the secure, private, untraceable currency - release version (Includes daemon, wallet, and miner)
 	pkgver = 0.13.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://getmonero.org/
 	arch = x86_64
 	license = BSD
@@ -9,6 +9,7 @@ pkgbase = monero-gui-bin
 	depends = qt5-svg
 	depends = desktop-file-utils
 	depends = pcsclite
+	depends = hidapi
 	provides = monerod=0.13.0.3
 	provides = monero-blockchain-export=0.13.0.3
 	provides = monero-blockchain-import=0.13.0.3
