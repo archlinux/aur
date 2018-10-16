@@ -11,7 +11,7 @@ pkgbase = infinipath-psm
 	depends = glibc
 	depends = libutil-linux
 	source = git+https://github.com/intel/psm#commit=604758e
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = infinipath-psm
 

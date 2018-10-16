@@ -15,7 +15,7 @@ makedepends=('git')
 # and the latest release there from 2016 fails building on modern GCC.
 # Other distributions are also using specific commits on github for new release versions tagged under 3.3.
 source=("git+https://github.com/intel/${_pkgname}#commit=${_commit}")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
