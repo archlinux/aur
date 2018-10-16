@@ -8,7 +8,7 @@ arch=(any)
 url="https://github.com/metakirby5/colorz"
 license=(MIT)
 depends=("python" "python-pillow" "python-scipy")
-source=("git+$url")
+source=("$url")
 md5sums=(SKIP)
 
 package() {
