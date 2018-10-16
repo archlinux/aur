@@ -1,18 +1,15 @@
-# Maintainer: James Harvey <jamespharvey20@gmail.com>
-# * No namcap warnings or errors
+# Maintainer: James Harvey <jamespharvey20 at gmail dot com>
 
 pkgname=ibsim
 pkgver=0.7
 pkgrel=1
 pkgdesc='OpenFabrics Alliance InfiniBand simulator utilities'
-#        Simulates InfiniBand fabric, which can be used by any libibumad based application
-#        Works locally via unix sockets or remotely via inet sockets
 arch=('x86_64' 'i686')
 url='https://www.openfabrics.org/index.php/overview.html'
 license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
 depends=('libibmad' 'bash')
 source=("https://www.openfabrics.org/downloads/management/${pkgname}-${pkgver}.tar.gz")
-md5sums=('7ff8756f222799d042f7309777cc711d')
+sha256sums=('66908257f0de6866589b6f4b99e9cfd2805d4d3ed61631e09d15eae876202e24')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
