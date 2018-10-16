@@ -1,6 +1,9 @@
 [Unit]
 Description=Squeezelite Service
-After=network.target
+# if your distro uses systemd-networkd you may want to add
+# systemd-networkd-wait-online.service
+Requires=network-online.target sound.target systemd-udev-settle.service
+After=network-online.target sound.target systemd-udev-settle.service
 
 [Service]
 User=%I
