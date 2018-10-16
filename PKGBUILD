@@ -1,4 +1,4 @@
-# Maintainer: James P. Harvey <jamespharvey20@gmail.com>
+# Maintainer: James P. Harvey <jamespharvey20 at gmail dot com>
 
 pkgname=mstflint
 pkgver=4.10.0.3
@@ -24,7 +24,7 @@ sha256sums=('SKIP')
 #  and arch has aclocal-1.16
 
 build() {
-  cd ${pkgname}
+  cd "${srcdir}/${pkgname}"
 
   #disable Werror, so can compile with recent gcc
   for file in cmdif/Makefile.am configure.ac ext_libs/muparser/Makefile.am \
@@ -45,7 +45,7 @@ build() {
 }
 
 package() {
-  cd ${pkgname}
+  cd "${srcdir}/${pkgname}"
   make DESTDIR="${pkgdir}" install
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
