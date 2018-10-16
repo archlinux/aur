@@ -1,0 +1,38 @@
+# arg 1:  the new package version
+post_install() {
+cat << EOF
+
+	In order to use fzf-git-bindings you need to:
+
+	Bash
+		source /usr/share/fzf-git-bindings/functions.sh
+		source /usr/share/fzf-git-bindings/key-binding.bash
+	Zsh
+		source /usr/share/fzf-git-bindings/functions.sh
+		source /usr/share/fzf-git-bindings/key-binding.zsh
+
+	Then you can use shorcuts to list (and choose):
+
+		CTRL-G CTRL-F for files
+		CTRL-G CTRL-B for branches
+		CTRL-G CTRL-T for tags
+		CTRL-G CTRL-R for remotes
+		CTRL-G CTRL-H for commit hashes
+
+EOF
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+	post_install
+}
+
+# arg 1:  the old package version
+post_remove() {
+cat << EOF
+
+	Don't forget to clear your shell config.
+
+EOF
+}

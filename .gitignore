@@ -1,0 +1,36 @@
+### https://raw.github.com/github/gitignore/72190ee30bd1e2ccc233222341435adacb7a6500/ArchLinuxPackages.gitignore
+
+*.tar
+*.tar.*
+*.jar
+*.exe
+*.msi
+*.zip
+*.tgz
+*.log
+*.log.*
+*.sig
+
+pkg/
+src/
+
+
+### https://raw.github.com/github/gitignore/72190ee30bd1e2ccc233222341435adacb7a6500/Global/Linux.gitignore
+
+*~
+
+# temporary files which can be created if a process still has a handle open of a deleted file
+.fuse_hidden*
+
+# KDE directory preferences
+.directory
+
+# Linux trash folder which might appear on any partition or disk
+.Trash-*
+
+# .nfs files are created when an open file is removed but is still being accessed
+.nfs*
+
+functions.sh
+key-binding.bash
+key-binding.zsh
