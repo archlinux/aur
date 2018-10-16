@@ -46,7 +46,6 @@ sha256sums=('fc868e5f4905544c3f392cc9e895ef5571a08e48682e7fe173bd44c0ba0c7dcd'
 prepare() {
     cd "${srcdir}/root"
 
-    msg2 'Python2 switch...'
     find . -type f -exec sed -e 's_#!/usr/bin/env python_&2_' \
                              -e 's/python -O/python2 -O/g' \
                              -e 's/python -c/python2 -c/g' -i {} \;
@@ -63,7 +62,6 @@ prepare() {
     # Horid glibc hack
     sed -e 's/__USE_BSD/__USE_MISC/' -i core/base/src/TTimeStamp.cxx
 
-    msg2 'Applying patches...'
     ## https://sft.its.cern.ch/jira/browse/ROOT-8180
     patch -p1 < "${srcdir}/enable_new_gcc.patch"
 }
@@ -82,7 +80,6 @@ build() {
         sys_libs+=("--disable-builtin-${sys_lib}")
     done
 
-    msg2 'Configuring...'
     ./configure \
         ${TARGET} \
         --prefix=/usr \
@@ -95,14 +92,12 @@ build() {
         --with-python-libdir=/usr/lib \
         "${sys_libs[@]}"
 
-    msg2 'Compiling...'
     make ${MAKEFLAGS}
 }
 
 package() {
     cd "${srcdir}/root"
 
-    msg2 'Installing...'
     make DESTDIR="${pkgdir}" install
 
     install -D "${srcdir}/root.sh" \
@@ -120,11 +115,9 @@ package() {
     install -D -m644 "${srcdir}/root/build/package/debian/root-system-bin.png" \
         "${pkgdir}/usr/share/icons/hicolor/48x48/apps/root-system-bin.png"
 
-    msg2 'Updating system config...'
     # use a file that pacman can track instead of adding directly to ld.so.conf
     install -d "${pkgdir}/etc/ld.so.conf.d"
     echo '/usr/lib/root' > "${pkgdir}/etc/ld.so.conf.d/root.conf"
 
-    msg2 'Cleaning up...'
     rm -rf "${pkgdir}/etc/root/daemons"
 }
