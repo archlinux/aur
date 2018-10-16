@@ -2,7 +2,7 @@
 pkgname=caffe-opencl-slim-git
 _srcname=caffe
 pkgver=1.0
-pkgrel=11
+pkgrel=12
 pkgdesc="A slimmed-down build of Caffe based on caffe-opencl-git"
 arch=('x86_64')
 url="http://caffe.berkeleyvision.org/"
@@ -27,7 +27,7 @@ sha256sums=('SKIP'
 prepare() {
     cd "${_srcname}"
 
-    git branch opencl
+    git checkout opencl
     git checkout 99bd99795dcdf0b1d3086a8d67ab1782a8a08383
 
     # This patch makes cmake find libboost_python3 (it normally only looks for libboost_python_py3 etc.)
