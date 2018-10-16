@@ -4,7 +4,7 @@ pkgname=bitwarden-cli
 pkgver=1.3.0
 # commit of bitwarden/jslib
 _jslibcommit='1f9fbe43d7a78349e6fe994fa70d9b773af5c0f9'
-pkgrel=3
+pkgrel=4
 pkgdesc="The command line vault (Windows, macOS, & Linux). bitwarden.com"
 arch=('x86_64')
 url="https://bitwarden.com"
@@ -35,8 +35,8 @@ build() {
 package() {
   cd "${srcdir}/cli-${pkgver}"
 
-  install -dm755 "${pkgdir}/usr/lib/${_pkgname}"
-  cp -a build/. "${pkgdir}/usr/lib/${_pkgname}/"
+  install -dm755 "${pkgdir}/usr/lib/${pkgname}"
+  cp -a build/. "${pkgdir}/usr/lib/${pkgname}/"
 
   install -dm755 "${pkgdir}/usr/bin"
   install -Dm755 "${srcdir}/bw.sh" "${pkgdir}/usr/bin/bw"
