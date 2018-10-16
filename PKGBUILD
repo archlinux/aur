@@ -3,7 +3,7 @@
 
 pkgname=steam-native-runtime
 pkgver=1.0.0.56
-pkgrel=2
+pkgrel=3
 pkgdesc='Native replacement for the Steam runtime'
 arch=('x86_64')
 url='https://wiki.archlinux.org/index.php/Steam/Troubleshooting#Native_runtime'
@@ -17,11 +17,11 @@ depends=(
   'lib32-gdk-pixbuf2' 'lib32-glew1.10' 'lib32-glib2' 'lib32-glu' 'lib32-gtk2'
   'lib32-libappindicator-gtk2' 'lib32-libcaca' 'lib32-libcanberra'
   'lib32-libcups' 'lib32-libcurl-compat' 'lib32-libcurl-gnutls' 'lib32-dbus'
-  'lib32-libdrm' 'lib32-libgcrypt15' 'lib32-libice' 'lib32-libjpeg6'
-  'lib32-libnm-glib' 'lib32-libpng12' 'lib32-libpulse' 'lib32-librtmp0'
-  'lib32-libsm' 'lib32-libtheora' 'lib32-libtiff4' 'lib32-libudev0-shim'
-  'lib32-libusb' 'lib32-libva1' 'lib32-libvdpau' 'lib32-libvorbis'
-  'lib32-libvpx1.3' 'lib32-libwrap' 'lib32-libxcomposite'
+  'lib32-libdrm' 'lib32-libgcrypt15' 'lib32-libice' 'lib32-libidn11'
+  'lib32-libjpeg6' 'lib32-libnm-glib' 'lib32-libpng12' 'lib32-libpulse'
+  'lib32-librtmp0' 'lib32-libsm' 'lib32-libtheora' 'lib32-libtiff4'
+  'lib32-libudev0-shim' 'lib32-libusb' 'lib32-libva1' 'lib32-libvdpau'
+  'lib32-libvorbis' 'lib32-libvpx1.3' 'lib32-libwrap' 'lib32-libxcomposite'
   'lib32-libxcursor' 'lib32-libxft' 'lib32-libxi' 'lib32-libxinerama'
   'lib32-libxmu' 'lib32-libxrandr' 'lib32-libxrender' 'lib32-libxtst'
   'lib32-libxxf86vm' 'lib32-nspr' 'lib32-nss' 'lib32-openal'
@@ -29,12 +29,13 @@ depends=(
   'lib32-sdl2_mixer' 'lib32-sdl2_ttf' 'lib32-sdl_image' 'lib32-sdl_mixer'
   'lib32-sdl_ttf' 'libappindicator-gtk2' 'libcaca' 'libcanberra' 'libcups'
   'libcurl-compat' 'libcurl-gnutls' 'dbus' 'libdrm' 'libgcrypt15' 'libice'
-  'libjpeg6' 'libnm-glib' 'libpng12' 'libpulse' 'librtmp0' 'libsm' 'libtheora'
-  'libtiff4' 'libudev0-shim' 'libusb' 'libva1' 'libvdpau' 'libvorbis'
-  'libvpx1.3' 'libwrap' 'libxcomposite' 'libxcursor' 'libxft' 'libxi'
-  'libxinerama' 'libxmu' 'libxrandr' 'libxrender' 'libxtst' 'libxxf86vm' 'nspr'
-  'nss' 'openal' 'openssl-1.0' 'pango' 'sdl' 'sdl2' 'sdl2_image' 'sdl2_mixer'
-  'sdl2_ttf' 'sdl_image' 'sdl_mixer' 'sdl_ttf' 'librsvg' 'vulkan-icd-loader'
+  'libidn11' 'libjpeg6' 'libnm-glib' 'libpng12' 'libpulse' 'librsvg' 'librtmp0'
+  'libsm' 'libtheora' 'libtiff4' 'libudev0-shim' 'libusb' 'libva1' 'libvdpau'
+  'libvorbis' 'libvpx1.3' 'libwrap' 'libxcomposite' 'libxcursor' 'libxft'
+  'libxi' 'libxinerama' 'libxmu' 'libxrandr' 'libxrender' 'libxtst'
+  'libxxf86vm' 'nspr' 'nss' 'openal' 'openssl-1.0' 'pango' 'sdl' 'sdl2'
+  'sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'sdl_image' 'sdl_mixer' 'sdl_ttf'
+  'vulkan-icd-loader'
 )
 
 package() {
