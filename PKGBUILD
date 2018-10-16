@@ -21,7 +21,7 @@
 
 pkgname="auto-07p"
 pkgver=0.9.1+r1764
-pkgrel=1
+pkgrel=2
 pkgdesc="Software for continuation and bifurcation problems in ordinary differential equations. Release 07P. Environment variables controlling build (default to 'no', see PKGBUILD): _BUILD_DOC, _WITH_PLAUT04, _PLAUT04_WITH_QT, AUTO_DEBUG, _WITH_OPENMP, _WITH_MPI."
 arch=('i686' 'x86_64')
 url='http://cmvl.cs.concordia.ca/auto/'
@@ -51,7 +51,7 @@ optdepends=(
             "openmpi: For MPI message passing (parallel computation). To build, set the environment variable '_WITH_OPENMP' to 'yes'."
             "texlive-bin: For compiling the manual (enable compilation of documentation by setting the environment variable '_BUILD_DOC' to 'yes')."
             "transfig: For compiling the manual (enable manual compiling in PKGBUILD (enable compilation of documentation by setting the environment variable '_BUILD_DOC' to 'yes'))."
-            )  ### Note: Some of these are optional at build time, but once a feature is build in (by './configure' automatically detecting the corresponding libraries), the packages are required to actual run AUTO, so they are _no_ optdepends for the binary package, just for the source.
+            ) ### Note: Some of these are optional at build time, but once a feature is build in (by './configure' automatically detecting the corresponding libraries), the packages are required to actual run AUTO, so they are _no_ optdepends for the binary package, just for the source.
 license=(
          'BSD'
          'LGPL2'
