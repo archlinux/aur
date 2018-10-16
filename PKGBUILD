@@ -1,9 +1,9 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=zcash
-pkgver=2.0.0
-_commit=d960b75de02097c806afb1a2d4982a5f85caf4e1
-pkgrel=2
+pkgver=2.0.1
+_commit=e8f5e592b864b341391c9becf80bbe3e0e930a33
+pkgrel=1
 pkgdesc='Permissionless financial system employing zero-knowledge security'
 arch=('x86_64')
 url='https://z.cash/'
@@ -16,8 +16,8 @@ source=("git+https://github.com/zcash/zcash.git#commit=${_commit}"
         "use-system-rust.patch"
         'zcashd.service')
 sha512sums=('SKIP'
-            '6b223021677dbece52981938859f001e19ae974eed31ba4a5ebb22439c9377ddcc6d3b88cf254ac3686e999a7e8f691148a1d78a847679cd7940a490739bfcfe'
-            'bf0fbfd75e7caa03e6e76ac726f875ab0389b2740ae9c44d6117aa433e13cdf52c96cd12d9570903ef4758df9340bd1464dc54dc84d52f067cbeffc92bd54811'
+            '3c002c9d721853089f02cc397e2bc4130574a9c06b1118824338efedc476daa5bdbdcf55bf6beba69fb9c4bd065b871b3111259fa1e25828f333056d340282a1'
+            'fe07d546b88bd0d03dbbf9843d33c2be4e8eb4744f308ed6c73015757fe77d5fde0d30ee480a9175d218b6a21b403d4defae70c44aa9e8e7541cced1c477a857'
             '2fb8b0a636ca9c7ee15f0fd2c47046c8323ade3de9562f393da7541eee50dd14b12107dd29b0e1ee90ff88963e2f7e25b12435166a1812df5c88c579c12dde88')
 
 prepare() {
@@ -38,15 +38,21 @@ build() {
 
     cd depends
     rust_crates=(
+      crate_aes
+      crate_aesni
+      crate_aes_soft 
       crate_arrayvec
       crate_bellman
       crate_bitflags
       crate_bit_vec
       crate_blake2_rfc
+      crate_block_cipher_trait
+      crate_byte_tools
       crate_byteorder
       crate_constant_time_eq
       crate_crossbeam
       crate_digest
+      crate_fpe
       crate_fuchsia_zircon
       crate_fuchsia_zircon_sys
       crate_futures_cpupool
@@ -55,14 +61,20 @@ build() {
       crate_lazy_static
       crate_libc
       crate_nodrop
+      crate_num_bigint
       crate_num_cpus
+      crate_num_integer
+      crate_num_traits
+      crate_opaque_debug
       crate_pairing
       crate_rand
       crate_sapling_crypto
+      crate_stream_cipher
       crate_typenum
       crate_winapi_i686_pc_windows_gnu
       crate_winapi
       crate_winapi_x86_64_pc_windows_gnu
+      crate_zip32
     )
     make install \
         native_packages='' \
