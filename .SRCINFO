@@ -1,0 +1,19 @@
+pkgbase = prestopalette
+	pkgdesc = An artist's tool for creating harmonious color palettes
+	pkgver = 0.1.31
+	pkgrel = 1
+	url = http://www.prestopalette.com/
+	install = prestopalette.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = clang
+	makedepends = pngcrush
+	depends = qt5-base
+	depends = qt5-multimedia
+	depends = hicolor-icon-theme
+	source = https://github.com/PrestoPalette/PrestoPalette/releases/download/0.1.31/prestopalette-0.1.31.tar.gz
+	md5sums = 8422158211e89fe4fd255c98fb3ebcd8
+
+pkgname = prestopalette
+
