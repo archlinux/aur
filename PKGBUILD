@@ -2,15 +2,13 @@
 pkgname=vale-bin
 _pkgname=vale
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A customizable, syntax-aware linter for prose."
 provides=('vale')
 conflicts=('vale')
 arch=('x86_64')
 url="https://github.com/errata-ai/vale"
 license=('MIT')
-depends=('')
-makedepends=('')
 options=('!emptydirs')
 source=("https://github.com/errata-ai/${_pkgname}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_64-bit.tar.gz")
 
