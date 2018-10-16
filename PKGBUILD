@@ -20,7 +20,7 @@ if [[ $CARCH == i686 ]]; then
   optdepends=('libcanberra: XDG sound support'
               'notification-daemon: native notification support')
 else
-  depends+=(lib32-{qt4,libpulse,libxss,libxv,libxcursor,v4l-utils})
+  depends+=(lib32-{qt4,libpulse,libxss,libxv,libxcursor,v4l-utils,gstreamer0.10-base})
   optdepends=('lib32-libcanberra: XDG sound support'
               'notification-daemon: native notification support')
 fi
