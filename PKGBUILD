@@ -1,8 +1,8 @@
 # Maintainer: Oscar Morante <spacepluk@gmail.com>
 
-_version=2018.2.11
+_version=2018.2.12
 _build=f1
-_randomstring=38bd7dec5000
+_randomstring=0a46ddfcfad4
 _prefix=/opt/Unity
 
 pkgname=unity-editor-doc
