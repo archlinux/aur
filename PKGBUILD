@@ -1,8 +1,8 @@
 # Maintainer: Oscar Morante <spacepluk@gmail.com>
 
-_version=2017.4.12
+_version=2017.4.13
 _build=f1
-_randomstring=b582b87345b1
+_randomstring=6902ad48015d
 _prefix=/opt/UnityLts
 
 pkgname=unity-editor-lts-windows
@@ -15,7 +15,7 @@ license=('custom')
 depends=('unity-editor-lts')
 makedepends=('cpio')
 source=("https://download.unity3d.com/download_unity/${_randomstring}/MacEditorTargetInstaller/UnitySetup-Windows-Support-for-Editor-${_version}${_build}.pkg")
-md5sums=('427d6c9af53b5e80e7c7c16cff208b9f')
+md5sums=('08f464cd5095432fb0c217c49bdc2c97')
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
