@@ -14,7 +14,7 @@ pkgbase=mesa-transform-feedback-git
 pkgname=('mesa-transform-feedback-git')
 pkgdesc="mesa with the RADV patches for VK_EXT_transform_feedback."
 pkgver=18.3.0_devel.105152.ff281e6204
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'llvm-svn' 'clang-svn' 'xorgproto'
               'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libomxil-bellagio'
@@ -92,7 +92,6 @@ build () {
     do
       echo "applying $p"
       patch -d mesa -Np1 < $p.patch
-      touch mesa/patched
     done
     meson setup mesa _build \
        -D b_ndebug=true \
