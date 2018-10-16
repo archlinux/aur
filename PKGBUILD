@@ -1,5 +1,4 @@
-# Maintainer: James Harvey <jamespharvey20@gmail.com>
-# * No namcap warnings or errors
+# Maintainer: James P. Harvey <jamespharvey20 at gmail dot com>
 
 pkgname=ibpd
 pkgver=1.0.1
@@ -10,12 +9,7 @@ url='https://www.openfabrics.org/index.php/overview.html'
 license=('GPL2')
 depends=('glibc')
 source=("https://www.openfabrics.org/downloads/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('688c17adf3b4f591ca3999043f9f29a2')
-
-#prepare() {
-  ## v1.0.1 Makefile is hard coded to use sbin
-  #sed -i "s|(prefix)/sbin/ibpd|(prefix)/bin/ipbd|" "${srcdir}/${pkgname}-${pkgver}/Makefile"
-#}
+sha256sums=('7351e64691783d2f3ddc8718d801c3d9e393f4e3c83b225aeea6f2d1be2d7346')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
