@@ -2,20 +2,20 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=azcopy-10
-pkgver=10.0.1
-pkgrel=2
+pkgver=10.0.2
+pkgrel=1
 pkgdesc="A command-line utility designed for copying data to/from Microsoft Azure"
 arch=('x86_64')
 url="https://github.com/Azure/azure-storage-azcopy"
 license=('MIT')
 makedepends=('go' 'dep')
 conflicts=('azcopy')
-source=("azcopy-${pkgver}.tar.gz::https://github.com/Azure/azure-storage-azcopy/archive/${pkgver}.tar.gz")
-sha512sums=("ccda535106ecba714c4d14d4ab373e1d072bc2c6aa0bbacc062585ed1ceaef10fe32806c5fff1b51486f4ad19e4b4302b6828bb5b6c5415277afa1d0111179f8")
+source=("azcopy-${pkgver}.tar.gz::https://github.com/Azure/azure-storage-azcopy/archive/v${pkgver}.tar.gz")
+sha512sums=("7d9f2ed08bf252905975607bf250b526ef4e121bf0fb3a21ed72c27cc3b7352ad119c14b80859fce55751a6392952abe548da26d3190286fb042cb0c3c5c5d1f")
 
 prepare() {
   mkdir -p "${srcdir}/src/github.com/Azure"
-  mv "${srcdir}/azure-storage-azcopy-10.0.1" "${srcdir}/src/github.com/Azure/azure-storage-azcopy"
+  mv "${srcdir}/azure-storage-azcopy-${pkgver}" "${srcdir}/src/github.com/Azure/azure-storage-azcopy"
 }
 
 build() {
