@@ -1,0 +1,15 @@
+pkgbase = lxd-forward-git
+	pkgdesc = A simple script to simplify port forward for LXC or LXD containers
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/jorgeluiztaioque/lxd-forward
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = lxd
+	depends = iptables
+	source = git+https://github.com/jorgeluiztaioque/lxd-forward
+	sha256sums = SKIP
+
+pkgname = lxd-forward-git
+
