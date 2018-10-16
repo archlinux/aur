@@ -27,6 +27,7 @@ conflicts=('evelauncher' 'evesetup_dev')
 
 source=("evelauncher.desktop"
         "evelauncher.sh"
+        "evelauncher.sh.in"
         "evelauncher.sh.real"
         "everegedit.desktop"
         "everegedit"
@@ -36,8 +37,23 @@ source=("evelauncher.desktop"
         "evewinetricks.desktop"
         "evewinetricks"
         "qt.conf"
+        "build_installer.sh"
+        "setup.sh.in"
         "eve-icons.tar.gz"
+        "eve-transl511-de.tar.gz"
+        "eve-transl511-en.tar.gz"
+        "eve-transl511-fr.tar.gz"
+        "eve-transl511-ja.tar.gz"
+        "eve-transl511-ru.tar.gz"
+        "https://github.com/megastep/makeself/releases/download/release-2.4.0/makeself-2.4.0.run"
         "https://binaries.eveonline.com/evelauncher-${pkgver}.tar.gz")
+
+noextract=('eve-transl511-de.tar.gz'
+           'eve-transl511-en.tar.gz'
+           'eve-transl511-fr.tar.gz'
+           'eve-transl511-ja.tar.gz'
+           'eve-transl511-ru.tar.gz'
+           'https://github.com/megastep/makeself/releases/download/release-2.4.0/makeself-2.4.0.run')
 
 package() {
         install -d "${pkgdir}/opt/${pkgname}/bin"
@@ -56,6 +72,7 @@ package() {
         cp ${srcdir}/evelauncher/LogLite ${srcdir}/Launcher
         cp ${srcdir}/evelauncher/libg* ${srcdir}/Launcher
         cp ${srcdir}/evelauncher/libprotobuf.so.16.0.0 ${srcdir}/Launcher
+        cp ${srcdir}/evelauncher/libpng12.so.0.54.0 ${srcdir}/Launcher
         cp ${srcdir}/evelauncher/libsteam_api.so ${srcdir}/Launcher
         cp -f ${srcdir}/evelauncher.sh.real ${srcdir}/Launcher/evelauncher.sh
         ln -sf evelauncher.sh ${srcdir}/Launcher/LogLite.sh
@@ -68,6 +85,7 @@ package() {
         ln -sf libgrpc.so.6.0.0 ${srcdir}/Launcher/libgrpc.so.6
         ln -sf libprotobuf.so.16.0.0 ${srcdir}/Launcher/libprotobuf.so
         ln -sf libprotobuf.so.16.0.0 ${srcdir}/Launcher/libprotobuf.so.16
+        ln -sf libpng12.so.0.54.0 ${srcdir}/Launcher/libpng12.so.0
         chmod 0755 ${srcdir}/Launcher/*
         chmod 0644 ${srcdir}/Launcher/*.qm
         cp ${srcdir}/qt.conf ${srcdir}/Launcher
@@ -80,15 +98,24 @@ package() {
 }
 
 sha256sums=('f49b404341e1dd48eaa2504c83f9ff07c9a4c11e1a109c67d04167dc70d65731'
-            'ea7ac09ba43f9b8f32f1ff335f6ed450872e4b7151fbeeb3ceddb5d0e05f549e'
-            '4e33e44c46e160bdc924d2705be58454bdf67dd945c056b7ab509c90a60c1d9f'
+            'e86dead05b42cfeb0e5be9a2b06e981accc4926e0442eaf382c872d0ec57d157'
+            '73a1eb0ddf3bc5f44359079830a71dbf4ed7f37ca494296985d4e3ce62f3170f'
+            '80fceef0e28c2291cd4ba3924410211edd188717be093ffc329d18697583bd21'
             'f8988be390204ce645ca37f43cdb8e395970f8d6dd36095acf08c5c7cf72833c'
-            '3b12085bc5250fde7a1ba6ddb63d77328fec6a3836413ec3cb687622bf962627'
-            'b31f607fcb09b4182d1acc08aa4f8e7c2e24ed40f64ede7b08328191481daa60'
+            '48e721212248e49da4dfe7b63c7f52258933018022c001722077fb44738891ee'
+            '9c1e16755e548f94c56a3d88110d8ee0d2eb2575d1e0ffe900d4cffdc7820f09'
             '04d2a47524cbd132aad2fd310d56515a29310a2e693ba94ce12c65cd776a70d2'
-            '71ea5a4aeac6604b241b60a3f8b3f9c28c4d252d2949aa95cf97abd9d969e16b'
+            'a665439ed2de7ade9db67ca5859c1dafaad49a9cd1f64612252fcc243b8afd6c'
             '22690e393ee89703b17898038aaa37900805104e8c960b346fe1f6050edc9bce'
-            '31155670d9f40fb348c34dd252a20fb5cc4191a311906fb8bcb84cb534b3cee8'
+            '0831f3a475326d81c64b10570453ce591d77b4249a6c9ee938f7b79285332748'
             '2520a9b19f2827fa2634ea2acae3a6f61e73aada1af0eb2029e95709f0c8927d'
+            '8cb33d2f330522d4d96dda24c0f638161195f3f775df35b6e9c50400e195e298'
+            '00777706acd5a57c61edc30b5c2e29f306fa31a1c056769001c097c56b6d6a16'
             '2c192fdc282fefafee5596b60bd1779668b611d386e2bf933eef51d39eac7a28'
+            '47accd49b64d624c6a6dee42952f8627aaabdd315fad85ef037507745d393f1a'
+            '1c3df28324c8498e34d2e789fd1f36577afa5a31bdbb278d752f7ef8c6ec5516'
+            'bb63c2ea31d204f4d8eb270848674ad898ed45bbf0a9cea480611581f1149e4f'
+            'f78996a8b01463891e97270b8f9d9fa5a61ccf0710e1163aff0c0c49ce3849c3'
+            '7ae1c6324c4ad43ab3f18f5a3ceaa48b34ede5466b7a0b9351d018e8cef9bbd0'
+            'ca66a6113ce98152b85c8d847949f8c90ab9ba798e106bfc225d4ed3c2e2e3e2'
             '75165be88772e6bfabb1b148402227161f0ed540494071032f203207fdcccc2b')

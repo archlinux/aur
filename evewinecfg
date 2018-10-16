@@ -4,7 +4,7 @@ EVECONF=$HOME/.config/CCP/EVE.conf
 EVEDIR=$HOME/.local/lib/EVE
 
 UCW=$(grep UseCustomWine $EVECONF | cut -d= -f2)
-if [ "x$UCW" = "xtrue" ]; then
+if [ "x$UCW" = "xtrue" ] ;then
     WINEPATH=$(grep CustomWinePath $EVECONF | cut -d= -f2)
     WINEPATH=${WINEPATH%/*}
 else
