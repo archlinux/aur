@@ -38,7 +38,7 @@
 
 pkgname=zoneminder
 pkgver=1.32.2
-pkgrel=2
+pkgrel=3
 pkgdesc='A full-featured, open source, state-of-the-art video surveillance software system'
 arch=('x86_64')
 url='https://zoneminder.com/'
@@ -47,7 +47,7 @@ depends=('polkit' 'ffmpeg' 'libmp4v2'
          # Remove the following line if you want to install ZoneMinder without a local database server, e.g. as part of a Multi-Server setup
          'mariadb'
          # Remove the following line if you don't need Nginx
-         'nginx-mainline' 'fcgiwrap'
+         'nginx-mainline' 'fcgiwrap' 'spawn-fcgi' 'multiwatch'
          'php-apcu' 'php-fpm' 'php-gd'
          'perl-archive-zip' 'perl-data-dump' 'perl-date-manip' 'perl-dbd-mysql' 'perl-device-serialport' 'perl-file-slurp' 'perl-image-info'
          'perl-json-any' 'perl-libwww' 'perl-mime-lite' 'perl-mime-tools' 'perl-number-bytes-human' 'perl-sys-meminfo' 'perl-sys-mmap'
@@ -74,7 +74,8 @@ source=("https://github.com/ZoneMinder/ZoneMinder/archive/$pkgver.tar.gz"
         "zoneminder-httpd.conf"
         "zoneminder-php.ini"
         "zoneminder.service"
-        "zoneminder-tmpfile.conf")
+        "zoneminder-tmpfile.conf"
+        "fcgiwrap-multiwatch.service")
 sha256sums=('cf72cbd45d91ef0232c123dac5f908993f8941a62b9ae96975c4e6043bd4b9a9'
             '55be29e1eccb44d4ad0db8b23c37cec50f5341f8e498583d472ed1f0493876e3'
             'dbd231e97b950c698f0f501d6a53c7291c9985e766b09e3afe00cfe69a969f44'
@@ -87,7 +88,9 @@ sha256sums=('cf72cbd45d91ef0232c123dac5f908993f8941a62b9ae96975c4e6043bd4b9a9'
             # zoneminder.service
             '3e4de227e3154dffa887f2286c339ab3cf456f6d74a400b2786192b7e2b129c0'
             # zoneminder-tmpfile.conf
-            'b69ac1deaaf3cf84b4ae4dbab794e1b062823de817f1e3a816ccf5438db440c0')
+            'b69ac1deaaf3cf84b4ae4dbab794e1b062823de817f1e3a816ccf5438db440c0'
+            # fcgiwrap-multiwatch.service
+            'e95f9bef77aef647dd633bd9ad75dc099b6d7184684e133f2f20702de83a6260')
 
 prepare () {
     cd $pkgname-$pkgver
@@ -151,23 +154,26 @@ package() {
     chmod 644                           $pkgdir/etc/$pkgname/conf.d/*
 
     # Install Nginx conf file
-    install -Dm644 $srcdir/$pkgname-nginx.conf       $pkgdir/etc/nginx/sites-available/$pkgname.conf    
+    install -Dm644 $srcdir/$pkgname-nginx.conf              $pkgdir/etc/nginx/sites-available/$pkgname.conf    
     
     # Install Apache conf file
-    install -Dm644 $srcdir/$pkgname-httpd.conf       $pkgdir/etc/httpd/conf/extra/$pkgname.conf
+    install -Dm644 $srcdir/$pkgname-httpd.conf              $pkgdir/etc/httpd/conf/extra/$pkgname.conf
     
     # Install PHP-FPM ini file
-    install -Dm644 $srcdir/$pkgname-php.ini          $pkgdir/etc/php/conf.d/$pkgname.ini
+    install -Dm644 $srcdir/$pkgname-php.ini                 $pkgdir/etc/php/conf.d/$pkgname.ini
     
     # Install systemd service
-    install -Dm644 $srcdir/$pkgname.service          $pkgdir/usr/lib/systemd/system/$pkgname.service
+    install -Dm644 $srcdir/$pkgname.service                 $pkgdir/usr/lib/systemd/system/$pkgname.service
     
     # Install systemd tmpfile
-    install -Dm644 $srcdir/$pkgname-tmpfile.conf     $pkgdir/usr/lib/tmpfiles.d/$pkgname.conf
+    install -Dm644 $srcdir/$pkgname-tmpfile.conf            $pkgdir/usr/lib/tmpfiles.d/$pkgname.conf
+    
+    # Install fcgiwrap-multiwatch service
+    install -Dm644 $srcdir/fcgiwrap-multiwatch.service     $pkgdir/usr/lib/systemd/system/fcgiwrap-multiwatch.service
     
     # Install logrotate conf file
-    install -Dm644 misc/logrotate.conf               $pkgdir/etc/logrotate.d/$pkgname
+    install -Dm644 misc/logrotate.conf                      $pkgdir/etc/logrotate.d/$pkgname
 
     # Copy default database schemas
-    install -Dm644 db/zm*.sql                        $pkgdir/usr/share/$pkgname/db
+    install -Dm644 db/zm*.sql                               $pkgdir/usr/share/$pkgname/db
 }

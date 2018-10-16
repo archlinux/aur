@@ -1,7 +1,7 @@
 pkgbase = zoneminder
 	pkgdesc = A full-featured, open source, state-of-the-art video surveillance software system
 	pkgver = 1.32.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://zoneminder.com/
 	install = zoneminder.install
 	arch = x86_64
@@ -13,6 +13,8 @@ pkgbase = zoneminder
 	depends = mariadb
 	depends = nginx-mainline
 	depends = fcgiwrap
+	depends = spawn-fcgi
+	depends = multiwatch
 	depends = php-apcu
 	depends = php-fpm
 	depends = php-gd
@@ -55,6 +57,7 @@ pkgbase = zoneminder
 	source = zoneminder-php.ini
 	source = zoneminder.service
 	source = zoneminder-tmpfile.conf
+	source = fcgiwrap-multiwatch.service
 	sha256sums = cf72cbd45d91ef0232c123dac5f908993f8941a62b9ae96975c4e6043bd4b9a9
 	sha256sums = 55be29e1eccb44d4ad0db8b23c37cec50f5341f8e498583d472ed1f0493876e3
 	sha256sums = dbd231e97b950c698f0f501d6a53c7291c9985e766b09e3afe00cfe69a969f44
@@ -63,6 +66,7 @@ pkgbase = zoneminder
 	sha256sums = 7905ceddbb049de0f9bf4f1eb58779dfe310a65c4d2ec44854d592d4f31b6a72
 	sha256sums = 3e4de227e3154dffa887f2286c339ab3cf456f6d74a400b2786192b7e2b129c0
 	sha256sums = b69ac1deaaf3cf84b4ae4dbab794e1b062823de817f1e3a816ccf5438db440c0
+	sha256sums = e95f9bef77aef647dd633bd9ad75dc099b6d7184684e133f2f20702de83a6260
 
 pkgname = zoneminder
 
