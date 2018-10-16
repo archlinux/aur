@@ -7,7 +7,7 @@ pkgdesc="Lint ILE/RPG programs"
 arch=("any")
 url="https://github.com/andlrc/rpglelint"
 license=("PerlArtistic")
-depends=("perl>=5.16")
+depends=("perl>=5.16" "perl-json")
 makedepends=("git")
 provides=("rpglelint")
 source=('rpglelint::git+git://github.com/andlrc/rpglelint#branch=master')
