@@ -1,20 +1,21 @@
 pkgbase = infiniband-diags
 	pkgdesc = OpenFabrics Alliance diagnostic programs and scripts for InfiniBand subnets
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.openfabrics.org/index.php/overview.html
 	arch = x86_64
 	arch = i686
 	license = GPL2
 	license = custom:"Open Fabrics Alliance BSD"
+	makedepends = python-docutils
 	depends = opensm
-	depends = systemd
 	depends = glib2
+	depends = perl
 	provides = libibmad
 	conflicts = libibmad
 	replaces = libibmad
 	source = https://github.com/linux-rdma/infiniband-diags/archive/2.1.0.tar.gz
-	md5sums = 5960206e41d27737ab13916cfdee2d4e
+	sha256sums = c9e43ccf633f65ee7b0b1dc709c97ffef6c6d2da260e2f488e592c7da52fabc4
 
 pkgname = infiniband-diags
 
