@@ -3,17 +3,17 @@
 
 pkgname=simplenote-electron-bin
 _pkgname=simplenote
-pkgver=1.1.7
-pkgrel=1
+pkgver=1.2.1
+pkgrel=2
 pkgdesc="The simplest way to keep notes"
 arch=('x86_64')
 url="https://github.com/Automattic/simplenote-electron"
 license=('GPL2')
 depends=('gcc-libs' 'gconf' 'alsa-lib' 'nss' 'libxtst' 'gtk2' 'libxss')
 provides=('simplenote')
-source=("https://github.com/Automattic/simplenote-electron/releases/download/v${pkgver}/simplenote-${pkgver}-amd64.deb")
+source=("https://github.com/Automattic/simplenote-electron/releases/download/v${pkgver}/Simplenote-linux-${pkgver}-amd64.deb")
 
-sha256sums=('a08e9c1ad31da605a5f4c080e7d9fbee95c2d38707a83e3921c8ddc4f35522d2')
+sha256sums=('091ad0d0d83dca0893bef70989dc94ae618ac72fc1c1fe57c01e62ad1ba026d1')
 # Warning: the release deb file has been known to be silently modified,
 # resulting in a different checksum. If the checksum fails to validate, this is
 # most likely the cause. If you are concerned about the security implications
