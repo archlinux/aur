@@ -1,7 +1,7 @@
 pkgbase = hdfview
 	pkgdesc = a GUI browser for reading hdf5 files
 	pkgver = 3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.hdfgroup.org/downloads/hdfview/
 	arch = x86_64
 	license = custom
