@@ -3,7 +3,7 @@
 pkgname=colorz
 pkgver=1.0.3
 pkgrel=1
-pkgdesc="A k-mean color scheme generator."
+pkgdesc="A k-means color scheme generator."
 arch=(any)
 url="https://github.com/metakirby5/colorz"
 license=(MIT)
