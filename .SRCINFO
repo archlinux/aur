@@ -1,0 +1,24 @@
+pkgbase = libpod
+	pkgdesc = Utility for running OCI-based containers.
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = https://github.com/containers/libpod
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	makedepends = go-md2man
+	depends = python
+	depends = cri-o
+	depends = cni-plugins
+	depends = skopeo
+	depends = device-mapper
+	depends = libseccomp
+	depends = iptables
+	depends = runc
+	depends = ostree
+	conflicts = podman
+	source = https://github.com/containers/libpod/archive/v0.10.1.tar.gz
+	sha256sums = c456a6e5c89ae938607154a16ec07efeda5287351d2741b762c495e651189cf5
+
+pkgname = libpod
+
