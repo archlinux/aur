@@ -1,14 +1,14 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=pwndbg-git
-pkgver=2017.02.01.610.70784f2
+pkgver=2018.07.29.733.d9cb83b
 pkgrel=1
 pkgdesc='Makes debugging with GDB suck less'
 url='https://github.com/pwndbg/pwndbg'
 arch=('any')
 license=('MIT')
-depends=('python-capstone' 'python-unicorn' 'python-pycparser' 'python-psutil' 'python-ptrace'
-         'python-pyelftools' 'python-six' 'python-future')
+depends=('gdb' 'python-capstone' 'python-unicorn' 'python-pycparser' 'python-psutil' 'python-ptrace'
+         'python-pyelftools' 'python-six' 'python-future' 'python-pygments')
 optdepends=('checksec: checksec command support'
             'ropper: ropper command support'
             'ropgadget: ropgadget command support'
@@ -43,7 +43,7 @@ package() {
   install -d "${pkgdir}/usr/share/pwndbg"
   cp -r *.py pwndbg __pycache__ "${pkgdir}/usr/share/pwndbg"
   install -Dm 644 README.md FEATURES.md -t "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dm 644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm 644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
