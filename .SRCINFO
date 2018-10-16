@@ -1,0 +1,24 @@
+pkgbase = wezterm-git
+	pkgdesc = A terminal emulator implemented in Rust, using OpenGL ES 2 for rendering.
+	pkgver = 0.1.0.536.g61fec42
+	pkgrel = 0
+	url = https://github.com/wez/wezterm
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = git
+	makedepends = ragel
+	depends = freetype2
+	depends = fontconfig
+	depends = libegl
+	depends = harfbuzz
+	depends = xcb-util-wm
+	depends = xcb-util-keysyms
+	source = wezterm::git+https://github.com/wez/wezterm.git
+	sha256sums = SKIP
+
+pkgname = wezterm-git
+
