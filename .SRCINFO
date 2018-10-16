@@ -1,15 +1,16 @@
 pkgbase = infinipath-psm
 	pkgdesc = OpenFabrics Alliance Intel Performance Scaled Messaging library
 	pkgver = 3.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.openfabrics.org/index.php/overview.html
 	arch = x86_64
+	arch = i686
 	license = GPL2
 	license = custom:"Open Fabrics Alliance BSD"
 	makedepends = git
 	depends = glibc
 	depends = libutil-linux
-	source = git+https://github.com/intel/psm
+	source = git+https://github.com/intel/psm#commit=604758e
 	md5sums = SKIP
 
 pkgname = infinipath-psm
