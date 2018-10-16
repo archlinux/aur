@@ -1,7 +1,7 @@
 pkgbase = dxvk-wine-git
 	pkgdesc = A Vulkan-based compatibility layer for Direct3D 10/11 which allows running 3D applications on Linux using Wine. Winelib version
-	pkgver = 0.81_18_g8172d34
-	pkgrel = 2
+	pkgver = 0.90_4_ge0e945f
+	pkgrel = 1
 	url = https://github.com/doitsujin/dxvk
 	arch = x86_64
 	license = zlib/libpng
