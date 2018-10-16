@@ -1,0 +1,17 @@
+pkgbase = mergerfs-git
+	pkgdesc = The best FUSE union filesystem
+	pkgver = 2.24.2.r33.g47bf58e
+	pkgrel = 1
+	url = https://github.com/trapexit/mergerfs
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = fuse
+	provides = mergerfs
+	conflicts = mergerfs
+	options = !emptydirs
+	source = git+https://github.com/trapexit/mergerfs.git
+	sha256sums = SKIP
+
+pkgname = mergerfs-git
+
