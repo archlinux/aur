@@ -3,7 +3,7 @@
 # Contributor: sxe <sxxe@gmx.de>
 
 pkgname=wine-git
-pkgver=3.17.r156.gecea7a94c9
+pkgver=3.18.r75.ge55aca8f49
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (git version)'
 arch=('i686' 'x86_64')
@@ -90,11 +90,11 @@ then
     makedepends=(${makedepends[@]/*32-*/} ${_depends[@]})
     optdepends=(${optdepends[@]/*32-*/})
     provides=("wine=${pkgver}")
-    conflicts=('wine' 'wine-staging' 'wine-staging-git')
+    conflicts=('wine')
 else
     makedepends=(${makedepends[@]} ${_depends[@]})
     provides=("wine=${pkgver}" "bin32-wine=${pkgver}" "wine-wow64=${pkgver}")
-    conflicts=('wine' 'wine-staging' 'wine-staging-git' 'bin32-wine' 'wine-wow64')
+    conflicts=('wine' 'bin32-wine' 'wine-wow64')
     replaces=('bin32-wine')
 fi
 
@@ -125,7 +125,7 @@ build() {
     # (according to the wine wiki, this 64-bit/32-bit building order is mandatory)
     if [ "$CARCH" = 'x86_64' ] 
     then
-        msg2 'Building Wine-64...'
+        printf '%s\n' '  -> Building Wine-64...'
 
         mkdir "$pkgname"-64-build
         cd    "$pkgname"-64-build
@@ -147,7 +147,7 @@ build() {
     fi
     
     # build wine 32-bit
-    msg2 'Building Wine-32...'
+    printf '%s\n' '  -> Building Wine-32...'
     
     cd "${srcdir}/${pkgname}"-32-build
     
@@ -164,7 +164,7 @@ package() {
     
     # package wine 32-bit
     # (according to the wine wiki, this reverse 32-bit/64-bit packaging order is important)
-    msg2 'Packaging Wine-32...'
+    printf '%s\n' '  -> Packaging Wine-32...'
     
     cd "$pkgname"-32-build
     
@@ -177,7 +177,7 @@ package() {
              dlldir="$pkgdir/usr/lib32/wine" install
     
         # package wine 64-bit
-        msg2 'Packaging Wine-64...'
+        printf '%s\n' '  -> Packaging Wine-64...'
         
         cd "${srcdir}/${pkgname}"-64-build
         

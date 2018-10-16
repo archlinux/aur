@@ -1,6 +1,6 @@
 pkgbase = wine-git
 	pkgdesc = A compatibility layer for running Windows programs (git version)
-	pkgver = 3.17.r156.gecea7a94c9
+	pkgver = 3.18.r75.ge55aca8f49
 	pkgrel = 1
 	url = https://www.winehq.org/
 	install = wine-git.install
@@ -124,12 +124,10 @@ pkgbase = wine-git
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	provides = wine=3.17.r156.gecea7a94c9
-	provides = bin32-wine=3.17.r156.gecea7a94c9
-	provides = wine-wow64=3.17.r156.gecea7a94c9
+	provides = wine=3.18.r75.ge55aca8f49
+	provides = bin32-wine=3.18.r75.ge55aca8f49
+	provides = wine-wow64=3.18.r75.ge55aca8f49
 	conflicts = wine
-	conflicts = wine-staging
-	conflicts = wine-staging-git
 	conflicts = bin32-wine
 	conflicts = wine-wow64
 	replaces = bin32-wine
