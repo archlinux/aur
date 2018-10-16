@@ -11,15 +11,14 @@
 
 _pkgname=playonlinux5
 pkgname=${_pkgname}-git
-pkgver=r1918.48bf7f2a
+pkgver=r2087.a75aee42
 pkgrel=1
-epoch=2
 pkgdesc="GUI for managing Windows programs under linux (development version based on Java)"
 arch=('any')
 url="http://www.playonlinux.com/"
 license=('GPL')
-makedepends=('git' 'maven' 'java-openjfx' 'java-environment>=8')
-depends=('wine' 'java-openjfx' 'java-runtime>=8')
+makedepends=('git' 'maven' 'java-openjfx' ' java-environment-openjdk>=8')
+depends=('wine' 'java-openjfx' 'java-runtime-openjdk>=8')
 options=(!strip)
 source=(
 	"${_pkgname}::git://github.com/PlayOnLinux/POL-POM-5.git"
