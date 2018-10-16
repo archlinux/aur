@@ -1,24 +1,24 @@
 pkgbase = opensm-systemd-multiple-interfaces
 	pkgdesc = OpenFabrics Alliance InfiniBand Subnet Manager and Administrator
 	pkgver = 3.3.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.openfabrics.org/index.php/overview.html
 	arch = x86_64
 	arch = i686
 	license = GPL2
 	license = custom:"Open Fabrics Alliance BSD"
-	depends = libibumad
-	depends = rdma
+	depends = rdma-core
+	depends = bash
 	provides = opensm
 	conflicts = opensm
 	source = https://github.com/linux-rdma/opensm/archive/3.3.21.tar.gz
 	source = opensm.service
 	source = opensm.launch
 	source = opensm_extra.conf
-	md5sums = 7149ad46987749ae80a00124dd1e3f9d
-	md5sums = d70efe82917527515520aca4fff840e9
-	md5sums = b8827f86be787ede5093c7395bb03928
-	md5sums = 733983c333d652907145a7ae8ab09d85
+	sha256sums = 50d024090dc083274bc840792a3b539ecee5ad37a42948f43e84068e42b89b48
+	sha256sums = a40c8a556cb170d84ffb49791fb82aabb21dc4afd22865e8f264a93c1f304788
+	sha256sums = 1ced7ee03c38601b0db84e3b7e69995bd190fd4528548401725fcd6902d8a7c1
+	sha256sums = 1f3f52202f28cb79a5d42fa6812ed6ef2af9844dce0c10063ea1bc1a4644d787
 
 pkgname = opensm-systemd-multiple-interfaces
 

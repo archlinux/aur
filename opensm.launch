@@ -1,5 +1,8 @@
 #!/bin/bash
-# Copied from Fedora's opensm-3.3.19-1.fc23.src.rpm
+# Upstream doesn't provide a systemd .service file
+# There is a timing bug that intermittently causes signal 15 failures on start
+# Fedora's workaround is to use a separate script
+# Copied from Fedora's opensm-3.3.17-4.fc22.x86_64.rpm
 # Modified for Arch
 #
 # Launch the necessary OpenSM daemons for systemd
