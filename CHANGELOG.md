@@ -1,3 +1,25 @@
+# v2.8.1
+- [#167](https://github.com/xmrig/xmrig-amd/issues/167) Fixed wrong hashrate in `GET /1/threads` endpoint.
+- [#204](https://github.com/xmrig/xmrig-nvidia/issues/204) Fixed regression, periodical health reports was not shown since v2.7.0-beta.
+
+# v2.8.0
+- **[#753](https://github.com/xmrig/xmrig/issues/753) Added new algorithm [CryptoNight variant 2](https://github.com/xmrig/xmrig/issues/753) for Monero fork, thanks [@SChernykh](https://github.com/SChernykh).**
+- **[#758](https://github.com/xmrig/xmrig/issues/758) Added SSL/TLS support for secure connections to pools.**
+  - Added per pool options `"tls"` and `"tls-fingerprint"` and command line equivalents.  
+- [#245](https://github.com/xmrig/xmrig-proxy/issues/245) Fixed API ID collision when run multiple miners on same machine.
+- [#757](https://github.com/xmrig/xmrig/issues/757) Fixed send buffer overflow.
+- [#777](https://github.com/xmrig/xmrig/issues/777) Better report about pool connection issues. 
+
+# v2.7.0-beta
+- Algorithm variant `cryptonight-lite/ipbc` replaced to `cryptonight-heavy/tube` for **Bittube (TUBE)** coin.
+- Added `cryptonight-heavy/xhv` variant for **Haven Protocol (XHV)** coin.
+- Added `cryptonight/rto` (cryptonight variant 1 with IPBC/TUBE mod) variant for **Arto (RTO)** coin.
+- Added `cryptonight/xao` (original cryptonight with bigger iteration count) variant for **Alloy (XAO)** coin.
+- Added `cryptonight/xtl` variant for **Stellite (XTL)** coin.
+- Added `cryptonight/msr` also known as `cryptonight-fast` for **Masari (MSR)** coin.
+- Added new detailed hashrate report.
+- Added command line option `--dry-run`.
+
 # v2.6.1
 - Fixed critical bug, in some cases miner was can't recovery connection and switch to failover pool, version 2.5.2 and v2.6.0-beta1 affected.
 - [#499](https://github.com/xmrig/xmrig/issues/499) IPv6 support disabled for internal HTTP API.
