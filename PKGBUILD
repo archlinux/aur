@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=wine-staging-git
-pkgver=3.17.r13.g4beed4a3+wine.3.17.r144.g9f05343013
+pkgver=3.18.r8.g8519a9ea+wine.3.18.r75.ge55aca8f49
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (staging branch, git version)'
 arch=('i686' 'x86_64')
@@ -101,7 +101,7 @@ then
         "wine-git=$(    printf '%s' "$pkgver" | sed 's/.*\+wine\.//')"
         "wine-staging=$(printf '%s' "$pkgver" | sed 's/\+wine.*//')"
     )
-    conflicts=('wine' 'wine-git' 'wine-staging')
+    conflicts=('wine')
 else
     makedepends=("${makedepends[@]}" "${_depends[@]}")
     provides=(
@@ -110,7 +110,7 @@ else
         "wine-git=$(    printf '%s' "$pkgver" | sed 's/.*\+wine\.//')"
         "wine-staging=$(printf '%s' "$pkgver" | sed 's/\+wine.*//')"
     )
-    conflicts=('wine' 'wine-wow64' 'wine-git' 'wine-staging')
+    conflicts=('wine' 'wine-wow64')
 fi
 
 prepare() {
@@ -119,12 +119,12 @@ prepare() {
     # restore the wine tree to its git origin state, without wine-staging patches
     # (necessary for reapllying wine-staging patches in succedent builds,
     # otherwise the patches will fail to be reapplied)
-    msg2 'Cleaning wine source code tree...'
+    printf '%s\n' '  -> Cleaning wine source code tree...'
     git reset --hard HEAD      # restore tracked files
     git clean -xdf             # delete untracked files
     
     # change back to the wine upstream commit that this version of wine-staging is based in
-    msg2 'Changing wine HEAD to the wine-staging base commit...'
+    printf '%s\n' '  -> Changing wine HEAD to the wine-staging base commit...'
     git checkout "$(../"$pkgname"/patches/patchinstall.sh --upstream-commit)"
     
     # fix path of opencl headers
@@ -149,7 +149,7 @@ build() {
     mkdir -p  "$pkgname"-32-build
     
     # apply all wine-staging patches
-    msg2 'Applying wine-staging patches...'
+    printf '%s\n' '  -> Applying wine-staging patches...'
     ./"${pkgname}"/patches/patchinstall.sh DESTDIR="${srcdir}/wine-git" --all
     
     # workaround for FS#55128
@@ -162,7 +162,7 @@ build() {
     # (according to the wine wiki, this 64-bit/32-bit building order is mandatory)
     if [ "$CARCH" = "x86_64" ] 
     then
-        msg2 'Building Wine-64...'
+        printf '%s\n' '  -> Building Wine-64...'
         mkdir -p "$pkgname"-64-build
         cd  "$pkgname"-64-build
         ../wine-git/configure \
@@ -181,7 +181,7 @@ build() {
     fi
     
     # build wine-staging 32-bit
-    msg2 'Building Wine-32...'
+    printf '%s\n' '  -> Building Wine-32...'
     cd "${srcdir}/${pkgname}"-32-build
     ../wine-git/configure \
                     --prefix='/usr' \
@@ -197,7 +197,7 @@ package() {
     
     # package wine-staging 32-bit
     # (according to the wine wiki, this reverse 32-bit/64-bit packaging order is important)
-    msg2 'Packaging Wine-32...'
+    printf '%s\n' '  -> Packaging Wine-32...'
     cd "$pkgname"-32-build
     
     if [ "$CARCH" = 'i686' ] 
@@ -209,7 +209,7 @@ package() {
              dlldir="${pkgdir}/usr/lib32/wine" install
         
         # package wine-staging 64-bit
-        msg2 'Packaging Wine-64...'
+        printf '%s\n' '  -> Packaging Wine-64...'
         cd "${srcdir}/${pkgname}"-64-build
         make prefix="${pkgdir}/usr" \
              libdir="${pkgdir}/usr/lib" \
