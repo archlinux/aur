@@ -21,7 +21,6 @@ prepare() {
   cp -a "root_numpy-${pkgver}" "root_numpy-py2-${pkgver}"
   cd "root_numpy-py2-${pkgver}"
 
-  msg2 "Adjusting Python 2 shebangs..."
   find . -name '*.py' -type f -exec \
       sed -e "s|#![ ]*/usr/bin/python$|#!/usr/bin/python2|" \
           -e "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" \
