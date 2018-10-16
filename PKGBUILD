@@ -7,6 +7,7 @@ arch=('any')
 url="https://github.com/balloob/pychromecast"
 license=('MIT')
 depends=('python2>=2.7' 'python2-requests' 'python2-protobuf')
+makedepends=('git')
 provides=('python2-pychromecast')
 conflicts=('python2-pychromecast')
 options=(!emptydirs)
