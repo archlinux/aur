@@ -1,4 +1,4 @@
-# Maintainer: James Harvey <jamespharvey20 at gmail dot com>
+# Maintainer: James P. Harvey <jamespharvey20 at gmail dot com>
 
 pkgname=ibsim
 pkgver=0.7
