@@ -1,7 +1,7 @@
 # Maintainer: Tim Savannah <kata198@gmail.com>
 
 pkgname=('python2-advancedhtmlparser' 'python2-advancedhtmlparser-tools')
-pkgver=8.0.1
+pkgver=8.1.0
 pkgrel=1
 pkgdesc="Fast Indexed python2 HTML parser which builds a DOM node tree, providing common getElementsBy* functions for scraping, testing, modification, and formatting"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('python2-setuptools' 'python2')
 depends=('python2-setuptools' 'python2')
 optdepends=('python2-queryablelist: Support for advanced "filter" functions')
 source=("https://github.com/kata198/AdvancedHTMLParser/archive/${pkgver}.tar.gz")
-sha512sums=("3ad59802fa1868912f37fe7cf688b6ea9d521a93806bb1985f7b07d3a8c5cc513bf3ac977d36cf2e59b652fccc53c713b01431169b4e356e551324c86a388c2b")
+sha512sums=("6b16f61538504faae3d7c02628ae3607305f23a866b5f9f8fa13a75f96271090b8446e38f6b7c126dc43503d7e63ff8a5799478b00eb372926baca59caa45dbc")
 
 build() {
   cd "$srcdir"/AdvancedHTMLParser-$pkgver
