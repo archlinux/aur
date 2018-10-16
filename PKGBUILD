@@ -17,7 +17,7 @@ pkgdesc="GUI for managing Windows programs under linux (development version base
 arch=('any')
 url="http://www.playonlinux.com/"
 license=('GPL')
-makedepends=('git' 'maven' 'java-openjfx' ' java-environment-openjdk>=8')
+makedepends=('git' 'maven' 'java-openjfx' 'java-environment-openjdk>=8')
 depends=('wine' 'java-openjfx' 'java-runtime-openjdk>=8')
 options=(!strip)
 source=(
