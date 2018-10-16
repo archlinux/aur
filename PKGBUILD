@@ -1,8 +1,8 @@
 # Maintainer: Oscar Morante <spacepluk@gmail.com>
 
-_version=2017.4.12
+_version=2017.4.13
 _build=f1
-_randomstring=b582b87345b1
+_randomstring=6902ad48015d
 _prefix=/opt/UnityLts
 
 pkgname=unity-editor-lts-ios
