@@ -1,21 +1,15 @@
-# Maintainer: James Harvey <jamespharvey20@gmail.com>
-# * No namcap warnings or errors
+# Maintainer: James P. Harvey <jamespharvey20 at gmail dot com>
 
 pkgname=libibmad
 pkgver=1.3.13
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenFabrics Alliance InfiniBand MAD (MAnagement Datagram) library'
-#        Low leayer InfiniBand functions, including:
-#           * Management Datagrams (MAD)
-#           * Subnet Administration (SA)
-#           * Subnet Management Packets (SMP)
-#        Used by InfiniBand diagnostic and management programs.
 arch=('x86_64' 'i686')
 url='https://www.openfabrics.org/index.php/overview.html'
 license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
-depends=('libibumad')
+depends=('rdma-core')
 source=("https://www.openfabrics.org/downloads/management/${pkgname}-${pkgver}.tar.gz")
-md5sums=('29c7723ec08dac02403bb307e03c86cd')
+sha256sums=('17cdd721c81fecefc366601c46c55a4d44c93799980a0a34c271b12bc544520b')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
