@@ -13,7 +13,7 @@ source=("https://github.com/linux-rdma/${pkgname}/archive/${pkgver}.tar.gz"
         'opensm.launch')
 sha256sums=('50d024090dc083274bc840792a3b539ecee5ad37a42948f43e84068e42b89b48'
             'a40c8a556cb170d84ffb49791fb82aabb21dc4afd22865e8f264a93c1f304788'
-            '91cce7a6b652490ad2aa382a0be2ba078068f5a633f4a5f07f7e718f3c91cf53')
+            '6fe01543d11d9fe0b4d3eeb9a6c6abf42c60da2e90c2dea829452a3bcfa6b3ce')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
