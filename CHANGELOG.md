@@ -1,3 +1,22 @@
+# v2.8.1
+- [#258](https://github.com/xmrig/xmrig/issues/258) Force NDEBUG for release builds.
+- [#108](https://github.com/xmrig/xmrig/issues/108) Fixed possible crash in simple mode when heavy load.
+- [#777](https://github.com/xmrig/xmrig/issues/777) Better report about about pool connection issues. 
+- Fixed error when handle malformed result from miner (divide to zero).
+- Fixed malformed login reply.
+
+# v2.8.0
+- **[#753](https://github.com/xmrig/xmrig/issues/753) Added new algorithm [CryptoNight variant 2](https://github.com/xmrig/xmrig/issues/753) for Monero fork, thanks [@SChernykh](https://github.com/SChernykh).**
+- **[#251](https://github.com/xmrig/xmrig-proxy/issues/251) Added extended workers support.**
+- **[#758](https://github.com/xmrig/xmrig/issues/758) Added SSL/TLS support for secure outgoing connections to pools.**
+  - Added per pool options `"tls"` and `"tls-fingerprint"` and command line equivalents.
+- [#757](https://github.com/xmrig/xmrig/issues/757) Fixed send buffer overflow.
+
+# v2.6.5
+- [#245](https://github.com/xmrig/xmrig-proxy/issues/245) Fixed API ID collision when run multiple proxies on same machine.
+  - Added command line option `--api-id` and equivalent option for config file.
+- Added `algo` field to API `GET /1/summary` endpoint.
+
 # v2.6.4
 - [#238](https://github.com/xmrig/xmrig-proxy/issues/238) `cryptonight-lite/ipbc` replaced to `cryptonight-heavy/tube`.
 - Added `cryptonight/xao` and `cryptonight/rto` for future use.
