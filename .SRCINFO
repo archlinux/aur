@@ -1,16 +1,16 @@
 pkgbase = qperf
-	pkgdesc = OpenFabrics Alliance InfiniBand performance benchmark for bandwidth and latency
+	pkgdesc = OpenFabrics Alliance InfiniBand performance benchmark for bandwidth and latency (supports TCP/IP and RDMA)
 	pkgver = 0.4.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.openfabrics.org/index.php/overview.html
 	arch = x86_64
 	arch = i686
 	license = GPL2
 	license = custom:"Open Fabrics Alliance BSD"
-	depends = librdmacm
+	depends = rdma-core
 	conflicts = qperf-nordma
 	source = https://github.com/linux-rdma/qperf/archive/v0.4.11.tar.gz
-	md5sums = 8ef6f0c0124a4eee447f39479c62a992
+	sha256sums = b0ef2ffe050607566d06102b4ef6268aad08fdc52898620d429096e7b0767e75
 
 pkgname = qperf
 
