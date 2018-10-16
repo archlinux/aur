@@ -1,8 +1,8 @@
 # Maintainer: Oscar Morante <spacepluk@gmail.com>
 
-_version=2017.4.12
+_version=2017.4.13
 _build=f1
-_randomstring=b582b87345b1
+_randomstring=6902ad48015d
 _prefix=/opt/UnityLts
 
 pkgname=unity-editor-lts
@@ -40,7 +40,7 @@ source=("https://download.unity3d.com/download_unity/${_randomstring}/LinuxEdito
         'unity-editor-lts.desktop'
         'unity-editor-lts-icon.png'
         'eula.txt')
-md5sums=('cbb91347e241009b0c944bcd2d9301ce'
+md5sums=('c8b2431a142014355c529f23c5808527'
          '6e2f0e897fe71d99c649f397dce8c0f9'
          '7cf8762a5f84a408286365d23fa00e5e'
          '723f9e556821810682a6d1f4be540a74'
