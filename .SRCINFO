@@ -1,5 +1,5 @@
 pkgbase = libpod
-	pkgdesc = Utility for running OCI-based containers.
+	pkgdesc = A library used to create container pods.
 	pkgver = 0.10.1
 	pkgrel = 1
 	url = https://github.com/containers/libpod

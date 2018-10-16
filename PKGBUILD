@@ -3,7 +3,7 @@
 pkgname=libpod
 pkgver=0.10.1
 pkgrel=1
-pkgdesc="Utility for running OCI-based containers."
+pkgdesc="A library used to create container pods."
 arch=("x86_64")
 url="https://github.com/containers/libpod"
 license=("Apache")
