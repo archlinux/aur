@@ -1,5 +1,4 @@
-# Maintainer: James Harvey <jamespharvey20@gmail.com>
-# * No namcap warnings or errors
+# Maintainer: James P. Harvey <jamespharvey20 at gmail dot com>
 
 pkgname=fabtests
 pkgver=1.6.2
@@ -10,7 +9,7 @@ url='https://www.openfabrics.org/index.php/overview.html'
 license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
 depends=('libfabric' 'bash' 'ruby')
 source=("https://github.com/ofiwg/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('e6e9971add04e7e4a3d8776159aed668')
+sha256sums=('37405c6202f5b1aa81f8ea211237a2d87937f06254fa3ed44a9b69ac73b234e8')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"

@@ -11,7 +11,7 @@ pkgbase = fabtests
 	depends = bash
 	depends = ruby
 	source = https://github.com/ofiwg/fabtests/releases/download/v1.6.2/fabtests-1.6.2.tar.gz
-	md5sums = e6e9971add04e7e4a3d8776159aed668
+	sha256sums = 37405c6202f5b1aa81f8ea211237a2d87937f06254fa3ed44a9b69ac73b234e8
 
 pkgname = fabtests
 
