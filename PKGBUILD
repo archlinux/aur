@@ -17,7 +17,6 @@ sha256sums=('a701d4e8fee80fcccdd1e7c9351178ecfe56e37449cf10431a91c87bdaa60aca')
 
 package() {
     # cd "${srcdir}/build"
-    msg2 'Installing...'
     install -Dm755 "${srcdir}/vale" "${pkgdir}/usr/bin/vale"
     install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
