@@ -21,7 +21,6 @@ prepare() {
   cp -a "${_pkgbase}-${pkgver}" "${_pkgbase}-py2-${pkgver}"
   cd "${_pkgbase}-py2-${pkgver}"
 
-  msg2 "Adjusting Python 2 shebangs..."
   find . -name '*.py' -type f -exec \
       sed -e "s|#![ ]*/usr/bin/python$|#!/usr/bin/python2|" \
           -e "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" \
