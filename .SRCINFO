@@ -1,6 +1,6 @@
 pkgbase = aur-out-of-date
 	pkgdesc = Determines out-of-date AUR packages
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/simon04/aur-out-of-date
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = aur-out-of-date
 	license = GPL
 	makedepends = go
 	makedepends = git
-	source = aur-out-of-date-2.0.0.tar.gz::https://github.com/simon04/aur-out-of-date/archive/v2.0.0.tar.gz
-	sha256sums = 0f93aa6546762d95ed85dbd2428ddb87c6b8efbc41bd0c5b6f671456d97b6128
+	source = aur-out-of-date-2.1.0.tar.gz::https://github.com/simon04/aur-out-of-date/archive/v2.1.0.tar.gz
+	sha256sums = 0daefd0c85435fdcd915055c13d1acdfab3fff6a077c9d36a9964df6bfcf935a
 
 pkgname = aur-out-of-date
 
