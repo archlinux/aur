@@ -1,6 +1,6 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=goproxy
-pkgver=6.2
+pkgver=6.3
 pkgrel=1
 pkgdesc="A high performance HTTP, HTTPS, websocket, TCP, UDP, Secure DNS, Socks5 proxy server"
 arch=('x86_64')
@@ -39,4 +39,4 @@ package() {
   install -m755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
 
-sha256sums=('06fdd5f664f0d0a0e8907ebb8e2ec7f7408cf2ac1e34bc6b65c9054029a35f4c')
+sha256sums=('2e91af4c46f1b2bbe34b57dd3d2b765d9ec86bd5fa01f61525993c396af3a517')
