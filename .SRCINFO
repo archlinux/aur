@@ -1,0 +1,22 @@
+pkgbase = mksignkernels
+	pkgdesc = Bundle and sign your kernel for SecureBoot-enabled systems.
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/ansemjo/mksignkernels
+	arch = any
+	license = MIT
+	makedepends = make
+	depends = systemd
+	depends = bash
+	depends = make
+	depends = sed
+	depends = binutils
+	depends = sbsigntools
+	provides = mksignkernels
+	conflicts = mksignkernels
+	backup = etc/mksignkernels.mk
+	source = mksignkernels-0.0.3.tar.gz::https://github.com/ansemjo/mksignkernels/archive/0.0.3.tar.gz
+	sha256sums = fce8fe10c887985bbde04bc7125921c6911dc09f2c12f81eba11ed6af0b8d338
+
+pkgname = mksignkernels
+
