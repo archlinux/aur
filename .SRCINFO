@@ -1,0 +1,20 @@
+pkgbase = virtboard-git
+	pkgdesc = A basic keyboard, blazing the path of modern Wayland keyboards. Sacrificial.
+	pkgver = r6272.5210414c
+	pkgrel = 1
+	url = https://source.puri.sm/Librem5/virtboard
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL3
+	makedepends = git
+	makedepends = pkg-config
+	makedepends = meson
+	provides = virtboard
+	conflicts = virtboard
+	source = git+https://source.puri.sm/Librem5/virtboard.git
+	sha256sums = SKIP
+
+pkgname = virtboard-git
+
