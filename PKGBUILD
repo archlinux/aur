@@ -1,12 +1,13 @@
 # Maintainer: lsf
 # Contributor: Adam Hose <adis@blad.is>
 pkgver=20181008.359_c10e7a3
-pkgrel=2
+pkgrel=3
 _pkgname=opensnitch
 pkgname=opensnitch-git
 arch=('i686' 'x86_64')
 license=('GPL')
-pkgdesc="A GNU/Linux port of the Little Snitch application firewall."
+url='https://www.opensnitch.io'
+pkgdesc='A GNU/Linux port of the Little Snitch application firewall.'
 makedepends=('git' 'go-pie' 'dep'
              'python-setuptools' 'python-pip')
 depends=('python-grpcio' 'python-grpcio-tools' 'python-pyinotify'
