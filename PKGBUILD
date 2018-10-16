@@ -1,8 +1,8 @@
 # Maintainer: Oscar Morante <spacepluk@gmail.com>
 
-_version=2018.2.11
+_version=2018.2.12
 _build=f1
-_randomstring=38bd7dec5000
+_randomstring=0a46ddfcfad4
 _prefix=/opt/Unity
 
 pkgname=unity-editor-language-ja
@@ -14,7 +14,7 @@ url='https://unity3d.com/'
 license=('custom')
 depends=('unity-editor')
 source=("https://new-translate.unity3d.jp/v1/live/54/2018.2/ja")
-sha1sums=('eb49a8aab607d023b4ba36ef31a1d2f75467bf61')
+sha1sums=('2e154b9b792d0e62e0d7b3ef88a643d10ce03fac')
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
