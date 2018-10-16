@@ -15,6 +15,7 @@ pkgbase = pulseaudio-modules-bt-git
 	makedepends = pkg-config
 	makedepends = libavcodec.so>=58-64
 	makedepends = libavutil.so>=56-64
+	makedepends = libtool
 	depends = pulseaudio>=12.0
 	depends = bluez>=5.0
 	depends = bluez-libs>=5.0

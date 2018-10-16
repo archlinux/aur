@@ -8,7 +8,7 @@ arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
 url="https://github.com/EHfive/pulseaudio-modules-bt"
 license=('LGPL')
 depends=("pulseaudio>=12.0" "bluez>=5.0" "bluez-libs>=5.0" "sbc")
-makedepends=("cmake>=3.0" "make" "pkg-config" "libavcodec.so>=58-64" "libavutil.so>=56-64")
+makedepends=("cmake>=3.0" "make" "pkg-config" "libavcodec.so>=58-64" "libavutil.so>=56-64" "libtool")
 optdepends=("libavcodec.so>=58-64" "libavutil.so>=56-64")
 provides=("pulseaudio-bluetooth")
 conflicts=("pulseaudio-bluetooth")
