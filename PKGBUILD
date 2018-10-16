@@ -3,9 +3,9 @@
 pkgname=('rdma-core')
 _srcname='rdma-core'
 pkgdesc='RDMA core userspace libraries and daemons'
-pkgver='20'
+pkgver='20.1'
 _tag="v${pkgver}"
-pkgrel='2'
+pkgrel='1'
 arch=('x86_64')
 url="https://github.com/linux-rdma/${_srcname}"
 license=('GPL2' 'custom:OpenIB.org BSD (MIT variant)')
@@ -21,7 +21,8 @@ replaces=("${_provides[@]:1}")
 
 source=("${_srcname}::git+${url}.git#tag=${_tag}?signed")
 sha512sums=('SKIP')
-validpgpkeys=('921AFFAF83A9D7FD38CAA681E4637B88367258A7')
+validpgpkeys=('921AFFAF83A9D7FD38CAA681E4637B88367258A7'  # leon@leon.nu
+              '42D25385C1A1C02B8B1B1C6F801BDDB825988F64') # nicolas@morey-chaisemartin.com
 
 prepare() {
     cd "${srcdir}/${_srcname}"
