@@ -1,0 +1,26 @@
+pkgbase = phosh
+	pkgdesc = A pure Wayland shell prototype for GNOME on mobile devices
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://source.puri.sm/Librem5/phosh
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL3
+	makedepends = git
+	makedepends = pkg-config
+	makedepends = meson
+	depends = gtk3
+	depends = vala
+	depends = gnome-desktop
+	depends = gobject-introspection
+	depends = gtk-doc
+	depends = libhandy
+	depends = wlroots
+	conflicts = phosh-git
+	source = https://source.puri.sm/Librem5/phosh/-/archive/v0.0.1/phosh-v0.0.1.tar.gz
+	sha256sums = 841d97b48c146c0c8ecd604d1769cf9715d8609de2e36868d416714d50903d63
+
+pkgname = phosh
+
