@@ -5,7 +5,7 @@
 
 pkgbase=virtualbox-modules-uksm
 pkgname=('virtualbox-host-modules-uksm')
-pkgver=5.2.18
+pkgver=5.2.20
 pkgrel=1
 arch=('x86_64')
 url='http://virtualbox.org'
