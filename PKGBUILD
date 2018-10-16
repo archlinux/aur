@@ -1,8 +1,8 @@
 # Maintainer: Oscar Morante <spacepluk@gmail.com>
 
-_version=2017.4.12
+_version=2017.4.13
 _build=f1
-_randomstring=b582b87345b1
+_randomstring=6902ad48015d
 _prefix=/opt/UnityLts
 
 pkgname=unity-editor-lts-example
@@ -15,7 +15,7 @@ license=('custom')
 depends=('unity-editor-lts')
 makedepends=('cpio')
 source=("https://download.unity3d.com/download_unity/${_randomstring}/MacExampleProjectInstaller/Examples.pkg")
-md5sums=('38633d2d3d562e13d5e467dd62f67aa0')
+md5sums=('4f28b7dc91a4eb3e1278489ec84fbaaf')
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
