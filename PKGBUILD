@@ -2,8 +2,8 @@
 # Upstream URL: https://github.com/themix-project/oomox
 
 pkgname=oomox-git
-pkgver=1.7.0.5
-pkgrel=2
+pkgver=1.7.0.6
+pkgrel=1
 pkgdesc="Graphical application for generating different color variations
 of Oomox(Numix-based), Materia (ex-Flat-Plat) and Arc themes
 (GTK2, GTK3, Cinnamon, GNOME, Openbox, Xfwm),
@@ -41,6 +41,7 @@ depends=(
 	'gdk-pixbuf2'  # oomox, materia, arc
 	'gtk-engine-murrine'  # oomox, materia, arc
 	'gtk-engines'  # oomox, materia, arc
+	'gnome-themes-extra'  # materia
 	'sassc'  # oomox, materia, arc
 	'librsvg'  # oomox, gnome-colors
 	'sed'  # oomox, materia, arc, gnome-colors, archdroid

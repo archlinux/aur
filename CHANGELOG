@@ -778,3 +778,14 @@ Tue Oct 2 15:00:11 2018 +0200
      2018-10-02 f12f4bf9 actionless chore(plugins: materia): update submodule
      2018-10-01 6403f5c7 actionless chore(plugins: arc): update submodule
      2018-09-26 6a18887a actionless fix(terminal_templates): remove xterm- and urxvt-specific values
+
+
+Tue Oct 16 15:18:18 2018 +0200
+-------------------------------------------------
+1.7.0.6         Release 1.7.0.6
+    
+    Notable changes:
+     2018-10-16 b9e842f7 actionless fix(packaging: arch): add 'gnome-themes-extra' dep for materia theme plugin
+     2018-10-16 3dde2905 actionless chore(plugins: materia): update submodule
+     2018-10-09 99ecab1a actionless chore(plugins: oomox): update submodule
+     2018-10-08 7dc8f6d3 actionless chore(colors): add new colorthemes
