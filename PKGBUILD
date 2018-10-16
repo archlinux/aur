@@ -1,17 +1,16 @@
-# Maintainer: James Harvey <jamespharvey20@gmail.com>
-# * No namcap warnings or errors
+# Maintainer: James P. Harvey <jamespharvey20 at gmail dot com>
 
 pkgname=perftest
 pkgver=4.4.0.5
 _pkgver=4.4-0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenFabrics Alliance Infiniband verbs performance testing and benchmarking tools'
 arch=('x86_64' 'i686')
 url='https://www.openfabrics.org/index.php/overview.html'
 license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
-depends=('librdmacm' 'libibumad' 'bash')
+depends=('rdma-core' 'bash')
 source=("https://github.com/linux-rdma/${pkgname}/archive/v${_pkgver}.tar.gz")
-md5sums=('f67583ff815360104653898a43f4e805')
+sha256sums=('d09dfce9823b67ec62bec54433a6bcf20fb5653c3537d8679e9ef93f8b3c384e')
 
 build() {
   cd "${srcdir}/${pkgname}-${_pkgver}"
