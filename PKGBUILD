@@ -14,7 +14,7 @@ depends=("java-environment>=$_major")
 options=('!strip')
 source=("http://download.oracle.com/otn-pub/java/jdk/${pkgver}+${_build}/${_hash}/jdk-${pkgver}_doc-all.zip"
         'LICENSE-Oracle-Legal-Notices.txt')
-sha256sums=('6255d96128898b8dd3c65d84d9732e47d633879aff4345a5dd8d41bfffdd2199 *jdk-11.0.1_doc-all.zip'
+sha256sums=('6255d96128898b8dd3c65d84d9732e47d633879aff4345a5dd8d41bfffdd2199'
             'f1c7b95bafa96ddb992e9ef7548e25c49aa98195e4ea37f3d46a93b85d8c9dbd')
 
 DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
