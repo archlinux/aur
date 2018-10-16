@@ -1,6 +1,6 @@
 pkgbase = linux-gc
-	pkgver = 4.18.12
-	pkgrel = 2
+	pkgver = 4.18.14
+	pkgrel = 1
 	url = https://cchalpha.blogspot.co.uk/
 	arch = x86_64
 	license = GPL2
@@ -13,7 +13,7 @@ pkgbase = linux-gc
 	makedepends = python-sphinx
 	makedepends = graphviz
 	options = !strip
-	source = linux-4.18.12-arch1.tar.gz::https://git.archlinux.org/linux.git/snapshot/linux-4.18.12-arch1.tar.gz
+	source = linux-4.18.14-arch1.tar.gz::https://git.archlinux.org/linux.git/snapshot/linux-4.18.14-arch1.tar.gz
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
@@ -23,7 +23,7 @@ pkgbase = linux-gc
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
-	sha256sums = 4905637acbeac177143f229309252d0f6bcdcc45db8f9fb8f3b1ef4460fc105d
+	sha256sums = 7c8c315e717fbc38d711437e686ea0c4fbee82f1370dfcda941a4b7128dd2e6c
 	sha256sums = d8a4dddc74b82718e81e327caed7769d4dd9abceb6e708012169e657df97f7d8
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = 75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919
@@ -39,12 +39,12 @@ pkgname = linux-gc
 	depends = kmod
 	depends = mkinitcpio
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux-gc=4.18.12
+	provides = linux-gc=4.18.14
 	backup = etc/mkinitcpio.d/linux-gc.preset
 
 pkgname = linux-gc-headers
 	pkgdesc = Header files and scripts for building modules for Linux-gc kernel
 	depends = linux-gc
-	provides = linux-gc-headers=4.18.12
-	provides = linux-headers=4.18.12
+	provides = linux-gc-headers=4.18.14
+	provides = linux-headers=4.18.14
 
