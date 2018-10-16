@@ -16,13 +16,11 @@ sha256sums=('6a6d67dc5926097c49c264620900833d7e476ebc37cb2671c653a62b5823bebe'
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    msg2 'Patching...'
     patch -p1 -i "${srcdir}/enable_local_build.patch"
 }
 
 build() {
     cd "${srcdir}"
-    msg2 'Configuring...'
     export GOPATH="${srcdir}/gopath"
     export RUBY_VER=$(ruby -e 'puts RUBY_VERSION')
     mkdir -p "${srcdir}/ruby"
@@ -40,13 +38,11 @@ build() {
     gem install --no-rdoc --no-ri asciidoctor
     make setup
 
-    msg2 'Compiling...'
     make build
 }
 
 package() {
     # cd "${srcdir}/build"
-    msg2 'Installing...'
     install -Dm755 "${srcdir}/gopath/src/github.com/errata-ai/vale/bin/vale" "${pkgdir}/usr/bin/vale"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/vale/LICENSE"
     install -d "${pkgdir}/usr/share/vale/styles"
