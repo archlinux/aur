@@ -1,7 +1,7 @@
 # Maintainer: Mr. Outis <mroutis@protonmail.com>
 pkgname=dvc
 pkgver=0.19.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source version control system for data science projects"
 arch=('any')
 url="https://github.com/iterative/${pkgname}"
@@ -24,7 +24,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         'asciimatics-1.10.0::git+https://github.com/peterbrittain/asciimatics.git#branch=v1.10'
         )
 
-sha256sums=('f2c3dd624b8d8d5f9b4e91819a7928fab9a8dae10f457f1e493bfc51d1915082'
+sha256sums=('1c4fca93959d70a9b50bbfda5f356f9732952ecf72cfa81dcebe3e06299977c2'
             '7471db231bd7338bc0035b16edf0dc0c900c82d23060f4b4d0c4304caedda6e4'
             '05c471281c45ae113f6103d1268ec7a4831a2e96aa80de45edc89b11fac4fbec'
             '50c058ce3371a819606ff29e914e6555c4d6c2527bff0cd0ed20af5947703118'
@@ -67,4 +67,10 @@ package() {
 
   install -Dm644 LICENSE \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  install -Dm644 scripts/completion/dvc.zsh \
+    "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
+
+  install -Dm644 scripts/completion/dvc.bash \
+    "${pkgdir}/etc/bash_completion.d/${pkgname}"
 }

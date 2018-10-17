@@ -1,7 +1,7 @@
 pkgbase = dvc
 	pkgdesc = Open-source version control system for data science projects
 	pkgver = 0.19.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/iterative/dvc
 	arch = any
 	license = Apache
@@ -29,7 +29,7 @@ pkgbase = dvc
 	source = https://files.pythonhosted.org/packages/source/n/networkx/networkx-2.1.zip
 	source = https://files.pythonhosted.org/packages/source/c/configparser/configparser-3.5.0.tar.gz
 	source = asciimatics-1.10.0::git+https://github.com/peterbrittain/asciimatics.git#branch=v1.10
-	sha256sums = f2c3dd624b8d8d5f9b4e91819a7928fab9a8dae10f457f1e493bfc51d1915082
+	sha256sums = 1c4fca93959d70a9b50bbfda5f356f9732952ecf72cfa81dcebe3e06299977c2
 	sha256sums = 7471db231bd7338bc0035b16edf0dc0c900c82d23060f4b4d0c4304caedda6e4
 	sha256sums = 05c471281c45ae113f6103d1268ec7a4831a2e96aa80de45edc89b11fac4fbec
 	sha256sums = 50c058ce3371a819606ff29e914e6555c4d6c2527bff0cd0ed20af5947703118
