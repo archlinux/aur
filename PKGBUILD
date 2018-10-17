@@ -21,4 +21,5 @@ package()
 	install -Dm644 RPG/Parser.pm $pkgdir/usr/share/perl5/vendor_perl/RPG/Parser.pm
 	install -Dm644 RPG/Linter.pm $pkgdir/usr/share/perl5/vendor_perl/RPG/Linter.pm
 	install -Dm644 RPG/Statement.pm $pkgdir/usr/share/perl5/vendor_perl/RPG/Statement.pm
+	install -Dm644 RPG/Constant.pm $pkgdir/usr/share/perl5/vendor_perl/RPG/Constant.pm
 }
