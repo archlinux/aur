@@ -1,35 +1,36 @@
-# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
 
 # NOTE:
 # This is a header-only library. No dependecy is needed and no build is necessary.
-# If you want to build the checks/tests, uncomment the blocks in makedepends, build() and check().
+# If you want to build the checks/tests, uncomment the blocks in checkdepends, build() and check().
 
 pkgname=fp16-git
-pkgver=r22.2e9eeeb
+pkgver=r40.34d4bf0
 pkgrel=1
-pkgdesc="Header-only library for conversion to/from half-precision floating point formats (git version)"
+pkgdesc='Header-only library for conversion to/from half-precision floating point formats (git version)'
 arch=('any')
-url="https://github.com/Maratyszcza/FP16/"
+url='https://github.com/Maratyszcza/FP16/'
 license=('MIT')
-makedepends=('git'
-    # for building checks:
-        #'python2' 'ninja'                  # binary repositories
-        #'confu2-git' 'python2-peachpy-git' # AUR
-)
-source=("$pkgname"::"git+https://github.com/Maratyszcza/FP16.git")
+makedepends=('git')
+#checkdepends=(
+#     official repositories:
+#        'python2' 'ninja'
+#     AUR:
+#        'confu2-git' 'python2-peachpy-git'
+#)
+source=("$pkgname"::'git+https://github.com/Maratyszcza/FP16.git')
 sha256sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
     
     # git, no tags available
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 # uncomment this block to build and run the checks/tests
 #build() {
 #    cd "$pkgname"
-#    
 #    confu2 setup
 #    python2 ./configure.py
 #    sed -i '/peachpy[[:space:]]=[[:space:]]python/s/python/python2/' build.ninja # use python2
@@ -38,9 +39,10 @@ pkgver() {
 #
 #check() {
 #    cd "${pkgname}/bin"
+#    local _test
 #    for _test in *
 #    do
-#        msg2 "Running test '${_test}'..."
+#        printf '%s\n' "  -> Running test '${_test}'..."
 #        ./"$_test"
 #    done
 #}
@@ -57,5 +59,5 @@ package() {
     install -D -m644 include/fp16/*.h "${pkgdir}/usr/include/fp16"
     
     # license
-    install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
