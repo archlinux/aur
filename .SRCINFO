@@ -1,7 +1,7 @@
 pkgbase = caffe-opencl-slim-git
 	pkgdesc = A slimmed-down build of Caffe based on caffe-opencl-git
 	pkgver = 1.0
-	pkgrel = 28
+	pkgrel = 29
 	url = http://caffe.berkeleyvision.org/
 	arch = x86_64
 	license = BSD
@@ -32,6 +32,7 @@ pkgbase = caffe-opencl-slim-git
 	depends = opencl-headers
 	depends = openblas-lapack
 	depends = viennacl
+	depends = opencv
 	provides = caffe
 	conflicts = caffe
 	conflicts = caffe-git
