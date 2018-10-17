@@ -3,7 +3,7 @@
 pkgname=sysbench-git
 _pkgname=sysbench
 pkgver=1.1.0.r1193.b04e5fd
-pkgrel=1
+pkgrel=2
 pkgdesc='Multi-threaded benchmark for evaluating OS parameters for database-loads (git)'
 arch=('x86_64' 'i686')
 license=('GPL2')
