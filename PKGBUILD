@@ -2,7 +2,7 @@
 pkgname=caffe-cuda-slim-git
 _srcname=caffe
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A slimmed-down build of Caffe based on caffe-opencl-git (CUDA version)"
 arch=('x86_64')
 url="http://caffe.berkeleyvision.org/"
@@ -28,7 +28,7 @@ sha256sums=('SKIP'
 prepare() {
     cd "${_srcname}"
 
-    git checkout master
+    git checkout 1.0
 
     # This patch makes cmake find libboost_python3 (it normally only looks for libboost_python_py3 etc.)
     patch cmake/Dependencies.cmake < ../dependencies.patch
