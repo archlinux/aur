@@ -1,4 +1,4 @@
-pkgbase = mingw64-lrs
+pkgbase = mingw-w64-lrs
 	pkgdesc = C implementation of the reverse search algorithm for vertex enumeration/convex hull problems (mingw-w64)
 	pkgver = 062+2017.03.03
 	pkgrel = 1
@@ -14,5 +14,5 @@ pkgbase = mingw64-lrs
 	source = https://github.com/mkoeppe/lrslib/releases/download/lrslib-062+autotools-2017-03-03/lrslib-062.autotools-2017-03-03.tar.gz
 	sha256sums = 03b80a94ac4d673d588cac2561b02f6217d5a9f056e09ed59916a337974524f8
 
-pkgname = mingw64-lrs
+pkgname = mingw-w64-lrs
 

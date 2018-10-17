@@ -1,5 +1,5 @@
 
-pkgname=mingw64-lrs
+pkgname=mingw-w64-lrs
 _pkgver=062
 _date=2017-03-03
 pkgver=$_pkgver+${_date//-/.}
