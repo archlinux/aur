@@ -2,11 +2,11 @@
 
 pkgname=libibmad
 pkgver=1.3.13
-pkgrel=2
+pkgrel=3
 pkgdesc='OpenFabrics Alliance InfiniBand MAD (MAnagement Datagram) library'
 arch=('x86_64' 'i686')
 url='https://www.openfabrics.org/index.php/overview.html'
-license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
+license=('GPL2' 'custom:"OpenIB.org BSD"')
 depends=('rdma-core')
 source=("https://www.openfabrics.org/downloads/management/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('17cdd721c81fecefc366601c46c55a4d44c93799980a0a34c271b12bc544520b')
