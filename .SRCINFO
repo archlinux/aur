@@ -1,12 +1,11 @@
 pkgbase = ibsim
 	pkgdesc = OpenFabrics Alliance InfiniBand simulator utilities
 	pkgver = 0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.openfabrics.org/index.php/overview.html
 	arch = x86_64
 	arch = i686
 	license = GPL2
-	license = custom:"Open Fabrics Alliance BSD"
 	depends = libibmad
 	depends = bash
 	source = https://www.openfabrics.org/downloads/management/ibsim-0.7.tar.gz
