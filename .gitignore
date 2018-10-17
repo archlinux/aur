@@ -1,0 +1,5 @@
+*.patch
+/mesa
+/pkg
+/src
+*.tar.xz
