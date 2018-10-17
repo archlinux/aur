@@ -1,9 +1,9 @@
---- start-tibia.sh
-+++ start-tibia.sh
+--- start-tibia-launcher.sh
++++ start-tibia-launcher.sh
 @@ -7,4 +7,4 @@
+ SCRIPT=$(readlink -f "$0")
  PATH=$(dirname "$SCRIPT")
- BIN_PATH="$PATH/bin"
  
--LD_LIBRARY_PATH="$BIN_PATH" exec "$BIN_PATH/client"
-+LD_LIBRARY_PATH="$BIN_PATH:/usr/lib/openssl-1.0/" exec "$BIN_PATH/client"
+-LD_LIBRARY_PATH="$PATH" exec "$PATH/Tibia"
++LD_LIBRARY_PATH="$PATH:/usr/lib/openssl-1.0/" exec "$PATH/Tibia"
 
