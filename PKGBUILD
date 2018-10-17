@@ -113,7 +113,7 @@ check() {
   "$srcdir/gcc/contrib/test_summary"
 }
 
-package_gcc-libs() {
+package_gcc-libs-git() {
   pkgdesc='Runtime libraries shipped by GCC'
   groups=(base)
   depends=('glibc>=2.27')
@@ -157,7 +157,7 @@ package_gcc-libs() {
     "$pkgdir/usr/share/licenses/gcc-libs/RUNTIME.LIBRARY.EXCEPTION"
 }
 
-package_gcc() {
+package_gcc-git() {
   pkgdesc="The GNU Compiler Collection - C and C++ frontends"
   depends=("gcc-libs=$pkgver-$pkgrel" 'binutils>=2.28' libmpc)
   groups=('base-devel')
@@ -247,7 +247,7 @@ package_gcc() {
     "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
-package_gcc-fortran() {
+package_gcc-fortran-git() {
   pkgdesc='Fortran front-end for GCC'
   depends=("gcc=$pkgver-$pkgrel")
   provides=($pkgname-multilib)
@@ -270,7 +270,7 @@ package_gcc-fortran() {
     "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
-package_gcc-objc() {
+package_gcc-objc-git() {
   pkgdesc='Objective-C front-end for GCC'
   depends=("gcc=$pkgver-$pkgrel")
   provides=($pkgname-multilib)
@@ -287,7 +287,7 @@ package_gcc-objc() {
     "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
-package_gcc-ada() {
+package_gcc-ada-git() {
   pkgdesc='Ada front-end for GCC (GNAT)'
   depends=("gcc=$pkgver-$pkgrel")
   provides=($pkgname-multilib)
@@ -322,7 +322,7 @@ package_gcc-ada() {
     "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
-package_gcc-go() {
+package_gcc-go-git() {
   pkgdesc='Go front-end for GCC'
   depends=("gcc=$pkgver-$pkgrel")
   provides=("go=1.10.1" $pkgname-multilib)
@@ -344,7 +344,7 @@ package_gcc-go() {
     "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
-package_lib32-gcc-libs() {
+package_lib32-gcc-libs-git() {
   pkgdesc='32-bit runtime libraries shipped by GCC'
   depends=('lib32-glibc>=2.27')
   provides=(libgo.so libgfortran.so libubsan.so libasan.so)
