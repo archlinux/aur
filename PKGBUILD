@@ -2,11 +2,11 @@
 
 pkgname=infiniband-diags
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='OpenFabrics Alliance diagnostic programs and scripts for InfiniBand subnets'
 arch=('x86_64' 'i686')
 url='https://www.openfabrics.org/index.php/overview.html'
-license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
+license=('GPL2' 'custom:"OpenIB.org BSD"')
 provides=('libibmad')
 conflicts=('libibmad')
 replaces=('libibmad')
@@ -31,6 +31,7 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
   install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  install -Dm644 README "${pkgdir}/usr/share/docs/${pkgname}/README"
   chmod 644 "${pkgdir}/etc/infiniband-diags/ibdiag.conf"
 
   # Remove init.d script.  (rdma-ndd and its .service were moved upstream ito rdma-core.)

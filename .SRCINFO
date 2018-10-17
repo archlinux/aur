@@ -1,12 +1,12 @@
 pkgbase = infiniband-diags
 	pkgdesc = OpenFabrics Alliance diagnostic programs and scripts for InfiniBand subnets
 	pkgver = 2.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.openfabrics.org/index.php/overview.html
 	arch = x86_64
 	arch = i686
 	license = GPL2
-	license = custom:"Open Fabrics Alliance BSD"
+	license = custom:"OpenIB.org BSD"
 	makedepends = python-docutils
 	depends = opensm
 	depends = glib2
