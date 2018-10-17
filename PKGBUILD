@@ -3,7 +3,7 @@
 # Contributor: bjoern lindig (bjoern _dot_ lindig _at_ google.com)
 
 pkgname=faust-git
-pkgver=2.5.29.r9657.69b5a04c9
+pkgver=2.11.10.r10074.4ea508952
 pkgrel=1
 epoch=2
 pkgdesc="A functional programming language for realtime audio signal processing."
@@ -36,7 +36,7 @@ source=("$pkgname::git+https://github.com/grame-cncm/faust.git#branch=master-dev
 md5sums=('SKIP')
 
 pkgver() {
-  cd $srcdir/$pkgname
+  cd "$pkgname"
 
   # use un-annotated tags per
   # https://wiki.archlinux.org/index.php/VCS_package_guidelines#Git
@@ -49,7 +49,7 @@ pkgver() {
 }
 
 prepare() {
-  cd $srcdir/$pkgname
+  cd "$pkgname"
   git submodule update --init
 }
 
@@ -60,14 +60,14 @@ prepare() {
 # corresponding dependencies above.
 
 build() {
-  cd $srcdir/$pkgname
+  cd "$pkgname"
   make PREFIX=/usr world
   # 'remote' and 'benchmark' are disabled right now since they require jack2.
   #make benchmark remote PREFIX=/usr
 }
 
 package() {
-  cd $srcdir/$pkgname
+  cd "$pkgname"
   make install PREFIX=/usr DESTDIR="$pkgdir"
 
   # docs
