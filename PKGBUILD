@@ -5,17 +5,17 @@
 
 # Modifications to Use Git Master Source
 # ======================================
-# Maintainer: James Harvey <jamespharvey20@gmail.com>
+# Maintainer: James P. Harvey <jamespharvey20 at gmail dot com>
 #    * This PKGFILE as closely as possible matches extra's binutils 8.2-2
 #    * Installs some things to /usr/$CHOST/... {/usr/x86_64-unknown-linux-gnu/...) rather than /usr/...
 #       * Investigating to determine if this is desired, or if they need to be moved
 
 pkgbase=gdb-trunk
-# gdb-trunk-common is a package that contains files common for all cross compiled versions
+# gdb-common-trunk is a package that contains files common for all cross compiled versions
 # of gdb (for arm/avr/...)
-pkgname=(gdb-trunk gdb-trunk-common)
+pkgname=(gdb-trunk gdb-common-trunk)
 _pkgname=binutils-gdb
-pkgver=8.2.r95340.f1628857d7
+pkgver=8.2.r95795.4de5434b69
 pkgrel=1
 pkgdesc='The GNU Debugger'
 arch=(x86_64)
@@ -49,7 +49,7 @@ build() {
   make
 }
 
-package_gdb-trunk-common() {
+package_gdb-common-trunk() {
   depends=(python guile2.0)
   provides=(gdb-common)
   conflicts=(gdb-common)
@@ -59,7 +59,7 @@ package_gdb-trunk-common() {
 }
 
 package_gdb-trunk() {
-  depends=(ncurses expat xz mpfr gdb-common=$pkgver)
+  depends=(ncurses expat xz mpfr gdb-common-trunk=$pkgver)
   backup=(etc/gdb/gdbinit)
   provides=(gdb)
   conflicts=(gdb)
