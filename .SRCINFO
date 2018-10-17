@@ -1,17 +1,14 @@
 pkgbase = cmsbooklet-git
 	pkgdesc = cmsbooklet is a tool meant to facilitate the typesetting of olympic problems. It is designed to work well with CMS, the Contest Management System.
-	pkgver = r75.4a4af05
+	pkgver = r86.b8f3cc6
 	pkgrel = 1
 	url = https://github.com/algorithm-ninja/cmsbooklet
-	arch = i686
-	arch = x86_64
-	arch = armv7h
-	arch = aarch64
+	arch = any
 	license = AGPL3
 	makedepends = python2-setuptools
-	depends = python2
-	depends = python2-jinja
-	depends = python2-pyaml
+	depends = python
+	depends = python-jinja
+	depends = python-pyaml
 	source = git+https://github.com/algorithm-ninja/cmsbooklet.git
 	sha384sums = SKIP
 
