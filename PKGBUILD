@@ -9,7 +9,7 @@
 # https://gist.github.com/l4n9th4n9/4459997
 
 pkgname=x264-noffmpeg-git
-pkgver=157.r2932.g303c484e
+pkgver=157.r2935.g545de2ff
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Open Source H264/AVC video encoder (no ffmpeg dependency, git version)'
@@ -17,9 +17,8 @@ url='https://www.videolan.org/developers/x264.html'
 license=('GPL')
 depends=('liblsmash.so')
 makedepends=('git' 'nasm' 'l-smash')
-provides=('x264' 'x264-noffmpeg' 'x264-git' 'libx264' 'libx264-git' 'libx264.so')
-conflicts=('x264' 'x264-noffmpeg' 'x264-git' 'libx264' 'libx264-10bit' 'libx264-all'
-           'libx264-git' 'libx264-10bit-git' 'libx264-all-git')
+provides=('x264' 'x264-git' 'libx264' 'libx264-git' 'libx264.so')
+conflicts=('x264' 'libx264' 'libx264-10bit' 'libx264-all')
 source=("$pkgname"::'git+https://git.videolan.org/git/x264.git')
 sha256sums=('SKIP')
 
@@ -40,7 +39,7 @@ pkgver() {
 build() {
     mkdir -p "$pkgname"/build-{8,10}bit
     
-    msg2 'Building for 8-bit...'
+    printf '%s\n' '  -> Building for 8-bit...'
     cd "${pkgname}/build-8bit"
     ../configure \
         --prefix='/usr' \
@@ -54,7 +53,7 @@ build() {
         --disable-gpac
     make
     
-    msg2 'Building for 10-bit...'
+    printf '%s\n' '  -> Building for 10-bit...'
     cd ../build-10bit
     ../configure \
         --prefix='/usr' \
@@ -78,7 +77,7 @@ package() {
     
     for _depth in 10 8
     do
-        msg2 "Installing for ${_depth}-bit..."
+        printf '%s\n' "  -> Installing for ${_depth}-bit..."
         make -C "build-${_depth}bit" DESTDIR="$pkgdir" install-cli install-lib-shared
         
         if [ "$_depth" -eq '10' ] 
