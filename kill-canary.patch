@@ -1,0 +1,19 @@
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -1,8 +1,6 @@
+ use 5.010001; # for utf-8, and Time::Piece
+ use ExtUtils::MakeMaker;
+ 
+-use Canary::Stability CBOR::XS => 1, 5.010001;
+-
+ WriteMakefile(
+     dist	 => {
+ 	             PREOP	=> 'pod2text XS.pm | tee README >$(DISTVNAME)/README; chmod -R u=rwX,go=rX . ;',
+@@ -15,6 +13,6 @@
+        common::sense     => 0,
+        Types::Serialiser => 0,
+     },
+-    CONFIGURE_REQUIRES => { ExtUtils::MakeMaker => 6.52, Canary::Stability => 0 },
++    CONFIGURE_REQUIRES => { ExtUtils::MakeMaker => 6.52 },
+ );
+ 
