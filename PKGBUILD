@@ -11,8 +11,8 @@ arch=(x86_64)
 url='https://userbase.kde.org/Discover'
 license=(LGPL)
 depends=(knewstuff kitemmodels qt5-graphicaleffects appstream-qt archlinux-appstream-data
-         hicolor-icon-theme kirigami2)
-makedepends=(extra-cmake-modules plasma-framework packagekit-qt5 flatpak fwupd)
+         hicolor-icon-theme kirigami2 snapd-glib snapd)
+makedepends=(extra-cmake-modules plasma-framework packagekit-qt5 flatpak fwupd snapd-glib snapd)
 optdepends=('packagekit-qt5: to manage packages from Arch Linux repositories' 'flatpak: Flatpak packages support'
             'fwupd: firmware update support')
 groups=(plasma)
