@@ -1,6 +1,6 @@
 pkgbase = tmuxft-git
 	pkgdesc = integrate Tmux with F(FileManager) & T(TermianlEditor) (Github version)
-	pkgver = 0
+	pkgver = r5.d998090
 	pkgrel = 1
 	url = https://github.com/LinArcX/TmuxFT
 	arch = any

@@ -1,7 +1,7 @@
 # Maintainer: LinArcx <linarcx@gmail.com>
 
 pkgname='tmuxft-git'
-pkgver=0
+pkgver=r5.d998090
 pkgrel=1
 pkgdesc="integrate Tmux with F(FileManager) & T(TermianlEditor) (Github version)"
 arch=('any')
@@ -14,7 +14,7 @@ source=("${pkgname}::git+https://github.com/LinArcX/TmuxFT")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}"
+  cd "${srcdir}/${pkgname}"
   ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -22,13 +22,13 @@ pkgver() {
 }
 
 prepare() {
-    cd "${srcdir}"
+    cd "${srcdir}/${pkgname}"
     chmod +x TmuxFTDir.sh
     chmod +x TmuxFTFile.sh
 }
 
 package() {
-  cd "${srcdir}"
+  cd "${srcdir}/${pkgname}"
   install -Dm755 ./TmuxFTDir.sh ${pkgdir}/usr/bin/TmuxFTDir.sh
   install -Dm755 ./TmuxFTFile.sh ${pkgdir}/usr/bin/TmuxFTFile.sh
 
