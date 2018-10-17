@@ -118,9 +118,9 @@ package_gcc-libs-git() {
   groups=(base)
   depends=('glibc>=2.27')
   options+=(!strip)
-  provides=($pkgname-multilib libgo.so libgfortran.so libubsan.so libasan.so
+  provides=(gcc-libs-multilib libgo.so libgfortran.so libubsan.so libasan.so
             libtsan.so liblsan.so)
-  replaces=($pkgname-multilib)
+  replaces=(gcc-libs-multilib)
 
   cd gcc-build
   make -C $CHOST/libgcc DESTDIR="$pkgdir" install-shared
@@ -162,8 +162,8 @@ package_gcc-git() {
   depends=("gcc-libs=$pkgver-$pkgrel" 'binutils>=2.28' libmpc)
   groups=('base-devel')
   optdepends=('lib32-gcc-libs: for generating code for 32-bit ABI')
-  provides=($pkgname-multilib)
-  replaces=($pkgname-multilib)
+  provides=(gcc-multilib)
+  replaces=(gcc-multilib)
   options+=(staticlibs)
 
   cd gcc-build
@@ -250,8 +250,8 @@ package_gcc-git() {
 package_gcc-fortran-git() {
   pkgdesc='Fortran front-end for GCC'
   depends=("gcc=$pkgver-$pkgrel")
-  provides=($pkgname-multilib)
-  replaces=($pkgname-multilib)
+  provides=(gcc-fortran-multilib)
+  replaces=(gcc-fortran-multilib)
 
   cd gcc-build
   make -C $CHOST/libgfortran DESTDIR="$pkgdir" install-cafexeclibLTLIBRARIES \
@@ -273,8 +273,8 @@ package_gcc-fortran-git() {
 package_gcc-objc-git() {
   pkgdesc='Objective-C front-end for GCC'
   depends=("gcc=$pkgver-$pkgrel")
-  provides=($pkgname-multilib)
-  replaces=($pkgname-multilib)
+  provides=(gcc-objc-multilib)
+  replaces=(gcc-objc-multilib)
 
   cd gcc-build
   make DESTDIR="$pkgdir" -C $CHOST/libobjc install-headers
@@ -290,8 +290,8 @@ package_gcc-objc-git() {
 package_gcc-ada-git() {
   pkgdesc='Ada front-end for GCC (GNAT)'
   depends=("gcc=$pkgver-$pkgrel")
-  provides=($pkgname-multilib)
-  replaces=($pkgname-multilib)
+  provides=(gcc-ada-multilib)
+  replaces=(gcc-ada-multilib)
   options+=(staticlibs)
 
   cd gcc-build/gcc
@@ -325,8 +325,8 @@ package_gcc-ada-git() {
 package_gcc-go-git() {
   pkgdesc='Go front-end for GCC'
   depends=("gcc=$pkgver-$pkgrel")
-  provides=("go=1.10.1" $pkgname-multilib)
-  replaces=($pkgname-multilib)
+  provides=("go=1.10.1" gcc-go-multilib)
+  replaces=(gcc-go-multilib)
   conflicts=(go)
 
   cd gcc-build
