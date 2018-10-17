@@ -6,8 +6,8 @@
 
 pkgname='electron-cash-git'
 pkgdesc='Lightweight Bitcoin Cash wallet'
-pkgver=3.3.1.r12.g4ef2c37e
-pkgrel=2
+pkgver=3.3.1.r135.g624c7972
+pkgrel=1
 url='http://www.electroncash.org/'
 install="${pkgname}.install"
 arch=('any')
@@ -48,7 +48,7 @@ optdepends=(
 provides=("${pkgname/-git/}")
 conflicts=("${pkgname/-git/}")
 source=(
-  "${pkgname}::git+https://github.com/fyookball/electrum.git"
+  "${pkgname}::git+https://github.com/Electron-Cash/Electron-Cash.git"
   "${pkgname}.install")
 sha256sums=('SKIP'
             'd682766321f9981ee38aee26dc050209882d8c1c6006e3e509649b47fa1bb073')
