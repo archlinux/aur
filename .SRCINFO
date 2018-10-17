@@ -1,7 +1,7 @@
 pkgbase = caffe-slim-git
 	pkgdesc = A slimmed-down build of Caffe based on caffe-opencl-git
 	pkgver = 1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = http://caffe.berkeleyvision.org/
 	arch = x86_64
 	license = BSD
@@ -10,6 +10,7 @@ pkgbase = caffe-slim-git
 	depends = protobuf
 	depends = google-glog
 	depends = gflags
+	depends = hdf5
 	depends = python
 	depends = boost
 	depends = cython
