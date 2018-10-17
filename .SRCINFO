@@ -1,7 +1,7 @@
 pkgbase = undistract-me-git
 	pkgdesc = Notifies you when long-running terminal commands complete
-	pkgver = r58.3c3054c
-	pkgrel = 8
+	pkgver = r77.c7f6056
+	pkgrel = 9
 	url = https://github.com/jml/undistract-me
 	install = undistract-me.install
 	arch = any
