@@ -5,7 +5,7 @@
 _pkgname=kgraphviewer
 pkgname=kgraphviewer-git
 pkgver=0.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Graphviz dot graph file viewer for KDE'
 arch=(x86_64)
 url='http://www.kde.org/applications/graphics/kgraphviewer/'
