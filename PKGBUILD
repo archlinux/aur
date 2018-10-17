@@ -6,7 +6,7 @@
 
 pkgname=freeimage
 pkgver=3.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Library project for developers who would like to support popular graphics image formats"
 arch=('x86_64')
 license=('GPL' 'custom:FIPL')
@@ -16,7 +16,7 @@ makedepends=('mesa' 'glu')
 source=("https://downloads.sourceforge.net/project/freeimage/Source%20Distribution/${pkgver}/FreeImage${pkgver//./}.zip"
         freeimage-unbundle.patch)
 sha512sums=('9d9cc7e2d57552c3115e277aeb036e0455204d389026b17a3f513da5be1fd595421655488bb1ec2f76faebed66049119ca55e26e2a6d37024b3fb7ef36ad4818'
-            '500007f5b751f79f96f8c5e1e5f0fcb5bb7e5aa2c453542989a2b29ada1dc328ed1aed863c240111e0dafb0957c53a4cf0d1e72e68e53fb3aa388fb437974dcf')
+            '605fd28aaaf3b0ad225d04dd7de5e34d825bb7aa4b1f3a3b4219657c51b2f1507512916e95ba1a731ca5fc8b704f03b83371ab9ad066d74fd49feee735cf13b5')
 
 prepare() {
   cd FreeImage
