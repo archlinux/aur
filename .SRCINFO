@@ -1,11 +1,12 @@
 pkgbase = ibpd
 	pkgdesc = OpenFabrics Alliance InfiniBand proxy daemon
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.openfabrics.org/index.php/overview.html
 	arch = x86_64
 	arch = i686
 	license = GPL2
+	license = custom:"OpenIB.org BSD"
 	depends = glibc
 	source = https://www.openfabrics.org/downloads/ibpd/ibpd-1.0.1.tar.gz
 	sha256sums = 7351e64691783d2f3ddc8718d801c3d9e393f4e3c83b225aeea6f2d1be2d7346
