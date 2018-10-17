@@ -242,9 +242,9 @@ package_gcc-git() {
   python -O -m compileall "$pkgdir/usr/share/gcc-${pkgver%%+*}/"
 
   # Install Runtime Library Exception
-  install -d "$pkgdir/usr/share/licenses/$pkgname/"
+  install -d "$pkgdir/usr/share/licenses/gcc-git/"
   ln -s /usr/share/licenses/gcc-libs/RUNTIME.LIBRARY.EXCEPTION \
-    "$pkgdir/usr/share/licenses/$pkgname/"
+    "$pkgdir/usr/share/licenses/gcc-git/"
 }
 
 package_gcc-fortran-git() {
@@ -265,9 +265,9 @@ package_gcc-fortran-git() {
   ln -s gfortran "$pkgdir/usr/bin/f95"
 
   # Install Runtime Library Exception
-  install -d "$pkgdir/usr/share/licenses/$pkgname/"
+  install -d "$pkgdir/usr/share/licenses/gcc-fortran-git/"
   ln -s /usr/share/licenses/gcc-libs/RUNTIME.LIBRARY.EXCEPTION \
-    "$pkgdir/usr/share/licenses/$pkgname/"
+    "$pkgdir/usr/share/licenses/gcc-fortran-git/"
 }
 
 package_gcc-objc-git() {
@@ -282,9 +282,9 @@ package_gcc-objc-git() {
   install -m755 gcc/cc1obj{,plus} "$pkgdir/${_libdir}/"
 
   # Install Runtime Library Exception
-  install -d "$pkgdir/usr/share/licenses/$pkgname/"
+  install -d "$pkgdir/usr/share/licenses/gcc-objc-git/"
   ln -s /usr/share/licenses/gcc-libs/RUNTIME.LIBRARY.EXCEPTION \
-    "$pkgdir/usr/share/licenses/$pkgname/"
+    "$pkgdir/usr/share/licenses/gcc-objc-git/"
 }
 
 package_gcc-ada-git() {
@@ -317,9 +317,9 @@ package_gcc-ada-git() {
   rm -f "$pkgdir"/${_libdir}/32/adalib/libgna{rl,t}.so
 
   # Install Runtime Library Exception
-  install -d "$pkgdir/usr/share/licenses/$pkgname/"
+  install -d "$pkgdir/usr/share/licenses/gcc-ada-git/"
   ln -s /usr/share/licenses/gcc-libs/RUNTIME.LIBRARY.EXCEPTION \
-    "$pkgdir/usr/share/licenses/$pkgname/"
+    "$pkgdir/usr/share/licenses/gcc-ada-git/"
 }
 
 package_gcc-go-git() {
@@ -339,9 +339,9 @@ package_gcc-go-git() {
   install -Dm755 gcc/go1 "$pkgdir/${_libdir}/go1"
 
   # Install Runtime Library Exception
-  install -d "$pkgdir/usr/share/licenses/$pkgname/"
+  install -d "$pkgdir/usr/share/licenses/gcc-go-git/"
   ln -s /usr/share/licenses/gcc-libs/RUNTIME.LIBRARY.EXCEPTION \
-    "$pkgdir/usr/share/licenses/$pkgname/"
+    "$pkgdir/usr/share/licenses/gcc-go-git/"
 }
 
 package_lib32-gcc-libs-git() {
