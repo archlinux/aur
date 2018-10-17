@@ -2,7 +2,7 @@
 pkgname=caffe-intel-slim-git
 _srcname=caffe
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A slimmed-down build of Caffe based on caffe-opencl-git"
 arch=('x86_64')
 url="http://caffe.berkeleyvision.org/"
@@ -13,7 +13,7 @@ depends=(
         'python-matplotlib' 'ipython' 'python-networkx' 'python-nose'
         'python-pandas' 'python-dateutil' 'python-protobuf' 'python-gflags'
         'python-yaml' 'python-pillow' 'python-six'
-        'openblas-lapack'
+        'openblas-lapack' 'opencv'
 )
 makedepends=('cmake')
 provides=('caffe')
