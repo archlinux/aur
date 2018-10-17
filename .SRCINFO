@@ -1,6 +1,6 @@
 pkgbase = x264-git
 	pkgdesc = Open Source H264/AVC video encoder (git version)
-	pkgver = 157.r2932.g303c484e
+	pkgver = 157.r2935.g545de2ff
 	pkgrel = 1
 	url = https://www.videolan.org/developers/x264.html
 	arch = i686
@@ -23,9 +23,6 @@ pkgbase = x264-git
 	conflicts = libx264
 	conflicts = libx264-10bit
 	conflicts = libx264-all
-	conflicts = libx264-git
-	conflicts = libx264-10bit-git
-	conflicts = libx264-all-git
 	replaces = libx264-git
 	replaces = libx264-10bit-git
 	replaces = libx264-all-git
