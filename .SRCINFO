@@ -1,7 +1,7 @@
 pkgbase = sysbench-nodb-git
 	pkgdesc = Multi-threaded benchmark for evaluating OS parameters (without database tests) (git)
 	pkgver = 1.1.0.r1193.b04e5fd
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/akopytov/sysbench
 	arch = x86_64
 	arch = i686

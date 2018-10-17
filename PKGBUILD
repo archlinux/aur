@@ -3,7 +3,7 @@
 pkgname=sysbench-nodb-git
 _pkgname=sysbench
 pkgver=1.1.0.r1193.b04e5fd
-pkgrel=1
+pkgrel=2
 pkgdesc='Multi-threaded benchmark for evaluating OS parameters (without database tests) (git)'
 arch=('x86_64' 'i686')
 license=('GPL2')
@@ -28,6 +28,5 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}"
   make DESTDIR="${pkgdir}" install
-  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING"
   install -Dm644 README.md "${pkgdir}/usr/share/${_pkgname}/README.md"
 }
