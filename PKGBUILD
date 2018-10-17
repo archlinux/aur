@@ -26,4 +26,6 @@ package() {
   cd $pkgname-$pkgver
   make -i DESTDIR="$pkgdir" install
   rm -rf "$pkgdir"/var/run
+  install -Dm755 -t "$pkgdir"/usr/bin/ "$pkgdir"/usr/sbin/*
+  rm -r "$pkgdir"/usr/sbin/
 }
