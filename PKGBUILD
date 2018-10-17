@@ -2,7 +2,7 @@
 pkgname=caffe-opencl-slim-git
 _srcname=caffe
 pkgver=1.0
-pkgrel=26
+pkgrel=27
 pkgdesc="A slimmed-down build of Caffe based on caffe-opencl-git"
 arch=('x86_64')
 url="http://caffe.berkeleyvision.org/"
@@ -12,7 +12,7 @@ depends=(
         'python' 'boost' 'cython' 'python-numpy' 'python-scipy'
         'python-matplotlib' 'ipython' 'python-networkx' 'python-nose'
         'python-pandas' 'python-dateutil' 'python-protobuf' 'python-gflags'
-        'python-yaml' 'python-pillow' 'python-six' 'opencl-driver'
+        'python-yaml' 'python-pillow' 'python-six' 'opencl-driver' 'opencl-icd' 'opencl-headers'
         'openblas-lapack' 'viennacl'
 )
 makedepends=('cmake')
