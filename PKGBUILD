@@ -124,8 +124,8 @@ package_gcc-libs-git() {
   groups=(base)
   depends=('glibc>=2.27')
   options+=(!strip)
-  provides=(gcc-libs-multilib libgo.so libgfortran.so libubsan.so libasan.so
-            libtsan.so liblsan.so gcc-libs)
+  provides=(gcc-libs-multilib=${pkgver} libgo.so=${pkgver} libgfortran.so=${pkgver} libubsan.so=${pkgver} libasan.so=${pkgver}
+            libtsan.so=${pkgver} liblsan.so=${pkgver} gcc-libs=${pkgver})
   conflicts=(gcc-libs)
 
   cd gcc-build
@@ -168,7 +168,7 @@ package_gcc-git() {
   depends=("gcc-libs=$pkgver-$pkgrel" 'binutils>=2.28' libmpc)
   groups=('base-devel')
   optdepends=('lib32-gcc-libs: for generating code for 32-bit ABI')
-  provides=(gcc-multilib gcc)
+  provides=(gcc-multilib=${pkgver} gcc=${pkgver})
   conflicts=(gcc)
   options+=(staticlibs)
 
@@ -256,7 +256,7 @@ package_gcc-git() {
 package_gcc-fortran-git() {
   pkgdesc='Fortran front-end for GCC (git version)'
   depends=("gcc=$pkgver-$pkgrel")
-  provides=(gcc-fortran-multilib gcc-fortran)
+  provides=(gcc-fortran-multilib=${pkgver} gcc-fortran=${pkgver})
   conflicts=(gcc-fortran)
 
   cd gcc-build
@@ -279,7 +279,7 @@ package_gcc-fortran-git() {
 package_gcc-objc-git() {
   pkgdesc='Objective-C front-end for GCC (git version)'
   depends=("gcc=$pkgver-$pkgrel")
-  provides=(gcc-objc-multilib gcc-objc)
+  provides=(gcc-objc-multilib=${pkgver} gcc-objc=${pkgver})
   conflicts=(gcc-objc)
 
   cd gcc-build
@@ -296,7 +296,7 @@ package_gcc-objc-git() {
 package_gcc-ada-git() {
   pkgdesc='Ada front-end for GCC (GNAT) (git version)'
   depends=("gcc=$pkgver-$pkgrel")
-  provides=(gcc-ada-multilib gcc-ada)
+  provides=(gcc-ada-multilib=${pkgver} gcc-ada=${pkgver})
   conflicts=(gcc-ada)
   options+=(staticlibs)
 
@@ -331,7 +331,7 @@ package_gcc-ada-git() {
 package_gcc-go-git() {
   pkgdesc='Go front-end for GCC (git version)'
   depends=("gcc=$pkgver-$pkgrel")
-  provides=("go=1.10.1" gcc-go-multilib gcc-go)
+  provides=("go=1.10.1" gcc-go-multilib gcc-go=${pkgver})
   conflicts=(go gcc-go)
 
   cd gcc-build
@@ -352,7 +352,7 @@ package_gcc-go-git() {
 package_lib32-gcc-libs-git() {
   pkgdesc='32-bit runtime libraries shipped by GCC (git version)'
   depends=('lib32-glibc>=2.27')
-  provides=(libgo.so libgfortran.so libubsan.so libasan.so lib32-gcc-libs)
+  provides=(libgo.so=${pkgver} libgfortran.so=${pkgver} libubsan.so=${pkgver} libasan.so=${pkgver} lib32-gcc-libs=${pkgver})
   conflicts=(lib32-gcc-libs)
   groups=(multilib-devel)
   options=(!emptydirs !strip)
