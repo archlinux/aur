@@ -1,5 +1,10 @@
+# Original Core Repo
+# ==================
 # Maintainer:  Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Allan McRae <allan@archlinux.org>
+
+# Modificationt to use source from git master
+# Maintainer: James P. Harvey <jamespharvey20 at gmail dot com>
 
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 # NOTE: libtool requires rebuilt with each new gcc version
