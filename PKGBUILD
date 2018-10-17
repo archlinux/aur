@@ -2,7 +2,7 @@
 pkgname=caffe-intel-slim-git
 _srcname=caffe
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A slimmed-down build of Caffe based on caffe-opencl-git"
 arch=('x86_64')
 url="http://caffe.berkeleyvision.org/"
@@ -31,7 +31,7 @@ prepare() {
     git checkout intel
 
     # This patch makes cmake find libboost_python3 (it normally only looks for libboost_python_py3 etc.)
-    patch cmake/Dependencies.cmake < ../dependencies.patch
+    #patch cmake/Dependencies.cmake < ../dependencies.patch
 
     mkdir -p build
     cd build
