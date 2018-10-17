@@ -1,6 +1,6 @@
 # Maintainer: Jakub Podeszwik <jakubpodeszwik@gmail.com>
 pkgname=razer-naga-2014-key-remap-bin
-pkgver=0.1.2
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Remaps razer naga 2014 keys into F1..F12 keys in linux operating system."
 arch=('x86_64')
@@ -9,8 +9,8 @@ license=('MIT')
 provides=('razer-naga-2014-key-remap')
 source=("https://github.com/jpodeszwik/razer-naga-2014-key-remap/releases/download/v${pkgver}/razer-naga-2014-key-remap"
         "https://github.com/jpodeszwik/razer-naga-2014-key-remap/archive/v${pkgver}.tar.gz")
-md5sums=('a536ffe00e2cececba46408ae724cd0d'
-         '578adfda461c497628e925850b32b4bf')
+md5sums=('87cc77475b98d1e099f3b43343612948'
+         '604ee241dc35c550ea9eec59c693d6fc')
 
 package() {
     install -Dm 644 "razer-naga-2014-key-remap-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
