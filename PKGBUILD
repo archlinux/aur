@@ -2,7 +2,7 @@
 # Contributor: Tom Kuther <gimpel@sonnenkinder.org>
 
 pkgname=snapper
-pkgver=0.6.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="A tool for managing BTRFS and LVM snapshots. It can create, diff and restore snapshots and provides timelined auto-snapping."
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('boost' 'lvm2' 'libxslt' 'docbook-xsl' 'pam' 'git' 'systemd')
 optdepends=('pam: pam_snapper')
 backup=('etc/conf.d/snapper')
 source=("ftp://ftp.suse.com/pub/projects/$pkgname/$pkgname-$pkgver.tar.bz2")
-sha256sums=('b8b678a926689becd645d28ddccaaa57d4853e0681144d2fdaab57e3e3644f30')
+sha256sums=('cd643cad52afaeece7c2c73d94f71fab739cd3c3d6594f657a115ee79889f1e6')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
