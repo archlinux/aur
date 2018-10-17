@@ -5,7 +5,7 @@ pkgbase=gnome-software-snap
 pkgname=(gnome-software-snap gnome-software-packagekit-plugin-snap)
 pkgver=3.30.2
 pkgrel=1
-pkgdesc="GNOME Software Tools"
+pkgdesc="GNOME Software Tools with built in snap support"
 url="https://wiki.gnome.org/Apps/Software/"
 arch=(x86_64)
 license=(GPL2)
@@ -41,10 +41,9 @@ package_gnome-software-snap() {
   groups=('gnome')
   conflicts=(gnome-software)
   provides=(gnome-software)
-  depends=(appstream-glib gnome-desktop gsettings-desktop-schemas gspell libpackagekit-glib)
+  depends=(appstream-glib gnome-desktop gsettings-desktop-schemas gspell libpackagekit-glib gnome-software-packagekit-plugin-snap snapd)
   optdepends=('flatpak: Flatpak support plugin'
               'fwupd: fwupd support plugin'
-              'snapd: Snap support plugin'
               'ostree: OSTree support plugin')
 
   DESTDIR="$pkgdir" meson install -C build
