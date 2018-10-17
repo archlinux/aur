@@ -7,7 +7,7 @@
 # mupen64plus component receives a new commit.
 
 pkgname=mupen64plus-git
-pkgver=2.5.r518.g9caf564.20170922.044119
+pkgver=2.5.r1018.ge9ac55bf.20181015.044935
 pkgrel=1
 pkgdesc='Nintendo64 Emulator (git version)'
 arch=('i686' 'x86_64')
@@ -41,8 +41,9 @@ prepare() {
 }
 
 pkgver() {
-    local _date=''
-    local _latest_date=''
+    local _component
+    local _date
+    local _latest_date
     
     for _component in $_m64p_components
     do
@@ -51,14 +52,15 @@ pkgver() {
         [ "$(vercmp "$_date" "$_latest_date")" -gt '0' ] && _latest_date="$_date"
     done
     
-    unset _component
-    
     cd "${srcdir}/mupen64plus-core"
     printf "%s.${_latest_date}\n" "$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')"
     
 }
 
 build() {
+    local _component
+    local _target_line
+    
     for _component in $_m64p_components
     do
         # fix for 'ui-console' component (it needs to be compiled with -fPIC)
@@ -68,12 +70,10 @@ build() {
             sed -i "$((_target_line + 1))i\  \CFLAGS += -fPIC" "mupen64plus-${_component}/projects/unix/Makefile"
         fi
         
-        msg2 "Building component '${_component}'..."
+        printf '%s\n' "  -> Building component '${_component}'..."
         make -C "mupen64plus-${_component}/projects/unix" clean $@
         make -C "mupen64plus-${_component}/projects/unix" all $@
     done
-    
-    unset _component
 }
 
 package() {
