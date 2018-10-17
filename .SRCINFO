@@ -1,6 +1,6 @@
 pkgbase = slimit-git
 	pkgdesc = A JavaScript minifier written in Python
-	pkgver = 0.8.1.r9.gc41c737
+	pkgver = 0.8.1.r12.g3533eba
 	pkgrel = 1
 	url = https://github.com/rspivak/slimit/
 	arch = any

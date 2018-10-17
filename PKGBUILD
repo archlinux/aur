@@ -1,9 +1,9 @@
-# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
 
 pkgbase=slimit-git
 pkgname=('slimit-git' 'slimit2-git')
 _srcname=slimit
-pkgver=0.8.1.r9.gc41c737
+pkgver=0.8.1.r12.g3533eba
 pkgrel=1
 pkgdesc='A JavaScript minifier written in Python'
 arch=('any')
@@ -16,6 +16,9 @@ sha256sums=('SKIP')
 
 prepare() {
     cp -a "$pkgbase" "${pkgbase}-py2"
+    
+    cd "${pkgbase}-py2/docs"
+    sed -i '/sphinx-build/s/$/2/' Makefile
 }
 
 pkgver() {
@@ -26,20 +29,17 @@ pkgver() {
 }
 
 build() {
-    msg2 "Building for Python3: running 'setup.py'..."
+    printf '%s\n' "  -> Building for Python3..."
     cd "$pkgbase"
     python setup.py build
     cd docs
-    msg2 "Building for Python3: making target 'html'..." && make html
-    msg2 "Building for Python3: making target 'man'..."  && make man
+    make html man
     
-    msg2 "Building for Python2: running 'setup.py'..."
+    printf '%s\n' "  -> Building for Python2..."
     cd "${srcdir}/${pkgbase}-py2"
     python2 setup.py build
     cd docs
-    sed -i '/sphinx-build/s/$/2/' Makefile
-    msg2 "Building for Python2: making target 'html'..." && make html
-    msg2 "Building for Python2: making target 'man'..."  && make man
+    make html man
 }
 
 package_slimit-git() {
@@ -48,7 +48,7 @@ package_slimit-git() {
     conflicts=('slimit')
     
     # directories creation
-    mkdir -p "${pkgdir}/usr/share/doc/${pkgname}/"{_sources,_static}
+    mkdir -p "${pkgdir}/usr/share/doc/${pkgname}"
     mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
     mkdir -p "${pkgdir}/usr/share/man/man1"
     
@@ -58,24 +58,15 @@ package_slimit-git() {
     
     # html docs
     cd docs/build/html
-    for _file in *
-    do
-        [ -d "$_file" ] && continue # skip directories
-        install -D -m644 "$_file" "${pkgdir}/usr/share/doc/${pkgname}"
-    done
-    cd _sources
-    install -D -m644 * "${pkgdir}/usr/share/doc/${pkgname}/_sources"
-    cd ../_static
-    install -D -m644 * "${pkgdir}/usr/share/doc/${pkgname}/_static"
+    cp -a * "${pkgdir}/usr/share/doc/${pkgname}"
     
     # man page
-    cd ../../man
-    install -D -m644 "${_srcname}.1" "${pkgdir}/usr/share/man/man1"
-    gzip -9 -n -f "${pkgdir}/usr/share/man/man1/${_srcname}.1"
+    cd ../man
+    install -D -m644 "${_srcname}.1" -t "${pkgdir}/usr/share/man/man1"
     
     # license
     cd "${srcdir}/${pkgbase}"
-    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 package_slimit2-git() {
@@ -85,7 +76,7 @@ package_slimit2-git() {
     conflicts=('slimit2')
     
     # directories creation
-    mkdir -p "${pkgdir}/usr/share/doc/${pkgname}/"{_sources,_static}
+    mkdir -p "${pkgdir}/usr/share/doc/${pkgname}"
     mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
     mkdir -p "${pkgdir}/usr/share/man/man1"
     
@@ -96,22 +87,13 @@ package_slimit2-git() {
     
     # html docs
     cd docs/build/html
-    for _file in *
-    do
-        [ -d "$_file" ] && continue # skip directories
-        install -D -m644 "$_file" "${pkgdir}/usr/share/doc/${pkgname}"
-    done
-    cd _sources
-    install -D -m644 * "${pkgdir}/usr/share/doc/${pkgname}/_sources"
-    cd ../_static
-    install -D -m644 * "${pkgdir}/usr/share/doc/${pkgname}/_static"
+    cp -a * "${pkgdir}/usr/share/doc/${pkgname}"
     
     # man page
-    cd ../../man
+    cd ../man
     install -D -m644 "${_srcname}.1" "${pkgdir}/usr/share/man/man1/${_srcname}2.1"
-    gzip -9 -n -f "${pkgdir}/usr/share/man/man1/${_srcname}2.1"
     
     # license
     cd "${srcdir}/${pkgbase}-py2"
-    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
