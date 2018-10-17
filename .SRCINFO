@@ -1,11 +1,12 @@
 pkgbase = mstflint
 	pkgdesc = OpenFabrics Alliance firmware burning application for Mellanox HCA/NIC cards (without inband support)
 	pkgver = 4.10.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.openfabrics.org/index.php/overview.html
 	arch = x86_64
+	arch = i686
 	license = GPL2
-	license = custom:"Open Fabrics Alliance BSD"
+	license = custom:"OpenIB.org BSD"
 	makedepends = git
 	depends = python
 	source = git+https://github.com/Mellanox/mstflint#tag=v4.10.0-3
