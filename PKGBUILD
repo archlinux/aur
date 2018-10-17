@@ -1,7 +1,6 @@
 # Maintainer Severin Glöckner <severin dot gloeckner at stud dot htwk minus leipzig dot de>
 
 # BUILDING THIS PACKAGE REQUIRES THAT »lua« is not installed!
-
 # »lua52« does not cause problems, and »lua« being installed together with this package (after building) is fine
 
 # if Lua has been detected correctly, you will see a line such as:
@@ -14,15 +13,15 @@ _suffix=-1.8
 pkgname=wesnoth-1.8
 pkgver=1.8.6+dev
 pkgrel=5
-pkgdesc="Turn-based strategy game on a fantasy world (legacy version for old replays)"
+pkgdesc="Turn-based strategy game on a fantasy world (for old replays)"
 arch=('i686' 'x86_64')
 url="https://www.wesnoth.org"
 license=('GPL')
 depends=('sdl' 'sdl_image' 'sdl_mixer' 'sdl_ttf' 'sdl_net' 'boost-libs' 'zlib' 'pango' 'cairo' 'fontconfig' 'dbus' 'fribidi' 'lua51')
-makedepends=('boost' 'gettext' 'cmake' 'make' 'git')
-checkdepends=('desktop-file-utils' 'appstream-glib')
+makedepends=('boost' 'cmake' 'git')
+# package names on Debian / Ubuntu / Mint:
+# libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev libsdl-net1.2-dev libboost-iostreams-dev libboost-regex-dev libboost-serialization-dev zlib1g-dev libpango1.0-dev libcairo2-dev libfontconfig1-dev libdbus-1-dev libfribidi-dev liblua5.1.0-dev gettext-base cmake make pkgconf gcc g++ git
 options=('!emptydirs')
-#options=('!emptydirs' '!strip') #use this when building with debugging symbols
 source=("wesnoth$_suffix.desktop"
         "wesnothd$_suffix.tmpfiles.conf"
         "wesnothd$_suffix.service"
@@ -30,7 +29,7 @@ source=("wesnoth$_suffix.desktop"
 
 md5sums=('7fa59aab4ec96e6466dd276a76462e78'
          'a3afc892c43bbff72a9b150de513beaf'
-         '2fefdcdb47b94268a8bcaeecd99e61c1'
+         '47fb0b812309ae367744b3306a5a5b84'
          '46f8e791922b58f4b0cea7bebef511ad')
 
 PKGEXT='.pkg.tar'
@@ -54,16 +53,11 @@ prepare() {
 
   cd "$startdir"
   # get a shallow clone of the git repo and store it outside the srcdir
-  msg "Connecting to GIT server...."
-
-  if  [ -d "$pkgname-git" ] ; then
-    cd "$pkgname-git" && git pull origin
-    msg "The local files are up to date"
-  else
-    git clone https://github.com/wesnoth/wesnoth -b 1.8 --shallow-exclude=1.8.6 --single-branch $pkgname-git
+  if  [ ! -d "$pkgname-git" ] ; then
+    git clone https://github.com/wesnoth/wesnoth -b 1.8 --shallow-exclude=1.8.6 $pkgname-git
+    msg "Git checkout done (or server timeout)"
   fi
-
-  msg "GIT checkout done or server timeout"
+  ln -sf "$startdir/$pkgname-git" "$srcdir/$pkgname-git"
 }
 
 build() {
@@ -75,30 +69,37 @@ build() {
   export CFLAGS="$CFLAGS -w"
   export CXXFLAGS="$CXXFLAGS -w"
 
-  rm -rf "$srcdir/build" && mkdir -p "$srcdir/build" && cd "$srcdir/build"
-  cmake "$startdir/$pkgname-git" \
+  rm -rf build && mkdir build && cd build
+  cmake ../$pkgname-git \
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DBINARY_SUFFIX=-1.8 \
       -DDATADIRNAME=wesnoth-1.8 \
-      -DMANDIR=share/man \
       -DDOCDIR=share/doc/wesnoth-1.8 \
       -DFIFO_DIR=/run/wesnothd-1.8 \
       -DPREFERENCES_DIR=.local/share/wesnoth/1.8 \
       -DENABLE_DESKTOP_ENTRY=OFF \
-      -DENABLE_STRICT_COMPILATION=OFF \
       -Wno-dev # silence cmake warnings
-  make
+  make -j 4
 }
 
-check() {
-  desktop-file-validate --no-hints --no-warn-deprecated *.desktop
-  appstream-util validate-relax *.appdata.xml
-}
+# Note: the manpages are first installed to the same place which other wesnoth
+# versions use and renamed afterwards, this may cause conflicts. One can change
+# -DMANDIR above to specify another location.
+
+# For the Archlinux package this is no problem because the files are installed
+# into the empty $pkgdir, and it's content is copied later to the system.
 
 package() {
-  cd "$srcdir/build"
+  cd build
 
   make DESTDIR="$pkgdir" install
+
+  # add suffix to manpages
+  cd "$pkgdir/usr/share/man"
+  for filename in */man6/wesnoth.6 man6/wesnoth.6 */man6/wesnothd.6 man6/wesnothd.6
+    do
+      mv $filename $(dirname $filename)/$(basename $filename .6)-1.8.6
+  done
 
   # better use the tools from a recent version of wesnoth
   rm -r "$pkgdir/usr/share/wesnoth$_suffix/data/tools"
@@ -107,17 +108,10 @@ package() {
   find "$pkgdir/usr/share/wesnoth$_suffix/translations" -name wesnoth-manpages.mo -delete
   find "$pkgdir/usr/share/wesnoth$_suffix/translations" -name wesnoth-manual.mo -delete
 
-  # add suffix to manpages
-  cd "$pkgdir/usr/share/man"
-  for filename in man6/*.6 */man6/*.6
-    do
-      mv "$filename" $(dirname $filename)/$(basename $filename .6)-1.8.6
-  done
-
-  # INSTALLING of menu entry and icons as well as systemd files and appstream information:
+  # placing relevant packaging files (launcher, icons, systemd and appdata files)
   install -D -m644 "$srcdir/wesnoth$_suffix.desktop" "$pkgdir/usr/share/applications/wesnoth$_suffix.desktop"
-  install -D -m644 "$startdir/$pkgname-git/images/wesnoth-icon-small.png" "$pkgdir/usr/share/icons/hicolor/64x64/apps/$pkgname-icon.png"
-  install -D -m644 "$startdir/$pkgname-git/data/core/images/wesnoth-icon.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/$pkgname-icon.png"
+  install -D -m644 "$srcdir/$pkgname-git/images/wesnoth-icon-small.png" "$pkgdir/usr/share/icons/hicolor/64x64/apps/$pkgname-icon.png"
+  install -D -m644 "$srcdir/$pkgname-git/data/core/images/wesnoth-icon.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/$pkgname-icon.png"
 
   install -D -m644 "$srcdir/wesnothd$_suffix.tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/wesnothd$_suffix.conf"
   install -D -m644 "$srcdir/wesnothd$_suffix.service" "$pkgdir/usr/lib/systemd/system/wesnothd$_suffix.service"
