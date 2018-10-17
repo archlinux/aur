@@ -1,7 +1,7 @@
 pkgbase = ncurses-nohex
 	pkgdesc = System V Release 4.0 curses emulation library
 	pkgver = 6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://invisible-island.net/ncurses/ncurses.html
 	arch = x86_64
 	license = MIT
@@ -21,6 +21,12 @@ pkgbase = ncurses-nohex
 	md5sums = 98c889aaf8d23910d2b92d65be2e737a
 	md5sums = SKIP
 	md5sums = ba2cd274835935bf83bf3859a131fd1e
+	sha1sums = 57acf6bc24cacd651d82541929f726f4def780cc
+	sha1sums = SKIP
+	sha1sums = 5fb4b04bd1c2c3ce89f140fffa6769dfd2e3f741
+	sha256sums = aa057eeeb4a14d470101eff4597d5833dcef5965331be3528c08d99cebaa0d17
+	sha256sums = SKIP
+	sha256sums = c59a4209ea84a31bba0ea5721ce1ed32252a951270dda3f932cfc6ab4ca821b8
 
 pkgname = ncurses-nohex
 

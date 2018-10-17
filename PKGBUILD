@@ -1,4 +1,4 @@
-# Maintainer: Mikael Blomstrand <mbloms@kth.se>
+# Maintainer: Mikael Blomstrand <mbloms ÅT kth DÖT se>
 
 # PKGBUILD based on community/ncurses:
 # Contributor:  Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
@@ -8,7 +8,7 @@
 pkgname=ncurses-nohex
 conflicts=(ncurses)
 pkgver=6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='System V Release 4.0 curses emulation library'
 arch=(x86_64)
 url='http://invisible-island.net/ncurses/ncurses.html'
@@ -20,6 +20,13 @@ source=(https://ftp.gnu.org/pub/gnu/ncurses/ncurses-$pkgver.tar.gz{,.sig}
 md5sums=('98c889aaf8d23910d2b92d65be2e737a'
          'SKIP'
          'ba2cd274835935bf83bf3859a131fd1e')
+sha1sums=('57acf6bc24cacd651d82541929f726f4def780cc'
+          'SKIP'
+          '5fb4b04bd1c2c3ce89f140fffa6769dfd2e3f741')
+sha256sums=('aa057eeeb4a14d470101eff4597d5833dcef5965331be3528c08d99cebaa0d17'
+            'SKIP'
+            'c59a4209ea84a31bba0ea5721ce1ed32252a951270dda3f932cfc6ab4ca821b8')
+
 validpgpkeys=('C52048C0C0748FEE227D47A2702353E0F7E48EDB')  # Thomas Dickey
 
 prepare() {
@@ -32,7 +39,8 @@ build() {
   ./configure --prefix=/usr --mandir=/usr/share/man \
     --with-pkg-config-libdir=/usr/lib/pkgconfig \
     --with-shared --with-normal --without-debug --without-ada \
-    --enable-widec --enable-pc-files --with-cxx-binding --with-cxx-shared
+    --enable-widec --enable-pc-files --with-cxx-binding --with-cxx-shared \
+    --with-manpage-format=normal
   make
 }
 
