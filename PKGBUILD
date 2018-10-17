@@ -5,7 +5,7 @@ pkgname=('python-peachpy-git' 'python2-peachpy-git')
 _srcname=python-peachpy
 _srcname2=python2-peachpy
 pkgver=r362.01d1515
-pkgrel=1
+pkgrel=2
 pkgdesc='Python3 framework for writing high-performance assembly kernels (git version)'
 arch=('any')
 url='https://github.com/Maratyszcza/PeachPy/'
@@ -56,7 +56,6 @@ package_python-peachpy-git() {
     #cp -a "${srcdir}/${pkgbase}/build/sphinx/html/"* "${pkgdir}/usr/share/doc/${_srcname}"
     
     # license
-    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 LICENSE.rst "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
@@ -72,6 +71,5 @@ package_python2-peachpy-git() {
     cp -a "${srcdir}/${pkgbase}-py2/build/sphinx/html/"* "${pkgdir}/usr/share/doc/${_srcname2}"
     
     # license
-    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 LICENSE.rst "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
