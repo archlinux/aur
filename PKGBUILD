@@ -36,8 +36,6 @@ package(){
     rm -r "$pkgdir"/usr/share/keyrings
     rm -r "$pkgdir"/etc/X11
 
-    ln -s /usr/lib/libopencc.so "$pkgdir"/usr/lib/libopencc.so.1
-
     # install -m755 sogou-autostart "$pkgdir"/usr/bin
 
     # Do not modify $pkgdir/etc/xdg/autostart/fcitx-ui-sogou-qimpanel.desktop, as it is
