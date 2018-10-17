@@ -1,0 +1,20 @@
+pkgbase = fisher-git
+	pkgdesc = A blazing fast, modern plugin manager for fish
+	pkgver = 3.1.0.r0.gddf7334
+	pkgrel = 1
+	url = https://github.com/jorgebucaran/fisher
+	install = fisher-git.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = fish>=2.3.0
+	depends = curl
+	depends = git
+	conflicts = fisherman
+	conflicts = fisherman-git
+	conflicts = fisher
+	source = git+https://github.com/jorgebucaran/fisher.git
+	sha512sums = SKIP
+
+pkgname = fisher-git
+
