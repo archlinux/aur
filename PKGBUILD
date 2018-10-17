@@ -3,11 +3,11 @@
 pkgname=opensm-systemd-multiple-interfaces
 _pkgname=opensm
 pkgver=3.3.21
-pkgrel=2
+pkgrel=3
 pkgdesc='OpenFabrics Alliance InfiniBand Subnet Manager and Administrator'
 arch=('x86_64' 'i686')
 url='https://www.openfabrics.org/index.php/overview.html'
-license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
+license=('GPL2' 'custom:"OpenIB.org BSD"')
 provides=('opensm')
 conflicts=('opensm')
 depends=('rdma-core' 'bash')
@@ -45,4 +45,7 @@ package() {
   install -Dm644 "${srcdir}/opensm.service" "${pkgdir}/usr/lib/systemd/system/opensm.service"
   install -Dm755 "${srcdir}/opensm.launch" "${pkgdir}/usr/bin/opensm.launch"
   install -Dm644 "${srcdir}/opensm_extra.conf" "${pkgdir}/etc/opensm_extra.conf"
+
+  mkdir --parents "${pkgdir}/usr/share/docs/${pkgname}"
+  cp doc/* "${pkgdir}/usr/share/docs/${pkgname}"
 }

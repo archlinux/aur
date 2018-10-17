@@ -1,12 +1,12 @@
 pkgbase = opensm-systemd-multiple-interfaces
 	pkgdesc = OpenFabrics Alliance InfiniBand Subnet Manager and Administrator
 	pkgver = 3.3.21
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.openfabrics.org/index.php/overview.html
 	arch = x86_64
 	arch = i686
 	license = GPL2
-	license = custom:"Open Fabrics Alliance BSD"
+	license = custom:"OpenIB.org BSD"
 	depends = rdma-core
 	depends = bash
 	provides = opensm
