@@ -1,0 +1,12 @@
+pkgbase = ttyplot-git
+	pkgdesc = a realtime plotting utility for terminal with data input from stdin
+	pkgver = r22.ac8c3c3
+	pkgrel = 1
+	url = https://github.com/tenox7/ttyplot
+	arch = x86_64
+	license = Apache 2.0
+	source = git+https://github.com/tenox7/ttyplot.git
+	sha256sums = SKIP
+
+pkgname = ttyplot-git
+
