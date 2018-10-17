@@ -1,0 +1,17 @@
+pkgbase = vtable-dumper
+	pkgdesc = A tool to list content of virtual tables in a C++ shared library.
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/lvc/vtable-dumper
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = libelf
+	depends = gcc-libs
+	source = vtable-dumper-1.2.tar.gz::https://github.com/lvc/vtable-dumper/archive/1.2.tar.gz
+	md5sums = 1b1e2bc09b0fe63abf01e1ad2526c40d
+	sha1sums = 2ae56500487a9073eddc1c7c1fcf7fd537c8984b
+	sha256sums = 6993781b6a00936fc5f76dc0db4c410acb46b6d6e9836ddbe2e3c525c6dd1fd2
+
+pkgname = vtable-dumper
+
