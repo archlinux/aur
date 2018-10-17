@@ -1,6 +1,6 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 pkgname=chars
-pkgver=0.2.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='Command line tool to display information about unicode characters.'
 arch=('i686' 'x86_64')
@@ -9,8 +9,8 @@ license=('MIT')
 depends=()
 conflicts=('chars-git')
 makedepends=('rust' 'cargo' 'git')
-source=("$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('5073ffdec13d530c8a72765462ee8755c8beb1d805276cb46511faaa034b36d7')
+source=("$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('8de42bf53e3e30ffd82549c2f9b38b235ad8ec35877f3c1e22ee489fcdd22a35')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -19,5 +19,4 @@ build() {
 
 package() {
     install -Dm755 "$srcdir/$pkgname-$pkgver/target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
-    # install -Dm644 "$srcdir/$pkgname-$pkgver/doc/$pkgname.1" "$pkgdir/usr/share/man/man1/$pkgname.1"
 }
