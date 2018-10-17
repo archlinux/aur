@@ -1,6 +1,6 @@
 pkgbase = libpod
 	pkgdesc = A library used to create container pods.
-	pkgver = 0.10.1
+	pkgver = 0.10.1.2
 	pkgrel = 1
 	url = https://github.com/containers/libpod
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = libpod
 	depends = runc
 	depends = ostree
 	conflicts = podman
-	source = https://github.com/containers/libpod/archive/v0.10.1.tar.gz
-	sha256sums = c456a6e5c89ae938607154a16ec07efeda5287351d2741b762c495e651189cf5
+	source = https://github.com/containers/libpod/archive/v0.10.1.2.tar.gz
+	sha256sums = d830f385ee7ae63002f3bbd70c0f432a2f3fd2b074aa68eea11d9c8c6fa4d8ed
 
 pkgname = libpod
 
