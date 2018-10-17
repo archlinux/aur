@@ -113,80 +113,80 @@ _configure_options=(
 prepare() {
 	cd "${srcdir}/grub-${pkgver}/"
 
-	msg "Patch to detect of Arch Linux initramfs images by grub-mkconfig"
+	echo "Patch to detect of Arch Linux initramfs images by grub-mkconfig..."
 	patch -Np1 -i "${srcdir}/0003-10_linux-detect-archlinux-initramfs.patch"
 
-	msg "Patch to enable GRUB_COLOR_* variables in grub-mkconfig"
+	echo "Patch to enable GRUB_COLOR_* variables in grub-mkconfig..."
 	## Based on http://lists.gnu.org/archive/html/grub-devel/2012-02/msg00021.html
 	patch -Np1 -i "${srcdir}/0004-add-GRUB_COLOR_variables.patch"
 
-	msg "Patch to allow GRUB to mount ext2/3/4 filesystems that have the encryption feature"
+	echo "Patch to allow GRUB to mount ext2/3/4 filesystems that have the encryption feature..."
 	patch -Np1 -i "${srcdir}/0005-Allow_GRUB_to_mount_ext234_filesystems_that_have_the_encryption_feature.patch"
 
-	msg "Patch to change default tsc calibration method to pmtimer on EFI systems"
+	echo "Patch to change default tsc calibration method to pmtimer on EFI systems..."
 	patch -Np1 -i "${srcdir}/0006-tsc-Change-default-tsc-calibration-method-to-pmtimer-on-EFI-systems.patch"
 
-	msg "Patch to Support multiple early initrd images"
+	echo "Patch to Support multiple early initrd images..."
 	patch -Np1 -i "${srcdir}/0007-grub-mkconfig_10_linux_Support_multiple_early_initrd_images.patch"
 
-	msg "Patch to fix packed-not-aligned error on GCC 8"
+	echo "Patch to fix packed-not-aligned error on GCC 8..."
 	patch -Np1 -i "${srcdir}/0008-Fix-packed-not-aligned-error-on-GCC-8.patch"
 
-	msg "Patch xfs: Accept filesystem with sparse inodes"
+	echo "Patch xfs: Accept filesystem with sparse inodes..."
 	patch -Np1 -i "${srcdir}/0009-xfs-Accept-filesystem-with-sparse-inodes.patch"
 
-	msg "Patch x86-64: Treat R_X86_64_PLT32 as R_X86_64_PC32"
+	echo "Patch x86-64: Treat R_X86_64_PLT32 as R_X86_64_PC32..."
 	patch -Np1 -i "${srcdir}/0010-relocation.patch"
 
-	msg "Fix DejaVuSans.ttf location so that grub-mkfont can create *.pf2 files for starfield theme"
+	echo "Fix DejaVuSans.ttf location so that grub-mkfont can create *.pf2 files for starfield theme..."
 	sed 's|/usr/share/fonts/dejavu|/usr/share/fonts/dejavu /usr/share/fonts/TTF|g' -i "configure.ac"
 
-	msg "Fix mkinitcpio 'rw' FS#36275"
+	echo "Fix mkinitcpio 'rw' FS#36275..."
 	sed 's| ro | rw |g' -i "util/grub.d/10_linux.in"
 
-	msg "Fix OS naming FS#33393"
+	echo "Fix OS naming FS#33393..."
 	sed 's|GNU/Linux|Linux|' -i "util/grub.d/10_linux.in"
 
-	msg "Pull in latest language files"
+	echo "Pull in latest language files..."
 	./linguas.sh
 
-	msg "Remove not working langs which need LC_ALL=C.UTF-8"
+	echo "Remove not working langs which need LC_ALL=C.UTF-8..."
 	sed -e 's#en@cyrillic en@greek##g' -i "po/LINGUAS"
 
-	msg "Avoid problem with unifont during compile of grub"
+	echo "Avoid problem with unifont during compile of grub..."
 	# http://savannah.gnu.org/bugs/?40330 and https://bugs.archlinux.org/task/37847
 	cp "${srcdir}/unifont-${_UNIFONT_VER}.bdf" "unifont.bdf"
 	
-	msg "Run autogen.sh"
+	echo "Run autogen.sh..."
 	./autogen.sh
 }
 
 _build_grub-common_and_bios() {
-	msg "Set ARCH dependent variables for bios build"
+	echo "Set ARCH dependent variables for bios build..."
 	if [[ "${CARCH}" == 'x86_64' ]]; then
 		_EFIEMU="--enable-efiemu"
 	else
 		_EFIEMU="--disable-efiemu"
 	fi
 
-	msg "Copy the source for building the bios part"
+	echo "Copy the source for building the bios part..."
 	cp -r "${srcdir}/grub-${pkgver}" "${srcdir}/grub-${pkgver}-bios"
 	cd "${srcdir}/grub-${pkgver}-bios/"
 
-	msg "Add the grub-extra sources for bios build"
+	echo "Add the grub-extra sources for bios build..."
 	install -d "${srcdir}/grub-${pkgver}-bios/grub-extras"
 	cp -r "${srcdir}/grub-extras-${_GRUB_EXTRAS_COMMIT}/915resolution" \
 		"${srcdir}/grub-${pkgver}-bios/grub-extras/915resolution"
 	export GRUB_CONTRIB="${srcdir}/grub-${pkgver}-bios/grub-extras/"
 
-	msg "Unset all compiler FLAGS for bios build"
+	echo "Unset all compiler FLAGS for bios build..."
 	unset CFLAGS
 	unset CPPFLAGS
 	unset CXXFLAGS
 	unset LDFLAGS
 	unset MAKEFLAGS
 
-	msg "Run ./configure for bios build"
+	echo "Run ./configure for bios build..."
 	./configure \
 		--with-platform="pc" \
 		--target="i386" \
@@ -194,23 +194,23 @@ _build_grub-common_and_bios() {
 		--enable-boot-time \
 		"${_configure_options[@]}"
 
-	msg "Run make for bios build"
+	echo "Run make for bios build..."
 	make
 }
 
 _build_grub-efi() {
-	msg "Copy the source for building the ${_EFI_ARCH} efi part"
+	echo "Copy the source for building the ${_EFI_ARCH} efi part..."
 	cp -r "${srcdir}/grub-${pkgver}" "${srcdir}/grub-${pkgver}-efi-${_EFI_ARCH}"
 	cd "${srcdir}/grub-${pkgver}-efi-${_EFI_ARCH}/"
 
-	msg "Unset all compiler FLAGS for ${_EFI_ARCH} efi build"
+	echo "Unset all compiler FLAGS for ${_EFI_ARCH} efi build..."
 	unset CFLAGS
 	unset CPPFLAGS
 	unset CXXFLAGS
 	unset LDFLAGS
 	unset MAKEFLAGS
 
-	msg "Run ./configure for ${_EFI_ARCH} efi build"
+	echo "Run ./configure for ${_EFI_ARCH} efi build..."
 	./configure \
 		--with-platform="efi" \
 		--target="${_EFI_ARCH}" \
@@ -218,23 +218,23 @@ _build_grub-efi() {
 		--enable-boot-time \
 		"${_configure_options[@]}"
 
-	msg "Run make for ${_EFI_ARCH} efi build"
+	echo "Run make for ${_EFI_ARCH} efi build..."
 	make
 }
 
 _build_grub-emu() {
-	msg "Copy the source for building the emu part"
+	echo "Copy the source for building the emu part..."
 	cp -r "${srcdir}/grub-${pkgver}/" "${srcdir}/grub-${pkgver}-emu/"
 	cd "${srcdir}/grub-${pkgver}-emu/"
 
-	msg "Unset all compiler FLAGS for emu build"
+	echo "Unset all compiler FLAGS for emu build..."
 	unset CFLAGS
 	unset CPPFLAGS
 	unset CXXFLAGS
 	unset LDFLAGS
 	unset MAKEFLAGS
 
-	msg "Run ./configure for emu build"
+	echo "Run ./configure for emu build..."
 	./configure \
 		--with-platform="emu" \
 		--target="${_EMU_ARCH}" \
@@ -243,26 +243,26 @@ _build_grub-emu() {
 		--disable-grub-emu-pci \
 		"${_configure_options[@]}"
 
-	msg "Run make for emu build"
+	echo "Run make for emu build..."
 	make
 }
 
 build() {
 	cd "${srcdir}/grub-${pkgver}/"
 
-	msg "Build grub bios stuff"
+	echo "Build grub bios stuff..."
 	_build_grub-common_and_bios
 
-	msg "Build grub ${_EFI_ARCH} efi stuff"
+	echo "Build grub ${_EFI_ARCH} efi stuff..."
 	_build_grub-efi
 
 	if [[ "${CARCH}" == "x86_64" ]] && [[ "${_IA32_EFI_IN_ARCH_X64}" == "1" ]]; then
-		msg "Build grub i386 efi stuff"
+		echo "Build grub i386 efi stuff..."
 		_EFI_ARCH="i386" _build_grub-efi
 	fi
 
 	if [[ "${_GRUB_EMU_BUILD}" == "1" ]]; then
-		msg "Build grub emu stuff"
+		echo "Build grub emu stuff..."
 		_build_grub-emu
 	fi
 }
@@ -270,28 +270,28 @@ build() {
 _package_grub-common_and_bios() {
 	cd "${srcdir}/grub-${pkgver}-bios/"
 
-	msg "Run make install for bios build"
+	echo "Run make install for bios build..."
 	make DESTDIR="${pkgdir}/" bashcompletiondir="/usr/share/bash-completion/completions" install
 
-	msg "Remove gdb debugging related files for bios build"
+	echo "Remove gdb debugging related files for bios build..."
 	rm -f "${pkgdir}/usr/lib/grub/i386-pc"/*.module || true
 	rm -f "${pkgdir}/usr/lib/grub/i386-pc"/*.image || true
 	rm -f "${pkgdir}/usr/lib/grub/i386-pc"/{kernel.exec,gdb_grub,gmodule.pl} || true
 
-	msg "Install /etc/default/grub (used by grub-mkconfig)"
+	echo "Install /etc/default/grub (used by grub-mkconfig)..."
 	install -D -m0644 "${srcdir}/grub.default" "${pkgdir}/etc/default/grub"
 
-	msg "Install grub.cfg for backup array"
+	echo "Install grub.cfg for backup array..."
 	install -D -m0644 "${srcdir}/grub.cfg" "${pkgdir}/boot/grub/grub.cfg"
 }
 
 _package_grub-efi() {
 	cd "${srcdir}/grub-${pkgver}-efi-${_EFI_ARCH}/"
 
-	msg "Run make install for ${_EFI_ARCH} efi build"
+	echo "Run make install for ${_EFI_ARCH} efi build..."
 	make DESTDIR="${pkgdir}/" bashcompletiondir="/usr/share/bash-completion/completions" install
 
-	msg "Remove gdb debugging related files for ${_EFI_ARCH} efi build"
+	echo "Remove gdb debugging related files for ${_EFI_ARCH} efi build..."
 	rm -f "${pkgdir}/usr/lib/grub/${_EFI_ARCH}-efi"/*.module || true
 	rm -f "${pkgdir}/usr/lib/grub/${_EFI_ARCH}-efi"/*.image || true
 	rm -f "${pkgdir}/usr/lib/grub/${_EFI_ARCH}-efi"/{kernel.exec,gdb_grub,gmodule.pl} || true
@@ -300,10 +300,10 @@ _package_grub-efi() {
 _package_grub-emu() {
 	cd "${srcdir}/grub-${pkgver}-emu/"
 
-	msg "Run make install for emu build"
+	echo "Run make install for emu build..."
 	make DESTDIR="${pkgdir}/" bashcompletiondir="/usr/share/bash-completion/completions" install
 
-	msg "Remove gdb debugging related files for emu build"
+	echo "Remove gdb debugging related files for emu build..."
 	rm -f "${pkgdir}/usr/lib/grub/${_EMU_ARCH}-emu"/*.module || true
 	rm -f "${pkgdir}/usr/lib/grub/${_EMU_ARCH}-emu"/*.image || true
 	rm -f "${pkgdir}/usr/lib/grub/${_EMU_ARCH}-emu"/{kernel.exec,gdb_grub,gmodule.pl} || true
@@ -312,19 +312,19 @@ _package_grub-emu() {
 package() {
 	cd "${srcdir}/grub-${pkgver}/"
 
-	msg "Package grub ${_EFI_ARCH} efi stuff"
+	echo "Package grub ${_EFI_ARCH} efi stuff..."
 	_package_grub-efi
 
 	if [[ "${CARCH}" == "x86_64" ]] && [[ "${_IA32_EFI_IN_ARCH_X64}" == "1" ]]; then
-		msg "Package grub i386 efi stuff"
+		echo "Package grub i386 efi stuff..."
 		_EFI_ARCH="i386" _package_grub-efi
 	fi
 
 	if [[ "${_GRUB_EMU_BUILD}" == "1" ]]; then
-		msg "Package grub emu stuff"
+		echo "Package grub emu stuff..."
 		_package_grub-emu
 	fi
 
-	msg "Package grub bios stuff"
+	echo "Package grub bios stuff..."
 	_package_grub-common_and_bios
 }
