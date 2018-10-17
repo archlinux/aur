@@ -1,0 +1,92 @@
+From 86f210253dc9302097e8cfbacf1e8cf7977bb755 Mon Sep 17 00:00:00 2001
+From: Mark Weiman <mweiman@merit.edu>
+Date: Wed, 17 Oct 2018 10:13:45 -0400
+Subject: [PATCH] corsaro_flowtuple.h: Remove includes to unavailable headers
+
+corsaro_flowtuple.h currently has includes for three files, khash.h,
+ksort.h, and corsaro_plugin.h. Since corsaro_flowtuple.h is installed
+as part of libcorsaro, these headers cannot be mentioned in that file.
+
+Removing these includes also required other changes:
+
+  corsaro_flowtuple_hash_func(): changed return type from khint32_t to
+    uint32_t
+  corsaro_flowtuple.c: Include khash.h and ksort.h
+  cors-ft-aggregate.c: Include khash.h
+---
+ libcorsaro/plugins/corsaro_flowtuple.c | 7 +++++--
+ libcorsaro/plugins/corsaro_flowtuple.h | 7 +------
+ tools/cors-ft-aggregate.c              | 2 ++
+ 3 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/libcorsaro/plugins/corsaro_flowtuple.c b/libcorsaro/plugins/corsaro_flowtuple.c
+index 8b5d569..82111be 100644
+--- a/libcorsaro/plugins/corsaro_flowtuple.c
++++ b/libcorsaro/plugins/corsaro_flowtuple.c
+@@ -37,6 +37,9 @@
+ 
+ #include "utils.h"
+ 
++#include "khash.h"
++#include "ksort.h"
++
+ #include "corsaro_io.h"
+ #include "corsaro_file.h"
+ #include "corsaro_log.h"
+@@ -1303,7 +1306,7 @@ int corsaro_flowtuple_add_inc(void *h, corsaro_flowtuple_t *t,
+  *         |  TTL  |TCP_FLG|PROTO|  LEN   |
+  *         --------------------------------
+  */
+-khint32_t corsaro_flowtuple_hash_func(struct corsaro_flowtuple *ft)
++uint32_t corsaro_flowtuple_hash_func(struct corsaro_flowtuple *ft)
+ {
+   khint32_t h = (khint32_t)ft->src_ip*59;
+ #ifdef CORSARO_SLASH_EIGHT
+@@ -1320,5 +1323,5 @@ khint32_t corsaro_flowtuple_hash_func(struct corsaro_flowtuple *ft)
+ #else
+   CORSARO_FLOWTUPLE_SHIFT_AND_XOR((ft->protocol<<8)|(ft->ip_len));
+ #endif
+-  return h;
++  return (uint32_t)h;
+ }
+diff --git a/libcorsaro/plugins/corsaro_flowtuple.h b/libcorsaro/plugins/corsaro_flowtuple.h
+index 33aaa59..2e65a46 100644
+--- a/libcorsaro/plugins/corsaro_flowtuple.h
++++ b/libcorsaro/plugins/corsaro_flowtuple.h
+@@ -26,11 +26,6 @@
+ #ifndef __CORSARO_FLOWTUPLE_H
+ #define __CORSARO_FLOWTUPLE_H
+ 
+-#include "khash.h"
+-#include "ksort.h"
+-
+-#include "corsaro_plugin.h"
+-
+ /** @file
+  *
+  * @brief Header file which exports corsaro_flowtuple plugin API
+@@ -352,7 +347,7 @@ int corsaro_flowtuple_record_print(corsaro_in_record_type_t record_type,
+  *         |  TTL  |TCP_FLG|PROTO|  LEN   |
+  *         --------------------------------
+  */
+-khint32_t corsaro_flowtuple_hash_func(struct corsaro_flowtuple *ft);
++uint32_t corsaro_flowtuple_hash_func(struct corsaro_flowtuple *ft);
+ 
+ /** Tests two flowtuples for equality */
+ #ifdef CORSARO_SLASH_EIGHT
+diff --git a/tools/cors-ft-aggregate.c b/tools/cors-ft-aggregate.c
+index c6f1bd1..df57f4c 100644
+--- a/tools/cors-ft-aggregate.c
++++ b/tools/cors-ft-aggregate.c
+@@ -40,6 +40,8 @@
+ 
+ #include "corsaro_flowtuple.h"
+ 
++#include "khash.h"
++
+ /** @file
+  *
+  * @brief Code which uses libcorsaro to convert an corsaro output file to ascii
+-- 
+2.19.1
+
