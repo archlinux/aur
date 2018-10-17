@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-resource
 	pkgdesc = support for getrusage (mingw-w64)
 	pkgver = 0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceforge.net/p/mingw-w64/code/HEAD/tree/experimental/getrusage
 	arch = any
 	license = custom
@@ -12,6 +12,8 @@ pkgbase = mingw-w64-resource
 	options = !buildflags
 	options = !strip
 	source = sys::svn+svn://svn.code.sf.net/p/mingw-w64/code/experimental/getrusage
+	source = unmaintained_fields.patch
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = mingw-w64-resource
