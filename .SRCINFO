@@ -1,0 +1,19 @@
+pkgbase = linux-akulm
+	pkgdesc = Pacman hooks to have loadable modules after pacman -Syu
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/bebehei/akulm
+	arch = any
+	license = GPL3
+	depends = pacman
+	source = https://raw.githubusercontent.com/bebehei/akulm/master/akulm
+	source = https://raw.githubusercontent.com/bebehei/akulm/master/akulm-pre.hook
+	source = https://raw.githubusercontent.com/bebehei/akulm/master/akulm-post.hook
+	source = https://raw.githubusercontent.com/bebehei/akulm/master/akulm.tmpfiles
+	sha256sums = e0e983fc0d4aa8d1b29067c910f54b3ebac58c7b747b0f89faebd65d950ee23c
+	sha256sums = 97bc51dc561f452fcd2787c043bf62a601c22d92709a85798bc2bb8b7c997501
+	sha256sums = 05197826426c7e2b7908bab03230f44890a97eecf34aa598feb042304b71e574
+	sha256sums = e63d8e4704e8dd50b7fa14dd23f7c8cf6c63acac82b8d25b696489211d794e78
+
+pkgname = linux-akulm
+
