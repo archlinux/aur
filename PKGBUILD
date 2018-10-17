@@ -20,7 +20,7 @@ source=("wesnoth$_suffix.desktop"
 
 md5sums=('99f136647c5af1820d0132df08350965'
          'ec9cab718ba96b7a4c85c224f6b747c3'
-         '11fbbf345aae2a2e3f45de5fcfd479d3'
+         '4b18649a4864c0ae9787dc1ee9fc3400'
          '1018b1fae1a65d49bed1094ba0280d87')
 
 PKGEXT='.pkg.tar'
