@@ -2,7 +2,7 @@
 
 pkgname=ibsim
 pkgver=0.7
-pkgrel=2
+pkgrel=3
 pkgdesc='OpenFabrics Alliance InfiniBand simulator utilities'
 arch=('x86_64' 'i686')
 url='https://www.openfabrics.org/index.php/overview.html'
@@ -20,7 +20,6 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   make libpath=/usr/lib DESTDIR="${pkgdir}" install
-  install -Dm644 README "${pkgdir}/usr/share/licenses/${pkgname}/README"
-  mkdir -p "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm644 README "${pkgdir}/usr/share/doc/${pkgname}/README"
   cp -r net-examples scripts "${pkgdir}/usr/share/doc/${pkgname}"
 }
