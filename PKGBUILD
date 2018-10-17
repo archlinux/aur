@@ -3,10 +3,10 @@
 pkgbase=python-ninja-syntax
 pkgname=('python-ninja-syntax' 'python2-ninja-syntax')
 pkgver=1.7.2
-pkgrel=1
-_commondesc="module for generating .ninja files"
+pkgrel=2
+_commondesc='module for generating .ninja files'
 arch=('any')
-url="https://pypi.python.org/pypi/ninja_syntax/"
+url='https://pypi.python.org/pypi/ninja_syntax/'
 license=('APACHE')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://pypi.python.org/packages/4b/c3/303da27e7d72aeae5d1879d592048fcd5e8c0c333505b76dda136ab342c0/ninja_syntax-${pkgver}.tar.gz")
@@ -17,11 +17,11 @@ prepare() {
 }
 
 build() {
-    msg2 "Building for Python3..."
+    printf '%s\n' '  -> Building for Python3...'
     cd "ninja_syntax-${pkgver}"
     python setup.py build
     
-    msg2 "Building for Python2..."
+    printf '%s\n' '  -> Building for Python2...'
     cd "${srcdir}/ninja_syntax-${pkgver}-py2"
     python2 setup.py build
 }
