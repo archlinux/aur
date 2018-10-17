@@ -3,7 +3,7 @@
 
 pkgname=caffe
 pkgver=1.0
-pkgrel=11
+pkgrel=12
 pkgdesc='A deep learning framework made with expression, speed, and modularity in mind (cpu only)'
 arch=('i686' 'x86_64')
 url='http://caffe.berkeleyvision.org/'
@@ -23,6 +23,8 @@ depends=(
     # https://github.com/BVLC/caffe/blob/1.0/python/caffe/draw.py#L7-L22
 )
 makedepends=('boost' 'doxygen' 'texlive-core')
+provides=('caffe-cpu')
+conflicts=('caffe-cpu')
 replaces=('caffe-cpu')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/BVLC/caffe/archive/${pkgver}.tar.gz"
         'Makefile.config')
