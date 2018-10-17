@@ -5,7 +5,7 @@ _sureal_commit='4d0fee6e83047da53ff1776a883579bfe101e8ea'
 
 pkgname=python2-vmaf
 pkgver=1.3.9
-pkgrel=2
+pkgrel=3
 pkgdesc='Perceptual video quality assessment algorithm based on multi-method fusion (python2 implementation)'
 arch=('any')
 url='https://github.com/netflix/vmaf/'
@@ -18,7 +18,6 @@ depends=(
         'python2-scikit-image'
 )
 makedepends=('git' 'python2-setuptools')
-conflicts=('python2-vmaf-git')
 source=("${_srcname}-${pkgver}.tar.gz"::"https://github.com/Netflix/${_srcname}/archive/v${pkgver}.tar.gz"
         'vmaf-submodule-sureal'::"git+https://github.com/Netflix/sureal.git#commit=${_sureal_commit}")
 sha256sums=('c9e4fc850f66cf959a36c9603cef26c4298eec20d6c26f9482a355c5753c092d'
