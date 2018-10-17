@@ -1,9 +1,9 @@
-# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
 # Contributor: Micah Chambers <micahc.vt@gmail.com>
 
 pkgname=caffe
 pkgver=1.0
-pkgrel=10
+pkgrel=11
 pkgdesc='A deep learning framework made with expression, speed, and modularity in mind (cpu only)'
 arch=('i686' 'x86_64')
 url='http://caffe.berkeleyvision.org/'
@@ -23,9 +23,6 @@ depends=(
     # https://github.com/BVLC/caffe/blob/1.0/python/caffe/draw.py#L7-L22
 )
 makedepends=('boost' 'doxygen' 'texlive-core')
-provides=('caffe-cpu')
-conflicts=('caffe-git' 'caffe-cuda' 'caffe-cuda-git' 'caffe-cpu' 'caffe-cpu-git'
-           'caffe2' 'caffe2-cuda')
 replaces=('caffe-cpu')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/BVLC/caffe/archive/${pkgver}.tar.gz"
         'Makefile.config')
@@ -67,50 +64,39 @@ prepare() {
 build() {
     cd "${pkgname}-${pkgver}"
     
-    msg2 "Building target 'all'..."
-    make all
-    
-    msg2 "Building target 'pycaffe'..."
-    make pycaffe
-    
-    msg2 "Building target 'docs'..."
+    make all pycaffe
     rm -rf doxygen
-    make docs
-    
-    msg2 "Building target 'distribute'..."
-    make distribute
+    make docs distribute
 }
 
 # uncomment this block if you want to run the checks/tests
 #check() {
 #    cd "${pkgname}-${pkgver}"
-#    msg2 "Building target 'test'..."
 #    make test
-#    msg2 "Making target 'runtest'..."
 #    make runtest
 #}
 
 package() {
+    cd "${pkgname}-${pkgver}/distribute"
+    
     local _pythonver
     _pythonver="$(python --version | awk '{ print $2 }' | grep -o '^[0-9]*\.[0-9]*')"
     
     mkdir -p "$pkgdir"/usr/{bin,include,lib/python"$_pythonver"/site-packages,share/doc}
     
-    cd "${pkgname}-${pkgver}/distribute"
-    
     # binaries
     install -m755 bin/* "${pkgdir}/usr/bin"
     
     # library
-    cp -af lib/libcaffe.so* "${pkgdir}/usr/lib"
+    cp -a lib/libcaffe.so* "${pkgdir}/usr/lib"
     chmod 755 "${pkgdir}/usr/lib"/libcaffe.so.*.*.*
     
     # headers
-    cp -af include "${pkgdir}/usr"
+    cp -a include "${pkgdir}/usr"
     
     # python
     install -m755 python/*.py "${pkgdir}/usr/bin"
-    cp -af python/caffe "${pkgdir}/usr/lib/python${_pythonver}/site-packages"
+    cp -a python/caffe "${pkgdir}/usr/lib/python${_pythonver}/site-packages"
     
     # proto
     install -D -m644 proto/caffe.proto -t "${pkgdir}/usr/share/caffe"
@@ -118,7 +104,7 @@ package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     
     # docs
-    cp -af doxygen/html "${pkgdir}/usr/share/doc/${pkgname}"
+    cp -a doxygen/html "${pkgdir}/usr/share/doc/${pkgname}"
     
     # license
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
