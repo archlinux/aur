@@ -120,7 +120,6 @@ package_gcc-libs-git() {
   options+=(!strip)
   provides=(gcc-libs-multilib libgo.so libgfortran.so libubsan.so libasan.so
             libtsan.so liblsan.so)
-  replaces=(gcc-libs-multilib)
 
   cd gcc-build
   make -C $CHOST/libgcc DESTDIR="$pkgdir" install-shared
@@ -163,7 +162,6 @@ package_gcc-git() {
   groups=('base-devel')
   optdepends=('lib32-gcc-libs: for generating code for 32-bit ABI')
   provides=(gcc-multilib)
-  replaces=(gcc-multilib)
   options+=(staticlibs)
 
   cd gcc-build
@@ -251,7 +249,6 @@ package_gcc-fortran-git() {
   pkgdesc='Fortran front-end for GCC (git version)'
   depends=("gcc=$pkgver-$pkgrel")
   provides=(gcc-fortran-multilib)
-  replaces=(gcc-fortran-multilib)
 
   cd gcc-build
   make -C $CHOST/libgfortran DESTDIR="$pkgdir" install-cafexeclibLTLIBRARIES \
@@ -274,7 +271,6 @@ package_gcc-objc-git() {
   pkgdesc='Objective-C front-end for GCC (git version)'
   depends=("gcc=$pkgver-$pkgrel")
   provides=(gcc-objc-multilib)
-  replaces=(gcc-objc-multilib)
 
   cd gcc-build
   make DESTDIR="$pkgdir" -C $CHOST/libobjc install-headers
@@ -291,7 +287,6 @@ package_gcc-ada-git() {
   pkgdesc='Ada front-end for GCC (GNAT) (git version)'
   depends=("gcc=$pkgver-$pkgrel")
   provides=(gcc-ada-multilib)
-  replaces=(gcc-ada-multilib)
   options+=(staticlibs)
 
   cd gcc-build/gcc
@@ -326,7 +321,6 @@ package_gcc-go-git() {
   pkgdesc='Go front-end for GCC (git version)'
   depends=("gcc=$pkgver-$pkgrel")
   provides=("go=1.10.1" gcc-go-multilib)
-  replaces=(gcc-go-multilib)
   conflicts=(go)
 
   cd gcc-build
