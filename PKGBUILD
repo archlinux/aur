@@ -1,28 +1,26 @@
 #Maintainer: Plague-doctor <plague at privacyrequired dot com >
 
 pkgname=cyberfox-bin
-pkgver=52.5.2
+pkgver=52.9.1
 pkgrel=1
-pn=cyberfox
+_pkgname=${pkgname/-bin}
 pkgdesc="Fast and privacy oriented fork of Mozilla Firefox"
 arch=('x86_64')
 url="https://8pecxstudios.com/"
 license=('GPL')
 depends=('gtk2' 'libxt' 'dbus-glib' 'alsa-lib' 'hicolor-icon-theme' 'nss>=3.14.1' )
 conflicts=('cyberfox')
-source=("${pn}.desktop"
-        "http://downloads.sourceforge.net/project/cyberfox/Zipped%20Format/Cyberfox-$pkgver.en-US.linux-${arch}.tar.bz2")
+source=("$_pkgname.desktop"
+        "http://downloads.sourceforge.net/project/$_pkgname/Zipped%20Format/${_pkgname^}-$pkgver.en-US.linux-${arch}.tar.bz2")
 
-sha512sums=('SKIP'
-         'A34F5CDD2AED9E17CA846030592FA4FA8401A8C5162EED7584985BF241773FA2B3E1FD6470FF3E0F25E3E69D5D3492B9841E12734499DE0ACB481B829DC40ACE')
-
-
+sha512sums=('7230ee3130a8a6e29b56b437ac61de1ffb7d91ba487748926d910cb5cd58d924b5b6ad6583f86edb553a870b64d66f6b6af39a2449175a5ae7d267f70c71038a'
+            '8781348cc42c2a2c47bf844f556b736551c017f30ef7df636ffdd812fa9ad9b15e939f6659aa48b58c8ec5998622c7f1694ed471b3ed5aab19cf35f9bf3a0344')
 
 package() {
     install -d "$pkgdir"/{usr/bin,opt}
-    mv "${pn}" "${pkgdir}/opt/${pn}"
-    ln -s "/opt/${pn}/${pn}" "${pkgdir}/usr/bin/${pn}"
-    install -Dm644 "${pn}.desktop" "${pkgdir}/usr/share/applications/${pn}.desktop"
-    install -Dm644 "${pkgdir}/opt/${pn}/browser/icons/mozicon128.png" \
-                   "${pkgdir}/usr/share/pixmaps/${pn}-icon.png"
+    mv "${_pkgname}" "${pkgdir}/opt/${_pkgname}"
+    ln -s "/opt/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    install -Dm644 "${pkgdir}/opt/${_pkgname}/browser/icons/mozicon128.png" \
+                   "${pkgdir}/usr/share/pixmaps/${_pkgname}-icon.png"
 }

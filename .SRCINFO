@@ -1,6 +1,6 @@
 pkgbase = cyberfox-bin
 	pkgdesc = Fast and privacy oriented fork of Mozilla Firefox
-	pkgver = 52.5.2
+	pkgver = 52.9.1
 	pkgrel = 1
 	url = https://8pecxstudios.com/
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = cyberfox-bin
 	depends = nss>=3.14.1
 	conflicts = cyberfox
 	source = cyberfox.desktop
-	source = http://downloads.sourceforge.net/project/cyberfox/Zipped%20Format/Cyberfox-52.5.2.en-US.linux-x86_64.tar.bz2
-	sha512sums = SKIP
-	sha512sums = A34F5CDD2AED9E17CA846030592FA4FA8401A8C5162EED7584985BF241773FA2B3E1FD6470FF3E0F25E3E69D5D3492B9841E12734499DE0ACB481B829DC40ACE
+	source = http://downloads.sourceforge.net/project/cyberfox/Zipped%20Format/Cyberfox-52.9.1.en-US.linux-x86_64.tar.bz2
+	sha512sums = 7230ee3130a8a6e29b56b437ac61de1ffb7d91ba487748926d910cb5cd58d924b5b6ad6583f86edb553a870b64d66f6b6af39a2449175a5ae7d267f70c71038a
+	sha512sums = 8781348cc42c2a2c47bf844f556b736551c017f30ef7df636ffdd812fa9ad9b15e939f6659aa48b58c8ec5998622c7f1694ed471b3ed5aab19cf35f9bf3a0344
 
 pkgname = cyberfox-bin
 
