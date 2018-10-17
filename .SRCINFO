@@ -1,6 +1,6 @@
 pkgbase = cura-beta
 	pkgdesc = A software solution for 3D printing aimed at RepRaps and the Ultimaker.
-	pkgver = 3.5
+	pkgver = 3.5.1
 	pkgrel = 1
 	url = https://ultimaker.com/en/products/cura-software
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = cura-beta
 	provides = cura
 	conflicts = cura
 	conflicts = cura-git
-	source = git+https://github.com/Ultimaker/Cura#branch=3.5
+	source = git+https://github.com/Ultimaker/Cura#branch=3.5.1
 	sha1sums = SKIP
 
 pkgname = cura-beta
