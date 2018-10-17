@@ -5,6 +5,7 @@
 
 # Modificationt to use source from git master
 # Maintainer: James P. Harvey <jamespharvey20 at gmail dot com>
+#    * This PKGBUILD as closely as possible matches core's gcc 8.2.1+20180831-1
 
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 # NOTE: libtool requires rebuilt with each new gcc version
