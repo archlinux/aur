@@ -30,8 +30,8 @@ bootstrap_install() {
 	fi
     done
     install -dv "${target}/lib/"
-    for eta in $(find . -type f -name 'eve-transl*') ;do
-        install -m 0644 "$eta" "${target}/lib"
+    for eta in $(ls ./eve-transl${qtver}-??.tar.gz) ;do
+	install -m 0644 "$eta" "${target}/lib"
     done
     install -m 0644 "./evelauncher-${elver}.tar.gz" "${target}/lib"
     for icons in $(find . -type f -name '*.png') ;do

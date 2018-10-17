@@ -38,7 +38,7 @@ check_install() {
 check_transl() {
     if [ ! -r "$LAUNCHER/translations/qt_en.qm" ] ;then
 	if [ -r "$LAUNCHER/libQt5Core.so.$QTVER.0" ] ;then
-	    for eta in $(find $SETUPDIR/lib/ -type f -name 'eve-transl*') ;do
+	    for eta in $(ls $SETUPDIR/lib/eve-transl${QTVER}-??.tar.gz) ;do
 		tar xf $eta -C $LAUNCHER
 	    done
 	fi

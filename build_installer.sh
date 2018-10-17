@@ -27,7 +27,7 @@ echo "done."
 
 printf "\nCopy needed files from AUR package..."
 tar xf ../eve-icons.tar.gz -C evesetup/
-for eta in ../eve-transl511-* ;do cp $eta evesetup/ ;done
+for eta in $(ls ../eve-transl5.11-??.tar.gz) ;do cp $eta evesetup/ ;done
 for cmd in evelauncher.sh everegedit evewine evewinecfg evewinetricks ;do
     cp ../$cmd evesetup/
     if [ ! "$cmd" = "evewine" ] ;then
@@ -60,7 +60,7 @@ libb=/dev/zero
 for lib in $(find ./ -maxdepth 1 -type f -name 'lib*' -printf '%s-%f\n'|sort -r)
 do
     liba=${lib#*-}
-    if [ $(cmp -s $liba $libb; echo $?) -eq 0 ] ;then
+    if [ "$(cmp -s $liba $libb; echo $?)" = "0" ] ;then
         ln -sfv $libb $liba
     else
         libb=$liba
