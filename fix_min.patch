@@ -1,0 +1,13 @@
+Index: titania/libtitania-x3d/Titania/X3D/Parser/JSONParser.cpp
+===================================================================
+--- titania.orig/libtitania-x3d/Titania/X3D/Parser/JSONParser.cpp
++++ titania/libtitania-x3d/Titania/X3D/Parser/JSONParser.cpp
+@@ -1594,7 +1594,7 @@ JSONParser::imageValue (json_object* con
+ {
+ 	int32_t value;
+ 
+-	const int32_t size = std::min (json_object_array_length (jobj), index + width * height);
++	const int32_t size = std::min ((int)(json_object_array_length (jobj)), index + width * height);
+ 
+ 	for (int32_t i = index, a = 0; i < size; ++ i, ++ a)
+ 	{

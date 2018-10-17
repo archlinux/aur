@@ -1,0 +1,199 @@
+Index: titania/Titania/Titania/Browser/Image.h
+===================================================================
+--- titania.orig/Titania/Titania/Browser/Image.h
++++ titania/Titania/Titania/Browser/Image.h
+@@ -155,7 +155,7 @@ Image::getBlob (Magick::Image && image)
+ 	{
+ 		case Magick::GrayscaleType:
+ 		{
+-			if (image .matte ())
++			if (image .alpha ())
+ 			{
+ 				components   = 4;
+ 				transparency = true,
+@@ -170,7 +170,7 @@ Image::getBlob (Magick::Image && image)
+ 
+ 			break;
+ 		}
+-		case Magick::GrayscaleMatteType:
++		case Magick::GrayscaleAlphaType:
+ 		{
+ 			components   = 4;
+ 			transparency = true,
+@@ -179,7 +179,7 @@ Image::getBlob (Magick::Image && image)
+ 		}
+ 		case Magick::TrueColorType:
+ 		{
+-			if (image .matte ())
++			if (image .alpha ())
+ 			{
+ 				components   = 4;
+ 				transparency = true,
+@@ -194,7 +194,7 @@ Image::getBlob (Magick::Image && image)
+ 
+ 			break;
+ 		}
+-		case Magick::TrueColorMatteType:
++		case Magick::TrueColorAlphaType:
+ 		{
+ 			components   = 4;
+ 			transparency = true,
+@@ -203,7 +203,7 @@ Image::getBlob (Magick::Image && image)
+ 		}
+ 		default:
+ 		{
+-			if (image .matte ())
++			if (image .alpha ())
+ 			{
+ 				components   = 4;
+ 				transparency = true,
+Index: titania/configure.ac
+===================================================================
+--- titania.orig/configure.ac
++++ titania/configure.ac
+@@ -124,7 +124,7 @@ glew
+ mozjs185
+ libxml++-2.6
+ json-c
+-ImageMagick++
++Magick++
+ libgtop-2.0
+ bullet)
+ 
+Index: titania/libtitania-x3d/Titania/X3D/Browser/Texturing/X3DTexture.cpp
+===================================================================
+--- titania.orig/libtitania-x3d/Titania/X3D/Browser/Texturing/X3DTexture.cpp
++++ titania/libtitania-x3d/Titania/X3D/Browser/Texturing/X3DTexture.cpp
+@@ -93,7 +93,7 @@ X3DTexture::refineImageFormats ()
+ 	{
+ 		case Magick::GrayscaleType:
+ 		{
+-			if (not first .matte ())
++			if (not first .alpha ())
+ 			{
+ 				first .magick ("GRAY");
+ 				format     = GL_LUMINANCE;
+@@ -103,9 +103,9 @@ X3DTexture::refineImageFormats ()
+ 
+ 			// Proceed with next step:
+ 		}
+-		case Magick::GrayscaleMatteType:
++		case Magick::GrayscaleAlphaType:
+ 		{
+-			first .type (Magick::TrueColorMatteType);
++			first .type (Magick::TrueColorAlphaType);
+ 			first .magick ("RGBA");
+ 			format     = GL_RGBA;
+ 			components = 2;
+@@ -113,7 +113,7 @@ X3DTexture::refineImageFormats ()
+ 		}
+ 		case Magick::TrueColorType:
+ 		{
+-			if (not first .matte ())
++			if (not first .alpha ())
+ 			{
+ 				first .magick ("RGB");
+ 				format     = GL_RGB;
+@@ -123,7 +123,7 @@ X3DTexture::refineImageFormats ()
+ 
+ 			// Proceed with next step:
+ 		}
+-		case Magick::TrueColorMatteType:
++		case Magick::TrueColorAlphaType:
+ 		{
+ 			first .magick ("RGBA");
+ 			format     = GL_RGBA;
+@@ -132,9 +132,9 @@ X3DTexture::refineImageFormats ()
+ 		}
+ 		case Magick::BilevelType: // Does not work
+ 		{
+-			if (first .matte ())
++			if (first .alpha ())
+ 			{
+-				first .type (Magick::GrayscaleMatteType);
++				first .type (Magick::GrayscaleAlphaType);
+ 				refineImageFormats ();
+ 				return;
+ 			}
+@@ -145,15 +145,15 @@ X3DTexture::refineImageFormats ()
+ 		}
+ 		case Magick::UndefinedType:
+ 		case Magick::PaletteType:
+-		case Magick::PaletteMatteType:
++		case Magick::PaletteAlphaType:
+ 		case Magick::ColorSeparationType:
+-		case Magick::ColorSeparationMatteType:
++		case Magick::ColorSeparationAlphaType:
+ 		case Magick::OptimizeType:
+ 		default:
+ 		{
+-			if (first .matte ())
++			if (first .alpha ())
+ 			{
+-				first .type (Magick::TrueColorMatteType);
++				first .type (Magick::TrueColorAlphaType);
+ 				refineImageFormats ();
+ 				return;
+ 			}
+Index: titania/libtitania-x3d/Titania/X3D/Browser/X3DBrowserContext.cpp
+===================================================================
+--- titania.orig/libtitania-x3d/Titania/X3D/Browser/X3DBrowserContext.cpp
++++ titania/libtitania-x3d/Titania/X3D/Browser/X3DBrowserContext.cpp
+@@ -276,16 +276,16 @@ throw (Error <INSUFFICIENT_CAPABILITIES>
+ 		Magick::Image image (width, height, "RGBA", Magick::CharPixel, frameBuffer .getPixels () .data ());
+ 	
+ 		if (alphaChannel)
+-			image .type (Magick::TrueColorMatteType);
++			image .type (Magick::TrueColorAlphaType);
+ 		else
+ 		{
+-			image .matte (false);
++			image .alpha (false);
+ 			image .type (Magick::TrueColorType);
+ 		}
+ 	
+ 		image .flip ();
+ 		image .resolutionUnits (Magick::PixelsPerInchResolution);
+-		image .density (Magick::Geometry (72, 72));
++		image .density ();
+ 	
+ 		return image;
+ 	}
+Index: titania/libtitania-x3d/Titania/X3D/Components/Texturing/X3DTexture2DNode.cpp
+===================================================================
+--- titania.orig/libtitania-x3d/Titania/X3D/Components/Texturing/X3DTexture2DNode.cpp
++++ titania/libtitania-x3d/Titania/X3D/Components/Texturing/X3DTexture2DNode.cpp
+@@ -239,15 +239,15 @@ throw (X3D::Error <X3D::INVALID_NODE>,
+ 
+ 	if (opaque)
+ 	{
+-		image .matte (false);
++		image .alpha (false);
+ 		image .type (Magick::TrueColorType);
+ 	}
+ 	else
+-		image .type (Magick::TrueColorMatteType);
++		image .type (Magick::TrueColorAlphaType);
+ 
+ 	image .flip ();
+ 	image .resolutionUnits (Magick::PixelsPerInchResolution);
+-	image .density (Magick::Geometry (72, 72));
++	image .density ();
+ 
+ 	return image;
+ }
+Index: titania/libtitania-x3d/Titania/X3D/InputOutput/GoldenGate.cpp
+===================================================================
+--- titania.orig/libtitania-x3d/Titania/X3D/InputOutput/GoldenGate.cpp
++++ titania/libtitania-x3d/Titania/X3D/InputOutput/GoldenGate.cpp
+@@ -284,8 +284,8 @@ GoldenGate::image (const X3DScenePtr & s
+ 	image .read (uri);
+ 	image .resolutionUnits (Magick::PixelsPerInchResolution);
+ 
+-	const auto width  = double (image .size () .width  ()) / double (image .density () .width  ()) * inch <double>;
+-	const auto height = double (image .size () .height ()) / double (image .density () .height ()) * inch <double>;
++	const auto width  = double (image .size () .width  ()) / double (image .density () .x  ()) * inch <double>;
++	const auto height = double (image .size () .height ()) / double (image .density () .y ()) * inch <double>;
+ 
+ 	std::string file = Glib::file_get_contents (os::find_data_file ("titania/goldengate/image.x3dv"));
+ 
