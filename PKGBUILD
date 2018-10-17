@@ -2,7 +2,7 @@
 # Contributor: Matt Spaulding <matt at mattops dot io>
 
 pkgname=ibm-plex-fonts
-pkgver=1.1.6
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="The package of IBM’s typeface, IBM Plex."
 arch=('any')
@@ -10,7 +10,7 @@ url='https://github.com/IBM/plex'
 license=('custom:OFL')
 depends=('fontconfig' 'xorg-font-utils')
 source=("$url/releases/download/v$pkgver/TrueType.zip")
-sha256sums=('ae870b742ec69d6a3423d7b70623863cda146d1b082d6d20b5cf7a140fbb210d')
+sha256sums=('73f6afefcf3d56d5c7f45d788b7c65c6986183e2efff1576f731b2a5e99df6de')
 
 package() {
     cd TrueType
