@@ -1,6 +1,6 @@
 pkgbase = ffmpeg-qsv-git
 	pkgdesc = Complete solution to record, convert and stream audio and video (with Intel Quick Sync Video hardware acceleration, git version)
-	pkgver = 4.1.r92189.g41ed2c3849
+	pkgver = 4.1.r92192.g57f312a34d
 	pkgrel = 1
 	url = http://www.ffmpeg.org/
 	arch = x86_64
@@ -72,8 +72,6 @@ pkgbase = ffmpeg-qsv-git
 	provides = ffmpeg-qsv
 	provides = ffmpeg-git
 	conflicts = ffmpeg
-	conflicts = ffmpeg-qsv
-	conflicts = ffmpeg-git
 	source = ffmpeg-qsv-git::git://source.ffmpeg.org/ffmpeg.git
 	sha256sums = SKIP
 

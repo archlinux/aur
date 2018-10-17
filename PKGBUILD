@@ -5,7 +5,7 @@
 # Contributor: DrZaius <lou at fakeoutdoorsman.com>
 
 pkgname=ffmpeg-qsv-git
-pkgver=4.1.r92189.g41ed2c3849
+pkgver=4.1.r92192.g57f312a34d
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (with Intel Quick Sync Video hardware acceleration, git version)'
 arch=('x86_64')
@@ -29,7 +29,7 @@ optdepends=('ladspa: LADSPA filters')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
           'libswscale.so' 'ffmpeg' 'ffmpeg-qsv' 'ffmpeg-git')
-conflicts=('ffmpeg' 'ffmpeg-qsv' 'ffmpeg-git')
+conflicts=('ffmpeg')
 source=("$pkgname"::'git://source.ffmpeg.org/ffmpeg.git')
 sha256sums=('SKIP')
 
