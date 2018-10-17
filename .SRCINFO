@@ -19,8 +19,8 @@ pkgbase = gnome-software-snap
 	makedepends = meson
 	makedepends = valgrind
 	makedepends = snapd-glib
-	source = git+https://gitlab.gnome.org/GNOME/gnome-software.git#commit=035e0f7459d5b0eaafd120b88f3b8b39bbb5ef2a
-	sha256sums = SKIP
+	source = gnome-software-3.30.2.tar.gz::https://gitlab.gnome.org/GNOME/gnome-software/-/archive/3.30.2/gnome-software-3.30.2.tar.gz
+	sha256sums = b709a4408da8225d982751f13c4e3ada2dfd453a4ccdd01f0da3040d4de3d542
 
 pkgname = gnome-software-snap
 	groups = gnome

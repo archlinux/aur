@@ -12,21 +12,17 @@ arch=(x86_64)
 license=(GPL2)
 makedepends=(appstream-glib gnome-desktop libpackagekit-glib flatpak fwupd ostree
              docbook-xsl git gobject-introspection gspell gtk-doc meson valgrind snapd-glib)
-_commit=035e0f7459d5b0eaafd120b88f3b8b39bbb5ef2a  # tags/3.30.2^0
-source=("git+https://gitlab.gnome.org/GNOME/gnome-software.git#commit=$_commit")
-sha256sums=('SKIP')
+source=("$_pkgbase-$pkgver.tar.gz::https://gitlab.gnome.org/GNOME/gnome-software/-/archive/$pkgver/gnome-software-$pkgver.tar.gz")
+sha256sums=('b709a4408da8225d982751f13c4e3ada2dfd453a4ccdd01f0da3040d4de3d542')
 
-pkgver() {
-  cd $_pkgbase
-  git describe --tags | sed 's/^GNOME_SOFTWARE_//;s/_/./g;s/-/+/g'
-}
+
 
 prepare() {
-  cd $_pkgbase
+  cd $_pkgbase-$pkgver
 }
 
 build() {
-  arch-meson $_pkgbase build \
+  arch-meson $_pkgbase-$pkgver build \
     -D ubuntuone=true \
     -D ubuntu_reviews=true \
     -D snap=true
