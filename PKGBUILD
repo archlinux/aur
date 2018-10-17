@@ -3,14 +3,14 @@
 pkgname=joxi-lib
 _pkgname=joxi
 pkgver=3.0.9
-pkgrel=5
+pkgrel=6
 pkgdesc="Free tool for screen capture"
 arch=('i686' 'x86_64')
 url="http://joxi.ru"
 license=('custom')
 depends=('qt5-declarative' 'qt5-x11extras' 'qt5-base' 'qt5-script' 'qt5-xmlpatterns' 'qt5-multimedia' 'qt5-quick1' 'libgl' 'libx11' 'libstdc++5' 'libxdamage' 'glib2' 'gtk2' 'libmcrypt' 'libcurl-compat' 'libappindicator-gtk2')
-replaces=('joxi-lib' 'joxi' 'joxi-bin' 'joxi-git')
-conflicts=('joxi' 'joxi-bin' 'joxi-git')
+replaces=('joxi-lib' 'joxi')
+conflicts=('joxi')
 
 
 if [ "${CARCH}" = 'x86_64' ]; then
@@ -34,13 +34,13 @@ source=("http://dl.${_pkgname}.ru/linux/${_pkgname}-net_${ARCH}-fr.rpm" "${_pkgn
 
 package(){
 
-	install -D -m755 "${srcdir}/${_pkgname}.sh" "${pkgdir}/usr/bin/joxi"
-	install -d "${pkgdir}/usr/lib/joxi"
-	install -D -m755 "${srcdir}/usr/bin/joxi" "${pkgdir}/usr/lib/joxi/joxi"
+	install -D -m755 "${srcdir}/${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
+	install -d "${pkgdir}/usr/lib/${_pkgname}"
+	install -D -m755 "${srcdir}/usr/bin/${_pkgname}" "${pkgdir}/usr/lib/${_pkgname}/${_pkgname}"
  
-	install -D -m644 "${srcdir}/etc/ld.so.conf.d/joxi.conf" "${pkgdir}/etc/ld.so.conf.d/joxi.conf"
-	install -D -m644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+	install -D -m644 "${srcdir}/etc/ld.so.conf.d/${_pkgname}.conf" "${pkgdir}/etc/ld.so.conf.d/${_pkgname}.conf"
+	install -D -m644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
    
-	install -D -m644 "${srcdir}/opt/joxi/icon_64.png" "${pkgdir}/usr/share/pixmaps/joxi.png"
-	install -D -m644 "${srcdir}/opt/joxi/icon_light.png" "${pkgdir}/usr/share/pixmaps/joxi_light.png"
+	install -D -m644 "${srcdir}/opt/${_pkgname}/icon_64.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+	install -D -m644 "${srcdir}/opt/${_pkgname}/icon_light.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}_light.png"
 }
