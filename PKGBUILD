@@ -1,6 +1,7 @@
 # Maintainer: Mitchell Renouf <mitchellarenouf@gmail.com>
 
 
+_pkgbase=gnome-software
 pkgbase=gnome-software-snap
 pkgname=(gnome-software-snap gnome-software-packagekit-plugin-snap)
 pkgver=3.30.2
@@ -16,12 +17,12 @@ source=("git+https://gitlab.gnome.org/GNOME/gnome-software.git#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $pkgbase
+  cd $_pkgbase
   git describe --tags | sed 's/^GNOME_SOFTWARE_//;s/_/./g;s/-/+/g'
 }
 
 prepare() {
-  cd $pkgbase
+  cd $_pkgbase
 }
 
 build() {
