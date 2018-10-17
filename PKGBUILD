@@ -1,7 +1,7 @@
-# Maintainer: Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=vmaf-git
-pkgver=1.3.7.r3.gad8ac94
+pkgver=1.3.9.r18.g03eb8a4
 pkgrel=1
 pkgdesc='Perceptual video quality assessment algorithm based on multi-method fusion (git version)'
 arch=('x86_64')
@@ -9,8 +9,8 @@ url='https://github.com/netflix/vmaf/'
 license=('APACHE')
 depends=('gcc-libs')
 makedepends=('git')
-provides=('vmaf' 'libvmaf' 'libvmaf-git')
-conflicts=('vmaf' 'libvmaf' 'libvmaf-git')
+provides=('vmaf')
+conflicts=('vmaf')
 replaces=('libvmaf-git')
 source=("$pkgname"::'git+https://github.com/Netflix/vmaf.git')
 sha256sums=('SKIP')
