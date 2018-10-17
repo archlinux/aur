@@ -15,7 +15,7 @@ pkgbase = uranium-beta
 	depends = arcus-beta
 	conflicts = uranium
 	conflicts = uranium-git
-	source = git+https://github.com/Ultimaker/Uranium#branch=3.5.1
+	source = git+https://github.com/Ultimaker/Uranium#branch=3.5
 	sha256sums = SKIP
 
 pkgname = uranium-beta

@@ -11,7 +11,7 @@ license=('AGPL')
 depends=('python' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'pyqt5-common' 'python-pyqt5' 'python-numpy' 'arcus-beta')
 makedepends=('cmake')
 conflicts=('uranium' 'uranium-git')
-source=("git+https://github.com/Ultimaker/Uranium#branch=${pkgver}")
+source=("git+https://github.com/Ultimaker/Uranium#branch=3.5")
 sha256sums=('SKIP')
 
 prepare() {
