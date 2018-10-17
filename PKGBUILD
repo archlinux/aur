@@ -8,7 +8,7 @@ pkgdesc="Cli application to generate OTP tokens for two-factor authentication."
 arch=(any)
 url="https://gitlab.com/hobarrera/totp-cli"
 license=('MIT')
-depends=("python-onetimepass" "pass")
+depends=("python-onetimepass" "pass" "python-setuptools")
 source=("https://pypi.io/packages/source/t/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 md5sums=('80eb432406835f4a0a71a29ebf99bc22')
 
