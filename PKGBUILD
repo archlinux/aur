@@ -1,7 +1,7 @@
-# Maintainer: Mikael Blomstrand <mbloms ÅT kth DÖT se>
+# Maintainer: Mikael Blomstrand <gmail: kmbloms>
 
 pkgname=abi-dumper
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Dump ABI of an ELF object containing DWARF debug info."
 arch=('i686' 'x86_64')
@@ -11,9 +11,9 @@ license=('LGPL')
 depends=(perl elfutils binutils vtable-dumper ctags)
 conflicts=('abi-compliance-checker<2.2')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/lvc/${pkgname}/archive/${pkgver}.tar.gz)
-md5sums=('b4540063202fe7bd1d4fee58b31a2b22')
-sha1sums=('46b3ebf9fbd42d48aa33bde1b5d84638b6893480')
-sha256sums=('ef63201368e0d76a29d2f7aed98c488f6fb71898126762d65baed1e762988083')
+md5sums=('e5ddc0ece3970ff0a34a984faac8e9f5')
+sha1sums=('c4bfbcf878877b80c12c18cc5998b9184514887a')
+sha256sums=('8a9858c91b4e9222c89b676d59422053ad560fa005a39443053568049bd4d27e')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
