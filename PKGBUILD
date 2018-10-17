@@ -7,7 +7,7 @@ pkgname=bbswitch-lts
 _basename=bbswitch
 pkgver=0.8
 _extramodules=extramodules-4.14-lts # Don't forget to update bbswitch-lts.install
-pkgrel=44
+pkgrel=45
 pkgdesc="Kernel module allowing to switch dedicated graphics card on Optimus laptops"
 arch=('x86_64')
 url="http://github.com/Bumblebee-Project/bbswitch"
@@ -25,7 +25,7 @@ build() {
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
+  cd ${_basename}-${pkgver}
   install -Dt "${pkgdir}/usr/lib/modules/${_extramodules}" -m644 *.ko
   find "${pkgdir}" -name '*.ko' -exec xz {} +
 }
