@@ -1,4 +1,4 @@
-# Maintainer : Simon Désaulniers <rostydela@gmail.com>
+# Maintainer : Simon Désaulniers <sim.desaulniers@gmail.com>
 pkgname='python2-lmgtfy'
 pkgver='0.1.2'
 pkgrel=1
