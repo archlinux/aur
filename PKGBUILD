@@ -1,6 +1,7 @@
-# Maintainer: wilga <wilga at cat3 dot de>
+# Maintainer: biosin <biosin at posteo - de>
+# Contributor: wilga <wilga at cat3 dot de>
 pkgname=bwsyncandshare
-pkgver=11.6.703
+pkgver=11.7.754
 pkgrel=1
 pkgdesc="file sync and share client"
 arch=('any')
@@ -18,11 +19,11 @@ source=("https://download.bwsyncandshare.kit.edu/clients/$_tarball"
         "$pkgname.patch")
 noextract=("$_tarball")
 
-sha256sums=('8c21f87f21817dee2e323af020ad93c5ee45547df4441168a113977d130d88fb'
+sha256sums=('b46de43359542b78bce8d7c29706bf323f2797981aba55e93eb26773635b5e0a'
             'ebe8be90d0364090744b80609cdc5a71e360fc7f3e3188b2a534c7c4921e6c50')
 
 prepare() {
-        tar xvzf $_tarball --exclude="bwSyncAndShare/jre"   # remove bundled Oracle jre
+    tar xvzf $_tarball --exclude=bwSyncAndShare/jre{32,64}   # remove bundled Oracle jre
 	cd "bwSyncAndShare"
 	patch -p1 -i "$srcdir/$pkgname.patch"
 }
