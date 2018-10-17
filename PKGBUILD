@@ -5,7 +5,7 @@ pkgname=('python-opcodes-git' 'python2-opcodes-git')
 _srcname=python-opcodes
 _srcname2=python2-opcodes
 pkgver=r179.6e2b0cd
-pkgrel=1
+pkgrel=2
 pkgdesc='Python3 module for instruction sets documentation in a format convenient for tools development (git version)'
 arch=('any')
 url='https://github.com/Maratyszcza/Opcodes/'
@@ -55,7 +55,6 @@ package_python-opcodes-git() {
     #cp -a "${srcdir}/${pkgbase}/build/sphinx/html/"* "${pkgdir}/usr/share/doc/${_srcname}"
     
     # license
-    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 license.rst "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
@@ -71,6 +70,5 @@ package_python2-opcodes-git() {
     cp -a "${srcdir}/${pkgbase}-py2/build/sphinx/html/"* "${pkgdir}/usr/share/doc/${_srcname2}"
     
     # license
-    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 license.rst "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
