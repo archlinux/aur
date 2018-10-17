@@ -1,18 +1,17 @@
-# Maintainer: James Harvey <jamespharvey20@gmail.com>
-# * No namcap warnings or errors
+# Maintainer: James P. Harvey <jamespharvey20 at gmail dot com>
 
 pkgname=libcelero
 _pkgname=Celero
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='C++ Benchmark Authoring Library/Framework'
-arch=('x86_64')
+arch=('x86_64' 'i686')
 url='https://github.com/DigitalInBlue/Celero'
 license=('custom:"Apache License, Version 2.0"')
 depends=('gcc-libs')
 makedepends=('cmake')
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/DigitalInBlue/${_pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('11c933c1b2f0f7254ceac868416c91a4')
+source=("https://github.com/DigitalInBlue/${_pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('5f8c7121f90856fc69669124697849ba262cef5a1876902fe65542e180945960')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
