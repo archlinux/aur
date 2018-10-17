@@ -1,0 +1,4 @@
+post_install() {
+	mkdir -p /var/lib/peertube
+    chown -R peertube:peertube /var/lib/peertube &>/dev/null
+}

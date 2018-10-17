@@ -1,0 +1,3 @@
+#!/bin/sh
+
+/usr/bin/node /usr/share/webapps/peertube/dist/server/tools/peertube.js
