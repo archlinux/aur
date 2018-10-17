@@ -4,11 +4,11 @@ pkgname=infinipath-psm
 _pkgname=psm
 pkgver=3.3
 _commit=604758e
-pkgrel=4
+pkgrel=5
 pkgdesc='OpenFabrics Alliance Intel Performance Scaled Messaging library'
 arch=('x86_64' 'i686')
 url='https://www.openfabrics.org/index.php/overview.html'
-license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
+license=('GPL2' 'custom:"OpenIB.org BSD"')
 depends=('glibc' 'libutil-linux')
 makedepends=('git')
 # Upstream is no longer releasing at "https://www.openfabrics.org/downloads/${pkgname}/${pkgname}-${pkgver}-${_pkgver_subver}_${_pkgver_commit}_open.tar.gz",
@@ -58,4 +58,5 @@ package() {
   fi
   
   install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  install -Dm644 README "${pkgdir}/usr/share/docs/${pkgname}/README"
 }
