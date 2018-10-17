@@ -1,24 +1,21 @@
-# Maintainer: James Harvey <jamespharvey20@gmail.com>
-#    * This package is configured to not use a database.
-#    * See package sysbench-git for the version configured to use a database.
-#    * No namcap warnings or errors
+# Maintainer: James P. Harvey <jamespharvey20 at gmail dot com>
 
 pkgname=sysbench-nodb-git
 _pkgname=sysbench
-pkgver=0.5.r212.0257f50
+pkgver=1.1.0.r1193.b04e5fd
 pkgrel=1
-pkgdesc='Multi-threaded benchmark for evaluating OS parameters for database-loads (git)'
+pkgdesc='Multi-threaded benchmark for evaluating OS parameters (without database tests) (git)'
 arch=('x86_64' 'i686')
 license=('GPL2')
 url='https://github.com/akopytov/sysbench'
-depends=('glibc')
+depends=('bash')
 makedepends=('git')
 source=('git+https://github.com/akopytov/sysbench')
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  echo $(cat sysbench/sb_win.h | grep "define PACKAGE_VERSION" | sed 's|^#define PACKAGE_VERSION "||' | sed 's|"$||').r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  echo $( cat configure.ac | grep AC_INIT | sed 's|.*sysbench],\[||; s|].*||' ).r$( git rev-list --count HEAD ).$( git rev-parse --short HEAD )
 }
 
 build() {
