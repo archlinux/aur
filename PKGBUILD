@@ -2,7 +2,7 @@
 
 pkgname=podman
 pkgver=0.10.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Utility for running OCI-based containers."
 arch=('x86_64')
 url="https://github.com/containers/libpod"
@@ -30,7 +30,7 @@ source=("https://github.com/containers/libpod/archive/v${pkgver}.tar.gz"
 sha256sums=('c456a6e5c89ae938607154a16ec07efeda5287351d2741b762c495e651189cf5'
             'bf720633c4c9906e93665813bbf13a73a6cb0df2b412d81228c7673505513d1f'
             'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
-            'cfa7dd2c35c8e9cba74a68810e1f377e448988ccb0a54b98232313967677326e'
+            'c883cff9c50b01d71ad96403a9e12cab934490fa02b0dce01a602e9c9f720db7'
             'cddfaa8e6a7e5497b67cc0dd8e8517058d0c97de91bf46fff867528415f2d946')
 
 prepare() {
