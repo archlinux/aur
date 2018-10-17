@@ -2,7 +2,7 @@
 pkgname=caffe-cuda-slim-git
 _srcname=caffe
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A slimmed-down build of Caffe based on caffe-opencl-git (CUDA version)"
 arch=('x86_64')
 url="http://caffe.berkeleyvision.org/"
@@ -48,7 +48,7 @@ prepare() {
     -DUSE_OPENCL=OFF \
     -DUSE_HSA=OFF \
     -DUSE_HIP=OFF \
-    -DFORCE_COMPILE_CU_AS_CPP=OFF \
+    -DFORCE_COMPILE_CU_AS_CPP=ON \
     -DDISABLE_DEVICE_HOST_UNIFIED_MEMORY=OFF \
     -DUSE_LIBDNN=OFF \
     -DUSE_CLBLAS=OFF \
