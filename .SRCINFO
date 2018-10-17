@@ -1,0 +1,36 @@
+pkgbase = discover-snap
+	pkgdesc = KDE and Plasma resources management GUI
+	pkgver = 5.14.1
+	pkgrel = 1
+	url = https://userbase.kde.org/Discover
+	arch = x86_64
+	groups = plasma
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = plasma-framework
+	makedepends = packagekit-qt5
+	makedepends = flatpak
+	makedepends = fwupd
+	depends = knewstuff
+	depends = kitemmodels
+	depends = qt5-graphicaleffects
+	depends = appstream-qt
+	depends = archlinux-appstream-data
+	depends = hicolor-icon-theme
+	depends = kirigami2
+	optdepends = packagekit-qt5: to manage packages from Arch Linux repositories
+	optdepends = flatpak: Flatpak packages support
+	optdepends = fwupd: firmware update support
+	provides = discover
+	conflicts = discover
+	source = https://download.kde.org/stable/plasma/5.14.1/discover-5.14.1.tar.xz
+	source = https://download.kde.org/stable/plasma/5.14.1/discover-5.14.1.tar.xz.sig
+	validpgpkeys = 2D1D5B0588357787DE9EE225EC94D18F7F05997E
+	validpgpkeys = 0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D
+	validpgpkeys = D07BD8662C56CB291B316EB2F5675605C74E02CF
+	validpgpkeys = 1FA881591C26B276D7A5518EEAAF29B42A678C20
+	sha256sums = 90482e69a4ff28450b2c6e1db834d839850efad3721d031c93983b134867be50
+	sha256sums = SKIP
+
+pkgname = discover-snap
+
