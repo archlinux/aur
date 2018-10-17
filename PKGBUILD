@@ -1,7 +1,7 @@
 # Maintainer: Albert Graef <aggraef at gmail.com>
 
 pkgname=faustlive-git
-pkgver=2.46.r808.2a7adef
+pkgver=2.46.r813.350f26e
 pkgrel=1
 epoch=1
 pkgdesc="A graphical frontend to the Faust compiler."
@@ -31,7 +31,8 @@ prepare() {
 
 build() {
   cd $srcdir/$pkgname
-  make arch=Linux PREFIX=/usr STATIC=0 NETJACK=1 qm=qmake-qt4
+  # netjack support is broken at present, disable it for now
+  make arch=Linux PREFIX=/usr STATIC=0 NETJACK=0 qm=qmake-qt4
 }
 
 package() {
