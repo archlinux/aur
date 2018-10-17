@@ -19,7 +19,7 @@ source=("http://download.oracle.com/otn-pub/java/jdk/${pkgver}-${_build}/${_hash
         "http://download.oracle.com/otn-pub/java/javafx/${_major}.0.${_minor}-b10/${_hash}/javafx-${pkgver}-apidocs.zip"
         'LICENSE-Documentation.txt'
         'LICENSE-Oracle-Legal-Notices.txt')
-md5sums=('522a2ccbca2e39d2dc36002df04a80a5'
+md5sums=('6ffc6a5ff3e01acae17b5b1e99059399'
          '43e7c48ceb1096d612413e94ef695b45'
          '4d54057ca75b691366977dab2277e869'
          '3137397f4dba13f4a79157819af583a3')
