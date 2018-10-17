@@ -1,6 +1,7 @@
 # Maintainer: Michael Polidori <michaelapolidori@gmail.com>
 # Python package author: Ethan Chan <metakirby5@gmail.com>
-pkgname=colorz
+
+pkgname=python-colorz
 pkgver=1.0.3
 pkgrel=1
 pkgdesc="A k-means color scheme generator."
