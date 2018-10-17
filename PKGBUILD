@@ -11,6 +11,7 @@ license=('GPL3')
 arch=(any)
 depends=('python' 'glyr')
 makedepends=('git' 'cython')
+conflicts=('python-glyr-git')
 source=("https://github.com/sahib/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=('fc6c1df7359055a013ca4575e10775be')
 

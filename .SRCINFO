@@ -9,6 +9,7 @@ pkgbase = python-glyr
 	makedepends = cython
 	depends = python
 	depends = glyr
+	conflicts = python-glyr-git
 	source = https://github.com/sahib/python-glyr/archive/1.0.6.tar.gz
 	md5sums = fc6c1df7359055a013ca4575e10775be
 
