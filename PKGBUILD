@@ -2,8 +2,8 @@
 
 
 pkgname=freecad-linkstage3-git
-pkgver=asm3.0.5.3.r1537.g234333df9
-pkgrel=4
+pkgver=asm3.0.5.3.r1561.gc9cf1b71c
+pkgrel=5
 pkgdesc='A general purpose 3D CAD modeler - LinkStage3 dev branch, git checkout'
 arch=('x86_64')
 url='http://www.freecadweb.org/'
@@ -71,7 +71,7 @@ source=(
 )
 sha256sums=(
   'SKIP'
-  'e6f374849dd96ac198c92ca33082ede99d35d516a1986b09fdbaaa9b4d663e2a'
+  '5075eecebc8c523fac521bcae35e0c31593cffcb9c8b731029bd685a9d5608ee'
 )
 
 
