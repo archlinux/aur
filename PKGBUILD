@@ -2,14 +2,12 @@
 # Contributor: John Jenkins <twodopeshaggy@gmail.com>
 
 pkgname=flif-git
-pkgver=0.3.r90.gaad2083
+pkgver=0.3.r92.gb16d347
 pkgrel=1
 pkgdesc='Free Lossless Image Format (git version)'
 arch=('i686' 'x86_64')
 url='https://github.com/FLIF-hub/FLIF/'
 license=('LGPL3' 'APACHE')
-provides=('flif')
-conflicts=('flif')
 depends=('gcc-libs' 'libpng' 'sdl2' 'gdk-pixbuf2' 'glib2')
 makedepends=('git')
 optdepends=(
@@ -18,6 +16,8 @@ optdepends=(
     # AUR:
         'apng-utils: for apng2flif tool'
 )
+provides=('flif')
+conflicts=('flif')
 source=("$pkgname"::'git+https://github.com/FLIF-hub/FLIF.git')
 sha256sums=('SKIP')
 
@@ -48,7 +48,7 @@ build() {
     
     for _target in all decoder viewflif pixbufloader
     do
-        msg2 "Building target '${_target}'..."
+        printf '%s\n' "  -> Building target '${_target}'..."
         make "$_target"
     done
     
@@ -61,7 +61,7 @@ package() {
     
     for _target in install{,-dev,-decoder,-viewflif,-pixbufloader}
     do
-        msg2 "Installing target '${_target}'..."
+        printf '%s\n' "  -> Installing target '${_target}'..."
         make PREFIX="${pkgdir}/usr" "$_target"
     done
     
