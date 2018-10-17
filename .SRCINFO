@@ -1,6 +1,6 @@
 pkgbase = arcus-beta
 	pkgdesc = Communication library between internal components for Ultimaker software
-	pkgver = 3.5
+	pkgver = 3.5.1
 	pkgrel = 1
 	url = https://github.com/Ultimaker/libArcus
 	arch = x86_64
