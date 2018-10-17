@@ -4,7 +4,7 @@ Documentation=https://www.wesnoth.org/wiki/ServerAdministration
 Documentation=man:wesnothd-1.10(6)
 After=network.target
 # They use by default the same port
-Conflicts=wesnothd.service wesnothd-1.8.service wesnothd-1.12.service wesnothd-1.14.service wesnothd-devel.service wesnothd-git.service
+Conflicts=wesnothd.service wesnothd-1.6.service wesnothd-1.8.service wesnothd-1.12.service wesnothd-1.14.service wesnothd-devel.service wesnothd-git.service
 
 [Service]
 ExecStart=/usr/bin/wesnothd-1.10 -t 2 -T 5
