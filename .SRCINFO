@@ -1,6 +1,6 @@
 pkgbase = ffmpeg-full-git
 	pkgdesc = Complete solution to record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)
-	pkgver = 4.1.r92189.g41ed2c3849
+	pkgver = 4.1.r92192.g57f312a34d
 	pkgrel = 1
 	url = http://www.ffmpeg.org/
 	arch = i686
@@ -115,8 +115,6 @@ pkgbase = ffmpeg-full-git
 	provides = libswresample.so
 	provides = libpostproc.so
 	conflicts = ffmpeg
-	conflicts = ffmpeg-full
-	conflicts = ffmpeg-git
 	source = ffmpeg-full-git::git://source.ffmpeg.org/ffmpeg.git
 	source = LICENSE
 	sha256sums = SKIP

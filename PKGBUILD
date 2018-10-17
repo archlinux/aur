@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=ffmpeg-full-git
-pkgver=4.1.r92189.g41ed2c3849
+pkgver=4.1.r92192.g57f312a34d
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('i686' 'x86_64')
@@ -44,7 +44,7 @@ makedepends_x86_64=(
 provides=('ffmpeg' 'ffmpeg-full' 'ffmpeg-git' 'libavutil.so' 'libavcodec.so'
           'libavformat.so' 'libavdevice.so' 'libavfilter.so' 'libavresample.so'
           'libswscale.so' 'libswresample.so' 'libpostproc.so')
-conflicts=('ffmpeg' 'ffmpeg-full' 'ffmpeg-git')
+conflicts=('ffmpeg')
 source=("$pkgname"::'git://source.ffmpeg.org/ffmpeg.git'
         'LICENSE')
 sha256sums=('SKIP'
