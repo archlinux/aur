@@ -1,4 +1,4 @@
-# Maintainer : Simon Désaulniers <rostydela@gmail.com>
+# Maintainer : Simon Désaulniers <sim.desaulniers@gmail.com>
 
 pkgname=pyclewn2
 pkgver=2.1
