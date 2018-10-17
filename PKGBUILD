@@ -39,23 +39,7 @@ _svnrev=264010
 _svnurl=svn://gcc.gnu.org/svn/gcc/branches/gcc-${_majorver}-branch
 _libdir=usr/lib/gcc/$CHOST/${pkgver%%+*}
 
-snapshot() {
-  svn export -r${_svnrev} ${_svnurl} gcc-r${_svnrev}
-
-  local datestamp basever _pkgver
-  basever=$(< gcc-r${_svnrev}/gcc/BASE-VER)
-  datestamp=$(< gcc-r${_svnrev}/gcc/DATESTAMP)
-  _pkgver=${basever}-${datestamp}
-
-  mv gcc-r${_svnrev} gcc-${_pkgver}
-  tar cf - gcc-${_pkgver} | xz > gcc-${_pkgver}.tar.xz
-  rm -rf gcc-${_pkgver}
-  gpg -b gcc-${_pkgver}.tar.xz
-  scp gcc-${_pkgver}.tar.xz{,.sig} sources.archlinux.org:/srv/ftp/other/gcc/
-
-  echo
-  echo "pkgver=${_pkgver/-/+}"
-}
+# snapshot() is only used by core's maintainers, so removing it here
 
 prepare() {
   [[ ! -d gcc ]] && ln -s gcc-${pkgver/+/-} gcc
