@@ -3,6 +3,7 @@ pkgbase = bitcoin-unlimited
 	pkgver = 1.4.0.0
 	pkgrel = 1
 	url = http://www.bitcoinunlimited.info
+	install = bitcoin-unlimited.install
 	arch = i686
 	arch = x86_64
 	arch = armv7h

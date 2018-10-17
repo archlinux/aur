@@ -1,0 +1,9 @@
+post_upgrade() {
+    if [[ "$2" < "1.1.0.0" ]]; then
+        echo
+        echo "NOTE: This version of Bitcoin Unlimited follows the Bitcoin Cash (BCH) chain!"
+        echo "See https://www.bitcoinunlimited.info/download for more information."
+        echo "If you wish to stay on BTC chain, please use a different client!"
+        echo
+    fi
+}
