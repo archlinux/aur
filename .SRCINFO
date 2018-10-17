@@ -8,7 +8,7 @@ pkgbase = paper-bin
 	depends = texlive-core
 	provides = paper
 	source = https://cloud.iostud.io/index.php/s/nXzbe5gPE8rxj8e/download?path=%2F&files=paper-linux-x64-0.0.2.tar.gz
-	md5sums = 807839095c0dae2f7dec6943af99ff0a
+	md5sums = 34cf699ee072104d049d86dc02f065ce
 
 pkgname = paper-bin
 

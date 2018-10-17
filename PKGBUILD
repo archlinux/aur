@@ -3,7 +3,7 @@
 # maintenance, tar files
 pkgver="0.0.2"
 pkgrel=1
-md5sums=("807839095c0dae2f7dec6943af99ff0a")
+md5sums=("34cf699ee072104d049d86dc02f065ce")
 
 # info
 pkgname="paper-bin"
