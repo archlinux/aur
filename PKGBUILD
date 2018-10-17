@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=arcus-beta
-pkgver=3.5
+pkgver=3.5.1
 pkgrel=1
 pkgdesc="Communication library between internal components for Ultimaker software"
 url="https://github.com/Ultimaker/libArcus"
