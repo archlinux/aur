@@ -1,7 +1,7 @@
 pkgbase = msg2
-	pkgdesc = Output a blue arrow and a white message
+	pkgdesc = Output a blue arrow and a bold message
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://roboticoverlords.org/msg2
 	arch = x86_64
 	license = GPL

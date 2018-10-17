@@ -2,8 +2,8 @@
 
 pkgname=msg2
 pkgver=1.2.0
-pkgrel=1
-pkgdesc='Output a blue arrow and a white message'
+pkgrel=2
+pkgdesc='Output a blue arrow and a bold message'
 arch=('x86_64')
 url='https://roboticoverlords.org/msg2'
 license=('GPL')
