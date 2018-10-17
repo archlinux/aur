@@ -2,13 +2,13 @@
 pkgname=caffe-cuda-slim-git
 _srcname=caffe
 pkgver=1.0
-pkgrel=7
+pkgrel=8
 pkgdesc="A slimmed-down build of Caffe based on caffe-opencl-git (CUDA version)"
 arch=('x86_64')
 url="http://caffe.berkeleyvision.org/"
 license=('BSD')
 depends=(
-        'boost-libs' 'protobuf' 'google-glog' 'gflags'
+        'boost-libs' 'protobuf' 'google-glog' 'gflags' 'hdf5'
         'python' 'boost' 'cython' 'python-numpy' 'python-scipy'
         'python-matplotlib' 'ipython' 'python-networkx' 'python-nose'
         'python-pandas' 'python-dateutil' 'python-protobuf' 'python-gflags'
@@ -19,7 +19,7 @@ makedepends=('cmake')
 provides=('caffe')
 conflicts=('caffe' 'caffe-git' 'caffe-cpu-git' 'caffe-dr-git' 'caffe-mnc-dr-git' 'caffe-cpu'
            'caffe2' 'caffe2-git' 'caffe2-cpu' 'caffe2-cpu-git' 'caffe-opencl-git'
-	   'caffe-opencl-slim-git')
+           'caffe-opencl-slim-git' 'caffe-intel-slim-git')
 source=("${_srcname}"::"git+https://github.com/andrew-wja/${_srcname}"
         'dependencies.patch')
 sha256sums=('SKIP'
