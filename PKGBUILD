@@ -13,7 +13,7 @@ depends=(
         'python-matplotlib' 'ipython' 'python-networkx' 'python-nose'
         'python-pandas' 'python-dateutil' 'python-protobuf' 'python-gflags'
         'python-yaml' 'python-pillow' 'python-six' 'opencl-driver' 'ocl-icd' 'opencl-headers'
-        'openblas-lapack' 'viennacl' 'opencv'
+        'openblas-lapack' 'opencv' 'viennacl'
 )
 makedepends=('cmake')
 provides=('caffe')
