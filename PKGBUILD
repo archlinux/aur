@@ -13,7 +13,7 @@ depends=('arcus-beta')
 # Package polyclipping in the repos
 checkdepends=('cppunit')
 makedepends=('cmake' 'git')
-source=("git+https://github.com/Ultimaker/curaengine#branch=${pkgver}")
+source=("git+https://github.com/Ultimaker/curaengine#branch=3.5")
 conflicts=('curaengine' 'curaengine-git')
 sha256sums=('SKIP')
 

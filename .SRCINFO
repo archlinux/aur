@@ -11,7 +11,7 @@ pkgbase = curaengine-beta
 	depends = arcus-beta
 	conflicts = curaengine
 	conflicts = curaengine-git
-	source = git+https://github.com/Ultimaker/curaengine#branch=3.5.1
+	source = git+https://github.com/Ultimaker/curaengine#branch=3.5
 	sha256sums = SKIP
 
 pkgname = curaengine-beta
