@@ -7,7 +7,6 @@ pkgbase = mingw-w64-lrs
 	license = GPL
 	makedepends = mingw-w64-gcc
 	depends = mingw-w64-gmp
-	depends = mingw-w64-resource
 	options = !buildflags
 	options = staticlibs
 	options = !strip
