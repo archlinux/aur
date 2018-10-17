@@ -7,7 +7,7 @@ pkgdesc="Softmaker Office 2018, proprietary office suite; word processing, sprea
 url="http://softmaker.com"
 arch=('x86_64' 'i686')
 license=('custom')
-depends=('hicolor-icon-theme' 'shared-mime-info' 'libxmu' 'libidn-133-compat' 'libgl' 'libxrandr' 'libxrender'
+depends=('hicolor-icon-theme' 'shared-mime-info' 'libxmu' 'libidn11' 'libgl' 'libxrandr' 'libxrender'
          'libx11' 'libxext' 'libxmu' 'curl' 'desktop-file-utils')
 source=('planmaker-2018.desktop'
         'presentations-2018.desktop'
