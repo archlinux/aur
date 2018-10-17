@@ -1,10 +1,10 @@
-# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
 # Contributor: Drew Noel <drewmnoel@gmail.com>
 # Contributor: Jonathan Yantis
 
 pkgname=caffe-git
 pkgver=1.0.r132.g99bd99795
-pkgrel=1
+pkgrel=2
 pkgdesc='A deep learning framework made with expression, speed, and modularity in mind (cpu only, git version)'
 arch=('i686' 'x86_64')
 url='http://caffe.berkeleyvision.org/'
@@ -24,9 +24,8 @@ depends=(
     # https://github.com/BVLC/caffe/blob/99bd99795dcdf0b1d3086a8d67ab1782a8a08383/python/caffe/draw.py#L7-L22
 )
 makedepends=('git' 'boost' 'doxygen' 'texlive-core')
-provides=('caffe' 'caffe-cpu' 'caffe-cpu-git')
-conflicts=('caffe' 'caffe-cuda' 'caffe-cuda-git' 'caffe-cpu' 'caffe-cpu-git'
-           'caffe2' 'caffe2-cuda')
+provides=('caffe')
+conflicts=('caffe')
 replaces=('caffe-cpu-git')
 source=("$pkgname"::'git+https://github.com/BVLC/caffe.git'
         'Makefile.config')
@@ -75,50 +74,39 @@ pkgver() {
 build() {
     cd "$pkgname"
     
-    msg2 "Building target 'all'..."
-    make all
-    
-    msg2 "Building target 'pycaffe'..."
-    make pycaffe
-    
-    msg2 "Building target 'docs'..."
+    make all pycaffe
     rm -rf doxygen
-    make docs
-    
-    msg2 "Building target 'distribute'..."
-    make distribute
+    make docs distribute
 }
 
 # uncomment this block if you want to run the checks/tests
 #check() {
 #    cd "$pkgname"
-#    msg2 "Building target 'test'..."
 #    make test
-#    msg2 "Making target 'runtest'..."
 #    make runtest
 #}
 
 package() {
+    cd "${pkgname}/distribute"
+    
     local _pythonver
     _pythonver="$(python --version | awk '{ print $2 }' | grep -o '^[0-9]*\.[0-9]*')"
     
     mkdir -p "$pkgdir"/usr/{bin,include,lib/python"$_pythonver"/site-packages,share/doc}
     
-    cd "${pkgname}/distribute"
-    
     # binaries
     install -m755 bin/* "${pkgdir}/usr/bin"
     
     # library
-    cp -af lib/libcaffe.so* "${pkgdir}/usr/lib"
+    cp -a lib/libcaffe.so* "${pkgdir}/usr/lib"
     chmod 755 "${pkgdir}/usr/lib"/libcaffe.so.*.*.*
     
     # headers
-    cp -af include "${pkgdir}/usr"
+    cp -a include "${pkgdir}/usr"
     
     # python
     install -m755 python/*.py "${pkgdir}/usr/bin"
-    cp -af python/caffe "${pkgdir}/usr/lib/python${_pythonver}/site-packages"
+    cp -a python/caffe "${pkgdir}/usr/lib/python${_pythonver}/site-packages"
     
     # proto
     install -D -m644 proto/caffe.proto -t "${pkgdir}/usr/share/caffe"
@@ -126,7 +114,7 @@ package() {
     cd "${srcdir}/${pkgname}"
     
     # docs
-    cp -af doxygen/html "${pkgdir}/usr/share/doc/${pkgname}"
+    cp -a doxygen/html "${pkgdir}/usr/share/doc/${pkgname}"
     
     # license
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
