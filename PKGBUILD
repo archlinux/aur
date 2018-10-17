@@ -8,7 +8,7 @@ _minor=192
 _build=b12
 _hash=750e1c8617c5452694857ad95c3ee230
 pkgver=${_major}u${_minor}
-pkgrel=1
+pkgrel=2
 pkgdesc="Documentation for Oracle Java $_major Development Kit"
 arch=('any')
 url="http://www.oracle.com/technetwork/java/javase/downloads/index.html"
@@ -16,11 +16,11 @@ license=('custom:Oracle')
 depends=("java-environment>=$_major")
 options=('!strip')
 source=("http://download.oracle.com/otn-pub/java/jdk/${pkgver}-${_build}/${_hash}/jdk-${pkgver}-docs-all.zip"
-        "http://download.oracle.com/otn-pub/java/javafx/${_major}.0.${_minor}-b12/${_hash}/javafx-${pkgver}-apidocs.zip"
+        "http://download.oracle.com/otn-pub/java/javafx/${_major}.0.${_minor}-b10/${_hash}/javafx-${pkgver}-apidocs.zip"
         'LICENSE-Documentation.txt'
         'LICENSE-Oracle-Legal-Notices.txt')
 md5sums=('522a2ccbca2e39d2dc36002df04a80a5'
-         '53c7f001e13660423443622aa40716af'
+         '43e7c48ceb1096d612413e94ef695b45'
          '4d54057ca75b691366977dab2277e869'
          '3137397f4dba13f4a79157819af583a3')
 
