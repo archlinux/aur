@@ -41,7 +41,7 @@ _neovim="$NEOVIM_YOUCOMPLETEME"
 #                                    Default PKGBUILD Configuration                                       #
 #=========================================================================================================#
 pkgname=vim-youcompleteme-git
-pkgver=r2409.a98bc726
+pkgver=r2416.f67e5ff2
 pkgver() {
 	cd "YouCompleteMe" || exit
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -207,6 +207,7 @@ build() {
 	msg2 'Building ycmd...' # BuildYcmdLibs()
 	mkdir -p "$srcdir/ycmd_build"
 	cd "$srcdir/ycmd_build" || exit
+	sed -e 's/option( USE_PYTHON2\(.*\)ON/option( USE_PYTHON2\1OFF/g' -i "$srcdir/YouCompleteMe/third_party/ycmd/cpp/CMakeLists.txt"
 	cmake -G "Unix Makefiles" -DUSE_SYSTEM_LIBCLANG="$_use_system_clang" . "$srcdir/YouCompleteMe/third_party/ycmd/cpp"
 	make ycm_core
 
@@ -240,7 +241,7 @@ build() {
 	if [[ "$_tern" == "y" ]]; then
 		msg2 'Building Tern completer...' # SetUpTern()
 		cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/tern_runtime" || exit
-		npm install --production --python=python2
+		npm install --production --python=python3
 	else
 		msg2 'Skipping Tern completer...'
 	fi
