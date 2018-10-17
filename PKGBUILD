@@ -1,7 +1,7 @@
 # Maintainer: Johannes Wienke <languitar@semipol.de>
 
 pkgname=drawio-batch
-pkgver=8.8.0
+pkgver=9.2.6
 pkgrel=1
 pkgdesc="Command line converter for draw.io diagrams"
 arch=(any)
@@ -9,7 +9,7 @@ url="https://github.com/languitar/drawio-batch"
 license=('APACHE')
 makedepends=('git' 'npm')
 source=("https://github.com/languitar/drawio-batch/archive/${pkgver}.tar.gz")
-md5sums=('c5cf597ae54c779b0ee5182aaca94892')
+md5sums=('950569a8dace040be2aaeabe8b6fc41b')
 options=('!strip')
 
 package() {
