@@ -15,12 +15,12 @@ provides=($_pkgname)
 depends=(qt5-base qt5-svg kcoreaddons kdoctools kparts kio kwidgetsaddons kiconthemes graphviz)
 makedepends=(cmake extra-cmake-modules boost docbook-xsl)
 source=('git://anongit.kde.org/kgraphviewer')
-md5sums=(SKIP)
+md5sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
   ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
