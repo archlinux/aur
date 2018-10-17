@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=mupen64plus-extraplugins-git
-pkgver=20180212.161510
+pkgver=20180827.053244
 pkgrel=1
 pkgdesc='Additional plugins for Mupen64Plus (git version)'
 arch=('i686' 'x86_64')
@@ -24,8 +24,9 @@ sha256sums=('SKIP'
 _m64p_plugins='rsp-z64 rsp-cxd4 video-arachnoid video-z64 video-glide64'
 
 pkgver() {
-    local _date=''
-    local _latest_date=''
+    local _date
+    local _latest_date
+    local _plugin
     
     for _plugin in $_m64p_plugins
     do
@@ -40,15 +41,19 @@ pkgver() {
 }
 
 build() {
+    local _plugin
+    
     for _plugin in $_m64p_plugins
     do
-        msg2 "Building plugin '${_plugin}'..."
+        printf '%s\n' "  -> Building plugin '${_plugin}'..."
         make -C "mupen64plus-${_plugin}/projects/unix" clean $@
         make -C "mupen64plus-${_plugin}/projects/unix" all $@
     done
 }
 
 package() {
+    local _plugin
+    
     for _plugin in $_m64p_plugins
     do
         printf '%s\n' "************************************ Installing ${_plugin} plugin"
