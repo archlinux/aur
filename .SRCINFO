@@ -9,27 +9,14 @@ pkgbase = onedriveclient-git
 	depends = inotify-tools
 	depends = python-arrow=0.12.1
 	depends = python-asn1crypto=0.24.0
-	depends = python-bidict=0.13.1
-	depends = python-certifi=2018.1.18
 	depends = python-cffi=1.11.5
 	depends = python-chardet=3.0.4
-	depends = python-click=6.7
 	depends = python-colorama=0.3.9
-	depends = python-cryptography=2.1.4
 	depends = python-daemonocle=1.0.1
-	depends = python-idna=2.6
-	depends = python-inotify-simple=1.1.7
-	depends = python-keyring=11.0.0
-	depends = python-psutil=5.4.3
-	depends = python-pycparser=2.18
-	depends = python-dateutils=2.7.0
 	depends = python-yaml=3.13
-	depends = python-secretstorage=2.3.1
 	depends = python-send2trash=1.5.0
 	depends = python-six=1.11.0
 	depends = python-tabulate=0.8.2
-	depends = python-urllib3=1.22
-	depends = python-zgitignore=0.8.0
 	provides = onedrived
 	source = git+https://github.com/derrix060/onedriveClient
 	source = onedriveClient.service
