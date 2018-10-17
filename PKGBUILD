@@ -3,7 +3,7 @@
 
 pkgname=uranium-beta
 pkgver=3.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python framework for building Desktop applications."
 url="https://github.com/Ultimaker/Uranium"
 arch=('any')
