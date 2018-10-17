@@ -1,4 +1,4 @@
-# Maintainer: Simon Désaulniers <rostydela@gmail.com>
+# Maintainer: Simon Désaulniers <sim.desaulniers@gmail.com>
 _gemname=showterm
 pkgname=$_gemname
 pkgver=0.5.0
