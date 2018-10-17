@@ -2,7 +2,7 @@
 pkgname=caffe-slim-git
 _srcname=caffe
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A slimmed-down build of Caffe based on caffe-opencl-git"
 arch=('x86_64')
 url="http://caffe.berkeleyvision.org/"
@@ -36,7 +36,7 @@ prepare() {
     mkdir -p build
     cd build
     CMAKE_PARALLEL_LEVEL=`grep processor /proc/cpuinfo | wc -l` cmake \
-    -DCPU_ONLY \
+    -DCPU_ONLY=ON \
     -DUSE_INDEX_64=OFF \
     -DUSE_HALF=OFF \
     -DUSE_SINGLE=ON \
