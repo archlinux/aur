@@ -1,6 +1,6 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=rdpsign
-pkgver=r7.g89cd08646ea5
+pkgver=r7.g89cd086
 pkgrel=1
 pkgdesc="Remote Desktop Protocol (.rdp) file signing"
 arch=(any)
