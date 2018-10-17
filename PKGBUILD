@@ -2,7 +2,7 @@
 pkgname=caffe-cudnn-slim-git
 _srcname=caffe
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A slimmed-down build of Caffe based on caffe-opencl-git (CUDNN version)"
 arch=('x86_64')
 url="http://caffe.berkeleyvision.org/"
@@ -45,7 +45,7 @@ prepare() {
     -DUSE_INT_QUANT_16=OFF \
     -DUSE_INT_QUANT_32=OFF \
     -DUSE_INT_QUANT_64=OFF \
-    -DUSE_CUDA=ON \
+    -DUSE_CUDA=OFF \
     -DUSE_OPENCL=OFF \
     -DUSE_HSA=OFF \
     -DUSE_HIP=OFF \
