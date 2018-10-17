@@ -20,8 +20,8 @@ source=("$url/download/${_pkgname}-${pkgver}.tar.xz"{,.sig}
         qemu-ga.service
         65-kvm.rules
         allow_elf64.patch
-        cpu-pinning.patch
-        pa-fixes.patch
+        cpu-pinning.patch::https://github.com/saveriomiroddi/qemu-pinning/commit/4bdb6d0e930f6dd8473d6833a0811169f43a9f0b.patch
+        pa-fixes.patch::https://gist.github.com/Vaporeon/c879636f9147bd696fb888321ffd5655/raw/57fe4b41a84d46b908fcb9d8e9756e27f3b75940/pa-fixes.patch
         fix_virtio.patch::https://github.com/qemu/qemu/commit/db812c4073c77c8a64db8d6663b3416a587c7b4a.patch
         pcie-nasty.patch::https://gist.githubusercontent.com/gnif/e4c001b608347b0b86118a2647103378/raw/dd18eb6fe60f33c0609c7122d0635b666d7018b8/qemu-pcie-nasty.patch)
 sha256sums=('8d7af64fe8bd5ea5c3bdf17131a8b858491bcce1ee3839425a6d91fb821b5713'
@@ -29,7 +29,7 @@ sha256sums=('8d7af64fe8bd5ea5c3bdf17131a8b858491bcce1ee3839425a6d91fb821b5713'
             'c39bcde4a09165e64419fd2033b3532378bba84d509d39e2d51694d44c1f8d88'
             'a66f0e791b16b03b91049aac61a25950d93e962e1b2ba64a38c6ad7f609b532c'
             '59751f1ed26ea61b2a37ebee4be6979e584a450b611282138a0893aa9173e2e4'
-            '5c6baf8d171a75c342ffcc5c4259570b3d8d4f34166d7bc1f694ecf571662f2d'
+            '0769c55299606e897b16179ebf7bfd7dfb72a836d2a8bcebdccd8586f99d3166'
             '0fd49e734ee141b90d7d41d534f5635c175734a454e61c1c7e31b9fec3e19508'
             '9d176af4506f16f2798e772151fa8595620a770510241b688980fc7f0c6970b3'
             '90b8e3965797d5239a73d3720348f18e81c30b548c98a800c6ea4ee121c34a3b')
