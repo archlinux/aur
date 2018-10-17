@@ -1,4 +1,4 @@
-# Maintainer: Simon Désaulniers <rostydela@gmail.com>
+# Maintainer: Simon Désaulniers <sim.desaulniers@gmail.com>
 pkgname='dpaste'
 pkgver=0.3.3
 epoch=1
