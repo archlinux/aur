@@ -2,10 +2,11 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Antonio Rojas
+# Contributor: Lev Lybin <lev.lybin@gmail.com>
 
 _pkgname=powerdevil
 pkgname=powerdevil-light
-pkgver=5.14.0
+pkgver=5.14.1
 pkgrel=1
 pkgdesc="Manages the power consumption settings of a Plasma Shell. Light version without NetworkManager and Bluez support/dependencies."
 arch=('i686' 'x86_64')
@@ -16,7 +17,7 @@ makedepends=('extra-cmake-modules' 'kdoctools' 'python' 'kdesignerplugin')
 conflicts=('powerdevil')
 provides=('powerdevil')
 source=("https://download.kde.org/stable/plasma/${pkgver}/${_pkgname}-${pkgver}.tar.xz"{,.sig})
-sha256sums=('59323e62f6408b932ffbd94940f3911461e0e63459f4e68901aae03bd891f014' 'SKIP')
+sha256sums=('acd9926af9820fa5e8bd797a75e4701c1ea7f8ae9c623eee89e005b322e91b3a' 'SKIP')
 validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E'  # Jonathan Riddell
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
               'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson
