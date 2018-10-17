@@ -1,7 +1,7 @@
 pkgbase = flite1-patched
 	pkgdesc = A lighweight speech synthesis engine (version 1, patched with fixes and improvements)
 	pkgver = 1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.speech.cs.cmu.edu/flite/
 	arch = i686
 	arch = x86_64
@@ -9,10 +9,8 @@ pkgbase = flite1-patched
 	makedepends = texlive-core
 	makedepends = texinfo
 	makedepends = ed
-	provides = flite1
+	provides = flite=1.4
 	conflicts = flite
-	conflicts = flite1
-	conflicts = flite-fpic
 	source = http://www.festvox.org/flite/packed/flite-1.4/flite-1.4-release.tar.bz2
 	source = flite-1.4-audio-interface.patch
 	source = flite-1.4-fix-parallel-builds.patch

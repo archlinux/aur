@@ -15,14 +15,14 @@
 _srcname=flite
 pkgname=flite1-patched
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A lighweight speech synthesis engine (version 1, patched with fixes and improvements)'
 arch=('i686' 'x86_64')
 url='http://www.speech.cs.cmu.edu/flite/'
 license=('custom')
 makedepends=('texlive-core' 'texinfo' 'ed')
-provides=('flite1')
-conflicts=('flite' 'flite1' 'flite-fpic')
+provides=("flite=${pkgver}")
+conflicts=('flite')
 source=("http://www.festvox.org/flite/packed/${_srcname}-${pkgver}/${_srcname}-${pkgver}-release.tar.bz2"
         'flite-1.4-audio-interface.patch'
         'flite-1.4-fix-parallel-builds.patch'
@@ -69,7 +69,7 @@ build() {
         
     make
     
-    msg2 'Building documentation...'
+    printf '%s\n' '  -> Building documentation...'
     cd   doc
     make doc
 }
