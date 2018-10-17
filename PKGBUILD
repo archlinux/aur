@@ -1,10 +1,10 @@
-# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
 # Contributor: John Jenkins <twodopeshaggy@gmail.com>
 
 pkgname=flif
 _srcname=FLIF
 pkgver=0.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Free Lossless Image Format'
 arch=('i686' 'x86_64')
 url='https://github.com/FLIF-hub/FLIF/'
@@ -35,24 +35,12 @@ prepare() {
 build() {
     cd "${_srcname}-${pkgver}/src"
     
-    local _target
-    
-    for _target in all decoder viewflif
-    do
-        printf '%s\n' "  -> Building target '${_target}'..."
-        make "$_target"
-    done
+    make all decoder viewflif
     
 }
 
 package() {
     cd "${_srcname}-${pkgver}/src"
     
-    local _target
-    
-    for _target in install{,-dev,-decoder,-viewflif}
-    do
-        printf '%s\n' "  -> Installing target '${_target}'..."
-        make PREFIX="${pkgdir}/usr" "$_target"
-    done
+    make PREFIX="${pkgdir}/usr" install{,-dev,-decoder,-viewflif}
 }

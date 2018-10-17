@@ -1,7 +1,7 @@
 pkgbase = flif
 	pkgdesc = Free Lossless Image Format
 	pkgver = 0.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/FLIF-hub/FLIF/
 	arch = i686
 	arch = x86_64
