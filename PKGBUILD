@@ -1,4 +1,4 @@
-# Maintainer: Mikael Blomstrand <mbloms@kth.se>
+# Maintainer: Mikael Blomstrand <mbloms ÅT kth DÖT se>
 
 pkgname=abi-dumper
 pkgver=1.1
