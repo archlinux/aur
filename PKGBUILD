@@ -14,7 +14,7 @@ pkgver=8.2.1+20180831
 _majorver=${pkgver:0:1}
 _islver=0.19
 pkgrel=1
-pkgdesc='The GNU Compiler Collection'
+pkgdesc='The GNU Compiler Collection (git version)'
 arch=(x86_64)
 license=(GPL LGPL FDL custom)
 url='http://gcc.gnu.org'
@@ -114,7 +114,7 @@ check() {
 }
 
 package_gcc-libs-git() {
-  pkgdesc='Runtime libraries shipped by GCC'
+  pkgdesc='Runtime libraries shipped by GCC (git version)'
   groups=(base)
   depends=('glibc>=2.27')
   options+=(!strip)
@@ -158,7 +158,7 @@ package_gcc-libs-git() {
 }
 
 package_gcc-git() {
-  pkgdesc="The GNU Compiler Collection - C and C++ frontends"
+  pkgdesc="The GNU Compiler Collection - C and C++ frontends (git version)"
   depends=("gcc-libs=$pkgver-$pkgrel" 'binutils>=2.28' libmpc)
   groups=('base-devel')
   optdepends=('lib32-gcc-libs: for generating code for 32-bit ABI')
@@ -248,7 +248,7 @@ package_gcc-git() {
 }
 
 package_gcc-fortran-git() {
-  pkgdesc='Fortran front-end for GCC'
+  pkgdesc='Fortran front-end for GCC (git version)'
   depends=("gcc=$pkgver-$pkgrel")
   provides=(gcc-fortran-multilib)
   replaces=(gcc-fortran-multilib)
@@ -271,7 +271,7 @@ package_gcc-fortran-git() {
 }
 
 package_gcc-objc-git() {
-  pkgdesc='Objective-C front-end for GCC'
+  pkgdesc='Objective-C front-end for GCC (git version)'
   depends=("gcc=$pkgver-$pkgrel")
   provides=(gcc-objc-multilib)
   replaces=(gcc-objc-multilib)
@@ -288,7 +288,7 @@ package_gcc-objc-git() {
 }
 
 package_gcc-ada-git() {
-  pkgdesc='Ada front-end for GCC (GNAT)'
+  pkgdesc='Ada front-end for GCC (GNAT) (git version)'
   depends=("gcc=$pkgver-$pkgrel")
   provides=(gcc-ada-multilib)
   replaces=(gcc-ada-multilib)
@@ -323,7 +323,7 @@ package_gcc-ada-git() {
 }
 
 package_gcc-go-git() {
-  pkgdesc='Go front-end for GCC'
+  pkgdesc='Go front-end for GCC (git version)'
   depends=("gcc=$pkgver-$pkgrel")
   provides=("go=1.10.1" gcc-go-multilib)
   replaces=(gcc-go-multilib)
@@ -345,7 +345,7 @@ package_gcc-go-git() {
 }
 
 package_lib32-gcc-libs-git() {
-  pkgdesc='32-bit runtime libraries shipped by GCC'
+  pkgdesc='32-bit runtime libraries shipped by GCC (git version)'
   depends=('lib32-glibc>=2.27')
   provides=(libgo.so libgfortran.so libubsan.so libasan.so)
   groups=(multilib-devel)
