@@ -1,7 +1,7 @@
 # Maintainer: Eli Schwartz <eschwartz@archlinux.org>
 
 pkgname=sx
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 pkgdesc="Simple alternative to startx(1) for starting an Xorg server."
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/Earnestly/sx"
 license=('MIT')
 depends=('xorg-server' 'xorg-xauth')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('c525c8f3605399705b13ca73db37b724b0dc91307486a0a74dd3be7ba14b5f8f')
+sha256sums=('55a713f4f026c3844eb0a1079d373051259271929c7766416d11bc537dea3c77')
 
 package() {
     cd "${srcdir}"/${pkgname}-${pkgver}
