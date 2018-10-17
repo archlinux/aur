@@ -1,7 +1,7 @@
 pkgbase = python-lmdb
 	pkgdesc = Universal Python3 binding for the LMDB Lightning Database
 	pkgver = 0.94
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dw/py-lmdb/
 	arch = i686
 	arch = x86_64
