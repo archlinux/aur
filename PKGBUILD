@@ -1,10 +1,10 @@
-# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
 
 pkgbase=python-ninja-syntax
 pkgname=('python-ninja-syntax' 'python2-ninja-syntax')
 pkgver=1.7.2
-pkgrel=2
-_commondesc='module for generating .ninja files'
+pkgrel=3
+pkgdesc='Python3 module for generating .ninja files'
 arch=('any')
 url='https://pypi.python.org/pypi/ninja_syntax/'
 license=('APACHE')
@@ -27,7 +27,6 @@ build() {
 }
 
 package_python-ninja-syntax() {
-    pkgdesc="Python3 ${_commondesc}"
     depends=('python')
     
     cd "ninja_syntax-${pkgver}"
@@ -35,7 +34,7 @@ package_python-ninja-syntax() {
 }
 
 package_python2-ninja-syntax() {
-    pkgdesc="Python2 ${_commondesc}"
+    pkgdesc='Python2 module for generating .ninja files'
     depends=('python2')
     
     cd "ninja_syntax-${pkgver}-py2"
