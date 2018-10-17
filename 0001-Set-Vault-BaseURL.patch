@@ -1,7 +1,7 @@
 --- a/src/app/services/services.module.ts
 +++ b/src/app/services/services.module.ts
-@@ -120,20 +120,17 @@ const exportService = new ExportService(folderService, cipherService, apiService
- const importService = new ImportService(cipherService, folderService, apiService, i18nService, collectionService);
+@@ -120,20 +120,16 @@ const notificationsService = new NotificationsService(userService, syncService,
+ const environmentService = new EnvironmentService(apiService, storageService, notificationsService);
  const auditService = new AuditService(cryptoFunctionService, apiService);
  
 -const analytics = new Analytics(window, () => platformUtilsService.isDev() || platformUtilsService.isSelfHost(),
@@ -22,7 +22,6 @@
 +        const isDev = false;
 +        environmentService.baseUrl = window.location.origin;
 +        environmentService.notificationsUrl = window.location.origin + '/notifications';
-+
-         await apiService.setUrls({
+         apiService.setUrls({
              base: isDev ? null : window.location.origin,
              api: isDev ? 'http://localhost:4000' : null,
