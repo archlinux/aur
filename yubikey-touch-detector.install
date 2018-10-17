@@ -1,30 +1,27 @@
 post_install() {
-  echo ">>"
-  echo ">> The package contains a systemd service for the app."
-  echo ">> Make sure to start and enable it:"
-  echo ">> $ systemctl --user daemon-reload"
-  echo ">> $ systemctl --user start yubikey-touch-detector.service"
-  echo ">> $ systemctl --user enable yubikey-touch-detector.service"
-  echo ">>"
-  echo ">> If you use U2F, you must use a patched pam-u2f for the app to work."
-  echo ">> I suggest to use AUR/pam_u2f-git, but change the source to:"
-  echo ">> https://github.com/maximbaz/pam_u2f"
-  echo ">>"
+    echo
+    echo "  The package contains a systemd service for the app, make sure to enable it now:"
+    echo
+    echo "    systemctl --user daemon-reload"
+    echo "    systemctl --user enable --now yubikey-touch-detector.service"
+    echo
 }
 
 post_upgrade() {
-  echo ">>"
-  echo ">> Make sure to reload the systemd service if you use it:"
-  echo ">> $ systemctl --user daemon-reload"
-  echo ">> $ systemctl --user restart yubikey-touch-detector.service"
-  echo ">>"
+    echo
+    echo "  Make sure to reload the systemd service if you use it:"
+    echo
+    echo "    systemctl --user daemon-reload"
+    echo "    systemctl --user restart yubikey-touch-detector.service"
+    echo
 }
 
 post_remove() {
-  echo ">>"
-  echo ">> Make sure to remove the systemd service if you used it:"
-  echo ">> $ systemctl --user daemon-reload"
-  echo ">> $ systemctl --user disable yubikey-touch-detector.service"
-  echo ">> $ systemctl --user stop yubikey-touch-detector.service"
-  echo ">>"
+    echo
+    echo "  Make sure to remove the systemd service if you used it:"
+    echo
+    echo "    systemctl --user daemon-reload"
+    echo "    systemctl --user disable yubikey-touch-detector.service"
+    echo "    systemctl --user stop yubikey-touch-detector.service"
+    echo
 }
