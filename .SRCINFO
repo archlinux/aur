@@ -1,6 +1,6 @@
 pkgbase = binutils-git
 	pkgdesc = A set of programs to assemble and manipulate binary and object files (git master developmental version)
-	pkgver = 2.31.r95777.8bca297856
+	pkgver = 2.31.r95795.4de5434b69
 	pkgrel = 1
 	url = http://www.gnu.org/software/binutils/
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = binutils-git
 	options = !distcc
 	options = !ccache
 	source = git+https://sourceware.org/git/binutils-gdb.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = binutils-git
 
