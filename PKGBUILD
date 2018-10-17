@@ -1,7 +1,7 @@
 # Maintainer: Mr. Outis <mroutis@protonmail.com>
 pkgname=dvc
-pkgver=0.19.11
-pkgrel=2
+pkgver=0.19.12
+pkgrel=1
 pkgdesc="Open-source version control system for data science projects"
 arch=('any')
 url="https://github.com/iterative/${pkgname}"
