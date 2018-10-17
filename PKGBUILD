@@ -4,7 +4,7 @@
 pkgbase=mariadb-mainline-noconflict
 _pkgbase=mariadb
 pkgname=('mariadb-mainline-noconflict' 'libmariadbclient-mainline-noconflict' 'mariadb-clients-mainline-noconflict' 'mytop-mainline-noconflict')
-pkgver=10.3.9
+pkgver=10.3.10
 pkgrel=1
 pkgdesk="MariaDB mainline version with libmysqlclient.so.18 (mariadb 10.1 compatible)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ url='http://mariadb.org/'
 makedepends=('cmake' 'zlib' 'libaio' 'libxml2' 'openssl' 'jemalloc' 'lz4' 'boost' 'libevent' 'systemd' 'coreutils')
 validpgpkeys=('199369E5404BD5FC7D2FE43BCBCB082A1BB943DB') # MariaDB Package Signing Key <package-signing-key@mariadb.org>
 source=("https://ftp.heanet.ie/mirrors/mariadb/mariadb-$pkgver/source/mariadb-$pkgver.tar.gz"{,.asc})
-sha256sums=('561c6969bbd24dbb22d1d196a6b037665389b91e6dab881f39c5616389f156f4'
+sha256sums=('57767c048982811c7ab21d8527f6f36aa897386e8c7235f11b5505a924d68eda'
             'SKIP')
 
 prepare() {
