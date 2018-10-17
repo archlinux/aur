@@ -1,11 +1,11 @@
-# Maintainer: Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 _srcname=vmaf
 _sureal_commit='4d0fee6e83047da53ff1776a883579bfe101e8ea'
 
 pkgname=python2-vmaf
 pkgver=1.3.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Perceptual video quality assessment algorithm based on multi-method fusion (python2 implementation)'
 arch=('any')
 url='https://github.com/netflix/vmaf/'
@@ -32,7 +32,6 @@ prepare() {
 }
 
 build() {
-    msg2 'Building for Python2...'
     cd "${_srcname}-${pkgver}/python"
     python2 setup.py build
 }
@@ -44,11 +43,14 @@ build() {
 package() {
     cd "${_srcname}-${pkgver}/python"
     
+    local _executables
+    local _script
+    
     python2 setup.py install --root="$pkgdir" --optimize='1'
     
     # vmaf python2 executables
     cd script
-    local _executables=($(find . -type f -executable))
+    _executables=($(find . -type f -executable))
     for _script in ${_executables[@]}
     do
         install -D -m755 "$_script" -t "${pkgdir}/usr/bin"
@@ -60,7 +62,7 @@ package() {
     
     # sureal python2 modules
     cd "${srcdir}/${_srcname}-${pkgver}/sureal/python/src"
-    cp -af sureal "${pkgdir}/usr/lib/python2.7/site-packages"
+    cp -a sureal "${pkgdir}/usr/lib/python2.7/site-packages"
     
     # fix shebang on python2 scripts
     for _script in "$pkgdir"/usr/bin/*
