@@ -1,35 +1,36 @@
-# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=slimit2
 _srcname=slimit
 pkgver=0.8.1
-pkgrel=1
-pkgdesc="A JavaScript minifier written in Python (uses python2)"
-arch=('i686' 'x86_64')
+pkgrel=2
+pkgdesc='A JavaScript minifier written in Python (uses python2)'
+arch=('any')
 url="https://github.com/rspivak/slimit/"
 license=('MIT')
 depends=('python2' 'python2-ply')
 makedepends=('python2-setuptools' 'python2-sphinx')
-conflicts=('slimit2-git')
 source=("${_srcname}-${pkgver}.tar.gz"::"https://github.com/rspivak/slimit/archive/0.8.1.tar.gz")
 sha256sums=('015fc1917c0eff834514fcedd4251275a3dacb10df1b49549277fe5e19de1ddf')
 
+prepare() {
+    cd "${_srcname}-${pkgver}/docs"
+    
+    sed -i '/sphinx-build/s/$/2/' Makefile
+}
+
 build() {
     cd "${_srcname}-${pkgver}"
-    msg2 "Running 'setup.py'..."
     python2 setup.py build
-    
     cd docs
-    sed -i '/sphinx-build/s/$/2/' Makefile
-    msg2 "Making target 'html'..." && make html
-    msg2 "Making target 'man'..."  && make man
+    make html man
 }
 
 package() {
     cd "${_srcname}-${pkgver}"
     
     # directories creation
-    mkdir -p "${pkgdir}/usr/share/doc/${pkgname}/"{_sources,_static}
+    mkdir -p "${pkgdir}/usr/share/doc/${pkgname}"
     mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
     mkdir -p "${pkgdir}/usr/share/man/man1"
     
@@ -40,18 +41,13 @@ package() {
     
     # html docs
     cd docs/build/html
-    for _file in *
-    do
-        [ -d "$_file" ] && continue # skip directories
-        install -D -m644 "$_file" "${pkgdir}/usr/share/doc/${pkgname}"
-    done
-    cd _sources
-    install -D -m644 * "${pkgdir}/usr/share/doc/${pkgname}/_sources"
-    cd ../_static
-    install -D -m644 * "${pkgdir}/usr/share/doc/${pkgname}/_static"
+    cp -a * "${pkgdir}/usr/share/doc/${pkgname}"
     
     # man page
-    cd ../../man
+    cd ../man
     install -D -m644 "${_srcname}.1" "${pkgdir}/usr/share/man/man1/${_srcname}2.1"
-    gzip -9 "${pkgdir}/usr/share/man/man1/${_srcname}2.1"
+    
+    # license
+    cd "${srcdir}/${_srcname}-${pkgver}"
+    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
