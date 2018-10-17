@@ -2,13 +2,13 @@
 pkgname=caffe-intel-slim-git
 _srcname=caffe
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A slimmed-down build of Caffe based on caffe-opencl-git"
 arch=('x86_64')
 url="http://caffe.berkeleyvision.org/"
 license=('BSD')
 depends=(
-        'boost-libs' 'protobuf' 'google-glog' 'gflags'
+        'boost-libs' 'protobuf' 'google-glog' 'gflags' 'hdf5'
         'python' 'boost' 'cython' 'python-numpy' 'python-scipy'
         'python-matplotlib' 'ipython' 'python-networkx' 'python-nose'
         'python-pandas' 'python-dateutil' 'python-protobuf' 'python-gflags'
