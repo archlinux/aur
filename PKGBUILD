@@ -1,9 +1,9 @@
-# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
 # Contributor: John Jenkins <twodopeshaggy@gmail.com>
 
 pkgname=flif-git
 pkgver=0.3.r92.gb16d347
-pkgrel=1
+pkgrel=2
 pkgdesc='Free Lossless Image Format (git version)'
 arch=('i686' 'x86_64')
 url='https://github.com/FLIF-hub/FLIF/'
@@ -44,26 +44,15 @@ pkgver() {
 build() {
     cd "${pkgname}/src"
     
-    local _target
-    
-    for _target in all decoder viewflif pixbufloader
-    do
-        printf '%s\n' "  -> Building target '${_target}'..."
-        make "$_target"
-    done
+    make all decoder viewflif pixbufloader
     
 }
 
 package() {
     cd "${pkgname}/src"
     
-    local _target
-    
-    for _target in install{,-dev,-decoder,-viewflif,-pixbufloader}
-    do
-        printf '%s\n' "  -> Installing target '${_target}'..."
-        make PREFIX="${pkgdir}/usr" "$_target"
-    done
+    make PREFIX="${pkgdir}/usr" install{,-dev}
+    make PREFIX="${pkgdir}/usr" install{-decoder,-viewflif,-pixbufloader}
     
     # mime type for pixbuf loader
     install -D -m644 flif-mime.xml -t "${pkgdir}/usr/share/mime/packages"
