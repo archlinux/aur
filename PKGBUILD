@@ -1,15 +1,15 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=msg2
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc='Output a blue arrow and a white message'
 arch=('x86_64')
 url='https://roboticoverlords.org/msg2'
 license=('GPL')
 makedepends=('cmake' 'ninja')
 source=("https://roboticoverlords.org/$pkgname/$pkgname-$pkgver.tar.xz")
-sha256sums=('cd70e516723f47a371f8f89e16f40309b618b36d614bb8fec7644559ad328671')
+sha256sums=('437db75160a66d5b56a015ef8b56e872671a83745dd337477d2d5532f7cb60de')
 
 build() {
   mkdir -p build
@@ -27,4 +27,3 @@ package() {
 }
 
 # vim: ts=2 sw=2 et:
-
