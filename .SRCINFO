@@ -1,7 +1,7 @@
 pkgbase = fcitx-sogoupinyin
 	pkgdesc = Sogou Pinyin for Linux
 	pkgver = 2.2.0.0108
-	pkgrel = 5
+	pkgrel = 6
 	url = https://pinyin.sogou.com/linux/
 	arch = x86_64
 	arch = i686
