@@ -1,0 +1,15 @@
+pkgbase = tmuxft-git
+	pkgdesc = integrate Tmux with F(FileManager) & T(TermianlEditor) (Github version)
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/LinArcX/TmuxFT
+	arch = any
+	license = GPL-3.0
+	makedepends = git
+	depends = xdotool
+	depends = wmctrl
+	source = tmuxft-git::git+https://github.com/LinArcX/TmuxFT
+	sha256sums = SKIP
+
+pkgname = tmuxft-git
+
