@@ -3,7 +3,7 @@
 pkgbase=python-nvd3
 pkgname=('python-nvd3' 'python2-nvd3')
 pkgver=0.15.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Python3 wrapper for the NVD3 chart generator'
 arch=('any')
 url='https://github.com/areski/python-nvd3/'
@@ -38,7 +38,6 @@ package_python-nvd3() {
     python setup.py install --root="$pkgdir" --optimize='1'
     
     # license
-    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
@@ -56,6 +55,5 @@ package_python2-nvd3() {
     mv "${pkgdir}/usr/bin/nvd3" "${pkgdir}/usr/bin/nvd3-2"
     
     # license
-    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
