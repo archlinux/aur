@@ -1,16 +1,16 @@
 pkgbase = klient-jpk-2.0
 	pkgdesc = A tool for submitting JPK files to Ministerstwo Finansów
 	pkgver = 1.0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.finanse.mf.gov.pl/en/web/wp/pp/jpk/aplikacje-do-pobrania
 	arch = any
 	license = custom
 	depends = java-openjfx
-	depends = jre8-openjdk
+	depends = java-runtime
 	source = klient-jpk-2.0-1.0.4.0.sh::https://www.finanse.mf.gov.pl/c/document_library/get_file?uuid=835cd7d9-4c87-49f3-ae28-10475aa1d289&groupId=766655
 	source = start.sh
 	sha256sums = 6956d9c2e1e587ce33f77e497557c80b512cb1ba0c3d6b4d0512476c309a97cc
-	sha256sums = 19234d788ccaf35186eefb6a1bf204f405b358c1432e76e6304291f833c0405c
+	sha256sums = 1867c95b8465c6ace79451a0924ca86e9c0ce4061af78fbaafc364c16a28fbca
 
 pkgname = klient-jpk-2.0
 
