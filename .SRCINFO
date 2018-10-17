@@ -35,7 +35,7 @@ pkgbase = ncurses-nohex
 pkgname = ncurses-nohex
 
 pkgname = infocmp-nohex
-	pkgdesc = =infocmp patched to not use hexadecimal when they are "close" to a power of two.
+	pkgdesc = infocmp patched to not use hexadecimal when they are "close" to a power of two
 	depends = glibc
 	depends = libncursesw.so=6
 	provides = infocmp
