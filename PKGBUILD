@@ -1,7 +1,7 @@
 # Maintainer: Aline Abler <alinea@riseup.net>
 
 pkgname=ttf-averia-libre
-pkgver=20170131
+pkgver=20181017
 pkgrel=1
 pkgdesc='Averia Libre Font'
 url="http://iotic.com/averia/"
@@ -21,5 +21,5 @@ package() {
 	install -Dm644 "OFL.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -dm755 "${pkgdir}/usr/share/doc/${pkgname}/"
 }
-md5sums=('fad935741c9b76188a2ce89aaac1dccb'
+md5sums=('fbc998528812612855e1e512916c82cc'
          'b9b03309f730947d472a63b0e5ca3bb1')
