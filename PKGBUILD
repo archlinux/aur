@@ -49,13 +49,13 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 install="${pkgname}.install"
 source=(
-  "${pkgname}-${pkgver}.tar.gz::https://github.com/fyookball/electrum/archive/${pkgver/.0}.tar.gz"
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/Electron-Cash/Electron-Cash/archive/${pkgver/.0}.tar.gz"
   "${pkgname}.install")
-sha256sums=('da77a5a66561679bd547c52b9f9028259f9a6b36046538e8a18dd26b858db9df'
+sha256sums=('801cae343108de64e607a21baa482a332e9400b7478a1ce63c5ade47e4749ca1'
             'd682766321f9981ee38aee26dc050209882d8c1c6006e3e509649b47fa1bb073')
 
 build() {
-  cd "${pkgname/on-cash/um}-${pkgver/.0}"
+  cd "Electron-Cash-${pkgver/.0}"
 
   # python2-pyqt5 and qt5-base are needed for _only_ the icons...
 
@@ -70,13 +70,13 @@ build() {
 }
 
 check() {
-  cd "${pkgname/on-cash/um}-${pkgver/.0}"
+  cd "Electron-Cash-${pkgver/.0}"
 
   tox -e py37
 }
 
 package() {
-  cd "${pkgname/on-cash/um}-${pkgver/.0}"
+  cd "Electron-Cash-${pkgver/.0}"
 
   python setup.py install --root="${pkgdir}" --optimize=1
 }
