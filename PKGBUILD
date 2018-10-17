@@ -3,7 +3,7 @@
 # Category: science
 
 pkgname='apron-ppl-svn'
-pkgver='0.9.10.r1104'
+pkgver=0.9.11.r1104
 pkgrel=1
 pkgdesc='The APRON numerical abstract domain library, with the PPL domain'
 arch=('i686' 'x86_64')
@@ -18,8 +18,9 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
+  local rel="$(sed -n 's|Version \([^ ]\+\) *$|\1|p' Changes | head -n 1)"
   local ver="$(svnversion)"
-  printf "0.9.10.r%s" "${ver//[[:alpha:]]}"
+  printf "%s.r%s" "$rel" "${ver//[[:alpha:]]}"
 }
 
 prepare() {

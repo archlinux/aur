@@ -1,6 +1,6 @@
 pkgbase = apron-ppl-svn
 	pkgdesc = The APRON numerical abstract domain library, with the PPL domain
-	pkgver = 0.9.10.r1104
+	pkgver = 0.9.11.r1104
 	pkgrel = 1
 	url = http://apron.cri.ensmp.fr/library/
 	arch = i686
