@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=arcus-beta
-pkgver=3.5.1
+pkgver=3.5
 pkgrel=1
 pkgdesc="Communication library between internal components for Ultimaker software"
 url="https://github.com/Ultimaker/libArcus"
@@ -15,6 +15,7 @@ source=("git+https://github.com/Ultimaker/libArcus#branch=${pkgver}")
 md5sums=('SKIP')
 
 build() {
+  pwd
   cd libArcus
   mkdir -p build
   cd build
@@ -29,6 +30,7 @@ build() {
 }
 
 package() {
+  pwd
   cd libArcus/build
   make DESTDIR="${pkgdir}" install
 
