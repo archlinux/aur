@@ -1,0 +1,16 @@
+pkgbase = guardian-git
+	pkgdesc = Watches over your files and runs assigned tasks
+	pkgver = v0.0.5.0.g0afde6f
+	pkgrel = 1
+	url = https://github.com/f/guardian
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = crystal
+	provides = guardian
+	conflicts = guardian
+	source = git+https://github.com/f/guardian.git
+	md5sums = SKIP
+
+pkgname = guardian-git
+
