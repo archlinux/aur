@@ -9,10 +9,6 @@ post_install() {
     echo
 }
 
-post_upgrade() {
-    post_install
-}
-
 post_remove() {
     echo
     echo "  Make sure to remove /etc/fonts/conf.d/75-emojione.conf if you created it earlier."
