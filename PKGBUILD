@@ -2,7 +2,7 @@
 # Maintainer: Dmitry Bilunov <kmeaw@yandex-team.ru>
 
 pkgname=clickhouse
-pkgver=18.12.17
+pkgver=18.14.9
 pkgrel=1
 pkgdesc='An open-source column-oriented database management system that allows generating analytical data reports in real time'
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ source=(https://github.com/yandex/ClickHouse/archive/v$pkgver-stable.tar.gz
         https://github.com/ClickHouse-Extras/ssl/archive/de02224.tar.gz
         https://github.com/jemalloc/jemalloc/archive/41b7372.tar.gz
         libunwind.patch)
-md5sums=('56f77959e1ec5d8b2c5914203d46ad4f'
+md5sums=('3414ae80136a5a49430d11119a23c1a1'
          '5323f7ba2565a84a80a93edde95eb4fe'
          '7d9c187a8afedde260fadf2f1d5f46a2'
          '7b92f0554687e6a8949adc5c10aeff78'
