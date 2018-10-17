@@ -1,0 +1,23 @@
+--- Dependencies.cmake	2018-08-11 16:43:41.986780859 +0200
++++ Dependencies.cmake.new	2018-08-11 16:48:27.581959509 +0200
+@@ -345,7 +345,7 @@
+     # Find the matching boost python implementation
+     set(version ${PYTHONLIBS_VERSION_STRING})
+ 
+-    STRING( REGEX REPLACE "[^0-9]" "" boost_py_version ${version} )
++    STRING( REGEX MATCH "[0-9]" boost_py_version ${version} )
+     find_package(Boost 1.46 COMPONENTS "python-py${boost_py_version}")
+     set(Boost_PYTHON_FOUND ${Boost_PYTHON-PY${boost_py_version}_FOUND})
+ 
+@@ -356,6 +356,11 @@
+       find_package(Boost 1.46 COMPONENTS "python-py${boost_py_version}")
+       set(Boost_PYTHON_FOUND ${Boost_PYTHON-PY${boost_py_version}_FOUND})
+ 
++      if(NOT Boost_PYTHON_FOUND)
++        find_package(Boost 1.46 COMPONENTS "python${boost_py_version}")
++        set(Boost_PYTHON_FOUND ${Boost_PYTHON${boost_py_version}_FOUND})
++      endif()
++
+       STRING( REGEX MATCHALL "([0-9.]+).[0-9]+" has_more_version ${version} )
+       if("${has_more_version}" STREQUAL "")
+         break()
