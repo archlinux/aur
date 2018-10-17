@@ -13,24 +13,21 @@ depends=("giflib" "libxtst")
 provides=("$_appname")
 conflicts=("$_appname")
 source=("https://download.jetbrains.com/idea/ideaIC-$pkgver.tar.gz"
-	"$_appname.desktop")
+		"$_appname.desktop")
 md5sums=('8e53362b1e238aead8b8ed2ede8e8206'
          '56d945e72cc22162d5be26af027999dd')
 
 package() {
-	install -d "$pkgdir"/{usr/share/$_appname,usr/bin}
-	mv idea-IC-${_buildver}/* "$pkgdir"/usr/share/$_appname
-
-	# make sure that all files are owned by root
-	chown -R root:root "$pkgdir/usr/share"
-
-	# https://youtrack.jetbrains.com/issue/IDEA-185828
-	chmod +x "$pkgdir"/usr/share/$_appname/plugins/maven/lib/maven3/bin/mvn
-
-	ln -s /usr/share/$_appname/bin/idea.sh "$pkgdir"/usr/bin/idea-ce
-	install -D -m644 "$srcdir"/jetbrains-idea-ce.desktop "$pkgdir"/usr/share/applications/jetbrains-idea-ce.desktop
-	install -D -m644 "$pkgdir"/usr/share/$_appname/bin/idea.png "$pkgdir"/usr/share/pixmaps/"$_appname".png
+	cd idea-IC-"$_buildver"
 
 	# workaround FS#40934
-	sed -i 's|lcd|on|'  "$pkgdir"/usr/share/$_appname/bin/*.vmoptions
+	sed -i 's/lcd/on/' bin/*.vmoptions
+
+	install -dm 755 "$pkgdir"/usr/bin
+	install -dm 755 "$pkgdir"/usr/share/{licenses,pixmaps,"$_appname"}
+	cp -dr --no-preserve='ownership' bin jre64 lib plugins redist "$pkgdir"/usr/share/"$_appname/"
+	cp -dr --no-preserve='ownership' license "$pkgdir"/usr/share/licenses/"$_appname"
+	ln -s /usr/share/"$_appname"/bin/idea.png "$pkgdir"/usr/share/pixmaps/"$_appname".png
+	install -Dm 644 ../"$_appname".desktop -t "$pkgdir"/usr/share/applications/
+	ln -s /usr/share/"$_appname"/bin/idea.sh "$pkgdir"/usr/bin/idea-ce
 }
