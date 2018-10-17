@@ -1,7 +1,7 @@
 pkgbase = pybind11
 	pkgdesc = A lightweight header-only library that exposes C++ types in Python and vice versa
 	pkgver = 2.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pybind11.readthedocs.org/
 	arch = any
 	license = BSD

@@ -1,9 +1,9 @@
-# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
 # Contributor: Matthew Ellison <matt+aur@arroyonetworks.com>
 
 pkgname=pybind11
 pkgver=2.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A lightweight header-only library that exposes C++ types in Python and vice versa'
 arch=('any')
 url='http://pybind11.readthedocs.org/'
@@ -26,20 +26,20 @@ prepare() {
 }
 
 build () {
-    msg2 'Building Python3 modules...'
+    printf '%s\n' '  -> Building Python3 modules...'
     cd "${pkgname}-${pkgver}"
     python setup.py build
     
-    msg2 'Building Python2 modules...'
+    printf '%s\n' '  -> Building Python2 modules...'
     cd "${srcdir}/${pkgname}-${pkgver}-py2"
     python2 setup.py build
     
-    msg2 'Building cmake files...'
+    printf '%s\n' '  -> Building cmake files...'
     cd "${srcdir}/${pkgname}-${pkgver}/build"
     cmake ..
     make mock_install
     
-    msg2 'Building manpage...'
+    printf '%s\n' '  -> Building manpage...'
     cd "${srcdir}/${pkgname}-${pkgver}/docs"
     make man
 }
