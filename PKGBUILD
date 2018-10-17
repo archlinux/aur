@@ -70,7 +70,7 @@ package_ncurses-nohex() {
 }
 
 package_infocmp-nohex() {
-  pkgdesc=='infocmp patched to not use hexadecimal when they are "close" to a power of two.'
+  pkgdesc='infocmp patched to not use hexadecimal when they are "close" to a power of two'
   depends=('glibc' 'libncursesw.so=6')
   conflicts=()
   provides=('infocmp')
