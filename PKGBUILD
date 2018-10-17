@@ -5,7 +5,7 @@
 
 pkgbase=python-sphinx
 pkgname=('python-sphinx' 'python2-sphinx')
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 
 arch=('any')
@@ -54,8 +54,8 @@ source=("https://pypi.org/packages/source/S/Sphinx/Sphinx-$pkgver.tar.gz"{,.asc}
 
 validpgpkeys=('8A11B79A5D0D749A66F0A030102C2C17498D6B9E'
               'E9BEABB07E7B9CC3F56E62C91425F8CE5EBA0E07')
-md5sums=('69ae297eda64540cb0d19ea08eccba65'
-         'SKIP')
+sha512sums=('971a478ccd0f77e7e9bf8548a31805140d2d757f237493e63a3046309683b1f6ae4f943f0b66cc8e00c3917a40c1c8e4cd2ec5133ff7ca565584b058bab5e677'
+            'SKIP')
 
 prepare() {
   # souce duplication is required because makefile modify source code
