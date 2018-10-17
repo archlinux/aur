@@ -11,8 +11,8 @@ url="http://softmaker.com"
 arch=('x86_64' 'i686')
 license=('custom')
 depends=('desktop-file-utils' 'shared-mime-info' 'hicolor-icon-theme')
-depends_i686=('libxmu' 'libidn-133-compat' 'libgl' 'libxrandr')
-depends_x86_64=('lib32-libxmu' 'lib32-libidn-133-compat' 'lib32-libgl' 'lib32-libxrandr')
+depends_i686=('libxmu' 'libidn11' 'libgl' 'libxrandr')
+depends_x86_64=('lib32-libxmu' 'lib32-libidn11' 'lib32-libgl' 'lib32-libxrandr')
 
 source=("http://www.softmaker.net/down/softmaker-office-${pkgver//./-}.tgz"
         "planmaker16"

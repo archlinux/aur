@@ -31,11 +31,11 @@ pkgbase = softmaker-office-2016-bin
 	sha512sums = d347cb1bd87273b87e283a64ea7d78265dbb524f18f783840cb7d560e402acfc4cba1e6d7fb5fae83314c70fea1d47334f9615592021513fd6e3b8ce7550cdeb
 	sha512sums = 94224fb084136441c1855e86247f6882017eab4648928e1bbbc4691b1b50f41b29a0945ab4056c774d1fc0dfb0edcddb6fffea758023de71877f62b1c545289c
 	depends_x86_64 = lib32-libxmu
-	depends_x86_64 = lib32-libidn-133-compat
+	depends_x86_64 = lib32-libidn11
 	depends_x86_64 = lib32-libgl
 	depends_x86_64 = lib32-libxrandr
 	depends_i686 = libxmu
-	depends_i686 = libidn-133-compat
+	depends_i686 = libidn11
 	depends_i686 = libgl
 	depends_i686 = libxrandr
 
