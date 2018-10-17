@@ -1,46 +1,33 @@
-# Maintainer: Holger Doebler <holger DOD doebler AD posteo DOD de>
+# Maintainer: Aleksandar Trifunović <akstrfn at gmail dot com>
+# Contributor: Holger Doebler <holger DOD doebler AD posteo DOD de>
 # Contributor: Florian Jacob <projects+arch AT florianjacob )DOT( de>
 # Contributor: mareex <marcus [dot] behrendt [dot] 86 [at] gmail [dot] com>
 
 pkgname=('sumo' 'sumo-doc')
 pkgbase=sumo
-pkgver=0.32.0
+pkgver=1.0.1
 pkgrel=1
-pkgdesc="Free and open traffic simulation suite which allows modelling of intermodal traffic systems including road vehicles, public transport and pedestrians."
+pkgdesc="Traffic simulation modelling road vehicles, public transport and pedestrians."
 arch=('i686' 'x86_64')
 url="http://sumo.dlr.de"
 license=('GPL')
-depends=('fox' 'xerces-c' 'gdal')
-makedepends=('make' 'gcc' 'help2man')
+depends=('python' 'proj' 'fox' 'xerces-c' 'gdal')
+makedepends=('help2man')
 source=("${pkgbase}-src-${pkgver}.tar.gz::http://prdownloads.sourceforge.net/${pkgbase}/${pkgbase}-src-${pkgver}.tar.gz?download"
-        "${pkgbase}-doc-${pkgver}.tar.gz::http://prdownloads.sourceforge.net/${pkgbase}/${pkgbase}-doc-${pkgver}.tar.gz?download"
         "${pkgbase}.desktop"
         "${pkgbase}.sh")
 
-sha256sums=('00753ca57a9911f0c99202505a6b05b1777168134842d7924fd827766642608a'
-	    'a9d6f6c93cf71f441e6464be79561c0e114f8b5f907f50b6c748191f27d07aad'
+sha256sums=('6e46a1568b1b3627f06c999c798feceb37f17e92aadb4d517825b01c797ec531'
             '0500ba9cdf827cceae9a9bce66094bdb077300c94b0040bdd710afb92d0d4849'
             '16db32dbba617f8a38f5d103ce3af7cc70ab4cbf5b50e30be5d7f13ee6ea2f4f')
 
 prepare() {
-    cd ${srcdir}/${pkgbase}-${pkgver}
-    # replace python with python2 in shebangs
-    find . -iname \*.py  -exec sed -i 's/#!\/usr\/bin\/env python/#!\/usr\/bin\/env python2/' {} \;
-    find . -iname \*.pyw -exec sed -i 's/#!\/usr\/bin\/env python/#!\/usr\/bin\/env python2/' {} \;
-    find . -iname \*.py  -exec sed -i 's/#!\/usr\/bin\/python/#!\/usr\/bin\/python2/' {} \;
-
-    # test if there are still py-files without shebangs
-    for f in $(find . -iname \*.py)
-    do
-        if [ -z "$(grep -l '^#!/.*python' "$f")" ]; then
-            sed -i "1i #!/bin/env python2" $f
-        fi
-    done
+    cd ${pkgbase}-${pkgver}
+    ./configure --prefix=/usr
 }
 
 build() {
-    cd ${srcdir}/${pkgbase}-${pkgver}
-    ./configure --prefix=/usr
+    cd ${pkgbase}-${pkgver}
     make
     make man
 }
@@ -135,23 +122,13 @@ package_sumo() {
 }
 
 package_sumo-doc() {
-########### DOCS
-    cd ${srcdir}/${pkgbase}-${pkgver}/docs
-    for d in $(find . -type d)
-    do
-        mkdir -p ${pkgdir}/usr/share/doc/${pkgbase}/$d
-    done
-    for f in $(find . -type f)
-    do
-        install -m0644 $f ${pkgdir}/usr/share/doc/${pkgbase}/$f
-    done
-    for l in $(find . -type l)
-    do
-        ln -s $(readlink $l) ${pkgdir}/usr/share/doc/${pkgbase}/$l
-    done
+    cd ${pkgbase}-${pkgver}/docs
+    install -d ${pkgdir}/usr/share/doc/${pkgbase}
+    cp -a * ${pkgdir}/usr/share/doc/${pkgbase}/
+
     install -m0644 ${srcdir}/${pkgbase}-${pkgver}/AUTHORS ${pkgdir}/usr/share/doc/${pkgbase}
     install -m0644 ${srcdir}/${pkgbase}-${pkgver}/ChangeLog ${pkgdir}/usr/share/doc/${pkgbase}
-    install -m0644 ${srcdir}/${pkgbase}-${pkgver}/COPYING ${pkgdir}/usr/share/doc/${pkgbase}
+    install -m0644 ${srcdir}/${pkgbase}-${pkgver}/LICENSE ${pkgdir}/usr/share/doc/${pkgbase}
     install -m0644 ${srcdir}/${pkgbase}-${pkgver}/README.md ${pkgdir}/usr/share/doc/${pkgbase}
 
     rm -rf ${pkgdir}/usr/share/doc/${pkgbase}/man
