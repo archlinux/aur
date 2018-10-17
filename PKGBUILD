@@ -2,7 +2,7 @@
 pkgname=caffe-cuda-slim-git
 _srcname=caffe
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A slimmed-down build of Caffe based on caffe-opencl-git (CUDA version)"
 arch=('x86_64')
 url="http://caffe.berkeleyvision.org/"
@@ -35,7 +35,7 @@ prepare() {
 
     mkdir -p build
     cd build
-    CMAKE_PARALLEL_LEVEL=`grep processor /proc/cpuinfo | wc -l` cmake \
+    PATH+=":/opt/cuda/bin/" CMAKE_PARALLEL_LEVEL=`grep processor /proc/cpuinfo | wc -l` cmake \
     -DUSE_INDEX_64=OFF \
     -DUSE_HALF=OFF \
     -DUSE_SINGLE=ON \
@@ -48,7 +48,7 @@ prepare() {
     -DUSE_OPENCL=OFF \
     -DUSE_HSA=OFF \
     -DUSE_HIP=OFF \
-    -DFORCE_COMPILE_CU_AS_CPP=ON \
+    -DFORCE_COMPILE_CU_AS_CPP=OFF \
     -DDISABLE_DEVICE_HOST_UNIFIED_MEMORY=OFF \
     -DUSE_LIBDNN=OFF \
     -DUSE_CLBLAS=OFF \
@@ -81,7 +81,7 @@ prepare() {
 
 build() {
     cd "${_srcname}/build"
-    make -j`grep processor /proc/cpuinfo | wc -l` clean all
+    PATH+=":/opt/cuda/bin" make -j`grep processor /proc/cpuinfo | wc -l` clean all
 }
 
 package() {
