@@ -138,6 +138,8 @@ esac
 
 if $_target_host; then
   _use_mesa=true
+elif [[ "${_piver}" = "4" ]]; then
+  echo ""
 else
   depends=("qpi${_piver}-toolchain")
 fi
