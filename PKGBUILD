@@ -4,7 +4,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=69.0.3497.100
+pkgver=70.0.3538.67
 pkgrel=1
 _launcher_ver=6
 pkgdesc="A web browser built for speed, simplicity, and security"
@@ -23,15 +23,13 @@ optdepends=('pepper-flash: support for Flash content'
 install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgname-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
-        fix-cfi-icall-failure-with-use_system_libjpeg-true.patch
-        only-disable-cfi-icall-when-use_system_libjpeg-true.patch
+        include-stdint.h-in-pdfium_mem_buffer_file_write.h.patch
         chromium-widevine-r2.patch
         chromium-system-icu.patch
         chromium-skia-harmony.patch)
-sha256sums=('e3391560e73e25fb4afc3f2dd5616607e2dbfc58aa88251a2c5d6b7096fe9e35'
+sha256sums=('e956c2031f634300ada8c09e0777f0c560f4798963f144edaaec8d43e1e30e37'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
-            '97b421bc60a4abdf37de2d88a51b973e9f68fb44d1eccd464adfb3d9f5d71478'
-            '9cae9ded6497afd15ad72d963897425ab6c7f28941bb3c3948e7996610a0d180'
+            'cd1e87bf3618b7897c5caf7b0f4213cfa5ce917acb0613ecd2ab3f830f0cbfbb'
             '02c69bb3954087db599def7f5b6d65cf8f7cf2ed81dfbdaa4bb7b51863b4df15'
             'c4f2d1bed9034c02b8806f00c2e8165df24de467803855904bff709ceaf11af5'
             'feca54ab09ac0fc9d0626770a6b899a6ac5a12173c7d0c1005bc3964ec83e7b3')
@@ -78,9 +76,14 @@ prepare() {
   sed -i 's/OFFICIAL_BUILD/GOOGLE_CHROME_BUILD/' \
     tools/generate_shim_headers/generate_shim_headers.py
 
-  # https://crbug.com/866290
-  patch -Np1 -i ../fix-cfi-icall-failure-with-use_system_libjpeg-true.patch
-  patch -Np1 -i ../only-disable-cfi-icall-when-use_system_libjpeg-true.patch
+  # https://crbug.com/893950
+  sed -i -e 's/\<xmlMalloc\>/malloc/' -e 's/\<xmlFree\>/free/' \
+    third_party/blink/renderer/core/xml/*.cc \
+    third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
+    third_party/libxml/chromium/libxml_utils.cc
+
+  # https://crbug.com/879900
+  patch -Np1 -i ../include-stdint.h-in-pdfium_mem_buffer_file_write.h.patch
 
   # https://crbug.com/skia/6663#c10
   patch -Np4 -i ../chromium-skia-harmony.patch
