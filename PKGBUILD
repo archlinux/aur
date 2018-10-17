@@ -2,7 +2,7 @@
 
 pkgname=libibmad
 pkgver=1.3.13
-pkgrel=3
+pkgrel=4
 pkgdesc='OpenFabrics Alliance InfiniBand MAD (MAnagement Datagram) library'
 arch=('x86_64' 'i686')
 url='https://www.openfabrics.org/index.php/overview.html'
@@ -26,4 +26,5 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
   install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  install -Dm644 README "${pkgdir}/usr/share/docs/${pkgname}/README"
 }

@@ -1,7 +1,7 @@
 pkgbase = libibmad
 	pkgdesc = OpenFabrics Alliance InfiniBand MAD (MAnagement Datagram) library
 	pkgver = 1.3.13
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.openfabrics.org/index.php/overview.html
 	arch = x86_64
 	arch = i686
