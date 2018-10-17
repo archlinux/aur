@@ -1,13 +1,13 @@
 # Maintainer: David Baum <david.baum@naraesk.eu>
 pkgname=luminance-git
 pkgver=21
-pkgrel=1
+pkgrel=2
 pkgdesc="Luminance is a Philips Hue client for Linux written in Python and GTK+"
 arch=('any')
 url="https://github.com/craigcabrey/luminance"
 license=('GPL2')
 groups=()
-depends=('python' 'dconf' 'hicolor-icon-theme')
+depends=('python' 'dconf' 'hicolor-icon-theme' 'python-phue')
 makedepends=('git' 'autoconf' 'python' 'python-requests' 'gtk3' 'pygobject-devel')
 optdepends=()
 provides=()
