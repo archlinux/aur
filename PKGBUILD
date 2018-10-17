@@ -14,7 +14,7 @@ url="https://ultimaker.com/en/products/cura-software"
 license=('AGPL')
 arch=('x86_64')
 conflicts=('cura' 'cura-git')
-source=("git+https://github.com/Ultimaker/Cura#branch=${pkgver}")
+source=("git+https://github.com/Ultimaker/Cura#branch=3.5")
 #source=($pkgname-$pkgver.tar.gz::https://github.com/Ultimaker/Cura/archive/${pkgver}.tar.gz)
 sha1sums=('SKIP')
 

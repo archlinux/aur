@@ -22,7 +22,7 @@ pkgbase = cura-beta
 	provides = cura
 	conflicts = cura
 	conflicts = cura-git
-	source = git+https://github.com/Ultimaker/Cura#branch=3.5.1
+	source = git+https://github.com/Ultimaker/Cura#branch=3.5
 	sha1sums = SKIP
 
 pkgname = cura-beta
