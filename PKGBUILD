@@ -28,6 +28,5 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}"
   make DESTDIR="${pkgdir}" install
-  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING"
   install -Dm644 README.md "${pkgdir}/usr/share/${_pkgname}/README.md"
 }
