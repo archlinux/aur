@@ -1,18 +1,17 @@
-# Maintainer: Markus Hovorka <m.hovorka@live.de>
-# Contributer: Christian Hesse <mail@eworm.de>
+# Maintainer: Grey Christoforo <first name at last name dot net>
 
 _appname=freecad
 pkgname="${_appname}-git"
-pkgver=0.17pre.r4505.gbc6a52ee9
+pkgver=0.17.r1484.g1e6818b6f
 pkgrel=1
 epoch=1
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
 arch=('i686' 'x86_64')
 url='http://www.freecadweb.org/'
 license=('LGPL')
-depends=('boost-libs' 'curl' 'hicolor-icon-theme' 'libspnav' 'opencascade7'
+depends=('boost-libs' 'curl' 'hicolor-icon-theme' 'libspnav' 'opencascade'
          'med' 'xerces-c' 'python2-pivy' 'python2-pyside' 'qtwebkit'
-         'libtheora' 'shared-mime-info' 'vtk-qt4' 'jsoncpp' 'netgen-nogui-occ7')
+         'libtheora' 'shared-mime-info' 'jsoncpp' )
 makedepends=('git' 'boost' 'cmake' 'coin' 'python2-pyside-tools'
              'desktop-file-utils' 'eigen' 'gcc-fortran' 'swig')
 optdepends=('python2-matplotlib'
@@ -36,18 +35,12 @@ build() {
 
     cmake -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_INSTALL_PREFIX="/opt/${_appname}" \
-          -DOCC_INCLUDE_DIR="/opt/opencascade7/include/opencascade" \
-          -DOCC_LIBRARY_DIR="/opt/opencascade7/lib" \
-          -DVTK_DIR="/opt/vtk-qt4/lib/cmake/vtk-7.0" \
-          -DCMAKE_PREFIX_PATH="/opt/opencascade7" \
-          -DCMAKE_INCLUDE_PATH="/opt/opencascade7/include/opencascade" \
-          -DCMAKE_LIBRARY_PATH="/opt/opencascade7/lib" \
-          -DCMAKE_INSTALL_RPATH="/opt/opencascade7/lib;/opt/vtk-qt4/lib" \
-          -DPYTHON_EXECUTABLE="/usr/bin/python2" \
-          -DPYTHON_SUFFIX="-python2.7" \
-          -DPYTHON_BASENAME="-python2.7" \
-          -DPYSIDEUIC4BINARY="/usr/bin/python2-pyside-uic" \
-          -DBUILD_FEM_NETGEN=1
+	  -DFREECAD_USE_OCC_VARIANT="Official Version" \
+          -DFREECAD_USE_EXTERNAL_PIVY=ON \
+          -DBUILD_QT5=ON \
+          -DBUILD_QT5_WEBKIT=OFF \
+          -DPYTHON_EXECUTABLE=/usr/bin/python2 \
+          -DBUILD_WEB=OFF
 
     make
 }
