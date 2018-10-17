@@ -10,8 +10,8 @@ sha256sums=('SKIP')
 
 
 pkgver() {
-  cd ttyplot
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+ 	cd ttyplot
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
