@@ -1,7 +1,7 @@
 pkgbase = flif
 	pkgdesc = Free Lossless Image Format
 	pkgver = 0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/FLIF-hub/FLIF/
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,6 @@ pkgbase = flif
 	depends = sdl2
 	optdepends = imagemagick: for gif2flif tool
 	optdepends = apng-utils: for apng2flif tool
-	conflicts = flif-git
 	source = flif-0.3.tar.gz::https://github.com/FLIF-hub/FLIF/archive/v0.3.tar.gz
 	source = flif-use-build-flags.patch
 	sha256sums = aa02a62974d78f8109cff21ecb6d805f1d23b05b2db7189cfdf1f0d97ff89498

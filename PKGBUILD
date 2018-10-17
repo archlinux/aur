@@ -4,7 +4,7 @@
 pkgname=flif
 _srcname=FLIF
 pkgver=0.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Free Lossless Image Format'
 arch=('i686' 'x86_64')
 url='https://github.com/FLIF-hub/FLIF/'
@@ -16,7 +16,6 @@ optdepends=(
     # AUR:
         'apng-utils: for apng2flif tool'
 )
-conflicts=('flif-git')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/FLIF-hub/FLIF/archive/v${pkgver}.tar.gz"
         'flif-use-build-flags.patch')
 sha256sums=('aa02a62974d78f8109cff21ecb6d805f1d23b05b2db7189cfdf1f0d97ff89498'
@@ -40,7 +39,7 @@ build() {
     
     for _target in all decoder viewflif
     do
-        msg2 "Building target '${_target}'..."
+        printf '%s\n' "  -> Building target '${_target}'..."
         make "$_target"
     done
     
@@ -53,7 +52,7 @@ package() {
     
     for _target in install{,-dev,-decoder,-viewflif}
     do
-        msg2 "Installing target '${_target}'..."
+        printf '%s\n' "  -> Installing target '${_target}'..."
         make PREFIX="${pkgdir}/usr" "$_target"
     done
 }
