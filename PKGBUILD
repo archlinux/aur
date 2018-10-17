@@ -17,10 +17,10 @@ pkgver=18.3.0_devel.105152.ff281e6204
 pkgrel=3
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'llvm-svn' 'clang-svn' 'xorgproto'
-              'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libomxil-bellagio'
-              'ocl-icd' 'vulkan-icd-loader' 'libgcrypt'  'wayland' 'wayland-protocols' 'meson')
+        'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libomxil-bellagio'
+        'ocl-icd' 'vulkan-icd-loader' 'libgcrypt'  'wayland' 'wayland-protocols' 'meson')
 depends=('libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
-         'libomxil-bellagio' 'llvm-libs-svn' 'libunwind' 'libglvnd' 'wayland' 'lm_sensors' 'libclc')
+     'libomxil-bellagio' 'llvm-libs-svn' 'libunwind' 'libglvnd' 'wayland' 'lm_sensors' 'libclc')
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
 provides=('mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau' 'vulkan-driver' 'opencl-mesa' 'opengl-driver' 'opencl-driver')
 conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau')
@@ -64,79 +64,76 @@ sha512sums=(
 )
 
 pkgver() {
-    cd mesa
-    read -r _ver <VERSION
-    echo ${_ver/-/_}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  cd mesa
+  read -r _ver <VERSION
+  echo ${_ver/-/_}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
-
 
 build () {
-    if [  -d _build ]; then
-        rm -rf _build
-    fi
-    for p in \
-      256575 \
-      256578 \
-      256579 \
-      256576 \
-      256577 \
-      256585 \
-      256582 \
-      256581 \
-      256583 \
-      256580 \
-      256586 \
-      256587 \
-      256584 \
-      256588
-    do
-      echo "applying $p"
-      patch -d mesa -Np1 < $p.patch
-    done
-    meson setup mesa _build \
-       -D b_ndebug=true \
-       -D buildtype=plain \
-       --wrap-mode=nofallback \
-       -D prefix=/usr \
-       -D sysconfdir=/etc \
-       -D platforms=x11,wayland,drm,surfaceless \
-       -D dri-drivers=i915,i965,r200,r100,nouveau \
-       -D gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl \
-       -D vulkan-drivers=amd,intel \
-       -D dri3=true \
-       -D egl=true \
-       -D gallium-extra-hud=true \
-       -D gallium-nine=true \
-       -D gallium-omx=bellagio \
-       -D gallium-va=true \
-       -D gallium-vdpau=true \
-       -D gallium-xa=true \
-       -D gallium-xvmc=false \
-       -D gbm=true \
-       -D gles1=true \
-       -D gles2=true \
-       -D glvnd=true \
-       -D glx=dri \
-       -D libunwind=true \
-       -D llvm=true \
-       -D lmsensors=true \
-       -D osmesa=gallium \
-       -D shared-glapi=true \
-       -D gallium-opencl=icd \
-       -D valgrind=false \
-       -D tools=[]
-    meson configure _build
-    ninja -C _build
+  if [  -d _build ]; then
+    rm -rf _build
+  fi
+  for p in \
+    256575 \
+    256578 \
+    256579 \
+    256576 \
+    256577 \
+    256585 \
+    256582 \
+    256581 \
+    256583 \
+    256580 \
+    256586 \
+    256587 \
+    256584 \
+    256588
+  do
+    echo "applying $p"
+    patch -d mesa -Np1 < $p.patch
+  done
+  meson setup mesa _build \
+    -D b_ndebug=true \
+    -D buildtype=plain \
+    --wrap-mode=nofallback \
+    -D prefix=/usr \
+    -D sysconfdir=/etc \
+    -D platforms=x11,wayland,drm,surfaceless \
+    -D dri-drivers=i915,i965,r200,r100,nouveau \
+    -D gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl \
+    -D vulkan-drivers=amd,intel \
+    -D dri3=true \
+    -D egl=true \
+    -D gallium-extra-hud=true \
+    -D gallium-nine=true \
+    -D gallium-omx=bellagio \
+    -D gallium-va=true \
+    -D gallium-vdpau=true \
+    -D gallium-xa=true \
+    -D gallium-xvmc=false \
+    -D gbm=true \
+    -D gles1=true \
+    -D gles2=true \
+    -D glvnd=true \
+    -D glx=dri \
+    -D libunwind=true \
+    -D llvm=true \
+    -D lmsensors=true \
+    -D osmesa=gallium \
+    -D shared-glapi=true \
+    -D gallium-opencl=icd \
+    -D valgrind=false \
+    -D tools=[]
+  meson configure _build
+  ninja -C _build
 }
 
-
 package_mesa-transform-feedback-git() {
-
   DESTDIR="$pkgdir" ninja -C _build install
 
   # remove files provided by libglvnd
   rm "$pkgdir"/usr/lib/libGLESv{1_CM,2}.so*
-   
+
   # indirect rendering
   ln -s /usr/lib/libGLX_mesa.so.0 ${pkgdir}/usr/lib/libGLX_indirect.so.0
 
