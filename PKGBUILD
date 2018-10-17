@@ -1,8 +1,8 @@
 # Maintainer: ahrs <Forward dot to at hotmail dot co dot uk>
 
 pkgname='undistract-me-git'
-pkgver=r58.3c3054c
-pkgrel=8
+pkgver=r77.c7f6056
+pkgrel=9
 arch=('any')
 url="https://github.com/jml/undistract-me"
 depends=('libnotify' 'xorg-xprop')
