@@ -1,8 +1,8 @@
 # Maintainer: basigur
 
 pkgname=joxi
-pkgver=3.0.13
-pkgrel=2
+pkgver=3.0.9
+pkgrel=4
 pkgdesc="Free tool for screen capture"
 arch=('x86_64')
 url="http://joxi.net"
