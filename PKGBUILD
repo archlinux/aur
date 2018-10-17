@@ -12,16 +12,8 @@ license=('MIT')
 arch=('any')
 provides=('onedrived')
 depends=('inotify-tools'
-        'python-arrow=0.12.1'
-        'python-asn1crypto=0.24.0'
-        'python-cffi=1.11.5'
-        'python-chardet=3.0.4'
-        'python-colorama=0.3.9'
-        'python-daemonocle=1.0.1'
-        'python-yaml=3.13'
-        'python-send2trash=1.5.0'
-        'python-six=1.11.0'
-        'python-tabulate=0.8.2')
+		'python-pip')
+		
 makedepends=('git')
 source=('git+https://github.com/derrix060/onedriveClient'
         'onedriveClient.service')
@@ -35,6 +27,7 @@ build() {
 
 package() {
   cd "$srcdir/$_pkgname"
+  python -m pip install -r requirements.txt
   python setup.py install --root="$pkgdir/" --optimize=1
   python setup.py clean
   install -Dm755 ../onedriveClient.service \

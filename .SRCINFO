@@ -7,16 +7,7 @@ pkgbase = onedriveclient-git
 	license = MIT
 	makedepends = git
 	depends = inotify-tools
-	depends = python-arrow=0.12.1
-	depends = python-asn1crypto=0.24.0
-	depends = python-cffi=1.11.5
-	depends = python-chardet=3.0.4
-	depends = python-colorama=0.3.9
-	depends = python-daemonocle=1.0.1
-	depends = python-yaml=3.13
-	depends = python-send2trash=1.5.0
-	depends = python-six=1.11.0
-	depends = python-tabulate=0.8.2
+	depends = python-pip
 	provides = onedrived
 	source = git+https://github.com/derrix060/onedriveClient
 	source = onedriveClient.service
