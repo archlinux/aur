@@ -26,7 +26,7 @@ prepare() {
 }
 
 build() {
-  arch-meson $pkgbase build \
+  arch-meson $_pkgbase build \
     -D ubuntuone=true \
     -D ubuntu_reviews=true \
     -D snap=true
