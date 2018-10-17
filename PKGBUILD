@@ -1,14 +1,5 @@
 # Maintainer Severin Glöckner <severin dot gloeckner at stud dot htwk minus leipzig dot de>
 
-# BUILDING THIS PACKAGE REQUIRES THAT »lua« is not installed!
-# »lua52« does not cause problems, and »lua« being installed together with this package (after building) is fine
-
-# if Lua has been detected correctly, you will see a line such as:
-# -- Found Lua51: /usr/lib/liblua5.1.so;/usr/lib/libm.so (found version "5.1.5")
-
-# if the »lua« package is installed, the following will be shown instead:
-# -- Found Lua51: /usr/lib/liblua5.1.so;/usr/lib/libm.so (found version "")
-
 _suffix=-1.8
 pkgname=wesnoth-1.8
 pkgver=1.8.6+dev
@@ -35,28 +26,14 @@ md5sums=('7fa59aab4ec96e6466dd276a76462e78'
 PKGEXT='.pkg.tar'
 
 prepare() {
-  msg ""
-  msg ""
-  msg ""
-  msg ""
-  msg "LUA DETECTEION DOES NOT WORK CORRECTLY IF YOU HAVE MULTIPLE VERSIONS OF LUA INSTALLED"
-  msg "YOU MUST REMOVE THE PACKAGE »lua« PRIOR TO BUILDING THIS PACKAGE"
-  msg ""
-  msg "you can use the following command for building"
-  msg "sudo pacman -Rdd lua && makepkg -sri --nocheck ; sudo pacman -S --asdeps lua"
-  msg ""
-  msg "THIS BUILD WILL FAIL LATER OTHERWISE"
-  msg ""
-  msg ""
-  msg ""
-  msg ""
-
   cd "$startdir"
+
   # get a shallow clone of the git repo and store it outside the srcdir
   if  [ ! -d "$pkgname-git" ] ; then
     git clone https://github.com/wesnoth/wesnoth -b 1.8 --shallow-exclude=1.8.6 $pkgname-git
     msg "Git checkout done (or server timeout)"
   fi
+
   ln -sf "$startdir/$pkgname-git" "$srcdir/$pkgname-git"
 }
 
