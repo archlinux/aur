@@ -13,7 +13,7 @@
 pkgbase=lib32-mesa-transform-feedback-git
 pkgname=('lib32-mesa-transform-feedback-git')
 pkgdesc="mesa with the RADV patches for VK_EXT_transform_feedback"
-pkgver=18.3.0_devel.104495.93b8b987d0
+pkgver=18.3.0_devel.105152.ff281e6204
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'

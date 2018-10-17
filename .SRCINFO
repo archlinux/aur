@@ -1,6 +1,6 @@
 pkgbase = lib32-mesa-transform-feedback-git
 	pkgdesc = mesa with the RADV patches for VK_EXT_transform_feedback
-	pkgver = 18.3.0_devel.104495.93b8b987d0
+	pkgver = 18.3.0_devel.105152.ff281e6204
 	pkgrel = 1
 	url = https://www.mesa3d.org
 	arch = x86_64
