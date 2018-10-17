@@ -1,9 +1,10 @@
-# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
 
 pkgbase=python-nvd3
 pkgname=('python-nvd3' 'python2-nvd3')
 pkgver=0.15.0
-pkgrel=1
+pkgrel=2
+pkgdesc='Python3 wrapper for the NVD3 chart generator'
 arch=('any')
 url='https://github.com/areski/python-nvd3/'
 license=('MIT')
@@ -26,7 +27,6 @@ build() {
 }
 
 package_python-nvd3() {
-    pkgdesc='Python3 wrapper for the NVD3 chart generator'
     depends=(
         # official repositories:
             'python' 'python-jinja'

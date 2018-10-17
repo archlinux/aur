@@ -1,6 +1,7 @@
 pkgbase = python-nvd3
+	pkgdesc = Python3 wrapper for the NVD3 chart generator
 	pkgver = 0.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/areski/python-nvd3/
 	arch = any
 	license = MIT
@@ -12,7 +13,6 @@ pkgbase = python-nvd3
 	sha256sums = fbd75ff47e0ef255b4aa4f3a8b10dc8b4024aa5a9a7abed5b2406bd3cb817715
 
 pkgname = python-nvd3
-	pkgdesc = Python3 wrapper for the NVD3 chart generator
 	depends = python
 	depends = python-jinja
 	depends = python-slugify
