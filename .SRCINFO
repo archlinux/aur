@@ -1,7 +1,7 @@
 pkgbase = caffe
 	pkgdesc = A deep learning framework made with expression, speed, and modularity in mind (cpu only)
 	pkgver = 1.0
-	pkgrel = 11
+	pkgrel = 12
 	url = http://caffe.berkeleyvision.org/
 	arch = i686
 	arch = x86_64
@@ -38,6 +38,8 @@ pkgbase = caffe
 	depends = python-leveldb
 	depends = python-scikit-image
 	depends = python-pydotplus
+	provides = caffe-cpu
+	conflicts = caffe-cpu
 	replaces = caffe-cpu
 	source = caffe-1.0.tar.gz::https://github.com/BVLC/caffe/archive/1.0.tar.gz
 	source = Makefile.config
