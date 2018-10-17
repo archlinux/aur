@@ -3,11 +3,11 @@
 pkgname=qperf-nordma
 _pkgname=qperf
 pkgver=0.4.11
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenFabrics Alliance InfiniBand performance benchmark for bandwidth and latency (supports TCP/IP only)'
 arch=('x86_64' 'i686')
 url='https://www.openfabrics.org/index.php/overview.html'
-license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
+license=('GPL2')
 depends=('glibc')
 conflicts=('qperf')
 source=("https://github.com/linux-rdma/${_pkgname}/archive/v${pkgver}.tar.gz")
@@ -28,5 +28,4 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
-  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
