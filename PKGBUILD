@@ -5,10 +5,10 @@
 # Contributor: M0Rf30
 
 pkgname=virtualbox-bin
-pkgver=5.2.18
-_build=124319
-_rev=73679
-pkgrel=2
+pkgver=5.2.20
+_build=125813
+_rev=74845
+pkgrel=1
 pkgdesc='Oracle VM VirtualBox Binary Edition (Oracle branded non-OSE version)'
 arch=('i686' 'x86_64')
 url='https://www.virtualbox.org/'
@@ -40,7 +40,7 @@ source=("https://download.virtualbox.org/virtualbox/${pkgver}/VirtualBoxSDK-${pk
 source_i686=("http://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${pkgver}-${_build}-Linux_x86.run")
 source_x86_64=("http://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${pkgver}-${_build}-Linux_amd64.run")
 noextract=("VirtualBoxSDK-${pkgver}-${_build}.zip")
-sha256sums=('7966b311ca62f54cfea2762914bdd0a49d319cc0ca5c34dc755437da936d1581'
+sha256sums=('d4ac4d314d22f49d3b2b4e9c2c9db661f13e37a99c1d126bf3582a9b6411007e'
             '23e3e0e6abfaa69bf0aa046c0ee070d19435b97cb4bfbb16bba65a2783502154'
             '815f6e2e3ab687356aad0e6f59eef6e266514fb12a6b569d239d834e0a480f37'
             '99deff35d8a600f20223b96ba409451834e58ac21a589a989dd82a2d6fe006ae'
@@ -51,8 +51,8 @@ sha256sums=('7966b311ca62f54cfea2762914bdd0a49d319cc0ca5c34dc755437da936d1581'
             'cc1c0500ab07bc13563d99037f776bf64bdc90bb521e31e2e0b04e42ea5bb36a'
             'e9df0fff15184d0a90abe17707bdbe1931582433bbc14ded4fb3b0252653c801'
             '5112f0e1ba3bd0bd92ef2edb2d21024e265abb02841aa29aa05410526adc273f')
-sha256sums_i686=('56c6e5c4396d6651ed3fda328ccfcfe82090fe0df595a500d992bdc8a7053338')
-sha256sums_x86_64=('3cb4b8550287cedd5042c0df2d4dfc4f0816cea6485f68f259bd2b06608769cd')
+sha256sums_i686=('2ac6ba596600100ac6cbf22fca834bd1fe093c05acb41cc7d7ac773e29302140')
+sha256sums_x86_64=('ce8d89cbfbfb0afeca835473349f37dc97620cab93430d68ac1d2c6c7c05e453')
 
 prepare() {
     [ "$CARCH" = 'i686'   ] && local _arch='x86'
@@ -76,12 +76,12 @@ package() {
     local _installdir='/opt/VirtualBox'
     
     # install bundled files
-    msg2 'Installing bundled files...'
+    printf '%s\n' '  -> Installing bundled files...'
     install -d "${pkgdir}/${_installdir}"
     tar -jxf "${srcdir}/${pkgname}-${pkgver}/VirtualBox.tar.bz2" -C "${pkgdir}/${_installdir}"
     
     # apply patch 009-include-path (thanks to Christian Hesse)
-    msg2 "Applying patch '009-includepath.patch'..."
+    printf '%s\n' "  -> Applying patch '009-includepath.patch'..."
     cd "${pkgdir}/${_installdir}/src/vboxhost/"
     patch -Np5 -i "${srcdir}/009-include-path.patch"
     
@@ -97,7 +97,7 @@ package() {
     chmod go-w "${pkgdir}/${_installdir}"
     
     # install SDK
-    msg2 'Installing SDK...'
+    printf '%s\n' '  -> Installing SDK...'
     cd "${srcdir}/${pkgname}-${pkgver}"
     pushd 'sdk/installer' >/dev/null
     VBOX_INSTALL_PATH="$_installdir" python vboxapisetup.py install --root "$pkgdir"
@@ -111,7 +111,7 @@ package() {
     install -D -m644 "${srcdir}/VBoxAuthSimple-r${_rev}.cpp" "${pkgdir}/${_installdir}/sdk/bindings/auth/VBoxAuthSimple.cpp"
     
     # install udev rules
-    msg2 'Installing udev rules...'
+    printf '%s\n' '  -> Installing udev rules...'
     cd "${pkgdir}/${_installdir}"
     install -D -m0644 "${srcdir}/10-vboxdrv.rules" "${pkgdir}/usr/lib/udev/rules.d/10-vboxdrv.rules"
     ## we need to copy and not symlink VBoxCreateUSBNode.sh in /usr/lib/udev to avoid udevd
@@ -119,7 +119,7 @@ package() {
     ## need more stuff from /opt
     cp -a VBoxCreateUSBNode.sh "${pkgdir}/usr/lib/udev/"
     
-    msg2 'Installing scripts...'
+    printf '%s\n' '  -> Installing scripts...'
     
     # install VBoxFixUSB script
     install -D -m0755 "${srcdir}/VBoxFixUSB" VBoxFixUSB
@@ -128,7 +128,7 @@ package() {
     install -D -m0755 "${srcdir}/vboxweb.rc"   "${pkgdir}/etc/rc.d/vboxweb"
     install -D -m0644 "${srcdir}/vboxweb.conf" "${pkgdir}/etc/conf.d/vboxweb"
     
-    msg2 'Creating needed symlinks...'
+    printf '%s\n' '  -> Creating needed symlinks...'
     
     # symlink the launchers (second link can fail if fs is not case sensitive)
     install -d -m0755 "${pkgdir}/usr/bin"
@@ -173,7 +173,7 @@ package() {
     
     # with the relase of VirtualBox 5.1.0, Oracle dropped DKMS support from their package
     # we will restore DKMS with the use of these config files
-    msg2 'Installing DKMS support...'
+    printf '%s\n' '  -> Installing DKMS support...'
     install -D -m0755 "${srcdir}/do_dkms" -t "${pkgdir}/${_installdir}/src/vboxhost"
     ## update module version
     cd "$srcdir"
@@ -182,12 +182,12 @@ package() {
     install -D -m0644 "${pkgname}-${pkgver}/dkms.conf" -t "${pkgdir}/${_installdir}/src/vboxhost"
 
     # module sources in /usr/src
-    msg2 'Installing module sources...'
+    printf '%s\n' '  -> Installing module sources...'
     install -d -m0755 "${pkgdir}/usr/src"
     mv "${pkgdir}/${_installdir}/src/vboxhost" "${pkgdir}/usr/src/vboxhost-${pkgver}"
     
     # write the configuration file
-    msg2 'Writing the configuration file...'
+    printf '%s\n' '  -> Writing the configuration file...'
     install -D -m0644 /dev/null "${pkgdir}/etc/vbox/vbox.cfg"
     cat > "${pkgdir}/etc/vbox/vbox.cfg" <<EOF
 # VirtualBox installation directory
@@ -199,7 +199,7 @@ INSTALL_REV='${_build}'
 EOF
     
     # write modules-load.d configuration to ensure that modules are loaded at boot
-    msg2 "Writing 'modules-load.d' configuration..."
+    printf '%s\n' "  -> Writing 'modules-load.d' configuration..."
     install -D -m644 /dev/null "${pkgdir}/usr/lib/modules-load.d/${pkgname}.conf"
     printf '%s\n'   '# Load virtualbox kernel modules at boot '                >"${pkgdir}/usr/lib/modules-load.d/${pkgname}.conf"
     printf '%s\n\n' "# This file was installed by the ${pkgname} AUR package" >>"${pkgdir}/usr/lib/modules-load.d/${pkgname}.conf"
@@ -209,6 +209,6 @@ EOF
     printf '%s\n'   'vboxnetflt' >>"${pkgdir}/usr/lib/modules-load.d/${pkgname}.conf"
     
     # fix permissions (change executables from 4711 to 4755)
-    msg2 'Fixing permissions...'
+    printf '%s\n' '  -> Fixing permissions...'
     chmod 4755 "${pkgdir}/${_installdir}"/{VBox{Headless,Net{AdpCtl,DHCP,NAT},SDL,VolInfo},VirtualBox}
 }
