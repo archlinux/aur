@@ -1,0 +1,18 @@
+pkgbase = nekostring-git
+	pkgdesc = DSSI plugin emulating a 70s-era string ensemble
+	pkgver = r5.22927db
+	pkgrel = 1
+	url = https://github.com/gordonjcp/nekostring
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = dssi
+	depends = gtk2
+	depends = liblo
+	provides = nekostring
+	conflicts = nekostring
+	source = git+https://github.com/gordonjcp/nekostring.git
+	md5sums = SKIP
+
+pkgname = nekostring-git
+
