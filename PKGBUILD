@@ -1,7 +1,7 @@
 # Maintainer: Ryan Petris (ryan@petris.net)
 
 pkgname=libpod
-pkgver=0.10.1.2
+pkgver=0.10.1.3
 pkgrel=1
 pkgdesc="A library used to create container pods."
 arch=("x86_64")
@@ -23,7 +23,7 @@ depends=(
 makedepends=("go" "go-md2man")
 conflicts=("podman")
 source=("https://github.com/containers/libpod/archive/v${pkgver}.tar.gz")
-sha256sums=("d830f385ee7ae63002f3bbd70c0f432a2f3fd2b074aa68eea11d9c8c6fa4d8ed")
+sha256sums=('6f34b05ca091d87bf700b2d3b60b80ce32738099b00ed8af3a2f71bcd3ac06eb')
 
 prepare() {
 	export GOPATH="${srcdir}/go"
