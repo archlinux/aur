@@ -1,7 +1,7 @@
 pkgbase = chromium-vaapi-bin
 	pkgdesc = Chromium with VA-API support to enable hardware acceleration, pre-compiled
-	pkgver = 69.0.3497.100
-	pkgrel = 2
+	pkgver = 70.0.3538.67
+	pkgrel = 1
 	url = https://www.chromium.org/Home
 	arch = x86_64
 	license = BSD
@@ -44,8 +44,8 @@ pkgbase = chromium-vaapi-bin
 	provides = chromium
 	conflicts = chromium
 	conflicts = chromium-vaapi
-	source_x86_64 = https://github.com/maximbaz/chromium-vaapi-bin/releases/download/69.0.3497.100-2/chromium-vaapi-69.0.3497.100-2-x86_64.pkg.tar.xz
-	sha256sums_x86_64 = 3f0076c96f340293e388187d8f965812817358c02f84a0d0c67171cfcf798b60
+	source_x86_64 = https://github.com/maximbaz/chromium-vaapi-bin/releases/download/70.0.3538.67-1/chromium-vaapi-70.0.3538.67-1-x86_64.pkg.tar.xz
+	sha256sums_x86_64 = 09de883a2d25e0521c8f176b29a6c116fa499c73a1bf7572a5c2243a65a6ce5f
 
 pkgname = chromium-vaapi-bin
 
