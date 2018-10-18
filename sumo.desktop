@@ -1,6 +1,6 @@
 [Desktop Entry]
 Encoding=UTF-8
-Version=1.0
+Version=
 Type=Application
 Exec=sumo-gui %U
 Icon=sumo

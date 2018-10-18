@@ -13,17 +13,16 @@ url="http://sumo.dlr.de"
 license=('GPL')
 depends=('python' 'proj' 'fox' 'xerces-c' 'gdal')
 makedepends=('help2man')
-source=("${pkgbase}-src-${pkgver}.tar.gz::http://prdownloads.sourceforge.net/${pkgbase}/${pkgbase}-src-${pkgver}.tar.gz?download"
-        "${pkgbase}.desktop"
-        "${pkgbase}.sh")
+source=("http://prdownloads.sourceforge.net/${pkgbase}/${pkgbase}-src-${pkgver}.tar.gz?download"
+        "${pkgbase}.desktop")
 
 sha256sums=('6e46a1568b1b3627f06c999c798feceb37f17e92aadb4d517825b01c797ec531'
-            '0500ba9cdf827cceae9a9bce66094bdb077300c94b0040bdd710afb92d0d4849'
-            '16db32dbba617f8a38f5d103ce3af7cc70ab4cbf5b50e30be5d7f13ee6ea2f4f')
+            'd9ec82a1b56ebeaf31c6382f6d903baf0767e440b640a713e587d7e09f72d213')
 
 prepare() {
     cd ${pkgbase}-${pkgver}
     ./configure --prefix=/usr
+    sed -i "/^Version=/ s/$/${pkgver}/" "${srcdir}/${pkgbase}.desktop"
 }
 
 build() {
@@ -33,92 +32,34 @@ build() {
 }
 
 package_sumo() {
-    backup=("etc/profile.d/sumo.sh")
+    # I can't see how is backup useful?
+    # backup=("etc/profile.d/sumo.sh")
     optdepends=('java-runtime-common: for executing Jar files like TraCI4J'
-                'python2: for executing various python scripts in $SUMO_HOME/tools'
-                'perl: for executing various perl scripts in $SUMO_HOME/tools')
+                "python2: for executing various python scripts in $SUMO_HOME/tools")
 
-    mkdir -p ${pkgdir}/etc/profile.d/
-    mkdir -p ${pkgdir}/usr/bin
-    mkdir -p ${pkgdir}/usr/lib/${pkgbase}/data
-    mkdir -p ${pkgdir}/usr/lib/${pkgbase}/tools
-    mkdir -p ${pkgdir}/usr/share/applications
-    mkdir -p ${pkgdir}/usr/share/doc/${pkgbase}
-    mkdir -p ${pkgdir}/usr/share/man/man1
-    mkdir -p ${pkgdir}/usr/share/pixmaps
+    cd ${pkgbase}-${pkgver}
 
-    install -m0755 ${srcdir}/${pkgbase}.sh ${pkgdir}/etc/profile.d/
+    # Installs just the bin files
+    make DESTDIR="${pkgdir}/" install
 
-    install -m0755 ${srcdir}/${pkgbase}-${pkgver}/bin/activitygen ${pkgdir}/usr/bin/
-    install -m0755 ${srcdir}/${pkgbase}-${pkgver}/bin/dfrouter ${pkgdir}/usr/bin/
-    install -m0755 ${srcdir}/${pkgbase}-${pkgver}/bin/duarouter ${pkgdir}/usr/bin/
-    install -m0755 ${srcdir}/${pkgbase}-${pkgver}/bin/emissionsDrivingCycle ${pkgdir}/usr/bin/
-    install -m0755 ${srcdir}/${pkgbase}-${pkgver}/bin/emissionsMap ${pkgdir}/usr/bin/
-    install -m0755 ${srcdir}/${pkgbase}-${pkgver}/bin/jtrrouter ${pkgdir}/usr/bin/
-    install -m0755 ${srcdir}/${pkgbase}-${pkgver}/bin/marouter ${pkgdir}/usr/bin/
-    install -m0755 ${srcdir}/${pkgbase}-${pkgver}/bin/netconvert ${pkgdir}/usr/bin/
-    install -m0755 ${srcdir}/${pkgbase}-${pkgver}/bin/netedit ${pkgdir}/usr/bin/
-    install -m0755 ${srcdir}/${pkgbase}-${pkgver}/bin/netgenerate ${pkgdir}/usr/bin/
-    install -m0755 ${srcdir}/${pkgbase}-${pkgver}/bin/od2trips ${pkgdir}/usr/bin/
-    install -m0755 ${srcdir}/${pkgbase}-${pkgver}/bin/polyconvert ${pkgdir}/usr/bin/
-    install -m0755 ${srcdir}/${pkgbase}-${pkgver}/bin/${pkgbase} ${pkgdir}/usr/bin/
-    install -m0755 ${srcdir}/${pkgbase}-${pkgver}/bin/${pkgbase}-gui ${pkgdir}/usr/bin/
-    install -m0755 ${srcdir}/${pkgbase}-${pkgver}/bin/TraCITestClient ${pkgdir}/usr/bin/
+    install -d "${pkgdir}/etc/profile.d"
+cat <<EOF > "${pkgdir}/etc/profile.d/sumo.sh"
+#!/bin/sh
 
-    SAVEIFS=$IFS
-    IFS=$(echo -en "\n\b")
+export SUMO_HOME="/usr/lib/sumo"
+EOF
 
-########### DATA
-    cd ${srcdir}/${pkgbase}-${pkgver}/data
-    for d in $(find . -type d)
-    do
-        mkdir -p ${pkgdir}/usr/lib/${pkgbase}/data/$d
-    done
-    for f in $(find . -type f)
-    do
-        install -m0644 $f ${pkgdir}/usr/lib/${pkgbase}/data/$f
-    done
-    for l in $(find . -type l)
-    do
-        ln -s $(readlink $l) ${pkgdir}/usr/lib/${pkgbase}/data/$l
-    done
-########### TOOLS
-    cd ${srcdir}/${pkgbase}-${pkgver}/tools
-    for d in $(find . -type d)
-    do
-        mkdir -p ${pkgdir}/usr/lib/${pkgbase}/tools/$d
-    done
-    for f in $(find . -type f)
-    do
-        install -m0644 $f ${pkgdir}/usr/lib/${pkgbase}/tools/$f
-    done
-    for l in $(find . -type l)
-    do
-        ln -s $(readlink $l) ${pkgdir}/usr/lib/${pkgbase}/tools/$l
-    done
+    install -d ${pkgdir}/usr/lib/${pkgbase}
+    cp -a data ${pkgdir}/usr/lib/${pkgbase}/
+    cp -a tools ${pkgdir}/usr/lib/${pkgbase}/
 
-    # make all scripts executable
-    find ${pkgdir}/usr/lib/${pkgbase}/tools/ -iname \*.sh -exec chmod +x {} \;
-    find ${pkgdir}/usr/lib/${pkgbase}/tools/ -iname \*.py -exec chmod +x {} \;
-    find ${pkgdir}/usr/lib/${pkgbase}/tools/ -iname \*.pl -exec chmod +x {} \;
-########### PIXMAP
-    install -m0644 ${srcdir}/${pkgbase}-${pkgver}/docs/userdoc/logo.png ${pkgdir}/usr/share/pixmaps/${pkgbase}.png
-########### .DESKTOP FILE
-    install -m0644 ${srcdir}/${pkgbase}.desktop ${pkgdir}/usr/share/applications
-########### MAN
-    cd ${srcdir}/${pkgbase}-${pkgver}/docs/man
-    for d in $(find . -type d)
-    do
-        mkdir -p ${pkgdir}/usr/share/man/man1/$d
-    done
-    for f in $(find . -type f)
-    do
-        install -m0644 $f ${pkgdir}/usr/share/man/man1/$f
-    done
-    for l in $(find . -type l)
-    do
-        ln -s $(readlink $l) ${pkgdir}/usr/share/man/man1/$l
-    done
+    # Make all scripts executable (not sure if this is necessary)
+    find ${pkgdir}/usr/lib/${pkgbase}/tools/ -iname "*.py" -exec chmod +x {} \;
+
+    # logo is missing in current source?
+    # install -m0644 docs/userdoc/logo.png ${pkgdir}/usr/share/pixmaps/${pkgbase}.png
+    install -Dm644 ${srcdir}/${pkgbase}.desktop -t ${pkgdir}/usr/share/applications/
+    install -Dm644 docs/man/* -t ${pkgdir}/usr/share/man/man1/
 }
 
 package_sumo-doc() {
