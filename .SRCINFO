@@ -1,13 +1,13 @@
 pkgbase = samurai
 	pkgdesc = ninja-compatible build tool written in C
-	pkgver = 0.3
+	pkgver = 0.4
 	pkgrel = 1
 	url = https://github.com/michaelforney/samurai
 	arch = i686
 	arch = x86_64
 	license = MIT
-	source = samurai-0.3.tar.gz::https://github.com/michaelforney/samurai/archive/0.3.tar.gz
-	md5sums = 50189cae08517410f8e4d73a2098a708
+	source = samurai-0.4.tar.gz::https://github.com/michaelforney/samurai/archive/0.4.tar.gz
+	md5sums = ad448b300916560b9db8081837733049
 
 pkgname = samurai
 
