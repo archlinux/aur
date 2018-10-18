@@ -32,13 +32,13 @@ sha1sums=('9d27a929b63099416263471c16367997c0ae6dba'
 validpgpkeys=('59359B80406D9E73E80599BEF3121E4F2885A7AA')
 
 prepare() {
-  cd $pkgname-$pkgver
+  cd ${_pkgname}-$pkgver
   patch -p0 -i ../moc-ffmpeg4.patch # Fix build with ffmpeg 4 (taken from official release on ArchLinux)
   patch -p0 -i ../moc-https.patch # Fix HTTPS streams
 }
 
 build() {
-  cd ${pkgname}-${pkgver}
+  cd ${_pkgname}-${pkgver}
   ./configure --prefix=/usr --without-rcc \
     --with-oss --with-alsa --with-jack --with-aac --with-mp3 \
     --with-musepack --with-vorbis --with-flac --with-wavpack \
@@ -48,6 +48,6 @@ build() {
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
+  cd ${_pkgname}-${pkgver}
   make DESTDIR="${pkgdir}" install
 }

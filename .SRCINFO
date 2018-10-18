@@ -1,5 +1,5 @@
 pkgbase = moc-https
-	pkgdesc = MOC with a patch to listen HTTPS streams
+	pkgdesc = An ncurses console audio player with HTTPS stream support
 	pkgver = 2.5.2
 	pkgrel = 2
 	epoch = 1
