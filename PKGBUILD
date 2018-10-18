@@ -35,6 +35,7 @@ build() {
 }
 
 package_clion-eap() {
+    depends=('libdbusmenu-glib')
     optdepends=(
         'clion-eap-jre: JetBrains custom Java Runtime (Recommended)'
         'clion-eap-cmake: JetBrains packaged CMake tools'
