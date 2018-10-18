@@ -25,7 +25,7 @@ sha256sums=('bf9bba03d0c3902c188af12e454b35343c4a9bf9e377ec2fe50132efb44ef36b'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
             '6abb842764bbed74ea4a269d24f1e73d1c0b1d8ecd6e2e6fb5fb10590298605e'
             'b48fe97f8e43ed0d2041d519119a4dafb70fcae72870951bf4fb7350fe169ac8'
-            '5e551630ee443a6985551da2ab72789f669deba8bf4443465d5c76a064dc675d')
+            'bde15c41f7cde851e2dda20b20ce6aa48fa9dedc55ff9cf881452d2a2549ecb6')
 
 build() {
   cd "${srcdir}/postgresql-${pkgver}"
