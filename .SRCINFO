@@ -1,7 +1,7 @@
 pkgbase = libldac
 	pkgdesc = AOSP libldac dispatcher
 	pkgver = 2.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/EHfive/ldacBT
 	arch = i686
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = libldac
 	provides = ldacBT=2.0.2
 	provides = ldacBT_enc.so=2.0.2
 	provides = ldacBT_abr.so=2.0.2
-	source = https://github.com/EHfive/ldacBT/releases/download/1.0-ldac.2.0.2/ldacBT.tar.gz
-	sha256sums = c7e2c6a2310eca03fe53b5bc2898edf2fa6fd834887f51bd46a1871879bf4bdb
+	source = https://github.com/EHfive/ldacBT/releases/download/1.1-ldac.2.0.2/ldacBT.tar.gz
+	sha256sums = 3fc4269f0cab8ef11e119502c3441042889970d019420de47588ad8777524ab3
 
 pkgname = libldac
 

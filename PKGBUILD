@@ -2,7 +2,7 @@
 
 pkgname=libldac
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="AOSP libldac dispatcher "
 arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
 url="https://github.com/EHfive/ldacBT"
@@ -11,9 +11,9 @@ depends=()
 makedepends=("cmake>=3.0" "make")
 optdepends=()
 provides=("ldacBT=2.0.2" "ldacBT_enc.so=2.0.2" "ldacBT_abr.so=2.0.2")
-source=("https://github.com/EHfive/ldacBT/releases/download/1.0-ldac.2.0.2/ldacBT.tar.gz")
+source=("https://github.com/EHfive/ldacBT/releases/download/1.1-ldac.2.0.2/ldacBT.tar.gz")
 
-sha256sums=('c7e2c6a2310eca03fe53b5bc2898edf2fa6fd834887f51bd46a1871879bf4bdb')
+sha256sums=('3fc4269f0cab8ef11e119502c3441042889970d019420de47588ad8777524ab3')
 
 
 build() {
