@@ -1,0 +1,16 @@
+pkgbase = numactl-stable
+	pkgdesc = Simple NUMA policy support with support for i686, x86_64, aarm64 and others
+	pkgver = 2.0.12
+	pkgrel = 1
+	url = https://github.com/numactl/numactl
+	arch = any
+	license = GPLv2
+	makedepends = gcc
+	depends = glibc
+	provides = numactl
+	conflicts = numactl
+	source = https://github.com/numactl/numactl/releases/download/v2.0.12/numactl-2.0.12.tar.gz
+	sha256sums = 55bbda363f5b32abd057b6fbb4551dd71323f5dbb66335ba758ba93de2ada729
+
+pkgname = numactl-stable
+
