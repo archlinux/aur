@@ -1,27 +1,31 @@
-# Maintainer: David Adler <david dot jo dot adler at gmail dot com>
+# Maintainer: David Adler <d.adler@posteo.de>
+
 pkgname=jack-smf-utils
 pkgver=1.0
-pkgrel=4
-pkgdesc="JACK MIDI player and recorder with JACK Transport sync"
-arch=('i686' 'x86_64')
+pkgrel=5
+pkgdesc="JACK MIDI smf player and recorder with JACK Transport sync"
+arch=('x86_64')
 url="http://jack-smf-utils.sourceforge.net"
-license=('BSD')
-depends=('jack' 'glib2' 'libsmf')
+license=('custom')
+depends=('jack' 'libsmf')
 source=(http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz)
 md5sums=('80234923dd5a14bdbd8ef567347d9df8')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver" 
-  sed -i ':a;$!N;1,5ba;P;$d;D' libsmf/Makefile.am
-  autoreconf --install
-  automake --add-missing
-  ./configure --prefix=/usr
-  make
+    cd $pkgname-$pkgver
+    # use /usr/bin/smfsh from package libsmf instead of the one 
+    # shipped with this package to avoid file conflict
+    sed -i ':a;$!N;1,5ba;P;$d;D' libsmf/Makefile.am
+    autoreconf --install
+    automake --add-missing
+    ./configure --prefix=/usr
+    make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR=$pkgdir install
+    cd $pkgname-$pkgver
+    make DESTDIR="$pkgdir" install
+    install -t "${pkgdir}/usr/share/licenses/$pkgname/" \
+        -vDm 644 COPYING
 }
 
-# vim:set ts=2 sw=2 et:
