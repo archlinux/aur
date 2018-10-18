@@ -1,6 +1,6 @@
---- src/Makefile.generic	2016-11-15 19:59:20.000000000 +0100
-+++ src/Makefile.generic_patched	2017-12-03 19:21:39.857855485 +0100
-@@ -227,11 +227,6 @@
+--- src/Makefile.generic
++++ src/Makefile.generic
+@@ -227,11 +227,6 @@ install: all
  	install -m0644 $(SIMLIB_HEADERS) $(PREFIX)/include
  	install -m0644 $(LIBNAME).a      $(PREFIX)/lib/lib$(LIBNAME).a
  	install -m0644 $(LIBNAME).so     $(PREFIX)/lib/lib$(LIBNAME).so
@@ -12,7 +12,7 @@
  
  #############################################################################
  # Uninstall library
-@@ -240,8 +235,6 @@
+@@ -240,8 +235,6 @@ uninstall:
  	$(RM) $(foreach headerfile, $(SIMLIB_HEADERS), $(PREFIX)/include/$(headerfile))
  	$(RM) $(PREFIX)/lib/lib$(LIBNAME).a
  	$(RM) $(PREFIX)/lib/lib$(LIBNAME).so
@@ -21,3 +21,13 @@
  
  #############################################################################
  # Basic test of functionality
+--- src/_test_.cc
++++ src/_test_.cc
+@@ -2,6 +2,7 @@
+ //! \file  _test_.cc  Simple test model.
+ 
+ #define SIMLIB_DEBUG
++#define I_REALLY_KNOW_HOW_TO_USE_WAITUNTIL
+ 
+ #include "simlib.h"
+ 
