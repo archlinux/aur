@@ -2,14 +2,13 @@
 
 _pkgname=fragments
 pkgname=$_pkgname-git
-pkgver=1.2.r4.g6f7245e
+pkgver=1.2.r8.g9c1577c
 pkgrel=1
 pkgdesc="A GTK3 BitTorrent client following the GNOME Human Interface Guidelines"
 arch=(i686 x86_64 armv6h armv7h)
 url="https://github.com/haecker-felix/Fragments"
 license=(GPL3)
 depends=(curl
-         gtk3
          libb64
          libevent
          libhandy

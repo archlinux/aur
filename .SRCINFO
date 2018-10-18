@@ -1,6 +1,6 @@
 pkgbase = fragments-git
 	pkgdesc = A GTK3 BitTorrent client following the GNOME Human Interface Guidelines
-	pkgver = 1.2.r4.g6f7245e
+	pkgver = 1.2.r8.g9c1577c
 	pkgrel = 1
 	url = https://github.com/haecker-felix/Fragments
 	arch = i686
@@ -15,7 +15,6 @@ pkgbase = fragments-git
 	makedepends = meson
 	makedepends = vala
 	depends = curl
-	depends = gtk3
 	depends = libb64
 	depends = libevent
 	depends = libhandy
