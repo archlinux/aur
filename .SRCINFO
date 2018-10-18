@@ -1,7 +1,7 @@
 pkgbase = idos-timetable-maps-chaps-trains-europe-latest
 	pkgdesc = Map data for the timetable search engines by CHAPS: European railway.
 	pkgver = 2018_7_25
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 0
 	url = http://chaps.cz/eng/download/idos/zip#kotvamap
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = idos-timetable-maps-chaps-trains-europe-latest
 	source = IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf
 	source = license-dummy.txt
 	sha256sums = SKIP
-	sha256sums = a6bb78dda9dbf43d487251eb2ff2e23b4a64e5fb0bb43bca3a507520df98c6c5
+	sha256sums = SKIP
 	sha256sums = c6bb216055d3670d3100b7a74e04ce0644030f365f4349a09e630ef60fbcb9a4
 
 pkgname = idos-timetable-maps-chaps-trains-europe-latest

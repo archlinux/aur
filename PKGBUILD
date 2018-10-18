@@ -6,7 +6,7 @@ _pkgname=idos-timetable-maps-chaps-trains-europe
 pkgname="${_pkgname}-latest"
 epoch=0
 pkgver=2018_7_25
-pkgrel=2
+pkgrel=3
 pkgdesc="Map data for the timetable search engines by CHAPS: European railway."
 arch=(any)
 url="http://chaps.cz/eng/download/idos/zip#kotvamap"
@@ -52,7 +52,7 @@ source=(
 
 sha256sums=(
   'SKIP'
-  "a6bb78dda9dbf43d487251eb2ff2e23b4a64e5fb0bb43bca3a507520df98c6c5"
+  "SKIP"
   "c6bb216055d3670d3100b7a74e04ce0644030f365f4349a09e630ef60fbcb9a4"
 )
 
