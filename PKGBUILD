@@ -77,6 +77,10 @@ build() {
   CFLAGS=${CFLAGS/-pipe/}
   CXXFLAGS=${CXXFLAGS/-pipe/}
 
+  #Revsion 261304 removed libmpx
+  #https://gcc.gnu.org/viewcvs/gcc?view=revision&revision=261304
+  #https://gcc.gnu.org/wiki/Intel%20MPX%20support%20in%20the%20GCC%20compiler
+  #https://www.phoronix.com/scan.php?page=news_item&px=MPX-Removed-From-GCC9
   "$srcdir/gcc/configure" --prefix=/usr \
       --libdir=/usr/lib \
       --libexecdir=/usr/lib \
@@ -86,7 +90,6 @@ build() {
       --enable-languages=c,c++,ada,fortran,go,lto,objc,obj-c++ \
       --enable-shared \
       --enable-threads=posix \
-      --enable-libmpx \
       --with-system-zlib \
       --with-isl \
       --enable-__cxa_atexit \
@@ -149,8 +152,6 @@ package_gcc-libs-git() {
 
   make -C $CHOST/libobjc DESTDIR="$pkgdir" install-libs
   make -C $CHOST/libstdc++-v3/po DESTDIR="$pkgdir" install
-  make -C $CHOST/libmpx DESTDIR="$pkgdir" install
-  rm -f "$pkgdir/usr/lib/libmpx.spec"
 
   for lib in libgomp \
              libitm \
@@ -216,12 +217,10 @@ package_gcc-git() {
   make -C $CHOST/libsanitizer/asan DESTDIR="$pkgdir" install-nodist_toolexeclibHEADERS
   make -C $CHOST/libsanitizer/tsan DESTDIR="$pkgdir" install-nodist_toolexeclibHEADERS
   make -C $CHOST/libsanitizer/lsan DESTDIR="$pkgdir" install-nodist_toolexeclibHEADERS
-  make -C $CHOST/libmpx DESTDIR="$pkgdir" install-nodist_toolexeclibHEADERS
   make -C $CHOST/32/libgomp DESTDIR="$pkgdir" install-nodist_toolexeclibHEADERS
   make -C $CHOST/32/libitm DESTDIR="$pkgdir" install-nodist_toolexeclibHEADERS
   make -C $CHOST/32/libsanitizer DESTDIR="$pkgdir" install-nodist_{saninclude,toolexeclib}HEADERS
   make -C $CHOST/32/libsanitizer/asan DESTDIR="$pkgdir" install-nodist_toolexeclibHEADERS
-  make -C $CHOST/32/libmpx DESTDIR="$pkgdir" install-nodist_toolexeclibHEADERS
 
   make -C libiberty DESTDIR="$pkgdir" install
   install -m644 libiberty/pic/libiberty.a "$pkgdir/usr/lib"
@@ -378,8 +377,6 @@ package_lib32-gcc-libs-gitb() {
   done
 
   make -C $CHOST/32/libobjc DESTDIR="$pkgdir" install-libs
-  make -C $CHOST/32/libmpx DESTDIR="$pkgdir" install
-  rm -f "$pkgdir/usr/lib32/libmpx.spec"
 
   # remove files provided by gcc-libs
   rm -rf "$pkgdir"/usr/lib
