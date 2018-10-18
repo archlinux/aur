@@ -10,14 +10,15 @@ pkgrel=11
 pkgdesc="3D game about collecting mushrooms in outerspace"
 arch=('i686' 'x86_64')
 url="http://funguloids.sourceforge.net/"
-license=('GPL')
-makedepends=('python')
-depends=('boost' 'ogre>=1.10' 'ois>=0.7' 'freealut' 'lua51' 'libogg' 'libvorbis' 'libmad')
+license=('ZLIB')
+makedepends=('boost' 'python')
+depends=('boost-libs' 'ogre>=1.10' 'ois>=0.7' 'freealut' 'lua51' 'libogg' 'libvorbis' 'libmad')
 source=(http://downloads.sourceforge.net/${pkgname}/${pkgname}-linux-${_realver}.tar.bz2
         funguloids.desktop
         funguloids-alc_error.patch
         funguloids-gcc44.patch
-        funguloids-ogre_1.6.patch funguloids-strcmp.patch
+        funguloids-ogre_1.6.patch
+        funguloids-strcmp.patch
         size_chunks_reverse.patch
         mpak.py
         funguloids-lua.patch
@@ -133,4 +134,11 @@ package() {
   # install desktop file
   install -Dm644 "${srcdir}/funguloids.desktop" \
     "${pkgdir}/usr/share/applications/funguloids.desktop"
+
+  # install license file
+  install -Dm644 "${srcdir}/${pkgname}/COPYING" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  # use default location for docs
+  mv "${pkgdir}/usr/share/docs" "${pkgdir}/usr/share/doc"
 }
