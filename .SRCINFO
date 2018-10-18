@@ -1,16 +1,15 @@
 pkgbase = jpmidi
 	pkgdesc = SMF player for JACK MIDI with transport sync
-	pkgver = 0.2
-	pkgrel = 4
-	url = http://juliencoder.de/jpmidi/
-	arch = i686
+	pkgver = 0.21
+	pkgrel = 5
+	url = https://github.com/jerash/jpmidi
 	arch = x86_64
 	license = GPL
 	depends = jack
 	depends = glib2
 	depends = readline
-	source = http://juliencoder.de/jpmidi/jpmidi-0.2.tar.gz
-	md5sums = d9ce048a26b879a2eb0c6074c0124be0
+	source = jpmidi-0.21.tar.gz::https://github.com/jerash/jpmidi/archive/v0.21.tar.gz
+	md5sums = 6f0484be7dc55d5de88d7532048dd2cb
 
 pkgname = jpmidi
 
