@@ -1,7 +1,7 @@
 pkgbase = hamlib
 	pkgdesc = Ham radio equipment control libraries
-	pkgver = 3.2
-	pkgrel = 2
+	pkgver = 3.3
+	pkgrel = 1
 	url = http://hamlib.org
 	arch = i686
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = hamlib
 	depends = libusb-compat
 	depends = libtool
 	options = !emptydirs
-	source = http://downloads.sourceforge.net/project/hamlib/hamlib/3.2/hamlib-3.2.tar.gz
-	sha1sums = ee90d0a79c4408b452ea328620c333d650b41f44
-	sha256sums = b55cb5e6a8e876cceb86590c594ea5a6eb5dff2e30fc13ce053b46baa6d7ad1d
+	source = http://downloads.sourceforge.net/project/hamlib/hamlib/3.3/hamlib-3.3.tar.gz
+	sha1sums = a39853bb62f91a16e6b024e809e198ad9cd46417
+	sha256sums = c90b53949c767f049733b442cd6e0a48648b55d99d4df5ef3f852d985f45e880
 
 pkgname = hamlib
 
