@@ -1,5 +1,5 @@
 pkgbase = minivmac
-	pkgdesc = a miniature early Macintosh emulator
+	pkgdesc = a miniature Macintosh II emulator
 	pkgver = 3.5.8
 	pkgrel = 1
 	url = http://www.gryphel.com/c/minivmac/
@@ -9,5 +9,5 @@ pkgbase = minivmac
 	source = https://www.gryphel.com/d/minivmac/minivmac-3.5.8/mnvm0026-3.5.8-lx64.bin.tgz
 	md5sums = e81655df670a0422702006c96da10b75
 
-pkgname = minivmac
+pkgname = minivmacii
 
