@@ -1,0 +1,17 @@
+pkgbase = grin-miner-git
+	pkgdesc = Standalone miner for grin
+	pkgver = r58.bffce19
+	pkgrel = 1
+	url = https://github.com/mimblewimble/grin-miner
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = git
+	makedepends = rust
+	depends = ncurses
+	source = git+https://github.com/mimblewimble/grin-miner.git
+	sha256sums = SKIP
+
+pkgname = grin-miner-git
+
