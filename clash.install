@@ -1,0 +1,41 @@
+# Thanks aur#cow-proxy
+post_install() {
+    post_upgrade
+}
+
+post_upgrade() {
+
+    cat << EOF
+  Configuration document can be found at : https://github.com/Dreamacro/clash
+
+  Running clash system instance for user account:
+
+        To reload system systemd modules, execute
+
+                systemctl daemon-reload
+
+        To start clash, execute:
+
+                systemctl start clash@user
+
+        To autostart clash on system start, execute
+
+                systemctl enable clash@user
+
+  Running clash user instance (will used current user account):
+
+        To reload user systemd modules, execute
+
+                systemctl --user daemon-reload
+
+        To start clash manually, execute:
+
+                systemctl --user start clash
+
+        To autostart clash on user login, execute
+
+                systemctl --user enable clash
+
+EOF
+
+}
