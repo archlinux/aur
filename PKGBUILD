@@ -13,6 +13,8 @@
 pkgname=(gcc-git gcc-libs-git gcc-fortran-git gcc-objc-git gcc-ada-git gcc-go-git lib32-gcc-libs-gitb)
 pkgver=9.0.0.r164803.d767b8cd9ed
 _majorver=${pkgver:0:1}
+#this is set after pkgver() runs!  (Thanks makepkg!)
+_basever=${pkgver%%.r*}
 _islver=0.19
 pkgrel=1
 pkgdesc='The GNU Compiler Collection (git version)'
@@ -37,7 +39,8 @@ sha256sums=('SKIP'
 
 _svnrev=264010
 _svnurl=svn://gcc.gnu.org/svn/gcc/branches/gcc-${_majorver}-branch
-_libdir=usr/lib/gcc/$CHOST/${pkgver%%+*}
+#also set after pkgver() runs!
+_libdir=usr/lib/gcc/$CHOST/${_basever}
 
 # snapshot() is only used by core's maintainers, so removing it here
 
@@ -244,8 +247,8 @@ package_gcc-git() {
   rm -f "$pkgdir"/usr/lib32/lib{stdc++,gcc_s}.so
 
   # byte-compile python libraries
-  python -m compileall "$pkgdir/usr/share/gcc-${pkgver%%+*}/"
-  python -O -m compileall "$pkgdir/usr/share/gcc-${pkgver%%+*}/"
+  python -m compileall "$pkgdir/usr/share/gcc-${_basever}/"
+  python -O -m compileall "$pkgdir/usr/share/gcc-${_basever}/"
 
   # Install Runtime Library Exception
   install -d "$pkgdir/usr/share/licenses/gcc-git/"
