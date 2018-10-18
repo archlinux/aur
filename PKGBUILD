@@ -8,7 +8,7 @@ pkgname=(qemu-patched qemu-patched-headless qemu-patched-arch-extra qemu-patched
 _pkgname=qemu
 pkgdesc="A generic and open source machine emulator and virtualizer - Patched for extra functionality"
 pkgver=3.0.0
-pkgrel=3
+pkgrel=4
 arch=(x86_64)
 license=(GPL2 LGPL2.1)
 url="http://wiki.qemu.org/"
@@ -52,7 +52,8 @@ prepare() {
   patch -p1 < ../fix_virtio.patch
   patch -p1 < ../cpu-pinning.patch
   patch -p1 < ../pa-fixes.patch
-  patch -p1 < ../pcie-nasty.patch
+  #uncomment for PCIe bus speed patch
+  #patch -p1 < ../pcie-nasty.patch
 }
 
 build() {
