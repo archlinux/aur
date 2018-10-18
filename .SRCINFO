@@ -1,14 +1,16 @@
 pkgbase = akira-git
 	pkgdesc = Native Linux App for UI and UX Design built in Vala and Gtk
-	pkgver = r140.770013b
+	pkgver = r166.144fd19
 	pkgrel = 1
 	url = https://github.com/Alecaddd/Akira
 	arch = x86_64
 	license = GPL3
+	checkdepends = vala-lint-git
 	makedepends = granite
 	makedepends = gtksourceview3
 	makedepends = meson
 	makedepends = vala
+	depends = granite
 	provides = akira
 	source = git+https://github.com/Alecaddd/Akira.git
 	sha256sums = SKIP
