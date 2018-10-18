@@ -1,7 +1,7 @@
 pkgbase = jpmidi-git
 	pkgdesc = SMF player for JACK MIDI with transport sync
 	pkgver = r14.8425151
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jerash/jpmidi
 	arch = x86_64
 	license = GPL

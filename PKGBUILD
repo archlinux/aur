@@ -1,4 +1,4 @@
-# Maintainer: David Adler <david dot jo dot adler at gmail dot com>
+# Maintainer: David Adler <d.adler@posteo.de>
 _pkgname=jpmidi
 pkgname=$_pkgname-git
 pkgver=r14.8425151
@@ -14,19 +14,19 @@ source=(git+https://github.com/jerash/jpmidi.git)
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$_pkgname"
+    cd $_pkgname
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "$srcdir/$_pkgname/$_pkgname"
+    cd $_pkgname/$_pkgname
     ./autogen.sh 
     ./configure --prefix="/usr"
     make
 }
 
 package() {
-    cd "$srcdir/$_pkgname/$_pkgname"
+    cd $_pkgname/$_pkgname
     make DESTDIR="$pkgdir/" install
 }
 
