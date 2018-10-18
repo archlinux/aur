@@ -1,7 +1,7 @@
 pkgbase = ttf-timetable-latest
 	pkgdesc = Font with train timetable symbols, used by the offline timetable by CHAPS (IDOS, Timetable-Browser) or INPROP (CP, ELIS) (also retailed by České Dráhy or ŽSR).
 	pkgver = 1.352.r20170825
-	pkgrel = 1
+	pkgrel = 2
 	url = http://chaps.cz/eng/download/idos/zip#kotvaprg
 	install = tt.install
 	arch = any
