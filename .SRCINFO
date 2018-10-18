@@ -1,7 +1,7 @@
 pkgbase = wine-staging-pba
 	pkgdesc = A compatibility layer for running Windows programs - Staging branch with PBA patches
-	pkgver = 3.15
-	pkgrel = 2
+	pkgver = 3.18
+	pkgrel = 1
 	url = http://www.wine-staging.com
 	install = wine.install
 	arch = x86_64
@@ -136,16 +136,15 @@ pkgbase = wine-staging-pba
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	provides = wine=3.15
-	provides = wine-wow64=3.15
+	provides = wine=3.18
+	provides = wine-wow64=3.18
 	conflicts = wine
 	conflicts = wine-wow64
 	conflicts = wine-staging
 	options = staticlibs
-	source = https://dl.winehq.org/wine/source/3.x/wine-3.15.tar.xz
-	source = https://dl.winehq.org/wine/source/3.x/wine-3.15.tar.xz.sign
-	source = wine-staging-v3.15.tar.gz::https://github.com/wine-staging/wine-staging/archive/v3.15.tar.gz
-	source = harmony-fix.diff
+	source = https://dl.winehq.org/wine/source/3.x/wine-3.18.tar.xz
+	source = https://dl.winehq.org/wine/source/3.x/wine-3.18.tar.xz.sign
+	source = wine-staging-v3.18.tar.gz::https://github.com/wine-staging/wine-staging/archive/v3.18.tar.gz
 	source = 30-win32-aliases.conf
 	source = wine-binfmt.conf
 	source = steam.patch
@@ -153,10 +152,9 @@ pkgbase = wine-staging-pba
 	source = pba-patches::git+https://github.com/Firerat/wine-pba.git
 	validpgpkeys = 5AC1A08B03BD7A313E0A955AF5E6E9EEB9461DD7
 	validpgpkeys = DA23579A74D4AD9AF9D3F945CEFAC8EAAF17519D
-	sha512sums = 3fb3f6a896eae53ef75a751e72f7431f9b6986b56738dc314bca9eff9d078e65d865ebb28cbb7a63aa571eb11cdaed20c21c36cec565f81610e348fd165e0f2a
+	sha512sums = 2137662ea69964a69d77ff5c05f271783bda49af65d605909074d465ed8087d84065156e5c509eae31b4c3a20e83a838fc71bd077b2267640b163acfa5f7366e
 	sha512sums = SKIP
-	sha512sums = f0ed9d4a099b03c04a126927919b7eddbdaff7a08a0b97cdf387c64318826d6454183cf03997425b349540d13b1ccf6262aa2c5af0af682939584e3de71b7541
-	sha512sums = b86edf07bfc560f403fdfd5a71f97930ee2a4c3f76c92cc1a0dbb2e107be9db3bed3a727a0430d8a049583c63dd11f5d4567fb7aa69b193997c6da241acc4f2e
+	sha512sums = d7c353b2302616b8ffe9f41090bc36c8869238410eda16072aed0b70e54c8a09b4a48d439fc9e4f211804945d55dc4a00a5d70efd2ca4a50f72db7607e6ef10e
 	sha512sums = 6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb
 	sha512sums = bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285
 	sha512sums = f3e42a0720777256ca583f96044f6482aae8f4c707189104216f86f6c7a1b68a186c5124c72866229d46eb66c20c555ba9f32a230ec50f968faa8a12b8372b0a

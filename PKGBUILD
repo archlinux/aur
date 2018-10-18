@@ -7,23 +7,21 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-staging-pba
-pkgver=3.15
-pkgrel=2
+pkgver=3.18
+pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
 
 source=(https://dl.winehq.org/wine/source/3.x/wine-$_pkgbasever.tar.xz{,.sign}
         "wine-staging-v$_pkgbasever.tar.gz::https://github.com/wine-staging/wine-staging/archive/v$_pkgbasever.tar.gz"
-        harmony-fix.diff
         30-win32-aliases.conf
         wine-binfmt.conf
         steam.patch
         poe-fix.patch
         "pba-patches::git+https://github.com/Firerat/wine-pba.git")
-sha512sums=('3fb3f6a896eae53ef75a751e72f7431f9b6986b56738dc314bca9eff9d078e65d865ebb28cbb7a63aa571eb11cdaed20c21c36cec565f81610e348fd165e0f2a'
+sha512sums=('2137662ea69964a69d77ff5c05f271783bda49af65d605909074d465ed8087d84065156e5c509eae31b4c3a20e83a838fc71bd077b2267640b163acfa5f7366e'
             'SKIP'
-            'f0ed9d4a099b03c04a126927919b7eddbdaff7a08a0b97cdf387c64318826d6454183cf03997425b349540d13b1ccf6262aa2c5af0af682939584e3de71b7541'
-            'b86edf07bfc560f403fdfd5a71f97930ee2a4c3f76c92cc1a0dbb2e107be9db3bed3a727a0430d8a049583c63dd11f5d4567fb7aa69b193997c6da241acc4f2e'
+            'd7c353b2302616b8ffe9f41090bc36c8869238410eda16072aed0b70e54c8a09b4a48d439fc9e4f211804945d55dc4a00a5d70efd2ca4a50f72db7607e6ef10e'
             '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
             'bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285'
             'f3e42a0720777256ca583f96044f6482aae8f4c707189104216f86f6c7a1b68a186c5124c72866229d46eb66c20c555ba9f32a230ec50f968faa8a12b8372b0a'
@@ -129,7 +127,6 @@ prepare() {
   export CFLAGS="${CFLAGS/-fno-plt/}"
   export LDFLAGS="${LDFLAGS/,-z,now/}"
 
-  patch -d $pkgname -Np1 < harmony-fix.diff
   patch -d $pkgname -Np1 < poe-fix.patch
 
   # steam fix
@@ -138,7 +135,7 @@ prepare() {
   popd
 
   pushd pba-patches
-  git checkout 3072a7ab5fa713a2eb27ff6792012eaf668a5070
+  git checkout 075e4624a65398d7b359ece1da304d7a95e9bd11
   popd
 
   for f in $(ls pba-patches/patches); do
