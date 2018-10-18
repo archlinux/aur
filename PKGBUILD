@@ -10,44 +10,33 @@
 # Contributor: anthrit <anthrit [at] anthware [dot] com>
 
 pkgname=lwks
-lwksver=14.0.0
+lwksver=14.5.0
 pkgver=$lwksver
-pkgrel=5
+pkgrel=1
 pkgdesc="Lightworks is a professional video editing suite"
 arch=('x86_64')
 options=('!strip')
 url="http://www.lwks.com/"
 license=('custom')
-depends=('cairo' 'gdk-pixbuf2' 'glib2' 'libjpeg-turbo' 'pango' 'curl' 'gtk3' 'portaudio' 'openssl' 'libgl' 'libtiff' 'libutil-linux' 'ffmpeg' 'glu' 'libedit' 'nvidia-cg-toolkit' 'openssl-1.0')
-optdepends=('nvidia-utils: only for nVidia users')
+depends=('cairo' 'gdk-pixbuf2' 'glib2' 'libjpeg-turbo' 'pango' 'curl' 'gtk3' 'openssl' 'libgl' 'libtiff' 'libutil-linux' 'ffmpeg' 'glu' 'libedit' 'nvidia-cg-toolkit')
+optdepends=('nvidia-utils: only for nVidia users' 'libc++: only for BlackMagic RAW support (BRAW)' 'libc++abi: only for BlackMagic RAW support (BRAW)')
 provides=('lightworks')
 conflicts=('lightworks' 'lwks-beta')
 source=(
-    "http://downloads.lwks.com/v14/lwks-$lwksver-amd64.deb"
-    "http://pep20.net/static/portaudio-19_20140130-3-x86_64.pkg.tar.xz"
-    "wayland.patch"
+    "https://downloads.lwks.com/v14-5/lightworks-$lwksver-amd64.deb"
     )
 
 sha256sums=(
-    '66eb9f9678d979db76199f1c99a71df0ddc017bb47dfda976b508849ab305033'
-    '1c6722888cf4ab5cbf4bdfd6272b7d524f0ee547f443a98cf554d6fa8ae5c1ca'
-    'e9429b3332f90ead771e7cc23d014b60be7311d50f809d353755fa0f50c9b242'
+    '87c810528ee2ee11b3ee0d7051e0ab9fb1a3c100bf491f90d3339a9fb58c5cb6'
     )
 
 package() {
     msg2 "Extracting data.tar.xz"
     bsdtar -zxf data.tar.xz -C "$pkgdir"
 
-    msg2 "Extracting compatible PortAudio 19_20140130"
-    mkdir "$pkgdir/portaudio"
-    tar -xf portaudio-19_20140130-3-x86_64.pkg.tar.xz -C "$pkgdir/portaudio"
-
     msg2 "Moving udev folder from /lib to /usr/lib"
     mv "$pkgdir"/lib/udev "$pkgdir"/usr/lib
     rmdir "$pkgdir"/lib
-
-    msg2 "Applying Wayland patch"
-    patch -Np3 -d "$pkgdir" -i "$srcdir/wayland.patch"
 
     msg2 "Copying copyright file and creating a license dir"
     install -Dm644 "$pkgdir"/usr/share/doc/lightworks/copyright \
@@ -57,10 +46,4 @@ package() {
     msg2 "Changing some needed permissions"
     chmod a+rw "$pkgdir"/usr/share/lightworks/Preferences
     chmod a+rw "$pkgdir"/usr/share/lightworks/"Audio Mixes"
-
-    msg2 "Copying portaudio files"
-    install -Dm644 "$pkgdir"/portaudio/usr/lib/libportaudio*.so* "$pkgdir"/usr/lib/lightworks/
-
-    msg2 "Cleaning up portaudio files"
-    rm -rf "$pkgdir/portaudio"
 }
