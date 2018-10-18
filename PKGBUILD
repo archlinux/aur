@@ -2,7 +2,7 @@
 # Contribution: Can Celasun <can[at]dcc[dot]im>
 pkgname=curvetun
 _archivename=netsniff-ng
-pkgver=0.6.3
+pkgver=0.6.5
 pkgrel=1
 pkgdesc='A lightweight, high-speed ECDH multiuser TUN/TAP tunnel deamon that is based on epoll.'
 arch=('i686' 'x86_64')
@@ -11,9 +11,9 @@ license=('GPL2')
 makedepends=('cmake' 'flex' 'bison')
 depends=('ncurses' 'geoip' 'zlib' 'libpcap' 'libnl' 'libsodium')
 conflicts=('netsniff-ng')
-source=(http://pub.netsniff-ng.org/netsniff-ng/${_archivename}-${pkgver}.tar.gz
-	netsniff-ng-${pkgver}.tar.gz.sig::http://pub.netsniff-ng.org/netsniff-ng/netsniff-ng-${pkgver}.tar.gz.sign)
-sha256sums=('a499a914d94873d0c5269e0fc902d649108eebb3670a145ad4b37d38a3495eb5'
+source=(http://pub.netsniff-ng.org/netsniff-ng/${_archivename}-${pkgver}.tar.xz
+	netsniff-ng-${pkgver}.tar.xz.sig::http://pub.netsniff-ng.org/netsniff-ng/netsniff-ng-${pkgver}.tar.xz.sign)
+sha256sums=('4966821510079bb13722b9fbb4b7567e44b1b4c3e1b1e7ad95f417a89be5d795'
 	'SKIP')
 validpgpkeys=('C3DE742283C246F2D7887AB4236B0FE9B5510F47')  # Tobias Klauser <tklauser@distanz.ch>
 build() {

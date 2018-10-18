@@ -1,6 +1,6 @@
 pkgbase = curvetun
-	pkgdesc = A lightweight, high-speed ECDH multiuser TUN/TAP tunnel that is based on epoll.
-	pkgver = 0.6.3
+	pkgdesc = A lightweight, high-speed ECDH multiuser TUN/TAP tunnel deamon that is based on epoll.
+	pkgver = 0.6.5
 	pkgrel = 1
 	url = http://netsniff-ng.org/
 	arch = i686
@@ -16,9 +16,10 @@ pkgbase = curvetun
 	depends = libnl
 	depends = libsodium
 	conflicts = netsniff-ng
-	source = http://pub.netsniff-ng.org/netsniff-ng/netsniff-ng-0.6.3.tar.gz
-	source = netsniff-ng-0.6.3.tar.gz.sig::http://pub.netsniff-ng.org/netsniff-ng/netsniff-ng-0.6.3.tar.gz.sign
-	sha256sums = a499a914d94873d0c5269e0fc902d649108eebb3670a145ad4b37d38a3495eb5
+	source = http://pub.netsniff-ng.org/netsniff-ng/netsniff-ng-0.6.5.tar.xz
+	source = netsniff-ng-0.6.5.tar.xz.sig::http://pub.netsniff-ng.org/netsniff-ng/netsniff-ng-0.6.5.tar.xz.sign
+	validpgpkeys = C3DE742283C246F2D7887AB4236B0FE9B5510F47
+	sha256sums = 4966821510079bb13722b9fbb4b7567e44b1b4c3e1b1e7ad95f417a89be5d795
 	sha256sums = SKIP
 
 pkgname = curvetun
