@@ -1,0 +1,17 @@
+pkgbase = ssf2fcitx-git
+	pkgdesc = Automagically convert your favorite sogou-pinyin skin to fcitx skin
+	pkgver = 79c151d
+	pkgrel = 1
+	url = https://github.com/VOID001/ssf2fcitx
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt5-base
+	makedepends = wget
+	depends = qt5-base
+	source = ssf2fcitx-git-79c151d::git+https://github.com/VOID001/ssf2fcitx
+	md5sums = SKIP
+
+pkgname = ssf2fcitx-git
+
