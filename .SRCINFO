@@ -1,14 +1,14 @@
 pkgbase = paper-bin
 	pkgdesc = Plaintext writer supporting LaTeX and markdown
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://cloud.iostud.io/index.php/s
 	arch = x86_64
 	license = unknown
 	depends = texlive-core
 	provides = paper
-	source = https://cloud.iostud.io/index.php/s/nXzbe5gPE8rxj8e/download?path=%2F&files=paper-linux-x64-0.0.2.tar.gz
-	md5sums = 34cf699ee072104d049d86dc02f065ce
+	source = https://cloud.iostud.io/index.php/s/QFLj6wErSXBKaBT/download?path=%2F&files=paper-linux-x64-0.0.3.tar.gz
+	md5sums = 33c026d4c51d74dd54ea395f4096ff3a
 
 pkgname = paper-bin
 

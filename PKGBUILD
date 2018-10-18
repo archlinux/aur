@@ -1,9 +1,10 @@
 # Maintainer: Pierre-Alexis Ciavaldini <pierre-alexis@ciavaldini.fr>
 
 # maintenance, tar files
-pkgver="0.0.2"
 pkgrel=1
-md5sums=("34cf699ee072104d049d86dc02f065ce")
+pkgver="0.0.3"
+md5sums=("33c026d4c51d74dd54ea395f4096ff3a")
+_versionFolder="QFLj6wErSXBKaBT"
 
 # info
 pkgname="paper-bin"
@@ -13,7 +14,6 @@ _name=paper
 arch=("x86_64")
 license=("unknown")
 url="https://cloud.iostud.io/index.php/s"
-_versionFolder="nXzbe5gPE8rxj8e"
 _path="download?path=%2F&files=paper-linux-x64-${pkgver}.tar.gz"
 
 provides=("${_name}")
