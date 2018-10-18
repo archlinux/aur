@@ -1,26 +1,26 @@
-# Maintainer: David Adler <david dot jo dot adler at gmail dot com>
+# Maintainer: David Adler <d.adler@posteo.de>
 # Contributor: Sean Bolton <smbolton at jps dot net>
+
 pkgname=ghostess
 pkgver=20120105
-pkgrel=2
+pkgrel=3
 pkgdesc="a simple GTK host for DSSI plugins"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.smbolton.com/linux.html"
 license=('GPL')
-depends=('gtk2' 'liblo' 'jack')
+depends=('gtk2' 'liblo' 'jack' 'alsa-lib')
 makedepends=('dssi' 'ladspa')
 source=(http://www.smbolton.com/linux/$pkgname-$pkgver.tar.bz2)
 md5sums=('15bdcb0d4d3c68507f67d83e4bd3fe6a')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  ./configure --prefix="$pkgdir/usr" --with-jackmidi
-  make
+    cd $pkgname-$pkgver
+    ./configure --prefix=/usr --with-jackmidi
+    make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make install
+    cd $pkgname-$pkgver
+    make DESTDIR="$pkgdir/" install
 }
 
-# vim:set ts=2 sw=2 et:
