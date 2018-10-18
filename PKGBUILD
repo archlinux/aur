@@ -8,7 +8,7 @@ _pkgname=idos-timetable-data-chaps-trains-common
 pkgname="${_pkgname}-latest"
 epoch=0
 pkgver=2018_10_16
-pkgrel=2
+pkgrel=3
 pkgdesc="Common files needed for train timetable data for the timetable search engines by CHAPS."
 arch=(any)
 url="http://chaps.cz/eng/download/idos/zip#kotvatt"
@@ -48,7 +48,7 @@ source=(
 
 sha256sums=(
   'SKIP'
-  "a6bb78dda9dbf43d487251eb2ff2e23b4a64e5fb0bb43bca3a507520df98c6c5"
+  "SKIP"
   "c6bb216055d3670d3100b7a74e04ce0644030f365f4349a09e630ef60fbcb9a4"
 )
 
