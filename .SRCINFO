@@ -1,13 +1,14 @@
 pkgbase = miniupnpd-git
 	pkgdesc = Lightweight UPnP IGD daemon (git)
-	pkgver = 2.0.r121.g587f33c
-	pkgrel = 2
+	pkgver = 2.1.r55.gbde31cd
+	pkgrel = 1
 	url = http://miniupnp.free.fr
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git
 	makedepends = lsb-release
+	makedepends = procps-ng
 	depends = glibc
 	depends = iptables
 	depends = net-tools
@@ -17,7 +18,7 @@ pkgbase = miniupnpd-git
 	conflicts = miniupnpd
 	backup = etc/miniupnpd/miniupnpd.conf
 	source = git+https://github.com/miniupnp/miniupnp.git
-	source = miniupnpd.systemd::https://git.archlinux.org/svntogit/community.git/plain/trunk/miniupnpd.systemd?h=packages/miniupnpd
+	source = miniupnpd.service::https://git.archlinux.org/svntogit/community.git/plain/trunk/miniupnpd.service?h=packages/miniupnpd
 	sha256sums = SKIP
 	sha256sums = SKIP
 
