@@ -3,7 +3,7 @@
 
 _pkgname=hdf5
 pkgname=lib32-${_pkgname}
-pkgver=1.10.3
+pkgver=1.10.4
 pkgrel=1
 pkgdesc="General purpose library and file format for storing scientific data (32-bit)"
 arch=('x86_64')
@@ -12,10 +12,10 @@ license=('custom')
 depends=('lib32-zlib' 'lib32-libaec')
 makedepends=('time' 'gcc-fortran-multilib')
 source=("https://support.hdfgroup.org/ftp/HDF5/releases/${_pkgname}-${pkgver:0:4}/${_pkgname}-${pkgver}/src/${_pkgname}-${pkgver}.tar.bz2")
-md5sums=('56c5039103c51a40e493b43c504ce982')
+md5sums=('886148d0cc9ffd3c8e1fce0bd75ed07b')
 
 prepare() {
-    [ ! -d build ] && mkdir -p build
+    mkdir -p build
 }
 
 build() {
@@ -62,7 +62,7 @@ check() {
 package() {
     cd build
 
-    make -j1 DESTDIR="${pkgdir}" install
+    make DESTDIR="${pkgdir}" install
 
     rm -rf "${pkgdir}"/usr/{include,share,bin}
 }
