@@ -1,6 +1,6 @@
 # Maintainer: Can Celasun <can[at]dcc[dot]im>
 pkgname=netsniff-ng
-pkgver=0.6.4
+pkgver=0.6.5
 pkgrel=1
 pkgdesc='A high performance Linux network sniffer for packet inspection.'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ makedepends=('cmake' 'flex' 'bison')
 depends=('ncurses' 'geoip' 'zlib' 'libnetfilter_conntrack' 'libpcap' 'liburcu' 'libnl' 'libcli' 'libnet' 'libsodium')
 source=(http://pub.netsniff-ng.org/netsniff-ng/netsniff-ng-${pkgver}.tar.gz
         netsniff-ng-${pkgver}.tar.gz.sig::http://pub.netsniff-ng.org/netsniff-ng/netsniff-ng-${pkgver}.tar.gz.sign)
-md5sums=('2892bc5b96fe287814061f189221a9ac'
+md5sums=('09988301e4701f97ecbaee0903ac169d'
          'SKIP')
 validpgpkeys=('C3DE742283C246F2D7887AB4236B0FE9B5510F47')  # Tobias Klauser <tklauser@distanz.ch>
 build() {
