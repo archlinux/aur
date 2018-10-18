@@ -1,0 +1,12 @@
+pkgbase = python-uptime
+	pkgdesc = This module provides a cross-platform way to retrieve system uptime and boot time.
+	pkgver = 3.0.2~nightly
+	pkgrel = 1
+	url = https://github.com/Cairnarvon/uptime
+	arch = any
+	license = BSD
+	source = python-uptime-3.0.2~nightly.zip::https://codeload.github.com/Cairnarvon/uptime/zip/1ddfd06bb300c00e6dc4bd2a9ddf9bf1aa27b1bb
+	sha256sums = c034ac0dab8aef7332f4ee123f0be2e2e4f1afff9e08b5159ae115698a48a727
+
+pkgname = python-uptime
+
