@@ -1,7 +1,7 @@
 # Maintainer: LinArcx <linarcx@gmail.com>
 
 pkgname=gnome-shell-extension-show-desktop-button
-pkgver=r4.8cf4f41
+pkgver=0
 pkgrel=1
 pkgdesc="Add Show Desktop Button to Gnome Panel."
 arch=(any)
