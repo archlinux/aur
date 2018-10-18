@@ -2,15 +2,25 @@
 
 _pkgname=elementary-code
 pkgname=$_pkgname-git
-pkgver=3.0.r0.gec222a7a
+pkgver=3.0.r1.gef9cd754
 pkgrel=1
 pkgdesc="Code editor designed for elementary OS"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/elementary/code"
 license=(GPL3)
-depends=(gtk3)
+depends=(editorconfig-core-c
+         granite
+         gtksourceview3
+         gtkspell3
+         libgit2-glib
+         libpeas
+         vala
+         vte3
+         webkit2gtk
+         zeitgeist)
 makedepends=(editorconfig-core-c
              git
+             gobject-introspection
              granite
              gtksourceview3
              libgit2-glib
