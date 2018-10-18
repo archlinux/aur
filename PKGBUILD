@@ -5,26 +5,19 @@ _pkgbase=gnome-software
 pkgbase=gnome-software-snap
 pkgname=(gnome-software-snap gnome-software-packagekit-plugin-snap)
 pkgver=3.30.2
-_pkgver=3.30.2-0ubuntu5
+_pkgver=3.30
 pkgrel=1
 pkgdesc="GNOME Software Tools with built in snap support"
-url="https://launchpad.net/gnome-software"
+url="https://download.gnome.org/sources/gnome-software/"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(appstream-glib gnome-desktop libpackagekit-glib flatpak fwupd ostree
              docbook-xsl git gobject-introspection gspell gtk-doc meson valgrind snapd-glib)
-source=("https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/gnome-software/$_pkgver/gnome-software_$pkgver.orig.tar.xz")
+source=("http://download.gnome.org/sources/$_pkgbase/$_pkgver/$_pkgbase-$pkgver.tar.xz")
 sha256sums=('af1bf97733e0f35e9131ab5b16ff3abdd70b69f6bffa96951739f61369fe37a7')
 
-
-
-
-prepare() {
-  cd $_pkgbase-$pkgver
-}
-
 build() {
-  arch-meson --reconfigure $_pkgbase-$pkgver build \
+  arch-meson $_pkgbase-$pkgver build \
     -D ubuntuone=true \
     -D ubuntu_reviews=true \
     -D snap=true
