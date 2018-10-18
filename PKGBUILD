@@ -31,7 +31,8 @@ backup=("etc/java-$_jname/management/jmxremote.access"
         "etc/java-$_jname/sound.properties")
 options=('!strip') # JDK debug-symbols
 install=$pkgname.install
-source=("http://download.oracle.com/otn-pub/java/jdk/${pkgver}+${_build}/${_hash}/${_pkgname}-${pkgver}_linux-x64_bin.tar.gz"
+#source=("http://download.oracle.com/otn-pub/java/jdk/${pkgver}+${_build}/${_hash}/${_pkgname}-${pkgver}_linux-x64_bin.tar.gz"
+source=('http://enos.itcollege.ee/~jpoial/allalaadimised/java10/jdk-10.0.2_linux-x64_bin.tar.gz'
         'jconsole.desktop'
         'jmc.desktop'
         'policytool.desktop')
@@ -40,7 +41,7 @@ sha256sums=('6633c20d53c50c20835364d0f3e172e0cbbce78fff81867488f22a6298fa372b'
             'bef07cdacef3e25137ac6ec394f09bb683c3ceb30b894f4b0c5ea40b0f87e4d5'
             '79fdffd1c3d6c0826a95d21e59392213c3a2e32709909629cfb4d222d349f2e1')
             
-DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
+#DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
 
 package() {
   cd $_pkgname-$pkgver
