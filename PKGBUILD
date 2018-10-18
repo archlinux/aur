@@ -1,6 +1,6 @@
 # Maintainer: Wijnand Modderman-Lenstra <maze@pyth0n.org>
 pkgname=direwolf
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 epoch=
 pkgdesc="Dire Wolf is a software modem/TNC and APRS encoder/decoder"
@@ -15,18 +15,18 @@ source=(
     'direwolf.service'
     'direwolf-kiss.service'
 )
-sha1sums=('0d05476f4030b423fe0fd3ccc14c49247a1c47f2'
-          'f94b193a8e49bae073de3cedff4394821d6148fa'
+sha1sums=('109e4119ead6ee98b952185faae059770d4292f1'
+          '2b5290da15331d1cba0cef9d3607abc0441680b1'
           '66366c7a4e8d3768013f9036f2681a86d4b8ad88'
           'eea3a3fb334645cd8a1e2604dc6c6b024148722a')
-sha256sums=('4f11bbaab46ce097b525d6532da28fd87ff41afc3680824ab3367668954d3811'
-            '5a4bee3543da1bbe9cd8bd5edb3bb9b502728841c4c34da332a19f34f876a140'
+sha256sums=('ef74ffd75572531ed4a93fc28bc0ccb6eb70f3315cd7df4640a784f156d8f79a'
+            '66573cdd7619784dd4967bdee219619c0f12fda7c953374380f40949a5c8a9bb'
             'a1efe2bb96470bc52faa747708b195a685dc454f3d9c91f6bf4d39ab94d3608a'
             '2a2e4acc769a20afebdfdcd21640fd17b0c4217ceb7ecb3378f9ee5c45fadc68')
 
 prepare() {
 	cd "$pkgname-$pkgver"
-	patch -p1 < ../Makefile.patch
+	patch -p1 < "$srcdir/Makefile.patch"
 }
 
 build() {
@@ -43,7 +43,10 @@ package() {
 	mkdir -p "$pkgdir/usr/bin"
 	mkdir -p "$pkgdir/usr/share/doc/$pkgname"
 	mkdir -p "$pkgdir/var/log/direwolf"
-	make INSTALLDIR="$pkgdir/usr" install
+	make DESTDIR="$pkgdir/usr" enable_gpsd="" install
+
+    mkdir -p "$pkgdir/etc/udev/rules.d"
+    install -D -m 644 99-direwolf-cmedia.rules "$pkgdir/etc/udev/rules.d/99-direwolf-cmedia.rules"
 
 	mkdir -p "$pkgdir/etc/direwolf"
 	install -D -m 644 direwolf.conf "$pkgdir/etc/direwolf/direwolf.conf"
