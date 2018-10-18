@@ -1,0 +1,5 @@
+/*.log
+/grin/
+/grin-git-*.pkg.tar.*
+/pkg/
+/src/
