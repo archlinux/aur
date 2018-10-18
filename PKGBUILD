@@ -16,7 +16,7 @@ md5sums=('9f1b0c7b30fab902e75199a37eac5c34')
 build() {
 	cd "${srcdir}"
 
-	echo "Extracting installer..."
+	msg2 "Extracting installer..."
 
 	# remove previous build folder if present, otherwise the installer will fail
 	rm -rf ${srcdir}/salome_meca || :
@@ -41,7 +41,7 @@ build() {
 	mv "${srcdir}/salome_meca/V${pkgver}/prerequisites/debianForSalome/lib/libstdc++.so.6" \
 		"${srcdir}/salome_meca/V${pkgver}/prerequisites/debianForSalome/lib/libstdc++.so.6.bak"
 
-	echo "Building virtual application..."
+	msg2 "Building virtual application..."
 
 	# create virtual application
 	# -D to not automatically create a (wrong) desktop and menu entry
@@ -61,14 +61,14 @@ build() {
 		${srcdir}/salome_meca/V${pkgver}/.salome_meca_V${pkgver}.desktop \
 		> ${srcdir}/salome_meca.desktop
 
-	echo "Fixing references..."
+	msg2 "Fixing references..."
 
 	# fix references to srcdir
 	for f in `grep -RI "${srcdir}" ${srcdir} | cut -d: -f1`; do
 		sed -i "s,${srcdir},/opt,g" $f
 	done
 
-	echo "Fixing symlinks..."
+	msg2 "Fixing symlinks..."
 
 	# fix symlinks pointing to srcdir
 	# https://stackoverflow.com/questions/31020219/how-change-symlink-path-for-many-files
