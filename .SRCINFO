@@ -1,0 +1,16 @@
+pkgbase = splitpatch-git
+	pkgdesc = A utility to split a diff patch into separate sections
+	pkgver = r27.fd2f58d
+	pkgrel = 1
+	url = http://www.clearchain.com/blog/posts/splitting-a-patch
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = ruby
+	provides = splitpatch
+	conflicts = splitpatch
+	source = git+https://github.com/benjsc/splitpatch.git
+	md5sums = SKIP
+
+pkgname = splitpatch-git
+
