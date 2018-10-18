@@ -5,7 +5,7 @@ pkgver=r4.8cf4f41
 pkgrel=1
 pkgdesc="Add Show Desktop Button to Gnome Panel."
 arch=(any)
-url="https://github.com/amivaleo/Show-Desktop-Button"
+url="https://github.com/LinArcX/Show-Desktop-Button"
 license=(GPL3)
 depends=('gnome-shell>=3.24')
 provides=("${pkgname%-git}")
@@ -13,7 +13,7 @@ conflicts=("${pkgname%-git}")
 replaces=("${pkgname%-git}")
 makedepends=(git)
 # install='gnome-shell-extension.install'
-source=("${pkgname%-git}"::"git+https://github.com/amivaleo/Show-Desktop-Button")
+source=("${pkgname%-git}"::"git+https://github.com/LinArcX/Show-Desktop-Button")
 sha256sums=('SKIP')
 
 pkgver() {
