@@ -11,7 +11,7 @@
 # NOTE: libtool requires rebuilt with each new gcc version
 
 pkgname=(gcc-git gcc-libs-git gcc-fortran-git gcc-objc-git gcc-ada-git gcc-go-git lib32-gcc-libs-gitb)
-pkgver=9.0.0.r164803.d767b8cd9ed
+pkgver=9.0.0.r164385.7961f40be4b
 _majorver=${pkgver:0:1}
 #this is set after pkgver() runs!  (Thanks makepkg!)
 _basever=${pkgver%%.r*}
@@ -25,7 +25,7 @@ makedepends=(binutils libmpc gcc-ada doxygen lib32-glibc lib32-gcc-libs python g
 checkdepends=(dejagnu inetutils)
 options=(!emptydirs)
 #source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig}
-source=(git+https://gcc.gnu.org/git/gcc.git
+source=(git+https://gcc.gnu.org/git/gcc.git#commit=7961f40be4b4a5d9c8531e6f78ecf330411d5d9f
         http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2
         c89 c99)
 validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.org
