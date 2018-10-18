@@ -15,7 +15,6 @@ pkgbase = fragments
 	makedepends = meson
 	makedepends = vala
 	depends = curl
-	depends = gtk3
 	depends = libb64
 	depends = libevent
 	depends = libhandy

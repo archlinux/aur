@@ -8,7 +8,6 @@ arch=(i686 x86_64 armv6h armv7h)
 url="https://github.com/haecker-felix/Fragments"
 license=(GPL3)
 depends=(curl
-         gtk3
          libb64
          libevent
          libhandy
