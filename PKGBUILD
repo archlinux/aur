@@ -6,8 +6,8 @@ _pkgname=wwwoffle
 pkgname="${_pkgname}-svn"
 # _pkgver=2.9j
 epoch=1
-pkgver=2.9j+svn2241
-pkgrel=5
+pkgver=2.9j+svn2242
+pkgrel=2
 pkgdesc="Simple caching proxy server with special features (request, recursive fetch, subscription, modify HTML, ...) for use with dial-up internet links. Includes startup scripts for OpenRC, System V init, systemd."
 arch=('i686' 'x86_64' 'arm' 'arm64')
 url="http://www.gedanken.org.uk/software/wwwoffle/"
@@ -47,7 +47,6 @@ _svnurl="http://gedanken.org.uk/svn/wwwoffle/trunk"
 source=(
   # "http://www.gedanken.org.uk/software/wwwoffle/download/${_pkgname}-${_pkgver}.tgz"
   "${_pkgname}::svn+${_svnurl}"
-  'io.c.io_write_data_type_mismatch.patch::http://ix.io/1lgN'
   'conf_d_wwwoffle'
   'initscript_openrc'
   'initscript_systemd'
@@ -58,13 +57,14 @@ source=(
 sha256sums=(
             # 'e6341a4ec2631dc22fd5209c7e5ffe628a5832ad191d444c56aebc3837eed2ae' # Main source, release
             'SKIP'                                                             # Main source, SVN
-            '3cc0e6f4b6b83870ca9c14acdc0e938b0dc4416b98e4718c329bdf56c963f628' # io.c.io_write_data_type_mismatch.patch
             '5491ffc23ae113db4b46167883594b5bcb6f1bbd0ce11432bc45047efbd635d2' # conf_d_wwwoffle
             'd9451db92f979a6573cecbab23c26b6ca8ea026ef61b22ec4b61c0c9051142e9' # initscript_openrc
             '03bebce87a0da1b383666ab7a95b9810e15f2a024c0954f09c959d342c5d9c87' # initscript_systemd
             '62139f2b77139cf9c1ce9761e27f6b427c12cadd7a3739f28d854b8328e7c511' # initscript_sysvinit
             '106f4ce3de6d6ea020e8dcd8a4fd4f78ed2ae855e8a953a8783134e4d2cfba12' # ${install}
 )
+
+_svnlog='svn.log'
 
 _pgmver() {
   _unpackeddir="${srcdir}/${_pkgname}"
@@ -130,17 +130,16 @@ pkgver() {
 prepare() {
   _unpackeddir="${srcdir}/${_pkgname}"
   cd "${_unpackeddir}"
-  find "${srcdir}"/*.patch -xtype f 2>/dev/null | while read _patch; do
-    msg "Applying patch '${_patch}' ..."
-    patch -N -p1 --follow-symlinks -i "${_patch}" || return "$?"
-  done
 
   ### Update version.h to the actual version.
   _ver="$(_pgmver)"
   _rev="$(_svnrelease)"
-  msg "Updating version in src/version.h to ${_ver}+svn${_rev}..."
+  msg "Updating version in src/version.h to ${_ver}+svn${_rev} ..."
   sed -i 's|^\([[:space:]]*#define[[:space:]]*WWWOFFLE_VERSION[[:space:]]*\).*$|/*+ +*/\n/*+ The following line was automatically upgraded by the Arch Linux PKGBUILD (package build script) +*/\n/*+ in order to match the version as in conf/wwwoffle.conf.template and the SVN revision. +*/\n\1"'"${_ver}+svn${_rev}"'"|' \
     "${_unpackeddir}/src/version.h"
+
+  msg "Generating svn commit messages file ..."
+  svn log > "${_svnlog}"
 }
 
 build() {
@@ -193,6 +192,10 @@ package() {
   ### Move documentation into the place we want it.
   mkdir -p "${pkgdir}/usr/share"
   mv -v "${pkgdir}/usr/doc" "${pkgdir}/usr/share/doc"
+
+  for _docfile in ChangeLog* "${_svnlog}"; do
+    install -v -D -m644 "${_docfile}" "${pkgdir}/usr/share/doc/wwwoffle/${_docfile}"
+  done
 
   ### Symlink the HTML-Documentation under wwwoffle's spool directory to the documentation directory. Note: The html documentation needs to stay at wwwoffle's spool directory, since it serves it from there when it's webinterface is accessed.
   mkdir -p "${pkgdir}/usr/share/doc/wwwoffle/html"
