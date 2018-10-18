@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Fox
+Comment=Crystal structure determination
+GenericName=Diffraction Analysis
+Icon=/usr/share/pixmaps/Fox.xpm
+Exec=Fox %F
+Terminal=False
+StartupNotify=true
+Categories=Education;Science;DataVisualization;

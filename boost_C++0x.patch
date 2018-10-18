@@ -1,0 +1,76 @@
+===================================================================
+--- a/trunk/boost/smart_ptr/shared_ptr.hpp
++++ b/trunk/boost/smart_ptr/shared_ptr.hpp
+@@ -198,5 +198,15 @@
+     }
+ 
+-//  generated copy constructor, destructor are fine
++//  generated copy constructor, destructor are fine...
++
++#if defined( BOOST_HAS_RVALUE_REFS )
++
++// ... except in C++0x, move disables the implicit copy
++
++    shared_ptr( shared_ptr const & r ): px( r.px ), pn( r.pn ) // never throws
++    {
++    }
++
++#endif
+ 
+     template<class Y>
+===================================================================
+--- a/trunk/boost/smart_ptr/weak_ptr.hpp
++++ b/trunk/boost/smart_ptr/weak_ptr.hpp
+@@ -41,6 +41,22 @@
+     }
+ 
+-//  generated copy constructor, assignment, destructor are fine
+-
++//  generated copy constructor, assignment, destructor are fine...
++
++#if defined( BOOST_HAS_RVALUE_REFS )
++
++// ... except in C++0x, move disables the implicit copy
++
++    weak_ptr( weak_ptr const & r ): px( r.px ), pn( r.pn ) // never throws
++    {
++    }
++
++    weak_ptr & operator=( weak_ptr const & r ) // never throws
++    {
++        px = r.px;
++        pn = r.pn;
++        return *this;
++    }
++
++#endif
+ 
+ //
+===================================================================
+--- a/trunk/boost/smart_ptr/shared_array.hpp
++++ b/trunk/boost/smart_ptr/shared_array.hpp
+@@ -70,5 +70,23 @@
+     }
+ 
+-//  generated copy constructor, assignment, destructor are fine
++//  generated copy constructor, destructor are fine...
++
++#if defined( BOOST_HAS_RVALUE_REFS )
++
++// ... except in C++0x, move disables the implicit copy
++
++    shared_array( shared_array const & r ): px( r.px ), pn( r.pn ) // never throws
++    {
++    }
++
++#endif
++
++    // assignment
++
++    shared_array & operator=( shared_array const & r ) // never throws
++    {
++        this_type( r ).swap( *this );
++        return *this;
++    }
+ 
+     void reset(T * p = 0)
