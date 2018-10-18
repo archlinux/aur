@@ -1,6 +1,6 @@
 pkgbase = guardian-noemoji-git
 	pkgdesc = This patched version comes without the emoji
-	pkgver = 0
+	pkgver = v0.0.5.1.ge634097
 	pkgrel = 1
 	url = https://github.com/f/guardian
 	arch = any
