@@ -2,8 +2,8 @@
 
 pkgname=libopenaptx-git
 _pkgname=libopenaptx
-pkgver=r0.0.0eb6ce6
-pkgrel=1
+pkgver=0.0.0
+pkgrel=2
 pkgdesc="Open Source implementation of Audio Processing Technology codec (aptX)"
 arch=('x86_64')
 url="https://github.com/pali/libopenaptx"
@@ -16,20 +16,18 @@ replaces=()
 backup=()
 options=()
 install=
-source=('git://github.com/pali/libopenaptx.git')
-md5sums=('SKIP')
-
-pkgver() {
-	cd "$srcdir/libopenaptx"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+source=("https://github.com/pali/libopenaptx/releases/download/$pkgver/libopenaptx-$pkgver.tar.gz"{,.asc})
+md5sums=('SKIP' 'SKIP')
+validpgpkeys=('B856B21074A8AE9B692B80858BF0C93D03E44352')
 
 build() {
-	cd "$srcdir/libopenaptx"
+	cd "$srcdir/$_pkgname-$pkgver"
 	make
 }
 
 package() {
-	cd "$srcdir/libopenaptx"
+	cd "$srcdir/$_pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" install
+        mv "$pkgdir"/usr/local/* "$pkgdir"/usr/
+        rm -rf "$pkgdir/usr/local/"
 }
