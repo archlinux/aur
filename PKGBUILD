@@ -1,7 +1,7 @@
 pkgname=mingw-w64-netcdf-cxx-legacy
 spkgname=netcdf-cxx
 pkgver=4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Backward compatible netCDF C++ library (mingw-w64)"
 arch=("any")
 url="http://www.unidata.ucar.edu/downloads/netcdf/netcdf-cxx"
