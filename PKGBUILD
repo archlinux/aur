@@ -1,51 +1,85 @@
 # Maintainer: Mathieu Westphal <mathieu.westphal@kitware.com>
-pkgname=paraview-git
-pkgrel=3
-pkgver=v5.4.1.r618.7ac67aad77
+
+# Follow the paraview PKGBUILD in the official repositories as closely as possible.
+
+_pkgname=paraview
+pkgname=$_pkgname-git
+pkgrel=1
+pkgver=v5.6.0.RC2.r314.gfd39ef33ba
 pkgdesc="Open-source, multi-platform data analysis and visualization application"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://www.paraview.org/"
+provides=(paraview)
+conflicts=(paraview)
 license=('custom')
-depends=('python2' 'intel-tbb' 'openmpi' 'libxt' 'qt5-x11extras' 'qt5-tools' 'ffmpeg')
-optdepends=('python2-numpy: numpy support'
-            'python2-matplotlib: matplotlib drawing support'
-            'python2-scipy: scipy support')
-makedepends=('git' 'ninja' 'cmake')
-source=("git+https://gitlab.kitware.com/paraview/paraview.git")
-md5sums=('SKIP')
+depends=('qt5-tools' 'qt5-x11extras' 'ospray' 'ffmpeg' 'openmpi'
+         'cgns' 'python-pygments' 'protobuf' 'pugixml'
+         'python-matplotlib' 'python-numpy' 'python-mpi4py'
+         'boost-libs' 'glew' 'expat' 'freetype2'
+         'libjpeg' 'jsoncpp' 'libxml2' 'libpng'
+         'libtiff' 'zlib' 'hdf5' 'lz4' 'netcdf' 'intel-tbb')
+makedepends=('cmake' 'boost' 'mesa' 'gcc-fortran' 'ninja' 'qt5-tools' 'qt5-xmlpatterns' 'eigen' 'git')
+source=("git+https://gitlab.kitware.com/paraview/${_pkgname}.git")
+sha512sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
-  printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  cd "$srcdir/$_pkgname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$srcdir/${pkgname%-git}"
-  git submodule update --init
   mkdir -p build
+  cd "$_pkgname"
+  git submodule update --init --recursive
 }
 
 build() {
-  cd "$srcdir/${pkgname%-git}/build"
-  cmake -G Ninja \
-    -DCMAKE_INSTALL_PREFIX:STRING="$pkgdir/usr/" \
-    -DCMAKE_BUILD_TYPE:STRING=Release \
-    -DPARAVIEW_ENABLE_PYTHON:BOOL=ON \
-    -DPARAVIEW_USE_MPI:BOOL=ON \
-    -DPARAVIEW_ENABLE_FFMPEG:BOOL=ON \
-    -DVTK_SMP_IMPLEMENTATION_TYPE:STRING=TBB \
-    -DPARAVIEW_INSTALL_DEVELOPMENT_FILES:BOOL=ON \
-    ../
-  ninja
+  cd build
+  # Flags to enable system libs in VTK building, as in VTK package
+  # NETCDFCPP status?
+  # GL2PS fails.
+  # libharu blocked by https://github.com/libharu/libharu/pull/157
+  # LIBPROJ4 apparently not used in this VTK configuration
+  local VTK_USE_SYSTEM_LIB=""
+  for lib in EXPAT FREETYPE JPEG PNG TIFF ZLIB LIBXML2 MPI4PY JSONCPP GLEW HDF5 LZ4 NETCDF EIGEN
+  do
+      VTK_USE_SYSTEM_LIB+="-DVTK_USE_SYSTEM_${lib}:BOOL=ON "
+  done
+  # Specific system libs for ParaView version
+  for lib in CGNS PUGIXML PROTOBUF PYGMENTS
+  do
+      VTK_USE_SYSTEM_LIB+="-DVTK_USE_SYSTEM_${lib}:BOOL=ON "
+  done
+
+  cmake \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DOSPRAY_INSTALL_DIR=/usr \
+    -DPARAVIEW_ENABLE_FFMPEG=ON \
+    -DPARAVIEW_ENABLE_MATPLOTLIB=ON \
+    -DPARAVIEW_ENABLE_PYTHON=ON \
+    -DPARAVIEW_INSTALL_DEVELOPMENT_FILES=ON \
+    -DPARAVIEW_USE_MPI=ON \
+    -DPARAVIEW_USE_VISITBRIDGE=ON \
+    -DPARAVIEW_USE_OSPRAY=ON \
+    -DVISIT_BUILD_READER_CGNS=ON \
+    -DVTK_PYTHON_FULL_THREADSAFE=ON \
+    -DVTK_PYTHON_VERSION=3 \
+    -DVTK_SMP_IMPLEMENTATION_TYPE=TBB \
+    ${VTK_USE_SYSTEM_LIB} \
+    -GNinja \
+    "$srcdir/$_pkgname"
+
+  ninja ${MAKEFLAGS}
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}/build"
-  ninja install
+  cd build
 
-  # Install license
-  install -Dm644 "${srcdir}/${pkgname%-git}/License_v1.2.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  DESTDIR="$pkgdir" ninja install
 
-  # Rename hdf5 settings to avoid potential conflicts
-   mv "${pkgdir}/usr/share/cmake/hdf5" "${pkgdir}/usr/share/cmake/paraview-git_hdf5"
+  install -Dm644 "$srcdir/$_pkgname/License_v1.2.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  rm -- "$pkgdir"/usr/share/man/man3/icet*.3
+  rmdir "$pkgdir"/usr/share/man/{man3/,}
 }
