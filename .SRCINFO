@@ -1,0 +1,17 @@
+pkgbase = mythhdhrrecorder-git
+	pkgdesc = MythTV External Recorder for the SiliconDust HDHR tuners
+	pkgver = r29.66c216f
+	pkgrel = 1
+	url = https://github.com/garybuhrmaster/mythhdhrrecorder
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = python-requests
+	depends = python-systemd
+	provides = mythhdhrrecorder
+	conflicts = mythhdhrrecorder
+	source = git+https://github.com/garybuhrmaster/mythhdhrrecorder.git
+	sha256sums = SKIP
+
+pkgname = mythhdhrrecorder-git
+
