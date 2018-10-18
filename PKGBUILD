@@ -1,12 +1,12 @@
 # Maintainer: Hans-Nikolai Viessmann <hans AT viess.mn>
 pkgname='barvinok'
 pkgver=0.41
-pkgrel=1
+pkgrel=2
 pkgdesc='A library for counting the number of integer points in parametric and non-parametric polytopes'
 arch=('x86_64')
 url='http://freecode.com/projects/barvinok'
 license=('GPL')
-depends=('ntl' 'isl>0.17' 'polylib-gmp')
+depends=('ntl' 'isl>0.17' 'isl<0.19' 'polylib-gmp')
 source=("http://barvinok.gforge.inria.fr/$pkgname-$pkgver.tar.xz"
         'fix-missing-isl-include.patch')
 md5sums=('a5496a4a93f3f1f26fef07189e12314f'
@@ -22,7 +22,10 @@ prepare() {
     patch -p0 < ../fix-missing-isl-include.patch
 
     # rebuild autotools
-    autoconf -i
+    msg2 "rebuilding build scripts and makefiles"
+    aclocal
+    automake --add-missing
+    autoconf
 }
 
 build() {
