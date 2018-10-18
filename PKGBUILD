@@ -1,13 +1,12 @@
 # Maintainer: jerry73204 <jerry73204@gmail.com>
 # Co-maintainer: circle <az6980522@gmail.com>
 pkgname=ncsdk
-pkgver=2.05.00.02
+pkgver=2.08.01.02
 pkgrel=1
 pkgdesc='Software Development Kit for the Intel® Movidius™ Neural Compute Stick'
 arch=('x86_64')
 url='https://github.com/movidius/ncsdk/'
-install='ncsdk.install'
-license=('custom:Proprietary')
+license=('Apache')
 depends=(
   'python'
   'cython'
@@ -33,11 +32,11 @@ depends=(
 )
 makedepends=('python' 'python-pip' 'unzip')
 options=('strip')
-source=("https://ncs-forum-uploads.s3.amazonaws.com/ncsdk/ncsdk-0$(tr '.' '_' <<< ${pkgver})-full/ncsdk-${pkgver}.tar.gz"
-        "https://downloadmirror.intel.com/27839/eng/NCSDK-${pkgver}.tar.gz")
+source=("https://github.com/movidius/ncsdk/archive/v${pkgver}.tar.gz"
+        "https://downloadmirror.intel.com/28191/eng/NCSDK-${pkgver}.tar.gz")
+sha256sums=('055d71b696e14e44c411c88ead3ae1729d4e64e8202433dce2fc132c02a5e567'
+            '9c1fa5c2f9d4f43411932a987333768482174fd0dbb66d039fa288f186d969b3')
 
-sha256sums=('c59c1b5b5ff6128c162edf5444a46f8b02e8a148e2128415cc276755c5a856bc'
-            'a0f1fe7bc5c350850999e04dabe2b4163d8d39b8c0293a0d0b398232bd6ac048')
 
 package() {
   cd "$srcdir/${pkgname}-${pkgver}"
@@ -49,7 +48,7 @@ package() {
 
   # install toolkit
   sdk_dir="$srcdir/NCSDK-${pkgver}/ncsdk-x86_64"
-  cp -dr --no-preserve=ownership ${sdk_dir}/tk ${pkgdir}/usr/bin/ncsdk
+  cp -drv --no-preserve=ownership ${sdk_dir}/tk ${pkgdir}/usr/bin/ncsdk
   ln -s ncsdk/mvNCCompile.py ${pkgdir}/usr/bin/mvNCCompile
   ln -s ncsdk/mvNCCheck.py ${pkgdir}/usr/bin/mvNCCheck
   ln -s ncsdk/mvNCProfile.py ${pkgdir}/usr/bin/mvNCProfile
@@ -57,17 +56,16 @@ package() {
   install -m644 ${sdk_dir}/fw/MvNCAPI-ma2450.mvcmd ${pkgdir}/usr/lib/mvnc/MvNCAPI-ma2450.mvcmd
 
   # install C api
-  install -m644 ${sdk_dir}/api/c/mvnc.h ${pkgdir}/usr/include/mvnc.h
-
   install -m644 ${sdk_dir}/api/c/libmvnc.so.0 ${pkgdir}/usr/lib/mvnc/libmvnc.so.0
 
   ln -s mvnc/libmvnc.so.0 ${pkgdir}/usr/lib/libmvnc.so.0
   ln -s mvnc/libmvnc.so.0 ${pkgdir}/usr/lib/libmvnc.so
 
   # install Python api
-  cd ${sdk_dir}/api
-  python setup.py install --root="$pkgdir/" --optimize=1
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+  cp -v ${sdk_dir}/api/setup.py ${srcdir}/${pkgname}-${pkgver}/api/setup.py
+  cd ${srcdir}/${pkgname}-${pkgver}/api
+  python setup.py install --root="${pkgdir}" --optimize=1
+  python2 setup.py install --root="${pkgdir}" --optimize=1
 
   # install udev rules
   install -dm755 ${pkgdir}/usr/lib/udev/rules.d

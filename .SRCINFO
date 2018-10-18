@@ -1,11 +1,10 @@
 pkgbase = ncsdk
 	pkgdesc = Software Development Kit for the Intel® Movidius™ Neural Compute Stick
-	pkgver = 2.05.00.02
+	pkgver = 2.08.01.02
 	pkgrel = 1
 	url = https://github.com/movidius/ncsdk/
-	install = ncsdk.install
 	arch = x86_64
-	license = custom:Proprietary
+	license = Apache
 	makedepends = python
 	makedepends = python-pip
 	makedepends = unzip
@@ -31,10 +30,10 @@ pkgbase = ncsdk
 	depends = python-networkx
 	depends = python2-enum34
 	options = strip
-	source = https://ncs-forum-uploads.s3.amazonaws.com/ncsdk/ncsdk-02_05_00_02-full/ncsdk-2.05.00.02.tar.gz
-	source = https://downloadmirror.intel.com/27839/eng/NCSDK-2.05.00.02.tar.gz
-	sha256sums = c59c1b5b5ff6128c162edf5444a46f8b02e8a148e2128415cc276755c5a856bc
-	sha256sums = a0f1fe7bc5c350850999e04dabe2b4163d8d39b8c0293a0d0b398232bd6ac048
+	source = https://github.com/movidius/ncsdk/archive/v2.08.01.02.tar.gz
+	source = https://downloadmirror.intel.com/28191/eng/NCSDK-2.08.01.02.tar.gz
+	sha256sums = 055d71b696e14e44c411c88ead3ae1729d4e64e8202433dce2fc132c02a5e567
+	sha256sums = 9c1fa5c2f9d4f43411932a987333768482174fd0dbb66d039fa288f186d969b3
 
 pkgname = ncsdk
 
