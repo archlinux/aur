@@ -17,7 +17,7 @@ package()
 {
 	cd "$srcdir/${pkgname%-git}"
 	install -D rpglelint $pkgdir/usr/bin/rpglelint
-	install -Dm644 rpglelint.perl1 $pkgdir/usr/share/man/man1/rpglelint.perl1
+	install -Dm644 rpglelint.1perl $pkgdir/usr/share/man/man1/rpglelint.1perl
 	install -Dm644 RPG/Parser.pm $pkgdir/usr/share/perl5/vendor_perl/RPG/Parser.pm
 	install -Dm644 RPG/Linter.pm $pkgdir/usr/share/perl5/vendor_perl/RPG/Linter.pm
 	install -Dm644 RPG/Statement.pm $pkgdir/usr/share/perl5/vendor_perl/RPG/Statement.pm
