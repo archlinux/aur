@@ -1,0 +1,25 @@
+pkgbase = libldac-git
+	pkgdesc = AOSP libldac dispatcher
+	pkgver = 2.0.2.r5.2ad4bf1
+	pkgrel = 1
+	url = https://github.com/EHfive/ldacBT
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = Apache 2.0
+	makedepends = cmake>=3.0
+	makedepends = make
+	provides = libldac=2.0.2
+	provides = ldacBT=2.0.2
+	provides = ldacBT_enc.so=2.0.2
+	provides = ldacBT_abr.so=2.0.2
+	source = git+https://github.com/EHfive/ldacBT.git
+	source = git+https://gitlab.com/eh5/libldac.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = libldac-git
+
