@@ -1,0 +1,16 @@
+pkgbase = cae-v-sim
+	pkgdesc = V_Sim visualizes atomic structures such as crystals, grain boundaries and so on
+	pkgver = 3.7.2
+	pkgrel = 6
+	url = http://inac.cea.fr/L_Sim/V_Sim/index.en.html
+	arch = i686
+	arch = x86_64
+	license = custom:CeCILL
+	depends = gtk2
+	depends = ftgl
+	depends = libyaml
+	source = http://inac.cea.fr/L_Sim/V_Sim/download/v_sim-3.7.2.tar.bz2
+	sha1sums = d3e4023e387e3ff4d988dda0d7b7004ad1d34fcc
+
+pkgname = cae-v-sim
+
