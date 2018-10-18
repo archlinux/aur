@@ -1,24 +1,23 @@
 # Maintainer: EHfive <eh5@sokka.cn>
 
 pkgname=pulseaudio-modules-bt-git
-pkgver=r61.77ac2c5
+pkgver=r65.48163bf
 pkgrel=1
 pkgdesc="PulseAudio Bluetooth modules with SBC, APTX, APTX-HD, Sony LDAC, A2DP codecs support"
 arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
 url="https://github.com/EHfive/pulseaudio-modules-bt"
 license=('LGPL')
 depends=("pulseaudio>=12.0" "bluez>=5.0" "bluez-libs>=5.0" "sbc")
-makedepends=("cmake>=3.0" "make" "pkg-config" "libavcodec.so>=58-64" "libavutil.so>=56-64" "libtool")
-optdepends=("libavcodec.so>=58-64" "libavutil.so>=56-64")
+makedepends=("cmake>=3.0" "make" "pkg-config" "libavcodec.so>=58-64" "libavutil.so>=56-64" "libtool" "libldac")
+optdepends=("libavcodec.so>=58-64" "libavutil.so>=56-64" "libldac")
 provides=("pulseaudio-bluetooth")
 conflicts=("pulseaudio-bluetooth")
 replaces=("pulseaudio-bluetooth")
 
 source=("git+https://github.com/EHfive/pulseaudio-modules-bt.git"
-        "git+https://github.com/pulseaudio/pulseaudio.git"
-        "git+https://gitlab.com/eh5/libldac.git")
+        "git+https://github.com/pulseaudio/pulseaudio.git")
 
-md5sums=('SKIP' 'SKIP' 'SKIP')
+md5sums=('SKIP' 'SKIP')
 
 pkgver() {
     cd "$srcdir/pulseaudio-modules-bt"
@@ -36,7 +35,10 @@ prepare() {
 
 build() {
     cd "$srcdir/pulseaudio-modules-bt"
-    cmake -DCMAKE_BUILD_TYPE=Release .
+    cmake \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DFORCE_NOT_BUILD_LDAC=ON \
+        .
     make
 }
 
