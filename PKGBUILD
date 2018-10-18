@@ -2,8 +2,8 @@
 # Contributor: Vitaliy Berdinskikh <ur6lad@archlinux.org.ua>
 
 pkgname=hamlib
-pkgver=3.2
-pkgrel=2
+pkgver=3.3
+pkgrel=1
 pkgdesc="Ham radio equipment control libraries"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://hamlib.org"
@@ -14,8 +14,8 @@ source=(
     "http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz"
 )
 options=('!emptydirs')
-sha1sums=('ee90d0a79c4408b452ea328620c333d650b41f44')
-sha256sums=('b55cb5e6a8e876cceb86590c594ea5a6eb5dff2e30fc13ce053b46baa6d7ad1d')
+sha1sums=('a39853bb62f91a16e6b024e809e198ad9cd46417')
+sha256sums=('c90b53949c767f049733b442cd6e0a48648b55d99d4df5ef3f852d985f45e880')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
