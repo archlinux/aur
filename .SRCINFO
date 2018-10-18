@@ -1,0 +1,18 @@
+pkgbase = guardian-noemoji-git
+	pkgdesc = This patched version comes without the emoji
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/f/guardian
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = crystal
+	provides = guardian
+	conflicts = guardian
+	source = git+https://github.com/f/guardian.git
+	source = noemoji.patch
+	md5sums = SKIP
+	md5sums = f7f3063f5c06492064ccc9efa78ce0b4
+
+pkgname = guardian-noemoji-git
+

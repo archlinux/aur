@@ -1,0 +1,13 @@
+diff --git a/src/guardian/watcher.cr b/src/guardian/watcher.cr
+index b0ff883..42ee5d5 100644
+--- a/src/guardian/watcher.cr
++++ b/src/guardian/watcher.cr
+@@ -35,7 +35,7 @@ module Guardian
+     end
+ 
+     def start_watching
+-      puts "💂  #{"Guardian is on duty!".colorize(:green)}"
++      puts "Guardian is on duty!".colorize :green
+       loop do
+         watch_changes
+         watch_newfiles
