@@ -1,0 +1,13 @@
+pkgbase = gnucap-models
+	pkgdesc = additional device models for Gnucap
+	pkgver = 20171003
+	pkgrel = 1
+	url = https://git.savannah.gnu.org/cgit/gnucap/gnucap-models.git/
+	arch = x86_64
+	license = custom
+	depends = gnucap
+	source = https://git.savannah.gnu.org/cgit/gnucap/gnucap-models.git//snapshot/gnucap-models-20171003.tar.gz
+	md5sums = 3740c6effcdd953610abeeee3919d372
+
+pkgname = gnucap-models
+
