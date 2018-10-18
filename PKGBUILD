@@ -4,7 +4,7 @@
 # Contributor: "donaldtrump" [AUR]
 
 pkgname=osu-lazer
-pkgver=2018.1004.1
+pkgver=2018.1017.0
 pkgrel=1
 pkgdesc="Freeware rhythm video game - lazer version $pkgver"
 arch=('x86_64')
@@ -28,7 +28,7 @@ sha256sums=(
     SKIP
     SKIP
     a34d37ed6d35788501985ad3c8f63888849734549113e11f43321917fdfa16bf
-    d845256e82c7aa10c317b2e1a7d848eef3bb7ba91412078b421d68c1b4b995ce
+    01e72224e34d60abe39150464443cd1673a7326fca95a8688174853a46fa3049
     3b3a9075f79ca7f2a4fd34eb182a5c1ada6eb118a95e49c1526df516365bbfe5
     6aa1721720bbc93b77434475f215c92878369900127a890cd49fce880160e659
 )
