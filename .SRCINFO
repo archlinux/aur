@@ -5,7 +5,6 @@ pkgbase = snapd-glib
 	url = https://launchpad.net/snapd-glib
 	arch = x86_64
 	license = GPL3
-	makedepends = git
 	makedepends = libsoup
 	makedepends = json-glib
 	makedepends = qt5-declarative
@@ -23,7 +22,6 @@ pkgbase = snapd-glib
 	options = !strip
 	options = emptydirs
 	source = https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/snapd-glib/1.44-1/snapd-glib_1.44.orig.tar.xz
-	validpgpkeys = 497851B5D455C606543F2B9318EAA1890F7C882E
 	sha256sums = 071b31824afe82ba783d02484d4a6abc0c6d2107b1c71323f618363766ee1521
 
 pkgname = snapd-glib
