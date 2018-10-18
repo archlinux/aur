@@ -6,7 +6,7 @@ pkgbase = pianobar-git
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = pkgconfig>=0.9
+	makedepends = pkgconf
 	makedepends = git
 	makedepends = automake
 	depends = libao
