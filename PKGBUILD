@@ -1,12 +1,12 @@
 pkgname=mingw-w64-openal
 pkgver=1.19.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform 3D audio library, software implementation (mingw-w64)"
 arch=(any)
 url="https://github.com/kcat/openal-soft"
 license=('LGPL')
 depends=('mingw-w64-crt')
-makedepends=('mingw-w64-cmake')
+makedepends=('mingw-w64-cmake' 'git')
 options=(!strip !buildflags staticlibs)
 _commit=6761218e51699f46bf25c377e65b3e9ea5e434b9  # tags/openal-soft-1.19.1
 source=("git+https://github.com/kcat/openal-soft#commit=$_commit")
