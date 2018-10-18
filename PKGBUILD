@@ -3,7 +3,10 @@
 # Contributor: Philip Müller <philm@manjaro.org>
 # Contributor: Lane Wiscombe <assassin.anex@gmail.com>
 
-pkgname=xcursor-maia
+pkgbase=xcursor-maia
+pkgname=xcursor-maia-git
+provides=('xcursor-maia')
+conflicts=('xcursor-maia')
 _gitname=maia-cursor
 pkgver=20160417
 pkgrel=1

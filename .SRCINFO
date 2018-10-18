@@ -8,10 +8,12 @@ pkgbase = xcursor-maia
 	makedepends = binutils
 	makedepends = git
 	depends = libxcursor
+	provides = xcursor-maia
+	conflicts = xcursor-maia
 	source = git+https://gitlab.manjaro.org/artwork/cursors/maia-cursor.git
 	source = thumbnail.png
 	md5sums = SKIP
 	md5sums = 0a7352c3d38d4670fb38393ea4ac555c
 
-pkgname = xcursor-maia
+pkgname = xcursor-maia-git
 
