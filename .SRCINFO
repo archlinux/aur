@@ -1,0 +1,14 @@
+pkgbase = weechat-vimode
+	pkgdesc = A WeeChat script that adds vi-like modes, commands and keybindings
+	pkgver = r173.1da5a2e
+	pkgrel = 1
+	url = https://github.com/GermainZ/weechat-vimode
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = weechat
+	source = git+https://github.com/GermainZ/weechat-vimode.git
+	sha512sums = SKIP
+
+pkgname = weechat-vimode
+
