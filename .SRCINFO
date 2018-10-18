@@ -1,6 +1,6 @@
 pkgbase = gtk2-patched-filechooser-icon-view
 	pkgdesc = GTK2 patched with ahodesuka's filechooser-icon-view patch.
-	pkgver = 2.24.32+g664537d618
+	pkgver = 2.24.32+34+g664537d618
 	pkgrel = 2
 	url = https://gist.github.com/Dudemanguy911/d70734d5bdf82e79cbfb22894fac8a1b/
 	install = gtk2.install
@@ -28,7 +28,7 @@ pkgbase = gtk2-patched-filechooser-icon-view
 	optdepends = gnome-themes-standard: Default widget theme
 	optdepends = gnome-icon-theme: Default icon theme
 	optdepends = glib2-patched-thumbnailer: Thumbnail generation in upload dialog
-	provides = gtk2=2.24.32+g664537d618
+	provides = gtk2=2.24.32+34+g664537d618
 	conflicts = gtk2
 	source = git+https://gitlab.gnome.org/GNOME/gtk.git#commit=664537d6185800d7603438d4b9e18fbc6256ad41
 	source = gtkrc

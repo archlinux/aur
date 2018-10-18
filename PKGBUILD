@@ -3,7 +3,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=gtk2-patched-filechooser-icon-view
-pkgver=2.24.32+g664537d618
+pkgver=2.24.32+34+g664537d618
 pkgrel=2
 arch=(x86_64)
 pkgdesc="GTK2 patched with ahodesuka's filechooser-icon-view patch."
