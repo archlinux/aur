@@ -6,7 +6,7 @@ _pkgname=idos-timetable-additionalinfo-chaps-mhd-odis
 pkgname="${_pkgname}-latest"
 epoch=0
 pkgver=2015_10_20
-pkgrel=6
+pkgrel=7
 pkgdesc="Links with information on the changes, fare, point of sale, etc. for public transport within the ODIS (Ostrava region) public transport area, to be used with the timetable search engines by CHAPS."
 arch=('any')
 url="http://chaps.cz/eng/download/idos/zip#kotvainf"
@@ -46,7 +46,7 @@ source=(
 
 sha256sums=(
   'SKIP'
-  "a6bb78dda9dbf43d487251eb2ff2e23b4a64e5fb0bb43bca3a507520df98c6c5"
+  "SKIP"
   "c6bb216055d3670d3100b7a74e04ce0644030f365f4349a09e630ef60fbcb9a4"
 )
 
