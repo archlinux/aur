@@ -2,10 +2,10 @@
 # Submitter: Schala Zeal <schalaalexiazeal@gmail.com>
 
 pkgname=spigot
-_pkgver=1.12.2
-_build=73
+_pkgver=1.13.1
+_build=77
 pkgver="${_pkgver}+b${_build}"
-pkgrel=2
+pkgrel=1
 pkgdesc="High performance Minecraft server implementation"
 arch=('any')
 url="https://www.spigotmc.org/"
@@ -24,7 +24,7 @@ source=("BuildTools-${_pkgver}+b${_build}.jar::https://hub.spigotmc.org/jenkins/
 	"${pkgname}.service"
 	"${pkgname}.conf"
 	"${pkgname}.sh")
-sha512sums=('b9dfe324f7eed186278285595e6785cdeb197cec2cac59442b79731ac70ebee224798906cf14f331cd43527122bca9647d69561354a40d7bc39a2690a61e9d83'
+sha512sums=('a74383a761a5577633cb4f1ab801842ea3b2436864a5b12b43c6e718dcaa84a62ab33142944507a9ece872408af58976e88f8af4317cc1d9f8357de66a41792c'
             '914d079718bcf4adbe60ec1414ae95220be9e0ba6da8135d13fc9f1f82c7a5f1fb1844764a9d827bb9583bee2f6c10111880d0bcba135ec61d63b53a3f2aab27'
             '76c77e47c442b477216e968db2213612579b24add54cf0e0512f808498673500b4d24e59bce70b1e7479d724a9a897ceb154e937b88a476beb11c8776258b36c'
             '5a32439ff4b8fa9db89e9242206cf99109e0b00f29f87711c25342dda522171d999f7e18fb2013437ddf62cfec05b6677601933233aaf42bcb5d67eb7a1469ee'
