@@ -6,30 +6,46 @@
 pkgname=('sumo' 'sumo-doc')
 pkgbase=sumo
 pkgver=1.0.1
+_pkgver="${pkgver//./_}"
 pkgrel=1
 pkgdesc="Traffic simulation modelling road vehicles, public transport and pedestrians."
 arch=('i686' 'x86_64')
 url="http://sumo.dlr.de"
 license=('GPL')
-depends=('python' 'proj' 'fox' 'xerces-c' 'gdal')
-makedepends=('help2man')
-source=("http://prdownloads.sourceforge.net/${pkgbase}/${pkgbase}-src-${pkgver}.tar.gz?download"
+depends=('openscenegraph' 'python' 'proj' 'fox' 'xerces-c' 'gdal' 'gl2ps')
+makedepends=('cmake' 'help2man' 'swig' 'gtest')
+source=("https://github.com/eclipse/sumo/archive/v${_pkgver}.tar.gz"
         "${pkgbase}.desktop")
 
-sha256sums=('6e46a1568b1b3627f06c999c798feceb37f17e92aadb4d517825b01c797ec531'
+sha256sums=('244dd552b77a9bdccc8bc3a6e8591216410858404a3f1e943a141f4143f7dd6f'
             'd9ec82a1b56ebeaf31c6382f6d903baf0767e440b640a713e587d7e09f72d213')
 
 prepare() {
-    cd ${pkgbase}-${pkgver}
-    ./configure --prefix=/usr
+    cd ${pkgbase}-${_pkgver}
     sed -i "/^Version=/ s/$/${pkgver}/" "${srcdir}/${pkgbase}.desktop"
+
+    # CMake didn't have man target in 1.0.1..... sigh
+    curl -O https://raw.githubusercontent.com/eclipse/sumo/702985ea9187dcdeb3071334b505a5c4791467e9/CMakeLists.txt
+    sed -i "s/PACKAGE_VERSION "git"/PACKAGE_VERSION ${_pkgver}/" CMakeLists.txt
+    cmake -H. -Bbuild \
+        -DCMAKE_C_FLAGS:STRING="${CFLAGS}" \
+        -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS}" \
+        -DCMAKE_EXE_LINKER_FLAGS:STRING="${LDFLAGS}" \
+        -DCMAKE_INSTALL_LIBDIR=lib \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=Release
 }
 
 build() {
-    cd ${pkgbase}-${pkgver}
-    make
-    make man
+    cd ${pkgbase}-${_pkgver}
+    cmake --build build
+    cmake --build build -- man
 }
+
+# check() { 
+#     cd ${pkgbase}-${_pkgver}
+#     cmake --build build -- test
+# }
 
 package_sumo() {
     # I can't see how is backup useful?
@@ -37,10 +53,10 @@ package_sumo() {
     optdepends=('java-runtime-common: for executing Jar files like TraCI4J'
                 "python2: for executing various python scripts in $SUMO_HOME/tools")
 
-    cd ${pkgbase}-${pkgver}
+    cd ${pkgbase}-${_pkgver}
 
     # Installs just the bin files
-    make DESTDIR="${pkgdir}/" install
+    cmake --build build -- DESTDIR="${pkgdir}/" install
 
     install -d "${pkgdir}/etc/profile.d"
 cat <<EOF > "${pkgdir}/etc/profile.d/sumo.sh"
@@ -49,28 +65,17 @@ cat <<EOF > "${pkgdir}/etc/profile.d/sumo.sh"
 export SUMO_HOME="/usr/lib/sumo"
 EOF
 
-    install -d ${pkgdir}/usr/lib/${pkgbase}
-    cp -a data ${pkgdir}/usr/lib/${pkgbase}/
-    cp -a tools ${pkgdir}/usr/lib/${pkgbase}/
-
-    # Make all scripts executable (not sure if this is necessary)
-    find ${pkgdir}/usr/lib/${pkgbase}/tools/ -iname "*.py" -exec chmod +x {} \;
-
-    # logo is missing in current source?
-    # install -m0644 docs/userdoc/logo.png ${pkgdir}/usr/share/pixmaps/${pkgbase}.png
+    install -Dm644 docs/logo/256x256.png ${pkgdir}/usr/share/pixmaps/${pkgbase}.png
     install -Dm644 ${srcdir}/${pkgbase}.desktop -t ${pkgdir}/usr/share/applications/
-    install -Dm644 docs/man/* -t ${pkgdir}/usr/share/man/man1/
 }
 
 package_sumo-doc() {
-    cd ${pkgbase}-${pkgver}/docs
+    cd ${pkgbase}-${_pkgver}
+
     install -d ${pkgdir}/usr/share/doc/${pkgbase}
-    cp -a * ${pkgdir}/usr/share/doc/${pkgbase}/
 
-    install -m0644 ${srcdir}/${pkgbase}-${pkgver}/AUTHORS ${pkgdir}/usr/share/doc/${pkgbase}
-    install -m0644 ${srcdir}/${pkgbase}-${pkgver}/ChangeLog ${pkgdir}/usr/share/doc/${pkgbase}
-    install -m0644 ${srcdir}/${pkgbase}-${pkgver}/LICENSE ${pkgdir}/usr/share/doc/${pkgbase}
-    install -m0644 ${srcdir}/${pkgbase}-${pkgver}/README.md ${pkgdir}/usr/share/doc/${pkgbase}
-
-    rm -rf ${pkgdir}/usr/share/doc/${pkgbase}/man
+    # just man pages for now
+    # cp -a * ${pkgdir}/usr/share/doc/${pkgbase}/
+    install -Dm644 docs/man/* -t ${pkgdir}/usr/share/man/man1/
+    install -m0644 {AUTHORS,ChangeLog,LICENSE,README.md} ${pkgdir}/usr/share/doc/${pkgbase}
 }
