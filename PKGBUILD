@@ -2,7 +2,7 @@
 # Contributor: SpepS <dreamspepser at yahoo dot it>
 pkgname=arpage
 pkgver=0.3.3
-pkgrel=10
+pkgrel=11
 pkgdesc="JACK MIDI arpeggiator with transport and tempo sync"
 arch=('x86_64')
 url="http://sourceforge.net/projects/arpage/"
@@ -27,6 +27,6 @@ build() {
 
 package() {
     cd $pkgname-$pkgver
-    make DESTDIR=$pkgdir install
+    make DESTDIR="$pkgdir/" install
 }
 
