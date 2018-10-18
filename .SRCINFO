@@ -1,13 +1,13 @@
 pkgbase = simlib
 	pkgdesc = A simple SIMulation LIBrary for the C++ programming language
 	pkgver = 3.04_20171004
-	pkgrel = 1
-	url = https://www.fit.vutbr.cz/~peringer/SIMLIB/
+	pkgrel = 2
+	url = http://www.fit.vutbr.cz/~peringer/SIMLIB/
 	install = simlib.install
 	arch = x86_64
 	license = GPL
 	depends = gcc-libs-multilib
-	source = https://www.fit.vutbr.cz/~peringer/SIMLIB/source/simlib-3.04-20171004.tar.gz
+	source = http://www.fit.vutbr.cz/~peringer/SIMLIB/source/simlib-3.04-20171004.tar.gz
 	source = simlib-3.04_20171004.patch
 	sha256sums = d169941776b41ef3e12a4f4fc9f0c2ed1352b184c272f953e3930704ceb1d886
 	sha256sums = 9483273c0c620541f3df9f21b028ade08fe2d64dd00ec67c7bc2615238c4fc93
