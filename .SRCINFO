@@ -8,6 +8,7 @@ pkgbase = gaiasky
 	arch = x86_64
 	license = MPL
 	depends = jre8-openjdk
+	depends = xorg-xrandr
 	source = http://gaia.ari.uni-heidelberg.de/gaiasky/files/releases/2.1.2.05ead4a1/gaiasky-2.1.2.05ead4a1.tar.gz
 	md5sums = d7dcd492d73ef3377028da25f67b9575
 
