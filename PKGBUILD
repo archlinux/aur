@@ -6,7 +6,7 @@ _pkgname=idos-timetable-lang-en
 pkgname="${_pkgname}"
 epoch=0
 pkgver=20160720
-pkgrel=4
+pkgrel=5
 pkgdesc="English language ressource file for railway/ public transport timetable search engines by CHAPS."
 arch=(any)
 license=('custom')
@@ -44,7 +44,7 @@ sha256sums=(
   'f1d90ca684e053db7d35b85207b202b2c4b73315a7b864d849f599eb7b8fd1ee'
   '857ca643a994be4dc06ddf5423d66600a2d2ad26f0771d30819f27e2dfa5c002'
   '36c0b0466672bc90d9aa2219768f1ea1a72389cc63d89c4bb80bb4999628d8aa'
-  "a6bb78dda9dbf43d487251eb2ff2e23b4a64e5fb0bb43bca3a507520df98c6c5"
+  "SKIP"
   'SKIP'
 )
 
