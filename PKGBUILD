@@ -1,6 +1,7 @@
-# Maintainer: Philip Müller <philm@manjaro.org>
-# Contributor: Lane Wiscombe <assassin.anex@gmail.com>
+# Maintainer: Mikael Blomstrand <mbloms ÅT kth DÖT se>
 # Submiter to AUR: Pablo Lezaeta <prflr 88 (arro'a) gmail puntocom>
+# Contributor: Philip Müller <philm@manjaro.org>
+# Contributor: Lane Wiscombe <assassin.anex@gmail.com>
 
 pkgname=xcursor-maia
 _gitname=maia-cursor
@@ -8,16 +9,19 @@ pkgver=20160417
 pkgrel=1
 pkgdesc="Cursor theme - part of the Manjaro Maia set"
 arch=('any')
-url="https://github.com/manjaro/$_gitname"
+url="https://gitlab.manjaro.org/artwork/cursors/maia-cursor"
 license=('GPL3')
 depends=('libxcursor')
-optdepends=("menda-icon-theme: Official icon theme"
-	"menda-gtk-theme: Official theming")
 makedepends=('binutils' 'git')
 source=("git+$url.git"
 	'thumbnail.png')
 md5sums=('SKIP'
          '0a7352c3d38d4670fb38393ea4ac555c')
+
+pkgver() {
+    cd $_gitname
+    git log -1 --format=%cd --date=format:%Y%m%d
+}
 
 package() {
     mkdir -p $pkgdir/usr/share/icons
