@@ -1,5 +1,4 @@
 post_install() {
-
 	if [ -e `grep dba /etc/group` ]; then
 		echo
 		echo -n "creating group \"dba\" ..."
@@ -55,6 +54,7 @@ post_install() {
 
 	echo
 	echo "add your user to the \"dba\" group in order to use the oracle tools"
+	echo "run \"/etc/rc.d/oracle-xe configure\" to configure oracle-xe and start using it"
 	echo
 }
 

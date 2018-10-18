@@ -1,5 +1,5 @@
 # Mantainer: RonaldMcDaddy <wannes.demeyer@protonmail.com>
-# Contributor:  Tinh Truong <xuantinh at gmail dot com>
+# Contributor: Tinh Truong <xuantinh at gmail dot com>
 # Contributor: Cedric Sougne <cedric@sougne.name>
 # Contributor: untseac
 # Contributor: siasia
@@ -16,25 +16,28 @@ conflicts=('oracle-xe')
 provides=('oracle-xe')
 options=('!strip')
 depends=('libaio>=0.3.104' 'gcc>=4.1.2' 'binutils>=2.16.91.0.5' 'make>=3.80' 'glibc>=2.3.4-2.41' 'bc' 'net-tools')
-makedepends=('')
 install='oracle.install'
-source=('manual://download/file/from/oracle/page/oracle-xe-11.2.0-1.0.x86_64.rpm.zip'
-        'oracle_env.csh'
-        'oracle_env.sh'
-        'oracle-xe'
-        'oracle-xe.conf'
-        'listener.ora'
-        'oracle-xe.service'
-       )
-DLAGENTS+=('manual::/usr/bin/echo The source file for this package needs to be downloaded manually, since it requires a login and is not redistributable.;/usr/bin/echo Please visit http://www.oracle.com/technetwork/database/database-technologies/express-edition/downloads/index.html.; exit 1;')
-md5sums=('dd7881a55569d890241f11cd0eeb7d48'
-         'cff2a6dbbbbf4d3454c05970183cc1b8'
-         '6dd1d97571b823e8f682f290edeb9e7b'
-         'e558d7dcb9e455f8cb03db8638832774'
-         '5a3eaff3cb867d97cd250f04fe372ae7'
-         '4d4a2e1bcc29b9c1fd197b42ccc4e0ac'
-         '3dd923ac2df9fd38827fc9fc0048273a'
-        )
+source=(
+	'manual://download/file/from/oracle/page/oracle-xe-11.2.0-1.0.x86_64.rpm.zip'
+	'oracle_env.csh'
+	'oracle_env.sh'
+	'oracle-xe'
+	'oracle-xe.conf'
+	'listener.ora'
+	'oracle-xe.service'
+)
+
+DLAGENTS+=('manual::/usr/bin/echo The source file for this package needs to be downloaded manually, since it requires a login and is not redistributable. Please visit http://www.oracle.com/technetwork/database/database-technologies/express-edition/downloads/index.html')
+
+md5sums=(
+	'dd7881a55569d890241f11cd0eeb7d48'
+        'cff2a6dbbbbf4d3454c05970183cc1b8'
+        '6dd1d97571b823e8f682f290edeb9e7b'
+        'e558d7dcb9e455f8cb03db8638832774'
+        '5a3eaff3cb867d97cd250f04fe372ae7'
+        '4d4a2e1bcc29b9c1fd197b42ccc4e0ac'
+        '3dd923ac2df9fd38827fc9fc0048273a'
+)
 
 build() {
     cd $srcdir
