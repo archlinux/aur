@@ -1,7 +1,7 @@
 pkgname=electrum-ltc
 pkgver=3.1.3.1
 pkgrel=3
-pkgdesc='Lightweight Litecoin client'
+pkgdesc='Litecoin thin client'
 arch=(any)
 url=https://electrum-ltc.org/
 license=(MIT)
@@ -28,9 +28,9 @@ sha256sums=(27d272f01584aeddf1a3268f6f2c18d9557ba7376d203241473f41e37ae8ac4f
             SKIP)
 
 prepare() {
-  sed -i Electrum-LTC-$pkgver/electrum-ltc.desktop \
-      -e 's/Exec=.*electrum-ltc %u.*/Exec=electrum-ltc %u/' \
-      -e 's/Exec=.*electrum-ltc --testnet %u.*/Exec=electrum-ltc --testnet %u/'
+  sed -e 's/Exec=.*electrum-ltc %u"/Exec=electrum-ltc %u/' \
+      -e 's/Exec=.*electrum-ltc --testnet %u"/Exec=electrum-ltc --testnet %u/' \
+      -i Electrum-LTC-$pkgver/electrum-ltc.desktop
 }
 
 build() {
@@ -43,8 +43,7 @@ package() {
 
   ./setup.py install -O1 --root="$pkgdir"
 
-  install -Dm644 AUTHORS README.rst RELEASE-NOTES electrum-ltc.conf.sample \
-          -t "$pkgdir"/usr/share/doc/electrum-ltc
+  install -Dm644 AUTHORS README.rst RELEASE-NOTES -t "$pkgdir"/usr/share/doc/electrum-ltc
 
   install -Dm644 LICENCE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
