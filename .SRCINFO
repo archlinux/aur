@@ -1,0 +1,24 @@
+pkgbase = camo.cr-git
+	pkgdesc = A crystal version of atmos/camo, faster and with better request lifecycle tracing
+	pkgver = r41.0778b3e
+	pkgrel = 1
+	url = https://github.com/RX14/camo.cr
+	arch = i686
+	arch = x86_64
+	license = MIT
+	checkdepends = ruby
+	checkdepends = ruby-rake
+	checkdepends = ruby-bundler
+	makedepends = crystal
+	makedepends = shards
+	depends = gc
+	depends = libatomic_ops
+	depends = pcre
+	depends = libevent
+	source = git+https://github.com/RX14/camo.cr.git
+	source = camocr.service
+	sha256sums = SKIP
+	sha256sums = 61fdc0812e66e5a479fa486fbb75444d3a31ab684bc1372681f798c524fa0153
+
+pkgname = camo.cr-git
+
