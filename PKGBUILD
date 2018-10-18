@@ -1,6 +1,6 @@
 # Maintainer: kausban <mail at kausban com>
 pkgname=polar-bookshelf-bin
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Polar Bookshelf"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('desktop-file-utils' 'gconf' 'hicolor-icon-theme' 'libappindicator-gtk2
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://github.com/burtonator/polar-bookshelf/releases/download/v"$pkgver"/polar-bookshelf-"$pkgver"-amd64.deb")
-sha512sums_x86_64=('b06b0ca0d3dfd169d757596095f88d5931c4d510f4ed89452cc21eb9703a1d722acc08ba517ec04a7c49f8c691f75e9ba000f57d42442d9f46208510dbd8e0dd')
+sha512sums_x86_64=('955c06fed2c8dddbde7402f4bc5ffac4b4b85dcb373503c2fa85c3a2be946f5c06b8a81c29a4d377d981deb52c8419b38e653b12d14390f15f2ec2c8544c71f8')
 
 package(){
 
