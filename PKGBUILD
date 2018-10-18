@@ -24,12 +24,12 @@ prepare() {
 	# ensure that the required ITK modules are present
 	if [ `ls "/usr/include/$_itk" | grep 'itkMINCImageIO.h'` == "" ];
 	then
-		echo "ERROR: ITK must be built with -DModule_ITKIOMINC:BOOL=ON"
+		error "ITK must be built with -DModule_ITKIOMINC:BOOL=ON"
 		exit 1
 	fi
 	if [ `ls "/usr/include/$_itk" | grep 'itkMINCTransformAdapter.h'` == "" ];
 	then
-		echo "ERROR: ITK must be built with -DModule_ITKIOTransformMINC:BOOL=ON"
+		error "ITK must be built with -DModule_ITKIOTransformMINC:BOOL=ON"
 		exit 1
 	fi
 
