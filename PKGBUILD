@@ -7,7 +7,7 @@ pkgname="${_pkgname}"
 epoch=1
 _pkgver=2017_2018
 pkgver="${_pkgver}"
-pkgrel=2
+pkgrel=3
 pkgdesc="If you purchased IDOS for Windows by CHAPS, then this installs the license. You need your setup-code during installation."
 arch=('i686' 'x86_64')
 url="http://www.chaps.cz/eng/download/idos-install/"
@@ -42,7 +42,7 @@ source=(
 sha256sums=(
   "c002d46e50509049428fe46193acbeb2e2265dadb2b6d0fdb52dc2a3ed83a18e"
   "59d379168865a4a88a697e55b2a1af342f6631cea6278ef05c98ff0c755ea0ab"
-  "a6bb78dda9dbf43d487251eb2ff2e23b4a64e5fb0bb43bca3a507520df98c6c5"
+  "SKIP"
   "6382fff14035c4ec7387e7f0d20d7494e05da3d4c24155090fb39196fa944041"
   "f692f387815e7980b418e6e6b2c2965d79f7f9dfe0fc962f6ed3bbfe5f99570a"
 )
