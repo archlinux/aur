@@ -5,14 +5,14 @@
 pkgname=pauker
 pkgver=1.9b3
 pkgver_dl=1.9Beta3
-pkgrel=1
+pkgrel=2
 pkgdesc="A flash card based learning tool using shortterm and longterm memory training (no active development)"
 arch=('any')
 url="http://pauker.sourceforge.net/"
 license=('GPL')
 depends=('java-runtime')
 source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver_dl.jar"
-        "https://pauker.svn.sourceforge.net/svnroot/$pkgname/trunk/icon.svg"
+        "icon.svg::https://sourceforge.net/p/pauker/code/ci/master/tree/icon.svg?format=raw"
         "$pkgname.desktop"
         "$pkgname.sh")
 noextract=("$pkgname-$pkgver_dl.jar")
