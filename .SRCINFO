@@ -1,6 +1,6 @@
 pkgbase = postgresql-src
 	pkgver = 11.0
-	pkgrel = 6
+	pkgrel = 8
 	url = http://www.postgresql.org/
 	arch = aarch64
 	arch = i686
@@ -20,7 +20,7 @@ pkgbase = postgresql-src
 	sha256sums = 57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5
 	sha256sums = 6abb842764bbed74ea4a269d24f1e73d1c0b1d8ecd6e2e6fb5fb10590298605e
 	sha256sums = b48fe97f8e43ed0d2041d519119a4dafb70fcae72870951bf4fb7350fe169ac8
-	sha256sums = 5e551630ee443a6985551da2ab72789f669deba8bf4443465d5c76a064dc675d
+	sha256sums = bde15c41f7cde851e2dda20b20ce6aa48fa9dedc55ff9cf881452d2a2549ecb6
 
 pkgname = postgresql-src-libs
 	pkgdesc = Libraries for use with PostgreSQL
@@ -46,6 +46,8 @@ pkgname = postgresql-src
 	depends = readline>=6.0
 	depends = openssl>=1.0.0
 	depends = pam
+	depends = llvm
+	depends = clang
 	optdepends = python: for PL/Python support
 	optdepends = perl: for PL/Perl support
 	optdepends = tcl: for PL/Tcl support
