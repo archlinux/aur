@@ -1,4 +1,5 @@
-*.xz
-*.tar.gz
-pkg
-src
+*
+
+!PKGBUILD
+!.SRCINFO
+!sumo.desktop
