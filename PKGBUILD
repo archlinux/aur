@@ -10,7 +10,7 @@
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 # NOTE: libtool requires rebuilt with each new gcc version
 
-pkgname=(gcc-git gcc-libs-git gcc-fortran-git gcc-objc-git gcc-ada-git gcc-go-git lib32-gcc-libs-git)
+pkgname=(gcc-git gcc-libs-git gcc-fortran-git gcc-objc-git gcc-ada-git gcc-go-git lib32-gcc-libs-gitb)
 pkgver=9.0.0.r164803.d767b8cd9ed
 _majorver=${pkgver:0:1}
 _islver=0.19
@@ -349,7 +349,7 @@ package_gcc-go-git() {
     "$pkgdir/usr/share/licenses/gcc-go-git/"
 }
 
-package_lib32-gcc-libs-git() {
+package_lib32-gcc-libs-gitb() {
   pkgdesc='32-bit runtime libraries shipped by GCC (git version)'
   depends=('lib32-glibc>=2.27')
   provides=(libgo.so=${pkgver} libgfortran.so=${pkgver} libubsan.so=${pkgver} libasan.so=${pkgver} lib32-gcc-libs=${pkgver})

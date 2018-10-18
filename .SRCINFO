@@ -93,7 +93,7 @@ pkgname = gcc-go-git
 	conflicts = go
 	conflicts = gcc-go
 
-pkgname = lib32-gcc-libs-git
+pkgname = lib32-gcc-libs-gitb
 	pkgdesc = 32-bit runtime libraries shipped by GCC (git version)
 	groups = multilib-devel
 	depends = lib32-glibc>=2.27
