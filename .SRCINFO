@@ -1,4 +1,4 @@
-pkgbase = minivmac
+pkgbase = minivmacii
 	pkgdesc = a miniature Macintosh II emulator
 	pkgver = 3.5.8
 	pkgrel = 1
