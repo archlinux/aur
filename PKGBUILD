@@ -4,7 +4,7 @@ pkgdesc="High performance software library for parallel computing with an easy-t
 url='https://arrayfire.com'
 pkgver=3.6.1
 arch=('x86_64')
-pkgrel=4
+pkgrel=5
 license=('BSD')
 depends=('cblas' 'fftw' 'boost-libs' 'lapacke' 'forge' 'freeimage' 'glfw' 'glew' 'glbinding')
 makedepends=('cmake' 'graphviz' 'doxygen' 'opencl-headers' 'boost' 'python' 'ocl-icd' 'cuda' 'git')
@@ -18,7 +18,7 @@ sha512sums=('44f4e0e5c99764a34854e5da7c893cd956a42dd4a23a5761e63a661e23cbd0bbab7
 prepare() {
   cd "${srcdir}/arrayfire-full-${pkgver}"
 
-  rm -rf build && mkdir build
+  mkdir build
 }
 
 build() {
