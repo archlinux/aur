@@ -1,17 +1,17 @@
 pkgbase = sn-bin
 	pkgdesc = A simple and private notes app.
-	pkgver = 2.3.7
+	pkgver = 2.3.8
 	pkgrel = 1
 	url = https://github.com/standardnotes/desktop
 	arch = x86_64
 	license = GPL3
 	conflicts = standardnotes-desktop
-	noextract = standard-notes-2.3.7-x86_64.AppImage
+	noextract = standard-notes-2.3.8-x86_64.AppImage
 	options = !strip
-	source_x86_64 = https://github.com/standardnotes/desktop/releases/download/v2.3.7/standard-notes-2.3.7-x86_64.AppImage
+	source_x86_64 = https://github.com/standardnotes/desktop/releases/download/v2.3.8/standard-notes-2.3.8-x86_64.AppImage
 	source_x86_64 = standard-notes.desktop
 	source_x86_64 = https://github.com/standardnotes/desktop/raw/master/app/icon/Icon-512x512.png
-	sha256sums_x86_64 = e39bb38e0ee54a0891e7e0db3ce89f0b80145d4f596faba90571276f781ec5a2
+	sha256sums_x86_64 = 185cc373c7911fed06890e6f98e7fb27dc3245ad30e693f36dcb04d250b73e01
 	sha256sums_x86_64 = 223db296b73d1bbb1ed9f468f368cfa1a5a6fea5b0e7ded6ddbfc2bbc638fbbe
 	sha256sums_x86_64 = e61d2ea951779692dfaa515bd13fefe7faa1be2a23ffde147c29aad24cf4f070
 
