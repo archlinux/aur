@@ -41,7 +41,8 @@ build() {
     --with-system-tzdata=/usr/share/zoneinfo \
     --with-uuid=e2fs \
     --enable-nls \
-    --enable-thread-safety
+    --enable-thread-safety \
+    --with-jit
 
   make world -j8
 }
@@ -108,7 +109,7 @@ package_postgresql-src-docs() {
 package_postgresql-src() {
   pkgdesc="A sophisticated object-relational DBMS (from source, LTO enabled)"
   backup=('etc/pam.d/postgresql' 'etc/logrotate.d/postgresql')
-  depends=("postgresql-src-libs>=${pkgver}" 'krb5' 'readline>=6.0' 'openssl>=1.0.0' 'pam')
+  depends=("postgresql-src-libs>=${pkgver}" 'krb5' 'readline>=6.0' 'openssl>=1.0.0' 'pam' 'llvm' 'clang')
   optdepends=('python: for PL/Python support'
               'perl: for PL/Perl support'
               'tcl: for PL/Tcl support'
