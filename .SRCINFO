@@ -5,6 +5,7 @@ pkgbase = weechat-edit-git
 	url = https://github.com/keith/edit-weechat
 	arch = any
 	license = MIT
+	makedepends = git
 	depends = weechat
 	source = git+https://github.com/keith/edit-weechat.git
 	sha512sums = SKIP

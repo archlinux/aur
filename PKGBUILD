@@ -7,6 +7,7 @@ pkgname=weechat-edit-git
 pkgrel=1
 pkgver=r8.6aface4
 source=('git+https://github.com/keith/edit-weechat.git')
+makedepends=('git')
 url='https://github.com/keith/edit-weechat'
 
 _gitname='edit-weechat'
