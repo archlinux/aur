@@ -6,7 +6,7 @@ _pkgname=idos-timetable-data-chaps-trains-cz-2016
 pkgname="${_pkgname}-latest"
 epoch=0
 pkgver=2016_08_05
-pkgrel=2
+pkgrel=3
 pkgdesc="2015/2016 Timetable data for the timetable search engines by CHAPS: Czech trains."
 arch=(any)
 url="http://web.archive.org/web/20160806152205/http://chaps.cz/eng/download/idos/#kotvatt"
@@ -58,7 +58,7 @@ source=(
 
 sha256sums=(
   'ccbfee7e570e441bfe75e429c713694d56dded50ebebe2f2c88158caf1da4246'
-  "a6bb78dda9dbf43d487251eb2ff2e23b4a64e5fb0bb43bca3a507520df98c6c5"
+  "e904d167ccdcfb2743f4cfd596aaa9dce8b751fb5c8315b972b42b7cbb3189e6"
   "c6bb216055d3670d3100b7a74e04ce0644030f365f4349a09e630ef60fbcb9a4"
 )
 
