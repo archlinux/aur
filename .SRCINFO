@@ -1,0 +1,17 @@
+pkgbase = goploader-server
+	pkgdesc = Easy file sharing with server-side encryption, curl/httpie/wget compliant
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gpldr.in
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = dep
+	backup = etc/goploader/conf.yml
+	source = goploader-server-v1.0.tar.gz::https://github.com/Depado/goploader/archive/v1.0.tar.gz
+	source = goploader-server.sysusers
+	sha256sums = 0310c9616ad14fed3c253940a12f37678e5ec6cc18f761f9c5f7abe68e9be020
+	sha256sums = 3a33d7a1353376018713ac9ca683ecc967a9b2e0c13695c3037edd55b1366510
+
+pkgname = goploader-server
+
