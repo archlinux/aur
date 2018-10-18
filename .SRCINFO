@@ -1,9 +1,8 @@
 pkgbase = arpage
 	pkgdesc = JACK MIDI arpeggiator with transport and tempo sync
 	pkgver = 0.3.3
-	pkgrel = 9
+	pkgrel = 10
 	url = http://sourceforge.net/projects/arpage/
-	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = intltool
