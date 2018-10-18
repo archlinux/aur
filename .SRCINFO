@@ -1,6 +1,6 @@
 pkgbase = depot-tools-git
 	pkgdesc = Build tools for working with Chromium development, include gclient
-	pkgver = r5113.4d2e8bff
+	pkgver = r5469.488362624
 	pkgrel = 1
 	url = https://dev.chromium.org/developers/how-tos/install-depot-tools
 	install = depot_tools.install
@@ -19,9 +19,13 @@ pkgbase = depot-tools-git
 	source = depot-tools-git::git+https://chromium.googlesource.com/chromium/tools/depot_tools.git
 	source = repo_fix.sh
 	source = fixshebangs.py
+	source = gsutil-use-google-cloud-sdk.patch
+	source = vpython-use-system-python2.patch
 	sha512sums = SKIP
 	sha512sums = bde33ffcad42a4d554d5490b6562981ef4b9f3abebadbed909749ee05ba391da4b5acb31b901e785b6f019b4ed3f9c740ab92623dd6a87e67b4b599a0010374b
 	sha512sums = 33d772f68deddefce985d2820d3ef60fa730a1f3bc404cef3c8b1b517369501b9c3a07bc7b1b3df4d0589b45cbe4850f935699676c3e10c437bceffb37eb8214
+	sha512sums = 4043722867ebefc3d65b03f6faa016ef31c510587d499a96e3f3ae1f6e19b49299f5b540e3f2d5176e9ecfd73645d9b815d8c052fcc327687091a2355f817d6a
+	sha512sums = 4efd6fa204e429619d2da999d07d27eabd748b1941a913cfd5a83cf23fd93b3c8c021ed97c3f30dcc17f67b0dd32486bc361da374aa26e2be2d1d3ed922712c7
 
 pkgname = depot-tools-git
 
