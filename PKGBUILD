@@ -1,4 +1,5 @@
-# Maintainer : Frederic Bezies < fredbezies at gmail dot com >
+# Maintainer: Vonter <vonter201x at gmail>
+# Contributor: Frederic Bezies < fredbezies at gmail dot com >
 # Contributor: Alexej Magura <agm2819*gmail*>
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 # Contributor: TDY <tdy@gmx.com>
@@ -6,7 +7,7 @@
 pkgname=faangband
 _pkgname=FAangband
 pkgver=1.4.4
-pkgrel=3
+pkgrel=4
 pkgdesc="An Angband variant set in the First Age of Tolkien's Silmarillion world"
 arch=('i686' 'x86_64')
 url="http://angband.oook.cz/faangband/"
@@ -28,9 +29,18 @@ build() {
     make
 }
 
+prepare() {
+
+  # Fix for xlocale.h (thanks katafrakt)
+
+  cd "${srcdir}/FAangband-master/src"
+  sed -i 's/xlocale/locale/' main-crb.c 
+
+}
+
 package() {
     
-    cd "$srcdir/FAangband-master"
+  cd "$srcdir/FAangband-master"
 
   # Install game files
   
