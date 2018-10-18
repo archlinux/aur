@@ -3,7 +3,7 @@
 pkgname=watcher3
 _gitname=Watcher3
 _gitauthor=nosmokingbandit
-pkgver=925.6d964a9
+pkgver=927.0217e75
 pkgrel=1
 pkgdesc="Automated movie NZB & Torrent searcher and snatcher"
 arch=('any')
