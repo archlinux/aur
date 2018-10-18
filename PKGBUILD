@@ -10,7 +10,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-vaapi
-pkgver=69.0.3497.100
+pkgver=70.0.3538.67
 pkgrel=1
 _launcher_ver=6
 pkgdesc="Chromium with VA-API support to enable hardware acceleration"
@@ -33,22 +33,20 @@ optdepends=('pepper-flash: support for Flash content'
 install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
-        cfi-issues-fix.patch
-        fix-cfi-icall-failure-with-use_system_libjpeg-true.patch
-        only-disable-cfi-icall-when-use_system_libjpeg-true.patch
+        include-stdint.h-in-pdfium_mem_buffer_file_write.h.patch
         chromium-widevine-r2.patch
         chromium-system-icu.patch
         chromium-skia-harmony.patch
-        chromium-vaapi-r20.patch)
-sha256sums=('e3391560e73e25fb4afc3f2dd5616607e2dbfc58aa88251a2c5d6b7096fe9e35'
+        cfi-vaapi-fix.patch
+        chromium-vaapi-r21.patch)
+sha256sums=('e956c2031f634300ada8c09e0777f0c560f4798963f144edaaec8d43e1e30e37'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
-            'adf301b50b5a03c98b7602c17e1f34e37260c07c88bcb7e1661122af61f50e23'
-            '97b421bc60a4abdf37de2d88a51b973e9f68fb44d1eccd464adfb3d9f5d71478'
-            '9cae9ded6497afd15ad72d963897425ab6c7f28941bb3c3948e7996610a0d180'
+            'cd1e87bf3618b7897c5caf7b0f4213cfa5ce917acb0613ecd2ab3f830f0cbfbb'
             '02c69bb3954087db599def7f5b6d65cf8f7cf2ed81dfbdaa4bb7b51863b4df15'
             'c4f2d1bed9034c02b8806f00c2e8165df24de467803855904bff709ceaf11af5'
             'feca54ab09ac0fc9d0626770a6b899a6ac5a12173c7d0c1005bc3964ec83e7b3'
-            '86cbb0913edadac7048592c0f94ccc835e7d8dd80d8f191827bb0ec767b69bff')
+            'adf301b50b5a03c98b7602c17e1f34e37260c07c88bcb7e1661122af61f50e23'
+            '7985b5b6820300beeb119b601bb9fe3d2a662daf5dc90619a0f125ea84907ce5')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -92,10 +90,14 @@ prepare() {
   sed -i 's/OFFICIAL_BUILD/GOOGLE_CHROME_BUILD/' \
     tools/generate_shim_headers/generate_shim_headers.py
 
-  # https://crbug.com/866290
-  patch -Np1 -i ../cfi-issues-fix.patch # Fixes VA-API when used with patches below
-  patch -Np1 -i ../fix-cfi-icall-failure-with-use_system_libjpeg-true.patch
-  patch -Np1 -i ../only-disable-cfi-icall-when-use_system_libjpeg-true.patch
+  # https://crbug.com/893950
+  sed -i -e 's/\<xmlMalloc\>/malloc/' -e 's/\<xmlFree\>/free/' \
+    third_party/blink/renderer/core/xml/*.cc \
+    third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
+    third_party/libxml/chromium/libxml_utils.cc
+
+  # https://crbug.com/879900
+  patch -Np1 -i ../include-stdint.h-in-pdfium_mem_buffer_file_write.h.patch
 
   # https://crbug.com/skia/6663#c10
   patch -Np4 -i ../chromium-skia-harmony.patch
@@ -106,11 +108,6 @@ prepare() {
   # https://bugs.gentoo.org/661880#c21
   patch -Np1 -i ../chromium-system-icu.patch
 
-  # Remove compiler flags not supported by our system clang
-  sed -i \
-    -e '/"-Wno-ignored-pragma-optimize"/d' \
-    build/config/compiler/BUILD.gn
-
   # Force script incompatible with Python 3 to use /usr/bin/python2
   sed -i '1s|python$|&2|' third_party/dom_distiller_js/protoc_plugins/*.py
 
@@ -119,7 +116,8 @@ prepare() {
 
   # VA-API patch
   msg2 'Applying VA-API patches'
-  patch -Np1 -i ../chromium-vaapi-r20.patch
+  patch -Np1 -i ../cfi-vaapi-fix.patch
+  patch -Np1 -i ../chromium-vaapi-r21.patch
 
   # Remove bundled libraries for which we will use the system copies; this
   # *should* do what the remove_bundled_libraries.py script does, with the
@@ -158,10 +156,8 @@ build() {
     'host_toolchain="//build/toolchain/linux/unbundle:default"'
     'clang_use_chrome_plugins=false'
     'is_official_build=true' # implies is_cfi=true on x86_64
-    'is_debug=false'
     'treat_warnings_as_errors=false'
     'fieldtrial_testing_like_official_build=true'
-    'remove_webcore_debug_symbols=true'
     'ffmpeg_branding="Chrome"'
     'proprietary_codecs=true'
     'link_pulseaudio=true'
