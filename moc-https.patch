@@ -1,0 +1,10 @@
+--- files.c	2016-11-16 01:54:37.000000000 +0100
++++ /tmp/files.c	2018-10-12 11:34:55.297373063 +0200
+@@ -93,6 +93,7 @@
+ inline int is_url (const char *str)
+ {
+ 	return !strncasecmp (str, "http://", sizeof ("http://") - 1)
++		|| !strncasecmp (str, "https://", sizeof ("https://") - 1)
+ 		|| !strncasecmp (str, "ftp://", sizeof ("ftp://") - 1);
+ }
+ 
