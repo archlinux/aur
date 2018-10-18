@@ -1,0 +1,15 @@
+pkgbase = python-cloudant
+	pkgdesc = Cloudant / CouchDB Client Library
+	pkgver = 2.10.0
+	pkgrel = 1
+	url = https://github.com/cloudant/python-cloudant
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/c/cloudant/cloudant-2.10.0.tar.gz
+	md5sums = 8c791477c49c44c29f142e89c915b99f
+
+pkgname = python-cloudant
+	depends = python
+
