@@ -11,6 +11,8 @@ depends=()
 makedepends=("cmake>=3.0" "make")
 optdepends=()
 provides=("libldac=2.0.2" "ldacBT=2.0.2" "ldacBT_enc.so=2.0.2" "ldacBT_abr.so=2.0.2")
+conflicts=("libldac")
+replaces=("libldac")
 source=("git+https://github.com/EHfive/ldacBT.git"
         "git+https://gitlab.com/eh5/libldac.git")
 

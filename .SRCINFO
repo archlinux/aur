@@ -16,6 +16,8 @@ pkgbase = libldac-git
 	provides = ldacBT=2.0.2
 	provides = ldacBT_enc.so=2.0.2
 	provides = ldacBT_abr.so=2.0.2
+	conflicts = libldac
+	replaces = libldac
 	source = git+https://github.com/EHfive/ldacBT.git
 	source = git+https://gitlab.com/eh5/libldac.git
 	md5sums = SKIP
