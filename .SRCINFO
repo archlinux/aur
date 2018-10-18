@@ -1,7 +1,7 @@
 pkgbase = deepin-wechat
 	pkgdesc = Tencent WeChat Client on Deepin Wine Updated
 	pkgver = 2.6.4.38
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.deepin.com/
 	arch = x86_64
 	license = custom
@@ -13,7 +13,8 @@ pkgbase = deepin-wechat
 	depends = xdotool
 	depends = xorg-xwininfo
 	depends = deepin-wine
-	optdepends = noto-fonts-cjk
+	optdepends = noto-fonts-cjk: Chinese fonts that wine recognizes (you can use other fonts, but you will have to configure manually on winecfg)
+	optdepends = gnome-shell-extension-topicons-plus-huttli-git: Show tray icon on topbar on gnome instead of wine floating window
 	source = https://mirrors.tuna.tsinghua.edu.cn/deepin/pool/non-free/d/deepin.com.wechat/deepin.com.wechat_2.6.2.31deepin0_i386.deb
 	source = http://dldir1.qq.com/weixin/Windows/WeChat_2.6.4_update38.zip?a=1&toclientver=1644561446&uin=40264189&clientver=1644561446&url=Windows+7&from=getupdateinfo
 	sha1sums = 8e427de964b83c642ff51f180ad161c3d754ca36
