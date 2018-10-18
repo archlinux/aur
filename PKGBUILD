@@ -1,9 +1,9 @@
 # Maintainer: ugjka <esesmu@protonmail.com>
 
 pkgname=calendar
-pkgver=6.3_20180603
-pkgverbase=6.3
-pkgrel=4
+pkgver=6.4_20180603
+pkgverbase=6.4
+pkgrel=1
 pkgdesc="Reminder utility (OpenBSD)"
 url="http://www.openbsd.org/cgi-bin/cvsweb/src/usr.bin/calendar"
 arch=('x86_64')
