@@ -1,29 +1,25 @@
 # Maintainer: Roger Duran <rogerduran at gmail dot com>
 
 pkgname=python-httpie-jwt-auth
-pkgdesc="JWTAuth (JSON Web Tokens) auth plugin for HTTPie"
-license=('BSD')
-url="https://github.com/teracyhq/httpie-jwt-auth"
-pkgver=50.3a2ce34
+_pkgname=httpie-jwt-auth
+pkgver=0.3.0
 pkgrel=1
+pkgdesc="JWTAuth (JSON Web Tokens) auth plugin for HTTPie"
+url="https://github.com/teracyhq/httpie-jwt-auth"
+license=('BSD')
 
-source=("$pkgname::git://github.com/teracyhq/httpie-jwt-auth.git")
-md5sums=('SKIP')
+source=("https://github.com/teracyhq/${_pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('31a32ef93a00f50bfd593004f35ce99390c3b4471aa514d602cd6d8a34d183f7')
 depends=('httpie')
-makedepends=('python-distribute' 'git')
+makedepends=('python-distribute')
 arch=('any')
 
-pkgver() {
-    cd "$srcdir/$pkgname"
-    echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
-}
-
 build() {
-    cd "$srcdir/$pkgname"
-    python3 setup.py build
+    cd "$srcdir/${_pkgname}-${pkgver}"
+    python setup.py build
 }
 
 package() {
-    cd "$srcdir/$pkgname"
-    python3 setup.py install --root="$pkgdir" --optimize=1
+    cd "$srcdir/${_pkgname}-${pkgver}"
+    python setup.py install --root="$pkgdir" --optimize=1
 }
