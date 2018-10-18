@@ -7,7 +7,7 @@ pkgname="${_pkgname}-svn"
 # _pkgver=2.9j
 epoch=1
 pkgver=2.9j+svn2242
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple caching proxy server with special features (request, recursive fetch, subscription, modify HTML, ...) for use with dial-up internet links. Includes startup scripts for OpenRC, System V init, systemd."
 arch=('i686' 'x86_64' 'arm' 'arm64')
 url="http://www.gedanken.org.uk/software/wwwoffle/"
@@ -134,11 +134,11 @@ prepare() {
   ### Update version.h to the actual version.
   _ver="$(_pgmver)"
   _rev="$(_svnrelease)"
-  msg "Updating version in src/version.h to ${_ver}+svn${_rev} ..."
+  msg2 "Updating version in src/version.h to ${_ver}+svn${_rev} ..."
   sed -i 's|^\([[:space:]]*#define[[:space:]]*WWWOFFLE_VERSION[[:space:]]*\).*$|/*+ +*/\n/*+ The following line was automatically upgraded by the Arch Linux PKGBUILD (package build script) +*/\n/*+ in order to match the version as in conf/wwwoffle.conf.template and the SVN revision. +*/\n\1"'"${_ver}+svn${_rev}"'"|' \
     "${_unpackeddir}/src/version.h"
 
-  msg "Generating svn commit messages file ..."
+  msg2 "Generating svn commit messages file ..."
   svn log > "${_svnlog}"
 }
 
@@ -149,17 +149,17 @@ build() {
   ### Setting CFGLAGS.
   CFLAGS+=' -Wno-error=unused-result'
   export CFLAGS
-  msg "Using the following CFLAGS: '${CFLAGS}'"
+  msg2 "Using the following CFLAGS: '${CFLAGS}'"
 
   ### Make the ./configure-script.
   # libtoolize --force
   # aclocal
   # autoheader
-  msg "Running 'autoconf' to generate './configure' from 'configure.in' ..."
+  msg2 "Running 'autoconf' to generate './configure' from 'configure.in' ..."
   autoconf -o configure -v configure.in
 
   ### Configure the Makefile.
-  msg "Running './configure' (with options) ..."
+  msg2 "Running './configure' (with options) ..."
   ./configure \
     --prefix=/usr \
     --bindir=/usr/bin \
@@ -174,7 +174,7 @@ build() {
     --with-default-language=en
 
   ### Build the software.
-  msg "Running 'make' ..."
+  msg2 "Running 'make' ..."
   make || return 1
 }
 
@@ -183,11 +183,11 @@ package() {
   cd "${_unpackeddir}"
 
   ### Install the software.
-  msg "Runnung 'make install' (with options) ..."
+  msg2 "Runnung 'make install' (with options) ..."
   make DESTDIR="${pkgdir}" install
 
 
-  msg "Installing other files ..."
+  msg2 "Installing other files ..."
 
   ### Move documentation into the place we want it.
   mkdir -p "${pkgdir}/usr/share"
