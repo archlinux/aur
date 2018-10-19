@@ -1,0 +1,24 @@
+pkgbase = automx-git
+	pkgdesc = automx makes setting up a mail account easy by handling mail account profile requests from your mail clients
+	pkgver = v1.1.1.4aee43f
+	pkgrel = 1
+	url = https://automx.org
+	install = automx.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python
+	depends = mod_wsgi
+	depends = python-dateutil
+	depends = python-ipaddress
+	depends = python-lxml
+	depends = python-ldap
+	depends = python-m2crypto
+	provides = automx
+	conflicts = automx
+	options = emptydirs
+	source = automx::git+https://github.com/sys4/automx.git
+	md5sums = SKIP
+
+pkgname = automx-git
+

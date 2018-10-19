@@ -1,0 +1,14 @@
+post_install() {
+  echo  "1. See the INSTALL file in /usr/share/automx/ for further instructions and info to set up the required DNS. Note automx requires an HTTP server such as Apache with mod_wsgi or Nginx with uwsgi."
+  echo  "2. Examples => /usr/share/automx/conf"
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+  echo
+}
+
+# vim:set ts=2 sw=2 et:
