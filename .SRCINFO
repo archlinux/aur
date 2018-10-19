@@ -1,12 +1,13 @@
 pkgbase = gnucap-git
 	pkgdesc = GNU Circuit Analysis Package (develop branch)
-	pkgver = 20171003.develop
-	pkgrel = 1
+	pkgver = dev.0831.r0.gf1c8c78
+	pkgrel = 2
 	url = http://gnucap.org/
-	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
+	depends = bash
+	depends = termcap
 	provides = gnucap
 	conflicts = gnucap
 	source = gnucap::git+git://git.sv.gnu.org/gnucap.git#branch=develop

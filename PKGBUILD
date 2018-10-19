@@ -3,33 +3,38 @@
 
 _pkgname=gnucap
 pkgname=$_pkgname-git
-pkgver=20171002.develop
-pkgrel=1
+pkgver=dev.0831.r0.gf1c8c78
+pkgrel=2
 pkgdesc="GNU Circuit Analysis Package (develop branch)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://gnucap.org/"
 license=('GPL')
-depends=()
+depends=('bash' 'termcap')
 makedepends=('git')
-provides=('gnucap')
-conflicts=('gnucap')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 source=("$_pkgname::git+git://git.sv.gnu.org/$_pkgname.git#branch=develop")
 md5sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd $_pkgname
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare(){
+    cd $_pkgname
+    sed -i 's#INSTALL_SYSCONF_DIR = $(PREFIX)/etc#INSTALL_SYSCONF_DIR = /etc#' main/Make1
+    sed -i 's#$\\{prefix\\}/etc#/etc#' main/configure
 }
 
 build() {
-  cd $_pkgname
-  ./configure --prefix=/usr
-  make
+    cd $_pkgname
+    ./configure --prefix=/usr --sysconfdir=/etc
+    make
 }
 
 package() {
-  cd $_pkgname
-  make DESTDIR="$pkgdir" install
+    cd $_pkgname
+    make DESTDIR="$pkgdir/" install
 }
 
-# vim:set ts=2 sw=2 et:
