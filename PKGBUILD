@@ -20,6 +20,7 @@ optdepends=("python-charade: Detect page's encoding"
             # But SQLite module has already been integrated into python package, so it doesn't matter
             #"python-mock: For testing only"
             "python-ecdsa: ECDSA support")
+conflicts=('limnoria-python3-git')
 source=("https://github.com/ProgVal/Limnoria/archive/master-${_pkgver}.tar.gz")
 md5sums=('ca04efa41385d89ab9bed523fc423621')
 
