@@ -11,9 +11,9 @@ pkgbase = epson-inkjet-printer-escpr
 	depends = cups
 	depends = ghostscript
 	options = !libtool
-	source = https://download3.ebz.epson.net/dsc/f/03/00/08/18/20/e94de600e28e510c1cfa158929d8b2c0aadc8aa0/epson-inkjet-printer-escpr-1.6.30-1lsb3.2.tar.gz
+	source = https://download3.ebz.epson.net/dsc/f/03/00/08/37/47/d522643d893358c730210b29712d67560555181a/epson-inkjet-printer-escpr-1.6.31-1lsb3.2.tar.gz
 	source = bug_x86_64.patch
-	sha256sums = 22b8df9069ae4f63f6ee6203aa74fcbf04ab232043764ed90657c71ea7f31755
+	sha256sums = aa2fc6c3e7c8eb42ead42963691e7ba4bd12d8043c89912d1e962bac1605d9aa
 	sha256sums = 277bc9afe581d2c434217db646e20ecfd1b6045bdcce861f2f08992ccf854084
 
 pkgname = epson-inkjet-printer-escpr
