@@ -54,5 +54,5 @@ package() {
   install -D -m644 "BASIC_CONFIGURATION_README" "$pkgdir/usr/share/docs/$pkgname/"
   install -D -m644 "INSTALL" "$pkgdir/usr/share/docs/$pkgname/"
   # Install license
-  install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
+  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
