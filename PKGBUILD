@@ -1,7 +1,7 @@
 # Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 pkgname=dav1d-git
-pkgver=r20.aeb1cfd
+pkgver=r258.ce6f1f7
 pkgrel=1
 license=('custom:BSD')
 pkgdesc='AV1 cross-platform Decoder, focused on speed and correctness'
@@ -18,11 +18,15 @@ pkgver () {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build () {
+prepare () {
     cd dav1d
     meson build \
         --prefix=/usr \
         --buildtype=release
+}
+
+build () {
+    cd dav1d
     ninja -C build
 }
 
