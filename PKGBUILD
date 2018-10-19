@@ -21,6 +21,7 @@ optdepends=("python2-charade: Detect page's encoding"
             "python2-socksipy-branch: SOCKS proxy support"
             #"python2-mock: For testing only"
             "python2-ecdsa: ECDSA support")
+conflicts=('limnoria-git')
 source=("https://github.com/ProgVal/${_pkgname}/archive/master-${_pkgver}.tar.gz")
 md5sums=('ca04efa41385d89ab9bed523fc423621')
 
