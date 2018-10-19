@@ -65,7 +65,7 @@ _rev_override="n"
 
 pkgbase=linux-clear
 _major=4.18
-_minor=14
+_minor=15
 pkgver=${_major}.${_minor}
 _srcname=linux-${_major}
 pkgrel=1
@@ -329,7 +329,7 @@ done
 
 sha256sums=('19d8bcf49ef530cd4e364a45b4a22fa70714b70349c8100e7308488e26f1eaf1'
             'SKIP'
-            '97d012dd62e3e9cb24c6097f9b1e21f91e39e27059a4c17e2cf0377fdfff3d49'
+            'b94445d2d8919adc01f840088b6a70b26a10dd1beb38c3b0217408e14a7e341d'
             'SKIP'
             '29f9e8dc27e6c9b6488cecd7fe2394030307799e511db2d197d9e6553a7f9e40'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
