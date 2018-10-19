@@ -9,7 +9,7 @@ url='https://code.videolan.org/videolan/dav1d'
 arch=('x86_64')
 provides=('dav1d')
 conflicts=('dav1d')
-makedepends=('meson' 'ninja' 'git')
+makedepends=('meson' 'ninja' 'git' 'nasm')
 source=('git+https://code.videolan.org/videolan/dav1d')
 sha256sums=('SKIP')
 

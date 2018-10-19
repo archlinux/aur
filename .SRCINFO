@@ -10,6 +10,7 @@ pkgbase = dav1d-git
 	makedepends = meson
 	makedepends = ninja
 	makedepends = git
+	makedepends = nasm
 	provides = dav1d
 	conflicts = dav1d
 	source = git+https://code.videolan.org/videolan/dav1d
