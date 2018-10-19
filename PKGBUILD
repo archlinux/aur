@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polycitizen@gmail.com>
 
 pkgname=firefox-multiple-tab-handler
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc='Provides ability to manage multiple tabs at a time'
 url=http://piro.sakura.ne.jp/xul/_multipletab.html.en
@@ -10,7 +10,7 @@ license=('GPL' 'LGPL' 'MPL')
 groups=('firefox-addons')
 source=("https://addons.cdn.mozilla.net/user-media/addons/4838/multiple_tab_handler-$pkgver-fx.xpi")
 noextract=("${source##*/}")
-sha256sums=('281e454e6393c45afc6d81badd5e4ea56c3031eacc2f0ea9fa1db3cda4364be2')
+sha256sums=('086782d6d1ca861f69cc6510b905f81763ba09cde8313692a9f8afd8b5d142c4')
 
 package() {
   install -Dm644 "${source##*/}" "$pkgdir"/usr/lib/firefox/browser/extensions/multipletab@piro.sakura.ne.jp.xpi
