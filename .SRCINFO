@@ -1,0 +1,16 @@
+pkgbase = snx-800007075
+	pkgdesc = Check Point SSL Network Extender (vpn client) [locked to version: 800007075]
+	pkgver = 800007075
+	pkgrel = 1
+	install = snx.install
+	arch = x86_64
+	license = GPL
+	depends = lib32-pam
+	depends = lib32-libstdc++5
+	depends = lib32-libx11
+	noextract = https://starkers.keybase.pub/snx_install_linux30.sh?dl=1
+	source = https://starkers.keybase.pub/snx_install_linux30.sh?dl=1
+	md5sums = 4372e9936e2dfb1d1ebcef3ed4dd7787
+
+pkgname = snx-800007075
+

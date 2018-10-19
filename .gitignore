@@ -1,0 +1,5 @@
+snx_install_linux30.sh?dl=1
+snx.tar.bz2
+pkg/**
+src/**
+**.pkg.tar
