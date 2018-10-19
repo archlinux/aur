@@ -1,5 +1,5 @@
 pkgname=mingw-w64-opus
-pkgver=1.2.1
+pkgver=1.3
 pkgrel=1
 pkgdesc="Codec designed for interactive speech and audio transmission over the Internet (mingw-w64)"
 arch=(any)
@@ -9,7 +9,7 @@ makedepends=('mingw-w64-configure')
 depends=('mingw-w64-crt')
 options=('staticlibs' '!strip' '!buildflags')
 source=("http://downloads.us.xiph.org/releases/opus/opus-$pkgver.tar.gz")
-md5sums=('54bc867f13066407bc7b95be1fede090')
+sha256sums=('4f3d69aefdf2dbaf9825408e452a8a414ffc60494c70633560700398820dc550')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
