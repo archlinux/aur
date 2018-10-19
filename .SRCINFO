@@ -1,0 +1,22 @@
+pkgbase = gns3-legacy
+	pkgdesc = GNS3 network simulator: code before v1.0
+	pkgver = 0.8.7
+	pkgrel = 1
+	url = https://github.com/GNS3/gns3-legacy
+	arch = any
+	license = GPL2
+	makedepends = python-setuptools
+	depends = qt4>=4.5.1
+	depends = python2>=2.6
+	depends = sip>=4.5
+	depends = python2-sip>=4.5
+	depends = python2-pyqt4>=4.5
+	optdepends = dynamips: Cisco router emulator.
+	optdepends = wireshark-gtk: Live packet capture.
+	source = gns3-legacy-0.8.7.tar.gz::https://github.com/GNS3/gns3-legacy/archive/GNS3-0.8.7.tar.gz
+	source = gns3.desktop
+	sha512sums = 7c4372845017b7472a85b95407fe845366e857955b2e658999a6ba0e38ae5d97ccc4a4271fe45b5601267efce3e3a4602305613a365078710343068e3699391f
+	sha512sums = 999a5091c8b789c53f04fa071be8753fb8609d2a4282ca5b3f9a5329dfaf4dfa54eb739f543133d89c85a0dd9159e4bc846f7f7657a9c8b8b2b5953dfb445771
+
+pkgname = gns3-legacy
+
