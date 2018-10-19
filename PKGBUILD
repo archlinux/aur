@@ -1,6 +1,6 @@
 # Maintainer: David Stark <david@starkers.org>
 
-pkgname=saml2aws-bin
+pkgname=saml2aws
 pkgver=2.10.0
 _build=${pkgver}
 pkgrel=1
