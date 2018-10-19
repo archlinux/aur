@@ -4,7 +4,7 @@
 # Based on monkeysphere-git from
 # Contributor: Olivier Mehani <shtrom-arch@ssji.net>
 pkgname=monkeysphere
-pkgver=0.41
+pkgver=0.42
 pkgrel=1
 pkgdesc="Leverage the OpenPGP web of trust for OpenSSH and Web authentication"
 arch=('any')
@@ -17,7 +17,7 @@ source=(http://archive.monkeysphere.info/debian/pool/${pkgname}/m/${pkgname}/${p
     exclude-agent.patch
     )
 
-sha256sums=('911a2f1622ddb81151b0f41cf569ccf2154d10a09b2f446dbe98fac7279fe74b'
+sha256sums=('c1c956b1c86aaa44134fc1a9d75f5aef61266e3a9d8a6218b45d6c54bb7c58c1'
             'e0cdadd4f01deab281cb66543eef19216bd762cb41774d3b498bd2e7c17816e4'
             '90c3fcc64cbd2329489225af39afa52dc8ebeb6ad0877532c2842ccf616df4ea')
 
