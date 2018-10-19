@@ -1,0 +1,14 @@
+pkgbase = kak-lsp
+	pkgdesc = Kakoune Language Server Protocol Client
+	pkgver = 5.7.0
+	pkgrel = 1
+	url = https://github.com/ul/kak-lsp
+	arch = x86_64
+	license = custom:unlicense
+	makedepends = rust
+	depends = kakoune
+	source = kak-lsp-5.7.0.tar.gz::https://github.com/ul/kak-lsp/archive/v5.7.0.tar.gz
+	sha256sums = a0016f386a968f9a4c7d2f08218881cd54e5df9d3716573f552663faa5cdb54a
+
+pkgname = kak-lsp
+
