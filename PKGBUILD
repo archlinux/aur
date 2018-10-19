@@ -207,8 +207,7 @@ build() {
 	msg2 'Building ycmd...' # BuildYcmdLibs()
 	mkdir -p "$srcdir/ycmd_build"
 	cd "$srcdir/ycmd_build" || exit
-	sed -e 's/option( USE_PYTHON2\(.*\)ON/option( USE_PYTHON2\1OFF/g' -i "$srcdir/YouCompleteMe/third_party/ycmd/cpp/CMakeLists.txt"
-	cmake -G "Unix Makefiles" -DUSE_SYSTEM_LIBCLANG="$_use_system_clang" . "$srcdir/YouCompleteMe/third_party/ycmd/cpp"
+	cmake -G "Unix Makefiles" -DUSE_PYTHON2=OFF -DUSE_SYSTEM_LIBCLANG="$_use_system_clang" . "$srcdir/YouCompleteMe/third_party/ycmd/cpp"
 	make ycm_core
 
 	if [[ "$_omnisharp" == "y" ]]; then
