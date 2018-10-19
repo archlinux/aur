@@ -10,4 +10,3 @@ pkgbase = gnome-shell-extension-no-topleft-hot-corner
 	sha512sums = 7481d3f8a6ae2778c0852d6970079a7f5bfdae13203a65b27ff8a9b51004c62a4880151f2f9d14efc72cff293e8d3fc778a826ebbdd633f9d0a1cee67483f109
 
 pkgname = gnome-shell-extension-no-topleft-hot-corner
-
