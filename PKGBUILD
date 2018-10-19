@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=fbpdf-git
-pkgver=r93.e31a61b
+pkgver=r94.dfe9f00
 pkgrel=1
 epoch=
 pkgdesc="A small framebuffer pdf viewer, based on MuPDF."
@@ -35,7 +35,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$pkgname"
-  sed -i '14s/$/ -lfreetype -lharfbuzz -lz -ljbig2dec -ljpeg -lopenjp2/' Makefile
+  sed -i 's/-lmupdf-pkcs7 -lmupdf-threads/-lfreetype -lharfbuzz -lz -ljbig2dec -ljpeg -lopenjp2/' Makefile
 }
 
 build() {
@@ -46,7 +46,7 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname"
-  install -Dm755 fbpdf $pkgdir/usr/bin/fbpdf
+  install -Dm755 fbpdf $pkgdir/usr/bin/neatfbpdf
   install -Dm755 fbpdf2 $pkgdir/usr/bin/fbpdf2
   install -Dm755 fbdjvu $pkgdir/usr/bin/fbdjvu
   install -Dm644 README $pkgdir/usr/share/doc/$pkgname/README
