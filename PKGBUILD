@@ -130,8 +130,8 @@ package_gcc-libs-git() {
   groups=(base)
   depends=('glibc>=2.27')
   options+=(!strip)
-  provides=(gcc-libs-multilib=${pkgver} libgo.so=${pkgver} libgfortran.so=${pkgver} libubsan.so=${pkgver} libasan.so=${pkgver}
-            libtsan.so=${pkgver} liblsan.so=${pkgver} gcc-libs=${pkgver})
+  provides=(gcc-libs-multilib=${pkgver}-${pkgrel} libgo.so=${pkgver}-${pkgrel} libgfortran.so=${pkgver}-${pkgrel} libubsan.so=${pkgver}-${pkgrel} libasan.so=${pkgver}-${pkgrel}
+            libtsan.so=${pkgver}-${pkgrel} liblsan.so=${pkgver}-${pkgrel} gcc-libs=${pkgver}-${pkgrel})
   conflicts=(gcc-libs)
 
   cd gcc-build
@@ -172,7 +172,7 @@ package_gcc-git() {
   depends=("gcc-libs=$pkgver-$pkgrel" 'binutils>=2.28' libmpc)
   groups=('base-devel')
   optdepends=('lib32-gcc-libs: for generating code for 32-bit ABI')
-  provides=(gcc-multilib=${pkgver} gcc=${pkgver})
+  provides=(gcc-multilib=${pkgver}-${pkgrel} gcc=${pkgver}-${pkgrel})
   conflicts=(gcc)
   options+=(staticlibs)
 
@@ -258,7 +258,7 @@ package_gcc-git() {
 package_gcc-fortran-git() {
   pkgdesc='Fortran front-end for GCC (git version)'
   depends=("gcc=$pkgver-$pkgrel")
-  provides=(gcc-fortran-multilib=${pkgver} gcc-fortran=${pkgver})
+  provides=(gcc-fortran-multilib=${pkgver}-${pkgrel} gcc-fortran=${pkgver}-${pkgrel})
   conflicts=(gcc-fortran)
 
   cd gcc-build
@@ -281,7 +281,7 @@ package_gcc-fortran-git() {
 package_gcc-objc-git() {
   pkgdesc='Objective-C front-end for GCC (git version)'
   depends=("gcc=$pkgver-$pkgrel")
-  provides=(gcc-objc-multilib=${pkgver} gcc-objc=${pkgver})
+  provides=(gcc-objc-multilib=${pkgver}-${pkgrel} gcc-objc=${pkgver}-${pkgrel})
   conflicts=(gcc-objc)
 
   cd gcc-build
@@ -298,7 +298,7 @@ package_gcc-objc-git() {
 package_gcc-ada-git() {
   pkgdesc='Ada front-end for GCC (GNAT) (git version)'
   depends=("gcc=$pkgver-$pkgrel")
-  provides=(gcc-ada-multilib=${pkgver} gcc-ada=${pkgver})
+  provides=(gcc-ada-multilib=${pkgver}-${pkgrel} gcc-ada=${pkgver}-${pkgrel})
   conflicts=(gcc-ada)
   options+=(staticlibs)
 
@@ -333,7 +333,7 @@ package_gcc-ada-git() {
 package_gcc-go-git() {
   pkgdesc='Go front-end for GCC (git version)'
   depends=("gcc=$pkgver-$pkgrel")
-  provides=("go=1.10.1" gcc-go-multilib gcc-go=${pkgver})
+  provides=("go=1.10.1" gcc-go-multilib gcc-go=${pkgver}-${pkgrel})
   conflicts=(go gcc-go)
 
   cd gcc-build
@@ -354,7 +354,7 @@ package_gcc-go-git() {
 package_lib32-gcc-libs-gitb() {
   pkgdesc='32-bit runtime libraries shipped by GCC (git version)'
   depends=('lib32-glibc>=2.27')
-  provides=(libgo.so=${pkgver} libgfortran.so=${pkgver} libubsan.so=${pkgver} libasan.so=${pkgver} lib32-gcc-libs=${pkgver})
+  provides=(libgo.so=${pkgver}-${pkgrel} libgfortran.so=${pkgver}-${pkgrel} libubsan.so=${pkgver}-${pkgrel} libasan.so=${pkgver}-${pkgrel} lib32-gcc-libs=${pkgver}-${pkgrel})
   conflicts=(lib32-gcc-libs)
   groups=(multilib-devel)
   options=(!emptydirs !strip)
