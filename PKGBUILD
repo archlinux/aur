@@ -6,7 +6,7 @@
 # Contributor: Angel 'angvp' Velasquez <angvp@archlinux.com.ve>
 
 pkgname=mantisbt
-pkgver=2.16.0
+pkgver=2.18.0
 pkgrel=1
 pkgdesc='Web-based issue tracking system'
 arch=('any')
@@ -28,7 +28,7 @@ backup=('etc/webapps/mantisbt/config_inc.php'
         'etc/webapps/mantisbt/custom_constants_inc.php'
 )
 source=("https://downloads.sourceforge.net/project/${pkgname}/mantis-stable/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('03356253b60e36bb77631321a8079973fbfdcc6ed67d28f16c7cd8ee1d6cb57e72cea3e8cede55aa5c44818584d4ad3a174b6e9ab054657b012178fcb13e79dd')
+sha512sums=('759202ba99214244f905eed4d7b9b8c526af282690cf707c7c91471552537898f9389b4eda681bf42b0016097e390c8ebe6de0bcfe874110c0a40fdd10bfd3fe')
 install="${pkgname}.install"
 
 prepare() {
@@ -42,7 +42,7 @@ package() {
   install -vdm 755 "${pkgdir}"/{etc/webapps,usr/share/webapps}/"${pkgname}"
 
   # configuration
-  install -vDm644 config/config_inc.php.sample \
+  install -vDm 644 config/config_inc.php.sample \
     "${pkgdir}/etc/webapps/${pkgname}/config_inc.php"
 
   # readme
