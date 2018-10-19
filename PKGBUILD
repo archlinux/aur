@@ -51,8 +51,8 @@ package() {
   install -D -m644 "src/conf/nginx-automx.conf" "$pkgdir/usr/share/$pkgname/conf/"
   # Install automx BASIC_CONFIGURATION_README and INSTALL docs
   install -D -d -m755 "$pkgdir/usr/share/docs/$pkgname"
-  install -D -m644 "BASIC_CONFIGURATION_README" "$pkgdir/usr/share/docs/$pkgname/"
-  install -D -m644 "INSTALL" "$pkgdir/usr/share/docs/$pkgname/"
+  install -D -m644 BASIC_CONFIGURATION_README "$pkgdir/usr/share/docs/$pkgname/"
+  install -D -m644 INSTALL "$pkgdir/usr/share/docs/$pkgname/"
   # Install license
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
