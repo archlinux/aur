@@ -1,0 +1,28 @@
+pkgbase = moksha-git
+	pkgdesc = A fork of the E17 window manager used by Bodhi Linux, git version.
+	pkgver = r16221.288d897d3
+	pkgrel = 1
+	url = http://mokshadesktop.org
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = desktop-file-utils
+	depends = e_dbus
+	depends = efl>1.18
+	depends = xcb-util-keysyms
+	optdepends = acpid: power events on laptop lid close
+	optdepends = bc: calculator in everything module
+	optdepends = connman: network module
+	optdepends = doxygen: build documentation
+	optdepends = evas_generic_loaders: provide support for SVG icons
+	optdepends = gdb: create backtraces on crash
+	optdepends = geoclue2: geolocation module
+	provides = moksha
+	conflicts = moksha
+	conflicts = enlightenment
+	source = moksha::git+https://github.com/JeffHoogland/moksha.git
+	md5sums = SKIP
+
+pkgname = moksha-git
+
