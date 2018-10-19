@@ -11,7 +11,7 @@ pkgbase = bitscope-dso
 	depends = gtk2
 	depends = pango
 	depends = cairo
-	source = http://www.bitscope.com/download/files/bitscope-dso_2.9.FE22H_i386.deb
+	source = http://www.bitscope.com/download/files/bitscope-dso_2.8.FE22H_i386.deb
 	sha1sums = d2875a326793fdf93ca22d354df62685e7056325
 
 pkgname = bitscope-dso
