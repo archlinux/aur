@@ -1,4 +1,5 @@
-/cpcache-git*xz
+/cpcache-git*.xz
+/cpcache-git*.tar
 /cpcache/
 /pkg/
 /src/
