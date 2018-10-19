@@ -1,7 +1,7 @@
 # Maintainer: Andreas Louv <andreas@louv.dk>
 
 pkgname=rpglelint-git
-pkgver=0.0.0
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="Lint ILE/RPG programs"
 arch=("any")
@@ -12,6 +12,12 @@ makedepends=("git")
 provides=("rpglelint")
 source=('rpglelint::git+git://github.com/andlrc/rpglelint#branch=master')
 md5sums=("SKIP")
+
+pkgver()
+{
+	cd "$srcdir/${pkgname%-git}"
+	sed '/our \$VERSION.*["'\'']\(.*\)["'\''].*/{s//\1/;q};d' rpglelint
+}
 
 package()
 {
