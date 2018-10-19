@@ -1,7 +1,7 @@
 # Maintainer: Michael Polidori <michaelapolidori@gmail.com>
 # Python package author: Ethan Chan <metakirby5@gmail.com>
 
-pkgname=python-colorz
+pkgname=colorz
 pkgver=1.0.3
 pkgrel=1
 pkgdesc="A k-means color scheme generator."
@@ -9,10 +9,11 @@ arch=(any)
 url="https://github.com/metakirby5/colorz"
 license=(MIT)
 depends=("python" "python-pillow" "python-scipy")
-source=("$url")
+source=("git+$url")
 md5sums=(SKIP)
 
 package() {
   cd "$srcdir/colorz"
   python setup.py install --root="${pkgdir}"
+  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
