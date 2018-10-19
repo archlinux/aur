@@ -1,13 +1,14 @@
 pkgbase = intellij-idea-ce-eap
 	pkgdesc = Early access version of the upcoming version of Intellij Idea IDE (community version)
 	pkgver = 2018.3.183.3795.13
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.jetbrains.com/idea/
 	arch = any
 	license = Apache2
 	depends = java-environment
 	depends = giflib
 	depends = libxtst
+	depends = libdbusmenu-glib
 	options = !strip
 	source = https://download.jetbrains.com/idea/ideaIC-183.3795.13.tar.gz
 	sha256sums = 276c2cb298099654fe63a85d808bb57258bae5607f4ee6c7e9f33fe5a5434ffd
