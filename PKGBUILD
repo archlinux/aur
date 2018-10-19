@@ -9,7 +9,11 @@ url='https://github.com/ul/kak-lsp'
 license=('custom:unlicense')
 depends=('kakoune')
 makedepends=('rust')
-optdepends=()
+optdepends=(
+    'bash-language-server: language server for Bash'
+    'python-language-server: language server for Python'
+    'go-langserver-git: language server for Go'
+)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ul/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('a0016f386a968f9a4c7d2f08218881cd54e5df9d3716573f552663faa5cdb54a')
 
