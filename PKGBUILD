@@ -2,7 +2,7 @@
 
 pkgname=libulfius
 _gitname=ulfius
-pkgver=2.3.8
+pkgver=2.4.3
 pkgrel=1
 pkgdesc="HTTP Framework for REST API in C, using JSON, with websockets and streaming data"
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=(GPL)
 depends=('libmicrohttpd' 'jansson' 'curl' 'gnutls' 'libgcrypt' 'liborcania' 'libyder')
 makedepends=(git cmake)
 source=("${_gitname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=("1b25e28f4a832a74290bc7e046a147ba7e462123355d284007239b58f39a8322")
+sha256sums=("3e0f6d9113137cde2d79edee86a5415ea7f9bfc5edd5991a6ae83e7ab81f9756")
 
 prepare() {
     cd "${srcdir}/${_gitname}-${pkgver}"
