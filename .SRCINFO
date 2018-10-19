@@ -1,0 +1,18 @@
+pkgbase = pnglatex
+	pkgdesc = Small script to turn LaTeX formulas into png images
+	pkgver = de1de3c
+	pkgrel = 1
+	url = https://github.com/mneri/pnglatex
+	arch = any
+	license = GPL3
+	depends = texlive-bin
+	depends = imagemagick
+	depends = optipng
+	optdepends = xorg-xdpyinfo: get dpi resolution of screen
+	provides = pnglatex
+	conflicts = pnglatex
+	source = pnglatex::git+https://github.com/mneri/pnglatex
+	md5sums = SKIP
+
+pkgname = pnglatex
+
