@@ -4,7 +4,7 @@ TOP=/usr/share/mycroft-core
 VIRTUALENV_ROOT=${VIRTUALENV_ROOT:-"${TOP}/.venv"}
 install_venv() {
 	python -m venv "${VIRTUALENV_ROOT}/" --without-pip
-	curl https://bootstrap.pypa.io/get-pip.py | "${VIRTUALENV_ROOT}/bin/python"
+	curl https://bootstrap.pypa.io/get-pip.py | "${VIRTUALENV_ROOT}/bin/python" - 'pip==18.0.0'
 }
 
 if [ ! -x "${VIRTUALENV_ROOT}/bin/activate" ]; then
@@ -12,7 +12,6 @@ if [ ! -x "${VIRTUALENV_ROOT}/bin/activate" ]; then
 fi
 
 source "${VIRTUALENV_ROOT}/bin/activate"
-easy_install pip==9.0.1
 PYTHON=$( python -c "import sys;print('python{}.{}'.format(sys.version_info[0], sys.version_info[1]))" )
 VENV_PATH_FILE="${VIRTUALENV_ROOT}/lib/$PYTHON/site-packages/_virtualenv_path_extensions.pth"
 if [ ! -f "$VENV_PATH_FILE" ] ; then
