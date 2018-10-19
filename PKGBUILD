@@ -4,7 +4,7 @@
 
 pkgbase=linux-vfio-selinux
 _srcname=linux-4.18
-pkgver=4.18.14
+pkgver=4.18.15
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -28,7 +28,7 @@ validpgpkeys=(
 )
 sha256sums=('19d8bcf49ef530cd4e364a45b4a22fa70714b70349c8100e7308488e26f1eaf1'
             'SKIP'
-            '97d012dd62e3e9cb24c6097f9b1e21f91e39e27059a4c17e2cf0377fdfff3d49'
+            'b94445d2d8919adc01f840088b6a70b26a10dd1beb38c3b0217408e14a7e341d'
             'fb798c4bc70c6ee62b061420c3b9a2772683d16b86d29c46c45385c331afaf72'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '8f407ad5ff6eff106562ba001c36a281134ac9aa468a596aea660a4fe1fd60b5'
