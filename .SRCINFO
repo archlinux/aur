@@ -1,6 +1,6 @@
 pkgbase = rpglelint-git
 	pkgdesc = Create tags files from ILE RPG source files.
-	pkgver = 0.0.0
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/andlrc/rpglelint
 	arch = any
