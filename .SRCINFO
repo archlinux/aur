@@ -8,7 +8,6 @@ pkgbase = python-hermipy-git
 	makedepends = git
 	makedepends = python-setuptools
 	makedepends = cmake
-	makedepends = make
 	makedepends = boost
 	makedepends = boost-libs
 	depends = python-sympy
