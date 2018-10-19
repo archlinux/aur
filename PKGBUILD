@@ -1,7 +1,7 @@
 # Maintainer: Trevor Bramble <inbox@trevorbramble.com>
 
 pkgname=chef-workstation
-pkgver=0.1.162
+pkgver=0.2.21
 pkgrel=1
 _ubunturel=18
 _ubuntuver=04
@@ -10,13 +10,13 @@ arch=('x86_64')
 url="https://downloads.chef.io/chef-workstation/"
 license=('Apache')
 depends=()
-conflicts=( chef-dk chef chef-solo chef-client )
+conflicts=(chef-dk chef chef-solo chef-client)
 source=("https://packages.chef.io/files/stable/${pkgname}/${pkgver}/ubuntu/${_ubunturel}.${_ubuntuver}/${pkgname}_${pkgver}-1_amd64.deb")
-sha256sums=('bd3aca707c9f66e5f810d44c61f67033e58e553a3d88e6619bfd708b19eccd20')
+sha256sums=('1cf8d84779af170be8562b256c9a1ec1af6257b17e340d80831fa7f6b2ea8463')
 
 package() {
   cd "$srcdir"
-  bsdtar -xf data.tar.gz -C "$pkgdir"
+  bsdtar -xf data.tar.xz -C "$pkgdir"
 
   mkdir -p "$pkgdir/usr/bin"
 
