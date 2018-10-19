@@ -3,7 +3,7 @@
 
 pkgname=brother-dcpj152w
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Driver for the Brother DCP-j132w wifi multifuncional printer"
 url="http://solutions.brother.com/linux/en_us/index.html"
 license=('custom:brother')
