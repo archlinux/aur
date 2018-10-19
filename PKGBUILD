@@ -1,15 +1,15 @@
-# Maintainer: David Adler <d dot adler aet posteo dot de>
+# Maintainer: David Adler <d.adler@posteo.de>
 # Maintainer: Felix Salfelder <felix aet salfelder dott org>
 
 _pkgname=gnucap
 pkgname=$_pkgname-git
 pkgver=dev.0831.r0.gf1c8c78
-pkgrel=2
+pkgrel=3
 pkgdesc="GNU Circuit Analysis Package (develop branch)"
 arch=('x86_64')
 url="http://gnucap.org/"
 license=('GPL')
-depends=('bash' 'termcap')
+depends=('readline' 'termcap')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
