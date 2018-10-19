@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=elementary-wallpapers
-pkgver=5.2
+pkgver=5.3
 pkgrel=1
 pkgdesc='Collection of wallpapers for elementary OS'
 arch=('any')
