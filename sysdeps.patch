@@ -1,0 +1,15 @@
+--- sysdeps.h.orig	2018-10-18 19:48:03.258705538 -0700
++++ tiemu-3.03/src/core/uae/sysdeps.h	2018-10-18 19:48:34.178704986 -0700
+@@ -137,12 +137,6 @@
+ #define ENUMDECL typedef enum
+ #define ENUMNAME(name) name
+ 
+-/* While we're here, make abort more useful.  */
+-#define abort() \
+-  do { \
+-    fprintf (stderr, "UAE: Internal error; file %s, line %d\n", __FILE__, __LINE__); \
+-    (abort) (); \
+-} while (0)
+ #else
+ #define ENUMDECL enum
+ #define ENUMNAME(name) ; typedef int name
