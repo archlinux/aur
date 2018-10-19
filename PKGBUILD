@@ -159,12 +159,12 @@ package_gcc-libs-git() {
     make -C $CHOST/$lib DESTDIR="$pkgdir" install-info
   done
 
-  # remove files provided by lib32-gcc-libs
+  # remove files provided by lib32-gcc-libs-gitb
   rm -rf "$pkgdir"/usr/lib32/
 
   # Install Runtime Library Exception
   install -Dm644 "$srcdir/gcc/COPYING.RUNTIME" \
-    "$pkgdir/usr/share/licenses/gcc-libs/RUNTIME.LIBRARY.EXCEPTION"
+    "$pkgdir/usr/share/licenses/gcc-libs-git/RUNTIME.LIBRARY.EXCEPTION"
 }
 
 package_gcc-git() {
@@ -242,7 +242,7 @@ package_gcc-git() {
   # install the libstdc++ man pages
   make -C $CHOST/libstdc++-v3/doc DESTDIR="$pkgdir" doc-install-man
 
-  # remove files provided by lib32-gcc-libs
+  # remove files provided by lib32-gcc-libs-gitb
   rm -f "$pkgdir"/usr/lib32/lib{stdc++,gcc_s}.so
 
   # byte-compile python libraries
@@ -251,7 +251,7 @@ package_gcc-git() {
 
   # Install Runtime Library Exception
   install -d "$pkgdir/usr/share/licenses/gcc-git/"
-  ln -s /usr/share/licenses/gcc-libs/RUNTIME.LIBRARY.EXCEPTION \
+  ln -s /usr/share/licenses/gcc-libs-git/RUNTIME.LIBRARY.EXCEPTION \
     "$pkgdir/usr/share/licenses/gcc-git/"
 }
 
@@ -274,7 +274,7 @@ package_gcc-fortran-git() {
 
   # Install Runtime Library Exception
   install -d "$pkgdir/usr/share/licenses/gcc-fortran-git/"
-  ln -s /usr/share/licenses/gcc-libs/RUNTIME.LIBRARY.EXCEPTION \
+  ln -s /usr/share/licenses/gcc-libs-git/RUNTIME.LIBRARY.EXCEPTION \
     "$pkgdir/usr/share/licenses/gcc-fortran-git/"
 }
 
@@ -291,7 +291,7 @@ package_gcc-objc-git() {
 
   # Install Runtime Library Exception
   install -d "$pkgdir/usr/share/licenses/gcc-objc-git/"
-  ln -s /usr/share/licenses/gcc-libs/RUNTIME.LIBRARY.EXCEPTION \
+  ln -s /usr/share/licenses/gcc-libs-git/RUNTIME.LIBRARY.EXCEPTION \
     "$pkgdir/usr/share/licenses/gcc-objc-git/"
 }
 
@@ -326,7 +326,7 @@ package_gcc-ada-git() {
 
   # Install Runtime Library Exception
   install -d "$pkgdir/usr/share/licenses/gcc-ada-git/"
-  ln -s /usr/share/licenses/gcc-libs/RUNTIME.LIBRARY.EXCEPTION \
+  ln -s /usr/share/licenses/gcc-libs-git/RUNTIME.LIBRARY.EXCEPTION \
     "$pkgdir/usr/share/licenses/gcc-ada-git/"
 }
 
@@ -347,7 +347,7 @@ package_gcc-go-git() {
 
   # Install Runtime Library Exception
   install -d "$pkgdir/usr/share/licenses/gcc-go-git/"
-  ln -s /usr/share/licenses/gcc-libs/RUNTIME.LIBRARY.EXCEPTION \
+  ln -s /usr/share/licenses/gcc-libs-git/RUNTIME.LIBRARY.EXCEPTION \
     "$pkgdir/usr/share/licenses/gcc-go-git/"
 }
 
@@ -383,5 +383,5 @@ package_lib32-gcc-libs-gitb() {
 
   # Install Runtime Library Exception
   install -Dm644 "$srcdir/gcc/COPYING.RUNTIME" \
-    "$pkgdir/usr/share/licenses/lib32-gcc-libs/RUNTIME.LIBRARY.EXCEPTION"
+    "$pkgdir/usr/share/licenses/lib32-gcc-libs-gitb/RUNTIME.LIBRARY.EXCEPTION"
 }
