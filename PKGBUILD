@@ -1,4 +1,3 @@
-# $Id$
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Alexander Baldeck <alexander@archlinux.org>
@@ -6,9 +5,10 @@
 # Contributor: Anders Bostrom <anders.bostrom@home.se>
 # Additional patching: Nikita Tarasov <nikatar@disroot.org>
 
+
 _pkgname=thunderbird
 pkgname=thunderbird-appmenu
-pkgver=52.9.1
+pkgver=60.2.1
 pkgrel=1
 pkgdesc="Thunderbird from extra with appmenu patch"
 arch=(x86_64)
@@ -19,23 +19,15 @@ depends=(gtk3 gtk2 mozilla-common libxt startup-notification mime-types dbus-gli
 makedepends=(unzip zip diffutils python2 yasm mesa imake gconf libpulse inetutils xorg-server-xvfb
              autoconf2.13 rust clang llvm)
 optdepends=('libcanberra: sound support')
-provides=("thunderbird=$pkgver")          
-conflicts=("thunderbird")     
 options=(!emptydirs !makeflags)
 source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz
         $_pkgname.desktop
-        0001-Bug-1338655-Don-t-try-to-build-mp4parse-bindings.-r-.patch
-        rust-i686.patch fix-wifi-scanner.diff
-        thunderbird-install-dir.patch no-crmf.diff
+        thunderbird-60.2.1-buildfix.patch
         unity-menubar.patch)
-sha256sums=('286fa71504e7184f3a41bcbdebf591bebe8e04dccbad1c93a47c6e72a7125c4d'
+sha256sums=('d313f25cd7ddc016bf8e4d4115f14b34a66621c0feabbc0dd72f9304cb93d7bf'
             '3534ea85d8e0e35dba5f40a7a07844df19f3a480e1358fc50c2502f122dab789'
-            '413cd6d366d78f325d80ebebccfd0afa0d266b40b2e54b66ba2fa03c15f3ea67'
-            'f61ea706ce6905f568b9bdafd1b044b58f20737426f0aa5019ddb9b64031a269'
-            '9765bca5d63fb5525bbd0520b7ab1d27cabaed697e2fc7791400abc3fa4f13b8'
-            '24599eab8862476744fe1619a9a53a5b8cdcab30b3fc5767512f31d3529bd05d'
-            'a7317caba56e89932bd9e3b9352d94701dd9a419685057f238b1ded8dc0adcd7'
-            '87f194b87e2291c232a00cfa45c246e57fbdb1d02ba0a19f1f818f0fc9bf5967')
+            '884c5a6742677c83173812f7abb1e409a2b13371ba6079c4cb69b3e95010de05'
+            'c6082f9ab534cdc67c53fa1685df628f03b0674390522f32fe640ce92f1b15ab')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -50,40 +42,21 @@ _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 _mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
 
 prepare() {
-  mkdir path
-  ln -s /usr/bin/python2 path/python
-
   cd $_pkgname-$pkgver
-  patch -Np1 -i ../thunderbird-install-dir.patch
-
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1314968
-  patch -d mozilla -Np1 < ../fix-wifi-scanner.diff
-
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1371991
-  patch -Np1 -i ../no-crmf.diff
-
-  # Build with the rust targets we actually ship
-  patch -d mozilla -Np1 < ../rust-i686.patch
-
-  # https://bugs.archlinux.org/task/53890
-  patch -d mozilla -Np1 < ../0001-Bug-1338655-Don-t-try-to-build-mp4parse-bindings.-r-.patch
-  
-  # actual appmenu patch from ubuntu repos
-  patch -Np1 -i ../unity-menubar.patch
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
 
   cat >.mozconfig <<END
-ac_add_options --enable-application=mail
+ac_add_options --enable-application=comm/mail
 ac_add_options --enable-calendar
 
 ac_add_options --prefix=/usr
 ac_add_options --enable-release
-ac_add_options --enable-gold
-ac_add_options --enable-pie
-ac_add_options --enable-optimize="-O2"
-ac_add_options --enable-rust
+ac_add_options --enable-linker=gold
+ac_add_options --enable-hardening
+ac_add_options --enable-optimize
+ac_add_options --enable-rust-simd
 
 # Branding
 ac_add_options --enable-official-branding
@@ -113,30 +86,30 @@ ac_add_options --enable-startup-notification
 ac_add_options --disable-crashreporter
 ac_add_options --disable-updater
 END
+  patch -Np1 < ../thunderbird-60.2.1-buildfix.patch
+
+  # actual appmenu patch from ubuntu repos
+  patch -Np1 -i ../unity-menubar.patch
 }
 
 build() {
   cd $_pkgname-$pkgver
-
-  # _FORTIFY_SOURCE causes configure failures
-  CPPFLAGS+=" -O2"
-
-  export PATH="$srcdir/path:$PATH"
-
-  # Do PGO
-  #xvfb-run -a -n 95 -s "-extension GLX -screen 0 1280x1024x24" \
-  #  make -f client.mk build MOZ_PGO=1
-  make -f client.mk build
+  ./mach configure
+  ./mach build
+  ./mach buildsymbols
 }
 
 package() {
   cd $_pkgname-$pkgver
-  make -f client.mk DESTDIR="$pkgdir" INSTALL_SDK= install
+  DESTDIR="$pkgdir" ./mach install
 
   _vendorjs="$pkgdir/usr/lib/$_pkgname/defaults/preferences/vendor.js"
   install -Dm644 /dev/stdin "$_vendorjs" <<END
 // Use LANG environment variable to choose locale
-pref("intl.locale.matchOS", true);
+pref("intl.locale.requested", "");
+
+// Use system-provided dictionaries
+pref("spellchecker.dictionary_path", "/usr/share/hunspell");
 
 // Disable default mailer checking.
 pref("mail.shell.checkDefaultMail", false);
@@ -159,10 +132,12 @@ app.distributor.channel=$_pkgname
 app.partner.archlinux=archlinux
 END
 
-  for i in 16 22 24 32 48 256; do
-    install -Dm644 other-licenses/branding/thunderbird/mailicon$i.png \
+  for i in 16 22 24 32 48 64 128 256; do
+    install -Dm644 comm/mail/branding/thunderbird/default${i}.png \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png"
   done
+  install -Dm644 comm/mail/branding/thunderbird/TB-symbolic.svg \
+    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/thunderbird-symbolic.svg"
 
   install -Dm644 ../$_pkgname.desktop \
     "$pkgdir/usr/share/applications/$_pkgname.desktop"
