@@ -9,12 +9,12 @@ pkgname=dustforce-hib-dustmod
 pkgver=1.0+h20141222_8.7.1
 _hibver=2014-12-22
 _hibver_windows=07012015
-pkgrel=2
+pkgrel=3
 pkgdesc='A fast-paced 2D action platformer (Humble Bundle version, with Dustmod)'
 url='https://dustkidblog.wordpress.com/2016/11/19/dustmod-has-updated/'
 arch=('x86_64')
 license=('custom:commercial')
-depends=('mesa' 'libgl' 'sdl2' 'libxdamage' 'freealut' 'libidn-133-compat'
+depends=('mesa' 'libgl' 'sdl2' 'libxdamage' 'freealut' 'libidn11'
          'libvorbis' 'libxft' 'xdg-utils' 'openssl-1.0')
 PKGEXT='.pkg.tar'
 DLAGENTS+=('hib::/usr/bin/echo "Could not find %u. Manually download it to \"$(pwd)\", or set up a hib:// DLAGENT in /etc/makepkg.conf."; exit 1')
