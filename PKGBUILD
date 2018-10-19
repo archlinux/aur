@@ -23,7 +23,6 @@ build() {
   cd $srcdir/tiemu-$pkgver
   patch -p1 --input ../01-build-fix.patch
   patch -p1 --input ../sysdeps.patch
-  # patch -p1 --input ../pckeys.patch
   ./configure --without-kde --disable-gdb --prefix=/usr
   make
 }
