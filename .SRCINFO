@@ -1,0 +1,17 @@
+pkgbase = python-umonitor-git
+	pkgdesc = Dynamic monitor configuration
+	pkgver = r74.3f926f0
+	pkgrel = 1
+	url = https://github.com/rliou92/python-umonitor
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-daemon
+	depends = libxcb
+	source = git://github.com/rliou92/python-umonitor.git
+	md5sums = SKIP
+
+pkgname = python-umonitor-git
+
