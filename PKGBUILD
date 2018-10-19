@@ -19,13 +19,17 @@ pkgver(){
     git describe --tags --always | sed -r 's|release-||g;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
+build() {
+    cd "$srcdir/picard"
+    python setup.py build
+}
+
 check() {
     cd "$srcdir/picard"
-    python setup.py build_ext -i
     python setup.py test
 }
 
 package() {
     cd "$srcdir/picard"
-    python setup.py install --root=$pkgdir --optimize=1
+    python setup.py install --skip-build --root=$pkgdir --optimize=1
 }
