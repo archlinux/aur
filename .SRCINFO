@@ -1,0 +1,21 @@
+pkgbase = python-hermipy-git
+	pkgdesc = Library for the Hermite spectral method
+	pkgver = r580.627564d
+	pkgrel = 1
+	url = https://github.com/urbainvaes/hermipy
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = cmake
+	makedepends = make
+	makedepends = boost
+	makedepends = boost-libs
+	depends = python-sympy
+	depends = python-numpy
+	depends = python-scipy
+	source = git+https://github.com/urbainvaes/hermipy
+	md5sums = SKIP
+
+pkgname = python-hermipy-git
+
