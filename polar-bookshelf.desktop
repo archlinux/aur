@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Polar Bookshelf
+Comment=Polar is a personal knowledge repository for PDF and web content supporting incremental reading and document annotation
+Exec=polar-bookshelf
+Terminal=false
+Type=Application
+Icon=polar-bookshelf
+StartupWMClass=Polar Bookshelf
+Categories=Office;Viewer;
+X-Desktop-File-Install-Version=0.24
