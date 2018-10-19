@@ -1,7 +1,7 @@
 # Maintainer: Lukas Grossar <lukas.grossar@gmail.com>
 _npmname=commitizen
 pkgname=nodejs-commitizen
-pkgver=3.0.2
+pkgver=3.0.3
 pkgrel=1
 pkgdesc="Git plugin to help you write consistent commit messages"
 arch=(any)
@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('npm' 'jq')
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha512sums=('13e5a2c6073bb3892830397df309f0a127ab1edd29bd605d3f280fefeab64df0bf0c70db1af09815b86d4be73e6e160da51e03f655bdad163a985993eb706582')
+sha512sums=('0eccb1b13e53a499c07c8337c1b9d8438f26f7228c1b916f45483d85a79a93384d250ce4d871ce849f0225d1e853d5414ee9ea509aa5a1ff544db1b68c4c5194')
 
 package() {
     npm install -g --user root --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
