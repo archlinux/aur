@@ -55,17 +55,18 @@ check_wine() {
     EVECONF=$CONFDIR/EVE.conf
     UCW=$(grep UseCustomWine $EVECONF | cut -d= -f2)
     if [ "x$UCW" = "xtrue" ] ;then
-	WINEPATH=$(grep CustomWinePath $EVECONF | cut -d= -f2)
-	WINEPATH=${WINEPATH%/*}
+	CUSTOMWP=$(grep CustomWinePath $EVECONF | cut -d= -f2)
+	WINEPATH=${CUSTOMWP%/*}
+	SHAREDIR=$(grep SharedCacheFolder $EVECONF | cut -d= -f2)
+	WINEPREFIX=${SHAREDIR}wineenv
     else
-	launcher_msg "Error: Custom wine not set!"
+	launcher_msg "ERROR: \"Use custom Wine\" not set!"
 	exit 1
     fi
     WINEDATE=$(ls -l --time-style=+%s $WINEPATH/wineserver | cut -d' ' -f6)
-    INSTWINE=$(cat $EVEDIR/SharedCache/wineenv/.update-timestamp 2>/dev/null) || true
+    INSTWINE=$(cat $WINEPREFIX/.update-timestamp 2>/dev/null) || true
     if [ "x$WINEDATE" != "x$INSTWINE" ] ;then
 	if [ -x "$WINEPATH/wine" ] ;then
-	    WINEPREFIX=$EVEDIR/SharedCache/wineenv
 	    launcher_msg "Preparing/Updating wine in $WINEPREFIX"
 	    env WINEARCH=win32 \
 		WINEPREFIX=$WINEPREFIX \
@@ -81,7 +82,7 @@ check_wine() {
 	    env WINEPREFIX=$WINEPREFIX WINE=$WINEPATH/wine \
 		$(which winetricks) -q winxp >/dev/null
 	else
-	    launcher_msg "Error: No wine in $WINEPATH found!"
+	    launcher_msg "ERROR: \"$CUSTOMWP\" in \"Custom Wine path\" not found!"
 	    exit 1
 	fi
     fi

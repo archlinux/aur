@@ -29,7 +29,7 @@ printf "\nCopy needed files from AUR package..."
 tar xf ../eve-icons.tar.gz -C evesetup/
 for eta in $(ls ../eve-transl5.11-??.tar.gz) ;do cp $eta evesetup/ ;done
 for cmd in evelauncher.sh everegedit evewine evewinecfg evewinetricks ;do
-    cp ../$cmd evesetup/
+    if [ -f ../$cmd ] ;then cp ../$cmd evesetup/ ;fi
     if [ ! "$cmd" = "evewine" ] ;then
         cp ../${cmd%.*}.desktop evesetup/
     fi

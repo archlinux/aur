@@ -30,10 +30,8 @@ source=("evelauncher.desktop"
         "evelauncher.sh.in"
         "evelauncher.sh.real"
         "everegedit.desktop"
-        "everegedit"
         "evewine"
         "evewinecfg.desktop"
-        "evewinecfg"
         "evewinetricks.desktop"
         "evewinetricks"
         "qt.conf"
@@ -60,7 +58,11 @@ package() {
         install -d "${pkgdir}/usr/bin"
         install -d "${pkgdir}/usr/share/applications"
         for cmd in evelauncher.sh everegedit evewine evewinecfg evewinetricks ;do
-            install "${srcdir}/$cmd" "${pkgdir}/opt/${pkgname}/bin"
+            if [ -f "${srcdir}/$cmd" ] ;then
+                install "${srcdir}/$cmd" "${pkgdir}/opt/${pkgname}/bin"
+            else
+                ln -s evewine "${pkgdir}/opt/${pkgname}/bin/$cmd"
+            fi
             ln -s "/opt/${pkgname}/bin/$cmd" "${pkgdir}/usr/bin/$cmd"
             if [ ! "$cmd" = "evewine" ] ;then
                 cp "${srcdir}/${cmd%.*}.desktop" "${pkgdir}/usr/share/applications/"
@@ -98,19 +100,17 @@ package() {
 }
 
 sha256sums=('f49b404341e1dd48eaa2504c83f9ff07c9a4c11e1a109c67d04167dc70d65731'
-            'e86dead05b42cfeb0e5be9a2b06e981accc4926e0442eaf382c872d0ec57d157'
-            '1932e9cbd3fdda9ec0b5fcbab9aebefc5abe85ad466fc22ed72cc7ae0676b246'
+            'bd00eb9884f858f6f89ca4d84ac0ad3561e0c93f730ba0336d7df18bf2d21d82'
+            '6d0822615ed29b8ff5b179f2561a034874115e736d034f4103b5ef4864734801'
             '80fceef0e28c2291cd4ba3924410211edd188717be093ffc329d18697583bd21'
             'f8988be390204ce645ca37f43cdb8e395970f8d6dd36095acf08c5c7cf72833c'
-            '48e721212248e49da4dfe7b63c7f52258933018022c001722077fb44738891ee'
-            '9c1e16755e548f94c56a3d88110d8ee0d2eb2575d1e0ffe900d4cffdc7820f09'
+            'f0fef94e2963138ee68a736376a29513426b415aa43fcba8794322778f62c939'
             '04d2a47524cbd132aad2fd310d56515a29310a2e693ba94ce12c65cd776a70d2'
-            'a665439ed2de7ade9db67ca5859c1dafaad49a9cd1f64612252fcc243b8afd6c'
             '22690e393ee89703b17898038aaa37900805104e8c960b346fe1f6050edc9bce'
-            '0831f3a475326d81c64b10570453ce591d77b4249a6c9ee938f7b79285332748'
+            'efac7e7f31af0020f35aa026c6231fbf8dd56124832b8d60c3fcde126ca24cab'
             '2520a9b19f2827fa2634ea2acae3a6f61e73aada1af0eb2029e95709f0c8927d'
-            '0256b96726ee1c969cacd0cfef68413f46079bda897753552679201f5db99026'
-            '1e899a90ce1e4cc8dea10d35ba5afab9333ad8cb421964110d3156ff7cde3a1d'
+            '1f490852b26b3580e291761946775016dd1c06f2a49cb552e255520d73c23916'
+            'ab2c35d9a451a545f973efda55a34bbcbb53fb8031a9625e68bc7bb005fde9e1'
             '2c192fdc282fefafee5596b60bd1779668b611d386e2bf933eef51d39eac7a28'
             '47accd49b64d624c6a6dee42952f8627aaabdd315fad85ef037507745d393f1a'
             '1c3df28324c8498e34d2e789fd1f36577afa5a31bdbb278d752f7ef8c6ec5516'
