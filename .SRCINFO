@@ -1,10 +1,11 @@
 pkgbase = yamllint
 	pkgdesc = A linter for YAML files.
 	pkgver = 1.12.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/adrienverge/yamllint
 	arch = any
 	license = GPLv3
+	checkdepends = python-nose
 	depends = python
 	depends = python-yaml
 	depends = python-pathspec
