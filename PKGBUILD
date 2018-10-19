@@ -10,7 +10,7 @@ license=('Apache')
 makedepends=('git')
 source=("git+https://github.com/garybuhrmaster/mythutil.git")
 sha256sums=('SKIP')
-depends=('python-requests' 'python-systemd')
+depends=('python-requests' 'python-natsort')
 conflicts=('mythutil')
 provides=('mythutil')
 
