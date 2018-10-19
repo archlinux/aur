@@ -1,8 +1,9 @@
-# Maintainer: Knut Sveidqvist <knsv@github.com>
+# Maintainer: Michael Duell <mail at akurei dot me>
+# Contributor: Knut Sveidqvist <knsv@github.com>
 # Contributor: Daneel <aur@gnoulibre.org>
 
 pkgname=nodejs-mermaid-git
-pkgver=6.0.0.r18.gaa6e15e
+pkgver=7.0.5.r196.ga499296
 pkgrel=1
 pkgdesc='Generation of diagram and flowchart from text in a similar manner as markdown'
 arch=('any')
