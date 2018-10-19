@@ -28,7 +28,7 @@ install=
 source=('git+https://github.com/KevinOConnor/klipper#branch=master' 'klipper.service' 'sysusers.conf' 'tmpfiles.conf')
 noextract=()
 md5sums=('SKIP'
-         '5ea11719eef9fa6c740d19e1c2fa3932'
+         'b5dad61c9872b9682867b6b3e3a67da8'
          '80229d1797c904ef046acfcc3b26e593'
          '18f0e2664394a5042ff21737e1796db7')
 
