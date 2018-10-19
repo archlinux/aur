@@ -1,0 +1,32 @@
+pkgbase = klipper-git
+	pkgdesc = 3D printer firmware with motion planning on the host
+	pkgver = r1475.4068d88
+	pkgrel = 1
+	url = https://github.com/KevinOConnor/klipper
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	license = GPLv3
+	makedepends = git
+	depends = python2-cffi
+	depends = python2-pyserial
+	depends = python2-greenlet
+	depends = ncurses
+	depends = libusb
+	depends = avrdude
+	depends = avr-gcc
+	depends = avr-binutils
+	depends = avr-libc
+	provides = klipper
+	conflicts = klipper
+	source = git+https://github.com/KevinOConnor/klipper#branch=master
+	source = klipper.service
+	source = sysusers.conf
+	source = tmpfiles.conf
+	md5sums = SKIP
+	md5sums = 5ea11719eef9fa6c740d19e1c2fa3932
+	md5sums = c291da9e1750f3ef9ff2f34d6162c5bc
+	md5sums = 18f0e2664394a5042ff21737e1796db7
+
+pkgname = klipper-git
+
