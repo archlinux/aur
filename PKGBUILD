@@ -1,8 +1,8 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=vue-cli
-pkgver=3.0.1
-pkgrel=2
+pkgver=3.0.5
+pkgrel=1
 pkgdesc='Standard tooling for Vue.js development'
 arch=(i686 x86_64)
 url=https://cli.vuejs.org
@@ -12,7 +12,7 @@ makedepends=(npm)
 conflicts=(nodejs-vue-cli)
 options=(!strip)
 source=(https://github.com/vuejs/vue-cli/archive/v$pkgver.tar.gz)
-sha512sums=('a547fd18933cb94f76df12280ba95260089964d4bbf2274247902f01a24951cd9b5cd0d473a315dbc7be8a55725d82182dc31032e0fce593b8f485493eeaf01e')
+sha512sums=('a9d6510a6df8251b7bfc5af80c1e2c2526ffc46506f07516048c09f9d45cadfcb932c17b317c5a2a312e1f75b39a7c4353f7adee2350b556997375e6123277b7')
 
 build() {
   cd vue-cli-$pkgver
