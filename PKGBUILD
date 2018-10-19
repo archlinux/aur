@@ -1,16 +1,16 @@
 # Maintainer: Cedric Girard <girard.cedric@gmail.com>
-_pythonmod=zxcvbn
+_pythonmod=zxcvbn-python
 pkgname=('python2-zxcvbn' 'python-zxcvbn')
 pkgbase=python2-zxcvbn
-pkgver=4.4.26
+pkgver=4.4.27
 pkgrel=1
 pkgdesc="Password strength estimator"
 arch=('any')
-url="http://pypi.python.org/pypi/${_pythonmod}"
+url="http://pypi.python.org/pypi/zxcvbn"
 license=('Apache')
-source=("https://pypi.io/packages/source/${_pythonmod:0:1}/${_pythonmod}/${_pythonmod}-$pkgver.tar.gz")
-#source=("https://github.com/dwolfhub/${_pythonmod}/archive/v$pkgver.tar.gz")
-md5sums=('c4db5841242c41f4bfd4edf8fe19ea68')
+#source=("https://pypi.io/packages/source/${_pythonmod:0:1}/${_pythonmod}/${_pythonmod}-$pkgver.tar.gz")
+source=("https://github.com/dwolfhub/${_pythonmod}/archive/v$pkgver.tar.gz")
+sha256sums=('9b84927fff7b4cc557b63a49adbd74f7a92026e25edd9e1b2867c1610d15fa5d')
 
 package_python2-zxcvbn() {
   depends=('python2')
