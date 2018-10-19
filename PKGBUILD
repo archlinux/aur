@@ -9,7 +9,7 @@ pkgname=('eiskaltdcpp-core-git'
          'eiskaltdcpp-cli-git'
          'eiskaltdcpp-data-git'
          )
-pkgver=2.2.10.188.g1e72256a
+pkgver=v2.2.10.275.gc4936c5a
 pkgrel=1
 pkgdesc="EiskaltDC++: DC and ADC client based on dcpp core. (GIT Version)"
 license=('GPL3')
@@ -45,7 +45,7 @@ makedepends=('git'
 
 pkgver() {
   cd eiskaltdcpp
-  echo "$(git describe --long --tags | tr - . | tr -d v)"
+  echo "$(git describe --long --tags | tr - .)"
 }
 
 prepare() {
@@ -53,12 +53,10 @@ prepare() {
 
   # Fix php dependency
   find . -type f -name '*.php' -exec sed 's|php5|php|g' -i '{}' \;
-}
 
-build() {
-
-  cd "${srcdir}/build"
+  cd build
   cmake ../eiskaltdcpp \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DUSE_QT5=ON \
     -DUSE_QT_QML=ON \
@@ -81,13 +79,14 @@ build() {
     -DUSE_CLI_JSONRPC=ON \
     -DLOCAL_JSONCPP=OFF \
     -DLOCAL_BOOST=OFF
+}
 
-  make
+build() {
+  make -C build
 }
 
 package_eiskaltdcpp-core-git() {
   pkgdesc="EiskaltDC++ Core. (GIT Version)"
-  pkgver="$(cd eiskaltdcpp; echo "$(git describe --long --tags | tr - . | tr -d v)")"
   depends=('openssl'
            'lua'
            'libidn'
@@ -96,7 +95,9 @@ package_eiskaltdcpp-core-git() {
            'miniupnpc'
            'pcre'
            )
-  provides=("eiskaltdcpp-core=${pkgver}")
+  provides=("eiskaltdcpp-core=${pkgver}"
+            'eiskaltdcpp-git'
+            )
   conflicts=('eiskaltdcpp-core')
   opdepends=('eiskaltdcpp-qt-git: EiskaltDC++ Qt interface'
              'eiskaltdcpp-gtk-git: EiskaltDC++ GTK interface'
@@ -109,7 +110,6 @@ package_eiskaltdcpp-core-git() {
 
 package_eiskaltdcpp-qt-git() {
   pkgdesc="Qt5-based DC and ADC client for EiskaltDC++ core. (GIT Version)"
-  pkgver="$(cd eiskaltdcpp; echo "$(git describe --long --tags | tr - . | tr -d v)")"
   depends=("eiskaltdcpp-core-git=${pkgver}"
            "eiskaltdcpp-data-git=${pkgver}"
            'aspell'
@@ -129,7 +129,6 @@ package_eiskaltdcpp-qt-git() {
 
 package_eiskaltdcpp-gtk-git() {
   pkgdesc="Gtk-based DC and ADC client for EiskaltDC++ core. (GIT Version)"
-  pkgver="$(cd eiskaltdcpp; echo "$(git describe --long --tags | tr - . | tr -d v)")"
   depends=("eiskaltdcpp-core-git=${pkgver}"
            "eiskaltdcpp-data-git=${pkgver}"
            'gtk3'
@@ -146,7 +145,6 @@ package_eiskaltdcpp-gtk-git() {
 
 package_eiskaltdcpp-daemon-git() {
   pkgdesc="DC and ADC daemon for EiskaltDC++ core. (GIT Version)"
-  pkgver="$(cd eiskaltdcpp; echo "$(git describe --long --tags | tr - . | tr -d v)")"
   depends=("eiskaltdcpp-core-git=${pkgver}"
            'jsoncpp'
            )
@@ -159,7 +157,6 @@ package_eiskaltdcpp-daemon-git() {
 package_eiskaltdcpp-cli-git() {
   arch=('any')
   pkgdesc="CLI interface for EiskaltDC++ Daemon. (GIT Version)"
-  pkgver="$(cd eiskaltdcpp; echo "$(git describe --long --tags | tr - . | tr -d v)")"
   depends=("eiskaltdcpp-daemon-git=${pkgver}"
            'perl-json'
            'perl-json-rpc'
@@ -175,7 +172,6 @@ package_eiskaltdcpp-cli-git() {
 package_eiskaltdcpp-data-git() {
   arch=('any')
   pkgdesc="EiskaltDC++ common data files. (GIT Version)"
-  pkgver="$(cd eiskaltdcpp; echo "$(git describe --long --tags | tr - . | tr -d v)")"
   depends=('bash'
            'hicolor-icon-theme'
            )
