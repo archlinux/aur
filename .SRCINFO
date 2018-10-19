@@ -1,0 +1,25 @@
+pkgbase = tv_grab_zz_sdjson_sqlite-git
+	pkgdesc = XMLTV grabber for Schedules Direct JSON service
+	pkgver = r73.0d8b09d
+	pkgrel = 1
+	url = https://github.com/garybuhrmaster/tv_grab_zz_sdjson_sqlite
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = perl-file-which
+	depends = perl-file-homedir
+	depends = perl-json-xs
+	depends = perl-datetime-format-sqlite
+	depends = perl-list-moreutils-xs
+	depends = perl-exporter-tiny
+	depends = perl-list-moreutils
+	depends = perl-dbd-sqlite
+	depends = perl-lwp-useragent-determined
+	depends = perl-time-hires
+	provides = tv_grab_zz_sdjson_sqlite
+	conflicts = tv_grab_zz_sdjson_sqlite
+	source = git+https://github.com/garybuhrmaster/tv_grab_zz_sdjson_sqlite.git
+	sha256sums = SKIP
+
+pkgname = tv_grab_zz_sdjson_sqlite-git
+
