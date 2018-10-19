@@ -1,6 +1,80 @@
 Version history
 ===============
 
+0.9.21
+------
+
+2018-10-19
+
+Fix #313: Options and trophies (level checkmarks) are now saved in ./user/,
+not in ./data/user/yourname.txt. In the future, whenever you update Lix by
+hand, copy the folder user/ into the new installation. Old settings and
+trophies are imported: To update to 0.9.21, you should still copy
+./data/config.txt and ./data/user/yourname.txt to let Lix 0.9.21 import your
+old settings and write them to ./user/.)
+
+Fix #255: Trophies (level checkmarks) are associated to levels by the levels'
+basename (the part of the filename that is independent from directories),
+author, and English title. Trophies are not associated to full level path
+anymore, even though they remember that path as extra information. This means
+that you keep your trophy even when its level moves to a different rank
+directory.
+
+lemforum: Feel the Pressure: Hopeless -> Daunting. This Is a Stickup: Daunting
+-> Vicious. Evacuate the Sinking Ship: Vicious -> Hopeless. Little Miner
+Puzzle 1: Adjusted height of one bar to avoid accidental splatting while a
+miner is working. The Borderland: Added buzzsaw that This Lix Is Your Lix
+(repeat) already had.
+
+Raymanni's Holiday exit: Enlarged sprite at the bottom to look better when
+the exit sits on bumpy terrain.
+
+Fix #359: When you have lost singleplayer and the game tells you to framestep
+back or abort, you can doubleclick the nuke to quit.
+
+Fix #323: Wide, flat torus maps start with less default zoom (you see a larger
+portion of the level).
+
+Editor: All steel is offered in a single flat list. I've sorted the more
+commonly used tiles to the top of this list.
+
+Editor: Removed an invisible extra button that 0.9.20 mistakenly generated
+and that sometimes became visible when you hovered over the 3 rightmost text
+buttons in the panel and held the mouse key down.
+
+Fix #363: Editor: The terrain browser does not offer the 3 directories
+./authorName/steel/, to de-clutter the tileset list.
+
+Fix #355: Multiplayer: Exit markers are solid, colorful arrows instead of
+large lixes. They still go behind the terrain. The outline of your own arrow
+is drawn semi-transparent over the terrain.
+
+The networking menu offers to host a game (a server will run within Lix) and
+offers to change the port for listening or connecting.
+
+Fix #358: In a networking room, the current level title is printed under the
+preview image, above the chat.
+
+License: During the CC0 public domain waiver, I mention explicitly that the
+levels are CC0.
+
+Server executable understands the switch --port <number> to listen on a
+different port.
+
+Server is now its own dub package in ./src/server/ in the Lix repository.
+Documented how to build and run standalone server executable in Lix's main
+README.md.
+
+Code: I refactored Hatch to contain Graphic instead of to inherit from
+Graphic. Hatches remember which players spawn from them. Physics remain
+identical. (I tested a lot manually, no automatic test; I still lack physics
+unittests in general.)
+
+Git users: I version-control dub.selections.json now. If you get merge issues,
+delete your local copy and then pull.
+
+
+
 0.9.20
 ------
 
