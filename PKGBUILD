@@ -8,7 +8,6 @@ pkgdesc='GNS3 network simulator: code before v1.0'
 arch=('any')
 url='https://github.com/GNS3/gns3-legacy'
 license=('GPL2')
-makedepends=('python-setuptools')
 depends=('qt4>=4.5.1' 'python2>=2.6' 'sip>=4.5' 'python2-sip>=4.5' 'python2-pyqt4>=4.5')
 optdepends=('dynamips: Cisco router emulator.'
             'wireshark-gtk: Live packet capture.')
