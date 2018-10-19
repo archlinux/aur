@@ -1,24 +1,52 @@
 pkgbase = libpod
 	pkgdesc = A library used to create container pods.
 	pkgver = 0.10.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/containers/libpod
 	arch = x86_64
 	license = Apache
+	makedepends = cni-plugins
+	makedepends = cri-o
+	makedepends = device-mapper
 	makedepends = go
 	makedepends = go-md2man
-	depends = python
-	depends = cri-o
-	depends = cni-plugins
-	depends = skopeo
-	depends = device-mapper
-	depends = libseccomp
-	depends = iptables
-	depends = runc
-	depends = ostree
-	conflicts = podman
+	makedepends = iptables
+	makedepends = libseccomp
+	makedepends = ostree
+	makedepends = python
+	makedepends = runc
 	source = https://github.com/containers/libpod/archive/v0.10.1.3.tar.gz
 	sha256sums = 6f34b05ca091d87bf700b2d3b60b80ce32738099b00ed8af3a2f71bcd3ac06eb
 
 pkgname = libpod
+	depends = cri-o
+	depends = device-mapper
+	depends = libseccomp
+	depends = runc
+	depends = ostree
+	optdepends = libpod-docker: docker cli
+	optdepends = libpod-networking: enable networking
+	optdepends = libpod-python: pypodman
+	optdepends = skopeo: default registry configuration
+	provides = podman
+	conflicts = podman
+
+pkgname = libpod-docker
+	pkgdesc = Use podman as a Docker CLI replacement.
+	depends = libpod
+	provides = docker
+	conflicts = docker
+
+pkgname = libpod-networking
+	pkgdesc = Networking configuration for libpod.
+	depends = libpod
+	depends = cni-plugins
+	depends = iptables
+
+pkgname = libpod-python
+	pkgdesc = CLI for podman written in python.
+	depends = libpod
+	depends = python
+	provides = pypodman
+	conflicts = pypodman
 
