@@ -6,7 +6,7 @@ pkgdesc="Polar Bookshelf"
 arch=('x86_64')
 url="https://github.com/burtonator/polar-bookshelf"
 license=('GPL3')
-depends=('gconf' 'gtk2' 'libxss' 'libxtst' 'nss' 'xdg-utils')
+depends=('gtk3' 'libxss' 'nss')
 source_x86_64=("https://github.com/burtonator/polar-bookshelf/releases/download/v"$pkgver"/polar-bookshelf-"$pkgver"-x64.tar.gz"
 "polar-bookshelf.desktop")
 sha512sums_x86_64=('8b0e60d856f45bd87d9f6ac597a98cd2a4cf8555e18eff1231d6c9e6d647958abeac4aa577fda9e67260a5973c3bd1ed41a85b4bb9fc89d381305bda692401ea'
