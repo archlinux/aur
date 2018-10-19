@@ -3,7 +3,7 @@
 
 pkgname=emercoin
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Digital currency and blockchain service platform"
 arch=('i686' 'x86_64')
 url="https://emercoin.com/"
