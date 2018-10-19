@@ -3,6 +3,9 @@
 # A convenience script for the package creator.
 # This file is not run on package installation.
 
+set -euo pipefail
+shopt -s failglob
+
 PACMAN=
 PATH=/usr/bin:$PATH
 
