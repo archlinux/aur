@@ -1,0 +1,19 @@
+pkgbase = lean-display-manager
+	pkgdesc = Lean Display Manager
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/valkheim/ldm
+	arch = x86_64
+	arch = i686
+	license = GPL3.0
+	makedepends = git
+	depends = xcb-util
+	depends = pam
+	provides = lean-display-manager
+	conflicts = lean-display-manager
+	source = lean-display-manager-1.0::git+https://github.com/valkheim/ldm
+	md5sums = SKIP
+	sha256sums = SKIP
+
+pkgname = lean-display-manager
+
