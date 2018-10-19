@@ -8,7 +8,7 @@ pkgbase = cbindgen
 	license = MIT
 	license = APACHE
 	depends = cargo
-	source = https://github.com/eqrion/cbindgen/archive/v0.6.2.tar.gz
+	source = https://github.com/eqrion/cbindgen/archive/v0.6.4.tar.gz
 	sha256sums = 058a6b31c3559a20edec5ec383cbdd8b0a5ed0914579fddedd4d0454aaefd300
 
 pkgname = cbindgen
