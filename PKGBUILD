@@ -1,5 +1,5 @@
 pkgname=cbindgen
-pkgver=0.6.4
+pkgver=0.6.6
 pkgrel=1
 pkgdesc="A project for generating C bindings from Rust code"
 url="https://github.com/eqrion/cbindgen"
@@ -7,7 +7,7 @@ depends=('cargo')
 arch=('i686' 'x86_64')
 license=('MIT' 'APACHE')
 source=("https://github.com/eqrion/cbindgen/archive/v$pkgver.tar.gz")
-sha256sums=('058a6b31c3559a20edec5ec383cbdd8b0a5ed0914579fddedd4d0454aaefd300')
+sha256sums=('e55927a17be6541a74e6cd1bc9cdd8fcc277e820e2180c8861d27a52d579153a')
 
 build() {
   cd cbindgen-$pkgver
