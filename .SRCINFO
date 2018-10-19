@@ -5,7 +5,6 @@ pkgbase = i3ipc-python
 	url = https://github.com/acrisci/i3ipc-python
 	arch = any
 	license = custom:BSD
-	makedepends = git
 	makedepends = python-setuptools
 	depends = python
 	provides = i3ipc-python
