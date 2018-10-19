@@ -1,0 +1,13 @@
+pkgbase = miniwi-font-git
+	pkgdesc = Tiny 4x8 font for X11 and the Linux console
+	pkgver = 1.0.r37.g80903cc
+	pkgrel = 1
+	url = http://josuah.net/git/miniwi/
+	arch = any
+	license = custom
+	makedepends = git
+	source = miniwi-font-git::git://git.josuah.net/miniwi
+	md5sums = SKIP
+
+pkgname = miniwi-font-git
+
