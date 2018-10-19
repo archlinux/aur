@@ -1,6 +1,6 @@
-pkgbase = automx-git
+pkgbase = automx
 	pkgdesc = automx makes setting up a mail account easy by handling mail account profile requests from your mail clients
-	pkgver = v1.1.1.4aee43f
+	pkgver = v1.1.1.13.g4aee43f
 	pkgrel = 1
 	url = https://automx.org
 	install = automx.install
@@ -20,5 +20,5 @@ pkgbase = automx-git
 	source = automx::git+https://github.com/sys4/automx.git
 	md5sums = SKIP
 
-pkgname = automx-git
+pkgname = automx
 
