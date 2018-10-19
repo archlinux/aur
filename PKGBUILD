@@ -4,16 +4,16 @@
 
 pkgname=lscolors-git
 _pkgname=LS_COLORS
-pkgver=r246.0e97428
-pkgrel=2
-pkgdesc="Colorize the output of the 'ls' shell command via LS_COLORS"
-url="https://github.com/trapd00r/LS_COLORS"
-arch=("any")
-makedepends=("git")
-license=("PerlArtistic")
+pkgver=r259.03e66df
+pkgrel=1
+pkgdesc='Colorize the output of the "ls" shell command via LS_COLORS'
+url='https://github.com/trapd00r/LS_COLORS'
+arch=('any')
+makedepends=('git')
+license=('PerlArtistic')
 install="$pkgname.install"
 source=("git://github.com/trapd00r/$_pkgname.git")
-sha256sums=("SKIP")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
@@ -29,8 +29,8 @@ build() {
 package() {
   cd "$_pkgname"
 
-  install -Dm644 -t "${pkgdir}/usr/share/${_pkgname}/" LS_COLORS
-  install -Dm644 -t "${pkgdir}/usr/share/${_pkgname}/" dircolors.sh
-  install -Dm644 -t "${pkgdir}/usr/share/${_pkgname}/" dircolors.csh
-  install -Dm644 README.markdown "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -Dm644 -t "$pkgdir/usr/share/$_pkgname" LS_COLORS
+  install -Dm644 -t "$pkgdir/usr/share/$_pkgname" dircolors.sh
+  install -Dm644 -t "$pkgdir/usr/share/$_pkgname" dircolors.csh
+  install -Dm644 README.markdown "$pkgdir/usr/share/doc/$_pkgname/README.md"
 }
