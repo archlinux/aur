@@ -1,0 +1,18 @@
+pkgbase = polkit-qt4
+	pkgdesc = A library that allows developers to access PolicyKit API with a nice Qt-style API
+	pkgver = 0.112.0+git20180107
+	pkgrel = 1
+	url = https://www.kde.org/
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	makedepends = polkit
+	makedepends = qt4
+	makedepends = git
+	depends = polkit
+	depends = qt4
+	source = polkit-qt4::git+https://anongit.kde.org/polkit-qt-1.git#commit=cbecf60ac7b5c17cf37503d6675bf5542efbab29
+	sha256sums = SKIP
+
+pkgname = polkit-qt4
+
