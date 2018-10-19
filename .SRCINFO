@@ -1,0 +1,17 @@
+pkgbase = mythutil-git
+	pkgdesc = Miscellanous Utilities for MythTV
+	pkgver = r33.b773d36
+	pkgrel = 1
+	url = https://github.com/garybuhrmaster/mythutil
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = python-requests
+	depends = python-systemd
+	provides = mythutil
+	conflicts = mythutil
+	source = git+https://github.com/garybuhrmaster/mythutil.git
+	sha256sums = SKIP
+
+pkgname = mythutil-git
+
