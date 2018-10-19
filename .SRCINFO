@@ -4,7 +4,6 @@ pkgbase = yubikey-touch-detector
 	pkgrel = 1
 	url = https://github.com/maximbaz/yubikey-touch-detector
 	install = yubikey-touch-detector.install
-	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = go
