@@ -3,7 +3,7 @@
 
 pkgname=ttf-emojione
 pkgver=4.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Official colorful EmojiOne font'
 url='https://github.com/emojione/emojione-assets'
 arch=('any')
@@ -16,7 +16,7 @@ source=("emojione-android-$pkgver.ttf::https://github.com/emojione/emojione-asse
         '75-emojione.conf'
         'license-free.pdf')
 sha256sums=('8955dd64a7d1db5d476392c4bfc70e155c5d2caf74a48539b08a818830ebbafb'
-            'ed7cc8c8e8adc03adb7f54211376f2a8e230a2aafe153ef7f9c26e2ea7bb0f63'
+            '28a56e95a02135760141d419fa107ce509a3135d05307a2c03ccf4d72d800a79'
             '2898feeb41e03acd1a655ba5ddad0072aac83a014ee184fdcdebc7a66d353650')
 
 package() {
