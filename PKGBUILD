@@ -15,9 +15,9 @@ replaces=('liri-pulseaudio')
 provides=('liri-pulseaudio')
 groups=('liri-git')
 
-_gitroot="git://github.com/lirios/vibe.git"
+_gitroot="git://github.com/lirios/pulseaudio.git"
 _gitbranch=develop
-_gitname=vibe
+_gitname=pulseaudio
 source=(${_gitname}::${_gitroot}#branch=${_gitbranch})
 md5sums=('SKIP')
 
