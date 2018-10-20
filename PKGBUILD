@@ -1,12 +1,13 @@
 # Maintainer: bb010g <bb010g@gmail.com>
 pkgname=betterdiscord-rauenzi-git
-pkgver=0.2.82.r472.g247a6a9
+pkgver=0.2.82.r487.gf0d355e
 pkgrel=1
 pkgdesc="Discord extension with plugin support, emotes, and more (rauenzi's updated fork)"
 arch=('any')
 url='https://github.com/rauenzi/BetterDiscordApp'
 license=('MIT')
-depends=('asar' 'betterdiscordctl-git')
+depends=()
+optdepends=('betterdiscordctl: BetterDiscord installation')
 makedepends=('git')
 install="${pkgname%-git}.install"
 source=(
@@ -29,5 +30,4 @@ package() {
   mkdir -p "${pkgdir}/usr/lib/"
   cp -r "${srcdir}/${pkgname%-git}" "${pkgdir}/usr/lib/${pkgname}"
   rm -rf "${pkgdir}/usr/lib/${pkgname}/.git"
-  rm "${pkgdir}/usr/lib/${pkgname}/.gitignore"
 }
