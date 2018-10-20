@@ -69,7 +69,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-_srcver=4.18.15-arch1
+_srcver=4.18.16-arch1
 pkgver=${_srcver%-*}
 pkgrel=1
 _ckpatchversion=1
@@ -90,13 +90,13 @@ source=(
   "http://ck.kolivas.org/patches/4.0/4.18/4.18-ck${_ckpatchversion}/${_ckpatchname}.xz"
   Fix_MuQSS_full_dynticks_build.patch::https://github.com/ckolivas/linux/commit/abb4fd30fa127a0e8178b975343eb01713bc2b18.patch
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  0002-Arch-Linux-kernel-v4.18.15-arch1.patch
+  0002-Arch-Linux-kernel-v4.18.16-arch1.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('8fc351514d2f3acb528cd9f915bfad5b5a07354b4c90831cafd11713a0562933'
+sha256sums=('beba14e2f07259a545baa1dce5afdaf9f470cdadc8b378ac269e7c8a289c52e6'
             'SKIP'
             '9f2454dae08fbd96059fe79ec05933d724cd2c9b383f5be092c7871ac1551649'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
@@ -106,7 +106,7 @@ sha256sums=('8fc351514d2f3acb528cd9f915bfad5b5a07354b4c90831cafd11713a0562933'
             '0354083492adb3785dd31d2d4bf7dc805110aceffb369deed6cbded121f8a3d3'
             '6e1f3cc3eb9a1e30a69ef1999f9aa6ad7f2f9fe4af7ba5dabe25d4ff19ee6740'
             '559d8c51d6e965179ca44b93cff101f31fafb49b0e8d7f9a7e97fc4b77a721f9'
-            '3d0cfa2b8d4bcf5d470c6f6b6320e60bfce0c98040b74626c0215d1ff423522a')
+            '339ac8509f1533c47dde9b01aaa4a53ac1d50df0541ce4ab58bad9f5666621ca')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
