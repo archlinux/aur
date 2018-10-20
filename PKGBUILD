@@ -2,17 +2,17 @@
 
 _pkgname=libfilezilla
 pkgname=lib32-${_pkgname}
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="Small and modern C++ library, offering some basic functionality to build high-performing, platform-independent programs (32-bit)"
 arch=('x86_64')
 url="https://lib.filezilla-project.org/"
 license=('GPL')
-depends=("lib32-gcc-libs" "lib32-clang" "${_pkgname}")
+depends=("lib32-gcc-libs" "lib32-clang" "lib32-nettle" "${_pkgname}")
 makedepends=("clang")
 checkdepends=("lib32-cppunit")
 source=("https://download.filezilla-project.org/${_pkgname}/${_pkgname}-${pkgver}.tar.bz2")
-sha512sums=('f20932e14ab81df9562e030ce10009b9ab55b6798f7bfff7249e9f472fc8cae4278eb142a655dffb63fec53894783874973eb33444bfdacdb06fa682c2dd66a6')
+sha512sums=('64b0e2a8dd4dd06a1c2daf52f3036fcaed60b95240672f28032ec390361ddb1a59cd26a91b7b7c525cfc8262381db09a081a29c723f487cc5b41454ce4e9d47e')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
