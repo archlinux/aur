@@ -10,6 +10,8 @@ license=('GPL3')
 depends=('python-gobject' 'gtk3' 'swh-plugins' 'pulseaudio' 'bc')
 makedepends=('git' 'meson')
 optdepends=('python2-gobject: python2 support')
+provides=('pulseaudio-equalizer-ladspa')
+conflicts=('pulseaudio-equalizer-ladspa')
 source=("git+$url/equalizer")
 sha512sums=('SKIP')
 

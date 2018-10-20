@@ -13,6 +13,8 @@ pkgbase = pulseaudio-equalizer-ladspa-git
 	depends = pulseaudio
 	depends = bc
 	optdepends = python2-gobject: python2 support
+	provides = pulseaudio-equalizer-ladspa
+	conflicts = pulseaudio-equalizer-ladspa
 	source = git+https://github.com/pulseaudio-equalizer-ladspa/equalizer
 	sha512sums = SKIP
 
