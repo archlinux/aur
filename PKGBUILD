@@ -2,12 +2,11 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=blis-git
-pkgver=0.3.2.60.g3f387ca3
-pkgrel=2
+pkgver=0.4.1.84.g14f3d5e6
+pkgrel=1
 pkgdesc="BLAS-like Library Instantiation Software framework by the Science of High-Performance Computing Group"
 arch=('x86_64')
 license=('custom:BSD')
-depends=('glibc')
 makedepends=('python2')
 conflicts=('blis')
 provides=('blis')
