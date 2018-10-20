@@ -5,7 +5,7 @@ pkgbase="python-sacred"
 pkgname=("python-sacred" "python2-sacred")
 _pkgname="sacred"
 pkgver="0.7.4"
-pkgrel="2"
+pkgrel="3"
 pkgdesc='Sacred is a tool to configure, organize, log and reproduce computational experiments.'
 arch=('any')
 url='https://github.com/IDSIA/sacred'
@@ -37,14 +37,14 @@ build() {
 
 package_python2-sacred() {
   depends=('python2' 'python2-docopt' 'python2-wrapt' 'python2-jsonpickle' 'python2-mock' 'python2-munch' 'python2-py' 'python2-pbr' 'python2-pytest')
-  optdepends=('python-numpy' 'python-pymongo')
+  optdepends=('python2-numpy' 'python2-pymongo')
   cd "$srcdir/$_pkgname-$pkgver-py2"
   python2 setup.py install --root="$pkgdir"/ --optimize=1
 }
 
 package_python-sacred() {
   depends=('python' 'python-docopt' 'python-wrapt' 'python-jsonpickle' 'python-mock' 'python-munch' 'python-py' 'python-pbr' 'python-pytest' 'python-py-cpuinfo')
-  optdepends=('python2-numpy' 'python2-pymongo')
+  optdepends=('python-numpy' 'python-pymongo')
   cd "$srcdir/$_pkgname-$pkgver"
   python setup.py install --root="$pkgdir"/ --optimize=1
 }
