@@ -1,0 +1,68 @@
+--- src/app-wavesurfer/wavesurfer__orig.tcl	2018-09-08 19:58:23.463734379 +0200
++++ src/app-wavesurfer/wavesurfer.tcl	2018-09-08 20:19:48.386838554 +0200
+@@ -461,6 +461,20 @@
+  }
+ }
+ 
++proc getConfigPath {name} {
++    set l [::wsurf::GetConfigurations]
++    # quote regexp sensible characters
++    set config [string map {+ \\+} $name]
++    set ind [lsearch -regexp $l ".*${config}\[\\w\\s\]*.conf"]
++    if {$ind != -1} {
++	set conf [lindex $l $ind]
++    } else {
++	set conf ""
++    }
++    return $conf
++}
++
++
+ proc OpenFile {args} {
+ 
+     puts [info level 0]
+@@ -507,13 +521,7 @@
+ 		::SavePreferences
+ 	    }
+ 	} else {
+-	    set l [::wsurf::GetConfigurations]
+-	    set ind [lsearch -regexp $l ".*$::wsurf::Info(Prefs,defaultConfig)\[\\w\\s\]*.conf"]
+-	    if {$ind != -1} {
+-		set conf [lindex $l $ind]
+-	    } else {
+-		set conf ""
+-	    }
++	    set conf [getConfigPath $::wsurf::Info(Prefs,defaultConfig)]
+ 	}
+ 	if {$conf == "standard"} {
+ 	    set conf ""
+@@ -907,13 +915,7 @@
+ 	    ::SavePreferences
+ 	}
+     } else {
+-	set l [::wsurf::GetConfigurations]
+-	set ind [lsearch -regexp $l ".*$::wsurf::Info(Prefs,defaultConfig)\[\\w\\s\]*.conf"]
+-	if {$ind != -1} {
+-	    set conf [lindex $l $ind]
+-	} else {
+-	    set conf ""
+-	}
++	set conf [getConfigPath $::wsurf::Info(Prefs,defaultConfig)]
+     }
+     if {$conf == ""} return
+     if {$conf == "standard"} {
+@@ -3439,11 +3441,10 @@
+ update idletasks
+ 
+ if {$surf(conf) == "unspecified" && $::wsurf::Info(Prefs,defaultConfig) != ""} {
+-    set l [::wsurf::GetConfigurations]
+-    set ind [lsearch -regexp $l ".*$::wsurf::Info(Prefs,defaultConfig)\[\\w\\s\]*.conf"]
+-    if {$ind != -1} {
++    set conf [getConfigPath $::wsurf::Info(Prefs,defaultConfig)]
++    if {$conf ne ""} {
+ 	set surf(conf) {}
+-	lappend surf(conf) [lindex $l $ind]
++	lappend surf(conf) $conf
+     } else {
+ 	set surf(conf) [list "unspecified"]
+     }

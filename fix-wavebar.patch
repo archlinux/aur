@@ -1,0 +1,18 @@
+Add fix from commit r58 "fixed subtle bug related to opening file in
+untouched widget":
+https://sourceforge.net/p/wavesurfer/code/58/#diff-2
+
+--- src/wsurf/wavebar__orig.tcl	2018-09-08 18:34:58.049674304 +0200
++++ src/wsurf/wavebar.tcl	2018-09-08 18:27:15.450901639 +0200
+@@ -747,6 +747,11 @@
+ 
+ proc wavebar::_update {w {width -1} {height -1}} {
+  upvar [namespace current]::${w}::data d
++
++    if {![winfo exists $w]} {
++	return
++    }
++
+  if {$width>0} {set d(c0width) $width}
+  if {$height>0} {set d(c0height) $height}
+  if {$d(c0width)<=0} return

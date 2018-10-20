@@ -1,15 +1,16 @@
---- wsurf-orig.tcl	2014-03-16 03:00:12.607411989 +0100
-+++ src/wsurf/wsurf.tcl	2014-03-16 02:49:27.807185395 +0100
-@@ -3121,7 +3121,12 @@
+--- src/wsurf/wsurf.tcl.orig	2017-01-26 14:20:05.000000000 +0100
++++ src/wsurf/wsurf.tcl	2018-09-08 17:40:50.695124440 +0200
+@@ -3126,7 +3126,12 @@
  
   foreach var [list inDev outDev PrintCmd PrintPVCmd linkFile tmpDir \
  		  defRate defEncoding defChannels recordLimit showLevel] {
-+     if {[info exists Info(Prefs,$var)]} {
-   set Info(Prefs,t,$var) $Info(Prefs,$var)
-+     } else {
-+  puts "Missing Info(Prefs,$var)"
-+  set Info(Prefs,t,$var) {}
-+     }
+-  set Info(Prefs,t,$var) $Info(Prefs,$var)
++  if {[info exists Info(Prefs,$var)]} {
++   set Info(Prefs,t,$var) $Info(Prefs,$var)
++  } else {
++   puts "Missing Info(Prefs,$var)"
++   set Info(Prefs,t,$var) {}
++  }
   }
   
   if {$Info(Prefs,linkFile)} {

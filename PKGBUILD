@@ -2,8 +2,8 @@
 # Contributor: Christoph Drexler <chrdr [at] gmx [dot] at>
 
 pkgname=wavesurfer
-pkgver=1.8.8p4
-pkgrel=3
+pkgver=1.8.8p5
+pkgrel=4
 pkgdesc="Open source tool for sound visualization and manipulation"
 arch=('any')
 url="http://sourceforge.net/projects/wavesurfer/"
@@ -12,24 +12,30 @@ depends=('tcl>=8.4' 'tk>=8.4' 'snack>=2.2')
 source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver-src.tgz"
   wavesurfer
   wavesurfer.desktop
-  vtcanvas.patch
   prefs.patch
-  snack-callbacks.patch)
-md5sums=('446f16aecff9cc283cf82636e84feeee'
-         'f875d9c0fcef785ccdf7f4a64e19c52d'
-         '8a081185545f22d37f34d9de7e0cf303'
-         'b19c250f1fdb5bfb51122e805f612695'
-         'de89341e031a230cfe4387d5bf2b18f7'
-         'a270da18afc012a1e431466f2afef5a8')
+  fix-wavebar.patch
+  snack-callbacks.patch
+  fix-defaultconfig-search.patch
+  fix-tkcon.patch)
+sha256sums=('ae56061147dd1170f7485dc9c19db7a45dd157050ac3946662c7fc79cffb611a'
+            '6fd71453d7d29828ccf7062001679b24899b8866fbfdc2eecb5c0e71d25ed885'
+            '99caf2c9150cd27dc00dfe05403d2ca0d2d0ef9364b43b53a904508911d8e941'
+            '83a952e3d10f24d078db295ac0716601bc9da54aafff697dd539f35823721985'
+            '974c027de15de7848843c4e35adc1c7c9e23f147457e10f0a8df19b3bf182f68'
+            'f476146ab13b535c16a48e5a82e3b99377deba9dcef0c40bfd15660be674b1b8'
+            '08263324c0af3f82b3f3868068b268dd873a2338bb884756213781271bc11cb2'
+            'd15323cc7d96a6ed34a30484e6345898bff70c8180f0ae7c9ef1effdea73ace5')
 
 build() {
   cd $pkgname-$pkgver
 
   patch -p0 -i ../prefs.patch
-  patch -p0 -i ../vtcanvas.patch
+  patch -p0 -i ../fix-wavebar.patch
   # if you have a snack version that is compatible with tcl 8.6
   # you should leave out the following patch
   patch -p0 -i ../snack-callbacks.patch
+  patch -p0 -i ../fix-defaultconfig-search.patch
+  patch -p0 -i ../fix-tkcon.patch
 }
 
 package() {
@@ -41,6 +47,4 @@ package() {
 	install -Dm755 $srcdir/wavesurfer $pkgdir/usr/bin/wavesurfer
 	install -Dm644 $srcdir/wavesurfer.desktop $pkgdir/usr/share/applications/wavesurfer.desktop
 	install $srcdir/$pkgname-$pkgver/LICENSE.txt $pkgdir/usr/share/licenses/wavesurfer/LICENSE.txt
-
-	sed -i -e 's|wish8.5|wish|' $pkgdir/usr/lib/wavesurfer/src/app-wavesurfer/wavesurfer.tcl
 }
