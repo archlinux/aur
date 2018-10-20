@@ -1,34 +1,32 @@
 # Maintainer: Marcin Tydelski <marcin.tydelski@gmail.com> 
 # Contributor: Brian Douglass <https://github.com/bhdouglass/, http://bhdouglass.com/>
 
-pkgname=clickable
-pkgver=272.c18271a
+_pkgname=clickable
+pkgname=$_pkgname-git
+pkgver=5.0.0.r2.g6015551
 pkgrel=1
-_gitname=clickable
 pkgdesc='Compile, build, and deploy Ubuntu Touch click packages all from the command line.'
 arch=('i686' 'x86_64')
-url='https://github.com/bhdouglass/clickable'
+url='https://gitlab.com/clickable/clickable'
 license=('GPL3')
-depends=('python' 'docker' 'python-cookiecutter' 'android-tools')
-optdepends=('lxd')
+depends=('python-cookiecutter' 'docker' 'android-tools')
 makedepends=('git')
-provides=("${pkgname%}")
-conflicts=("${pkgname%}")
-install="${pkgname%-*}.install"
-source=('git+https://github.com/bhdouglass/clickable.git')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=('git+https://gitlab.com/clickable/clickable.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $_gitname
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+    cd $_pkgname
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+    cd $_pkgname
+    python setup.py build
 }
 
 package() {
-
-mkdir -p $pkgdir/usr/bin $pkgdir/usr/lib/python3.7/site-packages/
-install -m755 -t $pkgdir/usr/bin/ $srcdir/$pkgname/clickable-dev
-mv $pkgdir/usr/bin/clickable-dev $pkgdir/usr/bin/clickable
-cp -R $srcdir/$pkgname/clickable $pkgdir/usr/lib/python3.7/site-packages/
+    cd $_pkgname
+    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
-
-# vim: ts=2 sw=2 et:
