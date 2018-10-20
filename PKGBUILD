@@ -7,17 +7,19 @@
 # Contributor: josephgbr
 # Based on [multilib]'s lib32-nvidia-utils: https://www.archlinux.org/packages/multilib/x86_64/lib32-nvidia-utils/
 
+pkgbase=lib32-nvidia-utils-beta
 pkgname=('lib32-nvidia-utils-beta' 'lib32-nvidia-libgl-beta' 'lib32-opencl-nvidia-beta')
-pkgver=410.57
+pkgver=410.66
 pkgrel=1
+pkgdesc='NVIDIA driver utilities and libraries (beta version) (32-bit)'
 arch=('x86_64')
-url="http://www.nvidia.com/"
+url='http://www.nvidia.com/'
 makedepends=('nvidia-libgl-beta')  # To avoid conflict during installation in the build chroot
 license=('custom:NVIDIA')
 options=('!strip')
-_pkg="NVIDIA-Linux-x86_64-$pkgver"
-source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/$_pkg.run")
-sha256sums=('5c3c2e1fef0615c0002946c586c815a77676f4683304cc17d5bf323e7626a320')
+_pkg="NVIDIA-Linux-${CARCH}-${pkgver}"
+source=("http://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run")
+sha256sums=('8fb6ad857fa9a93307adf3f44f5decddd0bf8587a7ad66c6bfb33e07e4feb217')
 
 _create_links() {
   # create missing soname links
@@ -33,14 +35,10 @@ _create_links() {
 }
 
 prepare() {
-  # Remove previous builds
-  if [[ -d $_pkg ]]; then
-    rm -rf $_pkg
-  fi
-
-  # Extract
-  msg2 "Self-Extracting $_pkg.run..."
-  sh $_pkg.run -x
+    # extract the source file
+    [ -d "$_pkg" ] && rm -rf "$_pkg"
+    printf '%s\n' "  -> Self-Extracting ${_pkg}.run..."
+    sh "${_pkg}.run" --extract-only
 }
 
 package_lib32-opencl-nvidia-beta() {
@@ -58,9 +56,8 @@ package_lib32-opencl-nvidia-beta() {
   # create missing soname links
   _create_links
 
-  # License (link)
-  install -d "$pkgdir"/usr/share/licenses/
-  ln -s nvidia-utils/ "$pkgdir"/usr/share/licenses/lib32-opencl-nvidia
+  # license
+  install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 package_lib32-nvidia-libgl-beta() {
@@ -89,13 +86,11 @@ package_lib32-nvidia-libgl-beta() {
   ln -s /usr/lib32/nvidia/libGLESv2.so.2.1.0 "$pkgdir"/usr/lib32/libGLESv2.so.2
   ln -s libGLESv2.so.2 "$pkgdir"/usr/lib32/libGLESv2.so
 
-  # License (link)
-  install -d "$pkgdir"/usr/share/licenses/
-  ln -s nvidia-utils/ "$pkgdir"/usr/share/licenses/lib32-nvidia-libgl
+  # license
+  install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 package_lib32-nvidia-utils-beta() {
-  pkgdesc="NVIDIA driver utilities and libraries (beta version) (32-bit)"
   depends=('lib32-zlib' 'lib32-gcc-libs' 'nvidia-utils-beta' 'lib32-mesa>=17.0.2-1')
   optdepends=('lib32-opencl-nvidia-beta: OpenCL support')
   provides=("lib32-nvidia-utils=$pkgver" 'lib32-libglvnd' 'lib32-vulkan-driver')
@@ -160,7 +155,6 @@ package_lib32-nvidia-utils-beta() {
   # create missing soname links
   _create_links
 
-  # License (link)
-  install -d "$pkgdir"/usr/share/licenses/
-  ln -s nvidia-utils/ "$pkgdir"/usr/share/licenses/lib32-nvidia-utils
+  # license
+  install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
