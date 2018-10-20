@@ -1,17 +1,17 @@
 # Maintainer: Germain Z. <https://github.com/GermainZ>
 pkgname=aur-talk-git
 _gitname=aur-talk
-pkgver=r10.8fcf558
+pkgver=r11.ad39887
 pkgrel=1
 pkgdesc="A script to fetch and display AUR package comments"
 arch=('any')
 url="https://github.com/GermainZ/aur-talk"
 license=('custom:ISC')
-depends=('python-lxml' 'python-html2text')
+depends=('python' 'python-lxml' 'python-html2text')
 makedepends=('git')
 provides=('aur-talk')
 conflicts=('aur-talk')
-source=('git://github.com/GermainZ/aur-talk.git')
+source=('git+https://github.com/GermainZ/aur-talk')
 sha256sums=('SKIP') 
 
 pkgver() {
