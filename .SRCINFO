@@ -1,6 +1,6 @@
 pkgbase = liri-settings-git
 	pkgdesc = Settings application and modules for Liri OS
-	pkgver = 20180412.516.212fbdb
+	pkgver = 20180816.533.9572103
 	pkgrel = 1
 	url = https://liri.io
 	arch = i686
