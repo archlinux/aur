@@ -1,0 +1,31 @@
+pkgbase = libc++-rpm
+	pkgver = 7.0.0
+	pkgrel = 1
+	url = https://libcxx.llvm.org/
+	arch = x86_64
+	license = MIT
+	license = custom:University of Illinois/NCSA Open Source License
+	depends = gcc-libs
+	noextract = libcxx-7.0.0-1.fc30.x86_64.rpm
+	noextract = libcxx-devel-7.0.0-1.fc30.x86_64.rpm
+	noextract = libcxxabi-7.0.0-1.fc30.x86_64.rpm
+	noextract = libcxxabi-devel-7.0.0-1.fc30.x86_64.rpm
+	source = https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/Packages/l/libcxx-7.0.0-1.fc30.x86_64.rpm
+	source = https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/Packages/l/libcxx-devel-7.0.0-1.fc30.x86_64.rpm
+	source = https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/Packages/l/libcxxabi-7.0.0-1.fc30.x86_64.rpm
+	source = https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/Packages/l/libcxxabi-devel-7.0.0-1.fc30.x86_64.rpm
+	sha512sums = 3726f6705ba9c6ebb2e99865a4fadcc97b695f56ec11e2613208c698df33e0f5
+	sha512sums = eb619542d06b774670d2bc06b67d86ddcb3b706a1e2091fd08b9128f4b1cc0d3
+	sha512sums = 8575d56cc65944fc9baff708246ee8b6cb7bdc4a98b6e2108d7ec6f69828b94d
+	sha512sums = 0baae7fe03f6734ad5bae35a3b108eed11f22d3c28c27990d8f0a84629e8628b
+
+pkgname = libc++-rpm
+	pkgdesc = LLVM C++ standard library. (from Fedora rawhide)
+	depends = libc++abi=7.0.0-1
+	conflicts = libc++
+
+pkgname = libc++abi-rpm
+	pkgdesc = Low level support for the LLVM C++ standard library. (from Fedora rawhide)
+	provides = libc++abi
+	conflicts = libc++abi
+
