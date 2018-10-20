@@ -40,6 +40,7 @@ pkgbase = chromium-vaapi-bin
 	optdepends = gnome-keyring: for storing passwords in GNOME keyring
 	optdepends = kwallet: for storing passwords in KWallet
 	optdepends = libva-intel-driver: support HW acceleration on Intel graphics cards
+	optdepends = libva-mesa-driver: support HW acceleration on AMD graphics cards
 	optdepends = libva-vdpau-driver-chromium: support HW acceleration on Nvidia graphics cards
 	provides = chromium
 	conflicts = chromium

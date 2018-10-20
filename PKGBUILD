@@ -17,6 +17,7 @@ optdepends=('pepper-flash: support for Flash content'
             'gnome-keyring: for storing passwords in GNOME keyring'
             'kwallet: for storing passwords in KWallet'
             'libva-intel-driver: support HW acceleration on Intel graphics cards'
+            'libva-mesa-driver: support HW acceleration on AMD graphics cards'
             'libva-vdpau-driver-chromium: support HW acceleration on Nvidia graphics cards')
 
 source_x86_64=("https://github.com/maximbaz/${pkgname}/releases/download/${pkgver}-${_pkgrel}/chromium-vaapi-${pkgver}-${_pkgrel}-${arch}.pkg.tar.xz")
