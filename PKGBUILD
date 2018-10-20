@@ -13,7 +13,7 @@
 pkgbase=linux-libre         # Build stock kernel
 #pkgbase=linux-libre-custom # Build kernel with a different name
 _srcbasever=4.18-gnu
-_srcver=4.18.9-gnu
+_srcver=4.18.11-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -22,9 +22,9 @@ _replacesoldmodules=() # '%' gets replaced with _kernelname
 _srcname=linux-${_srcbasever%-*}
 _archpkgver=${_srcver%-*}
 pkgver=${_srcver//-/_}
-pkgrel=2
-rcnrel=armv7-x9
-arch=(i686 x86_64 armv7h)
+pkgrel=1
+rcnrel=armv7-x10
+arch=(i686 x86_64 armv7h ppc64le)
 url="https://linux-libre.fsfla.org/"
 license=(GPL2)
 makedepends=(xmlto kmod inetutils bc libelf python-sphinx graphviz)
@@ -36,7 +36,7 @@ source=(
   "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm"{,.sig}
   "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm"{,.sig}
   # the main kernel config files
-  'config.i686' 'config.x86_64' 'config.armv7h'
+  'config.i686' 'config.x86_64' 'config.armv7h' 'config.ppc64le'
   # pacman hooks for depmod and initramfs regeneration
   '60-linux.hook' '90-linux.hook'
   # standard config files for mkinitcpio ramdisk
@@ -68,7 +68,7 @@ validpgpkeys=(
 )
 sha512sums=('0c221c6e84eb5bc270ef79454bf407079daed84534afb1d449d40fa46e42868a471d3063016a4eb3f68d42879e18ee314ab30716116805fee35b5084b23df2a9'
             'SKIP'
-            '72486a515539b2420daa6fb41c41f5994dbc4572bdacd80f75fb965398b6e12ed06c491ddab263adc36c5d48da52e1b5cf1145f4f808665dffc64ba16bfc90d4'
+            '8feff88760245f9649aa504140ba41832448aa0d51c1d49d5c40cb67de088d61a9f8848524e171d3688842046cd20e25cb631363746d39345458a4c020ca68e6'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -76,9 +76,10 @@ sha512sums=('0c221c6e84eb5bc270ef79454bf407079daed84534afb1d449d40fa46e42868a471
             'SKIP'
             '7a3716bfe3b9f546da309c7492f3e08f8f506813afeb1c737a474c83313d5c313cf4582b65215c2cfce3b74d9d1021c96e8badafe8f6e5b01fe28d2b5c61ae78'
             'SKIP'
-            'c5562a0185d184e4889e3709e7f5f6142fcb687fdbe4ff2a85c7e6dfc445b4bf4a01adf82e931941dad8f3ca3a8be6a3e23f46362be11a33e8b61eb043e2769f'
-            'd9c5471ae74ba01661951e328b9d1bee937ed507dc43c1ed9678bc80429e9cbec40b317e7d636a7194dfc25e355e2f6f8316045ac38c8a6eaa3db706ad50c416'
-            '6d80dd0352e2e99b6537adeb6d077004aa4d5c8c832efd80fd2c9e36d9fa3c75e3190d22678644e856e422862d226a8fac2a65c558454602c5da98a267a437f2'
+            '459cc73623877d008a01ddb62bfb0ceb69d4ebb71d2ec22317c60e6c2c8e0f879fb9938e571dcd1a74b1cb585bace94bf42fd1879c0d66eab44432cef8476f52'
+            'e7915110234a75d5cb28bb0beccced2e851bdbf4911d366e2df3ce3b9cabdd8b19f92dcccfb8bd614b2d7afd329f903c4fc60ba18398d8c678c6604b8e8d5ccc'
+            '770975d1a319fabb574c6f74b46b1f80c12032e7d18cb5c34a7ed4a94e77e72918becb53e896064e3cdbd2559972f01186cef588ea8203af80fcbcaedc424131'
+            '1fd0fb77a1c1134c36e7956f948d27c36b67e131020c4bd7d3899ad878d5397c6900368d9e0a0802ad6ba3ba27b1d6724b7d9139e0634950130fccfac267c604'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '4a8b324aee4cccf3a512ad04ce1a272d14e5b05c8de90feb82075f55ea3845948d817e1b0c6f298f5816834ddd3e5ce0a0e2619866289f3c1ab8fd2f35f04f44'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
@@ -110,6 +111,7 @@ _replacesoldmodules=("${_replacesoldmodules[@]/\%/${_kernelname}}")
 case "$CARCH" in
   i686|x86_64) KARCH=x86;;
   armv7h) KARCH=arm;;
+  ppc64le) KARCH=powerpc;;
 esac
 
 prepare() {
@@ -176,9 +178,11 @@ prepare() {
 build() {
   cd $_srcname
   if [ "$CARCH" = "armv7h" ]; then
-    make $MAKEFLAGS zImage modules dtbs htmldocs
+    make zImage modules dtbs htmldocs
   elif [ "$CARCH" = "x86_64" ] || [ "$CARCH" = "i686" ]; then
     make bzImage modules htmldocs
+  elif [ "$CARCH" = "ppc64le" ]; then
+    make zImage modules htmldocs
   fi
 }
 
@@ -200,10 +204,8 @@ _package() {
   msg2 "Installing boot image..."
   if [ "$CARCH" = "armv7h" ]; then
     make INSTALL_DTBS_PATH="$pkgdir/boot/dtbs/$pkgbase" dtbs_install
-    cp arch/$KARCH/boot/zImage "$pkgdir/boot/vmlinuz-$pkgbase"
-  elif [ "$CARCH" = "x86_64" ] || [ "$CARCH" = "i686" ]; then
-    install -Dm644 "$(make -s image_name)" "$pkgdir/boot/vmlinuz-$pkgbase"
   fi
+  install -Dm644 "$(make -s image_name)" "$pkgdir/boot/vmlinuz-$pkgbase"
 
   msg2 "Installing modules..."
   local modulesdir="$pkgdir/usr/lib/modules/$kernver"
