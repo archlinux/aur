@@ -1,7 +1,7 @@
 pkgbase = intel-media-server-studio
 	pkgdesc = Intel Media Server Studio (only SDK files, no kernel patches, no system modifications)
 	pkgver = 2018.R1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://software.intel.com/en-us/intel-media-server-studio/
 	arch = x86_64
 	license = custom
@@ -12,7 +12,6 @@ pkgbase = intel-media-server-studio
 	conflicts = intel-opencl
 	conflicts = intel-opencl-runtime
 	conflicts = intel-media-sdk
-	conflicts = intel-media-sdk-git
 	options = !strip
 	options = staticlibs
 	source = http://registrationcenter-download.intel.com/akdlm/irc_nas/vcp/12841/MediaServerStudioEssentials2018R1.tar.gz
