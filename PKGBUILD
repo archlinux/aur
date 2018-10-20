@@ -2,7 +2,7 @@
 
 pkgname=yubikey-oath-dmenu
 pkgver=0.7.0
-pkgrel=1
+pkgrel=3
 pkgdesc="dmenu interface for getting OATH codes from a YubiKey"
 url="https://github.com/emlun/yubikey-oath-dmenu"
 license=('GPL3')
