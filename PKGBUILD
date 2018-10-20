@@ -23,9 +23,9 @@ sha256sums=(
  
 package_libc++-rpm() {
   pkgdesc='LLVM C++ standard library. (from Fedora rawhide)'
-  depends=("libc++abi=${pkgver}-${pkgrel}")
+  depends=("libc++abi-rpm=${pkgver}-${pkgrel}")
   conflicts=('libc++')
-  provices=('libc++')
+  provides=("libc++=${pkgver}-${pkgrel}")
   cd "${pkgdir}"
   bsdtar -x -p -f "${srcdir}/libcxx-$pkgver-$pkgrel.fc30.$arch.rpm"
   bsdtar -x -p -f "${srcdir}/libcxx-devel-$pkgver-$pkgrel.fc30.$arch.rpm"
@@ -38,7 +38,7 @@ package_libc++-rpm() {
 package_libc++abi-rpm() {
   pkgdesc='Low level support for the LLVM C++ standard library. (from Fedora rawhide)'
   conflicts=('libc++abi')
-  provides=('libc++abi')
+  provides=("libc++abi=${pkgver}-${pkgrel}")
   cd "${pkgdir}"
   bsdtar -x -p -f "${srcdir}/libcxxabi-$pkgver-$pkgrel.fc30.$arch.rpm"
   bsdtar -x -p -f "${srcdir}/libcxxabi-devel-$pkgver-$pkgrel.fc30.$arch.rpm"
