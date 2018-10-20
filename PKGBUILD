@@ -1,16 +1,16 @@
-# Maintainer: Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=intel-gmmlib-git
-pkgver=18.3.r1.g859ed24
-pkgrel=2
+pkgver=18.3.r8.g3e602a8
+pkgrel=1
 pkgdesc='Intel Graphics Memory Management Library (git version)'
 arch=('i686' 'x86_64')
 url='https://github.com/intel/gmmlib/'
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('git' 'cmake')
-provides=('intel-gmmlib')
-conflicts=('intel-gmmlib' 'gmmlib' 'gmmlib-git')
+provides=('intel-gmmlib' 'gmmlib-git')
+conflicts=('intel-gmmlib' 'gmmlib-git')
 replaces=('gmmlib-git')
 options=('!emptydirs')
 source=("$pkgname"::'git+https://github.com/intel/gmmlib.git')
