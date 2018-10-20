@@ -2,7 +2,7 @@
 
 pkgname=kubecfg
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for managing complex enterprise Kubernetes environments as code"
 url="https://github.com/ksonnet/kubecfg"
 license=('Apache')
@@ -25,4 +25,7 @@ build() {
 
 package() {
 	install -Dm755 "$srcdir/src/github.com/ksonnet/kubecfg/kubecfg" -t "$pkgdir/usr/bin"
+
+	"$pkgdir/usr/bin/kubecfg" completion --shell bash | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/kubecfg"
+	"$pkgdir/usr/bin/kubecfg" completion --shell zsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_kubecfg"
 }
