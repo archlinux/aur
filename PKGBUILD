@@ -2,7 +2,7 @@
 
 pkgname=yubikey-oath-dmenu
 pkgver=0.7.0
-pkgrel=2
+pkgrel=1
 pkgdesc="dmenu interface for getting OATH codes from a YubiKey"
 url="https://github.com/emlun/yubikey-oath-dmenu"
 license=('GPL3')
@@ -13,15 +13,15 @@ optdepends=(
   'xdotool: Type code instead of copying to clipboard'
 )
 source=(
-  "${pkgname}-${pkgver}.py::https://github.com/emlun/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.py"
-  "${pkgname}-${pkgver}.py.sig::https://github.com/emlun/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.py.sig"
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/emlun/${pkgname}/archive/v${pkgver}.tar.gz"
+  "${pkgname}-${pkgver}.tar.gz.sig::https://github.com/emlun/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.sig"
 )
 validpgpkeys=('EB8627616EC1971DF076F2FF2BF5FD22FCABDE73')
-sha256sums=('324f639b4c98c12461d8ed6752bf1f8e2a894344372bd237ea3bedbab64789c8'
+sha256sums=('b0cc139f411211c3712e52af176359e6ee8adaa8658f26db5d7caa86da46e158'
             'SKIP')
 
 package() {
-  install -D -m755 "${srcdir}/${pkgname}-${pkgver}.py" "${pkgdir}/usr/bin/${pkgname}"
+  install -D -m755 "${srcdir}/${pkgname}-${pkgver}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
 
 # vim:set ts=2 sw=2 sts=2 et
