@@ -3,7 +3,7 @@
 
 pkgname=python-aioopenssl
 _name=${pkgname#python-}
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='An asyncio Transport that uses PyOpenSSL instead of the built-in ssl module.'
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python'
          'python-pyopenssl')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('baa1e7f6e41882b8b3ea8ead8146352e9c4329accb529125868bd36d61aa7c1f')
+sha256sums=('eb3ebc064aa263de1794fac78470d14129f36851aaa1e3eb93fa37bcbbe128ec')
 
 build() {
   cd "$_name-$pkgver"
