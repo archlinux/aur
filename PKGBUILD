@@ -4,10 +4,10 @@
 _pkgname=juffed
 pkgname=${_pkgname}-qt5-git
 pkgver=0.10.94.g058ed92
-pkgrel=1
+pkgrel=2
 pkgdesc='A lightweight cross-platform text editor. Development version.'
 arch=('i686' 'x86_64')
-url='https://github.com/q4a/juffed'
+url='https://github.com/gdelmondo/juffed'
 license=('GPL2')
 depends=('enca' 'qscintilla-qt5')
 makedepends=('git' 'cmake' 'qt5-tools')
@@ -31,7 +31,7 @@ pkgver() {
 prepare() {
 	# Fix QScintilla
 	cd ${_pkgname}
-	patch -Np1 < "$srcdir"//fix_qscintilla.patch
+	patch -Np1 < "$srcdir"/fix_qscintilla.patch
 	# Fix QScintilla lexer
 	# https://github.com/Mezomish/juffed/pull/102
 	patch -Np1 < "$srcdir"/fix_qscintilla_lexer.patch
@@ -45,7 +45,6 @@ build() {
 	cmake ../${_pkgname} \
 		-DCMAKE_INSTALL_PREFIX:PATH=/usr \
 		-DLIB_INSTALL_DIR:PATH=/usr/lib \
-		-DUSE_QT5:BOOL=ON \
 		-DUSE_ENCA:BOOL=ON
 	make
 }
