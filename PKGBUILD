@@ -4,8 +4,8 @@
 
 pkgname=wee-slack-git
 pkgver=2.1.1.r23.g469535e
-pkgrel=1
-pkgdesc="Store work-in-progress commits on the remote without cluttering the commit history"
+pkgrel=2
+pkgdesc="A WeeChat plugin for slack"
 arch=('any')
 url="https://github.com/wee-slack/${pkgname%-git}"
 license=('MIT')
