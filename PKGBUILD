@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-power-manager-git
-pkgver=20180825.60.970e91e
+pkgver=20181016.69.4bcec5d
 pkgrel=1
 pkgdesc="Manages the power consumption settings of Liri Shell"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
