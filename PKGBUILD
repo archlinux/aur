@@ -8,47 +8,37 @@
 # remain until the packages are removed. "1" to enable.
 _lib32=0
 
+pkgbase=nvidia-full-beta-all
 pkgname=('nvidia-full-beta-all' 'nvidia-utils-full-beta-all' 'nvidia-egl-wayland-full-beta-all' 'nvidia-libgl-full-beta-all' 'opencl-nvidia-full-beta-all')
-pkgver=410.57
-pkgrel=3
+pkgver=410.66
+pkgrel=1
+pkgdesc='Full NVIDIA driver package for all kernels on the system (drivers, utilities and libraries) (beta version)'
 arch=('x86_64')
-url="http://www.nvidia.com/"
+url='http://www.nvidia.com/'
 license=('custom:NVIDIA')
 makedepends=('linux-headers')
 options=('!strip')
 
-# Installer name
-_pkg="NVIDIA-Linux-x86_64-$pkgver-no-compat32"
-if [[ $_lib32 = 1 ]] || pacman -Q lib32-nvidia-utils-full-beta-all &>/dev/null; then
-  pkgname+=('lib32-nvidia-utils-full-beta-all' 'lib32-nvidia-libgl-full-beta-all' 'lib32-opencl-nvidia-full-beta-all')
-  _pkg="NVIDIA-Linux-x86_64-$pkgver"
+# installer name
+_pkg="NVIDIA-Linux-${CARCH}-${pkgver}-no-compat32"
+if [ "$_lib32" = '1' ] || pacman -Q lib32-nvidia-utils-full-beta-all >/dev/null
+then
+    pkgname+=('lib32-nvidia-utils-full-beta-all' 'lib32-nvidia-libgl-full-beta-all' 'lib32-opencl-nvidia-full-beta-all')
+    _pkg="NVIDIA-Linux-${CARCH}-${pkgver}"
 fi
 
-# Source
-source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run"
+# source
+source=("http://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run"
         'nvidia-drm-outputclass.conf'
-        'nvidia-utils-full-beta-all.sysusers')
-sha256sums=('1ad40d83ec712843c1b5593949abefc9093399fb26a418ae9a571fbd1d9b228e'
+        'nvidia-utils-full-beta-all.sysusers'
+        'linux-4.16.patch')
+sha256sums=('c4e297ed93341841c7ccb32569c179baecbb6ea253215cbc3668a51d729227cd'
             '089d6dc247c9091b320c418b0d91ae6adda65e170934d178cdd4e9bd0785b182'
-            'd8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167')
-[[ $_pkg = NVIDIA-Linux-x86_64-$pkgver ]] && sha256sums[0]='5c3c2e1fef0615c0002946c586c815a77676f4683304cc17d5bf323e7626a320'
+            'd8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167'
+            '622ac792ec200b2239cb663c0010392118b78c9904973d82cd261165c16d6385')
+[ "$_pkg" = "NVIDIA-Linux-${CARCH}-${pkgver}" ] && sha256sums[0]='8fb6ad857fa9a93307adf3f44f5decddd0bf8587a7ad66c6bfb33e07e4feb217'
 
-_eglver='1.1.0'
-
-# Patches
-## restore phys_to_dma support
-## https://bugs.archlinux.org/task/58074
-source+=('linux-4.16.patch')
-sha256sums+=('622ac792ec200b2239cb663c0010392118b78c9904973d82cd261165c16d6385')
-
-# Auto-add *.patch files from $startdir to source=()
-for _patch in $(find "$startdir" -maxdepth 1 -name '*.patch' -printf "%f\n"); do
-  # Don't duplicate already listed ones
-  if [[ ! " ${source[@]} " =~ " $_patch " ]]; then  # https://stackoverflow.com/a/15394738/1821548
-    source+=("$_patch")
-    sha256sums+=('SKIP')
-  fi
-done
+_eglver=1.1.0
 
 _create_links() {
   # create missing soname links
@@ -64,53 +54,43 @@ _create_links() {
 }
 
 prepare() {
-  # Remove previous builds
-  [[ -d $_pkg ]] && rm -rf $_pkg
-
-  # Extract
-  msg2 "Self-Extracting $_pkg.run..."
-  sh $_pkg.run -x
-  cd $_pkg
-  bsdtar -xf nvidia-persistenced-init.tar.bz2
-  
-  sed -i 's/__NV_VK_ICD__/libGLX_nvidia.so.0/' nvidia_icd.json.template
-
-  # Loop kernels (e.g. 4.18.3-arch1-1-ARCH)
-  for _kernel in $(cat /usr/lib/modules/extramodules-*/version); do
-    # Use separate source directories
-    cp -r kernel kernel-$_kernel
-
-    # Loop patches (e.g. linux-4.18.patch, lol.patch, ...)
-    for _patch in $(printf -- '%s\n' ${source[@]} | grep .patch); do  # https://stackoverflow.com/a/21058239/1821548
-      # Get patch version (if any) from filename
-      _patchver=$(echo $_patch | grep -Po "\d+\.\d+")
-
-      # Cd in place
-      cd kernel-$_kernel
-
-      # Compare versions
-      if (( $(vercmp "$_kernel" "$_patchver") >= 0 )); then
-        msg2 "Applying $_patch for $_kernel..."
-        patch -p2 -i "$srcdir"/$_patch
-      else
-        msg2 "Skipping $_patch..."  # List these, instead of ignoring silently
-      fi
-
-      # Return
-      cd ..
+    local _kernel
+    
+    # extract the source file
+    [ -d "$_pkg" ] && rm -rf "$_pkg"
+    printf '%s\n' "  -> Self-Extracting ${_pkg}.run..."
+    sh "${_pkg}.run" --extract-only
+    cd "${_pkg}"
+    bsdtar -xf nvidia-persistenced-init.tar.bz2
+    
+    sed -i 's/__NV_VK_ICD__/libGLX_nvidia.so.0/' nvidia_icd.json.template
+    
+    # create a build directory for each installed kernel
+    for _kernel in $(cat /usr/lib/modules/extramodules-*/version)
+    do
+        cp -a kernel "kernel-${_kernel}"
+        
+        printf '%s\n' "  -> Applying patch(es) for kernel ${_kernel}..."
+        cd "kernel-${_kernel}"
+        
+        # restore phys_to_dma support
+        # https://bugs.archlinux.org/task/58074
+        patch -Np2 -i "${srcdir}/linux-4.16.patch"
+        
+        cd ..
     done
-  done
 }
 
 build() {
-  # Build for all kernels
-  for _kernel in $(cat /usr/lib/modules/extramodules-*/version); do
-    cd "$srcdir"/$_pkg/kernel-$_kernel
-
-    # Build module
-    msg2 "Building Nvidia module for $_kernel..."
-    make SYSSRC=/usr/lib/modules/$_kernel/build module
-  done
+    local _kernel
+    
+    for _kernel in $(cat /usr/lib/modules/extramodules-*/version)
+    do
+        cd "${srcdir}/${_pkg}/kernel-${_kernel}"
+        
+        printf '%s\n' "  -> Building Nvidia module for ${_kernel}..."
+        make SYSSRC="/usr/lib/modules/${_kernel}/build" module
+    done
 }
 
 package_opencl-nvidia-full-beta-all() {
@@ -129,9 +109,8 @@ package_opencl-nvidia-full-beta-all() {
   # create missing soname links
   _create_links
 
-  # License (link)
-  install -d "$pkgdir"/usr/share/licenses/
-  ln -s nvidia-utils/ "$pkgdir"/usr/share/licenses/opencl-nvidia
+  # license
+  install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 package_nvidia-libgl-full-beta-all() {
@@ -159,9 +138,8 @@ package_nvidia-libgl-full-beta-all() {
   ln -s /usr/lib/nvidia/libGLESv2.so.2.1.0 "$pkgdir"/usr/lib/libGLESv2.so.2
   ln -s libGLESv2.so.2 "$pkgdir"/usr/lib/libGLESv2.so
 
-  # License (link)
-  install -d "$pkgdir"/usr/share/licenses/
-  ln -s nvidia-utils/ "$pkgdir"/usr/share/licenses/nvidia-libgl
+  # license
+  install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 package_nvidia-egl-wayland-full-beta-all() {
@@ -174,6 +152,9 @@ package_nvidia-egl-wayland-full-beta-all() {
   install -D -m755 "libnvidia-egl-wayland.so.${_eglver}" -t "$pkgdir"/usr/lib
   ln -s "libnvidia-egl-wayland.so.${_eglver}" "${pkgdir}/usr/lib/libnvidia-egl-wayland.so"
   ln -s "libnvidia-egl-wayland.so.${_eglver}" "${pkgdir}/usr/lib/libnvidia-egl-wayland.so.1"
+  
+  # license
+  install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 package_nvidia-utils-full-beta-all() {
@@ -328,8 +309,8 @@ package_nvidia-utils-full-beta-all() {
   cp -r html "$pkgdir"/usr/share/doc/nvidia/
   ln -s nvidia/ "$pkgdir"/usr/share/doc/nvidia-utils
 
-  # License
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/nvidia-utils/LICENSE
+  # license
+  install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
   # Distro-specific files must be installed in /usr/share/X11/xorg.conf.d
   install -D -m644 "${srcdir}/nvidia-drm-outputclass.conf" "${pkgdir}/usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf"
@@ -339,51 +320,25 @@ package_nvidia-utils-full-beta-all() {
 }
 
 package_nvidia-full-beta-all() {
-  pkgdesc="Full NVIDIA drivers' package for all kernels on the system (drivers and shared utilities and libraries) (beta version)"
-  depends=("nvidia-utils-full-beta-all>=$pkgver" 'libgl')
-  provides=("nvidia=$pkgver")
-  conflicts=('nvidia-96xx' 'nvidia-173xx' 'nvidia')
-  install=$pkgname.install
-
-  # Install for all kernels
-  for _path in $(find /usr/lib/modules/extramodules-*/version -printf '%h\n'); do
-    _extramodules=$(cat $_path/version)
-
-    # Nvidia kernel module; provides low-level access to your NVIDIA hardware for the other components. Generally
-    # loaded into the kernel when the X server is started, to be used by the X driver and OpenGL. Consists of two
-    # pieces: the binary-only core, and a kernel interface that must be compiled specifically for your kernel version,
-    # because the Linux kernel doesn't have a consistent binary interface like the X server.
-    install -Dm644 $_pkg/kernel-$_extramodules/nvidia.ko \
-           "$pkgdir"/$_path/nvidia.ko
-
-    # NVIDIA Unified Memory kernel module; provides functionality for sharing memory between the CPU and GPU in
-    # CUDA programs. Generally loaded into the kernel when a CUDA program is started, and used by the CUDA
-    # driver on supported platforms: http://devblogs.nvidia.com/parallelforall/unified-memory-in-cuda-6/
-    install -Dm644 $_pkg/kernel-$_extramodules/nvidia-uvm.ko \
-           "$pkgdir"/$_path/nvidia-uvm.ko
-
-    # Kernel module responsible for programming the display engine of the GPU. User-mode NVIDIA driver components
-    # such as the NVIDIA X driver, OpenGL driver, and VDPAU driver communicate with nvidia-modeset.ko through the
-    # /dev/nvidia-modeset device file.
-    install -Dm644 $_pkg/kernel-$_extramodules/nvidia-modeset.ko \
-           "$pkgdir"/$_path/nvidia-modeset.ko
-
-    # NVIDIA DRM kernel module; registers as a DRM driver to provide GEM and PRIME DRM capabilities
-    # for atomic DRM KMS and graphics display offload on Optimus notebooks:
-    # https://devtalk.nvidia.com/default/topic/925605/linux/nvidia-364-12-release-vulkan-glvnd-drm-kms-and-eglstreams/
-    install -Dm644 $_pkg/kernel-$_extramodules/nvidia-drm.ko \
-           "$pkgdir"/$_path/nvidia-drm.ko
-
-    # Compress
-    gzip "$pkgdir"/$_path/nvidia*.ko
-  done
-
-  # Blacklist Nouveau
-  install -d "$pkgdir"/usr/lib/modprobe.d/
-  echo "blacklist nouveau" >> "$pkgdir"/usr/lib/modprobe.d/nvidia.conf
-
-  # License
-  install -Dm644 $_pkg/LICENSE "$pkgdir"/usr/share/licenses/nvidia/LICENSE
+    depends=("nvidia-utils-full-beta-all>=${pkgver}" 'libgl')
+    provides=("nvidia=${pkgver}" "nvidia-beta=${pkgver}")
+    conflicts=('nvidia')
+    
+    local _dir
+    local _kernel
+    
+    for _dir in $(find /usr/lib/modules -maxdepth 1 -type d -name 'extramodules-*')
+    do
+        _kernel="$(cat "${_dir}/version")"
+        
+        install -D -m644 "${_pkg}/kernel-${_kernel}/"nvidia{,-drm,-modeset,-uvm}.ko -t "${pkgdir}/${_dir}"
+        
+        gzip -n "${pkgdir}/${_dir}/"*.ko
+    done
+    
+    printf '%s\n' 'blacklist nouveau' | install -D -m644 /dev/stdin "${pkgdir}/usr/lib/modprobe.d/nvidia.conf"
+    
+    install -D -m644 "${_pkg}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 package_lib32-opencl-nvidia-full-beta-all() {
@@ -401,9 +356,8 @@ package_lib32-opencl-nvidia-full-beta-all() {
   # create missing soname links
   _create_links
 
-  # License (link)
-  install -d "$pkgdir"/usr/share/licenses/
-  ln -s nvidia-utils/ "$pkgdir"/usr/share/licenses/lib32-opencl-nvidia
+  # license
+  install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 package_lib32-nvidia-libgl-full-beta-all() {
@@ -432,9 +386,8 @@ package_lib32-nvidia-libgl-full-beta-all() {
   ln -s /usr/lib32/nvidia/libGLESv2.so.2.1.0 "$pkgdir"/usr/lib32/libGLESv2.so.2
   ln -s libGLESv2.so.2 "$pkgdir"/usr/lib32/libGLESv2.so
 
-  # License (link)
-  install -d "$pkgdir"/usr/share/licenses/
-  ln -s nvidia-utils/ "$pkgdir"/usr/share/licenses/lib32-nvidia-libgl
+  # license
+  install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 package_lib32-nvidia-utils-full-beta-all() {
@@ -500,7 +453,6 @@ package_lib32-nvidia-utils-full-beta-all() {
   # create missing soname links
   _create_links
 
-  # License (link)
-  install -d "$pkgdir"/usr/share/licenses/
-  ln -s nvidia-utils/ "$pkgdir"/usr/share/licenses/lib32-nvidia-utils
+  # license
+  install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
