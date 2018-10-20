@@ -1,7 +1,7 @@
 # Maintainer: mkdong <mingkaidong at gmail dot com>
 pkgname=luyten-bin
 _pkgname=luyten
-pkgver=0.4.9
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="An Open Source Java Decompiler Gui for Procyon"
 arch=(any)
@@ -13,7 +13,7 @@ source=("${_pkgname}.sh"
         "https://github.com/deathmarine/Luyten/releases/download/v${pkgver}/${_pkgname}-${pkgver}.jar")
 sha1sums=("d76ce0d7a116b2fa04ca33032b46f896091958aa"
           "d092f2a3adb62ffa5685bb4a32cffa49414b5182"
-          "105cb1b33cdf98ba43ea7e62f8ae1c77a4d2d69d")
+          "db16e22b0b4e9efb1d88c298863b55a85965bbd3")
 noextract=("${_pkgname}-${pkgver}.jar")
 
 
