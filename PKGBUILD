@@ -4,7 +4,7 @@
 _pkgbase=gnome-software
 pkgbase=gnome-software-snap
 pkgname=(gnome-software-snap gnome-software-packagekit-plugin-snap)
-pkgver=3.30.2
+pkgver=3.30.3
 _pkgver=3.30
 pkgrel=1
 pkgdesc="GNOME Software Tools with built in snap support"
@@ -12,9 +12,9 @@ url="https://download.gnome.org/sources/gnome-software/"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(appstream-glib gnome-desktop libpackagekit-glib flatpak fwupd ostree
-             docbook-xsl git gobject-introspection gspell gtk-doc meson valgrind snapd-glib)
+             docbook-xsl git gobject-introspection gspell gtk-doc meson valgrind snapd-glib liboauth)
 source=("http://download.gnome.org/sources/$_pkgbase/$_pkgver/$_pkgbase-$pkgver.tar.xz")
-sha256sums=('af1bf97733e0f35e9131ab5b16ff3abdd70b69f6bffa96951739f61369fe37a7')
+sha256sums=('c3b157a02e8291fa20cc21e6886933476f3b2586973f89f7c3ed7147ee53e4e4')
 
 build() {
   arch-meson $_pkgbase-$pkgver build \
@@ -33,7 +33,7 @@ package_gnome-software-snap() {
   groups=('gnome')
   conflicts=(gnome-software)
   provides=(gnome-software)
-  depends=(appstream-glib gnome-desktop gsettings-desktop-schemas gspell libpackagekit-glib gnome-software-packagekit-plugin-snap snapd)
+  depends=(appstream-glib gnome-desktop gsettings-desktop-schemas gspell libpackagekit-glib gnome-software-packagekit-plugin-snap snapd liboauth)
   optdepends=('flatpak: Flatpak support plugin'
               'fwupd: fwupd support plugin'
               'ostree: OSTree support plugin')

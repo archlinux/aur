@@ -1,6 +1,6 @@
 pkgbase = gnome-software-snap
 	pkgdesc = GNOME Software Tools with built in snap support
-	pkgver = 3.30.2
+	pkgver = 3.30.3
 	pkgrel = 1
 	url = https://download.gnome.org/sources/gnome-software/
 	arch = x86_64
@@ -19,8 +19,9 @@ pkgbase = gnome-software-snap
 	makedepends = meson
 	makedepends = valgrind
 	makedepends = snapd-glib
-	source = http://download.gnome.org/sources/gnome-software/3.30/gnome-software-3.30.2.tar.xz
-	sha256sums = af1bf97733e0f35e9131ab5b16ff3abdd70b69f6bffa96951739f61369fe37a7
+	makedepends = liboauth
+	source = http://download.gnome.org/sources/gnome-software/3.30/gnome-software-3.30.3.tar.xz
+	sha256sums = c3b157a02e8291fa20cc21e6886933476f3b2586973f89f7c3ed7147ee53e4e4
 
 pkgname = gnome-software-snap
 	groups = gnome
@@ -31,6 +32,7 @@ pkgname = gnome-software-snap
 	depends = libpackagekit-glib
 	depends = gnome-software-packagekit-plugin-snap
 	depends = snapd
+	depends = liboauth
 	optdepends = flatpak: Flatpak support plugin
 	optdepends = fwupd: fwupd support plugin
 	optdepends = ostree: OSTree support plugin
