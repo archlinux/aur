@@ -4,15 +4,15 @@
 
 pkgname=libdaq-nfqueue
 pkgver=2.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Data Acquisition library for packet I/O.'
 arch=('i686' 'x86_64')
-url='http://www.snort.org/'
+url='https://www.snort.org/'
 license=('GPL')
 depends=('libpcap' 'libnetfilter_queue')
 makedepends=('ca-certificates')
-source=(http://www.snort.org/downloads/snort/daq-${pkgver}.tar.gz)
-md5sums=('2cd6da422a72c129c685fc4bb848c24c')
+source=(https://www.snort.org/downloads/snort/daq-${pkgver}.tar.gz)
+md5sums=('67b915f10c0cb2f7554686cdc9476946')
 provides=('libdaq')
 conflicts=('libdaq')
 

@@ -1,8 +1,8 @@
 pkgbase = libdaq-nfqueue
 	pkgdesc = Data Acquisition library for packet I/O.
 	pkgver = 2.0.6
-	pkgrel = 1
-	url = http://www.snort.org/
+	pkgrel = 2
+	url = https://www.snort.org/
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -11,8 +11,8 @@ pkgbase = libdaq-nfqueue
 	depends = libnetfilter_queue
 	provides = libdaq
 	conflicts = libdaq
-	source = http://www.snort.org/downloads/snort/daq-2.0.6.tar.gz
-	md5sums = 2cd6da422a72c129c685fc4bb848c24c
+	source = https://www.snort.org/downloads/snort/daq-2.0.6.tar.gz
+	md5sums = 67b915f10c0cb2f7554686cdc9476946
 
 pkgname = libdaq-nfqueue
 
