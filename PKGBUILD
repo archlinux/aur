@@ -2,11 +2,12 @@
 # Contributors: Det, Achilleas Pipinellis, speed145a, Schnouki
 
 _chromium_rel=2
+_chromium_ver=69.0.3497.100
 _launcher_ver=6
 
 pkgname=ungoogled-chromium-bin
-pkgver=69.0.3497.100
-pkgrel=6
+pkgver=${_chromium_ver}.rel${_chromium_rel}
+pkgrel=7
 pkgdesc="Modifications to Google Chromium for removing Google integration and enhancing privacy, control, and transparency (binary version)"
 arch=("x86_64")
 url="https://github.com/Eloston/ungoogled-chromium"
@@ -21,8 +22,8 @@ optdepends=("gnome-keyring: for storing passwords in GNOME keyring"
             "kwallet: for storing passwords in KWallet"
             "pepper-flash: support for Flash content"
             "chromium-widevine: for widevine content decryption module")
-source=("https://github.com/intika/ungoogled-chromium/releases/download/${pkgver}-${_chromium_rel}/ungoogled-chromium_${pkgver}-${_chromium_rel}_linux.tar.xz"
-        "chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz"
+source=("ungoogled-chromium_${_chromium_ver}-${_chromium_rel}_linux.tar.xz::https://cloud.woelkli.com/s/j7W2AyqEDWTyynW/download"
+        "chromium-launcher-${_launcher_ver}.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v${_launcher_ver}.tar.gz"
         "chromium.desktop")
 sha256sums=("da7ed55c0ef7ba74b2d365fc63b92d3eb3e0310b8b9c52855010c6620f9d1cb5"
             "04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1"
@@ -30,7 +31,7 @@ sha256sums=("da7ed55c0ef7ba74b2d365fc63b92d3eb3e0310b8b9c52855010c6620f9d1cb5"
 
 prepare() {
     cd $srcdir
-    mv ungoogled-chromium_${pkgver}-${_chromium_rel}_linux chromium
+    mv ungoogled-chromium_${_chromium_ver}-${_chromium_rel}_linux chromium
 }
 
 build() {
