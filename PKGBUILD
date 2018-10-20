@@ -13,5 +13,5 @@ md5sums=('09ff80a185e6e09e3f1b45742de2f806')
 package() {
     cd ${srcdir}
     install -dm 755 ${pkgdir}/usr/share/icons
-    cp -avr * ${pkgdir}/usr/share/icons/
+    cp -avr "Marwaita Icons"* ${pkgdir}/usr/share/icons/
 }
