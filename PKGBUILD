@@ -2,7 +2,7 @@
 # Contributor: wenLiangcan <boxeed at gmail dot com>
 pkgname=ammonite
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A cleanroom re-implementation of the Scala REPL from first principles. "
 arch=('any')
 url="https://github.com/lihaoyi/Ammonite"
