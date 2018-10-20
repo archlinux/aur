@@ -13,7 +13,9 @@ depends=('java-runtime-common'
          'java-environment-common')
 makedepends=()
 optdepends=()
-provides=('java-environment=8' "$pkgname_")
+provides=('java-runtime=8'
+          'java-environment=8'
+          "$pkgname_")
 conflicts=("$pkgname_")
 install="$pkgname.install"
 source=("https://github.com/oracle/$pkgname_/releases/download/vm-${pkgver_}/graalvm-ce-${pkgver_}-linux-amd64.tar.gz")
