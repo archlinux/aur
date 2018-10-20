@@ -1,9 +1,9 @@
-# Maintainer: Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 _llvm_branch='release_40'
 
 pkgname=intel-graphics-compiler-git
-pkgver=r732.c7dd226
+pkgver=r749.5344403
 pkgrel=1
 pkgdesc='Intel Graphics Compiler for OpenCL (git version)'
 arch=('i686' 'x86_64')
@@ -12,8 +12,7 @@ license=('MIT')
 depends=('gcc-libs' 'ncurses' 'zlib')
 makedepends=('git' 'cmake' 'clang' 'flex' 'bison' 'python2')
 provides=('intel-graphics-compiler')
-conflicts=('intel-graphics-compiler' 'compute-runtime' 'compute-runtime-git'
-           'compute-runtime-bin')
+conflicts=('intel-graphics-compiler' 'compute-runtime')
 options=('!emptydirs')
 source=('igc'::'git+https://github.com/intel/intel-graphics-compiler.git'
         'llvm_source'::"git+https://github.com/llvm-mirror/llvm#branch=${_llvm_branch}"
