@@ -7,7 +7,7 @@
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-icu
-pkgver=62.1
+pkgver=63.1
 pkgrel=1
 pkgdesc="International Components for Unicode library (mingw-w64)"
 arch=('any')
@@ -18,33 +18,52 @@ makedepends=('mingw-w64-configure')
 options=('!strip' 'staticlibs' '!buildflags')
 source=("http://download.icu-project.org/files/icu4c/${pkgver}/icu4c-${pkgver//./_}-src.tgz"
         "https://ssl.icu-project.org/files/icu4c/${pkgver}/icu4c-${pkgver//./_}-src.tgz.asc"
+        "0004-move-to-bin.mingw.patch"
+        "0007-actually-move-to-bin.mingw.patch"
         "0008-data-install-dir.mingw.patch"
+        "0009-fix-bindir-in-config.mingw.patch"
         "0010-msys-rules-for-makefiles.mingw.patch"
+        "0011-sbin-dir.mingw.patch"
         "0012-libprefix.mingw.patch"
         "0014-mingwize-pkgdata.mingw.patch"
         "0015-debug.mingw.patch"
         "0016-icu-pkgconfig.patch"
-        "0017-icu-config-versioning.patch")
-sha256sums=('3dd9868d666350dda66a6e305eecde9d479fb70b30d5b55d78a1deffb97d5aa3'
+        "0017-icu-config-versioning.patch"
+        "0021-mingw-static-libraries-without-s.patch"
+        "0022-fix-namespace.patch")
+sha256sums=('05c490b69454fce5860b7e8e2821231674af0a11d7ef2febea9a32512998cb9d'
             'SKIP'
-            '2038881890542797fe1fe9a384cf2bb6c5504b18fb26eab1368f5cb0e6f7f7af'
-            '2adfd968379888d919f0dd4e0379cef7b744ba56d98216b82372ed4cd00a2592'
-            '128c21c5dbe0364f82a88c2cefad08fb9020d940c022434ee978fb1d9e1a2fa0'
-            'ac63e11e11fb7c849fbeff0a0008a49942a1e19ffe29385aa70248614c7ffd4d'
-            'd1745b9d69729cb318cc329847160b50129621f98774a640726a7affd4b2bfd2'
-            '8ff9d33de05e34906177ba1ae7ca44c4bab246353919c50f7b201548354602b2'
-            'f9c6c5ad51a82b547ca34cbd7903c4f0db4c7f6d08867e7fd54c2bcf8ad8ae56')
-validpgpkeys=("FFA9129A180D765B7A5BEA1C9B432B27D1BA20D7")
+            '0b6f5ea91bb579f03cdfa2737719411e3207169f5921ffeea8564cf24fa46715'
+            'a32b3fae6a59599c942e5f8bc2d29416aaedca0ce2832c857ecf99eb7529cee1'
+            'f437f25a62420856ed234d2b33672b860ae00106cb5d4ccc682f5ff15176aeaf'
+            'c84fda5b32edcbf062d629bbf04c47e73e7b9620f4dae752c1c0c25f49124ca8'
+            '1cf7fd08bad22f39441213d54f0659a3046e163729aa4cd6ff393602ec22c285'
+            '4f4787caeccf70607cf0cbde0c005f05f5c6de1543265a927839122405b4054f'
+            'e7ecdafe85e18a4a4b5f29bbfde38776521a848e5b65089a2379b90e59f1592d'
+            '426f2dc16a8f12c2aa91f6b2ab0533b41efdf60c946f14e267a5868af558dc4f'
+            '0181f9ff8b7dd0a423869d8772da0a4feea64188347eb0dee7eb059aea92131c'
+            '87ebe8962f8c387714f2a697a664a0c49aed2331b988548069d0c211abc36e05'
+            '5247102df5604671c33a6e7226e5135a6b48049550861b892f0686dcefec4329'
+            'd8612f40b1731d9a94290afcf80c896184a2f15b8ae8f23b3643c64f6cabfa2f'
+            'a033641dd0456b74d136fb9441e01dafee555b140d4879853490b78a64b5a110')
+validpgpkeys=("E4098B78AFC94394F3F49AA903996C7C83F12F11")
 
 prepare() {
   cd icu
+  patch -p1 -i ../0004-move-to-bin.mingw.patch
+  patch -p1 -i ../0007-actually-move-to-bin.mingw.patch
   patch -p1 -i ../0008-data-install-dir.mingw.patch
+  patch -p1 -i ../0009-fix-bindir-in-config.mingw.patch
   patch -p1 -i ../0010-msys-rules-for-makefiles.mingw.patch
+  patch -p1 -i ../0011-sbin-dir.mingw.patch
   patch -p1 -i ../0012-libprefix.mingw.patch
   patch -p1 -i ../0014-mingwize-pkgdata.mingw.patch
   patch -p1 -i ../0015-debug.mingw.patch
   patch -p1 -i ../0016-icu-pkgconfig.patch
   patch -p1 -i ../0017-icu-config-versioning.patch
+  patch -p1 -i ../0021-mingw-static-libraries-without-s.patch
+  # https://github.com/unicode-org/icu/pull/228
+  patch -p1 -i ../0022-fix-namespace.patch
 
   cd source
   autoreconf -fi

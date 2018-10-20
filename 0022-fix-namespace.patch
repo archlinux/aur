@@ -1,0 +1,52 @@
+--- icu-orig/source/common/umutex.h	2018-10-20 10:19:05.831438700 +0800
++++ icu/source/common/umutex.h	    2018-10-20 10:19:05.831438700 +0800
+@@ -54,15 +54,19 @@
+ 
+ #include <atomic>
+ 
+-U_NAMESPACE_BEGIN
+-
+ // Export an explicit template instantiation of std::atomic<int32_t>. 
+ // When building DLLs for Windows this is required as it is used as a data member of the exported SharedObject class.
+ // See digitlst.h, pluralaffix.h, datefmt.h, and others for similar examples.
+ #if U_PF_WINDOWS <= U_PLATFORM && U_PLATFORM <= U_PF_CYGWIN
+-template struct U_COMMON_API std::atomic<int32_t>;
++  #if defined(__clang__) && __has_warning("-Winstantiation-after-specialization")
++    // Suppress the warning that the explicit instantiation after explicit specialization has no effect.
++    #pragma clang diagnostic ignored "-Winstantiation-after-specialization"
++  #endif
++template <> struct U_COMMON_API std::atomic<int32_t>;
+ #endif
+ 
++U_NAMESPACE_BEGIN
++
+ typedef std::atomic<int32_t> u_atomic_int32_t;
+ #define ATOMIC_INT32_T_INITIALIZER(val) ATOMIC_VAR_INIT(val)
+ 
+--- icu-orig/source/i18n/unicode/numberrangeformatter.h	2018-10-20 10:19:05.831438700 +0800
++++ icu/source/i18n/unicode/numberrangeformatter.h	    2018-10-20 10:19:05.831438700 +0800
+@@ -185,7 +185,13 @@
+  * (When building DLLs for Windows this is required.)
+  */
+ #if U_PF_WINDOWS <= U_PLATFORM && U_PLATFORM <= U_PF_CYGWIN && !defined(U_IN_DOXYGEN)
+-template struct U_I18N_API std::atomic<impl::NumberRangeFormatterImpl*>;
++} // namespace icu::number
++U_NAMESPACE_END
++
++template struct U_I18N_API std::atomic< U_NAMESPACE_QUALIFIER number::impl::NumberRangeFormatterImpl*>;
++
++U_NAMESPACE_BEGIN
++namespace number {  // icu::number
+ #endif
+ /** \endcond */
+ 
+--- icu-orig/source/test/intltest/numbertest.h	2018-10-20 10:19:05.831438700 +0800
++++ icu/source/test/intltest/numbertest.h	    2018-10-20 10:19:05.831438700 +0800
+@@ -10,6 +10,7 @@
+ #include "intltest.h"
+ #include "number_affixutils.h"
+ #include "numparse_stringsegment.h"
++#include "numrange_impl.h"
+ #include "unicode/locid.h"
+ #include "unicode/numberformatter.h"
+ #include "unicode/numberrangeformatter.h"
