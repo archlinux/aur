@@ -2,7 +2,7 @@
 
 
 pkgname=edi
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="EFL based IDE."
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ provides=('edi')
 #add clang as depend or optdepend
 makedepends=('meson' 'ninja')
 source=("https://github.com/Enlightenment/edi/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('a85519a75dd114cf32c4ffc6e0957bdc0f18f5a3c1d85d0c74e0f302ca68d02b')
+sha256sums=('4b605053a5737f250ab2dc46d208f2fb20d91e05fbdd8dbf64531fa509709b59')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
