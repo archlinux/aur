@@ -34,7 +34,7 @@ package() {
 	install -D -m0644 \
 		"${srcdir}/${_pkgname}-${pkgver}/igbinary.php.ini" \
 		"${pkgdir}/etc/php/conf.d/igbinary.ini"
-    install -D -m0644 \
+	install -D -m0644 \
 		"${srcdir}/${_pkgname}-${pkgver}/COPYING" \
-        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+		"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
