@@ -1,7 +1,7 @@
 pkgbase = icaclient
 	pkgdesc = Citrix Workspace App for x86_64 (64bit) Linux (ICAClient, Citrix Receiver)
 	pkgver = 18.09
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.citrix.com/products/receiver/
 	install = citrix-client.install
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = icaclient
 	depends = libjpeg6-turbo
 	depends = libsoup
 	depends = gst-plugins-base-libs
-	depends = libidn-133-compat
+	depends = libidn11
 	optdepends = xerces-c: gtk2 configuration manager
 	optdepends = webkitgtk2: gtk2 selfservice/storefront ui
 	conflicts = bin32-citrix-client
@@ -43,11 +43,11 @@ pkgbase = icaclient
 	md5sums = 1f214f6f456f59afd1a3275580f4240e
 	md5sums = 59f8e50cc0e0c399d47eb7ace1df5a32
 	md5sums = dca5a1f51449ef35f1441b900d622276
-	source_x86_64 = icaclient-x64-18.09.tar.gz::http://downloads.citrix.com/15151/linuxx64-18.9.0.6.tar.gz?__gda__=1537366758_e137266fef99062678e60c0ca8b92c11
+	source_x86_64 = icaclient-x64-18.09.tar.gz::http://downloads.citrix.com/15151/linuxx64-18.9.0.6.tar.gz?__gda__=1540008291_0f6d77bf305c6a862931d546bce76a33
 	sha256sums_x86_64 = BAA1F4EECC1612D734D1ECB876BE09416E66BD551B4197A416370392E0310525
-	source_i686 = icaclient-x86-18.09.tar.gz::http://downloads.citrix.com/15151/linuxx86-18.9.0.6.tar.gz?__gda__=1537366758_c30423563b218aecdc0e5b67fa8a873f
+	source_i686 = icaclient-x86-18.09.tar.gz::http://downloads.citrix.com/15151/linuxx86-18.9.0.6.tar.gz?__gda__=1540008291_0f88bdae01d01cd9c213c006be466827
 	sha256sums_i686 = 296BE348E047D8DE0863DBE4ED29EE2C5C06A63E048575AB3436C4BC8C822042
-	source_armv7h = icaclient-armhf-18.09.tar.gz::http://downloads.citrix.com/15151/linuxarmhf-18.9.0.6.tar.gz?__gda__=1537366758_49d980161b43fbd97d034838d302b90a
+	source_armv7h = icaclient-armhf-18.09.tar.gz::http://downloads.citrix.com/15151/linuxarmhf-18.9.0.6.tar.gz?__gda__=1540008291_334e48c6f82480987d407574a5134ad6
 	sha256sums_armv7h = 01D926CC29D0F4A1735E9ECE3E752C33AE68DFA5B96719C5563C97CAB232C0D9
 
 pkgname = icaclient
