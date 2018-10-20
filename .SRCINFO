@@ -1,6 +1,6 @@
 pkgbase = liri-networkmanager-git
 	pkgdesc = Network Manager integration for Liri
-	pkgver = 20180519.19.1202dda
+	pkgver = 20180603.32.5db4fc2
 	pkgrel = 1
 	url = https://liri.io
 	arch = i686
