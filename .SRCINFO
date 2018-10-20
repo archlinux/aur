@@ -1,6 +1,6 @@
 pkgbase = qt5-udev-git
 	pkgdesc = Qt-style wrapper for udev
-	pkgver = 20180426.37.3f58d74
+	pkgver = 20180428.50.c576094
 	pkgrel = 1
 	url = https://liri.io
 	arch = i686
