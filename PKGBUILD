@@ -13,8 +13,8 @@ depends=('qt5-tools' 'qt5-wayland' 'qt5-accountsservice-git' 'qt5-gsettings-git'
 	 'qml-xwayland-git' 'liri-eglfs-git')
 makedepends=('git' 'liri-qbs-shared-git')
 options=(debug !strip)
-conflicts=('hawaii-shell-git' 'papyros-shell-git' 'liri-shell')
-replaces=('hawaii-shell-git' 'papyros-shell-git' 'liri-shell')
+conflicts=('hawaii-shell-git' 'papyros-shell-git' 'liri-workspace-git' 'liri-wayland-git' 'liri-shell')
+replaces=('hawaii-shell-git' 'papyros-shell-git' 'liri-workspace-git' 'liri-wayland-git' 'liri-shell')
 provides=('liri-shell')
 groups=('liri-git')
 install=$pkgname.install
