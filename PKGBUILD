@@ -1,8 +1,8 @@
 # Maintainer: Emil Lundberg <emil@emlun.se>
 
 pkgname=yubikey-oath-dmenu
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.7.0
+pkgrel=1
 pkgdesc="dmenu interface for getting OATH codes from a YubiKey"
 url="https://github.com/emlun/yubikey-oath-dmenu"
 license=('GPL3')
@@ -17,7 +17,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz.sig::https://github.com/emlun/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.sig"
 )
 validpgpkeys=('EB8627616EC1971DF076F2FF2BF5FD22FCABDE73')
-sha256sums=('c51a69f641457c2792b574b86c0044bfabc2877339261e4f7ae1a0f30b912c5f'
+sha256sums=('b0cc139f411211c3712e52af176359e6ee8adaa8658f26db5d7caa86da46e158'
             'SKIP')
 
 package() {
