@@ -1,0 +1,17 @@
+pkgbase = aur-talk-git
+	pkgdesc = A script to fetch and display AUR package comments
+	pkgver = r10.8fcf558
+	pkgrel = 1
+	url = https://github.com/GermainZ/aur-talk
+	arch = any
+	license = custom:ISC
+	makedepends = git
+	depends = python-lxml
+	depends = python-html2text
+	provides = aur-talk
+	conflicts = aur-talk
+	source = git://github.com/GermainZ/aur-talk.git
+	sha256sums = SKIP
+
+pkgname = aur-talk-git
+
