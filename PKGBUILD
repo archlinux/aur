@@ -2,7 +2,7 @@
 
 pkgname=jupyterlab_launcher
 pkgver=0.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Launch an application built using JupyterLab"
 arch=(any)
 url="https://github.com/jupyterlab/jupyterlab_launcher"
