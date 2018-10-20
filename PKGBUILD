@@ -1,7 +1,7 @@
 # Maintainer: William Gathoye <william + aur at gathoye dot be>
 
 pkgname=plasma5-applets-netspeed
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc='Plasma 5 widget that displays the currently used network bandwidth'
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ source=(
     "https://github.com/dfaust/plasma-applet-netspeed-widget/archive/v${pkgver}.tar.gz"
 )
 sha512sums=(
-    '09d1ef424aa2a6675d56b7e92658546abab9cfcf24d48977efab681e2caa8ce840ad684f505ed04039e3137dff3f8b2bb1d31d2a95a43c8e2462742e79a96c0e'
+    '36e149cbf40bdec63ba6179c58ebe3ce7293ba4105df7c9512d63feba5487091add23589fbcd2a3abcda24dd39f9985036d58b3f5255f0cf4dac6077d2f641fd'
 )
 
 build() {
