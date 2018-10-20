@@ -1,5 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
+# Rebuild when Qt is updated
+
 pkgname=liri-eglfs-git
 pkgver=20181012.6.ce8c6e6
 pkgrel=1
