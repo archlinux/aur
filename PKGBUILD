@@ -1,7 +1,7 @@
 # Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
 
-pkgname=matrix-synapse-git
-pkgver=0.32.1.r1.g20ff89d6e
+pkgname=matrix-synapse-py3-git
+pkgver=0.33.8.r130.gdb5a1c059
 pkgrel=1
 
 pkgdesc="Matrix reference homeserver"
@@ -9,25 +9,26 @@ url="https://github.com/matrix-org/synapse"
 arch=('any')
 license=('Apache')
 
-depends=('python2-jsonschema' 'python2-twisted' 'python2-service-identity'
-         'python2-pyopenssl' 'python2-yaml' 'python2-pyasn1' 'python2-pynacl'
-         'python2-daemonize' 'python2-bcrypt' 'python2-frozendict'
-         'python2-pillow' 'python2-pydenticon' 'python2-ujson' 'python2-blist'
-         'python2-pysaml2' 'python2-setuptools'
-         'python2-systemd' 'python2-unpaddedbase64' 'python2-canonicaljson'
-         'python2-signedjson' 'python2-pymacaroons-pynacl'
-         'python2-service-identity' 'python2-msgpack'
-         'python2-phonenumbers' 'python2-affinity' 'python2-sortedcontainers'
-         'python2-jinja' 'python2-prometheus_client' 'python2-netaddr'
+depends=('python-jsonschema' 'python-twisted' 'python-service-identity'
+         'python-pyopenssl' 'python-yaml' 'python-pyasn1' 'python-pynacl'
+         'python-daemonize' 'python-bcrypt' 'python-frozendict'
+         'python-pillow' 'python-pydenticon' 'python-ujson' 'python-blist'
+         'python-pysaml2' 'python-setuptools'
+         'python-systemd' 'python-unpaddedbase64' 'python-canonicaljson'
+         'python-signedjson' 'python-pymacaroons-pynacl'
+         'python-service-identity' 'python-msgpack'
+         'python-phonenumbers' 'python-sortedcontainers'
+         'python-jinja' 'python-prometheus_client' 'python-netaddr'
+         'python-treq' 'python-psutil'
          'systemd')
-makedepends=('python2-mock' 'git')
-optdepends=('python2-psycopg2: PostgreSQL support (instead of built-in SQLite)'
-            'python2-netaddr: URL previewing'
-            'python2-jinja: e-mail notifications'
-            'python2-bleach: e-mail notifications'
-            'python2-matrix-synapse-ldap3: LDAP support'
-            'python2-psutil: metrics'
-	    'python2-matrix-angular-sdk-git: built-in web client (UNMAINTAINED)')
+makedepends=('python-mock' 'git')
+optdepends=('python-psycopg2: PostgreSQL support (instead of built-in SQLite)'
+            'python-netaddr: URL previewing'
+            'python-jinja: e-mail notifications'
+            'python-bleach: e-mail notifications'
+            'python-matrix-synapse-ldap3: LDAP support'
+            'python-psutil: metrics'
+	    'python-matrix-angular-sdk-git: built-in web client (UNMAINTAINED)')
 
 source=("git://github.com/matrix-org/synapse.git#branch=develop"
         'sysusers-synapse.conf')
@@ -52,15 +53,15 @@ pkgver() {
 
 build() {
 	cd synapse
-	python2 setup.py build 
+	python setup.py build 
 }
 
 package() {
 	cd synapse
-	python2 setup.py install --root "${pkgdir}" --optimize=1 --skip-build
+	python3 setup.py install --root "${pkgdir}" --optimize=1 --skip-build
 
-	for file in "${pkgdir}/usr/lib/python2.7/site-packages/synapse"/{app,push}/*.py; do
-		sed -re 's|env python$|&2.7|' -i "${file}"
+	for file in "${pkgdir}"/usr/lib/python3.*/site-packages/synapse/{app,push}/*.py; do
+		sed -re 's|env python$|&3|' -i "${file}"
 	done
 
 	install -dm755 -o 198 -g 198 "$pkgdir"/etc/synapse
