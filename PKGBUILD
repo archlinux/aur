@@ -47,7 +47,8 @@ build() {
     -DSHADERC_SKIP_TESTS=on \
     -DSKIP_GLSLANG_INSTALL=on \
     -DSKIP_SPIRV_TOOLS_INSTALL=on \
-    -DPYTHON_EXECUTABLE="$(which python2)" \
+    -DPYTHON_EXECUTABLE=/usr/bin/python2 \
+    -DPYTHON_EXE=/usr/bin/python2 \
     -GNinja
 
   ninja
