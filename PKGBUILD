@@ -3,7 +3,7 @@
 
 pkgname=rainlendar-pro
 pkgver=2.14.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A desktop Calendar, ToDo list and Event list"
 arch=('i686' 'x86_64')
 url="http://www.rainlendar.net/"
@@ -11,7 +11,10 @@ license=('custom')
 depends=('cairo' 'libsm' 'expat>=1.95.8' 'libstdc++5' 'libpng12' 'openssl' 'librtmp0'
 	# requirements on the old enchant library
 	'enchant1.6'
-	'webkitgtk2')
+	'webkitgtk2'
+	# libidn won't cut it
+	'libidn11'
+)
 provides=('rainlendar2')
 conflicts=('rainlendar-beta' 'rainlendar-beta-unstable' 'rainlendar-lite')
 
