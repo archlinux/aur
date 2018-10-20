@@ -6,7 +6,7 @@
 pkgbase=python-sphinx
 pkgname=('python-sphinx' 'python2-sphinx')
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 
 arch=('any')
 url='http://www.sphinx-doc.org/'
@@ -50,14 +50,21 @@ checkdepends=(
   'imagemagick' 'librsvg'
 )
 
-source=("https://pypi.org/packages/source/S/Sphinx/Sphinx-$pkgver.tar.gz"{,.asc})
+source=("https://pypi.org/packages/source/S/Sphinx/Sphinx-$pkgver.tar.gz"{,.asc}
+        sphinx-graphviz.patch::"https://patch-diff.githubusercontent.com/raw/sphinx-doc/sphinx/pull/5549.patch")
 
 validpgpkeys=('8A11B79A5D0D749A66F0A030102C2C17498D6B9E'
               'E9BEABB07E7B9CC3F56E62C91425F8CE5EBA0E07')
 sha512sums=('971a478ccd0f77e7e9bf8548a31805140d2d757f237493e63a3046309683b1f6ae4f943f0b66cc8e00c3917a40c1c8e4cd2ec5133ff7ca565584b058bab5e677'
-            'SKIP')
+            'SKIP'
+            '3f690a4b96ea32694600a83482fee4753c6ee128c0599d4ef2d227b02263f762110cad414a2ea992439d434bcaba7acd259843c17922514295852f2abe67e0d1')
 
 prepare() {
+  # backport sagemath-doc build fix
+  pushd Sphinx-$pkgver
+    patch -p1 -i ../sphinx-graphviz.patch
+  popd
+
   # souce duplication is required because makefile modify source code
   # setyp.py --build tricks don't works well
   cp -a Sphinx-$pkgver Sphinx-${pkgver}2
