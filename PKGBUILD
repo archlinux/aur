@@ -16,7 +16,7 @@ source=("https://github.com/lirios/${pkgname}/releases/download/v${pkgver}/${pkg
 sha256sums=('2e5c5d2fd9ccb2d6cd82f8981e4e43371101c7271f4d6db1865988483e32bbb0')
 
 build() {
-	cd ${srcdir}/${_gitname}
+	cd ${pkgname}-${pkgver}
 	qbs setup-toolchains --type gcc /usr/bin/g++ gcc
 	qbs setup-qt /usr/bin/qmake-qt5 qt5
 	qbs config profiles.qt5.baseProfile gcc
@@ -27,6 +27,6 @@ build() {
 }
 
 package() {
-	cd ${srcdir}/${_gitname}
+	cd ${pkgname}-${pkgver}
 	qbs install -d build --no-build -v --install-root $pkgdir profile:qt5
 }
