@@ -51,13 +51,12 @@ build() {
   # CMake + Vala are not swayed by VALAFLAGS to build with PIC. Need to find a different method.
   #-DVALAFLAGS="$(for f in $(echo $CFLAGS $CXXFLAGS $LDFLAGS | tr ' ' '\n'); do echo -X "\"$f\""; done | xargs echo)" \
   #-DVALAFLAGS="-X -fPIC" \
-
   cmake "../$pkgname-$pkgver" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DHALF_BRO_INCOM_WEBKIT2=ON \
-    -DCMAKE_C_FLAGS="$CFLAGS -w" \
-    -DVALA_CFLAGS="$CFLAGS -w" \
+    -DCMAKE_C_FLAGS="$CFLAGS -fPIC -w" \
+    -DVALA_CFLAGS="$CFLAGS -fPIC -w" \
     -G Ninja
   ninja
 }
