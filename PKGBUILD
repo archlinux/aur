@@ -1,9 +1,9 @@
-# Maintainer: Thiago Kenji Okada <thiago DOT mast3r AT gmail DOT com>
+# Maintainer: Thiago Kenji Okada <thiagokokada AT gmail DOT com>
 
 _reponame='burgaur'
 pkgname="${_reponame}-git"
-pkgver=2.2
-pkgrel=2
+pkgver=2.3
+pkgrel=1
 pkgdesc='A delicious AUR helper. Made from cower.'
 arch=('any')
 url='https://github.com/m45t3r/burgaur'
@@ -32,6 +32,7 @@ package() {
   python setup.py install --root="${pkgdir}/"
   install -Dm644 burgaur.1.gz "${pkgdir}/usr/share/man/man1/burgaur.1.gz"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 bash_completion "${pkgdir}/usr/share/bash-completion/completions/burgaur"
 }
 
 # vim: ts=8 et sw=2 sts=2
