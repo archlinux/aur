@@ -42,7 +42,7 @@ cat << EOF
 
     (!) Under Wayland try using xhost prior to running the GUI applications:
 
-        xhost +local:
+        xhost si:localuser:root
 
     (!) To use system76.service, you must add "ec_sys.write_support=1" to your kernel command line
 
