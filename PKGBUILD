@@ -2,7 +2,7 @@
 # Maintainer: Francois Boulogne <fboulogne at april dot org>
 
 pkgname=python2-imageio
-pkgver=2.1.2
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="Library for reading and writing a wide range of image, video, scientific, and volumetric data formats"
 arch=('any')
@@ -11,8 +11,8 @@ license=('MIT')
 depends=('python2' 'python2-numpy' 'freeimage' 'ffmpeg' 'avbin')
 makedepends=('python2-setuptools')
 optdepends=('python2-astropy' 'simpleitk')
-source=("https://files.pythonhosted.org/packages/source/i/imageio/imageio-${pkgver}.zip")
-sha256sums=('89d7692d9f513aa21665af7de94948bc1ef110d812fa66c34bfd486590d986bb')
+source=("https://github.com/imageio/imageio/archive/v${pkgver}.zip")
+sha256sums=('ed46c4a767a798324c99e1ef677a3b3a74c733063dec84c6142b3c255243dff1')
 
 package() {
   cd "$srcdir/imageio-$pkgver"
