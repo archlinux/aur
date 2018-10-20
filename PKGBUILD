@@ -3,7 +3,7 @@
 pkgname=qml-xwayland-git
 pkgver=20180924.67.8ffd882
 pkgrel=1
-pkgdesc="QtWayland additions and QPA plugin"
+pkgdesc="XWayland support for QtQuick Wayland compositors"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://liri.io'
 license=('GPL3')
