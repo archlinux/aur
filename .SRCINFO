@@ -1,0 +1,15 @@
+pkgbase = jsonnet-bundler-git
+	pkgdesc = Jsonnet package manager (jb)
+	pkgver = r25.c28ae90
+	pkgrel = 1
+	url = https://github.com/jsonnet-bundler/jsonnet-bundler
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = go
+	optdepends = jsonnet: to be able to actually render the jsonnet packages you download
+	source = git+https://github.com/jsonnet-bundler/jsonnet-bundler.git
+	md5sums = SKIP
+
+pkgname = jsonnet-bundler-git
+
