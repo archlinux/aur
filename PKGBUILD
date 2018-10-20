@@ -9,14 +9,14 @@
 pkgname=snort-nfqueue
 _pkgname=snort
 pkgver=2.9.12
-pkgrel=1
-pkgdesc='A lightweight network intrusion detection system.'
+pkgrel=2
+pkgdesc='A lightweight network IDS / IPS with NFQUEUE and OpenAppID support.'
 arch=('i686' 'x86_64')
 url='https://www.snort.org'
 license=('GPL')
 provides=('snort')
 conflicts=('snort')
-depends=('dbus' 'libdaq-nfqueue' 'libdnet' 'libgcrypt' 'libgpg-error' 'libnetfilter_queue' 'libnghttp2' 'libnl' 'libnsl' 'libpcap' 'lz4' 'openssl' 'pcre' 'pulledpork' 'xz' 'zlib')
+depends=('dbus' 'libdaq-nfqueue' 'libdnet' 'libgcrypt' 'libgpg-error' 'libnetfilter_queue' 'libnghttp2' 'libnl' 'libnsl' 'libpcap' 'luajit' 'lz4' 'openssl' 'pcre' 'pulledpork' 'xz' 'zlib')
 makedepends=('libtirpc')
 backup=('etc/snort/snort.conf'
         'etc/snort/homenet.conf'
@@ -29,11 +29,13 @@ backup=('etc/snort/snort.conf'
 options=('!makeflags' '!libtool')
 install='snort.install'
 source=("https://www.snort.org/downloads/snort/${_pkgname}-${pkgver}.tar.gz"
+        'snort-openappid.tar.gz::https://snort.org/downloads/openappid/8373'
         'snort.logrotate'
         'snort.sysusers'
         'snort.tmpfiles'
         'snort.service')
 sha256sums=('7b02e11987c6cb4f6d79d72799ca9ad2b4bd59cc1d96bb7d6c91549f990d99d0'
+            'f8545e544191a0da07687feb00e841dc60d2839991d9d9b38d3cb7d911134f5c'
             '7fe712141f651254b8e5aa0b3b7d73622d2d1d89bf53d7a522f8c1a067938421'
             'ae3245c5de527fb487c459f2f4a9c78803ae6341e9c81b9a404277679cdee051'
             'a92c591c409fc06661865988795093b0fb0447f614ac77951dbf9b1f6a8cf139'
@@ -43,7 +45,7 @@ build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
     ./configure --prefix=/usr --sysconfdir=/etc/snort --with-libpcap-includes=/usr/include/pcap \
         --with-daq-includes=/usr/include --with-daq-libraries=/usr/lib/daq/ \
-        --enable-zlib --disable-static-daq --disable-open-appid \
+        --enable-zlib --disable-static-daq \
         CPPFLAGS="$CPPFLAGS -I/usr/include/tirpc/"
     make
 }
@@ -75,9 +77,14 @@ package() {
       -e 's#/usr/local/lib/snort_dynamicrules#/etc/snort/dynamicrules#g' \
       -e 's#/usr/lib/snort_dynamicrules#/etc/snort/dynamicrules#g' \
       -e '/^preprocessor\s\+reputation:\s/,/^\s\+blacklist\s/ s/^/#/g' \
+      -e $'/^#\s\+Reputation\s\+preprocessor/ i\\\n# OpenAppID\\\npreprocessor appid: app_detector_dir /usr/lib/openappid, \\\\\\\n   app_stats_filename appstats-unified.log, \\\\\\\n   app_stats_period 60\\\n' \
       -e $'/^#\\s*config daq:/,/^\\s*$/ {/^\\s*$/i\\\nconfig daq: nfq\\\nconfig daq_mode: inline\\\nconfig daq_dir: /usr/lib/daq\\\n#config daq_var: queue=0\n}' \
-      -e $'/^#\\s*output\\s\\+unified2:\\s/ a\\\noutput unified2: filename snort_unified.log, limit 128\\\n\\\n# alert fast\\\noutput alert_fast: alert' \
+      -e $'/^#\\s*output\\s\\+unified2:\\s/ a\\\noutput unified2: filename snort_unified.log, limit 128, appid_event_types\\\n\\\n# alert fast\\\noutput alert_fast: alert' \
       -e $'/include\\s\\+$RULE_PATH\\/local.rules/ i\\\n\\\n# fetched via pulledpork\\\ninclude $RULE_PATH/snort.rules\\\n\\\n# emergingthreats\\\n#include $RULE_PATH/emerging.conf\\\n' \
       "${pkgdir}"/etc/snort/snort.conf
     install -m644 "${pkgdir}"/etc/snort/snort.conf "${pkgdir}"/etc/snort/snort-nfqueue.conf.default
+
+    # OpenAppID files
+    install -d -m755 "${pkgdir}"/usr/lib/openappid/custom/{libs,lua,port}
+    cp -a --no-preserve=ownership -t "${pkgdir}"/usr/lib/openappid/ "${srcdir}"/odp
 }
