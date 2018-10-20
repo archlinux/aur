@@ -9,12 +9,18 @@ version=$(grep ^pkgver PKGBUILD | cut -d= -f2) || exit 1
 release=$(grep ^pkgrel PKGBUILD | cut -d= -f2) || exit 1
 arch=$(uname -m)
 
-printf "\nCreate clean build environment..."
-if [ -d src/ ] ;then rm -rf src/* ;else mkdir src/ ;fi
-
 if [ ! -f "makeself-2.4.0.run" ] ;then
+printf "\nGet makeself...\n\n"
     curl -L -O https://github.com/megastep/makeself/releases/download/release-2.4.0/makeself-2.4.0.run
 fi
+
+if [ ! -f "evelauncher-$version.tar.gz" ] ;then
+printf "\nGet evelauncher-$version.tar.gz...\n\n"
+    curl -L -O https://binaries.eveonline.com/evelauncher-$version.tar.gz
+fi
+
+printf "\nCreate clean build environment..."
+if [ -d src/ ] ;then rm -rf src/* ;else mkdir src/ ;fi
 
 chmod a+x ./makeself-2.4.0.run
 ./makeself-2.4.0.run --tar x ./makeself.sh ./makeself-header.sh 2>/dev/null
@@ -38,10 +44,6 @@ cp -f ../evelauncher.sh.in evesetup/evelauncher.sh
 cp ../setup.sh.in evesetup/setup.sh
 chmod a+x evesetup/setup.sh
 echo "done."
-
-if [ ! -r "../evelauncher-$version.tar.gz" ] ;then
-    curl -L -O https://binaries.eveonline.com/evelauncher-$version.tar.gz
-fi
 
 printf "\nExtract evelauncher-$version.tar.gz..."
 tar xf ../evelauncher-$version.tar.gz
@@ -75,7 +77,7 @@ printf "\nRepack evelauncher-$version.tar.gz..."
 cd ../
 tar czf evelauncher-$version.tar.gz evelauncher/
 mv evelauncher-$version.tar.gz evesetup/
-rm -rf  evelauncher/
+rm -rf evelauncher/
 echo "done."
 
 printf "\nBuild self-extractable archive evesetup-$version-$release-$arch.run\n\n"
@@ -83,5 +85,5 @@ printf "\nBuild self-extractable archive evesetup-$version-$release-$arch.run\n\
     "EVE Online Launcher Setup" ./setup.sh
 cd ..
 printf "\nClean up build environment..."
-rm -rf src/*
+rm -rf src/
 echo "done."

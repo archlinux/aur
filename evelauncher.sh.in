@@ -63,7 +63,8 @@ check_wine() {
 	launcher_msg "ERROR: \"Use custom Wine\" not set!"
 	exit 1
     fi
-    WINEDATE=$(ls -l --time-style=+%s $WINEPATH/wineserver | cut -d' ' -f6)
+    WINESERVER=$(readlink -f $WINEPATH/wineserver)
+    WINEDATE=$(ls -l --time-style=+%s $WINESERVER | cut -d' ' -f6)
     INSTWINE=$(cat $WINEPREFIX/.update-timestamp 2>/dev/null) || true
     if [ "x$WINEDATE" != "x$INSTWINE" ] ;then
 	if [ -x "$WINEPATH/wine" ] ;then
