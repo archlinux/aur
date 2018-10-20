@@ -2,8 +2,8 @@
 # Contributor:
 pkgname=sensu
 _pkgname=sensu-go
-pkgver=2.0.0beta4.1
-_pkgver=2.0.0-beta.4-1
+pkgver=2.0.0beta6.2
+_pkgver=2.0.0-beta.6-2
 pkgrel=1
 pkgdesc="A monitoring framework that aims to be simple, malleable and scalable."
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
