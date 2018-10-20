@@ -1,9 +1,9 @@
-# Maintainer: Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 _srcname=IntelSEAPI
 pkgname=intel-seapi
 pkgver=17.01.28
-pkgrel=4
+pkgrel=5
 pkgdesc='Intel Single Event API (Intel SEAPI)'
 arch=('i686' 'x86_64')
 url='https://github.com/intel/IntelSEAPI/'
@@ -11,8 +11,6 @@ license=('BSD' 'GPL')
 depends=('gcc-libs')
 makedepends=('python' 'cmake' 'java-environment' 'classpath')
 optdepends=('python: for using runtool modules')
-provides=('intel-ittnotify')
-conflicts=('intel-seapi-git' 'intel-ittnotify' 'intel-ittnotify-git')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/intel/IntelSEAPI/archive/${pkgver}.tar.gz"
         'intel-seapi-change-install-prefix.patch')
 sha256sums=('57020dfa8b5c1a62a3700e0c93a60011a42b6ec4b80824510aaaa830a256c76b'
@@ -37,21 +35,23 @@ build() {
 package() {
     cd "${_srcname}-${pkgver}/build_linux/${_architecture}"
     
+    local _pythonver
+    
     make DESTDIR="$pkgdir" install
     
     # library
-    mv -f "${pkgdir}/usr/bin/libIntelSEAPI${_architecture}.so" "${pkgdir}/usr/lib"
+    mv "${pkgdir}/usr/bin/libIntelSEAPI${_architecture}.so" "${pkgdir}/usr/lib"
     
     # python
-    local _pythonver="$(python --version | sed 's/^Python[[:space:]]//' | grep -o '^[0-9]*\.[0-9]*')"
+    _pythonver="$(python --version | sed 's/^Python[[:space:]]//' | grep -o '^[0-9]*\.[0-9]*')"
     mkdir -p "${pkgdir}/usr/lib/python${_pythonver}/${pkgname}"
-    mv -f "$pkgdir"/usr/runtool/* "${pkgdir}/usr/lib/python${_pythonver}/${pkgname}"
+    mv "$pkgdir"/usr/runtool/* "${pkgdir}/usr/lib/python${_pythonver}/${pkgname}"
     
     # cleanup
-    rm -rf "${pkgdir}/usr/runtool"
-    rm -f "${pkgdir}/usr/README.txt"
+    rm -r "${pkgdir}/usr/runtool"
+    rm    "${pkgdir}/usr/README.txt"
     
     # license
     cd "${srcdir}/${_srcname}-${pkgver}/ittnotify/src/ittnotify"
-    install -D -m644 LICENSE.BSD "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.BSD"
+    install -D -m644 LICENSE.BSD -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
