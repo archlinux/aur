@@ -14,7 +14,7 @@ source=(
 "https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/$arch/os/Packages/l/libcxxabi-devel-$pkgver-$pkgrel.fc30.$arch.rpm"
 )
 noextract=("${source[@]##*/}")
-sha512sums=(
+sha256sums=(
 '3726f6705ba9c6ebb2e99865a4fadcc97b695f56ec11e2613208c698df33e0f5'
 'eb619542d06b774670d2bc06b67d86ddcb3b706a1e2091fd08b9128f4b1cc0d3'
 '8575d56cc65944fc9baff708246ee8b6cb7bdc4a98b6e2108d7ec6f69828b94d'
