@@ -37,6 +37,8 @@ pkgbase = thunderbird-appmenu
 	depends = libvpx
 	depends = icu
 	optdepends = libcanberra: sound support
+	provides = thunderbird=60.2.1
+	conflicts = thunderbird
 	options = !emptydirs
 	options = !makeflags
 	source = https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.2.1/source/thunderbird-60.2.1.source.tar.xz
