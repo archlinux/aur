@@ -4,8 +4,8 @@
 # Contributor: Moritz Lipp <mlq@pwmt.org>
 
 pkgname=zathura-pdf-mupdf
-pkgver=0.3.3
-pkgrel=3
+pkgver=0.3.4
+pkgrel=1
 
 pkgdesc="PDF support for Zathura (MuPDF backend) (Supports PDF, ePub, and OpenXPS)"
 url="https://pwmt.org/projects/zathura-pdf-mupdf/"
@@ -17,20 +17,13 @@ conflicts=('zathura-pdf-poppler')
 depends=('zathura' 'jbig2dec' 'openjpeg2' 'libjpeg' 'cairo' 'desktop-file-utils' 'openssl')
 makedepends=('libmupdf' 'meson' 'ninja')
 
-source=(https://pwmt.org/projects/zathura/plugins/download/zathura-pdf-mupdf-$pkgver.tar.xz
-        0001-Explicitly-link-against-jbig2dec-openjp2-and-jpeg.patch)
+source=(https://pwmt.org/projects/zathura/plugins/download/zathura-pdf-mupdf-$pkgver.tar.xz)
 
-sha1sums=('a9165f6aec134de86d6ee5c1a2ed5f1aa8f7d0b3'
-          '3b758fa892a33dda13c799a45a0e0bed6085467c')
-
-prepare() {
-  cd zathura-pdf-mupdf-$pkgver
-  patch -p1 <"$srcdir"/0001-Explicitly-link-against-jbig2dec-openjp2-and-jpeg.patch
-}
+sha1sums=('f2adf855a67455f4dccd22c61dcf22cde4c5ae2a')
 
 build() {
   cd zathura-pdf-mupdf-$pkgver
-  arch-meson build
+  arch-meson -Dlink-external=true build
   ninja -C build
 }
 
