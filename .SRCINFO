@@ -1,22 +1,20 @@
 pkgbase = nvidia-beta-all
 	pkgdesc = NVIDIA drivers for all kernels on the system (beta)
-	pkgver = 410.57
+	pkgver = 410.66
 	pkgrel = 1
 	url = http://www.nvidia.com/
-	install = nvidia-beta-all.install
 	arch = x86_64
 	license = custom:NVIDIA
 	makedepends = linux-headers
-	depends = nvidia-utils-beta>=410.57
+	depends = nvidia-utils-beta>=410.66
 	depends = libgl
-	provides = nvidia=410.57
-	conflicts = nvidia-96xx
-	conflicts = nvidia-173xx
+	provides = nvidia=410.66
+	provides = nvidia-beta=410.66
 	conflicts = nvidia
 	options = !strip
-	source = http://us.download.nvidia.com/XFree86/Linux-x86_64/410.57/NVIDIA-Linux-x86_64-410.57-no-compat32.run
+	source = http://us.download.nvidia.com/XFree86/Linux-x86_64/410.66/NVIDIA-Linux-x86_64-410.66-no-compat32.run
 	source = linux-4.16.patch
-	sha256sums = 1ad40d83ec712843c1b5593949abefc9093399fb26a418ae9a571fbd1d9b228e
+	sha256sums = c4e297ed93341841c7ccb32569c179baecbb6ea253215cbc3668a51d729227cd
 	sha256sums = 622ac792ec200b2239cb663c0010392118b78c9904973d82cd261165c16d6385
 
 pkgname = nvidia-beta-all
