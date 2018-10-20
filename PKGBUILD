@@ -26,11 +26,6 @@ pkgver() {
 	echo "$(git log -1 --format="%cd" --date=short | tr -d '-').$(git rev-list --count HEAD).$(git log -1 --format="%h")"
 }
 
-prepare() {
-	cd ${srcdir}/${_gitname}
-	git submodule update --init
-}
-
 build() {
 	cd ${srcdir}/${_gitname}
 	qbs setup-toolchains --type gcc /usr/bin/g++ gcc
