@@ -9,26 +9,28 @@
 # Contributor: sl1pkn07 <sl1pkn07 at gmail dot com>
 
 pkgname=nvidia-beta-dkms
-pkgver=410.57
+pkgver=410.66
 pkgrel=1
 pkgdesc='NVIDIA driver sources for linux (beta version)'
 arch=('x86_64')
 url='http://www.nvidia.com/'
 license=('custom')
 depends=('dkms' "nvidia-utils-beta>=${pkgver}" 'libglvnd')
+makedepends=('linux-headers')
 optdepends=('linux-headers: build the module for Arch kernel'
             'linux-lts-headers: build the module for LTS Arch kernel')
 provides=("nvidia=${pkgver}" "nvidia-dkms=${pkgver}" "nvidia-beta=${pkgver}")
-conflicts=('nvidia' 'nvidia-dkms' 'nvidia-beta')
+conflicts=('nvidia')
 _srcname="NVIDIA-Linux-${CARCH}-${pkgver}-no-compat32"
 source=("http://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_srcname}.run"
         'linux-4.16.patch')
-sha256sums=('1ad40d83ec712843c1b5593949abefc9093399fb26a418ae9a571fbd1d9b228e'
+sha256sums=('c4e297ed93341841c7ccb32569c179baecbb6ea253215cbc3668a51d729227cd'
             '622ac792ec200b2239cb663c0010392118b78c9904973d82cd261165c16d6385')
 
 prepare() {
     # extract the source file
-    rm -rf "$_srcname"
+    [ -d "$_srcname" ] && rm -rf "$_srcname"
+    printf '%s\n' "  -> Self-Extracting ${_srcname}.run..."
     sh "${_srcname}.run" --extract-only
     
     # restore phys_to_dma support
@@ -65,7 +67,7 @@ package() {
     cp -dr --no-preserve='ownership' * "${pkgdir}/usr/src/nvidia-${pkgver}/"
     
     # blacklist nouveau driver
-    printf '%s\n' 'blacklist nouveau' > "${pkgdir}/usr/lib/modprobe.d/${pkgname}.conf"
+    printf '%s\n' 'blacklist nouveau' | install -D -m644 /dev/stdin "${pkgdir}/usr/lib/modprobe.d/nvidia.conf"
     
     # license
     cd "${srcdir}/${_srcname}"
