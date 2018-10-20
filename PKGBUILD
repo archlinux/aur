@@ -1,4 +1,4 @@
-# Maintainer: Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 # To enable the Instrumentation and Tracing Technology API (ittnotify):
 #   - install the package intel-seapi
@@ -10,21 +10,15 @@
 pkgname=intel-media-sdk
 pkgver=2018.3.0
 _srcver="$(printf '%s' "$pkgver" | sed -E 's/(^[0-9]{2})([0-9]{2})/\2/')"
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics'
 arch=('x86_64')
 url='https://github.com/Intel-Media-SDK/MediaSDK/'
 license=('MIT')
-depends=(
-    # official repositories:
-        'gcc-libs' 'libdrm' 'libva' 'wayland'
-    # AUR:
-        'intel-media-driver'
-)
-makedepends=('cmake' 'libpciaccess' 'libx11' 'libxcb' 'gtest')
+depends=('gcc-libs' 'libdrm' 'libva' 'wayland' 'intel-media-driver')
+makedepends=('cmake' 'libpciaccess' 'libx11' 'libxcb')
 provides=('libmfx')
-conflicts=('intel-media-sdk-git' 'intel-media-stack-bin' 'intel-media-server-studio')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/Intel-Media-SDK/MediaSDK/archive/intel-mediasdk-${_srcver}.tar.gz"
         'intel-media-sdk.conf'
@@ -62,6 +56,11 @@ package() {
     cd "MediaSDK-intel-mediasdk-${_srcver}/build"
     
     make DESTDIR="$pkgdir" install
+    
+    # metrics_monitor
+    install -D -m755 __bin/release/libcttmetrics.so -t "${pkgdir}/opt/intel/mediasdk/share/mfx/samples"
+    install -D -m755 __bin/release/metrics_monitor  -t "${pkgdir}/opt/intel/mediasdk/share/mfx/samples"
+    ln -s ../share/mfx/samples/libcttmetrics.so "${pkgdir}/opt/intel/mediasdk/lib64/libcttmetrics.so"
     
     # ld.so and profile configuration files
     cd "$srcdir"
