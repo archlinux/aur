@@ -3,7 +3,7 @@
 # This PKGBUILD is managed at https://github.com/sudoforge/pkgbuilds
 
 pkgname=wee-slack-git
-pkgver=2.1.1.r22.gfab34dc
+pkgver=2.1.1.r23.g469535e
 pkgrel=1
 pkgdesc="Store work-in-progress commits on the remote without cluttering the commit history"
 arch=('any')
