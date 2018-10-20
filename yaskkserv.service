@@ -1,10 +1,10 @@
 [Unit]
 Description=Yet another SKK Japanese input method dictionary server
+Requires=yaskkserv.socket
 
 [Service]
-Type=forking
 User=nobody
-ExecStart=/usr/bin/yaskkserv_hairy -p 1178 --google-japanese-input=notfound /usr/share/skk/SKK-JISYO.L.yaskkserv
+ExecStart=/usr/bin/yaskkserv_hairy --no-daemonize --google-japanese-input=notfound /usr/share/skk/SKK-JISYO.L.yaskkserv
 
 [Install]
 WantedBy=multi-user.target

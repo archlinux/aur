@@ -1,6 +1,6 @@
 # Maintainer: Kohei Suzuki <eagletmt@gmail.com>
 pkgname=yaskkserv
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Yet Another SKK Japanese input method dictionary server'
 arch=('x86_64' 'i686')
@@ -9,13 +9,13 @@ license=('GPL')
 depends=('openssl')
 makedepends=('perl' 'skk-jisyo')
 source=(http://umiushi.org/~wac/$pkgname/$pkgname-$pkgver.tar.xz
+        yaskkserv.socket
         yaskkserv.service)
-install=yaskkserv.install
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   LC_ALL=C ./configure --prefix=/usr --enable-google-japanese-input \
-    --disable-gnutls --enable-openssl
+    --disable-gnutls --enable-openssl --enable-systemd
   make
 }
 
@@ -30,9 +30,11 @@ package() {
 
   local _systemd_dir="$pkgdir/usr/lib/systemd/system"
   mkdir -p "$_systemd_dir"
+  install -m644 "$srcdir/yaskkserv.socket" "$_systemd_dir/"
   install -m644 "$srcdir/yaskkserv.service" "$_systemd_dir/"
 }
 
 # vim:set ts=2 sw=2 et:
-sha1sums=('3718f90eecb3167a4cb278ec36c6aed8c2b0687a'
-          '807a07e4dbd456ddea198505862667da563c787f')
+sha512sums=('9956a9b2fe587491b7c5f76482f13f91d1c87d445f2ff7effa5ffb68efe076f54f1c63e95b980d889963ac507ed49fa37f76f9deb239da7b7409da5be025c000'
+            '4c169aa6226963a719a5f22182203820f1bc1ed182e247aff575d0f7ee097244d959df6aaf68d0059937f155e0ad1c975281b7cc685fb08bbd4c139b57b30c09'
+            '253da9a8d9ee60abde0d1b427c7307030eef87320a6a2c695b72101a1c5127caa0887db9a5f0a2b89a17e666f58ca296d798a94511cbb35e783d7c30cf30e3dd')

@@ -1,0 +1,8 @@
+[Unit]
+PartOf=yaskkserv.service
+
+[Socket]
+ListenStream=1178
+
+[Install]
+WantedBy=sockets.target
