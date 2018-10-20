@@ -2,7 +2,7 @@
 # Contributor: John Jenkins <twodopeshaggy@gmail.com>
 
 pkgname=nnn
-pkgver=1.9
+pkgver=2.0
 pkgrel=1
 pkgdesc="The fastest terminal file manager ever written."
 arch=("i686" "x86_64")
@@ -11,7 +11,7 @@ makedepends=("pkgconf")
 url="https://github.com/jarun/nnn"
 license=('CUSTOM')
 source=("https://github.com/jarun/nnn/archive/v${pkgver//_/-}.tar.gz")
-sha256sums=('7ba298a55a579640fe0ae37f553be739957da0c826f532beac46acfb56e2d726')
+sha256sums=('0029efd3d009c197b1646d260350f3f87edca76eef3be6b81846af133d58d6a9')
 
 package() {
   pkg_loc="${pkgname}-${pkgver}"
