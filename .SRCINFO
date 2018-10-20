@@ -1,18 +1,18 @@
 pkgbase = luyten
 	pkgdesc = An Open Source Java Decompiler Gui for Procyon
-	pkgver = 0.4.9
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = https://github.com/deathmarine/Luyten
 	arch = any
 	license = Apache
 	depends = java-runtime
-	noextract = luyten-0.4.9.jar
+	noextract = luyten-0.5.3.jar
 	source = luyten.sh
 	source = luyten.desktop
-	source = https://github.com/deathmarine/Luyten/releases/download/v0.4.9/luyten-0.4.9.jar
+	source = https://github.com/deathmarine/Luyten/releases/download/v0.5.3/luyten-0.5.3.jar
 	sha1sums = d76ce0d7a116b2fa04ca33032b46f896091958aa
 	sha1sums = d092f2a3adb62ffa5685bb4a32cffa49414b5182
-	sha1sums = 105cb1b33cdf98ba43ea7e62f8ae1c77a4d2d69d
+	sha1sums = db16e22b0b4e9efb1d88c298863b55a85965bbd3
 
 pkgname = luyten
 
