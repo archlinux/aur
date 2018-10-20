@@ -28,5 +28,5 @@ package() {
 	install -D -m755 "$srcdir/$_pkgname/target/release/rustfmt" "$pkgdir/usr/bin/rustfmt"
 	install -D -m755 "$srcdir/$_pkgname/target/release/cargo-fmt" "$pkgdir/usr/bin/cargo-fmt"
 	install -D -m755 "$srcdir/$_pkgname/target/release/rustfmt-format-diff" "$pkgdir/usr/bin/rustfmt-format-diff"
-	install -D -m755 "$srcdir/$_pkgname/target/release/git-fmt" "$pkgdir/usr/bin/git-fmt"
+	install -D -m755 "$srcdir/$_pkgname/target/release/git-rustfmt" "$pkgdir/usr/bin/git-rustfmt"
 }
