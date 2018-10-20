@@ -1,7 +1,7 @@
 pkgbase = emacs-ess
 	pkgdesc = Emacs Speaks Statistics: A Universal Interface for Statistical Analysis
-	pkgver = 17.11
-	pkgrel = 2
+	pkgver = 18.10
+	pkgrel = 1
 	url = http://ess.r-project.org/
 	install = ess.install
 	arch = any
@@ -9,10 +9,8 @@ pkgbase = emacs-ess
 	makedepends = wget
 	depends = emacs
 	depends = r
-	provides = ess
-	replaces = ess
-	source = http://ess.r-project.org/downloads/ess/ess-17.11.tgz
-	md5sums = 26cbbd358334ab6d480a5dcf3b3665dd
+	source = http://ess.r-project.org/downloads/ess/ess-18.10.tgz
+	sha256sums = b9029347079af5487f0cab6ccfdbeb8da3ab2c8f3513a907666bbb9aa6893417
 
 pkgname = emacs-ess
 
