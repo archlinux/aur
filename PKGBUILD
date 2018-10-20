@@ -11,7 +11,7 @@
 
 pkgname=bcompare3
 pkgver=3.3.13.18981
-pkgrel=2
+pkgrel=3
 pkgdesc="Beyond Compare 3: Compare, sync, and merge files and folders"
 arch=('i686' 'x86_64')
 url="http://www.scootersoftware.com"
@@ -23,9 +23,8 @@ depends_x86_64=('lib32-libsm' 'lib32-libxcursor' 'lib32-libxft' 'lib32-libxinera
 source=("http://www.scootersoftware.com/bcompare-${pkgver}.tar.gz"
         "license.html"::"http://www.scootersoftware.com/shop.php?zz=kb_license")
 sha256sums=('325034adc1755846399acf99e672e5f46184a1fe24077d672edd18b7ece8c3d7'
-            'aea5e1df107528473c651aaef7ab0a60d87fa4662f9988c9dff83e05284be7d4')
+            '14ed0bce947b574815df6a2326c0bea6c1207257b49f25bd501d927c576dfc1a')
 options=('!strip') # Do not strip binaries because it breaks them down
-install="${pkgname}.install"
 conflicts=('bcompare' 'bcompare-beta')
 
 #Set up platform-specific variables
