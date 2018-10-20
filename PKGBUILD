@@ -11,7 +11,7 @@ _lib32=0
 pkgbase=nvidia-full-beta
 pkgname=('nvidia-full-beta' 'nvidia-utils-full-beta' 'nvidia-egl-wayland-full-beta' 'nvidia-libgl-full-beta' 'opencl-nvidia-full-beta')
 pkgver=410.66
-pkgrel=2
+pkgrel=3
 pkgdesc="Full NVIDIA driver package for Arch's official 'linux' package (drivers, utilities, and libraries) (beta version)"
 arch=('x86_64')
 url='http://www.nvidia.com/'
@@ -21,7 +21,7 @@ options=('!strip')
 
 # installer name
 _pkg="NVIDIA-Linux-${CARCH}-${pkgver}-no-compat32"
-if [ "$_lib32" = '1' ] || pacman -Q lib32-nvidia-utils-full-beta >/dev/null
+if [ "$_lib32" = '1' ] || pacman -Q lib32-nvidia-utils-full-beta >/dev/null 2>&1
 then
     pkgname+=('lib32-nvidia-utils-full-beta' 'lib32-nvidia-libgl-full-beta' 'lib32-opencl-nvidia-full-beta')
     _pkg="NVIDIA-Linux-${CARCH}-${pkgver}"

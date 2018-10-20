@@ -1,7 +1,7 @@
 pkgbase = nvidia-full-beta
 	pkgdesc = Full NVIDIA driver package for Arch's official 'linux' package (drivers, utilities, and libraries) (beta version)
 	pkgver = 410.66
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.nvidia.com/
 	arch = x86_64
 	license = custom:NVIDIA
