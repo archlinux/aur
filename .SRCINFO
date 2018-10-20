@@ -1,0 +1,17 @@
+pkgbase = apascan-git
+	pkgdesc = PlayStation 2 hard drive partition scanner for Linux.
+	pkgver = 1.efa05cb
+	pkgrel = 1
+	url = https://github.com/chewi/apascan
+	arch = i686
+	arch = x86_64
+	license = GPL v2
+	makedepends = git
+	makedepends = clang
+	makedepends = gcc
+	makedepends = make
+	source = apascan-git::git+https://github.com/chewi/apascan.git
+	md5sums = SKIP
+
+pkgname = apascan-git
+
