@@ -1,8 +1,8 @@
 #Maintainer: Plague-doctor <plague at privacyrequired dot com >
 
 pkgname=freetube
-pkgver=0.3.2
-pkgrel=4
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="An open source desktop YouTube player built with privacy in mind."
 arch=('x86_64')
 url="https://github.com/FreeTubeApp/FreeTube"
@@ -10,7 +10,7 @@ license=('GPL')
 options=("!strip" "staticlibs")
 source=(
     "freetube.desktop"
-    "$pkgname-$pkgver-$pkgrel.zip"::"https://github.com/FreeTubeApp/FreeTube/releases/download/v$pkgver-beta/FreeTube-linux-x64.zip"
+    "$pkgname-$pkgver-$pkgrel.zip"::"https://github.com/FreeTubeApp/FreeTube/releases/download/$pkgver/FreeTube-linux-x64.zip"
     )
 
 validpgpkeys=('A8F7858263C1E39480B731DCEAD4F103068DF8E5')
@@ -25,4 +25,4 @@ package() {
 
 
 md5sums=('28055125824ebe9e9a6ad564c776a7fe'
-         '9e8d19b4380708ede1161e2032345d79')
+         '717879249cbc0033661fbec6cbf3e07a')
