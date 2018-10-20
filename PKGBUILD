@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=kicad-rc
-_pkgver="5.0.0"
+_pkgver="5.0.1"
 pkgver=${_pkgver//-}
 pkgrel=1
 pkgdesc="Official KiCad release candidates and dev snapshots"
@@ -10,16 +10,17 @@ url="http://kicad-pcb.org/"
 license=('GPL3')
 depends=('glew' 'wxgtk' 'desktop-file-utils' 'boost-libs' 'python' 'glm' 'curl' 'swig' 'wxpython' 'oce' 'ngspice>=27' 'kicad-footprints' 'kicad-symbols' 'kicad-packages3d')
 makedepends=('cmake' 'git' 'zlib' 'mesa' 'boost')
+optdepends=('kicad-symbols' 'kicad-packages3d' 'kicad-footprints' 'kicad-templates')
 conflicts=('kicad' 'kicad-git' 'kicad-scripting-git' 'kicad-bzr')
 provides=('kicad')
 _github_project='kicad-source-mirror'
 source=("https://github.com/KiCad/${_github_project}/archive/${_pkgver}.tar.gz")
-md5sums=('a0d5b122b82c05047744a011be7de0bd')
+md5sums=('58c149bc390e7e5d8e7dffc225d69cf3')
 install=kicad.install
 
-prepare() {
-  sed -i -e 's|boost/uuid/sha1.hpp|boost/uuid/detail/sha1.hpp|g' kicad-source-mirror-5.0.0/3d-viewer/3d_cache/3d_cache.cpp
-}
+#prepare() {
+  #sed -i -e 's|boost/uuid/sha1.hpp|boost/uuid/detail/sha1.hpp|g' kicad-source-mirror-5.0.0/3d-viewer/3d_cache/3d_cache.cpp
+#}
 
 build() {
   cd "${srcdir}/${_github_project}-${_pkgver}"
