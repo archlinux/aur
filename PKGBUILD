@@ -6,7 +6,7 @@
 
 _basename=x265
 pkgname=lib32-x265
-pkgver=2.8
+pkgver=2.9
 pkgrel=1
 pkgdesc='Open Source H265/HEVC video encoder. 32bit libraries.'
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=('gcc-libs-multilib'  'lib32-numactl')
 makedepends=('cmake' 'nasm')
 provides=('libx265.so')
 source=("https://bitbucket.org/multicoreware/x265/downloads/x265_${pkgver}.tar.gz")
-sha256sums=('6e59f9afc0c2b87a46f98e33b5159d56ffb3558a49d8e3d79cb7fdc6b7aaa863')
+sha256sums=('ebae687c84a39f54b995417c52a2fdde65a4e2e7ebac5730d251471304b91024')
 
 prepare() {
   cd x265_${pkgver}
@@ -61,7 +61,7 @@ build() {
   #ln -s ../build-12/libx265.a libx265_main12.a
 
   cmake ../source \
-    -DCMAKE_INSTALL_PREFIX='/usr'   -DCMAKE_LIBRARY_PATH='/usr/lib32'   \
+    -DCMAKE_INSTALL_PREFIX='/usr' -DLIB_INSTALL_DIR='/usr/lib32'  -DCMAKE_LIBRARY_PATH='/usr/lib32'   \
     -DENABLE_SHARED='TRUE' \
     -DENABLE_HDR10_PLUS='TRUE' \
     -DEXTRA_LINK_FLAGS='-L .' 
@@ -75,7 +75,8 @@ package() {
   cd x265_${pkgver}/build-8
 
   make DESTDIR="${pkgdir}" install
+ # sed 's/"libdir=${exec_prefix}/lib"/"libdir=${exec_prefix}/lib32"' ${pkgdir}/usr/lib32/pkgconfig/x265.pc
   rm "${pkgdir}"/usr/bin  "${pkgdir}"/usr/include -Rf
-  mv "${pkgdir}"/usr/lib "${pkgdir}"/usr/lib32
+ # mv "${pkgdir}"/usr/lib "${pkgdir}"/usr/lib32
 }
 
