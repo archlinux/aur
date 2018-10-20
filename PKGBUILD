@@ -18,7 +18,7 @@ options=('!makeflags')
 source=(
   "LICENSE"
   "https://mngr.s3.amazonaws.com/${pkgver}/manager-accounting.zip"
-  "https://raw.githubusercontent.com/ericsink/SQLitePCL.raw/master/sqlite3/sqlite3.c"
+  "https://raw.githubusercontent.com/ericsink/SQLitePCL.raw/02ae6a75ba254fe1f6bf27495545b5eac79456ac/sqlite3/sqlite3.c"
 )
 sha256sums=(
   'bd144763506372341487683b0f28ad627e7e8923ea8ef8569541b55f4b987061'
