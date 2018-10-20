@@ -11,7 +11,7 @@ _lib32=0
 pkgbase=nvidia-full-beta-all
 pkgname=('nvidia-full-beta-all' 'nvidia-utils-full-beta-all' 'nvidia-egl-wayland-full-beta-all' 'nvidia-libgl-full-beta-all' 'opencl-nvidia-full-beta-all')
 pkgver=410.66
-pkgrel=1
+pkgrel=2
 pkgdesc='Full NVIDIA driver package for all kernels on the system (drivers, utilities and libraries) (beta version)'
 arch=('x86_64')
 url='http://www.nvidia.com/'
@@ -167,7 +167,6 @@ package_nvidia-utils-full-beta-all() {
               "egl-wayland-git: for alternative, more advanced Wayland library (libnvidia-egl-wayland.so.${_eglver})")
   provides=("nvidia-utils=$pkgver" "nvidia-settings=$pkgver" 'libglvnd' 'vulkan-driver')
   conflicts=('nvidia-utils' 'nvidia-settings' 'libglvnd')
-  install="${pkgname}.install"
   
   cd $_pkg
 
