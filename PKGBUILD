@@ -3,7 +3,7 @@
 
 pkgname=xnec2c
 pkgver=4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK+ Antenna EM Modeling Client"
 arch=('i686' 'x86_64')
 #url="http://5b4az.chronos.org.uk/pages/nec2.html"
@@ -18,7 +18,7 @@ source=("http://www.qsl.net/5b4az/pkg/nec2/xnec2c/xnec2c-$pkgver.tar.bz2"
         "$pkgname.desktop"
         "http://bjensen.fedorapeople.org/pkgs/hams/icon/Ham_Icon-1-48.png")
 md5sums=('6afb8284c16af29bb77466f27602f6cb'
-         '02105f9a231b715c41279d5be6d40a7c'
+         '824c296ecb84175a5fa0905b8f357796'
          '38378f273628bd9a28d3e5f9ff39fa18')
 
 build() {
