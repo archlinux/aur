@@ -1,4 +1,4 @@
-# Maintainer: Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 # To enable the Instrumentation and Tracing Technology API (ittnotify):
 #   - install the package intel-seapi
@@ -8,7 +8,7 @@
 # Currently it will not be a mandatory makedepend.
 
 pkgname=intel-media-sdk-git
-pkgver=2018.3.pre2.r76.g954207a
+pkgver=2018.3.pre3.r77.g53c73e5
 pkgrel=1
 pkgdesc='API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics (git version)'
 arch=('x86_64')
@@ -16,13 +16,13 @@ url='https://github.com/Intel-Media-SDK/MediaSDK/'
 license=('MIT')
 depends=(
     # official repositories:
-        'gcc-libs' 'libdrm' 'wayland'
+        'gcc-libs' 'libdrm' 'wayland' 'intel-media-driver'
     # AUR:
-        'libva-git' 'intel-media-driver'
+        'libva-git'
 )
-makedepends=('git' 'git-lfs' 'cmake' 'libpciaccess' 'libx11' 'libxcb' 'gtest')
+makedepends=('git' 'git-lfs' 'cmake' 'libpciaccess' 'libx11' 'libxcb')
 provides=('intel-media-sdk' 'libmfx')
-conflicts=('intel-media-sdk' 'intel-media-stack-bin' 'intel-media-server-studio')
+conflicts=('intel-media-sdk')
 install="${pkgname}.install"
 source=('intel-media-sdk-git.conf'
         'intel-media-sdk-git.sh')
@@ -33,11 +33,11 @@ prepare() {
     # makepkg does not support cloning git-lfs repositories
     if [ -d "$pkgname" ] 
     then
-        msg2 "Updating ${pkgname} git repo..."
+        printf '%s\n' "  -> Updating ${pkgname} git repo..."
         cd "$pkgname"
         git pull origin
     else
-        msg2 "Cloning ${pkgname} git repo..."
+        printf '%s\n' "  -> Cloning ${pkgname} git repo..."
         git lfs install
         git clone https://github.com/Intel-Media-SDK/MediaSDK.git "$pkgname"
         cd "$pkgname"
@@ -64,6 +64,7 @@ build() {
         -DBUILD_DISPATCHER:BOOL='ON' \
         -DBUILD_RUNTIME:BOOL='ON' \
         -DBUILD_SAMPLES:BOOL='ON' \
+        -DBUILD_TESTS:BOOL='OFF' \
         -DBUILD_TOOLS:BOOL='ON' \
         -DENABLE_ALL:BOOL='ON' \
         -DENABLE_ITT:BOOL='OFF' \
@@ -82,6 +83,11 @@ package() {
     cd "${pkgname}/build"
     
     make DESTDIR="$pkgdir" install
+    
+    # metrics_monitor
+    install -D -m755 __bin/release/libcttmetrics.so -t "${pkgdir}/opt/intel/mediasdk/share/mfx/samples"
+    install -D -m755 __bin/release/metrics_monitor  -t "${pkgdir}/opt/intel/mediasdk/share/mfx/samples"
+    ln -s ../share/mfx/samples/libcttmetrics.so "${pkgdir}/opt/intel/mediasdk/lib64/libcttmetrics.so"
     
     # ld.so and profile configuration files
     cd "$srcdir"
