@@ -10,7 +10,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://liri.io'
 license=('GPL3')
 depends=('qt5-tools' 'qt5-wayland' 'qt5-accountsservice'
-         'pam' 'greenisland-git' 'vibe' 'liri-workspace')
+         'pam' 'greenisland-git')
 optdepends=('weston: nested mode support')
 makedepends=('extra-cmake-modules')
 conflicts=('hawaii-shell' 'papyros-shell' 'liri-shell-git')
