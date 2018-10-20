@@ -10,7 +10,7 @@ depends=('plasma-workspace>=5')
 makedepends=('cmake' 'extra-cmake-modules')
 url="https://store.kde.org/p/1080708"
 license=('GPL')
-source=(https://dl.opendesktop.org/api/files/download/id/1461768302/174305-${_srcname}-${pkgver}.zip)
+source=(https://dl.opendesktop.org/api/files/download/id/1461768302/s/5970b0fe56a241e90102bf2062d3437e/t/1540026915/u//174305-${_srcname}-${pkgver}.zip)
 sha1sums=('e9d0f744c6188dc28ccb4cdeebaf36c9bff1561e')
 
 prepare() {
