@@ -1,8 +1,8 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=daedalus
-pkgver=0.11.0
-_commit=a0c906f20b86f38acc3e2d70129d53c9c7dd1d25
+pkgver=0.11.1
+_commit=42a014425a405b9c739e9787b641833bee7f7ba9
 pkgrel=1
 pkgdesc='Cryptocurrency wallet'
 arch=('any')
@@ -47,9 +47,9 @@ package() {
     install -Dm644 -t "${pkgdir}/usr/share/applications" "${srcdir}/${pkgname}.desktop"
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 
-    for size in 16 22 24 32 128 256 512; do
+    for size in 16 22 24 32 48 64 128 256 512; do
         install -Dm644 \
-            installers/icons/${size}x${size}.png \
+            installers/icons/mainnet/${size}x${size}.png \
             "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${pkgname}.png"
     done
 }
