@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=liri-calculator
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="More than a simple cross-platform Material Design calculator"
 arch=("x86_64")
@@ -10,7 +10,7 @@ license=("GPL")
 depends=('fluid')
 makedepends=('liri-qbs-shared')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lirios/calculator/archive/v$pkgver.tar.gz")
-sha256sums=('0773f02e2cc6e05fae04c56a05e735d0b45536a4c6d2f99cb7fc8ba83a0dead2')
+sha512sums=('26f45a1aebb2f83e8e1db17b0cdb8fad4d470b3db4cbcd20406cdd541c2e15b6556d95a0de9a63607180398ac59a9d0b4a85a8c9ca25f468dc109580f19e87be')
 
 build() {
   cd calculator-$pkgver
