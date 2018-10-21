@@ -1,6 +1,6 @@
 pkgbase = mindforger
 	pkgdesc = Thinking notebook and Markdown IDE. Search, browse, view and edit your Markdown files. Get as much as possible from knowledge in your remarks.
-	pkgver = 1.42.0
+	pkgver = 1.47.0
 	pkgrel = 1
 	url = https://github.com/dvorka/mindforger
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = mindforger
 	optdepends = dropbox: dropbox syncing
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/dvorka/mindforger/releases/download/1.42.0/mindforger_1.42.0-1_amd64.deb
-	sha512sums_x86_64 = 1413588d343155428a441e6991e2d0e39df4b7b11ffdd9a79b72f114ba9b219519b98503a5f7592aa1a55a128be621d64dbce179be9548c3eeafc33b043e28da
+	source_x86_64 = https://github.com/dvorka/mindforger/releases/download/1.47.0/mindforger_1.47.0-1_amd64.deb 
+	sha512sums_x86_64 = 84e16f1772fa6adda52e18afe988df20877a393395bd652ef991431c6b61ce3d10c96e8e7abb810ca3ff291003a0ee020749997d13440c8dfcd78dcdd71dc208
 
 pkgname = mindforger
 
