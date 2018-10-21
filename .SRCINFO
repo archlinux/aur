@@ -1,0 +1,18 @@
+pkgbase = dxvk-cache-pool
+	pkgdesc = Client/server to share DXVK pipeline caches for smoother wine gaming.
+	pkgver = 1.0.r0.g436294a
+	pkgrel = 1
+	url = https://github.com/rcpoison/dxvk-cache-pool
+	arch = any
+	license = Apache 2
+	makedepends = git
+	makedepends = maven
+	makedepends = java-environment>=8
+	depends = java-runtime>=8
+	source = git+https://github.com/rcpoison/dxvk-cache-pool.git
+	sha1sums = SKIP
+
+pkgname = dxvk-cache-client-git
+
+pkgname = dxvk-cache-server-git
+
