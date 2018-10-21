@@ -1,7 +1,7 @@
 pkgbase = pid-tools
 	pkgdesc = Some commandline tools for dealing with pids, information about processes, and their relations
 	pkgver = 4.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/kata198/pid-tools
 	arch = any
 	license = GPLv2

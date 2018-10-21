@@ -3,7 +3,7 @@
 pkgname='pid-tools'
 pkgdesc="Some commandline tools for dealing with pids, information about processes, and their relations"
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 license=('GPLv2')
 url="http://github.com/kata198/pid-tools"
@@ -21,6 +21,6 @@ package() {
   cd "${pkgname}-$pkgver"
 
   # Bug in MAKEFILE, have to end DESTDIR with /usr
-  make install DESTDIR="${pkgdir}/usr"
+  make install DESTDIR="${pkgdir}/usr" PREFIX="/"
 }
 
