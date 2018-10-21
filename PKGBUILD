@@ -32,6 +32,6 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver/src"
-  mkdir "$pkgdir/bin"
-  make DESTDIR="$pkgdir/bin" install
+  mkdir -p "$pkgdir/usr/bin"
+  make DESTDIR="$pkgdir/usr/bin" install
 }
