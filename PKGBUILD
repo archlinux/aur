@@ -5,7 +5,7 @@
 # Contributor: Andres Perera <aepd87@gmail.com>
 
 pkgname=pacman-git
-pkgver=5.1.1.r13.g7d05ffce
+pkgver=5.1.1.r51.gb5d62d2c
 pkgrel=1
 pkgdesc="A library-based package manager with dependency support"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -15,7 +15,7 @@ depends=('archlinux-keyring' 'bash' 'curl' 'gpgme' 'libarchive'
          'pacman-mirrorlist')
 optdepends=('pacman-contrib: various helper utilities')
 makedepends=('git' 'asciidoc')
-checkdepends=('python2' 'fakechroot')
+checkdepends=('python' 'fakechroot')
 provides=("pacman=${pkgver%.*.*}")
 conflicts=('pacman')
 backup=("etc/pacman.conf"
