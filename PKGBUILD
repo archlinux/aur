@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=go-kbdgrab
-pkgver=r13.1c3b31f
+pkgver=r19.c8fbdeb
 pkgrel=1
 pkgdesc='Key grabber written in golang for cleaning your keyboard'
 arch=(i686 x86_64)
