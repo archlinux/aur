@@ -1,0 +1,16 @@
+pkgbase = better-plasma5-video-wallpaper-git
+	pkgdesc = Plasma 5 plugin for video-wallpaper without gaps during loops
+	pkgver = r4.40ba42f
+	pkgrel = 1
+	url = https://github.com/WuSiYu/PlasmaVideoWallpaper
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = plasma-desktop
+	source = git+https://github.com/WuSiYu/PlasmaVideoWallpaper.git
+	sha256sums = SKIP
+
+pkgname = better-plasma5-video-wallpaper-git
+
