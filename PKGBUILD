@@ -15,8 +15,8 @@ pkgver=9.0.0.r164385.7961f40be4b
 _majorver=${pkgver:0:1}
 #this is set after pkgver() runs!  (Thanks makepkg!)
 _basever=${pkgver%%.r*}
-_islver=0.19
-pkgrel=1
+_islver=0.20
+pkgrel=2
 pkgdesc='The GNU Compiler Collection (git version)'
 arch=(x86_64)
 license=(GPL LGPL FDL custom)
@@ -33,7 +33,7 @@ validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.
               13975A70E63C361C73AE69EF6EEB81F8981C74C7  # richard.guenther@gmail.com
               33C235A34C46AA3FFB293709A328C3A2C3C45C06) # Jakub Jelinek <jakub@redhat.com>
 sha256sums=('SKIP'
-            'd59726f34f7852a081fbd3defd1ab2136f174110fc2e0c8d10bb122173fa9ed8'
+            'b587e083eb65a8b394e833dea1744f21af3f0e413a448c17536b5549ae42a4c2'
             'de48736f6e4153f03d0a5d38ceb6c6fdb7f054e8f47ddd6af0a3dbf14f27b931'
             '2513c6d9984dd0a2058557bf00f06d8d5181734e41dcfe07be7ed86f2959622a')
 
