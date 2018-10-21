@@ -2,7 +2,7 @@
 
 pkgname=musixmatch-bin
 _pkgname=musixmatch
-pkgver=0.20.20
+pkgver=0.21.4
 pkgrel=1
 pkgdesc='Lyrics platform where users can search and share lyrics'
 arch=('x86_64')
@@ -14,7 +14,6 @@ source=('eula.html')
 sha256sums=('988119d55691f5bdc91da81d31f2cc460de9c0d74312f4739f813ded7efdf03c')
 
 prepare() {
-  msg2 'Downloading from download-app.musixmatch.com...'
   curl 'https://download-app.musixmatch.com/' -A 'Linux x86_64' -D headers.txt -Lf -o linux_amd64.deb
 }
 
