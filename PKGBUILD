@@ -1,24 +1,23 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Giovanni Scafora <giovanni@archlinux.org>
+# Maintainer: mrxx <mrxx at cyberhome dot at>
+# Contributor: Giovanni Scafora <giovanni@archlinux.org>
 # Contributor: Fredrik Hammar <Horney_C86@Hotmail.com>
 
 pkgname=dvdrip
 pkgver=0.98.11
-pkgrel=13
-pkgdesc="A Gtk frontend for transcode writen in Perl"
+pkgrel=14
+pkgdesc="DVD Ripper and Encoder - Backup and compression utility for DVDs"
 arch=('x86_64')
 license=('custom')
-url="http://www.exit1.org/dvdrip/"
+url="https://www.exit1.org/dvdrip/"
 depends=('perl-gtk2-ex-formfactory' 'transcode' 'imagemagick'
          'perl-libintl-perl' 'desktop-file-utils' 'perl-event-execflow')
 optdepends=('ogmtools: for ogm/odd video creation'
             'lsdvd: fast reading of DVD table'
             'fping: for cluster support')
-source=("http://www.exit1.org/dvdrip/dist/${pkgname}-${pkgver}.tar.gz"
-        'dvdrip.desktop')
+source=("https://www.exit1.org/dvdrip/dist/${pkgname}-${pkgver}.tar.gz" 'dvdrip.desktop')
 options=('!emptydirs' '!makeflags')
-md5sums=('6dfa4199d451757a37eea233a07da4c0'
-         'e91cf411928fd0500d07a0022b4ef546')
+sha1sums=('b91d65e7307b5fecd1509ace03c02564ac9591c0'
+          'ec76242fb295d42dd77ffb9b3defdff10583d029')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"

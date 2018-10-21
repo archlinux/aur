@@ -1,8 +1,8 @@
 pkgbase = dvdrip
-	pkgdesc = A Gtk frontend for transcode writen in Perl
+	pkgdesc = DVD Ripper and Encoder - Backup and compression utility for DVDs
 	pkgver = 0.98.11
-	pkgrel = 13
-	url = http://www.exit1.org/dvdrip/
+	pkgrel = 14
+	url = https://www.exit1.org/dvdrip/
 	arch = x86_64
 	license = custom
 	depends = perl-gtk2-ex-formfactory
@@ -16,10 +16,10 @@ pkgbase = dvdrip
 	optdepends = fping: for cluster support
 	options = !emptydirs
 	options = !makeflags
-	source = http://www.exit1.org/dvdrip/dist/dvdrip-0.98.11.tar.gz
+	source = https://www.exit1.org/dvdrip/dist/dvdrip-0.98.11.tar.gz
 	source = dvdrip.desktop
-	md5sums = 6dfa4199d451757a37eea233a07da4c0
-	md5sums = e91cf411928fd0500d07a0022b4ef546
+	sha1sums = b91d65e7307b5fecd1509ace03c02564ac9591c0
+	sha1sums = ec76242fb295d42dd77ffb9b3defdff10583d029
 
 pkgname = dvdrip
 
