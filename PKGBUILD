@@ -1,7 +1,7 @@
 # Maintainer: Ricky Liou <rliou92@gmail.com>
 pkgname=python-umonitor-git
 _gitname=python-umonitor
-pkgver=r80.2503db9
+pkgver=r83.165911e
 pkgrel=1
 pkgdesc="Dynamic monitor configuration"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('git' 'python-setuptools')
 # install=${_gitname}.install
 source=("git://github.com/rliou92/${_gitname}.git")
 md5sums=('SKIP')
-conflicts=("umonitor")
+conflicts=("umonitor-git")
 
 pkgver() {
 	cd $srcdir/$_gitname
