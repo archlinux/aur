@@ -1,9 +1,9 @@
 # Contributor: bilux <i.bilux@gmail.com>
 # Maintainer: josesj <josesj@gmail.com>
 
-pkgname=brother-dcpj152w
+pkgname=brother-dcpj132w
 pkgver=3.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Driver for the Brother DCP-j132w wifi multifuncional printer"
 url="http://solutions.brother.com/linux/en_us/index.html"
 license=('custom:brother')
@@ -32,8 +32,9 @@ post_install() {
 
 package()
 {
-    install -d $pkgdir/usr/bin
-	install -d $pkgdir/var/spool/lpd
-    install -Dm755 "$srcdir"/usr/bin/brprintconf_dcpj132w "$pkgdir"/usr/bin/
-	cp -R $srcdir/opt $pkgdir/opt
+  mkdir -p "$pkgdir/usr/share/cups/model/"
+  mkdir -p "$pkgdir/usr/lib/cups/filter/"
+  cp "$srcdir/opt/brother/Printers/dcpj132w/cupswrapper/brother_dcpj132w_printer_en.ppd" "$pkgdir/usr/share/cups/model/brother_dcpj132w_printer_en.ppd"
+  cp "$srcdir/opt/brother/Printers/dcpj132w/lpd/filterdcpj132w"  "$pkgdir/usr/lib/cups/filter/brother_lpdwrapper_dcpj132w"
+  cp -r "$srcdir/opt/" "$pkgdir/opt/"
 }
