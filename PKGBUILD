@@ -1,27 +1,28 @@
 # Maintainer: Samuel Fernando Mesa <samuelmesa dot linuxmail.org>
 
-pkgname=librasterlite2-devel
-_pkgname=librasterlite2
-pkgver=1.0.0
+pkgname=virtualpg2-devel
+_pkgname=virtualpg
+pkgver=2.0.0
+_pkgver=2.0.0-RC0
 pkgrel=2
-pkgdesc="librasterlite2 is an open source library that stores and retrieves huge raster coverages using a SpatiaLite DBMS."
-url="https://www.gaia-gis.it/fossil/librasterlite2/index"
+pkgdesc="VirtualPG is a loadable dynamic extension to both SQLite and SpatiaLite."
+url="https://www.gaia-gis.it/fossil/virtualpg/index"
 arch=('x86_64' 'i686')
 license=('GPLv3')
-depends=('libspatialite>=4.1.1-3' 'libpng'  'proj' 'openjpeg2=2.1.2' 'charls1')
-conflicts=()
+depends=('libspatialite' 'sqlite' 'postgresql-libs' 'postgis')
+conflicts=('virtualpg')
 replaces=()
-source=("http://www.gaia-gis.it/gaia-sins/${_pkgname}-sources/librasterlite2-${pkgver}-devel.tar.gz")
+source=("http://www.gaia-gis.it/gaia-sins/virtualpg-sources/virtualpg-${_pkgver}.tar.gz")
 
-md5sums=('e917ee560c7d1c576af274322bb9eddc')
+md5sums=('b1a02e6a86665d15434f2fb376588cb5')
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}-devel"
+  cd "${srcdir}/${_pkgname}-${_pkgver}"
   ./configure --prefix="/usr"
-  make
+  make -j3
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}-devel"
+  cd "${srcdir}/${_pkgname}-${_pkgver}"
   make DESTDIR="${pkgdir}" install
 }

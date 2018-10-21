@@ -1,18 +1,18 @@
-pkgbase = librasterlite2-devel
-	pkgdesc = librasterlite2 is an open source library that stores and retrieves huge raster coverages using a SpatiaLite DBMS.
-	pkgver = 1.0.0
+pkgbase = virtualpg2-devel
+	pkgdesc = VirtualPG is a loadable dynamic extension to both SQLite and SpatiaLite.
+	pkgver = 2.0.0
 	pkgrel = 2
-	url = https://www.gaia-gis.it/fossil/librasterlite2/index
+	url = https://www.gaia-gis.it/fossil/virtualpg/index
 	arch = x86_64
 	arch = i686
 	license = GPLv3
-	depends = libspatialite>=4.1.1-3
-	depends = libpng
-	depends = proj
-	depends = openjpeg2=2.1.2
-	depends = charls1
-	source = http://www.gaia-gis.it/gaia-sins/librasterlite2-sources/librasterlite2-1.0.0-devel.tar.gz
-	md5sums = e917ee560c7d1c576af274322bb9eddc
+	depends = libspatialite
+	depends = sqlite
+	depends = postgresql-libs
+	depends = postgis
+	conflicts = virtualpg
+	source = http://www.gaia-gis.it/gaia-sins/virtualpg-sources/virtualpg-2.0.0-RC0.tar.gz
+	md5sums = b1a02e6a86665d15434f2fb376588cb5
 
-pkgname = librasterlite2-devel
+pkgname = virtualpg2-devel
 
