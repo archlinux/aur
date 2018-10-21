@@ -1,50 +1,70 @@
-# Maintainer: Marcel Korpel <marcel[dot]korpel[at]gmail>
+# Maintainer: Samuel Mesa <samuelmesa@linuxmail.org>
+# Contributor: Marcel Korpel <marcel[dot]korpel[at]gmail>
 # Contributor: Leandro de Assis <leandrodiassis@gmail.com>
 # Contributor: Thomas Dziedzic
+# Contributor: Christoph Fink <christoph.fink@gmail.com>
 
 pkgname=geoserver-bin
-pkgver=2.13.1
+pkgver=2.14.0
 pkgrel=1
 pkgdesc="Server written in Java that allows users to share and edit geospatial data"
-arch=('any')
+arch=("any")
 url="http://geoserver.org"
-license=('GPL2+')
-depends=('java-runtime')
+license=("GPL2+")
+depends=("jre8-openjdk-headless")
 
-source=(http://downloads.sourceforge.net/project/geoserver/GeoServer/$pkgver/geoserver-$pkgver-bin.zip)
-sha256sums=('a7f619c76e964157da5fd082a9b1db2130050101f5b9eccd6888afa1d675cae0')
 
-####################################################
-# WARNING: GEOSERVER USES A VERY WEIRD CONFIGURATION
-#          FOLDERS NEED TO BE 777 IN /OPT
-####################################################
+source=(
+    "http://downloads.sourceforge.net/project/geoserver/GeoServer/${pkgver}/geoserver-${pkgver}-bin.zip"
+    "geoserver.install"
+    "geoserver.service"
+    "geoserver.sysusers"
+)
+sha256sums=('2fd5a58b43e1f6d278249843c0afde22a620a9dd59dceda01b293c0f7e10ef00'
+            '576c36670c418aa25730986e592c8b0f4a0657d3129aafbe7c783ff3ed527abe'
+            'b746621be690e385341a41d850cd297e6c70e936024e6eea43f98022e53cb301'
+            'edd692b53b71a684b20e0e7a87b0047aaefc2286574355fb5c08770af2652d08')
+
+install="geoserver.install"
 
 package() {
-  cd "$srcdir/geoserver-$pkgver"
 
-  # remove windows files
-  rm bin/startup.bat bin/shutdown.bat
+    cd "$srcdir/geoserver-${pkgver}"
 
-  # install
-  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  rm LICENSE.txt
-  cd ..
-  mkdir -p "$pkgdir/opt"
-  cp -r geoserver-$pkgver "$pkgdir/opt"
+    # create a dedicated user
+    install -Dm644 ../geoserver.sysusers "${pkgdir}/usr/lib/sysusers.d/geoserver.conf"
 
-  # TODO: selectively change file permissions
-  #       or find a better way to install geoserver
+    # clean up: remove windows file, move license file
+    # to /usr/share/licenses
+    rm bin/{startup,shutdown}.bat
+    install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    rm LICENSE.txt
 
-  # change permissions
-  chmod -R a+rwX "$pkgdir/opt/geoserver-$pkgver"
+    # install geoserver to /opt/geoserver/${pkgver}
+    mkdir -p "${pkgdir}/opt/geoserver/"
+    cp -R "../geoserver-${pkgver}" "${pkgdir}/opt/geoserver/${pkgver}"
 
-  # make custom startup/shutdown links
-  mkdir -p "$pkgdir/usr/bin"
-  ln -s "/opt/geoserver-$pkgver/bin/startup.sh" "$pkgdir/usr/bin/geoserver-startup"
-  ln -s "/opt/geoserver-$pkgver/bin/shutdown.sh" "$pkgdir/usr/bin/geoserver-shutdown"
+    # adjust data directory permissions
+    find "${pkgdir}/opt/geoserver/${pkgver}/data_dir/data" -type d -exec chmod 0775 {} \;
+    find "${pkgdir}/opt/geoserver/${pkgver}/data_dir/data" -type f -exec chmod 0664 {} \;
 
-  # set necessary variables
-  mkdir -p "$pkgdir/etc/profile.d"
-  echo "export GEOSERVER_HOME=/opt/geoserver-$pkgver/" > "$pkgdir/etc/profile.d/geoserver.sh"
-  chmod +x "$pkgdir/etc/profile.d/geoserver.sh"
+    # install geoserver as a systemd service
+    sed "s/{pkgver}/${pkgver}/g" -i ../geoserver.service
+    install -Dm644 ../geoserver.service "${pkgdir}/usr/lib/systemd/system/geoserver.service"
+
+    # custom startup/shutdown links
+    mkdir -p "${pkgdir}/usr/bin"
+    ln -s "/opt/geoserver/${pkgver}/bin/startup.sh" "${pkgdir}/usr/bin/geoserver-startup"
+    ln -s "/opt/geoserver/${pkgver}/bin/shutdown.sh" "${pkgdir}/usr/bin/geoserver-shutdown"
+
+    # create /etc/profile.d/ file to set environment
+    # variables (used when geoserver is started manually)
+    mkdir -p "${pkgdir}/etc/profile.d"
+    echo "export GEOSERVER_HOME=/opt/geoserver/${pkgver}/" > "${pkgdir}/etc/profile.d/geoserver.sh"
+    chmod +x "${pkgdir}/etc/profile.d/geoserver.sh"
+
+    # install geoserver as a systemd service
+    sed "s/{pkgver}/${pkgver}/g" -i ../geoserver.service
+    install -Dm644 ../geoserver.service "${pkgdir}/usr/lib/systemd/system/geoserver.service"
+
 }

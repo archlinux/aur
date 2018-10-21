@@ -1,0 +1,16 @@
+[Unit]
+Description=GeoServer
+
+[Service]
+Type=simple
+
+User=geoserver
+Group=geoserver
+
+Environment="GEOSERVER_HOME=/opt/geoserver/{pkgver}/"
+ExecStart=/opt/geoserver/{pkgver}/bin/startup.sh
+ExecStop=/opt/geoserver/{pkgver}/bin/shutdown.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

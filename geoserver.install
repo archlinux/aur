@@ -1,0 +1,22 @@
+post_install() {
+    # cut off $pkgrel part
+    pkgver="${1%-*}"
+
+    # force _immediate_ creation of geoserver user
+    systemd-sysusers /usr/lib/sysusers.d/geoserver.conf
+
+    # adjust permissions
+    chgrp -R geoserver "/opt/geoserver/${pkgver}"
+    chown -R geoserver "/opt/geoserver/${pkgver}/data_dir"
+
+    # inform user about new systemd service
+    cat <<EOF
+==> Enable and/or start the \`geoserver.service\` systemd service.
+==> To add data to the geoserver data directory at /opt/geoserver/${pkgver}/data_dir/data/, your user has be in the \`geoserver\` group.
+EOF
+
+}
+
+post_upgrade() {
+    post_install $1
+}

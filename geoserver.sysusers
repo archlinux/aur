@@ -1,0 +1,3 @@
+# create a user + group to run geoserver
+g geoserver - -
+u geoserver - "GeoServer" /opt/geoserver/
