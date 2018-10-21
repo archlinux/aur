@@ -1,6 +1,7 @@
 # Maintainer: rc.poison <rc dot poison at gmail dot com>
 
-pkgbase=dxvk-cache-pool
+pkgbase=dxvk-cache-pool-git
+_pkgname=dxvk-cache-pool
 pkgname=("dxvk-cache-client-git" "dxvk-cache-server-git")
 pkgver=1.0.r0.g436294a
 pkgrel=1
@@ -14,24 +15,24 @@ source=('git+https://github.com/rcpoison/dxvk-cache-pool.git')
 sha1sums=('SKIP')
 
 pkgver() {
-  cd "$pkgbase"
+  cd "$_pkgname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 
 build() {
-  cd "$pkgbase"
+  cd "$_pkgname"
   ./build.sh
 }
 
 package_dxvk-cache-server-git() {
-  cd "$pkgbase"
+  cd "$_pkgname"
   install -Dm755 dxvk-cache-server -t "$pkgdir"/usr/bin
   install -Dm644 dxvk-cache-server.service -t "$pkgdir"/usr/lib/systemd/system/
 }
 
 package_dxvk-cache-client-git() {
-  cd "$pkgbase"
+  cd "$_pkgname"
   install -Dm755 dxvk-cache-client -t "$pkgdir"/usr/bin
   install -Dm755 dxvk-cache-pool.sh -t "$pkgdir"/etc/profile.d
 }

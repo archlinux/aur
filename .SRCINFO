@@ -1,4 +1,4 @@
-pkgbase = dxvk-cache-pool
+pkgbase = dxvk-cache-pool-git
 	pkgdesc = Client/server to share DXVK pipeline caches for smoother wine gaming.
 	pkgver = 1.0.r0.g436294a
 	pkgrel = 1
