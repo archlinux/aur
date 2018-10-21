@@ -1,5 +1,5 @@
 pkgbase = better-plasma5-video-wallpaper-git
-	pkgdesc = Plasma 5 plugin for video-wallpaper without gaps during loops
+	pkgdesc = Plasma 5 plugin for video-wallpaper without gap between loop
 	pkgver = r4.40ba42f
 	pkgrel = 1
 	url = https://github.com/WuSiYu/PlasmaVideoWallpaper
