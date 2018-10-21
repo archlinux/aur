@@ -1,0 +1,11 @@
+pkgbase = apush
+	pkgdesc = Alternative Pathetic Useless SHell
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://gitlab.com/hanss314/apush
+	arch = any
+	license = MIT
+	makedepends = make
+
+pkgname = apush
+
