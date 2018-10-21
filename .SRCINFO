@@ -1,0 +1,15 @@
+pkgbase = nodejs-nearley
+	pkgdesc = nearley is a simple, fast and powerful parsing toolkit.
+	pkgver = 2.15.1
+	pkgrel = 0
+	url = https://www.npmjs.com/package/nearley
+	arch = any
+	license = MIT
+	depends = nodejs
+	depends = npm
+	noextract = nearley-2.15.1.tgz
+	source = http://registry.npmjs.org/nearley/-/nearley-2.15.1.tgz
+	md5sums = 68417ae8f248b046fc6cc8c9b188bd73
+
+pkgname = nodejs-nearley
+
