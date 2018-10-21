@@ -11,12 +11,12 @@
 # NOTE: libtool requires rebuilt with each new gcc version
 
 pkgname=(gcc-git gcc-libs-git gcc-fortran-git gcc-objc-git gcc-ada-git gcc-go-git lib32-gcc-libs-gitb)
-pkgver=9.0.0.r164385.7961f40be4b
+pkgver=9.0.0.r164869.68a32e54c7f
 _majorver=${pkgver:0:1}
 #this is set after pkgver() runs!  (Thanks makepkg!)
 _basever=${pkgver%%.r*}
 _islver=0.20
-pkgrel=2
+pkgrel=1
 pkgdesc='The GNU Compiler Collection (git version)'
 arch=(x86_64)
 license=(GPL LGPL FDL custom)
@@ -25,9 +25,10 @@ makedepends=(binutils libmpc gcc-ada doxygen lib32-glibc lib32-gcc-libs python g
 checkdepends=(dejagnu inetutils)
 options=(!emptydirs)
 #source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig}
-source=(git+https://gcc.gnu.org/git/gcc.git#commit=7961f40be4b4a5d9c8531e6f78ecf330411d5d9f
+source=(git+https://gcc.gnu.org/git/gcc.git
         http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2
-        c89 c99)
+        c89 c99
+        bz87672.patch)
 validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.org
               86CFFCA918CF3AF47147588051E8B148A9999C34  # evangelos@foutrelis.com
               13975A70E63C361C73AE69EF6EEB81F8981C74C7  # richard.guenther@gmail.com
@@ -35,7 +36,8 @@ validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.
 sha256sums=('SKIP'
             'b587e083eb65a8b394e833dea1744f21af3f0e413a448c17536b5549ae42a4c2'
             'de48736f6e4153f03d0a5d38ceb6c6fdb7f054e8f47ddd6af0a3dbf14f27b931'
-            '2513c6d9984dd0a2058557bf00f06d8d5181734e41dcfe07be7ed86f2959622a')
+            '2513c6d9984dd0a2058557bf00f06d8d5181734e41dcfe07be7ed86f2959622a'
+            '0505bf68d19b0ad7c0e615a4963e4098e2fcbe0f0b3bc6aec47a006b23b72815')
 
 _svnrev=264010
 _svnurl=svn://gcc.gnu.org/svn/gcc/branches/gcc-${_majorver}-branch
@@ -53,6 +55,9 @@ prepare() {
   #unlike a tarball, git clone will name the directory gcc
   #[[ ! -d gcc ]] && ln -s gcc-${pkgver/+/-} gcc
   cd gcc
+
+  # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=87672
+  patch -p0 -i "$srcdir/bz87672.patch"
 
   # link isl for in-tree build
   ln -s ../isl-${_islver} isl
