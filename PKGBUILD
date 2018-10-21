@@ -1,24 +1,35 @@
 # Maintainer: Maciej Sieczka <msieczka at sieczka dot org>
 
 pkgname='singularity-container'
-pkgver='2.6.0'
+pkgver='3.0.0'
 pkgrel='1'
 pkgdesc='Container platform focused on supporting "Mobility of Compute".'
 arch=('i686' 'x86_64')
-url='http://singularity.lbl.gov'
+url='https://www.sylabs.io/singularity/'
 license=('BSD')
-depends=('bash' 'libarchive' 'python' 'squashfs-tools')
-source=("https://github.com/singularityware/singularity/releases/download/${pkgver}/singularity-${pkgver}.tar.gz")
-md5sums=('0aca47ef3220d15c3bec5ac600167379')
+makedepends=('go' 'dep')
+depends=('squashfs-tools')
+source=("https://github.com/sylabs/singularity/releases/download/v${pkgver}/singularity-v${pkgver}.tar.gz")
+noextract=("singularity-v${pkgver}.tar.gz")
+md5sums=('019afc549c838ff08cabffe094c194b9')
+
+prepare() {
+  mkdir -p "${srcdir}/src/github.com/sylabs"
+  tar -zxf singularity-v${pkgver}.tar.gz -C "${srcdir}/src/github.com/sylabs"
+}
 
 build() {
-  cd "${srcdir}/singularity-${pkgver}"
-  ./configure --prefix='/usr' --disable-dependency-tracking --with-userns
+  export GOPATH="${srcdir}"
+  cd "${srcdir}/src/github.com/sylabs/singularity"
+  ./mconfig -p /usr
+  cd builddir
   make
 }
 
 package() {
-  cd "${srcdir}/singularity-${pkgver}"
-  make DESTDIR="$pkgdir" install
+  export GOPATH="${srcdir}"
+  cd "${srcdir}/src/github.com/sylabs/singularity/builddir"
+  make PREFIX="${pkgdir}/usr" install
+  chmod 755 "${pkgdir}/usr/bin/singularity"
 }
 
