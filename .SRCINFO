@@ -1,6 +1,6 @@
 pkgbase = plasma5-applets-kde-arch-update-notifier-git
 	pkgdesc = A KDE plasmoid for your system tray notifying you of available updates with AUR Support
-	pkgver = 7.2.r0.g0396cdb
+	pkgver = 7.2.r1.ga37a15c
 	pkgrel = 1
 	url = https://github.com/I-Dream-in-Code/kde-arch-update-plasmoid
 	arch = x86_64
@@ -11,11 +11,12 @@ pkgbase = plasma5-applets-kde-arch-update-notifier-git
 	makedepends = extra-cmake-modules
 	depends = fakeroot
 	depends = konsole
-	depends = yakuake
 	depends = pacman-contrib
 	depends = plasma-desktop
+	depends = plasma-framework
 	optdepends = checkupdates-aur
 	optdepends = snapd
+	optdepends = yakuake
 	source = git+https://github.com/I-Dream-in-Code/kde-arch-update-plasmoid.git
 	md5sums = SKIP
 
