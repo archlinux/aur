@@ -1,13 +1,13 @@
 pkgbase = dico
 	pkgdesc = GNU Dictionary Server
 	pkgver = 2.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://puszcza.gnu.org.ua/software/dico
 	arch = x86_64
 	license = GPL3
 	depends = python
 	depends = gsasl
-	depends = wordnet
+	depends = wordnet-common
 	depends = guile
 	depends = pam
 	source = ftp://download.gnu.org.ua/pub/release/dico/dico-2.7.tar.xz

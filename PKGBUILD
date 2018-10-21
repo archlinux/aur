@@ -2,12 +2,12 @@
 
 pkgname=dico
 pkgver=2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Dictionary Server"
 arch=('x86_64')
 url="http://puszcza.gnu.org.ua/software/$pkgname"
 license=(GPL3)
-depends=(python gsasl wordnet guile pam)
+depends=(python gsasl wordnet-common guile pam)
 source=("ftp://download.gnu.org.ua/pub/release/$pkgname/$pkgname-$pkgver.tar.xz"{,.sig})
 sha1sums=('cc3901dc2e70491c4e9a6aa2d3fcac2c8d2f6790'
           'SKIP')
