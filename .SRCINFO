@@ -1,0 +1,17 @@
+pkgbase = mantags-git
+	pkgdesc = Parses man file to ctags for autocompletion
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/Jugendhackt/configfoo
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = man
+	provides = mantags
+	conflicts = mantags
+	source = mantags::git+https://github.com/Jugendhackt/configfoo.git
+	md5sums = SKIP
+
+pkgname = mantags-git
+
