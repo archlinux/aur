@@ -1,7 +1,7 @@
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 # Contributor: Frederik “Freso” S. Olesen <archlinux@freso.dk>
 pkgname=picard-plugins-git
-pkgver=2.0.r354.62cd688
+pkgver=2.0.r401.3921eff
 _pkgver=2.0
 _gitbranch=2.0
 pkgrel=1
