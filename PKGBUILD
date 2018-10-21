@@ -3,11 +3,11 @@
 pkgname=qgis-crayfish-plugin
 pkgver='3.0.0'
 pkgrel=1
-pkgdesc="Visualiser for temporal structured and unstructured grids in QGIS  3.3.x "
+pkgdesc="Visualiser for temporal structured and unstructured grids in QGIS  3.3.x"
 arch=('i686' 'x86_64')
 url="https://www.lutraconsulting.co.uk/products/crayfish/"
 license=('GPL3')
-depends=('qgis-git' 'gdal' 'hdf5' 'netcdf' 'python2' 'python2-sip')
+depends=('qgis-git' 'python')
 source=(https://github.com/lutraconsulting/qgis-crayfish-plugin/archive/release-${pkgver}.tar.gz)
 md5sums=('3195816365e31a46b6575c2bc56d5089')
 
