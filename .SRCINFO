@@ -1,0 +1,16 @@
+pkgbase = qgis-otb-plugin
+	pkgdesc = OTB provider for QGIS Processing in QGIS 3.x.x
+	pkgver = 6.6.0
+	pkgrel = 1
+	url = https://gitlab.orfeo-toolbox.org/orfeotoolbox/qgis-otb-plugin
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = qgis
+	depends = python
+	depends = orfeo-toolbox
+	source = https://gitlab.orfeo-toolbox.org/orfeotoolbox/qgis-otb-plugin/-/archive/master/qgis-otb-plugin-master.tar.gz
+	md5sums = SKIP
+
+pkgname = qgis-otb-plugin
+
