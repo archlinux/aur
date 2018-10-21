@@ -3,7 +3,7 @@
 
 pkgname=python-hupper
 _pkgname=hupper
-pkgver=1.3
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Integrated process monitor for developing servers."
 arch=('any')
@@ -11,9 +11,9 @@ url="https://github.com/Pylons/hupper"
 license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
-checkdepends=('python-watchdog' 'python-pytest-cov')
+checkdepends=('python-watchdog' 'python-pytest-cov' 'python-pytest-runner')
 source=($url/archive/${pkgver}.tar.gz)
-sha256sums=('c6bf5fbbf7b80aa765124ae638fa2d44e7c064b2a3fd6f8dd3b495b99a9d083a')
+sha256sums=('7152ee2c78f3d9b5bf3632d51c358cb4d1c73afae90ff2d0d9510215facec325')
 
 build(){
     cd ${_pkgname}-${pkgver}
