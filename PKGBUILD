@@ -1,8 +1,8 @@
 # Maintainer: Térence Clastres <t dot clastres at gmail dot com>
 
 pkgname=gnome-shell-extension-gsconnect-git
-pkgver=13.alpha2.r9.gbb77316
-pkgrel=3
+pkgver=13.r30.g6c4a883
+pkgrel=1
 pkgdesc="KDE Connect implementation with GNOME Shell integration"
 arch=('any')
 url="https://github.com/andyholmes/gnome-shell-extension-gsconnect"
