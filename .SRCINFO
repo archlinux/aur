@@ -1,0 +1,16 @@
+pkgbase = librttopo-devel
+	pkgdesc = RT Topology Library
+	pkgver = 1.1.0
+	pkgrel = 2
+	url = https://git.osgeo.org/gitea/rttopo/librttopo
+	arch = x86_64
+	arch = i686
+	license = GPLv2
+	makedepends = cmake
+	depends = geos
+	depends = proj
+	source = https://git.osgeo.org/gitea/rttopo/librttopo/archive/librttopo-1.1.0-RC1.tar.gz
+	md5sums = 049ad5a956f02212b05464ccba6b5577
+
+pkgname = librttopo-devel
+
