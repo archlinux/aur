@@ -1,6 +1,6 @@
 pkgbase = cardano-sl
 	pkgdesc = Cryptographic currency implementing Ouroboros PoS protocol
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/input-output-hk/cardano-sl/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = cardano-sl
 	depends = gmp
 	depends = openssl
 	depends = rocksdb
-	source = git+https://github.com/input-output-hk/cardano-sl.git#commit=0d2289790d8c57aade1c7e31b643894ec229958e
+	source = git+https://github.com/input-output-hk/cardano-sl.git#commit=8f750bb4a4661ca1a45b6e3e97c343472df51322
 	sha256sums = SKIP
 
 pkgname = cardano-sl
