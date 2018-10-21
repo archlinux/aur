@@ -1,36 +1,18 @@
 # Author: Samuel Fernando Mesa <samuelmesa at linuxmail dot org>
 
-pkgname=qgis2-crayfish-plugin
-_pkgname=qgis-crayfish-plugin
-pkgver='2.7.2'
+pkgname=qgis-crayfish-plugin
+pkgver='3.0.0'
 pkgrel=1
-pkgdesc="Visualiser for temporal structured and unstructured grids in QGIS  2.x. "
+pkgdesc="Visualiser for temporal structured and unstructured grids in QGIS  3.3.x "
 arch=('i686' 'x86_64')
 url="https://www.lutraconsulting.co.uk/products/crayfish/"
 license=('GPL3')
-depends=('qgis-ltr' 'gdal' 'hdf5' 'netcdf' 'python2' 'python2-sip')
-source=(https://github.com/lutraconsulting/${_pkgname}/archive/release-${pkgver}.tar.gz)
-md5sums=('8c57feba4da7471ee941c9aaec9fef80')
-
-prepare() {
-  cd "${_pkgname}-release-${pkgver}"
-
-  # Change version of Python2
-  sed -i s/python/python2/g install.py
-}
-
-build() {
-  cd "${_pkgname}-release-${pkgver}"
-
-  qmake-qt4 PREFIX=/usr 
-
-  make
-}
+depends=('qgis-git' 'gdal' 'hdf5' 'netcdf' 'python2' 'python2-sip')
+source=(https://github.com/lutraconsulting/qgis-crayfish-plugin/archive/release-${pkgver}.tar.gz)
+md5sums=('3195816365e31a46b6575c2bc56d5089')
 
 package() {
-  cd "${_pkgname}-release-${pkgver}"
-  mkdir -p ${pkgdir}/usr/share/qgis/python/plugins/
-  mkdir -p ${pkgdir}/usr/lib/
-  cp -dr --no-preserve=ownership crayfish "${pkgdir}/usr/share/qgis/python/plugins/"
-  cp --no-preserve=ownership crayfish/*.so* "${pkgdir}/usr/lib/"
+  cd "${pkgname}-release-${pkgver}"
+  mkdir -p ${pkgdir}/opt/qgis-git/share/qgis/python/plugins/
+  cp -dr --no-preserve=ownership crayfish "${pkgdir}/opt/qgis-git/share/qgis/python/plugins/"
 }
