@@ -2,8 +2,8 @@
 # Based on the python-pillow package (Maintainer: Kyle Keen <keenerd@gmail.com>, Contributor: minder)
 
 pkgname=python-pillow-simd
-pkgver=5.1.1.post0
-pkgrel=2
+pkgver=5.3.0.post0
+pkgrel=1
 _appname=pillow-simd
 _py3basever=3.7m
 pkgdesc="Python Imaging Library (PIL) fork. Pillow fork for better image processing performance."
@@ -34,4 +34,4 @@ package() {
   install -m644 -t "$pkgdir/usr/include/python$_py3basever/" src/libImaging/*.h
 }
 
-sha256sums=('e2fa50bb13eeb73b63d0ada6974292557a7f37df00506124295e4664cba86363')
+sha256sums=('0086cea17590587e8041fe35a2c0c8680975198d798c2b39cdf277354b3b16c8')
