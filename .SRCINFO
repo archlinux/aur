@@ -1,5 +1,5 @@
 pkgbase = tempus-framework
-	pkgdesc = Tempus is a C++ framework which offers generic graph manipulation abilities in order to develop multimodal path planning requests. It features.
+	pkgdesc = Tempus is a C++ framework which offers generic graph manipulation abilities in order to develop multimodal path planning requests (Core)
 	pkgver = 2.6.2
 	pkgrel = 1
 	url = http://ifsttar.github.io/Tempus/
@@ -23,7 +23,5 @@ pkgbase = tempus-framework
 	md5sums = SKIP
 	md5sums = d56421e9ac5a0be4b6bca99247708c59
 
-pkgname = tempus-core
-
-pkgname = tempus-wps-server
+pkgname = tempus-framework
 
