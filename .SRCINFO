@@ -1,6 +1,6 @@
 pkgbase = sqlite-replication
 	pkgdesc = A C library that implements an SQL database engine
-	pkgver = 3.24.0
+	pkgver = 3.25.2
 	pkgrel = 1
 	url = http://www.sqlite.org/
 	arch = x86_64
@@ -10,12 +10,12 @@ pkgbase = sqlite-replication
 	makedepends = zlib
 	options = !emptydirs
 	options = !makeflags
-	source = https://www.sqlite.org/2018/sqlite-src-3240000.zip
-	source = https://www.sqlite.org/2018/sqlite-doc-3240000.zip
+	source = https://www.sqlite.org/2018/sqlite-src-3250200.zip
+	source = https://www.sqlite.org/2018/sqlite-doc-3250200.zip
 	source = license.txt
 	source = replication.patch
-	sha1sums = fb558c49ee21a837713c4f1e7e413309aabdd9c7
-	sha1sums = 9684d06b7e6ec1868b1ef075993dc29d952dac97
+	sha1sums = 43c087e4e8d2abf8ff723ee787bd8984f7057b6d
+	sha1sums = 31b2679d130e9b1324dc6ff927ff1b13f5d432a4
 	sha1sums = f34f6daa4ab3073d74e774aad21d66878cf26853
 	sha1sums = 52a7eeff64d842cd210cf8572bf2f896cd19f995
 
@@ -23,23 +23,23 @@ pkgname = sqlite-replication
 	pkgdesc = A C library that implements an SQL database engine
 	depends = readline
 	depends = zlib
-	provides = sqlite=3.24.0
-	provides = sqlite3=3.24.0
+	provides = sqlite=3.25.2
+	provides = sqlite3=3.25.2
 	conflicts = sqlite
 	replaces = sqlite3
 
 pkgname = sqlite-replication-tcl
 	pkgdesc = sqlite Tcl Extension Architecture (TEA)
 	depends = sqlite
-	provides = sqlite-tcl=3.24.0
-	provides = sqlite3-tcl=3.24.0
+	provides = sqlite-tcl=3.25.2
+	provides = sqlite3-tcl=3.25.2
 	conflicts = sqlite-tcl
 	replaces = sqlite3-tcl
 
 pkgname = sqlite-replication-doc
 	pkgdesc = most of the static HTML files that comprise this website, including all of the SQL Syntax and the C/C++ interface specs and other miscellaneous documentation
-	provides = sqlite-doc=3.24.0
-	provides = sqlite3-doc=3.24.0
+	provides = sqlite-doc=3.25.2
+	provides = sqlite3-doc=3.25.2
 	conflicts = sqlite-doc
 	replaces = sqlite3-doc
 
@@ -47,6 +47,6 @@ pkgname = sqlite-replication-analyzer
 	pkgdesc = An analysis program for sqlite3 database files
 	depends = sqlite
 	depends = tcl
-	provides = sqlite-analyzer=3.24.0
+	provides = sqlite-analyzer=3.25.2
 	conflicts = sqlite-analyzer
 

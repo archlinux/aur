@@ -35,35 +35,35 @@ index 000000000..85c41ecc5
 +    tags: true
 +    all_branches: true
 diff --git a/Makefile.in b/Makefile.in
-index 96ef34009..0e369d341 100644
+index f84dcc25e..e350be60f 100644
 --- a/Makefile.in
 +++ b/Makefile.in
-@@ -416,6 +416,7 @@ TESTSRC = \
+@@ -419,6 +419,7 @@ TESTSRC = \
    $(TOP)/src/test_tclvar.c \
    $(TOP)/src/test_thread.c \
    $(TOP)/src/test_vfs.c \
 +  $(TOP)/src/test_walreplication.c \
    $(TOP)/src/test_windirent.c \
+   $(TOP)/src/test_window.c \
    $(TOP)/src/test_wsd.c       \
-   $(TOP)/ext/fts3/fts3_term.c \
 diff --git a/Makefile.msc b/Makefile.msc
-index 43d4a379a..672eb0025 100644
+index 4c6cdfba1..64cfade29 100644
 --- a/Makefile.msc
 +++ b/Makefile.msc
-@@ -1476,6 +1476,7 @@ TESTSRC = \
+@@ -1497,6 +1497,7 @@ TESTSRC = \
    $(TOP)\src\test_tclvar.c \
    $(TOP)\src\test_thread.c \
    $(TOP)\src\test_vfs.c \
 +  $(TOP)/src/test_walreplication.c \
    $(TOP)\src\test_windirent.c \
+   $(TOP)\src\test_window.c \
    $(TOP)\src\test_wsd.c \
-   $(TOP)\ext\fts3\fts3_term.c \
 diff --git a/configure b/configure
-index baead2ea3..5ad49cdcf 100755
+index 038abd43a..719dc3314 100755
 --- a/configure
 +++ b/configure
-@@ -913,6 +913,8 @@ enable_json1
- enable_update_limit
+@@ -914,6 +914,8 @@ enable_update_limit
+ enable_geopoly
  enable_rtree
  enable_session
 +enable_wal_replication
@@ -71,8 +71,8 @@ index baead2ea3..5ad49cdcf 100755
  enable_gcov
  '
        ac_precious_vars='build_alias
-@@ -1565,6 +1567,10 @@ Optional Features:
-   --enable-update-limit   Enable the UPDATE/DELETE LIMIT clause
+@@ -1567,6 +1569,10 @@ Optional Features:
+   --enable-geopoly        Enable the GEOPOLY extension
    --enable-rtree          Enable the RTREE extension
    --enable-session        Enable the SESSION extension
 +  --enable-wal-replication
@@ -82,7 +82,7 @@ index baead2ea3..5ad49cdcf 100755
    --enable-gcov           Enable coverage testing using gcov
  
  Optional Packages:
-@@ -11657,6 +11663,32 @@ if test "${enable_session}" = "yes" ; then
+@@ -11649,6 +11655,32 @@ if test "${enable_session}" = "yes" ; then
    OPT_FEATURE_FLAGS="${OPT_FEATURE_FLAGS} -DSQLITE_ENABLE_PREUPDATE_HOOK"
  fi
  
@@ -116,10 +116,10 @@ index baead2ea3..5ad49cdcf 100755
  # attempt to duplicate any OMITS and ENABLES into the ${OPT_FEATURE_FLAGS} parameter
  for option in $CFLAGS $CPPFLAGS
 diff --git a/configure.ac b/configure.ac
-index 7089772d1..2e21b47d9 100644
+index 9cf87adca..0d3642d2f 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -679,6 +679,24 @@ if test "${enable_session}" = "yes" ; then
+@@ -676,6 +676,24 @@ if test "${enable_session}" = "yes" ; then
    OPT_FEATURE_FLAGS="${OPT_FEATURE_FLAGS} -DSQLITE_ENABLE_PREUPDATE_HOOK"
  fi
  
@@ -145,19 +145,19 @@ index 7089772d1..2e21b47d9 100644
  # attempt to duplicate any OMITS and ENABLES into the ${OPT_FEATURE_FLAGS} parameter
  for option in $CFLAGS $CPPFLAGS
 diff --git a/main.mk b/main.mk
-index e5722c582..ef305862d 100644
+index f32624dfd..38c25a9a1 100644
 --- a/main.mk
 +++ b/main.mk
-@@ -346,6 +346,7 @@ TESTSRC = \
+@@ -349,6 +349,7 @@ TESTSRC = \
    $(TOP)/src/test_tclvar.c \
    $(TOP)/src/test_thread.c \
    $(TOP)/src/test_vfs.c \
 +  $(TOP)/src/test_walreplication.c \
    $(TOP)/src/test_windirent.c \
+   $(TOP)/src/test_window.c \
    $(TOP)/src/test_wsd.c
- 
 diff --git a/src/backup.c b/src/backup.c
-index 165144d96..44d9a03d0 100644
+index 4200940b2..bf11c1d16 100644
 --- a/src/backup.c
 +++ b/src/backup.c
 @@ -189,6 +189,24 @@ sqlite3_backup *sqlite3_backup_init(
@@ -186,10 +186,10 @@ index 165144d96..44d9a03d0 100644
       || checkReadTransaction(pDestDb, p->pDest)!=SQLITE_OK 
       ){
 diff --git a/src/main.c b/src/main.c
-index 5b6c86709..342f732cb 100644
+index 8935a19d7..f0d9e274a 100644
 --- a/src/main.c
 +++ b/src/main.c
-@@ -2256,6 +2256,410 @@ int sqlite3Checkpoint(sqlite3 *db, int iDb, int eMode, int *pnLog, int *pnCkpt){
+@@ -2349,6 +2349,410 @@ int sqlite3Checkpoint(sqlite3 *db, int iDb, int eMode, int *pnLog, int *pnCkpt){
  }
  #endif /* SQLITE_OMIT_WAL */
  
@@ -601,7 +601,7 @@ index 5b6c86709..342f732cb 100644
  ** This function returns true if main-memory should be used instead of
  ** a temporary file for transient pager files and statement journals.
 diff --git a/src/pager.c b/src/pager.c
-index a5e1edf78..9e03eb20e 100644
+index 92d32fd27..fae3ce290 100644
 --- a/src/pager.c
 +++ b/src/pager.c
 @@ -716,7 +716,12 @@ struct Pager {
@@ -618,7 +618,7 @@ index a5e1edf78..9e03eb20e 100644
  };
  
  /*
-@@ -2113,6 +2118,16 @@ static int pager_end_transaction(Pager *pPager, int hasMaster, int bCommit){
+@@ -2116,6 +2121,16 @@ static int pager_end_transaction(Pager *pPager, int hasMaster, int bCommit){
    }
  
    if( pagerUseWal(pPager) ){
@@ -635,7 +635,7 @@ index a5e1edf78..9e03eb20e 100644
      /* Drop the WAL write-lock, if any. Also, if the connection was in 
      ** locking_mode=exclusive mode but is no longer, drop the EXCLUSIVE 
      ** lock held on the database file.
-@@ -3149,6 +3164,22 @@ static int pagerRollbackWal(Pager *pPager){
+@@ -3152,6 +3167,22 @@ static int pagerRollbackWal(Pager *pPager){
    **   + Reload page content from the database (if refcount>0).
    */
    pPager->dbSize = pPager->dbOrigSize;
@@ -658,7 +658,7 @@ index a5e1edf78..9e03eb20e 100644
    rc = sqlite3WalUndo(pPager->pWal, pagerUndoCallback, (void *)pPager);
    pList = sqlite3PcacheDirtyList(pPager->pPCache);
    while( pList && rc==SQLITE_OK ){
-@@ -3175,7 +3206,7 @@ static int pagerWalFrames(
+@@ -3178,7 +3209,7 @@ static int pagerWalFrames(
    Pgno nTruncate,                 /* Database size after this commit */
    int isCommit                    /* True if this is a commit */
  ){
@@ -667,7 +667,7 @@ index a5e1edf78..9e03eb20e 100644
    int nList;                      /* Number of pages in pList */
    PgHdr *p;                       /* For looping over pages */
  
-@@ -3209,9 +3240,52 @@ static int pagerWalFrames(
+@@ -3212,9 +3243,52 @@ static int pagerWalFrames(
    pPager->aStat[PAGER_STAT_WRITE] += nList;
  
    if( pList->pgno==1 ) pager_write_changecounter(pList);
@@ -723,7 +723,7 @@ index a5e1edf78..9e03eb20e 100644
    if( rc==SQLITE_OK && pPager->pBackup ){
      for(p=pList; p; p=p->pDirty){
        sqlite3BackupUpdate(pPager->pBackup, p->pgno, (u8 *)p->pData);
-@@ -4158,8 +4232,13 @@ int sqlite3PagerClose(Pager *pPager, sqlite3 *db){
+@@ -4161,8 +4235,13 @@ int sqlite3PagerClose(Pager *pPager, sqlite3 *db){
      }
      sqlite3WalClose(pPager->pWal, db, pPager->walSyncFlags, pPager->pageSize,a);
      pPager->pWal = 0;
@@ -738,7 +738,7 @@ index a5e1edf78..9e03eb20e 100644
    pager_reset(pPager);
    if( MEMDB ){
      pager_unlock(pPager);
-@@ -4841,7 +4920,12 @@ int sqlite3PagerOpen(
+@@ -4844,7 +4923,12 @@ int sqlite3PagerOpen(
      memcpy(pPager->zWal, zPathname, nPathname);
      memcpy(&pPager->zWal[nPathname], "-wal\000", 4+1);
      sqlite3FileSuffix3(pPager->zFilename, pPager->zWal);
@@ -752,7 +752,7 @@ index a5e1edf78..9e03eb20e 100644
      sqlite3DbFree(0, zPathname);
    }
    pPager->pVfs = pVfs;
-@@ -5827,12 +5911,41 @@ int sqlite3PagerBegin(Pager *pPager, int exFlag, int subjInMemory){
+@@ -5830,12 +5914,41 @@ int sqlite3PagerBegin(Pager *pPager, int exFlag, int subjInMemory){
          (void)sqlite3WalExclusiveMode(pPager->pWal, 1);
        }
  
@@ -800,9 +800,9 @@ index a5e1edf78..9e03eb20e 100644
      }else{
        /* Obtain a RESERVED lock on the database file. If the exFlag parameter
        ** is true, then immediately upgrade this to an EXCLUSIVE lock. The
-@@ -7641,6 +7754,287 @@ int sqlite3PagerSnapshotRecover(Pager *pPager){
-   return rc;
+@@ -7683,6 +7796,287 @@ void sqlite3PagerSnapshotUnlock(Pager *pPager){
  }
+ 
  #endif /* SQLITE_ENABLE_SNAPSHOT */
 +
 +#ifdef SQLITE_ENABLE_WAL_REPLICATION
@@ -1089,12 +1089,12 @@ index a5e1edf78..9e03eb20e 100644
  
  #ifdef SQLITE_ENABLE_ZIPVFS
 diff --git a/src/pager.h b/src/pager.h
-index 730e366fb..ca400a853 100644
+index 5b07a226b..00469d1e3 100644
 --- a/src/pager.h
 +++ b/src/pager.h
-@@ -187,6 +187,15 @@ int sqlite3PagerSharedLock(Pager *pPager);
-   int sqlite3PagerSnapshotOpen(Pager *pPager, sqlite3_snapshot *pSnapshot);
-   int sqlite3PagerSnapshotRecover(Pager *pPager);
+@@ -189,6 +189,15 @@ int sqlite3PagerSharedLock(Pager *pPager);
+   int sqlite3PagerSnapshotCheck(Pager *pPager, sqlite3_snapshot *pSnapshot);
+   void sqlite3PagerSnapshotUnlock(Pager *pPager);
  # endif
 +#ifdef SQLITE_ENABLE_WAL_REPLICATION
 +  int sqlite3PagerWalReplicationGet(Pager*, int*, sqlite3_wal_replication**);
@@ -1109,10 +1109,10 @@ index 730e366fb..ca400a853 100644
  # define sqlite3PagerUseWal(x,y) 0
  #endif
 diff --git a/src/prepare.c b/src/prepare.c
-index c1bd20f16..0e379e6fe 100644
+index 602e4dc49..6ddf88931 100644
 --- a/src/prepare.c
 +++ b/src/prepare.c
-@@ -557,6 +557,24 @@ static int sqlite3Prepare(
+@@ -573,6 +573,24 @@ static int sqlite3Prepare(
      Btree *pBt = db->aDb[i].pBt;
      if( pBt ){
        assert( sqlite3BtreeHoldsMutex(pBt) );
@@ -1138,19 +1138,19 @@ index c1bd20f16..0e379e6fe 100644
        if( rc ){
          const char *zDb = db->aDb[i].zDbSName;
 diff --git a/src/sqlite.h.in b/src/sqlite.h.in
-index 202155df7..7f7016cef 100644
+index 2d090e3ec..00ae18e4b 100644
 --- a/src/sqlite.h.in
 +++ b/src/sqlite.h.in
-@@ -503,6 +503,8 @@ int sqlite3_exec(
+@@ -504,6 +504,8 @@ int sqlite3_exec(
  #define SQLITE_IOERR_BEGIN_ATOMIC      (SQLITE_IOERR | (29<<8))
  #define SQLITE_IOERR_COMMIT_ATOMIC     (SQLITE_IOERR | (30<<8))
  #define SQLITE_IOERR_ROLLBACK_ATOMIC   (SQLITE_IOERR | (31<<8))
 +#define SQLITE_IOERR_NOT_LEADER        (SQLITE_IOERR | (32<<8))
 +#define SQLITE_IOERR_LEADERSHIP_LOST   (SQLITE_IOERR | (33<<8))
  #define SQLITE_LOCKED_SHAREDCACHE      (SQLITE_LOCKED |  (1<<8))
+ #define SQLITE_LOCKED_VTAB             (SQLITE_LOCKED |  (2<<8))
  #define SQLITE_BUSY_RECOVERY           (SQLITE_BUSY   |  (1<<8))
- #define SQLITE_BUSY_SNAPSHOT           (SQLITE_BUSY   |  (2<<8))
-@@ -8877,6 +8879,341 @@ int sqlite3_deserialize(
+@@ -9273,6 +9275,341 @@ int sqlite3_deserialize(
  #define SQLITE_DESERIALIZE_RESIZEABLE  2 /* Resize using sqlite3_realloc64() */
  #define SQLITE_DESERIALIZE_READONLY    4 /* Database is read-only */
  
@@ -1493,37 +1493,37 @@ index 202155df7..7f7016cef 100644
  ** Undo the hack that converts floating point types to integer for
  ** builds on processors without floating point support.
 diff --git a/src/test_config.c b/src/test_config.c
-index aa0626ab2..e06ffdd11 100644
+index d1837d485..abb57f69b 100644
 --- a/src/test_config.c
 +++ b/src/test_config.c
-@@ -762,6 +762,12 @@ Tcl_SetVar2(interp, "sqlite_options", "mergesort", "1", TCL_GLOBAL_ONLY);
-   Tcl_SetVar2(interp, "sqlite_options", "uri_00_error", "0", TCL_GLOBAL_ONLY);
- #endif
- 
+@@ -766,6 +766,11 @@ Tcl_SetVar2(interp, "sqlite_options", "mergesort", "1", TCL_GLOBAL_ONLY);
+   Tcl_SetVar2(interp, "sqlite_options", "windowfunc", "0", TCL_GLOBAL_ONLY);
+ #else
+   Tcl_SetVar2(interp, "sqlite_options", "windowfunc", "1", TCL_GLOBAL_ONLY);
++
 +#if defined(SQLITE_ENABLE_WAL_REPLICATION) && !defined(SQLITE_OMIT_WAL)
 +  Tcl_SetVar2(interp, "sqlite_options", "wal_replication", "1", TCL_GLOBAL_ONLY);
 +#else
 +  Tcl_SetVar2(interp, "sqlite_options", "wal_replication", "0", TCL_GLOBAL_ONLY);
-+#endif
-+
+ #endif
+ 
  #define LINKVAR(x) { \
-     static const int cv_ ## x = SQLITE_ ## x; \
-     Tcl_LinkVar(interp, "SQLITE_" #x, (char *)&(cv_ ## x), \
 diff --git a/src/test_tclsh.c b/src/test_tclsh.c
-index 97f7f5d7a..59b0cc49e 100644
+index ff0ac5742..e091c414f 100644
 --- a/src/test_tclsh.c
 +++ b/src/test_tclsh.c
-@@ -105,6 +105,9 @@ const char *sqlite3TestInit(Tcl_Interp *interp){
-   extern int Zipvfs_Init(Tcl_Interp*);
- #endif
+@@ -107,6 +107,10 @@ const char *sqlite3TestInit(Tcl_Interp *interp){
    extern int TestExpert_Init(Tcl_Interp*);
+   extern int Sqlitetest_window_Init(Tcl_Interp *);
+ 
 +#if defined(SQLITE_ENABLE_WAL_REPLICATION) && !defined(SQLITE_OMIT_WAL)
 +  extern int Sqlitetestwalreplication_Init(Tcl_Interp*);
 +#endif  /* SQLITE_ENABLE_WAL_REPLICATION */
- 
++
    Tcl_CmdInfo cmdInfo;
  
-@@ -168,6 +171,11 @@ const char *sqlite3TestInit(Tcl_Interp *interp){
+   /* Since the primary use case for this binary is testing of SQLite,
+@@ -169,6 +173,11 @@ const char *sqlite3TestInit(Tcl_Interp *interp){
  #if defined(SQLITE_ENABLE_FTS3) || defined(SQLITE_ENABLE_FTS4)
    Sqlitetestfts3_Init(interp);
  #endif
@@ -1533,8 +1533,8 @@ index 97f7f5d7a..59b0cc49e 100644
 +#endif  /* SQLITE_ENABLE_WAL_REPLICATION */
 +
    TestExpert_Init(interp);
+   Sqlitetest_window_Init(interp);
  
-   Tcl_CreateObjCommand(
 diff --git a/src/test_walreplication.c b/src/test_walreplication.c
 new file mode 100644
 index 000000000..bcf854c84
