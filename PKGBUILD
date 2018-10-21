@@ -28,10 +28,6 @@ package() {
 	cd $srcdir/$_gitname
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 
-	# executable
-	install -d "${pkgdir}/usr/bin"
-	install -p -m755 umonitor ${pkgdir}/usr/bin
-
 	# license
 	install -D -p -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
