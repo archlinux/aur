@@ -1,9 +1,7 @@
-# Maintainer: Daniel Dietrich <shaddow2k@@gmail..com>
-# Contributor: bitwave <aur [aT] oomlu {d.0t} de>
+# Maintainer: bitwave <aur [aT] oomlu {d.0t} de>
+# Contributor: Daniel Dietrich <shaddow2k@@gmail..com>
 pkgname=kleiner-brauhelfer
-pkgver=1.4.4.1
-_sourcename=01_04_04_01
-_sourcename2=1_4_4_1
+pkgver=1.4.4.2
 pkgrel=1
 pkgdesc="A Qt-based tool for hobby brewer to calculate and manage the beer brewing process."
 arch=("i686" "x86_64")
@@ -11,7 +9,7 @@ url="http://www.joerum.de/kleiner-brauhelfer"
 license=('GPL3')
 depends=('qt5-svg' 'qt5-webengine')
 provides=('kleiner-brauhelfer')
-source=("http://www.joerum.de/$pkgname/lib/exe/fetch.php?media=download:${_sourcename}:kb_source_${_sourcename2}.zip"
+source=("https://github.com/Gremmel/$pkgname/archive/v$pkgver.tar.gz"
         kleiner-brauhelfer.desktop
         brauhelfer
         release.patch)
@@ -49,7 +47,7 @@ package(){
   #Icon
   install -D -m644 "res/logo.svg" "$pkgdir/usr/share/pixmaps/kleiner-brauhelfer.svg"
 }
-sha256sums=('07f5dd74c845b4bd1833d7e801f9eb55a4a1fd898d7c2fa8c34dfeac4e243ed5'
+sha256sums=('23ef0fa366bb50feeef9951ddcdd858123f0397a33a10d0d0aadaf97e78deacc'
             '737f4e890a9c5993865a4885e0291d4bdeba1a6586da67716b3bb6ff15e6ee61'
             '9d034a6c58a6adf7f584df6aba96251bcba52cdab65d661f0aa1a88761ed2067'
-            '844563b3d7d6fc9288b2225ce28614bdf2acbaa6985fc85c31213068c5eb478a')
+            'f91b3193d5b6b8fead76062c1d93d01928a0badc178a125fa47461d769048ec5')
