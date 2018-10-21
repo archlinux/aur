@@ -1,10 +1,9 @@
-# $Id$
 # Maintainer: AndyRTR <andyrtr@archlinux.org>
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgbase=xorg-server-bug865
 pkgname=xorg-server-bug865
-pkgver=1.20.1
+pkgver=1.20.2
 pkgrel=1
 arch=('x86_64')
 license=('custom')
@@ -28,7 +27,7 @@ validpgpkeys=('7B27A3F1A6E18CD9588B4AE8310180050905E40C'
               'C383B778255613DFDB409D91DB221A6900000011'
               'DD38563A8A8224537D1F90E45B8A2D50A0ECD0D3'
               '995ED5C8A6138EB0961F18474C09DD83CAAA50B2')
-sha512sums=('ef2b93a61683c8ca8d1f14b771e70db65ba119a73db8a46e7cdbf2ac2243e3f4b2732068eb5aa5d7b76f460db995a3c04390870198a5210ec30df4360ad9f94b'
+sha512sums=('1c87d78b14529dd4b438ef038118c8540d1d17bdd58bf08ec5408a2ddbe8d0dda48033a9a9477cfc2c4c304dd1078fa40968a03c4d0cd3398359dd0fadb8e7c7'
             'SKIP'
             'd707e0870367de2665c3b82f09564d17ed3f62c9e8b4bd471c11af1fb1e9249e306e92c7961a04e355756eec9f5271bc8e66999e56c73c31bc9da4127ff30a8e'
             'd84f4d63a502b7af76ea49944d1b21e2030dfd250ac1e82878935cf631973310ac9ba1f0dfedf10980ec6c7431d61b7daa4b7bbaae9ee477b2c19812c1661a22'
