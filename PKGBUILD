@@ -3,7 +3,7 @@
 
 pkgname=python-mapnik
 pkgver=3.0.16
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Python3 bindings for Mapnik"
 url="https://github.com/mapnik/python-mapnik"
@@ -18,6 +18,7 @@ sha1sums=('8e30049954b14282667677a5d5a145eddedfc8df')
 
 package() {
 	cd python-mapnik-$pkgver
-	PYCAIRO=true python setup.py install --root="$pkgdir" --optimize=1
+	export PYCAIRO_NO_IMPORT
+	python setup.py install --root="$pkgdir" --optimize=1
 }
 
