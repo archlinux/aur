@@ -10,6 +10,7 @@ pkgbase = python-umonitor-git
 	makedepends = python-setuptools
 	depends = python-daemon
 	depends = libxcb
+	conflicts = umonitor
 	source = git://github.com/rliou92/python-umonitor.git
 	md5sums = SKIP
 

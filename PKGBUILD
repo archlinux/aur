@@ -12,6 +12,7 @@ makedepends=('git' 'python-setuptools')
 # install=${_gitname}.install
 source=("git://github.com/rliou92/${_gitname}.git")
 md5sums=('SKIP')
+conflicts=("umonitor")
 
 pkgver() {
 	cd $srcdir/$_gitname
