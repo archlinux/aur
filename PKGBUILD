@@ -2,7 +2,7 @@
 
 pkgname=emacs-ess
 pkgver=18.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Emacs Speaks Statistics: A Universal Interface for Statistical Analysis"
 url="http://ess.r-project.org/"
 arch=('any')
