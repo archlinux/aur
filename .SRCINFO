@@ -1,6 +1,6 @@
 pkgbase = apush
-	pkgdesc = Alternative Pathetic Useless SHell
-	pkgver = 0.0.1
+	pkgdesc = A Potentially Useful SHell
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://gitlab.com/hanss314/apush
 	arch = any

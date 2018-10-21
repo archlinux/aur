@@ -1,8 +1,8 @@
 # Maintainer: hanss314 <hanss314@gmail.com>
 pkgname=apush
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
-pkgdesc="Alternative Pathetic Useless SHell"
+pkgdesc="A Potentially Useful SHell"
 arch=('any')
 url="https://gitlab.com/hanss314/apush"
 license=('MIT')
