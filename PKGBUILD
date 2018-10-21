@@ -1,4 +1,5 @@
-# Maintainer: Steve Holmes <steve.holmes88@gmail.com>
+# Maintainer: erik-pro <aarnaarn2@gmail.com>
+# Contributor: Steve Holmes <steve.holmes88@gmail.com>
 # Contributor: William Rea <sillywilly@gmail.com>
 
 pkgname=orca-git
