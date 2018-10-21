@@ -2,7 +2,7 @@
 # Contributor: Daniel Maslowski <info@orangecms.org>
 
 pkgname=fisher
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="A blazing fast, modern plugin manager for fish"
 arch=("any")
@@ -16,7 +16,7 @@ source=(
     "https://github.com/jorgebucaran/fisher/archive/${pkgver}.tar.gz"
 )
 sha512sums=(
-    "876afc3dc0763e0dcce787fd39a66940446417d6ed3b5651bfa95db32b14d07919ec7a8d20dcc5a2b61b627f11627c55e4367dff4d453ca5a292af24acb8ac32"
+    "05ac9ac51b2df4f0525dcac80a85c8e6b31ac12ea70da2e4bbe4a5a2cf22f472309fd97b0bbf0ae56f0673635fd4485712cfcc212e17022b801990b2c306e02a"
 )
 
 package() {
@@ -24,7 +24,7 @@ package() {
   fishpath="${sharepath}/fish"
   # install Fisherman into the global fish directory
   cd "${pkgname}-${pkgver}"
-  install -Dm 644 fisher.fish "${fishpath}/functions/fisher.fish"
+  install -Dm 644 fisher.fish "${fishpath}/vendor_functions.d/fisher.fish"
   # README and LICENSE
   install -Dm 644 LICENSE.md "${sharepath}/licenses/${pkgname}/LICENSE.md"
   install -Dm 644 README.md "${sharepath}/doc/${pkgname}/README"
