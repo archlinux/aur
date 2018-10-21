@@ -1,8 +1,9 @@
+# Maintainer: Manifest0
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
 # Generator  : CPANPLUS::Dist::Arch 1.27
 
 pkgname='perl-protocol-websocket'
-pkgver='0.16'
+pkgver='0.24'
 pkgrel='1'
 pkgdesc="WebSocket protocol"
 arch=('any')
@@ -11,10 +12,10 @@ options=('!emptydirs')
 depends=('perl-digest-sha1>=0')
 makedepends=()
 url='http://search.cpan.org/dist/Protocol-WebSocket'
-source=('http://search.cpan.org/CPAN/authors/id/V/VT/VTI/Protocol-WebSocket-0.16.tar.gz')
-md5sums=('bebdc21b9a895bc46901d6269b28410e')
-sha512sums=('b3e01a7f4ec4bf8ed40c7b8d10a20c5b9c141145b273d0e89ac602acb015cb345d274c00f0d48c6eebd4f5312db6cdf8c94d55448bf21b83342b40c9212c1afc')
-_distdir="Protocol-WebSocket-0.16"
+source=("http://search.cpan.org/CPAN/authors/id/V/VT/VTI/Protocol-WebSocket-$pkgver.tar.gz")
+md5sums=('dedb9413da61aeeb9ade69e883a4a3d9')
+sha512sums=('f5834963436c76697473185c5d9038b1fe160a740910c0db02ced361860211b6c865ae533a321c50d60bfd08d5e3efa04700bb9588650eacda3232977c98ce05')
+_distdir="Protocol-WebSocket-$pkgver"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
