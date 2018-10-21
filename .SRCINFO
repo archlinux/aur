@@ -1,7 +1,7 @@
 pkgbase = antibody-bin
 	pkgdesc = Antibody is a shell plugin manager made from the ground up thinking about performance
 	pkgver = 4.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/getantibody/antibody
 	arch = i686
 	arch = x86_64
@@ -16,6 +16,8 @@ pkgbase = antibody-bin
 	sha256sums_x86_64 = a1c69b7a19425a6e15741cf280bc14b1f1d7085c426395fe59463544abbb8912
 	source_armv6h = https://github.com/getantibody/antibody/releases/download/v4.0.0/antibody_Linux_armv6.tar.gz
 	sha256sums_armv6h = e3c7985a72153b3a134f13305b4cc76af0f60aeb968a1edd6250454cb57505ea
+	source_armv7h = https://github.com/getantibody/antibody/releases/download/v4.0.0/antibody_Linux_armv6.tar.gz
+	sha256sums_armv7h = e3c7985a72153b3a134f13305b4cc76af0f60aeb968a1edd6250454cb57505ea
 	source_aarch64 = https://github.com/getantibody/antibody/releases/download/v4.0.0/antibody_Linux_arm64.tar.gz
 	sha256sums_aarch64 = 00d88a182cab434891281019b43225472d2b9caf48ea9a1c6c6e5df3dae895a3
 
