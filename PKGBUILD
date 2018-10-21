@@ -1,7 +1,6 @@
 # Maintainer: Samuel Mesa <samuelmesa at linuxmail.org>
 
-pkgbase=tempus-framework
-pkgname=('tempus-wps-server')
+pkgname=tempus-wps-server
 _pkgname=Tempus
 pkgver=2.6.2
 pkgrel=1
@@ -9,7 +8,7 @@ pkgdesc="Tempus is a C++ framework which offers generic graph manipulation abili
 arch=(i686 x86_64)
 url="http://ifsttar.github.io/Tempus/"
 license=('GNU LGPLv2+')
-depends=('gdal' 'boost' 'postgresql' 'openmp' 'fcgi' 'libxml2' 'python-pyqt5' 'tempus-core')
+depends=('gdal' 'boost' 'postgresql' 'openmp' 'fcgi' 'libxml2' 'python-pyqt5' 'tempus-framework')
 makedepends=('cmake' 'git')
 optdepends=('qgis')
 provides=()

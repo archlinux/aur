@@ -1,4 +1,4 @@
-pkgbase = tempus-framework
+pkgbase = tempus-wps-server
 	pkgdesc = Tempus is a C++ framework which offers generic graph manipulation abilities in order to develop multimodal path planning requests (WPS Server)
 	pkgver = 2.6.2
 	pkgrel = 1
@@ -15,7 +15,7 @@ pkgbase = tempus-framework
 	depends = fcgi
 	depends = libxml2
 	depends = python-pyqt5
-	depends = tempus-core
+	depends = tempus-framework
 	optdepends = qgis
 	options = !buildflags
 	options = !makeflags
