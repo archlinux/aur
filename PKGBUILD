@@ -28,7 +28,8 @@ backup=("etc/java-$_jname/management/jmxremote.access"
         "etc/java-$_jname/net.properties"
         "etc/java-$_jname/sound.properties")
 install=$pkgname.install
-source=("http://download.oracle.com/otn-pub/java/jdk/${pkgver}+${_build}/${_hash}/${pkgname}-${pkgver}_linux-x64_bin.tar.gz"
+#source=("http://download.oracle.com/otn-pub/java/jdk/${pkgver}+${_build}/${_hash}/${pkgname}-${pkgver}_linux-x64_bin.tar.gz"
+source=('http://0install.de/files/hosted/jre-10.0.2_linux-x64_bin.tar.gz'
         "policytool.desktop")
 sha256sums=('7d2909a597574f1821903790bb0f31aaa57ab7348e3ae53639c850371450845d'
             '175bf53f43aa42bcf719b9d08d6cbc926fb6e3fbdf2eea7a8090c1750a285a7f')
