@@ -1,6 +1,6 @@
 pkgbase = radare2-cutter-git
 	pkgdesc = A Qt and C++ GUI for radare2 reverse engineering framework (originally named Iaito)
-	pkgver = 1.0.r415.g2293b60
+	pkgver = 1.0.r660.gac64bbf
 	pkgrel = 1
 	url = https://github.com/radareorg/cutter
 	arch = i686

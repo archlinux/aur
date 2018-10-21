@@ -1,7 +1,7 @@
 # Maintainer: Aaron McDaniel (mcd1992) <'aur' at the domain 'fgthou.se'>
 
 pkgname=radare2-cutter-git
-pkgver=1.0.r415.g2293b60
+pkgver=1.0.r660.gac64bbf
 pkgrel=1
 pkgdesc='A Qt and C++ GUI for radare2 reverse engineering framework (originally named Iaito)'
 url='https://github.com/radareorg/cutter'
@@ -39,7 +39,7 @@ package() {
   cd ${pkgname}
 
   install -DTm755 build/Cutter "${pkgdir}/usr/bin/Cutter"
-  install -DTm644 src/Cutter.desktop "${pkgdir}/usr/share/applications/Cutter.desktop"
+  install -DTm644 src/org.radare.Cutter.desktop "${pkgdir}/usr/share/applications/org.radare.Cutter.desktop"
   install -DTm644 src/img/cutter.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/cutter.svg"
   install -DTm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -dm755 docs/ "${pkgdir}/usr/share/doc/${pkgname}/"
