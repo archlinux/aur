@@ -2,14 +2,14 @@
 # Maintainer: Gabriele Musco <emaildigabry@gmail.com>
 
 # This PKGBUILD is configured to only build openrazer-driver-dkms, openrazer-daemon & python-openrazer by default.
-# Kernel modules for the stock kernel (package "linux") can be built into a package by setting the variable "build_kernel_modules" to "true".
-build_kernel_modules=false
+# Kernel modules for the stock kernel (package "linux") can be built into a package by setting the variable "_build_kernel_modules" to "true".
+_build_kernel_modules=false
 
 # Furthermore it is possible to build the package from a specific git commit by uncommenting the variable "_commit" and setting it to a valid commit. pkgrel should be bumped up too then.
 
 pkgbase=openrazer
 pkgname=('python-openrazer' 'openrazer-daemon' 'openrazer-driver-dkms' 'openrazer-meta')
-if $build_kernel_modules; then
+if $_build_kernel_modules; then
     # For kernel update: Update the two variables and the .install file!
     _linux_current=4.15
     _linux_next=4.16
@@ -23,7 +23,7 @@ arch=('any')
 url="https://github.com/openrazer/openrazer"
 license=('GPL2')
 makedepends=('make' 'python' 'python-setuptools')
-if $build_kernel_modules; then
+if $_build_kernel_modules; then
     makedepends+=("linux-headers>=$_linux_current" "linux-headers<$_linux_next" "linux>=$_linux_current" "linux<$_linux_next")
 fi
 if [ -z $_commit ]; then
@@ -88,7 +88,7 @@ package_openrazer-meta() {
               'razercommander: gtk frontend')
  }
 
-if $build_kernel_modules; then
+if $_build_kernel_modules; then
 _extramodules=extramodules-$_linux_current-ARCH
 
 build() {
