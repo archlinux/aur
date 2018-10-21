@@ -1,0 +1,15 @@
+pkgbase = fff-git
+	pkgdesc = A simple file manager written in bash
+	pkgver = r74.b6a240a
+	pkgrel = 1
+	url = https://github.com/dylanaraps/fff
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = xdg-utils
+	source = git+https://github.com/dylanaraps/fff.git
+	sha256sums = SKIP
+
+pkgname = fff-git
+
