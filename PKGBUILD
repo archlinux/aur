@@ -3,7 +3,7 @@
 pkgbase=dxvk-cache-pool-git
 _pkgname=dxvk-cache-pool
 pkgname=("dxvk-cache-client-git" "dxvk-cache-server-git")
-pkgver=1.0.r0.g436294a
+pkgver=1.0.1.r0.gaa9c5e9
 pkgrel=1
 pkgdesc='Client/server to share DXVK pipeline caches for smoother wine gaming.'
 arch=('any')
