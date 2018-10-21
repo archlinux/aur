@@ -2,8 +2,8 @@
 
 _pkgname=e-foto
 pkgname=$_pkgname-svn
-pkgrel=2
-pkgver=385
+pkgrel=1
+pkgver=434
 pkgdesc="A free GNU/GPL educational digital photogrammetric workstation"
 arch=(i686 x86_64)
 url=http://www.efoto.eng.uerj.br
@@ -26,22 +26,25 @@ build() {
   cd ${pkgname}
 
   qmake-qt4
-  make -j5
+  make
 }
 
 package() {
   cd ${pkgname}
+  
   make DESTDIR="$pkgdir" install || return 1
+  
   mkdir -p ${pkgdir}/usr/{bin,share/{applications,pixmaps}}
-  install -m 755 -p "${srcdir}/bin/e-foto" "${pkgdir}/usr/bin/e-foto"
+  install -m 755 -p "./build/bin/e-foto" "${pkgdir}/usr/bin/e-foto"
   install -D -m644 efoto.ico "${pkgdir}/usr/share/pixmaps/efoto.ico"  
+  
   echo "[Desktop Entry]
-Name=${_pkgname}
-Comment=A free GNU/GPL educational digital photogrammetric workstation
-Exec=/usr/bin/e-foto
-Icon=/usr/share/pixmaps/efoto.ico
-Terminal=false
-Type=Application
-X-MultipleArgs=false
-Categories=GTK;Science;" > "$pkgdir/usr/share/applications/${_pkgname}.desktop"
+    Name=${_pkgname}
+    Comment=A free GNU/GPL educational digital photogrammetric workstation
+    Exec=/usr/bin/e-foto
+    Icon=/usr/share/pixmaps/efoto.ico
+    Terminal=false
+    Type=Application
+    X-MultipleArgs=false
+    Categories=GTK;Science;" > "$pkgdir/usr/share/applications/${_pkgname}.desktop"
 }    

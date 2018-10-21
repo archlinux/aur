@@ -1,7 +1,7 @@
 pkgbase = e-foto-svn
 	pkgdesc = A free GNU/GPL educational digital photogrammetric workstation
-	pkgver = 385
-	pkgrel = 2
+	pkgver = 434
+	pkgrel = 1
 	url = http://www.efoto.eng.uerj.br
 	arch = i686
 	arch = x86_64
