@@ -2,7 +2,7 @@
 # Contributor: Daniel Maslowski <info@orangecms.org>
 
 pkgname=fisher-git
-pkgver=3.1.0.r0.gddf7334
+pkgver=3.1.1.r0.ge9925f4
 pkgrel=1
 pkgdesc="A blazing fast, modern plugin manager for fish"
 arch=("any")
@@ -29,7 +29,7 @@ package() {
     fishpath="${sharepath}/fish"
     # install Fisherman into the global fish directory
     cd "fisher"
-    install -Dm 644 fisher.fish "${fishpath}/functions/fisher.fish"
+    install -Dm 644 fisher.fish "${fishpath}/vendor_functions.d/fisher.fish"
     # README and LICENSE
     install -Dm 644 LICENSE.md "${sharepath}/licenses/${pkgname}/LICENSE.md"
     install -Dm 644 README.md "${sharepath}/doc/${pkgname}/README"
