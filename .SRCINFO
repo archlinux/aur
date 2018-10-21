@@ -1,19 +1,19 @@
-pkgbase = qgis-crayfish-plugin
-	pkgdesc = Visualiser for temporal structured and unstructured grids in QGIS.
-	pkgver = 2.7.0
+pkgbase = qgis2-crayfish-plugin
+	pkgdesc = Visualiser for temporal structured and unstructured grids in QGIS 2.x.
+	pkgver = 2.7.2
 	pkgrel = 1
 	url = https://www.lutraconsulting.co.uk/products/crayfish/
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	depends = qt4>=4.7
+	depends = qgis-ltr
 	depends = gdal
 	depends = hdf5
 	depends = netcdf
 	depends = python2
 	depends = python2-sip
-	source = https://github.com/lutraconsulting/qgis-crayfish-plugin/archive/release-2.7.0.tar.gz
-	md5sums = ee80b1b33efc33b907d8f7f330771ef0
+	source = https://github.com/lutraconsulting/qgis-crayfish-plugin/archive/release-2.7.2.tar.gz
+	md5sums = 8c57feba4da7471ee941c9aaec9fef80
 
-pkgname = qgis-crayfish-plugin
+pkgname = qgis2-crayfish-plugin
 
