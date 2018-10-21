@@ -2,12 +2,12 @@
 
 pkgname=nextcloud-desktop-git
 pkgver='2.5.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Nextcloud desktop client'
 arch=('i686' 'x86_64')
 url='https://nextcloud.com/'
 license=('GPL2')
-makedepends=('cmake' 'qt5-tools')
+makedepends=('cmake' 'qt5-tools' 'git')
 depends=('qtkeychain' 'qt5-webkit' 'hicolor-icon-theme' 'xdg-utils' 'qt5-webengine' 'qt5-svg')
 optdepends=(
   'python2-nautilus: integration with Nautilus'
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$pkgname";
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g';
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//';
 }
 
 build() {
@@ -28,8 +28,12 @@ build() {
 
 	cmake \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_INSTALL_LIBDIR=lib \
 		-DCMAKE_BUILD_TYPE="Release" \
+		-DNO_SHIBBOLETH=1 \
+		-DQTKEYCHAIN_LIBRARY=/usr/lib/libqt5keychain.so \
+		-DQTKEYCHAIN_INCLUDE_DIR=/usr/include/qt5keychain/ \
+		-DOPENSSL_INCLUDE_DIR=/usr/include/openssl \
+		-DOPENSSL_LIBRARIES=/usr/lib/ \
 		-DCMAKE_INSTALL_SYSCONFDIR=/etc/${pkgname} \
 		-DWITH_DOC=FALSE \
 		.;

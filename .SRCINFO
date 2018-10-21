@@ -1,13 +1,14 @@
 pkgbase = nextcloud-desktop-git
 	pkgdesc = Nextcloud desktop client
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nextcloud.com/
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = cmake
 	makedepends = qt5-tools
+	makedepends = git
 	depends = qtkeychain
 	depends = qt5-webkit
 	depends = hicolor-icon-theme
