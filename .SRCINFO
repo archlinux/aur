@@ -6,6 +6,7 @@ pkgbase = picard-plugins-git
 	arch = any
 	license = GPL
 	depends = picard
+	depends = python-aubio
 	conflicts = picard<=2.0
 	conflicts = picard-plugins-v2-git
 	replaces = picard-plugins-v2-git
