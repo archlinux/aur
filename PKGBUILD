@@ -11,7 +11,7 @@ tool supporting SpatiaLite. Development version"
 url="https://www.gaia-gis.it/fossil/spatialite_gui/index"
 arch=('x86_64' 'i686')
 license=('GPLv3')
-depends=('libspatialite-devel' 'librasterlite2-devel' 'virtualpg2-devel' 'wxgtk' 'openjpeg2')
+depends=('libspatialite-devel' 'librasterlite2-devel' 'virtualpg2-devel' 'wxgtk' 'openjpeg2' 'libiconv')
 conflicts=(spatialite-gui)
 replaces=(spatialite-gui)
 source=("http://www.gaia-gis.it/gaia-sins/spatialite-gui-sources/spatialite_gui-${_pkgver}.tar.gz")
