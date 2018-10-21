@@ -2,7 +2,7 @@
 
 pkgname=qgis-otb-plugin
 _pkgname=qgis-otb-plugin-master
-pkgver='6.6.0'
+pkgver='1.0.0'
 pkgrel=1
 pkgdesc="OTB provider for QGIS Processing in QGIS  3.x.x"
 arch=('i686' 'x86_64')
