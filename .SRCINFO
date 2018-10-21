@@ -1,7 +1,7 @@
 pkgbase = vacuum-im
 	pkgdesc = Crossplatform Jabber/XMPP client
 	pkgver = 1.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.vacuum-im.org/
 	arch = i686
 	arch = x86_64
@@ -17,8 +17,11 @@ pkgbase = vacuum-im
 	conflicts = vacuum-im-git
 	conflicts = vacuum-svn
 	source = https://github.com/Vacuum-IM/vacuum-im/archive/1.2.5.tar.gz
+	source = messagearchiver_build_fix.patch
 	md5sums = 2004a882c95207b3244aadf77e822b9a
+	md5sums = 5815ef9480dd6ad94b78907d79642b5f
 	sha256sums = 3237933f68884fb5b3422ad0fc97083b40a7aae9d8c105a23720c09599ffe5da
+	sha256sums = 294e6639913e1d7495fb4729045683a3d61a20395d2de2de4204434c9a5050e7
 
 pkgname = vacuum-im
 
