@@ -3,8 +3,8 @@
 # Contributor: Christian Wygoda <accounts@wygoda.net>
 
 pkgname=ossim
-_pkgname=Hollywood
-pkgver=2.4.1
+_pkgname=Islamorada
+pkgver=2.5.2
 pkgrel=1
 pkgdesc="OSSIM is a powerful suite of geospatial libraries and applications used to process imagery, maps, terrain, and vector data."
 url="http://www.ossim.org"
@@ -17,7 +17,7 @@ optdepends=( 'java-environment-common' 'openmpi' 'gpstk-bin' )
 source=(https://github.com/ossimlabs/ossim/archive/${_pkgname}-${pkgver}.tar.gz
         ossim.sh )
 install=ossim.install
-md5sums=('9b51d851e7e4f198b09058351caf10d2'
+md5sums=('e84888cdf1d0d0435f790dfc65469e60'
          'cb85c216a099b10f057cddeeae4a57fb')
 
 build() {
@@ -58,7 +58,7 @@ build() {
   -DBUILD_PDAL_PLUGIN=ON \
   $srcdir/${pkgname}-${_pkgname}-${pkgver} \
 
-  make -j3
+  make
 }
 
 
