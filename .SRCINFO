@@ -1,7 +1,7 @@
 pkgbase = python-pymemoize
 	pkgdesc = Simple Python cache and memoizing module
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mikeboers/PyMemoize
 	arch = any
 	license = BSD
