@@ -168,5 +168,5 @@
 -_add_variable_or_fallback('GAP_ROOT_DIR',     opj('$SAGE_LOCAL','gap','latest'))
 +_add_variable_or_fallback('GAP_ROOT_DIR',     opj('$SAGE_LOCAL','lib','gap-4.8'))
  _add_variable_or_fallback('THEBE_DIR',        opj('$SAGE_SHARE','thebe'))
- 
- # locate singular shared object
+ _add_variable_or_fallback('COMBINATORIAL_DESIGN_DATA_DIR', opj('$SAGE_SHARE', 'combinatorial_designs'))
+ _add_variable_or_fallback('CREMONA_MINI_DATA_DIR', opj('$SAGE_SHARE', 'cremona'))

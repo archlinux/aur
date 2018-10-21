@@ -2,7 +2,7 @@ diff --git a/src/sage/interfaces/gap.py b/src/sage/interfaces/gap.py
 index 177fc1b6eb..51c67bdd09 100644
 --- a/src/sage/interfaces/gap.py
 +++ b/src/sage/interfaces/gap.py
-@@ -201,7 +201,7 @@ import string
+@@ -202,7 +202,7 @@ import string
  
  first_try = True
  

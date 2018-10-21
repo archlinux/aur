@@ -4,11 +4,10 @@
 # Contributor: Thomas Dziedzic <gostrc at gmail dot com>
 # Contributor: Osman Ugus <ugus11 at yahoo dot com>
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
-# Special thanks to Nareto for moving the compile from the .install to the PKGBUILD
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=8.4.beta7.r0.ga1bfef8cf3
+pkgver=8.5.beta0.r0.ga0a5f5992b
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -18,20 +17,20 @@ depends=(ipython2 ppl palp brial cliquer maxima-ecl gfan sympow nauty python2-rp
   python2-matplotlib python2-scipy python2-sympy python2-networkx python2-pillow python2-future libgap flintqs lcalc lrcalc arb
   eclib gmp-ecm zn_poly gd python2-cvxopt pynac linbox rubiks pari-galdata pari-seadata-small planarity rankwidth tachyon
   sage-data-combinatorial_designs sage-data-elliptic_curves sage-data-graphs sage-data-polytopes_db sage-data-conway_polynomials
-  libhomfly libbraiding)
+  libgiac libhomfly libbraiding three.js openblas)
 optdepends=('cython2: to compile cython code' 'python2-pkgconfig: to compile cython code'
   'jmol: 3D plots' 'sage-notebook: Flask notebook interface (deprecated)'
   'sagemath-doc: Documentation and inline help' 'python2-igraph: igraph backend for graph theory'
   'coin-or-cbc: COIN backend for numerical computations' 'coin-or-csdp: for computing Lovász theta-function of graphs'
   'buckygen: for generating fullerene graphs' 'plantri: for generating some classes of graphs' 'benzene: for generating fusenes and benzenoids'
   'ffmpeg: to export animations to video' 'imagemagick: to show animations'
-  'coxeter: Coxeter groups implementation' 'cryptominisat5: SAT solver' 'gap-4.8-data: for computing Galois groups'
+  'coxeter: Coxeter groups implementation' 'gap-4.8-data: for computing Galois groups'
   'lrs: Algorithms for linear reverse search used in game theory and for computing volume of polytopes'
   'libfes: exhaustive search of solutions for boolean equations' 'python2-pynormaliz: Normaliz backend for polyhedral computations'
   'latte-integrale: integral point count in polyhedra' 'polymake: polymake backend for polyhedral computations'
-  'shared_meataxe: faster matrix arithmetic over finite fields' 'openblas: faster linear algebra'
+  'shared_meataxe: faster matrix arithmetic over finite fields'
   'sirocco: for computing the fundamental group of the complement of a plane curve' 'primecount: faster prime_pi implementation'
-  'three.js: alternative 3D plots engine' 'dot2tex: for displaying some diagrams'
+  'dot2tex: for displaying some diagrams' 'cryptominisat5: SAT solver' 'python2-pycosat: picosat SAT solver'
   'python2-pip: to install optional packages with sage -pip')
 makedepends=(cython2 boost ratpoints symmetrica python2-jinja coin-or-cbc sirocco
   mcqd coxeter bliss-graphs tdlib python2-pkgconfig shared_meataxe libfes primecount git)
@@ -46,19 +45,23 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-cremona.patch
         sagemath-lcalc-c++11.patch
         sagemath-gap-4.8.patch
-        sagemath-sphinx-1.8.patch)
+        sagemath-sphinx-1.8.patch
+        sagemath-networkx-2.2.patch
+        sagemath-cython-0.29.patch)
 sha256sums=('SKIP'
-            'f483a448c045aeff186bec4b402da8109fa12547ff36219a9aa427c2561ec8e5'
+            '6032ec3d0c983e70d4daa1391bc5daa0c948d350f3697932fc2e8472f0778037'
             '960afe4fcbffe2762b66119b8f14355386ced0d8ee52b535d0dac1dba90d365b'
             'ef265f88ceb6caf4aac2d86ea74850861d99a63d11c94fc52b2ce88053c26d1e'
-            'fc393ee5fbf507dfb76d6ad0e9193d74a954acb13f35a371bf91e11bbcb08244'
-            '18edeafb01cc1ed7270c2dfb41a58717918680c98e8eada1858736acd65d92ba'
+            '769fd5a9c377be61de41e1e30004dadb23818da901cceb6e1bece7712ba7cb83'
+            '3a0ebda1df708f263be830751cc5ddb430ca1f685b25b08d4b6592b65b123ebe'
             '7fcb52e96935dccb0f958d37c2f4e3918392480b9af53e08562f6cba6c68cb94'
             '4722f9257f7b58a5dc8be2e9163ebba6d7b3ee011ff1ab9c0dbfb1330d367261'
             '7efb38ba511037feb3abbd88576323320555ba50235ddc7e3d423ca294dd42ed'
             '5114c912f821900e5bfae1e2cfeb7984de946d0b23e1182b0bf15be1d803dfd0'
-            '3d02f6e349213ff4cea6a3acf5e7f8ec11a37b6ead61b338931f07073ebcb36e'
-            '7dd2ab94fddda8e7c2cdd5250642c4cdd00b7702815d88762fbcd68416bacaee')
+            '7304d6242bf0e8241d3d83b772d92f00f905c425b894d36a25c264edca279986'
+            '7dd2ab94fddda8e7c2cdd5250642c4cdd00b7702815d88762fbcd68416bacaee'
+            '0e3436a68cca4165d3d8519a7d4357b1a59515e9e4cc8bd816a852ca4097e274'
+            'd1af7916e21d0a4de7b3ab5d4054c6b3175b84551ea6639a2680e6102c0b990b')
 
 pkgver() {
   cd sage
@@ -93,6 +96,10 @@ prepare(){
   patch -p1 -i ../fes02.patch
 # use Features to detect Cremona databases https://trac.sagemath.org/ticket/25825
   patch -p1 -i ../sagemath-cremona.patch
+# Fix graph generators with networkx 2.2 https://trac.sagemath.org/ticket/26326
+  patch -p1 -i ../sagemath-networkx-2.2.patch
+# Fix build with cython 0.29 https://trac.sagemath.org/ticket/25292
+  patch -p1 -i ../sagemath-cython-0.29.patch
 
 # use python2
   sed -e 's|sage-python23|python2|' -e 's|#!/usr/bin/env python\b|#!/usr/bin/env python2|' -i src/bin/*
@@ -145,7 +152,7 @@ package_sagemath-git() {
 
 package_sagemath-jupyter-git() {
   pkgdesc='Jupyter kernel for SageMath'
-  depends=(sagemath python2-jupyter_client python2-ipywidgets mathjax)
+  depends=(sagemath python2-jupyter_client python2-ipywidgets mathjax jsmol)
   optdepends=('sage-notebook-exporter: convert flask notebooks to Jupyter')
 
   cd sage/src
