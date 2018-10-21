@@ -1,0 +1,41 @@
+From: Nicolas Iooss
+Date: Sun, 21 Oct 2018 11:59:42 +0200
+Subject: Display OGRE settings window on first start
+
+* Fix OGRE 1.10.8 patch with showConfigDialog(), in order to display
+  OGRE settings window
+* Fix -Wstringop-truncation reported by gcc 8.2.1
+diff --git a/src/hiscore.cpp b/src/hiscore.cpp
+index 5b6a8e417a61..7cc4e8f199b4 100644
+--- a/src/hiscore.cpp
++++ b/src/hiscore.cpp
+@@ -221,7 +221,7 @@ void HiscoreList::sort() {
+ void HiscoreList::clear() {
+ 	for(int f=0; f<NUM_NAMES; f++) {
+ 		memset(mList[f].name, 0, sizeof(mList[f].name));
+-		strncpy(mList[f].name, "- - - - - - - - - - - - - - - -", NAME_LEN);
++		strncpy(mList[f].name, "- - - - - - - - - - - - ", NAME_LEN);
+ 		mList[f].score = 0;
+ 	}
+ }
+diff --git a/src/ogreapp.cpp b/src/ogreapp.cpp
+index d9ed3eced4dc..0c15bf52069d 100644
+--- a/src/ogreapp.cpp
++++ b/src/ogreapp.cpp
+@@ -30,6 +30,7 @@
+ #include "soundsystem.h"
+ #include "mpakogre.h"
+ #include <OgreOverlaySystem.h>
++#include <OgreBitesConfigDialog.h>
+ 
+ #if(OGRE_PLATFORM == OGRE_PLATFORM_WIN32)
+ #define WIN32_LEAN_AND_MEAN
+@@ -103,7 +104,7 @@ bool OgreApplication::setup() {
+ 
+ 	// Get the configuration
+ 	if(!mRoot->restoreConfig())
+-		if(!mRoot->showConfigDialog(NULL))
++		if(!mRoot->showConfigDialog(OgreBites::getNativeConfigDialog()))
+ 			return false;
+ 
+ 	// Initialise the system
