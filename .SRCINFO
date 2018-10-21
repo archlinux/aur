@@ -1,6 +1,6 @@
 pkgbase = yandex-disk-indicator
 	pkgdesc = Panel indicator (GUI) for YandexDisk CLI client for Linux.
-	pkgver = 1.10.4
+	pkgver = 1.10.5
 	pkgrel = 1
 	url = https://github.com/slytomcat/yandex-disk-indicator
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = yandex-disk-indicator
 	depends = libappindicator-gtk3
 	depends = xclip
 	depends = zenity
-	source = https://github.com/slytomcat/yandex-disk-indicator/archive/1.10.4.tar.gz
-	md5sums = 6be5bd136eb34e48967eeb702e9672ae
+	source = https://github.com/slytomcat/yandex-disk-indicator/archive/1.10.5.tar.gz
+	md5sums = 9886dff3c9407c893d2008debe7a2145
 
 pkgname = yandex-disk-indicator
 
