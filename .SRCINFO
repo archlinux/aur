@@ -1,7 +1,7 @@
 pkgbase = openastro
 	pkgdesc = Open source fully-featured astrology software
-	pkgver = 1.1.56
-	pkgrel = 2
+	pkgver = 1.1.57
+	pkgrel = 1
 	url = http://www.openastro.org/
 	arch = i686
 	arch = x86_64
@@ -17,10 +17,10 @@ pkgbase = openastro
 	conflicts = swisseph_12
 	conflicts = swisseph_18
 	conflicts = swisseph-fixstars
-	source = openastro.org_1.1.56.orig.tar.gz::http://www.openastro.org/download.php?file=source&type=openastro
-	source = openastro.org-data_1.8.orig.tar.gz::http://openastro.org/download.php?file=source&type=data
-	md5sums = 3d9c160e18c3b3bc1635f63d197ae1cc
-	md5sums = b799f2ceca718d5ea15e18770dea07d8
+	source = openastro.org_1.1.57.orig.tar.gz::http://www.openastro.org/download.php?file=source&type=openastro
+	source = openastro.org-data_1.9.orig.tar.gz::http://openastro.org/download.php?file=source&type=data
+	md5sums = 4bb719ac3a22976d425f6337fd925d32
+	md5sums = bf9b6b2ba2ced1a532e16df11447d471
 
 pkgname = openastro
 
