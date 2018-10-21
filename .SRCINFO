@@ -1,22 +1,14 @@
 pkgbase = python-requests-futures
 	pkgdesc = Asynchronous Python HTTP for Humans.
-	pkgver = 0.9.7
-	pkgrel = 4
+	pkgver = 0.9.8
+	pkgrel = 1
 	url = https://github.com/ross/requests-futures
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
-	makedepends = python-requests
-	makedepends = python2-setuptools
-	makedepends = python2-requests
-	makedepends = python2-futures
-	source = https://pypi.python.org/packages/source/r/requests-futures/requests-futures-0.9.7.tar.gz
-	sha256sums = a9ca2c3480b6fac29ec5de59c146742e2ab2b60f8c68581766094edb52ea7bad
+	depends = python-requests
+	source = https://pypi.python.org/packages/source/r/requests-futures/requests-futures-0.9.8.tar.gz
+	sha256sums = 76a22b95723267b53d8cc50e54d00b98d95afa02fd8449501b07a3797f46a96d
 
 pkgname = python-requests-futures
-	depends = python-requests
-
-pkgname = python2-requests-futures
-	depends = python2-requests
-	depends = python2-futures
 
