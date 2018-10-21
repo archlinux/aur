@@ -1,6 +1,6 @@
 pkgbase = razergenie
 	pkgdesc = Qt application for configuring your Razer devices under GNU/Linux.
-	pkgver = 0.8
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/z3ntu/RazerGenie
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = razergenie
 	makedepends = qt5-tools
 	depends = qt5-base
 	depends = openrazer-daemon
-	source = https://github.com/z3ntu/RazerGenie/releases/download/v0.8/RazerGenie-0.8.tar.xz
-	source = https://github.com/z3ntu/RazerGenie/releases/download/v0.8/RazerGenie-0.8.tar.xz.asc
+	source = https://github.com/z3ntu/RazerGenie/releases/download/v0.8.1/RazerGenie-0.8.1.tar.xz
+	source = https://github.com/z3ntu/RazerGenie/releases/download/v0.8.1/RazerGenie-0.8.1.tar.xz.asc
 	validpgpkeys = BD04DA24C971B8D587B2B8D7FAF69CF6CD2D02CD
-	sha512sums = 2d8f2b3bfdfc175e525316ae6d63762bc9b96538df02976341cbd893c54d11a8cb56e6449754af114333b83b38e0dfd78eedd0a4bdd697b91e467e86566f6272
+	sha512sums = 3a35c353b81cc30a70e200eab132515df0481e6f829b17c2570a93ba5fc367c0dfea8cb18762575ffc26936492f44aa7e20f397779e8b6697bf7a854b5b3b8ab
 	sha512sums = SKIP
 
 pkgname = razergenie
