@@ -3,7 +3,7 @@
 
 pkgname='yandex-disk-indicator'
 pkgver=1.10.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Panel indicator (GUI) for YandexDisk CLI client for Linux.'
 arch=('i686' 'x86_64')
 url='https://github.com/slytomcat/yandex-disk-indicator'
@@ -17,7 +17,7 @@ package() {
     bsdtar xf ${pkgver}.tar.gz
 
     cd ${pkgname}-${pkgver}/build
-    ./prepare.sh
+    ./install.sh
 
     mkdir $pkgdir/usr
     cp -r yd-tools/usr/* $pkgdir/usr
