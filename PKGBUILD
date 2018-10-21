@@ -2,13 +2,13 @@
 # Contributor: William Rea <sillywilly@gmail.com>
 
 pkgname=orca-git
-pkgver=r7222+gce6a5f2
+pkgver=r8671+g65086715d
 pkgrel=1
 pkgdesc="Screen reader for individuals who are blind or visually impaired (development version)"
 arch=(any)
 license=('LGPL')
-url="http://www.gnome.org/projects/orca"
-source=(${pkgname}::'git://git.gnome.org/orca')
+url="https://gitlab.gnome.org/GNOME/orca.git"
+source=(${pkgname}::'git+https://gitlab.gnome.org/GNOME/orca.git')
 install=orca-git.install
 options=('!libtool')
 depends=('gtk3'
