@@ -17,6 +17,8 @@ depends=('icu'
          'python2-pyqt5'
          'python2-sipsimple>=3.1'
          'python2-zope-interface'
+         'python2-oauth2client'
+         'python2-service-identity'
          'qt5-webkit'
          'qt5-svg')
 optdepends=('python2-service-identity: for TLS certificate hostname verification'
