@@ -1,7 +1,7 @@
 pkgbase = whipper-git
 	pkgdesc = A Unix CD ripper aiming for accuracy over speed -- forked from morituri
-	pkgver = 0.7.0.r37.g669b356
-	pkgrel = 3
+	pkgver = 0.7.0.r38.g02fd962
+	pkgrel = 1
 	url = https://github.com/whipper-team/whipper
 	arch = any
 	license = GPL3
