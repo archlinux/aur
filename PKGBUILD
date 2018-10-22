@@ -1,7 +1,7 @@
 # Maintainer: Xuanwo <xuanwo@archlinuxcn.org>
 pkgname=tikv-pd
 pkgver=2.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Manage and schedule the TiKV cluster.'
 makedepends=('go' 'make')
 arch=('x86_64')
@@ -12,11 +12,13 @@ backup=(etc/pd/pd.toml)
 source=(pd-${pkgver}.tar.gz::https://github.com/pingcap/pd/archive/v${pkgver}.tar.gz
         pd.service
         pd-sysusers.conf
+        pd-tmpfiles.conf
         pd.toml)
 sha256sums=('4f3d267aa0c34828aea8b4797a02041efa32e81cda2c72d51e0b1f5bafab858b'
-            '3b540c0cc468816b3be2d8d271f5649c836860c1e2eddfa7c043880bef226917'
+            'bc1c5dea8daa72ea602e6f5735cff55d2c46d8846168bac9b66a6f9d1993715e'
             '5edd250ba9e70a4f8d27581ed658f0fbfeca58ca62429dec12bb5fffc0919b67'
-            '14d8031f7d5d071e99dd3291c966d246c89a852b9c54a889d83b7c01421a45fc')
+            '15633aaa2d7726375112a1b5af88105878f09c176a542cde6d0e5f0c4eee4495'
+            '11bc441dfd0327c56218f214a9869da20ccdf7e5265c2f5ffca45089ba8094db')
 
 _gopkgname='github.com/pingcap/pd'
 
@@ -51,6 +53,8 @@ package() {
   install -Dm644 "$srcdir/pd.service" "$pkgdir/usr/lib/systemd/system/pd.service"
   # Install sysusers
   install -Dm644 "$srcdir/pd-sysusers.conf" "$pkgdir/usr/lib/sysusers.d/pd.conf"
+  # Install tmpfiles
+  install -Dm644 "$srcdir/pd-tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/pd.conf"
   # Install default pd config
   install -Dm644 pd.toml "$pkgdir/etc/pd/pd.toml"
 

@@ -1,7 +1,7 @@
 # PD Configuration.
 
 name = "pd"
-data-dir = "default.pd"
+data-dir = "/var/lib/pd"
 
 client-urls = "http://127.0.0.1:2379"
 # if not set, use ${client-urls}
