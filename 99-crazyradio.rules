@@ -1,0 +1,2 @@
+# Crazyradio https://github.com/bitcraze/crazyflie-lib-python#setting-udev-permissions
+SUBSYSTEM=="usb", ATTRS{idVendor}=="1915", ATTRS{idProduct}=="7777", MODE="0664", GROUP="plugdev"
