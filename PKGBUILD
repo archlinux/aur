@@ -2,7 +2,7 @@
 # Contributor: Chris Kitching <chriskitching@linux.com>
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 pkgname=mingw-w64-cairo-bootstrap
-pkgver=1.15.14
+pkgver=1.16.0
 pkgrel=1
 pkgdesc="Cairo vector graphics library (mingw-w64 bootstrap)"
 arch=(any)
@@ -13,11 +13,11 @@ depends=(mingw-w64-pixman mingw-w64-glib2 mingw-w64-fontconfig mingw-w64-libpng 
 options=(!strip !buildflags staticlibs)
 provides=(${pkgname%-bootstrap})
 conflicts=(${pkgname%-bootstrap})
-source=("https://cairographics.org/snapshots/cairo-${pkgver}.tar.xz"
+source=("https://cairographics.org/releases/cairo-${pkgver}.tar.xz"
         "0009-standalone-headers.mingw.patch"
         "0026-create-argb-fonts.all.patch"
         "0027-win32-print-fix-unbounded-surface-assertion.patch")
-sha256sums=('16566b6c015a761bb0b7595cf879b77f8de85f90b443119083c4c2769b93298d'
+sha256sums=('5e7b29b3f113ef870d1e3ecf8adf21f923396401604bda16d44be45e66052331'
             '234de8c5d4c28b03c19e638a353e8defb2de0367a634c002b0ea7d2877bd0756'
             '6db6c44fbdb4926d09afa978fe80430186c4b7b7d255059602b1f94c6a079975'
             '7e244c20eec8c7b287dbee1d34de178d9b0c419dc4c2b11c90eaf626c92bf781')
