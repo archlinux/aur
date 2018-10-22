@@ -4,8 +4,8 @@
 
 pkgname=xf86-video-intel-git
 _pkgname=xf86-video-intel
-pkgver=2.99.917+847+g25c9a2fc
-pkgrel=4
+pkgver=2.99.917+848+gf146dc06
+pkgrel=1
 epoch=1
 arch=(x86_64)
 url="https://01.org/linuxgraphics"
