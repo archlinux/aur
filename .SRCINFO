@@ -1,6 +1,6 @@
 pkgbase = beaker-browser-bin
 	pkgdesc = Peer-to-peer browser with tools to create and host websites
-	pkgver = 0.8.0_prerelease.9
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://beakerbrowser.com/
 	install = beaker-browser-bin.install
@@ -14,13 +14,13 @@ pkgbase = beaker-browser-bin
 	provides = beaker-browser
 	provides = beakerbrowser
 	options = !strip
-	source = https://github.com/beakerbrowser/beaker/releases/download/0.8.0-prerelease.9/beaker-browser-0.8.0-prerelease.9-x86_64.AppImage
+	source = https://github.com/beakerbrowser/beaker/releases/download/0.8.0/beaker-browser-0.8.0-x86_64.AppImage
 	source = beaker-browser.desktop
 	source = beaker-browser
 	source = LICENSE
-	md5sums = 2f721d557b699cf41032d62f8e8de2b5
+	md5sums = 9177be31dcd54b6406aed5cfd9207168
 	md5sums = 34b48b022c6c71212f0adb3981f2925d
-	md5sums = 37dccf6c7d9145b93538d884e3d0f4dd
+	md5sums = 09aa78a4ebb98e0c71aeaaf46fd6b11b
 	md5sums = 3862c029863f42c81265a712f9c17c4c
 
 pkgname = beaker-browser-bin
