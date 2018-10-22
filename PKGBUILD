@@ -8,7 +8,7 @@ pkgdesc='Interface to control ArdHue Arduino based digital RGB system'
 arch=('any')
 url='https://gitlab.com/gabmus/ardhue'
 license=('GPL3')
-depends=('python-pyserial' 'gtk3>=3.14' 'python')
+depends=('python-pyserial' 'gtk3>=3.14' 'python' 'python-gmgtk' 'python-gmconfig')
 makedepends=('git' 'meson')
 provides=('ardhue')
 conflicts=('ardhue')

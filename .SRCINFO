@@ -10,6 +10,8 @@ pkgbase = ardhue-git
 	depends = python-pyserial
 	depends = gtk3>=3.14
 	depends = python
+	depends = python-gmgtk
+	depends = python-gmconfig
 	provides = ardhue
 	conflicts = ardhue
 	source = ardhue::git+https://gitlab.com/gabmus/ardhue
