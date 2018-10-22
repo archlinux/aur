@@ -1,7 +1,7 @@
-pkgbase = oracle-xe
+pkgbase = oracle-xe-11g
 	pkgdesc = A non free DBMS (legacy 11g version)
-	pkgver = 11.2.0.2.0
-	pkgrel = 1
+	pkgver = 11.2.0_1.0
+	pkgrel = 4
 	url = http://www.oracle.com/
 	install = oracle.install
 	arch = x86_64
@@ -30,5 +30,5 @@ pkgbase = oracle-xe
 	md5sums = 4d4a2e1bcc29b9c1fd197b42ccc4e0ac
 	md5sums = 3dd923ac2df9fd38827fc9fc0048273a
 
-pkgname = oracle-xe
+pkgname = oracle-xe-11g
 
