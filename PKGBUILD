@@ -2,8 +2,8 @@
 
 _name=mosdepth
 pkgname=mosdepth-bin
-pkgver=0.2.1
-pkgrel=2
+pkgver=0.2.3
+pkgrel=1
 pkgdesc="Fast BAM/CRAM depth calculation for WGS, exome, or targeted sequencing"
 arch=('any')
 url="https://github.com/brentp/mosdepth"
@@ -13,9 +13,8 @@ conflicts=('mosdepth')
 source=(
     https://github.com/brentp/"${_name}"/releases/download/v"${pkgver}"/"${_name}"
     "${_name}"-"${pkgver}".tar.gz::https://github.com/brentp/"${_name}"/archive/v"${pkgver}".tar.gz)
-sha256sums=(
-    '6e3dbd2ac93ee9e770f922de4b1641882558e1e70cf2168e509c6bc07d9486e7'
-    '7aadd0f322a50723a5b396cfe8eb640728be03918a8d41b5a8ab1ba4943c26c6')
+sha256sums=('0aaeb283b296e5ee0a2d819b4842b92289145ed17a37210144f0e02edd3629c4'
+            'a05b3ef3c779c2155816954322adca2d7c06b3e19a409993020b9ad4bbd28dd4')
 
 package() {
   install -Dm755 "${_name}" "${pkgdir}"/usr/bin/"${_name}"
