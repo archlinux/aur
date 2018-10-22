@@ -1,16 +1,14 @@
 pkgbase = sealcrypto
 	pkgdesc = Simple Encrypted Arithmetic Library
-	pkgver = 2.3.1
+	pkgver = 3.0
 	pkgrel = 1
 	url = https://sealcrypto.org/
 	arch = any
 	license = MSR-LA
-	makedepends = tar
-	makedepends = gcc
-	makedepends = autoconf
+	makedepends = cmake
 	provides = sealcrypto
-	source = https://download.microsoft.com/download/B/3/7/B3720F6B-4F4A-4B54-9C6C-751EF194CBE7/SEAL_2.3.1.tar.gz
-	sha1sums = d45694ede6ba46c8bdae00718d4a8348e2aaac6a
+	source = https://download.microsoft.com/download/B/3/7/B3720F6B-4F4A-4B54-9C6C-751EF194CBE7/SEAL_3.0.tar.gz
+	sha1sums = 106914a237262a51a97ae9b87b0a35402978ea79
 
 pkgname = sealcrypto
 
