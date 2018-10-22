@@ -1,7 +1,7 @@
 # Maintainer: Peter Vágner <pvdeejay@gmail.com>
 
 pkgname=emacs-speechd-el-git
-pkgver=20160710.ec344ed
+pkgver=20180105.0b25d3e
 pkgrel=1
 pkgdesc="Emacs speech and Braille output interface"
 url="http://devel.freebsoft.org/speechd-el"
@@ -15,7 +15,7 @@ optdepends=('speech-dispatcher: for speech output'
 conflicts=('emacs-speechd-el')
 provides=(emacs-speechd-el=${pkgver})
 install=emacs-speechd-el-git.install
-source=(git://git.freebsoft.org/git/speechd-el)
+source=(git+https://github.com/brailcom/speechd-el.git)
 md5sums=('SKIP')
 _gitname=speechd-el
 
