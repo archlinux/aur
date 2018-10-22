@@ -1,8 +1,8 @@
 # Maintainer: Radek Podgorny <radek@podgorny.cz
 
 pkgname=vncsnapshot-git
-pkgver=r7.3903845
-pkgrel=2
+pkgver=r8.26a2ff5
+pkgrel=1
 pkgdesc='VNC snapshots'
 arch=('i686' 'x86_64')
 url='https://github.com/rpodgorny/VNCsnapshot'

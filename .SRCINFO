@@ -1,7 +1,7 @@
 pkgbase = vncsnapshot-git
 	pkgdesc = VNC snapshots
-	pkgver = r7.3903845
-	pkgrel = 2
+	pkgver = r8.26a2ff5
+	pkgrel = 1
 	url = https://github.com/rpodgorny/VNCsnapshot
 	arch = i686
 	arch = x86_64
