@@ -2,7 +2,7 @@
 
 pkgname=('python-jpegtran-cffi' 'python2-jpegtran-cffi')
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast, (mostly) lossless JPEG transformations with Python'
 arch=('any')
 url='https://github.com/jbaiter/jpegtran-cffi'
@@ -12,6 +12,7 @@ sha256sums=('1d5f10ca9dc86be8ca0ead2745e13b1c9e14f3812ebc4d90926a6836ec7fffc8')
 depends=('libjpeg-turbo')
 
 package_python-jpegtran-cffi() {
+  depends+=('python-cffi')
   makedepends=('python-setuptools')
   cd "$srcdir"/jpegtran-cffi-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1
@@ -19,6 +20,7 @@ package_python-jpegtran-cffi() {
 }
 
 package_python2-jpegtran-cffi() {
+  depends+=('python2-cffi')
   makedepends=('python2-setuptools')
   cd "$srcdir"/jpegtran-cffi-$pkgver
 	python2 setup.py install --root="$pkgdir" --optimize=1
