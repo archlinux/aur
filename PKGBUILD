@@ -6,11 +6,11 @@
 
 pkgname=dvb-apps
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 builddir=dvb-apps-3d43b280298c
 pkgdesc='Linux DVB API applications and utilities'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
-url='https://www.linuxtv.org'
+url='https://www.linuxtv.org/wiki/index.php/LinuxTV_dvb-apps'
 license=('GPL')
 conflicts=('linuxtv-dvb-apps')
 depends=('glibc')
