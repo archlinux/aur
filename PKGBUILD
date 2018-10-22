@@ -3,8 +3,8 @@
 # Contributer: sowieso <sowieso@dukun.de>
 
 pkgname=minecraft-server
-pkgver=1.13.1
-_nonce=fe123682e9cb30031eae351764f653500b7396c9
+pkgver=1.13.2
+_nonce=3737db93722a9e39eeada7c27e7aca28b144ffa7
 pkgrel=1
 pkgdesc="Minecraft server unit files, script, and jar"
 arch=('any')
@@ -16,14 +16,14 @@ optdepends=("tar: needed in order to create world backups"
 conflicts=('minecraft-server-systemd' 'minecraft-canary')
 backup=('etc/conf.d/minecraft')
 install="${pkgname}.install"
-source=("minecraft_server.${pkgver}.jar"::"https://launcher.mojang.com/mc/game/${pkgver}/server/${_nonce}/server.jar"
+source=("minecraft_server.${pkgver}.jar"::"https://launcher.mojang.com/v1/objects/${_nonce}/server.jar"
 	"minecraftd-backup.service"
 	"minecraftd-backup.timer"
 	"minecraftd.service"
 	"minecraftd.conf"
 	"minecraftd.sh")
 noextract=("minecraft_server.${pkgver}.jar")
-sha512sums=('a82805cc0b6ea0c3481405eef1910549623db9b025ff78d228ef9c767950b34d1e8c30452f2f6f9ec22a53445a8dd64ebaec7c13cee1a9eac63bfc80725fcc44'
+sha512sums=('c9a98f1d224519369d6c4882cfe93a94983661c0c0b8a7f0b2f271af752fde5693025b684a01665992b3c70b37ac891ce1747f062bd86354777c416219629b64'
             'c8f96bafb0ba3fd8946ac791b09e75cae54dc1a8e02822f91ca70a77a8ba45b253a83c4db30f9cfbf0658a2608b38e6de3d00f1d832ef676f329a78e69eab3e7'
             '19ee3646bfbace353b65c0373594edb654de11c9671f29cebad3b31109f29f94ade1d529d9f409b0989c376bef9b451585b22a1e0ac4295fcc92d9565f808418'
             '5203f6331f740ecfcea2a2cc653603ae97419baa89e08512f9d8feb63e4a52978442a69b313eccd9037b676a62ab528e2b533c0fb95a9c7177318279fe0cde79'
