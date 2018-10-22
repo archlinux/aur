@@ -1,5 +1,5 @@
-# $Id: PKGBUILD 328928 2018-07-18 01:42:51Z foutrelis $
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Stephan Springer <buzo+arch@Lini.de>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Douglas Soares de Andrade <douglas@archlinux.org>
 # Contributor: riai <riai@bigfoot.com> Ben <ben@benmazer.net>
@@ -7,11 +7,11 @@
 pkgbase=pyqt4
 pkgname=('pyqt4-common' 'python-pyqt4' 'python2-pyqt4')
 pkgver=4.12.1
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url='http://www.riverbankcomputing.com/software/pyqt/intro'
 license=('GPL')
-makedepends=('python-sip' 'python-dbus' 'python2-sip' 'phonon-qt4' 'mesa'
+makedepends=('sip' 'python-sip' 'python2-sip' 'python-dbus' 'phonon-qt4' 'mesa'
              'python2-opengl' 'qt-assistant-compat' 'python2-dbus')
 source=("http://downloads.sourceforge.net/pyqt/PyQt4_gpl_x11-${pkgver}.tar.gz")
 md5sums=('0112e15858cd7d318a09e7366922f874')
@@ -45,7 +45,7 @@ build() {
   make
 }
 
-package_pyqt4-common(){
+package_pyqt4-common() {
   pkgdesc="Common PyQt files shared between python-pyqt4 and python2-pyqt4"
   depends=('qt4')
   replaces=('pyqt-common')
@@ -62,9 +62,9 @@ package_pyqt4-common(){
   cp -r sip/* "${pkgdir}"/usr/share/sip/PyQt4
 }
 
-package_python-pyqt4(){
+package_python-pyqt4() {
   pkgdesc="A set of Python 3.x bindings for the Qt toolkit"
-  depends=('python-sip' 'python-dbus' 'pyqt4-common')
+  depends=('sip' 'python-sip' 'python-dbus' 'pyqt4-common')
   optdepends=('phonon-qt4: enable audio and video in PyQt applications'
               'qt-assistant-compat: add PyQt online help in Qt Assistant')
   replaces=('pyqt')
@@ -80,9 +80,9 @@ package_python-pyqt4(){
   rm "${pkgdir}"/usr/share/qt4/qsci/api/python/PyQt4.api
 }
 
-package_python2-pyqt4(){
+package_python2-pyqt4() {
   pkgdesc="A set of Python 2.x bindings for the Qt toolkit"
-  depends=('python2-sip' 'python2-dbus' 'pyqt4-common')
+  depends=('sip' 'python2-sip' 'python2-dbus' 'pyqt4-common')
   optdepends=('phonon-qt4: enable audio and video in PyQt applications'
               'python2-opengl: enable OpenGL 3D graphics in PyQt applications'
               'qt-assistant-compat: add PyQt online help in Qt Assistant')
