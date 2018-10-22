@@ -3,7 +3,7 @@
 
 pkgname=go-bindata
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A small utility which generates Go code from any file"
 arch=('x86_64')
 url='https://github.com/shuLhan/go-bindata'
@@ -11,7 +11,7 @@ license=('CC0 1.0')
 depends=('glibc')
 makedepends=('go-pie')
 source=("https://github.com/shuLhan/go-bindata/archive/v${pkgver}.tar.gz")
-sha512sums=('1d1d0a0f3e4865d0b7c4b61c6ed0570800948054c620c4a2f4c6ad03614b69fb931ef19697193717dd3109922962684314ce81102e2a0e325c3ce904a7bd230c')
+sha512sums=('7fc367c49267064eadf469da6dc4293d001ef7c39b9fe2e19958bcfa361cd8d58f5a8e414e8f56598c33b3823c174d9cc21bdcc3f39c9c7d1f975335a267fbe4')
 
 prepare() {
     mkdir -p "${srcdir}/src/github.com/shuLhan/"
