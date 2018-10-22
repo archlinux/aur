@@ -5,13 +5,14 @@
 # Contributor: Ben Wolsieffer <benwolsieffer at gmail dot com>
 
 _pkgname=netbeans
-pkgname=netbeans8
+pkgname=${_pkgname}8
 pkgver=8.2
 # Get the subver from https://netbeans.org/downloads/zip.html
 _subver=201609300101
 pkgrel=1
 pkgdesc='IDE for Java, HTML5, PHP, Groovy, C and C++'
-conflicts=('netbeans')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 arch=('any')
 url='http://netbeans.org/'
 license=('CDDL')
