@@ -1,6 +1,6 @@
 pkgbase = python-gmgtk
 	pkgdesc = Boilerplate code for Gtk+ 3 apps with python 3.x
-	pkgver = 6ac1fa7
+	pkgver = 22f826c
 	pkgrel = 1
 	url = https://gitlab.com/gabmus/python-gmgtk
 	arch = any
