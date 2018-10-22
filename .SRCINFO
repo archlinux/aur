@@ -1,0 +1,17 @@
+pkgbase = python-gmgtk
+	pkgdesc = Boilerplate code for Gtk+ 3 apps with python 3.x
+	pkgver = 8916c32
+	pkgrel = 1
+	url = https://gitlab.com/gabmus/python-gmgtk
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	depends = gtk3>=3.24
+	provides = python-gmgtk
+	conflicts = python-gmgtk
+	source = python-gmgtk::git+https://gitlab.com/gabmus/python-gmgtk
+	sha256sums = SKIP
+
+pkgname = python-gmgtk-git
+
