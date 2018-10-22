@@ -8,7 +8,7 @@ pkgname=(
 	"libpod-python"
 )
 pkgver=0.10.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A library used to create container pods."
 arch=("x86_64")
 url="https://github.com/containers/libpod"
@@ -51,15 +51,15 @@ package_libpod() {
 	depends+=(
 		"cri-o"
 		"device-mapper"
+		"libpod-networking"
 		"libseccomp"
 		"runc"
 		"ostree"
+		"skopeo"
 	)
 	optdepends+=(
 		"libpod-docker: docker cli"
-		"libpod-networking: enable networking"
 		"libpod-python: pypodman"
-		"skopeo: default registry configuration"
 	)
 	provides+=(
 		"podman"
