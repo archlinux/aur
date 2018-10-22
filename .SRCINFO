@@ -1,6 +1,6 @@
 pkgbase = subgit
 	pkgdesc = Provides smooth Subversion to Git migration and bidirectional synchronization
-	pkgver = 3.3.4
+	pkgver = 3.3.5
 	pkgrel = 1
 	url = https://subgit.com
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = subgit
 	depends = java-runtime-headless>=8
 	optdepends = subversion
 	optdepends = git
-	source = https://subgit.com/files/subgit-3.3.4.zip
-	md5sums = 2e71013a4b588b0afb6fb232f215ef04
+	source = https://subgit.com/files/subgit-3.3.5.zip
+	md5sums = d400d27adb8cddd694926154706ea238
 
 pkgname = subgit
 
