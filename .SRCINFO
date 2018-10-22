@@ -1,0 +1,27 @@
+pkgbase = netbeans8
+	pkgdesc = IDE for Java, HTML5, PHP, Groovy, C and C++
+	pkgver = 8.2
+	pkgrel = 1
+	url = http://netbeans.org/
+	arch = any
+	license = CDDL
+	makedepends = gendesk
+	makedepends = setconf
+	depends = java-environment
+	depends = ttf-font
+	depends = libxtst
+	depends = giflib
+	depends = atk
+	optdepends = php: for developing programs in php
+	optdepends = groovy: for developing programs in groovy
+	optdepends = lib32-glibc
+	conflicts = netbeans
+	options = !strip
+	backup = usr/share/netbeans/etc/netbeans.conf
+	source = http://download.netbeans.org/netbeans/8.2/final/zip/netbeans-8.2-201609300101.zip
+	source = https://cdn.rawgit.com/ComFreek/chocolatey-packages/779f5c96f817ed1fa0d76fd90841873dc6c0ba74/icons/netbeans.png
+	sha256sums = ad9888334b9a6c1f1138dcb2eccc8ce4921463e871e46def4ecc617538160948
+	sha256sums = 048112cc3be78f41bf6eca8f664f3e92e97fc68df904ce87a7e0156a18d80c7e
+
+pkgname = netbeans8
+
