@@ -54,7 +54,6 @@ package() {
     cp -R "$srcdir/etterna/BackgroundEffects/" "$pkgdir/opt/etterna-git"
     cp -R "$srcdir/etterna/Characters/" "$pkgdir/opt/etterna-git"
     cp -R "$srcdir/etterna/Data/" "$pkgdir/opt/etterna-git"
-    cp -R "$srcdir/etterna/Logs/" "$pkgdir/opt/etterna-git"
     cp -R "$srcdir/etterna/NoteSkins/" "$pkgdir/opt/etterna-git"
     cp -R "$srcdir/etterna/Scripts/" "$pkgdir/opt/etterna-git"
     cp -R "$srcdir/etterna/Songs/" "$pkgdir/opt/etterna-git"
