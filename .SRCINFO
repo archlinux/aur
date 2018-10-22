@@ -1,7 +1,7 @@
 pkgbase = whipper-git
 	pkgdesc = A Unix CD ripper aiming for accuracy over speed -- forked from morituri
 	pkgver = 0.7.0.r37.g669b356
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/whipper-team/whipper
 	arch = any
 	license = GPL3
@@ -9,7 +9,6 @@ pkgbase = whipper-git
 	makedepends = git
 	makedepends = python2-gobject2
 	depends = accuraterip-checksum
-	depends = cddb-py
 	depends = cdrdao
 	depends = flac
 	depends = libcdio-paranoia

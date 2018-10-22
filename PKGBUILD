@@ -9,14 +9,13 @@
 
 pkgname=whipper-git
 pkgver=0.7.0.r37.g669b356
-pkgrel=1
+pkgrel=2
 pkgdesc='A Unix CD ripper aiming for accuracy over speed -- forked from morituri'
 arch=('any')
 url='https://github.com/whipper-team/whipper'
 license=('GPL3')
 depends=(
     'accuraterip-checksum'          # for accuraterip-checksum calculation
-    'cddb-py'                       # for showing but not using disc info if not in MusicBrainz (issue #28)
     'cdrdao'                        # for session, TOC, pregap, and ISRC extraction
     'flac'                          # for reading flac files
     'libcdio-paranoia'              # for the actual ripping
