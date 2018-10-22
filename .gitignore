@@ -1,0 +1,4 @@
+libsnark/
+pkg/
+src/
+*.tar.xz

@@ -1,0 +1,16 @@
+pkgbase = libsnark-git
+	pkgdesc = libsnark: a C++ library for zkSNARK proofs
+	pkgver = v20140603.r321.g3e92af1
+	pkgrel = 1
+	url = https://github.com/scipr-lab/libsnark
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = gmp
+	provides = libsnark
+	source = git+https://github.com/scipr-lab/libsnark.git
+	sha1sums = SKIP
+
+pkgname = libsnark-git
+
