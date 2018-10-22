@@ -1,7 +1,7 @@
 pkgbase = hpp-fcl
 	pkgdesc = An extension of the Flexible Collision Library
-	pkgver = 0.5
-	pkgrel = 3
+	pkgver = 0.6.0
+	pkgrel = 1
 	url = https://github.com/humanoid-path-planner/hpp-fcl
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = hpp-fcl
 	makedepends = cmake
 	depends = eigen
 	depends = assimp
-	source = https://github.com/humanoid-path-planner/hpp-fcl/releases/download/v0.5/hpp-fcl-0.5.tar.gz
-	md5sums = e872800a18086367ff3eb18a5beae6a4
+	source = http://www.openrobots.org/distfiles/hpp-fcl/hpp-fcl-0.6.0.tar.gz
+	md5sums = 95f189b2d79154c9fa76ba8bc3edb109
 
 pkgname = hpp-fcl
 
