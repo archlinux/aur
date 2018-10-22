@@ -1,0 +1,34 @@
+pkgbase = oracle-xe
+	pkgdesc = A non free DBMS (legacy 11g version)
+	pkgver = 11.2.0.2.0
+	pkgrel = 1
+	url = http://www.oracle.com/
+	install = oracle.install
+	arch = x86_64
+	license = custom
+	depends = libaio>=0.3.104
+	depends = gcc>=4.1.2
+	depends = binutils>=2.16.91.0.5
+	depends = make>=3.80
+	depends = glibc>=2.3.4-2.41
+	depends = bc
+	depends = net-tools
+	provides = oracle-xe
+	options = !strip
+	source = manual://download/file/from/oracle/page/oracle-xe-11.2.0-1.0.x86_64.rpm.zip
+	source = oracle_env.csh
+	source = oracle_env.sh
+	source = oracle-xe
+	source = oracle-xe.conf
+	source = listener.ora
+	source = oracle-xe.service
+	md5sums = dd7881a55569d890241f11cd0eeb7d48
+	md5sums = cff2a6dbbbbf4d3454c05970183cc1b8
+	md5sums = 6dd1d97571b823e8f682f290edeb9e7b
+	md5sums = e558d7dcb9e455f8cb03db8638832774
+	md5sums = 5a3eaff3cb867d97cd250f04fe372ae7
+	md5sums = 4d4a2e1bcc29b9c1fd197b42ccc4e0ac
+	md5sums = 3dd923ac2df9fd38827fc9fc0048273a
+
+pkgname = oracle-xe
+

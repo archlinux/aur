@@ -1,0 +1,8 @@
+[Unit]
+Description=Oracle XE
+
+[Service]
+Type=oneshot
+ExecStart=/etc/rc.d/oracle-xe start
+ExecStop=/etc/rc.d/oracle-xe stop
+RemainAfterExit=yes 
