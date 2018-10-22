@@ -14,8 +14,6 @@ provides_x86_64=('etterna')
 conflicts_x86_64=('etterna')
 depends_i686=(libmad gtk2 glu curl libpulse)
 depends_x86_64=(libmad gtk2 glu curl libpulse)
-makedepends_i686=(glew)
-makedepends_x86_64=(glew)
 optdepends_i686=('jack: Audio server')
 optdepends_x86_64=('jack: Audio server')
 source_i686=('git+https://github.com/etternagame/etterna')
@@ -49,7 +47,6 @@ package() {
 
     cp "$srcdir/etterna/etterna" "$pkgdir/opt/etterna-git/"
     cp "$srcdir/etterna/GtkModule.so" "$pkgdir/opt/etterna-git"
-    cp "$srcdir/etterna/installer/install.ico" "$pkgdir/opt/etterna-git/icon.ico"
 
     mkdir "$pkgdir/opt/etterna-git/Songs"
     
