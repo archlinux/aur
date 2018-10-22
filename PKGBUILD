@@ -2,7 +2,7 @@
 # tracks: https://projects.archlinux.org/svntogit/packages.git/log/trunk?h=packages/linux
 
 pkgname=linux-linode
-_basekernel=4.18.16
+_basekernel=4.19.0
 _hardenedver=a
 pkgrel=1
 _kernelname=${pkgname#linux}
@@ -15,31 +15,28 @@ license=(GPL2)
 makedepends=(xmlto docbook-xsl kmod inetutils bc libelf)
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar."{xz,sign}
-        "https://github.com/anthraxx/${_patchname}/releases/download/${pkgver}/${_patchname}-${pkgver}.patch"{,.sig}
+#        "https://github.com/anthraxx/${_patchname}/releases/download/${pkgver}/${_patchname}-${pkgver}.patch"{,.sig}
         'config'
         '08_linux_linode'
         '98-linux-linode.hook'
         '99-grub-ll.hook'
         'menu.lst'
         'preset')
-sha512sums=('950eb85ac743b291afe9f21cd174d823e25f11883ee62cecfbfff8fe8c5672aae707654b1b8f29a133b1f2e3529e63b9f7fba4c45d6dacccc8000b3a9a9ae038' 'SKIP'
-            '7b1e121ac622a3a0a738b5629f1928e5d51c83cfe9192936f43dce46c4c705b16c77b570bf5201679d4d0ddd387143c061aca12ea6c19ac9137ed06d71378df0' 'SKIP'
+sha512sums=('ab67cc746b375a8b135e8b23e35e1d6787930d19b3c26b2679787d62951cbdbc3bb66f8ededeb9b890e5008b2459397f9018f1a6772fdef67780b06a4cb9f6f4' 'SKIP'
             '3d911e2f9339d4226c43c362283c345b135f0f42ad3e94589abc705100ae0ff85d6ecf43a3757b6a2cb5ce04b67123883783e21f7044dd2b55d71f19af6b82ce'
             '7a80f858c32a9dd62f43aba0b7119a1196869216117164bcde24ab46022e8a1bbe27821faa26ca690a1633a5a9fe324e98e5cdf14f37591d569cbc71f542482d'
             'c57a6c8d9978cb6a1034bed33ba5e06bef9b134f22113761798d4fa46e8091e7b0bd26f3a14d79122ba780b2f7a93ca26850f4da6a654f81b34cc79c242f683f'
             'db9080b2548e4dcd61eaaf20cd7d37cbbc8c204ce85a2e3408d0671f6b26010f77a61affd2c77e809768714eca29d3afb64765a3f2099317a2c928eff3feb4cf'
             '73cb4c064d8942fddaac48158b7e77d19afc1cb61f83936f21832ba7d7266ccfd3021114252edd5cec5542096204f48cf30544fd6bffff79bc94d96fabe74f52'
             '62870a08f000abfe8eb1f50271afdf04686af108554f7629dc5e1d7610ad14bdc9cd14d2609270b83f9edb745a520b81fa7bfb92ebcc28a146df040c895b549b')
-sha256sums=('19d8bcf49ef530cd4e364a45b4a22fa70714b70349c8100e7308488e26f1eaf1' 'SKIP'
-            '42b464867c001bdf630739f4b65ab25ef8f974dafcaafadda5a2c21e104ecab3' 'SKIP'
+sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1' 'SKIP'
             'a20c7082a8e9d7fe06e7d65afeeedc01e7cf0f3adc199187ef0934fa95d33080'
             '7d56a81083d1468d90ebec97a44ec44f80f8cb87bd506ed1918d6664d6309ad5'
             '3efa91fcb4698bde0598678bbf9a4a747c011823af82704eed2c146ed7cd9734'
             '368fb58e7aa465f597e9a72da4b6eea4183c1a85242173412d54ad18d10d8fb3'
             'a055b6005a324240b35c416d9d08fba21c5f614eefb46f244035d04bf085224f'
             '29fa2c1ea75f55a61276496507b788b1a8bde1d7c16bee4f525651db34076e46')
-md5sums=('bee5fe53ee1c3142b8f0c12c0d3348f9' 'SKIP'
-         '5d4b8b617c50e460827018d68c9adc0a' 'SKIP'
+md5sums=('740a90cf810c2105df8ee12e5d0bb900' 'SKIP'
          'a12b1ec6ef2dae1110f14e1ab0805411'
          'bc30565cf444b710c252675cf65fb46e'
          'c52c29a8502f6c75e309208f0afab11f'
@@ -60,7 +57,7 @@ install=install
 
 prepare() {
   cd "${srcdir}/${_srcname}"
-  patch -p1 -i "${srcdir}/${_patchname}-${pkgver}.patch"
+#  patch -p1 -i "${srcdir}/${_patchname}-${pkgver}.patch"
   sed -e "/^EXTRAVERSION =/s/=.*/= .${_hardenedver}/" -i Makefile
   scripts/setlocalversion --save-scmversion
   cp "${srcdir}/config" .config
