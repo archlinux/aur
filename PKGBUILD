@@ -4,7 +4,7 @@
 _pkgbase='python-gmgtk'
 pkgbase='python-gmgtk'
 pkgname='python-gmgtk-git'
-pkgver=8916c32
+pkgver=6ac1fa7
 pkgrel=1
 pkgdesc="Boilerplate code for Gtk+ 3 apps with python 3.x"
 arch=('any')
