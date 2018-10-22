@@ -1,7 +1,7 @@
 pkgbase = gargoyle
 	pkgdesc = Interactive Fiction multi-interpreter that supports all major IF formats.
 	pkgver = 2011.1
-	pkgrel = 5
+	pkgrel = 6
 	url = http://ccxvii.net/gargoyle/
 	install = gargoyle.install
 	arch = i686

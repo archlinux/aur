@@ -1,10 +1,11 @@
-# Maintainer: Beej <beej@beej.us>
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Previous Maintainer: Beej <beej@beej.us>
 # Previous Maintainer: Michael Smith <michael at diglumi dot com>
 # Previous Maintainer: Marcin Skory <armitage at q84fh dot net>
 # Contributor: Eric Forgeot < http://ifiction.free.fr >
 pkgname=gargoyle
 pkgver=2011.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Interactive Fiction multi-interpreter that supports all major IF formats."
 arch=('i686' 'x86_64' 'armv6h')
 url="http://ccxvii.net/gargoyle/"
@@ -31,7 +32,7 @@ sha512sums=('3d2eb71e34b9faaace63963b55dddb61f81cfb1f3d42918036d942ffa0e59ca7f8a
 prepare() {
 	cd "${srcdir}/garglk-stable-${pkgver}"
 	# Remove hardcoded optimisation and replace it with our CFLAGS	
-	sed -i "s|OPTIM = -O2 ;|OPTIM = ${CFLAGS} ;|" Jamrules
+	sed -i 's|OPTIM = -O2 $(CFLAGS) ;|OPTIM = ${CFLAGS} -std=c++11 ;|' Jamrules
 	# Required to build with gcc 5
 	sed -i "s|SubDirCcFlags -DSMART_TOKENISER |SubDirCcFlags -fgnu89-inline -DSMART_TOKENISER |" terps/Jamfile
 }
