@@ -1,6 +1,6 @@
 #Maintainer: Jia Li <lijia1608@gmail.com>
 pkgname=nfft
-pkgver=3.4.0
+pkgver=3.4.1
 pkgrel=1
 pkgdesc="Library for computing Non-uniform Fast Fourier Transforms."
 arch=(i686 x86_64)
