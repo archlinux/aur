@@ -1,6 +1,6 @@
 pkgbase = evolution-git
 	pkgdesc = Manage your email, contacts and schedule - git version
-	pkgver = 3.31.1.r012.g091b47bce6
+	pkgver = 3.31.1.r021.ga4fbe506ae
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Evolution
 	install = evolution.install
@@ -37,8 +37,6 @@ pkgbase = evolution-git
 	depends = libpst
 	depends = libytnef
 	optdepends = highlight: text highlight plugin
-	optdepends = evolution-spamassassin: Spamassassin spam check plugin
-	optdepends = evolution-bogofilter: Bogofilter spam check plugin
 	provides = evolution
 	provides = evolution-bogofilter
 	provides = evolution-spamassassin

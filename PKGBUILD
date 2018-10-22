@@ -3,7 +3,7 @@
 
 _pkgname=evolution
 pkgname=$_pkgname-git
-pkgver=3.31.1.r012.g091b47bce6
+pkgver=3.31.1.r021.ga4fbe506ae
 pkgrel=1
 pkgdesc="Manage your email, contacts and schedule - git version"
 arch=(i686 x86_64)
@@ -39,9 +39,7 @@ makedepends=(dconf
              libytnef
              networkmanager
              )
-optdepends=('highlight: text highlight plugin'
-            'evolution-spamassassin: Spamassassin spam check plugin'
-            'evolution-bogofilter: Bogofilter spam check plugin')
+optdepends=('highlight: text highlight plugin')
 options=('!emptydirs')
 url="https://wiki.gnome.org/Apps/Evolution"
 conflicts=('evolution' 'evolution-bogofilter' 'evolution-spamassassin')
