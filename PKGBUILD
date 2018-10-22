@@ -6,7 +6,7 @@
 # Contributor: judd <jvinet@zeroflux.org>
 
 pkgname=exim-mysql
-pkgver=4.89
+pkgver=4.91
 pkgrel=1
 pkgdesc='Message Transfer Agent'
 arch=('x86_64' 'i686')
@@ -14,7 +14,7 @@ url='http://www.exim.org/'
 license=('GPL')
 backup=(etc/mail/aliases etc/mail/exim.conf etc/logrotate.d/exim)
 install=exim.install
-depends=('gdbm' 'pcre' 'pam' 'openssl' 'libldap' 'libmysqlclient')
+depends=('gdbm' 'pcre' 'pam' 'openssl' 'libldap' 'mariadb-clients')
 provides=('smtp-server' 'smtp-forwarder')
 conflicts=('exim' 'smtp-server' 'smtp-forwarder')
 options=('!makeflags')
@@ -82,7 +82,7 @@ package() {
     "$pkgdir"/usr/lib/systemd/system/exim-submission.socket
 }
 
-sha512sums=('1e059966a93b47f055ab4ec2a4556f2c918aff56ea0367585f3a853f00411e9c275e13be4f9ae615a468fa06263135cd6a138fa1753f1b7fb3259a3321fcca65'
+sha512sums=('dbdae7e451988d0f5085a700875372d4978c37baa51f1b106b55045eac39a9c92a90a5ebcbf7764dae4c9bb76e1dd52f48e84a3657f68cf96428281177c6d250'
             '9cc0fe81b2110aecdd3d494650d051f773c2c83611692c4e5d365b89dcddd08b16af5b8f5f4ac3e3f553c36198846a05793d8fd01113f62d2ab761f555409201'
             'd8e3b466e0bba8175cfe762058dec49018495a260aa5efd139f4ef435284c305958cbd7fc514e81042146368b749ae38f0bf276fc0b4b91918ef33126900aa81'
             '72f15f2f59382be82b4e361dd780a39d8f263822d424c4ea252fa2568a090b44ae15263cc53b0df9369061f62738824d026646185c6f63ad09759e388b078c57'
