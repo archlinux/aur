@@ -1,7 +1,7 @@
 pkgbase = obs-studio-vaapi
 	pkgdesc = Free, open source software for live streaming and recording
 	pkgver = 22.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://obsproject.com
 	arch = x86_64
 	license = GPL2
@@ -27,6 +27,7 @@ pkgbase = obs-studio-vaapi
 	optdepends = luajit: scripting support
 	optdepends = python: scripting support
 	optdepends = vlc: VLC Media Source support
+	provides = obs-studio
 	conflicts = obs-studio
 	conflicts = obs-studio-git
 	source = obs-studio-22.0.2.tar.gz::https://github.com/jp9000/obs-studio/archive/22.0.2.tar.gz
