@@ -1,0 +1,14 @@
+pkgbase = ffaudioconverter
+	pkgdesc = Simple FFmpeg DnD GUI for converting audio files
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/Bleuzen/Blizcord/
+	arch = i686
+	arch = x86_64
+	license = mit
+	depends = qt5-base
+	source = ffaudioconverter::https://github.com/Bleuzen/FFaudioConverter/releases/download/v0.3/FFaudioConverter
+	sha256sums = c93793f896cfdf39d72760d70915e02b4c3e03ba323ed0956eb70bf01ee72d8f
+
+pkgname = ffaudioconverter
+
