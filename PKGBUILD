@@ -4,7 +4,7 @@
 pkgname=qt5-location
 _qtver=5.11.2
 pkgver=${_qtver/-/}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='http://qt-project.org/'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
