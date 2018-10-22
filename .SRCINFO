@@ -1,6 +1,6 @@
 pkgbase = firefox-wayland-hg
 	pkgdesc = Standalone web browser from mozilla.org
-	pkgver = r435650.423bdf7a802b
+	pkgver = r442289.43d78c2bd006
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = x86_64
