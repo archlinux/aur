@@ -49,12 +49,12 @@ package() {
 
     cp "$srcdir/etterna/etterna" "$pkgdir/opt/etterna-git/"
     cp "$srcdir/etterna/GtkModule.so" "$pkgdir/opt/etterna-git"
+    cp "$srcdir/etterna/installer/install.ico" "$pkgdir/opt/etterna-git/icon.ico"
 
     mkdir "$pkgdir/opt/etterna-git/Songs"
     
     cp -R "$srcdir/etterna/Assets/" "$pkgdir/opt/etterna-git"
     cp -R "$srcdir/etterna/BackgroundEffects/" "$pkgdir/opt/etterna-git"
-    cp -R "$srcdir/etterna/Cache/" "$pkgdir/opt/etterna-git"
     cp -R "$srcdir/etterna/Characters/" "$pkgdir/opt/etterna-git"
     cp -R "$srcdir/etterna/Data/" "$pkgdir/opt/etterna-git"
     cp -R "$srcdir/etterna/Logs/" "$pkgdir/opt/etterna-git"

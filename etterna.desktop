@@ -2,8 +2,8 @@
 Version=1.1
 Name=Etterna
 Comment=Etterna: an advanced cross-platform rhythm game focused on keyboard play.
-Exec=/opt/etterna/etterna
-Icon=etterna
+Exec=/opt/etterna-git/etterna
+Icon=/opt/etterna-git/icon.ico
 Terminal=false
 Type=Application
 Categories=Game
