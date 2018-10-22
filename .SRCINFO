@@ -1,14 +1,14 @@
 pkgbase = nodejs-decktape
 	pkgdesc = PDF exporter for HTML presentation frameworks
-	pkgver = 2.8.9
+	pkgver = 2.9.0
 	pkgrel = 1
 	url = https://github.com/astefanutti/decktape
 	arch = any
 	license = MIT
 	depends = npm
 	depends = nodejs
-	source = decktape-2.8.9.tar.gz::https://github.com/astefanutti/decktape/archive/v2.8.9.tar.gz
-	md5sums = f5faf9c5ce9590bd66af09edc30be922
+	source = decktape-2.9.0.tar.gz::https://github.com/astefanutti/decktape/archive/v2.9.0.tar.gz
+	md5sums = 87b69bc4763080ff70117572fe863fb8
 
 pkgname = nodejs-decktape
 
