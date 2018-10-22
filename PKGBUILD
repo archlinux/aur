@@ -1,7 +1,7 @@
 # Maintainer: Jameson Pugh <imntreal@gmail.com>
 
 pkgname=python-cheat
-pkgver=2.2.3
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Cheat allows you to create and view interactive cheatsheets on the command-line."
 url="https://github.com/chrisallenlane/cheat"
@@ -11,7 +11,7 @@ optdepends=('python-pygments')
 license=('GPL3')
 arch=('any')
 source=("https://github.com/chrisallenlane/cheat/archive/${pkgver}.tar.gz")
-sha256sums=('adedab2d8047b129e07d67205f5470c120dbf05785f2786520226c412508d9ee')
+sha256sums=('f944612b1d1b97dbe87c6cc3c68932df983482f53a09b0446c318ee7399c865c')
 
 build() {
   cd "$srcdir/cheat-${pkgver}"
