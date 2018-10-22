@@ -1,11 +1,12 @@
 pkgbase = vncsnapshot-git
 	pkgdesc = VNC snapshots
-	pkgver = r3.2680fcc
-	pkgrel = 1
+	pkgver = r7.3903845
+	pkgrel = 2
 	url = https://github.com/rpodgorny/VNCsnapshot
 	arch = i686
 	arch = x86_64
 	license = unknown
+	depends = libjpeg-turbo
 	provides = vncsnapshot
 	conflicts = vncsnapshot
 	source = vncsnapshot::git+https://github.com/rpodgorny/VNCsnapshot

@@ -1,14 +1,15 @@
 # Maintainer: Radek Podgorny <radek@podgorny.cz
 
 pkgname=vncsnapshot-git
-pkgver=r3.2680fcc
-pkgrel=1
+pkgver=r7.3903845
+pkgrel=2
 pkgdesc='VNC snapshots'
 arch=('i686' 'x86_64')
 url='https://github.com/rpodgorny/VNCsnapshot'
 license=('unknown')
 provides=('vncsnapshot')
 conflicts=('vncsnapshot')
+depends=('libjpeg-turbo')
 source=(${pkgname%-git}::git+https://github.com/rpodgorny/VNCsnapshot)
 sha256sums=('SKIP')
 #options=('!makeflags')
