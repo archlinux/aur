@@ -2,7 +2,7 @@
 pkgname=perl-moosex-followpbp
 pkgver=0.05
 pkgrel=1
-pkgdesc='This packages the Foo-Bar distribution, containing the Foo::Bar module!'
+pkgdesc='MooseX::FollowPBP - Name your accessors get_foo() and set_foo()'
 _dist=MooseX-FollowPBP
 _author=D/DR/DROLSKY
 arch=('any')
