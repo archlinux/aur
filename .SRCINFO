@@ -1,0 +1,16 @@
+pkgbase = perl-math-units
+	pkgdesc = Math::Units - Unit conversion
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://metacpan.org/release/Math-Units
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/D/DM/DMUEY/Math-Units-1.3.tar.gz
+	md5sums = 3674c769147eacdc0d22957d8288c104
+
+pkgname = perl-math-units
+
