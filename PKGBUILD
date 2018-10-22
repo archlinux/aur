@@ -2,17 +2,19 @@
 
 pkgname=ffaudioconverter
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple FFmpeg DnD GUI for converting audio files"
 arch=('i686' 'x86_64')
-url="https://github.com/Bleuzen/Blizcord/"
+url="https://github.com/Bleuzen/FFaudioConverter/"
 license=('mit')
 depends=('qt5-base')
-source=("ffaudioconverter::https://github.com/Bleuzen/FFaudioConverter/releases/download/v${pkgver}/FFaudioConverter")
-sha256sums=('c93793f896cfdf39d72760d70915e02b4c3e03ba323ed0956eb70bf01ee72d8f')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Bleuzen/FFaudioConverter/archive/v$pkgver.tar.gz")
+sha256sums=('db7de55dc30c563b12c2aef861c2192090c96a17a16bdb8b59a1497109eb9c13')
 
 package() {
-  mkdir -p "$pkgdir"/usr/bin/
+  cd FFaudioConverter-$pkgver
+  ./build.sh
 
-  install -D ffaudioconverter "$pkgdir"/usr/bin/
+  mkdir -p "$pkgdir/usr/bin/"
+  install -D build/dist/FFaudioConverter "$pkgdir/usr/bin/ffaudioconverter"
 }
