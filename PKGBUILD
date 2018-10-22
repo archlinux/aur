@@ -7,7 +7,7 @@ pkgdesc="Cross-platform text editor"
 arch=('x86_64')
 url="https://github.com/Alexey-T/CudaText"
 license=('MPL')
-depends=('xdg-utils')
+depends=('python')
 source_x86_64=("https://netix.dl.sourceforge.net/project/cudatext/release/Linux/cudatext_${pkgver}-1_gtk2_amd64.deb")
 source=($pkgname.desktop
         $pkgname.png)
