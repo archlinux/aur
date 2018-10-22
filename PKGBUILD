@@ -1,4 +1,4 @@
-# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
 
 # NOTE:
 # 10-bit depth currently fails to build
@@ -6,7 +6,7 @@
 
 pkgname=davs2
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 pkgdesc='Open-Source encoder of AVS2-P2/IEEE1857.4 video coding standard'
 url='https://github.com/pkuvcl/davs2/'
@@ -14,7 +14,7 @@ license=('GPL')
 depends=('glibc' 'liblsmash.so')
 makedepends=('gcc7' 'yasm' 'l-smash')
 provides=('libdavs2' 'libdavs2.so')
-conflicts=('davs2-git' 'libdavs2' 'libdavs2-git')
+conflicts=('libdavs2')
 replaces=('libdavs2')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/pkuvcl/${pkgname}/archive/${pkgver}.tar.gz"
         'davs2-1.0-add-linux-support.patch'
@@ -35,15 +35,15 @@ prepare() {
     
     # use gcc7 (it does not build with gcc8)
     sed -i 's/g++/g++-7/' build/linux/configure
-}
-
-build() {
+    
     # must copy the entire source tree for each build or it will not work
     cd "$srcdir"
     cp -af "${pkgname}-${pkgver}" build-8bit
     cp -af "${pkgname}-${pkgver}" build-10bit
-    
-    msg2 'Building for 8-bit...'
+}
+
+build() {
+    printf '%s\n' '  -> Building for 8-bit...'
     cd build-8bit/build/linux
     ./configure \
         --prefix='/usr' \
@@ -58,7 +58,7 @@ build() {
         --disable-gpac
     make
     
-    msg2 'Building for 10-bit...'
+    printf '%s\n' '  -> Building for 10-bit...'
     cd "${srcdir}/build-10bit/build/linux"
     if ./configure \
         --prefix='/usr' \
@@ -86,7 +86,7 @@ package() {
     
     for _depth in 10 8
     do
-        msg2 "Installing for ${_depth}-bit..."
+        printf '%s\n' "  -> Installing for ${_depth}-bit..."
         
         if [ "$_depth" -eq '10' ] && ! [ -d 'build-10bit' ] 
         then
