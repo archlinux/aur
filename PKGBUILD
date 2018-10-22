@@ -2,33 +2,30 @@
 
 pkgbase=python-chameleon
 pkgname=('python-chameleon' 'python2-chameleon')
-pkgver=3.4
+pkgver=3.5
+_commit=9c1d8003f5409d4de6bf6d38446491383c6f2d5f
 pkgrel=1
 pkgdesc="Fast HTML/XML Template Compiler"
 arch=('any')
 license=('custom:BSD' 'ZPL')
 url="http://www.pagetemplates.org/"
 makedepends=('python-setuptools' 'python2-setuptools')
-source=("$pkgbase-$pkgver.tar.gz::https://github.com/malthe/chameleon/archive/$pkgver.tar.gz")
-sha512sums=('7a45298b5f72c7cd63df1a4d69156eb13d288304ff6d89babd3858eb56c605acedf955e787da23fa9580be0561ea7f6024b3619cc238eb10042ce36a436ba95b')
+source=("$pkgbase-$_commit.tar.gz::https://github.com/malthe/chameleon/archive/$_commit.tar.gz")
+sha512sums=('85fd98dd69af503c6994fe323d58376796f25ed797d917e9e36bc99f5fed2f53b549b21ed6dbab23af2fce7feae93779c9d482f68092074221226e5eb8436c19')
 
 prepare() {
-  cp -a chameleon-$pkgver{,-py2}
+  mv chameleon-{$_commit,$pkgver}
 }
 
 build() {
-  cd "$srcdir"/chameleon-$pkgver
+  cd chameleon-$pkgver
   python setup.py build
-
-  cd "$srcdir"/chameleon-$pkgver-py2
   python2 setup.py build
 }
 
 check() {
-  cd "$srcdir"/chameleon-$pkgver
+  cd chameleon-$pkgver
   python setup.py test
-
-  cd "$srcdir"/chameleon-$pkgver-py2
   python2 setup.py test
 }
 
@@ -43,7 +40,7 @@ package_python-chameleon() {
 package_python2-chameleon() {
   depends=('python2')
 
-  cd chameleon-$pkgver-py2
+  cd chameleon-$pkgver
   python2 setup.py install --root="$pkgdir" --optimize=1
   install -D -m644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
 }
