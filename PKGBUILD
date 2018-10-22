@@ -2,8 +2,8 @@
 pkgname=librepcb-appimage
 pkgver=0.1.0_rc1
 _pkgver=${pkgver/_/-}
-pkgrel=1
-pkgdesc="A free EDA software to develop printed circuit boards."
+pkgrel=2
+pkgdesc="A free EDA software to develop printed circuit boards (binary AppImage version)."
 arch=('x86_64')
 url="http://librepcb.org/"
 license=('GPL')
