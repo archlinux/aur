@@ -12,7 +12,6 @@ pkgbase = harvey-git
 	depends = gtk3
 	depends = vala
 	depends = granite
-	optdepends = lib32-json-glib
 	provides = harvey
 	conflicts = harvey
 	source = git+https://github.com/danrabbit/harvey.git
