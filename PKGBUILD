@@ -14,8 +14,8 @@ pkgbase=mesa-intel-iris-git
 pkgname="${pkgbase}"
 _branch=iris
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=18.3.0_devel.105175.7452a187a5a
-pkgrel=3
+pkgver=18.3.0_devel.105759.ad4fed1192
+pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'llvm-svn' 'clang-svn' 'xorgproto'
               'libxml2' 'libx11' 'elfutils'
