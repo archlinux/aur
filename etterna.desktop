@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.1
+Name=Etterna
+Comment=Etterna: an advanced cross-platform rhythm game focused on keyboard play.
+Exec=/opt/etterna/etterna
+Icon=etterna
+Terminal=false
+Type=Application
+Categories=Game
+X-Desktop-File-Install-Version=0.24
