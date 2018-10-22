@@ -15,6 +15,7 @@ pkgbase = netbeans8
 	optdepends = php: for developing programs in php
 	optdepends = groovy: for developing programs in groovy
 	optdepends = lib32-glibc
+	provides = netbeans
 	conflicts = netbeans
 	options = !strip
 	backup = usr/share/netbeans/etc/netbeans.conf
