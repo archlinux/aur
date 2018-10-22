@@ -1,0 +1,16 @@
+pkgbase = perl-astro-telescope
+	pkgdesc = Astro::Telescope - class for obtaining telescope information
+	pkgver = 0.71
+	pkgrel = 1
+	url = https://metacpan.org/release/Astro-Telescope
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/T/TJ/TJENNESS/Astro-Telescope-0.71.tar.gz
+	md5sums = b1bd791667a18be7621b2aa5d6534a38
+
+pkgname = perl-astro-telescope
+
