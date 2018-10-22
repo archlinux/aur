@@ -1,7 +1,7 @@
 # Maintainer: Danilo Bargen <aur at dbrgn dot ch>
 pkgname=hexdino-git
 _name=hexdino
-pkgver=r13.b5ba540
+pkgver=r66.b134144
 pkgrel=1
 pkgdesc="A hex editor with vim like keybindings written in Rust."
 arch=('x86_64' 'i686')
