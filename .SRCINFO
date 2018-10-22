@@ -11,7 +11,7 @@ pkgbase = nfft
 	provides = nfft=3.4.1
 	conflicts = nfft-git
 	source = https://github.com/NFFT/nfft/releases/download/3.4.1/nfft-3.4.1.tar.gz
-	md5sums = f2e0f7848fe84347ad8a4f01dc9ce297
+	sha256sums = 1cf6060eec0afabbbba323929d8222397a77fa8661ca74927932499db26b4aaf
 
 pkgname = nfft
 

@@ -11,7 +11,7 @@ optdepends=('openmp: for OpenMP support')
 provides=($pkgname=$pkgver)
 conflicts=('nfft-git')
 source=("https://github.com/NFFT/nfft/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('f2e0f7848fe84347ad8a4f01dc9ce297')
+sha256sums=('1cf6060eec0afabbbba323929d8222397a77fa8661ca74927932499db26b4aaf')
 
 build() {
 	cd "$pkgname-$pkgver"
