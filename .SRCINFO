@@ -1,0 +1,17 @@
+pkgbase = perl-astro-pal
+	pkgdesc = Astro::PAL - Perl interface to Starlink PAL positional astronomy library
+	pkgver = 1.07
+	pkgrel = 1
+	url = https://metacpan.org/release/Astro-PAL
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-test-number-delta
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/T/TJ/TJENNESS/Astro-PAL-1.07.tar.gz
+	md5sums = 35fef25bbaecca0d7e319f8e6a07eea9
+
+pkgname = perl-astro-pal
+
