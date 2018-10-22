@@ -17,10 +17,10 @@ build() {
 }
 
 check() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
   # Tests depend of Mercurial sources
   if [[ -n "$HGSRC" ]]; then
-    make tests HGROOT="${HGSRC}" PYTHON=python2
+    cd "${srcdir}/${pkgname}-${pkgver}/tests"
+    python2 "${HGSRC}/tests/run-tests.py"
   fi
 }
 
