@@ -1,0 +1,17 @@
+pkgbase = kubicorn-git
+	pkgdesc = Create, Manage, and Scale Kubernetes infrastructure in the cloud.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/kubicorn/kubicorn
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = go
+	optdepends = kubectl: check cluster status
+	optdepends = kubectl-bin: check cluster status - binary package
+	source = git+https://github.com/kubicorn/kubicorn
+	md5sums = SKIP
+
+pkgname = kubicorn-git
+
