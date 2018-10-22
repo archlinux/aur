@@ -1,6 +1,6 @@
 pkgbase = dps8m-git
 	pkgdesc = Simulator for the Multics dps-8/m mainframe
-	pkgver = alpha2.0.RC5.r468.gce1a175c
+	pkgver = alpha2.0.RC5.r469.g5ab650be
 	pkgrel = 1
 	url = http://ringzero.wikidot.com
 	arch = x86_64
