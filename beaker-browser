@@ -1,4 +1,4 @@
 #!/bin/bash
 
 # Launch application
-/usr/bin/electron /opt/beaker-browser/resources/app.asar
+/opt/beaker-browser/beaker-browser
