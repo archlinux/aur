@@ -1,39 +1,19 @@
 pkgbase = poetry
 	pkgdesc = Python dependency management and packaging made easy.
-	pkgver = 0.12.3
+	pkgver = 0.12.4
 	pkgrel = 1
 	url = https://github.com/sdispater/poetry
 	arch = any
 	license = MIT
 	depends = python>=3.4
-	depends = python-requests>=2.18
-	depends = python-requests-toolbelt>=0.8.0
-	depends = python-pyrsistent>=0.14.2
-	depends = python-pyparsing>=2.2
-	depends = python-cachecontrol>=0.12.4
-	depends = python-lockfile>=0.9
-	depends = python-pkginfo>=1.4
-	depends = python-html5lib>=1.0
 	conflicts = python-poetry
 	options = !emptydirs
-	source = poetry-0.12.3.tar.gz::https://files.pythonhosted.org/packages/23/86/9166b68a9b9084eca5a3a53ef6131b3318a0b9c48ee8593623330e164c85/poetry-0.12.3.tar.gz
-	source = cleo-0.6.8.tar.gz::https://files.pythonhosted.org/packages/cb/9f/8dd57785485b2a2746edbe598a31b0852740a1ff91a2739c104b628c8520/cleo-0.6.8.tar.gz
-	source = pylev-1.3.0.tar.gz::https://files.pythonhosted.org/packages/cc/61/dab2081d3d86dcf0b9f5dcfb11b256d76cd14aad7ccdd7c8dd5e7f7e41a0/pylev-1.3.0.tar.gz
-	source = pastel-0.1.0.tar.gz::https://files.pythonhosted.org/packages/bd/13/a68f2e448b471e8c49e9b596d569ae167a5135ac672b1dc5f24f62f9c15f/pastel-0.1.0.tar.gz
-	source = cachy-0.2.0.tar.gz::https://files.pythonhosted.org/packages/68/ef/eabaf6c36bb87e4c1a74790b19e44064df25e09a55f191eb71ccd2b512ad/cachy-0.2.0.tar.gz
-	source = jsonschema-3.0.0a3.tar.gz::https://files.pythonhosted.org/packages/47/e1/afd760aa29665e61142811ef6ea8b8f79e43574ac8427473a11f6e918a10/jsonschema-3.0.0a3.tar.gz
-	source = shellingham-1.1.0.tar.gz::https://files.pythonhosted.org/packages/28/44/2da09f0d1f93b69d64183029fb64ee882d29eb430364e189562e0a69e3fc/shellingham-1.1.0.tar.gz
-	source = tomlkit-0.4.4.tar.gz::https://files.pythonhosted.org/packages/d4/de/a9b1089e62b2d9df0ec585e062a22961a3430edae2e87123362d730b234c/tomlkit-0.4.4.tar.gz
+	source = https://github.com/sdispater/poetry/releases/download/0.12.4/poetry-0.12.4-linux.tar.gz
+	source = https://github.com/sdispater/poetry/archive/0.12.4.tar.gz
 	source = poetry.py
-	sha256sums = dbc6f7269f8015d2f2408471f2b2eec2365b5bfd20cff8d9824664b67505aaae
-	sha256sums = 85a63076b72ca376fb06668be1fc7758dc16740b394783d5cc65200c4b32f71b
-	sha256sums = 063910098161199b81e453025653ec53556c1be7165a9b7c50be2f4d57eae1c3
-	sha256sums = 3108af417ec0fa6d0a620e676ec4f02c839ca13e10611586e5d2174b46aa0bc3
-	sha256sums = b71513e5a38ce90c1280c02b7d8d6bb3fdf64666c9cc0584f2479afea097d56c
-	sha256sums = dfd8426040892c8d0ef6da574085f282569f189cb24b70091a66c21c12d6705e
-	sha256sums = aac73de40225e3d63b4e8f7dc33adae2cae4d10ff0b09a32a0dc45151e34daa2
-	sha256sums = ca181cee7aee805d455628f7c94eb8ae814763769a93e69157f250fe4ebe1926
-	sha256sums = cdf402be1771636f52cae956bd9eeb84684f0d0288d4cb7d96ff744a8c002f48
+	sha256sums = 0d5cb3ce7198820916dade1b10f49f8e305e89c785af5f8c02fd833620e52e12
+	sha256sums = e055c2a49abbe3686a58ccd0564e605da7a540ff9ab3b0bb64ddee803f01aacb
+	sha256sums = 367643f8c1145d1a72959b02ec1e8a143e50597dff8775590932b9bfa2f64091
 
 pkgname = poetry
 
