@@ -1,7 +1,7 @@
 pkgbase = liri-git-meta
 	pkgdesc = Meta package to install all the LiriOS ecosystem (git version)
 	pkgver = 0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://liri.io/
 	arch = any
 	license = GPL3
@@ -9,18 +9,23 @@ pkgbase = liri-git-meta
 	depends = liri-appcenter-git
 	depends = liri-browser-git
 	depends = liri-calculator-git
+	depends = liri-eglfs-git
 	depends = liri-files-git
+	depends = liri-networkmanager-git
 	depends = liri-platformtheme-git
+	depends = liri-power-manager-git
+	depends = liri-pulseaudio-git
 	depends = liri-qbs-shared-git
+	depends = liri-screencast-git
+	depends = liri-screenshot-git
 	depends = liri-settings-git
 	depends = liri-shell-git
 	depends = liri-terminal-git
 	depends = liri-text-git
 	depends = liri-themes-git
 	depends = liri-wallpapers-git
-	depends = liri-wayland-git
-	depends = liri-workspace-git
-	depends = vibe-git
+	depends = qml-xwayland-git
+	depends = xdg-desktop-portal-liri-git
 
 pkgname = liri-git-meta
 
