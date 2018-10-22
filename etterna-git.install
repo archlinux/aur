@@ -1,11 +1,14 @@
 function post_install {
     desktop-file-install "/usr/share/applications/etterna.desktop"
-    chmod 777 -R /opt/etterna
+
+    chmod 777 -R /opt/etterna-git
+    chown -R nobody:nobody /opt/etterna-git
+
     echo "All user data is stored in your home directory."
     echo "However, you should still keep a backup of the data in /opt/etterna if you reinstall/remove Etterna!"
 }
 
-function post_upgrade { 
+function post_upgrade {s
     post_install
 }
 

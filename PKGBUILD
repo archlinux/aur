@@ -31,6 +31,7 @@ build() {
 
     # UNCOMMENT THE BELOW LINE FOR STABLE ETTERNA 
     # git checkout v$(pkgver)
+    git checkout develop
     git submodule update --init
 
     mkdir "build"
@@ -42,7 +43,7 @@ build() {
 
 package() {
     mkdir -p "$pkgdir/usr/share/applications"
-    mkdir -p "$pkgdir/opt/etterna-git"
+    mkdir -p "$pkgdir/opt/etterna-git/Cache"
     mkdir -p "$pkgdir/usr/share/licenses/etterna-git"
 
     cp "$srcdir/etterna/etterna" "$pkgdir/opt/etterna-git/"
@@ -61,4 +62,6 @@ package() {
 
     cp "../etterna.desktop" "$pkgdir/usr/share/applications"
     cp "../LICENSE" "$pkgdir/usr/share/licenses/etterna-git"
+
+    cp "$srcdir/etterna/Installer/Install.ico" "$pkgdir/opt/etterna-git/icon.ico"
 }
