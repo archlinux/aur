@@ -1,11 +1,11 @@
-# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
 
 # NOTE:
 # 10-bit depth currently fails to build
 # https://github.com/pkuvcl/xavs2/issues/9
 
 pkgname=xavs2-git
-pkgver=1.0.r79.g81c9d9b
+pkgver=1.0.r135.g1ff3ff8
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Open-Source encoder of AVS2-P2/IEEE1857.4 video coding standard (git version)'
@@ -13,8 +13,8 @@ url='https://github.com/pkuvcl/xavs2/'
 license=('GPL')
 depends=('glibc' 'liblsmash.so')
 makedepends=('git' 'gcc7' 'yasm' 'l-smash')
-provides=('xavs2' 'libxavs2' 'libxavs2-git' 'libxavs2.so')
-conflicts=('xavs2' 'libxavs2' 'libxavs2-git')
+provides=('xavs2' 'libxavs2-git' 'libxavs2.so')
+conflicts=('xavs2' 'libxavs2-git')
 replaces=('libxavs2-git')
 source=("$pkgname"::'git+https://github.com/pkuvcl/xavs2.git')
 sha256sums=('SKIP')
@@ -24,6 +24,11 @@ prepare() {
     
     # use gcc7 (it does not build with gcc8)
     sed -i 's/gcc/gcc-7/' build/linux/configure
+    
+    # must copy the entire source tree for each build or it will not work
+    cd "$srcdir"
+    cp -af "$pkgname" build-8bit
+    cp -af "$pkgname" build-10bit
 }
 
 pkgver() {
@@ -34,12 +39,7 @@ pkgver() {
 }
 
 build() {
-    # must copy the entire source tree for each build or it will not work
-    cd "$srcdir"
-    cp -af "$pkgname" build-8bit
-    cp -af "$pkgname" build-10bit
-    
-    msg2 'Building for 8-bit...'
+    printf '%s\n' '  -> Building for 8-bit...'
     cd build-8bit/build/linux
     ./configure \
         --prefix='/usr' \
@@ -54,7 +54,7 @@ build() {
         --disable-gpac
     make
     
-    msg2 'Building for 10-bit...'
+    printf '%s\n' '  -> Building for 10-bit...'
     cd "${srcdir}/build-10bit/build/linux"
     if ./configure \
         --prefix='/usr' \
@@ -82,7 +82,7 @@ package() {
     
     for _depth in 10 8
     do
-        msg2 "Installing for ${_depth}-bit..."
+        printf '%s\n' "  -> Installing for ${_depth}-bit..."
         
         if [ "$_depth" -eq '10' ] && ! [ -d 'build-10bit' ] 
         then
