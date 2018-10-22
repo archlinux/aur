@@ -10,7 +10,7 @@ arch=('any')
 url="https://picard.musicbrainz.org/plugins/"
 license=('GPL')
 depends=(
-  "picard>=${_pkgver}"
+  'picard'
   'python-aubio'  # Required by `bpm` plugin
 )
 conflicts=('picard-plugins-v2-git')
