@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=ndpi
-pkgver=2.2
+pkgver=2.4
 pkgrel=1
 pkgdesc="Open and Extensible GPLv3 Deep Packet Inspection Library"
 arch=('i686' 'x86_64')
@@ -26,4 +26,4 @@ package() {
   sed -i 's|\/libndpi-2.0.0||g' $pkgdir/usr/lib/pkgconfig/libndpi.pc
 }
 
-md5sums=('e5f73354c082c7136572c846d166d3cb')
+md5sums=('110478950391bbe8b25201c6a09e2516')
