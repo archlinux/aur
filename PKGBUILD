@@ -3,8 +3,8 @@
 _name=poetry
 pkgbase='python-poetry'
 pkgname=('python-poetry' 'python2-poetry')
-pkgver=0.11.5
-pkgrel=4
+pkgver=0.12.4
+pkgrel=1
 pkgdesc="Python dependency management and packaging made easy"
 arch=('any')
 url=https://github.com/sdispater/"${_name}"
@@ -18,19 +18,12 @@ source=(
   poetry.sh
   poetry2.sh
 )
-sha256sums=(
-  '6bb73a26117575cbf5533070045ed378b07b4e18cfcf20ca8cd33d94b10ab0b1'
-  '7104f3cd6ec4f156a6499e34ed8908c6f2b83b4284ad12703ea91299a9461068'
-  'c974a1a2fadc89fb8e07efd404e06b2d8c8664f26e7b106933426525664ac9d3'
-)
+sha256sums=('fc924ef535c9229aac4f7cfda948e64e890417242d808c0880febb0ea333b9f6'
+            '7104f3cd6ec4f156a6499e34ed8908c6f2b83b4284ad12703ea91299a9461068'
+            'c974a1a2fadc89fb8e07efd404e06b2d8c8664f26e7b106933426525664ac9d3')
 
 prepare() {
   cp -a "${_name}"-"${pkgver}"{,-py2}
-}
-
-package() {
-  cd "${srcdir}"/"${_name}"-"${pkgver}"
-  python setup.py install --root="${pkgdir}/" --optimize=1
 }
 
 build(){
@@ -60,7 +53,7 @@ package_python2-poetry() {
     'python2-tomlkit'
     'python2-typing'
     'python2-virtualenv'
-)
+  )
 
   cd "${_name}"-"${pkgver}"-py2
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
@@ -84,7 +77,7 @@ package_python-poetry() {
     'python-requests-toolbelt'
     'python-shellingham'
     'python-tomlkit'
-)
+  )
 
   cd "${_name}"-"${pkgver}"
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE

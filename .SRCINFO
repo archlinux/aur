@@ -1,7 +1,7 @@
 pkgbase = python-poetry
 	pkgdesc = Python dependency management and packaging made easy
-	pkgver = 0.11.5
-	pkgrel = 4
+	pkgver = 0.12.4
+	pkgrel = 1
 	url = https://github.com/sdispater/poetry
 	arch = any
 	license = MIT
@@ -10,10 +10,10 @@ pkgbase = python-poetry
 	makedepends = python2
 	makedepends = python2-setuptools
 	options = !emptydirs
-	source = python-poetry-0.11.5.tar.gz::https://pypi.io/packages/source/p/poetry/poetry-0.11.5.tar.gz
+	source = python-poetry-0.12.4.tar.gz::https://pypi.io/packages/source/p/poetry/poetry-0.12.4.tar.gz
 	source = poetry.sh
 	source = poetry2.sh
-	sha256sums = 6bb73a26117575cbf5533070045ed378b07b4e18cfcf20ca8cd33d94b10ab0b1
+	sha256sums = fc924ef535c9229aac4f7cfda948e64e890417242d808c0880febb0ea333b9f6
 	sha256sums = 7104f3cd6ec4f156a6499e34ed8908c6f2b83b4284ad12703ea91299a9461068
 	sha256sums = c974a1a2fadc89fb8e07efd404e06b2d8c8664f26e7b106933426525664ac9d3
 
