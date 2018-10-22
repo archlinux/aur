@@ -1,9 +1,9 @@
 # Maintainer: Andrew Anderson <andersan@tcd.ie>
 pkgname=trinnity
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ library of CNN primitive operations"
-arch=('x86_64' 'aarch64')
+arch=('x86_64' 'aarch64' 'armv7h')
 url="https://bitbucket.org/STG-TCD/trinnity"
 license=('BSD')
 groups=()

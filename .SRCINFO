@@ -1,10 +1,11 @@
 pkgbase = trinnity
 	pkgdesc = C++ library of CNN primitive operations
 	pkgver = 0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/STG-TCD/trinnity
 	arch = x86_64
 	arch = aarch64
+	arch = armv7h
 	license = BSD
 	makedepends = doxygen
 	optdepends = gsl>=2.3: GSL BLAS backend
