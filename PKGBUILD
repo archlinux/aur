@@ -6,7 +6,7 @@
 
 pkgname=firefox-wayland-hg
 _pkgname=firefox
-pkgver=r435650.423bdf7a802b
+pkgver=r442289.43d78c2bd006
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 arch=(x86_64)
@@ -64,6 +64,8 @@ ac_add_options --enable-release
 ac_add_options --enable-gold
 ac_add_options --enable-optimize="-O2"
 ac_add_options --enable-rust-simd
+ac_add_options --disable-dbus
+ac_add_options --disable-necko-wifi
 
 # Branding
 ac_add_options --enable-official-branding
