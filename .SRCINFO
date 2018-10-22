@@ -1,7 +1,7 @@
 pkgbase = rspamd
 	pkgdesc = Fast, free and open-source spam filtering system.
 	pkgver = 1.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rspamd.com
 	install = rspamd.install
 	arch = x86_64
@@ -100,10 +100,12 @@ pkgbase = rspamd
 	source = rspamd-1.8.1.tar.gz::https://github.com/vstakhov/rspamd/archive/1.8.1.tar.gz
 	source = rspamd.tmpfile
 	source = rspamd.sysuser
+	source = rspamd.logrotate
 	source = fixes-1.8.1.diff
 	sha256sums = cd25dab6fbd2b20b3bf0c871b133d08a5107696e012c798c6e93cd9e53537555
 	sha256sums = f89edae5436a3c14e58210fb5c1d5bdd2f8a6f98c03dbc150ea9ff1a3fcfe441
 	sha256sums = 59646874a5036f3f26cac2898a2f60713fe6147b3c60ee964494f07b6acc313f
+	sha256sums = e705cc908a8e081e4a830cfec5acfc38f00125c5281bb074c939ba3b4a7a8c8b
 	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 
 pkgname = rspamd
