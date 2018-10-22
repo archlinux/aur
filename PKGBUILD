@@ -1,5 +1,5 @@
 # Maintainer: Gabriele Musco <emaildigabry@gmail.com>
-# Upstream URL: https://gitlab.com/gabmus/gmconfig
+# Upstream URL: https://gitlab.com/gabmus/python-gmconfig
 
 _pkgbase='python-gmconfig'
 pkgbase='python-gmconfig'
@@ -8,7 +8,7 @@ pkgver=c505230
 pkgrel=1
 pkgdesc="Simple JSON based configuration file manager for python 3.x"
 arch=('any')
-url='https://gitlab.com/gabmus/gmconfig'
+url='https://gitlab.com/gabmus/python-gmconfig'
 depends=('python')
 makedepends=('python-setuptools')
 provides=('python-gmconfig')
