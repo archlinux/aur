@@ -1,6 +1,6 @@
 pkgbase = wit-svn
 	pkgdesc = A set of command line tools to manipulate Wii and Gamecube ISO images and WBFS containers
-	pkgver = r7603
+	pkgver = r7615
 	pkgrel = 1
 	url = https://wit.wiimm.de/
 	arch = x86_64
@@ -8,7 +8,9 @@ pkgbase = wit-svn
 	makedepends = subversion
 	depends = zlib
 	depends = fuse
-	source = wit-svn::svn+https://opensvn.wiimm.de/wii/trunk/wiimms-iso-tools/
+	optdepends = wget: load-titles script
+	optdepends = bash: load-titles script
+	source = wit-svn::svn+https://opensvn.wiimm.de/wii/trunk/wiimms-iso-tools
 	md5sums = SKIP
 
 pkgname = wit-svn

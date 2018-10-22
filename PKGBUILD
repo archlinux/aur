@@ -1,6 +1,6 @@
 # Maintainer: Glowpelt <myst AT focks DOT pw>
 pkgname=wit-svn
-pkgver=r7603
+pkgver=r7615
 pkgrel=1
 pkgdesc="A set of command line tools to manipulate Wii and Gamecube ISO images and WBFS containers"
 arch=('x86_64')
@@ -8,7 +8,9 @@ url="https://wit.wiimm.de/"
 license=('GPL')
 depends=('zlib' 'fuse')
 makedepends=('subversion')
-source=("wit-svn::svn+https://opensvn.wiimm.de/wii/trunk/wiimms-iso-tools/")
+optdepends=('wget: load-titles script'
+            'bash: load-titles script')
+source=("wit-svn::svn+https://opensvn.wiimm.de/wii/trunk/wiimms-iso-tools")
 md5sums=('SKIP')
 
 # There's a proper version number, but it's embedded in the Makefile - figure out how to extract?
@@ -36,6 +38,6 @@ package() {
     ln -s /usr/bin/wdf "$pkgdir/usr/bin/wdf-cat"
     ln -s /usr/bin/wdf "$pkgdir/usr/bin/wdf-dump"
 
-    # Data files it uses. Unsure if it's wise to include the root-needed update script.
     install -p -D -m644 -t "$pkgdir/usr/share/wit" share/titles.txt share/titles-*.txt share/system-menu.txt share/magic.txt
+    install -p -D -m755 -t "$pkgdir/usr/lib/wit-svn" load-titles.sh
 }
