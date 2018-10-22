@@ -2,8 +2,8 @@
 
 pkgname=copyq-plugin-itemweb
 _realname=CopyQ
-pkgver=3.1.2
-pkgrel=1
+pkgver=3.6.1
+pkgrel=2
 pkgdesc="Clipboard manager with searchable and editable history. Itemweb plugin."
 url="https://github.com/hluk/CopyQ"
 depends=('copyq' 'qt5-webkit')
@@ -11,7 +11,7 @@ makedepends=('cmake' 'qt5-tools' 'qt5-svg')
 license=('GPL3')
 arch=('i686' 'x86_64')
 source=("https://github.com/hluk/${_realname}/archive/v${pkgver}.tar.gz")
-md5sums=('fef762f28d1572b0ca7544936e7a6a90')
+sha256sums=('79bb76c0afcfd769932a9d3b6cfa985dadc1b71443be2277ef0367fa6a4a658f')
 
 build() {
     mkdir "${srcdir}/build"
