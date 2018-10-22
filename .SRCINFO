@@ -1,6 +1,6 @@
 pkgbase = linux-bld
 	pkgver = 4.18.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rmullick/linux
 	arch = x86_64
 	license = GPL2
@@ -14,7 +14,7 @@ pkgbase = linux-bld
 	source = 60-linux.hook
 	source = 90-linux.hook
 	source = linux-bld.preset
-	source = config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=6c2680a40042bdb3b82dc25f9ab58334c7dd3260
+	source = config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=fe9bab556d810ba4bb968f60e834fa7b31a3e5e0
 	source = https://raw.githubusercontent.com/rmullick/bld-patches/master/BLD-4.18.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
@@ -22,7 +22,7 @@ pkgbase = linux-bld
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = 75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919
 	sha256sums = 5b51a1eacb3e00b304ca54d31f467ec1fb15fdfce93f1c62963d087bf753e812
-	sha256sums = 321af63cf7dc8e79531ddd8634eddba19e40a18335e7ce61eedd0ad72fef89a5
+	sha256sums = 0e0d831763f080c65c07e06389007ada9f7d77f8148859ac5a2223263cc966e7
 	sha256sums = 53c93e1b5c05a749a976ed4702daeab5524326d779c157f8878308125de2e68b
 
 pkgname = linux-bld

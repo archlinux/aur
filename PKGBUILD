@@ -9,14 +9,14 @@ pkgver=4.18.16
 archlinux_linux_version=$pkgver-arch1
 _srcname=linux-4.18
 _pkgver2=${_srcname#*-}.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/rmullick/linux"
 license=('GPL2')
 makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 _BLDpatch="BLD-${_srcname#*-}.patch"
-arch_config_trunk=6c2680a40042bdb3b82dc25f9ab58334c7dd3260
+arch_config_trunk=fe9bab556d810ba4bb968f60e834fa7b31a3e5e0
 
 source=("https://git.archlinux.org/linux.git/snapshot/linux-${archlinux_linux_version}.tar.xz"
         '60-linux.hook'  # pacman hook for depmod
@@ -33,7 +33,7 @@ sha256sums=('3f64579d5584a85fb0b15fda1f9803cbc924dcd4007c7e17b1bb449bc653f5ec'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             '5b51a1eacb3e00b304ca54d31f467ec1fb15fdfce93f1c62963d087bf753e812'
-            '321af63cf7dc8e79531ddd8634eddba19e40a18335e7ce61eedd0ad72fef89a5'
+            '0e0d831763f080c65c07e06389007ada9f7d77f8148859ac5a2223263cc966e7'
             '53c93e1b5c05a749a976ed4702daeab5524326d779c157f8878308125de2e68b')
 
 validpgpkeys=(
