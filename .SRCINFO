@@ -1,0 +1,21 @@
+pkgbase = timetable-git
+	pkgdesc = Plot out your own timetable for the week and organize it. Designed for Pantheon Shell
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/lainsce/timetable
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = gtk3
+	depends = vala
+	depends = granite
+	provides = timetable
+	conflicts = timetable
+	source = git+https://github.com/lainsce/timetable.git
+	md5sums = SKIP
+
+pkgname = timetable-git
+
