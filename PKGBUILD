@@ -2,7 +2,7 @@
 
 pkgname=joxi
 pkgver=3.0.9
-pkgrel=5
+pkgrel=6
 pkgdesc="Free tool for screen capture"
 arch=('x86_64')
 url="http://joxi.net"
@@ -15,12 +15,11 @@ sha512sums_x86_64=('89a545cea55b1b9afcd1dddd6fa82bf08188939e1fec97e7192b2fe1d4aa
 
 package() {
   cd "$srcdir"
-
-	cp -r usr $pkgdir
-	sed -i 's!/opt/joxi/icon_64!joxi!' $pkgdir/usr/share/applications/Joxi.desktop
-	sed -i 's!/usr/bin/joxi!joxi!' $pkgdir/usr/share/applications/Joxi.desktop
+	install -D -m755 "${srcdir}/usr/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+	install -D -m644 "${srcdir}/usr/share/applications/Joxi.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+	sed -i 's!/opt/joxi/icon_64!joxi!' $pkgdir/usr/share/applications/${pkgname}.desktop
+	sed -i 's!/usr/bin/joxi!joxi!' $pkgdir/usr/share/applications/${pkgname}.desktop
 
 	install -D -m644 "${srcdir}/opt/${pkgname}/icon_64.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-	install -D -m644 "${srcdir}/opt/${pkgname}/icon_light.png" "${pkgdir}/usr/share/pixmaps/${pkgname}_light.png"
-
+	install -D -m644 "${srcdir}/opt/${pkgname}/icon_light.png" "${pkgdir}/usr/share/pixmaps/${pkgname}_tray_mono.png"
 }
