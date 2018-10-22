@@ -2,7 +2,7 @@
 # Contributor: Matt Spaulding <matt at mattops dot io>
 
 pkgname=ibm-plex-fonts
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="The package of IBM’s typeface, IBM Plex."
 arch=('any')
