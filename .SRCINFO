@@ -1,0 +1,14 @@
+pkgbase = gnome-shell-extension-paperwm-git
+	pkgdesc = A gnome shell extension providing scrollable tiling of windows and per monitor workspaces.
+	pkgver = r998.b295e9d
+	pkgrel = 1
+	url = https://github.com/paperwm/PaperWM
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gnome-shell
+	source = git+https://github.com/paperwm/PaperWM
+	md5sums = SKIP
+
+pkgname = gnome-shell-extension-paperwm-git
+
