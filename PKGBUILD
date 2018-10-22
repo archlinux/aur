@@ -1,15 +1,15 @@
 # Maintainer: Mirko Scholz <srtlg>
 pkgname=objcryst-fox
-pkgver=2017.2.27
+pkgver=2017.2.29
 pkgrel=1
 pkgdesc='A program for the ab initio structure determination from powder diffraction'
 arch=('i686' 'x86_64')
 url='http://fox.vincefn.net/FoxWiki'
 depends=('glu' 'freeglut' 'wxgtk2' 'fftw')
-makedepends=('libmariadbclient' 'newmat')
+makedepends=('libmariadbclient' 'newmat' 'rsync')
 license=('GPL2')
 #_objcryst_ver=v${pkgver}
-_objcryst_ver=5d39b64a641e2707d35ff3d0977b00f5ecf57831
+_objcryst_ver=05954fd9c2e0fb80571a3d63fbd7ab8666655ee9
 _boost_ver=1.68.0
 source=(
 "Fox.desktop"
@@ -18,9 +18,10 @@ source=(
 "http://downloads.sourceforge.net/project/objcryst/3rdPartyLibraries/cctbx.tar.bz2")
 noextract=("cctbx.tar.bz2" "boost_${_boost_ver//./_}.tar.bz2")
 sha1sums=('6d8bb12fe1add4481ac1733e9cf6aea57aedee61'
-          'a542bdd57433bf143b751c0fca2c383cd71833af'
+          '037a633155160f036997c8b422653e69a87ebaa2'
           '18863a7cae4d58ae85eb63d400f774f60a383411'
-          '1aa2d033d45a86e928ee58196fe5916da9376c18')
+          '76f82bae08b2412eb90a05a558dc746274ca8e7b')
+
 
 prepare() {
 	cd "${srcdir}/"
@@ -48,8 +49,7 @@ package() {
 	cd "${srcdir}"
 	_objcryst_dir=`tar tf objcryst-${pkgver}.tar.gz | head -1`
 	cd "${srcdir}/${_objcryst_dir}"
-	mkdir -p "${pkgdir}/usr/bin"
-	make install -C Fox "DESTDIR=${pkgdir}/usr/bin/"
+	make install -C Fox "DESTDIR=${pkgdir}/usr/bin/Fox"
 	install -Dm644 ${srcdir}/Fox.desktop "${pkgdir}/usr/share/applications/Fox.desktop"
 	install -Dm644 Fox/src/Fox.xpm "${pkgdir}/usr/share/pixmaps/Fox.xpm"
 }
