@@ -9,7 +9,7 @@
 
 pkgname=whipper-git
 pkgver=0.5.1.r82.ga34942e
-pkgrel=2
+pkgrel=3
 pkgdesc='A Unix CD ripper aiming for accuracy over speed -- forked from morituri'
 arch=('any')
 url='https://github.com/whipper-team/whipper'
@@ -46,6 +46,11 @@ pkgver() {
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+build() {
+    cd "$srcdir/${pkgname%-git}"
+    python2 setup.py build
+}
+
 check() {
     cd "$srcdir/${pkgname%-git}"
     python2 -m unittest discover
@@ -53,5 +58,5 @@ check() {
 
 package() {
     cd "$srcdir/${pkgname%-git}"
-    python2 setup.py install --root="${pkgdir}"/ --optimize=1
+    python2 setup.py install --skip-build --root="${pkgdir}"/ --optimize=1
 }
