@@ -7,6 +7,7 @@ pkgbase = perl-moosex-followpbp
 	license = GPL
 	license = PerlArtistic
 	depends = perl
+	depends = perl-moose
 	options = !emptydirs
 	options = purge
 	source = https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/MooseX-FollowPBP-0.05.tar.gz
