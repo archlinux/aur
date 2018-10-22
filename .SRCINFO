@@ -1,14 +1,14 @@
 pkgbase = coccinelle
 	pkgdesc = Provides spatch program used to apply semantic patches
 	pkgver = 1.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://coccinelle.lip6.fr/
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	makedepends = camlp4
 	makedepends = ocaml
 	makedepends = ocaml-findlib
+	makedepends = ocaml-num
 	depends = pcre
 	depends = python
 	optdepends = ocaml: OCaml scripting feature
