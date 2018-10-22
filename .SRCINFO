@@ -1,0 +1,16 @@
+pkgbase = perl-moosex-followpbp
+	pkgdesc = This packages the Foo-Bar distribution, containing the Foo::Bar module!
+	pkgver = 0.05
+	pkgrel = 1
+	url = https://metacpan.org/release/MooseX-FollowPBP
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/MooseX-FollowPBP-0.05.tar.gz
+	md5sums = 6d62fe9be745bba23748290978f89caa
+
+pkgname = perl-moosex-followpbp
+
