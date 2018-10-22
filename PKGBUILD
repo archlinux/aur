@@ -10,7 +10,7 @@
 
 pkgname=vagrant
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Build and distribute virtualized development environments"
 arch=('x86_64')
 url="https://vagrantup.com"
@@ -62,6 +62,9 @@ package() {
 
   install -Dm644 contrib/bash/completion.sh \
     "$pkgdir"/usr/share/bash-completion/completions/$pkgname
+
+  install -Dm644 contrib/vim/vagrantfile.vim \
+    "$pkgdir"/usr/share/vim/vimfiles/ftdetect/vagrantfile.vim
 
   install -Dm644 LICENSE \
     "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
