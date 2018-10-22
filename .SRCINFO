@@ -1,0 +1,21 @@
+pkgbase = perl-astro-coords
+	pkgdesc = Astro::Coords - Class for handling astronomical coordinates
+	pkgver = 0.19
+	pkgrel = 1
+	url = https://metacpan.org/release/Astro-Coords
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-astro-pal
+	depends = perl-astro-telescope
+	depends = perl-module-build
+	depends = perl-datetime
+	depends = perl-test-pod
+	options = !emptydirs
+	options = purge
+	source = https://search.cpan.org/CPAN/authors/id/BAZ/Astro-Coords-0.19.tar.gz
+	md5sums = 9f1570a7a4fd66d1b3fbaacbe6b08ffb
+
+pkgname = perl-astro-coords
+
