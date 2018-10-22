@@ -1,0 +1,22 @@
+pkgbase = harvey-git
+	pkgdesc = Harvey is a color contrast checker. It checks a given set of colors for WCAG contrast compliance. Designed for Pantheon Shell
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/danrabbit/harvey
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = gtk3
+	depends = vala
+	depends = granite
+	optdepends = lib32-json-glib
+	provides = harvey
+	conflicts = harvey
+	source = git+https://github.com/danrabbit/harvey.git
+	md5sums = SKIP
+
+pkgname = harvey-git
+
