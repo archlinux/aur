@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Categories=Utility
+Terminal=false
+Exec=/usr/share/ArchLinux-Mirrorlist-Manager/launcher.py
+Name=Mirrorlist Manager
+Icon=mirrorlist-manager
+Comment=A Qt frontend for easy mirrorlist management
