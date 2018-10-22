@@ -1,6 +1,6 @@
 # Maintainer: pixeljoelson <pixeljoelson@gmail.com>
 pkgname=kit-git
-pkgver=r240.776de76
+pkgver=r250.2d34699
 pkgrel=1
 pkgdesc="A magical, high performance programming language for game development."
 arch=('x86_64')
