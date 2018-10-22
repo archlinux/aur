@@ -1,14 +1,14 @@
 pkgbase = python-pysimplegui27
 	pkgdesc = Super-simple to create custom layout GUI
-	pkgver = 1.1.4
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/MikeTheWatchGuy/PySimpleGUI
 	arch = any
 	license = LGPLv3+
 	checkdepends = python-pytest-runner
 	makedepends = python-setuptools
-	source = python-pysimplegui27-1.1.4.tar.gz::https://pypi.python.org/packages/source/P/PySimpleGUI27/PySimpleGUI27-1.1.4.tar.gz
-	sha256sums = 63754ee02a20eedd3fe91b7a2b474b9152ef4f08f561d84287f134389eafda58
+	source = python-pysimplegui27-1.2.2.tar.gz::https://pypi.python.org/packages/source/P/PySimpleGUI27/PySimpleGUI27-1.2.2.tar.gz
+	sha256sums = 899239debb2577acd75ab01f914bd9aae9e5ec734d268ee182fae1b5f3650262
 
 pkgname = python-pysimplegui27
 	depends = python2
