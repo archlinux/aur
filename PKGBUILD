@@ -4,8 +4,8 @@
 # Contributor: shamrok <szamrok@gmail.com>
 
 pkgname=kraft
-pkgver=0.81
-pkgrel=2
+pkgver=0.82
+pkgrel=1
 pkgdesc="A program suitable for all trades or crafts"
 arch=('i686' 'x86_64')
 url="http://www.volle-kraft-voraus.de/"
@@ -36,5 +36,5 @@ package() {
   make "DESTDIR=${pkgdir}" install
 }
 
-sha256sums=('3f3a75ecdf0f5a776205974e49117643c9bfdd6130ecd6346f287d405dd66da4'
+sha256sums=('85d467118fcf2fe1d4fe171e2de759d4c7d70cf054f646676eb6d703f0fade48'
             '2a98be3f535be36161c16ee1f49baba72eab410f222cfc32697c490cfd412370')
