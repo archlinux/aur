@@ -9,7 +9,7 @@
 
 pkgname=whipper-git
 pkgver=0.7.0.r37.g669b356
-pkgrel=2
+pkgrel=3
 pkgdesc='A Unix CD ripper aiming for accuracy over speed -- forked from morituri'
 arch=('any')
 url='https://github.com/whipper-team/whipper'
@@ -29,7 +29,7 @@ depends=(
     )
 makedepends=(
     'git'
-    'python2-gobject2'
+    'python2-gobject'
     )
 checkdepends=(
     'python2-twisted'
