@@ -10,7 +10,7 @@
 pkgname=whipper-git
 pkgver=0.5.1.r82.ga34942e
 pkgrel=2
-pkgdesc="A Unix CD ripper aiming for accuracy over speed -- forked from morituri"
+pkgdesc='A Unix CD ripper aiming for accuracy over speed -- forked from morituri'
 arch=('any')
 url='https://github.com/whipper-team/whipper'
 license=('GPL3')
