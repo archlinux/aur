@@ -5,9 +5,10 @@
 # Contributor: siasia
 # Contributor: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 
-pkgname=oracle-xe
-pkgver=11.2.0.2.0
-pkgrel=1
+pkgbase=oracle-xe-11g
+pkgname=oracle-xe-11g
+pkgver=11.2.0_1.0
+pkgrel=4
 pkgdesc="A non free DBMS (legacy 11g version)"
 url="http://www.oracle.com/"
 license=('custom')
@@ -26,7 +27,7 @@ source=(
 	'oracle-xe.service'
 )
 
-DLAGENTS+=('manual::/usr/bin/echo The source file for this package needs to be downloaded manually, since it requires a login and is not redistributable. Please visit http://www.oracle.com/technetwork/database/database-technologies/express-edition/downloads/index.html')
+DLAGENTS+=('manual::/usr/bin/echo The source file for this package needs to be downloaded manually, since it requires a login and is not redistributable. Please visit https://www.oracle.com/technetwork/database/database-technologies/express-edition/downloads/xe-prior-releases-5172097.html')
 
 md5sums=(
 	'dd7881a55569d890241f11cd0eeb7d48'
@@ -40,7 +41,7 @@ md5sums=(
 
 build() {
 	cd $srcdir
-	bsdtar -xf Disk1/oracle-xe-11.2.0-1.0.x86_64.rpm
+	bsdtar -xf Disk1/oracle-xe-${pkgver/_/-}.x86_64.rpm
 }
 
 package() {
