@@ -4,8 +4,8 @@
 
 pkgbase=spotifyd
 pkgname=('spotifyd' 'spotifyd-pulseaudio')
-pkgver=0.2.2
-pkgrel=2
+pkgver=0.2.3
+pkgrel=1
 arch=('x86_64' 'armv7h' 'aarch64')
 license=('GPL3')
 depends=('alsa-lib' 'libogg' 'gcc-libs')
@@ -13,19 +13,14 @@ makedepends=('cargo' 'libpulse')
 pkgdesc="A spotify playing daemon"
 url="https://github.com/Spotifyd/$pkgbase"
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/Spotifyd/$pkgbase/archive/v$pkgver.tar.gz"
-        "version.patch"
-        "openssl.patch")
-sha256sums=('6b79072efbfe1f3c831e898da2c340d806f778d598e6797347e5605d2201ec43'
-            '54452a87cde087336771019a079e1470f13c5b48430ca940be576bf3cc057b84'
-            'a91205a067b4c9a30a43d350abfb3d334fc35cad8556f4643373d3f7258d9c25')
+        "version.patch")
+sha256sums=('619f5270023e70b3fb8329b9b8995800833768850014e320c734c067fce4b1b5'
+            'e00756b06c03f5bbb03fc5541321101f6fd67cdea14c456718744b7f5f109fbf')
 
 prepare() {
   cd "$srcdir/spotifyd-$pkgver"
   # Fix the wrong version being reported
   patch -p1 < "$srcdir/version.patch"
-
-  # Fix not being able to compile with OpenSSL 1.1.0
-  patch -p1 < "$srcdir/openssl.patch"
 }
 
 build() {

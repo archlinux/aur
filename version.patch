@@ -6,7 +6,7 @@ index 930ccbc..50d8d35 100644
  [package]
  name = "spotifyd"
 -version = "0.2.1"
-+version = "0.2.2"
++version = "0.2.3"
  authors = ["Simon Persson <simon@flaskpost.org>"]
  
  [dependencies]
