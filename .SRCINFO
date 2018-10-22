@@ -5,9 +5,8 @@ pkgbase = picard-plugins-git
 	url = https://picard.musicbrainz.org/plugins/
 	arch = any
 	license = GPL
-	depends = picard
+	depends = picard>=2.0
 	depends = python-aubio
-	conflicts = picard<=2.0
 	conflicts = picard-plugins-v2-git
 	replaces = picard-plugins-v2-git
 	source = git+https://github.com/metabrainz/picard-plugins.git#branch=2.0
