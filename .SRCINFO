@@ -1,0 +1,16 @@
+pkgbase = ngadmin-git
+	pkgdesc = An cli admin tool for some Netgear switches (the GS105E and GS108E) under a Linux OS
+	pkgver = r109.5bf8650
+	pkgrel = 1
+	url = https://github.com/Alkorin/ngadmin
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	provides = ngadmin
+	conflicts = ngadmin
+	source = git+https://github.com/Alkorin/ngadmin.git
+	sha256sums = SKIP
+
+pkgname = ngadmin-git
+
