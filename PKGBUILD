@@ -3,7 +3,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 # Contributor: Daniel Cohen <dan@supercore.co.uk>
 pkgname=plymouth-kcm
-pkgver=5.14.1
+pkgver=5.14.2
 pkgrel=1
 pkgdesc="KCM to manage the Plymouth (Boot) theme"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('plymouth' 'knewstuff' 'kdeclarative')
 makedepends=('extra-cmake-modules' 'qt5-tools')
 source=("https://download.kde.org/stable/plasma/$pkgver/$pkgname-$pkgver.tar.xz"{,.sig})
-sha256sums=('c7a399b1f20f0cc481930fed268e95757ec57144931c58f873062442c7f2cf77'
+sha256sums=('ec72c0934d588a856b46fc0bef0cf347ed236b87091913290c32054d061ac67f'
             'SKIP')
 validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E'  # Jonathan Riddell
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D') # Bhushan Shah
