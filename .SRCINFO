@@ -1,11 +1,9 @@
 pkgbase = trinnity
 	pkgdesc = C++ library of CNN primitive operations
 	pkgver = 0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/STG-TCD/trinnity
-	arch = x86_64
-	arch = aarch64
-	arch = armv7h
+	arch = any
 	license = BSD
 	makedepends = doxygen
 	optdepends = gsl>=2.3: GSL BLAS backend
@@ -13,7 +11,12 @@ pkgbase = trinnity
 	optdepends = openblas-lapack>=0.2.19: OpenBLAS BLAS backend
 	optdepends = intel-mkl>=2017.17.0.1.1.132: Intel MKL BLAS backend
 	optdepends = clblas>=2.12: clBLAS BLAS backend
+	optdepends = cblas: Plain old CBLAS backend
 	source = https://bitbucket.org/STG-TCD/trinnity/get/v0.5.tar.bz2
+	md5sums = fe8cd5c95ac23dbd99d1caaad6119922
+	sha1sums = 4dd92fbbce939bd99706286c917b07165111433e
+	sha256sums = 50ead12c89aff9ebc5d6930a3b6391fad61586e2e83ab18d7ce3aecb9c24a1e2
+	sha512sums = ddc229bbc52754b9e25c5a1c90011ae796873704ab810c483646d51ab4632f923291b971b2f8b873646d3a5430c234893a8816a2d999dc2081ace51c19a1312d
 
 pkgname = trinnity
 
