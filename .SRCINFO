@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-libsoup
 	pkgdesc = HTTP client/server library (mingw-w64)
-	pkgver = 2.64.1
+	pkgver = 2.64.2
 	pkgrel = 1
 	url = https://download.gnome.org/sources/libsoup
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = mingw-w64-libsoup
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = http://ftp.gnome.org/pub/GNOME/sources/libsoup/2.64/libsoup-2.64.1.tar.xz
-	sha256sums = 359bd02a909bfd43f68712146e9c4f4c643bffa84e513d8b0af1be215a92e1f3
+	source = http://download.gnome.org/sources/libsoup/2.64/libsoup-2.64.2.tar.xz
+	sha256sums = 75ddc194a5b1d6f25033bb9d355f04bfe5c03e0e1c71ed0774104457b3a786c6
 
 pkgname = mingw-w64-libsoup
 
