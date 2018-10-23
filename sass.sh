@@ -1,3 +1,3 @@
 #!/bin/sh
 
-/usr/bin/dart /usr/lib/sass/app.snapshot
+/usr/bin/dart /usr/lib/sass/app.snapshot "${@}"
