@@ -1,7 +1,9 @@
-# Maintainer: Christian Krause ("wookietreiber") <kizkizzbangbang@googlemail.com>
+# Maintainer: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
+# shellcheck disable=2034
+# shellcheck disable=2148
 
 pkgname=lua-posix
-pkgver=33.4.0
+pkgver=34.0.4
 pkgrel=1
 pkgdesc="posix bindings for Lua"
 arch=('i686' 'x86_64')
@@ -10,20 +12,23 @@ license=('custom')
 depends=('lua')
 conflicts=('lua-posix-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/luaposix/luaposix/archive/release-v$pkgver.tar.gz")
-md5sums=('b36ff049095f28752caeb0b46144516c')
+md5sums=('b811b67c038e4310e05bb6149ebe6702')
 
 build() {
-  cd $srcdir/luaposix-release-v$pkgver
+  # shellcheck disable=2154
+  cd "$srcdir"/luaposix-release-v$pkgver || exit 1
 
-  ./configure --prefix=/usr
-
-  make
+  build-aux/luke \
+    all
 }
 
 package() {
-  cd $srcdir/luaposix-release-v$pkgver
+  cd "$srcdir"/luaposix-release-v$pkgver || exit 1
 
-  make DESTDIR=$pkgdir install
+  # shellcheck disable=2154
+  build-aux/luke \
+    PREFIX="$pkgdir"/usr \
+    install
 
-  install -Dm644 COPYING $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
