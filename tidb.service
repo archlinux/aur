@@ -1,8 +1,8 @@
 [Unit]
 Description=TiDB is a distributed HTAP database compatible with the MySQL protocol
 Documentation=https://github.com/pingcap/tidb
-Requires=pd.service
-After=pd.service network.target
+Requires=tikv.service
+After=tikv.service network.target
 
 [Service]
 User=tidb
