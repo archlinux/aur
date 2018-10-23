@@ -1,10 +1,11 @@
 # Contributor: Daniel Miranda (dmiranda)
+# Maintainer: Gustavo Costa (gusbemacbe)
 
 _gitname=suru-plus
 pkgname=suru-plus-git
-pkgver=r2.9
+pkgver=20.3.0
 pkgrel=1
-pkgdesc="An elegant, modern and sweet third-party Suru icons, based on Sam Hewitt's Suru Icons"
+pkgdesc="Suru++ 20 — A cyberpunk, elegant, futuirtisc and modern third-party icons theme!"
 arch=('any')
 url="https://github.com/gusbemacbe/${_gitname}"
 license=('GPL3')
@@ -22,10 +23,20 @@ pkgver()
 
 package() 
 {
+    # Installing the icons theme
     install -d ${pkgdir}/usr/share/icons
+
+    # Copying to the /usr/ahre/icons/
     cp -r ${srcdir}/${_gitname}* ${pkgdir}/usr/share/icons/
     find ${pkgdir}/usr -type f -exec chmod 644 {} \;
     find ${pkgdir}/usr -type d -exec chmod 755 {} \;
+
+    # Removing unncessary .directory files
     find ${pkgdir}/usr -type f -name '.directory' -delete
-    rm -rf "$pkgdir"/usr/share/icons/suru-plus/{configure, .git, .github, .gitattributes, .gitignore,*.md,*.jpg,*.svg,*.png, .product, 'nuove icone', 'Suru++ OpenDesktop'}
+
+    # Removing some unnecessary files
+    rm -rf "$pkgdir"/usr/share/icons/suru-plus/{configure, .git, .gitignore, *.md, 'images', 'templates'}
+
+    # Renaming the folder
+    mv "$pkgdir"/usr/share/icons/suru-plus "$pkgdir"/usr/share/icons/Suru++\ 20
 }

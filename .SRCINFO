@@ -1,6 +1,6 @@
 pkgbase = suru-plus-git
-	pkgdesc = An elegant, modern and sweet third-party Suru icons, based on Sam Hewitt's Suru Icons
-	pkgver = r2.9
+	pkgdesc = Suru++ 20 — A cyberpunk, elegant, futuirtisc and modern third-party icons theme!
+	pkgver = 20.3.0
 	pkgrel = 1
 	url = https://github.com/gusbemacbe/suru-plus
 	arch = any
