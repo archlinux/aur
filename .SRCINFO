@@ -1,0 +1,19 @@
+pkgbase = certbot-dns-henet-git
+	pkgdesc = he.net DNS Authenticator plugin for Certbot
+	pkgver = r10.9e85217
+	pkgrel = 1
+	url = https://bitbucket.org/qt-max/certbot-dns-henet
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = certbot
+	depends = python-acme
+	depends = python-beautifulsoup4
+	depends = python-requests
+	depends = python-setuptools
+	depends = python-zope-interface
+	source = certbot-dns-henet::git+https://bitbucket.org/qt-max/certbot-dns-henet.git
+	sha256sums = SKIP
+
+pkgname = certbot-dns-henet-git
+
