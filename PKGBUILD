@@ -1,6 +1,6 @@
 # Contributor: Martin Grønlien Pejcoch <mpejcoch@gmail.com>
 pkgname=ecflow-ui
-pkgver=4.11.0
+pkgver=4.11.1
 pkgrel=1
 pkgdesc="ECMWF GUI client for ecFlow"
 arch=(i686 x86_64)
@@ -17,7 +17,7 @@ options=()
 install=
 source=(https://software.ecmwf.int/wiki/download/attachments/8650755/ecFlow-${pkgver}-Source.tar.gz)
 noextract=()
-sha256sums=('3f2a8292a61b015d0be282dd86ffafd8fefce8b34ea2c892c178f1f1e41d15c3')
+sha256sums=('b3bcc1255939f87b9ba18d802940e08c0cf6379ca6aeec1fef7bd169b0085d6c')
 
 build() {
   cd ecFlow-${pkgver}-Source
