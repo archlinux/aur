@@ -2,7 +2,7 @@
 
 pkgname=python-django-channels
 _pypi_pkgname=channels
-pkgver=2.1.3
+pkgver=2.1.5
 pkgrel=0
 pkgdesc="Developer-friendly asynchrony for Django"
 arch=(any)
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 depends=('python' 'python-django' 'python-asgiref')
 optdepends=('python-daphne')
 source=("https://pypi.io/packages/source/c/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
-sha256sums=('8d503d18b92cef488ba68808a2205e055d29a6a1abae92d277f8f7a9c8752f13')
+sha256sums=('48f97f1801e0a8da6d01430d16d4ed8bd460d4ec3130c66075fb94b12bb30a67')
 
 build() {
     cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
