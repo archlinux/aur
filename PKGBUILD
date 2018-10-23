@@ -1,12 +1,13 @@
 # Contributor: Fabio ‘Lolix’ Loli <lolix at disroot dot org>
 # Contributor: Daniel Miranda <dmiranda at gmail dot com>
 # Contributor: Mark Wagie <yochanan dot marqos at gmail dot com>
-# Maintainer: Gustavo Costa <gusbemacbe@gmail.com>
+# Contributor: Sam Burgos <sam.burgos1089 at gmail dotcom>
+# Maintainer: Gustavo Costa <gusbemacbe ar gmail dot com>
 
 pkgname=suru-plus-pack-git
-pkgver=r1.6
+pkgver=20.4.1
 pkgrel=1
-pkgdesc="A full collection of three Suru++ icons themes, based on Sam Hewitt's Suru Icons"
+pkgdesc="A full collection of three Suru++ 20 icons themes, based on Sam Hewitt's Suru Icons"
 arch=('any')
 license=('GPL3')
 makedepends=('git')
@@ -28,12 +29,32 @@ pkgver()
 
 package() 
 {
+  # Installing the icons theme
   install -d "${pkgdir}"/usr/share/icons
-  cp -r "${srcdir}"/suru-plu{s,s-dark,s-telinkrin} "${pkgdir}"/usr/share/icons/
+
+  # Copying and changing name to "Suru++", "Suru++-Dark" and "Suru++-Telinkrin"
+  cp -r "${srcdir}"/suru-plus "${pkgdir}"/usr/share/icons/Suru++
+  cp -r "${srcdir}"/suru-plus-dark "${pkgdir}"/usr/share/icons/Suru++-Dark
+  cp -r "${srcdir}"/suru-plus-telinkrin "${pkgdir}"/usr/share/icons/Suru++-Telinkrin
 
   find "${pkgdir}"/usr -type f -exec chmod 644 {} \;
   find "${pkgdir}"/usr -type d -exec chmod 755 {} \;
 
-  rm -r "$pkgdir"/usr/share/icons/suru-plu{s,s-dark,s-telinkrin}/{.git,.github}
-  rm -f "$pkgdir"/usr/share/icons/suru-plu{s,s-dark,s-telinkrin}/{.gitattributes,.gitignore,*.md,*.jpg,*.svg,*.png, 'Suru++ OpenDesktop'}
+  # Deleting unneeded files from Suru++ icon
+  rm -r "$pkgdir"/usr/share/icons/Suru++/.git
+  rm -r "$pkgdir"/usr/share/icons/Suru++/.gitignore
+  rm -r "$pkgdir"/usr/share/icons/Suru++/*.md
+
+  # Deleting unneeded files from Suru++ Dark icon
+  rm -r "$pkgdir"/usr/share/icons/Suru++-Dark/.git
+  rm -r "$pkgdir"/usr/share/icons/Suru++-Dark/.github
+  rm -r "$pkgdir"/usr/share/icons/Suru++-Dark/.gitattributes
+  rm -r "$pkgdir"/usr/share/icons/Suru++-Dark/.gitignore
+  rm -r "$pkgdir"/usr/share/icons/Suru++-Dark/*.md
+  rm -r "$pkgdir"/usr/share/icons/Suru++-Dark/*.svg
+  rm -r "$pkgdir"/usr/share/icons/Suru++-Dark/*.png
+
+  # Deleting unneeded files from Suru++ Telinkrin icon
+  rm -r "$pkgdir"/usr/share/icons/Suru++-Telinkrin/.git
+  rm -r "$pkgdir"/usr/share/icons/Suru++-Telinkrin/*.md
 }
