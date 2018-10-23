@@ -1,10 +1,10 @@
 # Maintainer: Jan Heczko <jan dot heczko at gmail dot com>
 pkgname=python-pyipopt
-pkgver=r126.36bcb7f
-pkgrel=2
+pkgver=r146.cd3d96f
+pkgrel=1
 pkgdesc="A Python connector to IPOPT"
 arch=('i686' 'x86_64')
-url="https://github.com/xuy/pyipopt"
+url="https://github.com/g-braeunlich/pyipopt"
 license=('BSD')
 groups=()
 depends=('coin-or-ipopt' 'python-numpy'	'gcc')
@@ -16,7 +16,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=('git+http://github.com/xuy/pyipopt.git')
+source=('git+http://github.com/g-braeunlich/pyipopt.git')
 noextract=()
 md5sums=('SKIP')
 
@@ -26,11 +26,6 @@ md5sums=('SKIP')
 pkgver() {
 	cd pyipopt
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-	cd pyipopt
-	patch -Np1 -i "${SRCDEST}/pyipopt.patch"
 }
 
 build() {
