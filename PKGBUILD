@@ -26,17 +26,19 @@ package()
     # Installing the icons theme
     install -d ${pkgdir}/usr/share/icons
 
-    # Copying to the /usr/ahre/icons/
-    cp -r ${srcdir}/${_gitname}* ${pkgdir}/usr/share/icons/
+    # Copying to the /usr/share/icons/ and changing name to "Suru++ 20"
+    cp -r "${srcdir}"/suru-plus "${pkgdir}"/usr/share/icons/Suru++\ 20
+
     find ${pkgdir}/usr -type f -exec chmod 644 {} \;
     find ${pkgdir}/usr -type d -exec chmod 755 {} \;
 
     # Removing unncessary .directory files
     find ${pkgdir}/usr -type f -name '.directory' -delete
 
-    # Removing some unnecessary files
-    rm -Rf "$pkgdir"/usr/share/icons/suru-plus/{.git, .gitignore,*.md, images, templates}
-
-    # Renaming the folder
-    mv "$pkgdir"/usr/share/icons/suru-plus "$pkgdir"/usr/share/icons/Suru++\ 20
+    # Deleting unneeded files
+    rm -r "$pkgdir"/usr/share/icons/Suru++\ 20/.git
+    rm -r "$pkgdir"/usr/share/icons/Suru++\ 20/.gitignore
+    rm -r "$pkgdir"/usr/share/icons/Suru++\ 20/*.md
+    rm -R "$pkgdir"/usr/share/icons/Suru++\ 20/images
+    rm -R "$pkgdir"/usr/share/icons/Suru++\ 20/templates
 }
