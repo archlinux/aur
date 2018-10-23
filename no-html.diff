@@ -1,0 +1,75 @@
+diff --git a/Makeconf b/Makeconf
+index f8c3fd2a..59292a4b 100644
+--- a/Makeconf
++++ b/Makeconf
+@@ -70,8 +70,6 @@ EMACSBATCH = $(EMACS) -batch -no-site-file -no-init-file
+ SHELL = /bin/sh
+ 
+ MAKEINFO = LC_ALL=C LANG=en makeinfo
+-# new:  MAKEHTML <output>.html  <input>.texi  {necessary to build 'Index'}
+-MAKEHTML = $(MAKEINFO) --html --no-split --css-include=atouchofstyle.css -o
+ ##                            ^^^^^^^^^^ today's bandwidth is fast
+ #MAKETXT  = $(MAKEINFO) --no-validate --no-headers --no-split -o -
+ MAKETXT  = $(MAKEINFO) --no-validate --plaintext --no-split -o -
+diff --git a/doc/Makefile b/doc/Makefile
+index 9514c1a2..644cfb7d 100644
+--- a/doc/Makefile
++++ b/doc/Makefile
+@@ -37,7 +37,6 @@ TXTs = ../README ../ANNOUNCE ../NEWS ../ONEWS
+ all  : info text
+ info : info/ess.info
+ text : $(TXTs)
+-html : html/ess.html html/readme.html html/news.html
+ pdf  : $(PDFs)
+ 
+ ess.pdf : $(TEXISRC)
+@@ -93,10 +92,9 @@ install-info : info/ess.info
+ 	echo $(ESSINFONODE1) $(ESSINFONODE2) >> $(INFODIR)/dir; \
+ 	echo $(ESSINFONODE3) >> $(INFODIR)/dir)
+ 
+-install-other-docs: pdf html
++install-other-docs: pdf
+ 	-$(INSTALLDIR) $(DOCDIR)
+ 	$(INSTALL) ess.pdf readme.pdf $(DOCDIR)
+-	$(INSTALL) html/ess.html html/readme.html html/news.html $(DOCDIR)
+ 	$(INSTALL) refcard/refcard.pdf $(DOCDIR)
+ 
+ uninstall :
+@@ -104,24 +102,6 @@ uninstall :
+ 	-cd $(DOCDIR) && $(UNINSTALL) ess.html readme.html news.html
+ 	-cd $(DOCDIR) && $(UNINSTALL) refcard.pdf
+ 
+-##  TO DO:  ess_toc.html & readme_toc.html should be merged into index.html
+-html/ess.html: $(TEXISRC)
+-	@echo "making HTML documentation..."
+-	mkdir -p html
+-	-$(MAKEHTML) html/ess.html ess.texi
+-#MM	$(TEXI2HTML) $(SPLITCHAP) ess.texi
+-#MM	test -d ess && cp -p ess/ess_toc.html html/index.html || cp -p ess_toc.html html/index.html
+-#MM	test -d ess && mv -f ess/*.html html || mv -f *.html html
+-
+-html/readme.html: $(TEXISRC)
+-	-$(MAKEHTML) html/readme.html --no-validate readme.texi
+-		 ##                   ^^^^^^^^^^^^^ (design bug: "FIXME" in ess.texi)
+-#MM	$(TEXI2HTML) readme.texi
+-#	mv -f readme.html html
+-
+-html/news.html: $(TEXISRC)
+-	mkdir -p html
+-	-$(MAKEHTML) html/news.html allnews.texi
+ 
+ refcard/refcard.pdf: refcard/refcard.tex
+ 	(cd refcard ; pdflatex refcard)
+diff --git a/lisp/Makefile b/lisp/Makefile
+index 1ecce2fd..11d0a9d6 100644
+--- a/lisp/Makefile
++++ b/lisp/Makefile
+@@ -40,7 +40,7 @@ dist: all
+ install: dist
+ 	-$(INSTALLDIR) $(LISPDIR)
+ 	$(INSTALL) *.elc $(LISPDIR)
+-	$(INSTALL) obsolete/*.elc $(LISPDIR)
++	$(INSTALL) *.elc $(LISPDIR)
+ 	-export J; for I in *.elc; do J=$$I; $(INSTALL) `basename $$J .elc`.el $(LISPDIR); done
+ 	if [ -f /etc/debian_version -a -n "$(SITELISP)" -a ! -f "$(SITELISP)/ess-site.el" ] ; \
+ 	then \
