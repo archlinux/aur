@@ -1,12 +1,12 @@
 # Maintainer: hfte@posteo.org
 pkgname=sws
 pkgver=2.9.7.0
-pkgrel=2
+pkgrel=4
 pkgdesc="A collection of features that seamlessly integrate into REAPER"
 arch=('x86_64')
 url="http://www.sws-extension.org/"
 license=('MIT')
-depends=('reaper')
+depends=('reaper-bin')
 makedepends=('git' 'gcc' 'make' 'php')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
@@ -43,7 +43,7 @@ build() {
 
 
 package() {
-	DESTDIR="${pkgdir}/usr/lib/REAPER/Plugins/"
+	DESTDIR="${pkgdir}/usr/lib/REAPER/UserPlugins/"
 	mkdir -p "${DESTDIR}"
 	cp "${srcdir}/$pkgname/reaper_sws64.so" "${DESTDIR}"
 	cd "${srcdir}"
