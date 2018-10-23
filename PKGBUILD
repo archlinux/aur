@@ -3,7 +3,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=lib32-dconf
-pkgver=0.30.0
+pkgver=0.30.1
 pkgrel=1
 pkgdesc='A low-level configuration system'
 arch=('x86_64')
