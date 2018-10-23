@@ -1,0 +1,78 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5cfbeef1a..f0cf9a33b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -102,7 +102,7 @@ if(NOT CMAKE_BUILD_TYPE)
+ endif()
+ 
+ 
+-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++14")
++set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++14 -lSDL2main -lSDL2")
+ 
+ set(UNFUCK_GCC_FLAGS "")
+ set(UNFUCK_GXX_FLAGS "")
+diff --git a/source/in_sdl.cpp b/source/in_sdl.cpp
+index 3c0787a65..9a3e1744b 100644
+--- a/source/in_sdl.cpp
++++ b/source/in_sdl.cpp
+@@ -22,7 +22,7 @@
+ //**  GNU General Public License for more details.
+ //**
+ //**************************************************************************
+-#include <SDL.h>
++#include <SDL2/SDL.h>
+ #include "gamedefs.h"
+ #include "drawer.h"
+ #include "ui/ui.h"
+diff --git a/source/render/hwgl/gl_sdl.cpp b/source/render/hwgl/gl_sdl.cpp
+index c1067f64d..03d4d8884 100644
+--- a/source/render/hwgl/gl_sdl.cpp
++++ b/source/render/hwgl/gl_sdl.cpp
+@@ -22,7 +22,7 @@
+ //**  GNU General Public License for more details.
+ //**
+ //**************************************************************************
+-#include <SDL.h>
++#include <SDL2/SDL.h>
+ #include "gl_local.h"
+ 
+ 
+diff --git a/source/sys_sdl.cpp b/source/sys_sdl.cpp
+index f0be647bc..d63078b62 100644
+--- a/source/sys_sdl.cpp
++++ b/source/sys_sdl.cpp
+@@ -30,7 +30,7 @@
+ #include <unistd.h>
+ #include <signal.h>
+ #include <dirent.h>
+-#include <SDL.h>
++#include <SDL2/SDL.h>
+ #if !defined(_WIN32) && !defined(__SWITCH__)
+ # include <execinfo.h>
+ #elif defined(__SWITCH__)
+diff --git a/vccrun/modules/sdlgl/mod_sdlgl.cpp b/vccrun/modules/sdlgl/mod_sdlgl.cpp
+index c805a6192..aa1992f7b 100644
+--- a/vccrun/modules/sdlgl/mod_sdlgl.cpp
++++ b/vccrun/modules/sdlgl/mod_sdlgl.cpp
+@@ -32,7 +32,7 @@
+ 
+ #include <sys/time.h>
+ 
+-#include <SDL.h>
++#include <SDL2/SDL.h>
+ #include <GL/gl.h>
+ #include <GL/glext.h>
+ static SDL_Window *hw_window = nullptr;
+diff --git a/vccrun/modules/sdlgl/mod_sdlgl.h b/vccrun/modules/sdlgl/mod_sdlgl.h
+index 82589ae04..d9aca8540 100644
+--- a/vccrun/modules/sdlgl/mod_sdlgl.h
++++ b/vccrun/modules/sdlgl/mod_sdlgl.h
+@@ -30,7 +30,7 @@
+ #include "../../vcc_run.h"
+ 
+ #if defined (VCCRUN_HAS_SDL) && defined(VCCRUN_HAS_OPENGL)
+-#include <SDL.h>
++#include <SDL2/SDL.h>
+ #ifdef USE_GLAD
+ #include "glad.h"
+ #else

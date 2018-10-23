@@ -1,0 +1,23 @@
+pkgbase = k8vavoom-git
+	pkgdesc = Source port of Doom
+	pkgver = r6306.12559d981
+	pkgrel = 1
+	url = https://repo.or.cz/k8vavoom.git
+	arch = x86_64
+	makedepends = cmake
+	makedepends = git
+	depends = zlib
+	depends = bzip2
+	depends = libpng
+	depends = libjpeg
+	depends = sdl2
+	depends = sdl2_mixer
+	optdepends = libmad
+	optdepends = mikmod
+	source = k8vavoom-git::git+https://repo.or.cz/k8vavoom.git
+	source = arch.patch
+	sha256sums = SKIP
+	sha256sums = b35e882aee67e17a0a4bc2654fb15e8b014d69d666d138408375d8171250f192
+
+pkgname = k8vavoom-git
+
