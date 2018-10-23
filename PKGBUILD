@@ -2,17 +2,15 @@
 
 pkgname=osx-arc-aurorae-theme
 _reponame=OSX-Arc-Aurorae
-pkgver=1.0.0
-pkgrel=3
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="An Aurorae theme designed to compliment @LinxGem33's OSX-Arc gtk themes"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/iboyperson/OSX-Arc-Aurorae"
 license=('GPL 3.0')
 depends=('kwin')
-provides=("osx-arc-aurorae-theme")
-conflicts=("osx-arc-aurorae-theme")
 source=("https://github.com/iboyperson/OSX-Arc-Aurorae/archive/$pkgver.tar.gz")
-sha256sums=('28e1e6f13bcc524b7714e0bab0b1817601f477196fbff905066f3eb2aefeef9a')
+sha256sums=('8b112aa991225f2c56e3ee760b451d1af2f6ac352df9746dd5b20de8136c25cb')
 
 package() {
     mkdir -p "$pkgdir/usr/share/aurorae/themes"
