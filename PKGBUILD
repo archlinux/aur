@@ -2,9 +2,9 @@
 
 # maintenance, tar files
 pkgrel=1
-pkgver="0.0.3"
-md5sums=("33c026d4c51d74dd54ea395f4096ff3a")
-_versionFolder="QFLj6wErSXBKaBT"
+pkgver="0.0.4"
+md5sums=("3046eebf4480c8a12b56326a770ff75d")
+_versionFolder="zyeNp6wbkbAJHyr"
 
 # info
 pkgname="paper-bin"
@@ -17,7 +17,7 @@ url="https://cloud.iostud.io/index.php/s"
 _path="download?path=%2F&files=paper-linux-x64-${pkgver}.tar.gz"
 
 provides=("${_name}")
-depends=("texlive-core")
+depends=()
 
 source=(
   "${url}/${_versionFolder}/${_path}"
