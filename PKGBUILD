@@ -4,7 +4,7 @@
 pkgname=teamviewer-preview
 pkgver=14.0.8346
 pkgrel=1
-pkgdesc='All-In-One Software for Remote Support and Online Meetings'
+pkgdesc='All-In-One Software for Remote Support and Online Meetings (Version 14 preview)'
 arch=('i686' 'x86_64' 'armv7h')
 url='http://www.teamviewer.com'
 license=('custom')
