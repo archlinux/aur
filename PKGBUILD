@@ -1,88 +1,121 @@
+# Maintainer: Aaron McDaniel (mcd1992) <'aur' at the domain 'fgthou.se'>
 # Contributor: Matheus de Alcantara <matheus.de.alcantara@gmail.com>
-# Maintainer: Brenton Horne <brentonhorne77 at gmail dot com>
+# Contributor: Brenton Horne <brentonhorne77 at gmail dot com>
+# Contributor: Nicola Squartini <tensor5@gmail.com>
 
-_pkgname=atom
-_version=git
-
-pkgname=${_pkgname}-editor-${_version}
-pkgver=1.23.0.dev.33610
+pkgname=atom-editor-git
+pkgver=1.6.0.beta0.r8187.gec945d03c
 pkgrel=1
-pkgdesc='Hackable text editor for the 21st Century, based on web technologies - git channel.'
+pkgdesc='Hackable text editor for the 21st Century - git channel.'
+url="https://atom.io/"
 arch=('x86_64' 'i686')
-url="https://github.com/${_pkgname}/${_pkgname}"
-license=('MIT')
-depends=('alsa-lib' 'gconf' 'gtk2' 'libgnome-keyring' 'libnotify' 'libxtst' 'nodejs'  'nss' 'python2')
-optdepends=('gvfs: file deletion support')
-makedepends=('git' 'npm')
-install=${_pkgname}-${_version}.install
-source=("git+${url}.git"
-"${_pkgname}-${_version}.desktop"
-"${_pkgname}-${_version}")
+license=('MIT', 'custom')
+depends=('gconf' 'nodejs' 'npm' 'libsecret' 'python2' 'libx11' 'libxkbfile' 'electron' 'apm')
+optdepends=('gvfs: file deletion support'
+            'ctags: symbol indexing support')
+source=("${pkgname}::git+https://github.com/atom/atom.git"
+        'dugite-use-system-git.patch'
+        'fix-atom-sh.patch'
+        'fix-license-path.patch'
+        'fix-restart.patch'
+        'symbols-view-use-system-ctags.patch'
+        'use-system-apm.patch'
+        'use-system-electron.patch'
+        'atom.js'
+        'atom.desktop')
 sha256sums=('SKIP'
-            'b172e3f81eb42eeb1ad6ef70300c33a79a2015110ea87c413b5857c9694d10e9'
-            '20d3c386dd60e85977511f9138e32921af051fd7e573d3052822219bd7210be9')
-
+            '530b46d31df0f5e8f5881e1608a66fe75d549092a6db2e72ba3ad69c48714153'
+            'ab9eed3d4c8bfefea256953428379ab1e636b9c7d4c4af30ddc3f485330183c2'
+            'c8a931f36af3722c57c4d1b70c1e58aa1a18372e8e26c28a4e01253e05295205'
+            '1f48c84f30ffefaef7235d8231af7357b801d66de9f09921d0ee0dd5849595ca'
+            '3c68e6b3751313e1d386e721f8f819fb051351fb2cf8e753b1d773a0f475fef8'
+            '32e27c6245237a794b15eaf7dbfb81196455865af8ed9157aca763ed21a2fef3'
+            '8427b38936c4f01ceed4d171528ee375ce211fac01fb220b1596d3a074b31663'
+            'cdf87ab82cfcf69e8904684c59b08c35a68540ea16ab173fce06037ac341efcd'
+            'bf7778fa5084027f94cb9c15d2df3b3651ff4749e7d8c0d0c50226400b75efe7')
 pkgver() {
-    cd $srcdir/$_pkgname
-    _basever=$(cat package.json | grep version | sed 's/version//g' | sed 's/://g' | sed 's/ //g' |  sed 's/"//g' | sed 's/,//g' | sed 's/-/./g')
-    _commitno=$(git rev-list --count HEAD)
-    printf "${_basever}.${_commitno}"
+    cd ${pkgname}
+    # Remove 'v' prefix on tags; prefix revision with 'r'; replace all '-' with '.'
+    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    cd "$srcdir/${_pkgname}"
+    cd ${pkgname}
 
-    sed -i -e 's@node script/bootstrap@node script/bootstrap --no-quiet@g' \
-    ./script/build || die "Fail fixing verbosity of script/build"
+    patch -Np1 -i "${srcdir}"/fix-atom-sh.patch
+    patch -Np1 -i "${srcdir}"/use-system-electron.patch
+    patch -Np1 -i "${srcdir}"/use-system-apm.patch
+    patch -Np1 -i "${srcdir}"/fix-license-path.patch
+    patch -Np1 -i "${srcdir}"/fix-restart.patch
 }
 
 build() {
-    # Fix : GYP does not support python3 but uses python, not python2
-    export PYTHON=/usr/bin/python2
-    cd "${srcdir}"
-    mkdir -p pypath
-    ln -fs /usr/bin/python2 ./pypath/python
-    export PATH=$(pwd)/pypath:$PATH
+    cd ${pkgname}
+#    export PYTHON=/usr/bin/python2
+#    export IOJS_ORG_MIRROR=https://atom.io/download/electron
+#    export npm_config_python=/usr/bin/python2
 
-    cd "${srcdir}/${_pkgname}"
-    # Cleanup a non-clean srcdir
-    rm -f ./apm/package-lock.json ./node_modules/github/node_modules.bak
-    ./script/build # use until ./script/build; do :; done instead if network errors occur
+    ATOM_RESOURCE_PATH="${PWD}" npm_config_target=$(tail -c +2 /usr/lib/electron/version) apm install
+
+    # Use system ctags
+    cd "${srcdir}/${pkgname}/node_modules/symbols-view"
+    patch -Np1 -i "${srcdir}"/symbols-view-use-system-ctags.patch
+    rm -r vendor
+
+    # Use system git
+    cd "${srcdir}/${pkgname}/node_modules/dugite"
+    patch -Np1 -i "${srcdir}"/dugite-use-system-git.patch
+    rm -r git
+
+    cd "${srcdir}/${pkgname}/script"
+    npm install
+    ./build
 }
 
 package() {
-    cd "$srcdir/${_pkgname}"
+    cd ${pkgname}
 
-    _ver=$(cat package.json | grep version | sed 's/version//g' | sed 's/://g' | sed 's/ //g' |  sed 's/"//g' | sed 's/,//g')
-    _commit=$(git rev-parse --short HEAD)
+    ls -la
+    pwd
+    echo "$pkgdir"
+    echo "$srcdir"
 
-    _arch=amd64
-    if [ "${CARCH}" = "i686" ]; then
-         _arch=i386
-    fi
-    install -dm755 ${pkgdir}/usr/bin
-    install -dm755 ${pkgdir}/usr/share/${_pkgname}-${_version}
-    install -dm755 ${pkgdir}/usr/share/applications
-    install -dm755 ${pkgdir}/usr/share/licenses/$pkgname
-    install -dm755 ${pkgdir}/usr/share/pixmaps
+    install -d -m 755 "${pkgdir}"/usr/lib
+    cp -r out/app "${pkgdir}"/usr/lib/atom
+    install -m 644 out/startup.js "${pkgdir}"/usr/lib/atom
+    install -m 755 "${srcdir}/atom.js" "${pkgdir}"/usr/lib/atom/atom  
+    install -d -m 755 "${pkgdir}/usr/share/applications"
+    install -m 644 "${srcdir}/atom.desktop" "${pkgdir}/usr/share/applications/atom.desktop"
 
-    cp -r out/atom-${_ver}-${_commit}-${_arch}/* ${pkgdir}/usr/share/${_pkgname}-${_version}/
-    mv ${pkgdir}/usr/share/${_pkgname}-${_version}/atom.png ${pkgdir}/usr/share/pixmaps/${_pkgname}-${_version}.png
-    mv ${pkgdir}/usr/share/${_pkgname}-${_version}/LICENSE ${pkgdir}/usr/share/licenses/$pkgname/LICENSE
-    install -Dm755 $srcdir/${_pkgname}-${_version} ${pkgdir}/usr/bin/${_pkgname}-${_version}
-    install -Dm644 $srcdir/${_pkgname}-${_version}.desktop ${pkgdir}/usr/share/applications/${_pkgname}-${_version}.desktop
-    rm ${pkgdir}/usr/share/${_pkgname}-${_version}/resources/app/atom.sh
-    rm -rf ${pkgdir}/usr/share/${_pkgname}-${_version}/resources/app.asar.unpacked/resources
-    ln -sf "/usr/share/${_pkgname}-${_version}/resources/app/apm/node_modules/.bin/apm" "${pkgdir}/usr/bin/apm-${_version}"
+#    sed -e "s|<%= appName %>|Atom|" \
+#        -e "s/<%= description %>/${pkgdesc}/" \
+#        -e "s|<%= installDir %>/share/<%= appFileName %>/atom|/usr/lib/atom/atom|" \
+#        -e "s|<%= iconPath %>|atom|" \
+#        resources/linux/atom.desktop.in > "${pkgdir}/usr/share/applications/atom.desktop"
 
-    find "$pkgdir" \
-      -name "*.a" -exec rm '{}' \; \
-      -or -name "*.bat" -exec rm '{}' \; \
-      -or -name "benchmark" -prune -exec rm -r '{}' \; \
-      -or -name "doc" -prune -exec rm -r '{}' \; \
-      -or -name "html" -prune -exec rm -r '{}' \; \
-      -or -name "man" -prune -exec rm -r '{}' \; \
-      -or -path "*/less/gradle" -prune -exec rm -r '{}' \; \
-      -or -path "*/task-lists/src" -prune -exec rm -r '{}' \; \
-      -or -name "package.json" -exec sed -i -e "s|${srcdir}/atom/apm|/usr/share/${_pkgname}-${_version}/resources/app/apm|g" '{}' +
+  
+    for size in 16 24 32 48 64 128 256 512 1024; do
+      install -D -m 644 resources/app-icons/stable/png/${size}.png \
+              "${pkgdir}"/usr/share/icons/hicolor/${size}x${size}/apps/atom.png
+    done
+    ln -sf ../../../share/icons/hicolor/1024x1024/apps/atom.png \
+        "${pkgdir}"/usr/lib/atom/resources/atom.png
+  
+    install -D -m 755 atom.sh "${pkgdir}/usr/bin/atom"
+  
+    install -d -m 755 "${pkgdir}/usr/share/licenses/${pkgname}"
+    node -e "require('./script/lib/get-license-text')().then((licenseText) => require('fs').writeFileSync('${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md', licenseText))"
+  
+    # Remove useless stuff
+    find "${pkgdir}"/usr/lib/atom/node_modules \
+        -name "*.a" -exec rm '{}' \; \
+        -or -name "*.bat" -exec rm '{}' \; \
+        -or -name "*.node" -exec chmod a-x '{}' \; \
+        -or -name "benchmark" -prune -exec rm -r '{}' \; \
+        -or -name "doc" -prune -exec rm -r '{}' \; \
+        -or -name "html" -prune -exec rm -r '{}' \; \
+        -or -name "man" -prune -exec rm -r '{}' \; \
+        -or -name "scripts" -prune -exec rm -r '{}' \; \
+        -or -path "*/less/gradle" -prune -exec rm -r '{}' \; \
+        -or -path "*/task-lists/src" -prune -exec rm -r '{}' \;
 }
