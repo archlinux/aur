@@ -1,18 +1,18 @@
-diff -aur vale-0.10.1-old/Makefile vale-0.10.1-new/Makefile
---- vale-0.10.1-old/Makefile	2018-02-17 04:00:48.000000000 +0100
-+++ vale-0.10.1-new/Makefile	2018-03-02 00:01:30.630943963 +0100
+diff -aur vale-1.0.6-old/Makefile vale-1.0.6-new/Makefile
+--- vale-1.0.6-old/Makefile	2018-10-23 18:12:29.833646925 +0100
++++ vale-1.0.6-new/Makefile	2018-10-23 18:13:54.895016355 +0100
 @@ -5,6 +5,7 @@
  CURR_SHA=$(shell git rev-parse --verify HEAD)
  
  LDFLAGS=-ldflags "-s -w -X main.version=$(LAST_TAG)"
-+RUBY_CUSTOM_PATH=/home/${USER}/.gem/ruby/$(shell ruby -e 'puts RUBY_VERSION')/bin
++RUBY_CUSTOM_PATH=$(GEM_HOME)/bin
  
  .PHONY: data test lint ci cross install bump rules setup bench compare release
  
-@@ -66,8 +67,10 @@
+@@ -64,8 +65,10 @@
+ 	go get github.com/aclements/go-misc/benchmany
  	go get -u github.com/alecthomas/gometalinter
  	go get -u github.com/jteeuwen/go-bindata/...
- 	gometalinter --install
 -	bundle install
 -	gem specific_install -l https://github.com/jdkato/aruba.git -b d-win-fix
 +	gem install --no-rdoc --no-ri bundle
@@ -21,4 +21,4 @@ diff -aur vale-0.10.1-old/Makefile vale-0.10.1-new/Makefile
 +	gem specific_install -l https://github.com/jdkato/aruba.git
  
  rules:
- 	go-bindata -ignore=\\.DS_Store -pkg="rule" -o rule/rule.go rule/*.yml
+ 	go-bindata -ignore=\\.DS_Store -pkg="rule" -o rule/rule.go rule/**/*.yml

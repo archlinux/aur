@@ -1,6 +1,6 @@
 # Maintainer: Konstantin Gizdov < arch at kge dot pw >
 pkgname=vale
-pkgver=1.0.2
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="A customizable, syntax-aware linter for prose."
 provides=('vale')
@@ -11,8 +11,8 @@ makedepends=('go' 'ruby' 'python-docutils')
 options=('!emptydirs')
 source=("https://github.com/errata-ai/${pkgname}/archive/v${pkgver}.zip"
         'enable_local_build.patch')
-sha256sums=('6a6d67dc5926097c49c264620900833d7e476ebc37cb2671c653a62b5823bebe'
-            '69f1efbd1f638cd601a0f5583b85a052aa5bbb6433a9d4a24dba11b29f703422')
+sha256sums=('5fb8ceaa69653f902e5c04b38d0c199a1a853364d62075264e75e591df6c7a48'
+            '0761d16f111f793d7388da7bb88fa59daa8ac5a51b2b737ad065226f51beec4b')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -26,7 +26,7 @@ build() {
     mkdir -p "${srcdir}/ruby"
     export HOME="${srcdir}/ruby"
     export GEM_HOME="${HOME}/.gem/ruby/${RUBY_VER}"
-    export GEM_HOME_OLD="${HOME}/.gem/ruby/2.5.0"
+    export GEM_HOME_OLD="${HOME}/.gem/ruby/2.5.0"  # for some reason is wants 2.5.0 too
     export PATH="${srcdir}/gopath/bin:${GEM_HOME}/bin:${GEM_HOME_OLD}/bin:$PATH"
     mkdir -p "${srcdir}/gopath/src/github.com/errata-ai/vale"
     rsync -az "${srcdir}/${pkgname}-${pkgver}/" "${srcdir}/gopath/src/github.com/errata-ai/vale/"
