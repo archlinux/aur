@@ -1,0 +1,7 @@
+post_install() {
+  # We need to know uid and gid to create /var/lib/jenkins with proper
+  # permissions. So keep systemd-sysusers invocation here despite having
+  # pacman hooks.
+  systemd-sysusers jenkins.conf
+  [[ -d var/lib/jenkins ]] || install -dm 750 -o jenkins -g jenkins var/lib/jenkins
+}
