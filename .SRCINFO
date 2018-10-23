@@ -1,6 +1,6 @@
 pkgbase = hexlify-git
 	pkgdesc = Python's {un,}hexlify for the command-line.
-	pkgver = r14.109ae5b
+	pkgver = r17.b9f8998
 	pkgrel = 1
 	url = https://github.com/duesee/hexlify
 	arch = x86_64
