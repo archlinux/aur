@@ -1,7 +1,7 @@
 pkgbase = virtualfish
 	pkgdesc = A virtualenv wrapper for the Fish shell
 	pkgver = 1.0.6
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/adambrenecki/virtualfish
 	install = virtualfish.install
 	arch = any
