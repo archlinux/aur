@@ -9,7 +9,7 @@ url='https://github.com/pingcap/tidb'
 license=('Apache')
 provides=('tidb-server')
 backup=(etc/tidb/tidb.toml)
-#depends=('tikv-pd')
+depends=('tikv')
 source=(tidb-${pkgver}.tar.gz::https://github.com/pingcap/tidb/archive/v${pkgver}.tar.gz
         tidb.service
         tidb-sysusers.conf
@@ -19,7 +19,7 @@ sha256sums=('68e24e9070014d8a36ec426b915da9c02646f2ea4d679d5bd96394631475d726'
             'bdc17656dcb014d1e03ba7fa40d587b0de93c5918d9c9fd86d3d1dc31a1a5365'
             '2b147d80985e714d5f861baf76591104c07058b9b6fa573bf0676d675cf8fc20'
             '30ce83fbec8f102c30e438282bb5b18c026d08480f2386d68f1116c12481bf66'
-            'ce1933beba35deded125aad82b847c65af1beb4f3a45dc1291da848880c4bf63')
+            '7161f9a31f06eecc200da49f8316bb9cc4dea15105b409c8030b9e864782e7b7')
 
 _gopkgname='github.com/pingcap/tidb'
 
