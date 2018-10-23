@@ -30,5 +30,5 @@ package() {
   install -Dm755 go/bin/vbar "$pkgdir/usr/bin/vbar"
 
   mkdir -p "$pkgdir/usr/share/doc/vbar/examples"
-  install -Dm644 "$srcdir/src/github.com/AndrewVos/vbar/examples/vbarrc" "$pkgdir/usr/share/doc/vbar/examples/vbarrc"
+  install -Dm644 "go/src/github.com/AndrewVos/vbar/examples/vbarrc" "$pkgdir/usr/share/doc/vbar/examples/vbarrc"
 }
