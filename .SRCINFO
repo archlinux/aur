@@ -1,24 +1,22 @@
 pkgbase = safesignidentityclient
 	pkgdesc = Smart card PKCS#11 provider and token manager
-	pkgver = 3.0.101
-	pkgrel = 5
-	url = http://www.validcertificadora.com.br/SafeSignLinux
-	arch = i686
+	pkgver = 3.5
+	pkgrel = 1
+	url = https://pronova.com.br/download-tokens
 	arch = x86_64
 	license = custom:copyright
+	makedepends = deb2targz
 	depends = pcsclite
-	depends = gdbm183
-	depends = wxgtk2.8-light
-	depends = openssl098
+	depends = gdbm
+	depends = wxgtk2
+	depends = openssl-1.0
 	depends = xdg-utils
 	depends = libmspack
 	depends = ccid
 	optdepends = acsccid: ACS CCID PC/SC driver,
 	optdepends = scmccid: binary driver for the SCM Smart Card Readers
-	source_i686 = https://raw.githubusercontent.com/geyslan/morpho/master/SafeSignIC3.0.101-i386-deb6-admin.deb
-	sha512sums_i686 = 1b1aca9b19eb859a23dc6173c8bc035e76bcd74319c02c2b00099f16f1ac4f9e631f0f62f91bea60f5e2c2bd75541d17038eb57aa9a44e2ce70cb3bd381b5fc4
-	source_x86_64 = https://raw.githubusercontent.com/geyslan/morpho/master/SafeSignIC3.0.101-x86_64-deb6-admin.deb
-	sha512sums_x86_64 = b41e8e0b9bcb2ad4eb7e73b065951e46138105672f1885f97b584fdb94b565a1032cd118913a66208478b6a17e7549c43609e734841a7f05d50fee8b7ff74ef7
+	source_x86_64 = http://www.pronova-usa.com/downloads/aet/SafeSign_3_5_Ubuntu_1604LTS_x86_x64.zip
+	sha512sums_x86_64 = d56bb7f8918a9d488597389e95f032181cb9e356e245406a672fe8fc899153f664bc6ec620b0d166c2340ff2c5a7259c837e0ce762c6a615da6e253e7f461fe0
 
 pkgname = safesignidentityclient
 
