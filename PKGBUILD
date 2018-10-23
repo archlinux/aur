@@ -9,6 +9,7 @@ url='https://github.com/tikv/tikv'
 license=('Apache')
 provides=('tikv-server')
 backup=(etc/tikv/tikv.toml)
+depends=('tikv-pd')
 source=(tikv-${pkgver}.tar.gz::https://github.com/tikv/tikv/archive/v${pkgver}.tar.gz
         tikv.service
         tikv-sysusers.conf

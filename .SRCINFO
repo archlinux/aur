@@ -11,6 +11,7 @@ pkgbase = tikv
 	makedepends = awk
 	makedepends = cmake
 	makedepends = gcc
+	depends = tikv-pd
 	provides = tikv-server
 	backup = etc/tikv/tikv.toml
 	source = tikv-2.0.8.tar.gz::https://github.com/tikv/tikv/archive/v2.0.8.tar.gz
