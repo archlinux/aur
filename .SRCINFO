@@ -1,0 +1,19 @@
+pkgbase = graphql-playground-electron
+	pkgdesc = GraphQL IDE for better development workflows (GraphQL Subscriptions, interactive docs & collaboration).
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://github.com/prisma/graphql-playground
+	arch = x86_64
+	license = MIT
+	makedepends = sed
+	depends = gtk3
+	depends = gconf
+	depends = nss
+	depends = libxss
+	source = https://github.com/prisma/graphql-playground/releases/download/v1.8.0/graphql-playground-electron_1.8.0_amd64.deb
+	source = https://raw.githubusercontent.com/prisma/graphql-playground/v1.8.0/LICENSE
+	sha256sums = 000f5de344a280f7027c37d478d6ea3684a357333460fe2ad612baa2e1b22e4e
+	sha256sums = ee88d093c7c8e10dd41fc1c7b5ff51b2bbf57937b1b88eb3c1927f57743d59db
+
+pkgname = graphql-playground-electron
+
