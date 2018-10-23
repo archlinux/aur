@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=openbazaar-git
-pkgver=v2.2.5.r12.gd08100dd
+pkgver=v2.2.5.r23.g2f786923
 pkgrel=1
 pkgdesc="Front-end Electron application for talking with the OpenBazaar daemon (Latest devel version)"
 arch=(any)
@@ -13,19 +13,12 @@ conflicts=('openbazaar')
 source=("${pkgname%%-git}::git+https://github.com/OpenBazaar/openbazaar-desktop.git"
 	"${pkgname%%-git}.js"
 	"${pkgname%%-git}.desktop"
-	ef26cd0e8014e09b3671500f92c8f1b0d0ebe340.patch
-	0bf7d134dc13540b277c10fbd1efb8013aae603e.patch
-
 )
 install=${pkgname%%-git}.install
 options=('!strip')
 
 build(){
 	cd $srcdir/${pkgname%%-git}
-
-	# Some electron fixes
-	patch -Np1 -i ../ef26cd0e8014e09b3671500f92c8f1b0d0ebe340.patch
-	patch -Np1 -i ../0bf7d134dc13540b277c10fbd1efb8013aae603e.patch
 
 	npm install --silent
 	npm run build
@@ -65,7 +58,5 @@ pkgver() {
 }
 
 md5sums=('SKIP'
-	'446ad1e41acd07468c3750a9027dc8f8'
-	'a278f17aa965510cadb534df49b245dd'
-	'cc30e1a4742c4e671275842e8b450916'
-'72266e0d0f3e3137cbea70f0dade7bfc')
+         '446ad1e41acd07468c3750a9027dc8f8'
+         'a278f17aa965510cadb534df49b245dd')
