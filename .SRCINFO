@@ -1,0 +1,17 @@
+pkgbase = imod-binary
+	pkgdesc = image processing, modeling and display programs for tomography and 3D reconstruction
+	pkgver = 4.9.10
+	pkgrel = 1
+	url = http://bio3d.colorado.edu/imod/
+	arch = x86_64
+	license = GPL
+	depends = libjpeg6-turbo
+	depends = python
+	optdepends = cuda>=8.0.0: for library bindings
+	optdepends = tcsh: for only a few very specializied scripts
+	provides = imod
+	source = https://bio3d.colorado.edu/imod/AMD64-RHEL5/imod_4.9.10_RHEL7-64_CUDA8.0.sh
+	md5sums = 09dea781cbefa60f1b8360ed622ab709
+
+pkgname = imod-binary
+

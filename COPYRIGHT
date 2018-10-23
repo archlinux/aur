@@ -1,0 +1,122 @@
+IMOD Version 4.9.0                     Copyright Notice and Credits
+--------------------------------------------------------------------------
+Except as noted, ALL SOFTWARE LISTED IS Copyright (C) 1994-2017
+the Regents of the University of Colorado.
+
+All portions of IMOD, except as noted below, are open source under the
+General Public License (GPL) version 2.0.  A copy of this license is in the
+file GPL.txt.  (All license files referred to here are in the directory
+'licenses' in the binary distribution or 'dist' in the source code.)  The 
+libraries written entirely in C/C++ are released under the Lesser GPL (see
+LGPL.txt).  Software may be modified and redistributed under the terms of
+these licenses.  The source can be found at
+http://bio3d.colorado.edu/imod/nightlyBuild
+and
+http://bio3d.colorado.edu/imod/openSource
+
+THIS SOFTWARE AND/OR DOCUMENTATION IS PROVIDED WITH NO WARRANTY,
+EXPRESS OR IMPLIED, INCLUDING, WITHOUT LIMITATION, WARRANTY OF
+MERCHANTABILITY AND WARRANTY OF FITNESS FOR A PARTICULAR PURPOSE.
+
+Arch User Repository (AUR) package is maintaned by Felix Springer.
+
+Programs were written by David Mastronarde, James Kremer, Rick
+Gaudette, Sue Held, Quanren Xiong, and John Heumann at the University 
+of Colorado, some based on work and libraries from the MRC.  We thank David
+Agard and Hans Chen for the original MRC source code, Wah Chiu for a Unix
+version of low-level MRC file routines used in the FORTRAN parts, and Chuck
+Robertson for much work on the port to Linux.
+
+The program nad_eed_3d by Achilleas Frangakis and Reiner Hegerl is
+copyright Max-Planck-Institut for Biochemistry, Martinsried, Germany.
+
+The LSQR routine by Michael Saunders is used in some programs.  IMOD uses a
+C version of LSQR and some BLAS routines from the BCLS package of Michael
+Friedlander, which are covered by the Lesser GPL (see LGPL.txt).
+
+IMOD uses a subset of the LAPACK routines developed at Univ. of Tennessee,
+Univ. of California Berkeley, NAG Ltd., Courant Institute, Argonne National
+Lab, and Rice University.  They are copyrighted by the University of
+Tennessee and covered by a BSD-style license (see LAPACK.txt).  IMOD also
+uses a subset of the BLAS routines, developed by: Jack Dongarra, Argonne
+National Lab; Jeremy Du Croz, NAG Ltd.; Iain Duff, AERE Harwell; Richard
+Hanson, Sandia National Labs; and Sven Hammarling, NAG Ltd.
+
+The program imodwincpu was adapted from code obtained from
+www.codeproject.com and written by Dudi Abramov.  It is excluded from the
+GPL license and is covered exclusively by the Code Project Open License (see
+CPOL.html). 
+
+Routines for computing some statistical functions were adapted from
+S. J. Zhang and J. M. Jin, Computation of Special Functions. New York: John
+Wiley & Sons, 1996 and are copyrighted by the authors and publisher.
+
+Andrew Noske (originally at the University of Queensland, Australia, then at
+the University of California, San Diego) contributed the beadhelper,
+drawingtools, interpolator, namewizard, and stereology plugins.  See the help
+displayed by those plugins for acknowledgements of funding for his work.
+
+Jane Ding at California Institute of Technology contributed the Grab with Note
+plugin.
+
+The isosurface display in 3dmod uses contouring and surface smoothing
+modules from Chimera, developed at the Resource for Biocomputing,
+Visualization, and Informatics at the University of California, San
+Francisco, supported by NIH/NCRR grant P41-RR01081.
+
+RAPTOR was developed by Fernando Amat, Farshid Moussavi, and Mark Horowitz
+at Stanford University and is copyrighted by them.  It is covered by the
+license in RAPTORlicense.txt.  It uses three libraries, parts of which are
+included in the IMOD source code distribution:
+OpenCV (http://sourceforge.net/projects/opencvlibrary/), 
+covered by the license in OpenCV.txt, 
+SuiteSparse (http://www.cise.ufl.edu/research/sparse/SuiteSparse/), 
+covered by the licenses in CSparse.txt and LGPL.txt, and 
+Stair Vision Library (http://sourceforge.net/projects/stairvision/), 
+covered by the license in StairVision.txt.
+
+The warping library uses modules from Pavel Sakov's 'nn' package, which are
+copyrighted by Sakov and CSIRO, and covered by the license in nn.txt.  The
+library also uses code from Ken Clarkson's 'hull' program, which is
+copyrighted by AT&T and covered by the license in hull.txt.
+
+Routines for solving 3x3 eigenvectors are copyrighted by Joachim Kopp and
+covered by the LGPL license.
+
+Mauro Maiorca, at the Biochemistry & Molecular Biology Department, Bio21
+Institute, University of Melbourne, Australia, contributed the preNAD and
+preNID programs.  His work was supported by funding from the Australian
+Research Council and the National Health and Medical Research Council.  preNAD
+and preNID use recursive line filter routines from Gregoire Malandain, covered
+by version 3 of the GPL (see GPL-3.0.txt).
+
+IMOD uses TIFF libraries which are Copyright (c) 1988-1997 Sam Leffler
+and Copyright (c) 1991-1997 Silicon Graphics, Inc. (see TIFF.txt).
+
+Because IMOD uses the libjpeg library, this software is based in part on the
+work of the Independent JPEG Group.  IMOD also uses the zlib library, which is
+Copyright 1995-2010 by Jean-loup Gailly and Mark Adler.
+
+IMOD use FFTW libraries which are Copyright (c) 1997--1999 Massachusetts
+Institute of Technology, written by Matteo Frigo and Steven G. Johnson, and
+covered by version 2 of the GPL.
+
+IMOD uses HDF5 libraries which are Copyright 1998-2006 by the Board of
+Trustees of the University of Illinois and Copyright 2006-2014 by The HDF
+Group and covered by the license in HDF5.txt.
+
+The module gcvspl.c is based on an f2c translation of gcvspl.f, which was
+obtained from http://www.netlib.org.  gcvspl.f was written by H.J. Woltring
+based on routines in Lyche et al. (1983) and other sources as documented in
+gcvspl.c.
+
+IMOD includes a copy of the Mini-XML library which is Copyright 2003-2016 by
+Michael R. Sweet and is covered by the modified Library GPL in Mini-XML.txt
+
+This work was supported in the past by NIH P41 grants from NCRR and NIGMS to
+J. Richard McIntosh and Andreas Hoenger; and by NIBIB grant EB005027 to 
+David Mastronarde.
+
+Contact:  mast at colorado dot edu
+    www:  http://bio3d.colorado.edu/imod/index.html
+    University of Colorado, Dept. of MCD Biology, 347 UCB, Boulder, CO 80309
