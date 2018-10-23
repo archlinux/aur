@@ -1,6 +1,6 @@
 pkgbase = kit-git
 	pkgdesc = A magical, high performance programming language for game development.
-	pkgver = r250.2d34699
+	pkgver = r252.8aa8a0a
 	pkgrel = 1
 	url = https://kitlang.org
 	arch = x86_64
