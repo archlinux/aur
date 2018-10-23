@@ -1,7 +1,7 @@
 pkgbase = vpn-unlimited
 	pkgdesc = VPN Unlimited client application
 	pkgver = 4.23
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.vpnunlimitedapp.com
 	arch = x86_64
 	license = custom:"Copyright (c) 2017 KeepSolid Inc."
@@ -14,17 +14,17 @@ pkgbase = vpn-unlimited
 	depends = openvpn
 	depends = openresolv
 	depends = lzo>=2.0
-	depends = libcurl-openssl-1.0
+	depends = libcurl-compat
 	depends = iproute
 	depends = net-tools
 	depends = c-ares>=1.10.0
 	depends = lsb-release
 	source_x86_64 = vpn-unlimited
 	source_x86_64 = vpn-unlimited-daemon.service
-	source_x86_64 = http://c7be0123d7efff32860a-a5a4fb8b39b86d00a1eb7d52603ae1d2.r6.cf1.rackcdn.com/vpn-unlimited_4.23_trusty_amd64.deb
+	source_x86_64 = http://c7be0123d7efff32860a-a5a4fb8b39b86d00a1eb7d52603ae1d2.r6.cf1.rackcdn.com/vpn-unlimited_4.23_bionic_amd64.deb
 	sha256sums_x86_64 = b34f3093c4036e571117fd48791f52f8ece946ede7273758ef60bff294cba98f
-	sha256sums_x86_64 = 11042869fa2381bfe9132735146027d41a95038e2c0c4de8f48b9ef57f6b3288
-	sha256sums_x86_64 = dbe0b0aee4cfb4029ebc461e373bd2cb688f6b0ba33e5f0bc74ff01faa8f1604
+	sha256sums_x86_64 = dd5ba49842bcbf4c5f722bac2ab3d4c919c676bc29c1ca269678e8a53c0e6a41
+	sha256sums_x86_64 = 5f73d274c259d4f071228b139ce32a6968e8c79230a0d6086142224050e75513
 
 pkgname = vpn-unlimited
 

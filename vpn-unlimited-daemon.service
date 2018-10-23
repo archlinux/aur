@@ -2,7 +2,6 @@
 Description=VPN Unlimited daemon
 
 [Service]
-Environment="LD_PRELOAD=libcurl-openssl-1.0.so"
 ExecStart=/usr/bin/vpn-unlimited-daemon
 
 [Install]
