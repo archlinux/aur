@@ -7,12 +7,12 @@
 
 pkgname=snort
 pkgver=2.9.12
-pkgrel=1
+pkgrel=2
 pkgdesc='A lightweight network intrusion detection system.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64' 'arm')
 url='http://www.snort.org'
 license=('GPL')
-depends=('dbus' 'libdaq' 'libdnet' 'libgcrypt' 'libgpg-error' 'libnghttp2' 'libnl' 'libpcap' 'lz4' 'openssl' 'pcre' 'xz' 'zlib')
+depends=('dbus' 'libdaq' 'libdnet' 'libgcrypt' 'libgpg-error' 'libnghttp2' 'libnl' 'libpcap' 'luajit' 'lz4' 'openssl' 'pcre' 'xz' 'zlib')
 makedepends=('libtirpc')
 backup=('etc/snort/snort.conf'
 	'etc/snort/threshold.conf'
@@ -55,5 +55,5 @@ package() {
 }
 
 md5sums=('3a305d9c44bd0319aa50783a60c8947f'
-	'SKIP'
-'a847030a34396e6b2d1cacd272ad42da')
+         'SKIP'
+         'a847030a34396e6b2d1cacd272ad42da')
