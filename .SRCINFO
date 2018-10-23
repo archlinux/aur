@@ -1,0 +1,20 @@
+pkgbase = timekpr-revived-bzr
+	pkgdesc = Control the computer usage of your user accounts. You can limit their daily usage based on a timed access duration and configure periods of day when they can log in.
+	pkgver = 12
+	pkgrel = 1
+	url = https://launchpad.net/timekpr-revived
+	install = timekpr-revived.install
+	arch = any
+	license = GPL
+	makedepends = bzr
+	depends = python2
+	provides = timekpr
+	conflicts = timekpr
+	backup = etc/timekpr.conf
+	source = timekpr-revived::bzr+http://bazaar.launchpad.net/~mjasnik/timekpr-revived/stable
+	source = timekpr.service
+	md5sums = SKIP
+	md5sums = 190ba51a3f50f2dca4d2adef359d741b
+
+pkgname = timekpr-revived-bzr
+
