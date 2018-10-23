@@ -5,7 +5,7 @@ _gitname=suru-plus
 pkgname=suru-plus-git
 pkgver=20.3.0
 pkgrel=1
-pkgdesc="Suru++ 20 — A cyberpunk, elegant, futuirtisc and modern third-party icons theme!"
+pkgdesc="Suru++ 20 — A cyberpunk, elegant, futuristic and modern third-party icons theme!"
 arch=('any')
 url="https://github.com/gusbemacbe/${_gitname}"
 license=('GPL3')
@@ -35,7 +35,7 @@ package()
     find ${pkgdir}/usr -type f -name '.directory' -delete
 
     # Removing some unnecessary files
-    rm -Rf "$pkgdir"/usr/share/icons/suru-plus/{configure, .git, .gitignore, *.md, 'images', 'templates'}
+    rm -Rf "$pkgdir"/usr/share/icons/suru-plus/{.git, .gitignore,*.md, images, templates}
 
     # Renaming the folder
     mv "$pkgdir"/usr/share/icons/suru-plus "$pkgdir"/usr/share/icons/Suru++\ 20
