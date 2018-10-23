@@ -35,7 +35,7 @@ package()
     find ${pkgdir}/usr -type f -name '.directory' -delete
 
     # Removing some unnecessary files
-    rm -rf "$pkgdir"/usr/share/icons/suru-plus/{configure, .git, .gitignore, *.md, 'images', 'templates'}
+    rm -Rf "$pkgdir"/usr/share/icons/suru-plus/{configure, .git, .gitignore, *.md, 'images', 'templates'}
 
     # Renaming the folder
     mv "$pkgdir"/usr/share/icons/suru-plus "$pkgdir"/usr/share/icons/Suru++\ 20
