@@ -14,7 +14,8 @@ sha512sums=('SKIP')
 arch=('any')
 depends=('python' 'python-pillow' 'python-gobject' 'gtk3' 'libxslt' 'python-pywal')
 optdepends=('feh: set wallpaper'
-            'nitrogen: set wallpaper')
+            'nitrogen: set wallpaper'
+			'xsettingsd-git: live reload GTK+ theme')
 conflicts=("${_gitname}")
 provides=("${_gitname}=$pkgver")
 
