@@ -1,6 +1,6 @@
 pkgbase = mantags-git
 	pkgdesc = Parses man file to ctags for autocompletion
-	pkgver = 0.0.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/Jugendhackt/configfoo
 	arch = any

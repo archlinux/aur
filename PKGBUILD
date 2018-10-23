@@ -8,7 +8,7 @@
 
 # Maintainer: Finn Behrens <finn@dsgvo.fail>
 pkgname=mantags-git 
-pkgver=0.0.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Parses man file to ctags for autocompletion"
 arch=('any')
