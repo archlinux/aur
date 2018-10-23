@@ -2,7 +2,7 @@
 pkgname=hexdino-git
 _name=hexdino
 pkgver=r66.b134144
-pkgrel=1
+pkgrel=2
 pkgdesc="A hex editor with vim like keybindings written in Rust."
 arch=('x86_64' 'i686')
 url="https://github.com/Luz/hexdino"
@@ -12,7 +12,7 @@ depends_x86_64=('ncurses')
 makedepends=('git' 'rust' 'cargo')
 provides=('hexdino')
 conflicts=('hexdino')
-options=(!emptydirs)
+options=(!emptydirs !strip)
 source=('git+https://github.com/Luz/hexdino')
 md5sums=('SKIP')
 
