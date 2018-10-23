@@ -8,7 +8,7 @@ arch=(x86_64)
 url="https://repo.or.cz/k8vavoom.git"
 license=('GPLv2')
 
-depends=("zlib" "bzip2" "libpng" "libjpeg" "sdl2" "sdl2_mixer")
+depends=("zlib" "bzip2" "libpng" "libjpeg" "sdl2" "sdl2_mixer" "openal")
 makedepends=("cmake" "git")
 optdepends=("libmad" "mikmod")
 
