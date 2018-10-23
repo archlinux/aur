@@ -5,7 +5,7 @@
 # Contributor: dos1
 
 pkgname=performous-git
-pkgver=1.0_808_g5799ccba
+pkgver=1.0_851_ga3606c8c
 pkgrel=1
 pkgdesc='A free game like "Singstar", "Rockband" or "Stepmania" (version from git)'
 arch=('i686' 'x86_64')
@@ -22,6 +22,12 @@ md5sums=(SKIP)
 pkgver() {
   cd "${srcdir}/${pkgname}"
   git describe | sed -e 's|-|_|g'
+}
+
+prepare() {
+  cd "${srcdir}/${pkgname}/ced"
+  git submodule init
+  git submodule update
 }
 
 build() {
