@@ -2,7 +2,7 @@
 # Contributor: Brian Douglass <https://github.com/bhdouglass/, http://bhdouglass.com/>
 
 pkgname=clickable
-pkgver=272.c18271a
+pkgver=311.abd7ca3
 pkgrel=1
 _gitname=clickable
 pkgdesc='Compile, build, and deploy Ubuntu Touch click packages all from the command line.'
@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url='https://github.com/bhdouglass/clickable'
 license=('GPL3')
 depends=('python' 'docker' 'python-cookiecutter' 'android-tools')
-optdepends=('lxd')
+optdepends=('lxd' 'xorg-xhost')
 makedepends=('git')
 provides=("${pkgname%}")
 conflicts=("${pkgname%}")
