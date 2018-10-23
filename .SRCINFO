@@ -1,0 +1,16 @@
+pkgbase = goes16-background-git
+	pkgdesc = Put near-realtime picture of Earth as your desktop background.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/cameronleger/goes16-background
+	arch = any
+	license = MIT
+	depends = python-setuptools
+	depends = python-lxml
+	depends = python-pillow
+	optdepends = feh: Changing wallpaper with i3
+	source = goes16-background::git+https://github.com/cameronleger/goes16-background.git
+	md5sums = SKIP
+
+pkgname = goes16-background-git
+
