@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-zimg
 	pkgdesc = Scaling, colorspace conversion, and dithering library (mingw-w64)
-	pkgver = 2.7.5
+	pkgver = 2.8
 	pkgrel = 1
 	url = https://github.com/sekrit-twc/zimg
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = mingw-w64-zimg
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = zimg-2.7.5.tar.gz::https://github.com/sekrit-twc/zimg/archive/release-2.7.5.tar.gz
-	sha256sums = 0fbefe23cd677f4d902dcad40c4ef078a347454630168106e6eed4cf91a217ff
+	source = zimg-2.8.tar.gz::https://github.com/sekrit-twc/zimg/archive/release-2.8.tar.gz
+	sha256sums = a8f9d65c95ce6e8050d83d0417b109aabc94d2c7ba65cf2d8039840d162ad876
 
 pkgname = mingw-w64-zimg
 
