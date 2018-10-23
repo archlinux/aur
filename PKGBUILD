@@ -10,7 +10,7 @@ url="https://repo.or.cz/k8vavoom.git"
 depends=("zlib" "bzip2" "libpng" "libjpeg" "sdl2" "sdl2_mixer")
 makedepends=("cmake" "git")
 optdepends=("libmad" "mikmod")
-
+license=('GPLv2')
 source=("$pkgname"::"git+https://repo.or.cz/k8vavoom.git"
         "arch.patch")
 
