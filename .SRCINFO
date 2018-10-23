@@ -4,6 +4,7 @@ pkgbase = k8vavoom-git
 	pkgrel = 1
 	url = https://repo.or.cz/k8vavoom.git
 	arch = x86_64
+	license = GPLv2
 	makedepends = cmake
 	makedepends = git
 	depends = zlib
