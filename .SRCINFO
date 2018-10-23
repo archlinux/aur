@@ -1,0 +1,17 @@
+pkgbase = alva-git
+	pkgdesc = Create living prototypes with code components. 
+	pkgver = 1
+	pkgrel = 1
+	url = https://meetalva.io
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = glibc
+	provides = alva
+	conflicts = alva
+	source = reredirect-git::git+http://github.com/jerome-pouiller/reredirect.git
+	md5sums = SKIP
+
+pkgname = alva-git
+
