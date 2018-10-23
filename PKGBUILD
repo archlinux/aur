@@ -2,8 +2,8 @@
 
 pkgname=serviio-twitch-plugin
 pkgver=17
-_commit=2238ba6
-pkgrel=1
+_commit=edbb4dfe17b9c6ff23c240cd70156f6568ca7ed5
+pkgrel=2
 pkgdesc="Twitch.tv plugin for Serviio"
 arch=('any')
 url="http://forum.serviio.org/viewtopic.php?f=20&t=9216"
