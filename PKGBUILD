@@ -1,7 +1,7 @@
 # Maintainer: William Turner <willtur.will@gmail.com>
 pkgname=graphql-playground-electron
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GraphQL IDE for better development workflows (GraphQL Subscriptions, interactive docs & collaboration)."
 arch=('x86_64')
 url="https://github.com/prisma/graphql-playground"
@@ -20,5 +20,9 @@ prepare() {
 package() {
   mv opt "$pkgdir"
   mv usr "$pkgdir"
-  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
+
+  install -d -m755 "${pkgdir}/usr/bin"
+  ln -s "/opt/GraphQL Playground/graphql-playground-electron" "${pkgdir}/usr/bin/graphql-playground-electron"
+
+  install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }

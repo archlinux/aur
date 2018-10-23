@@ -1,7 +1,7 @@
 pkgbase = graphql-playground-electron
 	pkgdesc = GraphQL IDE for better development workflows (GraphQL Subscriptions, interactive docs & collaboration).
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/prisma/graphql-playground
 	arch = x86_64
 	license = MIT
