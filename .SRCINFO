@@ -1,6 +1,6 @@
 pkgbase = wpa_supplicant-git
 	pkgdesc = A daemon program controlling the wireless connection
-	pkgver = 2.6.r1113.gb0fc2ef3a
+	pkgver = 2.6.r2185.gac1f59156
 	pkgrel = 1
 	url = https://w1.fi/wpa_supplicant/
 	arch = i686

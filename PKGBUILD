@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=wpa_supplicant-git
-pkgver=2.6.r1113.gb0fc2ef3a
+pkgver=2.6.r2185.gac1f59156
 pkgrel=1
 pkgdesc="A daemon program controlling the wireless connection"
 arch=('i686' 'x86_64')
@@ -17,6 +17,12 @@ source=("git://w1.fi/hostap.git"
 sha256sums=('SKIP'
             'SKIP')
 
+
+prepare() {
+  cd "$srcdir"
+
+  echo "CONFIG_OWE=y" >> "$srcdir/config"
+}
 
 pkgver() {
   cd "hostap/wpa_supplicant"
