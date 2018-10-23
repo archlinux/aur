@@ -1,6 +1,6 @@
 # Maintainer: Max Kueng <me [at] maxkueng [dot] com>
 pkgname=yakyak
-pkgver=1.4.3
+pkgver=1.5.1
 _pkgid="${pkgname}-${pkgver}"
 pkgrel=0
 pkgdesc="Desktop client for Google Hangouts"
@@ -11,7 +11,7 @@ depends=('electron>=1.4.0')
 optdepends=('emojione-color-font: Emoji support')
 makedepends=('nodejs' 'npm')
 
-sha256sums=('a61fe75771aea204138fa560b269204f0133589e11bd954cca268ae059e6021c'
+sha256sums=('edfa21aade2fd5650fa6565088e75157f5e479ab1cbaa6759baec1d95d1f199d'
             '12baee4e3e926b765ebe21493adb7aa416165c7191f583694670b08d9b9c5360'
             '0a02abfbceb1029301308239f8d0a1e8e5a5565d66c561223836ecaaf7cb5046')
 
@@ -22,8 +22,10 @@ source=("${_pkgid}.tar.gz::https://github.com/yakyak/yakyak/archive/v${pkgver}.t
 build() {
   cd "${srcdir}/${_pkgid}"
 
-  sed -i.bak '/"electron-prebuilt"/d' ./package.json
-  npm install --production=false
+  sed -i.bak '/"electron:*"/d' ./package.json
+  rm ./package-lock.json
+  npm install --unsafe-perm=true
+  npm update
   npm run gulp
 }
 
