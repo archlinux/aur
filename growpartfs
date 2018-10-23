@@ -1,0 +1,44 @@
+#!/bin/sh
+# Copyright 2018 Google Inc. All Rights Reserved.
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, version 3 of the License.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+# Expands a filesystem and its corresponding partition (if it exists) to fill
+# all available disk space.  Takes as an argument the mountpoint or device to
+# expand, with any specification supported by findmnt.
+[ $# -ne 1 ] && { echo "Usage: $0 device|mountpoint"; exit 1; }
+
+# Find the device to expand.
+if [ -b "$1" ]; then
+	dev="$1"
+else
+	dev="$(findmnt -nfvo SOURCE -- "$1")"
+	[ -b "$dev" ] || { echo "Cannot find device for '$1'"; exit 1; }
+fi
+
+# If it's a partition, expand that first using growpart.
+if [ "$(lsblk -ndo TYPE -- "$dev")" = part ]; then
+	disk="$(lsblk -ndpo PKNAME -- "$dev")"
+	partnum="${dev##*[!0-9]}"
+	growpart "$disk" "$partnum" || { [ $? -ne 1 ] && exit 1; }
+fi
+
+# Expand the filesystem.
+fs="$(lsblk -ndo FSTYPE -- "$dev")"
+mnt="$(lsblk -ndo MOUNTPOINT -- "$dev")"
+case "$fs" in
+	btrfs) btrfs filesystem resize max "$mnt" || exit 1 ;;
+	ext[2-4]) resize2fs -- "$dev" || exit 1 ;;
+	xfs) xfs_growfs "$mnt"  || exit 1 ;;
+	*) echo "Unsupported filesystem type '$fs'"; exit 1 ;;
+esac

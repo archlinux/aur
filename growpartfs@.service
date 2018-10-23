@@ -1,0 +1,9 @@
+[Unit]
+Description=Grows the filesystem and partition at %I
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/growpartfs %I
+
+[Install]
+WantedBy=multi-user.target
