@@ -27,4 +27,6 @@ build() {
 package() {
   cd "$srcdir/puNES"
   make DESTDIR="$pkgdir" install
+  #idk what the deal with this mimeinfo cache is, it seems to come and go
+  rm -f "$pkgdir"/usr/share/applications/mimeinfo.cache
 }
