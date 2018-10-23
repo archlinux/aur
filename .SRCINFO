@@ -1,15 +1,15 @@
 pkgbase = valentina-studio
 	pkgdesc = Create, administer, query and explore Valentina DB, MySQL, MariaDB, PostgreSQL and SQLite databases for FREE.
-	pkgver = 8.6.2
+	pkgver = 8.6.3
 	pkgrel = 1
 	url = http://www.valentina-db.com
 	arch = i686
 	arch = x86_64
 	license = custom
-	source_i686 = valentina-studio-8.6.2-x86_64.rpm::http://www.valentina-db.com/en/studio/download/current/vstudio_lin_32_rpm?format=raw
-	sha256sums_i686 = 4f7276f221575274d947daed18ec3be5cc87cbceefb1ac381ac34b61683ba141
-	source_x86_64 = valentina-studio-8.6.2-x86_64.rpm::http://www.valentina-db.com/en/studio/download/current/vstudio_x64_lin-rpm?format=raw
-	sha256sums_x86_64 = 0323691f86d3661766ca41c59c11df1bf65a1f68917d6e2495095831b7b4374c
+	source_i686 = valentina-studio-8.6.3-x86_64.rpm::http://www.valentina-db.com/en/studio/download/current/vstudio_lin_32_rpm?format=raw
+	sha256sums_i686 = 41c01798a3a157f02213ea74436713acab6b62b8e935979ccb705646d7fbf95e
+	source_x86_64 = valentina-studio-8.6.3-x86_64.rpm::http://www.valentina-db.com/en/studio/download/current/vstudio_x64_lin-rpm?format=raw
+	sha256sums_x86_64 = 419fc925c6745cfebd6056e99aa154258a12f8ded24259cdc3eb5fdcf13f6f8f
 
 pkgname = valentina-studio
 
