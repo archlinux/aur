@@ -13,6 +13,7 @@ pkgbase = k8vavoom-git
 	depends = libjpeg
 	depends = sdl2
 	depends = sdl2_mixer
+	depends = openal
 	optdepends = libmad
 	optdepends = mikmod
 	source = k8vavoom-git::git+https://repo.or.cz/k8vavoom.git
