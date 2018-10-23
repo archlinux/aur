@@ -1,12 +1,12 @@
 # Maintainer: Vaporeon <vaporeon@vaporeon.io>
 pkgname=punes-git
-pkgver=r966.a7bc1372
+pkgver=r981.ba21823a
 pkgrel=1
 pkgdesc="Nintendo Entertaiment System emulator"
 arch=('i686' 'x86_64')
 url="http://forums.nesdev.com/viewtopic.php?t=6928"
 license=('GPL2')
-depends=('sdl' 'qt5-base' 'qt5-svg' 'alsa-lib' 'hicolor-icon-theme' 'desktop-file-utils' 'nvidia-cg-toolkit')
+depends=('qt5-base' 'qt5-svg' 'alsa-lib' 'hicolor-icon-theme' 'desktop-file-utils' 'nvidia-cg-toolkit')
 conflicts=('punes')
 provides=('punes')
 source=("git+https://github.com/punesemu/puNES.git")
@@ -20,7 +20,7 @@ pkgver() {
 build() {
   cd "$srcdir/puNES"
   ./autogen.sh
-  ./configure --enable-qt5 --prefix=/usr
+  ./configure --prefix=/usr
   make
 }
 
