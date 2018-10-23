@@ -19,10 +19,10 @@
 
 pkgbase=kodi-pre-release
 pkgname=("kodi-${pkgbase#kodi-*}" "kodi-eventclients-${pkgbase#kodi-*}" "kodi-tools-texturepacker-${pkgbase#kodi-*}" "kodi-dev-${pkgbase#kodi-*}")
-pkgver=18.0b3
+pkgver=18.0b4
 pkgrel=1
 _codename=Leia
-_tag="18.0b3-$_codename"
+_tag="$pkgver-$_codename"
 # Found on their respective github release pages. One can check them against
 # what is pulled down when not specifying them in the cmake step.
 # $CHROOT/build/kodi-pre-release/src/kodi-build/build/download
@@ -79,7 +79,7 @@ noextract=(
   "fstrcmp-$_fstrcmp_version.tar.gz"
   "flatbuffers-$_flatbuffers_version.tar.gz"
 )
-sha256sums=('cc5f1a75287438b2336c49a265019a4cab9626235e05a70345d77e4cecd6dce3'
+sha256sums=('fbd04ed38b895e21bf1d7ed5d59d732ee7f1989d684fae7cbaf9c8ee3a52302f'
             '0e4980abac7b886e0eb5f4157941947be3c10d616a19bd311dc2f9fd2eb6a631'
             '579aa102ac14ff4a21aa4081fe47f8cb3941002a37ee96286d3737afd79e80d9'
             '071e414e61b795f2ff9015b21a85fc009dde967f27780d23092643916538a57a'
@@ -156,7 +156,7 @@ package_kodi-pre-release() {
     'unzip: Archives support'
     'upower: Display battery level'
   )
-  provides=('xbmc' 'kodi')
+  provides=('xbmc' "kodi=${pkgver}")
   conflicts=('xbmc' 'kodi' 'kodi-git' 'kodi-devel')
   replaces=('xbmc')
 
@@ -183,6 +183,7 @@ package_kodi-pre-release() {
 
 package_kodi-eventclients-pre-release() {
   pkgdesc="Kodi Event Clients (pre-release versions)"
+  provides=("kodi-eventclients=${pkgver}")
   conflicts=('kodi-eventclients')
   optdepends=('python2: most eventclients are implemented in python2')
 
@@ -210,6 +211,7 @@ package_kodi-eventclients-pre-release() {
 
 package_kodi-tools-texturepacker-pre-release() {
   pkgdesc="Kodi Texturepacker tool (pre-release versions)"
+  provides=("kodi-tools-texturepacker=${pkgver}")
   depends=('libpng' 'giflib' 'libjpeg-turbo' 'lzo')
 
   _components=(
@@ -230,8 +232,8 @@ package_kodi-tools-texturepacker-pre-release() {
 
 package_kodi-dev-pre-release() {
   pkgdesc="Kodi dev files (pre-release versions)"
+  provides=("kodi-dev=${pkgver}")
   depends=('kodi-pre-release')
-  provides=('kodi-dev')
   conflicts=('kodi-dev' 'kodi-devel-dev')
 
   _components=(
