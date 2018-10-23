@@ -6,6 +6,7 @@ pkgbase = python-daphne
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
+	makedepends = python-pytest-runner
 	depends = python
 	depends = python-django-channels
 	depends = python-asgiref
