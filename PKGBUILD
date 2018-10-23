@@ -32,7 +32,7 @@ sha256sums=('SKIP'
             '32e27c6245237a794b15eaf7dbfb81196455865af8ed9157aca763ed21a2fef3'
             '8427b38936c4f01ceed4d171528ee375ce211fac01fb220b1596d3a074b31663'
             'cdf87ab82cfcf69e8904684c59b08c35a68540ea16ab173fce06037ac341efcd'
-            'bf7778fa5084027f94cb9c15d2df3b3651ff4749e7d8c0d0c50226400b75efe7')
+            'bce0b6ac4a3d083db3b953d89489947867df5832deea876cc8c4725399b1de9d')
 pkgver() {
     cd ${pkgname}
     # Remove 'v' prefix on tags; prefix revision with 'r'; replace all '-' with '.'
@@ -51,9 +51,6 @@ prepare() {
 
 build() {
     cd ${pkgname}
-#    export PYTHON=/usr/bin/python2
-#    export IOJS_ORG_MIRROR=https://atom.io/download/electron
-#    export npm_config_python=/usr/bin/python2
 
     ATOM_RESOURCE_PATH="${PWD}" npm_config_target=$(tail -c +2 /usr/lib/electron/version) apm install
 
@@ -75,11 +72,6 @@ build() {
 package() {
     cd ${pkgname}
 
-    ls -la
-    pwd
-    echo "$pkgdir"
-    echo "$srcdir"
-
     install -d -m 755 "${pkgdir}"/usr/lib
     cp -r out/app "${pkgdir}"/usr/lib/atom
     install -m 644 out/startup.js "${pkgdir}"/usr/lib/atom
@@ -87,13 +79,6 @@ package() {
     install -d -m 755 "${pkgdir}/usr/share/applications"
     install -m 644 "${srcdir}/atom.desktop" "${pkgdir}/usr/share/applications/atom.desktop"
 
-#    sed -e "s|<%= appName %>|Atom|" \
-#        -e "s/<%= description %>/${pkgdesc}/" \
-#        -e "s|<%= installDir %>/share/<%= appFileName %>/atom|/usr/lib/atom/atom|" \
-#        -e "s|<%= iconPath %>|atom|" \
-#        resources/linux/atom.desktop.in > "${pkgdir}/usr/share/applications/atom.desktop"
-
-  
     for size in 16 24 32 48 64 128 256 512 1024; do
       install -D -m 644 resources/app-icons/stable/png/${size}.png \
               "${pkgdir}"/usr/share/icons/hicolor/${size}x${size}/apps/atom.png

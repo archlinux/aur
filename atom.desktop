@@ -2,7 +2,7 @@
 Name=Atom Git
 Comment=Hackable text editor for the 21st Century - git
 GenericName=Text Editor
-Exec=/usr/bin/atom-git %U
+Exec=/usr/bin/atom %U
 Icon=atom
 Type=Application
 StartupNotify=true
