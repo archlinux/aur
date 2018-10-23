@@ -2,12 +2,15 @@
 # Author: Vladimir Yakovlev <desktop-app@protonmail.ch>
 pkgname=email-securely-app-bin
 pkgver=1.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial desktop app for several E2E encrypted email providers"
 arch=('x86_64')
 url="https://github.com/vladimiry/email-securely-app"
 license=('MIT')
+# add libappindicator-sharp to the depends array if you are fine with mono deps
 depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libvpx' 'libxslt' 'libxss' 'minizip' 'nss' 're2' 'snappy' 'libnotify' 'libappindicator-gtk2' 'libappindicator-gtk3' 'gconf' 'gnome-keyring')
+conflicts=('email-app-securely')
+provides=('email-app-securely')
 install="${pkgname}.install"
 source=("https://github.com/vladimiry/email-securely-app/releases/download/v${pkgver}/email-securely-app-${pkgver}-linux.pacman" 'LICENSE')
 md5sums=('9298d794b9428ce039f6f5dee111476c' 'fc680045f40b19ce3c3e771aeb08bbd3')
