@@ -24,12 +24,14 @@ install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgname-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         include-stdint.h-in-pdfium_mem_buffer_file_write.h.patch
+        chromium-harfbuzz-r0.patch
         chromium-widevine-r2.patch
         chromium-system-icu.patch
         chromium-skia-harmony.patch)
 sha256sums=('e956c2031f634300ada8c09e0777f0c560f4798963f144edaaec8d43e1e30e37'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'cd1e87bf3618b7897c5caf7b0f4213cfa5ce917acb0613ecd2ab3f830f0cbfbb'
+            '1b370d49c43e88acfe7c0b1f9517047e927f3407bd80b4a48bba32c001f80136'
             '02c69bb3954087db599def7f5b6d65cf8f7cf2ed81dfbdaa4bb7b51863b4df15'
             'c4f2d1bed9034c02b8806f00c2e8165df24de467803855904bff709ceaf11af5'
             'feca54ab09ac0fc9d0626770a6b899a6ac5a12173c7d0c1005bc3964ec83e7b3')
@@ -89,6 +91,7 @@ prepare() {
   patch -Np4 -i ../chromium-skia-harmony.patch
 
   # Fixes from Gentoo
+  patch -Np1 -i ../chromium-harfbuzz-r0.patch
   patch -Np1 -i ../chromium-widevine-r2.patch
 
   # https://bugs.gentoo.org/661880#c21
