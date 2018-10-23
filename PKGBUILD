@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/AndrewVos/vbar"
 license=()
 depends=('gtk3')
-makedepends=('git' 'vala')
+makedepends=('go' 'git' 'vala')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 _go_url=github.com/AndrewVos/vbar
@@ -17,16 +17,22 @@ check() {
   echo "done"
 }
 
+prepare() {
+  mkdir -p go
+  export GOPATH="$srcdir/go"
+  go get ${_go_url}
+}
+
 build() {
   cd "$srcdir"
-  GOPATH="$srcdir"
-  go get ${_go_url}
+  export GOPATH="$srcdir/go"
+  go build -o vbar
 }
 
 package() {
   cd "$srcdir"
 
-  install -Dm755 bin/vbar "$pkgdir/usr/bin/vbar"
+  install -Dm755 vbar "$pkgdir/usr/bin/vbar"
 
   mkdir -p "$pkgdir/usr/share/doc/vbar/examples"
   install -Dm644 "$srcdir/src/github.com/AndrewVos/vbar/examples/vbarrc" "$pkgdir/usr/share/doc/vbar/examples/vbarrc"
