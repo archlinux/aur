@@ -12,14 +12,14 @@ pkgbase=java8-openjdk-jetbrains
 _java_ver=8
 # Found @ https://github.com/JetBrains/jdk8u/releases
 _jdk_update=152
-_jdk_build=1293.12
+_jdk_build=1343.12
 pkgver=${_java_ver}.u${_jdk_update}.b${_jdk_build}
 _repo_ver=jb${_java_ver}u${_jdk_update}-b${_jdk_build}
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://github.com/JetBrains/jdk8u'
 license=('GPL2')
-makedepends=('java-environment-openjdk' 'cpio' 'unzip' 'zip' 'gcc6'
+makedepends=('java-environment=8' 'cpio' 'unzip' 'zip' 'gcc7'
              'libxrender' 'libxtst' 'fontconfig' 'libcups' 'alsa-lib')
 _url_src=https://github.com/JetBrains/jdk8u
 source=(jdk8u-${_repo_ver}.tar.gz::${_url_src}/archive/${_repo_ver}.tar.gz
@@ -31,14 +31,14 @@ source=(jdk8u-${_repo_ver}.tar.gz::${_url_src}/archive/${_repo_ver}.tar.gz
         langtools-${_repo_ver}.tar.gz::${_url_src}_langtools/archive/${_repo_ver}.tar.gz
         nashorn-${_repo_ver}.tar.gz::${_url_src}_nashorn/archive/${_repo_ver}.tar.gz)
 
-sha256sums=('7759ef249d76e543c2c131ca13eef47dac6d83559f2470d817a09964220e7668'
-            'a4db2a90f9f5971a31c1b4d12c702e40d476e831ab5e4b8ddc57135794ce79cd'
-            'bbddf12e5d6bf4f77578b8835374b52165fc80e15eb8966d7a03e1e8fe9923df'
-            '9edc1d381b889cbbdd658224be181086ddaa6eac5122ae0efa39731acf25c8e3'
-            'f25224edc9b8ad01cabcc24fc1884dffc554a926b9885b40f9b9c742f342b318'
-            '82eaae88900a291125ee437b8f418673caceb907ce8d02e214210da5f7ec4237'
-            '3b7ac52c81bfd4972da964c063b61528e13ea518a43e8f4d6ec1dc738b285183'
-            'dd9303effa8c701012803841685725a5444ffc554eb299a77b11b9491903c615')
+sha256sums=('1b8b6488c721413c6661366f1159f1be4808f22e226ca954cdfbc4ab40ac2537'
+            'df71286b4a115882bfd1bfd6ccede6456d5c3fa0f4948cd2a868123ca836d437'
+            '5b44e0260d7612e287b6ad03042accd511fad93456d922eaa75993f594f35129'
+            'ebd0a063bf8f3e58d10d046db2092149fae401d181185a7e4f0910296dc9dde7'
+            '4a5ee266e8f6175791b9811aee7c60dccf5f0a9d675e0ccd52132a626ef65f6d'
+            '5a7430e1b065eea7cb757c4a714492152c63728206e8f6df363a3e34b46f4ed1'
+            '01cd7689f59cc9add44336589cbad3eade8b261842cfadbada67f3f15bced7e9'
+            '0b6d22806efb53f600996cf9ec5b60d799ceb4c3f7f9ea3a1f171e419e9f2ecd')
 
 case "${CARCH}" in
   'x86_64') _JARCH=amd64 ; _DOC_ARCH=x86_64 ;;
@@ -74,7 +74,7 @@ build() {
   # https://hydra.nixos.org/build/41230444/log
   export CFLAGS="$CFLAGS -Wno-error=deprecated-declarations"
 
-  export CC=gcc-6 CXX=g++-6
+  export CC=gcc-7 CXX=g++-7
 
   install -d -m 755 "${srcdir}/${_prefix}/"
   sh configure \
