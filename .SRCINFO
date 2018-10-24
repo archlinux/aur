@@ -1,5 +1,5 @@
 pkgbase = pykgbuild
-	pkgdesc = Compare PyPI packages with users PKGBUILD versions
+	pkgdesc = Compare a users Python PKGBUILD version(s) with respective PyPI versions
 	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/mpolidori/py-pkgbuild-version
