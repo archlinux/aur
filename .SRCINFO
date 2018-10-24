@@ -1,0 +1,18 @@
+pkgbase = perl-marpa-r2
+	pkgdesc = Perl/CPAN Module Marpa::R2
+	pkgver = 4.000000
+	pkgrel = 1
+	url = https://metacpan.org/release/Marpa-R2
+	arch = x86_64
+	arch = i686
+	license = LGPL
+	makedepends = perl-module-build
+	depends = perl
+	depends = perl-ppi
+	depends = perl-html-parser
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/J/JK/JKEGL/Marpa-R2-4.000000.tar.gz
+	sha512sums = 962370df30de5af11720a2268dcae6ffa12db8a7f58ad26885963c5472e0c2a2b65f693a475c645fda29376f964a9730ad74ea5041e380b3af616be724c6e286
+
+pkgname = perl-marpa-r2
+
