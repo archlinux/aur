@@ -1,5 +1,5 @@
 pkgbase = safetynets-git
-	pkgdesc = A framework to outsource machine-learning inference to
+	pkgdesc = A framework to outsource machine-learning inference computation
 	pkgver = d193964
 	pkgrel = 1
 	url = https://github.com/zghodsi/safetynests
