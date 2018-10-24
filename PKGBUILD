@@ -5,12 +5,12 @@
 _pkgname="LibreELEC.USB-SD.Creator"
 pkgname="libreelec-creator-bin"
 pkgver="1.3"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Allows you to install LibreELEC on a variety of devices."
 arch=('i686' 'x86_64')
 url="https://libreelec.tv/"
 license=('GPL2')
-depends=('bash')
+depends=('bash' 'gksu')
 provides=("${pkgname}")
 
 source_i686=("http://releases.libreelec.tv/${_pkgname}.Linux-32bit.bin"
@@ -51,7 +51,7 @@ package() {
     install -m 755 ${_pkgname} "${pkgdir}/usr/share/${pkgname}/${_pkgname}"
     install -m 644 *.bin "${pkgdir}/usr/share/${pkgname}/${_pkgname}.bin"
     install -m 644 *.png "${pkgdir}/usr/share/${pkgname}/"
-    
+
     # Desktop file
     install -Dm 644 *.desktop "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
@@ -59,4 +59,4 @@ package() {
     chmod +x ${pkgdir}/usr/share/${pkgname}/${_pkgname}.bin
 }
 
-# vim:set ts=4 sw=2 ft=sh et:
+# vim:set ts=4 sw=4 ft=sh et:

@@ -1,12 +1,13 @@
 pkgbase = libreelec-creator-bin
 	pkgdesc = Allows you to install LibreELEC on a variety of devices.
 	pkgver = 1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://libreelec.tv/
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = bash
+	depends = gksu
 	provides = libreelec-creator-bin
 	source_i686 = http://releases.libreelec.tv/LibreELEC.USB-SD.Creator.Linux-32bit.bin
 	source_i686 = https://github.com/LibreELEC/usb-sd-creator/raw/master/le_icon_256.png
