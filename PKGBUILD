@@ -1,7 +1,7 @@
 # Maintainer: Vaporeon <vaporeon@vaporeon.io>
 
 pkgname=invader-git
-pkgver=0.1.0.r4.159d4e9
+pkgver=0.1.0.r51.d4f099d
 pkgrel=1
 pkgdesc="Open source tag compiler for Halo Custom Edition"
 makedepends=('cmake' 'git')
@@ -29,7 +29,7 @@ build() {
 
 package() {
   cd "$srcdir"/build
-  for i in invader-{build,indexer}; do
+  for i in invader-{build,indexer,scenario}; do
      install -Dm755 $i "$pkgdir"/usr/bin/$i
   done
 }
