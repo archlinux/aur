@@ -4,15 +4,15 @@
 # Contributor: Jesse Jaara <jesse.jaara@gmail.com>
 
 pkgname=ibus-m17n
-pkgver=1.3.4
-pkgrel=5
+pkgver=1.4.0
+pkgrel=1
 pkgdesc='M17N engine for IBus'
 arch=('x86_64')
 url='https://github.com/ibus/ibus/wiki'
 license=('LGPL')
 depends=('python2-pyenchant' 'ibus' 'm17n-db' 'm17n-lib')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ibus/ibus-m17n/archive/${pkgver}.tar.gz")
-sha512sums=('9dbb5224fea377293a583e68598b36be4637698af0718c5117434d60b6a398bf94dc8cc2dbeef59c2d43bdab6f50e831bc60dd97112eed02105a3f2b9d55f026')
+sha512sums=('56122b62148c159e238a5b81709d750c1a99f6f60da70c2c832a220a1f5769fa1ccada44451e39a384f4971fc748b42c96fbfa5446c7407934f4d1e7ae8b5285')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
