@@ -8,7 +8,7 @@ arch=('any')
 url="https://bisq.network"
 license=('AGPL3')
 depends=('java-openjfx')
-makedepends=('maven' 'jdk8-openjdk' 'protobuf')
+makedepends=('maven' 'jdk10-openjdk' 'protobuf')
 source=("${pkgname}::git+https://github.com/bisq-network/bisq-desktop.git#branch=master"
         "bisq.desktop")
 sha256sums=('SKIP'
