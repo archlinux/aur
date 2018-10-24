@@ -2,7 +2,7 @@
 
 _pkgname=xfconf
 pkgname=${_pkgname}-devel
-pkgver=4.13.5
+pkgver=4.13.6
 pkgrel=1
 pkgdesc="A simple client-server configuration storage and query system"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 options=('!emptydirs')
 source=(http://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2)
-sha256sums=('90b4eb0cdf407339c091e9811f7a40b4cfa215ebb03a921503b7e21f0f4f63cb')
+sha256sums=('d1a3d442dae188b5a7380b5815377e5488578cdafb03ae363e9426e3b01185df')
 install='xfconf.install'
 
 build() {
