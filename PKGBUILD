@@ -5,7 +5,7 @@
 
 # Maintainer: Peter <craven@gmx.net>
 pkgname=scheme-9-from-empty-space
-pkgver=20151119
+pkgver=20181023
 pkgrel=1
 epoch=
 pkgdesc="S9fES is a mature, portable, and comprehensible interpreter for R4RS Scheme."
@@ -25,7 +25,7 @@ options=()
 install=
 changelog=
 source=("http://www.t3x.org/s9fes/s9fes-$pkgver.tgz")
-md5sums=('ca39038a6fa7c3ff262b0a17c123b9fd')
+md5sums=('682021ed80f705feaa41fc0962fd7aaf')
 noextract=()
 validpgpkeys=()
 
