@@ -5,8 +5,10 @@ pkgbase = auryo
 	url = http://auryo.com
 	arch = x86_64
 	license = GPL3
-	source = https://github.com/Superjo149/auryo/releases/download/v2.1.2/Auryo-2.1.2.pacman
-	md5sums = 3382424c498f798802bea7a3bf99dc5e
+	conflicts = auryo
+	conflicts = auryo-git
+	source = https://github.com/Superjo149/auryo/archive/v2.1.2.tar.gz
+	md5sums = 24fe79995200821f2fee80cac6e9c60a
 
 pkgname = auryo
 
