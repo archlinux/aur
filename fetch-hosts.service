@@ -1,0 +1,11 @@
+[Unit]
+Description=Fetch hosts file from Steven Black's GitHub repo
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/curl https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts -o /etc/hosts
+
+[Install]
+WantedBy=multi-user.target

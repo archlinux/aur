@@ -1,0 +1,14 @@
+pkgbase = fetch-hosts
+	pkgdesc = Fetch new adware and malware blocking hosts file from Steven Black's GitHub repo.
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = curl
+	source = fetch-hosts.service
+	source = fetch-hosts.timer
+	md5sums = c18dc82875f0c74cdc0c419d4cdc68c2
+	md5sums = fee12eb2cc54311af21e2f6be740895a
+
+pkgname = fetch-hosts
+

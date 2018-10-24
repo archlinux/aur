@@ -1,0 +1,9 @@
+[Unit]
+Description=Fetch new hosts file via fetch-hosts.service
+
+[Timer]
+OnCalendar=weekly
+Persistent=true
+
+[Install]
+WantedBy=timers.target
