@@ -1,8 +1,8 @@
 # Maintainer: Mike Williamson <mike at korora dot ca>
 pkgname=eksctl
 pkgdesc="A simple CLI tool for creating clusters on Amazon's EKS"
-pkgver=0.1.2
-pkgrel=2
+pkgver=0.1.7
+pkgrel=1
 arch=('x86_64')
 license=("APACHE")
 url="https://eksctl.io"
