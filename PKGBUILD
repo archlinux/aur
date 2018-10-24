@@ -4,9 +4,9 @@
 PKGEXT='.pkg.tar'
 pkgname='xscreensaver-aerial-videos'
 pkgver=1.05
-pkgrel=2
+pkgrel=3
 arch=('any')
-url="http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos"
+url="http://a1.v2.phobos.apple.com.edgesuite.net/us/r1000/000/Features/atv/AutumnResources/videos/"
 pkgdesc='Apple TV4 HD aerial movies in 1080p'
 source=("$url/b10-1.mov"
 "$url/b10-2.mov"
