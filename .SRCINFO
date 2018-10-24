@@ -1,0 +1,30 @@
+pkgbase = clevis-git
+	pkgdesc = Automated Encryption Framework
+	pkgver = 11.r0.3375b08
+	pkgrel = 1
+	url = https://github.com/latchset/clevis
+	arch = x86_64
+	license = GPL3
+	checkdepends = tang
+	makedepends = git
+	makedepends = meson
+	makedepends = asciidoc
+	makedepends = bash-completion
+	makedepends = luksmeta
+	makedepends = libpwquality
+	makedepends = tpm2-tools
+	makedepends = udisks2
+	depends = jose
+	depends = bash
+	optdepends = luksmeta: LUKS and UDisks2 unlocker support
+	optdepends = libpwquality: LUKS unlocker support
+	optdepends = curl: Tang pin support
+	optdepends = tpm2-tools: TPM2 pin support
+	optdepends = udisks2: UDisks2 unlocker support
+	provides = clevis
+	conflicts = clevis
+	source = git+https://github.com/latchset/clevis.git
+	sha512sums = SKIP
+
+pkgname = clevis-git
+
