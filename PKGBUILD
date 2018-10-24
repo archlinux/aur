@@ -2,16 +2,15 @@
 # Contributor: David Runge <dave@sleepmap.de>
 
 pkgname=apparmor-git
-pkgver=2.13.r237.g63cb46d2
+pkgver=2.13.r277.g4a2dad33
 pkgrel=1
 pkgdesc='Mandatory Access Control (MAC) using Linux Security Module (LSM)'
 arch=('x86_64')
 url='https://gitlab.com/apparmor/apparmor'
 license=('GPL')
-depends=('audit' 'pam' 'python')
-makedepends=('git' 'swig' 'chrpath' 'ruby')
-checkdepends=('dejagnu' 'perl-locale-gettext')
- # 'python-pyflakes'
+depends=('audit' 'bash' 'pam' 'python')
+makedepends=('git' 'swig' 'ruby')
+checkdepends=('dejagnu' 'perl-locale-gettext' 'python-pyflakes')
 optdepends=('perl: perl bindings'
             'ruby: ruby bindings')
 conflicts=("${pkgname%-git}")
@@ -37,15 +36,8 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${pkgname%-git}"
-	# fix bin directory for parser install target
-	# fix lib dir location
-	# fix missing executable bit on apparmor.systemd script
-	sed -e 's/sbin/usr\/bin/g' \
-		-e 's/\}\/lib\/apparmor/\}\/usr\/lib\/apparmor/' \
-		-e 's/644 apparmor.systemd/755 apparmor.systemd/' \
-		-i parser/Makefile
-	# fix default vim syntax file installation path
-	sed -e 's/share\/apparmor/share\/vim\/vimfiles\/syntax/' -i utils/vim/Makefile
+	# fix default installation path for vim syntax file
+	sed -e 's|share/apparmor|share/vim/vimfiles/syntax|' -i utils/vim/Makefile
 	cd "${srcdir}/${pkgname%-git}/libraries/libapparmor"
 	./autogen.sh
 }
@@ -89,14 +81,12 @@ package() {
 	make -C libraries/libapparmor DESTDIR="${pkgdir}" install
 	make -C changehat/pam_apparmor DESTDIR="${pkgdir}/usr" install
 	make -C binutils DESTDIR="${pkgdir}" install
-	make -C parser DESTDIR="${pkgdir}" USR_SBINDIR="${pkgdir}/usr/bin" install
-	make -C parser DESTDIR="${pkgdir}" USR_SBINDIR="${pkgdir}/usr/bin" install-systemd
+	make -C parser DESTDIR="${pkgdir}" APPARMOR_BIN_PREFIX="${pkgdir}/usr/lib/apparmor" SBINDIR="${pkgdir}/usr/bin" USR_SBINDIR="${pkgdir}/usr/bin" install
+	make -C parser DESTDIR="${pkgdir}" APPARMOR_BIN_PREFIX="${pkgdir}/usr/lib/apparmor" SBINDIR="${pkgdir}/usr/bin" USR_SBINDIR="${pkgdir}/usr/bin" install-systemd
 	make -C profiles DESTDIR="${pkgdir}" install
 	make -C utils DESTDIR="${pkgdir}" BINDIR="${pkgdir}/usr/bin" install
-	# strip perl library and remove empty rpath
-	find "${pkgdir}/usr/lib/perl5/" -type f -iname '*.so' \
-		-exec strip --strip-unneeded {} \; \
-		-exec chrpath -d {} \;
+	#  removing empty core_perl directory
+	rm -rv "${pkgdir}/usr/lib/perl5/"*/core_perl
 	# move ruby bindings to vendor_ruby
 	mv -v "${pkgdir}/usr/lib/ruby/site_ruby/" "${pkgdir}/usr/lib/ruby/vendor_ruby/"
 	# adding files below /etc/apparmor.d to backup array
