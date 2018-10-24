@@ -1,0 +1,14 @@
+pkgbase = perl-syntax-highlight-perl-improved
+	pkgdesc = Perl/CPAN Module Syntax::Highlight::Perl::Improved
+	pkgver = 1.01
+	pkgrel = 1
+	url = https://metacpan.org/release/Syntax-Highlight-Perl-Improved
+	arch = any
+	license = custom:unknown
+	depends = perl
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/D/DA/DAVIDCYL/Syntax-Highlight-Perl-Improved-101/Syntax-Highlight-Perl-Improved-1.01.tar.gz
+	sha512sums = 13230a0bde3648aca6bf91b5fed4b932375041eafe4f0419c0ba774fdb9b5ea9284579e6052e8507c7c8f7f13d337cfb0e544ae6d99119a3b63834a868dc6731
+
+pkgname = perl-syntax-highlight-perl-improved
+
