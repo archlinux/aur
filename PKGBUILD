@@ -24,8 +24,8 @@ package() {
 
 	mkdir -p "$pkgdir/usr/share"
 	for dir in man applications icons; do
-		echo $dir
-		cp -rv "usr/share/$dir" "$pkgdir/usr/share"
+		cp -r "usr/share/$dir" "$pkgdir/usr/share"
 	done
+
 	install -Dm755 "usr/bin/tomboy-ng" "$pkgdir/usr/bin/tomboy-ng"
 }
