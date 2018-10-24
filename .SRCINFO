@@ -1,0 +1,28 @@
+pkgbase = clevis
+	pkgdesc = Automated Encryption Framework
+	pkgver = 11
+	pkgrel = 1
+	url = https://github.com/latchset/clevis
+	arch = x86_64
+	license = GPL3
+	checkdepends = tang
+	makedepends = git
+	makedepends = meson
+	makedepends = asciidoc
+	makedepends = bash-completion
+	makedepends = luksmeta
+	makedepends = libpwquality
+	makedepends = tpm2-tools
+	makedepends = udisks2
+	depends = jose
+	depends = bash
+	optdepends = luksmeta: LUKS and UDisks2 unlocker support
+	optdepends = libpwquality: LUKS unlocker support
+	optdepends = curl: Tang pin support
+	optdepends = tpm2-tools: TPM2 pin support
+	optdepends = udisks2: UDisks2 unlocker support
+	source = https://github.com/latchset/clevis/releases/download/v11/clevis-11.tar.xz
+	sha512sums = f15033a27f662986c48ca36390d3b0f127bc691b3cd7a35d437db2e2b123f8bbebd6385d799620b11f42db0d279a2030d5bf69e55e96a584800393bf47a00368
+
+pkgname = clevis
+
