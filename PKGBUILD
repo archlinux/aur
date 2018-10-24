@@ -1,10 +1,10 @@
 # Author: mosra <mosra@centrum.cz>
 pkgname=magnum-plugins-git
-pkgver=2018.04.r0.g78764e3
+pkgver=2018.10.r0.gb0272ef
 pkgrel=1
 pkgdesc="Plugins for the Magnum C++11/C++14 graphics engine (Git version)"
 arch=('i686' 'x86_64')
-url="http://magnum.graphics"
+url="https://magnum.graphics"
 license=('MIT')
 depends=('magnum-git' 'devil' 'libpng' 'libjpeg' 'freetype2' 'assimp')
 makedepends=('cmake' 'git')
@@ -32,6 +32,7 @@ build() {
         -DWITH_DRWAVAUDIOIMPORTER=ON \
         -DWITH_FREETYPEFONT=ON \
         -DWITH_JPEGIMPORTER=ON \
+        -DWITH_JPEGIMAGECONVERTER=ON \
         -DWITH_MINIEXRIMAGECONVERTER=ON \
         -DWITH_PNGIMAGECONVERTER=ON \
         -DWITH_PNGIMPORTER=ON \
