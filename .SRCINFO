@@ -1,7 +1,7 @@
 pkgbase = perl-array-columnize
 	pkgdesc = Perl/CPAN Module Array::Columnize
 	pkgver = 1.04
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Array-Columnize
 	arch = any
 	license = PerlArtistic
