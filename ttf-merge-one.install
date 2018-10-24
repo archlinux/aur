@@ -1,5 +1,5 @@
 post_install() {
-    fc-cache -s
+  fc-cache -s
 }
 
 post_upgrade() {
