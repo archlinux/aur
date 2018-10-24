@@ -1,0 +1,18 @@
+pkgbase = tang-git
+	pkgdesc = Server for binding data to network presence
+	pkgver = 7.r0.4e9a06e
+	pkgrel = 1
+	url = https://github.com/latchset/tang
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = asciidoc
+	depends = http-parser
+	depends = jose
+	provides = tang
+	conflicts = tang
+	source = git+https://github.com/latchset/tang.git
+	sha512sums = SKIP
+
+pkgname = tang-git
+
