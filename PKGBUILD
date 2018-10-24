@@ -4,7 +4,7 @@ _name=poetry
 pkgbase='python-poetry'
 pkgname=('python-poetry' 'python2-poetry')
 pkgver=0.12.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Python dependency management and packaging made easy"
 arch=('any')
 url=https://github.com/sdispater/"${_name}"
@@ -42,7 +42,7 @@ package_python2-poetry() {
     'python2-cachy'
     'python2-cleo'
     'python2-html5lib'
-    'python2-jsonschema'
+    'python2-jsonschema>=2.6.0-3'
     'python2-pathlib'
     'python2-pkginfo'
     'python2-pyparsing'
@@ -69,7 +69,7 @@ package_python-poetry() {
     'python-cachy'
     'python-cleo'
     'python-html5lib'
-    'python-jsonschema'
+    'python-jsonschema>=2.6.0-3'
     'python-pkginfo'
     'python-pyparsing'
     'python-pyrsistent'
