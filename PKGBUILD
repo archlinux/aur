@@ -1,7 +1,7 @@
 # Maintainer: Sherlock Holo <sherlockya@gmail.com>
 pkgname=camouflage
 _pkgname=camouflage
-pkgver=20181007.101_f2bcc44
+pkgver=v0.3.0.r0.gf68c7e0
 pkgrel=1
 pkgdesc="a mux+websocket+TLS proxy"
 arch=('x86_64')
@@ -28,10 +28,11 @@ pkgver() {
 	fi
 
 	cd "$srcdir/$_pkgname"
-	local date=$(git log -1 --format="%cd" --date=short | sed s/-//g)
-	local count=$(git rev-list --count HEAD)
-	local commit=$(git rev-parse --short HEAD)
-	echo "$date.${count}_$commit"
+	#local date=$(git log -1 --format="%cd" --date=short | sed s/-//g)
+	#local count=$(git rev-list --count HEAD)
+	#local commit=$(git rev-parse --short HEAD)
+	#echo "$date.${count}_$commit"
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
