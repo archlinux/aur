@@ -1,37 +1,38 @@
-# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Hugo Doria <hugo@archlinux.org>
 # PKGBUILD based on extra\deluge's PKGBUILD, adapted for -git version by Berseker
 
 pkgname=deluge-git
-pkgver=2.0b2.dev15.ge3f537770
+pkgver=2.0.0b2.dev198.ge6c61c3f8
 pkgrel=1
 epoch=1
 pkgdesc="A BitTorrent client with multiple user interfaces in a client/server model (git version, 'develop' branch)"
 arch=('any')
 url='http://deluge-torrent.org/'
 license=('GPL3')
-depends=(
-        'desktop-file-utils' 'hicolor-icon-theme' 'libtorrent-rasterbar'
-        'python2-service-identity' 'python2-chardet' 'python2-pyopenssl'
-        'python2-xdg' 'python2-twisted' 'xdg-utils'
-)
+depends=('desktop-file-utils' 'hicolor-icon-theme' 'libtorrent-rasterbar'
+        'python2-twisted' 'python2-pyasn1' 'python2-pyopenssl' 'python2-xdg'
+        'python2-chardet' 'python2-six' 'python2-setproctitle'
+        'python2-zope-interface' 'python2-service-identity' 'xdg-utils')
 makedepends=(
     # binary repositories:
         'git' 'intltool' 'librsvg' 'pygtk' 'python2-mako' 'python2-setuptools'
     # AUR:
-        'python2-jsmin' 'slimit2'
+        'slimit2'
 )
-optdepends=('python2-pillow'
-            'librsvg: needed for gtk ui'
-            'pygtk: needed for gtk ui'
-            'python2-mako: needed for web ui'
+optdepends=('librsvg: gtk ui'
+            'pygtk: gtk ui'
+            'python2-mako: web ui'
             'python2-notify: libnotify notifications'
+            'python2-pygame: audible notifications'
+            'python2-pillow: .ico support'
+            'python2-rencode: encoding library'
+            'python2-dbus: show item location in filemanager'
             'geoip: display peer locations')
 provides=('deluge')
-conflicts=('deluge' 'deluge-stable-git')
-install='deluge.install'
+conflicts=('deluge')
 source=("$pkgname"::'git://deluge-torrent.org/deluge.git#branch=develop'               # official repository
         #"$pkgname"::'git+https://github.com/deluge-torrent/deluge.git#branch=develop' # mirror
         'deluged.service'
@@ -42,24 +43,35 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "$pkgname"
-    local _internalver="$(python2 version.py)"
-    local _shorthash="$(git rev-parse --short HEAD)"
+    
+    local _internalver
+    local _shorthash
+    
+    _internalver="$(python2 version.py)"
+    _shorthash="$(git rev-parse --short HEAD)"
     
     printf '%s.g%s' "$_internalver" "$_shorthash"
 }
 
 build() {
     cd "$pkgname"
+    
     python2 setup.py build
 }
 
 package() {
     cd "$pkgname"
+    
     python2 setup.py install --prefix='/usr' --root="$pkgdir" --optimize='1'
     
     install -D -m644 "${srcdir}/deluged.service"    "${pkgdir}/usr/lib/systemd/system/deluged.service"
     install -D -m644 "${srcdir}/deluge-web.service" "${pkgdir}/usr/lib/systemd/system/deluge-web.service"
     
-    install -d                   "${pkgdir}/srv"
-    install -d -m775 -o125 -g125 "${pkgdir}/srv/deluge"
+    ln -s deluge.png "${pkgdir}/usr/share/pixmaps/deluge-panel.png"
+    
+    printf '%s\n' 'u deluge - "Deluge BitTorrent daemon" /srv/deluge' |
+        install -D -m644 /dev/stdin "${pkgdir}/usr/lib/sysusers.d/deluge.conf"
+    
+    printf '%s\n' 'd /srv/deluge 0775 deluge deluge' |
+        install -D -m644 /dev/stdin "${pkgdir}/usr/lib/tmpfiles.d/deluge.conf"
 }
