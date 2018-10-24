@@ -1,0 +1,17 @@
+pkgbase = kube-bench
+	pkgdesc = Checks whether Kubernetes is deployed according to security best practices
+	pkgver = 0.0.22
+	pkgrel = 1
+	url = https://github.com/aquasecurity/kube-bench
+	arch = x86_64
+	arch = i686
+	license = APACHE
+	makedepends = go
+	makedepends = dep
+	options = !strip
+	options = !emptydirs
+	source = https://github.com/aquasecurity/kube-bench/archive/v0.0.22.tar.gz
+	md5sums = ca99b47218a4d431aeeceeb22fc4ae2f
+
+pkgname = kube-bench
+
