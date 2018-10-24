@@ -1,7 +1,7 @@
 pkgbase = woboq_codebrowser-git
 	pkgdesc = A web-based code browser for your C/C++ projects
 	pkgver = r447.3c41d81
-	pkgrel = 2
+	pkgrel = 3
 	url = https://woboq.com/codebrowser.html
 	arch = x86_64
 	license = CCPL

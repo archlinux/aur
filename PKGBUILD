@@ -3,7 +3,7 @@
 _pkgname=woboq_codebrowser
 pkgname=$_pkgname-git
 pkgver=r447.3c41d81
-pkgrel=2
+pkgrel=3
 pkgdesc="A web-based code browser for your C/C++ projects"
 arch=('x86_64')
 url="https://woboq.com/codebrowser.html"
@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
   cd "$pkgname"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr .
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release .
   make
 }
 
