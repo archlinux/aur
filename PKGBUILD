@@ -2,7 +2,7 @@
 
 _pkgname=remotely
 pkgname=$_pkgname-git
-pkgver=latest
+pkgver=r8.8b5f629
 pkgrel=1
 pkgdesc="A GTK3 VNC Client"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')

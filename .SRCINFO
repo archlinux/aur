@@ -1,6 +1,6 @@
 pkgbase = remotely-git
 	pkgdesc = A GTK3 VNC Client
-	pkgver = latest
+	pkgver = r8.8b5f629
 	pkgrel = 1
 	url = https://github.com/haecker-felix/Remotely
 	arch = i686
