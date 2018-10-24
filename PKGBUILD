@@ -2,7 +2,7 @@
 
 _pkgname=youtube-viewer
 pkgname=gtk-youtube-viewer-git
-pkgver=3.5.0
+pkgver=3.5.0.3.ga2b2429
 pkgrel=1
 pkgdesc="A Gtk2 application for searching and streaming videos from YouTube (-git version)."
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
             'ffmpeg: for conversions and MKV merging'
             )
 
-source=("git://github.com/trizen/${_pkgname}.git")
+source=("git+https://github.com/trizen/${_pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
