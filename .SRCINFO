@@ -1,0 +1,15 @@
+pkgbase = perl-devel-callsite
+	pkgdesc = Perl/CPAN Module Devel::Callsite
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://metacpan.org/release/Devel-Callsite
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/R/RO/ROCKY/Devel-Callsite-1.0.1.tar.gz
+	sha512sums = 57b1615320c80a2f877d071f09eb733634f8a7c75a43c232b38f86e4f654245d84b1b971748b46a6048a8f5c1297b064204165d1497f7f08d1e2f6c6dd5c00cb
+
+pkgname = perl-devel-callsite
+
