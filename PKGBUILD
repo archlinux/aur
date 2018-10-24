@@ -1,9 +1,9 @@
-# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
 # Contributor: Mikalai Ramanovich < narod.ru: nikolay.romanovich >
 
 pkgname=onlyoffice-bin
 pkgver=5.1.27
-pkgrel=1
+pkgrel=2
 pkgdesc='An office suite that combines text, spreadsheet and presentation editors'
 arch=('x86_64')
 url='https://www.onlyoffice.com/'
@@ -17,7 +17,7 @@ optdepends=('libreoffice: for OpenSymbol fonts'
             'ttf-carlito: for Carlito fonts'
             'ttf-ms-fonts: for Microsoft fonts'
             'otf-takao: for japanese Takao fonts')
-provides=('onlyoffice' 'onlyoffice-desktopeditors')
+provides=('onlyoffice')
 conflicts=('onlyoffice')
 options=('!strip')
 _srcfile='onlyoffice-desktopeditors_amd64.deb'
@@ -26,22 +26,28 @@ source=("onlyoffice-desktopeditors-${pkgver}_amd64.deb"::"$_srcurl")
 noextract=("onlyoffice-desktopeditors-${pkgver}_amd64.deb")
 sha256sums=('34af31acaa4b55fc6f2f148d60b494e07235409dc9bbe7a24f1e730eb5196e55')
 
-package() {
+prepare() {
     mkdir -p "onlyoffice-${pkgver}"
+    
+    cd "onlyoffice-${pkgver}"
+    
+    bsdtar -xf "${srcdir}/onlyoffice-desktopeditors-${pkgver}_amd64.deb"
+}
+
+package() {
     cd "onlyoffice-${pkgver}"
     
     # install bundled files
-    msg2 'Installing bundled files...'
-    bsdtar -xf "${srcdir}/onlyoffice-desktopeditors-${pkgver}_amd64.deb"
+    printf '%s\n' '  -> Installing bundled files...'
     bsdtar -xf data.tar.xz -C "$pkgdir"
     
     # fix permissions
-    msg2 'Fixing permissions...'
+    printf '%s\n' '  -> Fixing permissions...'
     chmod 755 "$pkgdir"{/opt/,/usr/{,bin/,share/{,applications/}}}
     chmod 755 "${pkgdir}/usr/bin/onlyoffice-desktopeditors"
     
     # install icons
-    msg2 'Installing icons...'
+    printf '%s\n' '  -> Installing icons...'
     for _res in 16 24 32 48 64 128 256
     do
         install -D -m644 "${pkgdir}/opt/onlyoffice/desktopeditors/asc-de-${_res}.png" \
@@ -49,7 +55,7 @@ package() {
     done
     
     # license
-    msg2 'Installing license...'
+    printf '%s\n' '  -> Installing license...'
     cd "${pkgdir}/opt/onlyoffice/desktopeditors"
     w3m -I 'utf-8' -T 'text/html' LICENSE.htm > "${srcdir}/onlyoffice-${pkgver}/LICENSE"
     install -D -m644 3DPARTYLICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"

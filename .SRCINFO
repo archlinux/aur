@@ -1,7 +1,7 @@
 pkgbase = onlyoffice-bin
 	pkgdesc = An office suite that combines text, spreadsheet and presentation editors
 	pkgver = 5.1.27
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.onlyoffice.com/
 	arch = x86_64
 	license = AGPL3.0
@@ -31,7 +31,6 @@ pkgbase = onlyoffice-bin
 	optdepends = ttf-ms-fonts: for Microsoft fonts
 	optdepends = otf-takao: for japanese Takao fonts
 	provides = onlyoffice
-	provides = onlyoffice-desktopeditors
 	conflicts = onlyoffice
 	noextract = onlyoffice-desktopeditors-5.1.27_amd64.deb
 	options = !strip
