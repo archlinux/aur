@@ -5,7 +5,7 @@ pkgbase = chexquest3-wad
 	url = http://www.chucktropolis.com/gamers.htm
 	arch = any
 	license = custom
-	source = http://www.chucktropolis.com/downloads/ChexQuest3.zip
+	source = https://archive.org/download/ChexQuest3_1020/ChexQuest3.zip
 	sha256sums = 29abab521cf9de4cc561afb84cf804793d90f1cf40f6384e19b34f72923dd446
 
 pkgname = chexquest3-wad

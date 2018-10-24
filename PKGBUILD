@@ -7,7 +7,7 @@ pkgdesc="Chex Quest 3 IWAD (game data)"
 arch=('any')
 url="http://www.chucktropolis.com/gamers.htm"
 license=('custom')
-source=(http://www.chucktropolis.com/downloads/ChexQuest3.zip)
+source=(https://archive.org/download/ChexQuest3_1020/ChexQuest3.zip)
 sha256sums=('29abab521cf9de4cc561afb84cf804793d90f1cf40f6384e19b34f72923dd446')
 
 package() {
