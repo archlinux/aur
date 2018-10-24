@@ -1,6 +1,8 @@
-# Maintainer: dryes <joswiseman@cock.li>
+# Contributor: Trizen <echo dHJpemVuQHByb3Rvbm1haWwuY29tCg== | base64 -d>
+# Contributor: dryes <joswiseman@cock.li>
+
 pkgname='wav2png-git'
-pkgver=100
+pkgver=103
 pkgrel=1
 pkgdesc='Creates waveform pngs out of audio files.'
 url='https://github.com/beschulz/wav2png'
@@ -10,7 +12,7 @@ provides=('wav2png')
 depends=('libsndfile' 'libpng' 'boost-libs')
 makedepends=('git' 'png++' 'boost')
 optdepends=('sox')
-source=('git://github.com/beschulz/wav2png.git')
+source=('git+https://github.com/beschulz/wav2png.git')
 md5sums=('SKIP')
 
 pkgver() {
