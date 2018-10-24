@@ -2,8 +2,8 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=fedora-wallpapers
 pkgver=29
-pkgrel=1
-pkgdesc="The default Wallpapers for Fedora, from fedora 8 (Werewolf) to fedora 27."
+pkgrel=2
+pkgdesc="The default Wallpapers for Fedora, from fedora 8 (Werewolf) to fedora 29."
 arch=("any")
 url="https://fedoraproject.org/wiki/Wallpapers"
 license=("CC-BY-SA")
