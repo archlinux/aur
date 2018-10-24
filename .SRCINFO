@@ -1,0 +1,14 @@
+pkgbase = perl-rlib
+	pkgdesc = Perl/CPAN Module rlib
+	pkgver = 0.02
+	pkgrel = 1
+	url = https://metacpan.org/release/rlib
+	arch = any
+	license = custom:unknown
+	depends = perl
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/G/GB/GBARR/rlib-0.02.tar.gz
+	sha512sums = cb9ed13db8a5709e19464412d46f8d818004d8cac339ec78e6314c1f05cadde784a4454f654b5db5ae17ed25b2107b8e3e7b68766405a270b67c06fed6defaa5
+
+pkgname = perl-rlib
+
