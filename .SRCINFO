@@ -1,0 +1,19 @@
+pkgbase = jose-git
+	pkgdesc = C-language implementation of Javascript Object Signing and Encryption
+	pkgver = 10.r8.028eab5
+	pkgrel = 1
+	url = https://github.com/latchset/jose
+	arch = x86_64
+	license = APACHE
+	makedepends = git
+	makedepends = meson
+	depends = jansson
+	depends = openssl
+	depends = zlib
+	provides = jose
+	conflicts = jose
+	source = git+https://github.com/latchset/jose.git
+	sha512sums = SKIP
+
+pkgname = jose-git
+
