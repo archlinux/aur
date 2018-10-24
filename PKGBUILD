@@ -2,7 +2,7 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=openjdk-devel
 _majorver=12
-_buildver=14
+_buildver=16
 pkgver=${_majorver}b${_buildver}
 pkgrel=1
 pkgdesc="Java OpenJDK ${_majorver} Early-Access Build from Oracle."
@@ -19,7 +19,7 @@ provides=(
   "java-runtime-headless-openjdk=${_majorver}"
 )
 source=("https://download.java.net/java/early_access/jdk${_majorver}/${_buildver}/GPL/openjdk-${_majorver}-ea+${_buildver}_linux-x64_bin.tar.gz")
-sha256sums=('791ac6f6494a587a4de9dc373cdaa3911dc25ad4c7e793fb8e4dbe1269ab534d')
+sha256sums=('20ab4c21b20d0c823c5dcbf0bdb81bc9ab5c2a45954a80563ffd591b25b36038')
 
 _jvmdir=usr/lib/jvm/java-${_majorver}-openjdk
 
