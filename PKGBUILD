@@ -1,12 +1,12 @@
 # Author: mosra <mosra@centrum.cz>
 pkgname=magnum-examples-git
-pkgver=2018.04.r0.g4cde7a2
+pkgver=2018.10.r0.g0f292dc
 pkgrel=1
 pkgdesc="Examples for the Magnum C++11/C++14 graphics engine (Git version)"
 arch=('i686' 'x86_64')
-url="http://magnum.graphics"
+url="https://magnum.graphics"
 license=('custom:Public Domain')
-depends=('magnum-git' 'magnum-plugins-git' 'magnum-integration-git' 'magnum-extras-git' 'bullet' 'openal')
+depends=('magnum-git' 'magnum-plugins-git' 'magnum-integration-git' 'magnum-extras-git' 'box2d' 'bullet' 'openal')
 makedepends=('cmake' 'git')
 provides=('magnum-examples')
 conflicts=('magnum-examples')
@@ -27,9 +27,11 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DWITH_AREALIGHTS_EXAMPLE=ON \
         -DWITH_AUDIO_EXAMPLE=ON \
+        -DWITH_BOX2D_EXAMPLE=ON \
         -DWITH_BULLET_EXAMPLE=ON \
         -DWITH_CUBEMAP_EXAMPLE=ON \
         -DWITH_MOTIONBLUR_EXAMPLE=ON \
+        -DWITH_MOUSEINTERACTION_EXAMPLE=ON \
         -DWITH_PRIMITIVES_EXAMPLE=ON \
         -DWITH_PICKING_EXAMPLE=ON \
         -DWITH_SHADOWS_EXAMPLE=ON \
@@ -37,6 +39,7 @@ build() {
         -DWITH_TEXTUREDTRIANGLE_EXAMPLE=ON \
         -DWITH_TRIANGLE_EXAMPLE=ON \
         -DWITH_TRIANGLE_PLAIN_GLFW_EXAMPLE=OFF \
+        -DWITH_TRIANGLE_VULKAN_EXAMPLE=ON \
         -DWITH_VIEWER_EXAMPLE=ON
     make
 }
