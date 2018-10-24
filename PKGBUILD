@@ -1,8 +1,9 @@
-# Maintainer: denbrahe <denbrahe@hotmail.com>
+# Maintainer: DenBrahe <denbrahe@hotmail.com>
 # Contributor: Philipp A. <flying-sheep@web.de>
+# Contributor: theSander <aur@sandervanbalen.be>
 pkgname=rambox-os-git
 pkgver=r989.821e3f5
-pkgrel=2
+pkgrel=3
 pkgdesc="Free and Open Source messaging and emailing app that combines common web applications into one."
 arch=(i686 x86_64)
 url="https://github.com/TheGoddessInari/rambox"
@@ -17,11 +18,10 @@ options=()
 install=
 source=(
 	'rambox-os::git+https://github.com/TheGoddessInari/rambox.git'
-	"${pkgname%-git}.js"
 	"${pkgname%-git}.desktop"
 	)
 noextract=()
-md5sums=('SKIP' 'SKIP' 'SKIP')
+md5sums=('SKIP' 'SKIP')
 
 
 pkgver() {
@@ -42,10 +42,12 @@ build() {
 
 package() {
 	install -d "$pkgdir/usr/lib"
+	install -d "$pkgdir/usr/bin"
 
-	cp -r "$srcdir/${pkgname%-git}/build/production/Rambox" "$pkgdir/usr/lib/rambox-os"
+	cp -r "$srcdir/${pkgname%-git}/dist/linux-unpacked" "$pkgdir/usr/lib/${pkgname%-git}"
 	
-	install -Dm755 "$srcdir/${pkgname%-git}.js" "$pkgdir/usr/bin/${pkgname%-git}"
+	#install -Dm755 "$srcdir/${pkgname%-git}.js" "$pkgdir/usr/bin/${pkgname%-git}"
 	install -Dm644 "$srcdir/${pkgname%-git}/resources/Icon.png" "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
+	ln -s "/usr/lib/${pkgname%-git}/rambox" "${pkgdir}/usr/bin/${pkgname%-git}"
 	desktop-file-install "$srcdir/${pkgname%-git}.desktop" --dir "$pkgdir/usr/share/applications/"
 }
