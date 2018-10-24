@@ -1,4 +1,4 @@
-# Maintainer: Sebastien Duthil <duthils@free.fr>
+# Maintainer: Sebastien Duthil <duthils@duthils.net>
 
 _gamepkg=RimWorld1-0Linux.zip
 _pkg_subver=2059  # see ${srcdir}/Version.txt
