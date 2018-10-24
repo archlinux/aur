@@ -22,12 +22,12 @@ _urw_font_dir='/usr/share/fonts/gsfonts'
 _windows_font_dir='/usr/share/fonts/WindowsFonts'
 _1st_apple_font_dir='/usr/share/fonts/TTF'
 _2nd_apple_font_dir='/usr/share/fonts/Type1'
-_commit='cb5cf1959c5229389ac57aae11f87f7d7e55c74c'
+_commit='ba0aedf286650098de0d51a493c679adeb39a4ac'
 _qdepth='32'
 
 pkgbase=imagemagick-full
 pkgname=('libmagick-full' 'imagemagick-full' 'imagemagick-full-doc')
-pkgver=7.0.8.12
+pkgver=7.0.8.14
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="An image viewing/manipulation program (Q${_qdepth} HDRI with all libs and features)"
@@ -142,8 +142,7 @@ package_libmagick-full() {
               "libMagickCore-${pkgver%%.*}.Q${_qdepth}HDRI.so"
               "libMagickWand-${pkgver%%.*}.Q${_qdepth}HDRI.so"
                 "libMagick++-${pkgver%%.*}.Q${_qdepth}HDRI.so")
-    conflicts=('libmagick' 'libmagick-fftw' 'libmagick-no-hdri'
-               'libmagick-git' 'libmagick-full-git')
+    conflicts=('libmagick')
     
     cd "${pkgbase}-git"
     make DESTDIR="$pkgdir" install
@@ -189,9 +188,8 @@ package_imagemagick-full() {
             'ttf-mac-fonts: for Apple fonts support'
     )
     options=('!emptydirs')
-    provides=('imagemagick' 'imagemagick-fftw')
-    conflicts=('imagemagick' 'imagemagick-fftw' 'imagemagick-no-hdri'
-               'imagemagick-git' 'imagemagick-full-git')
+    provides=('imagemagick')
+    conflicts=('imagemagick')
     
     cd "${pkgbase}-git"
     
@@ -208,7 +206,7 @@ package_imagemagick-full-doc() {
     arch=('any')
     depends=()
     provides=('imagemagick-doc')
-    conflicts=('imagemagick-doc' 'imagemagick-git-doc' 'imagemagick-full-doc-git')
+    conflicts=('imagemagick-doc')
     
     cd "${pkgbase}-git"
     
