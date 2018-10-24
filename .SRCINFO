@@ -1,7 +1,7 @@
 pkgbase = sope
 	pkgdesc = application server used by SOGo
-	pkgver = 4.0.2
-	pkgrel = 2
+	pkgver = 4.0.4
+	pkgrel = 1
 	url = http://www.sogo.nu/files/downloads/SOGo/Sources/
 	arch = x86_64
 	license = GPL
@@ -20,12 +20,10 @@ pkgbase = sope
 	optdepends = postgresql: run database server for sogo locally
 	replaces = sope2
 	options = !strip
-	source = http://www.sogo.nu/files/downloads/SOGo/Sources/SOPE-4.0.2.tar.gz
+	source = http://www.sogo.nu/files/downloads/SOGo/Sources/SOPE-4.0.4.tar.gz
 	source = sope_configure.patch
-	source = sope-bugfix_4566.patch
-	sha256sums = 19ebeb0854f63003cd1c99e271e9f8b7476a2c7f666027d46a2e12b6abc94738
+	sha256sums = d882b7238ed506d3f694e2f07674e056b4b9a069bad8837a56bf073c9172d2fb
 	sha256sums = 7ff3387daffd15b5f97146da1fd61aefc9591b7b6a41f1f0e60b572106fdbc9a
-	sha256sums = f46e873f4def6aec07d6ac3bf6ee817f4cd9873928623a731ce98da86aaa3108
 
 pkgname = sope
 
