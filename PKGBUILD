@@ -2,13 +2,13 @@
 
 pkgname=arangodb
 pkgver=3.3.14
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-model NoSQL database, combining key-value, document and graph data models."
 arch=("i686" "x86_64")
 url="https://www.arangodb.com/"
 license=("APACHE")
 depends=("openssl" "systemd" "curl" "zlib")
-makedepends=("cmake" "clang" "python2" "linux-api-headers")
+makedepends=("cmake" "gcc7" "python2" "linux-api-headers")
 options=()
 install=arangodb.install
 source=("https://www.arangodb.com/repositories/Source/ArangoDB-$pkgver.tar.bz2"
@@ -28,22 +28,19 @@ build() {
   ln -s -f /usr/bin/python2 python
   export PATH="`pwd`:$PATH"
   export LD="ld.gold"
-  # I'm not proud of this but currently it's the only way to compile this.
-  export CC="clang"
-  export CXX="clang++"
+  export CC="gcc-7"
+  export CXX="g++-7"
 
   msg2 "Configuring ArangoDB."
   cd $srcdir/ArangoDB-$pkgver
   [ -d build ] || mkdir build && cd build
   cmake -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_C_FLAGS="-O2 -fno-omit-frame-pointer" \
-    -DCMAKE_CXX_FLAGS="-O2 -fno-omit-frame-pointer" \
     -DCMAKE_INSTALL_PREFIX:PATH=/ \
     -DCMAKE_SKIP_RPATH=On \
     ..
   msg2 "Building ArangoDB."
-  make -j $(nproc)
+  make
 }
 
 package() {
@@ -60,9 +57,9 @@ package() {
   cp -R $srcdir/ArangoDB-$pkgver/js/* $pkgdir/usr/share/arangodb3/js
   cp -R $srcdir/ArangoDB-$pkgver/Documentation/man/* $pkgdir/usr/share/man
 
-  install -Dm644 arangodb-users.conf "$pkgdir"/usr/lib/sysusers.d/arangodb.conf
-  install -Dm644 arangodb-tmpfile.conf "$pkgdir"/usr/lib/tmpfiles.d/arangodb.conf
-  install -Dm644 $srcdir/ArangoDB-"$pkgver"/Installation/logrotate.d/arangod.systemd "$pkgdir"/etc/logrotate.d/arangodb3
+  install -D -m644 arangodb-users.conf "$pkgdir"/usr/lib/sysusers.d/arangodb.conf
+  install -D -m644 arangodb-tmpfile.conf "$pkgdir"/usr/lib/tmpfiles.d/arangodb.conf
+  install -D -m644 $srcdir/ArangoDB-"$pkgver"/Installation/logrotate.d/arangod.systemd "$pkgdir"/etc/logrotate.d/arangodb3
   install -D -m644 $srcdir/ArangoDB-$pkgver/LICENSE "${pkgdir}/usr/share/licenses/arangodb3/LICENSE"
 
   msg2 "Preparing systemd service."
