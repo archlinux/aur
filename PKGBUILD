@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-math-bigint'
-pkgver='1.999814'
+pkgver='1.999815'
 pkgrel='1'
 pkgdesc="Math::BigInt - Arbitrary size integer/float math package"
 arch=('any')
@@ -10,12 +10,12 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl>=5.6.1')
 makedepends=()
-provides=('perl-math-bigfloat' 'perl-math-bigint-calc' 'perl-math-bigint-calcemu' 'perl-math-bigint-lib')
+provides=('perl-math-bigfloat' 'perl-math-bigint-calc' 'perl-math-bigint-lib')
 
 url='https://metacpan.org/release/Math-BigInt'
 source=("https://cpan.metacpan.org/authors/id/P/PJ/PJACKLAM/Math-BigInt-$pkgver.tar.gz")
-md5sums=('6c0a6d44601bcec2b334d3b130fbcdbb')
-sha512sums=('00a7ffa5425b4b7cd39a51a8832afc373be350f24952f302b5d86c176a985e4099360a0fb567ce77d01709650aaa95efc00782dc30cd4db45a4beffb69fe9ce0')
+md5sums=('962f8d3b83c67123d5a870f878177354')
+sha512sums=('4fe52b014c1a885e333aae64abdc7cc657f1cb3d0a82b1b9ab2ca0924d2ab0029f202ead4c9a00311787cadb022443489ad9fd03112f0ec3e12e8a86a72d88cc')
 _distdir="Math-BigInt-$pkgver"
 
 build() {
