@@ -1,0 +1,15 @@
+pkgbase = tang
+	pkgdesc = Server for binding data to network presence
+	pkgver = 7
+	pkgrel = 1
+	url = https://github.com/latchset/tang
+	arch = x86_64
+	license = GPL3
+	makedepends = asciidoc
+	depends = http-parser
+	depends = jose
+	source = https://github.com/latchset/tang/releases/download/v7/tang-7.tar.bz2
+	sha512sums = dd4187fa6962523ac2a745ef05a27cdf7e5264c595942e63d406d67a1c595e87bd7e74091cb2e16362f369480cdf8e3b4bfe1fee13b9cb73d5308f42c52f138a
+
+pkgname = tang
+
