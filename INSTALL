@@ -6,39 +6,42 @@ post_install() {
 	done
 
 	# Create the link to the binary
-	ln -sf '/opt/Shadow Beta/shadow-wrapper.pl' '/usr/bin/shadow-beta'
+	ln -sf '/opt/shadowbeta/shadow-wrapper.pl' '/usr/bin/shadow-beta'
 
 	## Fix fonts
 
-	# Truetype directory exists (not a symlink !)
-	if [ -d /usr/share/fonts/truetype  ]; then
-
-		# Create TTF folder if not exists
-		if [ ! -d /usr/share/fonts/TTF ]; then
-			mkdir /usr/share/fonts/TTF
-		fi
-
-		# Move everything in the TTF folder
-		mv /usr/share/fonts/truetype/* /usr/share/fonts/TTF/
-		rm -R /usr/share/fonts/truetype
-	fi
-
-	# Create a symlink to TTF folder
-	if [ ! -e /usr/share/fonts/truetype ]; then
-		ln -sf "/usr/share/fonts/TTF" "/usr/share/fonts/truetype"
-	fi
+	# # Truetype directory exists (not a symlink !)
+	# if [ -d /usr/share/fonts/truetype  ]; then
+	#
+	# 	# Create TTF folder if not exists
+	# 	if [ ! -d /usr/share/fonts/TTF ]; then
+	# 		mkdir /usr/share/fonts/TTF
+	# 	fi
+	#
+	# 	# Move everything in the TTF folder
+	# 	mv /usr/share/fonts/truetype/* /usr/share/fonts/TTF/
+	# 	rm -R /usr/share/fonts/truetype
+	# fi
+	#
+	# # Create a symlink to TTF folder
+	# if [ ! -e /usr/share/fonts/truetype ]; then
+	# 	ln -sf "/usr/share/fonts/TTF" "/usr/share/fonts/truetype"
+	# fi
 }
 
 post_remove() {
 	# Remove configuration
 	for user in `ls /home`
 	do
-		if [ -d /home/$user/.cache/blade ]; then
-			rm -R /home/$user/.cache/blade
-		fi
-
 		if [ -d /home/$user/.config/Shadow\ Beta ]; then
 			rm -R /home/$user/.config/Shadow\ Beta
 		fi
 	done
+}
+pre_upgrade(){
+	rm -r "/opt/Shadow Beta"
+}
+
+post_upgrade(){
+	ln -sf '/opt/shadowbeta/shadow-wrapper.pl' '/usr/bin/shadow-beta'
 }

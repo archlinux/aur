@@ -1,14 +1,14 @@
 pkgbase = shadow-beta
 	pkgdesc = Shadow launcher
-	pkgver = 0.7.6
-	pkgrel = 8
+	pkgver = 0.8.62
+	pkgrel = 1
 	url = http://shadow.tech
 	install = INSTALL
 	arch = x86_64
 	license = unknown
 	depends = desktop-file-utils
 	depends = freetype2
-	depends = gcc5
+	depends = libuv
 	depends = gconf
 	depends = hicolor-icon-theme
 	depends = json-c
@@ -29,9 +29,10 @@ pkgbase = shadow-beta
 	depends = sdl
 	depends = gcc7-libs
 	depends = ttf-dejavu
+	depends = libxss
 	provides = shadow-beta
-	source = https://macosx.update.blade-group.fr/mpl/linux/beta/bionic/shadowbeta.deb
-	md5sums = 6fc188e0e818c9d3af6dbb2d51a88f91
+	source = https://macosx.update.blade-group.fr/mpl/linux/beta/bionic/shadow-alpha-bionic.zip
+	md5sums = bc290cee83021c95f2ecc2a70b12d859
 
 pkgname = shadow-beta
 
