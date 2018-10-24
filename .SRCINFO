@@ -20,7 +20,7 @@ pkgbase = kicad-rc
 	depends = curl
 	depends = swig
 	depends = wxpython
-	depends = oce
+	depends = opencascade
 	depends = ngspice>=27
 	depends = kicad-footprints
 	depends = kicad-symbols
