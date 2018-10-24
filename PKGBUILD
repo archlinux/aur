@@ -6,7 +6,7 @@
 
 pkgname=pacman-buildenv_ext-git
 pkgver=5.1.1.51.gb5d62d2c
-pkgrel=1
+pkgrel=2
 pkgdesc="A library-based package manager with dependency support with support for build environment extensions. git version."
 arch=('i686' 'x86_64')
 url="https://bbs.archlinux.org/viewtopic.php?pid=1613555"
@@ -20,7 +20,7 @@ provides=(pacman{,-git}=${pkgver%.*.*})
 conflicts=('pacman')
 options=('!libtool' '!strip')
 backup=(etc/pacman.conf
-        etc/makepkg{,-optimize}.conf)
+        etc/makepkg.conf)
 source=(git://git.archlinux.org/pacman.git
         pacman.conf.{i686,x86_64,arm}
         buildenv_ext.patch
