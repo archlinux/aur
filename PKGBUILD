@@ -1,17 +1,17 @@
 pkgname=libsolv
-pkgver=0.6.35
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Library for solving packages and reading repositories"
 arch=('i686' 'x86_64')
 url="https://github.com/openSUSE/$pkgname"
-license=('BSD')
+license=('custom:BSD')
 depends=('bzip2' 'expat' 'rpm-org' 'xz' 'zlib' 'zstd')
 makedepends=('cmake' 'perl' 'python' 'ruby' 'swig')
 optdepends=('perl: for perl bindings'
             'python: for python bindings'
             'ruby: for ruby bindings')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('51f52ee010c41a1bdd41a1ee06085946')
+md5sums=('1a41028b666e4f24690e4c45241b5f4d')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -69,7 +69,6 @@ package() {
 
 	install -Dp -m644 ../LICENSE.BSD "$pkgdir/usr/share/licenses/$pkgname/LICENSE.BSD"
 	install -Dp -m644 ../README      "$pkgdir/usr/share/doc/$pkgname/README"
-	install -Dp -m644 ../BUGS        "$pkgdir/usr/share/doc/$pkgname/BUGS"
 }
 
 # vim: set ft=sh ts=4 sw=4 noet:
