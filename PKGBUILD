@@ -47,7 +47,7 @@ package() {
   # Launchers
   install -m755 $_pkgname.sh "$pkgdir"/usr/bin/$_pkgname
   ln -s $_pkgname "$pkgdir"/usr/bin/$pkgname  # compatibility
-  ln -sf firefox "$pkgdir"/opt/$_pkgname/firefox-bin
+#  ln -sf firefox "$pkgdir"/opt/$_pkgname/firefox-bin
 
   # Desktops
   install -m644 *.desktop "$pkgdir"/usr/share/applications/
