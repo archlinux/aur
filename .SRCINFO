@@ -1,6 +1,6 @@
 pkgbase = mythtv-git
 	pkgdesc = A Homebrew PVR project
-	pkgver = 29+fixes.20181008.951f1fe7
+	pkgver = 29+fixes.20181015.d8a2db77
 	pkgrel = 1
 	url = https://www.mythtv.org/
 	arch = x86_64
