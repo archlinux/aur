@@ -1,7 +1,7 @@
 # Maintainer: graysky <graysky AT archlinux DOT us>
 
 pkgname='xscreensaver-aerial'
-pkgver=1.07
+pkgver=1.08
 pkgrel=1
 arch=('any')
 url="https://github.com/graysky2/xscreensaver-aerial"
@@ -11,7 +11,7 @@ depends=('xscreensaver' 'mpv')
 optdepends=('xscreensaver-aerial-videos: pre-downloaded videos to save bandwidth')
 install=readme.install
 source=("https://github.com/graysky2/xscreensaver-aerial/archive/v$pkgver.tar.gz")
-sha256sums=('6145bbb012e4623a8c2fd69e1d930b7fbae9560381dbdf01387cf01c6d1b4f41')
+sha256sums=('057cb1a11ce7d9e3277bbd090245b87ca870d97acc4c570de5fc55f079d00105')
 
 package() {
 	cd "$pkgname-$pkgver"
