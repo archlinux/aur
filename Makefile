@@ -1,4 +1,5 @@
-version = 5259f370b41996cf2bfbf5dea47d0681466c01d9
+#version = 5259f370b41996cf2bfbf5dea47d0681466c01d9
+version = d2e044ad3a4f5d7570538438c1a8a60d4200ecb8
 
 help: 
 	@grep -E '(^[a-zA-Z_-]+:.*?##.*$$)|(^##)' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[32m%-10s\033[0m %s\n", $$1, $$2}' | sed -e 's/\[32m##/[33m/'
@@ -11,6 +12,7 @@ clear: ## Clear files
 	rm -rf ./src
 	rm -f ./shadowbeta.deb
 	rm -f ./shadow-beta-*.pkg.tar
+	rm -f shadow-alpha-bionic.zip
 	rm -f ./*~
 
 install:build ## Install package with pacman
@@ -20,7 +22,7 @@ pkgsum: ## update pkgsum with updpkgsums
 	updpkgsums
 
 recup: ## Get git files
-	wget -O INSTALL https://raw.githubusercontent.com/NicolasGuilloux/blade-shadow-beta/${version}/Arch/AUR/INSTALL
+#	wget -O INSTALL https://raw.githubusercontent.com/NicolasGuilloux/blade-shadow-beta/${version}/Arch/AUR/INSTALL
 	wget -O wrapper.pl https://raw.githubusercontent.com/NicolasGuilloux/blade-shadow-beta/${version}/AppImage/wrapper.pl
 	wget -O report.pl https://raw.githubusercontent.com/NicolasGuilloux/blade-shadow-beta/${version}/AppImage/report.pl
 
