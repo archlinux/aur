@@ -4,8 +4,8 @@
 # Contributor:  Andre Wayand <aur-sogo@awayand.sleepmail.com>
 pkgname=sogo
 pkgdesc="groupware server built around OpenGroupware.org (OGo) and the SOPE application server"
-pkgver=4.0.2
-pkgrel=5
+pkgver=4.0.4
+pkgrel=1
 arch=('x86_64')
 url="http://www.sogo.nu/"
 license=('GPL')
@@ -34,18 +34,15 @@ backup=('etc/sogo/sogo.conf'
 source=("http://www.sogo.nu/files/downloads/SOGo/Sources/SOGo-${pkgver}.tar.gz"
         "sogo.service"
         "sogo.confd"
-        "sogo_configure.patch"
-        "sogo-bugfix_4566.patch")
-sha256sums=('35ef20216ff1758a593bed69d8e8e25d23e982a970bf23a3bb2f856f2e5d2f9f'
+        "sogo_configure.patch")
+sha256sums=('8e3eb750810244c88a4d20127db6987a1cc42845f716964e1d360038c1e26256'
             '0720b9ad35a05d86d794c7adbf18277ecde57ed147e96f6105acca93f19d3b8c'
             '8ee0d1ad77e998ea801053fce175d8c4a1c55dcc5ee1ff78f0a8e3797187a6a7'
-            'e64ea4aa0ddf29785de8d786ab7ab09f940bfe316b6f1deeb8d04d9d16d35db1'
-            '25fe95cd6e55b8f9d4738e652a7a5a1bee3574de80507e2d08518cc4f74c5009')
+            'e64ea4aa0ddf29785de8d786ab7ab09f940bfe316b6f1deeb8d04d9d16d35db1')
 
 prepare() {
   cd "$srcdir/SOGo-${pkgver}"
   patch configure ../sogo_configure.patch
-  patch -Np1 -i ../sogo-bugfix_4566.patch
 }
 
 build() {
