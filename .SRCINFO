@@ -1,0 +1,13 @@
+pkgbase = pykgbuild
+	pkgdesc = Compare PyPI packages with users PKGBUILD versions
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/mpolidori/py-pkgbuild-version
+	arch = any
+	license = MIT
+	depends = python
+	source = git+https://github.com/mpolidori/py-pkgbuild-version.git
+	md5sums = SKIP
+
+pkgname = pykgbuild
+
