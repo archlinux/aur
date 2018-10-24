@@ -2,7 +2,7 @@
 
 _pkgname=trizen
 pkgname=trizen-git
-pkgver=1.55
+pkgver=1.55.2.gfc27c0d
 pkgrel=1
 pkgdesc="Trizen AUR Package Manager: A lightweight wrapper for AUR (-git version)."
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
             #'perl-term-readline-gnu: better STDIN support'
            )
 
-source=("git://github.com/trizen/${_pkgname}.git")
+source=("git+https://github.com/trizen/${_pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
