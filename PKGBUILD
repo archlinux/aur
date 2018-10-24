@@ -3,7 +3,7 @@
 
 pkgname=dwm-qguv-git
 _pkgname=dwm
-pkgver=6.1.16.gad24916
+pkgver=6.1.45.g03263b6d2b16
 pkgrel=1
 pkgdesc="A dynamic window manager for X"
 url="http://dwm.suckless.org"
