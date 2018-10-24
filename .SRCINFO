@@ -1,0 +1,14 @@
+pkgbase = vimix-icon-theme
+	pkgdesc = Fresh and simple personality icon theme.
+	pkgver = 2018.02.02.r1.g6ed2500
+	pkgrel = 1
+	url = https://vinceliuice.deviantart.com/art/Vimix-icon-themes-530683384
+	arch = any
+	license = custom:CC-BY-SA-4.0
+	provides = vimix-icon-theme
+	conflicts = vimix-icon-theme
+	source = git+https://github.com/vinceliuice/vimix-icon-theme.git
+	sha256sums = SKIP
+
+pkgname = vimix-icon-theme-git
+
