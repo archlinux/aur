@@ -30,11 +30,14 @@ build() {
 }
 
 package() {
-  cd $_pkgname
-  make PREFIX=/usr DESTDIR="$pkgdir" install
-  install -m644 -D LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -m644 -D README "$pkgdir/usr/share/doc/$pkgname/README"
-  install -m644 -D ../dwm.desktop "$pkgdir/usr/share/xsessions/dwm.desktop"
+  (
+    cd $_pkgname
+    make PREFIX=/usr DESTDIR="$pkgdir" install
+    install -m644 -D LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -m644 -D README "$pkgdir/usr/share/doc/$pkgname/README"
+  )
+
+  install -m644 -D dwm.desktop "$pkgdir/usr/share/xsessions/dwm.desktop"
 }
 
 # vim:set ts=2 sw=2 et:
