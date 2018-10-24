@@ -1,38 +1,35 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
-_pkgname="phosh"
-pkgname="${_pkgname}-git"
-pkgver="latest"
-pkgrel="1"
+pkgname=phosh-git
+pkgver=0.0.1.r44.g3fb62b2
+pkgrel=1
 pkgdesc="A pure Wayland shell prototype for GNOME on mobile devices"
-url="https://source.puri.sm/Librem5/${_pkgname}"
+url="https://source.puri.sm/Librem5/phosh"
 license=("GPL3")
-
-arch=("x86_64")
-depends=("gtk3"
-         "vala"
-         "gnome-desktop"
-         "gobject-introspection"
-         "gtk-doc"
-         "libhandy"
-         "wlroots")
-makedepends=("git"
-             "pkg-config"
-             "meson")
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-
-source=("git+https://source.puri.sm/Librem5/${_pkgname}.git")
+arch=(i686 x86_64 armv6h armv7h)
+depends=(gtk3
+         vala
+         gnome-desktop
+         gobject-introspection
+         gtk-doc
+         libhandy
+         wlroots)
+makedepends=(git
+             pkg-config
+             meson)
+provides=(phosh)
+conflicts=(phosh)
+source=("git+https://source.puri.sm/Librem5/phosh.git")
 sha256sums=("SKIP")
 
 pkgver() {
-    cd "${_pkgname}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd phosh
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
     rm -rf build
-    arch-meson "${_pkgname}" build -Dtests=false
+    arch-meson phosh build -Dtests=false
     ninja -C build
 }
 
