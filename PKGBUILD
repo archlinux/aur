@@ -2,7 +2,7 @@
 
 _pkgname=redis-graph
 pkgname=redis-graph-git
-pkgver=r120.047318a
+pkgver=r123.04f539b
 pkgrel=1
 pkgdesc="This project is a Redis module that implements a graph database."
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
