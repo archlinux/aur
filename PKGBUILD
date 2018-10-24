@@ -9,7 +9,7 @@
 
 pkgname=whipper-git
 pkgver=0.7.0.r38.g02fd962
-pkgrel=1
+pkgrel=2
 pkgdesc='A Unix CD ripper aiming for accuracy over speed -- forked from morituri'
 arch=('any')
 url='https://github.com/whipper-team/whipper'
@@ -22,6 +22,7 @@ depends=(
     'libsndfile'                    # for reading wav files
     'mutagen'                       # for metadata handling
     'python2-musicbrainzngs'        # for metadata lookup
+    'python2-gobject'
     'python2-pycdio'                # for storing drive identification in config file
     'python2-requests'              # for retrieving AccurateRip database entries
     'python2-setuptools'            # for plugin support
@@ -29,7 +30,6 @@ depends=(
     )
 makedepends=(
     'git'
-    'python2-gobject'
     )
 checkdepends=(
     'python2-twisted'
