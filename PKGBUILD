@@ -1,7 +1,7 @@
 # Maintainer: Alejandro Díaz-Caro <alejandro@diaz-caro.info>
 
 pkgname=pdfpc-notimer
-pkgver=4.1.2
+pkgver=4.2.1
 _pkgver=$pkgver
 pkgrel=2
 pkgdesc='PDFPC with a patch to not show the timer in the presentations.'
@@ -14,16 +14,13 @@ optdepends=('gst-plugins-good: more codecs for video playback support'
 makedepends=('cmake' 'vala')
 conflicts=('pdfpc')
 source=("pdfpc-$_pkgver.tar.gz::https://github.com/pdfpc/pdfpc/archive/v$_pkgver.tar.gz"
-"deb888677.patch::https://github.com/pdfpc/pdfpc/commit/21e4efb3afe325fe7e2f800d1c22fd1bc28bc3d7.patch"
 "notimer.patch")
 
-sha256sums=('0fcacd0deac39d93e21fc152b0cb01279b4ba209934fe385be6811236a03c87d'
-            '8546c86cbcbf24491c9f44f7fd294de144b3bee57725cea8827e0006239ebcef'
+sha256sums=('f67eedf092a9bc275dde312f3166063a2e88569f030839efc211127245be6df8'
             '79d728ca0d88c6d2007643d6b528d5a5aa4c144008143f3bd00d7b419256860b')
 
 prepare() {
     cd "$srcdir/pdfpc-$_pkgver"
-    patch -p1 <../deb888677.patch ## reverse the pr344 to fix video playback
     patch -Np1 -i "$srcdir/notimer.patch" ## do not print the timer
     ## see https://bugs.archlinux.org/task/58786
 }
