@@ -1,7 +1,7 @@
 pkgbase = fontconfig-ubuntu
 	pkgdesc = A library for configuring and customizing font access (with Ubuntu patches)
-	pkgver = 2.12.6
-	pkgrel = 2
+	pkgver = 2.13.0
+	pkgrel = 1
 	url = https://launchpad.net/ubuntu/+source/fontconfig
 	install = fontconfig-ubuntu.install
 	arch = i686
@@ -18,14 +18,14 @@ pkgbase = fontconfig-ubuntu
 	makedepends = lynx
 	depends = expat
 	depends = freetype2
-	provides = fontconfig=2.12.6
+	provides = fontconfig=2.13.0
 	conflicts = fontconfig
-	source = https://launchpad.net/ubuntu/+archive/primary/+files/fontconfig_2.12.6.orig.tar.bz2
-	source = https://launchpad.net/ubuntu/+archive/primary/+files/fontconfig_2.12.6-0ubuntu2.debian.tar.xz
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/fontconfig_2.13.0.orig.tar.bz2
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/fontconfig_2.13.0-5ubuntu3.debian.tar.xz
 	source = 53-monospace-lcd-filter.patch
 	source = fontconfig-ubuntu.hook
-	sha256sums = cf0c30807d08f6a28ab46c61b8dbd55c97d2f292cf88f3a07d3384687f31f017
-	sha256sums = 75c259e2d6b1944fe76a49f89b806b3ee34fe7a42eb25efd289e38b1b5e16517
+	sha256sums = 91dde8492155b7f34bb95079e79be92f1df353fcc682c19be90762fd3e12eeb9
+	sha256sums = ff3bed047dc345a5925be6bf7c4739d4d416ad8ab89dd9c4261f23da1f45f6a6
 	sha256sums = c759702ba66fe88768aa93035637401085bb5c02d898c960b68291aea10daa8d
 	sha256sums = 672f6a1c5e164671955ce807e670306194142a1794ce88df653aa717a972e274
 
