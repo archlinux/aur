@@ -2,7 +2,7 @@
 pkgname=safetynets-git
 pkgver=d193964
 pkgrel=1
-pkgdesc="A framework to outsource machine-learning inference to "
+pkgdesc="A framework to outsource machine-learning inference computation"
 arch=("x86_64" "i686")
 url="https://github.com/zghodsi/safetynests"
 license=('custom:CC-BY-NC')
