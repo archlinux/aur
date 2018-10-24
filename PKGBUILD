@@ -5,18 +5,18 @@
 # Contributor: Andres Perera <aepd87@gmail.com>
 
 pkgname=pacman-buildenv_ext-git
-pkgver=5.1.1.13.g7d05ffce
+pkgver=5.1.1.51.gb5d62d2c
 pkgrel=1
 pkgdesc="A library-based package manager with dependency support with support for build environment extensions. git version."
 arch=('i686' 'x86_64')
-url="http://www.archlinux.org/pacman/"
+url="https://bbs.archlinux.org/viewtopic.php?pid=1613555"
 license=('GPL')
-depends=('bash' 'curl' 'gpgme' 'libarchive' 'pacman-mirrorlist')
-makedepends=('git' 'asciidoc')
-optdepends=('fakeroot: for makepkg usage as normal user'
+depends=('archlinux-keyring' 'bash' 'curl' 'gpgme' 'libarchive' 'pacman-mirrorlist')
+optdepends=('pacman-contrib: various helper utilities'
             'makepkg-optimize: supplemental build and packaging optimizations')
-checkdepends=('python2' 'fakechroot')
-provides=(pacman{,-git}=${pkgver%.*.*} 'libalpm.so')
+makedepends=('git' 'asciidoc')
+checkdepends=('python' 'fakechroot')
+provides=(pacman{,-git}=${pkgver%.*.*})
 conflicts=('pacman')
 options=('!libtool' '!strip')
 backup=(etc/pacman.conf

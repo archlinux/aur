@@ -1,25 +1,25 @@
 pkgbase = pacman-buildenv_ext-git
 	pkgdesc = A library-based package manager with dependency support with support for build environment extensions. git version.
-	pkgver = 5.1.1.13.g7d05ffce
+	pkgver = 5.1.1.51.gb5d62d2c
 	pkgrel = 1
-	url = http://www.archlinux.org/pacman/
+	url = https://bbs.archlinux.org/viewtopic.php?pid=1613555
 	arch = i686
 	arch = x86_64
 	license = GPL
-	checkdepends = python2
+	checkdepends = python
 	checkdepends = fakechroot
 	makedepends = git
 	makedepends = asciidoc
+	depends = archlinux-keyring
 	depends = bash
 	depends = curl
 	depends = gpgme
 	depends = libarchive
 	depends = pacman-mirrorlist
-	optdepends = fakeroot: for makepkg usage as normal user
+	optdepends = pacman-contrib: various helper utilities
 	optdepends = makepkg-optimize: supplemental build and packaging optimizations
 	provides = pacman=5.1.1
 	provides = pacman-git=5.1.1
-	provides = libalpm.so
 	conflicts = pacman
 	options = !libtool
 	options = !strip
