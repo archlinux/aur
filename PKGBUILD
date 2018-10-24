@@ -1,12 +1,12 @@
 # Author: mosra <mosra@centrum.cz>
 pkgname=magnum-git
-pkgver=2018.04.r0.g9457cfc3
+pkgver=2018.10.r0.g3e7fdf46e
 pkgrel=1
 pkgdesc="C++11/C++14 graphics middleware for games and data visualization (Git version)"
 arch=('i686' 'x86_64')
-url="http://magnum.graphics"
+url="https://magnum.graphics"
 license=('MIT')
-depends=('corrade-git' 'openal' 'sdl2')
+depends=('corrade-git' 'openal' 'sdl2' 'vulkan-icd-loader')
 makedepends=('cmake' 'git')
 provides=('magnum')
 conflicts=('magnum')
@@ -26,6 +26,7 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DWITH_AUDIO=ON \
+        -DWITH_VK=ON \
         -DWITH_GLFWAPPLICATION=OFF \
         -DWITH_SDL2APPLICATION=ON \
         -DWITH_GLXAPPLICATION=ON \
