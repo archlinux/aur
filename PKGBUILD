@@ -3,7 +3,7 @@
 
 pkgname=pykgbuild
 _pkgname=py-pkgbuild-version
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Compare a users Python PKGBUILD version(s) with respective PyPI version(s)."
 url="https://github.com/mpolidori/py-pkgbuild-version"
