@@ -5,7 +5,7 @@
 # Contributor: JD Horelick <jdhore1@gmail.com>
 
 pkgname=devscripts
-pkgver=2.18.3
+pkgver=2.18.6
 pkgrel=2
 pkgdesc="Scripts to make the life of a Debian Package maintainer easier"
 arch=('i686' 'x86_64')
@@ -31,8 +31,7 @@ makedepends=(
 )
 options=('!makeflags')
 source=(
-    #http://ftp.debian.org/debian/pool/main/d/${pkgname}/${pkgname}_${pkgver}.tar.xz
-    "${pkgname}::git+https://anonscm.debian.org/git/collab-maint/devscripts.git#tag=v${pkgver}"
+    "${pkgname}::git+https://salsa.debian.org/debian/devscripts.git#tag=v${pkgver}"
     fixes.patch
 )
 sha256sums=('SKIP'
