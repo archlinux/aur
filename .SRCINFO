@@ -1,21 +1,18 @@
 pkgbase = apvlv
 	pkgdesc = PDF/DJVU/TXT viewer which behaves like vi
-	pkgver = 0.1.5
-	pkgrel = 7
+	pkgver = 0.1.5.28
+	pkgrel = 1
 	url = http://naihe2010.github.com/apvlv/
 	arch = x86_64
 	license = GPL2
 	makedepends = cmake
+	makedepends = git
 	depends = gtk3
 	depends = poppler-glib
 	depends = djvulibre
 	backup = etc/apvlvrc
-	source = apvlv-0.1.5.tar.gz::https://github.com/naihe2010/apvlv/archive/v0.1.5.tar.gz
-	source = gcc6.patch
-	source = gcc7.patch
-	sha256sums = dca98157e63c9fec12d6514751ea26549813dc7b87d838b0003f31a444100a8a
-	sha256sums = 69f28540aec5b287208d0c5e3755ab2eab483fc5d90316620d0ab523e51ae9f9
-	sha256sums = c53b9c44ca1bcfa689cd363f350a18cf7f915212c2ca9e726d2f0226c8faccf6
+	source = git+https://github.com/naihe2010/apvlv.git#commit=10d7611bd8634fb72d4934086294d4056c2081d7
+	sha256sums = SKIP
 
 pkgname = apvlv
 
