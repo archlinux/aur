@@ -1,0 +1,18 @@
+pkgbase = ttf-merge-one
+	pkgdesc = Merge One: libre alternative to Arial Rounded by Kosal Sen @ Philatype
+	pkgver = 1.001
+	pkgrel = 1
+	url = https://www.ffonts.net/Merge-One.font
+	install = ttf-merge-one.install
+	arch = any
+	license = OFL-1.1
+	makedepends = unzip
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	provides = ttf-merge-one
+	source = https://www.ffonts.net/Merge-One.font.zip
+	sha256sums = b7b6e8cca728a51186aa73d971b7a081927b24cdb8032c0695395d450e9df080
+
+pkgname = ttf-merge-one
+
