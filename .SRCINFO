@@ -1,0 +1,17 @@
+pkgbase = luksmeta-git
+	pkgdesc = Library for storing metadata in the LUKSv1 header
+	pkgver = 9.r0.3e3cba3
+	pkgrel = 1
+	url = https://github.com/latchset/luksmeta
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = asciidoc
+	depends = cryptsetup
+	provides = luksmeta
+	conflicts = luksmeta
+	source = git+https://github.com/latchset/luksmeta.git
+	sha512sums = SKIP
+
+pkgname = luksmeta-git
+
