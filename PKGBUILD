@@ -10,7 +10,8 @@ pkgdesc="A SoundCloud client for your desktop."
 arch=("x86_64")
 url="http://auryo.com"
 license=("GPL3")
-conflicts=('auryo' 'auryo-git')
+makedepends=('npm' 'yarn')
+conflicts=('auryo-bin' 'auryo-git')
 source=("https://github.com/Superjo149/auryo/archive/v${pkgver}.tar.gz")
 md5sums=('24fe79995200821f2fee80cac6e9c60a')
 _replace_str="\/opt\/${_fullpkgname}\/${_fullpkgname}"
@@ -24,7 +25,7 @@ prepare() {
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    yarn install -g --user root --prefix auryo/usr
+    yarn install
     yarn build
     yarn run package:linux
 }
