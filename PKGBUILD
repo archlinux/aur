@@ -2,8 +2,8 @@
 
 pkgname=xurls
 _name="${pkgname}"
-pkgver=1.1.0
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="Extract urls from plain text"
 url="https://github.com/mvdan/${_name}"
 license=('BSD')
@@ -14,17 +14,17 @@ sha1sums=('SKIP')
 
 prepare() {
 	cd "${srcdir}"
-	mkdir -p "src/github.com/mvdan"
-	mv "${_name}" "src/github.com/mvdan/${_name}"
+	mkdir -p "src/mvdan.cc"
+	mv "${_name}" "src/mvdan.cc/${_name}"
 }
 
 build() {
-	cd "${srcdir}/src/github.com/mvdan/${_name}/cmd/${_name}"
+	cd "${srcdir}/src/mvdan.cc/${_name}/cmd/${_name}"
 	GOPATH="${srcdir}" go build -ldflags='-w -s'
 }
 
 package() {
-	cd "${srcdir}/src/github.com/mvdan/${_name}"
+	cd "${srcdir}/src/mvdan.cc/${_name}"
 	install -Dm755 "cmd/${_name}/${_name}" "${pkgdir}/usr/bin/${_name}"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
