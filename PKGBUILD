@@ -22,6 +22,8 @@ pkgver() {
 build() {
   cd "${srcdir}/${pkgname}" || exit
   msg2 "Building bisq..."
+  # Make sure to use jdk10 for compiling
+  export PATH="/usr/lib/jvm/java-10-openjdk/bin/:$PATH"
   ./gradlew build
 }
 
