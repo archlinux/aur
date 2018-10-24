@@ -5,7 +5,7 @@
 
 pkgbase='vte3-notification'
 pkgname=("${pkgbase}" 'vte-notification-common')
-pkgver=0.54.1
+pkgver=0.54.2
 pkgrel=1
 pkgdesc='Virtual Terminal Emulator widget for use with GTK3 with Fedora patches'
 arch=('i686' 'x86_64')
