@@ -2,7 +2,7 @@
 # Contributor: C. Dominik Bódi  dominik.bodi at gmx dot de
 
 pkgname=debhelper-python
-pkgver=3.6.6
+pkgver=3.7.1
 pkgrel=1
 
 _debpy_name=python3-defaults
@@ -10,7 +10,7 @@ _debpy_ver=$pkgver
 _debpy_rel=1
 
 _py3def_name=dh-python
-_py3def_ver=3.20180723
+_py3def_ver=3.20180927
 
 pkgdesc="debhelper scripts for Python 3: py3versions, python3.pm"
 arch=('any')
@@ -23,8 +23,8 @@ provides=('debhelper-python' 'dh-python')
 source=(https://deb.debian.org/debian/pool/main/p/${_debpy_name}/${_debpy_name}_${_debpy_ver}-${_debpy_rel}.tar.gz
         https://deb.debian.org/debian/pool/main/d/${_py3def_name}/${_py3def_name}_${_py3def_ver}.tar.xz
         py3versions.patch)
-sha512sums=('93ffb0747b6eee882536a1fd03433e5d5ff4508542cfe88fd0cc80e4129e0f70930fe611ed49a7f6da8d266d9d231b057bef2a6a0e64b3666ea95ce1b591bddc'
-            'a8ea77aa88c104625ee98fd2ddae9e68f25d973dbbda7435bb81561769f106f89d17b25f090e6ab9c9428c03035016bc75411b6a1344f4dc20f8cc143ca6ccad'
+sha512sums=('b319acf31d7a74ccf250aaeac5ea192bc3b83f04ecc527b73fd0282cb32ef9405bd337af422bc39b158fe54909b064cb53446e15db08eee49b04b3ba16c62b77'
+            '40611fb6908dc634eda53a5c5cf54e67f81b8acd89d94148f9b9b02730c97f08b4386e54e6c0a4bc2b81cb8e46b7926ee1dd8e34f654dcd2c1f05cf753eaee18'
             '772332cecd85331b6deda25c0d48eed2490e7e7f26d90c7936f46188c706f590771af6edcbb4740a23bff0434ed061bc2b49f8183561cbf4bbb845ed3bebc42a')
 
 prepare() {
