@@ -1,8 +1,8 @@
-# Maintainer: Trizen <echo dHJpemVueEBnbWFpbC5jb20K | base64 -d>
+# Contributor: Trizen <echo dHJpemVuQHByb3Rvbm1haWwuY29tCg== | base64 -d>
 
 _pkgname='xdot.py'
 pkgname=xdot-git
-pkgver=0.8.r6.gbd1306d
+pkgver=1.0.r1.g9ce8cca
 pkgrel=1
 pkgdesc="Interactive viewer for Graphviz dot files (git version)"
 arch=('any')
@@ -14,7 +14,7 @@ depends=('graphviz' 'python' 'gtk3' 'python-gobject' 'python-cairo' 'python-setu
 provides=('xdot')
 conflicts=('xdot')
 
-source=('git://github.com/jrfonseca/xdot.py.git')
+source=('git+https://github.com/jrfonseca/xdot.py.git')
 md5sums=('SKIP')
 
 pkgver() {
