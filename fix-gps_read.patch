@@ -1,0 +1,28 @@
+From 51745e234506a93c6e0ab3c3d72dff22306f5c2e Mon Sep 17 00:00:00 2001
+From: Markus Heidelberg <markus.heidelberg@web.de>
+Date: Thu, 25 Oct 2018 08:51:50 +0200
+Subject: [PATCH] Adapt gps_read() invocation to changed API
+
+Since gpsd 3.18 this function contains two more parameters.
+---
+ src/CDeviceGPSD.cpp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/CDeviceGPSD.cpp b/src/CDeviceGPSD.cpp
+index f5be09c..41678d1 100644
+--- a/src/CDeviceGPSD.cpp
++++ b/src/CDeviceGPSD.cpp
+@@ -212,7 +212,9 @@ void CGPSDThread::run()
+             }                    // if
+             else if( FD_ISSET( gpsdata->gps_fd, &fds ) )
+             {
+-#if GPSD_API_MAJOR_VERSION >= 5
++#if GPSD_API_MAJOR_VERSION >= 7
++                gps_read( gpsdata, NULL, 0 );
++#elif GPSD_API_MAJOR_VERSION >= 5
+                 gps_read( gpsdata );
+ #else
+                 gps_poll( gpsdata );
+-- 
+2.19.1
+
