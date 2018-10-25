@@ -1,17 +1,19 @@
 pkgbase = lib32-libgtk3-nocsd-git
 	pkgdesc = A hack to disable gtk+ 3 client side decoration (32-bit library)
 	pkgver = r55.82ff5a0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/PCMan/gtk3-nocsd
+	install = lib32-libgtk3-nocsd-git.install
 	arch = x86_64
 	license = LGPL
 	makedepends = git
 	makedepends = gobject-introspection
 	makedepends = gcc-multilib
 	makedepends = lib32-glib2
+	depends = gtk3
 	depends = gtk3-nocsd-git
-	source = git+https://github.com/PCMan/gtk3-nocsd
-	sha256sums = SKIP
+	source = git+https://github.com/PCMan/gtk3-nocsd.git
+	sha512sums = SKIP
 
 pkgname = lib32-libgtk3-nocsd-git
 
