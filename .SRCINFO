@@ -1,8 +1,8 @@
 pkgbase = soapyplutosdr-git
 	pkgdesc = Soapy SDR plugin for PlutoSDR
-	pkgver = r23.dd6686e
+	pkgver = r32.4eaad76
 	pkgrel = 1
-	url = https://github.com/jocover/SoapyPlutoSDR
+	url = https://github.com/pothosware/SoapyPlutoSDR
 	arch = i686
 	arch = x86_64
 	arch = armv6h
@@ -10,11 +10,11 @@ pkgbase = soapyplutosdr-git
 	license = LGPL2.1
 	makedepends = git
 	makedepends = cmake
-	depends = soapysdr-git
+	depends = soapysdr
 	depends = libad9361-iio-git
 	provides = soapyplutosdr
 	conflicts = soapyplutosdr
-	source = soapyplutosdr::git+https://github.com/jocover/SoapyPlutoSDR.git
+	source = soapyplutosdr::git+https://github.com/pothosware/SoapyPlutoSDR.git
 	md5sums = SKIP
 
 pkgname = soapyplutosdr-git

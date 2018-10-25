@@ -1,17 +1,17 @@
 # Maintainer: Dana Sorensen <dana.r.sorensen@gmail.com>
 
 pkgname=soapyplutosdr-git
-pkgver=r23.dd6686e
+pkgver=r32.4eaad76
 pkgrel=1
 pkgdesc="Soapy SDR plugin for PlutoSDR"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url="https://github.com/jocover/SoapyPlutoSDR"
+url="https://github.com/pothosware/SoapyPlutoSDR"
 license=('LGPL2.1')
-depends=('soapysdr-git' 'libad9361-iio-git')
+depends=('soapysdr' 'libad9361-iio-git')
 makedepends=('git' 'cmake')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("${pkgname%-git}::git+https://github.com/jocover/SoapyPlutoSDR.git")
+source=("${pkgname%-git}::git+https://github.com/pothosware/SoapyPlutoSDR.git")
 md5sums=('SKIP')
 
 pkgver() {
