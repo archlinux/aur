@@ -20,5 +20,6 @@ pkgver() {
 package() {
   cd "${_gitname}"
 
-  install -Dm644 "edit.py" "${pkgdir}/usr/lib/weechat/python/edit.py"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 edit.py "${pkgdir}/usr/lib/weechat/python/edit.py"
 }
