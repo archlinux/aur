@@ -7,7 +7,7 @@
 
 _pkgname=sooperlooper
 pkgname=${_pkgname}-git
-pkgver=r499.3bdfe18
+pkgver=r510.f00442b
 pkgrel=1
 pkgdesc="Live looping sampler capable of immediate loop recording. Build from git with open merge requests."
 arch=('i686' 'x86_64')
@@ -18,15 +18,9 @@ optdepends=('libsamplerate: audio sample rate conversion')
 provides=('sooperlooper')
 conflicts=('sooperlooper')
 source=("git+https://github.com/essej/sooperlooper.git"
-        "0001-fix_wxwidgets_3.0.2.patch::https://github.com/essej/sooperlooper/commit/b84c257e912fb086e549d67a64ca4bc46e9c9a77.patch"
-        "0002-fix-build-with-ncurses-6.patch::https://github.com/essej/sooperlooper/commit/50942f022d28c56167dc0094392b0d0485780617.patch"
-        "0003-fix-pos-font-size.patch::https://github.com/essej/sooperlooper/commit/da1f90b6bb258309515977443cd0b4854dca07e7.patch"
         "${_pkgname}.desktop"
         "slgui.png")
 sha256sums=('SKIP'
-            'ee482c9c30489100d160dbbb3f88b1c61e648a03877950e259a6acc813d130df'
-            '1c685ce06c5dec6574213a1ea31c86184496151e9256597550a4cf3f6790b0fd'
-            '1ca02121423de66efc7a2388a11a5fa88a85bc7567e5c0501d97733d67a76aa3'
             'add385c13329e0d28b4d89d1a08953d09013a896c80bbda7fe450de4bd279507'
             '465dfb14154899eae5435afa7b2e04b2cbb8463fc3b60c465246628e496b3d85')
 pkgver() {
@@ -36,9 +30,6 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
-  patch -p1 < ../0001-fix_wxwidgets_3.0.2.patch
-  patch -p1 < ../0002-fix-build-with-ncurses-6.patch
-  patch -p1 < ../0003-fix-pos-font-size.patch
 }
 
 build() {
