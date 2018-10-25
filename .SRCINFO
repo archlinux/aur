@@ -1,7 +1,7 @@
 pkgbase = caffe2-cuda
 	pkgdesc = A new lightweight, modular, and scalable deep learning framework (with cuda)
 	pkgver = 0.8.2.pytorch.1.0rc1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://caffe2.ai/
 	arch = x86_64
 	license = BSD
@@ -50,8 +50,6 @@ pkgbase = caffe2-cuda
 	depends = python-lmdb
 	provides = caffe2
 	conflicts = caffe2
-	conflicts = caffe2-git
-	conflicts = caffe2-cuda-git
 	options = !emptydirs
 	source = pytorch-1.0rc1.tar.gz::https://github.com/pytorch/pytorch/archive/v1.0rc1.tar.gz
 	source = caffe2-thirdparty-catch-git::git+https://github.com/catchorg/Catch2.git#commit=0a34cc201ef28bf25c88b0062f331369596cb7b7

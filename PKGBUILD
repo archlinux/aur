@@ -31,7 +31,7 @@ _pytorchver=1.0rc1 # pytorch stable release version
 
 pkgname=caffe2-cuda
 pkgver="0.8.2.pytorch.${_pytorchver}"
-pkgrel=1
+pkgrel=2
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (with cuda)'
 arch=('x86_64')
 url='http://caffe2.ai/'
@@ -58,7 +58,7 @@ depends=(
 )
 makedepends=('git' 'cmake' 'gcc7')
 provides=('caffe2')
-conflicts=('caffe2' 'caffe2-git' 'caffe2-cuda-git')
+conflicts=('caffe2')
 options=('!emptydirs')
 source=(
     # main source:
