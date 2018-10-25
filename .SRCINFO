@@ -1,12 +1,16 @@
 pkgbase = python-py-trello
 	pkgdesc = Python API wrapper around Trello API
 	pkgver = 0.13.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/sarumont/py-trello
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
+	depends = python-dateutil
+	depends = python-requests
+	depends = python-requests-oauthlib
+	depends = python-pytz
 	source = https://github.com/sarumont/py-trello/archive/0.13.0.tar.gz
 	sha256sums = 3f3ce1949e736995b408e55b266c7135dc4286439db17e38c37dc38aaf30ce93
 
