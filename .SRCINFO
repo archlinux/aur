@@ -17,9 +17,9 @@ pkgbase = python2-xarray
 	optdepends = python2-matplotlib: Plotting support
 	replaces = python2-xray
 	source = python2-xarray-0.10.9.tar.gz::https://github.com/pydata/xarray/archive/v0.10.9.tar.gz
-	md5sums = 10e8704e7e7bb19f147abba964b663aa
-	sha1sums = ae46142819b4d0c050246e9972f40fc8796ded26
-	sha256sums = c5867123f305474d9b5d78ad91eb85e0f68f0a4a0284d67f2c2a45cb618471b6
+	md5sums = f8818593c655407e3e0556d4b2cf7500
+	sha1sums = 32978821c6af2d3e817df79cc4e9f4254b00d310
+	sha256sums = 26467db272c250696152b305f83fa86746841614b6de562c897b14a65fabf5ea
 
 pkgname = python2-xarray
 
