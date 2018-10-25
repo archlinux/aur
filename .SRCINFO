@@ -1,5 +1,5 @@
 pkgbase = sooperlooper-git
-	pkgdesc = Live looping sampler capable of immediate loop recording. Build from git with open merge requests.
+	pkgdesc = Live looping sampler capable of immediate loop recording. Built from git.
 	pkgver = r510.f00442b
 	pkgrel = 1
 	url = http://essej.net/sooperlooper/
