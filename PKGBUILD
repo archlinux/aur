@@ -1,5 +1,5 @@
-# Maintainer: aimileus <me at aimileus dot nl>
-# Maintainer: Gui||aume <michaudg@gmail.com>
+# Maintainer: Arif <>
+# Contributors: Gui||aume <michaudg@gmail.com>
 
 
 pkgname=firefox-ubuntu-bin
