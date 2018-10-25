@@ -4,7 +4,7 @@
 
 pkgname=xf86-video-intel-git
 _pkgname=xf86-video-intel
-pkgver=2.99.917+848+gf146dc06
+pkgver=2.99.917+853+g0932a6b3
 pkgrel=1
 epoch=1
 arch=(x86_64)
