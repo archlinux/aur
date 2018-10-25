@@ -1,8 +1,8 @@
 # Maintainer: Marcel Röthke <marcel.roethke@haw-hamburg.de>
 
 pkgname=rtrlib
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.6.1
+pkgrel=1
 pkgdesc="RPKI-RTR client library"
 arch=(x86_64 i686)
 url="https://github.com/rtrlib/rtrlib"
@@ -12,7 +12,7 @@ makedepends=(cmake chrpath)
 checkdepends=(cmocka)
 options=(strip)
 source=("rtrlib-$pkgver.tar.gz::https://github.com/rtrlib/rtrlib/archive/v$pkgver.tar.gz")
-md5sums=(3500630ad1f143c28b6f29167036893b)
+md5sums=('a67a9796f5f122c12ef7af91a65462f0')
 
 prepare() {
     cd ${srcdir}/${pkgname}-${pkgver}
@@ -50,6 +50,5 @@ check() {
 package() {
     cd ${srcdir}/${pkgname}-${pkgver}
     make DESTDIR="${pkgdir}" install
-    chrpath -d ${pkgdir}/usr/bin/{rtrclient,cli-validator}
     install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
