@@ -1,7 +1,7 @@
-# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=caffe2-git
-pkgver=0.8.2.r14121.g478886be30
+pkgver=0.8.2.r14124.gb4d0dc77be
 pkgrel=1
 epoch=1
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (git version)'
@@ -22,7 +22,7 @@ depends=(
             'python-tornado' 'python-gflags' 'python-pyzmq'
     # AUR:
         # not required but enabled in build:
-            'libibverbs'
+            'rdma-core'
         # python:
             'python-nvd3' 'python-scikit-image' 'python-glog' 'python-leveldb'
             'python-lmdb'
