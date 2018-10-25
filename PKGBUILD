@@ -1,7 +1,7 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
 
 pkgname=libzypp-git
-pkgver=17.8.0.3.g69bce7d07
+pkgver=17.8.0.4.g2c2843a44
 pkgrel=1
 pkgdesc="Package, Patch, Pattern, and Product Management"
 arch=('i686' 'x86_64')
@@ -9,8 +9,8 @@ url="https://github.com/openSUSE/libzypp"
 license=('GPL')
 depends=('libsolv-git' 'openssl' 'curl' 'libsystemd')
 makedepends=('git' 'cmake' 'boost' 'dejagnu' 'graphviz'
-             'libxml2' 'expat' 'gnupg' 'rpm-org' 'libproxy')
-             # doxygen
+             'libxml2' 'expat' 'gnupg' 'rpm-org' 'libproxy'
+	     'asciidoc')
 provides=('libzypp')
 conflicts=('libzypp')
 source=('git+https://github.com/openSUSE/libzypp.git')
