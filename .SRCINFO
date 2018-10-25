@@ -1,7 +1,7 @@
 pkgbase = caffe2-cuda
 	pkgdesc = A new lightweight, modular, and scalable deep learning framework (with cuda)
 	pkgver = 0.8.2.pytorch.1.0rc1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://caffe2.ai/
 	arch = x86_64
 	license = BSD
@@ -42,7 +42,7 @@ pkgbase = caffe2-cuda
 	depends = python-tornado
 	depends = python-gflags
 	depends = python-pyzmq
-	depends = libibverbs
+	depends = rdma-core
 	depends = python-nvd3
 	depends = python-scikit-image
 	depends = python-glog
