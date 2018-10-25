@@ -2,7 +2,7 @@
 
 pkgname=next-browser-git
 _pkgname=next-browser
-pkgver=0.08.27.gccaa858
+pkgver=0.08.36.g6564e3c
 pkgrel=1
 pkgdesc="Keyboard-oriented, Common Lisp extensible web-browser, inspired by Emacs"
 arch=('i686' 'x86_64')
@@ -32,20 +32,20 @@ pkgver() {
 }
 
 build() {
-	cd ${_pkgname}/next
+	cd ${_pkgname}
 	## Comment the following "rm" if you don't want to rebuild the quicklisp deps
 	## everytime.
 	# rm -rvf "../../quicklisp/"
 	sbcl --non-interactive \
 		--eval '(require "asdf")' \
-		--load ../../quicklisp.lisp \
-		--eval '(unless (probe-file "../../quicklisp/setup.lisp") (quicklisp-quickstart:install :path "../../quicklisp/"))'
+		--load ../quicklisp.lisp \
+		--eval '(unless (probe-file "../quicklisp/setup.lisp") (quicklisp-quickstart:install :path "../quicklisp/"))'
 	## Expose cl-webkit to quicklisp.
-	ln -svf ../../cl-webkit ../../quicklisp/local-projects
+	ln -rsvf ../cl-webkit ../quicklisp/local-projects
 	## Build Next.
 	sbcl --non-interactive \
 		--eval '(require "asdf")' \
-		--eval '(if (probe-file "../../quicklisp/setup.lisp") (load "../../quicklisp/setup.lisp"))' \
+		--eval '(load "../quicklisp/setup.lisp")' \
 		--load next.asd \
 		--eval '(ql:quickload :next/gtk)' \
 		--eval '(setq *exit-timeout* nil)' \
@@ -54,13 +54,13 @@ build() {
 
 package() {
 	cd ${_pkgname}
-	install -Dm755 next/source/next-gtk ${pkgdir}/usr/bin/next
-	install -Dm644 "$srcdir"/next-browser/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm755 source/next-gtk ${pkgdir}/usr/bin/next
+	install -Dm644 "$srcdir"/next-browser/LICENSE "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
 
-	# install -Dm644 "$srcdir"/next-browser/assets/next.desktop "$pkgdir"/usr/share/xsessions/next.desktop
-	# install -dm755 "$pkgdir/usr/share/icons/hicolor/48x48/apps/"
-	# for i in 16 32 128 256 512; do
-	# 	install -Dm644 "$srcdir"/next-browser/assets/next_${i}x${i}.png \
-	# 		"$pkgdir/usr/share/icons/hicolor/${i}x$i/apps/next.png"
-	# done
+	install -Dm644 "$srcdir"/next-browser/assets/next.desktop "$pkgdir"/usr/share/xsessions/next.desktop
+	install -dm755 "$pkgdir/usr/share/icons/hicolor/48x48/apps/"
+	for i in 16 32 128 256 512; do
+		install -Dm644 "$srcdir"/next-browser/assets/next_${i}x${i}.png \
+			"$pkgdir/usr/share/icons/hicolor/${i}x$i/apps/next.png"
+	done
 }

@@ -1,6 +1,6 @@
 pkgbase = next-browser-git
 	pkgdesc = Keyboard-oriented, Common Lisp extensible web-browser, inspired by Emacs
-	pkgver = 0.08.27.gccaa858
+	pkgver = 0.08.36.g6564e3c
 	pkgrel = 1
 	url = http://next.atlas.engineer
 	arch = i686
