@@ -14,7 +14,7 @@ conflicts=('sdl2')
 optdepends=('alsa-lib: ALSA audio driver'
             'libpulse: PulseAudio audio driver')
 source=("https://www.libsdl.org/release/SDL2-${pkgver}.tar.gz")
-sha512sums=('eed5477843086a0e66552eb197a5c4929134522bc366d873732361ea0df5fb841ef7e2b1913e21d1bae69e6fd3152ee630492e615c58cbe903e7d6e47b587410')
+sha512sums=('673c6058b8692a36b4a3594456b10ef6051efe79e4fb644421fc5c76b11fd68b895840a2c8b72413418c378733e2993d33f19767d0d7ed101eda6310bd70c869')
 
 prepare() {
   mkdir build
