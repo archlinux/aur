@@ -1,17 +1,18 @@
 pkgbase = monero-bin
 	pkgdesc = Monero: the secure, private, untraceable currency - CLI release version (includes daemon, wallet and miner)
-	pkgver = 0.13.0.2
+	pkgver = 0.13.0.4
 	pkgrel = 1
 	url = https://getmonero.org/
 	arch = x86_64
 	arch = i686
+	arch = armv7h
 	license = custom:Cryptonote
-	provides = monerod=0.13.0.2
-	provides = monero-blockchain-export=0.13.0.2
-	provides = monero-blockchain-import=0.13.0.2
-	provides = monero-utils-deserialize=0.13.0.2
-	provides = monero-wallet-cli=0.13.0.2
-	provides = monero-wallet-rpc=0.13.0.2
+	provides = monerod=0.13.0.4
+	provides = monero-blockchain-export=0.13.0.4
+	provides = monero-blockchain-import=0.13.0.4
+	provides = monero-utils-deserialize=0.13.0.4
+	provides = monero-wallet-cli=0.13.0.4
+	provides = monero-wallet-rpc=0.13.0.4
 	conflicts = monero
 	backup = etc/monerod.conf
 	source = monerod.conf
@@ -20,10 +21,12 @@ pkgbase = monero-bin
 	sha256sums = 829445fe9acc00681f94f7b9ca6ce39713e377970b0a3d6f88c37991e1aa61b2
 	sha256sums = 0b66160a5448dedd8e84c38ba2243187217b214b1552f504b05de120b671f121
 	sha256sums = 0e24d8f4b8758ff33612a17f3bb72a69497b74b32d12bbe5d647d954fcef59ad
-	source_x86_64 = https://downloads.getmonero.org/cli/monero-linux-x64-v0.13.0.2.tar.bz2
-	sha256sums_x86_64 = a59fc0fffb325b4f92a5b500438bf340ddbf78e91581eb4df95ad2d5e5fb42a8
-	source_i686 = https://downloads.getmonero.org/cli/monero-linux-x86-v0.13.0.2.tar.bz2
-	sha256sums_i686 = 87396e833859cbafff53db753443f8f94a962d9738cb0f69ea9d0b3c940960e6
+	source_x86_64 = https://downloads.getmonero.org/cli/monero-linux-x64-v0.13.0.4.tar.bz2
+	sha256sums_x86_64 = 693e1a0210201f65138ace679d1ab1928aca06bb6e679c20d8b4d2d8717e50d6
+	source_i686 = https://downloads.getmonero.org/cli/monero-linux-x86-v0.13.0.4.tar.bz2
+	sha256sums_i686 = 3f02b0de407f944e524afc9d53d7e9ce92bf17ac6e6ef92cd3c22346afc2cb6c
+	source_armv7h = https://downloads.getmonero.org/cli/monero-linux-armv7-v0.13.0.4.tar.bz2
+	sha256sums_armv7h = 65e2ce5d0abf80ed3b4ecef5babc37445dc4f032457811aafa8a221af78f554a
 
 pkgname = monero-bin
 
