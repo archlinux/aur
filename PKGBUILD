@@ -3,7 +3,7 @@
 
 pkgbase='python-bokeh'
 pkgname=('python-bokeh' 'python2-bokeh')
-pkgver=0.13.0
+pkgver=1.0.0
 pkgrel=2
 pkgdesc='Interactive Web Plotting for Python'
 arch=('any')
@@ -11,7 +11,7 @@ url='http://bokeh.pydata.org/'
 license=('BSD')
 makedepends=('python-setuptools' 'python2-setuptools' python-numpy python-six python-flask python-jinja python-requests python-pandas python-yaml python-tornado python2-numpy python2-six python2-flask python2-jinja python2-requests python2-pandas python2-yaml python2-tornado)
 source=("https://pypi.io/packages/source/b/bokeh/bokeh-${pkgver}.tar.gz")
-sha256sums=('d0cf59774d7c74b7173b82ce36bde35b8fe9da0f960364ba3c4df0d1fbd874d6')
+sha256sums=('16aa635ce85ce89197eb78c19098f9729ee8b2b869c940dfda2ceb51b81c2fc0')
 
 build() {
   cp -r "${srcdir}"/bokeh-$pkgver "${srcdir}"/bokeh-$pkgver-py2
@@ -30,6 +30,7 @@ package_python-bokeh() {
          'python-jinja'
          'python-requests'
          'python-pandas'
+	 'python-pillow'
          'python-yaml'
          'python-tornado')
   optdepends=('python-bkcharts: server')
@@ -45,6 +46,7 @@ package_python2-bokeh() {
          'python2-jinja'
          'python2-requests'
          'python2-pandas'
+	 'python2-pillow'
          'python2-yaml'
          'python2-tornado')
   optdepends=('python2-bkcharts: server')
