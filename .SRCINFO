@@ -1,7 +1,7 @@
 pkgbase = firefox-appmenu
-	pkgdesc = Firefox from extra with appemnu patch
-	pkgver = 62.0.3
-	pkgrel = 1
+	pkgdesc = Firefox from extra with appmenu patch
+	pkgver = 63.0
+	pkgrel = 2
 	url = https://aur.archlinux.org/packages/firefox-appmenu/
 	arch = x86_64
 	license = MPL
@@ -10,7 +10,7 @@ pkgbase = firefox-appmenu
 	makedepends = unzip
 	makedepends = zip
 	makedepends = diffutils
-	makedepends = python2
+	makedepends = python2-setuptools
 	makedepends = yasm
 	makedepends = mesa
 	makedepends = imake
@@ -24,6 +24,9 @@ pkgbase = firefox-appmenu
 	makedepends = jack
 	makedepends = gtk2
 	makedepends = python
+	makedepends = nodejs
+	makedepends = python2-psutil
+	makedepends = cbindgen
 	depends = gtk3
 	depends = mozilla-common
 	depends = libxt
@@ -42,19 +45,19 @@ pkgbase = firefox-appmenu
 	optdepends = libnotify: Notification integration
 	optdepends = pulseaudio: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
-	provides = firefox=62.0.3
+	provides = firefox=63.0
 	conflicts = firefox
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
-	source = hg+https://hg.mozilla.org/mozilla-unified#tag=FIREFOX_62_0_3_RELEASE
+	source = hg+https://hg.mozilla.org/mozilla-unified#tag=FIREFOX_63_0_RELEASE
 	source = firefox.desktop
 	source = firefox-symbolic.svg
 	source = unity-menubar.patch
 	sha256sums = SKIP
 	sha256sums = 2adca824b52ab5bc6e7e4fa486c1ecb47d283832bd4b75d10494b033f1cab911
 	sha256sums = 9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797
-	sha256sums = 36fa25a8660302d7b8e2eca119e70116470708246a659caebcb1704090d518bf
+	sha256sums = 722324ef522f3e2452f49924e47a2e8a3a547e18aef32d7c1252113eb839451f
 
 pkgname = firefox-appmenu
 
