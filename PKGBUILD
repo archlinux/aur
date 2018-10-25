@@ -1,13 +1,13 @@
 # Maintainer: William Turner <willtur.will@gmail.com>
 pkgname=vim-ensime-git
-pkgver=0.2.r531.a566428
+pkgver=0.2.r552.caa734e
 pkgrel=1
 pkgdesc='Ensime for vim.'
 arch=('any')
 url='http://ensime.org/editors/vim/'
 license=('MIT')
 groups=('vim-plugins')
-depends=('vim-runtime' 'vim-scala-git' 'python2' 'python2-websocket-client' 'python2-sexpdata' 'java-environment')
+depends=('vim-runtime' 'vim-scala-git' 'python' 'python-websocket-client' 'python-sexpdata' 'java-environment')
 makedepends=('git')
 optdepends=('sbt: old sbt-ensime plugin (<1.12.0) support')
 provides=("${pkgname%-git}")
