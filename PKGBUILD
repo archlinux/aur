@@ -1,6 +1,6 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 pkgname=quickdocs
-pkgver=2.2.2
+pkgver=2.2.3
 pkgrel=1
 pkgdesc="GTK app for reading Valadoc and DevDocs"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('glib2' 'gtk3' 'hicolor-icon-theme' 'vala' 'webkit2gtk' 'devhelp' 'liba
 makedepends=('git' 'desktop-file-utils' 'hicolor-icon-theme' 'intltool' 'yelp-tools' 'gnome-common' 'gobject-introspection' 'meson' 'ninja' 'vala')
 options=('!libtool')
 source=("https://github.com/mdh34/$pkgname/archive/${pkgver//_/-}.tar.gz")
-sha256sums=('fc9800b6cc41875c52cbd4d3e8762044655b9a6b1512cdfcbbe0b21135e1424c')
+sha256sums=('87bd99ef6902092a49ce5532b687664eabc6e88018df188eb132b6e45977f31d')
 
 build() {
   cd "${srcdir}/quickDocs-${pkgver}"
