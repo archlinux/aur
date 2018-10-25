@@ -1,6 +1,6 @@
 pkgbase = homegear-homematicwired
 	pkgdesc = HomeMatic Wired module for Homegear
-	pkgver = 0.7.18
+	pkgver = 0.7.30
 	pkgrel = 1
 	url = https://homegear.eu
 	install = homegear-homematicwired.install
@@ -10,10 +10,10 @@ pkgbase = homegear-homematicwired
 	arch = armv7h
 	arch = aarch64
 	license = GPL3
-	depends = homegear=0.7.18
+	depends = homegear=0.7.30
 	backup = etc/homegear/families/homematicwired.conf
-	source = https://github.com/Homegear/Homegear-HomeMaticWired/archive/0.7.18.tar.gz
-	sha512sums = acffa9a89357688c49addd984ef6e64fc892870ddffccbfe4c377c250b34091b3015774333521bfccd4c86081cf75c5314e1bf235fb5150c587864e23a82d2a0
+	source = https://github.com/Homegear/Homegear-HomeMaticWired/archive/0.7.30.tar.gz
+	sha512sums = b541b6fb1d282a03456dcaec6e27547aeb8c11242d4df6cb5d82d63d58246987b3dfaf3dd4db300dd9e96c9575e47268a231191855eed595828cc6610f2bab18
 
 pkgname = homegear-homematicwired
 	backup = etc/homegear/families/homematicwired.conf
