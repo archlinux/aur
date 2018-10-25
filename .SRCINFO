@@ -1,6 +1,6 @@
 pkgbase = dxx-rebirth-git
 	pkgdesc = A source port of the Descent and Descent 2 engines (git version)
-	pkgver = 0.59.100.r825.gac2985400
+	pkgver = 0.60.0.beta2.r201.g4d3612e45
 	pkgrel = 1
 	url = https://www.dxx-rebirth.com/
 	arch = i686
@@ -27,12 +27,10 @@ pkgbase = dxx-rebirth-git
 pkgname = d1x-rebirth-git
 	pkgdesc = A source port of the Descent engine (git version)
 	provides = d1x-rebirth
-	conflicts = dxx-rebirth
 	conflicts = d1x-rebirth
 
 pkgname = d2x-rebirth-git
 	pkgdesc = A source port of the Descent 2 engine (git version)
 	provides = d2x-rebirth
-	conflicts = dxx-rebirth
 	conflicts = d2x-rebirth
 

@@ -1,4 +1,4 @@
-# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
 
 # music add-on:
 # -------------
@@ -11,7 +11,7 @@ _music='sc55' # (sc55/opl3) - update checksums if you change
 
 pkgbase=dxx-rebirth-git
 pkgname=('d1x-rebirth-git' 'd2x-rebirth-git')
-pkgver=0.59.100.r825.gac2985400
+pkgver=0.60.0.beta2.r201.g4d3612e45
 pkgrel=1
 pkgdesc='A source port of the Descent and Descent 2 engines (git version)'
 arch=('i686' 'x86_64')
@@ -70,7 +70,7 @@ build() {
 package_d1x-rebirth-git() {
     pkgdesc='A source port of the Descent engine (git version)'
     provides=('d1x-rebirth')
-    conflicts=('dxx-rebirth' 'd1x-rebirth')
+    conflicts=('d1x-rebirth')
     
     cd "$pkgbase"
     
@@ -93,7 +93,7 @@ package_d1x-rebirth-git() {
 package_d2x-rebirth-git() {
     pkgdesc='A source port of the Descent 2 engine (git version)'
     provides=('d2x-rebirth')
-    conflicts=('dxx-rebirth' 'd2x-rebirth')
+    conflicts=('d2x-rebirth')
     
     cd "$pkgbase"
     
