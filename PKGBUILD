@@ -7,17 +7,17 @@ pkgname=snapd
 pkgdesc="Service and tools for management of snap packages."
 depends=('squashfs-tools' 'libseccomp' 'libsystemd')
 optdepends=('bash-completion: bash completion support')
-pkgver=2.35.4
+pkgver=2.36
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/snapcore/snapd"
 license=('GPL3')
-makedepends=('git' 'go' 'go-tools' 'libseccomp' 'libcap' 'systemd' 'xfsprogs' 'python-docutils')
+makedepends=('git' 'go' 'go-tools' 'libseccomp' 'libcap' 'systemd' 'xfsprogs' 'python-docutils' 'apparmor')
 conflicts=('snap-confine')
 options=('!strip' 'emptydirs')
 install=snapd.install
 source=("$pkgname-$pkgver.tar.xz::https://github.com/snapcore/${pkgname}/releases/download/${pkgver}/${pkgname}_${pkgver}.vendor.tar.xz")
-sha256sums=('bd6caaa446f8bc22ebdc80d524704b74bec4f3976034742eaa2f73a6fd8c4713')
+sha256sums=('65a54a4e21419394859063e926a012f07c04a9bfb1146a28a3f48c9221331d86')
 
 _gourl=github.com/snapcore/snapd
 
@@ -76,7 +76,7 @@ build() {
     --prefix=/usr \
     --libexecdir=/usr/lib/snapd \
     --with-snap-mount-dir=/var/lib/snapd/snap \
-    --disable-apparmor \
+    --enable-apparmor \
     --enable-nvidia-biarch \
     --enable-merged-usr
   make $MAKEFLAGS
@@ -119,6 +119,7 @@ package() {
   # pre-create directories
   install -dm755 "$pkgdir/var/lib/snapd/snap"
   install -dm755 "$pkgdir/var/cache/snapd"
+  install -dm755 "$pkgdir/var/lib/snapd/apparmor"
   install -dm755 "$pkgdir/var/lib/snapd/assertions"
   install -dm755 "$pkgdir/var/lib/snapd/desktop/applications"
   install -dm755 "$pkgdir/var/lib/snapd/device"
@@ -137,9 +138,6 @@ package() {
   install -dm700 "$pkgdir/var/lib/snapd/cache"
 
   make -C cmd install DESTDIR="$pkgdir/"
-  # move snapd-generator to systemd generators
-  install -dm755 "$pkgdir/usr/lib/systemd/system-generators"
-  mv "$pkgdir/usr/lib/snapd/snapd-generator" "$pkgdir/usr/lib/systemd/system-generators/"
 
   # Install man file
   mkdir -p "$pkgdir/usr/share/man/man1"
@@ -158,6 +156,4 @@ package() {
   rm -fv "$pkgdir/usr/lib/snapd/snapd.core-fixup.sh"
   rm -fv "$pkgdir/usr/bin/ubuntu-core-launcher"
   rm -fv "$pkgdir/usr/lib/snapd/system-shutdown"
-  # apparmor bits
-  rm -rfv "$pkgdir"/var/lib/snapd/apparmor
 }
