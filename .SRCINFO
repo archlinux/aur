@@ -1,7 +1,7 @@
 pkgbase = lua-std-normalize
 	pkgdesc = Normalized Lua functions
 	pkgver = 2.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lua-stdlib/normalize#normalized-lua-functions
 	arch = any
 	license = MIT
