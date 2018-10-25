@@ -3,14 +3,14 @@
 
 pkgname=xplane-sdk-devel
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="X-Plane SDK"
 url="https://developer.x-plane.com/sdk/"
 arch=("any")
 license=('custom')
 depends=(glibc)
 source=("https://developer.x-plane.com/wp-content/plugins/code-sample-generation/sample_templates/XPSDK301.zip")
-sha256sums=('abd8d6f9e3d734afb74b9f2aec833ee5b319770feaf6f7dacdb9bced62a8319b')
+sha256sums=('bf0b38ee82283ce18418cf37af3ace83a2cf8e2e88b1951e337be415961c5cbc')
 
 package() {
 	cd "$srcdir/SDK/CHeaders"
