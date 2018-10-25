@@ -2,49 +2,41 @@
 
 pkgbase=python-expects
 pkgname=('python-expects' 'python2-expects')
-pkgver=0.8.0
-pkgrel=3
+pkgver=0.9.0
+pkgrel=1
 pkgdesc="Expressive and extensible TDD/BDD assertion library for Python"
 arch=('any')
 license=('Apache')
 url="https://github.com/jaimegildesagredo/expects"
-makedepends=('python-setuptools' 'python2-setuptools' 'git')
+makedepends=('python-setuptools' 'python2-setuptools')
 checkdepends=('python-mamba' 'python2-mamba')
-source=("git+https://github.com/jaimegildesagredo/expects.git#tag=v$pkgver")
-sha512sums=('SKIP')
-
-prepare() {
-  cp -a expects{,-py2}
-}
+source=("$pkgbase-$pkgver.tar.gz::https://github.com/jaimegildesagredo/expects/archive/v$pkgver.tar.gz")
+sha512sums=('f145ed9b1a8921ddc813640f1c6533f41a3dc0f14bf90a69409e0c600cae502cfa16237864103c7e67560f6831ab2db23955ce533439e4fd3b896f2c8c9e7cbb')
 
 build() {
-  cd "$srcdir"/expects
+  cd expects-$pkgver
   python setup.py build
-
-  cd "$srcdir"/expects-py2
   python2 setup.py build
 }
 
 check() {
-  cd "$srcdir"/expects
+  cd expects-$pkgver
   mamba
-
-  cd "$srcdir"/expects-py2
   mamba2
 }
 
 package_python-expects() {
   depends=('python')
 
-  cd expects
-  python setup.py install --root="${pkgdir}" --optimize=1
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd expects-$pkgver
+  python setup.py install --root="$pkgdir" --optimize=1
+  install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
 package_python2-expects() {
   depends=('python2')
 
-  cd expects-py2
-  python2 setup.py install --root="${pkgdir}" --optimize=1
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd expects-$pkgver
+  python2 setup.py install --root="$pkgdir" --optimize=1
+  install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
