@@ -1,0 +1,14 @@
+pkgbase = i3refgen
+	pkgdesc = Reads your i3 configuration file and generates a HTML file with the keybindings to print out and put near your screen.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/ronthecookie/i3refgen
+	arch = any
+	license = MIT
+	makedepends = go-pie
+	makedepends = dep
+	source = i3refgen-1.1.tar.gz::https://github.com/RONTheCookie/i3refgen/archive/v1.1.tar.gz
+	md5sums = 0a2e5bdf6cc7ab61815b5b541aec9988
+
+pkgname = i3refgen
+
