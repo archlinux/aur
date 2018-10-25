@@ -3,10 +3,10 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=php-homegear
-pkgver=7.2.9
-_pthreadversion=99a86fab88ede56a7ae0bd3e70249425caf5ad05
+pkgver=7.2.11
+_pthreadversion=e25675dee989a2e15b81da6c0e215d22bacff86a
 _pkgbase=php
-pkgrel=2
+pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc="Patched version of PHP for Homegear"
 license=('PHP')
@@ -17,9 +17,9 @@ provides=('php7-homegear')
 source=("http://www.php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"{,.asc}
         "https://github.com/krakjoe/pthreads/archive/${_pthreadversion}.tar.gz"
         'enchant-2.patch')
-sha512sums=('b898e78fcb4aeeb441395dcabe2e7686425487e32dffbf0e99393aedb917da87a744b23f0be557c45e447433c8058df6e53c34869fc2dcf874cc1af97ff8331f'
+sha512sums=('0cd8578147d17d612e013dfc22b73977719177058b39c7b61dd0bfdfb8c2441aba78af49f58c824f7e66c89b5ad201c36fafb89ccf1e2d20f19b79d6a8fed7e5'
             'SKIP'
-            '1c07413da097d381c1e78ea41e6d8c4f09d217e378be1d7cee0a5ae4536ed8b074065f12bea9a7c7c0ee5410f272c1269b5d66517ee539a4f94f338fd1c04b05'
+            '3c1b83e439045cf87d04c21952d9ff475a3ae079d8e48c49cccc1a83e892582415c0ec2eccd85e30bf56f7ced0344e1528e3db2512bd9ab70fa9479d225b144b'
             '89993be67988f6db09e1102214a41fdb7223274bc6ca71f1defc5fe9548d832485f7133b8ba82860f04da00c7f655d701c7550460c0172a2a2d31ef3f3f96038')
 validpgpkeys=('B1B44D8F021E4E2D6021E995DC9FF8D3EE5AF27F'
               '1729F83938DA44E27BA0F4D3DBDB397470D12172')
@@ -115,7 +115,7 @@ package() {
 
     mv "${pkgdir}/usr/include/php-homegear/php/"* "${pkgdir}/usr/include/php-homegear/"
     install -d -m755 "${pkgdir}/usr/lib"
-    mv "${pkgdir}/usr/lib/homegear/php/lib/libphp7.a" "${pkgdir}/usr/lib/libphp7-homegear.a"
+    mv "${pkgdir}/usr/lib/homegear/php/lib/libphp7.a" "${pkgdir}/usr/lib/libphp-homegear.a"
 
     rm -r "${pkgdir}/usr/lib/homegear"
     rm -r "${pkgdir}/man"
