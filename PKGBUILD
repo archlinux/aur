@@ -2,14 +2,14 @@
 
 pkgname='libhomegear-node'
 pkgdesc='Base library for Homegear nodes'
-pkgver=0.7.27
+pkgver=0.7.30
 pkgrel=1
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 license=('LGPL3')
 url="https://homegear.eu"
 depends=('gcc-libs')
 source=("https://github.com/Homegear/libhomegear-node/archive/${pkgver}.tar.gz")
-sha512sums=('57a11ccbed895659bd30d9e66941f0d2c9104767b5a3360d3d18c4df702f848e51360a8badc8b4c252d92e3359fb34e019283bb7c4e5c86ceedbde7899232ccb')
+sha512sums=('c3853c93c9a638aa3530f7e10fbac6831604018ee5c9095ce53cf057aa1fa981bb09cf8ba59e9c54e47165efd8ea2a31c4f8f890eec635560ee9c0fefac4fdad')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
