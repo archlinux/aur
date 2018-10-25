@@ -1,12 +1,12 @@
-# Maintainer: Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=crossc-git
-pkgver=1.0.0.r2.g1b9df97
+pkgver=1.6.0.r0.g98689d7
 pkgrel=1
 pkgdesc='Portable C wrapper for SPIRV-Cross (git version)'
 arch=('i686' 'x86_64')
 url='https://github.com/rossy/crossc/'
-license=('unknown')
+license=('APACHE')
 depends=('gcc-libs')
 makedepends=('git')
 provides=('crossc')
@@ -33,10 +33,12 @@ pkgver() {
 
 build() {
     cd "$pkgname"
+    
     make
 }
 
 package() {
     cd "$pkgname"
+    
     make DESTDIR="$pkgdir" prefix='/usr' install
 }
