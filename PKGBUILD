@@ -1,7 +1,7 @@
 # Maintainer: aimileus <me at aimileus dot nl>
 pkgname=protonmail-bridge
-_pkgver=1.0.6
-_pkgrel=2
+_pkgver=1.1.0
+_pkgrel=1
 pkgver="${_pkgver}.${_pkgrel}"
 pkgrel=1
 pkgdesc="Application to use IMAP/SMTP with your paid ProtonMail account"
@@ -18,7 +18,7 @@ depends=(
 )
 options=('!strip')
 source=("https://protonmail.com/download/protonmail-bridge_${_pkgver}-${_pkgrel}_amd64.deb")
-sha256sums=('8815fae433c69af5502aa73d5f16fd62d146ab91c0606be9016be4a8c7ce7e5b')
+sha256sums=('6bfec875e593d1df535df56e045cb795b672491d40301b5f1bcde68980f84950')
 
 prepare() {
 	tar xvJf data.tar.xz
