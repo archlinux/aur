@@ -1,7 +1,7 @@
 # Mantainer: Franco Tortoriello
 
 pkgname=dosbox-x-git
-pkgver=6057.6a2a75db8
+pkgver=6081.a16dff8f1
 pkgrel=1
 pkgdesc="x86 emulator with builtin DOS, with patches with more features"
 arch=(i686 x86_64)
@@ -21,7 +21,6 @@ pkgver() {
 
 build() {
   cd "$srcdir/dosbox-x"
-  sed -i 's/CODEC_FLAG2_FAST/AV_CODEC_FLAG2_FAST/g' src/hardware/hardware.cpp
   ./build
 }
 
