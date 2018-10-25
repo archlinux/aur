@@ -4,22 +4,23 @@
 # Based on original tikzit-aur-package made by pippin
 
 pkgname=tikzit-git
-pkgver=r376
+pkgver=2.0.5.g19a3a0f
 pkgrel=1
 pkgdesc="Creation and modification of TeX diagrams written using the pgf/TikZ macro library - rewrite in QT and C++"
 arch=('i686' 'x86_64')
-url="https://github.com/tikzit/tikzit.git"
+url="https://tikzit.github.io/"
 license=('GPL')
 depends=('qt5-base')
 makedepends=('git')
 provides=('tikzit')
+conflicts=('tikzit')
 source=('git+https://github.com/tikzit/tikzit.git')
 md5sums=('SKIP')
 options=('!makeflags')
 
 pkgver() {
   cd ${pkgname%-git}
-  printf "r%s" "$(git rev-list --count HEAD)"
+  printf "%s" "$(git describe --tags | cut -c2- |tr - .)"
 }
  
 build() {
@@ -32,5 +33,5 @@ build() {
 
 package() {
   cd ${pkgname%-git}
-  install -Dm755 tikzit "$pkgdir"/usr/bin/tikzit-qt
+ install -Dm755 tikzit "$pkgdir"/usr/bin/tikzit
 }
