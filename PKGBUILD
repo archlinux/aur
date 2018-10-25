@@ -1,7 +1,7 @@
 # Mainintainer : Lucas Rooyakkers <lucas dot rooyakkers at queensu at ca>
 pkgname=loop
-pkgver=d7e32b9
-pkgrel=2
+pkgver=d6ef3c5
+pkgrel=1
 pkgdesc="UNIX's missing loop command"
 arch=('any')
 url="https://github.com/Miserlou/Loop"
