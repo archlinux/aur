@@ -2,7 +2,7 @@
 # Maintainer: Chrys <chrys@linux-a11y.org>
 
 pkgname='fenrir'
-pkgver=1.9.4
+pkgver=1.9.5
 pkgrel=1
 pkgdesc='A user space console screen reader written in python3'
 arch=('any')
@@ -23,7 +23,7 @@ conflicts=('fenrir')
 backup=('etc/fenrirscreenreader/settings/settings.conf')
 source=("https://github.com/chrys87/${pkgname}/archive/${pkgver}.tar.gz"
   'fenrirscreenreader.service')
-md5sums=('bc409eaa7e0e5da1232cbb860f748a21'
+md5sums=('6f0fe3fe82041d0393a17bef441baef9'
          '0c2d1bd344b53d1fa5de6c49455b5a4f')
 
 package() {
