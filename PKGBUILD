@@ -1,31 +1,36 @@
 # Contributor: Fabio ‘Lolix’ Loli <lolix at disroot dot org>
 # Contributor: Daniel Miranda <dmiranda at gmail dot com>
 # Contributor: Mark Wagie <yochanan dot marqos at gmail dot com>
-# Contributor: Sam Burgos <sam.burgos1089 at gmail dotcom>
+# Maintainer: Sam Burgos <sam.burgos1089 at gmail dotcom>
 # Maintainer: Gustavo Costa <gusbemacbe ar gmail dot com>
 
 pkgname=suru-plus-pack-git
 pkgver=20.4.1
-pkgrel=1
-pkgdesc="A full collection of three Suru++ 20 icons themes, based on Sam Hewitt's Suru Icons"
+pkgrel=2
+pkgdesc="The complete collection of Suru++ icons themes, based on Sam Hewitt's Suru Icons"
 arch=('any')
 license=('GPL3')
+depends=('gtk-update-icon-cache'
+    'hicolor-icon-theme')
+provides=("suru-plus-pack")
+conflicts=("suru-plus-pack" 
+    "suru-plus"
+    "suru-plus-dark"
+    "suru-plus-telinkrin")
 makedepends=('git')
 options=('!strip')
-provides=(suru-plus-pack )
-conflicts=(suru-plus-pack suru-plus suru-plus-dark suru-plus-telinkrin)
-source=("git+https://github.com/gusbemacbe/suru-plus"
-        "git+https://github.com/gusbemacbe/suru-plus-dark"
-        "git+https://github.com/gusbemacbe/suru-plus-telinkrin")
+source=('git+https://github.com/gusbemacbe/suru-plus'
+        'git+https://github.com/gusbemacbe/suru-plus-dark'
+        'git+https://github.com/gusbemacbe/suru-plus-telinkrin')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP')
 
-pkgver() 
-{
-  cd suru-plus
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+#pkgver() 
+#{
+#  cd suru-plus
+#  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+#}
 
 package() 
 {
