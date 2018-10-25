@@ -1,7 +1,8 @@
 # Maintainer: Andrew Anderson <andersan@tcd.ie>
+pkgbase=kmeansrex
 pkgname=libkmeansrex-git
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="KMeansRex library"
 arch=('any')
 url="https://github.com/michaelchughes/KMeansRex.git"

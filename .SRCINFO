@@ -1,7 +1,7 @@
-pkgbase = libkmeansrex-git
+pkgbase = kmeansrex
 	pkgdesc = KMeansRex library
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/michaelchughes/KMeansRex.git
 	arch = any
 	license = BSD
