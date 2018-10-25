@@ -1,0 +1,14 @@
+pkgbase = wm_theme_club_01
+	pkgdesc = Theme for Window Maker
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://forum.russ2.com/index.php?showtopic=2899
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = windowmaker
+	source = http://altlinuxclub.ru/arhiv/wm_theme_club_01.tar.gz
+	md5sums = 5345ca4d089a58cf00b608cd8b828bb0
+
+pkgname = wm_theme_club_01
+
