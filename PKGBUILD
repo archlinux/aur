@@ -1,7 +1,7 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=elfinfo
-pkgver=0.7
+pkgver=0.7.2
 pkgrel=1
 pkgdesc='Detect which compiler version was used for compiling an ELF file'
 arch=('any')
