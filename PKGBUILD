@@ -1,16 +1,16 @@
 # Maintainer: TheGoliath
 pkgname=excavator
 pkgrel=1
-pkgver=1.5.11a
+pkgver=1.5.13a
 pkgdesc="Excavator by NiceHash. NiceHash's proprietary low-level CUDA miner."
 arch=('x86_64')
 url="https://github.com/nicehash/excavator"
 license=('https://github.com/nicehash/excavator/blob/master/excavator-EULA.txt')
 groups=('')
-depends=('chef-dk' 'nvidia-utils' 'ncurses' 'libpciaccess' 'libx11>=1.4.99.1' 'libxext' 'ocl-icd>=1.0' 'cuda')
+depends=('nvidia-utils' 'libpciaccess' 'libx11>=1.4.99.1' 'libxext' 'ocl-icd>=1.0' 'cuda')
 options=('!strip' '!emptydirs')
-source_x86_64=("https://github.com/nicehash/excavator/releases/download/v${pkgver}/excavator_${pkgver}_amd64.deb")
-sha512sums_x86_64=('a6bfd29e27ca4f4aa833716747fa8cd0218e66deefb922afd6fe9878a9a14d87975386d8e6dadfb57d0234b741a192ffa14a6c15a3ae33aea9993f15b1444d88')
+source_x86_64=("https://github.com/nicehash/excavator/releases/download/v${pkgver}/excavator_${pkgver}-cuda10_amd64.deb")
+sha512sums_x86_64=('c3d4d0d82bbe6d3488c7e092f012ae6e8b0ae202161659ccc53328b672fdff7f29f8864daafde041d8420288f9a96fa5f032badab0a54e5e8030793b4b3b747b')
 
 package(){
 
