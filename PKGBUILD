@@ -17,12 +17,12 @@ sha512sums=('f4e38ccf09f148cbe609ccfebe3d3476e6b385f4d002cb951ed0d488d84f65557c0
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  ./waf configure --prefix=/usr build
-  ./waf release
+  waf configure --prefix=/usr build
+  waf release
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  ./waf install --destdir="$pkgdir"
+  waf install --destdir="$pkgdir"
   rm "$pkgdir/usr/share/glib-2.0/schemas/gschemas.compiled"
 }
