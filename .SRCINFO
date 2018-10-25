@@ -1,6 +1,6 @@
 pkgbase = homegear-philipshue
 	pkgdesc = Philips Hue module for Homegear
-	pkgver = 0.7.18
+	pkgver = 0.7.30
 	pkgrel = 1
 	url = https://homegear.eu
 	install = homegear-philipshue.install
@@ -10,10 +10,10 @@ pkgbase = homegear-philipshue
 	arch = armv7h
 	arch = aarch64
 	license = GPL3
-	depends = homegear=0.7.18
+	depends = homegear=0.7.30
 	backup = etc/homegear/families/philipshue.conf
-	source = https://github.com/Homegear/Homegear-PhilipsHue/archive/0.7.18.tar.gz
-	sha512sums = 5057e088d9061c09d1b910760852e28422db7ea44cfd330efae4a938e89218cea8eaf78e34ac34f11eac9f741109b917cdf99cfbbadc451655ab27d571aaee12
+	source = https://github.com/Homegear/Homegear-PhilipsHue/archive/0.7.30.tar.gz
+	sha512sums = c6371cfcfbdf143a9a1131318771f2c1d892c3b24e30b4ec4d08bf542bd90caa0453712f5e78ec0129334e71a38584270c9b3aa7be9472f444e44b5348d31cce
 
 pkgname = homegear-philipshue
 	backup = etc/homegear/families/philipshue.conf
