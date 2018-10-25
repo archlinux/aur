@@ -1,0 +1,15 @@
+pkgbase = trellowarrior
+	pkgdesc = Tool to sync Taskwarrior projects with Trello boards
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/ogarcia/trellowarrior
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-tasklib
+	depends = python-py-trello
+	source = https://github.com/ogarcia/trellowarrior/archive/0.2.0.tar.gz
+	sha256sums = c5b7a94f63a4357acb93423d8511cb1944113aebe2ec91fedd65a96f20951afd
+
+pkgname = trellowarrior
+
