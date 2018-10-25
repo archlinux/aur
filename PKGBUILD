@@ -1,7 +1,7 @@
 # Maintainer : Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=caffe2-git
-pkgver=0.8.2.r13687.gd1ac1eba3b
+pkgver=0.8.2.r14121.g478886be30
 pkgrel=1
 epoch=1
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (git version)'
@@ -28,8 +28,8 @@ depends=(
             'python-lmdb'
 )
 makedepends=('git' 'cmake')
-provides=('caffe2')
-conflicts=('caffe2' 'caffe2-cuda' 'caffe2-cuda-git')
+provides=('caffe2' 'caffe2-cpu-git')
+conflicts=('caffe2' 'caffe2-cpu-git')
 replaces=('caffe2-cpu-git')
 options=('!emptydirs')
 source=(
@@ -161,7 +161,7 @@ build() {
         -DPYTHON_LIBRARY:FILEPATH="/usr/lib/libpython${_pythonver}m.so" \
         \
         -DUSE_ACL:BOOL='OFF' \
-        -DUSE_ASAN:BOOL='ON' \
+        -DUSE_ASAN:BOOL='OFF' \
         -DUSE_CUDA:BOOL='OFF' \
         -DUSE_CUDNN:BOOL='OFF' \
         -DUSE_DISTRIBUTED:BOOL='ON' \
