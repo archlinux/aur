@@ -3,7 +3,7 @@
 
 pkgname=xf86-video-amdgpu-git
 _pkgname=xf86-video-amdgpu
-pkgver=18.1.0.8
+pkgver=18.1.0.9
 pkgrel=1
 pkgdesc="X.org amdgpu video driver (git version)"
 arch=('x86_64')
