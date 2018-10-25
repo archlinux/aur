@@ -1,7 +1,7 @@
 pkgbase = caffe-intel-slim-git
 	pkgdesc = A slimmed-down build of Caffe based on caffe-opencl-git
 	pkgver = 1.0
-	pkgrel = 5
+	pkgrel = 6
 	url = http://caffe.berkeleyvision.org/
 	arch = x86_64
 	license = BSD
