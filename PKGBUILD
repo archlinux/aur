@@ -1,7 +1,7 @@
 # Maintainer Pol Marcet Sardà <polmarcetsarda@gmail.com>
 
 pkgname=k8vavoom-git
-pkgver=r6306.12559d981
+pkgver=r6328.87632dd11
 pkgrel=1
 pkgdesc="Source port of Doom"
 arch=(x86_64)
@@ -10,9 +10,9 @@ license=('GPLv2')
 
 depends=("zlib" "bzip2" "libpng" "libjpeg" "sdl2" "sdl2_mixer" "openal")
 makedepends=("cmake" "git")
-optdepends=("libmad" "mikmod")
+optdepends=("libmad")
 
-source=("$pkgname"::"git+https://repo.or.cz/k8vavoom.git"
+source=("$pkgname"::"git+https://repo.or.cz/k8vavoom.git#commit=87632dd115d9a89bba608a6a15ae8d338f9d1e07"
         "arch.patch")
 
 sha256sums=('SKIP'
@@ -32,8 +32,8 @@ build() {
     cd "$srcdir/$pkgname"
     cmake -DCMAKE_BUILD_TYPE=Release    \
           -DCMAKE_INSTALL_PREFIX=/usr   \
-          -DENABLE_SERVER=ON            \
           -DENABLE_MASTER=ON            \
+          -DENABLE_SERVER=ON            \
           -DENABLE_VCCRUN=ON            \
           -DWITH_SYS_LIBPNG=ON          \
           .
