@@ -13,7 +13,7 @@ depends=('gtkmm3'
          'libnl>=3.0'
          'libsigc++>=2.0'
          'wayland'
-         'libdbusmenu-glib'
+         'libdbusmenu-gtk3'
          'libpulse'
          'wlroots')
 makedepends=('meson'
