@@ -3,7 +3,7 @@
 
 pkgname='frr'
 pkgver='6.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='FRRouting (quagga fork) supports BGP4, OSPFv2, OSPFv3, ISIS, RIP, RIPng, PIM, LDP, NHRP and EIGRP.'
 arch=('any')
 url="https://frrouting.org/"
@@ -72,7 +72,7 @@ package() {
   sed -ri 's|/var/run/frr|/run/frr|g' "${pkgname}.logrotate"
   install -Dm0644 "${pkgname}.logrotate" "${pkgdir}/etc/logrotate.d/${pkgname}"
 
-  for d in babeld bgpd eigrpd isisd ldpd nhrpd ospf6d ospfd ospfd-instance@ pbrd pimd ripd ripngd zebra; do
+  for d in babeld bgpd bfdd eigrpd isisd ldpd nhrpd ospf6d ospfd ospfd-instance@ pbrd pimd ripd ripngd staticd zebra; do
     install -Dm0644 ${d}.service "${pkgdir}/usr/lib/systemd/system/${d}.service"
   done
 
