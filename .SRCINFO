@@ -1,6 +1,6 @@
 pkgbase = firefox-wayland
 	pkgdesc = Standalone web browser from mozilla.org with Wayland support enabled
-	pkgver = 62.0.3
+	pkgver = 63.0
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = firefox-wayland
 	makedepends = unzip
 	makedepends = zip
 	makedepends = diffutils
-	makedepends = python2
+	makedepends = python2-setuptools
 	makedepends = yasm
 	makedepends = mesa
 	makedepends = imake
@@ -24,6 +24,9 @@ pkgbase = firefox-wayland
 	makedepends = jack
 	makedepends = gtk2
 	makedepends = python
+	makedepends = nodejs
+	makedepends = python2-psutil
+	makedepends = cbindgen
 	depends = gtk3
 	depends = mozilla-common
 	depends = libxt
@@ -47,7 +50,7 @@ pkgbase = firefox-wayland
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
-	source = hg+https://hg.mozilla.org/mozilla-unified#tag=FIREFOX_62_0_3_RELEASE
+	source = hg+https://hg.mozilla.org/mozilla-unified#tag=FIREFOX_63_0_RELEASE
 	source = firefox.desktop
 	source = firefox-symbolic.svg
 	sha256sums = SKIP

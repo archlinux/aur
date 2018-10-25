@@ -4,7 +4,7 @@
 # Contributor: Max Liebkies <mail@maxliebkies.de>
 
 pkgname=firefox-wayland
-pkgver=62.0.3
+pkgver=63.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with Wayland support enabled"
 arch=(x86_64)
@@ -12,10 +12,11 @@ license=(MPL GPL LGPL)
 url="https://www.mozilla.org/firefox/"
 provides=('firefox')
 conflicts=('firefox')
-depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib ffmpeg
-         nss hunspell-en_US sqlite ttf-font libpulse libvpx icu)
-makedepends=(unzip zip diffutils python2 yasm mesa imake inetutils xorg-server-xvfb
-             autoconf2.13 rust mercurial clang llvm jack gtk2 python)
+depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib 
+         ffmpeg nss hunspell-en_US sqlite ttf-font libpulse libvpx icu)
+makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
+             xorg-server-xvfb autoconf2.13 rust mercurial clang llvm jack gtk2
+             python nodejs python2-psutil cbindgen)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
@@ -41,6 +42,7 @@ _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 _mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
 
 prepare() {
+  mkdir mozbuild
   cd mozilla-unified
 
   echo -n "$_google_api_key" >google-api-key
@@ -51,7 +53,6 @@ ac_add_options --enable-application=browser
 
 ac_add_options --prefix=/usr
 ac_add_options --enable-release
-ac_add_options --enable-linker=gold
 ac_add_options --enable-hardening
 ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
@@ -69,15 +70,15 @@ ac_add_options --with-google-api-keyfile=${PWD@Q}/google-api-key
 ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/mozilla-api-key
 
 # System libraries
-ac_add_options --with-system-zlib
+ac_add_options --enable-system-sqlite
+ac_add_options --enable-system-ffi
 ac_add_options --with-system-bz2
 ac_add_options --with-system-icu
 ac_add_options --with-system-jpeg
 ac_add_options --with-system-libvpx
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
-ac_add_options --enable-system-sqlite
-ac_add_options --enable-system-ffi
+ac_add_options --with-system-zlib
 
 # Features
 ac_add_options --enable-alsa
@@ -96,6 +97,8 @@ build() {
   cd mozilla-unified
 
   export MOZ_SOURCE_REPO="$_repo"
+  export MOZ_NOSPAM=1
+  export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
 
   ./mach build
   ./mach buildsymbols
