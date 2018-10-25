@@ -2,7 +2,7 @@
 
 pkgname=vscodium
 pkgver=1.28.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Binary releases of VS Code without MS branding/telemetry/licensing."
 arch=('x86_64')
 url="https://github.com/VSCodium/vscodium"
@@ -35,7 +35,7 @@ package() {
     install -d -m755 ${pkgdir}/usr/bin
     install -d -m755 ${pkgdir}/usr/share/{vscodium,applications,pixmaps}
     cp -r ${srcdir}/${pkgname} ${pkgdir}/usr/share
-    ln -s ${pkgdir}/usr/share/${pkgname}/bin/vscodium ${pkgdir}/usr/bin/${pkgname}
+    ln -s /usr/share/${pkgname}/bin/vscodium ${pkgdir}/usr/bin/${pkgname}
     install -D -m644 vscodium.desktop ${pkgdir}/usr/share/applications/vscodium.desktop
     install -D -m644 ${srcdir}/${pkgname}/resources/app/resources/linux/code.png \
             ${pkgdir}/usr/share/pixmaps/vscodium.png
