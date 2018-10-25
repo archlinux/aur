@@ -1,5 +1,5 @@
 diff --git a/misc/Config Directory/main.conf b/misc/Config Directory/main.conf
-index 1227873..c1bd51c 100644
+index a5df031..b9baf7f 100644
 --- a/misc/Config Directory/main.conf	
 +++ b/misc/Config Directory/main.conf	
 @@ -2,10 +2,10 @@
@@ -24,7 +24,7 @@ index 1227873..c1bd51c 100644
  
  # If dataPath is empty, the executable path is used.
  # Default: dataPath =
-@@ -189,7 +189,7 @@ enableNodeBlue = true
+@@ -165,7 +165,7 @@ enableNodeBlue = true
  
  # Path where Node-BLUE is located.
  # Default: nodeBluePath = /var/lib/homegear/node-blue
@@ -33,7 +33,7 @@ index 1227873..c1bd51c 100644
  
  # Default: nodeBluePathPermissions = 770
  # nodeBluePathPermissions = 770
-@@ -202,7 +202,7 @@ nodeBluePath = /var/lib/homegear/node-blue
+@@ -178,7 +178,7 @@ nodeBluePath = /var/lib/homegear/node-blue
  
  # Path where flow data is stored.
  # Default: nodeBlueDataPath = /var/lib/homegear/node-blue/data
@@ -42,25 +42,29 @@ index 1227873..c1bd51c 100644
  
  # Default: nodeBlueDataPathPermissions = 770
  # nodeBlueDataPathPermissions = 770
-@@ -219,7 +219,7 @@ nodeBlueDebugOutput = true
+@@ -194,8 +194,8 @@ nodeBlueDataPath = /var/lib/homegear/node-blue/data
+ nodeBlueDebugOutput = true
  
  # Path where Admin UI is located.
- # Default: adminUiPath = /var/lib/homegear/admin-ui
--adminUiPath = /var/lib/homegear/admin-ui
+-# Default: adminUiPath = /var/lib/homegear/admin-ui
+-adminUiPath = /var/lib/homegear/admin-ui/public
++# Default: adminUiPath = /usr/lib/homegear/admin-ui
 +adminUiPath = /usr/lib/homegear/admin-ui
  
  # Default: adminUiPathPermissions = 770
  # adminUiPathPermissions = 770
-@@ -232,7 +232,7 @@ adminUiPath = /var/lib/homegear/admin-ui
+@@ -207,8 +207,8 @@ adminUiPath = /var/lib/homegear/admin-ui/public
+ # adminUiPathGroup = homegear
  
  # Path where UI is located.
- # Default: uiPath = /var/lib/homegear/ui
+-# Default: uiPath = /var/lib/homegear/ui
 -uiPath = /var/lib/homegear/ui
++# Default: uiPath = /usr/lib/homegear/ui
 +uiPath = /usr/lib/homegear/ui
  
  # Default: uiPathPermissions = 770
  # uiPathPermissions = 770
-@@ -245,21 +245,21 @@ uiPath = /var/lib/homegear/ui
+@@ -221,21 +221,21 @@ uiPath = /var/lib/homegear/ui
  
  # Path to the family modules.
  # Default: modulePath = /var/lib/homegear/modules
