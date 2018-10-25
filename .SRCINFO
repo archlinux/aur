@@ -1,0 +1,18 @@
+pkgbase = perl-forks-queue
+	pkgdesc = This packages the Foo-Bar distribution, containing the Foo::Bar module!
+	pkgver = 0.09
+	pkgrel = 1
+	url = https://metacpan.org/release/Forks-Queue
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-time-hires
+	depends = perl-json
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/M/MO/MOB/Forks-Queue-0.09.tar.gz
+	md5sums = 55f13b2a8352b3140abb622403daee9e
+
+pkgname = perl-forks-queue
+
