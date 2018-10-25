@@ -1,7 +1,7 @@
 # Maintainer: Andrew Sun <adsun701@gmail.com>
 
 pkgname=mingw-w64-c-ares
-pkgver=1.14.0
+pkgver=1.15.0
 pkgrel=1
 pkgdesc="C library that performs DNS requests and name resolves asynchronously (mingw-w64)"
 arch=('any')
@@ -14,9 +14,9 @@ source=("https://github.com/c-ares/c-ares/archive/cares-${pkgver//./_}.tar.gz"
         "0001-Use-RPM-compiler-options.patch"
         "0002-Add-static-pkg-config.patch"
         "0003-fix-cmake-targets.patch")
-sha256sums=('62dd12f0557918f89ad6f5b759f0bf4727174ae9979499f5452c02be38d9d3e8'
+sha256sums=('7deb7872cbd876c29036d5f37e30c4cbc3cc068d59d8b749ef85bb0736649f04'
             'f00faa8723fd530b027f96b987ef19138628a49afdf52ffb0554b36156fc9d74'
-            'dc785a9786172ca64aea3c90b3b491089bf952dae1317be0d757f2dcc5645996'
+            'f181a2556cf28a0cbc948cd58a7bcf0c3c3cef01370d0f0fa6b3915f62d05d56'
             '5810001abdd4acb8ae725dedb4d67874c3e2935775ecba30469a2a79c76fd6a0')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
