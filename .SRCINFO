@@ -1,0 +1,14 @@
+pkgbase = gnome-shell-extension-outta-space-git
+	pkgdesc = GNOME Shell extension that will give you more space to work with.
+	pkgver = r1.5f9dfe8
+	pkgrel = 1
+	url = https://github.com/cookiengineer/gnome-shell-extension-outta-space
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gnome-shell
+	source = git+https://github.com/cookiengineer/gnome-shell-extension-outta-space
+	md5sums = SKIP
+
+pkgname = gnome-shell-extension-outta-space-git
+
