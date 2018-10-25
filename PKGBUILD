@@ -10,6 +10,7 @@ pkgver=11.0.1
 _major=${pkgver/.*}
 _build=13
 _hash=90cf5d8f270a4347a95050320eef3fb7
+_jname=${_pkgname}${_major}
 pkgrel=1
 pkgdesc="Oracle Java $_major Development Kit Snapshot"
 arch=('x86_64')

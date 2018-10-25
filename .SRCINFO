@@ -23,15 +23,16 @@ pkgbase = jdk-devel
 	provides = java-runtime-headless-jre=11
 	provides = java-web-start-jre=11
 	provides = java-environment-jdk=11
-	provides = 
+	provides = jdk11
+	conflicts = jdk11
 	options = !strip
-	backup = etc/java-/management/jmxremote.access
-	backup = etc/java-/management/management.properties
-	backup = etc/java-/security/java.policy
-	backup = etc/java-/security/java.security
-	backup = etc/java-/logging.properties
-	backup = etc/java-/net.properties
-	backup = etc/java-/sound.properties
+	backup = etc/java-jdk11/management/jmxremote.access
+	backup = etc/java-jdk11/management/management.properties
+	backup = etc/java-jdk11/security/java.policy
+	backup = etc/java-jdk11/security/java.security
+	backup = etc/java-jdk11/logging.properties
+	backup = etc/java-jdk11/net.properties
+	backup = etc/java-jdk11/sound.properties
 	source = http://download.oracle.com/otn-pub/java/jdk/11.0.1+13/90cf5d8f270a4347a95050320eef3fb7/jdk-11.0.1_linux-x64_bin.tar.gz
 	source = java.desktop
 	source = jconsole.desktop
