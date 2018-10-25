@@ -4,4 +4,11 @@ post_upgrade() {
   systemd-sysusers
   mkdir -p /var/lib/odoo
   chown -R odoo:odoo /var/lib/odoo
+
+  # show message only if major version differs
+  if [ "${1%.*}" -gt "${2%.*}" ]; then
+    echo "You should manually upgrade the Odoo database by running 'odoo -u all' as the odoo user."
+    echo "When using sudo you can use 'sudo -u odoo odoo -u all'."
+    echo "Then visit the the web interface while the upgrade command is running."
+  fi
 }

@@ -2,9 +2,9 @@
 # Contributor: Bidossessi Sodonon
 
 pkgname=odoo
-pkgver=11.0
-_pkgsubver=20180806
-pkgrel=7
+pkgver=12.0
+_pkgsubver=20181023
+pkgrel=1
 pkgdesc="Web-based Open Source Business Apps"
 url=https://www.odoo.com/
 arch=('any')
@@ -13,7 +13,6 @@ conflicts=('openerp')
 replaces=('openerp')
 makedepends=('python-setuptools')
 depends=(
-  'nodejs-less'
   'wkhtmltopdf'
   'python'
   'python-babel'
@@ -25,6 +24,7 @@ depends=(
   'python-greenlet'
   'python-html2text'
   'python-jinja'
+  'python-libsass'
   'python-lxml'
   'python-mako'
   'python-markupsafe'
@@ -43,7 +43,6 @@ depends=(
   'python-dateutil'
   'python-pytz'
   'python-pyusb'
-  'python-yaml'
   'python-qrcode'
   'python-reportlab'
   'python-requests'
@@ -61,7 +60,7 @@ source=("https://nightly.odoo.com/${pkgver}/nightly/src/${pkgname}_${pkgver}.${_
         odoo.confd
         odoo.service
         odoo.sysusers)
-md5sums=('62b2fc06269e8aae5170a67c500e6a85'
+md5sums=('31b09eda196af066cf3a5a4a326719da'
          '863418f31f0fb982cde0008fa63f35f0'
          '742fa9ad94a92ac2aa910197a26af4e8'
          '5bddcc6edbdefdd07cae945165c63604'
