@@ -2,7 +2,7 @@
 # Maintainer: A Austin <acm.austin at gmail.com>
 # Contributor: Martin Ortbauer <mortbauer@gmail.com>
 
-pkgbase=('archimedes-tools')
+pkgbase=archimedes-tools
 pkgname=('triangle' 'showme')
 pkgver=1.6
 pkgrel=6
