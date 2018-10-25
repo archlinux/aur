@@ -4,14 +4,15 @@
 
 pkgname=gtk3-nocsd-git
 pkgver=r55.82ff5a0
-pkgrel=4
+pkgrel=5
 pkgdesc="A hack to disable gtk+ 3 client side decoration"
 arch=("i686" "x86_64")
 url="https://github.com/PCMan/gtk3-nocsd"
 license=("LGPL")
 
-depends=("gtk3")
 conflicts=("gtk3-nocsd")
+provides=("gtk3-nocsd")
+depends=("gtk3")
 
 makedepends=(
     "git"
@@ -25,7 +26,7 @@ source=(
 
 sha512sums=(
     "SKIP"
-    "734e9ecd74fa677e185af9f91ac0abbc99bc55c1405aaaff219e24a5ceba7e6bff658ff428bde3dcb41a5c8a17b4cc8fb68abfed79306404941290ee1324c170"
+    "ef7a812887072a19b7b365fd393d808806d1bdb4beb2aa4e46af9cb690dc2a7abc8976a8e5875d91742f3029330ac9229feb6d50141e0c2d35f0d3d8a7400830"
 )
 
 install="$pkgname.install"
