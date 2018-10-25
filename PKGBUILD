@@ -2,7 +2,7 @@
 pkgname=caffe-opencl-slim-git
 _srcname=caffe
 pkgver=1.0
-pkgrel=30
+pkgrel=31
 pkgdesc="A slimmed-down build of Caffe based on caffe-opencl-git"
 arch=('x86_64')
 url="http://caffe.berkeleyvision.org/"
@@ -63,7 +63,7 @@ prepare() {
     -DBUILD_python=ON \
     -DBUILD_matlab=OFF \
     -DBUILD_docs=OFF \
-    -DBUILD_python_layer=OFF \
+    -DBUILD_python_layer=ON \
     -DUSE_OPENCV=ON \
     -DUSE_LEVELDB=OFF \
     -DUSE_LMDB=OFF \
