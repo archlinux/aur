@@ -4,26 +4,28 @@
 # Based on original tikzit-aur-package made by pippin
 
 pkgname=tikzit
-pkgver=1.0
-pkgrel=2
+pkgver=2.0
+pkgrel=1
 pkgdesc="Allows the creation and modification of TeX diagrams written using the pgf/TikZ macro library"
 arch=('i686' 'x86_64')
-url="http://sourceforge.net/projects/tikzit/"
+url="https://tikzit.github.io/"
 license=('GPL2')
-depends=('gnustep-base>=1.18.0' 'gtk2>=2.18.0' 'gnustep-make'
-         'poppler-glib>=0.10' 'hicolor-icon-theme' 'desktop-file-utils')
-makedepends=('gcc-objc>=4.6.0')
+depends=('qt5-base')
+makedepends=('gcc-objc')
 optdepends=('texlive-core: previews')
-source=(http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.bz2)
-md5sums=('5d7fc5a74500b8eb2545d0c4fece62a5')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/tikzit/tikzit/archive/v$pkgver.tar.gz")
+sha256sums=('d1a84531b8ac2298c140217267423cd9ce4d84ee443b5deb4aa47e4beab4f295')
 
 build() {
   cd $pkgname-$pkgver
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+  qmake PREFIX=/usr \
+    QMAKE_CFLAGS="${CFLAGS}" \
+    QMAKE_CXXFLAGS="${CXXFLAGS}" tikzit.pro  
+  make -j1
   make
 }
 
 package() {
-  cd $pkgname-$pkgver
-  make "DESTDIR=$pkgdir" install
+  cd $pkgname-$pkgver1
+  install -Dm755 tikzit "$pkgdir"/usr/bin/tikzit
 }
