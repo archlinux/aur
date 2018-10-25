@@ -4,13 +4,13 @@ pkgname=(chocolate-{doom,heretic,hexen,strife,common})
 pkgbase=${pkgname[0]}
 pkgdesc="Historically-accurate Doom, Heretic, Hexen, and Strife ports."
 pkgver=3.0.0
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://www.chocolate-doom.org/"
 license=('GPL2')
 depends=('libpng' 'libsamplerate' 'sdl2_mixer' 'sdl2_net')
 makedepends=('python')
-source=(http://chocolate-doom.org/downloads/${pkgver}/${pkgbase}-${pkgver}.tar.gz{,.asc}
+source=(https://www.chocolate-doom.org/downloads/${pkgver}/${pkgbase}-${pkgver}.tar.gz{,.asc}
         0001_fix-bash-completion.patch)
 sha512sums=('41f235c0d84ef21070636ad0610e97898dfd366fae7f9244bd2aebf8974db98dcf55f70bcab2f93589b9bf31dd421db32e8af88e0f8e0a655d2b9f1d4ead2afd'
             'SKIP'
