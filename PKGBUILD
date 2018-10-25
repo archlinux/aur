@@ -16,7 +16,7 @@ provides=('hid-lg-g710-plus')
 conflicts=('logitech-g710-kmod-git' 'hid-lg-g710-plus' 'logitech-g710')
 install='hid-lg-g710-plus-dkms.install'
 
-source=("${_pkgbase}::git://github.com/woudglass/logitech-g710-linux-driver.git")
+source=("${_pkgbase}::git://github.com/wdouglass/logitech-g710-linux-driver.git")
 sha256sums=('SKIP')
 
 pkgver() {
