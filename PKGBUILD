@@ -19,7 +19,6 @@ build() {
   cd "$srcdir/$pkgname-$pkgver"
   ./waf configure --prefix=/usr build
   ./waf release
-  ./waf build
 }
 
 package() {
