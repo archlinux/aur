@@ -12,7 +12,6 @@ license=("BSD")
 depends=("qt5-declarative"
 	"qt5-svg"
 	"desktop-file-utils"
-	"pcsclite"
 	"hidapi"
 )
 provides=("monerod=${pkgver}"

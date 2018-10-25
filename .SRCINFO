@@ -8,7 +8,6 @@ pkgbase = monero-gui-bin
 	depends = qt5-declarative
 	depends = qt5-svg
 	depends = desktop-file-utils
-	depends = pcsclite
 	depends = hidapi
 	provides = monerod=0.13.0.3
 	provides = monero-blockchain-export=0.13.0.3
