@@ -1,0 +1,15 @@
+pkgbase = draft
+	pkgdesc = A tool for developers to create cloud-native applications on Kubernetes.
+	pkgver = 0.16.0
+	pkgrel = 1
+	url = https://draft.sh
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = dep
+	depends = glibc
+	source_x86_64 = git+https://github.com/azure/draft?tag=v0.16.0
+	sha512sums_x86_64 = SKIP
+
+pkgname = draft
+
