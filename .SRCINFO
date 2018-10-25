@@ -1,0 +1,18 @@
+pkgbase = xi-term
+	pkgdesc = A terminal frontend for the Xi editor
+	pkgver = 77eb8aa
+	pkgrel = 1
+	url = https://github.com/xi-frontend/xi-term
+	arch = any
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = make
+	depends = xi-core-git
+	provides = xi-term
+	conflicts = xi-term
+	source = xi-term::git+https://github.com/xi-frontend/xi-term
+	sha1sums = SKIP
+
+pkgname = xi-term
+
