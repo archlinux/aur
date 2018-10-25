@@ -2,7 +2,7 @@
 pkgname=caffe-cuda-slim-git
 _srcname=caffe
 pkgver=1.0
-pkgrel=9
+pkgrel=10
 pkgdesc="A slimmed-down build of Caffe based on caffe-opencl-git (CUDA version)"
 arch=('x86_64')
 url="http://caffe.berkeleyvision.org/"
@@ -57,7 +57,7 @@ prepare() {
     -DUSE_CUDNN=OFF \
     -DUSE_NCCL=OFF \
     -DBUILD_SHARED_LIBS=OFF \
-    -DBUILD_python=OFF \
+    -DBUILD_python=ON \
     -DBUILD_matlab=OFF \
     -DBUILD_docs=OFF \
     -DBUILD_python_layer=OFF \
@@ -81,7 +81,7 @@ prepare() {
 
 build() {
     cd "${_srcname}/build"
-    PATH+=":/opt/cuda/bin" CC=gcc-7 CXX=g++-7 make -j`grep processor /proc/cpuinfo | wc -l` clean all
+    PATH+=":/opt/cuda/bin" CC=gcc-7 CXX=g++-7 make -j`grep processor /proc/cpuinfo | wc -l` clean all pycaffe
 }
 
 package() {
