@@ -3,14 +3,14 @@
 # Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
 
 pkgname=code-git
-pkgdesc='Microsoft Code for Linux, Open Source version from git (vscode)'
-pkgver=1.16.0.r16653.g6bc165d47c
+pkgdesc='The Open Source build of Visual Studio Code (vscode) editor - git latest'
+pkgver=1.16.0.r18592.g02275f047b
 pkgrel=1
 arch=('i686' 'x86_64' 'armv7h')
 url='https://github.com/Microsoft/vscode'
 license=('MIT')
-makedepends=('npm' 'gulp' 'python2' 'git' 'yarn')
-depends=('electron' 'libsecret' 'libxkbfile' 'alsa-lib')
+depends=('electron' 'libsecret' 'libxkbfile')
+makedepends=('npm' 'gulp' 'python2' 'git' 'yarn' 'nodejs-lts-carbon')
 conflicts=('visual-studio-code-git')
 provides=('visual-studio-code-git')
 
@@ -82,7 +82,7 @@ build() {
     # The default memory limit may be too low for current versions of node
     # to successfully build vscode.  Uncomment this to set it to 2GB, or
     # change it if this number still doesn't work for your system.
-    mem_limit="--max_old_space_size=2048"
+    mem_limit="--max_old_space_size=4096"
 
     if ! /usr/bin/node $mem_limit /usr/bin/gulp vscode-linux-${_vscode_arch}-min
     then
