@@ -1,0 +1,5 @@
+post_install() {
+    tput bold
+	echo "Remember to open Davinci Resolve Studio as root for activation if you have an activation code instead of a dongle"
+	tput sgr0
+}
