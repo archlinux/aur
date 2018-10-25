@@ -2,14 +2,14 @@
 
 pkgname='libhomegear-ipc'
 pkgdesc='Library to create IPC clients for Homegear'
-pkgver=0.7.27
+pkgver=0.7.30
 pkgrel=1
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 license=('LGPL3')
 url="https://homegear.eu"
 depends=('gcc-libs')
 source=("https://github.com/Homegear/libhomegear-ipc/archive/${pkgver}.tar.gz")
-sha512sums=('bb02d047351fe7e1abb2c3fd881772dd76853e0a63890da99a6ee024bb764708cbcb00aa67b0ea3aa4cd691d9f4f8c6277963971c9dd10675fe46668c573959d')
+sha512sums=('cdbf1d21508ee0f23c12f3b0c2dff262039adc9a587dd8fd2a13be0f78bc553efefc6be23a71e7726461ac7dc86814a8506123b80de303009363fcb98eeade87')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
