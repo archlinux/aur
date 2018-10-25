@@ -4,8 +4,8 @@
 
 
 pkgbase=network-manager-applet-git
-pkgname=(nm-connection-editor-git network-manager-applet-git)
-pkgver=1.8.15.dev.r0.g69fb2d62
+pkgname=(network-manager-applet-git nm-connection-editor-git libnm-gtk-git libnma-git)
+pkgver=1.8.19.dev.r20.g2005bb08
 pkgrel=1
 pkgdesc="Applet for managing network connections"
 arch=('i686' 'x86_64')
@@ -14,32 +14,25 @@ url="http://www.gnome.org/projects/NetworkManager/"
 depends=(libnm gcr libgudev gtk3 mobile-broadband-provider-info libnm-git iso-codes)
 makedepends=(meson libsecret libnotify gtk3 libnm gtk-doc intltool gobject-introspection git)
 options=('emptydirs')
-source=(git://git.gnome.org/network-manager-applet)
+source=(git+https://gitlab.gnome.org/GNOME/network-manager-applet.git)
 sha256sums=('SKIP')
 sha512sums=('SKIP')
 
 pkgver() {
            cd $srcdir/network-manager-applet/
            git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-       }
-prepare(){
-mkdir -p nma/etc/xdg nma/usr/bin \
-    nma/usr/share/{applications,icons/hicolor/22x22/apps,man/man1,nm-applet}
-  cd $srcdir/network-manager-applet
-  NOCONFIGURE=1 ./autogen.sh
-
 }
+
 build() {
-	cd $srcdir/network-manager-applet
-	
-	arch-meson build \
+
+	arch-meson network-manager-applet build \
     -Dgtk_doc=false \
-	  -Dlibnm_gtk=false \
+	  -Dlibnm_gtk=true \
     -Dintrospection=true \
     -Dld_gc=true \
     -Dteam=true \
     -Dwwan=true \
-    -Dappindicator=no \
+    -Dappindicator=yes \
     -Dselinux=false \
     -Db_lto=false
 
@@ -47,42 +40,68 @@ build() {
 }
 
 check() {
-  cd $srcdir/network-manager-applet
   ninja -C build test
 }
 
-package_nm-connection-editor-git() {
-  pkgdesc="NetworkManager GUI connection editor and widgets"
-  provides=("libnm-gtk=$pkgver-$pkgrel" "nm-connection-editor")
-  conflicts=(libnm-gtk nm-connection-editor)
-  replaces=(libnm-gtk nm-connection-editor)
-
-  cd $srcdir/network-manager-applet
-  DESTDIR="${pkgdir}" ninja -C build install
-
-### Split network-manager-applet
-  cd ../nma
-  mv "$pkgdir"/etc/xdg/autostart etc/xdg/
-  mv "$pkgdir"/usr/bin/nm-applet usr/bin/
-  mv "$pkgdir"/usr/share/GConf usr/share/
-
-  cd usr/share
-  mv "$pkgdir"/usr/share/applications/nm-applet.desktop applications/
-  mv "$pkgdir"/usr/share/man/man1/nm-applet.1 man/man1/
-  
-  cd icons/hicolor/22x22
-  mv "$pkgdir"/usr/share/icons/hicolor/22x22/apps/nm-{adhoc,mb-roam,wwan-tower}.png apps/
-  mv "$pkgdir"/usr/share/icons/hicolor/22x22/apps/nm-{secure,vpn-active}-lock.png apps/
-  mv "$pkgdir"/usr/share/icons/hicolor/22x22/apps/nm-{signal,tech}-*.png apps/
-  mv "$pkgdir"/usr/share/icons/hicolor/22x22/apps/nm-*connecting*.png apps/
+_pick() {
+  local p="$1" f d; shift
+  for f; do
+    d="$srcdir/$p/${f#$pkgdir/}"
+    mkdir -p "$(dirname "$d")"
+    mv "$f" "$d"
+    rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")"
+  done
 }
 
 package_network-manager-applet-git() {
   provides=("network-manager-applet")
   conflicts=(network-manager-applet)
   replaces=(network-manager-applet)
-  depends=(nm-connection-editor libmm-glib libnotify libsecret)
-  mv nma/* "$pkgdir"
+  depends=(nm-connection-editor libnm libmm-glib libnotify libsecret)
+
+  DESTDIR="${pkgdir}" ninja -C build install
+        ### Split libnma
+     _pick libnma "$pkgdir"/usr/include/libnma
+     _pick libnma "$pkgdir"/usr/lib/girepository-1.0/NMA-*
+     _pick libnma "$pkgdir"/usr/lib/libnma.*
+     _pick libnma "$pkgdir"/usr/lib/pkgconfig/libnma.pc
+     _pick libnma "$pkgdir"/usr/share/gir-1.0/NMA-*
+     _pick libnma "$pkgdir"/usr/share/glib-2.0/schemas
+
+      ### Split libnm-gtk
+     _pick libnm-gtk "$pkgdir"/usr/include/libnm-gtk
+     _pick libnm-gtk "$pkgdir"/usr/lib/girepository-1.0/NMGtk-*
+     _pick libnm-gtk "$pkgdir"/usr/lib/libnm-gtk.*
+     _pick libnm-gtk "$pkgdir"/usr/lib/pkgconfig/libnm-gtk.pc
+     _pick libnm-gtk "$pkgdir"/usr/share/gir-1.0/NMGtk-*
+      ### Split nm-connection-editor
+     _pick nm-connection-editor "$pkgdir"/usr/bin/nm-connection-editor
+     _pick nm-connection-editor "$pkgdir"/usr/share/applications/nm-connection-editor.desktop
+     _pick nm-connection-editor "$pkgdir"/usr/share/icons/hicolor/22x22/apps/nm-device-wwan.png
+     _pick nm-connection-editor "$pkgdir"/usr/share/locale
+     _pick nm-connection-editor "$pkgdir"/usr/share/man/man1/nm-connection-editor.1
+     _pick nm-connection-editor "$pkgdir"/usr/share/metainfo
+}
+
+package_nm-connection-editor-git() {
+  pkgdesc="NetworkManager GUI connection editor and widgets"
+  provides=("libnma" "libnm-gtk=$pkgver-$pkgrel" "nm-connection-editor")
+  conflicts=(nm-connection-editor)
+  replaces=(nm-connection-editor)
+   mv nm-connection-editor/* "$pkgdir"
+}
+
+package_libnma-git() {
+    pkgdesc="NetworkManager GUI client library"
+    depends=(libnm gcr gtk3 iso-codes mobile-broadband-provider-info)
+     provides=("libnma")
+    mv libnma/* "$pkgdir"
+}
+
+package_libnm-gtk-git() {
+  pkgdesc="NetworkManager GUI client library (legacy)"
+  depends=(libnm-glib gtk3 iso-codes libgudev)
+  mv libnm-gtk/* "$pkgdir"
 }
 
 
