@@ -15,6 +15,7 @@ pkgdesc="Lightning-smart PHP IDE. Early Access Program."
 arch=('x86_64' 'i686')
 license=('Commercial')
 url='https://www.jetbrains.com/phpstorm/'
+depends=('libdbusmenu-glib')
 makedepends=('rsync')
 options=('!strip')
 source=(https://download.jetbrains.com/webide/PhpStorm-${_dlver}.tar.gz

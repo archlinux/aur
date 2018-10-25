@@ -7,6 +7,7 @@ pkgbase = phpstorm-eap
 	arch = i686
 	license = Commercial
 	makedepends = rsync
+	depends = libdbusmenu-glib
 	options = !strip
 	source = https://download.jetbrains.com/webide/PhpStorm-183.3795.24.tar.gz
 	source = jetbrains-phpstorm-eap.desktop
