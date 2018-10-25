@@ -1,6 +1,6 @@
 pkgbase = gnome-software-snap
 	pkgdesc = GNOME Software Tools with built in snap support
-	pkgver = 3.30.3
+	pkgver = 3.30.5
 	pkgrel = 1
 	url = https://download.gnome.org/sources/gnome-software/
 	arch = x86_64
@@ -20,8 +20,8 @@ pkgbase = gnome-software-snap
 	makedepends = valgrind
 	makedepends = snapd-glib
 	makedepends = liboauth
-	source = http://download.gnome.org/sources/gnome-software/3.30/gnome-software-3.30.3.tar.xz
-	sha256sums = c3b157a02e8291fa20cc21e6886933476f3b2586973f89f7c3ed7147ee53e4e4
+	source = http://download.gnome.org/sources/gnome-software/3.30/gnome-software-3.30.5.tar.xz
+	sha256sums = 22a183f7af2ee77f243a00eebea0e32ab54cfe0abb3597e7d7a8cf8511105d34
 
 pkgname = gnome-software-snap
 	groups = gnome
