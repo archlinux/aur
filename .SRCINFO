@@ -1,14 +1,13 @@
 pkgbase = rtrlib
 	pkgdesc = RPKI-RTR client library
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rtrlib/rtrlib
 	arch = x86_64
 	arch = i686
 	license = MIT
 	checkdepends = cmocka
 	makedepends = cmake
-	makedepends = chrpath
 	depends = libssh
 	options = strip
 	source = rtrlib-0.6.1.tar.gz::https://github.com/rtrlib/rtrlib/archive/v0.6.1.tar.gz
