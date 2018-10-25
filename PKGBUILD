@@ -26,7 +26,7 @@ _gitname="hobbes"
 
 pkgver() {
   cd "$_gitname"
-  git show -s --format="%ci" HEAD | sed -e 's/-//g' -e 's/ .*//'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
