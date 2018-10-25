@@ -1,33 +1,24 @@
-# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
 # Contributor: Alessio Fachechi <alessio.fachechi@gmail.com>
 
-# fix segmentation fault
-_commit='26abc33e61fd1535762c1813d9130e55789dbe85'
-
 pkgname=kitematic
-pkgver=0.17.3+10+g26abc33e
+pkgver=0.17.5
 pkgrel=1
 pkgdesc='Visual Docker Container Management'
 arch=('x86_64')
 url='https://github.com/docker/kitematic/'
 license=('APACHE')
-depends=('docker' 'nodejs-lts-carbon' 'glib2' 'hicolor-icon-theme')
-makedepends=('git' 'npm' 'grunt-cli') # needed for next version: 'typescript' 'tslint'
-source=("$pkgname::git+https://github.com/docker/kitematic.git#commit=${_commit}"
+depends=('docker' 'nodejs' 'glib2' 'hicolor-icon-theme')
+makedepends=('git' 'npm' 'grunt-cli' 'python2')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/docker/kitematic/archive/v${pkgver}.tar.gz"
         'kitematic.desktop'
         'kitematic.svg')
-sha256sums=('SKIP'
+sha256sums=('a3144b8742b2a4bcb27a7f611317642fdd7f12399e849d69a6af7597f1c39071'
             'acf85b7e6a94be11c482f6119dcea00cf828d9cd25e0bdea22b844fa5d4c01c0'
             '954d9803f49e475bc3242ad8b5dbfe5f3be9b532434ff260e1cf5c929f018617')
 
-pkgver() {
-    cd "$pkgname"
-    
-    git describe --long --tags | sed 's/^v//;s/-/+/g'
-}
-
 build() {
-    cd "$pkgname"
+    cd "${pkgname}-${pkgver}"
     
     npm install
     
@@ -35,12 +26,12 @@ build() {
 }
 
 package() {
-    cd "$pkgname"
+    cd "${pkgname}-${pkgver}"
     
     install -d -m755 "$pkgdir"/{opt,usr/bin}
     
     # install files
-    cp -aR dist/Kitematic-linux-x64/ "${pkgdir}/opt/kitematic"
+    cp -a dist/Kitematic-linux-x64/ "${pkgdir}/opt/kitematic"
     
     # create symlink for binary
     ln -s ../../opt/kitematic/Kitematic "${pkgdir}/usr/bin/kitematic"
