@@ -13,6 +13,7 @@ pkgbase = waybar-git
 	depends = libnl>=3.0
 	depends = libsigc++>=2.0
 	depends = wayland
+	depends = dbusmenu-gtk3
 	depends = libpulse
 	depends = wlroots
 	source = waybar-git::git://github.com/Alexays/Waybar
