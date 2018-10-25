@@ -4,12 +4,12 @@
 
 pkgname=lua-posix
 pkgver=34.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="posix bindings for Lua"
 arch=('i686' 'x86_64')
 url="https://github.com/luaposix/luaposix#luaposix"
 license=('custom')
-depends=('lua')
+depends=('lua' 'lua-std-normalize')
 conflicts=('lua-posix-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/luaposix/luaposix/archive/release-v$pkgver.tar.gz")
 md5sums=('b811b67c038e4310e05bb6149ebe6702')
