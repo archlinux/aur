@@ -1,0 +1,15 @@
+pkgbase = sddm-theme-amadeus
+	pkgdesc = Amadeus theme for SDDM
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Michal-Szczepaniak/sddm-theme-amadeus
+	install = sddm-theme-amadeus.install
+	arch = any
+	license = DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+	depends = sddm
+	depends = otf-takao
+	source = https://github.com/BaileyGingerTechnology/sddm-theme-amadeus/archive/1.0-nvk.tar.gz
+	md5sums = 4f9174a1369faa458583e6f4119c8aba
+
+pkgname = sddm-theme-amadeus
+
