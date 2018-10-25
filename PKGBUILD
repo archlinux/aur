@@ -3,7 +3,7 @@
 # Contributor:  Jeremy Asuncion <jeremyasuncion808@gmail.com>
 
 pkgname=lab
-pkgver=0.13.1
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="A hub-like tool for GitLab (tagged release)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('hub')
 makedepends=('go' 'dep')
 conflicts=("$pkgname-git" "$pkgname-bin")
 source=("https://github.com/zaquestion/lab/archive/v$pkgver.tar.gz")
-sha512sums=('7b4d89348f588c2680ad0706441b8ad9df8483e11664892ee510596e9be250ce7689dc3b6c67bc8e5afab5265863255fd335b356df75a0e5c356c8c19abffb5e')
+sha512sums=('65bfacc380a80d089426c451094184be3721e033de954ee33778d1cdf017c1636a163dd790c28c863385621a4085b60c64a65c9981651abf06056e4c82961dad')
 _gourl="github.com/zaquestion/$pkgname"
 
 prepare() {
