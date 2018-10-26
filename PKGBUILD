@@ -1,15 +1,14 @@
-# Maintainer: Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=rockchip-mpp
 pkgver=20171218
-pkgrel=1
+pkgrel=2
 pkgdesc='Rockchip Media Process Platform (MPP)'
 arch=('i686' 'x86_64')
 url='https://github.com/rockchip-linux/mpp/'
 license=('APACHE')
 depends=('gcc-libs')
 makedepends=('cmake')
-conflicts=('rockchip-mpp-git')
 options=('!staticlibs')
 source=("${pkgname}-${pkgver}".tar.gz::"https://github.com/rockchip-linux/mpp/archive/release_${pkgver}.tar.gz")
 sha256sums=('03b4f093e23fa480c3c46a07059fb297d352e5b3d050f4da4869c1ade8adc125')
