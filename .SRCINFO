@@ -1,5 +1,5 @@
 pkgbase = linux-bfq-mq-git
-	pkgver = 4.16.0.gc8bc611b2a01
+	pkgver = 4.18.0.g10bbaa12ceef
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = linux-bfq-mq-git
 	sha256sums = SKIP
 	sha256sums = 9f7177679c8d3f8d699ef0566a51349d828436dba04603bc2223f98c60d2d178
 	sha256sums = eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531
-	sha256sums = 6ccff56ff37e2f086f88e392f087e1a5d0b1d1b67c82d49f405ef1007d63d66b
+	sha256sums = 353fad0d0363c32c343dde215de4a22c38fbc748df70560b98c2f2c2e98b3c1c
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = 75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919
 	sha256sums = 5f6ba52aaa528c4fa4b1dc097e8930fad0470d7ac489afcb13313f289ca32184
@@ -38,19 +38,19 @@ pkgname = linux-bfq-mq-git
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
-	provides = linux-bfq-mq-git=4.16.0.gc8bc611b2a01
-	provides = linux=4.16.0.gc8bc611b2a01
+	provides = linux-bfq-mq-git=4.18.0.g10bbaa12ceef
+	provides = linux=4.18.0.g10bbaa12ceef
 	backup = etc/mkinitcpio.d/linux-bfq-mq-git.preset
 
 pkgname = linux-bfq-mq-git-headers
 	pkgdesc = Header files and scripts for building modules for Linux-bfq-mq-git kernel
-	depends = linux-bfq-mq-git=4.16.0.gc8bc611b2a01
-	provides = linux-bfq-mq-git-headers=4.16.0.gc8bc611b2a01
-	provides = linux-headers=4.16.0.gc8bc611b2a01
+	depends = linux-bfq-mq-git=4.18.0.g10bbaa12ceef
+	provides = linux-bfq-mq-git-headers=4.18.0.g10bbaa12ceef
+	provides = linux-headers=4.18.0.g10bbaa12ceef
 
 pkgname = linux-bfq-mq-git-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-bfq-mq-git kernel
-	depends = linux-bfq-mq-git=4.16.0.gc8bc611b2a01
-	provides = linux-bfq-mq-git-docs=4.16.0.gc8bc611b2a01
-	provides = linux-docs=4.16.0.gc8bc611b2a01
+	depends = linux-bfq-mq-git=4.18.0.g10bbaa12ceef
+	provides = linux-bfq-mq-git-docs=4.18.0.g10bbaa12ceef
+	provides = linux-docs=4.18.0.g10bbaa12ceef
 
