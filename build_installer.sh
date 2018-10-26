@@ -41,7 +41,7 @@ for cmd in evelauncher.sh everegedit evewine evewinecfg evewinetricks ;do
     fi
 done
 cp -f ../evelauncher.sh.in evesetup/evelauncher.sh
-cp ../setup.sh.in evesetup/setup.sh
+grep -v '^#-' ../setup.sh.in >evesetup/setup.sh
 chmod a+x evesetup/setup.sh
 echo "done."
 
@@ -81,7 +81,7 @@ rm -rf evelauncher/
 echo "done."
 
 printf "\nBuild self-extractable archive evesetup-$version-$release-$arch.run\n\n"
-./makeself.sh --xz evesetup/ ../evesetup-$version-$release-$arch.run \
+./makeself.sh evesetup/ ../evesetup-$version-$release-$arch.run \
     "EVE Online Launcher Setup" ./setup.sh
 cd ..
 printf "\nClean up build environment..."

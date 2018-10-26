@@ -31,12 +31,12 @@ bootstrap_install() {
 	ln -s "${target}/bin/$cmd" "${prefix}/bin/$cmd"
 	if [ ! "$cmd" = "evewine" ] ;then
 #-- testing only
-#	oexec=$(grep Exec= ./${cmd%.*}.desktop)
-#	sed -i s,$oexec,Exec=$prefix/bin/$cmd, ./${cmd%.*}.desktop
+#-	oexec=$(grep Exec= ./${cmd%.*}.desktop)
+#-	sed -i s,$oexec,Exec=$prefix/bin/$cmd, ./${cmd%.*}.desktop
 #--
 	    install -m 0644 "./${cmd%.*}.desktop" "${prefix}/share/applications/"
 #-- testing only
-#	sed -i s,Exec=$prefix/bin/$cmd,$oexec, ./${cmd%.*}.desktop
+#-	sed -i s,Exec=$prefix/bin/$cmd,$oexec, ./${cmd%.*}.desktop
 #--
 	fi
     done
@@ -93,8 +93,8 @@ if [ -d "${target}/bin/" ] ;then
 	bootstrap_remove
 else
 #-- testing only
-#	otarget=$(grep ^SETUPDIR= ./evelauncher.sh)
-#	sed -i s,$otarget,SETUPDIR=\"$target\", ./evelauncher.sh
+#-	otarget=$(grep ^SETUPDIR= ./evelauncher.sh)
+#-	sed -i s,$otarget,SETUPDIR=\"$target\", ./evelauncher.sh
 #--
     printf "\n"
     read -p 'Install EVE Online Launcher Setup? (Y/n) ' key
@@ -103,7 +103,7 @@ else
 	printf "\nYou can now start EVE Online Launcher and his " && \
 	echo "Tools from your Application menu."
 #-- testing only
-#	sed -i s,SETUPDIR=\"$target\",$otarget, ./evelauncher.sh
+#-	sed -i s,SETUPDIR=\"$target\",$otarget, ./evelauncher.sh
 #--
 fi
 printf "\nDone.\n\n"

@@ -17,7 +17,13 @@ if [ ! -x "$WINEPATH/wine" ] ;then
     exit 1
 fi
 
+if [ -x "$WINEPATH/${0#*eve}" ] ;then
+    WINECMD="$WINEPATH/${0#*eve}"
+else
+    WINECMD="$CUSTOMWP ${0#*eve}"
+fi
+
 env WINEPREFIX=$WINEPREFIX \
     WINEDEBUG=-all \
     WINEDLLOVERRIDES="mscoree,mshtml,winemenubuilder.exe=d" \
-    $WINEPATH/${0#*eve} "$@"
+    $WINECMD "$@"

@@ -73,10 +73,10 @@ check_wine() {
 		WINEPREFIX=$WINEPREFIX \
 		WINEDEBUG=-all \
 		WINEDLLOVERRIDES="mscoree,mshtml,winemenubuilder.exe=d" \
-		$WINEPATH/wineboot
+		$WINEPATH/wine wineboot
 	    env WINEPREFIX=$WINEPREFIX $WINEPATH/wine reg delete \
 		'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\RunServices' \
-		/v winemenubuilder /f >/dev/null
+		/v winemenubuilder /f >/dev/null || true
 	    env WINEPREFIX=$WINEPREFIX $WINEPATH/wine reg add \
 		'HKEY_CURRENT_USER\Software\Wine\DllOverrides' \
 		/v winemenubuilder.exe /f >/dev/null
