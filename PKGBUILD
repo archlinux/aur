@@ -5,14 +5,14 @@
 # Contributor: Olivier Mehani <shtrom-arch@ssji.net>
 pkgname=monkeysphere
 pkgver=0.42
-pkgrel=1
+pkgrel=2
 pkgdesc="Leverage the OpenPGP web of trust for OpenSSH and Web authentication"
 arch=('any')
 url="http://web.monkeysphere.info/"
 license=('GPL3')
 depends=('agent-transfer' 'lockfile-progs' 'perl-crypt-openssl-rsa' 'perl-digest-sha1' 'gnupg>=2.1.13')
 checkdepends=('socat' 'openssh' 'cpio' 'gnupg>=2.1.13')
-source=(http://archive.monkeysphere.info/debian/pool/${pkgname}/m/${pkgname}/${pkgname}_${pkgver}.orig.tar.gz
+source=(https://archive.monkeysphere.info/debian/pool/${pkgname}/m/${pkgname}/${pkgname}_${pkgver}.orig.tar.gz
     binmerge.patch
     exclude-agent.patch
     )
