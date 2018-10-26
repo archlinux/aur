@@ -1,14 +1,13 @@
-# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=tiny-dnn
 pkgver=1.0.0a3
-pkgrel=2
-pkgdesc="A C++11 implementation of deep learning for limited computational resource, embedded systems and IoT devices"
+pkgrel=3
+pkgdesc='A C++11 implementation of deep learning for limited computational resource, embedded systems and IoT devices'
 arch=('any')
-url="https://github.com/tiny-dnn/tiny-dnn"
+url='https://github.com/tiny-dnn/tiny-dnn/'
 license=('BSD')
 makedepends=('cmake')
-conflicts=('tiny-dnn-git')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/tiny-dnn/tiny-dnn/archive/v${pkgver}.tar.gz")
 sha256sums=('e2c61ce8c5debaa644121179e9dbdcf83f497f39de853f8dd5175846505aa18b')
 
@@ -16,8 +15,6 @@ build() {
     cd "${pkgname}-${pkgver}"
     
     cmake \
-        -DCMAKE_BUILD_TYPE:STRING=Release \
-        -DCMAKE_COLOR_MAKEFILE:BOOL=ON \
         -DCMAKE_INSTALL_PREFIX:PATH="/usr" \
         -DBUILD_TESTS:BOOL=OFF \
         -DBUILD_EXAMPLES:BOOL=OFF \
@@ -28,6 +25,8 @@ build() {
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    make DESTDIR="${pkgdir}" install
-    install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    
+    make DESTDIR="$pkgdir" install
+    
+    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
