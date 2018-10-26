@@ -1,6 +1,6 @@
 # Maintainer: Aurélien Bertron <aurelienbertron at gmail dot com>
 pkgname=plasma5-runners-duckduckgo-bangs
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A little krunner plugin (Plasma 5) to execute DuckDuckGo bangs in default browser"
 arch=('any')
@@ -28,4 +28,4 @@ package() {
   make install DESTDIR="${pkgdir}"
 }
 
-md5sums=('3402919b55722e4709aa3c17742baaa3')
+md5sums=('1ffb1fd2fd32111cc568748f1d0b22b8')
