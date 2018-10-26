@@ -8,6 +8,7 @@ pkgbase = up-git
 	makedepends = go
 	provides = up
 	conflicts = up
+	conflicts = up-bin
 	source = up-git::git+https://github.com/akavel/up
 	sha1sums = SKIP
 
