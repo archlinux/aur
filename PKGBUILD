@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=mydumper
-pkgver=0.9.3
+pkgver=0.9.5
 pkgrel=1
 pkgdesc="A high performance MySQL backup tool."
 arch=("i686" "x86_64")
@@ -12,7 +12,7 @@ makedepends=("cmake")
 
 source=("https://github.com/maxbube/mydumper/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
 
-sha256sums=('2cd6a074bac7072905bd044ec20955c53c81b10e877ac9c644509940a8d201fb')
+sha256sums=('544d434b13ec192976d596d9a7977f46b330f5ae3370f066dbe680c1a4697eb6')
 
 build() {
 	mkdir -p build
