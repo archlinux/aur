@@ -1,0 +1,16 @@
+pkgbase = tmux-manager-git
+	pkgdesc = Allows easy handling of various types of tmux sessions, as well as complex setups.
+	pkgver = r36.283e8ba
+	pkgrel = 1
+	url = https://github.com/Ganneff/tm
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = tmux
+	provides = tm
+	conflicts = tm
+	source = tmux-manager::git+git://github.com/Ganneff/tm#branch=master
+	sha256sums = SKIP
+
+pkgname = tmux-manager-git
+
