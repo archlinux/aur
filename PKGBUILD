@@ -1,33 +1,32 @@
-# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=psimd-git
-pkgver=r15.0b26a3f
+pkgver=r25.90a938f
 pkgrel=1
-pkgdesc="Header-only library for portable 128-bit SIMD intrinsics (git version)"
+pkgdesc='Header-only library for portable 128-bit SIMD intrinsics (git version)'
 arch=('any')
-url="https://github.com/Maratyszcza/psimd/"
+url='https://github.com/Maratyszcza/psimd/'
 license=('MIT')
 makedepends=('git')
-source=("$pkgname"::"git+https://github.com/Maratyszcza/psimd.git")
+provides=('psimd')
+conflicts=('psimd')
+source=("$pkgname"::'git+https://github.com/Maratyszcza/psimd.git')
 sha256sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
     
     # git, no tags available
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
     cd "$pkgname"
     
-    # directories creation
+    # headers
     mkdir -p "${pkgdir}/usr/include"
-    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-    
-    # include
     install -D -m644 include/*.h "${pkgdir}/usr/include"
     
     # license
-    install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
