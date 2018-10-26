@@ -1,6 +1,6 @@
 pkgbase = gitextensions
 	pkgdesc = Graphical user interface for Git that allows you control Git without using the command line.
-	pkgver = 2.51
+	pkgver = 2.51.05
 	pkgrel = 1
 	epoch = 1
 	url = http://gitextensions.github.io/
@@ -13,11 +13,11 @@ pkgbase = gitextensions
 	source = gitextensions
 	source = gitextensions.desktop
 	source = gitextensions.png
-	source = https://github.com/gitextensions/gitextensions/releases/download/v2.51/GitExtensions-2.51-Mono.zip
+	source = https://github.com/gitextensions/gitextensions/releases/download/v2.51.05/GitExtensions-2.51.05-Mono.zip
 	md5sums = b01b1bf6d75b30f6763daa0498385e99
 	md5sums = cd36dafb8e961f67701117f622240e9b
 	md5sums = bbd6381241e896200c8494981115dff6
-	md5sums = 195dc3c569ffc10628dac213dffc8be5
+	md5sums = 1c40409a1b18c50022265ea6e24c220e
 
 pkgname = gitextensions
 
