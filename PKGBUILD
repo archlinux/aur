@@ -6,8 +6,8 @@
 
 pkgbase=shiboken2-git
 pkgname=(python{2,}-shiboken2-git shiboken2-git)
-_upver=5.11.1
-pkgver=5.11.1.r5867.83b42ca0
+_upver=5.11.2
+pkgver=5.11.2.r5903.ae51319f
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('LGPL')
