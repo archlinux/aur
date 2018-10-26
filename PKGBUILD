@@ -1,11 +1,11 @@
-# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=pthreadpool-git
-pkgver=r37.097a0c8
-pkgrel=2
-pkgdesc="A pthread-based thread pool implementation for C/C++ (git version)"
+pkgver=r55.13da0b4
+pkgrel=1
+pkgdesc='A pthread-based thread pool implementation for C/C++ (git version)'
 arch=('i386' 'x86_64')
-url="https://github.com/Maratyszcza/pthreadpool/"
+url='https://github.com/Maratyszcza/pthreadpool/'
 license=('BSD')
 makedepends=(
     # binary repositories:
@@ -13,15 +13,17 @@ makedepends=(
     # AUR:
         'confu2-git'
 )
+provides=('pthreadpool')
+conflicts=('pthreadpool')
 options=('staticlibs')
-source=("$pkgname"::"git+https://github.com/Maratyszcza/pthreadpool.git")
+source=("$pkgname"::'git+https://github.com/Maratyszcza/pthreadpool.git')
 sha256sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
     
     # git, no tags available
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -37,17 +39,13 @@ build() {
 package() {
     cd "${pkgname}"
     
-    # directories creation
+    # headers
     mkdir -p "${pkgdir}/usr/include"
-    mkdir -p "${pkgdir}/usr/lib"
-    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-    
-    # include
     install -D -m644 include/*.h "${pkgdir}/usr/include"
     
     # lib
     install -D -m644 lib/libpthreadpool.a "${pkgdir}/usr/lib"
     
     # license
-    install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
