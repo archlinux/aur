@@ -1,4 +1,4 @@
-# Maintainer: Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 # NOTE (1):
 # DPS (Display PostScript) feature is obsolete and thus not enabled.
@@ -23,7 +23,7 @@ _qdepth='32'
 
 pkgbase=imagemagick-full-git
 pkgname=('libmagick-full-git' 'imagemagick-full-git' 'imagemagick-full-doc-git')
-pkgver=7.0.7.28.r13846.g32fafbf71
+pkgver=7.0.8.15.r14948.g2f1375d5f
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="An image viewing/manipulation program (Q${_qdepth} HDRI with all libs and features, git version)"
@@ -70,9 +70,13 @@ prepare() {
 pkgver() {
     cd "$pkgbase"
     
-    local _version="$(grep 'PACKAGE_VERSION=' version.sh | sed 's/[^0-9\.]*//g')"
-    local _release="$(grep 'PACKAGE_RELEASE=' version.sh | sed 's/[^0-9]*//g')"
-    local _revision="$(printf 'r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")"
+    local _version
+    local _release
+    local _revision
+    
+    _version="$(grep 'PACKAGE_VERSION=' version.sh | sed 's/[^0-9\.]*//g')"
+    _release="$(grep 'PACKAGE_RELEASE=' version.sh | sed 's/[^0-9]*//g')"
+    _revision="$(printf 'r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")"
     
     printf '%s.%s.%s' "$_version" "$_release" "$_revision"
 }
@@ -160,16 +164,15 @@ package_libmagick-full-git() {
               "libMagickCore-${pkgver%%.*}.Q${_qdepth}HDRI.so"
               "libMagickWand-${pkgver%%.*}.Q${_qdepth}HDRI.so"
                 "libMagick++-${pkgver%%.*}.Q${_qdepth}HDRI.so")
-    conflicts=('libmagick' 'libmagick-fftw' 'libmagick-no-hdri'
-               'libmagick-git' 'libmagick-full')
+    conflicts=('libmagick')
     
     cd "$pkgbase"
     make DESTDIR="$pkgdir" install
     
     rm -f "$pkgdir"/usr/lib/*.la
     
-    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -D -m644 NOTICE  "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
+    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -D -m644 NOTICE  -t "${pkgdir}/usr/share/licenses/${pkgname}"
     
     rm -rf binpkg/* docpkg/*
     
@@ -206,9 +209,8 @@ package_imagemagick-full-git() {
             'imagemagick-full-doc-git: manual and API docs'
             'ttf-mac-fonts: for Apple fonts support'
     )
-    provides=('imagemagick' 'imagemagick-fftw')
-    conflicts=('imagemagick' 'imagemagick-fftw' 'imagemagick-no-hdri'
-               'imagemagick-git' 'imagemagick-full')
+    provides=('imagemagick' 'imagemagick-git')
+    conflicts=('imagemagick')
     options=('!emptydirs')
     
     cd "$pkgbase"
@@ -226,20 +228,20 @@ package_imagemagick-full-git() {
     fi
     # template end;
     
-    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -D -m644 NOTICE  "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
+    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -D -m644 NOTICE  -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 package_imagemagick-full-doc-git() {
     pkgdesc+=' (manual and API docs)'
     arch=('any')
-    provides=('imagemagick-doc')
-    conflicts=('imagemagick-doc' 'imagemagick-git-doc' 'imagemagick-full-doc')
+    provides=('imagemagick-doc' 'imagemagick-doc-git')
+    conflicts=('imagemagick-doc')
     
     cd "$pkgbase"
     
     mv -f docpkg/* "$pkgdir"
     
-    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -D -m644 NOTICE  "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
+    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -D -m644 NOTICE  -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
