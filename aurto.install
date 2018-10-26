@@ -34,8 +34,19 @@ post_install() {
   echo 'aurto: Adding & enabling systemd timer update tasks' >&2
   systemctl enable --now /usr/lib/systemd/system/check-aurto-git-trigger.timer
   systemctl enable --now /usr/lib/systemd/system/update-aurto.timer
+  systemctl enable /usr/lib/systemd/system/update-aurto-startup.timer
 
   echo "aurto: Passwordless usage available for \`wheel\` group"
+}
+
+post_upgrade() {
+  old_version=$2
+  update_from_before_0_7_8_1=$(vercmp "$old_version" "0.7.8-1")
+  if [ "$update_from_before_0_7_8_1" = "-1" ] \
+    && ! systemctl is-enabled /usr/lib/systemd/system/update-aurto-startup.timer 2>/dev/null
+  then
+    systemctl enable /usr/lib/systemd/system/update-aurto-startup.timer
+  fi
 }
 
 pre_remove() {
