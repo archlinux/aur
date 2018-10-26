@@ -1,7 +1,7 @@
 pkgbase = macos11-icon-theme
 	pkgdesc = macOS11 iCons Collection
 	pkgver = 4.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.opendesktop.org/p/1102582/
 	arch = any
 	license = GPL
