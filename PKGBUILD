@@ -4,7 +4,7 @@
 # Contributer: Sébastien Luttringer <seblu@aur.archlinux.org>
 pkgbase=(virtualbox-ck-modules)
 pkgname=(virtualbox-ck-host-modules)
-pkgver=5.2.18
+pkgver=5.2.20
 pkgrel=1
 arch=('x86_64')
 url='http://virtualbox.org'
@@ -18,13 +18,8 @@ _kernel="$(pacman -Q linux-ck | awk '{print $1}' | cut -d \- -f 3)"
 _extramodules=extramodules-ck-${_kernel}
 _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
 
-
 pkgver() {
         pacman -Ss virtualbox-host-dkms | awk 'NR==1{print $2}' | cut -d \- -f 1
-}
-
-pkgrel() {
-        pacman -Ss virtualbox-host-dkms | awk 'NR==1{print $2}' | cut -d \- -f 2
 }
 
 build() {
