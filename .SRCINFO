@@ -1,7 +1,7 @@
 pkgbase = minizinc-ide
 	pkgdesc = Simple IDE for writing and running MiniZinc models
-	pkgver = 2.2.1
-	pkgrel = 2
+	pkgver = 2.2.2
+	pkgrel = 1
 	url = http://www.minizinc.org/ide/
 	arch = x86_64
 	license = Mozilla Public License Version 2.0
@@ -15,10 +15,10 @@ pkgbase = minizinc-ide
 	options = !strip
 	source = minizinc-ide.desktop
 	source = minizinc.png
-	source = https://github.com/MiniZinc/MiniZincIDE/releases/download/2.2.1/MiniZincIDE-2.2.1-bundle-linux-x86_64.tgz
+	source = https://github.com/MiniZinc/MiniZincIDE/releases/download/2.2.2/MiniZincIDE-2.2.2-bundle-linux-x86_64.tgz
 	sha256sums = b86ef15b8ee1014342a2f38358d7f806a58b900bf1150101b535aecddaa122d1
 	sha256sums = 1b9fa21e25c48e1080eaea2348eb98a45242e045b7ba94fe4723a9b01cbcdb2a
-	sha256sums = b67678d3c468998e20f080572b39e6140bb73c0671d5fb9be1d969067d28b59b
+	sha256sums = a1c5a13a3051449727da5d96f90dcbccba6268ed1315ba47dbec5a0912065e3d
 
 pkgname = minizinc-ide
 
