@@ -1,4 +1,4 @@
-# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
 # Contributor: Det <nimetonmaili g-mail>
 # Contributor: Ng Oon-Ee
 # Contributor: Dan Vratil
@@ -9,7 +9,7 @@
 
 pkgbase=lib32-nvidia-utils-beta
 pkgname=('lib32-nvidia-utils-beta' 'lib32-nvidia-libgl-beta' 'lib32-opencl-nvidia-beta')
-pkgver=410.66
+pkgver=410.73
 pkgrel=1
 pkgdesc='NVIDIA driver utilities and libraries (beta version) (32-bit)'
 arch=('x86_64')
@@ -19,7 +19,7 @@ license=('custom:NVIDIA')
 options=('!strip')
 _pkg="NVIDIA-Linux-${CARCH}-${pkgver}"
 source=("http://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run")
-sha256sums=('8fb6ad857fa9a93307adf3f44f5decddd0bf8587a7ad66c6bfb33e07e4feb217')
+sha256sums=('bebc9cf781201beb5ec1a1dde7672db68609b8af0aa5ff32daa3ebb533c2ff1e')
 
 _create_links() {
   # create missing soname links
