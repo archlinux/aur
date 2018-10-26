@@ -19,6 +19,7 @@ pkgbase = mapserver
 	depends = geos
 	depends = agg
 	depends = apache
+	depends = protobuf-c
 	depends = fcgi
 	depends = mod_fcgid
 	depends = python2

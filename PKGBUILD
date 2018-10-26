@@ -9,7 +9,7 @@ pkgdesc="Platform for publishing spatial data and interactive mapping applicatio
 arch=(i686 x86_64)
 license=('MIT')
 url="http://www.mapserver.org"
-depends=('libpng' 'freetype2' 'zlib' 'gdal' 'proj' 'libjpeg-turbo' 'libxml2' 'libpqxx' 'pdflib-lite' 'geos' 'agg' 'apache' 
+depends=('libpng' 'freetype2' 'zlib' 'gdal' 'proj' 'libjpeg-turbo' 'libxml2' 'libpqxx' 'pdflib-lite' 'geos' 'agg' 'apache' 'protobuf-c'
 'fcgi' 'mod_fcgid' 'python2' 'swig' 'libsvg-cairo' 'fribidi' )
 ## For v8 support require v8-3.20; for PHP mapscript require php, php-pear, php-apache
 makedepends=('cfitsio')
@@ -19,13 +19,13 @@ md5sums=('03cd2532df9def0011c2f586e2e615fd'
          '4f336526a3a0b20ef784d8c8c88e38df')
 
 prepare() {
-  cd ${startdir}/src/${pkgname}-${pkgver}
+  cd ${srcdir}/${pkgname}-${pkgver}
   
   patch -p1 < ../cmake-3.12.patch
 }
 
 build() {
-  cd ${startdir}/src/${pkgname}-${pkgver}
+  cd ${srcdir}/${pkgname}-${pkgver}
   
   if [ -f CMakeCache.txt ]  
     then
