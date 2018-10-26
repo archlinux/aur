@@ -20,7 +20,6 @@ pkgbase = gst-plugins-intel-msdk
 	depends = libxcb
 	depends = libxkbcommon
 	depends = intel-media-sdk
-	conflicts = gst-plugins-intel-msdk-git
 	source = gst-plugins-intel-msdk-1.3.3.rc9.tar.gz::https://github.com/intel/gstreamer-media-SDK/archive/v1.3.3-rc9.tar.gz
 	source = gst-plugins-intel-msdk-fix-intel-media-sdk-directories.patch
 	source = gst-plugins-intel-msdk-fix-libdrm-include-directory.patch

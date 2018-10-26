@@ -1,4 +1,4 @@
-# Maintainer: Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=gst-plugins-intel-msdk
 _srcname=gstreamer-media-SDK
@@ -19,7 +19,6 @@ depends=(
         'intel-media-sdk'
 )
 makedepends=('cmake')
-conflicts=('gst-plugins-intel-msdk-git')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/intel/gstreamer-media-SDK/archive/v${pkgver%.${_rc}*}-${_rc}.tar.gz"
         'gst-plugins-intel-msdk-fix-intel-media-sdk-directories.patch'
         'gst-plugins-intel-msdk-fix-libdrm-include-directory.patch'
