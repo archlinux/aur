@@ -1,7 +1,7 @@
 pkgbase = littleutils-full
 	pkgdesc = Utilities for compression, file manipulation, text cleanup, and images/PDF optimization (with all features and extras)
-	pkgver = 1.0.37
-	pkgrel = 2
+	pkgver = 1.0.39
+	pkgrel = 1
 	url = http://littleutils.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -26,8 +26,8 @@ pkgbase = littleutils-full
 	depends = lzma_alone
 	provides = littleutils
 	conflicts = littleutils
-	source = https://sourceforge.net/projects/littleutils/files/littleutils-source/1.0.37/littleutils-1.0.37.tar.xz
-	sha256sums = f846ab6d2793499c99472469a2a74d9e57ee336320700bd540e2bc6ab0ec76da
+	source = https://sourceforge.net/projects/littleutils/files/littleutils-source/1.0.39/littleutils-1.0.39.tar.xz
+	sha256sums = c24185a0752140f38b1c295bfad3f038fbeda2f1643cd83d7496130cc3a03160
 
 pkgname = littleutils-full
 

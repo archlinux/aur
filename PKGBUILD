@@ -1,9 +1,9 @@
-# Maintainer: Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 _srcname=littleutils
 pkgname=littleutils-full
-pkgver=1.0.37
-pkgrel=2
+pkgver=1.0.39
+pkgrel=1
 pkgdesc='Utilities for compression, file manipulation, text cleanup, and images/PDF optimization (with all features and extras)'
 arch=('i686' 'x86_64')
 url='http://littleutils.sourceforge.net/'
@@ -18,7 +18,7 @@ depends=(
 provides=('littleutils')
 conflicts=('littleutils')
 source=("https://sourceforge.net/projects/littleutils/files/littleutils-source/${pkgver}/littleutils-${pkgver}.tar.xz")
-sha256sums=('f846ab6d2793499c99472469a2a74d9e57ee336320700bd540e2bc6ab0ec76da')
+sha256sums=('c24185a0752140f38b1c295bfad3f038fbeda2f1643cd83d7496130cc3a03160')
 
 build() {
     cd "${_srcname}-${pkgver}"
@@ -31,8 +31,7 @@ build() {
 package() {
     cd "${_srcname}-${pkgver}"
     
-    make DESTDIR="$pkgdir" install
-    make DESTDIR="$pkgdir" install-extra
+    make DESTDIR="$pkgdir" install{,-extra}
     
-    install -D -m644 LICENSES "${pkgdir}/usr/share/licenses/${pkgname}/LICENSES"
+    install -D -m644 LICENSES -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
