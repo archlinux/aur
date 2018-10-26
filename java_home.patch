@@ -1,0 +1,11 @@
+--- a/bin/scala	2017-11-10 03:24:54.000000000 +0100
++++ b/bin/scala	2018-10-26 15:49:40.256956648 +0200
+@@ -8,6 +8,8 @@
+ # PARTICULAR PURPOSE.
+ ##############################################################################
+ 
++JAVA_HOME=/usr/lib/jvm/default
++
+ findScalaHome () {
+   # see SI-2092 and SI-5792
+   local source="${BASH_SOURCE[0]}"

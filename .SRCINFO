@@ -1,0 +1,23 @@
+pkgbase = scala211
+	pkgdesc = A Java-interoperable language with object-oriented and functional features
+	pkgver = 2.11.12
+	pkgrel = 1
+	url = http://www.scala-lang.org
+	arch = any
+	license = BSD
+	depends = java-environment>=6
+	depends = java-environment<=9
+	depends = java-runtime>=6
+	depends = java-runtime<=9
+	optdepends = graphviz: generate diagrams
+	provides = scala
+	conflicts = scala
+	source = https://downloads.lightbend.com/scala/2.11.12/scala-2.11.12.tgz
+	source = java_home.patch
+	md5sums = 853bfdd9d89a99b2b54ad4e04111b88c
+	md5sums = f64384f5b55e9bbb8bf1b7c4cf2bd47b
+	sha256sums = b11d7d33699ca4f60bc3b2b6858fd953e3de2b8522c943f4cda4b674316196a8
+	sha256sums = 7888e98c4082217771803cee27d4d61b6606ce8d44990ede410d902603aded0b
+
+pkgname = scala211
+
