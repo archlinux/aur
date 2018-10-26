@@ -1,8 +1,8 @@
-# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=openni2-git
 pkgver=2.2.beta.r25.g1fce8ed
-pkgrel=4
+pkgrel=5
 pkgdesc='Framework for sensor-based Natural Interaction (git version)'
 arch=('i686' 'x86_64')
 url='https://github.com/occipital/OpenNI2/'
@@ -10,7 +10,7 @@ license=('APACHE')
 depends=('freeglut' 'glu' 'libusb' 'java-environment' 'libjpeg-turbo')
 makedepends=('git' 'python' 'doxygen' 'graphviz')
 provides=('openni2')
-conflicts=('openni2' 'openni2-libfreenect')
+conflicts=('openni2')
 source=('openni2-git'::'git+https://github.com/occipital/OpenNI2.git'
         '0002-Change-path-of-config-files-to-etc-openni2.patch'
         '0003-Use-system-wide-libjpeg.patch'
