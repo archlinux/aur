@@ -1,7 +1,7 @@
-# Maintainer: Paul Bell <linux at dpb dot org dot uk>
+# Maintainer: Paul Bell <linux "at" dpb "dot" org "dot" uk>
 # Contributor: Natalia Portillo <claunia@clania.com>
 pkgname=rpcemu
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="An Emulator of classic Acorn computer systems, such as the Risc PC and A7000"
 url="http://www.marutan.net/rpcemu/"
@@ -9,7 +9,7 @@ arch=('x86_64' 'i686')
 license=('GPL2')
 makedepends=('qt5-base')
 source=("http://www.marutan.net/rpcemu/cgi/download.php?sFName=${pkgver}/rpcemu-${pkgver}.tar.gz")
-sha256sums=('772f2648cd141943d4182fb9518ebc9730e00cbdd492dc5c3c1b447d8cb1f86d')
+sha256sums=('079f779ed8a5da4df3bad035e79f5bce2c8890e7e9d1fe088be9463088809bfc')
 install="$pkgname.install"
 _pkgname="rpcemu-recompiler"
 
