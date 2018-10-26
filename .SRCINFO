@@ -1,15 +1,13 @@
 pkgbase = gcc6
 	pkgdesc = The GNU Compiler Collection (6.x.x)
-	pkgver = 6.4.1
-	pkgrel = 8
+	pkgver = 6.5.0
+	pkgrel = 1
 	url = https://gcc.gnu.org/gcc-6/
 	arch = x86_64
 	license = GPL
 	license = LGPL
 	license = FDL
 	license = custom
-	checkdepends = dejagnu
-	checkdepends = inetutils
 	makedepends = binutils
 	makedepends = libmpc
 	makedepends = doxygen
@@ -21,18 +19,16 @@ pkgbase = gcc6
 	makedepends = libart-lgpl
 	makedepends = libxtst
 	options = !emptydirs
-	source = gcc::svn://gcc.gnu.org/svn/gcc/branches/gcc-6-branch#revision=263436
+	source = https://gcc.gnu.org/pub/gcc/releases/gcc-6.5.0/gcc-6.5.0.tar.xz
 	source = http://isl.gforge.inria.fr/isl-0.18.tar.bz2
 	source = http://www.bastoul.net/cloog/pages/download/cloog-0.18.4.tar.gz
-	source = glibc2.28-ustat.patch
-	sha512sums = SKIP
+	sha512sums = ce046f9a50050fd54b870aab764f7db187fe7ea92eb4aaffb7c3689ca623755604e231f2af97ef795f41c406bb80c797dd69957cfdd51dfa2ba60813f72b7eac
 	sha512sums = 85d0b40f4dbf14cb99d17aa07048cdcab2dc3eb527d2fbb1e84c41b2de5f351025370e57448b63b2b8a8cf8a0843a089c3263f9baee1542d5c2e1cb37ed39d94
 	sha512sums = d35d67b08ffe13c1a010b65bfe4dd02b0ae013d5b489e330dc950bd3514defca8f734bd37781856dcedf0491ff6122c34eecb4b0fe32a22d7e6bdadea98c8c23
-	sha512sums = db5d70f6f556c8b17bba89f29487136ce948f82afd064c1715fa1228cfa07e17724f65d3325312d833d2c9bfe37faa85721fa839d4f53c6b6bf1bc3c3e21dafb
 
 pkgname = gcc6
 	pkgdesc = The GNU Compiler Collection - C and C++ frontends
-	depends = gcc6-libs=6.4.1-8
+	depends = gcc6-libs=6.5.0-1
 	depends = binutils>=2.28
 	depends = libmpc
 	options = staticlibs
@@ -45,12 +41,12 @@ pkgname = gcc6-libs
 
 pkgname = gcc6-fortran
 	pkgdesc = Fortran front-end for GCC
-	depends = gcc6=6.4.1-8
+	depends = gcc6=6.5.0-1
 	options = !emptydirs
 
 pkgname = gcc6-gcj
 	pkgdesc = Java front-end for GCC
-	depends = gcc6=6.4.1-8
+	depends = gcc6=6.5.0-1
 	replaces = gcc-gcj
 	options = !emptydirs
 
