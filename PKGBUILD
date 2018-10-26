@@ -5,7 +5,7 @@ set -u
 pkgbase="linux-lts49"
 #pkgbase=linux-lts-custom
 _srcname="linux-4.9"
-pkgver="4.9.133"
+pkgver="4.9.135"
 pkgrel='1'
 arch=('x86_64')
 url="https://www.kernel.org/"
