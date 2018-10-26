@@ -1,5 +1,6 @@
 # Maintainer: Shang Yuanchun <idealities@gmail.com>
 
+pkgbase=dhex
 pkgname=dhex-git
 pkgver=0.68
 pkgrel=5

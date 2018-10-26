@@ -1,4 +1,4 @@
-pkgbase = dhex-git
+pkgbase = dhex
 	pkgdesc = An ncurses-based hexeditor with a diff mode
 	pkgver = 0.68
 	pkgrel = 5
