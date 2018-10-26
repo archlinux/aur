@@ -2,12 +2,13 @@
 # Contributor: Myles English <myles at rockhead dot biz>
 pkgname=btrbk
 pkgver=0.27.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Backup tool for btrfs subvolumes, taking advantage of btrfs specific capabilities to create atomic snapshots and transfer them incrementally to your backup locations"
 url="http://digint.ch/btrbk"
 arch=('any')
 license=('GPL3')
 depends=('perl' 'btrfs-progs')
+conflicts=('btrbk-git')
 makedepends=('asciidoc')
 optdepends=('openssh: remote backup support',
 	    'pv: --progress support',
