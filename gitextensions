@@ -1,3 +1,2 @@
 #!/bin/sh
-cd /usr/share/GitExtensions
-mono GitExtensions.exe
+exec mono /opt/GitExtensions/GitExtensions.exe
