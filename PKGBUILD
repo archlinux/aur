@@ -7,7 +7,7 @@ pkgdesc="Ultimate Plumber is a tool for writing Linux pipes with instant live pr
 url="https://github.com/akavel/up"
 arch=('any')
 provides=('up')
-conflicts=('up-git')
+conflicts=('up-git' 'up-bin')
 source=("${url}/archive/v${pkgver}.tar.gz")
 md5sums=('b90978848da38318bec452601d0d5810')
 

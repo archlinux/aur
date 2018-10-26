@@ -7,6 +7,7 @@ pkgbase = up
 	license = Apache
 	provides = up
 	conflicts = up-git
+	conflicts = up-bin
 	source = https://github.com/akavel/up/archive/v0.2.1.tar.gz
 	md5sums = b90978848da38318bec452601d0d5810
 
