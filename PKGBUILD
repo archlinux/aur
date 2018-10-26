@@ -1,7 +1,7 @@
-# Maintainer: Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=libvpx-full-git
-pkgver=1.7.0.r317.g28801f91c4
+pkgver=1.7.0.r1254.ga4e70f1808
 pkgrel=1
 pkgdesc='VP8 and VP9 video codecs (with all possible options, git version)'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('gcc-libs')
 makedepends=('git' 'yasm')
 provides=('libvpx' 'libvpx-git' 'libvpx.so')
-conflicts=('libvpx' 'libvpx-git')
+conflicts=('libvpx')
 source=("$pkgname"::'git+https://chromium.googlesource.com/webm/libvpx') # official repo
 #source=("$pkgname"::'git+https://github.com/webmproject/libvpx.git') # mirror
 sha256sums=('SKIP')
@@ -25,13 +25,8 @@ pkgver() {
 build() {
     cd "$pkgname"
     
-    # select target architecture
-    [ "$CARCH" = 'x86_64' ] && _target='--target=x86_64-linux-gcc'
-    [ "$CARCH" = 'i686'   ] && _target='--target=x86-linux-gcc'
-    
     ./configure \
         --prefix='/usr' \
-        $_target \
         --disable-werror \
         --enable-optimizations \
         --enable-pic \
@@ -91,6 +86,6 @@ package() {
     
     make DESTDIR="$pkgdir" install
     
-    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -D -m644 PATENTS "${pkgdir}/usr/share/licenses/${pkgname}/PATENTS"
+    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -D -m644 PATENTS -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
