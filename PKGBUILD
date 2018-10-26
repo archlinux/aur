@@ -1,7 +1,7 @@
-# Maintainer: Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=pingo
-pkgver=0.98.35
+pkgver=0.98.36
 pkgrel=1
 pkgdesc='An experimental, fast Web PNG/JPG optimizer with visually lossless or lossy compression (uses wine)'
 arch=('x86_64')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 # upstream website has a blocker that prevents makepkg from downloading the
 # source file when using the download link directly the 'source' array.
 
-_expected_sha256sum='0286b3e804e2b7485b270aaf76992e0c412c9c283d97859a85de88f75236d72f'
+_expected_sha256sum='8cd0646f2af1dd558ead7b2d18cd62e7cac0bcb4a4589a041cfcf0e95556e355'
 _srcfile="pingo-${pkgver}.zip"
 _srcurl='https://css-ig.net/downloads/zip/pingo.zip'
 _useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
