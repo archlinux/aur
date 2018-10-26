@@ -1,7 +1,7 @@
 pkgbase = docker-machine-driver-scaleway
 	pkgdesc = Scaleway driver for Docker Machine
-	pkgver = 1.3
-	pkgrel = 2
+	pkgver = 1.4
+	pkgrel = 1
 	url = https://scaleway.com
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = docker-machine-driver-scaleway
 	makedepends = go
 	makedepends = git
 	depends = docker-machine
-	source = https://github.com/scaleway/docker-machine-driver-scaleway/archive/v1.3.tar.gz
-	sha256sums = e30253c38cb3f43e66be2ca6dd9f58da870237002ee7a9a4a57d3a29bf45a0da
+	source = https://github.com/scaleway/docker-machine-driver-scaleway/archive/v1.4.tar.gz
+	sha256sums = 6531850db31c05caab7afdff1ca1d382e140a16cedc3e2750d82c4a03fafd542
 
 pkgname = docker-machine-driver-scaleway
 
