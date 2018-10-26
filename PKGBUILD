@@ -1,7 +1,7 @@
 # Contributor: Benjamin Sick
 
 pkgname=gmt4
-pkgver=4.5.17
+pkgver=4.5.18
 pkgrel=1
 pkgdesc="Generic Mapping Tools V4: Collection of tools for manipulating geographic and Cartesian data sets, and generating EPS maps."
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ optdepends=('ghostscript' 'gmt-coast')
 conflicts=('gmt')
 install=gmt.install
 source=(ftp://ftp.soest.hawaii.edu/gmt/gmt-${pkgver}-src.tar.bz2)
-md5sums=('1d6f9d927e5334e30407171e16d8831f')
+md5sums=('b35cf18fddcf4823dc75b1ea32808d71')
 
 build() {
   cd ${startdir}/src/gmt-${pkgver}
