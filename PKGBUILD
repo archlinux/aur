@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="French grammar checker extension for LibreOffice."
 arch=('any')
 
-url="http://www.dicollecte.org/grammalecte/"
+url="https://grammalecte.net/"
 license=('GPL3')
 
 depends=('libreoffice')
@@ -17,9 +17,7 @@ groups=('libreoffice-extensions')
 
 conflicts=('libreoffice-extension-languagetool')
 provides=('libreoffice-extension-dictionaries-fr')
-source=(
-    "https://www.dicollecte.org/grammalecte/oxt/Grammalecte-fr-v${pkgver}.oxt"
-)
+source=("https://grammalecte.net/grammalecte/oxt/Grammalecte-fr-v${pkgver}.oxt")
 sha512sums=('24d6865b5fed98f1e253f9f767f38c755aa8c887f1155dc12d88d70edfa852541995f52a294607b55282b704be43705e307d8f22b3e7af3f9bbecc663ebd00a7')
 
 package() {
