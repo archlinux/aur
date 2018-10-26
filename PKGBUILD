@@ -18,7 +18,7 @@ license=('BSD')
 depends=('gcc-libs' 'zlib')
 makedepends=()
 options=('staticlibs')
-provides=('protobuf')
+provides=("protobuf=$pkgver")
 conflicts=('protobuf')
 source=("$_pkgname-$pkgver.tgz::https://github.com/google/${_pkgname}/archive/v${pkgver}.tar.gz"
     "no-thirdparty.patch")

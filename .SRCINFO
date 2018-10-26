@@ -7,7 +7,7 @@ pkgbase = protobuf-static
 	license = BSD
 	depends = gcc-libs
 	depends = zlib
-	provides = protobuf
+	provides = protobuf=3.6.1
 	conflicts = protobuf
 	options = staticlibs
 	source = protobuf-3.6.1.tgz::https://github.com/google/protobuf/archive/v3.6.1.tar.gz
