@@ -1,7 +1,7 @@
 pkgbase = lhs2tex
 	pkgdesc = Preprocessor for typesetting Haskell sources with LaTeX
-	pkgver = 1.19
-	pkgrel = 3
+	pkgver = 1.22
+	pkgrel = 1
 	url = https://www.andres-loeh.de/lhs2tex/
 	arch = i686
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = lhs2tex
 	depends = haskell-process
 	depends = haskell-regex-compat
 	depends = texlive-latexextra
-	source = http://hackage.haskell.org/package/lhs2tex/lhs2tex-1.19.tar.gz
+	source = https://hackage.haskell.org/package/lhs2tex/lhs2tex-1.22.tar.gz
 	source = force-dynamic.diff
-	md5sums = 4414be7f90d7a805bb3fec843b547cfa
+	md5sums = 0a678d37c983b1614777957054c15f55
 	md5sums = 7b3687d3b7143e3b18abdf2926696189
 
 pkgname = lhs2tex
