@@ -1,13 +1,14 @@
 pkgbase = rpcemu
 	pkgdesc = An Emulator of classic Acorn computer systems, such as the Risc PC and A7000
 	pkgver = 0.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.marutan.net/rpcemu/
 	install = rpcemu.install
 	arch = x86_64
 	arch = i686
 	license = GPL2
 	makedepends = qt5-base
+	backup = usr/share/rpcemu/rpc.cfg
 	source = http://www.marutan.net/rpcemu/cgi/download.php?sFName=0.9.1/rpcemu-0.9.1.tar.gz
 	sha256sums = 079f779ed8a5da4df3bad035e79f5bce2c8890e7e9d1fe088be9463088809bfc
 
