@@ -1,0 +1,13 @@
+pkgbase = dhex-git
+	pkgdesc = An ncurses-based hexeditor with a diff mode
+	pkgver = 0.68
+	pkgrel = 5
+	url = https://github.com/ideal/dhex/
+	arch = x86_64
+	license = GPL
+	depends = ncurses
+	source = git+https://github.com/ideal/dhex.git
+	md5sums = SKIP
+
+pkgname = dhex-git
+
