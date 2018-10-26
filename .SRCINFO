@@ -1,11 +1,10 @@
 pkgbase = safesignidentityclient
 	pkgdesc = Smart card PKCS#11 provider and token manager
 	pkgver = 3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pronova.com.br/download-tokens
 	arch = x86_64
 	license = custom:copyright
-	makedepends = deb2targz
 	depends = pcsclite
 	depends = gdbm
 	depends = wxgtk2
