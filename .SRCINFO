@@ -1,6 +1,6 @@
 pkgbase = ncmpcpp-git
 	pkgdesc = An almost exact clone of ncmpc with some new features (git version)
-	pkgver = 0.8.2.r0.g7bfefb2f
+	pkgver = 0.8.2.r2.g81cb7a4f
 	pkgrel = 1
 	epoch = 2
 	url = http://rybczak.net/ncmpcpp/
@@ -17,9 +17,6 @@ pkgbase = ncmpcpp-git
 	depends = boost-libs
 	provides = ncmpcpp
 	conflicts = ncmpcpp
-	conflicts = ncmpcpp-xdg-config
-	conflicts = ncmpcpp-xdg-config-git
-	conflicts = ncmpcpp-color
 	source = ncmpcpp-git::git+https://github.com/arybczak/ncmpcpp.git
 	sha256sums = SKIP
 

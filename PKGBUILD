@@ -1,8 +1,8 @@
-# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
 # Contributor: rich_o <aurua@riseup.net>
 
 pkgname=ncmpcpp-git
-pkgver=0.8.2.r0.g7bfefb2f
+pkgver=0.8.2.r2.g81cb7a4f
 pkgrel=1
 epoch=2
 pkgdesc='An almost exact clone of ncmpc with some new features (git version)'
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('curl' 'libmpdclient' 'taglib' 'ncurses' 'fftw' 'boost-libs')
 makedepends=('git' 'boost')
 provides=('ncmpcpp')
-conflicts=('ncmpcpp' 'ncmpcpp-xdg-config' 'ncmpcpp-xdg-config-git' 'ncmpcpp-color')
+conflicts=('ncmpcpp')
 source=("$pkgname"::'git+https://github.com/arybczak/ncmpcpp.git')
 sha256sums=('SKIP')
 
@@ -34,7 +34,7 @@ build() {
     ./autogen.sh
     
     ./configure \
-        --prefix=/usr \
+        --prefix='/usr' \
         --enable-shared='yes' \
         --enable-static='no' \
         --enable-fast-install='yes' \
