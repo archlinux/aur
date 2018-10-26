@@ -1,6 +1,6 @@
 pkgname=python2-spotipy
 _pkgname=spotipy
-pkgver=2.4.3
+pkgver=2.4.4
 pkgrel=1
 pkgdesc='Simple client for the Spotify Web API'
 arch=('any')
@@ -10,7 +10,7 @@ depends=('python2' 'python2-requests>=1.0')
 makedepends=('python2' 'python2-setuptools')
 source=("https://pypi.org/packages/source/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 
-md5sums=('483d80fd20881ba4cf5fb599a8dc8bd0')
+md5sums=('e9b895c8351d440af49470f9f3f9f4f4')
 
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
