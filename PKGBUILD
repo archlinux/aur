@@ -12,7 +12,7 @@ depends=('python'
     'ecos'
     'suitesparse')
 makedepends=('python-setuptools')
-optdepends=('python-nose')
+checkdepends=('python-nose')
 license=('GPL3')
 arch=('x86_64')
 source=("https://github.com/embotech/ecos-python/archive/${_pkgver}.tar.gz"
