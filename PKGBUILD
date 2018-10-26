@@ -1,11 +1,11 @@
-# Maintainer: Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 _srcname=mpv
 _wafver=2.0.9
 
 pkgname=mpv-full
 pkgver=0.29.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A free, open source, and cross-platform media player (with all possible libs)'
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -26,7 +26,7 @@ makedepends=('mesa' 'python-docutils' 'ladspa' 'vulkan-headers'
 optdepends=('youtube-dl: for video-sharing websites playback'
             'nvidia-utils: for hardware accelerated video decoding with CUDA')
 provides=('mpv')
-conflicts=('mpv' 'mpv-git' 'mpv-full-git')
+conflicts=('mpv')
 options=('!emptydirs')
 source=("${_srcname}-${pkgver}.tar.gz"::"https://github.com/mpv-player/${_srcname}/archive/v${pkgver}.tar.gz"
         "https://waf.io/waf-${_wafver}")
