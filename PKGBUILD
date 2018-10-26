@@ -4,7 +4,7 @@
 
 set -u
 pkgname='gvpe'
-pkgver='3.0'
+pkgver='3.1'
 pkgrel='1'
 pkgdesc='Simple and robust virtual network solution'
 arch=('x86_64' 'i686')
@@ -18,7 +18,7 @@ source=("http://ftp.gnu.org/gnu/gvpe/${pkgname}-${pkgver}.tar.gz"
         'node-up'
         'node-down'
         'gvpe.conf.example')
-sha256sums=('0e0a2db4dc7ac591c4368989329773a1b2399bca959d1cc10fa9f95884acc1ec'
+sha256sums=('f1ebd572d725bb940e080771a1c10867c3509dcd8316f6114814503dcbb1e8b3'
             '60a6b5f03524ede9e9fa2538623b7a808cf02e41f91e800b7c1afe039effd28f'
             '89ea3660f780aabc37adcb621dbfd7cffa70b463c0251f03ad05c58fc564a762'
             '8a74c5c3fcea5586fc72d6c8c2c30a23b3dd32e92bf1674b29a126a0c8ac2fa3'
