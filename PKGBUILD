@@ -3,7 +3,7 @@
 
 pkgname=pykgbuild
 _pkgname=py-pkgbuild-version
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Compare a users Python PKGBUILD version(s) with respective PyPI version(s)."
 url="https://github.com/mpolidori/py-pkgbuild-version"
@@ -15,7 +15,7 @@ md5sums=(SKIP)
 
 package() {
     cd $_pkgname
-    mv checker.py pykgbuild
+    mv pykgbuild.py pykgbuild
     install -Dm 0755 -t ${pkgdir}/usr/bin pykgbuild
     install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
