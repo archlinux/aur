@@ -1,6 +1,6 @@
 pkgbase = elm-format-bin
 	pkgdesc = Format Elm source code according to a standard set of rules based on the official Elm Style Guide.
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/avh4/elm-format
 	arch = i686
@@ -11,13 +11,14 @@ pkgbase = elm-format-bin
 	conflicts = elm-format-0.17-bin
 	conflicts = elm-format-0.18-bin
 	conflicts = elm-format-0.18-exp-bin
-	source = https://github.com/avh4/elm-format/releases/download/0.8.0/elm-format-0.19-0.8.0-linux-x64.tgz
-	source = https://github.com/avh4/elm-format/releases/download/0.8.0/elm-format-0.19-0.8.0-linux-x64.tgz.asc
-	source = LICENSE-0.8.0::https://raw.githubusercontent.com/avh4/elm-format/0.8.0/LICENSE
+	conflicts = elm-format-0.19-bin
+	source = https://github.com/avh4/elm-format/releases/download/0.8.1/elm-format-0.8.1-linux-x64.tgz
+	source = https://github.com/avh4/elm-format/releases/download/0.8.1/elm-format-0.8.1-linux-x64.tgz.asc
+	source = LICENSE-0.8.1::https://raw.githubusercontent.com/avh4/elm-format/0.8.1/LICENSE
 	validpgpkeys = C3B74EE9EBC8412DFEE1FECE11357FB6FDD7BEC0
-	md5sums = ecef0d7d0d66c7b35f9dd1c1ef5f9a52
+	md5sums = 366c584a6bb551fd8c5ecfd62109ea1e
 	md5sums = SKIP
-	md5sums = e3bb965f28c7631a1bac6d8611a1db7d
+	md5sums = 66f2ab57c97494e29cc93d062395eb5f
 
 pkgname = elm-format-bin
 
