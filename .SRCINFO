@@ -1,0 +1,15 @@
+pkgbase = archlinux-iso
+	pkgdesc = The official installation ISO of Arch Linux.
+	pkgver = 2018.10.01
+	pkgrel = 1
+	url = https://www.archlinux.org/
+	arch = any
+	noextract = archlinux-2018.10.01-x86_64.iso
+	source = http://www.gtlib.gatech.edu/pub/archlinux/iso/2018.10.01/archlinux-2018.10.01-x86_64.iso
+	source = http://www.gtlib.gatech.edu/pub/archlinux/iso/2018.10.01/archlinux-2018.10.01-x86_64.iso.sig
+	validpgpkeys = 4AA4767BBC9C4B1D18AE28B77F2D434B9741E8AC
+	sha256sums = 9814b9afcc822f1f97ad4fb2ec811b373c00f409830ab47750e55246c1af5bc7
+	sha256sums = SKIP
+
+pkgname = archlinux-iso
+
