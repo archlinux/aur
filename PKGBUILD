@@ -2,8 +2,8 @@
 _pkgname=libinput
 _patch=multiplier.patch
 pkgname=$_pkgname-multiplier
-pkgver=1.12.0
-pkgrel=3
+pkgver=1.12.2
+pkgrel=1
 pkgdesc='scroll patch, discrete deltay multiplier'
 arch=(i686 x86_64)
 url='http://freedesktop.org/wiki/Software/libinput/'
@@ -17,7 +17,7 @@ optdepends=('gtk3: libinput debug-gui'
 conflicts=($_pkgname)
 source=(https://freedesktop.org/software/$_pkgname/$_pkgname-$pkgver.tar.xz
         $_patch)
-sha512sums=('4aee877785f9ac080e4f8ee20f3643bc4f3ddbc568aca6c363a962f8c8f76b8db7dc113c8167092f0277d112346a85b9a7e7c3c3f227ed243aaba32c9092c924'
+sha512sums=('f7122a1d18dd2d0072a34fd9897ebe25a065100b3754052d7ec133bddb56d5c2a5a94950cfc8366ef5d117180c28b3ff99b1a62f3ab95df5ac22f86721fbdc67'
             'SKIP')
 prepare() {
   cd "${srcdir}/$_pkgname-$pkgver"
@@ -27,6 +27,7 @@ build() {
   cd "${srcdir}/$_pkgname-$pkgver"
   meson build --prefix=/usr \
         --libexecdir=/usr/lib \
+        -Dudev-dir=/usr/lib/udev \
         -Dtests=false \
         -Ddocumentation=false
   ninja -C build
