@@ -2,12 +2,12 @@
 
 pkgname=libopenshot-git
 pkgver=0.2.2.r0.gc90fb9b
-pkgrel=1
+pkgrel=2
 pkgdesc='A high quality, open-source video editing, animation, and playback library for C++, Python, and Ruby (git version)'
 arch=('i686' 'x86_64')
 url='http://www.openshot.org/'
 license=('LGPL3')
-depends=('libmagick6' 'ffmpeg' 'libx264' 'libopenshot-audio' 'python' 'jsoncpp' 'qt5-multimedia' 'zeromq')
+depends=('libmagick6' 'ffmpeg' 'x264' 'libopenshot-audio' 'python' 'jsoncpp' 'qt5-multimedia' 'zeromq')
 makedepends=('git' 'cmake' 'doxygen' 'swig' 'unittestpp')
 provides=('libopenshot')
 conflicts=('libopenshot')
