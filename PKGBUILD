@@ -3,7 +3,7 @@
 
 pkgname=slic3r-bin
 pkgrel=1
-pkgdesc="Open Source toolpath generator for 3D printers"
+pkgdesc='Open Source toolpath generator for 3D printers'
 pkgver=1.3.0
 arch=('x86_64')
 url="http://www.slic3r.org"
@@ -11,8 +11,10 @@ conflicts=('slic3r' 'slic3r-git' 'slic3r-bin')
 depends=('freeglut' 'glu' 'libpng12' 'perl')
 provides=('slic3r')
 license=('AGPL3')
-source=("https://github.com/slic3r/Slic3r/releases/download/${pkgver}/slic3r-${pkgver}-linux-x64.tar.bz2")
-sha256sums=('23761e32aca057de12e940fca097bcfef5a1efea9ff4998f8aa9fd58241db6dd')
+source=("https://github.com/slic3r/Slic3r/releases/download/${pkgver}/slic3r-${pkgver}-linux-x64.tar.bz2"
+"slic3r.desktop")
+sha256sums=('23761e32aca057de12e940fca097bcfef5a1efea9ff4998f8aa9fd58241db6dd'
+'2ccedba2ea435889b2ec83bbf4d1750b350b577b2c4648fae317e80411d135a9')
 
 package() {
     install -d "${pkgdir}/opt"
@@ -29,3 +31,4 @@ package() {
     install -d $pkgdir/usr/share/applications
     install -m 644 $srcdir/slic3r.desktop $pkgdir/usr/share/applications/
 }
+
