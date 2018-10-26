@@ -1,11 +1,11 @@
-# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=nnpack-git
-pkgver=r252.feb7b50
+pkgver=r359.1e005b0
 pkgrel=1
-pkgdesc="An acceleration package for neural network computations (git version)"
+pkgdesc='An acceleration package for neural network computations (git version)'
 arch=('i386' 'x86_64')
-url="https://github.com/Maratyszcza/NNPACK/"
+url='https://github.com/Maratyszcza/NNPACK/'
 license=('BSD')
 makedepends=(
     # binary repositories:
@@ -21,7 +21,7 @@ pkgver() {
     cd "$pkgname"
     
     # git, no tags available
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -38,18 +38,14 @@ build() {
 package() {
     cd "${pkgname}"
     
-    # directories creation
+    # headers
     mkdir -p "${pkgdir}/usr/include/nnpack"
-    mkdir -p "${pkgdir}/usr/lib"
-    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-    
-    # include
     install -D -m644 include/*.h        "${pkgdir}/usr/include"
     install -D -m644 include/nnpack/*.h "${pkgdir}/usr/include/nnpack"
     
     # lib
-    install -D -m644 lib/libnnpack.a    "${pkgdir}/usr/lib"
+    install -D -m644 lib/libnnpack.a -t "${pkgdir}/usr/lib"
     
     # license
-    install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 LICENSE -t"${pkgdir}/usr/share/licenses/${pkgname}"
 }
