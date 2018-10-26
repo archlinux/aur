@@ -2,7 +2,7 @@
 
 pkgname=mcos-mjv-gtk-theme
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='McOS-MJV GTK Theme'
 arch=('any')
 url='https://www.opendesktop.org/p/1241688/'
@@ -11,7 +11,7 @@ depends=('gtk-engine-murrine')
 
 # Hash and Timestamp
 _p="var \(hash = '\(.*\)\|timetamp = '\(.*\)\)';"
-read _s _t <<< $(echo -n $(curl -s $url | sed -n "s/$_p/\2\3/p"))
+read _s _t <<< $(echo -n $(curl -s $url | sed -n "s/$_p/\2\3/p" | head -n2))
 
 source=("https://dl.opendesktop.org/api/files/download/id/1537831784/s/$_s/t/$_t/$pkgname-$pkgver.tar.xz")
 md5sums=('1aed15c46dd14ef1aac31d16f7b8a048')
