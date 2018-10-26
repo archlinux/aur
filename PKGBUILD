@@ -1,19 +1,18 @@
-# Maintainer: Thomas Schneider <maxmusterm@gmail.com>
+# Maintainer: Mike Polvere <mic.tjs@gmail.com>
+# Contributor: Thomas Schneider <maxmusterm@gmail.com>
 
 pkgname=libretro-2048-git
 _gitname=libretro-2048
-pkgver=70
+pkgver=122.80d462a
 pkgrel=1
 pkgdesc="libretro implementation of 2048"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/libretro/libretro-2048"
-license=('custom' 'GPL' 'LGPL')
+license=('GPL' 'LGPL')
+depends=('glibc')
 makedepends=('git')
-source=("${_gitname}::git://github.com/libretro/${_gitname}.git"
-	"https://raw.github.com/libretro/libretro-super/master/dist/info/2048_libretro.info")
-
-md5sums=('SKIP'
-	 'SKIP')
+source=("git+https://github.com/libretro/${_gitname}.git")
+md5sums=('SKIP')
 
 pkgver() {
   cd "${_gitname}"
@@ -26,6 +25,5 @@ build() {
 }
 
 package() {
-  install -Dm644 "${srcdir}/2048_libretro.info" "${pkgdir}/usr/lib/libretro/libretro-2048.info"
-  install -Dm644 "${_gitname}/2048_libretro.so" "${pkgdir}/usr/lib/libretro/libretro-2048.so"
+  install -Dm644 "${_gitname}/2048_libretro.so" "${pkgdir}/usr/lib/libretro/2048_libretro.so"
 }
