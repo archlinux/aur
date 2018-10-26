@@ -1,3 +1,4 @@
 pkg/
 up*
+*.tar.gz
 src/
