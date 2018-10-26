@@ -6,7 +6,7 @@
 
 pkgname=fxdiv-git
 pkgver=r51.811b482
-pkgrel=1
+pkgrel=2
 pkgdesc='Header-only library for division via fixed-point multiplication by inverse (git version)'
 arch=('any')
 url='https://github.com/Maratyszcza/FXdiv/'
@@ -18,6 +18,8 @@ makedepends=('git')
 #     AUR:
 #        'confu2-git'
 #)
+provides=('fxdiv')
+conflicts=('fxdiv')
 source=("$pkgname"::'git+https://github.com/Maratyszcza/FXdiv.git')
 sha256sums=('SKIP')
 
@@ -49,11 +51,8 @@ pkgver() {
 package() {
     cd "${pkgname}"
     
-    # directories creation
+    # headers
     mkdir -p "${pkgdir}/usr/include"
-    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-    
-    # include
     install -D -m644 include/*.h "${pkgdir}/usr/include"
     
     # license

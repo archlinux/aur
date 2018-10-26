@@ -1,11 +1,13 @@
 pkgbase = fxdiv-git
 	pkgdesc = Header-only library for division via fixed-point multiplication by inverse (git version)
 	pkgver = r51.811b482
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Maratyszcza/FXdiv/
 	arch = any
 	license = MIT
 	makedepends = git
+	provides = fxdiv
+	conflicts = fxdiv
 	source = fxdiv-git::git+https://github.com/Maratyszcza/FXdiv.git
 	sha256sums = SKIP
 
