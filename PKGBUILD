@@ -1,4 +1,4 @@
-# Maintainer: mcp <mcp@initq.net>
+# Maintainer: mcp <mcp@praeger.org>
 pkgname=tmux-manager-git
 pkgver=r36.283e8ba
 pkgrel=1
@@ -14,12 +14,12 @@ source=('tmux-manager::git+git://github.com/Ganneff/tm#branch=master')
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/tm"
+    cd "$srcdir/${pkgname%-git}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-    cd "$srcdir/tm"
-	install -Dm755 tm $pkgdir/usr/bin/tm
+    cd "$srcdir/${pkgname%-git}"
+    install -Dm755 tm $pkgdir/usr/bin/tm
     install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
