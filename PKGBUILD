@@ -1,8 +1,8 @@
-# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=openni-primesense-sensor
 pkgver=5.1.6.6
-pkgrel=3
+pkgrel=4
 pkgdesc='PrimeSense Sensor Module for OpenNI'
 arch=('i686' 'x86_64')
 url='https://github.com/PrimeSense/Sensor/'
@@ -32,45 +32,40 @@ build() {
 }
 
 package() {
-    if [ "$CARCH" = 'x86_64' ] 
-    then
-        _architecture='x64'
-        
-    elif [ "$CARCH" = 'i686' ] 
-    then
-        _architecture='x86'
-    fi
+    [ "$CARCH" = 'x86_64' ] && local _architecture='x64'
+    [ "$CARCH" = 'i686'   ] && local _architecture='x86'
     
     # directories creation
-    mkdir -p "${pkgdir}/usr/"{bin,include/ni/XnEE,lib/pkgconfig,share/licenses/"${pkgname}"}
-    mkdir -p "${pkgdir}/usr/lib/udev/rules.d" # usb rules (udev rules)
-    mkdir -p "${pkgdir}/etc/openni/primesense" # config
-    mkdir -p "${pkgdir}/var/log/primesense"    # logs
+    mkdir -p "${pkgdir}/usr/"{bin,include/ni/XnEE,lib}
+    mkdir -p "${pkgdir}/var/log/primesense" # logs
     
     # binaries and libraries
     cd "${_srcprefix}-${pkgver}/Platform/Linux/Bin/${_architecture}-Release"
     install -D -m755 XnSensorServer "${pkgdir}/usr/bin"
     install -D -m755 *.so           "${pkgdir}/usr/lib"
     
-    # includes
+    # headers
     cd "${srcdir}/${_srcprefix}-${pkgver}/Include"
     install -D -m644 *.h    "${pkgdir}/usr/include/ni"
     install -D -m644 XnEE/* "${pkgdir}/usr/include/ni/XnEE"
     
-    # udev rules
+    # udev rules (usb rules)
     cd "${srcdir}/${_srcprefix}-${pkgver}/Platform/Linux/Install"
-    install -D -m644 55-primesense-usb.rules "${pkgdir}/usr/lib/udev/rules.d"
+    install -D -m644 55-primesense-usb.rules -t "${pkgdir}/usr/lib/udev/rules.d"
     
     # config
+    ## /etc/openni/primesense is populated at build time
+    ## /etc/primesense is populated at install time
     cd "${srcdir}/${_srcprefix}-${pkgver}/Data"
-    install -D -m644 GlobalDefaults.ini "${pkgdir}/etc/openni/primesense"
+    install -D -m644 GlobalDefaults.ini -t "${pkgdir}/etc/openni/primesense"
+    mkdir -p "${pkgdir}/etc/primesense"
     
     # pkg-config file
     cd "$srcdir"
-    install -D -m644 ps-engine.pc "${pkgdir}/usr/lib/pkgconfig"
+    install -D -m644 ps-engine.pc -t "${pkgdir}/usr/lib/pkgconfig"
     
     # license
     cd "${_srcprefix}-${pkgver}"
-    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -D -m644 NOTICE  "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -D -m644 NOTICE  -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
