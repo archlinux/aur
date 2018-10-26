@@ -1,4 +1,4 @@
-# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
 # Contributor: Det <nimetonmaili g-mail>
 # Contributor: Ng Oon-Ee
 # Contributor: Dan Vratil
@@ -6,7 +6,7 @@
 
 pkgbase=nvidia-utils-beta
 pkgname=('nvidia-utils-beta' 'nvidia-egl-wayland-beta' 'nvidia-libgl-beta' 'opencl-nvidia-beta')
-pkgver=410.66
+pkgver=410.73
 pkgrel=1
 pkgdesc='NVIDIA driver utilities and libraries (beta version)'
 arch=('x86_64')
@@ -17,7 +17,7 @@ _pkg="NVIDIA-Linux-${CARCH}-${pkgver}-no-compat32"
 source=("http://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run"
         'nvidia-drm-outputclass.conf'
         'nvidia-utils-beta.sysusers')
-sha256sums=('c4e297ed93341841c7ccb32569c179baecbb6ea253215cbc3668a51d729227cd'
+sha256sums=('7d6b6c9931f8b89404149a5fdf7a580edae0cd567cc2d4ffe3823b1af02a705d'
             '089d6dc247c9091b320c418b0d91ae6adda65e170934d178cdd4e9bd0785b182'
             'd8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167')
 
