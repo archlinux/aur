@@ -1,4 +1,4 @@
-# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
 # Contributor: Benjamin Chretien <chretien at lirmm dot fr>
 # Contributor: Sven Schneider <archlinux.sandmann@googlemail.com>
 # Contributor: bugix
@@ -6,7 +6,7 @@
 
 pkgname=openni
 pkgver=1.5.7.10
-pkgrel=5
+pkgrel=6
 pkgdesc='Framework for sensor-based Natural Interaction'
 arch=('i686' 'x86_64')
 url='https://github.com/OpenNI/OpenNI/'
@@ -60,39 +60,34 @@ build() {
 }
 
 package() {
-    if [ "$CARCH" = 'x86_64' ] 
-    then
-        _architecture='x64'
-        
-    elif [ "$CARCH" = 'i686' ] 
-    then
-        _architecture='x86'
-    fi
+    [ "$CARCH" = 'x86_64' ] && local _architecture='x64'
+    [ "$CARCH" = 'i686'   ] && local _architecture='x86'
     
     # directories creation
-    mkdir -p "${pkgdir}/usr/"{bin,include/ni/{Linux-Arm,Linux-x86}}
-    mkdir -p "${pkgdir}/usr/"{lib/pkgconfig,share/{doc/"${pkgname}",licenses/"${pkgname}"}}
-    mkdir -p "${pkgdir}/etc/openni" # config (populated at build   time)
-    mkdir -p "${pkgdir}/var/lib/ni" # config (populated at install time)
+    mkdir -p "${pkgdir}/usr/include/ni/"{Linux-Arm,Linux-x86}
+    mkdir -p "${pkgdir}/usr/"{lib,share/doc/"${pkgname}"}
     
     # binaries and libraries
     cd "${_srcprefix}-${pkgver}/Platform/Linux/Bin/${_architecture}-Release"
-    install -D -m755 niLicense niReg NiViewer "${pkgdir}/usr/bin"
+    install -D -m755 niLicense niReg NiViewer -t "${pkgdir}/usr/bin"
     install -D -m755 *.so "${pkgdir}/usr/lib"
     
-    # includes
+    # headers
     cd "${srcdir}/${_srcprefix}-${pkgver}/Include"
     install -D -m644 *.h         "${pkgdir}/usr/include/ni"
     install -D -m644 Linux-Arm/* "${pkgdir}/usr/include/ni/Linux-Arm"
     install -D -m644 Linux-x86/* "${pkgdir}/usr/include/ni/Linux-x86"
     
     # config
+    ## /etc/openni is populated at build time
+    ## /var/lib/ni is populated at install time
     cd "${srcdir}/${_srcprefix}-${pkgver}/Data"
-    install -D -m644 SamplesConfig.xml "${pkgdir}/etc/openni"
+    install -D -m644 SamplesConfig.xml -t "${pkgdir}/etc/openni"
+    mkdir -p "${pkgdir}/var/lib/ni"
     
     # pkg-config file
     cd "$srcdir"
-    install -D -m644 libopenni.pc "${pkgdir}/usr/lib/pkgconfig"
+    install -D -m644 libopenni.pc -t "${pkgdir}/usr/lib/pkgconfig"
     
     # documentation
     cd "${_srcprefix}-${pkgver}/Documentation"
@@ -100,6 +95,6 @@ package() {
     
     # license
     cd "${srcdir}/${_srcprefix}-${pkgver}"
-    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -D -m644 NOTICE  "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -D -m644 NOTICE  -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

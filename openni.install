@@ -1,13 +1,17 @@
 post_install() {
-	MODULES="libnimMockNodes.so libnimCodecs.so libnimRecorder.so"
-	for module in $MODULES
-	do 
-		/usr/bin/niReg /usr/lib/$module
-	done
-	
-	echo "Don't forget to install a hardware driver such as openni-primesense-sensor or sensorkinect"
+    local _module
+    local _MODULES
+    
+    _MODULES='libnimMockNodes.so libnimCodecs.so libnimRecorder.so'
+    
+    for _module in $_MODULES
+    do 
+        /usr/bin/niReg "/usr/lib/${module}"
+    done
+    
+    printf '%s\n' "Don't forget to install a hardware driver such as openni-primesense-sensor or sensorkinect"
 }
 
 pre_remove() {
-	rm /var/lib/ni/modules.xml
+    rm /var/lib/ni/modules.xml
 }
