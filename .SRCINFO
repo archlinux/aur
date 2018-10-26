@@ -1,0 +1,19 @@
+pkgbase = tensorflow-model-server-cuda
+	pkgdesc = A flexible, high-performance serving system for machine learning models
+	pkgver = 1.11.0
+	pkgrel = 1
+	url = https://tensorflow.org/serving
+	arch = x86_64
+	license = Apache
+	makedepends = bazel
+	makedepends = cuda
+	makedepends = cudnn
+	makedepends = nccl
+	makedepends = python
+	depends = gcc7-libs
+	conflicts = tensorflow-model-server
+	source = https://github.com/tensorflow/serving/archive/1.11.0.tar.gz
+	md5sums = SKIP
+
+pkgname = tensorflow-model-server-cuda
+
