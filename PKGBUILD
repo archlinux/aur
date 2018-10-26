@@ -1,7 +1,7 @@
 # Maintainer: Michael Duell < mail at akurei dot me >
 # Contributor: Daniel J. Campos <dcampos2015 at my dot fit dot edu>
 pkgname=btrbk-git
-pkgver=v0.27.0.r0.gc59488f
+pkgver=0.27.0.r0.gc59488f
 pkgrel=2
 pkgdesc="A backup tool for btrfs subvolumes, taking advantage of btrfs specific capabilities to create atomic snapshots and transfer them incrementally to your backup locations."
 url="http://digint.ch/btrbk"
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/btrbk"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 
