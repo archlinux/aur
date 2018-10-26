@@ -3,8 +3,8 @@
 pkgname=py-todo
 _pkgname=todo
 _gitname=py-todo
-pkgver=1.0
-pkgrel=0
+pkgver=1.1
+pkgrel=1
 pkgdesc='A Lightweight Reminder / todo-list in cli.'
 arch=('any')
 url="https://github.com/aesophor/py-todo"
@@ -16,5 +16,5 @@ sha256sums=('SKIP')
 
 package() {
     install -D -m755 "$_gitname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-    #install -D -m644 "$srcdir/$_gitname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -D -m644 "$srcdir/$_gitname/LICENSE" "$pkgdir/usr/bin/licenses/$_pkgname/LICENSE"
 }

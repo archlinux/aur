@@ -1,12 +1,13 @@
 pkgbase = py-todo
 	pkgdesc = A Lightweight Reminder / todo-list in cli.
-	pkgver = 1.0
-	pkgrel = 0
+	pkgver = 1.1
+	pkgrel = 1
 	url = https://github.com/aesophor/py-todo
 	arch = any
 	license = MIT
 	makedepends = git
 	source = git+https://github.com/aesophor/py-todo.git
+	sha256sums = SKIP
 
 pkgname = py-todo
 
