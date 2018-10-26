@@ -1,8 +1,8 @@
 # Maintainer: Testudo Aquatilis
 pkgname=nagelfar
 _pkgver_main=1
-_pkgver_sub=2
-_pkgver_subsub=5
+_pkgver_sub=3
+_pkgver_subsub=0
 pkgver="${_pkgver_main}.${_pkgver_sub}.${_pkgver_subsub}"
 _pkgver="${_pkgver_main}${_pkgver_sub}${_pkgver_subsub}"
 pkgrel=1
@@ -25,8 +25,8 @@ install=
 changelog=
 source=("http://downloads.sourceforge.net/nagelfar/Rel_${_pkgver}/${pkgname}${_pkgver}.tar.gz" nagelfar-paths.patch doc-syntaxdatabase.patch)
 noextract=()
-md5sums=('707e3c305437dce1f14103f0bd058fc9'
-         '80a3e5df0bf55548a29329948a3b541c'
+md5sums=('b6405edd980c714d39e425f8311368b2'
+         '53bcf49957b3a79c87c411e89824b6c5'
          '48f75a0c131cc17df6b38a2f5967c7e4')
 validpgpkeys=()
 
@@ -36,7 +36,6 @@ prepare() {
     patch -Np1 -i "${srcdir}/doc-syntaxdatabase.patch"
     patch -Np1 -i "${srcdir}/nagelfar-paths.patch"
 }
-
 
 package() {
     cd ${pkgname}${_pkgver}
