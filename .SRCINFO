@@ -10,9 +10,18 @@ license = LGPL
 license = custom
 makedepends = git
 depends = sh
-provides = liblzma.a
-conflicts = liblzma.a
-replaces = liblzma.a
+provides = lzma
+provides = lzma-utils
+provides = xz-utils
+provides = xz=5.2.4
+conflicts = lzma
+conflicts = lzma-utils
+conflicts = xz-utils
+conflicts = xz
+replaces = lzma
+replaces = lzma-utils
+replaces = xz-utils
+options = staticlibs
 source = git+http://git.tukaani.org/xz.git
 sha256sums = SKIP
 
