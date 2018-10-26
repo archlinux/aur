@@ -1,11 +1,11 @@
-# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
 # Contributor: Jesse Jaara	<gmail.com:	jesse.jaara>
 # Contributor: Det		<gmail.com:	nimetonmaili>
 # Contributor: h31		<yandex.com:	h31mail>
 # Contributor: julroy67	<gmail.com:	julroy67>
 
 pkgname=libvpx-git
-pkgver=1.7.0.r317.g28801f91c4
+pkgver=1.7.0.r1254.ga4e70f1808
 pkgrel=1
 pkgdesc='VP8 and VP9 video codecs (git version)'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ license=('BSD')
 depends=('gcc-libs')
 makedepends=('git' 'yasm')
 provides=('libvpx' 'libvpx.so')
-conflicts=('libvpx' 'libvpx-full-git')
+conflicts=('libvpx')
 source=("$pkgname"::'git+https://chromium.googlesource.com/webm/libvpx') # official repo
 #source=("$pkgname"::'git+https://github.com/webmproject/libvpx.git') # mirror
 sha256sums=('SKIP')
@@ -50,6 +50,6 @@ package() {
     
     make DESTDIR="$pkgdir" install
     
-    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -D -m644 PATENTS "${pkgdir}/usr/share/licenses/${pkgname}/PATENTS"
+    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -D -m644 PATENTS -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
