@@ -4,7 +4,7 @@
 
 pkgname=mapserver
 pkgver=7.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Platform for publishing spatial data and interactive mapping applications to the web"
 arch=(i686 x86_64)
 license=('MIT')
@@ -14,8 +14,15 @@ depends=('libpng' 'freetype2' 'zlib' 'gdal' 'proj' 'libjpeg-turbo' 'libxml2' 'li
 ## For v8 support require v8-3.20; for PHP mapscript require php, php-pear, php-apache
 makedepends=('cfitsio')
 options=()
-source=("http://download.osgeo.org/mapserver/mapserver-${pkgver}.tar.gz")
-md5sums=('03cd2532df9def0011c2f586e2e615fd')
+source=("http://download.osgeo.org/mapserver/mapserver-${pkgver}.tar.gz" cmake-3.12.patch)
+md5sums=('03cd2532df9def0011c2f586e2e615fd'
+         '4f336526a3a0b20ef784d8c8c88e38df')
+
+prepare() {
+  cd ${startdir}/src/${pkgname}-${pkgver}
+  
+  patch -p1 < ../cmake-3.12.patch
+}
 
 build() {
   cd ${startdir}/src/${pkgname}-${pkgver}
