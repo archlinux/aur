@@ -1,14 +1,15 @@
 pkgbase = perl-protocol-websocket
 	pkgdesc = WebSocket protocol
 	pkgver = 0.24
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/dist/Protocol-WebSocket
 	arch = any
 	license = PerlArtistic
 	license = GPL
+	makedepends = perl-module-build-tiny
 	depends = perl-digest-sha1>=0
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/V/VT/VTI/Protocol-WebSocket-$pkgver.tar.gz
+	source = http://search.cpan.org/CPAN/authors/id/V/VT/VTI/Protocol-WebSocket-0.24.tar.gz
 	md5sums = dedb9413da61aeeb9ade69e883a4a3d9
 	sha512sums = f5834963436c76697473185c5d9038b1fe160a740910c0db02ced361860211b6c865ae533a321c50d60bfd08d5e3efa04700bb9588650eacda3232977c98ce05
 
