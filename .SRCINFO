@@ -1,7 +1,7 @@
 pkgbase = mcos-shell-theme
 	pkgdesc = McOS Shell Theme
 	pkgver = 1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.opendesktop.org/p/1241688/
 	arch = any
 	license = GPL
