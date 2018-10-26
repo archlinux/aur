@@ -1,7 +1,7 @@
-# Maintainer: Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=libopenshot-audio-git
-pkgver=0.1.4.r0.g6e1ace8
+pkgver=0.1.7.r0.g21e092d
 pkgrel=1
 pkgdesc='A high-quality audio editing and playback library used by libopenshot (git version)'
 arch=('i686' 'x86_64')
@@ -23,19 +23,20 @@ pkgver() {
 
 build() {
     cd "$pkgname"
+    
     mkdir -p build
     cd build
+    
     cmake \
-        -DCMAKE_BUILD_TYPE:STRING='Release' \
-        -DCMAKE_COLOR_MAKEFILE:BOOL='ON' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -Wno-dev \
         ..
+        
     make
 }
 
 package() {
-    cd "$pkgname"
-    cd build
+    cd "${pkgname}/build"
+    
     make DESTDIR="$pkgdir" install
 }
