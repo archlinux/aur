@@ -14,7 +14,7 @@ license=('AGPL3')
 source=("https://github.com/slic3r/Slic3r/releases/download/${pkgver}/slic3r-${pkgver}-linux-x64.tar.bz2"
 "slic3r.desktop")
 sha256sums=('23761e32aca057de12e940fca097bcfef5a1efea9ff4998f8aa9fd58241db6dd'
-'2ccedba2ea435889b2ec83bbf4d1750b350b577b2c4648fae317e80411d135a9')
+'c37ae34717cd6245ee6bfea590345dbb772e39dfd4e2b48fe756d30bd00eca5a')
 
 package() {
     install -d "${pkgdir}/opt"
