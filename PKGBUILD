@@ -2,7 +2,7 @@
 
 pkgname=vim-opencl
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Vim plugin for syntax checking and highliting for OpenCL files."
 arch=('any')
 url="https://github.com/petRUShka/vim-opencl"
@@ -20,7 +20,7 @@ package() {
 	install -m 644 -D "ftplugin/opencl.vim" "${pkgdir}/usr/share/vim/vimfiles/ftplugin/opencl.vim"
 	install -m 644 -D "indent/opencl.vim" "${pkgdir}/usr/share/vim/vimfiles/indent/opencl.vim"
 	install -m 644 -D "syntax/opencl.vim" "${pkgdir}/usr/share/vim/vimfiles/syntax/opencl.vim"
-	install -m 644 -D "syntax_checkers/opencl.vim" "${pkgdir}/usr/share/vim/vimfiles/syntax_checkers/opencl.vim"
+	install -m 644 -D "syntax_checkers/opencl/clcc.vim" "${pkgdir}/usr/share/vim/vimfiles/syntax_checkers/opencl/clcc.vim"
 }
 
 # vim:set ts=2 sw=2 et:
