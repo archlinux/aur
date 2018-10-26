@@ -1,9 +1,9 @@
 pkgbase = tensorflow-computecpp
 	pkgdesc = Library for computation using data flow graphs for scalable machine learning (backend with ComputeCpp)
-	pkgver = 1.8
+	pkgver = 1.9
 	pkgrel = 1
 	epoch = 1
-	url = https://github.com/lukeiwanski/tensorflow
+	url = https://github.com/codeplaysoftware/tensorflow
 	arch = x86_64
 	license = APACHE
 	makedepends = git
@@ -17,7 +17,7 @@ pkgbase = tensorflow-computecpp
 	depends = opencl-icd-loader
 	depends = computecpp
 	options = !ccache
-	source = git+https://github.com/lukeiwanski/tensorflow#branch=integration/1.8
+	source = git+https://github.com/codeplaysoftware/tensorflow#tag=computecpp_1.0.0
 	sha512sums = SKIP
 
 pkgname = tensorflow-computecpp

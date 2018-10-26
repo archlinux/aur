@@ -2,17 +2,17 @@
 
 pkgbase=tensorflow-computecpp
 pkgname=(tensorflow-computecpp python-tensorflow-computecpp)
-pkgver=1.8
+pkgver=1.9
 pkgrel=1
 pkgdesc="Library for computation using data flow graphs for scalable machine learning (backend with ComputeCpp)"
-url="https://github.com/lukeiwanski/tensorflow"
+url="https://github.com/codeplaysoftware/tensorflow"
 epoch=1
 license=('APACHE')
 arch=('x86_64')
 depends=(opencl-icd-loader computecpp)
 makedepends=(git opencl-icd-loader computecpp bazel python-numpy python-pip python-wheel python-setuptools)
 options=(!ccache)
-source=("git+${url}#branch=integration/${pkgver}")
+source=("git+${url}#tag=computecpp_1.0.0")
 sha512sums=('SKIP')
 
 prepare() {
