@@ -10,7 +10,7 @@ pkgname=('virtualbox-svn'
          'virtualbox-guest-utils-svn'
          'virtualbox-guest-utils-nox-svn'
          'virtualbox-ext-vnc-svn')
-pkgver=75004
+pkgver=75085
 pkgrel=1
 _vboxsf_commit='9451f61e6787e95aa51e42b6381db6b059bc49da'
 arch=('x86_64')
@@ -135,9 +135,6 @@ prepare() {
 
     msg2 'Remove gcc version censorship'
     sed -i 's/^check_gcc$/#check_gcc/' configure
-    
-    sed -i '2i# include <QStyle>' src/VBox/Frontends/VirtualBox/src/runtime/UIMachineLogic.cpp
-    sed -i '2i# include <QStyle>' src/VBox/Frontends/VirtualBox/src/selector/UISelectorWindow.cpp
 }
 
 build() {
