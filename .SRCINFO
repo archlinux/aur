@@ -1,11 +1,13 @@
 pkgbase = fp16-git
 	pkgdesc = Header-only library for conversion to/from half-precision floating point formats (git version)
 	pkgver = r40.34d4bf0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Maratyszcza/FP16/
 	arch = any
 	license = MIT
 	makedepends = git
+	provides = fp16
+	conflicts = fp16
 	source = fp16-git::git+https://github.com/Maratyszcza/FP16.git
 	sha256sums = SKIP
 

@@ -6,7 +6,7 @@
 
 pkgname=fp16-git
 pkgver=r40.34d4bf0
-pkgrel=1
+pkgrel=2
 pkgdesc='Header-only library for conversion to/from half-precision floating point formats (git version)'
 arch=('any')
 url='https://github.com/Maratyszcza/FP16/'
@@ -18,6 +18,8 @@ makedepends=('git')
 #     AUR:
 #        'confu2-git' 'python2-peachpy-git'
 #)
+provides=('fp16')
+conflicts=('fp16')
 source=("$pkgname"::'git+https://github.com/Maratyszcza/FP16.git')
 sha256sums=('SKIP')
 
@@ -50,11 +52,8 @@ pkgver() {
 package() {
     cd "$pkgname"
     
-    # directories creation
+    # headers
     mkdir -p "${pkgdir}/usr/include/fp16"
-    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-    
-    # include
     install -D -m644 include/*.h      "${pkgdir}/usr/include"
     install -D -m644 include/fp16/*.h "${pkgdir}/usr/include/fp16"
     
