@@ -1,4 +1,4 @@
-# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
 # Contributor: Sibren Vasse <arch at sibrenvasse dot nl>
 # Contributor: Matt Welch <matt dot welch at gmail dot com>
 # Contributor: Anish Bhatt <anish at gatech dot edu>
@@ -9,7 +9,7 @@
 # Contributor: sl1pkn07 <sl1pkn07 at gmail dot com>
 
 pkgname=nvidia-beta-dkms
-pkgver=410.66
+pkgver=410.73
 pkgrel=1
 pkgdesc='NVIDIA driver sources for linux (beta version)'
 arch=('x86_64')
@@ -24,7 +24,7 @@ conflicts=('nvidia')
 _srcname="NVIDIA-Linux-${CARCH}-${pkgver}-no-compat32"
 source=("http://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_srcname}.run"
         'linux-4.16.patch')
-sha256sums=('c4e297ed93341841c7ccb32569c179baecbb6ea253215cbc3668a51d729227cd'
+sha256sums=('7d6b6c9931f8b89404149a5fdf7a580edae0cd567cc2d4ffe3823b1af02a705d'
             '622ac792ec200b2239cb663c0010392118b78c9904973d82cd261165c16d6385')
 
 prepare() {
