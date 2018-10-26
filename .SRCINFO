@@ -1,0 +1,15 @@
+pkgbase = tails-iso
+	pkgdesc = The Amnesic Incognito Live System (Tails) live ISO.
+	pkgver = 3.10.1
+	pkgrel = 1
+	url = https://tails.boum.org/
+	arch = any
+	noextract = tails-amd64-3.10.1.iso
+	source = http://dl.amnesia.boum.org/tails/stable/tails-amd64-3.10.1/tails-amd64-3.10.1.iso
+	source = https://tails.boum.org/torrents/files/tails-amd64-3.10.1.iso.sig
+	validpgpkeys = A490D0F4D311A4153E2BB7CADBB802B258ACD84F
+	sha256sums = 6c6849b2cbaba7f88779ae74c4481d0149cfcf847e2bc6082862440ec6873733
+	sha256sums = SKIP
+
+pkgname = tails-iso
+
