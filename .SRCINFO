@@ -6,6 +6,7 @@ pkgbase = py-todo
 	arch = any
 	license = MIT
 	makedepends = git
+	depends = python
 	source = git+https://github.com/aesophor/py-todo.git
 	sha256sums = SKIP
 
