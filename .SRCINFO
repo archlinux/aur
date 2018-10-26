@@ -1,0 +1,17 @@
+pkgbase = perl-extutils-install
+	pkgdesc = ExtUtils::Install - install files from here to there
+	pkgver = 2.14
+	pkgrel = 1
+	url = https://metacpan.org/release/ExtUtils-Install
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/B/BI/BINGOS/ExtUtils-Install-2.14.tar.gz
+	md5sums = ae6af2689daa6f8c2d01d04a28ab0ef0
+	sha512sums = 10f8b7e8bbd11c0860c9df72f8eb074eb329f889707788c7a1e81463022e4366173fa2681ddcb9c61514a075ddf3a63534a4758b47b259c84948bc633ddd78f5
+
+pkgname = perl-extutils-install
+
