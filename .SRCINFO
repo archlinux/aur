@@ -1,0 +1,19 @@
+pkgbase = xz-static-git
+pkgdesc = Statically linked library for decoding files compressed with LZMA or XZ utils.  Most users should *not* install this.
+pkgver = 5.2.4
+pkgrel = 1
+url = http://tukaani.org/xz/
+arch = i686
+arch = x86_64
+license = GPL
+license = LGPL
+license = custom
+makedepends = git
+depends = sh
+provides = liblzma.a
+conflicts = liblzma.a
+replaces = liblzma.a
+source = git+http://git.tukaani.org/xz.git
+sha256sums = SKIP
+
+pkgname = xz-static-git
