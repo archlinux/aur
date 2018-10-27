@@ -1,7 +1,7 @@
 # Maintainer: Michiru Saito <urihcim at gmail dot com>
 pkgname=gurashot
-pkgver=1.4.3
-pkgrel=2
+pkgver=1.4.4
+pkgrel=1
 pkgdesc="ID photo creation tool"
 arch=('i686' 'x86_64')
 url='http://app.gura-lang.org/gurashot/'
@@ -14,7 +14,7 @@ source=("https://github.com/gura-app/gurashot/releases/download/v${pkgver}/${pkg
         "${pkgname}.png"
         "${pkgname}.desktop")
 noextract=("${pkgname}-${pkgver}.zip")
-md5sums=('b46f2db07106ddf8e153ddc5773b8058'
+md5sums=('97754161b145973ae44ae3ed6c9731d4'
          '533a162f0d6018dec234db19cb1663a4'
          '8ca0a8703eeb5c85171502028668974a'
          'e7ad0893e4ccc2edd4d2679ed025c91e')
