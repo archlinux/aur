@@ -1,8 +1,8 @@
 # Maintainer: Florian Pritz <bluewind@xinu.at>
 
 pkgname=perl-statistics-descriptive
-pkgver=3.0612
-pkgrel=3
+pkgver=3.0702
+pkgrel=1
 pkgdesc='Module of basic descriptive statistical functions.'
 arch=(any)
 license=(PerlArtistic GPL)
@@ -11,8 +11,8 @@ depends=('perl>=5.6' perl-list-moreutils)
 makedepends=(perl-module-build)
 url=https://metacpan.org/release/Statistics-Descriptive
 source=("http://search.cpan.org/CPAN/authors/id/S/SH/SHLOMIF/Statistics-Descriptive-$pkgver.tar.gz")
-md5sums=(e38cfbc1e3962d099b62a14a57a175f1)
-sha512sums=(1157c0259a376f44363861c515ef56a25cf5a496d67faea546e225751d39c3529f9aa7d1bd021e2e399d5e884e7f5372df67249fe4f5607a6bdd806235503d46)
+md5sums=(7d367a2b1b057261edd48efcbe66eb97)
+sha512sums=(e0742ec356a38ad38f52e56a3ef58af6e539fbfa090d9a1d154560f353a3346d1c800d5d9f7bb0e2f32fb92b611fec16c939a19b7af104ec6ebe627c6c719df6)
 _ddir="Statistics-Descriptive-$pkgver"
 
 build()
