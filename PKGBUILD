@@ -30,6 +30,7 @@ _rust="y"
 _tern="y"
 _java="y"
 _use_system_clang="ON"
+_use_python2="OFF"
 
 _neovim="$NEOVIM_YOUCOMPLETEME"
 #=========================================================================================================#
@@ -46,7 +47,7 @@ pkgver() {
 	cd "YouCompleteMe" || exit
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgrel=1
+pkgrel=2
 pkgdesc="A code-completion engine for Vim"
 arch=('i686' 'x86_64')
 url='http://valloric.github.com/YouCompleteMe/'
@@ -139,6 +140,7 @@ gitprepare() {
 	git submodule update
 	unset -v feed
 }
+
 #=========================================================================================================#
 #=========================================================================================================#
 
@@ -147,7 +149,6 @@ gitprepare() {
 #=========================================================================================================#
 #                                     Standard PKGBUILD Functions                                         #
 #=========================================================================================================#
-
 
 prepare() {
 
@@ -202,12 +203,12 @@ prepare() {
 
 build() {
 	msg2 'Purging unneeded files...'
-	rm -rf "$srcdir/YouCompleteMe/python/ycm/tests"
+	rm -r "$srcdir/YouCompleteMe/python/ycm/tests"
 
 	msg2 'Building ycmd...' # BuildYcmdLibs()
 	mkdir -p "$srcdir/ycmd_build"
 	cd "$srcdir/ycmd_build" || exit
-	cmake -G "Unix Makefiles" -DUSE_PYTHON2=OFF -DUSE_SYSTEM_LIBCLANG="$_use_system_clang" . "$srcdir/YouCompleteMe/third_party/ycmd/cpp"
+	cmake -G "Unix Makefiles" -DUSE_PYTHON2=$_use_python2 -DUSE_SYSTEM_LIBCLANG="$_use_system_clang" . "$srcdir/YouCompleteMe/third_party/ycmd/cpp"
 	make ycm_core
 
 	if [[ "$_omnisharp" == "y" ]]; then
@@ -240,7 +241,11 @@ build() {
 	if [[ "$_tern" == "y" ]]; then
 		msg2 'Building Tern completer...' # SetUpTern()
 		cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/tern_runtime" || exit
-		npm install --production --python=python3
+		if [[ "$_use_python2" == "ON" ]]; then
+			npm install --production --python=python2
+		else
+			npm install --production --python=python3
+		fi
 	else
 		msg2 'Skipping Tern completer...'
 	fi
@@ -267,7 +272,7 @@ package() {
 		"$pkgdir/$vimfiles_dir"
 	cp -r "$srcdir/YouCompleteMe/third_party/"{pythonfutures,requests-futures} \
 		"$pkgdir/$vimfiles_dir/third_party"
-	cp -r "$srcdir/YouCompleteMe/third_party/ycmd/"{ycmd,ycm_core.so,CORE_VERSION,cpp,clang_includes} \
+	cp -r "$srcdir/YouCompleteMe/third_party/ycmd/"{ycmd,ycm_core.so,CORE_VERSION,clang_includes} \
 		"$pkgdir/$vimfiles_dir/third_party/ycmd"
 	cp -r "$srcdir/YouCompleteMe/third_party/ycmd/third_party/"{bottle,parso,frozendict,jedi,python-future,requests,waitress} \
 		"$pkgdir/$vimfiles_dir/third_party/ycmd/third_party"
@@ -304,8 +309,34 @@ package() {
 		ln -sf /tmp "$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/eclipse.jdt.ls/workspace"
 	fi
 
+	# Remove all the unnecessary git repositories
 	find "$pkgdir" -name .git -exec rm -fr {} +
-	rm -rf "$pkgdir/$vimfiles_dir/third_party/ycmd/ycmd/tests"
+
+	# Remove test files
+	rm -r "$pkgdir/$vimfiles_dir/third_party/ycmd/ycmd/tests"
+	rm -r "$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/parso/test"
+	rm -r "$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/python-future/tests"
+	rm -r "$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/jedi/test"
+	rm -r "$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/waitress/waitress/tests"
+	rm -r "$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/bottle/test"
+
+	# Remove any file we cannot compile using a specfic python version
+	if [[ "$_use_python2" == "ON" ]]; then
+		:
+	else
+		rm -r "$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/bottle/plugins/werkzeug/bottle_werkzeug.py"
+		rm -r "$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/bottle/plugins/sqlite/bottle_sqlite.py"
+	fi
+
+	# Remove unneeded docs
+	rm -r "$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/python-future/docs"
+
+	# Finally compile all the python files to bytecode.
+	if [[ "$_use_python2" == "ON" ]]; then
+		python2 -m compileall "$pkgdir"
+	else
+		python3 -m compileall "$pkgdir"
+	fi
 
 }
 
