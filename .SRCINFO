@@ -1,7 +1,7 @@
 pkgbase = firetools
 	pkgdesc = Graphical user interface of Firejail
 	pkgver = 0.9.52
-	pkgrel = 2
+	pkgrel = 3
 	url = https://firejail.wordpress.com/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = firetools
 	depends = gcc-libs
 	depends = firejail
 	depends = qt5-base
-	source = http://sourceforge.net/projects/firejail/files/firetools/firetools-0.9.52.tar.xz
+	source = https://sourceforge.net/projects/firejail/files/firetools/firetools-0.9.52.tar.xz
 	sha256sums = df4a7d3817154c1f607b9ea4896a6bf90ca84e4e8de6e83208f15b36e54d79a9
 
 pkgname = firetools
