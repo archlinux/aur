@@ -1,0 +1,17 @@
+pkgbase = canta-gtk-theme
+	pkgdesc = Flat Material Design theme for GTK 3, GTK 2 and Gnome-Shell
+	pkgver = 2018.10.12
+	pkgrel = 1
+	url = https://github.com/vinceliuice/Canta-theme
+	arch = any
+	license = GPL2
+	makedepends = gtk3
+	depends = gtk-engine-murrine
+	depends = gtk-engines
+	depends = gnome-themes-standard
+	depends = sassc
+	source = https://github.com/vinceliuice/Canta-theme/archive/2018-10-12.tar.gz
+	sha256sums = 41eb317f98fe1b4aef55f6facc55ba05ca86896acf664ac1ae3d52185fa5941d
+
+pkgname = canta-gtk-theme
+
