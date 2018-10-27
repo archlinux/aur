@@ -1,6 +1,6 @@
 # Maintainer: Alexander Samoylenko <lxmnk@tuta.io>
 pkgname=xidlehook
-pkgver=0.4.9
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="xautolock rewrite in Rust, with a few extra features"
 url="https://github.com/jD91mZM2/xidlehook"
@@ -10,7 +10,7 @@ makedepends=("rust" "libxss")
 optdepends=()
 depends=("libpulse")
 source=("https://github.com/jD91mZM2/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('5fbbc783ebe11b15622197e25760dd5ca6a3739b1cdd889d01b46f673c531828')
+sha256sums=('b62bb653c7361a8f3ba7c338822a042a3ce97987a1d5b418591d8df34634f8c6')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
