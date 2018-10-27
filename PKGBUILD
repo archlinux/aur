@@ -2,7 +2,7 @@
 # Based on PKGBUILD Maintained by: Ondrej Jirman <megous@megous.com>
 
 pkgname=megatools-git
-pkgver=1.9.98.r45.g5a48663
+pkgver=1.10.1.r47.g1ea525e
 pkgrel=1
 pkgdesc="Command line client application for Mega.nz"
 arch=('i686' 'x86_64' 'armv7h')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('curl' 'glib2')
 provides=('megatools')
 conflicts=('megatools')
-makedepends=('asciidoc')
+makedepends=('asciidoc' 'docbook-xml' 'autoconf' 'libtool' 'automake')
 source=("git+https://github.com/megous/megatools.git")
 options=(!libtool)
 sha256sums=('SKIP')
@@ -25,15 +25,13 @@ pkgver() {
 }
 
 prepare() {
-	cd "megatools"
-	./autogen.sh
+  cd "megatools"
+  ./autogen.sh --prefix=/usr
 }
 
 build() {
   cd "megatools"
-
-  ./configure --prefix=/usr
-
+  make -C docs
   make
 }
 
