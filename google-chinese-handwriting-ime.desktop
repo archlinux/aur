@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Google Chinese Handwriting IME
+Terminal=false
+Exec=/bin/bash -c "cd /opt/google-chinese-handwriting-ime && yarn start"
+Hidden=false
