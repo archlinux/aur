@@ -1,13 +1,13 @@
 # Maintainer: Leo Schwarz (evotopid) <mail@leoschwarz.com>
 pkgname=kanjistrokeorders-ttf
-pkgver=4.001
-pkgrel=2
+pkgver=4.002
+pkgrel=1
 pkgdesc="Kanji stroke order font"
 arch=(any)
 depends=(fontconfig xorg-font-utils)
 url="http://www.nihilist.org.uk/"
 source=("http://www.nihilist.org.uk/KanjiStrokeOrders_v${pkgver}.zip")
-sha256sums=('b93212ef8bde171050294df2220355a2d9258362a1369c749175e7d4e177eb0d')
+sha256sums=('66ef5987dd64474e6c638f020fdb6fbe10db4b58f1420e32b22b320d2407f5cb')
 license=('BSD')
 
 
