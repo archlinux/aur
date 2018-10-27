@@ -1,15 +1,15 @@
 pkgbase = bloscpack
 	pkgdesc = command line interface to and serialization format for Blosc.
-	pkgver = 0.13.0
-	pkgrel = 2
+	pkgver = 0.14.0
+	pkgrel = 1
 	url = https://github.com/Blosc/bloscpack
 	arch = any
 	license = MIT
 	depends = python-blosc
 	depends = python-numpy
 	depends = python-six
-	source = bloscpack-0.13.0.tar.gz::https://github.com/Blosc/bloscpack/archive/v0.13.0.tar.gz
-	sha256sums = c4318200ff8847036af1d0abe981ba7c85aecc2fa915cfe0c11572744a769aea
+	source = bloscpack-0.14.0.tar.gz::https://github.com/Blosc/bloscpack/archive/v0.14.0.tar.gz
+	sha256sums = 5123e9ed005760abde5fdedbe06e48bf6ba8ebb9a8c9b7d71a9313ef8ab71c8c
 
 pkgname = bloscpack
 
