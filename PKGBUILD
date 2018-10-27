@@ -2,15 +2,15 @@
 
 pkgname=rtapp
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Realtime application thread priority tuning"
 arch=('any')
-url="http://www.audio-linux.com"
+url="https://www.audio-linux.com"
 license=('custom')
 depends=('util-linux' 'bash' 'rtirq' 'rt-tests')
 optdepends=('linux-rt: The Linux-rt kernel and modules')
 install=${pkgname}.install
-source=("http://www.tophifi.it/ftp/packages/$pkgname.tar.gz")
+source=("https://www.audio-linux.com/ftp/packages/$pkgname.tar.gz")
 sha256sums=('29c0543bb6f6bb05fe02ff9ec6a253c3046d9c190a0bce70713a6fcf7e3c86a5')
 backup=('etc/rtapp/rtapp.conf')
 
