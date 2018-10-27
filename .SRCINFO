@@ -1,20 +1,20 @@
 pkgbase = libva-intel-driver-hybrid
-	pkgdesc = VA-API implementation for Intel G45 and HD Graphics family with wrapper support for the hybrid codec driver
-	pkgver = 2.1.0
+	pkgdesc = VA-API implementation for Intel G45 and HD Graphics family
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://01.org/linuxmedia/vaapi
-	arch = i686
 	arch = x86_64
 	license = MIT
-	depends = glibc
-	depends = libva>=2.0.0
+	makedepends = git
+	makedepends = meson
+	depends = libva
 	depends = libdrm
 	optdepends = intel-hybrid-codec-driver: Provides codecs with partial HW acceleration
 	provides = libva-intel-driver
 	conflicts = libva-intel-driver
 	replaces = libva-driver-intel
-	source = https://github.com/01org/intel-vaapi-driver/releases/download/2.1.0/intel-vaapi-driver-2.1.0.tar.bz2
-	sha256sums = ecfaf2ccc4b9af7340e002d2ef807d1e33051d4992f1983f5f4d60e516f86bdf
+	source = git+https://github.com/intel/intel-vaapi-driver.git#tag=2.2.0
+	sha256sums = SKIP
 
 pkgname = libva-intel-driver-hybrid
 
