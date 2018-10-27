@@ -1,26 +1,26 @@
-# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 # Contributor: Sarah Hay <sarahhay@mb.sympatico.ca>
 # Contributor: Martin Sandsmark <martin.sandsmark@kde.org>
 
 _srcname=vlc
 pkgname=vlc-decklink
-pkgver=3.0.3
+pkgver=3.0.4
 pkgrel=1
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player (with decklink support)'
 url='https://www.videolan.org/vlc/'
 arch=('i686' 'x86_64')
 license=('LGPL2.1' 'GPL2')
-depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'lua'
+depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'lua' 'libidn'
          'libmatroska' 'taglib' 'libmpcdec' 'ffmpeg' 'faad2' 'libupnp' 'libmad'
          'libmpeg2' 'xcb-util-keysyms' 'libtar' 'libxinerama' 'libsecret'
          'libarchive' 'qt5-base' 'qt5-x11extras' 'qt5-svg' 'freetype2'
          'fribidi' 'harfbuzz' 'fontconfig' 'libxml2' 'gnutls' 'libplacebo'
-         'wayland-protocols')
+         'wayland-protocols' 'aribb24')
 makedepends=(
     # official repositories:
         'gst-plugins-base-libs' 'live-media' 'libnotify' 'libbluray'
-        'flac' 'kdelibs' 'libdc1394' 'libavc1394' 'libcaca' 'gtk3'
+        'flac' 'libdc1394' 'libavc1394' 'libcaca' 'gtk3'
         'librsvg' 'libgme' 'xosd' 'twolame' 'aalib' 'avahi' 'libsystemd'
         'libmtp' 'libupnp' 'libmicrodns' 'libdvdcss' 'smbclient'
         'vcdimager' 'libssh2' 'mesa' 'protobuf' 'libnfs' 'mpg123'
@@ -37,7 +37,6 @@ optdepends=('avahi: service discovery using bonjour protocol'
             'libdvdcss: decoding encrypted DVDs'
             'libavc1394: devices using the 1394ta AV/C'
             'libdc1394: IEEE 1394 access plugin'
-            'kdelibs: KDE Solid hardware integration'
             'kwallet: kwallet keystore'
             'libva-vdpau-driver: vdpau backend nvidia'
             'libva-intel-driver: video backend intel'
@@ -95,21 +94,19 @@ optdepends=('avahi: service discovery using bonjour protocol'
             'libnotify: notification plugin'
             'gtk3: notification plugin')
 provides=('vlc')
-conflicts=('vlc-plugin' 'vlc' 'vlc-git')
+conflicts=('vlc' 'vlc-git' 'vlc-plugin')
 replaces=('vlc-plugin')
 options=('!emptydirs')
-source=("https://download.videolan.org/${_srcname}/${pkgver}/${_srcname}-${pkgver}.tar.xz"
+source=("https://download.videolan.org/${_srcname}/${pkgver}/${_srcname}-${pkgver}.tar.xz"{,.asc}
         'update-vlc-plugin-cache.hook'
         'lua53_compat.patch'
-        'vlc-qt5.11.patch'
-        'aom-remove-unsupported-pixel-formats.patch'
         'vlc-3.0.3-fix-build-with-libx264-git.patch')
-sha256sums=('9ba8b04bdb13f7860a2041768ac83b47b397a36549c71c530b94028a3cfd5b51'
+sha256sums=('01f3db3790714038c01f5e23c709e31ecd6f1c046ac93d19e1dde38b3fc05a9e'
+            'SKIP'
             'c6f60c50375ae688755557dbfc5bd4a90a8998f8cf4d356c10d872a1a0b44f3a'
             'd1cb88a1037120ea83ef75b2a13039a16825516b776d71597d0e2eae5df2d8fa'
-            '17c9e9b95e67cce347057ec84b090ac1e416b453f629f81533077d05e12a067a'
-            '9e271bf7ec8ba0aa956bdd54e54cb0feb4ff078404bb0762aa61dc65a74b2af8'
             '410064c7f18e08025d365962fd5e17f0f99f74c7334b9a283a90bc89b1d72158')
+validpgpkeys=('65F7C6B4206BD057A7EB73787180713BE58D1ADC') # VideoLAN Release Signing Key
 
 prepare() {
     cd "${_srcname}-${pkgver}"
@@ -121,8 +118,6 @@ prepare() {
     sed 's|hostname -f|echo arch|g' -i configure
     
     patch -Np1 -i "${srcdir}/lua53_compat.patch"
-    patch -Np1 -i "${srcdir}/vlc-qt5.11.patch"
-    patch -Np1 -i "${srcdir}/aom-remove-unsupported-pixel-formats.patch"
     patch -Np1 -i "${srcdir}/vlc-3.0.3-fix-build-with-libx264-git.patch"
 }
 
@@ -139,6 +134,7 @@ build() {
     ./configure \
         --prefix='/usr' \
         --sysconfdir='/etc' \
+        --with-kde-solid='/usr/share/solid/actions/' \
         --disable-rpath \
         --enable-nls \
         --enable-archive \
@@ -227,6 +223,7 @@ build() {
         --enable-notify \
         --enable-libplacebo \
         --enable-vlc \
+        --enable-aribsub \
         --enable-decklink
         
     make
@@ -234,6 +231,8 @@ build() {
 
 package() {
     cd "${_srcname}-${pkgver}"
+    
+    local _res
     
     make DESTDIR="$pkgdir" install
     
