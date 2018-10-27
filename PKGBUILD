@@ -3,8 +3,8 @@
 # Contributor: Mark Weiman <markzz@archlinux.net>
 
 pkgbase=linux-vfio-selinux
-_srcname=linux-4.18
-pkgver=4.18.15
+_srcname=linux-4.19
+pkgver=4.19
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -13,28 +13,26 @@ makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 source=(
   https://cdn.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
-  https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz
+#  https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz
   config         # the main kernel config file
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
   # patches for pci passthrough
   add-acs-overrides.patch
-  i915-vga-arbiter.patch
+#  i915-vga-arbiter.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('19d8bcf49ef530cd4e364a45b4a22fa70714b70349c8100e7308488e26f1eaf1'
+sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
             'SKIP'
-            'b94445d2d8919adc01f840088b6a70b26a10dd1beb38c3b0217408e14a7e341d'
-            'fb798c4bc70c6ee62b061420c3b9a2772683d16b86d29c46c45385c331afaf72'
+            '54669ed7cd60ed1f86d1bc366f340c773910e0febcb2786704aee12772c88afb'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '8f407ad5ff6eff106562ba001c36a281134ac9aa468a596aea660a4fe1fd60b5'
             '99d0102c8065793096b8ea2ccc01c41fa3dcb96855f9f6f2c583b2372208c6f9'
-            '4b6df9e82460ef1fb2b55fec2d01b8ace8331547e5d3b374a42bb84271e4f866'
-            '7cb4a5da6bf551dbb2db2e0b4e4d0774ee98cc30d9e617e030b27e6cba3e6293')
+            '4b6df9e82460ef1fb2b55fec2d01b8ace8331547e5d3b374a42bb84271e4f866')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
@@ -43,13 +41,13 @@ prepare() {
   cd ${_srcname}
 
   # add upstream patch
-  patch -p1 -i ../patch-${pkgver}
+#  patch -p1 -i ../patch-${pkgver}
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
   # patches for vga arbiter fix in intel systems
-  patch -p1 -i "${srcdir}/i915-vga-arbiter.patch"
+#  patch -p1 -i "${srcdir}/i915-vga-arbiter.patch"
 
   # Overrides for missing acs capabilities
   patch -p1 -i "${srcdir}/add-acs-overrides.patch"
