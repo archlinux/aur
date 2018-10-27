@@ -1,5 +1,5 @@
 pkgname=mingw-w64-libgcrypt
-pkgver=1.8.3
+pkgver=1.8.4
 pkgrel=1
 pkgdesc="General purpose cryptographic library based on the code from GnuPG (mingw-w64)"
 arch=("any")
@@ -11,7 +11,7 @@ options=(staticlibs !buildflags !strip !emptydirs)
 source=("https://gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-${pkgver}.tar.bz2"{,.sig}
 "libgcrypt-use-correct-def-file.patch"
 "Smarter-fig2dev-detection.all.patch")
-sha1sums=('13bd2ce69e59ab538e959911dfae80ea309636e3'
+sha1sums=('4a8ef9db6922f3a31992aca5640b4198a69b58fc'
           'SKIP'
           '0f03d59dee4b967dfa80621ef4b1efea61772c16'
           '3613a5454aeaef8d264011f2bc9f2303248fb933')
