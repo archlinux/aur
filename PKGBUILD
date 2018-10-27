@@ -1,7 +1,7 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=easyrpg-player-git
-pkgver=0.5.3.r0.gb094cdb8
+pkgver=0.5.4.r0.ga778fba8
 pkgrel=1
 pkgdesc="FLOSS RPG Maker 2000/2003 and EasyRPG games interpreter (development version)"
 arch=('i686' 'x86_64')
@@ -13,7 +13,9 @@ makedepends=('git' 'asciidoc')
 depends=('liblcf-git' 'sdl2_mixer' 'pixman' 'freetype2' 'libvorbis' 'mpg123'
          'libsndfile' 'speexdsp')
 optdepends=('wine: for installing the run time packages (RTP)'
-            'libxmp: decoder for tracker music, used by few games')
+            'libxmp: decoder for tracker music, used by few games'
+            'rpg2000-rtp: run time package for some 2k games'
+            'rpg2003-rtp: run time package for some 2k3 games')
 install=$pkgname.install
 source=(${pkgname%-*}::"git+https://github.com/EasyRPG/Player.git")
 md5sums=('SKIP')
