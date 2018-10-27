@@ -1,17 +1,17 @@
 pkgbase = google-chinese-handwriting-ime
 	pkgdesc = Chinese handwriting IME powered by Google Translate. MacOS style touchpad writing is supported. Written in Electron for Linux.
-	pkgver = 2.1.0
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = https://github.com/Saren-Arterius/google-chinese-handwriting-ime
 	arch = x86_64
 	depends = xdotool
 	depends = xorg-xinput
-	depends = xorg-xdpyinfo
 	depends = python-pyperclip
 	depends = yarn
 	depends = evtest
 	depends = gconf
-	source = git+https://github.com/Saren-Arterius/google-chinese-handwriting-ime.git#commit=786f896ec6e9fc81c774eb2615fa35566d158d66
+	depends = unclutter
+	source = git+https://github.com/Saren-Arterius/google-chinese-handwriting-ime.git#commit=3ac561e7d085f4fa907f93b19fce026a78ceec3e
 	source = google-chinese-handwriting-ime.desktop
 	sha256sums = SKIP
 	sha256sums = 8aad77fc7e22ec8017243d57c530845b336d65cf321386b1b78e4362f38bbab4
