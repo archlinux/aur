@@ -1,6 +1,6 @@
 # Maintainer: lf <packages at lfcode dot ca>
 pkgname=klipper-git
-pkgver=r1495.83d83ce
+pkgver=r1517.4f89251f
 pkgrel=1
 pkgdesc="3D printer firmware with motion planning on the host"
 arch=('x86_64' 'i686' 'armv7h')
@@ -62,5 +62,5 @@ package() {
 	install -Dm644 "$srcdir/tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/klipper.conf"
 	install -dm755 "$pkgdir/opt/klipper"
 	GLOBIGNORE=.git cp -r * "$pkgdir/opt/klipper"
-	git describe --always --tags --long --dirty > "$pkgdir/opt/klipper/klippy/version"
+	python2 "$pkgdir/opt/klipper/scripts/make_version.py" archlinux > "$pkgdir/opt/klipper/klippy/.version"
 }
