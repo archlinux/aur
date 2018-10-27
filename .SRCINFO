@@ -79,7 +79,7 @@ pkgname = xorg-server-bug865
 	provides = X-ABI-XINPUT_VERSION=24.1
 	provides = X-ABI-EXTENSION_VERSION=10.0
 	provides = x-server
-	provides = xorg-server=1.20.1
+	provides = xorg-server=1.20.3
 	conflicts = nvidia-utils<=331.20
 	conflicts = glamor-egl
 	conflicts = xf86-video-modesetting
