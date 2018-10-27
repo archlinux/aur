@@ -1,7 +1,7 @@
 pkgbase = imapfetch
 	pkgdesc = Download all e-mails from an IMAP4 mailserver and store them locally in maildir format.
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ansemjo/imapfetch
 	arch = any
 	license = MIT
