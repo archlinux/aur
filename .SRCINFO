@@ -1,0 +1,33 @@
+pkgbase = cyrus-imapd
+	pkgdesc = Cyrus IMAP mail server
+	pkgver = 3.0.8
+	pkgrel = 1
+	url = http://www.cyrusimap.org/
+	install = cyrus-imapd.install
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = custom
+	depends = cyrus-sasl
+	depends = db
+	depends = libsasl
+	depends = perl
+	provides = imap-server
+	provides = pop3-server
+	conflicts = imap-server
+	conflicts = pop3-server
+	options = !makeflags
+	backup = etc/cyrus/cyrus.conf
+	backup = etc/cyrus/imapd.conf
+	source = https://www.cyrusimap.org/releases/cyrus-imapd-3.0.8.tar.gz
+	source = cyrus-master-conf.d
+	source = cyrus-imapd.install
+	source = cyrus-master.service
+	sha512sums = f4aa9877e62479439bee2ca29f452bd7e9daa091c19bf3567aa7f493f5163c98b44086b749c70981402212ff90e19d9125b508cfcc077088f8c705e533812960
+	sha512sums = 881540a400670e86499db76af7cc41aa663a4492e3c512dbf0687f42b4a54dc5aca9df3ad315dd1c606d084feeec1a07670d50fae82fb9e71f30d5321d94327f
+	sha512sums = 80bfc8a2fca10cd2aa965449c426c987adf156017b111cebc37b889b3d41b7c5ba8a574e3b858166a72101a0e55f02c16411d06aa4dadc0b6410d40d68902386
+	sha512sums = 6cc4bbed0d5342a28a69e4acfa4a89f7a8909c6271e2e819e8da855dca2873fdaa5cea6519cb09c169b507df273d030eff5677bb07c4bf6591939958dd8e1bfe
+
+pkgname = cyrus-imapd
+

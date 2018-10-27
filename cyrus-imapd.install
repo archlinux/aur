@@ -1,0 +1,63 @@
+# $Id: $
+#
+# Description: post-install script for cyrus-imapd
+# Contributor: Ryan Corder <ryanc@greengrey.org>
+#
+
+# arg 1: new package version
+post_install() {
+    # create cyrus user
+    if [ -z "`grep '^cyrus:' /etc/passwd`" ]; then
+        useradd -d /var/spool/imap -g mail -s /bin/false cyrus
+    else
+        usermod -s /bin/false cyrus
+    fi
+
+    # all kinds of directories needed for the IMAP spool
+    for subdir in imap/{,db,log,msg,proc,socket,sieve} spool/imap/{,stage.}; do
+        if [ ! -d /var/${subdir} ]; then
+            mkdir -m 0750 -p "/var/${subdir}"
+        fi
+    done
+    for subdir in imap/{user,quota,sieve} spool/imap; do
+        for i in a b c d e f g h i j k l m n o p q r s t v u w x y z \
+                 A B C D E F G H I J K L M N O P Q R S T U V W X Y Z \
+                 0 1 2 3 4 5 6 7 8 9; do
+            if [ ! -d /var/${subdir}/${i} ]; then
+                mkdir -m 0750 -p "/var/${subdir}/${i}"
+            fi
+        done
+    done
+    chown -R cyrus:mail "/var/imap"
+    chown -R cyrus:mail "/var/spool/imap"
+
+    # make /var/imap/user/* and /var/imap/quota/* synchronous
+    if df -T /var/imap | grep -q ' ext[234] '; then
+        chattr +S /var/imap/{user,quota}{,/*}
+    fi
+    # make /var/spool/imap/* synchronous
+    if df -T /var/spool/imap | grep -q ' ext[23] '; then
+        chattr +S /var/spool/imap{,/*}
+    fi
+
+    # set more secure permissions on config files
+    chown -R cyrus:mail /etc/cyrus
+    chmod 600 /etc/cyrus/cyrus.conf
+    chmod 600 /etc/cyrus/imapd.conf
+}
+
+# arg 1: new package version
+# arg 2: old package version
+post_upgrade() {
+    post_install $1
+}
+
+# arg 1: old package version
+pre_remove() {
+    userdel cyrus &> /dev/null
+}
+
+op=$1
+shift
+
+$op $*
