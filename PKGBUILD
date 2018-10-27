@@ -2,8 +2,8 @@
 
 pkgname=osx-arc-aurorae-theme-git
 _reponame=OSX-Arc-Aurorae
-pkgver=1.0.0.r0.g0b376e3
-pkgrel=2
+pkgver=1.1.0.r1.g4bd5f1f
+pkgrel=1
 pkgdesc="An Aurorae theme designed to compliment @LinxGem33's OSX-Arc gtk themes"
 arch=('i686' 'x86_64')
 url="https://github.com/iboyperson/OSX-Arc-Aurorae"
