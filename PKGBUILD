@@ -2,7 +2,7 @@
 
 pkgname=python-pytaglib
 pkgver=1.4.4
-pkgrel=2
+pkgrel=1
 pkgdesc="Python bindigs for the TagLib audio metadata library"
 arch=('i686' 'x86_64')
 url="https://pypi.org/project/pytaglib"
