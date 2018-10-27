@@ -3,7 +3,7 @@
 pkgname=next-browser-git
 _pkgname=next-browser
 pkgver=0.08.36.g6564e3c
-pkgrel=1
+pkgrel=2
 pkgdesc="Keyboard-oriented, Common Lisp extensible web-browser, inspired by Emacs"
 arch=('i686' 'x86_64')
 url="http://next.atlas.engineer"
@@ -19,10 +19,10 @@ sha256sums=('SKIP'
 makedepends=('common-lisp' 'cl-asdf')
 depends=('webkit2gtk' 'sqlite' 'glib-networking' 'gsettings-desktop-schemas')
 optdepends=('gstreamer: for HTML5 audio/video'
-            'gstreamer-plugins-base: for HTML5 audio/video'
-            'gstreamer-plugins-good: for HTML5 audio/video'
-            'gstreamer-plugins-bad: for HTML5 audio/video'
-            'gstreamer-plugins-ugly: for HTML5 audio/video')
+            'gst-plugins-base: for HTML5 audio/video'
+            'gst-plugins-good: for HTML5 audio/video'
+            'gst-plugins-bad: for HTML5 audio/video'
+            'gst-plugins-ugly: for HTML5 audio/video')
 # Binary will not run otherwise.
 options=('!strip' '!makeflags')
 
