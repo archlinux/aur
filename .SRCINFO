@@ -1,4 +1,4 @@
-pkgbase = cyrus-imapd
+pkgbase = cyrus-imapd-new
 	pkgdesc = Cyrus IMAP mail server
 	pkgver = 3.0.8
 	pkgrel = 1
@@ -29,5 +29,5 @@ pkgbase = cyrus-imapd
 	sha512sums = 80bfc8a2fca10cd2aa965449c426c987adf156017b111cebc37b889b3d41b7c5ba8a574e3b858166a72101a0e55f02c16411d06aa4dadc0b6410d40d68902386
 	sha512sums = 6cc4bbed0d5342a28a69e4acfa4a89f7a8909c6271e2e819e8da855dca2873fdaa5cea6519cb09c169b507df273d030eff5677bb07c4bf6591939958dd8e1bfe
 
-pkgname = cyrus-imapd
+pkgname = cyrus-imapd-new
 
