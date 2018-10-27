@@ -1,7 +1,7 @@
 pkgbase = tensorflow-computecpp
 	pkgdesc = Library for computation using data flow graphs for scalable machine learning (backend with ComputeCpp)
 	pkgver = 1.9
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/codeplaysoftware/tensorflow
 	arch = x86_64

@@ -3,7 +3,7 @@
 pkgbase=tensorflow-computecpp
 pkgname=(tensorflow-computecpp python-tensorflow-computecpp)
 pkgver=1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for computation using data flow graphs for scalable machine learning (backend with ComputeCpp)"
 url="https://github.com/codeplaysoftware/tensorflow"
 epoch=1
@@ -37,7 +37,6 @@ prepare() {
   export TF_NEED_OPENCL=1
   export TF_NEED_OPENCL_SYCL=1
   export TF_NEED_COMPUTECPP=1
-  export TF_SYCL_BITCODE_TARGET=spir64
   export COMPUTECPP_TOOLKIT_PATH=/opt/ComputeCpp-CE
   export COMPUTE=:0
 
