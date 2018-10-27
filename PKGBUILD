@@ -2,7 +2,7 @@
 pkgname=downgrader-git
 _pkgver=2.0.0
 pkgver=2.0.0.r158.f346695
-pkgrel=2
+pkgrel=3
 pkgdesc="Powerful packages downgrader for Archlinux. Works with libalpm, ARM and pacman logs"
 arch=('i686' 'x86_64')
 license=("GPL")
@@ -28,7 +28,7 @@ build() {
 
 package() {
   cd $_gitname
-  install -D -m755 downgrader "$pkgdir/usr/sbin/downgrader"
+  install -D -m755 downgrader "$pkgdir/usr/bin/downgrader"
 }
 
 
