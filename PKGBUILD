@@ -2,7 +2,7 @@
 pkgname=downgrader-git
 _pkgver=2.0.0
 pkgver=2.0.0.r158.f346695
-pkgrel=1
+pkgrel=2
 pkgdesc="Powerful packages downgrader for Archlinux. Works with libalpm, ARM and pacman logs"
 arch=('i686' 'x86_64')
 license=("GPL")
@@ -14,6 +14,7 @@ md5sums=('SKIP')
 depends=('pacman' 'pacman-contrib')
 makedepends=('git')
 provides=("downgrader")
+conflicts=('downgrader')
 
 pkgver() {
   cd "$_gitname"
