@@ -11,7 +11,7 @@ license=('CCPL')
 url="http://sourceforge.net/projects/caledonia/"
 depends=('plasma-workspace')
 conflicts=('caledonia-bundle')
-source=("https://dl.dropboxusercontent.com/u/40068438/Caledonia-2.0.tar.gz")
+source=("https://www.dropbox.com/s/raw/4uydrlh15e3ecg3/Caledonia-2.0.tar.gz")
 sha256sums=('3d855b7806d23ad3f748a30e9b0fa94c8ad7ec489fd19a4c026276b3045c5bcc')
 
 package() {
