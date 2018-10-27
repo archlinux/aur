@@ -1,0 +1,15 @@
+pkgbase = python-vtkinterface
+	pkgdesc = VTK helper module that simplifies mesh creation and plotting
+	pkgver = 0.11.2
+	pkgrel = 1
+	url = https://github.com/akaszynski/vtkInterface
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = vtk
+	depends = python-imageio
+	source = https://github.com/akaszynski/vtkInterface/archive/0.11.2.tar.gz
+	sha256sums = 0564529b3228571dee61926a05014dfa1643c082c050be99c3df950d58df1f07
+
+pkgname = python-vtkinterface
+
