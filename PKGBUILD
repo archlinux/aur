@@ -1,8 +1,8 @@
 # Maintainer: Aaron Blair <aaron@aaronpb.me>
 
 pkgname=gobuster
-pkgver=1.4.2
-pkgrel=2
+pkgver=2.0.1
+pkgrel=4
 pkgdesc="A directory/file & DNS busting tool."
 arch=('x86_64')
 url="https://github.com/OJ/gobuster"
@@ -11,7 +11,7 @@ depends=()
 makedepends=('go>=1.10' 'git')
 optdepends=()
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/OJ/${pkgname}/archive/v${pkgver}.tar.gz)
-sha256sums=('e90990f45f06324eb2378369b795a526a6145ca12c8a631493505f1ecfada74f')
+sha256sums=('2409acffe1fa46424a1de465bca1d3d026bdaba9a7e6bccc1d934f7ae51c24e0')
 
 prepare() {
   cd "${srcdir}"/${pkgname}-${pkgver}
