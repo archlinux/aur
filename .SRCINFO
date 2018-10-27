@@ -1,0 +1,13 @@
+pkgbase = lightdm-webkit2-theme-sapphire
+	pkgdesc = A simple Sapphire theme for lightdm-webkit2-greeter
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Sujaykumarh/lightdm-theme-sapphire
+	arch = any
+	license = Apache License, Version 2.0
+	depends = lightdm-webkit2-greeter
+	source = https://github.com/Sujaykumarh/lightdm-theme-sapphire/releases/download/v1.0/lightdm-theme-sapphire-1.0.tar.gz
+	sha512sums = 7ab20fb216b39ec8aedc5b1807b807d00baabbe6703004fdb6599ea0d33ea5d58d4d178ffcbeed2bc95a173b5ba63fddbdf5bec1cd1fc81b110205eb78e1aff1
+
+pkgname = lightdm-webkit2-theme-sapphire
+
