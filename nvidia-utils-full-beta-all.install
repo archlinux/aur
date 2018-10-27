@@ -1,7 +1,7 @@
 post_upgrade() {
-  printf '%s\n' "If you run into trouble with CUDA not being available, run 'nvidia-modprobe' first."
+    printf '%s\n' "If you run into trouble with CUDA not being available, run 'nvidia-modprobe' first."
 }
 
 post_install() {
-  post_upgrade
+    post_upgrade
 }

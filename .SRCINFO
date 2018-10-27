@@ -1,7 +1,7 @@
 pkgbase = nvidia-full-beta-all
 	pkgdesc = Full NVIDIA driver package for all kernels on the system (drivers, utilities and libraries) (beta version)
 	pkgver = 410.73
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nvidia.com/
 	arch = x86_64
 	license = custom:NVIDIA
@@ -25,6 +25,7 @@ pkgname = nvidia-full-beta-all
 
 pkgname = nvidia-utils-full-beta-all
 	pkgdesc = NVIDIA driver utilities and libraries for 'nvidia-full-beta-all'
+	install = nvidia-utils-full-beta-all.install
 	depends = xorg-server
 	depends = mesa>=17.0.2-2
 	optdepends = gtk2: nvidia-settings (GTK+ v2)
@@ -41,7 +42,7 @@ pkgname = nvidia-utils-full-beta-all
 	conflicts = libglvnd
 
 pkgname = nvidia-egl-wayland-full-beta-all
-	pkgdesc = NVIDIA EGL Wayland library (libnvidia-egl-wayland.so.1.1.0) for 'nvidia-utils-beta'
+	pkgdesc = NVIDIA EGL Wayland library (libnvidia-egl-wayland.so.1.1.0) for 'nvidia-utils-full-beta-all'
 	depends = nvidia-utils-full-beta-all
 	provides = egl-wayland
 	conflicts = egl-wayland
