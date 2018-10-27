@@ -1,7 +1,7 @@
 pkgbase = realvnc-vnc-server
 	pkgdesc = VNC remote desktop server software by RealVNC
 	pkgver = 6.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.realvnc.com/
 	install = realvnc-vnc-server.install
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = realvnc-vnc-server
 	license = custom
 	depends = libsm
 	depends = libxtst
+	depends = xorg-xauth
 	optdepends = cups: Printer support
 	conflicts = tightvnc
 	conflicts = tigervnc
