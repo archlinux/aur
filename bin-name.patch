@@ -1,0 +1,17 @@
+diff --git a/1.9/Makefile.std b/1.9/Makefile.std
+index d41d8c5d..83e619fa 100644
+--- a/1.9/Makefile.std
++++ b/1.9/Makefile.std
+@@ -72,10 +72,10 @@ OBJS = plink.o plink_assoc.o plink_calc.o plink_cluster.o plink_cnv.o plink_comm
+ 
+ all:	$(BIN)
+ 
+-plink: $(OBJS)
++$(BIN): $(OBJS)
+ 	$(CXX) $(OBJS) $(LDFLAGS_EXTRA) $(BLASFLAGS) $(LDFLAGS) -L. $(ZLIB) -o $@
+ 
+-plinkw: $(OBJS)
++$(BIN)w: $(OBJS)
+ 	gfortran -O2 $(OBJS) $(LDFLAGS_EXTRA) -Wl,-Bstatic $(BLASFLAGS) $(LDFLAGS) -L. $(ZLIB) -o $@
+ 
+ install:
