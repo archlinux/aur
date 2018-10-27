@@ -1,7 +1,7 @@
 # Maintainer: Mike Polvere <mic.tjs@gmail.com>
 
 pkgname=libretro-beetle-vb-git
-pkgver=688.cc11960
+pkgver=690.93f5b60
 pkgrel=1
 pkgdesc="Virtual Boy emu - Standalone port of Beetle / Mednafen VB to libretro."
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
