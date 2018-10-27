@@ -3,8 +3,8 @@
 
 _gitname=suru-plus
 pkgname=suru-plus-git
-pkgver=20.3.1
-pkgrel=2
+pkgver=20.3.0
+pkgrel=3
 pkgdesc="Suru++ 20 — A cyberpunk, elegant, futuristic and modern third-party icons theme!"
 arch=('any')
 url="https://github.com/gusbemacbe/${_gitname}"
@@ -16,12 +16,11 @@ conflicts=(${_gitname})
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
-pkgver() 
-{
-    cd ${_gitname}
-    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-    # printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+# pkgver() 
+# {
+#     cd ${_gitname}
+#     # printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+# }
 
 package() 
 {
