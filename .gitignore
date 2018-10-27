@@ -2,4 +2,5 @@
 /pkg
 /src
 /tm
+/tmux-manager
 /*.tar.xz

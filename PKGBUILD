@@ -1,7 +1,7 @@
 # Maintainer: mcp <mcp@praeger.org>
 pkgname=tmux-manager-git
 pkgver=r36.283e8ba
-pkgrel=1
+pkgrel=2
 pkgdesc='Allows easy handling of various types of tmux sessions, as well as complex setups.'
 arch=('any')
 url='https://github.com/Ganneff/tm'
@@ -22,4 +22,5 @@ package() {
     cd "$srcdir/${pkgname%-git}"
     install -Dm755 tm $pkgdir/usr/bin/tm
     install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+    install -Dm644 _tm $pkgdir/usr/share/zsh/site-functions/_tm
 }
