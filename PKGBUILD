@@ -9,12 +9,12 @@
 # What type of build do you want?
 # See http://techbase.kde.org/Development/CMake/Addons_for_KDE#Buildtypes to check what is supported.
 
-_buildtype='RelWithDebInfo'
+_buildtype='Release'
 
 ##############################################################
 
 pkgname=tomahawk-git
-pkgver=0.8.0rc1.1299.g97a407f83
+pkgver=0.8.0rc1.1304.g119a7ebdb
 pkgrel=1
 epoch=1
 pkgdesc='A Music Player App written in C++/Qt - development version'
@@ -22,35 +22,47 @@ arch=('i686' 'x86_64')
 url='http://tomahawk-player.org/'
 license=('GPL3')
 depends=('qt5-svg' 'qt5-tools' 'qt5-xmlpatterns' 'qt5-x11extras' 'qca-qt5'
-          'taglib' 'lucene++' 'libechonest-qt5' 'jreen'
+          'taglib' 'lucene++' 'libechonest' 'jreen'
           'quazip' 'attica-qt5' 'qt5-webkit' 'liblastfm-qt5'
           'qtkeychain' 'vlc')
-makedepends=('git' 'cmake' 'extra-cmake-modules' 'automoc4' 'sparsehash' 'boost' 'websocketpp')
+makedepends=('git' 'cmake' 'extra-cmake-modules' 'sparsehash' 'boost')
 optdepends=('kdelibs: integration with Plasma Desktop' 'telepathy-qt5: integration with Telepathy')
 provides=('tomahawk')
-conflicts=('tomahawk')
-source=("${pkgname}::git://github.com/tomahawk-player/tomahawk.git")
-md5sums=('SKIP')
+conflicts=('tomahawk' 'tomahawk-qt5')
+source=("${pkgname}::git://github.com/tomahawk-player/tomahawk.git"
+        "fix-qt5-dependencies.patch")
+sha256sums=('SKIP'
+            '7dba918658edcec661760ac7d33d18bf8fbbdd507b60139e858d027492bec4cb')
 
 if [[ ! ${_buildtype} == 'Release' ]] && [[ ! ${_buildtype} == 'release' ]]; then
   options=('debug')
 fi
 
 pkgver() {
-  cd ${srcdir}/${pkgname}
+  cd "${srcdir}/${pkgname}"
   git describe --always --tags | sed 's|-|.|g'
 }
 
+prepare() {
+  cd "${srcdir}/${pkgname}"
+  patch -p0 -i ../fix-qt5-dependencies.patch
+}
+
 build() {
-  cd ${srcdir}/${pkgname}
+  cd "${srcdir}/${pkgname}"
+
+  # Hatchet is dead and causes build error with newer versions of websocketpp,
+  # so disable it. See <https://github.com/tomahawk-player/tomahawk/issues/654>
+
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INSTALL_LIBEXECDIR=lib/tomahawk \
+        -DBUILD_HATCHET=OFF \
         -DCMAKE_BUILD_TYPE=${_buildtype}
   make
 }
 
 package() {
-  cd ${srcdir}/${pkgname}
-  make DESTDIR=${pkgdir} install
+  cd "${srcdir}/${pkgname}"
+  make DESTDIR="${pkgdir}" install
 }
