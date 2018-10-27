@@ -3,17 +3,18 @@
 
 pkgname=gigolo
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Frontend to manage connections to remote filesystems using GIO/GVFS"
 arch=('i686' 'x86_64')
-url="http://www.uvena.de/gigolo"
+url="https://www.uvena.de/gigolo"
 license=('GPL2')
 depends=('gtk2' 'gvfs')
 makedepends=('intltool')
-optdepends=('gnome-mount: to use HAL mounter for local drives')
 conflicts=('gigolo-git')
-source=(http://files.uvena.de/$pkgname/$pkgname-$pkgver.tar.bz2)
-sha256sums=('553fc78fe4e7bd2f01f3851baea7e63f6414fe652dfb4b08c60b5c4b2b909164')
+source=(https://files.uvena.de/$pkgname/$pkgname-$pkgver.tar.bz2{,.sig})
+validpgpkeys=('457990C86F91F33DE05EBF1BCC03633F700990F2') #Enrico Tröger <enrico.troeger@uvena.de>
+sha256sums=('553fc78fe4e7bd2f01f3851baea7e63f6414fe652dfb4b08c60b5c4b2b909164'
+            'SKIP')
 
 build() {
   cd "${srcdir}"/$pkgname-$pkgver
