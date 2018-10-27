@@ -1,7 +1,7 @@
 pkgbase = nvidia-utils-beta
 	pkgdesc = NVIDIA driver utilities and libraries (beta version)
 	pkgver = 410.73
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nvidia.com/
 	arch = x86_64
 	license = custom:NVIDIA
@@ -14,6 +14,7 @@ pkgbase = nvidia-utils-beta
 	sha256sums = d8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167
 
 pkgname = nvidia-utils-beta
+	pkgdesc = NVIDIA driver utilities and libraries (beta version)
 	install = nvidia-utils-beta.install
 	depends = xorg-server
 	depends = mesa>=17.0.2-2
