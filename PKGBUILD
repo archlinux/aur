@@ -11,7 +11,7 @@ pkgver=18.04
 # the build version is obtained from [here](https://github.com/senshu/Sozi/releases)
 _buildver=18.04-1523042682
 _pkgverpostfix=""
-pkgrel=2
+pkgrel=3
 
 pkgdesc="A zooming presentation editor and player based on SVG and JavaScript"
 url="http://sozi.baierouge.fr/"
@@ -19,7 +19,7 @@ url="http://sozi.baierouge.fr/"
 arch=('i686' 'x86_64')
 license=('custom:MPL2.0')
 
-makedepends=('npm' 'bower' 'nodejs-grunt-cli'
+makedepends=('npm' 'bower' 'grunt-cli'
   'ttf-droid'
   'jq' 'semver')
 
