@@ -1,5 +1,5 @@
 pkgname=hitman
-pkgver=0.1.2
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Simple process killer"
 url="https://gitlab.com/timlyo/Hitman"

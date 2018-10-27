@@ -1,6 +1,6 @@
 pkgbase = hitman
 	pkgdesc = Simple process killer
-	pkgver = 0.1.2
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://gitlab.com/timlyo/Hitman
 	arch = i686
