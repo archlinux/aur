@@ -1,0 +1,24 @@
+pkgbase = kittehplayer
+	pkgdesc = A YouTube-like video player based on Qt, QML and libmpv.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/NamedKitten/KittehPlayer
+	arch = x86_64
+	license = MPL2
+	makedepends = git
+	makedepends = qt5-tools
+	depends = qt5-svg
+	depends = qt5-declarative
+	depends = qt5-quickcontrols
+	depends = qt5-quickcontrols2
+	depends = mpv
+	depends = qt5-graphicaleffects
+	optdepends = mpv-vapoursynth: for vapoursynth support.
+	optdepends = youtube-dl: for remote video streaming
+	provides = kittehplayer
+	conflicts = kittehplayer
+	source = git+https://github.com/NamedKitten/kittehplayer
+	md5sums = SKIP
+
+pkgname = kittehplayer
+
