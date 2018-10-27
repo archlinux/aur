@@ -1,6 +1,6 @@
 pkgbase = wio
 	pkgdesc = An IoT Development Environment
-	pkgver = 0.5.1
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/wio/wio
 	arch = x86_64
@@ -16,16 +16,16 @@ pkgbase = wio
 	optdepends = avrdude: for uploading to Arduino based boards
 	optdepends = gcc: for compiling natively
 	options = !strip
-	source = wio-0.5.1.tar.gz::https://github.com/wio/wio/releases/download/v0.5.1/wio_linux_x86_64.tar.gz
-	source = wio-0.5.1.tar.gz::https://github.com/wio/wio/releases/download/v0.5.1/wio_linux_i386.tar.gz
-	source = wio-0.5.1.tar.gz::https://github.com/wio/wio/releases/download/v0.5.1/wio_linux_arm5.tar.gz
-	source = wio-0.5.1.tar.gz::https://github.com/wio/wio/releases/download/v0.5.1/wio_linux_arm6.tar.gz
-	source = wio-0.5.1.tar.gz::https://github.com/wio/wio/releases/download/v0.5.1/wio_linux_arm7.tar.gz
-	sha256sums = 38771aa741d37539332da05c54648fcb08a08c08e8f940016ee5dc518ce76e1a
-	sha256sums = 0b152c754396874149895c91165a7ed73f885863233a16e2f61bc03ed29e3e59
-	sha256sums = f731a878459dcbc7280f6a7a2951223238915e462202667653e9c00d0e67a5b1
-	sha256sums = 637551d6ebfae657f2891c9f5ab90bc196653d8a46696b18240ce9c24c882ead
-	sha256sums = 6b944625baee57aa55310ad43c3373c260f7eaee0e2af8435ef58e6def48a526
+	source = wio-0.6.0.tar.gz::https://github.com/wio/wio/releases/download/0.6.0/wio_linux_x86_64.tar.gz
+	source = wio-0.6.0.tar.gz::https://github.com/wio/wio/releases/download/0.6.0/wio_linux_i386.tar.gz
+	source = wio-0.6.0.tar.gz::https://github.com/wio/wio/releases/download/0.6.0/wio_linux_arm5.tar.gz
+	source = wio-0.6.0.tar.gz::https://github.com/wio/wio/releases/download/0.6.0/wio_linux_arm6.tar.gz
+	source = wio-0.6.0.tar.gz::https://github.com/wio/wio/releases/download/0.6.0/wio_linux_arm7.tar.gz
+	sha256sums = 27cc17082996960dadee6b31973e5d1df08ebefcdebc7456ce038a58ada7e871 
+	sha256sums = d7f14e02520ee3b6d9457f386e42de68c3086db6fc7a52b97c880d31dd8b7458
+	sha256sums = 101e9f15f4d6775ed05c3abfa26661265d3ed2d4e338442c88a341792159c2a4
+	sha256sums = 45a8408769962b3042e7a2d62f0a249bf62610aff4e569613220404c9a3be828
+	sha256sums = f296dc424e56170b3381ca9a97b87d2dce8e745dafc6db642e6245ce919c77ab
 
 pkgname = wio
 
