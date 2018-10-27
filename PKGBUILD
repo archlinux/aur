@@ -1,7 +1,7 @@
 # Maintainer: phiresky <phireskyde+git@gmail.com>
 pkgname=qdirstat
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt-based directory statistics (KDirStat/K4DirStat without any KDE - from the original KDirStat author)"
 arch=(i686 x86_64)
 url="https://github.com/shundhammer/qdirstat"
@@ -15,29 +15,18 @@ replaces=()
 backup=()
 options=()
 install=qdirstat.install
-source=('git+https://github.com/shundhammer/qdirstat')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/shundhammer/qdirstat/archive/$pkgver.tar.gz")
 noextract=()
-md5sums=('SKIP')
+sha256sums=('7f9a0a7304c55ebfad1e50c7747ba762b07068f48304b3d3919bdb65ee037999')
 
-pkgver() {
-	cd "$srcdir/$pkgname"
-
-# Git, tags available
-	printf "%s" "$(git describe --tags --abbrev=0)"
-}
-
-prepare() {
-	cd "$srcdir/$pkgname"
-	git checkout "tags/$(git describe --tags --abbrev=0)"
-}
 
 build() {
-	cd "$srcdir/$pkgname"
+	cd "$pkgname-$pkgver"
 	qmake
 	make -j$(nproc)
 }
 
 package() {
-	cd "$srcdir/$pkgname"
+	cd "$pkgname-$pkgver"
 	make INSTALL_ROOT="$pkgdir/" install
 }
