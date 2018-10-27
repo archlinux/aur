@@ -35,7 +35,7 @@ makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 
 # Arch stock configuration files are directly pulled from a specific trunk
-arch_config_trunk=fe9bab556d810ba4bb968f60e834fa7b31a3e5e0
+arch_config_trunk=eebe25e17f3084835543d785111b3946f5123a83
 
 source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
        60-linux.hook  # pacman hook for depmod
@@ -52,7 +52,7 @@ sha256sums=('94b5467204b8f35fd436485d37d08bea41664f859a019e60ebbfabf49b8dc17d'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '9d2623553e79fae8420fff03175614b29dd566e8280b294b53ab318a0eebeb50'
             'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
-sha256sums_x86_64=('0e0d831763f080c65c07e06389007ada9f7d77f8148859ac5a2223263cc966e7')
+sha256sums_x86_64=('62e42c43bdffa74694ce99d369bb2b7f7991bd5ab500eb84341b66b38f8d6d7b')
 
 _kernelname=${pkgbase#linux}
 
