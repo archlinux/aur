@@ -1,0 +1,17 @@
+pkgbase = downgrader-git
+	pkgdesc = Powerful packages downgrader for Archlinux. Works with libalpm, ARM and pacman logs
+	pkgver = 2.0.0.r158.f346695
+	pkgrel = 1
+	url = https://github.com/DimaSmirnov/Archlinux-downgrader
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = pacman
+	depends = pacman-contrib
+	provides = downgrader
+	source = git+https://github.com/DimaSmirnov/Archlinux-downgrader.git
+	md5sums = SKIP
+
+pkgname = downgrader-git
+
