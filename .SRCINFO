@@ -1,0 +1,17 @@
+pkgbase = stlib-plugins-git
+	pkgdesc = A set of stlib official plugins
+	pkgver = 20181026.26.c1e9e59
+	pkgrel = 1
+	url = https://github.com/ShyPixie/stilib-plugins
+	arch = x86_64
+	license = GPL
+	makedepends = python>=3.7
+	makedepends = git
+	depends = python>=3.7
+	depends = python-aiohttp
+	depends = python-beautifulsoup4
+	source = git+https://github.com/ShyPixie/stlib-plugins
+	sha256sums = SKIP
+
+pkgname = stlib-plugins-git
+
