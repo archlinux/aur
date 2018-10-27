@@ -60,7 +60,7 @@ package() {
 	install -Dm644 "$srcdir/klipper.service" "$pkgdir/usr/lib/systemd/system/klipper.service"
 	install -Dm644 "$srcdir/sysusers.conf" "$pkgdir/usr/lib/sysusers.d/klipper.conf"
 	install -Dm644 "$srcdir/tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/klipper.conf"
-	install -dm755 "$pkgdir/opt/klipper"
+	install -dm755 "$pkgdir/opt/klipper/klippy"
+	python2 "$srcdir/${pkgname%-git}/scripts/make_version.py" archlinux > "$pkgdir/opt/klipper/klippy/.version"
 	GLOBIGNORE=.git cp -r * "$pkgdir/opt/klipper"
-	python2 "$pkgdir/opt/klipper/scripts/make_version.py" archlinux > "$pkgdir/opt/klipper/klippy/.version"
 }
