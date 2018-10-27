@@ -1,6 +1,6 @@
 pkgbase = git-remote-hg-git
 	pkgdesc = Transparent bidirectional bridge between Git and Mercurial
-	pkgver = 0.3.r1.g822c6e4
+	pkgver = r282.765f9ae
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/felipec/git-remote-hg
