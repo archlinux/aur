@@ -1,9 +1,10 @@
-# Maintainer: Philipp Classen <philipp.classen@posteo.de>
+# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Contributor: Philipp Classen <philipp.classen@posteo.de>
 # Original maintainer: Anatol Pomozov <anatol dot pomozov at gmail>
 # Contributor: Jose Neder <jlneder(at)gmail(dot)com>
 
 pkgname=libhugetlbfs
-pkgver=2.20
+pkgver=2.21
 pkgrel=1
 pkgdesc='interacts with the Linux hugetlbfs to make large pages available to applications in a transparent manner.'
 url='https://github.com/libhugetlbfs/libhugetlbfs'
@@ -12,7 +13,7 @@ depends=(perl)
 checkdepends=(python2)
 license=(GPL)
 source=(https://github.com/libhugetlbfs/libhugetlbfs/releases/download/$pkgver/libhugetlbfs-$pkgver.tar.gz)
-sha1sums=('279b372fb4da4294946308928f1112e9be5ae6b8')
+sha1sums=('8ed79a12d07be1e858ef4e0148ab1f4115094ef6')
 
 _options='BUILDTYPE=NATIVEONLY'
 if [ "$CARCH" = "x86_64" ]; then
