@@ -2,7 +2,7 @@
 
 pkgname=oda-file-converter
 pkgver=19.8.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Converts files between the .dwg and .dxf file formats"
 arch=('x86_64')
 url="https://www.opendesign.com/guestfiles/oda_file_converter"
@@ -39,5 +39,5 @@ package() {
     done
 
     # Freecad auto-detects Teigha by the "TeighaFileConverter" name
-    ln -s "$pkgdir/usr/bin/$pkgname" "$pkgdir/usr/bin/TeighaFileConverter"
+    ln -s "/usr/bin/$pkgname" "$pkgdir/usr/bin/TeighaFileConverter"
 }
