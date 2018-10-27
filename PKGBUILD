@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Duck <duckbrain30@gmail.com>
 pkgname=typora
-pkgver=0.9.58
-pkgrel=3
+pkgver=0.9.59
+pkgrel=1
 pkgdesc="Typora will give you a seamless experience as both a reader and a writer."
 arch=('x86_64')
 license=('custom:"Copyright (c) 2015 Abner Lee All Rights Reserved."')
@@ -13,7 +13,7 @@ source=(
 	"https://typora.io/./linux/${pkgname}_${pkgver}_amd64.deb"
 )
 md5sums=('df21bd5b38c62eca34e49786b99a930a'
-         '23e55a05ead4115b415c77c1709aa9e6')
+         '3d97332b29005f5e7e117f835e20b636')
 
 package() {
 	_src="$srcdir/$pkgname"
