@@ -3,7 +3,7 @@
 # Contributor: Chris Simpson <csimpson.aur at gmail dot com>
 
 pkgname=libretro-beetle-pce-fast-git
-pkgver=916.6dfaf04
+pkgver=920.7f6f061
 pkgrel=1
 pkgdesc='Standalone port of Mednafen PCE Fast to libretro.'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
