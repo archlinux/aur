@@ -1,6 +1,6 @@
 pkgbase = klipper-git
 	pkgdesc = 3D printer firmware with motion planning on the host
-	pkgver = r1495.83d83ce
+	pkgver = r1517.4f89251f
 	pkgrel = 1
 	url = https://github.com/KevinOConnor/klipper
 	arch = x86_64
