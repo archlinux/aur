@@ -1,14 +1,17 @@
 pkgbase = ffaudioconverter
 	pkgdesc = Simple FFmpeg DnD GUI for converting audio files
 	pkgver = 0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Bleuzen/FFaudioConverter/
 	arch = i686
 	arch = x86_64
-	license = mit
+	license = MIT
 	depends = qt5-base
+	depends = ffmpeg
 	source = https://github.com/Bleuzen/FFaudioConverter/releases/download/v0.5/FFaudioConverter-0.5.tar.xz
+	source = ffaudioconverter-LICENSE::https://raw.githubusercontent.com/Bleuzen/FFaudioConverter/master/LICENSE
 	sha256sums = f20952c459a48776b29b13c19211e56bda0770135ff1bcc471f54f1d7f91f9e9
+	sha256sums = 874f26a02f71289a8ed6d69708ba8ee3ee27b3b13615cb99a09f5f74f76c1673
 
 pkgname = ffaudioconverter
 
