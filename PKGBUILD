@@ -3,7 +3,7 @@
 pkgbase='yandex-disk-indicator-git'
 pkgname='yandex-disk-indicator-git'
 pkgver=1.10.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Panel indicator (GUI) for YandexDisk CLI client for Linux.'
 arch=('i686' 'x86_64')
 url='https://github.com/slytomcat/yandex-disk-indicator'
@@ -16,11 +16,9 @@ md5sums=('9886dff3c9407c893d2008debe7a2145')
 package() {
     cd $srcdir
     bsdtar xf ${pkgver}.tar.gz
+    mkdir $pkgdir/usr
 
     cd yandex-disk-indicator-${pkgver}/build
-    export TARGET="yd-tools/usr"
+    export TARGET=$pkgdir/usr
     ./prepare.sh
-
-    mkdir $pkgdir/usr
-    cp -r yd-tools/usr/* $pkgdir/usr
 }
