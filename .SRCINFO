@@ -1,0 +1,24 @@
+pkgbase = radiance
+	pkgdesc = Video art software for live performance
+	pkgver = 20181013
+	pkgrel = 0
+	url = https://radiance.video
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = qt5-base
+	depends = qt5-quickcontrols
+	depends = qt5-quickcontrols2
+	depends = fftw
+	depends = libsamplerate
+	depends = mpv
+	depends = portaudio
+	depends = rtmidi
+	depends = youtube-dl
+	source = https://github.com/zbanks/${pkgname}/archive/continuous.tar.gz
+	source = https://github.com/zbanks/BTrack/archive/master.tar.gz
+	sha256sums = d5cc1c66a4df834b4c3f931c42c20755f11f169e7cdbe13b060f765b4aac5149
+	sha256sums = 31d3e919deddc0e6938e68af420243847756c5fb18923ec6b4e23ab81cda658f
+
+pkgname = radiance
+
