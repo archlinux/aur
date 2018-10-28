@@ -1,7 +1,6 @@
+*.deb
 *.gz
 *.xz
-
-qemu-user-static.deb
 
 pkg/
 src/
