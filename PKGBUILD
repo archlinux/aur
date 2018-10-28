@@ -2,7 +2,7 @@
 
 pkgname=kcolorpicker-git
 pkgver=r39.7db1cdb
-pkgrel=2
+pkgrel=3
 pkgdesc='Qt basd Color Picker with popup menu'
 arch=('i686' 'x86_64')
 url='https://github.com/DamirPorobic/kColorPicker'
@@ -20,7 +20,6 @@ md5sums=(SKIP)
 prepare(){
   cd "$srcdir/$_gitname"
   test -d build || mkdir build
-#   sed "s#DESTINATION /bin#DESTINATION /usr/bin#" -i CMakeLists.txt
 }
 pkgver(){
   if [ -d "$srcdir"/$_gitname ]; then
@@ -32,7 +31,7 @@ pkgver(){
 }
 build(){
   cd "$srcdir/$_gitname/build"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS=ON ..
   make
 }
 package(){
