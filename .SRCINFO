@@ -1,0 +1,17 @@
+pkgbase = nodejs-wildduck
+	pkgdesc = Opinionated email server
+	pkgver = 1.10.1
+	pkgrel = 1
+	url = https://wildduck.email
+	arch = i686
+	arch = x86_64
+	license = EUPL
+	makedepends = npm
+	depends = nodejs>=8.0.0
+	depends = mongodb
+	depends = redis
+	conflicts = wildduck
+	options = !strip
+
+pkgname = nodejs-wildduck
+
