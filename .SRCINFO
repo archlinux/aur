@@ -1,0 +1,33 @@
+pkgbase = pdal-git
+	pkgdesc = A C++ library for translating and manipulating point cloud data.
+	pkgver = 1.7.1.r249.g504208055
+	pkgrel = 1
+	url = http://www.pdal.io
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = python
+	makedepends = python-numpy
+	makedepends = git
+	makedepends = sqlite
+	makedepends = postgresql-libs
+	makedepends = pcl
+	makedepends = laszip
+	depends = gdal
+	depends = geos
+	depends = libgeotiff
+	optdepends = python-numpy: for the Python plugin
+	optdepends = libxml2: for using the database drivers
+	optdepends = sqlite: for the sqlite plugin
+	optdepends = postgresql-libs: for the postgresql plugin
+	optdepends = pcl: for PointCloudLibrary algorithms
+	optdepends = laszip: for LASzip compression
+	optdepends = laz-perf: an alternative LAZ implementation
+	optdepends = jsoncpp: for JSON pipelines
+	provides = pdal
+	conflicts = pdal
+	source = git+https://github.com/PDAL/PDAL
+	sha512sums = SKIP
+
+pkgname = pdal-git
+
