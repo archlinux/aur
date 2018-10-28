@@ -1,3 +1,6 @@
 #!/bin/sh
 
-exec quake3 +set com_basegame baseq3r "$@"
+# See https://sourceforge.net/p/q3rallysa/bugs/5/#7c25
+exec quake3 +set com_basegame baseq3r +set com_gamename Q3Rally \
+  +set com_legacyprotocol 0 +set com_homepath .q3rally \
+  +set sv_master1 master.q3rally.com "$@"
