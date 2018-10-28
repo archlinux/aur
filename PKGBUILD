@@ -1,5 +1,6 @@
 # $Id: PKGBUILD 197396 2016-11-29 17:37:31Z spupykin $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: Will A Cadegan-Schlieper <aur@covering.space>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Samuel Mathieson <smathieson@gmail.com>
 
 pkgname=moinmoin
