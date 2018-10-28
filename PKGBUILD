@@ -71,7 +71,7 @@ _localmodcfg=
 pkgbase=linux-ck
 _srcver=4.18.16-arch1
 pkgver=${_srcver%-*}
-pkgrel=1
+pkgrel=2
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -79,7 +79,7 @@ license=(GPL2)
 makedepends=(kmod inetutils bc libelf)
 options=('!strip')
 _ckpatchname="patch-4.18-ck${_ckpatchversion}"
-_gcc_more_v='20180509'
+_gcc_more_v='20181028'
 source=(
   "https://www.kernel.org/pub/linux/kernel/v4.x/linux-$pkgver.tar".{xz,sign}
   config         # the main kernel config file
@@ -98,15 +98,15 @@ validpgpkeys=(
 )
 sha256sums=('beba14e2f07259a545baa1dce5afdaf9f470cdadc8b378ac269e7c8a289c52e6'
             'SKIP'
-            '9f2454dae08fbd96059fe79ec05933d724cd2c9b383f5be092c7871ac1551649'
+            'e7cdbc0e95cf918c35fdb1075f73bcfacc3cde0fcc58f8b54a3a532a6d1b80da'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
+            '1cc4d20e546fb6bf70c63202d6ec213c115048ebcb64f4d79a48eb1034bcf383'
             '0354083492adb3785dd31d2d4bf7dc805110aceffb369deed6cbded121f8a3d3'
             '6e1f3cc3eb9a1e30a69ef1999f9aa6ad7f2f9fe4af7ba5dabe25d4ff19ee6740'
-            '559d8c51d6e965179ca44b93cff101f31fafb49b0e8d7f9a7e97fc4b77a721f9'
-            '339ac8509f1533c47dde9b01aaa4a53ac1d50df0541ce4ab58bad9f5666621ca')
+            '1f5fe837d5843e3016e86b10e165e8cb1691609cfdc5f5a0eb8c9cd29c2a0113'
+            'bdae9e024cb5997668c7287591feee56a115a1afea86e25b4eeb7f73be19ca5e')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
