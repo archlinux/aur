@@ -1,20 +1,21 @@
 # Maintainer: Alexander Kobel <a-kobel@a-kobel.de>
 
 pkgname=opendetex
-pkgver=2.8.2
-pkgrel=2
+pkgver=2.8.4
+pkgrel=1
 pkgdesc="Improved version of Detex - tool for extracting plain text from TeX and LaTeX sources (Piotr Kubowicz's fork)"
 url="https://github.com/pkubowicz/opendetex"
 arch=('i686' 'x86_64')
+depends=('glibc')
 license=('custom')
-source=("https://github.com/pkubowicz/opendetex/releases/download/v2.8.2/opendetex-2.8.2.tar.bz2")
-sha256sums=('c390fa477b83a0717777b6f71d77c11a336ff9b1e3cb84116a3c19bd4ccf14f5')
+source=("${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.bz2")
+sha256sums=('d3836f2bdd5ef9c80abc163bf8d91ab7ec59cf269a33c0d09165b4a27584765f')
 
 build () {
   cd ${srcdir}
   # lex library linking is not needed with flex
   sed -e 's/#LEX/LEX/' -i Makefile
-  make
+  CC="${CC:-gcc} ${LDFLAGS}" make
 }
 
 package () {
