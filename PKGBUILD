@@ -2,7 +2,7 @@
 # Contributor: Det
 
 pkgname=egl-wayland-git
-pkgver=1.0.3.r18.g0eb29d4
+pkgver=1.1.0.r1.g0eb29d4
 pkgrel=1
 pkgdesc='EGLStream-based Wayland external platform (git version)'
 arch=('i686' 'x86_64')
@@ -16,6 +16,16 @@ source=("$pkgname"::'git+https://github.com/NVIDIA/egl-wayland.git'
         '10_nvidia_wayland.json')
 sha256sums=('SKIP'
             '5cccf1905a266e8e34d5ad4aad4be85390e60b1a0850a29dd9d64adc641de412')
+
+prepare() {
+    cd "$pkgname"
+    
+    # add missing upstream tag
+    # https://github.com/NVIDIA/egl-wayland/commit/1676d1d2bfe646fb3ecbba29a85db529dd399493
+    local _tag
+    _tag="$(git tag -l 1.1.0)"
+    [ "$_tag" != '1.1.0' ] && git tag 1.1.0 1676d1d2bfe646fb3ecbba29a85db529dd399493
+}
 
 pkgver() {
     cd "$pkgname"
