@@ -1,45 +1,29 @@
 # Contributor: Daniel Miranda (dmiranda)
+# Contributor: Fabio ‘Lolix’ Loli <lolix at disroot dot org>
 # Maintainer: Gustavo Costa (gusbemacbe)
 
-_gitname=suru-plus
 pkgname=suru-plus-git
 pkgver=20.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Suru++ 20 — A cyberpunk, elegant, futuristic and modern third-party icons theme!"
 arch=('any')
-url="https://github.com/gusbemacbe/${_gitname}"
+url="https://github.com/gusbemacbe/${pkgname/-git/}"
 license=('GPL3')
 changelog=CHANGELOG
 makedepends=('git')
-options=('!strip')
-conflicts=(${_gitname})
+conflicts=(${pkgname/-git/})
+provides=(${pkgname/-git/})
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
-# pkgver() 
-# {
-#     cd ${_gitname}
-#     # printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-# }
+pkgver() 
+{
+    cd ${pkgname/-git/}
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+}
 
 package() 
 {
-    # Installing the icons theme
-    install -d ${pkgdir}/usr/share/icons
-
-    # Copying to the /usr/share/icons/ and changing name to "Suru++ 20"
-    cp -r "${srcdir}"/suru-plus "${pkgdir}"/usr/share/icons/Suru++\ 20
-
-    find ${pkgdir}/usr -type f -exec chmod 644 {} \;
-    find ${pkgdir}/usr -type d -exec chmod 755 {} \;
-
-    # Removing unncessary .directory files
-    find ${pkgdir}/usr -type f -name '.directory' -delete
-
-    # Deleting unneeded files
-    rm -r "$pkgdir"/usr/share/icons/Suru++\ 20/.git
-    rm -r "$pkgdir"/usr/share/icons/Suru++\ 20/.gitignore
-    rm -r "$pkgdir"/usr/share/icons/Suru++\ 20/*.md
-    rm -R "$pkgdir"/usr/share/icons/Suru++\ 20/images
-    rm -R "$pkgdir"/usr/share/icons/Suru++\ 20/templates
+    install -d $pkgdir/usr/share/icons/Suru++\ 20
+    cp -r ${pkgname/-git/}/* $pkgdir/usr/share/icons/Suru++\ 20
 }
