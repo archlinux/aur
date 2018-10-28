@@ -1,72 +1,45 @@
-#
-# Maintainer: Iacopo Isimbaldi <isiachi@rhye.it>
-#
+# Maintainer: Eli Schwartz <eschwartz@archlinux.org>
+# Contributor: Iacopo Isimbaldi <isiachi@rhye.it>
 
-pkgbase="zfs-dkms"
-pkgname=("zfs-dkms" "zfs-utils")
-pkgver=0.7.9
+pkgname=zfs-dkms
+pkgver=0.7.11
 pkgrel=1
+pkgdesc="Kernel modules for the Zettabyte File System."
+arch=('any')
+url="https://zfsonlinux.org/"
 license=('CDDL')
-makedepends=("git" "spl-dkms=${pkgver}")
-arch=("i686" "x86_64")
-url="http://zfsonlinux.org/"
-source=("git+https://github.com/zfsonlinux/zfs.git#tag=zfs-${pkgver}"
-        "zfs.initcpio.install"
-        "zfs.initcpio.hook")
+depends=("spl-dkms=${pkgver}" "zfs-utils=${pkgver}" 'dkms')
+makedepends=('git')
+source=("git+https://github.com/zfsonlinux/zfs.git#tag=zfs-${pkgver}?signed"
+        "0001-only-build-the-module-in-dkms.conf.patch")
 sha256sums=('SKIP'
-            'aa5706bf08b36209a318762680f3c9fb45b3fc4b8e4ef184c8a5370b2c3000ca'
-            'f95ad1a5421ccbb8b01f448373f46cfd1f718361a82c2687a597325cf9827e3e')
+            '780e590383fb00389c5e02ac15709b7a476d9e07d3c4935ed9eb67c951a88409')
+validpgpkeys=('4F3BA9AB6D1F8D683DC2DFB56AD860EED4598027'  # Tony Hutter (GPG key for signing ZFS releases) <hutter2@llnl.gov>
+              'C33DF142657ED1F7C328A2960AB9E991C6AF658B') # Brian Behlendorf <behlendorf1@llnl.gov>
 
-build() {
-    cd "${srcdir}/zfs"
-    ./autogen.sh
+prepare() {
+    cd "${srcdir}"/${pkgname%-dkms}
 
-    ./configure --prefix=/usr \
-                --sysconfdir=/etc \
-                --sbindir=/usr/bin \
-                --with-mounthelperdir=/usr/bin \
-                --libdir=/usr/lib \
-                --datadir=/usr/share \
-                --includedir=/usr/include \
-                --with-udevdir=/usr/lib/udev \
-                --libexecdir=/usr/lib/zfs \
-                --with-config=user
-    make
+    patch -p1 -i ../0001-only-build-the-module-in-dkms.conf.patch
+
+    # remove unneeded sections from module build
+    sed -ri "/AC_CONFIG_FILES/,/]\)/{
+/AC_CONFIG_FILES/n
+/]\)/n
+/^\s*(module\/.*)?(${pkgname%-dkms}.release|Makefile)/!d
+}" configure.ac
+
+    autoreconf -fi
 }
 
-package_zfs-dkms() {
-    pkgdesc="Kernel modules for the Zettabyte File System."
-    depends=("spl-dkms=${pkgver}" "zfs-utils=${pkgver}-${pkgrel}" "dkms")
-    provides=("zfs")
-    conflicts=("zfs-git" "zfs-lts")
+package() {
+    cd "${srcdir}"/${pkgname%-dkms}
 
-    dkmsdir="${pkgdir}/usr/src/zfs-${pkgver}"
-    install -d "${dkmsdir}"
-    cp -a ${srcdir}/zfs/. ${dkmsdir}
+    dkmsdir="${pkgdir}/usr/src/${pkgname%-dkms}-${pkgver}"
+    install -d "${dkmsdir}"/{config,scripts}
+    cp -a configure Makefile.in META ${pkgname%-dkms}_config.h.in ${pkgname%-dkms}.release.in include/ module/ "${dkmsdir}"/
+    cp config/config.* config/missing config/*sh "${dkmsdir}"/config/
+    cp scripts/enum-extract.pl scripts/dkms.postbuild "${dkmsdir}"/scripts/
 
-    cd "${dkmsdir}"
-    make clean
-    make distclean
-    find . -name ".git*" -print0 | xargs -0 rm -fr --
-    scripts/dkms.mkconf -v ${pkgver} -f dkms.conf -n zfs
-    chmod g-w,o-w -R .
-}
-
-package_zfs-utils() {
-    pkgdesc="Kernel module support files for the Zettabyte File System."
-    conflicts=("zfs-utils-git" "zfs-utils-lts")
-
-    cd "${srcdir}/zfs"
-    make DESTDIR="${pkgdir}" install
-    install -D -m644 contrib/bash_completion.d/zfs "${pkgdir}"/usr/share/bash-completion/completions/zfs
-
-    # Remove uneeded files
-    rm -r "${pkgdir}"/etc/init.d
-    rm -r "${pkgdir}"/usr/lib/dracut
-    rm -r "${pkgdir}"/usr/share/initramfs-tools
-
-    install -D -m644 "${srcdir}"/zfs.initcpio.hook "${pkgdir}"/usr/lib/initcpio/hooks/zfs
-    install -D -m644 "${srcdir}"/zfs.initcpio.install "${pkgdir}"/usr/lib/initcpio/install/zfs
-
-    mkdir -p "${pkgdir}"/usr/lib/initcpio/install
+    ./scripts/dkms.mkconf -n ${pkgname%-dkms} -v ${pkgver} -f "${dkmsdir}"/dkms.conf
 }

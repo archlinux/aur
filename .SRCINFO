@@ -1,30 +1,20 @@
 pkgbase = zfs-dkms
-	pkgver = 0.7.9
+	pkgdesc = Kernel modules for the Zettabyte File System.
+	pkgver = 0.7.11
 	pkgrel = 1
-	url = http://zfsonlinux.org/
-	arch = i686
-	arch = x86_64
+	url = https://zfsonlinux.org/
+	arch = any
 	license = CDDL
 	makedepends = git
-	makedepends = spl-dkms=0.7.9
-	source = git+https://github.com/zfsonlinux/zfs.git#tag=zfs-0.7.9
-	source = zfs.initcpio.install
-	source = zfs.initcpio.hook
+	depends = spl-dkms=0.7.11
+	depends = zfs-utils=0.7.11
+	depends = dkms
+	source = git+https://github.com/zfsonlinux/zfs.git#tag=zfs-0.7.11?signed
+	source = 0001-only-build-the-module-in-dkms.conf.patch
+	validpgpkeys = 4F3BA9AB6D1F8D683DC2DFB56AD860EED4598027
+	validpgpkeys = C33DF142657ED1F7C328A2960AB9E991C6AF658B
 	sha256sums = SKIP
-	sha256sums = aa5706bf08b36209a318762680f3c9fb45b3fc4b8e4ef184c8a5370b2c3000ca
-	sha256sums = f95ad1a5421ccbb8b01f448373f46cfd1f718361a82c2687a597325cf9827e3e
+	sha256sums = 780e590383fb00389c5e02ac15709b7a476d9e07d3c4935ed9eb67c951a88409
 
 pkgname = zfs-dkms
-	pkgdesc = Kernel modules for the Zettabyte File System.
-	depends = spl-dkms=0.7.9
-	depends = zfs-utils=0.7.9-1
-	depends = dkms
-	provides = zfs
-	conflicts = zfs-git
-	conflicts = zfs-lts
-
-pkgname = zfs-utils
-	pkgdesc = Kernel module support files for the Zettabyte File System.
-	conflicts = zfs-utils-git
-	conflicts = zfs-utils-lts
 
