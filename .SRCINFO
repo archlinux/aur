@@ -1,7 +1,7 @@
 pkgbase = peercoin
 	pkgdesc = Official Peercoin wallet.
-	pkgver = 0.6.2
-	pkgrel = 3
+	pkgver = 0.6.4
+	pkgrel = 1
 	url = peercoin.net
 	arch = x86_64
 	arch = i686
@@ -22,12 +22,14 @@ pkgbase = peercoin
 	replaces = ppcoin-daemon
 	replaces = ppcoin-qt
 	replaces = ppcoind
-	source = https://github.com/peercoin/peercoin/archive/v0.6.2ppc.tar.gz
+	source = https://github.com/peercoin/peercoin/archive/v0.6.4ppc.tar.gz
 	source = peercoin-qt@.service
 	source = peercoin-qt-tor@.service
-	sha256sums = f6ce0647c9f3b4b4c28c5b77955c9ae4808a8c7f5e55a99f1337317a29a0bc1b
+	source = boost.patch
+	sha256sums = 7ff245911146a146877da44d0e0828dd9ef50b97feda34a218ed4e936dc8733f
 	sha256sums = bc898697baab589b87b0b78edd5aed35a3b800fe039afc03637b4895cfd28f32
 	sha256sums = 3f71859675561dd35c4527d96651b07996968e318dfbf26e8ce959f61a0d682f
+	sha256sums = fbfe8ff248971cba5e676581f6f2dde5e870962014920b6c7f0a2ea88d12a967
 
 pkgname = peercoin-qt
 	pkgdesc = Official implementation of Peercoin, the sustainable and secure cryptocurrency alternative to Bitcoin - QT wallet.

@@ -3,8 +3,8 @@
 pkgname=('peercoin-qt' 'peercoind')
 pkgbase=peercoin
 _gitname=peercoin
-pkgver=0.6.2
-pkgrel=4
+pkgver=0.6.4
+pkgrel=1
 pkgdesc="Official Peercoin wallet."
 makedepends=('gcc' 'make' 'boost' 'miniupnpc' 'openssl' 'qt5-base' 'qt5-tools')
 depends=('boost-libs' 'openssl' 'miniupnpc' 'qt5-base')
@@ -16,13 +16,16 @@ license=('MIT')
 source=(https://github.com/peercoin/peercoin/archive/v${pkgver}ppc.tar.gz
         peercoin-qt@.service
         peercoin-qt-tor@.service
+	boost.patch
         )
-sha256sums=('d64a8fdcd874d2e211f5dd3002e187769b3ec656f985f538ea0510f1b58ac2b6'
+sha256sums=('7ff245911146a146877da44d0e0828dd9ef50b97feda34a218ed4e936dc8733f'
             'bc898697baab589b87b0b78edd5aed35a3b800fe039afc03637b4895cfd28f32'
-            '3f71859675561dd35c4527d96651b07996968e318dfbf26e8ce959f61a0d682f')
+            '3f71859675561dd35c4527d96651b07996968e318dfbf26e8ce959f61a0d682f'
+            'fbfe8ff248971cba5e676581f6f2dde5e870962014920b6c7f0a2ea88d12a967')
 
 prepare() {
 	cd "$srcdir/${_gitname}-${pkgver}ppc"
+	patch -Np1 -i "${startdir}/boost.patch"
 	./autogen.sh
 }
 
@@ -71,8 +74,8 @@ package_peercoind() {
 
 	cd "$srcdir/${_gitname}-${pkgver}ppc"
 	install -Dm755 "src/peercoind" "$pkgdir/usr/bin/$pkgname"
-    install -Dm755 "src/peercoin-cli" "$pkgdir/usr/bin/peercoin-cli"
-    install -Dm644 "contrib/systemd/${_gitname}d-tor@.service" "$pkgdir/usr/lib/systemd/system/${_gitname}d-tor@.service"
-    install -Dm644 "contrib/systemd/${_gitname}d@.service" "$pkgdir/usr/lib/systemd/system/${_gitname}d@.service"
+    	install -Dm755 "src/peercoin-cli" "$pkgdir/usr/bin/peercoin-cli"
+    	install -Dm644 "contrib/systemd/${_gitname}d-tor@.service" "$pkgdir/usr/lib/systemd/system/${_gitname}d-tor@.service"
+    	install -Dm644 "contrib/systemd/${_gitname}d@.service" "$pkgdir/usr/lib/systemd/system/${_gitname}d@.service"
 
 }
