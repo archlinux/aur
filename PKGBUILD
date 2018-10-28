@@ -1,9 +1,9 @@
-# Maintainer: Maxim Polishchuck <mpolishchuck@gmail.com>
+# Maintainer: Maxim Polishchuk <mpolishchuck@gmail.com>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-module-reader'
-pkgver='0.002003'
-pkgrel='2'
+pkgver='0.003003'
+pkgrel='1'
 pkgdesc="Read the source of a module like perl does"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('perl>=5.006')
 makedepends=()
 url='https://metacpan.org/release/Module-Reader'
-source=('http://search.cpan.org/CPAN/authors/id/H/HA/HAARG/Module-Reader-0.002003.tar.gz')
-md5sums=('6eec99e9c5df63a536bdc19aeeba23a2')
-sha512sums=('d96c235c11094b1a4a96d317064ed168e79bdc519076a8c62017f6e4da8cbacf008f4615ca86a1067c8338e1d090605c65e7c6badb311531517dad0cbc40b35d')
-_distdir="Module-Reader-0.002003"
+source=('http://search.cpan.org/CPAN/authors/id/H/HA/HAARG/Module-Reader-0.003003.tar.gz')
+md5sums=('d0e005053574bbf79207f2d3a3c54604')
+sha512sums=('e1c20a970f0869d92d9e8af05d0fde3f824d0632b29be410b87bcac6dbf50b06a784ef9b356ec896764c4ce2d0b886e55a6a89aa51fd272b16de40f1d2989ce5')
+_distdir="Module-Reader-0.003003"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
