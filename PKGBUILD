@@ -1,7 +1,7 @@
 # Maintainer: gls < ghostlovescorebg at gmail dot com >
 
 pkgname='perl-acme-damn'
-pkgver='0.06'
+pkgver='0.08'
 pkgrel='2'
 pkgdesc="'Unbless' Perl objects"
 _dist=Acme-Damn
