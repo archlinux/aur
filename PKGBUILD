@@ -4,7 +4,7 @@
 
 pkgname=perl-devel-nytprof
 pkgver=6.06
-pkgrel=1
+pkgrel=2
 _author='T/TI/TIMB'
 _perlmod='Devel-NYTProf'
 pkgdesc='Devel::NYTProf - Powerful fast feature-rich perl source code profiler'
@@ -15,6 +15,8 @@ perl-getopt-long
 perl-test-simple
 perl-xsloader
 perl-test-differences
+perl-file-which
+perl-json-maybexs
 zlib
 )
 checkdepends=(
