@@ -1,6 +1,6 @@
 pkgbase = fmedia-git
 	pkgdesc = fast media player/recorder/converter
-	pkgver = v0.35.r1.7d3b827
+	pkgver = v1.1.r0.145441b
 	pkgrel = 1
 	url = http://fmedia.firmdev.com/
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = fmedia-git
 	makedepends = unzip
 	makedepends = jdk8-openjdk
 	makedepends = dos2unix
+	makedepends = cmake
 	depends = sqlite
 	provides = fmedia-git
 	provides = fmedia

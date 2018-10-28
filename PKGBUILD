@@ -1,7 +1,7 @@
 # Maintainer: Milk Brewster <milk on freenode>
 _pkgname="fmedia"
 pkgname="${_pkgname}-git"
-pkgver=v0.35.r1.7d3b827
+pkgver=v1.1.r0.145441b
 pkgrel=1
 pkgdesc="fast media player/recorder/converter"
 arch=("x86_64")
@@ -9,7 +9,7 @@ url="http://fmedia.firmdev.com/"
 license=('unknown')
 groups=()
 depends=('sqlite')
-makedepends=('git' 'svn' 'flac' 'mpg123' 'libjpeg9' 'unzip' 'jdk8-openjdk' 'dos2unix')
+makedepends=('git' 'svn' 'flac' 'mpg123' 'libjpeg9' 'unzip' 'jdk8-openjdk' 'dos2unix' 'cmake')
 provides=("${pkgname}" "fmedia")
 conflicts=("${pkgname}" "fmedia")
 replaces=()
@@ -77,8 +77,8 @@ check() {
 package() {
   # cd "$srcdir/${_pkgname}"
   cd "$pkgdir"
-  install -Dm755 "$srcdir/fmedia/fmedia-0/fmedia" "$pkgdir/opt/fmedia/fmedia"
-  cp -r $srcdir/fmedia/fmedia-0/* $pkgdir/opt/fmedia/
+  install -Dm755 "$srcdir/fmedia/fmedia-1/fmedia" "$pkgdir/opt/fmedia/fmedia"
+  cp -r $srcdir/fmedia/fmedia-1/* $pkgdir/opt/fmedia/
   mkdir -p "$pkgdir/usr/bin/"
   ln -s "$pkgfir/opt/fmedia/fmedia" "$pkgdir/usr/bin/fmedia"
   rm -rf /tmp/ff3pt-build
