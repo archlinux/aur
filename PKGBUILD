@@ -16,7 +16,7 @@ _arch=amd64
 _debsrc=${pkgname}_${pkgver}+dfsg-3+b1_${_arch}.deb
 source=(http://ftp.debian.org/debian/pool/main/q/qemu/${_debsrc})
 sha1sums=('369271d330c41a0a903e94d7b3adc4068b0a9377')
-[ "$CARCH" = 'i686' ] && sha1sums=('b67bd47793047ddcbd79822bdaf297d0f3e99384')
+[ "$CARCH" = 'i686' ] && sha1sums=('fe598cc48e8c1be43441740d04c5a2166a725bde')
 
 prepare() {
   cd "$srcdir"
