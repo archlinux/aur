@@ -3,7 +3,7 @@
 pkgbase=python-awkward-array
 _pkgbase=awkward-array
 pkgname=('python2-awkward-array' 'python-awkward-array')
-pkgver=0.2.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Manipulate jagged, chunky, and/or bitmasked arrays as easily as Numpy"
 arch=('any')
@@ -14,7 +14,7 @@ license=('BSD')
 options=(!emptydirs)
 
 source=("https://github.com/scikit-hep/${_pkgbase}/archive/${pkgver}.zip")
-sha256sums=('853fc76147fc3543428978dcbe895298581d02b4b242682ab3a8e99b9feb9b39')
+sha256sums=('757796dfc8198dab714fcf2d3be5ef2cffa550c1f109435690c107aef77197da')
 
 prepare() {
   cd "${srcdir}"
@@ -40,10 +40,8 @@ build() {
 
 package_python2-awkward-array() {
   depends=('python2-numpy')
-  optdepends=('python2-arrow: interoperability with other applications and fast Parquet reading/writing'
-              'python2-bcolz: on-the-fly compression'
-              'python2-dask: distribute work on arrays'
-              'python2-numba: JIT-compile functions')
+  conflicts=('python2-awkward')
+  provides=('python2-awkward')
   cd "${srcdir}/${_pkgbase}-py2-${pkgver}"
 
   python2 setup.py install --root="${pkgdir}/" --optimize=1
@@ -59,10 +57,8 @@ package_python2-awkward-array() {
 
 package_python-awkward-array() {
   depends=('python-numpy')
-  optdepends=('python-arrow: interoperability with other applications and fast Parquet reading/writing'
-              'python-bcolz: on-the-fly compression'
-              'python-dask: distribute work on arrays'
-              'python-numba: JIT-compile functions')
+  conflicts=('python-awkward')
+  provides=('python-awkward')
   cd "${srcdir}/${_pkgbase}-${pkgver}"
 
   python setup.py install --root="${pkgdir}/" --optimize=1
