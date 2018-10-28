@@ -11,7 +11,7 @@ pkgbase = sopcast-launcher
 	depends = sopcast
 	optdepends = vlc
 	provides = sopcast-launcher
-	source = sopcast-launcher-0.5.0::https://github.com/jonian/sopcast-launcher/archive/v0.5.0.tar.gz
+	source = sopcast-launcher-0.5.0.tar.gz::https://github.com/jonian/sopcast-launcher/archive/v0.5.0.tar.gz
 	md5sums = 0eb32ee8d45d67bdd40e21c388733a86
 
 pkgname = sopcast-launcher
