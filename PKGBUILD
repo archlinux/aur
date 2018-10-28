@@ -1,9 +1,9 @@
-# Maintainer: Maxim Polishchuck <mpolishchuck@gmail.com>
+# Maintainer: Maxim Polishchuk <mpolishchuck@gmail.com>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-carton'
-pkgver='1.0.28'
+pkgver='1.0.34'
 pkgrel='1'
 pkgdesc="Perl module dependency manager (aka Bundler for Perl)"
 arch=('any')
@@ -22,8 +22,8 @@ depends=(
 makedepends=()
 url='https://metacpan.org/release/Carton'
 source=("http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Carton-v${pkgver}.tar.gz")
-md5sums=('77e0e6c668451b0e82b20f4928589e61')
-sha512sums=('6b9484139b32717ab7f478a5ac81954e7f8691aefabc989894476613e6e6d63a14e8c79c252ccf1a819fbd3adc4d0184e24c0fd87f4737f83e417b7149a196d4')
+md5sums=('8015c850fcd4add507a39c4d55763bcd')
+sha512sums=('6c34dd95f749a8fd91843a63c87b802f1bb967511e3737a58fa2d80360f36cb62db1d66f740921ec3d4d6c624872bd7aa9c146e5eccdb8ac58f6d0a300ddba9e')
 _distdir="Carton-v${pkgver}"
 
 build() {
