@@ -2,9 +2,9 @@
 # Contributor: Hector <hsearaDOTatDOTgmailDOTcom>
 
 pkgname=gromacs-plumed
-pkgver=2018.1
-_gromacsver=2018.1
-_plumedver=2.4.2
+pkgver=2018.3
+_gromacsver=2018.3
+_plumedver=2.4.3
 pkgrel=1
 pkgdesc='GROMACS is a versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles. (Plumed patched)'
 url='http://www.gromacs.org/'
@@ -14,17 +14,19 @@ depends=('lapack' 'zlib' plumed=${_plumedver})
 optdepends=('cuda: Nvidia GPU support'
             'opencl-mesa: OpenCL support for AMD GPU'
 	    'opencl-nvidia: OpenCL support for Nvidia GPU')
-makedepends=('cmake' 'libxml2' 'hwloc' 'gcc6')
+makedepends=('cmake' 'libxml2' 'hwloc' 'gcc7')
 options=('!libtool')
 source=(ftp://ftp.gromacs.org/pub/gromacs/gromacs-${pkgver}.tar.gz)
-sha1sums=('099996bb49a8c5467f4628c8bf64e96bbb540490')
+sha1sums=('f17d57b031d37f69981573dd4c70203d52863b61')
 
-# In order to use CUDA 9 we need to use gcc6
-# for machines requiring cuda 8 use gcc5 instead
-export CC=gcc-6
-export CXX=g++-6
+# Comment the following lines if no gromacs with CUDA support is needed 
+# In order to use CUDA 10 we need to use gcc7.
+export CC=gcc-7
+export CXX=g++-7
 export CFLAGS="-march=native -O2 -pipe -fstack-protector-strong"
 export CXXFLAGS="${CFLAGS}"
+# ! For machines requiring CUDA 8 use gcc5 instead
+
 
 export VMDDIR=/usr/lib/vmd/ #If vmd is available at compilation time
                             #Gromacs will have the ability to read any
@@ -41,8 +43,10 @@ build() {
   msg2 "Building the gromacs with plumed support (single precision)"
   cd ${srcdir}/single
   cmake ../gromacs-${_gromacsver} \
+	-DREGRESSIONTEST_DOWNLOAD=ON \
         -DCMAKE_INSTALL_PREFIX=/usr/ \
         -DBUILD_SHARED_LIBS=OFF \
+        -DGMX_PREFER_STATIC_LIBS=ON \
         -DGMX_BUILD_MDRUN_ONLY=ON
   make
 }
