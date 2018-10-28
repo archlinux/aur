@@ -1,7 +1,7 @@
 # Maintainer: Jörg Behrmann <behrmann@physik.fu-berlin.de>
 # Contributor: Max Schlemmer <max.schlemmer@gmail.com>
 pkgname=python-kwant
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="Python package for numerical calculations on tight-binding models with a strong focus on quantum transport"
 arch=('any')
@@ -13,12 +13,12 @@ optdepends=(
   'python-sympy: needed for the kwant.continuum submodule'
   'mumps: a sparse linear algebra library for speed up and memory usage reduction (use AUR mumps-seq-shared or any other built as shared library)'
 )
-checkdepends=(python-nose)
+checkdepends=(python-pytest)
 source=(
 	http://downloads.kwant-project.org/kwant/kwant-$pkgver.tar.gz
 	http://downloads.kwant-project.org/kwant/kwant-$pkgver.tar.gz.asc
 )
-sha1sums=('1085d5be2dd1766ab4d2f4eb5e8fe8fefff3f4bc'
+sha1sums=('fd57dc16cad3806ef3761d0273d8dbf68553edfb'
           'SKIP')
 validpgpkeys=('52299057FAD799653C4F088AC3F147F5980F3535')
 
