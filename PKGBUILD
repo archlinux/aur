@@ -1,4 +1,5 @@
-# Maintainer: Jan Dolinar <dolik.rce@gmail.com>
+# Maintainer: Mike Javorski <mike dot javorski at gmail dot com>
+# Contributor: Jan Dolinar <dolik.rce@gmail.com>
 # Contributor: Andre Klitzing <andre () incubo () de>
 pkgname=dput
 pkgver=0.9.6.4
