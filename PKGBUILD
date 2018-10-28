@@ -8,8 +8,8 @@ pkgdesc="C language family frontend for LLVM"
 arch=('x86_64')
 url="https://clang.llvm.org/"
 license=('custom:University of Illinois/NCSA Open Source License')
-depends=('llvm-libs' 'gcc' 'compiler-rt')
-makedepends=('llvm' 'cmake' 'ninja' 'python-sphinx' 'python2')
+depends=('llvm6-libs' 'gcc' 'compiler-rt')
+makedepends=('llvm6' 'cmake' 'ninja' 'python-sphinx' 'python2')
 optdepends=('openmp: OpenMP support in clang with -fopenmp'
             'python: for git-clang-format'
             'python2: for scan-view')
