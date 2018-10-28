@@ -16,12 +16,6 @@ pkgbase = clang6
 	optdepends = openmp: OpenMP support in clang with -fopenmp
 	optdepends = python: for git-clang-format
 	optdepends = python2: for scan-view
-	provides = clang-analyzer=6.0.1
-	provides = clang-tools-extra=6.0.1
-	conflicts = clang-analyzer
-	conflicts = clang-tools-extra
-	replaces = clang-analyzer
-	replaces = clang-tools-extra
 	source = https://releases.llvm.org/6.0.1/cfe-6.0.1.src.tar.xz
 	source = https://releases.llvm.org/6.0.1/cfe-6.0.1.src.tar.xz.sig
 	source = https://releases.llvm.org/6.0.1/clang-tools-extra-6.0.1.src.tar.xz
