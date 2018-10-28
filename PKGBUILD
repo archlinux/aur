@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polycitizen@gmail.com>
 
 pkgname=firefox-tridactyl
-pkgver=1.14.0
+pkgver=1.14.1
 pkgrel=1
 pkgdesc="Replace Firefox's control mechanism with one modelled on Vim"
 url=https://github.com/cmcaine/tridactyl
@@ -10,7 +10,7 @@ license=('Apache')
 groups=('firefox-addons')
 source=("https://addons.cdn.mozilla.net/user-media/addons/873070/tridactyl-$pkgver-an+fx.xpi")
 noextract=("${source##*/}")
-sha256sums=('e858266df951210bc550dc974d001604251f99b4d2aaf8eb38b758e9895ce353')
+sha256sums=('67295c4a38255b88e981b4cb932c30e16a1b2be79b077277d22940dcfa42734f')
 
 package() {
   install -Dm644 "${source##*/}" "$pkgdir"/usr/lib/firefox/browser/extensions/tridactyl.vim@cmcaine.co.uk.xpi
