@@ -1,0 +1,18 @@
+pkgbase = reflow-git
+	pkgdesc = Route any network connection to proxies with flexible rules
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/net-reflow/reflow
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = cargo-nightly
+	makedepends = git
+	provides = reflow
+	conflicts = reflow
+	source = reflow-git::git+https://github.com/net-reflow/reflow
+	sha1sums = SKIP
+
+pkgname = reflow-git
+
