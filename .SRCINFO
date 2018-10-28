@@ -10,7 +10,7 @@ pkgbase = gnome-shell-extension-unite
 	optdepends = gnome-shell-extension-dash-to-dock
 	provides = gnome-shell-extension-unite
 	conflicts = gnome-shell-extension-unite-git
-	source = gnome-shell-extension-unite-21::https://github.com/hardpixel/unite-shell/archive/v21.tar.gz
+	source = gnome-shell-extension-unite-21.tar.gz::https://github.com/hardpixel/unite-shell/archive/v21.tar.gz
 	md5sums = 3c200249db02a56c98d116849589962f
 
 pkgname = gnome-shell-extension-unite
