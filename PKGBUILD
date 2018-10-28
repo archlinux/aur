@@ -3,7 +3,7 @@
 pkgbase=python-uproot-methods
 _pkgbase=uproot-methods
 pkgname=('python2-uproot-methods' 'python-uproot-methods')
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="Pythonic mix-ins for ROOT classes"
 arch=('any')
@@ -14,7 +14,7 @@ license=('BSD')
 options=(!emptydirs)
 
 source=("https://github.com/scikit-hep/${_pkgbase}/archive/${pkgver}.zip")
-sha256sums=('f9ef872fcaf4895e1c3e929101405168987c21530ed4074ae9c9457ea9c4d473')
+sha256sums=('06e60a3b66d650d0ceceaa392ca2f7d1ecd9a9f5b4b07aa7e3700a9e0b47c1d9')
 
 prepare() {
   cd "${srcdir}"
@@ -39,7 +39,7 @@ build() {
 }
 
 package_python2-uproot-methods() {
-  depends=('python2-awkward-array'
+  depends=('python2-awkward'
            'python2-numpy')
   cd "${srcdir}/${_pkgbase}-py2-${pkgver}"
 
@@ -56,7 +56,7 @@ package_python2-uproot-methods() {
 }
 
 package_python-uproot-methods() {
-  depends=('python-awkward-array'
+  depends=('python-awkward'
            'python-numpy')
   cd "${srcdir}/${_pkgbase}-${pkgver}"
 
