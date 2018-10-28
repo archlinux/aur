@@ -1,6 +1,6 @@
 # Maintainer: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 
-pkgname=python-x256
+pkgname=python-x256-git
 pkgver=r20.d4bc9f7
 pkgrel=1
 pkgdesc="Find the nearest xterm 256 color index for an RGB"
@@ -9,7 +9,7 @@ url="https://github.com/magarcia/python-x256"
 license=('MIT')
 depends=('python')
 makedepends=('git' 'python-setuptools')
-source=("git+https://github.com/magarcia/$pkgname")
+source=("$pkgname::git+https://github.com/magarcia/python-x256")
 sha256sums=('SKIP')
 
 pkgver() {

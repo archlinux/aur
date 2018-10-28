@@ -1,4 +1,4 @@
-pkgbase = python-x256
+pkgbase = python-x256-git
 	pkgdesc = Find the nearest xterm 256 color index for an RGB
 	pkgver = r20.d4bc9f7
 	pkgrel = 1
@@ -8,8 +8,8 @@ pkgbase = python-x256
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python
-	source = git+https://github.com/magarcia/python-x256
+	source = python-x256-git::git+https://github.com/magarcia/python-x256
 	sha256sums = SKIP
 
-pkgname = python-x256
+pkgname = python-x256-git
 
