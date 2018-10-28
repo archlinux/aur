@@ -1,14 +1,13 @@
 # Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 
 pkgname=kcolorpicker-git
-pkgver=r38.e993ea4
-pkgrel=1
+pkgver=r39.7db1cdb
+pkgrel=2
 pkgdesc='Qt basd Color Picker with popup menu'
 arch=('i686' 'x86_64')
 url='https://github.com/DamirPorobic/kColorPicker'
 license=('GPL')
 depends=(
-  qt5-x11extras
 )
 makedepends=(
   extra-cmake-modules
