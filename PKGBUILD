@@ -1,6 +1,6 @@
 # Maintainer: NamedKitten <kitteh@namedkitten.pw>
 pkgname=kittehplayer
-pkgver=0.0.1
+pkgver=r179.9f3d8d9
 pkgrel=1
 pkgdesc="A YouTube-like video player based on Qt, QML and libmpv."
 arch=('x86_64')
@@ -11,7 +11,7 @@ optdepends=(
 	'mpv-vapoursynth: for vapoursynth support.'
 	'youtube-dl: for remote video streaming'
 )
-makedepends=('git' 'qt5-tools')
+makedepends=('git' 'cmake')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=('git+https://github.com/NamedKitten/kittehplayer')
@@ -26,11 +26,11 @@ build() {
 	cd "$srcdir/$pkgname"
 	mkdir -p build
 	cd build
-	qmake-qt5 .. CONFIG+=release PREFIX=/usr
+	cmake .. -DCMAKE_INSTALL_PREFIX=/usr
 	make -j$(nproc)
 }
 
 package() {
 	cd "$srcdir/$pkgname/build"
-	make INSTALL_ROOT="$pkgdir/" install
+	make DESTDIR="$pkgdir/" install
 }
