@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=svgcleaner-git
-pkgver=0.9.1r398.a2eb80e
+pkgver=0.9.5.r466.0439732
 pkgrel=1
 pkgdesc="Program for reducing size of svg images without loss"
 arch=('i686' 'x86_64')
@@ -17,16 +17,16 @@ _gitname="SVGCleaner"
 
 pkgver() {
   cd "$srcdir"/"$_gitname"
-  printf "%sr%s.%s" $(awk -F# '/version/ {print $1}' Cargo.toml|head -1|tr -d \"|cut -c10-) $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+  printf "%s.r%s.%s" $(awk -F# '/version/ {print $1}' Cargo.toml|head -1|tr -d \"|cut -c10-) $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
 build() {
-  cd "$srcdir"/"$_gitname"
+  cd ${_gitname}
   cargo clean
   cargo build --release --verbose
 }
 
 package() {
-  cd "$srcdir"/"${_gitname}"/target/release
+  cd ${_gitname}/target/release
   install -Dm755 svgcleaner "$pkgdir"/usr/bin/svgcleaner
 }
