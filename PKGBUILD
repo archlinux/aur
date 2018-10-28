@@ -1,22 +1,22 @@
-# Maintainer: kfgz <kfgz at interia pl>
-# Contributor: watashi <zejun dot wu at gmail dot com>
+# Maintainer: codingTornado <milopezv at gmail dot com>
+# Maintainer: watashi <zejun dot wu at gmail dot com>
+# Contributor: kfgz <kfgz at interia pl>
 
 pkgname=xmount
-pkgver=0.7.3
+pkgver=0.7.6
 pkgrel=1
 pkgdesc="Tool to crossmount between multiple input and output harddisk image files"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="https://www.pinguin.lu"
 depends=('fuse' 'libewf' 'afflib')
+makedepends=('cmake')
 options=(!makeflags)
 source=(http://files.pinguin.lu/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('ab2240f79ebfa2119452d8f5327dbc5b7a4d043747d36d897b8f5a207dab9888')
+sha256sums=('76e544cd55edc2dae32c42a38a04e11336f4985e1d59cec9dd41e9f9af9b0008')
 
 build() {
   cd "${srcdir}"/${pkgname}-${pkgver}
-  #autoreconf -f
-  #LIBS='-lz' ./configure --prefix=/usr
   mkdir build
   cd build
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
