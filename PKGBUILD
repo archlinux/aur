@@ -3,12 +3,12 @@
 _pkgname=python-buildbot-pkg
 pkgname=python-buildbot-pkg-git
 pkgdesc="Utilities and common code for building and testing www plugins."
-pkgver=1.3.0.r158.ge79ef99b4
+pkgver=1.5.0.r39.g0fb2a9cc0
 pkgrel=2
 arch=('any')
 url="https://buildbot.net"
 license=("GPL2")
-depends=('python-setuptools' 'npm' 'yarn' 'python2')
+depends=('python-setuptools' 'nodejs<11' 'npm' 'yarn' 'python2')
 makedepends=('git')
 checkdepends=('python-twisted')
 provides=("$_pkgname=$pkgver")
