@@ -4,12 +4,13 @@
 pkgname=stash-electron
 _appname=Stash
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Stash Team Secret Manager"
 url='https://github.com/Doccrazy/stash-electron'
 arch=('x86_64')
 license=('GPL-3.0')
 depends=('alsa-lib' 'gconf' 'gtk2' 'libxss' 'libxtst' 'nss' 'libsecret' 'libcurl-gnutls')
+conflicts=('stash-electron-git')
 
 source=("${pkgname}_${pkgver}_amd64.deb::https://github.com/Doccrazy/stash-electron/releases/download/v${pkgver}/stash-electron_${pkgver}_amd64.deb"
         "LICENSE")
