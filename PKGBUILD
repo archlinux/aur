@@ -1,46 +1,58 @@
-pkgbase=python-pythran-git
-pkgname=('python-pythran-git' 'python2-pythran-git')
-pkgver=r1888.2d5a87b9
-pkgrel=1
-pkgdesc="A claimless python to c++ converter"
-arch=('i686' 'x86_64')
-url="http://pythonhosted.org/pythran/"
-license=('BSD')
-makedepends=('python-networkx' 'python2-networkx' 'python-ply' 'python2-ply' 'python-colorlog' 'python2-colorlog' 'python-numpy' 'python2-numpy' 'gperftools'  'python-setuptools' 'python2-setuptools' 'python-gast' 'python2-gast' 'python-six' 'python2-six' 'gmp' 'boost' 'git' 'cmake')
-source=("git+https://github.com/serge-sans-paille/pythran.git")
-md5sums=('SKIP')
+# Maintainer: Ashwin Vishnu <ashwinvis+arch at pr0t0nm4il dot com>
+# Contributor: xantares
 
-pkgver() {
-  cd "$srcdir"/pythran
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+pkgbase=python-pythran
+pkgname=('python-pythran' 'python2-pythran')
+pkgver=0.8.7
+pkgrel=1
+pkgdesc="Ahead of Time compiler for numeric kernels"
+arch=('i686' 'x86_64')
+url="https://pythran.readthedocs.io/"
+license=('BSD')
+makedepends=('python-numpy' 'python2-numpy' 'python-setuptools' 'python2-setuptools')
+source=("$pkgbase-$pkgver.tar.gz::https://github.com/serge-sans-paille/pythran/archive/$pkgver.tar.gz")
+sha256sums=('4c05b9e56de7174d2934552d1ba9004f6d298fd3d51c58037a0b4691f44ce69c')
+
+prepare() {
+  cp -a pythran-$pkgver{,-py2}
 }
 
 build() {
-  cp -r "$srcdir"/pythran "$srcdir"/pythran-py2
-
-  cd "$srcdir"/pythran
+  cd "$srcdir"/pythran-$pkgver
   python setup.py build
 
-  cd "$srcdir"/pythran-py2
+  cd "$srcdir"/pythran-$pkgver-py2
   python2 setup.py build
 }
 
-package_python-pythran-git() {
-  depends=('python-networkx' 'python-ply' 'python-colorlog' 'python-numpy' 'python-gast' 'python-six' 'gperftools' 'gmp' 'boost')
+package_python-pythran() {
+  depends=('python' 'python-networkx' 'python-ply' 'python-numpy' 'python-gast' 'python-six' 'gperftools' 'gmp')
+  optdepends=(
+    'boost: Use system Boost libraries'
+    'python-colorlog: Coloured output during compilation' 
+  )
   provides=('python-pythran')
-  conflicts=('python-pythran')
+  conflicts=('python-pythran-git')
 
-  cd "$srcdir"/pythran
-  python setup.py install --root="$pkgdir" --optimize=1
+  cd "$srcdir"/pythran-$pkgver
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  install -m755 -d "${pkgdir}/usr/share/licenses/python-pythran"
+  install -m644 LICENSE "${pkgdir}/usr/share/licenses/python-pythran/"
 }
 
-package_python2-pythran-git() {
-  depends=('python2-networkx' 'python2-ply' 'python2-colorlog' 'python2-numpy' 'python2-gast' 'python2-six' 'gperftools' 'gmp' 'boost')
+package_python2-pythran() {
+  depends=('python2' 'python2python2-networkx' 'python2-ply' 'python2-numpy' 'python2-gast' 'python2-six' 'gperftools' 'gmp')
+  optdepends=(
+    'boost: Use system Boost libraries'
+    'python2-colorlog: Coloured output during compilation'
+  )
   provides=('python2-pythran')
-  conflicts=('python2-pythran')
+  conflicts=('python2-pythran-git')
 
-  cd "$srcdir"/pythran-py2
-  python2 setup.py install --root="$pkgdir" --optimize=1
+  cd "$srcdir"/pythran-$pkgver-py2
+  python2 setup.py install --root="$pkgdir" --optimize=1  --skip-build
   mv "$pkgdir"/usr/bin/pythran "$pkgdir"/usr/bin/pythran2
   mv "$pkgdir"/usr/bin/pythran-config "$pkgdir"/usr/bin/pythran2-config
+  install -m755 -d "${pkgdir}/usr/share/licenses/python2-pythran"
+  install -m644 LICENSE "${pkgdir}/usr/share/licenses/python2-pythran/"
 }
