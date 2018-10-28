@@ -1,6 +1,6 @@
 pkgbase = oh-my-git
 	pkgdesc = An opinionated git prompt for bash and zsh
-	pkgver = 231.fd13327
+	pkgver = r231.fd13327
 	pkgrel = 1
 	url = https://github.com/arialdomartini/oh-my-git
 	arch = any

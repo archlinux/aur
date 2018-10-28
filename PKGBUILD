@@ -1,6 +1,6 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=oh-my-git
-pkgver=231.fd13327
+pkgver=r231.fd13327
 pkgrel=1
 pkgdesc="An opinionated git prompt for bash and zsh"
 arch=("any")
@@ -13,7 +13,7 @@ md5sums=("SKIP")
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 package() {
