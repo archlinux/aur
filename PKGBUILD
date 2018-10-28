@@ -1,7 +1,7 @@
 # Maintainer: Geoffrey Frogeye <geoffrey@frogeye.fr>
 
 pkgname=sheepit-client-git
-pkgver=5.0.0r270.e2616a8
+pkgver=5.0.0r325.cc2dacb
 pkgrel=1
 pkgdesc="Client for the free and distributed render farm"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ source=('git://github.com/laurent-clouet/sheepit-client.git#branch=master'
         'sheepit-client.service')
 md5sums=('SKIP'
          'a30b3ba1c40b2063ccab54b65a7b8e09'
-         'ade86db2b906f3468e014b28ebdd36d6'
+         '0c61cd94f631e9480cd1aec5377f57ab'
          '30e9d9e679a8b22d9c5efbf64c14743c'
          'e051e06111c73777914dffee61b43afc')
 

@@ -1,8 +1,4 @@
 post_install() {
     systemd-sysusers sheepit-client.conf
-}
-
-post_upgrade() {
-    [[ -d /var/lib/sheepit-client ]] && echo "sheepit-client now uses /var/cache/sheepit-client as a default cache directory. You may want to remove /var/lib/sheepit-client."
     [[ -d /var/cache/sheepit-client ]] || install -dm 755 -o sheepit-client -g sheepit-client /var/cache/sheepit-client
 }
