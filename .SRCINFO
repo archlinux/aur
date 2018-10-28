@@ -5,6 +5,7 @@ pkgbase = ly-git
 	url = https://github.com/cylgom/ly
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = custom:WTFPL
 	makedepends = git
 	depends = pam
