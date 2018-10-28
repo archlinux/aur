@@ -1,7 +1,7 @@
 # Maintainer: gls <ghostlovescorebg at gmail dot com>
 
 pkgname='perl-dancer'
-pkgver='1.3202'
+pkgver='1.3400'
 pkgrel='1'
 pkgdesc="A minimal-effort oriented web application framework"
 arch=('any')
