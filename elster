@@ -1,0 +1,18 @@
+#!/bin/bash
+INSTALL_DIRECTORY="/opt/elster/"
+export WINEPREFIX="$HOME"/.elster
+export WINEARCH="win32"
+# don't add shortcuts to desktop and don't install mono or gecko to the new wine bottle
+export WINEDLLOVERRIDES="winemenubuilder.exe=d;mscoree=d;mshtml=d"
+# don't show debug messages when running wine
+export WINEDEBUG="-all"
+
+if [ ! -d "$WINEPREFIX" ] ; then
+   mkdir -p "$WINEPREFIX" || exit 1
+   # create wine prefix
+   wine wineboot
+   # symlink needed elster files
+   ln -s "$INSTALL_DIRECTORY"/ElsterFormular "$WINEPREFIX"/drive_c/Program\ Files/
+fi
+# run elster
+wine "$WINEPREFIX"/drive_c/Program\ Files/ElsterFormular/bin/pica.exe "$@"
