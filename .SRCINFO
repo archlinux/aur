@@ -9,7 +9,7 @@ pkgbase = gnome-shell-extension-hotel-manager
 	depends = curl
 	provides = gnome-shell-extension-hotel-manager
 	conflicts = gnome-shell-extension-hotel-manager-git
-	source = gnome-shell-extension-hotel-manager-5::https://github.com/hardpixel/hotel-manager/archive/v5.tar.gz
+	source = gnome-shell-extension-hotel-manager-5.tar.gz::https://github.com/hardpixel/hotel-manager/archive/v5.tar.gz
 	md5sums = 6196c356a15b485a2f0c34a8a8de0425
 
 pkgname = gnome-shell-extension-hotel-manager
