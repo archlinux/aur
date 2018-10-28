@@ -1,0 +1,23 @@
+pkgbase = stash-electron-git
+	pkgdesc = Stash Team Secret Manager
+	pkgver = 1.1.1pre
+	pkgrel = 30
+	url = https://github.com/Doccrazy/stash-electron
+	arch = x86_64
+	license = GPL-3.0
+	depends = alsa-lib
+	depends = gconf
+	depends = gtk3
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	depends = libsecret
+	depends = libcurl-gnutls
+	conflicts = stash-electron
+	source = stash-electron-git_1.1.1pre-30_amd64.deb::https://bintray.com/doccrazy/deb/download_file?file_path=stash-electron-git_1.1.1pre-30_amd64.deb
+	source = LICENSE
+	sha256sums = 9375a5a15aa1866ae96bea4a2d63973fd9b0b5ed03e264b0e798473e25fd4691
+	sha256sums = 8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903
+
+pkgname = stash-electron-git
+
