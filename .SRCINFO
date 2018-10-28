@@ -1,6 +1,6 @@
 pkgbase = kvmd
 	pkgdesc = The main Pi-KVM daemon
-	pkgver = 0.81
+	pkgver = 0.82
 	pkgrel = 1
 	url = https://github.com/pi-kvm/kvmd
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = kvmd
 	depends = python-pyserial
 	depends = python-setproctitle
 	depends = python-systemd
-	source = https://github.com/pi-kvm/kvmd/archive/v0.81.tar.gz
+	source = https://github.com/pi-kvm/kvmd/archive/v0.82.tar.gz
 	md5sums = SKIP
 
 pkgname = kvmd
