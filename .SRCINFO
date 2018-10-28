@@ -1,7 +1,7 @@
 pkgbase = circuit-simulator
 	pkgdesc = Electronic circuit simulator written by Paul Falstad
 	pkgver = 1.6
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.falstad.com/circuit-java
 	arch = any
 	license = GPL
@@ -15,7 +15,7 @@ pkgbase = circuit-simulator
 	source = circuit.desktop
 	md5sums = 392f5956d1153755949b167842ccd7cc
 	md5sums = f6f1a25d07ebe8d2322950e8a52f7877
-	md5sums = 46ff1375643354a241c6c67fba7f08e5
+	md5sums = deaff8b1646089d6c2c737dcbc540255
 
 pkgname = circuit-simulator
 
