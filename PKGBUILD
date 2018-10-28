@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034
 
 pkgname=lux-qt
-pkgver=5.2.3
+pkgver=5.2.5
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://luxcore.io/"

@@ -1,6 +1,6 @@
 pkgbase = lux-qt
 	pkgdesc = Cryptocurrency wallet(QT)
-	pkgver = 5.2.3
+	pkgver = 5.2.5
 	pkgrel = 1
 	url = https://luxcore.io/
 	install = lux-qt.install
@@ -23,7 +23,7 @@ pkgbase = lux-qt
 	provides = lux-tx
 	conflicts = luxcoin
 	conflicts = luxcore
-	source = lux-qt::git+https://github.com/LUX-Core/lux.git#tag=v5.2.3
+	source = lux-qt::git+https://github.com/LUX-Core/lux.git#tag=v5.2.5
 	source = lux-qt.desktop
 	source = lux.patch
 	sha256sums = SKIP
