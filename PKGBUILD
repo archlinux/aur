@@ -1,6 +1,6 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=kickoff-player-git
-pkgver=218.1d74322
+pkgver=r218.1d74322
 pkgrel=1
 pkgdesc="Stream football matches and channels with acestream and sopcast"
 arch=("any")
@@ -10,27 +10,27 @@ depends=("gtk3" "gst-plugins-bad" "acestream-engine" "python-gobject" "python-db
 optdepends=("python-mpv: MPV player backend" "python-vlc: VLC player backend")
 makedepends=("git" "desktop-file-utils")
 provides=("kickoff-player")
-source=("$pkgname::git+https://github.com/jonian/kickoff-player")
+source=("$pkgname::git+$url")
 md5sums=("SKIP")
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
-  echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  cd "$srcdir/$pkgname"
+  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 package() {
-  mkdir -p "$pkgdir/opt"
-  mkdir -p "$pkgdir/usr/bin"
-  mkdir -p "$pkgdir/usr/share/icons/hicolor"
-  mkdir -p "$pkgdir/usr/share/icons/gnome"
-  mkdir -p "$pkgdir/usr/share/applications"
+  install -d "$pkgdir/opt"
+  install -d "$pkgdir/usr/bin"
+  install -d "$pkgdir/usr/share/icons/hicolor"
+  install -d "$pkgdir/usr/share/icons/gnome"
+  install -d "$pkgdir/usr/share/applications"
 
   cp -a "$srcdir/$pkgname" "$pkgdir/opt/$pkgname"
   cp -a "$srcdir/$pkgname/icons/hicolor/." "$pkgdir/usr/share/icons/hicolor"
   cp -a "$srcdir/$pkgname/icons/hicolor/." "$pkgdir/usr/share/icons/gnome"
 
-  update-desktop-database "$pkgdir/opt/$pkgname"
-
   ln -s "/opt/$pkgname/kickoff_player.py" "$pkgdir/usr/bin/kickoff-player"
-  mv "$pkgdir/opt/$pkgname/kickoff-player.desktop" "$pkgdir/usr/share/applications/kickoff-player.desktop"
+  mv -n "$pkgdir/opt/$pkgname/kickoff-player.desktop" "$pkgdir/usr/share/applications/kickoff-player.desktop"
+
+  update-desktop-database "$pkgdir/opt/$pkgname"
 }
