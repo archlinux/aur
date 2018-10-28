@@ -4,6 +4,7 @@
 pkgname=clang6
 pkgver=6.0.1
 pkgrel=2
+_prefix="/usr/lib/clang6"
 pkgdesc="C language family frontend for LLVM"
 arch=('x86_64')
 url="https://clang.llvm.org/"
@@ -13,9 +14,9 @@ makedepends=('llvm6' 'cmake' 'ninja' 'python-sphinx' 'python2')
 optdepends=('openmp: OpenMP support in clang with -fopenmp'
             'python: for git-clang-format'
             'python2: for scan-view')
-provides=("clang-analyzer=$pkgver" "clang-tools-extra=$pkgver")
-conflicts=('clang-analyzer' 'clang-tools-extra')
-replaces=('clang-analyzer' 'clang-tools-extra')
+#provides=("clang-analyzer=$pkgver" "clang-tools-extra=$pkgver")
+#conflicts=('clang-analyzer' 'clang-tools-extra')
+#replaces=('clang-analyzer' 'clang-tools-extra')
 source=(https://releases.llvm.org/$pkgver/cfe-$pkgver.src.tar.xz{,.sig}
         https://releases.llvm.org/$pkgver/clang-tools-extra-$pkgver.src.tar.xz{,.sig}
         https://releases.llvm.org/$pkgver/llvm-$pkgver.src.tar.xz{,.sig}
@@ -42,7 +43,7 @@ build() {
 
   cmake .. -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_PREFIX="${_prefix}" \
     -DPYTHON_EXECUTABLE=/usr/bin/python \
     -DBUILD_SHARED_LIBS=ON \
     -DLLVM_LINK_LLVM_DYLIB=ON \
@@ -80,27 +81,35 @@ package() {
   install -Dm644 ../LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # Remove documentation sources
-  rm -r "$pkgdir"/usr/share/doc/clang{,-tools}/html/{_sources,.buildinfo}
+  rm -r "$pkgdir/$_prefix/share/doc/"clang{,-tools}/html/{_sources,.buildinfo}
 
-  # Move analyzer scripts out of /usr/libexec
-  mv "$pkgdir"/usr/libexec/{ccc,c++}-analyzer "$pkgdir/usr/lib/clang/"
-  rmdir "$pkgdir/usr/libexec"
-  sed -i 's|libexec|lib/clang|' "$pkgdir/usr/bin/scan-build"
+  # Move analyzer scripts out of $_prefix/libexec
+  mv "$pkgdir/$_prefix/"libexec/{ccc,c++}-analyzer "$pkgdir/$_prefix/lib/clang/"
+  rmdir "$pkgdir/$_prefix/libexec"
+  sed -i 's|libexec|lib/clang6|' "$pkgdir"/"$_prefix"/bin/scan-build
 
-  # Install Python bindings
+  # Install Python bindings, rename them from "clang" to "clang6"
   for _py in 2.7 3.7; do
     install -d "$pkgdir/usr/lib/python$_py/site-packages"
-    cp -a ../bindings/python/clang "$pkgdir/usr/lib/python$_py/site-packages/"
+    cp -a ../bindings/python/clang "$pkgdir/usr/lib/python$_py/site-packages/clang6"
+    sed -i 's|clang\.enumerations|clang6.enumerations|' "$pkgdir/usr/lib/python$_py/site-packages/clang6/"*.py
     _python${_py%%.*}_optimize "$pkgdir/usr/lib/python$_py"
   done
 
   # Fix shebang in Python 2 scripts
   sed -i '1s|/usr/bin/env python$|&2|' \
-    "$pkgdir/usr/bin/scan-view" \
-    "$pkgdir"/usr/share/$pkgname/*.py
+    "$pkgdir/$_prefix/bin/scan-view" \
+    "$pkgdir/$_prefix/share/clang/"*.py
 
   # Compile Python scripts
-  _python2_optimize "$pkgdir/usr/share"
+  _python2_optimize "$pkgdir/$_prefix/share"
+
+  # symlink binaries from /usr/bin
+  install -d "$pkgdir/usr/bin"
+  cd "$pkgdir/$_prefix/bin"
+  for file in *; do
+    ln -sf "$_prefix/bin/$file" "$pkgdir/usr/bin/${file%-6.0}-6"
+  done
 }
 
 # vim:set ts=2 sw=2 et:
