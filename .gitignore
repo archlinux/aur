@@ -1,0 +1,9 @@
+# .gitignore
+
+/src
+/pkg
+/ardor-client-*.zip
+/ardor-system-*-any.pkg.tar*
+/ardor-system-*.src.tar*
+
+# vim: set syn=config:

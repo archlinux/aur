@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Ardor Wallet API
+GenericName=Ardor Wallet
+Comment=Open Ardor Wallets
+Type=Application
+Exec=xdg-open http://localhost:27876/
+Icon=ardor
+Categories=Utility;Application;Finance;
+Keywords=cryptocurrency;wallet;ardor;nxt;ignis;

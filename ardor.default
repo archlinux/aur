@@ -1,0 +1,5 @@
+# /etc/default/ardor
+
+ARDOR_JVM_OPTS="-Xms256M -cp classes:lib/*:conf:addons/classes:addons/lib/*"
+
+# vim: set syn=config:

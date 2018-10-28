@@ -1,0 +1,64 @@
+#!/bin/sh
+
+ardor_user='ardor'
+ardor_home='/opt/ardor'
+ardor_log_path='/var/log/ardor'
+ardor_db_path='/var/lib/ardor'
+ardor_old_db_path='/opt/ardor/nxt_db'
+ardor_conf_dir='/opt/ardor/conf'
+ardor_pid_dir='/opt/ardor/.ardor'
+
+move_existing_ardor_db() {
+  set -e
+
+  if [ -e "$ardor_old_db_path" ] && [ "$(stat -c %F "$ardor_old_db_path")" = 'directory' ]; then
+    mv -T "$ardor_old_db_path" "$ardor_db_path"
+  fi
+}
+
+correct_ardor_ownerships() {
+  set -e
+
+  touch "$ardor_conf_dir/.lock"
+  chown -R "$ardor_user":"$(id -gn "$ardor_user")" \
+    "$ardor_log_path" \
+    "$ardor_db_path" \
+    "$ardor_conf_dir/data" \
+    "$ardor_conf_dir/.lock" \
+    "$ardor_pid_dir"
+
+  chgrp "$(id -gn "$ardor_user")" \
+    "$ardor_conf_dir/nxt-default.properties"
+}
+
+ensure_ardor_user() {
+  set -e
+
+  if ! id "$ardor_user" > /dev/null 2>&1; then
+    useradd -rd "$ardor_home" -s '/bin/false' "$ardor_user"
+  else
+    usermod -d "$ardor_home" -s '/bin/false' "$ardor_user" > /dev/null
+  fi
+}
+
+pre_install() {
+  set -e
+
+  move_existing_ardor_db
+}
+
+post_install() {
+  set -e
+
+  ensure_ardor_user
+  correct_ardor_ownerships
+}
+
+post_upgrade() {
+  set -e
+
+  ensure_ardor_user
+  correct_ardor_ownerships
+}
+
+# vim: set ts=2 sw=2 et syn=sh:

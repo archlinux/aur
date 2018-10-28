@@ -1,0 +1,21 @@
+[Unit]
+Description=Ardor Blockchain Client
+Wants=network.target
+After=network.target
+RequiresMountsFor=/opt/ardor /var/lib/ardor /var/log/ardor
+
+[Service]
+Type=simple
+EnvironmentFile=-/etc/default/ardor
+User=ardor
+ProtectSystem=strict
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+ReadWritePaths=/opt/ardor/conf /var/lib/ardor /var/log/ardor
+WorkingDirectory=/opt/ardor
+ExecStart=/usr/bin/java $ARDOR_JVM_OPTS nxt.Nxt
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
