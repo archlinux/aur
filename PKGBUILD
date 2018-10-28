@@ -13,7 +13,6 @@ source=("$pkgname-$pkgver.gz::$url/releases/download/v$pkgver/overmind-v$pkgver-
 md5sums=("63c56f38649ef739e5cf3d421224bded")
 
 package() {
-  mkdir -p "$pkgdir/usr/bin"
   install -Dm755 "$srcdir/$pkgname-$pkgver" "$pkgdir/opt/$pkgname/overmind"
-  ln -s "/opt/$pkgname/overmind" "$pkgdir/usr/bin/overmind"
+  install -d "$pkgdir/usr/bin" && ln -s "/opt/$pkgname/overmind" "$_/overmind"
 }
