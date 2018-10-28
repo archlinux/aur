@@ -2,7 +2,7 @@
 
 _gitname=Vulkan-Docs
 pkgname=vulkan-man-git
-pkgver=v1.1.89.r1.ge8894a1
+pkgver=v1.1.89.r1.g87b3354
 pkgrel=1
 pkgdesc="Vulkan API specs man pages (custom branch)"
 arch=('any')
