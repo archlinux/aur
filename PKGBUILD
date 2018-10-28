@@ -10,10 +10,8 @@ license=('GPL')
 makedepends=("git")
 arch=("i686" "x86_64")
 url="http://zfsonlinux.org/"
-source=("git+https://github.com/zfsonlinux/spl.git#tag=spl-${pkgver}"
-        "spl-utils.hostid")
-sha256sums=('SKIP'
-            'ad95131bc0b799c0b1af477fb14fcf26a6a9f76079e48bf090acb7e8367bfd0e')
+source=("git+https://github.com/zfsonlinux/spl.git#tag=spl-${pkgver}")
+sha256sums=('SKIP')
 
 build() {
     cd "${srcdir}/spl"
@@ -36,7 +34,6 @@ package_spl-dkms() {
     depends=("dkms" "spl-utils=${pkgver}-${pkgrel}")
     provides=("spl")
     conflicts=("spl-git" "spl-lts")
-    install=spl.install
 
     dkmsdir="${pkgdir}/usr/src/spl-${pkgver}"
     install -d "${dkmsdir}"
@@ -55,6 +52,4 @@ package_spl-utils() {
 
     cd "${srcdir}/spl"
     make DESTDIR="${pkgdir}" install
-
-    install -D -m644 "${srcdir}"/spl-utils.hostid "${pkgdir}"/etc/hostid
 }
