@@ -15,7 +15,7 @@ pkgbase = mikutter
 	source = http://mikutter.hachune.net/bin/mikutter.3.8.1.tar.gz
 	source = mikutter.desktop
 	source = config.patch
-	md5sums = fa613565fed0b4ab124f76ee95192719
+	md5sums = 08b373e6a5cf76131b4cb9c5f26d5d9c
 	md5sums = 3bc1c65e13b6182a9c989835eefc8810
 	md5sums = 54df9d2f1f19d3c27034cc1a97d1bc67
 
