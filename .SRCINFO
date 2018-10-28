@@ -1,0 +1,17 @@
+pkgbase = elementary-blue-icon-theme-git
+	pkgdesc = Classic blue folders of the elementary icon theme.
+	pkgver = r2260.5ec8e85d
+	pkgrel = 1
+	url = https://github.com/germanfr/elementary-blue-icons
+	arch = any
+	groups = pantheon-unstable
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	depends = elementary-icon-theme
+	options = !emptydirs
+	source = elementary-blue-icon-theme::git+https://github.com/germanfr/elementary-blue-icons.git
+	sha256sums = SKIP
+
+pkgname = elementary-blue-icon-theme-git
+
