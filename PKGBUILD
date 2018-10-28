@@ -3,7 +3,7 @@
 
 pkgname=(adlplug-git opnplug-git)
 _pkgname=ADLplug
-pkgver=v1.0.0.beta.2.r1.b5ac366
+pkgver=v1.0.0.beta.3.r4.c60fdda
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/jpcima/ADLplug"
@@ -16,7 +16,7 @@ source=('git+https://github.com/jpcima/ADLplug.git'
         'git+https://github.com/Wohlstand/libOPNMIDI.git'
         'git+https://github.com/jpcima/JUCE.git'
         'git+https://github.com/fmtlib/fmt.git'
-        'git+https://github.com/brofield/simpleini.git')
+        'git+https://github.com/jpcima/simpleini.git')
 md5sums=('SKIP'
          'SKIP'
          'SKIP'

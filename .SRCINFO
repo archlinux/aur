@@ -1,5 +1,5 @@
 pkgbase = adlplug-git
-	pkgver = v1.0.0.beta.2.r1.b5ac366
+	pkgver = v1.0.0.beta.3.r4.c60fdda
 	pkgrel = 1
 	url = https://github.com/jpcima/ADLplug
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = adlplug-git
 	source = git+https://github.com/Wohlstand/libOPNMIDI.git
 	source = git+https://github.com/jpcima/JUCE.git
 	source = git+https://github.com/fmtlib/fmt.git
-	source = git+https://github.com/brofield/simpleini.git
+	source = git+https://github.com/jpcima/simpleini.git
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
