@@ -12,7 +12,6 @@ source=("$pkgname-$pkgver.gz::$url/releases/download/v$pkgver/hivemind-v$pkgver-
 md5sums=("d638b5ecb36fbc5c2a1b6f8660d5c24e")
 
 package() {
-  mkdir -p "$pkgdir/usr/bin"
   install -Dm755 "$srcdir/$pkgname-$pkgver" "$pkgdir/opt/$pkgname/hivemind"
-  ln -s "/opt/$pkgname/hivemind" "$pkgdir/usr/bin/hivemind"
+  install -d "$pkgdir/usr/bin" && ln -s "/opt/$pkgname/hivemind" "$_/hivemind"
 }
