@@ -1,14 +1,16 @@
 pkgbase = dput
 	pkgdesc = Debian package upload tool
-	pkgver = 0.9.6.4
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = http://packages.qa.debian.org/dput
 	arch = any
 	license = GPL
-	depends = python2
-	depends = gnupg
-	source = http://ftp.debian.org/debian/pool/main/d/dput/dput_0.9.6.4_all.deb
-	sha256sums = 2ac0bcf25c3e64728fdbec3c91c16b305b982861e60780ecadff3b97c90bfa8a
+	makedepends = python-setuptools
+	depends = python
+	depends = python-debian
+	depends = python-gpgme
+	source = http://http.debian.net/debian/pool/main/d/dput/dput_1.0.2.tar.xz
+	sha256sums = cdbd4ad0f75e68e5516908e2e6e7c3be6135a1bcc363920d758ed6f88c6e0a3d
 
 pkgname = dput
 
