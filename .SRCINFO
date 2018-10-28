@@ -1,0 +1,15 @@
+pkgbase = nodejs-zone-mta
+	pkgdesc = Modern outbound MTA cross platform and extendable server application
+	pkgver = 1.13.3
+	pkgrel = 1
+	url = https://github.com/zone-eu/zone-mta
+	arch = i686
+	arch = x86_64
+	license = EUPL
+	makedepends = npm
+	depends = nodejs
+	conflicts = zone-mta
+	options = !strip
+
+pkgname = nodejs-zone-mta
+
