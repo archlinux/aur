@@ -3,15 +3,15 @@
 pkgbase='python-txtorcon'
 _pkgname='txtorcon'
 pkgname=('python2-txtorcon' 'python-txtorcon')
-pkgver=18.0.2
-pkgrel=2
+pkgver=18.3.0
+pkgrel=1
 pkgdesc='A Twisted-based Python asynchronous controller library for Tor'
 arch=('any')
 url='https://txtorcon.readthedocs.org/'
 license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/meejah/$_pkgname/archive/v$pkgver.tar.gz")
-md5sums=('301799dfa64e7286482cf9af1a4cd380')
+md5sums=('77e5c8e966ed527909480a90b8b4151a')
 
 prepare() {
   cp -a ${_pkgname}-${pkgver}{,-py2}  
