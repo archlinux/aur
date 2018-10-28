@@ -1,7 +1,7 @@
 pkgbase = svgcleaner-bin
 	pkgdesc = SVG Cleaner CLI and the main GUI.
 	pkgver = 0.9.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/RazrFalcon/svgcleaner-gui
 	arch = x86_64
 	license = GPL
@@ -14,7 +14,7 @@ pkgbase = svgcleaner-bin
 	conflicts = svgcleaner-git
 	conflicts = svgcleaner-gui
 	conflicts = svgcleaner-gui-git
-	source = svgcleaner-bin-0.9.5::https://github.com/RazrFalcon/svgcleaner-gui/releases/download/v0.9.5/svgcleaner_linux_x86_64_0.9.5.tar.gz
+	source = svgcleaner-bin-0.9.5.tar.gz::https://github.com/RazrFalcon/svgcleaner-gui/releases/download/v0.9.5/svgcleaner_linux_x86_64_0.9.5.tar.gz
 	source = svgcleaner-gui.desktop
 	source = icons.tar.xz
 	md5sums = b4169480f328c55a1a3b67eb30abe2b6
