@@ -12,7 +12,7 @@ license=("GPL3")
 depends=("gdk-pixbuf2" "gnome-menus" "gsettings-desktop-schemas" "gtksourceview3" "python" "python-gobject" "python-psutil" "python-xdg" "xdg-utils")
 makedepends=("python-distutils-extra")
 install=menulibre.install
-source=("$pkgname-$pkgver.tar.gz::https://launchpad.net/$pkgname/${pkgver%.*}/$pkgver/+download/$pkgname-$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/${pkgver%.*}/$pkgver/+download/$pkgname-$pkgver.tar.gz")
 md5sums=("9690848dbf9196c3f7baa574e90378d8")
 
 package() {
