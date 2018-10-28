@@ -1,0 +1,16 @@
+[Unit]
+Description=SickChill Daemon
+After=network.target
+
+[Service]
+Restart=on-success
+User=sickchill
+Group=sickchill
+
+Type=forking
+GuessMainPID=no
+#ExecStart=/usr/bin/env python2 /opt/sickchill/app/SickBeard.py --quiet --daemon --nolaunch --datadir=/opt/sickchill/data
+ExecStart=/usr/bin/python2 /opt/sickchill/app/SickBeard.py --quiet --daemon --nolaunch --datadir=/opt/sickchill/data
+
+[Install]
+WantedBy=multi-user.target

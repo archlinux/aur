@@ -1,0 +1,26 @@
+post_install() {
+  systemd-sysusers sickchill.conf
+  systemd-tmpfiles --create sickchill.conf
+  chown -R sickchill:sickchill /opt/sickchill
+
+  echo "==> Start and enable sickchill.service. Then visit http://localhost:8081/"
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+pre_remove() {
+  systemctl stop sickchill.service
+}
+
+post_remove() {
+  rm -rf /opt/sickchill/app
+
+  echo "==> To delete the configuration files, run as root: rm -rf /opt/sickchill/data"
+
+  # Do not delete the 'sickchill' user automatically. It may still own files.
+  # If 'sickchill' is the only user in group 'sickchill', then userdel will also delete the group.
+  echo "==> To delete the \"sickchill\" user, run as root: userdel --force sickchill"
+}
+
