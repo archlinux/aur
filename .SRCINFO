@@ -24,9 +24,9 @@ pkgbase = klipper-git
 	source = sysusers.conf
 	source = tmpfiles.conf
 	md5sums = SKIP
-	md5sums = e39ca376373d4e23799806b916d39f14
+	md5sums = a8e8aee6f576ebd9e335c20e225c99e5
 	md5sums = 61912d101dc7c68c7314882b80621454
-	md5sums = 2b79f4e00b2a74cef083fba81c89a13d
+	md5sums = ac76dba668e371a0686973e5069bc95e
 
 pkgname = klipper-git
 

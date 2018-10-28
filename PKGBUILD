@@ -28,9 +28,9 @@ install=
 source=('git+https://github.com/KevinOConnor/klipper#branch=master' 'klipper.service' 'sysusers.conf' 'tmpfiles.conf')
 noextract=()
 md5sums=('SKIP'
-         'e39ca376373d4e23799806b916d39f14'
+         'a8e8aee6f576ebd9e335c20e225c99e5'
          '61912d101dc7c68c7314882b80621454'
-         '2b79f4e00b2a74cef083fba81c89a13d')
+         'ac76dba668e371a0686973e5069bc95e')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -61,6 +61,7 @@ package() {
 	install -Dm644 "$srcdir/sysusers.conf" "$pkgdir/usr/lib/sysusers.d/klipper.conf"
 	install -Dm644 "$srcdir/tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/klipper.conf"
 	install -dm755 "$pkgdir/opt/klipper/klippy"
+	install -dm775 "$pkgdir/etc/klipper"
 	python2 "$srcdir/${pkgname%-git}/scripts/make_version.py" archlinux > "$pkgdir/opt/klipper/klippy/.version"
 	GLOBIGNORE=.git cp -r * "$pkgdir/opt/klipper"
 }
