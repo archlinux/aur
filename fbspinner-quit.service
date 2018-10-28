@@ -1,0 +1,13 @@
+[Unit]
+Description=Terminate spinner on framebuffer
+After=rc-local.service fbspinner.service systemd-user-sessions.service
+Before=getty@tty1.service
+
+[Service]
+ExecStartPre=-/bin/sleep 5
+ExecStart=-/usr/bin/systemctl stop fbspinner
+Type=oneshot
+TimeoutSec=20
+
+[Install]
+WantedBy=multi-user.target
