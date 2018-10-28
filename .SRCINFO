@@ -1,7 +1,7 @@
 pkgbase = fbspinner
 	pkgdesc = Show a spinner on the framebuffer during system boot
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Mortal/fbspinner
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,11 @@ pkgbase = fbspinner
 	makedepends = cargo
 	depends = gcc-libs
 	source = https://github.com/Mortal/fbspinner/archive/v0.1.1.tar.gz
+	source = fbspinner.service
+	source = fbspinner-quit.service
 	md5sums = c1b7767b1e8cb5bf776ec6b8b18ca0ae
+	md5sums = 2757ec5504c2086f2107e055737f3a9b
+	md5sums = e96aec5d699bb738193ff0170fdaeb82
 
 pkgname = fbspinner
 
