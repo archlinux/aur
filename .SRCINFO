@@ -1,19 +1,21 @@
 pkgbase = egl-wayland-git
-	pkgdesc = A work-in-progress implementation of a EGL External Platform library to add client-side Wayland support - Git
-	pkgver = r1.743d702
+	pkgdesc = EGLStream-based Wayland external platform (git version)
+	pkgver = 1.0.3.r18.g0eb29d4
 	pkgrel = 1
-	url = https://github.com/NVIDIA/egl-wayland
+	url = https://github.com/NVIDIA/egl-wayland/
+	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	depends = mesa
+	makedepends = meson
 	depends = wayland
 	depends = eglexternalplatform
 	provides = egl-wayland
 	conflicts = egl-wayland
-	conflicts = nvidia-utils<378.09
-	source = git+https://github.com/NVIDIA/egl-wayland.git
-	md5sums = SKIP
+	source = egl-wayland-git::git+https://github.com/NVIDIA/egl-wayland.git
+	source = 10_nvidia_wayland.json
+	sha256sums = SKIP
+	sha256sums = 5cccf1905a266e8e34d5ad4aad4be85390e60b1a0850a29dd9d64adc641de412
 
 pkgname = egl-wayland-git
 

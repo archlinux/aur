@@ -1,42 +1,50 @@
-# Maintainer: Det
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
+# Contributor: Det
 
 pkgname=egl-wayland-git
-_pkgname=egl-wayland
-pkgver=r1.743d702
+pkgver=1.0.3.r18.g0eb29d4
 pkgrel=1
-pkgdesc="A work-in-progress implementation of a EGL External Platform library to add client-side Wayland support - Git"
-arch=('x86_64')
-url="https://github.com/NVIDIA/$_pkgname"
+pkgdesc='EGLStream-based Wayland external platform (git version)'
+arch=('i686' 'x86_64')
+url='https://github.com/NVIDIA/egl-wayland/'
 license=('MIT')
-depends=('mesa' 'wayland' 'eglexternalplatform')
-makedepends=('git')
-conflicts=("$_pkgname" 'nvidia-utils<378.09')
-provides=("$_pkgname")
-source=("git+$url.git")
-md5sums=('SKIP')
+depends=('wayland' 'eglexternalplatform')
+makedepends=('git' 'meson')
+provides=('egl-wayland')
+conflicts=('egl-wayland')
+source=("$pkgname"::'git+https://github.com/NVIDIA/egl-wayland.git'
+        '10_nvidia_wayland.json')
+sha256sums=('SKIP'
+            '5cccf1905a266e8e34d5ad4aad4be85390e60b1a0850a29dd9d64adc641de412')
 
 pkgver() {
-  cd $_pkgname
-  
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+    cd "$pkgname"
+    
+    # git, tags available
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-  cd $_pkgname
-
-  msg2 "Running ./autogen.sh..."
-  ./autogen.sh --prefix=/usr
-
-  msg2 "Running make..."
-  make
+    cd "$pkgname"
+    
+    arch-meson . build
+    
+    ninja -C build
 }
 
 package() {
-  cd $_pkgname
-
-  msg2 "Running make install..."
-  make DESTDIR="$pkgdir" install
+    cd "$pkgname"
+    
+    DESTDIR="$pkgdir" meson install -C build
+    
+    # headers
+    install -d -m755 "${pkgdir}/usr/include"
+    install -m755 include/*.h "${pkgdir}/usr/include"
+    
+    # license
+    install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    
+    # egl loader
+    cd "$srcdir"
+    install -D -m644 10_nvidia_wayland.json -t "${pkgdir}/usr/share/egl/egl_external_platform.d"
 } 
