@@ -1,0 +1,13 @@
+pkgbase = texinfo-js
+	pkgdesc = Info-like interface for reading documentation in a web browser
+	pkgver = 0.0.90
+	pkgrel = 1
+	url = https://www.gnu.org/software/texinfo/manual/texinfo-html/Overview.html
+	arch = any
+	license = GPL
+	depends = bash
+	source = https://alpha.gnu.org/gnu/texinfo/texinfo-js-0.0.90.tar.gz
+	sha256sums = e5a7c780540b0334d0daf56729255272c95992253af83fe90e8826eb0ab3b52c
+
+pkgname = texinfo-js
+
