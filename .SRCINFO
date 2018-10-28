@@ -1,0 +1,29 @@
+pkgbase = glip-desktop-electron
+	pkgdesc = Glip electron wrapper
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://app.glip.com/
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = nodejs
+	depends = alsa-lib
+	depends = gconf
+	depends = gtk2
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	provides = glip-desktop
+	source = package.json
+	source = package-lock.json
+	source = glip-desktop.png
+	source = glip-desktop.desktop
+	source = glip-desktop.sh
+	sha512sums = e09a7c214d7daff96496be8c8dbf6ba5e6b05690c4e4bf681e4d1f5b234fd1f273906e9e3359341df8ce71babd44bee5b05dcac7a81389785a01e917e23eb24a
+	sha512sums = 1f6026b47be5f2442cbdfdb3c0a7df43f4d0611194a77bcf28e09efa295d4d31fd79f616a8843332d898b739874a4cdb78d5d05ca0c3db5fa8d75864fce126ef
+	sha512sums = 7194cfd852ce4a12af392bee8a18d99d5d99154674b00b4cd1bf414c380f97e6b0cb680afc4e4043d1877d5a9c52f8b3c397c882a4563997a8c399012f8b6a38
+	sha512sums = 8b931ea096c6acf846a63aa8ed80a86992382c2c750683fad253300ac325eefb5f8a3d74750ddd0683098cd43d5eb1f2ad850c5f1a0bfee0cdaea4393943a0c6
+	sha512sums = 9bc11a4786c9dbc88620e62f07b861e00280098037924af05b589c53cddb170e075f79b825aad006c612be5e94637b10c08993b78518f94ef3178bb66f080cc1
+
+pkgname = glip-desktop-electron
+

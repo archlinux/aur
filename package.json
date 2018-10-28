@@ -1,0 +1,14 @@
+{
+  "name": "glip-desktop",
+  "version": "1.0.0",
+  "description": "glip electron wrapper",
+  "main": "index.js",
+  "scripts": {
+    "start": "nativefier https://app.glip.com/ --name \"Glip\" --disable-context-menu --disable-dev-tools -i glip-desktop.png"
+  },
+  "author": "Serge Pavlyuk",
+  "license": "ISC",
+  "dependencies": {
+    "nativefier": "*"
+  }
+}
