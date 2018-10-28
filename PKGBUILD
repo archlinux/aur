@@ -1,12 +1,12 @@
 # Maintainer: Hui Yiqun(huiyiqun@gmail.com)
 pkgname=xmr-stak-git
-pkgver=r944.c5f0505
-pkgrel=2
+pkgver=r1098.752fd1e
+pkgrel=1
 pkgdesc="Unified All-in-one Monero miner"
 arch=('x86_64')
 url="https://github.com/fireice-uk/xmr-stak"
 license=('GPL3')
-makedepends=('git' 'cmake' 'opencl-headers')
+makedepends=('git' 'cmake' 'opencl-headers' 'gcc7')
 depends=('libmicrohttpd' 'openssl' 'hwloc' 'cuda' 'ocl-icd')
 source=('git+https://github.com/fireice-uk/xmr-stak.git'
         'no-donate.patch')
