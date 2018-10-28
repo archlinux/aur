@@ -1,0 +1,15 @@
+pkgbase = nodejs-haraka
+	pkgdesc = A fast, highly extensible, and event driven SMTP server
+	pkgver = 2.8.21
+	pkgrel = 2
+	url = http://haraka.github.io/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	conflicts = haraka
+	options = !strip
+
+pkgname = nodejs-haraka
+
