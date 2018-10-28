@@ -11,11 +11,9 @@ makedepends=("git" "spl-dkms=${pkgver}")
 arch=("i686" "x86_64")
 url="http://zfsonlinux.org/"
 source=("git+https://github.com/zfsonlinux/zfs.git#tag=zfs-${pkgver}"
-        "zfs.bash-completion-r1"
         "zfs.initcpio.install"
         "zfs.initcpio.hook")
 sha256sums=('SKIP'
-            'b60214f70ffffb62ffe489cbfabd2e069d14ed2a391fac0e36f914238394b540'
             'aa5706bf08b36209a318762680f3c9fb45b3fc4b8e4ef184c8a5370b2c3000ca'
             'f95ad1a5421ccbb8b01f448373f46cfd1f718361a82c2687a597325cf9827e3e')
 
@@ -60,6 +58,7 @@ package_zfs-utils() {
 
     cd "${srcdir}/zfs"
     make DESTDIR="${pkgdir}" install
+    install -D -m644 contrib/bash_completion.d/zfs "${pkgdir}"/usr/share/bash-completion/completions/zfs
 
     # Remove uneeded files
     rm -r "${pkgdir}"/etc/init.d
@@ -68,7 +67,6 @@ package_zfs-utils() {
 
     install -D -m644 "${srcdir}"/zfs.initcpio.hook "${pkgdir}"/usr/lib/initcpio/hooks/zfs
     install -D -m644 "${srcdir}"/zfs.initcpio.install "${pkgdir}"/usr/lib/initcpio/install/zfs
-    install -D -m644 "${srcdir}"/zfs.bash-completion-r1 "${pkgdir}"/usr/share/bash-completion/completions/zfs
 
     mkdir -p "${pkgdir}"/usr/lib/initcpio/install
 }

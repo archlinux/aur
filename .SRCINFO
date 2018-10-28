@@ -8,11 +8,9 @@ pkgbase = zfs-dkms
 	makedepends = git
 	makedepends = spl-dkms=0.7.9
 	source = git+https://github.com/zfsonlinux/zfs.git#tag=zfs-0.7.9
-	source = zfs.bash-completion-r1
 	source = zfs.initcpio.install
 	source = zfs.initcpio.hook
 	sha256sums = SKIP
-	sha256sums = b60214f70ffffb62ffe489cbfabd2e069d14ed2a391fac0e36f914238394b540
 	sha256sums = aa5706bf08b36209a318762680f3c9fb45b3fc4b8e4ef184c8a5370b2c3000ca
 	sha256sums = f95ad1a5421ccbb8b01f448373f46cfd1f718361a82c2687a597325cf9827e3e
 
