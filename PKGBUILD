@@ -32,7 +32,7 @@ prepare() {
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
   GOPATH="${srcdir}" go get github.com/tdewolff/minify
-  GOPATH="${srcdir}" PATH="${PATH}:${GOPATH}/bin/" make linux
+  GOPATH="${srcdir}" PATH="${PATH}:${GOPATH}/bin/" make linux-amd64
 }
 
 package() {
