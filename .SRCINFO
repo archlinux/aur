@@ -1,0 +1,16 @@
+pkgbase = elokab-files-manager
+	pkgdesc = A lightweight file manager for Linux desktops built in Qt.
+	pkgver = 0.2
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	depends = qt5-svg
+	depends = file
+	depends = udisks2
+	optdepends = imagemagick
+	optdepends = ffmpeg
+	source = https://github.com/zakariakov/elokab-files-manager/archive/v0.2.tar.gz
+	md5sums = SKIP
+
+pkgname = elokab-files-manager
+
