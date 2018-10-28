@@ -1,7 +1,7 @@
 pkgbase = guile-git
 	pkgdesc = A portable, embeddable Scheme implementation (Git snapshot)
-	pkgver = 3.0.0.506.ge6461cf1b
-	pkgrel = 2
+	pkgver = 2.9.1.1.gbb0860a0e
+	pkgrel = 1
 	url = http://www.gnu.org/software/guile/
 	arch = i686
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = guile-git
 	options = !strip
 	options = !makeflags
 	options = libtool
-	source = git://git.sv.gnu.org/guile.git#commit=e6461cf1b
+	source = git://git.sv.gnu.org/guile.git
 	source = version.patch
 	source = rename_scm.h.patch
 	sha256sums = SKIP
