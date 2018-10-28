@@ -1,7 +1,7 @@
 # Maintainer: Kyle Manna <kyle[at]kylemanna[d0t]com>
 pkgname=('python-yattag' 'python2-yattag')
 _pkgname=yattag
-pkgver=1.5.2
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="Yattag is a Python library for generating HTML or XML in a pythonic way"
 url="http://yattag.org"
@@ -10,7 +10,7 @@ optdepends=()
 license=('LGPL')
 arch=('any')
 source=("https://pypi.python.org/packages/source/y/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('e117a40dfa246639fbe0f3a8d344505e38d71c4ffe096985e9b581a1c2bcf687')
+sha256sums=('0a3fe7fcbdd5886ebe4ef6c215627599bb13e93a8bc26d3e48789b02e5ddc5dc')
 
 build() {
     cd "$srcdir/$_pkgname-$pkgver"
