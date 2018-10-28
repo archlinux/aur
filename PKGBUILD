@@ -39,7 +39,7 @@ build() {
 }
 
 package_python2-uproot() {
-  depends=('python2-awkward-array'
+  depends=('python2-awkward'
            'python2-cachetools'
            'python2-lz4'
            'python2-numpy'
@@ -61,7 +61,7 @@ package_python2-uproot() {
 }
 
 package_python-uproot() {
-  depends=('python-awkward-array'
+  depends=('python-awkward'
            'python-cachetools'
            'python-lz4'
            'python-numpy'

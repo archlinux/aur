@@ -14,7 +14,7 @@ pkgbase = python-uproot
 	sha256sums = 26920383e5e23b7388a9a3c6c457090b239d324485b5204f01d52893ee06bb7a
 
 pkgname = python2-uproot
-	depends = python2-awkward-array
+	depends = python2-awkward
 	depends = python2-cachetools
 	depends = python2-lz4
 	depends = python2-numpy
@@ -24,7 +24,7 @@ pkgname = python2-uproot
 	optdepends = xrootd: access remote files over XRootD
 
 pkgname = python-uproot
-	depends = python-awkward-array
+	depends = python-awkward
 	depends = python-cachetools
 	depends = python-lz4
 	depends = python-numpy
