@@ -6,7 +6,7 @@
 pkgname=('mysql57' 'libmysqlclient57' 'mysql-clients57')
 _pkgname=mysql
 pkgbase=mysql57
-pkgver=5.7.23
+pkgver=5.7.24
 pkgrel=1
 pkgdesc="Fast SQL database server, community edition, v5.7"
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=("https://dev.mysql.com/get/Downloads/MySQL-5.7/${_pkgname}-${pkgver}.tar
         "mysqld-tmpfile.conf"
         "mysqld.service"
         "my-default.cnf")
-sha256sums=('0730f2d5520bfac359e9272da6c989d0006682eacfdc086a139886c0741f6c65'
+sha256sums=('05bf0c92c6a97cf85b67fff1ac83ca7b3467aea2bf306374d727fa4f18431f87'
             '47f11c8844e579d02691a607fbd32540104a9ac7a2534a8ddaef50daf502baac'
             '368f9fd2454d80eb32abb8f29f703d1cf9553353fb9e1ae4529c4b851cb8c5dd'
             '2af318c52ae0fe5428e8a9245d1b0fc3bc5ce153842d1563329ceb1edfa83ddd'
@@ -68,8 +68,9 @@ build() {
     -DWITHOUT_EXAMPLE_STORAGE_ENGINE=ON \
     -DWITHOUT_FEDERATED_STORAGE_ENGINE=ON \
     -DCMAKE_C_FLAGS="-fPIC ${CFLAGS} -fno-strict-aliasing -DBIG_JOINS=1 -fomit-frame-pointer -fno-delete-null-pointer-checks" \
+    -DCMAKE_C_LINK_FLAGS="${LDFLAGS},-pie" \
     -DCMAKE_CXX_FLAGS="-fPIC ${CXXFLAGS} -std=gnu++98 -fno-strict-aliasing -DBIG_JOINS=1 -felide-constructors -fno-delete-null-pointer-checks" \
-    -DWITH_MYSQLD_LDFLAGS="-pie ${LDFLAGS},-z,now" \
+    -DCMAKE_CXX_LINK_FLAGS="${LDFLAGS},-pie" \
     -DWITH_BOOST="../boost_${_boost_ver//./_}"
   make
 }
