@@ -1,16 +1,14 @@
 pkgbase = booksorg
-	pkgdesc = booksorg is a easy organizer for your PDF books using qpdfview and poppler library.
-	pkgver = 0.1
+	pkgdesc = Books Organizer, an organizer for pdf files based on sqlite and with a built-in reader. Bring your favorite PDF pages all in one! Make your own extract pages from existing ones
+	pkgver = 0.3.1
 	pkgrel = 1
-	url = http://booksorg.sourceforge.net
-	arch = i686
+	url = https://sourceforge.net/p/booksorg
 	arch = x86_64
 	license = GPL3
-	makedepends = gcc
-	depends = qt5-base
-	options = !emptydirs
-	source = http://downloads.sourceforge.net/booksorg/booksorg_0.1.tar.gz
-	sha256sums = eeea945976f3c5515fba8952cd241826df12115c506bfd64879a0551cf139163
+	depends = qt5-svg
+	depends = poppler-qt5
+	source = https://github.com/zakariakov/booksorg/archive/0.3.1.tar.gz
+	md5sums = SKIP
 
 pkgname = booksorg
 
