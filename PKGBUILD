@@ -2,20 +2,27 @@
 
 pkgname=ksnip-git
 pkgver=r392.a5f57c7
-pkgrel=1
+pkgrel=2
 pkgdesc='Screenshot tool inspired by Windows Snipping Tool and made with Qt for Linux'
 arch=('i686' 'x86_64')
 url='https://github.com/DamirPorobic/ksnip'
 license=('GPL')
-depends=(qt5-x11extras)
+depends=(
+  qt5-x11extras
+  kimageannotator-git
+)
 makedepends=(
   git
   cmake
   extra-cmake-modules
   qt5-tools
-  kimageannotator
+  kimageannotator-git
+#   kcolorpicker-git
 )
 provides=(
+  ksnip
+)
+conflicts=(
   ksnip
 )
 source=('git+https://github.com/DamirPorobic/ksnip.git')
@@ -25,7 +32,7 @@ md5sums=(SKIP)
 prepare(){
   cd "$srcdir/$_gitname"
   test -d build || mkdir build
-  sed "s#DESTINATION /bin#DESTINATION /usr/bin#" -i CMakeLists.txt
+#   sed "s#DESTINATION /bin#DESTINATION /usr/bin#" -i CMakeLists.txt
 }
 pkgver(){
   if [ -d "$srcdir"/$_gitname ]; then
@@ -43,5 +50,7 @@ build(){
 package(){
   cd "$srcdir"/$_gitname/build
   make DESTDIR="$pkgdir" install
+  cd "$pkgdir"/
+  mv bin usr/
 }
 
