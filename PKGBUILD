@@ -1,6 +1,6 @@
 # Maintainer: wedjat <wedjat@protonmail.com>
 pkgname=dcm2niix
-pkgver=1.0.20171215
+pkgver=1.0.20180622
 pkgrel=1
 pkgdesc="A tool for converting images from the complicated formats used by scanner manufacturers (DICOM, PAR/REC) to the simple NIfTI format"
 arch=(x86_64)
@@ -11,8 +11,8 @@ makedepends=('cmake' 'yaml-cpp' 'python-sphinx')
 optdepends=('pigz')
 install=
 changelog=
-source=("$pkgname-$pkgver.tar.gz::https://github.com/rordenlab/dcm2niix/archive/v$pkgver.tar.gz")
-md5sums=('dcc0f6ccb29146a915001294e98e2dd1')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/rordenlab/dcm2niix/archive/v${pkgver}.tar.gz")
+md5sums=('28edd6a7e53aaa287dde3001b7ca669c')
 
 
 build() 
