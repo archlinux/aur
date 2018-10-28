@@ -3,7 +3,7 @@
 
 pkgname=clang6
 pkgver=6.0.1
-pkgrel=2
+pkgrel=3
 _prefix="/usr/lib/clang6"
 pkgdesc="C language family frontend for LLVM"
 arch=('x86_64')
@@ -83,18 +83,21 @@ package() {
   # Remove documentation sources
   rm -r "$pkgdir/$_prefix/share/doc/"clang{,-tools}/html/{_sources,.buildinfo}
 
-  # Move analyzer scripts out of $_prefix/libexec
-  mv "$pkgdir/$_prefix/"libexec/{ccc,c++}-analyzer "$pkgdir/$_prefix/lib/clang/"
-  rmdir "$pkgdir/$_prefix/libexec"
-  sed -i 's|libexec|lib/clang6|' "$pkgdir"/"$_prefix"/bin/scan-build
-
-  # Install Python bindings, rename them from "clang" to "clang6"
-  for _py in 2.7 3.7; do
-    install -d "$pkgdir/usr/lib/python$_py/site-packages"
-    cp -a ../bindings/python/clang "$pkgdir/usr/lib/python$_py/site-packages/clang6"
-    sed -i 's|clang\.enumerations|clang6.enumerations|' "$pkgdir/usr/lib/python$_py/site-packages/clang6/"*.py
-    _python${_py%%.*}_optimize "$pkgdir/usr/lib/python$_py"
-  done
+##
+## NOTE: we skip the below steps because we install to /usr/lib/clang6
+##
+#   # Move analyzer scripts out of $_prefix/libexec
+#   mv "$pkgdir/$_prefix/"libexec/{ccc,c++}-analyzer "$pkgdir/$_prefix/lib/clang/"
+#   rmdir "$pkgdir/$_prefix/libexec"
+#   sed -i 's|libexec|lib/clang6|' "$pkgdir"/"$_prefix"/bin/scan-build
+#
+#   # Install Python bindings, rename them from "clang" to "clang6"
+#   for _py in 2.7 3.7; do
+#     install -d "$pkgdir/usr/lib/python$_py/site-packages"
+#     cp -a ../bindings/python/clang "$pkgdir/usr/lib/python$_py/site-packages/clang6"
+#     sed -i 's|clang\.enumerations|clang6.enumerations|' "$pkgdir/usr/lib/python$_py/site-packages/clang6/"*.py
+#     _python${_py%%.*}_optimize "$pkgdir/usr/lib/python$_py"
+#   done
 
   # Fix shebang in Python 2 scripts
   sed -i '1s|/usr/bin/env python$|&2|' \
