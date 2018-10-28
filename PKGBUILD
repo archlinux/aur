@@ -4,8 +4,8 @@
 
 pkgname=moinmoin
 _xpkgname=moin
-pkgver=1.9.9
-pkgrel=2
+pkgver=1.9.10
+pkgrel=1
 pkgdesc="A python wiki clone"
 arch=(any)
 url="http://moinmo.in/"
@@ -14,11 +14,10 @@ depends=('python2')
 conflicts=('moin')
 install=moinmoin.install
 validpgpkeys=('6D5BEF9ADD2075805747B70F9F88FB52FAF7B393')
-source=("https://static.moinmo.in/files/moin-$pkgver.tar.gz"{,.asc}
-	"$pkgname.patch::https://bitbucket.org/thomaswaldmann/moin-1.9/commits/561b7a9c2bd91b61d26cd8a5f39aa36bf5c6159e/raw")
-sha256sums=('4397d7760b7ae324d7914ffeb1a9eeb15e09933b61468072acd3c3870351efa4'
-            'SKIP'
-            '55abcbe7356390bbc6b8504012365c9f5c50cbb68cd7ec10632945aaaae37438')
+source=("https://static.moinmo.in/files/moin-$pkgver.tar.gz"{,.asc})
+
+sha256sums=('4a264418e886082abd457c26991f4a8f4847cd1a2ffc11e10d66231da8a5053c'
+            'SKIP')
 
 prepare() {
   cd "$srcdir"/${_xpkgname}-$pkgver
@@ -27,7 +26,6 @@ prepare() {
     sed -i 's_^#!.*/usr/bin/python_#!/usr/bin/python2_' $file
     sed -i 's_^#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' $file
   done
-  patch -p1 -i $srcdir/$pkgname.patch
 }
 
 build() {
