@@ -1,7 +1,7 @@
 pkgbase = py-todo
 	pkgdesc = A Lightweight Reminder / todo-list in cli.
 	pkgver = 1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/aesophor/py-todo
 	arch = any
 	license = MIT
