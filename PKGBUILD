@@ -17,7 +17,7 @@ sha1sums=('3540f003509acac3b1260424380ddf97914f7745')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	[ $NOEXTRACT -eq 1 ] || ./configure --prefix=/usr
+	./configure --prefix=/usr
 	make -j1
 }
 
