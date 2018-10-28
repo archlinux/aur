@@ -3,7 +3,7 @@
 pkgname=engraver-git
 _realname=engraver
 _realname2=plot64
-pkgver=v0.9.1.r0.gc8f1c96
+pkgver=v.2.0.0
 pkgrel=1
 pkgdesc="PoCC reference plotter for BURST"
 arch=(x86_64)

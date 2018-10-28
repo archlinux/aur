@@ -1,6 +1,6 @@
 pkgbase = engraver-git
 	pkgdesc = PoCC reference plotter for BURST
-	pkgver = v0.9.1.r0.gc8f1c96
+	pkgver = v.2.0.0
 	pkgrel = 1
 	url = https://github.com/PoC-Consortium/engraver
 	arch = x86_64
