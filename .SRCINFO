@@ -9,7 +9,7 @@ pkgbase = inkscape-download-palette
 	depends = python2-lxml
 	provides = inkscape-download-palette
 	conflicts = inkscape-download-palette-git
-	source = inkscape-download-palette-1.0::https://github.com/olibia/inkscape-download-palette/archive/v1.0.tar.gz
+	source = inkscape-download-palette-1.0.tar.gz::https://github.com/olibia/inkscape-download-palette/archive/v1.0.tar.gz
 	md5sums = cd15f23883b2407cdd33d13f0e221036
 
 pkgname = inkscape-download-palette
