@@ -6,7 +6,7 @@
 pkgname=('mysql55' 'libmysqlclient55' 'mysql-clients55')
 _pkgname=mysql
 pkgbase=mysql55
-pkgver=5.5.61
+pkgver=5.5.62
 pkgrel=1
 pkgdesc="Fast SQL database server, community edition v5.5"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=("https://dev.mysql.com/get/Downloads/MySQL-5.5/${_pkgname}-${pkgver}.tar
         "mysqld-post.sh"
         "mysqld-tmpfile.conf"
         "mysqld.service")
-sha256sums=('62a7f8aeb9c6c4d5a127f7254500878d9d172b70ad9639b098f3c01731f1fbf0'
+sha256sums=('b1e7853bc1f04aabf6771e0ad947f35ac8d237f4b35d0706d1095c9526ff99d7'
             '368f9fd2454d80eb32abb8f29f703d1cf9553353fb9e1ae4529c4b851cb8c5dd'
             '2af318c52ae0fe5428e8a9245d1b0fc3bc5ce153842d1563329ceb1edfa83ddd'
             '50212165bdb09855b97b15a917464ba34f82edf30a0c43f9a0c93a27071df556')
@@ -61,7 +61,9 @@ build() {
     -DWITHOUT_EXAMPLE_STORAGE_ENGINE=ON \
     -DWITHOUT_FEDERATED_STORAGE_ENGINE=ON \
     -DCMAKE_C_FLAGS="-fPIC ${CFLAGS} -fno-strict-aliasing -DBIG_JOINS=1 -fomit-frame-pointer" \
-    -DCMAKE_CXX_FLAGS="-fPIC ${CXXFLAGS} -std=gnu++98 -fno-strict-aliasing -DBIG_JOINS=1 -felide-constructors -fno-rtti"
+    -DCMAKE_C_LINK_FLAGS="${LDFLAGS},-pie" \
+    -DCMAKE_CXX_FLAGS="-fPIC ${CXXFLAGS} -std=gnu++98 -fno-strict-aliasing -DBIG_JOINS=1 -felide-constructors -fno-rtti" \
+    -DCMAKE_CXX_LINK_FLAGS="${LDFLAGS},-pie"
   make
 }
 
