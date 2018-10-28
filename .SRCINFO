@@ -6,6 +6,7 @@ pkgbase = dps8m-git
 	arch = x86_64
 	license = ICU
 	makedepends = clang
+	depends = libuv
 	conflicts = dps8m
 	source = git+https://github.com/charlesUnixPro/dps8m.git
 	sha256sums = SKIP

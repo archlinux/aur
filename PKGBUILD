@@ -2,12 +2,13 @@
 pkgname=dps8m-git
 _pkgname=dps8m
 pkgver=alpha2.0.RC5.r469.g5ab650be
-pkgrel=1
+pkgrel=2
 pkgdesc='Simulator for the Multics dps-8/m mainframe'
 arch=('x86_64')
 url='http://ringzero.wikidot.com'
 license=('ICU')
 makedepends=('clang')
+depends=('libuv')
 conflicts=('dps8m')
 source=("git+https://github.com/charlesUnixPro/dps8m.git")
 sha256sums=('SKIP')
