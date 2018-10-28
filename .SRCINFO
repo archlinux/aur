@@ -1,6 +1,6 @@
 pkgbase = yii
 	pkgdesc = A high-performance component-based PHP framework best for Web 2.0 development.
-	pkgver = 1.1.16
+	pkgver = 1.1.20
 	pkgrel = 1
 	url = http://www.yiiframework.com/
 	install = yii.install
@@ -15,8 +15,8 @@ pkgbase = yii
 	optdepends = php-gd: GD support
 	optdepends = yii-docs: developer documentation
 	options = !strip
-	source = https://github.com/yiisoft/yii/archive/1.1.16.tar.gz
-	sha256sums = 5603b0cb73eeb26f39a4bc029e7c469422facb96bdf78943aecbdd5b019e5095
+	source = https://github.com/yiisoft/yii/archive/1.1.20.tar.gz
+	sha256sums = 21fc74100ca3e1bb0bb6131ef6fd4e67449909c1682c486e469b97d01205ac0b
 
 pkgname = yii
 

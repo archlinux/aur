@@ -1,6 +1,6 @@
 # Maintainer: Dylan Ferris <dylan@kanux.org>
 pkgname=yii
-pkgver=1.1.16
+pkgver=1.1.20
 pkgrel=1
 pkgdesc='A high-performance component-based PHP framework best for Web 2.0 development.'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
 )
 install='yii.install'
 source=("https://github.com/yiisoft/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('5603b0cb73eeb26f39a4bc029e7c469422facb96bdf78943aecbdd5b019e5095')
+sha256sums=('21fc74100ca3e1bb0bb6131ef6fd4e67449909c1682c486e469b97d01205ac0b')
 
 package() {
 	_instdir=/usr/share/webapps/$pkgname
