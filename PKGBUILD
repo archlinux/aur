@@ -2,7 +2,7 @@
 
 _pkgname=can
 pkgname=(python-${_pkgname} python2-${_pkgname})
-pkgver=3.0.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="Python library to access CAN bus via SocketCAN, Kvaser's CANLIB, or CAN over Serial"
 arch=('any')
@@ -10,8 +10,8 @@ url="https://pypi.python.org/pypi/python-can"
 license=('LGPLv3')
 makedepends=('python-setuptools' 'python2-setuptools')
 depends=('python')
-source=(https://files.pythonhosted.org/packages/29/47/59d07bb02d6b244fb631487ae5424a10658c316defeeb90c923b48043792/python-can-3.0.0.tar.gz)
-sha512sums=('90bd6a0b0e2717378de6c716be60f58c7b4112ad4b42bbdbec4260ecf31ca7806acad8c902ab2d886171cb4c9aad70418a6eeebbd787be7ad1684fb20f70171b')
+source=(https://pypi.python.org/packages/source/p/${pkgname}/${pkgname}-${pkgver}.tar.gz)
+sha512sums=('27d0290324d2387131d389969f5cab56e9aba2d31107fdab5f4187152e4ca8443e5de3b610333b8b5871ca8e3f77f7acdc5d1a3d7c23747c2413521b6c606a3a')
 
 prepare() {
 	 cp -a "${srcdir}/python-${_pkgname}-${pkgver}"{,-py2}
