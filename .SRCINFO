@@ -1,6 +1,6 @@
 pkgbase = mikutter
 	pkgdesc = a moest twitter client
-	pkgver = 3.8.1
+	pkgver = 3.8.2
 	pkgrel = 1
 	url = http://mikutter.hachune.net/
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = mikutter
 	depends = ruby-bundler
 	optdepends = alsa-utils: sound notification support
 	optdepends = libnotify: notify support
-	source = http://mikutter.hachune.net/bin/mikutter.3.8.1.tar.gz
+	source = http://mikutter.hachune.net/bin/mikutter.3.8.2.tar.gz
 	source = mikutter.desktop
 	source = config.patch
 	md5sums = 08b373e6a5cf76131b4cb9c5f26d5d9c

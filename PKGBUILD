@@ -3,7 +3,7 @@
 # Contributor: 2GMon <t_2gmon@yahoo.co.jp>
 
 pkgname=mikutter
-pkgver=3.8.1
+pkgver=3.8.2
 pkgrel=1
 pkgdesc="a moest twitter client"
 arch=('i686' 'x86_64')
