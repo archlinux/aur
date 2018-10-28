@@ -3,23 +3,25 @@
 
 _pkgname=etcher
 pkgname=etcher-git
-pkgver=v1.4.4.12.gcde1776a
+pkgver=v1.4.5.15.ge4d4af15
 pkgrel=1
 pkgdesc='Burn images to SD cards & USB drives, safe & easy (git version)'
 arch=(x86_64)
 url='https://www.etcher.io/'
 license=(apache)
 depends=(electron gtk2 libxtst libxss gconf nss alsa-lib)
-makedepends=(npm python2 git)
+makedepends=(npm python2 git jq)
 optdepends=('libnotify: for notifications'
             'speech-dispatcher: for text-to-speech')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=('!strip')
 source=("$pkgname::git+https://github.com/resin-io/$_pkgname.git"
+        "git+https://github.com/resin-io/scripts.git"
         'etcher-electron'
         'etcher-electron.desktop')
 sha256sums=('SKIP'
+            'SKIP'
             'a64f79fe894c4828b515844703b1795448a4818a654f5d42d4f567f4d80998d1'
             '89291532fb6e6c5555b43d61c9ba3df103bca0eace040483884b86fd30dca3e4')
 
@@ -30,19 +32,20 @@ pkgver() {
 
 prepare() {
   cd "$pkgname"
-  sed -i 's/python$/python2/' scripts/build/dependencies-npm.sh
+  git submodule init
+  git config submodule.scripts/resin.url "$srcdir/scripts"
+  git submodule update
+
+  export ELECTRON_VERSION=$(pacman -Q electron | sed 's/.\+ \(.\+\)-.\+/\1/')
+  mv package.json{,.orig}
+  jq '.devDependencies.electron |= env.ELECTRON_VERSION' package.json.orig > package.json
 }
 
 build() {
   cd "$pkgname"
 
-  export PATH="$(pwd)/node_modules/.bin:$PATH"
-  ./scripts/build/dependencies-npm.sh \
-    -s linux \
-    -r x64 \
-    -t electron \
-    -v "$(pacman -Q electron | sed 's/.\+ \(.\+\)-.\+/\1/')"
-  webpack
+  make electron-develop
+  make webpack
   npm prune --production
 }
 
