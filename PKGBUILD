@@ -2,7 +2,7 @@
 # Contributor: Shane Utt <shaneutt at linux.com>
 
 pkgname=packetsender
-pkgver=5.7.52
+pkgver=5.8.5
 pkgrel=1
 pkgdesc="Network utility for sending / receiving TCP and UDP packets"
 _basename=PacketSender
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('qt5-base')
 makedepends=('qt5-base')
 source=("https://github.com/dannagle/PacketSender/archive/v${pkgver}.tar.gz" "${pkgname}.desktop" "${pkgname}.png")
-sha256sums=('837f9c4bf2544ef4cf1c85d624d3c909dc3494af3cf4054934e17cad707670f8'
+sha256sums=('7a7846469a93b52fa08d25cf4582a21772cf5471491b7a0fcad9c5dd0fe0583d'
             '8a9c06f1ce7a0d7a919fb9664d2d5b83d957c34ef2357b0fd89ce0d638380370'
             '31f00a13c2823ddfadcf5cb3be90acc547c188ae3f3b30acde148eb8fce62ba8')
 
@@ -20,7 +20,7 @@ build() {
   cd "${srcdir}/${_basename}-${pkgver}/src"
 
   # Upstream forgot to update version no.
-  sed -i "s/5.7.2/${pkgver}/" globals.h
+  sed -i "s/5.8.1/${pkgver}/" globals.h
 
   qmake-qt5 PacketSender.pro
   make
