@@ -1,24 +1,18 @@
 pkgbase = spl-dkms
-	pkgver = 0.7.9
+	pkgdesc = Solaris Porting Layer kernel modules.
+	pkgver = 0.7.11
 	pkgrel = 1
-	url = http://zfsonlinux.org/
-	arch = i686
-	arch = x86_64
+	url = https://zfsonlinux.org/
+	arch = any
 	license = GPL
 	makedepends = git
-	source = git+https://github.com/zfsonlinux/spl.git#tag=spl-0.7.9
+	depends = dkms
+	source = git+https://github.com/zfsonlinux/spl.git#tag=spl-0.7.11?signed
+	source = 0001-only-build-the-module-in-dkms.conf.patch
+	validpgpkeys = 4F3BA9AB6D1F8D683DC2DFB56AD860EED4598027
+	validpgpkeys = C33DF142657ED1F7C328A2960AB9E991C6AF658B
 	sha256sums = SKIP
+	sha256sums = a6f6e6a84ed93269e83b92aad7c0dea713e56529d2c47aed3c64940d8b4fe5c5
 
 pkgname = spl-dkms
-	pkgdesc = Solaris Porting Layer kernel modules.
-	depends = dkms
-	depends = spl-utils=0.7.9-1
-	provides = spl
-	conflicts = spl-git
-	conflicts = spl-lts
-
-pkgname = spl-utils
-	pkgdesc = Solaris Porting Layer kernel module support files.
-	conflicts = spl-utils-git
-	conflicts = spl-utils-lts
 

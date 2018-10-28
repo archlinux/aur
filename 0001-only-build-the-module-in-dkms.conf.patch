@@ -1,0 +1,25 @@
+From 823596de7a7ea89c8b5add9692c792e979482031 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz@archlinux.org>
+Date: Sun, 28 Oct 2018 14:52:21 -0400
+Subject: [PATCH] only build the module in dkms.conf
+
+---
+ scripts/dkms.mkconf | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/scripts/dkms.mkconf b/scripts/dkms.mkconf
+index 67b9dad..47eb84a 100755
+--- a/scripts/dkms.mkconf
++++ b/scripts/dkms.mkconf
+@@ -61,7 +61,7 @@ POST_BUILD="scripts/dkms.postbuild
+ "
+ AUTOINSTALL="yes"
+ REMAKE_INITRD="no"
+-MAKE[0]="make"
++MAKE[0]="make -C module/"
+ STRIP[0]="\$(
+   [[ -r \${PACKAGE_CONFIG} ]] \\
+   && source \${PACKAGE_CONFIG} \\
+-- 
+2.19.1
+
