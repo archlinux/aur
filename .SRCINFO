@@ -16,7 +16,7 @@ pkgbase = menulibre
 	depends = python-psutil
 	depends = python-xdg
 	depends = xdg-utils
-	source = menulibre-2.2.0::https://launchpad.net/menulibre/2.2/2.2.0/+download/menulibre-2.2.0.tar.gz
+	source = menulibre-2.2.0.tar.gz::https://launchpad.net/menulibre/2.2/2.2.0/+download/menulibre-2.2.0.tar.gz
 	md5sums = 9690848dbf9196c3f7baa574e90378d8
 
 pkgname = menulibre
