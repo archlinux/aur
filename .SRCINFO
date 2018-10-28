@@ -1,0 +1,12 @@
+pkgbase = elokab-terminal
+	pkgdesc = Lightweight terminal emulator program that supports the Arabic language
+	pkgver = 0.3.2
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	depends = qt5-svg
+	source = https://github.com/zakariakov/elokab-terminal/archive/v0.3.2.tar.gz
+	md5sums = SKIP
+
+pkgname = elokab-terminal
+
