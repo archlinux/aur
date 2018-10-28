@@ -10,7 +10,7 @@ Please follow the usual Arch Linux documentation to install this package from th
 
 ### Manually
 ```
-$ git clone https://github.com/thelounge/arch-lounge.git
+$ git clone https://github.com/thelounge/thelounge-archlinux.git
 $ cd arch-lounge
 $ # optional: select your release (experimental, master, stable)
 $ git checkout stable
