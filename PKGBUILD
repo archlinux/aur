@@ -1,7 +1,7 @@
 # Maintainer: Hans-Nikolai Viessmann <hv15 AT hw.ac.uk>
 
 pkgname='xmrig-nvidia'
-pkgver=2.8.3
+pkgver=2.8.4
 pkgrel=1
 pkgdesc='Monero cryptocurrency GPU miner, HTTP API disabled, donation percentage is 0.'
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('GPL')
 install='xmrig-nvidia.install'
 changelog=CHANGELOG.md
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('06dc0ef260feb96393441ec87f099b290ee19d7014f27ff7b416b32d2916e546')
+sha256sums=('e5bc512fe6a11da8c0b620aee1f1ccd143c538caef96b1236312a289b8682c16')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -31,7 +31,7 @@ prepare() {
 build() {
   cd "${pkgname}-${pkgver}/build"
 
-  # the C/CXX flags are specific to CUDA 9/9.1 which has a hard dep on gcc7
+  # the C/CXX flags are specific to CUDA 9/9.x/10 which has a hard dep on gcc7
   cmake -DWITH_HTTPD=OFF -DCMAKE_C_COMPILER=gcc-7 -DCMAKE_CXX_COMPILER=g++-7 ..
   make
 }
