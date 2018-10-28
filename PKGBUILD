@@ -2,7 +2,8 @@
 # Contributor: Anthony Samartsev
 
 pkgname=xcursor-pixelfun
-pkgver=3.2
+epoch=1
+pkgver=1.2
 pkgrel=9
 pkgdesc="Minimalistic cursor theme with a piece of old-school"
 arch=('any')
