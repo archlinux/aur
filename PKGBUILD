@@ -2,14 +2,14 @@
 # Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
 # Maintainer : Solomon Choina <shlomochoina@gmail.com>
 pkgname=falkon-git
-pkgver=3.0.1.160.g7b2ff160
+pkgver=3.0.1.232.g6df8ac4c
 pkgrel=1
 pkgdesc="Cross-platform Qt Web Browser"
 arch=('i686' 'x86_64')
 url="http://www.qupzilla.com"
 license=('GPL')
-depends=('qt5-webengine' 'qt5-x11extras' 'qt5-svg' 'openssl>=1.1.0')  # 'python-pyside2-git' : uncomment if you want to enable experimental function for add new plugins)
-makedepends=('git' 'qt5-tools' 'kwallet' 'extra-cmake-modules' 'libgnome-keyring' ) # uncomment 'shiboken2-git' 'pyside2-common-git' : if you want to enable experimental function for add new plugins) #libgnome-keyring : uncomment if you want to enable GNOME keyring
+depends=('qt5-webengine' 'python-pyside2' 'qt5-x11extras' 'qt5-svg' 'openssl>=1.1.0')  # 'python-pyside2-git' : uncomment if you want to enable experimental function for add new plugins)
+makedepends=('git' 'libgnome-keyring' 'qt5-tools' 'kwallet' 'shiboken2' 'pyside2-tools' 'kio' 'extra-cmake-modules' 'libgnome-keyring' ) # uncomment 'shiboken2-git' 'pyside2-common-git' : if you want to enable experimental function for add new plugins) #libgnome-keyring : uncomment if you want to enable GNOME keyring
 conflicts=('qupzilla' 'qupzilla-qt5' 'qupzilla-qt5-git' 'falkon')
 optdepends=(
   'bash-completion: bash completion support'
