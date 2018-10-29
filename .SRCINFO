@@ -1,0 +1,15 @@
+pkgbase = python-eon
+	pkgdesc = Source code accompanying 'Mathematics of Epidemics on Networks' by Kiss, Miller, and Simon
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://epidemicsonnetworks.readthedocs.io/en/latest/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = python-networkx
+	provides = python-eon
+	source = https://files.pythonhosted.org/packages/source/e/eon/EoN-1.0.tar.gz
+	sha256sums = 25d9f6389afbb400ff1fa719249937d23576e6005cd3f6b2fd42b7abdc41a1c8
+
+pkgname = python-eon
+
