@@ -4,7 +4,7 @@
 pkgbase=python-pythran
 pkgname=('python-pythran' 'python2-pythran')
 pkgver=0.8.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Ahead of Time compiler for numeric kernels"
 arch=('i686' 'x86_64')
 url="https://pythran.readthedocs.io/"
@@ -41,7 +41,7 @@ package_python-pythran() {
 }
 
 package_python2-pythran() {
-  depends=('python2' 'python2python2-networkx' 'python2-ply' 'python2-numpy' 'python2-gast' 'python2-six' 'gperftools' 'gmp')
+  depends=('python2' 'python2-networkx' 'python2-ply' 'python2-numpy' 'python2-gast' 'python2-six' 'gperftools' 'gmp')
   optdepends=(
     'boost: Use system Boost libraries'
     'python2-colorlog: Coloured output during compilation'

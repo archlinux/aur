@@ -1,7 +1,7 @@
 pkgbase = python-pythran
 	pkgdesc = Ahead of Time compiler for numeric kernels
 	pkgver = 0.8.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pythran.readthedocs.io/
 	arch = i686
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgname = python-pythran
 
 pkgname = python2-pythran
 	depends = python2
-	depends = python2python2-networkx
+	depends = python2-networkx
 	depends = python2-ply
 	depends = python2-numpy
 	depends = python2-gast
