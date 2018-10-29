@@ -1,5 +1,5 @@
 pkgbase = turtlecoin-git
-	pkgdesc = Turtlecoin simplewallet and miner
+	pkgdesc = TurtleCoin daemon, CLI wallet, RPC interface, and solo miner
 	pkgver = r402.a902436
 	pkgrel = 1
 	url = https://turtlecoin.lol
@@ -15,4 +15,3 @@ pkgbase = turtlecoin-git
 	sha256sums = SKIP
 
 pkgname = turtlecoin-git
-

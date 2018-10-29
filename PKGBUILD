@@ -1,17 +1,7 @@
-#
-# Please note:
-#   Export your keys using export_keys command in
-#   trtl-simplewallet before upgrading to version
-#   0.4.3 (r402.a902436).
-#   
-#   For more information visit:
-#       https://github.com/turtlecoin/turtlecoin/releases/tag/v0.4.3
-#
-
 pkgname=turtlecoin-git
-pkgver=r402.a902436
+pkgver=r1072.6ce73ea
 pkgrel=1
-pkgdesc="Turtlecoin simplewallet and miner"
+pkgdesc="TurtleCoin daemon, CLI wallet, RPC interface, and solo miner"
 arch=('x86_64')
 url="https://turtlecoin.lol"
 license=('LGPLv3')
@@ -32,15 +22,16 @@ pkgver() {
 
 build() {
     cd "$srcdir/turtlecoin"
-    mkdir -p build/release
-    cd build/release
-    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_FLAGS="-fassociative-math" -DCMAKE_CXX_FLAGS="-fassociative-math" ../..
+    mkdir -p build
+    cd build
+    cmake ..
     make
 }
 
 package() {
-    install -D -m755 "$srcdir/turtlecoin/build/release/src/miner" -T "$pkgdir/usr/bin/trtl-miner"
-    install -D -m755 "$srcdir/turtlecoin/build/release/src/simplewallet" -T "$pkgdir/usr/bin/trtl-simplewallet"
-    install -D -m755 "$srcdir/turtlecoin/build/release/src/TurtleCoind" -t "$pkgdir/usr/bin/"
-    install -D -m755 "$srcdir/turtlecoin/build/release/src/walletd" -T "$pkgdir/usr/bin/trtl-walletd"
+    # Rename some executables so we don't conflict with other coins
+    install -D -m755 "$srcdir/turtlecoin/build/src/miner" -T "$pkgdir/usr/bin/trtl-miner"
+    install -D -m755 "$srcdir/turtlecoin/build/src/zedwallet" -T "$pkgdir/usr/bin/trtl-zedwallet"
+    install -D -m755 "$srcdir/turtlecoin/build/src/TurtleCoind" -t "$pkgdir/usr/bin/"
+    install -D -m755 "$srcdir/turtlecoin/build/src/turtle-service" -t "$pkgdir/usr/bin/"
 }
