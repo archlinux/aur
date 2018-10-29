@@ -3,7 +3,7 @@
 
 pkgname=epiphany-pantheon
 pkgver=3.28.0.1+1ubuntu1+r21.dbc305d50
-pkgrel=3
+pkgrel=4
 pkgdesc="GNOME web browser based on the WebKit rendering engine (with elementary OS patches)"
 url="https://gitlab.gnome.org/GNOME/epiphany/"
 arch=('i686' 'x86_64')
@@ -17,13 +17,11 @@ provides=(epiphany="${pkgver}" epiphany-sync)
 conflicts=(epiphany)
 source=("git+https://github.com/elementary/os-patches.git#branch=epiphany-browser-bionic-patched"
         epiphany-sync{,.service}
-        "block-webkit-filechooser.patch"
         "add-preview-widget.patch")
 sha256sums=('SKIP'
             'cf90f3ea93fff8c61f82da40c8d07d5db2f33dc9a0d91408a6ffc4142bbedd20'
             'ce1ac321d7bf9d88638634a141dfcb99119fc59ee44c4892e0874608e85006ba'
-            'deabdc2edc635d854ca40789cf949afdb51b9c598b01891390c238cc769524f7'
-            'df1828b4fe05bd6aeb198db0c56c83c10d54eef27d7a9a6c63cbddc516d6221f')
+            '1f692442846c635085ecf746f8018e87de5bba73c0c6e22730c5bce56fb56e1b')
 
 pkgver() {
     cd "os-patches"
@@ -33,8 +31,7 @@ pkgver() {
 
 prepare () {
     cd "os-patches"
-    patch -Np2 < ../block-webkit-filechooser.patch
-    patch -Np2 < ../add-preview-widget.patch
+    patch -Np1 < ../add-preview-widget.patch
 }
 
 build() {

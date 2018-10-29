@@ -1,80 +1,181 @@
---- src/os-patches/lib/widgets/ephy-file-chooser.c~	2018-09-30 04:45:43.003990684 +0900
-+++ src/os-patches/lib/widgets/ephy-file-chooser.c	2018-10-07 00:40:58.833626868 +0900
-@@ -32,6 +32,12 @@
+diff --git a/embed/ephy-web-view.c b/embed/ephy-web-view.c
+index f18b8acf0..f9ff26654 100644
+--- a/embed/ephy-web-view.c
++++ b/embed/ephy-web-view.c
+@@ -31,6 +31,7 @@
+ #include "ephy-embed-utils.h"
+ #include "ephy-embed.h"
+ #include "ephy-favicon-helpers.h"
++#include "ephy-file-chooser.h"
+ #include "ephy-file-helpers.h"
+ #include "ephy-file-monitor.h"
+ #include "ephy-gsb-utils.h"
+@@ -300,6 +301,59 @@ popups_manager_hide_all (EphyWebView *view)
+   view->shown_popups = NULL;
+ }
+ 
++static void
++open_response_cb (GtkFileChooser           *dialog,
++                  gint                      response,
++                  WebKitFileChooserRequest *request)
++{
++  if (response == GTK_RESPONSE_ACCEPT) {
++    GSList *file_list = gtk_file_chooser_get_filenames (dialog);
++    GPtrArray *file_array = g_ptr_array_new ();
++
++    for (GSList *file = file_list; file; file = g_slist_next (file))
++      g_ptr_array_add (file_array, file->data);
++
++    g_ptr_array_add (file_array, NULL);
++    webkit_file_chooser_request_select_files (request, (const char * const *)file_array->pdata);
++    g_slist_free_full (file_list, g_free);
++    g_ptr_array_free (file_array, FALSE);
++  } else {
++    webkit_file_chooser_request_cancel (request);
++  }
++
++  g_object_unref (request);
++  g_object_unref (dialog);
++}
++
++static gboolean
++ephy_web_view_run_file_chooser (WebKitWebView            *web_view,
++                                WebKitFileChooserRequest *request)
++{
++
++  GtkWidget *toplevel = gtk_widget_get_toplevel (GTK_WIDGET (web_view));
++  GtkFileChooser *dialog;
++  gboolean allows_multiple_selection = webkit_file_chooser_request_get_select_multiple (request);
++  GtkFileFilter *filter = webkit_file_chooser_request_get_mime_types_filter (request);
++
++  dialog = ephy_create_file_chooser (_("Open"),
++                                     GTK_WIDGET (toplevel),
++                                     GTK_FILE_CHOOSER_ACTION_OPEN,
++                                     EPHY_FILE_FILTER_ALL_SUPPORTED);
++
++  if (filter)
++    gtk_file_chooser_set_filter (GTK_FILE_CHOOSER (dialog), filter);
++
++  gtk_file_chooser_set_select_multiple (GTK_FILE_CHOOSER (dialog), allows_multiple_selection);
++
++  g_signal_connect (dialog, "response",
++                    G_CALLBACK (open_response_cb),
++                    g_object_ref (request));
++
++  gtk_native_dialog_show (GTK_NATIVE_DIALOG (dialog));
++
++  return TRUE;
++}
++
+ static void
+ ephy_web_view_set_popups_allowed (EphyWebView *view,
+                                   gboolean     allowed)
+@@ -1126,6 +1180,7 @@ ephy_web_view_class_init (EphyWebViewClass *klass)
+ {
+   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
+   GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
++  WebKitWebViewClass *webkit_webview_class = WEBKIT_WEB_VIEW_CLASS (klass);
+ 
+   gobject_class->dispose = ephy_web_view_dispose;
+   gobject_class->finalize = ephy_web_view_finalize;
+@@ -1136,6 +1191,8 @@ ephy_web_view_class_init (EphyWebViewClass *klass)
+   widget_class->button_press_event = ephy_web_view_button_press_event;
+   widget_class->key_press_event = ephy_web_view_key_press_event;
+ 
++  webkit_webview_class->run_file_chooser = ephy_web_view_run_file_chooser;
++
+ /**
+  * EphyWebView:address:
+  *
+diff --git a/lib/widgets/ephy-file-chooser.c b/lib/widgets/ephy-file-chooser.c
+index a0a53b73e..d27309105 100644
+--- a/lib/widgets/ephy-file-chooser.c
++++ b/lib/widgets/ephy-file-chooser.c
+@@ -31,7 +31,13 @@
+ 
  #include <gtk/gtk.h>
  #include <glib/gi18n.h>
- 
-+#include <sys/types.h>
-+#include <sys/stat.h>
 +#include <glib/gstdio.h>
+ 
++#include <sys/stat.h>
++#include <sys/types.h>
 +
 +#define MAX_PREVIEW_SIZE 180
 +#define MAX_PREVIEW_SOURCE_SIZE 4096
  
  static GtkFileFilter *
  ephy_file_chooser_add_pattern_filter (GtkFileChooser *dialog,
-@@ -89,6 +92,53 @@
+@@ -89,6 +95,53 @@ ephy_file_chooser_add_mime_filter (GtkFileChooser *dialog,
    return filth;
  }
  
 +static void
 +update_preview_cb (GtkFileChooser *file_chooser,
-+                        gpointer data)
++                   gpointer        data)
 +{
 +  GtkImage *preview = GTK_IMAGE (data);
-+  g_autofree char *filename = gtk_file_chooser_get_preview_filename(file_chooser);
-+
++  g_autofree char *filename = gtk_file_chooser_get_preview_filename (file_chooser);
++  gint preview_width = 0;
++  gint preview_height = 0;
 +  struct g_stat st_buf;
-+  if (!filename || g_stat(filename, &st_buf) || (!S_ISREG(st_buf.st_mode))) {
-+    gtk_file_chooser_set_preview_widget_active(file_chooser, FALSE);
++  g_autoptr (GdkPixbuf) pixbuf = NULL;
++
++  GdkPixbufFormat *preview_format = gdk_pixbuf_get_file_info (filename,
++                                                              &preview_width,
++                                                              &preview_height);
++
++  if (!filename || g_stat (filename, &st_buf) || (!S_ISREG (st_buf.st_mode))) {
++    gtk_file_chooser_set_preview_widget_active (file_chooser, FALSE);
 +    return; // stat failed or file is not regular
 +  }
 +
-+  gint preview_width = 0;
-+  gint preview_height = 0;
-+  GdkPixbufFormat *preview_format = gdk_pixbuf_get_file_info(filename,
-+                                                             &preview_width,
-+                                                             &preview_height);
 +  if (!preview_format ||
 +      preview_width <= 0 || preview_height <= 0 ||
 +      preview_width > MAX_PREVIEW_SOURCE_SIZE ||
 +      preview_height > MAX_PREVIEW_SOURCE_SIZE) {
-+    gtk_file_chooser_set_preview_widget_active(file_chooser, FALSE);
++    gtk_file_chooser_set_preview_widget_active (file_chooser, FALSE);
 +    return; // unpreviewable, 0px, or unsafely large
 +  }
 +
-+  g_autoptr(GdkPixbuf) pixbuf = NULL;
 +  if (preview_width > MAX_PREVIEW_SIZE || preview_height > MAX_PREVIEW_SIZE) {
-+    pixbuf = gdk_pixbuf_new_from_file_at_size(filename,
-+                                                      MAX_PREVIEW_SIZE,
-+                                                      MAX_PREVIEW_SIZE,
-+                                                      NULL);
++    pixbuf = gdk_pixbuf_new_from_file_at_size (filename,
++                                               MAX_PREVIEW_SIZE,
++                                               MAX_PREVIEW_SIZE,
++                                               NULL);
++  } else {
++    pixbuf = gdk_pixbuf_new_from_file (filename, NULL);
 +  }
-+  else {
-+    pixbuf = gdk_pixbuf_new_from_file(filename, NULL);
-+  }
 +
-+  pixbuf = gdk_pixbuf_apply_embedded_orientation(pixbuf);
++  pixbuf = gdk_pixbuf_apply_embedded_orientation (pixbuf);
 +
-+  gtk_widget_set_size_request(GTK_WIDGET (preview),
-+                                     gdk_pixbuf_get_width(pixbuf) + 6,
-+                                     gdk_pixbuf_get_height(pixbuf) + 6);
++  gtk_widget_set_size_request (GTK_WIDGET (preview),
++                               gdk_pixbuf_get_width (pixbuf) + 6,
++                               gdk_pixbuf_get_height (pixbuf) + 6);
 +
-+  gtk_image_set_from_pixbuf(preview, pixbuf);
-+  gtk_file_chooser_set_preview_widget_active(file_chooser, pixbuf != NULL);
++  gtk_image_set_from_pixbuf (preview, pixbuf);
++  gtk_file_chooser_set_preview_widget_active (file_chooser, pixbuf != NULL);
 +}
 +
  GtkFileChooser *
  ephy_create_file_chooser (const char           *title,
                            GtkWidget            *parent,
-@@ -121,6 +195,11 @@
+@@ -98,6 +151,7 @@ ephy_create_file_chooser (const char           *title,
+   GtkFileChooser *dialog;
+   GtkFileFilter *filter[EPHY_FILE_FILTER_LAST];
+   char *downloads_dir;
++  GtkWidget *preview = gtk_image_new ();
+ 
+   g_assert (GTK_IS_WINDOW (parent));
+   g_assert (default_filter >= 0 && default_filter <= EPHY_FILE_FILTER_LAST);
+@@ -121,6 +175,12 @@ ephy_create_file_chooser (const char           *title,
      gtk_file_chooser_native_set_accept_label (GTK_FILE_CHOOSER_NATIVE (dialog), _("_Save"));
    }
  
-+  GtkWidget *preview = gtk_image_new();
-+  gtk_file_chooser_set_preview_widget(dialog, preview);
-+  gtk_file_chooser_set_use_preview_label(dialog, FALSE);
-+  g_signal_connect(dialog, "update-preview", G_CALLBACK(update_preview_cb), preview);
++  gtk_file_chooser_set_preview_widget (dialog, preview);
++  gtk_file_chooser_set_use_preview_label (dialog, FALSE);
++  g_signal_connect (dialog, "update-preview",
++                    G_CALLBACK (update_preview_cb),
++                    preview);
 +
    if (default_filter != EPHY_FILE_FILTER_NONE) {
      filter[EPHY_FILE_FILTER_ALL_SUPPORTED] =
