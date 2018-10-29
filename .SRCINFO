@@ -1,7 +1,7 @@
 pkgbase = rua
 	pkgdesc = convenient jailed AUR helper in rust
 	pkgver = 0.5.5
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/vn971/rua
 	arch = x86_64
 	arch = i686
