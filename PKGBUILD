@@ -2,7 +2,7 @@
 # Maintainer: Alexandre Berthaud <alexandre at berthaud dot me>
 pkgname=keystore-explorer
 _pkgname=kse
-pkgver=5.4.0
+pkgver=5.4.1
 _pkgver=${pkgver//./}
 pkgrel=1
 pkgdesc="a free GUI replacement for the Java command-line utilities keytool, jarsigner and jadtool"
@@ -13,7 +13,7 @@ depends=('java-runtime')
 install=${pkgname}.install
 source=("https://github.com/kaikramer/${pkgname}/releases/download/v${pkgver}/${_pkgname}-${_pkgver}.zip"
         "${pkgname}.desktop")
-md5sums=('e78a51ab2c9120560dba8ba1e165954d'
+md5sums=('d21de02af032ebcca0a0bb53f8d8c96c'
          'dfaa247ab726fe2e44368101399b508d')
 
 package() {
