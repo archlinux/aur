@@ -2,7 +2,7 @@
 # Contributor: Ivan Agarkov <ivan.agarkov@gmail.com>
 
 pkgbase=('postgresql-1c')
-pkgname=('postgresql-libs' 'postgresql-docs' 'postgresql-1c')
+pkgname=('postgresql-libs-1c' 'postgresql-docs-1c' 'postgresql-1c')
 pkgver=10.3
 _majorver=${pkgver%.*}
 pkgrel=3
@@ -65,10 +65,10 @@ build() {
   make world
 }
 
-package_postgresql-libs() {
+package_postgresql-libs-1c() {
   pkgdesc="Libraries for use with PostgreSQL"
   depends=('krb5' 'openssl>=1.0.0' 'readline>=6.0' 'zlib')
-  provides=('postgresql-client')
+  provides=('postgresql-client' 'postgresql-libs')
   conflicts=('postgresql-client')
 
   cd postgresql-${pkgver}
@@ -105,7 +105,7 @@ package_postgresql-libs() {
   install -m 644 libpq/pqcomm.h "${pkgdir}/usr/include/postgresql/internal/libpq"
 }
 
-package_postgresql-docs() {
+package_postgresql-docs-1c() {
   pkgdesc="HTML documentation for PostgreSQL"
   options=('docs')
 
