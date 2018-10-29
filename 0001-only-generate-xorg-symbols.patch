@@ -1,0 +1,30 @@
+From a8daa589349bf00767723a406bc988b2c17d8588 Mon Sep 17 00:00:00 2001
+From: Frank LENORMAND <lenormf@gmail.com>
+Date: Mon, 29 Oct 2018 14:52:59 +0300
+Subject: [PATCH] patch
+
+---
+ lafayette_linux_v0.6.1.py | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/lafayette_linux_v0.6.1.py b/lafayette_linux_v0.6.1.py
+index 9764d69..280083e 100644
+--- a/lafayette_linux_v0.6.1.py
++++ b/lafayette_linux_v0.6.1.py
+@@ -247,6 +247,13 @@ LAYOUTS = {'fr': [{
+         };""")
+ }]}
+ 
++for locale, layouts in LAYOUTS.items():
++    for layout in layouts:
++        with open("%s_%s" % (locale, layout["name"]), "w") as fout:
++            fout.write(layout["symbols"])
++
++import sys
++sys.exit(0)
+ 
+ ###############################################################################
+ # XKB/symbols: append new layouts
+-- 
+2.19.0
+

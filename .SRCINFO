@@ -1,0 +1,16 @@
+pkgbase = qwerty-lafayette
+	pkgdesc = QWERTY keyboard layout for francophone developers
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://qwerty-lafayette.org/
+	arch = any
+	license = WTFPL
+	makedepends = python
+	depends = xorg-server
+	source = https://qwerty-lafayette.org/releases/lafayette_linux_v0.6.1.py
+	source = 0001-only-generate-xorg-symbols.patch
+	sha256sums = ec89492c1ed4ce2af0b545992bf408aa2cbf29d45ba7af7ea9ef96c3914693bb
+	sha256sums = eec99e7ee9621a3d9934c8c4753741c23e187888bd60c16d6a7f08475d725248
+
+pkgname = qwerty-lafayette
+
