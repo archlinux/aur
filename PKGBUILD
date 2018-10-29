@@ -10,7 +10,7 @@ pkgdesc="A GNU multiboot boot loader"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.gnu.org/software/grub/"
-depends=('ncurses' 'diffutils' 'sed')
+depends=('ncurses' 'diffutils' 'sed' 'lib32-glibc')
 conflicts=('grub')
 makedepends_x86_64=('gcc-multilib')
 optdepends=('xfsprogs: freezing of xfs /boot in install-grub script')
@@ -77,10 +77,10 @@ build() {
     patch -Np1 -i ../040_all_grub-0.96-nxstack.patch
     # patch from frugalware to make it boot when more than 2GB ram installed
     patch -Np1 -i ../05-grub-0.97-initrdaddr.diff
-    CFLAGS="-static -fno-strict-aliasing" ./configure --prefix=/usr --bindir=/usr/bin --sbindir=/usr/bin \
+    CFLAGS+=" -static -fno-strict-aliasing -fno-stack-protector" ./configure --prefix=/usr --bindir=/usr/bin --sbindir=/usr/bin \
                          --mandir=/usr/share/man --infodir=/usr/share/info
   else
-    CFLAGS="-fno-strict-aliasing" ./configure --prefix=/usr --bindir=/usr/bin --sbindir=/usr/bin \
+    CFLAGS+=" -fno-strict-aliasing -fno-stack-protector" ./configure --prefix=/usr --bindir=/usr/bin --sbindir=/usr/bin \
                 --mandir=/usr/share/man --infodir=/usr/share/info
   fi
 }
