@@ -1,7 +1,70 @@
-diff --git a/wingpanel/schemas/io.elementary.desktop.wingpanel.gschema.xml b/wingpanel-qq/schemas/io.elementary.desktop.wingpanel.gschema.xml
-index c81abd5..890e277 100644
---- a/wingpanel/schemas/io.elementary.desktop.wingpanel.gschema.xml
-+++ b/wingpanel-qq/schemas/io.elementary.desktop.wingpanel.gschema.xml
+diff --git a/./.travis.yml b/../wingpanel-qq/wingpanel-qq/.travis.yml
+index 20a23ed..409aceb 100644
+--- a/./.travis.yml
++++ b/../wingpanel-qq/wingpanel-qq/.travis.yml
+@@ -4,7 +4,7 @@ services:
+  - docker
+
+ env:
+- - DEPENDENCY_PACKAGES="libgala-dev libgee-0.8-dev libgirepository1.0-dev libglib2.0-dev libgranite-dev libgtk-3-dev meson valac"
++ - DEPENDENCY_PACKAGES="libgala-dev libgee-0.8-dev libgirepository1.0-dev libglib2.0-dev libgranite-dev libgtk-3-dev libwnck-3-dev meson valac"
+
+ install:
+  - docker pull elementary/docker:juno-unstable
+diff --git a/./CMakeLists.txt b/../wingpanel-qq/wingpanel-qq/CMakeLists.txt
+index 2309c8b..878fc26 100644
+--- a/./CMakeLists.txt
++++ b/../wingpanel-qq/wingpanel-qq/CMakeLists.txt
+@@ -76,6 +76,7 @@ set (LIB_PACKAGES
+   gee-0.8
+   gmodule-2.0
+   gtk+-3.0
++  libwnck-3.0
+ )
+
+ set (LIB_PKG
+@@ -84,11 +85,15 @@ set (LIB_PKG
+   gee-0.8
+   gmodule-2.0
+   gtk+-3.0>=3.22
++  libwnck-3.0>=3.14
+ )
+ find_package(PkgConfig)
+
+ pkg_check_modules (LIB REQUIRED ${LIB_PKG})
+
++add_definitions (-DWNCK_I_KNOW_THIS_IS_UNSTABLE ${WNCK_CFLAGS})
++link_libraries (${WNCK_LIBRARIES})
++
+ set (GLOBAL_VALAC_OPTIONS
+   --vapidir=${CMAKE_BINARY_DIR}/lib
+   --vapidir=vapi
+diff --git a/./meson.build b/../wingpanel-qq/wingpanel-qq/meson.build
+index 4f0f279..19b4f65 100644
+--- a/./meson.build
++++ b/../wingpanel-qq/wingpanel-qq/meson.build
+@@ -14,7 +14,8 @@ add_project_arguments([
+
+ add_project_arguments([
+         '-DGETTEXT_PACKAGE="wingpanel"',
+-        '-DG_LOG_DOMAIN="wingpanel"'
++        '-DG_LOG_DOMAIN="wingpanel"',
++        '-DWNCK_I_KNOW_THIS_IS_UNSTABLE'
+     ],
+     language: 'c'
+ )
+@@ -29,6 +30,7 @@ gio_dep = dependency('gio-2.0')
+ gio_unix_dep = dependency('gio-unix-2.0')
+ gmodule_dep = dependency('gmodule-2.0')
+ gtk_dep = dependency('gtk+-3.0', version: '>=3.10')
++libwnck_dep = dependency('libwnck-3.0', version: '>=3.14')
+ gee_dep = dependency('gee-0.8')
+ granite_dep = dependency('granite')
+
+diff --git a/./schemas/io.elementary.desktop.wingpanel.gschema.xml b/../wingpanel-qq/wingpanel-qq/schemas/io.elementary.desktop.wingpanel.gschema.xml
+index a309a1d..aa150f7 100644
+--- a/./schemas/io.elementary.desktop.wingpanel.gschema.xml
++++ b/../wingpanel-qq/wingpanel-qq/schemas/io.elementary.desktop.wingpanel.gschema.xml
 @@ -6,5 +6,23 @@
  			<summary>Sets if the panel uses transparency.</summary>
  			<description>Disable this to provide higher contrasts and make indicators better readable.</description>
@@ -26,77 +89,28 @@ index c81abd5..890e277 100644
 +		</key>
  	</schema>
  </schemalist>
---- a/wingpanel/src/Services/Settings.vala
-+++ b/wingpanel-qq/src/Services/Settings.vala
-@@ -23,6 +23,10 @@ namespace Wingpanel.Services {
- 
-         public bool use_transparency { get; set; }
- 
-+        public string autohide { get; set; }
-+
-+        public int delay { get; set; }
-+
-         public PanelSettings () {
-             base ("io.elementary.desktop.wingpanel");
-         }
---- src/wingpanel/CMakeLists.txt~	2018-09-17 00:14:55.430071710 +0900
-+++ src/wingpanel/CMakeLists.txt	2018-09-17 00:34:08.600075830 +0900
-@@ -76,6 +76,7 @@
-   gee-0.8
-   gmodule-2.0
-   gtk+-3.0
-+  libwnck-3.0
- )
- 
- set (LIB_PKG
-@@ -84,11 +85,15 @@
-   gee-0.8
-   gmodule-2.0
-   gtk+-3.0>=3.22
-+  libwnck-3.0>=3.14
- )
- find_package(PkgConfig)
- 
- pkg_check_modules (LIB REQUIRED ${LIB_PKG})
- 
-+add_definitions (-DWNCK_I_KNOW_THIS_IS_UNSTABLE ${WNCK_CFLAGS})
-+link_libraries (${WNCK_LIBRARIES})
-+
- set (GLOBAL_VALAC_OPTIONS
-   --vapidir=${CMAKE_BINARY_DIR}/lib
-   --vapidir=vapi
-diff --git a/.travis.yml b/.travis.yml
-index dddddf1..4efb6c0 100644
---- src/wingpanel/.travis.yml
-+++ src/wingpanel/.travis.yml
-@@ -4,7 +4,7 @@ services:
-  - docker
- 
- env:
-- - DEPENDENCY_PACKAGES="cmake libgala-dev libgee-0.8-dev libgirepository1.0-dev libglib2.0-dev libgranite-dev libgtk-3-dev valac"
-+ - DEPENDENCY_PACKAGES="cmake libgala-dev libgee-0.8-dev libgirepository1.0-dev libglib2.0-dev libgranite-dev libgtk-3-dev libwnck-3-dev valac"
- 
- install:
-  - docker pull elementary/docker:juno-unstable
---- src/wingpanel/src/PanelWindow.vala~	2018-09-18 22:59:21.301597018 +0900
-+++ src/wingpanel/src/PanelWindow.vala	2018-09-18 23:08:18.654947952 +0900
-@@ -30,6 +30,12 @@
+diff --git a/./src/PanelWindow.vala b/../wingpanel-qq/wingpanel-qq/src/PanelWindow.vala
+index 162c54a..e06472f 100644
+--- a/./src/PanelWindow.vala
++++ b/../wingpanel-qq/wingpanel-qq/src/PanelWindow.vala
+@@ -29,6 +29,13 @@ public class Wingpanel.PanelWindow : Gtk.Window {
+     private int panel_height;
      private bool expanded = false;
      private int panel_displacement;
-     private uint shrink_timeout = 0;
++    private uint shrink_timeout = 0;
 +    private uint timeout;
 +    private bool hiding = false;
 +    private bool delay = false;
 +    private string autohide = Services.PanelSettings.get_default ().autohide;
 +    private int autohide_delay = Services.PanelSettings.get_default ().delay;
 +    private Wnck.Screen wnck_screen = Wnck.Screen.get_default ();
- 
+
      public PanelWindow (Gtk.Application application) {
          Object (
-@@ -71,16 +77,65 @@
+@@ -70,16 +77,65 @@ public class Wingpanel.PanelWindow : Gtk.Window {
          application.add_accelerator ("<Control>Tab", "app.cycle", null);
          application.add_accelerator ("<Control><Shift>Tab", "app.cycle-back", null);
- 
+
 +        Services.PanelSettings.get_default ().notify["autohide"].connect (() => {
 +            autohide = Services.PanelSettings.get_default ().autohide;
 +            update_autohide_mode ();
@@ -108,7 +122,7 @@ index dddddf1..4efb6c0 100644
 +
          add (panel);
      }
- 
+
      private bool animation_step () {
 -        if (panel_displacement <= panel_height * (-1)) {
 -            return false;
@@ -157,16 +171,16 @@ index dddddf1..4efb6c0 100644
 +            }
 +            panel_displacement--;
          }
- 
+
 -        panel_displacement--;
 -
          update_panel_dimensions ();
- 
+
          return true;
-@@ -91,7 +144,128 @@
- 
+@@ -90,7 +146,128 @@ public class Wingpanel.PanelWindow : Gtk.Window {
+
          Services.BackgroundManager.initialize (this.monitor_number, panel_height);
- 
+
 -        Timeout.add (300 / panel_height, animation_step);
 +        update_autohide_mode ();
 +    }
@@ -283,7 +297,7 @@ index dddddf1..4efb6c0 100644
 +                wnck_screen.viewports_changed.connect (viewports_changed);
 +                break;
 +            default:
-+                this.leave_notify_event.disconnect (hide_panel);
++                this.leave_notify_event.connect (hide_panel);
 +                wnck_screen.active_window_changed.disconnect (active_window_changed);
 +                wnck_screen.active_workspace_changed.disconnect (active_workspace_changed);
 +                wnck_screen.viewports_changed.disconnect (viewports_changed);
@@ -291,13 +305,40 @@ index dddddf1..4efb6c0 100644
 +                break;
 +        }
      }
- 
+
      private void update_panel_dimensions () {
-@@ -111,7 +315,6 @@
- 
+@@ -110,7 +287,6 @@ public class Wingpanel.PanelWindow : Gtk.Window {
+
          this.move (monitor_x, monitor_y - (panel_height + panel_displacement));
- 
+
 -        update_struts ();
      }
- 
+
      private void update_visual () {
+diff --git a/./src/Services/Settings.vala b/../wingpanel-qq/wingpanel-qq/src/Services/Settings.vala
+index 6d8f0f1..e138162 100644
+--- a/./src/Services/Settings.vala
++++ b/../wingpanel-qq/wingpanel-qq/src/Services/Settings.vala
+@@ -23,6 +23,10 @@ namespace Wingpanel.Services {
+
+         public bool use_transparency { get; set; }
+
++        public string autohide { get; set; }
++
++        public int delay { get; set; }
++
+         public PanelSettings () {
+             base ("io.elementary.desktop.wingpanel");
+         }
+diff --git a/./src/meson.build b/../wingpanel-qq/wingpanel-qq/src/meson.build
+index 3703e53..b3b1b39 100644
+--- a/./src/meson.build
++++ b/../wingpanel-qq/wingpanel-qq/src/meson.build
+@@ -16,6 +16,7 @@ wingpanel_files = files(
+ wingpanel_deps = [
+     libwingpanel_dep,
+     granite_dep,
++    libwnck_dep,
+ ]
+
+ executable(meson.project_name(),
