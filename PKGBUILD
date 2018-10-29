@@ -1,8 +1,10 @@
-# Maintainer: Dennis Hamester <dennis.hamester@startmail.com>
+# Maintainer: Jose Riha <jose1711 gmail com>
+# Contributor: Dennis Hamester <dennis.hamester@startmail.com>
+# Contributor: rafasc
 
 _pkgname=vifm
 pkgname=$_pkgname-git
-pkgver=0.8.r300.g018078c
+pkgver=0.10.beta.r2.g02710c4cc
 pkgrel=1
 pkgdesc="Ncurses based file manager with vi like keybindings"
 arch=('i686' 'x86_64')
@@ -19,6 +21,11 @@ sha256sums=('SKIP')
 pkgver() {
     cd "${srcdir}"/$_pkgname
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
+}
+
+prepare() {
+    cd "${srcdir}/${_pkgname}"
+    autoreconf -fiv
 }
 
 build() {
