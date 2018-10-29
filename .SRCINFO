@@ -1,7 +1,7 @@
 pkgbase = qwerty-lafayette
 	pkgdesc = QWERTY keyboard layout for francophone developers
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://qwerty-lafayette.org/
 	arch = any
 	license = WTFPL
