@@ -5,7 +5,7 @@
 pkgname=compton-git
 _gitname=compton
 epoch=2
-pkgver=565_3.rc1.2.g93dd2d9_2018.10.15
+pkgver=585_Next.3.gc0d7f9d_2018.10.29
 pkgrel=1
 pkgdesc="X Compositor (a fork of xcompmgr-dana) (git-version)"
 arch=(i686 x86_64)
@@ -13,7 +13,7 @@ url="https://github.com/yshui/compton"
 license=('MIT' 'MPL2')
 depends=('libgl' 'libev' 'pcre' 'libx11' 'xcb-util-renderutil' 'libxcb' 'xcb-util-image' 'libxext'
          'pixman' 'libconfig' 'libdbus' 'hicolor-icon-theme')
-makedepends=('git' 'asciidoc' 'mesa' 'meson')
+makedepends=('git' 'mesa' 'meson')
 optdepends=('dbus:          To control compton via D-Bus'
             'xorg-xwininfo: For compton-trans'
             'xorg-xprop:    For compton-trans'
