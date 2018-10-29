@@ -1,0 +1,21 @@
+pkgbase = python-fasttext-git
+	pkgdesc = Library for fast text representation and classification – Python bindings
+	pkgver = v0.1.0.r85.g25c3994
+	pkgrel = 1
+	url = https://github.com/facebookresearch/fastText
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	depends = pybind11
+	depends = python-future
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-pytorch
+	provides = python-fasttext
+	conflicts = python-fasttext
+	source = python-fasttext-git::git+https://github.com/facebookresearch/fastText.git
+	md5sums = SKIP
+
+pkgname = python-fasttext-git
+
