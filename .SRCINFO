@@ -1,6 +1,6 @@
 pkgbase = python-bibtexparser-git
 	pkgdesc = Bibtex parser in Python
-	pkgver = 20180829.430d283
+	pkgver = 20181024.f4a2d8b
 	pkgrel = 1
 	url = https://bibtexparser.readthedocs.org/
 	arch = any
