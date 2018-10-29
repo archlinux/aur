@@ -1,7 +1,8 @@
+# Maintainer:  Giovanni 'ItachiSan' Santini <giovannisantini93@yahoo.it>
 # Contributor: Alexander Scharinger
 # Contributor: Gustavo A. Gomez Farhat <gustavo_dot_gomez_dot_farhat at gmail_dot_com>
 pkgname=gecode
-pkgver=6.0.1
+pkgver=6.1.0
 pkgrel=1
 pkgdesc="The Generic Constraint Development Environment"
 arch=('i686' 'x86_64')
@@ -23,7 +24,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/r
 # MD5 sum can not be found anywhere on the webpage.
 # Use the following shell command to generate and update the md5 sum.
 # $ makepkg -g >> PKGBUILD
-sha512sums=('84be35c0bd6ff4814932027adce738aa896e3f53ef6c845664432dcc5fa5b6b53b316b870150c64ed9cb56151cfef8604d0882ee50e1e47d10873ea09d4be82e')
+sha512sums=('40abba7273fbfb09580695cf2edd9c63db32a2a49c705845cec744b69fa5eff85d46d866426095e533f4dfb259e22d5ddcadd46ccbe44a085558ce4ac88b0664')
 
 build() {
   cd "$srcdir/$pkgname-release-$pkgver"

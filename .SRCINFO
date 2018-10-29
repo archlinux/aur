@@ -1,13 +1,13 @@
 pkgbase = gecode
 	pkgdesc = The Generic Constraint Development Environment
-	pkgver = 6.0.1
+	pkgver = 6.1.0
 	pkgrel = 1
 	url = http://www.gecode.org
 	arch = i686
 	arch = x86_64
 	license = MIT
-	source = gecode-6.0.1.tar.gz::https://github.com/gecode/gecode/archive/release-6.0.1.tar.gz
-	sha512sums = 84be35c0bd6ff4814932027adce738aa896e3f53ef6c845664432dcc5fa5b6b53b316b870150c64ed9cb56151cfef8604d0882ee50e1e47d10873ea09d4be82e
+	source = gecode-6.1.0.tar.gz::https://github.com/gecode/gecode/archive/release-6.1.0.tar.gz
+	sha512sums = 40abba7273fbfb09580695cf2edd9c63db32a2a49c705845cec744b69fa5eff85d46d866426095e533f4dfb259e22d5ddcadd46ccbe44a085558ce4ac88b0664
 
 pkgname = gecode
 
