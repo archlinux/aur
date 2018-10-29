@@ -1,20 +1,21 @@
-# Maintainer: Manfred Kern <manfred.kern@gmailcom>
+# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Contributor: Manfred Kern <manfred.kern@gmailcom>
 # Contributor: Joel Sevilleja Febrer Joel7987[at].gmail.com
 
 pkgname=xom
-pkgver=1.2.10
+pkgver=1.2.11
 pkgrel=1
 pkgdesc="A Java XML Object Model"
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://xom.nu"
-license="LGPL"
+license=('LGPL')
 makedepends=('apache-ant')
 depends=('java-runtime')
-conflicts=('')
 source=("http://www.cafeconleche.org/XOM/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('d147822813d905c1ae94879994112d29ddbc07e3dc3b4f77419a4c3695797844')
 
 build() {
-	cd "$srcdir"/XOM
+	cd "${srcdir}"/XOM
 	ant javadoc
 }
 
@@ -29,7 +30,3 @@ package() {
 	cd  ${pkgdir}/usr/share/java/
 	ln -s ${pkgname}/${pkgname}-${pkgver}.jar ${pkgname}.jar
 }
-
-
-md5sums=('bf8dcc53740812c9ad0d3d6eea592994')
-sha256sums=('d8d58d26cba76f6f9e1a65ab537f759f662d1f4441e9a94b6687e23fdb76f879')
