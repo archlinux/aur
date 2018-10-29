@@ -21,7 +21,7 @@ prepare() {
 
 build () {
   cd "$srcdir/$pkgname"
-  cargo2 --version >/dev/null || (
+  cargo --version >/dev/null || (
     echo 'cargo not installed. Please install either "rust" or "rustup" pacman package'
     exit -1
   )
