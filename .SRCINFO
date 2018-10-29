@@ -21,6 +21,7 @@ pkgbase = pulseaudio-modules-bt-git
 	depends = bluez>=5.0
 	depends = bluez-libs>=5.0
 	depends = sbc
+	depends = libfdk-aac
 	optdepends = libavcodec.so>=58-64
 	optdepends = libavutil.so>=56-64
 	optdepends = libldac
