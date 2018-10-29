@@ -1,12 +1,11 @@
 pkgbase = kakoune-git
 	pkgdesc = Code editor heavily inspired by Vim
-	pkgver = r6457.3208bc37
+	pkgver = r6969.6271d0d9
 	pkgrel = 1
 	url = https://github.com/mawww/kakoune
 	arch = x86_64
 	arch = armv7h
 	license = custom:unlicense
-	makedepends = asciidoc
 	makedepends = git
 	depends = ncurses
 	optdepends = clang: add command for C/CPP insert mode completion support
