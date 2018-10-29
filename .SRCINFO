@@ -1,6 +1,6 @@
 pkgbase = vulkan-man-git
-	pkgdesc = Vulkan API specs man pages (custom branch)
-	pkgver = v1.1.89.r1.ge8894a1
+	pkgdesc = Vulkan API specs man pages (unofficial support)
+	pkgver = v1.1.89.r2.g969db8e
 	pkgrel = 1
 	url = https://www.khronos.org/registry/vulkan/#apispecs
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = vulkan-man-git
 	makedepends = asciidoctor>=1.5.8
 	provides = vulkan-man
 	conflicts = vulkan-man
-	source = git+https://github.com/Ryp/Vulkan-Docs.git#branch=feature/manpages
+	source = git+https://github.com/Ryp/Vulkan-Docs.git
 	sha512sums = SKIP
 
 pkgname = vulkan-man-git

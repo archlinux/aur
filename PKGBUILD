@@ -2,16 +2,16 @@
 
 _gitname=Vulkan-Docs
 pkgname=vulkan-man-git
-pkgver=v1.1.89.r1.g87b3354
+pkgver=v1.1.89.r2.g969db8e
 pkgrel=1
-pkgdesc="Vulkan API specs man pages (custom branch)"
+pkgdesc="Vulkan API specs man pages (unofficial support)"
 arch=('any')
 license=('custom')
 url="https://www.khronos.org/registry/vulkan/#apispecs"
 makedepends=('git' 'make' 'asciidoctor>=1.5.8')
 conflicts=('vulkan-man')
 provides=('vulkan-man')
-source=("git+https://github.com/Ryp/${_gitname}.git#branch=feature/manpages")
+source=("git+https://github.com/Ryp/${_gitname}.git")
 sha512sums=('SKIP')
 
 pkgver() {
