@@ -2,7 +2,7 @@
 
 pkgname=qwerty-lafayette
 pkgver=0.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="QWERTY keyboard layout for francophone developers"
 arch=("any")
 url="https://qwerty-lafayette.org/"
@@ -31,9 +31,6 @@ build() {
 package() {
     cd build
 
-    install -d "${pkgdir}"/usr/share/X11/xkb/symbols/
-
-    for i in *; do
-        install -m644 "${i}" "${pkgdir}"/usr/share/X11/xkb/symbols/
-    done
+    install -d  "${pkgdir}"/usr/share/X11/xkb/symbols/
+    install -m644 * "${pkgdir}"/usr/share/X11/xkb/symbols/
 }
