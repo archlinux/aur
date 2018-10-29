@@ -1,30 +1,24 @@
 # Maintainer: Vasia Novikov <n1dr+cmarchlinux@yaaandex.com> (replace "aaa" with "a")
 
 pkgname=rua
-pkgver=0.5.5
+pkgver=0.5.7
 pkgrel=5
 pkgdesc='convenient jailed AUR helper in rust'
 url='https://github.com/vn971/rua'
-source=("git+https://github.com/vn971/rua.git#tag=$pkgver")
+source=("https://github.com/vn971/rua/archive/${pkgver}.tar.gz")
 arch=('x86_64' 'i686')
 license=('GPL3')
 makedepends=('cargo')
 depends=('bubblewrap' 'git')
 
-# gpg --keyserver keys.gnupg.net --recv-keys AEA6FBA1A5CC9777229EADAB63227A540AC1F12B
-validpgpkeys=('AEA6FBA1A5CC9777229EADAB63227A540AC1F12B')
-sha512sums=('SKIP')
-
-prepare() {
-  cd "$srcdir/$pkgname"
-  git verify-commit HEAD
-}
+sha256sums=( 6ac0c3ac7097eb5b22ed24549a5d6ab9dbd4acac2960ef905aaf4fdbea39b6f5 )
 
 build () {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
   cargo build --release
 }
 
 package() {
-  install -Dm755 "${srcdir}/$pkgname/target/release/rua" "${pkgdir}/usr/bin/rua"
+  cd "$srcdir/$pkgname-$pkgver"
+  install -Dm755 "target/release/rua" "${pkgdir}/usr/bin/rua"
 }
