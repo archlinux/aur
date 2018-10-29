@@ -1,9 +1,9 @@
 # Maintainer: languiar <languitar at semipol dot de>
 # Contributor: Brian Bidulock <bidulock@openss7.org>
 pkgname=spread-daemon
-pkgver=4.4.0
-pkgrel=2
-pkgdesc="Spread is an open source toolkit that provides a high performance messaging service - Daemon and C API"
+pkgver=5.0.1
+pkgrel=1
+pkgdesc="An open source high performance messaging service - Daemon and C API"
 url="http://www.spread.org"
 license=('custom')
 depends=(glibc)
@@ -12,7 +12,7 @@ options=(!makeflags)
 arch=('x86_64' 'i686' 'armv6h')
 install=$pkgname.install
 source=("http://www.spread.org/download/spread-src-$pkgver.tar.gz?FILE=spread-src-$pkgver.tar.gz&name=aur&company=archlinux&email=foo@example.org" $pkgname.install spread.service)
-md5sums=('969d315ce857982192bd48441353d944'
+md5sums=('ca2e9da39bdaddb93178d33a52a6b00b'
          '05e01e6f5e775be72608854e6f0d7695'
          '93a08034a2a55644b8c57cd821e3a353')
 
