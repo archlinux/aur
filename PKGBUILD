@@ -1,6 +1,6 @@
 # Maintainer: Joel Noyce Barnham <joelnbarnham@gmail.com>
 pkgname=docker-credential-pass-git
-pkgver=v0.6.1.r5.123ba1b
+pkgver=0.6.1.r5.123ba1b
 pkgrel=1
 pkgdesc="Store docker credentials using the Standard Unix Password Manager (pass)"
 arch=('x86_64')
@@ -19,6 +19,11 @@ install=
 source=("docker-credential-helpers::git+https://${_gourl}#branch=master")
 noextract=()
 md5sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/docker-credential-helpers"
+  printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/^v//')"
+}
 
 prepare() {
   mkdir -p "${srcdir}/src/$(dirname ${_gourl})"
