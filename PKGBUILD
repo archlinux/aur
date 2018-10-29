@@ -1,15 +1,16 @@
-# Maintainer: Vlad M. <vlad@archlinux.net>
+# Maintainer: ebiadsu  <ebiadsu@posteo.de>
+# Contributor: Vlad M. <vlad@archlinux.net>
 # Contributor: Leo von Klenze <leo.vonklenze@tngtech.com>
 
 pkgname=atlassian-plugin-sdk
-pkgver=6.3.10
+pkgver=6.3.12
 pkgrel=1
 pkgdesc="Atlassian plugin software developer kit"
 arch=('i686' 'x86_64')
 url="https://marketplace.atlassian.com/plugins/atlassian-plugin-sdk-tgz"
 license=('Apache License 2.0')
 source=("https://maven.atlassian.com/public/com/atlassian/amps/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('e6ec5c5cc2af85397b352fb15cdc9ae136c058c0f5e8c8757a1b389b88930e64')
+sha256sums=('c0da709fcbcceb315e07d070a327e124a1bf1fc68b83871900cc2fce9c3f77e4')
 depends=('jdk')
 
 package() {
