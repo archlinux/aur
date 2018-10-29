@@ -33,17 +33,17 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-_srcver=4.18.16-arch1
+_srcver=4.19-arch1
 pkgver=${_srcver%-*}
 pkgrel=1
-_pdsversion=099a
+_pdsversion=099b
 arch=(x86_64)
 url="https://cchalpha.blogspot.co.uk/"
 license=(GPL2)
 makedepends=(xmlto kmod inetutils bc libelf git python-sphinx graphviz)
 options=('!strip')
 _srcname=linux-$_srcver
-_psd_patch="v4.18_pds${_pdsversion}.patch"
+_psd_patch="v4.19_pds${_pdsversion}.patch"
 _gcc_more_v='20180509'
 source=(
   "$_srcname.tar.gz::https://git.archlinux.org/linux.git/snapshot/linux-$_srcver.tar.gz"
@@ -52,20 +52,20 @@ source=(
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz" # enable_additional_cpu_optimizations_for_gcc
-  "$_psd_patch::https://gitlab.com/alfredchen/PDS-mq/raw/master/4.18/${_psd_patch}"
+  "$_psd_patch::https://gitlab.com/alfredchen/PDS-mq/raw/master/4.19/${_psd_patch}"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('a173138b72059452a1fe64a2e1d0d60204530d17a193742d37b21e3b71cf352d'
-            '4d5cc5e9898fdcae1d69d4b3bf4757b265eb5bc66113b1d1ef09ac9f674da66c'
+sha256sums=('ca5f2653738a4f1ca330e8a193e9763e6ab847ebd8075c7485cd02bb316cf66e'
+            'dd2af9220472ce0416df97bb4fed7c5276368b33c18ee7fc80b33670942fe7ec'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
-            'd5e75864789fa3c441b732e6573e389c26979cff94abd095f19172649acab04f')
+            '6a9ad5ead0ce035c0d8452308d98bc70c5c2753287d79448a99b13828e674405')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}

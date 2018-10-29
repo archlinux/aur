@@ -1,5 +1,5 @@
 pkgbase = linux-gc
-	pkgver = 4.18.16
+	pkgver = 4.19
 	pkgrel = 1
 	url = https://cchalpha.blogspot.co.uk/
 	arch = x86_64
@@ -13,23 +13,23 @@ pkgbase = linux-gc
 	makedepends = python-sphinx
 	makedepends = graphviz
 	options = !strip
-	source = linux-4.18.16-arch1.tar.gz::https://git.archlinux.org/linux.git/snapshot/linux-4.18.16-arch1.tar.gz
+	source = linux-4.19-arch1.tar.gz::https://git.archlinux.org/linux.git/snapshot/linux-4.19-arch1.tar.gz
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
 	source = linux.preset
 	source = enable_additional_cpu_optimizations-20180509.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20180509.tar.gz
-	source = v4.18_pds099a.patch::https://gitlab.com/alfredchen/PDS-mq/raw/master/4.18/v4.18_pds099a.patch
+	source = v4.19_pds099b.patch::https://gitlab.com/alfredchen/PDS-mq/raw/master/4.19/v4.19_pds099b.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
-	sha256sums = a173138b72059452a1fe64a2e1d0d60204530d17a193742d37b21e3b71cf352d
-	sha256sums = 4d5cc5e9898fdcae1d69d4b3bf4757b265eb5bc66113b1d1ef09ac9f674da66c
+	sha256sums = ca5f2653738a4f1ca330e8a193e9763e6ab847ebd8075c7485cd02bb316cf66e
+	sha256sums = dd2af9220472ce0416df97bb4fed7c5276368b33c18ee7fc80b33670942fe7ec
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = 75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 	sha256sums = 226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d
-	sha256sums = d5e75864789fa3c441b732e6573e389c26979cff94abd095f19172649acab04f
+	sha256sums = 6a9ad5ead0ce035c0d8452308d98bc70c5c2753287d79448a99b13828e674405
 
 pkgname = linux-gc
 	pkgdesc = The Linux-gc kernel and modules with the PDS-mq CPU scheduler
@@ -39,12 +39,12 @@ pkgname = linux-gc
 	depends = kmod
 	depends = mkinitcpio
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux-gc=4.18.16
+	provides = linux-gc=4.19
 	backup = etc/mkinitcpio.d/linux-gc.preset
 
 pkgname = linux-gc-headers
 	pkgdesc = Header files and scripts for building modules for Linux-gc kernel
 	depends = linux-gc
-	provides = linux-gc-headers=4.18.16
-	provides = linux-headers=4.18.16
+	provides = linux-gc-headers=4.19
+	provides = linux-headers=4.19
 
