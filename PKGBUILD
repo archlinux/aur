@@ -1,10 +1,10 @@
-# Maintainer:  Ainola
+# Maintainer: Ainola
 # Contributor: kozec
 
 pkgname=minecraft-technic-launcher
-pkgver=4.360
-pkgrel=4
-pkgdesc='Choose from thousands of community-made Minecraft modpacks available on the Technic Platform.'
+pkgver=4.395
+pkgrel=1
+pkgdesc='Choose from thousands of community-made Minecraft modpacks.'
 arch=('any')
 license=('custom')
 url='http://www.technicpack.net/'
@@ -15,7 +15,7 @@ noextract=('TechnicLauncher.jar')
 source=("$pkgname-$pkgver.jar::http://launcher.technicpack.net/launcher${pkgver:0:1}/${pkgver:2}/TechnicLauncher.jar"
         "technic-launcher"
         "technic-launcher.desktop")
-sha256sums=('869446fa77e9621d0c6d9ec9ee571b79c1e7d63c12b298f58440889ea11e0d43'
+sha256sums=('1f0a847b40f3e935cee0f7f52765b36cae973a8d1994773f978006f5788eba2d'
             '11e5cbc3ae9888865c34bec90ce725532a039aa751aefa61cd4703c9f0460397'
             '221da85f9fb535951e490a3feda052c60839883ae0806d7d587b0c64337f3513')
 
