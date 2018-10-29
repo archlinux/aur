@@ -8,8 +8,6 @@ license=('Apache 2.0')
 url="https://github.com/sergev/dmrconfig.git"
 source=('git+https://github.com/sergev/dmrconfig.git')
 sha256sums=('SKIP')
-depends=('ncurses')
-
 
 pkgver() {
  	cd $srcdir/dmrconfig
