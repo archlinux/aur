@@ -1,14 +1,13 @@
 pkgbase = rua
 	pkgdesc = convenient jailed AUR helper in rust
 	pkgver = 0.5.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vn971/rua
 	arch = x86_64
 	arch = i686
 	license = GPL3
 	depends = bubblewrap
-	optdepends = rust: to build using the "rust" package
-	optdepends = rustup: to build using "rustup" package
+	depends = cargo
 	source = git+https://github.com/vn971/rua.git#tag=0.5.5
 	validpgpkeys = AEA6FBA1A5CC9777229EADAB63227A540AC1F12B
 	sha512sums = SKIP
