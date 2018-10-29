@@ -2,13 +2,13 @@
 # Contributor: somepaulo <burafino AT gmail DOT com>
 
 _extname='desktop-icons'
-_uuid="org.gnome.${_extname}"
+_uuid="${_extname}@csoriano"
 pkgname="gnome-shell-extension-${_extname}"
 pkgver='r221.089d5fc'
 pkgrel=1
 pkgdesc='Add icons to the desktop'
 arch=('x86_64' 'i686')
-url="https://gitlab.gnome.org/World/ShellExtensions/desktop-icons"
+url="https://extensions.gnome.org/extension/1465/${_extname}/"
 license=('GPL3')
 depends=('gnome-shell')
 makedepends=('git')
