@@ -1,8 +1,9 @@
-# Maintainer: Brendan Van Hook <brendan at vastactive dot com>
+# Maintainer: Jordan Day < jordanday444 at gmail dot com >
+# Contributer: Brendan Van Hook <brendan at vastactive dot com>
 
 pkgname=tarsnap-gui
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform GUI for the Tarsnap backup service."
 arch=(i686 x86_64)
 url="https://github.com/Tarsnap/tarsnap-gui"
