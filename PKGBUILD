@@ -1,32 +1,38 @@
-# Maintainer: stef204 <stef204 AT [*] (where[*]=yandex DOT com)>
+# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
+# Contributor: stef204 <stef204@yandex.com>
 
 pkgname=ptask
-pkgver=0.0.9
-pkgrel=3
-pkgdesc="A GTK+ graphical user interface for managing tasks in taskwarrior"
-arch=('i686' 'x86_64')
-url="http://wpitchoune.net/ptask"
+pkgver=1.0.0
+pkgrel=1
+_taskver=2.5.1
+pkgdesc='GTK+ task managing application'
+arch=('x86_64')
+url='https://wpitchoune.net/ptask'
 license=('GPL2')
-depends=('task' 'json-c' 'gtk3' 'hicolor-icon-theme')
-optdepends=('asciidoc: required to generate html version of NEWS and README'
-	 'help2man: required to regenerate manpages automatically')
-install=$pkgname.install
-source=("http://wpitchoune.net/ptask/files/$pkgname-$pkgver.tar.gz" "task-2.4.1-1.patch")
-sha256sums=('24df60301bd7e94ab56187f8fcd11e64c6589a72b95970ff880069ca200fc9e8'
-            '80ec8f7e11fff4de6ce69160dccc588ec2f5244ed30632c32f8fe8a1a93050a0')
+depends=('gtk3' 'json-c' "task=$_taskver")
+makedepends=('addinclude')
+optdepends=('asciidoc: for generating the HTML version of NEWS and README'
+            'help2man: for regenerate manpages automatically')
+source=("https://wpitchoune.net/ptask/files/$pkgname-$pkgver.tar.gz")
+sha256sums=('b8cde0f7994bd91410a13284188c865e255621bcfd23f6051f7b25b14eced18e')
 
 prepare() {
-	cd "$srcdir/$pkgname-$pkgver"
-	patch -p2 < $srcdir/task-2.4.1-1.patch
+  cd "$pkgname-$pkgver/src"
+
+  echo -e '#pragma once\n#define is_error(ptr) (ptr == NULL)' > is_error.h
+  addinclude tw.c is_error
+  sed -i "s,2.0.0,$_taskver," tw.c
 }
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
-	./configure --prefix=/usr  --sysconfdir=/usr/share
-	make
+  cd "$pkgname-$pkgver"
+
+  ./configure --prefix=/usr --sysconfdir=/usr/share
+  make
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
-	make DESTDIR="$pkgdir" install
+  make -C "$pkgname-$pkgver" DESTDIR="$pkgdir" install
 }
+
+# vim: et ts=2 sw=2:
