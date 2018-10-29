@@ -10,12 +10,11 @@ url="https://github.com/kevinlekiller/amdctl"
 license=('GPLv3')
 depends=()
 source=(https://github.com/kevinlekiller/amdctl/archive/master.zip)
-md5sums=(5835a8e17c08f631be67c5fda7c44e0b)
+md5sums=(ce5bae2c22fb8c9f0ac6b45401af20ff)
 
 build() 
 	{
 	cd "${srcdir}"/amdctl-master
-	rm amdctl
 	make
 	}
 
