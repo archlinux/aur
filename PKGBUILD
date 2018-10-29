@@ -26,7 +26,7 @@ build() {
 	cd "$pkgname"
 	autoreconf --install
 	./configure --prefix=/usr \
-	            --sysconf=/etc \
+	            --sysconfdir=/etc \
 	            --enable-aac
 	make
 }
