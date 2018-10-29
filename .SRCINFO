@@ -1,14 +1,12 @@
 pkgbase = up
 	pkgdesc = Ultimate Plumber is a tool for writing Linux pipes with instant live preview
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/akavel/up
 	arch = any
 	license = Apache
 	provides = up
-	conflicts = up-git
-	conflicts = up-bin
-	source = https://github.com/akavel/up/archive/v0.3.tar.gz
+	source = up-0.3.tar.gz::https://github.com/akavel/up/archive/v0.3.tar.gz
 	md5sums = 612b7d1271120238a79a0c1e355c6aba
 
 pkgname = up

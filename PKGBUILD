@@ -1,18 +1,16 @@
 # Mainintainer : Lucas Rooyakkers <lucas dot rooyakkers at pm dot me>
 pkgname=up
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 license=('Apache')
 pkgdesc="Ultimate Plumber is a tool for writing Linux pipes with instant live preview"
 url="https://github.com/akavel/up"
 arch=('any')
 provides=('up')
-conflicts=('up-git' 'up-bin')
-source=("${url}/archive/v${pkgver}.tar.gz")
+source=("up-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 md5sums=('612b7d1271120238a79a0c1e355c6aba')
 
 build() {
-  tar -xzvf "v${pkgver}.tar.gz"
   cd "up-${pkgver}"
   go build
 }
