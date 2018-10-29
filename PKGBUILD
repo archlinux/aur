@@ -1,8 +1,8 @@
 # Maintainer: Cody Schafer <aur at codyps.com>
 
 _pkgbase=theft
-pkgname=${_pkgbase}-git
-pkgver=0.4.3.r25.g0619c2a
+pkgname=theft-git
+pkgver=0.4.4.r0.ge2e46b4
 pkgrel=1
 pkgdesc="property-based testing for C"
 arch=('i686' 'x86_64')
@@ -10,13 +10,13 @@ url="https://github.com/silentbicycle/theft"
 license=('ISC')
 depends=()
 makedepends=('git')
-provides=($_pkgbase)
-conflicts=($_pkgbase)
+provides=(theft)
+conflicts=(theft)
 
 source=(
-  "$pkgname::git+https://github.com/silentbicycle/theft.git#branch=develop"
-  "file://0001-make-support-DESTDIR-setting-for-packaging.patch"
+  "$pkgname::git+https://github.com/silentbicycle/theft.git"
   "file://0001-make-set-permisions.patch"
+  "file://0001-rework-Makefile-to-allow-overriding-CFLAGS-when-pack.patch"
 )
 md5sums=('SKIP' 'SKIP' 'SKIP')
 sha1sums=('SKIP' 'SKIP' 'SKIP')
@@ -28,8 +28,8 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/${pkgname}"
-  patch -Np1 <"$srcdir/0001-make-support-DESTDIR-setting-for-packaging.patch"
   patch -Np1 <"$srcdir/0001-make-set-permisions.patch"
+  patch -Np1 <"$srcdir/0001-rework-Makefile-to-allow-overriding-CFLAGS-when-pack.patch"
 }
 
 build() {
