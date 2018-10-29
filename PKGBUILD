@@ -1,7 +1,7 @@
 # Maintainer: Bandie <bandie@chaospott.de>
 
 pkgname=pam_panic
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="A PAM module that protects sensitive data and provides a panic function for emergency situations. Authentication through passwords or removable media."
 arch=('any')
@@ -13,10 +13,13 @@ checkdepends=('bcunit-cunit-compat')
 validpgpkeys=('E2D7876915312785DC086BFCC1E133BC65A822DD')
 source=(
   "https://github.com/pampanic/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz"
-  "https://github.com/pampanic/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
+  "https://github.com/pampanic/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz.asc"
+)
 sha512sums=(
-  '364bff98b2dc515dc2ef315ea2a2718373080a40772f8e4005bf400988a6493f3c166aebdda9cd7eb8ac08a5888e07c1d8a3148a8083076823b388d01ab8b1d4'
-  'a2a8bc3f02df00894caa38fb31c132b0c5494818e2dfd03f2c75803173999267269285ba6d82d4ff8ed044ac63a31f88fd42142871e1ca996550d1efca4bc05c')
+  '2fed7e4377be1c787445c20fa857ac4d87625bec034dfcdc07f759723959ab48afe928c37835fb64eac343d0157e4dc7793f709635257e03e75d389535c15229'
+  'ef15b0a9b213abe695b7f28d471c3a011953a89f2e3134feb0ac82b0151a411f959c91532cfa73167ba6d4d1a7a7b0bb5a13309c2059b413f567f4b77ec7c6d8'
+)
+
 build() {
   cd $pkgname-$pkgver
   autoreconf -i
