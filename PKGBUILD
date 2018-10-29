@@ -1,7 +1,7 @@
 # Maintainer: Chris Down <chris@chrisdown.name>
 
 pkgname=xbanish
-pkgver=1.5
+pkgver=1.6
 pkgrel=1
 pkgdesc='Hide the mouse cursor when typing'
 url='https://github.com/jcs/xbanish'
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('libxfixes' 'libxi')
 
 source=("https://github.com/jcs/xbanish/archive/v${pkgver}.zip")
-md5sums=('5a9fba99450e0d9770e3bd0305c0b270')
+md5sums=('7b6b07a71f28b19087e252db90b5990d')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -21,5 +21,5 @@ package() {
     cd "$srcdir/$pkgname-$pkgver"
     install -Dm755 xbanish "$pkgdir/usr/bin/xbanish"
     install -Dm644 xbanish.1 "$pkgdir/usr/share/man/man1/xbanish.1"
-    install -Dm644 README "$pkgdir/usr/share/doc/$pkgname/README"
+    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
