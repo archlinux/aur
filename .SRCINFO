@@ -1,7 +1,7 @@
 pkgbase = turtlecoin-bin
-    pkgdesc = Turtlecoin simplewallet and miner
+    pkgdesc = TurtleCoin daemon, CLI wallet, RPC interface, and solo miner
     pkgver = v0.8.4
-    pkgrel = 2
+    pkgrel = 3
     url = https://turtlecoin.lol
     install = turtlecoin-bin.install
     arch = x86_64

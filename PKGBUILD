@@ -1,7 +1,7 @@
 pkgname=turtlecoin-bin
 pkgver=v0.8.4
-pkgrel=2
-pkgdesc="Turtlecoin daemon, CLI wallet, RPC interface, and solo miner"
+pkgrel=3
+pkgdesc="TurtleCoin daemon, CLI wallet, RPC interface, and solo miner"
 arch=('x86_64')
 url="https://turtlecoin.lol"
 license=('LGPLv3')
