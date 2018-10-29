@@ -1,0 +1,45 @@
+From 5d9cfe38465ae99b510eeff0e5145cac3b11cba2 Mon Sep 17 00:00:00 2001
+From: Cody Schafer <cody@berkshiregrey.com>
+Date: Mon, 29 Oct 2018 16:05:51 -0400
+Subject: [PATCH] rework Makefile to allow overriding CFLAGS when packaging
+
+---
+ Makefile | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 6adc84f..355f5d6 100644
+--- a/Makefile
++++ b/Makefile
+@@ -14,8 +14,8 @@ OPTIMIZE = 	-O3
+ WARN = 		-Wall -Wextra -pedantic
+ CDEFS +=	-D_POSIX_C_SOURCE=199309L -D_C99_SOURCE
+ CINCS += 	-I${INC} -I${VENDOR} -I${BUILD}
+-CFLAGS += 	-std=c99 -g ${WARN} ${CDEFS} ${OPTIMIZE} ${CINCS}
+-CFLAGS +=	-fPIC
++CFLAGS ?=	-g ${WARN} ${OPTIMIZE}
++PKG_CFLAGS =	-std=c99 -fPIC ${CINCS} ${CDEFS} ${CFLAGS}
+ 
+ # Note: -lm is only needed if using built-in floating point generators
+ LDFLAGS +=	-lm
+@@ -23,7 +23,7 @@ LDFLAGS +=	-lm
+ all: ${BUILD}/lib${PROJECT}.a
+ all: ${BUILD}/test_${PROJECT}
+ 
+-TEST_CFLAGS += 	${CFLAGS} -I${SRC}
++TEST_CFLAGS += 	${PKG_CFLAGS} -I${SRC}
+ TEST_LDFLAGS +=	${LDFLAGS}
+ 
+ OBJS= 		${BUILD}/theft.o \
+@@ -74,7 +74,7 @@ ${BUILD}/test_${PROJECT}: ${OBJS} ${TEST_OBJS}
+ 	${CC} -o $@ ${OBJS} ${TEST_OBJS} ${TEST_CFLAGS} ${TEST_LDFLAGS}
+ 
+ ${BUILD}/%.o: ${SRC}/%.c ${SRC}/*.h ${INC}/* | ${BUILD}
+-	${CC} -c -o $@ ${CFLAGS} $<
++	${CC} -c -o $@ ${PKG_CFLAGS} $<
+ 
+ ${BUILD}/%.o: ${TEST}/%.c ${SRC}/*.h ${INC}/* | ${BUILD}
+ 	${CC} -c -o $@ ${TEST_CFLAGS} $<
+-- 
+2.19.1
+
