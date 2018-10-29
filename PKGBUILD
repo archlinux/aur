@@ -3,9 +3,9 @@
 pkgname=dive-git
 pkgver=v0.0.8.r2.ge7a05d4
 _pkgname=dive
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for exploring each layer in a docker image"
-url="https://github.com/pocke/dive"
+url="https://github.com/wagoodman/dive"
 arch=('x86_64' 'i686')
 license=('MIT')
 makedepends=('go')
