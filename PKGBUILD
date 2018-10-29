@@ -6,6 +6,7 @@ pkgdesc="Dynamically edit AMD Ryzen processor P-States"
 url="https://github.com/r4m0n/${_gitname}"
 license=(MIT)
 depends=(python)
+makedepends=(git)
 arch=(any)
 source=("git+https://github.com/r4m0n/${_gitname}.git")
 
