@@ -1,8 +1,7 @@
 # Maintainer Pol Marcet Sardà <polmarcetsarda@gmail.com>
-# Contributor: Reotip Sakuraga <reotipfur@gmail.com>
 
 pkgname=doomseeker
-pkgver=r2212.3e1cbeb2dba8
+pkgver=r2338.ae7c4d5e7e5b
 pkgrel=1
 epoch=1
 pkgdesc="A cross-platform Doom server browser"
@@ -18,9 +17,12 @@ optdepends=('qt4: A cross-platform application and UI framework'
             'chocolate-doom: Doom source port accurately reproducing the original DOS versions of Doom'
             'srb2: A 3D Sonic fan game based off of Doom Legacy (aka "Sonic Robo Blast 2")')
 
-source=("hg+https://bitbucket.org/Doomseeker/doomseeker#revision=3e1cbeb")
+# 1.2 Release
+source=("hg+https://bitbucket.org/Doomseeker/doomseeker#tag=1.2"
+        "hg+https://bitbucket.org/Doomseeker/doomseeker-blobs#revision=450d81d")
 
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver() {
   cd "$pkgname"
@@ -34,16 +36,21 @@ pkgver() {
 #}
 
 build() {
+    cd "$srcdir/$pkgname-blobs"
+    python3 geolite2_conv.py geo/GeoLite2-Country-Blocks-IPv4.csv geo/GeoLite2-Country-Locations-en.csv "$srcdir/$pkgname/src/core/IpToCountry.dat"
     cd "$srcdir/$pkgname"
     mkdir -p build
     cd build
-    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr ..
+    cmake   -DCMAKE_BUILD_TYPE=Release                              \
+            -DCMAKE_INSTALL_PREFIX=/usr                             \
+            -DDOOMSEEKER_IP2C_DAT:FILEPATH="IpToCountry.dat"        \
+            ..
     make
 }
 
 package() {
     cd "$srcdir/$pkgname/build/"
     make DESTDIR=$pkgdir install
-    # lib64 is a symlink. We have to move stuff to lib
+    # lib64 is a symlink of lib. We have to move stuff to lib
     mv $pkgdir/usr/lib64 $pkgdir/usr/lib
 }
