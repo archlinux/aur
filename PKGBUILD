@@ -1,28 +1,22 @@
-# Maintainer: Amin Bandali <amin@aminb.org>
+# Maintainer: Amin Bandali <bandali@gnu.org>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=otf-alegreya
-pkgver=2.002
+pkgver=2.008
 pkgrel=1
-pkgdesc="Alegreya fonts"
+pkgdesc='Serif family, part of the Alegreya "super family"'
 arch=('any')
-depends=('fontconfig' 'xorg-font-utils')
-url='http://www.fontsquirrel.com/fonts/alegreya'
-source=("git+https://github.com/huertatipografica/Alegreya")
-md5sums=('SKIP')
+depends=('fontconfig')
+url='https://www.huertatipografica.com/en/fonts/alegreya-ht-pro'
+source=("https://github.com/huertatipografica/Alegreya/archive/v${pkgver}.tar.gz")
+sha256sums=('44dacbe3c4b60c203b1d60f0a55ebf6c139823f83fd234f9b078ece7cb15676e')
 conflicts=('otf-google-fonts-hg')
-install=$pkgname.install
 license=('custom:OFL')
 
 package() {
-  install -d "$pkgdir/usr/share/fonts/OTF"
-  install -d "$pkgdir/usr/share/fonts/TTF"
-  cp -dpr --no-preserve=ownership "$srcdir"/Alegreya/fonts/otf/*.otf \
-     "$pkgdir/usr/share/fonts/OTF/"
-  cp -dpr --no-preserve=ownership "$srcdir"/Alegreya/fonts/ttf*/*.ttf \
-     "$pkgdir/usr/share/fonts/TTF/"
-  install -Dm644 "$srcdir/Alegreya/LICENSE.md" \
-	  "$pkgdir/usr/share/licenses/$pkgname/SIL_Open_Font_License.md"
-  install -Dm644 "$srcdir/Alegreya/README.md" \
-	  "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -m644 -Dt "${pkgdir}/usr/share/fonts/OTF/" \
+    "${srcdir}"/Alegreya-${pkgver}/fonts/otf/*.otf
+  install -Dm644 \
+    "${srcdir}/Alegreya-${pkgver}/OFL.txt" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/OFL.txt"
 }

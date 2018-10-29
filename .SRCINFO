@@ -1,16 +1,14 @@
 pkgbase = otf-alegreya
-	pkgdesc = Alegreya fonts
-	pkgver = 2.002
+	pkgdesc = Serif family, part of the Alegreya "super family"
+	pkgver = 2.008
 	pkgrel = 1
-	url = http://www.fontsquirrel.com/fonts/alegreya
-	install = otf-alegreya.install
+	url = https://www.huertatipografica.com/en/fonts/alegreya-ht-pro
 	arch = any
 	license = custom:OFL
 	depends = fontconfig
-	depends = xorg-font-utils
 	conflicts = otf-google-fonts-hg
-	source = git+https://github.com/huertatipografica/Alegreya
-	md5sums = SKIP
+	source = https://github.com/huertatipografica/Alegreya/archive/v2.008.tar.gz
+	sha256sums = 44dacbe3c4b60c203b1d60f0a55ebf6c139823f83fd234f9b078ece7cb15676e
 
 pkgname = otf-alegreya
 
