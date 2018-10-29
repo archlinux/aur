@@ -1,21 +1,20 @@
 pkgbase = theft
 	pkgdesc = property-based testing for C
-	pkgver = 0.4.3
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://github.com/silentbicycle/theft
 	arch = i686
 	arch = x86_64
 	license = ISC
-	makedepends = git
-	source = theft-0.4.3.tar.gz::https://github.com/silentbicycle/theft/archive/v0.4.3.tar.gz
-	source = file://0001-make-support-DESTDIR-setting-for-packaging.patch
+	source = theft-0.4.4.tar.gz::https://github.com/silentbicycle/theft/archive/v0.4.4.tar.gz
 	source = file://0001-make-set-permisions.patch
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	sha1sums = SKIP
-	sha1sums = SKIP
-	sha1sums = SKIP
+	source = file://0001-rework-Makefile-to-allow-overriding-CFLAGS-when-pack.patch
+	md5sums = 57da78694b1330bd8b1a7f0c938c3427
+	md5sums = c61ffb9686c82cd91614aaa39f960707
+	md5sums = b448670299f8a8f4a7ae72f451d67f92
+	sha1sums = 8d633b82cb648dda648b762ad61f2d654020733d
+	sha1sums = 0bfeee432e5ce68ae277d1a9dafbdca9c8c1d294
+	sha1sums = 2cf316b13cd74e47857a0a6ad2574aab966d3de2
 
 pkgname = theft
 
