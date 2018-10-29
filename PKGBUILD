@@ -1,7 +1,7 @@
 # Maintainer: Jeremy Tregunna <jeremy@metismachine.com>
 # Maintainer: Wess Cope <wess@metismachine.com>
 pkgname=skafos
-pkgver=1.7.1
+pkgver=1.7.6
 pkgrel=1
 pkgdesc="Command line utility to the Metis Machine platform"
 arch=(x86_64)
@@ -11,9 +11,9 @@ depends=('yaml-cpp>=0.6.0' 'libarchive>=3.3.2' 'libgit2>=1:0.26.0' 'curl>=7.0.0'
 makedepends=('cmake>=3.0')
 install=skafos.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/MetisMachine/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('993dbe19066204c006a59f6649124e45')
-sha1sums=('3b0a3dec7200da543daa2b90c1e61734d0cb0269')
-sha256sums=('d693649c1a433f129e30bbe125e0de239d7f4090e717d9b286dad127598ec6a0')
+md5sums=('69229ff8559061adcea98dfc265c152a')
+sha1sums=('bcf0696da4df1d820ed14fe6276c786961e223f4')
+sha256sums=('c82ffdca0a7317f4f47947ed894a1fd0e54f333e09cebab7158e545aef766b5e')
 validpgpkeys=()
 
 build() {
