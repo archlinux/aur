@@ -2,7 +2,7 @@
 
 pkgname=('conan')
 pkgver=1.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A distributed, open source, C/C++ package manager."
 arch=('any')
 url="https://conan.io"
@@ -20,7 +20,7 @@ depends=('python-pyjwt>=1.4.0'
          'python-distro>=1.0.2'
          'python-pluginbase>=0.5'
          'python-pylint>=1.9.3'
-         'python-future=0.16.0'
+         'python-future>=0.16.0'
          'python-pygments>=2.0'
          'python-astroid>=1.6.5'
          'python-deprecation>=2.0'
@@ -46,4 +46,4 @@ package() {
   install -m644 contributors.txt "${pkgdir}/usr/share/doc/conan/"
 }
 md5sums=('900effdc66b726968fd085aabec76c8c'
-         'f7df91609258809e46c2f93e3dda9f51')
+         '3b68dd4d67ca77dab5bcab48756e0589')
