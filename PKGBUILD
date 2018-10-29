@@ -3,7 +3,7 @@
 # Release notes: https://support.google.com/webdesigner/topic/6350071?hl=en&ref_topic=3249465
 
 pkgname=google-webdesigner
-pkgver=4.1.0.0711
+pkgver=4.2.0.0802
 pkgrel=1
 pkgdesc="Create engaging, interactive HTML5-based designs and motion graphics that can run on any device."
 arch=('x86_64')
