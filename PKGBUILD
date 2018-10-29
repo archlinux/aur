@@ -2,7 +2,7 @@
 
 pkgbase='python-cas'
 pkgname=('python-cas' 'python2-cas')
-pkgver='1.3.0'
+pkgver='1.4.0'
 pkgrel=1
 pkgdesc='Python utilities to implement CAS protocol (Central Authentication Service)'
 arch=('any')
@@ -10,7 +10,7 @@ url='https://github.com/python-cas/python-cas'
 license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://github.com/python-cas/python-cas/archive/v$pkgver.tar.gz")
-sha256sums=('4572716414df026df0827627b3b1bc7816508df59d3059fb9e67ada751ae50db')
+sha256sums=('f7073688804975c06dbffb41faf054da7e472b62b843ac1a6c9135797c446ccf')
 
 package_python-cas() {
     depends=(
