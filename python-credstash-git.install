@@ -1,0 +1,5 @@
+post_upgrade() {
+  echo "Please read the documentation at https://github.com/fugue/credstash for installation details."
+}
+
+# vim:set ts=2 sw=2 et:
