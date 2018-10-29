@@ -5,19 +5,16 @@
 # Contributor: damir <damir@archlinux.org>
 
 pkgname=amarok
-pkgver=2.9.0.r251.5d463f47d1
-_commit=5d463f47d149391a2303215222105d89528a571a
+pkgver=2.9.0.r255.1049bef088
+_commit=1049bef08812190c4fd0686da664d4b8ba529589
 pkgrel=1
 pkgdesc="The powerful music player for KDE"
 arch=(x86_64)
 url="http://amarok.kde.org/"
 license=("GPL2" "LGPL2.1" "FDL")
-depends=("kcmutils" "kdnssd" "kirigami2" "knewstuff" "ktexteditor" "liblastfm-qt5" "libofa" "mariadb" "qt5-webengine" "taglib-extras" "threadweaver")
+depends=("kcmutils" "kdnssd" "kirigami2" "knewstuff" "ktexteditor" "libgpod" "liblastfm-qt5" "libmtp" "libmygpo-qt5" "libofa" "mariadb" "phonon-qt5" "qt5-webengine" "taglib-extras" "threadweaver")
 makedepends=("extra-cmake-modules" "gdk-pixbuf2" "git" "knotifyconfig" "libgpod" "libmtp" "libmygpo-qt5" "loudmouth")
 optdepends=("ifuse: support for Apple iPod Touch and iPhone"
-            "libgpod: support for Apple iPod audio devices"
-            "libmtp: support for portable media devices"
-            "libmygpo-qt5: gpodder.net Internet Service"
             "loudmouth: backend needed by mp3tunes for syncing")
 #source=("http://download.kde.org/stable/$pkgname/$pkgver/src/$pkgname-$pkgver.tar.xz"{,.sig})
 source=("git://git.kde.org/amarok.git#commit=$_commit")
