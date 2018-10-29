@@ -14,6 +14,8 @@ You can use an AUR wrapper like [yay](https://aur.archlinux.org/packages/yay/):
 yay -S joplin
 ```
 
+[Check the current AUR version here.](https://aur.archlinux.org/packages/joplin/)
+
 ## Building
 
 Build with makepkg
