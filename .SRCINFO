@@ -1,7 +1,7 @@
 pkgbase = xiphos
 	pkgdesc = Bible study tool for GTK+
 	pkgver = 4.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://xiphos.org/
 	arch = i686
 	arch = x86_64
@@ -17,6 +17,7 @@ pkgbase = xiphos
 	depends = libgsf
 	depends = gtkhtml4
 	depends = biblesync<=2.0.0
+	depends = enchant1.6
 	depends = gconf
 	provides = gnomesword
 	conflicts = gnomesword
