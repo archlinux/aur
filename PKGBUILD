@@ -11,7 +11,7 @@ epoch=
 pkgdesc="Books Organizer, an organizer for pdf files based on sqlite and with a built-in reader. Bring your favorite PDF pages all in one! Make your own extract 
 pages from existing ones"
 arch=( 'x86_64')
-url="https://sourceforge.net/p/booksorg"
+url="http://elkirtasse.sourceforge.net"
 license=('GPL3')
 groups=()
 depends=('qt5-svg' 'poppler-qt5')
