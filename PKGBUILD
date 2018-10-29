@@ -2,7 +2,7 @@
 
 pkgname=qwerty-lafayette
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="QWERTY keyboard layout for francophone developers"
 arch=("any")
 url="https://qwerty-lafayette.org/"
@@ -18,9 +18,11 @@ sha256sums=(
     eec99e7ee9621a3d9934c8c4753741c23e187888bd60c16d6a7f08475d725248
 )
 
-build() {
+prepare() {
     patch --follow-symlinks -p1 < 0001-only-generate-xorg-symbols.patch
+}
 
+build() {
     mkdir build && cd build
 
     python ../lafayette_linux_v"${pkgver}".py
@@ -29,7 +31,7 @@ build() {
 package() {
     cd build
 
-    mkdir -p "${pkgdir}"/usr/share/X11/xkb/symbols/
+    install -d "${pkgdir}"/usr/share/X11/xkb/symbols/
 
     for i in *; do
         install -m644 "${i}" "${pkgdir}"/usr/share/X11/xkb/symbols/
