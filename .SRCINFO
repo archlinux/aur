@@ -1,0 +1,23 @@
+pkgbase = gog-xenonauts
+	pkgdesc = Xenonauts - GOG Version
+	pkgver = 1.65
+	pkgrel = 1
+	url = https://www.gog.com/game/xenonauts
+	arch = i686
+	arch = x86_64
+	groups = games
+	groups = gog
+	license = custom
+	depends = alsa-plugins
+	depends = alsa-utils
+	depends = sdl2
+	depends = mesa
+	depends = lib32-libglvnd
+	depends = lib32-gtk2
+	source = gog-xenonauts
+	source = gog-xenonauts.desktop
+	sha256sums = 3e76f0b15772d6670adfcd5c8a24de8e1ea8c54f52344e5acae5724e4e502004
+	sha256sums = e75c528f260c3e811cc133776a304c077a6285f29e82d2e227312ae96b484ce2
+
+pkgname = gog-xenonauts
+

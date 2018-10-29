@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Xenonauts
+Comment=Xenonauts - GOG Version
+Exec=gog-xenonauts
+Icon=gog-xenonauts
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;AudioVideo;
+Encoding=UTF-8
