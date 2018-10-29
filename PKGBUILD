@@ -4,16 +4,16 @@
 _gitauthor=axujen
 _gitname=mpdrandom
 pkgname=mpdrandom-git
-pkgver=1.1.r5.geb67e9a
-pkgrel=2
+pkgver=1.1.2.r2.g8565ff8
+pkgrel=1
 pkgdesc="mpd albums randomizing script"
 arch=('any')
 url="https://github.com/$_gitauthor/$_gitname"
 license=('unknown')
-depends=('python' 'python-mpd2')
+depends=('python2' 'python2-mpd2')
 makedepends=('git')
 provides=('mpdrandom')
-source=('git+https://github.com/axujen/mpdrandom' 'mpdrandom.service')
+source=("git+https://github.com/$_gitauthor/$_gitname" 'mpdrandom.service')
 md5sums=('SKIP' '6a7b6b63bb1ce777372deac19f420b2e')
 
 pkgver() {
@@ -23,12 +23,12 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_gitname"
-  python setup.py build
+  python2 setup.py build
 }
 
 package() {
   cd "$srcdir/$_gitname"
-  python setup.py install --prefix="$pkgdir/usr"
+  python2 setup.py install --prefix="$pkgdir/usr"
 
   install -Dm644 "$srcdir/mpdrandom.service" "$pkgdir/usr/lib/systemd/user/mpdrandom.service"
 }
