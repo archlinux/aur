@@ -3,8 +3,8 @@
 
 pkgname=newlisp-devel
 _pkgname=newlisp
-pkgver=10.7.4
-pkgrel=12
+pkgver=10.7.5
+pkgrel=1
 pkgdesc="A LISP like, general purpose scripting language. Ongoing development version."
 url="http://www.newlisp.org"
 license=('GPL3')
@@ -14,8 +14,8 @@ optdepends=('java-environment: for gui server')
 provides=('newlisp')
 conflicts=('newlisp')
 options=('docs' '!makeflags')
-source=("http://www.newlisp.org/downloads/development/${_pkgname}-$pkgver.tgz")
-sha512sums=('1e0186a3de87c4c912986aeed76bb4b6c0f9873ef860f4e79538c9ee70f64e90903d2156ae7ea023e9f382a7618ec559a3e9acdb1dfbd4c42fbd4d236d200624')
+source=("http://www.newlisp.org/downloads/development/inprogress/${_pkgname}-$pkgver.tgz")
+sha512sums=('f0016c7d0803c6b642f563acbdfd6047699169de6f5fb20ea78995018b6df3c40c29e303da5db4f5f413b2f24228b8449cfc1bcc8ffe4c1339e66ef0af56444b')
 
 prepare() {
   cd "$_pkgname-$pkgver"
@@ -30,9 +30,9 @@ build() {
 
 package() {
   cd "$_pkgname-$pkgver"
-  install -d $pkgdir/usr/bin
-  install -d $pkgdir/usr/share/man/man1
-  make bindir=$pkgdir/usr/bin mandir=$pkgdir/usr/share/man \
-       datadir=$pkgdir/usr/share install
-  ln -sf /usr/bin/newlisp-$pkgver $pkgdir/usr/bin/newlisp
+  install -d "$pkgdir"/usr/bin
+  install -d "$pkgdir"/usr/share/man/man1
+  make bindir="$pkgdir"/usr/bin mandir="$pkgdir"/usr/share/man \
+       datadir="$pkgdir"/usr/share install
+  ln -sf /usr/bin/newlisp-$pkgver "$pkgdir"/usr/bin/newlisp
 }
