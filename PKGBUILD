@@ -1,6 +1,6 @@
 # Maintainer: Henri Derycke <nheir.kim@gmail.com>
 pkgname=bluez-alsa-git
-pkgver=v1.3.0.r9.g1427cbd
+pkgver=v1.3.1.r17.gdae0699
 pkgrel=1
 pkgdesc="Bluetooth Audio ALSA Backend"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -26,6 +26,7 @@ build() {
 	cd "$pkgname"
 	autoreconf --install
 	./configure --prefix=/usr \
+	            --sysconf=/etc \
 	            --enable-aac
 	make
 }
