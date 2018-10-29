@@ -1,21 +1,20 @@
 pkgname=qtbitcointrader
-pkgver=1.40.22
-pkgrel=2
+pkgver=1.40.23
+pkgrel=1
 pkgdesc='Secure Multi Trading Client'
 arch=(x86_64)
 url=https://centrabit.com/
 license=(GPL3)
 depends=(qt5-multimedia qt5-script)
-_commit=9162a60e0309bea07eab3608bf47c8a7eebff91c
-source=("QtBitcoinTrader-20181021.tar.gz::https://codeload.github.com/JulyIGHOR/QtBitcoinTrader/tar.gz/$_commit")
-sha256sums=(21212be02b712c60981c5fbb7a84bf0e4b0b3c718354c1469fb78ce2b3f653a2)
+source=("https://downloads.sourceforge.net/bitcointrader/SRC/QtBitcoinTrader-$pkgver.tar.gz")
+sha256sums=(0bd864dde1992e893cedb142233717ea702cfa79350c92681ba8e40fc0192072)
 
 build() {
-  cd QtBitcoinTrader-$_commit/src
+  cd QtBitcoinTrader-$pkgver/src
   qmake QMAKE_CXXFLAGS_RELEASE="$CPPFLAGS $CXXFLAGS" QMAKE_LFLAGS_RELEASE="$LDFLAGS"
   make
 }
 
 package() {
-  make -C QtBitcoinTrader-$_commit/src INSTALL_ROOT="$pkgdir" install
+  make -C QtBitcoinTrader-$pkgver/src INSTALL_ROOT="$pkgdir" install
 }
