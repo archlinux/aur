@@ -1,6 +1,6 @@
 pkgbase = drbd-dkms-git
 	pkgdesc = Kernel module for Distributed Replicated Block Device. (Git)
-	pkgver = 9.0.13
+	pkgver = drbd.9.0.16.1.r0.gab9777df
 	pkgrel = 1
 	arch = x86_64
 	license = GPL2

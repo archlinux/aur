@@ -3,7 +3,7 @@
 _pkgbase="drbd"
 pkgname="drbd-dkms-git"
 pkgdesc="Kernel module for Distributed Replicated Block Device. (Git)"
-pkgver=9.0.13
+pkgver=drbd.9.0.16.1.r0.gab9777df
 pkgrel=1
 license=('GPL2')
 makedepends=("git")
@@ -15,6 +15,11 @@ source=("git+https://github.com/LINBIT/drbd-9.0.git"
 	"dkms.conf")
 sha256sums=("SKIP"
 	"3adc87ee8c331db1520ac92149d1d2c034ac4a269de61ada890e0b5db9594c9d")
+
+pkgver() {
+  cd "$srcdir/drbd-9.0"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
 	cd "${srcdir}/drbd-9.0"
