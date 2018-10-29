@@ -1,11 +1,11 @@
 pkgbase = dmrconfig-git
 	pkgdesc = DMRconfig is a utility for programming digital radios via USB programming cable.
-	pkgver = r22.ac8c3c3
+	pkgver = r134.a4c5f89
 	pkgrel = 1
 	url = https://github.com/sergev/dmrconfig.git
 	arch = x86_64
 	license = Apache 2.0
-	depends = ncurses
+	depends = libusb>=1.0
 	source = git+https://github.com/sergev/dmrconfig.git
 	sha256sums = SKIP
 
