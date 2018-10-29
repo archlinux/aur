@@ -1,0 +1,21 @@
+pkgbase = ideogram-git
+	pkgdesc = Insert emoji anywhere, even in non-native apps. Designed for Pantheon Shell
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/cassidyjames/ideogram
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = gtk3
+	depends = vala
+	depends = granite
+	provides = ideogram
+	conflicts = ideogram
+	source = git+https://github.com/cassidyjames/ideogram.git
+	md5sums = SKIP
+
+pkgname = ideogram-git
+
