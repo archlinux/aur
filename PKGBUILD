@@ -1,4 +1,4 @@
-# Maintainer: e5ten
+# Maintainer: E5ten <e5ten.arch@gmail.com>
 # Maintainer: anna <morganamilo@gmail.com>
 # Contributor: sudokode <sudokode@gmail.com>
 # Contributor: graysky <graysky AT archlinux DOT us>
@@ -12,7 +12,7 @@
 
 pkgname=mpd-git
 _pkgname=mpd
-pkgver=0.20.20.r935.g66a1e8b73
+pkgver=0.20.23.r1494.g901229699
 pkgrel=1
 pkgdesc='Flexible, powerful, server-side application for playing music'
 url='https://www.musicpd.org/'
@@ -21,8 +21,8 @@ arch=('x86_64')
 depends=('libao' 'ffmpeg' 'libmodplug' 'audiofile' 'libshout' 'libmad' 'curl'
 	 'faad2' 'sqlite' 'jack' 'libmms' 'wavpack' 'avahi' 'libid3tag' 'yajl'
 	 'libmpdclient' 'icu' 'libupnp' 'libnfs' 'libsamplerate' 'libsoxr'
-	 'smbclient' 'libgme' 'zziplib' 'libsystemd')
-makedepends=('boost' 'doxygen')
+	 'smbclient' 'libgme' 'zziplib' 'libsystemd' 'openal' 'mpg123')
+makedepends=('boost' 'doxygen' 'meson')
 provides=('mpd')
 conflicts=('mpd')
 source=("$_pkgname::git+https://github.com/MusicPlayerDaemon/MPD"
@@ -37,28 +37,42 @@ sha256sums=('SKIP'
 backup=('etc/mpd.conf')
 
 build() {
-	cd "${_pkgname}"
-	./autogen.sh
-	./configure \
-		--prefix=/usr \
-		--sysconfdir=/etc \
-		--enable-jack \
-		--enable-libmpdclient \
-		--enable-pipe-output \
-		--enable-pulse \
-		--enable-soundcloud \
-		--enable-zzip \
-		--disable-sidplay \
-		--enable-systemd-daemon \
-		--with-systemduserunitdir=/usr/lib/systemd/user \
-		--with-systemdsystemunitdir=/usr/lib/systemd/system \
+	arch-meson ${_pkgname} build \
+		-Djack=enabled \
+		-Ddsd=false \
+		-Dlibmpdclient=enabled \
+		-Dpipe=true \
+		-Dpulse=enabled \
+		-Dqobuz=disabled \
+		-Dsoundcloud=enabled \
+		-Dtidal=disabled \
+		-Dzzip=enabled \
+		-Dsidplay=disabled \
+		-Dlibwrap=disabled \
+		-Droar=disabled \
+		-Dsndio=disabled \
+		-Dchromaprint=disabled \
+		-Dcdio_paranoia=disabled \
+		-Diso9660=disabled \
+		-Dadplug=disabled \
+		-Dfluidsynth=disabled \
+		-Dmikmod=disabled \
+		-Dmpcdec=disabled \
+		-Dwildmidi=disabled \
+		-Dtwolame=disabled \
+		-Dshine=disabled \
+		-Dsystemd=enabled \
+		-Dsystemd_system_unit_dir=/usr/lib/systemd/system \
+		-Dsystemd_user_unit_dir=/usr/lib/systemd/user
 
-	make
+	meson configure build
+
+	ninja -C build
 }
 
 package() {
+	DESTDIR="$pkgdir" meson install -C build
 	cd "${_pkgname}"
-	make DESTDIR="${pkgdir}" install
 	install -Dm644 ../conf "${pkgdir}"/etc/mpd.conf
 	install -Dm644 ../tmpfiles.d "${pkgdir}"/usr/lib/tmpfiles.d/mpd.conf
 	install -Dm644 ../sysusers.d "${pkgdir}"/usr/lib/sysusers.d/mpd.conf
