@@ -4,12 +4,12 @@
 _fontname=EmojiOneColor-SVGinOT
 pkgname=ttf-emojione-color
 pkgver=1.4
-pkgrel=5
+pkgrel=1
 pkgdesc='A color and B&W emoji SVGinOT font built from EmojiOne.'
 arch=('any')
 url='https://github.com/eosrei/emojione-color-font'
 depends=('fontconfig')
-license=('CC-BY-4.0')
+license=('custom:CC-BY-4.0')
 source=("https://github.com/eosrei/emojione-color-font/releases/download/v$pkgver/$_fontname-Linux-$pkgver.tar.gz"
         "64-$pkgname.conf")
 sha256sums=('6dbcf17ff984f7c62e75fce2d07611a8f3381dab834b57750402d4623b31c378'
