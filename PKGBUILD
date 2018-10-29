@@ -3,7 +3,7 @@
 name=polytrim
 _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
 
-pkgname=blender-plugin-${name}-git
+pkgname=blender-plugin-${name}
 pkgver=r173.ce4f36b
 pkgrel=1
 pkgdesc="Blender addon for triming and cutting a mesh over geodesic path."
