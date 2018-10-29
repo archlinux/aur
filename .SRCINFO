@@ -1,0 +1,15 @@
+pkgbase = gpresent
+	pkgdesc = groff presentation macros
+	pkgver = 2.5
+	pkgrel = 1
+	url = https://staff.fnwi.uva.nl/b.diertens/useful/gpresent
+	arch = x86_64
+	license = GPL2
+	depends = groff
+	depends = ghostscript
+	options = !strip
+	source = https://staff.fnwi.uva.nl/b.diertens/useful/gpresent/gpresent-2.5.tar.gz
+	sha256sums = 353ba4cf4ccf7b755217e6dbb68bb08b04a8f9aeadaf1ff01e7bfa293a268ece
+
+pkgname = gpresent
+
