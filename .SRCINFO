@@ -9,6 +9,7 @@ pkgbase = grub-legacy
 	depends = ncurses
 	depends = diffutils
 	depends = sed
+	depends = lib32-glibc
 	optdepends = xfsprogs: freezing of xfs /boot in install-grub script
 	conflicts = grub
 	backup = boot/grub/menu.lst
