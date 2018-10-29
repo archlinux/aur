@@ -1,0 +1,16 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!040_all_grub-0.96-nxstack.patch
+!05-grub-0.97-initrdaddr.diff
+!automake-pkglib.patch
+!ext4.patch
+!grub-0.97-ldflags-objcopy-remove-build-id.patch
+!grub-inode-size.patch
+!i2o.patch
+!install-grub
+!intelmac.patch
+!menu.lst
+!more-raid.patch
+!special-devices.patch
