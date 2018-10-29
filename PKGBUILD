@@ -13,7 +13,7 @@
 pkgname=mpd-git
 _pkgname=mpd
 pkgver=0.20.23.r1494.g901229699
-pkgrel=1
+pkgrel=2
 pkgdesc='Flexible, powerful, server-side application for playing music'
 url='https://www.musicpd.org/'
 license=('GPL')
@@ -64,8 +64,6 @@ build() {
 		-Dsystemd=enabled \
 		-Dsystemd_system_unit_dir=/usr/lib/systemd/system \
 		-Dsystemd_user_unit_dir=/usr/lib/systemd/user
-
-	meson configure build
 
 	ninja -C build
 }
