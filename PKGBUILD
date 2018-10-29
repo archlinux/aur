@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=cilium-git
-pkgver=1.2.2.r1628.g81da0ceed
+pkgver=1.3.0rc5.r113.g3834d0e0a
 pkgrel=1
 pkgdesc="API-aware Networking and Security for Containers based on BPF"
 arch=('x86_64')
@@ -18,8 +18,10 @@ sha256sums=('SKIP'
 pkgver() {
 	cd "${srcdir}/${pkgname}"
 
-	version="$(git tag -l --sort=-v:refname | sed 's/v\([^-]*-g\)/r\1/;s/-/./g' | head -1)"
-	echo "${version#v}.$(git describe --long --tags | sed 's/\([^-]*\)-\(g*\)/r\2/;s/-/./g')"
+	version=$(git tag -l --sort=-v:refname | sed 's/v\([^-].*\)/\1/g' | head -1)
+	release=$(git describe --long --tags | sed 's/\([^-].*\)-\([0-9]*\)-\(g.*\)/r\2.\3/g')
+
+	echo "${version}.${release}" | sed -re 's/-//g' # strip hyphen
 }
 
 build() {
@@ -42,12 +44,14 @@ build() {
 	export PKG_BUILD=1
 
 	make -C daemon apply-bindata
-	make plugins bpf cilium daemon monitor cilium-health bugtool
+	make V=1 proxylib plugins bpf cilium daemon monitor cilium-health bugtool tools
 
 	export CC="/usr/bin/gcc"
 	export CXX="/usr/bin/g++"
 
 	cd envoy
+	make proxylib-hdrs
+
 	bazel clean
 	bazel build //:envoy --action_env=PATH="$PATH"
 }
@@ -62,15 +66,8 @@ package() {
 	install -Dm644 "$srcdir/cilium.sysusers" \
 		"$pkgdir/usr/lib/sysusers.d/cilium.conf"
 
-	install -Dm644 "${srcdir}/${pkgname}/contrib/systemd/cilium.service" \
-		"${pkgdir}/usr/lib/systemd/system/cilium.service"
+	install -m755 -d "${pkgdir}/usr/lib/systemd/system/"
 
-	install -Dm644 "${srcdir}/${pkgname}/contrib/systemd/cilium-consul.service" \
-		"${pkgdir}/usr/lib/systemd/system/cilium-consul.service"
-
-	install -Dm644 "${srcdir}/${pkgname}/contrib/systemd/cilium-docker.service" \
-		"${pkgdir}/usr/lib/systemd/system/cilium-docker.service"
-
-	install -Dm644 "${srcdir}/${pkgname}/contrib/systemd/cilium-etcd.service" \
-		"${pkgdir}/usr/lib/systemd/system/cilium-etcd.service"
+	install -Dm644 "${srcdir}/${pkgname}/contrib/systemd/"*.{service,mount} \
+		"${pkgdir}/usr/lib/systemd/system/"
 }
