@@ -1,0 +1,12 @@
+pkgbase = forticlient
+	pkgdesc = FortiClient
+	pkgver = 6.0.3.0073
+	pkgrel = 1
+	arch = x86_64
+	license = custom
+	provides = forticlient
+	source = https://repo.fortinet.com/repo/ubuntu/pool/multiverse/forticlient/forticlient_6.0.3.0073_amd64.deb
+	sha256sums = f552adb6f7b2c1b3dd01e6b843ccf3fca876d69ad86cf793d08ed8714a8ecdcb
+
+pkgname = forticlient
+
