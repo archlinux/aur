@@ -1,7 +1,7 @@
 pkgbase = zfs-dkms
 	pkgdesc = Kernel modules for the Zettabyte File System.
 	pkgver = 0.7.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zfsonlinux.org/
 	arch = any
 	license = CDDL
@@ -9,6 +9,7 @@ pkgbase = zfs-dkms
 	depends = spl-dkms=0.7.11
 	depends = zfs-utils=0.7.11
 	depends = dkms
+	provides = zfs
 	source = git+https://github.com/zfsonlinux/zfs.git#tag=zfs-0.7.11?signed
 	source = 0001-only-build-the-module-in-dkms.conf.patch
 	validpgpkeys = 4F3BA9AB6D1F8D683DC2DFB56AD860EED4598027
