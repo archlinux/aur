@@ -1,0 +1,9 @@
+[Desktop Entry]
+Terminal=false
+Exec=java -Dawt.useSystemAAFontSettings=on -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -jar /usr/share/tilitin/tilitin.jar $@
+Icon=tilitin
+Type=Application
+Categories=Application;Office;
+StartupNotify=false
+Name=Tilitin
+GenericName=Kirjanpito-ohjelma

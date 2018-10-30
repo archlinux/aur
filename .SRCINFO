@@ -1,0 +1,17 @@
+pkgbase = tilitin
+	pkgdesc = Finnish accounting program
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://helineva.net/tilitin/
+	arch = any
+	license = GPL3
+	makedepends = ant
+	depends = java-environment
+	depends = sqlite-jdbc
+	source = https://helineva.net/tilitin/tilitin-1.5.0-src.zip
+	source = tilitin.desktop
+	md5sums = fe74542c93f72bb2f5fc17b56df541b8
+	md5sums = 237f58ca020a5e57c5eae8e3065bb01b
+
+pkgname = tilitin
+
