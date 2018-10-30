@@ -1,8 +1,8 @@
 # Maintainer: Mike Sampson <mike at sambodata dot com>
 # Contributor: Andrea Benazzo <andy@qitty.net>
 pkgname=cryptmount
-pkgver=5.2.3
-_pkgver=5.2
+pkgver=5.3
+_pkgver=5.3
 pkgrel=1
 pkgdesc="utility which allows an ordinary user to mount an encrypted file system"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=(libgcrypt device-mapper util-linux)
 source=(http://downloads.sourceforge.net/project/cryptmount/cryptmount/cryptmount-$_pkgver/cryptmount-$pkgver.tar.gz)
 backup=('etc/cryptmount/cmtab')
-sha512sums=('43a509a5ac1022bd3e6d8e84f2653b7f631a71675d2f0d8c91d9e03d133498e0235a29712438b866fa10c16aa8c748e6292d711f69ee920a2bfa604c0b1ddb68')
+sha512sums=('7dc53443eb505ac82da4167fa7ee10202ac9def92cd6c64ea7c2577acb5b4c80a04182bc43c980c82223492d69ae74d09283d6b41b4d7d6c490b614253258a7b')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
