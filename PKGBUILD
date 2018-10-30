@@ -14,7 +14,7 @@ arch=("x86_64")
 source=("git+https://github.com/LINBIT/drbd-9.0.git"
 	"dkms.conf")
 sha256sums=("SKIP"
-	"3adc87ee8c331db1520ac92149d1d2c034ac4a269de61ada890e0b5db9594c9d")
+	"1035849ccc4e50b2edd86a5e12d5b79bd8f92cb898d063fdc82c877436d56261")
 
 pkgver() {
   cd "$srcdir/drbd-9.0"
