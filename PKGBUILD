@@ -12,8 +12,8 @@
 
 pkgbase=bcompare
 pkgname=('bcompare' 'bcompare-kde5' 'bcompare-kde4' 'bcompare-nautilus' 'bcompare-thunar' 'bcompare-cinnamon' 'bcompare-mate')
-pkgver=4.2.6.23150
-pkgrel=2
+pkgver=4.2.7.23425
+pkgrel=1
 arch=('i686' 'x86_64')
 url='http://www.scootersoftware.com'
 license=('custom')
@@ -22,8 +22,8 @@ depends=('qt4' 'fontconfig' 'libsm' 'libxcursor' 'libxft' 'libxinerama'  'libxra
 makedepends=('sed')
 source_x86_64=("http://www.scootersoftware.com/${pkgbase}-${pkgver}.x86_64.tar.gz")
 source_i686=("http://www.scootersoftware.com/${pkgbase}-${pkgver}.i386.tar.gz")
-sha256sums_i686=('b00516503c90a78f5f08863f295c9a69d8fea214e68fd4f58e225c45b775377f')
-sha256sums_x86_64=('06653dffdd3a1ec9fb77e522ea3063630f468941d565bb8df8eb842c46a384b9')
+sha256sums_i686=('b7b62b86fd3f77512220dcd1fb45af5fc6b413a4ad2678672c7cf9059335d248')
+sha256sums_x86_64=('f4b6c6a25d1bf2844a0493683932f60c3b60cc11861936071af50d2a420c3d0c')
 options=('!strip') # Do not strip binaries because it breaks them down
 
  prepare() {
@@ -34,9 +34,8 @@ options=('!strip') # Do not strip binaries because it breaks them down
   mkdir -p "${_install_dir}/usr/share/mime/packages"
   mkdir -p "${_install_dir}/usr/share/pixmaps"
 
-  # Set up KDE5 service menus
-  mkdir -p "${_install_dir}/usr/lib/x86_64-linux-gnu/qt5/plugins/"
-  mkdir -p "${_install_dir}/usr/share/kservices5/"
+  # Set up KDE Plasmma 5 service menus
+  mkdir -p "${_install_dir}/usr/lib/x86_64-linux-gnu/qt5/plugins/kf5/kfileitemaction"
 
   # Set up KDE4 service menus
   mkdir -p "${_install_dir}/usr/lib/kde4"
@@ -88,7 +87,6 @@ package_bcompare() {
   sed -i "s|"${_install_dir}"|/usr|g" usr/bin/bcompare
 
   # Remove KDE, Gnome and Xfce files
-  rm -rf "${pkgdir}/usr/share/kservices5"
   rm -rf "${pkgdir}/usr/share/kde4"
   rm -rf "${pkgdir}/usr/lib/x86_64-linux-gnu"
   rm -rf "${pkgdir}/usr/lib/kde4"
@@ -120,15 +118,11 @@ package_bcompare-kde5() {
   pkgdesc="KDE Plasma 5 service menus for Beyond Compare 4"
   depends=('bcompare')
 
-   msg2 "Packaging KDE5 service menus..."
+   msg2 "Packaging KDE Plasma 5 service menus..."
   _install_dir="${srcdir}/install"
   # Set up service menus
   mkdir -p "${pkgdir}/usr/lib"
-  mv "${_install_dir}/usr/lib/x86_64-linux-gnu" "${pkgdir}/usr/lib/"
-
-  find "${_install_dir}/usr/share/kservices5" -type f -exec chmod -x '{}' ';'
-  mkdir -p "${pkgdir}/usr/share"
-  mv "${_install_dir}/usr/share/kservices5" "${pkgdir}/usr/share"
+  mv "${_install_dir}/usr/lib/x86_64-linux-gnu/qt5" "${pkgdir}/usr/lib/qt"
   msg2 "Done!"
 }
 
@@ -138,7 +132,7 @@ package_bcompare-kde4() {
   replaces=('bcompare-kde')
   conflicts=('bcompare-kde')
 
-   msg2 "Packaging KDE4 service menus..."
+   msg2 "Packaging KDE 4 service menus..."
   _install_dir="${srcdir}/install"
   # Set up service menus
   mkdir -p "${pkgdir}/usr/lib"
