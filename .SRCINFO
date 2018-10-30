@@ -1,0 +1,15 @@
+pkgbase = jupyter-notebook-launcher
+	pkgdesc = Choose the directory and the browser in which the notebook is launched in a configurable lists of choices
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/gads31400/Jupyter_notebook_launcher.git
+	arch = any
+	license = GPL3
+	depends = zenity
+	depends = terminator
+	depends = jupyter
+	source = git+https://github.com/gads31400/Jupyter_notebook_launcher.git
+	sha256sums = SKIP
+
+pkgname = jupyter-notebook-launcher
+
