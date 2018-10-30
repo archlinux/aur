@@ -1,0 +1,21 @@
+pkgbase = tracktion-waveform-8
+	pkgdesc = Audio and MIDI Workstation (DAW)
+	pkgver = 8.2.7
+	pkgrel = 2
+	url = https://www.tracktion.com/
+	arch = x86_64
+	license = custom
+	depends = alsa-lib
+	depends = libcurl-compat
+	depends = freetype2
+	depends = libglvnd
+	optdepends = jack: A low-latency audio server
+	optdepends = ladspa-plugins: A set of ladspa plugins
+	conflicts = tracktion-waveform
+	conflicts = waveform-bundle
+	conflicts = tracktion-waveform-beta
+	source = https://cdn.tracktion.com/file/tracktiondownload/waveform/827/Waveform-installer-64bit-linux-8.2.7.deb
+	md5sums = 95bd25b2d5fe551949ddd2ade8eafe0b
+
+pkgname = tracktion-waveform-8
+
