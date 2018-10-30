@@ -1,12 +1,12 @@
 pkgbase = clever-tools-bin-beta
 	pkgdesc = Command Line Interface for Clever Cloud.
-	pkgver = 1.1.0_beta.1
+	pkgver = 1.1.0_beta.2
 	pkgrel = 1
 	url = https://github.com/CleverCloud/clever-tools
 	arch = x86_64
 	license = MIT
 	options = !strip
-	source = clever-tools-1.1.0-beta.1_linux.tar.gz::https://clever-tools.cellar.services.clever-cloud.com/releases/1.1.0-beta.1/clever-tools-1.1.0-beta.1_linux.tar.gz
-	sha256sums = 9ef63f90740bc5e1aa170aab428b20b20c8144b6f50be8413e5122e99c4bcced
+	source = clever-tools-1.1.0-beta.2_linux.tar.gz::https://clever-tools.cellar.services.clever-cloud.com/releases/1.1.0-beta.2/clever-tools-1.1.0-beta.2_linux.tar.gz
+	sha256sums = 3c52e7095c43d87988241c2506962c908cea25d9fa9646b44e0dd8ce128d509a
 
 pkgname = clever-tools-bin-beta
