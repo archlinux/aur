@@ -1,16 +1,16 @@
 pkgname=plasma5-applets-mpdnowplaying
 _pkgname=mpdnowplaying
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="MPD plasmoid for Plasma 5."
 arch=('i686' 'x86_64')
-url="https://www.opendesktop.org/p/999004"
+url="https://sourceforge.net/projects/mpdnowplaying"
 license=('GPL')
 depends=('plasma-framework')
 makedepends=('extra-cmake-modules')
 conflicts=("${pkgname}")
 provides=("${pkgname}")
-source=(https://dl.opendesktop.org/api/files/download/id/1511089109/${_pkgname}-${pkgver}.tar.bz2)
+source=("${_pkgname}-${pkgver}.tar.bz2::https://sourceforge.net/projects/${_pkgname}/files/${_pkgname}-${pkgver}.tar.bz2/download")
 md5sums=('4988eaac0ebceba173b747f1beb736ca')
 
 build() {
