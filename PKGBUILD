@@ -20,13 +20,7 @@ optdepends=('python2-notify'
             'unrar')
 
 conflicts=(${_pkgname}
-           'pymedusa'
-           'sickbeard'
-           'sickchill-git'
-           'sickrage'
-           'sickrage-git'
-           'sickrage2-git'
-           'sickgear-git')
+           'sickchill-git')
 
 options=('!strip')
 install=${pkgname}.install
