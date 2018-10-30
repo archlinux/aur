@@ -4,7 +4,7 @@
 
 set -u
 pkgname='miller'
-pkgver='5.3.0'
+pkgver='5.4.0'
 pkgrel='1'
 pkgdesc='sed, awk, cut, join, and sort for name-indexed data such as CSV and tabular JSON.'
 arch=('x86_64' 'i686')
@@ -12,11 +12,11 @@ url='https://github.com/johnkerl/miller'
 license=('MIT')
 depends=('glibc')
 makedepends=('make' 'gcc' 'flex' 'ctags' 'valgrind' 'asciidoc' 'autoconf')
-_verwatch=("${url}/releases" "${url#*github.com}/archive/v\(.*\)\.tar\.gz" 'l') # RSS not good to use
-_srcdir="${pkgname}-${pkgver}"
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+_verwatch=("${url}/releases" ".*/mlr-\([0-9.]\+\)\.tar\.gz.*" 'f') # mlr RSS is filled with everything but releases
+_srcdir="mlr-${pkgver}"
+source=("${url}/releases/download/${pkgver}/mlr-${pkgver}.tar.gz")
 #source[0]='https://github.com/johnkerl/miller/archive/master.tar.gz'; _srcdir='miller-master'
-sha256sums=('fff276e671adfae4959448a75004b03072e655db21a85c3f807eca95ba701bc1')
+sha256sums=('d9a7ed10a1a5e71082c33d489f77ab9caba6e6c4f9bf0f6c3958201b64974f7e')
 
 prepare() {
   set -u
