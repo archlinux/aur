@@ -1,6 +1,6 @@
 pkgbase = rua
 	pkgdesc = convenient jailed AUR helper in rust
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/vn971/rua
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = rua
 	makedepends = cargo
 	depends = bubblewrap
 	depends = git
-	source = https://github.com/vn971/rua/archive/0.6.1.tar.gz
-	sha256sums = 430bb889e8b8be352a4a206a035de7396fd8eeb766b938c50d3e4b7180189f93
+	source = https://github.com/vn971/rua/archive/0.6.2.tar.gz
+	sha256sums = b232e7b57f5c10ad77d793272764bc363b2d223dfe7e198d81da173fd46d085d
 
 pkgname = rua
 

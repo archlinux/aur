@@ -1,7 +1,7 @@
 # Maintainer: Vasia Novikov <n1dr+cmarchlinux@yaaandex.com> (replace "aaa" with "a")
 
 pkgname=rua
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc='convenient jailed AUR helper in rust'
 url='https://github.com/vn971/rua'
@@ -11,14 +11,19 @@ license=('GPL3')
 makedepends=('cargo')
 depends=('bubblewrap' 'git')
 
-sha256sums=(430bb889e8b8be352a4a206a035de7396fd8eeb766b938c50d3e4b7180189f93)
+sha256sums=(b232e7b57f5c10ad77d793272764bc363b2d223dfe7e198d81da173fd46d085d)
 
 build () {
   cd "$srcdir/$pkgname-$pkgver"
-  cargo build --release
+  mkdir -p target/completions
+  COMPLETIONS_DIR=completions cargo build --release
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  install -Dm755 "target/release/rua" "${pkgdir}/usr/bin/rua"
+  install -Dm755 target/release/rua "${pkgdir}/usr/bin/rua"
+
+  install -Dm644 target/completions/rua.bash /usr/share/bash-completion/completions
+  install -Dm644 target/completions/rua.fish /usr/share/fish/completions
+  install -Dm644 target/completions/_rua /usr/share/zsh/functions/Completion/Linux
 }
