@@ -15,10 +15,9 @@ depends=('bash'
         'pacman-contrib')
 makedepends=('git')
 optdepends=(
-    'aurman: needed for AUR support (first in priority)'
+    'yay: needed for AUR support (first in priority)'
     'trizen: needed for AUR support (second in priority)'
-    'yaourt: needed for AUR support (third in priority)'
-		'pacaur: needed for AUR support (fourth in priority)')
+    'yaourt: needed for AUR support (third in priority)')
 conflicts=()
 source=("git://github.com/cubanpit/$_pkgname")
 md5sums=('SKIP')

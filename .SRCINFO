@@ -11,10 +11,9 @@ pkgbase = cleanupdate-git
 	depends = ncurses
 	depends = sudo
 	depends = pacman-contrib
-	optdepends = aurman: needed for AUR support (first in priority)
+	optdepends = yay: needed for AUR support (first in priority)
 	optdepends = trizen: needed for AUR support (second in priority)
 	optdepends = yaourt: needed for AUR support (third in priority)
-	optdepends = pacaur: needed for AUR support (fourth in priority)
 	source = git://github.com/cubanpit/cleanupdate
 	md5sums = SKIP
 
