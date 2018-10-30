@@ -20,4 +20,5 @@ package() {
     depends+=()
     cd "${srcdir}/${_module}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    chmod -R o+r ${pkgdir}
 }
