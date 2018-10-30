@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 import sys
 
 POETRY_DIR = '/usr/lib/poetry'
