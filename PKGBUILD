@@ -16,7 +16,7 @@ depends=(
 makedepends=('gcc' 'make')
 checkdepends=(python2)
 source=(https://github.com/facebook/rocksdb/archive/v$pkgver.zip)
-sha256sums=('b30bcc74047068e80f3fff685d1a11d13bdd4c55fde2930978f103cbfe9358cd')
+sha256sums=('3df17e1028c346e6d85149f3f047a9e3681e67216553b589df993922bcefd842')
 provides=(rocksdb)
 conflicts=(rocksdb)
 
