@@ -1,0 +1,15 @@
+pkgbase = python-cu2qu
+	pkgdesc = Cubic-to-quadratic bezier curve conversion
+	pkgver = 1.6.4
+	pkgrel = 1
+	url = https://github.com/googlei18n
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/29/33/6186137547733d15ae15ad00bc81688d474fdbb7e1aad4ee35c1d5228936/cu2qu-1.6.4.zip
+	md5sums = 5d3fe137d091286f8086588734cedb6b
+
+pkgname = python-cu2qu
+	depends = python
+
