@@ -1,8 +1,8 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=nginx-mainline-mod-njs
-pkgver=0.2.3 # http://hg.nginx.org/njs/tags
-pkgrel=5
+pkgver=0.2.5 # http://hg.nginx.org/njs/tags
+pkgrel=1
 
 _modname="${pkgname#nginx-mainline-mod-}"
 _nginxver=1.15.5
@@ -14,12 +14,17 @@ url="https://nginx.org/en/docs/njs_about.html"
 license=('CUSTOM')
 
 source=(
-	https://nginx.org/download/nginx-$_nginxver.tar.gz
+	https://nginx.org/download/nginx-$_nginxver.tar.gz{,.asc}
 	njs-$pkgver.tar.gz::http://hg.nginx.org/njs/archive/$pkgver.tar.gz
 )
 
+validpgpkeys=(
+	'B0F4253373F8F6F510D42178520A9993A1C052F8' # Maxim Dounin <mdounin@mdounin.ru>
+)
+
 sha256sums=('1a3a889a8f14998286de3b14cc1dd5b2747178e012d6d480a18aa413985dae6f'
-            'cbc7df9ddd7211fe2e252a0394abf26a6d3506a74425362572685aec27a65830')
+            'SKIP'
+            '7db275a27c07b04ce81fc6fcdecfd6a9066af57cc4ed2137471fc8b768437506')
 
 build() {
 	cd "$srcdir"/nginx-$_nginxver
