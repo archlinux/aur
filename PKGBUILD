@@ -35,7 +35,7 @@ build() {
   git checkout $last_tag
   npm install
   npm run build
-  npm run build:electron || true
+  ./node_modules/.bin/electron-builder -l
 }
 
 package() {
