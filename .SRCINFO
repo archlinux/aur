@@ -8,6 +8,7 @@ pkgbase = onedriveclient-git
 	makedepends = git
 	depends = inotify-tools
 	depends = python-pip
+	depends = ngrok
 	provides = onedrived
 	source = git+https://github.com/derrix060/onedriveClient
 	source = onedriveClient.service

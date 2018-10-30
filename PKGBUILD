@@ -12,7 +12,8 @@ license=('MIT')
 arch=('any')
 provides=('onedrived')
 depends=('inotify-tools'
-         'python-pip')
+         'python-pip'
+         'ngrok')
 		
 makedepends=('git')
 source=('git+https://github.com/derrix060/onedriveClient'
