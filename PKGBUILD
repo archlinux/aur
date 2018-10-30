@@ -2,14 +2,16 @@
 # Contributor: Ivan Agarkov <ivan.agarkov@gmail.com>
 
 pkgbase=('postgresql-1c')
-pkgname=('postgresql-libs-1c' 'postgresql-docs-1c' 'postgresql-1c')
+pkgname=('postgresql-1c')
 pkgver=10.3
 _majorver=${pkgver%.*}
 pkgrel=3
-pkgdesc='Sophisticated object-relational DBMS'
+pkgdesc='Custom version of PostgreSQL for 1C system'
 url='https://www.postgresql.org/'
 arch=('x86_64')
 license=('custom:PostgreSQL')
+conflicts=('postgresql')
+replaces=('postgresql')
 makedepends=('krb5' 'libxml2' 'python2' 'perl' 'tcl>=8.6.0' 'openssl>=1.0.0' 'pam' 'zlib')
 source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar.bz2
         http://www.r-s-v.ru/1c-patch/1c-patch.tgz
@@ -65,66 +67,10 @@ build() {
   make world
 }
 
-package_postgresql-libs-1c() {
-  pkgdesc="Libraries for use with PostgreSQL"
-  depends=('krb5' 'openssl>=1.0.0' 'readline>=6.0' 'zlib')
-  provides=('postgresql-client' "postgresql-libs=${pkgver}")
-  conflicts=('postgresql-client')
-
-  cd postgresql-${pkgver}
-
-  # install license
-  install -Dm 644 COPYRIGHT -t "${pkgdir}/usr/share/licenses/${pkgname}"
-
-  # install libs and non-server binaries
-  for dir in src/interfaces src/bin/pg_config src/bin/pg_dump src/bin/psql src/bin/scripts; do
-    make -C ${dir} DESTDIR="${pkgdir}" install
-  done
-
-  for util in pg_config pg_dump pg_dumpall pg_restore psql \
-      clusterdb createdb createuser dropdb dropuser pg_isready reindexdb vacuumdb; do
-    install -Dm 644 doc/src/sgml/man1/${util}.1 "${pkgdir}"/usr/share/man/man1/${util}.1
-  done
-
-  cd src/include
-
-  mkdir -p "${pkgdir}"/usr/include/{libpq,postgresql/internal/libpq}
-
-  # these headers are needed by the public headers of the interfaces
-  install -m 644 pg_config.h "${pkgdir}/usr/include"
-  install -m 644 pg_config_os.h "${pkgdir}/usr/include"
-  install -m 644 pg_config_ext.h "${pkgdir}/usr/include"
-  install -m 644 postgres_ext.h "${pkgdir}/usr/include"
-  install -m 644 libpq/libpq-fs.h "${pkgdir}/usr/include/libpq"
-  install -m 644 pg_config_manual.h "${pkgdir}/usr/include"
-
-  # these he aders are needed by the not-so-public headers of the interfaces
-  install -m 644 c.h "${pkgdir}/usr/include/postgresql/internal"
-  install -m 644 port.h "${pkgdir}/usr/include/postgresql/internal"
-  install -m 644 postgres_fe.h "${pkgdir}/usr/include/postgresql/internal"
-  install -m 644 libpq/pqcomm.h "${pkgdir}/usr/include/postgresql/internal/libpq"
-}
-
-package_postgresql-docs-1c() {
-  pkgdesc="HTML documentation for PostgreSQL"
-  options=('docs')
-
-  cd postgresql-${pkgver}
-
-  install -Dm 644 COPYRIGHT -t "${pkgdir}/usr/share/licenses/${pkgname}"
-
-  make -C doc/src/sgml DESTDIR="${pkgdir}" install-html
-  chown -R root:root "${pkgdir}/usr/share/doc/postgresql/html"
-
-  # clean up
-  rmdir "${pkgdir}"/usr/share/man/man{1,3,7}
-  rmdir "${pkgdir}"/usr/share/man
-}
-
 package_postgresql-1c() {
   pkgdesc='Sophisticated object-relational DBMS'
   backup=('etc/pam.d/postgresql' 'etc/logrotate.d/postgresql')
-  depends=("postgresql-libs-1c>=${pkgver}" 'krb5' 'libxml2' 'readline>=6.0' 'openssl>=1.0.0' 'pam')
+  depends=("postgresql-libs>=${pkgver}" 'krb5' 'libxml2' 'readline>=6.0' 'openssl>=1.0.0' 'pam')
   optdepends=('python2: for PL/Python support'
               'perl: for PL/Perl support'
               'tcl: for PL/Tcl support'
