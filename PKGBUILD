@@ -9,10 +9,9 @@ depends=('gconf' 'gtk2' 'libnotify' 'libxtst' 'nss' 'xdg-utils' 'libxss')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 
-pkgver=1.17.0beta.4
-source=("https://updates.signal.org/desktop/apt/pool/main/s/signal-desktop-beta/signal-desktop-beta_1.17.0-beta.4_amd64.deb")
-sha256sums=('8e4289d433f50240c33b956282bed1130641d23a0d7d63498fc9fb8f4c1ac543')
-
+pkgver=1.18.0beta.3
+source=("https://updates.signal.org/desktop/apt/pool/main/s/signal-desktop-beta/signal-desktop-beta_1.18.0-beta.3_amd64.deb")
+sha256sums=('6c76417662f84963210ee4028a2e4245489af4c2a1a5735956307bf7ff207f8c')
 
 package(){
     # Extract package data
