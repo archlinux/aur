@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=DOSBox-X
+GenericName=DOS Emulator
+GenericName[de]=DOS Emulator
+Comment=Run DOS games and apps
+Comment[de]=Führe DOS Anwendungen und Spiele aus
+Exec=dosbox-x
+Icon=dosbox
+Terminal=false
+Categories=Game;Emulator
