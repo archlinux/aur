@@ -1,7 +1,7 @@
 # Maintainer: Daniel Moch <daniel AT danielmoch DOT com>
-
+_pkgname=django-otp
 pkgname=python-django-otp
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A framework for adding two-factor authentication to Django using one-time passwords"
 url="https://bitbucket.org/psagers/django-otp"
@@ -10,16 +10,16 @@ arch=('any')
 depends=('python' 'python-django' )
 optdepends=('python-qrcode: For OTP setup with QR code')
 makedepends=('python' 'python-setuptools')
-source=(django-otp-$pkgver.tar.gz::https://files.pythonhosted.org/packages/6b/05/ecf200287a642703d7d2b1c5776a8de8b2e2cfe7aeefaa242bce859db08e/django-otp-$pkgver.tar.gz)
-sha512sums=('4e84674004dbf610cbdf7fa7e8e3ce968860b94f6828441773ad46c98c8742ef762de041870982254e62116d7900b287bb3a2ca79ec70141d2853ed9c2e1ecfb')
+source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-$pkgver.tar.gz")
+sha512sums=('bdce0ef01013bed059ac4cb2c3d4ccb9ce8c6da94451f4b1a8ff8b7ea03e6206d6b357550af6b423aabf17a4bca8065eec171e6b8b16b2a4c05bbb3234d0db20')
 
 build() {
-  cd "$srcdir/django-otp-${pkgver}"
+  cd "$srcdir/${_pkgname}-${pkgver}"
   python setup.py build
 }
 
 package() {
-  cd "$srcdir/django-otp-${pkgver}/"
+  cd "$srcdir/${_pkgname}-${pkgver}/"
   python setup.py install --root="$pkgdir/" --optimize=1
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
