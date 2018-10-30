@@ -5,13 +5,13 @@
 # Contributor: Illarion Kovalchuk <illarion.kovalchuk at gmail dot com>
 
 pkgname=jenkins-experimental
-pkgver=2.148
+pkgver=2.149
 pkgrel=1
 pkgdesc='Extendable continuous integration server (experimental build for latest java version)'
 arch=('any')
 url='https://jenkins.io'
 license=('MIT')
-depends=('openjdk-devel' 'ttf-dejavu' 'libcups')
+depends=('java-runtime>=11' 'ttf-dejavu' 'libcups')
 provides=('jenkins-ci')
 conflicts=('jenkins-ci')
 replaces=('jenkins-ci')
@@ -28,7 +28,7 @@ source=("jenkins-${pkgver}.war::http://mirrors.jenkins-ci.org/war/${pkgver}/jenk
         'jenkins.tmpfiles'
         'jenkins.sysusers'
         'LICENSE')
-sha512sums=('19d3a14bb22222103d9996ff7855547154c3f6d7896eb496ceeabe3c959ad361bc7069d81e0a4552f619881f77c77016833bbb9b7e16a3060c3356da944e5f96'
+sha512sums=('b7f71a980b672ee66414865300192c7920c235a910af1b173cce0e3fb849c8508cb61c3ad2127f166edc84108c844a08111fff363201ef152d24771cb45b2a81'
             '0c5bfc2c9f655bf5e6d596e0c196dcb9344d6dc78bf774207c8f8b6be59f69addf2b3121e81491983eff648dfbd55002b9878132de190825dad3ef3a1265b367'
             'fda51767b175ab5b12c7438b9a11873fe570fa4b5ffa2c3d10eebca9d1dcada6a8ff2d287ac76017c6a546e1f5cb02988fb7e2fac32a4a95ad443e1a1b4ade35'
             'f6152fd8ceb1197c0296bdde443b67fd4e0f0ebd47beda1d8eee9fba396468b3c4a515ebde53ee3262164e6bb75bfd59f470ef3a7ea71b30cb7f9bfd9df8743b'
