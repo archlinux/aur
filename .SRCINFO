@@ -1,0 +1,17 @@
+pkgbase = python-murmurhash
+	pkgdesc = Cython bindings for MurmurHash2
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/explosion/murmurhash
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = cython
+	depends = python-pytest
+	source = python-murmurhash-1.0.1.tar.gz::https://github.com/explosion/murmurhash/archive/v1.0.1.tar.gz
+	md5sums = 35a01f10802226e2d99e463004f520ec
+
+pkgname = python-murmurhash
+
