@@ -1,7 +1,7 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=qdigidoc4
-pkgver=4.0.0.23
-pkgrel=2
+pkgver=4.1.0.30
+pkgrel=1
 pkgdesc="DigiDoc4 Client is an application for digitally signing and encrypting documents; the software includes functionality to manage Estonian ID-card - change pin codes, update certificates etc."
 arch=('x86_64' 'i686')
 url="http://www.id.ee/"
@@ -11,16 +11,13 @@ makedepends=('cmake' 'qt5-tools' 'qt5-translations')
 optdepends=('ccid: smart card support')
 conflicts=('qdigidoc' 'qesteidutil')
 provides=('qdigidoc' 'qesteidutil')
-source=("https://installer.id.ee/media/ubuntu/pool/main/q/$pkgname/${pkgname}_$pkgver.orig.tar.xz"
-        "qdigidoc4_4.0.0.23-qt5.11.patch")
-sha256sums=('e2ed6f0bad477a2fa8f8b3d7cb4fa1c2b72ed4c65afa1dea72c3df445341a959'
-            'b6c71e40d0b8b91597f95f05b42c6c148027223fbc13fa714e0039ad6e39a9d2')
+source=("https://installer.id.ee/media/ubuntu/pool/main/q/$pkgname/${pkgname}_$pkgver.orig.tar.xz")
+sha256sums=('fd66e309968fcf7a1ff4857f505c414fec0926afec9c5ec4fb0fdecdb41911e4')
 
 prepare() {
   [[ -d "$pkgname-build" ]] && rm -r "$pkgname-build"
   mkdir "$pkgname-build"
-  sed -i 's|#{ENV\["BUILD_NUMBER"\]}|23|g' cmake/modules/VersionInfo.cmake
-  patch -p1 -i "$srcdir/qdigidoc4_4.0.0.23-qt5.11.patch"
+  sed -i 's|#{ENV\["BUILD_NUMBER"\]}|30|g' cmake/modules/VersionInfo.cmake
 }
 
 build() {
