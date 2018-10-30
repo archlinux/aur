@@ -1,15 +1,16 @@
-# Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
+# Maintainer:  mrxx <mrxx at cyberhome dot at>
+# Contributor: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 # Contributor: Christoph Siegenthaler <csi@gmx.ch>
 pkgname=pcal
 pkgver=4.11.0
-pkgrel=4
-pkgdesc="A calendar-generation program which produces nice-looking PostScript output"
+pkgrel=5
+pkgdesc="Generate annotated PostScript or HTML calendars in a monthly or yearly format"
 url="http://pcal.sourceforge.net/"
 license=('unknown')
-arch=('i686' 'x86_64')
+arch=('any')
 depends=('glibc')
 source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tgz")
-md5sums=('0ed7e9bec81fe3bdd62f8af283bef704')
+sha1sums=('214bcb4c4b7bc986ae495c96f2ab169233a7f973')
  
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -18,6 +19,10 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+
+  mkdir -p "${pkgdir}"/usr/{bin,share/doc/$pkgname,share/{man1,cat1}}
+  install -D doc/pcal-* doc/ReadMe.txt "${pkgdir}/usr/share/doc/${pkgname}/"
+  cp -r examples html scripts "${pkgdir}/usr/share/doc/${pkgname}/"
 
   # Note the usage of $PACK, because the Makefile uses "compress" by
   # default, which doesn't exist on Arch. Besides, makepkg handles
