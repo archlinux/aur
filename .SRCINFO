@@ -1,6 +1,6 @@
 pkgbase = galliumos-xkeyboard-config
 	pkgdesc = X keyboard configuration files
-	pkgver = 2.22
+	pkgver = 2.23
 	pkgrel = 1
 	url = https://www.freedesktop.org/wiki/Software/XKeyboardConfig
 	arch = any
@@ -14,11 +14,11 @@ pkgbase = galliumos-xkeyboard-config
 	provides = xkbdata
 	conflicts = xkeyboard-config
 	conflicts = xkbdata
-	source = https://xorg.freedesktop.org/archive/individual/data/xkeyboard-config/xkeyboard-config-2.22.tar.bz2
-	source = https://xorg.freedesktop.org/archive/individual/data/xkeyboard-config/xkeyboard-config-2.22.tar.bz2.sig
+	source = https://xorg.freedesktop.org/archive/individual/data/xkeyboard-config/xkeyboard-config-2.23.tar.bz2
+	source = https://xorg.freedesktop.org/archive/individual/data/xkeyboard-config/xkeyboard-config-2.23.tar.bz2.sig
 	source = git+https://github.com/galliumos/xkeyboard-config.git
 	validpgpkeys = FFB4CCD275AAA422F5F9808E0661D98FC933A145
-	sha256sums = deaec9989fbc443358b43864437b7b6d39caff07890a4a8055105ce9fcaa59bd
+	sha256sums = 23fb410527e9da38d8bbf8b9e6bd1a8eb2b2fdb514b8a0889c245cbad2d5a9b3
 	sha256sums = SKIP
 	sha256sums = SKIP
 
