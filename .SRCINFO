@@ -1,0 +1,23 @@
+pkgbase = python-eutils
+	pkgdesc = Structured Python interface to NCBI E-Utilities.
+	pkgver = 0.4.1
+	pkgrel = 00
+	url = https://github.com/biocommons/eutils
+	arch = any
+	license = Apache
+	makedepends = python-pip
+	depends = python
+	depends = python-pytz
+	depends = python-requests
+	depends = python-lxml
+	depends = python-six
+	noextract = eutils-0.4.1-py2.py3-none-any.whl
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/05/25/226ee093ebe2533ed4f0be25896607ab3afce0de824293ddf8d2bc3d8621/eutils-0.4.1-py2.py3-none-any.whl
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = b0f9ad9c86c5f4f46c9946ca94546cec
+	md5sums = e3fc50a88d0a364313df4b21ef20c29e
+
+pkgname = python-eutils
+
