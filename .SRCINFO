@@ -1,7 +1,7 @@
 pkgbase = email-securely-app-bin
 	pkgdesc = Unofficial desktop app for several E2E encrypted email providers
-	pkgver = 1.5.2
-	pkgrel = 2
+	pkgver = 1.5.3
+	pkgrel = 1
 	url = https://github.com/vladimiry/email-securely-app
 	install = email-securely-app-bin.install
 	arch = x86_64
@@ -25,9 +25,9 @@ pkgbase = email-securely-app-bin
 	depends = gnome-keyring
 	provides = email-app-securely
 	conflicts = email-app-securely
-	source = https://github.com/vladimiry/email-securely-app/releases/download/v1.5.2/email-securely-app-1.5.2-linux.pacman
+	source = https://github.com/vladimiry/email-securely-app/releases/download/v1.5.3/email-securely-app-1.5.3-linux.pacman
 	source = LICENSE
-	md5sums = 9298d794b9428ce039f6f5dee111476c
+	md5sums = 173388e1b6481dcbe25f10634213f87e
 	md5sums = fc680045f40b19ce3c3e771aeb08bbd3
 
 pkgname = email-securely-app-bin
