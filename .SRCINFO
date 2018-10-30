@@ -1,7 +1,7 @@
 pkgbase = sickchill
 	pkgdesc = Automatic Video Library Manager for TV Shows. It watches for new episodes of your favorite shows, and when they are posted it does its magic.
 	pkgver = 2018.10.30
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/SickChill/SickChill
 	install = sickchill.install
 	arch = any
@@ -20,10 +20,10 @@ pkgbase = sickchill
 	conflicts = sickrage2-git
 	conflicts = sickgear-git
 	options = !strip
-	source = https://github.com/SickChill/SickChill/archive/v2018.10.30-5.tar.gz
+	source = https://github.com/SickChill/SickChill/archive/v2018.10.30-6.tar.gz
 	source = sickchill.service
 	source = sickchill.install
-	md5sums = 3d02471cfaf4237bf1ce985f53d3f8ae
+	md5sums = ab0954d447b2b6af93d4e4e4b9611036
 	md5sums = 373832300e91a4011285eb8d6df9cef0
 	md5sums = 961815f362818fa961c37c70199c5b6f
 
