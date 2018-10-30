@@ -35,8 +35,8 @@ _localmodcfg=
 pkgbase=linux-gc
 _srcver=4.19-arch1
 pkgver=${_srcver%-*}
-pkgrel=1
-_pdsversion=099b
+pkgrel=2
+_pdsversion=099c
 arch=(x86_64)
 url="https://cchalpha.blogspot.co.uk/"
 license=(GPL2)
@@ -60,12 +60,12 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('ca5f2653738a4f1ca330e8a193e9763e6ab847ebd8075c7485cd02bb316cf66e'
-            'dd2af9220472ce0416df97bb4fed7c5276368b33c18ee7fc80b33670942fe7ec'
+            'db214c6e75d07a9616972f96ec0b1edf2e40bb90d2059c0278bb9fa05452303a'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
-            '6a9ad5ead0ce035c0d8452308d98bc70c5c2753287d79448a99b13828e674405')
+            'cc03f9ca477901716edee1c7aed2646cec3bb279350aea73b51f244a91c7c0ac')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
