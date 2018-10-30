@@ -44,7 +44,7 @@ pgo() {
 			mkdir "$PROFDEST/$pkgbase.gen"
 			CFLAGS+=" -fprofile-generate -fprofile-dir=$PROFDEST/$pkgbase.gen"
 			CXXFLAGS+=" -fprofile-generate -fprofile-dir=$PROFDEST/$pkgbase.gen"
-			LDFLAGS+=" -lgcov"
+			LDFLAGS+=" -lgcov --coverage"
 		else
 			[[ ! -d "$PROFDEST/$pkgbase.used" ]] && mv "$PROFDEST/$pkgbase.gen" "$PROFDEST/$pkgbase.used"
 			CFLAGS+=" -fprofile-correction -fprofile-use -fprofile-dir=$PROFDEST/$pkgbase.used"
