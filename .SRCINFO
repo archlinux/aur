@@ -19,7 +19,7 @@ pkgbase = dosbox-x-sdl2
 	source = dosbox-x.desktop
 	md5sums = 5a98e5f7ccb06664b5660d26a2c64abf
 	md5sums = 3dcfe45c5ed0433316eaea51e3620b36
-	md5sums = 615228a51b52d4788c73940602f1dc97
+	md5sums = 81346ce4aaba68a586f3726d8b156b24
 
 pkgname = dosbox-x-sdl2
 
