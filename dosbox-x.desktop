@@ -6,6 +6,6 @@ GenericName[de]=DOS Emulator
 Comment=Run DOS games and apps
 Comment[de]=Führe DOS Anwendungen und Spiele aus
 Exec=dosbox-x
-Icon=dosbox
+Icon=dosbox-x
 Terminal=false
 Categories=Game;Emulator
