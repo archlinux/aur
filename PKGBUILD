@@ -2,10 +2,10 @@
 
 pkgname=nginx-mainline-mod-auth_pam
 pkgver=1.5.1
-pkgrel=16
+pkgrel=17
 
 _modname=ngx_http_auth_pam_module
-_nginxver=1.15.4
+_nginxver=1.15.5
 
 pkgdesc='Nginx mainline module to use PAM for simple http authentication'
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ source=(
 	$_modname-critlog.patch::https://patch-diff.githubusercontent.com/raw/sto/ngx_http_auth_pam_module/pull/11.patch
 )
 
-sha256sums=('3324776c800d974ceae8797ab9102ca26a8c3656f5c6fb3f31f2cb1e719458e7'
+sha256sums=('1a3a889a8f14998286de3b14cc1dd5b2747178e012d6d480a18aa413985dae6f'
             '77676842919134af88a7b4bfca4470223e3a00d287d17c0dbdc9a114a685b6e7'
             '1a59787672cf9c6768cb77c31f19a870eaf556c7b28c8c22a22cf8a7013b93af')
 
