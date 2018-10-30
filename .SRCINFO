@@ -1,6 +1,6 @@
 pkgbase = dosbox-ex-svn
 	pkgdesc = DOSBox in both 32 and 64bit (with No-splash, 3DFX Glide, Fluidsynth, OpenGL shaders, ImgMake and MUNT-32 patches).
-	pkgver = 0.74.r4093
+	pkgver = 0.74.r4146
 	pkgrel = 1
 	url = http://dosbox.sourceforge.net/
 	arch = x86_64
@@ -21,10 +21,10 @@ pkgbase = dosbox-ex-svn
 	conflicts = dosbox
 	conflicts = dosbox-git
 	conflicts = dosbox-svn
-	source = dosbox-svn::svn+https://svn.code.sf.net/p/dosbox/code-0/dosbox/trunk
+	source = dosbox-svn::svn+https://svn.code.sf.net/p/dosbox/code-0/dosbox/trunk#revision=4146
 	source = patches.tgz
 	md5sums = SKIP
-	md5sums = 6d48245333c50320ce845ec8ffb952e2
+	md5sums = SKIP
 
 pkgname = dosbox-ex-svn
 

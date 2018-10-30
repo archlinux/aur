@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Hodgetts <ben@xnode.org>
 
 pkgname=dosbox-ex-svn
-pkgver=0.74.r4093
+pkgver=0.74.r4146
 pkgrel=1
 pkgdesc="DOSBox in both 32 and 64bit (with No-splash, 3DFX Glide, Fluidsynth, OpenGL shaders, ImgMake and MUNT-32 patches)."
 arch=(x86_64)
@@ -12,11 +12,12 @@ optdepends=(lib32-munt)
 makedepends=(subversion)
 provides=(dosbox)
 conflicts=(dosbox dosbox-git dosbox-svn)
-source=(dosbox-svn::svn+https://svn.code.sf.net/p/dosbox/code-0/dosbox/trunk 'patches.tgz')
-md5sums=('SKIP' '6d48245333c50320ce845ec8ffb952e2')
+## Lock to revision 4146 as 4147 alters SDL and breaks patches
+source=(dosbox-svn::svn+https://svn.code.sf.net/p/dosbox/code-0/dosbox/trunk#revision=4146 'patches.tgz')
+md5sums=('SKIP' 'SKIP')
 
 pkgver(){
-	echo $(cat dosbox-svn/VERSION).r$(svnversion "${SRCDEST}"/dosbox-svn/)
+	echo $(sed 's/-/./' dosbox-svn/VERSION).r$(svnversion "${SRCDEST}"/dosbox-svn/)
 }
 
 prepare() {
@@ -26,6 +27,7 @@ prepare() {
 	cd dosbox-svn
 
 	## New Voodoo / GLide Support
+	echo "Voodoo Patch"
 	patch -Nlp0 -i ../voodoo.patch
 
 	## Apply 3DFX/Glide patch
@@ -35,24 +37,31 @@ prepare() {
 	#cp -f ../gl.h include/GL/
 
 	## Apply Shaders Patch
+	echo "Shader Patch"
 	patch -Nlp0 -i ../shaders.patch
 
 	## Apply MUNT-32 integration Patch
+	echo "MUNT Patch"
 	patch -Nlp1 -i ../munt.patch
 
 	## Apply FluidSynth integration Patch (must be after MT-32)
+	echo "Synth Patch"
 	patch -Nlp1 -i ../synth.patch
 
 	## Quiet DOSBox Startup Patch
+	echo "Quiet Patch"
 	patch -Nlp1 -i ../quiet.patch
 
 	## Add Modern Gamepad Patch
+	echo "Joystick Patch"
 	patch -Nlp1 -i ../joystick.patch
 
-	## Add Nuked OPL Support
-	patch -Nlp0 -i ../opl.patch
+	## Add Nuked OPL Support (disable for now, doesn't apply)
+	#echo "OPL Patch"
+	#patch -Nlp0 -i ../opl.patch
 
 	## Add imgmake functionality
+	echo "IMGMake Patch"
 	patch -Nlp0 -i ../imgmake.patch
 }
 
