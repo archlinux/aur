@@ -1,6 +1,6 @@
 # Maintainer: NamedKitten <kitteh@namedkitten.pw>
 pkgname=kittehplayer
-pkgver=r185.84e68b7
+pkgver=r186.7e2aea0
 pkgrel=1
 pkgdesc="A YouTube-like video player based on Qt, QML and libmpv."
 arch=('x86_64')
@@ -26,8 +26,8 @@ build() {
 	cd "$srcdir/$pkgname"
 	mkdir -p build
 	cd build
-	cmake .. -DCMAKE_INSTALL_PREFIX=/usr
-	make -j$(nproc)
+	cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+	make $MAKEFLAGS
 }
 
 package() {
