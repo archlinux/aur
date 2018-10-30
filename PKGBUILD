@@ -2,7 +2,7 @@
 
 pkgname=rua
 pkgver=0.6.2
-pkgrel=3
+pkgrel=4
 pkgdesc='convenient jailed AUR helper in rust'
 url='https://github.com/vn971/rua'
 source=("https://github.com/vn971/rua/archive/${pkgver}.tar.gz")
@@ -31,7 +31,7 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
   install -Dm755 target/release/rua "${pkgdir}/usr/bin/rua"
 
-  install -Dm644 target/completions/rua.bash /usr/share/bash-completion/completions
-  install -Dm644 target/completions/rua.fish /usr/share/fish/completions
-  install -Dm644 target/completions/_rua /usr/share/zsh/functions/Completion/Linux
+  install -Dm644 target/completions/rua.bash "${pkgdir}/usr/share/bash-completion/completions/rua.bash"
+  install -Dm644 target/completions/rua.fish "${pkgdir}/usr/share/fish/completions/rua.fish"
+  install -Dm644 target/completions/_rua "${pkgdir}/usr/share/zsh/functions/Completion/Linux/_rua"
 }
