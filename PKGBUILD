@@ -2,7 +2,7 @@
 
 pkgname=rua
 pkgver=0.6.2
-pkgrel=2
+pkgrel=3
 pkgdesc='convenient jailed AUR helper in rust'
 url='https://github.com/vn971/rua'
 source=("https://github.com/vn971/rua/archive/${pkgver}.tar.gz")
@@ -24,7 +24,7 @@ build () {
     fi
   fi
   mkdir -p target/completions
-  COMPLETIONS_DIR=completions cargo build --release
+  COMPLETIONS_DIR=target/completions cargo build --release
 }
 
 package() {
