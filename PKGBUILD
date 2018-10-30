@@ -3,7 +3,7 @@
 
 pkgname=python-black
 pkgver=18.9b0
-pkgrel=1
+pkgrel=2
 pkgdesc='Uncompromising Python code formatter'
 arch=('any')
 url=https://github.com/ambv/black
@@ -21,7 +21,6 @@ build() {
 
 check() {
   cd black-$pkgver
-  touch tests/__init__.py
   python -m unittest tests/test_black.py
 }
 
