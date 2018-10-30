@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=nginx-mainline-mod-modsecurity-git
-pkgver=56cfa4e
+pkgver=fc061a5
 pkgrel=1
 
 _modname=ModSecurity-nginx
