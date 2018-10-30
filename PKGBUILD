@@ -1,5 +1,7 @@
-# Maintainer: Amin Bandali <bandali@gnu.org>
-# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: Alexander Kobel <a-kobel@a-kobel.de>
+# Contributors:
+#   Stefan Husmann <stefan-husmann@t-online.de>
+#   Amin Bandali <bandali@gnu.org>
 
 pkgname=otf-alegreya
 pkgver=2.008
