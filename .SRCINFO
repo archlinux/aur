@@ -10,8 +10,12 @@ pkgbase = paho-mqtt-c-git
 	conflicts = paho-mqtt-c
 	options = !emptydirs
 	source = git+https://github.com/eclipse/paho.mqtt.c.git
+	source = file://0001-make-pull-out-optimization-debug-flags.patch
+	source = file://0002-make-make-all-dirs-required-in-install.patch
 	source = file://533.patch
 	md5sums = SKIP
+	md5sums = f81bb7a9e9f20ae450676ab0f9843a5d
+	md5sums = 740b4ec8e0632cd4757d104cae4c8cf9
 	md5sums = 4981a9dc98cc1262a001ee0400e61d37
 
 pkgname = paho-mqtt-c-git
