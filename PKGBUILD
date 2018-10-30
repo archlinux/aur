@@ -7,13 +7,16 @@ arch=('i686' 'x86_64')
 url="http://code.google.com/p/libdasm/"
 license=('custom:Public Domain') # a modifier
 depends=()
-source=("http://libdasm.googlecode.com/files/libdasm-beta.zip")
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/libdasm/libdasm-beta.zip")
 md5sums=('573944eacf5c942644b538926c217b95')
+
 build() {
   cd "$srcdir/"
   
-  make || return 1
+  make
+}
 
+package() {
   install -D -m644 libdasm.h  $pkgdir/usr/include/libdasm.h
   install -D -m755 libdasm.so $pkgdir/usr/lib/libdasm.so
   install -D -m755 examples/das $pkgdir/usr/bin/das

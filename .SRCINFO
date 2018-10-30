@@ -6,7 +6,7 @@ pkgbase = libdasm
 	arch = i686
 	arch = x86_64
 	license = custom:Public Domain
-	source = http://libdasm.googlecode.com/files/libdasm-beta.zip
+	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/libdasm/libdasm-beta.zip
 	md5sums = 573944eacf5c942644b538926c217b95
 
 pkgname = libdasm
