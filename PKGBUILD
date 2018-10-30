@@ -1,13 +1,11 @@
 # Maintainer: SantoZ <santoz28 at mailbox dot org>
 # Contributors: Det, Achilleas Pipinellis, speed145a, Schnouki
 
-_chromium_rel=2
-_chromium_ver=69.0.3497.100
 _launcher_ver=6
 
 pkgname=ungoogled-chromium-bin
-pkgver=${_chromium_ver}.rel${_chromium_rel}
-pkgrel=7
+pkgver=70.0.3538.77
+pkgrel=1
 pkgdesc="Modifications to Google Chromium for removing Google integration and enhancing privacy, control, and transparency (binary version)"
 arch=("x86_64")
 url="https://github.com/Eloston/ungoogled-chromium"
@@ -20,18 +18,17 @@ depends=("gtk3" "nss" "alsa-lib" "xdg-utils" "libxss" "libcups" "libgcrypt"
 optdepends=("gnome-keyring: for storing passwords in GNOME keyring"
             "kdialog: needed for file dialogs in KDE"
             "kwallet: for storing passwords in KWallet"
-            "pepper-flash: support for Flash content"
-            "chromium-widevine: for widevine content decryption module")
-source=("ungoogled-chromium_${_chromium_ver}-${_chromium_rel}_linux.tar.xz::https://cloud.woelkli.com/s/j7W2AyqEDWTyynW/download"
+            "pepper-flash: support for Flash content")
+source=("ungoogled-chromium_${pkgver}-${pkgrel}_linux.tar.xz::https://cloud.woelkli.com/s/f4PPmckesWRX8gC/download"
         "chromium-launcher-${_launcher_ver}.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v${_launcher_ver}.tar.gz"
         "chromium.desktop")
-sha256sums=("da7ed55c0ef7ba74b2d365fc63b92d3eb3e0310b8b9c52855010c6620f9d1cb5"
+sha256sums=("32b0b7c487c35a05b819351c4ea2be7a22d7ff62bcc3f71c377838be01e92581"
             "04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1"
             "15898507b5bda1e56e303c7e7f54b80d6363e8f77321d29067eef15f4c5deeb5")
 
 prepare() {
     cd $srcdir
-    mv ungoogled-chromium_${_chromium_ver}-${_chromium_rel}_linux chromium
+    mv ungoogled-chromium_${pkgver}-${pkgrel}_linux chromium
 }
 
 build() {
@@ -39,34 +36,30 @@ build() {
 }
 
 package() {
-    ## Install chromium launcher
+    ## Launcher
     cd chromium-launcher-${_launcher_ver}
     make PREFIX=/usr DESTDIR="${pkgdir}" install
     install -Dm644 LICENSE \
         "${pkgdir}/usr/share/licenses/chromium/LICENSE.launcher"
     cd ${srcdir}
     
-    ## Install chromium itself
-    # Executables
+    ## Browser
     install -D chromium/chrome "${pkgdir}/usr/lib/chromium/chromium"
     install -Dm4755 chromium/chrome_sandbox "${pkgdir}/usr/lib/chromium/chrome-sandbox"
+    ln -s /usr/lib/chromium/chromedriver "$pkgdir/usr/bin/chromedriver"
     
-    # Desktop files
     install -Dm644 chromium.desktop "${pkgdir}/usr/share/applications/chromium.desktop"
     
-    # Libraries
     cp \
         chromium/{chrome_{100,200}_percent,resources}.pak \
-        chromium/*.bin \
+        chromium/{*.bin,chromedriver} \
         chromium/*.so \
         chromium/icudtl.dat \
         "${pkgdir}/usr/lib/chromium/"
     cp -r chromium/resources "${pkgdir}/usr/lib/chromium"
 
-    # Locales
     install -Dm644 -t "${pkgdir}/usr/lib/chromium/locales" chromium/locales/*.pak
 
-    # Icon
     install -Dm644 chromium/product_logo_48.png \
         "${pkgdir}/usr/share/icons/hicolor/48x48/apps/chromium.png"
 }
