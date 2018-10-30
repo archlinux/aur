@@ -2,7 +2,7 @@
 
 pkgname=nginx-mainline-mod-srcache
 pkgver=0.31
-pkgrel=15
+pkgrel=16
 
 _modname="${pkgname#nginx-mainline-mod-}"
 _nginxver=1.15.4
