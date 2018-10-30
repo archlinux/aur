@@ -68,7 +68,7 @@ build() {
 package_postgresql-libs-1c() {
   pkgdesc="Libraries for use with PostgreSQL"
   depends=('krb5' 'openssl>=1.0.0' 'readline>=6.0' 'zlib')
-  provides=('postgresql-client' 'postgresql-libs')
+  provides=('postgresql-client' "postgresql-libs=${pkgver}")
   conflicts=('postgresql-client')
 
   cd postgresql-${pkgver}
@@ -124,7 +124,7 @@ package_postgresql-docs-1c() {
 package_postgresql-1c() {
   pkgdesc='Sophisticated object-relational DBMS'
   backup=('etc/pam.d/postgresql' 'etc/logrotate.d/postgresql')
-  depends=("postgresql-libs>=${pkgver}" 'krb5' 'libxml2' 'readline>=6.0' 'openssl>=1.0.0' 'pam')
+  depends=("postgresql-libs-1c>=${pkgver}" 'krb5' 'libxml2' 'readline>=6.0' 'openssl>=1.0.0' 'pam')
   optdepends=('python2: for PL/Python support'
               'perl: for PL/Perl support'
               'tcl: for PL/Tcl support'
