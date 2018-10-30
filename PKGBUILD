@@ -3,7 +3,7 @@
 _nginxver=1.15.4
 pkgname=nginx-mainline-mod-brotli
 pkgver=$_nginxver
-pkgrel=16
+pkgrel=17
 
 _modname="ngx_${pkgname#nginx-mainline-mod-}"
 
