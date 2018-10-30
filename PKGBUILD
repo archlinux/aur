@@ -5,13 +5,14 @@
 _pkgbase=transmission
 _pkgname=transmission-cli
 pkgname=transmission-cli-git
-pkgver=2.94.r354.gc11f2870f
+pkgver=2.94.r368.gf4dc55f87
 pkgrel=1
 arch=(x86_64)
 url="http://www.transmissionbt.com/"
 license=(MIT)
 pkgdesc='Fast, easy, and free BitTorrent client (CLI tools, daemon and web client)'
 depends=(curl libevent libsystemd miniupnpc)
+makedepends=(cmake git)
 conflicts=(transmission-cli)
 replaces=(transmission-cli)
 provides=(transmission-cli)
