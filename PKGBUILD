@@ -1,4 +1,4 @@
-# Maintainer: Sergey Starovoytov <sergey.starovoytov.94@gmail.com>
+# Maintainer: Drommer <sergey.starovoytov.94@gmail.com>
 
 pkgname=breath-gtk-theme
 pkgver=5.9.0
