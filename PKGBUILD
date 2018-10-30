@@ -19,9 +19,13 @@ url="https://github.com/google/ngx_brotli"
 license=('CUSTOM')
 
 source=(
-	https://nginx.org/download/nginx-$_nginxver.tar.gz
+	https://nginx.org/download/nginx-$_nginxver.tar.gz{,.asc}
 	https://github.com/google/$_modname/archive/$_modver/$_modname-$_modver.tar.gz
 	https://github.com/google/brotli/archive/$_brotliver/brotli-$_brotliver.tar.gz
+)
+
+validpgpkeys=(
+	'B0F4253373F8F6F510D42178520A9993A1C052F8' # Maxim Dounin <mdounin@mdounin.ru>
 )
 
 sha256sums=('1a3a889a8f14998286de3b14cc1dd5b2747178e012d6d480a18aa413985dae6f'
