@@ -1,5 +1,5 @@
 pkgname=rocksdb-release
-pkgver=5.7.2
+pkgver=5.15.10
 pkgrel=1
 pkgdesc='Embedded key-value store for fast storage'
 arch=(i686 x86_64)
