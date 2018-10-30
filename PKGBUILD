@@ -4,7 +4,7 @@
 # Maintainer: Andre Klitzing <aklitzing () gmail () com>
 # AUR Category: devel
 pkgname=tortoisehg
-pkgver=4.7.1
+pkgver=4.7.2
 pkgrel=1
 #_pkgchangeset=8cd204ac208a
 pkgdesc="Graphical tools for Mercurial"
@@ -41,4 +41,4 @@ package() {
 	rm -f "${pkgdir}/usr/lib/python2.7/site-packages/hgext3rd/__init__.pyc"
 }
 
-sha256sums=('0d9464192ec0ddd72f8a55fe40f3a01ccf8067b3cb0d324716be0b8436f9f074')
+sha256sums=('4fd94b37938eb82a0c1f5541b3d9e403ef27691207feba7dfdd23e8006285878')
