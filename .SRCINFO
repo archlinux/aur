@@ -1,6 +1,6 @@
 pkgbase = python-credstash-git
 	pkgdesc = A little utility for managing credentials in the cloud
-	pkgver = 1.14.0.38.gc43f5dc
+	pkgver = 1.15.0.17.gc43f5dc
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/fugue/credstash

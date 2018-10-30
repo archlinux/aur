@@ -1,7 +1,7 @@
 # Maintainer: Clemens Hanel <clemens dot hanel at tngtech dot com>
 
 pkgname=python-credstash-git
-pkgver=1.14.0.38.gc43f5dc
+pkgver=1.15.0.17.gc43f5dc
 pkgrel=1
 epoch=1
 pkgdesc='A little utility for managing credentials in the cloud '
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd ${srcdir}/${pkgname}
-  local ver=$(git describe --always | sed 's/-/./g')
+  local ver=$(git describe --tags --always | sed 's/-/./g')
   echo ${ver:1}
 }
 
