@@ -1,7 +1,7 @@
 # Maintainer: sekret, mail=$(echo c2VrcmV0QHBvc3Rlby5zZQo= | base64 -d)
 _pkgname=dgedit
 pkgname=$_pkgname-git
-pkgver=0.r28.eeef75b
+pkgver=0.r70.6dcbe41
 pkgrel=1
 pkgdesc="The DrumGizmo drumkit editor"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -29,6 +29,8 @@ build() {
 package() {
   cd "$_pkgname"
   make DESTDIR="$pkgdir/" install
+
+  install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
 }
 
 # vim:set ts=2 sw=2 et:
