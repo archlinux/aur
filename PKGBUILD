@@ -2,7 +2,7 @@
 # Contributor: AlexanderR <alexander r at gmx com>
 # Contributor: Eric Forgeot < http://ifiction.free.fr >
 pkgname=fizmo
-pkgver=0.8.2
+pkgver=0.8.5
 pkgrel=1
 pkgdesc="A Z-Machine interpreter supporting unicode, sound, blorbfile and more."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('BSD')
 depends=('ncurses' 'freetype2' 'libxml2' 'libsndfile' 'libjpeg-turbo' 'libpng' 'sdl2')
 groups=('inform')
 source=("https://fizmo.spellbreaker.org/source/$pkgname-$pkgver.tar.gz")
-sha256sums=('369c3b58e019756229bf7e72cc5b15c049f1d6d5c65d7653267e67cef109e675')
+sha256sums=('1c259a29b21c9f401c12fc24d555aca4f4ff171873be56fb44c0c9402c61beaa')
 
 build() {
   cd $pkgname-$pkgver
@@ -29,6 +29,6 @@ package() {
   cd $pkgname-$pkgver
 
   make DESTDIR="$pkgdir" install
-  install -Dm644 COPYRIGHT.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
