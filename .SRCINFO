@@ -1,0 +1,33 @@
+pkgbase = python-thinc
+	pkgdesc = Practical Machine Learning for NLP
+	pkgver = 6.12.0
+	pkgrel = 1
+	url = https://github.com/explosion/thinc
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	depends = cython
+	depends = python-numpy
+	depends = python-msgpack-numpy-git
+	depends = python-cymem
+	depends = python-preshed
+	depends = python-murmurhash
+	depends = python-plac
+	depends = python-ujson
+	depends = python-dill
+	depends = python-pytest
+	depends = python-mock
+	depends = python-pathlib
+	depends = python
+	depends = python-hypothesis
+	depends = python-cytoolz
+	depends = python-blis
+	depends = python-six
+	depends = python-tqdm
+	depends = python-wrapt
+	optdepends = python-spacy: examples
+	source = python-thinc-6.12.0.tar.gz::https://github.com/explosion/thinc/archive/v6.12.0.tar.gz
+	md5sums = e6ebce7e0a0c87a7f9d9470068f9be9a
+
+pkgname = python-thinc
+
