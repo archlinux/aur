@@ -2,7 +2,7 @@
 
 pkgname=openconcerto
 pkgver=1.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="ERP ILM Openconcerto client multi and mono"
 arch=('any')
 license=('GPL3')
