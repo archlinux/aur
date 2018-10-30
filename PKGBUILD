@@ -19,11 +19,11 @@ provides=("firefox=${pkgver}")
 conflicts=('firefox' 'firefox-kde-opensuse')
 options=('!emptydirs' 'debug' 'strip')
 
-source=(https://repo.itmettke.de/aur-archive/packages/f/firefox-kde-opensuse/firefox-kde-opensuse-${pkgver}-${pkgrel}-x86_64.pkg.tar.xz{,.sig})
+source=(https://repo.itmettke.de/nexus-archive/packages/f/firefox-kde-opensuse/firefox-kde-opensuse-${pkgver}-${pkgrel}-x86_64.pkg.tar.xz{,.sig})
 noextract=(firefox-kde-opensuse-${pkgver}-${pkgrel}-x86_64.pkg.tar.xz)
 validpgpkeys=(81E604C18BFD3FA9986E32D91E74416BECD445A4)
 sha256sums=(
-	'b7ff2da0016b558ba426c9e4ef542c205f9645a7d091a9900d2d51aaaf065176'
+	'2ea59457ee5a2d70ca4b0367a3d55b9c3b4bc2f3f923ada380838b1eb27a9d7a'
 	'SKIP'
 )
 
