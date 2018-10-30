@@ -1,0 +1,23 @@
+pkgbase = gnome-online-miners-disabled
+	pkgdesc = Disables GNOME Online Miners and replaces them with dummy services while providing non-breaking GNOME Online Accounts integration
+	pkgver = 3.30.0
+	pkgrel = 1
+	url = https://example.com
+	arch = x86_64
+	license = GPL
+	makedepends = gnome-common
+	makedepends = git
+	depends = libgdata
+	depends = gnome-online-accounts
+	depends = grilo
+	depends = libzapojit
+	depends = tracker
+	depends = gfbgraph
+	depends = dleyna-server
+	provides = gnome-online-miners
+	conflicts = gnome-online-miners
+	source = dummy-dbus.service
+	sha256sums = 43cbf9d0c18ff45a39ae4a671792af4fd58a3a2cc426dc131cd7caab0bd9b804
+
+pkgname = gnome-online-miners-disabled
+

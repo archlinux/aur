@@ -1,0 +1,4 @@
+[D-Bus Service]
+Name=org.gnome.OnlineMiners.__NAME__
+Exec=/usr/bin/false
+
