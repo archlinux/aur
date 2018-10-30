@@ -3,11 +3,11 @@
 # Contributor: Duck Hunt <vaporeon@tfwno.gf>
 
 pkgname=libretro-ppsspp-git
-pkgver=r24646.6fe7a9746
+pkgver=r24915.6dd048f0c
 pkgrel=1
 pkgdesc='Sony PlayStation Portable core'
 arch=('x86_64')
-url='https://github.com/libretro/libretro-ppsspp'
+url='https://github.com/libretro/ppsspp'
 license=('GPL2')
 groups=('libretro-unstable')
 depends=('gcc-libs' 'glew' 'glibc' 'libgl' 'libretro-core-info' 'sdl2' 'zlib')
@@ -15,13 +15,17 @@ makedepends=('cmake' 'git' 'glu' 'libglvnd')
 provides=('libretro-ppsspp')
 conflicts=('libretro-ppsspp')
 source=('libretro-ppsspp::git+https://github.com/libretro/ppsspp.git'
+        'git+https://github.com/Kingcom/armips.git'
+        'git+https://github.com/discordapp/discord-rpc.git'
         'ppsspp-ffmpeg::git+https://github.com/hrydgard/ppsspp-ffmpeg.git'
         'ppsspp-glslang::git+https://github.com/hrydgard/glslang.git'
         'git+https://github.com/hrydgard/ppsspp-lang.git'
-        'git+https://github.com/Kingcom/armips.git'
-        'armips-tinyformat::git+https://github.com/Kingcom/tinyformat.git'
-        'git+https://github.com/KhronosGroup/SPIRV-Cross.git')
+        'git+https://github.com/Tencent/rapidjson.git'
+        'git+https://github.com/KhronosGroup/SPIRV-Cross.git'
+        'armips-tinyformat::git+https://github.com/Kingcom/tinyformat.git')
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -48,7 +52,7 @@ prepare() {
     git config submodule.${submodule}.url ../ppsspp-${submodule#*/}
     git submodule update ${submodule}
   done
-  for submodule in ext/{SPIRV-Cross,armips}; do
+  for submodule in ext/{armips,discord-rpc,rapidjson,SPIRV-Cross}; do
     git submodule init ${submodule}
     git config submodule.${submodule}.url ../${submodule#*/}
     git submodule update ${submodule}
@@ -76,10 +80,8 @@ build() {
 }
 
 package() {
-  cd build
-
-  install -Dm 644 lib/ppsspp_libretro.so -t "${pkgdir}"/usr/lib/libretro/
-  install -Dm 644 ../libretro-ppsspp/LICENSE.TXT -t "${pkgdir}"/usr/share/licenses/libretro-ppsspp-git/
+  install -Dm 644 build/lib/ppsspp_libretro.so -t "${pkgdir}"/usr/lib/libretro/
+  install -Dm 644 libretro-ppsspp/LICENSE.TXT -t "${pkgdir}"/usr/share/licenses/libretro-ppsspp-git/
 }
 
 # vim: ts=2 sw=2 et:
