@@ -2,10 +2,10 @@
 
 pkgname=nginx-mainline-mod-echo
 pkgver=0.61
-pkgrel=12
+pkgrel=13
 
 _modname="${pkgname#nginx-mainline-mod-}"
-_nginxver=1.15.4
+_nginxver=1.15.5
 
 pkgdesc='Directives "echo", "sleep", "time" and more (module for mainline nginx)'
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=(
 	https://github.com/openresty/$_modname-nginx-module/archive/v$pkgver/$_modname-$pkgver.tar.gz
 )
 
-sha256sums=('3324776c800d974ceae8797ab9102ca26a8c3656f5c6fb3f31f2cb1e719458e7'
+sha256sums=('1a3a889a8f14998286de3b14cc1dd5b2747178e012d6d480a18aa413985dae6f'
             '2e6a03032555f5da1bdff2ae96c96486f447da3da37c117e0f964ae0753d22aa')
 
 build() {
