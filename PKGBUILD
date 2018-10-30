@@ -2,7 +2,7 @@
 # Contributor: Eduardo Sánchez Muñoz <eduardosanchezmunoz@gmail.com>
 
 pkgname=cppcms
-pkgver=1.0.5
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="CppCMS is the web development framework written in C++, that is aimed on development of high performance web application."
 arch=('i686' 'x86_64')
@@ -19,8 +19,8 @@ optdepends=(
 )
 conflicts=('cppcms' 'libcppcms' 'libbooster')
 provides=('cppcms' 'libcppcms' 'libbooster')
-source=("http://sourceforge.net/projects/cppcms/files/cppcms/$pkgver/cppcms-$pkgver.tar.bz2/download")
-sha256sums=('84b685977bca97c3e997497f227bd5906adb80555066d811a7046b01c2f51865')
+source=("cppcms-$pkgver.tar.bz2::http://sourceforge.net/projects/cppcms/files/cppcms/$pkgver/cppcms-$pkgver.tar.bz2/download")
+sha256sums=('10fec7710409c949a229b9019ea065e25ff5687103037551b6f05716bf6cac52')
 
 build() {
   cd "$srcdir/cppcms-$pkgver"
