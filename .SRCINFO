@@ -1,0 +1,19 @@
+pkgbase = avengers-gtk-theme-git
+	pkgdesc = A special version of Qogir gtk theme
+	pkgver = 5.a7f8287
+	pkgrel = 1
+	url = https://github.com/vinceliuice/Avengers-gtk-theme
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = patch
+	depends = gtk3
+	depends = gtk-engine-murrine
+	depends = gtk-engines
+	source = Install.patch
+	source = git+https://github.com/vinceliuice/Avengers-gtk-theme.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = avengers-gtk-theme-git
+
