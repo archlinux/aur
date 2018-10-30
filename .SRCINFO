@@ -1,0 +1,20 @@
+pkgbase = vaclist
+	pkgdesc = Add and check steam profiles to monitor profiles for bans
+	pkgver = r25.b45f2ce
+	pkgrel = 1
+	url = https://github.com/DNDEBUG/vaCLIst
+	install = vaCLIst.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = bash
+	depends = git
+	depends = curl
+	depends = jq
+	optdepends = xclip: clipboard support
+	provides = vaCLIst.sh
+	source = vaclist::git://github.com/DNDEBUG/vaCLIst
+	sha256sums = SKIP
+
+pkgname = vaclist
+

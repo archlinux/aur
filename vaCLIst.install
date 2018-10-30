@@ -1,0 +1,20 @@
+pre_install()
+{
+	echo
+	echo
+	echo "You need an API Key for this script to work"
+	echo "Visit: https://steamcommunity.com/dev/apikey"
+	echo "Once you get an API key run vaCLIst and input it when prompted"
+	echo
+	echo
+}
+
+pre_remove()
+{
+	echo
+	echo
+	echo "You can delete all profile related stuff in $HOME/.config/vaCLIst"
+	echo "rm -rf $HOME/.config/vaCLIst"
+	echo
+	echo
+}
