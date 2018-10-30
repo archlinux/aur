@@ -2,10 +2,10 @@
 
 pkgname=nginx-mainline-mod-naxsi
 pkgver=0.55.3
-pkgrel=19
+pkgrel=20
 
 _modname=naxsi
-_nginxver=1.15.4
+_nginxver=1.15.5
 
 pkgdesc='Nginx Anti XSS & SQL Injection (module for mainline nginx)'
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ source=(
 	https://github.com/nbs-system/$_modname/archive/$pkgver/$_modname-$pkgver.tar.gz
 )
 
-sha256sums=('3324776c800d974ceae8797ab9102ca26a8c3656f5c6fb3f31f2cb1e719458e7'
+sha256sums=('1a3a889a8f14998286de3b14cc1dd5b2747178e012d6d480a18aa413985dae6f'
             '0b3c95d250772dc89ad8b49e47c1e024c5ae2c76c0cffa445e9fe05c4dd13495')
 
 build() {
