@@ -13,7 +13,7 @@
 pkgbase=bcompare
 pkgname=('bcompare' 'bcompare-kde5' 'bcompare-kde4' 'bcompare-nautilus' 'bcompare-thunar' 'bcompare-cinnamon' 'bcompare-mate')
 pkgver=4.2.8.23479
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url='http://www.scootersoftware.com'
 license=('custom')
@@ -117,6 +117,7 @@ package_bcompare() {
 package_bcompare-kde5() {
   pkgdesc="KDE Plasma 5 service menus for Beyond Compare 4"
   depends=('bcompare')
+  install=${pkgbase}-kde5.install
 
    msg2 "Packaging KDE Plasma 5 service menus..."
   _install_dir="${srcdir}/install"
