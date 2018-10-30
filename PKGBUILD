@@ -2,7 +2,7 @@
 # Contributor: alicewww <almw@protonmail.com>
 pkgname=mullvad-vpn
 pkgver=2018.4
-pkgrel=1
+pkgrel=2
 pkgdesc="VPN Client for Mullvad.net, a bitcoin-friendly VPN for anonymity and privacy"
 url="https://www.mullvad.net"
 arch=('x86_64')
@@ -41,6 +41,9 @@ package() {
     # Main binary
     mkdir -p ${pkgdir}/usr/bin
     ln -s "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+
+    # CLI binary
+    install -m755 "${srcdir}/usr/bin/mullvad" "${pkgdir}/usr/bin/mullvad"
 
     # Icons
     install -dm755 "${pkgdir}/usr/share/icons/hicolor"
