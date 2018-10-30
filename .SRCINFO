@@ -12,6 +12,7 @@ pkgbase = sickchill
 	depends = python2-mako
 	optdepends = python2-notify
 	optdepends = unrar
+	provides = sickrage
 	conflicts = sickchill-git
 	options = !strip
 	source = https://github.com/SickChill/SickChill/archive/v2018.10.30-6.tar.gz

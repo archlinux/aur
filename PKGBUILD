@@ -19,6 +19,9 @@ depends=('nodejs'
 optdepends=('python2-notify'
             'unrar')
 
+provides=($_pkgname 
+          'sickrage')
+
 conflicts=(${_pkgname}
            'sickchill-git')
 
