@@ -36,6 +36,7 @@ get_broken_pkgs() {
 
 get_repo_pkgs() {
     pacman -Sl | cut -d' ' -f1-2
+    pacman -Qqm | awk '{print "foreign", $0}'
 }
 
 join -12 <(get_repo_pkgs | sort -k2) <(get_broken_pkgs) | awk '{ print $2 "\t" $1 }'
