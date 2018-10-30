@@ -22,6 +22,7 @@ optdepends=('python2-notify'
 conflicts=(${_pkgname}
            'pymedusa'
            'sickbeard'
+           'sickchill-git'
            'sickrage'
            'sickrage-git'
            'sickrage2-git'
