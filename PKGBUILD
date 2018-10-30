@@ -1,8 +1,8 @@
-# Maintainer: Hans-Nikolai Viessmann <hv15 @ hw.ac.uk>
+# Maintainer: Hans-Nikolai Viessmann <hans AT viess DOT mn>
 _pkgname=ocr-a
 pkgname=latex-${_pkgname}-font
 pkgver=1.00
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides Type 1 fonts of the OCR-A typeface."
 arch=('any')
 url="http://www.ctan.org/tex-archive/fonts/ocr-a/"
@@ -10,9 +10,9 @@ license=('custom:CTAN-NoSell')
 depends=('texlive-core')
 install="${pkgname}.install"
 source=("http://mirrors.ctan.org/fonts/${_pkgname}.zip"
-        "LICENSE::http://texcatalogue.ctan.org/licenses.nosell.html")
+        'LICENSE')
 md5sums=('67ce5623c064cda47dbd349a351c1a4a'
-         '6511a45b4d21ddf87726c16caf8e8ef4')
+         'cbf1958ac437a0e32e4a517c9a3a5e11')
 
 prepare() {
 	cd "$_pkgname"
