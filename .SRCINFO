@@ -21,6 +21,7 @@ pkgbase = python-thinc
 	depends = python
 	depends = python-hypothesis
 	depends = python-cytoolz
+	depends = python-toolz
 	depends = python-blis
 	depends = python-six
 	depends = python-tqdm
