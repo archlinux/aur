@@ -1,6 +1,6 @@
 pkgbase = rust-bindgen-git
 	pkgdesc = Binding generator for rust language
-	pkgver = 0.37.4.d61ab75
+	pkgver = 0.43.1.5de943c
 	pkgrel = 1
 	url = https://github.com/rust-lang-nursery/rust-bindgen
 	arch = i686
