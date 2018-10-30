@@ -27,7 +27,7 @@ build() {
   cd "$srcdir/CCR-Plus"
   mkdir -p build && cd build
   qmake-qt5 ..
-  make -j4
+  make -j$(nproc)
 }
 
 package() {
