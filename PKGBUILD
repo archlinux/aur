@@ -1,7 +1,7 @@
 # Maintainer: Michael Yeatts <mwyeatts at gmail dot com>
 
 pkgname=lightning-app
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 pkgdesc="Lightning Network Desktop Wallet"
 arch=('x86_64')
