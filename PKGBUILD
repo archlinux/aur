@@ -1,4 +1,5 @@
 # Maintainer: Raymond Wanyoike <raymond[dot]wanyoike[at]gmail[dot]com>
+# Maintainer: Bryan Hyshka <bryan[at]hyshka[dot]com>
 
 _gitauthor=galliumos
 _gitname=xkeyboard-config
