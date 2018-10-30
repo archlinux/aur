@@ -2,7 +2,7 @@
 
 pkgname=nginx-mainline-mod-modsecurity
 pkgver=1.0.0
-pkgrel=9
+pkgrel=10
 _nginxver=1.15.4
 
 pkgdesc='ModSecurity v3 Nginx Connector (module for mainline nginx)'
