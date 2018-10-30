@@ -1,7 +1,7 @@
 # Maintainer: Johannes Wienke <languitar@semipol.de>
 pkgname=pyls-mypy
-pkgver=0.1.3
-pkgrel=2
+pkgver=0.1.5
+pkgrel=1
 pkgdesc="A Mypy plugin for the python language server"
 url="https://github.com/tomv564/pyls-mypy"
 depends=('python' 'python-language-server' 'mypy' 'python-future')
