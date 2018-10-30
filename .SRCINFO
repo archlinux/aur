@@ -1,0 +1,14 @@
+pkgbase = openucx
+	pkgdesc = Unified Communication X (http://www.openucx.org)
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = http://www.openucx.org
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = rdma-core
+	source = git+https://github.com/openucx/ucx.git#tag=v1.4.0
+	md5sums = SKIP
+
+pkgname = openucx
+
