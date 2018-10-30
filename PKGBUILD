@@ -1,6 +1,6 @@
 
 pkgname=xamarin-android
-_pkgver=8.3.99.189
+_pkgver=9.1.99.176
 pkgver=${_pkgver//[+-]/_}
 pkgrel=3
 pkgdesc="Xamarin android build from jenkins.mono-project"
@@ -12,7 +12,7 @@ conflicts=('xamarin-android')
 url="https://github.com/xamarin/xamarin-android"
 license=('MIT')
 source=("xamarin.android-oss_${_pkgver}.deb::https://jenkins.mono-project.com/view/Xamarin.Android/job/xamarin-android-linux/lastSuccessfulBuild/Azure/processDownloadRequest/xamarin-android/xamarin.android-oss_${_pkgver}_amd64.deb")
-sha256sums=('5f829f497741ceccca069449d5c53aed2b6c283260aaa6a725c691eb7c7c5e02')
+sha256sums=('c8409d58c02e313571723293e4629310c76dd21dd1fc39a774666da07c5329b8')
 
 package() {
     cd "${srcdir}"
