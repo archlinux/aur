@@ -1,7 +1,7 @@
 # Maintainer: Eric DeStefano <eric at ericdestefano dot com>
 
 pkgname=sheepshaver
-pkgver=2e302d6
+pkgver=5078135
 pkgrel=1
 pkgdesc="An Open Source PowerMac Emulator"
 arch=('x86_64')
@@ -10,11 +10,11 @@ license=('GPL')
 depends=('gtk2' 'sdl')
 provides=('sheepshaver')
 install=$pkgname.install
-source=('https://github.com/cebix/macemu/zipball/master/cebix-macemu-2e302d6.zip'
+source=('https://github.com/cebix/macemu/zipball/master/cebix-macemu-5078135.zip'
 '99-sheepshaver.conf'
 'SheepShaver.desktop'
 'SheepShaver.png')
-sha256sums=('ebad98765ece1756e76f5a9d42b8560340b98bb458080bba173472362658454a'
+sha256sums=('108ade640136a53adadedee3c04c8218a35b6bae90861e906b8a09df08be95c2'
 'a4aa858b95d29906873693988d5db42d5a4da8aa94a72c79374f59fc488efd51'
 'cb002e73e864a6ca271e0bbaa6df6eb89dc1df86856fc575c20bf79367458c39'
 'b7f67b1f8424f3e0ffa1a5e57597f368c4c4f93ea1f871ec0a76700b7519b241')
