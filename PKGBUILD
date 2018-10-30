@@ -5,7 +5,7 @@ _ndkver=0.3.0
 
 pkgname=nginx-mainline-mod-ndk-set-misc
 pkgver=$_setmiscver+$_ndkver
-pkgrel=18
+pkgrel=19
 
 _modname=set-misc
 _nginxver=1.15.4
