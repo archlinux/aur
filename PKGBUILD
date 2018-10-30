@@ -1,22 +1,30 @@
-# $Id: pkgbuild-mode.el,v 1.23 2007/10/20 16:02:14 juergen Exp $
-# Contributor: Sergey Mastykov <smastykov[at]gmail[dot]com>
+# Maintainer: Ainola
+# Contributor: Sergey Mastykov
 
 pkgname=linkchecker
-pkgver=9.4
-pkgrel=3
-pkgdesc="An command line utility to check HTML documents for broken links."
-arch=('any')
+pkgver=9.4.0
+pkgrel=4
+pkgdesc="Check websites for broken links."
+arch=('x86_64')
 url="https://github.com/linkcheck/linkchecker"
-license=('GPL')
-depends=('python2>=2.7.0' 'python2-requests' 'python2-dnspython' 'python2-xdg')
-source=("git+https://github.com/linkcheck/linkchecker.git")
-sha256sums=('SKIP')
+license=('GPL2')
+depends=('python2-requests' 'python2-dnspython' 'python2-xdg')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/linkchecker/linkchecker/archive/v$pkgver.tar.gz")
+sha256sums=('1ce495fc5f2366ac5b31cbda6fef2c5cf6582bb2d55fd9648931952611e47473')
 
+build() {
+    cd "$pkgname-$pkgver"
+    python2 setup.py sdist --manifest-only
+    (cd doc && make)
+    python2 setup.py build
+}
+
+# Upstream tests need to be fixed first
+#check() {
+#    cd "$pkgname-$pkgver" && python2 setup.py test
+#}
 
 package() {
-  cd $srcdir/$pkgname
-  python2 setup.py sdist --manifest-only || return 1
-  (cd doc; make)
-  python2 setup.py build || return 1
-  python2 setup.py install --root=$pkgdir || return 1
+    cd "$pkgname-$pkgver"
+    python2 setup.py install --root="$pkgdir"
 }
