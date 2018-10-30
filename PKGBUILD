@@ -1,7 +1,7 @@
 # Maintainer: Luke Yue <lukedyue@gmail.com>
 
 pkgname=clash
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A rule based proxy in Go."
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('glibc')
 source=("https://codeload.github.com/Dreamacro/clash/tar.gz/v${pkgver}"
         "https://raw.githubusercontent.com/Dreamacro/clash/master/LICENSE")
 
-sha512sums=('284e20578bb956467f695d57738bb1dea9afd71207b2ec4454dae4da26590bc26436ce74e97e13b1b1789b946551d021bc984b80c1444d9f79638e818d73cc9c'
+sha512sums=('c51ace23cd54e68663bb323cfff9beac67cda1c234027da1507ad76e2baa4c2a3c458c773cc074cf89837585138f5c5b9fa549ae691bfc6f31c03a347397f375'
             '46478b083104014b881ad546b89cfb16f040588f38e8c04ca664078061ba0e0653a394365d128410a9646f9159c9d9c7644a3ea42b22e4a4f240dfd6bea666c5')
 
 prepare() {
