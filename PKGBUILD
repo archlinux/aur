@@ -2,7 +2,7 @@
 
 pkgname=mpd-sacd
 pkgver=0.21.0
-pkgrel=9
+pkgrel=10
 pkgdesc='MPD with patches for SACD and DVDA ISO playback.'
 url='https://sourceforge.net/p/sacddecoder/mpd/MPD.git/ci/master/tree/'
 license=('GPL')
