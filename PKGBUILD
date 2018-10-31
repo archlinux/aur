@@ -2,7 +2,7 @@
 # Co-Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 
 pkgname=expressvpn
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Proprietary VPN client for Linux"
 arch=('x86_64' 'i686' 'armv7h')
@@ -21,11 +21,11 @@ source_i686=("${_url}/${pkgname}_${pkgver}_i386.deb"{,.asc})
 source_armv7h=("${_url}/${pkgname}_${pkgver}_armhf.deb"{,.asc})
 
 sha512sums=('SKIP')
-sha512sums_x86_64=('7308449f383f9a0938bda5a21e541422502f336aef636205a27499bf2d328dd33ee9528e2b3ab86865cf81e573bb4ab37e1691915b9da39e183c1b5f5946fdff'
+sha512sums_x86_64=('bb5da0871c258c281a7b8962170b88382f461b41f9f4208862ddf0ff4f51f62b4b4c064aa2f7ea0fca3d08e58277d03d8cb16a8923a67d0cc73fc2c258646e13'
                    'SKIP')
-sha512sums_i686=('bfe9e84e98e716ff458afbcfb02f129ee939cccef2aa30c0d8cd59cd1ee684a74be15cb5f0c7cdf68449c4c774ff107a9adeb5d9b01e46db4b20cc0d344780d7'
+sha512sums_i686=('7c80092417a430b27177e17a7da447c8886a6b264d58f0465f786d06cc816960d1f1b3c3dbd615f1d770c9e319c275f3ec2248772cd1d63e779eee4d49a9823f'
                  'SKIP')
-sha512sums_armv7h=('baa500fcf069f907dfee4f4ddaba0758a59bb1989c7c51973bfd8f81314b0e4a532f52176cad8735ecdc2cbc7388fbffd4d82e20637893d8c9891fc0403d1b24'
+sha512sums_armv7h=('76a4e3c1ac54a94d12881c9c967be427bc36161e69968f7d0c82491e0e1e71456c459f49015a669eb3c47f5c4814224e4124e6ea32e254bdf6c761854d8d38d8'
                    'SKIP')
 validpgpkeys=('1D0B09AD6C93FEE93FDDBD9DAFF2A1415F6A3A38')
 
@@ -47,8 +47,4 @@ package() {
 
     # Remove sysv script
     rm "$pkgdir/usr/lib/expressvpn/expressvpn.init"
-
-    # Remove insecure RPATH (1.4.5 and upwards have /tmp/engine-linux/<numbers>/src/github.com/xvpn/xv_engine/xvclient/linux/${ARCH}/lib included for some reason
-    NEWRPATH=$(chrpath -l "${pkgdir}/usr/bin/expressvpnd" | sed -e 's|.*expressvpnd: RPATH=||' -e 's|:/tmp/engine-linux/[^/]*/src/github.com/xvpn/xv_engine/xvclient/linux/[^/]*/lib||')
-    chrpath -r "$NEWRPATH" "${pkgdir}/usr/bin/expressvpnd"
 }
