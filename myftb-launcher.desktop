@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=MyFTB Launcher
+Comment=A fork of the SKCraft launcher for the MyFTB servers.
+Exec=myftb-launcher
+Icon=/usr/share/pixmaps/myftb-launcher.png
+Terminal=false
+Type=Application
+Categories=Game;AudioVideo;
