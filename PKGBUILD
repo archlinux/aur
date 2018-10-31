@@ -2,44 +2,50 @@
 # Contributor: Andrew Stubbs <andrew.stubbs@gmail.com>
 
 pkgname=etcher
-pkgver=1.4.5
+pkgver=1.4.6
 pkgrel=1
 pkgdesc='Burn images to SD cards & USB drives, safe & easy'
 arch=(x86_64)
 url='https://www.etcher.io/'
 license=(apache)
 depends=(electron gtk2 libxtst libxss gconf nss alsa-lib)
-makedepends=(npm python2 git)
+makedepends=(npm python2 git jq)
 optdepends=('libnotify: for notifications'
             'speech-dispatcher: for text-to-speech')
 options=('!strip')
-source=("https://github.com/resin-io/$pkgname/archive/v$pkgver.tar.gz"
+source=("$pkgname::git+https://github.com/balena-io/$pkgname.git#tag=v$pkgver"
+        'git+https://github.com/balena-io/scripts.git'
         'etcher-electron'
         'etcher-electron.desktop')
-sha256sums=('82122253333b3bf5dc6f8909a5877a3218a2e677aff09159e5a4819be9e0edb9'
+sha256sums=('SKIP'
+            'SKIP'
             'a64f79fe894c4828b515844703b1795448a4818a654f5d42d4f567f4d80998d1'
             '89291532fb6e6c5555b43d61c9ba3df103bca0eace040483884b86fd30dca3e4')
 
 prepare() {
-  cd "$pkgname-$pkgver"
-  sed -i 's/python$/python2/' scripts/build/dependencies-npm.sh
+  cd "$pkgname"
+  git submodule init
+  git config submodule.scripts/resin.url "$srcdir/scripts"
+  git submodule update
+
+  # electron --version does not work in a chroot
+  # https://github.com/electron/electron/issues/12621
+  export _electron_version=$(pacman -Q electron | sed 's/.\+ \(.\+\)-.\+/\1/')
+  mv package.json{,.orig}
+  jq '.devDependencies.electron |= env._electron_version' \
+    package.json.orig > package.json
 }
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
 
-  export PATH="$(pwd)/node_modules/.bin:$PATH"
-  ./scripts/build/dependencies-npm.sh \
-    -s linux \
-    -r x64 \
-    -t electron \
-    -v "$(pacman -Q electron | sed 's/.\+ \(.\+\)-.\+/\1/')"
-  webpack
+  make electron-develop
+  make webpack
   npm prune --production
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
 
   _appdir="$pkgdir"/usr/share/$pkgname
   install -d "$_appdir"
