@@ -4,7 +4,7 @@ _distname=Devel-Trepan
 
 pkgname=perl-devel-trepan
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A modular gdb-like Perl debugger"
 arch=('any')
 license=('GPL')
@@ -18,7 +18,7 @@ depends=('perl'
          'perl-syntax-highlight-perl-improved'
          'perl-rlib')
 # TODO...
-optdepends=(#'perl-b-codelines'
+optdepends=('perl-b-codelines'
             'perl-data-printer'
             'perl-data-dumper-concise'
             #'perl-devel-trepan-deparse'
@@ -36,11 +36,11 @@ build() {
   cd "${srcdir}/${_distname}-v${pkgver}"
   unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT='1' PERL_AUTOINSTALL='--skipdeps'
-  perl Build.PL INSTALLDIRS=vendor
+  perl Build.PL
   ./Build
 }
 
-check () {
+check() {
   cd "${srcdir}/${_distname}-v${pkgver}"
   ./Build test
 }
