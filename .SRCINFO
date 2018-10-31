@@ -8,7 +8,7 @@ pkgbase = tee-clc
 	arch = x86_64
 	license = MIT
 	source = https://github.com/Microsoft/team-explorer-everywhere/releases/download/14.134.0/TEE-CLC-14.134.0.zip
-	sha256sums = Team Explorer Everywhere Plug-in for Eclipse and Cross-platform Command-line Client for Team Foundation Server
+	sha256sums = af4b7123a09475ff03a3f5662df3de614df2f4acc33df16cdab307b5fb6d7dc7
 
 pkgname = tee-clc
 
