@@ -29,8 +29,13 @@ build() {
     fi
     mkdir -p "build-${_arch}" && pushd "build-${_arch}"
     msiexec /i "${srcdir}"/python-${pkgver}${target}.msi /qb TARGETDIR=$PWD
+
     # https://bugs.python.org/issue11566
     sed -i "s|#define hypot _hypot|/*#define hypot _hypot*/|g" include/pyconfig.h
+
+    # https://bugs.python.org/issue11722
+    sed -i "s|#if defined(MS_WIN64)|#if defined(MS_WIN64) \|\| defined(__MINGW64__)|g" include/pyconfig.h
+
     gendef python${_pybasever}.dll
     ${_arch}-dlltool --dllname python${_pybasever}.dll --def python${_pybasever}.def --output-lib libs/libpython${_pybasever}.dll.a
     sed "s|@TRIPLE@|${_arch}|g;s|@PYVER@|${_pybasever}|g" "${srcdir}"/wine-python.sh > ${_arch}-python${_pybasever}-bin
