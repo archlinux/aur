@@ -1,0 +1,20 @@
+diff -ura package.orig/django_filters/filters.py package.new/django_filters/filters.py
+--- package.orig/django_filters/filters.py	2017-10-19 10:25:54.000000000 +0100
++++ package.new/django_filters/filters.py	2018-10-31 00:00:52.575922176 +0000
+@@ -6,7 +6,15 @@
+ from django import forms
+ from django.db.models import Q
+ from django.db.models.constants import LOOKUP_SEP
+-from django.db.models.sql.constants import QUERY_TERMS
++try:
++    from django.db.models.sql.constants import QUERY_TERMS
++except ImportError:
++    QUERY_TERMS = {
++        'exact', 'iexact', 'contains', 'icontains', 'gt', 'gte', 'lt', 'lte', 'in',
++        'startswith', 'istartswith', 'endswith', 'iendswith', 'range', 'year',
++        'month', 'day', 'week_day', 'hour', 'minute', 'second', 'isnull', 'search',
++        'regex', 'iregex',
++    }
+ from django.utils import six
+ from django.utils.itercompat import is_iterable
+ from django.utils.timezone import now
