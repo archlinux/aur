@@ -1,30 +1,19 @@
-# Maintainer: Florian B. 
+# Maintainer: Florian B.
 
-pkgname="powerline-shell-git"
-_pkgname="powerline-shell"
-pkgver=r3.3c5ca0c
+pkgname=powerline-shell
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="A pretty prompt for your shell"
-arch=("any")
-_giturl="://github.com/b-ryan/powerline-shell"
-url="https${_giturl}"
-license=("MIT")
-provides=("${_pkgname}")
-depends=("python")
-makedepends=(
-  "git" "python-setuptools"
-)
-source=(
-  "git${_giturl}.git"
-)
-md5sums=('SKIP')
-
-pkgver() {
-  cd "$(pkgname)"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+arch=('any')
+url="https://github.com/b-ryan/powerline-shell"
+license=('MIT')
+depends=('python' 'python-argparse')
+makedepends=('python-setuptools')
+source=("https://github.com/b-ryan/powerline-shell/archive/v$pkgver.tar.gz")
+sha256sums=('6bfd04113d8470132e447f4cc6b5f2c4522b0aaf374652e9b9bd2a3bb4eac329')
 
 package() {
-  cd "${srcdir}/${_pkgname}"
-  python setup.py install --root="${pkgdir}" --optimize=1
+  cd $pkgname-$pkgver
+  python setup.py install --root="$pkgdir" --optimize=1
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/${pkgname}/LICENSE
 }

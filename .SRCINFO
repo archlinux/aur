@@ -1,14 +1,15 @@
 pkgbase = powerline-shell
 	pkgdesc = A pretty prompt for your shell
-	pkgver = r546.73b01d6
+	pkgver = 0.5.4
 	pkgrel = 1
 	url = https://github.com/b-ryan/powerline-shell
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
 	depends = python
-	provides = powerline-shell
-	source = git://github.com/b-ryan/powerline-shell.git
-	md5sums = SKIP
+	depends = python-argparse
+	source = https://github.com/b-ryan/powerline-shell/archive/v0.5.4.tar.gz
+	sha256sums = 6bfd04113d8470132e447f4cc6b5f2c4522b0aaf374652e9b9bd2a3bb4eac329
 
 pkgname = powerline-shell
 
