@@ -2,11 +2,11 @@ pkgbase = grub-custom-simona
 	pkgdesc = expand grub2 'grub-mkconfig' command.
 	pkgver = 0.0.1
 	pkgrel = 1
-	url = http://www.foo.tld
 	arch = any
 	license = GPL2
 	depends = grub
 	depends = bash
+	backup = etc/default/grub-custom
 	source = grub-custom-simona-0.0.1.tar.gz
 	md5sums = 87fda850bd490f66965488d6ee523a3a
 
