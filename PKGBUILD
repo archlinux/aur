@@ -2,7 +2,7 @@
 _pkgname=lightdm-theme-sapphire
 pkgname=lightdm-webkit2-theme-sapphire
 pkgver=1.0.1
-pkgrel=2
+pkgrel=1
 pkgdesc="A simple Sapphire theme for lightdm-webkit2-greeter"
 arch=('any')
 url="https://github.com/Sujaykumarh/${_pkgname}"
