@@ -4,6 +4,7 @@ pkgbase = elokab-terminal
 	pkgrel = 1
 	url = http://elkirtasse.sourceforge.net
 	arch = x86_64
+	groups = elokab-desktop
 	license = GPL3
 	depends = qt5-svg
 	source = https://github.com/zakariakov/elokab-terminal/archive/v0.3.2.tar.gz
