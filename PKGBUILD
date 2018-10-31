@@ -22,13 +22,15 @@ prepare() {
 build() {
   cd "${srcdir}/${_distname}-${pkgver}"
   unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
-  export PERL_MM_USE_DEFAULT='1' PERL_AUTOINSTALL='--skipdeps'
+  export PERL_MM_USE_DEFAULT='1' PERL_AUTOINSTALL='--skipdeps' MODULEBUILDRC='/dev/null'
   perl Build.PL
   ./Build
 }
 
 check() {
   cd "${srcdir}/${_distname}-${pkgver}"
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1
   ./Build test
 }
 
