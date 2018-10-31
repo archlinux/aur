@@ -2,7 +2,7 @@
 
 pkgname=perfutils-git
 pkgver=r94.5676231
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 
 pkgdesc='Collection of eclectic tools for measuring performance using the cycle counter and pinning threads'
@@ -20,6 +20,8 @@ conflicts=(${pkgname%-git})
 depends=(gcc-libs glibc)
 makedepends=(git)
 
+options=(staticlibs)
+
 pkgver() {
   cd PerfUtils
   printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -35,8 +37,8 @@ package() {
   cd PerfUtils
 
   # libraries
-  install -dm0755 "$pkgdir"/usr/lib
-  install -Dm0755 obj/libPerfUtils.{a,so} "$pkgdir"/usr/lib/
+  install -Dm0644 obj/libPerfUtils.a "$pkgdir"/usr/lib/libPerfUtils.a
+  install -Dm0755 obj/libPerfUtils.so "$pkgdir"/usr/lib/libPerfUtils.so
   ln -sf libPerfUtils.so "$pkgdir"/usr/lib/libPerfUtils.so.0
 
   # headers
@@ -46,7 +48,6 @@ package() {
   # pkgconf
   install -Dm0644 "$srcdir"/perfutils.pc "$pkgdir"/usr/lib/pkgconfig/perfutils.pc
 
-  # misc
-  install -Dm0644 README.md "$pkgdir"/usr/share/doc/"${pkgname%-git}"/README.md
+  # licence
   install -Dm0644 LICENSE "$pkgdir"/usr/share/licenses/"${pkgname%-git}"/LICENSE
 }
