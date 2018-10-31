@@ -1,13 +1,13 @@
 # Maintainer: jtmb <packaging at technologicalwizardry dot com>
 _pkgname=pkhex
 pkgname=${_pkgname}-git
-pkgver=r4255.f0735855
+pkgver=r5246.7a021781
 pkgrel=1
 pkgdesc="Pokémon core series save editor, programmed in C#."
 arch=(any)
 url="https://github.com/kwsch/PKHeX"
 license=('GPL')
-depends=(mono-alpha)
+depends=(mono)
 makedepends=(git msbuild-stable)
 provides=(pkhex)
 conflicts=(pkhex)
