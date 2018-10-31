@@ -1,4 +1,5 @@
 pkgbase = elokab-adhan
+	pkgdesc = Adhan is called out by a muezzin from the mosque five times a day summoning Muslims for mandatory (fard) worship (salat)
 	pkgver = 0.1
 	pkgrel = 1
 	url = http://elkirtasse.sourceforge.net
