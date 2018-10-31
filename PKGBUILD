@@ -1,11 +1,12 @@
-# Maintainer: Andreas Nüßlein <nutz@noova.de>
-# Maintainer: Ben Edwards <ben@artfuldodge.io>
+# Maintainer: Cody Ramaker <cramaker@linux.com>
+# Contributor: Andreas Nüßlein <nutz@noova.de>
+# Contributor: Ben Edwards <ben@artfuldodge.io>
 # Contributor: Ben Alex <ben.alex@acegi.com.au>
 # Contributor: Scott Lawrence <bytbox@gmail.com>
 # Contributor: Guillaume ALAUX <guillaume at alaux dot net>
 pkgname=zookeeper
-pkgver=3.4.12
-pkgrel=1
+pkgver=3.4.13
+pkgrel=0
 pkgdesc='Open-source server which enables highly reliable distributed coordination'
 arch=('any')
 url='https://zookeeper.apache.org/'
@@ -25,7 +26,7 @@ source=(${_closest}/${_app_path}
         systemd_sysusers.d_zookeeper.conf
         systemd_tmpfiles.d_zookeeper.conf)
 
-sha256sums=('c686f9319050565b58e642149cb9e4c9cc8c7207aacc2cb70c5c0672849594b9'
+sha256sums=('7ced798e41d2027784b8fd55c908605ad5bd94a742d5dab2506be8f94770594d'
             'b59e0641de1951ad149ca39df5b5ec37dc6229f1aa987b0ed9d7e82e570be9ed'
             'a3fd2566648f57c0cdd75cd48b7b60fa55eb59ee67dd716de1e1aa6a57823b88'
             'e863b63650c15a8823cfb2b507c375c999a71cda24805062de36af0250de5daa'
@@ -48,10 +49,6 @@ package() {
     bname=$(basename $b)
     ln -s ${_app_home}/bin/${bname} "${pkgdir}/usr/bin/${bname}"
   done
-
-  #cp -r docs "${pkgdir}/usr/share/doc/${pkgname}/"
-  #ln -s /usr/share/doc/${pkgname} "${pkgdir}${_app_home}/docs"
-  #cp -r src "${pkgdir}/usr/share/${pkgname}"
 
   cp -r lib "${pkgdir}/usr/share/java/${pkgname}"
   rm -rf "${pkgdir}"/usr/share/java/${pkgname}/{jdiff,cobertura}
