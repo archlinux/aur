@@ -2,8 +2,8 @@
 
 pkgname=blackboxwm
 _pkgname=blackbox
-pkgver=0.71.2
-pkgrel=2
+pkgver=0.74
+pkgrel=1
 pkgdesc="A window manager for X11 (maintained fork of blackbox)"
 arch=('i686' 'x86_64')
 url="http://github.com/bbidulock/blackboxwm"
@@ -13,8 +13,8 @@ conflicts=($_pkgname)
 replaces=($_pkgname)
 depends=('libxext' 'libxft')
 options=('!libtool' 'staticlibs')
-source=("https://github.com/bbidulock/$pkgname/releases/download/$pkgver/$_pkgname-$pkgver.tar.bz2")
-md5sums=('f75acef89e6aa543394350f7ddad97b8')
+source=("https://github.com/bbidulock/$pkgname/releases/download/$pkgver/$_pkgname-$pkgver.tar.xz")
+md5sums=('9e2117946901ef0de437a223d48d59ce')
 
 # is this necessary?
 #prepare() {
