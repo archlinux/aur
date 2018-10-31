@@ -3,7 +3,7 @@
 
 pkgname=zfs-utils
 pkgver=0.7.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Userspace utilities for the Zettabyte File System."
 arch=("i686" "x86_64")
 url="https://zfsonlinux.org/"
@@ -13,7 +13,7 @@ source=("git+https://github.com/zfsonlinux/zfs.git#tag=zfs-${pkgver}?signed"
         "zfs.initcpio.install"
         "zfs.initcpio.hook")
 sha256sums=('SKIP'
-            'aa5706bf08b36209a318762680f3c9fb45b3fc4b8e4ef184c8a5370b2c3000ca'
+            '11e02412055fe3daf4753cf2ce7011e95647bb4c9ae74288a2a769f6a4c091b2'
             'f95ad1a5421ccbb8b01f448373f46cfd1f718361a82c2687a597325cf9827e3e')
 validpgpkeys=('4F3BA9AB6D1F8D683DC2DFB56AD860EED4598027'  # Tony Hutter (GPG key for signing ZFS releases) <hutter2@llnl.gov>
               'C33DF142657ED1F7C328A2960AB9E991C6AF658B') # Brian Behlendorf <behlendorf1@llnl.gov>

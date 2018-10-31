@@ -7,13 +7,9 @@ build() {
         zunicode \
         zcommon \
         zfs \
-        zpios \
-        spl \
-        splat
+        spl
 
     map add_binary \
-        arcstat.py \
-        dbufstat.py \
         fsck.zfs \
         mount.zfs \
         seq \
@@ -22,11 +18,8 @@ build() {
         zfs \
         zhack \
         zinject \
-        zpios \
         zpool \
         zstreamdump \
-        ztest \
-        splat \
         /lib/udev/vdev_id \
         /lib/udev/zvol_id \
         findmnt
