@@ -2,7 +2,7 @@
 
 _gemname=cairo-gobject
 pkgname=ruby-$_gemname
-pkgver=3.2.9
+pkgver=3.3.0
 pkgrel=1
 pkgdesc='Ruby/CairoGObject is a Ruby binding of cairo-gobject'
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(ruby ruby-cairo ruby-glib2=$pkgver)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('7d0fca40080fbf7ce09b9bd06bca8e7b21652e5e')
+sha1sums=('8fd2272d0235d14739efe0a6c2c604f96c57a577')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
