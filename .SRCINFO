@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-python35-bin
 	pkgdesc = Next generation of the python high-level scripting language (native MSVC version) (mingw-w64)
 	pkgver = 3.5.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.python.org/
 	arch = any
 	license = PSF
@@ -18,9 +18,11 @@ pkgbase = mingw-w64-python35-bin
 	source = https://www.python.org/ftp/python/3.5.4/python-3.5.4-embed-amd64.zip
 	source = https://www.python.org/ftp/python/3.5.4/Python-3.5.4.tgz
 	source = wine-python.sh
+	source = bpo-11566.patch
 	sha256sums = 61ca8e983be03a85beadd74da9dd1d38d9cfb23e298b9561482a7f531d48a7b9
 	sha256sums = 4b649c6ec5b2abfb9fc0f6a6d0dcbd9855d8b06ea03637fd142175822cf842f9
 	sha256sums = 6ed87a8b6c758cc3299a8b433e8a9a9122054ad5bc8aad43299cff3a53d8ca44
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = mingw-w64-python35-bin
