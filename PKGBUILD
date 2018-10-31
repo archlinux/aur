@@ -4,7 +4,7 @@ _distname=Devel-Trepan
 
 pkgname=perl-devel-trepan
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A modular gdb-like Perl debugger"
 arch=('any')
 license=('GPL')
@@ -25,8 +25,7 @@ optdepends=('perl-b-codelines'
             #'perl-devel-trepan-disassemble'
             #'perl-devel-trepan-shell'
             'perl-eval-withlexicals'
-            #'perl-term-readLine-perl5'
-            )
+            'perl-term-readline-perl5')
 makedepends=('perl-module-build')
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/R/RO/ROCKY/${_distname}-v${pkgver}.tar.gz")
