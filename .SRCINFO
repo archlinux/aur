@@ -1,0 +1,12 @@
+pkgbase = dive
+	pkgdesc = A tool for exploring each layer in a docker image
+	pkgver = 0.0.8
+	pkgrel = 1
+	url = https://github.com/wagoodman/dive
+	arch = x86_64
+	license = MIT
+	source_x86_64 = https://github.com/wagoodman/dive/releases/download/v0.0.8/dive_0.0.8_linux_amd64.tar.gz
+	md5sums_x86_64 = 56cdcd34bbbc6e8b668927020fb1b25c
+
+pkgname = dive
+
