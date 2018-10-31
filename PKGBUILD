@@ -1,19 +1,27 @@
 # Maintainer: Daniel Moch <daniel@danielmoch.com>
 pkgname=nncli
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.3.1
+pkgrel=1
 pkgdesc="NextCloud Notes Command Line Interface"
 arch=('any')
 url="https://github.com/djmoch/${pkgname}"
 license=('MIT')
 depends=('python'
-  'python-urwid'
-  'python-requests'
-  'python-appdirs'
-  'python-click')
+         'python-urwid'
+         'python-requests'
+         'python-appdirs'
+         'python-click')
 makedepends=('python-pip' 'flit' 'python-sphinx')
-source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('78d2130395c34877fbae5cf133d588bfaa0b4d03f56935253ea950f1f9aa1190')
+checkdepends=('python-pytest'
+              'python-pytest-cov'
+              'python-pytest-mock'
+              'python-pylint'
+              'python-mock')
+source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz"
+        "${pkgname}-${pkgver}.tar.gz.asc::https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz.asc")
+validpgpkeys=('72A97F7072DDCE28058DEF30323C9F1784BDDD43')
+sha256sums=('df2f6a857f86fe69da0d59d4c8dc40a5457ffd81ab7496dbbd06f106b9a431d3'
+            'SKIP')
 
 build()
 {
@@ -21,6 +29,12 @@ build()
   flit build --format wheel
   cd "${srcdir}/${pkgname}-${pkgver}/docs"
   sphinx-build -M man source build
+}
+
+check()
+{
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python -m pytest
 }
 
 package()
