@@ -15,7 +15,6 @@ sha512sums=('57b1615320c80a2f877d071f09eb733634f8a7c75a43c232b38f86e4f654245d84b
 
 build() {
   cd "${srcdir}/${_realname}-${pkgver}"
-
   unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT='1' PERL_AUTOINSTALL='--skipdeps'
 
@@ -26,18 +25,18 @@ build() {
 
 check () {
   cd "${srcdir}/${_realname}-${pkgver}"
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT='1'
   make test
 }
 
 package() {
   cd "${srcdir}/${_realname}-${pkgver}"
-
   unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
 
   make install DESTDIR="${pkgdir}"
 
-  find "$pkgdir" -name perllocal.pod -delete
-  find "$pkgdir" -name .packlist -delete
+  find "${pkgdir}" \( -name perllocal.pod -or -name .packlist \) -delete
 }
 
 # vim:set ts=2 sw=2 et:
