@@ -2,7 +2,7 @@
 
 pkgname=rua
 pkgver=0.6.4
-pkgrel=2
+pkgrel=3
 pkgdesc='convenient jailed AUR helper in rust'
 url='https://github.com/vn971/rua'
 source=("https://github.com/vn971/rua/archive/${pkgver}.tar.gz")
@@ -15,11 +15,10 @@ sha256sums=(771675c76dba1e07ff870adc67cbf401de68aa7f99bc34948ab49d4be941f2a3)
 
 build () {
   cd "$srcdir/$pkgname-$pkgver"
-  if command -v rustup && ! rustc --version; then
-    rustup install stable  # make sure at least one toolchain is installed
-  fi
   mkdir -p target/completions
-  COMPLETIONS_DIR=target/completions cargo build --release
+  RUSTUP_TOOLCHAIN=stable \
+    COMPLETIONS_DIR=target/completions \
+    cargo build --release
 }
 
 package() {
