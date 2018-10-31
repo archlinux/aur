@@ -1,28 +1,28 @@
 # Maintainer of this PKGBUILD file: Martino Pilia <martino.pilia@gmail.com>
 pkgname=itk-snap
 pkgver=3.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='ITK-SNAP is a software application used to segment structures in 3D medical images'
 arch=('x86_64')
 url='http://www.itksnap.org'
 license=('GPL3')
-depends=('insight-toolkit' 'vtk' 'qt5-base' 'fltk')
+depends=('insight-toolkit' 'vtk' 'qt5-declarative' 'fltk' 'proj' 'gdal' 'unixodbc' 'netcdf' 'glew')
 optdepends=()
 makedepends=('cmake')
 source=("$pkgname::git+git://git.code.sf.net/p/itk-snap/src"
         "itkKernelFunction.h"
         "itksnap.png"
         "itksnap.desktop")
-sha512sums=('SKIP'
-            '69010fb1d771ce28793a3f546dd7bf10b200d45755e44b77145c49af88291d89778753deb431a523c637ed7c954a73b172f4bbd52baf41b65594454acb6dcad2'
-            'b5f1e7876a9d0cb7d1abb1f0c19147642b99511d8a052a91053affa51aabd9a3929288fbe7fa365c4ad7042f28edca4759a9f3fb8f48916d1e7ee2023b1e7591'
-            'bd699dad2ff6704e56b9ac8073d92683060bf9b71ae2218c7dafd272210d8a402db1e08bedc3187e96bb74adb40a2b30b0da92bc34dd3ca40fe05e24d43d247b')
+sha256sums=('SKIP'
+            'f88fce76c3a0a3bf72deba15e901945f89df422db27e09b75fdd1a169a856e3d'
+            'ee2f8698bf751cb3e1e6520e99c0c761f996fd3707f4155d126e7ecc0a6d6884'
+            '2c23d817b14df70d9561ff601509f1e0899881e37598048e551dc2161f78b1b2')
 
 _release_commit='562f52acab8668bae681e206b20d559e59e2ef37'
 
 prepare() {
 	cd "$srcdir/$pkgname"
-	
+
 	git checkout $_release_commit
 
 	# Replace relative with absolute location of the repo
