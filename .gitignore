@@ -2,3 +2,6 @@ pkg/**
 src/**
 **.pkg.tar
 **.tgz
+**.tar.gz
+venv/*
+new_ver.txt
