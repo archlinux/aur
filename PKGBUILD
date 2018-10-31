@@ -10,7 +10,7 @@ license=('GPL')
 options=("!strip" "staticlibs")
 source=(
     "freetube.desktop"
-    "$pkgname-$pkgver-$pkgrel.zip"::"https://github.com/FreeTubeApp/FreeTube/releases/download/$pkgver/FreeTube-linux-x64.zip"
+    "$pkgname-$pkgver-$pkgrel.zip"::"https://github.com/FreeTubeApp/FreeTube/releases/download/v$pkgver-beta/FreeTube-linux-x64.zip"
     )
 
 validpgpkeys=('A8F7858263C1E39480B731DCEAD4F103068DF8E5')
