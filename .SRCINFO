@@ -1,0 +1,19 @@
+pkgbase = nginx-mod-vod
+	pkgdesc = Module for nginx that adds VOD packager/support
+	pkgver = 1.24
+	pkgrel = 1
+	url = https://github.com/kaltura/nginx-vod-module
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = nginx
+	source = http://nginx.org/download/nginx-1.14.0.tar.gz
+	source = http://nginx.org/download/nginx-1.14.0.tar.gz.asc
+	source = https://github.com/kaltura/nginx-vod-module/archive/1.24.tar.gz
+	validpgpkeys = B0F4253373F8F6F510D42178520A9993A1C052F8
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = b3cad8e3047556955fa028bcc68e7af46d19343942cb7984ad25e6f44d614ddf
+
+pkgname = nginx-mod-vod
+
