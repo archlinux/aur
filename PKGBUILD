@@ -2,9 +2,9 @@
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
-pkgname='perl-log-dispatch'
-pkgver='2.67'
-pkgrel='2'
+pkgname=perl-log-dispatch
+pkgver=2.68
+pkgrel=1
 pkgdesc="Dispatches messages to one or more outputs"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -15,8 +15,8 @@ checkdepends=('perl-test-fatal' 'perl-test-needs' 'perl-specio' 'perl-namespace-
               'perl-eval-closure' 'perl-params-validationcompiler')
 url='https://metacpan.org/release/Log-Dispatch'
 source=("http://search.cpan.org/CPAN/authors/id/D/DR/DROLSKY/Log-Dispatch-${pkgver}.tar.gz")
-md5sums=('d68e256e80ca4e1482b86abf6bcee552')
-sha512sums=('ab03777800fa758a502e69b25669c3e4ae851d9dcf5f2f4d1a21a94cc61aca866ac361d2a5db3d22d19cb4d11da29ecec19935e29fcad40bb831fb27175846d6')
+md5sums=('c273198cd4ffee4bf51b398a45e785ba')
+sha512sums=('7efc68b7519a3f5cf354cd94d6e4edc6f6955fbae8e7f23da99136c90a29b05e933460157cb5a5d08b10f0ec2b2643a4fe8e10b6aed155b02c4885e77c0d7e92')
 _distdir="Log-Dispatch-${pkgver}"
 
 build() {
