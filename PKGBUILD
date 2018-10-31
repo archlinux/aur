@@ -33,8 +33,7 @@ backup=(etc/pekwm/autoproperties
         etc/pekwm/mouse_system
         etc/pekwm/start
         etc/pekwm/vars)
-#source=("$pkgname::git+http://www.pekwm.org/git/pekwm.git")
-source=("$pkgname::git+https://projects.pekdon.net/git/pekwm.git"
+source=("$pkgname::git+https://github.com/pekdon/pekwm.git"
         'harbour-no-border.patch')
 md5sums=('SKIP'
          '74c74a53743dab90e605eb73e0579528')
