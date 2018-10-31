@@ -1,6 +1,6 @@
 # Maintainer: Adrian Petrescu <apetresc at gmail dot com>
 pkgname=leela-zero
-pkgver=0.15
+pkgver=0.16
 pkgrel=2
 pkgdesc="Go engine with no human-provided knowledge, modeled after the AlphaGo Zero paper."
 arch=('x86_64')
