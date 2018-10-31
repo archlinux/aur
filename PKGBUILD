@@ -3,7 +3,7 @@ pkgname='bootsplash-theme-bgrt'
 pkgver=0.1
 pkgrel=1
 pkgdesc="BGRT bootsplash theme"
-url="https://lists.freedesktop.org/archives/dri-devel/2017-December/160242.html"
+url="https://github.com/t1meshift/bootsplash-theme-bgrt"
 arch=('x86_64')
 license=('GPL')
 
