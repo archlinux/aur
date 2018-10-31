@@ -4,33 +4,29 @@
 
 pkgname=seamonkey-gtk2
 _pkgname=seamonkey
-pkgver=2.49.2
+pkgver=2.49.4
 pkgrel=1
 pkgdesc="SeaMonkey internet suite (GTK2 version)"
 arch=('i686' 'x86_64')
 license=('MPL')
 depends=('alsa-lib'  'dbus-glib'  'desktop-file-utils'  'gtk2' 'hunspell'  'libevent'  'libnotify'  'libvpx'  'libxt' 'mime-types'  'mozilla-common'  'nss'  'sqlite'  'startup-notification' 'libpulse' 'icu' 'gconf')
+provides=("$_pkgname=$pkgver.$pkgrel")
+conflicts=("$_pkgname")
 makedepends=('unzip' 'zip' 'pkg-config'  'python2' 'yasm' 'wireless_tools' 'mesa' 'autoconf2.13' 'imake' 'python3' 'gst-plugins-base')
 optdepends=('gst-plugins-base: vorbis decoding, ogg demuxing'
             'gst-plugins-bad: aac, vp8 and opus decoding'
             'gst-plugins-good: webm and mp4 demuxing'
             'gst-plugins-ugly: h.264 decoding')
 url="http://www.seamonkey-project.org/"
-provides=("$_pkgname=$pkgver.$pkgrel")
-conflicts=("$_pkgname")
-source=(https://archive.mozilla.org/pub/mozilla.org/seamonkey/releases/$pkgver/source/seamonkey-$pkgver.source.tar.xz
+source=("https://archive.mozilla.org/pub/mozilla.org/seamonkey/releases/$pkgver/source/seamonkey-$pkgver.source.tar.xz"
         mozconfig
         seamonkey-2.0-lang.patch
-        rhbz-966424.patch
-        mozbug1323209.patch
-        mozbug1329272.patch
+        patch-bug1435212.xz
 	no-crmf.diff)
-sha256sums=('09fc9f8b1817a901b4e0d7635701ab50236885821d73694ac21615c8d911b575'
+sha256sums=('c8a66774d0a3525698b559fa2c41397186f2de99c5733e35b8eafb0ae5ccc4ee'
             'da8cc2001ae77f2b357d267f9f8d3d7e48c7d37b99ff3fb73fbbfc0b9329744a'
             'ab19d10fbd6258aec37ab5e5efb12429814b2c24a1193284a48dd654311b4e2e'
-            '746cb474c5a2c26fc474256e430e035e604b71b27df1003d4af85018fa263f4a'
-            '87fb92e45f161d47b9e3ca31bcce60555bc33d633116dab4baa3bfba6ad965c4'
-            '33c7031781357faf5fba7140d7723bf301c1569068922477742ac958ee82e62b'
+            'dce68858694f820a9a1fc2428038a88ea00b4835cea0778734db794fea3bb21a'
             'fb85a538044c15471c12cf561d6aa74570f8de7b054a7063ef88ee1bdfc1ccbb')
 
 prepare() {
@@ -42,14 +38,9 @@ prepare() {
   # FS#48404
   #echo "ac_add_options --enable-gstreamer=1.0" >> .mozconfig
 
-  # https://bugs.archlinux.org/task/41689
-  #patch -Np1 -d mozilla -i ../../rhbz-966424.patch
-
-  # Support NSS 3.28
-  #patch -Np1 -d mozilla -i ../../mozbug1323209.patch
-
-  # Bugfix for icu detection
-  #patch -Np1 -d mozilla -i ../../mozbug1329272.patch
+  # ffmpeg 4.0 patch from freebsd
+  # https://github.com/freebsd/freebsd-ports/blob/master/www/seamonkey/files/patch-bug1435212
+  patch -Np1 -d mozilla -i ../../patch-bug1435212
 
   # Don't exit with error when some libs are missing which we have in
   # system.
@@ -64,6 +55,10 @@ prepare() {
   # work around from FS#54395
   patch -Np1 -d mozilla -i ../../no-crmf.diff
   sed -i "s/'crmf',//" mozilla/security/manager/ssl/moz.build
+  sed -i 's/^.*-lcrmf/#&/' mozilla/config/external/nss/crmf/moz.build
+  sed -i 's/ -lcrmf"/"/' mozilla/old-configure.in.orig
+  sed -i 's/ -lcrmf"/"/' mozilla/old-configure
+  sed -i 's/SDK_LIBS = crmf/SDK_LIBS = /' mozilla/config/external/nss/Makefile.in
 }
 
 build() {
