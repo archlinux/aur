@@ -1,0 +1,11 @@
+--- a/Makefile
++++ b/Makefile
+@@ -12,7 +12,7 @@ LIB_DIR = lib
+ BIN_DIR = bin
+ 
+ # Depenencies
+-PERFUTILS=../PerfUtils
++PERFUTILS ?= ../PerfUtils
+ INCLUDE=-I$(PERFUTILS)/include
+ LIBS=$(PERFUTILS)/lib/libPerfUtils.a -lpcrecpp -pthread
+ 

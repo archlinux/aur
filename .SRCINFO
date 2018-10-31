@@ -1,0 +1,22 @@
+pkgbase = corearbiter-git
+	pkgdesc = The Core Arbiter for Arachne
+	pkgver = r149.111b94e
+	pkgrel = 1
+	url = https://github.com/PlatformLab/CoreArbiter/
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = perfutils
+	depends = gcc-libs
+	depends = glibc
+	depends = pcre
+	provides = corearbiter
+	conflicts = corearbiter
+	options = staticlibs
+	source = git+https://github.com/PlatformLab/CoreArbiter/
+	source = makefile.diff
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = corearbiter-git
+
