@@ -6,7 +6,7 @@ pkgdesc="ArduIDE is a Qt-based IDE for the open-source Arduino electronics proto
 arch=('i686' 'x86_64')
 url="http://mupuf.org/project/arduide.html"
 license=('GPL')
-depends=('qt4>=4.5' 'qtwebkit' 'qscintilla' 'grantlee-qt4>=0.1' 'udev' 'gcc-libs' 'avr-gcc' 'avr-libc' 'avrdude')
+depends=('qt4>=4.5' 'qtwebkit' 'qscintilla-qt4' 'grantlee-qt4>=0.1' 'udev' 'gcc-libs' 'avr-gcc' 'avr-libc' 'avrdude')
 makedepends=('git' 'cmake')
 
 source=("${pkgname}::git+https://github.com/mupuf/arduide.git")
