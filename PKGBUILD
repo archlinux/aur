@@ -4,7 +4,6 @@ pkgver="20170302"
 pkgrel=2
 lprver="1.1.3-0"
 cwver="1.1.4-0"
-_revision=1
 pkgdesc="LPR and CUPS drivers for Brother MFC-9332CDW"
 url="http://support.brother.com/g/s/id/linux/en/index.html"
 arch=('i686' 'x86_64')
