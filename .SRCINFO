@@ -6,7 +6,7 @@ pkgbase = kiwix-tools
 	arch = any
 	license = GPL3
 	makedepends = meson
-	depends = kiwix-lib>=2.0.1
+	depends = kiwix-lib>=3.0.0
 	depends = libmicrohttpd
 	replaces = kiwix-cli-git
 	source = https://github.com/kiwix/kiwix-tools/archive/0.7.0.tar.gz

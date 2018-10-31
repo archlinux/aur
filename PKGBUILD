@@ -6,7 +6,7 @@ pkgdesc="kiwix command line tools"
 license=('GPL3')
 arch=('any')
 replaces=('kiwix-cli-git')
-depends=('kiwix-lib>=2.0.1' 'libmicrohttpd')
+depends=('kiwix-lib>=3.0.0' 'libmicrohttpd')
 makedepends=('meson')
 url='https://github.com/kiwix/kiwix-tools'
 source=("https://github.com/kiwix/kiwix-tools/archive/${pkgver}.tar.gz")
