@@ -6,6 +6,7 @@ pkgrel=1
 pkgdesc="C++ library implementing multibyte floating point (flyte)"
 arch=('x86_64')
 license=('BSD')
+url=("https://bitbucket.org/flytes/libflyte")
 groups=()
 depends=()
 makedepends=()
