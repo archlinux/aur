@@ -1,0 +1,13 @@
+--- a/Makefile
++++ b/Makefile
+@@ -18,8 +18,8 @@ LIB_DIR = lib
+ BIN_DIR = bin
+ 
+ # Depenencies
+-PERFUTILS=../PerfUtils
+-COREARBITER=../CoreArbiter
++PERFUTILS ?=../PerfUtils
++COREARBITER ?=../CoreArbiter
+ INCLUDE=-I$(PERFUTILS)/include -I$(COREARBITER)/include -I$(SRC_DIR)
+ LIBS=$(COREARBITER)/lib/libCoreArbiter.a $(PERFUTILS)/lib/libPerfUtils.a -lpcrecpp -pthread
+ CLIBS=$(LIBS) -lstdc++

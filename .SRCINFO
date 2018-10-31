@@ -1,0 +1,20 @@
+pkgbase = arachne-git
+	pkgdesc = Core aware thread management system
+	pkgver = r462.2c5cc16
+	pkgrel = 1
+	url = https://github.com/PlatformLab/Arachne/
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = corearbiter
+	makedepends = perfutils
+	provides = arachne
+	conflicts = arachne
+	options = staticlibs
+	source = git+https://github.com/PlatformLab/Arachne/
+	source = makefile.diff
+	sha256sums = SKIP
+	sha256sums = 4ffa97a8a6b1e9fbf15c709a5c02a3bb13ef54ceb3c150d59345df57a75c2ed5
+
+pkgname = arachne-git
+
