@@ -2,7 +2,7 @@
 
 pkgname=perfutils-git
 pkgver=r94.5676231
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 
 pkgdesc='Collection of eclectic tools for measuring performance using the cycle counter and pinning threads'
@@ -48,6 +48,7 @@ package() {
   # pkgconf
   install -Dm0644 "$srcdir"/perfutils.pc "$pkgdir"/usr/lib/pkgconfig/perfutils.pc
 
-  # licence
+  # misc
+  install -Dm0644 README.md "$pkgdir"/usr/share/doc/"${pkgname%-git}"/README.md
   install -Dm0644 LICENSE "$pkgdir"/usr/share/licenses/"${pkgname%-git}"/LICENSE
 }
