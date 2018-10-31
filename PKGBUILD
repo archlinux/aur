@@ -1,8 +1,8 @@
-# Maintainer: Nanda Vera <codeharuka.yusa@gmail.com>
+# Maintainer: Nanda Okitavera <codeharuka.yusa@gmail.com>
 pkgname=clearine-git
-pkgver=0.2.r0.ga068eba
-pkgrel=1
-pkgdesc="Yet Another GTK3-based logout-window overlay for independent windowmanager. Inspired from oblogout and Android Oreo's power menu"
+pkgver=0.3.r0.g445a135
+pkgrel=2
+pkgdesc="Yet Another GTK3-based logout-window overlay for windowmanager. Inspired from oblogout and Android Oreo's power menu"
 arch=('any')
 url="https://github.com/yuune/clearine"
 license=('MIT')
