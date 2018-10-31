@@ -1,0 +1,17 @@
+pkgbase = perl-text-visualwidth-pp
+	pkgdesc = Perl/CPAN Module Text::VisualWidth::PP
+	pkgver = 0.05
+	pkgrel = 1
+	url = https://metacpan.org/release/Text-VisualWidth-PP
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-module-build
+	depends = perl
+	depends = perl-unicode-eastasianwidth
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/T/TO/TOKUHIROM/Text-VisualWidth-PP-0.05.tar.gz
+	sha512sums = 94150564048681fc526b4aa0f186abec84b86b0d3a06868a13f4a19ec4baa90f0442f2d2d70a9a60faec3bdd90bcc6e9dbec84dcba2e485d577f16173852fe86
+
+pkgname = perl-text-visualwidth-pp
+
