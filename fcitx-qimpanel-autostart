@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# sleep for a little while to avoid duplicate startup
+sleep 3
+
+# Test whether fcitx is running correctly with dbus...
+fcitx-remote > /dev/null 2>&1
+
+if [ $? = "1" ]; then
+    echo "Fcitx seems is not running"
+    exit 0
+else
+    echo "Fcitx is running correctly."
+    exec fcitx-qimpanel
+fi

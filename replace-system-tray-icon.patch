@@ -1,0 +1,24 @@
+author: nanpuyue <nanpuyue@gmail.com> https://blog.nanpuyue.com
+license: GPLv3 https://www.gnu.org/licenses/gpl-3.0.txt
+date: 2018-10-28
+--- a/main_controller.cpp
++++ b/main_controller.cpp
+@@ -134,7 +134,7 @@ void MainController::init()
+ #endif
+ 
+     mAgent = new PanelAgent(this);
+-    mSystemTray = new QSystemTrayIcon(QIcon::fromTheme("fcitx"), this);
++    mSystemTray = new QSystemTrayIcon(QIcon::fromTheme("fcitx-kbd"), this);
+     mTrayMenu = new SystemTrayMenu(mAgent);
+ 
+     mAgent->created();
+@@ -274,7 +274,7 @@ void MainController::setSkinName(QString skinName)
+ void MainController::updateProperty(const KimpanelProperty &prop)
+ {
+     if (gettext("No input window") == prop.label) {
+-        QIcon icon = QIcon::fromTheme("fcitx");
++        QIcon icon = QIcon::fromTheme("fcitx-kbd");
+         mSystemTray->setIcon(icon);
+         return;
+     }
+
