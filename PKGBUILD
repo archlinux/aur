@@ -18,7 +18,6 @@ sha256sums=('345e6feef78ba22832479baa58cacbba4e878678db9ba2cbf1c436a65b299bc2')
 
 package() {
     tar -xJC "${pkgdir}" -f data.tar.xz
-    rm -f ${pkgdir}/usr/local/lib/libigdgmm.so
     chmod 755 ${pkgdir}/usr/local/lib/*.so
     chown root:root ${pkgdir}/usr/local/lib/*.so
     mv ${pkgdir}/usr/local/lib ${pkgdir}/usr/
