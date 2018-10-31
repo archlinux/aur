@@ -1,0 +1,13 @@
+pkgbase = protoc-gen-grpc-web
+	pkgdesc = Protobuf gRPC compiler for Web Clients
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/grpc/grpc-web
+	arch = x86_64
+	license = Apache2
+	depends = protobuf>=3
+	source = https://github.com/grpc/grpc-web/archive/1.0.0.tar.gz
+	sha512sums = affce591d5c6dfb4858ad7d6bcc8c7cfadea1d39a4f2878394e962b2bf39abe5c1f5bb1fa244a8675f1a2c717773187692e9a86ebd33196e2889fbd76e5a317f
+
+pkgname = protoc-gen-grpc-web
+
