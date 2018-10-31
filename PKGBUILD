@@ -29,6 +29,7 @@ build() {
     fi
     mkdir -p "build-${_arch}" && pushd "build-${_arch}"
     msiexec /i "${srcdir}"/python-${pkgver}${target}.msi /qb TARGETDIR=$PWD
+    # https://bugs.python.org/issue11566
     sed -i "s|#define hypot _hypot|/*#define hypot _hypot*/|g" include/pyconfig.h
     gendef python${_pybasever}.dll
     ${_arch}-dlltool --dllname python${_pybasever}.dll --def python${_pybasever}.def --output-lib libs/libpython${_pybasever}.dll.a
