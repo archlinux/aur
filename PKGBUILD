@@ -27,7 +27,7 @@ _bldtype=Release
 # http://zipcloud.ibsnet.co.jp/
 #*************************************************************
 
-_zipcoderel=201809
+_zipcoderel=201810
 _mozcrev=afb03ddfe72dde4cf2409863a3bfea160f7a66d8
 
 pkgbase=mozc
@@ -47,8 +47,8 @@ source=(
   https://gist.githubusercontent.com/MightyPork/6b93f56b404e526268ac133f1a783afd/raw/40b3b9569d4b0741d78c511b247b26d2b1e7a2ae/mozc.patch
 )
 sha1sums=('SKIP'
-          'f959735a35bafde7f71eea55a64295ff0f6a7f15'
-          'e1b1710738ff161809ad3bc0c6bb432a0c577e8a'
+          '14537a8dbc99a7a86f39008e5f4ad072616c16eb'
+          '924c0f07f27481af98c023c72e81be567a427937'
           'a366077418ae6f235aecf374256354a40dc5b37a')
 
 
