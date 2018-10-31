@@ -1,7 +1,7 @@
 pkgbase = perl-devel-trepan
 	pkgdesc = A modular gdb-like Perl debugger
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/Devel-Trepan
 	arch = any
 	license = GPL
@@ -17,6 +17,7 @@ pkgbase = perl-devel-trepan
 	optdepends = perl-b-codelines
 	optdepends = perl-data-printer
 	optdepends = perl-data-dumper-concise
+	optdepends = perl-devel-trepan-deparse: add deparse support
 	optdepends = perl-eval-withlexicals
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/R/RO/ROCKY/Devel-Trepan-v1.0.0.tar.gz

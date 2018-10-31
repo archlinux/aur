@@ -4,7 +4,7 @@ _distname=Devel-Trepan
 
 pkgname=perl-devel-trepan
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A modular gdb-like Perl debugger"
 arch=('any')
 license=('GPL')
@@ -21,7 +21,7 @@ depends=('perl'
 optdepends=('perl-b-codelines'
             'perl-data-printer'
             'perl-data-dumper-concise'
-            #'perl-devel-trepan-deparse'
+            'perl-devel-trepan-deparse: add deparse support'
             #'perl-devel-trepan-disassemble'
             #'perl-devel-trepan-shell'
             'perl-eval-withlexicals'
