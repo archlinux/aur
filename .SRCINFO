@@ -1,0 +1,16 @@
+pkgbase = perl-unicode-eastasianwidth-detect
+	pkgdesc = Perl/CPAN Module Unicode::EastAsianWidth::Detect
+	pkgver = 0.03
+	pkgrel = 1
+	url = https://metacpan.org/release/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-module-build
+	depends = perl
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/M/MA/MATTN/Unicode-EastAsianWidth-Detect-0.03.tar.gz
+	sha512sums = 28231286878980a155bb5727a3021825fa4f455cddd0b2b8304e669a9b8eb95e9aae83d36abaa79a5ca129d9a90858963183dc08ca6b7a069a3308f8714e9073
+
+pkgname = perl-unicode-eastasianwidth-detect
+
