@@ -4,13 +4,13 @@
 
 pkgname=attica-qt4
 pkgver=0.4.2
-pkgrel=4
+pkgrel=5
 pkgdesc='A Qt4 library that implements the Open Collaboration Services API'
 arch=('x86_64' 'i686')
 url='https://projects.kde.org/projects/frameworks/attica'
 license=('LGPL')
-depends=('qt4')
-makedepends=('cmake')
+depends=('qt5-base')
+makedepends=('cmake' 'kdelibs4support' 'extra-cmake-modules')
 source=("http://download.kde.org/stable/attica/attica-${pkgver}.tar.bz2")
 md5sums=('d62c5c9489a68432e8d990dde7680c24')
 
@@ -21,8 +21,10 @@ prepare() {
 build() {
   cd build
   cmake ../attica-${pkgver} \
+    -DCMAKE_MODULE_PATH:PATH=/usr/lib/cmake/KF5KDELibs4Support \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib
   make
 }
 
