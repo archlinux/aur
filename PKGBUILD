@@ -2,9 +2,9 @@
 pkgname=pure-meta-math
 pkgdesc='Pure programming language, math package -- interfaces to various 3rd party mathematical software'
 pkgver=1
-pkgrel=3
+pkgrel=4
 arch=('any')
 license=('custom')
 url="http://purelang.bitbucket.org/"
-depends=(pure-glpk pure-gplot pure-gsl pure-mpfr pure-octave pure-rational pure-reduce gnumeric-pure texmacs-pure)
+depends=(pure-glpk pure-gplot pure-gsl pure-mpfr pure-octave pure-rational pure-reduce texmacs-pure)
 groups=(pure-meta)
