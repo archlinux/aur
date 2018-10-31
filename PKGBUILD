@@ -1,7 +1,7 @@
 # Maintainer: Graham Edgecombe <graham@grahamedgecombe.com>
 pkgname=openrct2-git
-pkgver=r14988.fae367ccf
-pkgrel=2
+pkgver=r15600.215ea7edc
+pkgrel=1
 pkgdesc='Open source re-implementation of Roller Coaster Tycoon 2 (requires full
          copy of the game)'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -9,7 +9,7 @@ url='https://openrct2.io'
 license=('GPL3')
 depends=('hicolor-icon-theme' 'sdl2' 'curl' 'jansson' 'speexdsp' 'fontconfig'
          'libpng' 'openssl' 'libzip' 'icu')
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'rapidjson')
 optdepends=('zenity: System dialog box support (GNOME/GTK)'
             'kdialog: System dialog box support (KDE)'
             'alsa-lib: ALSA audio driver'
@@ -18,10 +18,8 @@ conflicts=('openrct2')
 provides=('openrct2')
 install=openrct2.install
 source=("$pkgname"::'git+https://github.com/OpenRCT2/OpenRCT2.git#branch=develop'
-        'discord-rpc::git+https://github.com/discordapp/discord-rpc.git'
-        'rapidjson::git+https://github.com/janisozaur/rapidjson.git#branch=patch-1')
+        'discord-rpc::git+https://github.com/discordapp/discord-rpc.git')
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP')
 
 pkgver() {
@@ -33,7 +31,7 @@ prepare() {
   cd "$srcdir/$pkgname"
   ln -sf "$srcdir/discord-rpc" discord-rpc
   mkdir -p discord-rpc/thirdparty
-  ln -sf "$srcdir/rapidjson" discord-rpc/thirdparty/rapidjson
+  ln -sf "/usr/include/rapidjson" discord-rpc/thirdparty/rapidjson
 }
 
 build() {
