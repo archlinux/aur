@@ -1,8 +1,8 @@
 # Maintainer:  JP-Ellis <josh@jpellis.me>
 pkgname=python-habanero
 _name=${pkgname#python-}
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.6.2
+pkgrel=1
 pkgdesc="Habanero is a low level client for working with Crossref's search API."
 arch=('any')
 url="https://pypi.org/project/habanero/"
