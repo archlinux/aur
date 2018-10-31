@@ -1,8 +1,8 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=nginx-mainline-mod-naxsi
-pkgver=0.55.3
-pkgrel=20
+pkgver=0.56
+pkgrel=1
 
 _modname=naxsi
 _nginxver=1.15.5
@@ -25,7 +25,7 @@ validpgpkeys=(
 
 sha256sums=('1a3a889a8f14998286de3b14cc1dd5b2747178e012d6d480a18aa413985dae6f'
             'SKIP'
-            '0b3c95d250772dc89ad8b49e47c1e024c5ae2c76c0cffa445e9fe05c4dd13495')
+            '0a66dcadd32432460fab180be9f2efe24e911e3798917b2787ee710e02901eb4')
 
 build() {
 	cd "$srcdir"/nginx-$_nginxver
