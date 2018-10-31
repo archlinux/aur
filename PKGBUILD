@@ -1,8 +1,8 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 # Helpful url: https://ci.appveyor.com/project/galli-leo/radarr-usby1/branch/develop/artifacts
 pkgname="radarr-develop"
-pkgver="0.2.0.1212"
-_pkghash="3ljre0i5mm1aw14v"
+pkgver="0.2.0.1213"
+_pkghash="ikiupnxgsko270ny"
 pkgrel=1
 pkgdesc="Movie download automation for usenet and torrents."
 arch=(any)
@@ -27,7 +27,7 @@ source=("Radarr.develop.${pkgver}.linux.tar.gz::https://radarr.aeonlucid.com/v1/
         'radarr.tmpfiles'
         'radarr.sysusers')
 
-sha512sums=('82e6e5a43bbb745d463d3d0715507967553913e3fd0c5099caeef6f1016e79e94b8c24265d597fc6a34b693bb9578fdfb399fce5b3fc526ee14fa5511d251db1'
+sha512sums=('05a87ff502157f79a0b86f019b67ace69c37b648fdbef27e725ff2751a794c203ed5a8159cec0c35c5c3c3955ccffc8f72475d36b3dda3846ad54a05a75d1292'
             '4c064051c7592529a7ed41c4fdd6381b5e9ace938608f9e271aa4126194db456e85b7602d8e13718efcc4c40d66f82a338199cb6fd924177ad23154090e48da3'
             'e0d55353f0bf89f826eb7eb9ee26c3e3f38bd46a8884135139536ae220c0c531d5df486bc3b50f580679f9607bb4b7bfb9f29998609dc966fbfb8e1809834650'
             'c1ee3925eced182ea7fffa55a6dc2a4e099ccf18636fc237ef0a2fc9517a38cfc2a819ae5a7bc546b63e383506f9f47e89454a71e34106c579d7454d71b2299e')
