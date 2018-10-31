@@ -1,7 +1,7 @@
 pkgname=mingw-w64-python36-bin
 pkgver=3.6.5
 _pybasever=36
-pkgrel=2
+pkgrel=3
 pkgdesc="Next generation of the python high-level scripting language (native MSVC version) (mingw-w64)"
 arch=('any')
 license=('PSF')
@@ -13,15 +13,21 @@ options=('staticlibs' '!buildflags' '!strip')
 source=("https://www.python.org/ftp/python/${pkgver}/python-${pkgver}-embed-win32.zip"
         "https://www.python.org/ftp/python/${pkgver}/python-${pkgver}-embed-amd64.zip"
         "https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tgz"
-        wine-python.sh)
+        wine-python.sh bpo-11566.patch)
 noextract=("python-${pkgver}-embed-win32.zip"
            "python-${pkgver}-embed-amd64.zip")
 sha256sums=('f654c055817b5a2c5b050d744833d95d621aeaa507b5c28b4840712821a70891'
             'dfb476fabd20f617c8a5be58ca3e55844c8310710c6ff0dd25486d1d03c95a28'
             '53a3e17d77cd15c5230192b6a8c1e031c07cd9f34a2f089a731c6f6bd343d5c6'
-            SKIP)
+            SKIP SKIP)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+
+prepare () {
+  cd "${srcdir}/Python-${pkgver}"
+  # https://bugs.python.org/issue11566
+  patch -p1 -i "${srcdir}"/bpo-11566.patch
+}
 
 build() {
   cd "${srcdir}/Python-${pkgver}"
