@@ -1,23 +1,21 @@
 # Maintainer: P Sherbet <psherbet at psherbet dot com>
 pkgname=nerd-fonts-source-code-pro
 pkgver=2.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Patched font SourceCodePro from nerd-fonts library"
 arch=('any')
 url='https://github.com/ryanoasis/nerd-fonts'
 license=('MIT')
-depends=('fontconfig' 'xorg-font-utils' 'wget')
+depends=('fontconfig' 'xorg-font-utils')
 install=$pkgname.install
-source=("$pkgname.links"
-    "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/2.0.0/LICENSE")
-sha256sums=('ebfe5cfbccdd7ed303eb5cd687c59be5611a397a9bca5735c85ab2fc449bb418'
+source=("https://github.com/ryanoasis/nerd-fonts/releases/download/v$pkgver/SourceCodePro.zip"
+    "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/$pkgver/LICENSE")
+sha256sums=('f8e0cc0aceefa97a2c3f256fbc9a460038059ef0a193f02960f644daddfdfbbb'
             'd2a29823384e9194a87936ccad495c764c2ef733b29bfa6f72a1d65803ce02e5')
 
 prepare() {
-    # Just download font file (complete version) from github repo because the whole repo is too big
-    cd "${srcdir}"
-    echo "Downloading fonts ...."
-    wget -c --show-progress -i "${pkgname}.links"
+    cd ${srcdir}
+    find -iname '*windows*' -print0 | xargs -0 rm # the windows compatible fonts are not necessary on linux ;)
 }
 
 package() {
