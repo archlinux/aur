@@ -1,0 +1,14 @@
+pkgbase = libflyte
+	pkgdesc = C++ library implementing multibyte floating point (flyte)
+	pkgver = 0.1
+	pkgrel = 1
+	arch = x86_64
+	license = BSD
+	source = https://bitbucket.org/flytes/libflyte/get/v0.1.tar.bz2
+	md5sums = SKIP
+	sha1sums = SKIP
+	sha256sums = SKIP
+	sha512sums = SKIP
+
+pkgname = libflyte
+
