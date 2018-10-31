@@ -4,7 +4,7 @@
 _extname='desktop-icons'
 _uuid="${_extname}@csoriano"
 pkgname="gnome-shell-extension-${_extname}"
-pkgver='r221.089d5fc'
+pkgver='r222.35666e2'
 pkgrel=1
 pkgdesc='Add icons to the desktop'
 arch=('x86_64' 'i686')
