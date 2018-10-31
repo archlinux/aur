@@ -1,7 +1,7 @@
 # Maintainer: H. Rosendahl <h [at] ro [dot] sendahl [dot] de>
 pkgname=um-git
 _gemname=um
-pkgver=4.1.0.r1.g9f3e21d
+pkgver=4.1.0.r11.g7763e42
 pkgrel=1
 pkgdesc="utility to create and maintain your own man pages so you can remember how to do stuff"
 arch=("any")
@@ -49,6 +49,8 @@ package() {
     rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
     install -Dm644 "$srcdir"/$pkgname/um-completion.sh \
         "$pkgdir/usr/share/bash-completion/completions/$_gemname"
+    install -Dm644 "$srcdir"/$pkgname/um-completion.zsh \
+        "$pkgdir/usr/share/zsh/site-functions/_$_gemname"
     install -Dm644 "$srcdir"/$pkgname/doc/man1/*.gz -t \
         "$pkgdir/usr/share/man/man1"
 }

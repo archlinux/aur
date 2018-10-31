@@ -1,6 +1,6 @@
 pkgbase = um-git
 	pkgdesc = utility to create and maintain your own man pages so you can remember how to do stuff
-	pkgver = 4.1.0.r1.g9f3e21d
+	pkgver = 4.1.0.r11.g7763e42
 	pkgrel = 1
 	url = https://github.com/sinclairtarget/um
 	arch = any
