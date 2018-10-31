@@ -12,19 +12,21 @@ depends=('boost-libs' 'freeimage' 'openexr' 'openimageio' 'libpng' 'opencl-icd-l
          'embree-bvh_build-git')
 optdepends=('luxblend25: Blender exporter' \
             'qt4: Qt GUI' \
-            'python: pylux Python interface' \
+            'python35: pylux Python interface' \
             'opencl-driver: OpenCL support')
-makedepends=('cmake' 'boost' 'mesa' 'qt4' "luxrays-hg" 'python' 'opencl-headers'
+makedepends=('cmake' 'boost' 'mesa' 'qt4' "luxrays-hg" 'python35' 'opencl-headers'
              'eos_portable_archive' 'mercurial')
 provides=('luxrender')
 conflicts=('luxrender')
 source=('lux::hg+https://bitbucket.org/luxrender/lux#branch=default'
         'boost-15500.patch'
         'luxrender-gcc7.patch'
+        'gcc-8.patch'
         'force_python3.diff')
 md5sums=('SKIP'
          'b9e5c442093e69485752e6395c931b27'
          'fa680b0d621b42c8e7440056bf26ec1c'
+         '6b71588b2c3e05c8f5ddbac824a39530'
          '42692e65eabc5828693e2682e94b7c64')
 
 pkgver() {
@@ -46,6 +48,9 @@ prepare() {
   
   # fix deprecated function in boost,asio,basic_stream_socket::native() replace with native_handle()
   patch -Np1 -i ${srcdir}/boost-15500.patch
+
+  # fix unambiguous 'distance' function in boost/gcc8-stl
+  patch -Np1 -i ${srcdir}/gcc-8.patch
 }
 
 build() {
@@ -53,7 +58,7 @@ build() {
   mkdir -p build
   cd build
 
-  _pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
+  _pyver=$(python3.5 -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
 
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \

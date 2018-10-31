@@ -1,0 +1,12 @@
+diff -r f56582df55f4 accelerators/bvhaccel.cpp
+--- a/accelerators/bvhaccel.cpp	Sun Jul 23 13:46:05 2017 +0200
++++ b/accelerators/bvhaccel.cpp	Wed Oct 31 15:07:44 2018 +0100
+@@ -146,7 +146,7 @@
+ 
+ 			vector<boost::shared_ptr<BVHAccelTreeNode> >::iterator it =
+ 				partition(list.begin()+splits[j], list.begin()+splits[j+1], bind2nd(ptr_fun(bvh_ltf[splitAxis]), splitValue));
+-			u_int middle = distance(list.begin(), it);
++			u_int middle = std::distance(list.begin(), it);
+ 			middle = max(splits[j]+1, min(splits[j+1]-1, middle)); // Make sure coincidental BBs are still split
+ 			splits.insert(splits.begin()+j+1, middle);
+ 		}
