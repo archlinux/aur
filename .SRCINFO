@@ -1,0 +1,20 @@
+pkgbase = perl-devel-trepan-deparse
+	pkgdesc = Adds deparse support via B::DeparseTree to Devel::Trepan
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://metacpan.org/release/Devel-Trepan-Deparse
+	arch = any
+	license = GPL
+	makedepends = perl-module-build
+	depends = perl
+	depends = perl-devel-trepan
+	depends = perl-b-deparsetree
+	depends = perl-data-printer
+	depends = perl-devel-callsite
+	depends = perl-rlib
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/R/RO/ROCKY/Devel-Trepan-Deparse-v3.1.0.tar.gz
+	sha512sums = 8c779c0f57d44a5bede592a8d0cb1d7b9fb7a9755c1c34cbde926ef7da2bdf5510bfb40632697edc804b021a490346bc1b72a38231fc8c2833cf842d9cc8b6cd
+
+pkgname = perl-devel-trepan-deparse
+
