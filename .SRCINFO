@@ -1,0 +1,21 @@
+pkgbase = perl-term-readline-perl5
+	pkgdesc = Perl/CPAN Module Term::ReadLine::Perl5
+	pkgver = 1.45
+	pkgrel = 1
+	url = https://metacpan.org/release/Term-ReadLine-Perl5
+	arch = any
+	license = PerlArtistic
+	license = GPL2
+	makedepends = perl-module-build
+	depends = perl
+	depends = perl-file-homedir
+	depends = perl-term-readkey
+	depends = perl-class-accessor-lite
+	depends = perl-text-visualwidth-pp
+	depends = perl-unicode-eastasianwidth-detect
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/R/RO/ROCKY/Term-ReadLine-Perl5-1.45.tar.gz
+	sha512sums = 7b9c7487c27abb7739886b975874efcd26f7214633cdc727d8ae3bd4ceaa9162172134e046adc2cb63179775941d84888771b9bb74840aa3edbde6cca85c0f61
+
+pkgname = perl-term-readline-perl5
+
