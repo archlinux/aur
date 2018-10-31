@@ -2,14 +2,14 @@
 pkgname=xorg-xtrap
 _pkgname=xtrap
 pkgdesc="X Trap sample clients"
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 arch=('x86_64' 'i686')
 url="http://www.x.org/"
 license=('custom')
 depends=('libxtrap')
 source=("http://xorg.freedesktop.org/releases/individual/app/$_pkgname-$pkgver.tar.bz2")
-md5sums=('97a62a011a11f03b46d72851aa298fa8')
+md5sums=('ad434adab17ebc9d0a5ece33bbc55beb')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
