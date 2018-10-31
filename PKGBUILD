@@ -1,7 +1,8 @@
-# Maintainer: Christian Krause ("wookietreiber") <kizkizzbangbang@googlemail.com>
+# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Contributor: Christian Krause ("wookietreiber") <kizkizzbangbang@googlemail.com>
 
 pkgname=idba
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="iterative de Bruijn graph assembler"
 arch=('i686' 'x86_64')
@@ -10,7 +11,7 @@ license=('GPL2')
 depends=('gcc-libs')
 checkdepends=('python2')
 source=("https://github.com/loneknightpy/idba/releases/download/$pkgver/idba-$pkgver.tar.gz")
-md5sums=('0f0efa1534c7f15ae4bf64473a7709a4')
+sha256sums=('030e24463c6d725c1c202baabf773b605b51e310844fd0f27f4688ecfbae26d0')
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver
