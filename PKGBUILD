@@ -2,7 +2,7 @@
 
 pkgname=purrdata-faust
 _pkgname=pd-faust
-pkgver=0.17
+pkgver=0.18
 pkgrel=1
 pkgdesc="Run Faust signal processors in Pd, Purr-Data version"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('purr-data' 'pure'  'purrdata-pure' 'pure-faust' 'pure-audio' 'pure-mid
 makedepends=('faust')
 license=('LGPL3')
 source=(https://github.com/agraef/pure-lang/releases/download/$_pkgname-$pkgver/$_pkgname-$pkgver.tar.gz)
-md5sums=('40f6be65917051dd3a46c35020d2dfa9')
+md5sums=('7deb4a501713912458d86b1a665c6e83')
 
 build() {
   cd $srcdir/$_pkgname-$pkgver
