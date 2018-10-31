@@ -4,7 +4,7 @@ pkgver=r2355.df584e49
 pkgrel=3
 pkgdesc="A 2channel browser written in C++ using gtkmm3 (patched). This is alpha version by experimental support."
 arch=('i686' 'x86_64')
-url="https://github.com/ma8ma/JD/tree/gtk3-idea-r2"
+url="https://github.com/ma8ma/JD/tree/gtk3-preview"
 license=('GPL2')
 makedepends=('git')
 depends=('gnutls' 'libsm' 'gtkmm3' 'autoconf-archive')
@@ -21,7 +21,7 @@ build() {
   cd "${srcdir}/JD"
   autoreconf -i
   ./configure --prefix=/usr --with-stdthread  --with-gtkmm3
-  make
+  make -j4
 }
 
 package() {
