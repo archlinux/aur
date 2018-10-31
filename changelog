@@ -1,3 +1,36 @@
+2018-10-31 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 3.4.0.4-1:
+    [!] We've moved ASF project under JustArchiNET GitHub organization. This change should be mostly transparent for you as old URLs redirect appropriately. Only web config generator is no longer accessible under old URL, we've already updated all references (on wiki and alike). If you're using URL to our repo in your own projects, you might want to update them.
+    [!] We've rewritten our IPC interface from HttpListener to KestrelHttpServer (ref: #761).
+        Kestrel http server is modern drop-in replacement for legacy and far more basic HttpListener that we've used until now. IPC API and IPC GUI (now ASF-ui) continues to work like before.
+        This change has dramatically improved ASF's code maintenance in regards to IPC routines. Our new code is very clean and efficient, allowing further development of IPC with ease.
+        Kestrel comes with a lot of under-the-hood improvements in regards to IPC, especially compatibility, stability and performance improvements. Some of them include support for ETag, modern response compression algorithms (such as brotli) or increased compatibility by implementing all modern RFCs.
+        We've slightly improved our CORS policy. ASF API now allows cross-origin resource sharing only when IPCPassword is set. See wiki for details.
+        It's now possible to use IPC with custom base path (ref: #840).
+        It's now possible to run IPC with https natively.
+        Removed IPCPrefixes global config property, listening addresses are now handled by Kestrel config directly.
+        A lot of other improvements related to performance, compatibility and stability.
+    [!] Breaking changes in ASF API:
+        Documentation of ASF API has moved to swagger, which apart from delivering that, also includes far easier ASF API access and other benefits. It's now possible to programmatically check exact definition of all ASF API endpoints.
+        /Api/Bot/{bot} now returns a name-bot map (previously: array of bots).
+        /Api/Bot/{bot} no longer uses SteamID for online status, there is IsConnectedAndLoggedOn for that now.
+        /Api/Log has moved under /Api/NLog.
+        /Api/GamesToRedeemInBackground/{bot} has moved under /Api/Bot/{bot}/GamesToRedeemInBackground.
+        There are other small changes related to error reporting and similar, but nothing that should break existing apps.
+        ASF API has gained a lot of new endpoints that are supposed to replace commands in long-run. New /Api/Bot/{bot}/Pause is one of those. Refer to our new swagger doc for details.
+    [!] IPC GUI has been replaced by ASF-ui (aka "IPC GUI v2") built on top of new ASF API:
+        ASF-ui has become a separate project under ASF. It has its own flow of development - you can post your bug reports, suggestions, pull requests and other questions in that place.
+        ASF-ui is still in heavy development, so bugs and fixes are to be expected. Given time, we hope to see a fully-featured web GUI that will fully deprecate the use of commands and improve user experience, perhaps to the point of having its own ASF GUI release.
+        ASF comes with latest version of ASF-ui included at the time of release.
+        It's now possible to use your own IPC-ui frontend (instead of ASF-ui) by using --path command-line argument and putting www directory inside (ref: #915).
+    Added transfer@ and transfer^ commands (ref: #908, #911).
+    Default value of SteamProtocols was changed from 5 back to 7 due to fixing issue #882.
+    Fixed SteamTradeMatcher logic flaw that could interpret some valid neutral+ trades as bad.
+    Fixed IdleRefundableGames value change not taking effect until ASF restart (ref: #912).
+    Removed default config files, ASF can now work without ASF.json being present. Full JSON structure is still available on the wiki for those that would prefer to generate configs manually, everybody else overwrites those files anyway. You may want to delete example.json and minimal.json manually from your config directory.
+    Removed <Modes> argument from transfer commands, added TransferableTypes bot config property as drop-in replacement.
+    [Deprecation] SteamParentalPIN bot config property is now available under SteamParentalCode with one subtle difference - null is now treated as no PIN while 0 as PIN provided during update (In old property it was the other way). We needed this change for ASF-ui. ASF will map old logic during first stage of deprecation.
+    Usual amount of other code improvements, optimizations and bugfixes.
 2018-09-06 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 3.3.0.6-1:
     Added games cache to owns command in order to speed up consecutive checks. Cache is transparent and automatically invalidated on new licenses added to the account.
