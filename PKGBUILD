@@ -1,6 +1,6 @@
 _pkgname=cros-container-guest-tools
 pkgname=${_pkgname}-git
-pkgver=r98.e6d7fd3
+pkgver=r100.a5978c1
 pkgrel=1
 pkgdesc="Guest tools for the Crostini containers on ChromeOS"
 arch=('any')
@@ -91,7 +91,10 @@ package() {
 	sed -i 's|=/usr|=/opt/google/cros-containers|g' ${pkgdir}/usr/lib/systemd/user/sommelier@.service
 	install -m644 -D ${srcdir}/${_pkgname}/cros-sommelier/sommelier-x@.service \
 					 ${pkgdir}/usr/lib/systemd/user/sommelier-x@.service
-	sed -i 's|=/usr|=/opt/google/cros-containers|g' ${pkgdir}/usr/lib/systemd/user/sommelier-x@.service
+	sed -i \
+		-e 's|=/usr|=/opt/google/cros-containers|g' \
+		-e 's|/usr/share/fonts/X11|/usr/share/fonts|g' \
+		${pkgdir}/usr/lib/systemd/user/sommelier-x@.service
 	ln -sf ../sommelier@.service \
 		   ${pkgdir}/usr/lib/systemd/user/default.target.wants/sommelier@0.service
 	ln -sf ../sommelier@.service \
