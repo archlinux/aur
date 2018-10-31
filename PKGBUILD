@@ -1,6 +1,6 @@
 # Maintainer: Linus Probert <linus dot probert at gmail dot com>
 pkgname=mingw-w64-sdl2_mixer
-pkgver=2.0.2
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="A simple multi-channel audio mixer (mingw-w64)"
 arch=(any)
@@ -10,7 +10,7 @@ depends=(mingw-w64-crt mingw-w64-sdl2 mingw-w64-libmodplug mingw-w64-libvorbis m
 makedepends=(sed mingw-w64-gcc mingw-w64-configure)
 options=(staticlibs !strip !buildflags)
 source=("http://www.libsdl.org/projects/SDL_mixer/release/SDL2_mixer-$pkgver.tar.gz")
-md5sums=('aaa0551393993c14a13f72b339c0ed6c')
+md5sums=('a36e8410cac46b00a4d01752b32c3eb1')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
