@@ -1,0 +1,16 @@
+pkgbase = osgqt
+	pkgdesc = Qt project for making use of OpenSceneGraph
+	pkgver = 3.5.7
+	pkgrel = 1
+	url = https://github.com/openscenegraph/osgQt
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = cmake
+	depends = openscenegraph
+	depends = qt5-base
+	source = https://github.com/openscenegraph/osgQt/archive/3.5.7.tar.gz
+	md5sums = 8ecf4fb94720a02dacbdb1ceeda6f411
+
+pkgname = osgqt
+
