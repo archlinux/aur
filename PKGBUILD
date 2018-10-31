@@ -2,7 +2,6 @@
 pkgname=myftb-launcher
 pkgver=1.1.10
 pkgrel=1
-epoch=1
 pkgdesc="A fork of the SKCraft launcher for the MyFTB servers."
 arch=('x86_64')
 url="https://torch.myftb.de/launcher"
