@@ -1,7 +1,7 @@
 # Maintainer: Daniel Moch <daniel@danielmoch.com>
 _name=nncli
 pkgname=nncli-git
-pkgver=0.3.0.r19.g1d2714d
+pkgver=0.3.1.r0.ge6a26e0
 pkgrel=1
 pkgdesc="NextCloud Notes Command Line Interface"
 arch=('any')
@@ -14,14 +14,26 @@ depends=('python'
   'python-requests'
   'python-appdirs'
   'python-click')
-makedepends=('flit' 'git' 'python-pip' 'sed' 'grep' 'python-sphinx')
-source=("git+${url}.git")
+makedepends=('flit' 'git' 'python-pip' 'python-sphinx')
+checkdepends=('python-pytest'
+              'python-pytest-cov'
+              'python-pytest-mock'
+              'python-pylint'
+              'python-mock')
+source=("git+${url}?signed")
+validpgpkeys=('72A97F7072DDCE28058DEF30323C9F1784BDDD43')
 sha256sums=('SKIP')
 
 pkgver()
 {
   cd "${srcdir}/${_name}"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
+}
+
+check()
+{
+  cd "${srcdir}/${_name}"
+  python -m pytest
 }
 
 build()
