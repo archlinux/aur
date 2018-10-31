@@ -1,7 +1,7 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 
 pkgname=ddnet-git
-pkgver=11.4.2.r21.g714ed770e
+pkgver=11.4.5.r5.gd072817e2
 pkgrel=1
 pkgdesc="DDraceNetwork, a mod of Teeworlds"
 arch=('x86_64')
@@ -40,8 +40,8 @@ build() {
     cd build
     cmake ../ddnet                \
       -DCMAKE_BUILD_TYPE=Release  \
-      -DCMAKE_INSTALL_PREFIX=/usr
-
+      -DCMAKE_INSTALL_PREFIX=/usr \
+      -DAUTOUPDATE=OFF
     make all tools
 }
 
