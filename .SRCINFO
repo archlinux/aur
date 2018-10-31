@@ -13,7 +13,7 @@ pkgbase = perfutils-git
 	source = git+https://github.com/PlatformLab/PerfUtils
 	source = perfutils.pc
 	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 76e254320a92fde75fd0b05e941fd5b79011ad10c06a14e706c4eab4b8705d40
 
 pkgname = perfutils-git
 
