@@ -2,60 +2,28 @@
 
 pkgname=algernon
 pkgver=1.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Single executable web server with Lua, Markdown, QUIC and Pongo2 support'
 arch=('x86_64')
 url='https://algernon.roboticoverlords.org/'
 license=('MIT')
 depends=('redis')
-makedepends=('git' 'go')
+makedepends=('git' 'go-pie')
 optdepends=('mariadb: For using the MariaDB/MySQL database backend'
             'postgresql: For using the PostgreSQL database backend')
 backup=('etc/algernon/serverconf.lua'
         'usr/lib/systemd/system/algernon.service')
-source=("git+https://github.com/xyproto/algernon#tag=$pkgver")
+source=("git+https://github.com/xyproto/algernon#commit=b23b6d52e0eb32581d00483e0f439d7c305434b2")
 md5sums=('SKIP')
-_gourl=github.com/xyproto/algernon
 
 prepare() {
   cd "$pkgname"
 
-  git submodule init
-  git submodule update
-
-  cd "$srcdir"
-
-  export GOROOT=/usr/lib/go
-
-  rm -rf build; mkdir -p build/go; cd build/go
-  for f in "$GOROOT/"*; do ln -s "$f"; done
-  rm pkg; mkdir pkg; cd pkg
-  for f in "$GOROOT/pkg/"*; do ln -s "$f"; done
-
-  export GOPATH="$srcdir/build"
-  export GOROOT="$GOPATH/go"
-  export DESTPATH="$GOPATH/src/$_gourl"
-
-  # Make sure $DESTPATH is empty, but exists
-  rm -rf "$DESTPATH"; mkdir -p "$DESTPATH"
-
-  mv "$srcdir/$pkgname" "$(dirname $DESTPATH)"
-}
-
-build() {
-  cd "$GOPATH/src/$_gourl"
-
-  go build -x
-}
-
-check() {
-  cd "$GOPATH/src/$_gourl"
-
-  go test
+  GO111MODULE=off go build
 }
 
 package() {
-  cd "$GOPATH/src/$_gourl"
+  cd "$pkgname"
 
   install -Dm755 algernon "$pkgdir/usr/bin/algernon"
   install -Dm755 desktop/mdview "$pkgdir/usr/bin/mdview"
