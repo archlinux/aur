@@ -23,6 +23,7 @@ validpgpkeys=(
 )
 
 sha256sums=('1a3a889a8f14998286de3b14cc1dd5b2747178e012d6d480a18aa413985dae6f'
+            'SKIP'
             'd830e072fcb4acee8490ba3e38eee6034fd884a954d17ad4efeb397032c58a71')
 
 build() {
