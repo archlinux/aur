@@ -28,6 +28,8 @@ build() {
 
 check() {
   cd "${srcdir}/${_distname}-${pkgver}"
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT='1'
   make test
 }
 
@@ -35,8 +37,7 @@ package() {
   cd "${srcdir}/${_distname}-${pkgver}"
   unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
   make install DESTDIR="${pkgdir}"
-  find "$pkgdir" -name .packlist -delete
-  find "$pkgdir" -name perllocal.pod -delete
+  find "${pkgdir}" \( -name .packlist -or -name perllocal.pod \) -delete
 }
 
 # vim:set ts=2 sw=2 et:
