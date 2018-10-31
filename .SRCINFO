@@ -1,0 +1,15 @@
+pkgbase = perl-b-codelines
+	pkgdesc = Perl/CPAN Module B::CodeLines
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://metacpan.org/release/B-CodeLines
+	arch = any
+	license = GPL
+	makedepends = perl-module-build
+	depends = perl
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/R/RO/ROCKY/B-CodeLines-1.1.tar.gz
+	sha512sums = 822ec7f338e2a8f6380ecadae590353198ec0cff65d74142100b49d28ad725d91c1a7affe780adebfc4f134e27cad8b36f1eb91d16062a902a62734e87c508f2
+
+pkgname = perl-b-codelines
+
