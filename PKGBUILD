@@ -1,5 +1,5 @@
 # Maintainer: Michael Polidori <michaelapolidori@gmail.com>
-# Python package author: Ethan Chan <metakirby5@gmail.com>
+# Author: Ethan Chan <metakirby5@gmail.com>
 
 pkgname=colorz
 pkgver=1.0.3
