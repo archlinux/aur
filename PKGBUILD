@@ -35,13 +35,15 @@ sha512sums=('64a872010a8b8cd64459e913712167eaca8c7e12f065ab309c7d9c6ff419aa2fdc1
 build() {
   cd "${srcdir}/${_distname}-v${pkgver}"
   unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
-  export PERL_MM_USE_DEFAULT='1' PERL_AUTOINSTALL='--skipdeps'
+  export PERL_MM_USE_DEFAULT='1' PERL_AUTOINSTALL='--skipdeps' MODULEBUILDRC='/dev/null'
   perl Build.PL
   ./Build
 }
 
 check() {
   cd "${srcdir}/${_distname}-v${pkgver}"
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT='1'
   ./Build test
 }
 
