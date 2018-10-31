@@ -1,0 +1,18 @@
+pkgbase = elokab-adhan
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://elkirtasse.sourceforge.net
+	arch = x86_64
+	groups = elokab-desktop
+	license = GPL3
+	depends = qt5-svg
+	depends = qt5-multimedia
+	optdepends = gst-plugins-good
+	optdepends = gst-plugins-bad
+	optdepends = gst-plugins-ugly
+	optdepends = gst-libav
+	source = https://github.com/zakariakov/elokab-adhan/archive/0.1.tar.gz
+	md5sums = SKIP
+
+pkgname = elokab-adhan
+
