@@ -1,0 +1,10 @@
+--- a/PC/pyconfig.h.orig	2018-10-31 18:10:31.305748749 +0100
++++ b/PC/pyconfig.h	2018-10-31 18:10:48.242416545 +0100
+@@ -282,7 +282,6 @@
+ #endif
+ 
+ #define COMPILER "[gcc]"
+-#define hypot _hypot
+ #define PY_LONG_LONG long long
+ #define PY_LLONG_MIN LLONG_MIN
+ #define PY_LLONG_MAX LLONG_MAX

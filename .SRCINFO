@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-python37-bin
 	pkgdesc = Next generation of the python high-level scripting language (native MSVC version) (mingw-w64)
 	pkgver = 3.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.python.org/
 	arch = any
 	license = PSF
@@ -18,9 +18,11 @@ pkgbase = mingw-w64-python37-bin
 	source = https://www.python.org/ftp/python/3.7.1/python-3.7.1-embed-amd64.zip
 	source = https://www.python.org/ftp/python/3.7.1/Python-3.7.1.tgz
 	source = wine-python.sh
+	source = bpo-11566.patch
 	sha256sums = ba925542487f09568eb503057681a46c55d90ada4f3492c422596c64eee1f23b
 	sha256sums = c9e6ff79b0b9baa948e3819334d70fdc9ce2b195dc4948c9d668334ab4ff244e
 	sha256sums = 36c1b81ac29d0f8341f727ef40864d99d8206897be96be73dc34d4739c9c9f06
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = mingw-w64-python37-bin
