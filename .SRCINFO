@@ -1,7 +1,7 @@
 pkgbase = confluent-platform
 	pkgdesc = Confluent, founded by the creators of Apache Kafka, delivers a complete execution of Kafka for the Enterprise, to help you run your business in real time.
 	pkgver = 5.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.confluent.io/
 	install = install_confluent.sh
 	arch = any

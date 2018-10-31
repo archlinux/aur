@@ -1,7 +1,7 @@
 # Maintainer: Damien GASPARINA <dgasparina at gmail dot com>
 pkgname=confluent-platform
 pkgver=5.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Confluent, founded by the creators of Apache Kafka, delivers a complete execution of Kafka for the Enterprise, to help you run your business in real time.'
 arch=('any')
 url='https://www.confluent.io/'
@@ -131,4 +131,7 @@ package() {
 
 	# Configure logging to /var/log
 	ln -s /var/log/confluent/kafka ${pkgdir}/usr/logs
+
+	# Removing unneeded file
+	rm ${pkgdir}/confluent.conf
 }
