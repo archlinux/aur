@@ -5,14 +5,14 @@ pkgbase = tpm2-tss-git
 	url = https://github.com/tpm2-software/tpm2-tss
 	arch = x86_64
 	license = BSD
-	checkdepends = cmocka>=1.0.0
+	checkdepends = cmocka
 	checkdepends = ibm-sw-tpm2
 	checkdepends = net-tools
 	checkdepends = procps-ng
 	checkdepends = uthash
 	makedepends = git
 	makedepends = autoconf-archive
-	depends = libgcrypt
+	depends = openssl
 	provides = tpm2-tss
 	conflicts = tpm2-tss
 	source = git+https://github.com/tpm2-software/tpm2-tss.git
