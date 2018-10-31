@@ -11,7 +11,7 @@ depends=('python')
 makedepends=('python-setuptools')
 optdepends=()
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('cd83f633c2fc0bfc3d20dd3c5852c84056230d119eb3aba9b94b03e423875788')
+sha256sums=('806c74298e0fb8a838514307ef3eca73685a968b8efd00e5dfe1ea604200f59d')
 noextract=()
 
 build() {
