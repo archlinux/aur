@@ -3,7 +3,7 @@
 
 _pkgname=etcher
 pkgname=etcher-git
-pkgver=v1.4.5.15.ge4d4af15
+pkgver=1.4.6.r0.g3f8d2e42
 pkgrel=1
 pkgdesc='Burn images to SD cards & USB drives, safe & easy (git version)'
 arch=(x86_64)
@@ -16,8 +16,8 @@ optdepends=('libnotify: for notifications'
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=('!strip')
-source=("$pkgname::git+https://github.com/resin-io/$_pkgname.git"
-        "git+https://github.com/resin-io/scripts.git"
+source=("$pkgname::git+https://github.com/balena-io/$_pkgname.git"
+        'git+https://github.com/balena-io/scripts.git'
         'etcher-electron'
         'etcher-electron.desktop')
 sha256sums=('SKIP'
@@ -27,7 +27,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$pkgname"
-  git describe --tags --long | sed 's/-/./g'
+  git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -36,9 +36,12 @@ prepare() {
   git config submodule.scripts/resin.url "$srcdir/scripts"
   git submodule update
 
-  export ELECTRON_VERSION=$(pacman -Q electron | sed 's/.\+ \(.\+\)-.\+/\1/')
+  # electron --version does not work in a chroot
+  # https://github.com/electron/electron/issues/12621
+  export _electron_version=$(pacman -Q electron | sed 's/.\+ \(.\+\)-.\+/\1/')
   mv package.json{,.orig}
-  jq '.devDependencies.electron |= env.ELECTRON_VERSION' package.json.orig > package.json
+  jq '.devDependencies.electron |= env._electron_version' \
+    package.json.orig > package.json
 }
 
 build() {
@@ -57,7 +60,7 @@ package() {
 
   install package.json "$_appdir"
   cp -a {lib,build,generated,node_modules} "$_appdir"
-  cp -a assets/icon.png "$_appdir"
+  install -D assets/icon.png "$_appdir"/assets/icon.png
   install -D lib/gui/app/index.html "$_appdir"/lib/gui/app/index.html
 
   install -Dm755 "$srcdir"/etcher-electron "$pkgdir"/usr/bin/etcher-electron
