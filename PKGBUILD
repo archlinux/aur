@@ -12,7 +12,7 @@ url='https://github.com/PlatformLab/PerfUtils'
 source=('git+https://github.com/PlatformLab/PerfUtils'
         perfutils.pc)
 sha256sums=(SKIP
-            SKIP)
+            76e254320a92fde75fd0b05e941fd5b79011ad10c06a14e706c4eab4b8705d40)
 
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
