@@ -1,38 +1,51 @@
 # Maintainer: Eric DeStefano <eric at ericdestefano dot com>
 
-pkgname=sheepshaver
-pkgver=5078135
+pkgname=sheepshaver-git
+pkgver=r2604.g143b0827
 pkgrel=1
 pkgdesc="An Open Source PowerMac Emulator"
 arch=('x86_64')
 url="http://sheepshaver.cebix.net"
 license=('GPL')
-depends=('gtk2' 'sdl')
-provides=('sheepshaver')
-install=$pkgname.install
-source=('https://github.com/cebix/macemu/zipball/master/cebix-macemu-5078135.zip'
-'99-sheepshaver.conf'
-'SheepShaver.desktop'
-'SheepShaver.png')
-sha256sums=('108ade640136a53adadedee3c04c8218a35b6bae90861e906b8a09df08be95c2'
-'a4aa858b95d29906873693988d5db42d5a4da8aa94a72c79374f59fc488efd51'
-'cb002e73e864a6ca271e0bbaa6df6eb89dc1df86856fc575c20bf79367458c39'
-'b7f67b1f8424f3e0ffa1a5e57597f368c4c4f93ea1f871ec0a76700b7519b241')
+depends=('gtk2' 'sdl' 'vde2')
+provides=("sheepshaver=$pkgver")
+conflicts=("sheepshaver")
+source=('git+https://github.com/cebix/macemu'
+        'SheepShaver.sysctl'
+        'SheepShaver.desktop'
+        'SheepShaver.png')
+sha256sums=('SKIP'
+            'a4aa858b95d29906873693988d5db42d5a4da8aa94a72c79374f59fc488efd51'
+            'cb002e73e864a6ca271e0bbaa6df6eb89dc1df86856fc575c20bf79367458c39'
+            'b7f67b1f8424f3e0ffa1a5e57597f368c4c4f93ea1f871ec0a76700b7519b241')
+
+pkgver() {
+  cd macemu
+  echo "r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+}
 
 build() {
-  cd $srcdir/cebix-macemu-$pkgver/SheepShaver/src/Unix
-  ./autogen.sh --prefix=/usr --enable-sdl-audio --enable-sdl-video --with-bincue
-  make
+  cd macemu/SheepShaver/src/Unix
+  ./autogen.sh \
+    --prefix=/usr \
+    --enable-sdl-audio \
+    --enable-sdl-video \
+    --enable-tuntap \
+    --with-bincue \
+    --with-vdeplug \
+    ;
+  make -j1
 }
 
 package() {
-	install -Dm755 "$srcdir/cebix-macemu-$pkgver/SheepShaver/src/Unix/SheepShaver" "${pkgdir}/usr/bin/SheepShaver"
-	mkdir -p ${pkgdir}/etc/sysctl.d
-	install -Dm644 "$srcdir/99-sheepshaver.conf" "${pkgdir}/etc/sysctl.d/"
-	mkdir -p ${pkgdir}/usr/share/doc
-	mkdir ${pkgdir}/usr/share/pixmaps
-	cp -a $srcdir/cebix-macemu-2e302d6/SheepShaver/doc/Linux $pkgdir/usr/share/SheepShaver
-	install -Dm644 ../SheepShaver.png $pkgdir/usr/share/pixmaps/SheepShaver.png
-	mkdir ${pkgdir}/usr/share/applications
-	install -Dm644 ../SheepShaver.desktop $pkgdir/usr/share/applications/SheepShaver.desktop
+  install -Dm755 macemu/SheepShaver/src/Unix/SheepShaver "$pkgdir"/usr/bin/SheepShaver
+
+  mkdir -p "$pkgdir"/usr/share/doc
+  cp -a macemu/SheepShaver/doc/Linux "$pkgdir"/usr/share/doc/SheepShaver
+
+  install -Dm644 SheepShaver.desktop "$pkgdir"/usr/share/applications/SheepShaver.desktop
+  install -Dm644 SheepShaver.png     "$pkgdir"/usr/share/pixmaps/SheepShaver.png
+  install -Dm644 SheepShaver.sysctl  "$pkgdir"/etc/sysctl.d/90-SheepShaver.conf
 }
+
+# vim: ts=2:sw=2:et:
