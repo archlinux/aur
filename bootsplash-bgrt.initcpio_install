@@ -1,0 +1,11 @@
+build() {
+        # add bootsplash
+	add_binary /usr/lib/firmware/bootsplash-themes/bgrt/bootsplash /usr/lib/firmware/bootsplash-themes/bgrt/bootsplash
+}
+
+help() {
+	echo "This hook includes bootsplash image in the initramfs image."
+}
+
+# vim: set ft=sh:
+#EOF 

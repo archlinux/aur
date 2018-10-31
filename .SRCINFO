@@ -1,0 +1,22 @@
+pkgbase = bootsplash-theme-bgrt
+	pkgdesc = BGRT bootsplash theme
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://lists.freedesktop.org/archives/dri-devel/2017-December/160242.html
+	arch = x86_64
+	license = GPL
+	makedepends = imagemagick
+	optdepends = bootsplash-systemd: for bootsplash functionality
+	options = !libtool
+	options = !emptydirs
+	source = bootsplash-packer
+	source = bootsplash-bgrt.sh
+	source = bootsplash-bgrt.initcpio_install
+	source = spinner.gif
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = bootsplash-theme-bgrt
+
