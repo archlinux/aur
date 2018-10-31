@@ -1,63 +1,161 @@
-
-<a name="2.1.2"></a>
-## [2.1.2](https://gitlab.com/langurmonkey/gaiasky/compare/2.1.1...2.1.2) (2018-09-18)
-
-### Feat
-
-* add quit confirmation dialog
-* add new key bindings for simple actions
-
-### Fix
-
-* fix for windows paths
-* fix run script and play camera windows
-* update changelog
+<a name="unreleased"></a>
+## [Unreleased](https://github.com/langurmonkey/gaiasky/tree/master)
+[Full changelog](https://github.com/langurmonkey/gaiasky/compare/2.1.3...HEAD)
 
 
-<a name="2.1.1"></a>
-## [2.1.1](https://gitlab.com/langurmonkey/gaiasky/compare/2.1.0...2.1.1) (2018-09-14)
+<a name="2.1.3"></a>
+## [2.1.3](https://github.com/langurmonkey/gaiasky/tree/2.1.2-vr) (2018-10-31)
+[Full changelog](https://github.com/langurmonkey/gaiasky/compare/2.1.2-vr...2.1.3)
 
-### Docs
+### Bug Fixes
 
-* update changelog
-* mended submodule init and update
+- octree rendering muted 
+- minimap window 
+- accents and umlauts in user folder path (win) [#314](https://github.com/langurmonkey/gaiasky/issues/314) 
+- start button status update [#313](https://github.com/langurmonkey/gaiasky/issues/313) 
+### Code Refactoring
 
-### Fix
+- startup log 
+- shader include directive changed 
+### Documentation
 
-* crash if no internet connection present
-* fix description of very large catalog
+- remove old references to `gaiasandbox` 
+### Features
 
-
-<a name="2.1.0"></a>
-## [2.1.0](https://gitlab.com/langurmonkey/gaiasky/compare/2.0.3...2.1.0) (2018-09-11)
-
-### Build
-
-* new changelog generator in release script
-* add changelog generator script
-
-### Docs
-
-* updated changelog
-* add gaiasky-docs submodule
-* add commit message style guidelines
-* Fix download helper docs
-
-### Feat
-
-* add download manager and infrastructure
-
-### Fix
-
-* fix previous fix of search dialog
-* search dialog crash if starts with number
-* fix error loading lens dirt hi res texture
-
+- new shader init & various improvements 
+- add proper motions to stil data provider 
+- initial support for proper motions over SAMP 
+- individual constellation selectors [#275](https://github.com/langurmonkey/gaiasky/issues/275) 
 ### Style
 
-* fix style of contributing once and for all
-* fix style in contributing.md
+- GaiaSky.java to use LF instead of CRLF 
+- remove leftover variables in full gui 
 
+<a name="2.1.2-vr"></a>
+## [2.1.2-vr](https://github.com/langurmonkey/gaiasky/tree/2.1.2) (2018-09-28)
+[Full changelog](https://github.com/langurmonkey/gaiasky/compare/2.1.2...2.1.2-vr)
+
+### Bug Fixes
+
+- remove version from window title 
+- assets location in install4j template 
+- heap sizes in build script 
+- macOS -XstartOnFirstThread flag 
+- macos builds tweaks 
+- heap sizes in build script 
+- macOS -XstartOnFirstThread flag 
+- assets location in install4j template 
+- macos builds tweaks 
+- heap sizes in build script 
+- macOS -XstartOnFirstThread flag 
+- macos builds tweaks 
+- macos builds tweaks 
+- heap sizes in build scripts 
+- heap sizes in build script 
+- macOS -XstartOnFirstThread flag 
+- macOS -XstartOnFirstThread flag 
+- global key bindings affect invisible GUIs [#311](https://github.com/langurmonkey/gaiasky/issues/311) 
+- fix `p` double-mapping [#310](https://github.com/langurmonkey/gaiasky/issues/310) 
+### Build system
+
+- installer detects and removes previous versions 
+- new gradle 5 compile dep format 
+- update to lwjgl 3.2.3 
+- update to lwjgl 3.2.3 
+- missing flag in rund, fix caps in ruler 
+- new gradle 5 compile dep format 
+- update to lwjgl 3.2.3 
+- update to lwjgl 3.2.3 
+- new gradle 5 compile dep format 
+- update to lwjgl 3.2.3 
+- new gradle 5 compile dep format 
+- update to lwjgl 3.2.3 
+- update to lwjgl 3.2.3 
+- add javadoc generator and publisher 
+### Code Refactoring
+
+- bin to scripts, now settled 
+- scripts moved to bin, bin in git 
+### Documentation
+
+- small tweak to changelog template 
+- improve git-chglog configuration 
+- update changelog 
+### Features
+
+- update to lwjgl3 backend 
+- update to lwjgl3 backend 
+- update to lwjgl3 backend 
+- update to lwjgl3 backend 
+- update to lwjgl3 backend 
+- update to lwjgl3 backend 
+- cosmic ruler [#296](https://github.com/langurmonkey/gaiasky/issues/296) 
+- update to lwjgl3 backend 
+- update to lwjgl3 backend 
+- update to lwjgl3 backend 
+- update to lwjgl3 backend 
+- update to lwjgl3 backend 
+- API calls to disable and enable the GUI [#312](https://github.com/langurmonkey/gaiasky/issues/312) 
+### Style
+
+- fix issues with merge to bring it back to a working state 
+- add ruler component type 
+- general code cleanup 
+- minor style issues 
+
+<a name="2.1.2"></a>
+## [2.1.2](https://github.com/langurmonkey/gaiasky/tree/2.1.1) (2018-09-18)
+[Full changelog](https://github.com/langurmonkey/gaiasky/compare/2.1.1...2.1.2)
+
+### Bug Fixes
+
+- fix for windows paths [#309](https://github.com/langurmonkey/gaiasky/issues/309) 
+- fix run script and play camera windows 
+- update changelog 
+### Features
+
+- add quit confirmation dialog 
+- add new key bindings for simple actions 
+
+<a name="2.1.1"></a>
+## [2.1.1](https://github.com/langurmonkey/gaiasky/tree/2.1.0) (2018-09-14)
+[Full changelog](https://github.com/langurmonkey/gaiasky/compare/2.1.0...2.1.1)
+
+### Bug Fixes
+
+- crash if no internet connection present [#308](https://github.com/langurmonkey/gaiasky/issues/308) 
+- fix description of very large catalog 
+### Documentation
+
+- update changelog 
+- mended submodule init and update 
+
+<a name="2.1.0"></a>
+## [2.1.0](https://github.com/langurmonkey/gaiasky/tree/2.0.3) (2018-09-11)
+[Full changelog](https://github.com/langurmonkey/gaiasky/compare/2.0.3...2.1.0)
+
+### Bug Fixes
+
+- fix previous fix of search dialog [#307](https://github.com/langurmonkey/gaiasky/issues/307) 
+- search dialog crash if starts with number [#307](https://github.com/langurmonkey/gaiasky/issues/307) 
+- fix error loading lens dirt hi res texture 
+### Build system
+
+- new changelog generator in release script 
+- add changelog generator script 
+### Documentation
+
+- updated changelog 
+- add gaiasky-docs submodule 
+- add commit message style guidelines 
+- Fix download helper docs 
+### Features
+
+- add download manager and infrastructure [#291](https://github.com/langurmonkey/gaiasky/issues/291) [#303](https://github.com/langurmonkey/gaiasky/issues/303) 
+### Style
+
+- fix style of contributing once and for all 
+- fix style in contributing.md 
 
 ## [2.0.3](https://github.com/langurmonkey/gaiasky/tree/2.0.3) (2018-08-28)
 [Full Changelog](https://github.com/langurmonkey/gaiasky/compare/2.0.2-vr...2.0.3)
