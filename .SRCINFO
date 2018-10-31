@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-sdl2_mixer
 	pkgdesc = A simple multi-channel audio mixer (mingw-w64)
 	pkgver = 2.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.libsdl.org/projects/SDL_mixer
 	arch = any
 	license = zlib
@@ -13,7 +13,7 @@ pkgbase = mingw-w64-sdl2_mixer
 	depends = mingw-w64-libmodplug
 	depends = mingw-w64-libvorbis
 	depends = mingw-w64-flac
-	depends = mingw-w64-smpeg2
+	depends = mingw-w64-mpg123
 	options = staticlibs
 	options = !strip
 	options = !buildflags
