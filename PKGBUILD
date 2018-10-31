@@ -2,17 +2,17 @@
 # Contributor: Kaiting Chen <kaitocracy@gmail.com>
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 # Contributor: Nathan Owe <ndowens04+AUR @ gmail.com>
-pkgname='cvs2svn'
-pkgver='2.4.0'
-pkgrel='2'
+pkgname=cvs2svn
+pkgver=2.5.0
+pkgrel=1
 pkgdesc='A migration tool for CVS to SVN/Git/Hg/Bzr'
 arch=('any')
 url='http://cvs2svn.tigris.org/'
 license=('custom')
 depends=('python2')
 changelog=Changelog
-source=("${url}files/documents/1462/49237/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('a6677fc3e7b4374020185c61c998209d691de0c1b01b53e59341057459f6f116')
+source=("${url}files/documents/1462/49543/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('6409d118730722f439760d41c08a5bfd05e5d3ff4a666050741e4a5dc2076aea')
 
 prepare() {
 	cd $srcdir/$pkgname-$pkgver
