@@ -1,7 +1,7 @@
 pkgbase = lumina-open
 	pkgdesc = Application launcher for the lumina desktop environment
 	pkgver = 1.4.0p1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/trueos/lumina
 	arch = x86_64
 	license = BSD
@@ -11,7 +11,6 @@ pkgbase = lumina-open
 	makedepends = qt5-multimedia
 	depends = qt5-base
 	depends = qt5-multimedia
-	provides = lumina-screenshot
 	conflicts = lumina-desktop
 	conflicts = lumina-desktop-git
 	source = https://github.com/trueos/lumina/archive/v1.4.0-p1.tar.gz
