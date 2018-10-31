@@ -1,27 +1,22 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
-_nginxver=1.15.5
 pkgname=nginx-mainline-mod-brotli
-pkgver=$_nginxver
-pkgrel=18
+epoch=1
+pkgver=0.1.2
+pkgrel=1
 
 _modname="ngx_${pkgname#nginx-mainline-mod-}"
-
-# https://github.com/google/ngx_brotli
-# https://github.com/google/ngx_brotli/tree/master/deps
-_modver=bfd2885b2da4d763fed18f49216bb935223cd34b
-_brotliver=222564a95d9ab58865a096b8d9f7324ea5f2e03e
+_nginxver=1.15.5
 
 pkgdesc="Brotli compression filter module for mainline nginx"
 arch=('i686' 'x86_64')
-depends=('nginx-mainline')
-url="https://github.com/google/ngx_brotli"
+depends=('nginx-mainline' 'brotli')
+url="https://github.com/eustas/ngx_brotli"
 license=('CUSTOM')
 
 source=(
 	https://nginx.org/download/nginx-$_nginxver.tar.gz{,.asc}
-	https://github.com/google/$_modname/archive/$_modver/$_modname-$_modver.tar.gz
-	https://github.com/google/brotli/archive/$_brotliver/brotli-$_brotliver.tar.gz
+	https://github.com/eustas/$_modname/archive/v$pkgver/$_modname-$pkgver.tar.gz
 )
 
 validpgpkeys=(
@@ -30,24 +25,21 @@ validpgpkeys=(
 
 sha256sums=('1a3a889a8f14998286de3b14cc1dd5b2747178e012d6d480a18aa413985dae6f'
             'SKIP'
-            '3a5348d484554f3d1787d06961fc7886fda44d17264ab7e6cdf1f4a8fa04231e'
-            '4299a2a86f0b931e80dd548be17fcaa5a6c158a0727f497f22cbb365668af0fe')
+            '309af9e96c10e80f1884acea96379980979581adc287ce338f084607bd48c185')
 
 prepare() {
-	cd "$srcdir"/$_modname-$_modver/deps
-	rm -rf brotli
-	ln -s ../../brotli-$_brotliver brotli
-	export NGX_BROTLI_STATIC_MODULE_ONLY=1
+	cd "$srcdir"/$_modname-$pkgver
+	sed 's@/usr/local@/usr@' -i config
 }
 
 build() {
 	cd "$srcdir"/nginx-$_nginxver
-	./configure --with-compat --add-dynamic-module=../$_modname-$_modver
+	./configure --with-compat --add-dynamic-module=../$_modname-$pkgver
 	make modules
 }
 
 package() {
-	install -Dm644 "$srcdir"/$_modname-$_modver/LICENSE \
+	install -Dm644 "$srcdir"/$_modname-$pkgver/LICENSE \
 	               "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 
 	cd "$srcdir"/nginx-$_nginxver/objs
