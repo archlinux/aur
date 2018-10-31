@@ -1,8 +1,8 @@
-# $Id: PKGBUILD 192469 2016-10-17 19:29:41Z arojas $
-# Maintainer: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 
 pkgname=injeqt
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Dependency injection framework for Qt'
 arch=('i686' 'x86_64')
@@ -10,18 +10,18 @@ url='https://github.com/vogel/injeqt'
 license=('LGPL2.1')
 depends=('qt5-base')
 makedepends=('cmake')
-source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz
-        gcc7-fix.patch)
-md5sums=('9a582037c454b1355e808bb2e07126bb'
-         '19e2666e706984b3b774c11c4379e7fe')
+source=("${pkgname}-${pkgver}.tar.gz"::"${url}/archive/${pkgver}.tar.gz"
+        "gcc7-fix.patch")
+sha256sums=('77540cedb0b26affe993dd18124d796059e34c80a51d9ae6433fdff1860db135'
+            'c4100ae17234b7d00cb30ea8dd9ab5517eed0f702d0e3e260b3a5b472fe25779')
 
 prepare() {
-  cd $pkgname-$pkgver
-  patch -Np1 -i ../gcc7-fix.patch
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  patch -Np1 -i "${srcdir}/gcc7-fix.patch"
 }
 
 build() {
-  cd $pkgname-$pkgver
+  cd "${srcdir}/${pkgname}-${pkgver}"
   cmake -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
@@ -31,7 +31,7 @@ build() {
 }
 
 package() {
-  cd $pkgname-$pkgver
-  make DESTDIR="$pkgdir" install
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
 }
 
