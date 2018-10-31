@@ -3,7 +3,7 @@
 _pkgname=osgQt
 pkgname=osgqt
 pkgver=3.5.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt project for making use of OpenSceneGraph"
 arch=('i686' 'x86_64')
 url="https://github.com/openscenegraph/$_pkgname"
@@ -17,13 +17,17 @@ md5sums=('8ecf4fb94720a02dacbdb1ceeda6f411')
 build() {
     cd "$_pkgname-$pkgver"
 
-    sed -i 's/LIB_POSTFIX "64"/LIB_POSTFIX ""/' CMakeLists.txt
-
-    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib .
+    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DLIB_POSTFIX= .
     make
 }
 
 package() {
     cd "$_pkgname-$pkgver"
     make DESTDIR="$pkgdir/" install
+
+    # provide libosgQt.so / openscenegraph-osgQt.pc
+    cd $pkgdir/usr/lib
+    ln -s libosgQt5.so libosgQt.so
+    cd pkgconfig
+    ln -s openscenegraph-osgQt5.pc openscenegraph-osgQt.pc
 }
