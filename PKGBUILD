@@ -11,7 +11,7 @@ _revision=.2
 pkgdesc="Generic interface to CRC algorithms"
 arch=('i686' 'x86_64')
 license=('custom:Public Domain')
-url="https://metacpan.org/release/Digest-CRC"
+url="https://metacpan.org/release/${_realname}"
 depends=('perl>=5.10.0')
 options=(!emptydirs)
 source=("https://cpan.metacpan.org/authors/id/O/OL/OLIMAUL/${_realname}-${pkgver}${_revision}.tar.gz"
@@ -22,7 +22,6 @@ sha512sums=('983dfb3a39ca054819906bd67251f0e275a55d4ab1873146a8bbe36dee3d979e67a
 
 build() {
   cd "${srcdir}/${_realname}-${pkgver}"
-
   unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT='1' PERL_AUTOINSTALL='--skipdeps'
 
@@ -33,18 +32,18 @@ build() {
 
 check () {
   cd "${srcdir}/${_realname}-${pkgver}"
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT='1'
   make test
 }
 
 package() {
   cd "${srcdir}/${_realname}-${pkgver}"
-
   unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
 
   make install DESTDIR="$pkgdir"
 
-  find "$pkgdir" -name perllocal.pod -delete
-  find "$pkgdir" -name .packlist -delete
+  find "${pkgdir}" \( -name perllocal.pod -or -name .packlist \) -delete
 
   install -D -m0644 "${srcdir}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
