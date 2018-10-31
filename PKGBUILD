@@ -2,7 +2,7 @@
 
 pkgname=corearbiter-git
 pkgver=r149.111b94e
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 
 pkgdesc='The Core Arbiter for Arachne'
@@ -41,7 +41,7 @@ package() {
   cd CoreArbiter
 
   # libraries
-  install -Dm0755 lib/libCoreArbiter.a "$pkgdir"/usr/lib/libCoreArbiter.a
+  install -Dm0644 lib/libCoreArbiter.a "$pkgdir"/usr/lib/libCoreArbiter.a
 
   # binaries
   install -Dm0755 bin/coreArbiterServer "$pkgdir"/usr/bin/coreArbiterServer

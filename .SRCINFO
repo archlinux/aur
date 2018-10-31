@@ -1,7 +1,7 @@
 pkgbase = corearbiter-git
 	pkgdesc = The Core Arbiter for Arachne
 	pkgver = r149.111b94e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PlatformLab/CoreArbiter/
 	arch = x86_64
 	license = unknown
