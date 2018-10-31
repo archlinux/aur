@@ -3,7 +3,7 @@
 
 pkgname=rsyslog
 pkgver=8.39.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An enhanced multi-threaded syslogd with a focus on security and reliability"
 url="http://www.rsyslog.com/"
 arch=('x86_64' 'i686')
