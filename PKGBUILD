@@ -1,6 +1,6 @@
 # Maintainer: Vivien Maisonneuve <v dot maisonneuve at gmail dot com>
 pkgname='colorlatex-git'
-pkgver=r42.13cc291
+pkgver=r44.8c2db30
 pkgrel=1
 pkgdesc='A script to colorize the terminal output of LaTeX compilers'
 arch=('any')

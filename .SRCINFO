@@ -1,6 +1,6 @@
 pkgbase = colorlatex-git
 	pkgdesc = A script to colorize the terminal output of LaTeX compilers
-	pkgver = r42.13cc291
+	pkgver = r44.8c2db30
 	pkgrel = 1
 	url = https://gitlab.com/vivien_m/colorlatex
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = colorlatex-git
 	makedepends = git
 	depends = perl
 	depends = texlive-bin
-	provides = colorlatex=r42.13cc291
+	provides = colorlatex=r44.8c2db30
 	conflicts = colorlatex
 	source = colorlatex-git::git+https://gitlab.com/vivien_m/colorlatex.git
 	md5sums = SKIP
