@@ -1,7 +1,7 @@
 # Maintainer: Andrew Sun <adsun701@gmail.com>
 
 pkgname=mingw-w64-glibmm
-pkgver=2.56.0
+pkgver=2.58.0
 pkgrel=1
 pkgdesc="C++ bindings for GLib (mingw-w64)"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('mingw-w64-configure')
 depends=('mingw-w64-crt' 'mingw-w64-libsigc++' 'mingw-w64-zlib' 'mingw-w64-glib2')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://download.gnome.org/sources/glibmm/${pkgver%.*}/glibmm-${pkgver}.tar.xz")
-md5sums=('5aa7a60084fe3e01d746c96f4a115302')
+md5sums=('4a0402ac65a7c47424b4e21b81b079c0')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
