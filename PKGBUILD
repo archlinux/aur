@@ -1,20 +1,20 @@
 # Maintainer: Matthew Ellison <matt(at)arroyo(dot)io>
 
 pkgname=vpp
-pkgver=18.07.1
+pkgver=18.10
 pkgrel=1
 pkgdesc="FD.io Vector Packet Processing"
 arch=('x86_64')
 url="https://fd.io/"
 license=('Apache')
 depends=('glibc' 'gcc-libs' 'openssl' 'mbedtls' 'numactl' 'python2' 'python2-ply')
-makedepends=('patchelf')
-provides=("${pkgname}")
+makedepends=('ninja' 'patchelf')
+provides=("${pkgname}" 'dpdk')
 source=("git+https://gerrit.fd.io/r/vpp#tag=v${pkgver}"
 	"nasmlib.patch"
         "vpp.sysusers")
 sha256sums=('SKIP'
-            '832ce99c89109f800eeec911a6a6a7a695cea140d3fe643ddfb32d8a5834325f'
+            '38f4daaaba5b2e9b3f624f08b963725e004d8d3b27385f596f45f135f88748e7'
             '5e8a0d05f715816689479c9050bf0505c7a64252d53d16c5d5df5f4787e4295b')
 
 prepare() {
@@ -35,17 +35,13 @@ prepare() {
 
 build() {
     # (1) Build Release
-    #        Currently install into "fake" directory
-    #        since there is no clean install target.
-    cd ${srcdir}/${pkgname}
-    mkdir -p ${srcdir}/build
-    make DESTDIR=${srcdir}/build build-release
+    make build-release
 }
 
 package() {
     # (1) Find the Actual Install Root
     #        Currently DESTDIR installs the ABSOLUTE path.
-    root=$(dirname $(dirname $(find ${srcdir}/build -iname vpp -type f -executable)))
+    root=$(dirname $(dirname $(find ${srcdir}/vpp/build-root/install-vpp-native -iname vpp -type f -executable)))
     cd $root
 
     # (2) Install VPP
@@ -53,7 +49,7 @@ package() {
     mkdir ${pkgdir}/usr
     cp -pr bin ${pkgdir}/usr/bin
     cp -pr include ${pkgdir}/usr/include
-    cp -pr lib64 ${pkgdir}/usr/lib
+    cp -pr lib ${pkgdir}/usr/lib
     cp -pr share ${pkgdir}/usr/share
 
     # (3) Fix RPATH

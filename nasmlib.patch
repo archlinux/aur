@@ -1,5 +1,5 @@
---- ./build-root/build-vpp-native/dpdk/nasm-2.13.01/include/nasmlib.h.orig	2018-09-25 12:47:52.806000016 -0400
-+++ ./build-root/build-vpp-native/dpdk/nasm-2.13.01/include/nasmlib.h	2018-09-25 12:48:25.503037231 -0400
+--- ./build-root/build-vpp-native/external/src-nasm/include/nasmlib.h.orig	2018-11-01 18:00:15.456221458 -0400
++++ ./build-root/build-vpp-native/external/src-nasm/include/nasmlib.h	2018-11-01 18:02:15.617516579 -0400
 @@ -188,10 +188,8 @@
  int64_t readstrnum(char *str, int length, bool *warn);
  
@@ -7,7 +7,7 @@
 - * seg_init: Initialise the segment-number allocator.
   * seg_alloc: allocate a hitherto unused segment number.
   */
--void pure_func seg_init(void);
+-int32_t pure_func seg_init(void);
  int32_t pure_func seg_alloc(void);
  
  /*
