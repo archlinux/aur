@@ -2,7 +2,7 @@
 # Contributor: Josip Ponjavic <josipponjavic@gmail.com>
 
 pkgname=gsignond
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='gSSO glib daemon'
 arch=('x86_64')
@@ -14,6 +14,12 @@ provides=('libgsignond-common.so')
 backup=('etc/gsignond.conf')
 source=("git+https://gitlab.com/accounts-sso/gsignond.git#tag=${pkgver}")
 sha256sums=('SKIP')
+
+prepare() {
+  cd gsignond
+
+  git cherry-pick -n 39022c86ddb5062a10fb0503ad9d81a8e532d527
+}
 
 build() {
   arch-meson gsignond build \
