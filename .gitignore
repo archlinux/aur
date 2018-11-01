@@ -1,0 +1,5 @@
+openscenegraph/
+pkg/
+src/
+*.pkg.tar.xz
+
