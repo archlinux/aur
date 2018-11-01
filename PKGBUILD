@@ -14,8 +14,8 @@ source=("https://github.com/jgpws/jgd-black/raw/master/downloads/$pkgname-${pkgv
 
 package() {
 	cd "${srcdir}"
-	tar -xzvf jgd-black-10-23-18.tar.gz
-	sudo cp -R JGD-Black /usr/share/themes
+	install -dm755 "$pkgdir/usr/share/themes"
+	cp -R JGD-Black "$pkgdir/usr/share/themes"
 }
 
 
