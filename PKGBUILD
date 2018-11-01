@@ -4,7 +4,7 @@
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 
 pkgname=lib32-sdl2_mixer
-pkgver=2.0.2
+pkgver=2.0.4
 pkgrel=1
 pkgdesc='A simple multi-channel audio mixer'
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('lib32-flac' 'lib32-glibc' 'lib32-libmodplug' 'lib32-mpg123'
 makedepends=('gcc-multilib' 'lib32-fluidsynth')
 optdepends=('lib32-fluidsynth: MIDI software synth, replaces built-in timidity')
 source=("https://www.libsdl.org/projects/SDL_mixer/release/SDL2_mixer-${pkgver}.tar.gz")
-sha256sums=('4e615e27efca4f439df9af6aa2c6de84150d17cbfd12174b54868c12f19c83bb')
+sha256sums=('b4cf5a382c061cd75081cf246c2aa2f9df8db04bdda8dcdc6b6cca55bede2419')
 
 build() {
   cd SDL2_mixer-$pkgver
