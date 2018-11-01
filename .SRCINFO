@@ -1,6 +1,6 @@
 pkgbase = linux-drm-intel-next-queued-git
 	pkgdesc = Linux driver for Intel graphics
-	pkgver = 4.19.783070.9128b1024954
+	pkgver = 4.19.783171.03ad7d8821ec
 	pkgrel = 1
 	url = https://01.org/linuxgraphics/gfx-docs/maintainer-tools/drm-intel.html
 	arch = x86_64
