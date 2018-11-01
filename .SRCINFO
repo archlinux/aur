@@ -1,0 +1,15 @@
+pkgbase = python-simperium
+	pkgdesc = Python 3 client for the Simperium synchronization platform
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/swalladge/simperium-python3
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/8c/35/9bda4f31bf4150a01e2b1f8c8f00a5c896533e9d9498a1563a19f22e58ed/Simperium3-0.1.2.tar.gz
+	sha256sums = a9f7581d1a2d457fa6aaaefa659b56c1c62b3f231e6fb037830d8410a529ddea
+
+pkgname = python-simperium
+
