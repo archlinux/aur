@@ -10,6 +10,7 @@ depends=('qt5-svg' 'qt5-declarative' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'm
 optdepends=(
 	'mpv-vapoursynth: for vapoursynth support.'
 	'youtube-dl: for remote video streaming'
+	'noto-fonts: default fonts and recomended for a youtube-like UI'
 )
 makedepends=('git' 'cmake')
 provides=("$pkgname")
