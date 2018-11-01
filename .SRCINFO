@@ -1,0 +1,20 @@
+pkgbase = brother-dcpj100
+	pkgdesc = CUPS driver for Brother DCP-J100 printer
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = http://solutions.brother.com/linux/en_us/index.html
+	install = dcpj100.install
+	arch = i686
+	arch = x86_64
+	license = custom:Brother Industries
+	depends = cups
+	depends = tcsh
+	source = http://www.brother.com/pub/bsc/linux/dlf/dcpj100cupswrapper-3.0.0-1.i386.rpm
+	source = http://www.brother.com/pub/bsc/linux/dlf/dcpj100lpr-3.0.0-1.i386.rpm
+	md5sums = 33486e8669dd77b0b88711d1b84218fd
+	md5sums = c5add66bcef0f7d95498c44d2c7ba68a
+	depends_x86_64 = lib32-libstdc++5
+	depends_x86_64 = lib32-libcups
+
+pkgname = brother-dcpj100
+
