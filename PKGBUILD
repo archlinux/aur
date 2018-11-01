@@ -1,7 +1,7 @@
 # Creator: Herbert Knapp <herbert.knapp@edu.uni-graz.at>
 # Maintainer: Milo Gilad <myl0gcontact@gmail.com>
 pkgname=waterfox-bin
-pkgver=56.2.3
+pkgver=56.2.4
 pkgrel=1
 pkgdesc="64-Bit optimized Firefox, no data collection, allows unsigned extensions"
 arch=('x86_64')
@@ -20,5 +20,5 @@ package() {
   cp -r waterfox "${pkgdir}"/opt/
   ln -s /opt/waterfox/waterfox "${pkgdir}"/usr/bin/
 }
-sha512sums=('a7ece8f3f8ab8f5205d0acd863365ce9d7965550e8231ded380a89d8e5d2a220992380bdbc3a1f59f72588d40f82358b38ce7b3456c6f7c0066c13779b58ee85'
-            'c822bc6d42fcf1d04db0665b9964baa9351adcfd09ce6926faf59b4ae83fc7a0af536bb5a64179b44f69ddb9f849dc29c3bb7111c748fba9652c46bb99e53cc4')
+md5sums=('0e8dbbeaf61ad27b0f0d6c31038b529e'
+         'f011906b3c4d7a515108f126d45c850d')
