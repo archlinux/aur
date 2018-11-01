@@ -6,7 +6,7 @@
 
 pkgbase=ppsspp
 pkgname=('ppsspp' 'ppsspp-headless' 'ppsspp-qt')
-pkgver=1.6.3
+pkgver=1.7
 pkgrel=1
 pkgdesc='A PSP emulator written in C++'
 arch=('x86_64')
@@ -15,11 +15,14 @@ license=('GPL2')
 depends=('glew' 'libgl' 'sdl2' 'snappy' 'zlib')
 makedepends=('cmake' 'git' 'libzip' 'qt5-tools')
 source=("git+https://github.com/hrydgard/ppsspp.git#tag=v${pkgver}"
-        'git+https://github.com/hrydgard/ppsspp-ffmpeg.git'
+        'git+https://github.com/Kingcom/armips.git'
+        'git+https://github.com/discordapp/discord-rpc.git'
+        'ppsspp-ffmpeg::git+https://github.com/hrydgard/ppsspp-ffmpeg.git'
         'ppsspp-glslang::git+https://github.com/hrydgard/glslang.git'
         'git+https://github.com/hrydgard/ppsspp-lang.git'
-        'git+https://github.com/Kingcom/armips.git'
+        'git+https://github.com/Tencent/rapidjson.git'
         'git+https://github.com/KhronosGroup/SPIRV-Cross.git'
+        'armips-tinyformat::git+https://github.com/Kingcom/tinyformat.git'
         'ppsspp.sh'
         'ppsspp-headless.sh'
         'ppsspp-qt.sh'
@@ -27,6 +30,9 @@ source=("git+https://github.com/hrydgard/ppsspp.git#tag=v${pkgver}"
         'ppsspp-qt.desktop'
         'ppsspp-flags.patch')
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -49,11 +55,21 @@ prepare() {
     git config submodule.${submodule}.url ../ppsspp-${submodule#*/}
     git submodule update ${submodule}
   done
-  for submodule in ext/{SPIRV-Cross,armips}; do
+  for submodule in ext/{armips,discord-rpc,rapidjson,SPIRV-Cross}; do
     git submodule init ${submodule}
     git config submodule.${submodule}.url ../${submodule#*/}
     git submodule update ${submodule}
   done
+
+  pushd ext/armips
+
+  for submodule in ext/tinyformat; do
+    git submodule init ${submodule}
+    git config submodule.${submodule}.url ../../../armips-${submodule#*/}
+    git submodule update ${submodule}
+  done
+
+  popd
 
   for ui in sdl qt; do
     if [[ -d build-$ui ]]; then
@@ -78,8 +94,8 @@ build() {
   cmake .. \
     -DCMAKE_BUILD_TYPE='Release' \
     -DCMAKE_SKIP_RPATH='ON' \
-    -DUSING_QT_UI='ON' \
-    -DUSE_SYSTEM_LIBZIP='ON'
+    -DUSE_SYSTEM_LIBZIP='ON' \
+    -DUSING_QT_UI='ON'
   make
 }
 
