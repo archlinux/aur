@@ -1,3 +1,9 @@
+2018-11-01 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 3.4.0.5-1:
+    We've improved our update process according to feedback of users that encountered some problems. If something doesn't work, we recommend to download this release (or newer) manually and copy over config directory. Not a lot of people got affected by this problem, so if everything works for you, you don't need to do anything.
+    Fixed restart command that we accidentally made to work the same as exit during our huge kestrel refactor, whoops (ref: #932).
+    Synced ASF-ui to latest release which should fix some issues that people have reported.
+    Other misc code improvements, optimizations and bugfixes.
 2018-10-31 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 3.4.0.4-1:
     [!] We've moved ASF project under JustArchiNET GitHub organization. This change should be mostly transparent for you as old URLs redirect appropriately. Only web config generator is no longer accessible under old URL, we've already updated all references (on wiki and alike). If you're using URL to our repo in your own projects, you might want to update them.
