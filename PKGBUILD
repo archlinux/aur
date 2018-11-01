@@ -1,21 +1,21 @@
 # Maintainer: Storm Dragon <stormdragon2976@gmail.com>
 pkgname=bashtuner
-pkgver=v2018.07.27
+pkgver=2018.10.31
 pkgrel=1
 pkgdesc="A guitar tuner written in bash with several tunings, and support for some other stringed instruments"
 arch=('any')
-url="https://github.com/stormdragon2976/$pkgname"
-source=("${url}/archive/${pkgver}.tar.gz")
+url="https://gitlab.com/stormdragon2976/$pkgname"
+source=("${url}/-/archive/$pkgver/${pkgname}-${pkgver}.tar.gz")
 license=('unlicense')
 depends=('dialog' 'sox')
 provides=("$pkgname")
 conflicts=("$pkgname")
-md5sums=('f40fd772a8ecb0a12f67d77d34aa1fe8')
+md5sums=('0e932c9bfb02268ab5b477e0ab099b89')
 
 package()
  {
-  tar xf ${pkgver}.tar.gz -C "$srcdir"
-  cd "$srcdir/${pkgname}-${pkgver#*v}"
+  tar xf ${pkgname}-${pkgver}.tar.gz -C "$srcdir"
+  cd "$srcdir/${pkgname}-${pkgver}"
   install -d "$pkgdir/usr/bin/"
   install -Dm755 "${pkgname}.sh" "$pkgdir/usr/bin/$pkgname"
   }
