@@ -2,18 +2,14 @@
 # Contributor: Andrea Fagiani <andfagiani_at_gmail_dot_com>
 pkgname=eclim
 pkgver=2.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Brings Eclipse functionality to Vim"
 url="http://eclim.org/"
 license=('GPL3')
 arch=(i686 x86_64)
 depends=('eclipse' 'java-environment=8' 'libnsl' 'vim')
 makedepends=('apache-ant' 'python2-sphinx' 'python2-docutils' 'groovy')
-optdepends=('eclipse-pdt: Eclipse PHP Development Tools support'
-            'eclipse-cdt: Eclipse C/C++ Plugin support'
-            'eclipse-dltk-core: Eclipse Dynamic Languagues Toolkit support'
-            'eclipse-dltk-ruby: Eclipse Ruby support'
-            'eclipse-wtp: Eclipse Web Developer Tools support')
+optdepends=('eclipse-dltk-core')
 conflicts=('eclim-git')
 install=$pkgname.install
 source=("https://github.com/ervandew/eclim/releases/download/$pkgver/${pkgname}_$pkgver.tar.gz")
@@ -28,9 +24,6 @@ prepare() {
     -e "s|File(getVariable('eclipse')|File('/usr/lib/eclipse/'|g" \
     -e '68,88d' \
     -i ant/build.gant
-
-  # Get the ANT_HOME environment variable
-  source /etc/profile.d/apache-ant.sh
 
   chmod +x org.eclim/nailgun/configure bin/sphinx
 
@@ -51,6 +44,7 @@ build() {
 
   cd ../..
 
+  JAVA_HOME=/usr/lib/jvm/java-8-openjdk \
   ant -lib /usr/share/groovy/lib \
       -Declipse.home=/usr/lib/eclipse \
       -Dvim.files=/usr/share/vim/vimfiles \
