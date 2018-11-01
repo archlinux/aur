@@ -1,7 +1,7 @@
 # Maintainer: Jonathon Fernyhough <jonathon_at_manjaro_dot_org>
 
 pkgname=hyperd
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Hypervisor-agnostic Docker Runtime"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ optdepends=('hyperstart: boot files for hyperd instances')
 options=('!strip' '!emptydirs')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hyperhq/${pkgname}/archive/v${pkgver}.tar.gz"
         'btrfs-progs-4.5.diff')
-sha256sums=('0fe48e9b2ad62517f26fd08aa1cc8dfe83208e4240028b037b41517eb0477507'
+sha256sums=('98b6338350450815e99955cb75862a6ff824c8845e198260085cfccde97b3f66'
             '12fe84f2711fdcb35811765d5efb117e947a893c11fdc2e6f1e060e63917ee9d')
 
 prepare() {
