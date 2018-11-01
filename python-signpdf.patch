@@ -1,0 +1,21 @@
+diff -ura signpdf-0.0.3.orig/signpdf.py signpdf-0.0.3.new/signpdf.py
+--- signpdf-0.0.3.orig/signpdf.py	2015-04-25 19:13:15.000000000 +0100
++++ signpdf-0.0.3.new/signpdf.py	2018-11-01 19:11:00.941260261 +0000
+@@ -44,7 +44,7 @@
+             # Create PDF for signature
+             sig_tmp_filename = _get_tmp_filename()
+             c = canvas.Canvas(sig_tmp_filename, pagesize=page.cropBox)
+-            c.drawImage(args.signature, x1, y1, width, height)
++            c.drawImage(args.signature, x1, y1, width, height, mask='auto')
+             if args.date:
+                 c.drawString(x1 + width, y1, datetime.datetime.now().strftime("%Y-%m-%d"))
+             c.showPage()
+@@ -59,7 +59,7 @@
+ 
+         writer.addPage(page)
+ 
+-    with open(output_filename, 'w') as fh:
++    with open(output_filename, 'wb') as fh:
+         writer.write(fh)
+ 
+     for handle in [pdf_fh, sig_tmp_fh]:
