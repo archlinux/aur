@@ -1,6 +1,6 @@
 pkgbase = sdl2-nox
 	pkgdesc = A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 2) without X11 support
-	pkgver = 2.0.8
+	pkgver = 2.0.9
 	pkgrel = 1
 	url = http://www.libsdl.org
 	arch = x86_64
@@ -10,13 +10,14 @@ pkgbase = sdl2-nox
 	arch = aarch64
 	license = MIT
 	makedepends = alsa-lib
+	makedepends = mesa
 	depends = bash
 	optdepends = alsa-lib: ALSA audio driver
 	optdepends = libpulse: PulseAudio audio driver
 	provides = sdl2
 	conflicts = sdl2
-	source = https://www.libsdl.org/release/SDL2-2.0.8.tar.gz
-	sha512sums = 673c6058b8692a36b4a3594456b10ef6051efe79e4fb644421fc5c76b11fd68b895840a2c8b72413418c378733e2993d33f19767d0d7ed101eda6310bd70c869
+	source = https://www.libsdl.org/release/SDL2-2.0.9.tar.gz
+	sha512sums = a78a4708b2bb5b35a7c7b7501eb3bd60a9aa3bb95a3d84e57763df4a377185e7312a94b66321eef7ca0d17255e4b402fc950e83ef0dbbd08f14ff1194107dc10
 
 pkgname = sdl2-nox
 
