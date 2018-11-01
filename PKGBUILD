@@ -2,12 +2,13 @@
 _npmname=uglifycss
 pkgname=nodejs-uglifycss
 pkgver=0.0.29
-pkgrel=1
+pkgrel=2
 pkgdesc="Port of YUI CSS Compressor from Java to NodeJS."
 arch=('any')
 url="https://github.com/fmarcia/UglifyCSS"
 license=('MIT')
 depends=('nodejs')
+makedepends=('npm')
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
 package() {
