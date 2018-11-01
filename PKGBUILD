@@ -1,6 +1,6 @@
 # Maintainer: berocs <brandweineric at gmail dot com>
 pkgname=python-simperium
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Python 3 client for the Simperium synchronization platform"
 arch=(any)
@@ -8,8 +8,8 @@ url="https://github.com/swalladge/simperium-python3"
 license=("MIT")
 depends=('python-requests')
 makedepends=('python' 'python-setuptools')
-source=("https://files.pythonhosted.org/packages/8c/35/9bda4f31bf4150a01e2b1f8c8f00a5c896533e9d9498a1563a19f22e58ed/Simperium3-${pkgver}.tar.gz")
-sha256sums=("a9f7581d1a2d457fa6aaaefa659b56c1c62b3f231e6fb037830d8410a529ddea")
+source=("https://files.pythonhosted.org/packages/6a/57/6770190250f0c60e19ced27ca16791cf675afbb4570f45f05d4dc7949ff2/Simperium3-${pkgver}.tar.gz")
+sha256sums=("d71ce5923b04b9853c7fc500a466ac724a767b5e33616c122564a71165233cc8")
 
 build() {
     cd "$srcdir/Simperium3-$pkgver"
