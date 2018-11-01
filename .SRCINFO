@@ -1,7 +1,7 @@
 pkgbase = cherry-font
 	pkgdesc = cherry, yet another bitmap font
-	pkgver = 1.0
-	pkgrel = 2
+	pkgver = 1.1
+	pkgrel = 1
 	url = https://github.com/turquoise-hexagon/cherry
 	install = cherry-font.install
 	arch = any
@@ -12,4 +12,3 @@ pkgbase = cherry-font
 	sha256sums = SKIP
 
 pkgname = cherry-font
-
