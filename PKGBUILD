@@ -3,7 +3,7 @@
 # Contributor: ValHue <vhuelamo at gmail dot com>
 #
 pkgname="wp-desktop"
-pkgver=3.5.0
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="WordPress.com Desktop client"
 url="https://desktop.wordpress.com/"
