@@ -1,7 +1,7 @@
 pkgbase = zookeeper
 	pkgdesc = Open-source server which enables highly reliable distributed coordination
 	pkgver = 3.4.13
-	pkgrel = 1
+	pkgrel = 0
 	url = https://zookeeper.apache.org/
 	install = install_zookeeper.sh
 	arch = any
