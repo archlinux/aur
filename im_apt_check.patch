@@ -1,0 +1,98 @@
+--- a/usr/lib/linuxmint/mintlocale/im.py
++++ b/usr/lib/linuxmint/mintlocale/im.py
+@@ -1,9 +1,7 @@
+ #!/usr/bin/python3
+-import apt
+ import codecs
+ import gettext
+ import locale
+-import mintcommon
+ import os
+ 
+ try:
+@@ -14,10 +12,18 @@
+ import gi
+ gi.require_version('Gtk', '3.0')
+ gi.require_version('AccountsService', '1.0')
++gi.require_version('XApp', '1.0')
+ from gi.repository import GdkX11
+ from gi.repository import Gtk, GObject, Gio, AccountsService, GLib, Gdk, GdkPixbuf, XApp
+ 
+ from ImConfig.ImConfig import ImConfig
++
++# Used to detect Debian derivatives (we don't want to show APT features in other distros)
++IS_DEBIAN = os.path.exists("/etc/debian_version")
++
++if IS_DEBIAN:
++    import apt
++    import mintcommon
+ 
+ # i18n
+ APP = 'mintlocale'
+@@ -37,7 +43,8 @@
+         self.app = app
+         self.packages = []
+         self.missing_packages = []
+-        self.apt = mintcommon.APT(self.app.window)
++        if IS_DEBIAN:
++        	self.apt = mintcommon.APT(self.app.window)
+         self.button = button
+         self.button.connect('clicked', self.install)
+         self.button.set_sensitive(False)
+@@ -58,24 +65,27 @@
+                         self.packages.append(line)
+ 
+     def install(self, widget):
+-        if len(self.missing_packages) > 0:
+-            self.app.lock_ui()
+-            if self.app.cache_updated:
+-                self.apt.set_finished_callback(self.on_install_finished)
+-                self.apt.set_cancelled_callback(self.on_install_finished)
+-                self.apt.install_packages(self.missing_packages)
+-            else:
+-                self.apt.set_finished_callback(self.on_update_finished)
+-                self.apt.update_cache()
+-
+-    def on_update_finished(self, transaction=None, exit_state=None):
+-        self.app.cache_updated = True
+-        self.apt.set_finished_callback(self.on_install_finished)
+-        self.apt.set_cancelled_callback(self.on_install_finished)
+-        self.apt.install_packages(self.missing_packages)
+-
+-    def on_install_finished(self, transaction=None, exit_state=None):
+-        self.app.check_input_methods()
++    	if IS_DEBIAN:
++    		if len(self.missing_packages) > 0:
++    			self.app.lock_ui()
++    			if self.app.cache_updated:
++    				self.apt.set_finished_callback(self.on_install_finished)
++    				self.apt.set_cancelled_callback(self.on_install_finished)
++    				self.apt.install_packages(self.missing_packages)
++    			else:
++    				self.apt.set_finished_callback(self.on_update_finished)
++    				self.apt.update_cache()
++
++    if IS_DEBIAN:
++    	def on_update_finished(self, transaction=None, exit_state=None):
++    		self.app.cache_updated = True
++    		self.apt.set_finished_callback(self.on_install_finished)
++    		self.apt.set_cancelled_callback(self.on_install_finished)
++    		self.apt.install_packages(self.missing_packages)
++
++    if IS_DEBIAN:
++    	def on_install_finished(self, transaction=None, exit_state=None):
++        	self.app.check_input_methods()
+ 
+     def update_status(self, cache):
+         self.missing_packages = []
+@@ -105,7 +115,8 @@
+             self.locale_path='/etc/locale.conf'
+ 
+         # Prepare the APT cache
+-        self.cache = apt.Cache()
++        if IS_DEBIAN:
++        	self.cache = apt.Cache()
+         self.cache_updated = False
+ 
+         # load our glade ui file in
+

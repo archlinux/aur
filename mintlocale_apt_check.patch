@@ -1,0 +1,27 @@
+--- a/usr/lib/linuxmint/mintlocale/mintlocale.py
++++ b/usr/lib/linuxmint/mintlocale/mintlocale.py
+@@ -8,7 +8,6 @@
+ import tempfile
+ import subprocess
+ import codecs
+-import mintcommon
+ 
+ try:
+     import configparser
+@@ -18,6 +17,7 @@
+ import gi
+ gi.require_version('Gtk', '3.0')
+ gi.require_version('AccountsService', '1.0')
++gi.require_version('XApp', '1.0')
+ from gi.repository import GdkX11
+ from gi.repository import Gtk, Gio, AccountsService, GLib, GdkPixbuf, XApp
+ 
+@@ -28,6 +28,7 @@
+ 
+ if IS_DEBIAN:
+     import apt
++    import mintcommon
+ 
+ # i18n
+ APP = 'mintlocale'
+

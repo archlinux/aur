@@ -1,6 +1,6 @@
 pkgbase = mintlocale
 	pkgdesc = Language and locale selection tool
-	pkgver = 1.4.9
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = http://packages.linuxmint.com/pool/main/m/mintlocale
 	arch = any
@@ -13,9 +13,13 @@ pkgbase = mintlocale
 	depends = python
 	depends = python-gobject
 	depends = xapps
-	source = mintlocale-1.4.9.tar.xz::http://packages.linuxmint.com/pool/main/m/mintlocale/mintlocale_1.4.9.tar.xz
-	source = add_apt_checking.patch
-	sha256sums = 4c2702af5d0024589f000904f0484b232acbd0811bca47a8f1863f238cf1d1c4
+	source = mintlocale-1.5.0.tar.xz::http://packages.linuxmint.com/pool/main/m/mintlocale/mintlocale_1.5.0.tar.xz
+	source = im_apt_check.patch
+	source = install_remove_apt_check.patch
+	source = mintlocale_apt_check.patch
+	sha256sums = fea9496190553dfb58c92a50659aa927805ef60d093ec32a52a13e1e825fcd42
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = mintlocale
