@@ -8,13 +8,12 @@ arch=('any')
 url="https://github.com/Chipsterjulien/gwmpd"
 license=('BSD')
 # depends=('')
-makedepends=('go' 'yarn')
+makedepends=('go')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz")
 install=gwmpd.install
 
 _builddir="$pkgname-$pkgver"
-# _front="Frontend/"
 
 build() {
   GOPATH_exist=1
@@ -28,16 +27,16 @@ build() {
     fi
 
   # Getting some libs
-    # echo "Install/update go-logging"
-    # go get -u github.com/op/go-logging
-    # echo "Install/update viper"
-    # go get -u github.com/spf13/viper
-    # echo "Install/update gin"
-    # go get -u github.com/gin-gonic/gin
-    # echo "Install/update gin-cors"
-    # go get -u github.com/itsjamie/gin-cors
-    # echo "Install/update gin-jwt"
-    # go get -u github.com/appleboy/gin-jwt
+    echo "Install/update go-logging"
+    go get -u github.com/op/go-logging
+    echo "Install/update viper"
+    go get -u github.com/spf13/viper
+    echo "Install/update gin"
+    go get -u github.com/gin-gonic/gin
+    echo "Install/update gin-cors"
+    go get -u github.com/itsjamie/gin-cors
+    echo "Install/update gin-jwt"
+    go get -u github.com/appleboy/gin-jwt
 
   cd "$_builddir"
 
