@@ -1,26 +1,26 @@
 # Maintainer: Giovanni 'ItachiSan' Santini <giovannisantini93@yahoo.it>
+# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=epiphany-mse
 _pkgname=epiphany
-pkgver=3.28.3.1
-pkgrel=3
+pkgver=3.30.2
+pkgrel=1
 pkgdesc="A GNOME web browser based on the WebKit rendering engine - MSE and EME enabled"
 url="https://wiki.gnome.org/Apps/Web"
 arch=(i686 x86_64)
 license=(GPL)
-depends=(webkit2gtk gcr icu)
-makedepends=(itstool docbook-xml startup-notification lsb-release
-             gobject-introspection yelp-tools appstream-glib git meson)
+depends=(webkit2gtk gcr icu libdazzle)
+makedepends=(docbook-xml startup-notification lsb-release gobject-introspection yelp-tools
+             appstream-glib git meson)
+checkdepends=(xorg-server-xvfb)
 groups=(gnome)
-_commit=a5a9a7e2904e2206b3cc863ab13748255247e3eb  # tags/3.28.3.1^0
-source=("$pkgname::git+https://gitlab.gnome.org/GNOME/epiphany.git#commit=$_commit"
-        "pluginsdir.diff::https://git.archlinux.org/svntogit/packages.git/plain/repos/extra-x86_64/pluginsdir.diff?h=packages/epiphany&id=83efda"
+_commit=104c003f5da64346de8199c86ada6a104d7869c1  # tags/3.30.2^0
+source=("$pkgname::git+https://gitlab.gnome.org/GNOME/$_pkgname.git#commit=$_commit"
         enable_mse.patch)
 provides=($_pkgname)
 conflicts=($_pkgname)
 sha256sums=('SKIP'
-            'b6c8ee6ace934c053f2fd89758e0b587cb8953c6b0246c1359aecaae4de70289'
             'cb5edbb54d500fc593b109f83aa5b13644fda49374db6ee479f8904f90d9a415')
 
 pkgver() {
@@ -30,7 +30,6 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  patch -Np1 -i ../pluginsdir.diff
   patch -Np1 -i ../enable_mse.patch
 }
 
@@ -40,6 +39,11 @@ build() {
   ninja -C build
 }
 
+check() {
+  # ERROR:../epiphany/tests/ephy-web-app-utils-test.c:109:test_web_app_lifetime: assertion failed (g_list_length (apps) == 1): (0 == 1)
+  xvfb-run meson test -C build || :
+}
+
 package() {
-  DESTDIR="$pkgdir" ninja -C build install
+  DESTDIR="$pkgdir" meson install -C build
 }
