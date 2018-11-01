@@ -1,7 +1,7 @@
 # Maintainer: Yannick Inizan <inizan[dot]yannick[at]gmail[dot]com>
 
 pkgname=libgxml-git
-pkgver=0.16.0
+pkgver=0.16.1.1746.301f134
 pkgrel=1
 pkgdesc="GObject API for XML manipulation and serialization library"
 url="https://gitlab.gnome.org/BZHDeveloper/gxml/"

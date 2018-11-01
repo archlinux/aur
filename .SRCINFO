@@ -1,6 +1,6 @@
 pkgbase = libgxml-git
 	pkgdesc = GObject API for XML manipulation and serialization library
-	pkgver = 0.16.0
+	pkgver = 0.16.1.1746.301f134
 	pkgrel = 1
 	url = https://gitlab.gnome.org/BZHDeveloper/gxml/
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = libgxml-git
 	depends = libgee-git-alt
 	depends = libxml2
 	depends = glib2
-	provides = libgxml=0.16.0
+	provides = libgxml=0.16.1.1746.301f134
 	conflicts = libgxml
 	conflicts = gxml
 	conflicts = gxml-git
