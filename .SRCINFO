@@ -1,7 +1,7 @@
 pkgbase = klfc
 	pkgdesc = Tool to create advanced keyboard layouts in various formats
 	pkgver = 1.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/39aldo39/klfc
 	arch = i686
 	arch = x86_64
@@ -28,8 +28,8 @@ pkgbase = klfc
 	depends = haskell-xml
 	depends = haskell-chunked-data
 	depends = haskell-process>=1.2.0.0
-	source = https://github.com/39aldo39/klfc/archive/v1.5.3.tar.gz
-	md5sums = 3991df17acf1d3565e5dc1eb7aa94943
+	source = https://github.com/39aldo39/klfc/archive/abfc7ebd80a33a20caa50d481cfa46183258dda6.tar.gz
+	md5sums = 7a317f99e12b95fed8c9f3b85e0ad9c8
 
 pkgname = klfc
 
