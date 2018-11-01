@@ -1,6 +1,6 @@
 pkgbase = python-gmconfig
 	pkgdesc = Simple JSON based configuration file manager for python 3.x
-	pkgver = c505230
+	pkgver = 1.0.1.r0.g6a939ce
 	pkgrel = 1
 	url = https://gitlab.com/gabmus/python-gmconfig
 	arch = any

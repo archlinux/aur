@@ -4,7 +4,7 @@
 _pkgbase='python-gmconfig'
 pkgbase='python-gmconfig'
 pkgname='python-gmconfig-git'
-pkgver=c505230
+pkgver=1.0.1.r0.g6a939ce
 pkgrel=1
 pkgdesc="Simple JSON based configuration file manager for python 3.x"
 arch=('any')
