@@ -1,6 +1,6 @@
 pkgbase = steam-tools-ng
 	pkgdesc = Some useful tools for use with Steam client and some steam related websites.
-	pkgver = 0.7
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/ShyPixie/steam-tools-ng
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = steam-tools-ng
 	depends = python-gobject
 	depends = stlib
 	depends = stlib-plugins-git
-	source = https://github.com/ShyPixie/steam-tools-ng/archive/v0.7.tar.gz
-	sha256sums = d8a99552c1f3b2900359313c737b230bb4a5af5b4478a13ae28a18e217b2b71a
+	source = https://github.com/ShyPixie/steam-tools-ng/archive/v0.7.1.tar.gz
+	sha256sums = c488060f503d2470d8b63b7ea092f94ed4d03bbaf0f16055f476e78615f482b5
 
 pkgname = steam-tools-ng
 
