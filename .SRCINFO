@@ -1,6 +1,6 @@
 pkgbase = python2-astropy
 	pkgdesc = A community python library for astronomy
-	pkgver = 2.0.8
+	pkgver = 2.0.9
 	pkgrel = 1
 	url = http://www.astropy.org/
 	arch = i686
@@ -19,8 +19,8 @@ pkgbase = python2-astropy
 	conflicts = python2-pyfits
 	conflicts = python-pywcs
 	conflicts = python2-vo
-	source = https://files.pythonhosted.org/packages/source/a/astropy/astropy-2.0.8.tar.gz
-	md5sums = 9a236c7f02abcaa8dc33c8a725c35007
+	source = https://files.pythonhosted.org/packages/source/a/astropy/astropy-2.0.9.tar.gz
+	md5sums = 4a523feebe3b6b2d6ba691d9baca7a01
 
 pkgname = python2-astropy
 
