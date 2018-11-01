@@ -7,14 +7,15 @@ pkgdesc="Free, open and private browser with openSUSE's patches for better integ
 arch=('x86_64')
 url="https://www.waterfoxproject.org/"
 license=('MPL')
-depends=('gtk3' 'gtk2' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 'ffmpeg'
-         'hunspell' 'ttf-font' 'hicolor-icon-theme' 'libpulse' 'kwaterfoxhelper')
+depends=('gtk3' 'gtk2' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib'
+         'hunspell' 'ttf-font' 'hicolor-icon-theme' 'kwaterfoxhelper')
 makedepends=('wget')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'speech-dispatcher: Text-to-Speech'
             'pulseaudio: Audio support'
-            'alsa-lib: Audio support')
+            'alsa-lib: Audio support'
+            'ffmpeg: record, convert, and stream audio and video')
 provides=("waterfox=$pkgver")
 conflicts=('waterfox')
 options=('!emptydirs' '!strip')
