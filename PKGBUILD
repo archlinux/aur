@@ -1,11 +1,11 @@
 # Maintainer: Damien Molinier <damien-43\N{COMMERCIAL AT}gmx.fr>
 
-_distname="CBOR-XS"
+_distname='CBOR-XS'
 
 pkgname=perl-cbor-xs
 pkgver=1.7
 pkgrel=1
-pkgdesc="Concise Binary Object Representation"
+pkgdesc='Concise Binary Object Representation'
 arch=('x86_64' 'i686')
 license=('GPL')
 options=('!emptydirs')
@@ -40,6 +40,7 @@ package() {
   cd "${srcdir}/${_distname}-${pkgver}"
   unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
   make install DESTDIR="${pkgdir}"
+  find "${pkgdir}" \( -name .packlist -or -name perllocal.pod \) -delete
 }
 
 # vim:set ts=2 sw=2 et:
