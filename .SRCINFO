@@ -9,7 +9,10 @@ pkgbase = libgxml-git
 	makedepends = vala
 	makedepends = meson
 	makedepends = ninja
+	makedepends = gobject-introspection
 	depends = libgee-git-alt
+	depends = libxml2
+	depends = glib2
 	provides = libgxml=0.16.0
 	conflicts = libgxml
 	source = git+https://gitlab.gnome.org/BZHDeveloper/gxml.git
