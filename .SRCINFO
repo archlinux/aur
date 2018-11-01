@@ -1,7 +1,7 @@
 pkgbase = python-pre-commit
 	pkgdesc = A framework for managing and maintaining multi-language pre-commit hooks.
 	pkgver = 1.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pre-commit.com/
 	arch = any
 	license = MIT
@@ -29,6 +29,7 @@ pkgname = python-pre-commit
 	depends = python-identify
 	depends = python-toml
 	depends = python-cfgv
+	depends = python-importlib-metadata
 
 pkgname = python2-pre-commit
 	pkgdesc = Python 2 client for pre-commit
@@ -40,4 +41,5 @@ pkgname = python2-pre-commit
 	depends = python2-identify
 	depends = python2-toml
 	depends = python2-cfgv
+	depends = python2-importlib-metadata
 
