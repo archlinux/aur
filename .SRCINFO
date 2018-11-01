@@ -1,0 +1,17 @@
+pkgbase = afpfsng_git
+	pkgdesc = Fork of afpfs-ng that adds IPv6 support and several performance and stability improvements.
+	pkgver = f6e24eb
+	pkgrel = 1
+	url = https://github.com/simonvetter/afpfs-ng
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = fuse3
+	depends = libgcrypt
+	provides = afpfs-ng
+	conflicts = afpfs-ng
+	source = git+https://github.com/simonvetter/afpfs-ng.git
+	md5sums = SKIP
+
+pkgname = afpfsng_git
+
