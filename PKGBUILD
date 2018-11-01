@@ -31,7 +31,7 @@ pkgver() {
 
 build() {
   cd "$pkgname"
-  last_tag=$( git tags|tail -n 1 )
+  last_tag=$( git tag|tail -n 1 )
   git checkout $last_tag
   npm install
   npm run build
