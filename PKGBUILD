@@ -1,7 +1,7 @@
 # Maintainer: Jonathon Fernyhough <jonathon_at_manjaro dot+org>
 
 pkgname=birdtray
-pkgver=1.1
+pkgver=1.3
 pkgrel=1
 pkgdesc="Run Thunderbird with a system tray icon."
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -9,7 +9,7 @@ url="https://github.com/gyunaev/birdtray"
 license=('GPL')
 depends=(qt5-x11extras sqlite3)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gyunaev/$pkgname/archive/${pkgver}.tar.gz")
-sha1sums=('f9cfd52bff8f84d11d521d144cac54500b5e4299')
+sha1sums=('8503fd1b3792659a866c2343a54e00db28d51691')
 
 build() {
   mkdir -p build && cd build
