@@ -1,7 +1,7 @@
 # Maintainer: Kyle Manna <kyle(at)kylemanna(dot)com>
 
 pkgname=wavedrom-editor
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=1
 pkgdesc="Timing diagram rendering engine"
 arch=('x86_64')
