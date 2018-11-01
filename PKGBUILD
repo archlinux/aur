@@ -2,7 +2,8 @@
 # Original PKGBUILD Contributor: Patrick Bartels <p4ddy.b@gmail.com>
 # Thanks to Bregol
 pkgname="linux-zen-git"
-pkgver=4.18.13+770320+gcd3dd92da9cc
+pkgver=4.19.0+783746+g54d1f99f63e9
+_kernver=4.19.0+783746+g54d1f99f63e9
 pkgdesc="Featureful kernel including various new features, code and optimizations to better suit desktops"
 url="https://github.com/damentz/zen-kernel"
 license=("GPL2")
@@ -16,7 +17,7 @@ pkgrel=1
 options=("!strip")
 source=("linux-zen.conf"
         "linux-zen.preset"
-        'git://github.com/damentz/zen-kernel.git#branch=4.18/master')
+        'git://github.com/damentz/zen-kernel.git#branch=4.19/master')
 sha256sums=('6373073ad943e068478ef1373be4eb2a7e473da8743d946f1f50cd364685ab87'
             '18fe6b2664a9a740544c4cb990efe5ec933d6e64caf9e5d0a6ced92af0027c2d'
             'SKIP')
@@ -103,6 +104,7 @@ build() {
 	read
 	
 	cd "${srcdir}/build"
+
 	msg2 "Building kernel..."; make -j $_CORES bzImage
 	msg2 "Building modules..."; make -j $_CORES modules
 }
@@ -116,8 +118,7 @@ package_linux-zen-git() {
 	install=linux-zen.install
 
 	msg2 "Determining kernel name..."
-	cd "${srcdir}/zen-kernel"
-	cp "${srcdir}/build/.config" "./"
+	cd "${srcdir}/build"
 	_kernver="$(make kernelrelease -s)"
 	msg2 "Kernel release name is: $_kernver"
 
