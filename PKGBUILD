@@ -10,7 +10,7 @@ pkgname=qtcreator-prerelease
 _pkgvermajmin=4.8
 pkgver=${_pkgvermajmin}.0
 _verpostfix="beta1"
-pkgrel=4
+pkgrel=1
 _pkgver=${pkgver}
 _urlbase="https://download.qt.io/official_releases"
 if [[ -n $_verpostfix ]]; then
