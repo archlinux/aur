@@ -1,7 +1,7 @@
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 pkgname=('python-rtslib-fb' 'python2-rtslib-fb')
 _pkgname=rtslib-fb
-pkgver=2.1.fb63
+pkgver=2.1.fb69
 pkgrel=1
 pkgdesc="free branch version of the LIO target API"
 arch=('any')
@@ -11,10 +11,9 @@ makedepends=('python-setuptools' 'python2-setuptools' 'python-pyudev' 'python2-p
 backup=()
 options=()
 install=
-source=(https://github.com/agrover/rtslib-fb/archive/v${pkgver}.tar.gz target.service)
-sha512sums=('faf5732299def9f5eb9147f930e8b48c9e9a26a918b41aa60f06a1f079e6e0453eb3c2d19136b244ef2349c23d31b7fa15cb4a0b6302ffbcd878033a45a11d1a'
+source=(https://github.com/open-iscsi/rtslib-fb/archive/v${pkgver}.tar.gz target.service)
+sha512sums=('552e660eb8aa26ac44f1ac089143a39e10106c1859db863c63ad5469e8ab0b0cdd0fba8f6fc30633cfd321ec0d72f6063ea0e8944aaa228de118400380b5418b'
             '3c634f1c466d0a8c3dd2b57a230438aaeeb0e66324863a2ded57dd69a2ca5946f83c4ab511766f510f3e63b43aedcf7e368bcf5bc325ee69c016bb0bb2612de5')
-
 
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver"
