@@ -1,5 +1,5 @@
 pkgname=libyang
-_pkgver=0.14-r1
+_pkgver=0.16-r2
 pkgver=${_pkgver/-/}
 pkgrel=1
 pkgdesc='A YANG data modelling language parser and toolkit written (and providing API) in C.'
@@ -8,10 +8,10 @@ arch=('x86_64')
 license=('BSD')
 depends=('pcre')
 makedepends=('cmake')
-conflicts=('libyang-git')
+conflicts=('libyang-git' 'libyang-devel-git')
 _pkgsrc=$pkgname-$_pkgver
 source=("$_pkgsrc.tar.gz::https://github.com/CESNET/$pkgname/archive/v$_pkgver.tar.gz")
-md5sums=('e8a75d0eb5dc4a8ab0507f50960c435f')
+sha256sums=('cf354481788f224c58ebe4785a08f992ef00af503529c8d516fdc4d0592996e0')
 
 prepare() {
     mkdir -p $srcdir/build
