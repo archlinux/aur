@@ -2,14 +2,14 @@
 
 pkgname=thunderbird-sogo-connector-bin
 pkgver=60.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Thunderbird frontend for SOGo"
 arch=('any')
 groups=('office')
 url="http://www.sogo.nu/downloads/frontends.html"
 license=('GPL' 'LGPL')
 depends=('thunderbird>=60')
-optdepends=('thunderbird-lightning-bin')
+optdepends=()
 makedepends=()
 options=(!strip)
 provides=(sogo-connector=${pkgver})
