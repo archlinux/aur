@@ -1,0 +1,20 @@
+pkgbase = libgee-git-alt
+	pkgdesc = GObject collection library
+	pkgver = 0.20.1.506.57e4c8a
+	pkgrel = 1
+	url = http://live.gnome.org/Libgee
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = gobject-introspection
+	makedepends = vala
+	makedepends = gnome-common
+	depends = glib2
+	provides = libgee=0.20.1.506.57e4c8a
+	conflicts = libgee
+	conflicts = libgee-git
+	source = git+https://gitlab.gnome.org/GNOME/libgee.git
+	sha256sums = SKIP
+
+pkgname = libgee-git-alt
+
