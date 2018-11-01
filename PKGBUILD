@@ -1,12 +1,12 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=open-plc-utils
-pkgver=r502.gd2cd8f70
+pkgver=r510.g32408520
 pkgrel=1
 pkgdesc="Qualcomm Atheros Open Powerline Toolkit for HomePlug AV"
 arch=(i686 x86_64)
 url=https://github.com/qca/open-plc-utils
 license=(custom:Clear_BSD)
-_commit=d2cd8f70498302c8691dd34841ac14a2e1bc8b1f
+_commit=32408520fcebe785983a68e39ec83830a3005779
 source=("git+https://github.com/qca/open-plc-utils#commit=$_commit")
 sha256sums=('SKIP')
 
