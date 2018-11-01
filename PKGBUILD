@@ -1,17 +1,18 @@
 _npmname=pnpm
-_npmver=2.16.2
+_npmver=2.17.6
 pkgname=nodejs-pnpm
-pkgver=2.16.2
+pkgver=2.17.6
 pkgrel=1
 pkgdesc="Performant npm installations"
 arch=(any)
 url='https://github.com/rstacruz/pnpm'
 license=('MIT')
-depends=('nodejs' )
+depends=('nodejs')
+makedepends=('npm')
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha256sums=('3ce16d61d2fd3b7a00275a20a34a4a93c983b5d64c5f93f7ebe6dd6320214801')
+sha256sums=('f89bcc3a7d6d73eee6addf58a1c3ad7aa703202bb6bf3c0fbce91113eebb001e')
 
 package() {
   cd $srcdir
