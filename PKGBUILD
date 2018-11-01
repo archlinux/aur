@@ -1,7 +1,7 @@
 # Maintainer: Federico Di Pierro <nierro92@gmail.com>
 
 pkgname=libmodule
-pkgver=2.1.1
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="C linux library to build simple and modular projects"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(GPL)
 depends=()
 makedepends=(git cmake)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=("d443a7188e51b1d63a4dd44ec36822212f6249a6681ab4d63de5d0031083f078")
+sha256sums=("325f405a13bd1d88008fa098a945b46dff3073bab2b1fc13724492d270e03979")
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
