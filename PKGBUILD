@@ -1,6 +1,6 @@
 # Maintainer: NamedKitten <kitteh@namedkitten.pw>
 pkgname=kittehplayer
-pkgver=r191.a449a40
+pkgver=r200.84333be
 pkgrel=1
 pkgdesc="A YouTube-like video player based on Qt, QML and libmpv."
 arch=('x86_64')
@@ -33,4 +33,5 @@ build() {
 package() {
 	cd "$srcdir/$pkgname/build"
 	make DESTDIR="$pkgdir/" install
+        ln -s KittehPlayer $pkgdir/usr/bin/kittehplayer
 }
