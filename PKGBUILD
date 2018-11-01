@@ -2,7 +2,7 @@
 # Contributor: Arthur Țițeică | arthur dot titeica with gmail
 _pkgname=exchangelib
 pkgname=python-exchangelib
-pkgver=1.11.4
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="Client for Microsoft Exchange Web Services (EWS)"
 arch=(any)
@@ -12,7 +12,7 @@ depends=('python' 'python-cached-property' 'python-cryptography' 'python-defused
 makedepends=('python-setuptools')
 source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz"
 "LICENSE")
-sha256sums=('9fb543ec28e21099a4159e74b1daf5c7e84ac3d4f0413d68711ebbb126e56aa0'
+sha256sums=('091be9f1fdc3187925875001b09f87c8c1d640242a797868e9e5e31bb9e5e54a'
             '650d8ac6b0ab9a2c946b021bf12933cad611b6397d0eaff31beb28f6a243afa9')
 
 build() {
