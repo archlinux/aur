@@ -1,6 +1,6 @@
 pkgbase = rivendell
 	pkgdesc = Open Source Radio Automation
-	pkgver = 2.19.2
+	pkgver = 2.19.3
 	pkgrel = 1
 	url = http://www.rivendellaudio.org/
 	arch = x86_64
@@ -27,9 +27,9 @@ pkgbase = rivendell
 	depends = taglib
 	depends = libvorbis
 	backup = etc/rd.conf
-	source = http://www.rivendellaudio.org/ftpdocs/rivendell/rivendell-2.19.1.tar.gz
+	source = http://www.rivendellaudio.org/ftpdocs/rivendell/rivendell-2.19.3.tar.gz
 	source = patch-makefile.patch
-	sha256sums = 3caa90422c98edeba7314ba3fc4b3e2e81ff67efb20a44a8e93d1b26c71c299c
+	sha256sums = da3add8c2520ba0a501f4c50ee3bcb103fa03f439e417303eb2390c134fb0688
 	sha256sums = 5c2bfdd00353ac2b9bbbcfe3e3e7d665f77d5c9caefa255ff9356c93f455f6d0
 
 pkgname = rivendell

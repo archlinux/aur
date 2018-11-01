@@ -1,7 +1,7 @@
 # Maintainer: Christian Kohlstedde <christian + arch at kohlsted.de>
 
 pkgname=rivendell
-pkgver=2.19.2
+pkgver=2.19.3
 pkgrel=1
 
 pkgdesc="Open Source Radio Automation"
@@ -43,7 +43,7 @@ source=(
   "http://www.rivendellaudio.org/ftpdocs/rivendell/rivendell-$pkgver.tar.gz"
   "patch-makefile.patch"
   )
-sha256sums=('3caa90422c98edeba7314ba3fc4b3e2e81ff67efb20a44a8e93d1b26c71c299c'
+sha256sums=('da3add8c2520ba0a501f4c50ee3bcb103fa03f439e417303eb2390c134fb0688'
             '5c2bfdd00353ac2b9bbbcfe3e3e7d665f77d5c9caefa255ff9356c93f455f6d0')
 
 prepare() {
