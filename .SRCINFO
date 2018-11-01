@@ -9,7 +9,7 @@ pkgbase = gwmpd
 	makedepends = go
 	options = !strip
 	source = gwmpd-0.0.1.tar.gz
-	sha512sums = 9ce91f40b6555079d0595b058fafa9ea329437bb00db21a7b74b49b6f5dd91d918c74baab079f17e0a91741fd6583e626d45af026938bcf3bf3223eba619490c
+	sha512sums = 9adb65c2a3aa5aa235a5f472833187a599a738b42aaf0994a3ede85e0572835eab8c6abfeb2686a6162b235829a690ebf994f700d68d5acee7e0f96f6c850f0e
 
 pkgname = gwmpd
 
