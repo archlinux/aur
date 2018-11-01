@@ -1,16 +1,17 @@
-# Maintainer: Eric Davis <edavis@insanum.com>
 # Maintainer: Samuel Walladge <samuel@swalladge.id.au>
+# Maintainer: Eric Brandwein <brandweineric at gmail dot com>
+# Contributor: Eric Davis <edavis@insanum.com>
 
 pkgname=sncli-git
 _pkgname=sncli
-pkgver=0.1.3.r1.g073e0c3
+pkgver=0.3.0.r1.g57bd32b
 pkgrel=1
 pkgdesc="Simplenote Command Line Interface"
 arch=('any')
 url="https://github.com/insanum/${_pkgname}"
 license=('MIT')
-depends=('python-urwid' 'python-requests' 'python-setuptools')
-makedepends=('git')
+depends=('python-urwid' 'python-requests' 'python-simperium')
+makedepends=('git' 'python-setuptools')
 source=("git://github.com/insanum/${_pkgname}.git")
 md5sums=('SKIP')
 
