@@ -1,13 +1,14 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-kde-bin
-pkgver=56.2.4
+pkgver=56.2.5
 pkgrel=1
 pkgdesc="Free, open and private browser with openSUSE's patches for better integration with KDE"
 arch=('x86_64')
 url="https://www.waterfoxproject.org/"
 license=('MPL')
-depends=('libxt' 'mime-types' 'dbus-glib' 'hunspell' 'gtk2' 'gtk3' 'nss' 'kwaterfoxhelper')
+depends=('gtk3' 'gtk2' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 'ffmpeg'
+         'hunspell' 'ttf-font' 'hicolor-icon-theme' 'libpulse' 'kwaterfoxhelper')
 makedepends=('wget')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
@@ -18,18 +19,15 @@ provides=("waterfox=$pkgver")
 conflicts=('waterfox')
 options=('!emptydirs' '!strip')
 install=$pkgname.install
-source=("waterfox-kde_${pkgver}-${pkgrel}_amd64.deb::https://dl.bintray.com/hawkeye116477/waterfox-deb/pool/w/waterfox/waterfox-kde_${pkgver}-${pkgrel}_amd64.deb")
-sha256sums=('0dcfa89a0f7d2ca615b1c5e25256f528f212e2709ef39af5e57a57ee7abb5205')
+source=("waterfox-kde-${pkgver}-0-x86_64.pkg.tar.xz::https://download.opensuse.org/repositories/home:/hawkeye116477:/waterfox/Arch/x86_64/waterfox-kde-${pkgver}-0-x86_64.pkg.tar.xz")
+sha256sums=('9b94ceba1ae3ec74e9ad5cbcfd5950c3dc98c00a1aff093ff85aaeb6df4065ef')
 
 package() {
-# Extract Waterfox from .deb package
-msg2 "Extracting the data.tar.xz..."
-bsdtar -xf data.tar.xz -C "$pkgdir/"
-
+mv $srcdir/usr/ $pkgdir/usr/
 # Settings file for language packs
-_settings=/opt/waterfox/.installer/settings
+_settings=/usr/lib/waterfox/.installer/settings
+_i18n_ver=56.2.4
 
-_locale_ver=56.2.3
 if [ -f "$_settings" ]; then
 echo "Previous settings detected! Do you wish to load them?"
 select yn in "Yes" "No"; do
@@ -37,17 +35,19 @@ select yn in "Yes" "No"; do
                     Yes )
     if grep -q download_language=yes "$_settings"; then
     _chosen_language=$(grep -Po 'chosen_language=\K[^ ]+' $_settings)
-    wget -O $srcdir/waterfox-locale-${_chosen_language}_${_locale_ver}_amd64.deb https://dl.bintray.com/hawkeye116477/waterfox-deb/pool/w/waterfox/waterfox-locale-${_chosen_language}_${_locale_ver}_amd64.deb;
+    wget -O $srcdir/waterfox-i18n-${_chosen_language}-${_i18n_ver}-0-x86_64.pkg.tar.xz https://download.opensuse.org/repositories/home:/hawkeye116477:/waterfox/Arch/x86_64/waterfox-i18n-${_chosen_language}-${_i18n_ver}-0-x86_64.pkg.tar.xz;
 	msg2 "Extracting locale..."
-    bsdtar -xf $srcdir/waterfox-locale-${_chosen_language}_${_locale_ver}_amd64.deb
-    bsdtar -xf $srcdir/data.tar.xz -C "$pkgdir/"
+    bsdtar -xf $srcdir/waterfox-i18n-${_chosen_language}-${_i18n_ver}-0-x86_64.pkg.tar.xz -C "$pkgdir/"
+    rm $pkgdir/.BUILDINFO
+    rm $pkgdir/.MTREE
+    rm $pkgdir/.PKGINFO    
     fi
-    mkdir $pkgdir/opt/waterfox/.installer/
-    cp $_settings $pkgdir/opt/waterfox/.installer/
+    mkdir $pkgdir/usr/lib/waterfox/.installer/
+    cp $_settings $pkgdir/usr/lib/waterfox/.installer/
                 break;;
 No )
 echo "Root access is required to remove settings file!"
-sudo rm -rvf /opt/waterfox/.installer/
+sudo rm -rvf /usr/lib/waterfox/.installer/
 break;;
                     esac
                 done
@@ -62,33 +62,39 @@ echo "Do you wish to download and install language pack (if you want to have en-
 _download_language=yes
 echo -e "Available languages:
   (ach) Acholi; (af) Afrikaans; (an) Aragonese; (ar) Arabic; (as) Assamese;
-  (ast) Asturian; (az) Azerbaijani; (bg) Bulgarian; (bn) Bengali; (br) Breton;
-  (bs) Bosnian; (ca) Catalan; (cak) Maya Kaqchikel; (cs) Czech; (cy) Welsh;
-  (da) Danish; (de) German; (dsb) Lower Sorbian; (el) Greek; (en) English;
-  (eo) Esperanto; (es) Spanish; (et) Estonian; (eu) Basque; (fa) Persian;
-  (ff) Fulah; (fi) Finnish; (fr) French; (fy) Western Frisian; (ga) Irish - Ireland;
-  (gd) Gaelic - Scotland; (gl) Galician; (gn) Guarani; (gu) Gujarati - India;
-  (he) Hebrew; (hi) Hindi - India; (hr) Croatian; (hsb) Upper Sorbian; (hu) Hungarian;
-  (hy) Armenian - Armenia; (id) Indonesian; (is) Icelandic; (it) Italian;
-  (ja) Japanese; (kk) Kazakh; (km) Khmer; (kn) Kannada; (ko) Korean;
-  (lij) Ligurian; (lt) Lithuanian; (lv) Latvian; (mai) Maithili;
-  (mk) Macedonian; (ml) Malayalam; (mr) Marathi; (ms) Malay; (nb) Norwegian - Bokmål;
-  (nl) Dutch; (nn) Norwegian - Nynorsk; (or) Oriya; (pa) Punjabi - India;
-  (pl) Polish; (pt) Portuguese; (rm) Romansh; (ro) Romanian; (ru) Russian;
+  (ast) Asturian; (az) Azerbaijani; (bg) Bulgarian; (bn-BD) Bengali - Bangladesh;
+  (bn-IN) Bengali - India; (br) Breton; bs) Bosnian; (ca) Catalan; 
+  (cak) Maya Kaqchikel; (cs) Czech; (cy) Welsh; (da) Danish; (de) German; 
+  (dsb) Lower Sorbian; (el) Greek; (en-GB) English - British;
+  (en-ZA) English - South African; (eo) Esperanto; (es-AR) Spanish - Argentina; 
+  (es-CL) Spanish - Chile; (es-ES) Spanish - Spain; (es-MX) Spanish
+  (et) Estonian; (eu) Basque; (fa) Persian; (ff) Fulah; (fi) Finnish; 
+  (fr) French; (fy-NL) Frisian; (ga-IE) Irish; (gd) Gaelic - Scotland; 
+  (gl) Galician; (gn) Guarani; (gu-IN) Gujarati - India; (he) Hebrew; 
+  (hi-IN) Hindi - India; (hr) Croatian; (hsb) Upper Sorbian; (hu) Hungarian;
+  (hy-AM) Armenian; (id) Indonesian; (is) Icelandic; (it) Italian;
+  (ja) Japanese; (ka) Georgian; (kab) Kabyle; (kk) Kazakh; (km) Khmer; 
+  (kn) Kannada; (ko) Korean; (lij) Ligurian; (lt) Lithuanian; (lv) Latvian; 
+  (mai) Maithili; (mk) Macedonian; (ml) Malayalam; (mr) Marathi; (ms) Malay; 
+  (nb-NO) Norwegian - Bokmål; (nl) Dutch; (nn-NO) Norwegian - Nynorsk; (or) Oriya; 
+  (pa-IN) Punjabi - India; (pl) Polish; (pt-BR) Portuguese - Brazilian; 
+  (pt-PT) Portuguese - Portugal; (rm) Romansh; (ro) Romanian; (ru) Russian;
   (si) Sinhala; (sk) Slovak; (sl) Slovenian; (son) Songhai; (sq) Albanian;
-  (sr) Serbian; (sv) Swedish; (ta) Tamil; (te) Telugu; (th) Thai;
+  (sr) Serbian; (sv-SE) Swedish; (ta) Tamil; (te) Telugu; (th) Thai;
   (tr) Turkish; (uk) Ukrainian; (uz) Uzbek; (vi) Vietnamese;
-  (xh) Xhosa; (zh-hans) Simplified Chinese; (zh-hant) Traditional Chinese
+  (xh) Xhosa; (zh-CN) Simplified Chinese; (zh-TW) Traditional Chinese
 "
 printf "Type language code of language you wish to download and install
 (language code is acronym that is inside the parentheses () before your language,
 for example - for Polish, type pl): "
 read _chosen_language
 
-    wget -O $srcdir/waterfox-locale-${_chosen_language}_${_locale_ver}_amd64.deb https://dl.bintray.com/hawkeye116477/waterfox-deb/pool/w/waterfox/waterfox-locale-${_chosen_language}_${_locale_ver}_amd64.deb;
+    wget -O $srcdir/waterfox-i18n-${_chosen_language}-${_i18n_ver}-0-x86_64.pkg.tar.xz https://download.opensuse.org/repositories/home:/hawkeye116477:/waterfox/Arch/x86_64/waterfox-i18n-${_chosen_language}-${_i18n_ver}-0-x86_64.pkg.tar.xz;
 	msg2 "Extracting locale..."
-    bsdtar -xf $srcdir/waterfox-locale-${_chosen_language}_${_locale_ver}_amd64.deb
-    bsdtar -xf $srcdir/data.tar.xz -C "$pkgdir/"
+    bsdtar -xf $srcdir/waterfox-i18n-${_chosen_language}-${_i18n_ver}-0-x86_64.pkg.tar.xz -C "$pkgdir/"
+    rm $pkgdir/.BUILDINFO
+    rm $pkgdir/.MTREE
+    rm $pkgdir/.PKGINFO  
                     break;;
                     No )
                     _download_language=no
@@ -101,8 +107,8 @@ echo "Do you wish to save your choice (thanks to this, you don't have to select 
             select yn in "Yes" "No"; do
                 case $yn in
                     Yes )
-mkdir $pkgdir/opt/waterfox/.installer/
-tee -a $pkgdir/opt/waterfox/.installer/settings <<EOF
+mkdir $pkgdir/usr/lib/waterfox/.installer/
+tee -a $pkgdir/usr/lib/waterfox/.installer/settings <<EOF
 download_language=$_download_language
 chosen_language=$_chosen_language
 EOF

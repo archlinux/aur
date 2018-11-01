@@ -7,4 +7,12 @@ post_remove()
     if [ -d "/opt/waterfox/.installer" ]; then
         rm -rf /opt/waterfox/.installer/
     fi
+    
+    if [ -d "/usr/lib/waterfox/browser/features" ]; then 
+        rm -rf /usr/lib/waterfox/browser/features/
+    fi
+    
+    if [ -d "/usr/lib/waterfox/.installer" ]; then
+        rm -rf /usr/lib/waterfox/.installer/
+    fi
 }
