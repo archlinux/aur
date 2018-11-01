@@ -11,7 +11,7 @@ depends=('libgee-git-alt' 'libxml2' 'glib2')
 makedepends=('vala' 'meson' 'ninja' 'gobject-introspection')
 
 provides=('libgxml='$pkgver)
-conflicts=('libgxml')
+conflicts=('libgxml' 'gxml' 'gxml-git')
 
 source=('git+https://gitlab.gnome.org/BZHDeveloper/gxml.git')
 sha256sums=('SKIP')
