@@ -1,8 +1,8 @@
 # Maintainer: Javier Tiá <javier dot tia at gmail dot com>
 
 pkgname=yank
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc='Copy terminal output to clipboard'
 arch=('i686' 'x86_64')
 url='https://github.com/mptre/yank'
@@ -10,9 +10,8 @@ license=('MIT')
 depends=('xsel')
 provides=("${pkgname}-git")
 conflicts=("${pkgname}-git")
-# https://github.com/mptre/yank/releases/download/v$%7BV%7D/yank-$%7BV%7D.tar.gz
 source=("${url}/releases/download/v${pkgver}/${pkgname}-$pkgver.tar.gz")
-sha256sums=('20ba1b01a7514f2f670702e83846f42429e2e90491dc1f679c8319a45a0382de')
+sha256sums=('f197107cd604c41ef3c2390175bd34e5ad3c7cf1feafedefe357ba75149f1c59')
 
 build() {
   cd "${pkgname}-${pkgver}"
