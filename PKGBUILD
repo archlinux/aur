@@ -1,7 +1,6 @@
 pkgname=mingw-w64-minizip
 pkgver=1.2.11
 pkgrel=1
-epoch=1
 pkgdesc='ZIP file extraction library (mingw-w64)'
 url='https://www.zlib.net/'
 license=('custom')
