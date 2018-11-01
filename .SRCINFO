@@ -1,0 +1,16 @@
+pkgbase = gwmpd
+	pkgdesc = Frontend and backend for mpd
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/Chipsterjulien/gwmpd
+	install = gwmpd.install
+	arch = any
+	license = BSD
+	makedepends = go
+	makedepends = yarn
+	options = !strip
+	source = gwmpd-0.0.1.tar.gz
+	sha512sums = 05abe8a03a7d54ef82a7bfb9b56cd371e16c771e021eac3173aaaffd377f8506f7ae96b0b21fa6de7a5053256d5eb12da47d4f1624d98b6b1b2932e130920d8b
+
+pkgname = gwmpd
+

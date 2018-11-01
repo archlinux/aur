@@ -1,0 +1,22 @@
+post_install() {
+    pkgname=gwmpd
+
+    # Fixing membership
+    chown http: /var/log/$pkgname
+    chown -R http: /etc/$pkgname
+
+    true
+}
+
+post_upgrade() {
+  chown http: /var/log/$pkgname
+  chown -R http: /etc/$pkgname
+
+	true
+}
+
+pre_remove() {
+  systemctl disable gwmpd.service
+
+	true
+}
