@@ -2,7 +2,7 @@
 pkgname=caffe-cuda-slim-git
 _srcname=caffe
 pkgver=1.0
-pkgrel=11
+pkgrel=12
 pkgdesc="A slimmed-down build of Caffe based on caffe-opencl-git (CUDA version)"
 arch=('x86_64')
 url="http://caffe.berkeleyvision.org/"
@@ -13,13 +13,13 @@ depends=(
         'python-matplotlib' 'ipython' 'python-networkx' 'python-nose'
         'python-pandas' 'python-dateutil' 'python-protobuf' 'python-gflags'
         'python-yaml' 'python-pillow' 'python-six'
-        'openblas-lapack' 'opencv' 'cuda'
+        'openblas-lapack' 'opencv' 'cuda' 'nccl'
 )
 makedepends=('cmake')
 provides=('caffe')
 conflicts=('caffe' 'caffe-git' 'caffe-cpu-git' 'caffe-dr-git' 'caffe-mnc-dr-git' 'caffe-cpu'
            'caffe2' 'caffe2-git' 'caffe2-cpu' 'caffe2-cpu-git' 'caffe-opencl-git'
-           'caffe-opencl-slim-git' 'caffe-intel-slim-git')
+           'caffe-slim-git' 'caffe-opencl-slim-git' 'caffe-intel-slim-git' 'caffe-cudnn-slim-git')
 source=("${_srcname}"::"git+https://github.com/andrew-wja/${_srcname}"
         'dependencies.patch')
 sha256sums=('SKIP'
@@ -55,7 +55,7 @@ prepare() {
     -DUSE_CLBLAST=OFF \
     -DUSE_ISAAC=OFF \
     -DUSE_CUDNN=OFF \
-    -DUSE_NCCL=OFF \
+    -DUSE_NCCL=ON \
     -DBUILD_SHARED_LIBS=OFF \
     -DBUILD_python=ON \
     -DBUILD_matlab=OFF \
