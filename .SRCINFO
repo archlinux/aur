@@ -1,0 +1,17 @@
+pkgbase = python-signpdf
+	pkgdesc = Utility for adding signatures images to PDF documents
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://pypi.org/project/signpdf
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-reportlab
+	depends = python-pypdf2
+	source = python-signpdf-0.0.3.tar.gz::https://files.pythonhosted.org/packages/source/s/signpdf/signpdf-0.0.3.tar.gz
+	source = https://raw.githubusercontent.com/yourcelf/signpdf/master/LICENSE
+	sha256sums = 50f06007f9bf30ad302f2e76ff01e25bbf4b944a4757555e8eec134599abb590
+	sha256sums = 13b5aa7aaaba5de26c8cb53a3dca05f625f4101c793df6b484f39e6405cc8ac4
+
+pkgname = python-signpdf
+
