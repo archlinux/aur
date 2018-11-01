@@ -1,6 +1,6 @@
 # Maintainer: Marco Steiger <marco1steiger (at) gmail (dot) com>
 pkgname=thedude
-pkgver=6.43.2
+pkgver=6.43.4
 pkgrel=3
 pkgdesc="Mikrotik The Dude network monitoring client"
 url="http://www.mikrotik.com"
@@ -16,7 +16,7 @@ source=("${pkgname}-${pkgver}.exe::http://download2.mikrotik.com/routeros/${pkgv
         "${pkgname}.desktop"
         "${pkgname}.png"
         "${pkgname}")
-sha256sums=('3c70e00885fe19b9907360e753a05f2071de037750022ee4eecad3a71f59b570'
+sha256sums=('b4d7c9469c2da13821dc869c24fa39a2be0eaadaea15263d11c6343d76c5c9c9'
             '037f296da60fa1e46f256f0b8314b4de467529dcbfe743b512bb29730ac05a18'
             'b2595e2c2c9980fd5a9b2a6bbd847a8cbb158a4c18e36e9002ccbec109b4eaa1'
             '85fe839f1dd2e9f71b0cf931ad377610a1b4b324517df3d0c4a8be5e41b19646')
