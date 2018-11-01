@@ -1,7 +1,7 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=kwaterfoxhelper
-pkgver=5.0.1.6
+pkgver=5.0.2
 pkgrel=1
 pkgdesc="Waterfox KDE Plasma Integration"
 url="https://github.com/hawkeye116477/kwaterfoxhelper"
@@ -9,7 +9,7 @@ arch=("x86_64")
 license=('MIT')
 depends=('ki18n' 'kio' 'knotifications' 'kwindowsystem')
 makedepends=('cmake' 'extra-cmake-modules' 'python')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hawkeye116477/kwaterfoxhelper/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hawkeye116477/kwaterfoxhelper/archive/${pkgver}.tar.gz")
 options=('!emptydirs' '!strip')
 
 prepare() {
@@ -32,4 +32,4 @@ package() {
     install -Dm644 $pkgname-$pkgver/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha256sums=('bbb7f91f73ae3bb8d81a0a0b02aabb2d5d3a93685ac0e8eae42a61285aeb449a')
+sha256sums=('1f02e3799b73ce58360c2f5196a8de6d2d3d8a0a4cd2c99cd6bbe09b1a079a10')
