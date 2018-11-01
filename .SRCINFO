@@ -1,7 +1,7 @@
 pkgbase = um
 	pkgdesc = utility to create and maintain your own man pages so you can remember how to do stuff
 	pkgver = 4.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sinclairtarget/um
 	arch = any
 	license = MIT
@@ -11,7 +11,9 @@ pkgbase = um
 	conflicts = um-git
 	options = !emptydirs
 	source = https://github.com/sinclairtarget/um/archive/4.1.0.tar.gz
+	source = https://raw.githubusercontent.com/sinclairtarget/um/7763e42c10bee87db3fadb2503aa704f9ca7a09d/um-completion.zsh
 	sha256sums = 0606cd8da69618d508d06dee859dd1147a4d8846cdff57fb8958c71fe906523f
+	sha256sums = efb0abe0b87d90bde652e61353abbbc30d5adaf9b61757e6a515c016140a5b81
 
 pkgname = um
 

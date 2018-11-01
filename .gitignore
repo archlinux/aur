@@ -6,3 +6,4 @@ src/
 *.src.tar.gz
 *.src.tar.xz
 *.tar.gz
+um-completion.zsh
