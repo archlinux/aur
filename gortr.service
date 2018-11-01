@@ -5,6 +5,7 @@ After=network.target
 [Service]
 Type=simple
 EnvironmentFile=/etc/conf.d/gortr
+WorkingDirectory=/usr/lib/gortr
 ExecStart=/usr/bin/gortr $GORTR_ARGS
 
 [Install]

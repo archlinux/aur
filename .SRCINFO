@@ -1,11 +1,12 @@
 pkgbase = gortr
 	pkgdesc = An RPKI-to-Router server written in Go
 	pkgver = 0.9.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cloudflare/gortr
 	arch = x86_64
 	arch = i686
 	arch = aarch64
+	arch = armv7l
 	license = BSD
 	makedepends = go
 	options = !strip
@@ -16,7 +17,7 @@ pkgbase = gortr
 	source = gortr.service
 	md5sums = 415f8c5c796b627052d1394c056c09d5
 	md5sums = b8eb3dab8494b7d031249b7d4ae5a5ba
-	md5sums = 3a0a969177fb3d8b51c41309e627993a
+	md5sums = 67afd99e5c49c253c8d531d30d1f4f59
 
 pkgname = gortr
 
