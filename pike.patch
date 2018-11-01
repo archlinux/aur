@@ -1,6 +1,6 @@
-diff -rupN Pike-v8.0.610/src/configure Pike-v8.0.610b/src/configure
---- Pike-v8.0.610/src/configure	2018-05-13 18:37:24.000000000 -0400
-+++ Pike-v8.0.610b/src/configure	2018-05-27 17:53:31.102950794 -0400
+diff -rupN Pike-v8.0.702/src/configure Pike-v8.0.702b/src/configure
+--- Pike-v8.0.702/src/configure	2018-10-06 18:14:05.000000000 -0400
++++ Pike-v8.0.702b/src/configure	2018-11-01 15:06:27.484431088 -0400
 @@ -63888,39 +63888,6 @@ fi
  CONF_CPPFLAGS_EXTRA="-I$srcdir -I`pwd`"
  CPPFLAGS="${CPPFLAGS} ${CONF_CPPFLAGS_EXTRA}"
@@ -41,9 +41,9 @@ diff -rupN Pike-v8.0.610/src/configure Pike-v8.0.610b/src/configure
  #############################################################################
  
  ## At this point we have at last initialized the compiler!
-diff -rupN Pike-v8.0.610/src/configure.in Pike-v8.0.610b/src/configure.in
---- Pike-v8.0.610/src/configure.in	2018-05-13 18:37:09.000000000 -0400
-+++ Pike-v8.0.610b/src/configure.in	2018-05-27 17:53:31.102950794 -0400
+diff -rupN Pike-v8.0.702/src/configure.in Pike-v8.0.702b/src/configure.in
+--- Pike-v8.0.702/src/configure.in	2018-05-19 07:14:33.000000000 -0400
++++ Pike-v8.0.702b/src/configure.in	2018-11-01 15:07:04.299758352 -0400
 @@ -2745,30 +2745,6 @@ fi
  CONF_CPPFLAGS_EXTRA="-I$srcdir -I`pwd`"
  CPPFLAGS="${CPPFLAGS} ${CONF_CPPFLAGS_EXTRA}"  

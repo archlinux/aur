@@ -9,7 +9,7 @@
 # Contributor: Paweł Tomak <pawel@tomak.eu>
 
 pkgname=pike
-pkgver=8.0.610
+pkgver=8.0.702
 pkgrel=1
 pkgdesc='Dynamic programming language with a syntax similar to Java and C'
 arch=('x86_64')
@@ -18,8 +18,8 @@ license=('GPL2' 'LGPL' 'MPL')
 depends=('sane' 'libzip' 'libmariadbclient' 'gtkglarea' 'nettle')
 source=("${url}/pub/${pkgname}/all/${pkgver}/Pike-v${pkgver}.tar.gz"
         "${pkgname}.patch")
-sha256sums=('6eeb410caf56ff4a209a06db29f003208d507680f7c17c0fd93c15f48b5edf53'
-            'c0637074c58e34a3befe6852ea1395073d188a087b59549d637fe7f16fc6d2bf')
+sha256sums=('c47aad2e4f2c501c0eeea5f32a50385b46bda444f922a387a5c7754302f12a16'
+            '04bb9910d9f053a6998c5418bd4f67e838aeb9d1acfae81d4b81f9dc79596906')
 
 prepare() {
   cd "Pike-v${pkgver}"
