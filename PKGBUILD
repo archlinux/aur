@@ -60,7 +60,7 @@ pkgver=${_major}.${_minor}.${_rtver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
 _rtpatchver=rt${_rtver}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -68,7 +68,7 @@ options=('!strip')
 makedepends=('kmod' 'inetutils' 'bc' 'libelf' 'python-sphinx' 'graphviz')
 _bfq_sq_mq_path="bfq-sq-mq"
 _bfq_sq_mq_ver='v9r1'
-_bfq_sq_mq_rel='2K181024'
+_bfq_sq_mq_rel='2K181101'
 _bfq_sq_mq_patch="${_major}-bfq-sq-mq-${_bfq_sq_mq_ver}-${_bfq_sq_mq_rel}.patch"
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
@@ -392,7 +392,7 @@ sha512sums=('80305a7d1d47b1e3d476cddfe5d9104be15f5d325a984fa05bb5426b080f9c22628
             'SKIP'
             '1473cfd044014b055d876c9c5e9cac46e998ff34ac324d5ff50a58dc46ea7241b8b6bc1195a857447d6399b24cb285dbea698b905df511762e8527fd4ba29bd1'
             'SKIP'
-            'b2a27b864a389a2d2253f11a979d7112390a3ed1b924a959b5b73031d7a9d7d9c20b562b92e35eb425c800c2d9a40f71bf1eef28cc85a656d9c1009cd92b7db4'
+            '450e786b2fc58205b685f1f7af52ed7ef6fae003a568af9d2e017c7c8bb454f6089fc136efef2cfdf424dca5ac94ac14024bd02f690e384e1a181eec7ea64840'
             '0f96fa9ad784709973b32eea82075ceb3e9dc2482df6441a4607612806f069254e63508b1b562279622394e4a1fbebef1b87af8401c0b1210d5d0de9954245c8'
             'e62aa377a0acc4f63f394e27a0fb7316583ff1a6a6afdfcc97593ddffd7d2bc224cfd70b552cb3fb9513cf6b8db4c2fd913d21ec2380db8cd642e37d4d67370c'
             '86f717f596c613db3bc40624fd956ed379b8a2a20d1d99e076ae9061251fe9afba39cf536623eccd970258e124b8c2c05643e3d539f37bd910e02dc5dd498749'
