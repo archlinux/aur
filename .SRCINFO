@@ -11,7 +11,7 @@ pkgbase = audiveris-git
 	depends = java-runtime>=7
 	depends = java-runtime<=8
 	depends = tesseract-data-eng
-	depends = freetype
+	depends = freetype2
 	optdepends = tesseract-data: For languages other than english
 	provides = audiveris
 	conflicts = audiveris

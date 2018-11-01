@@ -12,7 +12,7 @@ depends=(
   'java-runtime>=7'
   'java-runtime<=8'
   'tesseract-data-eng'
-  'freetype'
+  'freetype2'
 )
 makedepends=(
   'java-environment>=7'
