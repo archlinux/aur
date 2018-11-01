@@ -1,7 +1,7 @@
 pkgname=libyang
 _pkgver=0.16-r2
 pkgver=${_pkgver/-/}
-pkgrel=1
+pkgrel=2
 pkgdesc='A YANG data modelling language parser and toolkit written (and providing API) in C.'
 url="https://github.com/CESNET/$pkgname"
 arch=('x86_64')
@@ -22,6 +22,7 @@ build() {
     cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_BUILD_TYPE=Release \
+        -DENABLE_LYD_PRIV=ON \
         $srcdir/$_pkgsrc
     make
 }
