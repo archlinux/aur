@@ -17,7 +17,7 @@ pkgdesc="Android SDK Sources, latest API"
 arch=('any')
 url="https://developer.android.com/studio/index.html"
 license=('custom')
-conflicts=("android-sources=${_sdkint}")
+conflicts=("android-sources-${_sdkint}")
 options=('!strip')
 source=("https://dl.google.com/android/repository/sources-${_sdkint}_${_rev}.zip")
 sha256sums=('a1461c180c414eed7866a8aebada38c64846ed0084814d2f5f773584338440f5')
