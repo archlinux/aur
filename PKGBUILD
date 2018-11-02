@@ -1,11 +1,11 @@
-# $Id$
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Vincent Grande <shoober420@gmail.com>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Jameson Pugh <imntreal@gmail.com>
 # Contributor: J0k3r <moebius282@gmail.com>
 
 pkgname=lib32-sdl2-hg
 pkgver=2.0.9.r13.45038f8422c9+
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 2. 32 -bit)"
 arch=('x86_64')
 url="https://www.libsdl.org"
