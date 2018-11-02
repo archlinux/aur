@@ -1,7 +1,7 @@
 pkgbase = buku
 	pkgdesc = Powerful command-line bookmark manager.
-	pkgver = 3.9
-	pkgrel = 3
+	pkgver = 4.0
+	pkgrel = 1
 	url = https://github.com/jarun/Buku
 	arch = any
 	license = GPL3
@@ -12,8 +12,8 @@ pkgbase = buku
 	depends = python-urllib3
 	depends = python-certifi
 	depends = python-html5lib
-	source = buku-3.9.tar.gz::https://codeload.github.com/jarun/Buku/tar.gz/v3.9
-	sha256sums = eb756901634f08dc294e511c69021e3c8bc24b34d16209e46e5cd3f6007d42be
+	source = buku-4.0.tar.gz::https://codeload.github.com/jarun/Buku/tar.gz/v4.0
+	sha256sums = 35a3ebeeb715ec1170360570c3e43cb1308b67a75979ae264aac9961c778d2af
 
 pkgname = buku
 
