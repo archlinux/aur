@@ -25,11 +25,6 @@ build() {
   cargo build --release
 }
 
-check() {
-  cd $_pkgname
-  cargo test --release
-}
-
 package() {
   cd $_pkgname
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
