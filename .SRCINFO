@@ -61,9 +61,11 @@ pkgbase = ungoogled-chromium
 	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-70.0.3538.77.tar.xz
 	source = chromium-launcher-6.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v6.tar.gz
 	source = https://github.com/Eloston/ungoogled-chromium/archive/70.0.3538.77-1.tar.gz
+	source = chromium-harfbuzz-2.0.patch
 	sha256sums = c914f86c4c8375b719eca89ea89dbec4ae3d09df3f758d5f7c91d4914d290449
 	sha256sums = 04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1
 	sha256sums = 9731ddfc654bd74d2da26ccecdbe9262aed7f3ff6ad5b91571ae4b83ecf19159
+	sha256sums = bad4d4a3065f1432d5f9189e29c6bf1d7fe1d365b6c7c4ff51b294569b20e962
 
 pkgname = ungoogled-chromium
 
