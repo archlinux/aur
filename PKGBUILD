@@ -80,8 +80,8 @@ prepare() {
   patch -Np0 -i dep.patch
 
   cd "${srcdir}/${_pkgname}/cinelerra-${_pkgver}"
-  #sed -i 's/\<python\>/python2.7/' ./guicast/Makefile
-  #./autogen.sh
+  sed -i 's/\<python\>/python2.7/' ./guicast/Makefile
+  ./autogen.sh
 }
 
 build() {
