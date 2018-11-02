@@ -1,4 +1,4 @@
-From 4ed430b4ef3013c96fa56cdc57b925b42d20ead9 Mon Sep 17 00:00:00 2001
+From 143917acf809202cb25590c48bc027639c1f914b Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Florian=20M=C3=BCllner?= <fmuellner@gnome.org>
 Date: Thu, 20 Oct 2016 18:00:04 +0200
 Subject: [PATCH] gtk-shell: Work around non-working startup notifications
@@ -16,10 +16,10 @@ https://bugzilla.gnome.org/show_bug.cgi?id=768531
  1 file changed, 10 insertions(+)
 
 diff --git a/src/wayland/meta-wayland-gtk-shell.c b/src/wayland/meta-wayland-gtk-shell.c
-index d6e249f..9d1a19e 100644
+index 474595b18..58375674a 100644
 --- a/src/wayland/meta-wayland-gtk-shell.c
 +++ b/src/wayland/meta-wayland-gtk-shell.c
-@@ -219,11 +219,21 @@ gtk_shell_set_startup_id (struct wl_client   *client,
+@@ -321,11 +321,21 @@ gtk_shell_set_startup_id (struct wl_client   *client,
                            struct wl_resource *resource,
                            const char         *startup_id)
  {
@@ -42,4 +42,5 @@ index d6e249f..9d1a19e 100644
  
  static void
 -- 
-2.9.3
+2.19.1
+
