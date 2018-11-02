@@ -1,0 +1,15 @@
+pkgbase = cornora-git
+	pkgdesc = Simple Hot Corner Launcher for X11
+	pkgver = r23.2f81feb
+	pkgrel = 1
+	url = https://github.com/yuune/cornora
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = xdotool
+	source = git+https://github.com/yuune/cornora.git
+	md5sums = SKIP
+
+pkgname = cornora-git
+
