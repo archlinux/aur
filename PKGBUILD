@@ -3,7 +3,7 @@
 
 pkgname=fisher
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A blazing fast, modern plugin manager for fish"
 arch=("any")
 url="https://github.com/jorgebucaran/fisher"
@@ -20,12 +20,12 @@ sha512sums=(
 )
 
 package() {
-  sharepath="${pkgdir}/usr/share"
-  fishpath="${sharepath}/fish"
-  # install Fisherman into the global fish directory
-  cd "${pkgname}-${pkgver}"
-  install -Dm 644 fisher.fish "${fishpath}/vendor_functions.d/fisher.fish"
-  # README and LICENSE
-  install -Dm 644 LICENSE.md "${sharepath}/licenses/${pkgname}/LICENSE.md"
-  install -Dm 644 README.md "${sharepath}/doc/${pkgname}/README"
+    sharepath="${pkgdir}/usr/share"
+    fishpath="${sharepath}/fish"
+    # install Fisherman into the global fish directory
+    cd "${pkgname}-${pkgver}"
+    install -Dm 644 fisher.fish "${fishpath}/vendor_functions.d/fisher.fish"
+    # README and LICENSE
+    install -Dm 644 LICENSE.md "${sharepath}/licenses/${pkgname}/LICENSE.md"
+    install -Dm 644 README.md "${sharepath}/doc/${pkgname}/README"
 }

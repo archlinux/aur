@@ -1,7 +1,6 @@
 function post_install {
   echo "
-If you upgraded fisherman from a pre-2.x release, you need to migrate your configuration.
-You will have to install all your plugins manually again.
+If you upgraded from fisherman see the migration guide -> https://github.com/jorgebucaran/fisher/issues/450
 "
 }
 
@@ -11,7 +10,7 @@ function post_upgrade {
 
 function post_remove {
   echo "
-Remember that your plugins and Fisherman config still reside in your home directory,
+Remember that your plugins and fisher config still reside in your home directory,
 usually ~/.config/fish/.
 "
 }
