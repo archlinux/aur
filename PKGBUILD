@@ -4,8 +4,9 @@
 # Contributor: Anthony Anderson <aantony4122@gmail.com>
 
 pkgname=discord-canary
-pkgver=0.0.57
+pkgver=0.0.56
 pkgrel=1
+epoch=1
 pkgdesc="All-in-one voice and text chat for gamers that's free and secure."
 arch=('x86_64')
 url='https://discordapp.com/'
