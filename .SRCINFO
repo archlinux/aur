@@ -1,0 +1,14 @@
+pkgbase = python-colcon-test-result
+	pkgdesc = An extension for colcon-core to provide information about the test results.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://pypi.org/project/colcon-test-result
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python-colcon-core
+	source = https://files.pythonhosted.org/packages/d7/fb/7c0977c84e732c493843c8461ed0dfa7733b72028d46b4848b0820029134/colcon-test-result-0.3.0.tar.gz
+	sha256sums = 3861054b36ce3bc704af8b57e61c7b82d56a3fd9cb9031b751f44c51aeed097c
+
+pkgname = python-colcon-test-result
+
