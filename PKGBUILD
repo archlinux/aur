@@ -5,7 +5,7 @@
 
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
-pkgver=3.30.1+2+g8a23d7b9e
+pkgver=3.30.1+4+ga1268fe98
 pkgrel=1
 pkgdesc="Next generation desktop shell | Attempt to improve the performance by non-upstreamed patches"
 url="https://wiki.gnome.org/Projects/GnomeShell"
@@ -36,11 +36,18 @@ prepare() {
   cd $_pkgname
 
   # st-box-layout: Avoid fullscreen relayout on scroll
-  # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/224/commits 
+  # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/224
   git remote add vanvugt https://gitlab.gnome.org/vanvugt/gnome-shell.git || true
   git fetch vanvugt
   git cherry-pick 6a3dd0fa || bash
   git cherry-pick 5aac3f0a || bash
+
+  # IconGrid: Defer and group animation cleanup
+  # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/253
+  git cherry-pick a5e6dd52 || bash
+  # IconGrid: Keep icons reactive during pulse animation
+  # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/261
+  git cherry-pick 1acdff82 || bash
 
   # Move the plugin to our custom epiphany-only dir
   sed -i "s/'mozilla'/'epiphany'/g" meson.build
@@ -49,7 +56,7 @@ prepare() {
   git config --local submodule.subprojects/gvc.url "$srcdir/libgnome-volume-control"
   git submodule update
 }
-  
+
 build() {
   arch-meson $_pkgname build -D gtk_doc=true
   ninja -C build
