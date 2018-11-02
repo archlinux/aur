@@ -4,9 +4,9 @@
 
 pkgbase=linux-rc
 pkgrel=1
-_srcname=linux-4.18
-_stable=4.18.16
-_patchver=4.18.17
+_srcname=linux-4.19
+_stable=4.19
+_patchver=4.19.1
 _rcver=1
 pkgver=${_patchver}rc${_rcver}
 _rcpatch=patch-${_patchver}-rc${_rcver}
@@ -29,15 +29,15 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('beba14e2f07259a545baa1dce5afdaf9f470cdadc8b378ac269e7c8a289c52e6'
+sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
             'SKIP'
-            'dbab9255ef356f9dfa0a27c91b394c0f27d97904ce76d60e76647c9955451ef4'
+            'afc824f9206e4a5a9117b116a9b00efdafcabb8891b27916d52deedff80a9578'
             'SKIP'
-            '321af63cf7dc8e79531ddd8634eddba19e40a18335e7ce61eedd0ad72fef89a5'
+            'ad20d0902dfba6c75cc8bdc7d67b09ec46425396ade60b966892eca7574a0c27'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '2c7e3018fc1306c932f4387615fa45eb8c6ad553e1ce8da1f422b6d7fd671596')
+            'c6a52de5d629fdfaa35553c71e2b020c421f170ef1ca0acfc72fffe7258a6358')
 
 _kernelname=${pkgbase#linux}
 
@@ -49,13 +49,10 @@ prepare() {
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "$_kernelname" > localversion.20-pkgname
 
-  msg2 "Applying rc patches..."
-  # add upstream patch
-  # ONLY comment out for initial rc (ie 4.10 --> 4.10.1rc1) -- needed for all others
-  #patch -p1 -i "$srcdir/patch-${_stable}"
-
+  msg2 "Applying rc patch..."
+  
   # add rc patch
-  patch -p1 -i "$srcdir/$_rcpatch"
+  patch -Np1 -i "../$_rcpatch"
 
   local src
   for src in "${source[@]}"; do
