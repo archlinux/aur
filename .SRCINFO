@@ -1,10 +1,11 @@
 pkgbase = libstrangle-git
 	pkgdesc = Simple FPS Limiter
 	pkgver = r68.a5aa280
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/torkel104/libstrangle
 	arch = x86_64
 	license = GPL3
+	makedepends = git
 	makedepends = gcc-multilib
 	provides = libstrangle
 	conflicts = libstrangle
