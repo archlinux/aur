@@ -2,7 +2,7 @@
 # Contributor: Daniel Maslowski <info@orangecms.org>
 
 pkgname=fisher-git
-pkgver=3.1.1.r0.ge9925f4
+pkgver=3.1.1.r2.ga8d7fb7
 pkgrel=1
 pkgdesc="A blazing fast, modern plugin manager for fish"
 arch=("any")
