@@ -1,0 +1,15 @@
+#@IgnoreInspection BashAddShebang
+pkgbase = android-sources-27
+	pkgdesc = Android SDK Sources, API-27
+	pkgver = 8.1.0_r01
+	pkgrel = 1
+	url = https://developer.android.com/studio/index.html
+	arch = any
+	license = custom
+	conflicts = android-sources=27
+	options = !strip
+	source = https://dl.google.com/android/repository/sources-27_r01.zip
+	sha1sums = 2af701ee3223d580409288540b1d06932fd8f9b9
+
+pkgname = android-sources-27
+
