@@ -24,7 +24,7 @@ sha512sums=(
 
 package() {
     cd "${_pkgname}-${pkgver}"
-    
+
     install -m755 -D "temp.sh" "$pkgdir/usr/bin/nfancurve"
     install -m644 -D "config.sh" "$pkgdir/usr/share/doc/${_pkgname}/config.sh.example"
 }
