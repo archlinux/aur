@@ -2,11 +2,10 @@
 # ./check4u -- check for updates of a software package
 
 ocaml-menhir_latest() {
-    local WEBPAGE='http://gallium.inria.fr/~fpottier/menhir/'
+    local WEBPAGE='http://opam.ocaml.org/packages/menhir/'
     local DOWNLOAD_LINK=`curl --silent $WEBPAGE |
-         grep -oP --color=NEVER 'menhir-\d+\.tar\.gz"'`
-    LATEST=${DOWNLOAD_LINK#menhir-}
-    LATEST=${LATEST%.tar.gz\"}
+         grep -oP --color=NEVER '\d+/archive\.tar\.gz<'`
+    LATEST=${DOWNLOAD_LINK%/archive.tar.gz<}
 }
 ocaml-menhir_current() {
     source PKGBUILD &&
