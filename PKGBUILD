@@ -11,11 +11,11 @@
 pkgbase=linux-drm-intel-next-git
 pkgdesc='Linux driver for Intel graphics'
 _srcname=$pkgbase
-_kernel_rel=4.19
+_kernel_rel=4.20
 _branch=drm-intel-next
 _kernelname=${pkgbase#linux}
-pkgver=4.19.768656.448626103dad
-pkgrel=2
+pkgver=4.20.784806.5468a5434096
+pkgrel=1
 arch=('x86_64')
 url='https://01.org/linuxgraphics/gfx-docs/maintainer-tools/drm-intel.html'
 license=('GPL2')
@@ -29,7 +29,7 @@ source=("${pkgbase}::git://anongit.freedesktop.org/drm/drm-intel#branch=${_branc
         "${pkgbase}.preset")
 
 sha256sums=('SKIP'
-            'f4cb5aa73754a6a6a28eae1f13decbc97ff8cbcd756582d75750ea25a5b99747'
+            'a8a1acc1362b871027b9726f0e8f960364e17171d4f94f8ccf68c2871ca56fa9'
             'd590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 pkgver() {
