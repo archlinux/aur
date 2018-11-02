@@ -2,7 +2,7 @@
 # Contributor:	Ondřej Surý <ondrej@sury.org>
 
 pkgname=knot-resolver
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc='full caching DNS resolver implementation'
 url='https://www.knot-resolver.cz/'
@@ -13,7 +13,7 @@ options=(debug strip)
 install=install
 depends=('cmocka'
          'gnutls'
-         'knot>=2.7.1'
+         'knot>=2.7.2'
          'libedit'
          'libsystemd'
          'libuv'
@@ -25,7 +25,7 @@ source=("https://secure.nic.cz/files/${pkgname}/${pkgname}-${pkgver}.tar.xz")
 
 _makevars="PREFIX=/usr SBINDIR=/usr/bin LIBDIR=/usr/lib INCLUDEDIR=/usr/include ETCDIR=/etc/knot-resolver V=1"
 
-sha256sums=('68a0137e0e15061ee7dec53a2e424aa3266611720db3843853c6e7774a414f40')
+sha256sums=('8f3deba4695784a666cde317bc6af80ecf42ce1047b01f4b9c582fdc021c7492')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
