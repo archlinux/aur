@@ -15,7 +15,7 @@ pkgname="${pkgbase}"
 _branch=iris
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
 pkgver=18.3.0_devel.105928.2e1f61cafcb
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
              'lib32-gcc-libs' 'lib32-libvdpau' 'lib32-libelf' 'lib32-llvm-svn' 'git' 'lib32-libgcrypt' 'lib32-systemd'
@@ -23,8 +23,8 @@ makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
 depends=('mesa-intel-iris-git' 'lib32-gcc-libs' 'lib32-libdrm' 'lib32-wayland' 'lib32-libxxf86vm' 'lib32-libxdamage' 'lib32-libxshmfence' 'lib32-elfutils'
          'lib32-llvm-libs-svn' 'lib32-libunwind' 'lib32-lm_sensors')
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
-provides=('lib32-mesa' 'lib32-opencl-mesa' 'lib32-vulkan-intel' 'lib32-opengl-driver')
-conflicts=('lib32-mesa' 'lib32-opencl-mesa' 'lib32-vulkan-intel')
+provides=('lib32-mesa-git' 'lib32-mesa' 'lib32-opencl-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau' 'lib32-opengl-driver')
+conflicts=('lib32-mesa-git' 'lib32-mesa' 'lib32-opencl-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau')
 url="https://www.mesa3d.org"
 license=('custom')
 source=("mesa::git+https://gitlab.freedesktop.org/kwg/mesa.git#branch=${_branch}"
@@ -56,12 +56,18 @@ build () {
        -D sysconfdir=/etc \
        --libdir=/usr/lib32 \
        -D platforms=x11,wayland,drm,surfaceless \
-       -D dri-drivers= \
-       -D gallium-drivers=iris \
+       -D dri-drivers=i915,i965,r200,r100,nouveau \
+       -D gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl \
        -D vulkan-drivers=amd,intel \
        -D dri3=true \
        -D egl=true \
        -D gallium-extra-hud=true \
+       -D gallium-nine=true \
+       -D gallium-omx=disabled \
+       -D gallium-opencl=disabled \
+       -D gallium-va=true \
+       -D gallium-vdpau=true \
+       -D gallium-xa=true \
        -D gallium-xvmc=false \
        -D gbm=true \
        -D gles1=true \
@@ -71,13 +77,13 @@ build () {
        -D libunwind=true \
        -D llvm=true \
        -D lmsensors=true \
+       -D osmesa=gallium \
        -D shared-glapi=true \
        -D valgrind=false \
        -D tools=[]
     meson configure _build
     ninja -C _build
 }
-
 
 package_lib32-mesa-intel-iris-git () {
 
