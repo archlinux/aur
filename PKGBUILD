@@ -8,9 +8,9 @@
 # Currently it will not be a mandatory makedepend.
 
 pkgname=intel-media-sdk
-pkgver=2018.3.0
-_srcver="$(printf '%s' "$pkgver" | sed -E 's/(^[0-9]{2})([0-9]{2})/\2/')"
-pkgrel=2
+pkgver=2018.3.1
+_srcver="${pkgver:2}"
+pkgrel=1
 epoch=1
 pkgdesc='API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics'
 arch=('x86_64')
@@ -23,7 +23,7 @@ install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/Intel-Media-SDK/MediaSDK/archive/intel-mediasdk-${_srcver}.tar.gz"
         'intel-media-sdk.conf'
         'intel-media-sdk.sh')
-sha256sums=('46958c0dd15cca3d1939260918d48aa8f655c41d7fa265a76dd200ae62a144af'
+sha256sums=('46f54f22e5a9cf41f1a6ab55346a0513ed02b2e99d41f9d178c6820d378922e3'
             '63e76d28140486871a3ffc29ce19c84914583bf243201946c76943bf54df374a'
             '315ea6f304cf2b7b6a8aaabb0b8f71fcd480677c7fb9c8cbfa51c7830bb159bc')
 
