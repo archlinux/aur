@@ -1,6 +1,6 @@
 pkgbase = cin-git
 	pkgdesc = Cinelerra maintained by Good Guy (git version)
-	pkgver = 5.1.20180630
+	pkgver = 5.1.20181031
 	pkgrel = 1
 	url = https://cinelerra-cv.org
 	arch = x86_64
@@ -27,7 +27,6 @@ pkgbase = cin-git
 	depends = libavc1394
 	depends = libdatrie
 	depends = libdv
-	depends = libfdk-aac
 	depends = libffi
 	depends = libglvnd
 	depends = libiec61883
@@ -55,7 +54,7 @@ pkgbase = cin-git
 	source = cinelerra-gg::git+git://git.cinelerra-cv.org/goodguy/cinelerra.git
 	source = dep.patch
 	sha256sums = SKIP
-	sha256sums = 9d4a2a8c21f0c3632317d9b3f6f88d96d544dc08a487cd8efadbcf3dfc18269e
+	sha256sums = d48f53dc4f5ee2adc77b1d6f27cc2763e21cad4f4d5939f8e59720dd3427c04f
 
 pkgname = cin-git
 

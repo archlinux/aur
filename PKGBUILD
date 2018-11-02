@@ -9,7 +9,7 @@ _pkgname=cinelerra-gg
 _pkgver=5.1
 
 pkgname=cin-git
-pkgver=5.1.20180630
+pkgver=5.1.20181031
 pkgrel=1
 pkgdesc="Cinelerra maintained by Good Guy (git version)"
 arch=('x86_64')
@@ -29,7 +29,6 @@ depends=('alsa-lib'
          'libavc1394'
          'libdatrie'
          'libdv'
-         'libfdk-aac'
          'libffi'
          'libglvnd'
          'libiec61883'
@@ -65,7 +64,7 @@ makedepends=('yasm'
 source=("${_pkgname}::git+git://git.cinelerra-cv.org/goodguy/cinelerra.git"
         "dep.patch")
 sha256sums=('SKIP'
-            '9d4a2a8c21f0c3632317d9b3f6f88d96d544dc08a487cd8efadbcf3dfc18269e')
+            'd48f53dc4f5ee2adc77b1d6f27cc2763e21cad4f4d5939f8e59720dd3427c04f')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}/cinelerra-${_pkgver}/blds"
@@ -76,14 +75,13 @@ prepare() {
   cd "${srcdir}"
   # Patches
   # 1. do not build libvorbis when libvorbis is installed
-  # 2. fix wrong fdk-aac detection
-  # 3. fix wrong openexr detection
-  # 4. fix wrong pkg-config definition
+  # 2. fix wrong openexr detection
+  # 3. fix wrong pkg-config definition
   patch -Np0 -i dep.patch
 
   cd "${srcdir}/${_pkgname}/cinelerra-${_pkgver}"
-  sed -i 's/\<python\>/python2.7/' ./guicast/Makefile
-  ./autogen.sh
+  #sed -i 's/\<python\>/python2.7/' ./guicast/Makefile
+  #./autogen.sh
 }
 
 build() {
