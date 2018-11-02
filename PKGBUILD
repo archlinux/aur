@@ -12,7 +12,7 @@ url="https://www.freedesktop.org/wiki/Software/fontconfig/"
 license=(custom)
 depends=(expat freetype2)
 makedepends=(git autoconf-archive gperf python-lxml python-six docbook-utils docbook-sgml
-             perl-sgmls texlive-formatextra json-c)
+             perl-sgmls texlive-formatsextra json-c)
 conflicts=(fontconfig)
 provides=(fontconfig)
 install=fontconfig-git.install
