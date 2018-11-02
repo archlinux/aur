@@ -1,7 +1,7 @@
-# Maintainer: Pad Ster <padspambox at gmail dot com>
+# Maintainer: Isaac Maier <padspambox at gmail dot com>
 
 pkgname=gnome-shell-theme-mist-git
-pkgver=21.ebf614c
+pkgver=43.be5d56c
 pkgrel=1
 pkgdesc="A simple, elegant, minimal gnome-shell theme"
 arch=('any')
