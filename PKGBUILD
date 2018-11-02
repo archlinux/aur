@@ -29,7 +29,7 @@ pkgver() {
 
 package() {
     cd "${_pkgname}"
-    
+
     install -m755 -D "temp.sh" "$pkgdir/usr/bin/nfancurve"
     install -m644 -D "config" "$pkgdir/usr/share/doc/${_pkgname}/config.example"
 }
