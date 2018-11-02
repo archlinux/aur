@@ -15,16 +15,16 @@ pkgname="${pkgbase}"
 _branch=iris
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
 pkgver=18.3.0_devel.105928.2e1f61cafcb
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'llvm-svn' 'clang-svn' 'xorgproto'
-              'libxml2' 'libx11' 'elfutils'
+              'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libomxil-bellagio'
               'ocl-icd' 'vulkan-icd-loader' 'libgcrypt'  'wayland' 'wayland-protocols' 'meson')
 depends=('libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
-         'llvm-libs-svn' 'libunwind' 'libglvnd' 'wayland' 'lm_sensors' 'libclc')
+         'libomxil-bellagio' 'llvm-libs-svn' 'libunwind' 'libglvnd' 'wayland' 'lm_sensors' 'libclc')
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
-provides=('mesa' 'vulkan-intel' 'vulkan-driver' 'opencl-mesa' 'opengl-driver' 'opencl-driver')
-conflicts=('mesa' 'opencl-mesa' 'vulkan-intel')
+provides=('mesa-git' 'mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau' 'vulkan-driver' 'opencl-mesa' 'opengl-driver' 'opencl-driver')
+conflicts=('mesa-git' 'mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau')
 url="https://www.mesa3d.org"
 license=('custom')
 source=("mesa::git+https://gitlab.freedesktop.org/kwg/mesa.git#branch=${_branch}"
@@ -51,9 +51,9 @@ build () {
        -D prefix=/usr \
        -D sysconfdir=/etc \
        -D platforms=x11,wayland,drm,surfaceless \
-       -D dri-drivers= \
-       -D gallium-drivers=iris \
-       -D vulkan-drivers=intel \
+       -D dri-drivers=i915,i965,r200,r100,nouveau \
+       -D gallium-drivers=iris,r300,r600,radeonsi,nouveau,svga,swrast,virgl \
+       -D vulkan-drivers=amd,intel \
        -D dri3=true \
        -D egl=true \
        -D gallium-extra-hud=true \
