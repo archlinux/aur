@@ -1,15 +1,15 @@
 #@IgnoreInspection BashAddShebang
 pkgbase = android-sources
 	pkgdesc = Android SDK Sources, latest API
-	pkgver = 26_8.0.0_r01
+	pkgver = 27_8.1.0_r01
 	pkgrel = 1
 	url = https://developer.android.com/studio/index.html
 	arch = any
 	license = custom
-	conflicts = android-sources-26
+	conflicts = android-sources-27
 	options = !strip
-	source = https://dl.google.com/android/repository/sources-26_r01.zip
-	sha256sums = a1461c180c414eed7866a8aebada38c64846ed0084814d2f5f773584338440f5
+	source = https://dl.google.com/android/repository/sources-27_r01.zip
+	sha256sums = 8e3c1f85fc147b567f342552d6ead2e526df6ba6aa283264e4ebbf1f823be5cc
 
 pkgname = android-sources
 
