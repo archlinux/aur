@@ -1,11 +1,12 @@
 pkgbase = xplor-nih
 	pkgdesc = XPLOR-NIH is a structure determination program which builds on the X-PLOR program, including additional tools developed at the NIH
-	pkgver = 2.48
+	pkgver = 2.49
 	pkgrel = 1
 	url = https://nmr.cit.nih.gov/xplor-nih/
 	arch = x86_64
 	license = custom
 	depends = ncurses5-compat-libs
+	depends = libselinux
 	options = !strip
 	source = LICENSE
 	source = xplor-nih.md5

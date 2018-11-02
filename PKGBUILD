@@ -1,12 +1,12 @@
 # Maintainer: Tomasz Zok <tomasz.zok [at] gmail.com>
 pkgname=xplor-nih
-pkgver=2.48
+pkgver=2.49
 pkgrel=1
 pkgdesc="XPLOR-NIH is a structure determination program which builds on the X-PLOR program, including additional tools developed at the NIH"
 arch=('x86_64')
 url="https://nmr.cit.nih.gov/xplor-nih/"
 license=('custom')
-depends=('ncurses5-compat-libs')
+depends=('ncurses5-compat-libs' 'libselinux')
 source=('LICENSE'
         "${pkgname}.md5")
 md5sums=('SKIP'
@@ -32,18 +32,22 @@ prepare() {
 
 build() {
     cd "${pkgname}-${pkgver}"
-    ./configure -symlinks symlinks/
+    ./configure
 
     # revert change from prepare()
     sed -i "s|^XPLOR_DIR=.*$|XPLOR_DIR=/opt/${pkgname}-${pkgver}|" "bin/xplor"
 }
 
 package() {
-    install -D -t "${pkgdir}/usr/bin/" ${pkgname}-${pkgver}/symlinks/*
-    find ${pkgname}-${pkgver}/symlinks/ -delete
+    install -d "${pkgdir}/usr/bin"
+    eval $(cat "${pkgname}-${pkgver}/configure" | awk '/scriptFiles=/,/"$/ { gsub(/\\/, ""); print }')
+    for script in getBest findXcookie $scriptFiles; do
+        ln -s "/opt/${pkgname}-${pkgver}/bin/$script" "${pkgdir}/usr/bin/"
+    done
 
     install -d "${pkgdir}/opt/"
-    cp -R "${pkgname}-${pkgver}" "${pkgdir}/opt/"
+    cp --recursive "${pkgname}-${pkgver}" "${pkgdir}/opt/"
 
-    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+    cp LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
