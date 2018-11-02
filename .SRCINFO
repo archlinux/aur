@@ -1,0 +1,14 @@
+pkgbase = android-sources-28
+	pkgdesc = Android SDK Sources, API-28
+	pkgver = 9.0.0_r01
+	pkgrel = 1
+	url = https://developer.android.com/studio/index.html
+	arch = any
+	license = custom
+	conflicts = android-sources=28
+	options = !strip
+	source = https://dl.google.com/android/repository/sources-28_r01.zip
+	sha256sums = 7c05aecdc5b56a8d30837ff80885e95736e455aef4d442a5f5f39fe9652250f0
+
+pkgname = android-sources-28
+
