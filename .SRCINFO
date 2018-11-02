@@ -1,6 +1,6 @@
 pkgbase = cornora-git
 	pkgdesc = Simple Hot Corner Launcher for X11
-	pkgver = r23.2f81feb
+	pkgver = r24.487a335
 	pkgrel = 1
 	url = https://github.com/yuune/cornora
 	arch = any
