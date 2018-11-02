@@ -6,7 +6,6 @@
 pkgname=discord-canary
 pkgver=0.0.56
 pkgrel=1
-epoch=1
 pkgdesc="All-in-one voice and text chat for gamers that's free and secure."
 arch=('x86_64')
 url='https://discordapp.com/'
@@ -24,7 +23,7 @@ install="DiscordCanary.install"
 source=(LICENSE
 "https://dl-canary.discordapp.net/apps/linux/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('26b3229c74488c64d94798e48bc49fcd'
-         'efebe996019b17a4b554c42a6eacfa7b')
+         '53d82068dd7c3b12493faeef36ebd02d')
 
 
 
