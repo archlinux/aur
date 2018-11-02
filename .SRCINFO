@@ -1,7 +1,7 @@
 pkgbase = linux-drm-intel-testing-git
 	pkgdesc = Linux kernel with DRM patches
-	pkgver = 4.19.783643.dee7da58caac
-	pkgrel = 2
+	pkgver = 4.20.785991.4767333069b2
+	pkgrel = 1
 	url = https://01.org/linuxgraphics/gfx-docs/maintainer-tools/drm-intel.html
 	arch = x86_64
 	license = GPL2
@@ -18,7 +18,7 @@ pkgbase = linux-drm-intel-testing-git
 	source = linux.install
 	source = linux-drm-intel-testing-git.preset
 	sha256sums = SKIP
-	sha256sums = 63c3c34406b79efcf78fad078416710d9994edce1a69a1c2df4049086cabb74c
+	sha256sums = 0c1159dcb2d081b35f485261ee16d580c5d574d25b3240e1a83abf3edf674440
 	sha256sums = d590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 
