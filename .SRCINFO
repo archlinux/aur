@@ -1,7 +1,7 @@
 #@IgnoreInspection BashAddShebang
 pkgbase = android-sources
 	pkgdesc = Android SDK Sources, latest API
-	pkgver = 8.0.0_r01
+	pkgver = 26_8.0.0_r01
 	pkgrel = 1
 	url = https://developer.android.com/studio/index.html
 	arch = any
