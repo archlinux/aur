@@ -1,7 +1,7 @@
 # Maintainer: Nicolas F. <aur@fratti.ch>
 pkgname=cum
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Comic Updater, Mangafied"
 arch=('any')
 url="https://github.com/Hamuko/cum"
@@ -21,6 +21,8 @@ prepare() {
 package() {
     cd "$srcdir/$pkgname-$pkgver"
     python setup.py install --root="$pkgdir/" --optimize=1
+    rm "$pkgdir/usr/LICENSE"
+    rm -r "$pkgdir/usr/tests/"
 
     install -Dm644 $srcdir/cumpletion.sh \
             $pkgdir/usr/share/bash-completion/completions/cum
