@@ -1,13 +1,13 @@
 pkgbase = f29-backgrounds
 	pkgdesc = Fedora 29 backgrounds.
 	pkgver = 29.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fedoraproject.org/wiki/F29_Artwork
 	arch = i686
 	arch = x86_64
 	license = CC-BY-SA
-	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/f/f29-backgrounds-29.1.2-1.fc30.src.rpm
-	sha256sums = 3a8219008de947b0ffef04e991e7e45e6c876053a3455f965636c4d0c8114f42
+	source = https://archives.fedoraproject.org/pub/fedora/linux/development/29/Everything/source/tree/Packages/f/f29-backgrounds-29.1.2-1.fc29.src.rpm
+	sha256sums = 37cb8e8e1e67552d5fea7181d5a67c09d25b1e1f2ec765aaf3f2e016041d88aa
 
 pkgname = f29-backgrounds
 
