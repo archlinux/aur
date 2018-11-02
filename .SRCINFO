@@ -1,0 +1,17 @@
+pkgbase = packagecore
+	pkgdesc = Utility for building distribution specific Linux packages.
+	pkgver = 0.9.13
+	pkgrel = 1
+	url = https://github.com/BytePackager/packagecore
+	arch = any
+	license = GPL2
+	makedepends = python-setuptools
+	depends = python
+	provides = packagecore-git
+	conflicts = packagecore-git
+	source = https://files.pythonhosted.org/packages/source/p/packagecore/packagecore-0.9.13.tar.gz
+	md5sums = eb7e4e96dbf4169e47afa20145d1dca9
+	sha256sums = a105e9692f250e71e7211d14ce838976f897fee927c47a26b16d35459b7ac7f5
+
+pkgname = packagecore
+
