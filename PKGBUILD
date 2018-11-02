@@ -3,12 +3,17 @@
 _pkgname=timekpr-revived
 pkgname=$_pkgname-bzr
 pkgver=12
-pkgrel=1
-pkgdesc="Control the computer usage of your user accounts. You can limit their daily usage based on a timed access duration and configure periods of day when they can log in."
+pkgrel=2
+pkgdesc="Control the computer usage of users. You can limit daily usage based on a timed access duration and configure periods of day when they can log in."
 arch=('any')
 url='https://launchpad.net/timekpr-revived'
 license=('GPL')
-depends=('python2')
+depends=('python2-libappindicator' 'python2-notify' 'polkit' 'libglade' 'python2-dbus' 'python2-gobject')
+optdepends=('lxqt-policykit: to start the Control Panel like in LXQT'
+            'mate-polkit: to start the Control Panel like in Mate'
+            'polkit-kde-agent: to start the Control Panel like in Plasma'
+            'polkit-gnome: to start the Control Panel like in Gnome (legacy)'
+            'xfce-polkit: to start the Control Panel like in XFCE')
 makedepends=('bzr')
 provides=('timekpr')
 conflicts=('timekpr')
