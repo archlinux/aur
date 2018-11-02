@@ -1,0 +1,14 @@
+pkgbase = python-colcon-pkg-config
+	pkgdesc = An extension for colcon-core to set an environment variable to find pkg-config files.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://pypi.org/project/colcon-pkg-config/
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python-colcon-core
+	source = https://files.pythonhosted.org/packages/7c/3f/9979f90a2dc5fe5da4341fab6c3035aaf885f2bf7177fc9de1ea36f3eacb/colcon-pkg-config-0.1.0.tar.gz
+	sha256sums = 81fc46d037159030ba7b23970c573a31cead315f3c2410101a3cec858ec6bfa3
+
+pkgname = python-colcon-pkg-config
+
