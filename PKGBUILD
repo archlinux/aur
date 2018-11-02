@@ -64,7 +64,7 @@ makedepends=('yasm'
 source=("${_pkgname}::git+git://git.cinelerra-cv.org/goodguy/cinelerra.git"
         "dep.patch")
 sha256sums=('SKIP'
-            'd48f53dc4f5ee2adc77b1d6f27cc2763e21cad4f4d5939f8e59720dd3427c04f')
+            'ef8e25d0bee3b495c4dda3add81090731932d35ab60eca4f744a2e885ad1ce37')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}/cinelerra-${_pkgver}/blds"
