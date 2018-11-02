@@ -1,27 +1,12 @@
 post_install() {
-	# lpr
-	/opt/brother/Printers/dcpj132w/inf/setupPrintcapij dcpj132w -i
-	
-	# cupswrapper
-	/opt/brother/Printers/dcpj132w/cupswrapper/cupswrapperdcpj132w
-	
-	systemctl restart org.cups.cupsd.service
+  systemctl restart org.cups.cupsd.service
+}
+
+pre_upgrade() {
 }
 
 post_upgrade() {
-	/bin/true
 }
 
 pre_remove() {
-	# lpr
-	/opt/brother/Printers/dcpj132w/inf/setupPrintcapij dcpj132w -e
-	
-	# cupswrapper
-	/opt/brother/Printers/dcpj132w/cupswrapper/cupswrapperdcpj132w -e
 }
-
-op=$1
-shift
-
-$op "$@"
-
