@@ -1,14 +1,14 @@
 # Maintainer: Sergey Kasmy <SleeplessSloth79@gmail.com>
-pkgname=du-dup-bin
-_pkgname=dup
+pkgname=diskus-bin
+_pkgname=diskus
 pkgver=0.2.0
 pkgrel=1
 pkgdesc="A minimal, fast alternative to 'du -sh'"
 arch=('x86_64')
-url="https://github.com/sharkdp/dup"
+url="https://github.com/sharkdp/$_pkgname"
 license=('APACHE' 'MIT')
 depends=('gcc-libs')
-provides=('dup')
+provides=("$_pkgname")
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$_pkgname-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 md5sums=("d1807140da1c71a767e7cf1c8cf2bdcb")
 

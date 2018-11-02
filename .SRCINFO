@@ -1,15 +1,15 @@
-pkgbase = du-dup-bin
+pkgbase = diskus-bin
 	pkgdesc = A minimal, fast alternative to 'du -sh'
 	pkgver = 0.2.0
 	pkgrel = 1
-	url = https://github.com/sharkdp/dup
+	url = https://github.com/sharkdp/diskus
 	arch = x86_64
 	license = APACHE
 	license = MIT
 	depends = gcc-libs
-	provides = dup
-	source = du-dup-bin-0.2.0.tar.gz::https://github.com/sharkdp/dup/releases/download/v0.2.0/dup-v0.2.0-x86_64-unknown-linux-gnu.tar.gz
+	provides = diskus
+	source = diskus-bin-0.2.0.tar.gz::https://github.com/sharkdp/diskus/releases/download/v0.2.0/diskus-v0.2.0-x86_64-unknown-linux-gnu.tar.gz
 	md5sums = d1807140da1c71a767e7cf1c8cf2bdcb
 
-pkgname = du-dup-bin
+pkgname = diskus-bin
 
