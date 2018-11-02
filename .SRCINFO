@@ -1,0 +1,13 @@
+pkgbase = mtafsir
+	pkgdesc = Interpretation of the holy Quran. tabary ,sa3dy ,qortoby ,ibn katheer ,baghawy ,tafsir muyassar ...
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://elkirtasse.sourceforge.net
+	arch = x86_64
+	license = GPL3
+	depends = qt5-base
+	source = https://github.com/zakariakov/mtafsir/archive/0.2.tar.gz
+	md5sums = SKIP
+
+pkgname = mtafsir
+
