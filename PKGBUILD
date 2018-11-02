@@ -1,25 +1,25 @@
 # Contributor: chrisl echo archlinux@c2h0r1i2s4t5o6p7h8e9r-l3u4n1a.com|sed 's/[0-9]//g'
 
 pkgname=cemu
-pkgver=1.13.2
-pkgrel=2
+pkgver=1.14.0
+pkgrel=1
 pkgdesc="Wii U emulator (via wine). Includes the Cemuhook plugin and graphic packs"
 arch=(x86_64)
 url="http://cemu.info/"
 license=('custom')
 depends=('wine' 'winetricks')
-_graphicpackver=95
-_cemuhookver=1131_0566
+_graphicpackver=136
+_cemuhookver=1140_0570
 source=(
   cemu.sh
   cemu.xpm
   cemu.desktop
   http://cemu.info/releases/cemu_${pkgver}.zip
   https://files.sshnuke.net/cemuhook_${_cemuhookver}.zip
-  https://github.com/slashiee/cemu_graphic_packs/releases/download/Travis${_graphicpackver}/graphicPacks${_graphicpackver}_Uncommon.zip
+  https://github.com/slashiee/cemu_graphic_packs/releases/download/Travis${_graphicpackver}/graphicPacks${_graphicpackver}.zip
 )
 noextract=("cemuhook_${_cemuhookver}.zip"
-           "graphicPacks${_graphicpackver}_Uncommon.zip")
+           "graphicPacks${_graphicpackver}.zip")
 install=${pkgname}.install
 
 # If the cemuhook md5 is wrong, is because the cemuhook team every once in a while
@@ -27,10 +27,10 @@ install=${pkgname}.install
 # If you notice this, please mark this package as out-of-date in the aur website and I'll fix it.
 md5sums=('bf4a05c4f1d6063ed6bb90b66b2eca7d'
          '54d70005a8975812ab54fcfef53f7bde'
-         '9e563b3295d5d12e1634dacddfe1be22'
-         '1712b6dd2f9e590005d0d3164bffadcc'
-         '23b023c8d79f638b9db1010df9e0e36a'
-         '5a1c0d53e0fc230c80f8b1f46095c1c9')
+         'dc0162b6e6dd33c1707a5e2a2f275248'
+         '45a2d11e203c8a154f56e2861999bf3b'
+         '4493f98caac981512517916e67a24f9f'
+         '1df720ef3daac79d73196fa81cbff741')
 
 options=(!strip)
 
@@ -39,7 +39,7 @@ build() {
   cd cemu_$pkgver
   bsdtar -x -f ../../cemuhook_${_cemuhookver}.zip
   cd graphicPacks
-  bsdtar -x -f ../../../graphicPacks${_graphicpackver}_Uncommon.zip
+  bsdtar -x -f ../../../graphicPacks${_graphicpackver}.zip
 }
 package() {
   cd $srcdir
