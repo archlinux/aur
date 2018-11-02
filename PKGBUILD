@@ -4,7 +4,7 @@
 
 pkgname=webdis
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='REST server for Redis data'
 arch=('x86_64' 'i686')
 url='https://webd.is/'
@@ -19,12 +19,12 @@ sha256sums=('2e384eae48cfc2e4503e3311c61d4790e5d3b3ab5cf82ec554c0bef5d84c6807'
             'f409fefee8533e60db6a6340c021b77b57f55cfcbf26ae4acdc3b672c7aa79b7')
 
 build() {
-  make -C "$pkgname" LDFLAGS+="-levent -pthread" \
+  make -C "$pkgname-$pkgver" LDFLAGS+="-levent -pthread" \
     CFLAGS+="-I. -Ihttp-parser -Iformats -Ijansson/src"
 }
 
 package() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
 
   make DESTDIR="$pkgdir" PREFIX=/usr install
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/webdis/COPYING"
