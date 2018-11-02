@@ -1,7 +1,8 @@
-# Maintainer: boscowitch <boscowitch@boscowitch.de>
+# Maintainer: adambot <adambot@gmail.com>
+# Contributor: boscowitch <boscowitch@boscowitch.de>
 
 pkgname=advcp
-pkgver=8.25
+pkgver=8.30
 pkgrel=1
 
 _pkgname=coreutils
@@ -11,19 +12,17 @@ license=("GPL3")
 url="https://www.gnu.org/software/coreutils/"
 groups=("base")
 depends=("glibc" "pam" "acl" "gmp" "libcap")
-provides=("acp" "amv")
+provides=("acp" "amv" "advcp" "advmv" "cpg" "mvg")
 install=${pkgname}.install
-source=(ftp://ftp.gnu.org/gnu/$_pkgname/$_pkgname-$pkgver.tar.xz{,.sig}
-        advcpmv-${pkgver}.patch)
-sha256sums=("31e67c057a5b32a582f26408c789e11c2e8d676593324849dcf5779296cdce87"
-            "SKIP"
-            "357034a0dca1a5f2e8fc3a0fabe0268c378192449c4094f690e3f900f7a5ae7f")
-validpgpkeys=("6C37DC12121A5006BC1DB804DF6FD971306037D9") # Pádraig Brady
+source=(ftp://ftp.gnu.org/gnu/$_pkgname/$_pkgname-$pkgver.tar.xz
+        https://raw.githubusercontent.com/mrdrogdrog/advcpmv/master/advcpmv-0.8-8.30.patch)
+sha256sums=("e831b3a86091496cdba720411f9748de81507798f6130adeaef872d206e1b057"
+            "9954d975554f3c06b518d4d17c5247ef751fe8f29d692799e79c9386ab4a1c1b")
 
 build() {
   cd ${srcdir}/${_pkgname}-${pkgver}
     
-  patch -p1 -i ${srcdir}/advcpmv-${pkgver}.patch
+  patch -p1 -i ${srcdir}/advcpmv-0.8-${pkgver}.patch
 
   ./configure --prefix=/usr \
               --libexecdir=/usr/lib \
@@ -33,6 +32,10 @@ build() {
 
 package() {
   cd ${srcdir}/${_pkgname}-${pkgver}
-  install -D src/cp ${pkgdir}/usr/bin/acp
-  install -D src/mv ${pkgdir}/usr/bin/amv
+  install -D src/cp ${pkgdir}/usr/bin/advcp
+  ln -s advcp ${pkgdir}/usr/bin/acp
+  ln -s advcp ${pkgdir}/usr/bin/cpg
+  install -D src/mv ${pkgdir}/usr/bin/advmv
+  ln -s advmv ${pkgdir}/usr/bin/amv
+  ln -s advmv ${pkgdir}/usr/bin/mvg
 }

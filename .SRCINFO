@@ -1,6 +1,6 @@
 pkgbase = advcp
 	pkgdesc = 'cp' and 'mv' utilities with progress bar patches
-	pkgver = 8.25
+	pkgver = 8.30
 	pkgrel = 1
 	url = https://www.gnu.org/software/coreutils/
 	install = advcp.install
@@ -15,13 +15,14 @@ pkgbase = advcp
 	depends = libcap
 	provides = acp
 	provides = amv
-	source = ftp://ftp.gnu.org/gnu/coreutils/coreutils-8.25.tar.xz
-	source = ftp://ftp.gnu.org/gnu/coreutils/coreutils-8.25.tar.xz.sig
-	source = advcpmv-8.25.patch
-	validpgpkeys = 6C37DC12121A5006BC1DB804DF6FD971306037D9
-	sha256sums = 31e67c057a5b32a582f26408c789e11c2e8d676593324849dcf5779296cdce87
-	sha256sums = SKIP
-	sha256sums = 357034a0dca1a5f2e8fc3a0fabe0268c378192449c4094f690e3f900f7a5ae7f
+	provides = advcp
+	provides = advmv
+	provides = cpg
+	provides = mvg
+	source = ftp://ftp.gnu.org/gnu/coreutils/coreutils-8.30.tar.xz
+	source = https://raw.githubusercontent.com/mrdrogdrog/advcpmv/master/advcpmv-0.8-8.30.patch
+	sha256sums = e831b3a86091496cdba720411f9748de81507798f6130adeaef872d206e1b057
+	sha256sums = 9954d975554f3c06b518d4d17c5247ef751fe8f29d692799e79c9386ab4a1c1b
 
 pkgname = advcp
 
