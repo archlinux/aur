@@ -29,7 +29,7 @@ source=("${pkgbase}::git://people.freedesktop.org/~agd5f/linux#branch=${_branch}
         "${pkgbase}.preset")
 
 sha256sums=('SKIP'
-            'e21953d612ca7fe743896641efb0241f1aec4a57e1cfa57df96650f63cb5e85f'
+            '0dbe27f97a99e527cecf407c31f595a606195a38652f09bee9725aeca8e931c1'
             'd590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 pkgver() {
