@@ -1,14 +1,14 @@
 pkgbase = ark-bin
 	pkgdesc = Backup client for Kubernetes
-	pkgver = 0.9.8
+	pkgver = 0.9.10
 	pkgrel = 1
 	url = https://github.com/heptio/ark
 	arch = x86_64
 	license = Apache
 	optdepends = kubectl: To connect to Kubernetes
 	optdepends = kubectl-bin: To connect to Kubernetes
-	source = https://github.com/heptio/ark/releases/download/v0.9.8/ark-v0.9.8-linux-amd64.tar.gz
-	sha256sums = cc03f8f38a5fcb1097c6d2abd4f8041443ec8eab2ab5d72293f17dbe7b3a0993
+	source = https://github.com/heptio/ark/releases/download/v0.9.10/ark-v0.9.10-linux-amd64.tar.gz
+	sha256sums = c2b0ad0a2d22b3a647fdc44c2d4dcefaac29671ec6191405de6f0580f7134a4d
 
 pkgname = ark-bin
 
