@@ -1,8 +1,8 @@
 # Contributor: BluePeril <blueperil (at) blueperil _dot_ de>
 
 pkgname=lombok-eclipse
-pkgver=1.18.0
-pkgrel=2
+pkgver=1.18.4
+pkgrel=1
 pkgdesc="Project Lombok integrated to Eclipse installation"
 arch=("any")
 url="http://projectlombok.org"
@@ -11,7 +11,7 @@ makedepends=('java-runtime')
 depends=('eclipse-java' 'java-runtime')
 install=lombok.install
 source=("https://projectlombok.org/downloads/lombok-${pkgver}.jar")
-sha256sums=('88ed9af526d13a84361cbe1216f815ee78c82c342618ea1a48b6de1acbb9d2b4')
+sha256sums=('39f3922deb679b1852af519eb227157ef2dd0a21eec3542c8ce1b45f2df39742')
 noextract=("lombok.jar")
 
 build() {
