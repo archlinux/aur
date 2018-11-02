@@ -24,7 +24,7 @@ source=('git://github.com/UPBGE/blender.git' \
 	'blender-translations.git::git://git.blender.org/blender-translations.git' \
 	'blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git' \
 	upbge.desktop)
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' '47e5bbe93fc221066882947211ff7812')
 
 # determine whether we can precompile CUDA kernels
 _CUDA_PKG=`pacman -Qq cuda 2>/dev/null` || true

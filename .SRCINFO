@@ -39,6 +39,7 @@ pkgbase = upbge-git
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
+	md5sums = 47e5bbe93fc221066882947211ff7812
 
 pkgname = upbge-git
 
