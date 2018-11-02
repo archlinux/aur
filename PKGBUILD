@@ -25,6 +25,9 @@ prepare() {
     -e '68,88d' \
     -i ant/build.gant
 
+  export ANT_HOME=/usr/share/ant
+  export PATH=$PATH:$ANT_HOME/bin
+
   chmod +x org.eclim/nailgun/configure bin/sphinx
 
   # Sphinx 1.6 => 1.7 compatibility issue
