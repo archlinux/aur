@@ -3,7 +3,7 @@
 
 _gitname='fenrir'
 pkgname="${_gitname}-git"
-pkgver=2.rge16c9a8e
+pkgver=0.0
 pkgrel=1
 pkgdesc='A user space console screen reader written in python3'
 arch=('any')
@@ -31,10 +31,7 @@ md5sums=('SKIP'
 pkgver()
 {
   cd "$srcdir/$_gitname"
-  local ver="$(git describe --tags)"
-  #ver="${ver#*-}"
-  ver="${ver/-/.r}" 
-  echo "${ver//-/.}" 
+  date '+%Y.%m.%d'
 }
 
 package()
