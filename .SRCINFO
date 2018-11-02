@@ -1,20 +1,20 @@
 pkgbase = gnome-shell-extension-gsconnect
 	pkgdesc = KDE Connect implementation with GNOME Shell integration
-	pkgver = 13
+	pkgver = 14
 	pkgrel = 1
 	url = https://github.com/andyholmes/gnome-shell-extension-gsconnect
 	arch = any
 	license = GPL
-	makedepends = unzip
+	makedepends = meson
+	makedepends = ninja
 	depends = gnome-shell
 	optdepends = sshfs: Browse remote files
 	optdepends = folks: Contacts integration (Evolution)
 	optdepends = libgdata: Contacts integration (GNOME Online Accounts)
 	optdepends = python2-nautilus: Nautilus integration
 	optdepends = gsound: Themed sound effects
-	noextract = $pkgname-$pkgver.zip
-	source = gnome-shell-extension-gsconnect-13.zip::https://github.com/andyholmes/gnome-shell-extension-gsconnect/releases/download/v13/gsconnect.andyholmes.github.io.zip
-	sha256sums = 890d8026f979162dbe65b7f8cf83cbd8258094c3f077b6081d6a75c08fc70de1
+	source = https://github.com/andyholmes/gnome-shell-extension-gsconnect/archive/v14.tar.gz
+	sha256sums = 86dd959cda3dafc0c4f6d6c6e69b1a3acda8284c21a07dc1a73e42cda9b4a915
 
 pkgname = gnome-shell-extension-gsconnect
 
