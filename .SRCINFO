@@ -6,6 +6,7 @@ pkgbase = du-dup-bin
 	arch = x86_64
 	license = APACHE
 	license = MIT
+	provides = dup
 	source = du-dup-bin-0.2.0.tar.gz::https://github.com/sharkdp/dup/releases/download/v0.2.0/dup-v0.2.0-x86_64-unknown-linux-gnu.tar.gz
 	md5sums = d1807140da1c71a767e7cf1c8cf2bdcb
 

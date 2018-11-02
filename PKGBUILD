@@ -7,6 +7,7 @@ pkgdesc="A minimal, fast alternative to 'du -sh'"
 arch=('x86_64')
 url="https://github.com/sharkdp/dup"
 license=('APACHE' 'MIT')
+provides=('dup')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$_pkgname-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 md5sums=("d1807140da1c71a767e7cf1c8cf2bdcb")
 
