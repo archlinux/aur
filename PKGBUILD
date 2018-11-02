@@ -15,7 +15,7 @@ pkgname="${pkgbase}"
 _branch=iris
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
 pkgver=18.3.0_devel.105928.2e1f61cafcb
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'llvm-svn' 'clang-svn' 'xorgproto'
               'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libomxil-bellagio'
@@ -41,9 +41,6 @@ pkgver() {
 }
 
 build () {
-#    if [ -d _build ]; then
-#        rm -rf _build
-#    fi
     meson setup mesa _build \
        -D b_ndebug=true \
        -D buildtype=plain \
@@ -57,6 +54,11 @@ build () {
        -D dri3=true \
        -D egl=true \
        -D gallium-extra-hud=true \
+       -D gallium-nine=true \
+       -D gallium-omx=bellagio \
+       -D gallium-va=true \
+       -D gallium-vdpau=true \
+       -D gallium-xa=true \
        -D gallium-xvmc=false \
        -D gbm=true \
        -D gles1=true \
@@ -66,6 +68,7 @@ build () {
        -D libunwind=true \
        -D llvm=true \
        -D lmsensors=true \
+       -D osmesa=gallium \
        -D shared-glapi=true \
        -D gallium-opencl=icd \
        -D valgrind=false \
@@ -73,7 +76,6 @@ build () {
     meson configure _build
     ninja -C _build
 }
-
 
 package_mesa-intel-iris-git() {
 
