@@ -1,4 +1,5 @@
 # Contributor: BluePeril <blueperil (at) blueperil _dot_ de>
+# Maintainer: Infernio <infernio at icloud dot com>
 
 pkgname=lombok-eclipse
 pkgver=1.18.4
