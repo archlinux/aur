@@ -1,6 +1,6 @@
 # Maintainer: NamedKitten <kitteh@namedkitten.pw>
 pkgname=kittehplayer
-pkgver=r202.2446bb7
+pkgver=r205.2643f93
 pkgrel=1
 pkgdesc="A YouTube-like video player based on Qt, QML and libmpv."
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('qt5-svg' 'qt5-declarative' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'm
 optdepends=(
 	'mpv-vapoursynth: for vapoursynth support.'
 	'youtube-dl: for remote video streaming'
-	'noto-fonts: default fonts and recomended for a youtube-like UI'
+	'ttf-roboto: default font recommended for a youtube-like UI'
 )
 makedepends=('git' 'cmake')
 provides=("$pkgname")
