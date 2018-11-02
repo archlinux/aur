@@ -1,9 +1,9 @@
 # Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=intel-media-stack-bin
-pkgver=2018.3.0
-_srcver="$(printf '%s' "$pkgver" | sed -E 's/(^[0-9]{2})([0-9]{2})/\2/')"
-pkgrel=2
+pkgver=2018.3.1
+_srcver="${pkgver:2}"
+pkgrel=1
 pkgdesc='Tools and libraries for developing media solutions on Intel products. Includes MediaSDK, Media Driver, libva and libva-utils.'
 arch=('x86_64')
 url='https://github.com/Intel-Media-SDK/MediaSDK/'
@@ -20,9 +20,9 @@ backup=('etc/profile.d/intel-mediasdk-devel.sh'
 options=('!strip' '!emptydirs')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/Intel-Media-SDK/MediaSDK/releases/download/intel-mediasdk-${_srcver}/MediaStack.tar.gz"
-        'LICENSE'::"https://raw.githubusercontent.com/Intel-Media-SDK/MediaSDK/intel-mediasdk-${_srcver}/LICENSE")
+        "https://raw.githubusercontent.com/Intel-Media-SDK/MediaSDK/intel-mediasdk-${_srcver}/LICENSE")
 noextract=("${pkgname}-${pkgver}.tar.gz")
-sha256sums=('7ceaf70c1a91c29fa9aaaae16a5eca154e9763152a2c84e73d529c17184e122a'
+sha256sums=('5f09a92be728f3ec9236621a63286fef762973dc99abfd1ce767452c8d9d0035'
             'dfd67773578903698f9ff4a61eb8f2d84810cbecd56f3f3cee8c649f813b6ea6')
 
 prepare() {
@@ -76,17 +76,16 @@ package() {
     done
     
     # move tools to bin folder
-    mv "$pkgdir"/opt/intel/mediasdk/samples/_bin/x64/{asg-hevc,hevc_fei_extractor} "${pkgdir}/opt/intel/mediasdk/bin"
+    mv "$pkgdir"/opt/intel/mediasdk/share/mfx/samples/_bin/x64/{asg-hevc,hevc_fei_extractor} "${pkgdir}/opt/intel/mediasdk/bin"
     
     # add symlink for libcttmetrics.so (required by 'metrics_monitor' sample)
-    ln -s ../samples/_bin/x64/libcttmetrics.so "${pkgdir}/opt/intel/mediasdk/lib64/libcttmetrics.so"
+    ln -s ../share/mfx/samples/_bin/x64/libcttmetrics.so "${pkgdir}/opt/intel/mediasdk/lib64/libcttmetrics.so"
     
-    # remove broken binary sample (needs libgtest.so.0 - unavailable)
-    rm "${pkgdir}/opt/intel/mediasdk/samples/_bin/x64/test_monitor"
-    
-    # fix broken symlink for plugins
+    # fix broken symlinks for plugins
     rm "${pkgdir}/opt/intel/mediasdk/lib64/mfx"
-    ln -s ../plugins "${pkgdir}/opt/intel/mediasdk/lib64/mfx"
+    rm "${pkgdir}/opt/intel/mediasdk/plugins/plugins.cfg"
+    ln -s ../plugins               "${pkgdir}/opt/intel/mediasdk/lib64/mfx"
+    ln -s ../share/mfx/plugins.cfg "${pkgdir}/opt/intel/mediasdk/plugins/plugins.cfg"
     
     # do not force the use of 'iHD' libva driver by default (let user choose)
     local _info='# uncomment the LIBVA lines bellow to use the Intel Media Driver (iHD) for VAAPI'
