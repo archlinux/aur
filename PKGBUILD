@@ -26,7 +26,7 @@ md5sums=(SKIP)
 pkgver() {
   cd "$srcdir/$pkgname"
 # Use latest tag
-  git tags|tail -n 1
+  git tag|tail -n 1
 }
 
 build() {
