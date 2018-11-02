@@ -1,0 +1,15 @@
+pkgbase = python-colcon-argcomplete
+	pkgdesc = An extension for colcon-core to provide command line completion using argcomplete.
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://pypi.org/project/colcon-argcomplete
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python-colcon-core
+	depends = python-argcomplete
+	source = https://files.pythonhosted.org/packages/9a/c6/14b2ec6eff251551d987b39ad6d7e5fe0426aeb22ef2c7584957449e820a/colcon-argcomplete-0.2.2.tar.gz
+	sha256sums = 0ea8014adf800cc0be0d9865a987430b903fb7c6569c087bb5b9618d7aa543ad
+
+pkgname = python-colcon-argcomplete
+
