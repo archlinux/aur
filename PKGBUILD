@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=cilium-git
-pkgver=1.3.0rc5.r113.g3834d0e0a
+pkgver=1.3.0rc5.r189.g3c1c2b614
 pkgrel=1
 pkgdesc="API-aware Networking and Security for Containers based on BPF"
 arch=('x86_64')
@@ -45,15 +45,6 @@ build() {
 
 	make -C daemon apply-bindata
 	make V=1 proxylib plugins bpf cilium daemon monitor cilium-health bugtool tools
-
-	export CC="/usr/bin/gcc"
-	export CXX="/usr/bin/g++"
-
-	cd envoy
-	make proxylib-hdrs
-
-	bazel clean
-	bazel build //:envoy --action_env=PATH="$PATH"
 }
 
 package() {
