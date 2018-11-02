@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-theme-mist-git
 	pkgdesc = A simple, elegant, minimal gnome-shell theme
-	pkgver = 21.ebf614c
+	pkgver = 43.be5d56c
 	pkgrel = 1
 	url = https://github.com/theRealPadster/Mist-theme.git
 	arch = any
