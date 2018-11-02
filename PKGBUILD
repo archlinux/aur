@@ -5,7 +5,7 @@
 
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
-pkgver=3.30.1+4+ga1268fe98
+pkgver=3.30.1+5+g905a90d9e
 pkgrel=1
 pkgdesc="Next generation desktop shell | Attempt to improve the performance by non-upstreamed patches"
 url="https://wiki.gnome.org/Projects/GnomeShell"
@@ -48,6 +48,10 @@ prepare() {
   # IconGrid: Keep icons reactive during pulse animation
   # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/261
   git cherry-pick 1acdff82 || bash
+
+  # js/ui: Use captured-event::instantaneous [performance] 
+  # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/276
+  git cherry-pick 5453f3dd
 
   # Move the plugin to our custom epiphany-only dir
   sed -i "s/'mozilla'/'epiphany'/g" meson.build
