@@ -34,6 +34,7 @@ build() {
 package() {
 	cd "$srcdir/$pkgname/build"
 	make DESTDIR="$pkgdir/" install
-        ln -s KittehPlayer $pkgdir/usr/bin/kittehplayer
+
+        ln -s /usr/bin/KittehPlayer $pkgdir/usr/bin/kittehplayer
 	chmod +x $pkgdir/usr/bin/kittehplayer
 }
