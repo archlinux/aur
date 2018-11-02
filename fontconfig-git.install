@@ -18,14 +18,12 @@ post_install() {
 
 _EOF
 
-  echo -n "updating font cache... "
-  /usr/bin/fc-cache -f
-  echo "done."
+  post_upgrade $1
 }
 
 post_upgrade() {
   echo -n "updating font cache... "
-  /usr/bin/fc-cache -f
+  /usr/bin/fc-cache -rs
   echo "done."
 }
 
