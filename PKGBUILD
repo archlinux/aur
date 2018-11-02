@@ -1,27 +1,28 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
+_downloadid='cabdbaac37bd4d1aabd8d7f9c9a40922'
+_referid='d01a5436c67d4fb1afe3e26b751b9d87'
+_srcurl="https://www.blackmagicdesign.com/api/register/us/download/${_downloadid}"
+
 pkgname=blackmagic-decklink-sdk
 pkgver=10.11.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Blackmagic DeckLink SDK'
 arch=('any')
 url='https://www.blackmagicdesign.com/support/family/capture-and-playback'
 license=('custom')
 provides=('decklink-sdk')
 conflicts=('decklink-sdk')
-source=('LICENSE')
-sha256sums=('cc90e53ac2ef2442d2d0adfe9214119baa31ec080e75c3b087365efdbccc23df')
-
-_srcfile="Blackmagic_DeckLink_SDK_${pkgver}.zip"
-_downloadid='cabdbaac37bd4d1aabd8d7f9c9a40922'
-_referid='d01a5436c67d4fb1afe3e26b751b9d87'
-_srcurl="https://www.blackmagicdesign.com/api/register/us/download/${_downloadid}"
-_expected_sha256sum='4b312e9f6925e95cba2e5ac597f48eaf09f7534cd29ea2d7a043b299d0afa2b6'
+source=("Blackmagic_DeckLink_SDK_${pkgver}.zip"::"$_srcurl"
+        'LICENSE')
+sha256sums=('4b312e9f6925e95cba2e5ac597f48eaf09f7534cd29ea2d7a043b299d0afa2b6'
+            'cc90e53ac2ef2442d2d0adfe9214119baa31ec080e75c3b087365efdbccc23df')
 
 _useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
                         AppleWebKit/537.36 (KHTML, like Gecko) \
-                        Chrome/69.0.3497.100 \
+                        Chrome/70.0.3538.77 \
                         Safari/537.36"
+
 _reqjson="{ \
     \"platform\": \"Linux\", \
     \"country\": \"us\", \
@@ -34,75 +35,44 @@ _reqjson="{ \
     \"hasAgreedToTerms\": true, \
     \"product\": \"Desktop Video ${pkgver} SDK\" \
 }"
-_useragent="$(printf '%s' "$_useragent" | sed 's/[[:space:]]\+/ /g')"
+
 _reqjson="$(  printf '%s' "$_reqjson"   | sed 's/[[:space:]]\+/ /g')"
+_useragent="$(printf '%s' "$_useragent" | sed 's/[[:space:]]\+/ /g')"
+_useragent_escaped="${_useragent// /\\ }"
 
-_exit_makepkg() {
-    printf '%s\n' "error: failed to ${1} ${_srcfile}"
-    exit 1
-}
-
-prepare() {
-    # check if decklink sdk zip file was already downloaded
-    if ! [ -f "../${_srcfile}" ] 
-    then
-        # download decklink sdk zip file from website
-        printf '%s\n' "  -> Downloading ${_srcfile} from website..."
-        curl \
-            -o "../${_srcfile}" \
-            -H 'Host: sw.blackmagicdesign.com' \
-            -H 'Upgrade-Insecure-Requests: 1' \
-            -H "$_useragent" \
-            -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8' \
-            -H 'Accept-Language: en-US,en;q=0.9' \
-            --compressed \
-            "$(curl \
-                -s \
-                -H 'Host: www.blackmagicdesign.com' \
-                -H 'Accept: application/json, text/plain, */*' \
-                -H 'Origin: https://www.blackmagicdesign.com' \
-                -H "$_useragent" \
-                -H 'Content-Type: application/json;charset=UTF-8' \
-                -H "Referer: https://www.blackmagicdesign.com/support/download/${_referid}/Linux" \
-                -H 'Accept-Encoding: gzip, deflate, br' \
-                -H 'Accept-Language: en-US,en;q=0.9' \
-                -H 'Authority: www.blackmagicdesign.com' \
-                -H 'Cookie: _ga=GA1.2.1849503966.1518103294; _gid=GA1.2.953840595.1518103294' \
-                --data-binary "$_reqjson" \
-                --compressed \
-                "$_srcurl" \
-            )" || _exit_makepkg 'download'
-    else
-        printf '%s\n' "  -> Found ${_srcfile}"
-    fi
-    
-    # check integrity of the decklink sdk zip file (file validation)
-    printf '%s\n' "  -> Validating ${_srcfile} with sha256sum..."
-    local _real_sha256sum="$(openssl dgst -sha256 "../${_srcfile}" || _exit_makepkg 'calculate SHA256 of')"
-    _real_sha256sum="${_real_sha256sum##* }"
-    printf '%s' "       ${_srcfile} ... "
-    if [ "$_expected_sha256sum" = "$_real_sha256sum" ] 
-    then
-        printf '%s\n' 'Passed'
-    else
-        printf '%s\n' 'FAILED'
-        exit 1
-    fi
-    
-    # create symbolic link of decklink sdk zip file in $srcdir
-    ln -sf "../${_srcfile}" "${srcdir}/${_srcfile}" || _exit_makepkg 'create symbolic link of'
-    
-    # extract decklink sdk zip file
-    printf '%s\n' "  -> Extracting ${_srcfile} with bsdtar..."
-    bsdtar -xf "${_srcfile}" || _exit_makepkg 'extract'
-}
+DLAGENTS=("https::/usr/bin/curl \
+              -gqb '' -C - --retry 3 --retry-delay 3 \
+              -H Host:\ sw.blackmagicdesign.com \
+              -H Upgrade-Insecure-Requests:\ 1 \
+              -H ${_useragent_escaped} \
+              -H Accept:\ text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8 \
+              -H Accept-Language:\ en-US,en;q=0.9 \
+              -o %o \
+              --compressed \
+              $(curl \
+                  -s \
+                  -H 'Host: www.blackmagicdesign.com' \
+                  -H 'Accept: application/json, text/plain, */*' \
+                  -H 'Origin: https://www.blackmagicdesign.com' \
+                  -H "$_useragent" \
+                  -H 'Content-Type: application/json;charset=UTF-8' \
+                  -H "Referer: https://www.blackmagicdesign.com/support/download/${_referid}/Linux" \
+                  -H 'Accept-Encoding: gzip, deflate, br' \
+                  -H 'Accept-Language: en-US,en;q=0.9' \
+                  -H 'Authority: www.blackmagicdesign.com' \
+                  -H 'Cookie: _ga=GA1.2.1849503966.1518103294; _gid=GA1.2.953840595.1518103294' \
+                  --data-binary "$_reqjson" \
+                  --compressed \
+                  "$_srcurl"
+              )"
+)
 
 package() {
     # directories creation
     mkdir -p "${pkgdir}/usr/include"
     mkdir -p "${pkgdir}/usr/share/doc/${pkgname}"
     
-    # includes
+    # headers
     cd "${srcdir}/Blackmagic DeckLink SDK ${pkgver}/Linux/include"
     install -D -m644 * "${pkgdir}/usr/include"
     
