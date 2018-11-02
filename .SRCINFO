@@ -1,0 +1,14 @@
+pkgbase = python-colcon-recursive-crawl
+	pkgdesc = An extension for colcon-core to recursively crawl for packages.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://pypi.org/project/colcon-recursive-crawl
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python-colcon-core
+	source = https://files.pythonhosted.org/packages/c3/f8/93df7ed8fb24c59b1550fdc19f13284b0a89ae01703f45ce516c0a3717dd/colcon-recursive-crawl-0.2.0.tar.gz
+	sha256sums = dc955c2ec55c5ef26fada9f456aa31afd2392fb76e3f19fcca0878a318c947bc
+
+pkgname = python-colcon-recursive-crawl
+
