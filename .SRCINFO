@@ -1,6 +1,6 @@
 pkgbase = diskus-bin
 	pkgdesc = A minimal, fast alternative to 'du -sh'
-	pkgver = 0.2.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/sharkdp/diskus
 	arch = x86_64
