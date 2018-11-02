@@ -5,7 +5,7 @@
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-poppler
-pkgver=0.70.1
+pkgver=0.71.0
 pkgrel=1
 pkgdesc="PDF rendering library based on xpdf 3.0 (mingw-w64)"
 arch=('any')
@@ -22,7 +22,7 @@ makedepends=('mingw-w64-cmake'
              'python')
 options=('!strip' 'staticlibs' '!buildflags')
 source=("https://poppler.freedesktop.org/poppler-${pkgver}.tar.xz")
-sha256sums=('66972047d9ef8162cc8c389d7e7698291dfc9f2b3e4ea9a9f08ae604107451bd')
+sha256sums=('badbecd2dddf63352fd85ec08a9c2ed122fdadacf2a34fcb4cc227c4d01f2cf9')
 
 prepare() {
   cd "${srcdir}/poppler-${pkgver}/utils"
