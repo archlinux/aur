@@ -11,14 +11,14 @@ arch=(x86_64)
 url="https://www.freedesktop.org/wiki/Software/fontconfig/"
 license=(custom)
 depends=(expat freetype2)
-makedepends=(git autoconf-archive gperf python-lxml python-six docbook-utils docbook-sgml
-             perl-sgmls texlive-formatsextra json-c)
+makedepends=(git autoconf-archive gperf python-lxml python-six json-c)
 conflicts=(fontconfig)
 provides=(fontconfig)
 install=fontconfig-git.install
 source=("git+https://anongit.freedesktop.org/git/fontconfig"
          fontconfig-git.hook)
-sha256sums=(SKIP)
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver() {
   cd fontconfig
@@ -38,15 +38,16 @@ build() {
 	  --with-xmldir=/etc/fonts \
 	  --localstatedir=/var \
 	  --disable-static \
+	  --disable-docs \
 	  --with-default-fonts=/usr/share/fonts \
 	  --with-add-fonts=/usr/local/share/fonts
   make
 }
 
-check() {
-	cd fontconfig
-	make -k check
-}
+#check() {
+#	cd fontconfig
+#	make -k check
+#}
 
 _install_conf() {
 	install -m644 "$1" "$pkgdir/etc/fonts/conf.avail"
