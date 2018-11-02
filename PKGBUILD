@@ -4,14 +4,14 @@
 
 pkgname=atlassian-plugin-sdk
 pkgver=6.3.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Atlassian plugin software developer kit"
 arch=('i686' 'x86_64')
 url="https://marketplace.atlassian.com/plugins/atlassian-plugin-sdk-tgz"
 license=('Apache License 2.0')
 source=("https://maven.atlassian.com/public/com/atlassian/amps/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=('c0da709fcbcceb315e07d070a327e124a1bf1fc68b83871900cc2fce9c3f77e4')
-depends=('jdk')
+depends=('java-environment')
 
 package() {
   cd "$pkgdir"
