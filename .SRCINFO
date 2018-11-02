@@ -1,7 +1,7 @@
 pkgbase = alva-git
 	pkgdesc = Create living prototypes with code components.
 	pkgver = v0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://meetalva.io
 	arch = i686
 	arch = x86_64

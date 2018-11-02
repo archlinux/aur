@@ -2,7 +2,7 @@
 _pkgname="alva"
 pkgname="${_pkgname}-git"
 pkgver=v0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Create living prototypes with code components."
 arch=("i686" "x86_64")
 url="https://meetalva.io"
