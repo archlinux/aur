@@ -1,14 +1,14 @@
 pkgbase = libmodule
 	pkgdesc = C linux library to build simple and modular projects
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/FedeDP/libmodule
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = cmake
-	source = libmodule-3.0.0.tar.gz::https://github.com/FedeDP/libmodule/archive/3.0.0.tar.gz
-	sha256sums = 325f405a13bd1d88008fa098a945b46dff3073bab2b1fc13724492d270e03979
+	source = libmodule-3.0.1.tar.gz::https://github.com/FedeDP/libmodule/archive/3.0.1.tar.gz
+	sha256sums = 219fc50182cf152337cd1ff6c520163542cc62daa12f2b92531e6d6b1cff8ece
 
 pkgname = libmodule
 
