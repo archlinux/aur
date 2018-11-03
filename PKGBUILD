@@ -4,7 +4,7 @@ pkgdesc="ROS - Collection of cmake/make build tools primarily for ecl developmen
 url='http://wiki.ros.org/ecl_build'
 
 pkgname='ros-indigo-ecl-build'
-pkgver='0.61.5'
+pkgver='0.61.18'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -25,9 +25,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="ecl_tools-release-release-indigo-ecl_build-${pkgver}-${_pkgver_patch}"
+_dir="ecl_tools-release-release-indigo-ecl_build"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/ecl_tools-release/archive/release/indigo/ecl_build/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('fbca4787ca08c4f35476ca7be6e1019f1760840c74c291b89eb9722113db0c33')
+sha256sums=('62d69691efa2eb8e41c569571f2f2c9c6c3e17dce8cf4603456843347aac6035')
 
 build() {
   # Use ROS environment variables
