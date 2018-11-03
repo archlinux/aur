@@ -1,0 +1,19 @@
+pkgbase = infnoise
+	pkgdesc = The world's easiest TRNG to get right
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/waywardgeek/infnoise
+	arch = x86_64
+	license = custom
+	depends = libftdi-compat
+	backup = etc/infnoise.conf
+	source = https://13-37.org/files/infnoise-0.3.0.tar.gz
+	source = https://13-37.org/files/infnoise-0.3.0.tar.gz.sig
+	source = https://github.com/13-37-org/infnoise/raw/0.3.0/LICENSE
+	validpgpkeys = 71AE099B262DC0B493E6EE71975DC25C4E730A3C
+	sha256sums = 7d10f0ea769da5b538983df2c1bf7188dc882bf12c4bf1c471f47ec17ba1ff71
+	sha256sums = SKIP
+	sha256sums = 36ffd9dc085d529a7e60e1276d73ae5a030b020313e6c5408593a6ae2af39673
+
+pkgname = infnoise
+
