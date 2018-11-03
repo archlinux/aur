@@ -5,7 +5,7 @@
 
 pkgname=activitywatch-bin
 pkgver='0.8.0b7'
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Log what you do on your computer. Simple, extensible, no third parties."
 arch=('x86_64')
@@ -37,10 +37,6 @@ package() {
     # Add .desktop file for autostart
     mkdir -p $pkgdir/etc/xdg/autostart
     cp activitywatch/aw-qt.desktop $pkgdir/etc/xdg/autostart
-
-    # Remove unneeded libs
-    # TODO: Move to CI scripts
-    rm -r $pkgdir/opt/activitywatch/pytz
 
     # These takes a lot of space, getting rid of them would be nice
     #rm $pkgdir/opt/activitywatch/libicu*.so*
