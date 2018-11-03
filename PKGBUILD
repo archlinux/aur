@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=curaengine-beta
-pkgver=3.5.1
+pkgver=3.6
 pkgrel=1
 pkgdesc="Engine for processing 3D models into 3D printing instruction for Ultimaker and other GCode based 3D printers."
 url="https://github.com/Ultimaker/CuraEngine"
@@ -13,7 +13,7 @@ depends=('arcus-beta')
 # Package polyclipping in the repos
 checkdepends=('cppunit')
 makedepends=('cmake' 'git')
-source=("git+https://github.com/Ultimaker/curaengine#branch=3.5")
+source=("git+https://github.com/Ultimaker/curaengine#branch=${pkgver}")
 conflicts=('curaengine' 'curaengine-git')
 sha256sums=('SKIP')
 
