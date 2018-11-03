@@ -3,14 +3,14 @@
 # Contributor: TingPing <tingping@tingping.se>
 
 pkgname=plex-media-player
-pkgver=2.20.0
-_gitrev=909
-_gitver=46413dd1
+pkgver=2.21.0
+_gitrev=914
+_gitver=4839cbf2
 _fullver="$pkgver.$_gitrev-$_gitver"
 _fullname="$pkgname-$_fullver"
-_web_buildid="78-ac41f92757f795"
+_web_buildid="80-af3977f757f795"
 _web_desktop_ver="3.71.1-757f795"
-_web_tv_ver="3.72.0-ac41f92"
+_web_tv_ver="3.74.0-af3977f"
 pkgrel=1
 pkgdesc='Next generation Plex Desktop Client'
 arch=('i686' 'x86_64' 'armv7h')
@@ -25,12 +25,12 @@ source=("$_fullname.tar.gz::https://github.com/plexinc/plex-media-player/archive
         'plex-media-player.desktop')
 noextract=("web-client-desktop-${_web_desktop_ver}.tar.xz"
            "web-client-tv-${_web_tv_ver}.tar.xz")
-sha512sums=('fc55f12de9a55520500a3da9da7a606280245dadd9d15e905e739abe0ff2f92bd50857e092fca79f819462bfab83127fe6a88f47d4945385d9462ba7fed60f45'
-            '74faac188d16b81468271f7e1012043c2718f393b2f567a8acd5e2d1f54e5e9935c5b227593228582d4f7e5395d6323e76211335635cc650f71c301e849ee053'
-            'b8f853fae015051c9a91fc66cdcf012af4a9fa3802a91d07e642d38b68ec40e55157eef8737fa7dcc3dcd2be7507abc8a3da69795f4f62277140ff2788ac4263'
-            'cd25b661d3708aa96055a5358d5b4e5b6d28ff8f08d2abef2e23c6bbad4469c7dc968073f9e6cddf51f425961b6dda537c994da5f2441a121dc7f546faf3adc9'
-            '3c8b62202c414f5a2413efc2c35c463ea1bf6b3f1bf0f3567f82c592b71abb17b7e9e121f666a0ff24bd66b5cdb17f5a10c5bf3a91eeaf526cd856822b2e1c84'
-            '5e73ef858565147481ce685e4392baf67fdf75505612cb33b73aba7deab507c317223a045c7dcec62175b2447e7d0d60ef9b28c8643f33d66ee292339551ce49'
+sha512sums=('241332bb3e7dd4c63ee0f4d3b7aedeeccd59d59f35ea43a61389ea186754d18d5272452a22294cf9ee7f79c024b9bf3cf61af8eaff2b2bb3f631696a538f4dd6'
+            '4e512a0516850070b4d36f10fe0a9e15d5480fd62482acd2a8f5f2dc9941b6328bb0ac9104ae6e4b31c85a0cd62660d8b7b75cda14d520018bf804d941c1917c'
+            'b3871d38bdb5e9afbced422d2ad126dfb3fe015e698d90f44b36f9c6a75de6bfae93df5c52f8a76783111a0ab96dc4c347ef456402b59745b2424d1cf035c31a'
+            '60474074a1143b29e847ea9e793d4d1ff8315b453302e8acdeebce0f1d8d2dead605c3871831e2ae9c0f2724e3ec8c57794569016f101aa2c0479c60768211d0'
+            'd3fffd4b89ddb31f9a8f58abfe18903d92562ba0483a56e73b583e7b1d2dc3ed3920ca706c14b1f2f851587ed449b722b1fb8c573cf6ede2506256a2f504f240'
+            '1311c07b14389279976f14966b205ecd15400a3932eb0443d23b8057462842cb67f54ada1df0116d5ced4bd44da034d057c450f1fa3e2c7883ab7db6547733fd'
             'd3dbd66be744f497e095eb118ea28180769c74b3e8a8d3554b1570a224bdcd66c0c1416a3baaa72e6fff5a63beda30d3ce953cd886a2f313a655fee5d8f26019')
 
 prepare() {
