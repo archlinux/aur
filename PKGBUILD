@@ -4,7 +4,7 @@ pkgdesc="ROS - Ecl frontend to a linear matrix package (currently eigen)."
 url='http://wiki.ros.org/ecl_linear_algebra'
 
 pkgname='ros-indigo-ecl-linear-algebra'
-pkgver='0.61.15'
+pkgver='0.61.18'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -41,7 +41,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ecl_core-release-release-indigo-ecl_linear_algebra-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/ecl_core-release/archive/release/indigo/ecl_linear_algebra/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('86ae7fb28af0523d7b73b9ac0d6b39f32ade1f4259979a79dc280bd9dee854de')
+sha256sums=('d2f52bec4ad934cf6aefa28345fd497a1321aba3263f44f0c2490e049c43c107')
 
 build() {
   # Use ROS environment variables
