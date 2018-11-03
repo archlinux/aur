@@ -6,15 +6,15 @@
 
 pkgbase=linux-lts-tomoyo
 _srcname=linux-4.14
-pkgver=4.14.67
+pkgver=4.14.78
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
-source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
+        https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz
         'config'         # the main kernel config file
         '60-linux.hook'  # pacman hook for depmod
         '90-linux.hook'  # pacman hook for initramfs regeneration
@@ -22,13 +22,13 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch'
         '0003-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch'
         )
-validpgpkeys=(
-              'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
+validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
-             )
+              )
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
-            '42c7ff27d7cefbf0b4e313c757db1f2cfa2d65fa22cbe908c24aafafc995bd5f'
+            'SKIP'
+            'd491f69f4075e514c5f2e8d520980a96066b6f5e087decff23c79a799ac199a2'
             'c645053c4525a1a70d5c10b52257ac136da7e9059b6a4a566a857a3d42046426'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
@@ -58,10 +58,10 @@ prepare() {
   cp -Tf ../config .config
 
   # Enable TOMOYO Linux
-  msg "Enabling TOMOYO Linux..."
+  msg2 "Enabling TOMOYO Linux..."
   sed -i -e 's,# CONFIG_SECURITY_TOMOYO is not set,CONFIG_SECURITY_TOMOYO=y\nCONFIG_SECURITY_TOMOYO_MAX_ACCEPT_ENTRY=2048\nCONFIG_SECURITY_TOMYO_MAX_AUDIT_LOG=1024\n# CONFIG_SECURITY_TOMOYO_OMIT_USERSPACE_LOADER is not set\nCONFIG_SECURITY_TOMOYO_POLICY_LOADER="/sbin/tomoyo-init"\nCONFIG_SECURITY_TOMOYO_ACTIVATION_TRIGGER="/usr/lib/systemd/systemd",' \
-      -i -e 's/CONFIG_DEFAULT_SECURITY_DAC=y/# CONFIG_DEFAULT_SECURITY_DAC is not set/' \
-      -i -e 's/CONFIG_DEFAULT_SECURITY_YAMA=y/# CONFIG_DEFAULT_SECURITY_YAMA is not set/' \
+      -i -e 's/CONFIG_DEFAULT_SECURITY_DAC=y/CONFIG_DEFAULT_SECURITY_TOMOYO=y/' \
+      -i -e 's/CONFIG_SECURITY_YAMA=y/# CONFIG_SECURITY_YAMA is not set/' \
       -i -e '/CONFIG_DEFAULT_SECURITY=""/ s,"","tomoyo",' ./.config
 
   if [ "${_kernelname}" != "" ]; then
