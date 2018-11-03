@@ -1,0 +1,26 @@
+diff --git a/include/ros/impl/duration.h b/include/ros/impl/duration.h
+index 371064f..cd55034 100644
+--- a/include/ros/impl/duration.h
++++ b/include/ros/impl/duration.h
+@@ -173,7 +173,7 @@ namespace ros {
+ #if defined(BOOST_DATE_TIME_HAS_NANOSECONDS)
+     return bt::seconds(sec) + bt::nanoseconds(nsec);
+ #else
+-    return bt::seconds(sec) + bt::microseconds(nsec/1000.0);
++    return bt::seconds(sec) + bt::microseconds(nsec / (int32_t) 1000);
+ #endif
+   }
+ }
+diff --git a/include/ros/impl/time.h b/include/ros/impl/time.h
+index d07737d..95814d7 100644
+--- a/include/ros/impl/time.h
++++ b/include/ros/impl/time.h
+@@ -167,7 +167,7 @@ namespace ros
+ #if defined(BOOST_DATE_TIME_HAS_NANOSECONDS)
+     return pt::from_time_t(sec) + pt::nanoseconds(nsec);
+ #else
+-    return pt::from_time_t(sec) + pt::microseconds(nsec/1000.0);
++    return pt::from_time_t(sec) + pt::microseconds(nsec / (int32_t) 1000);
+ #endif
+   }
+ 

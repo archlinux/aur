@@ -4,7 +4,7 @@ pkgdesc="ROS - Time and Duration implementations for C++ libraries, including ro
 url='http://ros.org/wiki/rostime'
 
 pkgname='ros-indigo-rostime'
-pkgver='0.5.7'
+pkgver='0.5.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -28,8 +28,17 @@ depends=(${ros_depends[@]}
 
 # Tarball version (faster download)
 _dir="roscpp_core-release-release-indigo-rostime-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/roscpp_core-release/archive/release/indigo/rostime/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('efa36dda7be798d9ebad0b64bdceedd24dd9d428ff738f904058cf172beb3c28')
+source=(
+  "${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/roscpp_core-release/archive/release/indigo/rostime/${pkgver}-${_pkgver_patch}.tar.gz"
+  'boost_time_type.patch'
+)
+sha256sums=('5b3d81114adf045b63178f6760258d4699eda0d84476b9ab6b9e01597a848ae1'
+            '17a351c4a9b2a8226bd1ec66d06657ada9b17384b9bd0ecc42aa9197cd1056c4')
+
+prepare () {
+  cd ${srcdir}/${_dir}
+  patch -Np1 -i ${srcdir}/boost_time_type.patch
+}
 
 build() {
   # Use ROS environment variables
