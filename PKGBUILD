@@ -2,54 +2,59 @@
 # Contributor: Martin Weinelt <hexa@darmstadt.ccc.de>
  
 appname=Quaternion
-pkgname=quaternion-git
-pkgver=0.0.5.r21.63efb78
-pkgrel=2
+pkgname=quaternion
+libname=libQMatrixClient
+_libname=libqmatrixclient
+pkgver=0.0.9.3
+_libqmatrixclient_pkgver=0.4.0
+pkgrel=1
 pkgdesc='Qt5-based IM client for the Matrix protocol'
-arch=('any')
 url='https://matrix.org/docs/projects/client/quaternion.html'
-license=('GPL3')
-depends=('qt5-base' 'qt5-declarative' 'qt5-quickcontrols')
-makedepends=('git' 'cmake')
-provides=('quaternion')
-conflicts=('quaternion')
-source=('git://github.com/QMatrixClient/Quaternion')
-md5sums=('SKIP')
-
-pkgver() {
-  cd $appname
-  echo "$(git describe --tags | sed 's/^v//; s/-/.r/; s/-g/./')"
-}
+arch=('i686' 'x86_64')
+license=(GPL3)
+depends=(qt5-declarative hicolor-icon-theme)
+makedepends=(cmake)
+provides=(quaternion)
+conflicts=(quaternion-git)
+source=('git://github.com/QMatrixClient/Quaternion'
+        'git://github.com/QMatrixClient/libqmatrixclient'
+)
+sha256sums=('SKIP'
+            'SKIP')
 
 prepare() {
-  cd $appname
-  git remote set-url origin https://github.com/QMatrixClient/Quaternion.git
-  git submodule update --init --recursive
+  cp -r ${_libname}/* ${srcdir}/${appname}/lib/
 }
- 
+
 build() {
-  mkdir $appname/build || true
-  cd $appname/build
-  cmake ..
-  make $MAKEFLAGS
+  mkdir ${appname}/build_dir -p
+  cd ${appname}/build_dir
+  cmake .. -DBUILD_SHARED_LIBS:BOOL=ON -DUSE_INTREE_LIBQMC=true
+  cmake --build . --target all
 }
  
 package() {
-  cd $appname
+  cd ${appname}
 
   # The binary
-  install -Dm755 "build/quaternion" -t "$pkgdir/usr/bin/"
+  install -Dm755 "build_dir/${pkgname}" -t "${pkgdir}/usr/bin/"
 
   # .desktop file
-  install -Dm644 "linux/quaternion.desktop" -t "$pkgdir/usr/share/applications/"
+  install -Dm644 "linux/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
 
   # Icons
-  install -Dm644 "icons/quaternion/16-apps-quaternion.png" -t "$pkgdir/usr/share/icons/hicolor/16x16/apps/"
-  install -Dm644 "icons/quaternion/22-apps-quaternion.png" -t "$pkgdir/usr/share/icons/hicolor/22x22/apps/"
-  install -Dm644 "icons/quaternion/32-apps-quaternion.png" -t "$pkgdir/usr/share/icons/hicolor/32x32/apps/"
-  install -Dm644 "icons/quaternion/48-apps-quaternion.png" -t "$pkgdir/usr/share/icons/hicolor/48x48/apps/"
-  install -Dm644 "icons/quaternion/64-apps-quaternion.png" -t "$pkgdir/usr/share/icons/hicolor/64x64/apps/"
-  install -Dm644 "icons/quaternion/128-apps-quaternion.png" -t "$pkgdir/usr/share/icons/hicolor/128x1128/apps/"
-  install -Dm644 "icons/quaternion/sources/quaternion.svg" -t "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
+  install -Dm644 "icons/quaternion/16-apps-quaternion.png" -t "${pkgdir}/usr/share/icons/hicolor/16x16/apps/"
+  install -Dm644 "icons/quaternion/22-apps-quaternion.png" -t "${pkgdir}/usr/share/icons/hicolor/22x22/apps/"
+  install -Dm644 "icons/quaternion/32-apps-quaternion.png" -t "${pkgdir}/usr/share/icons/hicolor/32x32/apps/"
+  install -Dm644 "icons/quaternion/48-apps-quaternion.png" -t "${pkgdir}/usr/share/icons/hicolor/48x48/apps/"
+  install -Dm644 "icons/quaternion/64-apps-quaternion.png" -t "${pkgdir}/usr/share/icons/hicolor/64x64/apps/"
+  install -Dm644 "icons/quaternion/128-apps-quaternion.png" -t "${pkgdir}/usr/share/icons/hicolor/128x128/apps/"
+  install -Dm644 "icons/quaternion/sources/quaternion.svg" -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps/"
+
+  # The lib
+  mkdir ${pkgdir}/usr/lib
+  mv build_dir/lib/${libname}.so.0.4.0 ${pkgdir}/usr/lib/
+  ln -s /usr/lib/${libname}.so.0.4.0 ${pkgdir}/usr/lib/${libname}.so.0
+  ln -s /usr/lib/${libname}.so.0.4.0 ${pkgdir}/usr/lib/${libname}.so
 }
 # vim:set ts=2 sw=2 et:
