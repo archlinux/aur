@@ -1,0 +1,15 @@
+pkgbase = gnome-theme-macos-mojave-meta
+	pkgdesc = Mojave gnome theme meta package
+	pkgver = v1
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/gnome-theme-macos-mojave-meta
+	arch = any
+	license = custom
+	depends = gnome-shell-theme-macos-mojave
+	depends = gtk-theme-macos-mojave
+	depends = gnome-mojave-timed-wallpaper
+	depends = macos-sierra-ct-icon-theme
+	depends = capitaine-cursors
+
+pkgname = gnome-theme-macos-mojave-meta
+
