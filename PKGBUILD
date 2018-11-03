@@ -7,7 +7,7 @@ pkgname='ros-indigo-pano-py'
 pkgver='2.3.3'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-indigo-roscpp
@@ -26,12 +26,25 @@ ros_depends=(ros-indigo-roscpp
   ros-indigo-pano-core
   ros-indigo-rospy
   ros-indigo-image-transport)
-depends=(${ros_depends[@]})
+depends=(
+  'opencv2-opt'
+  'python2-numpy'
+  ${ros_depends[@]}
+)
 
 _tag=release/indigo/pano_py/${pkgver}-${_pkgver_patch}
 _dir=pano_py
-source=("${_dir}"::"git+https://github.com/turtlebot-release/turtlebot_apps-release.git"#tag=${_tag})
-md5sums=('SKIP')
+source=(
+  "${_dir}"::"git+https://github.com/turtlebot-release/turtlebot_apps-release.git#tag=${_tag}"
+  'fix-opencv2-and-numpy-path.patch'
+)
+sha256sums=('SKIP'
+            'c787e445acbf53d2b546279d3cef2b77b978ff3082dad9f03cea4ea24bd60696')
+
+prepare () {
+  cd ${srcdir}/${_dir}
+  patch -Np1 -i ${srcdir}/fix-opencv2-and-numpy-path.patch
+}
 
 build() {
   # Use ROS environment variables

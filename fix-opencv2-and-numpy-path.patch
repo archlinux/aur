@@ -1,0 +1,34 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 96d0ef7d..c192b6b5 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,13 +1,20 @@
+ cmake_minimum_required(VERSION 2.8.3)
+ project(pano_py)
+ 
++set("OpenCV_DIR" "/opt/opencv2/share/opencv2")
++
+ # Load catkin and all dependencies required for this package
+ find_package(catkin REQUIRED COMPONENTS pano_core rospy roscpp std_msgs image_transport cv_bridge)
+ find_package(Boost REQUIRED COMPONENTS python)
+ find_package(PythonLibs REQUIRED)
+-find_package(OpenCV REQUIRED)
++find_package(OpenCV REQUIRED NO_DEFAULT_PATH)
++
++execute_process(
++  COMMAND "${PYTHON_EXECUTABLE}" -c
++  "from __future__ import print_function\ntry: import numpy; print(numpy.get_include(), end='')\nexcept:pass\n"
++  OUTPUT_VARIABLE __numpy_include_dir)
+ 
+-include_directories(include ${Boost_INCLUDE_DIR} ${catkin_INCLUDE_DIRS} ${PYTHON_INCLUDE_PATH} ${OpenCV_INCLUDE_DIRS})
++include_directories(include ${Boost_INCLUDE_DIR} ${catkin_INCLUDE_DIRS} ${PYTHON_INCLUDE_PATH} ${OpenCV_INCLUDE_DIRS} ${__numpy_include_dir})
+ 
+ add_subdirectory(src/pano_cv)
+ add_subdirectory(src/pano_py)
+@@ -30,4 +37,4 @@ catkin_add_env_hooks(15.ld_lib_path SHELLS bash tcsh zsh DIRECTORY ${CMAKE_CURRE
+ 
+ install(DIRECTORY include/${PROJECT_NAME}/
+         DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+-)
+\ No newline at end of file
++)

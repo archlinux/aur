@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-pano-py
 	pkgdesc = ROS - This is a python wraper around the pano_core library (I think).
 	pkgver = 2.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ros.org/wiki/pano_py
 	arch = any
 	license = BSD
@@ -15,6 +15,8 @@ pkgbase = ros-indigo-pano-py
 	makedepends = ros-indigo-rospy
 	makedepends = ros-indigo-catkin
 	makedepends = ros-indigo-image-transport
+	depends = opencv2-opt
+	depends = python2-numpy
 	depends = ros-indigo-roscpp
 	depends = ros-indigo-cv-bridge
 	depends = ros-indigo-std-msgs
@@ -22,7 +24,9 @@ pkgbase = ros-indigo-pano-py
 	depends = ros-indigo-rospy
 	depends = ros-indigo-image-transport
 	source = pano_py::git+https://github.com/turtlebot-release/turtlebot_apps-release.git#tag=release/indigo/pano_py/2.3.3-0
-	md5sums = SKIP
+	source = fix-opencv2-and-numpy-path.patch
+	sha256sums = SKIP
+	sha256sums = c787e445acbf53d2b546279d3cef2b77b978ff3082dad9f03cea4ea24bd60696
 
 pkgname = ros-indigo-pano-py
 
