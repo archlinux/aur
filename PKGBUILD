@@ -7,7 +7,7 @@ url="https://github.com/julthon/plymouth-theme-gdm-arch"
 license=("GPL3")
 arch=(any)
 depends=(plymouth)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/julthon/plymouth-theme-gdm-arch/releases/download/v1/plymouth-theme-gdm-arch_$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/julthon/plymouth-theme-gdm-arch/releases/download/$pkgver/plymouth-theme-gdm-arch_$pkgver.tar.gz")
 md5sums=('c132534052e07ae2163af7293fa77f1c')
 
 package() {
