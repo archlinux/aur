@@ -1,10 +1,10 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - Drivers for Orbbec Astra Devices."
-url='http://www.ros.org/'
+url='http://wiki.ros.org/astra_camera'
 
 pkgname='ros-indigo-astra-camera'
-pkgver='0.1.5'
+pkgver='0.2.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -30,7 +30,10 @@ ros_depends=(ros-indigo-nodelet
   ros-indigo-camera-info-manager
   ros-indigo-sensor-msgs
   ros-indigo-dynamic-reconfigure)
-depends=(${ros_depends[@]})
+depends=(
+  'python2-rospkg'
+  ${ros_depends[@]}
+)
 
 # Git version (e.g. for debugging)
 # _tag=release/indigo/astra_camera/${pkgver}-${_pkgver_patch}
@@ -40,8 +43,17 @@ depends=(${ros_depends[@]})
 
 # Tarball version (faster download)
 _dir="astra_camera-release-release-indigo-astra_camera-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-drivers-gbp/astra_camera-release/archive/release/indigo/astra_camera/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('d545c90340547f4795b1415fe1ec99f7868f0d034a50e342094e123a20a10042')
+source=(
+  "${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-drivers-gbp/astra_camera-release/archive/release/indigo/astra_camera/${pkgver}-${_pkgver_patch}.tar.gz"
+  'suppress-Werror.patch'
+)
+sha256sums=('1700497e30a060a7e04bd090a831766774db1d1fb585a0dce6f72bb62087b102'
+            '0e09baf68401460bc97a9f14075eaf352684e45d748d6f7dbbf75c712b10e257')
+
+prepare() {
+  cd ${srcdir}/${_dir}
+  patch -Np1 -i ${srcdir}/suppress-Werror.patch
+}
 
 build() {
   # Use ROS environment variables

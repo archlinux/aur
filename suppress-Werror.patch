@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c15e5db..fce479d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -42,7 +42,7 @@ ExternalProject_Add(astra_openni2
+   GIT_TAG orbbec_ros
+   CONFIGURE_COMMAND echo "no need to configure"
+   BUILD_IN_SOURCE 1
+-  BUILD_COMMAND make release FILTER=${obfilter}
++  BUILD_COMMAND make release FILTER=${obfilter} ALLOW_WARNINGS=1
+   INSTALL_DIR openni2
+   INSTALL_COMMAND tar -xjf <SOURCE_DIR>/Packaging/Final/OpenNI-Linux-2.3.tar.bz2 -C <INSTALL_DIR> --strip 1 && mkdir -p <INSTALL_DIR>/include && ln -fs <INSTALL_DIR>/Include <INSTALL_DIR>/include/openni2
+ )
