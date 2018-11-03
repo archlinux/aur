@@ -4,7 +4,7 @@ pkgdesc="ROS - Includes various supporting tools and utilities for c++ programmi
 url='http://wiki.ros.org/ecl_utilities'
 
 pkgname='ros-indigo-ecl-utilities'
-pkgver='0.61.15'
+pkgver='0.61.18'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -31,7 +31,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ecl_core-release-release-indigo-ecl_utilities-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/ecl_core-release/archive/release/indigo/ecl_utilities/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('613c35d7024fb5345c87089352f3fa533404c78cf71dc41762b7b7f1ee9b5ec4')
+sha256sums=('62a5e0f73f3face885abfbd59c8e2714b098bf5613c31bab064d3e13cc798025')
 
 build() {
   # Use ROS environment variables
