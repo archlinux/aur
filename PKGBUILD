@@ -1,7 +1,7 @@
 # Maintainer Paul Sajna <sajattack@gmail.com>
 
 pkgname='fern-wifi-cracker'
-pkgver='2.6'
+pkgver='2.7'
 pkgrel=1
 groups=('blackarch' 'blackarch-cracker' 'blackarch-wireless')
 pkgdesc='WEP, WPA wifi cracker for wireless penetration testing'
@@ -13,11 +13,11 @@ depends=('python2' 'python2-pyqt4' 'aircrack-ng' 'xterm' 'subversion' 'scapy'
 makedepends=('unzip')
 replaces=('fern-wifi-cracker-git')
 conflicts=('fern-wifi-cracker-git')
-source=("https://github.com/savio-code/fern-wifi-cracker/archive/2.6.zip")
+source=("https://github.com/savio-code/fern-wifi-cracker/archive/v$pkgver.zip")
 sha1sums=('SKIP')
 
 prepare() {
-  unzip $pkgver.zip
+  unzip v$pkgver.zip
   cd "$srcdir/$pkgname-$pkgver/Fern-Wifi-Cracker"
 }
 
