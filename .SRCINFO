@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-theme-macos-mojave
 	pkgdesc = Mojave-like theme for gnome-shell
 	pkgver = v1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.opendesktop.org/s/Gnome/p/1215571/
 	arch = any
 	depends = gnome-shell
