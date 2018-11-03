@@ -1,6 +1,6 @@
 pkgbase = aspell-git
 	pkgdesc = Free and Open Source spell checker
-	pkgver = 0.60.7.20110707.r19.gb2e2b25
+	pkgver = 0.60.7.rc1.r3.gb2e2b25
 	pkgrel = 1
 	url = http://aspell.net/
 	arch = i686
