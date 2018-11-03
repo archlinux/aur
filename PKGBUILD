@@ -5,7 +5,7 @@
 
 _gitname='pulseview'
 pkgname="${_gitname}-git"
-pkgver=0.3.0.r577.ga3110ca
+pkgver=0.3.0.r744.g0adee2d
 pkgrel=1
 pkgdesc="A Qt based logic analyzer GUI for sigrok. (git version)"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
@@ -20,7 +20,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
-  git describe --long | sed 's/^pulseview-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --exclude pulseview-unreleased --long | sed 's/^pulseview-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
