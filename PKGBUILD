@@ -4,7 +4,7 @@ pkgdesc="ROS - Interprocess mechanisms vary greatly across platforms - sysv, pos
 url='http://wiki.ros.org/ecl_ipc'
 
 pkgname='ros-indigo-ecl-ipc'
-pkgver='0.61.8'
+pkgver='0.61.18'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -39,7 +39,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ecl_core-release-release-indigo-ecl_ipc-${pkgver}-${_pkgver_patch}"
 source=("https://github.com/yujinrobot-release/ecl_core-release/archive/release/indigo/ecl_ipc/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('ca7bc0a0428748451a5beebf4816ca6c507818e314a0dad089e8b330bd303906')
+sha256sums=('02ff2af35772498a2fd86ed0c71c07014e22fc5e19f6d5eb074682e7aaab8485')
 
 build() {
   # Use ROS environment variables
