@@ -2,10 +2,11 @@
 # Contributor: Martin Weinelt <hexa@darmstadt.ccc.de>
  
 appname=Quaternion
-pkgname=quaternion
+_pkgname=quaternion
+pkgname=quaternion-git
 libname=libQMatrixClient
 _libname=libqmatrixclient
-pkgver=0.0.9.3
+pkgver=0.0.9.3.r23.fe88819
 _libqmatrixclient_pkgver=0.4.0
 pkgrel=1
 pkgdesc='Qt5-based IM client for the Matrix protocol'
@@ -22,6 +23,11 @@ source=('git://github.com/QMatrixClient/Quaternion'
 sha256sums=('SKIP'
             'SKIP')
 
+pkgver() {
+  cd $appname
+  echo "$(git describe --tags | sed 's/^v//; s/-/.r/; s/-g/./')"
+}
+
 prepare() {
   cp -r ${_libname}/* ${srcdir}/${appname}/lib/
 }
@@ -37,10 +43,10 @@ package() {
   cd ${appname}
 
   # The binary
-  install -Dm755 "build_dir/${pkgname}" -t "${pkgdir}/usr/bin/"
+  install -Dm755 "build_dir/${_pkgname}" -t "${pkgdir}/usr/bin/"
 
   # .desktop file
-  install -Dm644 "linux/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
+  install -Dm644 "linux/${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
 
   # Icons
   install -Dm644 "icons/quaternion/16-apps-quaternion.png" -t "${pkgdir}/usr/share/icons/hicolor/16x16/apps/"
