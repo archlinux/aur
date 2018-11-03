@@ -4,7 +4,7 @@ pkgdesc="ROS - This includes a suite of programs demoing various aspects of the 
 url='http://wiki.ros.org/ecl_core_apps'
 
 pkgname='ros-indigo-ecl-core-apps'
-pkgver='0.61.8'
+pkgver='0.61.18'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -61,7 +61,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ecl_core-release-release-indigo-ecl_core_apps-${pkgver}-${_pkgver_patch}"
 source=("https://github.com/yujinrobot-release/ecl_core-release/archive/release/indigo/ecl_core_apps/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('c7893f900aa3eb9a4f9be4ce8439efa54bbff30238a68c40f607b97cb413fad9')
+sha256sums=('9644c481fd4e050466f4044e47ec487b3350c1b999c1ff9772d132b27f65ca64')
 
 build() {
   # Use ROS environment variables
