@@ -4,7 +4,7 @@ pkgdesc="ROS - These tools inspect and describe your system with macros, types a
 url='http://wiki.ros.org/ecl_config'
 
 pkgname='ros-indigo-ecl-config'
-pkgver='0.61.6'
+pkgver='0.61.18'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,9 +27,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="ecl_lite-release-release-indigo-ecl_config-${pkgver}-${_pkgver_patch}"
+_dir="ecl_lite-release-release-indigo-ecl_config"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/ecl_lite-release/archive/release/indigo/ecl_config/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('9bfde34eae9c02f9de7331841ad10be82bd4a2ba803f83c2d12f18702f875f2a')
+sha256sums=('5d86ad1716b255e430ed30f2b15be8ab4bc081f4103e2861e21e7a80cdee93d5')
 
 build() {
   # Use ROS environment variables
