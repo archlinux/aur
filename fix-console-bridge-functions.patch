@@ -1,0 +1,188 @@
+diff --git a/src/buffer_core.cpp b/src/buffer_core.cpp
+index 6483ada..75b827d 100644
+--- a/src/buffer_core.cpp
++++ b/src/buffer_core.cpp
+@@ -123,7 +123,7 @@ bool BufferCore::warnFrameId(const char* function_name_arg, const std::string& f
+   {
+     std::stringstream ss;
+     ss << "Invalid argument passed to "<< function_name_arg <<" in tf2 frame_ids cannot be empty";
+-    logWarn("%s",ss.str().c_str());
++    CONSOLE_BRIDGE_logWarn("%s",ss.str().c_str());
+     return true;
+   }
+ 
+@@ -131,7 +131,7 @@ bool BufferCore::warnFrameId(const char* function_name_arg, const std::string& f
+   {
+     std::stringstream ss;
+     ss << "Invalid argument \"" << frame_id << "\" passed to "<< function_name_arg <<" in tf2 frame_ids cannot start with a '/' like: ";
+-    logWarn("%s",ss.str().c_str());
++    CONSOLE_BRIDGE_logWarn("%s",ss.str().c_str());
+     return true;
+   }
+ 
+@@ -218,26 +218,26 @@ bool BufferCore::setTransform(const geometry_msgs::TransformStamped& transform_i
+   bool error_exists = false;
+   if (stripped.child_frame_id == stripped.header.frame_id)
+   {
+-    logError("TF_SELF_TRANSFORM: Ignoring transform from authority \"%s\" with frame_id and child_frame_id  \"%s\" because they are the same",  authority.c_str(), stripped.child_frame_id.c_str());
++    CONSOLE_BRIDGE_logError("TF_SELF_TRANSFORM: Ignoring transform from authority \"%s\" with frame_id and child_frame_id  \"%s\" because they are the same",  authority.c_str(), stripped.child_frame_id.c_str());
+     error_exists = true;
+   }
+ 
+   if (stripped.child_frame_id == "")
+   {
+-    logError("TF_NO_CHILD_FRAME_ID: Ignoring transform from authority \"%s\" because child_frame_id not set ", authority.c_str());
++    CONSOLE_BRIDGE_logError("TF_NO_CHILD_FRAME_ID: Ignoring transform from authority \"%s\" because child_frame_id not set ", authority.c_str());
+     error_exists = true;
+   }
+ 
+   if (stripped.header.frame_id == "")
+   {
+-    logError("TF_NO_FRAME_ID: Ignoring transform with child_frame_id \"%s\"  from authority \"%s\" because frame_id not set", stripped.child_frame_id.c_str(), authority.c_str());
++    CONSOLE_BRIDGE_logError("TF_NO_FRAME_ID: Ignoring transform with child_frame_id \"%s\"  from authority \"%s\" because frame_id not set", stripped.child_frame_id.c_str(), authority.c_str());
+     error_exists = true;
+   }
+ 
+   if (std::isnan(stripped.transform.translation.x) || std::isnan(stripped.transform.translation.y) || std::isnan(stripped.transform.translation.z)||
+       std::isnan(stripped.transform.rotation.x) ||       std::isnan(stripped.transform.rotation.y) ||       std::isnan(stripped.transform.rotation.z) ||       std::isnan(stripped.transform.rotation.w))
+   {
+-    logError("TF_NAN_INPUT: Ignoring transform for child_frame_id \"%s\" from authority \"%s\" because of a nan value in the transform (%f %f %f) (%f %f %f %f)",
++    CONSOLE_BRIDGE_logError("TF_NAN_INPUT: Ignoring transform for child_frame_id \"%s\" from authority \"%s\" because of a nan value in the transform (%f %f %f) (%f %f %f %f)",
+               stripped.child_frame_id.c_str(), authority.c_str(),
+               stripped.transform.translation.x, stripped.transform.translation.y, stripped.transform.translation.z,
+               stripped.transform.rotation.x, stripped.transform.rotation.y, stripped.transform.rotation.z, stripped.transform.rotation.w
+@@ -252,7 +252,7 @@ bool BufferCore::setTransform(const geometry_msgs::TransformStamped& transform_i
+ 
+   if (!valid) 
+   {
+-    logError("TF_DENORMALIZED_QUATERNION: Ignoring transform for child_frame_id \"%s\" from authority \"%s\" because of an invalid quaternion in the transform (%f %f %f %f)",
++    CONSOLE_BRIDGE_logError("TF_DENORMALIZED_QUATERNION: Ignoring transform for child_frame_id \"%s\" from authority \"%s\" because of an invalid quaternion in the transform (%f %f %f %f)",
+              stripped.child_frame_id.c_str(), authority.c_str(),
+              stripped.transform.rotation.x, stripped.transform.rotation.y, stripped.transform.rotation.z, stripped.transform.rotation.w);
+     error_exists = true;
+@@ -274,7 +274,7 @@ bool BufferCore::setTransform(const geometry_msgs::TransformStamped& transform_i
+     }
+     else
+     {
+-      logWarn("TF_OLD_DATA ignoring data from the past for frame %s at time %g according to authority %s\nPossible reasons are listed at http://wiki.ros.org/tf/Errors%%20explained", stripped.child_frame_id.c_str(), stripped.header.stamp.toSec(), authority.c_str());
++      CONSOLE_BRIDGE_logWarn("TF_OLD_DATA ignoring data from the past for frame %s at time %g according to authority %s\nPossible reasons are listed at http://wiki.ros.org/tf/Errors%%20explained", stripped.child_frame_id.c_str(), stripped.header.stamp.toSec(), authority.c_str());
+       return false;
+     }
+   }
+@@ -633,7 +633,7 @@ geometry_msgs::TransformStamped BufferCore::lookupTransform(const std::string& t
+     case tf2_msgs::TF2Error::LOOKUP_ERROR:
+       throw LookupException(error_string);
+     default:
+-      logError("Unknown error code: %d", retval);
++      CONSOLE_BRIDGE_logError("Unknown error code: %d", retval);
+       assert(0);
+     }
+   }
+@@ -1604,7 +1604,7 @@ void BufferCore::_chainAsVector(const std::string & target_frame, ros::Time targ
+     case tf2_msgs::TF2Error::LOOKUP_ERROR:
+       throw LookupException(error_string);
+     default:
+-      logError("Unknown error code: %d", retval);
++      CONSOLE_BRIDGE_logError("Unknown error code: %d", retval);
+       assert(0);
+     }
+   }
+@@ -1623,7 +1623,7 @@ void BufferCore::_chainAsVector(const std::string & target_frame, ros::Time targ
+     case tf2_msgs::TF2Error::LOOKUP_ERROR:
+       throw LookupException(error_string);
+     default:
+-      logError("Unknown error code: %d", retval);
++      CONSOLE_BRIDGE_logError("Unknown error code: %d", retval);
+       assert(0);
+     }
+   }
+diff --git a/test/speed_test.cpp b/test/speed_test.cpp
+index 30f43d4..c63ca18 100644
+--- a/test/speed_test.cpp
++++ b/test/speed_test.cpp
+@@ -105,11 +105,11 @@ int main(int argc, char** argv)
+ 
+   std::string v_frame0 = boost::lexical_cast<std::string>(num_levels - 1);
+   std::string v_frame1 = boost::lexical_cast<std::string>(num_levels/2 - 1);
+-  logInform("%s to %s", v_frame0.c_str(), v_frame1.c_str());
++  CONSOLE_BRIDGE_logInform("%s to %s", v_frame0.c_str(), v_frame1.c_str());
+   geometry_msgs::TransformStamped out_t;
+ 
+   const uint32_t count = 1000000;
+-  logInform("Doing %d %d-level %lf-interval tests", count, num_levels, time_interval);
++  CONSOLE_BRIDGE_logInform("Doing %d %d-level %lf-interval tests", count, num_levels, time_interval);
+ 
+ #if 01
+   {
+@@ -121,7 +121,7 @@ int main(int argc, char** argv)
+     ros::WallTime end = ros::WallTime::now();
+     ros::WallDuration dur = end - start;
+     //ROS_INFO_STREAM(out_t);
+-    logInform("lookupTransform at Time(0) took %f for an average of %.9f", dur.toSec(), dur.toSec() / (double)count);
++    CONSOLE_BRIDGE_logInform("lookupTransform at Time(0) took %f for an average of %.9f", dur.toSec(), dur.toSec() / (double)count);
+   }
+ #endif
+ 
+@@ -135,7 +135,7 @@ int main(int argc, char** argv)
+     ros::WallTime end = ros::WallTime::now();
+     ros::WallDuration dur = end - start;
+     //ROS_INFO_STREAM(out_t);
+-    logInform("lookupTransform at Time(1) took %f for an average of %.9f", dur.toSec(), dur.toSec() / (double)count);
++    CONSOLE_BRIDGE_logInform("lookupTransform at Time(1) took %f for an average of %.9f", dur.toSec(), dur.toSec() / (double)count);
+   }
+ #endif
+ 
+@@ -149,7 +149,7 @@ int main(int argc, char** argv)
+     ros::WallTime end = ros::WallTime::now();
+     ros::WallDuration dur = end - start;
+     //ROS_INFO_STREAM(out_t);
+-    logInform("lookupTransform at Time(1.5) took %f for an average of %.9f", dur.toSec(), dur.toSec() / (double)count);
++    CONSOLE_BRIDGE_logInform("lookupTransform at Time(1.5) took %f for an average of %.9f", dur.toSec(), dur.toSec() / (double)count);
+   }
+ #endif
+ 
+@@ -163,7 +163,7 @@ int main(int argc, char** argv)
+     ros::WallTime end = ros::WallTime::now();
+     ros::WallDuration dur = end - start;
+     //ROS_INFO_STREAM(out_t);
+-    logInform("lookupTransform at Time(2) took %f for an average of %.9f", dur.toSec(), dur.toSec() / (double)count);
++    CONSOLE_BRIDGE_logInform("lookupTransform at Time(2) took %f for an average of %.9f", dur.toSec(), dur.toSec() / (double)count);
+   }
+ #endif
+ 
+@@ -177,7 +177,7 @@ int main(int argc, char** argv)
+     ros::WallTime end = ros::WallTime::now();
+     ros::WallDuration dur = end - start;
+     //ROS_INFO_STREAM(out_t);
+-    logInform("canTransform at Time(0) took %f for an average of %.9f", dur.toSec(), dur.toSec() / (double)count);
++    CONSOLE_BRIDGE_logInform("canTransform at Time(0) took %f for an average of %.9f", dur.toSec(), dur.toSec() / (double)count);
+   }
+ #endif
+ 
+@@ -191,7 +191,7 @@ int main(int argc, char** argv)
+     ros::WallTime end = ros::WallTime::now();
+     ros::WallDuration dur = end - start;
+     //ROS_INFO_STREAM(out_t);
+-    logInform("canTransform at Time(1) took %f for an average of %.9f", dur.toSec(), dur.toSec() / (double)count);
++    CONSOLE_BRIDGE_logInform("canTransform at Time(1) took %f for an average of %.9f", dur.toSec(), dur.toSec() / (double)count);
+   }
+ #endif
+ 
+@@ -205,7 +205,7 @@ int main(int argc, char** argv)
+     ros::WallTime end = ros::WallTime::now();
+     ros::WallDuration dur = end - start;
+     //ROS_INFO_STREAM(out_t);
+-    logInform("canTransform at Time(1.5) took %f for an average of %.9f", dur.toSec(), dur.toSec() / (double)count);
++    CONSOLE_BRIDGE_logInform("canTransform at Time(1.5) took %f for an average of %.9f", dur.toSec(), dur.toSec() / (double)count);
+   }
+ #endif
+ 
+@@ -219,7 +219,7 @@ int main(int argc, char** argv)
+     ros::WallTime end = ros::WallTime::now();
+     ros::WallDuration dur = end - start;
+     //ROS_INFO_STREAM(out_t);
+-    logInform("canTransform at Time(2) took %f for an average of %.9f", dur.toSec(), dur.toSec() / (double)count);
++    CONSOLE_BRIDGE_logInform("canTransform at Time(2) took %f for an average of %.9f", dur.toSec(), dur.toSec() / (double)count);
+   }
+ #endif
+ }

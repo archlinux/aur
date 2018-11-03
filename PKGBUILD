@@ -1,13 +1,15 @@
+# Maintainer: jerry73204 <jerry73204 at gmail dot com>
+
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - tf2 is the second generation of the transform library, which lets the user keep track of multiple coordinate frames over time."
 url='http://www.ros.org/wiki/tf2'
 
 pkgname='ros-indigo-tf2'
-pkgver='0.5.13'
+pkgver='0.5.18'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-tf2-msgs
@@ -32,8 +34,17 @@ depends=(${ros_depends[@]}
 
 # Tarball version (faster download)
 _dir="geometry2-release-release-indigo-tf2-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry2-release/archive/release/indigo/tf2/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('0aa5b32529b38fa691db298b88bd47da690ad0b05cabe62c86c65e675be49db7')
+source=(
+  "${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry2-release/archive/release/indigo/tf2/${pkgver}-${_pkgver_patch}.tar.gz"
+  'fix-console-bridge-functions.patch'
+)
+sha256sums=('dafdac24d8e97c3034f9b41aa9b60e00f630c7f4df876e718ff51fef011bbde3'
+            '7c5529504ffbc014698e3d1d8c9e1999520852bbb82e6cbd3807a3b7fc9db415')
+
+prepare () {
+  cd ${srcdir}/${_dir}
+  patch -Np1 -i ${srcdir}/fix-console-bridge-functions.patch
+}
 
 build() {
   # Use ROS environment variables
