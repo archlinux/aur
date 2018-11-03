@@ -1,0 +1,4 @@
+*.pkg*
+nadeshiko-*.tar.gz
+/pkg/
+/src/
