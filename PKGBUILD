@@ -4,7 +4,7 @@ pkgdesc="ROS - Color codes for ansii consoles."
 url='http://wiki.ros.org/ecl_console'
 
 pkgname='ros-indigo-ecl-console'
-pkgver='0.61.4'
+pkgver='0.61.18'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -29,9 +29,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="ecl_lite-release-release-indigo-ecl_console-${pkgver}-${_pkgver_patch}"
+_dir="ecl_lite-release-release-indigo-ecl_console"
 source=("https://github.com/yujinrobot-release/ecl_lite-release/archive/release/indigo/ecl_console/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('7b85f1775901a9e6e0c9da9223ad4e9e391e05f544c5c23e78856b21c72a0e51')
+sha256sums=('1f258110745d78625e13d2db22280f29a6cf8c01a10868ab12bdcd58e8532761')
 
 build() {
   # Use ROS environment variables
