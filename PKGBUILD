@@ -2,7 +2,7 @@
 
 _gitname=shapecorners
 pkgname=kwin-effect-shapecorners-git
-pkgver=20180829.4c01369
+pkgver=20181003.1fc34a4
 pkgrel=1
 pkgdesc='KWin effect to round corners of windows.'
 arch=('any')
