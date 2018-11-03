@@ -1,6 +1,6 @@
 pkgbase = fern-wifi-cracker
 	pkgdesc = WEP, WPA wifi cracker for wireless penetration testing
-	pkgver = 2.6
+	pkgver = 2.7
 	pkgrel = 1
 	url = https://github.com/savio-code/fern-wifi-cracker
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = fern-wifi-cracker
 	depends = gksu
 	conflicts = fern-wifi-cracker-git
 	replaces = fern-wifi-cracker-git
-	source = https://github.com/savio-code/fern-wifi-cracker/archive/2.6.zip
+	source = https://github.com/savio-code/fern-wifi-cracker/archive/v2.7.zip
 	sha1sums = SKIP
 
 pkgname = fern-wifi-cracker
