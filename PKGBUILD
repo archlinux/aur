@@ -4,7 +4,7 @@ pkgdesc="ROS - This is a set of tools for recording from and playing back ROS me
 url='http://www.ros.org/'
 
 pkgname='ros-indigo-rosbag-storage'
-pkgver='1.11.19'
+pkgver='1.11.21'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -40,8 +40,17 @@ depends=(${ros_depends[@]}
 
 # Tarball version (faster download)
 _dir="ros_comm-release-release-indigo-rosbag_storage-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/indigo/rosbag_storage/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('70358a5ac70ec401b1c4ee681a3f1e7d7c3c72d874d459a563505a4471bb193b')
+source=(
+  "${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/indigo/rosbag_storage/${pkgver}-${_pkgver_patch}.tar.gz"
+  'fix-console-bridge-functions.patch'
+)
+sha256sums=('494619a8a8656bc5a0e85c7dcf605c22aa76f2d107e440180baf450a8b9c26e2'
+            '714778aab69b69992819217898447628ac92b6efc22c6bc5d5e90a5907683f8e')
+
+prepare () {
+  cd ${srcdir}/${_dir}
+  patch -Np1 -i ${srcdir}/fix-console-bridge-functions.patch
+}
 
 build() {
   # Use ROS environment variables
