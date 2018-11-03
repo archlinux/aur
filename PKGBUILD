@@ -33,9 +33,18 @@ options+=('staticlibs')
 _srcdir="${pkgname%-lb}-${pkgver}"
 source=(
   "http://gdlp01.c-wss.com/gds/${_dl}/linux-UFRII-drv-v${_pkgver//\./}-uken.tar.gz"
+  '0000-cgnplp-po-Makefile-quote-spaces.patch'
+  '0002-c3plmod_ipc-Makefile-quote-spaces.patch'
 )
-sha256sums=('a5bf2c2d53049ad64acf2ed8b6dc954ff261c4b996ce1cc81471e5baaf5e40cd')
-sha512sums=('c8b2abb2d0e9ccf972241dda5154c0ddd1ba9cfe6c721c242c40c90cf29e8d0b2c6a559907318cd191232f699a42425cc4148aebcaab6aa111f1cb5439777ce7')
+md5sums=('a613792136de44958a9953814ef0e6b6'
+         '638b9668916f5973df0dba0526ba803a'
+         'd3484478d650132ab6cf5f0a820b9286')
+sha256sums=('a5bf2c2d53049ad64acf2ed8b6dc954ff261c4b996ce1cc81471e5baaf5e40cd'
+            'b2e4185c66d42facb57783d3d4b7d571b826b8af23d66f60574e0604b3bfd0b7'
+            '2a769d95f443ce6bbb4b52a2d1819a7dcacf855ac38a21fea056941bdf3f4b72')
+sha512sums=('c8b2abb2d0e9ccf972241dda5154c0ddd1ba9cfe6c721c242c40c90cf29e8d0b2c6a559907318cd191232f699a42425cc4148aebcaab6aa111f1cb5439777ce7'
+            'cc24afbc841125dc3556ada8fa2fc9b432f9b648efe18f0f6c659fdf916fe22d80f5524340877696e896d7f4a00206ba54c89943290c08377cbfaa6c9569fc00'
+            '1f98bf1341e2ed188d48640c49aef5209564ad9249b78d44ee53378c4cb5a4153ddbe53813523e2790c4adb314cd9047364e147dfa659d981f0f7d657a0d34fc')
 
 prepare() {
   set -u
@@ -80,6 +89,7 @@ prepare() {
       -e '# ln -f hides problems so should be avoided' \
       -e 's:ln -sf :ln -s :g' \
     > 'make.install.Arch'
+
   set +u
 }
 
@@ -109,8 +119,27 @@ build() {
 
 package() {
   set -u
-
   cd "${_srcdir}"
+
+  # Fix a Makefile space quoting bug https://bbs.archlinux.org/viewtopic.php?id=241671
+  # diff -pNau5 'cndrvcups-common-4.00/cngplp/po/Makefile'{.orig,} > '0000-cgnplp-po-Makefile-quote-spaces.patch'
+  if [ ! -s 'cngplp/po/Makefile.orig' ]; then
+    patch -Nbup1 -i "${srcdir}/0000-cgnplp-po-Makefile-quote-spaces.patch"
+  fi
+
+  # Fix a libtool space quoting bug
+  sed -e '/^\tfunc_show_eval.* \\\$destfile/ s:\\\$destfile:\\"&\\":g' \
+      -e '/^\s\+func_show_eval.* \\\$oldlib/ s:\\\$oldlib:\\"&\\":g' \
+      -e '# Not sure why single quote works here.' \
+      -e '/^old_postinstall_cmds=.* \\\$oldlib/ s:\\\$oldlib:'"'&':g" \
+      -e '/^old_postinstall_cmds=.* \\\$tool_oldlib/ s:\\\$tool_oldlib:'"'&':g" \
+    -i */libtool
+
+  # Fix a Makefile space quoting bug
+  # diff -pNau5 'cndrvcups-common-4.00/c3plmod_ipc/Makefile'{.orig,} > '0002-c3plmod_ipc-Makefile-quote-spaces.patch'
+  if [ ! -s 'c3plmod_ipc/Makefile.orig' ]; then
+    patch -Nbup1 -i "${srcdir}/0002-c3plmod_ipc-Makefile-quote-spaces.patch"
+  fi
 
   local _vars; _setvars
   env "${_vars[@]}" \
