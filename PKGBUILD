@@ -3,7 +3,7 @@
 _themename=arch-solarized
 _pkgname="plymouth-theme-${_themename}"
 pkgname="${_pkgname}-git"
-pkgver=r1.edab46c
+pkgver=33f0027
 pkgrel=1
 pkgdesc='A Plymouth theme with a solarized-dark arch linux logo.'
 arch=('any')
