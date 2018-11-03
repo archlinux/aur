@@ -29,9 +29,7 @@ optdepends=('dnf: build Fedora or Mageia images'
             # I don’t understand whether ovmf or edk2-ovmf is needed… let’s point to both for now
             'ovmf: run bootable images in QEMU'
             'edk2-ovmf: run bootable images in QEMU'
-            # ditto for qemu and qemu-kvm
             'qemu: run bootable images in QEMU'
-            'qemu-kvm: run bootable images in QEMU'
             'sbsigntools: sign EFI binaries for UEFI SecureBoot')
 provides=('mkosi')
 conflicts=('mkosi')
