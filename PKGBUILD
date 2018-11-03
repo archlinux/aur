@@ -4,7 +4,7 @@ pkgdesc="ROS - The nodelet package is designed to provide a way to run multiple 
 url='http://ros.org/wiki/nodelet'
 
 pkgname='ros-indigo-nodelet'
-pkgver='1.9.4'
+pkgver='1.9.16'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -43,9 +43,9 @@ depends=(${ros_depends[@]}
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="nodelet_core-release-release-indigo-nodelet-${pkgver}-${_pkgver_patch}"
+_dir="nodelet_core-release-release-indigo-nodelet"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/nodelet_core-release/archive/release/indigo/nodelet/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('ab3dacbfd6bae9ec82ec233a6fd745401e699dfe35eba9821b7ef691271d1ce8')
+sha256sums=('9256013c9d0c5c101418f08fd82a0bc725b9940df9bdebdb397c638fd3f0d7e5')
 
 build() {
   # Use ROS environment variables
