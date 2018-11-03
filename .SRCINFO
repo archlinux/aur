@@ -1,0 +1,15 @@
+pkgbase = gtk-theme-macos-mojave
+	pkgdesc = Mojave-like theme for gtk2/gtk3
+	pkgver = v1
+	pkgrel = 1
+	url = https://github.com/julthon/mojave-gtk-theme
+	arch = any
+	license = GPL2
+	depends = gtk3
+	depends = gtk-engine-murrine
+	depends = gnome-shell>=3.30
+	source = gtk-theme-macos-mojave-v1.tar.gz::https://github.com/julthon/gtk-theme-macos-mojave/releases/download/v1/gtk-theme-macos-mojave_v1.tar.gz
+	md5sums = 09ef1c28d3af4ef103b88d2f821b14ca
+
+pkgname = gtk-theme-macos-mojave
+
