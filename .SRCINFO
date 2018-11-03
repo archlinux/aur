@@ -1,7 +1,7 @@
 pkgbase = elektra
 	pkgdesc = A universal hierarchical configuration store
 	pkgver = 0.8.24
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.libelektra.org
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = elektra
 	makedepends = docbook-xsl
 	makedepends = cmake
 	makedepends = doxygen
+	makedepends = git
 	depends = yajl
 	depends = qt5-base
 	depends = python

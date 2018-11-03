@@ -3,7 +3,7 @@
 
 pkgname=elektra
 pkgver=0.8.24
-pkgrel=1
+pkgrel=2
 pkgdesc="A universal hierarchical configuration store"
 url="https://www.libelektra.org"
 license=('custom:BSD')
@@ -13,7 +13,7 @@ optdepends=('ruby: for ruby bindings'
 	    'python2: for python2-bindings'
 	    'xerces-c: for python2-bindings'
 	    'lua: for lua bindings')
-makedepends=('docbook-xsl' 'cmake' 'doxygen')
+makedepends=('docbook-xsl' 'cmake' 'doxygen' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ElektraInitiative/libelektra/archive/$pkgver.tar.gz")
 sha256sums=('35efad1e024acd2f7d9a85a42f308dd3cea01b70beec7ec8ebe0176b5a218ba3')
 
