@@ -9,7 +9,7 @@ url='https://github.com/dpiparo/vdt'
 license=('LGPL3')
 depends=('glibc')
 makedepends=('cmake' 'git' 'python')
-source=("git+git://github.com/dpiparo/vdt.git#tag=v${pkgver}")
+source=("git+https://github.com/dpiparo/vdt.git#tag=v${pkgver}")
 md5sums=('SKIP')
 
 build() {
