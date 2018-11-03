@@ -4,7 +4,7 @@ pkgdesc="ROS - Tools and utilities for ecl development."
 url='http://www.ros.org/wiki/ecl_tools'
 
 pkgname='ros-indigo-ecl-tools'
-pkgver='0.61.2'
+pkgver='0.61.18'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -25,9 +25,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="ecl_tools-release-release-indigo-ecl_tools-${pkgver}-${_pkgver_patch}"
+_dir="ecl_tools-release-release-indigo-ecl_tools"
 source=("https://github.com/yujinrobot-release/ecl_tools-release/archive/release/indigo/ecl_tools/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('6af8aeaf04f81d003665347e3e26317a9ad7443bc322136a65a241b4b3a1e460')
+sha256sums=('7486fb3d56394b262386982e0e2a1573b6791966877e5d5984ae6307bb44458b')
 
 build() {
   # Use ROS environment variables
