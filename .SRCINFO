@@ -1,15 +1,21 @@
 pkgbase = cdcover
-	pkgdesc = cdcover allows the creation of inlay-sheets for cd-cases and dvd's
+	pkgdesc = Create CD/DVD jewel case inlets
 	pkgver = 0.7.4
-	pkgrel = 6
+	pkgrel = 7
 	url = http://cdcover.sourceforge.net
-	install = cdcover.install
 	arch = x86_64
-	license = GPL
+	license = GPL2
 	depends = python2
 	depends = tk
-	source = http://downloads.sourceforge.net/sourceforge/cdcover/cdcover-0.7.4.tar.gz
-	md5sums = ab54e927e1c2f9210062ae9425cea669
+	depends = gv
+	depends = cd-discid
+	depends = cddb-py
+	source = https://downloads.sourceforge.net/sourceforge/cdcover/cdcover-0.7.4.tar.gz
+	source = cdcover.desktop
+	source = cdcover.png
+	sha1sums = 5f796c26c6d6131ee176d70f682ce11c216662b2
+	sha1sums = 367130014fb1978c4b48285ac7ada760d7a14563
+	sha1sums = 5807c278c96c0071b74e4005045a5d40cafcc375
 
 pkgname = cdcover
 

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=cdcover
+Comment=Create CD/DVD jewel case inserts
+Exec=/usr/bin/cdcover
+Icon=/usr/share/icons/hicolor/48x48/apps/cdcover.png
+Terminal=false
+Type=Application
+Categories=Application;AudioVideo;
