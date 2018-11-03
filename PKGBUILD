@@ -1,13 +1,14 @@
-# Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
+# Maintainer: Aleksandar Trifunović <akstrfn at gmail dot com>
+# Contributor: Martin Sandsmark <martin.sandsmark@kde.org>
 
 pkgname=abseil-cpp-git
-pkgver=r180.8f612eb
+_pkgname="${pkgname%-git}"
+pkgver=r268.f951790
 pkgrel=1
 pkgdesc='An open-source collection of C++ code to augment the C++ standard library'
 arch=('i686' 'x86_64')
 url='https://github.com/abseil/abseil-cpp'
 license=('LGPL')
-depends=()
 makedepends=('cmake' 'git')
 conflicts=(abseil-cpp)
 provides=(abseil-cpp)
@@ -15,26 +16,40 @@ source=('git+https://github.com/abseil/abseil-cpp.git')
 md5sums=('SKIP')
 
 pkgver() {
-    cd abseil-cpp
+    cd "$_pkgname"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-    mkdir -p build
+    cd "$_pkgname"
+    cmake -H. -Bbuild \
+        -DCMAKE_C_FLAGS:STRING="${CFLAGS}" \
+        -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS}" \
+        -DCMAKE_EXE_LINKER_FLAGS:STRING="${LDFLAGS}" \
+        -DCMAKE_INSTALL_LIBDIR=lib \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DABSL_RUN_TESTS=ON \
+        -DABSL_USE_GOOGLETEST_HEAD=ON
 }
 
 build() {
-    cd build
-    cmake ../abseil-cpp
-    make
+    cd "$_pkgname"
+    cmake --build build
+}
+
+check() {
+    cd "$_pkgname"
+    cmake --build build -- test ARGS="$MAKEFLAGS"
 }
 
 package() {
-    LIBS=('algorithm' 'base' 'container' 'debugging' 'memory' 'meta' 'numeric' 'strings' 'synchronization' 'time' 'types' 'utility')
-    mkdir -p "${pkgdir}/usr/lib/"
-    for LIB in "${LIBS[@]}"; do
-        mkdir -p "${pkgdir}/usr/include/absl/${LIB}"
-        install -m644 build/absl/${LIB}/*.a "${pkgdir}/usr/lib/"
-        install -m644 abseil-cpp/absl/${LIB}/*.h "${pkgdir}/usr/include/absl/${LIB}"
-    done
+    cd "$_pkgname"
+
+    mkdir -p "$pkgdir/usr/include"
+    cp -a absl "$pkgdir/usr/include/absl"
+    mkdir "${pkgdir}/usr/lib/"
+    find build/absl -name "*.a" -exec cp {} "${pkgdir}/usr/lib" \;
+
+    # cmake --build build -- DESTDIR="$pkgdir" install
 }
