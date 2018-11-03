@@ -1,13 +1,13 @@
 pkgbase = gnome-mojave-timed-wallpaper
 	pkgdesc = Gnome time based mojave wallpaper
-	pkgver = v2
+	pkgver = v3
 	pkgrel = 1
 	url = https://github.com/julthon/gnome-mojave-timed-wallpaper
 	arch = any
 	depends = gnome-shell
 	depends = gnome-backgrounds
-	source = gnome-mojave-timed-wallpaper-v2.tar.gz::https://github.com/julthon/gnome-mojave-timed-wallpaper/releases/download/v2/gnome-mojave-timed-wallpaper_v2.tar.gz
-	md5sums = 1ffc2b56f4a9c332c3c6d575c11e00dc
+	source = gnome-mojave-timed-wallpaper-v3.tar.gz::https://github.com/julthon/gnome-mojave-timed-wallpaper/releases/download/v3/gnome-mojave-timed-wallpaper_v3.tar.gz
+	sha512sums = 17b049b5f5d423cce3c458caafef48dac05b6768f574370ced9621e73d52f37d7c1984292db2b96408ff982d613da88daa80c7a6c55abf11465b16901387607f
 
 pkgname = gnome-mojave-timed-wallpaper
 
