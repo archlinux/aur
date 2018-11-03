@@ -2,7 +2,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=konsole-git
-pkgver=r5645.4cbb5ad
+pkgver=r6607.473461f0
 pkgrel=1
 pkgdesc="KDE's terminal emulator"
 arch=('i686' 'x86_64')
