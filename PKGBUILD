@@ -6,8 +6,8 @@
 
 _pkgbasename=ffmpeg
 pkgname=lib32-$_pkgbasename
-pkgver=4.0.2
-pkgrel=2
+pkgver=4.0.3
+pkgrel=1
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (32 bit)"
 arch=('x86_64')
@@ -58,7 +58,7 @@ depends=("$_pkgbasename"
       'lib32-libvorbis'
       'lib32-libvpx'
       'lib32-x264'
-#      'lib32-x265'
+      'lib32-x265'
       'lib32-xvidcore'
       )
 makedepends=('ffnvcodec-headers' 'lib32-ladspa' 'yasm')
@@ -68,23 +68,18 @@ provides=(
       'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
       'libswscale.so'
 )
-source=(
-      "http://ffmpeg.org/releases/$_pkgbasename-$pkgver.tar.xz"{,.asc}
-)
+source=("git+https://git.ffmpeg.org/ffmpeg.git#tag=n${pkgver}")
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
-sha256sums=(
-      'a95c0cc9eb990e94031d2183f2e6e444cc61c99f6f182d1575c433d62afb2f97'
-      'SKIP'
-)
+sha256sums=('SKIP')
 
 prepare() {
-  cd ${_pkgbasename}-${pkgver}
+  cd ${_pkgbasename}
 
   # Patching if needed
 }
 
 build() {
-  cd ${_pkgbasename}-${pkgver}
+  cd ${_pkgbasename}
 
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
@@ -123,6 +118,7 @@ build() {
     --enable-libvpx \
     --enable-libwebp \
     --enable-libx264 \
+    --enable-libx265 \
     --enable-libxcb \
     --enable-libxml2 \
     --enable-libxvid \
@@ -144,7 +140,7 @@ build() {
 }
 
 package() {
-  cd ${_pkgbasename}-${pkgver}
+  cd ${_pkgbasename}
 
   make DESTDIR="${pkgdir}" install
   rm -rf "$pkgdir"/usr/{include,share,bin}
