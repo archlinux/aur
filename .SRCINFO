@@ -1,0 +1,13 @@
+pkgbase = el2org
+	pkgdesc = Convert an elisp-file to an org-file
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/tumashu/el2org.git
+	arch = any
+	license = GPL
+	depends = emacs
+	source = el2org-0.6.0.tar.gz::https://github.com/tumashu/el2org/archive/v0.6.0.tar.gz
+	sha256sums = 98e3a513f33130e9b47ef20d633b75f971521c38e3c43601176f73ae439da33d
+
+pkgname = el2org
+
