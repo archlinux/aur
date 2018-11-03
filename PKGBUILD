@@ -4,7 +4,7 @@ pkgdesc="ROS - Most implementations (windows, posix, ...) have slightly differen
 url='http://wiki.ros.org/ecl_io'
 
 pkgname='ros-indigo-ecl-io'
-pkgver='0.61.4'
+pkgver='0.61.18'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -29,9 +29,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="ecl_lite-release-release-indigo-ecl_io-${pkgver}-${_pkgver_patch}"
+_dir="ecl_lite-release-release-indigo-ecl_io"
 source=("https://github.com/yujinrobot-release/ecl_lite-release/archive/release/indigo/ecl_io/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('232dc5e8fefd311c6dcc48a97e712ee9bae6e898b7ff918cc9fc1ff76f9d6edb')
+sha256sums=('bb9402603cb590fb6838522f71a8ffbe4083bac5772603e351bee877678ea939')
 
 build() {
   # Use ROS environment variables
