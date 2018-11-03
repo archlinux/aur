@@ -4,7 +4,7 @@ pkgdesc="ROS - These are a very simple version of some of the functions in ecl_c
 url='http://wiki.ros.org/ecl_converters_lite'
 
 pkgname='ros-indigo-ecl-converters-lite'
-pkgver='0.61.4'
+pkgver='0.61.18'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,9 +27,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="ecl_lite-release-release-indigo-ecl_converters_lite-${pkgver}-${_pkgver_patch}"
+_dir="ecl_lite-release-release-indigo-ecl_converters_lite"
 source=("https://github.com/yujinrobot-release/ecl_lite-release/archive/release/indigo/ecl_converters_lite/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('f1fce014409cedddf66f5f219a98eed946f5047b5fa7478d73f1830385f8f2d5')
+sha256sums=('d474cb68bd16dfe9f52b940427fccfa309c698a2464217252a48ff8b6461e265')
 
 build() {
   # Use ROS environment variables
