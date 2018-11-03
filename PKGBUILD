@@ -4,7 +4,7 @@ pkgdesc="ROS - A set of message filters which take in messages and may output th
 url='http://ros.org/wiki/message_filters'
 
 pkgname='ros-indigo-message-filters'
-pkgver='1.11.19'
+pkgver='1.11.21'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -33,8 +33,17 @@ depends=(${ros_depends[@]})
 
 # Tarball version (faster download)
 _dir="ros_comm-release-release-indigo-message_filters-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/indigo/message_filters/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('05b4d3aa255ef686110a61938cba2bee9d90a05862d0ace1c1837bad381c853a')
+source=(
+  "${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/indigo/message_filters/${pkgver}-${_pkgver_patch}.tar.gz"
+  'fix-template-syntax.patch'
+)
+sha256sums=('28f2047adddc1946a1c2b963f7b1705a829096e9e196420fb22ca5e0cc1a9c31'
+            '2a21768b8874bb1ee7073bee5983cb869f08f79f8e11f1be7d14fb3dab095a6e')
+
+prepare () {
+  cd ${srcdir}/${_dir}
+  patch -Np1 -i ${srcdir}/fix-template-syntax.patch
+}
 
 build() {
   # Use ROS environment variables
