@@ -1,0 +1,17 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4a89596d..0e338491 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,9 +1,11 @@
+ cmake_minimum_required(VERSION 2.8.3)
+ project(pano_core)
+ 
++set("OpenCV_DIR" "/opt/opencv2/share/opencv2")
++
+ find_package(catkin REQUIRED COMPONENTS cv_bridge roscpp)
+ find_package(Boost REQUIRED COMPONENTS program_options)
+-find_package(OpenCV REQUIRED)
++find_package(OpenCV REQUIRED NO_DEFAULT_PATH)
+ 
+ ###################################
+ ## catkin specific configuration ##

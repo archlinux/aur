@@ -7,7 +7,7 @@ pkgname='ros-indigo-pano-core'
 pkgver='2.3.3'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin
@@ -18,12 +18,24 @@ makedepends=('cmake' 'git' 'ros-build-tools'
 
 ros_depends=(ros-indigo-roscpp
   ros-indigo-cv-bridge)
-depends=(${ros_depends[@]})
+depends=(
+  'opencv2-opt'
+  ${ros_depends[@]}
+)
 
 _tag=release/indigo/pano_core/${pkgver}-${_pkgver_patch}
 _dir=pano_core
-source=("${_dir}"::"git+https://github.com/turtlebot-release/turtlebot_apps-release.git"#tag=${_tag})
-md5sums=('SKIP')
+source=(
+  "${_dir}"::"git+https://github.com/turtlebot-release/turtlebot_apps-release.git#tag=${_tag}"
+  'fix-opencv2-path.patch'
+)
+sha256sums=('SKIP'
+            'b165c3d25e56cc6ce86c5cca6dc947496eac6c03597c10f7d36d53df59d88369')
+
+prepare () {
+  cd ${srcdir}/${_dir}
+  patch -Np1 -i ${srcdir}/fix-opencv2-path.patch
+}
 
 build() {
   # Use ROS environment variables
