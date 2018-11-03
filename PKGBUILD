@@ -4,7 +4,7 @@ pkgdesc="ROS - Cross platform filesystem utilities (until c++11 makes its way in
 url='http://wiki.ros.org/ecl_filesystem'
 
 pkgname='ros-indigo-ecl-filesystem'
-pkgver='0.61.8'
+pkgver='0.61.18'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -35,7 +35,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ecl_core-release-release-indigo-ecl_filesystem-${pkgver}-${_pkgver_patch}"
 source=("https://github.com/yujinrobot-release/ecl_core-release/archive/release/indigo/ecl_filesystem/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('cffb1ad73351e7c12ba2123789a0c16999c6dd52e601566fce3be4bb50e4d1a7')
+sha256sums=('e21dc475bb4dfb2b320cd4ccdcd16c458187a0e5423e8a60b0b591da648732b3')
 
 build() {
   # Use ROS environment variables
