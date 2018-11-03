@@ -4,7 +4,7 @@ pkgdesc="ROS - Maintains the ecl licenses and also provides an install target fo
 url='http://wiki.ros.org/ecl_license'
 
 pkgname='ros-indigo-ecl-license'
-pkgver='0.61.5'
+pkgver='0.61.18'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -24,9 +24,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="ecl_tools-release-release-indigo-ecl_license-${pkgver}-${_pkgver_patch}"
+_dir="ecl_tools-release-release-indigo-ecl_license"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/ecl_tools-release/archive/release/indigo/ecl_license/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('a011c73b8585070a21a547580c833f8d6fd3bb3247c9ef9b209cc445ac140d44')
+sha256sums=('ceb9b597b202f52db9e376df1866ee405b49f8cc41279c1b3163a33a10403a40')
 
 build() {
   # Use ROS environment variables
