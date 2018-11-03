@@ -1,5 +1,5 @@
 # Current Maintainer: algebro <algebro at tuta dot io>
-# Previous Maintainer: visad
+# Previous Maintainer: visad <visad@example.com>
 
 _pkgname=frida
 pkgname=python2-$_pkgname
