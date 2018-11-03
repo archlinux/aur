@@ -4,7 +4,7 @@ pkgdesc="ROS - Filter which fuses angular velocities, accelerations, and (option
 url='http://www.mdpi.com/1424-8220/15/8/19302'
 
 pkgname='ros-indigo-imu-complementary-filter'
-pkgver='1.0.9'
+pkgver='1.0.15'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
