@@ -1,7 +1,7 @@
 # Maintainer: Michał Sałaban <michal@salaban.info>
 _name=kovri
 pkgname=${_name}-git
-pkgver=3798.99f55005
+pkgver=4317.ab36baef
 pkgrel=1
 pkgdesc="A free, decentralized, anonymity technology based on I2P's open specifications"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('boost' 'openssl')
 #install=${_name}.install
 source=(
-	"git+https://github.com/monero-project/kovri"
+	"git+https://gitlab.com/kovri-project/kovri"
 	"git+https://github.com/anonimal/cpp-netlib.git"
 	"git+https://github.com/anonimal/cryptopp.git"
 	"git+https://github.com/monero-project/kovri-docs.git")
