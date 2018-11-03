@@ -6,13 +6,13 @@
 
 pkgname=gnome-terminal-transparency
 _pkgname=gnome-terminal
-pkgver=3.30.1
+pkgver=3.30.2
 pkgrel=1
 pkgdesc="The GNOME Terminal Emulator, with background transparency"
 url="https://wiki.gnome.org/Apps/Terminal"
 arch=(x86_64)
 license=(GPL)
-depends=('vte3>=0.54.1' gsettings-desktop-schemas dconf)
+depends=('vte3>=0.54.2' gsettings-desktop-schemas dconf)
 makedepends=(intltool itstool docbook-xsl libnautilus-extension appdata-tools
              gnome-shell vala yelp-tools)
 provides=("$_pkgname=$pkgver")
@@ -22,8 +22,8 @@ groups=(gnome)
 changelog=package.changelog
 source=(https://download.gnome.org/sources/$_pkgname/${pkgver:0:4}/$_pkgname-$pkgver.tar.xz
         transparency.patch)
-sha256sums=('e90720d4581da29d7c47d35d4fe81b46a9b4fbdb85e3b6b67dec298552b13228'
-            '45f1b52079f5d16ae8d84619479040bced7cc7beb60313350611a695fef0bf40')
+sha256sums=('6b1fc2720e3bfc592645d41e38d0d3a0f2bdf5ef7bce490b2d5c8ba39f395e38'
+            '96614f799f800d6df1a1f54c0562e3df8c292080ed54598d14840b59097f8a60')
 
 prepare() {
   cd $_pkgname-$pkgver
