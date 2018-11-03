@@ -1,7 +1,7 @@
 pkgbase = texlive-pgfopts
 	pkgdesc = LaTeX package options with pgfkeys
 	pkgver = 2.1a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ctan.org/pkg/pgfopts?lang=en
 	install = texlive-pgfopts.install
 	arch = any
