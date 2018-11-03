@@ -1,0 +1,14 @@
+pkgbase = megasync-instances
+	pkgdesc = Provides an utility to run multiple megasync instances with different accounts.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/NicoVarg99/MEGA-Instances
+	arch = any
+	license = GPL3
+	depends = megasync
+	depends = zenity
+	source = megasync-instances::git+https://github.com/NicoVarg99/MEGA-Instances.git
+	md5sums = SKIP
+
+pkgname = megasync-instances
+
