@@ -2,7 +2,7 @@
 
 pkgname=gtk-theme-plasma-shock-bolt-fire
 pkgver=2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Black theme based on Dark Cold"
 arch=('any')
 url="http://www.xfce-look.org/p/1157147/"
@@ -13,8 +13,9 @@ depends=('gtk-xfce-engine' 'gtk-engines')
 _p="var \(hash = '\(.*\)\|timetamp = '\(.*\)\)';"
 read _s _t <<< $(echo -n $(curl -s $url | sed -n "s/$_p/\2\3/p"))
 
-source=("https://dl.opendesktop.org/api/files/downloadfile/id/1540830184/s/$_s/t/$_t/u//themes-oct-18-update2.tar.gz")
-md5sums=('c4967bf758561730437ceecbdbf0eae1')
+# "https://dl.opendesktop.org/api/files/downloadfile/id/1540830184/s/$_s/t/$_t/u//themes-oct-18-update2.tar.gz"
+source=("https://dl.opendesktop.org/api/files/download/id/1540830184/s/b8421c9d331394fa4e483dbb688c1516/t/1541254980/u//themes-oct-18-update2.tar.gz")
+md5sums=('493ad976c8ff9f6287d81822f620ef13')
 
 package() {
 cd ${srcdir}
