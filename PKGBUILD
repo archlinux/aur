@@ -1,7 +1,7 @@
 # Maintainer: Waterloop <teamwaterloop@gmail.com>
 
 pkgname=wio
-pkgver=0.6.0
+pkgver=0.6.2
 pkgrel=1
 pkgdesc='An IoT Development Environment'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -15,19 +15,19 @@ optdepends=('avr-gcc: compiler for AVR'
             'gcc: for compiling natively')
 
 _pkg_x86_64='x86_64'
-_cs_x86_64='27cc17082996960dadee6b31973e5d1df08ebefcdebc7456ce038a58ada7e871'
+_cs_x86_64='605d16e954cd3f5fb3abf37dbfa407934db5b11ffa74e61161a721db6a5bf311'
 
 _pkg_i686='i386'
-_cs_i686='d7f14e02520ee3b6d9457f386e42de68c3086db6fc7a52b97c880d31dd8b7458'
+_cs_i686='650978801af7ea18378300be9beb5ef4b365b1c2598567f4d58189efd8bf208e'
 
 _pkg_arm='arm5'
-_cs_arm='101e9f15f4d6775ed05c3abfa26661265d3ed2d4e338442c88a341792159c2a4'
+_cs_arm='f192fd1d0f487803514bb5cc243f21c4f386d1ac449c22c195e017a435072702'
 
 _pkg_armv6h='arm6'
-_cs_armv6h='45a8408769962b3042e7a2d62f0a249bf62610aff4e569613220404c9a3be828'
+_cs_armv6h='11bb619171f87f85b1733fa1050b35ddb58fb537c2c4a262f4c78d0d347a9bdc'
 
 _pkg_armv7h='arm7'
-_cs_armv7h='f296dc424e56170b3381ca9a97b87d2dce8e745dafc6db642e6245ce919c77ab'
+_cs_armv7h='6dd43369cac40d47ded0935498aab11121d6d1ab5d9b0e335a5df2ef15d5e7bf'
 
 _pkg_str="_pkg_${CARCH}"
 _cs_str="_cs_${CARCH}"
