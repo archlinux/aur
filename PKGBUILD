@@ -4,7 +4,7 @@ pkgdesc="ROS - Nodelet Core Metapackage."
 url='http://www.ros.org/wiki/nodelet_core'
 
 pkgname='ros-indigo-nodelet-core'
-pkgver='1.9.4'
+pkgver='1.9.16'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -25,9 +25,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="nodelet_core-release-release-indigo-nodelet_core-${pkgver}-${_pkgver_patch}"
+_dir="nodelet_core-release-release-indigo-nodelet_core"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/nodelet_core-release/archive/release/indigo/nodelet_core/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('44bd358b65fb9cc2e5fe21b4228fa098cc306ca221133715756b33c73eb13634')
+sha256sums=('86d6ba472942e8c29f143307ea7d045630778a56e0098f1e4810b194015d1147')
 
 build() {
   # Use ROS environment variables
