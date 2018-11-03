@@ -4,7 +4,7 @@ pkgdesc="ROS - Some fast/convenient type converters, mostly for char strings or 
 url='http://wiki.ros.org/ecl_converters'
 
 pkgname='ros-indigo-ecl-converters'
-pkgver='0.61.15'
+pkgver='0.61.18'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -39,7 +39,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ecl_core-release-release-indigo-ecl_converters-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/ecl_core-release/archive/release/indigo/ecl_converters/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('a5e3134a1f7398b8f8fb5fb3e878d57c6e1f4553aa85c675a3d1d6a262738b4f')
+sha256sums=('0d0e08573c80ad2ea334656ee94779837393df74acf87237338e5dd0793e56f0')
 
 build() {
   # Use ROS environment variables
