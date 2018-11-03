@@ -1,6 +1,6 @@
 pkgbase = pulseview-git
 	pkgdesc = A Qt based logic analyzer GUI for sigrok. (git version)
-	pkgver = 0.3.0.r577.ga3110ca
+	pkgver = 0.3.0.r744.g0adee2d
 	pkgrel = 1
 	url = http://sigrok.org/wiki/Main_Page
 	arch = armv6h
