@@ -1,6 +1,6 @@
 pkgbase = ucm_plbossart-git
 	pkgdesc = UCM files from plbossart.
-	pkgver = r60.9dc688f
+	pkgver = r74.2050ca7
 	pkgrel = 1
 	url = https://github.com/plbossart/UCM
 	arch = any

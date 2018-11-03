@@ -1,7 +1,7 @@
 # Maintainer: Christian Mauderer <oss@c-mauderer.de>
 pkgname=ucm_plbossart-git
 pkgrel=1
-pkgver=r60.9dc688f
+pkgver=r74.2050ca7
 pkgdesc="UCM files from plbossart."
 arch=('any')
 url="https://github.com/plbossart/UCM"
@@ -30,4 +30,6 @@ package() {
 	# remove the ones conflicting with alsa-lib
 	rm -r "${pkgdir}/usr/share/alsa/ucm/bytcr-rt5651"
 	rm -r "${pkgdir}/usr/share/alsa/ucm/chtrt5645"
+	rm -r "${pkgdir}/usr/share/alsa/ucm/chtnau8824"
+	rm -r "${pkgdir}/usr/share/alsa/ucm/bytcr-rt5640"
 }
