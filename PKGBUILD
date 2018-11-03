@@ -2,20 +2,20 @@
 
 pkgname=mythes-nb
 pkgver=2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Norwegian thesaurus'
 arch=('any')
 url='http://no.speling.org/'
 license=('GPL')
 depends=('mythes')
-source=("https://alioth.debian.org/frs/download.php/file/4168/no_NO-pack2-2.2.zip")
+source=("https://alioth-archive.debian.org/frs/download.php/file/4168/no_NO-pack2-2.2.zip")
 
 build() {
     unzip th_nb_NO_v2.zip
 }
 
 package() {
-  install -dm755 ${pkgdir}/usr/share/hunspell
+  install -dm755 ${pkgdir}/usr/share/mythes
   install -m644 th_nb_NO_v2.dat $pkgdir/usr/share/mythes
   install -m644 th_nb_NO_v2.idx $pkgdir/usr/share/mythes
 
