@@ -2,13 +2,16 @@
 
 pkgname=nadeshiko
 pkgver=2.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A Linux tool to cut short videos with ffmpeg"
 arch=('any')
 url="https://github.com/deterenkelt/$pkgname"
 license=('GPL3')
-depends=("wget" "bc" "xdg-utils" "xdg-user-dirs" "ffmpeg" "mediainfo" "perl-file-mimeinfo" "mkvtoolnix-cli")
-optdepends=("libnotify: desktop notifications")
+depends=("wget" "bc" "xdg-utils" "xdg-user-dirs" "ffmpeg" "mediainfo" "perl-file-mimeinfo" "mkvtoolnix-cli" "time"
+         "xmlstarlet" "inotify-tools" "lsof" "jq" "socat" "python-gobject")
+optdepends=("libnotify: desktop notifications"
+            "mpv: nadeshiko-mpv script"
+            "gtk3: nadeshiko-mpv script")
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/deterenkelt/$pkgname/archive/v$pkgver.tar.gz"
         "add-makefile.diff"
         "fix-bash-bug.diff")
