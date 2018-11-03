@@ -4,7 +4,7 @@ pkgdesc="ROS - The opencv_apps package, most of code is taken from https://githu
 url='http://www.ros.org/'
 
 pkgname='ros-indigo-opencv-apps'
-pkgver='1.11.13'
+pkgver='2.0.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -39,9 +39,22 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="opencv_apps-release-release-indigo-opencv_apps-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-perception/opencv_apps-release/archive/release/indigo/opencv_apps/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('1d1a10f8452dcdeba3737da18968c03cfc91505e40a1f246d3b30e4658550c5f')
+_dir="opencv_apps-release-release-indigo-opencv_apps"
+source=(
+  "${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-perception/opencv_apps-release/archive/release/indigo/opencv_apps/${pkgver}-${_pkgver_patch}.tar.gz"
+  'fix-ambiguous-call.patch'
+  'fix-opencv-3.4-compatibility.patch'
+)
+sha256sums=('612961c8611df5e2cc5a9583a586928cf69c17979c92fc724c31714f7979e788'
+            '6e76ccb1c620cfb9e7509f4b1e93fcd3ba320ee1122658762b250ae51f8de7e6'
+            '8f7bb79462901ea9b4c9da610557d4720e281fcba98ed8ee7e6d9d3b47141f80')
+
+prepare () {
+  cd ${srcdir}/${_dir}
+  patch -Np1 -i ${srcdir}/fix-ambiguous-call.patch
+  patch -Np1 -i ${srcdir}/fix-opencv-3.4-compatibility.patch
+}
+
 
 build() {
   # Use ROS environment variables
