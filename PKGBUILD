@@ -2,7 +2,7 @@
 pkgname=macos-sierra-ct-icon-theme
 _upstream_version=0.8.1
 pkgver="v$_upstream_version"
-pkgrel=1
+pkgrel=2
 pkgdesc="macOs Sierra icon pack by zayronxio"
 url="https://github.com/zayronxio/Macos-sierra-CT"
 license=("GPL3")
@@ -15,6 +15,5 @@ package() {
   _instdir="$pkgdir/usr/share/icons"
   mkdir -p $_instdir
   cp -dpr --no-preserve=ownership "$srcdir/Macos-sierra-CT-$_upstream_version" "$_instdir/macos-sierra-ct"
-  find "$_instdir" -type l -delete
 }
 
