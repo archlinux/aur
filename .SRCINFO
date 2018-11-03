@@ -1,6 +1,6 @@
 pkgbase = meandmyshadow
 	pkgdesc = Puzzle/platform game in which you try to reach the exit by solving puzzles.
-	pkgver = 0.5
+	pkgver = 0.5a
 	pkgrel = 1
 	url = http://meandmyshadow.sourceforge.net/
 	arch = i686
@@ -16,8 +16,8 @@ pkgbase = meandmyshadow
 	depends = libarchive
 	depends = hicolor-icon-theme
 	depends = libgl
-	source = https://sourceforge.net/projects/meandmyshadow/files/0.5/meandmyshadow-0.5-src.tar.gz
-	md5sums = bfbe6045ff29ae426e7637f158ec031e
+	source = https://sourceforge.net/projects/meandmyshadow/files/0.5a/meandmyshadow-0.5a-src.tar.gz
+	md5sums = 314cf2df805e2d094c00eca601a05642
 
 pkgname = meandmyshadow
 
