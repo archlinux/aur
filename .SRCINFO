@@ -1,6 +1,7 @@
 pkgbase = onefetch
+	pkgdesc = Displays information about your project directly on your terminal
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/o2sh/onefetch
 	arch = i686
 	arch = x86_64

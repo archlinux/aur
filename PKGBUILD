@@ -1,9 +1,10 @@
 # Maintainer: KingofToasters <themanhimself at sgregoratto dot me>
 pkgname=onefetch
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 makedepends=('rust' 'cargo')
 url="https://github.com/o2sh/onefetch"
+pkgdesc="Displays information about your project directly on your terminal"
 license=('MIT')
 source=("$url/archive/v$pkgver.tar.gz")
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
