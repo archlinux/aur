@@ -1,4 +1,4 @@
-# Maintainer: Jack Wakefield <jackwakefield at protonmail dot com>
+# Maintainer: hacker1024 <jleivenzon at gmail dot com>
 # Contributor: Tad Fisher <tadfisher at gmail dot com>
 # Contributor: tilal6991 <lalitmaganti@gmail.com>
 # Contributor: danyf90 <daniele.formichelli@gmail.com>
