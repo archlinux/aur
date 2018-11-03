@@ -4,7 +4,7 @@ pkgdesc="ROS - Basic diagnostic_aggregator tests are in the."
 url='http://ros.org/wiki/test_diagnostic_aggregator'
 
 pkgname='ros-indigo-test-diagnostic-aggregator'
-pkgver='1.8.9'
+pkgver='1.9.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -36,7 +36,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="diagnostics-release-release-indigo-test_diagnostic_aggregator-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/diagnostics-release/archive/release/indigo/test_diagnostic_aggregator/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('1f385ccd76e9278d6554616503fd2f6e1c5417a9e835534598dc0e8c410cb89e')
+sha256sums=('e134ff4c174c1c91e6349104b2c4a6c28eca21e921f1bcbae90734f95ef7701e')
 
 build() {
   # Use ROS environment variables
