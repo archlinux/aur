@@ -4,7 +4,7 @@ pkgdesc="ROS - Introduces a compile time concept checking mechanism that can be 
 url='http://wiki.ros.org/ecl_concepts'
 
 pkgname='ros-indigo-ecl-concepts'
-pkgver='0.61.15'
+pkgver='0.61.18'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -31,7 +31,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ecl_core-release-release-indigo-ecl_concepts-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/ecl_core-release/archive/release/indigo/ecl_concepts/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('341b6de62d07c8a3375b2b5ce49ac711f16f6b48029364b82323ab9860969c43')
+sha256sums=('f59a59412241917e8ee58eb12975e1b058b23e0176474176cc6b1b5926b803ee')
 
 build() {
   # Use ROS environment variables
