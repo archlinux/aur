@@ -1,0 +1,13 @@
+pkgbase = plymouth-theme-gdm-arch
+	pkgdesc = Simple plymouth gdm-like theme with Arch Linux logo
+	pkgver = v1
+	pkgrel = 1
+	url = https://github.com/julthon/plymouth-theme-gdm-arch
+	arch = any
+	license = GPL3
+	depends = plymouth
+	source = plymouth-theme-gdm-arch-v1.tar.gz::https://github.com/julthon/plymouth-theme-gdm-arch/releases/download/v1/plymouth-theme-gdm-arch_v1.tar.gz
+	md5sums = c132534052e07ae2163af7293fa77f1c
+
+pkgname = plymouth-theme-gdm-arch
+
