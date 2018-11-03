@@ -2,20 +2,20 @@
 # Contributor: Angel Sartonev <a.sartonev at gmail dot com>
 
 pkgname=otf-gfs-majuscule
-pkgver=20160313
-pkgrel=2
+pkgver=20181103
+pkgrel=1
 pkgdesc='Open Font Majuscule typefaces, provided by the Greek Font Society'
 arch=(any)
-url='http://www.greekfontsociety.gr/typefaces/majuscule'
+url='http://www.greekfontsociety-gfs.gr/typefaces/majuscule'
 license=('custom:OTF')
 depends=('fontconfig' 'xorg-font-utils')
-source=("http://www.greekfontsociety.gr/_assets/fonts/GFS_Ignacio.zip"
-	"http://www.greekfontsociety.gr/_assets/fonts/GFS_Garaldus.zip"
-	"http://www.greekfontsociety.gr/_assets/fonts/GFS_Jackson.zip"
-	"http://www.greekfontsociety.gr/_assets/fonts/GFS_Nicefore.zip"
-	"http://www.greekfontsociety.gr/_assets/fonts/GFS_Eustace.zip"
-	"http://www.greekfontsociety.gr/_assets/fonts/GFS_Fleischman.zip"
-	"http://www.greekfontsociety.gr/_assets/fonts/GFS_Ambrosia.zip")
+source=("http://www.greekfontsociety-gfs.gr/_assets/fonts/GFS_Ignacio.zip"
+	"http://www.greekfontsociety-gfs.gr/_assets/fonts/GFS_Garaldus.zip"
+	"http://www.greekfontsociety-gfs.gr/_assets/fonts/GFS_Jackson.zip"
+	"http://www.greekfontsociety-gfs.gr/_assets/fonts/GFS_Nicefore.zip"
+	"http://www.greekfontsociety-gfs.gr/_assets/fonts/GFS_Eustace.zip"
+	"http://www.greekfontsociety-gfs.gr/_assets/fonts/GFS_Fleischman.zip"
+	"http://www.greekfontsociety-gfs.gr/_assets/fonts/GFS_Ambrosia.zip")
 
 md5sums=('ec397b1199ca79404adec355eeb5c163'
          '7638996769c9162f0d8b8885c18af68f'
