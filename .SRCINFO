@@ -1,6 +1,6 @@
 pkgbase = linux-clear
 	pkgver = 4.18.16
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/clearlinux-pkgs/linux
 	arch = x86_64
 	license = GPL2
@@ -44,6 +44,7 @@ pkgname = linux-clear
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
+	provides = WIREGUARD-MODULE
 	backup = etc/mkinitcpio.d/linux-clear.preset
 
 pkgname = linux-clear-headers

@@ -68,7 +68,7 @@ _major=4.18
 _minor=16
 pkgver=${_major}.${_minor}
 _srcname=linux-${_major}
-pkgrel=5
+pkgrel=6
 _clr=650
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
@@ -138,6 +138,13 @@ prepare() {
         msg2 "Enabling crypto_user module..."
         sed -i "s|# CONFIG_CRYPTO_USER is not set|CONFIG_CRYPTO_USER=m|g" ./.config
 
+    ### Compress modules
+        msg "Enabling XZ compressed modules..."
+        sed -i 's|^# CONFIG_MODULE_COMPRESS|\
+CONFIG_MODULE_COMPRESS=y\
+# CONFIG_MODULE_COMPRESS_GZIP is not set\
+CONFIG_MODULE_COMPRESS_XZ=y|' ./.config
+
     ### Patch source to unlock additional gcc CPU optimizations
         # https://github.com/graysky2/kernel_gcc_patch
         if [ "${_enable_gcc_more_v}" = "y" ]; then
@@ -185,6 +192,7 @@ _package() {
     pkgdesc="Clearlinux kernel and modules"
     depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
     optdepends=('crda: to set the correct wireless channels of your country' 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
+    provides=('WIREGUARD-MODULE')
     backup=("etc/mkinitcpio.d/${pkgbase}.preset")
     install=linux.install
 
