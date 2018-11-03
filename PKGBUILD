@@ -10,6 +10,7 @@ arch=('any')
 url='https://metacpan.org/release/Test-Deep-Fuzzy'
 license=('PerlArtistic' 'GPL')
 depends=('perl-test-deep' 'perl-math-round')
+makedepends=('perl-module-build-tiny')
 source=(http://search.cpan.org/CPAN/authors/id/K/KA/KARUPA/Test-Deep-Fuzzy-0.01.tar.gz)
 options=(!emptydirs)
 md5sums=('e50e492322e0c62a191aa096bd23ad25')

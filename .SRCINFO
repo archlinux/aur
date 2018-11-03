@@ -6,6 +6,7 @@ pkgbase = perl-test-deep-fuzzy
 	arch = any
 	license = PerlArtistic
 	license = GPL
+	makedepends = perl-module-build-tiny
 	depends = perl-test-deep
 	depends = perl-math-round
 	options = !emptydirs
