@@ -1,6 +1,6 @@
 pkgbase = sigrok-cli
 	pkgdesc = Client software that supports various hardware logic analyzers, CLI client
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = http://www.sigrok.org/wiki/Sigrok-cli
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = sigrok-cli
 	license = GPL3
 	depends = libsigrok
 	depends = libsigrokdecode
-	source = http://sigrok.org/download/source/sigrok-cli/sigrok-cli-0.7.0.tar.gz
-	md5sums = 77cb745e2fa239c7bd1ea81e2d67ede9
+	source = http://sigrok.org/download/source/sigrok-cli/sigrok-cli-0.7.1.tar.gz
+	md5sums = 3f45ce664bad529d8b3f78a61b017d75
 
 pkgname = sigrok-cli
 

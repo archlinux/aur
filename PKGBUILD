@@ -3,7 +3,7 @@
 # Maintainer: Cody Schafer <aur@codyps.com>
 
 pkgname=sigrok-cli
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Client software that supports various hardware logic analyzers, CLI client"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url="http://www.sigrok.org/wiki/Sigrok-cli"
 license=('GPL3')
 depends=('libsigrok' 'libsigrokdecode')
 source=("http://sigrok.org/download/source/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('77cb745e2fa239c7bd1ea81e2d67ede9')
+md5sums=('3f45ce664bad529d8b3f78a61b017d75')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
