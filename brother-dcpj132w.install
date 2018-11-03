@@ -2,11 +2,3 @@ post_install() {
   systemctl restart org.cups.cupsd.service
 }
 
-pre_upgrade() {
-}
-
-post_upgrade() {
-}
-
-pre_remove() {
-}
