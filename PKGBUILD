@@ -4,7 +4,7 @@ pkgdesc="ROS - Contains transforms (e.g."
 url='http://wiki.ros.org/ecl_mobile_robot'
 
 pkgname='ros-indigo-ecl-mobile-robot'
-pkgver='0.60.3'
+pkgver='0.61.18'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -37,9 +37,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="ecl_navigation-release-release-indigo-ecl_mobile_robot-${pkgver}-${_pkgver_patch}"
+_dir="ecl_navigation-release-release-indigo-ecl_mobile_robot"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/ecl_navigation-release/archive/release/indigo/ecl_mobile_robot/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('d310eb3aabdb3766cd271f641943ae626ff22b1b453de67f7efc05d3caf47092')
+sha256sums=('1f3ffa68e86ff27bfcd47e8c801ceb3c00b8d4e54aa2ce21275760d1003a6984')
 
 build() {
   # Use ROS environment variables
