@@ -4,7 +4,7 @@ pkgdesc="ROS - Libraries and utilities for embedded and low-level linux developm
 url='http://www.ros.org/wiki/ecl_lite'
 
 pkgname='ros-indigo-ecl-lite'
-pkgver='0.61.4'
+pkgver='0.61.18'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -29,9 +29,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="ecl_lite-release-release-indigo-ecl_lite-${pkgver}-${_pkgver_patch}"
+_dir="ecl_lite-release-release-indigo-ecl_lite"
 source=("https://github.com/yujinrobot-release/ecl_lite-release/archive/release/indigo/ecl_lite/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('7aa407e4cbcd062649184442ba4b37a2a17125f7ab273d63da5d5d66e55a1b99')
+sha256sums=('5670a11c030f2b67e95a7b8bbf013ab3fd786f49a25c618b47da96efd2969788')
 
 build() {
   # Use ROS environment variables
