@@ -1,0 +1,15 @@
+pkgbase = mcl
+	pkgdesc = A unsupervised cluster algorithm for graphs based on simulation of flow in graphs.
+	pkgver = 14_137
+	pkgrel = 1
+	url = https://www.micans.org/mcl/src/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = bash
+	depends = perl
+	source = https://www.micans.org/mcl/src//mcl-14-137.tar.gz
+	md5sums = bc8740456cf51019d0a9ac5eba665bb5
+
+pkgname = mcl
+
