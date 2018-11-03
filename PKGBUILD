@@ -4,7 +4,7 @@ pkgdesc="ROS - image_transport should always be used to subscribe to and publish
 url='http://ros.org/wiki/image_transport'
 
 pkgname='ros-indigo-image-transport'
-pkgver='1.11.10'
+pkgver='1.11.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -30,7 +30,7 @@ depends=(${ros_depends[@]})
 
 _tag=release/indigo/image_transport/${pkgver}-${_pkgver_patch}
 _dir=image_transport
-source=("${_dir}"::"git+https://github.com/ros-gbp/image_common-release.git"#tag=${_tag})
+source=("${_dir}"::"git+https://github.com/ros-gbp/image_common-release.git#tag=${_tag}")
 md5sums=('SKIP')
 
 build() {
