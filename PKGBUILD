@@ -3,7 +3,7 @@
 
 pkgname=servo-git
 _pkgname=servo
-pkgver=34823.4625160f0a
+pkgver=35011.ba1ed11ced
 pkgrel=1
 pkgdesc="Parallel Browser Project: web browser written in Rust"
 arch=('i686' 'x86_64')
@@ -16,21 +16,13 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 _branch=servo
 source=(
-#"$_branch::git+https://github.com/Eijebong/servo#branch=$_branch"
 'git+https://github.com/servo/servo.git'
-'pr21644.patch::https://patch-diff.githubusercontent.com/raw/servo/servo/pull/21644.patch'
 )
-md5sums=('SKIP'
-         'b26fb6727ff19ec01ec1493601b43773')
+md5sums=('SKIP')
 
 pkgver() {
   cd "$_branch"
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
-}
-
-prepare() {
-  cd "$_branch"
-  patch -Np1 -i ../pr21644.patch
 }
 
 build() {
