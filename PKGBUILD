@@ -7,7 +7,7 @@ pkgname='ros-indigo-diagnostic-common-diagnostics'
 pkgver='1.8.9'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-indigo-diagnostic-updater
@@ -31,7 +31,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="diagnostics-release-release-indigo-diagnostic_common_diagnostics-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/diagnostics-release/archive/release/indigo/diagnostic_common_diagnostics/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('fc526530061e0be99b56f8a68ec25d8e4106ff86c04f7aa8192a714a2f8eb8bb')
+sha256sums=('b2d7914acc59aeb1061515bc10b534649117ca7b4660fd658b884b523a88dcae')
 
 build() {
   # Use ROS environment variables
