@@ -1,6 +1,6 @@
 pkgbase = kovri-git
 	pkgdesc = A free, decentralized, anonymity technology based on I2P's open specifications
-	pkgver = 3798.99f55005
+	pkgver = 4317.ab36baef
 	pkgrel = 1
 	url = https://getkovri.org/
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = kovri-git
 	license = BSD
 	depends = boost
 	depends = openssl
-	source = git+https://github.com/monero-project/kovri
+	source = git+https://gitlab.com/kovri-project/kovri
 	source = git+https://github.com/anonimal/cpp-netlib.git
 	source = git+https://github.com/anonimal/cryptopp.git
 	source = git+https://github.com/monero-project/kovri-docs.git
