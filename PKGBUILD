@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <my first name [at] my last name [dot] net>
 
 pkgname=cura-beta
-pkgver=3.5.1
+pkgver=3.6
 pkgrel=1
 pkgdesc="A software solution for 3D printing aimed at RepRaps and the Ultimaker."
 depends=('python-pyqt5' 'qt5-svg' 'python-scipy' 'python-pyserial' 'python-numpy' 'uranium-beta'
@@ -14,7 +14,7 @@ url="https://ultimaker.com/en/products/cura-software"
 license=('AGPL')
 arch=('x86_64')
 conflicts=('cura' 'cura-git')
-source=("git+https://github.com/Ultimaker/Cura#branch=3.5")
+source=("git+https://github.com/Ultimaker/Cura#branch=${pkgver}")
 #source=($pkgname-$pkgver.tar.gz::https://github.com/Ultimaker/Cura/archive/${pkgver}.tar.gz)
 sha1sums=('SKIP')
 
