@@ -1,28 +1,30 @@
+# Current Maintainer: algebro <algebro at tuta dot io>
+# Previous Maintainer: visad
+
 _pkgname=frida
 pkgname=python2-$_pkgname
-pkgver=5.0.10
+pkgver=12.2.19
 pkgrel=1
-pkgdesc="Inject JavaScript to explore native apps on Windows, Mac, Linux, iOS and Android. Python 2 version from PyPi"
-arch=('any')
+pkgdesc="Inject JavaScript to explore native apps on Windows, Mac, Linux, iOS and Android. Python 2 version from PyPi."
+arch=('i686' 'x86_64')
 url="http://www.frida.re"
 license=('wxWindows Library License, Version 3.1')
-depends=('python2' 'python2-pygments>=2.0.2' 'python2-prompt_toolkit>=0.38' 'python2-colorama>=0.2.7')
-source=("https://pypi.python.org/packages/source/f/frida/frida-${pkgver}.zip")
-md5sums=('d33c5cc14a4dd624ec0a7fa4dedba8ee')
+depends=('python2' 'python2-pygments' 'python2-prompt_toolkit=1.0.15' 'python2-colorama')
+source=("https://files.pythonhosted.org/packages/1b/fa/344500d06d3bf5b70c7252623440ae73cf064965b1d38c559af8521e868c/frida-${pkgver}.tar.gz"
+        "COPYING")
+sha256sums=('ba15e38367712756af11bdce28be60d8ed39747966f58dc3656dffd44befbe49'
+            '5ea1544b51a28bc823b03159190d4108f9fb4f4ef912389f5137c6d295e175b2')
+conflicts=("python-${_pkgname}")
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
-
-  # those names have been changed in prompt_toolkit 0.54
-  if [[ $(pacman -Qi --color=never python2-prompt_toolkit | sed -n 2p | cut -d ":" -f2 | tr -d '[[:space:]]' | xargs -I ver vercmp ver 0.54) -ge 0 ]]; then
-    sed -i 's/create_default_application/create_prompt_application/g' frida/repl.py
-    sed -i 's/create_default_output/create_output/g' frida/repl.py
-  fi
-
   python2 setup.py build
 }
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
   python2 setup.py install --root=$pkgdir --optimize=1 --skip-build
+  cd "$srcdir"
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  install -m 644 "COPYING" "$pkgdir/usr/share/licenses/$pkgname/"
 }
