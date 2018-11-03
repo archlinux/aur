@@ -1,7 +1,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgname=python-pytest-remotedata
 pkgver=0.3.1
-pkgrel=2
+pkgrel=1
 pkgdesc="Pytest plugin used for controlling access to data files hosted online"
 arch=('i686' 'x86_64')
 url="https://github.com/astropy/pytest-remotedata"
