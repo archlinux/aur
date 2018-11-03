@@ -1,7 +1,7 @@
 # Maintainer : Karl-Felix Glatzer <karl.glatzer@gmx.de>
 
 pkgname=mingw-w64-ffmpeg
-pkgver=4.0.2
+pkgver=4.0.3
 pkgrel=1
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (mingw-w64)"
@@ -42,7 +42,6 @@ build() {
       --disable-debug \
       --enable-static \
       --disable-stripping \
-      --enable-avresample \
       --enable-fontconfig \
       --enable-gmp \
       --enable-gnutls \
