@@ -4,7 +4,7 @@ pkgdesc="ROS - Provides an extensible and standardised framework for input-outpu
 url='http://wiki.ros.org/ecl_devices'
 
 pkgname='ros-indigo-ecl-devices'
-pkgver='0.61.15'
+pkgver='0.61.18'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -41,7 +41,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ecl_core-release-release-indigo-ecl_devices-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/ecl_core-release/archive/release/indigo/ecl_devices/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('455525b7cfa886850bde53b5555d055a04291dbee8d272a5e0a2bb1bbc19881d')
+sha256sums=('30cb2e4c3d70cb55eebbfec448874c7ed8def538e60d188fccdb967b6554461f')
 
 build() {
   # Use ROS environment variables
