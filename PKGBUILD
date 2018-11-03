@@ -5,7 +5,7 @@
 
 #Maintainer: Felice Murolo <linuxboy@fel.hopto.org>
 pkgname=kencfs-plasma
-pkgver=2.0.2a
+pkgver=2.0.3a
 pkgrel=1
 #epoch=
 pkgdesc="KDE-Plasma compatible GUI frontend for encfs. Create, mount, umount and delete your encrypted fs."
@@ -13,7 +13,7 @@ arch=('i686' 'x86_64')
 url="https://www.linux-apps.com/p/1170068/"
 license=('(L)GPL')
 #groups=()
-depends=('encfs>=1.7.4-8' 'fuse>=2.9.2-1' 'kdelibs')
+depends=('encfs>=1.7.4-8' 'fuse>=2.9.2-1' )
 #makedepends=()
 #checkdepends=()
 #optdepends=()
@@ -26,7 +26,7 @@ depends=('encfs>=1.7.4-8' 'fuse>=2.9.2-1' 'kdelibs')
 #changelog=
 source=($pkgname-$pkgver.tar.gz)
 noextract=()
-md5sums=('bfe58c4a80eb2e8c45f74fc12165c4f3')
+md5sums=('0a685b629c7ab947bc32f6cac88adaf1')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
