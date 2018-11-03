@@ -8,7 +8,7 @@ arch=('any')
 url='http://no.speling.org/'
 license=('GPL')
 depends=('hunspell')
-source=("https://alioth.debian.org/frs/download.php/file/4168/no_NO-pack2-2.2.zip")
+source=("https://alioth-archive.debian.org/releases/spell-norwegian/spell-norwegian/2.2/no_NO-pack2-2.2.zip")
 
 build() {
     unzip nb_NO.zip
