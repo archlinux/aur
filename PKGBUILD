@@ -2,30 +2,23 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-sdcv
-pkgver=1.5.2
+pkgver=2.7
 pkgrel=1
 pkgdesc="An extension to lookup words through sdcv (StarDict Console Version) in Emacs."
 arch=('any')
 url="http://code.google.com/p/sdcv-mode/"
 license=('GPL')
-depends=('emacs' 'sdcv')
+depends=('emacs' 'sdcv' 'emacs-posframe')
 install=$pkgname.install
-source=(https://www.emacswiki.org/emacs/download/showtip.el https://www.emacswiki.org/emacs/download/sdcv.el)
-md5sums=('9f23b6c45b48d2055a154fae74f5c348'
-         '2574be32d3010ac6e923def079b45e2c')
+source=(https://www.emacswiki.org/emacs/download/sdcv.el)
+sha256sums=('6e24f5a8df40be8b865fd7b55a60f69568f664fb066bd05c58202c61eb71e120')
 
 build() {
-  emacs -Q -batch -L . -f batch-byte-compile showtip.el
-  emacs -Q -batch -L . -f batch-byte-compile sdcv.el
+  emacs -Q -batch -L /usr/share/emacs/site-lisp -f batch-byte-compile sdcv.el
 }
 package() {
- install -D -m 644 "$srcdir/showtip.el" \
-    "$pkgdir/usr/share/emacs/site-lisp/showtip.el"
- install -D -m 644 "$srcdir/showtip.elc" \
-    "$pkgdir/usr/share/emacs/site-lisp/showtip.elc"
- 
-  install -D -m 644 "$srcdir/sdcv.el" \
-    "$pkgdir/usr/share/emacs/site-lisp/sdcv.el"
- install -D -m 644 "$srcdir/sdcv.elc" \
-    "$pkgdir/usr/share/emacs/site-lisp/sdcv.elc"
+  install -D -m 644 "$srcdir"/${pkgname#emacs-}.el \
+    "$pkgdir"/usr/share/emacs/site-lisp/${pkgname#emacs-}.el
+ install -D -m 644 "$srcdir"/${pkgname#emacs-}.elc \
+    "$pkgdir"/usr/share/emacs/site-lisp/${pkgname#emacs-}.elc
 }
