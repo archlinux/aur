@@ -1,0 +1,6 @@
+post_install() {
+ cat <<EOF
+You need to run "doom64ex -wadgen doom64.n64", where doom64.n64 is the path to
+the ROM dump of the original Nintendo 64 game, before this port will operate.
+EOF
+}

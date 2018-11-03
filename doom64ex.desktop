@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Doom64 EX
+Comment=Engine recreation of Doom 64
+Exec=doom64ex
+Icon=doom64ex
+Categories=Game;ActionGame;

@@ -1,0 +1,5 @@
+*.pkg.tar*
+*.src.tar*
+/doom64ex-git/
+src
+pkg
