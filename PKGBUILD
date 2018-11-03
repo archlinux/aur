@@ -26,8 +26,16 @@ prepare() {
 
 build() {
   cd build
+  BUILD_TYPE=Release
+  if [[ " ${OPTIONS[@]} " =~ " debug " ]]; then
+    BUILD_TYPE=Debug
+  elif [[ " ${OPTIONS[@]} " =~ " !strip " ]]; then
+    BUILD_TYPE=RelDebug
+  fi
+  echo "${BUILD_TYPE}"
+
   cmake ../konsole \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_LIBDIR=lib \
     -DBUILD_TESTING=OFF
