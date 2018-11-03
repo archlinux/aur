@@ -4,7 +4,7 @@ pkgdesc="ROS - This avoids use of dynamic storage (malloc/new) and thread safety
 url='http://wiki.ros.org/ecl_sigslots_lite'
 
 pkgname='ros-indigo-ecl-sigslots-lite'
-pkgver='0.61.4'
+pkgver='0.61.18'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -29,9 +29,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="ecl_lite-release-release-indigo-ecl_sigslots_lite-${pkgver}-${_pkgver_patch}"
+_dir="ecl_lite-release-release-indigo-ecl_sigslots_lite"
 source=("https://github.com/yujinrobot-release/ecl_lite-release/archive/release/indigo/ecl_sigslots_lite/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('e4fdb15d5da44f9dcc86b3bcb0a7570908a65c9c65362e14d65650e087ada59d')
+sha256sums=('87b33aa071d139a73697f5a68108d977c02c594a8a080ec07c41f3935f741b62')
 
 build() {
   # Use ROS environment variables
