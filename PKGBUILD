@@ -11,7 +11,7 @@ makedepends=('cmake' 'git')
 source=("$url/archive/$pkgver.tar.gz")
 sha256sums=('794d483dd9a19c43dc1fbbe284ce8956eb7f2600ef350dac4c602f9b4eb26e90')
 
-build() {
+prepare() {
     cd "$pkgname-$pkgver"
     cmake -H. -Bbuild \
         -DCMAKE_C_FLAGS:STRING="${CFLAGS}" \
@@ -21,8 +21,11 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
         -DABSL_RUN_TESTS=ON \
-        -DABSL_USE_GOOGLETEST_HEAD=ON \
+        -DABSL_USE_GOOGLETEST_HEAD=ON
+}
 
+build() {
+    cd "$pkgname-$pkgver"
     cmake --build build
 }
 
@@ -33,8 +36,7 @@ check() {
 
 package() {
     cd "$pkgname-$pkgver"
-    # quick and dirty until official install comes (if not I should patch their
-    # cmake files)
+
     mkdir -p "$pkgdir/usr/include"
     cp -a absl "$pkgdir/usr/include/absl"
     mkdir "${pkgdir}/usr/lib/"
