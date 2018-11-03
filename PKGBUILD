@@ -18,12 +18,10 @@ makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'uboot-tools' '
 options=('!strip')
 source=("git+https://github.com/Jerry981028/Amlogic_s905-kernel.git"
         'config'
-        'pwm-led.patch'
         'linux.preset'
         '99-linux.hook')
 md5sums=('SKIP'
          'e9842a1f55e41066619558a011f1b1bb'
-         'ff7f23f1bc3482651a4b7f4a33deb5fd'
          'f6ee374f560e1b9df6a7de2399027d1b'
          'd1c40c7367a7081f3b4c03264780f9d4')
 
@@ -37,9 +35,6 @@ prepare() {
 
   # Dirty hack to git rid of the + in kernel version
   rm -rf .git
-
-  # led patch
-  patch -p1 < ../pwm-led.patch
 
   cat "${srcdir}/config" > ./.config
 
