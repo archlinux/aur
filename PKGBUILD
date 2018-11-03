@@ -4,10 +4,10 @@ pkgdesc="ROS - Library for capturing data from the Intel(R) RealSense(TM) F200, 
 url='http://www.ros.org/wiki/RealSense'
 
 pkgname='ros-indigo-librealsense'
-pkgver='1.11.1'
+pkgver='1.12.1'
 _pkgver_patch=1
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('Apache License, Version 2.0')
 
 ros_makedepends=(ros-indigo-catkin)
@@ -34,8 +34,17 @@ depends=(${ros_depends[@]}
 
 # Tarball version (faster download)
 _dir="librealsense-release-release-indigo-librealsense-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/intel-ros/librealsense-release/archive/release/indigo/librealsense/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('afc7521ccdb1dd760603264ccbcf3b952f8ecbdfef6a8443887e4bcb1a2193b9')
+source=(
+  "${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/intel-ros/librealsense-release/archive/release/indigo/librealsense/${pkgver}-${_pkgver_patch}.tar.gz"
+  'missing-headers.patch'
+)
+sha256sums=('589c58d96e07262d9f032bf3710106c0a384a56daf1db478c359f9652a38eabc'
+            'c477b3c6eb99eb973d1a2f49dc00ba1bd0a1756a208e12030610c6e0fefea941')
+
+prepare () {
+  cd ${srcdir}/${_dir}
+  patch -Np1 -i ${srcdir}/missing-headers.patch
+}
 
 build() {
   # Use ROS environment variables

@@ -1,0 +1,24 @@
+diff --git a/src/types.h b/src/types.h
+index 0455c83..bff27f9 100644
+--- a/src/types.h
++++ b/src/types.h
+@@ -19,6 +19,7 @@
+ #include <mutex>                            // For mutex, unique_lock
+ #include <condition_variable>               // For condition_variable
+ #include <memory>                           // For unique_ptr
++#include <functional>                       // For std::function
+ #include <atomic>
+ #include <map>          
+ #include <algorithm>
+diff --git a/src/uvc-v4l2.cpp b/src/uvc-v4l2.cpp
+index e97dfda..1b04966 100644
+--- a/src/uvc-v4l2.cpp
++++ b/src/uvc-v4l2.cpp
+@@ -30,6 +30,7 @@
+ #include <sys/stat.h>
+ #include <sys/mman.h>
+ #include <sys/ioctl.h>
++#include <sys/sysmacros.h>
+ #include <linux/usb/video.h>
+ #include <linux/uvcvideo.h>
+ #include <linux/videodev2.h>
