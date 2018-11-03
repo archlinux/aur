@@ -3,38 +3,37 @@
 # Contributor: Apostolos Bessas <mpessas at gmail dot com>
 
 pkgname=otf-gfs
-pkgver=20161128
+pkgver=20181103
 pkgrel=1
 pkgdesc='Selection of open type fonts from the Greek Font Society.'
 arch=(any)
-url='http://www.greekfontsociety.gr'
+url='http://www.greekfontsociety-gfs.gr'
 license=('custom')
 makedepends=('unzip')
 depends=()
 
-
-source=("http://www.greekfontsociety.gr/_assets/fonts/GFS_Pyrsos.zip"
-	"http://www.greekfontsociety.gr/_assets/fonts/GFS_Orpheus_Sans.zip"
-	"http://www.greekfontsociety.gr/_assets/fonts/GFS_Orpheus.zip"
-	"http://www.greekfontsociety.gr/_assets/fonts/GFS_Elpis.zip"
-	"http://www.greekfontsociety.gr/_assets/fonts/GFS_Theokritos.zip"
-	"http://www.greekfontsociety.gr/_assets/fonts/GFS_Artemisia.zip"
-	"http://www.greekfontsociety.gr/_assets/fonts/GFS_NeoHellenic.zip"
-	"http://www.greekfontsociety.gr/_assets/fonts/GFS_Olga.zip"
-	"http://www.greekfontsociety.gr/_assets/fonts/GFS_Bodoni.zip"
-	"http://www.greekfontsociety.gr/_assets/fonts/GFS_Didot_Display.zip"
-	"http://www.greekfontsociety.gr/_assets/fonts/GFS_Didot.zip"
-	"http://www.greekfontsociety.gr/_assets/fonts/GFS_Goschen.zip"
-	"http://www.greekfontsociety.gr/_assets/fonts/GFS_Philostratos.zip"
-	"http://www.greekfontsociety.gr/_assets/fonts/GFS_Orpheus_Classic.zip"
-	"http://www.greekfontsociety.gr/_assets/fonts/GFS_Decker.zip"
-	"http://www.greekfontsociety.gr/_assets/fonts/GFS_Solomos.zip"
-	"http://www.greekfontsociety.gr/_assets/fonts/GFS_Porson.zip"
-	"http://www.greekfontsociety.gr/_assets/fonts/GFS_Didot_Classic.zip"
-	"http://www.greekfontsociety.gr/_assets/fonts/GFS_Gazis.zip"
-	"http://www.greekfontsociety.gr/_assets/fonts/GFS_Baskerville.zip"
-	"http://www.greekfontsociety.gr/_assets/fonts/GFS_Bodoni_Classic.zip"
-	"http://www.greekfontsociety.gr/_assets/fonts/GFS_Complutum.zip")
+source=("http://www.greekfontsociety-gfs.gr/_assets/fonts/GFS_Pyrsos.zip"
+	"http://www.greekfontsociety-gfs.gr/_assets/fonts/GFS_Orpheus_Sans.zip"
+	"http://www.greekfontsociety-gfs.gr/_assets/fonts/GFS_Orpheus.zip"
+	"http://www.greekfontsociety-gfs.gr/_assets/fonts/GFS_Elpis.zip"
+	"http://www.greekfontsociety-gfs.gr/_assets/fonts/GFS_Theokritos.zip"
+	"http://www.greekfontsociety-gfs.gr/_assets/fonts/GFS_Artemisia.zip"
+	"http://www.greekfontsociety-gfs.gr/_assets/fonts/GFS_NeoHellenic.zip"
+	"http://www.greekfontsociety-gfs.gr/_assets/fonts/GFS_Olga.zip"
+	"http://www.greekfontsociety-gfs.gr/_assets/fonts/GFS_Bodoni.zip"
+	"http://www.greekfontsociety-gfs.gr/_assets/fonts/GFS_Didot_Display.zip"
+	"http://www.greekfontsociety-gfs.gr/_assets/fonts/GFS_Didot.zip"
+	"http://www.greekfontsociety-gfs.gr/_assets/fonts/GFS_Goschen.zip"
+	"http://www.greekfontsociety-gfs.gr/_assets/fonts/GFS_Philostratos.zip"
+	"http://www.greekfontsociety-gfs.gr/_assets/fonts/GFS_Orpheus_Classic.zip"
+	"http://www.greekfontsociety-gfs.gr/_assets/fonts/GFS_Decker.zip"
+	"http://www.greekfontsociety-gfs.gr/_assets/fonts/GFS_Solomos.zip"
+	"http://www.greekfontsociety-gfs.gr/_assets/fonts/GFS_Porson.zip"
+	"http://www.greekfontsociety-gfs.gr/_assets/fonts/GFS_Didot_Classic.zip"
+	"http://www.greekfontsociety-gfs.gr/_assets/fonts/GFS_Gazis.zip"
+	"http://www.greekfontsociety-gfs.gr/_assets/fonts/GFS_Baskerville.zip"
+	"http://www.greekfontsociety-gfs.gr/_assets/fonts/GFS_Bodoni_Classic.zip"
+	"http://www.greekfontsociety-gfs.gr/_assets/fonts/GFS_Complutum.zip")
 noextract=(${source[@]##*/})
 md5sums=('ad4bce50a20830c93bc6e4437f674e95'
          'ed0fd6e096eaa27f1e4d75dab59b353b'
