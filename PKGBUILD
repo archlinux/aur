@@ -7,7 +7,7 @@ pkgname='ros-indigo-kobuki-ftdi'
 pkgver='0.6.5'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-indigo-ecl-command-line
@@ -20,6 +20,7 @@ makedepends=('cmake' 'ros-build-tools'
 ros_depends=(ros-indigo-ecl-command-line)
 depends=(${ros_depends[@]}
   libftdi
+  libftdi-compat
   libusb-compat)
 
 # Git version (e.g. for debugging)
