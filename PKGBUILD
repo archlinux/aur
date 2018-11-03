@@ -4,7 +4,7 @@ pkgdesc="ROS - Any tools relating to mathematical geometry."
 url='http://wiki.ros.org/ecl_geometry'
 
 pkgname='ros-indigo-ecl-geometry'
-pkgver='0.61.15'
+pkgver='0.61.18'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -45,7 +45,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ecl_core-release-release-indigo-ecl_geometry-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/ecl_core-release/archive/release/indigo/ecl_geometry/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('7df4cb33d7f8574652c99dd33b1050d5ab9a305426f0793be693024d24e897be')
+sha256sums=('994f34ea25f8be8fe261321a7a6f57ecabee0b0d03f9bfd15955fdbd574fe592')
 
 build() {
   # Use ROS environment variables
