@@ -4,7 +4,7 @@ pkgdesc="ROS - Timing utilities are very dependent on the system api provided fo
 url='http://wiki.ros.org/ecl_time'
 
 pkgname='ros-indigo-ecl-time'
-pkgver='0.61.15'
+pkgver='0.61.18'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -37,7 +37,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ecl_core-release-release-indigo-ecl_time-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/ecl_core-release/archive/release/indigo/ecl_time/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('0018ce969a5031dfc3dcc0228dbc3a1dd294bfdf76ae71b8e11bf418d0657680')
+sha256sums=('42e648fe5052aed2a17f827466e989d4d15d65598ed6b6ca6a181229617ddd0d')
 
 build() {
   # Use ROS environment variables
