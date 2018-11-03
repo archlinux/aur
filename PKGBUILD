@@ -2,8 +2,8 @@
 
 _pkgbase=digimend-kernel-drivers
 pkgname=digimend-kernel-drivers-dkms-git
-pkgver=8.r4.g42b16eb
-pkgrel=1
+pkgver=8.r37.gea507e2
+pkgrel=2
 
 pkgdesc='Linux kernel modules (DKMS) for non-Wacom USB graphics tablets. Git version.'
 arch=('any')
@@ -29,9 +29,9 @@ package() {
   # Install
   cd "$_pkgbase"
 
-  install -Dm 0644 digimend.conf "$pkgdir"/etc/depmod.d/digimend.conf
+  install -Dm 0644 depmod.conf "$pkgdir"/etc/depmod.d/digimend.conf
   install -Dm 0755 hid-rebind "$pkgdir"/usr/bin/hid-rebind
-  install -Dm 0644 90-hid-rebind.rules "$pkgdir"/usr/lib/udev/rules.d/90-hid-rebind.rules
+  install -Dm 0644 udev.rules "$pkgdir"/usr/lib/udev/rules.d/90-hid-rebind.rules
 
   # Copy sources (including Makefile)
   mkdir -p "$pkgdir"/usr/src/"$_pkgbase"-"$pkgver"
@@ -44,8 +44,9 @@ package() {
   # Remove unneeded files
   rm -rf "$pkgdir"/usr/src/"$_pkgbase"-"$pkgver"/debian
   rm "$pkgdir"/usr/src/"$_pkgbase"-"$pkgver"/COPYING
-  rm "$pkgdir"/usr/src/"$_pkgbase"-"$pkgver"/90-hid-rebind.rules
-  rm "$pkgdir"/usr/src/"$_pkgbase"-"$pkgver"/digimend.conf
+  rm "$pkgdir"/usr/src/"$_pkgbase"-"$pkgver"/udev.rules
+  rm "$pkgdir"/usr/src/"$_pkgbase"-"$pkgver"/depmod.conf
   rm "$pkgdir"/usr/src/"$_pkgbase"-"$pkgver"/hid-rebind
   rm "$pkgdir"/usr/src/"$_pkgbase"-"$pkgver"/README.md
+  rm "$pkgdir"/usr/src/"$_pkgbase"-"$pkgver"/xorg.conf
 }
