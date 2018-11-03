@@ -1,7 +1,7 @@
 pkgbase = linux-drm-intel-next-queued-git
-	pkgdesc = Linux driver for Intel graphics
+	pkgdesc = Linux with patches for Intel graphics
 	pkgver = 4.20.784812.83b466b1dc5f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://01.org/linuxgraphics/gfx-docs/maintainer-tools/drm-intel.html
 	arch = x86_64
 	license = GPL2
@@ -23,7 +23,7 @@ pkgbase = linux-drm-intel-next-queued-git
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 
 pkgname = linux-drm-intel-next-queued-git
-	pkgdesc = The Linux kernel and modules with AMDGPU DC patches
+	pkgdesc = The Linux kernel and modules with patches for Intel graphics
 	install = linux.install
 	depends = coreutils
 	depends = linux-firmware
@@ -34,10 +34,10 @@ pkgname = linux-drm-intel-next-queued-git
 	backup = etc/mkinitcpio.d/linux-drm-intel-next-queued-git.preset
 
 pkgname = linux-drm-intel-next-queued-git-headers
-	pkgdesc = Header files and scripts for building modules for Linux kernel with AMDGPU DC patches
+	pkgdesc = Header files and scripts for building modules for Linux kernel with patches for Intel graphics
 	provides = linux-headers
 
 pkgname = linux-drm-intel-next-queued-git-docs
-	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux kernel with AMDGPU DC patches
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux kernel with patches for Intel graphics
 	provides = linux-docs
 

@@ -9,13 +9,13 @@
 # Contributor: Brad McCormack <bradmccormack100 at gmail.com>
 
 pkgbase=linux-drm-intel-next-queued-git
-pkgdesc='Linux driver for Intel graphics'
+pkgdesc='Linux with patches for Intel graphics'
 _srcname=$pkgbase
 _kernel_rel=4.20
 _branch=drm-intel-next-queued
 _kernelname=${pkgbase#linux}
 pkgver=4.20.784812.83b466b1dc5f
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://01.org/linuxgraphics/gfx-docs/maintainer-tools/drm-intel.html'
 license=('GPL2')
@@ -70,7 +70,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The Linux kernel and modules with AMDGPU DC patches"
+  pkgdesc="The Linux kernel and modules with patches for Intel graphics"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
   provides=('linux')
@@ -132,7 +132,7 @@ _package() {
 }
 
 _package-headers() {
-  pkgdesc="Header files and scripts for building modules for Linux kernel with AMDGPU DC patches"
+  pkgdesc="Header files and scripts for building modules for Linux kernel with patches for Intel graphics"
   provides=('linux-headers')
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
@@ -244,7 +244,7 @@ _package-headers() {
 }
 
 _package-docs() {
-  pkgdesc="Kernel hackers manual - HTML documentation that comes with the Linux kernel with AMDGPU DC patches"
+  pkgdesc="Kernel hackers manual - HTML documentation that comes with the Linux kernel with patches for Intel graphics"
   provides=('linux-docs')
 
   cd "${_srcname}"
