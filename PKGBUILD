@@ -2,10 +2,11 @@
 # Contributor: OK100 <ok100 at lavabit dot com>
 # Contributor: Valère Monseur <valere dot monseur at ymail dot com>
 
+_BUILDOPTS='' # Prevent environment variables breaking build
 pkgname=compton-git
 _gitname=compton
 epoch=2
-pkgver=585_Next.3.gc0d7f9d_2018.10.29
+pkgver=590_Next_2018.11.02
 pkgrel=1
 pkgdesc="X Compositor (a fork of xcompmgr-dana) (git-version)"
 arch=(i686 x86_64)
@@ -23,6 +24,10 @@ conflicts=('compton')
 source=(git+"https://github.com/yshui/compton.git#branch=next")
 md5sums=("SKIP")
 
+# Upstream disables manpage generation by default, to enable, uncomment the next two lines
+#makedepends+=('asciidoc')
+#_BUILDOPTS='-Dbuild_docs=true'
+
 pkgver() {
     cd ${_gitname}
     _tag=$(git describe --tags | sed 's:^v::') # tag is mobile, and switches between numbers and letters, can't use it for versioning
@@ -33,7 +38,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_gitname}"
-  meson --buildtype=release . build --prefix=/usr
+  meson --buildtype=release . build --prefix=/usr ${_BUILDOPTS}
   ninja -C build
 }
 
