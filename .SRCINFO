@@ -1,12 +1,15 @@
 pkgbase = frp
 	pkgdesc = A fast reverse proxy to help you expose a local server behind a NAT or firewall to the internet.
 	pkgver = 0.21.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/fatedier/frp
 	install = frp.install
 	arch = x86_64
 	arch = i686
 	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = Apache
 	backup = etc/frp/frpc.ini
 	backup = etc/frp/frps.ini
@@ -26,6 +29,12 @@ pkgbase = frp
 	md5sums_i686 = ecba717f8c73ef6f47dfc673f92fd08b
 	source_arm = https://github.com/fatedier/frp/releases/download/v0.21.0/frp_0.21.0_linux_arm.tar.gz
 	md5sums_arm = 0e64a76e753fb62ac08093a117c81c50
+	source_armv6h = https://github.com/fatedier/frp/releases/download/v0.21.0/frp_0.21.0_linux_arm.tar.gz
+	md5sums_armv6h = 0e64a76e753fb62ac08093a117c81c50
+	source_armv7h = https://github.com/fatedier/frp/releases/download/v0.21.0/frp_0.21.0_linux_arm.tar.gz
+	md5sums_armv7h = 0e64a76e753fb62ac08093a117c81c50
+	source_aarch64 = https://github.com/fatedier/frp/releases/download/v0.21.0/frp_0.21.0_linux_arm64.tar.gz
+	md5sums_aarch64 = 99b83bf190b9b35336f94fbaa954c8ad
 
 pkgname = frp
 
