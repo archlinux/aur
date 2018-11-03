@@ -1,7 +1,7 @@
 pkgbase = attica-qt4
 	pkgdesc = A Qt4 library that implements the Open Collaboration Services API
 	pkgver = 0.4.2
-	pkgrel = 4
+	pkgrel = 6
 	url = https://projects.kde.org/projects/frameworks/attica
 	arch = x86_64
 	arch = i686
