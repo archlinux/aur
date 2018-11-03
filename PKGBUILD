@@ -2,10 +2,10 @@
 
 pkgname=emacs-posframe
 pkgver=0.4.1
-pkgrel=1
-pkgdesc="An extension to lookup words through sdcv (StarDict Console Version) in Emacs."
+pkgrel=2
+pkgdesc="Emacs library to pop up a child frame at point."
 arch=('any')
-url="http://code.google.com/p/sdcv-mode/"
+url="https://github.com/tumashu/posframe.git"
 license=('GPL')
 depends=('emacs')
 source=(https://github.com/tumashu/posframe/raw/master/posframe.el
