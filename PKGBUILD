@@ -4,7 +4,7 @@ pkgdesc="ROS - Common statistical structures and algorithms for control systems.
 url='http://wiki.ros.org/ecl_statistics'
 
 pkgname='ros-indigo-ecl-statistics'
-pkgver='0.61.8'
+pkgver='0.61.18'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -33,7 +33,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ecl_core-release-release-indigo-ecl_statistics-${pkgver}-${_pkgver_patch}"
 source=("https://github.com/yujinrobot-release/ecl_core-release/archive/release/indigo/ecl_statistics/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('801f5226dc38ae4686ea2183998ea6006841e161c22119ce7e03a6cc6a05d279')
+sha256sums=('7461254e61263873a2afc13a86e55ef42def1e95edf526e8a1ead5d2999b83f8')
 
 build() {
   # Use ROS environment variables
