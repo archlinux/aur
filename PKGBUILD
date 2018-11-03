@@ -2,7 +2,7 @@
 
 pkgname=hunspell-nb
 pkgver=2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Spell checking support for Norwegian'
 arch=('any')
 url='http://no.speling.org/'
