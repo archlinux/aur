@@ -1,0 +1,18 @@
+pkgbase = linerider-advanced
+	pkgdesc = An open source spiritual successor to the flash game Line Rider 6.2
+	pkgver = 1.04
+	pkgrel = 1
+	url = https://github.com/jealouscloud/linerider-advanced
+	arch = x86_64
+	license = GPL3
+	makedepends = unzip
+	depends = mono
+	provides = linerider-advanced
+	conflicts = linerider-advanced
+	source = https://github.com/jealouscloud/linerider-advanced/releases/download/v1.04/linerider104.zip
+	source = linerider-advanced-launcher
+	md5sums = fadba49887d4c2fc7bc6afd8e8a787af
+	md5sums = 168c15cb67944b893f4dbdd87cec4c32
+
+pkgname = linerider-advanced
+
