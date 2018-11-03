@@ -4,7 +4,7 @@ pkgdesc="ROS - The formatters here simply format various input types to a specif
 url='http://wiki.ros.org/ecl_formatters'
 
 pkgname='ros-indigo-ecl-formatters'
-pkgver='0.61.15'
+pkgver='0.61.18'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -33,7 +33,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ecl_core-release-release-indigo-ecl_formatters-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/ecl_core-release/archive/release/indigo/ecl_formatters/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('db2ad8224ca7c652546ebc258112fcf6fda04c449cbf5725ac5042f241705885')
+sha256sums=('ddc01bb2d8de3c3a2372dca8a45bf00b4501b6def8b3f72170c9030b61f87afe')
 
 build() {
   # Use ROS environment variables
