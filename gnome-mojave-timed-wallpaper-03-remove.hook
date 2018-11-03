@@ -1,0 +1,11 @@
+[Trigger]
+Type = Package
+Operation = Remove
+Target = gnome-mojave-timed-wallpaper
+
+[Action]
+Description = Resetting adwaita-timed.xml
+When = PreTransaction
+Exec = /usr/bin/mv /usr/share/backgrounds/gnome/adwaita-timed.xml.bak /usr/share/backgrounds/gnome/adwaita-timed.xml
+NeedsTargets
+
