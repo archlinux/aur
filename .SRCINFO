@@ -1,7 +1,7 @@
 pkgbase = networkmanager-l2tp
 	pkgdesc = L2TP support for NetworkManager
 	pkgver = 1.2.10
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/nm-l2tp/NetworkManager-l2tp
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = networkmanager-l2tp
 	makedepends = intltool
 	makedepends = python
 	depends = libnm
+	depends = libnma
 	depends = ppp
 	depends = xl2tpd
 	depends = libsecret
