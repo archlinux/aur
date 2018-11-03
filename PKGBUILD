@@ -1,13 +1,15 @@
+# Maintainer jerry73204 <jerry73204 at gmail dot com>
+
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - The class_loader package is a ROS-independent package for loading plugins during runtime and the foundation of the higher level ROS pluginlib library."
 url='http://ros.org/wiki/class_loader'
 
 pkgname='ros-indigo-class-loader'
-pkgver='0.3.3'
+pkgver='0.3.9'
 _pkgver_patch=1
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-cmake-modules
@@ -31,9 +33,9 @@ depends=(${ros_depends[@]}
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="class_loader-release-release-indigo-class_loader-${pkgver}-${_pkgver_patch}"
+_dir="class_loader-release-release-indigo-class_loader"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/class_loader-release/archive/release/indigo/class_loader/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('fd7b1af474b55f10f22b6cb91d31e931e9de40e2ee2ddf98570c2815d00965dd')
+sha256sums=('11797b4acc007d7e1d93da8b2481cadf01ecf598efa4eb694eb713921e3483ee')
 
 build() {
   # Use ROS environment variables
