@@ -4,7 +4,7 @@ pkgdesc="ROS - Extends c++ type traits and implements a few more to boot."
 url='http://wiki.ros.org/ecl_type_traits'
 
 pkgname='ros-indigo-ecl-type-traits'
-pkgver='0.61.15'
+pkgver='0.61.18'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -31,7 +31,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ecl_core-release-release-indigo-ecl_type_traits-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/ecl_core-release/archive/release/indigo/ecl_type_traits/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('e7fa87379c551ed572698076cfe95382818e35a661e764c20a6566d5e9264c97')
+sha256sums=('6711836b017fc13f72a363b4343e1ea33c8678d454f3f605e37deaa4a2d7c884')
 
 build() {
   # Use ROS environment variables
