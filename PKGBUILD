@@ -3,13 +3,13 @@
 
 pkgname='perl-cookie-baker'
 pkgver='0.10'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Cookie string generator / parser"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-uri' 'perl')
-makedepends=()
+makedepends=('perl-module-build-tiny')
 checkdepends=('perl-test-time')
 url='https://metacpan.org/release/Cookie-Baker'
 source=("http://search.cpan.org/CPAN/authors/id/K/KA/KAZEBURO/Cookie-Baker-${pkgver}.tar.gz")
