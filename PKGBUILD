@@ -4,7 +4,7 @@ pkgdesc="ROS - This library provides lean and mean error mechanisms."
 url='http://wiki.ros.org/ecl_errors'
 
 pkgname='ros-indigo-ecl-errors'
-pkgver='0.61.6'
+pkgver='0.61.18'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,9 +27,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="ecl_lite-release-release-indigo-ecl_errors-${pkgver}-${_pkgver_patch}"
+_dir="ecl_lite-release-release-indigo-ecl_errors"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/ecl_lite-release/archive/release/indigo/ecl_errors/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('ecb2fc95e0d3de21a2aab1a2dcc9054ec5bb019a3e86ea8af009e3fd8b3e45c3')
+sha256sums=('9641394a0d3bd85e60fc39f2859ea4f64afd9f553700735048cf1be17c37f853')
 
 build() {
   # Use ROS environment variables
