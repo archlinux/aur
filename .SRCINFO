@@ -1,6 +1,6 @@
 pkgbase = gnutls-git
 	pkgdesc = A secure communications library implementing the SSL, TLS and DTLS protocols and technologies around them
-	pkgver = 3.6.4.r4.gc9c4523ea
+	pkgver = 3.6.4.r103.gc7de377eb
 	pkgrel = 1
 	url = https://www.gnutls.org/
 	arch = i686
@@ -19,7 +19,6 @@ pkgbase = gnutls-git
 	depends = p11-kit
 	depends = readline
 	depends = zlib
-	optdepends = guile: for use with Guile bindings
 	provides = gnutls
 	conflicts = gnutls
 	source = git+https://gitlab.com/gnutls/gnutls.git
