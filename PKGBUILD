@@ -4,13 +4,13 @@
 _pkgname=bdflib
 pkgname=python2-$_pkgname
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python library for reading, writing and modifying bitmap fonts in BDF format"
 url="https://gitlab.com/Screwtapello/bdflib"
 arch=('any')
 license=('GPL3')
 depends=('python2')
-conflicts=("bdflib-git")
+conflicts=("python3-bdflib" "bdflib-git")
 provides=("bdflib")
 options=(!emptydirs)
 source=('https://files.pythonhosted.org/packages/57/0b/f0ac3a1160e3a0e9f6c37edae17fdcbcfa6a6b5d6973adcc0eb27252cd60/bdflib-v1.0.4.tar.gz')
@@ -23,6 +23,6 @@ build() {
 
 package() {
   cd "$srcdir/$_pkgname-v$pkgver"
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+  python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
