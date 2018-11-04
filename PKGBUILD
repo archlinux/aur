@@ -1,8 +1,8 @@
 # Maintainer: Oscar Morante <spacepluk@gmail.com>
 
-_version=2017.4.13
+_version=2017.4.14
 _build=f1
-_randomstring=6902ad48015d
+_randomstring=b28150134d55
 _prefix=/opt/UnityLts
 
 pkgname=unity-editor-lts-webgl
@@ -16,7 +16,7 @@ depends=('unity-editor-lts'
          'ffmpeg'
          'gzip')
 source=("https://download.unity3d.com/download_unity/${_randomstring}/LinuxEditorTargetInstaller/UnitySetup-WebGL-Support-for-Editor-${_version}${_build}.tar.xz")
-md5sums=('68d1b6c2f800fb3d562980049dd3cb52')
+md5sums=('5facdd137142d0bfa5ae8c6310ba9c8d')
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
