@@ -1,18 +1,18 @@
 # Maintainer: Tomasz Jakub Rup <tomasz.rup@gmail.com>
 pkgname=openapi-generator-cli
-pkgver=3.3.1
+pkgver=3.3.2
 pkgrel=1
 pkgdesc="OpenAPI Generator CLI + bash completion"
 arch=('any')
 url="https://openapi-generator.tech/"
 license=('Apache')
 source=("http://central.maven.org/maven2/org/openapitools/$pkgname/$pkgver/$pkgname-$pkgver.jar"
-"https://raw.githubusercontent.com/OpenAPITools/openapi-generator/v$pkgver/scripts/openapi-generator-cli-completion.bash"
-"openapi-generator-cli")
+        "https://raw.githubusercontent.com/OpenAPITools/openapi-generator/v$pkgver/scripts/openapi-generator-cli-completion.bash"
+        "openapi-generator-cli")
 noextract=("$pkgname-$pkgver.jar")
-md5sums=('13dfe2bcb4bc59a34583b1781af5b6e5'
-'64934ddd97afb1b86640ed77f5683a93'
-'50a4c5c0f3a08e533572514855638f81')
+md5sums=('23d19a4eac5b4dc05d3613c917a13fcb'
+         '64934ddd97afb1b86640ed77f5683a93'
+         '50a4c5c0f3a08e533572514855638f81')
 
 package() {
 	depends=('java-runtime' 'bash')
