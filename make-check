@@ -19,6 +19,6 @@ else
 fi
 
 namcap PKGBUILD
-namcap ./*.tar.xz
+namcap ./*.pkg.*
 
 makepkg --printsrcinfo >| .SRCINFO && echo "Updated .SRCINFO" >&2
