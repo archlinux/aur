@@ -1,6 +1,6 @@
 pkgbase = unity-editor-lts-example
 	pkgdesc = Unity Example Project based on Standard Assets.
-	pkgver = 2017.4.13f1
+	pkgver = 2017.4.14f1
 	pkgrel = 1
 	url = https://unity3d.com/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = unity-editor-lts-example
 	makedepends = cpio
 	depends = unity-editor-lts
 	options = !strip
-	source = https://download.unity3d.com/download_unity/6902ad48015d/MacExampleProjectInstaller/Examples.pkg
-	md5sums = 4f28b7dc91a4eb3e1278489ec84fbaaf
+	source = https://download.unity3d.com/download_unity/b28150134d55/MacExampleProjectInstaller/Examples.pkg
+	md5sums = f36e5fa75da1913a08bc1c6623bab879
 
 pkgname = unity-editor-lts-example
 
