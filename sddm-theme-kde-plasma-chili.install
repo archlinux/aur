@@ -1,0 +1,12 @@
+note() {
+	echo -e "\n Note: \n If you want to modify the theme config, copy 'theme.conf' to 'theme.conf.user' \n \
+in '/usr/share/sddm/themes/plasma-chili' directory and modify *.user file. \n"
+}
+
+post_install() {
+    note
+}
+
+post_upgrade() {
+    note
+}
