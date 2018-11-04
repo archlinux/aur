@@ -1,8 +1,9 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Fabian Piribauer <fabian.piribauer@gmail.com>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Original Carlos Silva <r3pek@r3pek.org>
 
 pkgname=piper-git
-pkgver=0.2.900.r30.g5f6ed20
+pkgver=0.2.902.r16.g5a44f97
 pkgrel=1
 pkgdesc='Piper is a GUI interface to ratbagd, the system daemon for configurable mice'
 arch=('i686' 'x86_64')
@@ -17,7 +18,7 @@ conflicts=('piper')
 provides=('piper')
 
 pkgver() {
-  cd "$pkgname"
+  cd "${pkgname}"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -31,4 +32,3 @@ package() {
     cd "${srcdir}/${pkgname}"
     DESTDIR="${pkgdir}" ninja -C builddir install
 }
-
