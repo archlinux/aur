@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-cpupower-git
 _gitname=cpupower
-pkgver=99.6b926e6
+pkgver=100.7dd1db7
 pkgrel=1
 pkgdesc="Gnome-Shell Extension for intel-pstate driver"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('git')
 install='cpupower.install'
 source=('git+https://github.com/martin31821/cpupower.git' 'arch.patch')
 sha256sums=('SKIP'
-            '29d8f00c5a7f57c1f44ecc6a3b95e04f9807b3051673663ac13a4d36d54a87e1')
+            'df3874afa2b8fd01874d9be4f8b6e1c197ad7aafdce0ae7849419813c3699a2d')
 
 pkgver() {
 	cd $_gitname
