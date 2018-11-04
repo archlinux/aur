@@ -4,12 +4,15 @@
 # you also find the URL of a binary repository.
 
 # set the web view provider: either webkit, webengine, auto or none
-_webview_provider=none
+_webview_provider=${SYNCTHING_TRAY_WEBVIEW_PROVIDER:-none}
+
+# set the JavaScript provider: either script, qml, auto or none
+_js_provider=${SYNCTHING_TRAY_JS_PROVIDER:-qml}
 
 _reponame=syncthingtray
 pkgname=mingw-w64-syncthingtray
 _name=${pkgname#mingw-w64-}
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 arch=('any')
 pkgdesc='Tray application for Syncthing (mingw-w64)'
@@ -21,7 +24,7 @@ depends=('mingw-w64-crt' 'mingw-w64-qt5-svg' 'mingw-w64-qtutilities' 'mingw-w64-
 makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-qt5-tools' 'ffmpeg')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('34ebc32c78bfc2c6ebba390e78dafc32e6eddbac7e613ab3b4573f79cb1c01b2')
+sha256sums=('85c7578ce4b2d9c2454cfa4b5b3b5617829d1a77f579e7d33b34bd31542a8b32')
 options=(!buildflags staticlibs !strip !emptydirs)
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
@@ -33,6 +36,7 @@ build() {
       -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_INSTALL_PREFIX="/usr/${_arch}" \
       -DWEBVIEW_PROVIDER="${_webview_provider}" \
+      -DJS_PROVIDER="${_js_provider}" \
       -DSYSTEMD_SUPPORT=OFF \
       -DNO_FILE_ITEM_ACTION_PLUGIN=ON \
       -DENABLE_STATIC_LIBS:BOOL=OFF \
