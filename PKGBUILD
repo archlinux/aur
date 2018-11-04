@@ -22,7 +22,7 @@ pkgver()  {
 prepare() {
     cd "${_pkgname}"
     git submodule init
-    git config yaml-cpp.git "${srcdir}/yaml-cpp/"
+    git config submodule.yaml-cpp.url "${srcdir}/yaml-cpp/"
     git submodule update
 }
 
