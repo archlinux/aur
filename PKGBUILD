@@ -4,7 +4,7 @@ pkgdesc="ROS - common_msgs contains messages that are widely used by other ROS p
 url='http://www.ros.org/wiki/common_msgs'
 
 pkgname='ros-indigo-common-msgs'
-pkgver='1.11.9'
+pkgver='1.11.10'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -34,7 +34,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="common_msgs-release-release-indigo-common_msgs-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/common_msgs-release/archive/release/indigo/common_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('346fc4b0659a844cea7249d0dfc7f8559bcb058018dc14ca0f82ed57a754d3e1')
+sha256sums=('9bc5c8c5de35ff6bf8ea959fc5ef0e94da3519f3611130ac5d9afce71de4d80a')
 
 build() {
   # Use ROS environment variables
