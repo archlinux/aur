@@ -1,16 +1,16 @@
 # Maintainer: Niels Martignène <niels.martignene@gmail.com>
 
 pkgname=xscope-git
-pkgver=1.4.1.0.gd8267b3
+pkgver=1.4.1.5.gf7af80a
 pkgrel=1
 pkgdesc="A program to monitor X11/Client conversations"
 arch=('x86_64' 'i686')
-url="http://cgit.freedesktop.org/xorg/app/xscope/"
+url="https://gitlab.freedesktop.org/xorg/app/xscope"
 license=('MIT')
 depends=('glibc')
 makedepends=('git' 'xproto' 'xtrans' 'xorg-util-macros')
 conflicts=('xscope')
-source=("git://anongit.freedesktop.org/xorg/app/xscope")
+source=("git+https://gitlab.freedesktop.org/xorg/app/xscope")
 md5sums=('SKIP')
 
 pkgver() {
