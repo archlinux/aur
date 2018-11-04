@@ -1,0 +1,47 @@
+pkgbase = linux-me176c
+	pkgver = 4.19.1
+	pkgrel = 1
+	url = https://github.com/me176c-dev/me176c-archlinux
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = libelf
+	makedepends = git
+	makedepends = python-sphinx
+	makedepends = graphviz
+	makedepends = acpica
+	options = !strip
+	source = archlinux-linux::git+https://github.com/me176c-dev/me176c-kernel.git#tag=arch-4.19.1-1
+	source = git+https://github.com/me176c-dev/me176c-acpi.git#commit=18a1fe0c450375c16e17429b429955e068f83945
+	source = config
+	source = 60-linux.hook
+	source = 90-linux.hook
+	source = linux.preset
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 0566838070b48c2495725d7382dde2c97f813c042eb5491048e3a82255d8ca54
+	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
+	sha256sums = 75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919
+	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
+
+pkgname = linux-me176c
+	pkgdesc = The Linux-me176c kernel and modules
+	install = linux.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio
+	optdepends = crda: to set the correct wireless channels of your country
+	backup = etc/mkinitcpio.d/linux-me176c.preset
+
+pkgname = linux-me176c-headers
+	pkgdesc = Header files and scripts for building modules for Linux-me176c kernel
+
+pkgname = linux-me176c-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-me176c kernel
+
