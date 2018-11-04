@@ -1,7 +1,7 @@
 pkgbase = m17n-im-shortname-unicode-emoji-git
 	pkgdesc = Input method for Unicode Emoji using shortnames
-	pkgver = r9.d69fc3a
-	pkgrel = 2
+	pkgver = r13.eb20fdc
+	pkgrel = 1
 	url = https://github.com/EmptyStackExn/m17n-im-shortname-unicode-emoji
 	arch = i686
 	arch = x86_64
@@ -13,9 +13,7 @@ pkgbase = m17n-im-shortname-unicode-emoji-git
 	provides = m17n-im-shortname-unicode-emoji
 	conflicts = m17n-im-shortname-unicode-emoji
 	source = m17n-im-shortname-unicode-emoji::git+https://github.com/EmptyStackExn/m17n-im-shortname-unicode-emoji
-	source = 0001-Honour-PREFIX-and-DESTDIR-and-don-t-restart-when-ins.patch
 	md5sums = SKIP
-	md5sums = d9cc64413864ef1f666a512f3b430d6d
 
 pkgname = m17n-im-shortname-unicode-emoji-git
 
