@@ -1,0 +1,15 @@
+pkgbase = pep9-asm-git
+	pkgdesc = Pep/9 assembler and simulator for Computer Systems (5th edition) by Stanley Warford
+	pkgver = 9.1
+	pkgrel = 1
+	url = http://computersystemsbook.com/5th-edition/pep9/
+	arch = x86_64
+	license = GPL
+	depends = qt5-base
+	depends = qt5-webengine
+	provides = pep9-asm
+	source = git+https://github.com/StanWarford/pep9
+	md5sums = SKIP
+
+pkgname = pep9-asm-git
+
