@@ -13,8 +13,8 @@ pkgdesc='C++ library to read/write passwords from/to encrypted files using AES-2
 license=('GPL')
 depends=('mingw-w64-crt' 'mingw-w64-c++utilities' 'mingw-w64-openssl')
 optdepends=("$_name-doc: API documentation")
+checkdepends=('mingw-w64-cppunit' 'mingw-w64-wine')
 makedepends=('mingw-w64-gcc' 'mingw-w64-cmake')
-optdepends=("$pkgname-doc: API documentation")
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
 sha256sums=('48e95ad852dc83b598c428f9fd0e9717aa12e81aae8254c2946f380afee1b768')
@@ -29,6 +29,17 @@ build() {
     mkdir -p "build-${_arch}" && pushd "build-${_arch}"
     ${_arch}-cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="/usr/${_arch}" ${_configurations} ../
     make
+    popd
+  done
+}
+
+check() {
+  cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
+  for _arch in ${_architectures}; do
+    mkdir -p "build-${_arch}" && pushd "build-${_arch}"
+    export WINEPATH="/usr/${_arch}/bin"
+    export WINEDEBUG=-all
+    make check
     popd
   done
 }
