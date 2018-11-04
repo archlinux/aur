@@ -13,9 +13,9 @@ pkgdir=${0%%/*}  # dirname $0
 cd -P -- "$pkgdir" || exit 1  # Allow to be called from any directory
 
 if [[ -d src ]]; then
-  makepkg -ef
+  makepkg -ef "$@"
 else
-  makepkg -f
+  makepkg -f "$@"
 fi
 
 namcap PKGBUILD
