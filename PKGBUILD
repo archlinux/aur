@@ -18,7 +18,11 @@ package() {
   local _npmdir="$pkgdir/usr/lib/node_modules/"
   mkdir -p $_npmdir
   cd $_npmdir
-  npm install -g --prefix "$pkgdir/usr" $_npmname@$_npmver
+  npm install -g --user root --prefix "$pkgdir/usr" $_npmname@$_npmver
+
+  # Non-deterministic race in npm gives 777 permissions to random directories.
+  # See https://github.com/npm/npm/issues/9359 for details.
+  find "${pkgdir}"/usr -type d -exec chmod 755 {} +
 }
 
 # vim:set ts=2 sw=2 et:
