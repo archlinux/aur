@@ -1,19 +1,17 @@
 pkgbase = cntk
 	pkgdesc = Microsoft Cognitive Toolkit (CNTK), an open source deep-learning toolkit
-	pkgver = 2.5.1
-	pkgrel = 2
+	pkgver = 2.6
+	pkgrel = 1
 	url = https://github.com/Microsoft/CNTK
 	arch = x86_64
 	license = CUSTOM
 	makedepends = cmake
 	makedepends = git
 	makedepends = inetutils
-	makedepends = java-environment
 	makedepends = python-pip
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	makedepends = swig
-	depends = gcc6
 	depends = boost
 	depends = cub
 	depends = cuda
@@ -25,12 +23,11 @@ pkgbase = cntk
 	depends = opencv
 	depends = openmp
 	depends = openmpi
-	depends = protobuf
+	depends = protobuf-static
 	depends = python-numpy
 	depends = python-scipy
 	optdepends = swig
-	optdepends = java-environment
-	source = git+https://github.com/Microsoft/CNTK#tag=v2.5.1
+	source = git+https://github.com/Microsoft/CNTK#tag=v2.6
 	md5sums = SKIP
 
 pkgname = cntk
