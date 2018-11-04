@@ -1,8 +1,8 @@
 # Maintainer: Oscar Morante <spacepluk at gmail dot com>
 
 _version=2018.3.0
-_build=b6
-_randomstring=f5aefbeed0ac
+_build=b8
+_randomstring=fa755def4b97
 _prefix=/opt/UnityBeta
 
 pkgname=unity-editor-beta-doc
@@ -14,7 +14,7 @@ url='https://unity3d.com/'
 license=('custom')
 depends=('unity-editor-beta')
 source=("https://docs.unity3d.com/2018.3/Documentation/uploads/UnityDocumentation.zip")
-sha1sums=('89730f4d24a14667d7c6151e822a5644439c075d')
+sha1sums=('480805308d5736d6bec1d2174b607f5726651e48')
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
