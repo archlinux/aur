@@ -4,19 +4,19 @@
 # you also find the URL of a binary repository.
 
 # set the web view provider: either webkit, webengine, auto or none
-_webview_provider=webkit
+_webview_provider=${TAGEDITOR_WEBVIEW_PROVIDER:-webkit}
 
 # set the JavaScript provider: either script, qml, auto or none
-_js_provider=qml
+_js_provider=${TAGEDITOR_JS_PROVIDER:-qml}
 
 # whether the experimental JSON export is enabled: ON or OFF
-_json_export=ON
+_json_export=${TAGEDITOR_JSON_EXPORT:-ON}
 
 _reponame=tageditor
 pkgname=tageditor
 pkgver=3.1.2
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='A tag editor with Qt GUI and command-line interface supporting MP4/M4A/AAC (iTunes), ID3, Vorbis, Opus, FLAC and Matroska'
 license=('GPL')
 depends=('qtutilities>=5.6.0' 'tagparser>=6.2.0' 'desktop-file-utils' 'xdg-utils')
