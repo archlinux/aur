@@ -20,7 +20,7 @@
 pkgbase=kodi-pre-release
 pkgname=("kodi-${pkgbase#kodi-*}" "kodi-eventclients-${pkgbase#kodi-*}" "kodi-tools-texturepacker-${pkgbase#kodi-*}" "kodi-dev-${pkgbase#kodi-*}")
 pkgver=18.0b5
-pkgrel=1
+pkgrel=2
 _codename=Leia
 _tag="$pkgver-$_codename"
 # Found on their respective github release pages. One can check them against
@@ -79,7 +79,7 @@ noextract=(
   "fstrcmp-$_fstrcmp_version.tar.gz"
   "flatbuffers-$_flatbuffers_version.tar.gz"
 )
-sha256sums=('fbd04ed38b895e21bf1d7ed5d59d732ee7f1989d684fae7cbaf9c8ee3a52302f'
+sha256sums=('7735bd346d3f1d62f8bd7a37cc5ad25b1fa16404c133e10e12995ac9d23d0161'
             'f25559d4b803321483b28ac9b513671200bdc8e3531c02f0affdd622846a9c5e'
             '38816f8373e243bc5950449b4f3b18938c4e1c59348e3411e23f31db4072e40d'
             '071e414e61b795f2ff9015b21a85fc009dde967f27780d23092643916538a57a'
