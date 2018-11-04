@@ -1,8 +1,8 @@
 # Maintainer: Florian Pritz <bluewind@xinu.at>
 
 pkgname=perl-function-parameters
-pkgver=2.000007
-pkgrel=5
+pkgver=2.001003
+pkgrel=1
 pkgdesc='define functions and methods with parameter lists ("subroutine signatures")'
 arch=(x86_64)
 license=(PerlArtistic GPL)
@@ -11,8 +11,8 @@ depends=('perl>=5.14.0')
 checkdepends=(perl-dir-self perl-test-fatal)
 url=https://metacpan.org/release/Function-Parameters
 source=("http://search.cpan.org/CPAN/authors/id/M/MA/MAUKE/Function-Parameters-$pkgver.tar.gz")
-md5sums=(4821f970b428c199802b38049565ff24)
-sha512sums=(3776e5324f1c78a6d96d86a6c223e29ad6298db105338a7e2de513101eddede19732031a5c7b46e3ccb0935275334ca6ea5779d5acb5501a5de7edb9692aa4dc)
+md5sums=(da36fb4c1a50c7d43ffd77889b0d2547)
+sha512sums=(47fd5e1e4b4d62b4576cc7439ba6f2636cef96f851e668bbd2274f79f2c4ee11fd9aa2e5739bbdfdf3ed0b3c373dc1c8d63920fd390a1d56592fbdc9be90db59)
 _ddir="Function-Parameters-$pkgver"
 
 build()
@@ -36,7 +36,6 @@ package()
 (
   cd "$srcdir/$_ddir"
   make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 )
 
 # Local Variables:
