@@ -3,12 +3,12 @@
 _debpkg=gmchess
 pkgname=gmchess-bin
 pkgver=0.29.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Play Chinese chess (Xiangqi) against a human opponent or the computer"
 arch=("i686" "x86_64")
 url="http://www.xqbase.com/"
 license=('GPL2')
-depends=('gtkmm' 'eleeye-bin')
+depends=('gtkmm' 'eleeye-bin' 'convert-pgn-bin')
 conflicts=('gmchess')
 makedepends=('libarchive')
 source_x86_64=("http://security.ubuntu.com/ubuntu/pool/universe/g/gmchess/${_debpkg}_${pkgver}-3_amd64.deb")
