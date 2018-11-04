@@ -1,6 +1,6 @@
 pkgbase = j8-git
 	pkgdesc = J is a modern, high-level, general-purpose, high-performance programming language
-	pkgver = 8.07.16.20180806
+	pkgver = 8.07.19.20181103
 	pkgrel = 1
 	url = http://www.jsoftware.com
 	install = j8-git.install
@@ -8,7 +8,8 @@ pkgbase = j8-git
 	arch = x86_64
 	license = GPL3
 	license = LGPL
-	depends = qt5-webkit
+	depends = qt5-webengine
+	depends = qt5-websockets
 	depends = qt5-multimedia
 	depends = qt5-svg
 	optdepends = wget: for web/gethttp addon
@@ -17,10 +18,10 @@ pkgbase = j8-git
 	optdepends = lapack: for math/lapack addon
 	source = jsource.zip::https://github.com/jsoftware/jsource/archive/master.zip
 	source = qtide.zip::https://github.com/jsoftware/qtide/archive/master.zip
-	source = jenv.tar.gz::http://www.databaserossoverde.it/jsoftware/j807_env_20180806.tar.gz
+	source = jenv.tar.gz::http://www.databaserossoverde.it/jsoftware/j807_env_20181103.tar.gz
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = 3489809baa1b10d82652fd656e4d8b16
+	md5sums = 141ea8c51fc6f610019d5d356c83f559
 
 pkgname = j8-git
 
