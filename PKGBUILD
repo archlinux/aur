@@ -1,11 +1,12 @@
 # Maintainer: Florian Jacob <projects+arch AT florianjacob )DOT( de>
 pkgname=earlyoom
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Early OOM Daemon for Linux"
 arch=('any')
 url="https://github.com/rfjakob/earlyoom"
 license=('MIT')
+makedepends=('pandoc')
 backup=("etc/default/earlyoom")
 source=(
 	"https://github.com/rfjakob/$pkgname/archive/v$pkgver.tar.gz"
