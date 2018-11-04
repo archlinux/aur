@@ -1,8 +1,8 @@
 # Maintainer: Jorge Israel Peña <jorge.israel.p@gmail.com>
 
 pkgname=syncplay-git
-pkgver=1.5.6.Beta2.r4.g2c2045b
-pkgrel=2
+pkgver=1.6.0.r3.g6f840e4
+pkgrel=1
 pkgdesc="synchronize watching movies on mplayer2, vlc, mpv, and mpc-hc on many computers"
 arch=('any')
 url="http://syncplay.pl/"
