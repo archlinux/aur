@@ -1,8 +1,8 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
-_rtkver=0.5.6
+_rtkver=0.6.1
 pkgname=tuna-lv2
-pkgver=0.4.6
+pkgver=0.4.8
 pkgrel=1
 pkgdesc="A musical instrument strobe tuner as a stand-alone JACK client and LV2 plugin."
 arch=('i686' 'x86_64')
@@ -18,8 +18,8 @@ provides=('tuna.lv2' 'lv2-tuna')
 conflicts=('tuna.lv2' 'lv2-tuna' 'x42-plugins')
 source=("tuna-lv2-$pkgver.tar.gz::https://github.com/x42/tuna.lv2/archive/v${pkgver}.tar.gz"
         "robtk-$_rtkver.tar.gz::https://github.com/x42/robtk/archive/v${_rtkver}.tar.gz")
-md5sums=('ac2983bed8e917e4ccda6561cb2c6acb'
-         '89639d4249dc8bb1b79e0f84860633ce')
+md5sums=('85d870a988755300b833f48cad05ef57'
+         'fc8167293207c9bdd5d413e8575ee759')
 
 build() {
   cd "$srcdir/tuna.lv2-$pkgver"
