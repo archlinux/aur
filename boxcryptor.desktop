@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=BoxCryptor
+Comment=Desktop client for Boxcryptor Portable
+GenericName=BoxCryptor
+Exec=boxcryptor
+Icon=boxcryptor
+Terminal=false
+Type=Application
+Categories=Network
+X-XFCE-Category=FileManager
