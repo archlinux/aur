@@ -1,0 +1,18 @@
+pkgbase = libeval0-bin
+	pkgdesc = Library to keep eleeye's (Elephant Eye / XiangQi Chinese Chess) engine algorithm's balance
+	pkgver = 0.29.6
+	pkgrel = 1
+	url = http://www.xqbase.com/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = libarchive
+	conflicts = libeval0
+	conflicts = gmchess
+	source_i686 = http://security.ubuntu.com/ubuntu/pool/universe/g/gmchess/libeval0_0.29.6-3_i386.deb
+	sha1sums_i686 = c41c2f1dad3045fb2e249a41f199ee3138a30d38
+	source_x86_64 = http://security.ubuntu.com/ubuntu/pool/universe/g/gmchess/libeval0_0.29.6-3_amd64.deb
+	sha1sums_x86_64 = 270dd432dd9cbcccf646f7d3392d44aef38c31d3
+
+pkgname = libeval0-bin
+
