@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-gripper-action-controller
 	pkgdesc = ROS - The gripper_action_controller package.
-	pkgver = 0.9.2
+	pkgver = 0.9.4
 	pkgrel = 1
 	url = http://www.ros.org/
 	arch = any
@@ -35,8 +35,10 @@ pkgbase = ros-indigo-gripper-action-controller
 	depends = ros-indigo-actionlib
 	depends = ros-indigo-cmake-modules
 	depends = ros-indigo-urdf
-	source = gripper_action_controller::git+https://github.com/ros-gbp/ros_controllers-release.git#tag=release/indigo/gripper_action_controller/0.9.2-0
-	md5sums = SKIP
+	source = gripper_action_controller::git+https://github.com/ros-gbp/ros_controllers-release.git#tag=release/indigo/gripper_action_controller/0.9.4-0
+	source = fix-urdf-lib-compat.patch
+	sha256sums = SKIP
+	sha256sums = e17c3af98a56d448e8077e796734f380ec560575b895b23f78c1944cd69f4cd8
 
 pkgname = ros-indigo-gripper-action-controller
 

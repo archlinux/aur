@@ -4,7 +4,7 @@ pkgdesc="ROS - The gripper_action_controller package."
 url='http://www.ros.org/'
 
 pkgname='ros-indigo-gripper-action-controller'
-pkgver='0.9.2'
+pkgver='0.9.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -44,8 +44,17 @@ depends=(${ros_depends[@]})
 
 _tag=release/indigo/gripper_action_controller/${pkgver}-${_pkgver_patch}
 _dir=gripper_action_controller
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros_controllers-release.git"#tag=${_tag})
-md5sums=('SKIP')
+source=(
+  "${_dir}"::"git+https://github.com/ros-gbp/ros_controllers-release.git"#tag=${_tag}
+  'fix-urdf-lib-compat.patch'
+)
+sha256sums=('SKIP'
+            'e17c3af98a56d448e8077e796734f380ec560575b895b23f78c1944cd69f4cd8')
+
+prepare() {
+  cd ${srcdir}/${_dir}
+  patch -Np1 -i ${srcdir}/fix-urdf-lib-compat.patch
+}
 
 build() {
   # Use ROS environment variables

@@ -1,0 +1,61 @@
+diff --git a/include/gripper_action_controller/gripper_action_controller_impl.h b/include/gripper_action_controller/gripper_action_controller_impl.h
+index 29007412..0874819d 100644
+--- a/include/gripper_action_controller/gripper_action_controller_impl.h
++++ b/include/gripper_action_controller/gripper_action_controller_impl.h
+@@ -41,9 +41,9 @@ std::string getLeafNamespace(const ros::NodeHandle& nh)
+   return complete_ns.substr(id + 1);
+ }  
+ 
+-boost::shared_ptr<urdf::Model> getUrdf(const ros::NodeHandle& nh, const std::string& param_name)
++std::shared_ptr<urdf::Model> getUrdf(const ros::NodeHandle& nh, const std::string& param_name)
+ {
+-  boost::shared_ptr<urdf::Model> urdf(new urdf::Model);
++  std::shared_ptr<urdf::Model> urdf(new urdf::Model);
+ 
+   std::string urdf_str;
+   // Check for robot_description in proper namespace
+@@ -53,19 +53,19 @@ boost::shared_ptr<urdf::Model> getUrdf(const ros::NodeHandle& nh, const std::str
+     {
+       ROS_ERROR_STREAM("Failed to parse URDF contained in '" << param_name << "' parameter (namespace: " <<
+         nh.getNamespace() << ").");
+-      return boost::shared_ptr<urdf::Model>();
++      return std::shared_ptr<urdf::Model>();
+     }
+   }
+   // Check for robot_description in root
+   else if (!urdf->initParam("robot_description"))
+   {
+     ROS_ERROR_STREAM("Failed to parse URDF contained in '" << param_name << "' parameter");
+-    return boost::shared_ptr<urdf::Model>();
++    return std::shared_ptr<urdf::Model>();
+   }
+   return urdf;
+ }
+ 
+-typedef boost::shared_ptr<const urdf::Joint> UrdfJointConstPtr;
++typedef std::shared_ptr<const urdf::Joint> UrdfJointConstPtr;
+ std::vector<UrdfJointConstPtr> getUrdfJoints(const urdf::Model& urdf, const std::vector<std::string>& joint_names)
+ {
+   std::vector<UrdfJointConstPtr> out;
+@@ -157,7 +157,7 @@ bool GripperActionController<HardwareInterface>::init(HardwareInterface* hw,
+   }
+   
+   // URDF joints
+-  boost::shared_ptr<urdf::Model> urdf = getUrdf(root_nh, "robot_description");
++  std::shared_ptr<urdf::Model> urdf = getUrdf(root_nh, "robot_description");
+   if (!urdf) 
+   {
+     return false;
+diff --git a/include/gripper_action_controller/hardware_interface_adapter.h b/include/gripper_action_controller/hardware_interface_adapter.h
+index cd896e19..22f72084 100644
+--- a/include/gripper_action_controller/hardware_interface_adapter.h
++++ b/include/gripper_action_controller/hardware_interface_adapter.h
+@@ -182,7 +182,7 @@ public:
+   }
+ 
+ private:
+-  typedef boost::shared_ptr<control_toolbox::Pid> PidPtr;
++  typedef std::shared_ptr<control_toolbox::Pid> PidPtr;
+   PidPtr pid_;
+   hardware_interface::JointHandle* joint_handle_ptr_;
+ };
