@@ -1,0 +1,14 @@
+pkgbase = pkgcloud-git
+	pkgdesc = Talk to the packagecloud API, in Go
+	pkgver = r58.4f67f66
+	pkgrel = 1
+	url = https://github.com/tonylambiris/pkgcloud
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = go
+	source = pkgcloud-git::git+https://github.com/tonylambiris/pkgcloud.git
+	sha256sums = SKIP
+
+pkgname = pkgcloud-git
+
