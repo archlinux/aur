@@ -1,6 +1,6 @@
 # Maintainer: Danilo Bargen <aur at dbrgn dot ch>
 pkgname=librepcb
-pkgver=0.1.0_rc1
+pkgver=0.1.0_rc2
 _pkgver=${pkgver/_/-}
 pkgrel=1
 pkgdesc="A free EDA software to develop printed circuit boards."
