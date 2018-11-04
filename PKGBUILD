@@ -1,13 +1,13 @@
 # Maintainer: Oscar Morante <spacepluk@gmail.com>
 
-_version=2018.2.13
+_version=2018.2.14
 _build=f1
-_randomstring=83fbdcd35118
+_randomstring=3262fb3b0716
 _prefix=/opt/Unity
 
 pkgname=unity-editor-doc
 pkgver=${_version}${_build}
-pkgrel=2
+pkgrel=1
 pkgdesc="Unity User Manual and Scripting API Reference."
 arch=('x86_64')
 url='https://unity3d.com/'
