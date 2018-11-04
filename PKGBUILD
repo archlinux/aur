@@ -1,8 +1,8 @@
 # Maintainer: Oscar Morante <spacepluk@gmail.com>
 
-_version=2018.2.13
+_version=2018.2.14
 _build=f1
-_randomstring=83fbdcd35118
+_randomstring=3262fb3b0716
 _prefix=/opt/Unity
 
 pkgname=unity-editor-windows
@@ -15,7 +15,7 @@ license=('custom')
 depends=('unity-editor')
 makedepends=('cpio')
 source=("https://download.unity3d.com/download_unity/${_randomstring}/MacEditorTargetInstaller/UnitySetup-Windows-Mono-Support-for-Editor-${_version}${_build}.pkg")
-sha1sums=('61bf057e2bd394efc60446d8c51c197402fe0181')
+sha1sums=('a10f55c94a2a3f3b019dba103755c4d0e9189d14')
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
