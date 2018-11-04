@@ -4,7 +4,7 @@
 # or submit a pull request @ https://github.com/savagezen/pkgbuild
 
 pkgname=cmus-git
-pkgver=v2.7.0.r2.gc22b5bd
+pkgver=v2.8.0.rc0.r92.ge7682e4
 pkgrel=1
 pkgdesc="A very feature-rich ncurses-based music player"
 arch=('i686' 'x86_64')
