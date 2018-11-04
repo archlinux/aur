@@ -1,0 +1,4 @@
+*.pacman
+*.tar.xz
+/pkg
+/src
