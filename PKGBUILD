@@ -1,6 +1,6 @@
 # Maintainer: Florian Jacob <projects+arch AT florianjacob )DOT( de>
 pkgname=earlyoom
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Early OOM Daemon for Linux"
 arch=('any')
@@ -10,7 +10,7 @@ backup=("etc/default/earlyoom")
 source=(
 	"https://github.com/rfjakob/$pkgname/archive/v$pkgver.tar.gz"
 )
-sha256sums=('10f700f4eac5322ae7c05520817450da25c2a492471305c8d79192f8fe21ab41')
+sha256sums=('ce4e8b435eda9bd1427b6606558356249486a405850b9869c0006e7fbd454c5f')
 
 build() {
 	cd "$pkgname-$pkgver"
