@@ -4,25 +4,28 @@
 
 pkgname=openfx-arena
 pkgver=2.3.14
-pkgrel=1
+pkgrel=2
 arch=("i686" "x86_64")
 pkgdesc="Extra OpenFX plugins for Natron"
 url="https://github.com/NatronGitHub/openfx-arena"
 license=("GPL")
 makedepends=("git")
-depends=('libcdr' 'libgl' 'libmagick' 'librsvg' 'libxt' 'libzip' 'ocl-icd' 'opencolorio' 'poppler-glib')
+depends=('libcdr' 'libgl' 'libmagick' 'librsvg' 'libxt' 'libzip' \
+	 'ocl-icd' 'opencolorio' 'poppler-glib')
 source=("$pkgname::git+https://github.com/NatronGitHub/openfx-arena#tag=Natron-$pkgver"
         "git+https://github.com/NatronGitHub/openfx"
         "git+https://github.com/NatronGitHub/openfx-supportext"
         "git+https://github.com/NatronGitHub/openfx-io"
         "git+https://github.com/NatronGitHub/SequenceParsing"
-        "git+https://github.com/NatronGitHub/tinydir")
+        "git+https://github.com/NatronGitHub/tinydir"
+        "im7.patch")
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
-         'SKIP')
+         'SKIP'
+         '2e4cf8665b074afe84d743ea86e9e89e')
 
 # Check the ImageMagick version
 _IM_VERSION=$(echo `identify -version` | tr -dc '0-9' | cut -c 1)
@@ -47,8 +50,10 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname"
+  patch Makefile.master ../../im7.patch
   make CONFIG=release \
-       IM=$_IM_VERSION
+       IM=$_IM_VERSION \
+       #LIBS="-linotify"
 }
 
 package() {
