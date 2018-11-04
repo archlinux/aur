@@ -1,4 +1,5 @@
 # Maintainer: Andrew Crouthamel
+# CoMaintainer: physkets
 # Contributor: Liviu Cristian Mirea-Ghiban
 # Contributor: Lars Øyvind Hagland
 # Contributor: Vishnu V K
@@ -8,23 +9,32 @@
 # Contributor: Roman Pearah
 
 pkgname=netextender
-pkgver=8.6.801
-pkgrel=3
+pkgver=9.0.803
+pkgrel=1
 pkgdesc="SonicWALL SSL VPN Client"
 arch=('i686' 'x86_64')
-url="http://www.sonicwall.com/us/en/products/324.html"
+url="https://www.sonicwall.com/en-us/products/remote-access/vpn-client"
 license=('custom')
-depends=('java-environment' 'bash' 'ppp' 'net-tools')
-source_i686=("https://sslvpn.demo.sonicwall.com/NetExtender.tgz")
-source_x86_64=("https://sslvpn.demo.sonicwall.com/NetExtender.x86_64.tgz")
-sha256sums_i686=('4fc4fb7ae9fd6539965e17e65b8db786c9b3496a5a5d910b80b84613fb6150be')
-sha256sums_x86_64=('7c6532bcc946655246c179e54a983b4215a3c7bc2dcdc727b4ba77a84051b77c')
+depends=('bash' 'ppp' 'net-tools')
+optdepends=('java-runtime: GUI support')
+source_i686=("https://sslvpn.demo.sonicwall.com/NetExtender.tgz",
+             "https://www.sonicwall.com/en-us/legal/eupa/general-product-agreement")
+source_x86_64=("https://sslvpn.demo.sonicwall.com/NetExtender.x86_64.tgz",
+               "https://www.sonicwall.com/en-us/legal/eupa/general-product-agreement")
+sha256sums_i686=('c49eb90876750c6942eeac4df1f6206dc7f364bde7641c2f4d53dcba8d0ce6e3'
+                 'SKIP')
+sha256sums_x86_64=('b83eba640001580cab0f4c36d1eba104a19bffa605a606f9087ad1d3beb6561a'
+                 'SKIP')
+
 install="${pkgname}.install"
 DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 
 package() {
+
+  install -Dm 644 general-product-agreement "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+
   mkdir -p "$pkgdir/usr/share/netExtender/icons"
-  cd "$srcdir/netExtenderClient"
+  cd "netExtenderClient"
 
   install -Dm 644 sslvpn "$pkgdir/etc/ppp/peers/sslvpn"
   install -Dm 755 netExtender "$pkgdir/usr/bin/netExtender"
