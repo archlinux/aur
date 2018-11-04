@@ -1,7 +1,7 @@
 pkgbase = plasma-git
 	pkgdesc = Interactive disassembler for x86/ARM/MIPS. Generates indented pseudo-code with colored syntax code.
 	pkgver = 20171015.r881
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/plasma-disassembler/plasma
 	arch = armv6h
 	arch = armv7h
@@ -12,6 +12,7 @@ pkgbase = plasma-git
 	groups = archstrike-analysis
 	license = GPL3
 	makedepends = git
+	makedepends = python-pip
 	depends = python-keystone
 	depends = python-capstone
 	depends = python-pyelftools
