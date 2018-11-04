@@ -1,0 +1,25 @@
+pkgbase = ping-git
+	pkgdesc = Ping lets you test your web API with some example data. A helpful tool that lets you degug what part of your API is causing you issues. Designed for Pantheon Shell
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/jeremyvaartjes/ping
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = gtk3
+	depends = vala
+	depends = granite
+	depends = gtksourceview3
+	depends = json-glib
+	depends = libgee
+	depends = libsoup
+	provides = ping
+	conflicts = ping
+	source = git+https://github.com/jeremyvaartjes/ping.git
+	md5sums = SKIP
+
+pkgname = ping-git
+
