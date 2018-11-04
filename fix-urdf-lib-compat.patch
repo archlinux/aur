@@ -1,0 +1,55 @@
+diff --git a/include/diff_drive_controller/diff_drive_controller.h b/include/diff_drive_controller/diff_drive_controller.h
+index e08b726b..75af7688 100644
+--- a/include/diff_drive_controller/diff_drive_controller.h
++++ b/include/diff_drive_controller/diff_drive_controller.h
+@@ -122,11 +122,11 @@ namespace diff_drive_controller{
+     ros::Subscriber sub_command_;
+ 
+     /// Publish executed commands
+-    boost::shared_ptr<realtime_tools::RealtimePublisher<geometry_msgs::TwistStamped> > cmd_vel_pub_;
++    std::shared_ptr<realtime_tools::RealtimePublisher<geometry_msgs::TwistStamped> > cmd_vel_pub_;
+ 
+     /// Odometry related:
+-    boost::shared_ptr<realtime_tools::RealtimePublisher<nav_msgs::Odometry> > odom_pub_;
+-    boost::shared_ptr<realtime_tools::RealtimePublisher<tf::tfMessage> > tf_odom_pub_;
++    std::shared_ptr<realtime_tools::RealtimePublisher<nav_msgs::Odometry> > odom_pub_;
++    std::shared_ptr<realtime_tools::RealtimePublisher<tf::tfMessage> > tf_odom_pub_;
+     Odometry odometry_;
+ 
+     /// Wheel separation, wrt the midpoint of the wheel width:
+diff --git a/src/diff_drive_controller.cpp b/src/diff_drive_controller.cpp
+index 79c29724..237c606c 100644
+--- a/src/diff_drive_controller.cpp
++++ b/src/diff_drive_controller.cpp
+@@ -58,7 +58,7 @@ static double euclideanOfVectors(const urdf::Vector3& vec1, const urdf::Vector3&
+  * \param link Link
+  * \return true if the link is modeled as a Cylinder; false otherwise
+  */
+-static bool isCylinder(const boost::shared_ptr<const urdf::Link>& link)
++static bool isCylinder(const std::shared_ptr<const urdf::Link>& link)
+ {
+   if (!link)
+   {
+@@ -93,7 +93,7 @@ static bool isCylinder(const boost::shared_ptr<const urdf::Link>& link)
+  * \param [out] wheel_radius Wheel radius [m]
+  * \return true if the wheel radius was found; false otherwise
+  */
+-static bool getWheelRadius(const boost::shared_ptr<const urdf::Link>& wheel_link, double& wheel_radius)
++static bool getWheelRadius(const std::shared_ptr<const urdf::Link>& wheel_link, double& wheel_radius)
+ {
+   if (!isCylinder(wheel_link))
+   {
+@@ -500,10 +500,10 @@ namespace diff_drive_controller{
+       return false;
+     }
+ 
+-    boost::shared_ptr<urdf::ModelInterface> model(urdf::parseURDF(robot_model_str));
++    std::shared_ptr<urdf::ModelInterface> model = (urdf::parseURDF(robot_model_str));
+ 
+-    boost::shared_ptr<const urdf::Joint> left_wheel_joint(model->getJoint(left_wheel_name));
+-    boost::shared_ptr<const urdf::Joint> right_wheel_joint(model->getJoint(right_wheel_name));
++    std::shared_ptr<const urdf::Joint> left_wheel_joint(model->getJoint(left_wheel_name));
++    std::shared_ptr<const urdf::Joint> right_wheel_joint(model->getJoint(right_wheel_name));
+ 
+     if (lookup_wheel_separation)
+     {
