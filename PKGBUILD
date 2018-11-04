@@ -59,13 +59,16 @@ prepare() {
 }
 
 
-pkgver() {
-  [[ $_appimage_path =~ /releases/download/v([^/]+).* ]]
-  local version=${BASH_REMATCH[1]}
-  version=${version//-/.}
-  echo "$version"
-}
-
+pkgver()
+  # Curly braces are not needed for a single compound command :-P
+  if [[ -n $_saved_version ]]; then
+    echo "$_saved_version"
+  else
+    [[ $_appimage_path =~ /releases/download/v([^/]+).* ]]
+    local _saved_version=${BASH_REMATCH[1]}
+    _saved_version=${_saved_version//-/.}
+    echo "$_saved_version"
+  fi
 
 package() {
   cd "$pkgdir"
