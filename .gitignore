@@ -1,4 +1,5 @@
 src
 pkg
-*.tar.xz
-nixnote2*AppImage
+squashfs-root
+[Nn]ix[Nn]ote2*[Aa]pp[Ii]mage
+nixnote2*.pkg.*
