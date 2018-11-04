@@ -1,0 +1,19 @@
+pkgbase = eleeye-bin
+	pkgdesc = Elephant Eye - a XiangQi (Chinese Chess) Engine with Strong AI
+	pkgver = 0.29.6
+	pkgrel = 1
+	url = http://www.xqbase.com/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = libarchive
+	depends = libeval0-bin
+	conflicts = eleeye
+	conflicts = gmchess
+	source_i686 = http://security.ubuntu.com/ubuntu/pool/universe/g/gmchess/eleeye_0.29.6-3_i386.deb
+	sha1sums_i686 = 765ba45384631581c66c8e0031ec4ac88e9ac904
+	source_x86_64 = http://security.ubuntu.com/ubuntu/pool/universe/g/gmchess/eleeye_0.29.6-3_amd64.deb
+	sha1sums_x86_64 = 814851580b3033b484381adaef2fad4c558bf3b0
+
+pkgname = eleeye-bin
+
