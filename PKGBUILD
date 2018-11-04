@@ -3,7 +3,7 @@
 _pkgname=vim-fish
 pkgname=${_pkgname}-git
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc='VIM runtime files for FISH stuff'
 url='https://github.com/dag/vim-fish'
 arch=('any')
