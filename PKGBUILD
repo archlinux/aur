@@ -6,12 +6,12 @@ pkgver=1.0.38
 _timestamp=20180522
 _extramodules=extramodules-4.17-ARCH
 _ccstoolsver=1.8.5
-pkgrel=2
+pkgrel=3
 pkgdesc='TOMOYO Linux 1.8.x Module for the Linux kernel'
 arch=('x86_64')
 url='http://akari.osdn.jp/'
 license=('GPL')
-makedepends=('linux' 'linux-headers>=4.17' 'linux-headers<4.18')
+makedepends=('linux' 'linux-headers>=4.19' 'linux-headers<4.20')
 conflicts=("ccs-tools<${_ccstoolsver}")
 install=${pkgname}.install
 source=("http://osdn.jp/frs/redir.php?f=/akari/49272/${pkgname}-${pkgver}-${_timestamp}.tar.gz"

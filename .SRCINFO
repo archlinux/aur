@@ -1,14 +1,14 @@
 pkgbase = akari
 	pkgdesc = TOMOYO Linux 1.8.x Module for the Linux kernel
 	pkgver = 1.0.38
-	pkgrel = 2
+	pkgrel = 3
 	url = http://akari.osdn.jp/
 	install = akari.install
 	arch = x86_64
 	license = GPL
 	makedepends = linux
-	makedepends = linux-headers>=4.17
-	makedepends = linux-headers<4.18
+	makedepends = linux-headers>=4.19
+	makedepends = linux-headers<4.20
 	conflicts = ccs-tools<1.8.5
 	noextract = akari-1.0.38-20180522.tar.gz
 	source = http://osdn.jp/frs/redir.php?f=/akari/49272/akari-1.0.38-20180522.tar.gz
