@@ -1,0 +1,13 @@
+diff --git a/include/effort_controllers/joint_position_controller.h b/include/effort_controllers/joint_position_controller.h
+index 6246ccb5..46c45c9a 100644
+--- a/include/effort_controllers/joint_position_controller.h
++++ b/include/effort_controllers/joint_position_controller.h
+@@ -162,7 +162,7 @@ public:
+   double getPosition();
+ 
+   hardware_interface::JointHandle joint_;
+-  boost::shared_ptr<const urdf::Joint> joint_urdf_;
++  std::shared_ptr<const urdf::Joint> joint_urdf_;
+   realtime_tools::RealtimeBuffer<Commands> command_;
+   Commands command_struct_; // pre-allocated memory that is re-used to set the realtime buffer
+ 

@@ -4,7 +4,7 @@ pkgdesc="ROS - effort_controllers."
 url='https://github.com/ros-controls/ros_controllers/wiki'
 
 pkgname='ros-indigo-effort-controllers'
-pkgver='0.9.2'
+pkgver='0.9.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -34,8 +34,17 @@ depends=(${ros_depends[@]})
 
 _tag=release/indigo/effort_controllers/${pkgver}-${_pkgver_patch}
 _dir=effort_controllers
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros_controllers-release.git"#tag=${_tag})
-md5sums=('SKIP')
+source=(
+  "${_dir}"::"git+https://github.com/ros-gbp/ros_controllers-release.git#tag=${_tag}"
+  'fix-urdf-lib-compat.patch'
+)
+sha256sums=('SKIP'
+            '1a32b25c5d6d7fbb7b11c1e3b286751afd03ae05a614cde37e7549de6bc60eac')
+
+prepare() {
+  cd ${srcdir}/${_dir}
+  patch -Np1 -i ${srcdir}/fix-urdf-lib-compat.patch
+}
 
 build() {
   # Use ROS environment variables
