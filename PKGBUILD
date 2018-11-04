@@ -10,8 +10,8 @@ license=('GPL')
 groups=()
 depends=('python' 'calfbox-git' 'python-pyqt5')
 makedepends=('git' 'nuitka')
-optdepends=('non-sessionmanager: required to run Patroneo'
-            'raysession-git: alternative to non-sessionmanager')
+optdepends=('non-session-manager: required to run Patroneo'
+            'raysession-git: alternative to non-session-manager')
 provides=('patroneo' 'patroneo-git')
 conflicts=('patroneo' 'patroneo-git')
 install=
