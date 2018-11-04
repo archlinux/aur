@@ -1,5 +1,5 @@
 pkgbase = python2-frida-tools
-	pkgdesc = Inject JavaScript to explore native apps on Windows, Mac, Linux, iOS and Android. Python 2 version
+	pkgdesc = Inject JavaScript to explore native apps on Windows, Mac, Linux, iOS and Android. Python 2 version from Pypi.
 	pkgver = 1.2.2
 	pkgrel = 1
 	url = http://www.frida.re
@@ -10,6 +10,7 @@ pkgbase = python2-frida-tools
 	depends = python2-pygments
 	depends = python2-prompt_toolkit=1.0.15
 	depends = python2-colorama
+	depends = python2-frida
 	source = https://files.pythonhosted.org/packages/54/a4/6d0a320c21ba9964b6de1dfa197db7da5397904930c877c250804fcc2807/frida-tools-1.2.2.tar.gz
 	source = COPYING
 	sha256sums = d059760a06a4b01738685973502ea0655f1a49cc50305573c3264f06c1683942
