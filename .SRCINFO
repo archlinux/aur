@@ -1,6 +1,6 @@
 pkgbase = python-halo
 	pkgdesc = Beautiful terminal spinners in Python
-	pkgver = 0.0.18
+	pkgver = 0.0.21
 	pkgrel = 1
 	url = https://github.com/manrajgrover/halo
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = python-halo
 	depends = python-cursor
 	depends = python-termcolor
 	depends = python-six
-	source = https://files.pythonhosted.org/packages/source/h/halo/halo-0.0.18.tar.gz
-	sha256sums = b47d06f5d12d42473befb3ee88442f1cd0cfbec9a804c48ff83bc00f28dcd714
+	source = https://files.pythonhosted.org/packages/source/h/halo/halo-0.0.21.tar.gz
+	sha256sums = 2cfdb50106f6d13ac45fcacbf4ba5b257f204ab8a717991bce44b5bfba8d464f
 
 pkgname = python-halo
 
