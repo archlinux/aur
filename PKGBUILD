@@ -1,12 +1,12 @@
 pkgname=gforth-git
-pkgver=20180206
+pkgver=20181103
 pkgrel=1
 pkgdesc="Gforth is the Forth implementation of the GNU project."
 arch=(i686 x86_64)
 url="https://www.gnu.org/software/gforth"
 license=('GPLv3')
 depends=()
-makedepends=("make" "git" "gforth")
+makedepends=("make" "git" "gforth" "texinfo")
 provides=("gforth")
 conflicts=("gforth")
 source=('git+https://git.savannah.gnu.org/git/gforth.git')
@@ -22,6 +22,8 @@ build() {
 	./autogen.sh
 	./configure --prefix=/usr
 	make -j $(nproc)
+	make -j $(nproc) doc
+	make -j $(nproc) more
 }
 
 check() {
