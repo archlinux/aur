@@ -2,7 +2,7 @@
 pkgname=librepcb
 pkgver=0.1.0_rc2
 _pkgver=${pkgver/_/-}
-pkgrel=1
+pkgrel=2
 pkgdesc="A free EDA software to develop printed circuit boards."
 arch=('x86_64' 'i686')
 url="http://librepcb.org/"
@@ -12,7 +12,7 @@ depends=('desktop-file-utils' 'shared-mime-info' 'hicolor-icon-theme' 'qt5-base'
 provides=('librepcb')
 conflicts=('librepcb-git' 'librepcb-appimage')
 source=("https://download.librepcb.org/releases/${_pkgver}/librepcb-${_pkgver}-source.zip")
-sha256sums=('355063a50bb8792be520b21c0f2ce94767a6a7e1fd5e8dc24e6028b2874a620e')
+sha256sums=('0299971bc18d3cc5659e92b466c1950cd7c3c2d993ca04bd2e493a2827aa55e6')
 
 build() {
   cd "${srcdir}/librepcb-${_pkgver}/"
