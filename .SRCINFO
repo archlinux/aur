@@ -5,6 +5,7 @@ pkgbase = phonon-qt4
 	url = http://phonon.kde.org/
 	install = phonon-qt4.install
 	arch = x86_64
+	arch = i686
 	license = LGPL
 	makedepends = extra-cmake-modules
 	makedepends = libpulse
