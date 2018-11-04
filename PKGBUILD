@@ -3,7 +3,7 @@
 # Maintainer: Xyne <ca dot archlinux at xyne, backwards>
 
 pkgname=gonvert
-pkgver=0.2.38
+pkgver=0.2.39
 pkgrel=1
 pkgdesc='unit conversion utility with 51 categories and 972 units'
 url='http://www.unihedron.com/projects/gonvert/index.php'
@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 depends=('gtk2' 'python2' 'pygtk')
 install=
 source=(http://www.unihedron.com/projects/gonvert/downloads/$pkgname-$pkgver.tar.gz)
-sha256sums=('0c93e35af5c9c618919346345fdffb62adafeda0e0fb918e2e5661480e89ffbd')
+sha256sums=('013b5b8be7d4af05667bc3689bda021e843e5bb8362d72727076ab77df375de1')
 
 
 prepare() {
