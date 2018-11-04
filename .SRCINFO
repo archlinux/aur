@@ -1,6 +1,6 @@
 pkgbase = rstudio-desktop-git
 	pkgdesc = A powerful and productive integrated development environment (IDE) for R programming language
-	pkgver = 1.2.679
+	pkgver = 1.2.679.r1059
 	pkgrel = 1
 	url = https://www.rstudio.com/products/rstudio/
 	install = rstudio-desktop-git.install
@@ -54,7 +54,7 @@ pkgbase = rstudio-desktop-git
 	md5sums = ddd572887957fd5cdfde3469bd8c1102
 	md5sums = a07084d60807d4643738d8bdee87117b
 	md5sums = 0e03798b8e53096c4a906bde05e32378
-	md5sums = a095c1c62270a1997a5d158144394dbb
+	md5sums = 625896d99d6f3367304e728da34d33eb
 
 pkgname = rstudio-desktop-git
 

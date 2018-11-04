@@ -3,7 +3,7 @@
 
 pkgname=rstudio-desktop-git
 _gitname=rstudio
-pkgver=1.2.679.r1059
+pkgver=1.2.679.r1212
 _gwtver=2.8.1
 _ginver=2.1.2
 _qtver=5.10.1
@@ -32,7 +32,7 @@ md5sums=('SKIP'
          'ddd572887957fd5cdfde3469bd8c1102'
          'a07084d60807d4643738d8bdee87117b'
          '0e03798b8e53096c4a906bde05e32378'
-         'a095c1c62270a1997a5d158144394dbb')
+         '625896d99d6f3367304e728da34d33eb')
 
 pkgver() {
     cd "${srcdir}/${_gitname}"
