@@ -1,7 +1,7 @@
 # Maintainer: fenuks
 
 pkgname=skim
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Fuzzy Finder in rust!"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ makedepends=('rust' 'cargo')
 url="https://github.com/lotabout/skim"
 license=('MIT')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/lotabout/$pkgname/tar.gz/v$pkgver)
-sha256sums=('f616e229971c75b14e46a5843389e61148262ad41965afa051ff85970f3a6773')
+sha256sums=('41280bee2138afefff95f76a640b753d1cb9215e8391ef37eab7ccb3517d9019')
 provides=('skim')
 
 build() {
