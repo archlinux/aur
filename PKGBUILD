@@ -6,18 +6,18 @@
 _reponame=tagparser
 pkgname=mingw-w64-tagparser
 _name=${pkgname#mingw-w64-}
-pkgver=8.0.0
+pkgver=8.0.1
 pkgrel=1
 arch=('any')
 pkgdesc='C++ library for reading and writing MP4/M4A/AAC (iTunes), ID3, Vorbis, Opus, FLAC and Matroska tags (mingw-w64)'
 license=('GPL')
 depends=('mingw-w64-crt' 'mingw-w64-c++utilities>=4.5.0' 'mingw-w64-zlib')
 optdepends=("$_name-doc: API documentation")
+checkdepends=('mingw-w64-cppunit' 'mingw-w64-wine')
 makedepends=('mingw-w64-gcc' 'mingw-w64-cmake')
-optdepends=("$pkgname-doc: API documentation")
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('b308e457f7ba6009f5b64acb0ee69daf7219525470391c63ba27d8b60ba91a13')
+sha256sums=('2dae626ed17c2dd8a0b673e12187ee4c8192e5c6967cf26b1c8ca6dd23992b30')
 options=(!buildflags staticlibs !strip !emptydirs)
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || _configurations='-DENABLE_STATIC_LIBS:BOOL=ON'
@@ -29,6 +29,23 @@ build() {
     mkdir -p "build-${_arch}" && pushd "build-${_arch}"
     ${_arch}-cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="/usr/${_arch}" ${_configurations} ../
     make
+    popd
+  done
+}
+
+check() {
+  cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
+
+  if [[ -z $TEST_FILE_PATH ]]; then
+    msg2 'Skipping execution of testsuite because the environment variable TEST_FILE_PATH is not set.'
+    return
+  fi
+
+  for _arch in ${_architectures}; do
+    mkdir -p "build-${_arch}" && pushd "build-${_arch}"
+    export WINEPATH="/usr/${_arch}/bin"
+    export WINEDEBUG=-all
+    make check
     popd
   done
 }
