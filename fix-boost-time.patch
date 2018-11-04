@@ -1,0 +1,64 @@
+diff --git a/include/actionlib/client/simple_action_client.h b/include/actionlib/client/simple_action_client.h
+index dfe2f70..7dab227 100644
+--- a/include/actionlib/client/simple_action_client.h
++++ b/include/actionlib/client/simple_action_client.h
+@@ -601,7 +601,7 @@ bool SimpleActionClient<ActionSpec>::waitForResult(const ros::Duration & timeout
+       time_left = loop_period;
+     }
+
+-    done_condition_.timed_wait(lock, boost::posix_time::milliseconds(time_left.toSec() * 1000.0f));
++    done_condition_.timed_wait(lock, boost::posix_time::milliseconds((long) (time_left.toSec() * 1000.0f)));
+   }
+
+   return cur_simple_state_ == SimpleGoalState::DONE;
+diff --git a/include/actionlib/destruction_guard.h b/include/actionlib/destruction_guard.h
+index 196a0a7..1aaa776 100644
+--- a/include/actionlib/destruction_guard.h
++++ b/include/actionlib/destruction_guard.h
+@@ -59,7 +59,7 @@ public:
+     boost::mutex::scoped_lock lock(mutex_);
+     destructing_ = true;
+     while (use_count_ > 0) {
+-      count_condition_.timed_wait(lock, boost::posix_time::milliseconds(1000.0f));
++      count_condition_.timed_wait(lock, boost::posix_time::milliseconds(1000));
+     }
+   }
+
+diff --git a/include/actionlib/server/simple_action_server_imp.h b/include/actionlib/server/simple_action_server_imp.h
+index 3975ec6..bee6137 100644
+--- a/include/actionlib/server/simple_action_server_imp.h
++++ b/include/actionlib/server/simple_action_server_imp.h
+@@ -394,7 +394,7 @@ void SimpleActionServer<ActionSpec>::executeLoop()
+       }
+     } else {
+       execute_condition_.timed_wait(lock,
+-        boost::posix_time::milliseconds(loop_duration.toSec() * 1000.0f));
++        boost::posix_time::milliseconds((long) (loop_duration.toSec() * 1000.0f)));
+     }
+   }
+ }
+diff --git a/src/connection_monitor.cpp b/src/connection_monitor.cpp
+index 19fe21a..c707e48 100644
+--- a/src/connection_monitor.cpp
++++ b/src/connection_monitor.cpp
+@@ -275,7 +275,7 @@ bool actionlib::ConnectionMonitor::waitForActionServerToStart(const ros::Duratio
+     }
+
+     check_connection_condition_.timed_wait(lock,
+-      boost::posix_time::milliseconds(time_left.toSec() * 1000.0f));
++      boost::posix_time::milliseconds((long) (time_left.toSec() * 1000.0f)));
+   }
+
+   return isServerConnected();
+diff --git a/test/destruction_guard_test.cpp b/test/destruction_guard_test.cpp
+index 4ae9e77..c3c7d75 100644
+--- a/test/destruction_guard_test.cpp
++++ b/test/destruction_guard_test.cpp
+@@ -86,7 +86,7 @@ TEST_F(TestRunner, threaded_test) {
+   {
+     boost::mutex::scoped_lock lock(mutex_);
+     while (!done_protecting_) {
+-      cond_.timed_wait(lock, boost::posix_time::milliseconds(100.0f));
++      cond_.timed_wait(lock, boost::posix_time::milliseconds(100));
+     }
+   }

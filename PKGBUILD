@@ -7,7 +7,7 @@ pkgname='ros-kinetic-actionlib'
 pkgver='1.11.13'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-kinetic-rospy
@@ -41,8 +41,17 @@ depends=(${ros_depends[@]}
 
 # Tarball version (faster download)
 _dir="actionlib-release-release-kinetic-actionlib-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/actionlib-release/archive/release/kinetic/actionlib/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('20904f8215d1cc39a6e30fee69a1c964a02dbf4a2f931e56d12fc8850d13d235')
+source=(
+  "${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/actionlib-release/archive/release/kinetic/actionlib/${pkgver}-${_pkgver_patch}.tar.gz"
+  'fix-boost-time.patch'
+)
+sha256sums=('20904f8215d1cc39a6e30fee69a1c964a02dbf4a2f931e56d12fc8850d13d235'
+            'ea66d35dae96c4edf18a1bc4ce380c1c08fc825e3e726cb74b959f371fe839f2')
+
+prepare() {
+  cd ${srcdir}/${_dir}
+  patch -Np1 -i ${srcdir}/fix-boost-time.patch
+}
 
 build() {
   # Use ROS environment variables
