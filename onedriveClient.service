@@ -5,9 +5,9 @@ Wants=network-online.target
 After=network-online.target
 
 [Service]
-ExecStart=/usr/bin/onedrived start --debug
-ExecStop=/usr/bin/onedrived stop
-ExecReload=/usr/bin/onedrived restart
+ExecStart=/usr/bin/onedrive-client start --debug
+ExecStop=/usr/bin/onedrive-client stop
+ExecReload=/usr/bin/onedrive-client restart
 
 [Install]
 WantedBy=multi-user.target

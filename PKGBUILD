@@ -10,7 +10,8 @@ pkgdesc="A Microsoft OneDrive and OneDrive for Business client for Linux, writte
 url="https://github.com/derrix060/onedriveClient"
 license=('MIT')
 arch=('any')
-provides=('onedrived')
+provides=('onedrive-client'
+		  'onedrive-client-pref')
 depends=('inotify-tools'
          'python-pip'
          'ngrok')
