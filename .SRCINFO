@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-rviz-plugin-tutorials
 	pkgdesc = ROS - Tutorials showing how to write plugins for RViz.
 	pkgver = 0.9.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ros.org/wiki/rviz_plugin_tutorials
 	arch = any
 	license = BSD
@@ -10,9 +10,12 @@ pkgbase = ros-indigo-rviz-plugin-tutorials
 	makedepends = ros-build-tools
 	makedepends = ros-indigo-rviz
 	makedepends = ros-indigo-catkin
+	depends = ogre-1.9
 	depends = ros-indigo-rviz
 	source = rviz_plugin_tutorials::git+https://github.com/ros-gbp/visualization_tutorials-release.git#tag=release/indigo/rviz_plugin_tutorials/0.9.2-0
-	md5sums = SKIP
+	source = find-ogre.patch
+	sha256sums = SKIP
+	sha256sums = 5fabd1b72ebcaa98ed550eddfd9a5fbe48cdadbce182b33b40a9d53f7a473fdb
 
 pkgname = ros-indigo-rviz-plugin-tutorials
 

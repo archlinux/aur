@@ -7,7 +7,7 @@ pkgname='ros-indigo-rviz-plugin-tutorials'
 pkgver='0.9.2'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-indigo-rviz
@@ -16,12 +16,24 @@ makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-rviz)
-depends=(${ros_depends[@]})
+depends=(
+  'ogre-1.9'
+  ${ros_depends[@]}
+)
 
 _tag=release/indigo/rviz_plugin_tutorials/${pkgver}-${_pkgver_patch}
 _dir=rviz_plugin_tutorials
-source=("${_dir}"::"git+https://github.com/ros-gbp/visualization_tutorials-release.git"#tag=${_tag})
-md5sums=('SKIP')
+source=(
+  "${_dir}"::"git+https://github.com/ros-gbp/visualization_tutorials-release.git#tag=${_tag}"
+  'find-ogre.patch'
+)
+sha256sums=('SKIP'
+            '5fabd1b72ebcaa98ed550eddfd9a5fbe48cdadbce182b33b40a9d53f7a473fdb')
+
+prepare() {
+  cd ${srcdir}/${_dir}
+  patch -Np1 -i ${srcdir}/find-ogre.patch
+}
 
 build() {
   # Use ROS environment variables
@@ -36,7 +48,8 @@ build() {
   /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
 
   # Build project
-  cmake ${srcdir}/${_dir} \
+  env PKG_CONFIG_PATH=/opt/OGRE-1.9/lib/pkgconfig \
+      cmake ${srcdir}/${_dir} \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/indigo \

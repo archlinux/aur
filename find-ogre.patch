@@ -1,0 +1,29 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 099caba..1f125e6 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -4,9 +4,14 @@
+ ## First start with some standard catkin stuff.
+ cmake_minimum_required(VERSION 2.8.3)
+ project(rviz_plugin_tutorials)
++
++# Ogre
++find_package(PkgConfig REQUIRED)
++pkg_check_modules(OGRE OGRE)
++
+ find_package(catkin REQUIRED COMPONENTS rviz)
+ catkin_package()
+-include_directories(${catkin_INCLUDE_DIRS})
++include_directories(${catkin_INCLUDE_DIRS} ${OGRE_INCLUDE_DIRS})
+ link_directories(${catkin_LIBRARY_DIRS})
+ 
+ ## This plugin includes Qt widgets, so we must include Qt like so:
+@@ -53,7 +58,7 @@ add_library(${PROJECT_NAME} ${SOURCE_FILES})
+ ## library and names the actual file something like
+ ## "librviz_plugin_tutorials.so", or whatever is appropriate for your
+ ## particular OS.
+-target_link_libraries(${PROJECT_NAME} ${QT_LIBRARIES} ${catkin_LIBRARIES})
++target_link_libraries(${PROJECT_NAME} ${QT_LIBRARIES} ${catkin_LIBRARIES} ${OGRE_LIBRARIES})
+ ## END_TUTORIAL
+ 
+ 
