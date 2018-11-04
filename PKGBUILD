@@ -1,10 +1,11 @@
 # Maintainer: Jace Bennest <jacebennest87 at gmail dot com>
 # Contributor: skydrome <skydrome at i2pmail dot org>
+# Contributor: Adrian Wheeldon <arandomowl at gmail dot com>
 # Contributor: StevensNJD4 <github dot com slash StevensNJD4>
 
 pkgname=lazyman
 pkgver=2.4.0.20180915
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple program that lets you stream every NHL and MLB game"
 arch=('any')
 url="https://github.com/StevensNJD4/LazyMan"
@@ -30,6 +31,7 @@ package() {
     install -dm755 "$pkgdir"/usr/share/icons/Numix-Circle/24/apps
     install -dm755 "$pkgdir"/usr/share/icons/Numix-Circle/48/apps
     install -dm777 "$pkgdir"/usr/share/java/lazyman
+    install -dm755 "$pkgdir"/usr/share/java/lazyman/mitm
     install -Dm755 lazyman.sh                "$pkgdir"/usr/bin/lazyman
     install -Dm644 lazyman.desktop           "$pkgdir"/usr/share/applications/lazyman.desktop
     install -Dm644 lazyman.png               "$pkgdir"/usr/share/icons/lazyman.png
@@ -39,6 +41,8 @@ package() {
     install -Dm644 lazyman.svg               "$pkgdir"/usr/share/icons/Numix-Circle/48/apps/lazyman.svg
     install -Dm777 config.properties         "$pkgdir"/usr/share/java/lazyman/config.properties
     install -Dm644 LazyMan.jar               "$pkgdir"/usr/share/java/lazyman/LazyMan.jar
+    install -Dm655 mitm/linux/mitmdump       "$pkgdir"/usr/share/java/lazyman/mitm/linux/mitmdump
+    install -Dm655 mitm/proxy.py             "$pkgdir"/usr/share/java/lazyman/mitm/proxy.py
 }
 
 md5sums=('fc698d6e8ce124275ed6d91f4fdd69c7'
