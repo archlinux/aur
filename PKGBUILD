@@ -6,7 +6,7 @@
 _reponame=reflective-rapidjson
 pkgname=mingw-w64-reflective-rapidjson
 _name=${pkgname#mingw-w64-}
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 arch=('any')
 pkgdesc='Code generator for serializing/deserializing C++ objects to/from JSON using Clang and RapidJSON (mingw-w64)'
@@ -14,10 +14,11 @@ license=('GPL')
 depends=('mingw-w64-crt' 'mingw-w64-c++utilities' 'mingw-w64-rapidjson' 'reflective-rapidjson')
 optdepends=("mingw-w64-boost: use Boost.Hana instead of code generator"
             "$_name-doc: API documentation")
+checkdepends=('mingw-w64-cppunit' 'mingw-w64-wine' 'mingw-w64-boost')
 makedepends=('mingw-w64-gcc' 'mingw-w64-cmake')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('3ba7c7f2a73c9ab2afe38cd884b8f1290e770f17c9fd497de5468c7d4a690bdb')
+sha256sums=('4e0a30716d905840359c35edc2acf3933cbe9be2e81de80a28beb119c1163c53')
 options=(!buildflags staticlibs !strip !emptydirs)
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || _configurations='-DENABLE_STATIC_LIBS:BOOL=ON'
@@ -34,6 +35,17 @@ build() {
         ${_configurations} \
         ../
     make
+    popd
+  done
+}
+
+check() {
+  cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
+  for _arch in ${_architectures}; do
+    mkdir -p "build-${_arch}" && pushd "build-${_arch}"
+    export WINEPATH="/usr/${_arch}/bin"
+    export WINEDEBUG=-all
+    make check
     popd
   done
 }
