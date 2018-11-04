@@ -6,17 +6,18 @@
 _reponame=cpp-utilities
 pkgname=mingw-w64-c++utilities
 _name=${pkgname#mingw-w64-}
-pkgver=4.15.0
+pkgver=4.16.0
 pkgrel=1
 arch=('any')
 pkgdesc='Common C++ classes and routines such as argument parser, IO and conversion utilities (mingw-w64)'
 license=('GPL')
 depends=('mingw-w64-crt' 'mingw-w64-libiconv')
 optdepends=("$_name-doc: API documentation")
+checkdepends=('mingw-w64-cppunit' 'mingw-w64-wine')
 makedepends=('mingw-w64-gcc' 'mingw-w64-cmake')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('85b5c79d333cf08771aa2a01f3ae5ced7fa3626adc9f73d652c909cbe07eac45')
+sha256sums=('c4487d6e684c523e596bfc91203a6f10609606786553517bcf44ffae181feaa5')
 options=(!buildflags staticlibs !strip !emptydirs)
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || _configurations='-DENABLE_STATIC_LIBS:BOOL=ON'
@@ -33,6 +34,17 @@ build() {
         ${_configurations} \
         ../
     make
+    popd
+  done
+}
+
+check() {
+  cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
+  for _arch in ${_architectures}; do
+    mkdir -p "build-${_arch}" && pushd "build-${_arch}"
+    export WINEPATH="/usr/${_arch}/bin"
+    export WINEDEBUG=-all
+    make check
     popd
   done
 }
