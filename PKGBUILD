@@ -1,8 +1,8 @@
 # Maintainer: Danilo Bargen <aur at dbrgn dot ch>
 pkgname=librepcb-appimage
-pkgver=0.1.0_rc1
+pkgver=0.1.0_rc2
 _pkgver=${pkgver/_/-}
-pkgrel=3
+pkgrel=1
 pkgdesc="A free EDA software to develop printed circuit boards (binary AppImage version)."
 arch=('x86_64')
 url="http://librepcb.org/"
@@ -14,7 +14,7 @@ _appimage="librepcb-${_pkgver}-linux-${arch}.AppImage"
 noextract=("${_appimage}")
 options=('!strip' '!emptydirs')
 source=("https://download.librepcb.org/releases/${_pkgver}/${_appimage}")
-sha256sums=('82dcf96f2d301330094adda16aae3e01fdf9a7fdd195995db13a22516f0adc31')
+sha256sums=('ee21d7defc78737d430d43b8848131e8c618822623355958285aaa74d964c8a5')
 
 build() {
   chmod +x ${_appimage}
