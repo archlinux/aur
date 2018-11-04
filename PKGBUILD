@@ -1,6 +1,6 @@
 _npmname=interactive-diff-patch
 _npmver=0.0.4
-pkgname=nodejs-interactive-diff-patch # All lowercase
+pkgname=interactive-diff-patch # All lowercase
 pkgver=0.0.4
 pkgrel=1
 pkgdesc="Allows you to apply diff hunks one at a time and preview them on the command line. Requires diff and patch which are included with git."

@@ -1,4 +1,4 @@
-pkgbase = nodejs-interactive-diff-patch
+pkgbase = interactive-diff-patch
 	pkgdesc = Allows you to apply diff hunks one at a time and preview them on the command line. Requires diff and patch which are included with git.
 	pkgver = 0.0.4
 	pkgrel = 1
@@ -11,5 +11,5 @@ pkgbase = nodejs-interactive-diff-patch
 	source = https://registry.npmjs.org/interactive-diff-patch/-/interactive-diff-patch-0.0.4.tgz
 	sha1sums = c8f42adaa79cbba789b129559d76115b75daf17a
 
-pkgname = nodejs-interactive-diff-patch
+pkgname = interactive-diff-patch
 
