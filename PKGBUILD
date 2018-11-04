@@ -7,7 +7,7 @@ pkgname='ros-indigo-rviz-animated-view-controller'
 pkgver='0.1.1'
 _pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(ros-indigo-cmake-modules
@@ -21,7 +21,10 @@ makedepends=('cmake' 'git' 'ros-build-tools'
 ros_depends=(ros-indigo-rviz
   ros-indigo-view-controller-msgs
   ros-indigo-pluginlib)
-depends=(${ros_depends[@]})
+depends=(
+  'ogre-1.9'
+  ${ros_depends[@]}
+)
 
 _tag=release/indigo/rviz_animated_view_controller/${pkgver}-${_pkgver_patch}
 _dir=rviz_animated_view_controller
@@ -41,7 +44,8 @@ build() {
   /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
 
   # Build project
-  cmake ${srcdir}/${_dir} \
+  env PKG_CONFIG_PATH=/opt/OGRE-1.9/lib/pkgconfig \
+      cmake ${srcdir}/${_dir} \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/indigo \
