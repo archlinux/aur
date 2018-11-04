@@ -1,0 +1,13 @@
+diff --git a/modules/java/CMakeLists.txt b/modules/java/CMakeLists.txt
+index c46f70a..b7c152e 100644
+--- a/modules/java/CMakeLists.txt
++++ b/modules/java/CMakeLists.txt
+@@ -280,7 +280,7 @@ else(ANDROID)
+   if(WIN32)
+     set(JAR_INSTALL_DIR java)
+   else(WIN32)
+-    set(JAR_INSTALL_DIR share/OpenCV/java)
++    set(JAR_INSTALL_DIR share/opencv2/java)
+   endif(WIN32)
+   install(FILES ${JAR_FILE} DESTINATION ${JAR_INSTALL_DIR} COMPONENT java)
+ endif(ANDROID)

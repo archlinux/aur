@@ -41,7 +41,7 @@ _FORCE_AVX2=OFF
 pkgbase=opencv2-opt
 pkgname=('opencv2-opt' 'opencv2-opt-samples')
 pkgver=2.4.13.6
-pkgrel=1
+pkgrel=2
 _pkgbase=opencv2
 _pkgname=opencv
 pkgdesc="Open Source Computer Vision Library (Legacy Version & /opt directory version)"
@@ -55,9 +55,12 @@ optdepends=('opencv2-opt-samples'
             'libcl: For coding with OpenCL'
             'python2-numpy: Python 2.x interface')
 
-source=("$_pkgname-$pkgver.zip::https://github.com/Itseez/opencv/archive/$pkgver.zip"
-        )
-sha512sums=('942a523192ac790bc8184dff3b7652efd92dfe786091402a7686a468ae567e1c09b9205e6c56424602a887057a57c31a0b0e4f4f9ca29c1b1856024b8d9ad990')
+source=(
+  "$_pkgname-$pkgver.zip::https://github.com/Itseez/opencv/archive/$pkgver.zip"
+  'fix-java-lib-path.patch'
+)
+sha512sums=('942a523192ac790bc8184dff3b7652efd92dfe786091402a7686a468ae567e1c09b9205e6c56424602a887057a57c31a0b0e4f4f9ca29c1b1856024b8d9ad990'
+            '111d2f8407a3937acabd8c60f7d77408aadf9d8acf621ddb2b4312f39155ce14d6c764e7ac36905c90eb279bf7803e30def39e52807adb7516325b7c3adac65e')
 
 _cmakeopts=('-D WITH_CUDA=OFF' # Disable CUDA for now because GCC 6.1.1 and nvcc don't play along yet
             '-D WITH_OPENCL=ON'
@@ -96,6 +99,7 @@ prepare() {
   sed "1i\#define AVFMT_RAWPICTURE 0x0020" -i modules/highgui/src/cap_ffmpeg_impl.hpp
   sed "1i\#define CODEC_FLAG_GLOBAL_HEADER AV_CODEC_FLAG_GLOBAL_HEADER" -i modules/highgui/src/cap_ffmpeg_impl.hpp
   sed "1i\#define AV_CODEC_FLAG_GLOBAL_HEADER (1 << 22)" -i modules/highgui/src/cap_ffmpeg_impl.hpp
+  patch -Np1 -i ${srcdir}/fix-java-lib-path.patch
 }
 
 build() {
@@ -124,8 +128,9 @@ package_opencv2-opt() {
   cd "$pkgdir/opt/$_pkgbase/share"
   # separate samples package; also be -R friendly
   if [[ -d OpenCV/samples ]]; then
+    mkdir -p $_pkgbase
     mv OpenCV/samples "$srcdir/$_pkgbase-samples"
-    mv OpenCV $_pkgbase # otherwise folder naming is inconsistent
+    mv OpenCV/* $_pkgbase # otherwise folder naming is inconsistent
   elif [[ ! -d OpenCV ]]; then
     warning "Directory naming issue; samples package may not be built!"
   fi
