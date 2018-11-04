@@ -10,7 +10,7 @@ pkgrel=1
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 license=('LGPL3')
 url="https://homegear.eu"
-depends=('sqlite3' 'libxslt' 'libzip' 'gnutls' 'homegear-nodes-core=0.7.30' 'php-homegear')
+depends=('sqlite3' 'libxslt' 'libzip' 'gnutls' 'homegear-nodes-core=0.7.30' 'libhomegear-ipc=0.7.30' 'php-homegear')
 optdepends=('homegear-homematicbidcos: Support for eQ-3 HomeMatic BidCoS (wireless) devices'
             'homegear-homematicwired: Support for eQ-3 HomeMatic Wired devices'
             'homegear-insteon: Support for Insteon devices'

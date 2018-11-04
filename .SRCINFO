@@ -15,6 +15,7 @@ pkgbase = homegear
 	depends = libzip
 	depends = gnutls
 	depends = homegear-nodes-core=0.7.30
+	depends = libhomegear-ipc=0.7.30
 	depends = php-homegear
 	optdepends = homegear-homematicbidcos: Support for eQ-3 HomeMatic BidCoS (wireless) devices
 	optdepends = homegear-homematicwired: Support for eQ-3 HomeMatic Wired devices
