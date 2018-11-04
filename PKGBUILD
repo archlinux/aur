@@ -1,20 +1,26 @@
-# Maintainer: Jeff Youdontneedtoknow <jeffpublicjr at gmail dot com>
+# Maintainer:  mrxx <mrxx at cyberhome dot at>
+# Contributor: Jeff Youdontneedtoknow <jeffpublicjr at gmail dot com>
 # Contributor: yetist <yetist@gmail.com>
 
 pkgname=gmchess
 pkgver=0.29.6
-pkgrel=3
-pkgdesc="Chinese chess game"
+pkgrel=4
+pkgdesc="Play Chinese chess (Xiangqi) against a human opponent or the computer"
 arch=("i686" "x86_64")
-url="http://code.google.com/p/gmchess/"
+url="https://salsa.debian.org/chinese-team/gmchess"
 license=('GPL2')
 depends=("gtkmm")
 makedepends=('pkgconfig' 'intltool')
-source=("http://gmchess.googlecode.com/files/$pkgname-$pkgver.tar.bz2")
-sha1sums=('f9a81c8fd58ff5122423b368c62e54f3b7528af5')
+conflicts=('gmchess-bin' 'eleeye-bin' 'convert-pgn-bin')
+install=gmchess.install
+source=("$pkgname-$pkgver.tar.gz::https://salsa.debian.org/chinese-team/gmchess/-/archive/master/${pkgname}-master.tar.gz" 'gmchess.install')
+sha1sums=('26fb365af83d3364a699175718ca0573c0b62ca5'
+          '8ce9d92ee9cda1709098d0a0a46ce9cca9fa83ba')
 
 build() {
-   cd "$srcdir/$pkgname-$pkgver"
+   cd "$srcdir/${pkgname}-master"
+   autoreconf --install
+   autoconf
    ./configure --prefix=/usr
    make
    make  DESTDIR="$srcdir" install

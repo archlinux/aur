@@ -1,0 +1,9 @@
+post_install() {
+  echo
+  echo "Please note: If this game segfaults on your computer, consider installing gmchess-bin instead."
+  echo
+}
+
+post_upgrade() {
+	post_install
+}

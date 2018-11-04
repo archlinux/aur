@@ -1,16 +1,22 @@
 pkgbase = gmchess
 	pkgdesc = Chinese chess game
 	pkgver = 0.29.6
-	pkgrel = 3
-	url = http://code.google.com/p/gmchess/
+	pkgrel = 4
+	url = https://salsa.debian.org/chinese-team/gmchess
+	install = gmchess.install
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = pkgconfig
 	makedepends = intltool
 	depends = gtkmm
-	source = http://gmchess.googlecode.com/files/gmchess-0.29.6.tar.bz2
-	sha1sums = f9a81c8fd58ff5122423b368c62e54f3b7528af5
+	conflicts = gmchess-bin
+	conflicts = eleeye-bin
+	conflicts = convert-pgn-bin
+	source = gmchess-0.29.6.tar.gz::https://salsa.debian.org/chinese-team/gmchess/-/archive/master/gmchess-master.tar.gz
+	source = gmchess.install
+	sha1sums = 26fb365af83d3364a699175718ca0573c0b62ca5
+	sha1sums = 8ce9d92ee9cda1709098d0a0a46ce9cca9fa83ba
 
 pkgname = gmchess
 
