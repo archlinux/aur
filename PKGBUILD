@@ -4,7 +4,7 @@ pkgdesc="ROS - This package provides an implementation of a 2D costmap."
 url='http://wiki.ros.org/costmap_2d'
 
 pkgname='ros-indigo-costmap-2d'
-pkgver='1.12.13'
+pkgver='1.12.16'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -60,8 +60,17 @@ depends=(${ros_depends[@]})
 
 # Tarball version (faster download)
 _dir="navigation-release-release-indigo-costmap_2d-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/indigo/costmap_2d/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('5417ab6fd1805b814f2ee388b65860c35d6d6b94861d96da1400d462de16f3e5')
+source=(
+  "${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/indigo/costmap_2d/${pkgver}-${_pkgver_patch}.tar.gz"
+  'remove-borken-pcl-depend.patch'
+)
+sha256sums=('6ade981881ce071a2de24b4011b7f47e6a3a534b36e7a9a0920ca70a127ba27f'
+            'a35d9047ffd812bf13d4d94fae5d4b812a40a9c2de0abd43d7954dd4695a28f3')
+
+prepare () {
+  cd ${srcdir}/${_dir}
+  patch -Np1 -i ${srcdir}/remove-borken-pcl-depend.patch
+}
 
 build() {
   # Use ROS environment variables

@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ce4ebef..adc65c3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -79,7 +79,7 @@ catkin_package(
+         visualization_msgs
+         voxel_grid
+     DEPENDS
+-        PCL
++        # PCL
+         Eigen
+         Boost
+ )
