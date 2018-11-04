@@ -2,13 +2,13 @@
 
 pkgname=mustache-d
 pkgver=0.1.3
-pkgrel=8
+pkgrel=9
 pkgdesc="Moustache template engine for D"
 arch=(x86_64)
 url="https://github.com/repeatedly/mustache-d"
 license=(Boost)
 depends=()
-makedepends=(meson dmd libphobos)
+makedepends=(meson ldc liblphobos)
 source=($pkgname-$pkgver::"https://github.com/repeatedly/mustache-d/archive/v$pkgver.tar.gz")
 sha256sums=('b8cf5fe193b11dece663ad2d7f8acbcc02ef48334f0fdc922a2dde3f8ac64b57')
 
