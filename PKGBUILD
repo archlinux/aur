@@ -3,7 +3,7 @@
 # Contributor: ZaZam <zazaamm ät gmail dt com>
 
 pkgname=yle-dl
-pkgver=2.37
+pkgver=20181103
 pkgrel=1
 pkgdesc="Download video and audio from YLE Areena."
 arch=('any')
@@ -17,7 +17,6 @@ depends=('ffmpeg'
        'python-lxml'
        'python-mini-amf'
        'python-pycryptodomex'
-       'python-pysocks'
        'python-requests'
        'wget'
 )
@@ -28,7 +27,7 @@ makedepends=('python-setuptools')
 provides=(${pkgname}=$pkgver)
 conflicts=(${pkgname})
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/y/yle-dl/yle-dl-${pkgver}.tar.gz")
-sha256sums=('cae8bced1054a8b231854140150a62c5ed7ff9b1d39265df86ae4cf423d6b601')
+sha256sums=('8c890067bf20d5b9f38d9808e7e5d984f46ff6df66507c7deebfe9a60d0287b4')
 
 build() {
   cd "$pkgname-$pkgver"
