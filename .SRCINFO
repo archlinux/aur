@@ -1,10 +1,9 @@
 pkgbase = vim-ripgrep-git
 	pkgdesc = Use RipGrep in Vim and display results in a quickfix list.
 	pkgver = r27.ec87af6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jremmen/vim-ripgrep
 	arch = any
-	groups = vim-plugins
 	license = MIT
 	makedepends = git
 	depends = ripgrep
