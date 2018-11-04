@@ -2,7 +2,7 @@
 # Please report issues at https://github.com/jojosch/pkgbuilds
 
 pkgname='testssl.sh-git'
-pkgver=v2.4.r2158.gf6dc501
+pkgver=3.0rc1.r73.gde68488
 pkgrel=1
 pkgdesc="Testing TLS/SSL encryption (git version)"
 arch=('any')
@@ -20,7 +20,7 @@ source=(
 )
 sha256sums=(
     'SKIP'
-    '22dcffff0265fa0f316b5231603b16a636db304c7b552f5cfa0bcc403ffc8d86'
+    '722a6538b8cbdf18d4b52f7e5216b56ebefb7fff100e5152de97fc5f57f05158'
 )
 
 pkgver () {
