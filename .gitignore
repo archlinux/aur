@@ -1,4 +1,7 @@
+*.zip
+*.tar.gz
 *.pkg.tar
 *.deb
 pkg/
 src/
+src-bak/

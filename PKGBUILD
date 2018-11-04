@@ -1,34 +1,54 @@
-# Maintainer: Yauhen Kirylau <yawghen AT gmail.com>
-# Upstream URL: https://wickr.com/
+# $Id$
+# Maintainer: Ian Schoonover <schoonover.ian AT gmail.com>
+# Contributor: Yauhen Kirylau <yawghen AT gmail.com>
 
 pkgname=wickr-bin
-pkgver=2.6.0
-pkgrel=3
-pkgdesc="Wickr messenger"
-PKGEXT='.pkg.tar'
-arch=('x86_64' 'i686')
+pkgver=4.62.2
+pkgrel=1
+pkgdesc="A secure chat and media transfer client"
+arch=('x86_64')
 url="https://wickr.com"
-license=('Proprietary')
+license=('custom:wickr')
 options=(!strip)
-depends=( 'libutil-linux' 'glibc' 'gcc-libs' 'glib2' 'zlib' 'lz4' 'xz'
-'libsystemd' 'libdbus' 'libxml2' 'libffi' 'pcre' 'expat' 'json-c' 'libxslt'
-'libsndfile' 'libpulse' 'libdrm' 'gstreamer0.10' 'gstreamer0.10-base' 'flac'
-'libvorbis' 'libogg' 'mesa' 'libx11' 'libxcb' 'libxrender' 'libxcomposite'
-'libxext' 'libxdamage' 'libxfixes' 'libxshmfence' 'libxxf86vm' 'libasyncns'
-'orc' 'libxau' 'libxdmcp' 'libcap' 'libgcrypt' 'libgpg-error' 'attr' 'libx264')
+depends=(
+	'libx11' 'libxcb' 'libxcomposite' 'libxcursor' 'libxdamage' 'libxext' 'libxfixes' 
+	'libxi' 'libxrender' 'libxtst' 'freetype2' 'harfbuzz' 'libpng12' 'fontconfig' 
+	'libwebp' 'libjpeg-turbo' 'libxss' 're2' 'snappy' 'alsa-lib' 'ffmpeg' 'libvpx' 
+	'opus' 'libdbus' 'minizip' 'libxml2' 'libxslt' 'lcms2' 'double-conversion' 
+	'libxau' 'libxdmcp' 'graphite' 'opencore-amr' 'aom' 'gsm' 'lame' 'openjpeg2' 
+	'speex' 'libtheora' 'libvorbis' 'libx264' 'x265' 'xvidcore' 'libva' 'libmodplug' 
+	'libbluray' 'libssh' 'libvdpau' 'libdrm' 'libglvnd' 'libsoxr' 'libogg' 'libffi' 
+	'gst-plugins-bad' 'icu55' 'libprotobuf2' 'libhunspell1.3'
+)
+makedepends=('chrpath')
 install="wickr-bin.install"
-source=("wickr-bin.install")
-md5sums=("ab8afb848c5382aba9a9b6c828e56c1b")
-source_x86_64=("https://dls.wickr.com/Downloads/wickr-me_${pkgver}_amd64.deb")
-md5sums_x86_64=("5bc94a9634f25630d5171d056e0fa137")
-source_i686=("https://dls.wickr.com/Downloads/wickr-me_${pkgver}_i386.deb")
-md5sums_i686=("b29e677410adb6d4df9e4caae6700188")
-DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
+sha256sums=(
+	"4bd36b6abfe7374fd736d9d618f4d4e0dc268196a2f8db6bc45d4ee295e0ecae"
+	"39bfcaca8a844dbfaf5c296017cee2a8049d2d42183a83b009960d9283c71935"
+	"88aec8f59f2f59b598b9f51c44a6801d1fb3bd8881e5c7715d6c5b9538d913f6"
+)
+source=(
+	"https://s3.amazonaws.com/static.wickr.com/downloads/ubuntu/me/WickrMe-${pkgver}.zip"
+	"LICENSE"
+	"desktop.patch"
+)
+
+prepare() {
+	ar xf WickrMe*.deb
+	tar xfJ data.tar.xz
+	ar xf wickr-qt_5.9.4_amd64.deb 
+	tar xfJ data.tar.xz
+
+	# remove element from rpath for developers' build env
+	chrpath -r /usr/local/wickr/Qt-5.9:/usr/local/wickr/Qt-5.9/lib:/usr/lib/WickrMe/lib/ usr/bin/WickrMe
+
+	# patch desktop file to be more consistent and accurate
+	patch usr/share/applications/WickrMe.desktop desktop.patch
+}
 
 package() {
-	bsdtar xf data.tar.xz
 	chmod -R g-w usr
 	mv usr "${pkgdir}"
 
-	ln -s /usr/lib/libx264.so ${pkgdir}/usr/lib/libx264.so.142
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

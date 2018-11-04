@@ -1,0 +1,14 @@
+2c2
+< Version=1.0
+---
+> Version=4.62.2
+5c5,8
+< Comment=Top Secret Messenger
+---
+> Name[en_US]=WickrMe
+> Comment=A secure chat and media transfer client
+> Comment[en_US]=A secure chat and media transfer client
+> TryExec=WickrMe
+12,13d14
+< 
+< Name[en_US]=WickrMe.desktop

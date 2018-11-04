@@ -1,5 +1,5 @@
 notify() {
-  echo -e "\e[31m\e[1mExecutable was renamed to 'wickr-me'"
+  echo -e "\e[31m\e[1mExecutable was renamed to 'WickrMe'\e[0m"
 }
 
 post_install() {
