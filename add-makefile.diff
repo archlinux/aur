@@ -33,7 +33,7 @@ index c7110f4..92d93de 100755
  
  set -feEuT
 -. "$(dirname "$0")/lib/bahelite/bahelite.sh"
-+. "$(dirname "$(readlink "$0")")/lib/bahelite/bahelite.sh"
++. "$(dirname "$(realpath "$0")")/lib/bahelite/bahelite.sh"
  prepare_cachedir 'nadeshiko'
  start_log
  set_libdir 'nadeshiko'
@@ -46,7 +46,7 @@ index 5c7547c..7ba5ff0 100755
  set -feEuT
  shopt -s extglob
 -. "$(dirname "$0")/lib/bahelite/bahelite.sh"
-+. "$(dirname "$(readlink "$0")")/lib/bahelite/bahelite.sh"
++. "$(dirname "$(realpath "$0")")/lib/bahelite/bahelite.sh"
  prepare_cachedir 'nadeshiko'
  start_log
  set_libdir 'nadeshiko'
@@ -59,7 +59,7 @@ index ad83025..6e759dd 100755
  shopt -s extglob
  #  Logging, error handling, messages to console and desktop.
 -. "$(dirname "$0")/lib/bahelite/bahelite.sh"
-+. "$(dirname "$(readlink "$0")")/lib/bahelite/bahelite.sh"
++. "$(dirname "$(realpath "$0")")/lib/bahelite/bahelite.sh"
  prepare_cachedir
  start_log
  set +f

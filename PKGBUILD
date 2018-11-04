@@ -12,7 +12,7 @@ optdepends=("libnotify: desktop notifications")
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/deterenkelt/$pkgname/archive/v$pkgver.tar.gz"
         "add-makefile.diff")
 sha256sums=('3474f723f93e9955e3870ddec5ca8e788727f86066040405426e77b9b98c7e5a'
-            '11f95514756698d015f54292bf4b65a07b28d123f9ab38d35319a41570eefb29')
+            '0212e5bcb1563e13c6ad0635b160a6756b3443aef8a699efcf7b7d99900f2dc8')
 
 prepare() {
     cd $srcdir/Nadeshiko-$pkgver
