@@ -1,13 +1,18 @@
 pkgbase = rwhoisd
 	pkgdesc = RWhois (Referral Whois) is a Directory Services protocol which extends and enhances the Whois concept in a hierarchical and scalable fashion.
 	pkgver = 1.5.9.6
-	pkgrel = 2
+	pkgrel = 3
 	url = http://projects.arin.net/rwhois/
+	install = rwhoisd.install
 	arch = x86_64
 	arch = i686
-	license = GPLv2
-	source = http://projects.arin.net/rwhois/ftp/rwhoisd-1.5.9.6.tar.gz
-	sha256sums = 66793f02bc9370914ca3f579409e8f79b6a394b8a981168ead7b1a6654a83a2a
+	license = GPL2
+	source = https://github.com/arineng/rwhoisd/archive/1.5.9.6.tar.gz
+	source = rwhoisd.service
+	source = rwhoisd.install
+	sha256sums = c1768d2414bca88f10acc2e50a23288a21176416ddfe697ee4326636c0b062f7
+	sha256sums = 7ec1372710e51291d3946fcc637e22a885da75dbcd54274ea2681474e91893bf
+	sha256sums = 5b58420875108a78fef4c47b7463b4a20bb6d443fda5c31ab89e75f87bc65b01
 
 pkgname = rwhoisd
 

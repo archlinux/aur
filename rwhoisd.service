@@ -1,0 +1,13 @@
+[Unit]
+Description=RWhois Daemon
+Documentation=man:rwhoisd(8)
+Documentation=https://github.com/arineng/rwhoisd/blob/master/rwhoisd/INSTALL
+After=syslog.target network.target
+
+[Service]
+PIDFile=/var/lib/rwhoisd/rwhoisd.pid
+ExecStart=/usr/bin/rwhoisd -c /etc/rwhoisd/rwhoisd.conf 
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,12 @@
+post_install() {
+	echo "Adding unprivileged system user and group..."
+	useradd -r rwhoisd -c "RWhois Daemon" -d /var/lib/rwhoisd -s /usr/bin/nologin
+	mkdir -p -m 750 /var/log/rwhoisd /var/lib/rwhoisd
+	chown rwhoisd.rwhoisd /var/log/rwhoisd /var/lib/rwhoisd
+}
+
+post_remove() {
+	echo "Removing unprivileged system user and group..."
+	userdel -r rwhoisd &>/dev/null
+}
+
