@@ -13,7 +13,7 @@ pkgbase = mingw-w64-tageditor
 	depends = mingw-w64-crt
 	depends = mingw-w64-qtutilities>=5.6.0
 	depends = mingw-w64-tagparser>=6.2.0
-	depends = mingw-w64-qt5-script>=5.6
+	depends = mingw-w64-qt5-declarative>=5.6
 	options = !buildflags
 	options = staticlibs
 	options = !strip

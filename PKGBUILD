@@ -4,13 +4,13 @@
 # you also find the URL of a binary repository.
 
 # set the web view provider: either webkit, webengine, auto or none
-_webview_provider=none
+_webview_provider=${TAGEDITOR_WEBVIEW_PROVIDER:-none}
 
 # set the JavaScript provider: either script, qml, auto or none
-_js_provider=script
+_js_provider=${TAGEDITOR_JS_PROVIDER:-qml}
 
 # whether the experimental JSON export is enabled: ON or OFF
-_json_export=ON
+_json_export=${TAGEDITOR_JSON_EXPORT:-ON}
 
 _reponame=tageditor
 pkgname=mingw-w64-tageditor
