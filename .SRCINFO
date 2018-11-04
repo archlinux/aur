@@ -1,0 +1,19 @@
+pkgbase = mbs-git
+	pkgdesc = A simple cmake-based modular build system for C and C++
+	pkgver = r11.060a1a9
+	pkgrel = 1
+	url = https://github.com/john01dav/mbs
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = cmake
+	depends = gcc-libs
+	provides = mbs
+	conflicts = mbs
+	source = git+https://github.com/john01dav/mbs.git
+	source = git+https://github.com/jbeder/yaml-cpp
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = mbs-git
+
