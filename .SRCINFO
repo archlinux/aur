@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-atkmm
 	pkgdesc = C++ bindings for ATK (mingw-w64)
-	pkgver = 2.24.2
+	pkgver = 2.28.0
 	pkgrel = 1
 	url = https://www.gtkmm.org/
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = mingw-w64-atkmm
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://download.gnome.org/sources/atkmm/2.24/atkmm-2.24.2.tar.xz
-	sha256sums = SKIP
+	source = https://download.gnome.org/sources/atkmm/2.28/atkmm-2.28.0.tar.xz
+	sha256sums = 4c4cfc917fd42d3879ce997b463428d6982affa0fb660cafcc0bc2d9afcedd3a
 
 pkgname = mingw-w64-atkmm
 

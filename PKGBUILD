@@ -1,7 +1,7 @@
 # Maintainer: Andrew Sun <adsun701@gmail.com>
 
 pkgname=mingw-w64-atkmm
-pkgver=2.24.2
+pkgver=2.28.0
 pkgrel=1
 pkgdesc="C++ bindings for ATK (mingw-w64)"
 url="https://www.gtkmm.org/"
@@ -10,9 +10,8 @@ license=('LGPL')
 makedepends=('mingw-w64-configure')
 depends=('mingw-w64-atk' 'mingw-w64-glibmm' 'mingw-w64-crt')
 options=('!strip' '!buildflags' 'staticlibs')
-_commit=f30b47ffcecdac60b3c890da08fbf485f891f5c9  # tags/2.25.1~6
 source=("https://download.gnome.org/sources/atkmm/${pkgver%.*}/atkmm-${pkgver}.tar.xz")
-sha256sums=('SKIP')
+sha256sums=('4c4cfc917fd42d3879ce997b463428d6982affa0fb660cafcc0bc2d9afcedd3a')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
