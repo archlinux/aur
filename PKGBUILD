@@ -3,13 +3,13 @@
 
 pkgname='perl-www-form-urlencoded'
 pkgver='0.25'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="parser and builder for application/x-www-form-urlencoded"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl>=5.8.1')
-makedepends=()
+makedepends=('perl-module-build')
 url='https://metacpan.org/release/WWW-Form-UrlEncoded'
 source=('http://search.cpan.org/CPAN/authors/id/K/KA/KAZEBURO/WWW-Form-UrlEncoded-0.25.tar.gz')
 md5sums=('c7f8fbd616f9a342b5ff726b405d2a96')
