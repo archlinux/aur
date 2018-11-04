@@ -1,0 +1,10 @@
+[Unit]
+Description=Samhain HIDS
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/samhain start
+ExecStop=/usr/bin/samhain stop
+
+[Install]
+WantedBy=multi-user.target

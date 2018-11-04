@@ -1,38 +1,37 @@
-# Maintainer: Luke R. <g4jc@bulletmail.org> GPG:  c25519/D85D2F527B0
+# Maintainer: Deon Spengler <deon at spengler dot co dot za>
+# Contributor: Luke R. <g4jc@bulletmail.org> GPG:  c25519/D85D2F527B0
 
 pkgname=samhain
-pkgver=4.2.3
+pkgver=4.3.1
 pkgrel=1
 pkgdesc="file integrity / intrusion detection system"
-arch=(i686 x86_64)
+arch=(x86_64)
 url="http://www.la-samhna.de/"
 license=('GPL')
-makedepends=('gcc' 'openssl' 'procps-ng')
-source=("http://www.la-samhna.de/samhain/${pkgname}-current.tar.gz")
-options=(!emptydirs)
+install=samhain.install
+source=("http://www.la-samhna.de/samhain/${pkgname}-current.tar.gz"
+        "samhain.service")
+sha256sums=('d4dcedc6bc579c935de7972d23675e94654391c3a1bd19c06ec38e57f7faf1f2'
+            '7e53bee6bb9ba15db6e741ed3520491c747e57bb58ffc0da6c5d7e235ac720c9')
 validpgpkeys=('EF6CEF54701A0AFDB86AF4C31AAD26C80F571F6C') # Rainer Wichmann
-sha512sums=('17cb37548068fb682a5e6b8d7bff5d7c5826f80ef80a116dafb371c79e34f9ab5d31ff88ef7a03453e2f4c4adf0f2f11595bcee8eca200239b04c3d9a75df71d')
-whirlpoolsums=('b18c004d8b95208f4910ea04b4f441f35b6071fda4b90e88ba0da8f70589a45baf63507765b5dc36648d282e77235d63d1ee982706235b9b788b4164fd7b2dad')
-
-pkgver() {
-tar -ztvf samhain-current.tar.gz | head -n1 | awk '{print $6}' | sed "s/samhain-//" | sed "s/.tar.gz//" # get latest version number
-}
 
 build() {
-  gpg --verify samhain-${pkgver}.tar.gz.asc samhain-${pkgver}.tar.gz
   echo "Note: If the GPG verification fails, import the Samhain GPG key: http://www.la-samhna.de/samhain/s_rkey.html"
-  tar -zxvf "${srcdir}/${pkgname}-current.tar.gz" -C "${srcdir}"/.
-  cd "${srcdir}"
+  gpg --verify samhain-${pkgver}.tar.gz.asc samhain-${pkgver}.tar.gz
   tar -zxvf ${pkgname}-${pkgver}.tar.gz
   cd "${pkgname}-${pkgver}"
-  ./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --with-trusted=0 --sbindir=/usr/bin 
   # see samhain documentation, lots of other options available. e.g. use --enable-network=server to run in server mode.
+  ./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --sbindir=/usr/bin
+  make
 }
 
 package() {
   cd "${pkgname}-${pkgver}"
-  make || return 1
   make DESTDIR="$pkgdir/" install
-  chmod 755 $pkgdir/usr/bin/samhain
-  chmod 644 $pkgdir/etc/samhainrc
+  chmod 755 ${pkgdir}/usr/bin/samhain
+  chmod 644 ${pkgdir}/etc/samhainrc
+  install -m755 -d "${pkgdir}/usr/lib/systemd/system"
+  install -m644 "${srcdir}/samhain.service" "${pkgdir}/usr/lib/systemd/system/samhain.service"
+  rmdir ${pkgdir}/run
+  rmdir ${pkgdir}/var/log
 }
