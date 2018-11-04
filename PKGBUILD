@@ -58,10 +58,10 @@ _htmldocs_enable=
 _major=4.18
 _srcname=linux-${_major}
 _lqxpatchname=liquorix-package
-_lqxpatchrel=20
+_lqxpatchrel=21
 _lqxpatchver=${_lqxpatchname}-${_major}-${_lqxpatchrel}
 pkgbase=linux-lqx
-pkgver=4.18.16_2
+pkgver=4.18.17_1
 pkgrel=1
 arch=('x86_64')
 url="http://liquorix.net/"
@@ -394,7 +394,7 @@ done
 
 sha512sums=('950eb85ac743b291afe9f21cd174d823e25f11883ee62cecfbfff8fe8c5672aae707654b1b8f29a133b1f2e3529e63b9f7fba4c45d6dacccc8000b3a9a9ae038'
             'SKIP'
-            '7ed85e9f61f4f7dbe21baab3086471d54f7993f93a084637c701bc486f58f71b4542e1172262794513adb3fbfa86cb640729f942cda99465ea41e2949da8efb5'
+            'c7bf036fb2a5b708ab32fa7f9af8cc6f3ba4ee35aeb6c99353ca8d09a16caf7c00cabc03989881573dd4b11042e40df07ec52bb1f6431443c3f3400c4ba74019'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '4a8b324aee4cccf3a512ad04ce1a272d14e5b05c8de90feb82075f55ea3845948d817e1b0c6f298f5816834ddd3e5ce0a0e2619866289f3c1ab8fd2f35f04f44'
             '6346b66f54652256571ef65da8e46db49a95ac5978ecd57a507c6b2a28aee70bb3ff87045ac493f54257c9965da1046a28b72cb5abb0087204d257f14b91fd74'
