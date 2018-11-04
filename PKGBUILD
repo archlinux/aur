@@ -53,7 +53,6 @@ build() {
   patch Makefile.master ../../im7.patch
   make CONFIG=release \
        IM=$_IM_VERSION \
-       #LIBS="-linotify"
 }
 
 package() {
