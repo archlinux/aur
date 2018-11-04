@@ -33,7 +33,7 @@ source=("http://download.altera.com/akdlm/software/acdsinst/${_mainver}std${_pat
 sha256sums=('abf4018d972c9de3b53117cbfce84f6fc7888f45db169978f993f0c1684ad3fd'
             '2a3d61e6f01aa16c9d3ddd40e9741b9fd080496db5437530b4e38faf6771c1ed'
             'f8ba2a84c6f7551bb4ab62d17f77e2814c70871ddb15f0276f1bf89cc6c674b8'
-            '1092f7fe1e6471f2f6fe12177ecb8781c26ec1fededd10f9e65de921debb8696'
+            'a37738de447c50ca7bfe856466bd9567850ccf45ac6c3f0a6e63ef5bb863645f'
             'dd9d33fa2698a0ec11ae86f4508f77e2e12bf4a21224f5b16640bc41d6c0999b')
 
 options=(!strip !debug) # Stripping will takes ages, I'd avoid it
