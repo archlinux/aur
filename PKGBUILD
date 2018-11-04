@@ -1,5 +1,4 @@
-# Maintainer: Gaetan Bisson <bisson@archlinux.org>
-# Contributor: sekret
+# Maintainer: Alexandria <alxpettit@gmail.com>
 
 _pkgname=vim-fish
 pkgname=${_pkgname}-git
