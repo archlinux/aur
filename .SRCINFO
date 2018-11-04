@@ -1,6 +1,6 @@
 pkgbase = libxaw3dxft
 	pkgdesc = xaw3d library for xpaint
-	pkgver = 1.6.2d
+	pkgver = 1.6.2e
 	pkgrel = 1
 	epoch = 1
 	url = http://sourceforge.net/projects/sf-xpaint/files/libxaw3dxft/
@@ -11,8 +11,8 @@ pkgbase = libxaw3dxft
 	depends = libxft
 	depends = libxmu
 	depends = libxpm
-	source = http://sourceforge.net/projects/sf-xpaint/files/libxaw3dxft/libXaw3dXft-1.6.2d.tar.bz2
-	md5sums = afef22ae4a23a1c9cd0ddc5c8df48315
+	source = http://sourceforge.net/projects/sf-xpaint/files/libxaw3dxft/libXaw3dXft-1.6.2e.tar.bz2
+	sha256sums = 7aefff68d2ba5a97080a6cdbb652c8cabb2fe0c1b792531f707c737cbb9d67fe
 
 pkgname = libxaw3dxft
 

@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=libxaw3dxft 
 _pkgname=libXaw3dXft 
-pkgver=1.6.2d
+pkgver=1.6.2e
 pkgrel=1
 epoch=1
 pkgdesc="xaw3d library for xpaint"
@@ -11,10 +11,10 @@ license=('GPL')
 depends=('libxft' 'libxmu' 'libxpm')
 makedepends=('xorg-util-macros')
 source=("http://sourceforge.net/projects/sf-xpaint/files/$pkgname/${_pkgname}-$pkgver.tar.bz2")
-md5sums=('afef22ae4a23a1c9cd0ddc5c8df48315')
+sha256sums=('7aefff68d2ba5a97080a6cdbb652c8cabb2fe0c1b792531f707c737cbb9d67fe')
 
 build() {
-  cd $srcdir/${_pkgname}-$pkgver
+  cd ${_pkgname}-$pkgver
   ./autogen.sh
   ./configure --prefix=/usr --enable-internationalization \
     --enable-multiplane-bitmaps \
@@ -24,6 +24,6 @@ build() {
 }
 
 package() {
-  cd $srcdir/${_pkgname}-$pkgver
+  cd ${_pkgname}-$pkgver
   make DESTDIR=$pkgdir install
 }
