@@ -60,10 +60,10 @@ _1k_HZ_ticks=
 pkgbase=linux-bfq-mq
 #pkgbase=linux-custom       # Build kernel with a different name
 _major=4.18
-pkgver=4.18.16
+pkgver=4.18.17
 _srcpatch="${pkgver}"
 _srcname="linux-${pkgver}"
-pkgrel=5
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -99,7 +99,7 @@ source=(# mainline kernel patches
         'linux.preset'
         '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch')
 
-sha256sums=('beba14e2f07259a545baa1dce5afdaf9f470cdadc8b378ac269e7c8a289c52e6'
+sha256sums=('e2af41e093ea64526134288c421a66cfdc8cc107c2d3fd3c73c0979880b6a30c'
             'SKIP'
             '9f7177679c8d3f8d699ef0566a51349d828436dba04603bc2223f98c60d2d178'
             'd792142d2d354632695422f4f626242538846c3e9d84bf3eff155796609cde97'
