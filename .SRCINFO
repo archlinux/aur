@@ -1,6 +1,6 @@
 pkgbase = mudlet
 	pkgdesc = A modern MUD client with a graphical user inteface and built in Lua scripting
-	pkgver = 3.14.1
+	pkgver = 3.15.0
 	pkgrel = 1
 	url = http://www.mudlet.org
 	arch = i686
@@ -28,8 +28,8 @@ pkgbase = mudlet
 	conflicts = mudlet-dev
 	conflicts = mudlet-git
 	conflicts = mudlet-deb
-	source = http://www.mudlet.org/download/Mudlet-3.14.1.tar.xz
-	sha256sums = 42d846ff382a6f950ec34b2bc0021dac0ff846d9d805c3852c032069f188e2fa
+	source = http://www.mudlet.org/download/Mudlet-3.15.0.tar.xz
+	sha256sums = d791a05fb4af1ff488e41d2e51a4bb455f4ee7923a594d1cd89d918ef580b5f5
 
 pkgname = mudlet
 
