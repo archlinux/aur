@@ -1,8 +1,8 @@
 # Maintainer: Oscar Morante <spacepluk@gmail.com>
 
-_version=2017.4.13
+_version=2017.4.14
 _build=f1
-_randomstring=6902ad48015d
+_randomstring=b28150134d55
 _prefix=/opt/UnityLts
 
 pkgname=unity-editor-lts-android
@@ -19,7 +19,7 @@ depends=('unity-editor-lts'
 makedepends=('cpio')
 optdepends=('android-ndk-13b: needed for IL2CPP builds')
 source=("https://download.unity3d.com/download_unity/${_randomstring}/MacEditorTargetInstaller/UnitySetup-Android-Support-for-Editor-${_version}${_build}.pkg")
-md5sums=('67556058571a84cc94f5226432c8f62c')
+md5sums=('ee542b6f9a9f91a1fb16c9dc73b83e4a')
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
