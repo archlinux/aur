@@ -1,0 +1,11 @@
+--- nixnote2.desktop	2018-11-04 12:20:26.439424269 +0700
++++ nixnote2.desktop.new	2018-11-04 12:20:58.162868868 +0700
+@@ -3,7 +3,7 @@
+ Comment=Use with Evernote to remember everything
+ GenericName=NixNote2
+ Exec=nixnote2
+-Icon=nixnote2
++Icon=/usr/share/icons/hicolor/48x48/apps/nixnote2.png
+ StartupNotify=true
+ Terminal=false
+ Type=Application
