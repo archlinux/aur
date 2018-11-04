@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains generic definitions of geometric shapes and
 url='http://ros.org/wiki/geometric_shapes'
 
 pkgname='ros-indigo-geometric-shapes'
-pkgver='0.4.4'
+pkgver='0.4.6'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -48,8 +48,17 @@ depends=(${ros_depends[@]}
 
 # Tarball version (faster download)
 _dir="geometric_shapes-release-release-indigo-geometric_shapes-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometric_shapes-release/archive/release/indigo/geometric_shapes/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('89811f43cff5bc0f4389a0abf0dc923fcec8f66b8beed7cb23c5fa48c8030065')
+source=(
+  "${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometric_shapes-release/archive/release/indigo/geometric_shapes/${pkgver}-${_pkgver_patch}.tar.gz"
+  'fix-console-bridge-functions.patch'
+)
+sha256sums=('974da2d4927c64c1366c9721826ed781b7b8e4355c7340272e567ed2ba3f4b11'
+            '558bf9aa97648ce22b27d03d8d173c902b083732dffc252249c3628cf497fed9')
+
+prepare () {
+  cd ${srcdir}/${_dir}
+  patch -Np1 -i ${srcdir}/fix-console-bridge-functions.patch
+}
 
 build() {
   # Use ROS environment variables
