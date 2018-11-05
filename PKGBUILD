@@ -1,14 +1,14 @@
 # Maintainer: Daniel M. Capella <polycitizen@gmail.com>
 
 pkgname=fcat-git
-pkgver=r20.773fc64
+pkgver=r40.c938b62
 pkgrel=1
 pkgdesc="cat implementation in Rust using Linux' splice syscall"
 arch=('x86_64')
 url=https://github.com/mre/fcat
 license=('Apache' 'MIT')
 depends=('gcc-libs')
-makedepends=('rust')
+makedepends=('git' 'rust')
 provides=('fcat')
 conflicts=('fcat')
 source=("git+$url.git")
@@ -21,12 +21,12 @@ pkgver() {
 
 build() {
   cd fcat
-  cargo build --release
+  cargo build --release --locked
 }
 
 check() {
   cd fcat
-  cargo test --release
+  cargo test --release --locked
 }
 
 package() {
