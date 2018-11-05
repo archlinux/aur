@@ -3,7 +3,7 @@
 _pkgname=nemo-fileroller
 pkgname=nemo-engrampa
 _mintrel='betsy'
-pkgver=3.8.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Archive management plugin for Nemo using engrampa"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('nemo>=3.2' 'engrampa')
 options=('!libtool' '!emptydirs')
 #source=("${_pkgname}-${pkgver}.tar.gz::http://packages.linuxmint.com/pool/main/${_pkgname:0:1}/${_pkgname}/${_pkgname}_${pkgver}+${_mintrel}.tar.gz")
 source=("nemo-extensions-$pkgver.tar.gz::https://github.com/linuxmint/nemo-extensions/archive/$pkgver.tar.gz")
-sha256sums=('15855cf7880290c8e9956f894d8e3c6fb0bee996783b2af63ae66dc019e739a8')
+sha256sums=('4bee7336554fd3c6e87371bc4683e5bee989a67030582b89a050aad5874a04de')
 
 build() {
   #cd ${_pkgname}-${pkgver}+${_mintrel}
@@ -30,7 +30,7 @@ build() {
 
   autoreconf -fi
 
-  PYTHON=python2 ./configure --prefix=/usr --sysconfdir=/etc
+  PYTHON=python ./configure --prefix=/usr --sysconfdir=/etc
   make
 }
 
