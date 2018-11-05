@@ -4,7 +4,7 @@
 # Contributor: Max Liebkies <mail@maxliebkies.de>
 
 pkgname=firefox-wayland
-pkgver=63.0
+pkgver=63.0.1
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with Wayland support enabled"
 arch=(x86_64)
@@ -24,8 +24,10 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 options=(!emptydirs !makeflags !strip)
 _repo=https://hg.mozilla.org/mozilla-unified
 source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
+        0001-Keep-mozilla-release-building-with-newer-cbindgen-ve.patch
         firefox.desktop firefox-symbolic.svg)
 sha256sums=('SKIP'
+            'a1e523f830f28217e050991062358c91be254e21732a6391449a8c0e3e0de77f'
             '677e1bde4c6b3cff114345c211805c7c43085038ca0505718a11e96432e9811a'
             '9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797')
 
@@ -44,6 +46,9 @@ _mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
 prepare() {
   mkdir mozbuild
   cd mozilla-unified
+
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1503401
+  patch -Np1 -i ../0001-Keep-mozilla-release-building-with-newer-cbindgen-ve.patch
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
