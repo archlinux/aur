@@ -2,7 +2,7 @@
 
 pkgname=kak-lsp
 pkgver=5.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Kakoune Language Server Protocol Client'
 arch=('x86_64')
 url='https://github.com/ul/kak-lsp'
@@ -19,7 +19,7 @@ sha256sums=('3de10eb4c92f12888e457fbf314ec255fc4da0f10c7c3ce9d9dbb937ad95cb73')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-    cargo build --release
+    cargo build --release --locked
 }
 
 package() {

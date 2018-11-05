@@ -1,7 +1,7 @@
 pkgbase = kak-lsp
 	pkgdesc = Kakoune Language Server Protocol Client
 	pkgver = 5.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ul/kak-lsp
 	arch = x86_64
 	license = custom:unlicense
