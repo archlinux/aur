@@ -6,8 +6,12 @@
 set -euo pipefail
 shopt -s failglob
 
+# Reset customised values to defaults
 PACMAN=
 PATH=/usr/bin:$PATH
+
+# Compressing is slow when building many times
+export PKGEXT=.pkg.tar
 
 pkgdir=${0%%/*}  # dirname $0
 cd -P -- "$pkgdir" || exit 1  # Allow to be called from any directory
