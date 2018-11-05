@@ -6,7 +6,7 @@
 _pkgname=screenruler
 pkgname=gnome-$_pkgname
 pkgver=0.9.6
-pkgrel=5
+pkgrel=6
 pkgdesc="ScreenRuler lets you measure objects on your screen using six different metrics."
 arch=('any')
 url="https://launchpad.net/screenruler"
@@ -26,6 +26,10 @@ build() {
 
   # Fix path
   patch -Np0 -i $srcdir/path_patch.diff
+
+  # Fix Kernel.loop shadowing issue
+  sed -i 's/loop/screenruler_loop/' $srcdir/screenruler/utils/addons_ruby.rb
+  sed -i 's/loop/screenruler_loop/' $srcdir/screenruler/ruler_window.rb
 }
 
 package() {
