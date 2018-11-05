@@ -1,7 +1,7 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=('python-manilaclient' 'python2-manilaclient')
-pkgver='1.24.1'
+pkgver='1.25.0'
 pkgrel='1'
 pkgdesc='Client library for OpenStack Manila API'
 arch=('any')
