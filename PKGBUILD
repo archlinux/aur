@@ -1,30 +1,31 @@
 # Maintainer: XavierCLL <xavier.corredor.llano (a) gmail.com>
 
 pkgname=ncl
-pkgver=6.4.0
-pkgrel=2
+pkgver=6.5.0
+pkgrel=1
 pkgdesc='Ncar Command Language, is an interpreted language designed specifically for scientific data analysis and visualization'
 url='http://www.ncl.ucar.edu'
 license=('custom:NCL Source Code License')
 arch=('i686' 'x86_64')
-depends=('libxext' 'cairo' 'pixman' 'fontconfig' 'expat' 'bzip2' 'zlib' 'netcdf' 'hdf5-cpp-fortran' 
-         'triangle' 'hdf4-nonetcdf' 'netcdf-fortran' 'libxt' 'libxaw' 'libxext' 'libxpm' 'udunits'
+depends=('libxext' 'cairo' 'pixman' 'fontconfig' 'expat' 'bzip2' 'zlib' 'netcdf' 'hdf5' 
+         'triangle' 'hdf4' 'netcdf-fortran' 'libxt' 'libxaw' 'libxext' 'libxpm' 'udunits'
          'libx11' 'imake' 'g2clib' 'gdal' 'lesstif' 'glibc' 'libjpeg' 'libpng' 'jasper' 'libaec'
-         'libxaw' 'tcsh' 'flex' 'gsl' 'hdf-eos2' 'hdf-eos5')
+         'libxaw' 'tcsh' 'flex' 'gsl')
 makedepends=('gcc' 'gcc-fortran' 'tcsh' 'byacc')
 provides=('ncl')
 install=${pkgname}.install
-source=("ncl_ncarg-$pkgver.tar.gz::https://www.earthsystemgrid.org/dataset/ncl.640.src/file/ncl_ncarg-$pkgver.tar.gz"
-        "http://www.netlib.org/voronoi/triangle.zip" "Site.local" "ncarg.sh" "hluresfile" "ncl.install"
-        "no_install_dep.patch::https://src.fedoraproject.org/rpms/ncl/raw/master/f/ncl-5.0.0-no_install_dep.patch"
-        "includes.patch::https://src.fedoraproject.org/rpms/ncl/raw/master/f/ncl-5.1.0-includes.patch"
-        "netcdff.patch::https://src.fedoraproject.org/rpms/ncl/raw/master/f/ncl-5.1.0-netcdff.patch"
-        "paths.patch::https://src.fedoraproject.org/rpms/ncl/raw/master/f/ncl-5.1.0-paths.patch"
-        "ncl-libs.patch::https://src.fedoraproject.org/rpms/ncl/raw/master/f/ncl-libs.patch")
-optdepends=("ncl-highres: High-resolution coastlines (RANGS and GSHHS)")
-md5sums=('a981848ddcaf1c263279648265f24766'
+backup=(etc/profile.d/ncarg.sh)
+source=(ncl-$pkgver.tar.gz::https://github.com/NCAR/ncl/archive/$pkgver.tar.gz
+        http://www.netlib.org/voronoi/triangle.zip Site.local ncarg.sh hluresfile ncl.install
+        no_install_dep.patch::https://src.fedoraproject.org/rpms/ncl/raw/master/f/ncl-5.0.0-no_install_dep.patch
+        includes.patch::https://src.fedoraproject.org/rpms/ncl/raw/master/f/ncl-5.1.0-includes.patch
+        netcdff.patch::https://src.fedoraproject.org/rpms/ncl/raw/master/f/ncl-5.1.0-netcdff.patch
+        paths.patch::https://src.fedoraproject.org/rpms/ncl/raw/master/f/ncl-5.1.0-paths.patch
+        ncl-libs.patch::https://src.fedoraproject.org/rpms/ncl/raw/master/f/ncl-libs.patch)
+optdepends=('ncl-highres: High-resolution coastlines (RANGS and GSHHS)')
+md5sums=('b70819091cef3ae2d5eb106ecbc50b2c'
          '10aff8d7950f5e0e2fb6dd2e340be2c9'
-         '86851c0e0a36a5dc23dbe1425cb5907c'
+         'bdbef74e361df88fbceff912bff6dd8a'
          '33fd270a3ea1b4beb770b3e89ada4f59'
          'c18b84591221cf956f3c626cf8766f41'
          '913322ce7d4ca5efed7674693e8a3124'
@@ -36,10 +37,9 @@ md5sums=('a981848ddcaf1c263279648265f24766'
          
 build() {
     # copy triangle library
-    cd $srcdir
-    cp triangle.c triangle.h ${pkgname}_ncarg-$pkgver/ni/src/lib/hlu/
+    cp triangle.c triangle.h ${pkgname}-$pkgver/ni/src/lib/hlu/
 
-    cd $srcdir/${pkgname}_ncarg-$pkgver
+    cd ${pkgname}-$pkgver
 
     # patchs http://pkgs.fedoraproject.org/cgit/rpms/ncl.git
     patch -Np1 --ignore-whitespace -i ../no_install_dep.patch
@@ -53,19 +53,29 @@ build() {
 
     # configure
     #./Configure -ncar || return 1
-    cp $srcdir/Site.local config/
+    cp ../Site.local config/
     sed -i "s|YmakeRoot /usr|YmakeRoot ${pkgdir}/usr|g" config/Site.local
+    # Fixup LINUX config (to expose vsnprintf prototype)
+    sed -i -e '/StdDefines/s/-DSYSV/-D_ISOC99_SOURCE/' config/LINUX
+    # fix include c.h
+    sed -i 's|#include <ncarg/c.h>|#include "c.h"|g' common/src/libncarg_c/env.c \
+    common/src/libncarg_c/gsbytes.c common/src/libncarg_c/logic32.c common/src/libncarg_c/logic64.c \
+    common/src/libncarg_c/mangle.c common/src/libncarg_c/rwchinfl.c common/src/libncarg_c/trnspprt.c
+    # fix netcdf.h
+    sed -i 's|#include <netcdf.h>|#include "/usr/include/netcdf.h"|g' `find . -name \*.c`
+    sed -i 's|#include <netcdf.h>|#include "/usr/include/netcdf.h"|g' `find . -name \*.h`
+    
     ./config/ymkmf
 
     # build
-    make Build CCOPTIONS="-O2 -std=c99 -fPIC -fno-strict-aliasing -fopenmp -DH5Rdereference_vers=1" F77="gfortran" F77_LD="gfortran"\
-        CTOFLIBS="-lgfortran" FCOPTIONS="-fPIC -fno-second-underscore -fno-range-check -fopenmp" # >> log 2>&1 
+    make Build CCOPTIONS="-O2 -std=c99 -fPIC -fno-strict-aliasing -fopenmp -lnetcdf" F77="gfortran" F77_LD="gfortran"\
+        CTOFLIBS="-lgfortran" FCOPTIONS="-fPIC -fno-second-underscore -fno-range-check -fopenmp"  >> log 2>&1 
 }
 
 package() {
     # install
-    cd $srcdir/${pkgname}_ncarg-$pkgver
-    make install # >> log 2>&1
+    cd ${pkgname}-$pkgver
+    make install  >> log 2>&1
 
     # move libs
     mv ${pkgdir}/usr/share/ncarg/* ${pkgdir}/usr/lib/ncarg/
@@ -77,10 +87,10 @@ package() {
 
     # set variable ncarg in system
     install -dv ${pkgdir}/etc/profile.d
-    install --mode=755 $srcdir/ncarg.sh --target-directory=${pkgdir}/etc/profile.d/  
+    install --mode=755 ../ncarg.sh --target-directory=${pkgdir}/etc/profile.d/  
 
     # copy hluresfile
-    install --mode=644 $srcdir/hluresfile --target-directory=${pkgdir}/usr/lib/ncarg/
+    install --mode=644 ../hluresfile --target-directory=${pkgdir}/usr/lib/ncarg/
 
     # compress and put in order man files
     cd $pkgdir/usr/man
