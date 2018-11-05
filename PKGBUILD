@@ -2,7 +2,7 @@
 
 pkgname='powershell-git'
 _pkgname='powershell'
-binaryname='pwsh'
+_binaryname='pwsh'
 pkgver=6.2.0.preview.1.54.g5d06fba36
 pkgrel=1
 pkgdesc='A cross-platform automation and configuration tool/framework (git version)'
@@ -20,7 +20,7 @@ build.sh)
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
-         'a7caf53fcc20359d9313eb4f0a6d6fb2')
+         '70d89b489a4ae0198b9f8dbeb7bb9c40')
 install=powershell.install
 
 pkgver() {
@@ -47,13 +47,13 @@ package() {
 
   mkdir -p "$pkgdir/usr/lib/$_pkgname"
   cp -a "bin/Linux/netcoreapp2.1/linux-x64" "$pkgdir/usr/lib/$_pkgname"
-  chmod 755 $pkgdir/usr/lib/$_pkgname/linux-x64/$binaryname
+  chmod 755 $pkgdir/usr/lib/$_pkgname/linux-x64/$_binaryname
 
   mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
   cp "../../LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   mkdir -p "$pkgdir/usr/bin"
-  ln -s "/usr/lib/$_pkgname/linux-x64/$binaryname" "$pkgdir/usr/bin/$binaryname"
+  ln -s "/usr/lib/$_pkgname/linux-x64/$_binaryname" "$pkgdir/usr/bin/$_binaryname"
 
   chmod 644 \
     "$pkgdir/usr/lib/powershell/linux-x64/libhostfxr.so" \

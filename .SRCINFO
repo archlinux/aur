@@ -22,7 +22,7 @@ pkgbase = powershell-git
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = a7caf53fcc20359d9313eb4f0a6d6fb2
+	md5sums = 70d89b489a4ae0198b9f8dbeb7bb9c40
 
 pkgname = powershell-git
 
