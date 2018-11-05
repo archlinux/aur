@@ -1,5 +1,5 @@
 pkgname=pipewire-git
-pkgver=0.1.9.33.g4574adcd
+pkgver=0.2.3.17.g10ce1a02
 pkgrel=1
 pkgdesc="Multimedia processing graphs. (GIT version)"
 arch=('x86_64')
@@ -37,8 +37,9 @@ prepare() {
   cd build
 
   arch-meson ../pipewire \
-    -D enable_docs=true \
-    -D enable_man=true
+    -D docs=true \
+    -D man=true \
+    -D gstreamer=disabled
 
 }
 
