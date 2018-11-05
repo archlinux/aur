@@ -1,0 +1,14 @@
+pkgbase = icu62
+	pkgdesc = International Components for Unicode library
+	pkgver = 62.1
+	pkgrel = 1
+	url = http://www.icu-project.org/
+	arch = i686
+	arch = x86_64
+	license = custom:"icu"
+	depends = gcc-libs>=4.7.1-5
+	source = http://download.icu-project.org/files/icu4c/62.1/icu4c-62_1-src.tgz
+	md5sums = 490ad9d920158e0314e10ba74ae9a150
+
+pkgname = icu62
+
