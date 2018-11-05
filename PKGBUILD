@@ -16,7 +16,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
   cd "$srcdir/${pkgname}"
-  git checkout tags/v${pkgver}
+  git checkout tags/v${pkgver}-stable
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake -DWITH_PYTHON=OFF -DWITH_OPENBABEL=OFF ..
