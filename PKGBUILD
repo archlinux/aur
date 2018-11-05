@@ -2,14 +2,14 @@
 
 pkgname=rua
 pkgver=0.9.4
-pkgrel=1
+pkgrel=2
 pkgdesc='secure jailed AUR helper in rust'
 url='https://github.com/vn971/rua'
 source=("https://github.com/vn971/rua/archive/${pkgver}.tar.gz")
 arch=('x86_64' 'i686')
 license=('GPL3')
 makedepends=('cargo' 'libarchive')
-depends=('bubblewrap' 'git' 'base-devel')
+depends=('bubblewrap' 'git')
 
 sha256sums=(4b49e6629e4e01dd253fa862d29d8b93c52300b948a4a689aa5fa62cf6014ebd)
 
