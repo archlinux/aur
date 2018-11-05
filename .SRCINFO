@@ -1,7 +1,7 @@
-pkgbase = mingw-w64-pteros-stable
+pkgbase = mingw-w64-pteros
         pkgdesc = C++ library for molecular modeling. (mingw-w64)
         pkgver = 0
-        pkgrel = 2
+        pkgrel = 1
         url = https://github.com/yesint/pteros
         arch = any
         license = Artistic License 2.0
@@ -16,4 +16,4 @@ pkgbase = mingw-w64-pteros-stable
         source = mingw-w64-pteros::git+https://github.com/yesint/pteros.git#branch=master
         sha1sums = SKIP
 
-pkgname = mingw-w64-pteros-stable
+pkgname = mingw-w64-pteros
