@@ -1,6 +1,6 @@
 pkgbase = gwen-web
 	pkgdesc = A web automation engine for the Gwen interpreter.
-	pkgver = 2.6.0
+	pkgver = 2.26.4
 	pkgrel = 1
 	url = https://github.com/gwen-interpreter/gwen-web
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = gwen-web
 	depends = java-runtime=8
 	optdepends = chromedriver: Google Chrome support (AUR)
 	optdepends = geckodriver: Firefox support
-	source = https://github.com/gwen-interpreter/gwen-web/releases/download/v2.6.0/gwen-web-2.6.0.zip
-	sha256sums = 08a40d9346b049430678c522e48c27fa2d7e311067192b1e5e6bd0fef69750e2
+	source = https://github.com/gwen-interpreter/gwen-web/releases/download/v2.26.4/gwen-web-2.26.4.zip
+	sha256sums = a162ba27e609e4153816aa73bdce7e3cf32c69ff5c2bf926dd957a51f886a36a
 
 pkgname = gwen-web
 
