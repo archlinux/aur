@@ -3,8 +3,8 @@
 pkgbase=('python-swiglpk')
 pkgname=('python-swiglpk' 'python2-swiglpk')
 pkgdesc="A low-level Python interface to the GLPK optimization solver."
-pkgver=1.4.4
-pkgrel=2
+pkgver=4.65.0
+pkgrel=1
 arch=('any')
 url='https://github.com/biosustain/swiglpk'
 license=('gpl3')
@@ -31,4 +31,4 @@ package_python2-swiglpk() {
 	python2 setup.py install --root="${pkgdir}" --optimize=1
 }
 
-md5sums=('71a1693349df3f095ebe5bc713b3dd92')
+md5sums=('8a4a397c557b2857003f0c5aee36610d')
