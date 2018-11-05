@@ -2,7 +2,7 @@
 # Contributor: bartus ( aur\at\bartus.33mail.com )
 
 pkgname=makepkg-optimize
-pkgver=3
+pkgver=4
 pkgrel=1
 pkgdesc='Supplemental build and packaging optimizations for makepkg'
 arch=('any')
@@ -13,20 +13,20 @@ replaces=('makepkg-optimize2')
 depends=('pacman-buildenv_ext-git')
 optdepends=('upx' 'optipng' 'nodejs-svgo' 'graphite')
 backup=(etc/makepkg-optimize.conf)
-_buildenv_ext=({pgo,lto,graphite}.sh.in)
+_buildenv=({pgo,lto,graphite}.sh.in)
 _tidy=({upx,optipng,svgo}.sh.in)
 _conf=({{c,cxx,make,ld,debug-make,cmake-}flags,{buildenv,destdirs,pkgopts{,-param}}_ext,compress-param_max}.conf)
-source=(${_buildenv_ext[@]}
+source=(${_buildenv[@]}
         ${_tidy[@]}
         ${_conf[@]}
         )
-sha1sums=('108b124167751bc975cc1bce5a2905956ed5c65b'
-          'a95642b0b45d3c2f0b665806e016a52f9880195f'
-          '0726a57eeb0c08bc4ba50b28ee5ea3b5e6dbd156'
-          '0420fde975c623f788726a41da2c1311e625472f'
-          '261dfa6707cc12159f99a567617f7183426dbaa3'
-          'be019624f503380130994503b5169836edb83a35'
-          '0999f5246a10235e886eff0977582dfed43ad30c'
+sha1sums=('da515153d456ed53f6744c3ce4e6dd9a9ea3b892'
+          '2c993f086adc635e15313b45008cfe6d56c79cdc'
+          '6b719a47146aedae186a7e63b6058507c4948d9f'
+          'd6c364bac3be28a39ba9d902e8492acd35fbee13'
+          '1a815037390c67195ed831b7887884a42785010a'
+          'cff1d2b6e81226de7ece5369005c392fa8083bf2'
+          'b47947223879df8e5725e8f84b69fb355d149b44'
           '83a6d62b19184cac1de02c957cd4ea7bbdac9ddb'
           'dea4d727d81ac040846555e59ac7c34eb0978233'
           '202d11e49a611bb400029512cf159a0f8645a6db'
@@ -82,7 +82,10 @@ prepare() {
 
 package() {
   # BUILDENV extension scripts
-  install -m755 -D -t ${pkgdir}/usr/share/makepkg/buildenv_ext/ ${_buildenv_ext[@]%.in}
+  install -m755 -D -t ${pkgdir}/usr/share/makepkg/buildenv/ ${_buildenv[@]%.in}
+
+  # Executable finding scripts
+  #install -m755 -D -t ${pkgdir}/usr/share/makepkg/executable/ ${_executable[@]%.in}
 
   # Supplemental Tidy scripts
   install -m755 -D -t ${pkgdir}/usr/share/makepkg/tidy/ ${_tidy[@]%.in}
