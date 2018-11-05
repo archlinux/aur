@@ -1,8 +1,8 @@
 # Maintainer: Julian Thonhauser <julthon@gmail.com>
 pkgname=gnome-mojave-timed-wallpaper
-pkgver=v3
+pkgver=v4
 pkgrel=1
-pkgdesc="Gnome time based mojave wallpaper"
+pkgdesc="GNOME time based Mojave wallpaper"
 url="https://github.com/julthon/gnome-mojave-timed-wallpaper"
 arch=(any)
 depends=(gnome-shell gnome-backgrounds)
