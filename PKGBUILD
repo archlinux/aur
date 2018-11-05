@@ -3,7 +3,7 @@
 
 pkgname=ccid
 pkgver=1.4.30
-pkgrel=1
+pkgrel=2
 pkgdesc='A generic USB Chip/Smart Card Interface Devices driver'
 arch=('x86_64')
 url='https://ccid.apdu.fr/'
@@ -18,10 +18,12 @@ sha256sums=('ac17087be08880a0cdf99a8a2799a4ef004dc6ffa08b4d9b0ad995f39a53ff7c'
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  ./configure --prefix=/usr \
-              --sysconfdir=/etc \
-              --enable-twinserial \
-              --enable-serialconfdir=/etc/reader.conf.d
+  ./configure \
+    LEXLIB='' \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --enable-twinserial \
+    --enable-serialconfdir=/etc/reader.conf.d
   make
 }
 
