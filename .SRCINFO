@@ -1,15 +1,17 @@
 pkgbase = rebuild-detector
 	pkgdesc = Detects which packages need to be rebuilt
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = MIT
 	depends = parallel
 	source = checkrebuild
 	source = checkrebuild.sig
+	source = LICENSE
 	validpgpkeys = EB4F9E5A60D32232BB52150C12C87A28FEAC6B20
 	sha256sums = 52d160787fd11d3aafba0102297353f4ed8751437a6ba72d353958b49420c212
 	sha256sums = SKIP
+	sha256sums = 4db14647c2d687192ad26c2d4dbc7f2fd03136c3dee67720ebbbbb6c3ebc1d4e
 
 pkgname = rebuild-detector
 
