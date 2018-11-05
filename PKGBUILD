@@ -11,10 +11,10 @@
 pkgbase=linux-drm-next-git
 pkgdesc='Linux kernel with DRM patches'
 _srcname=$pkgbase
-_kernel_rel=4.20
+_kernel_rel=4.21
 _branch=drm-next
 _kernelname=${pkgbase#linux}
-pkgver=4.20.784481.f9885ef875e9
+pkgver=4.21.796611.651022382c7f
 pkgrel=1
 arch=('x86_64')
 url='https://cgit.freedesktop.org/drm/drm'
@@ -29,7 +29,7 @@ source=("${pkgbase}::git://anongit.freedesktop.org/drm/drm#branch=${_branch}"
         "${pkgbase}.preset")
 
 sha256sums=('SKIP'
-            'ddbb4925b09ecd1e7b745d1a7cf74fa0c48f3107efd1c8f698e92791db79af8f'
+            '238e4d70815049531fac8fe39bcd8cec13f35cf4ae5361e36003d5c63bd031e4'
             'd590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 pkgver() {
