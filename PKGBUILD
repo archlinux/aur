@@ -6,6 +6,9 @@
 # TODO: cndrvcups-common-lb and cndrvcups-lb should be a single split package
 
 set -u
+#if [ ! -z "${BUILDDIR:-}" ] && [ "${BUILDDIR// /}" != "${BUILDDIR}" ]; then
+#  BUILDDIR="/tmp/makepkg.${USER// /}"
+#fi
 pkgbase='cndrvcups-lb'
 pkgname="${pkgbase}"
 #_pkgver='3.40'; _commonver='3.80'; _dl='8/0100002708/17'
@@ -21,7 +24,8 @@ url='https://www.canon-europe.com/support/products/imagerunner/imagerunner-1730i
 #url='https://www.usa.canon.com/internet/portal/us/home/support/details/printers/black-and-white-laser/mf212w/imageclass-mf212w'
 license=('custom')
 depends=("cndrvcups-common-lb>=${_commonver}") # >= makes upgrades easier
-depends_i686=('libxml2')
+depends_i686=('gcc-libs')
+depends_i686+=('libxml2')
 depends_x86_64=("${depends_i686[@]/#/lib32-}")
 optdepends_i686=('libjpeg6-turbo: improves printing results for color imageRUNNER/i-SENSYS LBP devices')
 optdepends_x86_64=("${optdepends_i686[@]/#/lib32-}")
@@ -34,11 +38,17 @@ install="${pkgname}.install"
 _srcdir="${pkgbase}-${pkgver}"
 source=(
   "http://gdlp01.c-wss.com/gds/${_dl}/linux-UFRII-drv-v${_pkgver//\./}-uken.tar.gz"
+  '0000-cgnplp-po-Makefile-quote-spaces.patch'
   'how-to.txt'
 )
+md5sums=('a613792136de44958a9953814ef0e6b6'
+         '638b9668916f5973df0dba0526ba803a'
+         'e9b4391436a9ccf730a4f6e8adc74657')
 sha256sums=('a5bf2c2d53049ad64acf2ed8b6dc954ff261c4b996ce1cc81471e5baaf5e40cd'
+            'b2e4185c66d42facb57783d3d4b7d571b826b8af23d66f60574e0604b3bfd0b7'
             '62c4bfe3e4155e5e805b51eaa4b9dd3581ba029259c2817d9ebe66077aad7280')
 sha512sums=('c8b2abb2d0e9ccf972241dda5154c0ddd1ba9cfe6c721c242c40c90cf29e8d0b2c6a559907318cd191232f699a42425cc4148aebcaab6aa111f1cb5439777ce7'
+            'cc24afbc841125dc3556ada8fa2fc9b432f9b648efe18f0f6c659fdf916fe22d80f5524340877696e896d7f4a00206ba54c89943290c08377cbfaa6c9569fc00'
             '736e1785c443c4d129c8801a127410012889f46691259e8a7f6a54106a0647beb5b6267aabb78b3ed0a1c7a9d8ce216e159515d3aad425812e5be52c8b58e4ee')
 
 prepare() {
@@ -78,6 +88,7 @@ prepare() {
       -e '# ln -f hides problems so should be avoided' \
       -e 's:ln -sf :ln -s :g' \
     > 'make.install.Arch'
+
   set +u
 }
 
@@ -107,8 +118,32 @@ build() {
 
 package() {
   set -u
-
   cd "${_srcdir}"
+
+  #if [ "${BUILDDIR// /}" != "${BUILDDIR}" ]; then
+    set +u; msg2 'paths with spaces patch'; set -u
+    # Fix a Makefile space quoting bug https://bbs.archlinux.org/viewtopic.php?id=241671
+    # diff -pNau5 'cndrvcups-common-4.00/cngplp/po/Makefile'{.orig,} > '0000-cgnplp-po-Makefile-quote-spaces.patch'
+    if [ ! -s 'cngplp/po/Makefile.orig' ]; then
+      patch -Nbup1 -i "${srcdir}/0000-cgnplp-po-Makefile-quote-spaces.patch"
+    fi
+
+    # Make libtool compatible with spaces in paths
+    local _libtools=(*/libtool)
+    local _libtool
+    for _libtool in "${_libtools[@]}"; do
+      cp -n -p "${_libtool}"{,.Arch}
+      sed -e '/^\s\+func_show_eval "\$install/ s: \(\$[^ "]\+\)": \\"\1\\"":g' \
+          -e '/^\s\+func_show_eval "\$install/ s: \(\\\$[^ "]\+\)": \\"\1\\"":g' \
+          -e '# These errors do not halt the build' \
+          -e '/eval\b/ s:"(cd \([$\\][^ ]\+\) :"(cd \\"\1\\" :g' \
+          -e '/eval\b/ s:'"'"'(cd \([$\\][^ ]\+\) :'"'"'(cd "\1" :g' \
+          -e '# Not sure why single quote works here.' \
+          -e '/^old_postinstall_cmds=.* \\\$oldlib/ s:\\\$oldlib:'"'&':g" \
+          -e '/^old_postinstall_cmds=.* \\\$tool_oldlib/ s:\\\$tool_oldlib:'"'&':g" \
+        "${_libtool}.Arch" > "${_libtool}"
+    done
+  #fi
 
   local _vars; _setvars
   env "${_vars[@]}" \
