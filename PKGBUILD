@@ -1,7 +1,7 @@
 # Maintainer: Martin Fracker, Jr. <martin.frackerjr@gmail.com>
 
 pkgname=onivim-git
-pkgver=v0.3.7.beta2.r28.gc64f92926
+pkgver=0.3.7.beta2.r28.gc64f92926
 pkgrel=1
 pkgdesc="Modern modal editing, powered by Neovim"
 arch=(x86_64)
