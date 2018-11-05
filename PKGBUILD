@@ -4,7 +4,7 @@ pkgdesc="ROS - A set of message filters which take in messages and may output th
 url='http://ros.org/wiki/message_filters'
 
 pkgname='ros-kinetic-message-filters'
-pkgver='1.12.13'
+pkgver='1.12.14'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -33,8 +33,17 @@ depends=(${ros_depends[@]})
 
 # Tarball version (faster download)
 _dir="ros_comm-release-release-kinetic-message_filters-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/kinetic/message_filters/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('f16bb3bcc78881268316c2906fd5e42934dc69fcceb031a8d2cf7f14c8fb5b10')
+source=(
+  "${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/kinetic/message_filters/${pkgver}-${_pkgver_patch}.tar.gz"
+  'fix-c++-syntax.patch'
+)
+sha256sums=('faa45c9fa60f227b7a015a7edc4824d5f823563bb7753a37fffb300472dded96'
+            '2a21768b8874bb1ee7073bee5983cb869f08f79f8e11f1be7d14fb3dab095a6e')
+
+prepare() {
+  cd ${srcdir}/${_dir}
+  patch -Np1 -i ${srcdir}/fix-c++-syntax.patch
+}
 
 build() {
   # Use ROS environment variables
