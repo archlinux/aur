@@ -6,7 +6,6 @@ pkgbase = nixnote2-release-bin
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	depends = bash
 	depends = hicolor-icon-theme
 	depends = zlib
 	provides = nixnote=2.1.0.beta4
@@ -15,11 +14,11 @@ pkgbase = nixnote2-release-bin
 	replaces = nevernote
 	replaces = nixnote
 	replaces = nixnote-beta
-	source = https://github.com/robert7/nixnote2//releases/download/v2.1.0-beta4/NixNote2-x86_64.AppImage
-	source = nixnote2
-	source = nixnote2.desktop.patch
+	noextract = nixnote2-release-bin-2.1.0.beta4-AppImage
+	noextract = nixnote2-release-bin:desktop.patch
+	source = nixnote2-release-bin-2.1.0.beta4-AppImage::https://github.com/robert7/nixnote2//releases/download/v2.1.0-beta4/NixNote2-x86_64.AppImage
+	source = nixnote2-release-bin:desktop.patch
 	sha256sums = SKIP
-	sha256sums = 5d73ed58f17b5c360a0068808cb74580f9bf2d9ce959bb6300b63f5f837ac818
 	sha256sums = 4f12cddc49e0c694f41e344acebc0d8a3bce07a3496098eb2fae258ba9044967
 
 pkgname = nixnote2-release-bin
