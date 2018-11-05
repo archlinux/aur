@@ -1,261 +1,276 @@
-# Maintainer: Shadoukun <shadoukun@gmail.com>
-# Contributor: SuperBo <supernbo@gmail.com>
+# $Id$
+# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
-#pkgbase=linux               # Build stock -ARCH kernel
-pkgbase=linux-surface4      # Build kernel with a different name
-_srcname=linux-4.14.15
-pkgver=4.14.15
+pkgbase=linux-surface4       # Build kernel with a different name
+_srcver=4.18.8
+pkgver=${_srcver//-/.}
 pkgrel=1
-arch=('x86_64')
-url="https://www.kernel.org/"
-license=('GPL2')
-makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
+arch=(x86_64)
+url="https://www.kernel.org/pub/linux/kernel/v4.x/"
+license=(GPL2)
+makedepends=(xmlto kmod inetutils bc libelf git python-sphinx graphviz)
 options=('!strip')
+_srcname=linux-${_srcver}
 source=(
-  "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
-  "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-  #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-  #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
-  'config'         # the main kernel config file
-  '60-linux.hook'  # pacman hook for depmod
-  '90-linux.hook'  # pacman hook for initramfs regeneration
-  'linux.preset'   # standard config files for mkinitcpio ramdisk
-  '0001-ipts.patch'
-  '0002-hid.patch'
-  '0003-wifi.patch'
-  '0004-usb.patch'
-  '0005-camera.patch'
-  '99-ipts.rules'
+  "https://www.kernel.org/pub/linux/kernel/v4.x/linux-${_srcver}.tar.xz"
+  "https://www.kernel.org/pub/linux/kernel/v4.x/linux-${_srcver}.tar.sign"
+  update-firmware.sh
+  config         # the main kernel config file
+  60-linux.hook  # pacman hook for depmod
+  90-linux.hook  # pacman hook for initramfs regeneration
+  linux.preset   # standard config files for mkinitcpio ramdisk
+  ipts.patch
+  keyboards_and_covers.patch
+  sdcard_reader.patch
+  surfacedock.patch
+  wifi.patch
+  "https://github.com/czheji/linux-surface/raw/master/firmware.zip"
+
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
+  '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('ffc393a0c66f80375eacd3fb177b92e5c9daa07de0dcf947e925e049352e6142'
-            'SKIP'
-            'd3890f7442ea8b72c61bbe943527ba252869927a9463a878a41c7e21d6b2b27a'
+sha256sums=('f1551bad69ab617708fa8cf3f94545ae03dd350bdeb3065fbcf39c1a7df85494'
+            'd193b48d601b649720ac8a68d811f5b679b683b87f7a35322d295a81498615f5'
+            '44adcf5a8394d747aacc93bee1fe843cc0c9875ec3f854afb7acb212f4fa0c18'
+            '0c19f6558c6b651350ff4155bbe00e5cfa7b22bbf88e3c8040dd7fd020c86114'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '260859d91e9c77c8231d9ba9f86ab1c970be21da2134efd6b4df139321b80b1d'
-            'fae3adc1b4ff965e8026f02633afadf75c916c817ff48ced41d5d6f637eb89e9'
-            'ac822d7550a8e4070b5760d7fb86c0e0dba6328a63b85d001f3e19d11a3ed417'
-            '835ff847328db11f31d2eb954f45a6067527626dbf984793c44982ef5f60863e'
-            '985141fe1d694b95bc78a4b0f3dafcc2cbddabcf2c44eda8feb92847bf9f9c68'
-            '82d0fa48947aff93cbbc9a0f0f3020bf95e860d604549b20f7ef8e1634798bd8')
+            'a6a40cb4781ae8d31ec4a6580f3e0a1c6f3bb20c5b8a5103f7fff279bce37e40'
+            '5f51ddfd49f581aed02141ff11ffaa556d4737d34b9958d342a84c0149c5bba6'
+            '7b58bf7bf2d61fea106af24b37ee4e2c5faf7e4ffa55be5769a1b1d0c5fb04af'
+            'cbad22346c934a52a42716c8af604154b52c21dccc938e22a40eb51f9179ae0e'
+            '0526f56347aa4c7f8b604c614300baff1da3dddb2930b4c2b8890622c6e99e82'
+            '75c9db69d7e7e5d90683a797347b1c9d19f27f80be25e57f4110ff2b9e1e9e5b')
 
 _kernelname=${pkgbase#linux}
+: ${_kernelname:=-ARCH}
 
 prepare() {
-  cd ${_srcname}
+  cd $_srcname
 
-  # add upstream patch
-  #patch -p1 -i ../patch-${pkgver}
+  msg2 "Setting version..."
+  scripts/setlocalversion --save-scmversion
+  echo "-$pkgrel" > localversion.10-pkgrel
+  echo "$_kernelname" > localversion.20-pkgname
 
-  # security patches
+  local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    [[ $src = *.patch ]] || continue
+    msg2 "Applying patch $src..."
+    patch -Np1 < "../$src"
+  done
 
-  # add latest fixes from stable queue, if needed
-  # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
+  msg2 "Setting config..."
+  cp ../config .config
+  make olddefconfig
 
-  # https://bugs.archlinux.org/task/56207
- # patch -Np1 -i ../0001-platform-x86-hp-wmi-Fix-tablet-mode-detection-for-co.patch
-
-    # surface Patches
-  patch -Np1 -i "${srcdir}/0001-ipts.patch"
-  patch -Np1 -i "${srcdir}/0002-hid.patch"
-  patch -Np1 -i "${srcdir}/0003-wifi.patch"
-  patch -Np1 -i "${srcdir}/0004-usb.patch"
-  patch -Np1 -i "${srcdir}/0005-camera.patch"
-
-  cp -Tf ../config .config
-
-  if [ "${_kernelname}" != "" ]; then
-    sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
-    sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
-  fi
-
-  # set extraversion to pkgrel
-  sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
-
-  # don't run depmod on 'make install'. We'll do this ourselves in packaging
-  sed -i '2iexit 0' scripts/depmod.sh
-
-  # get kernel version
-  make prepare
-
-  # load configuration
-  # Configure the kernel. Replace the line below with one of your choice.
-  #make menuconfig # CLI menu for configuration
-  #make nconfig # new CLI menu for configuration
-  #make xconfig # X-based configuration
-  #make oldconfig # using old config from previous kernel version
-  # ... or manually edit .config
-
-  # rewrite configuration
-  yes "" | make config >/dev/null
+  make -s kernelrelease > ../version
+  msg2 "Prepared %s version %s" "$pkgbase" "$(<../version)"
 }
 
 build() {
-  cd ${_srcname}
-
-  make ${MAKEFLAGS} LOCALVERSION= bzImage modules
+  cd $_srcname
+  make -j2 bzImage modules htmldocs
 }
 
 _package() {
   pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
-  [ "${pkgbase}" = "linux" ] && groups=('base')
-  depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
+  [[ $pkgbase = linux ]] && groups=(base)
+  depends=(coreutils linux-firmware kmod mkinitcpio dmidecode unzip)
   optdepends=('crda: to set the correct wireless channels of your country')
-  backup=("etc/mkinitcpio.d/${pkgbase}.preset")
+  backup=("etc/mkinitcpio.d/$pkgbase.preset")
   install=linux.install
 
-  cd ${_srcname}
+  local kernver="$(<version)"
 
-  # get kernel version
-  _kernver="$(make LOCALVERSION= kernelrelease)"
-  _basekernel=${_kernver%%-*}
-  _basekernel=${_basekernel%.*}
+  cd $_srcname
 
-  mkdir -p "${pkgdir}"/{boot,lib/{modules,firmware},usr}
-  make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
-  cp arch/x86/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
+  msg2 "Installing boot image..."
+  install -Dm644 "$(make -s image_name)" "$pkgdir/boot/vmlinuz-$pkgbase"
 
-  # make room for external modules
-  local _extramodules="extramodules-${_basekernel}${_kernelname:--ARCH}"
-  ln -s "../${_extramodules}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
+  msg2 "Installing modules..."
+  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
+  mkdir -p "$modulesdir"
+  make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
 
-  # add real version for building modules and running depmod from hook
-  echo "${_kernver}" |
-    install -Dm644 /dev/stdin "${pkgdir}/lib/modules/${_extramodules}/version"
+  # a place for external modules,
+  # with version file for building modules and running depmod from hook
+  local extramodules="extramodules$_kernelname"
+  local extradir="$pkgdir/usr/lib/modules/$extramodules"
+  install -Dt "$extradir" -m644 ../version
+  ln -sr "$extradir" "$modulesdir/extramodules"
 
   # remove build and source links
-  rm "${pkgdir}"/lib/modules/${_kernver}/{source,build}
+  rm "$modulesdir"/{source,build}
 
-  # remove the firmware
-  rm -r "${pkgdir}/lib/firmware"
-
-  # now we call depmod...
-  depmod -b "${pkgdir}" -F System.map "${_kernver}"
-
-  # add vmlinux
-  install -Dt "${pkgdir}/lib/modules/${_kernver}/build" -m644 vmlinux
-
-  # move module tree /lib -> /usr/lib
-  mv -t "${pkgdir}/usr" "${pkgdir}/lib"
-
+  msg2 "Installing hooks..."
   # sed expression for following substitutions
-  local _subst="
-    s|%PKGBASE%|${pkgbase}|g
-    s|%KERNVER%|${_kernver}|g
-    s|%EXTRAMODULES%|${_extramodules}|g
+  local subst="
+    s|%PKGBASE%|$pkgbase|g
+    s|%KERNVER%|$kernver|g
+    s|%EXTRAMODULES%|$extramodules|g
   "
 
   # hack to allow specifying an initially nonexisting install file
-  sed "${_subst}" "${startdir}/${install}" > "${startdir}/${install}.pkg"
-  true && install=${install}.pkg
+  sed "$subst" "$startdir/$install" > "$startdir/$install.pkg"
+  true && install=$install.pkg
 
-  # install mkinitcpio preset file
-  sed "${_subst}" ../linux.preset |
-    install -Dm644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+  # fill in mkinitcpio preset and pacman hooks
+  sed "$subst" ../linux.preset | install -Dm644 /dev/stdin \
+    "$pkgdir/etc/mkinitcpio.d/$pkgbase.preset"
+  sed "$subst" ../60-linux.hook | install -Dm644 /dev/stdin \
+    "$pkgdir/usr/share/libalpm/hooks/60-$pkgbase.hook"
+  sed "$subst" ../90-linux.hook | install -Dm644 /dev/stdin \
+    "$pkgdir/usr/share/libalpm/hooks/90-$pkgbase.hook"
 
-  # install pacman hooks
-  sed "${_subst}" ../60-linux.hook |
-    install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/60-${pkgbase}.hook"
-  sed "${_subst}" ../90-linux.hook |
-    install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
+  msg2 "Intall i915 & ipts firmware..."
+  sed "$subst" ../update-firmware.sh | install -Dm755 /dev/stdin \
+    "$pkgdir/usr/bin/$pkgbase-firmware"
+  install -Dm64 ../i915_firmware_bxt.zip "$pkgdir/usr/share/${pkgbase}/firmware/i915_firmware_bxt.zip"
+  install -Dm64 ../i915_firmware_cfl.zip "$pkgdir/usr/share/${pkgbase}/firmware/i915_firmware_cfl.zip"
+  install -Dm64 ../i915_firmware_cnl.zip "$pkgdir/usr/share/${pkgbase}/firmware/i915_firmware_cnl.zip"
+  install -Dm64 ../i915_firmware_glk.zip "$pkgdir/usr/share/${pkgbase}/firmware/i915_firmware_glk.zip"
+  install -Dm64 ../i915_firmware_kbl.zip "$pkgdir/usr/share/${pkgbase}/firmware/i915_firmware_kbl.zip"
+  install -Dm64 ../i915_firmware_skl.zip "$pkgdir/usr/share/${pkgbase}/firmware/i915_firmware_skl.zip"
+  install -Dm64 ../ipts_firmware_v101.zip "$pkgdir/usr/share/${pkgbase}/firmware/ipts_firmware_v101.zip"
+  install -Dm64 ../ipts_firmware_v102.zip "$pkgdir/usr/share/${pkgbase}/firmware/ipts_firmware_v102.zip"
+  install -Dm64 ../ipts_firmware_v103.zip "$pkgdir/usr/share/${pkgbase}/firmware/ipts_firmware_v103.zip"
+  install -Dm64 ../ipts_firmware_v137.zip "$pkgdir/usr/share/${pkgbase}/firmware/ipts_firmware_v137.zip"
+  install -Dm64 ../ipts_firmware_v76.zip "$pkgdir/usr/share/${pkgbase}/firmware/ipts_firmware_v76.zip"
+  install -Dm64 ../ipts_firmware_v78.zip "$pkgdir/usr/share/${pkgbase}/firmware/ipts_firmware_v78.zip"
+  install -Dm64 ../ipts_firmware_v79.zip "$pkgdir/usr/share/${pkgbase}/firmware/ipts_firmware_v79.zip"
+  install -Dm64 ../nvidia_firmware_gp108.zip "$pkgdir/usr/share/${pkgbase}/firmware/nvidia_firmware_gp108.zip"
+  install -Dm64 ../mrvl_firmware.zip "$pkgdir/usr/share/${pkgbase}/firmware/mrvl_firmware.zip"
 
-  install -D -C -m644 "${srcdir}/99-ipts.rules" "${pkgdir}/usr/lib/udev/rules.d/99-ipts.rules"
-
+  msg2 "Fixing permissions..."
+  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
 
-  cd ${_srcname}
-  local _builddir="${pkgdir}/usr/lib/modules/${_kernver}/build"
+  local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
-  install -Dt "${_builddir}" -m644 Makefile .config Module.symvers
-  install -Dt "${_builddir}/kernel" -m644 kernel/Makefile
+  cd $_srcname
 
-  mkdir "${_builddir}/.tmp_versions"
-
-  cp -t "${_builddir}" -a include scripts
-
-  install -Dt "${_builddir}/arch/x86" -m644 arch/x86/Makefile
-  install -Dt "${_builddir}/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
-
-  cp -t "${_builddir}/arch/x86" -a arch/x86/include
-
-  install -Dt "${_builddir}/drivers/md" -m644 drivers/md/*.h
-  install -Dt "${_builddir}/net/mac80211" -m644 net/mac80211/*.h
-
-  # http://bugs.archlinux.org/task/9912
-  install -Dt "${_builddir}/drivers/media/dvb-core" -m644 drivers/media/dvb-core/*.h
-
-  # http://bugs.archlinux.org/task/13146
-  install -Dt "${_builddir}/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/lgdt330x.h
-  install -Dt "${_builddir}/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
-
-  # http://bugs.archlinux.org/task/20402
-  install -Dt "${_builddir}/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
-  install -Dt "${_builddir}/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
-  install -Dt "${_builddir}/drivers/media/tuners" -m644 drivers/media/tuners/*.h
-
-  # add xfs and shmem for aufs building
-  mkdir -p "${_builddir}"/{fs/xfs,mm}
-
-  # copy in Kconfig files
-  find . -name Kconfig\* -exec install -Dm644 {} "${_builddir}/{}" \;
+  msg2 "Installing build files..."
+  install -Dt "$builddir" -m644 Makefile .config Module.symvers System.map vmlinux
+  install -Dt "$builddir/kernel" -m644 kernel/Makefile
+  install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
+  cp -t "$builddir" -a scripts
 
   # add objtool for external module building and enabled VALIDATION_STACK option
-  install -Dt "${_builddir}/tools/objtool" tools/objtool/objtool
+  install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
-  # remove unneeded architectures
-  local _arch
-  for _arch in "${_builddir}"/arch/*/; do
-    [[ ${_arch} == */x86/ ]] && continue
-    rm -r "${_arch}"
+  # add xfs and shmem for aufs building
+  mkdir -p "$builddir"/{fs/xfs,mm}
+
+  # ???
+  mkdir "$builddir/.tmp_versions"
+
+  msg2 "Installing headers..."
+  cp -t "$builddir" -a include
+  cp -t "$builddir/arch/x86" -a arch/x86/include
+  install -Dt "$builddir/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
+
+  install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
+  install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
+
+  # http://bugs.archlinux.org/task/13146
+  install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
+
+  # http://bugs.archlinux.org/task/20402
+  install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
+  install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
+  install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
+
+  msg2 "Installing KConfig files..."
+  find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
+
+  msg2 "Removing unneeded architectures..."
+  local arch
+  for arch in "$builddir"/arch/*/; do
+    [[ $arch = */x86/ ]] && continue
+    echo "Removing $(basename "$arch")"
+    rm -r "$arch"
   done
 
-  # remove files already in linux-docs package
-  rm -r "${_builddir}/Documentation"
+  msg2 "Removing documentation..."
+  rm -r "$builddir/Documentation"
 
-  # Fix permissions
-  chmod -R u=rwX,go=rX "${_builddir}"
+  msg2 "Removing broken symlinks..."
+  find -L "$builddir" -type l -printf 'Removing %P\n' -delete
 
-  # strip scripts directory
-  local _binary _strip
-  while read -rd '' _binary; do
-    case "$(file -bi "${_binary}")" in
-      *application/x-sharedlib*)  _strip="${STRIP_SHARED}"   ;; # Libraries (.so)
-      *application/x-archive*)    _strip="${STRIP_STATIC}"   ;; # Libraries (.a)
-      *application/x-executable*) _strip="${STRIP_BINARIES}" ;; # Binaries
-      *) continue ;;
+  msg2 "Removing loose objects..."
+  find "$builddir" -type f -name '*.o' -printf 'Removing %P\n' -delete
+
+  msg2 "Stripping build tools..."
+  local file
+  while read -rd '' file; do
+    case "$(file -bi "$file")" in
+      application/x-sharedlib\;*)      # Libraries (.so)
+        strip -v $STRIP_SHARED "$file" ;;
+      application/x-archive\;*)        # Libraries (.a)
+        strip -v $STRIP_STATIC "$file" ;;
+      application/x-executable\;*)     # Binaries
+        strip -v $STRIP_BINARIES "$file" ;;
+      application/x-pie-executable\;*) # Relocatable binaries
+        strip -v $STRIP_SHARED "$file" ;;
     esac
-    /usr/bin/strip ${_strip} "${_binary}"
-  done < <(find "${_builddir}/scripts" -type f -perm -u+w -print0 2>/dev/null)
+  done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
+
+  msg2 "Adding symlink..."
+  mkdir -p "$pkgdir/usr/src"
+  ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase-$pkgver"
+
+  msg2 "Fixing permissions..."
+  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-docs() {
   pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
 
-  cd ${_srcname}
-  local _builddir="${pkgdir}/usr/lib/modules/${_kernver}/build"
+  local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
-  mkdir -p "${_builddir}"
-  cp -t "${_builddir}" -a Documentation
+  cd $_srcname
 
-  # Fix permissions
-  chmod -R u=rwX,go=rX "${_builddir}"
+  msg2 "Installing documentation..."
+  mkdir -p "$builddir"
+  cp -t "$builddir" -a Documentation
+
+  msg2 "Removing doctrees..."
+  rm -r "$builddir/Documentation/output/.doctrees"
+
+  msg2 "Moving HTML docs..."
+  local src dst
+  while read -rd '' src; do
+    dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
+    mkdir -p "${dst%/*}"
+    mv "$src" "$dst"
+    rmdir -p --ignore-fail-on-non-empty "${src%/*}"
+  done < <(find "$builddir/Documentation/output" -type f -print0)
+
+  msg2 "Adding symlink..."
+  mkdir -p "$pkgdir/usr/share/doc"
+  ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
+
+  msg2 "Fixing permissions..."
+  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
-pkgname=("${pkgbase}" "${pkgbase}-headers" "${pkgbase}-docs")
-for _p in ${pkgname[@]}; do
-  eval "package_${_p}() {
-    $(declare -f "_package${_p#${pkgbase}}")
-    _package${_p#${pkgbase}}
+pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
+for _p in "${pkgname[@]}"; do
+  eval "package_$_p() {
+    $(declare -f "_package${_p#$pkgbase}")
+    _package${_p#$pkgbase}
   }"
 done
 
