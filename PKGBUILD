@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 _modulename=py2nb
 pkgname=python-$_modulename
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="Convert python scripts to jupyter notebooks"
 arch=(any)
@@ -17,7 +17,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('cfbce248fd5eb5a475c6845fde32aab810ef00d7e23f0ec385c6a76909afaf20')
+sha256sums=('c05f44738a9a85568e3ef5e9742d2ccd8bfc7e8ae238f82596b3ebf30862bcf0')
 package() {
   cd "$srcdir/$_modulename-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
