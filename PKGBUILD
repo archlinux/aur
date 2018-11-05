@@ -4,12 +4,12 @@
 
 pkgname=hans
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='IP over ICMP, makes it possible to tunnel IPv4 through ICMP echo packets'
 arch=('i686' 'x86_64')
 url='http://code.gerade.org/hans/'
 license=('GPL3')
-depends=('gcc-libs')
+depends=('gcc-libs' 'net-tools')
 source=("https://github.com/friedrich/hans/archive/v${pkgver}.tar.gz")
 sha1sums=('8b5b5ad005afedf4a6bba5dd845c9ea40f2d6dd8')
 
