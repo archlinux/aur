@@ -2,11 +2,11 @@
 
 pkgname=i3ipc-python
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An improved Python library to control i3wm'
 arch=('any')
 url="https://github.com/acrisci/$pkgname"
-license=('custom:BSD')
+license=('BSD')
 depends=('python')
 makedepends=('python-setuptools')
 provides=("$pkgname")
@@ -17,6 +17,7 @@ sha256sums=('8136db291f004992ef521cf77e9215e37974a768089601db18e642ac01412ca7')
 package() {
     cd "$srcdir/$pkgname-$pkgver"
     python setup.py install --root="${pkgdir}" --optimize=1
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
 
 # vim:set ts=4 sw=4 et:
