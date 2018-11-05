@@ -7,7 +7,6 @@ pkgbase = rua
 	arch = i686
 	license = GPL3
 	makedepends = cargo
-	makedepends = libarchive
 	depends = bubblewrap
 	depends = git
 	source = https://github.com/vn971/rua/archive/0.9.4.tar.gz
