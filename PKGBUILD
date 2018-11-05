@@ -46,7 +46,7 @@ source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-
 sha256sums=('669a7dfa27df01d2de4227c284ce13aa33f25a38f1a5846c3ea73aaf291fe21e')
 prepare() {
   cd ${_dir}
-  patch -Np1 -i ${srcdir}/boost_posix_time.patch
+  patch -Np1 -i ${startdir}/boost_posix_time.patch
 }
 
 build() {
