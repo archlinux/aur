@@ -1,0 +1,18 @@
+pkgbase = dyninst
+	pkgdesc = Tools for binary instrumentation, analysis, and modification
+	pkgver = 9.3.2
+	pkgrel = 1
+	url = https://dyninst.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	depends = gcc-libs
+	depends = gcc-fortran
+	depends = boost-libs
+	depends = boost
+	source = https://github.com/dyninst/dyninst/archive/v9.3.2.tar.gz
+	md5sums = a2bf03b6d1d424853e80d39b13e9c229
+
+pkgname = dyninst
+
