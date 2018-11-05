@@ -4,7 +4,7 @@
 # Contributor: "donaldtrump" [AUR]
 
 pkgname=osu-lazer
-pkgver=2018.1102.0
+pkgver=2018.1105.0
 pkgrel=1
 pkgdesc="The new open source version of osu!, the free-to-win rhythm game"
 arch=('x86_64')
@@ -28,9 +28,9 @@ sha256sums=(
     SKIP
     SKIP
     a34d37ed6d35788501985ad3c8f63888849734549113e11f43321917fdfa16bf
-    c08160551d4d71a4c67dc5b65e724f66654b285fade87ba7c78ca5e41622113f
+    a5ed79cc7b7effd1b8603efe917bf67ea2327378a646abbdeba927aab5607e15
     3b3a9075f79ca7f2a4fd34eb182a5c1ada6eb118a95e49c1526df516365bbfe5
-    a1ab3e2a6491c62d227a080b7f83d278194229f9284613fc53c818ef396e2793
+    d842b333a014a666012548097ddf80a6f147896ad5460365560ce7f11834297f
 )
 
 prepare()

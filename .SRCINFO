@@ -1,6 +1,6 @@
 pkgbase = osu-lazer
 	pkgdesc = The new open source version of osu!, the free-to-win rhythm game
-	pkgver = 2018.1102.0
+	pkgver = 2018.1105.0
 	pkgrel = 1
 	url = https://osu.ppy.sh/
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = osu-lazer
 	depends = shared-mime-info
 	provides = osu-lazer
 	conflicts = osu-lazer-git
-	source = osu-2018.1102.0::git://github.com/ppy/osu.git#tag=2018.1102.0
+	source = osu-2018.1105.0::git://github.com/ppy/osu.git#tag=2018.1105.0
 	source = git://github.com/ppy/osu-resources.git
 	source = osu-launcher
 	source = osu-lazer.desktop
@@ -24,9 +24,9 @@ pkgbase = osu-lazer
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = a34d37ed6d35788501985ad3c8f63888849734549113e11f43321917fdfa16bf
-	sha256sums = c08160551d4d71a4c67dc5b65e724f66654b285fade87ba7c78ca5e41622113f
+	sha256sums = a5ed79cc7b7effd1b8603efe917bf67ea2327378a646abbdeba927aab5607e15
 	sha256sums = 3b3a9075f79ca7f2a4fd34eb182a5c1ada6eb118a95e49c1526df516365bbfe5
-	sha256sums = a1ab3e2a6491c62d227a080b7f83d278194229f9284613fc53c818ef396e2793
+	sha256sums = d842b333a014a666012548097ddf80a6f147896ad5460365560ce7f11834297f
 
 pkgname = osu-lazer
 
