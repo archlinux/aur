@@ -1,8 +1,9 @@
 # Maintainer: Martin Fracker, Jr. <martin.frackerjr@gmail.com>
 
 pkgname=onivim-git
+_reponame=oni
 pkgver=0.3.7.beta2.r28.gc64f92926
-pkgrel=2
+pkgrel=3
 pkgdesc="Modern modal editing, powered by Neovim"
 arch=(x86_64)
 conflicts=("oni")
@@ -10,8 +11,8 @@ provides=("oni")
 url="https://github.com/onivim/oni"
 license=("MIT")
 depends=("neovim" "nodejs-lts-carbon" "gconf" "libxss")
-makedepends=("tar" "rsync")
-source=("$pkgname::git+https://github.com/onivim/oni.git"
+makedepends=("tar" "rsync" "yarn")
+source=("git+https://github.com/onivim/$_reponame.git"
         "LICENSE::https://raw.githubusercontent.com/onivim/oni/master/LICENSE"
         "oni.desktop"
         "icons.tar.gz")
@@ -21,7 +22,7 @@ sha256sums=("SKIP"
             "9b09686c82ac5670ece59608288ab2124ee3147d404b77ac58c6ba332a6a148a")
 
 pkgver() {
-  cd "$pkgname"
+  cd "$_reponame"
   git describe --long --tags | sed "s/\([^-]*-g\)/r\1/;s/-/./g;s/^v//"
 }
 
@@ -29,13 +30,13 @@ package() {
   install -dm755 "$pkgdir/opt/$pkgname"
   install -dm755 "$pkgdir/usr/bin"
 
-  dir="$srcdir/$pkgname"
+  repo="$srcdir/$_reponame"
 
-  yarn --cwd $dir install || echo "If you are using nvm, run 'nvm use system'"
-  yarn --cwd $dir run build
-  yarn --cwd $dir run pack --dir
+  yarn --cwd $repo install || { echo "HINT: If you are using nvm, run 'nvm use system'"; exit 1; }
+  yarn --cwd $repo run build
+  yarn --cwd $repo run pack --dir
 
-  rsync -r "$dir/dist/linux-unpacked/" "$pkgdir/opt/$pkgname"
+  rsync -r "$repo/dist/linux-unpacked/" "$pkgdir/opt/$pkgname"
   install -Dm644 oni.desktop $pkgdir/usr/share/applications/oni.desktop
 
   ln -s /opt/$pkgname/oni $pkgdir/usr/bin/oni
