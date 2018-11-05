@@ -2,7 +2,7 @@
 
 pkgname=prometheus-blackbox-exporter-bin
 pkgver=0.12.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Prometheus blackbox exporter allows blackbox probing of endpoints over HTTP, HTTPS, DNS, TCP and ICMP (binary, not built from source)."
 arch=('x86_64')
 url="https://github.com/prometheus/blackbox_exporter"
