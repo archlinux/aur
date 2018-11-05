@@ -69,13 +69,13 @@ build() {
 
     # build
     make Build CCOPTIONS="-O2 -std=c99 -fPIC -fno-strict-aliasing -fopenmp -lnetcdf" F77="gfortran" F77_LD="gfortran"\
-        CTOFLIBS="-lgfortran" FCOPTIONS="-fPIC -fno-second-underscore -fno-range-check -fopenmp"  >> log 2>&1 
+        CTOFLIBS="-lgfortran" FCOPTIONS="-fPIC -fno-second-underscore -fno-range-check -fopenmp" # >> log 2>&1 
 }
 
 package() {
     # install
     cd ${pkgname}-$pkgver
-    make install  >> log 2>&1
+    make install # >> log 2>&1
 
     # move libs
     mv ${pkgdir}/usr/share/ncarg/* ${pkgdir}/usr/lib/ncarg/
