@@ -19,7 +19,7 @@ build() {
   git checkout tags/v${pkgver}-stable
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake -DCMAKE_BUILD_TYPE=Release -DWITH_PYTHON=OFF -DWITH_OPENBABEL=OFF ..
+    ${_arch}-cmake -DWITH_PYTHON=OFF -DWITH_OPENBABEL=OFF ..
     make
     popd
   done
@@ -36,5 +36,5 @@ package() {
  
 pkgver() {
   cd "$srcdir/${pkgname%-stable}"
-  git tag --sort=creatordate | grep 'stable' | head -n1 | sed 's/-stable//g; s/^v//g'
+  git tag --sort=-creatordate | grep 'stable' | head -n1 | sed 's/-stable//g; s/^v//g'
 }
