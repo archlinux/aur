@@ -1,6 +1,6 @@
 pkgbase = zypper-git
 	pkgdesc = Command line software manager using libzypp
-	pkgver = 1.14.15.17.g9aa29c92
+	pkgver = 1.14.15.21.g8d39211d
 	pkgrel = 1
 	url = https://github.com/openSUSE/zypper
 	arch = i686
