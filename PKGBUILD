@@ -2,7 +2,7 @@
 
 pkgname=yubikey-touch-detector
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool that can detect when your YubiKey is waiting for a touch'
 arch=('x86_64')
 url='https://github.com/maximbaz/yubikey-touch-detector'
@@ -34,6 +34,7 @@ package() {
     cd "$srcdir/$pkgname"
     install -Dm755 -t "$pkgdir/usr/bin" "$pkgname"
     install -Dm644 -t "$pkgdir/usr/lib/systemd/user" "$pkgname.service"
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
 
 # vim:set ts=4 sw=4 et:
