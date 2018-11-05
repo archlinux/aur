@@ -2,32 +2,46 @@
 
 pkgname=pahole-git
 pkgdesc="Various DWARF utils"
-pkgver=v1.10.r28.g9df42c6
+pkgver=1.12.r7.g70ef8c7
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://git.kernel.org/?p=devel/pahole/pahole.git;a=summary"
 license=('GPL2')
-source=($pkgname'::git+https://kernel.googlesource.com/pub/scm/devel/pahole/pahole.git')
-depends=('elfutils' 'python')
-makedepends=('git' 'cmake')
+depends=('elfutils' 'python2')
+makedepends=('git' 'cmake' 'ninja')
 provides=('dwarves' 'pahole')
 conflicts=('dwarves' 'pahole')
-md5sums=('SKIP')
+source=(
+  $pkgname'::git+https://kernel.googlesource.com/pub/scm/devel/pahole/pahole.git'
+  "file://0001-ostra-use-python2.patch"
+)
+md5sums=('SKIP' 'SKIP')
+
+prepare() {
+  cd "$srcdir/$pkgname"
+  patch -Np1 -i "$srcdir/0001-ostra-use-python2.patch"  
+  mkdir -p build
+}
 
 pkgver() {
-  cd "$pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$srcdir/$pkgname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-  cd "$pkgname"
-  cmake -D CMAKE_INSTALL_PREFIX:PATH=/usr -D__LIB=lib .
-  make
+  cd "$srcdir/$pkgname/build"
+
+  cmake -G Ninja \
+   -D CMAKE_BUILD_TYPE=Release \
+   -D CMAKE_INSTALL_PREFIX=/usr \
+   -D LIB_INSTALL_DIR=/usr/lib \
+   ..
+  ninja
 }
 
 package() {
-  cd "$pkgname"
-  make DESTDIR=${pkgdir}/ install
+  cd "$srcdir/$pkgname/build"
+  DESTDIR=${pkgdir}/ ninja install
 }
 
 # vim:set ts=2 sw=2 et:
