@@ -1,14 +1,18 @@
 pkgbase = otf-alegreya
-	pkgdesc = Serif family, part of the Alegreya "super family"
+	pkgdesc = An elegant and versatile type family for comfortable reading (serif sub-family of the Alegreya "super family")
 	pkgver = 2.008
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.huertatipografica.com/en/fonts/alegreya-ht-pro
 	arch = any
 	license = custom:OFL
 	depends = fontconfig
-	conflicts = otf-google-fonts-hg
-	source = https://github.com/huertatipografica/Alegreya/archive/v2.008.tar.gz
+	source = alegreya-v2.008.tar.gz::https://github.com/huertatipografica/Alegreya/archive/v2.008.tar.gz
 	sha256sums = 44dacbe3c4b60c203b1d60f0a55ebf6c139823f83fd234f9b078ece7cb15676e
 
 pkgname = otf-alegreya
+	pkgdesc = An elegant and versatile type family for comfortable reading (serif sub-family of the Alegreya "super family") (OTF version)
+
+pkgname = ttf-alegreya
+	pkgdesc = An elegant and versatile type family for comfortable reading (serif sub-family of the Alegreya "super family") (TTF version)
+	conflicts = ttf-google-fonts-git
 
