@@ -1,7 +1,7 @@
 pkgbase = prometheus-blackbox-exporter-bin
 	pkgdesc = Prometheus blackbox exporter allows blackbox probing of endpoints over HTTP, HTTPS, DNS, TCP and ICMP (binary, not built from source).
 	pkgver = 0.12.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/prometheus/blackbox_exporter
 	install = prometheus-blackbox-exporter.install
 	arch = x86_64
@@ -12,11 +12,13 @@ pkgbase = prometheus-blackbox-exporter-bin
 	source = prometheus-blackbox-exporter.service
 	source = config.yml
 	source = prometheus-blackbox-exporter.install
+	source = prometheus.sysusers
 	source = https://github.com/prometheus/blackbox_exporter/releases/download/v0.12.0/blackbox_exporter-0.12.0.linux-amd64.tar.gz
-	sha256sums = 761291fca9031635e18368f3ed9d22f191a9b5c036a64ff8e7217b411ad6ca25
-	sha256sums = 38d9cf33beabc7bcf2a2504c2657ecee66a96da94a4f829619e92980800da3ce
-	sha256sums = 17e5b3850058fd95e07b2d5d96d4869436ff475f190c731b11d6cf6914c7c9f3
-	sha256sums = c5d8ba7d91101524fa7c3f5e17256d467d44d5e1d243e251fd795e0ab4a83605
+	md5sums = e92e48a4199046fdd92ad21eba658b8f
+	md5sums = 81d90a7cdaadf99c5aa1399864dcf3da
+	md5sums = 45cf951d67cf59d74be82d0ddcce704d
+	md5sums = 15acae9345cc6032933e54c0cf1cbc35
+	md5sums = 4bb0d18b84d04b1c0160778b2f44693a
 
 pkgname = prometheus-blackbox-exporter-bin
 
