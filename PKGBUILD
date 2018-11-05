@@ -1,25 +1,24 @@
 # Maintainer: Alexander Korzun <korzun.sas@mail.ru>
 pkgname=modbox
-pkgver=0.1_pre_dev
+pkgver=0.3
 pkgrel=1
 pkgdesc="A 3D game where modules loaded in runtime control most of gameplay"
 arch=(x86_64)
 url="https://github.com/kodo-pp/ModBox"
 license=('MIT')
-depends=('irrlicht')
-provides=('modbox')
-conflicts=('modbox-git')
+makedepends=('boost')
+depends=('irrlicht' 'python' 'boost-libs' 'coreutils')
 source=(
-    "$pkgname-$pkgver.tar.gz::https://github.com/kodo-pp/ModBox/archive/$pkgver.tar.gz"
-    "https://github.com/kodo-pp/ModBox/releases/download/$pkgver/start-installed-modbox.sh"
+    "$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/kodo-pp/ModBox/archive/v0.3.tar.gz"
+    "https://github.com/kodo-pp/ModBox/releases/download/v0.3/start-modbox.sh"
 )
-md5sums=('1e65ef7ecf9e0cc2a8c123e36c658a7d'
-         '49846d29c0f44849b043e6888b9c5cc4')
-sha256sums=('d972d8f01fbf9d1328a12bc58920503199f2cd073135c18d716ec2968e0a7c5d'
-            'd761cb52f9c77c7abd3b9d926a2719cc07ffd00efa1ddb12ec12c65b81eee0f4')
+md5sums=('389b175ba275a86a30cc02e1e6b44713'
+         'edfef5b85484de3e5aa4707f9d4a62fb')
+sha256sums=('26f2d26e71686e752f21c9afd22e2661c6a1ffc7c5c737bf0a2c8abf5f30c530'
+            '92e22381915507c482c6915c011649063c610ef417d64f55a77480ba7b63d262')
 
 build() {
-    cd "ModBox-$pkgver"
+    cd "ModBox-0.3"
     CC_TOOLCHAIN=gcc FORCE_REBUILD=yes DEBUG=no ./build.sh
 }
 
@@ -27,8 +26,13 @@ package() {
     cd "ModBox-$pkgver"
     mkdir -p "$pkgdir/opt/ModBox"
     cp -r textures "$pkgdir/opt/ModBox"
+    cp -r modules "$pkgdir/opt/ModBox"
+    cp -r pymodbox "$pkgdir/opt/ModBox"
+    mkdir "$pkgdir/opt/ModBox/saves"
     chmod -R 1777 "$pkgdir/opt/ModBox/textures"
-    install -Dm755 main "$pkgdir/opt/ModBox/modbox"
+    chmod -R 1777 "$pkgdir/opt/ModBox/modules"
+    chmod -R 1777 "$pkgdir/opt/ModBox/saves"
+    install -Dm755 main "$pkgdir/usr/bin/modbox-exe"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm755 ../start-installed-modbox.sh "$pkgdir/usr/bin/modbox"
+    install -Dm755 ../start-modbox.sh "$pkgdir/usr/bin/modbox"
 }
