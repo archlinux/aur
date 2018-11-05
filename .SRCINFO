@@ -1,6 +1,6 @@
 pkgbase = diskus-bin
 	pkgdesc = A minimal, fast alternative to 'du -sh'
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/sharkdp/diskus
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = diskus-bin
 	license = MIT
 	depends = gcc-libs
 	provides = diskus
-	source = diskus-bin-0.3.1.tar.gz::https://github.com/sharkdp/diskus/releases/download/v0.3.1/diskus-v0.3.1-x86_64-unknown-linux-gnu.tar.gz
-	md5sums = 27abb9bfb6dd7c782fcbb95ad7ad9400
+	source = diskus-bin-0.4.0.tar.gz::https://github.com/sharkdp/diskus/releases/download/v0.4.0/diskus-v0.4.0-x86_64-unknown-linux-gnu.tar.gz
+	md5sums = 606fc30ee4d866fd21a6452b43e0a708
 
 pkgname = diskus-bin
 
