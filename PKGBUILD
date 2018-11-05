@@ -1,34 +1,43 @@
-# Maintainer: Kisuke-CZE <kisuke@kisuke.cz>
-# Contributor: proudzhu <proudzhu.fdu at gmail.com>
+# Maintainer: Muhkoenig
+
 pkgname=libvips
-pkgver=8.6.0
+pkgver=8.7.0
 pkgrel=1
-pkgdesc="A fast image processing library with low memory needs."
+pkgdesc="A free image processing system"
 arch=('i686' 'x86_64')
-url="http://www.vips.ecs.soton.ac.uk"
 license=('LGPL 2.1+')
-depends=('glib2' 'libxml2' 'libjpeg' 'libpng')
-makedepends=('git' 'gobject-introspection' 'gtk-doc' 'swig' 'libexif'
-             'libtiff' 'fftw' 'lcms2' 'libwebp' 'openexr')
-optdepends=('gobject-introspection: for vips8 python binding'
-            'libexif: for EXIF metadata support'
-            'fftw: for fourier transforms support'
-            'lcms2: transforming images with ICC profiles'
-            'libwebp: for WebP image support'
-            'openexr: for OpenEXR image support(only read)')
+url="https://jcupitt.github.io/libvips/"
+depends=('libxml2')
+makedepends=(
+	'swig'
+	'gtk-doc'
+	'gobject-introspection'
+)
+optdepends=(
+	'python2: vipsprofile'
+	'gobject-introspection: for vips8 python binding'
+	'libexif: for EXIF metadata support'
+	'fftw: for fourier transforms support'
+	'lcms2: transforming images with ICC profiles'
+	'libwebp: for WebP image support'
+	'openexr: for OpenEXR image support(only read)'
+)
 provides=('libvips')
 conflicts=('libvips-git')
+options=('!libtool')
 source=("https://github.com/jcupitt/libvips/archive/v${pkgver}.tar.gz")
-sha256sums=('d4b575c161691580f71ab2755aba601f36d55783f2a6fe049bdbed569763a5f2')
+sha256sums=('79be1d48be6d7426ca41724f920ab6754721449b6bd4ec963ebc3fb4312216b4')
 
 build() {
-  cd "${pkgname}-${pkgver}"
-  ./autogen.sh
-  ./configure --prefix=/usr
-  make
+	cd "$srcdir"/$pkgname-$pkgver
+
+	./autogen.sh
+	./configure --prefix=/usr
+	make
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
-  make DESTDIR="${pkgdir}" install
+	cd "$srcdir"/$pkgname-$pkgver
+
+	make DESTDIR="$pkgdir" install
 }
