@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-pteros-stable
         pkgdesc = C++ library for molecular modeling. (mingw-w64)
         pkgver = 0
-        pkgrel = 1
+        pkgrel = 2
         url = https://github.com/yesint/pteros
         arch = any
         license = Artistic License 2.0
