@@ -1,0 +1,14 @@
+pkgbase = python-oauth
+	pkgdesc = Python 3 library implementing of the OAuth protocol.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://code.google.com/archive/p/oauth/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = python-oauth-1.0.1.tar.gz::https://files.pythonhosted.org/packages/source/o/oauth/oauth-1.0.1.tar.gz
+	sha256sums = e769819ff0b0c043d020246ce1defcaadd65b9c21d244468a45a7f06cb88af5d
+
+pkgname = python-oauth
+
