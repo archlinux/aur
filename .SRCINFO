@@ -1,6 +1,6 @@
 pkgbase = petsc
 	pkgdesc = Portable, extensible toolkit for scientific computation
-	pkgver = 3.10.1
+	pkgver = 3.10.2
 	pkgrel = 1
 	url = https://www.mcs.anl.gov/petsc/
 	install = petsc.install
@@ -26,9 +26,9 @@ pkgbase = petsc
 	optdepends = fftw: support for the fftw fast Fourier transform
 	optdepends = suitesparse: support for the suitesparse sparse matrix libraries
 	options = staticlibs
-	source = http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-3.10.1.tar.gz
+	source = http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-3.10.2.tar.gz
 	source = test_optdepends.sh
-	sha256sums = b6e64ce062113ee0e2e2a6cfffb4d33c085ec91d5bc3afeb33781074aa5a22a5
+	sha256sums = 9d3381bcf9c63abe6521b21a88efc70f8e893293503cff497971d0d9c1ec68cc
 	sha256sums = b737cc58ffb581c68072cf978bf4de3eaff8318c7a1e65c174d7ffe802ed427b
 
 pkgname = petsc
