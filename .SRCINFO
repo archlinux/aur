@@ -1,15 +1,14 @@
 pkgbase = perspector
 	pkgdesc = A control-point-based perspective rectification tool
 	pkgver = 1.2
-	pkgrel = 4
-	url = http://ambrevar.bitbucket.org/perspector
+	pkgrel = 5
+	url = https://ambrevar.xyz/perspector
 	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = gsl
 	depends = gtk3
-	source = perspector-1.2.tar.bz2::https://bitbucket.org/ambrevar/perspector/get/v1.2.tar.bz2
-	sha256sums = fccc60320df2a30b44779bc0751c3be324de8cfc3583473ebb71b624306ff05a
+	source = perspector-1.2.tar.gz::https://gitlab.com/Ambrevar/perspector/repository/archive.tar.gz?ref=413252afcbd2a0c952c22d1f868201ad282e4ec8
+	sha256sums = 8f5d221ec5e1b45ea6915dea40a72ff22eafc404f63832112a8c8bfe8106de46
 
 pkgname = perspector
-
