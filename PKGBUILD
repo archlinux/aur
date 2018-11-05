@@ -1,13 +1,13 @@
 # Maintainer: Julian Thonhauser <julthon@gmail.com>
 pkgname=gnome-mojave-timed-wallpaper
 pkgver=v4
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME time based Mojave wallpaper"
 url="https://github.com/julthon/gnome-mojave-timed-wallpaper"
 arch=(any)
 depends=(gnome-shell gnome-backgrounds)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/julthon/gnome-mojave-timed-wallpaper/releases/download/$pkgver/gnome-mojave-timed-wallpaper_$pkgver.tar.gz")
-sha512sums=('17b049b5f5d423cce3c458caafef48dac05b6768f574370ced9621e73d52f37d7c1984292db2b96408ff982d613da88daa80c7a6c55abf11465b16901387607f')
+sha512sums=('374e8321eadf0318afba972b781d11bb035d49b202e12513ffa9e76df299a3c1d80ae2c8dc6aca7b90924e3c4612ff1b32b14deb9d6ba978fe4490f421e0f109')
 
 package() {
   _instdir="$pkgdir/usr/share/backgrounds/gnome/"
