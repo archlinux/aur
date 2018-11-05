@@ -1,0 +1,1150 @@
+diff --git a/scripts/Makefile.am b/scripts/Makefile.am
+index c6b6220e..6e47c1a1 100644
+--- a/scripts/Makefile.am
++++ b/scripts/Makefile.am
+@@ -41,6 +41,8 @@ LIBRARY = \
+ libmakepkgdir = $(datarootdir)/makepkg
+
+ LIBMAKEPKGDIRS = \
++	buildenv \
++	executable \
+ 	integrity \
+ 	lint_config \
+ 	lint_package \
+@@ -50,6 +52,22 @@ LIBMAKEPKGDIRS = \
+ 	util
+
+ LIBMAKEPKG_IN = \
++	libmakepkg/executable.sh \
++	libmakepkg/executable/ccache.sh \
++	libmakepkg/executable/checksum.sh \
++	libmakepkg/executable/distcc.sh \
++	libmakepkg/executable/fakeroot.sh \
++	libmakepkg/executable/gpg.sh \
++	libmakepkg/executable/gzip.sh \
++	libmakepkg/executable/pacman.sh \
++	libmakepkg/executable/strip.sh \
++	libmakepkg/executable/sudo.sh \
++	libmakepkg/executable/vcs.sh \
++	libmakepkg/buildenv.sh \
++	libmakepkg/buildenv/buildflags.sh \
++	libmakepkg/buildenv/compiler.sh \
++	libmakepkg/buildenv/debugflags.sh \
++	libmakepkg/buildenv/makeflags.sh \
+ 	libmakepkg/integrity.sh \
+ 	libmakepkg/integrity/generate_checksum.sh \
+ 	libmakepkg/integrity/generate_signature.sh \
+diff --git a/scripts/libmakepkg/buildenv.sh.in b/scripts/libmakepkg/buildenv.sh.in
+new file mode 100644
+index 00000000..c3442c42
+--- /dev/null
++++ b/scripts/libmakepkg/buildenv.sh.in
+@@ -0,0 +1,47 @@
++#!/bin/bash
++#
++#   buildenv.sh - functions for altering the build environment before
++#   compiliation
++#
++#   Copyright (c) 2018 Pacman Development Team <pacman-dev@archlinux.org>
++#
++#   This program is free software; you can redistribute it and/or modify
++#   it under the terms of the GNU General Public License as published by
++#   the Free Software Foundation; either version 2 of the License, or
++#   (at your option) any later version.
++#
++#   This program is distributed in the hope that it will be useful,
++#   but WITHOUT ANY WARRANTY; without even the implied warranty of
++#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++#   GNU General Public License for more details.
++#
++#   You should have received a copy of the GNU General Public License
++#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
++#
++
++[[ -n "$LIBMAKEPKG_BUILDENV_SH" ]] && return
++LIBMAKEPKG_BUILDENV_SH=1
++
++LIBRARY=${LIBRARY:-'@libmakepkgdir@'}
++
++source "$LIBRARY/util/message.sh"
++
++
++declare -a buildenv_functions
++
++for lib in "$LIBRARY/buildenv/"*.sh; do
++	source "$lib"
++done
++
++readonly -a buildenv_functions
++
++prepare_buildenv() {
++	msg "$(gettext "Preparing build environment...")"
++
++	for func in ${buildenv_functions[@]}; do
++		$func
++	done
++
++	# ensure all necessary build variables are exported
++	export CPPFLAGS CFLAGS CXXFLAGS LDFLAGS MAKEFLAGS CHOST
++}
+diff --git a/scripts/libmakepkg/buildenv/buildflags.sh.in b/scripts/libmakepkg/buildenv/buildflags.sh.in
+new file mode 100644
+index 00000000..ac207fd3
+--- /dev/null
++++ b/scripts/libmakepkg/buildenv/buildflags.sh.in
+@@ -0,0 +1,35 @@
++#!/usr/bin/bash
++#
++#   buildflags.sh - Clear user-specified buildflags if requested
++#
++#   Copyright (c) 2018 Pacman Development Team <pacman-dev@archlinux.org>
++#
++#   This program is free software; you can redistribute it and/or modify
++#   it under the terms of the GNU General Public License as published by
++#   the Free Software Foundation; either version 2 of the License, or
++#   (at your option) any later version.
++#
++#   This program is distributed in the hope that it will be useful,
++#   but WITHOUT ANY WARRANTY; without even the implied warranty of
++#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++#   GNU General Public License for more details.
++#
++#   You should have received a copy of the GNU General Public License
++#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
++#
++
++[[ -n "$LIBMAKEPKG_BUILDENV_BUILDFLAGS_SH" ]] && return
++LIBMAKEPKG_BUILDENV_BUILDFLAGS_SH=1
++
++LIBRARY=${LIBRARY:-'@libmakepkgdir@'}
++
++source "$LIBRARY/util/option.sh"
++
++build_options+=('buildflags')
++buildenv_functions+=('buildenv_buildflags')
++
++buildenv_buildflags() {
++	if check_option "buildflags" "n"; then
++		unset CPPFLAGS CFLAGS CXXFLAGS LDFLAGS
++	fi
++}
+diff --git a/scripts/libmakepkg/buildenv/compiler.sh.in b/scripts/libmakepkg/buildenv/compiler.sh.in
+new file mode 100644
+index 00000000..38399269
+--- /dev/null
++++ b/scripts/libmakepkg/buildenv/compiler.sh.in
+@@ -0,0 +1,56 @@
++#!/usr/bin/bash
++#
++#   compiler.sh - CCache and DistCC compilation
++#   ccache - Cache compiliations and recycle them to save time on repititions
++#   distcc - Distribute compliation to reduce compilation time
++#
++#   Copyright (c) 2018 Pacman Development Team <pacman-dev@archlinux.org>
++#
++#   This program is free software; you can redistribute it and/or modify
++#   it under the terms of the GNU General Public License as published by
++#   the Free Software Foundation; either version 2 of the License, or
++#   (at your option) any later version.
++#
++#   This program is distributed in the hope that it will be useful,
++#   but WITHOUT ANY WARRANTY; without even the implied warranty of
++#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++#   GNU General Public License for more details.
++#
++#   You should have received a copy of the GNU General Public License
++#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
++#
++
++[[ -n "$LIBMAKEPKG_BUILDENV_COMPILER_SH" ]] && return
++LIBMAKEPKG_BUILDENV_COMPILER_SH=1
++
++LIBRARY=${LIBRARY:-'@libmakepkgdir@'}
++
++source "$LIBRARY/util/message.sh"
++source "$LIBRARY/util/option.sh"
++
++build_options+=('ccache' 'distcc')
++buildenv_functions+=('buildenv_ccache' 'buildenv_distcc')
++
++local using_ccache=0
++
++buildenv_ccache() {
++	if check_buildoption "ccache" "y"; then
++		if [ -d /usr/lib/ccache/bin ]; then
++			export PATH="/usr/lib/ccache/bin:$PATH"
++			using_ccache=1
++		fi
++	fi
++}
++
++buildenv_distcc() {
++	if check_buildoption "distcc" "y"; then
++		if (( using_ccache )); then
++			export CCACHE_PREFIX="${CCACHE_PREFIX:+$CCACHE_PREFIX }distcc"
++			export CCACHE_BASEDIR="$srcdir"
++		elif [[ -d /usr/lib/distcc/bin ]]; then
++			export PATH="/usr/lib/distcc/bin:$PATH"
++		fi
++
++		export DISTCC_HOSTS
++	fi
++}
+diff --git a/scripts/libmakepkg/buildenv/debugflags.sh.in b/scripts/libmakepkg/buildenv/debugflags.sh.in
+new file mode 100644
+index 00000000..65aa6c0a
+--- /dev/null
++++ b/scripts/libmakepkg/buildenv/debugflags.sh.in
+@@ -0,0 +1,38 @@
++#!/usr/bin/bash
++#
++#   debugflags.sh - Specify flags for building a package with debugging
++#   symbols
++#
++#   Copyright (c) 2018 Pacman Development Team <pacman-dev@archlinux.org>
++#
++#   This program is free software; you can redistribute it and/or modify
++#   it under the terms of the GNU General Public License as published by
++#   the Free Software Foundation; either version 2 of the License, or
++#   (at your option) any later version.
++#
++#   This program is distributed in the hope that it will be useful,
++#   but WITHOUT ANY WARRANTY; without even the implied warranty of
++#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++#   GNU General Public License for more details.
++#
++#   You should have received a copy of the GNU General Public License
++#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
++#
++
++[[ -n "$LIBMAKEPKG_BUILDENV_DEBUGFLAGS_SH" ]] && return
++LIBMAKEPKG_BUILDENV_DEBUGFLAGS_SH=1
++
++LIBRARY=${LIBRARY:-'@libmakepkgdir@'}
++
++source "$LIBRARY/util/option.sh"
++
++buildenv_functions+=('buildenv_debugflags')
++
++buildenv_debugflags() {
++	if check_option "debug" "y"; then
++		DEBUG_CFLAGS+=" -fdebug-prefix-map=$srcdir=${DBGSRCDIR:-/usr/src/debug}"
++		DEBUG_CXXFLAGS+=" -fdebug-prefix-map=$srcdir=${DBGSRCDIR:-/usr/src/debug}"
++		CFLAGS+=" $DEBUG_CFLAGS"
++		CXXFLAGS+=" $DEBUG_CXXFLAGS"
++	fi
++}
+diff --git a/scripts/libmakepkg/buildenv/makeflags.sh.in b/scripts/libmakepkg/buildenv/makeflags.sh.in
+new file mode 100644
+index 00000000..45e77468
+--- /dev/null
++++ b/scripts/libmakepkg/buildenv/makeflags.sh.in
+@@ -0,0 +1,35 @@
++#!/usr/bin/bash
++#
++#   makeflags.sh - Clear user-specified makeflags if requested
++#
++#   Copyright (c) 2018 Pacman Development Team <pacman-dev@archlinux.org>
++#
++#   This program is free software; you can redistribute it and/or modify
++#   it under the terms of the GNU General Public License as published by
++#   the Free Software Foundation; either version 2 of the License, or
++#   (at your option) any later version.
++#
++#   This program is distributed in the hope that it will be useful,
++#   but WITHOUT ANY WARRANTY; without even the implied warranty of
++#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++#   GNU General Public License for more details.
++#
++#   You should have received a copy of the GNU General Public License
++#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
++#
++
++[[ -n "$LIBMAKEPKG_BUILDENV_MAKEFLAGS_SH" ]] && return
++LIBMAKEPKG_BUILDENV_MAKEFLAGS_SH=1
++
++LIBRARY=${LIBRARY:-'@libmakepkgdir@'}
++
++source "$LIBRARY/util/option.sh"
++
++build_options+=('makeflags')
++buildenv_functions+=('buildenv_makeflags')
++
++buildenv_makeflags() {
++	if check_option "makeflags" "n"; then
++		unset MAKEFLAGS
++	fi
++}
+diff --git a/scripts/libmakepkg/buildenv/meson.build b/scripts/libmakepkg/buildenv/meson.build
+new file mode 100644
+index 00000000..34d4ba7b
+--- /dev/null
++++ b/scripts/libmakepkg/buildenv/meson.build
+@@ -0,0 +1,20 @@
++libmakepkg_module = 'buildenv'
++
++sources = [
++  'buildflags.sh.in',
++  'compiler.sh.in',
++  'debugflags.sh.in',
++  'makeflags.sh.in',
++]
++
++foreach src : sources
++  output_dir = join_paths(get_option('datadir'), 'makepkg', libmakepkg_module)
++
++  custom_target(
++    libmakepkg_module + '_' + src.underscorify(),
++    command : [ SCRIPT_EDITOR, '@INPUT@', '@OUTPUT@' ],
++    input : src,
++    output : '@BASENAME@',
++    install : true,
++    install_dir : output_dir)
++endforeach
+diff --git a/scripts/libmakepkg/executable.sh.in b/scripts/libmakepkg/executable.sh.in
+new file mode 100644
+index 00000000..57953600
+--- /dev/null
++++ b/scripts/libmakepkg/executable.sh.in
+@@ -0,0 +1,46 @@
++#!/bin/bash
++#
++#   executable.sh - functions for altering the build environment before
++#   compiliation
++#
++#   Copyright (c) 2018 Pacman Development Team <pacman-dev@archlinux.org>
++#
++#   This program is free software; you can redistribute it and/or modify
++#   it under the terms of the GNU General Public License as published by
++#   the Free Software Foundation; either version 2 of the License, or
++#   (at your option) any later version.
++#
++#   This program is distributed in the hope that it will be useful,
++#   but WITHOUT ANY WARRANTY; without even the implied warranty of
++#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++#   GNU General Public License for more details.
++#
++#   You should have received a copy of the GNU General Public License
++#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
++#
++
++[[ -n "$LIBMAKEPKG_EXECUTABLE_SH" ]] && return
++LIBMAKEPKG_EXECUTABLE_SH=1
++
++LIBRARY=${LIBRARY:-'@libmakepkgdir@'}
++
++source "$LIBRARY/util/message.sh"
++
++
++declare -a executable_functions
++
++for lib in "$LIBRARY/executable/"*.sh; do
++	source "$lib"
++done
++
++readonly -a executable_functions
++
++check_software() {
++	local ret=0
++
++	for func in ${executable_functions[@]}; do
++		$func
++	done
++
++	return $ret
++}
+diff --git a/scripts/libmakepkg/executable/ccache.sh.in b/scripts/libmakepkg/executable/ccache.sh.in
+new file mode 100644
+index 00000000..a745be79
+--- /dev/null
++++ b/scripts/libmakepkg/executable/ccache.sh.in
+@@ -0,0 +1,37 @@
++#!/usr/bin/bash
++#
++#   ccache.sh - Cache compiliations and recycle them to save time on repititions
++#
++#   Copyright (c) 2018 Pacman Development Team <pacman-dev@archlinux.org>
++#
++#   This program is free software; you can redistribute it and/or modify
++#   it under the terms of the GNU General Public License as published by
++#   the Free Software Foundation; either version 2 of the License, or
++#   (at your option) any later version.
++#
++#   This program is distributed in the hope that it will be useful,
++#   but WITHOUT ANY WARRANTY; without even the implied warranty of
++#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++#   GNU General Public License for more details.
++#
++#   You should have received a copy of the GNU General Public License
++#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
++#
++
++[[ -n "$LIBMAKEPKG_EXECUTABLE_CCACHE_SH" ]] && return
++LIBMAKEPKG_EXECUTABLE_CCACHE_SH=1
++
++LIBRARY=${LIBRARY:-'@libmakepkgdir@'}
++
++source "$LIBRARY/util/option.sh"
++
++executable_functions+=('executable_ccache')
++
++executable_ccache() {
++	if check_buildoption "ccache" "y"; then
++		if ! type -p ccache >/dev/null; then
++			error "$(gettext "Cannot find the %s binary required for compiler cache usage.")" "ccache"
++			ret=1
++		fi
++	fi
++}
+diff --git a/scripts/libmakepkg/executable/checksum.sh.in b/scripts/libmakepkg/executable/checksum.sh.in
+new file mode 100644
+index 00000000..4ddb20a6
+--- /dev/null
++++ b/scripts/libmakepkg/executable/checksum.sh.in
+@@ -0,0 +1,43 @@
++#!/usr/bin/bash
++#
++#   checksum.sh - Checksum operations
++#
++#   Copyright (c) 2018 Pacman Development Team <pacman-dev@archlinux.org>
++#
++#   This program is free software; you can redistribute it and/or modify
++#   it under the terms of the GNU General Public License as published by
++#   the Free Software Foundation; either version 2 of the License, or
++#   (at your option) any later version.
++#
++#   This program is distributed in the hope that it will be useful,
++#   but WITHOUT ANY WARRANTY; without even the implied warranty of
++#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++#   GNU General Public License for more details.
++#
++#   You should have received a copy of the GNU General Public License
++#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
++#
++
++[[ -n "$LIBMAKEPKG_EXECUTABLE_CHECKSUM_SH" ]] && return
++LIBMAKEPKG_EXECUTABLE_CHECKSUM_SH=1
++
++LIBRARY=${LIBRARY:-'@libmakepkgdir@'}
++
++source "$LIBRARY/util/option.sh"
++
++executable_functions+=('executable_checksum')
++
++executable_checksum() {
++	if (( GENINTEG || ! SKIPCHECKSUMS )); then
++		local integlist
++		IFS=$'\n' read -rd '' -a integlist < <(get_integlist)
++
++		local integ
++		for integ in "${integlist[@]}"; do
++			if ! type -p "${integ}sum" >/dev/null; then
++				error "$(gettext "Cannot find the %s binary required for source file checksums operations.")" "${integ}sum"
++				return 1
++			fi
++		done
++	fi
++}
+diff --git a/scripts/libmakepkg/executable/distcc.sh.in b/scripts/libmakepkg/executable/distcc.sh.in
+new file mode 100644
+index 00000000..b47a8915
+--- /dev/null
++++ b/scripts/libmakepkg/executable/distcc.sh.in
+@@ -0,0 +1,37 @@
++#!/usr/bin/bash
++#
++#   distcc.sh - Distribute compliation to reduce compilation time
++#
++#   Copyright (c) 2018 Pacman Development Team <pacman-dev@archlinux.org>
++#
++#   This program is free software; you can redistribute it and/or modify
++#   it under the terms of the GNU General Public License as published by
++#   the Free Software Foundation; either version 2 of the License, or
++#   (at your option) any later version.
++#
++#   This program is distributed in the hope that it will be useful,
++#   but WITHOUT ANY WARRANTY; without even the implied warranty of
++#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++#   GNU General Public License for more details.
++#
++#   You should have received a copy of the GNU General Public License
++#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
++#
++
++[[ -n "$LIBMAKEPKG_EXECUTABLE_DISTCC_SH" ]] && return
++LIBMAKEPKG_EXECUTABLE_DISTCC_SH=1
++
++LIBRARY=${LIBRARY:-'@libmakepkgdir@'}
++
++source "$LIBRARY/util/option.sh"
++
++executable_functions+=('executable_distcc')
++
++executable_distcc() {
++	if check_buildoption "distcc" "y"; then
++		if ! type -p distcc >/dev/null; then
++			error "$(gettext "Cannot find the %s binary required for distributed compilation.")" "distcc"
++			ret=1
++		fi
++	fi
++}
+diff --git a/scripts/libmakepkg/executable/fakeroot.sh.in b/scripts/libmakepkg/executable/fakeroot.sh.in
+new file mode 100644
+index 00000000..83c7a0f6
+--- /dev/null
++++ b/scripts/libmakepkg/executable/fakeroot.sh.in
+@@ -0,0 +1,37 @@
++#!/usr/bin/bash
++#
++#   fakeroot.sh - Correct package file permissions
++#
++#   Copyright (c) 2018 Pacman Development Team <pacman-dev@archlinux.org>
++#
++#   This program is free software; you can redistribute it and/or modify
++#   it under the terms of the GNU General Public License as published by
++#   the Free Software Foundation; either version 2 of the License, or
++#   (at your option) any later version.
++#
++#   This program is distributed in the hope that it will be useful,
++#   but WITHOUT ANY WARRANTY; without even the implied warranty of
++#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++#   GNU General Public License for more details.
++#
++#   You should have received a copy of the GNU General Public License
++#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
++#
++
++[[ -n "$LIBMAKEPKG_EXECUTABLE_FAKEROOT_SH" ]] && return
++LIBMAKEPKG_EXECUTABLE_FAKEROOT_SH=1
++
++LIBRARY=${LIBRARY:-'@libmakepkgdir@'}
++
++source "$LIBRARY/util/option.sh"
++
++executable_functions+=('executable_fakeroot')
++
++executable_fakeroot() {
++	if check_buildenv "fakeroot" "y" && (( EUID > 0 )); then
++		if ! type -p fakeroot >/dev/null; then
++			error "$(gettext "Cannot find the %s binary.")" "fakeroot"
++			ret=1
++		fi
++	fi
++}
+diff --git a/scripts/libmakepkg/executable/gpg.sh.in b/scripts/libmakepkg/executable/gpg.sh.in
+new file mode 100644
+index 00000000..f53f186d
+--- /dev/null
++++ b/scripts/libmakepkg/executable/gpg.sh.in
+@@ -0,0 +1,38 @@
++#!/usr/bin/bash
++#
++#   gpg.sh - Package signing or source verification
++#
++#   Copyright (c) 2018 Pacman Development Team <pacman-dev@archlinux.org>
++#
++#   This program is free software; you can redistribute it and/or modify
++#   it under the terms of the GNU General Public License as published by
++#   the Free Software Foundation; either version 2 of the License, or
++#   (at your option) any later version.
++#
++#   This program is distributed in the hope that it will be useful,
++#   but WITHOUT ANY WARRANTY; without even the implied warranty of
++#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++#   GNU General Public License for more details.
++#
++#   You should have received a copy of the GNU General Public License
++#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
++#
++
++[[ -n "$LIBMAKEPKG_EXECUTABLE_GPG_SH" ]] && return
++LIBMAKEPKG_EXECUTABLE_GPG_SH=1
++
++LIBRARY=${LIBRARY:-'@libmakepkgdir@'}
++
++source "$LIBRARY/util/option.sh"
++
++executable_functions+=('executable_gpg')
++
++executable_gpg() {
++	if { [[ $SIGNPKG == 'y' ]] || { [[ -z $SIGNPKG ]] && check_buildenv "sign" "y"; }; } || \
++       { (( ! SKIPPGPCHECK )) && source_has_signatures; }; then
++		if ! type -p gpg >/dev/null; then
++			error "$(gettext "Cannot find the %s binary required for signing packages.")" "gpg"
++			ret=1
++		fi
++	fi
++}
+diff --git a/scripts/libmakepkg/executable/gzip.sh.in b/scripts/libmakepkg/executable/gzip.sh.in
+new file mode 100644
+index 00000000..222c5a47
+--- /dev/null
++++ b/scripts/libmakepkg/executable/gzip.sh.in
+@@ -0,0 +1,37 @@
++#!/usr/bin/bash
++#
++#   gzip.sh - Compressig man and info pages
++#
++#   Copyright (c) 2018 Pacman Development Team <pacman-dev@archlinux.org>
++#
++#   This program is free software; you can redistribute it and/or modify
++#   it under the terms of the GNU General Public License as published by
++#   the Free Software Foundation; either version 2 of the License, or
++#   (at your option) any later version.
++#
++#   This program is distributed in the hope that it will be useful,
++#   but WITHOUT ANY WARRANTY; without even the implied warranty of
++#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++#   GNU General Public License for more details.
++#
++#   You should have received a copy of the GNU General Public License
++#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
++#
++
++[[ -n "$LIBMAKEPKG_EXECUTABLE_GZIP_SH" ]] && return
++LIBMAKEPKG_EXECUTABLE_GZIP_SH=1
++
++LIBRARY=${LIBRARY:-'@libmakepkgdir@'}
++
++source "$LIBRARY/util/option.sh"
++
++executable_functions+=('executable_gzip')
++
++executable_gzip() {
++	if check_option "zipman" "y"; then
++		if ! type -p gzip >/dev/null; then
++			error "$(gettext "Cannot find the %s binary required for compressing man and info pages.")" "gzip"
++			ret=1
++		fi
++	fi
++}
+diff --git a/scripts/libmakepkg/executable/meson.build b/scripts/libmakepkg/executable/meson.build
+new file mode 100644
+index 00000000..8536a540
+--- /dev/null
++++ b/scripts/libmakepkg/executable/meson.build
+@@ -0,0 +1,26 @@
++libmakepkg_module = 'executable'
++
++sources = [
++  'ccache.sh.in',
++  'checksum.sh.in',
++  'distcc.sh.in',
++  'fakeroot.sh.in',
++  'gpg.sh.in',
++  'gzip.sh.in',
++  'pacman.sh.in',
++  'strip.sh.in',
++  'sudo.sh.in',
++  'vcs.sh.in',
++]
++
++foreach src : sources
++  output_dir = join_paths(get_option('datadir'), 'makepkg', libmakepkg_module)
++
++  custom_target(
++    libmakepkg_module + '_' + src.underscorify(),
++    command : [ SCRIPT_EDITOR, '@INPUT@', '@OUTPUT@' ],
++    input : src,
++    output : '@BASENAME@',
++    install : true,
++    install_dir : output_dir)
++endforeach
+diff --git a/scripts/libmakepkg/executable/pacman.sh.in b/scripts/libmakepkg/executable/pacman.sh.in
+new file mode 100644
+index 00000000..9af475bd
+--- /dev/null
++++ b/scripts/libmakepkg/executable/pacman.sh.in
+@@ -0,0 +1,37 @@
++#!/usr/bin/bash
++#
++#   pacman.sh - Check for PACMAN if we need it
++#
++#   Copyright (c) 2018 Pacman Development Team <pacman-dev@archlinux.org>
++#
++#   This program is free software; you can redistribute it and/or modify
++#   it under the terms of the GNU General Public License as published by
++#   the Free Software Foundation; either version 2 of the License, or
++#   (at your option) any later version.
++#
++#   This program is distributed in the hope that it will be useful,
++#   but WITHOUT ANY WARRANTY; without even the implied warranty of
++#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++#   GNU General Public License for more details.
++#
++#   You should have received a copy of the GNU General Public License
++#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
++#
++
++[[ -n "$LIBMAKEPKG_EXECUTABLE_PACMAN_SH" ]] && return
++LIBMAKEPKG_EXECUTABLE_PACMAN_SH=1
++
++LIBRARY=${LIBRARY:-'@libmakepkgdir@'}
++
++source "$LIBRARY/util/option.sh"
++
++executable_functions+=('executable_pacman')
++
++executable_pacman() {
++    if (( ! NODEPS || DEP_BIN || RMDEPS || INSTALL )); then
++		if [[ -z $PACMAN_PATH ]]; then
++			error "$(gettext "Cannot find the %s binary required for dependency operations.")" "$PACMAN"
++			ret=1
++		fi
++	fi
++}
+diff --git a/scripts/libmakepkg/executable/strip.sh.in b/scripts/libmakepkg/executable/strip.sh.in
+new file mode 100644
+index 00000000..318e2b97
+--- /dev/null
++++ b/scripts/libmakepkg/executable/strip.sh.in
+@@ -0,0 +1,37 @@
++#!/usr/bin/bash
++#
++#   strip.sh - Strip symbols from binaries/libraries
++#
++#   Copyright (c) 2018 Pacman Development Team <pacman-dev@archlinux.org>
++#
++#   This program is free software; you can redistribute it and/or modify
++#   it under the terms of the GNU General Public License as published by
++#   the Free Software Foundation; either version 2 of the License, or
++#   (at your option) any later version.
++#
++#   This program is distributed in the hope that it will be useful,
++#   but WITHOUT ANY WARRANTY; without even the implied warranty of
++#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++#   GNU General Public License for more details.
++#
++#   You should have received a copy of the GNU General Public License
++#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
++#
++
++[[ -n "$LIBMAKEPKG_EXECUTABLE_STRIP_SH" ]] && return
++LIBMAKEPKG_EXECUTABLE_STRIP_SH=1
++
++LIBRARY=${LIBRARY:-'@libmakepkgdir@'}
++
++source "$LIBRARY/util/option.sh"
++
++executable_functions+=('executable_strip')
++
++executable_strip() {
++	if check_option "strip" "y"; then
++		if ! type -p strip >/dev/null; then
++			error "$(gettext "Cannot find the %s binary required for object file stripping.")" "strip"
++			ret=1
++		fi
++	fi
++}
+diff --git a/scripts/libmakepkg/executable/sudo.sh.in b/scripts/libmakepkg/executable/sudo.sh.in
+new file mode 100644
+index 00000000..04807604
+--- /dev/null
++++ b/scripts/libmakepkg/executable/sudo.sh.in
+@@ -0,0 +1,36 @@
++#!/usr/bin/bash
++#
++#   sudo.sh - Check for sudo if we will need it during makepkg execution
++#
++#   Copyright (c) 2018 Pacman Development Team <pacman-dev@archlinux.org>
++#
++#   This program is free software; you can redistribute it and/or modify
++#   it under the terms of the GNU General Public License as published by
++#   the Free Software Foundation; either version 2 of the License, or
++#   (at your option) any later version.
++#
++#   This program is distributed in the hope that it will be useful,
++#   but WITHOUT ANY WARRANTY; without even the implied warranty of
++#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++#   GNU General Public License for more details.
++#
++#   You should have received a copy of the GNU General Public License
++#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
++#
++
++[[ -n "$LIBMAKEPKG_EXECUTABLE_SUDO_SH" ]] && return
++LIBMAKEPKG_EXECUTABLE_SUDO_SH=1
++
++LIBRARY=${LIBRARY:-'@libmakepkgdir@'}
++
++source "$LIBRARY/util/option.sh"
++
++executable_functions+=('executable_sudo')
++
++executable_sudo() {
++    if (( DEP_BIN || RMDEPS || INSTALL )); then
++        if ! type -p sudo >/dev/null; then
++            warning "$(gettext "Cannot find the %s binary. Will use %s to acquire root privileges.")" "sudo" "su"
++        fi
++    fi
++}
+diff --git a/scripts/libmakepkg/executable/vcs.sh.in b/scripts/libmakepkg/executable/vcs.sh.in
+new file mode 100644
+index 00000000..728cb78e
+--- /dev/null
++++ b/scripts/libmakepkg/executable/vcs.sh.in
+@@ -0,0 +1,109 @@
++#!/usr/bin/bash
++#
++#   vcs.sh - Tools to download vcs sources
++#
++#   Copyright (c) 2018 Pacman Development Team <pacman-dev@archlinux.org>
++#
++#   This program is free software; you can redistribute it and/or modify
++#   it under the terms of the GNU General Public License as published by
++#   the Free Software Foundation; either version 2 of the License, or
++#   (at your option) any later version.
++#
++#   This program is distributed in the hope that it will be useful,
++#   but WITHOUT ANY WARRANTY; without even the implied warranty of
++#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++#   GNU General Public License for more details.
++#
++#   You should have received a copy of the GNU General Public License
++#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
++#
++
++[[ -n "$LIBMAKEPKG_EXECUTABLE_VCS_SH" ]] && return
++LIBMAKEPKG_EXECUTABLE_VCS_SH=1
++
++LIBRARY=${LIBRARY:-'@libmakepkgdir@'}
++
++source "$LIBRARY/util/option.sh"
++
++executable_functions+=('executable_vcs')
++
++get_vcsclient() {
++	local proto=${1%%+*}
++
++	local i
++	for i in "${VCSCLIENTS[@]}"; do
++		local handler="${i%%::*}"
++		if [[ $proto = "$handler" ]]; then
++			local client="${i##*::}"
++			break
++		fi
++	done
++
++	# if we didn't find an client, return an error
++	if [[ -z $client ]]; then
++		error "$(gettext "Unknown download protocol: %s")" "$proto"
++		plain "$(gettext "Aborting...")"
++		exit $E_CONFIG_ERROR
++	fi
++
++	printf "%s\n" "$client"
++}
++
++check_vcs_software() {
++    local netfile all_sources all_deps deps ret=0
++
++   	if (( SOURCEONLY == 1 )); then
++   		# we will not download VCS sources
++    	return $ret
++   	fi
++
++   	if [[ -z $PACMAN_PATH ]]; then
++   		warning "$(gettext "Cannot find the %s binary needed to check VCS source requirements.")" "$PACMAN"
++    	return $ret
++   	fi
++
++   	# we currently only use global depends/makedepends arrays for --syncdeps
++   	for attr in depends makedepends; do
++   		get_pkgbuild_attribute "$pkg" "$attr" 1 'deps'
++   		all_deps+=("${deps[@]}")
++
++   		get_pkgbuild_attribute "$pkg" "${attr}_$CARCH" 1 'deps'
++   		all_deps+=("${deps[@]}")
++   	done
++
++   	get_all_sources_for_arch 'all_sources'
++   	for netfile in ${all_sources[@]}; do
++   		local proto=$(get_protocol "$netfile")
++
++   		case $proto in
++   			bzr*|git*|hg*|svn*)
++   				if ! type -p ${proto%%+*} > /dev/null; then
++   					local client
++   					client=$(get_vcsclient "$proto") || exit $?
++   					# ensure specified program is installed
++   					local uninstalled
++   					uninstalled=$(check_deps "$client") || exit $E_INSTALL_DEPS_FAILED
++   					# if not installed, check presence in depends or makedepends
++   					if [[ -n "$uninstalled" ]] && (( ! NODEPS || ( VERIFYSOURCE && !DEP_BIN ) )); then
++   						if ! in_array "$client" ${all_deps[@]}; then
++   							error "$(gettext "Cannot find the %s package needed to handle %s sources.")" \
++   									"$client" "${proto%%+*}"
++    						ret=1
++   						fi
++   					fi
++   				fi
++   				;;
++   			*)
++   				# non VCS source
++   				;;
++   		esac
++    done
++
++    return $ret
++}
++
++executable_vcs() {
++	if ! check_vcs_software; then
++		ret=1
++	fi
++}
+diff --git a/scripts/libmakepkg/meson.build b/scripts/libmakepkg/meson.build
+index 07475b4d..bfba56a5 100644
+--- a/scripts/libmakepkg/meson.build
++++ b/scripts/libmakepkg/meson.build
+@@ -1,4 +1,6 @@
+ libmakepkg_modules = [
++  { 'name' : 'buildenv',      'has_subdir' : true },
++  { 'name' : 'executable',    'has_subdir' : true },
+   { 'name' : 'integrity',     'has_subdir' : true },
+   { 'name' : 'lint_config',   'has_subdir' : true },
+   { 'name' : 'lint_package',  'has_subdir' : true },
+diff --git a/scripts/makepkg.sh.in b/scripts/makepkg.sh.in
+index 3ac03d11..4449ccf7 100644
+--- a/scripts/makepkg.sh.in
++++ b/scripts/makepkg.sh.in
+@@ -48,11 +48,10 @@ declare -r startdir="$(pwd -P)"
+
+ LIBRARY=${LIBRARY:-'@libmakepkgdir@'}
+
+-build_options=('ccache' 'distcc' 'buildflags' 'makeflags')
+ splitpkg_overrides=('pkgdesc' 'arch' 'url' 'license' 'groups' 'depends'
+                     'optdepends' 'provides' 'conflicts' 'replaces' 'backup'
+                     'options' 'install' 'changelog')
+-readonly -a build_options splitpkg_overrides
++readonly -a splitpkg_overrides
+
+ known_hash_algos=('md5' 'sha1' 'sha224' 'sha256' 'sha384' 'sha512')
+
+@@ -380,47 +379,6 @@ source_buildfile() {
+ 	source_safe "$@"
+ }
+
+-prepare_buildenv() {
+-	# clear user-specified buildflags if requested
+-	if check_option "buildflags" "n"; then
+-		unset CPPFLAGS CFLAGS CXXFLAGS LDFLAGS
+-	fi
+-
+-	if check_option "debug" "y"; then
+-		DEBUG_CFLAGS+=" -fdebug-prefix-map=$srcdir=${DBGSRCDIR:-/usr/src/debug}"
+-		DEBUG_CXXFLAGS+=" -fdebug-prefix-map=$srcdir=${DBGSRCDIR:-/usr/src/debug}"
+-		CFLAGS+=" $DEBUG_CFLAGS"
+-		CXXFLAGS+=" $DEBUG_CXXFLAGS"
+-	fi
+-
+-	# clear user-specified makeflags if requested
+-	if check_option "makeflags" "n"; then
+-		unset MAKEFLAGS
+-	fi
+-
+-	# ensure all necessary build variables are exported
+-	export CPPFLAGS CFLAGS CXXFLAGS LDFLAGS MAKEFLAGS CHOST
+-
+-	local ccache=0
+-
+-	# use ccache if it is requested (check buildenv and PKGBUILD opts)
+-	if check_buildoption "ccache" "y" && [[ -d /usr/lib/ccache/bin ]]; then
+-		export PATH="/usr/lib/ccache/bin:$PATH"
+-		ccache=1
+-	fi
+-
+-	# use distcc if it is requested (check buildenv and PKGBUILD opts)
+-	if check_buildoption "distcc" "y"; then
+-		if (( ccache )); then
+-			export CCACHE_PREFIX="${CCACHE_PREFIX:+$CCACHE_PREFIX }distcc"
+-			export CCACHE_BASEDIR="$srcdir"
+-		elif [[ -d /usr/lib/distcc/bin ]]; then
+-			export PATH="/usr/lib/distcc/bin:$PATH"
+-		fi
+-		export DISTCC_HOSTS
+-	fi
+-}
+-
+ run_function_safe() {
+ 	local restoretrap restoreshopt
+
+@@ -897,178 +855,6 @@ install_package() {
+ 	fi
+ }
+
+-get_vcsclient() {
+-	local proto=${1%%+*}
+-
+-	local i
+-	for i in "${VCSCLIENTS[@]}"; do
+-		local handler="${i%%::*}"
+-		if [[ $proto = "$handler" ]]; then
+-			local client="${i##*::}"
+-			break
+-		fi
+-	done
+-
+-	# if we didn't find an client, return an error
+-	if [[ -z $client ]]; then
+-		error "$(gettext "Unknown download protocol: %s")" "$proto"
+-		plain "$(gettext "Aborting...")"
+-		exit $E_CONFIG_ERROR
+-	fi
+-
+-	printf "%s\n" "$client"
+-}
+-
+-check_vcs_software() {
+-	local netfile all_sources all_deps deps ret=0
+-
+-	if (( SOURCEONLY == 1 )); then
+-		# we will not download VCS sources
+-		return $ret
+-	fi
+-
+-	if [[ -z $PACMAN_PATH ]]; then
+-		warning "$(gettext "Cannot find the %s binary needed to check VCS source requirements.")" "$PACMAN"
+-		return $ret
+-	fi
+-
+-	# we currently only use global depends/makedepends arrays for --syncdeps
+-	for attr in depends makedepends; do
+-		get_pkgbuild_attribute "$pkg" "$attr" 1 'deps'
+-		all_deps+=("${deps[@]}")
+-
+-		get_pkgbuild_attribute "$pkg" "${attr}_$CARCH" 1 'deps'
+-		all_deps+=("${deps[@]}")
+-	done
+-
+-	get_all_sources_for_arch 'all_sources'
+-	for netfile in ${all_sources[@]}; do
+-		local proto=$(get_protocol "$netfile")
+-
+-		case $proto in
+-			bzr*|git*|hg*|svn*)
+-				if ! type -p ${proto%%+*} > /dev/null; then
+-					local client
+-					client=$(get_vcsclient "$proto") || exit $?
+-					# ensure specified program is installed
+-					local uninstalled
+-					uninstalled=$(check_deps "$client") || exit $E_INSTALL_DEPS_FAILED
+-					# if not installed, check presence in depends or makedepends
+-					if [[ -n "$uninstalled" ]] && (( ! NODEPS || ( VERIFYSOURCE && !DEP_BIN ) )); then
+-						if ! in_array "$client" ${all_deps[@]}; then
+-							error "$(gettext "Cannot find the %s package needed to handle %s sources.")" \
+-									"$client" "${proto%%+*}"
+-							ret=1
+-						fi
+-					fi
+-				fi
+-				;;
+-			*)
+-				# non VCS source
+-				;;
+-		esac
+-	done
+-
+-	return $ret
+-}
+-
+-check_software() {
+-	# check for needed software
+-	local ret=0
+-
+-	# check for PACMAN if we need it
+-	if (( ! NODEPS || DEP_BIN || RMDEPS || INSTALL )); then
+-		if [[ -z $PACMAN_PATH ]]; then
+-			error "$(gettext "Cannot find the %s binary required for dependency operations.")" "$PACMAN"
+-			ret=1
+-		fi
+-	fi
+-
+-	# check for sudo if we will need it during makepkg execution
+-	if (( DEP_BIN || RMDEPS || INSTALL )); then
+-		if ! type -p sudo >/dev/null; then
+-			warning "$(gettext "Cannot find the %s binary. Will use %s to acquire root privileges.")" "sudo" "su"
+-		fi
+-	fi
+-
+-	# fakeroot - correct package file permissions
+-	if check_buildenv "fakeroot" "y" && (( EUID > 0 )); then
+-		if ! type -p fakeroot >/dev/null; then
+-			error "$(gettext "Cannot find the %s binary.")" "fakeroot"
+-			ret=1
+-		fi
+-	fi
+-
+-	# gpg - package signing
+-	if [[ $SIGNPKG == 'y' ]] || { [[ -z $SIGNPKG ]] && check_buildenv "sign" "y"; }; then
+-		if ! type -p gpg >/dev/null; then
+-			error "$(gettext "Cannot find the %s binary required for signing packages.")" "gpg"
+-			ret=1
+-		fi
+-	fi
+-
+-	# gpg - source verification
+-	if (( ! SKIPPGPCHECK )) && source_has_signatures; then
+-		if ! type -p gpg >/dev/null; then
+-			error "$(gettext "Cannot find the %s binary required for verifying source files.")" "gpg"
+-			ret=1
+-		fi
+-	fi
+-
+-	# checksum operations
+-	if (( GENINTEG || ! SKIPCHECKSUMS )); then
+-		local integlist
+-		IFS=$'\n' read -rd '' -a integlist < <(get_integlist)
+-
+-		local integ
+-		for integ in "${integlist[@]}"; do
+-			if ! type -p "${integ}sum" >/dev/null; then
+-				error "$(gettext "Cannot find the %s binary required for source file checksums operations.")" "${integ}sum"
+-				ret=1
+-			fi
+-		done
+-	fi
+-
+-	# distcc - compilation with distcc
+-	if check_buildoption "distcc" "y"; then
+-		if ! type -p distcc >/dev/null; then
+-			error "$(gettext "Cannot find the %s binary required for distributed compilation.")" "distcc"
+-			ret=1
+-		fi
+-	fi
+-
+-	# ccache - compilation with ccache
+-	if check_buildoption "ccache" "y"; then
+-		if ! type -p ccache >/dev/null; then
+-			error "$(gettext "Cannot find the %s binary required for compiler cache usage.")" "ccache"
+-			ret=1
+-		fi
+-	fi
+-
+-	# strip - strip symbols from binaries/libraries
+-	if check_option "strip" "y"; then
+-		if ! type -p strip >/dev/null; then
+-			error "$(gettext "Cannot find the %s binary required for object file stripping.")" "strip"
+-			ret=1
+-		fi
+-	fi
+-
+-	# gzip - compressig man and info pages
+-	if check_option "zipman" "y"; then
+-		if ! type -p gzip >/dev/null; then
+-			error "$(gettext "Cannot find the %s binary required for compressing man and info pages.")" "gzip"
+-			ret=1
+-		fi
+-	fi
+-
+-	# tools to download vcs sources
+-	if ! check_vcs_software; then
+-		ret=1
+-	fi
+-
+-	return $ret
+-}
+-
+ check_build_status() {
+ 	if (( ! SPLITPKG )); then
+ 		fullver=$(get_full_version)

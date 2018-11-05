@@ -1,7 +1,7 @@
 pkgbase = pacman-buildenv_ext-git
 	pkgdesc = A library-based package manager with dependency support with support for build environment extensions. git version.
-	pkgver = 5.1.1.51.gb5d62d2c
-	pkgrel = 2
+	pkgver = 5.1.1.57.gde915c4f
+	pkgrel = 1
 	url = https://bbs.archlinux.org/viewtopic.php?pid=1613555
 	arch = i686
 	arch = x86_64
@@ -29,14 +29,14 @@ pkgbase = pacman-buildenv_ext-git
 	source = pacman.conf.i686
 	source = pacman.conf.x86_64
 	source = pacman.conf.arm
-	source = buildenv_ext.patch
+	source = buildenv-libmakepkg.patch
 	source = makepkg.conf
 	sha1sums = SKIP
 	sha1sums = f3b8b360bf4c8775f439ab189e445f455334cccf
 	sha1sums = 0b3ad0e7e28b6b28a611ea6cc4a12515532e1b78
 	sha1sums = 1ac32ed5b20d62d3709fc21c67371a9ec1ce199e
-	sha1sums = 0f3b272bd2afb83eca7af6595ab763ede2cccfdd
-	sha1sums = 46ae3b64b9c54f06e95ddd7313307942ca45e9b3
+	sha1sums = 41f5995cc70970cea871d378f4842dcac43b9e95
+	sha1sums = 31025906f087af36e7af5d50220c4a63acadc754
 
 pkgname = pacman-buildenv_ext-git
 

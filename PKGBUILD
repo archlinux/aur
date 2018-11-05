@@ -5,8 +5,8 @@
 # Contributor: Andres Perera <aepd87@gmail.com>
 
 pkgname=pacman-buildenv_ext-git
-pkgver=5.1.1.51.gb5d62d2c
-pkgrel=2
+pkgver=5.1.1.57.gde915c4f
+pkgrel=1
 pkgdesc="A library-based package manager with dependency support with support for build environment extensions. git version."
 arch=('i686' 'x86_64')
 url="https://bbs.archlinux.org/viewtopic.php?pid=1613555"
@@ -23,14 +23,14 @@ backup=(etc/pacman.conf
         etc/makepkg.conf)
 source=(git://git.archlinux.org/pacman.git
         pacman.conf.{i686,x86_64,arm}
-        buildenv_ext.patch
+        buildenv-libmakepkg.patch
         makepkg.conf)
 sha1sums=('SKIP'
           'f3b8b360bf4c8775f439ab189e445f455334cccf'
           '0b3ad0e7e28b6b28a611ea6cc4a12515532e1b78'
           '1ac32ed5b20d62d3709fc21c67371a9ec1ce199e'
-          '0f3b272bd2afb83eca7af6595ab763ede2cccfdd'
-          '46ae3b64b9c54f06e95ddd7313307942ca45e9b3')
+          '41f5995cc70970cea871d378f4842dcac43b9e95'
+          '31025906f087af36e7af5d50220c4a63acadc754')
 
 pkgver() {
   cd pacman
@@ -39,7 +39,7 @@ pkgver() {
 
 prepare() {
   cd pacman
-  patch -Np1 < ../buildenv_ext.patch
+  patch -Np1 < ../buildenv-libmakepkg.patch
   ./autogen.sh
 }
 
