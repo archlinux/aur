@@ -3,7 +3,7 @@
 # Contributor: theSander <aur@sandervanbalen.be>
 pkgname=rambox-os-git
 pkgver=r989.821e3f5
-pkgrel=3
+pkgrel=4
 pkgdesc="Free and Open Source messaging and emailing app that combines common web applications into one."
 arch=(i686 x86_64)
 url="https://github.com/TheGoddessInari/rambox"
