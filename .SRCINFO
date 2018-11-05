@@ -1,10 +1,13 @@
 pkgbase = datawire-forge
 	pkgdesc = Define and run multi-container apps in Kubernetes http://forge.sh
 	pkgver = 0.4.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://forge.sh/
 	arch = x86_64
+	arch = i686
 	license = Apache
+	depends = python2>=2.7
+	depends = python2<2.8
 	depends = glibc
 	options = !strip
 	source_x86_64 = forge::https://s3.amazonaws.com/datawire-static-files/forge/0.4.15/forge

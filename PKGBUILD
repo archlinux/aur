@@ -2,12 +2,12 @@
 
 pkgname=datawire-forge
 pkgver=0.4.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Define and run multi-container apps in Kubernetes http://forge.sh"
-arch=('x86_64')
+arch=('x86_64' 'i686')
 url="https://forge.sh/"
 license=('Apache')
-depends=('glibc')
+depends=('python2>=2.7' 'python2<2.8' 'glibc')
 source_x86_64=(
     "forge::https://s3.amazonaws.com/datawire-static-files/forge/${pkgver}/forge"
     )
