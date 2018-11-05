@@ -2,13 +2,13 @@
 
 pkgname=scry-git
 _gitname=scry
-pkgver=129.2e988b7
+pkgver=1.e3f3168
 pkgrel=1
-pkgdesc="Scry is a code analysis server for Crystal."
+pkgdesc="Scry is a language server for Crystal."
 arch=("x86_64")
 url="https://github.com/crystal-lang-tools/$_gitname"
 license=("MIT")
-depends=("git" "crystal")
+depends=("git" "crystal-git")
 source=("git+https://github.com/crystal-lang-tools/$_gitname")
 sha256sums=("SKIP")
 
