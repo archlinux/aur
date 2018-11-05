@@ -2,7 +2,7 @@
 # Contributor : Christian Rebischke <Chris.Rebischke@archlinux.org>
 # Contributor : dront78 <dront78@gmail.com>
 pkgname=systemtap
-pkgver=3.3
+pkgver=4.0
 pkgrel=1
 pkgdesc="provides infrastructure to simplify the gathering of information about the running system."
 url="http://sourceware.org/systemtap/"
@@ -14,10 +14,10 @@ optdepends=('sqlite3: for storing results in a database')
 source=("${pkgname}-${pkgver}.tar.gz::https://sourceware.org/systemtap/ftp/releases/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.asc::https://sourceware.org/systemtap/ftp/releases/${pkgname}-${pkgver}.tar.gz.asc"
         )
-sha512sums=('b75a4591bdc021645c15cb8f2b8991f46fdffb29b1d132745bafe4291aee5e1892ea9a63c8e98f011a4fee68decd99aa4401dc2f70e163e801cd140ad4cd6b6e'
+sha512sums=('66b5ba1902ed974101429dce9fee849273d3dc64e862c057177d158c5f284cc93299819ee8ee49d4bd3b7ff47a3512b1c68b74cad374147ce67fa406c7518c79'
             'SKIP')
 install='systemtap.install'
-validpgpkeys=('41A0C11274B1E87FE28E4C53E3D77E1F95161991')
+validpgpkeys=('5D38116FA4D3A7CC77E378D37E83610126DCC2E8')
 
 
 build() {
@@ -28,6 +28,7 @@ build() {
     --libexecdir=/usr/lib/"${pkgname}" \
     --libdir=/usr/lib/"${pkgname}" \
     --mandir=/usr/share/man/ \
+    --sbindir=/usr/bin \
     --localstatedir=/var \
     --enable-pie \
     --disable-docs \
