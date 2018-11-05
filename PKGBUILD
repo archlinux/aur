@@ -3,13 +3,13 @@
 _gemname=textpow19
 pkgname=ruby-$_gemname
 pkgver=0.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A library for parsing TextMate bundles.'
 arch=('any')
 url='https://rubygems.org/gems/textpow19'
 license=(unknown)
 depends=(ruby ruby-plist)
-makedepends=(ruby-hoe ruby-rubyforge)
+makedepends=(ruby-hoe ruby-rubyforge ruby-rdoc)
 options=(!emptydirs)
 
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
