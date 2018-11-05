@@ -14,22 +14,21 @@ noextract=("singularity-v${pkgver}.tar.gz")
 md5sums=('019afc549c838ff08cabffe094c194b9')
 
 prepare() {
-  mkdir -p "${srcdir}/src/github.com/sylabs"
-  tar -zxf singularity-v${pkgver}.tar.gz -C "${srcdir}/src/github.com/sylabs"
+  export GOPATH="${srcdir}/singularity"
+  mkdir -p "${GOPATH}/src/github.com/sylabs"
+  tar -zxf singularity-v${pkgver}.tar.gz -C "${GOPATH}/src/github.com/sylabs"
 }
 
 build() {
-  export GOPATH="${srcdir}"
-  cd "${srcdir}/src/github.com/sylabs/singularity"
+  export GOPATH="${srcdir}/singularity"
+  cd "${GOPATH}/src/github.com/sylabs/singularity"
   ./mconfig -p /usr
   cd builddir
   make
 }
 
 package() {
-  export GOPATH="${srcdir}"
-  cd "${srcdir}/src/github.com/sylabs/singularity/builddir"
+  export GOPATH="${srcdir}/singularity"
+  cd "${GOPATH}/src/github.com/sylabs/singularity/builddir"
   make PREFIX="${pkgdir}/usr" install
-  chmod 755 "${pkgdir}/usr/bin/singularity"
 }
-
