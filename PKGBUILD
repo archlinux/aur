@@ -1,7 +1,7 @@
 # Maintainer: DanManN <dnahimov@gmail.com>
 pkgname=python-qiskit-api-git
-pkgver=1.8.19.r0.g1133844
-pkgrel=1
+pkgver=2.0.4
+pkgrel=2
 pkgdesc="A Python library for the Quantum Experience API."
 arch=('any')
 url="http://www.qiskit.org"
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd qiskit-api-py
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cat setup.py | grep version | cut -d "'" -f2 || git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
