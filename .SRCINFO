@@ -1,7 +1,7 @@
 pkgbase = bitwarden
 	pkgdesc = Bitwarden Desktop Application
-	pkgver = 1.8.0
-	pkgrel = 2
+	pkgver = 1.9.0
+	pkgrel = 1
 	url = https://github.com/bitwarden/desktop
 	arch = x86_64
 	license = GPL3
@@ -21,7 +21,7 @@ pkgbase = bitwarden
 	conflicts = bitwarden-bin
 	options = !strip
 	options = !emptydirs
-	source = bitwarden-git-repo::git+https://github.com/bitwarden/desktop.git#tag=v1.8.0
+	source = bitwarden-git-repo::git+https://github.com/bitwarden/desktop.git#tag=v1.9.0
 	source = jslib-git-repo::git+https://github.com/bitwarden/jslib.git
 	source = bitwarden.sh
 	source = bitwarden.desktop
