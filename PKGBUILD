@@ -1,4 +1,5 @@
-# Maintainer: Jacob Juric <jacobjuric1@gmail.com>
+# Maintainer: Mikael Blomstrand <mbloms ÅT kth DÖT se>
+# Contributor: Jacob Juric <jacobjuric1@gmail.com>
 
 pkgname=gwen-web
 pkgver=2.26.4
