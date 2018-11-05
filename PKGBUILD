@@ -1,6 +1,6 @@
 pkgname=pyneedle
 pkgnameorig=pyneedle
-pkgver=r80.1ad6219
+pkgver=r85.88f7f0a171d7
 pkgrel=1
 pkgdesc="Convenient tool created to allow you to quickly search for files in your computer, using one of the supported search engines (i.e. tracker and recoll)"
 arch=('any')
