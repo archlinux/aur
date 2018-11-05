@@ -1,8 +1,3 @@
-From a8e159be08f2c7aeaeb727272058c9f3d4524f02 Mon Sep 17 00:00:00 2001
-From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
-Date: Sat, 20 Oct 2018 23:56:57 +0200
-Subject: [PATCH 2/2] Arch Linux kernel v4.18.16-arch1
-
 ---
  Makefile | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
@@ -14,7 +9,7 @@ index 034dd990b0ae..4b044647e7c0 100644
 @@ -2,7 +2,7 @@
  VERSION = 4
  PATCHLEVEL = 18
- SUBLEVEL = 16
+ SUBLEVEL = 17
 -EXTRAVERSION =
 +EXTRAVERSION = -arch1
  NAME = Merciless Moray
