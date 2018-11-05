@@ -2,7 +2,7 @@
 
 pkgname=onivim-git
 pkgver=0.3.7.beta2.r28.gc64f92926
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern modal editing, powered by Neovim"
 arch=(x86_64)
 conflicts=("oni")
