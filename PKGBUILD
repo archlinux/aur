@@ -1,6 +1,11 @@
 # Maintainer: Jonathan Kohler <kohler.jonathan@gmail.com>
 pkgname=python2-labrad-git
-pkgver=0.97.2.e9bb3e6
+pkgver() {
+	cd "$srcdir/${pkgname}"
+	# Git, tags available
+	printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
+}
+pkgver=0.97.2.r3.e9bb3e6
 pkgrel=1
 pkgdesc="LabRAD is a system for quickly and easily building distributed instrument control and data analysis applications. pylabrad provides a python interface to LabRAD."
 arch=("any")

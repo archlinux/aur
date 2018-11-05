@@ -1,6 +1,6 @@
 pkgbase = python2-labrad-git
 	pkgdesc = LabRAD is a system for quickly and easily building distributed instrument control and data analysis applications. pylabrad provides a python interface to LabRAD.
-	pkgver = 0.97.2.e9bb3e6
+	pkgver = 0.97.2.r3.e9bb3e6
 	pkgrel = 1
 	url = https://github.com/labrad/pylabrad
 	arch = any
