@@ -4,7 +4,7 @@ pkgname=('scala211')
 pkgver=2.11.12
 conflicts=('scala')
 provides=('scala')
-pkgrel=1
+pkgrel=2
 pkgdesc="A Java-interoperable language with object-oriented and functional features"
 arch=('any')
 url="http://www.scala-lang.org"
@@ -32,11 +32,11 @@ package() {
   rm $pkgdir/usr/share/scala/bin/*.bat
 
   install -d "${pkgdir}/usr/bin"
-  ln -s "${pkgdir}/usr/share/scala/bin/fsc" "${pkgdir}/usr/bin/fsc"
-  ln -s "${pkgdir}/usr/share/scala/bin/scala" "${pkgdir}/usr/bin/scala"
-  ln -s "${pkgdir}/usr/share/scala/bin/scalac" "${pkgdir}/usr/bin/scalac"
-  ln -s "${pkgdir}/usr/share/scala/bin/scalap" "${pkgdir}/usr/bin/scalap"
-  ln -s "${pkgdir}/usr/share/scala/bin/scaladoc" "${pkgdir}/usr/bin/scaladoc"
+  ln -s "/usr/share/scala/bin/fsc" "${pkgdir}/usr/bin/fsc"
+  ln -s "/usr/share/scala/bin/scala" "${pkgdir}/usr/bin/scala"
+  ln -s "/usr/share/scala/bin/scalac" "${pkgdir}/usr/bin/scalac"
+  ln -s "/usr/share/scala/bin/scalap" "${pkgdir}/usr/bin/scalap"
+  ln -s "/usr/share/scala/bin/scaladoc" "${pkgdir}/usr/bin/scaladoc"
 
   install -d "${pkgdir}/usr/share/licenses/scala"
   install -Dm644 doc/licenses/*.txt "${pkgdir}/usr/share/licenses/scala"
