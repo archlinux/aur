@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains a tool to convert Unified Robot Description
 url='http://ros.org/wiki/collada_urdf'
 
 pkgname='ros-kinetic-collada-urdf'
-pkgver='1.12.10'
+pkgver='1.12.12'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -49,7 +49,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="collada_urdf-release-release-kinetic-collada_urdf-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/collada_urdf-release/archive/release/kinetic/collada_urdf/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('61f0726ae98ec87c3ea09e9b58502cb945cf3c5cc467e403bf58334118188144')
+sha256sums=('b76297ab6e963ffec0426f82afef4289d3cb529d4f59e10991ba2662291c8ab4')
 
 build() {
   # Use ROS environment variables
