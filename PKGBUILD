@@ -5,20 +5,22 @@
 pkgbase=linux-bld
 pkgname=(linux-bld linux-bld-headers)
 _kernelname=-bld
-pkgver=4.18.16
-archlinux_linux_version=$pkgver-arch1
+pkgver=4.18.17
+#archlinux_linux_version=$pkgver-arch1
+archlinux_linux_version=4.18.16-arch1
 _srcname=linux-4.18
 _pkgver2=${_srcname#*-}.0
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/rmullick/linux"
 license=('GPL2')
 makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 _BLDpatch="BLD-${_srcname#*-}.patch"
-arch_config_trunk=fe9bab556d810ba4bb968f60e834fa7b31a3e5e0
+arch_config_trunk=bbd102b10ab31063993d61829be3dea000f85724
 
 source=("https://git.archlinux.org/linux.git/snapshot/linux-${archlinux_linux_version}.tar.xz"
+        "linux_v4.18.16-v4.18.17.patch"
         '60-linux.hook'  # pacman hook for depmod
 	'90-linux.hook'  # pacman hook for initramfs regeneration
         # standard config files for mkinitcpio ramdisk
@@ -30,10 +32,11 @@ source=("https://git.archlinux.org/linux.git/snapshot/linux-${archlinux_linux_ve
         )
 
 sha256sums=('3f64579d5584a85fb0b15fda1f9803cbc924dcd4007c7e17b1bb449bc653f5ec'
+            '041b189398a7ddc38e009e54cc297456370560509668ed1fef0b0150fe91d846'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             '5b51a1eacb3e00b304ca54d31f467ec1fb15fdfce93f1c62963d087bf753e812'
-            '0e0d831763f080c65c07e06389007ada9f7d77f8148859ac5a2223263cc966e7'
+            '8a4cd4ce29da74ce7d465416a6224ab64614ca106682c7908e50196b36fbd4a9'
             '53c93e1b5c05a749a976ed4702daeab5524326d779c157f8878308125de2e68b')
 
 validpgpkeys=(
@@ -54,7 +57,10 @@ makenconfig=
 prepare() {
   cd "${srcdir}/linux-$archlinux_linux_version"
 
-  printf '%b' "  \e[1;36m->\e[0m\033[1m BLD patches\n"
+  printf '%b' "  \e[1;36m->\e[0m\033[1m Patching from v4.18.16 to v4.18.17\e[0m\n"
+  patch -Np1 -i "${srcdir}/linux_v4.18.16-v4.18.17.patch"
+
+  printf '%b' "  \e[1;36m->\e[0m\033[1m BLD patches\e[0m\n"
   patch -Np1 -i "${srcdir}/${_BLDpatch}"
 
   cp -Tf ../config .config
