@@ -1,7 +1,7 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=('python-troveclient' 'python2-troveclient')
-pkgver='2.16.0'
+pkgver='2.17.0'
 pkgrel='1'
 pkgdesc='Client library for OpenStack DBaaS API'
 arch=('any')
@@ -50,11 +50,11 @@ build() {
 
 check() {
   cd "${srcdir}/${pkgname}"
-  python setup.py testr
+  stestr run
 
   # Test troveclient.tests.test_v1_shell.ShellTest.test_module_create failing for Python2
   cd "${srcdir}/${pkgname}-py2"
-  PYTHON=python2 python2 setup.py testr
+  PYTHON=python2 stestr2 run
 }
 
 package_python-troveclient() {

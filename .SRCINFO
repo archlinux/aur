@@ -1,6 +1,6 @@
 pkgbase = python-troveclient
 	pkgdesc = Client library for OpenStack DBaaS API
-	pkgver = 2.16.0
+	pkgver = 2.17.0
 	pkgrel = 1
 	url = http://docs.openstack.org/developer/python-troveclient
 	arch = any
@@ -44,7 +44,7 @@ pkgbase = python-troveclient
 	makedepends = python2-openstackclient
 	makedepends = python-osc-lib
 	makedepends = python2-osc-lib
-	source = git+https://git.openstack.org/openstack/python-troveclient#tag=2.16.0
+	source = git+https://git.openstack.org/openstack/python-troveclient#tag=2.17.0
 	source = trove.bash_completion
 	source = skip-failing-py37-tests.patch
 	sha512sums = SKIP
