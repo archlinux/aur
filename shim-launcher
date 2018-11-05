@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# A simple launcher until wattman-gtk is packaged
+
+cd /opt/wattman-gtk
+python ./wattman.py

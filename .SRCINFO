@@ -1,0 +1,19 @@
+pkgbase = wattman-gtk-git
+	pkgdesc = GTK GUI to view, monitor, and overclock a Radeon GPU on Linux
+	pkgver = r28.8e3ede6
+	pkgrel = 1
+	url = https://github.com/BoukeHaarsma23/WattmanGTK
+	arch = any
+	license = GPLv2
+	makedepends = git
+	depends = python-gobject
+	depends = python-matplotlib
+	provides = wattman-gtk
+	conflicts = wattman-gtk
+	source = WattmanGTK::git+https://github.com/BoukeHaarsma23/WattmanGTK
+	source = shim-launcher
+	sha256sums = SKIP
+	sha256sums = 070b9a568564f2c1f59261d66e86f4af10de7f86577daa7e9500cfd6e4875daa
+
+pkgname = wattman-gtk-git
+
