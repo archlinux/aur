@@ -10,6 +10,10 @@ license=('MIT')
 source=("pyaxmlparser-${pkgver}.tar.gz::https://github.com/appknox/pyaxmlparser/archive/v${pkgver}.tar.gz")
 md5sums=('6dbb6db8c238bda9d5b5a1f2ade56e5c')
 
+prepare() {
+    sed -i "s/README.md/README.rst/g" "$srcdir/pyaxmlparser-$pkgver/setup.py"
+}
+
 build() {
     cd "$srcdir/pyaxmlparser-$pkgver"
     python setup.py build
