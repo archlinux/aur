@@ -1,0 +1,2 @@
+d /var/cache/roundcubemail 0750 http http - -
+d /var/log/roundcubemail 0750 http http - -
