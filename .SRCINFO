@@ -1,0 +1,23 @@
+pkgbase = gtranslator-git
+	pkgdesc = Translation Editor, an Enhanced gettext po file editor for the GNOME
+	pkgver = 3.31.0.r4732.cdef36e7
+	pkgrel = 1
+	url = http://projects.gnome.org/gtranslator/
+	arch = x86_64
+	license = GPL
+	makedepends = meson
+	makedepends = gobject-introspection
+	makedepends = git
+	makedepends = gtk-doc
+	makedepends = yelp-tools
+	depends = gtksourceview4
+	depends = gspell
+	depends = gettext
+	depends = libgda
+	provides = gtranslator
+	conflicts = gtranslator
+	source = git+https://gitlab.gnome.org/GNOME/gtranslator
+	sha256sums = SKIP
+
+pkgname = gtranslator-git
+

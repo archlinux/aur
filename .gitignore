@@ -1,0 +1,20 @@
+# ignore everything ...
+*
+
+# ... except itself
+!.gitignore
+
+# ... except changes in package
+!PKGBUILD
+!.SRCINFO
+
+# ... except possible source files
+!*.patch
+!*.diff
+!*.desktop
+!*.png
+!LICENSE
+
+# ... except files from PKGBUILD fields
+!*.changelog
+!*.install
