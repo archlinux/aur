@@ -1,7 +1,7 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 _module='osprofiler'
 pkgname=('python-osprofiler' 'python2-osprofiler')
-pkgver='2.1.0'
+pkgver='2.5.0'
 pkgrel='1'
 pkgdesc='Library for cross-project profiling library'
 arch=('any')
@@ -29,6 +29,8 @@ source=("git+https://git.openstack.org/openstack/${_module}#tag=${pkgver}")
 sha256sums=('SKIP')
 
 prepare() {
+  # Remove tests for Jaeger client - no package for it available
+  rm "${srcdir}/${_module}/osprofiler/tests/unit/drivers/test_jaeger.py"
   cp -a "${srcdir}/${_module}"{,-py2}
 }
 
@@ -42,10 +44,10 @@ build() {
 
 check() {
   cd "${srcdir}/${_module}"
-  python setup.py testr
+  stestr run
 
   cd "${srcdir}/${_module}-py2"
-  PYTHON=python2 python2 setup.py testr
+  stestr2 run
 }
 
 package_python-osprofiler() {
