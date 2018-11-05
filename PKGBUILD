@@ -12,7 +12,7 @@ source=("http://central.maven.org/maven2/org/openapitools/$pkgname/$pkgver/$pkgn
 noextract=("$pkgname-$pkgver.jar")
 md5sums=('23d19a4eac5b4dc05d3613c917a13fcb'
          '64934ddd97afb1b86640ed77f5683a93'
-         '57f03004e6270d2fe07073d0ed4aff48')
+         '9c6bf97fc32c0b8e289068d81cf96b33')
 
 package() {
 	depends=('java-runtime' 'bash')
@@ -20,4 +20,7 @@ package() {
 	install -Dm755 openapi-generator-cli "$pkgdir/usr/bin/openapi-generator-cli"
 	install -Dm644 openapi-generator-cli-completion.bash "$pkgdir/etc/bash_completion.d/openapi-generator-cli"
 	install -Dm644 $pkgname-$pkgver.jar "$pkgdir/usr/share/java/$pkgname-$pkgver.jar"
+
+        sed -i -e "s/\$pkgname/$pkgname/g" "$pkgdir/usr/bin/openapi-generator-cli"
+        sed -i -e "s/\$pkgver/$pkgver/g" "$pkgdir/usr/bin/openapi-generator-cli"
 }

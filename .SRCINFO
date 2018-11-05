@@ -11,7 +11,7 @@ pkgbase = openapi-generator-cli
 	source = openapi-generator-cli
 	md5sums = 23d19a4eac5b4dc05d3613c917a13fcb
 	md5sums = 64934ddd97afb1b86640ed77f5683a93
-	md5sums = 57f03004e6270d2fe07073d0ed4aff48
+	md5sums = 9c6bf97fc32c0b8e289068d81cf96b33
 
 pkgname = openapi-generator-cli
 	depends = java-runtime
