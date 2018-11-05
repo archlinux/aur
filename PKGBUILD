@@ -4,7 +4,7 @@
 pkgname=dynomite
 pkgver=0.5.9
 upstream_pkgrel=5_MuslCompatiblity
-pkgrel=2
+pkgrel=3
 pkgdesc="Dynomite is a thin, distributed dynamo layer for different storage engines and protocols. Stable version."
 arch=('i686' 'x86_64')
 url="https://github.com/Netflix/dynomite"
@@ -18,7 +18,7 @@ source=(
 )
 md5sums=(
   '25f14fb09ef6aac6509ec01ffd942f41'
-  'b3b32f150ae8ea024510d112d7ba59d3'
+  '5f8f09361a6afb6d59726de58f86b6fb'
 )
 
 build() {
@@ -31,8 +31,7 @@ build() {
   ./configure --prefix=/usr \
     --sbindir='${exec_prefix}/bin' \
     --sysconfdir=/etc/dynomite \
-    --datarootdir='${exec_prefix}/share' \
-    --enable-packaging
+    --datarootdir='${exec_prefix}/share'
   make
 }
 
