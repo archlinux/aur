@@ -4,7 +4,7 @@ EVECONF=$HOME/.config/CCP/EVE.conf
 UCW=$(grep UseCustomWine $EVECONF | cut -d= -f2)
 if [ "x$UCW" = "xtrue" ] ;then
     CUSTOMWP=$(grep CustomWinePath $EVECONF | cut -d= -f2)
-    WINEPATH=${CUSTOMWP%/*}
+    WINEPATH="${CUSTOMWP%/*}"
     SHAREDIR=$(grep SharedCacheFolder $EVECONF | cut -d= -f2)
     WINEPREFIX=${SHAREDIR}wineenv
 else
@@ -26,4 +26,4 @@ fi
 env WINEPREFIX=$WINEPREFIX \
     WINEDEBUG=-all \
     WINEDLLOVERRIDES="mscoree,mshtml,winemenubuilder.exe=d" \
-    $WINECMD "$@"
+    "$WINECMD" "$@"

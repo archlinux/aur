@@ -38,11 +38,13 @@ source=("evelauncher.desktop"
         "build_installer.sh"
         "setup.sh.in"
         "eve-icons.tar.gz"
+        "eve-icons_large.tar.gz"
         "eve-transl5.11-de.tar.gz"
         "eve-transl5.11-en.tar.gz"
         "eve-transl5.11-fr.tar.gz"
         "eve-transl5.11-ja.tar.gz"
         "eve-transl5.11-ru.tar.gz"
+        "eve-transl5.11-zh.tar.gz"
         "https://github.com/megastep/makeself/releases/download/release-2.4.0/makeself-2.4.0.run"
         "https://binaries.eveonline.com/evelauncher-${pkgver}.tar.gz")
 
@@ -51,6 +53,7 @@ noextract=('eve-transl5.11-de.tar.gz'
            'eve-transl5.11-fr.tar.gz'
            'eve-transl5.11-ja.tar.gz'
            'eve-transl5.11-ru.tar.gz'
+           'eve-transl5.11-zh.tar.gz'
            'https://github.com/megastep/makeself/releases/download/release-2.4.0/makeself-2.4.0.run')
 
 package() {
@@ -100,22 +103,24 @@ package() {
 }
 
 sha256sums=('f49b404341e1dd48eaa2504c83f9ff07c9a4c11e1a109c67d04167dc70d65731'
-            '7c8e25d4a9d89f642f02dad88769db59885b9852cac85106c1c4153a84796471'
-            '87f9e2e99119b042ae98b626d57a1837c412a443e3b54dfa2be17121c0b78605'
+            '096ca0d892cd43852c769fc8b55802b9da41ab02a23857fcfa27347350b35af6'
+            '8d0257432600035df2910b4b575a2c88c89563d0babcbcd429d41fba5aacf2d2'
             '80fceef0e28c2291cd4ba3924410211edd188717be093ffc329d18697583bd21'
             'f8988be390204ce645ca37f43cdb8e395970f8d6dd36095acf08c5c7cf72833c'
-            '5a3b4058bde3752d079e2bcb2c5f3bc1cef0e34fe6763ea7632ef65b328f6610'
+            '884a2ca2f7dae9783265fc08d0b871a8850f9c761377a1a0716ca5b3272674d2'
             '04d2a47524cbd132aad2fd310d56515a29310a2e693ba94ce12c65cd776a70d2'
             '22690e393ee89703b17898038aaa37900805104e8c960b346fe1f6050edc9bce'
-            'efac7e7f31af0020f35aa026c6231fbf8dd56124832b8d60c3fcde126ca24cab'
+            'dbcdd9203a293b00e95d9dcc39fe170c853f698428193e32b8f048e87ab57af8'
             '2520a9b19f2827fa2634ea2acae3a6f61e73aada1af0eb2029e95709f0c8927d'
-            '9931c5dcea93cd1e2a72754b35d8f994cdea8b146495991d4050987864e7b9a1'
+            'caa49ee2664f5e0252ec633b709bea63b6815568475e7da1e3ddbc47460fe392'
             'a2d53dbda08b79f2280d08b4d3b47694b41cf2508d3b508760f332d9e96ab752'
             '2c192fdc282fefafee5596b60bd1779668b611d386e2bf933eef51d39eac7a28'
+            'f88c7c28582b6531a021b8fcece47c906f900c48edf453dc04c349f8671cf8a2'
             '47accd49b64d624c6a6dee42952f8627aaabdd315fad85ef037507745d393f1a'
             '1c3df28324c8498e34d2e789fd1f36577afa5a31bdbb278d752f7ef8c6ec5516'
             'bb63c2ea31d204f4d8eb270848674ad898ed45bbf0a9cea480611581f1149e4f'
             'f78996a8b01463891e97270b8f9d9fa5a61ccf0710e1163aff0c0c49ce3849c3'
             '7ae1c6324c4ad43ab3f18f5a3ceaa48b34ede5466b7a0b9351d018e8cef9bbd0'
+            '1936061a14432ab2632ea3ff15d45350b59ac822985445f597a4a5db44a35ae6'
             'ca66a6113ce98152b85c8d847949f8c90ab9ba798e106bfc225d4ed3c2e2e3e2'
             '75165be88772e6bfabb1b148402227161f0ed540494071032f203207fdcccc2b')
