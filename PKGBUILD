@@ -2,7 +2,7 @@
 
 _module='shade'
 pkgname=('python-shade' 'python2-shade')
-pkgver='1.29.0'
+pkgver='1.30.0'
 pkgrel='1'
 pkgdesc='Simple client library for interacting with OpenStack clouds'
 arch=('any')
@@ -35,16 +35,13 @@ checkdepends=('python-pbr' 'python2-pbr'
               'python-testtools' 'python2-testtools'
               'python-stestr' 'python2-stestr'
               'python-oslotest' 'python2-oslotest')
-source=("git+https://git.openstack.org/openstack-infra/${_module}#tag=${pkgver}"
-        'fix-expected-servers-test.patch')
-sha512sums=('SKIP'
-            '17f10a4712b64824080671ac2f739fb4684b78fb84e639605b448fff6fefd43e48d6db9083b51c09b82a39cc6d232fc71c9e49a47ef0611ab98a1e7d1f320cda')
+source=("git+https://git.openstack.org/openstack-infra/${_module}#tag=${pkgver}")
+sha512sums=('SKIP')
 
 prepare() {
   # Fix test function name
   cd "${srcdir}/${_module}"
   sed -i 's/assertItemsEqual/assertCountEqual/g' shade/tests/unit/*.py
-  patch -p1 -i "${srcdir}/fix-expected-servers-test.patch"
   cp -a "${srcdir}/${_module}"{,-py2}
 }   
     
