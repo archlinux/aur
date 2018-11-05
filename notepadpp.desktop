@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Categories=Programming,Utilities
+Name=Notepad++
+Comment=The free source code editor
+Icon=notepadpp
+Exec=notepadpp
+Terminal=false
+Type=Application
+
