@@ -1,14 +1,13 @@
 pkgbase = hdf4
 	pkgdesc = General purpose library and file format for storing scientific data (full version including the FORTRAN and the Java Native Interfaces - JNI)
 	pkgver = 4.2.14
-	pkgrel = 2
+	pkgrel = 3
 	url = https://portal.hdfgroup.org/display/support/HDF+4.2.14
 	arch = x86_64
 	license = custom
 	makedepends = java-environment
 	makedepends = gcc-fortran
 	depends = libaec
-	depends = zlib
 	depends = libjpeg-turbo
 	depends = libtirpc
 	provides = hdf4-java
