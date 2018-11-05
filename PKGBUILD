@@ -7,8 +7,8 @@
 
 pkgname=tesseract-game
 pkgver=1
-pkgrel=5
-_revision=2055
+pkgrel=6
+_revision=2181
 pkgdesc='Smooth FPS with map editing, instagib, DM and CTF'
 url='http://tesseract.gg/'
 arch=('x86_64' 'i686')
