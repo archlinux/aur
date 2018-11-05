@@ -3,13 +3,13 @@
 pkgname='powershell-git'
 _pkgname='powershell'
 binaryname='pwsh'
-pkgver=6.1.0.61.g4926e1598
+pkgver=6.2.0.preview.1.54.g5d06fba36
 pkgrel=1
 pkgdesc='A cross-platform automation and configuration tool/framework (git version)'
 arch=('x86_64')
 url='https://github.com/PowerShell/PowerShell'
 license=('MIT')
-makedepends=('git' 'cmake' 'dotnet-sdk>=2.0')
+makedepends=('git' 'cmake' 'dotnet-sdk>=2.0' 'patch')
 depends=('icu' 'libunwind' 'openssl-1.0')
 provides=('powershell')
 conflicts=('powershell')
@@ -20,7 +20,7 @@ build.sh)
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
-         '2ddd2c3b33c7df1c85f49fa6f7763566')
+         'a7caf53fcc20359d9313eb4f0a6d6fb2')
 install=powershell.install
 
 pkgver() {
@@ -41,12 +41,6 @@ build() {
   cd $_pkgname
   TERM=xterm $srcdir/build.sh
 }
-
-# TODO: pester has moved, and the testing process has changed
-# check() {
-#   cd $_pkgname/src/libpsl-native
-#   make test
-# }
 
 package() {
   cd "$_pkgname/src/powershell-unix"

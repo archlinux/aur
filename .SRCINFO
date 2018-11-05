@@ -1,6 +1,6 @@
 pkgbase = powershell-git
 	pkgdesc = A cross-platform automation and configuration tool/framework (git version)
-	pkgver = 6.1.0.61.g4926e1598
+	pkgver = 6.2.0.preview.1.54.g5d06fba36
 	pkgrel = 1
 	url = https://github.com/PowerShell/PowerShell
 	install = powershell.install
@@ -9,6 +9,7 @@ pkgbase = powershell-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = dotnet-sdk>=2.0
+	makedepends = patch
 	depends = icu
 	depends = libunwind
 	depends = openssl-1.0
@@ -21,7 +22,7 @@ pkgbase = powershell-git
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = 2ddd2c3b33c7df1c85f49fa6f7763566
+	md5sums = a7caf53fcc20359d9313eb4f0a6d6fb2
 
 pkgname = powershell-git
 

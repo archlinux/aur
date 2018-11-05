@@ -39,11 +39,5 @@ pushd src/TypeCatalogGen
 dotnet run ../System.Management.Automation/CoreCLR/CorePsTypeCatalog.cs powershell.inc
 popd
 
-## Build native component
-pushd src/libpsl-native
-cmake -DCMAKE_BUILD_TYPE=Debug .
-make -j
-popd
-
 ## Build powershell core
 dotnet publish --configuration Linux "src/powershell-unix/" --output bin --runtime "linux-x64"
