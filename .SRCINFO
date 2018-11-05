@@ -1,0 +1,17 @@
+pkgbase = uqm-lang-finnish
+	pkgdesc = Finnish translation for The Ur-Quan Masters
+	pkgver = 1.0.0
+	pkgrel = 0
+	url = https://github.com/osaukko/uqm-lang-finnish
+	install = uqm-lang-finnish.install
+	arch = any
+	license = custom
+	depends = uqm>=0.7.0
+	noextract = uqm-0.7.0-fin.uqm
+	source = https://github.com/osaukko/uqm-lang-finnish/raw/master/uqm-0.7.0-fin.uqm
+	source = https://raw.githubusercontent.com/osaukko/uqm-lang-finnish/master/LICENSE.md
+	md5sums = df80eb832eab36a1106d1e57b9d08d85
+	md5sums = d5dcf8fe22f993182360db40bed564f9
+
+pkgname = uqm-lang-finnish
+

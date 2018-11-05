@@ -1,0 +1,12 @@
+post_install() {
+    echo "Käynnistä peli käyttäen '--addon lang-finnish'  parametriä."
+    echo "Start the game using the '--addon lang-finnish' parameter."
+    echo
+    echo "  uqm --addon lang-finnish"
+    echo
+}
+
+post_upgrade() {
+    post_install
+}
+
