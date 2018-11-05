@@ -10,7 +10,7 @@ pkgdesc='A cross-platform automation and configuration tool/framework (latest re
 arch=('x86_64')
 url='https://github.com/PowerShell/PowerShell'
 license=('MIT')
-makedepends=('git' 'cmake' 'dotnet-sdk>=2.0')
+makedepends=('git' 'cmake' 'dotnet-sdk>=2.0' 'patch')
 depends=('icu' 'openssl-1.0')
 source=($pkgname::git+https://github.com/PowerShell/PowerShell.git#tag=v$_pkgver
         googletest::git+https://github.com/google/googletest.git
