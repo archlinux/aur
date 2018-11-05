@@ -1,9 +1,9 @@
 pkgbase = nodejs-create-nuxt-app
 	pkgdesc = Create a Nuxt.js project in seconds
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nuxt-community/create-nuxt-app
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = npm
 	provides = create-nuxt-app
