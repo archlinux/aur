@@ -1,17 +1,12 @@
 pkgbase = fruit-di
 	pkgdesc = A dependency injection library for C++
-	pkgver = 1.0.2
+	pkgver = 3.4.0
 	pkgrel = 1
 	url = https://github.com/google/fruit/releases
 	arch = x86_64
-	arch = i686
 	license = Apache
-	makedepends = make
-	makedepends = cmake>=2.8
-	makedepends = gcc>=4.8
-	depends = gcc-libs>=4.8
-	source = https://github.com/google/fruit/archive/v1.0.2.tar.gz
-	sha256sums = f2d72c0b027fecbe10772b1ff27dabb8e5f9fba09970a7bff9f1863ac57d154c
+	source = https://github.com/google/fruit/archive/v3.4.0.tar.gz
+	sha256sums = 0f3793ee5e437437c3d6360a037866429a7f1975451fd60d740f9d2023e92034
 
 pkgname = fruit-di
 
