@@ -2,3 +2,4 @@ pkg/
 src/
 zukitwo-themes-git/
 *.tar.xz
+*.tar.gz

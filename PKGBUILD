@@ -1,8 +1,8 @@
 # Maintainer: Chiku < chirantan dot mitra at gmail dot com >
 
 pkgname=zukitwo-themes-git
-pkgver=v3.28.2.r2.g9652d57
-pkgrel=2
+pkgver=v3.28.3.r6.gee1fa3a
+pkgrel=1
 pkgdesc="A theme for GTK3, GTK2, Metacity, xfwm4, Gnome Shell and Unity - git version"
 arch=('any')
 url="https://github.com/lassekongo83/zuki-themes"
