@@ -26,7 +26,7 @@ package() {
 
     install -dm755 "$pkgdir"/usr/lib/systemd/system
     install -dm755 "$pkgdir"/usr/lib/sysusers.d
-    install -m644 "$srcdir"/prometheus.sysusers "$pkgdir"/usr/lib/sysusers.d/prometheus.conf
+    install -m644 "$srcdir"/prometheus.sysusers "$pkgdir"/usr/lib/sysusers.d/prometheus-blackbox.conf
 
 
     # Install SystemD Service File
