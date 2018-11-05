@@ -1,5 +1,5 @@
 pkgname="python-pyaxmlparser"
-pkgver=0.3.12
+pkgver=0.3.13
 pkgrel=1
 pkgdesc='Parser for Android XML file and get Application Name without using Androguard '
 arch=('any')
@@ -8,11 +8,7 @@ makedepends=('python-setuptools')
 depends=('python' 'python-lxml' 'python-click')
 license=('MIT')
 source=("pyaxmlparser-${pkgver}.tar.gz::https://github.com/appknox/pyaxmlparser/archive/v${pkgver}.tar.gz")
-md5sums=('6dbb6db8c238bda9d5b5a1f2ade56e5c')
-
-prepare() {
-    sed -i "s/README.md/README.rst/g" "$srcdir/pyaxmlparser-$pkgver/setup.py"
-}
+md5sums=('9b82d3bdd730d4470af03d81a3e77b90')
 
 build() {
     cd "$srcdir/pyaxmlparser-$pkgver"
