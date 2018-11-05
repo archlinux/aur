@@ -1,6 +1,6 @@
 pkgbase = physicseditor
 	pkgdesc = Physics editor for certain game engines such as Cocos2D-X, Corona SDK, etc.
-	pkgver = 1.8.1
+	pkgver = 1.8.2
 	pkgrel = 1
 	url = http://www.codeandweb.com/physicseditor
 	install = physicseditor.install
@@ -15,8 +15,8 @@ pkgbase = physicseditor
 	depends = qt5-declarative
 	depends = qt5-imageformats
 	depends = qt5-quickcontrols
-	source = https://www.codeandweb.com/download/physicseditor/1.8.1/PhysicsEditor-1.8.1-ubuntu64.deb
-	sha256sums = f0761c72c2c5cc4deda8b70e69a74e1c88d4969e8fd7fa6e2d0e032c3671764a
+	source = https://www.codeandweb.com/download/physicseditor/1.8.2/PhysicsEditor-1.8.2-ubuntu64.deb
+	sha256sums = dc4685855c7cd12bf9a17d3f1c00ca50c0239afb4404998e7c251cc145590f86
 
 pkgname = physicseditor
 
