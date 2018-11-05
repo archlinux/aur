@@ -7,7 +7,6 @@ pkgdesc="A vim plugin for managing your runtimepath"
 arch=('any')
 url="http://github.com/tpope/vim-pathogen"
 license=('GPL')
-groups=('vim-plugins')
 depends=('vim')
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/tpope/$pkgname/archive/v$pkgver.tar.gz")
 md5sums=('b2a7c050216c3822314705f41f673097')
