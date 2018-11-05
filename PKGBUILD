@@ -9,7 +9,7 @@ pkgdesc='Resourcefriendly and feature-rich replacement for i3status, written in 
 arch=('x86_64')
 url=https://github.com/greshake/i3status-rust
 license=('GPL3')
-depends=('dbus' 'i3-wm')
+depends=('dbus')
 makedepends=('rust')
 optdepends=('alsa-utils: for the volume block'
             'lm_sensors: for the temperature block'
@@ -21,7 +21,7 @@ sha512sums=('0c5d62325d822b87d65e3b1b8c963f2ff0117b63c0bc2c0adc48575344bebbad2ce
 
 build() {
   cd $pkgname-$_commit
-  cargo build --release
+  cargo build --release --locked
 }
 
 package() {
