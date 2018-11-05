@@ -25,13 +25,6 @@ build() {
 
 package() {
   cd "$srcdir/$_srcdir"
-  echo "-----"
-  echo "-----"
-  echo "-----"
-  echo $(pwd)
-  echo "-----"
-  echo "-----"
-  echo "-----"
   make DESTDIR="$pkgdir" install
   install -Dm644 "$srcdir/dosbox-x.png" \
 	"$pkgdir/usr/share/pixmaps/dosbox-x.png"
