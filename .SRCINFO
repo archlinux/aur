@@ -1,0 +1,22 @@
+pkgbase = ros-kinetic-nmea-navsat-driver
+	pkgdesc = ROS - Package to parse NMEA strings and publish a very simple GPS message.
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = http://ros.org/wiki/nmea_navsat_driver
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-kinetic-roslint
+	makedepends = ros-kinetic-catkin
+	depends = ros-kinetic-sensor-msgs
+	depends = ros-kinetic-nmea-msgs
+	depends = ros-kinetic-rospy
+	depends = ros-kinetic-geometry-msgs
+	depends = python2-pyserial
+	source = nmea_navsat_driver::git+https://github.com/ros-drivers-gbp/nmea_navsat_driver-release.git#tag=release/kinetic/nmea_navsat_driver/0.5.0-0
+	md5sums = SKIP
+
+pkgname = ros-kinetic-nmea-navsat-driver
+
