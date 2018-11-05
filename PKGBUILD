@@ -1,7 +1,7 @@
 # Maintainer: Ainola
 
 pkgname=ttf-material-wifi-icons-git
-pkgver=r15.03e41a0
+pkgver=r22.d56927c
 pkgrel=1
 arch=('any')
 url='https://github.com/dcousens/material-wifi-icons'
@@ -23,6 +23,6 @@ package() {
     install -Dm644 material-wifi-icons/material-wifi.ttf \
         -t "$pkgdir/usr/share/fonts/TTF/"
 
-    install -Dm644 material-wifi-icons/LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname"
+    install -Dm644 material-wifi-icons/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
     install -Dm644 material-wifi-icons/README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
