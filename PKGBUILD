@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polycitizen@gmail.com>
 
 pkgname=diskus
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A minimal, fast alternative to 'du -sh'"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('Apache' 'MIT')
 depends=('gcc-libs')
 makedepends=('rust')
 source=("diskus-$pkgver.tar.gz::https://crates.io/api/v1/crates/diskus/$pkgver/download")
-sha512sums=('9d60c2817bd03d2157b1523307b856e87f3d5251fd6241606ae5b5bdb4c19e4a5b2a7f75fe404f3ff385e1fa75bb7f3ef2871abb3d9139efb594a170e8855f96')
+sha512sums=('815674c14bfd118e25f61b76ebf2131f719343c1efeb94e2a8bd5c4caa378532e3123a0afbfa1b48ccc5f178e7576c199a554636058cda9d9e4c7d1699f08865')
 
 build() {
   cd diskus-$pkgver
