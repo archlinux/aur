@@ -1,6 +1,6 @@
 pkgbase = onivim-git
 	pkgdesc = Modern modal editing, powered by Neovim
-	pkgver = v0.3.7.beta2.r28.gc64f92926
+	pkgver = 0.3.7.beta2.r28.gc64f92926
 	pkgrel = 1
 	url = https://github.com/onivim/oni
 	arch = x86_64
