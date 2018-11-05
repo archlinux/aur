@@ -1,0 +1,17 @@
+pkgbase = raja
+	pkgdesc = A collection of C++ software abstractions that enable architecture portability for HPC applications
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = http://raja.readthedocs.io/en/master/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = gcc-libs
+	depends = gcc-fortran
+	depends = openmpi
+	source = git+https://github.com/LLNL/RAJA.git
+	md5sums = SKIP
+
+pkgname = raja
+
