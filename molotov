@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
 [ -z "$XDG_DATA_DIRS" ] && export XDG_DATA_DIRS=$HOME/.local/share:/usr/share
-export SKIP=yes
+export APPIMAGE_SILENT_INSTALL=yes
 exec /opt/appimages/Molotov-MOLOTOV_VERSION.AppImage
