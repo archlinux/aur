@@ -1,0 +1,40 @@
+--- Makefile	2016-07-13 22:24:24.000000000 +0300
++++ Makefile	2018-11-05 21:27:03.157083651 +0300
+@@ -22,7 +22,7 @@
+ 
+ # When building from the independent multiseq tree, we'll use an empty list
+ # since the dependency will be dealt with manually.
+-#MSEQBUILDDIRS = 
++MSEQBUILDDIRS = 
+ 
+ # The Intersurf plugin is compiled manually and should only be
+ # listed if the binaries are up-to-date for the target platform(s)
+@@ -146,7 +146,7 @@
+ 	@echo "Populating distribution directory with compiled plugins"
+ 	-mkdir -p $(PLUGINDIR)/include
+ 	for header in $(PLUGINHEADERS); do cp -p $(INCLUDEDIR)/$$header $(PLUGINDIR)/include || exit 1 ; done
+-	for dir in molfile_plugin $(BUILDDIRS); do cd $$dir && $(MAKE) distrib && cd .. || exit 1 ; done
++	for dir in molfile_plugin; do cd $$dir && $(MAKE) distrib && cd .. || exit 1 ; done
+ 
+ include Make-arch
+ 
+--- Make-arch	2016-10-22 00:34:39.000000000 +0300
++++ Make-arch	2018-11-05 21:02:19.862302589 +0300
+@@ -333,7 +333,7 @@
+ 	"SHLD = gcc -shared"
+ 
+ LINUXAMD64:
+-	$(MAKE) dynlibs staticlibs bins \
++	$(MAKE) dynlibs staticlibs \
+ 	"ARCH = LINUXAMD64" \
+ 	"COPTO = -fPIC -m64 -o " \
+ 	"LOPTO = -fPIC -m64 -lstdc++ -o " \
+@@ -342,7 +342,7 @@
+ 	"DEF = -D" \
+ 	"CCFLAGS = -m64 -O2 -fPIC -Wall" \
+ 	"CXXFLAGS = -m64 -O2 -fPIC -Wall" \
+-	"TCLLDFLAGS = -ltcl8.5 -ldl" \
++	"TCLLDFLAGS = -ltcl8.6 -ldl" \
+ 	"NETCDFLDFLAGS = -lnetcdf " \
+ 	"AR = ar" \
+ 	"NM = nm -p" \
