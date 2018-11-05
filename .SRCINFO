@@ -1,7 +1,7 @@
 pkgbase = grub-btrfs
 	pkgdesc = Include btrfs snapshots in GRUB boot options
 	pkgver = 3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Antynea/grub-btrfs
 	install = grub-btrfs.install
 	arch = any

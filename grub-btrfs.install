@@ -2,8 +2,8 @@ post_install() {
     echo
     echo "  10-update_grub.conf's been installed here to automatically update grub:"
     echo
-    echo "    /etc/systemd/system/snapper-timeline.service.d"
-    echo "    /etc/systemd/system/snapper-cleanup.service.d"
+    echo "    /usr/lib/systemd/system/snapper-timeline.service.d"
+    echo "    /usr/lib/systemd/system/snapper-cleanup.service.d"
     echo
     echo "  Run 'systemctl daemon-reload' for the new config to take effect"
     echo
