@@ -6,9 +6,12 @@
 # TODO: cndrvcups-common-lb and cndrvcups-lb should be a single split package
 
 set -u
+#if [ ! -z "${BUILDDIR:-}" ] && [ "${BUILDDIR// /}" != "${BUILDDIR}" ]; then
+#  BUILDDIR="/tmp/makepkg.${USER// /}"
+#fi
 pkgbase='cndrvcups-common-lb'
 pkgname="${pkgbase}"
-# used this name to avoid conflict with the existing cndrvcups-common (no longer in aur) which was wrong version for cndrvcups-lb
+# used this name to avoid conflict with the existing cndrvcups-common (no longer in AUR) which was wrong version for cndrvcups-lb
 #_pkgname='cndrvcups-common'
 #_pkgver='3.40'; _commonver='3.80'; _dl='8/0100002708/17'
 #_pkgver='3.50'; _commonver='3.90'; _dl='8/0100007658/05'
@@ -121,25 +124,36 @@ package() {
   set -u
   cd "${_srcdir}"
 
-  # Fix a Makefile space quoting bug https://bbs.archlinux.org/viewtopic.php?id=241671
-  # diff -pNau5 'cndrvcups-common-4.00/cngplp/po/Makefile'{.orig,} > '0000-cgnplp-po-Makefile-quote-spaces.patch'
-  if [ ! -s 'cngplp/po/Makefile.orig' ]; then
-    patch -Nbup1 -i "${srcdir}/0000-cgnplp-po-Makefile-quote-spaces.patch"
-  fi
+  #if [ "${BUILDDIR// /}" != "${BUILDDIR}" ]; then
+    set +u; msg2 'paths with spaces patch'; set -u
+    # Fix a Makefile space quoting bug https://bbs.archlinux.org/viewtopic.php?id=241671
+    # diff -pNau5 'cndrvcups-common-4.00/cngplp/po/Makefile'{.orig,} > '0000-cgnplp-po-Makefile-quote-spaces.patch'
+    if [ ! -s 'cngplp/po/Makefile.orig' ]; then
+      patch -Nbup1 -i "${srcdir}/0000-cgnplp-po-Makefile-quote-spaces.patch"
+    fi
 
-  # Fix a libtool space quoting bug
-  sed -e '/^\tfunc_show_eval.* \\\$destfile/ s:\\\$destfile:\\"&\\":g' \
-      -e '/^\s\+func_show_eval.* \\\$oldlib/ s:\\\$oldlib:\\"&\\":g' \
-      -e '# Not sure why single quote works here.' \
-      -e '/^old_postinstall_cmds=.* \\\$oldlib/ s:\\\$oldlib:'"'&':g" \
-      -e '/^old_postinstall_cmds=.* \\\$tool_oldlib/ s:\\\$tool_oldlib:'"'&':g" \
-    -i */libtool
+    # Make libtool compatible with spaces in paths
+    local _libtools=(*/libtool)
+    local _libtool
+    for _libtool in "${_libtools[@]}"; do
+      cp -n -p "${_libtool}"{,.Arch}
+      sed -e '/^\s\+func_show_eval "\$install/ s: \(\$[^ "]\+\)": \\"\1\\"":g' \
+          -e '/^\s\+func_show_eval "\$install/ s: \(\\\$[^ "]\+\)": \\"\1\\"":g' \
+          -e '# These errors do not halt the build' \
+          -e '/eval\b/ s:"(cd \([$\\][^ ]\+\) :"(cd \\"\1\\" :g' \
+          -e '/eval\b/ s:'"'"'(cd \([$\\][^ ]\+\) :'"'"'(cd "\1" :g' \
+          -e '# Not sure why single quote works here.' \
+          -e '/^old_postinstall_cmds=.* \\\$oldlib/ s:\\\$oldlib:'"'&':g" \
+          -e '/^old_postinstall_cmds=.* \\\$tool_oldlib/ s:\\\$tool_oldlib:'"'&':g" \
+        "${_libtool}.Arch" > "${_libtool}"
+    done
 
-  # Fix a Makefile space quoting bug
-  # diff -pNau5 'cndrvcups-common-4.00/c3plmod_ipc/Makefile'{.orig,} > '0002-c3plmod_ipc-Makefile-quote-spaces.patch'
-  if [ ! -s 'c3plmod_ipc/Makefile.orig' ]; then
-    patch -Nbup1 -i "${srcdir}/0002-c3plmod_ipc-Makefile-quote-spaces.patch"
-  fi
+    # Fix a Makefile space quoting bug
+    # diff -pNau5 'cndrvcups-common-4.00/c3plmod_ipc/Makefile'{.orig,} > '0002-c3plmod_ipc-Makefile-quote-spaces.patch'
+    if [ ! -s 'c3plmod_ipc/Makefile.orig' ]; then
+      patch -Nbup1 -i "${srcdir}/0002-c3plmod_ipc-Makefile-quote-spaces.patch"
+    fi
+  #fi
 
   local _vars; _setvars
   env "${_vars[@]}" \
