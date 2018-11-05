@@ -2,7 +2,7 @@
 #Maintainer: Tom Tryfonidis <tomtryf [at] gmail [dot] com>
 
 pkgname=luckybackup
-pkgver=0.4.9
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Backup & Sync tool using Rsync and Qt5"
 arch=('any')
@@ -13,7 +13,7 @@ provides=('luckybackup')
 conflicts=('luckybackup-git')
 install=$pkgname.install
 source=("http://downloads.sourceforge.net/project/$pkgname/$pkgver/source/$pkgname-$pkgver.tar.gz")
-sha256sums=('c161e98a11de5ad0a32a8e060e3fd45695a93ea3adf0581764a6b5d32e8da23b')
+sha256sums=('e801af2483cbdd62bc9af8e2ded252c51adbad81482e291042f58e21c3d4925b')
 
 build() {
     cd "${srcdir}/$pkgname-$pkgver"
