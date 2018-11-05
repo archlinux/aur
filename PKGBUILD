@@ -1,14 +1,14 @@
 # Maintainer: Emanuele 'Lele aka eldios' Calo' <xeldiosx@gmail.com>
 
 pkgname=zulip-electron-bin
-pkgver=2.3.8
+pkgver=2.3.82
 pkgrel=1
 pkgdesc="Desktop client for Zulip. Available for Mac, Linux and Windows."
 arch=('x86_64')
 url="https://github.com/zulip/zulip-electron"
 license=('Apache')
 source=("https://github.com/zulip/zulip-electron/releases/download/v${pkgver}/Zulip-${pkgver}-linux-x64.zip")
-sha512sums=('6caeba482b92d3a498e979830729ec7236f4e1fa44b8c2f7ec4d14c7a49879dad16f0b63146f5b761fc260f9d83982f86446faab6b9c34105a2245f67a176dd9')
+sha512sums=('ffcfba431aad0e576b7025e1175f1dd4a87950e181357ff31c7ab2d31c249e12a9e9df313a9ba39c17c009e349950a3a943c760732e7c60877721a28674c6237')
 
 conflicts=('zulip-desktop')
 
