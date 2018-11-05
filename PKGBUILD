@@ -1,14 +1,14 @@
 # Maintainer: Daniel M. Capella <polycitizen@gmail.com>
 
 pkgname=url-bot-rs-git
-pkgver=r87.c06eb21
+pkgver=r162.6b904a0
 pkgrel=1
 pkgdesc='URL title fetching bot for IRC in Rust'
 arch=('x86_64')
 url=https://github.com/nuxeh/url-bot-rs
 license=('Apache' 'MIT')
 depends=('gcc-libs' 'openssl' 'sqlite')
-makedepends=('rust')
+makedepends=('git' 'rust')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+$url.git")
@@ -21,12 +21,12 @@ pkgver() {
 
 build() {
   cd ${pkgname%-git}
-  cargo build --release
+  cargo build --release --locked
 }
 
 check() {
   cd ${pkgname%-git}
-  cargo test --release
+  cargo test --release --locked
 }
 
 package() {
