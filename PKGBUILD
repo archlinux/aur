@@ -2,12 +2,12 @@
  
 pkgname="authenticator"
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="2FA code generator for GNOME"
 arch=('any')
 url="https://gitlab.gnome.org/World/Authenticator"
 license=("GPL-2.0")
-depends=('python>=3.3.0' 'gtk3>=3.16.0' 'python-pyotp' 'glib2' 'python-pillow' 'libsecret' 'pyzbar' 'python-gnupg') 
+depends=('python>=3.3.0' 'gtk3>=3.16.0' 'python-pyotp' 'glib2' 'python-pillow' 'libsecret' 'python-pyzbar' 'python-gnupg') 
 makedepends=('meson>=0.42' 'ninja' 'gobject-introspection' 'gnome-common')
 provides=('authenticator')
 source=("$pkgname::git+https://gitlab.gnome.org/World/Authenticator.git?unsigned#tag=${pkgver}")
