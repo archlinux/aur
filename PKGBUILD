@@ -1,6 +1,6 @@
 # Maintainer: Victor Roest <victor@xirion.net>
 pkgname=dice-roller-git
-pkgver=1.6.2.6.r13.g83520b9
+pkgver=v1.9.r0.g8f0ed5a
 pkgrel=2
 pkgdesc="A python dice rolling application using the standard dice notation"
 url="https://gitlab.xirion.net/vroest/dice-roller"
