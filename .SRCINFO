@@ -1,5 +1,5 @@
 pkgbase = keeweb-git
-	pkgdesc = Desktop password manager compatible with KeePass databases.
+	pkgdesc = Desktop password manager compatible with KeePass databases. (develop branch)
 	pkgver = 1.6.3+192+g9b9cda3
 	pkgrel = 1
 	url = https://github.com/keeweb/keeweb
