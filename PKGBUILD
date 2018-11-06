@@ -1,7 +1,7 @@
 # Maintainer: Phillip Schichtel <phillip.public@schich.tel>
 pkgname=jprofiler
-pkgver="10.1.4"
-pkgrel=2
+pkgver=10.1.4
+pkgrel=1
 options=(!strip)
 pkgdesc="The Award-Winning All-in-One Java Profiler"
 arch=(any)
