@@ -7,7 +7,7 @@ pkgdesc="Sococo for Linux"
 arch=('x86_64')
 url="https://app.sococo.com/a/download"
 license=('custom')
-depends=('gconf')
+depends=('gconf' 'gtk2')
 source_x86_64=(
 	"https://s.sococo.com/rs/client/linux64/apt/pool/main/sococo-${pkgver//_/-}_amd64.deb"
 )
