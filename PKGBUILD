@@ -2,7 +2,7 @@
 
 pkgname_=fastr
 pkgname=${pkgname_}-bin
-pkgver_=1.0.0-rc8
+pkgver_=1.0.0-rc9
 pkgver=${pkgver_/-/_}
 pkgrel=1
 pkgdesc='Graal based, high-performance implementation of the R language'
@@ -15,7 +15,7 @@ optdepends=()
 provides=("$pkgname_")
 conflicts=("$pkgname_")
 source=("https://github.com/oracle/$pkgname_/releases/download/vm-${pkgver_}/r-installable-ce-${pkgver_}-linux-amd64.jar")
-sha256sums=('bbfb171345e79e22dd5485dcbcfdf1316b4c147bd80e7eb19e7778d5f6a3363e')
+sha256sums=('937b08805b16454661001c3df8e683651af0ac6badf9b7f2fe398f3a283461d0')
 
 package() {
     local file eq permissions mode name target
