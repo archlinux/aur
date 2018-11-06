@@ -2,9 +2,9 @@
 # Contributor: regreddit <nik.martin@gmail.com>
 
 pkgname=mixxx-git
-pkgver=release.2.1.4.r495.gbc69f995ae
+pkgver=r6643
 pkgrel=1
-pkgdesc="Digital DJ mixing software. Development branch from git."
+pkgdesc="Digital DJ mixing software. Git master branch (development/alpha)."
 arch=('i686' 'x86_64')
 url="http://www.mixxx.org/"
 license=('GPL2')
@@ -17,8 +17,9 @@ source=("${pkgname%-*}::git+https://github.com/mixxxdj/mixxx.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-*}"
-  echo "$(git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g')"
+   cd "$srcdir/${pkgname%-*}"
+#  echo "$(git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g')"
+   echo "r$(git log --pretty=oneline --first-parent | wc -l)"
 }
 
 build() {
