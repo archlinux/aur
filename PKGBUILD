@@ -2,8 +2,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=inkscape-092-git
-pkgver=20180510.18239
-pkgrel=2
+pkgver=20181025.18310
+pkgrel=1
 pkgdesc="An Open Source vector graphics editor, using Scalable Vector Graphics (SVG) file format, from git branch 0.92.x"
 url="https://gitlab.com/inkscape/inkscape"
 arch=('i686' 'x86_64')
@@ -39,6 +39,7 @@ prepare() {
   sed -i 's|/usr/bin/env python\>|/usr/bin/env python2|g' share/*/{test/,}*.py
   sed -i 's|"python" },|"python2" },|g' src/extension/implementation/script.cpp
   sed -i 's|"python"|"python2"|g' src/main.cpp
+  sed -i -e 's|GBool|bool|g' -e 's|gTrue|true|g' -e 's|gFalse|false|g' src/extension/internal/pdfinput/pdf-parser.{h,cpp}
 }
 
 build() {
