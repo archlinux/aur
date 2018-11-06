@@ -6,7 +6,7 @@ pkgdesc='Chromium with VA-API support to enable hardware acceleration, pre-compi
 url='https://www.chromium.org/Home'
 arch=('x86_64')
 license=('BSD')
-provides=('chromium')
+provides=('chromium' 'chromium-vaapi')
 conflicts=('chromium' 'chromium-vaapi')
 
 depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'

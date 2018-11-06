@@ -43,6 +43,7 @@ pkgbase = chromium-vaapi-bin
 	optdepends = libva-mesa-driver: support HW acceleration on AMD graphics cards
 	optdepends = libva-vdpau-driver-chromium: support HW acceleration on Nvidia graphics cards
 	provides = chromium
+	provides = chromium-vaapi
 	conflicts = chromium
 	conflicts = chromium-vaapi
 	source_x86_64 = https://github.com/maximbaz/chromium-vaapi-bin/releases/download/70.0.3538.77-2/chromium-vaapi-70.0.3538.77-2-x86_64.pkg.tar.xz
