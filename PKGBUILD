@@ -1,14 +1,14 @@
 # Maintainer: Juliette Monsel <j_4321 at protonmail dot com>
 pkgname=('python-pynput' 'python2-pynput')
-pkgver=1.4
-pkgrel=2
+pkgver=1.4.1
+pkgrel=1
 _name=pynput
 pkgdesc="Python library to monitor and control user input devices"
 arch=('any')
 url="https://github.com/moses-palmer/pynput"
 license=('LGPL3')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/moses-palmer/pynput/archive/v${pkgver}.tar.gz")
-sha512sums=('53706aefec1353df16ca9f9b213bb367fe0b695f26406d58a9171bcb47ddb92228914012c1915fc58d2e639de9100d452b38aafc95539ea16e6362a1831cc605')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/moses-palmer/${_name}/archive/v${pkgver}.tar.gz")
+sha512sums=('b1026b76a1782ddf5d620e9d9330531c743800da2d4b40b590b4545c1a218983eb423d56291f3dd330060d10a6bfd40b3c5e4b2a7acc55c4b555bd49dd805475')
 makedepends=('python-setuptools' 'python2-setuptools')
 
 build() {
