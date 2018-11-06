@@ -8,12 +8,12 @@
 
 # ALARM: Kevin Mihelich <kevin@archlinuxarm.org>
 #  - use -fPIC in host cflags for armv7 to fix print_options.c compile
-#  - remove makedepends on ffnvcodec-headers, remove --enable-nvenc
+#  - remove makedepends on ffnvcodec-headers, remove --enable-nvenc, --enable-nvdec
 #  - remove depends on aom, remove --enable-libaom
 # Upstream: https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/ffmpeg/PKGBUILD
 
 pkgname=ffmpeg-mmal
-pkgver=4.0.2
+pkgver=4.1
 pkgrel=1
 epoch=1
 pkgdesc='ffmpeg built with MMAL hardware acceleration support for Raspberry Pi'
@@ -33,9 +33,9 @@ depends=(
 makedepends=('git' 'ladspa' 'yasm')
 optdepends=('ladspa: LADSPA filters')
 provides=(
+  'ffmpeg'
   'libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
-  'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
-  'libswscale.so' 'ffmpeg'
+  'libavutil.so' 'libpostproc.so' 'libswresample.so' 'libswscale.so'
 )
 conflicts=('ffmpeg')
 source=("git+https://git.ffmpeg.org/ffmpeg.git#tag=n${pkgver}")
@@ -51,7 +51,6 @@ build() {
     --disable-debug \
     --disable-static \
     --disable-stripping \
-    --enable-avresample \
     --enable-fontconfig \
     --enable-gmp \
     --enable-gnutls \
