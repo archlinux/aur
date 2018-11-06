@@ -5,12 +5,13 @@
 _gemname=builder
 pkgname=ruby-$_gemname
 pkgver=3.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Builders for MarkUp.'
 arch=(any)
 url='http://onestepback.org'
 license=(MIT)
 depends=(ruby)
+makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
