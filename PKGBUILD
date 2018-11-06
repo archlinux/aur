@@ -1,7 +1,7 @@
 # Maintainer: Adam S Levy <adam@aslevy.com>
 
 pkgname='factomd'
-pkgver='6.0.0'
+pkgver='6.0.1'
 pkgrel='1'
 pkgdesc='Factom Blockchain Daemon'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -9,13 +9,18 @@ url="https://github.com/FactomProject/$pkgname"
 license=('custom:MIT')
 makedepends=('go' 'git' 'glide')
 install="$pkgname.install"
-source=("git+$url#tag=v$pkgver" "$pkgname.service" "sysusers-$pkgname.conf" "$pkgname.conf")
+source=("git+$url#tag=v$pkgver"
+        "$pkgname.service"
+        "sysusers-$pkgname.conf"
+        "$pkgname.conf"
+        "allow_go111.patch")
 backup=("var/lib/$pkgname/m2/factomd.conf")
 sha256sums=('SKIP'
             '6eae473819b478d352b3d0a107c9b27d85b399950f115a9697485db396d6a225'
             'fc0216361e6045dc681d4564a2aacf5ef43a0f52360235c860c096a874c241c3'
-            '0533a3bd0f4129570022387da117d1c1d9126dd0f016e194f32b59b6df67a3ff')
-build()
+            '0533a3bd0f4129570022387da117d1c1d9126dd0f016e194f32b59b6df67a3ff'
+            '85af9b165972753c3440ca72f53045a7bc59d7b63bb75f375f24d8b003dd6d0b')
+prepare()
 {
   cd "$srcdir"
   export GOPATH="$srcdir"
@@ -25,6 +30,13 @@ build()
   mkdir -p "$gosrcdir"
   ln -sf "$srcdir"/$pkgname "$gosrcdir"
 
+  cd "$gosrcdir/$pkgname"
+  git apply $srcdir/allow_go111.patch
+}
+
+build()
+{
+  local gosrcdir="$GOPATH/src/github.com/FactomProject"
   cd "$gosrcdir/$pkgname"
 
   echo "Downloading dependencies"

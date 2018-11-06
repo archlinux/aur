@@ -1,0 +1,17 @@
+diff --git a/engine/factomParams.go b/engine/factomParams.go
+index d4e5b21f7..f007798e4 100644
+--- a/engine/factomParams.go
++++ b/engine/factomParams.go
+@@ -165,12 +165,6 @@ func ParseCmdLine(args []string) *FactomParams {
+ 	fmt.Print("//////////////////////// Use of this source code is governed by the MIT\n")
+ 	fmt.Print("//////////////////////// license that can be found in the LICENSE file.\n")
+ 
+-	if !isCompilerVersionOK() {
+-		fmt.Println("!!! !!! !!! ERROR: unsupported compiler version !!! !!! !!!")
+-		time.Sleep(3 * time.Second)
+-		os.Exit(1)
+-	}
+-
+ 	// launch debug console if requested
+ 	if p.DebugConsole != "" {
+ 		launchDebugServer(p.DebugConsole)
