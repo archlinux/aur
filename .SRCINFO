@@ -1,6 +1,6 @@
 pkgbase = sonarr-develop
 	pkgdesc = TV download automation for usenet and torrents.
-	pkgver = 2.0.0.5251
+	pkgver = 2.0.0.5270
 	pkgrel = 1
 	url = http://www.sonarr.tv
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = sonarr-develop
 	optdepends = jackett: torrent indexer proxy
 	provides = sonarr
 	conflicts = sonarr
-	source = https://download.sonarr.tv/v2/develop/mono/NzbDrone.develop.2.0.0.5251.mono.tar.gz
+	source = https://download.sonarr.tv/v2/develop/mono/NzbDrone.develop.2.0.0.5270.mono.tar.gz
 	source = sonarr.service
 	source = sonarr.sysusers
 	source = sonarr.tmpfiles
