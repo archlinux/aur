@@ -1,11 +1,12 @@
 pkgbase = crystal-icr
 	pkgdesc = Interactive console for Crystal programming language
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/crystal-community/icr
 	arch = i686
 	arch = x86_64
 	license = LGPL
+	makedepends = shards
 	depends = crystal
 	depends = readline
 	source = https://github.com/crystal-community/icr/archive/v0.6.0.tar.gz
