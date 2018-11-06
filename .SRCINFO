@@ -1,7 +1,7 @@
 pkgbase = makepkg-optimize
 	pkgdesc = Supplemental build and packaging optimizations for makepkg
 	pkgver = 4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.archlinux.org/index.php/Makepkg-optimize
 	arch = any
 	license = GPL

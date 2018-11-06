@@ -3,7 +3,7 @@
 
 pkgname=makepkg-optimize
 pkgver=4
-pkgrel=1
+pkgrel=2
 pkgdesc='Supplemental build and packaging optimizations for makepkg'
 arch=('any')
 license=('GPL')
@@ -14,6 +14,7 @@ depends=('pacman-buildenv_ext-git')
 optdepends=('upx' 'optipng' 'nodejs-svgo' 'graphite')
 backup=(etc/makepkg-optimize.conf)
 _buildenv=({pgo,lto,graphite}.sh.in)
+_executable=({upx,optipng,svgo}-exec.sh.in)
 _tidy=({upx,optipng,svgo}.sh.in)
 _conf=({{c,cxx,make,ld,debug-make,cmake-}flags,{buildenv,destdirs,pkgopts{,-param}}_ext,compress-param_max}.conf)
 source=(${_buildenv[@]}
@@ -26,7 +27,7 @@ sha1sums=('da515153d456ed53f6744c3ce4e6dd9a9ea3b892'
           'd6c364bac3be28a39ba9d902e8492acd35fbee13'
           '1a815037390c67195ed831b7887884a42785010a'
           'cff1d2b6e81226de7ece5369005c392fa8083bf2'
-          'b47947223879df8e5725e8f84b69fb355d149b44'
+          'f7da4e29ea24c85870ff0e55864f7bafbce7ad8f'
           '83a6d62b19184cac1de02c957cd4ea7bbdac9ddb'
           'dea4d727d81ac040846555e59ac7c34eb0978233'
           '202d11e49a611bb400029512cf159a0f8645a6db'
@@ -76,7 +77,7 @@ prepare() {
   #Additional OPTIONS options parameters
   sed -i "/^#*PURGE_TARGETS=/r pkgopts-param_ext.conf" makepkg-optimize.conf
 
-  #Maximum COMPRESS~~ parameters
+  #Maximum COMPRESS parameters
   sed -i "/^COMPRESSZ=/r compress-param_max.conf" makepkg-optimize.conf
 }
 
@@ -85,7 +86,7 @@ package() {
   install -m755 -D -t ${pkgdir}/usr/share/makepkg/buildenv/ ${_buildenv[@]%.in}
 
   # Executable finding scripts
-  #install -m755 -D -t ${pkgdir}/usr/share/makepkg/executable/ ${_executable[@]%.in}
+  install -m755 -D -t ${pkgdir}/usr/share/makepkg/executable/ ${_executable[@]%.in}
 
   # Supplemental Tidy scripts
   install -m755 -D -t ${pkgdir}/usr/share/makepkg/tidy/ ${_tidy[@]%.in}
