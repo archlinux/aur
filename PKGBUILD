@@ -2,42 +2,34 @@
 
 pkgname=keeweb
 pkgver=1.6.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Desktop password manager compatible with KeePass databases."
 arch=('any')
 url="https://github.com/keeweb/keeweb"
 license=('MIT')
 depends=('electron')
-makedepends=('npm' 'asar')
+makedepends=(
+	'asar'
+	'npm'
+	'libsass'
+)
 optdepends=('xdotool: for auto-type')
 conflicts=('keeweb-desktop')
-source=("https://github.com/keeweb/keeweb/archive/v${pkgver}.tar.gz"
-        'keeweb')
+source=(
+	"https://github.com/keeweb/keeweb/archive/v${pkgver}.tar.gz"
+	'keeweb'
+	'package.json.patch.js'
+)
 
 sha1sums=('75c054b23aa4f0f6fd067174623549f65ebe740a'
-          'a2ab033d06abfe7616d2615d8edf7931f29efc96')
+          'a2ab033d06abfe7616d2615d8edf7931f29efc96'
+          'b945364dd81407f6031579added5cd7c696a8ab3')
 
 prepare() {
-
 	cd "${pkgname}-${pkgver}"
 
 	# remove extra dependencies
-	sed -i \
-		-e '/"babel-/                  d' \
-		-e '/"electron": "^/           d' \
-		-e '/"grunt-electron"/         d' \
-		-e '/"grunt-appdmg"/           d' \
-		-e '/"grunt-concurrent"/       d' \
-		-e '/"grunt-contrib-compress"/ d' \
-		-e '/"grunt-contrib-deb"/      d' \
-		-e '/"grunt-contrib-watch"/    d' \
-		-e '/"grunt-contrib-uglify"/   d' \
-		-e '/"grunt-eslint"/           d' \
-		-e '/"eslint/                  d' \
-		-e '/"uglify-loader"/          d' \
-		-e '/"webpack-dev-server"/     d' \
-		-e '/"webpack"/           s/,$//' \
-	package.json
+	node ../package.json.patch.js
 
 	sed -i \
 		-e "/electronVersion/           d" \
@@ -60,17 +52,13 @@ prepare() {
 	sed -i \
 		-e '/FileSaver.js/ s|eligrey/FileSaver.js|\0#1.3.4|' \
 	bower.json
-
-	# upgrade node-sass
-	sed -i \
-		-e 's/"node-sass": "4.5.3"/"node-sass": "^4.9.3"/' \
-	package.json
 }
 
 build() {
 	cd "${pkgname}-${pkgver}"
 
 	export SKIP_SASS_BINARY_DOWNLOAD_FOR_CI=1
+	export LIBSASS_EXT=auto
 
 	npm install --no-package-lock
 	node_modules/.bin/grunt --skip-sign build-web-app build-desktop-app-content
