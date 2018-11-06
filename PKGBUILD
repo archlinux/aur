@@ -2,7 +2,7 @@
 # Forked from palemoon PKGBUILD by WorMzy Tykashi <wormzy.tykashi@gmail.com>
 # Contributor: artiom <a.mv at gmx dot fr>
 pkgname=palemoon-git
-pkgver=28.1.0a1+eb2016063
+pkgver=28.2.0a1+r423.ga0a37ffd4
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency (git version)"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ md5sums=('SKIP'
 
 pkgver() {
 	cd UXP
-	echo $(cat application/palemoon/config/version.txt)"+"$(git rev-parse --short HEAD)
+	echo $(cat application/palemoon/config/version.txt)"+"$(git describe --long | sed 's/^[^-]*-/r/;s/-/./g')
 }
 
 prepare() {
