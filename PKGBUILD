@@ -2,7 +2,7 @@
 
 pkgname=poetry
 pkgver=0.12.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Python dependency management and packaging made easy."
 arch=('any')
 url="https://github.com/sdispater/poetry"
@@ -12,7 +12,6 @@ depends=(
 )
 conflicts=('python-poetry')
 options=(!emptydirs)
-install="${pkgname}.install"
 source=(
   "https://github.com/sdispater/poetry/releases/download/${pkgver}/poetry-${pkgver}-linux.tar.gz"
   "https://github.com/sdispater/poetry/archive/${pkgver}.tar.gz"
@@ -34,17 +33,30 @@ package() {
 
   install -Dm755 poetry.py "${pkgdir}/usr/bin/poetry"
 
+  cd "${pkgdir}/usr/lib/poetry"
+
   # Tab completion for Bash
   install -d "${pkgdir}/usr/share/bash-completion/completions"
-  cd "${pkgdir}/usr/lib/poetry"
-  _completion=`python -B -m poetry completions bash \
-    | sed '$d' \
+  python -B -m poetry completions bash \
+    | sed '$s/\ \/.*\/pkg\/poetry\/usr\/lib\/poetry\/poetry\/__main__.py/\ \/usr\/bin\/poetry/' \
     | sed 's/__main__py/poetry/' \
-    | sed 's/__main__.py/poetry/'`
-  _last_line=`cat <<< $_completion \
-    | tail -1 \
-    | sed 's/poetry$/\/usr\/bin\/poetry/'`
-  echo -e "$_completion\n$_last_line" > "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
+    | sed 's/__main__.py/poetry/' \
+    | install -Dm644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
+
+  # Tab completion for Zsh
+  install -d "${pkgdir}/usr/share/zsh/site-functions"
+  python -B -m poetry completions zsh \
+    | sed '$s/\ \/.*\/pkg\/poetry\/usr\/lib\/poetry\/poetry\/__main__.py/\ \/usr\/bin\/poetry/' \
+    | sed 's/__main__py/poetry/' \
+    | sed 's/__main__.py/poetry/' \
+    | install -Dm644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
+
+  # Tab completion for Fish
+  install -d "${pkgdir}/usr/share/fish/vendor_completions"
+  python -B -m poetry completions fish \
+    | sed 's/__main__py/poetry/' \
+    | sed 's/__main__.py/poetry/' \
+    | install -Dm644 /dev/stdin "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
 
   cd "${srcdir}/${pkgname}-${pkgver}"
 
