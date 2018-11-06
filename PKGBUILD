@@ -3,7 +3,7 @@
 pkgname=trust-dns-server
 pkgver=0.15.0
 pkgrel=1
-pkgdesc='Safe and secure DNS server with DNSec support'
+pkgdesc='Safe and secure DNS server'
 arch=('x86_64')
 url=http://trust-dns.org
 license=('Apache')
