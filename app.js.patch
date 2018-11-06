@@ -1,5 +1,0 @@
-97c97,98
-<         icon: path.join(__dirname, 'icon.png')
----
->         icon: path.join(__dirname, 'icon.png'),
->         autoHideMenuBar: true
