@@ -1,0 +1,20 @@
+pkgbase = trinnity-git
+	pkgdesc = C++ library of CNN primitive operations
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://bitbucket.org/STG-TCD/trinnity
+	arch = any
+	license = BSD
+	makedepends = doxygen
+	optdepends = gsl>=2.3: GSL BLAS backend
+	optdepends = atlas-lapack>=3.10.3: ATLAS BLAS backend
+	optdepends = openblas-lapack>=0.2.19: OpenBLAS BLAS backend
+	optdepends = intel-mkl>=2017.17.0.1.1.132: Intel MKL BLAS backend
+	optdepends = clblas>=2.12: clBLAS BLAS backend
+	optdepends = cblas: Plain old CBLAS backend
+	conflicts = trinnity
+	source = trinnity::git+https://bitbucket.org/STG-TCD/trinnity
+	md5sums = SKIP
+
+pkgname = trinnity-git
+
