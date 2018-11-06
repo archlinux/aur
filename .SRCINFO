@@ -1,0 +1,23 @@
+pkgbase = python-saxpy-git
+	pkgdesc = Symbolic Aggregate approXimation, HOT-SAX, and SAX-VSM implementation in Python
+	pkgver = r184.92a378a
+	pkgrel = 1
+	url = https://github.com/seninp/saxpy
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL2
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	provides = python-saxpy
+	conflicts = python-saxpy
+	source = python-saxpy::git+https://github.com/seninp/saxpy.git
+	md5sums = SKIP
+
+pkgname = python-saxpy-git
+
