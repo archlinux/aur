@@ -1,7 +1,7 @@
 # Maintainer: Ainola
 
 pkgname=imv-git
-pkgver=v2.1.3.r131.g7221ef8
+pkgver=v2.1.3.r137.g7e1c122
 pkgrel=1
 pkgdesc='Image viewer for Wayland and X11'
 url="https://github.com/eXeC64/imv"
@@ -9,6 +9,7 @@ arch=('x86_64' 'i686')
 license=('GPL')
 depends=('freeimage' 'sdl2_ttf' 'fontconfig')
 makedepends=('git' 'asciidoc')
+provides=('imv')
 conflicts=('renameutils' 'imv')
 source=("git+https://github.com/eXeC64/imv.git")
 sha1sums=('SKIP')
