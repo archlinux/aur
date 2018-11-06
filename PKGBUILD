@@ -27,7 +27,10 @@ sha512sums=(
 
 build() {
     cd "${srcdir}/${_upstream}-${pkgver}"
-    npm ci --only=production
+
+    # somehow `npm ci` isn't installing all deps for 3.11.3
+    rm -rf node_modules
+    npm install --only=production
 }
 
 package() {
