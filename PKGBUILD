@@ -8,7 +8,7 @@ pkgdesc="Scry is a language server for Crystal."
 arch=("x86_64")
 url="https://github.com/crystal-lang-tools/$_gitname"
 license=("MIT")
-depends=("git" "crystal-git")
+depends=("git" "crystal")
 source=("git+https://github.com/crystal-lang-tools/$_gitname")
 sha256sums=("SKIP")
 
