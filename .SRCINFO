@@ -1,7 +1,7 @@
 pkgbase = plasma5-applets-kde-githubissues-git
 	pkgdesc = A plasma widget that shows a list of recent github issues for a specific repo
 	pkgver = r46.f7a5f56
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Zren/plasma-applet-githubissues
 	arch = x86_64
 	license = GPL
