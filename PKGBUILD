@@ -4,14 +4,15 @@
 
 pkgname=plasma5-applets-plasma-pass-git
 pkgver=r30.f0ffe06
-pkgrel=1
-pkgdesc='Plasma applet for pass.'
+pkgrel=2
+pkgdesc='Plasma applet for pass'
 url="https://cgit.kde.org/scratch/dvratil/plasma-pass.git"
-arch=('x86_64' 'i686')
+arch=('x86_64')
 license=('GPL2')
 depends=('pass' 'plasma-framework' 'kitemmodels')
 makedepends=('extra-cmake-modules' 'git')
 provides=('plasma5-applets-plasma-pass')
+conflicts=('plasma5-applets-plasma-pass')
 source=("git+https://anongit.kde.org/scratch/dvratil/plasma-pass.git")
 sha256sums=('SKIP')
 
