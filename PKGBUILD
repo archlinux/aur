@@ -1,6 +1,6 @@
 #Maintainer Sakuraba Amane <tobiichiamane@archlinuxcn.org>
 pkgname=plasma5-applets-kde-githubissues-git
-pkgver=1.0beta
+pkgver=1.0rolling
 pkgrel=1
 pkgdesc="A plasma widget that shows a list of recent github issues for a specific repo"
 url="https://github.com/Zren/plasma-applet-githubissues"
