@@ -17,7 +17,7 @@ sha256sums=('629a920e8e501627d9f22359ff199c2bacdc8692acc65ed5464c0d64401f76d7'
 validpgpkeys=('EB4F9E5A60D32232BB52150C12C87A28FEAC6B20')
 
 prepare() {
-    cd "$srcdir/$pkgname"
+    cd "$pkgname"
 
     _host_file='/usr/bin/browserpass'
     sed -i -e "s|%%replace%%|$_host_file|" chrome-host.json
@@ -37,7 +37,7 @@ build() {
 }
 
 package() {
-    cd "$srcdir/$pkgname"
+    cd "$pkgname"
 
     install -Dm755 browserpass "$pkgdir/usr/bin/browserpass"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
