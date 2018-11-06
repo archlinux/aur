@@ -1,0 +1,7 @@
+post_install() {
+    echo "You have to execute'cp /usr/share/Pwngdb/.gdbinit ~/.gdbinit' to use it"
+}
+
+post_remove() {
+    echo "Please remmove ~/.gdbinit to avoid errors"
+}

@@ -1,0 +1,15 @@
+pkgbase = pwngdb
+	pkgdesc = gdb for pwn
+	pkgver = r49b5775
+	pkgrel = 1
+	url = https://github.com/scwuaptx/pwngdb
+	install = pwngdb.install
+	arch = any
+	license = GPLV3
+	depends = gdb
+	depends = peda
+	source = pwngdb::git+https://github.com/scwuaptx/pwngdb
+	sha512sums = SKIP
+
+pkgname = pwngdb
+
