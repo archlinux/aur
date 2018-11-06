@@ -1,8 +1,8 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=poetry
-pkgver=0.12.5
-pkgrel=3
+pkgver=0.12.6
+pkgrel=1
 pkgdesc="Python dependency management and packaging made easy."
 arch=('any')
 url="https://github.com/sdispater/poetry"
@@ -19,8 +19,8 @@ source=(
   "poetry.py"
 )
 sha256sums=(
-  '67cd337e8697ac6f6218c9519b983d2f1eb67e6442fec1369f46ab3a8b98e48a'
-  '95d73348e91f06faf1acaddf5df30fdca2f5eef06206f20f14c81245f534c16e'
+  '29575a9db666a03b156e2f01747acdaa5fc67c08f96a0b3b31ecc59ca7f2fa4e'
+  'bebacd69e826ca1d2df71abbf81fea02b4290eadb4a18e6ec77102d0016c0482'
   'e9fee925c0fb42df53389bdfc8ebbe01bfd4f6146ed0a55786bd2ba741169c0c'
 )
 
