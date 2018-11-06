@@ -1,0 +1,14 @@
+pkgbase = nodejs-ynab-cli
+	pkgdesc = CLI tool for YNAB budgeting software
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/towerism/ynab-cli
+	arch = any
+	license = GPL3
+	makedepends = npm
+	provides = ynab
+	source = https://registry.npmjs.org/@ynab-cli/cli/-/cli-1.2.2.tgz
+	sha256sums = 667acd633b3a9058c9f7f3ec76c956146c8a49dc808e65485ccdec2ae3cc3e13
+
+pkgname = nodejs-ynab-cli
+
