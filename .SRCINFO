@@ -1,7 +1,7 @@
 pkgbase = indicator-sensors
 	pkgdesc = Small application to provide hardware sensor readings using the AppIndicator framework
-	pkgver = 0.8
-	pkgrel = 3
+	pkgver = 0.9
+	pkgrel = 1
 	url = https://github.com/alexmurray/indicator-sensors
 	install = indicator-sensors.install
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = indicator-sensors
 	depends = lm_sensors
 	depends = udisks2
 	optdepends = libxnvctrl: NVIDIA GPU support
-	source = https://github.com/alexmurray/indicator-sensors/archive/0.8.tar.gz
-	md5sums = 2975c3b04778e18b549356383a3740d8
+	source = https://github.com/alexmurray/indicator-sensors/archive/0.9.tar.gz
+	md5sums = 96535dd1ebe1b74c9bb71424c2dcc6af
 
 pkgname = indicator-sensors
 

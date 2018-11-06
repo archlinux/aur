@@ -1,8 +1,8 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=indicator-sensors
-pkgver=0.8
-pkgrel=3
+pkgver=0.9
+pkgrel=1
 pkgdesc="Small application to provide hardware sensor readings using the AppIndicator framework"
 arch=('x86_64')
 url="https://github.com/alexmurray/indicator-sensors"
@@ -12,7 +12,7 @@ optdepends=('libxnvctrl: NVIDIA GPU support')
 makedepends=('gnome-common' 'intltool')
 install=$pkgname.install
 source=(https://github.com/alexmurray/$pkgname/archive/$pkgver.tar.gz)
-md5sums=('2975c3b04778e18b549356383a3740d8')
+md5sums=('96535dd1ebe1b74c9bb71424c2dcc6af')
 
 build() {
   cd $pkgname-$pkgver
