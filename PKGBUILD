@@ -2,7 +2,7 @@
 
 _pkgname=numix-folders
 pkgname=$_pkgname-git
-pkgver=r401.b6b9a0a
+pkgver=r420.24e5f6c66
 pkgrel=1
 pkgdesc="Alternate folders for use with the Numix base icon theme."
 arch=('any')
@@ -13,7 +13,6 @@ optdepends=('python-gobject: GUI support'
             'gksu: GUI support')
 makedepends=('git')
 options=('!strip')
-install=numix-folders.install
 source=("git+https://github.com/numixproject/numix-folders"
         "$_pkgname.hook")
 sha256sums=('SKIP'
