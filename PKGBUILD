@@ -1,7 +1,7 @@
 _npmname=interactive-diff-patch
-_npmver=0.0.6
+_npmver=0.0.7
 pkgname=interactive-diff-patch # All lowercase
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 pkgdesc="Allows you to apply diff hunks one at a time and preview them on the command line. On Windows this requires  git to be installed."
 arch=(any)

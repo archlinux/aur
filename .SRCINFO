@@ -1,14 +1,14 @@
 pkgbase = interactive-diff-patch
 	pkgdesc = Allows you to apply diff hunks one at a time and preview them on the command line. On Windows this requires git to be installed.
-	pkgver = 0.0.6
+	pkgver = 0.0.7
 	pkgrel = 1
 	url = https://gitlab.com/bixfliz/interactive-diff-patch
 	arch = any
 	license = MIT
 	depends = nodejs
 	depends = npm
-	noextract = interactive-diff-patch-0.0.6.tgz
-	source = https://registry.npmjs.org/interactive-diff-patch/-/interactive-diff-patch-0.0.6.tgz
+	noextract = interactive-diff-patch-0.0.7.tgz
+	source = https://registry.npmjs.org/interactive-diff-patch/-/interactive-diff-patch-0.0.7.tgz
 	sha1sums = fb4919337e33ce2b73e07567bee42b749385d65f
 
 pkgname = interactive-diff-patch
