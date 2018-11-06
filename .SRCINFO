@@ -1,0 +1,13 @@
+pkgbase = memb
+	pkgdesc = A tool to manage a local text-based knowledge base
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/jerben/memb
+	arch = any
+	license = MIT
+	depends = grep
+	source = https://github.com/jerben/memb/archive/0.0.2.tar.gz
+	sha256sums = 105e0960d50ff495b8bcccd69a45652ea0959c72feda44a1c27f06bf386e6da0
+
+pkgname = memb
+
