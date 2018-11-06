@@ -2,17 +2,15 @@
 
 pkgname=rebuild-detector
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Detects which packages need to be rebuilt'
 arch=('any')
 license=('MIT')
 depends=('parallel')
-source=('checkrebuild'
-        'checkrebuild.sig'
-        'LICENSE')
-sha256sums=('52d160787fd11d3aafba0102297353f4ed8751437a6ba72d353958b49420c212'
-            'SKIP'
-            '4db14647c2d687192ad26c2d4dbc7f2fd03136c3dee67720ebbbbb6c3ebc1d4e')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/maximbaz/$pkgname/releases/download/$pkgver/$pkgname.tar.gz"
+        "$pkgname-$pkgver.tar.gz.sig::https://github.com/maximbaz/$pkgname/releases/download/$pkgver/$pkgname.tar.gz.sig")
+sha256sums=('60a7495eb05d223c461c43dbee9fbf46cf32c698e1950cfcc7dcb0d30f12292a'
+            'SKIP')
 validpgpkeys=('EB4F9E5A60D32232BB52150C12C87A28FEAC6B20')
 
 package() {
