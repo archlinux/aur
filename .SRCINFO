@@ -1,7 +1,7 @@
 pkgbase = keeweb
 	pkgdesc = Desktop password manager compatible with KeePass databases.
 	pkgver = 1.6.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/keeweb/keeweb
 	arch = any
 	license = MIT
@@ -16,7 +16,7 @@ pkgbase = keeweb
 	source = package.json.patch.js
 	sha1sums = 75c054b23aa4f0f6fd067174623549f65ebe740a
 	sha1sums = a2ab033d06abfe7616d2615d8edf7931f29efc96
-	sha1sums = b945364dd81407f6031579added5cd7c696a8ab3
+	sha1sums = ffcb2e59ef756c1ddb9d6cdb97e1e387598dc6b1
 
 pkgname = keeweb
 

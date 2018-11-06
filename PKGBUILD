@@ -2,7 +2,7 @@
 
 pkgname=keeweb
 pkgver=1.6.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Desktop password manager compatible with KeePass databases."
 arch=('any')
 url="https://github.com/keeweb/keeweb"
@@ -23,7 +23,7 @@ source=(
 
 sha1sums=('75c054b23aa4f0f6fd067174623549f65ebe740a'
           'a2ab033d06abfe7616d2615d8edf7931f29efc96'
-          'b945364dd81407f6031579added5cd7c696a8ab3')
+          'ffcb2e59ef756c1ddb9d6cdb97e1e387598dc6b1')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
