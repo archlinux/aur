@@ -1,0 +1,12 @@
+diff --git a/doorpi.service.in b/doorpi.service.in
+index cf0f75b..8e2f1b9 100644
+--- a/doorpi.service.in
++++ b/doorpi.service.in
+@@ -11,7 +11,6 @@ Restart=always
+ 
+ User=!!package!!
+ Group=!!package!!
+-SupplementaryGroups=gpio
+ DynamicUser=true
+ 
+ CapabilityBoundingSet=

@@ -1,0 +1,29 @@
+pkgbase = doorpi
+	pkgdesc = VoIP-based door intercom station for Raspberry Pi
+	pkgver = 3.0beta1.r0.a798ef1
+	pkgrel = 1
+	url = https://www.doorpi.org
+	arch = any
+	license = CC BY-NC 4.0
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	depends = python-pyserial
+	depends = python-watchdog
+	optdepends = python-piface: Use Piface pins as event sources / actors
+	optdepends = python-picamera: Take and mail snapshots; stream video
+	optdepends = python-raspberry-gpio: Use GPIO header as event sources / actors
+	options = !strip
+	backup = etc/doorpi/doorpi.ini
+	source = doorpi::git+file:///home/wuestengecko/Programme/devspace/doorpi
+	source = doorpiweb::git+file:///home/wuestengecko/Programme/devspace/doorpiweb
+	source = doorpi.ini
+	source = 0001-disable-gpio-group.diff
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = 72bf97148a548a4b6c26a59495b0a251
+	md5sums = cb902cd2ef0298fb854de7bd09ed0dcc
+
+pkgname = doorpi
+

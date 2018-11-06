@@ -1,0 +1,7 @@
+*.log
+*.pkg.*
+/src
+/pkg
+
+/doorpi
+/doorpiweb
