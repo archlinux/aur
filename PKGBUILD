@@ -1,13 +1,14 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
+# Maintainer: Kevin Meagher <kmeagher at icecube dot wisc dot edu>
 pkgname=healpix
-_pkgname=${pkgname}
-pkgver='3.31_2016Aug26'
-_dir='Healpix_3.31'
-pkgrel=6
+_ver='3.40'
+_date='2018Jun22'
+pkgver="${_ver}_${_date}"
+pkgrel=1
 pkgdesc="Software for pixelization, hierarchical indexation, synthesis, analysis, and visualization of data on the sphere."
 arch=(any)
 url="https://sourceforge.net/projects/healpix/"
-license=('GPLv2')
+license=('GPL2')
 groups=()
 depends=(cfitsio)
 makedepends=()
@@ -17,27 +18,26 @@ replaces=()
 backup=()
 options=(!emptydirs)
 install=
-source=("${url}/files/${_dir}/Healpix_${pkgver}.tar.gz")
-sha256sums=('ddf437442b6d5ae7d75c9afaafc4ec43921f903c976e25db3c5ed5185a181542')
+source=("${url}/files/Healpix_${_ver}/Healpix_${pkgver}.tar.gz")
+md5sums=('e40b4a439f34b6af11aa243751b37e1c')
+sha1sums=('a26c7b19b2ef78aa2a7a519121bf489c5b979826')
+sha256sums=('f10ce170a10a2f37830c65616554c39005442021741ed19c1efa998994d8a069')
 build() {
-    cd "${srcdir}/${_dir}/src/C/autotools"
+    cd "${srcdir}/Healpix_${_ver}/src/C/autotools"
     autoreconf --install
     ./configure --prefix="${pkgdir}/usr"
     make -j
 
-    cd "${srcdir}/${_dir}/src/cxx/autotools"
+    cd "${srcdir}/Healpix_${_ver}/src/cxx/autotools"
     autoreconf --install
     ./configure --prefix="${pkgdir}/usr"
     make -j
 }
 
-#check() {
-#    cd "${srcdir}/${_dir}"
-#}
 package() {
-    cd "${srcdir}/${_dir}/src/C/autotools"
+    cd "${srcdir}/Healpix_${_ver}/src/C/autotools"
     make install
-    cd "${srcdir}/${_dir}/src/cxx/autotools"
+    cd "${srcdir}/Healpix_${_ver}/src/cxx/autotools"
     make install    
 }
 
