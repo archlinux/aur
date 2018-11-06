@@ -2,17 +2,24 @@
 
 pkgname=lazy-ips-git
 pkgver=r2.9048f9f
-pkgrel=3
+pkgrel=4
 pkgdesc="Patch ROMs with IPS files."
 arch=('any')
 url="https://github.com/btimofeev/lazy_ips"
 license=('GPL3')
-depends=('python2' 'pygtk')
+depends=('pygtk')
+makedepends=('git' 'gendesk')
+provides=('lazy-ips')
+conflicts=('lazy-ips')
 source=("git+https://github.com/btimofeev/lazy_ips.git")
 sha256sums=('SKIP')
 
 prepare() {
-    gendesk --name "Lazy IPS" ../PKGBUILD
+    gendesk -n --pkgname="$pkgname" \
+            --name="Lazy IPS" \
+            --pkgdesc="$pkgdesc" \
+            --exec=/usr/bin/lazy-ips \
+            --categories='Utility;FileTools'
 }
 
 pkgver() {
