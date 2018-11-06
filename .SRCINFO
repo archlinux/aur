@@ -1,6 +1,6 @@
 pkgbase = gn-git
 	pkgdesc = Meta-build system which generates Ninja build files
-	pkgver = r1464.e134e493
+	pkgver = r1491.df15af47
 	pkgrel = 1
 	url = https://gn.googlesource.com/gn
 	arch = x86_64
