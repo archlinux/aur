@@ -2,12 +2,12 @@
 
 pkgname=sococo
 pkgver=6.4.0_19486
-pkgrel=1
+pkgrel=2
 pkgdesc="Sococo for Linux"
 arch=('x86_64')
 url="https://app.sococo.com/a/download"
 license=('custom')
-
+depends=('gconf')
 source_x86_64=(
 	"https://s.sococo.com/rs/client/linux64/apt/pool/main/sococo-${pkgver//_/-}_amd64.deb"
 )
