@@ -3,8 +3,8 @@
 # Contributor: atommixz <atommixz@gmail.com>
 
 pkgname=airdcpp-webclient
-pkgver=2.3.0
-pkgrel=3
+pkgver=2.4.0
+pkgrel=0
 pkgdesc="A peer-to-peer file sharing client with web user interface"
 arch=('x86_64' 'armv7h')
 license=('GPL2')
@@ -12,7 +12,7 @@ url="https://github.com/airdcpp-web/${pkgname}"
 depends=('miniupnpc' 'boost' 'libmaxminddb' 'leveldb' 'openssl' 'geoip' 'leveldb' 'websocketpp' 'libnatpmp' 'intel-tbb')
 makedepends=('cmake' 'git' 'npm')
 source=("https://github.com/airdcpp-web/airdcpp-webclient/archive/${pkgver}.tar.gz") 
-md5sums=('1241718cce0d238691b42e4dfa105b4d')
+md5sums=('f0b6c849505b476bdb007ca525005af4')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
