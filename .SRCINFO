@@ -6,6 +6,7 @@ pkgbase = sococo
 	arch = x86_64
 	depends = gconf
 	depends = gtk2
+	depends = libxss
 	license = custom
 	source_x86_64 = https://s.sococo.com/rs/client/linux64/apt/pool/main/sococo-6.4.0-19486_amd64.deb
 	sha256sums_x86_64 = 0fbb4bda1e8665d82a8da9811dcf9ec875b10125a7e74192e728fd843951dedd
