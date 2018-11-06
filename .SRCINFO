@@ -1,6 +1,6 @@
 pkgbase = afl-utils-git
 	pkgdesc = Utilities for automated crash sample processing/analysis, easy afl-fuzz job management and corpus optimization
-	pkgver = 1.32a.224.1a10e7b
+	pkgver = 1.34a.272.b01a625
 	pkgrel = 1
 	url = https://github.com/rc0r/afl-utils
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = afl-utils-git
 	optdepends = gdb: gdb script execution support
 	provides = afl-utils
 	conflicts = afl-utils
-	source = afl-utils-git::git+https://github.com/rc0r/afl-utils
+	source = afl-utils-git::git+https://gitlab.com/rc0r/afl-utils
 	sha512sums = SKIP
 
 pkgname = afl-utils-git

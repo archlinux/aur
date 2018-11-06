@@ -2,7 +2,7 @@
 
 pkgname=afl-utils-git
 _gitname=afl-utils
-pkgver=1.32a.224.1a10e7b
+pkgver=1.34a.272.b01a625
 pkgrel=1
 pkgdesc="Utilities for automated crash sample processing/analysis, easy afl-fuzz job management and corpus optimization"
 url="https://github.com/rc0r/afl-utils"
@@ -17,7 +17,7 @@ optdepends=(
 makedepends=('git' 'python-setuptools')
 provides=('afl-utils')
 conflicts=('afl-utils')
-source=(${pkgname}::git+https://github.com/rc0r/${_gitname})
+source=(${pkgname}::git+https://gitlab.com/rc0r/afl-utils)
 sha512sums=('SKIP')
 
 pkgver() {
