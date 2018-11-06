@@ -1,7 +1,7 @@
 pkgbase = trinnity-git
 	pkgdesc = C++ library of CNN primitive operations
 	pkgver = 0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/STG-TCD/trinnity
 	arch = any
 	license = BSD
