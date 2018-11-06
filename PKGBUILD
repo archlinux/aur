@@ -1,6 +1,6 @@
 # Maintainer: Prasad Kumar
 pkgname=stremio-beta
-pkgver=4.0.17
+pkgver=4.4.10
 pkgrel=1
 pkgdesc="Watch videos, movies, TV series and TV channels instantly. (Beta Version)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ provides=('stremio-beta')
 makedepends=('sed')
 options=('!strip')
 source=("${pkgname}.appimage::https://dl.strem.io/linux/v${pkgver}/Stremio+${pkgver}.appimage")
-sha512sums=('9928e719d57b4f33ecc32ffc9292340ebdcae516af072e53115e589612778697e65c5fd2d191b26e45e2f70bacdb5d4b270a05d9b7d2b625dca9c9c05bfe7652')
+sha512sums=('b48f3bdc7b849fee63cf826f8e6b767286897bc8b60b7ef8af4d24b6395568a1be81e87017e7fe7ccad5b9bdf941662ee3ffb0be94d0dea5a065811722de619c')
 
 prepare() {
   chmod +x ${pkgname}.appimage
@@ -23,7 +23,6 @@ package() {
   install -d $pkgdir/{opt/$pkgname,usr/bin}
 
   cp -r "lib" "${pkgdir}/opt/${pkgname}/"
-  mv "${pkgdir}/opt/${pkgname}/lib/libfreetype.so.6" "${pkgdir}/opt/${pkgname}/lib/libfreetype.so.6.bak"
   cp -r "libexec" "${pkgdir}/opt/${pkgname}/"
   cp -r "plugins" "${pkgdir}/opt/${pkgname}/"
   cp -r "qml" "${pkgdir}/opt/${pkgname}/"
@@ -37,6 +36,6 @@ package() {
 
   ln -s /opt/${pkgname}/stremio "${pkgdir}"/usr/bin/stremio-beta
   install -Dm644 stremio.desktop "$pkgdir/usr/share/applications/stremio-beta.desktop"
-  sed -i 's/Name=Stremio/Name=Stremio\ Beta/g; s/Exec=.\/stremio/Exec=stremio-beta/g; s/Icon=stremio/Icon=stremio-beta/g' $pkgdir/usr/share/applications/stremio-beta.desktop
+  sed -i 's/Name=Stremio/Name=Stremio\ Beta/g; s/Exec=.\/stremio/Exec=env\ LD_PRELOAD="\/usr\/lib\/libnss3.so"\ stremio-beta/g; s/Icon=stremio/Icon=stremio-beta/g' $pkgdir/usr/share/applications/stremio-beta.desktop
   install -Dm644 "stremio.png" "$pkgdir/usr/share/icons/stremio-beta.png"
 }
