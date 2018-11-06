@@ -2,7 +2,7 @@
 Name=Cryptomator
 Comment=Cloud Storage Encryption Utility
 Exec=/usr/bin/cryptomator
-Icon=/usr/share/java/cryptomator/Cryptomator.png
+Icon=/opt/cryptomator/cryptomator.png
 Terminal=false
 Type=Application
 Categories=Utility

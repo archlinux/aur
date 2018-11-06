@@ -2,37 +2,27 @@
 # Contributor: Sebastian Stenzel <sebastian.stenzel@gmail.com>
 
 pkgname=cryptomator
-pkgver=1.3.5
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Multiplatform transparent client-side encryption of your files in the cloud."
-arch=("any")
+arch=('x86_64')
 url="https://cryptomator.org/"
 license=('GPL3')
-depends=('java-runtime=8' 'java-openjfx')
-makedepends=('java-runtime-openjdk=8' 'apache-ant')
-source=("antkit-${pkgver}.tar.gz::https://github.com/cryptomator/cryptomator/releases/download/${pkgver}/antkit.tar.gz"
-        'cryptomator.sh'
+source=("cryptomator-${pkgver}-x86_64.AppImage::https://dl.bintray.com/cryptomator/cryptomator/cryptomator-${pkgver}-x86_64.AppImage"
         'cryptomator.desktop'
-        'cryptomator-vault.xml'
-        'logback.xml')
-sha256sums=('e38ca7f218ac803522f27d60e5af5040342922144da305c7752c98719179b8ed'
-            '544b707a5e5d5d2f7694b6044f9bedc8a4bb7a783bc427d6c46bf7d3a22eaa1f'
-            '1193f85b545298f6d474c7f17865433f25c73995b00894e0d7d7bc873c696464'
-            '78537ead26dcc1488d7fff02f47fce559f70f9bb2d7fa7fa1741ad3cd151bfad'
-            '913c7995d51f305c36a81cda9cbce96c9481a04516ccc57024f33590e1c822ea')
-
-build() {
-  export JAVA_HOME=/usr/lib/jvm/java-8-openjdk/jre/
-  ant create-jar
-}
+        'cryptomator.png'
+        'cryptomator-vault.xml')
+sha256sums=('6eeb34b4979d03102e7ec11e7d931f6cd7710a1627e64b362e59bd12609205fc'
+            '5f82b1846e5db21fcca2fb914321eecbc9906c8580ef4318d6a12c011e1e3285'
+            'fb1213c07d01c86757744507a151b37d4e917b69965a7db6d28bd99fcc735e6b'
+            '78537ead26dcc1488d7fff02f47fce559f70f9bb2d7fa7fa1741ad3cd151bfad')
+options=('!strip')
 
 package() {
-  install -d "${pkgdir}/usr/share/java/${pkgname}"
-  install -Dm644 "${srcdir}"/libs/*.jar "${pkgdir}/usr/share/java/${pkgname}"
-  install -Dm644 "${srcdir}/antbuild/Cryptomator-${pkgver}.jar" "${pkgdir}/usr/share/java/${pkgname}/cryptomator.jar"
-  install -Dm755 "${srcdir}/cryptomator.sh" "${pkgdir}/usr/bin/cryptomator"
-  install -Dm644 "${srcdir}/package/linux/Cryptomator.png" "${pkgdir}/usr/share/java/${pkgname}"
+  install -Dm755 "${srcdir}/cryptomator-${pkgver}-x86_64.AppImage" "${pkgdir}/opt/cryptomator/cryptomator-${pkgver}-x86_64.AppImage"
   install -Dm644 "${srcdir}/cryptomator-vault.xml" "${pkgdir}/usr/share/mime/packages/cryptomator-vault.xml"
   install -Dm644 "${srcdir}/cryptomator.desktop" "${pkgdir}/usr/share/applications/cryptomator.desktop"
-  install -Dm644 "${srcdir}/logback.xml" "${pkgdir}/etc/${pkgname}/logback.xml"
+  install -Dm644 "${srcdir}/cryptomator.png" "${pkgdir}/opt/cryptomator/cryptomator.png"
+  mkdir -p "${pkgdir}/usr/bin/"
+  ln -s "/opt/cryptomator/cryptomator-${pkgver}-x86_64.AppImage" "${pkgdir}/usr/bin/cryptomator"
 }
