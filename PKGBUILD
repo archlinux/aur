@@ -1,11 +1,11 @@
 # Maintainer: Steven Noonan <steven@uplinklabs.net>
 
 pkgbase=linux-ec2
-_branch=4.18
+_branch=4.19
 _build_from=tarball
 #_build_from=git
 #_build_from=git-mirror
-pkgver=4.18.9
+pkgver=4.19.1
 pkgrel=1
 arch=('x86_64')
 url="https://git.uplinklabs.net/steven/projects/archlinux/ec2/ec2-packages.git/tree/linux-ec2"
@@ -18,9 +18,9 @@ case $_build_from in
     source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
             "http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
             "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz")
-    sha256sums=('19d8bcf49ef530cd4e364a45b4a22fa70714b70349c8100e7308488e26f1eaf1'
+    sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
                 'SKIP'
-                'd819e109cb892859f9ffbb4987678076e1535b9e60c12b6512d3847da43e528b')
+                'bc426a43063b0bf5f9bc59be969338e34276e4a0dbbdb50914beae59a28a3fc1')
     ;;
   git)
     _srcname=linux
@@ -49,13 +49,14 @@ source+=(
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         '0001-xhci-demote-annoying-warning.patch'
+        '0001-Revert-drm-file-Don-t-set-master-on-in-kernel-client.patch'
         )
-sha256sums+=(
-            'SKIP'
+sha256sums+=('SKIP'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'fc21139a4b77d2739f4aaa4e3d35229c395c311de89709904de15f653b8991fd'
-            'ee24bffa6acedfd842416b66a477810108482c97808ec7db0fcc102d13319974')
+            'ee24bffa6acedfd842416b66a477810108482c97808ec7db0fcc102d13319974'
+            '30752a77923021914b77a11d417a93496f3587ab37bd4407dbaf0b18d7a624c2')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -86,6 +87,7 @@ prepare() {
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
   patch -Np1 -i "${srcdir}/0001-xhci-demote-annoying-warning.patch"
+  patch -Np1 -i "${srcdir}/0001-Revert-drm-file-Don-t-set-master-on-in-kernel-client.patch"
 
   chmod +x tools/objtool/sync-check.sh
 
