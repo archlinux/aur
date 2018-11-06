@@ -13,7 +13,7 @@ pkgbase = mingw-w64-gcc-bin
 	depends = mingw-w64-binutils
 	depends = mingw-w64-winpthreads
 	depends = mingw-w64-headers
-	provides = mingw-w64-gcc=8.2.0,
+	provides = mingw-w64-gcc=8.2.0
 	provides = mingw-w64-gcc-base
 	conflicts = mingw-w64-gcc
 	options = !strip
