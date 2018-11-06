@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-spdlog-git
 pkgver=0.16.3.r1362.c336470
-pkgrel=1
+pkgrel=2
 pkgdesc='Very fast, header only, C++ logging library'
 arch=('any')
 url='https://github.com/gabime/spdlog/'
@@ -23,9 +23,7 @@ build() {
   export LDFLAGS=""
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    echo before ${_arch}-cmake -DSPDLOG_BUILD_TESTING=OFF ..
-    printenv > ${_arch}_env.txt
-    ${_arch}-cmake -DSPDLOG_BUILD_TESTING=OFF ..
+    ${_arch}-cmake -DSPDLOG_BUILD_TESTING=OFF -DSPDLOG_BUILD_BENCH=OFF ..
     make
     popd
   done
