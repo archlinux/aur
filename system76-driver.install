@@ -40,10 +40,6 @@ cat << EOF
 
     GUI applications are provided to install drivers, patches, and firmware updates.
 
-    (!) Under Wayland try using xhost prior to running the GUI applications:
-
-        xhost si:localuser:root
-
     (!) To use system76.service, you must add "ec_sys.write_support=1" to your kernel command line
 
     (!) If you do not use the Grub bootloader, please check output for possible manual actions required for

@@ -3,7 +3,7 @@
 
 pkgname=system76-driver
 pkgver=18.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="System76 Driver provides drivers, restore, and regression support for System76 computers"
 arch=('any')
 url="https://github.com/pop-os/system76-driver"
@@ -30,17 +30,20 @@ optdepends=(
 	'grub: To apply kernel boot time parameters'
 	'polkit: Run System76 Driver GUI from application menu'
 	'pulseaudio: To apply microphone fix'
+	'xorg-xhost: To enable GUI applications on Wayland'
 	'xorg-xbacklight: To use the backlight service')
 source=(
 	"https://github.com/pop-os/${pkgname}/archive/${pkgver}.tar.gz"
 	'galu1.patch'
 	'gtk.patch'
-	'cli.patch')
+	'cli.patch'
+	'wayland.patch')
 sha1sums=(
   'c17325c6c32224c93b1f8ad12f9135714a456ed4'
   'ddc85f9b062eb89c2c6fef0c6d7c68a28f419760'
   '45b4601ed3d9d80a01d5179628b1502caa9d7e6f'
-  '916e0eeda26e00bd0372c1ffc7c5368cda9d46a1')
+  '916e0eeda26e00bd0372c1ffc7c5368cda9d46a1'
+  'e7be1a0f860aceb120419b1fd13a8e1983165bd8')
 
 
 build() {
@@ -54,6 +57,9 @@ build() {
 
 	# enabling "Restore System" button if all changes applied
 	patch --no-backup-if-mismatch -Np1 -i ${srcdir}/gtk.patch
+
+	# Use xhost for GUI apps on Wayland
+	patch --no-backup-if-mismatch -Np1 -i ${srcdir}/wayland.patch
 }
 
 package() {
