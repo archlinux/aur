@@ -2,14 +2,15 @@
 # Contributor: Justin Dray <justin@dray.be>
 # Contributor: Gilles Hamel <hamelg at laposte dot net>
 _pkgname=grafana
+_go_arch=$(go version | awk '{gsub("/","-",$NF); print $NF}')
 pkgname=${_pkgname}-git
-pkgver=v5.0.0.r67.g1a16e588f
+pkgver=v5.0.0.r4041.ga3196a130e
 pkgrel=1
 pkgdesc=" The tool for beautiful monitoring and metric analytics & dashboards for Graphite, InfluxDB & Prometheus & More"
 url="https://grafana.com"
 arch=('any')
 license=('APACHE')
-makedepends=('go' 'nodejs-grunt-cli' 'npm' 'git' 'yarn' 'python2')
+makedepends=('go' 'npm' 'git' 'yarn' 'python2')
 provides=('grafana')
 options=('!strip' '!emptydirs')
 conflicts=('grafana')
@@ -20,10 +21,9 @@ md5sums=('SKIP'
          'bb223073eac39f0ccf9cb8b57fe8d685')
 
 pkgver() {
-	cd "${_pkgname}"
-	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+        cd "${srcdir}/${_pkgname}"
+        git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
-
 
 build() {
 	export GOPATH="${srcdir}"
@@ -35,7 +35,7 @@ build() {
 	go run build.go setup
 	go run build.go build
 	# Build frontend assets
-	yarn install --pure-lockfile
+	yarn install --pure-lockfile --ignore-engines
 	npm run build
 }
 
@@ -44,8 +44,8 @@ package() {
 	cd "${srcdir}/${_pkgname}"
 	install -dm755 "${pkgdir}/var/lib/grafana"
 	install -dm755 "${pkgdir}/var/log/grafana"
-	install -Dsm755 bin/grafana-server "${pkgdir}/usr/bin/grafana-server"
-	install -Dsm755 bin/grafana-cli "${pkgdir}/usr/bin/grafana-cli"
+	install -Dsm755 bin/${_go_arch}/grafana-server "${pkgdir}/usr/bin/grafana-server"
+	install -Dsm755 bin/${_go_arch}/grafana-cli "${pkgdir}/usr/bin/grafana-cli"
 	install -Dm644 conf/sample.ini "${pkgdir}/etc/${_pkgname}/${_pkgname}.ini"
 	mkdir -p "${pkgdir}/usr/share/grafana"
 	cp -r * "${pkgdir}/usr/share/grafana/"
