@@ -3,7 +3,7 @@
 _pkgname=LightGBM
 pkgbase=lightgbm
 pkgname=("${pkgbase}" "python-${pkgbase}")
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="Distributed gradient boosting framework based on decision tree algorithms."
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('boost-libs' 'ocl-icd' 'openmpi')
 makedepends=('boost' 'cmake' 'opencl-headers' 'python-setuptools')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('9ae4953ddaaa00923bf1ed40eb63179c0d2c4fcf7d008ccf8c22e955e85418b9')
+sha256sums=('b7f8b1115d7aafd56bd860971355289a08ecb682b345c4a926a1ab61acd0351b')
 
 build() {
     cd "${_pkgname}-${pkgver}"
@@ -20,7 +20,6 @@ build() {
         -DCMAKE_C_FLAGS:STRING="${CFLAGS}" \
         -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS}" \
         -DCMAKE_EXE_LINKER_FLAGS:STRING="${LDFLAGS}" \
-        -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
         -DUSE_OPENMP=ON \
@@ -44,5 +43,6 @@ package_python-lightgbm() {
     # use library from /usr/lib instead of making a copy
     sed -i 's/..\/..\/lib\//\/usr\/lib\//' lightgbm/libpath.py
     python setup.py install --root="$pkgdir/" --optimize=1 --gpu --mpi --precompile
+    install -Dm644 ../LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
     rm "$pkgdir/usr/lib/python3.7/site-packages/lightgbm/lib_lightgbm.so"
 }
