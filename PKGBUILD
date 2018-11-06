@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=pkgcloud-git
-pkgver=r58.4f67f66
+pkgver=r62.3529b73
 pkgrel=1
 pkgdesc="Talk to the packagecloud API, in Go"
 arch=(x86_64)
@@ -33,6 +33,5 @@ build() {
 package() {
 	cd "${srcdir}/go/src/github.com/tonylambiris/pkgcloud"
 
-	install -Dm755 "bin/pkgcloud-push" "${pkgdir}/usr/bin/pkgcloud-push"
-	install -Dm755 "bin/pkgcloud-yank" "${pkgdir}/usr/bin/pkgcloud-yank"
+	install -Dm755 "bin/pkgcloud" "${pkgdir}/usr/bin/pkgcloud"
 }

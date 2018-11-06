@@ -1,6 +1,6 @@
 pkgbase = pkgcloud-git
 	pkgdesc = Talk to the packagecloud API, in Go
-	pkgver = r58.4f67f66
+	pkgver = r62.3529b73
 	pkgrel = 1
 	url = https://github.com/tonylambiris/pkgcloud
 	arch = x86_64
