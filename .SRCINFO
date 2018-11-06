@@ -1,17 +1,17 @@
 pkgbase = syncthing-bin
 	pkgdesc = Open Source Continuous Replication / Cluster Synchronization Thing: binary.
-	pkgver = 0.14.51
+	pkgver = 0.14.52
 	pkgrel = 1
 	url = http://syncthing.net/
 	install = syncthing.install
 	arch = any
 	license = MPLv2
-	provides = syncthing=0.14.51
+	provides = syncthing=0.14.52
 	conflicts = syncthing
 	source = syncthing.1
-	source = https://github.com/syncthing/syncthing/releases/download/v0.14.51/syncthing-linux-amd64-v0.14.51.tar.gz
+	source = https://github.com/syncthing/syncthing/releases/download/v0.14.52/syncthing-linux-amd64-v0.14.52.tar.gz
 	sha256sums = fb59747ca16d1b19e3cad1c147dcabea14a30a5e4177b90712e6bb837c107912
-	sha256sums = be18577ecf89aec781d977e6b447ca96ce220f7461444da17c02bfa95a80e2c6
+	sha256sums = ff978f74bfe26e65f837d2dd4c8bf31a5a7ee92ae48617b5df77c03f824b4e50
 
 pkgname = syncthing-bin
 
