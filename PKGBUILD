@@ -37,6 +37,7 @@ prepare() {
   sed -i '1s|/usr/bin/env python3\>|/usr/bin/env python2|g' CMakeScripts/cmake_consistency_check.py
   sed -i 's|"python" },|"python2" },|g' src/extension/implementation/script.cpp
   sed -i 's|"python"|"python2"|g' src/main.cpp
+  sed -i -e 's|GBool|bool|g' -e 's|gTrue|true|g' -e 's|gFalse|false|g' src/extension/internal/pdfinput/pdf-parser.{h,cpp}
 }
 
 build() {
@@ -52,6 +53,6 @@ build() {
 }
 
 package() {
-  cd "$_gitname/build"
+  cd "$_gitname"/build
   make DESTDIR="$pkgdir" install
 }
