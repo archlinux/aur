@@ -16,7 +16,7 @@ install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.deb::http://dl.google.com/linux/direct/${pkgname}_current_amd64.deb"
         "${pkgname}.service" 
         "crd")
-sha256sums=("ce8ea1d681be47dc68c3e7bf5463e7e1b0b1ba2050e0b2e197c7d8540fdd39f6"
+sha256sums=("e6ec5831a4ab09b7afee71a48627646828b4f2545988539a908d0d6108e87fb5"
             "e5da5ae89b5bc599f72f415d1523341b25357931b0de46159fce50ab83615a4b"
             "27dee2d383e6bd993fe0557d5c222fa80ab6d16d43775dedff6218713c7a1c06")
 
