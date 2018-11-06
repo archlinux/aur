@@ -1,10 +1,10 @@
-# Maintainer: Felix Höffken <fupduck at sacknagel dot com>
+# Maintainer: Felix Höffken <felix at ctrl.alt.coop>
 # Contributor: Juraj Fiala <doctorjellyface at riseup dot net
 _srcname=srp
 
 pkgname=(python-$_srcname python2-$_srcname)
 pkgbase=python-srp
-pkgver=1.0.9
+pkgver=1.0.14
 pkgrel=2
 pkgdesc='Python implementation of the Secure Remote Password protocol (SRP)'
 arch=('any')
@@ -12,7 +12,7 @@ url="https://github.com/cocagne/py$_srcname"
 license=('MIT')
 makedepends=('python' 'python2')
 source=("$url/archive/$pkgver.tar.gz")
-md5sums=('bfb8e254d11dd490c251950b0af9bb7b')
+sha256sums=('fc153f73a71546774234ada90128376087110db5ed99b0455e26231df307926d')
 
 prepare() {
   cd "$srcdir"
