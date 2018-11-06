@@ -1,6 +1,6 @@
 pkgbase = libretro-mess-git
 	pkgdesc = libretro implementation of MAME. (MESS Port)
-	pkgver = 61112.9f9e6b6c9b
+	pkgver = 62246.171c1e74c5
 	pkgrel = 1
 	url = https://github.com/libretro/mame
 	arch = i686
