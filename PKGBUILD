@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://www.palemoon.org/"
 license=('MPL' 'GPL' 'LGPL')
 depends=('gtk2' 'dbus-glib' 'libxt' 'alsa-lib')
-makedepends=('git' 'python2' 'autoconf2.13' 'unzip' 'zip' 'yasm' 'ffmpeg' 'libpulse' 'gcc54' 'gconf')
+makedepends=('git' 'python2' 'autoconf2.13' 'unzip' 'zip' 'yasm' 'ffmpeg' 'libpulse' 'gcc5' 'gconf')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libpulse: PulseAudio audio driver'
             'hunspell: spell checker and morphological analyzer'
