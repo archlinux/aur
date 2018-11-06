@@ -29,7 +29,7 @@ sha1sums=('SKIP'
           'f3b8b360bf4c8775f439ab189e445f455334cccf'
           '0b3ad0e7e28b6b28a611ea6cc4a12515532e1b78'
           '1ac32ed5b20d62d3709fc21c67371a9ec1ce199e'
-          '41f5995cc70970cea871d378f4842dcac43b9e95'
+          '77621e81533b1e169d19b653a5dc3d735d87252c'
           '31025906f087af36e7af5d50220c4a63acadc754')
 
 pkgver() {

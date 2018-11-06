@@ -69,13 +69,13 @@ index 00000000..c3442c42
 +source "$LIBRARY/util/message.sh"
 +
 +
-+declare -a buildenv_functions
++declare -a buildenv_functions build_options
 +
 +for lib in "$LIBRARY/buildenv/"*.sh; do
 +	source "$lib"
 +done
 +
-+readonly -a buildenv_functions
++readonly -a buildenv_functions build_options
 +
 +prepare_buildenv() {
 +	msg "$(gettext "Preparing build environment...")"
