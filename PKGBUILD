@@ -2,7 +2,7 @@
 # Contributor: regreddit <nik.martin@gmail.com>
 
 pkgname=mixxx_beta-git
-pkgver=release.2.1.5.r672.ge5d1aa8acb
+pkgver=r6614
 pkgrel=1
 pkgdesc="Digital DJ mixing software. 2.2 (beta) branch, with qt5 GUI."
 arch=('i686' 'x86_64')
@@ -18,8 +18,10 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname%-*}"
-  echo "$(git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g')"
+#  echo "$(git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g')"
+   echo "r$(git log --pretty=oneline --first-parent | wc -l)"
 }
+
 
 build() {
   cd "$srcdir/${pkgname%-*}"
