@@ -1,7 +1,7 @@
 # Maintainer: David Stark <david@starkers.org>
 
 pkgver=0.93
-pkgrel=32
+pkgrel=33
 pkgname=telepresence
 pkgdesc="Local development against a remote Kubernetes or OpenShift cluster - http://www.telepresence.io"
 arch=('any')
@@ -13,13 +13,14 @@ makedepends=(
 backup=()
 depends=(
     'conntrack-tools'
+    'fuse2'
     'socat'
     'sshfs'
     'torsocks'
 )
 
 source=("https://github.com/datawire/telepresence/archive/${pkgver}.tar.gz")
-md5sums=('2fd2e8fd6236985eccc25aa319306474')
+md5sums=('c137d232e206d8c2f67105d5bfafef99')
 
 package(){
   cd ${srcdir}/${pkgname}-${pkgver}
