@@ -167,7 +167,7 @@ index 00000000..38399269
 +build_options+=('ccache' 'distcc')
 +buildenv_functions+=('buildenv_ccache' 'buildenv_distcc')
 +
-+local using_ccache=0
++using_ccache=0
 +
 +buildenv_ccache() {
 +	if check_buildoption "ccache" "y"; then
