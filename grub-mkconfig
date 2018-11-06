@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-[[ -v SNAP_PAC_SKIP ]] && { printf "==> skipping due to SNAP_PAC_SKIP being set"; exit 0; }
-
-/usr/bin/grub-mkconfig -o /boot/grub/grub.cfg
