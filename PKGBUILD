@@ -1,0 +1,26 @@
+#Maintainer Sakuraba Amane <tobiichiamane@archlinuxcn.org>
+pkgname=plasma5-applets-kde-githubissues-git
+pkgver=1.0beta
+pkgrel=1
+pkgdesc="A plasma widget that shows a list of recent github issues for a specific repo"
+url="https://github.com/Zren/plasma-applet-githubissues"
+arch=('x86_64')
+license=('GPL')
+depends=("plasma-desktop" "plasma-framework")
+makedepends=("git")
+conflicts=()
+replaces=()
+backup=()
+install="plasma5-applets-kde-githubissues.install"
+source=("git+https://github.com/Zren/plasma-applet-githubissues.git")
+md5sums=("SKIP")
+
+pkgver() {
+	cd "plasma-applet-githubissues" || exit 1
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+    mkdir -p "$pkgdir/usr/share/plasma/plasmoids"
+	cp -r "$srcdir/plasma-applet-githubissues/package" "$pkgdir/usr/share/plasma/plasmoids/org.kde.plasma.githubissues"
+}
