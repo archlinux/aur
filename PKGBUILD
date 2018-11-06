@@ -12,7 +12,6 @@ license=('GPL3')
 depends=('btrfs-progs' 'grub')
 optdepends=('snapper: Snapper support')
 conflicts=('grub-btrfs-git')
-install='grub-btrfs.install'
 backup=('etc/grub.d/41_snapshots-btrfs_config')
 source=("https://github.com/Antynea/grub-btrfs/archive/v$pkgver.tar.gz")
 sha256sums=('96ba59bc1cd46efe3c4e4352dabb61702a37699b2228cacdc8dccedebbfe0331')
