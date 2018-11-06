@@ -1,13 +1,13 @@
 # Maintainer: Ainola
 
 pkgname=python-image-git
-pkgver=r159.3e91ddf
-pkgrel=2
+pkgver=r162.bf98fbc
+pkgrel=1
 pkgdesc="Django application that provides editing for images and videos."
 arch=('any')
 url="https://github.com/francescortiz/image"
 license=('BSD')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'git')
 depends=('python' 'python-pillow' 'python-requests' 'python-django')
 provides=('python-image')
 conflicts=('python-image')
