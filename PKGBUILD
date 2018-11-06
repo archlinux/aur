@@ -6,7 +6,7 @@
 pkgname=ngircd-pam
 pkgver=24
 pkgrel=2
-pkgdesc="Next Generation IRC Daemon"
+pkgdesc="Next Generation IRC Daemon compiled with PAM support"
 arch=('x86_64')
 backup=(etc/ngircd.conf)
 url="http://ngircd.barton.de/"
