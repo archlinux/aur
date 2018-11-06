@@ -16,8 +16,8 @@ pkgbase = doorpi
 	optdepends = python-raspberry-gpio: Use GPIO header as event sources / actors
 	options = !strip
 	backup = etc/doorpi/doorpi.ini
-	source = doorpi::git+file:///home/wuestengecko/Programme/devspace/doorpi
-	source = doorpiweb::git+file:///home/wuestengecko/Programme/devspace/doorpiweb
+	source = doorpi::git+https://github.com/Wuestengecko/DoorPi.git#tag=v3.0beta1
+	source = doorpiweb::git+https://github.com/Wuestengecko/DoorPiWeb.git#tag=v3.0beta1
 	source = doorpi.ini
 	source = 0001-disable-gpio-group.diff
 	md5sums = SKIP
