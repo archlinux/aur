@@ -11,6 +11,7 @@ depends=('openal' 'opus')
 makedepends=('git' 'go')
 options=('!strip' '!emptydirs')
 _gourl=layeh.com/barnard
+md5sums=('SKIP')
                                                                                                                                                                 
 build() {
   GOPATH="$srcdir" go get -fix -v -x -u ${_gourl}
