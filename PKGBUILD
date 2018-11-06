@@ -2,7 +2,7 @@
 
 pkgname_=graalpython
 pkgname=${pkgname_}-bin
-pkgver_=1.0.0-rc8
+pkgver_=1.0.0-rc9
 pkgver=${pkgver_/-/_}
 pkgrel=2
 pkgdesc='Graal based, high-performance implementation of the Python language (early development)'
@@ -15,7 +15,7 @@ optdepends=()
 provides=("$pkgname_")
 conflicts=("$pkgname_")
 source=("https://github.com/graalvm/$pkgname_/releases/download/vm-${pkgver_}/python-installable-ce-${pkgver_}-linux-amd64.jar")
-sha256sums=('9e879a10fe2cc8de1b10e9c41148655d72b2efd862a78d0361c6d257257531d0')
+sha256sums=('a360d8cf09c71e3c4d9d696c0abe6843335885412a684f9725f6b936d90b94e1')
 
 package() {
     local file eq permissions mode name target
