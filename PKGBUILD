@@ -4,7 +4,7 @@ pkgver() {
 	cd "$srcdir/${pkgname%-VCS}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgrel=1
+pkgrel=2
 pkgdesc="DNS server"
 arch=(x86_64)
 url="https://github.com/taraszka/sheerdns-ng"
@@ -22,4 +22,5 @@ build() {
 package() {
 	cd "$pkgname"
 	make DESTDIR="$pkgdir/" install
+	mv "$pkgdir/usr/sbin" "$pkgdir/usr/bin"
 }
