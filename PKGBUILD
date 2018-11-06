@@ -6,7 +6,7 @@
 
 pkgname=libvirt-git
 pkgver=4.9.0.9.g912b8a5970
-pkgrel=1
+pkgrel=2
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
@@ -106,8 +106,6 @@ build() {
   export RADVD=/usr/bin/radvd
   NOCONFIGURE=1 ./autogen.sh
   sed -i 's|libsystemd-daemon|libsystemd|g' configure
-  sed -i 's|aclocal-1.15|aclocal-1.16|g' daemon/Makefile
-  sed -i 's|automake-1.15|automake-1.16|g' daemon/Makefile
   
   [ -f Makefile ] || ./configure --prefix=/usr --libexec=/usr/lib/"${pkgname/-git/}" --sbindir=/usr/bin \
 	--with-storage-lvm --with-udev --without-hal --disable-static \
