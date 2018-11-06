@@ -1,12 +1,12 @@
 pkgbase = origamiapp
 	pkgdesc = Origami Application (OpenCV Wrapper in Clojure)
-	pkgver = 1.0.2
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/hellonico/origami-electron
 	arch = x86_64
 	license = EPL
-	source = https://github.com/hellonico/origami-electron/releases/download/1.0/origamiapp-linux-x64.zip
-	md5sums = 2450923c9037252e2d60632df0b0f396
+	source = https://github.com/hellonico/origami-electron/releases/download/2.0/origamiapp-linux-x64.zip
+	md5sums = be96f548476200d407036dd3e4d559f5
 
 pkgname = origamiapp
 
