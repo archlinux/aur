@@ -1,6 +1,6 @@
 # Maintainer: Bjoern Franke <bjo@nord-west.org>
 pkgname=pywws
-pkgver=18.10.0
+pkgver=18.10.1
 pkgrel=1
 pkgdesc="Python software for USB Wireless WeatherStations"
 arch=('any')
@@ -9,11 +9,11 @@ license=('GPL')
 makedepends=('python2-pip')
 depends=('python2-tzlocal')
 options=(!emptydirs)
-#backup=('etc/mpdlcd.conf')
 source=(https://pypi.io/packages/source/p/$pkgname/$pkgname-$pkgver.tar.gz
 'service')
-md5sums=('f9f9fd5f413ec6afc5757c8c271e5806'
+md5sums=('fb0ed23fa8714b400b1b659d7a031224'
          '7eda2524060c6fc0d4dcf3e10be9b7ee')
+
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
