@@ -1,12 +1,13 @@
 # Package build for homegear (https://www.homegear.eu/index.php/Main_Page)
-# Maintainer: Niklas <dev@n1klas.net>
+# Maintainer: Henning <me@hensur.de>
+# Contributor: Niklas <dev@n1klas.net>
 # Contributor: Michael Lipp <mnl at mnl dot de>
 
 pkgname='homegear'
 _gitname='Homegear'
 pkgdesc='Interface your HomeMatic BidCoS, HomeMatic Wired, MAX!, INSTEON or Philips hue devices with your home automation software or your own control scripts'
 pkgver=0.7.30
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 license=('LGPL3')
 url="https://homegear.eu"
@@ -31,7 +32,7 @@ sha512sums=('8f8065b05863b2c6e634cfadb982efe5f2281c616f47c1a0794642de9cec8d49dec
             'aed267cb77c6a23a563152a17781cbe12fe14b68ed3d77dc75145c6422c3818f0d3550b5d20609d06e0bf937f24627806c0bfb3201fd27da0b420f6fbd4ebc66'
             '23fb3b1a49f7b3433bd71ca262545aa31d67e7ae88801b41a7c1e306be926a06b7b29389cc63f3342cf8f5e55f908dc0847be6ba7d6b2657018240883a658ce0'
             'b603487c3273c3e7abd9a4ad28ace16d309ef59750ea29737f5d93bbd607cfe322c6f79f68a555ed6fee7370d319ac9be3ff284794caad3be1ebb24f5b792647'
-            '4dbe1a9999ba8331f9f8debd7e7d761e4f6d08538c8f9cfc1cb7d22b450313156e49a977710ff1e18e7b322d70ed1280da1d5f18da2033d33e871a0b3a701ed8'
+            '2681aa09982b621161c5d082064d4188dc97b738ffd8fa24e615bf22b338902d45c06d229ea480df80cc48878294d24325552a959d72649a1a4bd1adadb8ba41'
             '5b25817cbbf5a5fb1d7c8414d36441de18cef3c43693329facb84b4312fd83c92bfcf6100937f3e5c9a7329e4ba80de1418cc0b9374c46d14255a612e8617498')
 install='homegear.install'
 backup=('etc/homegear/main.conf'
@@ -80,12 +81,16 @@ package() {
     install -dm750 "${pkgdir}/var/lib/homegear"
     install -dm755 "${pkgdir}/var/log/homegear"
 
-    cp -r "misc/State Directory/"* "${pkgdir}/var/lib/homegear"
-    find "${pkgdir}/var/lib/homegear/www" -type d -exec chmod 550 {} \;
-    find "${pkgdir}/var/lib/homegear/www" -type f -exec chmod 440 {} \;
-    install -dm750 "${pkgdir}/var/lib/homegear/flows/data"
+    cp -r "misc/State Directory/"{node-blue,www} "${pkgdir}/usr/lib/homegear"
+    cp -r "misc/State Directory/scripts" "${pkgdir}/var/lib/homegear"
+    find "${pkgdir}/usr/lib/homegear/www" -type d -exec chmod 755 {} \;
+    find "${pkgdir}/usr/lib/homegear/node-blue" -type d -exec chmod 755 {} \;
+    find "${pkgdir}/usr/lib/homegear/www" -type f -exec chmod 644 {} \;
+    find "${pkgdir}/usr/lib/homegear/node-blue" -type f -exec chmod 644 {} \;
+    install -dm750 "${pkgdir}/var/lib/homegear/node-blue/data"
     install -dm750 "${pkgdir}/var/lib/homegear/phpinclude"
-    install -dm550 "${pkgdir}/var/lib/homegear/scripts"
+    install -dm750 "${pkgdir}/var/lib/homegear/scripts"
+    install -dm750 "${pkgdir}/var/lib/homegear/tmp"
     install -dm750 "${pkgdir}/var/lib/homegear/firmware"
 
     install -dm755 "${pkgdir}"/etc/homegear/devices/254

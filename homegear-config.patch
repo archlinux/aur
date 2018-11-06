@@ -1,5 +1,5 @@
 diff --git a/misc/Config Directory/main.conf b/misc/Config Directory/main.conf
-index a5df031..b9baf7f 100644
+index a5df031..9ae319e 100644
 --- a/misc/Config Directory/main.conf	
 +++ b/misc/Config Directory/main.conf	
 @@ -2,10 +2,10 @@
@@ -24,24 +24,28 @@ index a5df031..b9baf7f 100644
  
  # If dataPath is empty, the executable path is used.
  # Default: dataPath =
-@@ -165,7 +165,7 @@ enableNodeBlue = true
+@@ -164,17 +164,17 @@ scriptPath = /var/lib/homegear/scripts
+ enableNodeBlue = true
  
  # Path where Node-BLUE is located.
- # Default: nodeBluePath = /var/lib/homegear/node-blue
+-# Default: nodeBluePath = /var/lib/homegear/node-blue
 -nodeBluePath = /var/lib/homegear/node-blue
++# Default: nodeBluePath = /usr/lib/homegear/node-blue
 +nodeBluePath = /usr/lib/homegear/node-blue
  
  # Default: nodeBluePathPermissions = 770
  # nodeBluePathPermissions = 770
-@@ -178,7 +178,7 @@ nodeBluePath = /var/lib/homegear/node-blue
+ 
+ # Default: nodeBluePathUser =
+-# nodeBluePathUser = homegear
++nodeBluePathUser = homegear
+ 
+ # Default: nodeBluePathGroup =
+-# nodeBluePathGroup = homegear
++nodeBluePathGroup = homegear
  
  # Path where flow data is stored.
  # Default: nodeBlueDataPath = /var/lib/homegear/node-blue/data
--nodeBlueDataPath = /var/lib/homegear/node-blue/data
-+nodeBlueDataPath = /usr/lib/homegear/node-blue/data
- 
- # Default: nodeBlueDataPathPermissions = 770
- # nodeBlueDataPathPermissions = 770
 @@ -194,8 +194,8 @@ nodeBlueDataPath = /var/lib/homegear/node-blue/data
  nodeBlueDebugOutput = true
  
@@ -64,24 +68,24 @@ index a5df031..b9baf7f 100644
  
  # Default: uiPathPermissions = 770
  # uiPathPermissions = 770
-@@ -221,21 +221,21 @@ uiPath = /var/lib/homegear/ui
+@@ -220,12 +220,12 @@ uiPath = /var/lib/homegear/ui
+ # uiPathGroup = homegear
  
  # Path to the family modules.
- # Default: modulePath = /var/lib/homegear/modules
+-# Default: modulePath = /var/lib/homegear/modules
 -modulePath = /var/lib/homegear/modules
++# Default: modulePath = /usr/lib/homegear/modules
 +modulePath = /usr/lib/homegear/modules
  
  # Path to the directory with firmware updates
- # Default: firmwarePath = /usr/share/homegear/firmware
+-# Default: firmwarePath = /usr/share/homegear/firmware
 -firmwarePath = /usr/share/homegear/firmware
++# Default: firmwarePath = /var/lib/homegear/firmware
 +firmwarePath = /var/lib/homegear/firmware
  
  # Path to a directory where Homegear can store temporary data
  # Default: tempPath = /var/lib/homegear/tmp
--tempPath = /var/lib/homegear/tmp
-+tempPath = /tmp/homegear
- 
- # If lockFilePath is empty, the executable path is used. If unset, "/var/lock" is used.
+@@ -235,7 +235,7 @@ tempPath = /var/lib/homegear/tmp
  # Default: lockFilePath = /var/lock
  # /var/run/ is not the correct path for lock files. But as /var/lock is not user-writeable
  # on some systems, we decided to move the lock files to /var/run/homegear.
@@ -90,3 +94,95 @@ index a5df031..b9baf7f 100644
  
  # If unset permissions are not set on start of Homegear.
  # Default: lockFilePathPermissions = 770
+diff --git a/misc/Config Directory/rpcservers.conf b/misc/Config Directory/rpcservers.conf
+index 833770c..c7c9e7b 100644
+--- a/misc/Config Directory/rpcservers.conf	
++++ b/misc/Config Directory/rpcservers.conf	
+@@ -24,17 +24,17 @@ webServer = true
+ restServer = true
+ 
+ # Path to static web content used by the web server
+-# Default: /var/lib/homegear/www
+-contentPath = /var/lib/homegear/www/rpc
++# Default: /usr/lib/homegear/www/rpc
++contentPath = /usr/lib/homegear/www/rpc
+ 
+ # Default: contentPathPermissions = 550
+ # contentPathPermissions = 550
+ 
+ # Default: contentPathUser =
+-# contentPathUser = homegear
++contentPathUser = homegear
+ 
+ # Default: contentPathGroup =
+-# contentPathGroup = homegear
++contentPathGroup = homegear
+ 
+ # Enable Homegear's build-in WebSocket server on this port
+ # WARNING: Enabling Websockets without authentication is a high security risk!
+@@ -95,17 +95,17 @@ webServer = true
+ restServer = true
+ 
+ # Path to static web content used by the web server
+-# Default: /var/lib/homegear/www
+-contentPath = /var/lib/homegear/www/rpc
++# Default: /usr/lib/homegear/www/rpc
++contentPath = /usr/lib/homegear/www/rpc
+ 
+ # Default: contentPathPermissions = 550
+ # contentPathPermissions = 550
+ 
+ # Default: contentPathUser = 
+-# contentPathUser = homegear
++contentPathUser = homegear
+ 
+ # Default: contentPathGroup = 
+-# contentPathGroup = homegear
++contentPathGroup = homegear
+ 
+ # Enable Homegear's build-in WebSocket server on this port
+ # WARNING: Enabling Websockets without authentication is a high security risk!
+@@ -178,17 +178,17 @@ webServer = true
+ restServer = true
+ 
+ # Path to static web content used by the web server
+-# Default: /var/lib/homegear/www
+-contentPath = /var/lib/homegear/www/rpc
++# Default: /usr/lib/homegear/www
++contentPath = /usr/lib/homegear/www/rpc
+ 
+ # Default: contentPathPermissions = 550
+ # contentPathPermissions = 550
+ 
+ # Default: contentPathUser = 
+-# contentPathUser = homegear
++contentPathUser = homegear
+ 
+ # Default: contentPathGroup = 
+-# contentPathGroup = homegear
++contentPathGroup = homegear
+ 
+ # Enable Homegear's build-in WebSocket server on this port
+ # Default: false
+@@ -256,8 +256,8 @@ validGroups = 1
+ #restServer = true
+ 
+ # Path to static web content used by the web server
+-# Default: /var/lib/homegear/www
+-#contentPath = /var/lib/homegear/www
++# Default: /usr/lib/homegear/www
++# contentPath = /usr/lib/homegear/www
+ 
+ # Default: contentPathPermissions = 550
+ # contentPathPermissions = 550
+@@ -326,8 +326,8 @@ cacheAssets = 2592000
+ #restServer = true
+ 
+ # Path to static web content used by the web server
+-# Default: /var/lib/homegear/www
+-#contentPath = /var/lib/homegear/www
++# Default: /usr/lib/homegear/www
++#contentPath = /usr/lib/homegear/www
+ 
+ # Default: contentPathPermissions = 550
+ # contentPathPermissions = 550
