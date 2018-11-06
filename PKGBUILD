@@ -2,12 +2,15 @@
 
 pkgname=ttf-material-wifi-icons-git
 pkgver=r22.d56927c
-pkgrel=2
+pkgrel=3
 arch=('any')
 url='https://github.com/dcousens/material-wifi-icons'
 pkgdesc='WiFi icons inspired by Material Icons'
 license=('Apache')
-source=('git://github.com/dcousens/material-wifi-icons.git')
+provides=('ttf-material-wifi-icons')
+conflicts=('ttf-material-wifi-icons')
+makedepends=('git')
+source=('git+https://github.com/dcousens/material-wifi-icons.git')
 sha256sums=('SKIP')
 
 pkgver() {
