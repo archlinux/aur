@@ -1,15 +1,15 @@
 # Maintainer: Josef Erben <firstname at lastname dot io>
 
 pkgname=memb
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="A tool to manage a local text-based knowledge base"
 url="https://github.com/jerben/memb"
 arch=('any')
 license=('MIT')
-depends=('grep')
+depends=('grep' 'sed')
 source=("https://github.com/jerben/memb/archive/$pkgver.tar.gz")
-sha256sums=('e849d1889e4002611547f3a2fed60caead8f70a9ae8677f03610585088c3686c')
+sha256sums=('d266cc918fd4e7246d2f96706a42dfce2ea7e58c697625e229af295921b8b4a7')
 
 package() {
   cd "${pkgname}-${pkgver}"
