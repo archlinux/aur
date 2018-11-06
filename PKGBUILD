@@ -1,16 +1,16 @@
 # Maintainer: Nicolas Modrzyk <hellonico at gmail dot com>
 
 pkgname=origamiapp
-pkgver=1.0.2
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Origami Application (OpenCV Wrapper in Clojure)"
 arch=('x86_64')
 url="https://github.com/hellonico/origami-electron"
 license=('EPL')
  
-source=("https://github.com/hellonico/origami-electron/releases/download/1.0/origamiapp-linux-x64.zip")
+source=("https://github.com/hellonico/origami-electron/releases/download/2.0/origamiapp-linux-x64.zip")
 #noextract=("${source[@]%%::*}")
-md5sums=('2450923c9037252e2d60632df0b0f396')
+md5sums=('be96f548476200d407036dd3e4d559f5')
 
 package() {
         mkdir -p "$pkgdir"/usr/share/origamiapp
