@@ -1,0 +1,16 @@
+[Unit]
+Description=xscreensaver with OOM killer protection
+Documentation=man:xscreensaver man:xscreensaver-command man:xscreensaver-demo
+
+[Service]
+Type=simple
+ExecStartPre=/usr/bin/xscreensaver-command -exit
+ExecStart=/usr/bin/xscreensaver -nosplash -no-capture-stderr
+ExecStartPost=/usr/bin/xscreensaver-oom-protect $MAINPID
+ExecReload=/usr/bin/xscreensaver-command -restart
+ExecStop=/usr/bin/xscreensaver-command -exit
+Restart=always
+
+[Install]
+WantedBy=default.target
+Alias=screensaver.service

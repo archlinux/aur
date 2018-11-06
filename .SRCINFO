@@ -1,0 +1,16 @@
+pkgbase = xscreensaver-oom-protect
+	pkgdesc = Protect xscreensaver from the out-of-memory killer
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = x86_64
+	license = custom:WTFPL
+	depends = xscreensaver
+	source = xscreensaver-oom-protect.c
+	source = LICENSE
+	source = xscreensaver.service
+	md5sums = 43175fd1d4dc75bf02311b1cc6de467e
+	md5sums = 8365d07beeb5f39d87e846dca3ae7b64
+	md5sums = bb945c067ae57367ddc6f041fd33dfa4
+
+pkgname = xscreensaver-oom-protect
+
