@@ -5,8 +5,8 @@
 
 pkgname=firefox-appmenu
 _pkgname=firefox
-pkgver=63.0
-pkgrel=2
+pkgver=63.0.1
+pkgrel=1
 pkgdesc="Firefox from extra with appmenu patch"
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -26,10 +26,12 @@ options=(!emptydirs !makeflags !strip)
 _repo=https://hg.mozilla.org/mozilla-unified
 source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
         $_pkgname.desktop firefox-symbolic.svg
+        0001-Keep-mozilla-release-building-with-newer-cbindgen-ve.patch
         unity-menubar.patch)
 sha256sums=('SKIP'
             '2adca824b52ab5bc6e7e4fa486c1ecb47d283832bd4b75d10494b033f1cab911'
             '9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797'
+            'a1e523f830f28217e050991062358c91be254e21732a6391449a8c0e3e0de77f'
             '722324ef522f3e2452f49924e47a2e8a3a547e18aef32d7c1252113eb839451f')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -48,7 +50,10 @@ prepare() {
   mkdir mozbuild
   cd mozilla-unified
 
-    # actual appmenu patch from ubuntu repos
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1503401
+  patch -Np1 -i ../0001-Keep-mozilla-release-building-with-newer-cbindgen-ve.patch
+
+  # actual appmenu patch from ubuntu repos
   patch -Np1 -i ../unity-menubar.patch
 
   echo -n "$_google_api_key" >google-api-key
