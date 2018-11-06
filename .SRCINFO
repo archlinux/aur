@@ -1,0 +1,14 @@
+pkgbase = otf-permian
+	pkgdesc = Permian cyrillic font made for the city of Perm
+	pkgver = 1.000
+	pkgrel = 1
+	url = http://permian.design.ru/
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://permian.design.ru//permian.zip
+	sha256sums = 64f86350b8d72f33bedd7508dea9e2cf735dbcaf630cbb9328dd230f9c71aa5b
+
+pkgname = otf-permian
+
