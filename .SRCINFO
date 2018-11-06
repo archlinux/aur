@@ -1,6 +1,6 @@
 pkgbase = discord-canary
 	pkgdesc = All-in-one voice and text chat for gamers that's free and secure.
-	pkgver = 0.0.58
+	pkgver = 0.0.59
 	pkgrel = 1
 	url = https://discordapp.com/
 	install = DiscordCanary.install
@@ -23,9 +23,9 @@ pkgbase = discord-canary
 	optdepends = noto-fonts-cjk: Font for special characters such as /shrug face.
 	provides = discord
 	source = LICENSE
-	source = https://dl-canary.discordapp.net/apps/linux/0.0.58/discord-canary-0.0.58.tar.gz
+	source = https://dl-canary.discordapp.net/apps/linux/0.0.59/discord-canary-0.0.59.tar.gz
 	md5sums = 26b3229c74488c64d94798e48bc49fcd
-	md5sums = 94fa5e8bc4a0bfd5b125f3515ee7d85b
+	md5sums = 489c7e81a1cb3a60c003c78b42f00c3b
 
 pkgname = discord-canary
 
