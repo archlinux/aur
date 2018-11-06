@@ -1,7 +1,7 @@
 # Maintainer: Johannes Wienke <languitar@semipol.de>
 
 pkgname=drawio-desktop-bin
-pkgver=8.8.0
+pkgver=9.3.1
 pkgrel=1
 pkgdesc="Diagram drawing application built on web technology"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('drawio-desktop')
 optdepends=()
 makedepends=()
 source=("${pkgname}-${pkgver}.deb::https://github.com/jgraph/drawio-desktop/releases/download/v${pkgver}/draw.io-amd64-${pkgver}.deb")
-sha256sums=('07a136019ba449c906142eeeedb402199002d52a78e2f62f7b27f80fc56b847e')
+sha256sums=('2ae0692bb7af330a318308187b29efc5100bbee28f60d72b5440481c6513dda7')
 
 prepare() {
     cd "${srcdir}"
