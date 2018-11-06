@@ -1,6 +1,6 @@
 pkgbase = networkmanager-libreswan-git
 	pkgdesc = NetworkManager IPSec VPN plugin for Libreswan
-	pkgver = 1.2.11.dev.r6.g11acd1b
+	pkgver = 1.2.11.dev.r8.g0f33eb1
 	pkgrel = 1
 	url = http://wiki.gnome.org/Projects/NetworkManager/VPN
 	arch = i686
