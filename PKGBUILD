@@ -114,8 +114,6 @@ build() {
 	--with-init-script=systemd \
 	--with-qemu-user=nobody --with-qemu-group=nobody \
 	--with-netcf --with-interface
-	# --with-numad
-	# --with-audit
   make
 }
 
