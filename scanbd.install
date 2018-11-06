@@ -1,4 +1,0 @@
-post_install() {
-    echo "Read the Arch Linux Wiki on how to set up and run scanbd:"
-    echo "https://wiki.archlinux.org/index.php/Scanner_Button_Daemon"
-}
