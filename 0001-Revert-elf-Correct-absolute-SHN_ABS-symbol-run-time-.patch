@@ -1,4 +1,4 @@
-From 098e7db144012cbd19d359df3847461dc0c58514 Mon Sep 17 00:00:00 2001
+From e4d9bb4a08f3ad518f0f54163f3043ca72c593e3 Mon Sep 17 00:00:00 2001
 From: Eli Schwartz <eschwartz@archlinux.org>
 Date: Fri, 28 Sep 2018 05:19:46 +0000
 Subject: [PATCH] Revert "elf: Correct absolute (SHN_ABS) symbol run-time
@@ -18,7 +18,7 @@ This reverts commit e7feec374c635b6a29d65c39ae5e1855528fed39.
  delete mode 100644 elf/tst-absolute-sym.c
 
 diff --git a/elf/Makefile b/elf/Makefile
-index 455ec730fc..4560718fe2 100644
+index d72e7b67f6..91fd26973d 100644
 --- a/elf/Makefile
 +++ b/elf/Makefile
 @@ -186,7 +186,7 @@ tests += restest1 preloadtest loadfail multiload origtest resolvfail \
@@ -27,7 +27,7 @@ index 455ec730fc..4560718fe2 100644
  	 tst-latepthread tst-tls-manydynamic tst-nodelete-dlclose \
 -	 tst-debug1 tst-main1 tst-absolute-sym tst-absolute-zero tst-big-note \
 +	 tst-debug1 tst-main1 tst-absolute-zero tst-big-note \
- 	 tst-unwind-ctor
+ 	 tst-unwind-ctor tst-unwind-main
  #	 reldep9
  tests-internal += loadtest unload unload2 circleload1 \
 @@ -273,7 +273,7 @@ modules-names = testobj1 testobj2 testobj3 testobj4 testobj5 testobj6 \
@@ -174,5 +174,5 @@ index 95dc87519b..3cac4fa362 100644
  /* On some architectures a pointer to a function is not just a pointer
     to the actual code of the function but rather an architecture
 -- 
-2.19.0
+2.19.1
 
