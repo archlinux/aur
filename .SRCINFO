@@ -1,6 +1,6 @@
 pkgbase = electronic-wechat
 	pkgdesc = A better WeChat client
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/kooritea/electronic-wechat
 	arch = x86_64
@@ -14,13 +14,11 @@ pkgbase = electronic-wechat
 	depends = nodejs
 	depends = hicolor-icon-theme
 	optdepends = libappindicator-gtk3: fix broken tray icon in KDE
-	source = electronic-wechat-2.2.0.tar.gz::https://github.com/kooritea/electronic-wechat/archive/v2.2.0.tar.gz
+	source = electronic-wechat-2.2.1.tar.gz::https://github.com/kooritea/electronic-wechat/archive/v2.2.1.tar.gz
 	source = electronic-wechat.desktop
-	source = remove-bundle-electron.patch
 	source = electronic-wechat.sh
-	sha256sums = 950133a7afc313c09d06a8a70dae2d48d48f69ab18d382bff57c6d3e4981885e
+	sha256sums = f78ca4e94753f09a243a20e17fa4866fd565b9a671d43f565797f10bf15e91b5
 	sha256sums = 56c0db46c3b9fc31ac16265d0346ef47a6422392607bcce954e0f550894475be
-	sha256sums = 8a4a6a109f6881798c291ffa11fcd76ac482ccf5b01f0566c16b007dda0b9fac
 	sha256sums = 10696031537d5d749b1d8914829057d73aaccb788263b4df8bc5ff7ed7939bff
 
 pkgname = electronic-wechat
