@@ -3,7 +3,7 @@
 
 pkgname=makepkg-optimize
 pkgver=4
-pkgrel=2
+pkgrel=3
 pkgdesc='Supplemental build and packaging optimizations for makepkg'
 arch=('any')
 license=('GPL')
@@ -18,12 +18,16 @@ _executable=({upx,optipng,svgo}-exec.sh.in)
 _tidy=({upx,optipng,svgo}.sh.in)
 _conf=({{c,cxx,make,ld,debug-make,cmake-}flags,{buildenv,destdirs,pkgopts{,-param}}_ext,compress-param_max}.conf)
 source=(${_buildenv[@]}
+        ${_executable[@]}
         ${_tidy[@]}
         ${_conf[@]}
         )
 sha1sums=('da515153d456ed53f6744c3ce4e6dd9a9ea3b892'
           '2c993f086adc635e15313b45008cfe6d56c79cdc'
           '6b719a47146aedae186a7e63b6058507c4948d9f'
+          'a079a302708342cc0549f56e2b5e17f483fbbbd1'
+          '62bebfa9c71aea4107598d065e91e1ab8b6c43bc'
+          '9c27d5cef8a12385b385b64e65fce39244e1be4b'
           'd6c364bac3be28a39ba9d902e8492acd35fbee13'
           '1a815037390c67195ed831b7887884a42785010a'
           'cff1d2b6e81226de7ece5369005c392fa8083bf2'
