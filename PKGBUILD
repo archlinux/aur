@@ -1,25 +1,25 @@
-# Maintainer: Thanh Ha <zxiiro@linux.com>
+# Maintainer: Kuan-Yen Chou <kuanyenchou@gmail.com>
 
 pkgname=opendaylight
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
-pkgdesc="OpenDaylight is leading the transformation to Open SDN."
+pkgdesc='A modular open platform for customizing and automating networks of any size and scale.'
 arch=('x86_64')
-url="https://www.opendaylight.org/"
+url='https://www.opendaylight.org/'
 license=('EPL')
-depends=('jre8-openjdk')
+depends=('jdk8-openjdk' 'maven')
 makedepends=()
 provides=()
 conflicts=()
 options=()
-install=${pkgname}.install
-source=(https://nexus.opendaylight.org/content/repositories/public/org/opendaylight/integration/karaf/${pkgver//_/-}/karaf-${pkgver//_/-}.tar.gz)
-sha256sums=('ae4d61e6ac2a4ebd24eae3adb1509190476970eb9defb83eea3a3c5401d2bc15')
+install=opendaylight.install
+source=(https://nexus.opendaylight.org/content/repositories/public/org/opendaylight/integration/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz)
+sha256sums=('103888d5e3d65995bd097f3890010ea28b054080cc06767e6a997fa65b85cb32')
 
 package() {
-  mkdir -p "$pkgdir"/opt
-  tar zxvf karaf-${pkgver//_/-}.tar.gz -C "$pkgdir"/opt/
-  mv "$pkgdir"/opt/karaf-${pkgver//_/-} "$pkgdir"/opt/opendaylight
+    cd "${srcdir}"
+    mkdir -p "${pkgdir}/opt"
+    mv "${pkgname}-${pkgver}" "${pkgdir}/opt/${pkgname}"
 }
 
 # vim: set ts=4 sw=4 et:

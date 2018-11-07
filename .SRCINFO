@@ -1,14 +1,15 @@
 pkgbase = opendaylight
-	pkgdesc = OpenDaylight is leading the transformation to Open SDN.
-	pkgver = 0.8.0
+	pkgdesc = A modular open platform for customizing and automating networks of any size and scale.
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://www.opendaylight.org/
 	install = opendaylight.install
 	arch = x86_64
 	license = EPL
-	depends = jre8-openjdk
-	source = https://nexus.opendaylight.org/content/repositories/public/org/opendaylight/integration/karaf/0.8.0/karaf-0.8.0.tar.gz
-	sha256sums = ae4d61e6ac2a4ebd24eae3adb1509190476970eb9defb83eea3a3c5401d2bc15
+	depends = jdk8-openjdk
+	depends = maven
+	source = https://nexus.opendaylight.org/content/repositories/public/org/opendaylight/integration/opendaylight/0.9.0/opendaylight-0.9.0.tar.gz
+	sha256sums = 103888d5e3d65995bd097f3890010ea28b054080cc06767e6a997fa65b85cb32
 
 pkgname = opendaylight
 
