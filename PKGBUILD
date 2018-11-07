@@ -2,29 +2,20 @@
 
 _pkgname=nwchem
 pkgname=${_pkgname}-bin
-pkgver=6.6.r27746.4
-_pkgver=6.6+r27746-4
-pkgrel=3
+_pkgver=6.8+47+gitdf6c956-3+b1
+_pkgver_tmp="${_pkgver//\+/\.}"
+pkgver="${_pkgver_tmp//-/\.}"
+pkgrel=1
 pkgdesc="Open Source High-Performance Computational Chemistry (Debian binary build)"
-arch=("i686" "x86_64")
+arch=("x86_64")
 url="http://www.nwchem-sw.org"
 license=("custom:ECL2.0" "GPL3")
-depends=("lapack" "python2" "openmpi" "nwchem-data" "libgfortran6")
+depends=("lapack" "python2" "openmpi" "nwchem-data" "libgfortran6" "scalapack")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=("!strip" "libtool" "staticlibs")
-case "${CARCH}" in
-  "i686")
-    _arch='i386'
-    _sha256sum='1969ed65c4d0600e07586f0e3524a7aface67e33a5ff215c3299bdbca5ad72af'
-    ;;
-  "x86_64")
-    _arch='amd64'
-    _sha256sum='e03f23084989af72123437e8cd408f4458a131bb67a081fa04f02ff42ede8d9a'
-    ;;
-esac
-source=("http://ftp.us.debian.org/debian/pool/main/n/nwchem/nwchem_${_pkgver}_${_arch}.deb")
-sha256sums=("${_sha256sum}")
+source=("http://ftp.us.debian.org/debian/pool/main/n/nwchem/nwchem_${_pkgver}_amd64.deb")
+sha256sums=('e3cb736233d5cdae96cd926ea3ed5ef8be7cc9397183a380d6ee75a4e2887341')
 
 package() {
   msg2 "Extracting the data.tar.xz..."
@@ -34,6 +25,7 @@ package() {
   install -Dm644 "${pkgdir}"/usr/share/doc/"${_pkgname}"/copyright "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 
   msg2 "Removing Debian extras..."
+  rm "${pkgdir}"/usr/share/doc/nwchem/changelog.*
+  rm "${pkgdir}"/usr/share/doc/nwchem/TODO.Debian
   rm -r "${pkgdir}"/usr/share/lintian
-  rm -r "${pkgdir}"/usr/share/doc-base
 }
