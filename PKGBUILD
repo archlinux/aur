@@ -3,7 +3,7 @@
 _pkgname=dispad
 pkgname=$_pkgname-git
 pkgver=r53.5b7528c
-pkgrel=1
+pkgrel=2
 pkgdesc='A small (user) daemon for disabling trackpads on keyboard input for XOrg.'
 license=('GPLv2')
 url='https://github.com/BlueDragonX/dispad'
@@ -13,10 +13,12 @@ makedepends=('automake' 'git')
 install=$_pkgname.install
 source=("$pkgname"::"git://github.com/BlueDragonX/dispad.git"
         "$_pkgname.service"
-        "$_pkgname.conf.example")
+        "$_pkgname.conf.example"
+        "user-applications.target")
 sha256sums=('SKIP'
-            '85ab4a6596aa520663c8a28920f8d7a03455b2f5c3f4831b755440e0de13336f'
-            '8c707e39a5a298a08babad2da4819dfa37d9895ef0131426e81f3608cfa77a88')
+            'd9ffac11d513617225a9f4c0defe61d64a7d930a35bd1666210853b204ddca19'
+            '8c707e39a5a298a08babad2da4819dfa37d9895ef0131426e81f3608cfa77a88'
+            '1a073eeac468fd499e3872db5a9c68e692e0a34a7ed66d3d00270fa155789431')
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -33,7 +35,8 @@ package() {
   cd "$srcdir/$pkgname"
   make DESTDIR="$pkgdir/" install
   install -Dm644 "../$_pkgname.service" "$pkgdir/usr/lib/systemd/user/$_pkgname.service"
-  install -Dm644 "../$_pkgname.conf.example" "$pkgdir/etc/dispad/$_pkgname.conf.example"
+  install -Dm644 "../$_pkgname.conf.example" "$pkgdir/usr/share/dispad/$_pkgname.conf.example"
+  install -Dm644 "../user-applications.target" "$pkgdir/usr/share/dispad/user-applications.target"
 }
 
 # vim: ts=2 sw=2 et:

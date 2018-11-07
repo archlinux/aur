@@ -1,7 +1,7 @@
 pkgbase = dispad-git
 	pkgdesc = A small (user) daemon for disabling trackpads on keyboard input for XOrg.
 	pkgver = r53.5b7528c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BlueDragonX/dispad
 	install = dispad.install
 	arch = any
@@ -14,9 +14,11 @@ pkgbase = dispad-git
 	source = dispad-git::git://github.com/BlueDragonX/dispad.git
 	source = dispad.service
 	source = dispad.conf.example
+	source = user-applications.target
 	sha256sums = SKIP
-	sha256sums = 85ab4a6596aa520663c8a28920f8d7a03455b2f5c3f4831b755440e0de13336f
+	sha256sums = d9ffac11d513617225a9f4c0defe61d64a7d930a35bd1666210853b204ddca19
 	sha256sums = 8c707e39a5a298a08babad2da4819dfa37d9895ef0131426e81f3608cfa77a88
+	sha256sums = 1a073eeac468fd499e3872db5a9c68e692e0a34a7ed66d3d00270fa155789431
 
 pkgname = dispad-git
 

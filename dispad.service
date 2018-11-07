@@ -2,8 +2,7 @@
 Description=dispad daemon
 
 [Service]
-Type=forking
-ExecStart=/usr/bin/dispad --pidfile=%h/.dispad.pid
+ExecStart=/usr/bin/dispad -F
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=user-applications.target

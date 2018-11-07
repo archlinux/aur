@@ -1,9 +1,13 @@
 post_install() {
-  printf "\nExample configuration can be found at /etc/dispad/dispad.conf.example and can optionally be copied to ~/.dispad\n"
   printf "\nTo use dispad, start with:\n"
   printf "systemctl --user start dispad\n"
-  printf "\nAutostart on login:\n"
-  printf "systemctl --user enable dispad\n"
+  printf "\nTo autostart on login\n"
+  printf "\ncp /usr/share/dispad/user-applications.target ~/.config/systemd/user/"
+  printf "\nsystemctl --user enable dispad"
+  printf "\necho 'systemctl --user start user-applications.target' >> ~/.xprofile"
+  printf "\n\nOr:"
+  printf "\necho 'systemctl --user start dispad.service' >> ~/.xprofile"
+  printf "\n\nExample configuration can be found at /usr/share/dispad/dispad.conf.example and can optionally be copied to ~/.dispad\n"
   printf "\n"
 }
 
