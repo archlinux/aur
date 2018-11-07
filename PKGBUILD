@@ -2,7 +2,7 @@
 
 pkgname=python-strictyaml
 _pkgname=strictyaml
-pkgver=0.11.10
+pkgver=0.15.3
 pkgrel=1
 pkgdesc="A type-safe YAML parser that parses a restricted subset of the YAML specificaton."
 arch=(any)
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python' 'python-dateutil' 'python-ruamel-yaml')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('e3a81f7e326b832d68e533c83fea0b3840387fb4924008e60860a32d9c387e7a')
+sha256sums=('1c810dee3ffa031ab9691cbea0adfe0e1a3c20276c5a8ad480bcf7ea57809853')
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
