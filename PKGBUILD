@@ -3,7 +3,7 @@
 # Contributor: z3ntu <luca.emanuel.weiss@gmail.com>
 
 pkgname=f3
-pkgver=7.0
+pkgver=7.1
 pkgrel=1
 pkgdesc="Utilities to detect and repair counterfeit flash storage, i.e. thumb drives and memory cards with less flash than advertised"
 arch=('armv7h' 'aarch64' 'i686' 'x86_64')
@@ -15,12 +15,12 @@ options=('!buildflags'
 conflicts=()
 provides=()
 source=(https://github.com/AltraMayor/${pkgname}/archive/v${pkgver}.zip)
-md5sums=('828f5f37d79033c024949644a622caad')
+md5sums=('4f182a788df609bd4eaa84796ccdade1')
 
 build() {
     cd ${srcdir}/${pkgname}-${pkgver}
     sed -i -e 's:/usr/local:/usr:g' Makefile
-make 
+make
     make extra
 }
 
