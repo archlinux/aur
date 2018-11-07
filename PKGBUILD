@@ -1,6 +1,6 @@
 # Maintainer: Bernardo Ferrari Mendonca <bernardo.mferrari@gmail.com>
 pkgname=ophidian-git
-pkgver=0.1
+pkgver=0.2.1
 pkgrel=1
 groups=('ophidian')
 pkgdesc="Open-Source Library for Physical Design Research and Teaching."
