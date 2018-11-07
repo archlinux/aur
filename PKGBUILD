@@ -2,8 +2,8 @@
 # Maintainer: Aaron Ali <t0nedef@causal.ca>
 
 pkgname=klayout
-pkgver=0.25.4
-pkgrel=2
+pkgver=0.25.5
+pkgrel=1
 pkgdesc="High Performance Layout Viewer And Editor. Support of GDS and OASIS files."
 arch=('i686' 'x86_64')
 url="http://www.klayout.org/"
@@ -48,7 +48,7 @@ package() {
 	done
 }
 #
-md5sums=('972321b5561e48e5357efcb7c8c299f8'
+md5sums=('d60923788118b286ffdfa4d4b9cfe380'
          'e790f7fca3c1138e21068d7927fb8ff4'
          'e6b98e9146c476a5cb76162999964aa8'
          '553b08ddcf6c2338115a8c85ff1c948c')
