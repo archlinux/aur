@@ -1,0 +1,15 @@
+pkgbase = jitterentropy
+	pkgdesc = Hardware RNG based on CPU timing jitter
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = http://www.chronox.de/jent.html
+	arch = x86_64
+	license = BSD
+	source = http://www.chronox.de/jent/jitterentropy-library-2.1.2.tar.xz
+	source = http://www.chronox.de/jent/jitterentropy-library-2.1.2.tar.xz.asc
+	validpgpkeys = 3BCC43D4D2C87D1784B69EE4421EE936326AC15B
+	md5sums = 080f1b2464a03bc13108be4ba965f3c8
+	md5sums = SKIP
+
+pkgname = jitterentropy
+
