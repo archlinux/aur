@@ -2,7 +2,7 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 
 pkgname=teeworlds-git
-pkgver=0.7.788.g16965e4b
+pkgver=0.7.0.86.gbc481d4c
 pkgrel=1
 pkgdesc='Multiplayer 2D shooter'
 arch=('x86_64')
@@ -56,4 +56,6 @@ package() {
   install -m644 other/teeworlds.appdata.xml "$pkgdir/usr/share/appdata/"
   install -m644 other/teeworlds.desktop     "$pkgdir/usr/share/applications/"
   install -m644 ../teeworlds-0.png          "$pkgdir/usr/share/pixmaps/teeworlds.png"
+
+  install -Dm644 license.txt "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
 }
