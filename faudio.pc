@@ -1,0 +1,10 @@
+prefix=/usr
+libdir=${prefix}/lib
+includedir=${prefix}/include/FAudio
+
+Name: faudio
+Description: Accuracy-focused XAudio reimplementation for open platforms
+Version:
+
+Libs: -L${libdir} -lFAudio
+Cflags: -I${includedir}

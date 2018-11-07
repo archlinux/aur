@@ -1,0 +1,18 @@
+pkgbase = faudio-git
+	pkgdesc = Accuracy-focused XAudio reimplementation for open platforms
+	pkgver = r894.27cdf05
+	pkgrel = 1
+	url = https://github.com/FNA-XNA/FAudio
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = sdl2
+	depends = ffmpeg
+	source = git+https://github.com/FNA-XNA/FAudio
+	source = faudio.pc
+	sha256sums = SKIP
+	sha256sums = 19dfd14a8d04d88bec136f72486dee3d02f5c9e890abaebe62e1982164764c87
+
+pkgname = faudio-git
+
