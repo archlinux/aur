@@ -1,7 +1,7 @@
 # Maintainer: Stefan Sielaff <aur AT stefan-sielaff DOT de>
 
 pkgname=logitechmediaserver-git
-pkgver=20181105.e5c860d
+pkgver=20181107.e5c860d
 _gitver=7.9
 pkgrel=1
 pkgdesc='Slimserver for Logitech Squeezebox players. This server is also called Logitech Media Server. (Git-Version, if you prefer stability consider using logitechmediaserver instead)'
@@ -73,6 +73,8 @@ prepare() {
 	rm -rf {AnyEvent,Archive,CGI,common,DBI,DBD,Digest,EV,HTML,HTTP,I18N,Mac,Log,LWP,Net,Path,SOAP,Sub,Template,Test,URI,version,XML,YAML}
 	cp -rf _PRESERVE/* .
 	rm -rf _PRESERVE
+	cd "${srcdir}/slimserver-public-${_gitver}/lib"
+	rm -rf Audio
 }
 
 build() {
