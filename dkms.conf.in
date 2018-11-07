@@ -7,7 +7,7 @@ PRE_BUILD="configure
   --prefix=/usr
   --bindir=/usr/bin
   --sbindir=/usr/bin
-  --with-linux-srcdir=/usr/lib/modules/$kernelver/build
+  --with-linux-srcdir=/usr/lib/modules/$kernelver/build"
 
 MAKE="make"
 CLEAN="make clean"
