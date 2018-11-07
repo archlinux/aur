@@ -7,11 +7,13 @@ pkgdesc="VoIP-based door intercom station for Raspberry Pi"
 arch=(any)
 url="https://www.doorpi.org"
 license=('CC BY-NC 4.0')
-depends=(python python-requests python-pyserial python-watchdog)
+depends=(python python-requests)
 makedepends=(git python-setuptools)
 optdepends=('python-piface: Use Piface pins as event sources / actors'
             'python-picamera: Take and mail snapshots; stream video'
-            'python-raspberry-gpio: Use GPIO header as event sources / actors')
+            'python-raspberry-gpio: Use GPIO header as event sources / actors'
+            'python-pyserial: Use serially connected peripherals like RFID as event sources / actors'
+            'python-watchdog: Use files as virtual event sources / actors')
 backup=('etc/doorpi/doorpi.ini')
 # there aren't any binaries that could be stripped; skip searching for them
 options=(!strip)
