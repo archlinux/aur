@@ -1,6 +1,6 @@
 # Maintainer: Alejandro Valdes <alejandrovaldes@live.com>
 
-pkgname='mozart2-compiler-bin'
+pkgname='mozart2-compiler'
 pkgver='2.0.1'
 pkgrel=1
 pkgdesc='An open source implementation of Oz 3. (Compiler Only)'
@@ -8,7 +8,7 @@ arch=('x86_64')
 url='https://mozart.github.io/'
 license=('BSD')
 depends=('tk')
-conflicts=('mozart2' 'mozart1-bin' 'mozart2-compiler')
+conflicts=('mozart2' 'mozart1-bin')
 source=(https://github.com/mozart/mozart2/releases/download/v${pkgver}/mozart2-${pkgver}-x86_64-linux.rpm
 	https://raw.githubusercontent.com/mozart/mozart2/master/LICENSE.txt)
 sha512sums=('92eba2ca12ee8fab50de983fca551fb61c1970b229c6c2e4006e61c2fd569b05b1f645d220ab04c28f196c6ebb63ab51b34fcb1a9b23ca47ecbd3bdf88e67d6e'
