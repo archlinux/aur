@@ -52,6 +52,7 @@ pkgbase = sagemath-git
 	depends = python2-cvxopt
 	depends = pynac
 	depends = linbox
+	depends = m4rie
 	depends = rubiks
 	depends = pari-galdata
 	depends = pari-seadata-small
