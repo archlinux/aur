@@ -1,14 +1,14 @@
 pkgbase = python-flask-admin
 	pkgdesc = Simple and extensible admin interface framework for Flask
-	pkgver = 1.5.1
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://github.com/flask-admin/flask-admin/
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/f/flask-admin/Flask-Admin-1.5.1.tar.gz
-	md5sums = c018e257fa72811075762315714af084
+	source = https://files.pythonhosted.org/packages/source/f/flask-admin/Flask-Admin-1.5.2.tar.gz
+	md5sums = 0e42ca7da24017ca6c8d699d8dbec4ca
 
 pkgname = python-flask-admin
 	depends = python
