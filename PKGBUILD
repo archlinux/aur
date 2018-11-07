@@ -9,8 +9,7 @@
 pkgname=ephifonts-no-helvetica
 pkgver=20181107
 pkgrel=1
-pkgdesc='A collection of free fonts including Futura and Gotham (ephifonts.com). 
-Does not include Helvetica as Helvetica messes up fonts in Firefox and Chromium.'
+pkgdesc='Like ephifonts, less Helvetica that messes up fonts in Firefox and Chromium.'
 arch=('any')
 conflicts=('ephifonts')
 url='http://www.ephifonts.com'
