@@ -1,8 +1,8 @@
 # Maintainer: Bruno Pagani <archange@archlinux.org>
 
 pkgname=cozy-desktop
-pkgver=3.9.0
-pkgrel=2
+pkgver=3.10.2
+pkgrel=1
 pkgdesc="File synchronisation for Cozy Cloud on Desktop"
 arch=('any')
 url="https://cozy-labs.github.io/cozy-desktop/"
@@ -13,7 +13,7 @@ source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/cozy-labs/${pkgname}/ar
         "${pkgname}.desktop"
         "${pkgname}.sh"
         'icons.tar.xz')
-sha256sums=('282a22ca9576bbf4d8590a9383f94e3547675f5024217fe3e62f1929ae756365'
+sha256sums=('d4a6738e77188e638e4957015289b2fb7b80106ab636a1329a6bd680aa87bff8'
             'df0935e38d99c506b622d99d85179ec4612140d78fcd8c73103cb89c4f58ebab'
             'fe182a6ee6b42c26fc5577df7b845798bfddadbbe470ab057e12ca46d6ca93f1'
             '69631fcd5f2334deffd3a5e2708cd06801fd9c22f1ebd2892c2d829dc33adf97')
