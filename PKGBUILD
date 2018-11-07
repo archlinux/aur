@@ -11,12 +11,13 @@ url="http://linuxcnc.org/"
 depends=('bc' 'bwidget' 'tcl' 'tk' 'xorg-server' 'python2-imaging' 'tkimg' 'python2-gtkglext' 'tclx' 'boost' 'boost-libs' 'libtirpc')
 install=$pkgname.install
 _gitname='linuxcnc'
-source=($_gitname::"git://github.com/LinuxCNC/linuxcnc.git#tag=v$pkgver" 'boost.patch' 'image-to-gcode.patch' 'linuxcnc-sim.sh')
+source=($_gitname::"git://github.com/LinuxCNC/linuxcnc.git#tag=v$pkgver" 'boost.patch' 'image-to-gcode.patch' 'linuxcnc-sim.sh' 'libtirpc.patch')
 #source=($_gitname::'git://git.linuxcnc.org/git/linuxcnc.git#tag=739df958aca9d246daad36f439c82bfbeac681b9' 'boost.patch')
 md5sums=('SKIP'
-        'ba6948dc5dc155849f55039e454cdbd6'
-        'c31d34a7ba567bd664f362a52f8bb03b'
-        '3fb3f231cfefdfe1fa4d600ecbf4a3cb')
+         'ba6948dc5dc155849f55039e454cdbd6'
+         'c31d34a7ba567bd664f362a52f8bb03b'
+         '3fb3f231cfefdfe1fa4d600ecbf4a3cb'
+         '42770a1aa791172358700e4d5af335ed')
 makedepends=('git')
 PKGEXT='.pkg.tar'
 
@@ -37,8 +38,14 @@ build () {
 #  #Another Python fix
 #  cd $srcdir/$pkgname-$pkgver
 #  patch -Np1 < $srcdir/jepler-modsilent.patch
+
+  patch -Np2 -i $srcdir/libtirpc.patch
+
 #  cd $srcdir/$pkgname-$pkgver/src
+#  CFLAGS+=" -I/usr/include/tirpc/"
+  CXXFLAGS+=" -I/usr/include/tirpc/"
   CPPFLAGS+=" -I/usr/include/tirpc/"
+  INCLUDE+=" -I/usr/include/tirpc/"
   LDFLAGS+=" -ltirpc"
   ./autogen.sh
   ./configure --with-realtime=uspace --without-libmodbus --prefix=/usr --with-python=/usr/bin/python2.7 --enable-non-distributable=yes
