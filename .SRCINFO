@@ -1,7 +1,7 @@
 pkgbase = linux-gpib
 	pkgdesc = A support package for GPIB (IEEE 488) hardware.
 	pkgver = 4.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://linux-gpib.sourceforge.net/
 	install = linux-gpib.install
 	arch = i686
