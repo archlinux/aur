@@ -1,7 +1,7 @@
 # Maintainer: Stunts <f.pinamartins@gmail.com>
 _pkgname=hangups
 pkgname=${_pkgname}-git
-pkgver=0.4.5.r0.gdeb2130
+pkgver=0.4.6.r2.g21bcbaa
 pkgrel=1
 epoch=1
 
