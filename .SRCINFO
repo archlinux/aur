@@ -1,20 +1,28 @@
 pkgbase = python-image-git
 	pkgdesc = Django application that provides editing for images and videos.
 	pkgver = r162.bf98fbc
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/francescortiz/image
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	makedepends = git
-	depends = python
-	depends = python-pillow
-	depends = python-requests
-	depends = python-django
+	makedepends = python-pillow
+	makedepends = python-requests
+	makedepends = python-django
+	makedepends = python2-setuptools
+	makedepends = python2-pillow
+	makedepends = python2-requests
+	makedepends = python2-django
+	depends = git
+	optdepends = ffmpeg: For video thumbnails
 	provides = python-image
-	conflicts = python-image
+	provides = python2-image
 	source = git+https://github.com/francescortiz/image.git
 	sha256sums = SKIP
 
 pkgname = python-image-git
+	depends = python-pillow
+	depends = python-requests
+	depends = python-django
+	conflicts = python-image
 
