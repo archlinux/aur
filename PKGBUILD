@@ -10,7 +10,7 @@ url="https://github.com/balena-io/resin-sdk-python"
 license=("Apache")
 makedepends=("python-setuptools" "python2-setuptools")
 provides=("python-${_name}" "python2-${_name}")
-source=("https://pypi.python.org/packages/source/${_module}/${_module}/${_module}-${pkgver}.zip")
+source=("https://files.pythonhosted.org/packages/80/15/493fcfa6ed092a5d72371795008e2ce3ccb5df2f0181587f1f3cdac8c122/${_module}-${pkgver}.zip")
 sha256sums=('c66160ad049dea30f55cfaf907bb79a87a525f733dfd4eae172d2c60135a7c0b')
 
 prepare() {
