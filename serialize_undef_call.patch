@@ -1,0 +1,37 @@
+diff -r ceb10f796325 src/slg/engines/tilerepository.cpp
+--- a/src/slg/engines/tilerepository.cpp	Mon Dec 18 17:20:21 2017 +0100
++++ b/src/slg/engines/tilerepository.cpp	Wed Nov 07 15:24:25 2018 +0100
+@@ -676,3 +676,15 @@
+ 
+ 	ar & convergedTiles;
+ }
++
++
++namespace slg {
++// Explicit instantiations for portable archives
++template void TileRepository::save(eos::portable_oarchive &ar, const u_int version) const;
++template void TileRepository::load(eos::portable_iarchive &ar, const unsigned int version);
++template void TileRepository::save(boost::archive::binary_oarchive &ar, const u_int version) const;
++template void TileRepository::load(boost::archive::binary_iarchive &ar, const unsigned int version);
++// Explicit instantiations for polymorphic archives
++template void TileRepository::save(boost::archive::polymorphic_oarchive &ar, const u_int version) const;
++template void TileRepository::load(boost::archive::polymorphic_iarchive &ar, const u_int version);
++}
+diff -r ceb10f796325 src/slg/film/filmserialize.cpp
+--- a/src/slg/film/filmserialize.cpp	Mon Dec 18 17:20:21 2017 +0100
++++ b/src/slg/film/filmserialize.cpp	Wed Nov 07 15:24:25 2018 +0100
+@@ -197,3 +197,14 @@
+ 	ar & initialized;
+ 	ar & enabledOverlappedScreenBufferUpdate;
+ }
++
++namespace slg {
++// Explicit instantiations for portable archives
++template void Film::save(eos::portable_oarchive &ar, const u_int version) const;
++template void Film::load(eos::portable_iarchive &ar, const u_int version);
++template void Film::save(boost::archive::binary_oarchive &ar, const u_int version) const;
++template void Film::load(boost::archive::binary_iarchive &ar, const u_int version);
++// The following 2 lines shouldn't be required but they are with GCC 5
++template void Film::save(boost::archive::polymorphic_oarchive &ar, const u_int version) const;
++template void Film::load(boost::archive::polymorphic_iarchive &ar, const u_int version);
++}

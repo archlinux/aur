@@ -4,13 +4,13 @@
 
 pkgname=luxrays-hg
 pkgver=3755+.ceb10f796325+
-pkgrel=4
+pkgrel=5
 pkgdesc="Accelerate the ray intersection process by using GPUs"
 arch=('x86_64')
 url="http://www.luxrender.net/"
 license=('GPL')
 depends=('embree-bvh_build-git' 'opencl-icd-loader' 'libgl' 'openimageio')
-makedepends=('boost' 'cmake' 'freetype2' 'gtk3' 'libpng' 'mesa' 'opencl-headers' 'glew' 'freeglut'
+makedepends=('boost' 'python' 'cmake' 'freetype2' 'gtk3' 'libpng' 'mesa' 'opencl-headers' 'glew' 'freeglut'
              'mercurial')
 optdepends=('opencl-driver: OpenCL support' \
             'glew: demos (SmallLuxGPU etc.)' \
@@ -21,9 +21,11 @@ options=('staticlibs')
 provides=('luxrays')
 conflicts=('luxrays')
 source=('luxrays::hg+https://bitbucket.org/luxrender/luxrays#branch=default' \
-        force_python3.diff)
+        'force_python3.diff'
+        'serialize_undef_call.patch')
 md5sums=('SKIP'
-         'ba9a42dbe073009189c6d21845bff767')
+         'ba9a42dbe073009189c6d21845bff767'
+         '44f46506e1bfd1bddbceaed40c87b056')
 
 pkgver() {
   cd "$srcdir/luxrays"
@@ -41,13 +43,16 @@ prepare() {
   sed -i '/luxcoreimplserializationdemo/d' CMakeLists.txt
  
   # force python3 for boost
-  patch -Np1 < "$srcdir/force_python3.diff" || true
+  patch -Np1 -i "$srcdir/force_python3.diff" || true
+
+  # fix missing symbols in slg-core(tilerepository.o)
+  patch -Np1 -i ${srcdir}/serialize_undef_call.patch
 }
 
 build() {
-  cd "$srcdir/luxrays"
+  mkdir -p build && cd build
 
- cmake . \
+ cmake ${srcdir}/luxrays \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DEMBREE_INCLUDE_PATH=/usr/include/embree-bvh_build \
     -DEMBREE_LIBRARY=/usr/lib/embree-bvh_build/libembree.so.2 \
@@ -57,12 +62,12 @@ build() {
 }
 
 package() {
-  cd "$srcdir/luxrays"
+  cd "$srcdir/build"
 
   install -d -m755 "$pkgdir"/usr/{bin,include,lib}
   install -m755 bin/* "$pkgdir"/usr/bin
   install -m644 lib/* "$pkgdir"/usr/lib
-  cp -a include "$pkgdir"/usr
+  cp -a ${srcdir}/luxrays/include "$pkgdir"/usr
 
   # install pyluxcore to the Python search path
   _pypath=`pacman -Ql python | sed -n '/\/usr\/lib\/python[^\/]*\/$/p' | cut -d" " -f 2`
