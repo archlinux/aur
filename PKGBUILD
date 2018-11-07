@@ -1,4 +1,4 @@
-# Maintainer:  <ouyangjun1999@gmail.com>
+# Maintainer: Attenuation <ouyangjun1999@gmail.com>
 pkgname=pwngdb
 pkgver=r49b5775
 pkgrel=1
