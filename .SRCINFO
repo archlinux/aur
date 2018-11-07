@@ -1,6 +1,6 @@
 pkgbase = chruby-fish
 	pkgdesc = Thin wrapper around chruby to make it work with the Fish shell
-	pkgver = 0.8.1+1+d377acb
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/JeanMertz/chruby-fish
 	install = chruby-fish.install
@@ -8,10 +8,10 @@ pkgbase = chruby-fish
 	license = MIT
 	depends = chruby
 	depends = fish
-	source = chruby-fish::git+https://github.com/JeanMertz/chruby-fish.git#commit=d377acbd255f2c2dec8191942d8743ba473e1f7c
+	source = https://github.com/JeanMertz/chruby-fish/archive/v0.8.2.tar.gz
 	source = chruby-root.patch
-	sha256sums = SKIP
-	sha256sums = 1d8e18fea6d5146e8c8eca59dec89b18c22f0cefedf3b6c9b573e37c8bead820
+	sha256sums = e3726d39da219f5339f86302f7b5d7b62ca96570ddfcc3976595f1d62e3b34e1
+	sha256sums = a2f186f1dd1e7adc62d8315617443e0771f5d5ff7c3dee9794bcf0327c2d33fd
 
 pkgname = chruby-fish
 
