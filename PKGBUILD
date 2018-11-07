@@ -16,7 +16,7 @@ _use_wayland=0           # Build Wayland NOTE: extremely experimental and don't 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=71.0.3554.4
+pkgver=72.0.3595.2
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -81,14 +81,16 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
         'git+https://github.com/foutrelis/chromium-launcher.git'
         'chromium-dev.svg'
         # Patch form Gentoo
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-compiler-r4.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-compiler-r7.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-webrtc-r0.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-ffmpeg-ebp-r1.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-harfbuzz-r0.patch'
          # Misc Patches
         'chromium-ffmpeg-clang.patch'
         'chromium-intel-vaapi_r18.diff.base64::https://chromium-review.googlesource.com/changes/532294/revisions/18/patch?download'
         # Patch from crbug (chromium bugtracker) or Arch chromium package
-        'chromium-widevine-r2.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-widevine-r2.patch?h=packages/chromium'
+        'chromium_fix_snapselectionstrategy_missing_include.base64::https://chromium-review.googlesource.com/changes/1304418/revisions/2/patch?download'
+        'chromium-widevine-r3.patch'
         'chromium-skia-harmony.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-skia-harmony.patch?h=packages/chromium'
         'fix_mixup_between_DIP_pixel_coordinates.diff.base64::https://chromium-review.googlesource.com/changes/1083692/revisions/3/patch?download'
         )
@@ -97,14 +99,16 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
             'SKIP'
             'dd2b5c4191e468972b5ea8ddb4fa2e2fa3c2c94c79fc06645d0efc0e63ce7ee1'
             # Patch form Gentoo
-            'c8225c0c14288c21f5cc448afc0f67fc4563517c39a8680af9e659f5b2d8f418'
+            '7fa727b29032577c70f5655b10a440599c12e53d6f52713e661defc1002cfa3a'
             'bcb2f4588cf5dcf75cde855c7431e94fdcc34bdd68b876a90f65ab9938594562'
             '1bc5df96750e825a3ef01958df9497d4fbdeb3f25681a3a034e0d4a04b9c3479'
+            '1b370d49c43e88acfe7c0b1f9517047e927f3407bd80b4a48bba32c001f80136'
             # Misc Patches
             '16741344288d200fadf74546855e00aa204122e744b4811a36155efd5537bd95'
             '957d777c67756074c8e028d08c1e88e738f881b3a8569e60c5bdd1da6737e305'
             # Patch from crbug (chromium bugtracker) or Arch chromium package
-            '02c69bb3954087db599def7f5b6d65cf8f7cf2ed81dfbdaa4bb7b51863b4df15'
+            '486aa853cf7701aabc91c6b4c46adc50898eede3fc9c439b53515be6dd94758d'
+            '6e6576a11d0511fed7251160e3028fc2405983ff4cf60823e7e49db9e28a748b'
             'feca54ab09ac0fc9d0626770a6b899a6ac5a12173c7d0c1005bc3964ec83e7b3'
             'd3330d7f7fa256e99488a6c9edce793c9fc1054e3766a66fde74ed2bd8ed496f'
             )
@@ -181,6 +185,7 @@ _keeplibs=(
            'third_party/catapult/tracing/third_party/pako'
            'third_party/ced'
            'third_party/cld_3'
+           'third_party/closure_compiler'
            'third_party/crashpad'
            'third_party/crashpad/crashpad/third_party/zlib'
            'third_party/crc32c'
@@ -201,6 +206,7 @@ _keeplibs=(
            'third_party/iccjpeg'
            'third_party/inspector_protocol'
            'third_party/jinja2'
+           'third_party/jsoncpp'
            'third_party/jstemplate'
            'third_party/khronos'
            'third_party/leveldatabase'
@@ -438,9 +444,10 @@ prepare() {
 
   msg2 "Patching the sources"
   # Patch sources from Gentoo.
-  patch -p1 -i "${srcdir}/chromium-compiler-r4.patch"
+  patch -p1 -i "${srcdir}/chromium-compiler-r7.patch"
   patch -p1 -i "${srcdir}/chromium-webrtc-r0.patch"
   patch -p1 -i "${srcdir}/chromium-ffmpeg-ebp-r1.patch"
+  patch -p1 -i "${srcdir}/chromium-harfbuzz-r0.patch"
 
   # Misc patches
 
@@ -473,11 +480,14 @@ prepare() {
 
   # Patch from crbug (chromium bugtracker) or Arch chromium package
 
+  # https://crbug.com/819294
+  base64 -d "${srcdir}/chromium_fix_snapselectionstrategy_missing_include.base64" | patch -p1 -i -
+
   # https://crbug.com/skia/6663#c10
   patch -p4 -i "${srcdir}/chromium-skia-harmony.patch"
 
   # https://crbug.com/473866
-  patch -p1 -i "${srcdir}/chromium-widevine-r2.patch"
+  patch -p1 -i "${srcdir}/chromium-widevine-r3.patch"
 
   # Setup nodejs dependency.
   mkdir -p third_party/node/linux/node-linux-x64/bin/
@@ -533,7 +543,7 @@ build() {
 
   # Build all.
   # Work around broken deps
-  LC_ALL=C ninja -C out/Release gen/ui/accessibility/ax_enums.mojom.h
+  LC_ALL=C ninja -C out/Release gen/ui/accessibility/ax_enums.mojom{,-shared}.h
   LC_ALL=C ninja -C out/Release -v chrome chrome_sandbox chromedriver #widevinecdmadapter
 }
 
