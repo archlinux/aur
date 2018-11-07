@@ -2,7 +2,7 @@
 
 pkgname='libconfini-git'
 _pkgname='libconfini'
-pkgver='r124.b4f35c3'
+pkgver='r125.8fe0464'
 pkgrel=1
 pkgdesc='Yet another INI parser'
 arch=('i686' 'x86_64')
@@ -23,8 +23,7 @@ pkgver() {
 prepare() {
 
 	cd "${srcdir}/${_pkgname}"
-	./autogen.sh --noconfigure
-	./configure --prefix=/usr CFLAGS='-pedantic -std=c99 -g -O3'
+	./autogen.sh --prefix=/usr
 
 }
 
