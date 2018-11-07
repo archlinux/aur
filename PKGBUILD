@@ -1,24 +1,22 @@
 # Maintainer: Miguel Revilla <yo@miguelrevilla.com>
 # Contributor: joyfulgirl <joyfulgirl (at) archlinux.us>
 pkgname=pspp
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Statistical analysis program. Free replacement for SPSS."
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/pspp/"
 license=('GPL3')
-depends=('gsl' 'gtksourceview3' 'postgresql-libs' 'desktop-file-utils')
+depends=('gsl' 'gtksourceview3' 'postgresql-libs' 'desktop-file-utils' 'spread-sheet-widget')
 optdepends=('zlib: GNUmeric support'
             'libxml2: GNUMERIC support')
 options=('!libtool' '!emptydirs')
-source=(ftp://ftp.gnu.org/gnu/pspp/pspp-${pkgver}.tar.gz)
-md5sums=('ac18c5da11915e59ec32fe00e541abb8')
+source=("https://ftp.gnu.org/gnu/pspp/pspp-${pkgver}.tar.gz")
+md5sums=('e940d666b586f5bd2f17a2b305fac71f')
 install=pspp.install
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-
-	sed -i 's/_IO_ftrylockfile/_IO_EOF_SEEN/' gl/fseterr.c
 
 	./configure --prefix=/usr \
 				--sysconfdir=/etc \
