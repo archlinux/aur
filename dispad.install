@@ -1,0 +1,15 @@
+post_install() {
+  printf "\nExample configuration can be found at /etc/dispad/dispad.conf.example and can optionally be copied to ~/.dispad\n"
+  printf "\nTo use dispad, start with:\n"
+  printf "systemctl --user start dispad\n"
+  printf "\nAutostart on login:\n"
+  printf "systemctl --user enable dispad\n"
+  printf "\n"
+}
+
+post_upgrade() {
+  printf "\nRemember to reload systemd user daemons before restarting dispad\n"
+  printf "systemctl --user daemon-reload\n"
+  printf "systemctl --user restart dispad\n"
+  printf "\n"
+}

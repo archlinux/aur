@@ -1,0 +1,9 @@
+[Unit]
+Description=dispad daemon
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/dispad --pidfile=%h/.dispad.pid
+
+[Install]
+WantedBy=multi-user.target
