@@ -1,6 +1,6 @@
 pkgbase = mailscanner
 	pkgdesc = Mail filter for spam, viruses, phishing, and other malicious content
-	pkgver = 5.1.1_1
+	pkgver = 5.1.2_2
 	pkgrel = 1
 	url = https://mailscanner.info/
 	arch = x86_64
@@ -38,8 +38,8 @@ pkgbase = mailscanner
 	optdepends = perl-module-build
 	optdepends = perl-test-manifest
 	optdepends = clamav
-	source = https://s3.amazonaws.com/msv5/release/MailScanner-5.1.1-1.nix.tar.gz
-	sha256sums = d49ab24270fc047baabf6491110e61508feec9de56d4b372b35f318337180541
+	source = https://s3.amazonaws.com/msv5/release/MailScanner-5.1.2-2.nix.tar.gz
+	sha256sums = 1a45fdcc1914bfd25be249de49f63ac08599e0898881f16eae0f9ac8d389e4cf
 
 pkgname = mailscanner
 
