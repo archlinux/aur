@@ -4,7 +4,7 @@
 pkgbase=python-google-auth-httplib2-git
 pkgname=(python-google-auth-httplib2-git python2-google-auth-httplib2-git)
 pkgver=r8.e7cd722
-pkgrel=2
+pkgrel=3
 pkgdesc="Google Authentication Library: httplib2 transport"
 url="https://github.com/GoogleCloudPlatform/google-auth-library-python-httplib2"
 license=('Apache')
@@ -14,8 +14,6 @@ makedepends=('python-setuptools' 'python2-setuptools' 'python-google-auth' 'pyth
 checkdepends=('python-pytest-runner' 'python2-pytest-runner' 'python-mock' 'python2-mock'
               'python-flask' 'python2-flask' 'python-pytest-localserver'
               'python2-pytest-localserver')
-provides=('python-google-auth-httplib2' 'python2-google-auth-httplib2')
-conflicts=('python-google-auth-httplib2' 'python2-google-auth-httplib2')
 source=("git+https://github.com/GoogleCloudPlatform/google-auth-library-python-httplib2.git")
 sha512sums=('SKIP')
 
@@ -40,12 +38,14 @@ check() {
     cd google-auth-library-python-httplib2
     python setup.py pytest
 
-    cd "$srcdir/google-auth-library-python-httplib2-py2"
+    cd ../google-auth-library-python-httplib2-py2
     python2 setup.py pytest
 }
 
 package_python-google-auth-httplib2-git() {
     depends=('python-google-auth' 'python-httplib2' 'python-six')
+    provides=('python-google-auth-httplib2')
+    conflicts=('python-google-auth-httplib2')
 
     cd google-auth-library-python-httplib2
     python setup.py install --root="$pkgdir" --optimize=1
@@ -54,6 +54,8 @@ package_python-google-auth-httplib2-git() {
 
 package_python2-google-auth-httplib2-git() {
     depends=('python2-google-auth' 'python2-httplib2' 'python2-six')
+    provides=('python-google-auth-httplib2')
+    conflicts=('python-google-auth-httplib2')
 
     cd google-auth-library-python-httplib2-py2
     python2 setup.py install --root="$pkgdir" --optimize=1
