@@ -1,3 +1,7 @@
+# build directories under makepkg
+/src/
+/pkg/
+
 # sources
 *.tar.gz
 
