@@ -33,11 +33,13 @@ pkgbase = luxrender-hg
 	source = boost-15500.patch
 	source = luxrender-gcc7.patch
 	source = gcc-8.patch
+	source = rpath.patch
 	source = force_python3.diff
 	md5sums = SKIP
 	md5sums = b9e5c442093e69485752e6395c931b27
 	md5sums = fa680b0d621b42c8e7440056bf26ec1c
 	md5sums = 6b71588b2c3e05c8f5ddbac824a39530
+	md5sums = 53a4c379728906abb0d56ddf7152955e
 	md5sums = 42692e65eabc5828693e2682e94b7c64
 
 pkgname = luxrender-hg

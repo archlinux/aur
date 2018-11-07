@@ -22,11 +22,13 @@ source=('lux::hg+https://bitbucket.org/luxrender/lux#branch=default'
         'boost-15500.patch'
         'luxrender-gcc7.patch'
         'gcc-8.patch'
+        'rpath.patch'
         'force_python3.diff')
 md5sums=('SKIP'
          'b9e5c442093e69485752e6395c931b27'
          'fa680b0d621b42c8e7440056bf26ec1c'
          '6b71588b2c3e05c8f5ddbac824a39530'
+         '53a4c379728906abb0d56ddf7152955e'
          '42692e65eabc5828693e2682e94b7c64')
 
 pkgver() {
@@ -55,6 +57,9 @@ prepare() {
   # fix unambiguous 'PyContext' both in python3.7 and lux::
   sed -i 's/\&PyContext/\&lux::PyContext/g' python/pycontext.h
   sed -i 's/class_<PyContext/class_<lux::PyContext/' python/pycontext.h
+
+  # fix embree2.so(embree-bvh_build-git) rpath
+  patch -Np1 -i ${srcdir}/rpath.patch
 }
 
 build() {
