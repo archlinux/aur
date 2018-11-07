@@ -1,7 +1,7 @@
 # Maintainer: Lukas Zimmermann <luk.zim91 at gmail dot com> 
 
 pkgname=docker-ls
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='Tools for browsing and manipulating docker registries'
 url='https://github.com/mayflower/docker-ls'
@@ -13,7 +13,7 @@ changelog=ChangeLog
 
 source=("https://github.com/mayflower/${pkgname}/archive/v${pkgver}.tar.gz"
         'LICENSE')
-sha256sums=('da40737b5e8bb5c1d4ee14c90ffa419ac7f9e7687618fe4dc020e786f61ea88a'
+sha256sums=('aa26657ca6271456ee9944ac4f18f25ff1593e7a85e7da6156c907681e342478'
             '36f5440582577e61065f48b6fc26e2dd563ef2eb11a04255fed3bf47d138ca9e')
 
 # Custom variables
@@ -22,7 +22,7 @@ _arch=amd64
 _release=release
 
 build() {
-  # Remove GOPATH  
+  # Regenerate GOPATH  
   rm -rf "${srcdir}/go" && mkdir -p "${srcdir}/go"  
 
   # Get all the dependencies for the command line tools
