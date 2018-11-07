@@ -5,11 +5,11 @@ pkgver=0
 pkgrel=1
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-pkgdesc="Cross-platform foobar-like music player"
+pkgdesc="foobar-like music player for Linux"
 url="https://gitlab.com/william.belanger/${pkgname%-git}"
 arch=("any")
 license=("GPL3")
-depends=("python>=3" "python-pyqt5" "qt5-svg" "qt5-multimedia" "python-mutagen")
+depends=("python>=3.6" "python-setuptools" "python-pyqt5" "qt5-svg" "qt5-multimedia" "python-mutagen")
 source=("git+https://gitlab.com/william.belanger/${pkgname%-git}.git")
 md5sums=("SKIP")
 
