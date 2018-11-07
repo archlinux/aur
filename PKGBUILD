@@ -2,7 +2,7 @@
 # Maintainer: Adam S Levy <adam@aslevy.com>
 
 pkgname='telegraf'
-pkgver='1.7.4'
+pkgver='1.8.3'
 pkgrel='1'
 pkgdesc='Server-level metric gathering agent for InfluxDB'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -31,8 +31,8 @@ build()
   cd "$GOPATH/src/github.com/influxdata/telegraf"
 
   echo "Downloading dependencies"
-  go get github.com/sparrc/gdm
-  gdm restore
+  go get -v -u github.com/golang/dep/cmd/dep
+  dep ensure -v -vendor-only
 
   revision=`git rev-parse HEAD`
   version=`git describe --tags`
