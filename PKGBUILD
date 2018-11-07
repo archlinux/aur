@@ -1,12 +1,12 @@
 # Maintainer: NamedKitten <kitteh@namedkitten.pw>
 pkgname=kittehplayer
-pkgver=r255.9ee2b94
+pkgver=r271.1cb2fce
 pkgrel=1
 pkgdesc="A YouTube-like video player based on Qt, QML and libmpv."
 arch=('x86_64')
 url="https://github.com/NamedKitten/KittehPlayer"
 license=('MPL2')
-depends=('qt5-svg' 'qt5-declarative' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'mpv' 'qt5-graphicaleffects')
+depends=('qt5-svg' 'qt5-declarative' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'mpv' 'qt5-graphicaleffects' 'libx11' 'libxext')
 optdepends=(
 	'mpv-vapoursynth: for vapoursynth support.'
 	'youtube-dl: for remote video streaming'
