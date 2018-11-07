@@ -1,5 +1,5 @@
 pkgname=oor
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Open Overlay Router (formerly LISPmob) - Locator/ID Separation Protocol (LISP) and LISP Mobile Node implementation"
 url="https://openoverlayrouter.org/"
@@ -10,7 +10,7 @@ makedepends=('git' 'gengetopt')
 provides=('lispmob')
 replaces=('lispmob')
 backup=("etc/oor.conf")
-_commit=8aaa8307861751bd13cd631bf8f2c19851faf708
+_commit=ebb8a00cb031e07f929ec8cae15eba3244df4a4a
 source=("git+https://github.com/OpenOverlayRouter/oor#commit=$_commit"
         "oor.service")
 sha256sums=('SKIP'

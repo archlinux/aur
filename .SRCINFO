@@ -1,6 +1,6 @@
 pkgbase = oor
 	pkgdesc = Open Overlay Router (formerly LISPmob) - Locator/ID Separation Protocol (LISP) and LISP Mobile Node implementation
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://openoverlayrouter.org/
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = oor
 	provides = lispmob
 	replaces = lispmob
 	backup = etc/oor.conf
-	source = git+https://github.com/OpenOverlayRouter/oor#commit=8aaa8307861751bd13cd631bf8f2c19851faf708
+	source = git+https://github.com/OpenOverlayRouter/oor#commit=ebb8a00cb031e07f929ec8cae15eba3244df4a4a
 	source = oor.service
 	sha256sums = SKIP
 	sha256sums = b952f567e6c506d09aab10b4fae49c9cee31affb89b7a18040c2fa7f1a8df153
