@@ -1,7 +1,7 @@
 pkgbase = kak-lsp
 	pkgdesc = Kakoune Language Server Protocol Client
-	pkgver = 5.9.0
-	pkgrel = 2
+	pkgver = 5.9.1
+	pkgrel = 1
 	url = https://github.com/ul/kak-lsp
 	arch = x86_64
 	license = custom:unlicense
@@ -10,8 +10,8 @@ pkgbase = kak-lsp
 	optdepends = bash-language-server: language server for Bash
 	optdepends = python-language-server: language server for Python
 	optdepends = go-langserver-git: language server for Go
-	source = kak-lsp-5.9.0.tar.gz::https://github.com/ul/kak-lsp/archive/v5.9.0.tar.gz
-	sha256sums = 3de10eb4c92f12888e457fbf314ec255fc4da0f10c7c3ce9d9dbb937ad95cb73
+	source = kak-lsp-5.9.1.tar.gz::https://github.com/ul/kak-lsp/archive/v5.9.1.tar.gz
+	sha256sums = b21fd5e92cf4bb33194b1eb71f79c50aab81f24be28a734794c33bd852d74bff
 
 pkgname = kak-lsp
 
