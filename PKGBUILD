@@ -2,7 +2,7 @@
 
 pkgname=opendaylight
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A modular open platform for customizing and automating networks of any size and scale.'
 arch=('x86_64')
 url='https://www.opendaylight.org/'

@@ -1,10 +1,10 @@
 post_install() {
     if ! getent group opendaylight >/dev/null; then
-        groupadd opendaylight
+        groupadd opendaylight --system
     fi
     if ! getent passwd opendaylight >/dev/null; then
         useradd -c 'OpenDaylight user' -g opendaylight -d '/opt/opendaylight' \
-            -s /bin/bash opendaylight
+            -s /bin/bash opendaylight --system
         passwd -l opendaylight >/dev/null
     fi
 
