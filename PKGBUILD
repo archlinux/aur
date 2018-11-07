@@ -1,7 +1,7 @@
 # Maintainer: Kuan-Yen Chou <forendef2846 at gmail dot com>
 
 pkgname=bgpdump
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='A C library designed to help with analyzing dump files produced by Zebra/Quagga or MRT'
 depends=('zlib' 'bzip2')
@@ -11,15 +11,15 @@ url="https://bitbucket.org/ripencc/bgpdump"
 license=('GPL')
 provides=('bgpdump')
 source=("https://bitbucket.org/ripencc/bgpdump/get/${pkgver}.tar.gz")
-sha512sums=('70cb68eb70fc0a2d10597421c79bca5506f8d089ceffbe7a1c4555ffd871fd0bd5ba1b441c8af94e3a257db56afb5ea20546dcaa4349046187daadd1681febb4')
+sha512sums=('04883a01fbc2829a4298b3f280d1a6c023f57fbabca082ea8578130235a088c0f326888c523b1e59485cc889b9c18888beb1a5bc3ecd0fe1054200c390251153')
 
 build() {
-    cd "$srcdir"/ripencc-bgpdump-*
+    cd "${srcdir}"/ripencc-bgpdump-*
     autoheader
     autoconf
     ./configure \
-        --prefix="$pkgdir"/usr \
-        --sbindir="$pkgdir"/usr/bin
+        --prefix="${pkgdir}/usr" \
+        --sbindir="${pkgdir}/usr/bin"
     make
 }
 
