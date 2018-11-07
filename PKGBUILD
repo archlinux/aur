@@ -3,7 +3,7 @@
 # Maintainer: Robert Timm <mail@rtti.de>
 
 pkgname=vimb
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=1
 epoch=
 arch=('i686' 'x86_64')
@@ -13,9 +13,9 @@ license=('GPLv3')
 depends=('webkit2gtk>=2.8')
 provides=('vimb')
 conflicts=('vimb2' 'vimb-gtk2' 'vimb-git')
-source=('vimb-3.2.0.tar.gz::https://github.com/fanglingsu/vimb/archive/3.2.0.tar.gz')
-md5sums=('c0848041b6f6d618d5d4d0e169c1ea5c')
-sha256sums=('9746408c45bedbca6cd5bd37c7268ace52f2655a4ead4bb50239d557bef9ab41')
+source=('vimb-3.3.0.tar.gz::https://github.com/fanglingsu/vimb/archive/3.3.0.tar.gz')
+md5sums=('b6e69c0efc5546bdc91453741ff25a90')
+sha256sums=('5c6fe39b1b2ca18a342bb6683f7fd5b139ead53903f57dd9eecd5a1074576d6c')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
