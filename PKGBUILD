@@ -30,7 +30,7 @@ check() {
 }
 
 package() {
-        cd "${srcdir}/${_realname}"
+        cd "${srcdir}/${_realname}/target/release"
         install -Dm755 "${_realname}" "${pkgdir}/usr/bin/${_realname}"
 }
 
