@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=cle4vdr (gtk2)
+Exec=cle4vdr-gtk2
+Icon=cle4vdr-gtk2
+Terminal=false
+Categories=GTK;Utility;

@@ -1,0 +1,28 @@
+pkgbase = cle4vdr
+	pkgdesc = A channel list editor for VDR
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = http://cle4vdr.vdr-developer.org
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = gtk2
+	makedepends = lazarus
+	makedepends = qt4pas
+	source = http://cle4vdr.vdr-developer.org/files/cle4vdr.0.6.0-src.tgz
+	source = cle4vdr-gtk2.desktop
+	source = cle4vdr-qt4.desktop
+	source = cle4vdr.png
+	sha256sums = 885ab11c9c6c4f2da343edabdcfd2db6ae8b41cc845b8ba97a457e3fbb69b66f
+	sha256sums = 06b00ddecf199f5e26516a479ab8d5d04b60ed82b2cf8579ad7da6b6e039ba94
+	sha256sums = 46fbfc918c51905d71656aba9c0a6e2e4799c85bc6cb26be5439f3a7a6e1ceb8
+	sha256sums = 7b57db0232917296160f7cc64182504144d43fa437380bf9881dd7e673fe6698
+
+pkgname = cle4vdr-gtk2
+	depends = gtk2
+	provides = cle4vdr
+
+pkgname = cle4vdr-qt4
+	depends = qt4pas
+	provides = cle4vdr
+

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=cle4vdr (qt4)
+Exec=cle4vdr-qt4
+Icon=cle4vdr-qt4
+Terminal=false
+Categories=Qt;Utility;
