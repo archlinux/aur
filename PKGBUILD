@@ -3,13 +3,14 @@
 pkgname=engraver-git
 _realname=engraver
 _realname2=plot64
-pkgver=v.2.0.0
+pkgver=2.0.4.r1.g1e62319
 pkgrel=1
 pkgdesc="PoCC reference plotter for BURST"
 arch=(x86_64)
 url="https://github.com/PoC-Consortium/engraver"
 license=('MIT')
 makedepends=('git')
+options=('strip' '!emptydirs')
 source=("git+https://github.com/PoC-Consortium/${_realname}.git")
 sha256sums=('SKIP')
 
@@ -20,16 +21,17 @@ pkgver() {
 
 build() {
         cd "${srcdir}/${_realname}"
-        make
+        cargo build --release
+}
+
+check() {
+    cd "${srcdir}/${_realname}"
+    cargo test
 }
 
 package() {
         cd "${srcdir}/${_realname}"
-        install -Dm755 "${_realname2}" "${pkgdir}/usr/bin/${_realname2}"
-	install -Dm755 "mshabal_sse4.o" "${pkgdir}/usr/bin/mshabal_sse4.o"
-	install -Dm755 "mshabal256_avx2.o" "${pkgdir}/usr/bin/mshabal256_avx2.o"
-	install -Dm755 "shabal64.o" "${pkgdir}/usr/bin/shabal64.o"
-	install -Dm755 "helper64.o" "${pkgdir}/usr/bin/helper64.o"
+        install -Dm755 "${_realname}" "${pkgdir}/usr/bin/${_realname}"
 }
 
 
