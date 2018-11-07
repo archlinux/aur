@@ -3,17 +3,14 @@
 pkgbase=python-image-git
 pkgname=(python-image-git python2-image-git)
 pkgver=r162.bf98fbc
-pkgrel=3
+pkgrel=4
 pkgdesc="Django application that provides editing for images and videos."
 arch=('any')
 url="https://github.com/francescortiz/image"
 license=('BSD')
-depends=('git')
 makedepends=('python-setuptools' 'python-pillow' 'python-requests' 'python-django'
-             'python2-setuptools' 'python2-pillow' 'python2-requests' 'python2-django')
+             'python2-setuptools' 'python2-pillow' 'python2-requests' 'python2-django' 'git')
 optdepends=('ffmpeg: For video thumbnails')
-provides=('python-image' 'python2-image')
-conflicts=('python-image' 'python2-image')
 source=("git+https://github.com/francescortiz/image.git")
 sha256sums=('SKIP')
 
@@ -33,6 +30,7 @@ build() {
 
 package_python-image-git() {
     depends=('python-pillow' 'python-requests' 'python-django')
+    provides=('python-image')
     conflicts=('python-image')
     cd image
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
@@ -42,6 +40,7 @@ package_python-image-git() {
 
 package_python2-image-git() {
     depends=('python2-pillow' 'python2-requests' 'python2-django')
+    provides=('python2-image')
     conflicts=('python2-image')
     cd image-py2
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
