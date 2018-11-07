@@ -14,7 +14,7 @@ url="https://github.com/danielpinto8zz6/${pkgname}"
 
 build() {
     cd "$srcdir/${pkgname}-${pkgver}"
-    meson build --prefix /usr --buildtype=plain ..
+    meson build --prefix /usr
     ninja -C build
 }
 
