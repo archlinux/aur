@@ -1,4 +1,3 @@
-# $Id$
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
@@ -7,7 +6,7 @@
 
 _pkgname=ffmpeg
 pkgname=ffmpeg-headless
-pkgver=4.0.2
+pkgver=4.1
 pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video; optimised for server (headless) systems'
@@ -25,11 +24,11 @@ depends=('aom' 'bzip2' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
          'rtmpdump')
 makedepends=('yasm')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
-          'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
+          'libavutil.so' 'libpostproc.so' 'libswresample.so'
           'libswscale.so' 'ffmpeg')
 conflicts=('ffmpeg')
 source=("https://ffmpeg.org/releases/${_pkgname}-${pkgver}.tar.xz")
-sha256sums=('a95c0cc9eb990e94031d2183f2e6e444cc61c99f6f182d1575c433d62afb2f97')
+sha256sums=('a38ec4d026efb58506a99ad5cd23d5a9793b4bf415f2c4c2e9c1bb444acd1994')
 
 prepare() {
   cd ${_pkgname}-${pkgver}
@@ -44,7 +43,6 @@ build() {
     --disable-debug \
     --disable-static \
     --disable-stripping \
-    --enable-avresample \
     --disable-fontconfig \
     --enable-gmp \
     --enable-gnutls \
@@ -58,6 +56,7 @@ build() {
     --enable-libfribidi \
     --enable-libgsm \
     --disable-libiec61883 \
+    --disable-libjack \
     --enable-libmodplug \
     --enable-libmp3lame \
     --enable-libopencore_amrnb \
@@ -79,6 +78,7 @@ build() {
     --disable-libxcb \
     --enable-libxml2 \
     --enable-libxvid \
+    --disable-nvdec \
     --disable-nvenc \
     --disable-omx \
     --enable-shared \
@@ -96,7 +96,5 @@ build() {
 }
 
 package() {
-  cd ${_pkgname}-${pkgver}
-
-  make DESTDIR="${pkgdir}" install install-man
+  make DESTDIR="${pkgdir}" -C ${_pkgname}-${pkgver} install install-man
 }
