@@ -1,8 +1,9 @@
 # Maintainer: Ainola
 
-pkgname=python-image-git
+pkgbase=python-image-git
+pkgname=(python-image-git python2-image-git)
 pkgver=r162.bf98fbc
-pkgrel=2
+pkgrel=3
 pkgdesc="Django application that provides editing for images and videos."
 arch=('any')
 url="https://github.com/francescortiz/image"
@@ -12,6 +13,7 @@ makedepends=('python-setuptools' 'python-pillow' 'python-requests' 'python-djang
              'python2-setuptools' 'python2-pillow' 'python2-requests' 'python2-django')
 optdepends=('ffmpeg: For video thumbnails')
 provides=('python-image' 'python2-image')
+conflicts=('python-image' 'python2-image')
 source=("git+https://github.com/francescortiz/image.git")
 sha256sums=('SKIP')
 
