@@ -3,7 +3,7 @@
 
 pkgname=luxrender-hg
 pkgver=4918+.f56582df55f4+
-pkgrel=5
+pkgrel=6
 pkgdesc="Rendering system for physically correct, unbiased image synthesis"
 arch=('x86_64')
 url="http://www.luxrender.net/"
@@ -12,9 +12,9 @@ depends=('boost-libs' 'freeimage' 'openexr' 'openimageio' 'libpng' 'opencl-icd-l
          'embree-bvh_build-git')
 optdepends=('luxblend25: Blender exporter' \
             'qt4: Qt GUI' \
-            'python35: pylux Python interface' \
+            'python: pylux Python interface' \
             'opencl-driver: OpenCL support')
-makedepends=('cmake' 'boost' 'mesa' 'qt4' "luxrays-hg" 'python35' 'opencl-headers'
+makedepends=('cmake' 'boost' 'mesa' 'qt4' "luxrays-hg" 'python' 'opencl-headers'
              'eos_portable_archive' 'mercurial')
 provides=('luxrender')
 conflicts=('luxrender')
@@ -51,6 +51,10 @@ prepare() {
 
   # fix unambiguous 'distance' function in boost/gcc8-stl
   patch -Np1 -i ${srcdir}/gcc-8.patch
+  
+  # fix unambiguous 'PyContext' both in python3.7 and lux::
+  sed -i 's/\&PyContext/\&lux::PyContext/g' python/pycontext.h
+  sed -i 's/class_<PyContext/class_<lux::PyContext/' python/pycontext.h
 }
 
 build() {
@@ -58,7 +62,7 @@ build() {
   mkdir -p build
   cd build
 
-  _pyver=$(python3.5 -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
+  _pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
 
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
