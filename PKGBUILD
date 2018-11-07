@@ -6,7 +6,7 @@ pkgname=insync
 pkgver=1.5.4
 _pkgver=37362
 _dist=artful
-pkgrel=1
+pkgrel=2
 pkgdesc="An unofficial Google Drive client that runs on Linux, with support for various desktops"
 url="https://www.insynchq.com/downloads"
 license=('custom:insync')
@@ -17,7 +17,7 @@ optdepends=(
 arch=('x86_64')
 source=('insync@.service' 'insync.service')
 sha256sums=('cf276c1dbf1592ea63a21c2d61c75f7ad6ec3b13e87b3aaa331e9c14799f4598'
-            '1432141539a6b3c5333631a2ee6696fab9bd2fe8770643bc670d95e4e96203e0')
+            '0c3448718a0a95262ca75fbda3e4a4c38f5e68aee77b27b11b22ca0967030b08')
 #sha256sums_i686=('ce89fba3ea1b89b104011400543e1e86c95d01193f150a2e6fdfa4116adf4674')
 sha256sums_x86_64=('7fce024826aa0fd0d9a179caa6dfe6930c272821ca1334e521a59632aef0f68a')
 #source_i686=("http://s.insynchq.com/builds/${pkgname}_${pkgver}.${_pkgver}-${_dist}_i386.deb")
