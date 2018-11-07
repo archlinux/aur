@@ -3,12 +3,12 @@
 
 pkgname=shrew-vpn-client
 pkgver=2.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A portable VPN client for Linux with Qt GUI"
 arch=('i686' 'x86_64')
 url="http://www.shrew.net/"
 license=('osi')
-depends=('qt4' 'openssl')
+depends=('qt4' 'openssl-1.0')
 makedepends=('gcc' 'flex' 'libedit' 'bison' 'cmake')
 optdepends=('openldap' 'logrotate')
 conflicts=('shrew-vpn-client-alpha')
@@ -16,11 +16,20 @@ backup=('etc/iked.conf')
 source=("http://www.shrew.net/download/ike/ike-$pkgver-release.tbz2"
 	'ikea.desktop'
 	'iked.conf'
-	'iked.service')
+	'iked.service'
+	fix-openssl.patch)
 md5sums=('8fc14ac86771ee693d3950757c84f335'
          '5b35a4246eb1b7bd4bfb6780c23d39f2'
          '3cfe649578267235d60ab7cfb6fb4c57'
-         'e90d5922d37f9e45515c5754a3a29c73')
+         'e90d5922d37f9e45515c5754a3a29c73'
+         'c1f793c174db5d7f5c11c8009a967a4d')
+
+prepare() {
+
+  cd $srcdir/ike
+  patch -Np1 -i ../fix-openssl.patch
+
+}
 
 build() {
   cd $srcdir/ike
