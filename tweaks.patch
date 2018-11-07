@@ -1,3 +1,4 @@
+Few tweaks from https://code.google.com/p/satip
 --- a/vtunerc_ctrldev.c
 +++ b/vtunerc_ctrldev.c
 @@ -404,7 +404,7 @@ void vtunerc_unregister_ctrldev(struct vtunerc_config *config)
@@ -56,8 +57,8 @@
 
 -	/* organize PID list table */
 +	if (feed->pid >= 0x2000 ) {
-+	  printk(KERN_ERR "vtunerc%d: full mux not supported\n",ctx->idx);
-+	  return -EINVAL;
++		printk(KERN_ERR "vtunerc%d: full mux not supported\n",ctx->idx);
++		return -EINVAL;
 +	}
 
 +	/* organize PID list table */
@@ -75,7 +76,7 @@
 
  			/* MODULATION */
  			if (c->modulation == PSK_8)
--				/* signal PSK_8 modulation used */
+ 				/* signal PSK_8 modulation used */
 -				msg.body.fe_params.u.qpsk.fec_inner += 9;
 -
 -			/* FEC */
@@ -117,23 +118,18 @@
 -				; /*FIXME: what now? */
 -				break;
 -			}
-+			  /* signal PSK_8 modulation used */
-+			  msg.body.fe_params.u.qpsk.fec_inner |= 64;
++				msg.body.fe_params.u.qpsk.fec_inner |= 64;
 
  			/* ROLLOFF */
  			switch (c->rolloff) {
-@@ -506,10 +466,10 @@ static struct dvb_frontend_ops dvb_proxyfe_qpsk_ops = {
- 		.frequency_tolerance	= 29500,
- 		.symbol_rate_min	= 1000000,
+@@ -508,8 +468,8 @@ static struct dvb_frontend_ops dvb_proxyfe_qpsk_ops = {
  		.symbol_rate_max	= 45000000,
--		.caps = FE_CAN_INVERSION_AUTO |
--			FE_CAN_FEC_1_2 | FE_CAN_FEC_2_3 | FE_CAN_FEC_3_4 |
+ 		.caps = FE_CAN_INVERSION_AUTO |
+ 			FE_CAN_FEC_1_2 | FE_CAN_FEC_2_3 | FE_CAN_FEC_3_4 |
 -			FE_CAN_FEC_5_6 | FE_CAN_FEC_7_8 | FE_CAN_FEC_AUTO |
 -			FE_CAN_QPSK
-+		.caps = FE_CAN_INVERSION_AUTO | FE_CAN_FEC_1_2 |
-+				FE_CAN_FEC_2_3 | FE_CAN_FEC_3_4 | FE_CAN_FEC_4_5 |
-+				FE_CAN_FEC_5_6 | FE_CAN_FEC_7_8 | FE_CAN_FEC_8_9 |
-+				FE_CAN_QPSK | FE_CAN_RECOVER
++			FE_CAN_FEC_4_5 | FE_CAN_FEC_5_6 | FE_CAN_FEC_7_8 |
++			FE_CAN_FEC_8_9 | FE_CAN_QPSK | FE_CAN_RECOVER
  	},
 
  	.release = dvb_proxyfe_release,

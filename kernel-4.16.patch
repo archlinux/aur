@@ -1,3 +1,4 @@
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=fada1935590f66dc6784981e0d557ca09013c847
 --- a/vtunerc_main.c
 +++ b/vtunerc_main.c
 @@ -24,12 +24,12 @@

@@ -1,3 +1,4 @@
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=0df289a209e02f0926042ab07d7d2595ea2d2e9b
 --- a/vtunerc_proxyfe.c
 +++ b/vtunerc_proxyfe.c
 @@ -36,7 +36,7 @@ struct dvb_proxyfe_state {

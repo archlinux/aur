@@ -5,7 +5,7 @@
 pkgname='vtunerc-dkms'
 pkgdesc='Kernel module to create virtual DVB devices'
 pkgver=1.4
-pkgrel=5
+pkgrel=6
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='http://code.google.com/p/vtuner'
 license=('GPL2')
@@ -17,18 +17,22 @@ source=("vtuner.linux-driver-rel${pkgver}.tar.gz::https://github.com/lecotex/vtu
         'kernel-4.6.patch'
         'kernel-4.15.patch'
         'kernel-4.16.patch'
+        'kernel-4.19.patch'
+        'replace-Z-with-z.patch'
         'tweaks.patch'
         '93-vtunerc.rules'
         'dkms.conf')
 sha256sums=('c6ba0cfd808e3f8473a5ea25d4ac2871b826edc62de5f3624c0bd812aad63bc1'
-            'f32fc67d748606633a20ee4b1b04c0282a37ed77e9692ea6e19bf2203fcc4bf3'
-            '29f15d241848b355f4aefc803f34b6da60536da511b5a36535b946c3b7b1c232'
-            '8bb5c7b9399f41ab52e0149c23fd8d6604a3998cf68d013967febae90912972c'
-            '5bc7c82417b23d5cc321e4c99a30c18e75b291fa5dde25ba788554da791734f5'
-            '78e2bec37fa91f7abd999b9d0871bc0c82d39da5e538f0a1b92db547313f5f1e'
-            '9d7177aae059e343d772419ed904b287e018077221ade5d16f5b1d825005008a'
+            '3da500773c6cc2f07a636d0a9f20cd1ac5106ddcd684f80ccd714ee26f7e7498'
+            'e66d690f3cddab61a8a3e6172caefb0877aa240225af4683bcc433718cece242'
+            '1f1318695d96ab9a1b217b83654293c78ee8c86be957f09e8180359b73736a61'
+            'ae701414fee3c96fc8a2a5f705c534d4933485e6b28fab94d912f63395d184b7'
+            '2e8a410409bba057d61ae8b1005a13cb1f359caa562b846e37b5db0448d62395'
+            'c7bc232a5743a0fc4e80f9f72c6e27c2d82444cc307b1835873f63ae10c7efae'
+            '64cfd76c471ab3634711bc2e30dee90ae6498815b970014fe68adcbd50ad3741'
+            '723631658d0a630538f5ab4f87afd69b551a636a31ddb05e6ab13c0a9e5244a1'
             '4b2d860cac8c8bab2d8fa79760d4405bef6fd042f4e78b680d25d1a5ebcbf83d'
-            '47dfa9682b77b136bc72ecf45548ac93bf4dc50e2eaa94441d1401c1bef759a4')
+            '28c89348064d7a2bea96dcdf44339a93b4d3f6fbf868e0b8dc163aca4ff8525c')
 
 package() {
 	install -dm755 ${pkgdir}/usr/src/vtunerc-${pkgver}/patches

@@ -1,3 +1,5 @@
+https://www.spinics.net/lists/linux-media/msg97066.html
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=bb31d2381c730485be00a7da44c45416e9781709
 --- a/vtunerc_proxyfe.c
 +++ b/vtunerc_proxyfe.c
 @@ -107,9 +107,9 @@ static int dvb_proxyfe_read_ucblocks(struct dvb_frontend *fe, u32 *ucblocks)

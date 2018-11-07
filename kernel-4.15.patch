@@ -1,3 +1,4 @@
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=0463625ee9e7b7c786460b6c20073e8c8e283466
 --- a/vtunerc_main.c
 +++ b/vtunerc_main.c
 @@ -119,10 +119,6 @@ static int vtunerc_start_feed(struct dvb_demux_feed *feed)
@@ -32,4 +33,4 @@
 -	.get_property = dvb_proxyfe_get_property,
  	.get_frontend_algo = dvb_proxyfe_get_frontend_algo,
  	.set_frontend = dvb_proxyfe_set_frontend,
- 
+

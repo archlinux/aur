@@ -1,3 +1,5 @@
+https://lore.kernel.org/patchwork/cover/372524
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=3cb5bf1bf947d325fcf6e9458952b51cfd7e6677
 --- a/vtunerc_main.c
 +++ b/vtunerc_main.c
 @@ -22,6 +22,7 @@

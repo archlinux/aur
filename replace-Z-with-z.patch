@@ -1,0 +1,29 @@
+According to kernel trace and printf.3, Z shouldn't be used and is
+synonym to z. So replace accordingly.
+--- a/vtunerc_ctrldev.c
++++ b/vtunerc_ctrldev.c
+@@ -59,11 +59,11 @@ static ssize_t vtunerc_ctrldev_write(struct file *filp, const char *buff,
+ 		// allocate a bigger buffer
+ 		ctx->kernel_buf = kmalloc(len, GFP_KERNEL);
+ 		if (!ctx->kernel_buf) {
+-			printk(KERN_ERR "vtunerc%d: unable to allocate buffer of %Zu bytes\n", ctx->idx, len);
++			printk(KERN_ERR "vtunerc%d: unable to allocate buffer of %zu bytes\n", ctx->idx, len);
+ 			return -ENOMEM;
+ 		}
+ 		ctx->kernel_buf_size = len;
+-		printk(KERN_INFO "vtunerc%d: allocated buffer of %Zu bytes\n", ctx->idx, len);
++		printk(KERN_INFO "vtunerc%d: allocated buffer of %zu bytes\n", ctx->idx, len);
+ 	}
+
+ 	if (down_interruptible(&ctx->tswrite_sem)) {
+--- a/vtunerc_main.c
++++ b/vtunerc_main.c
+@@ -406,7 +406,7 @@ static void __exit vtunerc_exit(void)
+ 		// free allocated buffer
+ 		if(ctx->kernel_buf != NULL) {
+ 			kfree(ctx->kernel_buf);
+-			printk(KERN_INFO "vtunerc%d: deallocated buffer of %Zu bytes\n", idx, ctx->kernel_buf_size);
++			printk(KERN_INFO "vtunerc%d: deallocated buffer of %zu bytes\n", idx, ctx->kernel_buf_size);
+ 			ctx->kernel_buf = NULL;
+ 			ctx->kernel_buf_size = 0;
+
