@@ -8,12 +8,6 @@ PRE_BUILD="configure
   --bindir=/usr/bin
   --sbindir=/usr/bin
   --with-linux-srcdir=/usr/lib/modules/$kernelver/build
-  --disable-perl-binding
-  --disable-guile-binding
-  --disable-php-binding
-  --disable-python-binding
-  --disable-php-binding
-  --disable-tcl-binding"
 
 MAKE="make"
 CLEAN="make clean"
