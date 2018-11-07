@@ -9,7 +9,7 @@ pkgdesc="System monitoring tools for custom desktop environments"
 url="https://gitlab.com/william.belanger/${pkgname%-git}"
 arch=("any")
 license=("GPL3")
-depends=("python>=3.6" "python-pyqt5" "qt5-svg" "qt5-multimedia")
+depends=("python>=3.6" "python-setuptools" "python-pyqt5" "qt5-svg" "qt5-multimedia" "alsa-utils" "pulseaudio-alsa")
 source=("git+https://gitlab.com/william.belanger/${pkgname%-git}.git")
 md5sums=("SKIP")
 

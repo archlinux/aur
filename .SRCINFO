@@ -6,9 +6,12 @@ pkgbase = obsuite-git
 	arch = any
 	license = GPL3
 	depends = python>=3.6
+	depends = python-setuptools
 	depends = python-pyqt5
 	depends = qt5-svg
 	depends = qt5-multimedia
+	depends = alsa-utils
+	depends = pulseaudio-alsa
 	provides = obsuite
 	conflicts = obsuite
 	source = git+https://gitlab.com/william.belanger/obsuite.git
