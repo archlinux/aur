@@ -1,7 +1,7 @@
 # Maintainer: Galen Gold <galen@galengold.me>
 
 pkgname=js8call
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="Software for ragchewing and message-passing based on WSJT-X"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL-3')
 makedepends=(cmake asciidoc asciidoctor)
 depends=(qt5-base qt5-multimedia qt5-serialport libusb libusb-compat gcc-fortran libpulse libpng fftw)
 source=($pkgname-$pkgver.tar.gz::https://bitbucket.org/widefido/wsjtx/get/v$pkgver.tar.gz)
-md5sums=('d72b695a991843f3325f6b7f930a1f08')
+md5sums=('9aa2ca65761509da11559d97c208ae4c')
 
 build() {
     mv $srcdir/widefido-wsjtx* $srcdir/$pkgname-$pkgver
