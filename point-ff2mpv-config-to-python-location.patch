@@ -1,0 +1,12 @@
+diff -ura package.orig/ff2mpv/ff2mpv.json package.new/ff2mpv/ff2mpv.json
+--- package.orig/ff2mpv/ff2mpv.json	2018-11-07 12:19:09.040290072 +0100
++++ package.new/ff2mpv/ff2mpv.json	2018-11-07 12:20:00.107211984 +0100
+@@ -1,7 +1,7 @@
+ {
+     "name": "ff2mpv",
+     "description": "ff2mpv's external manifest",
+-    "path": "/home/william/scripts/ff2mpv",
++    "path": "/usr/share/ff2mpv/ff2mpv.py",
+     "type": "stdio",
+     "allowed_extensions": ["ff2mpv@yossarian.net"]
+ }
