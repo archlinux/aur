@@ -17,8 +17,8 @@ optdepends=('python-piface: Use Piface pins as event sources / actors'
 backup=('etc/doorpi/doorpi.ini')
 # there aren't any binaries that could be stripped; skip searching for them
 options=(!strip)
-source=("doorpi::git+https://github.com/Wuestengecko/DoorPi.git#tag=v3.0beta1"
-        "doorpiweb::git+https://github.com/Wuestengecko/DoorPiWeb.git#tag=v3.0beta1"
+source=("doorpi::git+https://github.com/Wuestengecko/DoorPi.git#tag=v${pkgver%.r*}"
+        "doorpiweb::git+https://github.com/Wuestengecko/DoorPiWeb.git#tag=v${pkgver%.r*}"
         "doorpi.ini"
         "0001-disable-gpio-group.diff")
 md5sums=('SKIP'
