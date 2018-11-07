@@ -2,7 +2,7 @@
 
 pkgname=adapta-kde-git
 _gitname=adapta-kde
-pkgver=r178.2255e46
+pkgver=r180.ae539ff
 pkgrel=1
 pkgdesc="Complete Adapta theme pack for KDE Plasma using Kvantum theme engine (git version)"
 arch=('any')
