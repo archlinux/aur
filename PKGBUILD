@@ -2,7 +2,7 @@
 
 _pkgname='audible-activator'
 pkgname="${_pkgname}-git"
-pkgver=0.2.rg36ec7f0
+pkgver=0.2.rgb9bfe32
 pkgrel=1
 pkgdesc="A script to retrieve your activation data (activation_bytes) from Audible servers. Use it to play your aax or aax+ files downloaded from amazon audible. Needs chrome or chromium."
 url='http://github.com/inAudible-NG/audible-activator'
@@ -66,13 +66,13 @@ pkgver() {
   _rev="$(git ls-remote | head -n1 | head -c7)"
   
   if [ -z "${_ver}" ]; then
-    echo "$0: Error: Could not determine version." > /dev/stderr
+    echo "$0: Error: Could not determine version." >&2
     false
     return 1
   fi
   
   if [ -z "${_rev}" ]; then
-    echo "$0: Error: Could not determine SVN revision." > /dev/stderr
+    echo "$0: Error: Could not determine SVN revision." >&2
     false
     return 1
   else
