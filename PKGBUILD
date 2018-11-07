@@ -2,7 +2,7 @@
 
 _pkgname=pulldown-cmark
 pkgname=pulldown-cmark-git
-pkgver=0.1.0.r39.gff442b9
+pkgver=0.2.0.r0.gff442b9
 pkgrel=1
 pkgdesc='Pull parser for CommonMark, written in Rust (Git version)'
 arch=('x86_64')
