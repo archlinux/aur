@@ -1,8 +1,3 @@
-_depmod() {
-    EXTRAMODULES=extramodules-4.14-ARCH
-    depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
-}
-
 post_install() {
 
     getent group gpib || groupadd -r gpib
@@ -13,15 +8,12 @@ post_install() {
 ===> For example:
 ===> # modprobe ni_usb_gpib
 EOF
-    _depmod
 }
 
 post_upgrade() {
-    _depmod
     echo 'In order to use the new version, reload all gpib modules manually.'
 }
 
 post_remove() {
     groupdel gpib >/dev/null 2>&1 || true
-    _depmod
 }
