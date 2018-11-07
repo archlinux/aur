@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polycitizen@gmail.com>
 
 pkgname=toastify
-pkgver=0.3.2
+pkgver=0.3.4
 pkgrel=1
 pkgdesc='Commandline tool that shows desktop notifications using notify-rust'
 arch=('x86_64')
@@ -9,8 +9,8 @@ url=https://github.com/hoodie/toastify
 license=('Apache' 'MIT')
 depends=('dbus')
 makedepends=('rust')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('3fa7d4eb22f64d64fa99bd88239d484679c79630bed97f9205a8910495c78186c880bbae73d1ea0c788b6ee1e7d162c447222933c8d5e7c5ed24a0de64b46952')
+source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
+sha512sums=('f75e24b6199e27e7c6225dbf71fff5d322200cbc3c426d71104267e10f865b992af1c1fd18917dc187f2285926763551e4c6941c1021290e2d5ee234420616b4')
 
 build() {
   cd $pkgname-$pkgver
