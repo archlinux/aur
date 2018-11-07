@@ -1,6 +1,6 @@
 # Maintainer: NamedKitten <kitteh@namedkitten.pw>
 pkgname=kittehplayer
-pkgver=r273.fed625f
+pkgver=r275.0bd62e7
 pkgrel=1
 pkgdesc="A YouTube-like video player based on Qt, QML and libmpv."
 arch=('x86_64')
