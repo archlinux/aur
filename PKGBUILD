@@ -1,15 +1,15 @@
-# Maintainer: Daniel M. Capella <polyzen@archlinux.info>
+# Maintainer: Daniel M. Capella <polycitizen@gmail.com>
 
 _pkgname=pulldown-cmark
 pkgname=pulldown-cmark-git
-pkgver=0.1.0.r8.gc1ac912
+pkgver=0.1.0.r39.gff442b9
 pkgrel=1
 pkgdesc='Pull parser for CommonMark, written in Rust (Git version)'
 arch=('x86_64')
 url=https://github.com/google/pulldown-cmark
 license=('MIT')
 depends=('gcc-libs')
-makedepends=('rust')
+makedepends=('git' 'rust')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+$url.git")
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
   cd $_pkgname
-  cargo build --release
+  cargo build --release --locked
 }
 
 package() {
