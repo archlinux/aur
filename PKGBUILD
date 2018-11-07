@@ -3,21 +3,25 @@
 
 pkgname=creeper-world
 pkgver=0632
-pkgrel=2
+pkgrel=3
 pkgdesc="Imagine an enemy that is everywhere and moves like a giant, organic mass."
 arch=('any')
 url="http://knucklecracker.com/creeperworld/cw.php"
 license=('custom')
 depends=('adobe-air-sdk')
 makedepends=('unzip' 'gendesk')
-source=("http://knucklecracker.com/creeperworld/dd_webb/CreeperWorld-${pkgver}.exe"
+source=("https://knucklecracker.com/creeperworld/dd_webb/CreeperWorld-$pkgver.exe"
         "creeper-world.sh")
 noextract=("CreeperWorld-${pkgver}.exe")
 sha256sums=('6ddfcaa307e36d8761049177de1dbd6c95acc7536c4ff9b2412687e3367e6afc'
             '809a86452f621dfcb73f1b3b6ef0c2b482315d6f822e14c20ffd720199fc495e')
 
 prepare() {
-    gendesk -n ../PKGBUILD
+    gendesk -n --pkgname="$pkgname" \
+        --name="Creeper World" \
+        --pkgdesc="$pkgdesc" \
+        --exec=/usr/bin/creeper-world \
+        --categories='Game'
     unzip -o "CreeperWorld-${pkgver}.exe"
     unzip -o "CreeperWorld-${pkgver}.air"
 }
