@@ -1,44 +1,33 @@
 #!/bin/sh
 post_install() {
-  getent group dokku >/dev/null ||
-    groupadd --system dokku
-
-  # same as: sshcommand create dokku /usr/bin/dokku
-  getent passwd dokku >/dev/null ||
-    useradd --system \
-            --gid dokku \
-            --shell /usr/bin/dokku \
-            --home-dir /var/dokku/ \
-            -m \
-            dokku
-
-  chown dokku:dokku /var/dokku/
-  mkdir -p /var/dokku/.ssh/
-  touch /var/dokku/.ssh/authorized_keys
-  chown -R dokku:dokku /var/dokku/.ssh/
-  gpasswd -a dokku docker > /dev/null
-
-  echo "$1" | cut -d "-" -f 1 > /var/dokku/VERSION
-
-  if [ ! -f "/var/dokku/HOSTNAME" ]; then
-    hostname -f > "/var/dokku/HOSTNAME"
-    chown dokku:dokku "/var/dokku/HOSTNAME"
-  fi
-
-  echo "%dokku ALL=(ALL) NOPASSWD:/usr/bin/systemctl reload nginx, /usr/sbin/nginx -t" > /etc/sudoers.d/dokku-nginx
-
-  mkdir -p /etc/nginx/conf.d
-
+  DOKKU_ROOT="/home/dokku"
   DOKKU_LIB_ROOT="/var/lib/dokku"
 
-  echo "Cleanup orphaned symlinks"
-  find -L ${DOKKU_LIB_ROOT} -type l -delete
+  sshcommand create dokku /usr/bin/dokku &>/dev/null
+
+  (egrep -i "^docker" /etc/group || groupadd docker) &>/dev/null
+  usermod -aG docker dokku
+
+  echo "Setting up storage directories"
+  mkdir -p ${DOKKU_LIB_ROOT}/data ${DOKKU_LIB_ROOT}/data/storage
+  chown dokku:dokku ${DOKKU_LIB_ROOT}/data ${DOKKU_LIB_ROOT}/data/storage
 
   echo "Setting up plugin directories"
   # should be replaced by `plugn init`
   mkdir -p ${DOKKU_LIB_ROOT}/core-plugins/available ${DOKKU_LIB_ROOT}/plugins/available
   mkdir -p ${DOKKU_LIB_ROOT}/core-plugins/enabled ${DOKKU_LIB_ROOT}/plugins/enabled
   touch ${DOKKU_LIB_ROOT}/core-plugins/config.toml ${DOKKU_LIB_ROOT}/plugins/config.toml
+
+  echo "Migrating old plugins"
+  find ${DOKKU_LIB_ROOT}/plugins/ -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | while read -r plugin; do
+    if [ "$plugin" = "available" ] || [ "$plugin" = "enabled" ]; then
+      continue
+    elif [ -f ${DOKKU_LIB_ROOT}/plugins/$plugin/.core ]; then
+      rm -rf ${DOKKU_LIB_ROOT}/plugins/$plugin
+    elif [ ! -d ${DOKKU_LIB_ROOT}/plugins/available/$plugin ]; then
+      mv ${DOKKU_LIB_ROOT}/plugins/$plugin ${DOKKU_LIB_ROOT}/plugins/available;
+    fi
+  done
 
   echo "Enabling all core plugins"
   find ${DOKKU_LIB_ROOT}/core-plugins/available -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | while read -r plugin; do
@@ -48,27 +37,42 @@ post_install() {
       PLUGIN_PATH=${DOKKU_LIB_ROOT}/plugins plugn enable $plugin
     fi
   done
+  find -L ${DOKKU_LIB_ROOT} -type l -delete
   chown dokku:dokku -R ${DOKKU_LIB_ROOT}/plugins ${DOKKU_LIB_ROOT}/core-plugins
+
+  echo "Ensure proper sshcommand path"
+  echo '/usr/bin/dokku' > "${DOKKU_ROOT}/.sshcommand"
+  mkdir -p ${DOKKU_ROOT}/.ssh
+  touch ${DOKKU_ROOT}/.ssh/authorized_keys
+  if [[ -f .ssh/authorized_keys ]]; then
+    sed -i.bak 's#/usr/local/bin/dokku#/usr/bin/dokku#' "${DOKKU_ROOT}/.ssh/authorized_keys"
+    rm "${DOKKU_ROOT}/.ssh/authorized_keys"
+  fi
 
   echo "Install all core plugins"
   dokku plugin:install --core
 
+  rm -f ${DOKKU_ROOT}/VERSION
+  cp ${DOKKU_LIB_ROOT}/STABLE_VERSION ${DOKKU_ROOT}/VERSION
+
+  hostname -f > "${DOKKU_ROOT}/HOSTNAME"
+
+  mkdir -p /etc/nginx/conf.d
+  echo "%dokku ALL=(ALL) NOPASSWD:/usr/bin/systemctl reload nginx, /usr/sbin/nginx -t" > /etc/sudoers.d/dokku-nginx
+
   echo "
     Please add your ssh pubkey like:
-      $ cat ~/.ssh/id_rsa.pub | sudo sshcommand acl-add dokku 'local key'
+      $ cat ~/.ssh/id_rsa.pub | sudo sshcommand acl-add dokku default
 
     To enable nginx autoconfiguration, add to your /etc/nginx/nginx.conf in http section:
       include /etc/nginx/conf.d/*.conf;
-"
+    And reload nginx:
+      $ sudo systemctl reload nginx
+  "
 }
 
 post_upgrade() {
   post_install $1
-}
-
-pre_remove() {
-  userdel dokku &>/dev/null || true
-  groupdel dokku &>/dev/null || true
 }
 
 post_remove() {
@@ -77,6 +81,12 @@ post_remove() {
   rm -f /etc/systemd/system/dokku-installer.conf
   rm -f /etc/systemd/system/dokku-redeploy.service
   rm -f /etc/update-motd.d/99-dokku
-  rm -rf /var/dokku
+
   rm -rf /etc/nginx/conf.d/dokku.conf
+  systemctl reload nginx
+
+  rm -rf /var/lib/dokku
+  rm -rf /var/log/dokku
+
+  userdel -r dokku &>/dev/null
 }
