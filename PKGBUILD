@@ -1,13 +1,14 @@
 # Maintainer: Jose Riha <jose1711 gmail com>
+# Contributor: Herr_Irrtum
 
 pkgname=huexpress-git
 _pkgname=huexpress
 pkgver=r197.863fd1b
-pkgrel=1
+pkgrel=2
 pkgdesc="A PCEngine emulator forked from Hu-Go!"
 url="https://github.com/kallisti5/huexpress"
 depends=('libzip' 'glu' 'sdl2_mixer')
-makedepends=('git' 'gendesk')
+makedepends=('git' 'gendesk' 'scons')
 conflicts=(huexpress)
 license=('GPL')
 arch=('x86_64' 'i686')
@@ -26,7 +27,7 @@ pkgver() {
 
 package() {
   cd ${srcdir}/${pkgname}
-  install -Dm755 "${srcdir}/${_pkgname}/src/huexpress" "$pkgdir/usr/bin/huexpress"
+  install -Dm755 "${srcdir}/${pkgname}/src/huexpress" "$pkgdir/usr/bin/huexpress"
 }
 
 # vim:set ts=2 sw=2 et:
