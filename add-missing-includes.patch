@@ -1,0 +1,49 @@
+--- a/vtuner-dvb-3.c
++++ b/vtuner-dvb-3.c
+@@ -1,9 +1,11 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <sys/ioctl.h>
++#include <sys/types.h>
+ #include <fcntl.h>
+ #include <string.h>
+ #include <poll.h>
++#include <unistd.h>
+ 
+ #include "vtuner-dvb-3.h"
+ 
+--- a/vtuner-network.c
++++ b/vtuner-network.c
+@@ -1,6 +1,9 @@
+ #include "vtuner-network.h"
+ #include <string.h>
+ #include <stdio.h>
++#include <sys/types.h>
++#include <unistd.h>
++#include <arpa/inet.h>
+ 
+ #define NTOHB(host,net,field) host->field=net.field
+ #define NTOHS(host,net,field) host->field=ntohs(net.field)
+--- a/vtunerc.c
++++ b/vtunerc.c
+@@ -16,6 +16,7 @@
+ #include <linux/dvb/version.h>
+ #include <time.h>
+ #include <sys/param.h>
++#include <pthread.h>
+ 
+ #include "vtuner-network.h"
+ 
+--- a/vtunerd-service.c
++++ b/vtunerd-service.c
+@@ -10,6 +10,10 @@
+ #include <netinet/tcp.h>
+ #include <signal.h>
+ #include <time.h>
++#include <sys/types.h>
++#include <unistd.h>
++#include <pthread.h>
++#include <arpa/inet.h>
+ 
+ #include "vtunerd-service.h"
+ 

@@ -1,0 +1,22 @@
+--- a/vtunerc.c
++++ b/vtunerc.c
+@@ -209,7 +209,7 @@ typedef struct discover_worker_data {
+   unsigned short port;
+ } discover_worker_data_t;
+ 
+-int *discover_worker(void *d) {
++void *discover_worker(void *d) {
+   discover_worker_data_t* data = (discover_worker_data_t*)d;
+ 
+   INFO(MSG_MAIN, "starting discover thread\n");
+--- a/vtunerd-service.c
++++ b/vtunerd-service.c
+@@ -37,7 +37,7 @@ int init_vtuner_service(char *ip, unsign
+ 
+ 	if( ip && strlen(ip) ) {
+ 		unsigned long nip;
+-  		inet_aton(ip, &nip);
++		int inet_aton(const char *ip, struct in_addr *nip);
+ 		if( nip )
+ 			listen_ip = ntohl(nip);
+ 	}
