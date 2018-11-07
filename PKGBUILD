@@ -1,10 +1,10 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 
 pkgname=nginx-mainline-mod-nchan
-pkgver=1.2.1
-pkgrel=3
+pkgver=1.2.3
+pkgrel=1
 
-_nginxver=1.15.4
+_nginxver=1.15.5
 
 pkgdesc='nchan nginx module'
 arch=('i686' 'x86_64')
@@ -31,5 +31,5 @@ package() {
     done
 }
 
-sha256sums=('3324776c800d974ceae8797ab9102ca26a8c3656f5c6fb3f31f2cb1e719458e7'
-            '7bb3ae57a036afabee1da5e40085b69b3fd68026fcc1d8abc98a8ad9f5dccc44')
+sha256sums=('1a3a889a8f14998286de3b14cc1dd5b2747178e012d6d480a18aa413985dae6f'
+            'ea44d9f33115db4737abe611e63e3f734fa18cb11d998354b093a40eb7a8e6be')
