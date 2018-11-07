@@ -3,8 +3,8 @@
 
 pkgname=wireless-regdb-pentest
 _pkgname=wireless-regdb
-pkgver=2018.09.07
-pkgrel=6
+pkgver=2018.10.24
+pkgrel=1
 pkgdesc="Central Regulatory Domain Database with txpower/channels modified for pentesters. please respect the law in your country"
 arch=('any')
 url="http://wireless.kernel.org/en/developers/Regulatory"
@@ -16,54 +16,50 @@ conflicts=('wireless-regdb' 'crda')
 provides=('wireless-regdb' 'crda')
 source=(https://www.kernel.org/pub/software/network/wireless-regdb/wireless-regdb-${pkgver}.tar.xz
         'crda.conf.d'
-	'db.txt.patch'
-	'db.txt2.patch'
+	'db.txt'
 	'set-wireless-regdom'
 	'0001-Makefile-Link-libreg.so-against-the-crypto-library.patch'
 	'0001-Makefile-Don-t-run-ldconfig.patch'
-	'0002-fix-gcc6.patch'
-	'https://www.kernel.org/pub/software/network/crda/crda-3.18.tar.xz')
+	'https://git.kernel.org/pub/scm/linux/kernel/git/mcgrof/crda.git/snapshot/crda-4.14.tar.gz')
 
-sha256sums=('a36b8147f1a3e98e1fd44321a4b8d7ad2f03cac98cdf527ccb1693342f08d65a'
+sha256sums=('0d3e845ac77d21aac9b88642c3dd043a83e3920d706b63d5e5c31dffdbec9116'
             '192428fd959806705356107bffc97b8b379854e79bd013c4ee140e5202326e2b'
-            '68cec28c36289ff3d04ba1b8ccce38e3b414bece53d7d26390ed6541ccbdb2c1'
-            '9c266cb90c9492f617c6b89242723fc81ffa2dc8817d0a6f03dfcffd0d077fbf'
+            '4cf0a9c20540bc1974ae7e14007d6d7538aa27c7f1d8e489cecdc40fc71ed699'
             '603ce97da5cce3f5337e99007ce04e2f295bb33a36b308794884011f7bcabaf3'
             '96b2068b27202f8bc78009869520e396cb3f3ac7a826efef06d0fc41047f2520'
             'ff52990cf9295e5cebcf07ebbf2a96e225d97088573edcc898b29ce33a0fb663'
-            '49507df6694a9970784bce4ed0d36b9130517638072e721cebe0661fe7ba0f5e'
-            '43fcb9679f8b75ed87ad10944a506292def13e4afb194afa7aa921b01e8ecdbf')
+            '5a8f35bb8b27474f466b0e75d451ba917433d8aab1889678a64d9c4e72a8b8c2')
 
 prepare() {
-  tar xf crda-3.18.tar.xz
-  cd "${srcdir}"/"${_pkgname}"-"${pkgver}"
-  patch -Np1 -i ../db.txt.patch
-  patch -Np0 -i ../db.txt2.patch
-  cd "${srcdir}/crda-3.18"
-  patch -Np1 -i ../0002-fix-gcc6.patch
+  tar xf crda-4.14.tar.gz
+  sed 's|^#!/usr/bin/env python|#!/usr/bin/env python2|' -i "${srcdir}"/crda-4.14/utils/key2pub.py
+  cd "${srcdir}"/crda-4.14
+  patch -p1 -i "${srcdir}"/0001-Makefile-Link-libreg.so-against-the-crypto-library.patch
+  patch -p1 -i "${srcdir}"/0001-Makefile-Don-t-run-ldconfig.patch
+  cp "${srcdir}"/db.txt "${srcdir}"/"${_pkgname}"-"${pkgver}"/db.txt
+}
+
+build() {
+  cd "${srcdir}"/"${_pkgname}"-"${pkgver}"/
+  make
+  cp "${srcdir}"/"${_pkgname}"-"${pkgver}"/*.key.pub.pem "${srcdir}"/crda-4.14/pubkeys/	 
+  cd "${srcdir}"/crda-4.14
+  make all_noverify
 }
 
 package() {
-  cd "${srcdir}"/${_pkgname}-${pkgver}/
-  make
-  cp root.key.pub.pem "${srcdir}"/crda-3.18/pubkeys/ 
-  cd "${srcdir}"/crda-3.18
-  sed 's|^#!/usr/bin/env python|#!/usr/bin/python2|' -i utils/key2pub.py
-  patch -p1 -i "${srcdir}"/0001-Makefile-Link-libreg.so-against-the-crypto-library.patch
-  patch -p1 -i "${srcdir}"/0001-Makefile-Don-t-run-ldconfig.patch
-  make
-  
+  cd "${srcdir}"/crda-4.14
   make DESTDIR="${pkgdir}" UDEV_RULE_DIR=/usr/lib/udev/rules.d/ SBINDIR=/usr/bin/ install
   # Adjust paths in udev rule file
   sed 's|/sbin/crda|/usr/bin/crda|' -i "${pkgdir}"/usr/lib/udev/rules.d/85-regulatory.rules
   # This rule automatically sets the regulatory domain when cfg80211 is loaded
   echo 'ACTION=="add" SUBSYSTEM=="module", DEVPATH=="/module/cfg80211", RUN+="/usr/bin/set-wireless-regdom"' >> "${pkgdir}"/usr/lib/udev/rules.d/85-regulatory.rules
 
-  install -D -m644 "${srcdir}"/crda-3.18/LICENSE "${pkgdir}"/usr/share/licenses/crda/LICENSE
+  install -D -m644 "${srcdir}"/crda-4.14/LICENSE "${pkgdir}"/usr/share/licenses/crda/LICENSE
   
   install -D -m755 "${srcdir}"/set-wireless-regdom "${pkgdir}"/usr/bin/set-wireless-regdom
-  cd "${srcdir}"/${_pkgname}-${pkgver}/
-  make  
+  #cd "${srcdir}"/${_pkgname}-${pkgver}/
+ # make  
   # Install and verify regulatory.bin file
   msg "Installing and verifying the regulatory.bin file ..."
   install -D -m644 "${srcdir}"/${_pkgname}-${pkgver}/regulatory.bin "${pkgdir}"/usr/lib/crda/regulatory.bin
