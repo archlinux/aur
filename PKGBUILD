@@ -2,7 +2,7 @@
 # Contributor: Rafael Fontenlle <rafaelff@gnome.org>
 
 pkgname=warsaw-bin
-pkgver=1.12.11.5
+pkgver=1.12.13.8
 pkgrel=1
 pkgdesc="Banking security tool developed by GAS Tecnologia"
 arch=(i686 x86_64)
@@ -14,8 +14,8 @@ provides=('warsaw')
 options=(!strip)
 source_i686=(https://cloud.gastecnologia.com.br/gas/diagnostico/warsaw_setup_32.deb)
 source_x86_64=(https://cloud.gastecnologia.com.br/gas/diagnostico/warsaw_setup_64.deb)
-sha256sums_i686=('96c73b93a31659c30b4c740192b9bab2d5349e2f1daec8c27d37343042ab1a1e')
-sha256sums_x86_64=('e711ecc62f5b29e0e57ea4bb6244fb5f007f235be2367b43fd931c98d11b7382')
+sha256sums_i686=('f5be8314329edc47de71a377296b76d275255eb56f98a2e34eb32002ba0074cf')
+sha256sums_x86_64=('89467d4be8a6cf7b3c0301022519eccd1d5c2ab0a161be931cad9b5863283ac6')
 
 prepare() {
 	tar -xJf data.tar.xz
