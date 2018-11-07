@@ -1,17 +1,17 @@
-# Maintainer: Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 # AutoTrace compiled without ImageMagick dependency
 
 _srcname=autotrace
 pkgname=autotrace-nomagick
 pkgver=0.31.1
-pkgrel=6
+pkgrel=7
 pkgdesc='A program for converting bitmap to vector graphics (no ImageMagick dependency)'
 arch=('i686' 'x86_64')
 url='http://autotrace.sourceforge.net/'
 license=('GPL' 'LGPL')
 depends=('ming' 'pstoedit-nomagick')
-provides=('autotrace' 'libautotrace.so')
+provides=('autotrace')
 conflicts=('autotrace')
 source=("http://sourceforge.net/projects/autotrace/files/AutoTrace/${pkgver}/${_srcname}-${pkgver}.tar.gz"
         'autotrace-0.31.1-CVE-2013-1953.patch'

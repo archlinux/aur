@@ -1,7 +1,7 @@
 pkgbase = autotrace-nomagick
 	pkgdesc = A program for converting bitmap to vector graphics (no ImageMagick dependency)
 	pkgver = 0.31.1
-	pkgrel = 6
+	pkgrel = 7
 	url = http://autotrace.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = autotrace-nomagick
 	depends = ming
 	depends = pstoedit-nomagick
 	provides = autotrace
-	provides = libautotrace.so
 	conflicts = autotrace
 	source = http://sourceforge.net/projects/autotrace/files/AutoTrace/0.31.1/autotrace-0.31.1.tar.gz
 	source = autotrace-0.31.1-CVE-2013-1953.patch
