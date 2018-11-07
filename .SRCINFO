@@ -1,6 +1,6 @@
 pkgbase = ophidian-git
 	pkgdesc = Open-Source Library for Physical Design Research and Teaching.
-	pkgver = 0.1
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://gitlab.com/eclufsc/ophidian
 	arch = any
