@@ -8,7 +8,7 @@ pkgbase=qemu-git
 _gitname=qemu
 pkgname=(qemu-git qemu-headless-git qemu-arch-extra-git qemu-headless-arch-extra-git qemu-block-{iscsi-git,rbd-git,gluster-git} qemu-guest-agent-git)
 pkgdesc="A generic and open source machine emulator and virtualizer. Git version."
-pkgver=v3.0.0.r1761.g7d56239f15
+pkgver=v3.1.0.rc0.r0.g4de6bb0c02
 pkgrel=1
 epoch=5
 arch=(i686 x86_64)
@@ -156,7 +156,7 @@ _package() {
    case $_blob in
       # provided by seabios package
       bios.bin|acpi-dsdt.aml|bios-256k.bin|vgabios-cirrus.bin|vgabios-qxl.bin|\
-      vgabios-stdvga.bin|vgabios-vmware.bin) rm "$_blob"; continue ;;
+      vgabios-stdvga.bin|vgabios-bochs-display.bin|vgabios-ramfb.bin|vgabios-vmware.bin|vgabios-virtio.bin) rm "$_blob"; continue ;;
 
    
   # iPXE ROMs
