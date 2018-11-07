@@ -2,11 +2,11 @@
 
 pkgname=python-enum-compat
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="enum/enum34 compatibility package"
 url="https://github.com/jstasiak/enum-compat"
 depends=('python' )
-makedepends=('python3' )
+makedepends=('python3' 'python-setuptools')
 license=('MIT')
 arch=('any')
 source=('https://pypi.python.org/packages/95/6e/26bdcba28b66126f66cf3e4cd03bcd63f7ae330d29ee68b1f6b623550bfa/enum-compat-0.0.2.tar.gz')
