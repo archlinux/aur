@@ -15,7 +15,7 @@ _pkgname=qgis
 pkgname="$_pkgname"-ltr
 pkgver=2.18.25
 pkgrel=1
-pkgdesc='Geographic Information System (GIS) that supports vector, raster & database formats; Long Term Release'
+pkgdesc='Geographic Information System (GIS); Old Long Term Release'
 url='https://qgis.org/'
 license=('GPL')
 arch=('i686' 'x86_64')
@@ -36,11 +36,11 @@ optdepends=('gpsbabel: GPS Tool plugin'
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("https://qgis.org/downloads/$_pkgname-$pkgver.tar.bz2")
-# curl -s https://qgis.org/downloads/qgis-latest-ltr.tar.bz2.md5
+# curl https://qgis.org/downloads/qgis-latest-ltr.tar.bz2.md5
 md5sums=('7b176867671981c45cbe859288ff9fb3')
 
 prepare() {
-  cd $_pkgname-$pkgver
+  cd "$_pkgname-$pkgver"
 
   # Make sure we find the -qt4 versions of qwt and qwtpolar
   sed -i '/QWT_LIBRARY_NAMES/ s/qwt /qwt-qt4 /' cmake/FindQwt.cmake
@@ -60,7 +60,7 @@ prepare() {
 }
 
 build() {
-  cd $_pkgname-$pkgver/build
+  cd "$_pkgname-$pkgver"/build
 
   cmake -G "Unix Makefiles" ../ \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -80,7 +80,7 @@ build() {
 }
 
 package() {
-  cd $_pkgname-$pkgver/build
+  cd "$_pkgname-$pkgver"/build
 
   # Add optional deps based on selected or autodetected options
   [[ -n "$(sed -n '/^GRASS_PREFIX:/  s/.*=//p' CMakeCache.txt)" ]]      && optdepends+=('grass6: GRASS6 plugin')

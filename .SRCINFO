@@ -1,5 +1,5 @@
 pkgbase = qgis-ltr
-	pkgdesc = Geographic Information System (GIS) that supports vector, raster & database formats; Long Term Release
+	pkgdesc = Geographic Information System (GIS); Old Long Term Release
 	pkgver = 2.18.25
 	pkgrel = 1
 	url = https://qgis.org/
