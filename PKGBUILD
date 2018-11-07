@@ -40,7 +40,7 @@ select yn in "Yes" "No"; do
     bsdtar -xf $srcdir/waterfox-i18n-${_chosen_language}-${_i18n_ver}-0-x86_64.pkg.tar.xz -C "$pkgdir/"
     rm $pkgdir/.BUILDINFO
     rm $pkgdir/.MTREE
-    rm $pkgdir/.PKGINFO    
+    rm $pkgdir/.PKGINFO
     fi
     mkdir $pkgdir/usr/lib/waterfox/.installer/
     cp $_settings $pkgdir/usr/lib/waterfox/.installer/
@@ -62,27 +62,27 @@ echo "Do you wish to download and install language pack (if you want to have en-
 _download_language=yes
 echo -e "Available languages:
   (ach) Acholi; (af) Afrikaans; (an) Aragonese; (ar) Arabic; (as) Assamese;
-  (ast) Asturian; (az) Azerbaijani; (bg) Bulgarian; (bn-BD) Bengali - Bangladesh;
-  (bn-IN) Bengali - India; (br) Breton; bs) Bosnian; (ca) Catalan; 
-  (cak) Maya Kaqchikel; (cs) Czech; (cy) Welsh; (da) Danish; (de) German; 
-  (dsb) Lower Sorbian; (el) Greek; (en-GB) English - British;
-  (en-ZA) English - South African; (eo) Esperanto; (es-AR) Spanish - Argentina; 
-  (es-CL) Spanish - Chile; (es-ES) Spanish - Spain; (es-MX) Spanish
-  (et) Estonian; (eu) Basque; (fa) Persian; (ff) Fulah; (fi) Finnish; 
-  (fr) French; (fy-NL) Frisian; (ga-IE) Irish; (gd) Gaelic - Scotland; 
-  (gl) Galician; (gn) Guarani; (gu-IN) Gujarati - India; (he) Hebrew; 
-  (hi-IN) Hindi - India; (hr) Croatian; (hsb) Upper Sorbian; (hu) Hungarian;
-  (hy-AM) Armenian; (id) Indonesian; (is) Icelandic; (it) Italian;
-  (ja) Japanese; (ka) Georgian; (kab) Kabyle; (kk) Kazakh; (km) Khmer; 
-  (kn) Kannada; (ko) Korean; (lij) Ligurian; (lt) Lithuanian; (lv) Latvian; 
-  (mai) Maithili; (mk) Macedonian; (ml) Malayalam; (mr) Marathi; (ms) Malay; 
-  (nb-NO) Norwegian - Bokmål; (nl) Dutch; (nn-NO) Norwegian - Nynorsk; (or) Oriya; 
-  (pa-IN) Punjabi - India; (pl) Polish; (pt-BR) Portuguese - Brazilian; 
-  (pt-PT) Portuguese - Portugal; (rm) Romansh; (ro) Romanian; (ru) Russian;
+  (ast) Asturian; (az) Azerbaijani; (bg) Bulgarian; (bn-bd) Bengali - Bangladesh;
+  (bn-in) Bengali - India; (br) Breton; bs) Bosnian; (ca) Catalan;
+  (cak) Maya Kaqchikel; (cs) Czech; (cy) Welsh; (da) Danish; (de) German;
+  (dsb) Lower Sorbian; (el) Greek; (en-gb) English - British;
+  (en-za) English - South African; (eo) Esperanto; (es-ar) Spanish - Argentina;
+  (es-cl) Spanish - Chile; (es-es) Spanish - Spain; (es-mx) Spanish
+  (et) Estonian; (eu) Basque; (fa) Persian; (ff) Fulah; (fi) Finnish;
+  (fr) French; (fy-nl) Frisian; (ga-ie) Irish; (gd) Gaelic - Scotland;
+  (gl) Galician; (gn) Guarani; (gu-in) Gujarati - India; (he) Hebrew;
+  (hi-in) Hindi - India; (hr) Croatian; (hsb) Upper Sorbian; (hu) Hungarian;
+  (hy-am) Armenian; (id) Indonesian; (is) Icelandic; (it) Italian;
+  (ja) Japanese; (ka) Georgian; (kab) Kabyle; (kk) Kazakh; (km) Khmer;
+  (kn) Kannada; (ko) Korean; (lij) Ligurian; (lt) Lithuanian; (lv) Latvian;
+  (mai) Maithili; (mk) Macedonian; (ml) Malayalam; (mr) Marathi; (ms) Malay;
+  (nb-no) Norwegian - Bokmål; (nl) Dutch; (nn-no) Norwegian - Nynorsk; (or) Oriya;
+  (pa-in) Punjabi - India; (pl) Polish; (pt-br) Portuguese - Brazilian;
+  (pt-pt) Portuguese - Portugal; (rm) Romansh; (ro) Romanian; (ru) Russian;
   (si) Sinhala; (sk) Slovak; (sl) Slovenian; (son) Songhai; (sq) Albanian;
-  (sr) Serbian; (sv-SE) Swedish; (ta) Tamil; (te) Telugu; (th) Thai;
+  (sr) Serbian; (sv-se) Swedish; (ta) Tamil; (te) Telugu; (th) Thai;
   (tr) Turkish; (uk) Ukrainian; (uz) Uzbek; (vi) Vietnamese;
-  (xh) Xhosa; (zh-CN) Simplified Chinese; (zh-TW) Traditional Chinese
+  (xh) Xhosa; (zh-cn) Simplified Chinese; (zh-tw) Traditional Chinese
 "
 printf "Type language code of language you wish to download and install
 (language code is acronym that is inside the parentheses () before your language,
@@ -94,7 +94,7 @@ read _chosen_language
     bsdtar -xf $srcdir/waterfox-i18n-${_chosen_language}-${_i18n_ver}-0-x86_64.pkg.tar.xz -C "$pkgdir/"
     rm $pkgdir/.BUILDINFO
     rm $pkgdir/.MTREE
-    rm $pkgdir/.PKGINFO  
+    rm $pkgdir/.PKGINFO
                     break;;
                     No )
                     _download_language=no
