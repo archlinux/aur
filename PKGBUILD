@@ -7,8 +7,8 @@
 # These are FREE fonts, but see the disclaimer at http://www.ephifonts.com/disclaimer
 
 pkgname=ephifonts-no-helvetica
-pkgver=20150610
-pkgrel=2
+pkgver=20181107
+pkgrel=1
 pkgdesc='A collection of free fonts including Futura and Gotham (ephifonts.com). 
 Does not include Helvetica as Helvetica messes up fonts in Firefox and Chromium.'
 arch=('any')
