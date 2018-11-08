@@ -9,10 +9,10 @@
 # Maintainer: Adrian Bacircea <adrian.bacircea@gmail.com>
 pkgname=chap-git # '-bzr', '-git', '-hg' or '-svn'
 pkgver=r113.78bd79f
-pkgrel=1
+pkgrel=2
 pkgdesc="ELF core file memory analyzer"
 arch=(x86_64)
-url="https://githubb.com/vmware/chap"
+url="https://github.com/vmware/chap"
 license=('GPL2')
 makedepends=('git' 'cmake')
 source=('chap::git+https://github.com/vmware/chap.git')
