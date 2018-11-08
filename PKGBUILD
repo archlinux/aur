@@ -6,7 +6,7 @@ _use_gh_api=true
 wl_project=${_orgname}
 wl_dl="https://hosted.weblate.org/download/${wl_project}"
 pkgname=${_orgname,,}-${_pkgname}-git
-pkgver=0.8.3.r4690.99c418c7
+pkgver=0.9.git.6e288c3pre.r4703.aef74609
 pkgrel=1
 pkgdesc="Map drawing program from OpenOrienteering"
 arch=('i686' 'x86_64')
@@ -52,19 +52,24 @@ pkgver() {
   printf "%s.r%s.%s" "${release#?}" "${count}" "${head}"
 }
 
+wl_update() {
+  find . -name "${2}*.ts" -a ! -name "*template*" | \
+    xargs basename -s .ts | \
+    xargs -P 0 -I{} sh -c "curl -so \$1.ts $wl_dl/${1}/\${1#${2}}/" -- {}
+}
+
 prepare() {
   cd ${_pkgname}-${_branch}/translations
 
-  for lang in `ls OpenOrienteering_*.ts | sed 's/OpenOrienteering_\(.*\)\.ts/\1/;/template/d;s/zh_CN/zh_Hans/'`; do
-    curl -so OpenOrienteering_$lang.ts $wl_dl/${_pkgname}/$lang/
-  done
-  rename Hans.ts CN.ts OpenOrienteering_zh_Hans.ts
-  for lang in `ls map_symbols_*.ts | sed 's/map_symbols_\(.*\)\.ts/\1/;/template/d'`; do
-    curl -so map_symbols_$lang.ts $wl_dl/map-symbols/$lang/
-  done
-  for lang in `ls qt_*.ts | sed 's/qt_\(.*\)\.ts/\1/;/template/d'`; do
-    curl -so qt_$lang.ts $wl_dl/qt/$lang/
-  done
+  rename nb nb_NO *_nb.ts
+  rename CN Hans *_zh_CN.ts
+
+  wl_update ${_pkgname} ${_orgname}_
+  wl_update map-symbols map_symbols_
+  wl_update qt qt_
+
+  rename nb_NO nb *_nb_NO.ts
+  rename Hans CN *_zh_Hans.ts
 }
 
 build() {
