@@ -3,8 +3,8 @@
 # Contributor: Patrik Plihal <patrik.plihal at gmail dot com>
 #
 pkgname=nunit3-console
-pkgver=3.7.0
-pkgrel=2
+pkgver=3.9.0
+pkgrel=1
 pkgdesc="NUnit 3 console runner"
 arch=('any')
 license=('MIT')
@@ -12,9 +12,8 @@ url="http://www.nunit.com"
 depends=('mono')
 
 #source=("https://github.com/nunit/nunit-console/releases/download/${pkgver}/NUnit.Console-${pkgver}.zip")
-source=("https://github.com/nunit/nunit-console/releases/download/3.7/NUnit.Console-3.7.0.zip")
-sha256sums=('c8ecfca48fb36cfceba5d7b6fe3ac51aec329e76df99aa187dfb285c1c157045')
-
+source=("https://github.com/nunit/nunit-console/releases/download/v3.9/NUnit.Console-3.9.0.zip")
+sha256sums=('ee11b97bd075414ec196ed6eae8e526aa78bb59251d9bdabe513d07e3b2b7bea')
 package() {
 	# copy files, except the link to the original zip file
 	mkdir -p   "${pkgdir}/usr/lib/${pkgname}"
