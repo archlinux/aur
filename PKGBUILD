@@ -1,7 +1,7 @@
 # Maintainer: Yichao Zhou <broken.zhou@gmail.com>
 pkgname=texlive-installer
 pkgver=2018
-pkgrel=0
+pkgrel=1
 pkgdesc="This packages provides the installer of texlive.  It also tricks Arch into thinking it has its texlive packages installed."
 url="http://www.tug.org/texlive/"
 arch=('any')
@@ -10,8 +10,8 @@ depends=('wget' 'xz')
 optdepends=()
 makedepends=()
 replaces=()
-conflicts=('texlive-bin' $(pacman -Sgq texlive-most texlive-lang))
-provides=('texlive-bin' $(pacman -Sgq texlive-most texlive-lang))
+conflicts=('texlive-bin' 'texlive-htmlxml' $(pacman -Sgq texlive-most texlive-lang))
+provides=('texlive-bin' 'texlive-htmlxml' $(pacman -Sgq texlive-most texlive-lang))
 source=("http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz")
 md5sums=('SKIP')
 install=${pkgname}.install
