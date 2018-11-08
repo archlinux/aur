@@ -1,7 +1,7 @@
 # Maintainer: Oirio Joshi <joshirio@protonmail.com>
 # Author: Vladimir Yakovlev <desktop-app@protonmail.ch>
 pkgname=email-securely-app-bin
-pkgver=1.5.3
+pkgver=1.5.4
 pkgrel=1
 pkgdesc="Unofficial desktop app for several E2E encrypted email providers"
 arch=('x86_64')
