@@ -1,7 +1,7 @@
 pkgbase = gtk-theme-adwaita-tweaks-git
 	pkgdesc = Tweaks to improve the default GNOME experience.
 	pkgver = r102.4d6e08e
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Jazqa/adwaita-tweaks
 	arch = any
 	license = GPL3
@@ -9,6 +9,8 @@ pkgbase = gtk-theme-adwaita-tweaks-git
 	provides = gtk-theme-adwaita-tweaks
 	conflicts = gtk-theme-adwaita-tweaks
 	source = git+https://github.com/Jazqa/adwaita-tweaks.git
+	source = adwaita-tweaks-dark::git+https://github.com/Jazqa/adwaita-tweaks.git#branch=dark
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = gtk-theme-adwaita-tweaks-git
