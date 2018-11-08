@@ -1,3 +1,6 @@
+micro-*.pkg.tar.xz
+micro-*.log
+PKGBUILD-namcap.log
 assertions/
 clipboard/
 encoding/
@@ -14,7 +17,6 @@ goconvey/
 gopher-lua/
 gopher-luar/
 json5/
-micro-*.pkg.tar.xz
 micro-*/
 net/
 pkg/
