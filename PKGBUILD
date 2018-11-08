@@ -9,7 +9,6 @@ arch=("x86_64")
 url="https://${pkgname}.io"
 license=("custom" "BSD" "CCPL")
 depends=("glu" "java-environment" "lib32-libglvnd")
-makedepends=("git" "python")
 optdepends=("android-sdk"
             "android-studio"
             "bash"
@@ -20,6 +19,7 @@ optdepends=("android-sdk"
             "perl"
             "python"
             "sh")
+makedepends=("git" "python")
 backup=("opt/${pkgname}/packages/${pkgname}_test/pubspec.yaml" "opt/${pkgname}/packages/${pkgname}/pubspec.yaml")
 options=("!emptydirs")
 install="${pkgname}.install"
