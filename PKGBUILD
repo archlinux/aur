@@ -3,13 +3,12 @@
 
 pkgname=gnome-xcf-thumbnailer
 pkgver=1.0
-pkgrel=9
+pkgrel=10
 pkgdesc="GNOME thumbnailer for GIMP XCF files."
 arch=('x86_64')
 url="https://download.gnome.org/sources/gnome-xcf-thumbnailer/"
 license=('GPL2')
-# Without gimp, .xcf thumbnails are never displayed
-depends=('glib2' 'libpng' 'gimp')
+depends=('glib2' 'libpng')
 makedepends=('gconf')
 source=("https://download.gnome.org/sources/gnome-xcf-thumbnailer/${pkgver}/gnome-xcf-thumbnailer-${pkgver}.tar.bz2"
         "gnome-xcf-thumbnailer.thumbnailer"
@@ -30,15 +29,11 @@ prepare(){
     # libpng12 does not distribute headers any more. We must adjust to be
     # buildable with recent versions of libpng.
     patch -d gnome-xcf-thumbnailer-$pkgver -p1 < NULL-updates.patch
-
-    install -m755 -d "$pkgdir/usr/share/gconf/schemas"
-    gconf-merge-schema "$pkgdir/usr/share/gconf/schemas/${pkgname}.schemas" \
-        --domain gnome-xcf-thumbnailer "$pkgdir/usr/share/$pkgname/${pkgname}.sc"
 }
 
 build() {
     cd "$pkgname-$pkgver"
-    ./configure --prefix=/usr
+    ./configure --prefix=/usr --sysconfdir=/etc
     make
 }
 
@@ -48,4 +43,7 @@ package() {
     make DESTDIR="$pkgdir" install
 
     install -Dm644 ../gnome-xcf-thumbnailer.thumbnailer -t "$pkgdir/usr/share/thumbnailers/"
+    install -m755 -d "$pkgdir/usr/share/gconf/schemas"
+    gconf-merge-schema "$pkgdir/usr/share/gconf/schemas/${pkgname}.schemas" \
+        --domain gnome-xcf-thumbnailer "$pkgdir/usr/share/$pkgname/${pkgname}.sc"
 }
