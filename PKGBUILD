@@ -27,8 +27,7 @@ _repo=https://hg.mozilla.org/mozilla-unified
 conflicts=('firefox')
 provides=('firefox')
 source=('mozilla-unified::hg+https://hg.mozilla.org/mozilla-central/'
-        $_pkgname.desktop
-        $_pkgname-symbolic.svg)
+        $_pkgname.desktop firefox-symbolic.svg)
 sha256sums=('SKIP'
             '677e1bde4c6b3cff114345c211805c7c43085038ca0505718a11e96432e9811a'
             '9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797')
@@ -51,7 +50,6 @@ pkgver() {
 }
 
 prepare() {
-  mkdir mozbuild
   cd mozilla-unified
 
   echo -n "$_google_api_key" >google-api-key
@@ -65,6 +63,8 @@ ac_add_options --enable-release
 ac_add_options --enable-hardening
 ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
+ac_add_options --disable-dbus
+ac_add_options --disable-necko-wifi
 
 # Branding
 ac_add_options --enable-official-branding
@@ -85,8 +85,8 @@ ac_add_options --with-system-bz2
 ac_add_options --with-system-icu
 ac_add_options --with-system-jpeg
 ac_add_options --with-system-libvpx
-ac_add_options --with-system-nspr
-ac_add_options --with-system-nss
+#ac_add_options --with-system-nspr
+#ac_add_options --with-system-nss
 ac_add_options --with-system-zlib
 
 # Features
@@ -96,7 +96,6 @@ ac_add_options --enable-startup-notification
 ac_add_options --enable-crashreporter
 ac_add_options --disable-gconf
 ac_add_options --disable-updater
-ac_add_options --enable-lto=full
 END
 }
 
