@@ -1,0 +1,512 @@
+diff -ura f3-qt-2.1.0/f3_launcher.cpp f3-qt/f3_launcher.cpp
+--- f3-qt-2.1.0/f3_launcher.cpp	2017-03-06 17:29:20.000000000 -0800
++++ f3-qt/f3_launcher.cpp	2018-11-07 20:30:31.359994699 -0800
+@@ -138,9 +138,16 @@
+ f3_launcher::f3_launcher()
+ {
+     errCode = f3_launcher_ok;
++
++    f3_path = "./";
+     float version = probeVersion();
+     if (version == 0)
+     {
++        f3_path = "";
++        version = probeVersion();
++    }
++    if (version == 0)
++    {
+         emitError(f3_launcher_no_cui);
+         return;
+     }
+@@ -178,7 +185,7 @@
+             SIGNAL(timeout()),
+             this,
+             SLOT(on_timer_timeout()));
+-    timer.setInterval(1500);
++    timer.setInterval(200);
+ 
+ }
+ 
+@@ -222,7 +229,7 @@
+         stopCheck();
+ 
+     f3_cui_output.clear();
+-    progress = 0;
++    progress10K = 0;
+     status = f3_launcher_running;
+     emit f3_launcher_status_changed(f3_launcher_running);
+ 
+@@ -266,7 +273,7 @@
+         emit f3_launcher_status_changed(f3_launcher_staged);
+     }
+     args << devPath;
+-    f3_cui.start(command, args);
++    f3_cui.start(command.prepend(f3_path), args);
+ 
+     if (showProgress)
+     {
+@@ -380,12 +387,12 @@
+     QStringList args;
+     args << "-l" << QString::number(blockCount);
+     args << devPath;
+-    f3_cui.start(F3_FIX_COMMAND, args);
++    f3_cui.start(QString(F3_FIX_COMMAND).prepend(f3_path), args);
+ }
+ 
+ bool f3_launcher::probeCommand(QString command)
+ {
+-    f3_cui.start(command);
++    f3_cui.start(command.prepend(f3_path));
+     f3_cui.waitForStarted();
+     f3_cui.waitForFinished();
+     if (f3_cui.exitCode() == 255)
+@@ -510,12 +517,12 @@
+         }
+ 
+         stage = 2;
+-        progress = 0;
++        progress10K = 0;
+         QStringList args;
+         if (showProgress)
+             args << QString(F3_OPTION_SHOW_PROGRESS);
+         args << devPath;
+-        f3_cui.start(QString(F3_READ_COMMAND),args);
++        f3_cui.start(QString(F3_READ_COMMAND).prepend(f3_path),args);
+         emit f3_launcher_status_changed(f3_launcher_staged);
+ 
+         if (showProgress)
+@@ -553,9 +560,9 @@
+     if (p >= 0)
+     {
+         int p2 = temp.indexOf("... ", p - 7);
+-        int percentage = temp.mid(p2 + 4, p - p2 - 4).trimmed().toFloat();
+-        if (percentage > progress)
+-            progress = percentage;
++        float percentage10K = temp.mid(p2 + 4, p - p2 - 4).trimmed().toFloat() * 100.0f;
++        if (percentage10K > progress10K)
++            progress10K = percentage10K;
+         emit f3_launcher_status_changed(f3_launcher_progressed);
+     }
+     f3_cui_output.append(temp);
+diff -ura f3-qt-2.1.0/f3_launcher.h f3-qt/f3_launcher.h
+--- f3-qt-2.1.0/f3_launcher.h	2017-03-06 17:29:20.000000000 -0800
++++ f3-qt/f3_launcher.h	2018-11-07 20:30:31.359994699 -0800
+@@ -66,7 +66,7 @@
+     QString getOption(QString key);
+     void startFix();
+     QString f3_cui_output;
+-    int progress;
++    int progress10K;
+ 
+ signals:
+     void f3_launcher_status_changed(f3_launcher_status status);
+@@ -74,13 +74,15 @@
+ 
+ private:
+     QProcess f3_cui;
+-    f3_launcher_status status;
+-    f3_launcher_error_code errCode;
+-    bool showProgress;
+-    QString devPath;
+-    int stage;
+     QTimer timer;
++    QString devPath;
++    QString f3_path;
+     QMap<QString,QString> options;
++    bool showProgress;
++    int stage;
++    f3_launcher_status status;
++    f3_launcher_error_code errCode;
++
+     void emitError(f3_launcher_error_code errorCode);
+     bool probeCommand(QString command);
+     float probeVersion();
+Only in f3-qt: f3-qt.desktop
+diff -ura f3-qt-2.1.0/f3-qt.pro f3-qt/f3-qt.pro
+--- f3-qt-2.1.0/f3-qt.pro	2017-03-06 17:29:20.000000000 -0800
++++ f3-qt/f3-qt.pro	2018-11-07 20:30:31.359994699 -0800
+@@ -35,3 +35,7 @@
+ 
+ RESOURCES += \
+     icon.qrc
++
++target.path = $${PREFIX}/bin/
++
++INSTALLS += target
+\ No newline at end of file
+Only in f3-qt-2.1.0: f3-qt.pro.user
+diff -ura f3-qt-2.1.0/.gitignore f3-qt/.gitignore
+--- f3-qt-2.1.0/.gitignore	2017-03-06 17:29:20.000000000 -0800
++++ f3-qt/.gitignore	2018-11-07 20:30:31.359994699 -0800
+@@ -2,3 +2,4 @@
+ *.o
+ moc*
+ ui*.h
++*.pro.user
+diff -ura f3-qt-2.1.0/main.cpp f3-qt/main.cpp
+--- f3-qt-2.1.0/main.cpp	2017-03-06 17:29:20.000000000 -0800
++++ f3-qt/main.cpp	2018-11-07 20:30:31.359994699 -0800
+@@ -3,6 +3,16 @@
+ 
+ int main(int argc, char *argv[])
+ {
++    // Enable scaling for HiDPI device
++    if (qgetenv("QT_SCALE_FACTOR").isEmpty() &&
++        qgetenv("QT_SCREEN_SCALE_FACTORS").isEmpty())
++    {
++        qputenv("QT_AUTO_SCREEN_SCALE_FACTOR", "1");
++#if QT_VERSION >= QT_VERSION_CHECK(5, 6, 0)
++        QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
++#endif
++    }
++
+     QApplication a(argc, argv);
+     MainWindow w;
+     w.show();
+diff -ura f3-qt-2.1.0/mainwindow.cpp f3-qt/mainwindow.cpp
+--- f3-qt-2.1.0/mainwindow.cpp	2017-03-06 17:29:20.000000000 -0800
++++ f3-qt/mainwindow.cpp	2018-11-07 20:30:31.359994699 -0800
+@@ -28,21 +28,22 @@
+ {    
+     f3_launcher_error_code cuiError = cui.getErrCode();
+     if (cuiError != 0)
+-        on_cui_error(cuiError);
++        on_cuiError(cuiError);
+ 
+     ui->setupUi(this);
++    ui->stackedWidget->setCurrentIndex(0);
+     connect(&cui,
+             SIGNAL(f3_launcher_status_changed(f3_launcher_status)),
+             this,
+-            SLOT(on_cui_status_changed(f3_launcher_status)));
++            SLOT(on_cuiStatusChanged(f3_launcher_status)));
+     connect(&cui,
+             SIGNAL(f3_launcher_error(f3_launcher_error_code)),
+             this,
+-            SLOT(on_cui_error(f3_launcher_error_code)));
++            SLOT(on_cuiError(f3_launcher_error_code)));
+     connect(&timer,
+             SIGNAL(timeout()),
+             this,
+-            SLOT(on_timer_timeout()));
++            SLOT(on_timerTimeout()));
+     checking = false;
+     this->userMode = 0;
+     move((QApplication::desktop()->width() - width()) / 2,
+@@ -64,13 +65,31 @@
+ void MainWindow::clearStatus()
+ {
+     ui->statusBar->showMessage("Ready");
+-    ui->groupResult->hide();
++    ui->frameResult->hide();
+     ui->labelSpace->clear();
+     ui->labelSpeed->clear();
+-    ui->progressBar->setValue(0);
++    showProgress(0);
+     ui->labelProgress->setText("Progress:");
+ }
+ 
++void MainWindow::showProgress(int progress10K)
++{
++    if (progress10K < 0)
++    {
++        ui->progressBar->setMaximum(0);
++        ui->progressBar->setValue(0);
++        ui->labelProgressValue->setText("");
++        return;
++    }
++
++    if (ui->progressBar->maximum() <= 0)
++        ui->progressBar->setMaximum(10000);
++    ui->progressBar->setValue(progress10K);
++    ui->labelProgressValue->setText(QString("%1%").
++                                    arg(progress10K / 100.0f));
++    ui->progressBar->repaint();
++}
++
+ void MainWindow::showCapacity(int value)
+ {
+     if (value >= 0)
+@@ -165,8 +184,9 @@
+     cui.startFix();
+ }
+ 
+-void MainWindow::on_cui_status_changed(f3_launcher_status status)
++void MainWindow::on_cuiStatusChanged(f3_launcher_status status)
+ {
++    QString qsSpinNext;
+     switch(status)
+     {
+         case f3_launcher_ready:
+@@ -179,7 +199,7 @@
+             ui->textDevPath->setReadOnly(true);
+             ui->buttonSelectDev->setEnabled(false);
+             ui->buttonSelectPath->setEnabled(false);
+-            ui->groupProgress->show();
++            ui->frameProgress->show();
+             break;
+         case f3_launcher_finished:
+         {
+@@ -206,28 +226,36 @@
+                                     .append("\nWrite speed: ")
+                                     .append(report.WritingSpeed)
+                                     );
+-            ui->groupResult->show();
+-            ui->progressBar->setMaximum(100);
++            ui->frameResult->show();
++            showProgress(0);
+             showCapacity(report.availability * 100);
+             break;
+         }
+         case f3_launcher_stopped:
+             showStatus("Stopped.");
+             ui->progressBar->setMaximum(100);
+-            ui->progressBar->setValue(0);
++            showProgress(0);
++            ui->labelProgressSpin->setText("!");
+             break;
+         case f3_launcher_staged:
+         {
+             QString progressText;
+             progressText.sprintf("Progress:(Stage %d)",cui.getStage());
+             ui->labelProgress->setText(progressText);
+-            ui->progressBar->setMaximum(0);
+-            ui->progressBar->setValue(0);
++            showProgress(-1);
++            ui->labelProgressSpin->setText("?");
+             break;
+         }
+         case f3_launcher_progressed:
+-            ui->progressBar->setMaximum(100);
+-            ui->progressBar->setValue(cui.progress);
++            showProgress(cui.progress10K);
++            switch(ui->labelProgressSpin->text()[0].toLatin1()){
++                case '|': qsSpinNext = "/"; break;
++                case '/': qsSpinNext = "---"; break;
++                case '-': qsSpinNext = "\\"; break;
++                case '\\': qsSpinNext = "|"; break;
++                default: qsSpinNext = "|"; break;
++            }
++            ui->labelProgressSpin->setText(qsSpinNext);
+             break;
+     }
+     if (status == f3_launcher_running ||
+@@ -243,7 +271,7 @@
+         {
+             if (!ui->optionQuickTest->isChecked())
+                 unmountDisk(mountPoint);
+-            ui->groupProgress->hide();
++            ui->frameProgress->hide();
+         }
+         checking = false;
+         ui->buttonCheck->setText("Check!");
+@@ -255,7 +283,7 @@
+     }
+ }
+ 
+-void MainWindow::on_cui_error(f3_launcher_error_code errCode)
++void MainWindow::on_cuiError(f3_launcher_error_code errCode)
+ {
+     switch(errCode)
+     {
+@@ -448,7 +476,7 @@
+ 
+ }
+ 
+-void MainWindow::on_timer_timeout()
++void MainWindow::on_timerTimeout()
+ {
+     int value = ui->capacityBar->value();
+     if (value < timerTarget)
+@@ -473,11 +501,11 @@
+     if (this->userMode == 0)
+     {
+         this->userMode = 1;
+-        showStatus("Switched to advacned mode.");
++        showStatus("Switched to advanced mode.");
+         ui->stackedWidget->setCurrentIndex(1);
+         ui->buttonMode->setIcon(QIcon(":/icon/back.png"));
+         ui->buttonMode->setToolTip("Basic Mode");
+-        ui->groupProgress->hide();
++        ui->frameProgress->hide();
+     }
+     else
+     {
+@@ -486,10 +514,10 @@
+         ui->stackedWidget->setCurrentIndex(0);
+         ui->buttonMode->setIcon(QIcon(":/icon/advanced.png"));
+         ui->buttonMode->setToolTip("Advanced Mode");
+-        ui->groupProgress->show();
++        ui->frameProgress->show();
+     }
+     if (cui.getStatus() != f3_launcher_finished)
+-        ui->groupResult->hide();
++        ui->frameResult->hide();
+ }
+ 
+ void MainWindow::on_buttonSelectDev_clicked()
+@@ -529,5 +557,5 @@
+ 
+ void MainWindow::on_buttonMode_2_clicked()
+ {
+-    ui->groupResult->hide();
++    ui->frameResult->hide();
+ }
+diff -ura f3-qt-2.1.0/mainwindow.h f3-qt/mainwindow.h
+--- f3-qt-2.1.0/mainwindow.h	2017-03-06 17:29:20.000000000 -0800
++++ f3-qt/mainwindow.h	2018-11-07 20:30:31.359994699 -0800
+@@ -24,9 +24,9 @@
+     void on_buttonExit_clicked();
+     void on_buttonSelectPath_clicked();
+     void on_buttonHelp_clicked();
+-    void on_timer_timeout();
+-    void on_cui_status_changed(f3_launcher_status status);
+-    void on_cui_error(f3_launcher_error_code errCode);
++    void on_timerTimeout();
++    void on_cuiStatusChanged(f3_launcher_status status);
++    void on_cuiError(f3_launcher_error_code errCode);
+     void on_buttonMode_clicked();
+     void on_buttonSelectDev_clicked();
+     void on_optionQuickTest_clicked();
+@@ -46,6 +46,7 @@
+ 
+     void showStatus(const QString& string);
+     void clearStatus();
++    void showProgress(int progress10K);
+     void showCapacity(int value);
+     QString mountDisk(const QString& device);
+     bool unmountDisk(const QString& mountPoint);
+diff -ura f3-qt-2.1.0/mainwindow.ui f3-qt/mainwindow.ui
+--- f3-qt-2.1.0/mainwindow.ui	2017-03-06 17:29:20.000000000 -0800
++++ f3-qt/mainwindow.ui	2018-11-07 20:30:31.359994699 -0800
+@@ -28,7 +28,7 @@
+      </rect>
+     </property>
+     <property name="currentIndex">
+-     <number>0</number>
++     <number>1</number>
+     </property>
+     <widget class="QWidget" name="pageBasic">
+      <widget class="QLineEdit" name="textDevPath">
+@@ -110,7 +110,7 @@
+        <rect>
+         <x>40</x>
+         <y>110</y>
+-        <width>351</width>
++        <width>361</width>
+         <height>80</height>
+        </rect>
+       </property>
+@@ -296,7 +296,7 @@
+      </property>
+     </widget>
+    </widget>
+-   <widget class="QGroupBox" name="groupResult">
++   <widget class="QFrame" name="frameResult">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+@@ -305,6 +305,15 @@
+       <height>91</height>
+      </rect>
+     </property>
++    <property name="autoFillBackground">
++     <bool>true</bool>
++    </property>
++    <property name="frameShape">
++     <enum>QFrame::StyledPanel</enum>
++    </property>
++    <property name="frameShadow">
++     <enum>QFrame::Raised</enum>
++    </property>
+     <widget class="QLabel" name="labelSpeed">
+      <property name="geometry">
+       <rect>
+@@ -410,21 +419,27 @@
+      </property>
+     </widget>
+    </widget>
+-   <widget class="QGroupBox" name="groupProgress">
++   <widget class="QFrame" name="frameProgress">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>110</y>
+-      <width>351</width>
++      <width>361</width>
+       <height>91</height>
+      </rect>
+     </property>
++    <property name="frameShape">
++     <enum>QFrame::StyledPanel</enum>
++    </property>
++    <property name="frameShadow">
++     <enum>QFrame::Raised</enum>
++    </property>
+     <widget class="QLabel" name="labelProgress">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+-       <width>331</width>
++       <width>291</width>
+        <height>20</height>
+       </rect>
+      </property>
+@@ -437,18 +452,53 @@
+       <rect>
+        <x>20</x>
+        <y>50</y>
+-       <width>321</width>
++       <width>301</width>
+        <height>16</height>
+       </rect>
+      </property>
++     <property name="format">
++      <string> </string>
++     </property>
++    </widget>
++    <widget class="QLabel" name="labelProgressSpin">
++     <property name="geometry">
++      <rect>
++       <x>330</x>
++       <y>10</y>
++       <width>21</width>
++       <height>20</height>
++      </rect>
++     </property>
++     <property name="text">
++      <string>*</string>
++     </property>
++     <property name="alignment">
++      <set>Qt::AlignCenter</set>
++     </property>
++    </widget>
++    <widget class="QLabel" name="labelProgressValue">
++     <property name="geometry">
++      <rect>
++       <x>310</x>
++       <y>50</y>
++       <width>41</width>
++       <height>16</height>
++      </rect>
++     </property>
++     <property name="text">
++      <string>0%</string>
++     </property>
++     <property name="alignment">
++      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
++     </property>
+     </widget>
+    </widget>
+    <zorder>stackedWidget</zorder>
+    <zorder>buttonExit</zorder>
+    <zorder>buttonCheck</zorder>
+    <zorder>frameNav</zorder>
+-   <zorder>groupProgress</zorder>
+-   <zorder>groupResult</zorder>
++   <zorder>frameProgress</zorder>
++   <zorder>frameResult</zorder>
+   </widget>
+   <widget class="QStatusBar" name="statusBar">
+    <property name="styleSheet">
