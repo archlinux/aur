@@ -3,7 +3,7 @@
 
 pkgname=bridge-utils
 pkgver=1.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Utilities for configuring the Linux ethernet bridge"
 arch=('x86_64')
 url="http://www.linuxfoundation.org/collaborate/workgroups/networking/bridge"
@@ -19,7 +19,10 @@ build() {
 
   aclocal
   autoconf
-  ./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc
+  ./configure \
+    --prefix=/usr \
+    --sbindir=/usr/bin \
+    --sysconfdir=/etc
   make
 }
 
