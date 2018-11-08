@@ -2,16 +2,16 @@
 # Contributor: sh0 <mee@sh0.org>
 
 pkgname=ladvd
-pkgver=1.1.0
+pkgver=1.1.2
 pkgrel=1
 pkgdesc='LLDP daemon for Unix'
 arch=('i686' 'x86_64')
-url='http://ladvd.googlecode.com/'
+url='https://github.com/sspans/ladvd'
 license=('BSD')
 install='ladvd.install'
 depends=('pciutils' 'libcap-ng' 'libpcap' 'libevent')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sspans/ladvd/archive/v1.1.0.tar.gz")
-sha256sums=('6db4b3270d90469e7081695f62ed13b88ac15bd41b8467c81eec5d035742ae57')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sspans/ladvd/archive/v${pkgver}.tar.gz")
+sha256sums=('3391ad591eb6a97b19fdf243f2bb0dc54a93f0f4a3980e8240ac0ffab353d0d4')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
@@ -19,7 +19,8 @@ build() {
 	sed -i 's/-Werror//' configure.ac
 
 	autoreconf -fi
-	./configure --prefix=/usr \
+	./configure \
+		--prefix=/usr \
 		--sbindir=/usr/bin \
 		--mandir=/usr/share/man \
 		--with-user=ladvd \
