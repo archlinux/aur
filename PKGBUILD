@@ -8,7 +8,7 @@ pkgname=(qemu-patched qemu-patched-headless qemu-patched-arch-extra qemu-patched
 _pkgname=qemu
 pkgdesc="A generic and open source machine emulator and virtualizer - Patched for extra functionality"
 pkgver=3.0.0
-pkgrel=4
+pkgrel=5
 arch=(x86_64)
 license=(GPL2 LGPL2.1)
 url="http://wiki.qemu.org/"
@@ -168,7 +168,7 @@ _package() {
     case $_blob in
       # provided by seabios package
       bios.bin|acpi-dsdt.aml|bios-256k.bin|vgabios-cirrus.bin|vgabios-qxl.bin|\
-      vgabios-stdvga.bin|vgabios-vmware.bin) rm "$_blob"; continue ;;
+      vgabios-stdvga.bin|vgabios-vmware.bin|vgabios-virtio.bin) rm "$_blob"; continue ;;
 
       # iPXE ROMs
       efi-*|pxe-*) continue ;;
@@ -203,7 +203,7 @@ package_qemu-patched-headless-arch-extra() {
   options=(!strip)
   conflicts=(qemu-headless-arch-extra)
   provides=(qemu-headless-arch-extra)
-  
+
   mv extra-arch-headless/usr "$pkgdir"
 }
 
@@ -212,7 +212,7 @@ package_qemu-patched-block-iscsi() {
   depends=(glib2 libiscsi jemalloc)
   conflicts=(qemu-block-iscsi)
   provides=(qemu-block-iscsi)
-  
+
   install -D build-full/block-iscsi.so "$pkgdir/usr/lib/qemu/block-iscsi.so"
 }
 
@@ -221,7 +221,7 @@ package_qemu-patched-block-rbd() {
   depends=(glib2 ceph)
   conflicts=(qemu-block-rbd)
   provides=(qemu-block-rbd)
-  
+
   install -D build-full/block-rbd.so "$pkgdir/usr/lib/qemu/block-rbd.so"
 }
 
@@ -230,7 +230,7 @@ package_qemu-patched-block-gluster() {
   depends=(glib2 glusterfs)
   conflicts=(qemu-block-gluster)
   provides=(qemu-block-gluster)
-  
+
   install -D build-full/block-gluster.so "$pkgdir/usr/lib/qemu/block-gluster.so"
 }
 
@@ -239,7 +239,7 @@ package_qemu-patched-guest-agent() {
   depends=(gcc-libs glib2)
   conflicts=(qemu-guest-agent)
   provides=(qemu-guest-agent)
-  
+
   install -D build-full/qemu-ga "$pkgdir/usr/bin/qemu-ga"
   install -Dm644 qemu-ga.service "$pkgdir/usr/lib/systemd/system/qemu-ga.service"
   install -Dm755 "$srcdir/${_pkgname}-${pkgver}/scripts/qemu-guest-agent/fsfreeze-hook" "$pkgdir/etc/qemu/fsfreeze-hook"
