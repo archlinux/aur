@@ -11,10 +11,10 @@ url="http://v3.sk/~lkundrak/dev86/"
 license=(GPL)
 makedepends=('bin86')
 options=('!strip' '!makeflags' 'staticlibs')
-source=(http://v3.sk/~lkundrak/dev86/Dev86src-$pkgver.tar.gz
-	mandir.patch)
-md5sums=('6b96fe9d2d1c546842a4d1c7ef387e4c'
-         '509df653dec8956faf1a40a8c544d9ce')
+source=("http://v3.sk/~lkundrak/dev86/Dev86src-${pkgver}.tar.gz"
+	'mandir.patch')
+sha256sums=('234b110e6df9b7f6843e2ee53473127c2211243a16748f229fc0127845f68d94'
+            'f1cc9e3779c435a39c0a3b773b6fc220c6bd7909ec4bb1b8ee781cf4f89d4827')
 
 prepare() {
   cd "$srcdir"/$pkgname-$pkgver
