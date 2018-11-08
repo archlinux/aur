@@ -12,9 +12,12 @@ post_install() {
   systemd-tmpfiles --create syncthing-discosrv.conf
 
   printf '\n%s\n' 'Syncthing expects an SSL certificate and key located at'
-  printf '%s\n' '/var/discosrv/cert.pem and /var/discosrv/key.pem'
+  printf '%s\n\n' '/var/discosrv/cert.pem and /var/discosrv/key.pem'
+  printf '%s\n' 'Move to /var/discosrv and run the following commands as root:'
+  printf '%s\n' '$ openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 3650 -nodes'
+  printf '%s\n' '$ chown syncthing:syncthing cert.pem key.pem'
 }
 
 post_upgrade() {
-    post_install
+  post_install
 }

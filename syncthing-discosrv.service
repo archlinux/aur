@@ -6,7 +6,7 @@ After=network.target
 User=syncthing
 Group=syncthing
 WorkingDirectory=/var/discosrv
-ExecStart=/usr/bin/syncthing-discosrv -db-dsn='file:///var/discosrv/discosrv.db'
+ExecStart=/usr/bin/syncthing-discosrv -db-dir /var/discosrv/discosrv.db -cert /var/discosrv/cert.pem -key /var/discosrv/key.pem
 Restart=on-failure
 SuccessExitStatus=2
 

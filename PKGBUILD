@@ -1,10 +1,12 @@
-# Maintainer : Kevin MacMartin <prurigro@gmail.com>
+# Maintainer: Kevin MacMartin <prurigro@gmail.com>
+# Contributor: Iiridayn
+# Contributor: hucsmn
 
 _binname=stdiscosrv
 _pkgname=syncthing
 pkgname=$_pkgname-discosrv
 epoch=1
-pkgver=0.14.50
+pkgver=0.14.52
 pkgrel=1
 pkgdesc='Discover server for the syncthing P2P synchronization utility'
 url='http://syncthing.net'
@@ -18,18 +20,27 @@ source=(
   "https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz"
   "$pkgname.service"
   "$pkgname.tmpfiles.conf"
+  'prometheus-fix.patch'
 )
 
 sha512sums=(
-  '7ff14d36a62c7e75f979b915ef633693455e3b15b096dda95299b37bd0ab18cdeabe6e2e73469fc244f58cc9a74b4bcace4ca6e9684978a3dd2ca4e05cdfb72b'
-  'b2a8daa48be57ad47542569473128c8590d4bbe124de0912ce5b3de7deb1b54dd0d3ed66e925fc11addded075d24d6a1fe822d71338d128b7ca03fd43c082d8c'
+  'cff48ea1d1286c8b1fe971b00423ad64ef10c9b0555f0cae6e008efc07a21698d54d402fe1a0ac3161c0b5180e5ca0099a0a302fd7e7c5da0f227bdb7e2853ce'
+  'f67a6051a1bbe9d3b562caaaecfc4829afa25cfddc5d5dd70dc8170bddc9d938fd85ab89b1c198f074f323d8e385d9fa8bc3a9bfe53594629dbfbf984c2e7015'
   '28b0bb6a6f2fa536ec8cb887cfebf4706be25af5e29da39e2e3776daeeeb48f75fb5be255472920355948d8905830342866e89299facd626ddf8a658d84faf27'
+  '0a9778c76b7763423c22204b1625b9f151f6b7d6baca4127d95c5ffd4fc52694a4d782d8a7be3f48fd2119e5a8270b23947894ead914479019abd00d6d7617a7'
 )
+
+prepare() {
+  rm -rf src
+  cd $_pkgname-$pkgver/cmd/$_binname
+  export GOPATH="$srcdir"
+  patch -p1 < "$srcdir/prometheus-fix.patch"
+  go get -d -tags purego
+}
 
 build() {
   cd $_pkgname-$pkgver/cmd/$_binname
   export GOPATH="$srcdir"
-  go get -d -tags purego
   go build -x -i -v -ldflags -w
 }
 

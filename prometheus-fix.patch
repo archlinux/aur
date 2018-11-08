@@ -1,0 +1,59 @@
+diff -u stdiscosrv/apisrv.go stdiscosrv_new/apisrv.go
+--- stdiscosrv/apisrv.go	2018-09-03 03:36:07.000000000 +0800
++++ stdiscosrv_new/apisrv.go	2018-11-05 23:11:25.929999806 +0800
+@@ -23,7 +23,7 @@
+ 	"sync"
+ 	"time"
+ 
+-	"github.com/syncthing/syncthing/lib/protocol"
++	"../../lib/protocol"
+ )
+ 
+ // announcement is the format received from and sent to clients
+diff -u stdiscosrv/main.go stdiscosrv_new/main.go
+--- stdiscosrv/main.go	2018-09-03 03:36:07.000000000 +0800
++++ stdiscosrv_new/main.go	2018-11-05 23:11:25.933333139 +0800
+@@ -20,8 +20,8 @@
+ 	"time"
+ 
+ 	"github.com/prometheus/client_golang/prometheus/promhttp"
+-	"github.com/syncthing/syncthing/lib/protocol"
+-	"github.com/syncthing/syncthing/lib/tlsutil"
++	"../../lib/protocol"
++	"../../lib/tlsutil"
+ 	"github.com/syndtr/goleveldb/leveldb/opt"
+ 	"github.com/thejerf/suture"
+ )
+diff -u stdiscosrv/replication.go stdiscosrv_new/replication.go
+--- stdiscosrv/replication.go	2018-09-03 03:36:07.000000000 +0800
++++ stdiscosrv_new/replication.go	2018-11-05 23:11:25.933333139 +0800
+@@ -15,7 +15,7 @@
+ 	"net"
+ 	"time"
+ 
+-	"github.com/syncthing/syncthing/lib/protocol"
++	"../../lib/protocol"
+ )
+ 
+ type replicator interface {
+diff -u stdiscosrv/stats.go stdiscosrv_new/stats.go
+--- stdiscosrv/stats.go	2018-09-03 03:36:07.000000000 +0800
++++ stdiscosrv_new/stats.go	2018-11-05 23:21:14.809999812 +0800
+@@ -7,8 +7,6 @@
+ package main
+ 
+ import (
+-	"os"
+-
+ 	"github.com/prometheus/client_golang/prometheus"
+ )
+ 
+@@ -109,5 +107,6 @@
+ 		databaseKeys, databaseStatisticsSeconds,
+ 		databaseOperations, databaseOperationSeconds)
+ 
+-	prometheus.MustRegister(prometheus.NewProcessCollector(os.Getpid(), "syncthing_discovery"))
++	prometheus.MustRegister(prometheus.NewProcessCollector(
++		prometheus.ProcessCollectorOpts{ nil, "syncthing_discovery", false }))
+ }
+
