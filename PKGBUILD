@@ -1,28 +1,27 @@
-# Maintainer: Oliver Rümpelein <arch@pheerai.de>
-pkgname=mergerfs
-pkgver=2.24.2
-pkgrel=1
-pkgdesc="Another FUSE union filesystem"
-arch=('i686' 'x86_64')
-url="https://github.com/trapexit/mergerfs"
-source=("https://github.com/trapexit/mergerfs/releases/download/2.24.2/mergerfs-2.24.2.tar.gz")
-options=("!emptydirs")
-license=('MIT')
-depends=(fuse)
-sha512sums=('4b7fef29385e27a695062e204cbeb631212e0a29f42e7d859f4cce7819182e58738ded5dab5763b2652f1bacaf6963dc6c78f08bc1c57531db6ce600f0d9ea42')
+# Maintainer: willemw <willemw12@gmail.com>
+# Contributor: Oliver Rümpelein <arch@pheerai.de>
 
-package()
-{
-    cd "${srcdir}/mergerfs-2.24.2"
-    mkdir -p "${pkgdir}"/usr/{share,bin}
-    mkdir -p "${pkgdir}"/usr/share/licenses/mergerfs
-    make DESTDIR=${pkgdir} PREFIX=/usr SBINDIR="/usr/bin" install
-    install -m 644 LICENSE "${pkgdir}/usr/share/licenses/mergerfs/LICENSE"
+pkgname=mergerfs
+pkgver=2.25.0
+pkgrel=1
+pkgdesc="FUSE based union filesystem"
+arch=('x86_64')
+url="https://github.com/trapexit/mergerfs"
+license=('custom:ISC')
+depends=('fuse2')
+makedepends=('git')    # 'pandoc'
+#source=("https://github.com/trapexit/mergerfs/archive/$pkgver.tar.gz")
+source=("https://github.com/trapexit/mergerfs/releases/download/$pkgver/mergerfs-$pkgver.tar.gz")
+md5sums=('f62e0ce205687b2edd9284e3c82e6984')
+
+build() {
+  cd $pkgname-$pkgver
+  make DESTDIR="$pkgdir" PREFIX="/usr" SBINDIR="/usr/bin"
 }
 
-build()
-{
-    cd ./"mergerfs-2.24.2"
-    make DESTDIR="${pkgdir}" PREFIX="/usr" SBINDIR="/usr/bin"
+package() {
+  cd $pkgname-$pkgver
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  make DESTDIR="$pkgdir" PREFIX="/usr" SBINDIR="/usr/bin" install
 }
 
