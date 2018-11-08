@@ -1,6 +1,6 @@
 # Maintainer: Remi Gacogne <rgacogne at archlinux dot org>
 pkgname=dnsdist
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc='Highly DNS-, DoS- and abuse-aware loadbalancer'
 arch=('x86_64')
@@ -8,7 +8,7 @@ url='https://dnsdist.org/'
 license=('GPL2')
 source=(https://downloads.powerdns.com/releases/${pkgname}-${pkgver}.tar.bz2{,.asc}
         sysusers.conf)
-sha512sums=('af7c360d6a5255bc9588622747b8939d30669e2d7d749275b30a9be8cf306a92768327057a93bfa901c44ac8a7572c9bb801a7f6ceca6d736f3e9c71f80f5726'
+sha512sums=('c0e3435eafc1f7bcdf41346cecf7b089cc142716f94058f9ec262d0c6ad16467e0b8bed5abc648829c597120c94f998602849ded574e75bfc1a1fb70c1b719ad'
             'SKIP'
             'd55ccd612cbe08b353815027d30a3b0f0ec7bf6b0d74a0a634939be53ce6e6b41d23e54c2328946f00738c03e9f306ce4f2dabe5e4b11d9fb28d0abf49917893')
 validpgpkeys=('D6300CABCBF469BBE392E503A208ED4F8AF58446') # Remi Gacogne <remi.gacogne@powerdns.com>
