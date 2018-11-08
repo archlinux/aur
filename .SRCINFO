@@ -1,0 +1,16 @@
+pkgbase = nodejs-redbird
+	pkgdesc = A modern reverse proxy for node
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/OptimalBits/redbird
+	arch = x86_64
+	license = BSD
+	makedepends = npm
+	makedepends = python2
+	depends = nodejs
+	noextract = redbird-0.8.0.tgz
+	source = https://registry.npmjs.org/redbird/-/redbird-0.8.0.tgz
+	sha1sums = 86fd9a7508574ee9521eab34882e9632ca160ac2
+
+pkgname = nodejs-redbird
+

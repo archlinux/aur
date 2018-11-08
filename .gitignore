@@ -1,0 +1,6 @@
+nodejs-redbird-*.pkg.tar.xz
+redbird-*.tgz
+nodejs-redbird-*.log
+PKGBUILD-namcap.log
+pkg/
+src/
