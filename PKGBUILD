@@ -8,7 +8,6 @@ arch=("x86_64")
 url="https://${pkgname%-dev}.io"
 license=("custom" "BSD" "CCPL")
 depends=("glu" "java-environment" "lib32-libglvnd")
-makedepends=("git" "python")
 optdepends=("android-sdk"
             "android-studio"
             "bash"
@@ -19,6 +18,7 @@ optdepends=("android-sdk"
             "perl"
             "python"
             "sh")
+makedepends=("git" "python")
 provides=("${pkgname%-dev}")
 conflicts=("${pkgname%-dev}")
 backup=("opt/${pkgname%-dev}/packages/${pkgname%-dev}_test/pubspec.yaml" "opt/${pkgname%-dev}/packages/${pkgname%-dev}/pubspec.yaml")
