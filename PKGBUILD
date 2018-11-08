@@ -2,13 +2,14 @@
 
 pkgname=dns-lexicon
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Manipulate DNS records on various DNS providers in a standardized/agnostic way"
 arch=('any')
 url="https://github.com/AnalogJ/lexicon"
 license=('MIT')
-depends=('python-future' 'python-requests' 'python-setuptools' 'python-tldextract'
-         'python-cryptography' 'python-pyopenssl' 'python-idna')
+depends=('python-future' 'python-tldextract' 'python-cryptography' 'python-yaml' 'python-setuptools'
+         # requests[security] Expanded:
+         'python-requests' 'python-pyopenssl' 'python-idna')
 optdepends=('python-softlayer: for SoftLayer support'
             'python-boto3: for Route53 support'
             'python-pynamecheap: for Namecheap support'
