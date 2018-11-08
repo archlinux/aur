@@ -2,11 +2,10 @@
 # Contributor: OK100 <ok100 at lavabit dot com>
 # Contributor: Valère Monseur <valere dot monseur at ymail dot com>
 
-_BUILDOPTS='' # Prevent environment variables breaking build
 pkgname=compton-git
 _gitname=compton
 epoch=2
-pkgver=590_Next_2018.11.02
+pkgver=599_Next.4.gb18d46b_2018.11.08
 pkgrel=1
 pkgdesc="X Compositor (a fork of xcompmgr-dana) (git-version)"
 arch=(i686 x86_64)
@@ -14,7 +13,7 @@ url="https://github.com/yshui/compton"
 license=('MIT' 'MPL2')
 depends=('libgl' 'libev' 'pcre' 'libx11' 'xcb-util-renderutil' 'libxcb' 'xcb-util-image' 'libxext'
          'pixman' 'libconfig' 'libdbus' 'hicolor-icon-theme')
-makedepends=('git' 'mesa' 'meson')
+makedepends=('git' 'mesa' 'meson' 'asciidoc')
 optdepends=('dbus:          To control compton via D-Bus'
             'xorg-xwininfo: For compton-trans'
             'xorg-xprop:    For compton-trans'
@@ -23,10 +22,6 @@ provides=('compton')
 conflicts=('compton')
 source=(git+"https://github.com/yshui/compton.git#branch=next")
 md5sums=("SKIP")
-
-# Upstream disables manpage generation by default, to enable, uncomment the next two lines
-#makedepends+=('asciidoc')
-#_BUILDOPTS='-Dbuild_docs=true'
 
 pkgver() {
     cd ${_gitname}
@@ -38,7 +33,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_gitname}"
-  meson --buildtype=release . build --prefix=/usr ${_BUILDOPTS}
+  meson --buildtype=release . build --prefix=/usr -Dbuild_docs=true
   ninja -C build
 }
 
