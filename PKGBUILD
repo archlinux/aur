@@ -4,7 +4,7 @@
 _pkgname=nohang
 pkgname=${_pkgname}-git
 pkgver=r83ac238
-pkgrel=1
+pkgrel=2
 pkgdesc="A highly configurable OOM preventer"
 arch=('any')
 url="https://github.com/hakavlad/nohang"
@@ -14,7 +14,7 @@ source=(
 )
 md5sums=('SKIP')
 depends=(
-	'python3'
+	'python'
 	'libnotify'
 	'sudo'
 	'procps-ng'
