@@ -6,16 +6,17 @@
 
 pkgname=firefox-wayland-hg
 _pkgname=firefox
-pkgver=r442289.43d78c2bd006
+pkgver=r445024.5836a6061476
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 arch=(x86_64)
 license=(MPL GPL LGPL)
 url="https://www.mozilla.org/firefox/"
-depends=(gtk3 gtk2 mozilla-common libxt startup-notification mime-types dbus-glib ffmpeg
-         nss sqlite ttf-font libpulse libvpx icu)
-makedepends=(unzip zip diffutils python2 yasm mesa imake gconf inetutils xorg-server-xvfb
-             autoconf2.13 rust cbindgen mercurial clang llvm jack)
+depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib
+         ffmpeg nss sqlite ttf-font libpulse libvpx icu wayland)
+makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
+         xorg-server-xvfb autoconf2.13 rust mercurial clang llvm jack gtk2
+         python nodejs python2-psutil cbindgen)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
@@ -48,9 +49,6 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p path
-  ln -sf /usr/bin/python2 path/python
-
   cd mozilla-unified
 
   echo -n "$_google_api_key" >google-api-key
@@ -61,8 +59,8 @@ ac_add_options --enable-application=browser
 
 ac_add_options --prefix=/usr
 ac_add_options --enable-release
-ac_add_options --enable-gold
-ac_add_options --enable-optimize="-O2"
+ac_add_options --enable-hardening
+ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
 ac_add_options --disable-dbus
 ac_add_options --disable-necko-wifi
@@ -73,7 +71,6 @@ ac_add_options --enable-update-channel=release
 ac_add_options --with-distribution-id=org.archlinux
 export MOZILLA_OFFICIAL=1
 export MOZ_TELEMETRY_REPORTING=1
-export MOZ_ADDON_SIGNING=1
 export MOZ_REQUIRE_SIGNING=1
 
 # Keys
@@ -81,22 +78,22 @@ ac_add_options --with-google-api-keyfile=${PWD@Q}/google-api-key
 ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/mozilla-api-key
 
 # System libraries
-ac_add_options --with-system-zlib
+ac_add_options --enable-system-ffi
+ac_add_options --enable-system-sqlite
 ac_add_options --with-system-bz2
 ac_add_options --with-system-icu
 ac_add_options --with-system-jpeg
 ac_add_options --with-system-libvpx
 #ac_add_options --with-system-nspr
 #ac_add_options --with-system-nss
-#ac_add_options --enable-system-hunspell
-ac_add_options --enable-system-sqlite
-ac_add_options --enable-system-ffi
+ac_add_options --with-system-zlib
 
 # Features
 ac_add_options --enable-alsa
 ac_add_options --enable-jack
 ac_add_options --enable-startup-notification
 ac_add_options --enable-crashreporter
+ac_add_options --disable-gconf
 ac_add_options --disable-updater
 ac_add_options --enable-default-toolkit=cairo-gtk3-wayland
 #ac_add_options --with-gl-provider=EGL
@@ -107,11 +104,9 @@ END
 build() {
   cd mozilla-unified
 
-  # _FORTIFY_SOURCE causes configure failures
-  CPPFLAGS+=" -O2"
-
-  export PATH="$srcdir/path:$PATH"
   export MOZ_SOURCE_REPO="$_repo"
+  export MOZ_NOSPAM=1
+  export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
 
   # Do PGO
   #xvfb-run -a -n 95 -s "-extension GLX -screen 0 1280x1024x24" \
@@ -128,7 +123,10 @@ package() {
   _vendorjs="$pkgdir/usr/lib/$_pkgname/browser/defaults/preferences/vendor.js"
   install -Dm644 /dev/stdin "$_vendorjs" <<END
 // Use LANG environment variable to choose locale
-pref("intl.locale.matchOS", true);
+pref("intl.locale.requested", "");
+
+// Use system-provided dictionaries
+pref("spellchecker.dictionary_path", "/usr/share/hunspell");
 
 // Disable default browser checking.
 pref("browser.shell.checkDefaultBrowser", false);
@@ -154,20 +152,19 @@ app.distributor.channel=$_pkgname
 app.partner.archlinux=archlinux
 END
 
-  for i in 16 22 24 32 48 256; do
+  for i in 16 22 24 32 48 64 128 256; do
     install -Dm644 browser/branding/official/default$i.png \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png"
   done
+  install -Dm644 browser/branding/official/content/about-logo.png \
+    "$pkgdir/usr/share/icons/hicolor/192x192/apps/$_pkgname.png"
+  install -Dm644 browser/branding/official/content/about-logo@2x.png \
+    "$pkgdir/usr/share/icons/hicolor/384x384/apps/$_pkgname.png"
   install -Dm644 ../firefox-symbolic.svg \
     "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$_pkgname-symbolic.svg"
 
   install -Dm644 ../$_pkgname.desktop \
     "$pkgdir/usr/share/applications/$_pkgname.desktop"
-
-  # Use system-provided dictionaries
-  rm -rf "$pkgdir"/usr/lib/$_pkgname/dictionaries
-  ln -fTs /usr/share/hunspell "$pkgdir/usr/lib/$_pkgname/dictionaries"
-  ln -fTs /usr/share/hyphen "$pkgdir/usr/lib/$_pkgname/hyphenation"
 
   # Install a wrapper to avoid confusion about binary path
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" <<END
