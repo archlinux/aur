@@ -1,6 +1,6 @@
 pkgbase = pylava
 	pkgdesc = Code audit tool for python, community-driven fork of pylama
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/pyfocus/pylava
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = pylava
 	depends = python-mccabe>=0.5.2
 	optdepends = pylava_pylint: pylint support
 	optdepends = python-radon: radon support
-	source = https://github.com/pyfocus/pylava/archive/0.2.1.tar.gz
-	sha256sums = b899739c044abb1ca03032241f09cb996ba45740d5b0fcad90def3cb6d19620e
+	source = https://github.com/pyfocus/pylava/archive/0.2.2.tar.gz
+	sha256sums = 78e68e4f247af31e3efcf7637c733683d9d54ec82f963ec475209584c77d274b
 
 pkgname = pylava
 
