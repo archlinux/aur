@@ -9,7 +9,6 @@ pkgbase = chrome-remote-desktop
 	depends = gtk3
 	depends = libxss
 	depends = nss
-	depends = python2
 	depends = python2-psutil
 	depends = xorg-server-xvfb
 	depends = xorg-setxkbmap

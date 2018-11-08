@@ -1,4 +1,6 @@
 chrome-remote-desktop-*.pkg.tar.xz
 chrome-remote-desktop-*.deb
+chrome-remote-desktop-*.log
+PKGBUILD-namcap.log
 pkg/
 src/
