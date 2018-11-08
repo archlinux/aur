@@ -1,7 +1,7 @@
 # Maintainer: Adam Brunnmeier <adam.brunnmeier@gmail.com>
 pkgname=wl-clipboard-git
 pkgver=r58.24c74ba
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line copy/paste utilities for Wayland"
 arch=('i686' 'x86_64')
 url="https://github.com/bugaevc/wl-clipboard"
@@ -29,4 +29,5 @@ package() {
 	cd "$srcdir/${pkgname%-git}"
 	install -Dm755 build/src/wl-copy "$pkgdir/usr/bin/wl-copy"
 	install -Dm755 build/src/wl-paste "$pkgdir/usr/bin/wl-paste"
+	install -Dm644 -t "$pkgdir/usr/share/man/man1" data/wl-*.1
 }
