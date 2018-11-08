@@ -1,4 +1,6 @@
 welle.io-*.pkg.tar.xz
 welle.io-*.tar.gz
+welle.io-*.log
+PKGBUILD-namcap.log
 pkg/
 src/
