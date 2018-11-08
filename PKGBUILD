@@ -4,7 +4,7 @@
 pkgname=balena-cli-git
 pkgdesc='balena.io command line interface, development version'
 pkgver=9.1.0.r0.g3a3cfbc
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://resin.io/'
 license=('APACHE')
@@ -12,7 +12,7 @@ depends=('nodejs')
 makedepends=('npm' 'git' 'python2')
 source=('git+https://github.com/balena-io/balena-cli.git')
 options=(!strip)
-optdepends=('python: resin-preload')
+optdepends=('python: balena-preload')
 optdepends_x86_64=('lib32-glibc: emulated builds')
 provides=('balena-cli')
 conflicts=('balena-cli')
