@@ -1,0 +1,14 @@
+pkgbase = libceed
+	pkgdesc = Performance Visualization for Parallel Program
+	pkgver = 0.3
+	pkgrel = 1
+	url = http://ceed.exascaleproject.org/ceed-code
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = gcc-fortran
+	source = https://github.com/CEED/libCEED/archive/v0.3.tar.gz
+	md5sums = dd29bf09b0a2f826c6484862a6662976
+
+pkgname = libceed
+
