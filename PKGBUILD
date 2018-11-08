@@ -1,7 +1,7 @@
 # Maintainer: LaFr4nc3 <lafr4nc3 at gmail dot com>
 pkgname=nerd-fonts-ricty
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Japanese TrueType font for developers by mixing InconsolataGo patched nerd-fonts and Migu 1M."
 arch=('any')
 url="http://www.rs.tus.ac.jp/yyusa/ricty.html"
@@ -23,6 +23,8 @@ build() {
   chmod +x ./ricty_generator-4.1.1.sh
   ./ricty_generator-4.1.1.sh /usr/share/fonts/TTF/{'InconsolataGo Nerd Font Complete.ttf','InconsolataGo Bold Nerd Font Complete.ttf',migu-1m-regular.ttf,migu-1m-bold.ttf}
   perl-rename "s/ /-/g" *.ttf
+  perl-rename "s/Ricty-/Ricty-Nerd-Font-/g" *.ttf
+  perl-rename "s/RictyDiscord-/RictyDiscord-Nerd-Font-/g" *.ttf
   touch "LICENSE"
 }
 

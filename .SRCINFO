@@ -1,7 +1,7 @@
 pkgbase = nerd-fonts-ricty
 	pkgdesc = Japanese TrueType font for developers by mixing InconsolataGo patched nerd-fonts and Migu 1M.
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.rs.tus.ac.jp/yyusa/ricty.html
 	install = nerd-fonts-ricty.install
 	arch = any
