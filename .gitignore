@@ -1,4 +1,6 @@
 eureka-*.pkg.tar.xz
 eureka-*.tar.gz
+eureka-*.log
+PKGBUILD-namcap.log
 pkg/
 src/
