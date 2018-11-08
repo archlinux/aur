@@ -1,0 +1,17 @@
+pkgbase = open-stage-control-node-git
+	pkgdesc = A libre desktop OSC bi-directional control surface application
+	pkgver = 0.39.6.r2.g40f89293
+	pkgrel = 1
+	url = http://osc.ammd.net/
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = npm
+	optdepends = python-pyrtmidi: send and receive midi messages
+	provides = open-stage-control
+	conflicts = open-stage-control
+	source = git+https://github.com/jean-emmanuel/open-stage-control
+	md5sums = SKIP
+
+pkgname = open-stage-control-node-git
+
