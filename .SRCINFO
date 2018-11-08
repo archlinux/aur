@@ -1,7 +1,7 @@
 pkgbase = xgrabcolor
 	pkgdesc = A basic color picker
 	pkgver = 1.4.6
-	pkgrel = 2
+	pkgrel = 3
 	url = http://hugo.pereira.free.fr/software/index.php?page=package&package_list=software_list_qt4&package=xgrabcolor&full=
 	arch = i686
 	arch = x86_64
