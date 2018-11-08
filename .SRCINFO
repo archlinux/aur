@@ -1,12 +1,13 @@
 pkgbase = kittehplayer
 	pkgdesc = A YouTube-like video player based on Qt, QML and libmpv.
-	pkgver = r277.5d96761
+	pkgver = r283.d4e0115
 	pkgrel = 1
 	url = https://github.com/NamedKitten/KittehPlayer
 	arch = x86_64
 	license = MPL2
 	makedepends = git
 	makedepends = cmake
+	makedepends = ruby-ronn
 	depends = qt5-svg
 	depends = qt5-declarative
 	depends = qt5-quickcontrols

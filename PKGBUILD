@@ -1,6 +1,6 @@
 # Maintainer: NamedKitten <kitteh@namedkitten.pw>
 pkgname=kittehplayer
-pkgver=r277.5d96761
+pkgver=r283.d4e0115
 pkgrel=1
 pkgdesc="A YouTube-like video player based on Qt, QML and libmpv."
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=(
 	'youtube-dl: for remote video streaming'
 	'ttf-roboto: default font recommended for a youtube-like UI'
 )
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'ruby-ronn')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=('git+https://github.com/NamedKitten/kittehplayer')
@@ -27,11 +27,14 @@ build() {
 	cd "$srcdir/$pkgname"
 	mkdir -p build
 	cd build
-	cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+	cmake .. -DCMAKE_INSTALL_PREFIX=/usr
 	make $MAKEFLAGS
 }
 
 package() {
 	cd "$srcdir/$pkgname/build"
+	ronn -r --manual=KittehPlayer --organization="NamedKitten" ../DOCS.md
+	mkdir -p $pkgdir/usr/share/man/man1/
+	cp ../DOCS $pkgdir/usr/share/man/man1/KittehPlayer.1
 	make DESTDIR="$pkgdir/" install
 }
