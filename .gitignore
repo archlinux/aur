@@ -1,4 +1,6 @@
 java-design-patterns-*.pkg.tar.xz
+java-design-patterns-*.log
+PKGBUILD-namcap.log
 java-design-patterns/
 pkg/
 src/

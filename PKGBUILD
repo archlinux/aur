@@ -7,6 +7,7 @@ pkgdesc="Design patterns implemented in Java"
 arch=("any")
 url="http://${pkgname%-git}.com/"
 license=("MIT")
+makedepends=("git")
 optdepends=("java-environment" "maven")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -18,7 +19,7 @@ pkgver() {
   cd "${srcdir}/${pkgname%-git}"
   (
     set -o pipefail
-    git describe --long --tags 2> /dev/null | sed "s/^[a-Z\.\-]*//;s/\([^-]*-\)g/r\1/;s/-/./g" || 
+    git describe --long --tags 2> /dev/null | sed "s/^[A-Za-z\.\-]*//;s/\([^-]*-\)g/r\1/;s/-/./g" || 
     printf "r%s.%s\n" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" 
   )
 }

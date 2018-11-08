@@ -6,6 +6,7 @@ pkgbase = java-design-patterns-git
 	install = java-design-patterns.install
 	arch = any
 	license = MIT
+	makedepends = git
 	optdepends = java-environment
 	optdepends = maven
 	provides = java-design-patterns
