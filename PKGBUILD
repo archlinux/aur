@@ -4,7 +4,7 @@
 _pkgname=skypeforlinux
 pkgname=$_pkgname-preview-bin
 pkgver=8.34.76.37
-pkgrel=2
+pkgrel=3
 pkgdesc="Skype for Linux - Preview/Insider Version"
 arch=("x86_64")
 url="http://www.skype.com"
@@ -33,7 +33,7 @@ package() {
   asar extract app.asar _tmp
   cd _tmp/images/tray
   find . -iname '*@2x.png' | while read f; do
-    mv $f ${f//@2x/}
+    cp $f ${f//@2x/}
   done
   cd "$pkgdir/$_p"
   asar pack _tmp app.asar
