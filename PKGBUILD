@@ -24,8 +24,7 @@ check() {
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  install -Dm755 target/release/sk "${pkgdir}/usr/bin/sk"
-  install -Dm755 bin/sk-tmux -t "${pkgdir}/usr/bin/"
+  install -Dm755 target/release/sk bin/sk-tmux -t "${pkgdir}/usr/bin/sk"
   install -Dm644 plugin/skim.vim -t "${pkgdir}/usr/share/vim/vimfiles/plugin/"
   install -dm755 "${pkgdir}/usr/share/skim"
   install -m644 shell/*.bash shell/*.zsh "${pkgdir}/usr/share/skim"
