@@ -1,7 +1,7 @@
 # Maintainer: Jefferson Gonzalez <jgmdev@gmail.com>
 
 pkgname=infocus
-pkgver=0.1
+pkgver=v0.5.r6.g7da2d79
 pkgrel=1
 pkgdesc="Automatic activity time tracker application."
 arch=('any')
@@ -12,6 +12,11 @@ makedepends=('composer')
 install="${pkgname}.install"
 source=('git://github.com/jgmdev/infocus.git')
 md5sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/${pkgname}"
+  git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
   cd "${srcdir}/${pkgname}"
