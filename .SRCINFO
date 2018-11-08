@@ -1,6 +1,6 @@
 pkgbase = simonpi
 	pkgdesc = A quick & dirty script to emulate Raspberry PI family devices on your laptop
-	pkgver = 1.0.13
+	pkgver = 1.0.14
 	pkgrel = 1
 	url = https://github.com/M0Rf30/simonpi
 	install = simonpi.install
@@ -23,8 +23,8 @@ pkgbase = simonpi
 	depends = sudo
 	depends = util-linux
 	depends = wget
-	source = https://github.com/M0Rf30/simonpi/archive/1.0.13.tar.gz
-	md5sums = 990de971183000ee9570facaacda76d9
+	source = https://github.com/M0Rf30/simonpi/archive/1.0.14.tar.gz
+	md5sums = 307131767e57021592cc31981faca8ef
 
 pkgname = simonpi
 

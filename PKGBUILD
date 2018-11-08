@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=simonpi
-pkgver=1.0.13
+pkgver=1.0.14
 pkgrel=1
 pkgdesc="A quick & dirty script to emulate Raspberry PI family devices on your laptop"
 arch=(any)
@@ -21,4 +21,5 @@ package() {
 	sed -i "s/OPT=./OPT=\/opt/g" $pkgdir/usr/bin/simonpi
 }
 
-md5sums=('990de971183000ee9570facaacda76d9')
+
+md5sums=('307131767e57021592cc31981faca8ef')
