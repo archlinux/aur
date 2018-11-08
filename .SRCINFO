@@ -3,12 +3,10 @@ pkgbase = rmtrash
 	pkgver = 1.12
 	pkgrel = 1
 	url = https://github.com/PhrozenByte/rmtrash
-	install = rmtrash.install
-	arch = x86_64
+	arch = any
 	license = GPL
 	depends = trash-cli
 	source = rmtrash-1.12.tar.gz::https://github.com/PhrozenByte/rmtrash/archive/v1.12.tar.gz
-	validpgpkeys = EB4F9E5A60D32232BB52150C12C87A28FEAC6B20
 	sha256sums = 23a39883c2706a105ba291b3eaf0d10119f40aedfd58abe2b302ec2c97280353
 
 pkgname = rmtrash
