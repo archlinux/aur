@@ -17,6 +17,7 @@ build() {
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
+    --sbindir=/usr/bin \
     MPI_CC=/usr/bin/mpicc \
     MPI_F77=/usr/bin/mpif77 \
     F77=/usr/bin/f95
@@ -27,5 +28,5 @@ package() {
   cd ${srcdir}/${pkgname}${_pkgver}-${pkgver}
   make DESTDIR="$pkgdir" install
   # not needed and produces a warning
-  rm "${pkgdir}/usr/sbin/mpecheckinstall"
+  rm "${pkgdir}/usr/bin/mpecheckinstall"
 }
