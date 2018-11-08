@@ -3,7 +3,7 @@
     # Contributor: Marvn
      
     pkgname=moodbar
-    pkgver=1.0
+    pkgver=1.1
     pkgrel=1
     pkgdesc="moodbar binaries and script for Amarok"
     arch=(i686 x86_64)
@@ -12,7 +12,7 @@
     depends=('fftw'  'gst-plugins-base' 'gst-plugins-base-libs' 'gst-plugins-bad' 'gst-plugins-good' 'gst-plugins-ugly')
     makedepends=('meson')
     source=("https://github.com/exaile/moodbar/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-    sha256sums=('17585aa621c2b34ac6f93d2b749f561138411d0c27a7719012f37adcaaffda95')
+    sha256sums=('b329731259b6db20b969dccb616fd260fa56673571b02144d29cacb42546ea8c')
     
     build() {
       cd ${srcdir}/${pkgname}-${pkgver}
