@@ -2,47 +2,38 @@
 
 pkgname=mendeleydesktop-dev
 pkgshortname=mendeleydesktop
-pkgver=1.19.2_dev2
+pkgver=1.19.3_dev1
 pkgrel=1
 pkgdesc="Academic software for managing and sharing research papers (desktop client)"
 url=https://www.mendeley.com/release-notes/development/
-arch=(i686 x86_64)
+arch=(x86_64)
 depends=(qt5-webengine qt5-svg qt5-webkit)
 conflicts=(mendeleydesktop)
 license=(custom:mendeley_eula)
 install=mendeleydesktop.install
-sha256sums=('' '4603511767b23ba44820b1742e82043a667822146bcd3ebc8e9bdcfdb87ed050')
-
-if [[ $CARCH = i686 ]];then
-  _arch=i486
-  sha256sums[0]='db3218c379a08b19d4333e688e8e573c64401ff8d1a8141df5084bc0d6ba9e7f'
-
-else
-  _arch=$CARCH
-  sha256sums[0]='5a290a90c5b51c7df47f916b22768bca18b4b11e188c0ea5525ee78582324df2'
-fi
+sha256sums=('93ae2affee3c6b5a77bf3a8728da5191af469af7ab80611bc9045aa03197ed3c' '4603511767b23ba44820b1742e82043a667822146bcd3ebc8e9bdcfdb87ed050')
 
 if which gconftool-2 &>/dev/null;then
   depends=(${depends[@]} gconf)
 fi
-source=("http://desktop-download.mendeley.com/download/linux/$pkgshortname-${pkgver//_/-}-linux-${_arch}.tar.bz2"
+source=("http://desktop-download.mendeley.com/download/linux/$pkgshortname-${pkgver//_/-}-linux-${arch}.tar.bz2"
         'mendeleydesktop.install')
 
 package() {
-    cd "$pkgshortname-${pkgver//_/-}-linux-$_arch"
+    cd "$pkgshortname-${pkgver//_/-}-linux-$arch"
 
     rm -f share/doc/mendeleydesktop/*.txt
 
     install -dm755 "$pkgdir/opt/$pkgshortname/"
     mv bin lib share "$pkgdir/opt/$pkgshortname/"
-    #ln -s "../lib/mendeleydesktop/libexec/mendeleydesktop.$_arch" "$pkgdir/opt/$pkgshortname/bin/$pkgshortname"
+    #ln -s "../lib/mendeleydesktop/libexec/mendeleydesktop.$arch" "$pkgdir/opt/$pkgshortname/bin/$pkgshortname"
     cd "$pkgdir"
     sed -i '1s@^#!/usr/bin/python$@&2@' opt/"$pkgshortname"/bin/mendeleydesktop
     #install -Dm755 "bin/mendeleydesktop" "$pkgdir/usr/bin/mendeleydesktop"
     install -dm755 "$pkgdir"/usr/bin
     ln -s /opt/"$pkgshortname"/bin/mendeleydesktop "$pkgdir/usr/bin/mendeleydesktop"
 
-    cd "$srcdir/$pkgshortname-${pkgver//_/-}-linux-$_arch"
+    cd "$srcdir/$pkgshortname-${pkgver//_/-}-linux-$arch"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgshortname/LICENSE"
 
     install -dm755 "$pkgdir"/usr/share/applications
