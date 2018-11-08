@@ -1,4 +1,6 @@
 nodejs-terminalizer-*.pkg.tar.xz
 terminalizer-*.tgz
+nodejs-terminalizer-*.log
+PKGBUILD-namcap.log
 pkg/
 src/
