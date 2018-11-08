@@ -2,7 +2,7 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=roundcubemail-git
-pkgver=1.4.beta.r108.g802ed0dc6
+pkgver=1.4.beta.r117.g224dd78ad
 pkgrel=1
 pkgdesc="A PHP web-based mail client"
 arch=('any')
@@ -16,11 +16,9 @@ conflicts=('roundcubemail')
 backup=('etc/webapps/roundcubemail/.htaccess'
         'etc/webapps/roundcubemail/apache.conf')
 source=("git+https://github.com/roundcube/roundcubemail.git"
-        "apache.conf"
-        "roundcubemail.tmpfiles")
+        "apache.conf")
 sha256sums=('SKIP'
-            'c90981405527ebaf153a407af6b8178b41d078bd4472d63b837b3b4cd5ae36b0'
-            'b0baf067cd6c09938991890ab8c87ba4bad06987781c5accbed86b95e35c2a56')
+            'c90981405527ebaf153a407af6b8178b41d078bd4472d63b837b3b4cd5ae36b0')
 
 pkgver() {
   cd "roundcubemail"
@@ -70,6 +68,11 @@ package() {
   ln -s /etc/webapps/roundcubemail/config config
 
   install -Dm0644 "$srcdir"/apache.conf "$pkgdir"/etc/webapps/roundcubemail/apache.conf
+  chown http:http "$pkgdir"/etc/webapps/roundcubemail/config/config.inc.php.sample
+  chmod 0640 "$pkgdir"/etc/webapps/roundcubemail/config/config.inc.php.sample
+
+  install -dm0750 -o http -g http "$pkgdir"/var/cache/roundcubemail
+  install -dm0750 -o http -g http "$pkgdir"/var/log/roundcubemail
 
   rm -rf temp logs
   find "$pkgdir" -name .git -exec rm -rf {} \; || true

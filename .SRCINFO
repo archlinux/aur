@@ -1,6 +1,6 @@
 pkgbase = roundcubemail-git
 	pkgdesc = A PHP web-based mail client
-	pkgver = 1.4.beta.r108.g802ed0dc6
+	pkgver = 1.4.beta.r117.g224dd78ad
 	pkgrel = 1
 	url = https://roundcube.net/
 	arch = any
@@ -16,10 +16,8 @@ pkgbase = roundcubemail-git
 	backup = etc/webapps/roundcubemail/apache.conf
 	source = git+https://github.com/roundcube/roundcubemail.git
 	source = apache.conf
-	source = roundcubemail.tmpfiles
 	sha256sums = SKIP
 	sha256sums = c90981405527ebaf153a407af6b8178b41d078bd4472d63b837b3b4cd5ae36b0
-	sha256sums = b0baf067cd6c09938991890ab8c87ba4bad06987781c5accbed86b95e35c2a56
 
 pkgname = roundcubemail-git
 
