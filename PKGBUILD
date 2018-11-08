@@ -20,14 +20,12 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	meson build
+	meson --prefix=/usr build
 	cd build
 	ninja
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	install -Dm755 build/src/wl-copy "$pkgdir/usr/bin/wl-copy"
-	install -Dm755 build/src/wl-paste "$pkgdir/usr/bin/wl-paste"
-	install -Dm644 -t "$pkgdir/usr/share/man/man1" data/wl-*.1
+	cd "$srcdir/${pkgname%-git}/build"
+	DESTDIR=${pkgdir} ninja install
 }
