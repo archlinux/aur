@@ -1,0 +1,21 @@
+pkgbase = comgen-git
+	pkgdesc = Comment Generator: generate styled comments for your code. Designed for Pantheon Shell
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/jeremyvaartjes/comgen
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = gtk3
+	depends = vala
+	depends = granite
+	provides = comgen
+	conflicts = comgen
+	source = git+https://github.com/jeremyvaartjes/comgen.git
+	md5sums = SKIP
+
+pkgname = comgen-git
+
