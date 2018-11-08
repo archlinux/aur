@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('btrfs-progs' 'grub')
 optdepends=('snapper: Snapper support')
 backup=('etc/grub.d/41_snapshots-btrfs_config')
-source=("https://github.com/Antynea/grub-btrfs/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Antynea/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('96ba59bc1cd46efe3c4e4352dabb61702a37699b2228cacdc8dccedebbfe0331')
 
 package() {
@@ -20,7 +20,6 @@ package() {
     install -Dm755 -t "$pkgdir/etc/grub.d" 41_snapshots-btrfs
     install -Dm755 -t "$pkgdir/etc/grub.d" 41_snapshots-btrfs_config
     install -Dm644 -t "$pkgdir/usr/share/locale/fr/LC_MESSAGES" localisation/fr/grub-btrfs-git.mo
-    install -Dm644 -t "$pkgdir/usr/share/licenses/grub-btrfs" LICENSE
     install -Dm644 -t "$pkgdir/usr/lib/systemd/system/snapper-timeline.service.d" 10-update_grub.conf
     install -Dm644 -t "$pkgdir/usr/lib/systemd/system/snapper-cleanup.service.d" 10-update_grub.conf
 }
