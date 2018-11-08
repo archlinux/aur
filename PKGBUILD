@@ -12,7 +12,7 @@ arch=('any')
 makedepends=('git')
 license=('PerlArtistic')
 install="$pkgname.install"
-source=("git://github.com/trapd00r/$_pkgname.git")
+source=("git+https://github.com/trapd00r/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {

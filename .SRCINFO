@@ -7,7 +7,7 @@ pkgbase = lscolors-git
 	arch = any
 	license = PerlArtistic
 	makedepends = git
-	source = git://github.com/trapd00r/LS_COLORS.git
+	source = git+https://github.com/trapd00r/LS_COLORS.git
 	sha256sums = SKIP
 
 pkgname = lscolors-git
