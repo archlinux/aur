@@ -3,7 +3,7 @@
 _pkgname=system76
 _pkgbase=system76-dkms
 pkgname=system76-dkms-git
-pkgver=73
+pkgver=85
 pkgrel=1
 pkgdesc="The system76 driver kernel module (DKMS)"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('dkms')
 makedepends=('git')
 conflicts=("${_pkgbase}")
 provides=("${_pkgbase}")
-source=("system76::git+https://github.com/pop-os/system76-dkms.git#branch=master_bionic"
+source=("system76::git+https://github.com/pop-os/system76-dkms.git#branch=master"
         'dkms.conf'
         'system76.conf')
 md5sums=('SKIP'
