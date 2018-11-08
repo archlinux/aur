@@ -1,17 +1,20 @@
 # Maintainer: Mr. Outis <mroutis@protonmail.com>
 pkgname=dvc
-pkgver=0.20.1
+pkgver=0.20.2
 pkgrel=1
 pkgdesc="Open-source version control system for data science projects"
 arch=('any')
 url="https://github.com/iterative/${pkgname}"
 license=('Apache')
 
-makedepends=('git' 'python3' 'python-setuptools' 'python-pyaml'
-             'python-configobj' 'python-ply' 'python-zc.lockfile'
-             'python-gitpython' 'python-requests' 'python-colorama'
-             'python-pyasn1' 'python-future' 'python-pillow'
-             'python-boto3' 'python-paramiko')
+makedepends=('git')
+
+depends=('python3' 'python-setuptools' 'python-pyaml'
+         'python-configobj' 'python-ply' 'python-zc.lockfile'
+         'python-gitpython' 'python-requests' 'python-colorama'
+         'python-pyasn1' 'python-future' 'python-pillow'
+         'python-boto3' 'python-paramiko' 'python-wcwidth'
+         'python-distro')
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         'https://files.pythonhosted.org/packages/source/g/grandalf/grandalf-0.6.tar.gz'
@@ -24,7 +27,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         'asciimatics-1.10.0::git+https://github.com/peterbrittain/asciimatics.git#branch=v1.10'
         )
 
-sha256sums=('a9b62573cdff061a748d962d2ce41e39c7f6eebd2d232f7d4c645a629f8c427c'
+sha256sums=('9ddc0f67ebd0cd359b5f233bd106a1592c3321e854e2ae326eb8df2b695c7d4c'
             '7471db231bd7338bc0035b16edf0dc0c900c82d23060f4b4d0c4304caedda6e4'
             '05c471281c45ae113f6103d1268ec7a4831a2e96aa80de45edc89b11fac4fbec'
             '50c058ce3371a819606ff29e914e6555c4d6c2527bff0cd0ed20af5947703118'
