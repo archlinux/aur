@@ -5,7 +5,7 @@ _srcname=gstreamer-media-SDK
 pkgver=1.3.3.rc9
 _rc="${pkgver##*.}"
 _srcver="${pkgver/.${_rc}/-${_rc}}"
-pkgrel=1
+pkgrel=2
 pkgdesc='GStreamer plugins for Intel Media SDK (MSDK)'
 arch=('x86_64')
 url='https://github.com/intel/gstreamer-media-SDK/'
@@ -24,7 +24,7 @@ source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/intel/gstreamer-media
         'gst-plugins-intel-msdk-fix-libdrm-include-directory.patch'
         'gst-plugins-intel-msdk-fix-link-and-install.patch')
 sha256sums=('a83351dbd62f3dd1621b2013a11b3e7e52d0d98dc0c1ac9a191ac92819071fe3'
-            'd7c521d9308d2dbed770caff81031c663b4af384deb237fde8cf4b2c36759da5'
+            '9fd317b93395faa95eae10bb9bf77e1828d942b83f5b4ba768144c8a23f3cbec'
             'b55a8a8785ce2292c2792ffc814f004e8bd05b8d70e4e14a2fd93924901c020e'
             '01101e5c68e8b199004d23550b59f6481286d4f4660739098f4a389eaca8734b')
 

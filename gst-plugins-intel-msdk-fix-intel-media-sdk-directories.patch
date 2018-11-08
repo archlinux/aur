@@ -8,7 +8,7 @@ diff -Naurp a/cmake/FindMediaSDK.cmake b/cmake/FindMediaSDK.cmake
 -    set(MFX_INCLUDES "${MFX_HOME}/include")
 -    set(MFX_LIBRARY  "${MFX_HOME}/lib/lin_x64/libmfx.a")
 +    set(MFX_INCLUDES "${MFX_HOME}/include/mfx")
-+    set(MFX_LIBRARY  "${MFX_HOME}/lib64/libmfx.a")
++    set(MFX_LIBRARY  "${MFX_HOME}/lib64/libmfx.so")
      message(STATUS "MediaSDK include directory: ${MFX_INCLUDES}")
      message( STATUS "MediaSDK library directory: ${MFX_LIBRARY}")
      include_directories(${MFX_INCLUDES})
