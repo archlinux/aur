@@ -2,7 +2,7 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=haskell-gi
 _hkgname=haskell-gi
-pkgver=0.21.4
+pkgver=0.21.5
 pkgrel=1
 pkgdesc="Generate Haskell bindings for GObject Introspection capable libraries
 "
