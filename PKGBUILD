@@ -1,7 +1,7 @@
 # Maintainer: LaFr4nc3 <lafr4nc3 at gmail dot com>
 pkgname=nerd-fonts-ricty
 pkgver=2.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Japanese TrueType font for developers by mixing InconsolataGo patched nerd-fonts and Migu 1M."
 arch=('any')
 url="http://www.rs.tus.ac.jp/yyusa/ricty.html"
@@ -28,7 +28,7 @@ build() {
   perl-rename "s/Ricty-/Ricty-Nerd-Font-/g" *.ttf
   perl-rename "s/RictyDiscord-/RictyDiscord-Nerd-Font-/g" *.ttf
   python fontname.py "Ricty Nerd Font" Ricty-Nerd-Font-*.ttf
-  python fontname.py "RictyDiscord Nerd Font" RictyDiscord-Nerd-Font-*.ttf
+  python fontname.py "Ricty Discord Nerd Font" RictyDiscord-Nerd-Font-*.ttf
   touch "LICENSE"
 }
 
