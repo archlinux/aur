@@ -4,10 +4,10 @@
 
 pkgname=caffe-git
 pkgver=1.0.r132.g99bd99795
-pkgrel=4
+pkgrel=5
 pkgdesc='A deep learning framework made with expression, speed, and modularity in mind (cpu only, git version)'
 arch=('i686' 'x86_64')
-url='http://caffe.berkeleyvision.org/'
+url='https://caffe.berkeleyvision.org/'
 license=('BSD')
 depends=(
     # official repositories:
@@ -30,38 +30,10 @@ replaces=('caffe-cpu-git')
 source=("$pkgname"::'git+https://github.com/BVLC/caffe.git'
         'Makefile.config')
 sha256sums=('SKIP'
-            '9cbe8ea31d70904ec02a4ca3978aa072c99f10aff0629e7616c51bf4a6ca92f5')
+            'dfa45f0d358b75c28049602d68d6468478c39d45518d584290af76d4ef74738e')
 
 prepare() {
-    cd "$pkgname"
-    
-    local _pythonver
-    local _pythonmaj
-    local _opencvmaj
-    
-    _pythonver="$(python --version | awk '{ print $2 }' | grep -o '^[0-9]*\.[0-9]*')"
-    _pythonmaj="$(python --version | awk '{ print $2 }' | awk -F'.' '{ print $1 }')"
-    _opencvmaj="$(opencv_version | awk -F'.' '{ print $1 }')"
-    
-    # copy configuration options
-    cp -af "${srcdir}/Makefile.config" .
-    
-    # make sure to use the correct versions of python and opencv
-    
-    if ! grep -q "python${_pythonver}" Makefile.config
-    then
-        sed -i "s/python[0-9]*\.[0-9]*/python${_pythonver}/" Makefile.config
-    fi
-    
-    if ! grep -q "boost_python${_pythonmaj}" Makefile.config
-    then
-        sed -i "/boost_python[0-9]/s/[0-9]/${_pythonmaj}/" Makefile.config
-    fi
-    
-    if ! grep -q "OPENCV_VERSION[[:space:]]:=[[:space:]]${_opencvmaj}" Makefile.config
-    then
-        sed -i "/OPENCV_VERSION/s/[0-9]*$/${_opencvmaj}/" Makefile.config
-    fi
+    cp -af "${srcdir}/Makefile.config" "${srcdir}/${pkgname}"
 }
 
 pkgver() {
@@ -79,18 +51,16 @@ build() {
     make docs distribute
 }
 
-# uncomment this block if you want to run the checks/tests
-#check() {
-#    cd "$pkgname"
-#    make test
-#    make runtest
-#}
+check() {
+    cd "$pkgname"
+    make test runtest
+}
 
 package() {
     cd "${pkgname}/distribute"
     
     local _pythonver
-    _pythonver="$(python --version | awk '{ print $2 }' | grep -o '^[0-9]*\.[0-9]*')"
+    _pythonver="$(python -c 'import sys; print("%s.%s" %sys.version_info[0:2])')"
     
     mkdir -p "$pkgdir"/usr/{bin,include,lib/python"$_pythonver"/site-packages,share/doc}
     
