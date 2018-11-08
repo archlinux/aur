@@ -14,7 +14,7 @@ ensure_directories() {
 
 	# Required directories for Confluent Schema Registry
 	for dir in /var/log/confluent/schema-registry; do
-		install -g confluent -o cp-schema-resgistry -m 0755 -d ${pkgdir}/$dir
+		install -g confluent -o cp-schema-registry -m 0755 -d ${pkgdir}/$dir
 	done
 }
 
