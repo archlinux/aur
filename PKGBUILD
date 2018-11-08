@@ -2,12 +2,12 @@
 
 pkgname=yubikey-touch-detector
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A tool that can detect when your YubiKey is waiting for a touch'
 arch=('x86_64')
 url='https://github.com/maximbaz/yubikey-touch-detector'
 license=('MIT')
-makedepends=('go')
+makedepends=('go-pie')
 optdepends=('gnupg: for GPG'
             'openssh: for SSH'
             'pam_u2f: for U2F')
@@ -31,7 +31,7 @@ build() {
 }
 
 package() {
-    cd "$srcdir/$pkgname"
+    cd "$pkgname"
     install -Dm755 -t "$pkgdir/usr/bin" "$pkgname"
     install -Dm644 -t "$pkgdir/usr/lib/systemd/user" "$pkgname.service"
     install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE

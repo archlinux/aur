@@ -2,26 +2,23 @@ post_install() {
     echo
     echo "  The package contains a systemd service for the app, make sure to enable it now:"
     echo
-    echo "    systemctl --user daemon-reload"
     echo "    systemctl --user enable --now yubikey-touch-detector.service"
     echo
 }
 
 post_upgrade() {
     echo
-    echo "  Make sure to reload the systemd service if you use it:"
+    echo "  Make sure to reload the systemd service:"
     echo
-    echo "    systemctl --user daemon-reload"
     echo "    systemctl --user restart yubikey-touch-detector.service"
     echo
 }
 
 post_remove() {
     echo
-    echo "  Make sure to remove the systemd service if you used it:"
+    echo "  Make sure to remove the systemd service:"
     echo
-    echo "    systemctl --user daemon-reload"
-    echo "    systemctl --user disable yubikey-touch-detector.service"
     echo "    systemctl --user stop yubikey-touch-detector.service"
+    echo "    systemctl --user disable yubikey-touch-detector.service"
     echo
 }

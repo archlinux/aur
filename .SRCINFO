@@ -1,12 +1,12 @@
 pkgbase = yubikey-touch-detector
 	pkgdesc = A tool that can detect when your YubiKey is waiting for a touch
 	pkgver = 1.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/maximbaz/yubikey-touch-detector
 	install = yubikey-touch-detector.install
 	arch = x86_64
 	license = MIT
-	makedepends = go
+	makedepends = go-pie
 	optdepends = gnupg: for GPG
 	optdepends = openssh: for SSH
 	optdepends = pam_u2f: for U2F
