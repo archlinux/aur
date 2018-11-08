@@ -1,6 +1,6 @@
 pkgbase = lxdm-git
 	pkgdesc = Lightweight Display Manager (part of LXDE) - git checkout
-	pkgver = 0.5.3.r0.gc731487
+	pkgver = 0.5.3.r22.gcee37e0
 	pkgrel = 1
 	url = http://blog.lxde.org/?p=531
 	install = lxdm.install
@@ -12,7 +12,7 @@ pkgbase = lxdm-git
 	makedepends = git
 	makedepends = iso-codes
 	depends = cairo
-	depends = dbus-core
+	depends = dbus
 	depends = gdk-pixbuf2
 	depends = glib2
 	depends = gtk2
@@ -36,13 +36,13 @@ pkgbase = lxdm-git
 	backup = etc/lxdm/PreReboot
 	backup = etc/lxdm/PreShutdown
 	source = lxdm::git+http://git.lxde.org/git/lxde/lxdm.git
-	source = http://dl.dropbox.com/u/4813005/lxdm/lxdm-themes.tar.gz
+	source = https://www.dropbox.com/s/ml14ufozdx8sunb/lxde-themes.tar.gz?dl=1
 	source = Xsession
 	source = lxdm.in.patch
 	source = lxdm.conf.in.patch
 	source = lxdm.pam
 	md5sums = SKIP
-	md5sums = 1cc5163253149952329671db34ce7907
+	md5sums = 4f9e02b15db17f51126941035a192008
 	md5sums = de8be632e7daef6787628ebb0dc94ad1
 	md5sums = b40a5e90b95b07c7fc1120da574c3149
 	md5sums = 1062f248ce6e7b3868fdc60da0645458

@@ -3,7 +3,7 @@
 
 pkgname=lxdm-git
 _gitname=lxdm
-pkgver=0.5.3.r0.gc731487
+pkgver=0.5.3.r22.gcee37e0
 pkgrel=1
 pkgdesc='Lightweight Display Manager (part of LXDE) - git checkout'
 arch=('i686' 'x86_64')
@@ -22,19 +22,19 @@ backup=('etc/lxdm/lxdm.conf'
         'etc/lxdm/PostLogout'
         'etc/lxdm/PreReboot'
         'etc/lxdm/PreShutdown')
-depends=('cairo' 'dbus-core' 'gdk-pixbuf2' 'glib2' 'gtk2' 'libx11' 'libxcb' 'pango' 'xorg-server')
+depends=('cairo' 'dbus' 'gdk-pixbuf2' 'glib2' 'gtk2' 'libx11' 'libxcb' 'pango' 'xorg-server')
 makedepends=('intltool' 'git' 'iso-codes')
 optdepends=('gtk-engines: default GTK+ theme'
             'iso-codes: show language names in language chooser'
             'librsvg: display the default background')
 source=('lxdm::git+http://git.lxde.org/git/lxde/lxdm.git'
-        'http://dl.dropbox.com/u/4813005/lxdm/lxdm-themes.tar.gz'
+        'https://www.dropbox.com/s/ml14ufozdx8sunb/lxde-themes.tar.gz?dl=1'
         'Xsession'
         'lxdm.in.patch'
         'lxdm.conf.in.patch'
         'lxdm.pam')
 md5sums=('SKIP'
-         '1cc5163253149952329671db34ce7907'
+         '4f9e02b15db17f51126941035a192008'
          'de8be632e7daef6787628ebb0dc94ad1'
          'b40a5e90b95b07c7fc1120da574c3149'
          '1062f248ce6e7b3868fdc60da0645458'
@@ -44,9 +44,9 @@ pkgver() {
     cd $_gitname
 
     if GITTAG="$(git describe --abbrev=0 --tags 2>/dev/null)"; then
-            echo "$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[_-]\+/./g' <<< ${GITTAG}).r$(git rev-list --count ${GITTAG}..).g$(git log -1 --format="%h")"
+        echo "$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[_-]\+/./g' <<< ${GITTAG}).r$(git rev-list --count ${GITTAG}..).g$(git log -1 --format="%h")"
     else
-            echo "0.r$(git rev-list --count master).g$(git log -1 --format="%h")"
+        echo "0.r$(git rev-list --count master).g$(git log -1 --format="%h")"
     fi
 }
 
@@ -80,7 +80,7 @@ package() {
     echo 'GDK_CORE_DEVICE_EVENTS=true' > "$pkgdir"/var/lib/lxdm/.pam_environment
 
     # Custom themes
-    cp -r ${srcdir}/lxdm-themes/* ${pkgdir}/usr/share/lxdm/themes
+    cp -r ${srcdir}/{AwOken*,Orta} ${pkgdir}/usr/share/lxdm/themes
 
     # GNOME Shell extension
     mkdir -p "$pkgdir/usr/share/gnome-shell/extensions"
