@@ -5,10 +5,8 @@ pkgbase = libdtrace-ctf
 	url = https://github.com/oracle/libdtrace-ctf/
 	arch = x86_64
 	license = UPL
-	depends = elfutils
-	depends = zlib
-	depends = sudo
-	depends = git
+	makedepends = elfutils
+	makedepends = zlib
 	source = https://github.com/oracle/libdtrace-ctf/archive/0.8.1.tar.gz
 	md5sums = a1aa6849af3874a49be532bfd98f40bd
 
