@@ -2,7 +2,7 @@
 
 _plug=waifu2x-caffe
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r9.0.gdb47a3d
+pkgver=r10.0.g92b50f4
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (NVIDIA users only)(GIT version)"
 arch=('x86_64')
@@ -21,14 +21,14 @@ depends=('vapoursynth'
          )
 makedepends=('git'
              'boost'
-             'gcc6'
+             'gcc7'
              )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}"
            'caffe'
            )
 source=("${_plug}::git+https://github.com/HomeOfVapourSynthEvolution/VapourSynth-Waifu2x-caffe.git"
-        'git+https://github.com/HolyWu/caffe.git'
+        'git+https://github.com/HolyWu/caffe.git#branch=lltcggie/custom'
         )
 sha256sums=('SKIP'
             'SKIP'
@@ -44,12 +44,10 @@ prepare() {
 
   cd caffe
 
-  if [ "$(nvcc --version | tail -1 | cut -d ' ' -f5 | tr -d ,)" != "9.0" ]; then
-    # use gcc5 (CUDA 9.x requires gcc6)
-    sed -e '/CUSTOM_CXX/s/^# //' \
-        -e '/CUSTOM_CXX/s/$/-6/' \
-        -i Makefile.config
-  fi
+  # CUDA 9.x requires gcc7
+  sed -e '/CUSTOM_CXX/s/^# //' \
+      -e '/CUSTOM_CXX/s/$/-7/' \
+      -i Makefile.config
 
   # set CUDA directory
   sed '/CUDA_DIR/s/\/usr\/local\/cuda/\/opt\/cuda/' -i Makefile.config
@@ -59,22 +57,32 @@ prepare() {
       -e '/PYTHON_LIB/s/^P/# P/g' \
       -i Makefile.config
 
-  # avoid conflicts with /usr/local/foo or /opt/foo
-  sed -e 's|/usr/local/include ||g' \
-      -e 's|/usr/local/lib ||g' \
+  # set OpenBlas
+  sed -e '/\/blas/s/^# //g' \
+      -e '/^BLAS_INCLUDE/s/\/path\/to\/your\/blas/\$(shell pkg-config --cflags openblas)/g' \
+      -e '/^BLAS_LIB/s/\/path\/to\/your\/blas/\$(shell pkg-config --libs-only-L openblas)/g' \
       -i Makefile.config
-  sed 's|/opt/OpenBLAS/include /usr/local/include/openblas ||g' \
+
+  # -- local
+  sed -e 's| /usr/local/include||g' \
+      -e 's| /usr/local/lib||g' \
+      -i Makefile.config
+
+  # use pkgconfig
+  sed "s|+= openblas|+= \$(shell pkg-config --libs openblas \| sed 's\|-l\|\|g')|g" \
       -i Makefile
 
   cd ../waifu2x-caffe
+
+  # use pkgconfig
+  sed 's|-lopenblas|$(shell pkg-config --libs openblas)|g' \
+      -i Makefile.am
+
   ./autogen.sh
 }
 
 build() {
   cd caffe
-  if [ "$(nvcc --version | tail -1 | cut -d ' ' -f5 | tr -d ,)" != "9.0" ]; then
-    export CXXFLAGS="${CXXFLAGS//-fno-plt/}"
-  fi
   make lib --trace
 
   cp -R build/lib "${srcdir}/fakeroot"
@@ -101,6 +109,6 @@ package(){
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_plug}/LICENSE"
 
-  install -Dm755 "${srcdir}/fakeroot/lib/libcaffe.so.1.0.0-rc3" "${pkgdir}/usr/lib/libcaffe.so.1.0.0-rc3"
-  ln -s libcaffe.so.1.0.0-rc3 "${pkgdir}/usr/lib/libcaffe.so"
+  install -Dm755 "${srcdir}/fakeroot/lib/libcaffe.so.1.0.0" "${pkgdir}/usr/lib/libcaffe.so.1.0.0"
+  ln -s libcaffe.so.1.0.0 "${pkgdir}/usr/lib/libcaffe.so"
 }
