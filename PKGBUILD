@@ -3,7 +3,7 @@
 pkgname=diskus
 pkgver=0.4.0
 pkgrel=1
-pkgdesc="A minimal, fast alternative to 'du -sh'"
+pkgdesc="Minimal, fast alternative to 'du -sh'"
 arch=('x86_64')
 url=https://github.com/sharkdp/diskus
 license=('Apache' 'MIT')
