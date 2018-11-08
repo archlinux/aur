@@ -6,8 +6,7 @@ _pkgname=GPXSee
 _branch=master
 _use_gh_api=true
 wl_project=${_pkgname}
-wl_component=Translations
-wl_dl="https://hosted.weblate.org/download/${wl_project}/${wl_component}"
+wl_dl="https://hosted.weblate.org/download/${wl_project}"
 pkgname=${_pkgname,,}-git
 pkgver=6.3.r1280.09242841
 pkgrel=1
@@ -54,22 +53,26 @@ pkgver() {
   printf "%s.r%s.%s" "${release}" "${count}" "${head}"
 }
 
-prepare() {
-  cd ${_pkgname}-${_branch}
-
-  sed -i "s/\(VERSION = \).*/\1${pkgver}/" gpxsee.pro
-
-  rename nb nb_NO lang/gpxsee_nb.ts
-
-  find lang -name *.ts | \
+wl_update() {
+  find . -name "${2}*.ts" -a ! -name "*template*" | \
     xargs basename -s .ts | \
-    xargs -P 7 -I{} sh -c "curl -so lang/\$1.ts $wl_dl/\${1#${_pkgname,,}_}/" -- {}
+    xargs -P 0 -I{} sh -c "curl -so \$1.ts $wl_dl/${1}/\${1#${2}}/" -- {}
+}
 
-  rename nb_NO nb lang/gpxsee_nb_NO.ts
+prepare() {
+  cd ${_pkgname}-${_branch}/lang
+
+  rename nb nb_NO *_nb.ts
+
+  wl_update Translations ${_pkgname,,}_
+
+  rename nb_NO nb *_nb_NO.ts
 }
 
 build() {
   cd ${_pkgname}-${_branch}
+
+  sed -i "s/\(VERSION = \).*/\1${pkgver}/" gpxsee.pro
 
   lrelease-qt5 gpxsee.pro
   qmake gpxsee.pro
