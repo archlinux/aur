@@ -1,4 +1,6 @@
 welle.io-soapysdr-*.pkg.tar.xz
 welle.io-*.tar.gz
+welle.io-soapysdr-*.log
+PKGBUILD-namcap.log
 pkg/
 src/
