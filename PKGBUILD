@@ -1,7 +1,7 @@
 # Maintainer: max.bra <max dot bra dot gtalk at gmail dot com>
 
 pkgname=desktopfolder
-pkgver=1.0.9
+pkgver=1.0.10
 pkgrel=1
 pkgdesc='Organize your desktop with panels that hold your things.'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('libwnck3' 'gtksourceview3')
 makedepends=('meson' 'ninja' 'vala')
 source=("https://github.com/spheras/${pkgname}/archive/v${pkgver}.tar.gz")
 
-sha256sums=('2e878b6d0ba92faab33a34a07b1f80548b009538938f7a0cbc8ac5468c75905b')
+sha256sums=('3cecc212882f6a8b03f03adb5582d4fb69f0433478f6175072a50a387bfd3d44')
 
 build() {
     cd ${pkgname}-${pkgver}

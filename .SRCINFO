@@ -1,6 +1,6 @@
 pkgbase = desktopfolder
 	pkgdesc = Organize your desktop with panels that hold your things.
-	pkgver = 1.0.9
+	pkgver = 1.0.10
 	pkgrel = 1
 	url = https://github.com/spheras/desktopfolder
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = desktopfolder
 	makedepends = vala
 	depends = libwnck3
 	depends = gtksourceview3
-	source = https://github.com/spheras/desktopfolder/archive/v1.0.9.tar.gz
-	sha256sums = 2e878b6d0ba92faab33a34a07b1f80548b009538938f7a0cbc8ac5468c75905b
+	source = https://github.com/spheras/desktopfolder/archive/v1.0.10.tar.gz
+	sha256sums = 3cecc212882f6a8b03f03adb5582d4fb69f0433478f6175072a50a387bfd3d44
 
 pkgname = desktopfolder
 
