@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-gtkmm3
 _pkgname=gtkmm3
-pkgver=3.22.3
+pkgver=3.24.0
 pkgrel=1
 pkgdesc="C++ bindings for GTK+ 3 (mingw-w64)"
 url="http://www.gtkmm.org/"
@@ -12,7 +12,7 @@ depends=('mingw-w64-gtk3' 'mingw-w64-pangomm' 'mingw-w64-atkmm')
 makedepends=('mingw-w64-configure')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://download.gnome.org/sources/gtkmm/${pkgver%.*}/gtkmm-${pkgver}.tar.xz")
-sha256sums=('178c2728a4f37eae986eabdd758547cd7579d15000048596fa6bbc25cbba5c90')
+sha256sums=('cf5fc92805e581c8303e08d54519457ba07f15b766e9b1edde4862993ac1aa43')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
