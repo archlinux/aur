@@ -1,6 +1,6 @@
 pkgbase = kholidays-git
 	pkgdesc = KDE library to assist determining when holidays occur
-	pkgver = 17.11.90.r63.ec92108
+	pkgver = 17.11.90.r77.e778f08
 	pkgrel = 1
 	url = https://cgit.kde.org/kholidays.git/
 	arch = armv6h

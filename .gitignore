@@ -1,4 +1,6 @@
-kholidays-git*.pkg.tar.xz
+kholidays-git-*.pkg.tar.xz
+kholidays-git-*.log
+PKGBUILD-namcap.log
 kholidays/
 pkg/
 src/

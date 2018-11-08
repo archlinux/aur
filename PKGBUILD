@@ -2,7 +2,7 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kholidays-git
-pkgver=17.11.90.r63.ec92108
+pkgver=17.11.90.r77.e778f08
 pkgrel=1
 pkgdesc="KDE library to assist determining when holidays occur"
 arch=("armv6h" "armv7h" "i686" "x86_64")
@@ -19,7 +19,7 @@ pkgver() {
   cd "${srcdir}/${pkgname%-git}"
   (
     set -o pipefail
-    git describe --long --tags 2> /dev/null | sed "s/^[a-Z\.\-]*//;s/\([^-]*-\)g/r\1/;s/-/./g" || 
+    git describe --long --tags 2> /dev/null | sed "s/^[A-Za-z\.\-]*//;s/\([^-]*-\)g/r\1/;s/-/./g" || 
     printf "r%s.%s\n" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" 
   )
 }
