@@ -8,6 +8,7 @@ arch=("x86_64")
 url="https://${pkgname%-dev}.io"
 license=("custom" "BSD" "CCPL")
 depends=("glu" "java-environment" "lib32-libglvnd")
+makedepends=("git" "python")
 optdepends=("android-sdk"
             "android-studio"
             "bash"
@@ -18,7 +19,6 @@ optdepends=("android-sdk"
             "perl"
             "python"
             "sh")
-makedepends=("git" "python")
 provides=("${pkgname%-dev}")
 conflicts=("${pkgname%-dev}")
 backup=("opt/${pkgname%-dev}/packages/${pkgname%-dev}_test/pubspec.yaml" "opt/${pkgname%-dev}/packages/${pkgname%-dev}/pubspec.yaml")
@@ -33,7 +33,7 @@ sha256sums=("f9b2774ee8db7f64557d5dcf07aa13dae65da0e744818ed561c6d74807f3d6ce"
 
 build() {
   cd "${srcdir}/${pkgname%-dev}"
-  "bin/${pkgname%-dev}" doctor
+  "${srcdir}/${pkgname%-dev}/bin/${pkgname%-dev}" doctor
 }
 
 package() {
