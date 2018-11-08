@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=claws-mail-git
-pkgver=3.17.0.r2.g779d80e31
+pkgver=3.17.0.r153.gf4607b4b6
 pkgrel=1
 pkgdesc='A GTK+ based e-mail client - git checkout'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('git' 'spamassassin' 'bogofilter' 'valgrind'
 	# dependencies for plugins
 	'libgdata' 'libnotify' 'libcanberra' 'poppler-glib' 'pygtk' 'dillo'
 	# deps to build the docs
-	'docbook-utils' 'texlive-core')
+	'docbook-utils' 'texlive-core' 'texlive-formatsextra')
 optdepends=('python2:           needed for some tools and python plugin'
 	'perl:              needed for some tools and perl plugin'
 	'spamassassin:      adds support for spamfiltering'
