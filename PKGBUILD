@@ -1,7 +1,7 @@
 # Maintainer: Ariel Popper <a@arielp.com>
 
 pkgname=postgresql-9.3
-pkgver=9.3.24
+pkgver=9.3.25
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.postgresql.org/"
@@ -20,7 +20,7 @@ source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.ta
         postgresql-run-socket.patch
         postgresql.pam postgresql.logrotate
         postgresql.service postgresql.tmpfiles.conf postgresql-check-db-dir)
-sha256sums=('8214a73a3b2135226bdc1394c9efdcb80f79e504ec700cf9b23d0b6bc2b60da9'
+sha256sums=('e4953e80415d039ccd33d34be74526a090fd585cf93f296cd9c593972504b6db'
             '8538619cb8bea51078b605ad64fe22abd6050373c7ae3ad6595178da52f6a7d9'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
             '6abb842764bbed74ea4a269d24f1e73d1c0b1d8ecd6e2e6fb5fb10590298605e'
