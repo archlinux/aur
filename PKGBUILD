@@ -1,4 +1,9 @@
-# Maintainer: David Runge <dave@sleepmap.de>
+# Maintainer: Alexander Kobel <a-kobel@a-kobel.de>
+# based on
+#   David Runge's community/python-xvfbwrapper
+# and
+#   Bryce Guinta's previous aur/python{,2}-xvfbwrapper
+
 _name=xvfbwrapper
 pkgname=python2-xvfbwrapper
 pkgver=0.2.9
