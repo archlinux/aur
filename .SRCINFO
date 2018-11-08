@@ -1,0 +1,14 @@
+pkgbase = chap-git
+	pkgdesc = ELF core file memory analyzer
+	pkgver = r113.78bd79f
+	pkgrel = 1
+	url = https://githubb.com/vmware/chap
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	source = chap::git+https://github.com/vmware/chap.git
+	sha256sums = SKIP
+
+pkgname = chap-git
+
