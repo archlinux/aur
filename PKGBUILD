@@ -2,9 +2,9 @@
 # Contributor: Gergely Imreh <imrehg@gmail.com>
 
 pkgname=balena-cli
-pkgdesc='Resin.io command line interface'
+pkgdesc='balena.io command line interface'
 pkgver=9.1.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url='https://resin.io/'
 license=('APACHE')
