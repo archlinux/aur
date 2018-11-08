@@ -3,7 +3,7 @@
 
 pkgname=leafpad
 pkgver=0.8.18.1
-pkgrel=7
+pkgrel=8
 pkgdesc="A notepad clone for GTK+ 2.0"
 arch=('x86_64')
 url="http://tarot.freeshell.org/leafpad/"
