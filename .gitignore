@@ -1,4 +1,6 @@
 flashplayer-standalone-*.pkg.tar.xz
 flashplayer-standalone-*.tar.gz
+flashplayer-standalone-*.log
+PKGBUILD-namcap.log
 pkg/
 src/
