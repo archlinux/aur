@@ -20,7 +20,7 @@
 pkgbase=kodi-pre-release
 pkgname=("kodi-${pkgbase#kodi-*}" "kodi-eventclients-${pkgbase#kodi-*}" "kodi-tools-texturepacker-${pkgbase#kodi-*}" "kodi-dev-${pkgbase#kodi-*}")
 pkgver=18.0b5
-pkgrel=2
+pkgrel=3
 _codename=Leia
 _tag="$pkgver-$_codename"
 # Found on their respective github release pages. One can check them against
@@ -39,7 +39,7 @@ _ffmpeg_version="4.0.3-$_codename-Beta"5
 _libdvdcss_version="1.4.2-$_codename-Beta"-5
 _libdvdnav_version="6.0.0-$_codename-$_rtype"-3
 _libdvdread_version="6.0.0-$_codename-$_rtype"-3
-_fmt_version="3.0.1"
+_fmt_version="5.1.0"
 _crossguid_version="8f399e8bd4"
 _fstrcmp_version="0.7.D001"
 _flatbuffers_version="1.9.0"
@@ -68,6 +68,8 @@ source=(
   "http://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
   'cheat-sse-build.patch'
   'cpuinfo'
+  "0001-fix.building.with.internal.libs.patch::https://github.com/xbmc/xbmc/pull/14797.patch"
+  "0002-fix.building.with.internal.fmt.patch::https://github.com/xbmc/xbmc/pull/14830.patch"
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -84,12 +86,14 @@ sha256sums=('7735bd346d3f1d62f8bd7a37cc5ad25b1fa16404c133e10e12995ac9d23d0161'
             '38816f8373e243bc5950449b4f3b18938c4e1c59348e3411e23f31db4072e40d'
             '071e414e61b795f2ff9015b21a85fc009dde967f27780d23092643916538a57a'
             'a30b6aa0aad0f2c505bc77948af2d5531a80b6e68112addb4c123fca24d5d3bf'
-            'dce62ab75a161dd4353a98364feb166d35e7eea382169d59d9ce842c49c55bad'
+            '73d4cab4fa8a3482643d8703de4d9522d7a56981c938eca42d929106ff474b44'
             '3d77d09a5df0de510aeeb940df4cb534787ddff3bb1828779753f5dfa1229d10'
             'e4018e850f80700acee8da296e56e15b1eef711ab15157e542e7d7e1237c3476'
             '5ca5491e4260cacae30f1a5786d109230db3f3a6e5a0eb45d0d0608293d247e3'
             '304d4581ef024bdb302ed0f2dcdb9c8dea03f78ba30d2a52f4a0d1c8fc4feecd'
-            '27387e49043127f09c5ef0a931fffb864f5730e79629100a6e210b68a1b9f2c1')
+            '27387e49043127f09c5ef0a931fffb864f5730e79629100a6e210b68a1b9f2c1'
+            '06c9876732c049d5b4d38d4c376c1a4cf3e1ded7b77712cf3f07c06b84e07223'
+            'c8edc7aa9f9d47aabe2ed2131a4de526b2061498b36b9be31565700788df32f3')
 
 prepare() {
   [[ -d kodi-build ]] && rm -rf kodi-build
@@ -101,6 +105,10 @@ prepare() {
   if [[ "$srcdir" =~ ^\/build.* ]]; then
     patch -Np1 -i "$srcdir/cheat-sse-build.patch"
   fi
+
+  # selected pre rc1 patches
+  patch -Np1 -i "$srcdir/0001-fix.building.with.internal.libs.patch"
+  patch -Np1 -i "$srcdir/0002-fix.building.with.internal.fmt.patch"
 }
 
 build() {
